@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="13771" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="Toast" customModule="ThunderWallet" customModuleProvider="target">
+            <connections>
+                <outlet property="messageLabel" destination="L0s-Op-35K" id="T18-WL-vXq"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="iN0-l3-epB">
+            <rect key="frame" x="0.0" y="0.0" width="379" height="214"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" verticalHuggingPriority="251" verticalCompressionResistancePriority="500" text="Toast" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="L0s-Op-35K">
+                    <rect key="frame" x="10" y="10" width="359" height="194"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                    <nil key="textColor"/>
+                    <nil key="highlightedColor"/>
+                </label>
+            </subviews>
+            <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+            <gestureRecognizers/>
+            <constraints>
+                <constraint firstItem="L0s-Op-35K" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="10" id="E9G-oF-TUE"/>
+                <constraint firstItem="L0s-Op-35K" firstAttribute="width" secondItem="iN0-l3-epB" secondAttribute="width" priority="750" id="JEb-Bf-tbc"/>
+                <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="L0s-Op-35K" secondAttribute="trailing" constant="10" id="lEu-fD-2Fp"/>
+                <constraint firstItem="L0s-Op-35K" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="iN0-l3-epB" secondAttribute="leading" constant="10" id="oqa-1X-RSR"/>
+                <constraint firstAttribute="bottom" secondItem="L0s-Op-35K" secondAttribute="bottom" constant="10" id="rqF-NM-QkE"/>
+            </constraints>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <connections>
+                <outletCollection property="gestureRecognizers" destination="i4O-Ym-Z4Z" appends="YES" id="qe8-xe-seF"/>
+            </connections>
+            <point key="canvasLocation" x="-11.5" y="170"/>
+        </view>
+        <tapGestureRecognizer id="i4O-Ym-Z4Z">
+            <connections>
+                <action selector="dismissToast:" destination="-1" id="vZ3-l2-y6w"/>
+            </connections>
+        </tapGestureRecognizer>
+    </objects>
+</document>

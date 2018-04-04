@@ -1,0 +1,44 @@
+/* 
+  Localizable.strings
+  Zap
+
+  Created by Otto Suess on 07.02.18.
+  Copyright © 2018 Otto Suess. All rights reserved.
+*/
+
+"channel.state.active" = "Active";
+"channel.state.inactive" = "Inactive";
+"channel.state.opening" = "Opening";
+"channel.state.closing" = "Closing";
+"channel.state.force_closing" = "Force Closing";
+
+"network.type.testnet" = "Testnet";
+"network.type.mainnet" = "Mainnet";
+
+"unit.bitcoin.btc" = "Bitcoin";
+"unit.bitcoin.mbtc" = "Milli Bitcoin";
+"unit.bitcoin.bit" = "Bits";
+"unit.bitcoin.satoshi" = "Satoshis";
+
+"scene.transactions.title" = "Transactions";
+"scene.settings.title" = "Settings";
+"scene.settings.item.bitcoin_unit" = "Bitcoin Unit";
+"scene.settings.item.currency" = "Currency";
+"scene.settings.item.network" = "Network";
+"scene.settings.item.block_explorer" = "Block Explorer";
+"scene.settings.item.lock_wallet" = "Lock Wallet";
+"scene.settings.section.wallet" = "Wallet";
+"scene.deposit.send" = "Send";
+"scene.deposit.title" = "Deposit";
+"scene.receive.title" = "Request";
+"scene.withdraw.title" = "Withdraw";
+"scene.channels.title" = "Channels";
+"scene.channels.section_header.pending" = "Pending";
+"scene.channels.section_header.open" = "Open";
+
+"scene.open_channel.title" = "Open Channel";
+"scene.balance.title" = "Balance";
+"scene.balance.label.on_chain" = "Ƀ";
+
+"scene.channel_detail.title" = "Channel Detail";
+"scene.send.error.invalid_payment_request" = "Invalid Payment request";

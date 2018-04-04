@@ -1,0 +1,11 @@
+osx_image: xcode9.2
+language: objective-c
+before_install:
+- brew install git-lfs
+- git lfs install
+- git lfs pull
+- gem update fastlane --no-ri --no-rdoc --no-document
+script:
+- fastlane tests
+
+
