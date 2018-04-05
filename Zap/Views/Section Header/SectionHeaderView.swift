@@ -17,7 +17,8 @@ class SectionHeaderView: UIView {
     @IBOutlet private weak var titleLabel: UILabel! {
         didSet {
             Style.label.apply(to: titleLabel)
-            titleLabel.font = Font.bold
+            titleLabel.font = Font.light
+            titleLabel.textColor = .lightGray
         }
     }
     
