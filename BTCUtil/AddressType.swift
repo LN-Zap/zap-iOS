@@ -40,14 +40,23 @@ public enum AddressType {
     }
     
     private func isBitcoinAddress(_ string: String, network: Network) -> Bool {
-        guard let address = BitcoinAddress(string: string) else { return false }
-        
-        switch (address.type, network) {
-        case (.pubkeyHash, .mainnet), (.scriptHash, .mainnet),
-             (.testnetPubkeyHash, .testnet), (.testnetScriptHash, .testnet):
-            return true
-        default:
-            return false
+        if let address = BitcoinAddress(string: string) {
+            switch (address.type, network) {
+            case (.pubkeyHash, .mainnet), (.scriptHash, .mainnet),
+                 (.testnetPubkeyHash, .testnet), (.testnetScriptHash, .testnet):
+                return true
+            default:
+                return false
+            }
+        } else if let (humanReadablePart, _) = Bech32.decode(string) {
+            switch network {
+            case .testnet:
+                return humanReadablePart.lowercased() == "tb"
+            case .mainnet:
+                return humanReadablePart.lowercased() == "bc"
+            }
         }
+        
+        return false
     }
 }
