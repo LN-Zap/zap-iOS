@@ -10,7 +10,7 @@ import Foundation
 import ReactiveKit
 
 final class ChannelListViewModel: NSObject {
-    let sections: MutableObservable2DArray<String, Channel>
+    let sections: MutableObservable2DArray<String, ChannelViewModel>
     
     init(viewModel: ViewModel) {
         sections = MutableObservable2DArray()
@@ -19,21 +19,21 @@ final class ChannelListViewModel: NSObject {
         
         combineLatest(viewModel.channels, viewModel.pendingChannels) { return ($0, $1) }
             .observeNext { [weak self] open, pending in
-                let result = MutableObservable2DArray<String, Channel>()
+                let result = MutableObservable2DArray<String, ChannelViewModel>()
                 
                 if !pending.isEmpty {
                     result.appendSection(
-                        Observable2DArraySection<String, Channel>(
+                        Observable2DArraySection<String, ChannelViewModel>(
                             metadata: "scene.channels.section_header.pending".localized,
-                            items: pending
+                            items: pending.map { ChannelViewModel(channel: $0, viewModel: viewModel) }
                         )
                     )
                 }
                 if !open.isEmpty {
                     result.appendSection(
-                        Observable2DArraySection<String, Channel>(
+                        Observable2DArraySection<String, ChannelViewModel>(
                             metadata: "scene.channels.section_header.open".localized,
-                            items: open
+                            items: open.map { ChannelViewModel(channel: $0, viewModel: viewModel) }
                         )
                     )
                 }

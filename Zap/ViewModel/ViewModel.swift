@@ -108,11 +108,11 @@ final class ViewModel {
     }
     
     func newAddress(callback: @escaping (Result<String>) -> Void) {
-        return api.newAddress(callback: callback)
+        api.newAddress(callback: callback)
     }
     
     func decodePaymentRequest(_ paymentRequest: String, callback: @escaping (Result<PaymentRequest>) -> Void) {
-        return api.decodePaymentRequest(paymentRequest, callback: callback)
+        api.decodePaymentRequest(paymentRequest, callback: callback)
     }
     
     func sendPayment(_ paymentRequest: PaymentRequest) {
@@ -140,14 +140,18 @@ final class ViewModel {
     }
     
     func sendCoins(address: String, amount: Satoshi) {
-        return api.sendCoins(address: address, amount: amount) { _ in }
+        api.sendCoins(address: address, amount: amount) { _ in }
     }
     
     func addInvoice(amount: Satoshi, memo: String?, callback: @escaping (Result<String>) -> Void) {
-        return api.addInvoice(amount: amount, memo: memo, callback: callback)
+        api.addInvoice(amount: amount, memo: memo, callback: callback)
     }
     
     func connect(pubKey: String, host: String, callback: @escaping (Result<Void>) -> Void) {
-        return api.connect(pubKey: pubKey, host: host, callback: callback)
+        api.connect(pubKey: pubKey, host: host, callback: callback)
+    }
+    
+    func nodeInfo(pubKey: String, callback: @escaping (Result<NodeInfo>) -> Void) {
+        api.nodeInfo(pubKey: pubKey, callback: callback)
     }
 }

@@ -22,6 +22,13 @@ final class Lightning {
             .runWithMacaroon()
     }
     
+    func nodeInfo(pubKey: String, callback: @escaping (Result<NodeInfo>) -> Void) {
+        let request = NodeInfoRequest()
+        request.pubKey = pubKey
+        rpc?.rpcToGetNodeInfo(with: request, handler: result(callback, map: { NodeInfo(nodeInfo: $0) }))
+            .runWithMacaroon()
+    }
+    
     func newAddress(callback: @escaping (Result<String>) -> Void) {
         let request = NewAddressRequest()
         request.type = .nestedPubkeyHash

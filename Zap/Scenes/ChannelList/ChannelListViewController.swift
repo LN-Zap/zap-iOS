@@ -9,13 +9,13 @@ import Bond
 import UIKit
 
 struct ChannelBond: TableViewBond {
-    func cellForRow(at indexPath: IndexPath, tableView: UITableView, dataSource: Observable2DArray<String, Channel>) -> UITableViewCell {
+    func cellForRow(at indexPath: IndexPath, tableView: UITableView, dataSource: Observable2DArray<String, ChannelViewModel>) -> UITableViewCell {
         let cell: ChannelTableViewCell = tableView.dequeueCellForIndexPath(indexPath)
-        cell.channel = dataSource.item(at: indexPath)
+        cell.channelViewModel = dataSource.item(at: indexPath)
         return cell
     }
     
-    func titleForHeader(in section: Int, dataSource: Observable2DArray<String, Channel>) -> String? {
+    func titleForHeader(in section: Int, dataSource: Observable2DArray<String, ChannelViewModel>) -> String? {
         return dataSource[section].metadata
     }
 }
@@ -77,7 +77,13 @@ extension ChannelListViewController: UITableViewDelegate {
     }
     
     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
-        return 60
+        guard let channelViewModel = channelViewModel else { return 0 }
+        
+        if channelViewModel.sections.sections.count > 1 {
+            return 60
+        } else {
+            return 0
+        }
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {

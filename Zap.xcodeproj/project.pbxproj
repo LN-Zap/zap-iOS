@@ -152,6 +152,8 @@
 		AD774651207616B100EC596B /* Network.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD77464A207615E000EC596B /* Network.swift */; };
 		AD77465320761DB400EC596B /* AddressTypeTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD77465220761DB400EC596B /* AddressTypeTests.swift */; };
 		AD7746552076253C00EC596B /* SendLightningInvoiceViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD7746542076253C00EC596B /* SendLightningInvoiceViewController.swift */; };
+		AD77465720765E4D00EC596B /* ChannelViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD77465620765E4D00EC596B /* ChannelViewModel.swift */; };
+		AD7746592076609400EC596B /* NodeInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD7746582076609400EC596B /* NodeInfo.swift */; };
 		E2255ED911EB334C67EC4349 /* Pods_ZapTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 700FBCADDAD580B28F987D98 /* Pods_ZapTests.framework */; };
 /* End PBXBuildFile section */
 
@@ -359,6 +361,8 @@
 		AD77464F2076165600EC596B /* String+Localizable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Localizable.swift"; sourceTree = "<group>"; };
 		AD77465220761DB400EC596B /* AddressTypeTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddressTypeTests.swift; sourceTree = "<group>"; };
 		AD7746542076253C00EC596B /* SendLightningInvoiceViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SendLightningInvoiceViewController.swift; sourceTree = "<group>"; };
+		AD77465620765E4D00EC596B /* ChannelViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChannelViewModel.swift; sourceTree = "<group>"; };
+		AD7746582076609400EC596B /* NodeInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NodeInfo.swift; sourceTree = "<group>"; };
 		AE22E81B1B7AD6C27F3D49BD /* Pods-Zap.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Zap.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Zap/Pods-Zap.debug.xcconfig"; sourceTree = "<group>"; };
 		CAF208744C2CFC6A493BD8B1 /* Pods_btcutil.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_btcutil.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		DB877056D2A1225EA035E012 /* Pods-Zap.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Zap.release.xcconfig"; path = "Pods/Target Support Files/Pods-Zap/Pods-Zap.release.xcconfig"; sourceTree = "<group>"; };
@@ -738,6 +742,7 @@
 				A01009382014BE460001EF94 /* Channel.swift */,
 				A0A96B8520174BAC00788808 /* CloseStatusUpdate.swift */,
 				A0376B6E201CC04400F1FBEF /* Info.swift */,
+				AD7746582076609400EC596B /* NodeInfo.swift */,
 				A010093B2014CEE40001EF94 /* OpenStatusUpdate.swift */,
 				A024B85A20161AAE002B8897 /* PaymentRequest.swift */,
 				A024B84C201606B4002B8897 /* Peer.swift */,
@@ -827,6 +832,7 @@
 				A010094F2015F99F0001EF94 /* ChannelList.storyboard */,
 				A0731FE82014B27900C55E45 /* ChannelListViewController.swift */,
 				A0F57DBD201E440F003AFA66 /* ChannelListViewModel.swift */,
+				AD77465620765E4D00EC596B /* ChannelViewModel.swift */,
 			);
 			path = ChannelList;
 			sourceTree = "<group>";
@@ -1329,6 +1335,7 @@
 				A0919151203C249200FA525A /* Font.swift in Sources */,
 				A0A05A4D20147B740007D1C9 /* RootViewController.swift in Sources */,
 				A0A05A5720149A0D0007D1C9 /* Settings.swift in Sources */,
+				AD77465720765E4D00EC596B /* ChannelViewModel.swift in Sources */,
 				A0D3C98020629B9D0015C5D7 /* Scheduler.swift in Sources */,
 				A0A05A2B2013ED920007D1C9 /* QRCodeDetailViewController.swift in Sources */,
 				A0919158203C309100FA525A /* Color.swift in Sources */,
@@ -1338,6 +1345,7 @@
 				A0D3C971205FF0E10015C5D7 /* MnemonicViewController.swift in Sources */,
 				A0BD44DF206FED1400BF27A3 /* BondTableViewCell.swift in Sources */,
 				A070D966202B39A3000A8274 /* QRCodeDetailViewModel.swift in Sources */,
+				AD7746592076609400EC596B /* NodeInfo.swift in Sources */,
 				A0F353D020692570005B3639 /* GradientView.swift in Sources */,
 				A0C2EABB206F8B02003AE56E /* FiatCurrency.swift in Sources */,
 				AD77464E2076162300EC596B /* Network+Localizable.swift in Sources */,

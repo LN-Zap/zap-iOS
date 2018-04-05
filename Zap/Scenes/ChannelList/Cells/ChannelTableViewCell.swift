@@ -5,19 +5,27 @@
 //  Copyright © 2018 Otto Suess. All rights reserved.
 //
 
+import Bond
 import UIKit
 
-class ChannelTableViewCell: UITableViewCell {
+class ChannelTableViewCell: BondTableViewCell {
     
     @IBOutlet private weak var nameLabel: UILabel!
     @IBOutlet private weak var stateLabel: UILabel!
     
-    var channel: Channel? {
+    var channelViewModel: ChannelViewModel? {
         didSet {
-            guard let channel = channel else { return }
+            guard let channelViewModel = channelViewModel else { return }
             
-            nameLabel.text = channel.remotePubKey
-            stateLabel.setChannelState(channel.state)
+            channelViewModel.name
+                .bind(to: nameLabel.reactive.text)
+                .dispose(in: onReuseBag)
+            
+            channelViewModel.state
+                .observeNext { [weak self] state in
+                    self?.stateLabel.setChannelState(state)
+                }
+                .dispose(in: onReuseBag)
         }
     }
     
