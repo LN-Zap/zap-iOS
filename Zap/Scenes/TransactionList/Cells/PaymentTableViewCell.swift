@@ -17,7 +17,7 @@ class PaymentTableViewCell: BondTableViewCell {
         didSet {
             guard let payment = payment else { return }
             
-            nameLabel.text = "Yalls.org"
+            nameLabel.text = payment.displayText
             
             payment.amount
                 .bind(to: amountLabel.reactive.text, currency: Settings.primaryCurrency)

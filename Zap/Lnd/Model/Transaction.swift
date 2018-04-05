@@ -13,9 +13,11 @@ struct Transaction: Equatable {
     let amount: Satoshi
     let timeStamp: Double
     let fees: Satoshi
-    
+
     let isOnChain: Bool
     let confirmations: Int?
+    
+    let displayText: String
 }
 
 // MARK: - OnChainTransaction
@@ -27,6 +29,8 @@ extension Transaction {
         fees = Satoshi(value: transaction.totalFees)
         isOnChain = true
         confirmations = Int(transaction.numConfirmations)
+        
+        displayText = transaction.destAddressesArray.firstObject as? String ?? ""
     }
 
     init(payment: LightningRpc.Payment) {
@@ -35,5 +39,7 @@ extension Transaction {
         fees = Satoshi(value: payment.fee)
         isOnChain = false
         confirmations = nil
+        
+        displayText = payment.paymentHash
     }
 }

@@ -16,7 +16,7 @@ class OnChainTransactionTableViewCell: BondTableViewCell {
         didSet {
             guard let transaction = onChainTransaction else { return }
             
-            nameLabel.text = "Open Channel"
+            nameLabel.text = transaction.displayText
             
             transaction.amount
                 .bind(to: amountLabel.reactive.text, currency: Settings.primaryCurrency)
