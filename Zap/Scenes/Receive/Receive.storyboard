@@ -25,18 +25,37 @@
                                         <rect key="frame" x="0.0" y="0.0" width="375" height="114"/>
                                         <subviews>
                                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="8NZ-bx-Crx">
-                                                <rect key="frame" x="20" y="0.0" width="335" height="114"/>
+                                                <rect key="frame" x="20" y="0.0" width="285" height="114"/>
                                                 <nil key="textColor"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                 <textInputTraits key="textInputTraits"/>
                                             </textField>
+                                            <button opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="255" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="FAk-tI-WEG">
+                                                <rect key="frame" x="315" y="21" width="40" height="55"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="width" constant="40" id="aDc-vs-cCB"/>
+                                                </constraints>
+                                                <fontDescription key="fontDescription" type="system" pointSize="36"/>
+                                                <state key="normal" title="$"/>
+                                                <connections>
+                                                    <action selector="swapCurrencyButtonTapped:" destination="Oqo-wC-FWh" eventType="touchUpInside" id="25U-UR-Cbk"/>
+                                                </connections>
+                                            </button>
+                                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="icon-chevronDown" translatesAutoresizingMaskIntoConstraints="NO" id="V0N-s2-3e9">
+                                                <rect key="frame" x="341" y="55.5" width="14" height="6"/>
+                                                <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                            </imageView>
                                         </subviews>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <constraints>
+                                            <constraint firstItem="V0N-s2-3e9" firstAttribute="baseline" secondItem="FAk-tI-WEG" secondAttribute="baseline" id="8NJ-t2-fPQ"/>
+                                            <constraint firstItem="FAk-tI-WEG" firstAttribute="baseline" secondItem="8NZ-bx-Crx" secondAttribute="baseline" id="PZN-wo-kmt"/>
+                                            <constraint firstItem="FAk-tI-WEG" firstAttribute="leading" secondItem="8NZ-bx-Crx" secondAttribute="trailing" constant="10" id="PgO-rc-5Js"/>
                                             <constraint firstAttribute="height" constant="114" id="UKQ-7c-ovM"/>
+                                            <constraint firstAttribute="trailing" secondItem="FAk-tI-WEG" secondAttribute="trailing" constant="20" id="XTA-f3-mFs"/>
                                             <constraint firstItem="8NZ-bx-Crx" firstAttribute="top" secondItem="NWD-uY-0J6" secondAttribute="top" id="aKf-XA-dCM"/>
                                             <constraint firstItem="8NZ-bx-Crx" firstAttribute="leading" secondItem="NWD-uY-0J6" secondAttribute="leading" constant="20" id="dR2-D6-J8M"/>
-                                            <constraint firstAttribute="trailing" secondItem="8NZ-bx-Crx" secondAttribute="trailing" constant="20" id="ktC-8Y-Nbg"/>
+                                            <constraint firstItem="V0N-s2-3e9" firstAttribute="trailing" secondItem="FAk-tI-WEG" secondAttribute="trailing" id="ef6-Hm-HFN"/>
                                             <constraint firstAttribute="bottom" secondItem="8NZ-bx-Crx" secondAttribute="bottom" id="of9-FN-our"/>
                                         </constraints>
                                     </view>
@@ -152,8 +171,10 @@
                         <outlet property="amountInputView" destination="cym-IE-XyC" id="c38-b1-MiR"/>
                         <outlet property="amountTextField" destination="8NZ-bx-Crx" id="zpr-Wj-vKE"/>
                         <outlet property="createButton" destination="tOu-EQ-8Ez" id="Ezj-n7-puf"/>
+                        <outlet property="downArrowImageView" destination="V0N-s2-3e9" id="MrE-AG-U4Q"/>
                         <outlet property="memoTextView" destination="IQI-PO-y7e" id="k0b-Xh-RZr"/>
                         <outlet property="placeholderTextView" destination="yiG-8U-w8B" id="may-i2-ae4"/>
+                        <outlet property="swapCurrencyButton" destination="FAk-tI-WEG" id="ngq-x6-pVW"/>
                         <segue destination="KVT-A9-MZd" kind="show" identifier="showQRCodeDetailViewController" id="KXq-yf-woM"/>
                     </connections>
                 </viewController>
@@ -197,4 +218,7 @@
             <point key="canvasLocation" x="-257" y="134"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="icon-chevronDown" width="14" height="6"/>
+    </resources>
 </document>

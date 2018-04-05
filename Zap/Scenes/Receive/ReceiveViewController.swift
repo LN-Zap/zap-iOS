@@ -13,6 +13,8 @@ class ReceiveViewController: ModalViewController {
     @IBOutlet private weak var memoTextView: UITextView!
     @IBOutlet private weak var createButton: UIButton!
     @IBOutlet private weak var amountInputView: UIView!
+    @IBOutlet private weak var swapCurrencyButton: UIButton!
+    @IBOutlet private weak var downArrowImageView: UIImageView!
     
     var viewModel: ViewModel?
     private var createReceiveViewModel: CreateReceiveViewModel?
@@ -43,8 +45,19 @@ class ReceiveViewController: ModalViewController {
         memoTextView.font = Font.light.withSize(14)
         memoTextView.textColor = Color.textColor
         
+        Style.button.apply(to: swapCurrencyButton)
+        swapCurrencyButton.tintColor = Color.textColor
+        swapCurrencyButton.titleLabel?.font = Font.light.withSize(36)
+        downArrowImageView.tintColor = Color.textColor
+
+        Settings.primaryCurrency
+            .map { $0.symbol }
+            .bind(to: swapCurrencyButton.reactive.title )
+            .dispose(in: reactive.bag)
+        
         createReceiveViewModel?.amountString
             .bind(to: amountTextField.reactive.text)
+            .dispose(in: reactive.bag)
         
         createReceiveViewModel?.isAmountValid
             .map { $0 ? Color.textColor : Color.red }
@@ -54,6 +67,7 @@ class ReceiveViewController: ModalViewController {
         memoTextView.reactive.text
             .map { !($0?.isEmpty ?? true) }
             .bind(to: placeholderTextView.reactive.isHidden )
+            .dispose(in: reactive.bag)
         
         memoTextView.reactive.text
             .observeNext { [weak self] text in
@@ -61,6 +75,10 @@ class ReceiveViewController: ModalViewController {
             }
             .dispose(in: reactive.bag)
         
+        setupKeyboardNotifications()
+    }
+    
+    private func setupKeyboardNotifications() {
         NotificationCenter.default.reactive.notification(name: .UIKeyboardWillHide)
             .observeNext { [weak self] _ in
                 if let presetation = self?.navigationController?.presentationController as? ModalPresentationController {
@@ -95,6 +113,10 @@ class ReceiveViewController: ModalViewController {
     
     @IBAction private func cancelButtonTapped(_ sender: Any) {
         dismiss(animated: true, completion: nil)
+    }
+    
+    @IBAction private func swapCurrencyButtonTapped(_ sender: Any) {
+        Settings.swapCurrencies()
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {

@@ -118,8 +118,6 @@ final class MainViewController: UIViewController, ContainerViewController {
     }
     
     @IBAction private func swapCurrencyButtonTapped(_ sender: Any) {
-        let primary = Settings.primaryCurrency.value
-        Settings.primaryCurrency.value = Settings.secondaryCurrency.value
-        Settings.secondaryCurrency.value = primary
+        Settings.swapCurrencies()
     }
 }
