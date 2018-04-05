@@ -35,7 +35,7 @@ final class OpenChannelViewController: ModalViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        Style.buttonBorder.apply(to: pasteButton, createButton)
+        Style.button.apply(to: pasteButton, createButton)
         
         title = "scene.open_channel.title".localized
         amountTextField?.text = "100000"

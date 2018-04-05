@@ -26,21 +26,6 @@ enum Style {
         $0.titleLabel?.font = Font.light
     }
     
-    static let buttonBorder = UIViewStyle<UIButton> {
-        $0.titleLabel?.font = Font.light.withSize(12)
-        $0.layer.cornerRadius = 8
-        $0.layer.borderWidth = 1
-        $0.layer.borderColor = UIColor.white.cgColor
-        $0.tintColor = .white
-    }
-
-    static let buttonBackground = UIViewStyle<UIButton> {
-        $0.titleLabel?.font = Font.light.withSize(18)
-        $0.layer.cornerRadius = 8
-        $0.backgroundColor = UIColor.red
-        $0.tintColor = .white
-    }
-    
     static let label = UIViewStyle<UILabel> {
         $0.font = Font.light
         $0.textColor = Color.text

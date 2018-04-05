@@ -484,7 +484,6 @@
 				A03F035E2028C71400F32279 /* Send */,
 				A0DDC06320189CCC00AEFF94 /* Settings */,
 				A0DDC0732018C74F00AEFF94 /* TransactionList */,
-				A070D960202A3CA6000A8274 /* Withdraw */,
 			);
 			path = Scenes;
 			sourceTree = "<group>";
@@ -583,10 +582,10 @@
 		A03F035E2028C71400F32279 /* Send */ = {
 			isa = PBXGroup;
 			children = (
+				A070D960202A3CA6000A8274 /* SendBTC */,
+				AD77465A2076827100EC596B /* SendLightning */,
 				A024B85620161586002B8897 /* Send.storyboard */,
 				A024B85220161560002B8897 /* SendViewController.swift */,
-				A03F035F2028C73F00F32279 /* SendLightningInvoiceViewModel.swift */,
-				AD7746542076253C00EC596B /* SendLightningInvoiceViewController.swift */,
 			);
 			path = Send;
 			sourceTree = "<group>";
@@ -623,14 +622,14 @@
 			path = Items;
 			sourceTree = "<group>";
 		};
-		A070D960202A3CA6000A8274 /* Withdraw */ = {
+		A070D960202A3CA6000A8274 /* SendBTC */ = {
 			isa = PBXGroup;
 			children = (
 				A01009452014DCB40001EF94 /* Withdraw.storyboard */,
 				A01009432014DC660001EF94 /* WithdrawViewController.swift */,
 				A070D961202A3CC7000A8274 /* WithdrawViewModel.swift */,
 			);
-			path = Withdraw;
+			path = SendBTC;
 			sourceTree = "<group>";
 		};
 		A070D963202A3CFC000A8274 /* QRCodeDetail */ = {
@@ -886,6 +885,15 @@
 				AD77464F2076165600EC596B /* String+Localizable.swift */,
 			);
 			path = Localizable;
+			sourceTree = "<group>";
+		};
+		AD77465A2076827100EC596B /* SendLightning */ = {
+			isa = PBXGroup;
+			children = (
+				A03F035F2028C73F00F32279 /* SendLightningInvoiceViewModel.swift */,
+				AD7746542076253C00EC596B /* SendLightningInvoiceViewController.swift */,
+			);
+			path = SendLightning;
 			sourceTree = "<group>";
 		};
 		CEF2960C33901153F2C1FFF4 /* Frameworks */ = {

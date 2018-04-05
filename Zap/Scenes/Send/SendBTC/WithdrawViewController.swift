@@ -9,26 +9,11 @@ import Foundation
 
 final class WithdrawViewController: UIViewController {
     
+    @IBOutlet private weak var addressLabel: UILabel!
     @IBOutlet private weak var allButton: UIButton!
-    @IBOutlet private weak var pasteButton: UIButton!
     @IBOutlet private weak var sendButton: UIButton!
-    @IBOutlet private weak var addressTextField: UITextField!
     @IBOutlet private weak var amountTextField: UITextField!
-    @IBOutlet private weak var scannerView: QRCodeScannerView! {
-        didSet {
-            scannerView.addressTypes = [.bitcoinAddress]
-            scannerView.handler = { [weak self] _, address in
-                self?.withdrawViewModel?.address.value = address
-            }
-        }
-    }
 
-    var viewModel: ViewModel? {
-        didSet {
-            guard let viewModel = viewModel else { return }
-            withdrawViewModel = WithdrawViewModel(viewModel: viewModel)
-        }
-    }
     var withdrawViewModel: WithdrawViewModel?
     
     override func viewDidLoad() {
@@ -36,12 +21,12 @@ final class WithdrawViewController: UIViewController {
         
         title = "scene.withdraw.title".localized
         amountTextField?.keyboardType = .decimalPad
-
-        Style.buttonBorder.apply(to: allButton, pasteButton, sendButton)
         
-        withdrawViewModel?.address
-            .bind(to: addressTextField.reactive.text)
-            .dispose(in: reactive.bag)
+        Style.label.apply(to: addressLabel)
+        Style.button.apply(to: allButton, sendButton)
+        sendButton.tintColor = .white
+        
+        addressLabel.text = withdrawViewModel?.address
         
         withdrawViewModel?.amount
             .map { $0.format(unit: .bit) }
@@ -59,9 +44,5 @@ final class WithdrawViewController: UIViewController {
     
     @IBAction private func allButtonTapped(_ sender: Any) {
         withdrawViewModel?.selectAll()
-    }
-    
-    @IBAction private func pasteButtonTapped(_ sender: Any) {
-        withdrawViewModel?.paste()
     }
 }

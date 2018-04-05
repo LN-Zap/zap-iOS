@@ -50,9 +50,9 @@ class SendViewController: UIViewController, ContainerViewController {
             viewController.sendViewModel = SendLightningInvoiceViewModel(viewModel: viewModel, lightningInvoice: address)
             setInitialViewController(viewController)
         case .bitcoinAddress:
-//            TODO:
-//            switchToViewController(viewController)
-            return
+            let viewController = Storyboard.withdraw.instantiate(viewController: WithdrawViewController.self)
+            viewController.withdrawViewModel = WithdrawViewModel(viewModel: viewModel, address: address)
+            setInitialViewController(viewController)
         default:
             return
         }

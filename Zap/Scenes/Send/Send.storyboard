@@ -75,7 +75,7 @@
                         <constraints>
                             <constraint firstItem="edH-GZ-eFV" firstAttribute="top" secondItem="Fve-Tg-hJ7" secondAttribute="bottom" id="2na-fW-Wma"/>
                             <constraint firstItem="edH-GZ-eFV" firstAttribute="trailing" secondItem="YPm-UD-Eu1" secondAttribute="trailing" id="3ov-Ej-4Vy"/>
-                            <constraint firstItem="YPm-UD-Eu1" firstAttribute="bottom" secondItem="edH-GZ-eFV" secondAttribute="bottom" priority="200" id="A6Y-h4-FnZ"/>
+                            <constraint firstAttribute="bottom" secondItem="edH-GZ-eFV" secondAttribute="bottom" priority="200" id="A6Y-h4-FnZ"/>
                             <constraint firstItem="13n-fC-sEj" firstAttribute="trailing" secondItem="YPm-UD-Eu1" secondAttribute="trailing" id="B2v-fU-ihC"/>
                             <constraint firstItem="13n-fC-sEj" firstAttribute="leading" secondItem="YPm-UD-Eu1" secondAttribute="leading" id="CpB-Bg-5vB"/>
                             <constraint firstItem="edH-GZ-eFV" firstAttribute="leading" secondItem="YPm-UD-Eu1" secondAttribute="leading" id="eZt-Qo-yws"/>
@@ -175,7 +175,7 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
-                            <constraint firstItem="BFy-96-Ycd" firstAttribute="bottom" secondItem="xLC-QL-AbG" secondAttribute="bottom" id="BPq-qw-Y0f"/>
+                            <constraint firstAttribute="bottom" secondItem="xLC-QL-AbG" secondAttribute="bottom" id="BPq-qw-Y0f"/>
                             <constraint firstItem="xLC-QL-AbG" firstAttribute="leading" secondItem="BFy-96-Ycd" secondAttribute="leading" id="LmX-mB-TuY"/>
                             <constraint firstItem="xLC-QL-AbG" firstAttribute="trailing" secondItem="BFy-96-Ycd" secondAttribute="trailing" id="SE7-x9-aAY"/>
                             <constraint firstItem="xLC-QL-AbG" firstAttribute="top" secondItem="o42-Gd-GP7" secondAttribute="top" id="a0d-GC-v5h"/>

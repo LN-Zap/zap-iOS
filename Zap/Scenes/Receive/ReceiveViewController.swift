@@ -124,6 +124,7 @@ class ReceiveViewController: ModalViewController {
             let paymentRequest = sender as? String {
             qrCodeDetailViewController.viewModel = ReceiveViewModel(paymentRequest: paymentRequest)
         } else if let numericKeyPad = segue.destination as? NumericKeyPadViewController {
+            
             let numberFormatter = InputNumberFormatter(unit: .bit)
             numericKeyPad.handler = { [weak self] input in
                 if let output = numberFormatter.validate(input) {
@@ -132,6 +133,7 @@ class ReceiveViewController: ModalViewController {
                 }
                 return false
             }
+            
         }
     }
 }

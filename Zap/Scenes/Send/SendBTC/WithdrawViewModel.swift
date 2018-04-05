@@ -13,21 +13,15 @@ final class WithdrawViewModel {
     private let viewModel: ViewModel
     
     let sendEnabled = Observable(false)
-    var address = Observable<String?>(nil)
+    let address: String
     var amount = Observable<Satoshi>(100)
     
-    init(viewModel: ViewModel) {
+    init(viewModel: ViewModel, address: String) {
         self.viewModel = viewModel
-    }
-    
-    func paste() {
-        if let string = UIPasteboard.general.string {
-            address.value = string
-        }
+        self.address = address
     }
     
     func send() {
-        guard let address = address.value else { return }
         _ = viewModel.sendCoins(address: address, amount: amount.value)
     }
     
