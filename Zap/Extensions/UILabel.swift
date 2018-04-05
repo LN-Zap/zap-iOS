@@ -27,7 +27,7 @@ extension UILabel {
         case .active, .opening:
             textColor = Color.green
         default:
-            textColor = Color.disabledColor
+            textColor = Color.disabled
         }
     }
     

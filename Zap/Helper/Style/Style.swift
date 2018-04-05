@@ -43,6 +43,6 @@ enum Style {
     
     static let label = UIViewStyle<UILabel> {
         $0.font = Font.light
-        $0.textColor = Color.textColor
+        $0.textColor = Color.text
     }
 }

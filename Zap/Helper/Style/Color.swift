@@ -8,14 +8,14 @@
 import Foundation
 
 enum Color {
-    static let tintColor = bottomGradientRight
+    static let tint = bottomGradientRight
     
     static let darkBackground = UIColor(hex: 0x31333b)
     static let mediumBackground = UIColor(hex: 0x363943)
     static let searchBackground = UIColor(hex: 0x4f4f4f)
 
-    static let textColor = UIColor(hex: 0x2e2e2e)
-    static let disabledColor = UIColor(hex: 0xd6d6d6)
+    static let text = UIColor(hex: 0x2e2e2e)
+    static let disabled = UIColor(hex: 0xd6d6d6)
     
     static let red = UIColor(hex: 0xee4646)
     static let green = UIColor(hex: 0x77a33f)

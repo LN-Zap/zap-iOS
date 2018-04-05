@@ -11,7 +11,7 @@ import UIKit
 class AppDelegate: UIResponder, UIApplicationDelegate {
     var window: UIWindow? {
         didSet {
-            window?.tintColor = Color.tintColor
+            window?.tintColor = Color.tint
         }
     }
     

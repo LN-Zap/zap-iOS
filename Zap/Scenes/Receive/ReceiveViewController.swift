@@ -28,7 +28,7 @@ class ReceiveViewController: ModalViewController {
         
         self.createReceiveViewModel = CreateReceiveViewModel(viewModel: viewModel)
         
-        amountTextField.textColor = Color.textColor
+        amountTextField.textColor = Color.text
         amountTextField.font = Font.light.withSize(36)
         amountTextField.placeholder = "Amount"
         amountTextField.inputView = UIView()
@@ -41,14 +41,14 @@ class ReceiveViewController: ModalViewController {
         
         placeholderTextView.text = "Memo (optional)"
         placeholderTextView.font = Font.light.withSize(14)
-        placeholderTextView.textColor = Color.disabledColor
+        placeholderTextView.textColor = Color.disabled
         memoTextView.font = Font.light.withSize(14)
-        memoTextView.textColor = Color.textColor
+        memoTextView.textColor = Color.text
         
         Style.button.apply(to: swapCurrencyButton)
-        swapCurrencyButton.tintColor = Color.textColor
+        swapCurrencyButton.tintColor = Color.text
         swapCurrencyButton.titleLabel?.font = Font.light.withSize(36)
-        downArrowImageView.tintColor = Color.textColor
+        downArrowImageView.tintColor = Color.text
 
         Settings.primaryCurrency
             .map { $0.symbol }
@@ -60,7 +60,7 @@ class ReceiveViewController: ModalViewController {
             .dispose(in: reactive.bag)
         
         createReceiveViewModel?.isAmountValid
-            .map { $0 ? Color.textColor : Color.red }
+            .map { $0 ? Color.text : Color.red }
             .bind(to: amountTextField.reactive.textColor)
             .dispose(in: reactive.bag)
         

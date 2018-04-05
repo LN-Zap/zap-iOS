@@ -15,7 +15,7 @@ class NumericKeyPadViewController: UIViewController {
             pointButton?.isEnabled = !isPin
         }
     }
-    var textColor = Color.textColor {
+    var textColor = Color.text {
         didSet {
             updateButtonFont()
         }
@@ -51,7 +51,7 @@ class NumericKeyPadViewController: UIViewController {
         buttons?.forEach {
             Style.button.apply(to: $0)
             $0.setTitleColor(textColor, for: .normal)
-            $0.imageView?.tintColor = Color.textColor
+            $0.imageView?.tintColor = Color.text
             $0.titleLabel?.font = $0.titleLabel?.font.withSize(24)
         }
     }
