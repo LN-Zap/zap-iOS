@@ -6,12 +6,13 @@
 //
 
 import AVFoundation
+import BTCUtil
 import UIKit
 
 final class QRCodeScannerView: UIView {
     private var captureSession = AVCaptureSession()
-    var addressType: AddressType?
-    var handler: ((String) -> Void)?
+    var addressTypes: [AddressType]?
+    var handler: ((AddressType, String) -> Void)?
 
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -48,10 +49,15 @@ final class QRCodeScannerView: UIView {
 
 extension QRCodeScannerView: AVCaptureMetadataOutputObjectsDelegate {
     func metadataOutput(_ output: AVCaptureMetadataOutput, didOutput metadataObjects: [AVMetadataObject], from connection: AVCaptureConnection) {
-        if let metadataObj = metadataObjects.first as? AVMetadataMachineReadableCodeObject,
+        guard
+            let metadataObj = metadataObjects.first as? AVMetadataMachineReadableCodeObject,
             let code = metadataObj.stringValue,
-            addressType?.isValidAddress(code) ?? true {
-            handler?(code)
+            let addressTypes = addressTypes
+            else { return }
+            
+        for addressType in addressTypes where addressType.isValidAddress(code, network: Settings.network) {
+            handler?(addressType, code)
+            return
         }
     }
 }

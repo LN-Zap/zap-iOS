@@ -8,7 +8,14 @@
 import Foundation
 
 enum Bolt11 {
-    static func isValid(_ string: String) -> Bool {
-        return Bech32.decode(string, limit: false) != nil
+    static func isValid(_ string: String, network: Network) -> Bool {
+        guard let (humanReadablePart, _) = Bech32.decode(string, limit: false) else { return false }
+        
+        switch network {
+        case .testnet:
+            return humanReadablePart.hasPrefix("lntb")
+        case .mainnet:
+            return humanReadablePart.hasPrefix("lnbc")
+        }
     }
 }

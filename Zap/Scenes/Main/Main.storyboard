@@ -75,14 +75,14 @@
                                                 <subviews>
                                                     <button opaque="NO" contentMode="scaleToFill" selected="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6XJ-ho-YDb">
                                                         <rect key="frame" x="0.0" y="0.0" width="172.5" height="70"/>
-                                                        <state key="normal" title="Transactions" image="transactions"/>
+                                                        <state key="normal" title="Transactions" image="icon-transactions"/>
                                                         <connections>
                                                             <action selector="transactionsButtonTapped:" destination="smx-iD-hSn" eventType="touchUpInside" id="Ubr-yt-SZP"/>
                                                         </connections>
                                                     </button>
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8Eo-BE-XE2">
                                                         <rect key="frame" x="182.5" y="0.0" width="172.5" height="70"/>
-                                                        <state key="normal" title="Network" image="network"/>
+                                                        <state key="normal" title="Network" image="icon-network"/>
                                                         <connections>
                                                             <action selector="networkButtonTapped:" destination="smx-iD-hSn" eventType="touchUpInside" id="E6S-jZ-mxX"/>
                                                         </connections>
@@ -126,7 +126,7 @@
                                                     <constraint firstAttribute="width" constant="50" id="FAb-v5-c91"/>
                                                     <constraint firstAttribute="height" constant="50" id="ZZ8-r5-BdQ"/>
                                                 </constraints>
-                                                <state key="normal" image="chevronDown"/>
+                                                <state key="normal" image="icon-chevronDown"/>
                                                 <connections>
                                                     <action selector="expandHeaderButtonTapped:" destination="smx-iD-hSn" eventType="touchUpInside" id="IA0-lY-fK9"/>
                                                 </connections>
@@ -221,8 +221,8 @@
         </scene>
     </scenes>
     <resources>
-        <image name="chevronDown" width="14" height="6"/>
-        <image name="network" width="13" height="13"/>
-        <image name="transactions" width="11" height="16"/>
+        <image name="icon-chevronDown" width="14" height="6"/>
+        <image name="icon-network" width="13" height="13"/>
+        <image name="icon-transactions" width="11" height="16"/>
     </resources>
 </document>

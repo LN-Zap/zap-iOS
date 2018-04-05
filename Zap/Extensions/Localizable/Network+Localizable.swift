@@ -1,16 +1,14 @@
 //
 //  Zap
 //
-//  Created by Otto Suess on 01.04.18.
-//  Copyright © 2018 Otto Suess. All rights reserved.
+//  Created by Otto Suess on 05.04.18.
+//  Copyright © 2018 Zap. All rights reserved.
 //
 
+import BTCUtil
 import Foundation
 
-enum Network {
-    case testnet
-    case mainnet
-    
+extension Network: Localizable {
     var localized: String {
         switch self {
         case .testnet:

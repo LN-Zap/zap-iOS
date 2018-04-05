@@ -16,8 +16,8 @@ final class WithdrawViewController: UIViewController {
     @IBOutlet private weak var amountTextField: UITextField!
     @IBOutlet private weak var scannerView: QRCodeScannerView! {
         didSet {
-            scannerView.addressType = .bitcoinAddress
-            scannerView.handler = { [weak self] address in
+            scannerView.addressTypes = [.bitcoinAddress]
+            scannerView.handler = { [weak self] _, address in
                 self?.withdrawViewModel?.address.value = address
             }
         }

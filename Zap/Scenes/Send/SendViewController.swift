@@ -18,8 +18,8 @@ class SendViewController: UIViewController {
     @IBOutlet private weak var paymentBackground: UIView!
     @IBOutlet private weak var scannerView: QRCodeScannerView! {
         didSet {
-            scannerView.addressType = .lightningInvoice
-            scannerView.handler = { [weak self] address in
+            scannerView.addressTypes = [.lightningInvoice]
+            scannerView.handler = { [weak self] _, address in
                 self?.sendViewModel?.updatePaymentRequest(address)
             }
         }

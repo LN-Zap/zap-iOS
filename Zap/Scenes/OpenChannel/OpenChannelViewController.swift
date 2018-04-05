@@ -15,8 +15,8 @@ final class OpenChannelViewController: ModalViewController {
     @IBOutlet private weak var createButton: UIButton!
     @IBOutlet private weak var scannerView: QRCodeScannerView! {
         didSet {
-            scannerView.addressType = .lightningNode
-            scannerView.handler = { [weak self] address in
+            scannerView.addressTypes = [.lightningNode]
+            scannerView.handler = { [weak self] _, address in
                 self?.openChannelViewModel?.address = address
             }
         }

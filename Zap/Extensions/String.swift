@@ -7,11 +7,7 @@
 
 import Foundation
 
-extension String: Localizable {
-    var localized: String {
-        return NSLocalizedString(self, comment: "")
-    }
-    
+extension String {
     func hexadecimal() -> Data? {
         guard let regex = try? NSRegularExpression(pattern: "[0-9a-f]{1,2}", options: .caseInsensitive)
             else { return nil }

@@ -10,7 +10,7 @@ import XCTest
 
 class AddressTests: XCTestCase {
     func testAddressTypes() {
-        let tests: [(String, Address.AddressType)] = [
+        let tests: [(String, BitcoinAddress.AddressType)] = [
             ("17VZNX1SN5NtKa8UQFxwQbFeFc3iqRYhem", .pubkeyHash),
             ("3EktnHQD7RiAE6uzMj2ZifT9YgRrkSgzQX", .scriptHash),
             ("5Hwgr3u458GLafKBgxtssHSPqJnYoGrSzgQsPwLFhLNYskDPyyA", .privateKey),
@@ -24,7 +24,7 @@ class AddressTests: XCTestCase {
         ]
         
         for (input, type) in tests {
-            let address = Address(string: input)
+            let address = BitcoinAddress(string: input)
             XCTAssertEqual(address?.type, type)
         }
     }
@@ -38,7 +38,7 @@ class AddressTests: XCTestCase {
         ]
         
         for input in invalid {
-            XCTAssertNil(Address(string: input))
+            XCTAssertNil(BitcoinAddress(string: input))
         }
     }
 }
