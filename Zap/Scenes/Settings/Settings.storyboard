@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14109" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="vzn-ka-eR5">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--Settings Container View Controller-->
+        <scene sceneID="1qb-GQ-LcC">
+            <objects>
+                <viewController id="PYl-Nq-2RQ" customClass="SettingsContainerViewController" customModule="Zap" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="0zX-TV-naC">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Boy-sC-5iG">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="225"/>
+                                <subviews>
+                                    <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="z5O-fj-sFc">
+                                        <rect key="frame" x="0.0" y="161" width="375" height="64"/>
+                                        <subviews>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ag8-3b-F8w">
+                                                <rect key="frame" x="0.0" y="0.0" width="187.5" height="64"/>
+                                                <state key="normal" title="Deposit" image="settings-arrow-down"/>
+                                            </button>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="tLn-dN-F0o">
+                                                <rect key="frame" x="187.5" y="0.0" width="187.5" height="64"/>
+                                                <state key="normal" title="Withdraw" image="settings-arrow-up"/>
+                                            </button>
+                                        </subviews>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="64" id="SAh-mh-ESn"/>
+                                        </constraints>
+                                    </stackView>
+                                </subviews>
+                                <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstAttribute="bottom" secondItem="z5O-fj-sFc" secondAttribute="bottom" id="R7a-DE-hLI"/>
+                                    <constraint firstItem="z5O-fj-sFc" firstAttribute="leading" secondItem="Boy-sC-5iG" secondAttribute="leading" id="gup-BQ-MVG"/>
+                                    <constraint firstAttribute="trailing" secondItem="z5O-fj-sFc" secondAttribute="trailing" id="mQx-MB-EBv"/>
+                                    <constraint firstAttribute="height" constant="225" id="quz-3n-4ia"/>
+                                </constraints>
+                            </view>
+                            <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="qgH-DM-93y">
+                                <rect key="frame" x="0.0" y="225" width="375" height="442"/>
+                            </containerView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="qgH-DM-93y" firstAttribute="leading" secondItem="Web-ut-2SO" secondAttribute="leading" id="9LX-kl-44C"/>
+                            <constraint firstItem="qgH-DM-93y" firstAttribute="top" secondItem="Boy-sC-5iG" secondAttribute="bottom" id="C4E-il-D2W"/>
+                            <constraint firstItem="qgH-DM-93y" firstAttribute="bottom" secondItem="Web-ut-2SO" secondAttribute="bottom" id="XYI-4E-OnG"/>
+                            <constraint firstItem="Boy-sC-5iG" firstAttribute="trailing" secondItem="Web-ut-2SO" secondAttribute="trailing" id="YgF-K0-3ii"/>
+                            <constraint firstItem="Boy-sC-5iG" firstAttribute="top" secondItem="0zX-TV-naC" secondAttribute="top" id="az1-XZ-krE"/>
+                            <constraint firstItem="qgH-DM-93y" firstAttribute="trailing" secondItem="Web-ut-2SO" secondAttribute="trailing" id="b0k-Rx-Pre"/>
+                            <constraint firstItem="Boy-sC-5iG" firstAttribute="leading" secondItem="Web-ut-2SO" secondAttribute="leading" id="fqw-bQ-9H6"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="Web-ut-2SO"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="ge9-zF-HV6">
+                        <barButtonItem key="rightBarButtonItem" systemItem="cancel" id="zJd-U4-DCk">
+                            <connections>
+                                <action selector="closeButtonTapped:" destination="PYl-Nq-2RQ" id="uJb-0Q-26Y"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                    <connections>
+                        <outlet property="container" destination="qgH-DM-93y" id="syo-Cm-ne6"/>
+                        <outlet property="depositButton" destination="ag8-3b-F8w" id="ADg-IX-PYw"/>
+                        <outlet property="headerBackground" destination="Boy-sC-5iG" id="w6s-iN-LLa"/>
+                        <outlet property="withdrawButton" destination="tLn-dN-F0o" id="DTD-zt-YaP"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="ejj-eA-tWv" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="864.79999999999995" y="166.8665667166417"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="5zH-5S-NZ4">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="vzn-ka-eR5" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="yCy-lf-jfF">
+                        <rect key="frame" x="0.0" y="20" width="375" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="PYl-Nq-2RQ" kind="relationship" relationship="rootViewController" id="KAi-Gs-kh9"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="MJ8-Qy-o5W" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-74.400000000000006" y="166.8665667166417"/>
+        </scene>
+    </scenes>
+    <resources>
+        <image name="settings-arrow-down" width="13" height="13"/>
+        <image name="settings-arrow-up" width="13" height="13"/>
+    </resources>
+</document>

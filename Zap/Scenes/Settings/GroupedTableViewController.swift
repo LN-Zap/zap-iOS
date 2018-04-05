@@ -15,6 +15,8 @@ class GroupedTableViewController: UITableViewController {
         self.sections = sections
 
         super.init(style: .grouped)
+        
+        tableView.backgroundColor = Color.darkBackground
     }
     
     required init?(coder aDecoder: NSCoder) {
@@ -49,9 +51,6 @@ class GroupedTableViewController: UITableViewController {
             cell = UITableViewCell(style: .default, reuseIdentifier: "DefaultSettingsCell")
         }
         
-        cell.textLabel?.text = item.title
-        cell.textLabel?.font = Font.light
-        
         if let item = item as? SelectableSettingsItem {
             item.isSelectedOption
                 .observeNext { cell.accessoryType = $0 ? .checkmark : .none }
@@ -61,6 +60,11 @@ class GroupedTableViewController: UITableViewController {
         } else {
             cell.accessoryType = .none
         }
+        
+        cell.textLabel?.text = item.title
+        cell.textLabel?.font = Font.light
+        cell.textLabel?.textColor = .white
+        cell.backgroundColor = Color.mediumBackground
         
         return cell
     }

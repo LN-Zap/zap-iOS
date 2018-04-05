@@ -136,8 +136,6 @@
 		A0DDC078201B42EA00AEFF94 /* BockExplorer.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0DDC077201B42EA00AEFF94 /* BockExplorer.swift */; };
 		A0DDC07A201B63E100AEFF94 /* AddressType.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0DDC079201B63E100AEFF94 /* AddressType.swift */; };
 		A0E2690D202CC4E30069E83C /* AuthenticationViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0E2690C202CC4E30069E83C /* AuthenticationViewModel.swift */; };
-		A0E26910202CCE8D0069E83C /* SyncView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0E2690F202CCE8D0069E83C /* SyncView.swift */; };
-		A0E26912202CCE990069E83C /* SyncView.xib in Resources */ = {isa = PBXBuildFile; fileRef = A0E26911202CCE990069E83C /* SyncView.xib */; };
 		A0F353CC206923E4005B3639 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0F353CB206923E4005B3639 /* MainViewController.swift */; };
 		A0F353CE20692415005B3639 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A0F353CD20692415005B3639 /* Main.storyboard */; };
 		A0F353D020692570005B3639 /* GradientView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0F353CF20692570005B3639 /* GradientView.swift */; };
@@ -149,6 +147,8 @@
 		A0F9AEE3206E3E0300E93DCA /* InputNumberFormatterTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0F9AEE2206E3E0300E93DCA /* InputNumberFormatterTests.swift */; };
 		A0FBCD91206BBBDF00800515 /* BitcoinUnit.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0FBCD90206BBBDF00800515 /* BitcoinUnit.swift */; };
 		A0FBCD93206BBD9800800515 /* SatoshiTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0FBCD92206BBD9800800515 /* SatoshiTests.swift */; };
+		AD77464220750D7700EC596B /* Settings.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AD77464120750D7700EC596B /* Settings.storyboard */; };
+		AD77464720750DFB00EC596B /* SettingsContainerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD77464620750DFB00EC596B /* SettingsContainerViewController.swift */; };
 		E2255ED911EB334C67EC4349 /* Pods_ZapTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 700FBCADDAD580B28F987D98 /* Pods_ZapTests.framework */; };
 /* End PBXBuildFile section */
 
@@ -339,8 +339,6 @@
 		A0DDC077201B42EA00AEFF94 /* BockExplorer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BockExplorer.swift; sourceTree = "<group>"; };
 		A0DDC079201B63E100AEFF94 /* AddressType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddressType.swift; sourceTree = "<group>"; };
 		A0E2690C202CC4E30069E83C /* AuthenticationViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthenticationViewModel.swift; sourceTree = "<group>"; };
-		A0E2690F202CCE8D0069E83C /* SyncView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SyncView.swift; sourceTree = "<group>"; };
-		A0E26911202CCE990069E83C /* SyncView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SyncView.xib; sourceTree = "<group>"; };
 		A0F353CB206923E4005B3639 /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
 		A0F353CD20692415005B3639 /* Main.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
 		A0F353CF20692570005B3639 /* GradientView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GradientView.swift; sourceTree = "<group>"; };
@@ -353,6 +351,8 @@
 		A0FBCD90206BBBDF00800515 /* BitcoinUnit.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BitcoinUnit.swift; sourceTree = "<group>"; };
 		A0FBCD92206BBD9800800515 /* SatoshiTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SatoshiTests.swift; sourceTree = "<group>"; };
 		A2EA9EBABE9A17490B3E282A /* Pods-BTCUtil.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BTCUtil.release.xcconfig"; path = "Pods/Target Support Files/Pods-BTCUtil/Pods-BTCUtil.release.xcconfig"; sourceTree = "<group>"; };
+		AD77464120750D7700EC596B /* Settings.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Settings.storyboard; sourceTree = "<group>"; };
+		AD77464620750DFB00EC596B /* SettingsContainerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsContainerViewController.swift; sourceTree = "<group>"; };
 		AE22E81B1B7AD6C27F3D49BD /* Pods-Zap.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Zap.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Zap/Pods-Zap.debug.xcconfig"; sourceTree = "<group>"; };
 		CAF208744C2CFC6A493BD8B1 /* Pods_btcutil.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_btcutil.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		DB877056D2A1225EA035E012 /* Pods-Zap.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Zap.release.xcconfig"; path = "Pods/Target Support Files/Pods-Zap/Pods-Zap.release.xcconfig"; sourceTree = "<group>"; };
@@ -507,7 +507,6 @@
 			isa = PBXGroup;
 			children = (
 				A06660F4202D97A300EE32FA /* QRCodeScannerView.swift */,
-				A0E2690E202CCE7D0069E83C /* Sync */,
 				A0605F89202C9D1A00EA903C /* Section Header */,
 				A0605F8A202C9D2F00EA903C /* Toast */,
 				A0605F8C202C9D8200EA903C /* HorizontalLineView.swift */,
@@ -805,10 +804,12 @@
 			isa = PBXGroup;
 			children = (
 				A06660F8202E070D00EE32FA /* Items */,
+				AD77464120750D7700EC596B /* Settings.storyboard */,
+				A0919144203B1CF400FA525A /* GroupedTableViewController.swift */,
 				A0DDC06D2018C08800AEFF94 /* Section.swift */,
 				A0A05A5620149A0D0007D1C9 /* Settings.swift */,
+				AD77464620750DFB00EC596B /* SettingsContainerViewController.swift */,
 				A0DDC0612018955C00AEFF94 /* SettingsViewController.swift */,
-				A0919144203B1CF400FA525A /* GroupedTableViewController.swift */,
 			);
 			path = Settings;
 			sourceTree = "<group>";
@@ -852,15 +853,6 @@
 				A024B84F20160F93002B8897 /* ChannelTableViewCell.xib */,
 			);
 			path = Cells;
-			sourceTree = "<group>";
-		};
-		A0E2690E202CCE7D0069E83C /* Sync */ = {
-			isa = PBXGroup;
-			children = (
-				A0E2690F202CCE8D0069E83C /* SyncView.swift */,
-				A0E26911202CCE990069E83C /* SyncView.xib */,
-			);
-			path = Sync;
 			sourceTree = "<group>";
 		};
 		A0F353CA206923D7005B3639 /* Main */ = {
@@ -1067,6 +1059,7 @@
 				A0D3C96F205FF0D50015C5D7 /* Mnemonic.storyboard in Resources */,
 				A0DDC05C201883D800AEFF94 /* TransactionList.storyboard in Resources */,
 				A0F353CE20692415005B3639 /* Main.storyboard in Resources */,
+				AD77464220750D7700EC596B /* Settings.storyboard in Resources */,
 				A091914F203C23C100FA525A /* Roboto-Light.ttf in Resources */,
 				A0A05A082013CF960007D1C9 /* Root.storyboard in Resources */,
 				A01009412014D4810001EF94 /* Toast.xib in Resources */,
@@ -1075,7 +1068,6 @@
 				A024B85120160F93002B8897 /* ChannelTableViewCell.xib in Resources */,
 				A01009502015F99F0001EF94 /* ChannelList.storyboard in Resources */,
 				A024B85920161590002B8897 /* Receive.storyboard in Resources */,
-				A0E26912202CCE990069E83C /* SyncView.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1333,7 +1325,6 @@
 				A02C9FC4202F617D009821B1 /* LocalAuthentication.swift in Sources */,
 				A06660FC202E080400EE32FA /* UpdatePinSettingsItem.swift in Sources */,
 				A0A05A292013ED4B0007D1C9 /* ModalPresentationController.swift in Sources */,
-				A0E26910202CCE8D0069E83C /* SyncView.swift in Sources */,
 				A0D3C973205FF1E80015C5D7 /* MnemonicViewModel.swift in Sources */,
 				A06660F5202D97A300EE32FA /* QRCodeScannerView.swift in Sources */,
 				A0376B77201CD67700F1FBEF /* PinViewController.swift in Sources */,
@@ -1385,6 +1376,7 @@
 				A0C2EAC0206F8D10003AE56E /* Bitcoin.swift in Sources */,
 				A024B84D201606B4002B8897 /* Peer.swift in Sources */,
 				A024B85B20161AAE002B8897 /* PaymentRequest.swift in Sources */,
+				AD77464720750DFB00EC596B /* SettingsContainerViewController.swift in Sources */,
 				A0A05A5920149AF20007D1C9 /* Transaction.swift in Sources */,
 				A0D3C97D20616AB80015C5D7 /* LndError.swift in Sources */,
 				A0F9AEE1206E3D8200E93DCA /* InputNumberFormatter.swift in Sources */,

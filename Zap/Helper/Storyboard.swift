@@ -8,12 +8,12 @@
 import UIKit
 
 enum Storyboard: String {
-    case balanceDetail
     case channelList
     case deposit
     case main
     case numericKeyPad
     case qrCodeScanner = "QRCodeScanner"
+    case settings
     case transactionList
     case withdraw
     

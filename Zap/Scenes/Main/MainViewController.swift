@@ -103,9 +103,8 @@ final class MainViewController: UIViewController, ContainerViewController {
     }
     
     @IBAction private func expandHeaderButtonTapped(_ sender: Any) {
-        let viewController = SettingsViewController()
-        let navigationController = UINavigationController(rootViewController: viewController)
-        present(navigationController, animated: true, completion: nil)
+        let viewController = Storyboard.settings.initial()
+        present(viewController, animated: true, completion: nil)
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
