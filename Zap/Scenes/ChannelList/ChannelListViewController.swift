@@ -22,6 +22,7 @@ struct ChannelBond: TableViewBond {
 
 class ChannelListViewController: UIViewController {
     @IBOutlet private weak var tableView: UITableView?
+    @IBOutlet private weak var searchBackgroundView: UIView!
     
     var viewModel: ViewModel? {
         didSet {
@@ -44,7 +45,11 @@ class ChannelListViewController: UIViewController {
         tableView.refreshControl = UIRefreshControl()
         tableView.refreshControl?.addTarget(self, action: #selector(refresh), for: .valueChanged)
         
-        channelViewModel?.sections.bind(to: tableView, using: ChannelBond())
+        searchBackgroundView.backgroundColor = Color.searchBackground
+        
+        channelViewModel?.sections
+            .bind(to: tableView, using: ChannelBond())
+            .dispose(in: reactive.bag)
         
         tableView.delegate = self
     }

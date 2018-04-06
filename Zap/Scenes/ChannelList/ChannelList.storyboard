@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13771" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="qfZ-HA-Q7u">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14109" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="qfZ-HA-Q7u">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
         <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -194,28 +194,60 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="LLv-cT-0ck">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="56"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="A4p-Og-P8b">
+                                        <rect key="frame" x="295" y="0.0" width="80" height="56"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="80" id="4nt-OG-tqz"/>
+                                        </constraints>
+                                        <state key="normal" image="icon-plus"/>
+                                        <connections>
+                                            <segue destination="Wuh-gH-MJ3" kind="presentation" id="6o2-aP-tQw"/>
+                                        </connections>
+                                    </button>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="tjv-go-bow" customClass="LineView" customModule="Zap" customModuleProvider="target">
+                                        <rect key="frame" x="294" y="0.0" width="1" height="56"/>
+                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="1" id="b3f-XW-oHu"/>
+                                        </constraints>
+                                    </view>
+                                </subviews>
+                                <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstAttribute="trailing" secondItem="A4p-Og-P8b" secondAttribute="trailing" id="4Rk-hE-uLo"/>
+                                    <constraint firstAttribute="height" constant="56" id="9wX-0A-EHG"/>
+                                    <constraint firstItem="A4p-Og-P8b" firstAttribute="leading" secondItem="tjv-go-bow" secondAttribute="trailing" id="Tg0-nf-SEC"/>
+                                    <constraint firstAttribute="bottom" secondItem="A4p-Og-P8b" secondAttribute="bottom" id="Wez-Zb-0SC"/>
+                                    <constraint firstItem="tjv-go-bow" firstAttribute="top" secondItem="LLv-cT-0ck" secondAttribute="top" id="b8b-jb-1Uy"/>
+                                    <constraint firstItem="A4p-Og-P8b" firstAttribute="top" secondItem="LLv-cT-0ck" secondAttribute="top" id="dms-aM-Avo"/>
+                                    <constraint firstAttribute="bottom" secondItem="tjv-go-bow" secondAttribute="bottom" id="vWb-Qz-ZGN"/>
+                                </constraints>
+                            </view>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="FET-KL-LGb">
-                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                                <rect key="frame" x="0.0" y="56" width="375" height="611"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             </tableView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="FET-KL-LGb" firstAttribute="leading" secondItem="evo-uh-dCS" secondAttribute="leading" id="7ZC-dF-Ixy"/>
+                            <constraint firstItem="LLv-cT-0ck" firstAttribute="leading" secondItem="evo-uh-dCS" secondAttribute="leading" id="AIU-3h-clr"/>
                             <constraint firstItem="FET-KL-LGb" firstAttribute="trailing" secondItem="evo-uh-dCS" secondAttribute="trailing" id="N0z-Jm-7oS"/>
                             <constraint firstItem="FET-KL-LGb" firstAttribute="bottom" secondItem="evo-uh-dCS" secondAttribute="bottom" id="Qi5-p2-wK3"/>
-                            <constraint firstItem="FET-KL-LGb" firstAttribute="top" secondItem="Ycu-RX-JKK" secondAttribute="top" id="oqF-Km-KaL"/>
+                            <constraint firstItem="LLv-cT-0ck" firstAttribute="top" secondItem="Ycu-RX-JKK" secondAttribute="top" id="VLf-iL-xvR"/>
+                            <constraint firstItem="LLv-cT-0ck" firstAttribute="trailing" secondItem="evo-uh-dCS" secondAttribute="trailing" id="fzd-MC-Vpp"/>
+                            <constraint firstItem="FET-KL-LGb" firstAttribute="top" secondItem="LLv-cT-0ck" secondAttribute="bottom" id="tMD-9E-bhV"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="evo-uh-dCS"/>
                     </view>
                     <navigationItem key="navigationItem" id="hPc-9d-Qbb">
-                        <barButtonItem key="rightBarButtonItem" systemItem="add" id="E33-pH-DHU">
-                            <connections>
-                                <segue destination="Wuh-gH-MJ3" kind="presentation" id="sQ7-eh-uRQ"/>
-                            </connections>
-                        </barButtonItem>
+                        <barButtonItem key="rightBarButtonItem" systemItem="add" id="E33-pH-DHU"/>
                     </navigationItem>
                     <connections>
+                        <outlet property="searchBackgroundView" destination="LLv-cT-0ck" id="it3-AQ-8JW"/>
                         <outlet property="tableView" destination="FET-KL-LGb" id="cBM-dk-rOx"/>
                         <segue destination="tOg-JC-iar" kind="presentation" identifier="showChannelDetailViewController" id="Xl6-7N-NrV"/>
                     </connections>
@@ -261,4 +293,7 @@
             <point key="canvasLocation" x="3494" y="490"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="icon-plus" width="16" height="16"/>
+    </resources>
 </document>

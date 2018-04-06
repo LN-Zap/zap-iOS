@@ -68,14 +68,14 @@
                                                     <segue destination="BMc-F1-OQb" kind="embed" id="iQq-rE-oSM"/>
                                                 </connections>
                                             </containerView>
-                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Rq9-TA-AMy" customClass="HorizontalLineView" customModule="Zap" customModuleProvider="target">
+                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Rq9-TA-AMy" customClass="LineView" customModule="Zap" customModuleProvider="target">
                                                 <rect key="frame" x="0.0" y="0.0" width="375" height="1"/>
                                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="1" id="sNz-NV-lol"/>
                                                 </constraints>
                                             </view>
-                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="mY6-cK-o57" customClass="HorizontalLineView" customModule="Zap" customModuleProvider="target">
+                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="mY6-cK-o57" customClass="LineView" customModule="Zap" customModuleProvider="target">
                                                 <rect key="frame" x="0.0" y="279" width="375" height="1"/>
                                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <constraints>

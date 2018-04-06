@@ -12,7 +12,7 @@ enum Color {
     
     static let darkBackground = UIColor(hex: 0x31333b)
     static let mediumBackground = UIColor(hex: 0x363943)
-    static let searchBackground = UIColor(hex: 0x4f4f4f)
+    static let searchBackground = UIColor(hex: 0xf4f4f4)
 
     static let text = UIColor(hex: 0x2e2e2e)
     static let disabled = UIColor(hex: 0xd6d6d6)
