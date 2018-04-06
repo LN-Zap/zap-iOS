@@ -13,7 +13,7 @@ class PaymentTableViewCell: BondTableViewCell {
     @IBOutlet private weak var nameLabel: UILabel!
     @IBOutlet private weak var amountLabel: UILabel!
     
-    var payment: Transaction? {
+    var payment: TransactionViewModel? {
         didSet {
             guard let payment = payment else { return }
             

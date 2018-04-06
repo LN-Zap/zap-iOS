@@ -9,37 +9,38 @@ import BTCUtil
 import Foundation
 import LightningRpc
 
-struct Transaction: Equatable {
-    let amount: Satoshi
-    let timeStamp: Double
-    let fees: Satoshi
-
-    let isOnChain: Bool
-    let confirmations: Int?
-    
-    let displayText: String
+protocol Transaction {
+    var amount: Satoshi { get }
+    var timeStamp: TimeInterval { get }
+    var fees: Satoshi { get }
 }
 
-// MARK: - OnChainTransaction
-
-extension Transaction {
+struct BlockchainTransaction: Transaction, Equatable {
+    let amount: Satoshi
+    let timeStamp: TimeInterval
+    let fees: Satoshi
+    let confirmations: Int
+    let firstDestinationAddress: String
+    
     init(transaction: LightningRpc.Transaction) {
         amount = Satoshi(value: transaction.amount)
         timeStamp = Double(transaction.timeStamp)
         fees = Satoshi(value: transaction.totalFees)
-        isOnChain = true
         confirmations = Int(transaction.numConfirmations)
-        
-        displayText = transaction.destAddressesArray.firstObject as? String ?? ""
+        firstDestinationAddress = transaction.destAddressesArray.firstObject as? String ?? ""
     }
+}
+
+struct Payment: Transaction, Equatable {
+    let amount: Satoshi
+    let timeStamp: TimeInterval
+    let fees: Satoshi
+    let paymentHash: String
 
     init(payment: LightningRpc.Payment) {
         amount = Satoshi(value: -payment.value)
         timeStamp = Double(payment.creationDate)
         fees = Satoshi(value: payment.fee)
-        isOnChain = false
-        confirmations = nil
-        
-        displayText = payment.paymentHash
+        paymentHash = payment.paymentHash
     }
 }

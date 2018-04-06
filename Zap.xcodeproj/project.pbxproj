@@ -154,6 +154,11 @@
 		AD7746552076253C00EC596B /* SendLightningInvoiceViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD7746542076253C00EC596B /* SendLightningInvoiceViewController.swift */; };
 		AD77465720765E4D00EC596B /* ChannelViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD77465620765E4D00EC596B /* ChannelViewModel.swift */; };
 		AD7746592076609400EC596B /* NodeInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD7746582076609400EC596B /* NodeInfo.swift */; };
+		AD77465D2077C11200EC596B /* TransactionDetail.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AD77465C2077C11200EC596B /* TransactionDetail.storyboard */; };
+		AD77465F2077C12200EC596B /* TransactionDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD77465E2077C12200EC596B /* TransactionDetailViewController.swift */; };
+		AD7746622077C3BF00EC596B /* PaymentDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD7746602077C3BF00EC596B /* PaymentDetailViewController.swift */; };
+		AD7746652077C3D600EC596B /* PaymentDetail.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AD7746642077C3D600EC596B /* PaymentDetail.storyboard */; };
+		AD7746672077C72600EC596B /* TransactionViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD7746662077C72600EC596B /* TransactionViewModel.swift */; };
 		E2255ED911EB334C67EC4349 /* Pods_ZapTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 700FBCADDAD580B28F987D98 /* Pods_ZapTests.framework */; };
 /* End PBXBuildFile section */
 
@@ -363,6 +368,11 @@
 		AD7746542076253C00EC596B /* SendLightningInvoiceViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SendLightningInvoiceViewController.swift; sourceTree = "<group>"; };
 		AD77465620765E4D00EC596B /* ChannelViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChannelViewModel.swift; sourceTree = "<group>"; };
 		AD7746582076609400EC596B /* NodeInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NodeInfo.swift; sourceTree = "<group>"; };
+		AD77465C2077C11200EC596B /* TransactionDetail.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = TransactionDetail.storyboard; sourceTree = "<group>"; };
+		AD77465E2077C12200EC596B /* TransactionDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransactionDetailViewController.swift; sourceTree = "<group>"; };
+		AD7746602077C3BF00EC596B /* PaymentDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaymentDetailViewController.swift; sourceTree = "<group>"; };
+		AD7746642077C3D600EC596B /* PaymentDetail.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = PaymentDetail.storyboard; sourceTree = "<group>"; };
+		AD7746662077C72600EC596B /* TransactionViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransactionViewModel.swift; sourceTree = "<group>"; };
 		AE22E81B1B7AD6C27F3D49BD /* Pods-Zap.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Zap.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Zap/Pods-Zap.debug.xcconfig"; sourceTree = "<group>"; };
 		CAF208744C2CFC6A493BD8B1 /* Pods_btcutil.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_btcutil.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		DB877056D2A1225EA035E012 /* Pods-Zap.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Zap.release.xcconfig"; path = "Pods/Target Support Files/Pods-Zap/Pods-Zap.release.xcconfig"; sourceTree = "<group>"; };
@@ -483,6 +493,7 @@
 				A0DDC0722018C72D00AEFF94 /* Root */,
 				A03F035E2028C71400F32279 /* Send */,
 				A0DDC06320189CCC00AEFF94 /* Settings */,
+				AD77465B2077C0FA00EC596B /* TransactionDetail */,
 				A0DDC0732018C74F00AEFF94 /* TransactionList */,
 			);
 			path = Scenes;
@@ -853,6 +864,7 @@
 				A0DDC05B201883D800AEFF94 /* TransactionList.storyboard */,
 				A0A05A5B20149F720007D1C9 /* TransactionListViewController.swift */,
 				A0F57DC1201E700C003AFA66 /* TransactionListViewModel.swift */,
+				AD7746662077C72600EC596B /* TransactionViewModel.swift */,
 			);
 			path = TransactionList;
 			sourceTree = "<group>";
@@ -894,6 +906,17 @@
 				AD7746542076253C00EC596B /* SendLightningInvoiceViewController.swift */,
 			);
 			path = SendLightning;
+			sourceTree = "<group>";
+		};
+		AD77465B2077C0FA00EC596B /* TransactionDetail */ = {
+			isa = PBXGroup;
+			children = (
+				AD7746642077C3D600EC596B /* PaymentDetail.storyboard */,
+				AD7746602077C3BF00EC596B /* PaymentDetailViewController.swift */,
+				AD77465C2077C11200EC596B /* TransactionDetail.storyboard */,
+				AD77465E2077C12200EC596B /* TransactionDetailViewController.swift */,
+			);
+			path = TransactionDetail;
 			sourceTree = "<group>";
 		};
 		CEF2960C33901153F2C1FFF4 /* Frameworks */ = {
@@ -1085,11 +1108,13 @@
 				A070D968202B5163000A8274 /* Localizable.strings in Resources */,
 				A0A96B902017908600788808 /* PaymentTableViewCell.xib in Resources */,
 				A0A05A0A2013CF960007D1C9 /* Assets.xcassets in Resources */,
+				AD7746652077C3D600EC596B /* PaymentDetail.storyboard in Resources */,
 				A0376B75201CD61B00F1FBEF /* NumericKeyPad.storyboard in Resources */,
 				A01009462014DCB40001EF94 /* Withdraw.storyboard in Resources */,
 				A0D3C96F205FF0D50015C5D7 /* Mnemonic.storyboard in Resources */,
 				A0DDC05C201883D800AEFF94 /* TransactionList.storyboard in Resources */,
 				A0F353CE20692415005B3639 /* Main.storyboard in Resources */,
+				AD77465D2077C11200EC596B /* TransactionDetail.storyboard in Resources */,
 				AD77464220750D7700EC596B /* Settings.storyboard in Resources */,
 				A091914F203C23C100FA525A /* Roboto-Light.ttf in Resources */,
 				A0A05A082013CF960007D1C9 /* Root.storyboard in Resources */,
@@ -1334,6 +1359,7 @@
 				A0605F86202C962900EA903C /* SectionHeaderView.swift in Sources */,
 				A0A96B84201748C200788808 /* UILabel.swift in Sources */,
 				A0A96B88201769F100788808 /* String.swift in Sources */,
+				AD7746622077C3BF00EC596B /* PaymentDetailViewController.swift in Sources */,
 				A0A05A51201481A70007D1C9 /* Storyboard.swift in Sources */,
 				A0DDC060201889B100AEFF94 /* LargeTitleNavigationController.swift in Sources */,
 				A05C5B8F206500A900072FA9 /* RemoteLndConfiguration.swift in Sources */,
@@ -1395,6 +1421,7 @@
 				A01009392014BE460001EF94 /* Channel.swift in Sources */,
 				A0D3C97A2060070D0015C5D7 /* WalletViewModel.swift in Sources */,
 				A07C1036203DE3E6006C7FE8 /* ViewModel.swift in Sources */,
+				AD7746672077C72600EC596B /* TransactionViewModel.swift in Sources */,
 				A0919143203B152100FA525A /* UserDefaults.swift in Sources */,
 				A0D3C96A205D55570015C5D7 /* WalletUnlocker.swift in Sources */,
 				A0919156203C2CB600FA525A /* Style.swift in Sources */,
@@ -1415,6 +1442,7 @@
 				A024B85B20161AAE002B8897 /* PaymentRequest.swift in Sources */,
 				AD77464720750DFB00EC596B /* SettingsContainerViewController.swift in Sources */,
 				A0A05A5920149AF20007D1C9 /* Transaction.swift in Sources */,
+				AD77465F2077C12200EC596B /* TransactionDetailViewController.swift in Sources */,
 				A0D3C97D20616AB80015C5D7 /* LndError.swift in Sources */,
 				A0F9AEE1206E3D8200E93DCA /* InputNumberFormatter.swift in Sources */,
 				A091914B203B297D00FA525A /* CurrencySettingsItem.swift in Sources */,

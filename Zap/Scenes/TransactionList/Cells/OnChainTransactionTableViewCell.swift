@@ -12,7 +12,7 @@ class OnChainTransactionTableViewCell: BondTableViewCell {
     @IBOutlet private weak var nameLabel: UILabel!
     @IBOutlet private weak var amountLabel: UILabel!
     
-    var onChainTransaction: Transaction? {
+    var onChainTransaction: TransactionViewModel? {
         didSet {
             guard let transaction = onChainTransaction else { return }
             

@@ -12,9 +12,11 @@ enum Storyboard: String {
     case deposit
     case main
     case numericKeyPad
+    case paymentDetail
     case qrCodeScanner = "QRCodeScanner"
     case send
     case settings
+    case transactionDetail
     case transactionList
     case withdraw
     

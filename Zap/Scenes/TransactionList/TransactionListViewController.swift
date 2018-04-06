@@ -9,7 +9,7 @@ import Bond
 import UIKit
 
 struct TransactionBond: TableViewBond {
-    func cellForRow(at indexPath: IndexPath, tableView: UITableView, dataSource: Observable2DArray<String, Transaction>) -> UITableViewCell {
+    func cellForRow(at indexPath: IndexPath, tableView: UITableView, dataSource: Observable2DArray<String, TransactionViewModel>) -> UITableViewCell {
         let transaction = dataSource.item(at: indexPath)
 
         if transaction.isOnChain {
@@ -23,7 +23,7 @@ struct TransactionBond: TableViewBond {
         }
     }
     
-    func titleForHeader(in section: Int, dataSource: Observable2DArray<String, Transaction>) -> String? {
+    func titleForHeader(in section: Int, dataSource: Observable2DArray<String, TransactionViewModel>) -> String? {
         return dataSource[section].metadata
     }
 }
@@ -34,10 +34,10 @@ class TransactionListViewController: UIViewController {
     var viewModel: ViewModel? {
         didSet {
             guard let viewModel = viewModel else { return }
-            transactionViewModel = TransactionListViewModel(viewModel: viewModel)
+            transactionListViewModel = TransactionListViewModel(viewModel: viewModel)
         }
     }
-    private var transactionViewModel: TransactionListViewModel?
+    private var transactionListViewModel: TransactionListViewModel?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -52,10 +52,9 @@ class TransactionListViewController: UIViewController {
         tableView.refreshControl = UIRefreshControl()
         tableView.refreshControl?.addTarget(self, action: #selector(refresh), for: .valueChanged)
         
-        transactionViewModel?.sections.bind(to: tableView, using: TransactionBond())
+        transactionListViewModel?.sections.bind(to: tableView, using: TransactionBond())
 
         tableView.delegate = self
-        tableView.allowsSelection = false
     }
     
     @objc
@@ -67,12 +66,31 @@ class TransactionListViewController: UIViewController {
 extension TransactionListViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
         let sectionHeaderView = SectionHeaderView.instanceFromNib
-        sectionHeaderView.title = transactionViewModel?.sections[section].metadata
+        sectionHeaderView.title = transactionListViewModel?.sections[section].metadata
         sectionHeaderView.backgroundColor = .white
         return sectionHeaderView
     }
     
     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
         return 60
-    }    
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        guard let transactionListViewModel = transactionListViewModel else { return }
+        
+        tableView.deselectRow(at: indexPath, animated: true)
+        
+        
+        let transactionViewModel = transactionListViewModel.sections.item(at: indexPath)
+        let viewController: UINavigationController
+        if transactionViewModel.isOnChain {
+            viewController = Storyboard.transactionDetail.initial(viewController: UINavigationController.self)
+            if let transactionDetailViewController = viewController.topViewController as? TransactionDetailViewController {
+                transactionDetailViewController.transactionViewModel = transactionViewModel
+            }
+        } else {
+            viewController = Storyboard.paymentDetail.initial(viewController: UINavigationController.self)
+        }
+        present(viewController, animated: true, completion: nil)
+    }
 }

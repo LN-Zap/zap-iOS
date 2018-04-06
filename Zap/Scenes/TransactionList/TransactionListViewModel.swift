@@ -10,7 +10,7 @@ import Foundation
 import ReactiveKit
 
 final class TransactionListViewModel: NSObject {
-    let sections: MutableObservable2DArray<String, Transaction>
+    let sections: MutableObservable2DArray<String, TransactionViewModel>
     
     init(viewModel: ViewModel) {
         sections = MutableObservable2DArray()
@@ -42,7 +42,7 @@ final class TransactionListViewModel: NSObject {
             .sorted { $0.0 > $1.0 }
     }
     
-    private func bondSections(transactions: [Transaction]) -> [Observable2DArraySection<String, Transaction>] {
+    private func bondSections(transactions: [Transaction]) -> [Observable2DArraySection<String, TransactionViewModel>] {
         let sortedSections = self.sortedSections(transactions: transactions)
         
         return sortedSections.compactMap {
@@ -53,9 +53,9 @@ final class TransactionListViewModel: NSObject {
             let date = Date(timeIntervalSince1970: timeStamp)
             let dateString = DateFormatter.localizedString(from: date, dateStyle: .long, timeStyle: .none)
             
-            return Observable2DArraySection<String, Transaction>(
+            return Observable2DArraySection<String, TransactionViewModel>(
                 metadata: dateString,
-                items: sortedItems
+                items: sortedItems.map { TransactionViewModel(transaction: $0) }
             )
         }
     }

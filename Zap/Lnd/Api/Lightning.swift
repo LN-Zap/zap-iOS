@@ -50,14 +50,14 @@ final class Lightning {
         rpc?.rpcToGetTransactions(with: GetTransactionsRequest(), handler: result(callback, map: {
             $0.transactionsArray.compactMap {
                 guard let transaction = $0 as? LightningRpc.Transaction else { return nil }
-                return Transaction(transaction: transaction)
+                return BlockchainTransaction(transaction: transaction)
             }
         }))
         .runWithMacaroon()
     }
     
     func subscribeTransactions(callback: @escaping (Result<Transaction>) -> Void) {
-        rpc?.rpcToSubscribeTransactions(with: GetTransactionsRequest(), eventHandler: eventResult(callback, map: { Transaction(transaction: $0) }))
+        rpc?.rpcToSubscribeTransactions(with: GetTransactionsRequest(), eventHandler: eventResult(callback, map: { BlockchainTransaction(transaction: $0) }))
             .runWithMacaroon()
     }
     
@@ -65,7 +65,7 @@ final class Lightning {
         rpc?.rpcToListPayments(with: ListPaymentsRequest(), handler: result(callback, map: {
             $0.paymentsArray.compactMap {
                 guard let payment = $0 as? LightningRpc.Payment else { return nil }
-                return Transaction(payment: payment)
+                return Payment(payment: payment)
             }
         }))
         .runWithMacaroon()
