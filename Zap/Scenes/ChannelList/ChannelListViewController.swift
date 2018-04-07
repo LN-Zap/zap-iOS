@@ -23,6 +23,7 @@ struct ChannelBond: TableViewBond {
 class ChannelListViewController: UIViewController {
     @IBOutlet private weak var tableView: UITableView?
     @IBOutlet private weak var searchBackgroundView: UIView!
+    @IBOutlet private weak var searchBar: UISearchBar!
     
     var viewModel: ViewModel? {
         didSet {
@@ -45,6 +46,8 @@ class ChannelListViewController: UIViewController {
         tableView.refreshControl = UIRefreshControl()
         tableView.refreshControl?.addTarget(self, action: #selector(refresh), for: .valueChanged)
         
+        searchBar.delegate = self
+        searchBar.backgroundImage = UIImage()
         searchBackgroundView.backgroundColor = Color.searchBackground
         
         channelViewModel?.sections
@@ -73,6 +76,17 @@ class ChannelListViewController: UIViewController {
     }
 }
 
+extension ChannelListViewController: UISearchBarDelegate {
+    func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
+        // TODO: search
+        print(searchText)
+    }
+    
+    func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
+        searchBar.resignFirstResponder()
+    }
+}
+
 extension ChannelListViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
         let sectionHeaderView = SectionHeaderView.instanceFromNib
@@ -95,5 +109,9 @@ extension ChannelListViewController: UITableViewDelegate {
         tableView.deselectRow(at: indexPath, animated: true)
         let channel = channelViewModel?.sections.item(at: indexPath)
         performSegue(withIdentifier: "showChannelDetailViewController", sender: channel)
+    }
+    
+    func scrollViewDidScroll(_ scrollView: UIScrollView) {
+        searchBar.resignFirstResponder()
     }
 }

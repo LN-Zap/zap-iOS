@@ -13,5 +13,10 @@ struct Appearance {
         UINavigationBar.appearance().titleTextAttributes = [.font: Font.light]
         UIBarButtonItem.appearance().setTitleTextAttributes([.font: Font.light], for: .normal)
         UIBarButtonItem.appearance().setTitleTextAttributes([.font: Font.light], for: .disabled)
+        
+        // Search Bar Font
+        let searchBarAttributes = [NSAttributedStringKey.font.rawValue: Font.light, NSAttributedStringKey.foregroundColor.rawValue: Color.text]
+        UITextField.appearance(whenContainedInInstancesOf: [UISearchBar.self]).defaultTextAttributes = searchBarAttributes
+        UITextField.appearance().backgroundColor = .clear
     }
 }

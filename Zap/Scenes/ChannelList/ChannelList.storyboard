@@ -214,15 +214,23 @@
                                             <constraint firstAttribute="width" constant="1" id="b3f-XW-oHu"/>
                                         </constraints>
                                     </view>
+                                    <searchBar contentMode="redraw" translatesAutoresizingMaskIntoConstraints="NO" id="8Kj-e6-ZNh">
+                                        <rect key="frame" x="0.0" y="0.0" width="294" height="56"/>
+                                        <textInputTraits key="textInputTraits"/>
+                                    </searchBar>
                                 </subviews>
                                 <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
                                     <constraint firstAttribute="trailing" secondItem="A4p-Og-P8b" secondAttribute="trailing" id="4Rk-hE-uLo"/>
+                                    <constraint firstItem="tjv-go-bow" firstAttribute="leading" secondItem="8Kj-e6-ZNh" secondAttribute="trailing" id="9PA-Er-Prz"/>
                                     <constraint firstAttribute="height" constant="56" id="9wX-0A-EHG"/>
+                                    <constraint firstAttribute="bottom" secondItem="8Kj-e6-ZNh" secondAttribute="bottom" id="Ny4-Bw-4Fc"/>
                                     <constraint firstItem="A4p-Og-P8b" firstAttribute="leading" secondItem="tjv-go-bow" secondAttribute="trailing" id="Tg0-nf-SEC"/>
                                     <constraint firstAttribute="bottom" secondItem="A4p-Og-P8b" secondAttribute="bottom" id="Wez-Zb-0SC"/>
                                     <constraint firstItem="tjv-go-bow" firstAttribute="top" secondItem="LLv-cT-0ck" secondAttribute="top" id="b8b-jb-1Uy"/>
                                     <constraint firstItem="A4p-Og-P8b" firstAttribute="top" secondItem="LLv-cT-0ck" secondAttribute="top" id="dms-aM-Avo"/>
+                                    <constraint firstItem="8Kj-e6-ZNh" firstAttribute="top" secondItem="LLv-cT-0ck" secondAttribute="top" id="h2g-Jd-JWK"/>
+                                    <constraint firstItem="8Kj-e6-ZNh" firstAttribute="leading" secondItem="LLv-cT-0ck" secondAttribute="leading" id="nxt-K6-yvV"/>
                                     <constraint firstAttribute="bottom" secondItem="tjv-go-bow" secondAttribute="bottom" id="vWb-Qz-ZGN"/>
                                 </constraints>
                             </view>
@@ -248,6 +256,7 @@
                     </navigationItem>
                     <connections>
                         <outlet property="searchBackgroundView" destination="LLv-cT-0ck" id="it3-AQ-8JW"/>
+                        <outlet property="searchBar" destination="8Kj-e6-ZNh" id="Re8-4u-JtT"/>
                         <outlet property="tableView" destination="FET-KL-LGb" id="cBM-dk-rOx"/>
                         <segue destination="tOg-JC-iar" kind="presentation" identifier="showChannelDetailViewController" id="Xl6-7N-NrV"/>
                     </connections>
