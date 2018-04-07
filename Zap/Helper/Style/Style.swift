@@ -19,6 +19,13 @@ struct UIViewStyle<T: UIView> {
             styling(view)
         }
     }
+    
+    func apply(to views: T..., action: (T) -> Void) {
+        for view in views {
+            styling(view)
+            action(view)
+        }
+    }
 }
 
 enum Style {

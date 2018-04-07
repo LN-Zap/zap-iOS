@@ -159,6 +159,8 @@
 		AD7746622077C3BF00EC596B /* PaymentDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD7746602077C3BF00EC596B /* PaymentDetailViewController.swift */; };
 		AD7746652077C3D600EC596B /* PaymentDetail.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AD7746642077C3D600EC596B /* PaymentDetail.storyboard */; };
 		AD7746672077C72600EC596B /* TransactionViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD7746662077C72600EC596B /* TransactionViewModel.swift */; };
+		AD77466A2078EA9E00EC596B /* TransactionMetadataStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD7746692078EA9E00EC596B /* TransactionMetadataStore.swift */; };
+		AD77466C2078EE5600EC596B /* TransactionMetadataUpdater.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD77466B2078EE5600EC596B /* TransactionMetadataUpdater.swift */; };
 		E2255ED911EB334C67EC4349 /* Pods_ZapTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 700FBCADDAD580B28F987D98 /* Pods_ZapTests.framework */; };
 /* End PBXBuildFile section */
 
@@ -373,6 +375,8 @@
 		AD7746602077C3BF00EC596B /* PaymentDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaymentDetailViewController.swift; sourceTree = "<group>"; };
 		AD7746642077C3D600EC596B /* PaymentDetail.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = PaymentDetail.storyboard; sourceTree = "<group>"; };
 		AD7746662077C72600EC596B /* TransactionViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransactionViewModel.swift; sourceTree = "<group>"; };
+		AD7746692078EA9E00EC596B /* TransactionMetadataStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransactionMetadataStore.swift; sourceTree = "<group>"; };
+		AD77466B2078EE5600EC596B /* TransactionMetadataUpdater.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransactionMetadataUpdater.swift; sourceTree = "<group>"; };
 		AE22E81B1B7AD6C27F3D49BD /* Pods-Zap.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Zap.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Zap/Pods-Zap.debug.xcconfig"; sourceTree = "<group>"; };
 		CAF208744C2CFC6A493BD8B1 /* Pods_btcutil.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_btcutil.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		DB877056D2A1225EA035E012 /* Pods-Zap.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Zap.release.xcconfig"; path = "Pods/Target Support Files/Pods-Zap/Pods-Zap.release.xcconfig"; sourceTree = "<group>"; };
@@ -723,6 +727,7 @@
 		A0A05A012013CF960007D1C9 /* Zap */ = {
 			isa = PBXGroup;
 			children = (
+				AD7746682078EA6100EC596B /* MemoStore */,
 				A0C2EABA206F8AD2003AE56E /* Money */,
 				A0A05A022013CF960007D1C9 /* AppDelegate.swift */,
 				A0A05A5F2014A10A0007D1C9 /* Extensions */,
@@ -917,6 +922,15 @@
 				AD77465E2077C12200EC596B /* TransactionDetailViewController.swift */,
 			);
 			path = TransactionDetail;
+			sourceTree = "<group>";
+		};
+		AD7746682078EA6100EC596B /* MemoStore */ = {
+			isa = PBXGroup;
+			children = (
+				AD7746692078EA9E00EC596B /* TransactionMetadataStore.swift */,
+				AD77466B2078EE5600EC596B /* TransactionMetadataUpdater.swift */,
+			);
+			path = MemoStore;
 			sourceTree = "<group>";
 		};
 		CEF2960C33901153F2C1FFF4 /* Frameworks */ = {
@@ -1352,6 +1366,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				AD77466C2078EE5600EC596B /* TransactionMetadataUpdater.swift in Sources */,
 				A070D96B202B569E000A8274 /* CreateReceiveViewModel.swift in Sources */,
 				A0A05A302013EFC00007D1C9 /* UIImage.swift in Sources */,
 				AD7746502076165600EC596B /* String+Localizable.swift in Sources */,
@@ -1368,6 +1383,7 @@
 				A0F353CC206923E4005B3639 /* MainViewController.swift in Sources */,
 				A0919151203C249200FA525A /* Font.swift in Sources */,
 				A0A05A4D20147B740007D1C9 /* RootViewController.swift in Sources */,
+				AD77466A2078EA9E00EC596B /* TransactionMetadataStore.swift in Sources */,
 				A0A05A5720149A0D0007D1C9 /* Settings.swift in Sources */,
 				AD77465720765E4D00EC596B /* ChannelViewModel.swift in Sources */,
 				A0D3C98020629B9D0015C5D7 /* Scheduler.swift in Sources */,

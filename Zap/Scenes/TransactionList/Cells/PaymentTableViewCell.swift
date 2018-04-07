@@ -17,7 +17,9 @@ class PaymentTableViewCell: BondTableViewCell {
         didSet {
             guard let payment = payment else { return }
             
-            nameLabel.text = payment.displayText
+            payment.displayText
+                .bind(to: nameLabel.reactive.text)
+                .dispose(in: onReuseBag)
             
             payment.amount
                 .bind(to: amountLabel.reactive.text, currency: Settings.primaryCurrency)
@@ -28,6 +30,8 @@ class PaymentTableViewCell: BondTableViewCell {
     override func awakeFromNib() {
         super.awakeFromNib()
         
-        Style.label.apply(to: amountLabel, nameLabel)
+        Style.label.apply(to: amountLabel, nameLabel) {
+            $0.font = $0.font.withSize(14)
+        }
     }
 }

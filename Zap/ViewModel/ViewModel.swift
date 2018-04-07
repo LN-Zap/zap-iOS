@@ -34,6 +34,8 @@ final class ViewModel {
     let pendingChannels = Observable<[Channel]>([])
     
     let errorMessages = Observable<String?>(nil)
+
+    var transactionMetadataUpdater: TransactionMetadataUpdater?
     
     init(api: Lightning = Lightning()) {
         self.api = api
@@ -43,6 +45,8 @@ final class ViewModel {
         totalBalance = combineLatest(balance, channelBalance) { $0 + $1 }
 
         start()
+        
+        transactionMetadataUpdater = TransactionMetadataUpdater(viewModel: self, transactionMetadataStore: MemoryTransactionMetadataStore.instance)
 //        WalletViewModel().unlock { [weak self] result in
 //            if result.value != nil {
 //                self?.start()
