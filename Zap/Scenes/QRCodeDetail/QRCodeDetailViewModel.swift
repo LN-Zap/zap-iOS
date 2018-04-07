@@ -29,20 +29,20 @@ protocol QRCodeDetailViewModel {
 
 final class DepositViewModel: QRCodeDetailViewModel {
     let title = "scene.deposit.title".localized
-    var address: Observable<Loading<String>>
+    let address: Observable<Loading<String>>
 
     init(viewModel: ViewModel) {
         address = Observable(.loading)
-        viewModel.newAddress { [weak self] result in
-            guard let address = result.value else { return }
-            self?.address.value = .value(address)
+        viewModel.newAddress { [address] result in
+            guard let addressString = result.value else { return }
+            address.value = .value(addressString)
         }
     }
 }
 
 final class ReceiveViewModel: QRCodeDetailViewModel {
     let title = "scene.receive.title".localized
-    var address: Observable<Loading<String>>
+    let address: Observable<Loading<String>>
 
     init(paymentRequest: String) {
         self.address = Observable(.value(paymentRequest))

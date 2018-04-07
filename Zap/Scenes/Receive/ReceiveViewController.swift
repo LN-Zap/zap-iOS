@@ -70,8 +70,8 @@ class ReceiveViewController: ModalViewController {
             .dispose(in: reactive.bag)
         
         memoTextView.reactive.text
-            .observeNext { [weak self] text in
-                self?.createReceiveViewModel?.memo = text
+            .observeNext { [createReceiveViewModel] text in
+                createReceiveViewModel?.memo = text
             }
             .dispose(in: reactive.bag)
         
@@ -80,8 +80,8 @@ class ReceiveViewController: ModalViewController {
     
     private func setupKeyboardNotifications() {
         NotificationCenter.default.reactive.notification(name: .UIKeyboardWillHide)
-            .observeNext { [weak self] _ in
-                if let presetation = self?.navigationController?.presentationController as? ModalPresentationController {
+            .observeNext { [navigationController] _ in
+                if let presetation = navigationController?.presentationController as? ModalPresentationController {
                     let newHeight = UIScreen.main.bounds.height * 0.75
                     let newY = UIScreen.main.bounds.height - newHeight
                     let newWidth = UIScreen.main.bounds.width
@@ -91,12 +91,12 @@ class ReceiveViewController: ModalViewController {
             .dispose(in: reactive.bag)
         
         NotificationCenter.default.reactive.notification(name: .UIKeyboardWillShow)
-            .observeNext { [weak self] notification in
+            .observeNext { [navigationController] notification in
                 guard
                     let keyboardFrame = notification.userInfo?[UIKeyboardFrameEndUserInfoKey] as? CGRect
                     else { return }
                 
-                if let presentation = self?.navigationController?.presentationController as? ModalPresentationController {
+                if let presentation = navigationController?.presentationController as? ModalPresentationController {
                     let newHeight = keyboardFrame.minY
                     let newWidth = UIScreen.main.bounds.width
                     presentation.animateFrame(to: CGRect(x: 0, y: 0, width: newWidth, height: newHeight))
@@ -126,9 +126,9 @@ class ReceiveViewController: ModalViewController {
         } else if let numericKeyPad = segue.destination as? NumericKeyPadViewController {
             
             let numberFormatter = InputNumberFormatter(unit: .bit)
-            numericKeyPad.handler = { [weak self] input in
+            numericKeyPad.handler = { [createReceiveViewModel] input in
                 if let output = numberFormatter.validate(input) {
-                    self?.createReceiveViewModel?.updateAmount(output)
+                    createReceiveViewModel?.updateAmount(output)
                     return true
                 }
                 return false
@@ -140,8 +140,8 @@ class ReceiveViewController: ModalViewController {
 
 extension ReceiveViewController: UITextFieldDelegate {
     private func animateKeypad(hidden: Bool) {
-        UIView.animate(withDuration: 0.5, delay: 0, usingSpringWithDamping: 0.75, initialSpringVelocity: 0.5, options: .curveEaseInOut, animations: { [weak self] in
-            self?.amountInputView.isHidden = hidden
+        UIView.animate(withDuration: 0.5, delay: 0, usingSpringWithDamping: 0.75, initialSpringVelocity: 0.5, options: .curveEaseInOut, animations: { [amountInputView] in
+            amountInputView?.isHidden = hidden
             }, completion: nil)
     }
     

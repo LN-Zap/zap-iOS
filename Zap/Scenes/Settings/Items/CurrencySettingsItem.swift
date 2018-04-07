@@ -44,8 +44,8 @@ final class CurrencySettingsItem: NSObject, SelectableSettingsItem {
         super.init()
         
         Settings.fiatCurrency
-            .observeNext { [weak self] currentCurrency in
-                self?.isSelectedOption.value = currentCurrency.currencyCode == currency.currencyCode
+            .observeNext { [isSelectedOption] currentCurrency in
+                isSelectedOption.value = currentCurrency.currencyCode == currency.currencyCode
             }
             .dispose(in: reactive.bag)
     }

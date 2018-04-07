@@ -28,9 +28,9 @@ class SendLightningInvoiceViewController: UIViewController {
             .dispose(in: reactive.bag)
         
         sendViewModel?.satoshis
-            .observeNext { [weak self] satoshis in
+            .observeNext { [amountLabel] satoshis in
                 guard let satoshis = satoshis else { return }
-                self?.amountLabel.setAmount(satoshis)
+                amountLabel?.setAmount(satoshis)
             }
             .dispose(in: reactive.bag)
     }

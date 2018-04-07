@@ -53,12 +53,12 @@ final class ViewModel {
     }
     
     private func start() {
-        api.walletBalance { [weak self] balance in
-            self?.balance.value = balance.value ?? 0
+        api.walletBalance { [balance] result in
+            balance.value = result.value ?? 0
         }
         
-        api.transactions { [weak self] transactions in
-            self?.onChainTransactions.value = transactions.value ?? []
+        api.transactions { [onChainTransactions] result in
+            onChainTransactions.value = result.value ?? []
         }
         
         updateChannelBalance()
@@ -66,8 +66,8 @@ final class ViewModel {
         updateChannels()
         updatePendingChannels()
         
-        Scheduler.schedule(interval: 10, job: BlockChainHeightJob { [weak self] height in
-            self?.blockChainHeight.value = height
+        Scheduler.schedule(interval: 10, job: BlockChainHeightJob { [blockChainHeight] height in
+            blockChainHeight.value = height
         })
         
         Scheduler.schedule(interval: 1, action: { [weak self] in
@@ -84,26 +84,26 @@ final class ViewModel {
     }
     
     private func updateChannelBalance() {
-        api.channelBalance { [weak self] balance in
-            self?.channelBalance.value = balance.value ?? 0
+        api.channelBalance { [channelBalance] result in
+            channelBalance.value = result.value ?? 0
         }
     }
     
     private func updatePayments() {
-        api.payments { [weak self] payments in
-            self?.payments.value = payments.value ?? []
+        api.payments { [payments] result in
+            payments.value = result.value ?? []
         }
     }
     
     private func updateChannels() {
-        api.channels { [weak self] channels in
-            self?.channels.value = channels.value ?? []
+        api.channels { [channels] result in
+            channels.value = result.value ?? []
         }
     }
     
     private func updatePendingChannels() {
-        api.pendingChannels { [weak self] pendingChannels in
-            self?.pendingChannels.value = pendingChannels.value ?? []
+        api.pendingChannels { [pendingChannels] result in
+            pendingChannels.value = result.value ?? []
         }
     }
     

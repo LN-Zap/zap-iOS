@@ -43,8 +43,8 @@ final class BitcoinUnitSettingsItem: NSObject, SelectableSettingsItem {
         super.init()
         
         Settings.cryptoCurrency
-            .observeNext { [weak self] currentCurrency in
-                self?.isSelectedOption.value = currentCurrency == currency
+            .observeNext { [isSelectedOption] currentCurrency in
+                isSelectedOption.value = currentCurrency == currency
             }
             .dispose(in: reactive.bag)
     }

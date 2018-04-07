@@ -53,10 +53,10 @@ class ModalPresentationController: UIPresentationController {
         size = frame.size
         customFrame = frame
     
-        UIView.animate(withDuration: 0.25, delay: 0, options: .curveEaseOut, animations: { [weak self] in
+        UIView.animate(withDuration: 0.25, delay: 0, options: .curveEaseOut, animations: { [presentedViewController] in
             presentedView.frame = frame
             
-            if let naivgationController = self?.presentedViewController as? UINavigationController {
+            if let naivgationController = presentedViewController as? UINavigationController {
                 naivgationController.setNeedsStatusBarAppearanceUpdate()
                 naivgationController.isNavigationBarHidden = true
                 naivgationController.isNavigationBarHidden = false

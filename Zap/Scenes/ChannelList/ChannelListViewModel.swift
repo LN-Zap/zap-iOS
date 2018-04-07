@@ -18,7 +18,7 @@ final class ChannelListViewModel: NSObject {
         super.init()
         
         combineLatest(viewModel.channels, viewModel.pendingChannels) { return ($0, $1) }
-            .observeNext { [weak self] open, pending in
+            .observeNext { [sections] open, pending in
                 let result = MutableObservable2DArray<String, ChannelViewModel>()
                 
                 if !pending.isEmpty {
@@ -38,7 +38,7 @@ final class ChannelListViewModel: NSObject {
                     )
                 }
                 
-                self?.sections.replace(with: result, performDiff: true)
+                sections.replace(with: result, performDiff: true)
             }
             .dispose(in: reactive.bag)
     }

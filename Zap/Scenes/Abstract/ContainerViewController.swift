@@ -39,8 +39,8 @@ extension ContainerViewController where Self: UIViewController {
                    to: viewController,
                    duration: 0.3,
                    options: [],
-                   animations: { [weak self] in
-                    self?.currentViewController?.view.alpha = 0
+                   animations: { [currentViewController] in
+                    currentViewController.view.alpha = 0
             }, completion: { [weak self] _ in
                 guard let strongSelf = self else { return }
                 strongSelf.currentViewController?.removeFromParentViewController()

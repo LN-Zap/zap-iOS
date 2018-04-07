@@ -22,8 +22,8 @@ class ChannelTableViewCell: BondTableViewCell {
                 .dispose(in: onReuseBag)
             
             channelViewModel.state
-                .observeNext { [weak self] state in
-                    self?.stateLabel.setChannelState(state)
+                .observeNext { [stateLabel] state in
+                    stateLabel?.setChannelState(state)
                 }
                 .dispose(in: onReuseBag)
         }
