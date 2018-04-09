@@ -34,7 +34,7 @@ final class TransactionListViewModel: NSObject {
     
     private func sortedSections(transactions: [Transaction]) -> [(Date, [Transaction])] {
         let grouped = transactions.grouped { transaction -> Date in
-            return self.dateWithoutTime(from: transaction.date)
+            self.dateWithoutTime(from: transaction.date)
         }
         
         return Array(zip(grouped.keys, grouped.values))

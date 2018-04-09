@@ -16,7 +16,7 @@ class PaymentDetailViewController: UIViewController {
         view.backgroundColor = .red
     }
     
-    @IBAction func doneButtonTapped(_ sender: Any) {
+    @IBAction private func doneButtonTapped(_ sender: Any) {
         dismiss(animated: true, completion: nil)
     }
 }

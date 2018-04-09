@@ -80,7 +80,6 @@ extension TransactionListViewController: UITableViewDelegate {
         
         tableView.deselectRow(at: indexPath, animated: true)
         
-        
         let transactionViewModel = transactionListViewModel.sections.item(at: indexPath)
         let viewController: UINavigationController
         if transactionViewModel.isOnChain {

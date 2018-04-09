@@ -32,7 +32,7 @@ class SettingsContainerViewController: UIViewController, ContainerViewController
         setInitialViewController(viewController)
     }
     
-    @IBAction func closeButtonTapped(_ sender: Any) {
+    @IBAction private func closeButtonTapped(_ sender: Any) {
         dismiss(animated: true, completion: nil)
     }
 }
