@@ -34,8 +34,7 @@ final class TransactionListViewModel: NSObject {
     
     private func sortedSections(transactions: [Transaction]) -> [(Date, [Transaction])] {
         let grouped = transactions.grouped { transaction -> Date in
-            let date = Date(timeIntervalSince1970: transaction.timeStamp)
-            return self.dateWithoutTime(from: date)
+            return self.dateWithoutTime(from: transaction.date)
         }
         
         return Array(zip(grouped.keys, grouped.values))
@@ -46,11 +45,10 @@ final class TransactionListViewModel: NSObject {
         let sortedSections = self.sortedSections(transactions: transactions)
         
         return sortedSections.compactMap {
-            let sortedItems = $0.1.sorted { $0.timeStamp > $1.timeStamp }
+            let sortedItems = $0.1.sorted { $0.date > $1.date }
             
-            guard let timeStamp = $0.1.first?.timeStamp else { return nil }
+            guard let date = $0.1.first?.date else { return nil }
             
-            let date = Date(timeIntervalSince1970: timeStamp)
             let dateString = DateFormatter.localizedString(from: date, dateStyle: .long, timeStyle: .none)
             
             return Observable2DArraySection<String, TransactionViewModel>(

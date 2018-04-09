@@ -38,7 +38,7 @@ final class TransactionViewModel {
         
         amount = transaction.amount
         
-        time = DateFormatter.localizedString(from: Date(timeIntervalSince1970: transaction.timeStamp), dateStyle: .none, timeStyle: .short)
+        time = DateFormatter.localizedString(from: transaction.date, dateStyle: .none, timeStyle: .short)
         
         NotificationCenter.default.reactive
             .notification(name: .TransactionMetadataChanged)
