@@ -32,7 +32,7 @@ class SyncViewController: UIViewController {
         }
         
         percentSignal
-            .map { "Syncing \($0 * 100)%" }
+            .map { "Syncing \(Int($0 * 100))%" }
             .bind(to: syncLabel.reactive.text)
             .dispose(in: reactive.bag)
         
