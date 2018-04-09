@@ -21,6 +21,10 @@ class RootViewController: UIViewController, ContainerViewController {
         return mainViewController
     }
     
+    private var setupViewController: UINavigationController {
+        return Storyboard.createWallet.initial(viewController: UINavigationController.self)
+    }
+    
     private var pinViewController: PinViewController {
         return Storyboard.numericKeyPad.initial(viewController: PinViewController.self)
     }
@@ -28,6 +32,6 @@ class RootViewController: UIViewController, ContainerViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        setInitialViewController(mainViewController)
+        setInitialViewController(setupViewController)
     }
 }

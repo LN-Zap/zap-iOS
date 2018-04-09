@@ -1,0 +1,173 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14109" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="9UF-eP-cKp">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--Select Wallet Creation Method View Controller-->
+        <scene sceneID="WC4-Zb-V2Q">
+            <objects>
+                <viewController id="SzU-8w-bgA" customClass="SelectWalletCreationMethodViewController" customModule="Zap" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="ajR-GT-VlI">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="nKd-c6-Daz">
+                                <rect key="frame" x="0.0" y="64" width="375" height="603"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="t5S-vU-rJd">
+                                        <rect key="frame" x="0.0" y="0.0" width="375" height="301.5"/>
+                                        <state key="normal" title="Create New Wallet"/>
+                                        <connections>
+                                            <segue destination="TXY-Ty-gHy" kind="show" id="Be5-3x-iBT"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="JXg-jH-Lv7">
+                                        <rect key="frame" x="0.0" y="301.5" width="375" height="301.5"/>
+                                        <state key="normal" title="Recover Existing Wallet"/>
+                                    </button>
+                                </subviews>
+                            </stackView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="a72-sr-Qg5" firstAttribute="bottom" secondItem="nKd-c6-Daz" secondAttribute="bottom" id="U7k-LW-PWd"/>
+                            <constraint firstItem="a72-sr-Qg5" firstAttribute="trailing" secondItem="nKd-c6-Daz" secondAttribute="trailing" id="kZ3-ai-IUn"/>
+                            <constraint firstItem="nKd-c6-Daz" firstAttribute="leading" secondItem="a72-sr-Qg5" secondAttribute="leading" id="mvk-sN-vTL"/>
+                            <constraint firstItem="nKd-c6-Daz" firstAttribute="top" secondItem="a72-sr-Qg5" secondAttribute="top" id="vTl-g6-6Po"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="a72-sr-Qg5"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="fKO-h2-qyE"/>
+                    <connections>
+                        <outlet property="createWalletButton" destination="t5S-vU-rJd" id="ehu-tm-ip5"/>
+                        <outlet property="recoverWalletButton" destination="JXg-jH-Lv7" id="322-P1-Z3K"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="l6M-Tt-db3" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="852" y="116.49175412293854"/>
+        </scene>
+        <!--Mnemonic View Controller-->
+        <scene sceneID="9Mq-r3-DFP">
+            <objects>
+                <viewController id="TXY-Ty-gHy" customClass="MnemonicViewController" customModule="Zap" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="djB-vy-Fcp">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="GSI-yE-FHq">
+                                <rect key="frame" x="20" y="84" width="335" height="513"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="b1R-ha-hZK">
+                                <rect key="frame" x="20" y="617" width="335" height="30"/>
+                                <state key="normal" title="Button"/>
+                                <connections>
+                                    <segue destination="tpG-El-WpN" kind="show" id="Lfe-VZ-hal"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="GSI-yE-FHq" firstAttribute="top" secondItem="8Ah-Gl-chL" secondAttribute="top" constant="20" id="0tI-K9-Fu7"/>
+                            <constraint firstItem="b1R-ha-hZK" firstAttribute="top" secondItem="GSI-yE-FHq" secondAttribute="bottom" constant="20" id="6Jq-Vq-z1k"/>
+                            <constraint firstItem="8Ah-Gl-chL" firstAttribute="trailing" secondItem="b1R-ha-hZK" secondAttribute="trailing" constant="20" id="CRC-8i-bjp"/>
+                            <constraint firstItem="8Ah-Gl-chL" firstAttribute="trailing" secondItem="GSI-yE-FHq" secondAttribute="trailing" constant="20" id="DlC-kg-bcy"/>
+                            <constraint firstItem="8Ah-Gl-chL" firstAttribute="bottom" secondItem="b1R-ha-hZK" secondAttribute="bottom" constant="20" id="E1X-ep-FmV"/>
+                            <constraint firstItem="GSI-yE-FHq" firstAttribute="leading" secondItem="8Ah-Gl-chL" secondAttribute="leading" constant="20" id="YEn-QU-zac"/>
+                            <constraint firstItem="b1R-ha-hZK" firstAttribute="leading" secondItem="8Ah-Gl-chL" secondAttribute="leading" constant="20" id="hf2-Hg-za2"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="8Ah-Gl-chL"/>
+                    </view>
+                    <connections>
+                        <outlet property="doneButton" destination="b1R-ha-hZK" id="eGq-hx-Ntn"/>
+                        <outlet property="mnemoniceLabel" destination="GSI-yE-FHq" id="VM7-jn-fbu"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="d0Y-3c-fbX" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1710" y="116"/>
+        </scene>
+        <!--Confirm Mnemonic View Controller-->
+        <scene sceneID="0SF-u2-7r0">
+            <objects>
+                <viewController id="tpG-El-WpN" customClass="ConfirmMnemonicViewController" customModule="Zap" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="0gb-af-vDr">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="2qT-er-STI">
+                                <rect key="frame" x="20" y="305.5" width="335" height="120.5"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="K09-7S-uB5">
+                                        <rect key="frame" x="0.0" y="0.0" width="335" height="20.5"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="PsZ-Qv-mS2">
+                                        <rect key="frame" x="0.0" y="40.5" width="335" height="30"/>
+                                        <nil key="textColor"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                        <textInputTraits key="textInputTraits"/>
+                                        <connections>
+                                            <outlet property="delegate" destination="tpG-El-WpN" id="DoG-s6-bJO"/>
+                                        </connections>
+                                    </textField>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="G3x-RZ-YWh">
+                                        <rect key="frame" x="0.0" y="90.5" width="335" height="30"/>
+                                        <state key="normal" title="Button"/>
+                                        <connections>
+                                            <action selector="doneButtonTapped:" destination="tpG-El-WpN" eventType="touchUpInside" id="bZ7-KD-zQE"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                            </stackView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="2qT-er-STI" firstAttribute="centerY" secondItem="sQu-V2-xwj" secondAttribute="centerY" id="HPg-ns-aWy"/>
+                            <constraint firstItem="sQu-V2-xwj" firstAttribute="trailing" secondItem="2qT-er-STI" secondAttribute="trailing" constant="20" id="Hxn-ZZ-5dR"/>
+                            <constraint firstItem="2qT-er-STI" firstAttribute="leading" secondItem="sQu-V2-xwj" secondAttribute="leading" constant="20" id="kQi-Lu-J0O"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="sQu-V2-xwj"/>
+                    </view>
+                    <connections>
+                        <outlet property="doneButton" destination="G3x-RZ-YWh" id="Van-wY-nRZ"/>
+                        <outlet property="mnemonicWordLabel" destination="K09-7S-uB5" id="QPn-sb-gtk"/>
+                        <outlet property="mnemonicWordTextField" destination="PsZ-Qv-mS2" id="nir-N3-wpL"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="a7b-n1-7YM" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2665" y="116"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="1Vm-ym-8u5">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="9UF-eP-cKp" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="bTW-UW-Xht">
+                        <rect key="frame" x="0.0" y="20" width="375" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="SzU-8w-bgA" kind="relationship" relationship="rootViewController" id="7MU-DU-M2Y"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="xRQ-TO-g8U" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-87.200000000000003" y="116.49175412293854"/>
+        </scene>
+    </scenes>
+</document>

@@ -9,6 +9,7 @@ import UIKit
 
 enum Storyboard: String {
     case channelList
+    case createWallet
     case deposit
     case main
     case numericKeyPad

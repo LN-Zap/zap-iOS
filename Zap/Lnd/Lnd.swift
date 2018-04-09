@@ -13,8 +13,8 @@ import Lndbindings
 final class Lnd {
     static let instance = Lnd()
     
-//    private let strategy = LocalConnection()
-    private let strategy = RemoteConnection()
+    private let strategy = LocalConnection()
+//    private let strategy = RemoteConnection()
     
     var lightning: LightningRpc.Lightning?
     var walletUnlocker: LightningRpc.WalletUnlocker?
