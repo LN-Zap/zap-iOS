@@ -17,6 +17,7 @@ enum Storyboard: String {
     case qrCodeScanner = "QRCodeScanner"
     case send
     case settings
+    case sync
     case transactionDetail
     case transactionList
     case withdraw

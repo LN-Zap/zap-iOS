@@ -16,6 +16,7 @@ struct Info {
     let network: Network
     let pubKey: String
     let activeChannelCount: Int
+    let bestHeaderDate: Date
 }
 
 extension Info {
@@ -26,5 +27,6 @@ extension Info {
         network = getInfoResponse.testnet ? .testnet : .mainnet
         pubKey = getInfoResponse.identityPubkey
         activeChannelCount = Int(getInfoResponse.numActiveChannels)
+        bestHeaderDate = Date(timeIntervalSince1970: TimeInterval(getInfoResponse.bestHeaderTimestamp))
     }
 }

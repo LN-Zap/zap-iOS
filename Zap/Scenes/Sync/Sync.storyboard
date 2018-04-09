@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14109" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="qMe-Xi-uzZ">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--Sync View Controller-->
+        <scene sceneID="jO5-fM-adh">
+            <objects>
+                <viewController storyboardIdentifier="SyncViewController" id="qMe-Xi-uzZ" customClass="SyncViewController" customModule="Zap" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="Hcq-Mz-amK">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <progressView opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="750" progress="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="SCa-1d-BZ6">
+                                <rect key="frame" x="36" y="336.5" width="303" height="2"/>
+                            </progressView>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="pin-logo" translatesAutoresizingMaskIntoConstraints="NO" id="vjP-ZI-WSV">
+                                <rect key="frame" x="168.5" y="140" width="38" height="36"/>
+                            </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="u84-OV-yt2">
+                                <rect key="frame" x="166.5" y="296" width="42" height="20.5"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Lrl-O5-tIv">
+                                <rect key="frame" x="164" y="384" width="42" height="20.5"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="vjP-ZI-WSV" firstAttribute="top" secondItem="pFh-z5-n7c" secondAttribute="top" constant="120" id="1IR-Bf-mh8"/>
+                            <constraint firstItem="Lrl-O5-tIv" firstAttribute="top" secondItem="SCa-1d-BZ6" secondAttribute="bottom" constant="20" id="6Jn-Xv-zVy"/>
+                            <constraint firstItem="u84-OV-yt2" firstAttribute="top" secondItem="vjP-ZI-WSV" secondAttribute="bottom" constant="120" id="BAz-qd-xc5"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="SCa-1d-BZ6" secondAttribute="trailing" constant="20" id="KKr-tK-fdH"/>
+                            <constraint firstItem="SCa-1d-BZ6" firstAttribute="top" secondItem="u84-OV-yt2" secondAttribute="bottom" constant="20" id="OHz-GM-YFI"/>
+                            <constraint firstItem="Lrl-O5-tIv" firstAttribute="centerX" secondItem="pFh-z5-n7c" secondAttribute="centerX" id="TAa-mE-bok"/>
+                            <constraint firstItem="u84-OV-yt2" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="pFh-z5-n7c" secondAttribute="leading" constant="20" id="kf0-UT-7Bw"/>
+                            <constraint firstItem="SCa-1d-BZ6" firstAttribute="leading" secondItem="Hcq-Mz-amK" secondAttribute="leadingMargin" constant="20" id="nO8-CF-GwS"/>
+                            <constraint firstItem="Lrl-O5-tIv" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="pFh-z5-n7c" secondAttribute="leading" constant="20" id="uDA-QU-h0c"/>
+                            <constraint firstItem="u84-OV-yt2" firstAttribute="centerX" secondItem="pFh-z5-n7c" secondAttribute="centerX" id="vxp-5i-M6w"/>
+                            <constraint firstItem="vjP-ZI-WSV" firstAttribute="centerX" secondItem="pFh-z5-n7c" secondAttribute="centerX" id="xTo-XJ-vo2"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="pFh-z5-n7c"/>
+                    </view>
+                    <connections>
+                        <outlet property="dateLabel" destination="Lrl-O5-tIv" id="Iy1-y8-Da9"/>
+                        <outlet property="progressBar" destination="SCa-1d-BZ6" id="uda-cc-wEP"/>
+                        <outlet property="syncLabel" destination="u84-OV-yt2" id="uKm-0f-jSS"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Vh3-Ig-1oX" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="108" y="130.88455772113943"/>
+        </scene>
+    </scenes>
+    <resources>
+        <image name="pin-logo" width="38" height="36"/>
+    </resources>
+</document>

@@ -14,6 +14,7 @@ final class ViewModel {
     private let api: Lightning
     
     // Info
+    let bestHeaderDate = Observable<Date?>(nil)
     let blockChainHeight = Observable<Int?>(nil)
     let blockHeight = Observable(0)
     let isSyncedToChain = Observable(false)
@@ -83,6 +84,7 @@ final class ViewModel {
                 self?.blockHeight.value = info.blockHeight
                 self?.isSyncedToChain.value = info.isSyncedToChain
                 self?.alias.value = info.alias
+                self?.bestHeaderDate.value = info.bestHeaderDate
             }
         })
     }

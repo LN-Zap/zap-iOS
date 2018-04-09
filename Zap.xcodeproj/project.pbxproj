@@ -164,6 +164,8 @@
 		ADCE01BF207B59BD00CA72E8 /* ConfirmMnemonicViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADCE01BE207B59BD00CA72E8 /* ConfirmMnemonicViewController.swift */; };
 		ADCE01C1207B5C0300CA72E8 /* MnemonicViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADCE01C0207B5C0300CA72E8 /* MnemonicViewModel.swift */; };
 		ADCE01C3207B66A500CA72E8 /* ConfirmMnemonicViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADCE01C2207B66A500CA72E8 /* ConfirmMnemonicViewModel.swift */; };
+		ADCE01C6207B71FC00CA72E8 /* Sync.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = ADCE01C5207B71FC00CA72E8 /* Sync.storyboard */; };
+		ADCE01C8207B720800CA72E8 /* SyncViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADCE01C7207B720800CA72E8 /* SyncViewController.swift */; };
 		E2255ED911EB334C67EC4349 /* Pods_ZapTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 700FBCADDAD580B28F987D98 /* Pods_ZapTests.framework */; };
 /* End PBXBuildFile section */
 
@@ -383,6 +385,8 @@
 		ADCE01BE207B59BD00CA72E8 /* ConfirmMnemonicViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConfirmMnemonicViewController.swift; sourceTree = "<group>"; };
 		ADCE01C0207B5C0300CA72E8 /* MnemonicViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MnemonicViewModel.swift; sourceTree = "<group>"; };
 		ADCE01C2207B66A500CA72E8 /* ConfirmMnemonicViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConfirmMnemonicViewModel.swift; sourceTree = "<group>"; };
+		ADCE01C5207B71FC00CA72E8 /* Sync.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Sync.storyboard; sourceTree = "<group>"; };
+		ADCE01C7207B720800CA72E8 /* SyncViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SyncViewController.swift; sourceTree = "<group>"; };
 		AE22E81B1B7AD6C27F3D49BD /* Pods-Zap.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Zap.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Zap/Pods-Zap.debug.xcconfig"; sourceTree = "<group>"; };
 		CAF208744C2CFC6A493BD8B1 /* Pods_btcutil.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_btcutil.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		DB877056D2A1225EA035E012 /* Pods-Zap.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Zap.release.xcconfig"; path = "Pods/Target Support Files/Pods-Zap/Pods-Zap.release.xcconfig"; sourceTree = "<group>"; };
@@ -491,10 +495,10 @@
 		A01009322014BD960001EF94 /* Scenes */ = {
 			isa = PBXGroup;
 			children = (
-				ADCE01B9207B57DA00CA72E8 /* CreateWallet */,
 				A01009532015FA330001EF94 /* Abstract */,
 				A02C9FBE202EFFEF009821B1 /* ChannelDetail */,
 				A0DDC0702018C6D800AEFF94 /* ChannelList */,
+				ADCE01B9207B57DA00CA72E8 /* CreateWallet */,
 				A0F353CA206923D7005B3639 /* Main */,
 				A0376B73201CD60F00F1FBEF /* NumericKeyPad */,
 				A02C9FBB202EE995009821B1 /* OpenChannel */,
@@ -503,6 +507,7 @@
 				A0DDC0722018C72D00AEFF94 /* Root */,
 				A03F035E2028C71400F32279 /* Send */,
 				A0DDC06320189CCC00AEFF94 /* Settings */,
+				ADCE01C4207B714E00CA72E8 /* Sync */,
 				AD77465B2077C0FA00EC596B /* TransactionDetail */,
 				A0DDC0732018C74F00AEFF94 /* TransactionList */,
 			);
@@ -942,6 +947,15 @@
 			path = CreateWallet;
 			sourceTree = "<group>";
 		};
+		ADCE01C4207B714E00CA72E8 /* Sync */ = {
+			isa = PBXGroup;
+			children = (
+				ADCE01C5207B71FC00CA72E8 /* Sync.storyboard */,
+				ADCE01C7207B720800CA72E8 /* SyncViewController.swift */,
+			);
+			path = Sync;
+			sourceTree = "<group>";
+		};
 		CEF2960C33901153F2C1FFF4 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
@@ -1145,6 +1159,7 @@
 				A0605F88202C963800EA903C /* SectionHeaderView.xib in Resources */,
 				A024B85720161586002B8897 /* Send.storyboard in Resources */,
 				A024B85120160F93002B8897 /* ChannelTableViewCell.xib in Resources */,
+				ADCE01C6207B71FC00CA72E8 /* Sync.storyboard in Resources */,
 				A01009502015F99F0001EF94 /* ChannelList.storyboard in Resources */,
 				A024B85920161590002B8897 /* Receive.storyboard in Resources */,
 			);
@@ -1406,6 +1421,7 @@
 				A0BD44DF206FED1400BF27A3 /* BondTableViewCell.swift in Sources */,
 				A070D966202B39A3000A8274 /* QRCodeDetailViewModel.swift in Sources */,
 				AD7746592076609400EC596B /* NodeInfo.swift in Sources */,
+				ADCE01C8207B720800CA72E8 /* SyncViewController.swift in Sources */,
 				A0F353D020692570005B3639 /* GradientView.swift in Sources */,
 				A0C2EABB206F8B02003AE56E /* FiatCurrency.swift in Sources */,
 				AD77464E2076162300EC596B /* Network+Localizable.swift in Sources */,
