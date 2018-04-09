@@ -24,6 +24,12 @@ public enum AddressType {
     }
     
     private func isLightningInvoice(_ string: String, network: Network) -> Bool {
+        var string = string
+        let prefix = "lightning:"
+        if string.starts(with: prefix) {
+            string = String(string.dropFirst(prefix.count))
+        }
+        
         return Bolt11.isValid(string, network: network)
     }
     

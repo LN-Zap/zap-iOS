@@ -54,9 +54,10 @@ extension QRCodeScannerView: AVCaptureMetadataOutputObjectsDelegate {
             let code = metadataObj.stringValue,
             let addressTypes = addressTypes
             else { return }
-            
+        
         for addressType in addressTypes where addressType.isValidAddress(code, network: Settings.network) {
             handler?(addressType, code)
+            captureSession.stopRunning()
             return
         }
     }

@@ -157,7 +157,7 @@
                                                 <rect key="frame" x="0.0" y="0.0" width="375" height="97"/>
                                                 <state key="normal" title="Send"/>
                                                 <connections>
-                                                    <action selector="sendButtonTapped:" destination="Kuo-Ik-Jbr" eventType="touchUpInside" id="bpu-QI-OVZ"/>
+                                                    <action selector="sendButtonTapped:" destination="GP5-eW-YOL" eventType="touchUpInside" id="KqB-IF-tdf"/>
                                                 </connections>
                                             </button>
                                         </subviews>
