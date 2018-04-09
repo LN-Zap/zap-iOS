@@ -12,7 +12,7 @@ final class MnemonicViewController: UIViewController {
     @IBOutlet private weak var mnemoniceLabel: UILabel!
     @IBOutlet private weak var doneButton: UIButton!
 
-    private let mnemonicViewModel = MnemonicViewModel()
+    var mnemonicViewModel: MnemonicViewModel?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -26,7 +26,7 @@ final class MnemonicViewController: UIViewController {
         
         doneButton.setTitle("done", for: .normal)
         
-        mnemonicViewModel.wordList
+        mnemonicViewModel?.wordList
             .map { $0.enumerated().map({ "\($0 + 1)\t\($1)" }).joined(separator: "\n") }
             .bind(to: mnemoniceLabel.reactive.text)
             .dispose(in: reactive.bag)
@@ -34,7 +34,7 @@ final class MnemonicViewController: UIViewController {
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if let destination = segue.destination as? ConfirmMnemonicViewController {
-            destination.confirmViewModel = mnemonicViewModel.confirmMnemonicViewModel
+            destination.confirmViewModel = mnemonicViewModel?.confirmMnemonicViewModel
         }
     }
 }

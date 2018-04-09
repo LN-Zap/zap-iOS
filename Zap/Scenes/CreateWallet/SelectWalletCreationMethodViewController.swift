@@ -12,6 +12,8 @@ class SelectWalletCreationMethodViewController: UIViewController {
     @IBOutlet private weak var createWalletButton: UIButton!
     @IBOutlet private weak var recoverWalletButton: UIButton!
     
+    var viewModel: ViewModel?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -21,5 +23,13 @@ class SelectWalletCreationMethodViewController: UIViewController {
         
         createWalletButton.setTitle("new wallet", for: .normal)
         recoverWalletButton.setTitle("recover wallet", for: .normal)
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        guard
+            let viewModel = viewModel,
+            let destination = segue.destination as? MnemonicViewController
+            else { return }
+        destination.mnemonicViewModel = MnemonicViewModel(viewModel: viewModel)
     }
 }

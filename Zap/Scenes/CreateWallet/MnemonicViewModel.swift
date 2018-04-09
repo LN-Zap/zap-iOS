@@ -36,16 +36,17 @@ struct Aezeed {
 }
 
 final class MnemonicViewModel {
-    
     private let aezeed = Aezeed()
+    private let viewModel: ViewModel
     
     let wordList: Observable<[String]>
     
     var confirmMnemonicViewModel: ConfirmMnemonicViewModel {
-        return ConfirmMnemonicViewModel(aezeed: aezeed)
+        return ConfirmMnemonicViewModel(aezeed: aezeed, viewModel: viewModel)
     }
     
-    init() {
+    init(viewModel: ViewModel) {
+        self.viewModel = viewModel
         wordList = Observable<[String]>(aezeed.wordList)
     }
 }

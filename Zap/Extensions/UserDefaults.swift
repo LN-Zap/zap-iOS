@@ -12,6 +12,7 @@ extension UserDefaults {
         static let network = DefaultKey<String>("network")
         static let currency = DefaultKey<String>("currency")
         static let mnemonic = DefaultKey<[String]>("mnemonic")
+        static let didCreateWallet = DefaultKey<Bool>("didCreateWallet")
     }
 }
 

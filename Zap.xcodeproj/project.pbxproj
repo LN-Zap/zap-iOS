@@ -166,6 +166,7 @@
 		ADCE01C3207B66A500CA72E8 /* ConfirmMnemonicViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADCE01C2207B66A500CA72E8 /* ConfirmMnemonicViewModel.swift */; };
 		ADCE01C6207B71FC00CA72E8 /* Sync.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = ADCE01C5207B71FC00CA72E8 /* Sync.storyboard */; };
 		ADCE01C8207B720800CA72E8 /* SyncViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADCE01C7207B720800CA72E8 /* SyncViewController.swift */; };
+		ADCE01CC207B967200CA72E8 /* Loading.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = ADCE01CB207B967200CA72E8 /* Loading.storyboard */; };
 		E2255ED911EB334C67EC4349 /* Pods_ZapTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 700FBCADDAD580B28F987D98 /* Pods_ZapTests.framework */; };
 /* End PBXBuildFile section */
 
@@ -387,6 +388,7 @@
 		ADCE01C2207B66A500CA72E8 /* ConfirmMnemonicViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConfirmMnemonicViewModel.swift; sourceTree = "<group>"; };
 		ADCE01C5207B71FC00CA72E8 /* Sync.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Sync.storyboard; sourceTree = "<group>"; };
 		ADCE01C7207B720800CA72E8 /* SyncViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SyncViewController.swift; sourceTree = "<group>"; };
+		ADCE01CB207B967200CA72E8 /* Loading.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Loading.storyboard; sourceTree = "<group>"; };
 		AE22E81B1B7AD6C27F3D49BD /* Pods-Zap.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Zap.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Zap/Pods-Zap.debug.xcconfig"; sourceTree = "<group>"; };
 		CAF208744C2CFC6A493BD8B1 /* Pods_btcutil.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_btcutil.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		DB877056D2A1225EA035E012 /* Pods-Zap.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Zap.release.xcconfig"; path = "Pods/Target Support Files/Pods-Zap/Pods-Zap.release.xcconfig"; sourceTree = "<group>"; };
@@ -495,6 +497,7 @@
 		A01009322014BD960001EF94 /* Scenes */ = {
 			isa = PBXGroup;
 			children = (
+				ADCE01CA207B966200CA72E8 /* Loading */,
 				A01009532015FA330001EF94 /* Abstract */,
 				A02C9FBE202EFFEF009821B1 /* ChannelDetail */,
 				A0DDC0702018C6D800AEFF94 /* ChannelList */,
@@ -956,6 +959,14 @@
 			path = Sync;
 			sourceTree = "<group>";
 		};
+		ADCE01CA207B966200CA72E8 /* Loading */ = {
+			isa = PBXGroup;
+			children = (
+				ADCE01CB207B967200CA72E8 /* Loading.storyboard */,
+			);
+			path = Loading;
+			sourceTree = "<group>";
+		};
 		CEF2960C33901153F2C1FFF4 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
@@ -1150,6 +1161,7 @@
 				A0376B75201CD61B00F1FBEF /* NumericKeyPad.storyboard in Resources */,
 				A01009462014DCB40001EF94 /* Withdraw.storyboard in Resources */,
 				A0DDC05C201883D800AEFF94 /* TransactionList.storyboard in Resources */,
+				ADCE01CC207B967200CA72E8 /* Loading.storyboard in Resources */,
 				A0F353CE20692415005B3639 /* Main.storyboard in Resources */,
 				AD77465D2077C11200EC596B /* TransactionDetail.storyboard in Resources */,
 				AD77464220750D7700EC596B /* Settings.storyboard in Resources */,

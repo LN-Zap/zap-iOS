@@ -9,15 +9,16 @@ import Bond
 import Foundation
 
 final class ConfirmMnemonicViewModel {
+    private let viewModel: ViewModel
     private let indices: [Int]
     private let aezeed: Aezeed
     private var currentIndex = 0
     
     let wordLabel = Observable<String>("")
-    let checkCompleted = Observable(false)
     
-    init(aezeed: Aezeed) {
+    init(aezeed: Aezeed, viewModel: ViewModel) {
         self.aezeed = aezeed
+        self.viewModel = viewModel
         
         var randomIndices = [Int]()
         while randomIndices.count < 3 {
@@ -35,6 +36,11 @@ final class ConfirmMnemonicViewModel {
         wordLabel.value = "Word #\(indices[currentIndex] + 1)"
     }
     
+    private func didVerifyMnemonic() {
+        ViewModel.didCreateWallet = true
+        viewModel.walletState.value = viewModel.isSyncedToChain.value ? .wallet : .sync
+    }
+    
     func check(mnemonic: String) -> Bool {
         guard
             currentIndex < indices.count,
@@ -45,7 +51,7 @@ final class ConfirmMnemonicViewModel {
         if currentIndex < indices.count {
             updateWord()
         } else {
-            checkCompleted.value = true
+            didVerifyMnemonic()
         }
         
         return true

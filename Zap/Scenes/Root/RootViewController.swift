@@ -22,13 +22,21 @@ class RootViewController: UIViewController, ContainerViewController {
     }
     
     private var setupViewController: UINavigationController {
-        return Storyboard.createWallet.initial(viewController: UINavigationController.self)
+        let navigationController = Storyboard.createWallet.initial(viewController: UINavigationController.self)
+        if let setupWalletViewController = navigationController.topViewController as? SelectWalletCreationMethodViewController {
+            setupWalletViewController.viewModel = viewModel
+        }
+        return navigationController
     }
     
     private var syncViewController: SyncViewController {
         let syncViewController = Storyboard.sync.initial(viewController: SyncViewController.self)
         syncViewController.viewModel = viewModel
         return syncViewController
+    }
+    
+    private var loadingViewController: UIViewController {
+        return Storyboard.loading.initial()
     }
     
     private var pinViewController: PinViewController {
@@ -38,6 +46,28 @@ class RootViewController: UIViewController, ContainerViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        setInitialViewController(syncViewController)
+        setInitialViewController(loadingViewController)
+        
+        viewModel.walletState
+            .distinct()
+            .observeNext { [weak self] state in
+                var viewController: UIViewController?
+                
+                switch state {
+                case .connect:
+                    viewController = self?.loadingViewController
+                case .create:
+                    viewController = self?.setupViewController
+                case .sync:
+                    viewController = self?.syncViewController
+                case .wallet:
+                    viewController = self?.mainViewController
+                }
+                
+                if let viewController = viewController {
+                    self?.switchToViewController(viewController)
+                }
+            }
+            .dispose(in: reactive.bag)
     }
 }

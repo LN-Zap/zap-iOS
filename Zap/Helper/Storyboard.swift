@@ -11,6 +11,7 @@ enum Storyboard: String {
     case channelList
     case createWallet
     case deposit
+    case loading
     case main
     case numericKeyPad
     case paymentDetail

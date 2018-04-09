@@ -35,11 +35,6 @@ class ConfirmMnemonicViewController: UIViewController {
         confirmViewModel?.wordLabel
             .bind(to: mnemonicWordLabel.reactive.text)
             .dispose(in: reactive.bag)
-        
-        confirmViewModel?.checkCompleted
-            .filter { $0 }
-            .observeNext { _ in print("DONE") }
-            .dispose(in: reactive.bag)
     }
     
     @IBAction private func doneButtonTapped(_ sender: Any) {

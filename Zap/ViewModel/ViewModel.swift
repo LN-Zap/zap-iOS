@@ -10,15 +10,23 @@ import BTCUtil
 import Foundation
 import ReactiveKit
 
+enum WalletState {
+    case connect
+    case create
+    case sync
+    case wallet
+}
+
 final class ViewModel {
     private let api: Lightning
+    
+    let walletState: Observable<WalletState>
     
     // Info
     let bestHeaderDate = Observable<Date?>(nil)
     let blockChainHeight = Observable<Int?>(nil)
     let blockHeight = Observable(0)
     let isSyncedToChain = Observable(false)
-    let isConnected = Observable(false)
     let alias = Observable<String?>(nil)
     
     // Balances
@@ -38,8 +46,23 @@ final class ViewModel {
 
     var transactionMetadataUpdater: TransactionMetadataUpdater?
     
+    static var didCreateWallet: Bool {
+        get {
+            return UserDefaults.Keys.didCreateWallet.get(defaultValue: false)
+        }
+        set {
+            UserDefaults.Keys.didCreateWallet.set(newValue)
+        }
+    }
+    
     init(api: Lightning = Lightning()) {
         self.api = api
+        
+        if ViewModel.didCreateWallet {
+            walletState = Observable(.connect)
+        } else {
+            walletState = Observable(.create)
+        }
         
         Lnd.instance.startLnd()
 
@@ -48,6 +71,7 @@ final class ViewModel {
         start()
         
         transactionMetadataUpdater = TransactionMetadataUpdater(viewModel: self, transactionMetadataStore: MemoryTransactionMetadataStore.instance)
+        
 //        WalletViewModel().unlock { [weak self] result in
 //            if result.value != nil {
 //                self?.start()
@@ -75,18 +99,28 @@ final class ViewModel {
             blockChainHeight.value = height
         })
         
-        Scheduler.schedule(interval: 1, action: { [weak self] in
-            //            self.updateChannels()
-            
-            self?.api.info { result in
-                guard let info = result.value else { return }
-                self?.isConnected.value = true
-                self?.blockHeight.value = info.blockHeight
-                self?.isSyncedToChain.value = info.isSyncedToChain
-                self?.alias.value = info.alias
-                self?.bestHeaderDate.value = info.bestHeaderDate
-            }
+        Scheduler.schedule(interval: 1, action: { [api, updateInfo] in
+            api.info(callback: updateInfo)
         })
+    }
+    
+    private func updateInfo(result: Result<Info>) {
+        if let info = result.value {
+            if !ViewModel.didCreateWallet {
+                walletState.value = .create
+            } else if !info.isSyncedToChain {
+                walletState.value = .sync
+            } else {
+                walletState.value = .wallet
+            }
+            
+            blockHeight.value = info.blockHeight
+            isSyncedToChain.value = info.isSyncedToChain
+            alias.value = info.alias
+            bestHeaderDate.value = info.bestHeaderDate
+        } else {
+            walletState.value = ViewModel.didCreateWallet ? .connect : .create
+        }
     }
     
     private func updateChannelBalance() {
