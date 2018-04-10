@@ -20,29 +20,8 @@
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Boy-sC-5iG">
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="225"/>
-                                <subviews>
-                                    <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="z5O-fj-sFc">
-                                        <rect key="frame" x="0.0" y="161" width="375" height="64"/>
-                                        <subviews>
-                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ag8-3b-F8w">
-                                                <rect key="frame" x="0.0" y="0.0" width="187.5" height="64"/>
-                                                <state key="normal" title="Deposit" image="settings-arrow-down"/>
-                                            </button>
-                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="tLn-dN-F0o">
-                                                <rect key="frame" x="187.5" y="0.0" width="187.5" height="64"/>
-                                                <state key="normal" title="Withdraw" image="settings-arrow-up"/>
-                                            </button>
-                                        </subviews>
-                                        <constraints>
-                                            <constraint firstAttribute="height" constant="64" id="SAh-mh-ESn"/>
-                                        </constraints>
-                                    </stackView>
-                                </subviews>
                                 <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
-                                    <constraint firstAttribute="bottom" secondItem="z5O-fj-sFc" secondAttribute="bottom" id="R7a-DE-hLI"/>
-                                    <constraint firstItem="z5O-fj-sFc" firstAttribute="leading" secondItem="Boy-sC-5iG" secondAttribute="leading" id="gup-BQ-MVG"/>
-                                    <constraint firstAttribute="trailing" secondItem="z5O-fj-sFc" secondAttribute="trailing" id="mQx-MB-EBv"/>
                                     <constraint firstAttribute="height" constant="225" id="quz-3n-4ia"/>
                                 </constraints>
                             </view>
@@ -71,9 +50,7 @@
                     </navigationItem>
                     <connections>
                         <outlet property="container" destination="qgH-DM-93y" id="syo-Cm-ne6"/>
-                        <outlet property="depositButton" destination="ag8-3b-F8w" id="ADg-IX-PYw"/>
                         <outlet property="headerBackground" destination="Boy-sC-5iG" id="w6s-iN-LLa"/>
-                        <outlet property="withdrawButton" destination="tLn-dN-F0o" id="DTD-zt-YaP"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ejj-eA-tWv" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -99,8 +76,4 @@
             <point key="canvasLocation" x="-74.400000000000006" y="166.8665667166417"/>
         </scene>
     </scenes>
-    <resources>
-        <image name="settings-arrow-down" width="13" height="13"/>
-        <image name="settings-arrow-up" width="13" height="13"/>
-    </resources>
 </document>

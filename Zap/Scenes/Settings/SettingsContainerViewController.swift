@@ -9,8 +9,6 @@ import UIKit
 
 class SettingsContainerViewController: UIViewController, ContainerViewController {
     @IBOutlet private weak var headerBackground: UIView!
-    @IBOutlet private weak var depositButton: UIButton!
-    @IBOutlet private weak var withdrawButton: UIButton!
     
     // swiftlint:disable:next private_outlet
     @IBOutlet weak var container: UIView?
@@ -23,8 +21,6 @@ class SettingsContainerViewController: UIViewController, ContainerViewController
         navigationController?.navigationBar.shadowImage = UIImage()
         navigationController?.navigationBar.isTranslucent = true
         navigationController?.view.backgroundColor = .clear
-
-        Style.button.apply(to: depositButton, withdrawButton)
         
         headerBackground.backgroundColor = Color.darkBackground
         
