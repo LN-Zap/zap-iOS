@@ -30,7 +30,7 @@
 "scene.settings.section.wallet" = "Wallet";
 "scene.deposit.send" = "Send";
 "scene.deposit.title" = "Deposit";
-"scene.receive.title" = "Request";
+"scene.request.title" = "Request";
 "scene.withdraw.title" = "Withdraw";
 "scene.channels.title" = "Channels";
 "scene.channels.section_header.pending" = "Pending";

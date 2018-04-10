@@ -24,7 +24,7 @@ final class MainViewController: UIViewController, ContainerViewController {
     @IBOutlet private weak var networkButton: UIButton!
     
     @IBOutlet private weak var sendButton: UIButton!
-    @IBOutlet private weak var receiveButton: UIButton!
+    @IBOutlet private weak var requestButton: UIButton!
     
     // ContainerViewController Protocol
     // swiftlint:disable:next private_outlet
@@ -60,9 +60,9 @@ final class MainViewController: UIViewController, ContainerViewController {
         networkButton.titleEdgeInsets = UIEdgeInsets(top: 0, left: 10, bottom: 0, right: 0)
         networkButton.tintColor = .white
         
-        Style.button.apply(to: sendButton, receiveButton)
+        Style.button.apply(to: sendButton, requestButton)
         sendButton.tintColor = .white
-        receiveButton.tintColor = .white
+        requestButton.tintColor = .white
         
         Style.label.apply(to: aliasLabel, balanceLabel, fiatBalanceLabel)
         aliasLabel.textColor = .white
@@ -112,8 +112,8 @@ final class MainViewController: UIViewController, ContainerViewController {
         
         if let sendViewController = navigationController.topViewController as? SendViewController {
             sendViewController.viewModel = viewModel
-        } else if let receiveContainerViewController = navigationController.topViewController as? ReceiveContainerViewController {
-            receiveContainerViewController.viewModel = viewModel
+        } else if let requestContainerViewController = navigationController.topViewController as? RequestContainerViewController {
+            requestContainerViewController.viewModel = viewModel
         }
     }
     

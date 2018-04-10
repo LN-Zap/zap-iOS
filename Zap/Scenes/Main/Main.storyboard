@@ -41,7 +41,7 @@
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Zaa-3u-HIJ">
                                                 <rect key="frame" x="187.5" y="0.0" width="187.5" height="97"/>
-                                                <state key="normal" title="Receive"/>
+                                                <state key="normal" title="Request"/>
                                                 <connections>
                                                     <segue destination="pa3-un-XO8" kind="presentation" id="gId-8d-4bM"/>
                                                 </connections>
@@ -193,7 +193,7 @@
                         <outlet property="expandHeaderButton" destination="PDx-vL-wHh" id="5wc-9B-p3b"/>
                         <outlet property="fiatBalanceLabel" destination="F9v-X3-yx4" id="fe4-fN-i1I"/>
                         <outlet property="networkButton" destination="8Eo-BE-XE2" id="prj-ia-m8C"/>
-                        <outlet property="receiveButton" destination="Zaa-3u-HIJ" id="K4u-gi-lAy"/>
+                        <outlet property="requestButton" destination="Zaa-3u-HIJ" id="sT5-BA-XTz"/>
                         <outlet property="segmentedControlView" destination="IfS-hp-9Gi" id="k3P-uO-a2J"/>
                         <outlet property="sendButton" destination="Gty-6B-9yc" id="9hu-ht-FNb"/>
                         <outlet property="transactionsButton" destination="6XJ-ho-YDb" id="DcC-Gi-o0z"/>
@@ -211,10 +211,10 @@
             </objects>
             <point key="canvasLocation" x="-71" y="725"/>
         </scene>
-        <!--Receive-->
+        <!--Request-->
         <scene sceneID="wH1-a8-Mpt">
             <objects>
-                <viewControllerPlaceholder storyboardName="Receive" id="pa3-un-XO8" sceneMemberID="viewController"/>
+                <viewControllerPlaceholder storyboardName="Request" id="pa3-un-XO8" sceneMemberID="viewController"/>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="VgL-1t-U1i" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="265" y="725"/>

@@ -9,7 +9,7 @@ import Bond
 import BTCUtil
 import Foundation
 
-final class CreateReceiveViewModel {
+final class LightningRequestViewModel {
     private let maxPaymentAllowed: Satoshi = 4294967
     private let viewModel: ViewModel
     

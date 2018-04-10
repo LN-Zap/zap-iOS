@@ -27,7 +27,7 @@ protocol QRCodeDetailViewModel {
     var address: Observable<Loading<String>> { get }
 }
 
-final class DepositViewModel: QRCodeDetailViewModel {
+final class OnChainRequestQRCodeViewModel: QRCodeDetailViewModel {
     let title = "scene.deposit.title".localized
     let address: Observable<Loading<String>>
 
@@ -40,8 +40,8 @@ final class DepositViewModel: QRCodeDetailViewModel {
     }
 }
 
-final class ReceiveViewModel: QRCodeDetailViewModel {
-    let title = "scene.receive.title".localized
+final class LightningRequestQRCodeViewModel: QRCodeDetailViewModel {
+    let title = "scene.request.title".localized
     let address: Observable<Loading<String>>
 
     init(paymentRequest: String) {

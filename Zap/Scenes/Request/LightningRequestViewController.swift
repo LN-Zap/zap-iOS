@@ -7,7 +7,7 @@
 
 import UIKit
 
-class ReceiveViewController: ModalViewController {
+class LightningRequestViewController: ModalViewController {
     @IBOutlet private weak var amountTextField: UITextField!
     @IBOutlet private weak var placeholderTextView: UITextView!
     @IBOutlet private weak var memoTextView: UITextView!
@@ -16,12 +16,12 @@ class ReceiveViewController: ModalViewController {
     @IBOutlet private weak var swapCurrencyButton: UIButton!
     @IBOutlet private weak var downArrowImageView: UIImageView!
     
-    var createReceiveViewModel: CreateReceiveViewModel?
+    var lightningRequestViewModel: LightningRequestViewModel?
     
     override func viewDidLoad() {
         super.viewDidLoad()
     
-        title = "scene.receive.title".localized
+        title = "scene.request.title".localized
         
         amountTextField.textColor = Color.text
         amountTextField.font = Font.light.withSize(36)
@@ -50,11 +50,11 @@ class ReceiveViewController: ModalViewController {
             .bind(to: swapCurrencyButton.reactive.title )
             .dispose(in: reactive.bag)
         
-        createReceiveViewModel?.amountString
+        lightningRequestViewModel?.amountString
             .bind(to: amountTextField.reactive.text)
             .dispose(in: reactive.bag)
         
-        createReceiveViewModel?.isAmountValid
+        lightningRequestViewModel?.isAmountValid
             .map { $0 ? Color.text : Color.red }
             .bind(to: amountTextField.reactive.textColor)
             .dispose(in: reactive.bag)
@@ -65,8 +65,8 @@ class ReceiveViewController: ModalViewController {
             .dispose(in: reactive.bag)
         
         memoTextView.reactive.text
-            .observeNext { [createReceiveViewModel] text in
-                createReceiveViewModel?.memo = text
+            .observeNext { [lightningRequestViewModel] text in
+                lightningRequestViewModel?.memo = text
             }
             .dispose(in: reactive.bag)
         
@@ -101,7 +101,7 @@ class ReceiveViewController: ModalViewController {
     }
     
     @IBAction private func createButtonTapped(_ sender: Any) {
-        createReceiveViewModel?.create { [weak self] string in
+        lightningRequestViewModel?.create { [weak self] string in
             self?.performSegue(withIdentifier: "showQRCodeDetailViewController", sender: string)
         }
     }
@@ -113,13 +113,13 @@ class ReceiveViewController: ModalViewController {
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if let qrCodeDetailViewController = segue.destination as? QRCodeDetailViewController,
             let paymentRequest = sender as? String {
-            qrCodeDetailViewController.viewModel = ReceiveViewModel(paymentRequest: paymentRequest)
+            qrCodeDetailViewController.viewModel = LightningRequestQRCodeViewModel(paymentRequest: paymentRequest)
         } else if let numericKeyPad = segue.destination as? NumericKeyPadViewController {
             
             let numberFormatter = InputNumberFormatter(unit: .bit)
             numericKeyPad.handler = { [weak self] input in
                 if let output = numberFormatter.validate(input) {
-                    self?.createReceiveViewModel?.updateAmount(output)
+                    self?.lightningRequestViewModel?.updateAmount(output)
                     return true
                 }
                 return false
@@ -129,7 +129,7 @@ class ReceiveViewController: ModalViewController {
     }
 }
 
-extension ReceiveViewController: UITextFieldDelegate {
+extension LightningRequestViewController: UITextFieldDelegate {
     private func animateKeypad(hidden: Bool) {
         UIView.animate(withDuration: 0.5, delay: 0, usingSpringWithDamping: 0.75, initialSpringVelocity: 0.5, options: .curveEaseInOut, animations: { [amountInputView] in
             amountInputView?.isHidden = hidden
