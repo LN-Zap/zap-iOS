@@ -143,6 +143,8 @@
 		A0FBCD91206BBBDF00800515 /* BitcoinUnit.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0FBCD90206BBBDF00800515 /* BitcoinUnit.swift */; };
 		A0FBCD93206BBD9800800515 /* SatoshiTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0FBCD92206BBD9800800515 /* SatoshiTests.swift */; };
 		AD5FA001207CCB8B000E9493 /* ReceiveContainerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD5FA000207CCB8B000E9493 /* ReceiveContainerViewController.swift */; };
+		AD5FA003207D0D03000E9493 /* BitcoinURI.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD5FA002207D0D02000E9493 /* BitcoinURI.swift */; };
+		AD5FA005207D0E70000E9493 /* BitcoinURITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD5FA004207D0E70000E9493 /* BitcoinURITests.swift */; };
 		AD77464220750D7700EC596B /* Settings.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AD77464120750D7700EC596B /* Settings.storyboard */; };
 		AD77464720750DFB00EC596B /* SettingsContainerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD77464620750DFB00EC596B /* SettingsContainerViewController.swift */; };
 		AD7746492076122D00EC596B /* AddressType.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD7746482076122D00EC596B /* AddressType.swift */; };
@@ -366,6 +368,8 @@
 		A0FBCD92206BBD9800800515 /* SatoshiTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SatoshiTests.swift; sourceTree = "<group>"; };
 		A2EA9EBABE9A17490B3E282A /* Pods-BTCUtil.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BTCUtil.release.xcconfig"; path = "Pods/Target Support Files/Pods-BTCUtil/Pods-BTCUtil.release.xcconfig"; sourceTree = "<group>"; };
 		AD5FA000207CCB8B000E9493 /* ReceiveContainerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReceiveContainerViewController.swift; sourceTree = "<group>"; };
+		AD5FA002207D0D02000E9493 /* BitcoinURI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BitcoinURI.swift; sourceTree = "<group>"; };
+		AD5FA004207D0E70000E9493 /* BitcoinURITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BitcoinURITests.swift; sourceTree = "<group>"; };
 		AD77464120750D7700EC596B /* Settings.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Settings.storyboard; sourceTree = "<group>"; };
 		AD77464620750DFB00EC596B /* SettingsContainerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsContainerViewController.swift; sourceTree = "<group>"; };
 		AD7746482076122D00EC596B /* AddressType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddressType.swift; sourceTree = "<group>"; };
@@ -462,6 +466,7 @@
 				A0733CCF20471EF30005643A /* Base58.swift */,
 				A0733CCB20471EF30005643A /* Bech32.swift */,
 				A0733CCE20471EF30005643A /* BitcoinAddress.swift */,
+				AD5FA002207D0D02000E9493 /* BitcoinURI.swift */,
 				A0733CCA20471EF30005643A /* Bolt11.swift */,
 				A0733CCC20471EF30005643A /* Data.swift */,
 				AD77464A207615E000EC596B /* Network.swift */,
@@ -475,14 +480,15 @@
 		A000F5F82047F65200480D8E /* BTCUtilTests */ = {
 			isa = PBXGroup;
 			children = (
+				A000F5FB2047F65200480D8E /* Info.plist */,
 				AD77465220761DB400EC596B /* AddressTypeTests.swift */,
 				A0733CD720471F0A0005643A /* Base58CheckTests.swift */,
 				A0733CD820471F0A0005643A /* Base58Tests.swift */,
 				A0733CDA20471F0A0005643A /* Bech32Tests.swift */,
 				A0733CDB20471F0A0005643A /* BitcoinAddressTests.swift */,
+				AD5FA004207D0E70000E9493 /* BitcoinURITests.swift */,
 				A0733CD920471F0A0005643A /* Bolt11Tests.swift */,
 				A0733CD620471F090005643A /* CryptoTests.swift */,
-				A000F5FB2047F65200480D8E /* Info.plist */,
 				A0FBCD92206BBD9800800515 /* SatoshiTests.swift */,
 			);
 			path = BTCUtilTests;
@@ -1383,6 +1389,7 @@
 				A000F60B2047F66300480D8E /* BitcoinAddress.swift in Sources */,
 				A000F60C2047F66300480D8E /* Base58.swift in Sources */,
 				A000F6092047F66300480D8E /* Data.swift in Sources */,
+				AD5FA003207D0D03000E9493 /* BitcoinURI.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1392,6 +1399,7 @@
 			files = (
 				A000F6182047FB8200480D8E /* Base58CheckTests.swift in Sources */,
 				A000F6192047FB8200480D8E /* Base58Tests.swift in Sources */,
+				AD5FA005207D0E70000E9493 /* BitcoinURITests.swift in Sources */,
 				A000F61B2047FB8200480D8E /* Bolt11Tests.swift in Sources */,
 				A000F61A2047FB8200480D8E /* Bech32Tests.swift in Sources */,
 				AD77465320761DB400EC596B /* AddressTypeTests.swift in Sources */,
