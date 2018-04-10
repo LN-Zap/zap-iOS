@@ -16,17 +16,12 @@ class ReceiveViewController: ModalViewController {
     @IBOutlet private weak var swapCurrencyButton: UIButton!
     @IBOutlet private weak var downArrowImageView: UIImageView!
     
-    var viewModel: ViewModel?
-    private var createReceiveViewModel: CreateReceiveViewModel?
+    var createReceiveViewModel: CreateReceiveViewModel?
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        guard let viewModel = viewModel else { return }
-        
+    
         title = "scene.receive.title".localized
-        
-        self.createReceiveViewModel = CreateReceiveViewModel(viewModel: viewModel)
         
         amountTextField.textColor = Color.text
         amountTextField.font = Font.light.withSize(36)
@@ -111,10 +106,6 @@ class ReceiveViewController: ModalViewController {
         }
     }
     
-    @IBAction private func cancelButtonTapped(_ sender: Any) {
-        dismiss(animated: true, completion: nil)
-    }
-    
     @IBAction private func swapCurrencyButtonTapped(_ sender: Any) {
         Settings.swapCurrencies()
     }
@@ -126,9 +117,9 @@ class ReceiveViewController: ModalViewController {
         } else if let numericKeyPad = segue.destination as? NumericKeyPadViewController {
             
             let numberFormatter = InputNumberFormatter(unit: .bit)
-            numericKeyPad.handler = { [createReceiveViewModel] input in
+            numericKeyPad.handler = { [weak self] input in
                 if let output = numberFormatter.validate(input) {
-                    createReceiveViewModel?.updateAmount(output)
+                    self?.createReceiveViewModel?.updateAmount(output)
                     return true
                 }
                 return false

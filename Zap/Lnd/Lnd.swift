@@ -10,14 +10,22 @@ import Foundation
 import LightningRpc
 import Lndbindings
 
+let shoudConnectToRemoteLnd = true
+
 final class Lnd {
     static let instance = Lnd()
-    
-    private let strategy = LocalConnection()
-//    private let strategy = RemoteConnection()
+    private let strategy: ConnectionStrategy
     
     var lightning: LightningRpc.Lightning?
     var walletUnlocker: LightningRpc.WalletUnlocker?
+    
+    private init() {
+        if shoudConnectToRemoteLnd {
+            strategy = RemoteConnection()
+        } else {
+            strategy = LocalConnection()
+        }
+    }
     
     var macaroon: String? {
         return strategy.macaroon

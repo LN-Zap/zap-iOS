@@ -112,8 +112,8 @@ final class MainViewController: UIViewController, ContainerViewController {
         
         if let sendViewController = navigationController.topViewController as? SendViewController {
             sendViewController.viewModel = viewModel
-        } else if let receiveViewController = navigationController.topViewController as? ReceiveViewController {
-            receiveViewController.viewModel = viewModel
+        } else if let receiveContainerViewController = navigationController.topViewController as? ReceiveContainerViewController {
+            receiveContainerViewController.viewModel = viewModel
         }
     }
     
