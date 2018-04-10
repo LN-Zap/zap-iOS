@@ -15,34 +15,35 @@ final class TransactionViewModel {
     
     let isOnChain: Bool
     let displayText: Observable<String>
-    let amount: Satoshi
+    let amount: Observable<Satoshi>
     let bag = DisposeBag()
     let time: String
     
     init(transaction: Transaction) {
         self.transaction = transaction
-        
+    
         if let blockchainTransaction = transaction as? BlockchainTransaction {
             isOnChain = true
             if let alias = MemoryTransactionMetadataStore.instance.metadata(for: transaction)?.fundingChannelAlias {
                 displayText = Observable("Open Channel: \(alias)")
+                amount = Observable(-transaction.fees)
             } else {
                 displayText = Observable(blockchainTransaction.firstDestinationAddress)
+                amount = Observable(transaction.amount)
             }
         } else if let payment = transaction as? Payment {
             isOnChain = false
             displayText = Observable(payment.paymentHash)
+            amount = Observable(transaction.amount)
         } else {
             fatalError("transaction type not implemented.")
         }
-        
-        amount = transaction.amount
         
         time = DateFormatter.localizedString(from: transaction.date, dateStyle: .none, timeStyle: .short)
         
         NotificationCenter.default.reactive
             .notification(name: .TransactionMetadataChanged)
-            .observeNext { [displayText] notification in
+            .observeNext { [displayText, amount] notification in
                 guard
                     let notificationTransaction = notification.userInfo?["transaction"] as? Transaction,
                     notificationTransaction as? BlockchainTransaction == transaction as? BlockchainTransaction,
@@ -50,6 +51,7 @@ final class TransactionViewModel {
                     let alias = metadata.fundingChannelAlias
                     else { return }
 
+                amount.value = -notificationTransaction.fees
                 displayText.value = "Open Channel: \(alias)"
             }
             .dispose(in: bag)
