@@ -10,7 +10,7 @@ import Foundation
 import LightningRpc
 import Lndbindings
 
-let shoudConnectToRemoteLnd = true
+let shoudConnectToRemoteLnd = false
 
 final class Lnd {
     static let instance = Lnd()
