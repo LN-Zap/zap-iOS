@@ -8,43 +8,25 @@
 import Bond
 import Foundation
 
-enum Loading<Value> {
-    case value(Value)
-    case loading
-    
-    var value: Value? {
-        switch self {
-        case let .value(value):
-            return value
-        case .loading:
-            return nil
-        }
-    }
-}
-
 protocol QRCodeDetailViewModel {
     var title: String { get }
-    var address: Observable<Loading<String>> { get }
+    var address: String { get }
 }
 
 final class OnChainRequestQRCodeViewModel: QRCodeDetailViewModel {
     let title = "scene.deposit.title".localized
-    let address: Observable<Loading<String>>
+    let address: String
 
-    init(viewModel: ViewModel) {
-        address = Observable(.loading)
-        viewModel.newAddress { [address] result in
-            guard let addressString = result.value else { return }
-            address.value = .value(addressString)
-        }
+    init(address: String) {
+        self.address = address
     }
 }
 
 final class LightningRequestQRCodeViewModel: QRCodeDetailViewModel {
     let title = "scene.request.title".localized
-    let address: Observable<Loading<String>>
+    let address: String
 
-    init(paymentRequest: String) {
-        self.address = Observable(.value(paymentRequest))
+    init(invoice: String) {
+        self.address = invoice
     }
 }

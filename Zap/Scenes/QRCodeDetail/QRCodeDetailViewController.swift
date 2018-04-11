@@ -9,9 +9,11 @@ import UIKit
 
 final class QRCodeDetailViewController: UIViewController {
     @IBOutlet private weak var qrCodeImageView: UIImageView!
-    @IBOutlet private weak var addressLabel: UILabel!
     @IBOutlet private weak var shareButton: UIButton!
     @IBOutlet private weak var copyButton: UIButton!
+    @IBOutlet private weak var topView: UIView!
+    @IBOutlet private weak var requestMethodImageView: UIImageView!
+    @IBOutlet private weak var requestMethodLabel: UILabel!
     
     var viewModel: QRCodeDetailViewModel?
     
@@ -22,25 +24,19 @@ final class QRCodeDetailViewController: UIViewController {
 
         title = viewModel.title
         
-        Style.label.apply(to: addressLabel) {
-            $0.font = $0.font.withSize(14)
-        }
-        addressLabel?.textColor = Color.mediumBackground
+        requestMethodLabel.font = Font.light.withSize(10)
+        requestMethodLabel.tintColor = Color.text
+        requestMethodImageView.tintColor = Color.text
         
-        viewModel.address
-            .observeNext { [weak self] address in
-                switch address {
-                case .loading:
-                    break
-                case .value(let address):
-                    self?.updateAddress(address)
-                }
-            }
-            .dispose(in: reactive.bag)
+        topView.backgroundColor = Color.searchBackground
+        
+        qrCodeImageView?.image = UIImage.qrCode(from: viewModel.address)
+        
+        updateRequestMethod()
     }
     
     @IBAction private func qrCodeTapped(_ sender: Any) {
-        guard let address = viewModel?.address.value.value else { return }
+        guard let address = viewModel?.address else { return }
         print(address)
         UIPasteboard.general.string = address
     }
@@ -50,7 +46,7 @@ final class QRCodeDetailViewController: UIViewController {
     }
     
     @IBAction private func shareButtonTapped(_ sender: Any) {
-        guard let address = viewModel?.address.value.value else { return }
+        guard let address = viewModel?.address else { return }
 
         var items: [Any] = [address]
         
@@ -62,8 +58,11 @@ final class QRCodeDetailViewController: UIViewController {
         present(activityViewController, animated: true, completion: nil)
     }
     
-    private func updateAddress(_ address: String) {
-        qrCodeImageView?.image = UIImage.qrCode(from: address)
-        addressLabel?.text = address
+    private func updateRequestMethod() {
+        if viewModel is LightningRequestQRCodeViewModel {
+            requestMethodLabel.text = "Lightning"
+        } else if viewModel is OnChainRequestQRCodeViewModel {
+            requestMethodLabel.text = "On-chain"
+        }
     }
 }

@@ -12,10 +12,10 @@ public enum BitcoinURI {
         var urlComponents = URLComponents(string: "bitcoin:\(address)")
         var queryItems = [URLQueryItem]()
         
-        if let amount = amount {
+        if let amount = amount, amount > 0 {
             queryItems.append(URLQueryItem(name: "amount", value: amount.convert(to: .bitcoin).stringValue))
         }
-        if let message = message {
+        if let message = message, !message.isEmpty {
             queryItems.append(URLQueryItem(name: "message", value: message))
         }
         if !queryItems.isEmpty {
