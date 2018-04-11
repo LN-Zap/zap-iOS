@@ -142,6 +142,8 @@
 		A0F9AEE3206E3E0300E93DCA /* InputNumberFormatterTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0F9AEE2206E3E0300E93DCA /* InputNumberFormatterTests.swift */; };
 		A0FBCD91206BBBDF00800515 /* BitcoinUnit.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0FBCD90206BBBDF00800515 /* BitcoinUnit.swift */; };
 		A0FBCD93206BBD9800800515 /* SatoshiTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0FBCD92206BBD9800800515 /* SatoshiTests.swift */; };
+		AD38EB30207DF233007DF14D /* UIButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD38EB2F207DF233007DF14D /* UIButton.swift */; };
+		AD38EB32207DFB59007DF14D /* SegmentButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD38EB31207DFB59007DF14D /* SegmentButton.swift */; };
 		AD5FA001207CCB8B000E9493 /* RequestContainerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD5FA000207CCB8B000E9493 /* RequestContainerViewController.swift */; };
 		AD5FA003207D0D03000E9493 /* BitcoinURI.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD5FA002207D0D02000E9493 /* BitcoinURI.swift */; };
 		AD5FA005207D0E70000E9493 /* BitcoinURITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD5FA004207D0E70000E9493 /* BitcoinURITests.swift */; };
@@ -367,6 +369,8 @@
 		A0FBCD90206BBBDF00800515 /* BitcoinUnit.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BitcoinUnit.swift; sourceTree = "<group>"; };
 		A0FBCD92206BBD9800800515 /* SatoshiTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SatoshiTests.swift; sourceTree = "<group>"; };
 		A2EA9EBABE9A17490B3E282A /* Pods-BTCUtil.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BTCUtil.release.xcconfig"; path = "Pods/Target Support Files/Pods-BTCUtil/Pods-BTCUtil.release.xcconfig"; sourceTree = "<group>"; };
+		AD38EB2F207DF233007DF14D /* UIButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIButton.swift; sourceTree = "<group>"; };
+		AD38EB31207DFB59007DF14D /* SegmentButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SegmentButton.swift; sourceTree = "<group>"; };
 		AD5FA000207CCB8B000E9493 /* RequestContainerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RequestContainerViewController.swift; sourceTree = "<group>"; };
 		AD5FA002207D0D02000E9493 /* BitcoinURI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BitcoinURI.swift; sourceTree = "<group>"; };
 		AD5FA004207D0E70000E9493 /* BitcoinURITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BitcoinURITests.swift; sourceTree = "<group>"; };
@@ -554,11 +558,12 @@
 		A010093E2014D4720001EF94 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				A0BD44DE206FED1400BF27A3 /* BondTableViewCell.swift */,
+				A0605F8C202C9D8200EA903C /* HorizontalLineView.swift */,
 				A06660F4202D97A300EE32FA /* QRCodeScannerView.swift */,
 				A0605F89202C9D1A00EA903C /* Section Header */,
+				AD38EB31207DFB59007DF14D /* SegmentButton.swift */,
 				A0605F8A202C9D2F00EA903C /* Toast */,
-				A0605F8C202C9D8200EA903C /* HorizontalLineView.swift */,
-				A0BD44DE206FED1400BF27A3 /* BondTableViewCell.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -795,13 +800,14 @@
 				AD77464C2076161300EC596B /* Localizable */,
 				A08CF033201F5FCC000D5855 /* Array.swift */,
 				A02C9FC3202F617D009821B1 /* LocalAuthentication.swift */,
+				A0BD44DB206FCAD900BF27A3 /* SignalProtocol.swift */,
 				A0A96B87201769F100788808 /* String.swift */,
+				AD38EB2F207DF233007DF14D /* UIButton.swift */,
 				A0A05A222013D9BB0007D1C9 /* UIColor.swift */,
 				A0A05A2F2013EFC00007D1C9 /* UIImage.swift */,
 				A0A96B83201748C200788808 /* UILabel.swift */,
 				A0A05A5D2014A0DE0007D1C9 /* UITableView.swift */,
 				A0919142203B152100FA525A /* UserDefaults.swift */,
-				A0BD44DB206FCAD900BF27A3 /* SignalProtocol.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -1456,6 +1462,7 @@
 				AD7746552076253C00EC596B /* SendLightningInvoiceViewController.swift in Sources */,
 				ADCE01BD207B598C00CA72E8 /* SelectWalletCreationMethodViewController.swift in Sources */,
 				A06660F5202D97A300EE32FA /* QRCodeScannerView.swift in Sources */,
+				AD38EB30207DF233007DF14D /* UIButton.swift in Sources */,
 				ADCE01C1207B5C0300CA72E8 /* MnemonicViewModel.swift in Sources */,
 				A0376B77201CD67700F1FBEF /* PinViewController.swift in Sources */,
 				A0A05A5C20149F720007D1C9 /* TransactionListViewController.swift in Sources */,
@@ -1475,6 +1482,7 @@
 				A0A96B822017442D00788808 /* ChannelDetailViewController.swift in Sources */,
 				A0BD44DC206FCAD900BF27A3 /* SignalProtocol.swift in Sources */,
 				A0A05A352014047B0007D1C9 /* Lnd.swift in Sources */,
+				AD38EB32207DFB59007DF14D /* SegmentButton.swift in Sources */,
 				A0C2EABE206F8B5B003AE56E /* Localizable.swift in Sources */,
 				A0DDC06E2018C08800AEFF94 /* Section.swift in Sources */,
 				A0F57DBE201E440F003AFA66 /* ChannelListViewModel.swift in Sources */,

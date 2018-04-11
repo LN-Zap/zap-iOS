@@ -19,31 +19,65 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Yb9-eX-EHB">
-                                <rect key="frame" x="0.0" y="116" width="375" height="551"/>
+                                <rect key="frame" x="0.0" y="150" width="375" height="517"/>
                             </containerView>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="1Eb-K1-gKD">
+                                <rect key="frame" x="0.0" y="64" width="375" height="86"/>
+                                <subviews>
+                                    <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="cus-B2-Jdl">
+                                        <rect key="frame" x="0.0" y="0.0" width="375" height="86"/>
+                                        <subviews>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="elu-Jk-EPg" customClass="SegmentButton" customModule="Zap" customModuleProvider="target">
+                                                <rect key="frame" x="0.0" y="0.0" width="187.5" height="86"/>
+                                                <state key="normal" title="Button" image="icon-network"/>
+                                                <connections>
+                                                    <action selector="segmentedControlDidChange:" destination="rjQ-Ia-QeT" eventType="touchUpInside" id="is3-sU-nX3"/>
+                                                </connections>
+                                            </button>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ep1-xz-1ul" customClass="SegmentButton" customModule="Zap" customModuleProvider="target">
+                                                <rect key="frame" x="187.5" y="0.0" width="187.5" height="86"/>
+                                                <state key="normal" title="Button" image="icon-network"/>
+                                                <connections>
+                                                    <action selector="segmentedControlDidChange:" destination="rjQ-Ia-QeT" eventType="touchUpInside" id="6Ck-qY-hpp"/>
+                                                </connections>
+                                            </button>
+                                        </subviews>
+                                    </stackView>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="u9S-aO-ejC" customClass="LineView" customModule="Zap" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="85" width="375" height="1"/>
+                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="1" id="zhO-xM-klM"/>
+                                        </constraints>
+                                    </view>
+                                </subviews>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstItem="cus-B2-Jdl" firstAttribute="top" secondItem="1Eb-K1-gKD" secondAttribute="top" id="1Xt-VP-euE"/>
+                                    <constraint firstItem="u9S-aO-ejC" firstAttribute="leading" secondItem="1Eb-K1-gKD" secondAttribute="leading" id="2Kl-hW-0JC"/>
+                                    <constraint firstItem="cus-B2-Jdl" firstAttribute="leading" secondItem="1Eb-K1-gKD" secondAttribute="leading" id="5Bn-XO-aHz"/>
+                                    <constraint firstAttribute="trailing" secondItem="u9S-aO-ejC" secondAttribute="trailing" id="Hqk-NY-Q0l"/>
+                                    <constraint firstAttribute="bottom" secondItem="u9S-aO-ejC" secondAttribute="bottom" id="YTT-3g-geI"/>
+                                    <constraint firstAttribute="bottom" secondItem="cus-B2-Jdl" secondAttribute="bottom" id="dJM-oV-zLx"/>
+                                    <constraint firstAttribute="height" constant="86" id="hb9-Uq-gJ3"/>
+                                    <constraint firstAttribute="trailing" secondItem="cus-B2-Jdl" secondAttribute="trailing" id="plu-Wt-oNW"/>
+                                </constraints>
+                            </view>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstAttribute="bottom" secondItem="Yb9-eX-EHB" secondAttribute="bottom" id="5aR-C7-2Vv"/>
-                            <constraint firstItem="Yb9-eX-EHB" firstAttribute="top" secondItem="E90-yA-qCV" secondAttribute="top" id="85e-FL-Qel"/>
+                            <constraint firstItem="1Eb-K1-gKD" firstAttribute="top" secondItem="E90-yA-qCV" secondAttribute="top" id="aKW-k1-L0E"/>
                             <constraint firstItem="Yb9-eX-EHB" firstAttribute="leading" secondItem="E90-yA-qCV" secondAttribute="leading" id="dG2-8Z-yls"/>
+                            <constraint firstItem="1Eb-K1-gKD" firstAttribute="leading" secondItem="E90-yA-qCV" secondAttribute="leading" id="kHc-bt-vaX"/>
                             <constraint firstItem="E90-yA-qCV" firstAttribute="trailing" secondItem="Yb9-eX-EHB" secondAttribute="trailing" id="nkE-0q-frn"/>
+                            <constraint firstItem="Yb9-eX-EHB" firstAttribute="top" secondItem="1Eb-K1-gKD" secondAttribute="bottom" id="wdr-XB-8ny"/>
+                            <constraint firstItem="1Eb-K1-gKD" firstAttribute="trailing" secondItem="E90-yA-qCV" secondAttribute="trailing" id="xb7-S8-NoW"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="E90-yA-qCV"/>
                     </view>
                     <navigationItem key="navigationItem" id="sYh-8a-oH0">
                         <nil key="title"/>
-                        <segmentedControl key="titleView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="bar" selectedSegmentIndex="0" id="CeQ-Td-xcL">
-                            <rect key="frame" x="92" y="7" width="191" height="30"/>
-                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                            <segments>
-                                <segment title="Lightning"/>
-                                <segment title="On Chain"/>
-                            </segments>
-                            <connections>
-                                <action selector="segmentedControlDidChange:" destination="rjQ-Ia-QeT" eventType="valueChanged" id="dcA-4A-kFW"/>
-                            </connections>
-                        </segmentedControl>
                         <barButtonItem key="rightBarButtonItem" systemItem="cancel" id="Z9A-gL-apm">
                             <connections>
                                 <action selector="cancelButtonTapped:" destination="rjQ-Ia-QeT" id="AiI-tG-d8b"/>
@@ -51,7 +85,11 @@
                         </barButtonItem>
                     </navigationItem>
                     <connections>
+                        <outlet property="bottomConstraint" destination="5aR-C7-2Vv" id="Ebx-la-nhe"/>
                         <outlet property="container" destination="Yb9-eX-EHB" id="sjZ-9k-vaR"/>
+                        <outlet property="lightningButton" destination="elu-Jk-EPg" id="NPQ-bs-ojx"/>
+                        <outlet property="onChainButton" destination="Ep1-xz-1ul" id="Ttr-PM-bPz"/>
+                        <outlet property="segmentedControlBackgroundView" destination="1Eb-K1-gKD" id="KVm-Eb-jMt"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="7TF-Qd-WjE" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -219,7 +257,6 @@
                         <outlet property="memoTextView" destination="IQI-PO-y7e" id="k0b-Xh-RZr"/>
                         <outlet property="placeholderTextView" destination="yiG-8U-w8B" id="may-i2-ae4"/>
                         <outlet property="swapCurrencyButton" destination="FAk-tI-WEG" id="ngq-x6-pVW"/>
-                        <segue destination="KVT-A9-MZd" kind="show" identifier="showQRCodeDetailViewController" id="KXq-yf-woM"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="7Yy-UA-jMj" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -232,23 +269,15 @@
                 <viewControllerPlaceholder storyboardName="NumericKeyPad" referencedIdentifier="NumericKeyPadViewController" id="BMc-F1-OQb" sceneMemberID="viewController"/>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="pJh-UL-1PJ" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2710" y="111"/>
-        </scene>
-        <!--QRCodeDetailViewController-->
-        <scene sceneID="ftc-qJ-ykM">
-            <objects>
-                <viewControllerPlaceholder storyboardName="QRCodeDetail" referencedIdentifier="QRCodeDetailViewController" id="KVT-A9-MZd" sceneMemberID="viewController"/>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="VKJ-Xr-WWb" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="2702" y="157"/>
+            <point key="canvasLocation" x="2571" y="133"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="ZS6-tC-kn2">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="qvk-ti-gP6" sceneMemberID="viewController">
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" largeTitles="YES" id="8Oc-tV-J0r">
-                        <rect key="frame" x="0.0" y="20" width="375" height="96"/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="8Oc-tV-J0r">
+                        <rect key="frame" x="0.0" y="20" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="barTintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     </navigationBar>
@@ -264,5 +293,6 @@
     </scenes>
     <resources>
         <image name="icon-chevronDown" width="14" height="6"/>
+        <image name="icon-network" width="13" height="13"/>
     </resources>
 </document>

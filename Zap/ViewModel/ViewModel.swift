@@ -95,7 +95,7 @@ final class ViewModel {
         updateChannels()
         updatePendingChannels()
         
-        Scheduler.schedule(interval: 10, job: BlockChainHeightJob { [blockChainHeight] height in
+        Scheduler.schedule(interval: 120, job: BlockChainHeightJob { [blockChainHeight] height in
             blockChainHeight.value = height
         })
         

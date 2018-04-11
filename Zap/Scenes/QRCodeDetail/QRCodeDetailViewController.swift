@@ -21,6 +21,10 @@ final class QRCodeDetailViewController: UIViewController {
         guard let viewModel = viewModel else { fatalError("No ViewModel set.") }
 
         title = viewModel.title
+        
+        Style.label.apply(to: addressLabel) {
+            $0.font = $0.font.withSize(14)
+        }
         addressLabel?.textColor = Color.mediumBackground
         
         viewModel.address

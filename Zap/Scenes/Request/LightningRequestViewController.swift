@@ -7,7 +7,7 @@
 
 import UIKit
 
-class LightningRequestViewController: ModalViewController {
+class LightningRequestViewController: UIViewController {
     @IBOutlet private weak var amountTextField: UITextField!
     @IBOutlet private weak var placeholderTextView: UITextView!
     @IBOutlet private weak var memoTextView: UITextView!
@@ -69,41 +69,12 @@ class LightningRequestViewController: ModalViewController {
                 lightningRequestViewModel?.memo = text
             }
             .dispose(in: reactive.bag)
-        
-        setupKeyboardNotifications()
-    }
-    
-    private func setupKeyboardNotifications() {
-        NotificationCenter.default.reactive.notification(name: .UIKeyboardWillHide)
-            .observeNext { [navigationController] _ in
-                if let presetation = navigationController?.presentationController as? ModalPresentationController {
-                    let newHeight = UIScreen.main.bounds.height * 0.75
-                    let newY = UIScreen.main.bounds.height - newHeight
-                    let newWidth = UIScreen.main.bounds.width
-                    presetation.animateFrame(to: CGRect(x: 0, y: newY, width: newWidth, height: newHeight))
-                }
-            }
-            .dispose(in: reactive.bag)
-        
-        NotificationCenter.default.reactive.notification(name: .UIKeyboardWillShow)
-            .observeNext { [navigationController] notification in
-                guard
-                    let keyboardFrame = notification.userInfo?[UIKeyboardFrameEndUserInfoKey] as? CGRect
-                    else { return }
-                
-                if let presentation = navigationController?.presentationController as? ModalPresentationController {
-                    let newHeight = keyboardFrame.minY
-                    let newWidth = UIScreen.main.bounds.width
-                    presentation.animateFrame(to: CGRect(x: 0, y: 0, width: newWidth, height: newHeight))
-                }
-            }
-            .dispose(in: reactive.bag)
     }
     
     @IBAction private func createButtonTapped(_ sender: Any) {
-        lightningRequestViewModel?.create { [weak self] string in
-            self?.performSegue(withIdentifier: "showQRCodeDetailViewController", sender: string)
-        }
+//        lightningRequestViewModel?.create { [weak self] string in
+//            self?.performSegue(withIdentifier: "showQRCodeDetailViewController", sender: string)
+//        }
     }
     
     @IBAction private func swapCurrencyButtonTapped(_ sender: Any) {
@@ -111,20 +82,14 @@ class LightningRequestViewController: ModalViewController {
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if let qrCodeDetailViewController = segue.destination as? QRCodeDetailViewController,
-            let paymentRequest = sender as? String {
-            qrCodeDetailViewController.viewModel = LightningRequestQRCodeViewModel(paymentRequest: paymentRequest)
-        } else if let numericKeyPad = segue.destination as? NumericKeyPadViewController {
+        guard let numericKeyPad = segue.destination as? NumericKeyPadViewController else { return }
+        let numberFormatter = InputNumberFormatter(unit: .bit)
+        
+        numericKeyPad.handler = { [weak self] input in
+            guard let output = numberFormatter.validate(input) else { return false }
             
-            let numberFormatter = InputNumberFormatter(unit: .bit)
-            numericKeyPad.handler = { [weak self] input in
-                if let output = numberFormatter.validate(input) {
-                    self?.lightningRequestViewModel?.updateAmount(output)
-                    return true
-                }
-                return false
-            }
-            
+            self?.lightningRequestViewModel?.updateAmount(output)
+            return true
         }
     }
 }
