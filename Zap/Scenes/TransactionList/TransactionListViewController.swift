@@ -30,7 +30,9 @@ struct TransactionBond: TableViewBond {
 
 class TransactionListViewController: UIViewController {
     @IBOutlet private weak var tableView: UITableView?
-    
+    @IBOutlet private weak var searchBackgroundView: UIView!
+    @IBOutlet private weak var searchBar: UISearchBar!
+
     var viewModel: ViewModel? {
         didSet {
             guard let viewModel = viewModel else { return }
@@ -45,6 +47,10 @@ class TransactionListViewController: UIViewController {
         title = "scene.transactions.title".localized
         
         guard let tableView = tableView else { return }
+        
+        searchBar.delegate = self
+        searchBar.backgroundImage = UIImage()
+        searchBackgroundView.backgroundColor = Color.searchBackground
         
         tableView.rowHeight = 50
         tableView.registerCell(OnChainTransactionTableViewCell.self)
@@ -91,5 +97,16 @@ extension TransactionListViewController: UITableViewDelegate {
             viewController = Storyboard.paymentDetail.initial(viewController: UINavigationController.self)
         }
         present(viewController, animated: true, completion: nil)
+    }
+}
+
+extension TransactionListViewController: UISearchBarDelegate {
+    func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
+        // TODO: search
+        print(searchText)
+    }
+    
+    func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
+        searchBar.resignFirstResponder()
     }
 }
