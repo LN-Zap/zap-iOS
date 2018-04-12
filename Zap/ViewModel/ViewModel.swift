@@ -17,7 +17,7 @@ enum WalletState {
     case wallet
 }
 
-final class ViewModel {
+final class ViewModel: NSObject {
     private let api: Lightning
     
     let walletState: Observable<WalletState>
@@ -68,6 +68,8 @@ final class ViewModel {
 
         totalBalance = combineLatest(balance, channelBalance) { $0 + $1 }
 
+        super.init()
+        
         start()
         
         transactionMetadataUpdater = TransactionMetadataUpdater(viewModel: self, transactionMetadataStore: MemoryTransactionMetadataStore.instance)
@@ -82,18 +84,18 @@ final class ViewModel {
     }
     
     private func start() {
-        api.walletBalance { [balance] result in
-            balance.value = result.value ?? 0
-        }
-        
-        api.transactions { [onChainTransactions] result in
-            onChainTransactions.value = result.value ?? []
-        }
-        
-        updateChannelBalance()
-        updatePayments()
-        updateChannels()
-        updatePendingChannels()
+        walletState
+            .filter { $0 != .connect }
+            .distinct()
+            .observeNext { [weak self] _ in
+                self?.updateChannelBalance()
+                self?.updatePayments()
+                self?.updateChannels()
+                self?.updatePendingChannels()
+                self?.updateWalletBalance()
+                self?.updateTransactions()
+            }
+            .dispose(in: reactive.bag)
         
         Scheduler.schedule(interval: 120, job: BlockChainHeightJob { [blockChainHeight] height in
             blockChainHeight.value = height
@@ -122,7 +124,19 @@ final class ViewModel {
             walletState.value = ViewModel.didCreateWallet ? .connect : .create
         }
     }
-    
+
+    private func updateWalletBalance() {
+        api.walletBalance { [balance] result in
+            balance.value = result.value ?? 0
+        }
+    }
+
+    private func updateTransactions() {
+        api.transactions { [onChainTransactions] result in
+            onChainTransactions.value = result.value ?? []
+        }
+    }
+
     private func updateChannelBalance() {
         api.channelBalance { [channelBalance] result in
             channelBalance.value = result.value ?? 0
