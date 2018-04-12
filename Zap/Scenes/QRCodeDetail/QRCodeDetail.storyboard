@@ -58,25 +58,38 @@
                                             <constraint firstAttribute="height" constant="1" id="EAG-4j-mpp"/>
                                         </constraints>
                                     </view>
-                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="icon-network" translatesAutoresizingMaskIntoConstraints="NO" id="yVf-fS-o3e">
-                                        <rect key="frame" x="180.5" y="39.5" width="13" height="13"/>
-                                    </imageView>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Edc-wU-PyE">
-                                        <rect key="frame" x="166" y="55.5" width="42" height="20.5"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                        <nil key="textColor"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Yqd-Vj-OGM">
+                                        <rect key="frame" x="166" y="15.5" width="42" height="55.5"/>
+                                        <subviews>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Edc-wU-PyE">
+                                                <rect key="frame" x="0.0" y="35" width="42" height="20.5"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                <nil key="textColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="icon-request-lightning" translatesAutoresizingMaskIntoConstraints="NO" id="yVf-fS-o3e">
+                                                <rect key="frame" x="13" y="0.0" width="16" height="28"/>
+                                            </imageView>
+                                        </subviews>
+                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <constraints>
+                                            <constraint firstItem="yVf-fS-o3e" firstAttribute="top" secondItem="Yqd-Vj-OGM" secondAttribute="top" id="0vq-ME-kwT"/>
+                                            <constraint firstItem="Edc-wU-PyE" firstAttribute="leading" secondItem="Yqd-Vj-OGM" secondAttribute="leading" id="F6u-DE-SrE"/>
+                                            <constraint firstItem="yVf-fS-o3e" firstAttribute="centerX" secondItem="Yqd-Vj-OGM" secondAttribute="centerX" id="JT2-0o-f6g"/>
+                                            <constraint firstAttribute="bottom" secondItem="Edc-wU-PyE" secondAttribute="bottom" id="WKg-fY-6tV"/>
+                                            <constraint firstAttribute="trailing" secondItem="Edc-wU-PyE" secondAttribute="trailing" id="YTR-Uv-ttz"/>
+                                            <constraint firstItem="Edc-wU-PyE" firstAttribute="top" secondItem="yVf-fS-o3e" secondAttribute="bottom" constant="7" id="g3i-OS-pNt"/>
+                                            <constraint firstItem="Edc-wU-PyE" firstAttribute="centerX" secondItem="Yqd-Vj-OGM" secondAttribute="centerX" id="p25-le-Ji0"/>
+                                        </constraints>
+                                    </view>
                                 </subviews>
                                 <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
+                                    <constraint firstItem="Yqd-Vj-OGM" firstAttribute="centerY" secondItem="rcA-JW-1Xe" secondAttribute="centerY" id="CLL-G0-3UB"/>
+                                    <constraint firstItem="Yqd-Vj-OGM" firstAttribute="centerX" secondItem="rcA-JW-1Xe" secondAttribute="centerX" id="HQG-Rf-hJy"/>
                                     <constraint firstItem="syq-S5-ErG" firstAttribute="leading" secondItem="rcA-JW-1Xe" secondAttribute="leading" id="Jwv-Ff-Pw9"/>
                                     <constraint firstAttribute="bottom" secondItem="syq-S5-ErG" secondAttribute="bottom" id="NaP-dK-HdI"/>
-                                    <constraint firstItem="yVf-fS-o3e" firstAttribute="centerX" secondItem="rcA-JW-1Xe" secondAttribute="centerX" id="f5E-Ei-JnI"/>
                                     <constraint firstAttribute="trailing" secondItem="syq-S5-ErG" secondAttribute="trailing" id="slu-Sr-vJc"/>
-                                    <constraint firstAttribute="bottom" secondItem="Edc-wU-PyE" secondAttribute="bottom" constant="10" id="tdu-Mc-jdY"/>
-                                    <constraint firstItem="Edc-wU-PyE" firstAttribute="top" secondItem="yVf-fS-o3e" secondAttribute="bottom" constant="3" id="tin-Ad-4ez"/>
-                                    <constraint firstItem="Edc-wU-PyE" firstAttribute="centerX" secondItem="rcA-JW-1Xe" secondAttribute="centerX" id="x53-ec-ETx"/>
                                     <constraint firstAttribute="height" constant="86" id="y4D-lq-pyF"/>
                                 </constraints>
                             </view>
@@ -118,6 +131,6 @@
         </scene>
     </scenes>
     <resources>
-        <image name="icon-network" width="13" height="13"/>
+        <image name="icon-request-lightning" width="16" height="28"/>
     </resources>
 </document>

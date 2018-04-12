@@ -8,7 +8,7 @@
 import Foundation
 
 extension UIButton {
-    func alignImageAndTitleVertically(padding: CGFloat = 6.0) {
+    func alignImageAndTitleVertically(padding: CGFloat = 7.0) {
         guard
             let imageSize = imageView?.frame.size,
             let titleSize = titleLabel?.frame.size

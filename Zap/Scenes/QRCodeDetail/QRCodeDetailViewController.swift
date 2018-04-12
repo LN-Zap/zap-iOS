@@ -61,8 +61,10 @@ final class QRCodeDetailViewController: UIViewController {
     private func updateRequestMethod() {
         if viewModel is LightningRequestQRCodeViewModel {
             requestMethodLabel.text = "Lightning"
+            requestMethodImageView.image = #imageLiteral(resourceName: "icon-request-lightning")
         } else if viewModel is OnChainRequestQRCodeViewModel {
             requestMethodLabel.text = "On-chain"
+            requestMethodImageView.image = #imageLiteral(resourceName: "icon-request-on-chain")
         }
     }
 }

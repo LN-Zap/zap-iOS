@@ -29,14 +29,14 @@
                                                 <subviews>
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="elu-Jk-EPg" customClass="SegmentButton" customModule="Zap" customModuleProvider="target">
                                                         <rect key="frame" x="0.0" y="0.0" width="187.5" height="86"/>
-                                                        <state key="normal" title="Button" image="icon-network"/>
+                                                        <state key="normal" title="Button" image="icon-request-lightning"/>
                                                         <connections>
                                                             <action selector="segmentedControlDidChange:" destination="rjQ-Ia-QeT" eventType="touchUpInside" id="is3-sU-nX3"/>
                                                         </connections>
                                                     </button>
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ep1-xz-1ul" customClass="SegmentButton" customModule="Zap" customModuleProvider="target">
                                                         <rect key="frame" x="187.5" y="0.0" width="187.5" height="86"/>
-                                                        <state key="normal" title="Button" image="icon-network"/>
+                                                        <state key="normal" title="Button" image="icon-request-on-chain"/>
                                                         <connections>
                                                             <action selector="segmentedControlDidChange:" destination="rjQ-Ia-QeT" eventType="touchUpInside" id="6Ck-qY-hpp"/>
                                                         </connections>
@@ -258,6 +258,7 @@
     </scenes>
     <resources>
         <image name="icon-chevronDown" width="14" height="6"/>
-        <image name="icon-network" width="13" height="13"/>
+        <image name="icon-request-lightning" width="16" height="28"/>
+        <image name="icon-request-on-chain" width="22" height="23"/>
     </resources>
 </document>
