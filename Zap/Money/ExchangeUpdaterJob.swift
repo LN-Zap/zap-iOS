@@ -24,7 +24,7 @@ final class ExchangeUpdaterJob: SchedulerJob {
     
     func parseFiatCurrency(for currencyCode: String, data: Any) -> FiatCurrency? {
         guard
-            let localized = Locale.current.localizedString(forCurrencyCode: currencyCode),
+            let localized = Locale.autoupdatingCurrent.localizedString(forCurrencyCode: currencyCode),
             let data = data as? [String: Any],
             let symbol = data["symbol"] as? String,
             let valueNumber = data["15m"] as? NSNumber

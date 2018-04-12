@@ -49,7 +49,7 @@ final class TransactionListViewModel: NSObject {
             
             guard let date = $0.1.first?.date else { return nil }
             
-            let dateString = DateFormatter.localizedString(from: date, dateStyle: .long, timeStyle: .none)
+            let dateString = date.localized
             
             return Observable2DArraySection<String, TransactionViewModel>(
                 metadata: dateString,

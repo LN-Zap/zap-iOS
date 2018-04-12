@@ -19,7 +19,7 @@ struct FiatCurrency: Currency, Equatable {
         currencyFormatter.generatesDecimalNumbers = true
         currencyFormatter.usesGroupingSeparator = true
         currencyFormatter.numberStyle = .currency
-        currencyFormatter.locale = Locale.current
+        currencyFormatter.locale = Locale.autoupdatingCurrent
         currencyFormatter.currencyCode = currencyCode
         return currencyFormatter
     }

@@ -28,11 +28,11 @@ extension Satoshi {
         guard string != "" else { return 0 }
         var string = string
         
-        if let groupingSeparator = Locale.current.groupingSeparator {
+        if let groupingSeparator = Locale.autoupdatingCurrent.groupingSeparator {
             string = string.replacingOccurrences(of: groupingSeparator, with: "")
         }
         
-        let satoshis = Satoshi(string: string, locale: Locale.current)
+        let satoshis = Satoshi(string: string, locale: Locale.autoupdatingCurrent)
         return Satoshi.from(value: satoshis, unit: unit)
     }
     

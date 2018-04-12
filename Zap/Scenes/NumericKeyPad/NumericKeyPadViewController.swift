@@ -24,7 +24,7 @@ class NumericKeyPadViewController: UIViewController {
     @IBOutlet private var buttons: [UIButton]?
     @IBOutlet private weak var pointButton: UIButton! {
         didSet {
-            let decimalSeparator = Locale.current.decimalSeparator ?? "."
+            let decimalSeparator = Locale.autoupdatingCurrent.decimalSeparator ?? "."
             pointButton.setTitle(decimalSeparator, for: .normal)
             pointButton?.isEnabled = !isPin
         }
