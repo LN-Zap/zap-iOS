@@ -169,11 +169,12 @@ final class ViewModel: NSObject {
         api.decodePaymentRequest(paymentRequest, callback: callback)
     }
     
-    func sendPayment(_ paymentRequest: PaymentRequest) {
+    func sendPayment(_ paymentRequest: PaymentRequest, callback: @escaping (Bool) -> Void) {
         api.sendPayment(paymentRequest) { [weak self] _ in
             self?.updateChannelBalance()
             self?.updatePayments()
             self?.updateChannels()
+            callback(true)
         }
     }
     

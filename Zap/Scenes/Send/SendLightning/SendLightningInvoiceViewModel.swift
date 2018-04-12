@@ -33,9 +33,9 @@ final class SendLightningInvoiceViewModel {
         }
     }
     
-    func send() {
+    func send(callback: @escaping (Bool) -> Void) {
         guard let paymentRequest = paymentRequest else { return }
-        viewModel.sendPayment(paymentRequest)
+        viewModel.sendPayment(paymentRequest, callback: callback)
     }
     
     private func updatePaymentRequest(_ paymentRequest: PaymentRequest) {

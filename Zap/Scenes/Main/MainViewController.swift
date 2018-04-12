@@ -68,7 +68,7 @@ final class MainViewController: UIViewController, ContainerViewController {
         aliasLabel.textColor = .white
         balanceLabel.textColor = .white
         balanceLabel.font = balanceLabel.font.withSize(30)
-        fiatBalanceLabel.textColor = .white
+        fiatBalanceLabel.textColor = .gray
         
         viewModel?.totalBalance
             .bind(to: balanceLabel.reactive.text, currency: Settings.primaryCurrency)

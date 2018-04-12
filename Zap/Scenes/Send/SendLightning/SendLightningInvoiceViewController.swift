@@ -36,6 +36,8 @@ class SendLightningInvoiceViewController: UIViewController {
     }
     
     @IBAction private func sendButtonTapped(_ sender: Any) {
-        sendViewModel?.send()
+        sendViewModel?.send { [weak self] _ in
+            self?.dismiss(animated: true, completion: nil)
+        }
     }
 }
