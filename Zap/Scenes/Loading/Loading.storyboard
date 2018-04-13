@@ -11,10 +11,10 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--View Controller-->
+        <!--Loading View Controller-->
         <scene sceneID="8zL-PH-ABs">
             <objects>
-                <viewController id="8lJ-1o-B6k" sceneMemberID="viewController">
+                <viewController id="8lJ-1o-B6k" customClass="LoadingViewController" customModule="Zap" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="iAG-a9-cAb">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -25,20 +25,32 @@
                             <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" animating="YES" style="whiteLarge" translatesAutoresizingMaskIntoConstraints="NO" id="Ddk-Lh-eao">
                                 <rect key="frame" x="169" y="325" width="37" height="37"/>
                             </activityIndicatorView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="K00-Mm-0gf">
+                                <rect key="frame" x="166.5" y="626.5" width="42" height="20.5"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" red="0.19215686274509802" green="0.20000000000000001" blue="0.23137254901960785" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstItem="Xaz-oH-9UB" firstAttribute="centerX" secondItem="axl-1h-8qz" secondAttribute="centerX" id="0sU-mT-f6m"/>
+                            <constraint firstItem="K00-Mm-0gf" firstAttribute="centerX" secondItem="axl-1h-8qz" secondAttribute="centerX" id="EUX-6x-bEw"/>
+                            <constraint firstItem="K00-Mm-0gf" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="axl-1h-8qz" secondAttribute="leading" constant="20" id="U6B-pL-dHd"/>
                             <constraint firstItem="Ddk-Lh-eao" firstAttribute="centerX" secondItem="axl-1h-8qz" secondAttribute="centerX" id="VKL-ky-yxN"/>
                             <constraint firstItem="Xaz-oH-9UB" firstAttribute="centerY" secondItem="axl-1h-8qz" secondAttribute="centerY" multiplier="0.6666" id="Za7-iZ-3tu"/>
                             <constraint firstItem="Ddk-Lh-eao" firstAttribute="centerY" secondItem="axl-1h-8qz" secondAttribute="centerY" id="eYq-vc-FQu"/>
+                            <constraint firstItem="axl-1h-8qz" firstAttribute="bottom" secondItem="K00-Mm-0gf" secondAttribute="bottom" constant="20" id="pSz-Rm-Nka"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="axl-1h-8qz"/>
                     </view>
+                    <connections>
+                        <outlet property="infoLabel" destination="K00-Mm-0gf" id="cy4-kb-Ixz"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="QxL-jJ-0cn" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="220" y="154"/>
+            <point key="canvasLocation" x="220" y="153.37331334332833"/>
         </scene>
     </scenes>
     <resources>

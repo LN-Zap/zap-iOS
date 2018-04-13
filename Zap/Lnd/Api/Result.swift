@@ -78,8 +78,11 @@ func result<T, U>(_ callback: @escaping (Result<U>) -> Void, map: @escaping (T) 
                 print(LndError.walletEncrypted)
                 callback(Result<U>(error: LndError.walletEncrypted))
             case 13:
-                print(LndError.walletEncrypted)
+                print(LndError.lndNotRunning)
                 callback(Result<U>(error: LndError.lndNotRunning))
+            case 14:
+                print(LndError.noInternet)
+                callback(Result<U>(error: LndError.noInternet))
             default:
                 print(error)
                 callback(Result<U>(error: error))

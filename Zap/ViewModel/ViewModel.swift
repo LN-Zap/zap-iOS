@@ -11,6 +11,7 @@ import Foundation
 import ReactiveKit
 
 enum WalletState {
+    case noInternet
     case connect
     case create
     case sync
@@ -120,8 +121,13 @@ final class ViewModel: NSObject {
             isSyncedToChain.value = info.isSyncedToChain
             alias.value = info.alias
             bestHeaderDate.value = info.bestHeaderDate
+        } else if let error = result.error as? LndError,
+            error == LndError.noInternet {
+            walletState.value = .noInternet
+        } else if ViewModel.didCreateWallet {
+            walletState.value = .connect
         } else {
-            walletState.value = ViewModel.didCreateWallet ? .connect : .create
+            walletState.value = .create
         }
     }
 

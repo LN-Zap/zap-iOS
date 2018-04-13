@@ -35,8 +35,8 @@ class RootViewController: UIViewController, ContainerViewController {
         return syncViewController
     }
     
-    private var loadingViewController: UIViewController {
-        return Storyboard.loading.initial()
+    private var loadingViewController: LoadingViewController {
+        return Storyboard.loading.initial(viewController: LoadingViewController.self)
     }
     
     private var pinViewController: PinViewController {
@@ -56,6 +56,9 @@ class RootViewController: UIViewController, ContainerViewController {
                 switch state {
                 case .connect:
                     viewController = self?.loadingViewController
+                case .noInternet:
+                    viewController = self?.loadingViewController
+                    (viewController as? LoadingViewController)?.message = LndError.noInternet.localizedDescription
                 case .create:
                     viewController = self?.setupViewController
                 case .sync:

@@ -7,10 +7,11 @@
 
 import Foundation
 
-enum LndError: Error, LocalizedError {
+enum LndError: Error, LocalizedError, Equatable {
     case invalidInput
     case walletEncrypted
     case lndNotRunning
+    case noInternet
     case localizedError(String)
     case unknownError
     
@@ -22,6 +23,8 @@ enum LndError: Error, LocalizedError {
             return "Wallet is encrypted."
         case .lndNotRunning:
             return "Lnd does not seem to be running properly."
+        case .noInternet:
+            return "Not connected to the internet"
         case .invalidInput, .unknownError:
             return nil
         }
