@@ -19,7 +19,7 @@ enum WalletState {
 }
 
 final class ViewModel: NSObject {
-    private let api: Lightning
+    private let api: LightningProtocol
     
     let walletState: Observable<WalletState>
     
@@ -56,7 +56,7 @@ final class ViewModel: NSObject {
         }
     }
     
-    init(api: Lightning = Lightning()) {
+    init(api: LightningProtocol = Lightning()) {
         self.api = api
         
         if ViewModel.didCreateWallet {

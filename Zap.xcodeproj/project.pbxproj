@@ -167,6 +167,7 @@
 		ADBB36222080A3B1005662B4 /* LightningProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADBB36212080A3B1005662B4 /* LightningProtocol.swift */; };
 		ADBB36242080A457005662B4 /* LightningMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADBB36232080A457005662B4 /* LightningMock.swift */; };
 		ADBB36262080AD70005662B4 /* LoadingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADBB36252080AD70005662B4 /* LoadingViewController.swift */; };
+		ADBB36292080B2AE005662B4 /* TestingTemplates.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADBB36282080B2AE005662B4 /* TestingTemplates.swift */; };
 		ADCE01BB207B57ED00CA72E8 /* CreateWallet.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = ADCE01BA207B57ED00CA72E8 /* CreateWallet.storyboard */; };
 		ADCE01BD207B598C00CA72E8 /* SelectWalletCreationMethodViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADCE01BC207B598C00CA72E8 /* SelectWalletCreationMethodViewController.swift */; };
 		ADCE01BF207B59BD00CA72E8 /* ConfirmMnemonicViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADCE01BE207B59BD00CA72E8 /* ConfirmMnemonicViewController.swift */; };
@@ -397,6 +398,7 @@
 		ADBB36212080A3B1005662B4 /* LightningProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LightningProtocol.swift; sourceTree = "<group>"; };
 		ADBB36232080A457005662B4 /* LightningMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LightningMock.swift; sourceTree = "<group>"; };
 		ADBB36252080AD70005662B4 /* LoadingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingViewController.swift; sourceTree = "<group>"; };
+		ADBB36282080B2AE005662B4 /* TestingTemplates.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestingTemplates.swift; sourceTree = "<group>"; };
 		ADCE01BA207B57ED00CA72E8 /* CreateWallet.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = CreateWallet.storyboard; sourceTree = "<group>"; };
 		ADCE01BC207B598C00CA72E8 /* SelectWalletCreationMethodViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectWalletCreationMethodViewController.swift; sourceTree = "<group>"; };
 		ADCE01BE207B59BD00CA72E8 /* ConfirmMnemonicViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConfirmMnemonicViewController.swift; sourceTree = "<group>"; };
@@ -795,6 +797,7 @@
 				A024B85A20161AAE002B8897 /* PaymentRequest.swift */,
 				A024B84C201606B4002B8897 /* Peer.swift */,
 				A0A05A5820149AF20007D1C9 /* Transaction.swift */,
+				ADBB36282080B2AE005662B4 /* TestingTemplates.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -1464,6 +1467,7 @@
 				A0F353D020692570005B3639 /* GradientView.swift in Sources */,
 				A0C2EABB206F8B02003AE56E /* FiatCurrency.swift in Sources */,
 				AD77464E2076162300EC596B /* Network+Localizable.swift in Sources */,
+				ADBB36292080B2AE005662B4 /* TestingTemplates.swift in Sources */,
 				A0C2EAC4206F9539003AE56E /* ExchangeUpdaterJob.swift in Sources */,
 				A02C9FC4202F617D009821B1 /* LocalAuthentication.swift in Sources */,
 				A06660FC202E080400EE32FA /* UpdatePinSettingsItem.swift in Sources */,

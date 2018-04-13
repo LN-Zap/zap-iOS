@@ -11,7 +11,15 @@ class RootViewController: UIViewController, ContainerViewController {
     // swiftlint:disable:next private_outlet
     @IBOutlet weak var container: UIView?
     
-    let viewModel = ViewModel()
+    let viewModel: ViewModel = {
+        ViewModel(api: LightningMock(
+            info: Info.template,
+            transactions: [
+                BlockchainTransaction.template,
+                Payment.template,
+                BlockchainTransaction.template,
+                Payment.template]))
+    }()
     
     weak var currentViewController: UIViewController?
     

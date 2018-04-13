@@ -23,7 +23,9 @@ struct BlockchainTransaction: Transaction, Equatable {
     let fees: Satoshi
     let confirmations: Int
     let firstDestinationAddress: String
-    
+}
+
+extension BlockchainTransaction {
     init(transaction: LightningRpc.Transaction) {
         id = transaction.txHash
         amount = Satoshi(value: transaction.amount)
@@ -40,7 +42,9 @@ struct Payment: Transaction, Equatable {
     let date: Date
     let fees: Satoshi
     let paymentHash: String
+}
 
+extension Payment {
     init(payment: LightningRpc.Payment) {
         id = payment.paymentHash
         amount = Satoshi(value: -payment.value)
