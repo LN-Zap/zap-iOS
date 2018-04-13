@@ -19,6 +19,14 @@ public enum Result<Value>: CustomStringConvertible, CustomDebugStringConvertible
         self = .failure(error)
     }
     
+    init(value: Value?, error: Error) {
+        if let value = value {
+            self = .success(value)
+        } else {
+            self = .failure(error)
+        }
+    }
+    
     var value: Value? {
         switch self {
         case let .success(value):

@@ -9,7 +9,7 @@ import BTCUtil
 import Foundation
 import LightningRpc
 
-final class Lightning {
+final class Lightning: LightningProtocol {
     private var rpc: LightningRpc.Lightning? {
         if Lnd.instance.lightning == nil {
             print("Lightning not initialized")
