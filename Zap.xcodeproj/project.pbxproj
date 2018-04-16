@@ -168,6 +168,7 @@
 		ADBB36242080A457005662B4 /* LightningMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADBB36232080A457005662B4 /* LightningMock.swift */; };
 		ADBB36262080AD70005662B4 /* LoadingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADBB36252080AD70005662B4 /* LoadingViewController.swift */; };
 		ADBB36292080B2AE005662B4 /* TestingTemplates.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADBB36282080B2AE005662B4 /* TestingTemplates.swift */; };
+		ADBB362D2080B755005662B4 /* AddressView.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADBB362C2080B755005662B4 /* AddressView.swift */; };
 		ADCE01BB207B57ED00CA72E8 /* CreateWallet.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = ADCE01BA207B57ED00CA72E8 /* CreateWallet.storyboard */; };
 		ADCE01BD207B598C00CA72E8 /* SelectWalletCreationMethodViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADCE01BC207B598C00CA72E8 /* SelectWalletCreationMethodViewController.swift */; };
 		ADCE01BF207B59BD00CA72E8 /* ConfirmMnemonicViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADCE01BE207B59BD00CA72E8 /* ConfirmMnemonicViewController.swift */; };
@@ -399,6 +400,7 @@
 		ADBB36232080A457005662B4 /* LightningMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LightningMock.swift; sourceTree = "<group>"; };
 		ADBB36252080AD70005662B4 /* LoadingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingViewController.swift; sourceTree = "<group>"; };
 		ADBB36282080B2AE005662B4 /* TestingTemplates.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestingTemplates.swift; sourceTree = "<group>"; };
+		ADBB362C2080B755005662B4 /* AddressView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddressView.swift; sourceTree = "<group>"; };
 		ADCE01BA207B57ED00CA72E8 /* CreateWallet.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = CreateWallet.storyboard; sourceTree = "<group>"; };
 		ADCE01BC207B598C00CA72E8 /* SelectWalletCreationMethodViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectWalletCreationMethodViewController.swift; sourceTree = "<group>"; };
 		ADCE01BE207B59BD00CA72E8 /* ConfirmMnemonicViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConfirmMnemonicViewController.swift; sourceTree = "<group>"; };
@@ -566,6 +568,7 @@
 		A010093E2014D4720001EF94 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				ADBB362C2080B755005662B4 /* AddressView.swift */,
 				A0BD44DE206FED1400BF27A3 /* BondTableViewCell.swift */,
 				A0605F8C202C9D8200EA903C /* HorizontalLineView.swift */,
 				A06660F4202D97A300EE32FA /* QRCodeScannerView.swift */,
@@ -1508,6 +1511,7 @@
 				A0731FE12014A22B00C55E45 /* OnChainTransactionTableViewCell.swift in Sources */,
 				A01009392014BE460001EF94 /* Channel.swift in Sources */,
 				A0D3C97A2060070D0015C5D7 /* WalletViewModel.swift in Sources */,
+				ADBB362D2080B755005662B4 /* AddressView.swift in Sources */,
 				A07C1036203DE3E6006C7FE8 /* ViewModel.swift in Sources */,
 				AD7746672077C72600EC596B /* TransactionViewModel.swift in Sources */,
 				A0919143203B152100FA525A /* UserDefaults.swift in Sources */,

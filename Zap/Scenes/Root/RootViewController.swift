@@ -16,9 +16,13 @@ class RootViewController: UIViewController, ContainerViewController {
             info: Info.template,
             transactions: [
                 BlockchainTransaction.template,
+                BlockchainTransaction.template
+            ],
+            payments: [
                 Payment.template,
-                BlockchainTransaction.template,
-                Payment.template]))
+                Payment.template
+            ]
+        ))
     }()
     
     weak var currentViewController: UIViewController?

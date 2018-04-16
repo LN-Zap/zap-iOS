@@ -52,7 +52,7 @@ class TransactionListViewController: UIViewController {
         searchBar.backgroundImage = UIImage()
         searchBackgroundView.backgroundColor = Color.searchBackground
         
-        tableView.rowHeight = 50
+        tableView.rowHeight = 66
         tableView.registerCell(OnChainTransactionTableViewCell.self)
         tableView.registerCell(PaymentTableViewCell.self)
         tableView.refreshControl = UIRefreshControl()

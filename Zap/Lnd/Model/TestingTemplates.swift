@@ -24,12 +24,12 @@ extension Info {
 extension BlockchainTransaction {
     static var template: BlockchainTransaction {
         return BlockchainTransaction(
-            id: "id123456",
-            amount: 178,
+            id: "100",
+            amount: 21005000,
             date: Date(),
             fees: 12,
             confirmations: 14,
-            firstDestinationAddress: "firstDestinationAddress"
+            firstDestinationAddress: "tb1qrp33g0q5c5txsp9arysrx4k6zdkfs4nce4xj0gdcccefvpysxf3q0sl5k7"
         )
     }
 }

@@ -9,6 +9,7 @@ import UIKit
 
 class OnChainTransactionTableViewCell: BondTableViewCell {
     
+    @IBOutlet private weak var addressView: AddressView!
     @IBOutlet private weak var nameLabel: UILabel!
     @IBOutlet private weak var amountLabel: UILabel!
     @IBOutlet private weak var timeLabel: UILabel!
@@ -20,6 +21,8 @@ class OnChainTransactionTableViewCell: BondTableViewCell {
             transaction.displayText
                 .bind(to: nameLabel.reactive.text)
                 .dispose(in: onReuseBag)
+            
+            addressView.address = transaction.displayText.value
             
             transaction.amount
                 .bind(to: amountLabel.reactive.text, currency: Settings.primaryCurrency)
