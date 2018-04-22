@@ -23,6 +23,10 @@ class SelectWalletCreationMethodViewController: UIViewController {
         
         createWalletButton.setTitle("new wallet", for: .normal)
         recoverWalletButton.setTitle("recover wallet", for: .normal)
+        
+        navigationController?.navigationBar.backgroundColor = .clear
+        navigationController?.navigationBar.shadowImage = UIImage()
+        navigationController?.navigationBar.setBackgroundImage(UIImage(), for: .default)
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {

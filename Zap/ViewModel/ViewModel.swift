@@ -116,7 +116,7 @@ final class ViewModel: NSObject {
             } else {
                 walletState.value = .wallet
             }
-            
+
             blockHeight.value = info.blockHeight
             isSyncedToChain.value = info.isSyncedToChain
             alias.value = info.alias

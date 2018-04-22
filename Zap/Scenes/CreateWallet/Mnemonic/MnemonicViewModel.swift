@@ -45,8 +45,33 @@ final class MnemonicViewModel {
         return ConfirmMnemonicViewModel(aezeed: aezeed, viewModel: viewModel)
     }
     
+    var pageWords: [[MnemonicWord]] {
+        let maxWordCount = 6
+        var subArrays = [[String]]()
+        var array = aezeed.wordList
+        
+        while !array.isEmpty {
+            let prefix = array.prefix(maxWordCount)
+            subArrays.append(Array(prefix))
+            array.removeFirst(maxWordCount)
+        }
+        
+        var index = 0
+        return subArrays.map {
+            $0.map {
+                defer { index += 1 }
+                return MnemonicWord(index: index, word: $0)
+            }
+        }
+    }
+    
     init(viewModel: ViewModel) {
         self.viewModel = viewModel
         wordList = Observable<[String]>(aezeed.wordList)
     }
+}
+
+struct MnemonicWord {
+    let index: Int
+    let word: String
 }

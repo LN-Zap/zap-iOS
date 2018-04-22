@@ -169,6 +169,9 @@
 		ADBB36262080AD70005662B4 /* LoadingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADBB36252080AD70005662B4 /* LoadingViewController.swift */; };
 		ADBB36292080B2AE005662B4 /* TestingTemplates.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADBB36282080B2AE005662B4 /* TestingTemplates.swift */; };
 		ADBB362D2080B755005662B4 /* AddressView.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADBB362C2080B755005662B4 /* AddressView.swift */; };
+		ADBB362F2084CA16005662B4 /* MnemonicPageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADBB362E2084CA16005662B4 /* MnemonicPageViewController.swift */; };
+		ADBB36312084CA3B005662B4 /* MnemonicWordListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADBB36302084CA3B005662B4 /* MnemonicWordListViewController.swift */; };
+		ADBB36332084EC4D005662B4 /* MnemonicWordTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADBB36322084EC4D005662B4 /* MnemonicWordTableViewCell.swift */; };
 		ADCE01BB207B57ED00CA72E8 /* CreateWallet.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = ADCE01BA207B57ED00CA72E8 /* CreateWallet.storyboard */; };
 		ADCE01BD207B598C00CA72E8 /* SelectWalletCreationMethodViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADCE01BC207B598C00CA72E8 /* SelectWalletCreationMethodViewController.swift */; };
 		ADCE01BF207B59BD00CA72E8 /* ConfirmMnemonicViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADCE01BE207B59BD00CA72E8 /* ConfirmMnemonicViewController.swift */; };
@@ -401,6 +404,9 @@
 		ADBB36252080AD70005662B4 /* LoadingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingViewController.swift; sourceTree = "<group>"; };
 		ADBB36282080B2AE005662B4 /* TestingTemplates.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestingTemplates.swift; sourceTree = "<group>"; };
 		ADBB362C2080B755005662B4 /* AddressView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddressView.swift; sourceTree = "<group>"; };
+		ADBB362E2084CA16005662B4 /* MnemonicPageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MnemonicPageViewController.swift; sourceTree = "<group>"; };
+		ADBB36302084CA3B005662B4 /* MnemonicWordListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MnemonicWordListViewController.swift; sourceTree = "<group>"; };
+		ADBB36322084EC4D005662B4 /* MnemonicWordTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MnemonicWordTableViewCell.swift; sourceTree = "<group>"; };
 		ADCE01BA207B57ED00CA72E8 /* CreateWallet.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = CreateWallet.storyboard; sourceTree = "<group>"; };
 		ADCE01BC207B598C00CA72E8 /* SelectWalletCreationMethodViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectWalletCreationMethodViewController.swift; sourceTree = "<group>"; };
 		ADCE01BE207B59BD00CA72E8 /* ConfirmMnemonicViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConfirmMnemonicViewController.swift; sourceTree = "<group>"; };
@@ -966,14 +972,25 @@
 			path = MemoStore;
 			sourceTree = "<group>";
 		};
+		AD79BB38208CD9970027AAC9 /* Mnemonic */ = {
+			isa = PBXGroup;
+			children = (
+				ADCE01BE207B59BD00CA72E8 /* ConfirmMnemonicViewController.swift */,
+				ADCE01C2207B66A500CA72E8 /* ConfirmMnemonicViewModel.swift */,
+				ADBB362E2084CA16005662B4 /* MnemonicPageViewController.swift */,
+				A0D3C970205FF0E10015C5D7 /* MnemonicViewController.swift */,
+				ADCE01C0207B5C0300CA72E8 /* MnemonicViewModel.swift */,
+				ADBB36302084CA3B005662B4 /* MnemonicWordListViewController.swift */,
+				ADBB36322084EC4D005662B4 /* MnemonicWordTableViewCell.swift */,
+			);
+			path = Mnemonic;
+			sourceTree = "<group>";
+		};
 		ADCE01B9207B57DA00CA72E8 /* CreateWallet */ = {
 			isa = PBXGroup;
 			children = (
+				AD79BB38208CD9970027AAC9 /* Mnemonic */,
 				ADCE01BA207B57ED00CA72E8 /* CreateWallet.storyboard */,
-				ADCE01BE207B59BD00CA72E8 /* ConfirmMnemonicViewController.swift */,
-				ADCE01C2207B66A500CA72E8 /* ConfirmMnemonicViewModel.swift */,
-				A0D3C970205FF0E10015C5D7 /* MnemonicViewController.swift */,
-				ADCE01C0207B5C0300CA72E8 /* MnemonicViewModel.swift */,
 				ADCE01BC207B598C00CA72E8 /* SelectWalletCreationMethodViewController.swift */,
 			);
 			path = CreateWallet;
@@ -1440,6 +1457,7 @@
 				AD7746502076165600EC596B /* String+Localizable.swift in Sources */,
 				A0919149203B294900FA525A /* TouchIDSettingItem.swift in Sources */,
 				A0605F86202C962900EA903C /* SectionHeaderView.swift in Sources */,
+				ADBB36312084CA3B005662B4 /* MnemonicWordListViewController.swift in Sources */,
 				A0A96B84201748C200788808 /* UILabel.swift in Sources */,
 				ADCE01C3207B66A500CA72E8 /* ConfirmMnemonicViewModel.swift in Sources */,
 				A0A96B88201769F100788808 /* String.swift in Sources */,
@@ -1479,6 +1497,7 @@
 				ADCE01BD207B598C00CA72E8 /* SelectWalletCreationMethodViewController.swift in Sources */,
 				A06660F5202D97A300EE32FA /* QRCodeScannerView.swift in Sources */,
 				AD38EB30207DF233007DF14D /* UIButton.swift in Sources */,
+				ADBB36332084EC4D005662B4 /* MnemonicWordTableViewCell.swift in Sources */,
 				ADCE01C1207B5C0300CA72E8 /* MnemonicViewModel.swift in Sources */,
 				ADBB3620207FA5D6005662B4 /* Date+Localizable.swift in Sources */,
 				A0376B77201CD67700F1FBEF /* PinViewController.swift in Sources */,
@@ -1531,6 +1550,7 @@
 				A0A33EF42028743200BB76F4 /* Lightning.swift in Sources */,
 				A0C2EAC0206F8D10003AE56E /* Bitcoin.swift in Sources */,
 				A024B84D201606B4002B8897 /* Peer.swift in Sources */,
+				ADBB362F2084CA16005662B4 /* MnemonicPageViewController.swift in Sources */,
 				A024B85B20161AAE002B8897 /* PaymentRequest.swift in Sources */,
 				AD77464720750DFB00EC596B /* SettingsContainerViewController.swift in Sources */,
 				A0A05A5920149AF20007D1C9 /* Transaction.swift in Sources */,
