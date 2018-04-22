@@ -123,7 +123,6 @@
 		A0D3C97D20616AB80015C5D7 /* LndError.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0D3C97C20616AB80015C5D7 /* LndError.swift */; };
 		A0D3C98020629B9D0015C5D7 /* Scheduler.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0D3C97F20629B9D0015C5D7 /* Scheduler.swift */; };
 		A0DDC05C201883D800AEFF94 /* TransactionList.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A0DDC05B201883D800AEFF94 /* TransactionList.storyboard */; };
-		A0DDC060201889B100AEFF94 /* LargeTitleNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0DDC05F201889B100AEFF94 /* LargeTitleNavigationController.swift */; };
 		A0DDC0622018955C00AEFF94 /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0DDC0612018955C00AEFF94 /* SettingsViewController.swift */; };
 		A0DDC06A2018BFFA00AEFF94 /* LockWalletSettingsItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0DDC0692018BFFA00AEFF94 /* LockWalletSettingsItem.swift */; };
 		A0DDC06C2018C07100AEFF94 /* SettingsItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0DDC06B2018C07100AEFF94 /* SettingsItem.swift */; };
@@ -357,7 +356,6 @@
 		A0D3C97C20616AB80015C5D7 /* LndError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LndError.swift; sourceTree = "<group>"; };
 		A0D3C97F20629B9D0015C5D7 /* Scheduler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Scheduler.swift; sourceTree = "<group>"; };
 		A0DDC05B201883D800AEFF94 /* TransactionList.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = TransactionList.storyboard; sourceTree = "<group>"; };
-		A0DDC05F201889B100AEFF94 /* LargeTitleNavigationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LargeTitleNavigationController.swift; sourceTree = "<group>"; };
 		A0DDC0612018955C00AEFF94 /* SettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
 		A0DDC0692018BFFA00AEFF94 /* LockWalletSettingsItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LockWalletSettingsItem.swift; sourceTree = "<group>"; };
 		A0DDC06B2018C07100AEFF94 /* SettingsItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsItem.swift; sourceTree = "<group>"; };
@@ -588,7 +586,6 @@
 		A01009532015FA330001EF94 /* Abstract */ = {
 			isa = PBXGroup;
 			children = (
-				A0DDC05F201889B100AEFF94 /* LargeTitleNavigationController.swift */,
 				A0731FE52014AC0800C55E45 /* ContainerViewController.swift */,
 				A01009512015FA2D0001EF94 /* ModalViewController.swift */,
 				A0A05A282013ED4B0007D1C9 /* ModalPresentationController.swift */,
@@ -1463,7 +1460,6 @@
 				A0A96B88201769F100788808 /* String.swift in Sources */,
 				AD7746622077C3BF00EC596B /* PaymentDetailViewController.swift in Sources */,
 				A0A05A51201481A70007D1C9 /* Storyboard.swift in Sources */,
-				A0DDC060201889B100AEFF94 /* LargeTitleNavigationController.swift in Sources */,
 				A05C5B8F206500A900072FA9 /* RemoteLndConfiguration.swift in Sources */,
 				A010093C2014CEE40001EF94 /* OpenStatusUpdate.swift in Sources */,
 				A0731FE62014AC0800C55E45 /* ContainerViewController.swift in Sources */,
