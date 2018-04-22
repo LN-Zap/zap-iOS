@@ -38,7 +38,7 @@ final class ConfirmMnemonicViewModel {
     
     private func didVerifyMnemonic() {
         ViewModel.didCreateWallet = true
-        viewModel.walletState.value = viewModel.isSyncedToChain.value ? .wallet : .sync
+        viewModel.walletState.value = viewModel.isSyncedToChain.value ? .ready : .syncing
     }
     
     func check(mnemonic: String) -> Bool {

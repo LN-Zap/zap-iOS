@@ -66,16 +66,18 @@ class RootViewController: UIViewController, ContainerViewController {
                 var viewController: UIViewController?
                 
                 switch state {
-                case .connect:
+                case .locked:
+                    viewController = self?.pinViewController
+                case .connecting:
                     viewController = self?.loadingViewController
                 case .noInternet:
                     viewController = self?.loadingViewController
                     (viewController as? LoadingViewController)?.message = LndError.noInternet.localizedDescription
-                case .create:
+                case .noWallet:
                     viewController = self?.setupViewController
-                case .sync:
+                case .syncing:
                     viewController = self?.syncViewController
-                case .wallet:
+                case .ready:
                     viewController = self?.mainViewController
                 }
                 

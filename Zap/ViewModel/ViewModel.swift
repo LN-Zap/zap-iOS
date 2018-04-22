@@ -11,11 +11,12 @@ import Foundation
 import ReactiveKit
 
 enum WalletState {
+    case locked
     case noInternet
-    case connect
-    case create
-    case sync
-    case wallet
+    case noWallet
+    case connecting
+    case syncing
+    case ready
 }
 
 final class ViewModel: NSObject {
@@ -60,9 +61,9 @@ final class ViewModel: NSObject {
         self.api = api
         
         if ViewModel.didCreateWallet {
-            walletState = Observable(.connect)
+            walletState = Observable(.connecting)
         } else {
-            walletState = Observable(.create)
+            walletState = Observable(.noWallet)
         }
         
         Lnd.instance.startLnd()
@@ -86,7 +87,7 @@ final class ViewModel: NSObject {
     
     private func start() {
         walletState
-            .filter { $0 != .connect }
+            .filter { $0 != .connecting }
             .distinct()
             .observeNext { [weak self] _ in
                 self?.updateChannelBalance()
@@ -110,11 +111,11 @@ final class ViewModel: NSObject {
     private func updateInfo(result: Result<Info>) {
         if let info = result.value {
             if !ViewModel.didCreateWallet {
-                walletState.value = .create
+                walletState.value = .noWallet
             } else if !info.isSyncedToChain {
-                walletState.value = .sync
+                walletState.value = .syncing
             } else {
-                walletState.value = .wallet
+                walletState.value = .ready
             }
 
             blockHeight.value = info.blockHeight
@@ -125,9 +126,9 @@ final class ViewModel: NSObject {
             error == LndError.noInternet {
             walletState.value = .noInternet
         } else if ViewModel.didCreateWallet {
-            walletState.value = .connect
+            walletState.value = .connecting
         } else {
-            walletState.value = .create
+            walletState.value = .noWallet
         }
     }
 
