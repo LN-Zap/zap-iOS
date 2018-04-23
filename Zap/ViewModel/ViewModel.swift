@@ -53,14 +53,16 @@ final class ViewModel: NSObject {
 
     var transactionMetadataUpdater: TransactionMetadataUpdater?
     
-    static var didCreateWallet: Bool {
-        get {
-            return UserDefaults.Keys.didCreateWallet.get(defaultValue: false)
-        }
-        set {
-            UserDefaults.Keys.didCreateWallet.set(newValue)
-        }
-    }
+    static var didCreateWallet: Bool = false
+//    {
+//        get {
+//            return false
+//            return UserDefaults.Keys.didCreateWallet.get(defaultValue: false)
+//        }
+//        set {
+//            UserDefaults.Keys.didCreateWallet.set(newValue)
+//        }
+//    }
     
     init(api: LightningProtocol = Lightning()) {
         self.api = api
@@ -125,12 +127,11 @@ final class ViewModel: NSObject {
     }
     
     private func updateWalletState(result: Result<Info>?) {
-        if isLocked {
+        if !ViewModel.didCreateWallet {
+            walletState.value = .noWallet
+        } else if isLocked {
             walletState.value = .locked
-            return
-        }
-        
-        if let result = result {
+        } else if let result = result {
             if let info = result.value {
                 if !ViewModel.didCreateWallet {
                     walletState.value = .noWallet
@@ -142,10 +143,8 @@ final class ViewModel: NSObject {
             } else if let error = result.error as? LndError,
                 error == LndError.noInternet {
                 walletState.value = .noInternet
-            } else if ViewModel.didCreateWallet {
-                walletState.value = .connecting
             } else {
-                walletState.value = .noWallet
+                walletState.value = .connecting
             }
         } else {
             walletState.value = .connecting

@@ -180,6 +180,8 @@
 		ADCE01C8207B720800CA72E8 /* SyncViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADCE01C7207B720800CA72E8 /* SyncViewController.swift */; };
 		ADCE01CC207B967200CA72E8 /* Loading.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = ADCE01CB207B967200CA72E8 /* Loading.storyboard */; };
 		ADF79364208DCB630086B2CA /* PinView.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADF79363208DCB630086B2CA /* PinView.swift */; };
+		ADF79366208E000C0086B2CA /* SetupPinViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADF79365208E000C0086B2CA /* SetupPinViewController.swift */; };
+		ADF79368208E09D00086B2CA /* SetupPinViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADF79367208E09D00086B2CA /* SetupPinViewModel.swift */; };
 		E2255ED911EB334C67EC4349 /* Pods_ZapTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 700FBCADDAD580B28F987D98 /* Pods_ZapTests.framework */; };
 /* End PBXBuildFile section */
 
@@ -415,6 +417,8 @@
 		ADCE01C7207B720800CA72E8 /* SyncViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SyncViewController.swift; sourceTree = "<group>"; };
 		ADCE01CB207B967200CA72E8 /* Loading.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Loading.storyboard; sourceTree = "<group>"; };
 		ADF79363208DCB630086B2CA /* PinView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PinView.swift; sourceTree = "<group>"; };
+		ADF79365208E000C0086B2CA /* SetupPinViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetupPinViewController.swift; sourceTree = "<group>"; };
+		ADF79367208E09D00086B2CA /* SetupPinViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetupPinViewModel.swift; sourceTree = "<group>"; };
 		AE22E81B1B7AD6C27F3D49BD /* Pods-Zap.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Zap.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Zap/Pods-Zap.debug.xcconfig"; sourceTree = "<group>"; };
 		CAF208744C2CFC6A493BD8B1 /* Pods_btcutil.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_btcutil.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		DB877056D2A1225EA035E012 /* Pods-Zap.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Zap.release.xcconfig"; path = "Pods/Target Support Files/Pods-Zap/Pods-Zap.release.xcconfig"; sourceTree = "<group>"; };
@@ -577,6 +581,7 @@
 				ADBB362C2080B755005662B4 /* AddressView.swift */,
 				A0BD44DE206FED1400BF27A3 /* BondTableViewCell.swift */,
 				A0605F8C202C9D8200EA903C /* HorizontalLineView.swift */,
+				ADF79363208DCB630086B2CA /* PinView.swift */,
 				A06660F4202D97A300EE32FA /* QRCodeScannerView.swift */,
 				A0605F89202C9D1A00EA903C /* Section Header */,
 				AD38EB31207DFB59007DF14D /* SegmentButton.swift */,
@@ -629,11 +634,12 @@
 			isa = PBXGroup;
 			children = (
 				A0376B74201CD61B00F1FBEF /* NumericKeyPad.storyboard */,
-				A0133DD0201B9AF500E41FB9 /* NumericKeyPadViewController.swift */,
-				A0376B76201CD67700F1FBEF /* PinViewController.swift */,
 				A0E2690C202CC4E30069E83C /* AuthenticationViewModel.swift */,
 				A0F9AEE0206E3D8200E93DCA /* InputNumberFormatter.swift */,
-				ADF79363208DCB630086B2CA /* PinView.swift */,
+				A0133DD0201B9AF500E41FB9 /* NumericKeyPadViewController.swift */,
+				A0376B76201CD67700F1FBEF /* PinViewController.swift */,
+				ADF79365208E000C0086B2CA /* SetupPinViewController.swift */,
+				ADF79367208E09D00086B2CA /* SetupPinViewModel.swift */,
 			);
 			path = NumericKeyPad;
 			sourceTree = "<group>";
@@ -1497,6 +1503,7 @@
 				A06660F5202D97A300EE32FA /* QRCodeScannerView.swift in Sources */,
 				AD38EB30207DF233007DF14D /* UIButton.swift in Sources */,
 				ADBB36332084EC4D005662B4 /* MnemonicWordTableViewCell.swift in Sources */,
+				ADF79366208E000C0086B2CA /* SetupPinViewController.swift in Sources */,
 				ADCE01C1207B5C0300CA72E8 /* MnemonicViewModel.swift in Sources */,
 				ADBB3620207FA5D6005662B4 /* Date+Localizable.swift in Sources */,
 				A0376B77201CD67700F1FBEF /* PinViewController.swift in Sources */,
@@ -1514,6 +1521,7 @@
 				A0605F8D202C9D8200EA903C /* HorizontalLineView.swift in Sources */,
 				A0919147203B293000FA525A /* PaperKeySettingsItem.swift in Sources */,
 				A0A96B822017442D00788808 /* ChannelDetailViewController.swift in Sources */,
+				ADF79368208E09D00086B2CA /* SetupPinViewModel.swift in Sources */,
 				A0BD44DC206FCAD900BF27A3 /* SignalProtocol.swift in Sources */,
 				A0A05A352014047B0007D1C9 /* Lnd.swift in Sources */,
 				AD38EB32207DFB59007DF14D /* SegmentButton.swift in Sources */,

@@ -7,11 +7,17 @@
 
 import UIKit
 
+enum NumericKeyPadState {
+    case authenticate
+    case setupPin
+    case amountInput
+}
+
 class NumericKeyPadViewController: UIViewController {
     var handler: ((String) -> Bool)?
     var customPointButtonAction: (() -> Void)?
     
-    var isPin = false {
+    var state: NumericKeyPadState = .amountInput {
         didSet {
             updatePointButton()
         }
@@ -29,7 +35,7 @@ class NumericKeyPadViewController: UIViewController {
         }
     }
     
-    private var numberString = "" {
+    var numberString = "" {
         didSet {
             guard oldValue != numberString else { return }
             print(numberString)
@@ -56,18 +62,25 @@ class NumericKeyPadViewController: UIViewController {
     }
     
     private func updatePointButton() {
-        if isPin {
+        switch state {
+        case .authenticate:
             pointButton.setImage(#imageLiteral(resourceName: "icon-face-id"), for: .normal)
             pointButton.imageView?.tintColor = textColor
             pointButton.setTitle(nil, for: .normal)
-        } else {
+            pointButton.isEnabled = true
+        case .setupPin:
+            pointButton.setImage(nil, for: .normal)
+            pointButton.setTitle(nil, for: .normal)
+            pointButton.isEnabled = false
+        case .amountInput:
             pointButton.setImage(nil, for: .normal)
             pointButton.setTitle(pointCharacter, for: .normal)
+            pointButton.isEnabled = true
         }
     }
  
     private func numberTapped(_ number: Int) {
-        if numberString == "0" && !isPin {
+        if numberString == "0" && state == .amountInput {
             proposeNumberString(String(describing: number))
         } else {
             proposeNumberString(numberString + String(describing: number))

@@ -32,6 +32,10 @@ class ConfirmMnemonicViewController: UIViewController {
         
         mnemonicWordTextField.becomeFirstResponder()
         
+        confirmViewModel?.mnemonic
+            .bidirectionalBind(to: mnemonicWordTextField.reactive.text)
+            .dispose(in: reactive.bag)
+
         confirmViewModel?.wordLabel
             .bind(to: mnemonicWordLabel.reactive.text)
             .dispose(in: reactive.bag)
@@ -42,13 +46,12 @@ class ConfirmMnemonicViewController: UIViewController {
     }
     
     private func checkInput() {
-        guard
-            let confirmViewModel = confirmViewModel,
-            let text = mnemonicWordTextField.text
-            else { return }
+        guard let confirmViewModel = confirmViewModel else { return }
         
-        if confirmViewModel.check(mnemonic: text) {
-            mnemonicWordTextField.text = nil
+        if confirmViewModel.check() {
+            let setupPinViewController = Storyboard.numericKeyPad.instantiate(viewController: SetupPinViewController.self)
+            setupPinViewController.viewModel = confirmViewModel.viewModel
+            present(setupPinViewController, animated: true, completion: nil)
         }
     }
 }

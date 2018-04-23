@@ -19,7 +19,7 @@ final class PinView: UIStackView {
     var characterCount: Int = 0 {
         didSet {
             for view in arrangedSubviews {
-                removeArrangedSubview(view)
+                view.removeFromSuperview()
             }
             
             let circleSize = bounds.height

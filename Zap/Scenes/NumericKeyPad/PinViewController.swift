@@ -10,7 +10,6 @@ import UIKit
 class PinViewController: UIViewController {
     
     @IBOutlet private weak var pinStackView: PinView!
-    @IBOutlet private weak var activityIndicator: UIActivityIndicatorView!
     
     var viewModel: ViewModel?
     
@@ -33,7 +32,7 @@ class PinViewController: UIViewController {
     private func setupNumPad(viewController: NumericKeyPadViewController) {
         viewController.view.backgroundColor = .clear
         viewController.textColor = .white
-        viewController.isPin = true
+        viewController.state = .authenticate
         
         viewController.customPointButtonAction = { [weak self] in
             BiometricAuthentication.authenticate {

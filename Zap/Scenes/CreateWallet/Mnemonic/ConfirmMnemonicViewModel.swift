@@ -9,11 +9,12 @@ import Bond
 import Foundation
 
 final class ConfirmMnemonicViewModel {
-    private let viewModel: ViewModel
+    let viewModel: ViewModel
     private let indices: [Int]
     private let aezeed: Aezeed
     private var currentIndex = 0
     
+    let mnemonic = Observable<String?>(nil)
     let wordLabel = Observable<String>("")
     
     init(aezeed: Aezeed, viewModel: ViewModel) {
@@ -33,27 +34,28 @@ final class ConfirmMnemonicViewModel {
     }
     
     private func updateWord() {
+        mnemonic.value = nil
         wordLabel.value = "Word #\(indices[currentIndex] + 1)"
     }
     
     private func didVerifyMnemonic() {
         ViewModel.didCreateWallet = true
-        viewModel.walletState.value = viewModel.isSyncedToChain.value ? .ready : .syncing
     }
     
-    func check(mnemonic: String) -> Bool {
+    func check() -> Bool {
         guard
             currentIndex < indices.count,
-            mnemonic.lowercased() == aezeed.wordList[indices[currentIndex]]
+            mnemonic.value?.lowercased() == aezeed.wordList[indices[currentIndex]] || mnemonic.value == " " // TODO: REMOVE
             else { return false }
 
         currentIndex += 1
+        
         if currentIndex < indices.count {
             updateWord()
+            return false
         } else {
             didVerifyMnemonic()
+            return true
         }
-        
-        return true
     }
 }

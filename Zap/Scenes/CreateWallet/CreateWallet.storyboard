@@ -129,7 +129,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="2qT-er-STI">
-                                <rect key="frame" x="20" y="305.5" width="335" height="120.5"/>
+                                <rect key="frame" x="20" y="164" width="335" height="120.5"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="K09-7S-uB5">
                                         <rect key="frame" x="0.0" y="0.0" width="335" height="20.5"/>
@@ -158,7 +158,7 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
-                            <constraint firstItem="2qT-er-STI" firstAttribute="centerY" secondItem="sQu-V2-xwj" secondAttribute="centerY" id="HPg-ns-aWy"/>
+                            <constraint firstItem="2qT-er-STI" firstAttribute="top" secondItem="sQu-V2-xwj" secondAttribute="top" constant="100" id="DAZ-7u-BW0"/>
                             <constraint firstItem="sQu-V2-xwj" firstAttribute="trailing" secondItem="2qT-er-STI" secondAttribute="trailing" constant="20" id="Hxn-ZZ-5dR"/>
                             <constraint firstItem="2qT-er-STI" firstAttribute="leading" secondItem="sQu-V2-xwj" secondAttribute="leading" constant="20" id="kQi-Lu-J0O"/>
                         </constraints>
