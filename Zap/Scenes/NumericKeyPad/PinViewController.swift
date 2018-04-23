@@ -25,44 +25,25 @@ class PinViewController: UIViewController {
             imageView.tintColor = .black
             pinStackView.addArrangedSubview(imageView)
         }
-        
-        //        BiometricAuthentication.authenticate()
-        //            .observeOn(MainScheduler.instance)
-        //            .subscribe(onCompleted: {
-        //                AuthenticationViewModel.instance.authenticated.onNext(true)
-        //            }, onError: { [weak self] error in
-        //                self?.displayError(error.localizedDescription)
-        //            })
-        //            .dispose(in: reactive.bag)
-        //
-        //        viewModel.authenticated
-        //            .bind(to: activityIndicator.rx.isAnimating)
-        //            .dispose(in: reactive.bag)
-        //
-        //        viewModel.authenticated
-        //            .bind(to: pinStackView.rx.isHidden)
-        //            .dispose(in: reactive.bag)
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if let numPad = segue.destination as? NumericKeyPadViewController {
-//            let viewModel = AuthenticationViewModel.instance
-            
             numPad.view.backgroundColor = .clear
             numPad.textColor = .white
-//            numPad.maxLength = viewModel.pin?.count ?? 0
             numPad.isPin = true
-//            numPad.handler = { [weak self] number in
-//                guard let imageViews = self?.pinStackView.arrangedSubviews else { return }
-//
-//                for (count, view) in imageViews.enumerated() {
-//                    view.tintColor = count < number.count ? .white : .black
-//                }
-//
-//                if number == viewModel.pin {
-//                    self?.viewModel.authenticated.onNext(true)
-//                }
-//            }
+        
+            numPad.handler = { [weak self] number in
+                self?.updatePinView(for: number)
+                return (AuthenticationViewModel.instance.pin?.count ?? Int.max) >= number.count
+            }
+        }
+    }
+    
+    private func updatePinView(for string: String) {
+        let imageViews = pinStackView.arrangedSubviews
+        for (count, view) in imageViews.enumerated() {
+            view.tintColor = count < string.count ? .white : .black
         }
     }
 }

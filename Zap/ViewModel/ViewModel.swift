@@ -110,6 +110,20 @@ final class ViewModel: NSObject {
     
     private func updateInfo(result: Result<Info>) {
         if let info = result.value {
+            blockHeight.value = info.blockHeight
+            isSyncedToChain.value = info.isSyncedToChain
+            alias.value = info.alias
+            bestHeaderDate.value = info.bestHeaderDate
+        }
+        
+        updateWalletState(result: result)
+    }
+    
+    private func updateWalletState(result: Result<Info>) {
+        walletState.value = .locked
+        return
+        
+        if let info = result.value {
             if !ViewModel.didCreateWallet {
                 walletState.value = .noWallet
             } else if !info.isSyncedToChain {
@@ -117,11 +131,6 @@ final class ViewModel: NSObject {
             } else {
                 walletState.value = .ready
             }
-
-            blockHeight.value = info.blockHeight
-            isSyncedToChain.value = info.isSyncedToChain
-            alias.value = info.alias
-            bestHeaderDate.value = info.bestHeaderDate
         } else if let error = result.error as? LndError,
             error == LndError.noInternet {
             walletState.value = .noInternet
@@ -131,7 +140,7 @@ final class ViewModel: NSObject {
             walletState.value = .noWallet
         }
     }
-
+    
     private func updateWalletBalance() {
         api.walletBalance { [balance] result in
             balance.value = result.value ?? 0
