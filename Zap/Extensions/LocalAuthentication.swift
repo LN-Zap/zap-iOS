@@ -32,28 +32,28 @@ final class BiometricAuthentication {
     }
 
     static func evaluateAuthenticationPolicyMessageForLA(errorCode: Int) -> String {
-        switch errorCode {
-        case LAError.authenticationFailed.rawValue:
+        switch Int32(errorCode) {
+        case kLAErrorAuthenticationFailed:
             return "The user failed to provide valid credentials"
-        case LAError.appCancel.rawValue:
+        case kLAErrorAppCancel:
             return "Authentication was cancelled by application"
-        case LAError.invalidContext.rawValue:
+        case kLAErrorInvalidContext:
             return "The context is invalid"
-        case LAError.notInteractive.rawValue:
+        case kLAErrorNotInteractive:
             return "Not interactive"
-        case LAError.passcodeNotSet.rawValue:
+        case kLAErrorPasscodeNotSet:
             return "Passcode is not set on the device"
-        case LAError.systemCancel.rawValue:
+        case kLAErrorSystemCancel:
             return "Authentication was cancelled by the system"
-        case LAError.userCancel.rawValue:
+        case kLAErrorUserCancel:
             return "The user did cancel"
-        case LAError.userFallback.rawValue:
+        case kLAErrorUserFallback:
             return "The user chose to use the fallback"
-        case LAError.biometryNotAvailable.rawValue:
+        case kLAErrorBiometryNotAvailable:
             return "Authentication could not start because the device does not support biometric authentication."
-        case LAError.biometryLockout.rawValue:
+        case kLAErrorBiometryLockout:
             return "Authentication could not continue because the user has been locked out of biometric authentication, due to failing authentication too many times."
-        case LAError.biometryNotEnrolled.rawValue:
+        case kLAErrorBiometryNotEnrolled:
             return "Authentication could not start because the user has not enrolled in biometric authentication."
         default:
             return "Did not find error code on LAError object"

@@ -137,7 +137,6 @@ final class RequestViewController: UIViewController {
         }
     }
     
-
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         guard let numericKeyPad = segue.destination as? NumericKeyPadViewController else { return }
         let numberFormatter = InputNumberFormatter(unit: .bit)
