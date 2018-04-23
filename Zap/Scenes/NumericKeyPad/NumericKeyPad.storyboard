@@ -30,19 +30,19 @@
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="KKn-a3-ds0">
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="352"/>
                                 <subviews>
-                                    <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="l6a-vs-Gmm">
-                                        <rect key="frame" x="82" y="191" width="210" height="20"/>
+                                    <stackView opaque="NO" contentMode="scaleToFill" distribution="equalSpacing" translatesAutoresizingMaskIntoConstraints="NO" id="l6a-vs-Gmm" customClass="PinView" customModule="Zap" customModuleProvider="target">
+                                        <rect key="frame" x="82" y="194" width="210" height="14"/>
                                         <color key="backgroundColor" white="0.75" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="210" id="OMb-wm-wyV"/>
-                                            <constraint firstAttribute="height" constant="20" id="VEn-31-X69"/>
+                                            <constraint firstAttribute="height" constant="14" id="VEn-31-X69"/>
                                         </constraints>
                                     </stackView>
                                     <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" style="gray" translatesAutoresizingMaskIntoConstraints="NO" id="gn8-lB-CuG">
                                         <rect key="frame" x="177" y="191" width="20" height="20"/>
                                     </activityIndicatorView>
                                     <imageView userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="pin-logo" translatesAutoresizingMaskIntoConstraints="NO" id="lUe-bL-uQc">
-                                        <rect key="frame" x="0.0" y="0.0" width="375" height="191"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="375" height="194"/>
                                     </imageView>
                                 </subviews>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -182,7 +182,7 @@
                                     <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="gBL-S9-YWe">
                                         <rect key="frame" x="0.0" y="225" width="345" height="75"/>
                                         <subviews>
-                                            <button opaque="NO" tag="10" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="tR6-93-Z0k">
+                                            <button opaque="NO" tag="10" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="tR6-93-Z0k">
                                                 <rect key="frame" x="0.0" y="0.0" width="115" height="75"/>
                                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <state key="normal" title="."/>
@@ -312,6 +312,6 @@
         <image name="pin-logo" width="38" height="36"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="HGL-bg-T84"/>
+        <segue reference="wFm-Zf-cuk"/>
     </inferredMetricsTieBreakers>
 </document>

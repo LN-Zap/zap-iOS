@@ -52,7 +52,9 @@ class RootViewController: UIViewController, ContainerViewController {
     }
     
     private var pinViewController: PinViewController {
-        return Storyboard.numericKeyPad.initial(viewController: PinViewController.self)
+        let pinViewController = Storyboard.numericKeyPad.initial(viewController: PinViewController.self)
+        pinViewController.viewModel = viewModel
+        return pinViewController
     }
     
     override func viewDidLoad() {

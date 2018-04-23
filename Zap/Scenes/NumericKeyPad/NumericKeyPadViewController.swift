@@ -9,10 +9,11 @@ import UIKit
 
 class NumericKeyPadViewController: UIViewController {
     var handler: ((String) -> Bool)?
-
+    var customPointButtonAction: (() -> Void)?
+    
     var isPin = false {
         didSet {
-            pointButton?.isEnabled = !isPin
+            updatePointButton()
         }
     }
     var textColor = Color.text {
@@ -24,9 +25,7 @@ class NumericKeyPadViewController: UIViewController {
     @IBOutlet private var buttons: [UIButton]?
     @IBOutlet private weak var pointButton: UIButton! {
         didSet {
-            let decimalSeparator = Locale.autoupdatingCurrent.decimalSeparator ?? "."
-            pointButton.setTitle(decimalSeparator, for: .normal)
-            pointButton?.isEnabled = !isPin
+            updatePointButton()
         }
     }
     
@@ -38,7 +37,7 @@ class NumericKeyPadViewController: UIViewController {
     }
     
     private var pointCharacter: String {
-        return NumberFormatter().decimalSeparator
+        return Locale.autoupdatingCurrent.decimalSeparator ?? "."
     }
     
     override func viewDidLoad() {
@@ -51,13 +50,24 @@ class NumericKeyPadViewController: UIViewController {
         buttons?.forEach {
             Style.button.apply(to: $0)
             $0.setTitleColor(textColor, for: .normal)
-            $0.imageView?.tintColor = Color.text
+            $0.imageView?.tintColor = textColor
             $0.titleLabel?.font = $0.titleLabel?.font.withSize(24)
+        }
+    }
+    
+    private func updatePointButton() {
+        if isPin {
+            pointButton.setImage(#imageLiteral(resourceName: "icon-face-id"), for: .normal)
+            pointButton.imageView?.tintColor = textColor
+            pointButton.setTitle(nil, for: .normal)
+        } else {
+            pointButton.setImage(nil, for: .normal)
+            pointButton.setTitle(pointCharacter, for: .normal)
         }
     }
  
     private func numberTapped(_ number: Int) {
-        if numberString == "0" {
+        if numberString == "0" && !isPin {
             proposeNumberString(String(describing: number))
         } else {
             proposeNumberString(numberString + String(describing: number))
@@ -65,7 +75,11 @@ class NumericKeyPadViewController: UIViewController {
     }
     
     private func pointTapped() {
-        proposeNumberString(numberString + pointCharacter)
+        if let customPointButtonAction = customPointButtonAction {
+            customPointButtonAction()
+        } else {
+            proposeNumberString(numberString + pointCharacter)
+        }
     }
     
     private func backspaceTapped() {

@@ -20,6 +20,11 @@ enum WalletState {
 }
 
 final class ViewModel: NSObject {
+    var isLocked = true {
+        didSet {
+            updateWalletState(result: nil)
+        }
+    }
     private let api: LightningProtocol
     
     let walletState: Observable<WalletState>
@@ -119,25 +124,31 @@ final class ViewModel: NSObject {
         updateWalletState(result: result)
     }
     
-    private func updateWalletState(result: Result<Info>) {
-        walletState.value = .locked
-        return
+    private func updateWalletState(result: Result<Info>?) {
+        if isLocked {
+            walletState.value = .locked
+            return
+        }
         
-        if let info = result.value {
-            if !ViewModel.didCreateWallet {
-                walletState.value = .noWallet
-            } else if !info.isSyncedToChain {
-                walletState.value = .syncing
+        if let result = result {
+            if let info = result.value {
+                if !ViewModel.didCreateWallet {
+                    walletState.value = .noWallet
+                } else if !info.isSyncedToChain {
+                    walletState.value = .syncing
+                } else {
+                    walletState.value = .ready
+                }
+            } else if let error = result.error as? LndError,
+                error == LndError.noInternet {
+                walletState.value = .noInternet
+            } else if ViewModel.didCreateWallet {
+                walletState.value = .connecting
             } else {
-                walletState.value = .ready
+                walletState.value = .noWallet
             }
-        } else if let error = result.error as? LndError,
-            error == LndError.noInternet {
-            walletState.value = .noInternet
-        } else if ViewModel.didCreateWallet {
-            walletState.value = .connecting
         } else {
-            walletState.value = .noWallet
+            walletState.value = .connecting
         }
     }
     

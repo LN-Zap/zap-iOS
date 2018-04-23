@@ -179,6 +179,7 @@
 		ADCE01C6207B71FC00CA72E8 /* Sync.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = ADCE01C5207B71FC00CA72E8 /* Sync.storyboard */; };
 		ADCE01C8207B720800CA72E8 /* SyncViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADCE01C7207B720800CA72E8 /* SyncViewController.swift */; };
 		ADCE01CC207B967200CA72E8 /* Loading.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = ADCE01CB207B967200CA72E8 /* Loading.storyboard */; };
+		ADF79364208DCB630086B2CA /* PinView.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADF79363208DCB630086B2CA /* PinView.swift */; };
 		E2255ED911EB334C67EC4349 /* Pods_ZapTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 700FBCADDAD580B28F987D98 /* Pods_ZapTests.framework */; };
 /* End PBXBuildFile section */
 
@@ -413,6 +414,7 @@
 		ADCE01C5207B71FC00CA72E8 /* Sync.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Sync.storyboard; sourceTree = "<group>"; };
 		ADCE01C7207B720800CA72E8 /* SyncViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SyncViewController.swift; sourceTree = "<group>"; };
 		ADCE01CB207B967200CA72E8 /* Loading.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Loading.storyboard; sourceTree = "<group>"; };
+		ADF79363208DCB630086B2CA /* PinView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PinView.swift; sourceTree = "<group>"; };
 		AE22E81B1B7AD6C27F3D49BD /* Pods-Zap.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Zap.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Zap/Pods-Zap.debug.xcconfig"; sourceTree = "<group>"; };
 		CAF208744C2CFC6A493BD8B1 /* Pods_btcutil.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_btcutil.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		DB877056D2A1225EA035E012 /* Pods-Zap.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Zap.release.xcconfig"; path = "Pods/Target Support Files/Pods-Zap/Pods-Zap.release.xcconfig"; sourceTree = "<group>"; };
@@ -631,6 +633,7 @@
 				A0376B76201CD67700F1FBEF /* PinViewController.swift */,
 				A0E2690C202CC4E30069E83C /* AuthenticationViewModel.swift */,
 				A0F9AEE0206E3D8200E93DCA /* InputNumberFormatter.swift */,
+				ADF79363208DCB630086B2CA /* PinView.swift */,
 			);
 			path = NumericKeyPad;
 			sourceTree = "<group>";
@@ -1538,6 +1541,7 @@
 				A02C9FBD202EE9BE009821B1 /* OpenChannelViewModel.swift in Sources */,
 				A0A96B8620174BAC00788808 /* CloseStatusUpdate.swift in Sources */,
 				A0A05A232013D9BB0007D1C9 /* UIColor.swift in Sources */,
+				ADF79364208DCB630086B2CA /* PinView.swift in Sources */,
 				A07C1033203DD5AF006C7FE8 /* Appearance.swift in Sources */,
 				A010094E2015F97F0001EF94 /* OpenChannelViewController.swift in Sources */,
 				A02C9FC620304395009821B1 /* LndConfiguration.swift in Sources */,

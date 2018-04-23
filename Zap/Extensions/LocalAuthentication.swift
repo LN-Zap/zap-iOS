@@ -19,44 +19,38 @@ final class BiometricAuthentication {
         if localAuthenticationContext.canEvaluatePolicy(.deviceOwnerAuthenticationWithBiometrics, error: &authError) {
             localAuthenticationContext.evaluatePolicy(.deviceOwnerAuthenticationWithBiometrics, localizedReason: reasonString) { success, evaluateError in
                 if success {
-                    callback(Result(value: ()))
+                    execute(callback, with: Result(value: ()))
                 } else if let error = evaluateError {
-                    let message = self.evaluateAuthenticationPolicyMessageForLA(errorCode: error._code)
-                    callback(Result(error: LndError.localizedError(message)))
+                    let message = self.errorMessage(for: error._code)
+                    execute(callback, with: Result(error: LndError.localizedError(message)))
                 }
             }
         } else if let error = authError {
-            let message = self.evaluateAuthenticationPolicyMessageForLA(errorCode: error.code)
-            callback(Result(error: LndError.localizedError(message)))
+            let message = self.errorMessage(for: error._code)
+            execute(callback, with: Result(error: LndError.localizedError(message)))
+        }
+    }
+    
+    private static func execute(_ callback: @escaping (Result<Void>) -> Void, with result: Result<Void>) {
+        DispatchQueue.main.async {
+            callback(result)
         }
     }
 
-    static func evaluateAuthenticationPolicyMessageForLA(errorCode: Int) -> String {
-        switch Int32(errorCode) {
-        case kLAErrorAuthenticationFailed:
-            return "The user failed to provide valid credentials"
-        case kLAErrorAppCancel:
-            return "Authentication was cancelled by application"
-        case kLAErrorInvalidContext:
-            return "The context is invalid"
-        case kLAErrorNotInteractive:
-            return "Not interactive"
-        case kLAErrorPasscodeNotSet:
-            return "Passcode is not set on the device"
-        case kLAErrorSystemCancel:
-            return "Authentication was cancelled by the system"
-        case kLAErrorUserCancel:
-            return "The user did cancel"
-        case kLAErrorUserFallback:
-            return "The user chose to use the fallback"
-        case kLAErrorBiometryNotAvailable:
-            return "Authentication could not start because the device does not support biometric authentication."
-        case kLAErrorBiometryLockout:
-            return "Authentication could not continue because the user has been locked out of biometric authentication, due to failing authentication too many times."
-        case kLAErrorBiometryNotEnrolled:
-            return "Authentication could not start because the user has not enrolled in biometric authentication."
-        default:
-            return "Did not find error code on LAError object"
-        }
+    private static func errorMessage(for errorCode: Int) -> String {
+        let messages: [Int32: String] = [
+            kLAErrorAuthenticationFailed: "The user failed to provide valid credentials",
+            kLAErrorAppCancel: "Authentication was cancelled by application",
+            kLAErrorInvalidContext: "The context is invalid",
+            kLAErrorNotInteractive: "Not interactive",
+            kLAErrorPasscodeNotSet: "Passcode is not set on the device",
+            kLAErrorSystemCancel: "Authentication was cancelled by the system",
+            kLAErrorUserCancel: "The user did cancel",
+            kLAErrorUserFallback: "The user chose to use the fallback",
+            kLAErrorBiometryNotAvailable: "Authentication could not start because the device does not support biometric authentication.",
+            kLAErrorBiometryLockout: "Authentication could not continue because the user has been locked out of biometric authentication, due to failing authentication too many times.",
+            kLAErrorBiometryNotEnrolled: "Authentication could not start because the user has not enrolled in biometric authentication."
+        ]
+        return messages[Int32(errorCode)] ?? "Did not find error code on LAError object"
     }
 }
