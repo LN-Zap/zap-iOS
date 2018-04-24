@@ -9,8 +9,10 @@ import UIKit
 
 class SelectWalletCreationMethodViewController: UIViewController {
 
-    @IBOutlet private weak var createWalletButton: UIButton!
-    @IBOutlet private weak var recoverWalletButton: UIButton!
+    @IBOutlet weak private var createMainLabel: UILabel!
+    @IBOutlet weak private var createDescriptionLabel: UILabel!
+    @IBOutlet weak private var recoverMainLabel: UILabel!
+    @IBOutlet weak private var recoverDescriptionLabel: UILabel!
     
     var viewModel: ViewModel?
     
@@ -19,10 +21,19 @@ class SelectWalletCreationMethodViewController: UIViewController {
         
         view.backgroundColor = Color.darkBackground
 
-        Style.button.apply(to: createWalletButton, recoverWalletButton)
+        Style.label.apply(to: createMainLabel, recoverMainLabel) {
+            $0.textColor = .white
+            $0.font = $0.font.withSize(36)
+        }
+        Style.label.apply(to: createDescriptionLabel, recoverDescriptionLabel) {
+            $0.textColor = .white
+            $0.font = $0.font.withSize(18)
+        }
         
-        createWalletButton.setTitle("new wallet", for: .normal)
-        recoverWalletButton.setTitle("recover wallet", for: .normal)
+        createMainLabel.text = "Create"
+        createDescriptionLabel.text = "new wallet"
+        recoverMainLabel.text = "Recover"
+        recoverDescriptionLabel.text =  "Existing wallet"
         
         navigationController?.navigationBar.backgroundColor = .clear
         navigationController?.navigationBar.shadowImage = UIImage()
