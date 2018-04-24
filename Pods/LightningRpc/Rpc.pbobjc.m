@@ -1646,9 +1646,9 @@ typedef struct HTLC__storage_ {
 
 @end
 
-#pragma mark - ActiveChannel
+#pragma mark - Channel
 
-@implementation ActiveChannel
+@implementation Channel
 
 @dynamic active;
 @dynamic remotePubkey;
@@ -1666,8 +1666,9 @@ typedef struct HTLC__storage_ {
 @dynamic numUpdates;
 @dynamic pendingHtlcsArray, pendingHtlcsArray_Count;
 @dynamic csvDelay;
+@dynamic private_p;
 
-typedef struct ActiveChannel__storage_ {
+typedef struct Channel__storage_ {
   uint32_t _has_storage_[1];
   uint32_t csvDelay;
   NSString *remotePubkey;
@@ -1684,7 +1685,7 @@ typedef struct ActiveChannel__storage_ {
   int64_t totalSatoshisSent;
   int64_t totalSatoshisReceived;
   uint64_t numUpdates;
-} ActiveChannel__storage_;
+} Channel__storage_;
 
 // This method is threadsafe because it is initially called
 // in +initialize for each subclass.
@@ -1695,7 +1696,7 @@ typedef struct ActiveChannel__storage_ {
       {
         .name = "active",
         .dataTypeSpecific.className = NULL,
-        .number = ActiveChannel_FieldNumber_Active,
+        .number = Channel_FieldNumber_Active,
         .hasIndex = 0,
         .offset = 1,  // Stored in _has_storage_ to save space.
         .flags = GPBFieldOptional,
@@ -1704,146 +1705,155 @@ typedef struct ActiveChannel__storage_ {
       {
         .name = "remotePubkey",
         .dataTypeSpecific.className = NULL,
-        .number = ActiveChannel_FieldNumber_RemotePubkey,
+        .number = Channel_FieldNumber_RemotePubkey,
         .hasIndex = 2,
-        .offset = (uint32_t)offsetof(ActiveChannel__storage_, remotePubkey),
+        .offset = (uint32_t)offsetof(Channel__storage_, remotePubkey),
         .flags = GPBFieldOptional,
         .dataType = GPBDataTypeString,
       },
       {
         .name = "channelPoint",
         .dataTypeSpecific.className = NULL,
-        .number = ActiveChannel_FieldNumber_ChannelPoint,
+        .number = Channel_FieldNumber_ChannelPoint,
         .hasIndex = 3,
-        .offset = (uint32_t)offsetof(ActiveChannel__storage_, channelPoint),
+        .offset = (uint32_t)offsetof(Channel__storage_, channelPoint),
         .flags = GPBFieldOptional,
         .dataType = GPBDataTypeString,
       },
       {
         .name = "chanId",
         .dataTypeSpecific.className = NULL,
-        .number = ActiveChannel_FieldNumber_ChanId,
+        .number = Channel_FieldNumber_ChanId,
         .hasIndex = 4,
-        .offset = (uint32_t)offsetof(ActiveChannel__storage_, chanId),
+        .offset = (uint32_t)offsetof(Channel__storage_, chanId),
         .flags = GPBFieldOptional,
         .dataType = GPBDataTypeUInt64,
       },
       {
         .name = "capacity",
         .dataTypeSpecific.className = NULL,
-        .number = ActiveChannel_FieldNumber_Capacity,
+        .number = Channel_FieldNumber_Capacity,
         .hasIndex = 5,
-        .offset = (uint32_t)offsetof(ActiveChannel__storage_, capacity),
+        .offset = (uint32_t)offsetof(Channel__storage_, capacity),
         .flags = GPBFieldOptional,
         .dataType = GPBDataTypeInt64,
       },
       {
         .name = "localBalance",
         .dataTypeSpecific.className = NULL,
-        .number = ActiveChannel_FieldNumber_LocalBalance,
+        .number = Channel_FieldNumber_LocalBalance,
         .hasIndex = 6,
-        .offset = (uint32_t)offsetof(ActiveChannel__storage_, localBalance),
+        .offset = (uint32_t)offsetof(Channel__storage_, localBalance),
         .flags = GPBFieldOptional,
         .dataType = GPBDataTypeInt64,
       },
       {
         .name = "remoteBalance",
         .dataTypeSpecific.className = NULL,
-        .number = ActiveChannel_FieldNumber_RemoteBalance,
+        .number = Channel_FieldNumber_RemoteBalance,
         .hasIndex = 7,
-        .offset = (uint32_t)offsetof(ActiveChannel__storage_, remoteBalance),
+        .offset = (uint32_t)offsetof(Channel__storage_, remoteBalance),
         .flags = GPBFieldOptional,
         .dataType = GPBDataTypeInt64,
       },
       {
         .name = "commitFee",
         .dataTypeSpecific.className = NULL,
-        .number = ActiveChannel_FieldNumber_CommitFee,
+        .number = Channel_FieldNumber_CommitFee,
         .hasIndex = 8,
-        .offset = (uint32_t)offsetof(ActiveChannel__storage_, commitFee),
+        .offset = (uint32_t)offsetof(Channel__storage_, commitFee),
         .flags = GPBFieldOptional,
         .dataType = GPBDataTypeInt64,
       },
       {
         .name = "commitWeight",
         .dataTypeSpecific.className = NULL,
-        .number = ActiveChannel_FieldNumber_CommitWeight,
+        .number = Channel_FieldNumber_CommitWeight,
         .hasIndex = 9,
-        .offset = (uint32_t)offsetof(ActiveChannel__storage_, commitWeight),
+        .offset = (uint32_t)offsetof(Channel__storage_, commitWeight),
         .flags = GPBFieldOptional,
         .dataType = GPBDataTypeInt64,
       },
       {
         .name = "feePerKw",
         .dataTypeSpecific.className = NULL,
-        .number = ActiveChannel_FieldNumber_FeePerKw,
+        .number = Channel_FieldNumber_FeePerKw,
         .hasIndex = 10,
-        .offset = (uint32_t)offsetof(ActiveChannel__storage_, feePerKw),
+        .offset = (uint32_t)offsetof(Channel__storage_, feePerKw),
         .flags = GPBFieldOptional,
         .dataType = GPBDataTypeInt64,
       },
       {
         .name = "unsettledBalance",
         .dataTypeSpecific.className = NULL,
-        .number = ActiveChannel_FieldNumber_UnsettledBalance,
+        .number = Channel_FieldNumber_UnsettledBalance,
         .hasIndex = 11,
-        .offset = (uint32_t)offsetof(ActiveChannel__storage_, unsettledBalance),
+        .offset = (uint32_t)offsetof(Channel__storage_, unsettledBalance),
         .flags = GPBFieldOptional,
         .dataType = GPBDataTypeInt64,
       },
       {
         .name = "totalSatoshisSent",
         .dataTypeSpecific.className = NULL,
-        .number = ActiveChannel_FieldNumber_TotalSatoshisSent,
+        .number = Channel_FieldNumber_TotalSatoshisSent,
         .hasIndex = 12,
-        .offset = (uint32_t)offsetof(ActiveChannel__storage_, totalSatoshisSent),
+        .offset = (uint32_t)offsetof(Channel__storage_, totalSatoshisSent),
         .flags = GPBFieldOptional,
         .dataType = GPBDataTypeInt64,
       },
       {
         .name = "totalSatoshisReceived",
         .dataTypeSpecific.className = NULL,
-        .number = ActiveChannel_FieldNumber_TotalSatoshisReceived,
+        .number = Channel_FieldNumber_TotalSatoshisReceived,
         .hasIndex = 13,
-        .offset = (uint32_t)offsetof(ActiveChannel__storage_, totalSatoshisReceived),
+        .offset = (uint32_t)offsetof(Channel__storage_, totalSatoshisReceived),
         .flags = GPBFieldOptional,
         .dataType = GPBDataTypeInt64,
       },
       {
         .name = "numUpdates",
         .dataTypeSpecific.className = NULL,
-        .number = ActiveChannel_FieldNumber_NumUpdates,
+        .number = Channel_FieldNumber_NumUpdates,
         .hasIndex = 14,
-        .offset = (uint32_t)offsetof(ActiveChannel__storage_, numUpdates),
+        .offset = (uint32_t)offsetof(Channel__storage_, numUpdates),
         .flags = GPBFieldOptional,
         .dataType = GPBDataTypeUInt64,
       },
       {
         .name = "pendingHtlcsArray",
         .dataTypeSpecific.className = GPBStringifySymbol(HTLC),
-        .number = ActiveChannel_FieldNumber_PendingHtlcsArray,
+        .number = Channel_FieldNumber_PendingHtlcsArray,
         .hasIndex = GPBNoHasBit,
-        .offset = (uint32_t)offsetof(ActiveChannel__storage_, pendingHtlcsArray),
+        .offset = (uint32_t)offsetof(Channel__storage_, pendingHtlcsArray),
         .flags = GPBFieldRepeated,
         .dataType = GPBDataTypeMessage,
       },
       {
         .name = "csvDelay",
         .dataTypeSpecific.className = NULL,
-        .number = ActiveChannel_FieldNumber_CsvDelay,
+        .number = Channel_FieldNumber_CsvDelay,
         .hasIndex = 15,
-        .offset = (uint32_t)offsetof(ActiveChannel__storage_, csvDelay),
+        .offset = (uint32_t)offsetof(Channel__storage_, csvDelay),
         .flags = GPBFieldOptional,
         .dataType = GPBDataTypeUInt32,
       },
+      {
+        .name = "private_p",
+        .dataTypeSpecific.className = NULL,
+        .number = Channel_FieldNumber_Private_p,
+        .hasIndex = 16,
+        .offset = 17,  // Stored in _has_storage_ to save space.
+        .flags = GPBFieldOptional,
+        .dataType = GPBDataTypeBool,
+      },
     };
     GPBDescriptor *localDescriptor =
-        [GPBDescriptor allocDescriptorForClass:[ActiveChannel class]
+        [GPBDescriptor allocDescriptorForClass:[Channel class]
                                      rootClass:[RpcRoot class]
                                           file:RpcRoot_FileDescriptor()
                                         fields:fields
                                     fieldCount:(uint32_t)(sizeof(fields) / sizeof(GPBMessageFieldDescription))
-                                   storageSize:sizeof(ActiveChannel__storage_)
+                                   storageSize:sizeof(Channel__storage_)
                                          flags:GPBDescriptorInitializationFlag_None];
     NSAssert(descriptor == nil, @"Startup recursed!");
     descriptor = localDescriptor;
@@ -1857,6 +1867,10 @@ typedef struct ActiveChannel__storage_ {
 
 @implementation ListChannelsRequest
 
+@dynamic activeOnly;
+@dynamic inactiveOnly;
+@dynamic publicOnly;
+@dynamic privateOnly;
 
 typedef struct ListChannelsRequest__storage_ {
   uint32_t _has_storage_[1];
@@ -1867,12 +1881,50 @@ typedef struct ListChannelsRequest__storage_ {
 + (GPBDescriptor *)descriptor {
   static GPBDescriptor *descriptor = nil;
   if (!descriptor) {
+    static GPBMessageFieldDescription fields[] = {
+      {
+        .name = "activeOnly",
+        .dataTypeSpecific.className = NULL,
+        .number = ListChannelsRequest_FieldNumber_ActiveOnly,
+        .hasIndex = 0,
+        .offset = 1,  // Stored in _has_storage_ to save space.
+        .flags = GPBFieldOptional,
+        .dataType = GPBDataTypeBool,
+      },
+      {
+        .name = "inactiveOnly",
+        .dataTypeSpecific.className = NULL,
+        .number = ListChannelsRequest_FieldNumber_InactiveOnly,
+        .hasIndex = 2,
+        .offset = 3,  // Stored in _has_storage_ to save space.
+        .flags = GPBFieldOptional,
+        .dataType = GPBDataTypeBool,
+      },
+      {
+        .name = "publicOnly",
+        .dataTypeSpecific.className = NULL,
+        .number = ListChannelsRequest_FieldNumber_PublicOnly,
+        .hasIndex = 4,
+        .offset = 5,  // Stored in _has_storage_ to save space.
+        .flags = GPBFieldOptional,
+        .dataType = GPBDataTypeBool,
+      },
+      {
+        .name = "privateOnly",
+        .dataTypeSpecific.className = NULL,
+        .number = ListChannelsRequest_FieldNumber_PrivateOnly,
+        .hasIndex = 6,
+        .offset = 7,  // Stored in _has_storage_ to save space.
+        .flags = GPBFieldOptional,
+        .dataType = GPBDataTypeBool,
+      },
+    };
     GPBDescriptor *localDescriptor =
         [GPBDescriptor allocDescriptorForClass:[ListChannelsRequest class]
                                      rootClass:[RpcRoot class]
                                           file:RpcRoot_FileDescriptor()
-                                        fields:NULL
-                                    fieldCount:0
+                                        fields:fields
+                                    fieldCount:(uint32_t)(sizeof(fields) / sizeof(GPBMessageFieldDescription))
                                    storageSize:sizeof(ListChannelsRequest__storage_)
                                          flags:GPBDescriptorInitializationFlag_None];
     NSAssert(descriptor == nil, @"Startup recursed!");
@@ -1902,7 +1954,7 @@ typedef struct ListChannelsResponse__storage_ {
     static GPBMessageFieldDescription fields[] = {
       {
         .name = "channelsArray",
-        .dataTypeSpecific.className = GPBStringifySymbol(ActiveChannel),
+        .dataTypeSpecific.className = GPBStringifySymbol(Channel),
         .number = ListChannelsResponse_FieldNumber_ChannelsArray,
         .hasIndex = GPBNoHasBit,
         .offset = (uint32_t)offsetof(ListChannelsResponse__storage_, channelsArray),
@@ -2164,6 +2216,7 @@ typedef struct GetInfoRequest__storage_ {
 @dynamic chainsArray, chainsArray_Count;
 @dynamic urisArray, urisArray_Count;
 @dynamic bestHeaderTimestamp;
+@dynamic version;
 
 typedef struct GetInfoResponse__storage_ {
   uint32_t _has_storage_[1];
@@ -2176,6 +2229,7 @@ typedef struct GetInfoResponse__storage_ {
   NSString *blockHash;
   NSMutableArray *chainsArray;
   NSMutableArray *urisArray;
+  NSString *version;
   int64_t bestHeaderTimestamp;
 } GetInfoResponse__storage_;
 
@@ -2292,6 +2346,15 @@ typedef struct GetInfoResponse__storage_ {
         .offset = (uint32_t)offsetof(GetInfoResponse__storage_, bestHeaderTimestamp),
         .flags = GPBFieldOptional,
         .dataType = GPBDataTypeInt64,
+      },
+      {
+        .name = "version",
+        .dataTypeSpecific.className = NULL,
+        .number = GetInfoResponse_FieldNumber_Version,
+        .hasIndex = 12,
+        .offset = (uint32_t)offsetof(GetInfoResponse__storage_, version),
+        .flags = GPBFieldOptional,
+        .dataType = GPBDataTypeString,
       },
     };
     GPBDescriptor *localDescriptor =
@@ -2689,10 +2752,12 @@ typedef struct PendingUpdate__storage_ {
 @dynamic satPerByte;
 @dynamic private_p;
 @dynamic minHtlcMsat;
+@dynamic remoteCsvDelay;
 
 typedef struct OpenChannelRequest__storage_ {
   uint32_t _has_storage_[1];
   int32_t targetConf;
+  uint32_t remoteCsvDelay;
   NSData *nodePubkey;
   NSString *nodePubkeyString;
   int64_t localFundingAmount;
@@ -2778,6 +2843,15 @@ typedef struct OpenChannelRequest__storage_ {
         .offset = (uint32_t)offsetof(OpenChannelRequest__storage_, minHtlcMsat),
         .flags = GPBFieldOptional,
         .dataType = GPBDataTypeInt64,
+      },
+      {
+        .name = "remoteCsvDelay",
+        .dataTypeSpecific.className = NULL,
+        .number = OpenChannelRequest_FieldNumber_RemoteCsvDelay,
+        .hasIndex = 9,
+        .offset = (uint32_t)offsetof(OpenChannelRequest__storage_, remoteCsvDelay),
+        .flags = GPBFieldOptional,
+        .dataType = GPBDataTypeUInt32,
       },
     };
     GPBDescriptor *localDescriptor =
@@ -3547,10 +3621,12 @@ typedef struct ChannelBalanceRequest__storage_ {
 @implementation ChannelBalanceResponse
 
 @dynamic balance;
+@dynamic pendingOpenBalance;
 
 typedef struct ChannelBalanceResponse__storage_ {
   uint32_t _has_storage_[1];
   int64_t balance;
+  int64_t pendingOpenBalance;
 } ChannelBalanceResponse__storage_;
 
 // This method is threadsafe because it is initially called
@@ -3565,6 +3641,15 @@ typedef struct ChannelBalanceResponse__storage_ {
         .number = ChannelBalanceResponse_FieldNumber_Balance,
         .hasIndex = 0,
         .offset = (uint32_t)offsetof(ChannelBalanceResponse__storage_, balance),
+        .flags = GPBFieldOptional,
+        .dataType = GPBDataTypeInt64,
+      },
+      {
+        .name = "pendingOpenBalance",
+        .dataTypeSpecific.className = NULL,
+        .number = ChannelBalanceResponse_FieldNumber_PendingOpenBalance,
+        .hasIndex = 1,
+        .offset = (uint32_t)offsetof(ChannelBalanceResponse__storage_, pendingOpenBalance),
         .flags = GPBFieldOptional,
         .dataType = GPBDataTypeInt64,
       },
@@ -3702,6 +3787,8 @@ typedef struct QueryRoutesResponse__storage_ {
 @dynamic amtToForward;
 @dynamic fee;
 @dynamic expiry;
+@dynamic amtToForwardMsat;
+@dynamic feeMsat;
 
 typedef struct Hop__storage_ {
   uint32_t _has_storage_[1];
@@ -3710,6 +3797,8 @@ typedef struct Hop__storage_ {
   int64_t chanCapacity;
   int64_t amtToForward;
   int64_t fee;
+  int64_t amtToForwardMsat;
+  int64_t feeMsat;
 } Hop__storage_;
 
 // This method is threadsafe because it is initially called
@@ -3763,6 +3852,24 @@ typedef struct Hop__storage_ {
         .flags = GPBFieldOptional,
         .dataType = GPBDataTypeUInt32,
       },
+      {
+        .name = "amtToForwardMsat",
+        .dataTypeSpecific.className = NULL,
+        .number = Hop_FieldNumber_AmtToForwardMsat,
+        .hasIndex = 5,
+        .offset = (uint32_t)offsetof(Hop__storage_, amtToForwardMsat),
+        .flags = GPBFieldOptional,
+        .dataType = GPBDataTypeInt64,
+      },
+      {
+        .name = "feeMsat",
+        .dataTypeSpecific.className = NULL,
+        .number = Hop_FieldNumber_FeeMsat,
+        .hasIndex = 6,
+        .offset = (uint32_t)offsetof(Hop__storage_, feeMsat),
+        .flags = GPBFieldOptional,
+        .dataType = GPBDataTypeInt64,
+      },
     };
     GPBDescriptor *localDescriptor =
         [GPBDescriptor allocDescriptorForClass:[Hop class]
@@ -3788,6 +3895,8 @@ typedef struct Hop__storage_ {
 @dynamic totalFees;
 @dynamic totalAmt;
 @dynamic hopsArray, hopsArray_Count;
+@dynamic totalFeesMsat;
+@dynamic totalAmtMsat;
 
 typedef struct Route__storage_ {
   uint32_t _has_storage_[1];
@@ -3795,6 +3904,8 @@ typedef struct Route__storage_ {
   NSMutableArray *hopsArray;
   int64_t totalFees;
   int64_t totalAmt;
+  int64_t totalFeesMsat;
+  int64_t totalAmtMsat;
 } Route__storage_;
 
 // This method is threadsafe because it is initially called
@@ -3838,6 +3949,24 @@ typedef struct Route__storage_ {
         .offset = (uint32_t)offsetof(Route__storage_, hopsArray),
         .flags = GPBFieldRepeated,
         .dataType = GPBDataTypeMessage,
+      },
+      {
+        .name = "totalFeesMsat",
+        .dataTypeSpecific.className = NULL,
+        .number = Route_FieldNumber_TotalFeesMsat,
+        .hasIndex = 3,
+        .offset = (uint32_t)offsetof(Route__storage_, totalFeesMsat),
+        .flags = GPBFieldOptional,
+        .dataType = GPBDataTypeInt64,
+      },
+      {
+        .name = "totalAmtMsat",
+        .dataTypeSpecific.className = NULL,
+        .number = Route_FieldNumber_TotalAmtMsat,
+        .hasIndex = 4,
+        .offset = (uint32_t)offsetof(Route__storage_, totalAmtMsat),
+        .flags = GPBFieldOptional,
+        .dataType = GPBDataTypeInt64,
       },
     };
     GPBDescriptor *localDescriptor =
@@ -4994,6 +5123,136 @@ typedef struct ClosedChannelUpdate__storage_ {
 
 @end
 
+#pragma mark - HopHint
+
+@implementation HopHint
+
+@dynamic nodeId;
+@dynamic chanId;
+@dynamic feeBaseMsat;
+@dynamic feeProportionalMillionths;
+@dynamic cltvExpiryDelta;
+
+typedef struct HopHint__storage_ {
+  uint32_t _has_storage_[1];
+  uint32_t feeBaseMsat;
+  uint32_t feeProportionalMillionths;
+  uint32_t cltvExpiryDelta;
+  NSString *nodeId;
+  uint64_t chanId;
+} HopHint__storage_;
+
+// This method is threadsafe because it is initially called
+// in +initialize for each subclass.
++ (GPBDescriptor *)descriptor {
+  static GPBDescriptor *descriptor = nil;
+  if (!descriptor) {
+    static GPBMessageFieldDescription fields[] = {
+      {
+        .name = "nodeId",
+        .dataTypeSpecific.className = NULL,
+        .number = HopHint_FieldNumber_NodeId,
+        .hasIndex = 0,
+        .offset = (uint32_t)offsetof(HopHint__storage_, nodeId),
+        .flags = GPBFieldOptional,
+        .dataType = GPBDataTypeString,
+      },
+      {
+        .name = "chanId",
+        .dataTypeSpecific.className = NULL,
+        .number = HopHint_FieldNumber_ChanId,
+        .hasIndex = 1,
+        .offset = (uint32_t)offsetof(HopHint__storage_, chanId),
+        .flags = GPBFieldOptional,
+        .dataType = GPBDataTypeUInt64,
+      },
+      {
+        .name = "feeBaseMsat",
+        .dataTypeSpecific.className = NULL,
+        .number = HopHint_FieldNumber_FeeBaseMsat,
+        .hasIndex = 2,
+        .offset = (uint32_t)offsetof(HopHint__storage_, feeBaseMsat),
+        .flags = GPBFieldOptional,
+        .dataType = GPBDataTypeUInt32,
+      },
+      {
+        .name = "feeProportionalMillionths",
+        .dataTypeSpecific.className = NULL,
+        .number = HopHint_FieldNumber_FeeProportionalMillionths,
+        .hasIndex = 3,
+        .offset = (uint32_t)offsetof(HopHint__storage_, feeProportionalMillionths),
+        .flags = GPBFieldOptional,
+        .dataType = GPBDataTypeUInt32,
+      },
+      {
+        .name = "cltvExpiryDelta",
+        .dataTypeSpecific.className = NULL,
+        .number = HopHint_FieldNumber_CltvExpiryDelta,
+        .hasIndex = 4,
+        .offset = (uint32_t)offsetof(HopHint__storage_, cltvExpiryDelta),
+        .flags = GPBFieldOptional,
+        .dataType = GPBDataTypeUInt32,
+      },
+    };
+    GPBDescriptor *localDescriptor =
+        [GPBDescriptor allocDescriptorForClass:[HopHint class]
+                                     rootClass:[RpcRoot class]
+                                          file:RpcRoot_FileDescriptor()
+                                        fields:fields
+                                    fieldCount:(uint32_t)(sizeof(fields) / sizeof(GPBMessageFieldDescription))
+                                   storageSize:sizeof(HopHint__storage_)
+                                         flags:GPBDescriptorInitializationFlag_None];
+    NSAssert(descriptor == nil, @"Startup recursed!");
+    descriptor = localDescriptor;
+  }
+  return descriptor;
+}
+
+@end
+
+#pragma mark - RouteHint
+
+@implementation RouteHint
+
+@dynamic hopHintsArray, hopHintsArray_Count;
+
+typedef struct RouteHint__storage_ {
+  uint32_t _has_storage_[1];
+  NSMutableArray *hopHintsArray;
+} RouteHint__storage_;
+
+// This method is threadsafe because it is initially called
+// in +initialize for each subclass.
++ (GPBDescriptor *)descriptor {
+  static GPBDescriptor *descriptor = nil;
+  if (!descriptor) {
+    static GPBMessageFieldDescription fields[] = {
+      {
+        .name = "hopHintsArray",
+        .dataTypeSpecific.className = GPBStringifySymbol(HopHint),
+        .number = RouteHint_FieldNumber_HopHintsArray,
+        .hasIndex = GPBNoHasBit,
+        .offset = (uint32_t)offsetof(RouteHint__storage_, hopHintsArray),
+        .flags = GPBFieldRepeated,
+        .dataType = GPBDataTypeMessage,
+      },
+    };
+    GPBDescriptor *localDescriptor =
+        [GPBDescriptor allocDescriptorForClass:[RouteHint class]
+                                     rootClass:[RpcRoot class]
+                                          file:RpcRoot_FileDescriptor()
+                                        fields:fields
+                                    fieldCount:(uint32_t)(sizeof(fields) / sizeof(GPBMessageFieldDescription))
+                                   storageSize:sizeof(RouteHint__storage_)
+                                         flags:GPBDescriptorInitializationFlag_None];
+    NSAssert(descriptor == nil, @"Startup recursed!");
+    descriptor = localDescriptor;
+  }
+  return descriptor;
+}
+
+@end
+
 #pragma mark - Invoice
 
 @implementation Invoice
@@ -5011,6 +5270,8 @@ typedef struct ClosedChannelUpdate__storage_ {
 @dynamic expiry;
 @dynamic fallbackAddr;
 @dynamic cltvExpiry;
+@dynamic routeHintsArray, routeHintsArray_Count;
+@dynamic private_p;
 
 typedef struct Invoice__storage_ {
   uint32_t _has_storage_[1];
@@ -5021,6 +5282,7 @@ typedef struct Invoice__storage_ {
   NSString *paymentRequest;
   NSData *descriptionHash;
   NSString *fallbackAddr;
+  NSMutableArray *routeHintsArray;
   int64_t value;
   int64_t creationDate;
   int64_t settleDate;
@@ -5150,6 +5412,24 @@ typedef struct Invoice__storage_ {
         .offset = (uint32_t)offsetof(Invoice__storage_, cltvExpiry),
         .flags = GPBFieldOptional,
         .dataType = GPBDataTypeUInt64,
+      },
+      {
+        .name = "routeHintsArray",
+        .dataTypeSpecific.className = GPBStringifySymbol(RouteHint),
+        .number = Invoice_FieldNumber_RouteHintsArray,
+        .hasIndex = GPBNoHasBit,
+        .offset = (uint32_t)offsetof(Invoice__storage_, routeHintsArray),
+        .flags = GPBFieldRepeated,
+        .dataType = GPBDataTypeMessage,
+      },
+      {
+        .name = "private_p",
+        .dataTypeSpecific.className = NULL,
+        .number = Invoice_FieldNumber_Private_p,
+        .hasIndex = 14,
+        .offset = 15,  // Stored in _has_storage_ to save space.
+        .flags = GPBFieldOptional,
+        .dataType = GPBDataTypeBool,
       },
     };
     GPBDescriptor *localDescriptor =
@@ -5774,6 +6054,7 @@ typedef struct PayReqString__storage_ {
 @dynamic descriptionHash;
 @dynamic fallbackAddr;
 @dynamic cltvExpiry;
+@dynamic routeHintsArray, routeHintsArray_Count;
 
 typedef struct PayReq__storage_ {
   uint32_t _has_storage_[1];
@@ -5782,6 +6063,7 @@ typedef struct PayReq__storage_ {
   NSString *description_p;
   NSString *descriptionHash;
   NSString *fallbackAddr;
+  NSMutableArray *routeHintsArray;
   int64_t numSatoshis;
   int64_t timestamp;
   int64_t expiry;
@@ -5874,6 +6156,15 @@ typedef struct PayReq__storage_ {
         .offset = (uint32_t)offsetof(PayReq__storage_, cltvExpiry),
         .flags = GPBFieldOptional,
         .dataType = GPBDataTypeInt64,
+      },
+      {
+        .name = "routeHintsArray",
+        .dataTypeSpecific.className = GPBStringifySymbol(RouteHint),
+        .number = PayReq_FieldNumber_RouteHintsArray,
+        .hasIndex = GPBNoHasBit,
+        .offset = (uint32_t)offsetof(PayReq__storage_, routeHintsArray),
+        .flags = GPBFieldRepeated,
+        .dataType = GPBDataTypeMessage,
       },
     };
     GPBDescriptor *localDescriptor =

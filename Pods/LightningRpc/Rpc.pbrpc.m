@@ -1,15 +1,19 @@
+#if !defined(GPB_GRPC_PROTOCOL_ONLY) || !GPB_GRPC_PROTOCOL_ONLY
 #import "Rpc.pbrpc.h"
 #import "Rpc.pbobjc.h"
-
 #import <ProtoRPC/ProtoRPC.h>
 #import <RxLibrary/GRXWriter+Immediate.h>
+
 //#import "google/api/Annotations.pbobjc.h"
 
 @implementation WalletUnlocker
 
 // Designated initializer
 - (instancetype)initWithHost:(NSString *)host {
-  return (self = [super initWithHost:host packageName:@"lnrpc" serviceName:@"WalletUnlocker"]);
+  self = [super initWithHost:host
+                 packageName:@"lnrpc"
+                 serviceName:@"WalletUnlocker"];
+  return self;
 }
 
 // Override superclass initializer to disallow different package and service names.
@@ -19,10 +23,13 @@
   return [self initWithHost:host];
 }
 
+#pragma mark - Class Methods
+
 + (instancetype)serviceWithHost:(NSString *)host {
   return [[self alloc] initWithHost:host];
 }
 
+#pragma mark - Method Implementations
 
 #pragma mark GenSeed(GenSeedRequest) returns (GenSeedResponse)
 
@@ -127,7 +134,10 @@
 
 // Designated initializer
 - (instancetype)initWithHost:(NSString *)host {
-  return (self = [super initWithHost:host packageName:@"lnrpc" serviceName:@"Lightning"]);
+  self = [super initWithHost:host
+                 packageName:@"lnrpc"
+                 serviceName:@"Lightning"];
+  return self;
 }
 
 // Override superclass initializer to disallow different package and service names.
@@ -137,10 +147,13 @@
   return [self initWithHost:host];
 }
 
+#pragma mark - Class Methods
+
 + (instancetype)serviceWithHost:(NSString *)host {
   return [[self alloc] initWithHost:host];
 }
 
+#pragma mark - Method Implementations
 
 #pragma mark WalletBalance(WalletBalanceRequest) returns (WalletBalanceResponse)
 
@@ -1105,3 +1118,4 @@
         responsesWriteable:[GRXWriteable writeableWithSingleHandler:handler]];
 }
 @end
+#endif

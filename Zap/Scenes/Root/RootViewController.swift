@@ -12,17 +12,18 @@ class RootViewController: UIViewController, ContainerViewController {
     @IBOutlet weak var container: UIView?
     
     let viewModel: ViewModel = {
-        ViewModel(api: LightningMock(
-            info: Info.template,
-            transactions: [
-                BlockchainTransaction.template,
-                BlockchainTransaction.template
-            ],
-            payments: [
-                Payment.template,
-                Payment.template
-            ]
-        ))
+        ViewModel()
+//        ViewModel(api: LightningMock(
+//            info: Info.template,
+//            transactions: [
+//                BlockchainTransaction.template,
+//                BlockchainTransaction.template
+//            ],
+//            payments: [
+//                Payment.template,
+//                Payment.template
+//            ]
+//        ))
     }()
     
     weak var currentViewController: UIViewController?

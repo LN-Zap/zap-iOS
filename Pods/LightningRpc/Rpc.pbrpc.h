@@ -1,13 +1,15 @@
-#if !GPB_GRPC_FORWARD_DECLARE_MESSAGE_PROTO
+#if !defined(GPB_GRPC_FORWARD_DECLARE_MESSAGE_PROTO) || !GPB_GRPC_FORWARD_DECLARE_MESSAGE_PROTO
 #import "Rpc.pbobjc.h"
 #endif
 
+#if !defined(GPB_GRPC_PROTOCOL_ONLY) || !GPB_GRPC_PROTOCOL_ONLY
 #import <ProtoRPC/ProtoService.h>
 #import <ProtoRPC/ProtoRPC.h>
 #import <RxLibrary/GRXWriteable.h>
 #import <RxLibrary/GRXWriter.h>
+#endif
 
-#if GPB_GRPC_FORWARD_DECLARE_MESSAGE_PROTO
+#if defined(GPB_GRPC_FORWARD_DECLARE_MESSAGE_PROTO) && GPB_GRPC_FORWARD_DECLARE_MESSAGE_PROTO
   @class AddInvoiceResponse;
   @class ChanInfoRequest;
   @class ChannelBalanceRequest;
@@ -88,6 +90,8 @@
 #else
 //  #import "google/api/Annotations.pbobjc.h"
 #endif
+
+@class GRPCProtoCall;
 
 
 NS_ASSUME_NONNULL_BEGIN
@@ -179,14 +183,6 @@ NS_ASSUME_NONNULL_BEGIN
 
 @end
 
-/**
- * Basic service implementation, over gRPC, that only does
- * marshalling and parsing.
- */
-@interface WalletUnlocker : GRPCProtoService<WalletUnlocker>
-- (instancetype)initWithHost:(NSString *)host NS_DESIGNATED_INITIALIZER;
-+ (instancetype)serviceWithHost:(NSString *)host;
-@end
 @protocol Lightning <NSObject>
 
 #pragma mark WalletBalance(WalletBalanceRequest) returns (WalletBalanceResponse)
@@ -958,6 +954,16 @@ NS_ASSUME_NONNULL_BEGIN
 
 @end
 
+
+#if !defined(GPB_GRPC_PROTOCOL_ONLY) || !GPB_GRPC_PROTOCOL_ONLY
+/**
+ * Basic service implementation, over gRPC, that only does
+ * marshalling and parsing.
+ */
+@interface WalletUnlocker : GRPCProtoService<WalletUnlocker>
+- (instancetype)initWithHost:(NSString *)host NS_DESIGNATED_INITIALIZER;
++ (instancetype)serviceWithHost:(NSString *)host;
+@end
 /**
  * Basic service implementation, over gRPC, that only does
  * marshalling and parsing.
@@ -966,5 +972,7 @@ NS_ASSUME_NONNULL_BEGIN
 - (instancetype)initWithHost:(NSString *)host NS_DESIGNATED_INITIALIZER;
 + (instancetype)serviceWithHost:(NSString *)host;
 @end
+#endif
 
 NS_ASSUME_NONNULL_END
+

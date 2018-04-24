@@ -73,7 +73,7 @@ final class Lightning: LightningProtocol {
     
     func channels(callback: @escaping (Result<[Channel]>) -> Void) {
         rpc?.rpcToListChannels(with: ListChannelsRequest(), handler: result(callback, map: {
-            $0.channelsArray.compactMap { ($0 as? LightningRpc.ActiveChannel)?.channelModel }
+            $0.channelsArray.compactMap { ($0 as? LightningRpc.Channel)?.channelModel }
         }))
         .runWithMacaroon()
     }

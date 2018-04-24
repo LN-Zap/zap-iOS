@@ -16,6 +16,8 @@
  *
  */
 
+#include <grpc/support/port_platform.h>
+
 #include "src/core/lib/iomgr/port.h"
 
 #ifdef GRPC_POSIX_FORK
@@ -24,16 +26,14 @@
 
 #include <grpc/fork.h>
 #include <grpc/support/log.h>
-#include <grpc/support/thd.h>
-#include <grpc/support/useful.h>
 
+#include "src/core/lib/gpr/env.h"
+#include "src/core/lib/gpr/fork.h"
+#include "src/core/lib/gprpp/thd.h"
 #include "src/core/lib/iomgr/ev_posix.h"
 #include "src/core/lib/iomgr/executor.h"
 #include "src/core/lib/iomgr/timer_manager.h"
 #include "src/core/lib/iomgr/wakeup_fd_posix.h"
-#include "src/core/lib/support/env.h"
-#include "src/core/lib/support/fork.h"
-#include "src/core/lib/support/thd_internal.h"
 #include "src/core/lib/surface/init.h"
 
 /*
@@ -49,11 +49,11 @@ void grpc_prefork() {
     return;
   }
   if (grpc_is_initialized()) {
-    grpc_exec_ctx exec_ctx = GRPC_EXEC_CTX_INIT;
+    grpc_core::ExecCtx exec_ctx;
     grpc_timer_manager_set_threading(false);
-    grpc_executor_set_threading(&exec_ctx, false);
-    grpc_exec_ctx_finish(&exec_ctx);
-    if (!gpr_await_threads(
+    grpc_executor_set_threading(false);
+    grpc_core::ExecCtx::Get()->Flush();
+    if (!grpc_core::Thread::AwaitAll(
             gpr_time_add(gpr_now(GPR_CLOCK_REALTIME),
                          gpr_time_from_seconds(3, GPR_TIMESPAN)))) {
       gpr_log(GPR_ERROR, "gRPC thread still active! Cannot fork!");
@@ -64,24 +64,25 @@ void grpc_prefork() {
 void grpc_postfork_parent() {
   if (grpc_is_initialized()) {
     grpc_timer_manager_set_threading(true);
-    grpc_exec_ctx exec_ctx = GRPC_EXEC_CTX_INIT;
-    grpc_executor_set_threading(&exec_ctx, true);
-    grpc_exec_ctx_finish(&exec_ctx);
+    grpc_core::ExecCtx exec_ctx;
+    grpc_executor_set_threading(true);
   }
 }
 
 void grpc_postfork_child() {
   if (grpc_is_initialized()) {
     grpc_timer_manager_set_threading(true);
-    grpc_exec_ctx exec_ctx = GRPC_EXEC_CTX_INIT;
-    grpc_executor_set_threading(&exec_ctx, true);
-    grpc_exec_ctx_finish(&exec_ctx);
+    grpc_core::ExecCtx exec_ctx;
+    grpc_executor_set_threading(true);
+    grpc_core::ExecCtx::Get()->Flush();
   }
 }
 
 void grpc_fork_handlers_auto_register() {
   if (grpc_fork_support_enabled()) {
+#ifdef GRPC_POSIX_FORK_ALLOW_PTHREAD_ATFORK
     pthread_atfork(grpc_prefork, grpc_postfork_parent, grpc_postfork_child);
+#endif  // GRPC_POSIX_FORK_ALLOW_PTHREAD_ATFORK
   }
 }
 

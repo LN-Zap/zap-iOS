@@ -71,6 +71,7 @@ open class Subject<Element, Error: Swift.Error>: SubjectProtocol {
 
     return BlockDisposable { [weak self] in
       guard let me = self else { return }
+      me.lock.lock(); defer { me.lock.unlock() }
       guard let index = me.observers.index(where: { $0.0 == token }) else { return }
       me.observers.remove(at: index)
     }
@@ -149,6 +150,62 @@ public final class ReplayOneSubject<Element, Error: Swift.Error>: Subject<Elemen
   }
 }
 
+
+/// A subject that replies accumulated sequence of loading values to each observer.
+public final class ReplayLoadingValueSubject<Val, LoadingError: Swift.Error, Error: Swift.Error>: Subject<LoadingState<Val, LoadingError>, Error> {
+
+  private enum State {
+    case notStarted
+    case loading
+    case loadedOrFailedAtLeastOnce
+  }
+
+  private var state: State = .notStarted
+  private var buffer: ArraySlice<LoadingState<Val, LoadingError>> = []
+  private var terminalEvent: Event<LoadingState<Val, LoadingError>, Error>? = nil
+
+  public let bufferSize: Int
+
+  public init(bufferSize: Int = Int.max) {
+    self.bufferSize = bufferSize
+  }
+
+  public override func send(_ event: Event<LoadingState<Val, LoadingError>, Error>) {
+    switch event {
+    case .next(let loadingState):
+      switch loadingState {
+      case .loading:
+        if state == .notStarted {
+          state = .loading
+        }
+      case .loaded:
+        state = .loadedOrFailedAtLeastOnce
+        buffer.append(loadingState)
+        buffer = buffer.suffix(bufferSize)
+      case .failed:
+        state = .loadedOrFailedAtLeastOnce
+        buffer = [loadingState]
+      }
+    case .failed, .completed:
+      terminalEvent = event
+    }
+    super.send(event)
+  }
+
+  public override func willAdd(observer: @escaping Observer<LoadingState<Val, LoadingError>, Error>) {
+    switch state {
+    case .notStarted:
+      break
+    case .loading:
+      observer(.next(.loading))
+    case .loadedOrFailedAtLeastOnce:
+      buffer.forEach { observer(.next($0)) }
+    }
+    if let event = terminalEvent {
+      observer(event)
+    }
+  }
+}
 
 @available(*, deprecated, message: "All subjects now inherit 'Subject' that can be used in place of 'AnySubject'.")
 public final class AnySubject<Element, Error: Swift.Error>: SubjectProtocol {

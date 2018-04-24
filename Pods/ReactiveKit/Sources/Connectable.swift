@@ -65,9 +65,11 @@ public extension ConnectableSignalProtocol {
   /// Convert connectable signal into the ordinary signal by calling `connect`
   /// on the first observation and calling dispose when number of observers goes down to zero.
   public func refCount() -> Signal<Element, Error> {
+    let lock = NSRecursiveLock()
     var count = 0
     var connectionDisposable: Disposable? = nil
     return Signal { observer in
+      lock.lock(); defer { lock.unlock() }
       count = count + 1
       let disposable = self.observe(with: observer.on)
       if connectionDisposable == nil {
@@ -107,5 +109,23 @@ extension SignalProtocol {
   /// Shorthand for `replay(limit).refCount()`.
   public func shareReplay(limit: Int = Int.max) -> Signal<Element, Error> {
     return replay(limit: limit).refCount()
+  }
+}
+
+extension SignalProtocol where Element: LoadingStateProtocol {
+
+  /// Ensure that all observers see the same sequence of elements. Connectable.
+  public func replayValues(limit: Int = Int.max) -> ConnectableSignal<Signal<LoadingState<LoadingValue, LoadingError>, Error>> {
+    if limit == 0 {
+      return ConnectableSignal(source: map { $0.asLoadingState }, subject: PublishSubject())
+    } else {
+      return ConnectableSignal(source: map { $0.asLoadingState }, subject: ReplayLoadingValueSubject(bufferSize: limit))
+    }
+  }
+
+  /// Ensure that all observers see the same sequence of elements.
+  /// Shorthand for `replay(limit).refCount()`.
+  public func shareReplayValues(limit: Int = Int.max) -> Signal<LoadingState<LoadingValue, LoadingError>, Error> {
+    return replayValues(limit: limit).refCount()
   }
 }

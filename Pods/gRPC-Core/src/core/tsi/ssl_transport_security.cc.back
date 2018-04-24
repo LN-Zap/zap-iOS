@@ -16,9 +16,9 @@
  *
  */
 
-#include "src/core/tsi/ssl_transport_security.h"
-
 #include <grpc/support/port_platform.h>
+
+#include "src/core/tsi/ssl_transport_security.h"
 
 #include <limits.h>
 #include <string.h>
@@ -35,9 +35,9 @@
 
 #include <grpc/support/alloc.h>
 #include <grpc/support/log.h>
+#include <grpc/support/string_util.h>
 #include <grpc/support/sync.h>
-#include <grpc/support/thd.h>
-#include <grpc/support/useful.h>
+#include <grpc/support/thd_id.h>
 
 extern "C" {
 #include <openssl/bio.h>
@@ -48,6 +48,8 @@ extern "C" {
 #include <openssl/x509v3.h>
 }
 
+#include "src/core/lib/gpr/useful.h"
+#include "src/core/tsi/ssl/session_cache/ssl_session_cache.h"
 #include "src/core/tsi/ssl_types.h"
 #include "src/core/tsi/transport_security.h"
 
@@ -69,6 +71,10 @@ extern "C" {
 
 /* --- Structure definitions. ---*/
 
+struct tsi_ssl_root_certs_store {
+  X509_STORE* store;
+};
+
 struct tsi_ssl_handshaker_factory {
   const tsi_ssl_handshaker_factory_vtable* vtable;
   gpr_refcount refcount;
@@ -79,6 +85,7 @@ struct tsi_ssl_client_handshaker_factory {
   SSL_CTX* ssl_context;
   unsigned char* alpn_protocol_list;
   size_t alpn_protocol_list_length;
+  grpc_core::RefCountedPtr<tsi::SslSessionLRUCache> session_cache;
 };
 
 struct tsi_ssl_server_handshaker_factory {
@@ -96,8 +103,7 @@ struct tsi_ssl_server_handshaker_factory {
 typedef struct {
   tsi_handshaker base;
   SSL* ssl;
-  BIO* into_ssl;
-  BIO* from_ssl;
+  BIO* network_io;
   tsi_result result;
   tsi_ssl_handshaker_factory* factory_ref;
 } tsi_ssl_handshaker;
@@ -105,8 +111,7 @@ typedef struct {
 typedef struct {
   tsi_frame_protector base;
   SSL* ssl;
-  BIO* into_ssl;
-  BIO* from_ssl;
+  BIO* network_io;
   unsigned char* buffer;
   size_t buffer_size;
   size_t buffer_offset;
@@ -114,19 +119,24 @@ typedef struct {
 
 /* --- Library Initialization. ---*/
 
-static gpr_once init_openssl_once = GPR_ONCE_INIT;
-static gpr_mu* openssl_mutexes = nullptr;
+static gpr_once g_init_openssl_once = GPR_ONCE_INIT;
+static gpr_mu* g_openssl_mutexes = nullptr;
+static int g_ssl_ctx_ex_factory_index = -1;
+static void openssl_locking_cb(int mode, int type, const char* file,
+                               int line) GRPC_UNUSED;
+static unsigned long openssl_thread_id_cb(void) GRPC_UNUSED;
+static const unsigned char kSslSessionIdContext[] = {'g', 'r', 'p', 'c'};
 
 static void openssl_locking_cb(int mode, int type, const char* file, int line) {
   if (mode & CRYPTO_LOCK) {
-    gpr_mu_lock(&openssl_mutexes[type]);
+    gpr_mu_lock(&g_openssl_mutexes[type]);
   } else {
-    gpr_mu_unlock(&openssl_mutexes[type]);
+    gpr_mu_unlock(&g_openssl_mutexes[type]);
   }
 }
 
 static unsigned long openssl_thread_id_cb(void) {
-  return (unsigned long)gpr_thd_currentid();
+  return static_cast<unsigned long>(gpr_thd_currentid());
 }
 
 static void init_openssl(void) {
@@ -137,12 +147,16 @@ static void init_openssl(void) {
   OpenSSL_add_all_algorithms();
   num_locks = CRYPTO_num_locks();
   GPR_ASSERT(num_locks > 0);
-  openssl_mutexes = (gpr_mu*)gpr_malloc((size_t)num_locks * sizeof(gpr_mu));
+  g_openssl_mutexes = static_cast<gpr_mu*>(
+      gpr_malloc(static_cast<size_t>(num_locks) * sizeof(gpr_mu)));
   for (i = 0; i < CRYPTO_num_locks(); i++) {
-    gpr_mu_init(&openssl_mutexes[i]);
+    gpr_mu_init(&g_openssl_mutexes[i]);
   }
   CRYPTO_set_locking_callback(openssl_locking_cb);
   CRYPTO_set_id_callback(openssl_thread_id_cb);
+  g_ssl_ctx_ex_factory_index =
+      SSL_CTX_get_ex_new_index(0, nullptr, nullptr, nullptr, nullptr);
+  GPR_ASSERT(g_ssl_ctx_ex_factory_index != -1);
 }
 
 /* --- Ssl utils. ---*/
@@ -254,7 +268,7 @@ static tsi_result ssl_get_x509_common_name(X509* cert, unsigned char** utf8,
     gpr_log(GPR_ERROR, "Could not extract utf8 from asn1 string.");
     return TSI_OUT_OF_RESOURCES;
   }
-  *utf8_size = (size_t)utf8_returned_size;
+  *utf8_size = static_cast<size_t>(utf8_returned_size);
   return TSI_OK;
 }
 
@@ -275,8 +289,8 @@ static tsi_result peer_property_from_x509_common_name(
   }
   result = tsi_construct_string_peer_property(
       TSI_X509_SUBJECT_COMMON_NAME_PEER_PROPERTY,
-      common_name == nullptr ? "" : (const char*)common_name, common_name_size,
-      property);
+      common_name == nullptr ? "" : reinterpret_cast<const char*>(common_name),
+      common_name_size, property);
   OPENSSL_free(common_name);
   return result;
 }
@@ -295,7 +309,8 @@ static tsi_result add_pem_certificate(X509* cert, tsi_peer_property* property) {
     return TSI_INTERNAL_ERROR;
   }
   tsi_result result = tsi_construct_string_peer_property(
-      TSI_X509_PEM_CERT_PROPERTY, (const char*)contents, (size_t)len, property);
+      TSI_X509_PEM_CERT_PROPERTY, (const char*)contents,
+      static_cast<size_t>(len), property);
   BIO_free(bio);
   return result;
 }
@@ -324,8 +339,9 @@ static tsi_result add_subject_alt_names_properties_to_peer(
         break;
       }
       result = tsi_construct_string_peer_property(
-          TSI_X509_SUBJECT_ALTERNATIVE_NAME_PEER_PROPERTY, (const char*)name,
-          (size_t)name_size, &peer->properties[peer->property_count++]);
+          TSI_X509_SUBJECT_ALTERNATIVE_NAME_PEER_PROPERTY,
+          reinterpret_cast<const char*>(name), static_cast<size_t>(name_size),
+          &peer->properties[peer->property_count++]);
       OPENSSL_free(name);
     } else if (subject_alt_name->type == GEN_IPADD) {
       char ntop_buf[INET6_ADDRSTRLEN];
@@ -361,17 +377,18 @@ static tsi_result add_subject_alt_names_properties_to_peer(
 static tsi_result peer_from_x509(X509* cert, int include_certificate_type,
                                  tsi_peer* peer) {
   /* TODO(jboeuf): Maybe add more properties. */
-  GENERAL_NAMES* subject_alt_names = (GENERAL_NAMES*)X509_get_ext_d2i(
-      cert, NID_subject_alt_name, nullptr, nullptr);
-  int subject_alt_name_count = (subject_alt_names != nullptr)
-                                   ? (int)sk_GENERAL_NAME_num(subject_alt_names)
-                                   : 0;
+  GENERAL_NAMES* subject_alt_names = static_cast<GENERAL_NAMES*>(
+      X509_get_ext_d2i(cert, NID_subject_alt_name, nullptr, nullptr));
+  int subject_alt_name_count =
+      (subject_alt_names != nullptr)
+          ? static_cast<int>(sk_GENERAL_NAME_num(subject_alt_names))
+          : 0;
   size_t property_count;
   tsi_result result;
   GPR_ASSERT(subject_alt_name_count >= 0);
-  property_count = (include_certificate_type ? (size_t)1 : 0) +
+  property_count = (include_certificate_type ? static_cast<size_t>(1) : 0) +
                    2 /* common name, certificate */ +
-                   (size_t)subject_alt_name_count;
+                   static_cast<size_t>(subject_alt_name_count);
   result = tsi_construct_peer(property_count, peer);
   if (result != TSI_OK) return result;
   do {
@@ -391,7 +408,7 @@ static tsi_result peer_from_x509(X509* cert, int include_certificate_type,
 
     if (subject_alt_name_count != 0) {
       result = add_subject_alt_names_properties_to_peer(
-          peer, subject_alt_names, (size_t)subject_alt_name_count);
+          peer, subject_alt_names, static_cast<size_t>(subject_alt_name_count));
       if (result != TSI_OK) break;
     }
   } while (0);
@@ -408,7 +425,7 @@ static void log_ssl_error_stack(void) {
   unsigned long err;
   while ((err = ERR_get_error()) != 0) {
     char details[256];
-    ERR_error_string_n((uint32_t)err, details, sizeof(details));
+    ERR_error_string_n(static_cast<uint32_t>(err), details, sizeof(details));
     gpr_log(GPR_ERROR, "%s", details);
   }
 }
@@ -418,8 +435,8 @@ static tsi_result do_ssl_read(SSL* ssl, unsigned char* unprotected_bytes,
                               size_t* unprotected_bytes_size) {
   int read_from_ssl;
   GPR_ASSERT(*unprotected_bytes_size <= INT_MAX);
-  read_from_ssl =
-      SSL_read(ssl, unprotected_bytes, (int)*unprotected_bytes_size);
+  read_from_ssl = SSL_read(ssl, unprotected_bytes,
+                           static_cast<int>(*unprotected_bytes_size));
   if (read_from_ssl <= 0) {
     read_from_ssl = SSL_get_error(ssl, read_from_ssl);
     switch (read_from_ssl) {
@@ -442,7 +459,7 @@ static tsi_result do_ssl_read(SSL* ssl, unsigned char* unprotected_bytes,
         return TSI_PROTOCOL_FAILURE;
     }
   }
-  *unprotected_bytes_size = (size_t)read_from_ssl;
+  *unprotected_bytes_size = static_cast<size_t>(read_from_ssl);
   return TSI_OK;
 }
 
@@ -451,8 +468,8 @@ static tsi_result do_ssl_write(SSL* ssl, unsigned char* unprotected_bytes,
                                size_t unprotected_bytes_size) {
   int ssl_write_result;
   GPR_ASSERT(unprotected_bytes_size <= INT_MAX);
-  ssl_write_result =
-      SSL_write(ssl, unprotected_bytes, (int)unprotected_bytes_size);
+  ssl_write_result = SSL_write(ssl, unprotected_bytes,
+                               static_cast<int>(unprotected_bytes_size));
   if (ssl_write_result < 0) {
     ssl_write_result = SSL_get_error(ssl, ssl_write_result);
     if (ssl_write_result == SSL_ERROR_WANT_READ) {
@@ -476,7 +493,8 @@ static tsi_result ssl_ctx_use_certificate_chain(SSL_CTX* context,
   X509* certificate = nullptr;
   BIO* pem;
   GPR_ASSERT(pem_cert_chain_size <= INT_MAX);
-  pem = BIO_new_mem_buf((void*)pem_cert_chain, (int)pem_cert_chain_size);
+  pem = BIO_new_mem_buf((void*)pem_cert_chain,
+                        static_cast<int>(pem_cert_chain_size));
   if (pem == nullptr) return TSI_OUT_OF_RESOURCES;
 
   do {
@@ -519,7 +537,7 @@ static tsi_result ssl_ctx_use_private_key(SSL_CTX* context, const char* pem_key,
   EVP_PKEY* private_key = nullptr;
   BIO* pem;
   GPR_ASSERT(pem_key_size <= INT_MAX);
-  pem = BIO_new_mem_buf((void*)pem_key, (int)pem_key_size);
+  pem = BIO_new_mem_buf((void*)pem_key, static_cast<int>(pem_key_size));
   if (pem == nullptr) return TSI_OUT_OF_RESOURCES;
   do {
     private_key = PEM_read_bio_PrivateKey(pem, nullptr, nullptr, (void*)"");
@@ -539,21 +557,18 @@ static tsi_result ssl_ctx_use_private_key(SSL_CTX* context, const char* pem_key,
 
 /* Loads in-memory PEM verification certs into the SSL context and optionally
    returns the verification cert names (root_names can be NULL). */
-static tsi_result ssl_ctx_load_verification_certs(SSL_CTX* context,
-                                                  const char* pem_roots,
-                                                  size_t pem_roots_size,
-                                                  STACK_OF(X509_NAME) *
-                                                      *root_names) {
+static tsi_result x509_store_load_certs(X509_STORE* cert_store,
+                                        const char* pem_roots,
+                                        size_t pem_roots_size,
+                                        STACK_OF(X509_NAME) * *root_names) {
   tsi_result result = TSI_OK;
   size_t num_roots = 0;
   X509* root = nullptr;
   X509_NAME* root_name = nullptr;
   BIO* pem;
-  X509_STORE* root_store;
   GPR_ASSERT(pem_roots_size <= INT_MAX);
-  pem = BIO_new_mem_buf((void*)pem_roots, (int)pem_roots_size);
-  root_store = SSL_CTX_get_cert_store(context);
-  if (root_store == nullptr) return TSI_INVALID_ARGUMENT;
+  pem = BIO_new_mem_buf((void*)pem_roots, static_cast<int>(pem_roots_size));
+  if (cert_store == nullptr) return TSI_INVALID_ARGUMENT;
   if (pem == nullptr) return TSI_OUT_OF_RESOURCES;
   if (root_names != nullptr) {
     *root_names = sk_X509_NAME_new_null();
@@ -581,7 +596,7 @@ static tsi_result ssl_ctx_load_verification_certs(SSL_CTX* context,
       sk_X509_NAME_push(*root_names, root_name);
       root_name = nullptr;
     }
-    if (!X509_STORE_add_cert(root_store, root)) {
+    if (!X509_STORE_add_cert(cert_store, root)) {
       gpr_log(GPR_ERROR, "Could not add root certificate to ssl context.");
       result = TSI_INTERNAL_ERROR;
       break;
@@ -605,6 +620,16 @@ static tsi_result ssl_ctx_load_verification_certs(SSL_CTX* context,
   }
   BIO_free(pem);
   return result;
+}
+
+static tsi_result ssl_ctx_load_verification_certs(SSL_CTX* context,
+                                                  const char* pem_roots,
+                                                  size_t pem_roots_size,
+                                                  STACK_OF(X509_NAME) *
+                                                      *root_name) {
+  X509_STORE* cert_store = SSL_CTX_get_cert_store(context);
+  return x509_store_load_certs(cert_store, pem_roots, pem_roots_size,
+                               root_name);
 }
 
 /* Populates the SSL context with a private key and a cert chain, and sets the
@@ -655,7 +680,7 @@ static tsi_result extract_x509_subject_names_from_pem_cert(const char* pem_cert,
   tsi_result result = TSI_OK;
   X509* cert = nullptr;
   BIO* pem;
-  pem = BIO_new_mem_buf((void*)pem_cert, (int)strlen(pem_cert));
+  pem = BIO_new_mem_buf((void*)pem_cert, static_cast<int>(strlen(pem_cert)));
   if (pem == nullptr) return TSI_OUT_OF_RESOURCES;
 
   cert = PEM_read_bio_X509(pem, nullptr, nullptr, (void*)"");
@@ -683,23 +708,25 @@ static tsi_result build_alpn_protocol_name_list(
     size_t length =
         alpn_protocols[i] == nullptr ? 0 : strlen(alpn_protocols[i]);
     if (length == 0 || length > 255) {
-      gpr_log(GPR_ERROR, "Invalid protocol name length: %d.", (int)length);
+      gpr_log(GPR_ERROR, "Invalid protocol name length: %d.",
+              static_cast<int>(length));
       return TSI_INVALID_ARGUMENT;
     }
     *protocol_name_list_length += length + 1;
   }
-  *protocol_name_list = (unsigned char*)gpr_malloc(*protocol_name_list_length);
+  *protocol_name_list =
+      static_cast<unsigned char*>(gpr_malloc(*protocol_name_list_length));
   if (*protocol_name_list == nullptr) return TSI_OUT_OF_RESOURCES;
   current = *protocol_name_list;
   for (i = 0; i < num_alpn_protocols; i++) {
     size_t length = strlen(alpn_protocols[i]);
-    *(current++) = (uint8_t)length; /* max checked above. */
+    *(current++) = static_cast<uint8_t>(length); /* max checked above. */
     memcpy(current, alpn_protocols[i], length);
     current += length;
   }
   /* Safety check. */
   if ((current < *protocol_name_list) ||
-      ((uintptr_t)(current - *protocol_name_list) !=
+      (static_cast<uintptr_t>(current - *protocol_name_list) !=
        *protocol_name_list_length)) {
     return TSI_INTERNAL_ERROR;
   }
@@ -714,6 +741,60 @@ static int NullVerifyCallback(int preverify_ok, X509_STORE_CTX* ctx) {
   return 1;
 }
 
+/* --- tsi_ssl_root_certs_store methods implementation. ---*/
+
+tsi_ssl_root_certs_store* tsi_ssl_root_certs_store_create(
+    const char* pem_roots) {
+  if (pem_roots == nullptr) {
+    gpr_log(GPR_ERROR, "The root certificates are empty.");
+    return nullptr;
+  }
+  tsi_ssl_root_certs_store* root_store = static_cast<tsi_ssl_root_certs_store*>(
+      gpr_zalloc(sizeof(tsi_ssl_root_certs_store)));
+  if (root_store == nullptr) {
+    gpr_log(GPR_ERROR, "Could not allocate buffer for ssl_root_certs_store.");
+    return nullptr;
+  }
+  root_store->store = X509_STORE_new();
+  if (root_store->store == nullptr) {
+    gpr_log(GPR_ERROR, "Could not allocate buffer for X509_STORE.");
+    gpr_free(root_store);
+    return nullptr;
+  }
+  tsi_result result = x509_store_load_certs(root_store->store, pem_roots,
+                                            strlen(pem_roots), nullptr);
+  if (result != TSI_OK) {
+    gpr_log(GPR_ERROR, "Could not load root certificates.");
+    X509_STORE_free(root_store->store);
+    gpr_free(root_store);
+    return nullptr;
+  }
+  return root_store;
+}
+
+void tsi_ssl_root_certs_store_destroy(tsi_ssl_root_certs_store* self) {
+  if (self == nullptr) return;
+  X509_STORE_free(self->store);
+  gpr_free(self);
+}
+
+/* --- tsi_ssl_session_cache methods implementation. ---*/
+
+tsi_ssl_session_cache* tsi_ssl_session_cache_create_lru(size_t capacity) {
+  /* Pointer will be dereferenced by unref call. */
+  return reinterpret_cast<tsi_ssl_session_cache*>(
+      tsi::SslSessionLRUCache::Create(capacity).release());
+}
+
+void tsi_ssl_session_cache_ref(tsi_ssl_session_cache* cache) {
+  /* Pointer will be dereferenced by unref call. */
+  reinterpret_cast<tsi::SslSessionLRUCache*>(cache)->Ref().release();
+}
+
+void tsi_ssl_session_cache_unref(tsi_ssl_session_cache* cache) {
+  reinterpret_cast<tsi::SslSessionLRUCache*>(cache)->Unref();
+}
+
 /* --- tsi_frame_protector methods implementation. ---*/
 
 static tsi_result ssl_protector_protect(tsi_frame_protector* self,
@@ -721,24 +802,25 @@ static tsi_result ssl_protector_protect(tsi_frame_protector* self,
                                         size_t* unprotected_bytes_size,
                                         unsigned char* protected_output_frames,
                                         size_t* protected_output_frames_size) {
-  tsi_ssl_frame_protector* impl = (tsi_ssl_frame_protector*)self;
+  tsi_ssl_frame_protector* impl =
+      reinterpret_cast<tsi_ssl_frame_protector*>(self);
   int read_from_ssl;
   size_t available;
   tsi_result result = TSI_OK;
 
   /* First see if we have some pending data in the SSL BIO. */
-  int pending_in_ssl = (int)BIO_pending(impl->from_ssl);
+  int pending_in_ssl = static_cast<int>(BIO_pending(impl->network_io));
   if (pending_in_ssl > 0) {
     *unprotected_bytes_size = 0;
     GPR_ASSERT(*protected_output_frames_size <= INT_MAX);
-    read_from_ssl = BIO_read(impl->from_ssl, protected_output_frames,
-                             (int)*protected_output_frames_size);
+    read_from_ssl = BIO_read(impl->network_io, protected_output_frames,
+                             static_cast<int>(*protected_output_frames_size));
     if (read_from_ssl < 0) {
       gpr_log(GPR_ERROR,
               "Could not read from BIO even though some data is pending");
       return TSI_INTERNAL_ERROR;
     }
-    *protected_output_frames_size = (size_t)read_from_ssl;
+    *protected_output_frames_size = static_cast<size_t>(read_from_ssl);
     return TSI_OK;
   }
 
@@ -759,13 +841,13 @@ static tsi_result ssl_protector_protect(tsi_frame_protector* self,
   if (result != TSI_OK) return result;
 
   GPR_ASSERT(*protected_output_frames_size <= INT_MAX);
-  read_from_ssl = BIO_read(impl->from_ssl, protected_output_frames,
-                           (int)*protected_output_frames_size);
+  read_from_ssl = BIO_read(impl->network_io, protected_output_frames,
+                           static_cast<int>(*protected_output_frames_size));
   if (read_from_ssl < 0) {
     gpr_log(GPR_ERROR, "Could not read from BIO after SSL_write.");
     return TSI_INTERNAL_ERROR;
   }
-  *protected_output_frames_size = (size_t)read_from_ssl;
+  *protected_output_frames_size = static_cast<size_t>(read_from_ssl);
   *unprotected_bytes_size = available;
   impl->buffer_offset = 0;
   return TSI_OK;
@@ -775,7 +857,8 @@ static tsi_result ssl_protector_protect_flush(
     tsi_frame_protector* self, unsigned char* protected_output_frames,
     size_t* protected_output_frames_size, size_t* still_pending_size) {
   tsi_result result = TSI_OK;
-  tsi_ssl_frame_protector* impl = (tsi_ssl_frame_protector*)self;
+  tsi_ssl_frame_protector* impl =
+      reinterpret_cast<tsi_ssl_frame_protector*>(self);
   int read_from_ssl = 0;
   int pending;
 
@@ -785,22 +868,22 @@ static tsi_result ssl_protector_protect_flush(
     impl->buffer_offset = 0;
   }
 
-  pending = (int)BIO_pending(impl->from_ssl);
+  pending = static_cast<int>(BIO_pending(impl->network_io));
   GPR_ASSERT(pending >= 0);
-  *still_pending_size = (size_t)pending;
+  *still_pending_size = static_cast<size_t>(pending);
   if (*still_pending_size == 0) return TSI_OK;
 
   GPR_ASSERT(*protected_output_frames_size <= INT_MAX);
-  read_from_ssl = BIO_read(impl->from_ssl, protected_output_frames,
-                           (int)*protected_output_frames_size);
+  read_from_ssl = BIO_read(impl->network_io, protected_output_frames,
+                           static_cast<int>(*protected_output_frames_size));
   if (read_from_ssl <= 0) {
     gpr_log(GPR_ERROR, "Could not read from BIO after SSL_write.");
     return TSI_INTERNAL_ERROR;
   }
-  *protected_output_frames_size = (size_t)read_from_ssl;
-  pending = (int)BIO_pending(impl->from_ssl);
+  *protected_output_frames_size = static_cast<size_t>(read_from_ssl);
+  pending = static_cast<int>(BIO_pending(impl->network_io));
   GPR_ASSERT(pending >= 0);
-  *still_pending_size = (size_t)pending;
+  *still_pending_size = static_cast<size_t>(pending);
   return TSI_OK;
 }
 
@@ -812,7 +895,8 @@ static tsi_result ssl_protector_unprotect(
   int written_into_ssl = 0;
   size_t output_bytes_size = *unprotected_bytes_size;
   size_t output_bytes_offset = 0;
-  tsi_ssl_frame_protector* impl = (tsi_ssl_frame_protector*)self;
+  tsi_ssl_frame_protector* impl =
+      reinterpret_cast<tsi_ssl_frame_protector*>(self);
 
   /* First, try to read remaining data from ssl. */
   result = do_ssl_read(impl->ssl, unprotected_bytes, unprotected_bytes_size);
@@ -828,14 +912,14 @@ static tsi_result ssl_protector_unprotect(
 
   /* Then, try to write some data to ssl. */
   GPR_ASSERT(*protected_frames_bytes_size <= INT_MAX);
-  written_into_ssl = BIO_write(impl->into_ssl, protected_frames_bytes,
-                               (int)*protected_frames_bytes_size);
+  written_into_ssl = BIO_write(impl->network_io, protected_frames_bytes,
+                               static_cast<int>(*protected_frames_bytes_size));
   if (written_into_ssl < 0) {
     gpr_log(GPR_ERROR, "Sending protected frame to ssl failed with %d",
             written_into_ssl);
     return TSI_INTERNAL_ERROR;
   }
-  *protected_frames_bytes_size = (size_t)written_into_ssl;
+  *protected_frames_bytes_size = static_cast<size_t>(written_into_ssl);
 
   /* Now try to read some data again. */
   result = do_ssl_read(impl->ssl, unprotected_bytes, unprotected_bytes_size);
@@ -847,9 +931,11 @@ static tsi_result ssl_protector_unprotect(
 }
 
 static void ssl_protector_destroy(tsi_frame_protector* self) {
-  tsi_ssl_frame_protector* impl = (tsi_ssl_frame_protector*)self;
+  tsi_ssl_frame_protector* impl =
+      reinterpret_cast<tsi_ssl_frame_protector*>(self);
   if (impl->buffer != nullptr) gpr_free(impl->buffer);
   if (impl->ssl != nullptr) SSL_free(impl->ssl);
+  if (impl->network_io != nullptr) BIO_free(impl->network_io);
   gpr_free(self);
 }
 
@@ -906,29 +992,30 @@ static void tsi_ssl_handshaker_factory_init(
 static tsi_result ssl_handshaker_get_bytes_to_send_to_peer(tsi_handshaker* self,
                                                            unsigned char* bytes,
                                                            size_t* bytes_size) {
-  tsi_ssl_handshaker* impl = (tsi_ssl_handshaker*)self;
+  tsi_ssl_handshaker* impl = reinterpret_cast<tsi_ssl_handshaker*>(self);
   int bytes_read_from_ssl = 0;
   if (bytes == nullptr || bytes_size == nullptr || *bytes_size == 0 ||
       *bytes_size > INT_MAX) {
     return TSI_INVALID_ARGUMENT;
   }
   GPR_ASSERT(*bytes_size <= INT_MAX);
-  bytes_read_from_ssl = BIO_read(impl->from_ssl, bytes, (int)*bytes_size);
+  bytes_read_from_ssl =
+      BIO_read(impl->network_io, bytes, static_cast<int>(*bytes_size));
   if (bytes_read_from_ssl < 0) {
     *bytes_size = 0;
-    if (!BIO_should_retry(impl->from_ssl)) {
+    if (!BIO_should_retry(impl->network_io)) {
       impl->result = TSI_INTERNAL_ERROR;
       return impl->result;
     } else {
       return TSI_OK;
     }
   }
-  *bytes_size = (size_t)bytes_read_from_ssl;
-  return BIO_pending(impl->from_ssl) == 0 ? TSI_OK : TSI_INCOMPLETE_DATA;
+  *bytes_size = static_cast<size_t>(bytes_read_from_ssl);
+  return BIO_pending(impl->network_io) == 0 ? TSI_OK : TSI_INCOMPLETE_DATA;
 }
 
 static tsi_result ssl_handshaker_get_result(tsi_handshaker* self) {
-  tsi_ssl_handshaker* impl = (tsi_ssl_handshaker*)self;
+  tsi_ssl_handshaker* impl = reinterpret_cast<tsi_ssl_handshaker*>(self);
   if ((impl->result == TSI_HANDSHAKE_IN_PROGRESS) &&
       SSL_is_init_finished(impl->ssl)) {
     impl->result = TSI_OK;
@@ -938,20 +1025,20 @@ static tsi_result ssl_handshaker_get_result(tsi_handshaker* self) {
 
 static tsi_result ssl_handshaker_process_bytes_from_peer(
     tsi_handshaker* self, const unsigned char* bytes, size_t* bytes_size) {
-  tsi_ssl_handshaker* impl = (tsi_ssl_handshaker*)self;
+  tsi_ssl_handshaker* impl = reinterpret_cast<tsi_ssl_handshaker*>(self);
   int bytes_written_into_ssl_size = 0;
   if (bytes == nullptr || bytes_size == nullptr || *bytes_size > INT_MAX) {
     return TSI_INVALID_ARGUMENT;
   }
   GPR_ASSERT(*bytes_size <= INT_MAX);
   bytes_written_into_ssl_size =
-      BIO_write(impl->into_ssl, bytes, (int)*bytes_size);
+      BIO_write(impl->network_io, bytes, static_cast<int>(*bytes_size));
   if (bytes_written_into_ssl_size < 0) {
     gpr_log(GPR_ERROR, "Could not write to memory BIO.");
     impl->result = TSI_INTERNAL_ERROR;
     return impl->result;
   }
-  *bytes_size = (size_t)bytes_written_into_ssl_size;
+  *bytes_size = static_cast<size_t>(bytes_written_into_ssl_size);
 
   if (!tsi_handshaker_is_in_progress(self)) {
     impl->result = TSI_OK;
@@ -962,7 +1049,7 @@ static tsi_result ssl_handshaker_process_bytes_from_peer(
     ssl_result = SSL_get_error(impl->ssl, ssl_result);
     switch (ssl_result) {
       case SSL_ERROR_WANT_READ:
-        if (BIO_pending(impl->from_ssl) == 0) {
+        if (BIO_pending(impl->network_io) == 0) {
           /* We need more data. */
           return TSI_INCOMPLETE_DATA;
         } else {
@@ -987,7 +1074,7 @@ static tsi_result ssl_handshaker_extract_peer(tsi_handshaker* self,
   tsi_result result = TSI_OK;
   const unsigned char* alpn_selected = nullptr;
   unsigned int alpn_selected_len;
-  tsi_ssl_handshaker* impl = (tsi_ssl_handshaker*)self;
+  tsi_ssl_handshaker* impl = reinterpret_cast<tsi_ssl_handshaker*>(self);
   X509* peer_cert = SSL_get_peer_certificate(impl->ssl);
   if (peer_cert != nullptr) {
     result = peer_from_x509(peer_cert, 1, peer);
@@ -1002,24 +1089,34 @@ static tsi_result ssl_handshaker_extract_peer(tsi_handshaker* self,
     SSL_get0_next_proto_negotiated(impl->ssl, &alpn_selected,
                                    &alpn_selected_len);
   }
-  if (alpn_selected != nullptr) {
-    size_t i;
-    tsi_peer_property* new_properties = (tsi_peer_property*)gpr_zalloc(
-        sizeof(*new_properties) * (peer->property_count + 1));
-    for (i = 0; i < peer->property_count; i++) {
-      new_properties[i] = peer->properties[i];
-    }
-    result = tsi_construct_string_peer_property(
-        TSI_SSL_ALPN_SELECTED_PROTOCOL, (const char*)alpn_selected,
-        alpn_selected_len, &new_properties[peer->property_count]);
-    if (result != TSI_OK) {
-      gpr_free(new_properties);
-      return result;
-    }
-    if (peer->properties != nullptr) gpr_free(peer->properties);
-    peer->property_count++;
-    peer->properties = new_properties;
+
+  // 1 is for session reused property.
+  size_t new_property_count = peer->property_count + 1;
+  if (alpn_selected != nullptr) new_property_count++;
+  tsi_peer_property* new_properties = static_cast<tsi_peer_property*>(
+      gpr_zalloc(sizeof(*new_properties) * new_property_count));
+  for (size_t i = 0; i < peer->property_count; i++) {
+    new_properties[i] = peer->properties[i];
   }
+  if (peer->properties != nullptr) gpr_free(peer->properties);
+  peer->properties = new_properties;
+
+  if (alpn_selected != nullptr) {
+    result = tsi_construct_string_peer_property(
+        TSI_SSL_ALPN_SELECTED_PROTOCOL,
+        reinterpret_cast<const char*>(alpn_selected), alpn_selected_len,
+        &peer->properties[peer->property_count]);
+    if (result != TSI_OK) return result;
+    peer->property_count++;
+  }
+
+  const char* session_reused = SSL_session_reused(impl->ssl) ? "true" : "false";
+  result = tsi_construct_string_peer_property(
+      TSI_SSL_SESSION_REUSED_PEER_PROPERTY, session_reused,
+      strlen(session_reused) + 1, &peer->properties[peer->property_count]);
+  if (result != TSI_OK) return result;
+  peer->property_count++;
+
   return result;
 }
 
@@ -1028,9 +1125,10 @@ static tsi_result ssl_handshaker_create_frame_protector(
     tsi_frame_protector** protector) {
   size_t actual_max_output_protected_frame_size =
       TSI_SSL_MAX_PROTECTED_FRAME_SIZE_UPPER_BOUND;
-  tsi_ssl_handshaker* impl = (tsi_ssl_handshaker*)self;
+  tsi_ssl_handshaker* impl = reinterpret_cast<tsi_ssl_handshaker*>(self);
   tsi_ssl_frame_protector* protector_impl =
-      (tsi_ssl_frame_protector*)gpr_zalloc(sizeof(*protector_impl));
+      static_cast<tsi_ssl_frame_protector*>(
+          gpr_zalloc(sizeof(*protector_impl)));
 
   if (max_output_protected_frame_size != nullptr) {
     if (*max_output_protected_frame_size >
@@ -1047,7 +1145,7 @@ static tsi_result ssl_handshaker_create_frame_protector(
   protector_impl->buffer_size =
       actual_max_output_protected_frame_size - TSI_SSL_MAX_PROTECTION_OVERHEAD;
   protector_impl->buffer =
-      (unsigned char*)gpr_malloc(protector_impl->buffer_size);
+      static_cast<unsigned char*>(gpr_malloc(protector_impl->buffer_size));
   if (protector_impl->buffer == nullptr) {
     gpr_log(GPR_ERROR,
             "Could not allocated buffer for tsi_ssl_frame_protector.");
@@ -1055,12 +1153,13 @@ static tsi_result ssl_handshaker_create_frame_protector(
     return TSI_INTERNAL_ERROR;
   }
 
-  /* Transfer ownership of ssl to the frame protector. It is OK as the caller
-   * cannot call anything else but destroy on the handshaker after this call. */
+  /* Transfer ownership of ssl and network_io to the frame protector. It is OK
+   * as the caller cannot call anything else but destroy on the handshaker
+   * after this call. */
   protector_impl->ssl = impl->ssl;
   impl->ssl = nullptr;
-  protector_impl->into_ssl = impl->into_ssl;
-  protector_impl->from_ssl = impl->from_ssl;
+  protector_impl->network_io = impl->network_io;
+  impl->network_io = nullptr;
 
   protector_impl->base.vtable = &frame_protector_vtable;
   *protector = &protector_impl->base;
@@ -1068,8 +1167,9 @@ static tsi_result ssl_handshaker_create_frame_protector(
 }
 
 static void ssl_handshaker_destroy(tsi_handshaker* self) {
-  tsi_ssl_handshaker* impl = (tsi_ssl_handshaker*)self;
-  SSL_free(impl->ssl); /* The BIO objects are owned by ssl */
+  tsi_ssl_handshaker* impl = reinterpret_cast<tsi_ssl_handshaker*>(self);
+  SSL_free(impl->ssl);
+  BIO_free(impl->network_io);
   tsi_ssl_handshaker_factory_unref(impl->factory_ref);
   gpr_free(impl);
 }
@@ -1086,13 +1186,26 @@ static const tsi_handshaker_vtable handshaker_vtable = {
 
 /* --- tsi_ssl_handshaker_factory common methods. --- */
 
+static void tsi_ssl_handshaker_resume_session(
+    SSL* ssl, tsi::SslSessionLRUCache* session_cache) {
+  const char* server_name = SSL_get_servername(ssl, TLSEXT_NAMETYPE_host_name);
+  if (server_name == nullptr) {
+    return;
+  }
+  tsi::SslSessionPtr session = session_cache->Get(server_name);
+  if (session != nullptr) {
+    // SSL_set_session internally increments reference counter.
+    SSL_set_session(ssl, session.get());
+  }
+}
+
 static tsi_result create_tsi_ssl_handshaker(SSL_CTX* ctx, int is_client,
                                             const char* server_name_indication,
                                             tsi_ssl_handshaker_factory* factory,
                                             tsi_handshaker** handshaker) {
   SSL* ssl = SSL_new(ctx);
-  BIO* into_ssl = nullptr;
-  BIO* from_ssl = nullptr;
+  BIO* network_io = nullptr;
+  BIO* ssl_io = nullptr;
   tsi_ssl_handshaker* impl = nullptr;
   *handshaker = nullptr;
   if (ctx == nullptr) {
@@ -1104,16 +1217,12 @@ static tsi_result create_tsi_ssl_handshaker(SSL_CTX* ctx, int is_client,
   }
   SSL_set_info_callback(ssl, ssl_info_callback);
 
-  into_ssl = BIO_new(BIO_s_mem());
-  from_ssl = BIO_new(BIO_s_mem());
-  if (into_ssl == nullptr || from_ssl == nullptr) {
-    gpr_log(GPR_ERROR, "BIO_new failed.");
+  if (!BIO_new_bio_pair(&network_io, 0, &ssl_io, 0)) {
+    gpr_log(GPR_ERROR, "BIO_new_bio_pair failed.");
     SSL_free(ssl);
-    if (into_ssl != nullptr) BIO_free(into_ssl);
-    if (from_ssl != nullptr) BIO_free(into_ssl);
     return TSI_OUT_OF_RESOURCES;
   }
-  SSL_set_bio(ssl, into_ssl, from_ssl);
+  SSL_set_bio(ssl, ssl_io, ssl_io);
   if (is_client) {
     int ssl_result;
     SSL_set_connect_state(ssl);
@@ -1122,8 +1231,15 @@ static tsi_result create_tsi_ssl_handshaker(SSL_CTX* ctx, int is_client,
         gpr_log(GPR_ERROR, "Invalid server name indication %s.",
                 server_name_indication);
         SSL_free(ssl);
+        BIO_free(network_io);
         return TSI_INTERNAL_ERROR;
       }
+    }
+    tsi_ssl_client_handshaker_factory* client_factory =
+        reinterpret_cast<tsi_ssl_client_handshaker_factory*>(factory);
+    if (client_factory->session_cache != nullptr) {
+      tsi_ssl_handshaker_resume_session(ssl,
+                                        client_factory->session_cache.get());
     }
     ssl_result = SSL_do_handshake(ssl);
     ssl_result = SSL_get_error(ssl, ssl_result);
@@ -1132,16 +1248,16 @@ static tsi_result create_tsi_ssl_handshaker(SSL_CTX* ctx, int is_client,
               "Unexpected error received from first SSL_do_handshake call: %s",
               ssl_error_string(ssl_result));
       SSL_free(ssl);
+      BIO_free(network_io);
       return TSI_INTERNAL_ERROR;
     }
   } else {
     SSL_set_accept_state(ssl);
   }
 
-  impl = (tsi_ssl_handshaker*)gpr_zalloc(sizeof(*impl));
+  impl = static_cast<tsi_ssl_handshaker*>(gpr_zalloc(sizeof(*impl)));
   impl->ssl = ssl;
-  impl->into_ssl = into_ssl;
-  impl->from_ssl = from_ssl;
+  impl->network_io = network_io;
   impl->result = TSI_HANDSHAKE_IN_PROGRESS;
   impl->base.vtable = &handshaker_vtable;
   impl->factory_ref = tsi_ssl_handshaker_factory_ref(factory);
@@ -1157,11 +1273,13 @@ static int select_protocol_list(const unsigned char** out,
                                 const unsigned char* server_list,
                                 size_t server_list_len) {
   const unsigned char* client_current = client_list;
-  while ((unsigned int)(client_current - client_list) < client_list_len) {
+  while (static_cast<unsigned int>(client_current - client_list) <
+         client_list_len) {
     unsigned char client_current_len = *(client_current++);
     const unsigned char* server_current = server_list;
     while ((server_current >= server_list) &&
-           (uintptr_t)(server_current - server_list) < server_list_len) {
+           static_cast<uintptr_t>(server_current - server_list) <
+               server_list_len) {
       unsigned char server_current_len = *(server_current++);
       if ((client_current_len == server_current_len) &&
           !memcmp(client_current, server_current, server_current_len)) {
@@ -1195,9 +1313,10 @@ static void tsi_ssl_client_handshaker_factory_destroy(
     tsi_ssl_handshaker_factory* factory) {
   if (factory == nullptr) return;
   tsi_ssl_client_handshaker_factory* self =
-      (tsi_ssl_client_handshaker_factory*)factory;
+      reinterpret_cast<tsi_ssl_client_handshaker_factory*>(factory);
   if (self->ssl_context != nullptr) SSL_CTX_free(self->ssl_context);
   if (self->alpn_protocol_list != nullptr) gpr_free(self->alpn_protocol_list);
+  self->session_cache.reset();
   gpr_free(self);
 }
 
@@ -1207,7 +1326,7 @@ static int client_handshaker_factory_npn_callback(SSL* ssl, unsigned char** out,
                                                   unsigned int inlen,
                                                   void* arg) {
   tsi_ssl_client_handshaker_factory* factory =
-      (tsi_ssl_client_handshaker_factory*)arg;
+      static_cast<tsi_ssl_client_handshaker_factory*>(arg);
   return select_protocol_list((const unsigned char**)out, outlen,
                               factory->alpn_protocol_list,
                               factory->alpn_protocol_list_length, in, inlen);
@@ -1234,7 +1353,7 @@ static void tsi_ssl_server_handshaker_factory_destroy(
     tsi_ssl_handshaker_factory* factory) {
   if (factory == nullptr) return;
   tsi_ssl_server_handshaker_factory* self =
-      (tsi_ssl_server_handshaker_factory*)factory;
+      reinterpret_cast<tsi_ssl_server_handshaker_factory*>(factory);
   size_t i;
   for (i = 0; i < self->ssl_context_count; i++) {
     if (self->ssl_contexts[i] != nullptr) {
@@ -1301,7 +1420,7 @@ static int does_entry_match_name(const char* entry, size_t entry_length,
 static int ssl_server_handshaker_factory_servername_callback(SSL* ssl, int* ap,
                                                              void* arg) {
   tsi_ssl_server_handshaker_factory* impl =
-      (tsi_ssl_server_handshaker_factory*)arg;
+      static_cast<tsi_ssl_server_handshaker_factory*>(arg);
   size_t i = 0;
   const char* servername = SSL_get_servername(ssl, TLSEXT_NAMETYPE_host_name);
   if (servername == nullptr || strlen(servername) == 0) {
@@ -1324,7 +1443,7 @@ static int server_handshaker_factory_alpn_callback(
     SSL* ssl, const unsigned char** out, unsigned char* outlen,
     const unsigned char* in, unsigned int inlen, void* arg) {
   tsi_ssl_server_handshaker_factory* factory =
-      (tsi_ssl_server_handshaker_factory*)arg;
+      static_cast<tsi_ssl_server_handshaker_factory*>(arg);
   return select_protocol_list(out, outlen, in, inlen,
                               factory->alpn_protocol_list,
                               factory->alpn_protocol_list_length);
@@ -1334,11 +1453,35 @@ static int server_handshaker_factory_alpn_callback(
 static int server_handshaker_factory_npn_advertised_callback(
     SSL* ssl, const unsigned char** out, unsigned int* outlen, void* arg) {
   tsi_ssl_server_handshaker_factory* factory =
-      (tsi_ssl_server_handshaker_factory*)arg;
+      static_cast<tsi_ssl_server_handshaker_factory*>(arg);
   *out = factory->alpn_protocol_list;
   GPR_ASSERT(factory->alpn_protocol_list_length <= UINT_MAX);
-  *outlen = (unsigned int)factory->alpn_protocol_list_length;
+  *outlen = static_cast<unsigned int>(factory->alpn_protocol_list_length);
   return SSL_TLSEXT_ERR_OK;
+}
+
+/// This callback is called when new \a session is established and ready to
+/// be cached. This session can be reused for new connections to similar
+/// servers at later point of time.
+/// It's intended to be used with SSL_CTX_sess_set_new_cb function.
+///
+/// It returns 1 if callback takes ownership over \a session and 0 otherwise.
+static int server_handshaker_factory_new_session_callback(
+    SSL* ssl, SSL_SESSION* session) {
+  SSL_CTX* ssl_context = SSL_get_SSL_CTX(ssl);
+  if (ssl_context == nullptr) {
+    return 0;
+  }
+  void* arg = SSL_CTX_get_ex_data(ssl_context, g_ssl_ctx_ex_factory_index);
+  tsi_ssl_client_handshaker_factory* factory =
+      static_cast<tsi_ssl_client_handshaker_factory*>(arg);
+  const char* server_name = SSL_get_servername(ssl, TLSEXT_NAMETYPE_host_name);
+  if (server_name == nullptr) {
+    return 0;
+  }
+  factory->session_cache->Put(server_name, tsi::SslSessionPtr(session));
+  // Return 1 to indicate transfered ownership over the given session.
+  return 1;
 }
 
 /* --- tsi_ssl_handshaker_factory constructors. --- */
@@ -1351,15 +1494,31 @@ tsi_result tsi_create_ssl_client_handshaker_factory(
     const char* pem_root_certs, const char* cipher_suites,
     const char** alpn_protocols, uint16_t num_alpn_protocols,
     tsi_ssl_client_handshaker_factory** factory) {
+  tsi_ssl_client_handshaker_options options;
+  memset(&options, 0, sizeof(options));
+  options.pem_key_cert_pair = pem_key_cert_pair;
+  options.pem_root_certs = pem_root_certs;
+  options.cipher_suites = cipher_suites;
+  options.alpn_protocols = alpn_protocols;
+  options.num_alpn_protocols = num_alpn_protocols;
+  return tsi_create_ssl_client_handshaker_factory_with_options(&options,
+                                                               factory);
+}
+
+tsi_result tsi_create_ssl_client_handshaker_factory_with_options(
+    const tsi_ssl_client_handshaker_options* options,
+    tsi_ssl_client_handshaker_factory** factory) {
   SSL_CTX* ssl_context = nullptr;
   tsi_ssl_client_handshaker_factory* impl = nullptr;
   tsi_result result = TSI_OK;
 
-  gpr_once_init(&init_openssl_once, init_openssl);
+  gpr_once_init(&g_init_openssl_once, init_openssl);
 
   if (factory == nullptr) return TSI_INVALID_ARGUMENT;
   *factory = nullptr;
-  if (pem_root_certs == nullptr) return TSI_INVALID_ARGUMENT;
+  if (options->pem_root_certs == nullptr && options->root_store == nullptr) {
+    return TSI_INVALID_ARGUMENT;
+  }
 
   ssl_context = SSL_CTX_new(TLSv1_2_method());
   if (ssl_context == nullptr) {
@@ -1367,27 +1526,48 @@ tsi_result tsi_create_ssl_client_handshaker_factory(
     return TSI_INVALID_ARGUMENT;
   }
 
-  impl = (tsi_ssl_client_handshaker_factory*)gpr_zalloc(sizeof(*impl));
+  impl = static_cast<tsi_ssl_client_handshaker_factory*>(
+      gpr_zalloc(sizeof(*impl)));
   tsi_ssl_handshaker_factory_init(&impl->base);
   impl->base.vtable = &client_handshaker_factory_vtable;
-
   impl->ssl_context = ssl_context;
+  if (options->session_cache != nullptr) {
+    // Unref is called manually on factory destruction.
+    impl->session_cache =
+        reinterpret_cast<tsi::SslSessionLRUCache*>(options->session_cache)
+            ->Ref();
+    SSL_CTX_set_ex_data(ssl_context, g_ssl_ctx_ex_factory_index, impl);
+    SSL_CTX_sess_set_new_cb(ssl_context,
+                            server_handshaker_factory_new_session_callback);
+    SSL_CTX_set_session_cache_mode(ssl_context, SSL_SESS_CACHE_CLIENT);
+  }
 
   do {
-    result =
-        populate_ssl_context(ssl_context, pem_key_cert_pair, cipher_suites);
+    result = populate_ssl_context(ssl_context, options->pem_key_cert_pair,
+                                  options->cipher_suites);
     if (result != TSI_OK) break;
-    result = ssl_ctx_load_verification_certs(ssl_context, pem_root_certs,
-                                             strlen(pem_root_certs), nullptr);
-    if (result != TSI_OK) {
-      gpr_log(GPR_ERROR, "Cannot load server root certificates.");
-      break;
+
+#if OPENSSL_VERSION_NUMBER >= 0x10100000
+    // X509_STORE_up_ref is only available since OpenSSL 1.1.
+    if (options->root_store != nullptr) {
+      X509_STORE_up_ref(options->root_store->store);
+      SSL_CTX_set_cert_store(ssl_context, options->root_store->store);
+    }
+#endif
+    if (OPENSSL_VERSION_NUMBER < 0x10100000 || options->root_store == nullptr) {
+      result = ssl_ctx_load_verification_certs(
+          ssl_context, options->pem_root_certs, strlen(options->pem_root_certs),
+          nullptr);
+      if (result != TSI_OK) {
+        gpr_log(GPR_ERROR, "Cannot load server root certificates.");
+        break;
+      }
     }
 
-    if (num_alpn_protocols != 0) {
-      result = build_alpn_protocol_name_list(alpn_protocols, num_alpn_protocols,
-                                             &impl->alpn_protocol_list,
-                                             &impl->alpn_protocol_list_length);
+    if (options->num_alpn_protocols != 0) {
+      result = build_alpn_protocol_name_list(
+          options->alpn_protocols, options->num_alpn_protocols,
+          &impl->alpn_protocol_list, &impl->alpn_protocol_list_length);
       if (result != TSI_OK) {
         gpr_log(GPR_ERROR, "Building alpn list failed with error %s.",
                 tsi_result_to_string(result));
@@ -1397,7 +1577,7 @@ tsi_result tsi_create_ssl_client_handshaker_factory(
       GPR_ASSERT(impl->alpn_protocol_list_length < UINT_MAX);
       if (SSL_CTX_set_alpn_protos(
               ssl_context, impl->alpn_protocol_list,
-              (unsigned int)impl->alpn_protocol_list_length)) {
+              static_cast<unsigned int>(impl->alpn_protocol_list_length))) {
         gpr_log(GPR_ERROR, "Could not set alpn protocol list to context.");
         result = TSI_INVALID_ARGUMENT;
         break;
@@ -1440,44 +1620,62 @@ tsi_result tsi_create_ssl_server_handshaker_factory_ex(
     tsi_client_certificate_request_type client_certificate_request,
     const char* cipher_suites, const char** alpn_protocols,
     uint16_t num_alpn_protocols, tsi_ssl_server_handshaker_factory** factory) {
+  tsi_ssl_server_handshaker_options options;
+  memset(&options, 0, sizeof(options));
+  options.pem_key_cert_pairs = pem_key_cert_pairs;
+  options.num_key_cert_pairs = num_key_cert_pairs;
+  options.pem_client_root_certs = pem_client_root_certs;
+  options.client_certificate_request = client_certificate_request;
+  options.cipher_suites = cipher_suites;
+  options.alpn_protocols = alpn_protocols;
+  options.num_alpn_protocols = num_alpn_protocols;
+  return tsi_create_ssl_server_handshaker_factory_with_options(&options,
+                                                               factory);
+}
+
+tsi_result tsi_create_ssl_server_handshaker_factory_with_options(
+    const tsi_ssl_server_handshaker_options* options,
+    tsi_ssl_server_handshaker_factory** factory) {
   tsi_ssl_server_handshaker_factory* impl = nullptr;
   tsi_result result = TSI_OK;
   size_t i = 0;
 
-  gpr_once_init(&init_openssl_once, init_openssl);
+  gpr_once_init(&g_init_openssl_once, init_openssl);
 
   if (factory == nullptr) return TSI_INVALID_ARGUMENT;
   *factory = nullptr;
-  if (num_key_cert_pairs == 0 || pem_key_cert_pairs == nullptr) {
+  if (options->num_key_cert_pairs == 0 ||
+      options->pem_key_cert_pairs == nullptr) {
     return TSI_INVALID_ARGUMENT;
   }
 
-  impl = (tsi_ssl_server_handshaker_factory*)gpr_zalloc(sizeof(*impl));
+  impl = static_cast<tsi_ssl_server_handshaker_factory*>(
+      gpr_zalloc(sizeof(*impl)));
   tsi_ssl_handshaker_factory_init(&impl->base);
   impl->base.vtable = &server_handshaker_factory_vtable;
 
-  impl->ssl_contexts =
-      (SSL_CTX**)gpr_zalloc(num_key_cert_pairs * sizeof(SSL_CTX*));
-  impl->ssl_context_x509_subject_names =
-      (tsi_peer*)gpr_zalloc(num_key_cert_pairs * sizeof(tsi_peer));
+  impl->ssl_contexts = static_cast<SSL_CTX**>(
+      gpr_zalloc(options->num_key_cert_pairs * sizeof(SSL_CTX*)));
+  impl->ssl_context_x509_subject_names = static_cast<tsi_peer*>(
+      gpr_zalloc(options->num_key_cert_pairs * sizeof(tsi_peer)));
   if (impl->ssl_contexts == nullptr ||
       impl->ssl_context_x509_subject_names == nullptr) {
     tsi_ssl_handshaker_factory_unref(&impl->base);
     return TSI_OUT_OF_RESOURCES;
   }
-  impl->ssl_context_count = num_key_cert_pairs;
+  impl->ssl_context_count = options->num_key_cert_pairs;
 
-  if (num_alpn_protocols > 0) {
-    result = build_alpn_protocol_name_list(alpn_protocols, num_alpn_protocols,
-                                           &impl->alpn_protocol_list,
-                                           &impl->alpn_protocol_list_length);
+  if (options->num_alpn_protocols > 0) {
+    result = build_alpn_protocol_name_list(
+        options->alpn_protocols, options->num_alpn_protocols,
+        &impl->alpn_protocol_list, &impl->alpn_protocol_list_length);
     if (result != TSI_OK) {
       tsi_ssl_handshaker_factory_unref(&impl->base);
       return result;
     }
   }
 
-  for (i = 0; i < num_key_cert_pairs; i++) {
+  for (i = 0; i < options->num_key_cert_pairs; i++) {
     do {
       impl->ssl_contexts[i] = SSL_CTX_new(TLSv1_2_method());
       if (impl->ssl_contexts[i] == nullptr) {
@@ -1486,20 +1684,44 @@ tsi_result tsi_create_ssl_server_handshaker_factory_ex(
         break;
       }
       result = populate_ssl_context(impl->ssl_contexts[i],
-                                    &pem_key_cert_pairs[i], cipher_suites);
+                                    &options->pem_key_cert_pairs[i],
+                                    options->cipher_suites);
       if (result != TSI_OK) break;
 
-      if (pem_client_root_certs != nullptr) {
+      // TODO(elessar): Provide ability to disable session ticket keys.
+
+      // Allow client cache sessions (it's needed for OpenSSL only).
+      int set_sid_ctx_result = SSL_CTX_set_session_id_context(
+          impl->ssl_contexts[i], kSslSessionIdContext,
+          GPR_ARRAY_SIZE(kSslSessionIdContext));
+      if (set_sid_ctx_result == 0) {
+        gpr_log(GPR_ERROR, "Failed to set session id context.");
+        result = TSI_INTERNAL_ERROR;
+        break;
+      }
+
+      if (options->session_ticket_key != nullptr) {
+        if (SSL_CTX_set_tlsext_ticket_keys(
+                impl->ssl_contexts[i],
+                const_cast<char*>(options->session_ticket_key),
+                options->session_ticket_key_size) == 0) {
+          gpr_log(GPR_ERROR, "Invalid STEK size.");
+          result = TSI_INVALID_ARGUMENT;
+          break;
+        }
+      }
+
+      if (options->pem_client_root_certs != nullptr) {
         STACK_OF(X509_NAME)* root_names = nullptr;
         result = ssl_ctx_load_verification_certs(
-            impl->ssl_contexts[i], pem_client_root_certs,
-            strlen(pem_client_root_certs), &root_names);
+            impl->ssl_contexts[i], options->pem_client_root_certs,
+            strlen(options->pem_client_root_certs), &root_names);
         if (result != TSI_OK) {
           gpr_log(GPR_ERROR, "Invalid verification certs.");
           break;
         }
         SSL_CTX_set_client_CA_list(impl->ssl_contexts[i], root_names);
-        switch (client_certificate_request) {
+        switch (options->client_certificate_request) {
           case TSI_DONT_REQUEST_CLIENT_CERTIFICATE:
             SSL_CTX_set_verify(impl->ssl_contexts[i], SSL_VERIFY_NONE, nullptr);
             break;
@@ -1526,7 +1748,7 @@ tsi_result tsi_create_ssl_server_handshaker_factory_ex(
       }
 
       result = extract_x509_subject_names_from_pem_cert(
-          pem_key_cert_pairs[i].cert_chain,
+          options->pem_key_cert_pairs[i].cert_chain,
           &impl->ssl_context_x509_subject_names[i]);
       if (result != TSI_OK) break;
 

@@ -53,7 +53,7 @@ final class ViewModel: NSObject {
 
     var transactionMetadataUpdater: TransactionMetadataUpdater?
     
-    static var didCreateWallet: Bool = false
+    static var didCreateWallet: Bool = true
 //    {
 //        get {
 //            return false

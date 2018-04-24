@@ -16,12 +16,15 @@
  *
  */
 
+#include <grpc/support/port_platform.h>
+
 #include "src/core/lib/security/credentials/ssl/ssl_credentials.h"
 
 #include <string.h>
 
 #include "src/core/lib/channel/channel_args.h"
 #include "src/core/lib/surface/api_trace.h"
+#include "src/core/tsi/ssl_transport_security.h"
 
 #include <grpc/support/alloc.h>
 #include <grpc/support/log.h>
@@ -41,32 +44,35 @@ void grpc_tsi_ssl_pem_key_cert_pairs_destroy(tsi_ssl_pem_key_cert_pair* kp,
   gpr_free(kp);
 }
 
-static void ssl_destruct(grpc_exec_ctx* exec_ctx,
-                         grpc_channel_credentials* creds) {
-  grpc_ssl_credentials* c = (grpc_ssl_credentials*)creds;
+static void ssl_destruct(grpc_channel_credentials* creds) {
+  grpc_ssl_credentials* c = reinterpret_cast<grpc_ssl_credentials*>(creds);
   gpr_free(c->config.pem_root_certs);
   grpc_tsi_ssl_pem_key_cert_pairs_destroy(c->config.pem_key_cert_pair, 1);
 }
 
 static grpc_security_status ssl_create_security_connector(
-    grpc_exec_ctx* exec_ctx, grpc_channel_credentials* creds,
-    grpc_call_credentials* call_creds, const char* target,
-    const grpc_channel_args* args, grpc_channel_security_connector** sc,
-    grpc_channel_args** new_args) {
-  grpc_ssl_credentials* c = (grpc_ssl_credentials*)creds;
+    grpc_channel_credentials* creds, grpc_call_credentials* call_creds,
+    const char* target, const grpc_channel_args* args,
+    grpc_channel_security_connector** sc, grpc_channel_args** new_args) {
+  grpc_ssl_credentials* c = reinterpret_cast<grpc_ssl_credentials*>(creds);
   grpc_security_status status = GRPC_SECURITY_OK;
   const char* overridden_target_name = nullptr;
+  tsi_ssl_session_cache* ssl_session_cache = nullptr;
   for (size_t i = 0; args && i < args->num_args; i++) {
     grpc_arg* arg = &args->args[i];
     if (strcmp(arg->key, GRPC_SSL_TARGET_NAME_OVERRIDE_ARG) == 0 &&
         arg->type == GRPC_ARG_STRING) {
       overridden_target_name = arg->value.string;
-      break;
+    }
+    if (strcmp(arg->key, GRPC_SSL_SESSION_CACHE_ARG) == 0 &&
+        arg->type == GRPC_ARG_POINTER) {
+      ssl_session_cache =
+          static_cast<tsi_ssl_session_cache*>(arg->value.pointer.p);
     }
   }
   status = grpc_ssl_channel_security_connector_create(
-      exec_ctx, creds, call_creds, &c->config, target, overridden_target_name,
-      sc);
+      creds, call_creds, &c->config, target, overridden_target_name,
+      ssl_session_cache, sc);
   if (status != GRPC_SECURITY_OK) {
     return status;
   }
@@ -88,8 +94,8 @@ static void ssl_build_config(const char* pem_root_certs,
   if (pem_key_cert_pair != nullptr) {
     GPR_ASSERT(pem_key_cert_pair->private_key != nullptr);
     GPR_ASSERT(pem_key_cert_pair->cert_chain != nullptr);
-    config->pem_key_cert_pair = (tsi_ssl_pem_key_cert_pair*)gpr_zalloc(
-        sizeof(tsi_ssl_pem_key_cert_pair));
+    config->pem_key_cert_pair = static_cast<tsi_ssl_pem_key_cert_pair*>(
+        gpr_zalloc(sizeof(tsi_ssl_pem_key_cert_pair)));
     config->pem_key_cert_pair->cert_chain =
         gpr_strdup(pem_key_cert_pair->cert_chain);
     config->pem_key_cert_pair->private_key =
@@ -100,8 +106,8 @@ static void ssl_build_config(const char* pem_root_certs,
 grpc_channel_credentials* grpc_ssl_credentials_create(
     const char* pem_root_certs, grpc_ssl_pem_key_cert_pair* pem_key_cert_pair,
     void* reserved) {
-  grpc_ssl_credentials* c =
-      (grpc_ssl_credentials*)gpr_zalloc(sizeof(grpc_ssl_credentials));
+  grpc_ssl_credentials* c = static_cast<grpc_ssl_credentials*>(
+      gpr_zalloc(sizeof(grpc_ssl_credentials)));
   GRPC_API_TRACE(
       "grpc_ssl_credentials_create(pem_root_certs=%s, "
       "pem_key_cert_pair=%p, "
@@ -125,18 +131,17 @@ struct grpc_ssl_server_credentials_options {
   grpc_ssl_server_certificate_config_fetcher* certificate_config_fetcher;
 };
 
-static void ssl_server_destruct(grpc_exec_ctx* exec_ctx,
-                                grpc_server_credentials* creds) {
-  grpc_ssl_server_credentials* c = (grpc_ssl_server_credentials*)creds;
+static void ssl_server_destruct(grpc_server_credentials* creds) {
+  grpc_ssl_server_credentials* c =
+      reinterpret_cast<grpc_ssl_server_credentials*>(creds);
   grpc_tsi_ssl_pem_key_cert_pairs_destroy(c->config.pem_key_cert_pairs,
                                           c->config.num_key_cert_pairs);
   gpr_free(c->config.pem_root_certs);
 }
 
 static grpc_security_status ssl_server_create_security_connector(
-    grpc_exec_ctx* exec_ctx, grpc_server_credentials* creds,
-    grpc_server_security_connector** sc) {
-  return grpc_ssl_server_security_connector_create(exec_ctx, creds, sc);
+    grpc_server_credentials* creds, grpc_server_security_connector** sc) {
+  return grpc_ssl_server_security_connector_create(creds, sc);
 }
 
 static grpc_server_credentials_vtable ssl_server_vtable = {
@@ -148,8 +153,8 @@ tsi_ssl_pem_key_cert_pair* grpc_convert_grpc_to_tsi_cert_pairs(
   tsi_ssl_pem_key_cert_pair* tsi_pairs = nullptr;
   if (num_key_cert_pairs > 0) {
     GPR_ASSERT(pem_key_cert_pairs != nullptr);
-    tsi_pairs = (tsi_ssl_pem_key_cert_pair*)gpr_zalloc(
-        num_key_cert_pairs * sizeof(tsi_ssl_pem_key_cert_pair));
+    tsi_pairs = static_cast<tsi_ssl_pem_key_cert_pair*>(
+        gpr_zalloc(num_key_cert_pairs * sizeof(tsi_ssl_pem_key_cert_pair)));
   }
   for (size_t i = 0; i < num_key_cert_pairs; i++) {
     GPR_ASSERT(pem_key_cert_pairs[i].private_key != nullptr);
@@ -179,15 +184,15 @@ grpc_ssl_server_certificate_config* grpc_ssl_server_certificate_config_create(
     const grpc_ssl_pem_key_cert_pair* pem_key_cert_pairs,
     size_t num_key_cert_pairs) {
   grpc_ssl_server_certificate_config* config =
-      (grpc_ssl_server_certificate_config*)gpr_zalloc(
-          sizeof(grpc_ssl_server_certificate_config));
+      static_cast<grpc_ssl_server_certificate_config*>(
+          gpr_zalloc(sizeof(grpc_ssl_server_certificate_config)));
   if (pem_root_certs != nullptr) {
     config->pem_root_certs = gpr_strdup(pem_root_certs);
   }
   if (num_key_cert_pairs > 0) {
     GPR_ASSERT(pem_key_cert_pairs != nullptr);
-    config->pem_key_cert_pairs = (grpc_ssl_pem_key_cert_pair*)gpr_zalloc(
-        num_key_cert_pairs * sizeof(grpc_ssl_pem_key_cert_pair));
+    config->pem_key_cert_pairs = static_cast<grpc_ssl_pem_key_cert_pair*>(
+        gpr_zalloc(num_key_cert_pairs * sizeof(grpc_ssl_pem_key_cert_pair)));
   }
   config->num_key_cert_pairs = num_key_cert_pairs;
   for (size_t i = 0; i < num_key_cert_pairs; i++) {
@@ -222,8 +227,8 @@ grpc_ssl_server_credentials_create_options_using_config(
     gpr_log(GPR_ERROR, "Certificate config must not be NULL.");
     goto done;
   }
-  options = (grpc_ssl_server_credentials_options*)gpr_zalloc(
-      sizeof(grpc_ssl_server_credentials_options));
+  options = static_cast<grpc_ssl_server_credentials_options*>(
+      gpr_zalloc(sizeof(grpc_ssl_server_credentials_options)));
   options->client_certificate_request = client_certificate_request;
   options->certificate_config = config;
 done:
@@ -240,14 +245,14 @@ grpc_ssl_server_credentials_create_options_using_config_fetcher(
   }
 
   grpc_ssl_server_certificate_config_fetcher* fetcher =
-      (grpc_ssl_server_certificate_config_fetcher*)gpr_zalloc(
-          sizeof(grpc_ssl_server_certificate_config_fetcher));
+      static_cast<grpc_ssl_server_certificate_config_fetcher*>(
+          gpr_zalloc(sizeof(grpc_ssl_server_certificate_config_fetcher)));
   fetcher->cb = cb;
   fetcher->user_data = user_data;
 
   grpc_ssl_server_credentials_options* options =
-      (grpc_ssl_server_credentials_options*)gpr_zalloc(
-          sizeof(grpc_ssl_server_credentials_options));
+      static_cast<grpc_ssl_server_credentials_options*>(
+          gpr_zalloc(sizeof(grpc_ssl_server_credentials_options)));
   options->client_certificate_request = client_certificate_request;
   options->certificate_config_fetcher = fetcher;
 
@@ -312,8 +317,8 @@ grpc_server_credentials* grpc_ssl_server_credentials_create_with_options(
     goto done;
   }
 
-  c = (grpc_ssl_server_credentials*)gpr_zalloc(
-      sizeof(grpc_ssl_server_credentials));
+  c = static_cast<grpc_ssl_server_credentials*>(
+      gpr_zalloc(sizeof(grpc_ssl_server_credentials)));
   c->base.type = GRPC_CHANNEL_CREDENTIALS_TYPE_SSL;
   gpr_ref_init(&c->base.refcount, 1);
   c->base.vtable = &ssl_server_vtable;

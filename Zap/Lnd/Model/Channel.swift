@@ -31,7 +31,7 @@ struct Channel: Equatable {
     }
 }
 
-extension ActiveChannel {
+extension LightningRpc.Channel {
     var channelModel: Channel {
         return Channel(
             state: active ? .active : .inactive,

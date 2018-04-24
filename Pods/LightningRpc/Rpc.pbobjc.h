@@ -27,7 +27,7 @@
 
 CF_EXTERN_C_BEGIN
 
-@class ActiveChannel;
+@class Channel;
 @class ChannelCloseUpdate;
 @class ChannelEdge;
 @class ChannelEdgeUpdate;
@@ -39,6 +39,7 @@ CF_EXTERN_C_BEGIN
 @class ForwardingEvent;
 @class HTLC;
 @class Hop;
+@class HopHint;
 @class Invoice;
 @class LightningAddress;
 @class LightningNode;
@@ -53,6 +54,7 @@ CF_EXTERN_C_BEGIN
 @class PendingHTLC;
 @class PendingUpdate;
 @class Route;
+@class RouteHint;
 @class RoutingPolicy;
 @class Transaction;
 
@@ -647,28 +649,29 @@ typedef GPB_ENUM(HTLC_FieldNumber) {
 
 @end
 
-#pragma mark - ActiveChannel
+#pragma mark - Channel
 
-typedef GPB_ENUM(ActiveChannel_FieldNumber) {
-  ActiveChannel_FieldNumber_Active = 1,
-  ActiveChannel_FieldNumber_RemotePubkey = 2,
-  ActiveChannel_FieldNumber_ChannelPoint = 3,
-  ActiveChannel_FieldNumber_ChanId = 4,
-  ActiveChannel_FieldNumber_Capacity = 5,
-  ActiveChannel_FieldNumber_LocalBalance = 6,
-  ActiveChannel_FieldNumber_RemoteBalance = 7,
-  ActiveChannel_FieldNumber_CommitFee = 8,
-  ActiveChannel_FieldNumber_CommitWeight = 9,
-  ActiveChannel_FieldNumber_FeePerKw = 10,
-  ActiveChannel_FieldNumber_UnsettledBalance = 11,
-  ActiveChannel_FieldNumber_TotalSatoshisSent = 12,
-  ActiveChannel_FieldNumber_TotalSatoshisReceived = 13,
-  ActiveChannel_FieldNumber_NumUpdates = 14,
-  ActiveChannel_FieldNumber_PendingHtlcsArray = 15,
-  ActiveChannel_FieldNumber_CsvDelay = 16,
+typedef GPB_ENUM(Channel_FieldNumber) {
+  Channel_FieldNumber_Active = 1,
+  Channel_FieldNumber_RemotePubkey = 2,
+  Channel_FieldNumber_ChannelPoint = 3,
+  Channel_FieldNumber_ChanId = 4,
+  Channel_FieldNumber_Capacity = 5,
+  Channel_FieldNumber_LocalBalance = 6,
+  Channel_FieldNumber_RemoteBalance = 7,
+  Channel_FieldNumber_CommitFee = 8,
+  Channel_FieldNumber_CommitWeight = 9,
+  Channel_FieldNumber_FeePerKw = 10,
+  Channel_FieldNumber_UnsettledBalance = 11,
+  Channel_FieldNumber_TotalSatoshisSent = 12,
+  Channel_FieldNumber_TotalSatoshisReceived = 13,
+  Channel_FieldNumber_NumUpdates = 14,
+  Channel_FieldNumber_PendingHtlcsArray = 15,
+  Channel_FieldNumber_CsvDelay = 16,
+  Channel_FieldNumber_Private_p = 17,
 };
 
-@interface ActiveChannel : GPBMessage
+@interface Channel : GPBMessage
 
 /** / Whether this channel is active or not */
 @property(nonatomic, readwrite) BOOL active;
@@ -758,11 +761,29 @@ typedef GPB_ENUM(ActiveChannel_FieldNumber) {
  **/
 @property(nonatomic, readwrite) uint32_t csvDelay;
 
+/** / Whether this channel is advertised to the network or not */
+@property(nonatomic, readwrite) BOOL private_p;
+
 @end
 
 #pragma mark - ListChannelsRequest
 
+typedef GPB_ENUM(ListChannelsRequest_FieldNumber) {
+  ListChannelsRequest_FieldNumber_ActiveOnly = 1,
+  ListChannelsRequest_FieldNumber_InactiveOnly = 2,
+  ListChannelsRequest_FieldNumber_PublicOnly = 3,
+  ListChannelsRequest_FieldNumber_PrivateOnly = 4,
+};
+
 @interface ListChannelsRequest : GPBMessage
+
+@property(nonatomic, readwrite) BOOL activeOnly;
+
+@property(nonatomic, readwrite) BOOL inactiveOnly;
+
+@property(nonatomic, readwrite) BOOL publicOnly;
+
+@property(nonatomic, readwrite) BOOL privateOnly;
 
 @end
 
@@ -775,7 +796,7 @@ typedef GPB_ENUM(ListChannelsResponse_FieldNumber) {
 @interface ListChannelsResponse : GPBMessage
 
 /** / The list of active channels */
-@property(nonatomic, readwrite, strong, null_resettable) NSMutableArray<ActiveChannel*> *channelsArray;
+@property(nonatomic, readwrite, strong, null_resettable) NSMutableArray<Channel*> *channelsArray;
 /** The number of items in @c channelsArray without causing the array to be created. */
 @property(nonatomic, readonly) NSUInteger channelsArray_Count;
 
@@ -864,6 +885,7 @@ typedef GPB_ENUM(GetInfoResponse_FieldNumber) {
   GetInfoResponse_FieldNumber_ChainsArray = 11,
   GetInfoResponse_FieldNumber_UrisArray = 12,
   GetInfoResponse_FieldNumber_BestHeaderTimestamp = 13,
+  GetInfoResponse_FieldNumber_Version = 14,
 };
 
 @interface GetInfoResponse : GPBMessage
@@ -907,6 +929,9 @@ typedef GPB_ENUM(GetInfoResponse_FieldNumber) {
 
 /** / Timestamp of the block best known to the wallet */
 @property(nonatomic, readwrite) int64_t bestHeaderTimestamp;
+
+/** / The version of the LND software that the node is running. */
+@property(nonatomic, readwrite, copy, null_resettable) NSString *version;
 
 @end
 
@@ -1047,6 +1072,7 @@ typedef GPB_ENUM(OpenChannelRequest_FieldNumber) {
   OpenChannelRequest_FieldNumber_SatPerByte = 7,
   OpenChannelRequest_FieldNumber_Private_p = 8,
   OpenChannelRequest_FieldNumber_MinHtlcMsat = 9,
+  OpenChannelRequest_FieldNumber_RemoteCsvDelay = 10,
 };
 
 @interface OpenChannelRequest : GPBMessage
@@ -1063,10 +1089,10 @@ typedef GPB_ENUM(OpenChannelRequest_FieldNumber) {
 /** / The number of satoshis to push to the remote side as part of the initial commitment state */
 @property(nonatomic, readwrite) int64_t pushSat;
 
-/** / The target number of blocks that the closure transaction should be confirmed by. */
+/** / The target number of blocks that the funding transaction should be confirmed by. */
 @property(nonatomic, readwrite) int32_t targetConf;
 
-/** / A manual fee rate set in sat/byte that should be used when crafting the closure transaction. */
+/** / A manual fee rate set in sat/byte that should be used when crafting the funding transaction. */
 @property(nonatomic, readwrite) int64_t satPerByte;
 
 /** / Whether this channel should be private, not announced to the greater network. */
@@ -1074,6 +1100,9 @@ typedef GPB_ENUM(OpenChannelRequest_FieldNumber) {
 
 /** / The minimum value in millisatoshi we will require for incoming HTLCs on the channel. */
 @property(nonatomic, readwrite) int64_t minHtlcMsat;
+
+/** / The delay we require on the remote's commitment transaction. If this is not set, it will be scaled automatically with the channel size. */
+@property(nonatomic, readwrite) uint32_t remoteCsvDelay;
 
 @end
 
@@ -1352,12 +1381,16 @@ typedef GPB_ENUM(WalletBalanceResponse_FieldNumber) {
 
 typedef GPB_ENUM(ChannelBalanceResponse_FieldNumber) {
   ChannelBalanceResponse_FieldNumber_Balance = 1,
+  ChannelBalanceResponse_FieldNumber_PendingOpenBalance = 2,
 };
 
 @interface ChannelBalanceResponse : GPBMessage
 
 /** / Sum of channels balances denominated in satoshis */
 @property(nonatomic, readwrite) int64_t balance;
+
+/** / Sum of channels pending balances denominated in satoshis */
+@property(nonatomic, readwrite) int64_t pendingOpenBalance;
 
 @end
 
@@ -1404,6 +1437,8 @@ typedef GPB_ENUM(Hop_FieldNumber) {
   Hop_FieldNumber_AmtToForward = 3,
   Hop_FieldNumber_Fee = 4,
   Hop_FieldNumber_Expiry = 5,
+  Hop_FieldNumber_AmtToForwardMsat = 6,
+  Hop_FieldNumber_FeeMsat = 7,
 };
 
 @interface Hop : GPBMessage
@@ -1418,11 +1453,15 @@ typedef GPB_ENUM(Hop_FieldNumber) {
 
 @property(nonatomic, readwrite) int64_t chanCapacity;
 
-@property(nonatomic, readwrite) int64_t amtToForward;
+@property(nonatomic, readwrite) int64_t amtToForward DEPRECATED_ATTRIBUTE;
 
-@property(nonatomic, readwrite) int64_t fee;
+@property(nonatomic, readwrite) int64_t fee DEPRECATED_ATTRIBUTE;
 
 @property(nonatomic, readwrite) uint32_t expiry;
+
+@property(nonatomic, readwrite) int64_t amtToForwardMsat;
+
+@property(nonatomic, readwrite) int64_t feeMsat;
 
 @end
 
@@ -1433,6 +1472,8 @@ typedef GPB_ENUM(Route_FieldNumber) {
   Route_FieldNumber_TotalFees = 2,
   Route_FieldNumber_TotalAmt = 3,
   Route_FieldNumber_HopsArray = 4,
+  Route_FieldNumber_TotalFeesMsat = 5,
+  Route_FieldNumber_TotalAmtMsat = 6,
 };
 
 /**
@@ -1460,7 +1501,7 @@ typedef GPB_ENUM(Route_FieldNumber) {
  * of a one-hop payment, this value will be zero as we don't need to pay a fee
  * it ourself.
  **/
-@property(nonatomic, readwrite) int64_t totalFees;
+@property(nonatomic, readwrite) int64_t totalFees DEPRECATED_ATTRIBUTE;
 
 /**
  * *
@@ -1470,7 +1511,7 @@ typedef GPB_ENUM(Route_FieldNumber) {
  * satoshis, otherwise the route will fail at an intermediate node due to an
  * insufficient amount of fees.
  **/
-@property(nonatomic, readwrite) int64_t totalAmt;
+@property(nonatomic, readwrite) int64_t totalAmt DEPRECATED_ATTRIBUTE;
 
 /**
  * *
@@ -1479,6 +1520,18 @@ typedef GPB_ENUM(Route_FieldNumber) {
 @property(nonatomic, readwrite, strong, null_resettable) NSMutableArray<Hop*> *hopsArray;
 /** The number of items in @c hopsArray without causing the array to be created. */
 @property(nonatomic, readonly) NSUInteger hopsArray_Count;
+
+/**
+ * *
+ * The total fees in millisatoshis.
+ **/
+@property(nonatomic, readwrite) int64_t totalFeesMsat;
+
+/**
+ * *
+ * The total amount in millisatoshis.
+ **/
+@property(nonatomic, readwrite) int64_t totalAmtMsat;
 
 @end
 
@@ -1608,7 +1661,7 @@ typedef GPB_ENUM(ChannelEdge_FieldNumber) {
  * *
  * A fully authenticated channel along with all its unique attributes.
  * Once an authenticated channel announcement has been processed on the network,
- * then a instance of ChannelEdgeInfo encapsulating the channels attributes is
+ * then an instance of ChannelEdgeInfo encapsulating the channels attributes is
  * stored. The other portions relevant to routing policy of a channel are stored
  * within a ChannelEdgePolicy for each direction of the channel.
  **/
@@ -1863,6 +1916,58 @@ typedef GPB_ENUM(ClosedChannelUpdate_FieldNumber) {
 
 @end
 
+#pragma mark - HopHint
+
+typedef GPB_ENUM(HopHint_FieldNumber) {
+  HopHint_FieldNumber_NodeId = 1,
+  HopHint_FieldNumber_ChanId = 2,
+  HopHint_FieldNumber_FeeBaseMsat = 3,
+  HopHint_FieldNumber_FeeProportionalMillionths = 4,
+  HopHint_FieldNumber_CltvExpiryDelta = 5,
+};
+
+@interface HopHint : GPBMessage
+
+/** / The public key of the node at the start of the channel. */
+@property(nonatomic, readwrite, copy, null_resettable) NSString *nodeId;
+
+/** / The unique identifier of the channel. */
+@property(nonatomic, readwrite) uint64_t chanId;
+
+/** / The base fee of the channel denominated in millisatoshis. */
+@property(nonatomic, readwrite) uint32_t feeBaseMsat;
+
+/**
+ * *
+ * The fee rate of the channel for sending one satoshi across it denominated in
+ * millionths of a satoshi.
+ **/
+@property(nonatomic, readwrite) uint32_t feeProportionalMillionths;
+
+/** / The time-lock delta of the channel. */
+@property(nonatomic, readwrite) uint32_t cltvExpiryDelta;
+
+@end
+
+#pragma mark - RouteHint
+
+typedef GPB_ENUM(RouteHint_FieldNumber) {
+  RouteHint_FieldNumber_HopHintsArray = 1,
+};
+
+@interface RouteHint : GPBMessage
+
+/**
+ * *
+ * A list of hop hints that when chained together can assist in reaching a
+ * specific destination.
+ **/
+@property(nonatomic, readwrite, strong, null_resettable) NSMutableArray<HopHint*> *hopHintsArray;
+/** The number of items in @c hopHintsArray without causing the array to be created. */
+@property(nonatomic, readonly) NSUInteger hopHintsArray_Count;
+
+@end
+
 #pragma mark - Invoice
 
 typedef GPB_ENUM(Invoice_FieldNumber) {
@@ -1879,6 +1984,8 @@ typedef GPB_ENUM(Invoice_FieldNumber) {
   Invoice_FieldNumber_Expiry = 11,
   Invoice_FieldNumber_FallbackAddr = 12,
   Invoice_FieldNumber_CltvExpiry = 13,
+  Invoice_FieldNumber_RouteHintsArray = 14,
+  Invoice_FieldNumber_Private_p = 15,
 };
 
 @interface Invoice : GPBMessage
@@ -1941,6 +2048,18 @@ typedef GPB_ENUM(Invoice_FieldNumber) {
 
 /** / Delta to use for the time-lock of the CLTV extended to the final hop. */
 @property(nonatomic, readwrite) uint64_t cltvExpiry;
+
+/**
+ * *
+ * Route hints that can each be individually used to assist in reaching the
+ * invoice's destination.
+ **/
+@property(nonatomic, readwrite, strong, null_resettable) NSMutableArray<RouteHint*> *routeHintsArray;
+/** The number of items in @c routeHintsArray without causing the array to be created. */
+@property(nonatomic, readonly) NSUInteger routeHintsArray_Count;
+
+/** / Whether this invoice should include routing hints for private channels. */
+@property(nonatomic, readwrite) BOOL private_p;
 
 @end
 
@@ -2139,6 +2258,7 @@ typedef GPB_ENUM(PayReq_FieldNumber) {
   PayReq_FieldNumber_DescriptionHash = 7,
   PayReq_FieldNumber_FallbackAddr = 8,
   PayReq_FieldNumber_CltvExpiry = 9,
+  PayReq_FieldNumber_RouteHintsArray = 10,
 };
 
 @interface PayReq : GPBMessage
@@ -2160,6 +2280,10 @@ typedef GPB_ENUM(PayReq_FieldNumber) {
 @property(nonatomic, readwrite, copy, null_resettable) NSString *fallbackAddr;
 
 @property(nonatomic, readwrite) int64_t cltvExpiry;
+
+@property(nonatomic, readwrite, strong, null_resettable) NSMutableArray<RouteHint*> *routeHintsArray;
+/** The number of items in @c routeHintsArray without causing the array to be created. */
+@property(nonatomic, readonly) NSUInteger routeHintsArray_Count;
 
 @end
 

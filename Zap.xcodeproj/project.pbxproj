@@ -1081,7 +1081,6 @@
 				A000F5E62047F65100480D8E /* Frameworks */,
 				A000F5E72047F65100480D8E /* Headers */,
 				A000F5E82047F65100480D8E /* Resources */,
-				DB12A4CF8A7077FE8E0E362D /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -1121,7 +1120,6 @@
 				A0A059FD2013CF960007D1C9 /* Resources */,
 				A0A05A312013F7880007D1C9 /* Swift Lint */,
 				39513173BECA79FE9E7BE07B /* [CP] Embed Pods Frameworks */,
-				0129A92E2F8C00067D00FEFD /* [CP] Copy Pods Resources */,
 				A000F6062047F65200480D8E /* Embed Frameworks */,
 			);
 			buildRules = (
@@ -1142,8 +1140,6 @@
 				A0A05A0F2013CF960007D1C9 /* Sources */,
 				A0A05A102013CF960007D1C9 /* Frameworks */,
 				A0A05A112013CF960007D1C9 /* Resources */,
-				D9B1C1F196C5B09C43A0B6CD /* [CP] Embed Pods Frameworks */,
-				A943E2D928FDD7A1C3E6AFDB /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -1265,24 +1261,6 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		0129A92E2F8C00067D00FEFD /* [CP] Copy Pods Resources */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-				"${SRCROOT}/Pods/Target Support Files/Pods-ThunderWallet/Pods-ThunderWallet-resources.sh",
-				"${PODS_CONFIGURATION_BUILD_DIR}/gRPC/gRPCCertificates.bundle",
-			);
-			name = "[CP] Copy Pods Resources";
-			outputPaths = (
-				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/gRPCCertificates.bundle",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Zap/Pods-Zap-resources.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
 		01F6FAA6D1927CAC1795FB7C /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -1394,51 +1372,6 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "if which swiftlint >/dev/null; then\n    swiftlint\nelse\n    echo \"warning: SwiftLint not installed, download from https://github.com/realm/SwiftLint\"\nfi";
-		};
-		A943E2D928FDD7A1C3E6AFDB /* [CP] Copy Pods Resources */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "[CP] Copy Pods Resources";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-ZapTests/Pods-ZapTests-resources.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-		D9B1C1F196C5B09C43A0B6CD /* [CP] Embed Pods Frameworks */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "[CP] Embed Pods Frameworks";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-ZapTests/Pods-ZapTests-frameworks.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-		DB12A4CF8A7077FE8E0E362D /* [CP] Copy Pods Resources */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "[CP] Copy Pods Resources";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-BTCUtil/Pods-BTCUtil-resources.sh\"\n";
-			showEnvVarsInLog = 0;
 		};
 /* End PBXShellScriptBuildPhase section */
 

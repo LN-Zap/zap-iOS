@@ -19,6 +19,8 @@
 #ifndef GRPC_GRPC_SECURITY_H
 #define GRPC_GRPC_SECURITY_H
 
+#include <grpc/support/port_platform.h>
+
 #include <grpc/grpc.h>
 #include <grpc/grpc_security_constants.h>
 #include <grpc/status.h>
@@ -97,6 +99,25 @@ GRPCAPI void grpc_auth_context_add_cstring_property(grpc_auth_context* ctx,
    (which means that no property with this name exists). */
 GRPCAPI int grpc_auth_context_set_peer_identity_property_name(
     grpc_auth_context* ctx, const char* name);
+
+/** --- SSL Session Cache. ---
+
+    A SSL session cache object represents a way to cache client sessions
+    between connections. Only ticket-based resumption is supported. */
+
+typedef struct grpc_ssl_session_cache grpc_ssl_session_cache;
+
+/** Create LRU cache for client-side SSL sessions with the given capacity.
+    If capacity is < 1, a default capacity is used instead. */
+GRPCAPI grpc_ssl_session_cache* grpc_ssl_session_cache_create_lru(
+    size_t capacity);
+
+/** Destroy SSL session cache. */
+GRPCAPI void grpc_ssl_session_cache_destroy(grpc_ssl_session_cache* cache);
+
+/** Create a channel arg with the given cache object. */
+GRPCAPI grpc_arg
+grpc_ssl_session_cache_create_channel_arg(grpc_ssl_session_cache* cache);
 
 /** --- grpc_channel_credentials object. ---
 
@@ -300,7 +321,13 @@ GRPCAPI grpc_call_credentials* grpc_metadata_credentials_create_from_plugin(
 
 /** --- Secure channel creation. --- */
 
-/** Creates a secure channel using the passed-in credentials. */
+/** Creates a secure channel using the passed-in credentials. Additional
+    channel level configuration MAY be provided by grpc_channel_args, though
+    the expectation is that most clients will want to simply pass NULL. The
+    user data in 'args' need only live through the invocation of this function.
+    However, if any args of the 'pointer' type are passed, then the referenced
+    vtable must be maintained by the caller until grpc_channel_destroy
+    terminates. See grpc_channel_args definition for more on this. */
 GRPCAPI grpc_channel* grpc_secure_channel_create(
     grpc_channel_credentials* creds, const char* target,
     const grpc_channel_args* args, void* reserved);
