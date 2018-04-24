@@ -184,6 +184,7 @@
 		ADF79368208E09D00086B2CA /* SetupPinViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADF79367208E09D00086B2CA /* SetupPinViewModel.swift */; };
 		ADF7936A208E5FEC0086B2CA /* ConfirmMnemonicCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADF79369208E5FEC0086B2CA /* ConfirmMnemonicCollectionViewCell.swift */; };
 		ADF7936C208E66FA0086B2CA /* UICollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADF7936B208E66FA0086B2CA /* UICollectionView.swift */; };
+		ADF79376208F88DE0086B2CA /* RecoverWalletViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADF79375208F88DE0086B2CA /* RecoverWalletViewController.swift */; };
 		E2255ED911EB334C67EC4349 /* Pods_ZapTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 700FBCADDAD580B28F987D98 /* Pods_ZapTests.framework */; };
 /* End PBXBuildFile section */
 
@@ -423,6 +424,7 @@
 		ADF79367208E09D00086B2CA /* SetupPinViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetupPinViewModel.swift; sourceTree = "<group>"; };
 		ADF79369208E5FEC0086B2CA /* ConfirmMnemonicCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConfirmMnemonicCollectionViewCell.swift; sourceTree = "<group>"; };
 		ADF7936B208E66FA0086B2CA /* UICollectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UICollectionView.swift; sourceTree = "<group>"; };
+		ADF79375208F88DE0086B2CA /* RecoverWalletViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecoverWalletViewController.swift; sourceTree = "<group>"; };
 		AE22E81B1B7AD6C27F3D49BD /* Pods-Zap.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Zap.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Zap/Pods-Zap.debug.xcconfig"; sourceTree = "<group>"; };
 		CAF208744C2CFC6A493BD8B1 /* Pods_btcutil.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_btcutil.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		DB877056D2A1225EA035E012 /* Pods-Zap.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Zap.release.xcconfig"; path = "Pods/Target Support Files/Pods-Zap/Pods-Zap.release.xcconfig"; sourceTree = "<group>"; };
@@ -983,25 +985,24 @@
 			path = MemoStore;
 			sourceTree = "<group>";
 		};
-		AD79BB38208CD9970027AAC9 /* Mnemonic */ = {
+		AD79BB38208CD9970027AAC9 /* Generate Mnemonic */ = {
 			isa = PBXGroup;
 			children = (
-				ADF79369208E5FEC0086B2CA /* ConfirmMnemonicCollectionViewCell.swift */,
-				ADCE01BE207B59BD00CA72E8 /* ConfirmMnemonicViewController.swift */,
-				ADCE01C2207B66A500CA72E8 /* ConfirmMnemonicViewModel.swift */,
 				ADBB362E2084CA16005662B4 /* MnemonicPageViewController.swift */,
 				A0D3C970205FF0E10015C5D7 /* MnemonicViewController.swift */,
 				ADCE01C0207B5C0300CA72E8 /* MnemonicViewModel.swift */,
 				ADBB36302084CA3B005662B4 /* MnemonicWordListViewController.swift */,
 				ADBB36322084EC4D005662B4 /* MnemonicWordTableViewCell.swift */,
 			);
-			path = Mnemonic;
+			path = "Generate Mnemonic";
 			sourceTree = "<group>";
 		};
 		ADCE01B9207B57DA00CA72E8 /* CreateWallet */ = {
 			isa = PBXGroup;
 			children = (
-				AD79BB38208CD9970027AAC9 /* Mnemonic */,
+				ADF79374208F88CA0086B2CA /* Recover Wallet */,
+				ADF79373208F87E60086B2CA /* Confirm Mnemonic */,
+				AD79BB38208CD9970027AAC9 /* Generate Mnemonic */,
 				ADCE01BA207B57ED00CA72E8 /* CreateWallet.storyboard */,
 				ADCE01BC207B598C00CA72E8 /* SelectWalletCreationMethodViewController.swift */,
 			);
@@ -1024,6 +1025,24 @@
 				ADBB36252080AD70005662B4 /* LoadingViewController.swift */,
 			);
 			path = Loading;
+			sourceTree = "<group>";
+		};
+		ADF79373208F87E60086B2CA /* Confirm Mnemonic */ = {
+			isa = PBXGroup;
+			children = (
+				ADF79369208E5FEC0086B2CA /* ConfirmMnemonicCollectionViewCell.swift */,
+				ADCE01BE207B59BD00CA72E8 /* ConfirmMnemonicViewController.swift */,
+				ADCE01C2207B66A500CA72E8 /* ConfirmMnemonicViewModel.swift */,
+			);
+			path = "Confirm Mnemonic";
+			sourceTree = "<group>";
+		};
+		ADF79374208F88CA0086B2CA /* Recover Wallet */ = {
+			isa = PBXGroup;
+			children = (
+				ADF79375208F88DE0086B2CA /* RecoverWalletViewController.swift */,
+			);
+			path = "Recover Wallet";
 			sourceTree = "<group>";
 		};
 		CEF2960C33901153F2C1FFF4 /* Frameworks */ = {
@@ -1533,6 +1552,7 @@
 				A0A05A352014047B0007D1C9 /* Lnd.swift in Sources */,
 				ADF7936A208E5FEC0086B2CA /* ConfirmMnemonicCollectionViewCell.swift in Sources */,
 				AD38EB32207DFB59007DF14D /* SegmentButton.swift in Sources */,
+				ADF79376208F88DE0086B2CA /* RecoverWalletViewController.swift in Sources */,
 				A0C2EABE206F8B5B003AE56E /* Localizable.swift in Sources */,
 				A0DDC06E2018C08800AEFF94 /* Section.swift in Sources */,
 				A0F57DBE201E440F003AFA66 /* ChannelListViewModel.swift in Sources */,
