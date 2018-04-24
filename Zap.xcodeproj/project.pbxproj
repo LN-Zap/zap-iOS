@@ -182,6 +182,8 @@
 		ADF79364208DCB630086B2CA /* PinView.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADF79363208DCB630086B2CA /* PinView.swift */; };
 		ADF79366208E000C0086B2CA /* SetupPinViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADF79365208E000C0086B2CA /* SetupPinViewController.swift */; };
 		ADF79368208E09D00086B2CA /* SetupPinViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADF79367208E09D00086B2CA /* SetupPinViewModel.swift */; };
+		ADF7936A208E5FEC0086B2CA /* ConfirmMnemonicCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADF79369208E5FEC0086B2CA /* ConfirmMnemonicCollectionViewCell.swift */; };
+		ADF7936C208E66FA0086B2CA /* UICollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADF7936B208E66FA0086B2CA /* UICollectionView.swift */; };
 		E2255ED911EB334C67EC4349 /* Pods_ZapTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 700FBCADDAD580B28F987D98 /* Pods_ZapTests.framework */; };
 /* End PBXBuildFile section */
 
@@ -419,6 +421,8 @@
 		ADF79363208DCB630086B2CA /* PinView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PinView.swift; sourceTree = "<group>"; };
 		ADF79365208E000C0086B2CA /* SetupPinViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetupPinViewController.swift; sourceTree = "<group>"; };
 		ADF79367208E09D00086B2CA /* SetupPinViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetupPinViewModel.swift; sourceTree = "<group>"; };
+		ADF79369208E5FEC0086B2CA /* ConfirmMnemonicCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConfirmMnemonicCollectionViewCell.swift; sourceTree = "<group>"; };
+		ADF7936B208E66FA0086B2CA /* UICollectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UICollectionView.swift; sourceTree = "<group>"; };
 		AE22E81B1B7AD6C27F3D49BD /* Pods-Zap.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Zap.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Zap/Pods-Zap.debug.xcconfig"; sourceTree = "<group>"; };
 		CAF208744C2CFC6A493BD8B1 /* Pods_btcutil.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_btcutil.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		DB877056D2A1225EA035E012 /* Pods-Zap.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Zap.release.xcconfig"; path = "Pods/Target Support Files/Pods-Zap/Pods-Zap.release.xcconfig"; sourceTree = "<group>"; };
@@ -820,12 +824,13 @@
 		A0A05A5F2014A10A0007D1C9 /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
-				AD77464C2076161300EC596B /* Localizable */,
 				A08CF033201F5FCC000D5855 /* Array.swift */,
 				A02C9FC3202F617D009821B1 /* LocalAuthentication.swift */,
+				AD77464C2076161300EC596B /* Localizable */,
 				A0BD44DB206FCAD900BF27A3 /* SignalProtocol.swift */,
 				A0A96B87201769F100788808 /* String.swift */,
 				AD38EB2F207DF233007DF14D /* UIButton.swift */,
+				ADF7936B208E66FA0086B2CA /* UICollectionView.swift */,
 				A0A05A222013D9BB0007D1C9 /* UIColor.swift */,
 				A0A05A2F2013EFC00007D1C9 /* UIImage.swift */,
 				A0A96B83201748C200788808 /* UILabel.swift */,
@@ -981,6 +986,7 @@
 		AD79BB38208CD9970027AAC9 /* Mnemonic */ = {
 			isa = PBXGroup;
 			children = (
+				ADF79369208E5FEC0086B2CA /* ConfirmMnemonicCollectionViewCell.swift */,
 				ADCE01BE207B59BD00CA72E8 /* ConfirmMnemonicViewController.swift */,
 				ADCE01C2207B66A500CA72E8 /* ConfirmMnemonicViewModel.swift */,
 				ADBB362E2084CA16005662B4 /* MnemonicPageViewController.swift */,
@@ -1473,6 +1479,7 @@
 				A010093C2014CEE40001EF94 /* OpenStatusUpdate.swift in Sources */,
 				A0731FE62014AC0800C55E45 /* ContainerViewController.swift in Sources */,
 				A0F353CC206923E4005B3639 /* MainViewController.swift in Sources */,
+				ADF7936C208E66FA0086B2CA /* UICollectionView.swift in Sources */,
 				A0919151203C249200FA525A /* Font.swift in Sources */,
 				A0A05A4D20147B740007D1C9 /* RootViewController.swift in Sources */,
 				AD77466A2078EA9E00EC596B /* TransactionMetadataStore.swift in Sources */,
@@ -1524,6 +1531,7 @@
 				ADF79368208E09D00086B2CA /* SetupPinViewModel.swift in Sources */,
 				A0BD44DC206FCAD900BF27A3 /* SignalProtocol.swift in Sources */,
 				A0A05A352014047B0007D1C9 /* Lnd.swift in Sources */,
+				ADF7936A208E5FEC0086B2CA /* ConfirmMnemonicCollectionViewCell.swift in Sources */,
 				AD38EB32207DFB59007DF14D /* SegmentButton.swift in Sources */,
 				A0C2EABE206F8B5B003AE56E /* Localizable.swift in Sources */,
 				A0DDC06E2018C08800AEFF94 /* Section.swift in Sources */,

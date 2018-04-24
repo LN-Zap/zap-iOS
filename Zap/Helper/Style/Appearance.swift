@@ -10,7 +10,7 @@ import Foundation
 struct Appearance {
     static func setup() {
         UINavigationBar.appearance().largeTitleTextAttributes = [.font: Font.light.withSize(25)]
-        UINavigationBar.appearance().titleTextAttributes = [.font: Font.light]
+        UINavigationBar.appearance().titleTextAttributes = [.font: Font.light.withSize(20), .foregroundColor: UIColor.white]
         UIBarButtonItem.appearance().setTitleTextAttributes([.font: Font.light], for: .normal)
         UIBarButtonItem.appearance().setTitleTextAttributes([.font: Font.light], for: .disabled)
         

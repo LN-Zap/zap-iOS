@@ -37,4 +37,9 @@ enum Style {
         $0.font = Font.light
         $0.textColor = Color.text
     }
+    
+    static let textField = UIViewStyle<UITextField> {
+        $0.textColor = Color.text
+        $0.font = Font.light
+    }
 }

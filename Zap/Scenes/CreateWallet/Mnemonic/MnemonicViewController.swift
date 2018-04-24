@@ -18,6 +18,8 @@ final class MnemonicViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        title = "Create Wallet"
+        
         view.backgroundColor = Color.darkBackground
         
         Style.button.apply(to: doneButton)

@@ -8,57 +8,88 @@
 import Bond
 import UIKit
 
-class ConfirmMnemonicViewController: UIViewController {
+private let itemWitdh: CGFloat = 140
 
-    @IBOutlet private weak var mnemonicWordLabel: UILabel!
-    @IBOutlet private weak var mnemonicWordTextField: UITextField!
-    @IBOutlet private weak var doneButton: UIButton!
+class ConfirmMnemonicViewController: UIViewController {
     
+    @IBOutlet private weak var descriptionLabel: UILabel!
+    @IBOutlet private weak var collectionView: UICollectionView!
     var confirmViewModel: ConfirmMnemonicViewModel?
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        title = "Confirm Seed"
 
         view.backgroundColor = Color.darkBackground
-
-        Style.label.apply(to: mnemonicWordLabel) {
+        collectionView.dataSource = self
+        collectionView.isScrollEnabled = false
+        collectionView.backgroundColor = .clear
+        
+        Style.label.apply(to: descriptionLabel) {
             $0.textColor = .white
         }
-        Style.button.apply(to: doneButton)
         
-        mnemonicWordTextField.backgroundColor = .white
+        descriptionLabel.text = "Enter your key."
         
-        doneButton.setTitle("ok", for: .normal)
+        if let flowLayout = collectionView.collectionViewLayout as? UICollectionViewFlowLayout {
+            flowLayout.minimumInteritemSpacing = 0
+            flowLayout.minimumLineSpacing = 10
+            flowLayout.itemSize = CGSize(width: itemWitdh, height: collectionView.bounds.height)
+        }
         
-        mnemonicWordTextField.becomeFirstResponder()
-        
-        confirmViewModel?.mnemonic
-            .bidirectionalBind(to: mnemonicWordTextField.reactive.text)
-            .dispose(in: reactive.bag)
-
-        confirmViewModel?.wordLabel
-            .bind(to: mnemonicWordLabel.reactive.text)
-            .dispose(in: reactive.bag)
+        collectionView.contentInset = UIEdgeInsets(top: 0, left: 20, bottom: 0, right: 20)
     }
     
-    @IBAction private func doneButtonTapped(_ sender: Any) {
-        checkInput()
+    private func presentPinSetupViewController() {
+        guard let confirmViewModel = confirmViewModel else { return }
+        let setupPinViewController = Storyboard.numericKeyPad.instantiate(viewController: SetupPinViewController.self)
+        setupPinViewController.viewModel = confirmViewModel.viewModel
+        present(setupPinViewController, animated: true, completion: nil)
     }
     
-    private func checkInput() {
+    var currentCell = 0
+    
+    private func selectNextCell() {
         guard let confirmViewModel = confirmViewModel else { return }
         
-        if confirmViewModel.check() {
-            let setupPinViewController = Storyboard.numericKeyPad.instantiate(viewController: SetupPinViewController.self)
-            setupPinViewController.viewModel = confirmViewModel.viewModel
-            present(setupPinViewController, animated: true, completion: nil)
+        if currentCell >= confirmViewModel.wordList.count - 1 {
+            presentPinSetupViewController()
+            confirmViewModel.didVerifyMnemonic()
+            return
+        }
+        
+        currentCell += 1
+        
+        let indexPath = IndexPath(item: currentCell, section: 0)
+        collectionView.scrollToItem(at: indexPath, at: .centeredHorizontally, animated: true)
+        
+        for cell in collectionView.visibleCells {
+            guard let cell = cell as? ConfirmMnemonicCollectionViewCell else { continue }
+            cell.isActiveCell = false
+        }
+        
+        if let cell = collectionView.cellForItem(at: indexPath) as? ConfirmMnemonicCollectionViewCell {
+            cell.isActiveCell = true
         }
     }
 }
 
-extension ConfirmMnemonicViewController: UITextFieldDelegate {
-    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
-        checkInput()
-        return false
+extension ConfirmMnemonicViewController: UICollectionViewDataSource {
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        return confirmViewModel?.wordList.count ?? 0
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        let cell: ConfirmMnemonicCollectionViewCell = collectionView.dequeueCellForIndexPath(indexPath)
+        cell.confirmWordViewModel = confirmViewModel?.wordList[indexPath.item]
+        
+        cell.wordConfirmedCallback = selectNextCell
+        
+        if indexPath.row == currentCell {
+            cell.isActiveCell = true
+        }
+        
+        return cell
     }
 }
