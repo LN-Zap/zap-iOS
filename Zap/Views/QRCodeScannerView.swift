@@ -57,6 +57,7 @@ extension QRCodeScannerView: AVCaptureMetadataOutputObjectsDelegate {
         
         for addressType in addressTypes where addressType.isValidAddress(code, network: Settings.network) {
             handler?(addressType, code)
+            UINotificationFeedbackGenerator().notificationOccurred(.success)
             captureSession.stopRunning()
             return
         }
