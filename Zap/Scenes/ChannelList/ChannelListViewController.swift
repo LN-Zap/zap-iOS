@@ -60,12 +60,13 @@ class ChannelListViewController: UIViewController {
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         let navigationController = segue.destination as? UINavigationController
         
-        if let channelDetailViewController = navigationController?.topViewController as? ChannelDetailViewController,
+        if let sendViewController = navigationController?.topViewController as? QRCodeScannerViewController {
+            sendViewController.viewModel = viewModel
+            sendViewController.strategy = OpenChannelQRCodeScannerStrategy()
+        } else if let channelDetailViewController = navigationController?.topViewController as? ChannelDetailViewController,
             let channel = sender as? Channel,
             let viewModel = viewModel {
             channelDetailViewController.channelViewModel = ChannelDetailViewModel(viewModel: viewModel, channel: channel)
-        } else if let openChannelViewController = navigationController?.topViewController as? OpenChannelViewController {
-            openChannelViewController.channelViewModel = channelViewModel
         }
     }
     

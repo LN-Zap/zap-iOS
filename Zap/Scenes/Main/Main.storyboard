@@ -203,10 +203,10 @@
             </objects>
             <point key="canvasLocation" x="96.799999999999997" y="227.13643178410797"/>
         </scene>
-        <!--Send-->
+        <!--QRCodeScanner-->
         <scene sceneID="EPk-XX-Vxb">
             <objects>
-                <viewControllerPlaceholder storyboardName="Send" id="Tgt-Lj-oTL" sceneMemberID="viewController"/>
+                <viewControllerPlaceholder storyboardName="QRCodeScanner" id="Tgt-Lj-oTL" sceneMemberID="viewController"/>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="6h0-q6-emr" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-71" y="725"/>

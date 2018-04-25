@@ -11,13 +11,10 @@ import UIKit
 
 final class QRCodeScannerView: UIView {
     private var captureSession = AVCaptureSession()
+    private var videoPreviewLayer: AVCaptureVideoPreviewLayer?
+    
     var addressTypes: [AddressType]?
     var handler: ((AddressType, String) -> Void)?
-
-    override init(frame: CGRect) {
-        super.init(frame: frame)
-        setup()
-    }
     
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
@@ -42,8 +39,15 @@ final class QRCodeScannerView: UIView {
         videoPreviewLayer.videoGravity = AVLayerVideoGravity.resizeAspectFill
         videoPreviewLayer.frame = layer.bounds
         layer.addSublayer(videoPreviewLayer)
+        self.videoPreviewLayer = videoPreviewLayer
         
         captureSession.startRunning()
+    }
+    
+    override func layoutSubviews() {
+        super.layoutSubviews()
+        
+        videoPreviewLayer?.frame = layer.bounds
     }
 }
 

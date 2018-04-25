@@ -1,0 +1,131 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14109" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="kjt-IL-FgQ">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--Code Scanner View Controller-->
+        <scene sceneID="UId-xB-u6g">
+            <objects>
+                <viewController storyboardIdentifier="QRCodeScannerViewController" id="XWI-i7-W3A" customClass="QRCodeScannerViewController" customModule="Zap" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="aSj-aT-mt0">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Eno-d1-u3x">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                                <subviews>
+                                    <view opaque="NO" contentMode="scaleAspectFill" translatesAutoresizingMaskIntoConstraints="NO" id="suT-TO-7hY" customClass="QRCodeScannerView" customModule="Zap" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                                        <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    </view>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="zfZ-6Q-UHf">
+                                        <rect key="frame" x="0.0" y="603" width="375" height="64"/>
+                                        <subviews>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="C2T-oe-PmX">
+                                                <rect key="frame" x="0.0" y="0.0" width="375" height="64"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="64" id="4nr-3j-I1g"/>
+                                                </constraints>
+                                                <state key="normal" title="Paste"/>
+                                                <connections>
+                                                    <action selector="pasteButtonTapped:" destination="XWI-i7-W3A" eventType="touchUpInside" id="bLw-a3-ghL"/>
+                                                </connections>
+                                            </button>
+                                        </subviews>
+                                        <color key="backgroundColor" white="1" alpha="0.20000000000000001" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <constraints>
+                                            <constraint firstAttribute="bottom" secondItem="C2T-oe-PmX" secondAttribute="bottom" priority="250" id="Nbg-aL-Mmn"/>
+                                            <constraint firstAttribute="trailing" secondItem="C2T-oe-PmX" secondAttribute="trailing" id="Oy4-ln-Xrs"/>
+                                            <constraint firstItem="C2T-oe-PmX" firstAttribute="leading" secondItem="zfZ-6Q-UHf" secondAttribute="leading" id="is5-6S-y2N"/>
+                                            <constraint firstItem="C2T-oe-PmX" firstAttribute="top" secondItem="zfZ-6Q-UHf" secondAttribute="top" id="kEx-LN-w3B"/>
+                                        </constraints>
+                                    </view>
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="qr-code-overlay" translatesAutoresizingMaskIntoConstraints="NO" id="nON-Ym-xdN">
+                                        <rect key="frame" x="32.5" y="178.5" width="310" height="310"/>
+                                    </imageView>
+                                </subviews>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstItem="suT-TO-7hY" firstAttribute="leading" secondItem="Eno-d1-u3x" secondAttribute="leading" id="FID-XR-MLs"/>
+                                    <constraint firstAttribute="trailing" secondItem="zfZ-6Q-UHf" secondAttribute="trailing" id="GkY-FR-3DV"/>
+                                    <constraint firstAttribute="trailing" secondItem="suT-TO-7hY" secondAttribute="trailing" id="HXl-fN-yRc"/>
+                                    <constraint firstItem="nON-Ym-xdN" firstAttribute="centerX" secondItem="Eno-d1-u3x" secondAttribute="centerX" id="I43-Qz-L1e"/>
+                                    <constraint firstAttribute="bottom" secondItem="suT-TO-7hY" secondAttribute="bottom" id="LIR-ej-8rU"/>
+                                    <constraint firstItem="nON-Ym-xdN" firstAttribute="centerY" secondItem="Eno-d1-u3x" secondAttribute="centerY" id="LfQ-yt-OWi"/>
+                                    <constraint firstItem="zfZ-6Q-UHf" firstAttribute="leading" secondItem="Eno-d1-u3x" secondAttribute="leading" id="NTx-jv-FdO"/>
+                                    <constraint firstItem="suT-TO-7hY" firstAttribute="top" secondItem="Eno-d1-u3x" secondAttribute="top" id="T24-Sh-sJ2"/>
+                                    <constraint firstItem="zfZ-6Q-UHf" firstAttribute="bottom" secondItem="suT-TO-7hY" secondAttribute="bottom" id="q3F-QG-SRu"/>
+                                </constraints>
+                            </view>
+                            <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="V7t-mB-fri">
+                                <rect key="frame" x="0.0" y="667" width="375" height="300"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="300" id="RVI-Bw-HXy"/>
+                                </constraints>
+                            </containerView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="V7t-mB-fri" firstAttribute="top" secondItem="Eno-d1-u3x" secondAttribute="bottom" id="BCV-KX-hTX"/>
+                            <constraint firstItem="V7t-mB-fri" firstAttribute="trailing" secondItem="wCl-Jb-7G3" secondAttribute="trailing" id="DtW-Fc-7a3"/>
+                            <constraint firstItem="Eno-d1-u3x" firstAttribute="top" secondItem="aSj-aT-mt0" secondAttribute="top" id="H69-q5-apI"/>
+                            <constraint firstAttribute="bottom" secondItem="V7t-mB-fri" secondAttribute="bottom" priority="200" id="Ykw-C6-mMT"/>
+                            <constraint firstItem="V7t-mB-fri" firstAttribute="leading" secondItem="wCl-Jb-7G3" secondAttribute="leading" id="aY2-pY-kOY"/>
+                            <constraint firstItem="Eno-d1-u3x" firstAttribute="leading" secondItem="wCl-Jb-7G3" secondAttribute="leading" id="kKY-pL-jcW"/>
+                            <constraint firstItem="wCl-Jb-7G3" firstAttribute="bottom" relation="greaterThanOrEqual" secondItem="C2T-oe-PmX" secondAttribute="bottom" id="kcA-Ky-MbY"/>
+                            <constraint firstItem="V7t-mB-fri" firstAttribute="top" secondItem="aSj-aT-mt0" secondAttribute="bottom" id="rfk-aS-4Bp"/>
+                            <constraint firstItem="Eno-d1-u3x" firstAttribute="trailing" secondItem="wCl-Jb-7G3" secondAttribute="trailing" id="vLb-xT-uFR"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="wCl-Jb-7G3"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="VWZ-gz-it5">
+                        <barButtonItem key="rightBarButtonItem" systemItem="cancel" id="1TO-rb-0do">
+                            <connections>
+                                <action selector="cancelButtonTapped:" destination="XWI-i7-W3A" id="ZAS-Fm-QCM"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                    <connections>
+                        <outlet property="container" destination="V7t-mB-fri" id="WGY-Vn-2If"/>
+                        <outlet property="pasteButton" destination="C2T-oe-PmX" id="Iw7-DT-EN9"/>
+                        <outlet property="pasteButtonContainer" destination="zfZ-6Q-UHf" id="aph-Op-oIz"/>
+                        <outlet property="paymentTopConstraint" destination="rfk-aS-4Bp" id="Wfc-xR-nNX"/>
+                        <outlet property="scannerView" destination="suT-TO-7hY" id="Zqd-BQ-io7"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="aN4-Z4-gco" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="415" y="149"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="aCV-zW-E1s">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="kjt-IL-FgQ" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="mfT-8C-5S4">
+                        <rect key="frame" x="0.0" y="20" width="375" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <color key="barTintColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="XWI-i7-W3A" kind="relationship" relationship="rootViewController" id="M4y-uf-OMQ"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="AO6-OQ-Glt" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-498" y="149"/>
+        </scene>
+    </scenes>
+    <resources>
+        <image name="qr-code-overlay" width="310" height="310"/>
+    </resources>
+</document>

@@ -110,8 +110,9 @@ final class MainViewController: UIViewController, ContainerViewController {
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         guard let navigationController = segue.destination as? UINavigationController else { return }
         
-        if let sendViewController = navigationController.topViewController as? SendViewController {
+        if let sendViewController = navigationController.topViewController as? QRCodeScannerViewController {
             sendViewController.viewModel = viewModel
+            sendViewController.strategy = SendQRCodeScannerStrategy()
         } else if let requestViewController = navigationController.topViewController as? RequestViewController {
             requestViewController.viewModel = viewModel
         }

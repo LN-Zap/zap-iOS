@@ -39,7 +39,7 @@
 		A024B84D201606B4002B8897 /* Peer.swift in Sources */ = {isa = PBXBuildFile; fileRef = A024B84C201606B4002B8897 /* Peer.swift */; };
 		A024B85020160F93002B8897 /* ChannelTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A024B84E20160F93002B8897 /* ChannelTableViewCell.swift */; };
 		A024B85120160F93002B8897 /* ChannelTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = A024B84F20160F93002B8897 /* ChannelTableViewCell.xib */; };
-		A024B85320161560002B8897 /* SendViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A024B85220161560002B8897 /* SendViewController.swift */; };
+		A024B85320161560002B8897 /* QRCodeScannerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A024B85220161560002B8897 /* QRCodeScannerViewController.swift */; };
 		A024B85720161586002B8897 /* Send.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A024B85620161586002B8897 /* Send.storyboard */; };
 		A024B85920161590002B8897 /* Request.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A024B85820161590002B8897 /* Request.storyboard */; };
 		A024B85B20161AAE002B8897 /* PaymentRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = A024B85A20161AAE002B8897 /* PaymentRequest.swift */; };
@@ -162,6 +162,10 @@
 		AD7746672077C72600EC596B /* TransactionViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD7746662077C72600EC596B /* TransactionViewModel.swift */; };
 		AD77466A2078EA9E00EC596B /* TransactionMetadataStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD7746692078EA9E00EC596B /* TransactionMetadataStore.swift */; };
 		AD77466C2078EE5600EC596B /* TransactionMetadataUpdater.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD77466B2078EE5600EC596B /* TransactionMetadataUpdater.swift */; };
+		AD99C9ED209072710061C565 /* QRCodeScanner.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AD99C9EC209072710061C565 /* QRCodeScanner.storyboard */; };
+		AD99C9EF209076650061C565 /* QRCodeScannerStrategy.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD99C9EE209076650061C565 /* QRCodeScannerStrategy.swift */; };
+		AD99C9F120907AB30061C565 /* OpenChannelQRCodeScannerStrategy.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD99C9F020907AB30061C565 /* OpenChannelQRCodeScannerStrategy.swift */; };
+		AD99C9F320907AD10061C565 /* SendQRCodeScannerStrategy.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD99C9F220907AD10061C565 /* SendQRCodeScannerStrategy.swift */; };
 		ADBB3620207FA5D6005662B4 /* Date+Localizable.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADBB361F207FA5D6005662B4 /* Date+Localizable.swift */; };
 		ADBB36222080A3B1005662B4 /* LightningProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADBB36212080A3B1005662B4 /* LightningProtocol.swift */; };
 		ADBB36242080A457005662B4 /* LightningMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADBB36232080A457005662B4 /* LightningMock.swift */; };
@@ -259,7 +263,7 @@
 		A024B84C201606B4002B8897 /* Peer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Peer.swift; sourceTree = "<group>"; };
 		A024B84E20160F93002B8897 /* ChannelTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChannelTableViewCell.swift; sourceTree = "<group>"; };
 		A024B84F20160F93002B8897 /* ChannelTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ChannelTableViewCell.xib; sourceTree = "<group>"; };
-		A024B85220161560002B8897 /* SendViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SendViewController.swift; sourceTree = "<group>"; };
+		A024B85220161560002B8897 /* QRCodeScannerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QRCodeScannerViewController.swift; sourceTree = "<group>"; };
 		A024B85620161586002B8897 /* Send.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Send.storyboard; sourceTree = "<group>"; };
 		A024B85820161590002B8897 /* Request.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Request.storyboard; sourceTree = "<group>"; };
 		A024B85A20161AAE002B8897 /* PaymentRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaymentRequest.swift; sourceTree = "<group>"; };
@@ -402,6 +406,10 @@
 		AD7746662077C72600EC596B /* TransactionViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransactionViewModel.swift; sourceTree = "<group>"; };
 		AD7746692078EA9E00EC596B /* TransactionMetadataStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransactionMetadataStore.swift; sourceTree = "<group>"; };
 		AD77466B2078EE5600EC596B /* TransactionMetadataUpdater.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransactionMetadataUpdater.swift; sourceTree = "<group>"; };
+		AD99C9EC209072710061C565 /* QRCodeScanner.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = QRCodeScanner.storyboard; sourceTree = "<group>"; };
+		AD99C9EE209076650061C565 /* QRCodeScannerStrategy.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QRCodeScannerStrategy.swift; sourceTree = "<group>"; };
+		AD99C9F020907AB30061C565 /* OpenChannelQRCodeScannerStrategy.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OpenChannelQRCodeScannerStrategy.swift; sourceTree = "<group>"; };
+		AD99C9F220907AD10061C565 /* SendQRCodeScannerStrategy.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SendQRCodeScannerStrategy.swift; sourceTree = "<group>"; };
 		ADBB361F207FA5D6005662B4 /* Date+Localizable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Date+Localizable.swift"; sourceTree = "<group>"; };
 		ADBB36212080A3B1005662B4 /* LightningProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LightningProtocol.swift; sourceTree = "<group>"; };
 		ADBB36232080A457005662B4 /* LightningMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LightningMock.swift; sourceTree = "<group>"; };
@@ -535,15 +543,16 @@
 		A01009322014BD960001EF94 /* Scenes */ = {
 			isa = PBXGroup;
 			children = (
-				ADCE01CA207B966200CA72E8 /* Loading */,
 				A01009532015FA330001EF94 /* Abstract */,
 				A02C9FBE202EFFEF009821B1 /* ChannelDetail */,
 				A0DDC0702018C6D800AEFF94 /* ChannelList */,
 				ADCE01B9207B57DA00CA72E8 /* CreateWallet */,
+				ADCE01CA207B966200CA72E8 /* Loading */,
 				A0F353CA206923D7005B3639 /* Main */,
 				A0376B73201CD60F00F1FBEF /* NumericKeyPad */,
 				A02C9FBB202EE995009821B1 /* OpenChannel */,
 				A070D963202A3CFC000A8274 /* QRCodeDetail */,
+				AD99C9EB209072530061C565 /* QRCodeScanner */,
 				A070D964202A3D0C000A8274 /* Request */,
 				A0DDC0722018C72D00AEFF94 /* Root */,
 				A03F035E2028C71400F32279 /* Send */,
@@ -588,7 +597,6 @@
 				A0BD44DE206FED1400BF27A3 /* BondTableViewCell.swift */,
 				A0605F8C202C9D8200EA903C /* HorizontalLineView.swift */,
 				ADF79363208DCB630086B2CA /* PinView.swift */,
-				A06660F4202D97A300EE32FA /* QRCodeScannerView.swift */,
 				A0605F89202C9D1A00EA903C /* Section Header */,
 				AD38EB31207DFB59007DF14D /* SegmentButton.swift */,
 				A0605F8A202C9D2F00EA903C /* Toast */,
@@ -611,6 +619,7 @@
 			children = (
 				A010094D2015F97F0001EF94 /* OpenChannelViewController.swift */,
 				A02C9FBC202EE9BE009821B1 /* OpenChannelViewModel.swift */,
+				AD99C9F020907AB30061C565 /* OpenChannelQRCodeScannerStrategy.swift */,
 			);
 			path = OpenChannel;
 			sourceTree = "<group>";
@@ -656,7 +665,7 @@
 				A070D960202A3CA6000A8274 /* SendBTC */,
 				AD77465A2076827100EC596B /* SendLightning */,
 				A024B85620161586002B8897 /* Send.storyboard */,
-				A024B85220161560002B8897 /* SendViewController.swift */,
+				AD99C9F220907AD10061C565 /* SendQRCodeScannerStrategy.swift */,
 			);
 			path = Send;
 			sourceTree = "<group>";
@@ -997,6 +1006,17 @@
 			path = "Generate Mnemonic";
 			sourceTree = "<group>";
 		};
+		AD99C9EB209072530061C565 /* QRCodeScanner */ = {
+			isa = PBXGroup;
+			children = (
+				AD99C9EC209072710061C565 /* QRCodeScanner.storyboard */,
+				AD99C9EE209076650061C565 /* QRCodeScannerStrategy.swift */,
+				A06660F4202D97A300EE32FA /* QRCodeScannerView.swift */,
+				A024B85220161560002B8897 /* QRCodeScannerViewController.swift */,
+			);
+			path = QRCodeScanner;
+			sourceTree = "<group>";
+		};
 		ADCE01B9207B57DA00CA72E8 /* CreateWallet */ = {
 			isa = PBXGroup;
 			children = (
@@ -1242,6 +1262,7 @@
 				A091914F203C23C100FA525A /* Roboto-Light.ttf in Resources */,
 				A0A05A082013CF960007D1C9 /* Root.storyboard in Resources */,
 				A01009412014D4810001EF94 /* Toast.xib in Resources */,
+				AD99C9ED209072710061C565 /* QRCodeScanner.storyboard in Resources */,
 				A0605F88202C963800EA903C /* SectionHeaderView.xib in Resources */,
 				A024B85720161586002B8897 /* Send.storyboard in Resources */,
 				A024B85120160F93002B8897 /* ChannelTableViewCell.xib in Resources */,
@@ -1436,12 +1457,13 @@
 				A0A05A4D20147B740007D1C9 /* RootViewController.swift in Sources */,
 				AD77466A2078EA9E00EC596B /* TransactionMetadataStore.swift in Sources */,
 				A0A05A5720149A0D0007D1C9 /* Settings.swift in Sources */,
+				AD99C9F120907AB30061C565 /* OpenChannelQRCodeScannerStrategy.swift in Sources */,
 				AD77465720765E4D00EC596B /* ChannelViewModel.swift in Sources */,
 				A0D3C98020629B9D0015C5D7 /* Scheduler.swift in Sources */,
 				A0A05A2B2013ED920007D1C9 /* QRCodeDetailViewController.swift in Sources */,
 				A0919158203C309100FA525A /* Color.swift in Sources */,
 				A0DDC06A2018BFFA00AEFF94 /* LockWalletSettingsItem.swift in Sources */,
-				A024B85320161560002B8897 /* SendViewController.swift in Sources */,
+				A024B85320161560002B8897 /* QRCodeScannerViewController.swift in Sources */,
 				A0133DD1201B9AF500E41FB9 /* NumericKeyPadViewController.swift in Sources */,
 				A0D3C971205FF0E10015C5D7 /* MnemonicViewController.swift in Sources */,
 				A0BD44DF206FED1400BF27A3 /* BondTableViewCell.swift in Sources */,
@@ -1509,6 +1531,7 @@
 				A05C5B8D20640AEA00072FA9 /* GRPCProtoCall.swift in Sources */,
 				A02C9FBD202EE9BE009821B1 /* OpenChannelViewModel.swift in Sources */,
 				A0A96B8620174BAC00788808 /* CloseStatusUpdate.swift in Sources */,
+				AD99C9EF209076650061C565 /* QRCodeScannerStrategy.swift in Sources */,
 				A0A05A232013D9BB0007D1C9 /* UIColor.swift in Sources */,
 				ADF79364208DCB630086B2CA /* PinView.swift in Sources */,
 				A07C1033203DD5AF006C7FE8 /* Appearance.swift in Sources */,
@@ -1518,6 +1541,7 @@
 				A0731FE92014B27900C55E45 /* ChannelListViewController.swift in Sources */,
 				A0A33EF42028743200BB76F4 /* Lightning.swift in Sources */,
 				A0C2EAC0206F8D10003AE56E /* Bitcoin.swift in Sources */,
+				AD99C9F320907AD10061C565 /* SendQRCodeScannerStrategy.swift in Sources */,
 				A024B84D201606B4002B8897 /* Peer.swift in Sources */,
 				ADBB362F2084CA16005662B4 /* MnemonicPageViewController.swift in Sources */,
 				A024B85B20161AAE002B8897 /* PaymentRequest.swift in Sources */,
