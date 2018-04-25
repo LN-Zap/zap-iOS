@@ -106,7 +106,7 @@ final class Lightning: LightningProtocol {
     
     func openChannel(pubKey: String, amount: Satoshi, callback: @escaping (Result<OpenStatusUpdate>) -> Void) {
         let request = OpenChannelRequest()
-        request.nodePubkeyString = pubKey
+        request.nodePubkey = pubKey.hexadecimal()
         request.localFundingAmount = Int64(truncating: amount)
         
         rpc?.rpcToOpenChannel(with: request, eventHandler: eventResult(callback, map: { OpenStatusUpdate($0) }))

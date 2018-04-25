@@ -5,45 +5,27 @@
 //  Copyright © 2018 Otto Suess. All rights reserved.
 //
 
-import BTCUtil
+//import BTCUtil
 import Foundation
 
 final class OpenChannelViewModel {
     private let viewModel: ViewModel
-    var address: String?
+    private let pubKey: String
+    private let host: String
     
-    init(viewModel: ViewModel) {
+    init?(viewModel: ViewModel, address: String) {
         self.viewModel = viewModel
-    }
-    
-    static private func connectAndOpenChannel(viewModel: ViewModel, lightningAddress: String, amount: Satoshi) {
-        let addressComponents = lightningAddress.split { ["@", " "].contains(String($0)) }
-        guard addressComponents.count == 2 else { return } // TODO show Error
         
-        let pubKey = String(addressComponents[0])
-        let host = String(addressComponents[1])
-     
-        viewModel.connect(pubKey: pubKey, host: host) { _ in
-            _ = viewModel.openChannel(pubKey: pubKey, amount: amount)
-        }
+        let addressComponents = address.split { ["@", " "].contains(String($0)) }
+        guard addressComponents.count == 2 else { return nil }
+        
+        pubKey = String(addressComponents[0])
+        host = String(addressComponents[1])
     }
     
-    func open() {
-        //            guard let amountString = amountString else { return Observable<Void>.empty() }
-        //            let amount = Settings.bitcoinUnit
-        //                .map { $0.satoshis(string: amountString) }
-        //                .filterNil()
-        //
-        //            return Observable.combineLatest(amount, address)
-        //                .flatMap { tuple -> Observable<OpenStatusUpdate> in
-        //                    let (amount, address) = tuple
-        //                    OpenChannelViewModel.connectAndOpenChannel(viewModel: viewModel, lightningAddress: address, amount: amount)
-
-    }
-    
-    func paste() {
-        if let string = UIPasteboard.general.string {
-            address = string
+    func openChannel() {
+        viewModel.connect(pubKey: pubKey, host: host) { [pubKey, viewModel] _ in
+            _ = viewModel.openChannel(pubKey: pubKey, amount: 1000000)
         }
     }
 }

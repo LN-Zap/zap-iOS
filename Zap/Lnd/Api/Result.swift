@@ -78,7 +78,6 @@ func result<T, U>(_ callback: @escaping (Result<U>) -> Void, map: @escaping (T) 
     return { (response: T?, error: Error?) in
         if let response = response,
             let value = map(response) {
-            print(response)
             callback(Result<U>(value: value))
         } else if let error = error as NSError? {
             switch error.code {

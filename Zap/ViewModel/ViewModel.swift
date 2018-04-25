@@ -20,7 +20,7 @@ enum WalletState {
 }
 
 final class ViewModel: NSObject {
-    var isLocked = true {
+    var isLocked = false {
         didSet {
             updateWalletState(result: nil)
         }
@@ -205,7 +205,8 @@ final class ViewModel: NSObject {
     }
     
     func openChannel(pubKey: String, amount: Satoshi) {
-        api.openChannel(pubKey: pubKey, amount: amount) { [weak self] _ in
+        api.openChannel(pubKey: pubKey, amount: amount) { [weak self] in
+            print("❗️", $0)
             self?.updateChannelBalance()
             self?.updateChannels()
             self?.updatePendingChannels()

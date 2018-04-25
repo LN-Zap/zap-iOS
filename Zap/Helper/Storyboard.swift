@@ -14,6 +14,7 @@ enum Storyboard: String {
     case loading
     case main
     case numericKeyPad
+    case openChannel
     case paymentDetail
     case qrCodeDetail = "QRCodeDetail"
     case qrCodeScanner = "QRCodeScanner"

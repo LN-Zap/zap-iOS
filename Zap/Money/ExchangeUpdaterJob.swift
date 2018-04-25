@@ -45,7 +45,7 @@ final class ExchangeData {
                 Settings.updateCurrency(updatedCurrency)
             }
             
-            print(availableCurrencies)
+            print("✅ did update exchange rates")
         }
     }
 }

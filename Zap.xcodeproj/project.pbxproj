@@ -166,6 +166,7 @@
 		AD99C9EF209076650061C565 /* QRCodeScannerStrategy.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD99C9EE209076650061C565 /* QRCodeScannerStrategy.swift */; };
 		AD99C9F120907AB30061C565 /* OpenChannelQRCodeScannerStrategy.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD99C9F020907AB30061C565 /* OpenChannelQRCodeScannerStrategy.swift */; };
 		AD99C9F320907AD10061C565 /* SendQRCodeScannerStrategy.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD99C9F220907AD10061C565 /* SendQRCodeScannerStrategy.swift */; };
+		AD99C9F5209085B20061C565 /* OpenChannel.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AD99C9F4209085B20061C565 /* OpenChannel.storyboard */; };
 		ADBB3620207FA5D6005662B4 /* Date+Localizable.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADBB361F207FA5D6005662B4 /* Date+Localizable.swift */; };
 		ADBB36222080A3B1005662B4 /* LightningProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADBB36212080A3B1005662B4 /* LightningProtocol.swift */; };
 		ADBB36242080A457005662B4 /* LightningMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADBB36232080A457005662B4 /* LightningMock.swift */; };
@@ -410,6 +411,7 @@
 		AD99C9EE209076650061C565 /* QRCodeScannerStrategy.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QRCodeScannerStrategy.swift; sourceTree = "<group>"; };
 		AD99C9F020907AB30061C565 /* OpenChannelQRCodeScannerStrategy.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OpenChannelQRCodeScannerStrategy.swift; sourceTree = "<group>"; };
 		AD99C9F220907AD10061C565 /* SendQRCodeScannerStrategy.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SendQRCodeScannerStrategy.swift; sourceTree = "<group>"; };
+		AD99C9F4209085B20061C565 /* OpenChannel.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = OpenChannel.storyboard; sourceTree = "<group>"; };
 		ADBB361F207FA5D6005662B4 /* Date+Localizable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Date+Localizable.swift"; sourceTree = "<group>"; };
 		ADBB36212080A3B1005662B4 /* LightningProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LightningProtocol.swift; sourceTree = "<group>"; };
 		ADBB36232080A457005662B4 /* LightningMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LightningMock.swift; sourceTree = "<group>"; };
@@ -620,6 +622,7 @@
 				A010094D2015F97F0001EF94 /* OpenChannelViewController.swift */,
 				A02C9FBC202EE9BE009821B1 /* OpenChannelViewModel.swift */,
 				AD99C9F020907AB30061C565 /* OpenChannelQRCodeScannerStrategy.swift */,
+				AD99C9F4209085B20061C565 /* OpenChannel.storyboard */,
 			);
 			path = OpenChannel;
 			sourceTree = "<group>";
@@ -1262,6 +1265,7 @@
 				A091914F203C23C100FA525A /* Roboto-Light.ttf in Resources */,
 				A0A05A082013CF960007D1C9 /* Root.storyboard in Resources */,
 				A01009412014D4810001EF94 /* Toast.xib in Resources */,
+				AD99C9F5209085B20061C565 /* OpenChannel.storyboard in Resources */,
 				AD99C9ED209072710061C565 /* QRCodeScanner.storyboard in Resources */,
 				A0605F88202C963800EA903C /* SectionHeaderView.xib in Resources */,
 				A024B85720161586002B8897 /* Send.storyboard in Resources */,

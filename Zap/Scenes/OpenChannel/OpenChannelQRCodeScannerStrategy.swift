@@ -9,11 +9,13 @@ import BTCUtil
 import Foundation
 
 struct OpenChannelQRCodeScannerStrategy: QRCodeScannerStrategy {
-    var title = "Open Channel"
+    var title = "scene.open_channel.title".localized
     
     var addressTypes: [AddressType] = [.lightningNode]
     
     func viewControllerForAddressType(_ type: AddressType, address: String, viewModel: ViewModel) -> UIViewController? {
-        return UIViewController()
+        let viewController = Storyboard.openChannel.initial(viewController: OpenChannelViewController.self)
+        viewController.openChannelViewModel = OpenChannelViewModel(viewModel: viewModel, address: address)
+        return viewController
     }
 }
