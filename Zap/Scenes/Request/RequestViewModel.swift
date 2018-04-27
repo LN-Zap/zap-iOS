@@ -14,7 +14,7 @@ enum RequestMethod {
     case onChain
 }
 
-final class RequestViewModel {
+final class RequestViewModel: AmountInputtable {
     private let maxPaymentAllowed: Satoshi = 4294967
     private let viewModel: ViewModel
     private var cachedOnChainAddress: String?

@@ -11,15 +11,11 @@ final class RequestViewController: UIViewController {
     @IBOutlet private weak var segmentedControlBackgroundView: UIView!
     @IBOutlet private weak var lightningButton: UIButton!
     @IBOutlet private weak var onChainButton: UIButton!
-    @IBOutlet private weak var amountTextField: UITextField!
     @IBOutlet private weak var placeholderTextView: UITextView!
     @IBOutlet private weak var memoTextView: UITextView!
     @IBOutlet private weak var createButton: UIButton!
-    @IBOutlet private weak var amountInputView: UIView!
-    @IBOutlet private weak var swapCurrencyButton: UIButton!
-    @IBOutlet private weak var downArrowImageView: UIImageView!
     @IBOutlet private weak var bottomConstraint: NSLayoutConstraint!
-    @IBOutlet private weak var keyPadView: KeyPadView!
+    @IBOutlet private weak var amountInputView: AmountInputView!
     
     var viewModel: ViewModel? {
         didSet {
@@ -41,15 +37,6 @@ final class RequestViewController: UIViewController {
         
         segmentedControlBackgroundView.backgroundColor = Color.searchBackground
         
-        setupKeyPad()
-        
-        amountTextField.textColor = Color.text
-        amountTextField.font = Font.light.withSize(36)
-        amountTextField.placeholder = "Amount"
-        amountTextField.inputView = UIView()
-        amountTextField.delegate = self
-        amountTextField.becomeFirstResponder()
-        
         Style.button.apply(to: createButton)
         createButton.setTitle("Generate  Request", for: .normal)
         createButton.tintColor = .white
@@ -59,25 +46,6 @@ final class RequestViewController: UIViewController {
         placeholderTextView.textColor = Color.disabled
         memoTextView.font = Font.light.withSize(14)
         memoTextView.textColor = Color.text
-        
-        Style.button.apply(to: swapCurrencyButton)
-        swapCurrencyButton.tintColor = Color.text
-        swapCurrencyButton.titleLabel?.font = Font.light.withSize(36)
-        downArrowImageView.tintColor = Color.text
-        
-        Settings.primaryCurrency
-            .map { $0.symbol }
-            .bind(to: swapCurrencyButton.reactive.title )
-            .dispose(in: reactive.bag)
-        
-        requestViewModel?.amountString
-            .bind(to: amountTextField.reactive.text)
-            .dispose(in: reactive.bag)
-        
-        requestViewModel?.isAmountValid
-            .map { $0 ? Color.text : Color.red }
-            .bind(to: amountTextField.reactive.textColor)
-            .dispose(in: reactive.bag)
         
         memoTextView.reactive.text
             .map { !($0?.isEmpty ?? true) }
@@ -91,6 +59,8 @@ final class RequestViewController: UIViewController {
             .dispose(in: reactive.bag)
 
         setupKeyboardNotifications()
+        
+        amountInputView.amountViewModel = requestViewModel
     }
     
     @IBAction private func segmentedControlDidChange(_ sender: UIButton) {
@@ -138,31 +108,5 @@ final class RequestViewController: UIViewController {
             bottomConstraint?.constant = height
             view?.layoutIfNeeded()
         }
-    }
-    
-    private func setupKeyPad() {
-        let numberFormatter = InputNumberFormatter(unit: .bit)
-        keyPadView.handler = { [weak self] input in
-            guard let output = numberFormatter.validate(input) else { return false }
-            
-            self?.requestViewModel?.updateAmount(output)
-            return true
-        }
-    }
-}
-
-extension RequestViewController: UITextFieldDelegate {
-    private func animateKeypad(hidden: Bool) {
-        UIView.animate(withDuration: 0.5, delay: 0, usingSpringWithDamping: 0.75, initialSpringVelocity: 0.5, options: .curveEaseInOut, animations: { [amountInputView] in
-            amountInputView?.isHidden = hidden
-            }, completion: nil)
-    }
-    
-    func textFieldDidBeginEditing(_ textField: UITextField) {
-        animateKeypad(hidden: false)
-    }
-    
-    func textFieldDidEndEditing(_ textField: UITextField) {
-        animateKeypad(hidden: true)
     }
 }

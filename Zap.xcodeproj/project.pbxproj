@@ -603,6 +603,8 @@
 		A010093E2014D4720001EF94 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				ADBA12082093587B001F7700 /* KeyPad */,
+				ADBA120720935871001F7700 /* AmountInput */,
 				ADBB362C2080B755005662B4 /* AddressView.swift */,
 				A0BD44DE206FED1400BF27A3 /* BondTableViewCell.swift */,
 				A0605F8C202C9D8200EA903C /* HorizontalLineView.swift */,
@@ -812,10 +814,6 @@
 				A010093A2014BF440001EF94 /* Supporting Files */,
 				A07C1034203DE3D0006C7FE8 /* ViewModel */,
 				A010093E2014D4720001EF94 /* Views */,
-				ADBA12032090CD22001F7700 /* KeyPadView.swift */,
-				ADBA12012090CD11001F7700 /* KeyPadView.xib */,
-				AD99C9F62090C2560061C565 /* AmountInputView.swift */,
-				AD99C9F82090C2600061C565 /* AmountInputView.xib */,
 			);
 			path = Zap;
 			sourceTree = "<group>";
@@ -1030,6 +1028,24 @@
 				A024B85220161560002B8897 /* QRCodeScannerViewController.swift */,
 			);
 			path = QRCodeScanner;
+			sourceTree = "<group>";
+		};
+		ADBA120720935871001F7700 /* AmountInput */ = {
+			isa = PBXGroup;
+			children = (
+				AD99C9F62090C2560061C565 /* AmountInputView.swift */,
+				AD99C9F82090C2600061C565 /* AmountInputView.xib */,
+			);
+			path = AmountInput;
+			sourceTree = "<group>";
+		};
+		ADBA12082093587B001F7700 /* KeyPad */ = {
+			isa = PBXGroup;
+			children = (
+				ADBA12032090CD22001F7700 /* KeyPadView.swift */,
+				ADBA12012090CD11001F7700 /* KeyPadView.xib */,
+			);
+			path = KeyPad;
 			sourceTree = "<group>";
 		};
 		ADCE01B9207B57DA00CA72E8 /* CreateWallet */ = {
