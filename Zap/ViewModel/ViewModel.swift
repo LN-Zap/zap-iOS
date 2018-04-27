@@ -157,7 +157,7 @@ final class ViewModel: NSObject {
         }
     }
 
-    private func updateTransactions() {
+    func updateTransactions() {
         api.transactions { [onChainTransactions] result in
             onChainTransactions.value = result.value ?? []
         }
@@ -175,7 +175,7 @@ final class ViewModel: NSObject {
         }
     }
     
-    private func updateChannels() {
+    func updateChannels() {
         api.channels { [channels] result in
             channels.value = result.value ?? []
         }

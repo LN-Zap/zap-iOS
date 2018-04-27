@@ -12,6 +12,7 @@ final class OpenChannelViewController: UIViewController {
     @IBOutlet private weak var sendButton: UIButton!
     @IBOutlet private weak var helpLabel: UILabel!
     @IBOutlet private weak var helpImageView: UIImageView!
+    @IBOutlet private weak var amountInputView: AmountInputView!
     
     var openChannelViewModel: OpenChannelViewModel?
     
@@ -26,6 +27,8 @@ final class OpenChannelViewController: UIViewController {
         helpImageView.tintColor = Color.text
         helpLabel.text = "Fund connection"
         sendButton.setTitle("Add", for: .normal)
+        
+        amountInputView.amountViewModel = openChannelViewModel
     }
     
     @IBAction private func presentHelp(_ sender: Any) {

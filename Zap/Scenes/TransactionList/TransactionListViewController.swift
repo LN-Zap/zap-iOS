@@ -65,6 +65,7 @@ class TransactionListViewController: UIViewController {
     
     @objc
     func refresh(sender: UIRefreshControl) {
+        viewModel?.updateTransactions()
         sender.endRefreshing()
     }
 }

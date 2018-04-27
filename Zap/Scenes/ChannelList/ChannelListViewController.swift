@@ -72,7 +72,7 @@ class ChannelListViewController: UIViewController {
     
     @objc
     func refresh(sender: UIRefreshControl) {
-        print("refresh")
+        viewModel?.updateChannels()
         sender.endRefreshing()
     }
 }

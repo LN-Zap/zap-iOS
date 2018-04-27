@@ -19,7 +19,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         UIApplication.shared.isIdleTimerDisabled = true
         Appearance.setup()
         
-        Scheduler.schedule(interval: 120, job: ExchangeUpdaterJob()) // TODO: move this somewhere else?
+        Scheduler.schedule(interval: 60 * 10, job: ExchangeUpdaterJob()) // TODO: move this somewhere else?
         
         Lnd.instance.startLnd()
         

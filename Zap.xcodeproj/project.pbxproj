@@ -166,8 +166,11 @@
 		AD99C9F120907AB30061C565 /* OpenChannelQRCodeScannerStrategy.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD99C9F020907AB30061C565 /* OpenChannelQRCodeScannerStrategy.swift */; };
 		AD99C9F320907AD10061C565 /* SendQRCodeScannerStrategy.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD99C9F220907AD10061C565 /* SendQRCodeScannerStrategy.swift */; };
 		AD99C9F5209085B20061C565 /* OpenChannel.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AD99C9F4209085B20061C565 /* OpenChannel.storyboard */; };
+		AD99C9F72090C2560061C565 /* AmountInputView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD99C9F62090C2560061C565 /* AmountInputView.swift */; };
+		AD99C9F92090C2600061C565 /* AmountInputView.xib in Resources */ = {isa = PBXBuildFile; fileRef = AD99C9F82090C2600061C565 /* AmountInputView.xib */; };
 		ADBA12022090CD11001F7700 /* KeyPadView.xib in Resources */ = {isa = PBXBuildFile; fileRef = ADBA12012090CD11001F7700 /* KeyPadView.xib */; };
 		ADBA12042090CD22001F7700 /* KeyPadView.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADBA12032090CD22001F7700 /* KeyPadView.swift */; };
+		ADBA120620930C94001F7700 /* UIViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADBA120520930C94001F7700 /* UIViewController.swift */; };
 		ADBB3620207FA5D6005662B4 /* Date+Localizable.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADBB361F207FA5D6005662B4 /* Date+Localizable.swift */; };
 		ADBB36222080A3B1005662B4 /* LightningProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADBB36212080A3B1005662B4 /* LightningProtocol.swift */; };
 		ADBB36242080A457005662B4 /* LightningMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADBB36232080A457005662B4 /* LightningMock.swift */; };
@@ -412,8 +415,11 @@
 		AD99C9F020907AB30061C565 /* OpenChannelQRCodeScannerStrategy.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OpenChannelQRCodeScannerStrategy.swift; sourceTree = "<group>"; };
 		AD99C9F220907AD10061C565 /* SendQRCodeScannerStrategy.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SendQRCodeScannerStrategy.swift; sourceTree = "<group>"; };
 		AD99C9F4209085B20061C565 /* OpenChannel.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = OpenChannel.storyboard; sourceTree = "<group>"; };
+		AD99C9F62090C2560061C565 /* AmountInputView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AmountInputView.swift; sourceTree = "<group>"; };
+		AD99C9F82090C2600061C565 /* AmountInputView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AmountInputView.xib; sourceTree = "<group>"; };
 		ADBA12012090CD11001F7700 /* KeyPadView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = KeyPadView.xib; sourceTree = "<group>"; };
 		ADBA12032090CD22001F7700 /* KeyPadView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyPadView.swift; sourceTree = "<group>"; };
+		ADBA120520930C94001F7700 /* UIViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIViewController.swift; sourceTree = "<group>"; };
 		ADBB361F207FA5D6005662B4 /* Date+Localizable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Date+Localizable.swift"; sourceTree = "<group>"; };
 		ADBB36212080A3B1005662B4 /* LightningProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LightningProtocol.swift; sourceTree = "<group>"; };
 		ADBB36232080A457005662B4 /* LightningMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LightningMock.swift; sourceTree = "<group>"; };
@@ -808,6 +814,8 @@
 				A010093E2014D4720001EF94 /* Views */,
 				ADBA12032090CD22001F7700 /* KeyPadView.swift */,
 				ADBA12012090CD11001F7700 /* KeyPadView.xib */,
+				AD99C9F62090C2560061C565 /* AmountInputView.swift */,
+				AD99C9F82090C2600061C565 /* AmountInputView.xib */,
 			);
 			path = Zap;
 			sourceTree = "<group>";
@@ -843,7 +851,6 @@
 			children = (
 				A08CF033201F5FCC000D5855 /* Array.swift */,
 				A02C9FC3202F617D009821B1 /* LocalAuthentication.swift */,
-				AD77464C2076161300EC596B /* Localizable */,
 				A0BD44DB206FCAD900BF27A3 /* SignalProtocol.swift */,
 				A0A96B87201769F100788808 /* String.swift */,
 				AD38EB2F207DF233007DF14D /* UIButton.swift */,
@@ -852,7 +859,9 @@
 				A0A05A2F2013EFC00007D1C9 /* UIImage.swift */,
 				A0A96B83201748C200788808 /* UILabel.swift */,
 				A0A05A5D2014A0DE0007D1C9 /* UITableView.swift */,
+				ADBA120520930C94001F7700 /* UIViewController.swift */,
 				A0919142203B152100FA525A /* UserDefaults.swift */,
+				AD77464C2076161300EC596B /* Localizable */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -1273,6 +1282,7 @@
 				AD99C9ED209072710061C565 /* QRCodeScanner.storyboard in Resources */,
 				A0605F88202C963800EA903C /* SectionHeaderView.xib in Resources */,
 				A024B85720161586002B8897 /* Send.storyboard in Resources */,
+				AD99C9F92090C2600061C565 /* AmountInputView.xib in Resources */,
 				A024B85120160F93002B8897 /* ChannelTableViewCell.xib in Resources */,
 				ADCE01C6207B71FC00CA72E8 /* Sync.storyboard in Resources */,
 				A01009502015F99F0001EF94 /* ChannelList.storyboard in Resources */,
@@ -1498,6 +1508,7 @@
 				A0376B77201CD67700F1FBEF /* PinViewController.swift in Sources */,
 				A0A05A5C20149F720007D1C9 /* TransactionListViewController.swift in Sources */,
 				A0A05A032013CF960007D1C9 /* AppDelegate.swift in Sources */,
+				ADBA120620930C94001F7700 /* UIViewController.swift in Sources */,
 				A0919145203B1CF400FA525A /* GroupedTableViewController.swift in Sources */,
 				A070D962202A3CC7000A8274 /* WithdrawViewModel.swift in Sources */,
 				A091914D203B3BAC00FA525A /* BitcoinUnitSettingsItem.swift in Sources */,
@@ -1547,6 +1558,7 @@
 				A02C9FC620304395009821B1 /* LndConfiguration.swift in Sources */,
 				A01009422014D4810001EF94 /* Toast.swift in Sources */,
 				A0731FE92014B27900C55E45 /* ChannelListViewController.swift in Sources */,
+				AD99C9F72090C2560061C565 /* AmountInputView.swift in Sources */,
 				A0A33EF42028743200BB76F4 /* Lightning.swift in Sources */,
 				A0C2EAC0206F8D10003AE56E /* Bitcoin.swift in Sources */,
 				AD99C9F320907AD10061C565 /* SendQRCodeScannerStrategy.swift in Sources */,
