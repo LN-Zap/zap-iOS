@@ -1,23 +1,52 @@
 //
 //  Zap
 //
-//  Created by Otto Suess on 26.01.18.
-//  Copyright © 2018 Otto Suess. All rights reserved.
+//  Created by Otto Suess on 25.04.18.
+//  Copyright © 2018 Zap. All rights reserved.
 //
 
-import UIKit
+import Foundation
 
-enum NumericKeyPadState {
+enum KeyPadState {
     case authenticate
     case setupPin
     case amountInput
 }
 
-class NumericKeyPadViewController: UIViewController {
+final class KeyPadView: UIView {
+    @IBOutlet private var contentView: UIView!
+
+    override init(frame: CGRect) {
+        super.init(frame: frame)
+        setup()
+    }
+    
+    required init?(coder aDecoder: NSCoder) {
+        super.init(coder: aDecoder)
+        setup()
+    }
+
+    private func setup() {
+        Bundle.main.loadNibNamed("KeyPadView", owner: self, options: nil)
+        addSubview(contentView)
+        contentView.frame = self.bounds
+        contentView.autoresizingMask = [.flexibleHeight, .flexibleWidth]
+        
+        updateButtonFont()
+    }
+
+    override var backgroundColor: UIColor? {
+        didSet {
+            contentView.backgroundColor = backgroundColor
+        }
+    }
+    
+    //////
+    
     var handler: ((String) -> Bool)?
     var customPointButtonAction: (() -> Void)?
     
-    var state: NumericKeyPadState = .amountInput {
+    var state: KeyPadState = .amountInput {
         didSet {
             updatePointButton()
         }
@@ -46,12 +75,6 @@ class NumericKeyPadViewController: UIViewController {
         return Locale.autoupdatingCurrent.decimalSeparator ?? "."
     }
     
-    override func viewDidLoad() {
-        super.viewDidLoad()
-
-        updateButtonFont()
-    }
-    
     private func updateButtonFont() {
         buttons?.forEach {
             Style.button.apply(to: $0)
@@ -78,7 +101,7 @@ class NumericKeyPadViewController: UIViewController {
             pointButton.isEnabled = true
         }
     }
- 
+    
     private func numberTapped(_ number: Int) {
         if numberString == "0" && state == .amountInput {
             proposeNumberString(String(describing: number))

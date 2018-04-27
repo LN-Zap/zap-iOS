@@ -35,7 +35,6 @@
 		A010094E2015F97F0001EF94 /* OpenChannelViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A010094D2015F97F0001EF94 /* OpenChannelViewController.swift */; };
 		A01009502015F99F0001EF94 /* ChannelList.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A010094F2015F99F0001EF94 /* ChannelList.storyboard */; };
 		A01009522015FA2D0001EF94 /* ModalViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A01009512015FA2D0001EF94 /* ModalViewController.swift */; };
-		A0133DD1201B9AF500E41FB9 /* NumericKeyPadViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0133DD0201B9AF500E41FB9 /* NumericKeyPadViewController.swift */; };
 		A024B84D201606B4002B8897 /* Peer.swift in Sources */ = {isa = PBXBuildFile; fileRef = A024B84C201606B4002B8897 /* Peer.swift */; };
 		A024B85020160F93002B8897 /* ChannelTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A024B84E20160F93002B8897 /* ChannelTableViewCell.swift */; };
 		A024B85120160F93002B8897 /* ChannelTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = A024B84F20160F93002B8897 /* ChannelTableViewCell.xib */; };
@@ -167,6 +166,8 @@
 		AD99C9F120907AB30061C565 /* OpenChannelQRCodeScannerStrategy.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD99C9F020907AB30061C565 /* OpenChannelQRCodeScannerStrategy.swift */; };
 		AD99C9F320907AD10061C565 /* SendQRCodeScannerStrategy.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD99C9F220907AD10061C565 /* SendQRCodeScannerStrategy.swift */; };
 		AD99C9F5209085B20061C565 /* OpenChannel.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AD99C9F4209085B20061C565 /* OpenChannel.storyboard */; };
+		ADBA12022090CD11001F7700 /* KeyPadView.xib in Resources */ = {isa = PBXBuildFile; fileRef = ADBA12012090CD11001F7700 /* KeyPadView.xib */; };
+		ADBA12042090CD22001F7700 /* KeyPadView.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADBA12032090CD22001F7700 /* KeyPadView.swift */; };
 		ADBB3620207FA5D6005662B4 /* Date+Localizable.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADBB361F207FA5D6005662B4 /* Date+Localizable.swift */; };
 		ADBB36222080A3B1005662B4 /* LightningProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADBB36212080A3B1005662B4 /* LightningProtocol.swift */; };
 		ADBB36242080A457005662B4 /* LightningMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADBB36232080A457005662B4 /* LightningMock.swift */; };
@@ -260,7 +261,6 @@
 		A010094D2015F97F0001EF94 /* OpenChannelViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OpenChannelViewController.swift; sourceTree = "<group>"; };
 		A010094F2015F99F0001EF94 /* ChannelList.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = ChannelList.storyboard; sourceTree = "<group>"; };
 		A01009512015FA2D0001EF94 /* ModalViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModalViewController.swift; sourceTree = "<group>"; };
-		A0133DD0201B9AF500E41FB9 /* NumericKeyPadViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NumericKeyPadViewController.swift; sourceTree = "<group>"; };
 		A024B84C201606B4002B8897 /* Peer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Peer.swift; sourceTree = "<group>"; };
 		A024B84E20160F93002B8897 /* ChannelTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChannelTableViewCell.swift; sourceTree = "<group>"; };
 		A024B84F20160F93002B8897 /* ChannelTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ChannelTableViewCell.xib; sourceTree = "<group>"; };
@@ -412,6 +412,8 @@
 		AD99C9F020907AB30061C565 /* OpenChannelQRCodeScannerStrategy.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OpenChannelQRCodeScannerStrategy.swift; sourceTree = "<group>"; };
 		AD99C9F220907AD10061C565 /* SendQRCodeScannerStrategy.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SendQRCodeScannerStrategy.swift; sourceTree = "<group>"; };
 		AD99C9F4209085B20061C565 /* OpenChannel.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = OpenChannel.storyboard; sourceTree = "<group>"; };
+		ADBA12012090CD11001F7700 /* KeyPadView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = KeyPadView.xib; sourceTree = "<group>"; };
+		ADBA12032090CD22001F7700 /* KeyPadView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyPadView.swift; sourceTree = "<group>"; };
 		ADBB361F207FA5D6005662B4 /* Date+Localizable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Date+Localizable.swift"; sourceTree = "<group>"; };
 		ADBB36212080A3B1005662B4 /* LightningProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LightningProtocol.swift; sourceTree = "<group>"; };
 		ADBB36232080A457005662B4 /* LightningMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LightningMock.swift; sourceTree = "<group>"; };
@@ -654,7 +656,6 @@
 				A0376B74201CD61B00F1FBEF /* NumericKeyPad.storyboard */,
 				A0E2690C202CC4E30069E83C /* AuthenticationViewModel.swift */,
 				A0F9AEE0206E3D8200E93DCA /* InputNumberFormatter.swift */,
-				A0133DD0201B9AF500E41FB9 /* NumericKeyPadViewController.swift */,
 				A0376B76201CD67700F1FBEF /* PinViewController.swift */,
 				ADF79365208E000C0086B2CA /* SetupPinViewController.swift */,
 				ADF79367208E09D00086B2CA /* SetupPinViewModel.swift */,
@@ -805,6 +806,8 @@
 				A010093A2014BF440001EF94 /* Supporting Files */,
 				A07C1034203DE3D0006C7FE8 /* ViewModel */,
 				A010093E2014D4720001EF94 /* Views */,
+				ADBA12032090CD22001F7700 /* KeyPadView.swift */,
+				ADBA12012090CD11001F7700 /* KeyPadView.xib */,
 			);
 			path = Zap;
 			sourceTree = "<group>";
@@ -1263,6 +1266,7 @@
 				AD77465D2077C11200EC596B /* TransactionDetail.storyboard in Resources */,
 				AD77464220750D7700EC596B /* Settings.storyboard in Resources */,
 				A091914F203C23C100FA525A /* Roboto-Light.ttf in Resources */,
+				ADBA12022090CD11001F7700 /* KeyPadView.xib in Resources */,
 				A0A05A082013CF960007D1C9 /* Root.storyboard in Resources */,
 				A01009412014D4810001EF94 /* Toast.xib in Resources */,
 				AD99C9F5209085B20061C565 /* OpenChannel.storyboard in Resources */,
@@ -1462,13 +1466,13 @@
 				AD77466A2078EA9E00EC596B /* TransactionMetadataStore.swift in Sources */,
 				A0A05A5720149A0D0007D1C9 /* Settings.swift in Sources */,
 				AD99C9F120907AB30061C565 /* OpenChannelQRCodeScannerStrategy.swift in Sources */,
+				ADBA12042090CD22001F7700 /* KeyPadView.swift in Sources */,
 				AD77465720765E4D00EC596B /* ChannelViewModel.swift in Sources */,
 				A0D3C98020629B9D0015C5D7 /* Scheduler.swift in Sources */,
 				A0A05A2B2013ED920007D1C9 /* QRCodeDetailViewController.swift in Sources */,
 				A0919158203C309100FA525A /* Color.swift in Sources */,
 				A0DDC06A2018BFFA00AEFF94 /* LockWalletSettingsItem.swift in Sources */,
 				A024B85320161560002B8897 /* QRCodeScannerViewController.swift in Sources */,
-				A0133DD1201B9AF500E41FB9 /* NumericKeyPadViewController.swift in Sources */,
 				A0D3C971205FF0E10015C5D7 /* MnemonicViewController.swift in Sources */,
 				A0BD44DF206FED1400BF27A3 /* BondTableViewCell.swift in Sources */,
 				A070D966202B39A3000A8274 /* QRCodeDetailViewModel.swift in Sources */,

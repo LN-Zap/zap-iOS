@@ -15,8 +15,8 @@ class SetupPinViewController: UIViewController {
     @IBOutlet private weak var topLabel: UILabel!
     @IBOutlet private weak var pinStackView: PinView!
     @IBOutlet private weak var pinStackViewWidthConstraint: NSLayoutConstraint!
+    @IBOutlet private weak var keyPadView: KeyPadView!
     
-    private weak var numericKeyPadViewController: NumericKeyPadViewController?
     private let setupPinViewModel = SetupPinViewModel()
     
     var viewModel: ViewModel?
@@ -31,12 +31,14 @@ class SetupPinViewController: UIViewController {
             $0.tintColor = .white
         }
         
+        setupKeyPad()
+        
         setupPinViewModel.state
             .observeNext { [weak self] in
                 guard let state = $0 else { return }
                 switch state {
                 case .reset:
-                    self?.numericKeyPadViewController?.numberString = ""
+                    self?.keyPadView?.numberString = ""
                 case .completed:
                     self?.dismiss(animated: true, completion: nil)
                     self?.viewModel?.walletState.value = .connecting
@@ -59,26 +61,19 @@ class SetupPinViewController: UIViewController {
         view.backgroundColor = Color.darkBackground
     }
     
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if let numPad = segue.destination as? NumericKeyPadViewController {
-            setupNumPad(viewController: numPad)
-            numericKeyPadViewController = numPad
-        }
-    }
-    
-    private func setupNumPad(viewController: NumericKeyPadViewController) {
-        viewController.view.backgroundColor = .clear
-        viewController.textColor = .white
-        viewController.state = .setupPin
+    private func setupKeyPad() {
+        keyPadView.backgroundColor = Color.darkBackground
+        keyPadView.textColor = .white
+        keyPadView.state = .setupPin
         
-        viewController.handler = { [setupPinViewModel] in
+        keyPadView.handler = { [setupPinViewModel] in
             return setupPinViewModel.updateCurrentPin($0)
         }
     }
     
     @IBAction private func doneButtonTapped(_ sender: Any) {
         setupPinViewModel.doneButtonTapped()
-        numericKeyPadViewController?.numberString = ""
+        keyPadView.numberString = ""
     }
     
     private func updatePinView(characterCount: Int, activeCount: Int) {

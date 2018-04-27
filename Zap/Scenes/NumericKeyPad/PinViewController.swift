@@ -10,6 +10,7 @@ import UIKit
 class PinViewController: UIViewController {
     
     @IBOutlet private weak var pinStackView: PinView!
+    @IBOutlet private weak var keyPadView: KeyPadView!
     
     var viewModel: ViewModel?
     
@@ -20,28 +21,24 @@ class PinViewController: UIViewController {
         
         pinStackView.characterCount = viewModel.pin?.count ?? 0
         
-        view.backgroundColor = Color.darkBackground        
-    }
-    
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if let numPad = segue.destination as? NumericKeyPadViewController {
-            setupNumPad(viewController: numPad)
-        }
-    }
-    
-    private func setupNumPad(viewController: NumericKeyPadViewController) {
-        viewController.view.backgroundColor = .clear
-        viewController.textColor = .white
-        viewController.state = .authenticate
+        view.backgroundColor = Color.darkBackground
         
-        viewController.customPointButtonAction = { [weak self] in
+        setupKeyPad()
+    }
+    
+    private func setupKeyPad() {
+        keyPadView.backgroundColor = Color.darkBackground
+        keyPadView.textColor = .white
+        keyPadView.state = .authenticate
+        
+        keyPadView.customPointButtonAction = { [weak self] in
             BiometricAuthentication.authenticate {
                 guard $0.error == nil else { return }
                 self?.setAuthenticated()
             }
         }
         
-        viewController.handler = { [weak self] number in
+        keyPadView.handler = { [weak self] number in
             self?.updatePinView(for: number)
             
             if AuthenticationViewModel.instance.pin == number {

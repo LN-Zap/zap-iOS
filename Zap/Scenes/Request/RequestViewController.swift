@@ -19,6 +19,7 @@ final class RequestViewController: UIViewController {
     @IBOutlet private weak var swapCurrencyButton: UIButton!
     @IBOutlet private weak var downArrowImageView: UIImageView!
     @IBOutlet private weak var bottomConstraint: NSLayoutConstraint!
+    @IBOutlet private weak var keyPadView: KeyPadView!
     
     var viewModel: ViewModel? {
         didSet {
@@ -39,6 +40,8 @@ final class RequestViewController: UIViewController {
         lightningButton.isSelected = true
         
         segmentedControlBackgroundView.backgroundColor = Color.searchBackground
+        
+        setupKeyPad()
         
         amountTextField.textColor = Color.text
         amountTextField.font = Font.light.withSize(36)
@@ -137,11 +140,9 @@ final class RequestViewController: UIViewController {
         }
     }
     
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        guard let numericKeyPad = segue.destination as? NumericKeyPadViewController else { return }
+    private func setupKeyPad() {
         let numberFormatter = InputNumberFormatter(unit: .bit)
-        
-        numericKeyPad.handler = { [weak self] input in
+        keyPadView.handler = { [weak self] input in
             guard let output = numberFormatter.validate(input) else { return false }
             
             self?.requestViewModel?.updateAmount(output)

@@ -44,7 +44,7 @@ class SyncViewController: UIViewController {
         viewModel.bestHeaderDate
             .map {
                 if let date = $0 {
-                    return DateFormatter.localizedString(from: date, dateStyle: .medium, timeStyle: .none)
+                    return DateFormatter.localizedString(from: date, dateStyle: .medium, timeStyle: .short)
                 } else {
                     return ""
                 }

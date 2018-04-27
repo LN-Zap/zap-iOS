@@ -104,11 +104,8 @@
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="cym-IE-XyC">
                                         <rect key="frame" x="0.0" y="200" width="375" height="280"/>
                                         <subviews>
-                                            <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="J1n-Bt-kID">
+                                            <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="J1n-Bt-kID" customClass="KeyPadView" customModule="Zap" customModuleProvider="target">
                                                 <rect key="frame" x="10" y="11" width="355" height="258"/>
-                                                <connections>
-                                                    <segue destination="BMc-F1-OQb" kind="embed" id="iQq-rE-oSM"/>
-                                                </connections>
                                             </containerView>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Rq9-TA-AMy" customClass="LineView" customModule="Zap" customModuleProvider="target">
                                                 <rect key="frame" x="0.0" y="0.0" width="375" height="1"/>
@@ -216,6 +213,7 @@
                         <outlet property="bottomConstraint" destination="O6q-xE-9Ac" id="xIW-vZ-PTR"/>
                         <outlet property="createButton" destination="tOu-EQ-8Ez" id="EKE-t0-oth"/>
                         <outlet property="downArrowImageView" destination="V0N-s2-3e9" id="Pua-Lx-qAV"/>
+                        <outlet property="keyPadView" destination="J1n-Bt-kID" id="8QH-CN-Ykc"/>
                         <outlet property="lightningButton" destination="elu-Jk-EPg" id="NPQ-bs-ojx"/>
                         <outlet property="memoTextView" destination="yiG-8U-w8B" id="Bzu-Hc-ixK"/>
                         <outlet property="onChainButton" destination="Ep1-xz-1ul" id="Ttr-PM-bPz"/>
@@ -227,14 +225,6 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="7TF-Qd-WjE" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="752.79999999999995" y="133.5832083958021"/>
-        </scene>
-        <!--NumericKeyPadViewController-->
-        <scene sceneID="vmU-3u-Fqn">
-            <objects>
-                <viewControllerPlaceholder storyboardName="NumericKeyPad" referencedIdentifier="NumericKeyPadViewController" id="BMc-F1-OQb" sceneMemberID="viewController"/>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="pJh-UL-1PJ" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="1525" y="133"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="ZS6-tC-kn2">

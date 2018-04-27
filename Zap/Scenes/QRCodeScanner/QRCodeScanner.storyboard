@@ -65,9 +65,9 @@
                                 </constraints>
                             </view>
                             <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="V7t-mB-fri">
-                                <rect key="frame" x="0.0" y="667" width="375" height="300"/>
+                                <rect key="frame" x="0.0" y="667" width="375" height="650"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="300" id="RVI-Bw-HXy"/>
+                                    <constraint firstAttribute="height" constant="650" id="RVI-Bw-HXy"/>
                                 </constraints>
                             </containerView>
                         </subviews>
