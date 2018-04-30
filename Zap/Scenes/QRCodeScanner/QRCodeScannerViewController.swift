@@ -14,6 +14,11 @@ class QRCodeScannerViewController: UIViewController, ContainerViewController {
     // swiftlint:disable:next private_outlet
     @IBOutlet weak var container: UIView?
     
+    @IBOutlet private weak var containerViewHeightConstraint: NSLayoutConstraint! {
+        didSet {
+            containerViewHeightConstraint?.constant = strategy?.viewControllerHeight ?? 400
+        }
+    }
     @IBOutlet private weak var paymentTopConstraint: NSLayoutConstraint!
     @IBOutlet private weak var pasteButtonContainer: UIView!
     @IBOutlet private weak var pasteButton: UIButton!
@@ -30,6 +35,7 @@ class QRCodeScannerViewController: UIViewController, ContainerViewController {
         didSet {
             scannerView?.addressTypes = strategy?.addressTypes
             title = strategy?.title
+            containerViewHeightConstraint?.constant = strategy?.viewControllerHeight ?? 400
         }
     }
     

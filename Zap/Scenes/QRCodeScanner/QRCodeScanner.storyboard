@@ -94,6 +94,7 @@
                     </navigationItem>
                     <connections>
                         <outlet property="container" destination="V7t-mB-fri" id="WGY-Vn-2If"/>
+                        <outlet property="containerViewHeightConstraint" destination="RVI-Bw-HXy" id="QcM-e5-Pab"/>
                         <outlet property="pasteButton" destination="C2T-oe-PmX" id="Iw7-DT-EN9"/>
                         <outlet property="pasteButtonContainer" destination="zfZ-6Q-UHf" id="aph-Op-oIz"/>
                         <outlet property="paymentTopConstraint" destination="rfk-aS-4Bp" id="Wfc-xR-nNX"/>
