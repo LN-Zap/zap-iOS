@@ -12,8 +12,9 @@ final class LndConfiguration: NSObject {
     
     static let standard: LndConfiguration = {
         let configuration = LndConfiguration()
-        configuration.set("Application Options", key: "debuglevel", value: "info")
+        configuration.set("Application Options", key: "debuglevel", value: "debug")
         configuration.set("Application Options", key: "maxpendingchannels", value: "10")
+        configuration.set("Application Options", key: "nobootstrap", value: "1")
         configuration.set("Application Options", key: "noencryptwallet", value: "1")
         configuration.set("Application Options", key: "alias", value: "Zap iOS")
         configuration.set("Application Options", key: "color", value: "#3399FF")
