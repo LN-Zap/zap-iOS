@@ -21,10 +21,10 @@ class AmountInputView: UIView {
     @IBOutlet private weak var containerView: UIView!
     
     @IBOutlet private weak var amountTextField: UITextField!
-    @IBOutlet private weak var amountInputView: UIView!
     @IBOutlet private weak var swapCurrencyButton: UIButton!
     @IBOutlet private weak var downArrowImageView: UIImageView!
     @IBOutlet private weak var keyPadView: KeyPadView!
+    @IBOutlet private weak var keyPadHeightConstraint: NSLayoutConstraint!
     
     var amountViewModel: AmountInputtable? {
         didSet {
@@ -96,8 +96,8 @@ class AmountInputView: UIView {
 
 extension AmountInputView: UITextFieldDelegate {
     private func animateKeypad(hidden: Bool) {
-        UIView.animate(withDuration: 0.5, delay: 0, usingSpringWithDamping: 0.75, initialSpringVelocity: 0.5, options: .curveEaseInOut, animations: { [amountInputView] in
-            amountInputView?.isHidden = hidden
+        UIView.animate(withDuration: 0.5, delay: 0, usingSpringWithDamping: 0.75, initialSpringVelocity: 0.5, options: .curveEaseInOut, animations: { [keyPadHeightConstraint] in
+            keyPadHeightConstraint?.constant = hidden ? 0 : 280
             }, completion: nil)
     }
     

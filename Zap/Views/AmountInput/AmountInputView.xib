@@ -12,11 +12,11 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="AmountInputView" customModule="Zap" customModuleProvider="target">
             <connections>
-                <outlet property="amountInputView" destination="MuO-hq-S7R" id="l47-6d-LZ6"/>
                 <outlet property="amountTextField" destination="ak7-6C-Pex" id="mcf-9q-Boh"/>
                 <outlet property="containerView" destination="767-f4-0y8" id="sZ8-2A-YuO"/>
                 <outlet property="contentView" destination="iN0-l3-epB" id="PEq-UD-efn"/>
                 <outlet property="downArrowImageView" destination="zrr-yP-9YI" id="8wl-zm-Li3"/>
+                <outlet property="keyPadHeightConstraint" destination="GNs-4S-Q7J" id="fR0-uX-RbY"/>
                 <outlet property="keyPadView" destination="767-f4-0y8" id="35L-0R-jOQ"/>
                 <outlet property="swapCurrencyButton" destination="wU0-aQ-UVA" id="gIv-GT-zXY"/>
             </connections>
@@ -67,7 +67,7 @@
                                 <constraint firstAttribute="height" constant="114" id="uLI-1c-1NR"/>
                             </constraints>
                         </view>
-                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="MuO-hq-S7R">
+                        <view clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="MuO-hq-S7R">
                             <rect key="frame" x="0.0" y="114" width="424" height="280"/>
                             <subviews>
                                 <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="767-f4-0y8" customClass="KeyPadView" customModule="Zap" customModuleProvider="target">
@@ -84,7 +84,8 @@
                             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             <constraints>
                                 <constraint firstItem="Vpp-MT-psj" firstAttribute="top" secondItem="MuO-hq-S7R" secondAttribute="top" id="7CI-fg-BC2"/>
-                                <constraint firstAttribute="bottom" secondItem="767-f4-0y8" secondAttribute="bottom" constant="10" id="Ew8-RN-v4i"/>
+                                <constraint firstItem="767-f4-0y8" firstAttribute="height" secondItem="MuO-hq-S7R" secondAttribute="height" priority="300" id="Div-8C-nYS"/>
+                                <constraint firstAttribute="bottom" secondItem="767-f4-0y8" secondAttribute="bottom" priority="350" constant="10" id="Ew8-RN-v4i"/>
                                 <constraint firstAttribute="height" constant="280" id="GNs-4S-Q7J"/>
                                 <constraint firstItem="767-f4-0y8" firstAttribute="top" secondItem="Vpp-MT-psj" secondAttribute="bottom" constant="10" id="bDB-kY-59C"/>
                                 <constraint firstAttribute="trailing" secondItem="767-f4-0y8" secondAttribute="trailing" constant="10" id="kGb-mE-7vD"/>
