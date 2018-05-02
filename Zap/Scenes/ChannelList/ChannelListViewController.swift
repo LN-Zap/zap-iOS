@@ -8,8 +8,8 @@
 import Bond
 import UIKit
 
-struct ChannelBond: TableViewBond {
-    func cellForRow(at indexPath: IndexPath, tableView: UITableView, dataSource: Observable2DArray<String, ChannelViewModel>) -> UITableViewCell {
+final class ChannelBond: TableViewBinder<Observable2DArray<String, ChannelViewModel>> {
+    override func cellForRow(at indexPath: IndexPath, tableView: UITableView, dataSource: Observable2DArray<String, ChannelViewModel>) -> UITableViewCell {
         let cell: ChannelTableViewCell = tableView.dequeueCellForIndexPath(indexPath)
         cell.channelViewModel = dataSource.item(at: indexPath)
         return cell

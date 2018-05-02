@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import SwiftProtobuf
 
 enum OpenStatusUpdate {
     case pending
@@ -13,9 +14,9 @@ enum OpenStatusUpdate {
     case channelOpen
     
     init(_ openStatusUpdate: Lnrpc_OpenStatusUpdate) {
-        if openStatusUpdate.chanPending != nil {
+        if openStatusUpdate.chanPending.txid != SwiftProtobuf.Internal.emptyData {
             self = .pending
-        } else if openStatusUpdate.confirmation != nil {
+        } else if openStatusUpdate.confirmation.blockSha != SwiftProtobuf.Internal.emptyData {
             self = .confirmation
         } else {
             self = .channelOpen

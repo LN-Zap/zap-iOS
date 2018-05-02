@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import SwiftProtobuf
 
 enum CloseStatusUpdate {
     case pending
@@ -13,9 +14,9 @@ enum CloseStatusUpdate {
     case channelClose
     
     init(_ closeStatusUpdate: Lnrpc_CloseStatusUpdate) {
-        if closeStatusUpdate.closePending != nil {
+        if closeStatusUpdate.closePending.txid != SwiftProtobuf.Internal.emptyData {
             self = .pending
-        } else if closeStatusUpdate.confirmation != nil {
+        } else if closeStatusUpdate.confirmation.blockSha != SwiftProtobuf.Internal.emptyData {
             self = .confirmation
         } else {
             self = .channelClose

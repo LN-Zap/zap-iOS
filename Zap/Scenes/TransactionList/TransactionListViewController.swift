@@ -8,8 +8,8 @@
 import Bond
 import UIKit
 
-struct TransactionBond: TableViewBond {
-    func cellForRow(at indexPath: IndexPath, tableView: UITableView, dataSource: Observable2DArray<String, TransactionViewModel>) -> UITableViewCell {
+final class TransactionBond: TableViewBinder<Observable2DArray<String, TransactionViewModel>> {
+    override func cellForRow(at indexPath: IndexPath, tableView: UITableView, dataSource: Observable2DArray<String, TransactionViewModel>) -> UITableViewCell {
         let transaction = dataSource.item(at: indexPath)
 
         if transaction.isOnChain {
