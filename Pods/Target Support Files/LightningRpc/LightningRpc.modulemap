@@ -1,6 +1,0 @@
-framework module LightningRpc {
-  umbrella header "LightningRpc-umbrella.h"
-
-  export *
-  module * { export * }
-}

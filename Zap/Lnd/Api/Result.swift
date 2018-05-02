@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import SwiftGRPC
 
 public enum Result<Value>: CustomStringConvertible, CustomDebugStringConvertible {
     case success(Value)
@@ -74,35 +75,30 @@ public enum Result<Value>: CustomStringConvertible, CustomDebugStringConvertible
 
 /// Helper methods to create `Result` objects from grpc results
 
-func result<T, U>(_ callback: @escaping (Result<U>) -> Void, map: @escaping (T) -> U?) -> (T?, Error?) -> Void {
-    return { (response: T?, error: Error?) in
+func result<T, U>(_ callback: @escaping (Result<U>) -> Void, map: @escaping (T) -> U?) -> (T?, CallResult) -> Void {
+    return { (response: T?, callResult: CallResult) in
         if let response = response,
             let value = map(response) {
             callback(Result<U>(value: value))
-        } else if let error = error as NSError? {
-            switch error.code {
-            case 12:
-                print(LndError.walletEncrypted)
-                callback(Result<U>(error: LndError.walletEncrypted))
-            case 13:
-                print(LndError.lndNotRunning)
-                callback(Result<U>(error: LndError.lndNotRunning))
-            case 14:
+        } else if !callResult.success {
+            switch callResult.statusCode {
+//            case .unimplemented:
+//                print(LndError.walletEncrypted)
+//                callback(Result<U>(error: LndError.walletEncrypted))
+//            case .internalError:
+//                print(LndError.lndNotRunning)
+//                callback(Result<U>(error: LndError.lndNotRunning))
+            case .unavailable:
                 print(LndError.noInternet)
                 callback(Result<U>(error: LndError.noInternet))
             default:
-                print(error)
-                callback(Result<U>(error: error))
+                guard let message = callResult.statusMessage else { fatalError("No Error Message.") } // TODO: don't crash here
+                print(message)
+                callback(Result<U>(error: LndError.localizedError(message)))
             }
         } else {
             print(LndError.unknownError)
             callback(Result<U>(error: LndError.unknownError))
         }
-    }
-}
-
-func eventResult<T, U>(_ callback: @escaping (Result<U>) -> Void, map: @escaping (T) -> U?) -> (Bool, T?, Error?) -> Void {
-    return { (_, response: T?, error: Error?) in
-        result(callback, map: map)(response, error)
     }
 }

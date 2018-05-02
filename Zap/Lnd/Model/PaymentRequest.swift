@@ -7,7 +7,6 @@
 
 import BTCUtil
 import Foundation
-import LightningRpc
 
 struct PaymentRequest {
     fileprivate struct PaymentDescription: Decodable {
@@ -26,7 +25,7 @@ struct PaymentRequest {
 }
 
 extension PaymentRequest {
-    init(payReq: PayReq, raw: String) {
+    init(payReq: Lnrpc_PayReq, raw: String) {
         self.amount = Satoshi(value: payReq.numSatoshis)
         
         if let data = payReq.description_p.data(using: .utf8, allowLossyConversion: false) {

@@ -7,7 +7,6 @@
 
 import BTCUtil
 import Foundation
-import LightningRpc
 
 enum ChannelState {
     case active
@@ -31,7 +30,7 @@ struct Channel: Equatable {
     }
 }
 
-extension LightningRpc.Channel {
+extension Lnrpc_Channel {
     var channelModel: Channel {
         return Channel(
             state: active ? .active : .inactive,
@@ -44,7 +43,7 @@ extension LightningRpc.Channel {
     }
 }
 
-extension PendingChannelsResponse_PendingOpenChannel {
+extension Lnrpc_PendingChannelsResponse.PendingOpenChannel {
     var channelModel: Channel {
         return Channel(
             state: .opening,
@@ -57,7 +56,7 @@ extension PendingChannelsResponse_PendingOpenChannel {
     }
 }
 
-extension PendingChannelsResponse_ClosedChannel {
+extension Lnrpc_PendingChannelsResponse.ClosedChannel {
     var channelModel: Channel {
         return Channel(
             state: .opening,
@@ -70,7 +69,7 @@ extension PendingChannelsResponse_ClosedChannel {
     }
 }
 
-extension PendingChannelsResponse_ForceClosedChannel {
+extension Lnrpc_PendingChannelsResponse.ForceClosedChannel {
     var channelModel: Channel {
         return Channel(
             state: .opening,

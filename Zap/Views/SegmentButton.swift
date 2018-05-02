@@ -5,7 +5,7 @@
 //  Copyright © 2018 Zap. All rights reserved.
 //
 
-import Foundation
+import UIKit
 
 final class SegmentButton: UIButton {
     

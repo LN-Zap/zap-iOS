@@ -30,7 +30,9 @@ class SendLightningInvoiceViewController: UIViewController {
         sendViewModel?.satoshis
             .observeNext { [amountLabel] satoshis in
                 guard let satoshis = satoshis else { return }
-                amountLabel?.setAmount(satoshis)
+                DispatchQueue.main.async {
+                    amountLabel?.setAmount(satoshis)
+                }
             }
             .dispose(in: reactive.bag)
     }

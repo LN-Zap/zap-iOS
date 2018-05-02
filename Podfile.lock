@@ -1,9 +1,4 @@
 PODS:
-  - "!ProtoCompiler (3.5.0)":
-    - Protobuf (~> 3.0)
-  - "!ProtoCompiler-gRPCPlugin (1.11.0)":
-    - "!ProtoCompiler (= 3.5.0)"
-    - gRPC-ProtoRPC (= 1.11.0)
   - BigInt (3.0.1):
     - SipHash (~> 1.2)
   - Bond (6.8.0):
@@ -16,9 +11,6 @@ PODS:
     - BoringSSL/Interface (= 10.0.2)
   - BoringSSL/Interface (10.0.2)
   - Differ (1.2.2)
-  - gRPC (1.11.0):
-    - gRPC-RxLibrary (= 1.11.0)
-    - gRPC/Main (= 1.11.0)
   - gRPC-Core (1.11.0):
     - gRPC-Core/Implementation (= 1.11.0)
     - gRPC-Core/Interface (= 1.11.0)
@@ -27,81 +19,53 @@ PODS:
     - gRPC-Core/Interface (= 1.11.0)
     - nanopb (~> 0.3)
   - gRPC-Core/Interface (1.11.0)
-  - gRPC-ProtoRPC (1.11.0):
-    - gRPC (= 1.11.0)
-    - gRPC-RxLibrary (= 1.11.0)
-    - Protobuf (~> 3.0)
-  - gRPC-RxLibrary (1.11.0)
-  - gRPC/Main (1.11.0):
-    - gRPC-Core (= 1.11.0)
-    - gRPC-RxLibrary (= 1.11.0)
   - KeychainAccess (3.1.1)
-  - LightningRpc (0.0.1):
-    - "!ProtoCompiler-gRPCPlugin (~> 1.0)"
-    - LightningRpc/Messages (= 0.0.1)
-    - LightningRpc/Services (= 0.0.1)
-  - LightningRpc/Messages (0.0.1):
-    - "!ProtoCompiler-gRPCPlugin (~> 1.0)"
-    - Protobuf
-  - LightningRpc/Services (0.0.1):
-    - "!ProtoCompiler-gRPCPlugin (~> 1.0)"
-    - gRPC-ProtoRPC
-    - LightningRpc/Messages
   - nanopb (0.3.8):
     - nanopb/decode (= 0.3.8)
     - nanopb/encode (= 0.3.8)
   - nanopb/decode (0.3.8)
   - nanopb/encode (0.3.8)
-  - Protobuf (3.5.0)
   - ReactiveKit (3.9.4)
   - SipHash (1.2.0)
+  - SwiftGRPC (0.4.2):
+    - BoringSSL (~> 10.0)
+    - gRPC-Core (~> 1.11.0)
+    - SwiftProtobuf (~> 1.0.3)
+  - SwiftProtobuf (1.0.3)
 
 DEPENDENCIES:
   - BigInt (~> 3.0)
   - Bond
   - KeychainAccess
-  - LightningRpc (from `.`)
+  - SwiftGRPC
 
 SPEC REPOS:
   https://github.com/CocoaPods/Specs.git:
-    - "!ProtoCompiler"
-    - "!ProtoCompiler-gRPCPlugin"
     - BigInt
     - Bond
     - BoringSSL
     - Differ
-    - gRPC
     - gRPC-Core
-    - gRPC-ProtoRPC
-    - gRPC-RxLibrary
     - KeychainAccess
     - nanopb
-    - Protobuf
     - ReactiveKit
     - SipHash
-
-EXTERNAL SOURCES:
-  LightningRpc:
-    :path: "."
+    - SwiftGRPC
+    - SwiftProtobuf
 
 SPEC CHECKSUMS:
-  "!ProtoCompiler": 3e9dc8340c8f1bbab40aa0f5acb965a4be02f849
-  "!ProtoCompiler-gRPCPlugin": 9dbdad3fef62063c7672b7b3de1a424937607dcd
   BigInt: 8e8a52161c745cd3ab78e3dc346a9fbee51e6cf6
   Bond: f07e371c05e07c46589c4a518515ea39c6263055
   BoringSSL: 60dd24df4af296bf41d78e5841dbb95d75f88c0d
   Differ: 5ac7b6d0d3a60274b52a0ef087ec0e411b57db2c
-  gRPC: 70703dc9ba31c72341fc7f37745cc1c379edee96
   gRPC-Core: 164639cd8ae18ca8b65477fafb2efbaecf4f181a
-  gRPC-ProtoRPC: bb5fddf3424aa4fad74d76736578a79fe40e244e
-  gRPC-RxLibrary: 26d53d1b1f306befd4ad4e15bd6de27839a82481
   KeychainAccess: 7bd430028059754a3debab3cfc0bd1fc7fb85df3
-  LightningRpc: f06d75ab8edf11c852c4d70caf96ade7932c17de
   nanopb: 5601e6bca2dbf1ed831b519092ec110f66982ca3
-  Protobuf: 8a9838fba8dae3389230e1b7f8c104aa32389c03
   ReactiveKit: cafbc91f72751d09baa9a3c3cf6d82b646328a6c
   SipHash: c6e9e43e9c531b5bc6602545130c26194a6d31ce
+  SwiftGRPC: 4cb90d96998607003cf1df1e01017f30f6fd124b
+  SwiftProtobuf: 5ccc0e4054e37c75800e5744acb2aa80bb72b39c
 
-PODFILE CHECKSUM: ff08c461cb8ff5bcdcb22d837a247c5435e3135d
+PODFILE CHECKSUM: fc5903ddfab64356cc7abf81aef827d888ac585d
 
 COCOAPODS: 1.5.0

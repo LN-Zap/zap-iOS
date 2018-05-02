@@ -5,7 +5,7 @@ inhibit_all_warnings!
 install! 'cocoapods'
 
 target 'Zap' do
-  pod 'LightningRpc', :path => '.'
+  pod 'SwiftGRPC'
   pod 'KeychainAccess'
   pod 'Bond'
 

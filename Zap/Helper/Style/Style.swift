@@ -5,7 +5,7 @@
 //  Copyright © 2018 Otto Suess. All rights reserved.
 //
 
-import Foundation
+import UIKit
 
 struct UIViewStyle<T: UIView> {
     let styling: (T) -> Void

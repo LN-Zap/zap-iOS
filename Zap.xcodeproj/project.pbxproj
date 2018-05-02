@@ -51,7 +51,6 @@
 		A0376B75201CD61B00F1FBEF /* NumericKeyPad.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A0376B74201CD61B00F1FBEF /* NumericKeyPad.storyboard */; };
 		A0376B77201CD67700F1FBEF /* PinViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0376B76201CD67700F1FBEF /* PinViewController.swift */; };
 		A03F03602028C73F00F32279 /* SendLightningInvoiceViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A03F035F2028C73F00F32279 /* SendLightningInvoiceViewModel.swift */; };
-		A05C5B8D20640AEA00072FA9 /* GRPCProtoCall.swift in Sources */ = {isa = PBXBuildFile; fileRef = A05C5B8C20640AEA00072FA9 /* GRPCProtoCall.swift */; };
 		A05C5B8F206500A900072FA9 /* RemoteLndConfiguration.swift in Sources */ = {isa = PBXBuildFile; fileRef = A05C5B8E206500A900072FA9 /* RemoteLndConfiguration.swift */; };
 		A0605F86202C962900EA903C /* SectionHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0605F85202C962900EA903C /* SectionHeaderView.swift */; };
 		A0605F88202C963800EA903C /* SectionHeaderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = A0605F87202C963800EA903C /* SectionHeaderView.xib */; };
@@ -161,6 +160,8 @@
 		AD7746672077C72600EC596B /* TransactionViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD7746662077C72600EC596B /* TransactionViewModel.swift */; };
 		AD77466A2078EA9E00EC596B /* TransactionMetadataStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD7746692078EA9E00EC596B /* TransactionMetadataStore.swift */; };
 		AD77466C2078EE5600EC596B /* TransactionMetadataUpdater.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD77466B2078EE5600EC596B /* TransactionMetadataUpdater.swift */; };
+		AD86BCFE2099F50C00A7866A /* rpc.pb.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD86BCFD2099F50C00A7866A /* rpc.pb.swift */; };
+		AD86BD002099FB4500A7866A /* rpc.grpc.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD86BCFF2099FB4500A7866A /* rpc.grpc.swift */; };
 		AD99C9ED209072710061C565 /* QRCodeScanner.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AD99C9EC209072710061C565 /* QRCodeScanner.storyboard */; };
 		AD99C9EF209076650061C565 /* QRCodeScannerStrategy.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD99C9EE209076650061C565 /* QRCodeScannerStrategy.swift */; };
 		AD99C9F120907AB30061C565 /* OpenChannelQRCodeScannerStrategy.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD99C9F020907AB30061C565 /* OpenChannelQRCodeScannerStrategy.swift */; };
@@ -281,7 +282,6 @@
 		A0376B74201CD61B00F1FBEF /* NumericKeyPad.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = NumericKeyPad.storyboard; sourceTree = "<group>"; };
 		A0376B76201CD67700F1FBEF /* PinViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PinViewController.swift; sourceTree = "<group>"; };
 		A03F035F2028C73F00F32279 /* SendLightningInvoiceViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SendLightningInvoiceViewModel.swift; sourceTree = "<group>"; };
-		A05C5B8C20640AEA00072FA9 /* GRPCProtoCall.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GRPCProtoCall.swift; sourceTree = "<group>"; };
 		A05C5B8E206500A900072FA9 /* RemoteLndConfiguration.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RemoteLndConfiguration.swift; sourceTree = "<group>"; };
 		A0605F85202C962900EA903C /* SectionHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SectionHeaderView.swift; sourceTree = "<group>"; };
 		A0605F87202C963800EA903C /* SectionHeaderView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SectionHeaderView.xib; sourceTree = "<group>"; };
@@ -338,7 +338,6 @@
 		A0A05A2F2013EFC00007D1C9 /* UIImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIImage.swift; sourceTree = "<group>"; };
 		A0A05A342014047B0007D1C9 /* Lnd.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Lnd.swift; sourceTree = "<group>"; };
 		A0A05A462014765E0007D1C9 /* Lndbindings.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Lndbindings.framework; path = Frameworks/Lndbindings.framework; sourceTree = "<group>"; };
-		A0A05A48201478510007D1C9 /* Zap-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Zap-Bridging-Header.h"; sourceTree = "<group>"; };
 		A0A05A4C20147B740007D1C9 /* RootViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RootViewController.swift; sourceTree = "<group>"; };
 		A0A05A50201481A70007D1C9 /* Storyboard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Storyboard.swift; sourceTree = "<group>"; };
 		A0A05A5420148FA80007D1C9 /* Json.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Json.swift; sourceTree = "<group>"; };
@@ -410,6 +409,8 @@
 		AD7746662077C72600EC596B /* TransactionViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransactionViewModel.swift; sourceTree = "<group>"; };
 		AD7746692078EA9E00EC596B /* TransactionMetadataStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransactionMetadataStore.swift; sourceTree = "<group>"; };
 		AD77466B2078EE5600EC596B /* TransactionMetadataUpdater.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransactionMetadataUpdater.swift; sourceTree = "<group>"; };
+		AD86BCFD2099F50C00A7866A /* rpc.pb.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = rpc.pb.swift; path = Proto/rpc.pb.swift; sourceTree = SOURCE_ROOT; };
+		AD86BCFF2099FB4500A7866A /* rpc.grpc.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = rpc.grpc.swift; path = Proto/rpc.grpc.swift; sourceTree = SOURCE_ROOT; };
 		AD99C9EC209072710061C565 /* QRCodeScanner.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = QRCodeScanner.storyboard; sourceTree = "<group>"; };
 		AD99C9EE209076650061C565 /* QRCodeScannerStrategy.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QRCodeScannerStrategy.swift; sourceTree = "<group>"; };
 		AD99C9F020907AB30061C565 /* OpenChannelQRCodeScannerStrategy.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OpenChannelQRCodeScannerStrategy.swift; sourceTree = "<group>"; };
@@ -593,7 +594,6 @@
 				A0919153203C27C300FA525A /* Roboto-Bold.ttf */,
 				A0A05A092013CF960007D1C9 /* Assets.xcassets */,
 				A0A05A0E2013CF960007D1C9 /* Info.plist */,
-				A0A05A48201478510007D1C9 /* Zap-Bridging-Header.h */,
 				A0B91A83202628EF009AD2D3 /* Settings.bundle */,
 				A070D967202B5163000A8274 /* Localizable.strings */,
 			);
@@ -810,6 +810,7 @@
 				A0376B70201CC16D00F1FBEF /* Lnd */,
 				AD7746682078EA6100EC596B /* MemoStore */,
 				A0C2EABA206F8AD2003AE56E /* Money */,
+				AD86BCFC2099F4E900A7866A /* Proto */,
 				A01009322014BD960001EF94 /* Scenes */,
 				A010093A2014BF440001EF94 /* Supporting Files */,
 				A07C1034203DE3D0006C7FE8 /* ViewModel */,
@@ -888,7 +889,6 @@
 		A0D3C97B20616A9A0015C5D7 /* Api */ = {
 			isa = PBXGroup;
 			children = (
-				A05C5B8C20640AEA00072FA9 /* GRPCProtoCall.swift */,
 				A0A33EF32028743200BB76F4 /* Lightning.swift */,
 				ADBB36232080A457005662B4 /* LightningMock.swift */,
 				ADBB36212080A3B1005662B4 /* LightningProtocol.swift */,
@@ -1017,6 +1017,15 @@
 				ADBB36322084EC4D005662B4 /* MnemonicWordTableViewCell.swift */,
 			);
 			path = "Generate Mnemonic";
+			sourceTree = "<group>";
+		};
+		AD86BCFC2099F4E900A7866A /* Proto */ = {
+			isa = PBXGroup;
+			children = (
+				AD86BCFF2099FB4500A7866A /* rpc.grpc.swift */,
+				AD86BCFD2099F50C00A7866A /* rpc.pb.swift */,
+			);
+			path = Proto;
 			sourceTree = "<group>";
 		};
 		AD99C9EB209072530061C565 /* QRCodeScanner */ = {
@@ -1363,13 +1372,10 @@
 				"${BUILT_PRODUCTS_DIR}/BoringSSL/openssl.framework",
 				"${BUILT_PRODUCTS_DIR}/Differ/Differ.framework",
 				"${BUILT_PRODUCTS_DIR}/KeychainAccess/KeychainAccess.framework",
-				"${BUILT_PRODUCTS_DIR}/LightningRpc/LightningRpc.framework",
-				"${BUILT_PRODUCTS_DIR}/Protobuf/Protobuf.framework",
 				"${BUILT_PRODUCTS_DIR}/ReactiveKit/ReactiveKit.framework",
-				"${BUILT_PRODUCTS_DIR}/gRPC/GRPCClient.framework",
+				"${BUILT_PRODUCTS_DIR}/SwiftGRPC/SwiftGRPC.framework",
+				"${BUILT_PRODUCTS_DIR}/SwiftProtobuf/SwiftProtobuf.framework",
 				"${BUILT_PRODUCTS_DIR}/gRPC-Core/grpc.framework",
-				"${BUILT_PRODUCTS_DIR}/gRPC-ProtoRPC/ProtoRPC.framework",
-				"${BUILT_PRODUCTS_DIR}/gRPC-RxLibrary/RxLibrary.framework",
 				"${BUILT_PRODUCTS_DIR}/nanopb/nanopb.framework",
 				"${BUILT_PRODUCTS_DIR}/BigInt/BigInt.framework",
 				"${BUILT_PRODUCTS_DIR}/SipHash/SipHash.framework",
@@ -1380,13 +1386,10 @@
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/openssl.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Differ.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/KeychainAccess.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/LightningRpc.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Protobuf.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/ReactiveKit.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GRPCClient.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SwiftGRPC.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SwiftProtobuf.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/grpc.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/ProtoRPC.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RxLibrary.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/nanopb.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/BigInt.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SipHash.framework",
@@ -1481,9 +1484,11 @@
 				ADCE01C3207B66A500CA72E8 /* ConfirmMnemonicViewModel.swift in Sources */,
 				A0A96B88201769F100788808 /* String.swift in Sources */,
 				AD7746622077C3BF00EC596B /* PaymentDetailViewController.swift in Sources */,
+				AD86BD002099FB4500A7866A /* rpc.grpc.swift in Sources */,
 				A0A05A51201481A70007D1C9 /* Storyboard.swift in Sources */,
 				A05C5B8F206500A900072FA9 /* RemoteLndConfiguration.swift in Sources */,
 				A010093C2014CEE40001EF94 /* OpenStatusUpdate.swift in Sources */,
+				AD86BCFE2099F50C00A7866A /* rpc.pb.swift in Sources */,
 				A0731FE62014AC0800C55E45 /* ContainerViewController.swift in Sources */,
 				A0F353CC206923E4005B3639 /* MainViewController.swift in Sources */,
 				ADF7936C208E66FA0086B2CA /* UICollectionView.swift in Sources */,
@@ -1563,7 +1568,6 @@
 				A0919156203C2CB600FA525A /* Style.swift in Sources */,
 				A0A96B8F2017908600788808 /* PaymentTableViewCell.swift in Sources */,
 				A03F03602028C73F00F32279 /* SendLightningInvoiceViewModel.swift in Sources */,
-				A05C5B8D20640AEA00072FA9 /* GRPCProtoCall.swift in Sources */,
 				A02C9FBD202EE9BE009821B1 /* OpenChannelViewModel.swift in Sources */,
 				A0A96B8620174BAC00788808 /* CloseStatusUpdate.swift in Sources */,
 				AD99C9EF209076650061C565 /* QRCodeScannerStrategy.swift in Sources */,
@@ -1910,7 +1914,6 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.jackmallers.zap;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
-				SWIFT_OBJC_BRIDGING_HEADER = "Zap/Zap-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = 1;
@@ -1945,7 +1948,6 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.jackmallers.zap;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
-				SWIFT_OBJC_BRIDGING_HEADER = "Zap/Zap-Bridging-Header.h";
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = 1;
 				VERSIONING_SYSTEM = "apple-generic";

@@ -7,7 +7,6 @@
 
 import BTCUtil
 import Foundation
-import LightningRpc
 
 protocol Transaction {
     var id: String { get }
@@ -26,13 +25,13 @@ struct BlockchainTransaction: Transaction, Equatable {
 }
 
 extension BlockchainTransaction {
-    init(transaction: LightningRpc.Transaction) {
+    init(transaction: Lnrpc_Transaction) {
         id = transaction.txHash
         amount = Satoshi(value: transaction.amount)
         date = Date(timeIntervalSince1970: TimeInterval(transaction.timeStamp))
         fees = Satoshi(value: transaction.totalFees)
         confirmations = Int(transaction.numConfirmations)
-        firstDestinationAddress = transaction.destAddressesArray.firstObject as? String ?? ""
+        firstDestinationAddress = transaction.destAddresses.first ?? ""
     }
 }
 
@@ -45,7 +44,7 @@ struct Payment: Transaction, Equatable {
 }
 
 extension Payment {
-    init(payment: LightningRpc.Payment) {
+    init(payment: Lnrpc_Payment) {
         id = payment.paymentHash
         amount = Satoshi(value: -payment.value)
         date = Date(timeIntervalSince1970: TimeInterval(payment.creationDate))

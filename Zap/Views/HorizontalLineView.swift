@@ -5,7 +5,7 @@
 //  Copyright © 2018 Otto Suess. All rights reserved.
 //
 
-import Foundation
+import UIKit
 
 final class LineView: UIView {
     var color = UIColor(hex: 0xD6D6D6)

@@ -7,7 +7,6 @@
 
 import BTCUtil
 import Foundation
-import LightningRpc
 import Lndbindings
 
 let shoudConnectToRemoteLnd = false
@@ -16,8 +15,8 @@ final class Lnd {
     static let instance = Lnd()
     private let strategy: ConnectionStrategy
     
-    var lightning: LightningRpc.Lightning?
-    var walletUnlocker: LightningRpc.WalletUnlocker?
+    var lightning: Lnrpc_LightningService?
+    var walletUnlocker: Lnrpc_WalletUnlockerService?
     
     private init() {
         if shoudConnectToRemoteLnd {
@@ -32,13 +31,12 @@ final class Lnd {
     }
     
     func connect() {
-        let cert = strategy.cert
+        let cert = strategy.cert!
         let host = strategy.host
-    
-        try? GRPCCall.setTLSPEMRootCerts(cert, forHost: host)
-            
-        lightning = LightningRpc.Lightning(host: host)
-        walletUnlocker = LightningRpc.WalletUnlocker(host: host)
+        
+        lightning = Lnrpc_LightningServiceClient(address: host, certificates: cert, host: nil)
+        lightning?.metadata.add(key: "macaroon", value: Lnd.instance.macaroon!)
+        walletUnlocker = Lnrpc_WalletUnlockerServiceClient(address: host, certificates: cert, host: nil)
     }
     
     func startLnd() {
@@ -58,7 +56,7 @@ private protocol ConnectionStrategy {
     var macaroon: String? { get }
     
     func startLnd()
-    func stopLnd(_ lightning: LightningRpc.Lightning?)
+    func stopLnd(_ lightning: Lnrpc_LightningService?)
 }
 
 private final class LocalConnection: ConnectionStrategy {
@@ -106,10 +104,10 @@ private final class LocalConnection: ConnectionStrategy {
         }
     }
     
-    func stopLnd(_ lightning: LightningRpc.Lightning?) {
-        lightning?.stopDaemon(with: StopRequest()) { _, error in
-            if let error = error {
-                print(error)
+    func stopLnd(_ lightning: Lnrpc_LightningService?) {
+        _ = try? lightning?.stopDaemon(Lnrpc_StopRequest()) { _, callResult in
+            if !callResult.success {
+                print(callResult)
             }
         }
     }
@@ -131,5 +129,5 @@ private final class RemoteConnection: ConnectionStrategy {
     }
     
     func startLnd() {}
-    func stopLnd(_ lightning: LightningRpc.Lightning?) {}
+    func stopLnd(_ lightning: Lnrpc_LightningService?) {}
 }

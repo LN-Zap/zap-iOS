@@ -6,7 +6,6 @@
 //
 
 import Foundation
-import LightningRpc
 
 struct Peer {
     let pubKey: String
@@ -14,7 +13,7 @@ struct Peer {
 }
 
 extension Peer {
-    init(peer: LightningRpc.Peer) {
+    init(peer: Lnrpc_Peer) {
         pubKey = peer.pubKey
         host = peer.address
     }

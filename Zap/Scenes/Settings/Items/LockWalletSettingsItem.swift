@@ -5,7 +5,7 @@
 //  Copyright © 2018 Otto Suess. All rights reserved.
 //
 
-import Foundation
+import UIKit
 
 struct LockWalletSettingsItem: SettingsItem {
     let title = "scene.settings.item.lock_wallet".localized

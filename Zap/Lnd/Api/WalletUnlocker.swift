@@ -6,12 +6,11 @@
 //
 
 import Foundation
-import LightningRpc
 
 private let PASSWORD = "12345678"
 
 final class WalletUnlocker {
-    private var rpc: LightningRpc.WalletUnlocker? {
+    private var rpc: Lnrpc_WalletUnlockerService? {
         if Lnd.instance.walletUnlocker == nil {
             print("WalletUnlocker not initialized")
         }
@@ -19,28 +18,30 @@ final class WalletUnlocker {
     }
     
     func generateSeed(passphrase: String? = nil, callback: @escaping (Result<[String]>) -> Void) {
-        let request = GenSeedRequest()
-        if let passphrase = passphrase {
-            request.aezeedPassphrase = passphrase.data(using: .utf8)
+        var request = Lnrpc_GenSeedRequest()
+        if let passphrase = passphrase?.data(using: .utf8) {
+            request.aezeedPassphrase = passphrase
         }
         
-        rpc?.genSeed(with: request, handler: result(callback, map: {
-            $0.cipherSeedMnemonicArray as? [String]
-        }))
+        _ = try? rpc?.genSeed(request, completion: result(callback, map: { $0.cipherSeedMnemonic }))
     }
     
     func initWallet(mnemonic: [String], callback: @escaping (Result<Void>) -> Void) {
-        let request = InitWalletRequest()
-        request.walletPassword = PASSWORD.data(using: .utf8)
-        request.cipherSeedMnemonicArray = NSMutableArray(array: mnemonic)
+        var request = Lnrpc_InitWalletRequest()
+        if let passwordData = PASSWORD.data(using: .utf8) {
+            request.walletPassword = passwordData
+        }
+        request.cipherSeedMnemonic = mnemonic
 
-        rpc?.initWallet(with: request, handler: result(callback, map: { _ in () }))
+        _ = try? rpc?.initWallet(request, completion: result(callback, map: { _ in () }))
     }
     
     func unlockWallet(callback: @escaping (Result<Void>) -> Void) {
-        let request = UnlockWalletRequest()
-        request.walletPassword = PASSWORD.data(using: .utf8)
-        
-        rpc?.unlockWallet(with: request, handler: result(callback, map: { _ in () }))
+        var request = Lnrpc_UnlockWalletRequest()
+        if let passwordData = PASSWORD.data(using: .utf8) {
+            request.walletPassword = passwordData
+        }
+
+        _ = try? rpc?.unlockWallet(request, completion: result(callback, map: { _ in () }))
     }
 }

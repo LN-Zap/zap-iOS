@@ -6,14 +6,13 @@
 //
 
 import Foundation
-import LightningRpc
 
 enum CloseStatusUpdate {
     case pending
     case confirmation
     case channelClose
     
-    init(_ closeStatusUpdate: LightningRpc.CloseStatusUpdate) {
+    init(_ closeStatusUpdate: Lnrpc_CloseStatusUpdate) {
         if closeStatusUpdate.closePending != nil {
             self = .pending
         } else if closeStatusUpdate.confirmation != nil {

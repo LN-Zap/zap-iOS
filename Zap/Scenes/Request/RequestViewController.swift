@@ -78,7 +78,9 @@ final class RequestViewController: UIViewController {
         requestViewModel?.create { [weak self] qrCodeViewModel in
             let viewController = Storyboard.qrCodeDetail.instantiate(viewController: QRCodeDetailViewController.self)
             viewController.viewModel = qrCodeViewModel
-            self?.navigationController?.pushViewController(viewController, animated: true)
+            DispatchQueue.main.async {
+                self?.navigationController?.pushViewController(viewController, animated: true)
+            }
         }
     }
     

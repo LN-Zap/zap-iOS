@@ -6,14 +6,13 @@
 //
 
 import Foundation
-import LightningRpc
 
 enum OpenStatusUpdate {
     case pending
     case confirmation
     case channelOpen
     
-    init(_ openStatusUpdate: LightningRpc.OpenStatusUpdate) {
+    init(_ openStatusUpdate: Lnrpc_OpenStatusUpdate) {
         if openStatusUpdate.chanPending != nil {
             self = .pending
         } else if openStatusUpdate.confirmation != nil {

@@ -5,7 +5,7 @@
 //  Copyright © 2018 Zap. All rights reserved.
 //
 
-import Foundation
+import UIKit
 
 extension UIViewController {
     func addChild(viewController: UIViewController, to container: UIView) {

@@ -85,7 +85,9 @@ class RootViewController: UIViewController, ContainerViewController {
                 }
                 
                 if let viewController = viewController {
-                    self?.switchToViewController(viewController)
+                    DispatchQueue.main.async {
+                        self?.switchToViewController(viewController)
+                    }
                 }
             }
             .dispose(in: reactive.bag)

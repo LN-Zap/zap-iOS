@@ -45,3 +45,5 @@ fastlane/test_output
 googleapis/
 .env.default
 Frameworks/Lndbindings.framework/
+protoc-gen-swift
+protoc-gen-swiftgrpc

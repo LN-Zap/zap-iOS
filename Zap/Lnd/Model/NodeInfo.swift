@@ -7,7 +7,6 @@
 
 import BTCUtil
 import Foundation
-import LightningRpc
 
 struct NodeInfo {
     let node: LightningNode
@@ -16,7 +15,7 @@ struct NodeInfo {
 }
 
 extension NodeInfo {
-    init(nodeInfo: LightningRpc.NodeInfo) {
+    init(nodeInfo: Lnrpc_NodeInfo) {
         node = LightningNode(lightningNode: nodeInfo.node)
         numChannels = Int(nodeInfo.numChannels)
         totalCapacity = Int(nodeInfo.totalCapacity)
@@ -31,7 +30,7 @@ struct LightningNode {
 }
 
 extension LightningNode {
-    init(lightningNode: LightningRpc.LightningNode) {
+    init(lightningNode: Lnrpc_LightningNode) {
         lastUpdate = Int(lightningNode.lastUpdate)
         pubKey = lightningNode.pubKey
         alias = lightningNode.alias

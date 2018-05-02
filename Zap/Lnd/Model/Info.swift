@@ -7,7 +7,6 @@
 
 import BTCUtil
 import Foundation
-import LightningRpc
 
 struct Info {
     let alias: String
@@ -20,7 +19,7 @@ struct Info {
 }
 
 extension Info {
-    init(getInfoResponse: GetInfoResponse) {
+    init(getInfoResponse: Lnrpc_GetInfoResponse) {
         alias = getInfoResponse.alias
         blockHeight = Int(getInfoResponse.blockHeight)
         isSyncedToChain = getInfoResponse.syncedToChain

@@ -5,7 +5,7 @@
 //  Copyright © 2018 Otto Suess. All rights reserved.
 //
 
-import Foundation
+import UIKit
 
 final class UpdatePinSettingsItem: SettingsItem {
     var title = "scene.settings.item.update_pin".localized
