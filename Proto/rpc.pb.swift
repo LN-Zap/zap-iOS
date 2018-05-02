@@ -84,6 +84,14 @@ struct Lnrpc_InitWalletRequest {
   ///to encrypt the generated aezeed cipher seed.
   var aezeedPassphrase: Data = SwiftProtobuf.Internal.emptyData
 
+  ///*
+  ///recovery_window is an optional argument specifying the address lookahead
+  ///when restoring a wallet seed. The recovery window applies to each
+  ///invdividual branch of the BIP44 derivation paths. Supplying a recovery
+  ///window of zero indicates that no addresses should be recovered, such after
+  ///the first initialization of the wallet.
+  var recoveryWindow: Int32 = 0
+
   var unknownFields = SwiftProtobuf.UnknownStorage()
 
   init() {}
@@ -109,6 +117,14 @@ struct Lnrpc_UnlockWalletRequest {
   ///will be required to decrypt on-disk material that the daemon requires to
   ///function properly.
   var walletPassword: Data = SwiftProtobuf.Internal.emptyData
+
+  ///*
+  ///recovery_window is an optional argument specifying the address lookahead
+  ///when restoring a wallet seed. The recovery window applies to each
+  ///invdividual branch of the BIP44 derivation paths. Supplying a recovery
+  ///window of zero indicates that no addresses should be recovered, such after
+  ///the first initialization of the wallet.
+  var recoveryWindow: Int32 = 0
 
   var unknownFields = SwiftProtobuf.UnknownStorage()
 
@@ -1182,6 +1198,9 @@ struct Lnrpc_PendingChannelsResponse {
   //// Channels pending force closing
   var pendingForceClosingChannels: [Lnrpc_PendingChannelsResponse.ForceClosedChannel] = []
 
+  //// Channels waiting for closing tx to confirm
+  var waitingCloseChannels: [Lnrpc_PendingChannelsResponse.WaitingCloseChannel] = []
+
   var unknownFields = SwiftProtobuf.UnknownStorage()
 
   struct PendingChannel {
@@ -1249,6 +1268,34 @@ struct Lnrpc_PendingChannelsResponse {
     var feePerKw: Int64 {
       get {return _storage._feePerKw}
       set {_uniqueStorage()._feePerKw = newValue}
+    }
+
+    var unknownFields = SwiftProtobuf.UnknownStorage()
+
+    init() {}
+
+    fileprivate var _storage = _StorageClass.defaultInstance
+  }
+
+  struct WaitingCloseChannel {
+    // SwiftProtobuf.Message conformance is added in an extension below. See the
+    // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
+    // methods supported on all messages.
+
+    //// The pending channel waiting for closing tx to confirm
+    var channel: Lnrpc_PendingChannelsResponse.PendingChannel {
+      get {return _storage._channel ?? Lnrpc_PendingChannelsResponse.PendingChannel()}
+      set {_uniqueStorage()._channel = newValue}
+    }
+    /// Returns true if `channel` has been explicitly set.
+    var hasChannel: Bool {return _storage._channel != nil}
+    /// Clears the value of `channel`. Subsequent reads from it will return its default value.
+    mutating func clearChannel() {_storage._channel = nil}
+
+    //// The balance in satoshis encumbered in this channel
+    var limboBalance: Int64 {
+      get {return _storage._limboBalance}
+      set {_uniqueStorage()._limboBalance = newValue}
     }
 
     var unknownFields = SwiftProtobuf.UnknownStorage()
@@ -2527,6 +2574,7 @@ extension Lnrpc_InitWalletRequest: SwiftProtobuf.Message, SwiftProtobuf._Message
     1: .standard(proto: "wallet_password"),
     2: .standard(proto: "cipher_seed_mnemonic"),
     3: .standard(proto: "aezeed_passphrase"),
+    4: .standard(proto: "recovery_window"),
   ]
 
   mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
@@ -2535,6 +2583,7 @@ extension Lnrpc_InitWalletRequest: SwiftProtobuf.Message, SwiftProtobuf._Message
       case 1: try decoder.decodeSingularBytesField(value: &self.walletPassword)
       case 2: try decoder.decodeRepeatedStringField(value: &self.cipherSeedMnemonic)
       case 3: try decoder.decodeSingularBytesField(value: &self.aezeedPassphrase)
+      case 4: try decoder.decodeSingularInt32Field(value: &self.recoveryWindow)
       default: break
       }
     }
@@ -2550,6 +2599,9 @@ extension Lnrpc_InitWalletRequest: SwiftProtobuf.Message, SwiftProtobuf._Message
     if !self.aezeedPassphrase.isEmpty {
       try visitor.visitSingularBytesField(value: self.aezeedPassphrase, fieldNumber: 3)
     }
+    if self.recoveryWindow != 0 {
+      try visitor.visitSingularInt32Field(value: self.recoveryWindow, fieldNumber: 4)
+    }
     try unknownFields.traverse(visitor: &visitor)
   }
 
@@ -2557,6 +2609,7 @@ extension Lnrpc_InitWalletRequest: SwiftProtobuf.Message, SwiftProtobuf._Message
     if self.walletPassword != other.walletPassword {return false}
     if self.cipherSeedMnemonic != other.cipherSeedMnemonic {return false}
     if self.aezeedPassphrase != other.aezeedPassphrase {return false}
+    if self.recoveryWindow != other.recoveryWindow {return false}
     if unknownFields != other.unknownFields {return false}
     return true
   }
@@ -2585,12 +2638,14 @@ extension Lnrpc_UnlockWalletRequest: SwiftProtobuf.Message, SwiftProtobuf._Messa
   static let protoMessageName: String = _protobuf_package + ".UnlockWalletRequest"
   static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
     1: .standard(proto: "wallet_password"),
+    2: .standard(proto: "recovery_window"),
   ]
 
   mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
     while let fieldNumber = try decoder.nextFieldNumber() {
       switch fieldNumber {
       case 1: try decoder.decodeSingularBytesField(value: &self.walletPassword)
+      case 2: try decoder.decodeSingularInt32Field(value: &self.recoveryWindow)
       default: break
       }
     }
@@ -2600,11 +2655,15 @@ extension Lnrpc_UnlockWalletRequest: SwiftProtobuf.Message, SwiftProtobuf._Messa
     if !self.walletPassword.isEmpty {
       try visitor.visitSingularBytesField(value: self.walletPassword, fieldNumber: 1)
     }
+    if self.recoveryWindow != 0 {
+      try visitor.visitSingularInt32Field(value: self.recoveryWindow, fieldNumber: 2)
+    }
     try unknownFields.traverse(visitor: &visitor)
   }
 
   func _protobuf_generated_isEqualTo(other: Lnrpc_UnlockWalletRequest) -> Bool {
     if self.walletPassword != other.walletPassword {return false}
+    if self.recoveryWindow != other.recoveryWindow {return false}
     if unknownFields != other.unknownFields {return false}
     return true
   }
@@ -4622,6 +4681,7 @@ extension Lnrpc_PendingChannelsResponse: SwiftProtobuf.Message, SwiftProtobuf._M
     2: .same(proto: "pending_open_channels"),
     3: .same(proto: "pending_closing_channels"),
     4: .same(proto: "pending_force_closing_channels"),
+    5: .same(proto: "waiting_close_channels"),
   ]
 
   mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
@@ -4631,6 +4691,7 @@ extension Lnrpc_PendingChannelsResponse: SwiftProtobuf.Message, SwiftProtobuf._M
       case 2: try decoder.decodeRepeatedMessageField(value: &self.pendingOpenChannels)
       case 3: try decoder.decodeRepeatedMessageField(value: &self.pendingClosingChannels)
       case 4: try decoder.decodeRepeatedMessageField(value: &self.pendingForceClosingChannels)
+      case 5: try decoder.decodeRepeatedMessageField(value: &self.waitingCloseChannels)
       default: break
       }
     }
@@ -4649,6 +4710,9 @@ extension Lnrpc_PendingChannelsResponse: SwiftProtobuf.Message, SwiftProtobuf._M
     if !self.pendingForceClosingChannels.isEmpty {
       try visitor.visitRepeatedMessageField(value: self.pendingForceClosingChannels, fieldNumber: 4)
     }
+    if !self.waitingCloseChannels.isEmpty {
+      try visitor.visitRepeatedMessageField(value: self.waitingCloseChannels, fieldNumber: 5)
+    }
     try unknownFields.traverse(visitor: &visitor)
   }
 
@@ -4657,6 +4721,7 @@ extension Lnrpc_PendingChannelsResponse: SwiftProtobuf.Message, SwiftProtobuf._M
     if self.pendingOpenChannels != other.pendingOpenChannels {return false}
     if self.pendingClosingChannels != other.pendingClosingChannels {return false}
     if self.pendingForceClosingChannels != other.pendingForceClosingChannels {return false}
+    if self.waitingCloseChannels != other.waitingCloseChannels {return false}
     if unknownFields != other.unknownFields {return false}
     return true
   }
@@ -4799,6 +4864,75 @@ extension Lnrpc_PendingChannelsResponse.PendingOpenChannel: SwiftProtobuf.Messag
         if _storage._commitFee != other_storage._commitFee {return false}
         if _storage._commitWeight != other_storage._commitWeight {return false}
         if _storage._feePerKw != other_storage._feePerKw {return false}
+        return true
+      }
+      if !storagesAreEqual {return false}
+    }
+    if unknownFields != other.unknownFields {return false}
+    return true
+  }
+}
+
+extension Lnrpc_PendingChannelsResponse.WaitingCloseChannel: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+  static let protoMessageName: String = Lnrpc_PendingChannelsResponse.protoMessageName + ".WaitingCloseChannel"
+  static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
+    1: .same(proto: "channel"),
+    2: .same(proto: "limbo_balance"),
+  ]
+
+  fileprivate class _StorageClass {
+    var _channel: Lnrpc_PendingChannelsResponse.PendingChannel? = nil
+    var _limboBalance: Int64 = 0
+
+    static let defaultInstance = _StorageClass()
+
+    private init() {}
+
+    init(copying source: _StorageClass) {
+      _channel = source._channel
+      _limboBalance = source._limboBalance
+    }
+  }
+
+  fileprivate mutating func _uniqueStorage() -> _StorageClass {
+    if !isKnownUniquelyReferenced(&_storage) {
+      _storage = _StorageClass(copying: _storage)
+    }
+    return _storage
+  }
+
+  mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
+    _ = _uniqueStorage()
+    try withExtendedLifetime(_storage) { (_storage: _StorageClass) in
+      while let fieldNumber = try decoder.nextFieldNumber() {
+        switch fieldNumber {
+        case 1: try decoder.decodeSingularMessageField(value: &_storage._channel)
+        case 2: try decoder.decodeSingularInt64Field(value: &_storage._limboBalance)
+        default: break
+        }
+      }
+    }
+  }
+
+  func traverse<V: SwiftProtobuf.Visitor>(visitor: inout V) throws {
+    try withExtendedLifetime(_storage) { (_storage: _StorageClass) in
+      if let v = _storage._channel {
+        try visitor.visitSingularMessageField(value: v, fieldNumber: 1)
+      }
+      if _storage._limboBalance != 0 {
+        try visitor.visitSingularInt64Field(value: _storage._limboBalance, fieldNumber: 2)
+      }
+    }
+    try unknownFields.traverse(visitor: &visitor)
+  }
+
+  func _protobuf_generated_isEqualTo(other: Lnrpc_PendingChannelsResponse.WaitingCloseChannel) -> Bool {
+    if _storage !== other._storage {
+      let storagesAreEqual: Bool = withExtendedLifetime((_storage, other._storage)) { (_args: (_StorageClass, _StorageClass)) in
+        let _storage = _args.0
+        let other_storage = _args.1
+        if _storage._channel != other_storage._channel {return false}
+        if _storage._limboBalance != other_storage._limboBalance {return false}
         return true
       }
       if !storagesAreEqual {return false}
