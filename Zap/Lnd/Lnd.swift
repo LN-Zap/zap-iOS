@@ -11,7 +11,7 @@ import Lndmobile
 
 let shoudConnectToRemoteLnd = false
 
-// TODO: refactor. macaroon & horst etc only needed for remote connection.
+// TODO: refactor. macaroon & host etc only needed for remote connection.
 
 final class Lnd {
     static let instance = Lnd()
