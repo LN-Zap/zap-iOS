@@ -36,7 +36,10 @@ final class LndCallback<T: SwiftProtobuf.Message, U>: NSObject, LndmobileCallbac
     func onResponse(_ data: Data) {
         if let message = try? T(serializedData: data),
             let value = mapping(message) {
-            print("✅ Callback:", value)
+            
+            if !(value is Info) {
+                print("✅ Callback:", value)
+            }
             callback(Result(value: value))
         } else {
             onError(LndError.unknownError)
