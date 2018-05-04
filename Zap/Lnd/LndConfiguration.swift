@@ -25,7 +25,7 @@ final class LndConfiguration: NSObject {
         
         configuration.set("neutrino", key: "neutrino.connect", value: "faucet.lightning.community")
         
-        configuration.set("autopilot", key: "autopilot.active", value: "1")
+        configuration.set("autopilot", key: "autopilot.active", value: "0")
         return configuration
     }()
     
