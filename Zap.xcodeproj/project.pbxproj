@@ -43,7 +43,6 @@
 		A024B85920161590002B8897 /* Request.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A024B85820161590002B8897 /* Request.storyboard */; };
 		A024B85B20161AAE002B8897 /* PaymentRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = A024B85A20161AAE002B8897 /* PaymentRequest.swift */; };
 		A02C9FBD202EE9BE009821B1 /* OpenChannelViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A02C9FBC202EE9BE009821B1 /* OpenChannelViewModel.swift */; };
-		A02C9FC0202F0018009821B1 /* ChannelDetailViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A02C9FBF202F0018009821B1 /* ChannelDetailViewModel.swift */; };
 		A02C9FC2202F5BDC009821B1 /* LocalAuthentication.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A02C9FC1202F5BDC009821B1 /* LocalAuthentication.framework */; };
 		A02C9FC4202F617D009821B1 /* LocalAuthentication.swift in Sources */ = {isa = PBXBuildFile; fileRef = A02C9FC3202F617D009821B1 /* LocalAuthentication.swift */; };
 		A02C9FC620304395009821B1 /* LndConfiguration.swift in Sources */ = {isa = PBXBuildFile; fileRef = A02C9FC520304395009821B1 /* LndConfiguration.swift */; };
@@ -277,7 +276,6 @@
 		A024B85A20161AAE002B8897 /* PaymentRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaymentRequest.swift; sourceTree = "<group>"; };
 		A02C52F62024A98F00780D5A /* Podfile */ = {isa = PBXFileReference; lastKnownFileType = text; path = Podfile; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
 		A02C9FBC202EE9BE009821B1 /* OpenChannelViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OpenChannelViewModel.swift; sourceTree = "<group>"; };
-		A02C9FBF202F0018009821B1 /* ChannelDetailViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChannelDetailViewModel.swift; sourceTree = "<group>"; };
 		A02C9FC1202F5BDC009821B1 /* LocalAuthentication.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = LocalAuthentication.framework; path = System/Library/Frameworks/LocalAuthentication.framework; sourceTree = SDKROOT; };
 		A02C9FC3202F617D009821B1 /* LocalAuthentication.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalAuthentication.swift; sourceTree = "<group>"; };
 		A02C9FC520304395009821B1 /* LndConfiguration.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LndConfiguration.swift; sourceTree = "<group>"; };
@@ -647,7 +645,6 @@
 			isa = PBXGroup;
 			children = (
 				A0A96B812017442D00788808 /* ChannelDetailViewController.swift */,
-				A02C9FBF202F0018009821B1 /* ChannelDetailViewModel.swift */,
 			);
 			path = ChannelDetail;
 			sourceTree = "<group>";
@@ -1561,7 +1558,6 @@
 				A0C2EABE206F8B5B003AE56E /* Localizable.swift in Sources */,
 				A0DDC06E2018C08800AEFF94 /* Section.swift in Sources */,
 				A0F57DBE201E440F003AFA66 /* ChannelListViewModel.swift in Sources */,
-				A02C9FC0202F0018009821B1 /* ChannelDetailViewModel.swift in Sources */,
 				A01009442014DC660001EF94 /* WithdrawViewController.swift in Sources */,
 				A0376B6F201CC04400F1FBEF /* Info.swift in Sources */,
 				A0A05A5520148FA80007D1C9 /* Json.swift in Sources */,

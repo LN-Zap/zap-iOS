@@ -9,7 +9,7 @@ import Bond
 import Foundation
 
 final class ChannelViewModel {
-    private let channel: Channel
+    let channel: Channel
     
     let state: Observable<ChannelState>
     let name: Observable<String>

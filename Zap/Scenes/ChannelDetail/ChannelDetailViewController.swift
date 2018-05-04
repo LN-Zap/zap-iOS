@@ -19,7 +19,8 @@ class ChannelDetailViewController: ModalViewController {
     @IBOutlet private weak var blockExplorerButton: UIButton?
     @IBOutlet private weak var closeChannelButton: UIButton!
     
-    var channelViewModel: ChannelDetailViewModel?
+    var channelViewModel: ChannelViewModel?
+    var viewModel: ViewModel?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -28,26 +29,23 @@ class ChannelDetailViewController: ModalViewController {
         blockExplorerButton?.setTitle(Settings.blockExplorer.localized, for: .normal)
         
         updateChannel()
-        
-//        closeChannelButton.rx.action = channelViewModel?.closeAction
-//
-//        channelViewModel?.closeAction
-//            .elements
-//            .subscribe(onNext: { [weak self] _ in
-//                self?.dismiss(animated: true, completion: nil)
-//            })
-//            .dispose(in: reactive.bag)
     }
-
+    
     private func updateChannel() {
         guard let channel = channelViewModel?.channel else { return }
         
-        remotePubKeyLabel?.text = channel.remotePubKey
-        capacityLabel?.text = String(describing: channel.capacity)
-        localBalanceLabel?.text = String(describing: channel.localBalance)
-        remoteBalanceLabel?.text = String(describing: channel.remoteBalance)
-        updateCountLabel?.text = String(describing: channel.updateCount)
+        remotePubKeyLabel?.text = "remotePubKey: \(channel.remotePubKey)"
+        capacityLabel?.text = "capacity: \(String(describing: channel.capacity))"
+        localBalanceLabel?.text = "localBalance: \(String(describing: channel.localBalance))"
+        remoteBalanceLabel?.text = "remoteBalance: \(String(describing: channel.remoteBalance))"
+        updateCountLabel?.text = "updateCount: \(String(describing: channel.updateCount ?? 0))"
         stateLabel?.setChannelState(channel.state)
+    }
+    
+    @IBAction private func closeChannel(_ sender: Any) {
+        guard let channelPoint = channelViewModel?.channel.channelPoint else { return }
+        viewModel?.closeChannel(channelPoint: channelPoint)
+        dismiss(animated: true, completion: nil)
     }
     
     @IBAction private func blockExplorerButtonTapped(_ sender: Any) {

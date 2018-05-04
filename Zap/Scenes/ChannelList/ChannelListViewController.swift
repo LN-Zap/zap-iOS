@@ -64,9 +64,10 @@ class ChannelListViewController: UIViewController {
             sendViewController.viewModel = viewModel
             sendViewController.strategy = OpenChannelQRCodeScannerStrategy()
         } else if let channelDetailViewController = navigationController?.topViewController as? ChannelDetailViewController,
-            let channel = sender as? Channel,
+            let channelViewModel = sender as? ChannelViewModel,
             let viewModel = viewModel {
-            channelDetailViewController.channelViewModel = ChannelDetailViewModel(viewModel: viewModel, channel: channel)
+            channelDetailViewController.channelViewModel = channelViewModel
+            channelDetailViewController.viewModel = viewModel
         }
     }
     
