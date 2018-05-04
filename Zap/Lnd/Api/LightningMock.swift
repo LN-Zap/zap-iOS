@@ -140,7 +140,7 @@ final class LightningMock: LightningProtocol {
         callback(Result(value: sendPayment, error: LndError.unknownError))
     }
     
-    func addInvoice(amount: Satoshi, memo: String?, callback: @escaping (Result<String>) -> Void) {
+    func addInvoice(amount: Satoshi?, memo: String?, callback: @escaping (Result<String>) -> Void) {
         callback(Result(value: addInvoice, error: LndError.unknownError))
     }
 }

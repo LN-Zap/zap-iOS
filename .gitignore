@@ -47,3 +47,4 @@ googleapis/
 Frameworks/Lndbindings.framework/
 protoc-gen-swift
 protoc-gen-swiftgrpc
+Frameworks/Lndmobile.framework

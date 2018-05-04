@@ -18,7 +18,7 @@ extension UIViewController {
             viewController.view.trailingAnchor.constraint(equalTo: container.trailingAnchor, constant: 0),
             viewController.view.topAnchor.constraint(equalTo: container.topAnchor, constant: 0),
             viewController.view.bottomAnchor.constraint(equalTo: container.bottomAnchor, constant: 0)
-            ])
+        ])
         
         viewController.didMove(toParentViewController: self)
     }

@@ -26,5 +26,5 @@ protocol LightningProtocol {
     func peers(callback: @escaping (Result<[Peer]>) -> Void)
     func decodePaymentRequest(_ paymentRequest: String, callback: @escaping (Result<PaymentRequest>) -> Void)
     func sendPayment(_ paymentRequest: PaymentRequest, callback: @escaping (Result<Data>) -> Void)
-    func addInvoice(amount: Satoshi, memo: String?, callback: @escaping (Result<String>) -> Void)
+    func addInvoice(amount: Satoshi?, memo: String?, callback: @escaping (Result<String>) -> Void)
 }

@@ -8,7 +8,7 @@
 import BTCUtil
 import Foundation
 
-final class Lightning: LightningProtocol {
+final class LightningRPC: LightningProtocol {
     private var rpc: Lnrpc_LightningService? {
         if Lnd.instance.lightning == nil {
             print("Lightning not initialized")
@@ -21,14 +21,12 @@ final class Lightning: LightningProtocol {
     }
     
     func nodeInfo(pubKey: String, callback: @escaping (Result<NodeInfo>) -> Void) {
-        var request = Lnrpc_NodeInfoRequest()
-        request.pubKey = pubKey
+        let request = Lnrpc_NodeInfoRequest(pubKey: pubKey)
         _ = try? rpc?.getNodeInfo(request, completion: result(callback, map: { NodeInfo(nodeInfo: $0) }))
     }
     
     func newAddress(callback: @escaping (Result<String>) -> Void) {
-        var request = Lnrpc_NewAddressRequest()
-        request.type = .nestedPubkeyHash
+        let request = Lnrpc_NewAddressRequest(type: .nestedPubkeyHash)
         _ = try? rpc?.newAddress(request, completion: result(callback, map: { $0.address }))
     }
     
@@ -48,7 +46,7 @@ final class Lightning: LightningProtocol {
     
     func subscribeTransactions(callback: @escaping (Result<Transaction>) -> Void) {
         _ = try? rpc?.subscribeTransactions(Lnrpc_GetTransactionsRequest(), completion: { _ in
-            // TODO:
+            fatalError("not implemented")
         })
     }
     
@@ -74,50 +72,29 @@ final class Lightning: LightningProtocol {
     }
     
     func connect(pubKey: String, host: String, callback: @escaping (Result<Void>) -> Void) {
-        var request = Lnrpc_ConnectPeerRequest()
-        request.addr = Lnrpc_LightningAddress()
-        request.addr.pubkey = pubKey
-        request.addr.host = host
-        
+        let request = Lnrpc_ConnectPeerRequest(pubKey: pubKey, host: host)        
         _ = try? rpc?.connectPeer(request, completion: result(callback, map: { _ in () }))
     }
     
     func openChannel(pubKey: String, amount: Satoshi, callback: @escaping (Result<OpenStatusUpdate>) -> Void) {
-        var request = Lnrpc_OpenChannelRequest()
-        if let pubKey = pubKey.hexadecimal() {
-            request.nodePubkey = pubKey
-        }
-        request.localFundingAmount = Int64(truncating: amount)
-        
+        let request = Lnrpc_OpenChannelRequest(pubKey: pubKey, amount: amount)
         _ = try? rpc?.openChannel(request, completion: { _ in
-            // TODO:
+            fatalError("not implemented")
         })
     }
     
     func closeChannel(channelPoint: String, callback: @escaping (Result<CloseStatusUpdate>) -> Void) {
-        let channelPointParts = channelPoint.components(separatedBy: ":")
-        guard let outputIndex = UInt32(channelPointParts[1]) else {
+        guard let request = Lnrpc_CloseChannelRequest(channelPoint: channelPoint) else {
             callback(Result(error: LndError.invalidInput))
             return
         }
-        
-        var request = Lnrpc_CloseChannelRequest()
-        request.channelPoint = Lnrpc_ChannelPoint()
-        request.channelPoint.outputIndex = outputIndex
-        if let fundingTxidBytes = channelPointParts[0].hexEndianSwap().hexadecimal() {
-            request.channelPoint.fundingTxidBytes = fundingTxidBytes
-        }
-        request.force = true
-        
         _ = try? rpc?.closeChannel(request, completion: { _ in
-            // TODO:
+            fatalError("not implemented")
         })
     }
     
     func sendCoins(address: String, amount: Satoshi, callback: @escaping (Result<String>) -> Void) {
-        var request = Lnrpc_SendCoinsRequest()
-        request.addr = address
-        request.amount = Int64(truncating: amount)
+        let request = Lnrpc_SendCoinsRequest(address: address, amount: amount)
         _ = try? rpc?.sendCoins(request, completion: result(callback, map: { $0.txid }))
     }
     
@@ -128,21 +105,17 @@ final class Lightning: LightningProtocol {
     }
     
     func decodePaymentRequest(_ paymentRequest: String, callback: @escaping (Result<PaymentRequest>) -> Void) {
-        var request = Lnrpc_PayReqString()
-        request.payReq = paymentRequest
-        
+        let request = Lnrpc_PayReqString(payReq: paymentRequest)
         _ = try? rpc?.decodePayReq(request, completion: result(callback, map: {
             PaymentRequest(payReq: $0, raw: paymentRequest)
         }))
     }
     
     func sendPayment(_ paymentRequest: PaymentRequest, callback: @escaping (Result<Data>) -> Void) {
-        var request = Lnrpc_SendRequest()
-        request.paymentRequest = paymentRequest.raw
-        
+        let request = Lnrpc_SendRequest(paymentRequest: paymentRequest.raw)
         _ = try? rpc?.sendPaymentSync(request) { response, error in
             if !error.success {
-                callback(Result(error: LndError.unknownError)) // TODO
+                callback(Result(error: LndError.unknownError))
             } else if let errorMessage = response?.paymentError,
                 !errorMessage.isEmpty {
                 let error = LndError.localizedError(errorMessage)
@@ -155,12 +128,8 @@ final class Lightning: LightningProtocol {
         }
     }
     
-    func addInvoice(amount: Satoshi, memo: String?, callback: @escaping (Result<String>) -> Void) {
-        var request = Lnrpc_Invoice()
-        if let memo = memo {
-            request.memo = memo
-        }
-        request.value = Int64(truncating: amount)
+    func addInvoice(amount: Satoshi?, memo: String?, callback: @escaping (Result<String>) -> Void) {
+        let request = Lnrpc_Invoice(amount: amount, memo: memo)
         _ = try? rpc?.addInvoice(request, completion: result(callback, map: { $0.paymentRequest }))
     }
 }

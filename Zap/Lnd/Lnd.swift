@@ -7,9 +7,11 @@
 
 import BTCUtil
 import Foundation
-import Lndbindings
+import Lndmobile
 
 let shoudConnectToRemoteLnd = false
+
+// TODO: refactor. macaroon & horst etc only needed for remote connection.
 
 final class Lnd {
     static let instance = Lnd()
@@ -31,17 +33,16 @@ final class Lnd {
     }
     
     func connect() {
-        let cert = strategy.cert!
-        let host = strategy.host
-        
-        lightning = Lnrpc_LightningServiceClient(address: host, certificates: cert, host: nil)
-        lightning?.metadata.add(key: "macaroon", value: Lnd.instance.macaroon!)
-        walletUnlocker = Lnrpc_WalletUnlockerServiceClient(address: host, certificates: cert, host: nil)
+//        let cert = strategy.cert!
+//        let host = strategy.host
+//        
+//        lightning = Lnrpc_LightningServiceClient(address: host, certificates: cert, host: nil)
+//        lightning?.metadata.add(key: "macaroon", value: Lnd.instance.macaroon!)
+//        walletUnlocker = Lnrpc_WalletUnlockerServiceClient(address: host, certificates: cert, host: nil)
     }
     
     func startLnd() {
         strategy.startLnd()
-        connect()
     }
     
     func stopLnd() {
@@ -51,7 +52,6 @@ final class Lnd {
 
 private protocol ConnectionStrategy {
     var host: String { get }
-    
     var cert: String? { get }
     var macaroon: String? { get }
     
@@ -95,7 +95,7 @@ private final class LocalConnection: ConnectionStrategy {
     func startLnd() {
         guard ProcessInfo.processInfo.environment["IS_RUNNING_TESTS"] != "1" else { return }
         DispatchQueue.global(qos: .userInteractive).async {
-            LndbindingsStart(self.lndPath.path)
+            LndmobileStart(self.lndPath.path, EmptyLndCallback())
         }
         
         while !FileManager.default.fileExists(atPath: certPath.path) {

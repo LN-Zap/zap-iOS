@@ -90,7 +90,6 @@
 		A0A05A2D2013EDFB0007D1C9 /* QRCodeDetail.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A0A05A2C2013EDFB0007D1C9 /* QRCodeDetail.storyboard */; };
 		A0A05A302013EFC00007D1C9 /* UIImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0A05A2F2013EFC00007D1C9 /* UIImage.swift */; };
 		A0A05A352014047B0007D1C9 /* Lnd.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0A05A342014047B0007D1C9 /* Lnd.swift */; };
-		A0A05A472014765E0007D1C9 /* Lndbindings.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A0A05A462014765E0007D1C9 /* Lndbindings.framework */; };
 		A0A05A4D20147B740007D1C9 /* RootViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0A05A4C20147B740007D1C9 /* RootViewController.swift */; };
 		A0A05A51201481A70007D1C9 /* Storyboard.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0A05A50201481A70007D1C9 /* Storyboard.swift */; };
 		A0A05A5520148FA80007D1C9 /* Json.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0A05A5420148FA80007D1C9 /* Json.swift */; };
@@ -98,7 +97,7 @@
 		A0A05A5920149AF20007D1C9 /* Transaction.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0A05A5820149AF20007D1C9 /* Transaction.swift */; };
 		A0A05A5C20149F720007D1C9 /* TransactionListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0A05A5B20149F720007D1C9 /* TransactionListViewController.swift */; };
 		A0A05A5E2014A0DE0007D1C9 /* UITableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0A05A5D2014A0DE0007D1C9 /* UITableView.swift */; };
-		A0A33EF42028743200BB76F4 /* Lightning.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0A33EF32028743200BB76F4 /* Lightning.swift */; };
+		A0A33EF42028743200BB76F4 /* LightningRPC.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0A33EF32028743200BB76F4 /* LightningRPC.swift */; };
 		A0A96B822017442D00788808 /* ChannelDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0A96B812017442D00788808 /* ChannelDetailViewController.swift */; };
 		A0A96B84201748C200788808 /* UILabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0A96B83201748C200788808 /* UILabel.swift */; };
 		A0A96B8620174BAC00788808 /* CloseStatusUpdate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0A96B8520174BAC00788808 /* CloseStatusUpdate.swift */; };
@@ -172,6 +171,10 @@
 		ADBA12022090CD11001F7700 /* KeyPadView.xib in Resources */ = {isa = PBXBuildFile; fileRef = ADBA12012090CD11001F7700 /* KeyPadView.xib */; };
 		ADBA12042090CD22001F7700 /* KeyPadView.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADBA12032090CD22001F7700 /* KeyPadView.swift */; };
 		ADBA120620930C94001F7700 /* UIViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADBA120520930C94001F7700 /* UIViewController.swift */; };
+		ADBA441F209AE41C00D18B71 /* Lndmobile.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = ADBA441E209AE41C00D18B71 /* Lndmobile.framework */; };
+		ADBA4421209AE75600D18B71 /* LightningStream.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADBA4420209AE75600D18B71 /* LightningStream.swift */; };
+		ADBA4423209B00D300D18B71 /* LndCallback.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADBA4422209B00D300D18B71 /* LndCallback.swift */; };
+		ADBA4425209B067400D18B71 /* ProtobufExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADBA4424209B067400D18B71 /* ProtobufExtensions.swift */; };
 		ADBB3620207FA5D6005662B4 /* Date+Localizable.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADBB361F207FA5D6005662B4 /* Date+Localizable.swift */; };
 		ADBB36222080A3B1005662B4 /* LightningProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADBB36212080A3B1005662B4 /* LightningProtocol.swift */; };
 		ADBB36242080A457005662B4 /* LightningMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADBB36232080A457005662B4 /* LightningMock.swift */; };
@@ -337,7 +340,6 @@
 		A0A05A2C2013EDFB0007D1C9 /* QRCodeDetail.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = QRCodeDetail.storyboard; sourceTree = "<group>"; };
 		A0A05A2F2013EFC00007D1C9 /* UIImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIImage.swift; sourceTree = "<group>"; };
 		A0A05A342014047B0007D1C9 /* Lnd.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Lnd.swift; sourceTree = "<group>"; };
-		A0A05A462014765E0007D1C9 /* Lndbindings.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Lndbindings.framework; path = Frameworks/Lndbindings.framework; sourceTree = "<group>"; };
 		A0A05A4C20147B740007D1C9 /* RootViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RootViewController.swift; sourceTree = "<group>"; };
 		A0A05A50201481A70007D1C9 /* Storyboard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Storyboard.swift; sourceTree = "<group>"; };
 		A0A05A5420148FA80007D1C9 /* Json.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Json.swift; sourceTree = "<group>"; };
@@ -345,7 +347,7 @@
 		A0A05A5820149AF20007D1C9 /* Transaction.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Transaction.swift; sourceTree = "<group>"; };
 		A0A05A5B20149F720007D1C9 /* TransactionListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransactionListViewController.swift; sourceTree = "<group>"; };
 		A0A05A5D2014A0DE0007D1C9 /* UITableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UITableView.swift; sourceTree = "<group>"; };
-		A0A33EF32028743200BB76F4 /* Lightning.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Lightning.swift; sourceTree = "<group>"; };
+		A0A33EF32028743200BB76F4 /* LightningRPC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LightningRPC.swift; sourceTree = "<group>"; };
 		A0A96B812017442D00788808 /* ChannelDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChannelDetailViewController.swift; sourceTree = "<group>"; };
 		A0A96B83201748C200788808 /* UILabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UILabel.swift; sourceTree = "<group>"; };
 		A0A96B8520174BAC00788808 /* CloseStatusUpdate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CloseStatusUpdate.swift; sourceTree = "<group>"; };
@@ -421,6 +423,10 @@
 		ADBA12012090CD11001F7700 /* KeyPadView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = KeyPadView.xib; sourceTree = "<group>"; };
 		ADBA12032090CD22001F7700 /* KeyPadView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyPadView.swift; sourceTree = "<group>"; };
 		ADBA120520930C94001F7700 /* UIViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIViewController.swift; sourceTree = "<group>"; };
+		ADBA441E209AE41C00D18B71 /* Lndmobile.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Lndmobile.framework; path = Frameworks/Lndmobile.framework; sourceTree = "<group>"; };
+		ADBA4420209AE75600D18B71 /* LightningStream.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LightningStream.swift; sourceTree = "<group>"; };
+		ADBA4422209B00D300D18B71 /* LndCallback.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LndCallback.swift; sourceTree = "<group>"; };
+		ADBA4424209B067400D18B71 /* ProtobufExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProtobufExtensions.swift; sourceTree = "<group>"; };
 		ADBB361F207FA5D6005662B4 /* Date+Localizable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Date+Localizable.swift"; sourceTree = "<group>"; };
 		ADBB36212080A3B1005662B4 /* LightningProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LightningProtocol.swift; sourceTree = "<group>"; };
 		ADBB36232080A457005662B4 /* LightningMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LightningMock.swift; sourceTree = "<group>"; };
@@ -474,8 +480,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				A000F5FF2047F65200480D8E /* BTCUtil.framework in Frameworks */,
+				ADBA441F209AE41C00D18B71 /* Lndmobile.framework in Frameworks */,
 				A02C9FC2202F5BDC009821B1 /* LocalAuthentication.framework in Frameworks */,
-				A0A05A472014765E0007D1C9 /* Lndbindings.framework in Frameworks */,
 				07C7C322CDB492C226848EFA /* Pods_Zap.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -889,10 +895,13 @@
 		A0D3C97B20616A9A0015C5D7 /* Api */ = {
 			isa = PBXGroup;
 			children = (
-				A0A33EF32028743200BB76F4 /* Lightning.swift */,
 				ADBB36232080A457005662B4 /* LightningMock.swift */,
 				ADBB36212080A3B1005662B4 /* LightningProtocol.swift */,
+				A0A33EF32028743200BB76F4 /* LightningRPC.swift */,
+				ADBA4420209AE75600D18B71 /* LightningStream.swift */,
+				ADBA4422209B00D300D18B71 /* LndCallback.swift */,
 				A0D3C97C20616AB80015C5D7 /* LndError.swift */,
+				ADBA4424209B067400D18B71 /* ProtobufExtensions.swift */,
 				A0D3C96B205FCBF40015C5D7 /* Result.swift */,
 				A0D3C969205D55570015C5D7 /* WalletUnlocker.swift */,
 			);
@@ -1108,8 +1117,8 @@
 		CEF2960C33901153F2C1FFF4 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				ADBA441E209AE41C00D18B71 /* Lndmobile.framework */,
 				A02C9FC1202F5BDC009821B1 /* LocalAuthentication.framework */,
-				A0A05A462014765E0007D1C9 /* Lndbindings.framework */,
 				9EC2E1672FBE02668AF94B5F /* Pods_Zap.framework */,
 				700FBCADDAD580B28F987D98 /* Pods_ZapTests.framework */,
 				CAF208744C2CFC6A493BD8B1 /* Pods_btcutil.framework */,
@@ -1510,6 +1519,7 @@
 				AD5FA001207CCB8B000E9493 /* RequestViewController.swift in Sources */,
 				AD7746592076609400EC596B /* NodeInfo.swift in Sources */,
 				ADCE01C8207B720800CA72E8 /* SyncViewController.swift in Sources */,
+				ADBA4421209AE75600D18B71 /* LightningStream.swift in Sources */,
 				A0F353D020692570005B3639 /* GradientView.swift in Sources */,
 				A0C2EABB206F8B02003AE56E /* FiatCurrency.swift in Sources */,
 				AD77464E2076162300EC596B /* Network+Localizable.swift in Sources */,
@@ -1579,7 +1589,7 @@
 				A01009422014D4810001EF94 /* Toast.swift in Sources */,
 				A0731FE92014B27900C55E45 /* ChannelListViewController.swift in Sources */,
 				AD99C9F72090C2560061C565 /* AmountInputView.swift in Sources */,
-				A0A33EF42028743200BB76F4 /* Lightning.swift in Sources */,
+				A0A33EF42028743200BB76F4 /* LightningRPC.swift in Sources */,
 				A0C2EAC0206F8D10003AE56E /* Bitcoin.swift in Sources */,
 				AD99C9F320907AD10061C565 /* SendQRCodeScannerStrategy.swift in Sources */,
 				A024B84D201606B4002B8897 /* Peer.swift in Sources */,
@@ -1590,10 +1600,12 @@
 				AD77465F2077C12200EC596B /* TransactionDetailViewController.swift in Sources */,
 				A0D3C97D20616AB80015C5D7 /* LndError.swift in Sources */,
 				A0F9AEE1206E3D8200E93DCA /* InputNumberFormatter.swift in Sources */,
+				ADBA4423209B00D300D18B71 /* LndCallback.swift in Sources */,
 				A091914B203B297D00FA525A /* CurrencySettingsItem.swift in Sources */,
 				A0DDC06C2018C07100AEFF94 /* SettingsItem.swift in Sources */,
 				A0F57DC2201E700C003AFA66 /* TransactionListViewModel.swift in Sources */,
 				ADBB36242080A457005662B4 /* LightningMock.swift in Sources */,
+				ADBA4425209B067400D18B71 /* ProtobufExtensions.swift in Sources */,
 				ADBB36222080A3B1005662B4 /* LightningProtocol.swift in Sources */,
 				A0D3C96C205FCBF40015C5D7 /* Result.swift in Sources */,
 				ADBB36262080AD70005662B4 /* LoadingViewController.swift in Sources */,

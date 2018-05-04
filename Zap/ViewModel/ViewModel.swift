@@ -64,7 +64,7 @@ final class ViewModel: NSObject {
 //        }
 //    }
     
-    init(api: LightningProtocol = Lightning()) {
+    init(api: LightningProtocol = LightningStream()) {
         self.api = api
         
         if ViewModel.didCreateWallet {
