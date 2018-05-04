@@ -39,7 +39,8 @@ final class OpenChannelViewModel: AmountInputtable {
     }
     
     func openChannel() {
-        viewModel.connect(pubKey: pubKey, host: host) { [pubKey, viewModel, satoshis] _ in
+        viewModel.connect(pubKey: pubKey, host: host) { [pubKey, viewModel, satoshis] result in
+            guard result.error == nil else { return } // TODO: error handling
             viewModel.openChannel(pubKey: pubKey, amount: satoshis)
         }
     }
