@@ -52,6 +52,7 @@ extension Lnrpc_OpenChannelRequest {
             nodePubkey = pubKey
         }
         localFundingAmount = Int64(truncating: amount)
+        `private` = true
     }
 }
 
