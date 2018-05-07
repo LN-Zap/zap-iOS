@@ -57,11 +57,30 @@ class RootViewController: UIViewController, ContainerViewController {
         pinViewController.viewModel = viewModel
         return pinViewController
     }
-        
+    
+    private var topViewController: UIViewController? {
+        var topController = UIApplication.shared.keyWindow?.rootViewController
+        while let top = topController?.presentedViewController {
+            topController = top
+        }
+        return topController
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
         setInitialViewController(loadingViewController)
+        
+        NotificationCenter.default.reactive.notification(name: .lndError)
+            .observeNext { [weak self] notification in
+                guard let message = notification.userInfo?["message"] as? String else { return }
+                
+                DispatchQueue.main.async {
+                    let toast = Toast(message: message, style: .error)
+                    self?.topViewController?.presentToast(toast, animated: true, completion: nil)
+                }
+            }
+            .dispose(in: reactive.bag)
         
         viewModel.walletState
             .distinct()

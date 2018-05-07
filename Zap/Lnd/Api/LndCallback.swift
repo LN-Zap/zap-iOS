@@ -9,9 +9,15 @@ import Foundation
 import Lndmobile
 import SwiftProtobuf
 
+private func postError(_ error: Error) {
+    let info = ["message": error.localizedDescription]
+    NotificationCenter.default.post(name: .lndError, object: nil, userInfo: info)
+}
+
 final class EmptyLndCallback: NSObject, LndmobileCallbackProtocol {
     func onError(_ error: Error) {
         print("🅾️ EmptyCallback Error:", error)
+        postError(error)
     }
     
     func onResponse(_ data: Data) {
@@ -31,6 +37,7 @@ final class LndCallback<T: SwiftProtobuf.Message, U>: NSObject, LndmobileCallbac
     func onError(_ error: Error) {
         print("🅾️ Callback Error:", error)
         callback(Result(error: error))
+        postError(error)
     }
     
     func onResponse(_ data: Data) {

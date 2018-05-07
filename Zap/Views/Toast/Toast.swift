@@ -55,8 +55,7 @@ final class Toast: UIView {
         
         translatesAutoresizingMaskIntoConstraints = false
         content.translatesAutoresizingMaskIntoConstraints = false
-        content.backgroundColor = Color.darkBackground
-        content.layer.cornerRadius = 2
+        content.backgroundColor = .white
         
         return content
     }
@@ -85,9 +84,8 @@ extension UIViewController {
         view.addSubview(toast)
         
         setupAutolayoutConstraints(forToast: toast)
-        
         toast.transform = CGAffineTransform(translationX: 0, y: -100)
-
+        
         UIView.animate(withDuration: 0.2, animations: {
             toast.transform = CGAffineTransform.identity
             }, completion: completion)
@@ -105,11 +103,12 @@ extension UIViewController {
         } else {
             layoutGuide = view.layoutMarginsGuide
         }
+        
+        let margin: CGFloat = 10
+        
         NSLayoutConstraint(item: toast, attribute: .centerX, relatedBy: .equal, toItem: view, attribute: .centerX, multiplier: 1, constant: 0).isActive = true
-        toast.topAnchor.constraint(equalTo: layoutGuide.topAnchor, constant: 10).isActive = true
-        toast.leadingAnchor.constraint(greaterThanOrEqualTo: layoutGuide.leadingAnchor, constant: 10).isActive = true
-        toast.trailingAnchor.constraint(greaterThanOrEqualTo: layoutGuide.trailingAnchor, constant: 10).isActive = true
-        toast.widthAnchor.constraint(greaterThanOrEqualToConstant: 300).isActive = true
-        toast.widthAnchor.constraint(lessThanOrEqualToConstant: 500).isActive = true
+        toast.topAnchor.constraint(equalTo: layoutGuide.topAnchor, constant: margin).isActive = true
+        toast.leadingAnchor.constraint(greaterThanOrEqualTo: layoutGuide.leadingAnchor, constant: margin).isActive = true
+        toast.trailingAnchor.constraint(greaterThanOrEqualTo: layoutGuide.trailingAnchor, constant: margin).isActive = true
     }
 }

@@ -160,6 +160,7 @@
 		AD77466C2078EE5600EC596B /* TransactionMetadataUpdater.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD77466B2078EE5600EC596B /* TransactionMetadataUpdater.swift */; };
 		AD86BCFE2099F50C00A7866A /* rpc.pb.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD86BCFD2099F50C00A7866A /* rpc.pb.swift */; };
 		AD86BD002099FB4500A7866A /* rpc.grpc.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD86BCFF2099FB4500A7866A /* rpc.grpc.swift */; };
+		AD93ED5420A07B0C000E814E /* Notification.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD93ED5220A07A24000E814E /* Notification.swift */; };
 		AD99C9ED209072710061C565 /* QRCodeScanner.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AD99C9EC209072710061C565 /* QRCodeScanner.storyboard */; };
 		AD99C9EF209076650061C565 /* QRCodeScannerStrategy.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD99C9EE209076650061C565 /* QRCodeScannerStrategy.swift */; };
 		AD99C9F120907AB30061C565 /* OpenChannelQRCodeScannerStrategy.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD99C9F020907AB30061C565 /* OpenChannelQRCodeScannerStrategy.swift */; };
@@ -411,6 +412,7 @@
 		AD77466B2078EE5600EC596B /* TransactionMetadataUpdater.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransactionMetadataUpdater.swift; sourceTree = "<group>"; };
 		AD86BCFD2099F50C00A7866A /* rpc.pb.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = rpc.pb.swift; path = Proto/rpc.pb.swift; sourceTree = SOURCE_ROOT; };
 		AD86BCFF2099FB4500A7866A /* rpc.grpc.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = rpc.grpc.swift; path = Proto/rpc.grpc.swift; sourceTree = SOURCE_ROOT; };
+		AD93ED5220A07A24000E814E /* Notification.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Notification.swift; sourceTree = "<group>"; };
 		AD99C9EC209072710061C565 /* QRCodeScanner.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = QRCodeScanner.storyboard; sourceTree = "<group>"; };
 		AD99C9EE209076650061C565 /* QRCodeScannerStrategy.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QRCodeScannerStrategy.swift; sourceTree = "<group>"; };
 		AD99C9F020907AB30061C565 /* OpenChannelQRCodeScannerStrategy.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OpenChannelQRCodeScannerStrategy.swift; sourceTree = "<group>"; };
@@ -853,6 +855,8 @@
 			children = (
 				A08CF033201F5FCC000D5855 /* Array.swift */,
 				A02C9FC3202F617D009821B1 /* LocalAuthentication.swift */,
+				AD77464C2076161300EC596B /* Localizable */,
+				AD93ED5220A07A24000E814E /* Notification.swift */,
 				A0BD44DB206FCAD900BF27A3 /* SignalProtocol.swift */,
 				A0A96B87201769F100788808 /* String.swift */,
 				AD38EB2F207DF233007DF14D /* UIButton.swift */,
@@ -863,7 +867,6 @@
 				A0A05A5D2014A0DE0007D1C9 /* UITableView.swift */,
 				ADBA120520930C94001F7700 /* UIViewController.swift */,
 				A0919142203B152100FA525A /* UserDefaults.swift */,
-				AD77464C2076161300EC596B /* Localizable */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -898,7 +901,6 @@
 				ADBA4420209AE75600D18B71 /* LightningStream.swift */,
 				ADBA4422209B00D300D18B71 /* LndCallback.swift */,
 				A0D3C97C20616AB80015C5D7 /* LndError.swift */,
-				ADBA4424209B067400D18B71 /* ProtobufExtensions.swift */,
 				A0D3C96B205FCBF40015C5D7 /* Result.swift */,
 				A0D3C969205D55570015C5D7 /* WalletUnlocker.swift */,
 			);
@@ -1028,6 +1030,7 @@
 		AD86BCFC2099F4E900A7866A /* Proto */ = {
 			isa = PBXGroup;
 			children = (
+				ADBA4424209B067400D18B71 /* ProtobufExtensions.swift */,
 				AD86BCFF2099FB4500A7866A /* rpc.grpc.swift */,
 				AD86BCFD2099F50C00A7866A /* rpc.pb.swift */,
 			);
@@ -1604,6 +1607,7 @@
 				ADBA4425209B067400D18B71 /* ProtobufExtensions.swift in Sources */,
 				ADBB36222080A3B1005662B4 /* LightningProtocol.swift in Sources */,
 				A0D3C96C205FCBF40015C5D7 /* Result.swift in Sources */,
+				AD93ED5420A07B0C000E814E /* Notification.swift in Sources */,
 				ADBB36262080AD70005662B4 /* LoadingViewController.swift in Sources */,
 				ADCE01BF207B59BD00CA72E8 /* ConfirmMnemonicViewController.swift in Sources */,
 				A08CF034201F5FCC000D5855 /* Array.swift in Sources */,
