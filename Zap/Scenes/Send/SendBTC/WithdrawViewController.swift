@@ -10,28 +10,23 @@ import UIKit
 final class WithdrawViewController: UIViewController {
     
     @IBOutlet private weak var addressLabel: UILabel!
-    @IBOutlet private weak var allButton: UIButton!
     @IBOutlet private weak var sendButton: UIButton!
-    @IBOutlet private weak var amountTextField: UITextField!
-
+    @IBOutlet private weak var amountInputView: AmountInputView!
+    
     var withdrawViewModel: WithdrawViewModel?
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
         title = "scene.withdraw.title".localized
-        amountTextField?.keyboardType = .decimalPad
         
         Style.label.apply(to: addressLabel)
-        Style.button.apply(to: allButton, sendButton)
+        Style.button.apply(to: sendButton)
         sendButton.tintColor = .white
         
         addressLabel.text = withdrawViewModel?.address
         
-        withdrawViewModel?.amount
-            .map { $0.format(unit: .bit) }
-            .bind(to: amountTextField.reactive.text)
-            .dispose(in: reactive.bag)
+        amountInputView.amountViewModel = withdrawViewModel
     }
     
     @IBAction private func cancelButtonTapped(_ sender: Any) {
@@ -39,10 +34,8 @@ final class WithdrawViewController: UIViewController {
     }
     
     @IBAction private func sendButtonTapped(_ sender: Any) {
-        withdrawViewModel?.send()
-    }
-    
-    @IBAction private func allButtonTapped(_ sender: Any) {
-        withdrawViewModel?.selectAll()
+        withdrawViewModel?.send { [weak self] in
+            self?.dismiss(animated: true, completion: nil)
+        }
     }
 }

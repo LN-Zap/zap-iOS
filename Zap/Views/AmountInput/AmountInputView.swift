@@ -6,13 +6,22 @@
 //
 
 import Bond
+import BTCUtil
 import UIKit
 
 protocol AmountInputtable {
     var amountString: Observable<String?> { get }
     var isAmountValid: Observable<Bool> { get }
+    var satoshis: Satoshi { get }
     
     func updateAmount(_ amount: String?)
+}
+
+extension AmountInputtable {
+    var satoshis: Satoshi {
+        guard let amountString = amountString.value else { return 0 }
+        return Satoshi.from(string: amountString, unit: .bit) ?? 0
+    }
 }
 
 class AmountInputView: UIView {

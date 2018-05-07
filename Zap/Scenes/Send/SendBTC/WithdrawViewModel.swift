@@ -9,23 +9,27 @@ import Bond
 import BTCUtil
 import Foundation
 
-final class WithdrawViewModel {
+final class WithdrawViewModel: AmountInputtable {
+    let amountString = Observable<String?>(nil)
+    let isAmountValid = Observable(true)
+
     private let viewModel: ViewModel
     
-    let sendEnabled = Observable(false)
     let address: String
-    var amount = Observable<Satoshi>(100)
     
     init(viewModel: ViewModel, address: String) {
         self.viewModel = viewModel
         self.address = address
     }
     
-    func send() {
-        _ = viewModel.sendCoins(address: address, amount: amount.value)
+    func updateAmount(_ amount: String?) {
+        amountString.value = amount
+        if amount != nil {
+            isAmountValid.value = satoshis <= viewModel.balance.value
+        }
     }
     
-    func selectAll() {
-        amount.value = viewModel.balance.value
+    func send(completion: @escaping () -> Void) {
+        viewModel.sendCoins(address: address, amount: satoshis, completion: completion)
     }
 }

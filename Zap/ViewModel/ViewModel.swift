@@ -221,8 +221,8 @@ final class ViewModel: NSObject {
         }
     }
     
-    func sendCoins(address: String, amount: Satoshi) {
-        api.sendCoins(address: address, amount: amount) { _ in }
+    func sendCoins(address: String, amount: Satoshi, completion: @escaping () -> Void) {
+        api.sendCoins(address: address, amount: amount) { _ in completion() }
     }
     
     func addInvoice(amount: Satoshi, memo: String?, callback: @escaping (Result<String>) -> Void) {

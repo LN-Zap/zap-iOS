@@ -20,11 +20,6 @@ final class OpenChannelViewModel: AmountInputtable {
     private let pubKey: String
     private let host: String
     
-    private var satoshis: Satoshi {
-        guard let amountString = amountString.value else { return 0 }
-        return Satoshi.from(string: amountString, unit: .bit) ?? 0
-    }
-    
     init?(viewModel: ViewModel, address: String) {
         self.viewModel = viewModel
         

@@ -23,11 +23,6 @@ final class RequestViewModel: AmountInputtable {
     
     var requestMethod = RequestMethod.lightning
     
-    var satoshis: Satoshi {
-        guard let amountString = amountString.value else { return 0 }
-        return Satoshi.from(string: amountString, unit: .bit) ?? 0
-    }
-    
     let amountString = Observable<String?>(nil)
     var memo: String?
     
