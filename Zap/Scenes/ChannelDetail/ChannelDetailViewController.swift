@@ -10,13 +10,15 @@ import UIKit
 
 class ChannelDetailViewController: ModalViewController {
 
-    @IBOutlet private weak var remotePubKeyLabel: UILabel?
-    @IBOutlet private weak var capacityLabel: UILabel?
-    @IBOutlet private weak var stateLabel: UILabel?
-    @IBOutlet private weak var localBalanceLabel: UILabel?
-    @IBOutlet private weak var remoteBalanceLabel: UILabel?
-    @IBOutlet private weak var updateCountLabel: UILabel?
-    @IBOutlet private weak var blockExplorerButton: UIButton?
+    @IBOutlet private weak var remotePubKeyLabel: UILabel!
+    @IBOutlet private weak var capacityLabel: UILabel!
+    @IBOutlet private weak var stateLabel: UILabel!
+    @IBOutlet private weak var localBalanceLabel: UILabel!
+    @IBOutlet private weak var remoteBalanceLabel: UILabel!
+    @IBOutlet private weak var updateCountLabel: UILabel!
+    @IBOutlet private weak var blockHeightLabel: UILabel!
+    
+    @IBOutlet private weak var blockExplorerButton: UIButton!
     @IBOutlet private weak var closeChannelButton: UIButton!
     
     var channelViewModel: ChannelViewModel?
@@ -29,17 +31,30 @@ class ChannelDetailViewController: ModalViewController {
         blockExplorerButton?.setTitle(Settings.blockExplorer.localized, for: .normal)
         
         updateChannel()
+        
+        Style.label.apply(to: remotePubKeyLabel,
+                          capacityLabel,
+                          stateLabel,
+                          localBalanceLabel,
+                          remoteBalanceLabel,
+                          updateCountLabel,
+                          blockHeightLabel)
+        
+        Style.button.apply(to: blockExplorerButton, closeChannelButton)
     }
     
     private func updateChannel() {
         guard let channel = channelViewModel?.channel else { return }
         
-        remotePubKeyLabel?.text = "remotePubKey: \(channel.remotePubKey)"
-        capacityLabel?.text = "capacity: \(String(describing: channel.capacity))"
-        localBalanceLabel?.text = "localBalance: \(String(describing: channel.localBalance))"
-        remoteBalanceLabel?.text = "remoteBalance: \(String(describing: channel.remoteBalance))"
-        updateCountLabel?.text = "updateCount: \(String(describing: channel.updateCount ?? 0))"
-        stateLabel?.setChannelState(channel.state)
+        remotePubKeyLabel.text = "remotePubKey: \(channel.remotePubKey)"
+        capacityLabel.text = "capacity: \(String(describing: channel.capacity))"
+        localBalanceLabel.text = "localBalance: \(String(describing: channel.localBalance))"
+        remoteBalanceLabel.text = "remoteBalance: \(String(describing: channel.remoteBalance))"
+        updateCountLabel.text = "updateCount: \(String(describing: channel.updateCount ?? 0))"
+        
+        let blockHeight = (viewModel?.blockHeight.value ?? 0) - channel.blockHeight
+        blockHeightLabel.text = "blockHeight: \(String(describing: blockHeight))"
+        stateLabel.setChannelState(channel.state)
     }
     
     @IBAction private func closeChannel(_ sender: Any) {

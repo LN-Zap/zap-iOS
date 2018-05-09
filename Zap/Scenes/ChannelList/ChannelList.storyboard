@@ -19,7 +19,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="15" translatesAutoresizingMaskIntoConstraints="NO" id="jVz-fR-jxe">
-                                <rect key="frame" x="25" y="89" width="325" height="198"/>
+                                <rect key="frame" x="25" y="89" width="325" height="233.5"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="remotePubkey" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="U17-bc-kCg">
                                         <rect key="frame" x="0.0" y="0.0" width="325" height="20.5"/>
@@ -53,6 +53,12 @@
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="updateCount" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6tT-f5-Qfb">
                                         <rect key="frame" x="0.0" y="177.5" width="325" height="20.5"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="blockHeight" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Mu6-zc-PEZ">
+                                        <rect key="frame" x="0.0" y="213" width="325" height="20.5"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
@@ -95,6 +101,7 @@
                     </navigationItem>
                     <connections>
                         <outlet property="blockExplorerButton" destination="QOf-Zo-06n" id="fVB-La-IVa"/>
+                        <outlet property="blockHeightLabel" destination="Mu6-zc-PEZ" id="SYE-in-DHP"/>
                         <outlet property="capacityLabel" destination="xm9-gI-LFW" id="0cO-sm-EnY"/>
                         <outlet property="closeChannelButton" destination="qgf-na-KFP" id="KME-wf-uib"/>
                         <outlet property="localBalanceLabel" destination="SRC-rD-50q" id="HCw-Wh-NVV"/>

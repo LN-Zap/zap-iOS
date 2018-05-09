@@ -33,10 +33,10 @@ final class OpenChannelViewModel: AmountInputtable {
         isAmountValid = Observable(true)
     }
     
-    func openChannel() {
+    func openChannel(completion: @escaping () -> Void) {
         viewModel.connect(pubKey: pubKey, host: host) { [pubKey, viewModel, satoshis] result in
 //            guard result.error == nil else { return } // TODO: error handling
-            viewModel.openChannel(pubKey: pubKey, amount: satoshis)
+            viewModel.openChannel(pubKey: pubKey, amount: satoshis, completion: completion)
         }
     }
     

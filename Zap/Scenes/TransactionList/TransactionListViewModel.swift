@@ -22,7 +22,10 @@ final class TransactionListViewModel: NSObject {
         .observeNext { [weak self] transactions in
             guard let result = self?.bondSections(transactions: transactions) else { return }
             let array = Observable2DArray(result)
-            self?.sections.replace(with: array, performDiff: true)
+            
+            DispatchQueue.main.async {
+                self?.sections.replace(with: array, performDiff: true)
+            }
         }
         .dispose(in: reactive.bag)
     }

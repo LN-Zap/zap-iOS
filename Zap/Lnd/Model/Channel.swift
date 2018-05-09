@@ -17,6 +17,7 @@ enum ChannelState {
 }
 
 struct Channel: Equatable {
+    let blockHeight: Int
     let state: ChannelState
     let localBalance: Satoshi
     let remoteBalance: Satoshi
@@ -33,6 +34,7 @@ struct Channel: Equatable {
 extension Lnrpc_Channel {
     var channelModel: Channel {
         return Channel(
+            blockHeight: Int(chanID >> 40),
             state: active ? .active : .inactive,
             localBalance: Satoshi(value: localBalance),
             remoteBalance: Satoshi(value: remoteBalance),
@@ -46,6 +48,7 @@ extension Lnrpc_Channel {
 extension Lnrpc_PendingChannelsResponse.PendingOpenChannel {
     var channelModel: Channel {
         return Channel(
+            blockHeight: Int(confirmationHeight),
             state: .opening,
             localBalance: Satoshi(value: channel.localBalance),
             remoteBalance: Satoshi(value: channel.remoteBalance),
@@ -59,6 +62,7 @@ extension Lnrpc_PendingChannelsResponse.PendingOpenChannel {
 extension Lnrpc_PendingChannelsResponse.ClosedChannel {
     var channelModel: Channel {
         return Channel(
+            blockHeight: 0,
             state: .opening,
             localBalance: Satoshi(value: channel.localBalance),
             remoteBalance: Satoshi(value: channel.remoteBalance),
@@ -72,6 +76,7 @@ extension Lnrpc_PendingChannelsResponse.ClosedChannel {
 extension Lnrpc_PendingChannelsResponse.ForceClosedChannel {
     var channelModel: Channel {
         return Channel(
+            blockHeight: Int(maturityHeight),
             state: .opening,
             localBalance: Satoshi(value: channel.localBalance),
             remoteBalance: Satoshi(value: channel.remoteBalance),

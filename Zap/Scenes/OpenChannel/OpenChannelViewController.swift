@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import SVProgressHUD
 
 final class OpenChannelViewController: UIViewController {
     
@@ -36,6 +37,15 @@ final class OpenChannelViewController: UIViewController {
     }
     
     @IBAction private func openChannel(_ sender: Any) {
-        openChannelViewModel?.openChannel()
+        SVProgressHUD.setDefaultStyle(.dark)
+        SVProgressHUD.setDefaultAnimationType(.native)
+        
+        UIApplication.shared.beginIgnoringInteractionEvents()
+        SVProgressHUD.show()
+        openChannelViewModel?.openChannel { [weak self] in
+            SVProgressHUD.dismiss()
+            UIApplication.shared.endIgnoringInteractionEvents()
+            self?.dismiss(animated: true, completion: nil)
+        }
     }    
 }

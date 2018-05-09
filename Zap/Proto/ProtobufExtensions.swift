@@ -51,6 +51,7 @@ extension Lnrpc_OpenChannelRequest {
         if let pubKey = pubKey.hexadecimal() {
             nodePubkey = pubKey
         }
+        nodePubkeyString = pubKey
         localFundingAmount = Int64(truncating: amount)
         `private` = true
     }

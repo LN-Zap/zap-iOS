@@ -38,7 +38,9 @@ final class ChannelListViewModel: NSObject {
                     )
                 }
                 
-                sections.replace(with: result, performDiff: true)
+                DispatchQueue.main.async {
+                    sections.replace(with: result, performDiff: true)
+                }
             }
             .dispose(in: reactive.bag)
     }
