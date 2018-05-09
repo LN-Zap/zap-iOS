@@ -26,7 +26,11 @@ final class WithdrawViewController: UIViewController {
         
         addressLabel.text = withdrawViewModel?.address
         
-        amountInputView.amountViewModel = withdrawViewModel
+        amountInputView.validRange = withdrawViewModel?.validRange
+    }
+    
+    @IBAction private func updateAmount(_ sender: Any) {
+        withdrawViewModel?.amount = amountInputView.satoshis
     }
     
     @IBAction private func cancelButtonTapped(_ sender: Any) {

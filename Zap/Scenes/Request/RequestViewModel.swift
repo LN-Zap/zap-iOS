@@ -14,27 +14,18 @@ enum RequestMethod {
     case onChain
 }
 
-final class RequestViewModel: AmountInputtable {
-    private let maxPaymentAllowed: Satoshi = 4294967
+final class RequestViewModel {
     private let viewModel: ViewModel
     private var cachedOnChainAddress: String?
-    
-    let isAmountValid = Observable(true)
-    
+
     var requestMethod = RequestMethod.lightning
-    
-    let amountString = Observable<String?>(nil)
+
     var memo: String?
+        
+    var amount: Satoshi = 0
     
     init(viewModel: ViewModel) {
         self.viewModel = viewModel
-    }
-    
-    func updateAmount(_ amount: String?) {
-        amountString.value = amount
-        if amount != nil {
-            isAmountValid.value = satoshis <= maxPaymentAllowed
-        }
     }
     
     func create(callback: @escaping (QRCodeDetailViewModel) -> Void) {
@@ -47,7 +38,7 @@ final class RequestViewModel: AmountInputtable {
     }
     
     private func createLightning(callback: @escaping (QRCodeDetailViewModel) -> Void) {
-        viewModel.addInvoice(amount: satoshis, memo: memo) { result in
+        viewModel.addInvoice(amount: amount, memo: memo) { result in
             guard let invoice = result.value else { return }
             let viewModel = LightningRequestQRCodeViewModel(invoice: invoice)
             callback(viewModel)
@@ -72,7 +63,7 @@ final class RequestViewModel: AmountInputtable {
     }
     
     private func onChainRequestViewModel(for address: String) -> OnChainRequestQRCodeViewModel? {
-        guard let uri = BitcoinURI.from(address: address, amount: satoshis, message: memo) else { return nil }
+        guard let uri = BitcoinURI.from(address: address, amount: amount, message: memo) else { return nil }
         return OnChainRequestQRCodeViewModel(address: uri)
     }
 }

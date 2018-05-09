@@ -66,6 +66,9 @@
                                     <view contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" placeholderIntrinsicWidth="375" placeholderIntrinsicHeight="114" translatesAutoresizingMaskIntoConstraints="NO" id="NWD-uY-0J6" customClass="AmountInputView" customModule="Zap" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="86" width="375" height="114"/>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <connections>
+                                            <action selector="updateAmount:" destination="rjQ-Ia-QeT" eventType="valueChanged" id="cO3-oN-Lie"/>
+                                        </connections>
                                     </view>
                                     <view contentMode="scaleToFill" verticalCompressionResistancePriority="250" translatesAutoresizingMaskIntoConstraints="NO" id="ubh-mT-jEZ">
                                         <rect key="frame" x="0.0" y="200" width="375" height="439"/>

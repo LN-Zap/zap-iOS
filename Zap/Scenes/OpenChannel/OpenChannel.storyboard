@@ -77,6 +77,9 @@
                                     <view contentMode="scaleToFill" verticalHuggingPriority="200" translatesAutoresizingMaskIntoConstraints="NO" id="1an-69-F13" customClass="AmountInputView" customModule="Zap" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="60.5" width="375" height="489.5"/>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <connections>
+                                            <action selector="updateAmount:" destination="GFz-8t-Uep" eventType="valueChanged" id="T3x-DH-S5O"/>
+                                        </connections>
                                     </view>
                                 </subviews>
                             </stackView>

@@ -60,7 +60,7 @@ final class RequestViewController: UIViewController {
 
         setupKeyboardNotifications()
         
-        amountInputView.amountViewModel = requestViewModel
+        amountInputView.validRange = (0...Lnd.Constants.maxPaymentAllowed)
     }
     
     @IBAction private func segmentedControlDidChange(_ sender: UIButton) {
@@ -72,6 +72,10 @@ final class RequestViewController: UIViewController {
     
     @IBAction private func cancelButtonTapped(_ sender: Any) {
         dismiss(animated: true, completion: nil)
+    }
+    
+    @IBAction private func updateAmount(_ sender: Any) {
+        requestViewModel?.amount = amountInputView.satoshis
     }
     
     @IBAction private func createButtonTapped(_ sender: Any) {

@@ -9,36 +9,33 @@ import Bond
 import BTCUtil
 import UIKit
 
-protocol AmountInputtable {
-    var amountString: Observable<String?> { get }
-    var isAmountValid: Observable<Bool> { get }
-    var satoshis: Satoshi { get }
-    
-    func updateAmount(_ amount: String?)
-}
-
-extension AmountInputtable {
-    var satoshis: Satoshi {
-        guard let amountString = amountString.value else { return 0 }
-        return Satoshi.from(string: amountString, unit: .bit) ?? 0
-    }
-}
-
-class AmountInputView: UIView {
+class AmountInputView: UIControl {
     @IBOutlet private var contentView: UIView!
-    
     @IBOutlet private weak var containerView: UIView!
-    
     @IBOutlet private weak var amountTextField: UITextField!
     @IBOutlet private weak var swapCurrencyButton: UIButton!
     @IBOutlet private weak var downArrowImageView: UIImageView!
-    @IBOutlet private weak var keyPadView: KeyPadView!
+    @IBOutlet private weak var keyPadView: KeyPadView! {
+        didSet {
+            setupKeyPad()
+        }
+    }
     @IBOutlet private weak var keyPadHeightConstraint: NSLayoutConstraint!
     
-    var amountViewModel: AmountInputtable? {
+    var amountString: String? {
         didSet {
-            setupBindings()
+            amountTextField.text = amountString
+            if amountString != nil, let range = validRange {
+                amountTextField.textColor = range.contains(satoshis) ? Color.text : Color.red
+            }
+            sendActions(for: .valueChanged)
         }
+    }
+    
+    var validRange: ClosedRange<Satoshi>?
+    var satoshis: Satoshi {
+        guard let amountString = amountString else { return 0 }
+        return Satoshi.from(string: amountString, unit: .bit) ?? 0
     }
     
     override init(frame: CGRect) {
@@ -68,24 +65,11 @@ class AmountInputView: UIView {
         swapCurrencyButton.tintColor = Color.text
         swapCurrencyButton.titleLabel?.font = Font.light.withSize(36)
         downArrowImageView.tintColor = Color.text
-    }
-    
-    private func setupBindings() {
+        
         Settings.primaryCurrency
             .map { $0.symbol }
             .bind(to: swapCurrencyButton.reactive.title )
             .dispose(in: reactive.bag)
-        
-        amountViewModel?.amountString
-            .bind(to: amountTextField.reactive.text)
-            .dispose(in: reactive.bag)
-        
-        amountViewModel?.isAmountValid
-            .map { $0 ? Color.text : Color.red }
-            .bind(to: amountTextField.reactive.textColor)
-            .dispose(in: reactive.bag)
-        
-        setupKeyPad()
     }
     
     @IBAction private func swapCurrencies(_ sender: Any) {
@@ -97,7 +81,7 @@ class AmountInputView: UIView {
         
         keyPadView.handler = { [weak self] input in
             guard let output = numberFormatter.validate(input) else { return false }
-            self?.amountViewModel?.updateAmount(output)
+            self?.amountString = output
             return true
         }
     }

@@ -9,16 +9,12 @@ import Bond
 import BTCUtil
 import Foundation
 
-final class OpenChannelViewModel: AmountInputtable {
-    private let minChannelSize: Satoshi = 20000
-    private let maxChannelSize: Satoshi = 16777216
-    
-    let amountString: Observable<String?>
-    let isAmountValid: Observable<Bool>
-    
+final class OpenChannelViewModel {
     private let viewModel: ViewModel
     private let pubKey: String
     private let host: String
+    
+    var amount: Satoshi = 0
     
     init?(viewModel: ViewModel, address: String) {
         self.viewModel = viewModel
@@ -27,23 +23,13 @@ final class OpenChannelViewModel: AmountInputtable {
         guard addressComponents.count == 2 else { return nil }
         
         pubKey = String(addressComponents[0])
-        host = String(addressComponents[1])
-        
-        amountString = Observable("")
-        isAmountValid = Observable(true)
+        host = String(addressComponents[1])        
     }
     
     func openChannel(completion: @escaping () -> Void) {
-        viewModel.connect(pubKey: pubKey, host: host) { [pubKey, viewModel, satoshis] result in
+        viewModel.connect(pubKey: pubKey, host: host) { [pubKey, viewModel, amount] result in
 //            guard result.error == nil else { return } // TODO: error handling
-            viewModel.openChannel(pubKey: pubKey, amount: satoshis, completion: completion)
-        }
-    }
-    
-    func updateAmount(_ amount: String?) {
-        amountString.value = amount
-        if amount != nil {
-            isAmountValid.value = satoshis >= minChannelSize && satoshis <= maxChannelSize
+            viewModel.openChannel(pubKey: pubKey, amount: amount, completion: completion)
         }
     }
 }

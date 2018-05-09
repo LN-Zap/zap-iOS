@@ -14,6 +14,12 @@ let shoudConnectToRemoteLnd = false
 // TODO: refactor. macaroon & host etc only needed for remote connection.
 
 final class Lnd {
+    struct Constants {
+        static let minChannelSize: Satoshi = 20000
+        static let maxChannelSize: Satoshi = 16777216
+        static let maxPaymentAllowed: Satoshi = 4294967
+    }
+    
     static let instance = Lnd()
     private let strategy: ConnectionStrategy
     

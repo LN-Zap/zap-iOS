@@ -52,6 +52,9 @@
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="kke-Yp-KRr" customClass="AmountInputView" customModule="Zap" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="500" width="375" height="70"/>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <connections>
+                                            <action selector="updateAmount:" destination="mMV-Qy-DcK" eventType="valueChanged" id="d10-g9-Olr"/>
+                                        </connections>
                                     </view>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="74N-KX-eQb" customClass="GradientView" customModule="Zap" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="570" width="375" height="97"/>

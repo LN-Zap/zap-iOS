@@ -29,11 +29,15 @@ final class OpenChannelViewController: UIViewController {
         helpLabel.text = "Fund connection"
         sendButton.setTitle("Add", for: .normal)
         
-        amountInputView.amountViewModel = openChannelViewModel
+        amountInputView.validRange = (Lnd.Constants.minChannelSize...Lnd.Constants.maxChannelSize)
     }
     
     @IBAction private func presentHelp(_ sender: Any) {
         print("halp")
+    }
+    
+    @IBAction private func updateAmount(_ sender: Any) {
+        openChannelViewModel?.amount = amountInputView.satoshis
     }
     
     @IBAction private func openChannel(_ sender: Any) {
