@@ -10,6 +10,7 @@ import UIKit
 enum Storyboard: String {
     case channelList
     case createWallet
+    case debug
     case deposit
     case loading
     case main

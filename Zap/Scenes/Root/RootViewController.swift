@@ -58,14 +58,6 @@ class RootViewController: UIViewController, ContainerViewController {
         return pinViewController
     }
     
-    private var topViewController: UIViewController? {
-        var topController = UIApplication.shared.keyWindow?.rootViewController
-        while let top = topController?.presentedViewController {
-            topController = top
-        }
-        return topController
-    }
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -77,7 +69,7 @@ class RootViewController: UIViewController, ContainerViewController {
                 
                 DispatchQueue.main.async {
                     let toast = Toast(message: message, style: .error)
-                    self?.topViewController?.presentToast(toast, animated: true, completion: nil)
+                    UIApplication.topViewController?.presentToast(toast, animated: true, completion: nil)
                 }
             }
             .dispose(in: reactive.bag)
@@ -110,5 +102,11 @@ class RootViewController: UIViewController, ContainerViewController {
                 }
             }
             .dispose(in: reactive.bag)
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        
+        DebugButton.instance.setup()
     }
 }
