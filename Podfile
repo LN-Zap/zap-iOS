@@ -8,6 +8,7 @@ target 'Zap' do
   pod 'SwiftGRPC'
   pod 'KeychainAccess'
   pod 'Bond'
+  pod 'SVProgressHUD'
 
   target 'ZapTests' do
     inherit! :search_paths

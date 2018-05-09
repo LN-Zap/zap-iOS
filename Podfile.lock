@@ -27,6 +27,7 @@ PODS:
   - nanopb/encode (0.3.8)
   - ReactiveKit (3.9.4)
   - SipHash (1.2.0)
+  - SVProgressHUD (2.2.5)
   - SwiftGRPC (0.4.2):
     - BoringSSL (~> 10.0)
     - gRPC-Core (~> 1.11.0)
@@ -37,6 +38,7 @@ DEPENDENCIES:
   - BigInt (~> 3.0)
   - Bond
   - KeychainAccess
+  - SVProgressHUD
   - SwiftGRPC
 
 SPEC REPOS:
@@ -50,6 +52,7 @@ SPEC REPOS:
     - nanopb
     - ReactiveKit
     - SipHash
+    - SVProgressHUD
     - SwiftGRPC
     - SwiftProtobuf
 
@@ -63,9 +66,10 @@ SPEC CHECKSUMS:
   nanopb: 5601e6bca2dbf1ed831b519092ec110f66982ca3
   ReactiveKit: cafbc91f72751d09baa9a3c3cf6d82b646328a6c
   SipHash: c6e9e43e9c531b5bc6602545130c26194a6d31ce
+  SVProgressHUD: 1428aafac632c1f86f62aa4243ec12008d7a51d6
   SwiftGRPC: 4cb90d96998607003cf1df1e01017f30f6fd124b
   SwiftProtobuf: 5ccc0e4054e37c75800e5744acb2aa80bb72b39c
 
-PODFILE CHECKSUM: fc5903ddfab64356cc7abf81aef827d888ac585d
+PODFILE CHECKSUM: e1d866238f318c435b10c261e304c9e76397c156
 
 COCOAPODS: 1.5.0
