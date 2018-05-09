@@ -11,12 +11,12 @@ import Lndmobile
 
 final class LightningStream: LightningProtocol {
     func info(callback: @escaping (Result<Info>) -> Void) {
-        LndmobileGetInfo(nil, LndCallback<Lnrpc_GetInfoResponse, Info>(callback) { Info(getInfoResponse: $0) })
+        LndmobileGetInfo(nil, LndCallback<Lnrpc_GetInfoResponse, Info>(callback, map: Info.init))
     }
     
     func nodeInfo(pubKey: String, callback: @escaping (Result<NodeInfo>) -> Void) {
         let data = try? Lnrpc_NodeInfoRequest(pubKey: pubKey).serializedData()
-        LndmobileGetNodeInfo(data, LndCallback<Lnrpc_NodeInfo, NodeInfo>(callback) { NodeInfo(nodeInfo: $0) })
+        LndmobileGetNodeInfo(data, LndCallback<Lnrpc_NodeInfo, NodeInfo>(callback, map: NodeInfo.init))
     }
     
     func newAddress(callback: @escaping (Result<String>) -> Void) {
@@ -39,7 +39,7 @@ final class LightningStream: LightningProtocol {
     }
     
     func subscribeTransactions(callback: @escaping (Result<Transaction>) -> Void) {
-        LndmobileSubscribeTransactions(nil, LndCallback<Lnrpc_Transaction, Transaction>(callback) { BlockchainTransaction(transaction: $0) })
+        LndmobileSubscribeTransactions(nil, LndCallback<Lnrpc_Transaction, Transaction>(callback, map: BlockchainTransaction.init))
     }
     
     func payments(callback: @escaping (Result<[Transaction]>) -> Void) {
@@ -68,9 +68,11 @@ final class LightningStream: LightningProtocol {
         LndmobileConnectPeer(data, LndCallback<Lnrpc_ConnectPeerResponse, Void>(callback) { _ in () })
     }
     
-    func openChannel(pubKey: String, amount: Satoshi, callback: @escaping (Result<OpenStatusUpdate>) -> Void) {
+    func openChannel(pubKey: String, amount: Satoshi, callback: @escaping (Result<Lnrpc_ChannelPoint>) -> Void) {
         let data = try? Lnrpc_OpenChannelRequest(pubKey: pubKey, amount: amount).serializedData()
-        LndmobileOpenChannel(data, LndCallback<Lnrpc_OpenStatusUpdate, OpenStatusUpdate>(callback) { OpenStatusUpdate($0) })
+//        LndmobileOpenChannel(data, LndCallback<Lnrpc_OpenStatusUpdate, OpenStatusUpdate>(callback, map: OpenStatusUpdate.init))
+        LndmobileOpenChannelSync(data, LndCallback<Lnrpc_ChannelPoint, Lnrpc_ChannelPoint>(callback) { $0 })
+
     }
     
     func closeChannel(channelPoint: String, callback: @escaping (Result<CloseStatusUpdate>) -> Void) {
@@ -78,7 +80,7 @@ final class LightningStream: LightningProtocol {
             callback(Result(error: LndError.invalidInput))
             return
         }
-        LndmobileCloseChannel(data, LndCallback<Lnrpc_CloseStatusUpdate, CloseStatusUpdate>(callback) { CloseStatusUpdate($0) })
+        LndmobileCloseChannel(data, LndCallback<Lnrpc_CloseStatusUpdate, CloseStatusUpdate>(callback, map: CloseStatusUpdate.init))
     }
     
     func sendCoins(address: String, amount: Satoshi, callback: @escaping (Result<String>) -> Void) {
@@ -105,5 +107,9 @@ final class LightningStream: LightningProtocol {
     func addInvoice(amount: Satoshi?, memo: String?, callback: @escaping (Result<String>) -> Void) {
         let data = try? Lnrpc_Invoice(amount: amount, memo: memo).serializedData()
         LndmobileAddInvoice(data, LndCallback<Lnrpc_AddInvoiceResponse, String>(callback) { $0.paymentRequest })
+    }
+    
+    func subscribeChannelGraph(callback: @escaping (Result<GraphTopologyUpdate>) -> Void) {
+        LndmobileSubscribeChannelGraph(nil, LndCallback<Lnrpc_GraphTopologyUpdate, GraphTopologyUpdate>(callback, map: GraphTopologyUpdate.init))
     }
 }

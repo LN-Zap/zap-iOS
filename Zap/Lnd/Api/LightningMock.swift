@@ -7,7 +7,7 @@
 
 import BTCUtil
 import Foundation
-
+/*
 final class LightningMock: LightningProtocol {
     private let info: Info?
     private let nodeInfo: NodeInfo?
@@ -27,6 +27,7 @@ final class LightningMock: LightningProtocol {
     private let decodePaymentRequest: PaymentRequest?
     private let sendPayment: Data?
     private let addInvoice: String?
+    private let graphTopologyUpdate: GraphTopologyUpdate?
     
     init(
         info: Info? = nil,
@@ -46,7 +47,8 @@ final class LightningMock: LightningProtocol {
         peers: [Peer]? = nil,
         decodePaymentRequest: PaymentRequest? = nil,
         sendPayment: Data? = nil,
-        addInvoice: String? = nil
+        addInvoice: String? = nil,
+        graphTopologyUpdate: GraphTopologyUpdate?
         ) {
         self.info = info
         self.nodeInfo = nodeInfo
@@ -66,6 +68,7 @@ final class LightningMock: LightningProtocol {
         self.decodePaymentRequest = decodePaymentRequest
         self.sendPayment = sendPayment
         self.addInvoice = addInvoice
+        self.graphTopologyUpdate = graphTopologyUpdate
     }
     
     func info(callback: @escaping (Result<Info>) -> Void) {
@@ -143,4 +146,9 @@ final class LightningMock: LightningProtocol {
     func addInvoice(amount: Satoshi?, memo: String?, callback: @escaping (Result<String>) -> Void) {
         callback(Result(value: addInvoice, error: LndError.unknownError))
     }
+    
+    func subscribeChannelGraph(callback: @escaping (Result<GraphTopologyUpdate>) -> Void) {
+        callback(Result(value: graphTopologyUpdate, error: LndError.unknownError))
+    }
 }
+*/

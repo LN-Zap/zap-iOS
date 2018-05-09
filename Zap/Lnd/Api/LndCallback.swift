@@ -44,7 +44,7 @@ final class LndCallback<T: SwiftProtobuf.Message, U>: NSObject, LndmobileCallbac
         if let message = try? T(serializedData: data),
             let value = mapping(message) {
             
-            if !(value is Info) {
+            if !(value is Info) && !(value is GraphTopologyUpdate) {
                 print("✅ Callback:", value)
             }
             callback(Result(value: value))

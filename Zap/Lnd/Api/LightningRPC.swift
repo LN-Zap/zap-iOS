@@ -4,7 +4,7 @@
 //  Created by Otto Suess on 05.02.18.
 //  Copyright © 2018 Otto Suess. All rights reserved.
 //
-
+/*
 import BTCUtil
 import Foundation
 
@@ -132,4 +132,10 @@ final class LightningRPC: LightningProtocol {
         let request = Lnrpc_Invoice(amount: amount, memo: memo)
         _ = try? rpc?.addInvoice(request, completion: result(callback, map: { $0.paymentRequest }))
     }
+    
+    func subscribeChannelGraph(callback: @escaping (Result<GraphTopologyUpdate>) -> Void) {
+        fatalError("not implemented")
+    }
 }
+*/
+

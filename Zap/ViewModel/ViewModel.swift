@@ -113,6 +113,10 @@ final class ViewModel: NSObject {
         Scheduler.schedule(interval: 1, action: { [api, updateInfo] in
             api.info(callback: updateInfo)
         })
+        
+        api.subscribeChannelGraph { _ in
+
+        }
     }
     
     private func updateInfo(result: Result<Info>) {
@@ -204,12 +208,12 @@ final class ViewModel: NSObject {
         }
     }
     
-    func openChannel(pubKey: String, amount: Satoshi) {
-        api.openChannel(pubKey: pubKey, amount: amount) { [weak self] in
-            print("❗️", $0)
+    func openChannel(pubKey: String, amount: Satoshi, completion: @escaping () -> Void) {
+        api.openChannel(pubKey: pubKey, amount: amount) { [weak self] _ in
             self?.updateChannelBalance()
             self?.updateChannels()
             self?.updatePendingChannels()
+            completion()
         }
     }
     

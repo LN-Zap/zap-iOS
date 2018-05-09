@@ -161,6 +161,7 @@
 		AD86BCFE2099F50C00A7866A /* rpc.pb.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD86BCFD2099F50C00A7866A /* rpc.pb.swift */; };
 		AD86BD002099FB4500A7866A /* rpc.grpc.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD86BCFF2099FB4500A7866A /* rpc.grpc.swift */; };
 		AD93ED5420A07B0C000E814E /* Notification.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD93ED5220A07A24000E814E /* Notification.swift */; };
+		AD93ED5620A09D59000E814E /* GraphTopologyUpdate.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD93ED5520A09D59000E814E /* GraphTopologyUpdate.swift */; };
 		AD99C9ED209072710061C565 /* QRCodeScanner.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AD99C9EC209072710061C565 /* QRCodeScanner.storyboard */; };
 		AD99C9EF209076650061C565 /* QRCodeScannerStrategy.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD99C9EE209076650061C565 /* QRCodeScannerStrategy.swift */; };
 		AD99C9F120907AB30061C565 /* OpenChannelQRCodeScannerStrategy.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD99C9F020907AB30061C565 /* OpenChannelQRCodeScannerStrategy.swift */; };
@@ -413,6 +414,7 @@
 		AD86BCFD2099F50C00A7866A /* rpc.pb.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = rpc.pb.swift; path = Proto/rpc.pb.swift; sourceTree = SOURCE_ROOT; };
 		AD86BCFF2099FB4500A7866A /* rpc.grpc.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = rpc.grpc.swift; path = Proto/rpc.grpc.swift; sourceTree = SOURCE_ROOT; };
 		AD93ED5220A07A24000E814E /* Notification.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Notification.swift; sourceTree = "<group>"; };
+		AD93ED5520A09D59000E814E /* GraphTopologyUpdate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GraphTopologyUpdate.swift; sourceTree = "<group>"; };
 		AD99C9EC209072710061C565 /* QRCodeScanner.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = QRCodeScanner.storyboard; sourceTree = "<group>"; };
 		AD99C9EE209076650061C565 /* QRCodeScannerStrategy.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QRCodeScannerStrategy.swift; sourceTree = "<group>"; };
 		AD99C9F020907AB30061C565 /* OpenChannelQRCodeScannerStrategy.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OpenChannelQRCodeScannerStrategy.swift; sourceTree = "<group>"; };
@@ -839,13 +841,14 @@
 			children = (
 				A01009382014BE460001EF94 /* Channel.swift */,
 				A0A96B8520174BAC00788808 /* CloseStatusUpdate.swift */,
+				AD93ED5520A09D59000E814E /* GraphTopologyUpdate.swift */,
 				A0376B6E201CC04400F1FBEF /* Info.swift */,
 				AD7746582076609400EC596B /* NodeInfo.swift */,
 				A010093B2014CEE40001EF94 /* OpenStatusUpdate.swift */,
 				A024B85A20161AAE002B8897 /* PaymentRequest.swift */,
 				A024B84C201606B4002B8897 /* Peer.swift */,
-				A0A05A5820149AF20007D1C9 /* Transaction.swift */,
 				ADBB36282080B2AE005662B4 /* TestingTemplates.swift */,
+				A0A05A5820149AF20007D1C9 /* Transaction.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -1534,6 +1537,7 @@
 				ADCE01BD207B598C00CA72E8 /* SelectWalletCreationMethodViewController.swift in Sources */,
 				A06660F5202D97A300EE32FA /* QRCodeScannerView.swift in Sources */,
 				AD38EB30207DF233007DF14D /* UIButton.swift in Sources */,
+				AD93ED5620A09D59000E814E /* GraphTopologyUpdate.swift in Sources */,
 				ADBB36332084EC4D005662B4 /* MnemonicWordTableViewCell.swift in Sources */,
 				ADF79366208E000C0086B2CA /* SetupPinViewController.swift in Sources */,
 				ADCE01C1207B5C0300CA72E8 /* MnemonicViewModel.swift in Sources */,
