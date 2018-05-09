@@ -63,7 +63,7 @@ extension Lnrpc_PendingChannelsResponse.ClosedChannel {
     var channelModel: Channel {
         return Channel(
             blockHeight: 0,
-            state: .opening,
+            state: .closing,
             localBalance: Satoshi(value: channel.localBalance),
             remoteBalance: Satoshi(value: channel.remoteBalance),
             remotePubKey: channel.remoteNodePub,
@@ -77,7 +77,7 @@ extension Lnrpc_PendingChannelsResponse.ForceClosedChannel {
     var channelModel: Channel {
         return Channel(
             blockHeight: Int(maturityHeight),
-            state: .opening,
+            state: .forceClosing,
             localBalance: Satoshi(value: channel.localBalance),
             remoteBalance: Satoshi(value: channel.remoteBalance),
             remotePubKey: channel.remoteNodePub,
