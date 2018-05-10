@@ -44,11 +44,10 @@ final class OpenChannelViewController: UIViewController {
         SVProgressHUD.setDefaultStyle(.dark)
         SVProgressHUD.setDefaultAnimationType(.native)
         
-        UIApplication.shared.beginIgnoringInteractionEvents()
+        view.isUserInteractionEnabled = false
         SVProgressHUD.show()
         openChannelViewModel?.openChannel { [weak self] in
             SVProgressHUD.dismiss()
-            UIApplication.shared.endIgnoringInteractionEvents()
             self?.dismiss(animated: true, completion: nil)
         }
     }    
