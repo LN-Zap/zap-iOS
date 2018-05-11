@@ -80,6 +80,5 @@ extension Lnrpc_CloseChannelRequest {
         if let fundingTxidBytes = channelPointParts[0].hexEndianSwap().hexadecimal() {
             self.channelPoint.fundingTxidBytes = fundingTxidBytes
         }
-        self.force = true
     }
 }
