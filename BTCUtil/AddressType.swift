@@ -46,6 +46,12 @@ public enum AddressType {
     }
     
     private func isBitcoinAddress(_ string: String, network: Network) -> Bool {
+        var string = string
+        let prefix = "bitcoin:"
+        if string.starts(with: prefix) {
+            string = String(string.dropFirst(prefix.count))
+        }
+        
         if let address = BitcoinAddress(string: string) {
             switch (address.type, network) {
             case (.pubkeyHash, .mainnet), (.scriptHash, .mainnet),

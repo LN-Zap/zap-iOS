@@ -27,6 +27,11 @@ class AddressTypeTests: XCTestCase {
         XCTAssertFalse(AddressType.bitcoinAddress.isValidAddress("17VZNX1SN5NtKa8UQFxwQbFeFc3iqRYhem", network: .testnet))
         XCTAssertTrue(AddressType.bitcoinAddress.isValidAddress("2N8hwP1WmJrFF5QWABn38y63uYLhnJYJYTF", network: .testnet))
         XCTAssertFalse(AddressType.bitcoinAddress.isValidAddress("2N8hwP1WmJrFF5QWABn38y63uYLhnJYJYTF", network: .mainnet))
+        
+        XCTAssertTrue(AddressType.bitcoinAddress.isValidAddress("bitcoin:17VZNX1SN5NtKa8UQFxwQbFeFc3iqRYhem", network: .mainnet))
+        XCTAssertFalse(AddressType.bitcoinAddress.isValidAddress("bitcoin:17VZNX1SN5NtKa8UQFxwQbFeFc3iqRYhem", network: .testnet))
+        XCTAssertTrue(AddressType.bitcoinAddress.isValidAddress("bitcoin:2N8hwP1WmJrFF5QWABn38y63uYLhnJYJYTF", network: .testnet))
+        XCTAssertFalse(AddressType.bitcoinAddress.isValidAddress("bitcoin:2N8hwP1WmJrFF5QWABn38y63uYLhnJYJYTF", network: .mainnet))
     }
     
     func testBech32Address() {
