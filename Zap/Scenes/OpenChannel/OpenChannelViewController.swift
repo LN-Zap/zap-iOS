@@ -5,8 +5,8 @@
 //  Copyright © 2018 Otto Suess. All rights reserved.
 //
 
-import UIKit
 import SVProgressHUD
+import UIKit
 
 final class OpenChannelViewController: UIViewController {
     
@@ -30,6 +30,11 @@ final class OpenChannelViewController: UIViewController {
         sendButton.setTitle("Add", for: .normal)
         
         amountInputView.validRange = (Lnd.Constants.minChannelSize...Lnd.Constants.maxChannelSize)
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        SVProgressHUD.dismiss()
     }
     
     @IBAction private func presentHelp(_ sender: Any) {
