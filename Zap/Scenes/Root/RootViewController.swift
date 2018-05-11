@@ -64,7 +64,7 @@ class RootViewController: UIViewController, ContainerViewController {
         setInitialViewController(loadingViewController)
         
         NotificationCenter.default.reactive.notification(name: .lndError)
-            .observeNext { [weak self] notification in
+            .observeNext { notification in
                 guard let message = notification.userInfo?["message"] as? String else { return }
                 
                 DispatchQueue.main.async {
