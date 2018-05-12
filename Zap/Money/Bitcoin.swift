@@ -9,7 +9,7 @@ import BTCUtil
 import Foundation
 
 struct Bitcoin: Currency, Equatable {
-    private let unit: BitcoinUnit
+    let unit: BitcoinUnit
     
     init(unit: BitcoinUnit) {
         self.unit = unit

@@ -29,6 +29,7 @@ final class OpenChannelViewController: UIViewController {
         helpLabel.text = "Fund connection"
         sendButton.setTitle("Add", for: .normal)
         
+        amountInputView.satoshis = 1000000
         amountInputView.validRange = (Lnd.Constants.minChannelSize...Lnd.Constants.maxChannelSize)
     }
     

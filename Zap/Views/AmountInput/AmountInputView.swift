@@ -22,7 +22,7 @@ class AmountInputView: UIControl {
     }
     @IBOutlet private weak var keyPadHeightConstraint: NSLayoutConstraint!
     
-    var amountString: String? {
+    private var amountString: String? {
         didSet {
             amountTextField.text = amountString
             if amountString != nil, let range = validRange {
@@ -34,8 +34,16 @@ class AmountInputView: UIControl {
     
     var validRange: ClosedRange<Satoshi>?
     var satoshis: Satoshi {
-        guard let amountString = amountString else { return 0 }
-        return Satoshi.from(string: amountString, unit: .bit) ?? 0
+        get {
+            guard let amountString = amountString else { return 0 }
+            return Satoshi.from(string: amountString, unit: .bit) ?? 0
+        }
+        set {
+            let stringValue = newValue.convert(to: Settings.cryptoCurrency.value.unit).stringValue
+            if updateKeyPadString(input: stringValue) {
+                keyPadView.numberString = stringValue
+            }
+        }
     }
     
     override init(frame: CGRect) {
@@ -77,13 +85,14 @@ class AmountInputView: UIControl {
     }
     
     private func setupKeyPad() {
+        keyPadView.handler = updateKeyPadString
+    }
+    
+    private func updateKeyPadString(input: String) -> Bool {
         let numberFormatter = InputNumberFormatter(unit: .bit)
-        
-        keyPadView.handler = { [weak self] input in
-            guard let output = numberFormatter.validate(input) else { return false }
-            self?.amountString = output
-            return true
-        }
+        guard let output = numberFormatter.validate(input) else { return false }
+        amountString = output
+        return true
     }
 }
 
