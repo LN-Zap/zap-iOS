@@ -27,9 +27,6 @@ final class OpenChannelViewModel {
     }
     
     func openChannel(completion: @escaping () -> Void) {
-        viewModel.connect(pubKey: pubKey, host: host) { [pubKey, viewModel, amount] result in
-//            guard result.error == nil else { return } // TODO: error handling
-            viewModel.openChannel(pubKey: pubKey, amount: amount, completion: completion)
-        }
+        viewModel.openChannel(pubKey: pubKey, host: host, amount: amount, completion: completion)
     }
 }

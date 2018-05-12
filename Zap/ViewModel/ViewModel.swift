@@ -208,7 +208,20 @@ final class ViewModel: NSObject {
         }
     }
     
-    func openChannel(pubKey: String, amount: Satoshi, completion: @escaping () -> Void) {
+    func openChannel(pubKey: String, host: String, amount: Satoshi, completion: @escaping () -> Void) {
+        api.peers { [weak self, api] peers in
+            if peers.value?.contains(where: { $0.pubKey == pubKey }) == true {
+                self?.openConnectedChannel(pubKey: pubKey, amount: amount, completion: completion)
+            } else {
+                api.connect(pubKey: pubKey, host: host) {
+                    guard $0.error != nil else { return }
+                    self?.openConnectedChannel(pubKey: pubKey, amount: amount, completion: completion)
+                }
+            }
+        }
+    }
+    
+    private func openConnectedChannel(pubKey: String, amount: Satoshi, completion: @escaping () -> Void) {
         api.openChannel(pubKey: pubKey, amount: amount) { [weak self] _ in
             self?.updateChannelBalance()
             self?.updateChannels()
@@ -231,10 +244,6 @@ final class ViewModel: NSObject {
     
     func addInvoice(amount: Satoshi, memo: String?, callback: @escaping (Result<String>) -> Void) {
         api.addInvoice(amount: amount, memo: memo, callback: callback)
-    }
-    
-    func connect(pubKey: String, host: String, callback: @escaping (Result<Void>) -> Void) {
-        api.connect(pubKey: pubKey, host: host, callback: callback)
     }
     
     func nodeInfo(pubKey: String, callback: @escaping (Result<NodeInfo>) -> Void) {
