@@ -8,8 +8,11 @@
 import UIKit
 
 class TransactionDetailViewController: UIViewController {
-    @IBOutlet private weak var confirmationsTitleLabel: UILabel!
+    @IBOutlet private weak var feesLabel: UILabel!
     @IBOutlet private weak var confirmationsLabel: UILabel!
+    @IBOutlet private weak var addressLabel: UILabel!
+    @IBOutlet private weak var amountLabel: UILabel!
+    @IBOutlet private weak var dateLabel: UILabel!
     
     var transactionViewModel: TransactionViewModel?
     
@@ -19,10 +22,7 @@ class TransactionDetailViewController: UIViewController {
         titleTextStyle = .dark
         title = "Transaction Detail"
         
-        Style.label.apply(to: confirmationsLabel,
-                          confirmationsTitleLabel)
-        
-        confirmationsTitleLabel.text = "Confirmations:"
+        Style.label.apply(to: feesLabel, confirmationsLabel, addressLabel, amountLabel, dateLabel)
         
         updateTransaction()
     }
@@ -30,7 +30,14 @@ class TransactionDetailViewController: UIViewController {
     private func updateTransaction() {
         guard let transaction = transactionViewModel?.transaction as? BlockchainTransaction else { return }
         
-        confirmationsLabel.text = String(transaction.confirmations)
+        confirmationsLabel.text = "Confirmations: \(transaction.confirmations)"
+        
+        let feesString = Settings.primaryCurrency.value.format(transaction.fees) ?? "0"
+        feesLabel.text = "Fees: \(feesString)"
+        
+        addressLabel.text = transaction.firstDestinationAddress
+        amountLabel.text = Settings.primaryCurrency.value.format(transaction.amount)
+        dateLabel.text = DateFormatter.localizedString(from: transaction.date, dateStyle: .medium, timeStyle: .short)
     }
     
     @IBAction private func doneButtonTapped(_ sender: Any) {
