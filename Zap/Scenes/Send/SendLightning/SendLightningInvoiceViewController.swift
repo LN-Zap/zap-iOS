@@ -12,6 +12,7 @@ class SendLightningInvoiceViewController: UIViewController {
     @IBOutlet private weak var paymentRequestView: UIStackView!
     @IBOutlet private weak var memoLabel: UILabel!
     @IBOutlet private weak var amountLabel: UILabel!
+    @IBOutlet private weak var secondaryAmountLabel: UILabel!
     @IBOutlet private weak var sendButton: UIButton!
     @IBOutlet private weak var paymentBackground: UIView!
     
@@ -21,19 +22,22 @@ class SendLightningInvoiceViewController: UIViewController {
         super.viewDidLoad()
 
         Style.button.apply(to: sendButton)
-        Style.label.apply(to: memoLabel)
+        Style.label.apply(to: memoLabel, amountLabel, secondaryAmountLabel)
+        
+        amountLabel.font = amountLabel.font.withSize(36)
+        secondaryAmountLabel.font = amountLabel.font.withSize(14)
+        secondaryAmountLabel.textColor = .gray
         
         sendViewModel?.memo
             .bind(to: memoLabel.reactive.text)
             .dispose(in: reactive.bag)
         
         sendViewModel?.satoshis
-            .observeNext { [amountLabel] satoshis in
-                guard let satoshis = satoshis else { return }
-                DispatchQueue.main.async {
-                    amountLabel?.setAmount(satoshis)
-                }
-            }
+            .bind(to: amountLabel.reactive.text, currency: Settings.primaryCurrency)
+            .dispose(in: reactive.bag)
+        
+        sendViewModel?.satoshis
+            .bind(to: secondaryAmountLabel.reactive.text, currency: Settings.secondaryCurrency)
             .dispose(in: reactive.bag)
     }
     

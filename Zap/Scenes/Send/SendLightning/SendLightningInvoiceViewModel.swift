@@ -13,7 +13,7 @@ final class SendLightningInvoiceViewModel {
     private let viewModel: ViewModel
     
     let memo = Observable<String?>(nil)
-    let satoshis = Observable<Satoshi?>(nil)
+    let satoshis = Observable<Satoshi>(0)
     
     private var paymentRequest: PaymentRequest?
     
