@@ -23,7 +23,8 @@ final class ChannelViewModel {
         viewModel.nodeInfo(pubKey: channel.remotePubKey) { [name] result in
             guard
                 let nodeInfo = result.value,
-                let alias = nodeInfo.node.alias
+                let alias = nodeInfo.node.alias,
+                alias != ""
                 else { return }
             
             name.value = alias

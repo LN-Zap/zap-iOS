@@ -23,7 +23,13 @@ final class TransactionMetadataUpdater: NSObject {
                     guard let channel = channels.first(where: { $0.channelPoint.hasPrefix(transaction.id) }) else { continue }
                     
                     viewModel.nodeInfo(pubKey: channel.remotePubKey) { result in
-                        guard let alias = result.value?.node.alias else { return }
+                        guard var alias = result.value?.node.alias else { return }
+                        
+                        // sometimes lnd returns an empty alias as nodeInfo response
+                        if alias == "" {
+                            alias = channel.remotePubKey
+                        }
+                        
                         let metadata = TransactionMetadata(memo: nil, fundingChannelAlias: alias)
                         transactionMetadataStore.setMetadata(metadata, for: transaction)
                     }
