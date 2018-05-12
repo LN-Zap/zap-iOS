@@ -15,6 +15,8 @@ class TransactionDetailViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        titleTextStyle = .dark
         title = "Transaction Detail"
         
         Style.label.apply(to: confirmationsLabel,

@@ -14,8 +14,7 @@ class LndLogViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        navigationController?.navigationBar.titleTextAttributes = [NSAttributedStringKey.foregroundColor: UIColor.black]
-        
+        titleTextStyle = .dark
         textView.font = UIFont(name: "Courier", size: 10)
         
         Scheduler.schedule(interval: 0.1, action: updateTextView)

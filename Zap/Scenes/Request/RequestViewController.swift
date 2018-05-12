@@ -28,6 +28,8 @@ final class RequestViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        titleTextStyle = .dark
+        
         title = "scene.request.title".localized
 
         lightningButton.setTitle("Lightning", for: .normal)

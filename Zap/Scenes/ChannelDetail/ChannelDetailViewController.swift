@@ -26,6 +26,8 @@ class ChannelDetailViewController: ModalViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        titleTextStyle = .dark
 
         title = "scene.channel_detail.title".localized
         blockExplorerButton?.setTitle(Settings.blockExplorer.localized, for: .normal)

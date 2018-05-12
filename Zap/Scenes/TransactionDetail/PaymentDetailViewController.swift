@@ -13,6 +13,8 @@ class PaymentDetailViewController: UIViewController {
         super.viewDidLoad()
         title = "Payment Detail"
         
+        titleTextStyle = .dark
+        
         view.backgroundColor = .red
     }
     

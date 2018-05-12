@@ -8,6 +8,22 @@
 import UIKit
 
 extension UIViewController {
+    enum TitleTextStyle {
+        case light
+        case dark
+    }
+    
+    var titleTextStyle: TitleTextStyle {
+        get {
+            guard let color = navigationController?.navigationBar.titleTextAttributes?[.foregroundColor] as? UIColor else { return .light }
+            return color == Color.text ? .dark : .light
+        }
+        set {
+            let newColor = newValue == .light ? UIColor.white : Color.text
+            navigationController?.navigationBar.titleTextAttributes = [.font: Font.light.withSize(20), .foregroundColor: newColor]
+        }
+    }
+    
     func addChild(viewController: UIViewController, to container: UIView) {
         addChildViewController(viewController)
         viewController.view.translatesAutoresizingMaskIntoConstraints = false
