@@ -73,7 +73,7 @@ final class ViewModel: NSObject {
             walletState = Observable(.noWallet)
         }
         
-        Lnd.instance.startLnd()
+        Lnd.start()
 
         totalBalance = combineLatest(balance, channelBalance) { $0 + $1 }
 

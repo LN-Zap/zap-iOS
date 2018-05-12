@@ -11,10 +11,11 @@ private let PASSWORD = "12345678"
 
 final class WalletUnlocker {
     private var rpc: Lnrpc_WalletUnlockerService? {
-        if Lnd.instance.walletUnlocker == nil {
-            print("WalletUnlocker not initialized")
-        }
-        return Lnd.instance.walletUnlocker
+        return nil
+//        if Lnd.instance.walletUnlocker == nil {
+//            print("WalletUnlocker not initialized")
+//        }
+//        return Lnd.instance.walletUnlocker
     }
     
     func generateSeed(passphrase: String? = nil, callback: @escaping (Result<[String]>) -> Void) {

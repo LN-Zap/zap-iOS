@@ -28,10 +28,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
     }
     
-    func applicationWillResignActive(_ application: UIApplication) {
-        Lnd.instance.stopLnd()
-    }
-    
     func application(_ app: UIApplication, open url: URL, options: [UIApplicationOpenURLOptionsKey: Any] = [:]) -> Bool {
         print("OPEN URL: \(url)") // TODO
         return true
