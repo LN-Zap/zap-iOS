@@ -9,9 +9,9 @@ import UIKit
 
 class OnChainTransactionTableViewCell: BondTableViewCell {
     
-    @IBOutlet private weak var addressView: AddressView!
-    @IBOutlet private weak var nameLabel: UILabel!
-    @IBOutlet private weak var amountLabel: UILabel!
+    @IBOutlet private weak var titleLabel: UILabel!
+    @IBOutlet private weak var primaryAmountLabel: UILabel!
+    @IBOutlet private weak var secondaryAmountLabel: UILabel!
     @IBOutlet private weak var timeLabel: UILabel!
     
     var onChainTransaction: TransactionViewModel? {
@@ -19,13 +19,15 @@ class OnChainTransactionTableViewCell: BondTableViewCell {
             guard let transaction = onChainTransaction else { return }
             
             transaction.displayText
-                .bind(to: nameLabel.reactive.text)
+                .bind(to: titleLabel.reactive.text)
                 .dispose(in: onReuseBag)
             
-            addressView.address = transaction.displayText.value
+            transaction.amount
+                .bind(to: primaryAmountLabel.reactive.text, currency: Settings.primaryCurrency)
+                .dispose(in: onReuseBag)
             
             transaction.amount
-                .bind(to: amountLabel.reactive.text, currency: Settings.primaryCurrency)
+                .bind(to: secondaryAmountLabel.reactive.text, currency: Settings.secondaryCurrency)
                 .dispose(in: onReuseBag)
             
             timeLabel.text = transaction.time
@@ -35,10 +37,13 @@ class OnChainTransactionTableViewCell: BondTableViewCell {
     override func awakeFromNib() {
         super.awakeFromNib()
         
-        Style.label.apply(to: amountLabel, nameLabel) {
+        Style.label.apply(to: primaryAmountLabel, titleLabel) {
             $0.font = $0.font.withSize(14)
         }
-        timeLabel.font = Font.light.withSize(12)
-        timeLabel.textColor = .lightGray
+        
+        Style.label.apply(to: secondaryAmountLabel, timeLabel) {
+            $0.font = $0.font.withSize(12)
+            $0.textColor = .lightGray
+        }
     }
 }
