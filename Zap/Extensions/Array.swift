@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import ReactiveKit
 
 extension Array {
     func grouped<T>(by criteria: (Element) -> T) -> [T: [Element]] {
@@ -18,5 +19,13 @@ extension Array {
             groups[key]?.append(element)
         }
         return groups
+    }
+}
+
+extension Array where Element == Disposable? {
+    func dispose(in bag: DisposeBag) {
+        for disposable in self {
+            disposable?.dispose(in: bag)
+        }
     }
 }

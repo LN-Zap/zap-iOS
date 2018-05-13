@@ -18,16 +18,9 @@ class OnChainTransactionTableViewCell: BondTableViewCell {
         didSet {
             guard let transaction = onChainTransaction else { return }
             
-            transaction.displayText
-                .bind(to: titleLabel.reactive.text)
-                .dispose(in: onReuseBag)
-            
-            transaction.amount
-                .bind(to: primaryAmountLabel.reactive.text, currency: Settings.primaryCurrency)
-                .dispose(in: onReuseBag)
-            
-            transaction.amount
-                .bind(to: secondaryAmountLabel.reactive.text, currency: Settings.secondaryCurrency)
+            [transaction.displayText.bind(to: titleLabel.reactive.text),
+             transaction.amount.bind(to: primaryAmountLabel.reactive.text, currency: Settings.primaryCurrency),
+             transaction.amount.bind(to: secondaryAmountLabel.reactive.text, currency: Settings.secondaryCurrency)]
                 .dispose(in: onReuseBag)
             
             timeLabel.text = transaction.time

@@ -30,21 +30,11 @@ class SendLightningInvoiceViewController: UIViewController, QRCodeScannerChildVi
         secondaryAmountLabel.textColor = .gray
         
         arrowImageView.tintColor = Color.text
-
-        sendViewModel?.memo
-            .bind(to: memoLabel.reactive.text)
-            .dispose(in: reactive.bag)
         
-        sendViewModel?.satoshis
-            .bind(to: amountLabel.reactive.text, currency: Settings.primaryCurrency)
-            .dispose(in: reactive.bag)
-        
-        sendViewModel?.destination
-            .bind(to: destinationLabel.reactive.text)
-            .dispose(in: reactive.bag)
-        
-        sendViewModel?.satoshis
-            .bind(to: secondaryAmountLabel.reactive.text, currency: Settings.secondaryCurrency)
+        [sendViewModel?.memo.bind(to: memoLabel.reactive.text),
+         sendViewModel?.satoshis.bind(to: amountLabel.reactive.text, currency: Settings.primaryCurrency),
+         sendViewModel?.destination.bind(to: destinationLabel.reactive.text),
+         sendViewModel?.satoshis.bind(to: secondaryAmountLabel.reactive.text, currency: Settings.secondaryCurrency)]
             .dispose(in: reactive.bag)
     }
     

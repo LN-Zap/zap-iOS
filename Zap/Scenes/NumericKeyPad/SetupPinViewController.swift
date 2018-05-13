@@ -33,7 +33,7 @@ class SetupPinViewController: UIViewController {
         
         setupKeyPad()
         
-        setupPinViewModel.state
+        [setupPinViewModel.state
             .observeNext { [weak self] in
                 guard let state = $0 else { return }
                 switch state {
@@ -43,18 +43,13 @@ class SetupPinViewController: UIViewController {
                     self?.dismiss(animated: true, completion: nil)
                     self?.viewModel?.walletState.value = .connecting
                 }
-            }
-            .dispose(in: reactive.bag)
-        combineLatest(setupPinViewModel.pinCharacterCount, setupPinViewModel.pinAtiveCount)
+            },
+         combineLatest(setupPinViewModel.pinCharacterCount, setupPinViewModel.pinAtiveCount)
             .observeNext { [weak self] in
                 self?.updatePinView(characterCount: $0, activeCount: $1)
-            }
-            .dispose(in: reactive.bag)
-        setupPinViewModel.doneButtonEnabled
-            .bind(to: doneButton.reactive.isEnabled)
-            .dispose(in: reactive.bag)
-        setupPinViewModel.topLabelText
-            .bind(to: topLabel.reactive.text)
+            },
+         setupPinViewModel.doneButtonEnabled.bind(to: doneButton.reactive.isEnabled),
+         setupPinViewModel.topLabelText.bind(to: topLabel.reactive.text)]
             .dispose(in: reactive.bag)
         
         doneButton.setTitle("Done", for: .normal)
