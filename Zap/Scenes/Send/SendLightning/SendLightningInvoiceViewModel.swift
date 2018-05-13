@@ -14,6 +14,7 @@ final class SendLightningInvoiceViewModel {
     
     let memo = Observable<String?>(nil)
     let satoshis = Observable<Satoshi>(0)
+    let destination = Observable<String?>(nil)
     
     private var paymentRequest: PaymentRequest?
     
@@ -45,5 +46,6 @@ final class SendLightningInvoiceViewModel {
             self.memo.value = "Memo: " + memo
         }
         satoshis.value = paymentRequest.amount
+        destination.value = paymentRequest.destination
     }
 }
