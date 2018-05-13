@@ -54,13 +54,12 @@ final class MainViewController: UIViewController, ContainerViewController {
         balanceView.backgroundColor = Color.darkBackground
         segmentedControlView.backgroundColor = Color.mediumBackground
         
-        Style.button.apply(to: transactionsButton, networkButton)
+        Style.button.apply(to: transactionsButton, networkButton, sendButton, requestButton)
         transactionsButton.titleEdgeInsets = UIEdgeInsets(top: 0, left: 10, bottom: 0, right: 0)
         transactionsButton.tintColor = .white
         networkButton.titleEdgeInsets = UIEdgeInsets(top: 0, left: 10, bottom: 0, right: 0)
         networkButton.tintColor = .white
         
-        Style.button.apply(to: sendButton, requestButton)
         sendButton.tintColor = .white
         requestButton.tintColor = .white
         
@@ -103,7 +102,12 @@ final class MainViewController: UIViewController, ContainerViewController {
     }
     
     @IBAction private func expandHeaderButtonTapped(_ sender: Any) {
-        let viewController = Storyboard.settings.initial()
+        let viewController = Storyboard.settings.initial(viewController: UINavigationController.self)
+
+        if let settingsContainerViewController = viewController.topViewController as? SettingsContainerViewController {
+            settingsContainerViewController.viewModel = viewModel
+        }
+
         present(viewController, animated: true, completion: nil)
     }
     

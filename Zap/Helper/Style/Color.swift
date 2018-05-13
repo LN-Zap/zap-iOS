@@ -22,4 +22,6 @@ enum Color {
     
     static let bottomGradientLeft = UIColor(hex: 0xf7ce68)
     static let bottomGradientRight = UIColor(hex: 0xfbab7e)
+    
+    static let darkTableViewSeparator = UIColor(hex: 0x989898)
 }

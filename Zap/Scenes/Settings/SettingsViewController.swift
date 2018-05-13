@@ -26,16 +26,9 @@ final class SettingsViewController: GroupedTableViewController {
         
         super.init(sections: sections)
         
-        title = "scene.settings.title".localized
-        navigationItem.leftBarButtonItem = UIBarButtonItem(barButtonSystemItem: .done, target: self, action: #selector(closeButtonTapped))
     }
     
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
-    }
-    
-    @objc
-    func closeButtonTapped() {
-        self.dismiss(animated: true, completion: nil)
     }
 }

@@ -17,6 +17,8 @@ class GroupedTableViewController: UITableViewController {
         super.init(style: .grouped)
         
         tableView.backgroundColor = Color.darkBackground
+        tableView.separatorColor = Color.darkTableViewSeparator
+        tableView.rowHeight = 76
     }
     
     required init?(coder aDecoder: NSCoder) {

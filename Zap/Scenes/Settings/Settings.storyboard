@@ -20,8 +20,29 @@
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Boy-sC-5iG">
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="225"/>
+                                <subviews>
+                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="oQR-kc-1FR">
+                                        <rect key="frame" x="89" y="84" width="197" height="57"/>
+                                        <subviews>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="000,000,000.00" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Zko-3F-74r">
+                                                <rect key="frame" x="0.0" y="0.0" width="197" height="31.5"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="26"/>
+                                                <nil key="textColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="$0" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="S1i-4J-U8h">
+                                                <rect key="frame" x="0.0" y="36.5" width="197" height="20.5"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                <nil key="textColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                        </subviews>
+                                    </stackView>
+                                </subviews>
                                 <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
+                                    <constraint firstItem="oQR-kc-1FR" firstAttribute="centerX" secondItem="Boy-sC-5iG" secondAttribute="centerX" id="MTY-Ty-eR5"/>
+                                    <constraint firstItem="oQR-kc-1FR" firstAttribute="centerY" secondItem="Boy-sC-5iG" secondAttribute="centerY" id="ihm-WE-bLV"/>
                                     <constraint firstAttribute="height" constant="225" id="quz-3n-4ia"/>
                                 </constraints>
                             </view>
@@ -51,6 +72,8 @@
                     <connections>
                         <outlet property="container" destination="qgH-DM-93y" id="syo-Cm-ne6"/>
                         <outlet property="headerBackground" destination="Boy-sC-5iG" id="w6s-iN-LLa"/>
+                        <outlet property="primaryCurrencyLabel" destination="Zko-3F-74r" id="iI0-b9-I5h"/>
+                        <outlet property="secondaryCurrencyLabel" destination="S1i-4J-U8h" id="5rg-o3-150"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ejj-eA-tWv" userLabel="First Responder" sceneMemberID="firstResponder"/>
