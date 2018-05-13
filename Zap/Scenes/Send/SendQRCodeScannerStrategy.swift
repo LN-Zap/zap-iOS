@@ -9,7 +9,6 @@ import BTCUtil
 import Foundation
 
 struct SendQRCodeScannerStrategy: QRCodeScannerStrategy {
-    var viewControllerHeight: CGFloat = 550
     let title = "scene.deposit.send".localized
     let addressTypes: [AddressType] = [.bitcoinAddress, .lightningInvoice]
     

@@ -8,14 +8,14 @@
 import SVProgressHUD
 import UIKit
 
-final class OpenChannelViewController: UIViewController {
-    
+final class OpenChannelViewController: UIViewController, QRCodeScannerChildViewController {
     @IBOutlet private weak var sendButton: UIButton!
     @IBOutlet private weak var helpLabel: UILabel!
     @IBOutlet private weak var helpImageView: UIImageView!
     @IBOutlet private weak var amountInputView: AmountInputView!
     
     var openChannelViewModel: OpenChannelViewModel?
+    let contentHeight: CGFloat = 550 // QRCodeScannerChildViewController
     
     override func viewDidLoad() {
         super.viewDidLoad()

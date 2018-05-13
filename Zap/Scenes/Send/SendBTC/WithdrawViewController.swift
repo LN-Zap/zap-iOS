@@ -7,14 +7,15 @@
 
 import UIKit
 
-final class WithdrawViewController: UIViewController {
+final class WithdrawViewController: UIViewController, QRCodeScannerChildViewController {
     
     @IBOutlet private weak var addressLabel: UILabel!
     @IBOutlet private weak var sendButton: UIButton!
     @IBOutlet private weak var amountInputView: AmountInputView!
-    
+
+    let contentHeight: CGFloat = 550 // QRCodeScannerChildViewController
     var withdrawViewModel: WithdrawViewModel?
-    
+
     override func viewDidLoad() {
         super.viewDidLoad()
         

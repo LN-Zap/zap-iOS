@@ -9,7 +9,6 @@ import BTCUtil
 import Foundation
 
 struct OpenChannelQRCodeScannerStrategy: QRCodeScannerStrategy {
-    let viewControllerHeight: CGFloat = 520
     let title = "scene.open_channel.title".localized
     let addressTypes: [AddressType] = [.lightningNode]
     

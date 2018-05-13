@@ -7,8 +7,7 @@
 
 import UIKit
 
-class SendLightningInvoiceViewController: UIViewController {
-    
+class SendLightningInvoiceViewController: UIViewController, QRCodeScannerChildViewController {
     @IBOutlet private weak var paymentRequestView: UIStackView!
     @IBOutlet private weak var memoLabel: UILabel!
     @IBOutlet private weak var amountLabel: UILabel!
@@ -19,6 +18,7 @@ class SendLightningInvoiceViewController: UIViewController {
     @IBOutlet private weak var arrowImageView: UIImageView!
     
     var sendViewModel: SendLightningInvoiceViewModel?
+    let contentHeight: CGFloat = 380 // QRCodeScannerChildViewController
     
     override func viewDidLoad() {
         super.viewDidLoad()
