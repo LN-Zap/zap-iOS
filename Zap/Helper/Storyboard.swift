@@ -21,11 +21,11 @@ enum Storyboard: String {
     case qrCodeScanner = "QRCodeScanner"
     case request
     case send
+    case sendOnChain
     case settings
     case sync
     case transactionDetail
     case transactionList
-    case withdraw
     
     var storyboard: UIStoryboard? {
         let storyboardName = rawValue.uppercasedStart()

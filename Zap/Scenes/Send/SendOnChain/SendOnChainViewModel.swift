@@ -9,7 +9,7 @@ import Bond
 import BTCUtil
 import Foundation
 
-final class WithdrawViewModel {
+final class SendOnChainViewModel {
     private let viewModel: ViewModel
     let address: String
     let validRange: ClosedRange<Satoshi>

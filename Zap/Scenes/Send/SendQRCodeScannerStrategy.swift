@@ -19,8 +19,8 @@ struct SendQRCodeScannerStrategy: QRCodeScannerStrategy {
             viewController.sendViewModel = SendLightningInvoiceViewModel(viewModel: viewModel, lightningInvoice: address)
             return viewController
         case .bitcoinAddress:
-            let viewController = Storyboard.withdraw.instantiate(viewController: WithdrawViewController.self)
-            viewController.withdrawViewModel = WithdrawViewModel(viewModel: viewModel, address: address)
+            let viewController = Storyboard.sendOnChain.instantiate(viewController: SendOnChainViewController.self)
+            viewController.sendOnChainViewModel = SendOnChainViewModel(viewModel: viewModel, address: address)
             return viewController
         default:
             return nil

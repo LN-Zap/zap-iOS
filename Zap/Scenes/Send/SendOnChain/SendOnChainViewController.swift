@@ -7,14 +7,14 @@
 
 import UIKit
 
-final class WithdrawViewController: UIViewController, QRCodeScannerChildViewController {
+final class SendOnChainViewController: UIViewController, QRCodeScannerChildViewController {
     
     @IBOutlet private weak var addressLabel: UILabel!
     @IBOutlet private weak var sendButton: UIButton!
     @IBOutlet private weak var amountInputView: AmountInputView!
 
     let contentHeight: CGFloat = 550 // QRCodeScannerChildViewController
-    var withdrawViewModel: WithdrawViewModel?
+    var sendOnChainViewModel: SendOnChainViewModel?
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -25,13 +25,13 @@ final class WithdrawViewController: UIViewController, QRCodeScannerChildViewCont
         Style.button.apply(to: sendButton)
         sendButton.tintColor = .white
         
-        addressLabel.text = withdrawViewModel?.address
+        addressLabel.text = sendOnChainViewModel?.address
         
-        amountInputView.validRange = withdrawViewModel?.validRange
+        amountInputView.validRange = sendOnChainViewModel?.validRange
     }
     
     @IBAction private func updateAmount(_ sender: Any) {
-        withdrawViewModel?.amount = amountInputView.satoshis
+        sendOnChainViewModel?.amount = amountInputView.satoshis
     }
     
     @IBAction private func cancelButtonTapped(_ sender: Any) {
@@ -39,7 +39,7 @@ final class WithdrawViewController: UIViewController, QRCodeScannerChildViewCont
     }
     
     @IBAction private func sendButtonTapped(_ sender: Any) {
-        withdrawViewModel?.send { [weak self] in
+        sendOnChainViewModel?.send { [weak self] in
             self?.dismiss(animated: true, completion: nil)
         }
     }

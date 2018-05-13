@@ -30,8 +30,7 @@
 		A010093C2014CEE40001EF94 /* OpenStatusUpdate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A010093B2014CEE40001EF94 /* OpenStatusUpdate.swift */; };
 		A01009412014D4810001EF94 /* Toast.xib in Resources */ = {isa = PBXBuildFile; fileRef = A010093F2014D4810001EF94 /* Toast.xib */; };
 		A01009422014D4810001EF94 /* Toast.swift in Sources */ = {isa = PBXBuildFile; fileRef = A01009402014D4810001EF94 /* Toast.swift */; };
-		A01009442014DC660001EF94 /* WithdrawViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A01009432014DC660001EF94 /* WithdrawViewController.swift */; };
-		A01009462014DCB40001EF94 /* Withdraw.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A01009452014DCB40001EF94 /* Withdraw.storyboard */; };
+		A01009462014DCB40001EF94 /* SendOnChain.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A01009452014DCB40001EF94 /* SendOnChain.storyboard */; };
 		A010094E2015F97F0001EF94 /* OpenChannelViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A010094D2015F97F0001EF94 /* OpenChannelViewController.swift */; };
 		A01009502015F99F0001EF94 /* ChannelList.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A010094F2015F99F0001EF94 /* ChannelList.storyboard */; };
 		A01009522015FA2D0001EF94 /* ModalViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A01009512015FA2D0001EF94 /* ModalViewController.swift */; };
@@ -56,7 +55,7 @@
 		A0605F8D202C9D8200EA903C /* HorizontalLineView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0605F8C202C9D8200EA903C /* HorizontalLineView.swift */; };
 		A06660F5202D97A300EE32FA /* QRCodeScannerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A06660F4202D97A300EE32FA /* QRCodeScannerView.swift */; };
 		A06660FC202E080400EE32FA /* UpdatePinSettingsItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = A06660FB202E080400EE32FA /* UpdatePinSettingsItem.swift */; };
-		A070D962202A3CC7000A8274 /* WithdrawViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A070D961202A3CC7000A8274 /* WithdrawViewModel.swift */; };
+		A070D962202A3CC7000A8274 /* SendOnChainViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A070D961202A3CC7000A8274 /* SendOnChainViewModel.swift */; };
 		A070D966202B39A3000A8274 /* QRCodeDetailViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A070D965202B39A3000A8274 /* QRCodeDetailViewModel.swift */; };
 		A070D968202B5163000A8274 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = A070D967202B5163000A8274 /* Localizable.strings */; };
 		A070D96B202B569E000A8274 /* RequestViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A070D96A202B569E000A8274 /* RequestViewModel.swift */; };
@@ -136,6 +135,7 @@
 		A0F9AEE3206E3E0300E93DCA /* InputNumberFormatterTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0F9AEE2206E3E0300E93DCA /* InputNumberFormatterTests.swift */; };
 		A0FBCD91206BBBDF00800515 /* BitcoinUnit.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0FBCD90206BBBDF00800515 /* BitcoinUnit.swift */; };
 		A0FBCD93206BBD9800800515 /* SatoshiTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0FBCD92206BBD9800800515 /* SatoshiTests.swift */; };
+		AD33B5EF20A8463600E32BD9 /* SendOnChainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD33B5EE20A8463600E32BD9 /* SendOnChainViewController.swift */; };
 		AD38EB30207DF233007DF14D /* UIButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD38EB2F207DF233007DF14D /* UIButton.swift */; };
 		AD38EB32207DFB59007DF14D /* SegmentButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD38EB31207DFB59007DF14D /* SegmentButton.swift */; };
 		AD5FA001207CCB8B000E9493 /* RequestViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD5FA000207CCB8B000E9493 /* RequestViewController.swift */; };
@@ -268,8 +268,7 @@
 		A010093B2014CEE40001EF94 /* OpenStatusUpdate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OpenStatusUpdate.swift; sourceTree = "<group>"; };
 		A010093F2014D4810001EF94 /* Toast.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = Toast.xib; sourceTree = "<group>"; };
 		A01009402014D4810001EF94 /* Toast.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Toast.swift; sourceTree = "<group>"; };
-		A01009432014DC660001EF94 /* WithdrawViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WithdrawViewController.swift; sourceTree = "<group>"; };
-		A01009452014DCB40001EF94 /* Withdraw.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Withdraw.storyboard; sourceTree = "<group>"; };
+		A01009452014DCB40001EF94 /* SendOnChain.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = SendOnChain.storyboard; sourceTree = "<group>"; };
 		A010094D2015F97F0001EF94 /* OpenChannelViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OpenChannelViewController.swift; sourceTree = "<group>"; };
 		A010094F2015F99F0001EF94 /* ChannelList.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = ChannelList.storyboard; sourceTree = "<group>"; };
 		A01009512015FA2D0001EF94 /* ModalViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModalViewController.swift; sourceTree = "<group>"; };
@@ -295,7 +294,7 @@
 		A0605F8C202C9D8200EA903C /* HorizontalLineView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HorizontalLineView.swift; sourceTree = "<group>"; };
 		A06660F4202D97A300EE32FA /* QRCodeScannerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QRCodeScannerView.swift; sourceTree = "<group>"; };
 		A06660FB202E080400EE32FA /* UpdatePinSettingsItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpdatePinSettingsItem.swift; sourceTree = "<group>"; };
-		A070D961202A3CC7000A8274 /* WithdrawViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WithdrawViewModel.swift; sourceTree = "<group>"; };
+		A070D961202A3CC7000A8274 /* SendOnChainViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SendOnChainViewModel.swift; sourceTree = "<group>"; };
 		A070D965202B39A3000A8274 /* QRCodeDetailViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QRCodeDetailViewModel.swift; sourceTree = "<group>"; };
 		A070D967202B5163000A8274 /* Localizable.strings */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; path = Localizable.strings; sourceTree = "<group>"; };
 		A070D96A202B569E000A8274 /* RequestViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RequestViewModel.swift; sourceTree = "<group>"; };
@@ -393,6 +392,7 @@
 		A0FBCD90206BBBDF00800515 /* BitcoinUnit.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BitcoinUnit.swift; sourceTree = "<group>"; };
 		A0FBCD92206BBD9800800515 /* SatoshiTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SatoshiTests.swift; sourceTree = "<group>"; };
 		A2EA9EBABE9A17490B3E282A /* Pods-BTCUtil.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BTCUtil.release.xcconfig"; path = "Pods/Target Support Files/Pods-BTCUtil/Pods-BTCUtil.release.xcconfig"; sourceTree = "<group>"; };
+		AD33B5EE20A8463600E32BD9 /* SendOnChainViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SendOnChainViewController.swift; sourceTree = "<group>"; };
 		AD38EB2F207DF233007DF14D /* UIButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIButton.swift; sourceTree = "<group>"; };
 		AD38EB31207DFB59007DF14D /* SegmentButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SegmentButton.swift; sourceTree = "<group>"; };
 		AD5FA000207CCB8B000E9493 /* RequestViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RequestViewController.swift; sourceTree = "<group>"; };
@@ -690,7 +690,7 @@
 		A03F035E2028C71400F32279 /* Send */ = {
 			isa = PBXGroup;
 			children = (
-				A070D960202A3CA6000A8274 /* SendBTC */,
+				A070D960202A3CA6000A8274 /* SendOnChain */,
 				AD77465A2076827100EC596B /* SendLightning */,
 				A024B85620161586002B8897 /* Send.storyboard */,
 				AD99C9F220907AD10061C565 /* SendQRCodeScannerStrategy.swift */,
@@ -730,14 +730,14 @@
 			path = Items;
 			sourceTree = "<group>";
 		};
-		A070D960202A3CA6000A8274 /* SendBTC */ = {
+		A070D960202A3CA6000A8274 /* SendOnChain */ = {
 			isa = PBXGroup;
 			children = (
-				A01009452014DCB40001EF94 /* Withdraw.storyboard */,
-				A01009432014DC660001EF94 /* WithdrawViewController.swift */,
-				A070D961202A3CC7000A8274 /* WithdrawViewModel.swift */,
+				A01009452014DCB40001EF94 /* SendOnChain.storyboard */,
+				AD33B5EE20A8463600E32BD9 /* SendOnChainViewController.swift */,
+				A070D961202A3CC7000A8274 /* SendOnChainViewModel.swift */,
 			);
-			path = SendBTC;
+			path = SendOnChain;
 			sourceTree = "<group>";
 		};
 		A070D963202A3CFC000A8274 /* QRCodeDetail */ = {
@@ -1333,7 +1333,7 @@
 				AD7746652077C3D600EC596B /* PaymentDetail.storyboard in Resources */,
 				ADCE01BB207B57ED00CA72E8 /* CreateWallet.storyboard in Resources */,
 				A0376B75201CD61B00F1FBEF /* NumericKeyPad.storyboard in Resources */,
-				A01009462014DCB40001EF94 /* Withdraw.storyboard in Resources */,
+				A01009462014DCB40001EF94 /* SendOnChain.storyboard in Resources */,
 				A0DDC05C201883D800AEFF94 /* TransactionList.storyboard in Resources */,
 				ADCE01CC207B967200CA72E8 /* Loading.storyboard in Resources */,
 				A0F353CE20692415005B3639 /* Main.storyboard in Resources */,
@@ -1532,6 +1532,7 @@
 				A0A05A51201481A70007D1C9 /* Storyboard.swift in Sources */,
 				A05C5B8F206500A900072FA9 /* RemoteLndConfiguration.swift in Sources */,
 				A010093C2014CEE40001EF94 /* OpenStatusUpdate.swift in Sources */,
+				AD33B5EF20A8463600E32BD9 /* SendOnChainViewController.swift in Sources */,
 				AD86BCFE2099F50C00A7866A /* rpc.pb.swift in Sources */,
 				A0731FE62014AC0800C55E45 /* ContainerViewController.swift in Sources */,
 				A0F353CC206923E4005B3639 /* MainViewController.swift in Sources */,
@@ -1579,7 +1580,7 @@
 				A0A05A032013CF960007D1C9 /* AppDelegate.swift in Sources */,
 				ADBA120620930C94001F7700 /* UIViewController.swift in Sources */,
 				A0919145203B1CF400FA525A /* GroupedTableViewController.swift in Sources */,
-				A070D962202A3CC7000A8274 /* WithdrawViewModel.swift in Sources */,
+				A070D962202A3CC7000A8274 /* SendOnChainViewModel.swift in Sources */,
 				A091914D203B3BAC00FA525A /* BitcoinUnitSettingsItem.swift in Sources */,
 				A0DDC078201B42EA00AEFF94 /* BockExplorer.swift in Sources */,
 				A0A05A262013DC1D0007D1C9 /* BitcoinUnit+Localizable.swift in Sources */,
@@ -1599,7 +1600,6 @@
 				A0C2EABE206F8B5B003AE56E /* Localizable.swift in Sources */,
 				A0DDC06E2018C08800AEFF94 /* Section.swift in Sources */,
 				A0F57DBE201E440F003AFA66 /* ChannelListViewModel.swift in Sources */,
-				A01009442014DC660001EF94 /* WithdrawViewController.swift in Sources */,
 				A0376B6F201CC04400F1FBEF /* Info.swift in Sources */,
 				A0A05A5520148FA80007D1C9 /* Json.swift in Sources */,
 				A0E2690D202CC4E30069E83C /* AuthenticationViewModel.swift in Sources */,
