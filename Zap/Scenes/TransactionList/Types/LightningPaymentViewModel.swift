@@ -9,13 +9,13 @@ import BTCUtil
 import Foundation
 
 final class LightningPaymentViewModel {
-    let lightningPayment: Payment
+    let lightningPayment: LightningPayment
     
     let displayText: String
     let amount: Satoshi
     let time: String
     
-    init(lightningPayment: Payment) {
+    init(lightningPayment: LightningPayment) {
         self.lightningPayment = lightningPayment
         
         displayText = lightningPayment.paymentHash

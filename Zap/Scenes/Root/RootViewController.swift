@@ -16,8 +16,8 @@ class RootViewController: UIViewController, ContainerViewController {
 //        ViewModel(api: LightningMock(
 //            info: Info.template,
 //            transactions: [
-//                BlockchainTransaction.template,
-//                BlockchainTransaction.template
+//                OnChainTransaction.template,
+//                OnChainTransaction.template
 //            ],
 //            payments: [
 //                Payment.template,

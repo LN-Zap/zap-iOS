@@ -40,7 +40,7 @@ final class LightningRPC: LightningProtocol {
     
     func transactions(callback: @escaping (Result<[Transaction]>) -> Void) {
         _ = try? rpc?.getTransactions(Lnrpc_GetTransactionsRequest(), completion: result(callback, map: {
-            $0.transactions.compactMap { BlockchainTransaction(transaction: $0) }
+            $0.transactions.compactMap { OnChainTransaction(transaction: $0) }
         }))
     }
     

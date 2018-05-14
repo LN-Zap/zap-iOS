@@ -9,13 +9,13 @@ import BTCUtil
 import Foundation
 
 final class LightningInvoiceViewModel {
-    let lightningInvoice: Invoice
+    let lightningInvoice: LightningInvoice
     
     let displayText: String
     let amount: Satoshi
     let time: String
     
-    init(lightningInvoice: Invoice) {
+    init(lightningInvoice: LightningInvoice) {
         self.lightningInvoice = lightningInvoice
         
         if !lightningInvoice.memo.isEmpty {

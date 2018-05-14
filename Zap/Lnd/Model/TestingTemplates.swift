@@ -21,9 +21,9 @@ extension Info {
     }
 }
 
-extension BlockchainTransaction {
-    static var template: BlockchainTransaction {
-        return BlockchainTransaction(
+extension OnChainTransaction {
+    static var template: OnChainTransaction {
+        return OnChainTransaction(
             id: "100",
             amount: 21005000,
             date: Date(),
@@ -34,9 +34,9 @@ extension BlockchainTransaction {
     }
 }
 
-extension Payment {
-    static var template: Payment {
-        return Payment(
+extension LightningPayment {
+    static var template: LightningPayment {
+        return LightningPayment(
             id: "id31234567896543",
             amount: 1645,
             date: Date(),

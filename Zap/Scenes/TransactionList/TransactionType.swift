@@ -29,11 +29,11 @@ enum TransactionType: Equatable {
     }
     
     init(transaction: Transaction) {
-        if let onChainTransaction = transaction as? BlockchainTransaction {
+        if let onChainTransaction = transaction as? OnChainTransaction {
             self = .onChainTransaction(OnChainTransactionViewModel(onChainTransaction: onChainTransaction))
-        } else if let lightningPayment = transaction as? Payment {
+        } else if let lightningPayment = transaction as? LightningPayment {
             self = .lightningPayment(LightningPaymentViewModel(lightningPayment: lightningPayment))
-        } else if let lightningInvoice = transaction as? Invoice {
+        } else if let lightningInvoice = transaction as? LightningInvoice {
             self = .lightningInvoice(LightningInvoiceViewModel(lightningInvoice: lightningInvoice))
         } else {
             fatalError("type not implemented")

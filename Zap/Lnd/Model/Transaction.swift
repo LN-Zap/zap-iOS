@@ -15,7 +15,7 @@ protocol Transaction {
     var fees: Satoshi { get }
 }
 
-struct BlockchainTransaction: Transaction, Equatable {
+struct OnChainTransaction: Transaction, Equatable {
     let id: String
     let amount: Satoshi
     let date: Date
@@ -24,7 +24,7 @@ struct BlockchainTransaction: Transaction, Equatable {
     let firstDestinationAddress: String
 }
 
-extension BlockchainTransaction {
+extension OnChainTransaction {
     init(transaction: Lnrpc_Transaction) {
         id = transaction.txHash
         amount = Satoshi(value: transaction.amount)
@@ -35,7 +35,7 @@ extension BlockchainTransaction {
     }
 }
 
-struct Payment: Transaction, Equatable {
+struct LightningPayment: Transaction, Equatable {
     let id: String
     let amount: Satoshi
     let date: Date
@@ -43,7 +43,7 @@ struct Payment: Transaction, Equatable {
     let paymentHash: String
 }
 
-extension Payment {
+extension LightningPayment {
     init(payment: Lnrpc_Payment) {
         id = payment.paymentHash
         amount = Satoshi(value: -payment.value)

@@ -34,17 +34,17 @@ final class LightningStream: LightningProtocol {
     
     func transactions(callback: @escaping (Result<[Transaction]>) -> Void) {
         LndmobileGetTransactions(nil, LndCallback<Lnrpc_TransactionDetails, [Transaction]>(callback) {
-            $0.transactions.compactMap { BlockchainTransaction(transaction: $0) }
+            $0.transactions.compactMap { OnChainTransaction(transaction: $0) }
         })
     }
     
     func subscribeTransactions(callback: @escaping (Result<Transaction>) -> Void) {
-        LndmobileSubscribeTransactions(nil, LndCallback<Lnrpc_Transaction, Transaction>(callback, map: BlockchainTransaction.init))
+        LndmobileSubscribeTransactions(nil, LndCallback<Lnrpc_Transaction, Transaction>(callback, map: OnChainTransaction.init))
     }
     
     func payments(callback: @escaping (Result<[Transaction]>) -> Void) {
         LndmobileListPayments(nil, LndCallback<Lnrpc_ListPaymentsResponse, [Transaction]>(callback) {
-            $0.payments.compactMap { Payment(payment: $0) }
+            $0.payments.compactMap { LightningPayment(payment: $0) }
         })
     }
     
@@ -109,9 +109,9 @@ final class LightningStream: LightningProtocol {
         LndmobileAddInvoice(data, LndCallback<Lnrpc_AddInvoiceResponse, String>(callback) { $0.paymentRequest })
     }
     
-    func invoices(callback: @escaping (Result<[Invoice]>) -> Void) {
-        LndmobileListInvoices(nil, LndCallback<Lnrpc_ListInvoiceResponse, [Invoice]>(callback) {
-            $0.invoices.compactMap { Invoice(invoice: $0) }
+    func invoices(callback: @escaping (Result<[LightningInvoice]>) -> Void) {
+        LndmobileListInvoices(nil, LndCallback<Lnrpc_ListInvoiceResponse, [LightningInvoice]>(callback) {
+            $0.invoices.compactMap { LightningInvoice(invoice: $0) }
         })
     }
     

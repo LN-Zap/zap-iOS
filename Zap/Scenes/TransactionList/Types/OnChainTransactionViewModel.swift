@@ -10,13 +10,13 @@ import BTCUtil
 import Foundation
 
 final class OnChainTransactionViewModel: NSObject {
-    let onChainTransaction: BlockchainTransaction
+    let onChainTransaction: OnChainTransaction
     
     let displayText: Observable<String>
     let amount: Observable<Satoshi>
     let time: String
     
-    init(onChainTransaction: BlockchainTransaction) {
+    init(onChainTransaction: OnChainTransaction) {
         self.onChainTransaction = onChainTransaction
         
         if let alias = MemoryTransactionMetadataStore.instance.metadata(for: onChainTransaction)?.fundingChannelAlias {
@@ -36,7 +36,7 @@ final class OnChainTransactionViewModel: NSObject {
             .observeNext { [displayText, amount] notification in
                 guard
                     let notificationTransaction = notification.userInfo?["transaction"] as? Transaction,
-                    notificationTransaction as? BlockchainTransaction == onChainTransaction,
+                    notificationTransaction as? OnChainTransaction == onChainTransaction,
                     let metadata = notification.userInfo?["metadata"] as? TransactionMetadata,
                     let alias = metadata.fundingChannelAlias
                     else { return }
