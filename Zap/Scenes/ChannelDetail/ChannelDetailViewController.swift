@@ -49,9 +49,16 @@ class ChannelDetailViewController: ModalViewController {
         guard let channel = channelViewModel?.channel else { return }
         
         remotePubKeyLabel.text = "remotePubKey: \(channel.remotePubKey)"
-        capacityLabel.text = "capacity: \(String(describing: channel.capacity))"
-        localBalanceLabel.text = "localBalance: \(String(describing: channel.localBalance))"
-        remoteBalanceLabel.text = "remoteBalance: \(String(describing: channel.remoteBalance))"
+        
+        let capacity = Settings.primaryCurrency.value.format(satoshis: channel.capacity) ?? "-"
+        capacityLabel.text = "capacity: \(capacity)"
+        
+        let localBalance = Settings.primaryCurrency.value.format(satoshis: channel.localBalance) ?? "-"
+        localBalanceLabel.text = "localBalance: \(localBalance)"
+        
+        let remoteBalance = Settings.primaryCurrency.value.format(satoshis: channel.remoteBalance) ?? "-"
+        remoteBalanceLabel.text = "remoteBalance: \(remoteBalance)"
+
         updateCountLabel.text = "updateCount: \(String(describing: channel.updateCount ?? 0))"
         
         let blockHeight = (viewModel?.blockHeight.value ?? 0) - channel.blockHeight
