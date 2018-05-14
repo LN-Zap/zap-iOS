@@ -80,8 +80,18 @@ final class MainViewController: UIViewController, ContainerViewController {
     
     private func segmentedControl(select selection: ContainerContent) {
         let selectedColor = Color.darkBackground
-        networkButton.backgroundColor = selection == .network ? selectedColor : .clear
-        transactionsButton.backgroundColor = selection == .transactions ? selectedColor : .clear
+        
+        if selection == .network {
+            networkButton.backgroundColor = selectedColor
+            networkButton.imageView?.tintColor = Color.bottomGradientLeft
+            transactionsButton.backgroundColor = .clear
+            transactionsButton.imageView?.tintColor = .white
+        } else {
+            networkButton.backgroundColor = .clear
+            networkButton.imageView?.tintColor = .white
+            transactionsButton.backgroundColor = selectedColor
+            transactionsButton.imageView?.tintColor = Color.bottomGradientLeft
+        }
     }
     
     @IBAction private func transactionsButtonTapped(_ smender: Any) {
