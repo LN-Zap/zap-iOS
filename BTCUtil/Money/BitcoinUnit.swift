@@ -13,7 +13,7 @@ public enum BitcoinUnit {
     case bit
     case satoshi
     
-    public var exponent: Int16 {
+    public var exponent: Int {
         switch self {
         case .bitcoin:
             return 8
@@ -37,11 +37,11 @@ public enum BitcoinUnit {
         }
     }
     
-    var numberFormatter: NumberFormatter {
+    public var numberFormatter: NumberFormatter {
         let numberFormatter = NumberFormatter()
         numberFormatter.numberStyle = .decimal
         numberFormatter.minimumFractionDigits = minimumFractionDigits
-        numberFormatter.maximumFractionDigits = 8
+        numberFormatter.maximumFractionDigits = exponent
         numberFormatter.usesGroupingSeparator = true
         return numberFormatter
     }

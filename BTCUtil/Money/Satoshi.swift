@@ -20,7 +20,7 @@ extension Satoshi {
             raiseOnDivideByZero: false)
 
         return value
-            .multiplying(byPowerOf10: unit.exponent)
+            .multiplying(byPowerOf10: Int16(unit.exponent))
             .rounding(accordingToBehavior: handler)
     }
     
@@ -33,11 +33,15 @@ extension Satoshi {
         }
         
         let satoshis = Satoshi(string: string, locale: Locale.autoupdatingCurrent)
-        return Satoshi.from(value: satoshis, unit: unit)
+        if satoshis != Satoshi.notANumber {
+            return Satoshi.from(value: satoshis, unit: unit)
+        } else {
+            return 0
+        }
     }
     
     public func convert(to unit: BitcoinUnit) -> NSDecimalNumber {
-        return self.multiplying(byPowerOf10: -unit.exponent)
+        return self.multiplying(byPowerOf10: Int16(-unit.exponent))
     }
     
     public func format(unit: BitcoinUnit) -> String {

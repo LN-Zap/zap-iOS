@@ -15,7 +15,7 @@ extension SignalProtocol where Element == Satoshi, Error == NoError {
     func bind<B: BindableProtocol>(to bindable: B, currency: Observable<Currency>) -> Disposable where B.Element == String? {
         return ReactiveKit
             .combineLatest(self, currency) { satoshis, currency -> String? in
-                return currency.format(satoshis)
+                return currency.format(satoshis: satoshis)
             }
             .bind(to: bindable)
     }

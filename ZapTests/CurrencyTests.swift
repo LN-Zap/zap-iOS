@@ -26,7 +26,7 @@ class CurrencyTests: XCTestCase {
         ]
         
         for (currency, value, output) in data {
-            XCTAssertEqual(currency.format(value), output)
+            XCTAssertEqual(currency.format(satoshis: value), output)
         }
     }
     

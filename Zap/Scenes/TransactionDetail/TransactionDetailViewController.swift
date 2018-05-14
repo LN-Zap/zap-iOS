@@ -32,11 +32,11 @@ class TransactionDetailViewController: UIViewController {
         
         confirmationsLabel.text = "Confirmations: \(transaction.confirmations)"
         
-        let feesString = Settings.primaryCurrency.value.format(transaction.fees) ?? "0"
+        let feesString = Settings.primaryCurrency.value.format(satoshis: transaction.fees) ?? "0"
         feesLabel.text = "Fees: \(feesString)"
         
         addressLabel.text = transaction.firstDestinationAddress
-        amountLabel.text = Settings.primaryCurrency.value.format(transaction.amount)
+        amountLabel.text = Settings.primaryCurrency.value.format(satoshis: transaction.amount)
         dateLabel.text = DateFormatter.localizedString(from: transaction.date, dateStyle: .medium, timeStyle: .short)
     }
     

@@ -22,12 +22,10 @@ class AmountInputView: UIControl {
     }
     @IBOutlet private weak var keyPadHeightConstraint: NSLayoutConstraint!
     
-    private var amountString: String? {
+    private var formattedAmount: String? {
         didSet {
-            amountTextField.text = amountString
-            if amountString != nil, let range = validRange {
-                amountTextField.textColor = range.contains(satoshis) ? Color.text : Color.red
-            }
+            amountTextField.text = formattedAmount
+            updateValidityIndicator()
             sendActions(for: .valueChanged)
         }
     }
@@ -35,11 +33,12 @@ class AmountInputView: UIControl {
     var validRange: ClosedRange<Satoshi>?
     var satoshis: Satoshi {
         get {
-            guard let amountString = amountString else { return 0 }
-            return Satoshi.from(string: amountString, unit: .bit) ?? 0
+            guard let formattedAmount = formattedAmount else { return 0 }
+            return Settings.primaryCurrency.value.satoshis(from: formattedAmount) ?? 0
         }
         set {
-            let stringValue = newValue.convert(to: Settings.cryptoCurrency.value.unit).stringValue
+            guard let stringValue = Settings.primaryCurrency.value.stringValue(satoshis: newValue) else { return }
+            
             if updateKeyPadString(input: stringValue) {
                 keyPadView.numberString = stringValue
             }
@@ -81,7 +80,9 @@ class AmountInputView: UIControl {
     }
     
     @IBAction private func swapCurrencies(_ sender: Any) {
+        let oldSatoshis = satoshis
         Settings.swapCurrencies()
+        satoshis = oldSatoshis
     }
     
     private func setupKeyPad() {
@@ -89,10 +90,17 @@ class AmountInputView: UIControl {
     }
     
     private func updateKeyPadString(input: String) -> Bool {
-        let numberFormatter = InputNumberFormatter(unit: .bit)
+        let numberFormatter = InputNumberFormatter(currency: Settings.primaryCurrency.value)
         guard let output = numberFormatter.validate(input) else { return false }
-        amountString = output
+        formattedAmount = output
         return true
+    }
+    
+    private func updateValidityIndicator() {
+        if formattedAmount != nil,
+            let range = validRange {
+            amountTextField.textColor = range.contains(satoshis) ? Color.text : Color.red
+        }
     }
 }
 

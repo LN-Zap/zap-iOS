@@ -9,13 +9,23 @@ import BTCUtil
 import Foundation
 
 final class InputNumberFormatter {
-    let unit: BitcoinUnit
+    let currency: Currency
     
-    init(unit: BitcoinUnit) {
-        self.unit = unit
+    init(currency: Currency) {
+        self.currency = currency
     }
     
     func validate(_ input: String) -> String? {
+        if let bitcoin = currency as? Bitcoin {
+            return validate(input, for: bitcoin.unit)
+        } else {
+            guard validate(input, for: BitcoinUnit.bit) != nil else { return nil } // hack. bit format == fiat format
+            let inputNumber = NSDecimalNumber(string: input)
+            return currency.format(value: inputNumber)
+        }
+    }
+    
+    func validate(_ input: String, for unit: BitcoinUnit) -> String? {
         let numberFormatter = NumberFormatter()
         numberFormatter.numberStyle = .decimal
         numberFormatter.usesGroupingSeparator = true

@@ -41,7 +41,7 @@ class InputNumberFormatterTests: XCTestCase {
         ]
         
         for (input, unit, output) in data {
-            let formatter = InputNumberFormatter(unit: unit)
+            let formatter = InputNumberFormatter(currency: Bitcoin(unit: unit))
             XCTAssertEqual(formatter.validate(input), output, "(\(input), \(unit) = \(String(describing: output)))")
         }
     }
