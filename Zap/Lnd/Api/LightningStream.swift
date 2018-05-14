@@ -109,6 +109,12 @@ final class LightningStream: LightningProtocol {
         LndmobileAddInvoice(data, LndCallback<Lnrpc_AddInvoiceResponse, String>(callback) { $0.paymentRequest })
     }
     
+    func invoices(callback: @escaping (Result<[Invoice]>) -> Void) {
+        LndmobileListInvoices(nil, LndCallback<Lnrpc_ListInvoiceResponse, [Invoice]>(callback) {
+            $0.invoices.compactMap { Invoice(invoice: $0) }
+        })
+    }
+    
     func subscribeChannelGraph(callback: @escaping (Result<GraphTopologyUpdate>) -> Void) {
         LndmobileSubscribeChannelGraph(nil, LndCallback<Lnrpc_GraphTopologyUpdate, GraphTopologyUpdate>(callback, map: GraphTopologyUpdate.init))
     }
