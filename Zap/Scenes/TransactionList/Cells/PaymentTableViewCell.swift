@@ -14,18 +14,12 @@ class PaymentTableViewCell: BondTableViewCell {
     @IBOutlet private weak var amountLabel: UILabel!
     @IBOutlet private weak var timeLabel: UILabel!
     
-    var payment: TransactionViewModel? {
+    var payment: LightningPaymentViewModel? {
         didSet {
             guard let payment = payment else { return }
             
-            payment.displayText
-                .bind(to: nameLabel.reactive.text)
-                .dispose(in: onReuseBag)
-            
-            payment.amount
-                .bind(to: amountLabel.reactive.text, currency: Settings.primaryCurrency)
-                .dispose(in: onReuseBag)
-            
+            nameLabel.text = payment.displayText
+            amountLabel.text = Settings.primaryCurrency.value.format(satoshis: payment.amount)
             timeLabel.text = payment.time
         }
     }

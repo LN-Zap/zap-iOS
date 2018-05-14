@@ -16,8 +16,8 @@ final class TransactionListViewModel: NSObject {
         sections = MutableObservable2DArray()
         super.init()
         
-        combineLatest(viewModel.onChainTransactions, viewModel.payments) {
-            return $0 as [Transaction] + $1 as [Transaction]
+        combineLatest(viewModel.onChainTransactions, viewModel.payments, viewModel.invoices) {
+            return $0 as [Transaction] + $1 as [Transaction] + $2 as [Transaction]
         }
         .observeNext { [weak self] transactions in
             guard let result = self?.bondSections(transactions: transactions) else { return }

@@ -44,6 +44,7 @@ final class ViewModel: NSObject {
     // Transactions
     let onChainTransactions = Observable<[Transaction]>([])
     let payments = Observable<[Transaction]>([])
+    let invoices = Observable<[Transaction]>([])
     
     // Channel
     let channels = Observable<[Channel]>([])
@@ -98,7 +99,6 @@ final class ViewModel: NSObject {
             .distinct()
             .observeNext { [weak self] _ in
                 self?.updateChannelBalance()
-                self?.updatePayments()
                 self?.updateChannels()
                 self?.updatePendingChannels()
                 self?.updateWalletBalance()
@@ -165,17 +165,19 @@ final class ViewModel: NSObject {
         api.transactions { [onChainTransactions] result in
             onChainTransactions.value = result.value ?? []
         }
+        
+        api.payments { [payments] result in
+            payments.value = result.value ?? []
+        }
+
+        api.invoices { [invoices] result in
+            invoices.value = result.value ?? []
+        }
     }
 
     private func updateChannelBalance() {
         api.channelBalance { [channelBalance] result in
             channelBalance.value = result.value ?? 0
-        }
-    }
-    
-    private func updatePayments() {
-        api.payments { [payments] result in
-            payments.value = result.value ?? []
         }
     }
     
@@ -202,7 +204,7 @@ final class ViewModel: NSObject {
     func sendPayment(_ paymentRequest: PaymentRequest, callback: @escaping (Bool) -> Void) {
         api.sendPayment(paymentRequest) { [weak self] _ in
             self?.updateChannelBalance()
-            self?.updatePayments()
+            self?.updateTransactions()
             self?.updateChannels()
             callback(true)
         }

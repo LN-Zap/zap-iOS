@@ -14,7 +14,7 @@ class TransactionDetailViewController: UIViewController {
     @IBOutlet private weak var amountLabel: UILabel!
     @IBOutlet private weak var dateLabel: UILabel!
     
-    var transactionViewModel: TransactionViewModel?
+    var transactionViewModel: OnChainTransactionViewModel?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -28,7 +28,7 @@ class TransactionDetailViewController: UIViewController {
     }
     
     private func updateTransaction() {
-        guard let transaction = transactionViewModel?.transaction as? BlockchainTransaction else { return }
+        guard let transaction = transactionViewModel?.onChainTransaction else { return }
         
         confirmationsLabel.text = "Confirmations: \(transaction.confirmations)"
         

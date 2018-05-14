@@ -12,13 +12,19 @@ final class TransactionBond: TableViewBinder<Observable2DArray<String, Transacti
     override func cellForRow(at indexPath: IndexPath, tableView: UITableView, dataSource: Observable2DArray<String, TransactionViewModel>) -> UITableViewCell {
         let transaction = dataSource.item(at: indexPath)
 
-        if transaction.isOnChain {
+        switch transaction.type {
+            
+        case .onChainTransaction(let viewModel):
             let cell: OnChainTransactionTableViewCell = tableView.dequeueCellForIndexPath(indexPath)
-            cell.onChainTransaction = transaction
+            cell.onChainTransaction = viewModel
             return cell
-        } else {
+        case .lightningPayment(let viewModel):
             let cell: PaymentTableViewCell = tableView.dequeueCellForIndexPath(indexPath)
-            cell.payment = transaction
+            cell.payment = viewModel
+            return cell
+        case .lightningInvoice(let viewModel):
+            let cell: InvoiceTableViewCell = tableView.dequeueCellForIndexPath(indexPath)
+            cell.invoice = viewModel
             return cell
         }
     }
@@ -55,6 +61,7 @@ class TransactionListViewController: UIViewController {
         tableView.rowHeight = 66
         tableView.registerCell(OnChainTransactionTableViewCell.self)
         tableView.registerCell(PaymentTableViewCell.self)
+        tableView.registerCell(InvoiceTableViewCell.self)
         tableView.refreshControl = UIRefreshControl()
         tableView.refreshControl?.addTarget(self, action: #selector(refresh), for: .valueChanged)
         
@@ -89,14 +96,19 @@ extension TransactionListViewController: UITableViewDelegate {
         
         let transactionViewModel = transactionListViewModel.sections.item(at: indexPath)
         let viewController: UINavigationController
-        if transactionViewModel.isOnChain {
+        
+        switch transactionViewModel.type {
+        case .onChainTransaction(let viewModel):
             viewController = Storyboard.transactionDetail.initial(viewController: UINavigationController.self)
             if let transactionDetailViewController = viewController.topViewController as? TransactionDetailViewController {
-                transactionDetailViewController.transactionViewModel = transactionViewModel
+                transactionDetailViewController.transactionViewModel = viewModel
             }
-        } else {
+        case .lightningPayment(_):
             viewController = Storyboard.paymentDetail.initial(viewController: UINavigationController.self)
+        case .lightningInvoice(_):
+            fatalError("not implemented")
         }
+        
         present(viewController, animated: true, completion: nil)
     }
 }

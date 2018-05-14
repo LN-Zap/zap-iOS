@@ -10,7 +10,7 @@ import UIKit
 final class DebugButton {
     static let instance = DebugButton()
     private weak var button: UIButton?
-    private let buttonTitle = "⌘"
+    private let buttonTitle = " "
     
     private init() {}
     

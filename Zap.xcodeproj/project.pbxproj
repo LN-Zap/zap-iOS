@@ -141,6 +141,8 @@
 		AD5FA001207CCB8B000E9493 /* RequestViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD5FA000207CCB8B000E9493 /* RequestViewController.swift */; };
 		AD5FA003207D0D03000E9493 /* BitcoinURI.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD5FA002207D0D02000E9493 /* BitcoinURI.swift */; };
 		AD5FA005207D0E70000E9493 /* BitcoinURITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD5FA004207D0E70000E9493 /* BitcoinURITests.swift */; };
+		AD6FFC9920A9C46B00B57330 /* InvoiceTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD6FFC9720A9C46B00B57330 /* InvoiceTableViewCell.swift */; };
+		AD6FFC9A20A9C46B00B57330 /* InvoiceTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = AD6FFC9820A9C46B00B57330 /* InvoiceTableViewCell.xib */; };
 		AD77464220750D7700EC596B /* Settings.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AD77464120750D7700EC596B /* Settings.storyboard */; };
 		AD77464720750DFB00EC596B /* SettingsContainerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD77464620750DFB00EC596B /* SettingsContainerViewController.swift */; };
 		AD7746492076122D00EC596B /* AddressType.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD7746482076122D00EC596B /* AddressType.swift */; };
@@ -399,6 +401,8 @@
 		AD5FA000207CCB8B000E9493 /* RequestViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RequestViewController.swift; sourceTree = "<group>"; };
 		AD5FA002207D0D02000E9493 /* BitcoinURI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BitcoinURI.swift; sourceTree = "<group>"; };
 		AD5FA004207D0E70000E9493 /* BitcoinURITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BitcoinURITests.swift; sourceTree = "<group>"; };
+		AD6FFC9720A9C46B00B57330 /* InvoiceTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InvoiceTableViewCell.swift; sourceTree = "<group>"; };
+		AD6FFC9820A9C46B00B57330 /* InvoiceTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = InvoiceTableViewCell.xib; sourceTree = "<group>"; };
 		AD77464120750D7700EC596B /* Settings.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Settings.storyboard; sourceTree = "<group>"; };
 		AD77464620750DFB00EC596B /* SettingsContainerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsContainerViewController.swift; sourceTree = "<group>"; };
 		AD7746482076122D00EC596B /* AddressType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddressType.swift; sourceTree = "<group>"; };
@@ -769,6 +773,8 @@
 				A0731FE02014A22B00C55E45 /* OnChainTransactionTableViewCell.xib */,
 				A0A96B8D2017908600788808 /* PaymentTableViewCell.swift */,
 				A0A96B8E2017908600788808 /* PaymentTableViewCell.xib */,
+				AD6FFC9720A9C46B00B57330 /* InvoiceTableViewCell.swift */,
+				AD6FFC9820A9C46B00B57330 /* InvoiceTableViewCell.xib */,
 			);
 			path = Cells;
 			sourceTree = "<group>";
@@ -1350,6 +1356,7 @@
 				AD99C9F5209085B20061C565 /* OpenChannel.storyboard in Resources */,
 				AD99C9ED209072710061C565 /* QRCodeScanner.storyboard in Resources */,
 				A0605F88202C963800EA903C /* SectionHeaderView.xib in Resources */,
+				AD6FFC9A20A9C46B00B57330 /* InvoiceTableViewCell.xib in Resources */,
 				A024B85720161586002B8897 /* Send.storyboard in Resources */,
 				AD99C9F92090C2600061C565 /* AmountInputView.xib in Resources */,
 				A024B85120160F93002B8897 /* ChannelTableViewCell.xib in Resources */,
@@ -1564,6 +1571,7 @@
 				A0F353D020692570005B3639 /* GradientView.swift in Sources */,
 				A0C2EABB206F8B02003AE56E /* FiatCurrency.swift in Sources */,
 				AD77464E2076162300EC596B /* Network+Localizable.swift in Sources */,
+				AD6FFC9920A9C46B00B57330 /* InvoiceTableViewCell.swift in Sources */,
 				ADC29C0C20A9B0A0008B2DC2 /* Invoice.swift in Sources */,
 				ADBB36292080B2AE005662B4 /* TestingTemplates.swift in Sources */,
 				A0C2EAC4206F9539003AE56E /* ExchangeUpdaterJob.swift in Sources */,

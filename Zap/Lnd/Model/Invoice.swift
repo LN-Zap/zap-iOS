@@ -8,26 +8,32 @@
 import BTCUtil
 import Foundation
 
-struct Invoice {
+struct Invoice: Transaction, Equatable{
+    let id: String
+    let fees: Satoshi = 0
     let memo: String
-    let value: Satoshi
+    let amount: Satoshi
     let settled: Bool
-    let creationDate: Date
+    let date: Date
     let settleDate: Date?
     let expiry: Date
+    let paymentRequest: String
 }
 
 extension Invoice {
     init(invoice: Lnrpc_Invoice) {
+        id = invoice.rHash.hexString()
         memo = invoice.memo
-        value = Satoshi(value: invoice.value)
+        amount = Satoshi(value: invoice.value)
         settled = invoice.settled
-        creationDate = Date(timeIntervalSince1970: TimeInterval(invoice.creationDate))
+        date = Date(timeIntervalSince1970: TimeInterval(invoice.creationDate))
         if invoice.settled {
             settleDate = Date(timeIntervalSince1970: TimeInterval(invoice.settleDate))
         } else {
             settleDate = nil
         }
         expiry = Date(timeIntervalSince1970: TimeInterval(invoice.creationDate + invoice.expiry))
+        
+        paymentRequest = invoice.paymentRequest
     }
 }
