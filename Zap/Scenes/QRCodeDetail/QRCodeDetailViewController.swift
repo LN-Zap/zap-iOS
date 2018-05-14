@@ -48,11 +48,7 @@ final class QRCodeDetailViewController: UIViewController {
     @IBAction private func shareButtonTapped(_ sender: Any) {
         guard let address = viewModel?.address else { return }
 
-        var items: [Any] = [address]
-        
-        if let image = qrCodeImageView.image {
-            items.append(image)
-        }
+        let items: [Any] = [address]
         
         let activityViewController = UIActivityViewController(activityItems: items, applicationActivities: nil)
         present(activityViewController, animated: true, completion: nil)

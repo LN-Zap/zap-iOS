@@ -146,6 +146,8 @@
 		AD6FFC9C20A9D15E00B57330 /* OnChainTransactionViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD6FFC9B20A9D15E00B57330 /* OnChainTransactionViewModel.swift */; };
 		AD6FFC9E20A9D19400B57330 /* LightningPaymentViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD6FFC9D20A9D19400B57330 /* LightningPaymentViewModel.swift */; };
 		AD6FFCA020A9D19E00B57330 /* LightningInvoiceViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD6FFC9F20A9D19E00B57330 /* LightningInvoiceViewModel.swift */; };
+		AD6FFCA220A9D3C600B57330 /* InvoiceDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD6FFCA120A9D3C600B57330 /* InvoiceDetailViewController.swift */; };
+		AD6FFCA420A9D3D100B57330 /* InvoiceDetail.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AD6FFCA320A9D3D100B57330 /* InvoiceDetail.storyboard */; };
 		AD77464220750D7700EC596B /* Settings.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AD77464120750D7700EC596B /* Settings.storyboard */; };
 		AD77464720750DFB00EC596B /* SettingsContainerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD77464620750DFB00EC596B /* SettingsContainerViewController.swift */; };
 		AD7746492076122D00EC596B /* AddressType.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD7746482076122D00EC596B /* AddressType.swift */; };
@@ -409,6 +411,8 @@
 		AD6FFC9B20A9D15E00B57330 /* OnChainTransactionViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnChainTransactionViewModel.swift; sourceTree = "<group>"; };
 		AD6FFC9D20A9D19400B57330 /* LightningPaymentViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LightningPaymentViewModel.swift; sourceTree = "<group>"; };
 		AD6FFC9F20A9D19E00B57330 /* LightningInvoiceViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LightningInvoiceViewModel.swift; sourceTree = "<group>"; };
+		AD6FFCA120A9D3C600B57330 /* InvoiceDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InvoiceDetailViewController.swift; sourceTree = "<group>"; };
+		AD6FFCA320A9D3D100B57330 /* InvoiceDetail.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = InvoiceDetail.storyboard; sourceTree = "<group>"; };
 		AD77464120750D7700EC596B /* Settings.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Settings.storyboard; sourceTree = "<group>"; };
 		AD77464620750DFB00EC596B /* SettingsContainerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsContainerViewController.swift; sourceTree = "<group>"; };
 		AD7746482076122D00EC596B /* AddressType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddressType.swift; sourceTree = "<group>"; };
@@ -1029,6 +1033,8 @@
 		AD77465B2077C0FA00EC596B /* TransactionDetail */ = {
 			isa = PBXGroup;
 			children = (
+				AD6FFCA320A9D3D100B57330 /* InvoiceDetail.storyboard */,
+				AD6FFCA120A9D3C600B57330 /* InvoiceDetailViewController.swift */,
 				AD7746642077C3D600EC596B /* PaymentDetail.storyboard */,
 				AD7746602077C3BF00EC596B /* PaymentDetailViewController.swift */,
 				AD77465C2077C11200EC596B /* TransactionDetail.storyboard */,
@@ -1346,6 +1352,7 @@
 				A0919154203C27C300FA525A /* Roboto-Bold.ttf in Resources */,
 				A0A05A2D2013EDFB0007D1C9 /* QRCodeDetail.storyboard in Resources */,
 				A070D968202B5163000A8274 /* Localizable.strings in Resources */,
+				AD6FFCA420A9D3D100B57330 /* InvoiceDetail.storyboard in Resources */,
 				A0A96B902017908600788808 /* LightningPaymentTableViewCell.xib in Resources */,
 				A0A05A0A2013CF960007D1C9 /* Assets.xcassets in Resources */,
 				AD7746652077C3D600EC596B /* PaymentDetail.storyboard in Resources */,
@@ -1599,6 +1606,7 @@
 				ADF79366208E000C0086B2CA /* SetupPinViewController.swift in Sources */,
 				ADCE01C1207B5C0300CA72E8 /* MnemonicViewModel.swift in Sources */,
 				ADBB3620207FA5D6005662B4 /* Date+Localizable.swift in Sources */,
+				AD6FFCA220A9D3C600B57330 /* InvoiceDetailViewController.swift in Sources */,
 				A0376B77201CD67700F1FBEF /* PinViewController.swift in Sources */,
 				A0A05A5C20149F720007D1C9 /* TransactionListViewController.swift in Sources */,
 				A0A05A032013CF960007D1C9 /* AppDelegate.swift in Sources */,

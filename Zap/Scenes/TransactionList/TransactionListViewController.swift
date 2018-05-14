@@ -105,8 +105,11 @@ extension TransactionListViewController: UITableViewDelegate {
             }
         case .lightningPayment:
             viewController = Storyboard.paymentDetail.initial(viewController: UINavigationController.self)
-        case .lightningInvoice:
-            fatalError("not implemented")
+        case .lightningInvoice(let viewModel):
+            viewController = Storyboard.invoiceDetail.initial(viewController: UINavigationController.self)
+            if let invoiceDetailViewController = viewController.topViewController as? InvoiceDetailViewController {
+                invoiceDetailViewController.lightningInvoiceViewModel = viewModel
+            }
         }
         
         present(viewController, animated: true, completion: nil)

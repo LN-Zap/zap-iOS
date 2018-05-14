@@ -12,6 +12,7 @@ enum Storyboard: String {
     case createWallet
     case debug
     case deposit
+    case invoiceDetail
     case loading
     case main
     case numericKeyPad
