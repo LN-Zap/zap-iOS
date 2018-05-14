@@ -7,7 +7,7 @@
 
 import UIKit
 
-class InvoiceTableViewCell: BondTableViewCell {
+class LightningInvoiceTableViewCell: BondTableViewCell {
     @IBOutlet private weak var titleLabel: UILabel!
     @IBOutlet private weak var primaryAmountLabel: UILabel!
     @IBOutlet private weak var secondaryAmountLabel: UILabel!

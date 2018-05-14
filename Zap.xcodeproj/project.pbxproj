@@ -100,8 +100,8 @@
 		A0A96B84201748C200788808 /* UILabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0A96B83201748C200788808 /* UILabel.swift */; };
 		A0A96B8620174BAC00788808 /* CloseStatusUpdate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0A96B8520174BAC00788808 /* CloseStatusUpdate.swift */; };
 		A0A96B88201769F100788808 /* String.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0A96B87201769F100788808 /* String.swift */; };
-		A0A96B8F2017908600788808 /* PaymentTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0A96B8D2017908600788808 /* PaymentTableViewCell.swift */; };
-		A0A96B902017908600788808 /* PaymentTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = A0A96B8E2017908600788808 /* PaymentTableViewCell.xib */; };
+		A0A96B8F2017908600788808 /* LightningPaymentTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0A96B8D2017908600788808 /* LightningPaymentTableViewCell.swift */; };
+		A0A96B902017908600788808 /* LightningPaymentTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = A0A96B8E2017908600788808 /* LightningPaymentTableViewCell.xib */; };
 		A0B91A84202628EF009AD2D3 /* Settings.bundle in Resources */ = {isa = PBXBuildFile; fileRef = A0B91A83202628EF009AD2D3 /* Settings.bundle */; };
 		A0BD44DA206FB47300BF27A3 /* CurrencyTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0BD44D9206FB47300BF27A3 /* CurrencyTests.swift */; };
 		A0BD44DC206FCAD900BF27A3 /* SignalProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0BD44DB206FCAD900BF27A3 /* SignalProtocol.swift */; };
@@ -141,8 +141,11 @@
 		AD5FA001207CCB8B000E9493 /* RequestViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD5FA000207CCB8B000E9493 /* RequestViewController.swift */; };
 		AD5FA003207D0D03000E9493 /* BitcoinURI.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD5FA002207D0D02000E9493 /* BitcoinURI.swift */; };
 		AD5FA005207D0E70000E9493 /* BitcoinURITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD5FA004207D0E70000E9493 /* BitcoinURITests.swift */; };
-		AD6FFC9920A9C46B00B57330 /* InvoiceTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD6FFC9720A9C46B00B57330 /* InvoiceTableViewCell.swift */; };
-		AD6FFC9A20A9C46B00B57330 /* InvoiceTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = AD6FFC9820A9C46B00B57330 /* InvoiceTableViewCell.xib */; };
+		AD6FFC9920A9C46B00B57330 /* LightningInvoiceTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD6FFC9720A9C46B00B57330 /* LightningInvoiceTableViewCell.swift */; };
+		AD6FFC9A20A9C46B00B57330 /* LightningInvoiceTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = AD6FFC9820A9C46B00B57330 /* LightningInvoiceTableViewCell.xib */; };
+		AD6FFC9C20A9D15E00B57330 /* OnChainTransactionViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD6FFC9B20A9D15E00B57330 /* OnChainTransactionViewModel.swift */; };
+		AD6FFC9E20A9D19400B57330 /* LightningPaymentViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD6FFC9D20A9D19400B57330 /* LightningPaymentViewModel.swift */; };
+		AD6FFCA020A9D19E00B57330 /* LightningInvoiceViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD6FFC9F20A9D19E00B57330 /* LightningInvoiceViewModel.swift */; };
 		AD77464220750D7700EC596B /* Settings.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AD77464120750D7700EC596B /* Settings.storyboard */; };
 		AD77464720750DFB00EC596B /* SettingsContainerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD77464620750DFB00EC596B /* SettingsContainerViewController.swift */; };
 		AD7746492076122D00EC596B /* AddressType.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD7746482076122D00EC596B /* AddressType.swift */; };
@@ -157,7 +160,7 @@
 		AD77465F2077C12200EC596B /* TransactionDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD77465E2077C12200EC596B /* TransactionDetailViewController.swift */; };
 		AD7746622077C3BF00EC596B /* PaymentDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD7746602077C3BF00EC596B /* PaymentDetailViewController.swift */; };
 		AD7746652077C3D600EC596B /* PaymentDetail.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AD7746642077C3D600EC596B /* PaymentDetail.storyboard */; };
-		AD7746672077C72600EC596B /* TransactionViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD7746662077C72600EC596B /* TransactionViewModel.swift */; };
+		AD7746672077C72600EC596B /* TransactionType.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD7746662077C72600EC596B /* TransactionType.swift */; };
 		AD77466A2078EA9E00EC596B /* TransactionMetadataStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD7746692078EA9E00EC596B /* TransactionMetadataStore.swift */; };
 		AD77466C2078EE5600EC596B /* TransactionMetadataUpdater.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD77466B2078EE5600EC596B /* TransactionMetadataUpdater.swift */; };
 		AD86BCFE2099F50C00A7866A /* rpc.pb.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD86BCFD2099F50C00A7866A /* rpc.pb.swift */; };
@@ -358,8 +361,8 @@
 		A0A96B83201748C200788808 /* UILabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UILabel.swift; sourceTree = "<group>"; };
 		A0A96B8520174BAC00788808 /* CloseStatusUpdate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CloseStatusUpdate.swift; sourceTree = "<group>"; };
 		A0A96B87201769F100788808 /* String.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = String.swift; sourceTree = "<group>"; };
-		A0A96B8D2017908600788808 /* PaymentTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaymentTableViewCell.swift; sourceTree = "<group>"; };
-		A0A96B8E2017908600788808 /* PaymentTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PaymentTableViewCell.xib; sourceTree = "<group>"; };
+		A0A96B8D2017908600788808 /* LightningPaymentTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LightningPaymentTableViewCell.swift; sourceTree = "<group>"; };
+		A0A96B8E2017908600788808 /* LightningPaymentTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = LightningPaymentTableViewCell.xib; sourceTree = "<group>"; };
 		A0A96B932017965100788808 /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		A0A96B9620179CA700788808 /* FiatCurrency.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FiatCurrency.swift; sourceTree = "<group>"; };
 		A0B91A83202628EF009AD2D3 /* Settings.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = Settings.bundle; sourceTree = "<group>"; };
@@ -401,8 +404,11 @@
 		AD5FA000207CCB8B000E9493 /* RequestViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RequestViewController.swift; sourceTree = "<group>"; };
 		AD5FA002207D0D02000E9493 /* BitcoinURI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BitcoinURI.swift; sourceTree = "<group>"; };
 		AD5FA004207D0E70000E9493 /* BitcoinURITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BitcoinURITests.swift; sourceTree = "<group>"; };
-		AD6FFC9720A9C46B00B57330 /* InvoiceTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InvoiceTableViewCell.swift; sourceTree = "<group>"; };
-		AD6FFC9820A9C46B00B57330 /* InvoiceTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = InvoiceTableViewCell.xib; sourceTree = "<group>"; };
+		AD6FFC9720A9C46B00B57330 /* LightningInvoiceTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LightningInvoiceTableViewCell.swift; sourceTree = "<group>"; };
+		AD6FFC9820A9C46B00B57330 /* LightningInvoiceTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = LightningInvoiceTableViewCell.xib; sourceTree = "<group>"; };
+		AD6FFC9B20A9D15E00B57330 /* OnChainTransactionViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnChainTransactionViewModel.swift; sourceTree = "<group>"; };
+		AD6FFC9D20A9D19400B57330 /* LightningPaymentViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LightningPaymentViewModel.swift; sourceTree = "<group>"; };
+		AD6FFC9F20A9D19E00B57330 /* LightningInvoiceViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LightningInvoiceViewModel.swift; sourceTree = "<group>"; };
 		AD77464120750D7700EC596B /* Settings.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Settings.storyboard; sourceTree = "<group>"; };
 		AD77464620750DFB00EC596B /* SettingsContainerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsContainerViewController.swift; sourceTree = "<group>"; };
 		AD7746482076122D00EC596B /* AddressType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddressType.swift; sourceTree = "<group>"; };
@@ -417,7 +423,7 @@
 		AD77465E2077C12200EC596B /* TransactionDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransactionDetailViewController.swift; sourceTree = "<group>"; };
 		AD7746602077C3BF00EC596B /* PaymentDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaymentDetailViewController.swift; sourceTree = "<group>"; };
 		AD7746642077C3D600EC596B /* PaymentDetail.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = PaymentDetail.storyboard; sourceTree = "<group>"; };
-		AD7746662077C72600EC596B /* TransactionViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransactionViewModel.swift; sourceTree = "<group>"; };
+		AD7746662077C72600EC596B /* TransactionType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransactionType.swift; sourceTree = "<group>"; };
 		AD7746692078EA9E00EC596B /* TransactionMetadataStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransactionMetadataStore.swift; sourceTree = "<group>"; };
 		AD77466B2078EE5600EC596B /* TransactionMetadataUpdater.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransactionMetadataUpdater.swift; sourceTree = "<group>"; };
 		AD86BCFD2099F50C00A7866A /* rpc.pb.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = rpc.pb.swift; path = Proto/rpc.pb.swift; sourceTree = SOURCE_ROOT; };
@@ -766,17 +772,20 @@
 			path = Request;
 			sourceTree = "<group>";
 		};
-		A0731FDE2014A20500C55E45 /* Cells */ = {
+		A0731FDE2014A20500C55E45 /* Types */ = {
 			isa = PBXGroup;
 			children = (
+				AD6FFC9720A9C46B00B57330 /* LightningInvoiceTableViewCell.swift */,
+				AD6FFC9820A9C46B00B57330 /* LightningInvoiceTableViewCell.xib */,
+				AD6FFC9F20A9D19E00B57330 /* LightningInvoiceViewModel.swift */,
+				A0A96B8D2017908600788808 /* LightningPaymentTableViewCell.swift */,
+				A0A96B8E2017908600788808 /* LightningPaymentTableViewCell.xib */,
+				AD6FFC9D20A9D19400B57330 /* LightningPaymentViewModel.swift */,
 				A0731FDF2014A22B00C55E45 /* OnChainTransactionTableViewCell.swift */,
 				A0731FE02014A22B00C55E45 /* OnChainTransactionTableViewCell.xib */,
-				A0A96B8D2017908600788808 /* PaymentTableViewCell.swift */,
-				A0A96B8E2017908600788808 /* PaymentTableViewCell.xib */,
-				AD6FFC9720A9C46B00B57330 /* InvoiceTableViewCell.swift */,
-				AD6FFC9820A9C46B00B57330 /* InvoiceTableViewCell.xib */,
+				AD6FFC9B20A9D15E00B57330 /* OnChainTransactionViewModel.swift */,
 			);
-			path = Cells;
+			path = Types;
 			sourceTree = "<group>";
 		};
 		A07C1034203DE3D0006C7FE8 /* ViewModel */ = {
@@ -968,11 +977,11 @@
 		A0DDC0732018C74F00AEFF94 /* TransactionList */ = {
 			isa = PBXGroup;
 			children = (
-				A0731FDE2014A20500C55E45 /* Cells */,
+				A0731FDE2014A20500C55E45 /* Types */,
 				A0DDC05B201883D800AEFF94 /* TransactionList.storyboard */,
 				A0A05A5B20149F720007D1C9 /* TransactionListViewController.swift */,
 				A0F57DC1201E700C003AFA66 /* TransactionListViewModel.swift */,
-				AD7746662077C72600EC596B /* TransactionViewModel.swift */,
+				AD7746662077C72600EC596B /* TransactionType.swift */,
 			);
 			path = TransactionList;
 			sourceTree = "<group>";
@@ -1337,7 +1346,7 @@
 				A0919154203C27C300FA525A /* Roboto-Bold.ttf in Resources */,
 				A0A05A2D2013EDFB0007D1C9 /* QRCodeDetail.storyboard in Resources */,
 				A070D968202B5163000A8274 /* Localizable.strings in Resources */,
-				A0A96B902017908600788808 /* PaymentTableViewCell.xib in Resources */,
+				A0A96B902017908600788808 /* LightningPaymentTableViewCell.xib in Resources */,
 				A0A05A0A2013CF960007D1C9 /* Assets.xcassets in Resources */,
 				AD7746652077C3D600EC596B /* PaymentDetail.storyboard in Resources */,
 				ADCE01BB207B57ED00CA72E8 /* CreateWallet.storyboard in Resources */,
@@ -1356,7 +1365,7 @@
 				AD99C9F5209085B20061C565 /* OpenChannel.storyboard in Resources */,
 				AD99C9ED209072710061C565 /* QRCodeScanner.storyboard in Resources */,
 				A0605F88202C963800EA903C /* SectionHeaderView.xib in Resources */,
-				AD6FFC9A20A9C46B00B57330 /* InvoiceTableViewCell.xib in Resources */,
+				AD6FFC9A20A9C46B00B57330 /* LightningInvoiceTableViewCell.xib in Resources */,
 				A024B85720161586002B8897 /* Send.storyboard in Resources */,
 				AD99C9F92090C2600061C565 /* AmountInputView.xib in Resources */,
 				A024B85120160F93002B8897 /* ChannelTableViewCell.xib in Resources */,
@@ -1536,6 +1545,7 @@
 				A0A96B84201748C200788808 /* UILabel.swift in Sources */,
 				AD9E244520A377190014F9FA /* UIApplication.swift in Sources */,
 				ADCE01C3207B66A500CA72E8 /* ConfirmMnemonicViewModel.swift in Sources */,
+				AD6FFC9C20A9D15E00B57330 /* OnChainTransactionViewModel.swift in Sources */,
 				A0A96B88201769F100788808 /* String.swift in Sources */,
 				AD7746622077C3BF00EC596B /* PaymentDetailViewController.swift in Sources */,
 				AD86BD002099FB4500A7866A /* rpc.grpc.swift in Sources */,
@@ -1546,6 +1556,7 @@
 				AD86BCFE2099F50C00A7866A /* rpc.pb.swift in Sources */,
 				A0731FE62014AC0800C55E45 /* ContainerViewController.swift in Sources */,
 				A0F353CC206923E4005B3639 /* MainViewController.swift in Sources */,
+				AD6FFCA020A9D19E00B57330 /* LightningInvoiceViewModel.swift in Sources */,
 				ADF7936C208E66FA0086B2CA /* UICollectionView.swift in Sources */,
 				AD9E244320A375130014F9FA /* DebugButton.swift in Sources */,
 				A0919151203C249200FA525A /* Font.swift in Sources */,
@@ -1556,6 +1567,7 @@
 				ADBA12042090CD22001F7700 /* KeyPadView.swift in Sources */,
 				AD77465720765E4D00EC596B /* ChannelViewModel.swift in Sources */,
 				A0D3C98020629B9D0015C5D7 /* Scheduler.swift in Sources */,
+				AD6FFC9E20A9D19400B57330 /* LightningPaymentViewModel.swift in Sources */,
 				A0A05A2B2013ED920007D1C9 /* QRCodeDetailViewController.swift in Sources */,
 				A0919158203C309100FA525A /* Color.swift in Sources */,
 				A0DDC06A2018BFFA00AEFF94 /* LockWalletSettingsItem.swift in Sources */,
@@ -1571,7 +1583,7 @@
 				A0F353D020692570005B3639 /* GradientView.swift in Sources */,
 				A0C2EABB206F8B02003AE56E /* FiatCurrency.swift in Sources */,
 				AD77464E2076162300EC596B /* Network+Localizable.swift in Sources */,
-				AD6FFC9920A9C46B00B57330 /* InvoiceTableViewCell.swift in Sources */,
+				AD6FFC9920A9C46B00B57330 /* LightningInvoiceTableViewCell.swift in Sources */,
 				ADC29C0C20A9B0A0008B2DC2 /* Invoice.swift in Sources */,
 				ADBB36292080B2AE005662B4 /* TestingTemplates.swift in Sources */,
 				A0C2EAC4206F9539003AE56E /* ExchangeUpdaterJob.swift in Sources */,
@@ -1621,11 +1633,11 @@
 				A0D3C97A2060070D0015C5D7 /* WalletViewModel.swift in Sources */,
 				ADBB362D2080B755005662B4 /* AddressView.swift in Sources */,
 				A07C1036203DE3E6006C7FE8 /* ViewModel.swift in Sources */,
-				AD7746672077C72600EC596B /* TransactionViewModel.swift in Sources */,
+				AD7746672077C72600EC596B /* TransactionType.swift in Sources */,
 				A0919143203B152100FA525A /* UserDefaults.swift in Sources */,
 				A0D3C96A205D55570015C5D7 /* WalletUnlocker.swift in Sources */,
 				A0919156203C2CB600FA525A /* Style.swift in Sources */,
-				A0A96B8F2017908600788808 /* PaymentTableViewCell.swift in Sources */,
+				A0A96B8F2017908600788808 /* LightningPaymentTableViewCell.swift in Sources */,
 				A03F03602028C73F00F32279 /* SendLightningInvoiceViewModel.swift in Sources */,
 				A02C9FBD202EE9BE009821B1 /* OpenChannelViewModel.swift in Sources */,
 				A0A96B8620174BAC00788808 /* CloseStatusUpdate.swift in Sources */,

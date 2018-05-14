@@ -8,28 +8,28 @@
 import Bond
 import UIKit
 
-final class TransactionBond: TableViewBinder<Observable2DArray<String, TransactionViewModel>> {
-    override func cellForRow(at indexPath: IndexPath, tableView: UITableView, dataSource: Observable2DArray<String, TransactionViewModel>) -> UITableViewCell {
+final class TransactionBond: TableViewBinder<Observable2DArray<String, TransactionType>> {
+    override func cellForRow(at indexPath: IndexPath, tableView: UITableView, dataSource: Observable2DArray<String, TransactionType>) -> UITableViewCell {
         let transaction = dataSource.item(at: indexPath)
 
-        switch transaction.type {
+        switch transaction {
             
         case .onChainTransaction(let viewModel):
             let cell: OnChainTransactionTableViewCell = tableView.dequeueCellForIndexPath(indexPath)
             cell.onChainTransaction = viewModel
             return cell
         case .lightningPayment(let viewModel):
-            let cell: PaymentTableViewCell = tableView.dequeueCellForIndexPath(indexPath)
+            let cell: LightningPaymentTableViewCell = tableView.dequeueCellForIndexPath(indexPath)
             cell.payment = viewModel
             return cell
         case .lightningInvoice(let viewModel):
-            let cell: InvoiceTableViewCell = tableView.dequeueCellForIndexPath(indexPath)
+            let cell: LightningInvoiceTableViewCell = tableView.dequeueCellForIndexPath(indexPath)
             cell.invoice = viewModel
             return cell
         }
     }
     
-    func titleForHeader(in section: Int, dataSource: Observable2DArray<String, TransactionViewModel>) -> String? {
+    func titleForHeader(in section: Int, dataSource: Observable2DArray<String, TransactionType>) -> String? {
         return dataSource[section].metadata
     }
 }
@@ -60,8 +60,8 @@ class TransactionListViewController: UIViewController {
         
         tableView.rowHeight = 66
         tableView.registerCell(OnChainTransactionTableViewCell.self)
-        tableView.registerCell(PaymentTableViewCell.self)
-        tableView.registerCell(InvoiceTableViewCell.self)
+        tableView.registerCell(LightningPaymentTableViewCell.self)
+        tableView.registerCell(LightningInvoiceTableViewCell.self)
         tableView.refreshControl = UIRefreshControl()
         tableView.refreshControl?.addTarget(self, action: #selector(refresh), for: .valueChanged)
         
@@ -94,18 +94,18 @@ extension TransactionListViewController: UITableViewDelegate {
         
         tableView.deselectRow(at: indexPath, animated: true)
         
-        let transactionViewModel = transactionListViewModel.sections.item(at: indexPath)
+        let transactionType = transactionListViewModel.sections.item(at: indexPath)
         let viewController: UINavigationController
         
-        switch transactionViewModel.type {
+        switch transactionType {
         case .onChainTransaction(let viewModel):
             viewController = Storyboard.transactionDetail.initial(viewController: UINavigationController.self)
             if let transactionDetailViewController = viewController.topViewController as? TransactionDetailViewController {
                 transactionDetailViewController.transactionViewModel = viewModel
             }
-        case .lightningPayment(_):
+        case .lightningPayment:
             viewController = Storyboard.paymentDetail.initial(viewController: UINavigationController.self)
-        case .lightningInvoice(_):
+        case .lightningInvoice:
             fatalError("not implemented")
         }
         

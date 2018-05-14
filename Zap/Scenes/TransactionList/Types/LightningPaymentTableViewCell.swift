@@ -9,7 +9,7 @@ import Bond
 import BTCUtil
 import UIKit
 
-class PaymentTableViewCell: BondTableViewCell {
+class LightningPaymentTableViewCell: BondTableViewCell {
     @IBOutlet private weak var nameLabel: UILabel!
     @IBOutlet private weak var amountLabel: UILabel!
     @IBOutlet private weak var timeLabel: UILabel!
