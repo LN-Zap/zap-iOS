@@ -122,10 +122,12 @@
                     <connections>
                         <outlet property="amountLabel" destination="aoo-YQ-NoJ" id="LTS-DS-dbS"/>
                         <outlet property="copyButton" destination="8cP-Te-GUe" id="9xk-ck-6xX"/>
+                        <outlet property="copyShareContainer" destination="5Qz-QE-Ts1" id="0yF-gr-1CE"/>
                         <outlet property="dateLabel" destination="pu7-ut-TFJ" id="Z3S-e3-eWE"/>
                         <outlet property="expiryLabel" destination="ex2-0u-zid" id="Q2Y-hY-QFT"/>
                         <outlet property="memoLabel" destination="0Z6-d3-rdY" id="q4d-qO-2pg"/>
                         <outlet property="paymentRequestLabel" destination="bd2-jQ-NNQ" id="VnP-eG-tfD"/>
+                        <outlet property="qrCodeContainer" destination="EEH-Hp-pHQ" id="1IV-q6-wKg"/>
                         <outlet property="qrCodeImageView" destination="45f-EC-Glr" id="PLe-9k-oeS"/>
                         <outlet property="settleDateLabel" destination="ssX-y9-28Z" id="BnU-M0-nAi"/>
                         <outlet property="settledLabel" destination="Js4-cg-Qgd" id="eSA-4W-8qr"/>

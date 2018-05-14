@@ -8,19 +8,22 @@
 import UIKit
 
 class InvoiceDetailViewController: UIViewController {
-
-    @IBOutlet weak private var qrCodeImageView: UIImageView!
-    @IBOutlet weak private var paymentRequestLabel: UILabel!
-    @IBOutlet weak private var copyButton: UIButton!
-    @IBOutlet weak private var shareButton: UIButton!
-    @IBOutlet weak private var memoLabel: UILabel!
-    @IBOutlet weak private var amountLabel: UILabel!
-    @IBOutlet weak private var settledLabel: UILabel!
-    @IBOutlet weak private var dateLabel: UILabel!
-    @IBOutlet weak private var settleDateLabel: UILabel!
-    @IBOutlet weak private var expiryLabel: UILabel!
+    @IBOutlet private weak var qrCodeContainer: UIView!
+    @IBOutlet private weak var qrCodeImageView: UIImageView!
+    @IBOutlet private weak var paymentRequestLabel: UILabel!
+    @IBOutlet private weak var copyShareContainer: UIStackView!
+    @IBOutlet private weak var copyButton: UIButton!
+    @IBOutlet private weak var shareButton: UIButton!
+    @IBOutlet private weak var memoLabel: UILabel!
+    @IBOutlet private weak var amountLabel: UILabel!
+    @IBOutlet private weak var settledLabel: UILabel!
+    @IBOutlet private weak var dateLabel: UILabel!
+    @IBOutlet private weak var settleDateLabel: UILabel!
+    @IBOutlet private weak var expiryLabel: UILabel!
     
     var lightningInvoiceViewModel: LightningInvoiceViewModel?
+    
+    private var timer: Timer?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -35,12 +38,21 @@ class InvoiceDetailViewController: UIViewController {
     }
     
     private func updateViewModel() {
-        guard let invoice = lightningInvoiceViewModel?.lightningInvoice else { return }
+        guard let lightningInvoiceViewModel = lightningInvoiceViewModel else { return }
+        let invoice = lightningInvoiceViewModel.lightningInvoice
         
         qrCodeImageView.image = UIImage.qrCode(from: invoice.paymentRequest)
         paymentRequestLabel.text = invoice.paymentRequest
         
         dateLabel.text = "Created: \(DateFormatter.localizedString(from: invoice.date, dateStyle: .medium, timeStyle: .short))"
+        
+        let isUnsettled = lightningInvoiceViewModel.state
+            .map { $0 != .unsettled }
+        
+        [isUnsettled.bind(to: qrCodeContainer.reactive.isHidden),
+         isUnsettled.bind(to: paymentRequestLabel.reactive.isHidden),
+         isUnsettled.bind(to: copyShareContainer.reactive.isHidden)]
+            .dispose(in: reactive.bag)
         
         if !invoice.memo.isEmpty {
             memoLabel.text = invoice.memo
@@ -63,7 +75,31 @@ class InvoiceDetailViewController: UIViewController {
             settleDateLabel.isHidden = true
         }
         
-        expiryLabel.text = "Expiry: \(DateFormatter.localizedString(from: invoice.expiry, dateStyle: .medium, timeStyle: .short))"
+        if let expiry = formatedExpiry(for: invoice) {
+            expiryLabel.text = "Expiry: \(expiry)"
+        }
+        
+        timer = Timer.scheduledTimer(withTimeInterval: 1, repeats: true) { [weak self] _ in
+            if let expiry = self?.formatedExpiry(for: invoice) {
+                self?.expiryLabel.text = "Expiry: \(expiry)"
+            }
+        }
+    }
+    
+    override func viewDidDisappear(_ animated: Bool) {
+        super.viewDidDisappear(animated)
+        
+        timer?.invalidate()
+    }
+    
+    private func formatedExpiry(for invoice: LightningInvoice) -> String? {
+        let currentDate = Date()
+        guard invoice.expiry >= currentDate else { return "Expired" }
+        let formatter = DateComponentsFormatter()
+        formatter.allowedUnits = [.day, .hour, .minute, .second]
+        formatter.unitsStyle = .brief
+        formatter.maximumUnitCount = 3
+        return formatter.string(from: currentDate, to: invoice.expiry)
     }
     
     @IBAction private func doneButtonTapped(_ sender: Any) {

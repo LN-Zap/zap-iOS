@@ -5,8 +5,15 @@
 //  Copyright © 2018 Zap. All rights reserved.
 //
 
+import Bond
 import BTCUtil
 import Foundation
+
+enum LightningInvoiceState {
+    case settled
+    case unsettled
+    case expired
+}
 
 final class LightningInvoiceViewModel {
     let lightningInvoice: LightningInvoice
@@ -14,6 +21,8 @@ final class LightningInvoiceViewModel {
     let displayText: String
     let amount: Satoshi
     let time: String
+    
+    let state: Observable<LightningInvoiceState>
     
     init(lightningInvoice: LightningInvoice) {
         self.lightningInvoice = lightningInvoice
@@ -26,5 +35,13 @@ final class LightningInvoiceViewModel {
         
         amount = lightningInvoice.amount
         time = DateFormatter.localizedString(from: lightningInvoice.date, dateStyle: .none, timeStyle: .short)
+        
+        if lightningInvoice.settled {
+            state = Observable(.settled)
+        } else if lightningInvoice.expiry < Date() {
+            state = Observable(.expired)
+        } else {
+            state = Observable(.unsettled)
+        }
     }
 }
