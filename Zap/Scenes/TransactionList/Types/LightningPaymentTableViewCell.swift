@@ -19,7 +19,12 @@ class LightningPaymentTableViewCell: BondTableViewCell {
             guard let payment = payment else { return }
             
             nameLabel.text = payment.displayText
-            amountLabel.text = Settings.primaryCurrency.value.format(satoshis: payment.amount)
+            
+            Settings.primaryCurrency
+                .map { $0.format(satoshis: payment.amount ) }
+                .bind(to: amountLabel.reactive.text)
+                .dispose(in: reactive.bag)
+            
             timeLabel.text = payment.time
         }
     }
