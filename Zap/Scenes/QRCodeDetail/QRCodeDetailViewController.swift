@@ -14,6 +14,7 @@ final class QRCodeDetailViewController: UIViewController {
     @IBOutlet private weak var topView: UIView!
     @IBOutlet private weak var requestMethodImageView: UIImageView!
     @IBOutlet private weak var requestMethodLabel: UILabel!
+    @IBOutlet private weak var addressLabel: UILabel!
     
     var viewModel: QRCodeDetailViewModel?
     
@@ -24,6 +25,9 @@ final class QRCodeDetailViewController: UIViewController {
 
         title = viewModel.title
         
+        Style.button.apply(to: shareButton, copyButton)
+        Style.label.apply(to: addressLabel)
+        
         requestMethodLabel.font = Font.light.withSize(10)
         requestMethodLabel.tintColor = Color.text
         requestMethodImageView.tintColor = Color.text
@@ -31,6 +35,8 @@ final class QRCodeDetailViewController: UIViewController {
         topView.backgroundColor = Color.searchBackground
         
         qrCodeImageView?.image = UIImage.qrCode(from: viewModel.address)
+        
+        addressLabel.text = viewModel.address.replacingOccurrences(of: "bitcoin:", with: "").replacingOccurrences(of: "lightning:", with: "")
         
         updateRequestMethod()
     }

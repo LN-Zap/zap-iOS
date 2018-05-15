@@ -93,16 +93,25 @@
                                     <constraint firstAttribute="height" constant="86" id="y4D-lq-pyF"/>
                                 </constraints>
                             </view>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="middleTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Bdj-Rw-Rws">
+                                <rect key="frame" x="166" y="483.5" width="42" height="20.5"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="RnP-no-KLD" firstAttribute="width" secondItem="4ot-dn-Jh4" secondAttribute="width" priority="250" id="5Mb-x7-JAb"/>
                             <constraint firstItem="RnP-no-KLD" firstAttribute="centerY" secondItem="8yo-Sv-04g" secondAttribute="centerY" id="5Qw-js-Jef"/>
+                            <constraint firstItem="Bdj-Rw-Rws" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="8yo-Sv-04g" secondAttribute="leading" constant="20" id="6PJ-1g-P9n"/>
                             <constraint firstItem="b1p-Ku-by0" firstAttribute="width" secondItem="RnP-no-KLD" secondAttribute="width" id="7Di-0g-1jt"/>
+                            <constraint firstItem="Bdj-Rw-Rws" firstAttribute="top" secondItem="RnP-no-KLD" secondAttribute="bottom" constant="15" id="ATB-DY-eVH"/>
                             <constraint firstItem="rcA-JW-1Xe" firstAttribute="top" secondItem="8yo-Sv-04g" secondAttribute="top" id="GiA-K8-CNz"/>
                             <constraint firstItem="8yo-Sv-04g" firstAttribute="trailing" secondItem="rcA-JW-1Xe" secondAttribute="trailing" id="HpS-V5-Xbd"/>
                             <constraint firstItem="b1p-Ku-by0" firstAttribute="centerX" secondItem="8yo-Sv-04g" secondAttribute="centerX" id="ISe-gc-oFr"/>
                             <constraint firstItem="RnP-no-KLD" firstAttribute="centerX" secondItem="8yo-Sv-04g" secondAttribute="centerX" id="NPV-Sw-xey"/>
+                            <constraint firstItem="Bdj-Rw-Rws" firstAttribute="centerX" secondItem="8yo-Sv-04g" secondAttribute="centerX" id="UEm-go-PvN"/>
                             <constraint firstItem="rcA-JW-1Xe" firstAttribute="leading" secondItem="8yo-Sv-04g" secondAttribute="leading" id="bPr-ih-F4n"/>
                             <constraint firstItem="8yo-Sv-04g" firstAttribute="bottom" secondItem="b1p-Ku-by0" secondAttribute="bottom" constant="20" id="e9b-5N-cKx"/>
                             <constraint firstItem="RnP-no-KLD" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="8yo-Sv-04g" secondAttribute="leading" constant="10" id="mc1-G5-4TK"/>
@@ -117,6 +126,7 @@
                         </barButtonItem>
                     </navigationItem>
                     <connections>
+                        <outlet property="addressLabel" destination="Bdj-Rw-Rws" id="fSK-aK-Iuc"/>
                         <outlet property="copyButton" destination="0fc-Du-0lz" id="PNh-GK-q16"/>
                         <outlet property="qrCodeImageView" destination="RnP-no-KLD" id="BHQ-GE-3ag"/>
                         <outlet property="requestMethodImageView" destination="yVf-fS-o3e" id="mTb-KU-YgT"/>
