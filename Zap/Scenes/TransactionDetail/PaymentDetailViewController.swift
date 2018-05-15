@@ -8,14 +8,29 @@
 import UIKit
 
 class PaymentDetailViewController: UIViewController {
-
+    @IBOutlet private weak var feeLabel: UILabel!
+    @IBOutlet private weak var dateLabel: UILabel!
+    @IBOutlet private weak var amountLabel: UILabel!
+    
+    var lightningPaymentViewModel: LightningPaymentViewModel?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        title = "Payment Detail"
         
+        title = "Payment"
         titleTextStyle = .dark
         
-        view.backgroundColor = .red
+        Style.label.apply(to: feeLabel, dateLabel, amountLabel)
+        
+        updateViewModel()
+    }
+    
+    private func updateViewModel() {
+        guard let lightningPaymentViewModel = lightningPaymentViewModel else { return }
+        
+        feeLabel.text = "Fee: \(Settings.primaryCurrency.value.format(satoshis: lightningPaymentViewModel.lightningPayment.fees) ?? "-")"
+        dateLabel.text = "Date: \(lightningPaymentViewModel.lightningPayment.paymentHash)"
+        amountLabel.text = "Amount: \(Settings.primaryCurrency.value.format(satoshis: lightningPaymentViewModel.lightningPayment.amount) ?? "-")"
     }
     
     @IBAction private func doneButtonTapped(_ sender: Any) {

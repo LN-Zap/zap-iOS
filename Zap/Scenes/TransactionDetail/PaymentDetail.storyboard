@@ -17,7 +17,37 @@
                     <view key="view" contentMode="scaleToFill" id="X4y-L1-aAd">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="15" translatesAutoresizingMaskIntoConstraints="NO" id="y22-P4-Kxd">
+                                <rect key="frame" x="20" y="84" width="335" height="91.5"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hsw-bH-rJ1">
+                                        <rect key="frame" x="0.0" y="0.0" width="335" height="20.5"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nql-vu-TKw">
+                                        <rect key="frame" x="0.0" y="35.5" width="335" height="20.5"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8Bc-8V-0gH">
+                                        <rect key="frame" x="0.0" y="71" width="335" height="20.5"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                            </stackView>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="aCn-hO-Pfs" firstAttribute="trailing" secondItem="y22-P4-Kxd" secondAttribute="trailing" constant="20" id="1gn-I0-AEx"/>
+                            <constraint firstItem="y22-P4-Kxd" firstAttribute="top" secondItem="aCn-hO-Pfs" secondAttribute="top" constant="20" id="Qlh-cf-X0g"/>
+                            <constraint firstItem="y22-P4-Kxd" firstAttribute="leading" secondItem="aCn-hO-Pfs" secondAttribute="leading" constant="20" id="bt3-vX-jKk"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="aCn-hO-Pfs"/>
                     </view>
                     <navigationItem key="navigationItem" id="oXV-L8-hjB">
@@ -27,6 +57,11 @@
                             </connections>
                         </barButtonItem>
                     </navigationItem>
+                    <connections>
+                        <outlet property="amountLabel" destination="8Bc-8V-0gH" id="ivX-g5-8h1"/>
+                        <outlet property="dateLabel" destination="nql-vu-TKw" id="Pci-HD-UYJ"/>
+                        <outlet property="feeLabel" destination="hsw-bH-rJ1" id="ELE-no-Ctu"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="TDB-Wm-Rcw" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
