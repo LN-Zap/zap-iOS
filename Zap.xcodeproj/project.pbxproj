@@ -148,6 +148,7 @@
 		AD6FFCA020A9D19E00B57330 /* LightningInvoiceViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD6FFC9F20A9D19E00B57330 /* LightningInvoiceViewModel.swift */; };
 		AD6FFCA220A9D3C600B57330 /* InvoiceDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD6FFCA120A9D3C600B57330 /* InvoiceDetailViewController.swift */; };
 		AD6FFCA420A9D3D100B57330 /* InvoiceDetail.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AD6FFCA320A9D3D100B57330 /* InvoiceDetail.storyboard */; };
+		AD6FFCA620AB0A3700B57330 /* OnChainRequestAddressTypeSettingsItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD6FFCA520AB0A3700B57330 /* OnChainRequestAddressTypeSettingsItem.swift */; };
 		AD77464220750D7700EC596B /* Settings.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AD77464120750D7700EC596B /* Settings.storyboard */; };
 		AD77464720750DFB00EC596B /* SettingsContainerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD77464620750DFB00EC596B /* SettingsContainerViewController.swift */; };
 		AD7746492076122D00EC596B /* AddressType.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD7746482076122D00EC596B /* AddressType.swift */; };
@@ -413,6 +414,7 @@
 		AD6FFC9F20A9D19E00B57330 /* LightningInvoiceViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LightningInvoiceViewModel.swift; sourceTree = "<group>"; };
 		AD6FFCA120A9D3C600B57330 /* InvoiceDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InvoiceDetailViewController.swift; sourceTree = "<group>"; };
 		AD6FFCA320A9D3D100B57330 /* InvoiceDetail.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = InvoiceDetail.storyboard; sourceTree = "<group>"; };
+		AD6FFCA520AB0A3700B57330 /* OnChainRequestAddressTypeSettingsItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnChainRequestAddressTypeSettingsItem.swift; sourceTree = "<group>"; };
 		AD77464120750D7700EC596B /* Settings.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Settings.storyboard; sourceTree = "<group>"; };
 		AD77464620750DFB00EC596B /* SettingsContainerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsContainerViewController.swift; sourceTree = "<group>"; };
 		AD7746482076122D00EC596B /* AddressType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddressType.swift; sourceTree = "<group>"; };
@@ -738,6 +740,7 @@
 				A091914C203B3BAC00FA525A /* BitcoinUnitSettingsItem.swift */,
 				A091914A203B297D00FA525A /* CurrencySettingsItem.swift */,
 				A0DDC0692018BFFA00AEFF94 /* LockWalletSettingsItem.swift */,
+				AD6FFCA520AB0A3700B57330 /* OnChainRequestAddressTypeSettingsItem.swift */,
 				A0919146203B293000FA525A /* PaperKeySettingsItem.swift */,
 				A0DDC06B2018C07100AEFF94 /* SettingsItem.swift */,
 				A0919148203B294900FA525A /* TouchIDSettingItem.swift */,
@@ -1553,6 +1556,7 @@
 				AD9E244520A377190014F9FA /* UIApplication.swift in Sources */,
 				ADCE01C3207B66A500CA72E8 /* ConfirmMnemonicViewModel.swift in Sources */,
 				AD6FFC9C20A9D15E00B57330 /* OnChainTransactionViewModel.swift in Sources */,
+				AD6FFCA620AB0A3700B57330 /* OnChainRequestAddressTypeSettingsItem.swift in Sources */,
 				A0A96B88201769F100788808 /* String.swift in Sources */,
 				AD7746622077C3BF00EC596B /* PaymentDetailViewController.swift in Sources */,
 				AD86BD002099FB4500A7866A /* rpc.grpc.swift in Sources */,

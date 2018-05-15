@@ -194,7 +194,7 @@ final class ViewModel: NSObject {
     }
     
     func newAddress(callback: @escaping (Result<String>) -> Void) {
-        api.newAddress(callback: callback)
+        api.newAddress(type: Settings.onChainRequestAddressType.value, callback: callback)
     }
     
     func decodePaymentRequest(_ paymentRequest: String, callback: @escaping (Result<PaymentRequest>) -> Void) {

@@ -19,8 +19,16 @@ final class LightningStream: LightningProtocol {
         LndmobileGetNodeInfo(data, LndCallback<Lnrpc_NodeInfo, NodeInfo>(callback, map: NodeInfo.init))
     }
     
-    func newAddress(callback: @escaping (Result<String>) -> Void) {
-        let data = try? Lnrpc_NewAddressRequest(type: .nestedPubkeyHash).serializedData()
+    func newAddress(type: OnChainRequestAddressType, callback: @escaping (Result<String>) -> Void) {
+        let addressType: Lnrpc_NewAddressRequest.AddressType
+        switch type {
+        case .witnessPubkeyHash:
+            addressType = .witnessPubkeyHash
+        case .nestedPubkeyHash:
+            addressType = .nestedPubkeyHash
+        }
+        
+        let data = try? Lnrpc_NewAddressRequest(type: addressType).serializedData()
         LndmobileNewAddress(data, LndCallback<Lnrpc_NewAddressResponse, String>(callback) { $0.address })
     }
     

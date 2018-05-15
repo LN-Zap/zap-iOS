@@ -12,7 +12,8 @@ final class SettingsViewController: GroupedTableViewController {
         let sections: [Section<SettingsItem>] = [
             Section(title: "scene.settings.title".localized, rows: [
                 CurrencySelectionSettingsItem(),
-                BitcoinUnitSelectionSettingsItem()
+                BitcoinUnitSelectionSettingsItem(),
+                OnChainRequestAddressTypeSelectionSettingsItem()
             ]),
             Section(title: "scene.settings.section.security".localized, rows: [
                 UpdatePinSettingsItem(),

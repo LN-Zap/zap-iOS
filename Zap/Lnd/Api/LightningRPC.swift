@@ -138,4 +138,3 @@ final class LightningRPC: LightningProtocol {
     }
 }
 */
-

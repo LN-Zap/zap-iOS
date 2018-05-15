@@ -11,7 +11,7 @@ import Foundation
 protocol LightningProtocol {
     func info(callback: @escaping (Result<Info>) -> Void)
     func nodeInfo(pubKey: String, callback: @escaping (Result<NodeInfo>) -> Void)
-    func newAddress(callback: @escaping (Result<String>) -> Void)
+    func newAddress(type: OnChainRequestAddressType, callback: @escaping (Result<String>) -> Void)
     func walletBalance(callback: @escaping (Result<Satoshi>) -> Void)
     func channelBalance(callback: @escaping (Result<Satoshi>) -> Void)
     func transactions(callback: @escaping (Result<[Transaction]>) -> Void)

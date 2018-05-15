@@ -19,6 +19,8 @@ enum Settings {
     static var network = Network.testnet
     static var blockExplorer = BlockExplorer.blockchainInfo
     
+    static var onChainRequestAddressType = Observable<OnChainRequestAddressType>(.nestedPubkeyHash)
+    
     static func updateCurrency(_ currency: Currency) {
         if let currency = currency as? Bitcoin {
             cryptoCurrency.value = currency
