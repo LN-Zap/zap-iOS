@@ -7,6 +7,7 @@
 
 import Bond
 import BTCUtil
+import Emoji
 import Foundation
 
 final class SendLightningInvoiceViewModel {
@@ -43,7 +44,7 @@ final class SendLightningInvoiceViewModel {
         self.paymentRequest = paymentRequest
         
         if let memo = paymentRequest.memo {
-            self.memo.value = "Memo: " + memo
+            self.memo.value = "Memo: " + memo.emojiUnescapedString
         }
         satoshis.value = paymentRequest.amount
         destination.value = paymentRequest.destination

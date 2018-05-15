@@ -1,0 +1,6 @@
+framework module Emoji {
+  umbrella header "Emoji-swift-umbrella.h"
+
+  export *
+  module * { export * }
+}
