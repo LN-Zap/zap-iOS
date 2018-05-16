@@ -41,7 +41,7 @@ class SetupPinViewController: UIViewController {
                     self?.keyPadView?.numberString = ""
                 case .completed:
                     self?.dismiss(animated: true, completion: nil)
-                    self?.viewModel?.walletState.value = .connecting
+                    self?.viewModel?.info.walletState.value = .connecting
                 }
             },
          combineLatest(setupPinViewModel.pinCharacterCount, setupPinViewModel.pinAtiveCount)

@@ -61,7 +61,7 @@ class ChannelDetailViewController: ModalViewController {
 
         updateCountLabel.text = "updateCount: \(String(describing: channel.updateCount ?? 0))"
         
-        let blockHeight = (viewModel?.blockHeight.value ?? 0) - channel.blockHeight
+        let blockHeight = (viewModel?.info.blockHeight.value ?? 0) - channel.blockHeight
         blockHeightLabel.text = "blockHeight: \(String(describing: blockHeight))"
         stateLabel.setChannelState(channel.state)
     }

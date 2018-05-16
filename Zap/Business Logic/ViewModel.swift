@@ -10,31 +10,11 @@ import BTCUtil
 import Foundation
 import ReactiveKit
 
-enum WalletState {
-    case locked
-    case noInternet
-    case noWallet
-    case connecting
-    case syncing
-    case ready
-}
-
 final class ViewModel: NSObject {
-    var isLocked = false {
-        didSet {
-            updateWalletState(result: nil)
-        }
-    }
+    
     private let api: LightningProtocol
     
-    let walletState: Observable<WalletState>
-    
-    // Info
-    let bestHeaderDate = Observable<Date?>(nil)
-    let blockChainHeight = Observable<Int?>(nil)
-    let blockHeight = Observable(0)
-    let isSyncedToChain = Observable(false)
-    let alias = Observable<String?>(nil)
+    let info: Wallet
     
     // Balances
     let balance = Observable<Satoshi>(0)
@@ -54,25 +34,9 @@ final class ViewModel: NSObject {
 
     var transactionMetadataUpdater: TransactionMetadataUpdater?
     
-    static var didCreateWallet: Bool = true
-//    {
-//        get {
-//            return false
-//            return UserDefaults.Keys.didCreateWallet.get(defaultValue: false)
-//        }
-//        set {
-//            UserDefaults.Keys.didCreateWallet.set(newValue)
-//        }
-//    }
-    
     init(api: LightningProtocol = LightningStream()) {
         self.api = api
-        
-        if ViewModel.didCreateWallet {
-            walletState = Observable(.connecting)
-        } else {
-            walletState = Observable(.noWallet)
-        }
+        self.info = Wallet(api: api)
         
         Lnd.start()
 
@@ -94,7 +58,7 @@ final class ViewModel: NSObject {
     }
     
     private func start() {
-        walletState
+        info.walletState
             .filter { $0 != .connecting }
             .distinct()
             .observeNext { [weak self] _ in
@@ -106,54 +70,11 @@ final class ViewModel: NSObject {
             }
             .dispose(in: reactive.bag)
         
-        Scheduler.schedule(interval: 120, job: BlockChainHeightJob { [blockChainHeight] height in
-            blockChainHeight.value = height
-        })
-        
-        Scheduler.schedule(interval: 1, action: { [api, updateInfo] in
-            api.info(callback: updateInfo)
-        })
-        
         api.subscribeChannelGraph { _ in
 
         }
     }
     
-    private func updateInfo(result: Result<Info>) {
-        if let info = result.value {
-            blockHeight.value = info.blockHeight
-            isSyncedToChain.value = info.isSyncedToChain
-            alias.value = info.alias
-            bestHeaderDate.value = info.bestHeaderDate
-        }
-        
-        updateWalletState(result: result)
-    }
-    
-    private func updateWalletState(result: Result<Info>?) {
-        if !ViewModel.didCreateWallet {
-            walletState.value = .noWallet
-        } else if isLocked {
-            walletState.value = .locked
-        } else if let result = result {
-            if let info = result.value {
-                if !ViewModel.didCreateWallet {
-                    walletState.value = .noWallet
-                } else if !info.isSyncedToChain {
-                    walletState.value = .syncing
-                } else {
-                    walletState.value = .ready
-                }
-            } else if let error = result.error as? LndError,
-                error == LndError.noInternet {
-                walletState.value = .noInternet
-            } else {
-                walletState.value = .connecting
-            }
-        } else {
-            walletState.value = .connecting
-        }
-    }
     
     private func updateWalletBalance() {
         api.walletBalance { [balance] result in

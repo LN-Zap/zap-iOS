@@ -36,6 +36,6 @@ final class ConfirmMnemonicViewModel {
     }
     
     func didVerifyMnemonic() {
-        ViewModel.didCreateWallet = true
+        Wallet.didCreateWallet = true
     }
 }

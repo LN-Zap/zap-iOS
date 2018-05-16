@@ -54,6 +54,6 @@ class PinViewController: UIViewController {
     }
     
     private func setAuthenticated() {
-        viewModel?.isLocked = false
+        viewModel?.info.isLocked = false
     }
 }

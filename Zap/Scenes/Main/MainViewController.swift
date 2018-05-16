@@ -71,7 +71,7 @@ final class MainViewController: UIViewController, ContainerViewController {
         
         [viewModel?.totalBalance.bind(to: balanceLabel.reactive.text, currency: Settings.primaryCurrency),
          viewModel?.totalBalance.bind(to: fiatBalanceLabel.reactive.text, currency: Settings.secondaryCurrency),
-         viewModel?.alias.bind(to: aliasLabel.reactive.text)]
+         viewModel?.info.alias.bind(to: aliasLabel.reactive.text)]
             .dispose(in: reactive.bag)
         
         setInitialViewController(transactionViewController)

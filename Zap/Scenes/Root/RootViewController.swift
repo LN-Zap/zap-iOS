@@ -74,7 +74,7 @@ class RootViewController: UIViewController, ContainerViewController {
             }
             .dispose(in: reactive.bag)
         
-        viewModel.walletState
+        viewModel.info.walletState
             .distinct()
             .observeNext { [weak self] state in
                 var viewController: UIViewController?

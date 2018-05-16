@@ -26,7 +26,7 @@ class SyncViewController: UIViewController {
         
         guard let viewModel = viewModel else { fatalError("viewModel not set.") }
         
-        let percentSignal = combineLatest(viewModel.blockHeight, viewModel.blockChainHeight) { blockHeigh, maxBlockHeight -> Double in
+        let percentSignal = combineLatest(viewModel.info.blockHeight, viewModel.info.blockChainHeight) { blockHeigh, maxBlockHeight -> Double in
             guard let maxBlockHeight = maxBlockHeight else { return 0 }
             return Double(blockHeigh) / Double(maxBlockHeight)
         }
@@ -41,7 +41,7 @@ class SyncViewController: UIViewController {
             .bind(to: progressBar.reactive.progress)
             .dispose(in: reactive.bag)
         
-        viewModel.bestHeaderDate
+        viewModel.info.bestHeaderDate
             .map {
                 if let date = $0 {
                     return DateFormatter.localizedString(from: date, dateStyle: .medium, timeStyle: .short)

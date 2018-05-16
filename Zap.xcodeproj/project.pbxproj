@@ -181,6 +181,8 @@
 		AD9E244120A3680C0014F9FA /* Debug.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AD9E244020A3680C0014F9FA /* Debug.storyboard */; };
 		AD9E244320A375130014F9FA /* DebugButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD9E244220A375130014F9FA /* DebugButton.swift */; };
 		AD9E244520A377190014F9FA /* UIApplication.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD9E244420A377190014F9FA /* UIApplication.swift */; };
+		ADA6D2C120AB217B009398A5 /* PersistenceProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADA6D2C020AB217B009398A5 /* PersistenceProtocol.swift */; };
+		ADA6D2C320AC1BD2009398A5 /* Wallet.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADA6D2C220AC1BD2009398A5 /* Wallet.swift */; };
 		ADBA12022090CD11001F7700 /* KeyPadView.xib in Resources */ = {isa = PBXBuildFile; fileRef = ADBA12012090CD11001F7700 /* KeyPadView.xib */; };
 		ADBA12042090CD22001F7700 /* KeyPadView.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADBA12032090CD22001F7700 /* KeyPadView.swift */; };
 		ADBA120620930C94001F7700 /* UIViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADBA120520930C94001F7700 /* UIViewController.swift */; };
@@ -447,6 +449,8 @@
 		AD9E244020A3680C0014F9FA /* Debug.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Debug.storyboard; sourceTree = "<group>"; };
 		AD9E244220A375130014F9FA /* DebugButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DebugButton.swift; sourceTree = "<group>"; };
 		AD9E244420A377190014F9FA /* UIApplication.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIApplication.swift; sourceTree = "<group>"; };
+		ADA6D2C020AB217B009398A5 /* PersistenceProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersistenceProtocol.swift; sourceTree = "<group>"; };
+		ADA6D2C220AC1BD2009398A5 /* Wallet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Wallet.swift; sourceTree = "<group>"; };
 		ADBA12012090CD11001F7700 /* KeyPadView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = KeyPadView.xib; sourceTree = "<group>"; };
 		ADBA12032090CD22001F7700 /* KeyPadView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyPadView.swift; sourceTree = "<group>"; };
 		ADBA120520930C94001F7700 /* UIViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIViewController.swift; sourceTree = "<group>"; };
@@ -795,13 +799,15 @@
 			path = Types;
 			sourceTree = "<group>";
 		};
-		A07C1034203DE3D0006C7FE8 /* ViewModel */ = {
+		A07C1034203DE3D0006C7FE8 /* Business Logic */ = {
 			isa = PBXGroup;
 			children = (
+				ADA6D2BE20AB215D009398A5 /* Persistence */,
 				A0D3C9792060070D0015C5D7 /* WalletViewModel.swift */,
 				A07C1035203DE3E6006C7FE8 /* ViewModel.swift */,
+				ADA6D2C220AC1BD2009398A5 /* Wallet.swift */,
 			);
-			path = ViewModel;
+			path = "Business Logic";
 			sourceTree = "<group>";
 		};
 		A0919159203C309E00FA525A /* Style */ = {
@@ -853,7 +859,7 @@
 				AD86BCFC2099F4E900A7866A /* Proto */,
 				A01009322014BD960001EF94 /* Scenes */,
 				A010093A2014BF440001EF94 /* Supporting Files */,
-				A07C1034203DE3D0006C7FE8 /* ViewModel */,
+				A07C1034203DE3D0006C7FE8 /* Business Logic */,
 				A010093E2014D4720001EF94 /* Views */,
 			);
 			path = Zap;
@@ -1104,6 +1110,14 @@
 				AD9E243E20A368020014F9FA /* LndLogViewController.swift */,
 			);
 			path = LndLog;
+			sourceTree = "<group>";
+		};
+		ADA6D2BE20AB215D009398A5 /* Persistence */ = {
+			isa = PBXGroup;
+			children = (
+				ADA6D2C020AB217B009398A5 /* PersistenceProtocol.swift */,
+			);
+			path = Persistence;
 			sourceTree = "<group>";
 		};
 		ADBA120720935871001F7700 /* AmountInput */ = {
@@ -1547,6 +1561,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				ADA6D2C320AC1BD2009398A5 /* Wallet.swift in Sources */,
 				AD77466C2078EE5600EC596B /* TransactionMetadataUpdater.swift in Sources */,
 				A070D96B202B569E000A8274 /* RequestViewModel.swift in Sources */,
 				A0A05A302013EFC00007D1C9 /* UIImage.swift in Sources */,
@@ -1633,6 +1648,7 @@
 				A0BD44DC206FCAD900BF27A3 /* SignalProtocol.swift in Sources */,
 				A0A05A352014047B0007D1C9 /* Lnd.swift in Sources */,
 				ADF7936A208E5FEC0086B2CA /* ConfirmMnemonicCollectionViewCell.swift in Sources */,
+				ADA6D2C120AB217B009398A5 /* PersistenceProtocol.swift in Sources */,
 				AD38EB32207DFB59007DF14D /* SegmentButton.swift in Sources */,
 				ADF79376208F88DE0086B2CA /* RecoverWalletViewController.swift in Sources */,
 				A0C2EABE206F8B5B003AE56E /* Localizable.swift in Sources */,
