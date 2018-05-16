@@ -13,8 +13,10 @@ class TransactionDetailViewController: UIViewController {
     @IBOutlet private weak var addressLabel: UILabel!
     @IBOutlet private weak var amountLabel: UILabel!
     @IBOutlet private weak var dateLabel: UILabel!
-    
+    @IBOutlet private weak var hideTransactionButton: UIButton!
+
     var transactionViewModel: OnChainTransactionViewModel?
+    var viewModel: ViewModel?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -23,6 +25,10 @@ class TransactionDetailViewController: UIViewController {
         title = "Transaction Detail"
         
         Style.label.apply(to: feesLabel, confirmationsLabel, addressLabel, amountLabel, dateLabel)
+        Style.button.apply(to: hideTransactionButton)
+        
+        hideTransactionButton.setTitle("delete", for: .normal)
+        hideTransactionButton.tintColor = Color.red
         
         updateTransaction()
     }
@@ -41,6 +47,12 @@ class TransactionDetailViewController: UIViewController {
     }
     
     @IBAction private func doneButtonTapped(_ sender: Any) {
+        dismiss(animated: true, completion: nil)
+    }
+    
+    @IBAction func hideTransaction(_ sender: Any) {
+        guard let transactionViewModel = transactionViewModel else { return }
+        viewModel?.hideTransaction(transactionViewModel)
         dismiss(animated: true, completion: nil)
     }
 }

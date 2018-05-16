@@ -11,8 +11,10 @@ class PaymentDetailViewController: UIViewController {
     @IBOutlet private weak var feeLabel: UILabel!
     @IBOutlet private weak var dateLabel: UILabel!
     @IBOutlet private weak var amountLabel: UILabel!
-    
+    @IBOutlet private weak var hideTransactionButton: UIButton!
+
     var lightningPaymentViewModel: LightningPaymentViewModel?
+    var viewModel: ViewModel?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -21,6 +23,10 @@ class PaymentDetailViewController: UIViewController {
         titleTextStyle = .dark
         
         Style.label.apply(to: feeLabel, dateLabel, amountLabel)
+        Style.button.apply(to: hideTransactionButton)
+        
+        hideTransactionButton.setTitle("delete", for: .normal)
+        hideTransactionButton.tintColor = Color.red
         
         updateViewModel()
     }
@@ -34,6 +40,12 @@ class PaymentDetailViewController: UIViewController {
     }
     
     @IBAction private func doneButtonTapped(_ sender: Any) {
+        dismiss(animated: true, completion: nil)
+    }
+    
+    @IBAction func hideTransaction(_ sender: Any) {
+        guard let lightningPaymentViewModel = lightningPaymentViewModel else { return }
+        viewModel?.hideTransaction(lightningPaymentViewModel)
         dismiss(animated: true, completion: nil)
     }
 }

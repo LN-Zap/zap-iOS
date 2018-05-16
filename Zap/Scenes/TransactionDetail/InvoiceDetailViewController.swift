@@ -20,8 +20,10 @@ class InvoiceDetailViewController: UIViewController {
     @IBOutlet private weak var dateLabel: UILabel!
     @IBOutlet private weak var settleDateLabel: UILabel!
     @IBOutlet private weak var expiryLabel: UILabel!
+    @IBOutlet private weak var hideTransactionButton: UIButton!
     
     var lightningInvoiceViewModel: LightningInvoiceViewModel?
+    var viewModel: ViewModel?
     
     private var timer: Timer?
     
@@ -32,7 +34,10 @@ class InvoiceDetailViewController: UIViewController {
         titleTextStyle = .dark
         
         Style.label.apply(to: paymentRequestLabel, memoLabel, amountLabel, settledLabel, dateLabel, settleDateLabel, expiryLabel)
-        Style.button.apply(to: copyButton, shareButton)
+        Style.button.apply(to: copyButton, shareButton, hideTransactionButton)
+        
+        hideTransactionButton.setTitle("delete", for: .normal)
+        hideTransactionButton.tintColor = Color.red
         
         updateViewModel()
     }
@@ -117,5 +122,11 @@ class InvoiceDetailViewController: UIViewController {
         
         let activityViewController = UIActivityViewController(activityItems: [paymentRequest], applicationActivities: nil)
         present(activityViewController, animated: true, completion: nil)
+    }
+    
+    @IBAction func hideTransaction(_ sender: Any) {
+        guard let lightningInvoiceViewModel = lightningInvoiceViewModel else { return }
+        viewModel?.hideTransaction(lightningInvoiceViewModel)
+        dismiss(animated: true, completion: nil)
     }
 }

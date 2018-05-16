@@ -99,20 +99,23 @@ extension TransactionListViewController: UITableViewDelegate {
         let viewController: UINavigationController
         
         switch transactionType {
-        case .onChainTransaction(let viewModel):
+        case .onChainTransaction(let transactionViewModel):
             viewController = Storyboard.transactionDetail.initial(viewController: UINavigationController.self)
             if let transactionDetailViewController = viewController.topViewController as? TransactionDetailViewController {
-                transactionDetailViewController.transactionViewModel = viewModel
+                transactionDetailViewController.transactionViewModel = transactionViewModel
+                transactionDetailViewController.viewModel = viewModel
             }
-        case .lightningPayment(let viewModel):
+        case .lightningPayment(let lightningPaymentViewModel):
             viewController = Storyboard.paymentDetail.initial(viewController: UINavigationController.self)
             if let paymentDetailViewController = viewController.topViewController as? PaymentDetailViewController {
-                paymentDetailViewController.lightningPaymentViewModel = viewModel
+                paymentDetailViewController.lightningPaymentViewModel = lightningPaymentViewModel
+                paymentDetailViewController.viewModel = viewModel
             }
-        case .lightningInvoice(let viewModel):
+        case .lightningInvoice(let lightningInvoiceViewModel):
             viewController = Storyboard.invoiceDetail.initial(viewController: UINavigationController.self)
             if let invoiceDetailViewController = viewController.topViewController as? InvoiceDetailViewController {
-                invoiceDetailViewController.lightningInvoiceViewModel = viewModel
+                invoiceDetailViewController.lightningInvoiceViewModel = lightningInvoiceViewModel
+                invoiceDetailViewController.viewModel = viewModel
             }
         }
         

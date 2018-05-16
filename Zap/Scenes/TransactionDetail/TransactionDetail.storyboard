@@ -53,12 +53,21 @@
                                     </label>
                                 </subviews>
                             </stackView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="tFm-xb-PNK">
+                                <rect key="frame" x="164" y="617" width="46" height="30"/>
+                                <state key="normal" title="Button"/>
+                                <connections>
+                                    <action selector="hideTransaction:" destination="d1h-ld-rAe" eventType="touchUpInside" id="KHm-wt-rfT"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
+                            <constraint firstItem="tFm-xb-PNK" firstAttribute="centerX" secondItem="Pcr-4e-g1R" secondAttribute="centerX" id="8BY-yP-qu0"/>
                             <constraint firstItem="e7X-lN-Pib" firstAttribute="leading" secondItem="Pcr-4e-g1R" secondAttribute="leading" constant="20" id="GCg-VC-hCD"/>
                             <constraint firstItem="e7X-lN-Pib" firstAttribute="top" secondItem="Pcr-4e-g1R" secondAttribute="top" constant="20" id="QhU-wQ-g0c"/>
                             <constraint firstItem="Pcr-4e-g1R" firstAttribute="trailing" secondItem="e7X-lN-Pib" secondAttribute="trailing" constant="20" id="T1X-xO-4xt"/>
+                            <constraint firstItem="Pcr-4e-g1R" firstAttribute="bottom" secondItem="tFm-xb-PNK" secondAttribute="bottom" constant="20" id="WuA-ka-86U"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="Pcr-4e-g1R"/>
                     </view>
@@ -75,6 +84,7 @@
                         <outlet property="confirmationsLabel" destination="Zbb-2i-gWZ" id="M6s-eI-88J"/>
                         <outlet property="dateLabel" destination="aCf-YK-Moo" id="2yd-Ze-r1n"/>
                         <outlet property="feesLabel" destination="Y5I-Cd-fxo" id="9Fh-LR-whp"/>
+                        <outlet property="hideTransactionButton" destination="tFm-xb-PNK" id="9Ws-kc-UNu"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="475-xD-lWP" userLabel="First Responder" sceneMemberID="firstResponder"/>

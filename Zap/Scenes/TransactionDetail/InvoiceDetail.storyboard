@@ -103,11 +103,20 @@
                                     </label>
                                 </subviews>
                             </stackView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="AbV-hF-Naq">
+                                <rect key="frame" x="164" y="617" width="46" height="30"/>
+                                <state key="normal" title="Button"/>
+                                <connections>
+                                    <action selector="hideTransaction:" destination="Vrp-kw-KPW" eventType="touchUpInside" id="tFY-8p-b6D"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
+                            <constraint firstItem="AbV-hF-Naq" firstAttribute="centerX" secondItem="Qyb-Hy-Ni1" secondAttribute="centerX" id="AMc-dF-kd3"/>
                             <constraint firstItem="Hq0-B9-DxM" firstAttribute="top" secondItem="Qyb-Hy-Ni1" secondAttribute="top" constant="20" id="K3v-HS-2Zr"/>
                             <constraint firstItem="Hq0-B9-DxM" firstAttribute="leading" secondItem="Qyb-Hy-Ni1" secondAttribute="leading" constant="20" id="SS3-y9-bpU"/>
+                            <constraint firstItem="Qyb-Hy-Ni1" firstAttribute="bottom" secondItem="AbV-hF-Naq" secondAttribute="bottom" constant="20" id="WIF-xV-fZk"/>
                             <constraint firstItem="Qyb-Hy-Ni1" firstAttribute="trailing" secondItem="Hq0-B9-DxM" secondAttribute="trailing" constant="20" id="dx7-OR-Hfa"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="Qyb-Hy-Ni1"/>
@@ -125,6 +134,7 @@
                         <outlet property="copyShareContainer" destination="5Qz-QE-Ts1" id="0yF-gr-1CE"/>
                         <outlet property="dateLabel" destination="pu7-ut-TFJ" id="Z3S-e3-eWE"/>
                         <outlet property="expiryLabel" destination="ex2-0u-zid" id="Q2Y-hY-QFT"/>
+                        <outlet property="hideTransactionButton" destination="AbV-hF-Naq" id="r7A-zy-K1G"/>
                         <outlet property="memoLabel" destination="0Z6-d3-rdY" id="q4d-qO-2pg"/>
                         <outlet property="paymentRequestLabel" destination="bd2-jQ-NNQ" id="VnP-eG-tfD"/>
                         <outlet property="qrCodeContainer" destination="EEH-Hp-pHQ" id="1IV-q6-wKg"/>
