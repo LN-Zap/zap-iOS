@@ -11,21 +11,17 @@ import Foundation
 import ReactiveKit
 
 final class ViewModel: NSObject {
-    
     private let api: LightningProtocol
     
     let info: Wallet
     let balance: Balance
+    let channels: Channels
     
     // Transactions
-    let onChainTransactions = Observable<[Transaction]>([])
+    private let onChainTransactions = Observable<[Transaction]>([])
     private let payments = Observable<[Transaction]>([])
     private let invoices = Observable<[Transaction]>([])
     let transactions: Signal<[Transaction], NoError>
-    
-    // Channel
-    let channels = Observable<[Channel]>([])
-    let pendingChannels = Observable<[Channel]>([])
     
     let errorMessages = Observable<String?>(nil)
 
@@ -36,6 +32,7 @@ final class ViewModel: NSObject {
         
         info = Wallet(api: api)
         balance = Balance(api: api)
+        channels = Channels(api: api)
         
         transactions = combineLatest(onChainTransactions, payments, invoices) {
             return $0 as [Transaction] + $1 as [Transaction] + $2 as [Transaction]
@@ -48,14 +45,6 @@ final class ViewModel: NSObject {
         start()
         
         transactionMetadataUpdater = TransactionMetadataUpdater(viewModel: self, transactionMetadataStore: MemoryTransactionMetadataStore.instance)
-        
-//        WalletViewModel().unlock { [weak self] result in
-//            if result.value != nil {
-//                self?.start()
-//            } else {
-//                print("unlocking error")
-//            }
-//        }
     }
     
     private func start() {
@@ -63,8 +52,7 @@ final class ViewModel: NSObject {
             .filter { $0 != .connecting }
             .distinct()
             .observeNext { [weak self] _ in
-                self?.updateChannels()
-                self?.updatePendingChannels()
+                self?.channels.update()
                 self?.balance.update()
                 self?.updateTransactions()
             }
@@ -88,18 +76,6 @@ final class ViewModel: NSObject {
             invoices.value = result.value ?? []
         }
     }
-
-    func updateChannels() {
-        api.channels { [channels] result in
-            channels.value = result.value ?? []
-        }
-    }
-    
-    private func updatePendingChannels() {
-        api.pendingChannels { [pendingChannels] result in
-            pendingChannels.value = result.value ?? []
-        }
-    }
     
     func newAddress(callback: @escaping (Result<String>) -> Void) {
         api.newAddress(type: Settings.onChainRequestAddressType.value, callback: callback)
@@ -113,38 +89,8 @@ final class ViewModel: NSObject {
         api.sendPayment(paymentRequest) { [weak self] _ in
             self?.balance.update()
             self?.updateTransactions()
-            self?.updateChannels()
+            self?.channels.update()
             callback(true)
-        }
-    }
-    
-    func openChannel(pubKey: String, host: String, amount: Satoshi, completion: @escaping () -> Void) {
-        api.peers { [weak self, api] peers in
-            if peers.value?.contains(where: { $0.pubKey == pubKey }) == true {
-                self?.openConnectedChannel(pubKey: pubKey, amount: amount, completion: completion)
-            } else {
-                api.connect(pubKey: pubKey, host: host) {
-                    guard $0.error != nil else { return }
-                    self?.openConnectedChannel(pubKey: pubKey, amount: amount, completion: completion)
-                }
-            }
-        }
-    }
-    
-    private func openConnectedChannel(pubKey: String, amount: Satoshi, completion: @escaping () -> Void) {
-        api.openChannel(pubKey: pubKey, amount: amount) { [weak self] _ in
-            self?.balance.update()
-            self?.updateChannels()
-            self?.updatePendingChannels()
-            completion()
-        }
-    }
-    
-    func closeChannel(channelPoint: String) {
-        api.closeChannel(channelPoint: channelPoint) { [weak self] _ in
-            self?.balance.update()
-            self?.updateChannels()
-            self?.updatePendingChannels()
         }
     }
     

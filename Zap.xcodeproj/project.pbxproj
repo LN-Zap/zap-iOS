@@ -184,6 +184,7 @@
 		ADA6D2C120AB217B009398A5 /* PersistenceProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADA6D2C020AB217B009398A5 /* PersistenceProtocol.swift */; };
 		ADA6D2C320AC1BD2009398A5 /* Wallet.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADA6D2C220AC1BD2009398A5 /* Wallet.swift */; };
 		ADA6D2C520AC1DDE009398A5 /* Balance.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADA6D2C420AC1DDE009398A5 /* Balance.swift */; };
+		ADA6D2C720AC2406009398A5 /* Channels.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADA6D2C620AC2406009398A5 /* Channels.swift */; };
 		ADBA12022090CD11001F7700 /* KeyPadView.xib in Resources */ = {isa = PBXBuildFile; fileRef = ADBA12012090CD11001F7700 /* KeyPadView.xib */; };
 		ADBA12042090CD22001F7700 /* KeyPadView.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADBA12032090CD22001F7700 /* KeyPadView.swift */; };
 		ADBA120620930C94001F7700 /* UIViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADBA120520930C94001F7700 /* UIViewController.swift */; };
@@ -453,6 +454,7 @@
 		ADA6D2C020AB217B009398A5 /* PersistenceProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersistenceProtocol.swift; sourceTree = "<group>"; };
 		ADA6D2C220AC1BD2009398A5 /* Wallet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Wallet.swift; sourceTree = "<group>"; };
 		ADA6D2C420AC1DDE009398A5 /* Balance.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Balance.swift; sourceTree = "<group>"; };
+		ADA6D2C620AC2406009398A5 /* Channels.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Channels.swift; sourceTree = "<group>"; };
 		ADBA12012090CD11001F7700 /* KeyPadView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = KeyPadView.xib; sourceTree = "<group>"; };
 		ADBA12032090CD22001F7700 /* KeyPadView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyPadView.swift; sourceTree = "<group>"; };
 		ADBA120520930C94001F7700 /* UIViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIViewController.swift; sourceTree = "<group>"; };
@@ -809,6 +811,7 @@
 				A07C1035203DE3E6006C7FE8 /* ViewModel.swift */,
 				ADA6D2C220AC1BD2009398A5 /* Wallet.swift */,
 				ADA6D2C420AC1DDE009398A5 /* Balance.swift */,
+				ADA6D2C620AC2406009398A5 /* Channels.swift */,
 			);
 			path = "Business Logic";
 			sourceTree = "<group>";
@@ -1633,6 +1636,7 @@
 				ADBB3620207FA5D6005662B4 /* Date+Localizable.swift in Sources */,
 				AD6FFCA220A9D3C600B57330 /* InvoiceDetailViewController.swift in Sources */,
 				A0376B77201CD67700F1FBEF /* PinViewController.swift in Sources */,
+				ADA6D2C720AC2406009398A5 /* Channels.swift in Sources */,
 				A0A05A5C20149F720007D1C9 /* TransactionListViewController.swift in Sources */,
 				A0A05A032013CF960007D1C9 /* AppDelegate.swift in Sources */,
 				ADBA120620930C94001F7700 /* UIViewController.swift in Sources */,

@@ -68,8 +68,9 @@ class ChannelDetailViewController: ModalViewController {
     
     @IBAction private func closeChannel(_ sender: Any) {
         guard let channelPoint = channelViewModel?.channel.channelPoint else { return }
-        viewModel?.closeChannel(channelPoint: channelPoint)
-        dismiss(animated: true, completion: nil)
+        viewModel?.channels.close(channelPoint: channelPoint) { [weak self] in
+            self?.dismiss(animated: true, completion: nil)
+        }
     }
     
     @IBAction private func blockExplorerButtonTapped(_ sender: Any) {
