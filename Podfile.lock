@@ -11,7 +11,6 @@ PODS:
     - BoringSSL/Interface (= 10.0.2)
   - BoringSSL/Interface (10.0.2)
   - Differ (1.2.2)
-  - Emoji-swift (0.2.2)
   - gRPC-Core (1.11.0):
     - gRPC-Core/Implementation (= 1.11.0)
     - gRPC-Core/Interface (= 1.11.0)
@@ -38,7 +37,6 @@ PODS:
 DEPENDENCIES:
   - BigInt (~> 3.0)
   - Bond
-  - Emoji-swift
   - KeychainAccess
   - SVProgressHUD
   - SwiftGRPC
@@ -49,7 +47,6 @@ SPEC REPOS:
     - Bond
     - BoringSSL
     - Differ
-    - Emoji-swift
     - gRPC-Core
     - KeychainAccess
     - nanopb
@@ -64,7 +61,6 @@ SPEC CHECKSUMS:
   Bond: f07e371c05e07c46589c4a518515ea39c6263055
   BoringSSL: 60dd24df4af296bf41d78e5841dbb95d75f88c0d
   Differ: 5ac7b6d0d3a60274b52a0ef087ec0e411b57db2c
-  Emoji-swift: d118ef9be36f02b4bfa702ffde08a4b07a9e1d3d
   gRPC-Core: 164639cd8ae18ca8b65477fafb2efbaecf4f181a
   KeychainAccess: 7bd430028059754a3debab3cfc0bd1fc7fb85df3
   nanopb: 5601e6bca2dbf1ed831b519092ec110f66982ca3
@@ -74,6 +70,6 @@ SPEC CHECKSUMS:
   SwiftGRPC: 4cb90d96998607003cf1df1e01017f30f6fd124b
   SwiftProtobuf: 5ccc0e4054e37c75800e5744acb2aa80bb72b39c
 
-PODFILE CHECKSUM: d52d1908cd09d628575e0f404dfbf38d35921044
+PODFILE CHECKSUM: e1d866238f318c435b10c261e304c9e76397c156
 
 COCOAPODS: 1.5.0

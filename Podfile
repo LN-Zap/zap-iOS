@@ -9,7 +9,6 @@ target 'Zap' do
   pod 'KeychainAccess'
   pod 'Bond'
   pod 'SVProgressHUD'
-  pod 'Emoji-swift'
 
   target 'ZapTests' do
     inherit! :search_paths
