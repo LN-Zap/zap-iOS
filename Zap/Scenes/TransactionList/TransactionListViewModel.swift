@@ -16,18 +16,16 @@ final class TransactionListViewModel: NSObject {
         sections = MutableObservable2DArray()
         super.init()
         
-        combineLatest(viewModel.onChainTransactions, viewModel.payments, viewModel.invoices) {
-            return $0 as [Transaction] + $1 as [Transaction] + $2 as [Transaction]
-        }
-        .observeNext { [weak self] transactions in
-            guard let result = self?.bondSections(transactions: transactions) else { return }
-            let array = Observable2DArray(result)
-            
-            DispatchQueue.main.async {
-                self?.sections.replace(with: array, performDiff: true)
+        viewModel.transactions
+            .observeNext { [weak self] transactions in
+                guard let result = self?.bondSections(transactions: transactions) else { return }
+                let array = Observable2DArray(result)
+                
+                DispatchQueue.main.async {
+                    self?.sections.replace(with: array, performDiff: true)
+                }
             }
-        }
-        .dispose(in: reactive.bag)
+            .dispose(in: reactive.bag)
     }
     
     private func dateWithoutTime(from date: Date) -> Date {

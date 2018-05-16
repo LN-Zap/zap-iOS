@@ -15,16 +15,13 @@ final class ViewModel: NSObject {
     private let api: LightningProtocol
     
     let info: Wallet
-    
-    // Balances
-    let balance = Observable<Satoshi>(0)
-    let channelBalance = Observable<Satoshi>(0)
-    let totalBalance: Signal<Satoshi, NoError>
+    let balance: Balance
     
     // Transactions
     let onChainTransactions = Observable<[Transaction]>([])
-    let payments = Observable<[Transaction]>([])
-    let invoices = Observable<[Transaction]>([])
+    private let payments = Observable<[Transaction]>([])
+    private let invoices = Observable<[Transaction]>([])
+    let transactions: Signal<[Transaction], NoError>
     
     // Channel
     let channels = Observable<[Channel]>([])
@@ -36,11 +33,15 @@ final class ViewModel: NSObject {
     
     init(api: LightningProtocol = LightningStream()) {
         self.api = api
-        self.info = Wallet(api: api)
         
-        Lnd.start()
+        info = Wallet(api: api)
+        balance = Balance(api: api)
+        
+        transactions = combineLatest(onChainTransactions, payments, invoices) {
+            return $0 as [Transaction] + $1 as [Transaction] + $2 as [Transaction]
+        }
 
-        totalBalance = combineLatest(balance, channelBalance) { $0 + $1 }
+        Lnd.start()
 
         super.init()
         
@@ -62,10 +63,9 @@ final class ViewModel: NSObject {
             .filter { $0 != .connecting }
             .distinct()
             .observeNext { [weak self] _ in
-                self?.updateChannelBalance()
                 self?.updateChannels()
                 self?.updatePendingChannels()
-                self?.updateWalletBalance()
+                self?.balance.update()
                 self?.updateTransactions()
             }
             .dispose(in: reactive.bag)
@@ -75,13 +75,6 @@ final class ViewModel: NSObject {
         }
     }
     
-    
-    private func updateWalletBalance() {
-        api.walletBalance { [balance] result in
-            balance.value = result.value ?? 0
-        }
-    }
-
     func updateTransactions() {
         api.transactions { [onChainTransactions] result in
             onChainTransactions.value = result.value ?? []
@@ -96,12 +89,6 @@ final class ViewModel: NSObject {
         }
     }
 
-    private func updateChannelBalance() {
-        api.channelBalance { [channelBalance] result in
-            channelBalance.value = result.value ?? 0
-        }
-    }
-    
     func updateChannels() {
         api.channels { [channels] result in
             channels.value = result.value ?? []
@@ -124,7 +111,7 @@ final class ViewModel: NSObject {
     
     func sendPayment(_ paymentRequest: PaymentRequest, callback: @escaping (Bool) -> Void) {
         api.sendPayment(paymentRequest) { [weak self] _ in
-            self?.updateChannelBalance()
+            self?.balance.update()
             self?.updateTransactions()
             self?.updateChannels()
             callback(true)
@@ -146,7 +133,7 @@ final class ViewModel: NSObject {
     
     private func openConnectedChannel(pubKey: String, amount: Satoshi, completion: @escaping () -> Void) {
         api.openChannel(pubKey: pubKey, amount: amount) { [weak self] _ in
-            self?.updateChannelBalance()
+            self?.balance.update()
             self?.updateChannels()
             self?.updatePendingChannels()
             completion()
@@ -155,7 +142,7 @@ final class ViewModel: NSObject {
     
     func closeChannel(channelPoint: String) {
         api.closeChannel(channelPoint: channelPoint) { [weak self] _ in
-            self?.updateChannelBalance()
+            self?.balance.update()
             self?.updateChannels()
             self?.updatePendingChannels()
         }

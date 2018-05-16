@@ -183,6 +183,7 @@
 		AD9E244520A377190014F9FA /* UIApplication.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD9E244420A377190014F9FA /* UIApplication.swift */; };
 		ADA6D2C120AB217B009398A5 /* PersistenceProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADA6D2C020AB217B009398A5 /* PersistenceProtocol.swift */; };
 		ADA6D2C320AC1BD2009398A5 /* Wallet.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADA6D2C220AC1BD2009398A5 /* Wallet.swift */; };
+		ADA6D2C520AC1DDE009398A5 /* Balance.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADA6D2C420AC1DDE009398A5 /* Balance.swift */; };
 		ADBA12022090CD11001F7700 /* KeyPadView.xib in Resources */ = {isa = PBXBuildFile; fileRef = ADBA12012090CD11001F7700 /* KeyPadView.xib */; };
 		ADBA12042090CD22001F7700 /* KeyPadView.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADBA12032090CD22001F7700 /* KeyPadView.swift */; };
 		ADBA120620930C94001F7700 /* UIViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADBA120520930C94001F7700 /* UIViewController.swift */; };
@@ -451,6 +452,7 @@
 		AD9E244420A377190014F9FA /* UIApplication.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIApplication.swift; sourceTree = "<group>"; };
 		ADA6D2C020AB217B009398A5 /* PersistenceProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersistenceProtocol.swift; sourceTree = "<group>"; };
 		ADA6D2C220AC1BD2009398A5 /* Wallet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Wallet.swift; sourceTree = "<group>"; };
+		ADA6D2C420AC1DDE009398A5 /* Balance.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Balance.swift; sourceTree = "<group>"; };
 		ADBA12012090CD11001F7700 /* KeyPadView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = KeyPadView.xib; sourceTree = "<group>"; };
 		ADBA12032090CD22001F7700 /* KeyPadView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyPadView.swift; sourceTree = "<group>"; };
 		ADBA120520930C94001F7700 /* UIViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIViewController.swift; sourceTree = "<group>"; };
@@ -806,6 +808,7 @@
 				A0D3C9792060070D0015C5D7 /* WalletViewModel.swift */,
 				A07C1035203DE3E6006C7FE8 /* ViewModel.swift */,
 				ADA6D2C220AC1BD2009398A5 /* Wallet.swift */,
+				ADA6D2C420AC1DDE009398A5 /* Balance.swift */,
 			);
 			path = "Business Logic";
 			sourceTree = "<group>";
@@ -1579,6 +1582,7 @@
 				AD86BD002099FB4500A7866A /* rpc.grpc.swift in Sources */,
 				A0A05A51201481A70007D1C9 /* Storyboard.swift in Sources */,
 				A05C5B8F206500A900072FA9 /* RemoteLndConfiguration.swift in Sources */,
+				ADA6D2C520AC1DDE009398A5 /* Balance.swift in Sources */,
 				A010093C2014CEE40001EF94 /* OpenStatusUpdate.swift in Sources */,
 				AD33B5EF20A8463600E32BD9 /* SendOnChainViewController.swift in Sources */,
 				AD86BCFE2099F50C00A7866A /* rpc.pb.swift in Sources */,

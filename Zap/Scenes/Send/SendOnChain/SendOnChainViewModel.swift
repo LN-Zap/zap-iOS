@@ -20,7 +20,7 @@ final class SendOnChainViewModel {
         self.viewModel = viewModel
         self.address = address
         
-        validRange = (0...viewModel.balance.value)
+        validRange = (0...viewModel.balance.onChain.value)
     }
 
     func send(completion: @escaping () -> Void) {

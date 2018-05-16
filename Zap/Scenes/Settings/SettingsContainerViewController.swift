@@ -30,11 +30,11 @@ class SettingsContainerViewController: UIViewController, ContainerViewController
         
         headerBackground.backgroundColor = Color.darkBackground
         
-        viewModel?.totalBalance
+        viewModel?.balance.total
             .bind(to: primaryCurrencyLabel.reactive.text, currency: Settings.primaryCurrency)
             .dispose(in: reactive.bag)
         
-        viewModel?.totalBalance
+        viewModel?.balance.total
             .bind(to: secondaryCurrencyLabel.reactive.text, currency: Settings.secondaryCurrency)
             .dispose(in: reactive.bag)
         

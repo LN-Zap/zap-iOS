@@ -69,8 +69,8 @@ final class MainViewController: UIViewController, ContainerViewController {
         balanceLabel.font = balanceLabel.font.withSize(30)
         fiatBalanceLabel.textColor = .gray
         
-        [viewModel?.totalBalance.bind(to: balanceLabel.reactive.text, currency: Settings.primaryCurrency),
-         viewModel?.totalBalance.bind(to: fiatBalanceLabel.reactive.text, currency: Settings.secondaryCurrency),
+        [viewModel?.balance.total.bind(to: balanceLabel.reactive.text, currency: Settings.primaryCurrency),
+         viewModel?.balance.total.bind(to: fiatBalanceLabel.reactive.text, currency: Settings.secondaryCurrency),
          viewModel?.info.alias.bind(to: aliasLabel.reactive.text)]
             .dispose(in: reactive.bag)
         
