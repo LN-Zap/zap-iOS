@@ -17,7 +17,7 @@ final class ChannelListViewModel: NSObject {
         
         super.init()
         
-        combineLatest(viewModel.channels, viewModel.pendingChannels) { return ($0, $1) }
+        combineLatest(viewModel.channels.open, viewModel.channels.pending) { return ($0, $1) }
             .observeNext { [sections] open, pending in
                 let result = MutableObservable2DArray<String, ChannelViewModel>()
                 

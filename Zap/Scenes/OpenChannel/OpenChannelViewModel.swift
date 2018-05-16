@@ -27,6 +27,6 @@ final class OpenChannelViewModel {
     }
     
     func openChannel(completion: @escaping () -> Void) {
-        viewModel.openChannel(pubKey: pubKey, host: host, amount: amount, completion: completion)
+        viewModel.channels.open(pubKey: pubKey, host: host, amount: amount, completion: completion)
     }
 }

@@ -16,7 +16,7 @@ final class TransactionMetadataUpdater: NSObject {
         self.viewModel = viewModel
         super.init()
         
-        combineLatest(viewModel.channels, viewModel.onChainTransactions)
+        combineLatest(viewModel.channels.all, viewModel.transactions)
             .observeNext { channels, transactions in
                 for transaction in transactions where transactionMetadataStore.metadata(for: transaction) == nil {
                     // search for matching channel for funding transaction
