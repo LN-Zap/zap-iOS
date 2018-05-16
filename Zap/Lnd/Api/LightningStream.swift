@@ -117,8 +117,8 @@ final class LightningStream: LightningProtocol {
         LndmobileAddInvoice(data, LndCallback<Lnrpc_AddInvoiceResponse, String>(callback) { $0.paymentRequest })
     }
     
-    func invoices(callback: @escaping (Result<[LightningInvoice]>) -> Void) {
-        LndmobileListInvoices(nil, LndCallback<Lnrpc_ListInvoiceResponse, [LightningInvoice]>(callback) {
+    func invoices(callback: @escaping (Result<[Transaction]>) -> Void) {
+        LndmobileListInvoices(nil, LndCallback<Lnrpc_ListInvoiceResponse, [Transaction]>(callback) {
             $0.invoices.compactMap { LightningInvoice(invoice: $0) }
         })
     }

@@ -181,10 +181,11 @@
 		AD9E244120A3680C0014F9FA /* Debug.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AD9E244020A3680C0014F9FA /* Debug.storyboard */; };
 		AD9E244320A375130014F9FA /* DebugButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD9E244220A375130014F9FA /* DebugButton.swift */; };
 		AD9E244520A377190014F9FA /* UIApplication.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD9E244420A377190014F9FA /* UIApplication.swift */; };
-		ADA6D2C120AB217B009398A5 /* PersistenceProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADA6D2C020AB217B009398A5 /* PersistenceProtocol.swift */; };
+		ADA6D2C120AB217B009398A5 /* TransactionStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADA6D2C020AB217B009398A5 /* TransactionStore.swift */; };
 		ADA6D2C320AC1BD2009398A5 /* Wallet.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADA6D2C220AC1BD2009398A5 /* Wallet.swift */; };
 		ADA6D2C520AC1DDE009398A5 /* Balance.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADA6D2C420AC1DDE009398A5 /* Balance.swift */; };
 		ADA6D2C720AC2406009398A5 /* Channels.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADA6D2C620AC2406009398A5 /* Channels.swift */; };
+		ADA6D2CA20AC2F1D009398A5 /* TransactionViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADA6D2C920AC2F1D009398A5 /* TransactionViewModel.swift */; };
 		ADBA12022090CD11001F7700 /* KeyPadView.xib in Resources */ = {isa = PBXBuildFile; fileRef = ADBA12012090CD11001F7700 /* KeyPadView.xib */; };
 		ADBA12042090CD22001F7700 /* KeyPadView.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADBA12032090CD22001F7700 /* KeyPadView.swift */; };
 		ADBA120620930C94001F7700 /* UIViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADBA120520930C94001F7700 /* UIViewController.swift */; };
@@ -451,10 +452,11 @@
 		AD9E244020A3680C0014F9FA /* Debug.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Debug.storyboard; sourceTree = "<group>"; };
 		AD9E244220A375130014F9FA /* DebugButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DebugButton.swift; sourceTree = "<group>"; };
 		AD9E244420A377190014F9FA /* UIApplication.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIApplication.swift; sourceTree = "<group>"; };
-		ADA6D2C020AB217B009398A5 /* PersistenceProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersistenceProtocol.swift; sourceTree = "<group>"; };
+		ADA6D2C020AB217B009398A5 /* TransactionStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransactionStore.swift; sourceTree = "<group>"; };
 		ADA6D2C220AC1BD2009398A5 /* Wallet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Wallet.swift; sourceTree = "<group>"; };
 		ADA6D2C420AC1DDE009398A5 /* Balance.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Balance.swift; sourceTree = "<group>"; };
 		ADA6D2C620AC2406009398A5 /* Channels.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Channels.swift; sourceTree = "<group>"; };
+		ADA6D2C920AC2F1D009398A5 /* TransactionViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransactionViewModel.swift; sourceTree = "<group>"; };
 		ADBA12012090CD11001F7700 /* KeyPadView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = KeyPadView.xib; sourceTree = "<group>"; };
 		ADBA12032090CD22001F7700 /* KeyPadView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyPadView.swift; sourceTree = "<group>"; };
 		ADBA120520930C94001F7700 /* UIViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIViewController.swift; sourceTree = "<group>"; };
@@ -790,15 +792,11 @@
 		A0731FDE2014A20500C55E45 /* Types */ = {
 			isa = PBXGroup;
 			children = (
-				AD6FFC9720A9C46B00B57330 /* LightningInvoiceTableViewCell.swift */,
-				AD6FFC9820A9C46B00B57330 /* LightningInvoiceTableViewCell.xib */,
+				ADA6D2C820AC2EFC009398A5 /* Cells */,
 				AD6FFC9F20A9D19E00B57330 /* LightningInvoiceViewModel.swift */,
-				A0A96B8D2017908600788808 /* LightningPaymentTableViewCell.swift */,
-				A0A96B8E2017908600788808 /* LightningPaymentTableViewCell.xib */,
 				AD6FFC9D20A9D19400B57330 /* LightningPaymentViewModel.swift */,
-				A0731FDF2014A22B00C55E45 /* OnChainTransactionTableViewCell.swift */,
-				A0731FE02014A22B00C55E45 /* OnChainTransactionTableViewCell.xib */,
 				AD6FFC9B20A9D15E00B57330 /* OnChainTransactionViewModel.swift */,
+				ADA6D2C920AC2F1D009398A5 /* TransactionViewModel.swift */,
 			);
 			path = Types;
 			sourceTree = "<group>";
@@ -1121,9 +1119,22 @@
 		ADA6D2BE20AB215D009398A5 /* Persistence */ = {
 			isa = PBXGroup;
 			children = (
-				ADA6D2C020AB217B009398A5 /* PersistenceProtocol.swift */,
+				ADA6D2C020AB217B009398A5 /* TransactionStore.swift */,
 			);
 			path = Persistence;
+			sourceTree = "<group>";
+		};
+		ADA6D2C820AC2EFC009398A5 /* Cells */ = {
+			isa = PBXGroup;
+			children = (
+				AD6FFC9720A9C46B00B57330 /* LightningInvoiceTableViewCell.swift */,
+				AD6FFC9820A9C46B00B57330 /* LightningInvoiceTableViewCell.xib */,
+				A0A96B8D2017908600788808 /* LightningPaymentTableViewCell.swift */,
+				A0A96B8E2017908600788808 /* LightningPaymentTableViewCell.xib */,
+				A0731FDF2014A22B00C55E45 /* OnChainTransactionTableViewCell.swift */,
+				A0731FE02014A22B00C55E45 /* OnChainTransactionTableViewCell.xib */,
+			);
+			path = Cells;
 			sourceTree = "<group>";
 		};
 		ADBA120720935871001F7700 /* AmountInput */ = {
@@ -1656,7 +1667,8 @@
 				A0BD44DC206FCAD900BF27A3 /* SignalProtocol.swift in Sources */,
 				A0A05A352014047B0007D1C9 /* Lnd.swift in Sources */,
 				ADF7936A208E5FEC0086B2CA /* ConfirmMnemonicCollectionViewCell.swift in Sources */,
-				ADA6D2C120AB217B009398A5 /* PersistenceProtocol.swift in Sources */,
+				ADA6D2CA20AC2F1D009398A5 /* TransactionViewModel.swift in Sources */,
+				ADA6D2C120AB217B009398A5 /* TransactionStore.swift in Sources */,
 				AD38EB32207DFB59007DF14D /* SegmentButton.swift in Sources */,
 				ADF79376208F88DE0086B2CA /* RecoverWalletViewController.swift in Sources */,
 				A0C2EABE206F8B5B003AE56E /* Localizable.swift in Sources */,

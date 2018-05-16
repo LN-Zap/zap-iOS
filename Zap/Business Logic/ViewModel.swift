@@ -16,16 +16,19 @@ final class ViewModel: NSObject {
     let info: Wallet
     let balance: Balance
     let channels: Channels
+    private let transactionStore = TransactionStore()
     
     // Transactions
     private let onChainTransactions = Observable<[Transaction]>([])
     private let payments = Observable<[Transaction]>([])
     private let invoices = Observable<[Transaction]>([])
-    let transactions: Signal<[Transaction], NoError>
+    var transactions: Observable<[TransactionViewModel]> {
+        return transactionStore.transactions
+    }
     
     let errorMessages = Observable<String?>(nil)
 
-    var transactionMetadataUpdater: TransactionMetadataUpdater?
+//    var transactionMetadataUpdater: TransactionMetadataUpdater?
     
     init(api: LightningProtocol = LightningStream()) {
         self.api = api
@@ -33,18 +36,12 @@ final class ViewModel: NSObject {
         info = Wallet(api: api)
         balance = Balance(api: api)
         channels = Channels(api: api)
-        
-        transactions = combineLatest(onChainTransactions, payments, invoices) {
-            return $0 as [Transaction] + $1 as [Transaction] + $2 as [Transaction]
-        }
-
+    
         Lnd.start()
 
         super.init()
         
         start()
-        
-        transactionMetadataUpdater = TransactionMetadataUpdater(viewModel: self, transactionMetadataStore: MemoryTransactionMetadataStore.instance)
     }
     
     private func start() {
@@ -64,17 +61,14 @@ final class ViewModel: NSObject {
     }
     
     func updateTransactions() {
-        api.transactions { [onChainTransactions] result in
-            onChainTransactions.value = result.value ?? []
+        func callback(result: Result<[Transaction]>) {
+            guard let transactions = result.value else { return }
+            transactionStore.update(transactions: transactions)
         }
         
-        api.payments { [payments] result in
-            payments.value = result.value ?? []
-        }
-
-        api.invoices { [invoices] result in
-            invoices.value = result.value ?? []
-        }
+        api.transactions(callback: callback)
+        api.payments(callback: callback)
+        api.invoices(callback: callback)
     }
     
     func newAddress(callback: @escaping (Result<String>) -> Void) {
@@ -104,5 +98,11 @@ final class ViewModel: NSObject {
     
     func nodeInfo(pubKey: String, callback: @escaping (Result<NodeInfo>) -> Void) {
         api.nodeInfo(pubKey: pubKey, callback: callback)
+    }
+    
+    func hideTransaction(_ transactionViewModel: TransactionViewModel) {
+        let newAnnotation = TransactionAnnotation(isHidden: true, customMemo: transactionViewModel.annotation.value.customMemo)
+        
+        transactionStore.updateAnnotation(newAnnotation, for: transactionViewModel)
     }
 }

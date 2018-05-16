@@ -68,6 +68,7 @@ class TransactionListViewController: UIViewController {
         transactionListViewModel?.sections.bind(to: tableView, using: TransactionBond())
 
         tableView.delegate = self
+        tableView.reactive.dataSource.forwardTo = self
     }
     
     @objc
@@ -116,6 +117,27 @@ extension TransactionListViewController: UITableViewDelegate {
         }
         
         present(viewController, animated: true, completion: nil)
+    }
+}
+
+extension TransactionListViewController: UITableViewDataSource {
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        fatalError("This will never be called.")
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        fatalError("This will never be called.")
+    }
+        
+    func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
+        return true
+    }
+    
+    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
+        if editingStyle == .delete,
+            let transactionType = transactionListViewModel?.sections.item(at: indexPath) {
+            viewModel?.hideTransaction(transactionType.transactionViewModel)
+        }
     }
 }
 

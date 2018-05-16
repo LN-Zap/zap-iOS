@@ -15,7 +15,12 @@ enum LightningInvoiceState {
     case expired
 }
 
-final class LightningInvoiceViewModel {
+final class LightningInvoiceViewModel: TransactionViewModel {
+    var date: Date {
+        return lightningInvoice.date
+    }
+    
+    let annotation: Observable<TransactionAnnotation>
     let lightningInvoice: LightningInvoice
     
     let displayText: String
@@ -24,7 +29,8 @@ final class LightningInvoiceViewModel {
     
     let state: Observable<LightningInvoiceState>
     
-    init(lightningInvoice: LightningInvoice) {
+    init(lightningInvoice: LightningInvoice, annotation: TransactionAnnotation) {
+        self.annotation = Observable(annotation)
         self.lightningInvoice = lightningInvoice
         
         if !lightningInvoice.memo.isEmpty {

@@ -28,13 +28,24 @@ enum TransactionType: Equatable {
         }
     }
     
-    init(transaction: Transaction) {
-        if let onChainTransaction = transaction as? OnChainTransaction {
-            self = .onChainTransaction(OnChainTransactionViewModel(onChainTransaction: onChainTransaction))
-        } else if let lightningPayment = transaction as? LightningPayment {
-            self = .lightningPayment(LightningPaymentViewModel(lightningPayment: lightningPayment))
-        } else if let lightningInvoice = transaction as? LightningInvoice {
-            self = .lightningInvoice(LightningInvoiceViewModel(lightningInvoice: lightningInvoice))
+    var transactionViewModel: TransactionViewModel {
+        switch self {
+        case .onChainTransaction(let viewModel):
+            return viewModel
+        case .lightningPayment(let viewModel):
+            return viewModel
+        case .lightningInvoice(let viewModel):
+            return viewModel
+        }
+    }
+    
+    init(transactionViewModel: TransactionViewModel) {
+        if let viewModel = transactionViewModel as? OnChainTransactionViewModel {
+            self = .onChainTransaction(viewModel)
+        } else if let viewModel = transactionViewModel as? LightningPaymentViewModel {
+            self = .lightningPayment(viewModel)
+        } else if let viewModel = transactionViewModel as? LightningInvoiceViewModel {
+            self = .lightningInvoice(viewModel)
         } else {
             fatalError("type not implemented")
         }

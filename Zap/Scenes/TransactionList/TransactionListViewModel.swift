@@ -20,41 +20,41 @@ final class TransactionListViewModel: NSObject {
             .observeNext { [weak self] transactions in
                 guard let result = self?.bondSections(transactions: transactions) else { return }
                 let array = Observable2DArray(result)
-                
+
                 DispatchQueue.main.async {
                     self?.sections.replace(with: array, performDiff: true)
                 }
             }
             .dispose(in: reactive.bag)
     }
-    
+
     private func dateWithoutTime(from date: Date) -> Date {
         let components = Calendar.current.dateComponents([.day, .month, .year], from: date)
         return Calendar.current.date(from: components) ?? date
     }
-    
-    private func sortedSections(transactions: [Transaction]) -> [(Date, [Transaction])] {
+
+    private func sortedSections(transactions: [TransactionViewModel]) -> [(Date, [TransactionViewModel])] {
         let grouped = transactions.grouped { transaction -> Date in
             self.dateWithoutTime(from: transaction.date)
         }
-        
+
         return Array(zip(grouped.keys, grouped.values))
             .sorted { $0.0 > $1.0 }
     }
-    
-    private func bondSections(transactions: [Transaction]) -> [Observable2DArraySection<String, TransactionType>] {
+
+    private func bondSections(transactions: [TransactionViewModel]) -> [Observable2DArraySection<String, TransactionType>] {
         let sortedSections = self.sortedSections(transactions: transactions)
-        
+
         return sortedSections.compactMap {
             let sortedItems = $0.1.sorted { $0.date > $1.date }
-            
+
             guard let date = $0.1.first?.date else { return nil }
-            
+
             let dateString = date.localized
-            
+
             return Observable2DArraySection<String, TransactionType>(
                 metadata: dateString,
-                items: sortedItems.map { TransactionType(transaction: $0) }
+                items: sortedItems.map { TransactionType(transactionViewModel: $0) }
             )
         }
     }
