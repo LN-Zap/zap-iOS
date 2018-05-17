@@ -22,7 +22,7 @@ struct PaymentRequest {
     let amount: Satoshi
     let memo: String?
     let date: Date
-    let expiry: Int
+    let expiryDate: Date
     let raw: String
 }
 
@@ -45,7 +45,7 @@ extension PaymentRequest {
         paymentHash = payReq.paymentHash
         destination = payReq.destination
         date = Date(timeIntervalSince1970: TimeInterval(payReq.timestamp))
-        expiry = Int(payReq.expiry)
+        expiryDate = Date(timeInterval: TimeInterval(payReq.expiry), since: date)
         self.raw = raw
     }
 }

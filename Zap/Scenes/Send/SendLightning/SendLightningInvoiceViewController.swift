@@ -16,26 +16,39 @@ class SendLightningInvoiceViewController: UIViewController, QRCodeScannerChildVi
     @IBOutlet private weak var destinationLabel: UILabel!
     @IBOutlet private weak var arrowImageView: UIImageView!
     @IBOutlet private weak var gradientButtonView: GradientLoadingButtonView!
+    @IBOutlet private weak var expiredView: UIView!
+    @IBOutlet private weak var expiredLabel: UILabel!
     
     var sendViewModel: SendLightningInvoiceViewModel?
     let contentHeight: CGFloat = 380 // QRCodeScannerChildViewController
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        Style.label.apply(to: memoLabel, amountLabel, secondaryAmountLabel, destinationLabel)
+        
+        Style.label.apply(to: memoLabel, amountLabel, secondaryAmountLabel, destinationLabel, expiredLabel)
         amountLabel.font = amountLabel.font.withSize(36)
         secondaryAmountLabel.font = amountLabel.font.withSize(14)
         secondaryAmountLabel.textColor = .gray
         
         gradientButtonView.title = "Send"
         
+        expiredView.backgroundColor = Color.red
+        expiredLabel.textColor = .white
+        
         arrowImageView.tintColor = Color.text
         
         [sendViewModel?.memo.bind(to: memoLabel.reactive.text),
          sendViewModel?.satoshis.bind(to: amountLabel.reactive.text, currency: Settings.primaryCurrency),
          sendViewModel?.destination.bind(to: destinationLabel.reactive.text),
-         sendViewModel?.satoshis.bind(to: secondaryAmountLabel.reactive.text, currency: Settings.secondaryCurrency)]
+         sendViewModel?.satoshis.bind(to: secondaryAmountLabel.reactive.text, currency: Settings.secondaryCurrency),
+         sendViewModel?.isExpired.observeNext(with: { [weak self] in
+            self?.expiredView.isHidden = !$0
+            self?.gradientButtonView.isHidden = $0
+         }),
+         sendViewModel?.expiryDate
+            .ignoreNil()
+            .map({ "Payment Request expired:\n\(DateFormatter.localizedString(from: $0, dateStyle: .medium, timeStyle: .short))" })
+            .bind(to: expiredLabel.reactive.text)]
             .dispose(in: reactive.bag)
     }
     

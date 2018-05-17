@@ -15,6 +15,8 @@ final class SendLightningInvoiceViewModel {
     let memo = Observable<String?>(nil)
     let satoshis = Observable<Satoshi>(0)
     let destination = Observable<String?>(nil)
+    let isExpired = Observable(false)
+    let expiryDate = Observable<Date?>(nil)
     
     private var paymentRequest: PaymentRequest?
     
@@ -47,5 +49,8 @@ final class SendLightningInvoiceViewModel {
         }
         satoshis.value = paymentRequest.amount
         destination.value = paymentRequest.destination
+        
+        expiryDate.value = paymentRequest.expiryDate
+        isExpired.value = paymentRequest.expiryDate < Date()
     }
 }
