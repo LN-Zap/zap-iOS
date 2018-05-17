@@ -186,6 +186,7 @@
 		ADA6D2C520AC1DDE009398A5 /* Balance.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADA6D2C420AC1DDE009398A5 /* Balance.swift */; };
 		ADA6D2C720AC2406009398A5 /* Channels.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADA6D2C620AC2406009398A5 /* Channels.swift */; };
 		ADA6D2CA20AC2F1D009398A5 /* TransactionViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADA6D2C920AC2F1D009398A5 /* TransactionViewModel.swift */; };
+		ADB6DEDB20AD8F80001324C8 /* GradientLoadingButtonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADB6DEDA20AD8F80001324C8 /* GradientLoadingButtonView.swift */; };
 		ADBA12022090CD11001F7700 /* KeyPadView.xib in Resources */ = {isa = PBXBuildFile; fileRef = ADBA12012090CD11001F7700 /* KeyPadView.xib */; };
 		ADBA12042090CD22001F7700 /* KeyPadView.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADBA12032090CD22001F7700 /* KeyPadView.swift */; };
 		ADBA120620930C94001F7700 /* UIViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADBA120520930C94001F7700 /* UIViewController.swift */; };
@@ -457,6 +458,7 @@
 		ADA6D2C420AC1DDE009398A5 /* Balance.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Balance.swift; sourceTree = "<group>"; };
 		ADA6D2C620AC2406009398A5 /* Channels.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Channels.swift; sourceTree = "<group>"; };
 		ADA6D2C920AC2F1D009398A5 /* TransactionViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransactionViewModel.swift; sourceTree = "<group>"; };
+		ADB6DEDA20AD8F80001324C8 /* GradientLoadingButtonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GradientLoadingButtonView.swift; sourceTree = "<group>"; };
 		ADBA12012090CD11001F7700 /* KeyPadView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = KeyPadView.xib; sourceTree = "<group>"; };
 		ADBA12032090CD22001F7700 /* KeyPadView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyPadView.swift; sourceTree = "<group>"; };
 		ADBA120520930C94001F7700 /* UIViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIViewController.swift; sourceTree = "<group>"; };
@@ -648,11 +650,13 @@
 		A010093E2014D4720001EF94 /* Views */ = {
 			isa = PBXGroup;
 			children = (
-				ADBA12082093587B001F7700 /* KeyPad */,
-				ADBA120720935871001F7700 /* AmountInput */,
 				ADBB362C2080B755005662B4 /* AddressView.swift */,
+				ADBA120720935871001F7700 /* AmountInput */,
 				A0BD44DE206FED1400BF27A3 /* BondTableViewCell.swift */,
+				A0F353CF20692570005B3639 /* GradientView.swift */,
+				ADB6DEDA20AD8F80001324C8 /* GradientLoadingButtonView.swift */,
 				A0605F8C202C9D8200EA903C /* HorizontalLineView.swift */,
+				ADBA12082093587B001F7700 /* KeyPad */,
 				ADF79363208DCB630086B2CA /* PinView.swift */,
 				A0605F89202C9D1A00EA903C /* Section Header */,
 				AD38EB31207DFB59007DF14D /* SegmentButton.swift */,
@@ -1017,7 +1021,6 @@
 			children = (
 				A0F353CD20692415005B3639 /* Main.storyboard */,
 				A0F353CB206923E4005B3639 /* MainViewController.swift */,
-				A0F353CF20692570005B3639 /* GradientView.swift */,
 			);
 			path = Main;
 			sourceTree = "<group>";
@@ -1633,6 +1636,7 @@
 				A0C2EAC4206F9539003AE56E /* ExchangeUpdaterJob.swift in Sources */,
 				A02C9FC4202F617D009821B1 /* LocalAuthentication.swift in Sources */,
 				A06660FC202E080400EE32FA /* UpdatePinSettingsItem.swift in Sources */,
+				ADB6DEDB20AD8F80001324C8 /* GradientLoadingButtonView.swift in Sources */,
 				A0A05A292013ED4B0007D1C9 /* ModalPresentationController.swift in Sources */,
 				AD7746552076253C00EC596B /* SendLightningInvoiceViewController.swift in Sources */,
 				ADCE01BD207B598C00CA72E8 /* SelectWalletCreationMethodViewController.swift in Sources */,

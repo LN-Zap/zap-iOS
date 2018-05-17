@@ -12,10 +12,10 @@ class SendLightningInvoiceViewController: UIViewController, QRCodeScannerChildVi
     @IBOutlet private weak var memoLabel: UILabel!
     @IBOutlet private weak var amountLabel: UILabel!
     @IBOutlet private weak var secondaryAmountLabel: UILabel!
-    @IBOutlet private weak var sendButton: UIButton!
     @IBOutlet private weak var paymentBackground: UIView!
     @IBOutlet private weak var destinationLabel: UILabel!
     @IBOutlet private weak var arrowImageView: UIImageView!
+    @IBOutlet private weak var gradientButtonView: GradientLoadingButtonView!
     
     var sendViewModel: SendLightningInvoiceViewModel?
     let contentHeight: CGFloat = 380 // QRCodeScannerChildViewController
@@ -23,11 +23,12 @@ class SendLightningInvoiceViewController: UIViewController, QRCodeScannerChildVi
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        Style.button.apply(to: sendButton)
         Style.label.apply(to: memoLabel, amountLabel, secondaryAmountLabel, destinationLabel)
         amountLabel.font = amountLabel.font.withSize(36)
         secondaryAmountLabel.font = amountLabel.font.withSize(14)
         secondaryAmountLabel.textColor = .gray
+        
+        gradientButtonView.title = "Send"
         
         arrowImageView.tintColor = Color.text
         

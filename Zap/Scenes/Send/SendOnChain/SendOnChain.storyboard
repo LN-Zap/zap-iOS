@@ -56,25 +56,15 @@
                                             <action selector="updateAmount:" destination="mMV-Qy-DcK" eventType="valueChanged" id="d10-g9-Olr"/>
                                         </connections>
                                     </view>
-                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="74N-KX-eQb" customClass="GradientView" customModule="Zap" customModuleProvider="target">
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="74N-KX-eQb" customClass="GradientLoadingButtonView" customModule="Zap" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="570" width="375" height="97"/>
-                                        <subviews>
-                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="qCq-I3-kpH">
-                                                <rect key="frame" x="0.0" y="0.0" width="375" height="97"/>
-                                                <state key="normal" title="Send"/>
-                                                <connections>
-                                                    <action selector="sendButtonTapped:" destination="mMV-Qy-DcK" eventType="touchUpInside" id="EyF-ba-c6q"/>
-                                                </connections>
-                                            </button>
-                                        </subviews>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <constraints>
-                                            <constraint firstAttribute="trailing" secondItem="qCq-I3-kpH" secondAttribute="trailing" id="ApZ-1V-EJS"/>
-                                            <constraint firstItem="qCq-I3-kpH" firstAttribute="leading" secondItem="74N-KX-eQb" secondAttribute="leading" id="DCn-1k-ouy"/>
-                                            <constraint firstItem="qCq-I3-kpH" firstAttribute="top" secondItem="74N-KX-eQb" secondAttribute="top" id="S3V-Qn-5Ye"/>
-                                            <constraint firstAttribute="bottom" secondItem="qCq-I3-kpH" secondAttribute="bottom" id="ScW-qG-86C"/>
                                             <constraint firstAttribute="height" constant="97" id="rZX-Qx-lJc"/>
                                         </constraints>
+                                        <connections>
+                                            <action selector="sendButtonTapped:" destination="mMV-Qy-DcK" eventType="touchUpInside" id="iHS-cJ-LRN"/>
+                                        </connections>
                                     </view>
                                 </subviews>
                             </stackView>
@@ -98,7 +88,7 @@
                     <connections>
                         <outlet property="addressLabel" destination="KCg-h6-2jp" id="p7e-cg-0Rr"/>
                         <outlet property="amountInputView" destination="kke-Yp-KRr" id="1wd-uX-O8g"/>
-                        <outlet property="sendButton" destination="qCq-I3-kpH" id="XZW-GC-NGr"/>
+                        <outlet property="gradientLoadingButtonView" destination="74N-KX-eQb" id="NwC-MU-CA7"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="uEW-R5-SYf" userLabel="First Responder" sceneMemberID="firstResponder"/>

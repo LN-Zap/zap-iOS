@@ -7,14 +7,22 @@
 
 import UIKit
 
-final class GradientView: UIView {
+class GradientView: UIView {
     override open class var layerClass: AnyClass {
         return CAGradientLayer.classForCoder()
     }
     
+    override init(frame: CGRect) {
+        super.init(frame: frame)
+        setup()
+    }
+    
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
-        
+        setup()
+    }
+    
+    private func setup() {
         let gradientLayer = layer as? CAGradientLayer
         
         gradientLayer?.startPoint = CGPoint(x: 0.0, y: 1.0)

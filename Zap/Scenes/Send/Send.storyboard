@@ -81,25 +81,15 @@
                                             <constraint firstAttribute="bottom" relation="greaterThanOrEqual" secondItem="LPL-uG-r9Y" secondAttribute="bottom" constant="20" id="z5j-mU-orn"/>
                                         </constraints>
                                     </view>
-                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Qte-7J-D41" customClass="GradientView" customModule="Zap" customModuleProvider="target">
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Qte-7J-D41" customClass="GradientLoadingButtonView" customModule="Zap" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="570" width="375" height="97"/>
-                                        <subviews>
-                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="kme-Hg-TE2">
-                                                <rect key="frame" x="0.0" y="0.0" width="375" height="97"/>
-                                                <state key="normal" title="Send"/>
-                                                <connections>
-                                                    <action selector="sendButtonTapped:" destination="GP5-eW-YOL" eventType="touchUpInside" id="KqB-IF-tdf"/>
-                                                </connections>
-                                            </button>
-                                        </subviews>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <constraints>
-                                            <constraint firstAttribute="trailing" secondItem="kme-Hg-TE2" secondAttribute="trailing" id="71m-3z-cQt"/>
-                                            <constraint firstItem="kme-Hg-TE2" firstAttribute="leading" secondItem="Qte-7J-D41" secondAttribute="leading" id="IcQ-QD-eSg"/>
-                                            <constraint firstItem="kme-Hg-TE2" firstAttribute="top" secondItem="Qte-7J-D41" secondAttribute="top" id="Yo8-pM-eBx"/>
                                             <constraint firstAttribute="height" constant="97" id="bl6-48-AYE"/>
-                                            <constraint firstAttribute="bottom" secondItem="kme-Hg-TE2" secondAttribute="bottom" id="opB-KJ-yDM"/>
                                         </constraints>
+                                        <connections>
+                                            <action selector="sendButtonTapped:" destination="GP5-eW-YOL" eventType="touchUpInside" id="iL6-WE-Ek2"/>
+                                        </connections>
                                     </view>
                                 </subviews>
                             </stackView>
@@ -117,11 +107,11 @@
                         <outlet property="amountLabel" destination="vLT-bT-U1W" id="HZu-x5-iFS"/>
                         <outlet property="arrowImageView" destination="9Mg-ms-6rf" id="sVA-Xp-cky"/>
                         <outlet property="destinationLabel" destination="ezj-er-pW6" id="aSh-nC-bUN"/>
+                        <outlet property="gradientButtonView" destination="Qte-7J-D41" id="7Zj-YG-NQg"/>
                         <outlet property="memoLabel" destination="LPL-uG-r9Y" id="mQh-dx-mKb"/>
                         <outlet property="paymentBackground" destination="jKC-ud-dN0" id="WKu-Yd-vGv"/>
                         <outlet property="paymentRequestView" destination="xLC-QL-AbG" id="tce-uW-9Ac"/>
                         <outlet property="secondaryAmountLabel" destination="sAt-Vj-aUr" id="bWw-jV-z5n"/>
-                        <outlet property="sendButton" destination="kme-Hg-TE2" id="0Ka-zH-Sen"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dwz-wd-qdE" userLabel="First Responder" sceneMemberID="firstResponder"/>

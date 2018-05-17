@@ -10,9 +10,9 @@ import UIKit
 final class SendOnChainViewController: UIViewController, QRCodeScannerChildViewController {
     
     @IBOutlet private weak var addressLabel: UILabel!
-    @IBOutlet private weak var sendButton: UIButton!
     @IBOutlet private weak var amountInputView: AmountInputView!
-
+    @IBOutlet private weak var gradientLoadingButtonView: GradientLoadingButtonView!
+    
     let contentHeight: CGFloat = 550 // QRCodeScannerChildViewController
     var sendOnChainViewModel: SendOnChainViewModel?
 
@@ -22,8 +22,8 @@ final class SendOnChainViewController: UIViewController, QRCodeScannerChildViewC
         title = "scene.withdraw.title".localized
         
         Style.label.apply(to: addressLabel)
-        Style.button.apply(to: sendButton)
-        sendButton.tintColor = .white
+
+        gradientLoadingButtonView.title = "Send"
         
         addressLabel.text = sendOnChainViewModel?.address
         
