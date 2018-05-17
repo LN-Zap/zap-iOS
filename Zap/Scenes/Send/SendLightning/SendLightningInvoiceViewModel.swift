@@ -9,14 +9,19 @@ import Bond
 import BTCUtil
 import Foundation
 
+enum SendLightningInvoiceError {
+    case none
+    case expired(Date)
+    case duplicate
+}
+
 final class SendLightningInvoiceViewModel {
     private let viewModel: ViewModel
     
     let memo = Observable<String?>(nil)
     let satoshis = Observable<Satoshi>(0)
     let destination = Observable<String?>(nil)
-    let isExpired = Observable(false)
-    let expiryDate = Observable<Date?>(nil)
+    let invoiceError = Observable<SendLightningInvoiceError>(.none)
     
     private var paymentRequest: PaymentRequest?
     
@@ -50,7 +55,12 @@ final class SendLightningInvoiceViewModel {
         satoshis.value = paymentRequest.amount
         destination.value = paymentRequest.destination
         
-        expiryDate.value = paymentRequest.expiryDate
-        isExpired.value = paymentRequest.expiryDate < Date()
+        if viewModel.transactions.value.contains(where: { $0.id == paymentRequest.paymentHash }) {
+            invoiceError.value = .duplicate
+        } else if paymentRequest.expiryDate < Date() {
+            invoiceError.value = .expired(paymentRequest.expiryDate)
+        } else {
+            invoiceError.value = .none
+        }
     }
 }

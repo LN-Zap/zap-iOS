@@ -41,13 +41,32 @@ class SendLightningInvoiceViewController: UIViewController, QRCodeScannerChildVi
          sendViewModel?.satoshis.bind(to: amountLabel.reactive.text, currency: Settings.primaryCurrency),
          sendViewModel?.destination.bind(to: destinationLabel.reactive.text),
          sendViewModel?.satoshis.bind(to: secondaryAmountLabel.reactive.text, currency: Settings.secondaryCurrency),
-         sendViewModel?.isExpired.observeNext(with: { [weak self] in
-            self?.expiredView.isHidden = !$0
-            self?.gradientButtonView.isHidden = $0
-         }),
-         sendViewModel?.expiryDate
+         sendViewModel?.invoiceError
+            .map({ (error: SendLightningInvoiceError) -> Bool in
+                switch error {
+                case .none:
+                    return true
+                default:
+                    return false
+                }
+            })
+            .observeNext(with: { [weak self] in
+                self?.expiredView.isHidden = $0
+                self?.gradientButtonView.isHidden = !$0
+            }),
+         sendViewModel?.invoiceError
+            .map({ (error: SendLightningInvoiceError) -> String? in
+                switch error {
+                    
+                case .none:
+                    return nil
+                case .expired(let date):
+                    return "Payment Request expired:\n\(DateFormatter.localizedString(from: date, dateStyle: .medium, timeStyle: .short))"
+                case .duplicate:
+                    return "Payment already paid."
+                }
+            })
             .ignoreNil()
-            .map({ "Payment Request expired:\n\(DateFormatter.localizedString(from: $0, dateStyle: .medium, timeStyle: .short))" })
             .bind(to: expiredLabel.reactive.text)]
             .dispose(in: reactive.bag)
     }
