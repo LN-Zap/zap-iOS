@@ -53,20 +53,23 @@ class GroupedTableViewController: UITableViewController {
             cell = UITableViewCell(style: .default, reuseIdentifier: "DefaultSettingsCell")
         }
         
+        cell.textLabel?.text = item.title
+        cell.textLabel?.font = Font.light
+        cell.textLabel?.textColor = .white
+        cell.backgroundColor = Color.mediumBackground
+
         if let item = item as? SelectableSettingsItem {
             item.isSelectedOption
-                .observeNext { cell.accessoryType = $0 ? .checkmark : .none }
+                .observeNext {
+                    cell.accessoryType = $0 ? .checkmark : .none
+                    cell.textLabel?.textColor = $0 ? Color.tint : .white
+                }
                 .dispose(in: reactive.bag)
         } else if item is DetailDisclosureSettingsItem {
             cell.accessoryType = .disclosureIndicator
         } else {
             cell.accessoryType = .none
-        }
-        
-        cell.textLabel?.text = item.title
-        cell.textLabel?.font = Font.light
-        cell.textLabel?.textColor = .white
-        cell.backgroundColor = Color.mediumBackground
+        }        
         
         return cell
     }

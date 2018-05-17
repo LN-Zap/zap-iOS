@@ -83,7 +83,7 @@ final class MainViewController: UIViewController, ContainerViewController {
         
         if selection == .network {
             networkButton.backgroundColor = selectedColor
-            networkButton.imageView?.tintColor = Color.bottomGradientLeft
+            networkButton.imageView?.tintColor = Color.tint
             transactionsButton.backgroundColor = .clear
             transactionsButton.imageView?.tintColor = .white
         } else {
