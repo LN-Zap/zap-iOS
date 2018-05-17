@@ -14,7 +14,7 @@ protocol TransactionViewModel {
     var date: Date { get }
 }
 
-struct TransactionAnnotation {
+struct TransactionAnnotation: Codable {
     let isHidden: Bool
     let customMemo: String?
 }

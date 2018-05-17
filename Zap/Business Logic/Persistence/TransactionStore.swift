@@ -13,7 +13,9 @@ final class TransactionStore {
     var annotations = [String: TransactionAnnotation]()
     
     init() {
-        transactions = Observable([])        
+        transactions = Observable([])
+        
+        loadAnnotations()
     }
     
     func update(transactions newTransactions: [Transaction]) {
@@ -29,6 +31,8 @@ final class TransactionStore {
     
     func setMemo(_ memo: String, forPaymentHash paymentHash: String) {
         annotations[paymentHash] = TransactionAnnotation(isHidden: false, customMemo: memo)
+        
+        saveAnnotations()
     }
     
     func updateAnnotation(_ annotation: TransactionAnnotation, for transactionViewModel: TransactionViewModel) {
@@ -45,6 +49,28 @@ final class TransactionStore {
         } else {
             transactionViewModel.annotation.value = annotation
         }
+        
+        saveAnnotations()
+    }
+    
+    private var plistUrl: URL? {
+        return FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first?.appendingPathComponent("annotations.plist")
+    }
+    
+    private func saveAnnotations() {
+        guard
+            let encoded = try? PropertyListEncoder().encode(annotations),
+            let url = plistUrl
+            else { return }
+        try? encoded.write(to: url)
+    }
+    
+    private func loadAnnotations() {
+        guard
+            let url = plistUrl,
+            let data = try? Data(contentsOf: url),
+            let decoded = try? PropertyListDecoder().decode(Dictionary<String, TransactionAnnotation>.self, from: data) else { return }
+        annotations = decoded
     }
     
     // MARK: - Private, refactor this shit
