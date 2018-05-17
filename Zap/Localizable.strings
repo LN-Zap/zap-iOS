@@ -6,8 +6,8 @@
   Copyright © 2018 Otto Suess. All rights reserved.
 */
 
-"channel.state.active" = "Active";
-"channel.state.inactive" = "Inactive";
+"channel.state.active" = "Online";
+"channel.state.inactive" = "Offline";
 "channel.state.opening" = "Opening";
 "channel.state.closing" = "Closing";
 "channel.state.force_closing" = "Force Closing";
