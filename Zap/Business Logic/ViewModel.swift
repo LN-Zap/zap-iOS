@@ -80,10 +80,15 @@ final class ViewModel: NSObject {
     }
     
     func sendPayment(_ paymentRequest: PaymentRequest, callback: @escaping (Bool) -> Void) {
-        api.sendPayment(paymentRequest) { [weak self] _ in
-            self?.balance.update()
-            self?.updateTransactions()
-            self?.channels.update()
+        api.sendPayment(paymentRequest) { [weak self, transactionStore] result in
+            if result.value != nil {
+                if let memo = paymentRequest.memo {
+                    transactionStore.setMemo(memo, forPaymentHash: paymentRequest.paymentHash)
+                }
+                self?.balance.update()
+                self?.updateTransactions()
+                self?.channels.update()
+            }
             callback(true)
         }
     }

@@ -13,7 +13,7 @@ final class TransactionStore {
     var annotations = [String: TransactionAnnotation]()
     
     init() {
-        transactions = Observable([])
+        transactions = Observable([])        
     }
     
     func update(transactions newTransactions: [Transaction]) {
@@ -25,6 +25,10 @@ final class TransactionStore {
             }
         }
         transactions.value += viewModels
+    }
+    
+    func setMemo(_ memo: String, forPaymentHash paymentHash: String) {
+        annotations[paymentHash] = TransactionAnnotation(isHidden: false, customMemo: memo)
     }
     
     func updateAnnotation(_ annotation: TransactionAnnotation, for transactionViewModel: TransactionViewModel) {
