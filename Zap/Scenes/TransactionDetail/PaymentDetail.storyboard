@@ -19,7 +19,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="15" translatesAutoresizingMaskIntoConstraints="NO" id="y22-P4-Kxd">
-                                <rect key="frame" x="20" y="84" width="335" height="91.5"/>
+                                <rect key="frame" x="20" y="84" width="335" height="182"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hsw-bH-rJ1">
                                         <rect key="frame" x="0.0" y="0.0" width="335" height="20.5"/>
@@ -39,6 +39,24 @@
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Memo:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ZHk-Xd-ByS">
+                                        <rect key="frame" x="0.0" y="106.5" width="335" height="20.5"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="59B-VN-Zdh">
+                                        <rect key="frame" x="0.0" y="142" width="335" height="40"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="40" id="jvH-I0-tA4"/>
+                                        </constraints>
+                                        <nil key="textColor"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                        <textInputTraits key="textInputTraits"/>
+                                        <connections>
+                                            <action selector="updateMemo:" destination="Mh9-nt-3P0" eventType="editingChanged" id="YoQ-ya-gxg"/>
+                                        </connections>
+                                    </textField>
                                 </subviews>
                             </stackView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="KVC-qa-lDZ">
@@ -71,6 +89,8 @@
                         <outlet property="dateLabel" destination="nql-vu-TKw" id="Pci-HD-UYJ"/>
                         <outlet property="feeLabel" destination="hsw-bH-rJ1" id="ELE-no-Ctu"/>
                         <outlet property="hideTransactionButton" destination="KVC-qa-lDZ" id="PoR-cS-pxr"/>
+                        <outlet property="memoLabel" destination="ZHk-Xd-ByS" id="uv5-Zk-LM2"/>
+                        <outlet property="memoTextField" destination="59B-VN-Zdh" id="NJx-La-GFk"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="TDB-Wm-Rcw" userLabel="First Responder" sceneMemberID="firstResponder"/>

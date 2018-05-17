@@ -16,6 +16,10 @@ enum LightningInvoiceState {
 }
 
 final class LightningInvoiceViewModel: TransactionViewModel {
+    var id: String {
+        return lightningInvoice.id
+    }
+    
     var date: Date {
         return lightningInvoice.date
     }

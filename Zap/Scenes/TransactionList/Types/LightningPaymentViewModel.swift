@@ -10,6 +10,10 @@ import BTCUtil
 import Foundation
 
 final class LightningPaymentViewModel: TransactionViewModel {
+    var id: String {
+        return lightningPayment.id
+    }
+    
     var date: Date {
         return lightningPayment.date
     }

@@ -9,6 +9,7 @@ import Bond
 import Foundation
 
 protocol TransactionViewModel {
+    var id: String { get }
     var annotation: Observable<TransactionAnnotation> { get }
     var date: Date { get }
 }
@@ -16,4 +17,11 @@ protocol TransactionViewModel {
 struct TransactionAnnotation {
     let isHidden: Bool
     let customMemo: String?
+}
+
+extension TransactionAnnotation {
+    init() {
+        isHidden = false
+        customMemo = nil
+    }
 }

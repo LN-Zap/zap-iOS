@@ -10,6 +10,10 @@ import BTCUtil
 import Foundation
 
 final class OnChainTransactionViewModel: NSObject, TransactionViewModel {
+    var id: String {
+        return onChainTransaction.id
+    }
+    
     var date: Date {
         return onChainTransaction.date
     }

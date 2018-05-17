@@ -10,6 +10,7 @@ import Foundation
 
 final class TransactionStore {
     let transactions: Observable<[TransactionViewModel]>
+    var annotations = [String: TransactionAnnotation]()
     
     init() {
         transactions = Observable([])
@@ -18,12 +19,17 @@ final class TransactionStore {
     func update(transactions newTransactions: [Transaction]) {
         var viewModels = [TransactionViewModel]()
         for transaction in newTransactions where !exists(transaction) {
-            viewModels.append(transcactionViewModel(for: transaction))
+            let viewModel = transcactionViewModel(for: transaction)
+            if !viewModel.annotation.value.isHidden {
+                viewModels.append(viewModel)
+            }
         }
         transactions.value += viewModels
     }
     
     func updateAnnotation(_ annotation: TransactionAnnotation, for transactionViewModel: TransactionViewModel) {
+        annotations[transactionViewModel.id] = annotation
+        
         if annotation.isHidden,
             let index = transactions.value.index(where: {
                 areTransactionsEqual(lhs: $0, rhs: transactionViewModel)
@@ -32,6 +38,8 @@ final class TransactionStore {
             var newTransactions = transactions.value
             newTransactions.remove(at: index)
             transactions.value = newTransactions
+        } else {
+            transactionViewModel.annotation.value = annotation
         }
     }
     
@@ -69,7 +77,7 @@ final class TransactionStore {
     }
     
     private func transcactionViewModel(for transaction: Transaction) -> TransactionViewModel {
-        let annotation = TransactionAnnotation(isHidden: false, customMemo: nil)
+        let annotation = annotations[transaction.id] ?? TransactionAnnotation()
         
         if let transaction = transaction as? OnChainTransaction {
             return OnChainTransactionViewModel(onChainTransaction: transaction, annotation: annotation)

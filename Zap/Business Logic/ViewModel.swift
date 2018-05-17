@@ -100,9 +100,20 @@ final class ViewModel: NSObject {
         api.nodeInfo(pubKey: pubKey, callback: callback)
     }
     
+    // TODO: refactor - move this somewhere else
+    
     func hideTransaction(_ transactionViewModel: TransactionViewModel) {
         let newAnnotation = TransactionAnnotation(isHidden: true, customMemo: transactionViewModel.annotation.value.customMemo)
+        transactionStore.updateAnnotation(newAnnotation, for: transactionViewModel)
+    }
+    
+    func udpateMemo(_ memo: String?, for transactionViewModel: TransactionViewModel) {
+        var memo = memo
+        if memo == "" {
+            memo = nil
+        }
         
+        let newAnnotation = TransactionAnnotation(isHidden: transactionViewModel.annotation.value.isHidden, customMemo: memo)
         transactionStore.updateAnnotation(newAnnotation, for: transactionViewModel)
     }
 }

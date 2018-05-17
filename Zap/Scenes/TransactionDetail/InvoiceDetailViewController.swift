@@ -124,7 +124,7 @@ class InvoiceDetailViewController: UIViewController {
         present(activityViewController, animated: true, completion: nil)
     }
     
-    @IBAction func hideTransaction(_ sender: Any) {
+    @IBAction private func hideTransaction(_ sender: Any) {
         guard let lightningInvoiceViewModel = lightningInvoiceViewModel else { return }
         viewModel?.hideTransaction(lightningInvoiceViewModel)
         dismiss(animated: true, completion: nil)

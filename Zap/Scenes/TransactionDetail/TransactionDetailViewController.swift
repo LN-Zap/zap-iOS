@@ -50,7 +50,7 @@ class TransactionDetailViewController: UIViewController {
         dismiss(animated: true, completion: nil)
     }
     
-    @IBAction func hideTransaction(_ sender: Any) {
+    @IBAction private func hideTransaction(_ sender: Any) {
         guard let transactionViewModel = transactionViewModel else { return }
         viewModel?.hideTransaction(transactionViewModel)
         dismiss(animated: true, completion: nil)

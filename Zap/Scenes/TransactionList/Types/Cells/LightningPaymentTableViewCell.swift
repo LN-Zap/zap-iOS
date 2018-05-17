@@ -17,13 +17,14 @@ class LightningPaymentTableViewCell: BondTableViewCell {
     var payment: LightningPaymentViewModel? {
         didSet {
             guard let payment = payment else { return }
-            
-            nameLabel.text = payment.displayText
-            
-            Settings.primaryCurrency
+                        
+            [payment.annotation
+                .map { $0.customMemo ?? payment.displayText }
+                .bind(to: nameLabel.reactive.text),
+             Settings.primaryCurrency
                 .map { $0.format(satoshis: payment.amount ) }
-                .bind(to: amountLabel.reactive.text)
-                .dispose(in: reactive.bag)
+                .bind(to: amountLabel.reactive.text)]
+                .dispose(in: onReuseBag)
             
             timeLabel.text = payment.time
         }
