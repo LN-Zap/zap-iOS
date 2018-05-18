@@ -18,15 +18,7 @@ class OnChainTransactionTableViewCell: BondTableViewCell {
         didSet {
             guard let transaction = onChainTransaction else { return }
             
-            [transaction.annotation
-                .map {
-                    if let type = $0.type,
-                        case .openChannelTransaction(let channelPubKey) = type {
-                        return "Open Channel: \(channelPubKey)"
-                    }
-                    return transaction.displayText.value
-                }
-                .bind(to: titleLabel.reactive.text),
+            [transaction.displayText.bind(to: titleLabel.reactive.text),
              transaction.amount.bind(to: primaryAmountLabel.reactive.text, currency: Settings.primaryCurrency),
              transaction.amount.bind(to: secondaryAmountLabel.reactive.text, currency: Settings.secondaryCurrency)]
                 .dispose(in: onReuseBag)

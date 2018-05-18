@@ -8,6 +8,7 @@
 import Bond
 import BTCUtil
 import Foundation
+import ReactiveKit
 
 final class OnChainTransactionViewModel: NSObject, TransactionViewModel {
     var id: String {
@@ -21,17 +22,32 @@ final class OnChainTransactionViewModel: NSObject, TransactionViewModel {
     let annotation: Observable<TransactionAnnotation>
     let onChainTransaction: OnChainTransaction
     
-    let displayText: Observable<String>
-    let amount: Observable<Satoshi>
+    let displayText: Signal<String, NoError>
+    let amount: Signal<Satoshi, NoError>
     let time: String
     
     init(onChainTransaction: OnChainTransaction, annotation: TransactionAnnotation) {
         self.annotation = Observable(annotation)
         self.onChainTransaction = onChainTransaction
         
-        displayText = Observable(onChainTransaction.firstDestinationAddress)
-        amount = Observable(onChainTransaction.amount)
-        
         time = DateFormatter.localizedString(from: onChainTransaction.date, dateStyle: .none, timeStyle: .short)
+        
+        amount = self.annotation
+            .map { annotation -> Satoshi in
+                if let type = annotation.type,
+                    case .openChannelTransaction = type {
+                    return -onChainTransaction.fees
+                }
+                return onChainTransaction.amount
+            }
+        
+        displayText = self.annotation
+            .map { annotation -> String in
+                if let type = annotation.type,
+                    case .openChannelTransaction(let channelPubKey) = type {
+                    return "Open Channel: \(channelPubKey)"
+                }
+                return onChainTransaction.firstDestinationAddress
+            }
     }
 }

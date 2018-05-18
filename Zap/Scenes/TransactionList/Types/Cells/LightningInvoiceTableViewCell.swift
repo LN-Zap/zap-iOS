@@ -19,14 +19,12 @@ class LightningInvoiceTableViewCell: BondTableViewCell {
             
             titleLabel.text = transaction.displayText
             
-            Settings.primaryCurrency
+            [Settings.primaryCurrency
                 .map { $0.format(satoshis: transaction.amount ) }
-                .bind(to: primaryAmountLabel.reactive.text)
-                .dispose(in: reactive.bag)
-            
-            Settings.secondaryCurrency
+                .bind(to: primaryAmountLabel.reactive.text),
+             Settings.secondaryCurrency
                 .map { $0.format(satoshis: transaction.amount ) }
-                .bind(to: secondaryAmountLabel.reactive.text)
+                .bind(to: secondaryAmountLabel.reactive.text)]
                 .dispose(in: reactive.bag)
             
             timeLabel.text = transaction.time
