@@ -36,7 +36,8 @@ class TransactionDetailViewController: UIViewController {
     private func updateTransaction() {
         guard let transaction = transactionViewModel?.onChainTransaction else { return }
         
-        confirmationsLabel.text = "Confirmations: \(transaction.confirmations)"
+        let confirmationString = transaction.confirmations > 6 ? "6+" : String(transaction.confirmations)
+        confirmationsLabel.text = "Confirmations: \(confirmationString)"
         
         let feesString = Settings.primaryCurrency.value.format(satoshis: transaction.fees) ?? "0"
         feesLabel.text = "Fees: \(feesString)"
