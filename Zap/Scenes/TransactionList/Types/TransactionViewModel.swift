@@ -13,15 +13,3 @@ protocol TransactionViewModel {
     var annotation: Observable<TransactionAnnotation> { get }
     var date: Date { get }
 }
-
-struct TransactionAnnotation: Codable {
-    let isHidden: Bool
-    let customMemo: String?
-}
-
-extension TransactionAnnotation {
-    init() {
-        isHidden = false
-        customMemo = nil
-    }
-}

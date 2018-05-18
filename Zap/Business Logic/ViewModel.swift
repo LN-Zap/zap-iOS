@@ -28,7 +28,7 @@ final class ViewModel: NSObject {
     
     let errorMessages = Observable<String?>(nil)
 
-//    var transactionMetadataUpdater: TransactionMetadataUpdater?
+    var channelTransactionAnnotationUpdater: ChannelTransactionAnnotationUpdater?
     
     init(api: LightningProtocol = LightningStream()) {
         self.api = api
@@ -38,9 +38,11 @@ final class ViewModel: NSObject {
         channels = Channels(api: api)
     
         Lnd.start()
-
-        super.init()
         
+        super.init()
+
+        channelTransactionAnnotationUpdater = ChannelTransactionAnnotationUpdater(viewModel: self, transactionStore: transactionStore)
+
         start()
     }
     
@@ -108,7 +110,7 @@ final class ViewModel: NSObject {
     // TODO: refactor - move this somewhere else
     
     func hideTransaction(_ transactionViewModel: TransactionViewModel) {
-        let newAnnotation = TransactionAnnotation(isHidden: true, customMemo: transactionViewModel.annotation.value.customMemo)
+        let newAnnotation = TransactionAnnotation.lens.isHidden.set(true, transactionViewModel.annotation.value)
         transactionStore.updateAnnotation(newAnnotation, for: transactionViewModel)
     }
     
@@ -118,7 +120,7 @@ final class ViewModel: NSObject {
             memo = nil
         }
         
-        let newAnnotation = TransactionAnnotation(isHidden: transactionViewModel.annotation.value.isHidden, customMemo: memo)
+        let newAnnotation = TransactionAnnotation.lens.customMemo.set(memo, transactionViewModel.annotation.value)
         transactionStore.updateAnnotation(newAnnotation, for: transactionViewModel)
     }
 }

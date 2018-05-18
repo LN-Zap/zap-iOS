@@ -30,7 +30,7 @@ final class TransactionStore {
     }
     
     func setMemo(_ memo: String, forPaymentHash paymentHash: String) {
-        annotations[paymentHash] = TransactionAnnotation(isHidden: false, customMemo: memo)
+        annotations[paymentHash] = TransactionAnnotation(isHidden: false, customMemo: memo, type: nil)
         
         saveAnnotations()
     }
