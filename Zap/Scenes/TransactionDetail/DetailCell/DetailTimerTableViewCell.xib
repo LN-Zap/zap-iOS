@@ -12,46 +12,45 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
-        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="KGk-i7-Jjw" customClass="DetailMemoTableViewCell" customModule="Zap" customModuleProvider="target">
+        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="KGk-i7-Jjw" customClass="DetailTimerTableViewCell" customModule="Zap" customModuleProvider="target">
             <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
             <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
                 <rect key="frame" x="0.0" y="0.0" width="320" height="43.5"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
-                    <stackView opaque="NO" contentMode="scaleToFill" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="wtX-jc-00q">
+                    <stackView opaque="NO" contentMode="scaleToFill" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="VxM-Oc-LgT">
                         <rect key="frame" x="20" y="0.0" width="280" height="43.5"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" horizontalCompressionResistancePriority="1000" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2u1-y2-uz9">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="252" verticalHuggingPriority="251" horizontalCompressionResistancePriority="1000" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="YJI-UW-TeL">
                                 <rect key="frame" x="0.0" y="0.0" width="42" height="43.5"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="right" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="u6q-iM-DDo">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="NbR-gQ-xXA">
                                 <rect key="frame" x="52" y="0.0" width="228" height="43.5"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits"/>
-                            </textField>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <constraints>
-                            <constraint firstAttribute="height" priority="999" constant="48" id="hop-X1-5V3"/>
+                            <constraint firstAttribute="height" priority="999" constant="48" id="FaN-If-xH4"/>
                         </constraints>
                     </stackView>
                 </subviews>
                 <constraints>
-                    <constraint firstItem="wtX-jc-00q" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" id="7zS-dW-7mR"/>
-                    <constraint firstAttribute="bottom" secondItem="wtX-jc-00q" secondAttribute="bottom" id="Tku-Tz-kBP"/>
-                    <constraint firstAttribute="trailing" secondItem="wtX-jc-00q" secondAttribute="trailing" constant="20" id="gFo-CL-I7T"/>
-                    <constraint firstItem="wtX-jc-00q" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="20" id="jGt-Bt-Dlv"/>
+                    <constraint firstAttribute="bottom" secondItem="VxM-Oc-LgT" secondAttribute="bottom" id="HNE-tJ-kJC"/>
+                    <constraint firstItem="VxM-Oc-LgT" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" id="Xdj-1h-lAl"/>
+                    <constraint firstItem="VxM-Oc-LgT" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="20" id="dwr-LV-Sa7"/>
+                    <constraint firstAttribute="trailing" secondItem="VxM-Oc-LgT" secondAttribute="trailing" constant="20" id="xKJ-zS-uAP"/>
                 </constraints>
             </tableViewCellContentView>
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
-            <inset key="separatorInset" minX="20" minY="0.0" maxX="20" maxY="0.0"/>
             <connections>
-                <outlet property="textField" destination="u6q-iM-DDo" id="cup-X6-to9"/>
-                <outlet property="titleLabel" destination="2u1-y2-uz9" id="J1z-zJ-0zv"/>
+                <outlet property="timerLabel" destination="NbR-gQ-xXA" id="m2d-j0-JWU"/>
+                <outlet property="titleLabel" destination="YJI-UW-TeL" id="A29-RJ-mvl"/>
             </connections>
         </tableViewCell>
     </objects>

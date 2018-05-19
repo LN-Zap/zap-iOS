@@ -15,7 +15,7 @@ enum LightningInvoiceState {
     case expired
 }
 
-final class LightningInvoiceViewModel: TransactionViewModel {
+final class LightningInvoiceViewModel: NSObject, TransactionViewModel {
     let detailViewControllerTitle = "Invoice Detail"
     
     var id: String {
@@ -56,6 +56,43 @@ final class LightningInvoiceViewModel: TransactionViewModel {
             state = Observable(.expired)
         } else {
             state = Observable(.unsettled)
+        }
+        
+        super.init()
+        
+        setupInfoArray()
+    }
+    
+    private func setupInfoArray() {
+        if lightningInvoice.expiry > Date() {
+            data.append(.qrCode(lightningInvoice.paymentRequest))
+        }
+        
+        if let amountString = lightningInvoice.amount > 0 ? Settings.primaryCurrency.value.format(satoshis: lightningInvoice.amount) : "Unspecified" {
+            data.append(.info(DetailTableViewCell.Info(title: "Amount", data: amountString)))
+        }
+        
+        let dateString = DateFormatter.localizedString(from: lightningInvoice.date, dateStyle: .medium, timeStyle: .short)
+        data.append(.info(DetailTableViewCell.Info(title: "Created", data: dateString)))
+        
+        data.append(.info(DetailTableViewCell.Info(title: "Payment Request", data: lightningInvoice.paymentRequest)))
+        
+        let observableMemo = Observable<String?>(nil)
+        annotation
+            .observeNext {
+                observableMemo.value = $0.customMemo
+            }
+            .dispose(in: reactive.bag)
+        data.append(.memo(DetailMemoTableViewCell.Info(memo: observableMemo, placeholder: lightningInvoice.memo)))
+        
+        data.append(.timer(DetailTimerTableViewCell.Info(title: "Expiry", date: lightningInvoice.expiry)))
+        
+        let settledString = lightningInvoice.settled ? "Settled" : "Unsettled"
+        data.append(.info(DetailTableViewCell.Info(title: "Settled", data: settledString)))
+        
+        if let settleDate = lightningInvoice.settleDate {
+            let dateString = DateFormatter.localizedString(from: settleDate, dateStyle: .medium, timeStyle: .short)
+            data.append(.info(DetailTableViewCell.Info(title: "Settled Date", data: dateString)))
         }
     }
 }

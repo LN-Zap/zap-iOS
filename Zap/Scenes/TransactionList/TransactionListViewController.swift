@@ -117,7 +117,7 @@ extension TransactionListViewController: UITableViewDelegate {
         switch transactionType {
         case .onChainTransaction(let transactionViewModel):
             viewController = Storyboard.transactionDetail.initial(viewController: UINavigationController.self)
-            if let transactionDetailViewController = viewController.topViewController as? DetailViewController {
+            if let transactionDetailViewController = viewController.topViewController as? TransactionDetailViewController {
                 transactionDetailViewController.transactionViewModel = transactionViewModel
                 transactionDetailViewController.viewModel = viewModel
             }
@@ -128,9 +128,9 @@ extension TransactionListViewController: UITableViewDelegate {
                 paymentDetailViewController.viewModel = viewModel
             }
         case .lightningInvoice(let lightningInvoiceViewModel):
-            viewController = Storyboard.invoiceDetail.initial(viewController: UINavigationController.self)
-            if let invoiceDetailViewController = viewController.topViewController as? InvoiceDetailViewController {
-                invoiceDetailViewController.lightningInvoiceViewModel = lightningInvoiceViewModel
+            viewController = Storyboard.transactionDetail.initial(viewController: UINavigationController.self)
+            if let invoiceDetailViewController = viewController.topViewController as? TransactionDetailViewController {
+                invoiceDetailViewController.transactionViewModel = lightningInvoiceViewModel
                 invoiceDetailViewController.viewModel = viewModel
             }
         }

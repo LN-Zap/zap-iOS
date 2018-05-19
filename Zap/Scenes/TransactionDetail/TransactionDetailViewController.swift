@@ -8,7 +8,7 @@
 import Bond
 import UIKit
 
-class DetailViewController: UIViewController {
+class TransactionDetailViewController: UIViewController {
     @IBOutlet private weak var hideTransactionButton: UIButton!
     @IBOutlet private weak var tableView: UITableView!
     
@@ -32,8 +32,11 @@ class DetailViewController: UIViewController {
         
         tableView.registerCell(DetailTableViewCell.self)
         tableView.registerCell(DetailMemoTableViewCell.self)
+        tableView.registerCell(DetailQRCodeTableViewCell.self)
+        tableView.registerCell(DetailTimerTableViewCell.self)
         
-        tableView.rowHeight = 48
+        tableView.rowHeight = UITableViewAutomaticDimension
+        tableView.estimatedRowHeight = 48
         tableView.tableFooterView = UIView()
         tableView.allowsSelection = false
         
@@ -50,6 +53,15 @@ class DetailViewController: UIViewController {
                         guard let transactionViewModel = self?.transactionViewModel else { return }
                         self?.viewModel?.udpateMemo($0, for: transactionViewModel)
                     }
+                    cell.info = info
+                    return cell
+                case .qrCode(let address):
+                    let cell: DetailQRCodeTableViewCell = tableView.dequeueCellForIndexPath(indexPath)
+                    cell.address = address
+                    cell.delegate = self
+                    return cell
+                case .timer(let info):
+                    let cell: DetailTimerTableViewCell = tableView.dequeueCellForIndexPath(indexPath)
                     cell.info = info
                     return cell
                 }

@@ -8,6 +8,8 @@
 import Foundation
 
 enum DetailCellType {
+    case qrCode(String)
     case info(DetailTableViewCell.Info)
     case memo(DetailMemoTableViewCell.Info)
+    case timer(DetailTimerTableViewCell.Info)
 }

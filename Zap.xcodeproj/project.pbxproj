@@ -140,7 +140,7 @@
 		AD19F05B20AF00B4008090CB /* DetailTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD19F05920AF00B4008090CB /* DetailTableViewCell.swift */; };
 		AD19F05C20AF00B4008090CB /* DetailTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = AD19F05A20AF00B4008090CB /* DetailTableViewCell.xib */; };
 		AD19F05E20AF01A7008090CB /* DetailCellType.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD19F05D20AF01A7008090CB /* DetailCellType.swift */; };
-		AD19F06020AF19A9008090CB /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD19F05F20AF19A9008090CB /* DetailViewController.swift */; };
+		AD19F06020AF19A9008090CB /* TransactionDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD19F05F20AF19A9008090CB /* TransactionDetailViewController.swift */; };
 		AD19F06320AF1AB8008090CB /* DetailMemoTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD19F06120AF1AB8008090CB /* DetailMemoTableViewCell.swift */; };
 		AD19F06420AF1AB8008090CB /* DetailMemoTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = AD19F06220AF1AB8008090CB /* DetailMemoTableViewCell.xib */; };
 		AD33B5EF20A8463600E32BD9 /* SendOnChainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD33B5EE20A8463600E32BD9 /* SendOnChainViewController.swift */; };
@@ -149,13 +149,13 @@
 		AD5FA001207CCB8B000E9493 /* RequestViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD5FA000207CCB8B000E9493 /* RequestViewController.swift */; };
 		AD5FA003207D0D03000E9493 /* BitcoinURI.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD5FA002207D0D02000E9493 /* BitcoinURI.swift */; };
 		AD5FA005207D0E70000E9493 /* BitcoinURITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD5FA004207D0E70000E9493 /* BitcoinURITests.swift */; };
+		AD680A9920B06B840018986B /* DetailTimerTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD680A9720B06B840018986B /* DetailTimerTableViewCell.swift */; };
+		AD680A9A20B06B840018986B /* DetailTimerTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = AD680A9820B06B840018986B /* DetailTimerTableViewCell.xib */; };
 		AD6FFC9920A9C46B00B57330 /* LightningInvoiceTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD6FFC9720A9C46B00B57330 /* LightningInvoiceTableViewCell.swift */; };
 		AD6FFC9A20A9C46B00B57330 /* LightningInvoiceTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = AD6FFC9820A9C46B00B57330 /* LightningInvoiceTableViewCell.xib */; };
 		AD6FFC9C20A9D15E00B57330 /* OnChainTransactionViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD6FFC9B20A9D15E00B57330 /* OnChainTransactionViewModel.swift */; };
 		AD6FFC9E20A9D19400B57330 /* LightningPaymentViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD6FFC9D20A9D19400B57330 /* LightningPaymentViewModel.swift */; };
 		AD6FFCA020A9D19E00B57330 /* LightningInvoiceViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD6FFC9F20A9D19E00B57330 /* LightningInvoiceViewModel.swift */; };
-		AD6FFCA220A9D3C600B57330 /* InvoiceDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD6FFCA120A9D3C600B57330 /* InvoiceDetailViewController.swift */; };
-		AD6FFCA420A9D3D100B57330 /* InvoiceDetail.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AD6FFCA320A9D3D100B57330 /* InvoiceDetail.storyboard */; };
 		AD6FFCA620AB0A3700B57330 /* OnChainRequestAddressTypeSettingsItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD6FFCA520AB0A3700B57330 /* OnChainRequestAddressTypeSettingsItem.swift */; };
 		AD77464220750D7700EC596B /* Settings.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AD77464120750D7700EC596B /* Settings.storyboard */; };
 		AD77464720750DFB00EC596B /* SettingsContainerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD77464620750DFB00EC596B /* SettingsContainerViewController.swift */; };
@@ -192,6 +192,8 @@
 		ADA6D2C520AC1DDE009398A5 /* Balance.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADA6D2C420AC1DDE009398A5 /* Balance.swift */; };
 		ADA6D2C720AC2406009398A5 /* Channels.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADA6D2C620AC2406009398A5 /* Channels.swift */; };
 		ADA6D2CA20AC2F1D009398A5 /* TransactionViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADA6D2C920AC2F1D009398A5 /* TransactionViewModel.swift */; };
+		ADACC77120B02AAD00F86D63 /* DetailQRCodeTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADACC76F20B02AAD00F86D63 /* DetailQRCodeTableViewCell.swift */; };
+		ADACC77220B02AAD00F86D63 /* DetailQRCodeTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = ADACC77020B02AAD00F86D63 /* DetailQRCodeTableViewCell.xib */; };
 		ADB6DEDB20AD8F80001324C8 /* GradientLoadingButtonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADB6DEDA20AD8F80001324C8 /* GradientLoadingButtonView.swift */; };
 		ADBA12022090CD11001F7700 /* KeyPadView.xib in Resources */ = {isa = PBXBuildFile; fileRef = ADBA12012090CD11001F7700 /* KeyPadView.xib */; };
 		ADBA12042090CD22001F7700 /* KeyPadView.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADBA12032090CD22001F7700 /* KeyPadView.swift */; };
@@ -418,7 +420,7 @@
 		AD19F05920AF00B4008090CB /* DetailTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailTableViewCell.swift; sourceTree = "<group>"; };
 		AD19F05A20AF00B4008090CB /* DetailTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DetailTableViewCell.xib; sourceTree = "<group>"; };
 		AD19F05D20AF01A7008090CB /* DetailCellType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailCellType.swift; sourceTree = "<group>"; };
-		AD19F05F20AF19A9008090CB /* DetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
+		AD19F05F20AF19A9008090CB /* TransactionDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransactionDetailViewController.swift; sourceTree = "<group>"; };
 		AD19F06120AF1AB8008090CB /* DetailMemoTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailMemoTableViewCell.swift; sourceTree = "<group>"; };
 		AD19F06220AF1AB8008090CB /* DetailMemoTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DetailMemoTableViewCell.xib; sourceTree = "<group>"; };
 		AD33B5EE20A8463600E32BD9 /* SendOnChainViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SendOnChainViewController.swift; sourceTree = "<group>"; };
@@ -427,13 +429,13 @@
 		AD5FA000207CCB8B000E9493 /* RequestViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RequestViewController.swift; sourceTree = "<group>"; };
 		AD5FA002207D0D02000E9493 /* BitcoinURI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BitcoinURI.swift; sourceTree = "<group>"; };
 		AD5FA004207D0E70000E9493 /* BitcoinURITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BitcoinURITests.swift; sourceTree = "<group>"; };
+		AD680A9720B06B840018986B /* DetailTimerTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailTimerTableViewCell.swift; sourceTree = "<group>"; };
+		AD680A9820B06B840018986B /* DetailTimerTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DetailTimerTableViewCell.xib; sourceTree = "<group>"; };
 		AD6FFC9720A9C46B00B57330 /* LightningInvoiceTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LightningInvoiceTableViewCell.swift; sourceTree = "<group>"; };
 		AD6FFC9820A9C46B00B57330 /* LightningInvoiceTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = LightningInvoiceTableViewCell.xib; sourceTree = "<group>"; };
 		AD6FFC9B20A9D15E00B57330 /* OnChainTransactionViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnChainTransactionViewModel.swift; sourceTree = "<group>"; };
 		AD6FFC9D20A9D19400B57330 /* LightningPaymentViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LightningPaymentViewModel.swift; sourceTree = "<group>"; };
 		AD6FFC9F20A9D19E00B57330 /* LightningInvoiceViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LightningInvoiceViewModel.swift; sourceTree = "<group>"; };
-		AD6FFCA120A9D3C600B57330 /* InvoiceDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InvoiceDetailViewController.swift; sourceTree = "<group>"; };
-		AD6FFCA320A9D3D100B57330 /* InvoiceDetail.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = InvoiceDetail.storyboard; sourceTree = "<group>"; };
 		AD6FFCA520AB0A3700B57330 /* OnChainRequestAddressTypeSettingsItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnChainRequestAddressTypeSettingsItem.swift; sourceTree = "<group>"; };
 		AD77464120750D7700EC596B /* Settings.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Settings.storyboard; sourceTree = "<group>"; };
 		AD77464620750DFB00EC596B /* SettingsContainerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsContainerViewController.swift; sourceTree = "<group>"; };
@@ -470,6 +472,8 @@
 		ADA6D2C420AC1DDE009398A5 /* Balance.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Balance.swift; sourceTree = "<group>"; };
 		ADA6D2C620AC2406009398A5 /* Channels.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Channels.swift; sourceTree = "<group>"; };
 		ADA6D2C920AC2F1D009398A5 /* TransactionViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransactionViewModel.swift; sourceTree = "<group>"; };
+		ADACC76F20B02AAD00F86D63 /* DetailQRCodeTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailQRCodeTableViewCell.swift; sourceTree = "<group>"; };
+		ADACC77020B02AAD00F86D63 /* DetailQRCodeTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DetailQRCodeTableViewCell.xib; sourceTree = "<group>"; };
 		ADB6DEDA20AD8F80001324C8 /* GradientLoadingButtonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GradientLoadingButtonView.swift; sourceTree = "<group>"; };
 		ADBA12012090CD11001F7700 /* KeyPadView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = KeyPadView.xib; sourceTree = "<group>"; };
 		ADBA12032090CD22001F7700 /* KeyPadView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyPadView.swift; sourceTree = "<group>"; };
@@ -1041,10 +1045,14 @@
 			isa = PBXGroup;
 			children = (
 				AD19F05D20AF01A7008090CB /* DetailCellType.swift */,
+				ADACC76F20B02AAD00F86D63 /* DetailQRCodeTableViewCell.swift */,
+				ADACC77020B02AAD00F86D63 /* DetailQRCodeTableViewCell.xib */,
 				AD19F06120AF1AB8008090CB /* DetailMemoTableViewCell.swift */,
 				AD19F06220AF1AB8008090CB /* DetailMemoTableViewCell.xib */,
 				AD19F05920AF00B4008090CB /* DetailTableViewCell.swift */,
 				AD19F05A20AF00B4008090CB /* DetailTableViewCell.xib */,
+				AD680A9720B06B840018986B /* DetailTimerTableViewCell.swift */,
+				AD680A9820B06B840018986B /* DetailTimerTableViewCell.xib */,
 			);
 			path = DetailCell;
 			sourceTree = "<group>";
@@ -1074,12 +1082,10 @@
 			isa = PBXGroup;
 			children = (
 				AD19F05820AF006F008090CB /* DetailCell */,
-				AD6FFCA320A9D3D100B57330 /* InvoiceDetail.storyboard */,
-				AD6FFCA120A9D3C600B57330 /* InvoiceDetailViewController.swift */,
 				AD7746642077C3D600EC596B /* PaymentDetail.storyboard */,
 				AD7746602077C3BF00EC596B /* PaymentDetailViewController.swift */,
 				AD77465C2077C11200EC596B /* TransactionDetail.storyboard */,
-				AD19F05F20AF19A9008090CB /* DetailViewController.swift */,
+				AD19F05F20AF19A9008090CB /* TransactionDetailViewController.swift */,
 			);
 			path = TransactionDetail;
 			sourceTree = "<group>";
@@ -1408,9 +1414,10 @@
 				AD19F05C20AF00B4008090CB /* DetailTableViewCell.xib in Resources */,
 				A0A05A2D2013EDFB0007D1C9 /* QRCodeDetail.storyboard in Resources */,
 				A070D968202B5163000A8274 /* Localizable.strings in Resources */,
-				AD6FFCA420A9D3D100B57330 /* InvoiceDetail.storyboard in Resources */,
 				A0A96B902017908600788808 /* LightningPaymentTableViewCell.xib in Resources */,
+				AD680A9A20B06B840018986B /* DetailTimerTableViewCell.xib in Resources */,
 				A0A05A0A2013CF960007D1C9 /* Assets.xcassets in Resources */,
+				ADACC77220B02AAD00F86D63 /* DetailQRCodeTableViewCell.xib in Resources */,
 				AD7746652077C3D600EC596B /* PaymentDetail.storyboard in Resources */,
 				ADCE01BB207B57ED00CA72E8 /* CreateWallet.storyboard in Resources */,
 				A0376B75201CD61B00F1FBEF /* NumericKeyPad.storyboard in Resources */,
@@ -1621,10 +1628,11 @@
 				AD33B5EF20A8463600E32BD9 /* SendOnChainViewController.swift in Sources */,
 				AD86BCFE2099F50C00A7866A /* rpc.pb.swift in Sources */,
 				A0731FE62014AC0800C55E45 /* ContainerViewController.swift in Sources */,
+				AD680A9920B06B840018986B /* DetailTimerTableViewCell.swift in Sources */,
 				A0F353CC206923E4005B3639 /* MainViewController.swift in Sources */,
 				AD6FFCA020A9D19E00B57330 /* LightningInvoiceViewModel.swift in Sources */,
 				ADF7936C208E66FA0086B2CA /* UICollectionView.swift in Sources */,
-				AD19F06020AF19A9008090CB /* DetailViewController.swift in Sources */,
+				AD19F06020AF19A9008090CB /* TransactionDetailViewController.swift in Sources */,
 				AD9E244320A375130014F9FA /* DebugButton.swift in Sources */,
 				A0919151203C249200FA525A /* Font.swift in Sources */,
 				A0A05A4D20147B740007D1C9 /* RootViewController.swift in Sources */,
@@ -1668,7 +1676,6 @@
 				ADF79366208E000C0086B2CA /* SetupPinViewController.swift in Sources */,
 				ADCE01C1207B5C0300CA72E8 /* MnemonicViewModel.swift in Sources */,
 				ADBB3620207FA5D6005662B4 /* Date+Localizable.swift in Sources */,
-				AD6FFCA220A9D3C600B57330 /* InvoiceDetailViewController.swift in Sources */,
 				AD19F05B20AF00B4008090CB /* DetailTableViewCell.swift in Sources */,
 				A0376B77201CD67700F1FBEF /* PinViewController.swift in Sources */,
 				ADA6D2C720AC2406009398A5 /* Channels.swift in Sources */,
@@ -1689,6 +1696,7 @@
 				A0A96B822017442D00788808 /* ChannelDetailViewController.swift in Sources */,
 				ADF79368208E09D00086B2CA /* SetupPinViewModel.swift in Sources */,
 				A0BD44DC206FCAD900BF27A3 /* SignalProtocol.swift in Sources */,
+				ADACC77120B02AAD00F86D63 /* DetailQRCodeTableViewCell.swift in Sources */,
 				A0A05A352014047B0007D1C9 /* Lnd.swift in Sources */,
 				ADF7936A208E5FEC0086B2CA /* ConfirmMnemonicCollectionViewCell.swift in Sources */,
 				ADA6D2CA20AC2F1D009398A5 /* TransactionViewModel.swift in Sources */,
