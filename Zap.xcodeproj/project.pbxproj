@@ -151,6 +151,9 @@
 		AD5FA005207D0E70000E9493 /* BitcoinURITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD5FA004207D0E70000E9493 /* BitcoinURITests.swift */; };
 		AD680A9920B06B840018986B /* DetailTimerTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD680A9720B06B840018986B /* DetailTimerTableViewCell.swift */; };
 		AD680A9A20B06B840018986B /* DetailTimerTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = AD680A9820B06B840018986B /* DetailTimerTableViewCell.xib */; };
+		AD680A9C20B077980018986B /* ConnectRemoteNodeSettingsItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD680A9B20B077980018986B /* ConnectRemoteNodeSettingsItem.swift */; };
+		AD680A9F20B07AD90018986B /* ConnectRemoteNode.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AD680A9E20B07AD90018986B /* ConnectRemoteNode.storyboard */; };
+		AD680AA120B07AE90018986B /* ConnectRemoteNodeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD680AA020B07AE90018986B /* ConnectRemoteNodeViewController.swift */; };
 		AD6FFC9920A9C46B00B57330 /* LightningInvoiceTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD6FFC9720A9C46B00B57330 /* LightningInvoiceTableViewCell.swift */; };
 		AD6FFC9A20A9C46B00B57330 /* LightningInvoiceTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = AD6FFC9820A9C46B00B57330 /* LightningInvoiceTableViewCell.xib */; };
 		AD6FFC9C20A9D15E00B57330 /* OnChainTransactionViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD6FFC9B20A9D15E00B57330 /* OnChainTransactionViewModel.swift */; };
@@ -220,6 +223,8 @@
 		ADCE01C6207B71FC00CA72E8 /* Sync.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = ADCE01C5207B71FC00CA72E8 /* Sync.storyboard */; };
 		ADCE01C8207B720800CA72E8 /* SyncViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADCE01C7207B720800CA72E8 /* SyncViewController.swift */; };
 		ADCE01CC207B967200CA72E8 /* Loading.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = ADCE01CB207B967200CA72E8 /* Loading.storyboard */; };
+		ADD6D80320B09260008BE461 /* RemoteNodeCertificatesScannerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADD6D80220B09260008BE461 /* RemoteNodeCertificatesScannerViewController.swift */; };
+		ADD6D80520B09770008BE461 /* RemoteNodeCertificates.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADD6D80420B09770008BE461 /* RemoteNodeCertificates.swift */; };
 		ADF79364208DCB630086B2CA /* PinView.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADF79363208DCB630086B2CA /* PinView.swift */; };
 		ADF79366208E000C0086B2CA /* SetupPinViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADF79365208E000C0086B2CA /* SetupPinViewController.swift */; };
 		ADF79368208E09D00086B2CA /* SetupPinViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADF79367208E09D00086B2CA /* SetupPinViewModel.swift */; };
@@ -431,6 +436,9 @@
 		AD5FA004207D0E70000E9493 /* BitcoinURITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BitcoinURITests.swift; sourceTree = "<group>"; };
 		AD680A9720B06B840018986B /* DetailTimerTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailTimerTableViewCell.swift; sourceTree = "<group>"; };
 		AD680A9820B06B840018986B /* DetailTimerTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DetailTimerTableViewCell.xib; sourceTree = "<group>"; };
+		AD680A9B20B077980018986B /* ConnectRemoteNodeSettingsItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConnectRemoteNodeSettingsItem.swift; sourceTree = "<group>"; };
+		AD680A9E20B07AD90018986B /* ConnectRemoteNode.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = ConnectRemoteNode.storyboard; sourceTree = "<group>"; };
+		AD680AA020B07AE90018986B /* ConnectRemoteNodeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConnectRemoteNodeViewController.swift; sourceTree = "<group>"; };
 		AD6FFC9720A9C46B00B57330 /* LightningInvoiceTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LightningInvoiceTableViewCell.swift; sourceTree = "<group>"; };
 		AD6FFC9820A9C46B00B57330 /* LightningInvoiceTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = LightningInvoiceTableViewCell.xib; sourceTree = "<group>"; };
 		AD6FFC9B20A9D15E00B57330 /* OnChainTransactionViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnChainTransactionViewModel.swift; sourceTree = "<group>"; };
@@ -500,6 +508,8 @@
 		ADCE01C5207B71FC00CA72E8 /* Sync.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Sync.storyboard; sourceTree = "<group>"; };
 		ADCE01C7207B720800CA72E8 /* SyncViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SyncViewController.swift; sourceTree = "<group>"; };
 		ADCE01CB207B967200CA72E8 /* Loading.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Loading.storyboard; sourceTree = "<group>"; };
+		ADD6D80220B09260008BE461 /* RemoteNodeCertificatesScannerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RemoteNodeCertificatesScannerViewController.swift; sourceTree = "<group>"; };
+		ADD6D80420B09770008BE461 /* RemoteNodeCertificates.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RemoteNodeCertificates.swift; sourceTree = "<group>"; };
 		ADF79363208DCB630086B2CA /* PinView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PinView.swift; sourceTree = "<group>"; };
 		ADF79365208E000C0086B2CA /* SetupPinViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetupPinViewController.swift; sourceTree = "<group>"; };
 		ADF79367208E09D00086B2CA /* SetupPinViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetupPinViewModel.swift; sourceTree = "<group>"; };
@@ -619,6 +629,7 @@
 				A01009532015FA330001EF94 /* Abstract */,
 				A02C9FBE202EFFEF009821B1 /* ChannelDetail */,
 				A0DDC0702018C6D800AEFF94 /* ChannelList */,
+				AD680A9D20B07AC60018986B /* ConnectRemoteNode */,
 				ADCE01B9207B57DA00CA72E8 /* CreateWallet */,
 				AD9E243C20A367E00014F9FA /* Debug */,
 				ADCE01CA207B966200CA72E8 /* Loading */,
@@ -768,6 +779,7 @@
 			isa = PBXGroup;
 			children = (
 				A091914C203B3BAC00FA525A /* BitcoinUnitSettingsItem.swift */,
+				AD680A9B20B077980018986B /* ConnectRemoteNodeSettingsItem.swift */,
 				A091914A203B297D00FA525A /* CurrencySettingsItem.swift */,
 				A0DDC0692018BFFA00AEFF94 /* LockWalletSettingsItem.swift */,
 				AD6FFCA520AB0A3700B57330 /* OnChainRequestAddressTypeSettingsItem.swift */,
@@ -1055,6 +1067,17 @@
 				AD680A9820B06B840018986B /* DetailTimerTableViewCell.xib */,
 			);
 			path = DetailCell;
+			sourceTree = "<group>";
+		};
+		AD680A9D20B07AC60018986B /* ConnectRemoteNode */ = {
+			isa = PBXGroup;
+			children = (
+				AD680A9E20B07AD90018986B /* ConnectRemoteNode.storyboard */,
+				AD680AA020B07AE90018986B /* ConnectRemoteNodeViewController.swift */,
+				ADD6D80220B09260008BE461 /* RemoteNodeCertificatesScannerViewController.swift */,
+				ADD6D80420B09770008BE461 /* RemoteNodeCertificates.swift */,
+			);
+			path = ConnectRemoteNode;
 			sourceTree = "<group>";
 		};
 		AD77464C2076161300EC596B /* Localizable */ = {
@@ -1428,6 +1451,7 @@
 				AD77465D2077C11200EC596B /* TransactionDetail.storyboard in Resources */,
 				AD77464220750D7700EC596B /* Settings.storyboard in Resources */,
 				A091914F203C23C100FA525A /* Roboto-Light.ttf in Resources */,
+				AD680A9F20B07AD90018986B /* ConnectRemoteNode.storyboard in Resources */,
 				ADBA12022090CD11001F7700 /* KeyPadView.xib in Resources */,
 				A0A05A082013CF960007D1C9 /* Root.storyboard in Resources */,
 				AD9E244120A3680C0014F9FA /* Debug.storyboard in Resources */,
@@ -1628,6 +1652,7 @@
 				AD33B5EF20A8463600E32BD9 /* SendOnChainViewController.swift in Sources */,
 				AD86BCFE2099F50C00A7866A /* rpc.pb.swift in Sources */,
 				A0731FE62014AC0800C55E45 /* ContainerViewController.swift in Sources */,
+				ADD6D80320B09260008BE461 /* RemoteNodeCertificatesScannerViewController.swift in Sources */,
 				AD680A9920B06B840018986B /* DetailTimerTableViewCell.swift in Sources */,
 				A0F353CC206923E4005B3639 /* MainViewController.swift in Sources */,
 				AD6FFCA020A9D19E00B57330 /* LightningInvoiceViewModel.swift in Sources */,
@@ -1653,6 +1678,7 @@
 				AD5FA001207CCB8B000E9493 /* RequestViewController.swift in Sources */,
 				AD7746592076609400EC596B /* NodeInfo.swift in Sources */,
 				AD9E243F20A368020014F9FA /* LndLogViewController.swift in Sources */,
+				AD680AA120B07AE90018986B /* ConnectRemoteNodeViewController.swift in Sources */,
 				ADCE01C8207B720800CA72E8 /* SyncViewController.swift in Sources */,
 				ADBA4421209AE75600D18B71 /* LightningStream.swift in Sources */,
 				A0F353D020692570005B3639 /* GradientView.swift in Sources */,
@@ -1679,6 +1705,7 @@
 				AD19F05B20AF00B4008090CB /* DetailTableViewCell.swift in Sources */,
 				A0376B77201CD67700F1FBEF /* PinViewController.swift in Sources */,
 				ADA6D2C720AC2406009398A5 /* Channels.swift in Sources */,
+				ADD6D80520B09770008BE461 /* RemoteNodeCertificates.swift in Sources */,
 				A0A05A5C20149F720007D1C9 /* TransactionListViewController.swift in Sources */,
 				A0A05A032013CF960007D1C9 /* AppDelegate.swift in Sources */,
 				ADBA120620930C94001F7700 /* UIViewController.swift in Sources */,
@@ -1742,6 +1769,7 @@
 				AD77464720750DFB00EC596B /* SettingsContainerViewController.swift in Sources */,
 				A0A05A5920149AF20007D1C9 /* Transaction.swift in Sources */,
 				A0D3C97D20616AB80015C5D7 /* LndError.swift in Sources */,
+				AD680A9C20B077980018986B /* ConnectRemoteNodeSettingsItem.swift in Sources */,
 				A0F9AEE1206E3D8200E93DCA /* InputNumberFormatter.swift in Sources */,
 				ADBA4423209B00D300D18B71 /* LndCallback.swift in Sources */,
 				A091914B203B297D00FA525A /* CurrencySettingsItem.swift in Sources */,

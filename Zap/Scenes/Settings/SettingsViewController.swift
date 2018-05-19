@@ -16,6 +16,7 @@ final class SettingsViewController: GroupedTableViewController {
                 OnChainRequestAddressTypeSelectionSettingsItem()
             ]),
             Section(title: "scene.settings.section.security".localized, rows: [
+                ConnectRemoteNodeSettingsItem(),
                 UpdatePinSettingsItem(),
                 TouchIDSettingItem(),
                 PaperKeySettingsItem()

@@ -13,7 +13,8 @@ final class QRCodeScannerView: UIView {
     private var captureSession = AVCaptureSession()
     private var videoPreviewLayer: AVCaptureVideoPreviewLayer?
     
-    var addressTypes: [AddressType]?
+    var addressTypes: [AddressType]? // Refactor. don't use enum but matching protocol
+    var remoteNodeCertificateHandler: ((RemoteNodeCertificates) -> Void)? // this should be handled by AddressType
     var handler: ((AddressType, String) -> Void)?
     
     required init?(coder aDecoder: NSCoder) {
@@ -55,15 +56,19 @@ extension QRCodeScannerView: AVCaptureMetadataOutputObjectsDelegate {
     func metadataOutput(_ output: AVCaptureMetadataOutput, didOutput metadataObjects: [AVMetadataObject], from connection: AVCaptureConnection) {
         guard
             let metadataObj = metadataObjects.first as? AVMetadataMachineReadableCodeObject,
-            let code = metadataObj.stringValue,
-            let addressTypes = addressTypes
+            let code = metadataObj.stringValue
             else { return }
         
-        for addressType in addressTypes where addressType.isValidAddress(code, network: Settings.network) {
-            handler?(addressType, code)
-            UINotificationFeedbackGenerator().notificationOccurred(.success)
-            captureSession.stopRunning()
-            return
+        if let remoteNodeCertificateHandler = remoteNodeCertificateHandler,
+            let remoteNodeCertificates = RemoteNodeCertificates(json: code) {
+            remoteNodeCertificateHandler(remoteNodeCertificates)
+        } else if let addressTypes = addressTypes {
+            for addressType in addressTypes where addressType.isValidAddress(code, network: Settings.network) {
+                handler?(addressType, code)
+                UINotificationFeedbackGenerator().notificationOccurred(.success)
+                captureSession.stopRunning()
+                return
+            }
         }
     }
 }
