@@ -9,6 +9,8 @@ import UIKit
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
+    private var blurEffectView: UIVisualEffectView?
+
     var window: UIWindow? {
         didSet {
             window?.tintColor = Color.tint
@@ -24,12 +26,23 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         return true
     }
     
-    func applicationDidBecomeActive(_ application: UIApplication) {
-        
-    }
-    
     func application(_ app: UIApplication, open url: URL, options: [UIApplicationOpenURLOptionsKey: Any] = [:]) -> Bool {
         print("OPEN URL: \(url)") // TODO
         return true
+    }
+    
+    func applicationWillResignActive(_ application: UIApplication) {
+        guard let window = window else { return }
+        
+        let blurEffect = UIBlurEffect(style: .dark)
+        let blurEffectView = UIVisualEffectView(effect: blurEffect)
+        blurEffectView.frame = window.frame
+        window.addSubview(blurEffectView)
+        
+        self.blurEffectView = blurEffectView
+    }
+    
+    func applicationDidBecomeActive(_ application: UIApplication) {
+        blurEffectView?.removeFromSuperview()
     }
 }
