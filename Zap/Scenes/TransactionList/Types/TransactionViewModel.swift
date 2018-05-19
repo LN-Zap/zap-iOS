@@ -12,4 +12,6 @@ protocol TransactionViewModel {
     var id: String { get }
     var annotation: Observable<TransactionAnnotation> { get }
     var date: Date { get }
+    var detailViewControllerTitle: String { get }
+    var data: MutableObservableArray<DetailCellType> { get }
 }

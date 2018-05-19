@@ -38,7 +38,8 @@ class TransactionListViewController: UIViewController {
     @IBOutlet private weak var tableView: UITableView?
     @IBOutlet private weak var searchBackgroundView: UIView!
     @IBOutlet private weak var searchBar: UISearchBar!
-
+    @IBOutlet private weak var emptyStateLabel: UILabel!
+    
     var viewModel: ViewModel? {
         didSet {
             guard let viewModel = viewModel else { return }
@@ -58,6 +59,9 @@ class TransactionListViewController: UIViewController {
         searchBar.backgroundImage = UIImage()
         searchBackgroundView.backgroundColor = Color.searchBackground
         
+        Style.label.apply(to: emptyStateLabel)
+        emptyStateLabel.text = "0 transactions 🙁"
+        
         tableView.rowHeight = 66
         tableView.registerCell(OnChainTransactionTableViewCell.self)
         tableView.registerCell(LightningPaymentTableViewCell.self)
@@ -67,6 +71,18 @@ class TransactionListViewController: UIViewController {
         
         transactionListViewModel?.sections.bind(to: tableView, using: TransactionBond())
 
+        let isDataSourceEmpty = transactionListViewModel?.sections
+            .map {
+                $0.dataSource.isEmpty
+            }
+        
+        [isDataSourceEmpty?
+            .bind(to: tableView.reactive.isHidden),
+         isDataSourceEmpty?
+            .map { !$0 }
+            .bind(to: emptyStateLabel.reactive.isHidden)]
+            .dispose(in: reactive.bag)
+        
         tableView.delegate = self
         tableView.reactive.dataSource.forwardTo = self
     }
@@ -101,7 +117,7 @@ extension TransactionListViewController: UITableViewDelegate {
         switch transactionType {
         case .onChainTransaction(let transactionViewModel):
             viewController = Storyboard.transactionDetail.initial(viewController: UINavigationController.self)
-            if let transactionDetailViewController = viewController.topViewController as? TransactionDetailViewController {
+            if let transactionDetailViewController = viewController.topViewController as? DetailViewController {
                 transactionDetailViewController.transactionViewModel = transactionViewModel
                 transactionDetailViewController.viewModel = viewModel
             }

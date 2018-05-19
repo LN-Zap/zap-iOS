@@ -137,6 +137,12 @@
 		A0FBCD93206BBD9800800515 /* SatoshiTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0FBCD92206BBD9800800515 /* SatoshiTests.swift */; };
 		AD19F05420AEAD3C008090CB /* TransactionAnnotation.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD19F05320AEAD3C008090CB /* TransactionAnnotation.swift */; };
 		AD19F05720AEAF1B008090CB /* Lens.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD19F05620AEAF1B008090CB /* Lens.swift */; };
+		AD19F05B20AF00B4008090CB /* DetailTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD19F05920AF00B4008090CB /* DetailTableViewCell.swift */; };
+		AD19F05C20AF00B4008090CB /* DetailTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = AD19F05A20AF00B4008090CB /* DetailTableViewCell.xib */; };
+		AD19F05E20AF01A7008090CB /* DetailCellType.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD19F05D20AF01A7008090CB /* DetailCellType.swift */; };
+		AD19F06020AF19A9008090CB /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD19F05F20AF19A9008090CB /* DetailViewController.swift */; };
+		AD19F06320AF1AB8008090CB /* DetailMemoTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD19F06120AF1AB8008090CB /* DetailMemoTableViewCell.swift */; };
+		AD19F06420AF1AB8008090CB /* DetailMemoTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = AD19F06220AF1AB8008090CB /* DetailMemoTableViewCell.xib */; };
 		AD33B5EF20A8463600E32BD9 /* SendOnChainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD33B5EE20A8463600E32BD9 /* SendOnChainViewController.swift */; };
 		AD38EB30207DF233007DF14D /* UIButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD38EB2F207DF233007DF14D /* UIButton.swift */; };
 		AD38EB32207DFB59007DF14D /* SegmentButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD38EB31207DFB59007DF14D /* SegmentButton.swift */; };
@@ -162,7 +168,6 @@
 		AD77465720765E4D00EC596B /* ChannelViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD77465620765E4D00EC596B /* ChannelViewModel.swift */; };
 		AD7746592076609400EC596B /* NodeInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD7746582076609400EC596B /* NodeInfo.swift */; };
 		AD77465D2077C11200EC596B /* TransactionDetail.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AD77465C2077C11200EC596B /* TransactionDetail.storyboard */; };
-		AD77465F2077C12200EC596B /* TransactionDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD77465E2077C12200EC596B /* TransactionDetailViewController.swift */; };
 		AD7746622077C3BF00EC596B /* PaymentDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD7746602077C3BF00EC596B /* PaymentDetailViewController.swift */; };
 		AD7746652077C3D600EC596B /* PaymentDetail.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AD7746642077C3D600EC596B /* PaymentDetail.storyboard */; };
 		AD7746672077C72600EC596B /* TransactionType.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD7746662077C72600EC596B /* TransactionType.swift */; };
@@ -410,6 +415,12 @@
 		A2EA9EBABE9A17490B3E282A /* Pods-BTCUtil.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BTCUtil.release.xcconfig"; path = "Pods/Target Support Files/Pods-BTCUtil/Pods-BTCUtil.release.xcconfig"; sourceTree = "<group>"; };
 		AD19F05320AEAD3C008090CB /* TransactionAnnotation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransactionAnnotation.swift; sourceTree = "<group>"; };
 		AD19F05620AEAF1B008090CB /* Lens.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Lens.swift; sourceTree = "<group>"; };
+		AD19F05920AF00B4008090CB /* DetailTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailTableViewCell.swift; sourceTree = "<group>"; };
+		AD19F05A20AF00B4008090CB /* DetailTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DetailTableViewCell.xib; sourceTree = "<group>"; };
+		AD19F05D20AF01A7008090CB /* DetailCellType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailCellType.swift; sourceTree = "<group>"; };
+		AD19F05F20AF19A9008090CB /* DetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
+		AD19F06120AF1AB8008090CB /* DetailMemoTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailMemoTableViewCell.swift; sourceTree = "<group>"; };
+		AD19F06220AF1AB8008090CB /* DetailMemoTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DetailMemoTableViewCell.xib; sourceTree = "<group>"; };
 		AD33B5EE20A8463600E32BD9 /* SendOnChainViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SendOnChainViewController.swift; sourceTree = "<group>"; };
 		AD38EB2F207DF233007DF14D /* UIButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIButton.swift; sourceTree = "<group>"; };
 		AD38EB31207DFB59007DF14D /* SegmentButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SegmentButton.swift; sourceTree = "<group>"; };
@@ -435,7 +446,6 @@
 		AD77465620765E4D00EC596B /* ChannelViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChannelViewModel.swift; sourceTree = "<group>"; };
 		AD7746582076609400EC596B /* NodeInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NodeInfo.swift; sourceTree = "<group>"; };
 		AD77465C2077C11200EC596B /* TransactionDetail.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = TransactionDetail.storyboard; sourceTree = "<group>"; };
-		AD77465E2077C12200EC596B /* TransactionDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransactionDetailViewController.swift; sourceTree = "<group>"; };
 		AD7746602077C3BF00EC596B /* PaymentDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaymentDetailViewController.swift; sourceTree = "<group>"; };
 		AD7746642077C3D600EC596B /* PaymentDetail.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = PaymentDetail.storyboard; sourceTree = "<group>"; };
 		AD7746662077C72600EC596B /* TransactionType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransactionType.swift; sourceTree = "<group>"; };
@@ -1027,6 +1037,18 @@
 			path = Main;
 			sourceTree = "<group>";
 		};
+		AD19F05820AF006F008090CB /* DetailCell */ = {
+			isa = PBXGroup;
+			children = (
+				AD19F05D20AF01A7008090CB /* DetailCellType.swift */,
+				AD19F06120AF1AB8008090CB /* DetailMemoTableViewCell.swift */,
+				AD19F06220AF1AB8008090CB /* DetailMemoTableViewCell.xib */,
+				AD19F05920AF00B4008090CB /* DetailTableViewCell.swift */,
+				AD19F05A20AF00B4008090CB /* DetailTableViewCell.xib */,
+			);
+			path = DetailCell;
+			sourceTree = "<group>";
+		};
 		AD77464C2076161300EC596B /* Localizable */ = {
 			isa = PBXGroup;
 			children = (
@@ -1051,12 +1073,13 @@
 		AD77465B2077C0FA00EC596B /* TransactionDetail */ = {
 			isa = PBXGroup;
 			children = (
+				AD19F05820AF006F008090CB /* DetailCell */,
 				AD6FFCA320A9D3D100B57330 /* InvoiceDetail.storyboard */,
 				AD6FFCA120A9D3C600B57330 /* InvoiceDetailViewController.swift */,
 				AD7746642077C3D600EC596B /* PaymentDetail.storyboard */,
 				AD7746602077C3BF00EC596B /* PaymentDetailViewController.swift */,
 				AD77465C2077C11200EC596B /* TransactionDetail.storyboard */,
-				AD77465E2077C12200EC596B /* TransactionDetailViewController.swift */,
+				AD19F05F20AF19A9008090CB /* DetailViewController.swift */,
 			);
 			path = TransactionDetail;
 			sourceTree = "<group>";
@@ -1382,6 +1405,7 @@
 				A0B91A84202628EF009AD2D3 /* Settings.bundle in Resources */,
 				A0731FE22014A22B00C55E45 /* OnChainTransactionTableViewCell.xib in Resources */,
 				A0919154203C27C300FA525A /* Roboto-Bold.ttf in Resources */,
+				AD19F05C20AF00B4008090CB /* DetailTableViewCell.xib in Resources */,
 				A0A05A2D2013EDFB0007D1C9 /* QRCodeDetail.storyboard in Resources */,
 				A070D968202B5163000A8274 /* Localizable.strings in Resources */,
 				AD6FFCA420A9D3D100B57330 /* InvoiceDetail.storyboard in Resources */,
@@ -1403,6 +1427,7 @@
 				A01009412014D4810001EF94 /* Toast.xib in Resources */,
 				AD99C9F5209085B20061C565 /* OpenChannel.storyboard in Resources */,
 				AD99C9ED209072710061C565 /* QRCodeScanner.storyboard in Resources */,
+				AD19F06420AF1AB8008090CB /* DetailMemoTableViewCell.xib in Resources */,
 				A0605F88202C963800EA903C /* SectionHeaderView.xib in Resources */,
 				AD6FFC9A20A9C46B00B57330 /* LightningInvoiceTableViewCell.xib in Resources */,
 				A024B85720161586002B8897 /* Send.storyboard in Resources */,
@@ -1599,6 +1624,7 @@
 				A0F353CC206923E4005B3639 /* MainViewController.swift in Sources */,
 				AD6FFCA020A9D19E00B57330 /* LightningInvoiceViewModel.swift in Sources */,
 				ADF7936C208E66FA0086B2CA /* UICollectionView.swift in Sources */,
+				AD19F06020AF19A9008090CB /* DetailViewController.swift in Sources */,
 				AD9E244320A375130014F9FA /* DebugButton.swift in Sources */,
 				A0919151203C249200FA525A /* Font.swift in Sources */,
 				A0A05A4D20147B740007D1C9 /* RootViewController.swift in Sources */,
@@ -1623,6 +1649,7 @@
 				ADBA4421209AE75600D18B71 /* LightningStream.swift in Sources */,
 				A0F353D020692570005B3639 /* GradientView.swift in Sources */,
 				A0C2EABB206F8B02003AE56E /* FiatCurrency.swift in Sources */,
+				AD19F05E20AF01A7008090CB /* DetailCellType.swift in Sources */,
 				AD77464E2076162300EC596B /* Network+Localizable.swift in Sources */,
 				AD6FFC9920A9C46B00B57330 /* LightningInvoiceTableViewCell.swift in Sources */,
 				ADC29C0C20A9B0A0008B2DC2 /* LightningInvoice.swift in Sources */,
@@ -1642,6 +1669,7 @@
 				ADCE01C1207B5C0300CA72E8 /* MnemonicViewModel.swift in Sources */,
 				ADBB3620207FA5D6005662B4 /* Date+Localizable.swift in Sources */,
 				AD6FFCA220A9D3C600B57330 /* InvoiceDetailViewController.swift in Sources */,
+				AD19F05B20AF00B4008090CB /* DetailTableViewCell.swift in Sources */,
 				A0376B77201CD67700F1FBEF /* PinViewController.swift in Sources */,
 				ADA6D2C720AC2406009398A5 /* Channels.swift in Sources */,
 				A0A05A5C20149F720007D1C9 /* TransactionListViewController.swift in Sources */,
@@ -1673,6 +1701,7 @@
 				A0376B6F201CC04400F1FBEF /* Info.swift in Sources */,
 				A0A05A5520148FA80007D1C9 /* Json.swift in Sources */,
 				A0E2690D202CC4E30069E83C /* AuthenticationViewModel.swift in Sources */,
+				AD19F06320AF1AB8008090CB /* DetailMemoTableViewCell.swift in Sources */,
 				A0C2EAC2206F8D37003AE56E /* Currency.swift in Sources */,
 				A0731FE12014A22B00C55E45 /* OnChainTransactionTableViewCell.swift in Sources */,
 				A01009392014BE460001EF94 /* Channel.swift in Sources */,
@@ -1704,7 +1733,6 @@
 				A024B85B20161AAE002B8897 /* PaymentRequest.swift in Sources */,
 				AD77464720750DFB00EC596B /* SettingsContainerViewController.swift in Sources */,
 				A0A05A5920149AF20007D1C9 /* Transaction.swift in Sources */,
-				AD77465F2077C12200EC596B /* TransactionDetailViewController.swift in Sources */,
 				A0D3C97D20616AB80015C5D7 /* LndError.swift in Sources */,
 				A0F9AEE1206E3D8200E93DCA /* InputNumberFormatter.swift in Sources */,
 				ADBA4423209B00D300D18B71 /* LndCallback.swift in Sources */,

@@ -16,6 +16,8 @@ enum LightningInvoiceState {
 }
 
 final class LightningInvoiceViewModel: TransactionViewModel {
+    let detailViewControllerTitle = "Invoice Detail"
+    
     var id: String {
         return lightningInvoice.id
     }
@@ -30,6 +32,8 @@ final class LightningInvoiceViewModel: TransactionViewModel {
     let displayText: String
     let amount: Satoshi
     let time: String
+    
+    let data = MutableObservableArray<DetailCellType>([])
     
     let state: Observable<LightningInvoiceState>
     

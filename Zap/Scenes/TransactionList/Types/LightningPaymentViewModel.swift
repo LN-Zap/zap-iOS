@@ -10,6 +10,8 @@ import BTCUtil
 import Foundation
 
 final class LightningPaymentViewModel: TransactionViewModel {
+    let detailViewControllerTitle = "Payment Detail"
+    
     var id: String {
         return lightningPayment.id
     }
@@ -24,6 +26,8 @@ final class LightningPaymentViewModel: TransactionViewModel {
     let displayText: String
     let amount: Satoshi
     let time: String
+    
+    let data = MutableObservableArray<DetailCellType>([])
     
     init(lightningPayment: LightningPayment, annotation: TransactionAnnotation) {
         self.annotation = Observable(annotation)
