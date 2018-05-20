@@ -22,8 +22,13 @@ struct RemoteNodeCertificates: Codable {
     init?(json: String) {
         guard
             let data = json.data(using: .utf8),
-            let remoteNodeCertificates = try? JSONDecoder().decode(RemoteNodeCertificates.self, from: data)
+            let remoteNodeCertificates = RemoteNodeCertificates(data: data)
             else { return nil }
+        self = remoteNodeCertificates
+    }
+    
+    private init?(data: Data) {
+        guard let remoteNodeCertificates = try? JSONDecoder().decode(RemoteNodeCertificates.self, from: data) else { return nil }
         self = remoteNodeCertificates
     }
 }

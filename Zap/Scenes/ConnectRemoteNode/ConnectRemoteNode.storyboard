@@ -74,7 +74,7 @@
                         <outlet property="addCertificatesButton" destination="GgW-QU-6eI" id="S5a-8G-buo"/>
                         <outlet property="certLabel" destination="REO-CQ-rFO" id="Qng-jT-ccu"/>
                         <outlet property="connectButton" destination="REc-n3-lVa" id="BKJ-7N-Cec"/>
-                        <outlet property="ipTextField" destination="ugQ-98-MPX" id="sBa-ez-ilj"/>
+                        <outlet property="urlTextField" destination="ugQ-98-MPX" id="45b-Ye-j9l"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="az5-k2-I2Y" userLabel="First Responder" sceneMemberID="firstResponder"/>

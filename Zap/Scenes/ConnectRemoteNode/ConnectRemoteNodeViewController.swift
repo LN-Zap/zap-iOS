@@ -9,7 +9,7 @@ import UIKit
 
 class ConnectRemoteNodeViewController: UIViewController {
     
-    @IBOutlet private weak var ipTextField: UITextField!
+    @IBOutlet private weak var urlTextField: UITextField!
     
     @IBOutlet private weak var certLabel: UILabel!
     @IBOutlet private weak var addCertificatesButton: UIButton!
@@ -28,12 +28,12 @@ class ConnectRemoteNodeViewController: UIViewController {
         Style.label.apply(to: certLabel) {
             $0.textColor = .white
         }
-        Style.textField.apply(to: ipTextField) {
+        Style.textField.apply(to: urlTextField) {
             $0.textColor = .white
         }
         Style.button.apply(to: addCertificatesButton, connectButton)
         
-        ipTextField.attributedPlaceholder =
+        urlTextField.attributedPlaceholder =
             NSAttributedString(string: "192.168.1.3", attributes: [.foregroundColor: UIColor.lightGray])
         
         certLabel.text = "🅾️"
@@ -49,7 +49,15 @@ class ConnectRemoteNodeViewController: UIViewController {
     }
     
     @IBAction private func connectRemoteNode(_ sender: Any) {
-        print("connect to remote")
+        guard
+            let urlString = urlTextField.text,
+            let url = URL(string: urlString),
+            let certificates = certificates
+            else { return }
+    
+        let remoteNodeConfiguration = RemoteNodeConfiguration(remoteNodeCertificates: certificates, url: url)
+        
+        remoteNodeConfiguration.save()
     }
 }
 
