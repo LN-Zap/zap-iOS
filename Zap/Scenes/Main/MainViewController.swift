@@ -20,6 +20,8 @@ final class MainViewController: UIViewController, ContainerViewController {
     @IBOutlet private weak var fiatBalanceLabel: UILabel!
     @IBOutlet private weak var expandHeaderButton: UIButton!
     
+    @IBOutlet private weak var selectedButtonbackgroundView: UIView!
+    @IBOutlet private weak var selecteButtonLeadingConstraint: NSLayoutConstraint!
     @IBOutlet private weak var transactionsButton: UIButton!
     @IBOutlet private weak var networkButton: UIButton!
     
@@ -53,6 +55,7 @@ final class MainViewController: UIViewController, ContainerViewController {
         
         balanceView.backgroundColor = Color.darkBackground
         segmentedControlView.backgroundColor = Color.mediumBackground
+        selectedButtonbackgroundView.backgroundColor = Color.darkBackground
         
         Style.button.apply(to: transactionsButton, networkButton, sendButton, requestButton)
         transactionsButton.titleEdgeInsets = UIEdgeInsets(top: 0, left: 10, bottom: 0, right: 0)
@@ -79,19 +82,22 @@ final class MainViewController: UIViewController, ContainerViewController {
     }
     
     private func segmentedControl(select selection: ContainerContent) {
-        let selectedColor = Color.darkBackground
-        
         if selection == .network {
-            networkButton.backgroundColor = selectedColor
             networkButton.imageView?.tintColor = Color.tint
-            transactionsButton.backgroundColor = .clear
-            transactionsButton.imageView?.tintColor = .white
+            transactionsButton.imageView?.tintColor = .lightGray
+            networkButton.setTitleColor(.white, for: .normal)
+            transactionsButton.setTitleColor(.lightGray, for: .normal)
         } else {
-            networkButton.backgroundColor = .clear
-            networkButton.imageView?.tintColor = .white
-            transactionsButton.backgroundColor = selectedColor
+            networkButton.imageView?.tintColor = .lightGray
             transactionsButton.imageView?.tintColor = Color.bottomGradientLeft
+            networkButton.setTitleColor(.lightGray, for: .normal)
+            transactionsButton.setTitleColor(.white, for: .normal)
         }
+        
+        UIView.animate(withDuration: 0.18, delay: 0, usingSpringWithDamping: 0.7, initialSpringVelocity: 0.2, options: [], animations: {
+            self.selecteButtonLeadingConstraint.priority = UILayoutPriority(rawValue: UILayoutPriority.RawValue(selection == .network ? 700 : 800))
+            self.view.layoutIfNeeded()
+        }, completion: nil)
     }
     
     @IBAction private func transactionsButtonTapped(_ smender: Any) {

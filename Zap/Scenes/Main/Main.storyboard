@@ -6,6 +6,7 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
+        <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -69,6 +70,10 @@
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="IfS-hp-9Gi">
                                         <rect key="frame" x="0.0" y="160" width="375" height="90"/>
                                         <subviews>
+                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="HwQ-kZ-5ED">
+                                                <rect key="frame" x="0.0" y="0.0" width="187.5" height="90"/>
+                                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                            </view>
                                             <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="IZF-Tf-zth">
                                                 <rect key="frame" x="10" y="10" width="355" height="70"/>
                                                 <subviews>
@@ -91,10 +96,15 @@
                                         </subviews>
                                         <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <constraints>
+                                            <constraint firstItem="HwQ-kZ-5ED" firstAttribute="width" secondItem="IfS-hp-9Gi" secondAttribute="width" multiplier="0.5" id="4Ao-yN-xcd"/>
                                             <constraint firstAttribute="bottom" secondItem="IZF-Tf-zth" secondAttribute="bottom" constant="10" id="CPm-t8-9X9"/>
                                             <constraint firstItem="IZF-Tf-zth" firstAttribute="leading" secondItem="IfS-hp-9Gi" secondAttribute="leading" constant="10" id="He8-Nb-Ifm"/>
+                                            <constraint firstAttribute="trailing" secondItem="HwQ-kZ-5ED" secondAttribute="trailing" priority="750" id="Kgq-v4-T8n"/>
                                             <constraint firstAttribute="trailing" secondItem="IZF-Tf-zth" secondAttribute="trailing" constant="10" id="LMX-Sb-Pv7"/>
                                             <constraint firstAttribute="height" constant="90" id="bMo-Aj-48d"/>
+                                            <constraint firstAttribute="bottom" secondItem="HwQ-kZ-5ED" secondAttribute="bottom" id="eSg-Ha-iMB"/>
+                                            <constraint firstItem="HwQ-kZ-5ED" firstAttribute="leading" secondItem="IfS-hp-9Gi" secondAttribute="leading" priority="751" id="iMC-64-R80"/>
+                                            <constraint firstItem="HwQ-kZ-5ED" firstAttribute="top" secondItem="IfS-hp-9Gi" secondAttribute="top" id="pF5-c4-OHq"/>
                                             <constraint firstItem="IZF-Tf-zth" firstAttribute="top" secondItem="IfS-hp-9Gi" secondAttribute="top" constant="10" id="xZs-7k-cCA"/>
                                         </constraints>
                                     </view>
@@ -208,6 +218,8 @@
                         <outlet property="networkButton" destination="8Eo-BE-XE2" id="prj-ia-m8C"/>
                         <outlet property="requestButton" destination="Zaa-3u-HIJ" id="sT5-BA-XTz"/>
                         <outlet property="segmentedControlView" destination="IfS-hp-9Gi" id="k3P-uO-a2J"/>
+                        <outlet property="selecteButtonLeadingConstraint" destination="iMC-64-R80" id="IHb-a7-2dh"/>
+                        <outlet property="selectedButtonbackgroundView" destination="HwQ-kZ-5ED" id="AkL-lk-evs"/>
                         <outlet property="sendButton" destination="Gty-6B-9yc" id="9hu-ht-FNb"/>
                         <outlet property="transactionsButton" destination="6XJ-ho-YDb" id="DcC-Gi-o0z"/>
                     </connections>
