@@ -22,9 +22,8 @@ final class ChannelTransactionAnnotationUpdater: NSObject {
             .dispose(in: reactive.bag)
     }
 
-    // TODO: don't use customMemo, use own field
     func updateMemos(in transactionStore: TransactionStore, channels: [Channel], transactions: [TransactionViewModel]) {
-        for transaction in transactions /*where transaction.annotation.value.customMemo == nil*/ {
+        for transaction in transactions where transaction.annotation.value.customMemo == nil {
             // search for matching channel for funding transaction
             guard let channel = channels.first(where: { $0.channelPoint.hasPrefix(transaction.id) }) else { continue }
 
