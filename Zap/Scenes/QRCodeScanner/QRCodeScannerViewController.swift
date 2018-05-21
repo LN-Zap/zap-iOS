@@ -18,6 +18,9 @@ class QRCodeScannerViewController: UIViewController, ContainerViewController {
     // swiftlint:disable:next private_outlet
     @IBOutlet weak var container: UIView?
     
+    @IBOutlet private weak var qrCodeOverlayImageView: UIImageView!
+    @IBOutlet private weak var qrCodeSuccessImageView: UIImageView!
+    
     @IBOutlet private weak var containerViewHeightConstraint: NSLayoutConstraint!
     @IBOutlet private weak var paymentTopConstraint: NSLayoutConstraint!
     @IBOutlet private weak var pasteButtonContainer: UIView!
@@ -73,6 +76,8 @@ class QRCodeScannerViewController: UIViewController, ContainerViewController {
         }
         
         UIView.animate(withDuration: 0.25) {
+            self.qrCodeOverlayImageView.alpha = 0
+            self.qrCodeSuccessImageView.alpha = 1
             self.scannerViewOverlay.alpha = 0.8
             self.pasteButtonContainer.isHidden = true
             self.paymentTopConstraint.isActive = false

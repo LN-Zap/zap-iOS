@@ -51,8 +51,11 @@
                                             <constraint firstItem="C2T-oe-PmX" firstAttribute="top" secondItem="zfZ-6Q-UHf" secondAttribute="top" id="kEx-LN-w3B"/>
                                         </constraints>
                                     </view>
-                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="qr-code-overlay" translatesAutoresizingMaskIntoConstraints="NO" id="nON-Ym-xdN">
-                                        <rect key="frame" x="32.5" y="178.5" width="310" height="310"/>
+                                    <imageView userInteractionEnabled="NO" alpha="0.5" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="qr-code-overlay" translatesAutoresizingMaskIntoConstraints="NO" id="nON-Ym-xdN">
+                                        <rect key="frame" x="94.5" y="240.5" width="186" height="186"/>
+                                    </imageView>
+                                    <imageView userInteractionEnabled="NO" alpha="0.0" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="qr-success" translatesAutoresizingMaskIntoConstraints="NO" id="E4b-Na-FVs">
+                                        <rect key="frame" x="147" y="293.5" width="80" height="80"/>
                                     </imageView>
                                 </subviews>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -66,8 +69,10 @@
                                     <constraint firstItem="nON-Ym-xdN" firstAttribute="centerY" secondItem="Eno-d1-u3x" secondAttribute="centerY" id="LfQ-yt-OWi"/>
                                     <constraint firstItem="zfZ-6Q-UHf" firstAttribute="leading" secondItem="Eno-d1-u3x" secondAttribute="leading" id="NTx-jv-FdO"/>
                                     <constraint firstItem="suT-TO-7hY" firstAttribute="top" secondItem="Eno-d1-u3x" secondAttribute="top" id="T24-Sh-sJ2"/>
+                                    <constraint firstItem="E4b-Na-FVs" firstAttribute="centerY" secondItem="Eno-d1-u3x" secondAttribute="centerY" id="ivY-6a-yob"/>
                                     <constraint firstItem="4l3-5A-SjA" firstAttribute="top" secondItem="suT-TO-7hY" secondAttribute="top" id="kHp-X5-XYH"/>
                                     <constraint firstItem="zfZ-6Q-UHf" firstAttribute="bottom" secondItem="suT-TO-7hY" secondAttribute="bottom" id="q3F-QG-SRu"/>
+                                    <constraint firstItem="E4b-Na-FVs" firstAttribute="centerX" secondItem="Eno-d1-u3x" secondAttribute="centerX" id="tfY-K9-W1n"/>
                                     <constraint firstItem="4l3-5A-SjA" firstAttribute="leading" secondItem="suT-TO-7hY" secondAttribute="leading" id="z1I-3T-dob"/>
                                     <constraint firstItem="4l3-5A-SjA" firstAttribute="bottom" secondItem="suT-TO-7hY" secondAttribute="bottom" id="zaT-Pg-6fb"/>
                                 </constraints>
@@ -106,6 +111,8 @@
                         <outlet property="pasteButton" destination="C2T-oe-PmX" id="Iw7-DT-EN9"/>
                         <outlet property="pasteButtonContainer" destination="zfZ-6Q-UHf" id="aph-Op-oIz"/>
                         <outlet property="paymentTopConstraint" destination="rfk-aS-4Bp" id="Wfc-xR-nNX"/>
+                        <outlet property="qrCodeOverlayImageView" destination="nON-Ym-xdN" id="kxv-To-gcD"/>
+                        <outlet property="qrCodeSuccessImageView" destination="E4b-Na-FVs" id="D5v-jz-ZFc"/>
                         <outlet property="scannerView" destination="suT-TO-7hY" id="Zqd-BQ-io7"/>
                         <outlet property="scannerViewOverlay" destination="4l3-5A-SjA" id="m6Y-sr-3op"/>
                     </connections>
@@ -136,6 +143,7 @@
         </scene>
     </scenes>
     <resources>
-        <image name="qr-code-overlay" width="310" height="310"/>
+        <image name="qr-code-overlay" width="186" height="186"/>
+        <image name="qr-success" width="80" height="80"/>
     </resources>
 </document>
