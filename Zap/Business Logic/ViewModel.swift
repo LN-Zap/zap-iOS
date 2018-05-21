@@ -30,15 +30,13 @@ final class ViewModel: NSObject {
 
     var channelTransactionAnnotationUpdater: ChannelTransactionAnnotationUpdater?
     
-    init(api: LightningProtocol = LightningStream()) {
+    init(api: LightningProtocol) {
         self.api = api
         
         info = Wallet(api: api)
         balance = Balance(api: api)
         channels = Channels(api: api)
-    
-        Lnd.start()
-        
+            
         super.init()
 
         channelTransactionAnnotationUpdater = ChannelTransactionAnnotationUpdater(viewModel: self, transactionStore: transactionStore)

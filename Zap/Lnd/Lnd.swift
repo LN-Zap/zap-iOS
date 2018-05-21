@@ -9,6 +9,15 @@ import BTCUtil
 import Foundation
 import Lndmobile
 
+final class LndRpcServer {
+    let service: Lnrpc_LightningService
+    
+    init(configuration: RemoteNodeConfiguration) {
+        service = Lnrpc_LightningServiceClient(address: configuration.url.absoluteString, certificates: configuration.remoteNodeCertificates.certificate, host: nil)
+        service.metadata.add(key: "macaroon", value: configuration.remoteNodeCertificates.macaron.hexString())
+    }
+}
+
 final class Lnd {
     struct Constants {
         static let minChannelSize: Satoshi = 20000
@@ -35,24 +44,3 @@ final class Lnd {
         LndmobileStopDaemon(nil, EmptyLndCallback())
     }
 }
-
-// TODO: Connecting to remote LND:
-//private final class RemoteConnection: ConnectionStrategy {
-//    let host = "lnd3.ddns.net:10011"
-//
-//    var cert: String? {
-//        return RemoteLndConfiguration.cert
-//    }
-//
-//    var macaroon: String? {
-//        return RemoteLndConfiguration.macaroon
-//    }
-//
-//    func startLnd() {
-//        lightning = Lnrpc_LightningServiceClient(address: host, certificates: cert, host: nil)
-//        lightning?.metadata.add(key: "macaroon", value: Lnd.instance.macaroon!)
-//        walletUnlocker = Lnrpc_WalletUnlockerServiceClient(address: host, certificates: cert, host: nil)
-//    }
-//
-//    func stopLnd() {}
-//}

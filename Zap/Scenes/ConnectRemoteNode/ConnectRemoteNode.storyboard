@@ -18,62 +18,64 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="c5V-qe-5fQ">
-                                <rect key="frame" x="20" y="40" width="335" height="80"/>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="c5V-qe-5fQ">
+                                <rect key="frame" x="20" y="40" width="335" height="607"/>
                                 <subviews>
-                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="15" translatesAutoresizingMaskIntoConstraints="NO" id="rqj-ir-OOl">
+                                    <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="ugQ-98-MPX">
                                         <rect key="frame" x="0.0" y="0.0" width="335" height="30"/>
-                                        <subviews>
-                                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="ugQ-98-MPX">
-                                                <rect key="frame" x="0.0" y="0.0" width="335" height="30"/>
-                                                <nil key="textColor"/>
-                                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                <textInputTraits key="textInputTraits" textContentType="url"/>
-                                            </textField>
-                                        </subviews>
-                                    </stackView>
-                                    <stackView opaque="NO" contentMode="scaleToFill" spacing="15" translatesAutoresizingMaskIntoConstraints="NO" id="Pfi-Gx-shH">
-                                        <rect key="frame" x="0.0" y="50" width="335" height="30"/>
+                                        <nil key="textColor"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                        <textInputTraits key="textInputTraits" returnKeyType="done" textContentType="url"/>
+                                    </textField>
+                                    <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="15" translatesAutoresizingMaskIntoConstraints="NO" id="Pfi-Gx-shH">
+                                        <rect key="frame" x="0.0" y="40" width="335" height="30"/>
                                         <subviews>
                                             <button opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="GgW-QU-6eI">
-                                                <rect key="frame" x="0.0" y="0.0" width="46" height="30"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="160" height="30"/>
                                                 <state key="normal" title="Button"/>
                                                 <connections>
                                                     <segue destination="Cio-lo-XgE" kind="presentation" id="MfH-he-sGa"/>
                                                 </connections>
                                             </button>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="REO-CQ-rFO">
-                                                <rect key="frame" x="61" y="0.0" width="274" height="30"/>
-                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                <nil key="textColor"/>
-                                                <nil key="highlightedColor"/>
-                                            </label>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="JsS-8f-qAo">
+                                                <rect key="frame" x="175" y="0.0" width="160" height="30"/>
+                                                <state key="normal" title="Button"/>
+                                                <connections>
+                                                    <action selector="pasteCertificates:" destination="mlm-OI-MXW" eventType="touchUpInside" id="ATB-fV-xgn"/>
+                                                </connections>
+                                            </button>
                                         </subviews>
                                     </stackView>
+                                    <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="yHl-Za-RvO">
+                                        <rect key="frame" x="0.0" y="80" width="335" height="487"/>
+                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                        <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                                    </textView>
+                                    <button opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="REc-n3-lVa">
+                                        <rect key="frame" x="0.0" y="577" width="335" height="30"/>
+                                        <state key="normal" title="Button"/>
+                                        <connections>
+                                            <action selector="connectRemoteNode:" destination="mlm-OI-MXW" eventType="touchUpInside" id="MVU-wP-igQ"/>
+                                        </connections>
+                                    </button>
                                 </subviews>
                             </stackView>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="REc-n3-lVa">
-                                <rect key="frame" x="164.5" y="617" width="46" height="30"/>
-                                <state key="normal" title="Button"/>
-                                <connections>
-                                    <action selector="connectRemoteNode:" destination="mlm-OI-MXW" eventType="touchUpInside" id="MVU-wP-igQ"/>
-                                </connections>
-                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="c5V-qe-5fQ" firstAttribute="top" secondItem="fqu-z6-Num" secondAttribute="top" constant="20" id="4YY-PM-HSl"/>
                             <constraint firstItem="c5V-qe-5fQ" firstAttribute="leading" secondItem="fqu-z6-Num" secondAttribute="leading" constant="20" id="FfX-HW-gpL"/>
                             <constraint firstItem="fqu-z6-Num" firstAttribute="trailing" secondItem="c5V-qe-5fQ" secondAttribute="trailing" constant="20" id="Hcv-yN-NwF"/>
-                            <constraint firstItem="REc-n3-lVa" firstAttribute="centerX" secondItem="fqu-z6-Num" secondAttribute="centerX" id="Vea-4o-7Ca"/>
-                            <constraint firstItem="fqu-z6-Num" firstAttribute="bottom" secondItem="REc-n3-lVa" secondAttribute="bottom" constant="20" id="qWr-H3-eN3"/>
+                            <constraint firstItem="fqu-z6-Num" firstAttribute="bottom" secondItem="c5V-qe-5fQ" secondAttribute="bottom" constant="20" id="rem-d7-hfi"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="fqu-z6-Num"/>
                     </view>
                     <connections>
-                        <outlet property="addCertificatesButton" destination="GgW-QU-6eI" id="S5a-8G-buo"/>
-                        <outlet property="certLabel" destination="REO-CQ-rFO" id="Qng-jT-ccu"/>
                         <outlet property="connectButton" destination="REc-n3-lVa" id="BKJ-7N-Cec"/>
+                        <outlet property="pasteCertificatesButton" destination="JsS-8f-qAo" id="xka-ED-8bz"/>
+                        <outlet property="scanCertificatesButton" destination="GgW-QU-6eI" id="K2u-tE-bH7"/>
+                        <outlet property="textView" destination="yHl-Za-RvO" id="uQq-y7-XXg"/>
                         <outlet property="urlTextField" destination="ugQ-98-MPX" id="45b-Ye-j9l"/>
                     </connections>
                 </viewController>

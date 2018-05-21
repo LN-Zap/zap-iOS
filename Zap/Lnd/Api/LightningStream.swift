@@ -20,6 +20,7 @@ final class LightningStream: LightningProtocol {
     }
     
     func newAddress(type: OnChainRequestAddressType, callback: @escaping (Result<String>) -> Void) {
+        // TODO: move to protoExtension
         let addressType: Lnrpc_NewAddressRequest.AddressType
         switch type {
         case .witnessPubkeyHash:

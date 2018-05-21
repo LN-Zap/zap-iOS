@@ -49,7 +49,6 @@
 		A0376B75201CD61B00F1FBEF /* NumericKeyPad.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A0376B74201CD61B00F1FBEF /* NumericKeyPad.storyboard */; };
 		A0376B77201CD67700F1FBEF /* PinViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0376B76201CD67700F1FBEF /* PinViewController.swift */; };
 		A03F03602028C73F00F32279 /* SendLightningInvoiceViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A03F035F2028C73F00F32279 /* SendLightningInvoiceViewModel.swift */; };
-		A05C5B8F206500A900072FA9 /* RemoteLndConfiguration.swift in Sources */ = {isa = PBXBuildFile; fileRef = A05C5B8E206500A900072FA9 /* RemoteLndConfiguration.swift */; };
 		A0605F86202C962900EA903C /* SectionHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0605F85202C962900EA903C /* SectionHeaderView.swift */; };
 		A0605F88202C963800EA903C /* SectionHeaderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = A0605F87202C963800EA903C /* SectionHeaderView.xib */; };
 		A0605F8D202C9D8200EA903C /* HorizontalLineView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0605F8C202C9D8200EA903C /* HorizontalLineView.swift */; };
@@ -317,7 +316,6 @@
 		A0376B74201CD61B00F1FBEF /* NumericKeyPad.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = NumericKeyPad.storyboard; sourceTree = "<group>"; };
 		A0376B76201CD67700F1FBEF /* PinViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PinViewController.swift; sourceTree = "<group>"; };
 		A03F035F2028C73F00F32279 /* SendLightningInvoiceViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SendLightningInvoiceViewModel.swift; sourceTree = "<group>"; };
-		A05C5B8E206500A900072FA9 /* RemoteLndConfiguration.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RemoteLndConfiguration.swift; sourceTree = "<group>"; };
 		A0605F85202C962900EA903C /* SectionHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SectionHeaderView.swift; sourceTree = "<group>"; };
 		A0605F87202C963800EA903C /* SectionHeaderView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SectionHeaderView.xib; sourceTree = "<group>"; };
 		A0605F8C202C9D8200EA903C /* HorizontalLineView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HorizontalLineView.swift; sourceTree = "<group>"; };
@@ -666,6 +664,7 @@
 		A010093A2014BF440001EF94 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				A0A05A0B2013CF960007D1C9 /* LaunchScreen.storyboard */,
 				A091914E203C23C100FA525A /* Roboto-Light.ttf */,
 				A0919153203C27C300FA525A /* Roboto-Bold.ttf */,
 				A0A05A092013CF960007D1C9 /* Assets.xcassets */,
@@ -730,7 +729,6 @@
 				A0A05A5A20149AF80007D1C9 /* Model */,
 				A0A05A342014047B0007D1C9 /* Lnd.swift */,
 				A02C9FC520304395009821B1 /* LndConfiguration.swift */,
-				A05C5B8E206500A900072FA9 /* RemoteLndConfiguration.swift */,
 			);
 			path = Lnd;
 			sourceTree = "<group>";
@@ -1019,7 +1017,6 @@
 			isa = PBXGroup;
 			children = (
 				A0A05A4C20147B740007D1C9 /* RootViewController.swift */,
-				A0A05A0B2013CF960007D1C9 /* LaunchScreen.storyboard */,
 				A0A05A062013CF960007D1C9 /* Root.storyboard */,
 			);
 			path = Root;
@@ -1649,7 +1646,6 @@
 				AD7746622077C3BF00EC596B /* PaymentDetailViewController.swift in Sources */,
 				AD86BD002099FB4500A7866A /* rpc.grpc.swift in Sources */,
 				A0A05A51201481A70007D1C9 /* Storyboard.swift in Sources */,
-				A05C5B8F206500A900072FA9 /* RemoteLndConfiguration.swift in Sources */,
 				ADA6D2C520AC1DDE009398A5 /* Balance.swift in Sources */,
 				A010093C2014CEE40001EF94 /* OpenStatusUpdate.swift in Sources */,
 				AD33B5EF20A8463600E32BD9 /* SendOnChainViewController.swift in Sources */,

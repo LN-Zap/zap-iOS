@@ -11,20 +11,7 @@ class RootViewController: UIViewController, ContainerViewController {
     // swiftlint:disable:next private_outlet
     @IBOutlet weak var container: UIView?
     
-    let viewModel: ViewModel = {
-        ViewModel()
-//        ViewModel(api: LightningMock(
-//            info: Info.template,
-//            transactions: [
-//                OnChainTransaction.template,
-//                OnChainTransaction.template
-//            ],
-//            payments: [
-//                Payment.template,
-//                Payment.template
-//            ]
-//        ))
-    }()
+    var viewModel: ViewModel?
     
     weak var currentViewController: UIViewController?
     
@@ -61,6 +48,40 @@ class RootViewController: UIViewController, ContainerViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        let viewController = Storyboard.connectRemoteNode.initial(viewController: ConnectRemoteNodeViewController.self)
+        viewController.connectCallback = { [weak self] in
+            self?.startWalletUI()
+        }
+        setInitialViewController(viewController)
+    }
+    
+    func setupViewModel() {
+        if let remoteNodeConfiguration = RemoteNodeConfiguration.load() {
+            // RPC
+            let lndRPCServer = LndRpcServer(configuration: remoteNodeConfiguration)
+            viewModel = ViewModel(api: LightningRPC(lnd: lndRPCServer))
+        } else {
+            // LOCAL
+            Lnd.start()
+            viewModel = ViewModel(api: LightningStream())
+        }
+        // DEBUG
+//        ViewModel(api: LightningMock(
+//            info: Info.template,
+//            transactions: [
+//                OnChainTransaction.template,
+//                OnChainTransaction.template
+//            ],
+//            payments: [
+//                Payment.template,
+//                Payment.template
+//            ]
+//        ))
+    }
+    
+    func startWalletUI() {
+        setupViewModel()
+        
         setInitialViewController(loadingViewController)
         
         NotificationCenter.default.reactive.notification(name: .lndError)
@@ -74,7 +95,7 @@ class RootViewController: UIViewController, ContainerViewController {
             }
             .dispose(in: reactive.bag)
         
-        viewModel.info.walletState
+        viewModel?.info.walletState
             .distinct()
             .observeNext { [weak self] state in
                 var viewController: UIViewController?
