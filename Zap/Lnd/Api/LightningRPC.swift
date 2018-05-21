@@ -25,15 +25,7 @@ final class LightningRPC: LightningProtocol {
     }
     
     func newAddress(type: OnChainRequestAddressType, callback: @escaping (Result<String>) -> Void) {
-        let addressType: Lnrpc_NewAddressRequest.AddressType
-        switch type {
-        case .witnessPubkeyHash:
-            addressType = .witnessPubkeyHash
-        case .nestedPubkeyHash:
-            addressType = .nestedPubkeyHash
-        }
-        
-        let request = Lnrpc_NewAddressRequest(type: addressType)
+        let request = Lnrpc_NewAddressRequest(type: type)
         _ = try? rpc.newAddress(request, completion: result(callback, map: { $0.address }))
     }
     

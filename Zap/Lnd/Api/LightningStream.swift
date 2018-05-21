@@ -20,16 +20,7 @@ final class LightningStream: LightningProtocol {
     }
     
     func newAddress(type: OnChainRequestAddressType, callback: @escaping (Result<String>) -> Void) {
-        // TODO: move to protoExtension
-        let addressType: Lnrpc_NewAddressRequest.AddressType
-        switch type {
-        case .witnessPubkeyHash:
-            addressType = .witnessPubkeyHash
-        case .nestedPubkeyHash:
-            addressType = .nestedPubkeyHash
-        }
-        
-        let data = try? Lnrpc_NewAddressRequest(type: addressType).serializedData()
+        let data = try? Lnrpc_NewAddressRequest(type: type).serializedData()
         LndmobileNewAddress(data, LndCallback<Lnrpc_NewAddressResponse, String>(callback) { $0.address })
     }
     

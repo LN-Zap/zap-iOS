@@ -33,8 +33,13 @@ extension Lnrpc_PayReqString {
 }
 
 extension Lnrpc_NewAddressRequest {
-    init(type: AddressType) {
-        self.type = type
+    init(type: OnChainRequestAddressType) {
+        switch type {
+        case .witnessPubkeyHash:
+            self.type = .witnessPubkeyHash
+        case .nestedPubkeyHash:
+            self.type = .nestedPubkeyHash
+        }
     }
 }
 
