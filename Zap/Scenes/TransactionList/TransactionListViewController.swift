@@ -112,30 +112,17 @@ extension TransactionListViewController: UITableViewDelegate {
         tableView.deselectRow(at: indexPath, animated: true)
         
         let transactionType = transactionListViewModel.sections.item(at: indexPath)
-        let viewController: UINavigationController
         
-        switch transactionType {
-        case .onChainTransaction(let transactionViewModel):
-            viewController = Storyboard.transactionDetail.initial(viewController: UINavigationController.self)
-            if let transactionDetailViewController = viewController.topViewController as? TransactionDetailViewController {
-                transactionDetailViewController.transactionViewModel = transactionViewModel
-                transactionDetailViewController.viewModel = viewModel
-            }
-        case .lightningPayment(let lightningPaymentViewModel):
-            viewController = Storyboard.paymentDetail.initial(viewController: UINavigationController.self)
-            if let paymentDetailViewController = viewController.topViewController as? PaymentDetailViewController {
-                paymentDetailViewController.lightningPaymentViewModel = lightningPaymentViewModel
-                paymentDetailViewController.viewModel = viewModel
-            }
-        case .lightningInvoice(let lightningInvoiceViewModel):
-            viewController = Storyboard.transactionDetail.initial(viewController: UINavigationController.self)
-            if let invoiceDetailViewController = viewController.topViewController as? TransactionDetailViewController {
-                invoiceDetailViewController.transactionViewModel = lightningInvoiceViewModel
-                invoiceDetailViewController.viewModel = viewModel
-            }
+        present(viewControllerFor(transactionType), animated: true, completion: nil)
+    }
+    
+    private func viewControllerFor(_ transactionType: TransactionType) -> UIViewController {
+        let viewController = Storyboard.transactionDetail.initial(viewController: UINavigationController.self)
+        if let transactionDetailViewController = viewController.topViewController as? TransactionDetailViewController {
+            transactionDetailViewController.transactionViewModel = transactionType.transactionViewModel
+            transactionDetailViewController.viewModel = viewModel
         }
-        
-        present(viewController, animated: true, completion: nil)
+        return viewController
     }
 }
 

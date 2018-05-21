@@ -171,8 +171,6 @@
 		AD77465720765E4D00EC596B /* ChannelViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD77465620765E4D00EC596B /* ChannelViewModel.swift */; };
 		AD7746592076609400EC596B /* NodeInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD7746582076609400EC596B /* NodeInfo.swift */; };
 		AD77465D2077C11200EC596B /* TransactionDetail.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AD77465C2077C11200EC596B /* TransactionDetail.storyboard */; };
-		AD7746622077C3BF00EC596B /* PaymentDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD7746602077C3BF00EC596B /* PaymentDetailViewController.swift */; };
-		AD7746652077C3D600EC596B /* PaymentDetail.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AD7746642077C3D600EC596B /* PaymentDetail.storyboard */; };
 		AD7746672077C72600EC596B /* TransactionType.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD7746662077C72600EC596B /* TransactionType.swift */; };
 		AD77466C2078EE5600EC596B /* ChannelTransactionAnnotationUpdater.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD77466B2078EE5600EC596B /* ChannelTransactionAnnotationUpdater.swift */; };
 		AD86BCFE2099F50C00A7866A /* rpc.pb.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD86BCFD2099F50C00A7866A /* rpc.pb.swift */; };
@@ -457,8 +455,6 @@
 		AD77465620765E4D00EC596B /* ChannelViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChannelViewModel.swift; sourceTree = "<group>"; };
 		AD7746582076609400EC596B /* NodeInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NodeInfo.swift; sourceTree = "<group>"; };
 		AD77465C2077C11200EC596B /* TransactionDetail.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = TransactionDetail.storyboard; sourceTree = "<group>"; };
-		AD7746602077C3BF00EC596B /* PaymentDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaymentDetailViewController.swift; sourceTree = "<group>"; };
-		AD7746642077C3D600EC596B /* PaymentDetail.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = PaymentDetail.storyboard; sourceTree = "<group>"; };
 		AD7746662077C72600EC596B /* TransactionType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransactionType.swift; sourceTree = "<group>"; };
 		AD77466B2078EE5600EC596B /* ChannelTransactionAnnotationUpdater.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChannelTransactionAnnotationUpdater.swift; sourceTree = "<group>"; };
 		AD86BCFD2099F50C00A7866A /* rpc.pb.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = rpc.pb.swift; path = Proto/rpc.pb.swift; sourceTree = SOURCE_ROOT; };
@@ -1108,8 +1104,6 @@
 			isa = PBXGroup;
 			children = (
 				AD19F05820AF006F008090CB /* DetailCell */,
-				AD7746642077C3D600EC596B /* PaymentDetail.storyboard */,
-				AD7746602077C3BF00EC596B /* PaymentDetailViewController.swift */,
 				AD77465C2077C11200EC596B /* TransactionDetail.storyboard */,
 				AD19F05F20AF19A9008090CB /* TransactionDetailViewController.swift */,
 			);
@@ -1444,7 +1438,6 @@
 				AD680A9A20B06B840018986B /* DetailTimerTableViewCell.xib in Resources */,
 				A0A05A0A2013CF960007D1C9 /* Assets.xcassets in Resources */,
 				ADACC77220B02AAD00F86D63 /* DetailQRCodeTableViewCell.xib in Resources */,
-				AD7746652077C3D600EC596B /* PaymentDetail.storyboard in Resources */,
 				ADCE01BB207B57ED00CA72E8 /* CreateWallet.storyboard in Resources */,
 				A0376B75201CD61B00F1FBEF /* NumericKeyPad.storyboard in Resources */,
 				A01009462014DCB40001EF94 /* SendOnChain.storyboard in Resources */,
@@ -1646,7 +1639,6 @@
 				AD6FFC9C20A9D15E00B57330 /* OnChainTransactionViewModel.swift in Sources */,
 				AD6FFCA620AB0A3700B57330 /* OnChainRequestAddressTypeSettingsItem.swift in Sources */,
 				A0A96B88201769F100788808 /* String.swift in Sources */,
-				AD7746622077C3BF00EC596B /* PaymentDetailViewController.swift in Sources */,
 				AD86BD002099FB4500A7866A /* rpc.grpc.swift in Sources */,
 				A0A05A51201481A70007D1C9 /* Storyboard.swift in Sources */,
 				ADA6D2C520AC1DDE009398A5 /* Balance.swift in Sources */,
