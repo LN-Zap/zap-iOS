@@ -41,7 +41,6 @@ class ConnectRemoteNodeViewController: UIViewController {
         
         urlTextField.attributedPlaceholder =
             NSAttributedString(string: "192.168.1.3:10011", attributes: [.foregroundColor: UIColor.lightGray])
-        urlTextField.text = "192.168.1.3:10011"
         urlTextField.delegate = self
         
         scanCertificatesButton.setTitle("scan", for: .normal)
@@ -52,7 +51,9 @@ class ConnectRemoteNodeViewController: UIViewController {
         textView.backgroundColor = .clear
         textView.textColor = .white
         
-        certificates = RemoteNodeConfiguration.load()?.remoteNodeCertificates
+        let configuration = RemoteNodeConfiguration.load()
+        certificates = configuration?.remoteNodeCertificates
+        urlTextField.text = configuration?.url.absoluteString ?? "192.168.1.3:10011"
     }
     
     private func updateCertificatesUI() {
