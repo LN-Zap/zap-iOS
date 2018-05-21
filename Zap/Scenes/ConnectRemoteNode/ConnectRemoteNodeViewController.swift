@@ -10,7 +10,7 @@ import UIKit
 class ConnectRemoteNodeViewController: UIViewController {
     
     @IBOutlet private weak var urlTextField: UITextField!
-    
+    @IBOutlet private weak var zapconnectLabel: UILabel!
     @IBOutlet private weak var scanCertificatesButton: UIButton!
     @IBOutlet private weak var pasteCertificatesButton: UIButton!
     
@@ -32,6 +32,8 @@ class ConnectRemoteNodeViewController: UIViewController {
         
         view.backgroundColor = Color.darkBackground
         
+        Style.label.apply(to: zapconnectLabel)
+        zapconnectLabel.textColor = .white
         Style.textField.apply(to: urlTextField) {
             $0.textColor = .white
         }
