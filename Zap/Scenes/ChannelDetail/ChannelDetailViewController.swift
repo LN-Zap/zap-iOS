@@ -67,6 +67,20 @@ class ChannelDetailViewController: ModalViewController {
     }
     
     @IBAction private func closeChannel(_ sender: Any) {
+        guard let channel = channelViewModel?.channel else { return }
+        
+        let alertController = UIAlertController(title: "Close Channel", message: "Do you really want to close channel with node \(channel.remotePubKey)?", preferredStyle: .actionSheet)
+        let cancelAction = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
+        let closeAction = UIAlertAction(title: "Close", style: .destructive) { [weak self] _ in
+            self?.closeChannel()
+        }
+        alertController.addAction(cancelAction)
+        alertController.addAction(closeAction)
+        present(alertController, animated: true, completion: nil)
+        
+    }
+    
+    private func closeChannel() {
         guard let channelPoint = channelViewModel?.channel.channelPoint else { return }
         viewModel?.channels.close(channelPoint: channelPoint) { [weak self] in
             self?.dismiss(animated: true, completion: nil)
