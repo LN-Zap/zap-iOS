@@ -97,7 +97,7 @@ func result<T, U>(_ callback: @escaping (Result<U>) -> Void, map: @escaping (T) 
                 callback(Result<U>(error: LndError.localizedError(message)))
             }
         } else {
-            print(LndError.unknownError)
+            print(LndError.unknownError, callResult)
             callback(Result<U>(error: LndError.unknownError))
         }
     }
