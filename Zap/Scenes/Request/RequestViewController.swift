@@ -17,6 +17,10 @@ final class RequestViewController: UIViewController {
     @IBOutlet private weak var bottomConstraint: NSLayoutConstraint!
     @IBOutlet private weak var amountInputView: AmountInputView!
     
+    override var preferredStatusBarStyle: UIStatusBarStyle {
+        return .default
+    }
+    
     var viewModel: ViewModel? {
         didSet {
             guard let viewModel = viewModel else { return }

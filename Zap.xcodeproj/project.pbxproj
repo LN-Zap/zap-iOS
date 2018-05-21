@@ -142,6 +142,7 @@
 		AD19F06020AF19A9008090CB /* TransactionDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD19F05F20AF19A9008090CB /* TransactionDetailViewController.swift */; };
 		AD19F06320AF1AB8008090CB /* DetailMemoTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD19F06120AF1AB8008090CB /* DetailMemoTableViewCell.swift */; };
 		AD19F06420AF1AB8008090CB /* DetailMemoTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = AD19F06220AF1AB8008090CB /* DetailMemoTableViewCell.xib */; };
+		AD1EB9FD20B2CEAA001FF67E /* StatusBarDelegatingNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD1EB9FC20B2CEAA001FF67E /* StatusBarDelegatingNavigationController.swift */; };
 		AD33B5EF20A8463600E32BD9 /* SendOnChainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD33B5EE20A8463600E32BD9 /* SendOnChainViewController.swift */; };
 		AD38EB30207DF233007DF14D /* UIButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD38EB2F207DF233007DF14D /* UIButton.swift */; };
 		AD38EB32207DFB59007DF14D /* SegmentButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD38EB31207DFB59007DF14D /* SegmentButton.swift */; };
@@ -427,6 +428,7 @@
 		AD19F05F20AF19A9008090CB /* TransactionDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransactionDetailViewController.swift; sourceTree = "<group>"; };
 		AD19F06120AF1AB8008090CB /* DetailMemoTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailMemoTableViewCell.swift; sourceTree = "<group>"; };
 		AD19F06220AF1AB8008090CB /* DetailMemoTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DetailMemoTableViewCell.xib; sourceTree = "<group>"; };
+		AD1EB9FC20B2CEAA001FF67E /* StatusBarDelegatingNavigationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatusBarDelegatingNavigationController.swift; sourceTree = "<group>"; };
 		AD33B5EE20A8463600E32BD9 /* SendOnChainViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SendOnChainViewController.swift; sourceTree = "<group>"; };
 		AD38EB2F207DF233007DF14D /* UIButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIButton.swift; sourceTree = "<group>"; };
 		AD38EB31207DFB59007DF14D /* SegmentButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SegmentButton.swift; sourceTree = "<group>"; };
@@ -817,6 +819,7 @@
 				A024B85820161590002B8897 /* Request.storyboard */,
 				AD5FA000207CCB8B000E9493 /* RequestViewController.swift */,
 				A070D96A202B569E000A8274 /* RequestViewModel.swift */,
+				AD1EB9FC20B2CEAA001FF67E /* StatusBarDelegatingNavigationController.swift */,
 			);
 			path = Request;
 			sourceTree = "<group>";
@@ -1769,6 +1772,7 @@
 				AD77464720750DFB00EC596B /* SettingsContainerViewController.swift in Sources */,
 				A0A05A5920149AF20007D1C9 /* Transaction.swift in Sources */,
 				A0D3C97D20616AB80015C5D7 /* LndError.swift in Sources */,
+				AD1EB9FD20B2CEAA001FF67E /* StatusBarDelegatingNavigationController.swift in Sources */,
 				AD680A9C20B077980018986B /* ConnectRemoteNodeSettingsItem.swift in Sources */,
 				A0F9AEE1206E3D8200E93DCA /* InputNumberFormatter.swift in Sources */,
 				ADBA4423209B00D300D18B71 /* LndCallback.swift in Sources */,

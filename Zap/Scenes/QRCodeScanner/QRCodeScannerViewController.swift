@@ -38,6 +38,10 @@ class QRCodeScannerViewController: UIViewController, ContainerViewController {
         }
     }
     
+    override var preferredStatusBarStyle: UIStatusBarStyle {
+        return .lightContent
+    }
+    
     var viewModel: ViewModel?
     
     override func viewDidLoad() {

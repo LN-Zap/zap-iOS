@@ -13,6 +13,10 @@ class RootViewController: UIViewController, ContainerViewController {
     
     var viewModel: ViewModel?
     
+    override var preferredStatusBarStyle: UIStatusBarStyle {
+        return .lightContent
+    }
+    
     weak var currentViewController: UIViewController?
     
     private var mainViewController: MainViewController {
