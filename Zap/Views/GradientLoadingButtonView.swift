@@ -9,6 +9,18 @@ import UIKit
 
 class GradientLoadingButtonView: UIControl {
     private weak var button: UIButton?
+    private weak var activityIndicator: UIActivityIndicatorView?
+    
+    var isLoading: Bool = false {
+        didSet {
+            button?.isHidden = isLoading
+            if isLoading {
+                addActivityIndicator()
+            } else {
+                activityIndicator?.removeFromSuperview()
+            }
+        }
+    }
     
     var title: String? {
         didSet {
@@ -33,8 +45,11 @@ class GradientLoadingButtonView: UIControl {
     
     @objc
     private func buttonTapped() {
-        button?.isHidden = true
-        
+        isLoading = true
+        sendActions(for: .touchUpInside)
+    }
+    
+    private func addActivityIndicator() {
         let activityIndicator = UIActivityIndicatorView(activityIndicatorStyle: .white)
         addSubview(activityIndicator)
         activityIndicator.translatesAutoresizingMaskIntoConstraints = false
@@ -43,7 +58,7 @@ class GradientLoadingButtonView: UIControl {
         
         activityIndicator.startAnimating()
         
-        sendActions(for: .touchUpInside)
+        self.activityIndicator = activityIndicator
     }
     
     private func addSubviewSameSize(_ view: UIView) {

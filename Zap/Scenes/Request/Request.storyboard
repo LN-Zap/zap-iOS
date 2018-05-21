@@ -108,25 +108,15 @@
                                             <constraint firstItem="IQI-PO-y7e" firstAttribute="leading" secondItem="ubh-mT-jEZ" secondAttribute="leading" constant="20" id="sDz-KY-8Yo"/>
                                         </constraints>
                                     </view>
-                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="jiU-7w-Kmm" customClass="GradientView" customModule="Zap" customModuleProvider="target">
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="jiU-7w-Kmm" customClass="GradientLoadingButtonView" customModule="Zap" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="639" width="375" height="97"/>
-                                        <subviews>
-                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="tOu-EQ-8Ez">
-                                                <rect key="frame" x="0.0" y="0.0" width="375" height="97"/>
-                                                <state key="normal" title="Button"/>
-                                                <connections>
-                                                    <action selector="createButtonTapped:" destination="rjQ-Ia-QeT" eventType="touchUpInside" id="VsE-yR-xrz"/>
-                                                </connections>
-                                            </button>
-                                        </subviews>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <constraints>
-                                            <constraint firstAttribute="bottom" secondItem="tOu-EQ-8Ez" secondAttribute="bottom" id="0PC-hJ-AfU"/>
-                                            <constraint firstItem="tOu-EQ-8Ez" firstAttribute="top" secondItem="jiU-7w-Kmm" secondAttribute="top" id="F3Z-KZ-qqI"/>
                                             <constraint firstAttribute="height" constant="97" id="J9l-CX-YX1"/>
-                                            <constraint firstItem="tOu-EQ-8Ez" firstAttribute="leading" secondItem="jiU-7w-Kmm" secondAttribute="leading" id="UfK-8e-A5W"/>
-                                            <constraint firstAttribute="trailing" secondItem="tOu-EQ-8Ez" secondAttribute="trailing" id="eAl-p4-HMK"/>
                                         </constraints>
+                                        <connections>
+                                            <action selector="createButtonTapped:" destination="rjQ-Ia-QeT" eventType="touchUpInside" id="dEv-go-0sq"/>
+                                        </connections>
                                     </view>
                                 </subviews>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -153,7 +143,7 @@
                     <connections>
                         <outlet property="amountInputView" destination="NWD-uY-0J6" id="OFr-1I-35e"/>
                         <outlet property="bottomConstraint" destination="O6q-xE-9Ac" id="xIW-vZ-PTR"/>
-                        <outlet property="createButton" destination="tOu-EQ-8Ez" id="EKE-t0-oth"/>
+                        <outlet property="gradientLoadingButtonView" destination="jiU-7w-Kmm" id="uTe-Ae-4Oh"/>
                         <outlet property="lightningButton" destination="elu-Jk-EPg" id="NPQ-bs-ojx"/>
                         <outlet property="memoTextView" destination="yiG-8U-w8B" id="Bzu-Hc-ixK"/>
                         <outlet property="onChainButton" destination="Ep1-xz-1ul" id="Ttr-PM-bPz"/>

@@ -13,9 +13,9 @@ final class RequestViewController: UIViewController {
     @IBOutlet private weak var onChainButton: UIButton!
     @IBOutlet private weak var placeholderTextView: UITextView!
     @IBOutlet private weak var memoTextView: UITextView!
-    @IBOutlet private weak var createButton: UIButton!
     @IBOutlet private weak var bottomConstraint: NSLayoutConstraint!
     @IBOutlet private weak var amountInputView: AmountInputView!
+    @IBOutlet private weak var gradientLoadingButtonView: GradientLoadingButtonView!
     
     override var preferredStatusBarStyle: UIStatusBarStyle {
         return .default
@@ -43,9 +43,7 @@ final class RequestViewController: UIViewController {
         
         segmentedControlBackgroundView.backgroundColor = Color.searchBackground
         
-        Style.button.apply(to: createButton)
-        createButton.setTitle("Generate  Request", for: .normal)
-        createButton.tintColor = .white
+        gradientLoadingButtonView.title = "Generate Request"
         
         placeholderTextView.text = "Memo (optional)"
         placeholderTextView.font = Font.light.withSize(14)
@@ -67,6 +65,12 @@ final class RequestViewController: UIViewController {
         setupKeyboardNotifications()
         
         amountInputView.validRange = (0...Lnd.Constants.maxPaymentAllowed)
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        gradientLoadingButtonView.isLoading = false
     }
     
     @IBAction private func segmentedControlDidChange(_ sender: UIButton) {
