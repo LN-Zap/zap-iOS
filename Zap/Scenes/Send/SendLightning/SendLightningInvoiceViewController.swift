@@ -50,6 +50,7 @@ class SendLightningInvoiceViewController: UIViewController, QRCodeScannerChildVi
                     return false
                 }
             })
+            .observeOn(DispatchQueue.main)
             .observeNext(with: { [weak self] in
                 self?.expiredView.isHidden = $0
                 self?.gradientButtonView.isHidden = !$0
