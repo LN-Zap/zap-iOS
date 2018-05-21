@@ -23,6 +23,7 @@ final class OnChainTransactionViewModel: NSObject, TransactionViewModel {
     
     let annotation: Observable<TransactionAnnotation>
     let onChainTransaction: OnChainTransaction
+    let aliasStore: ChannelAliasStore
     
     let displayText: Signal<String, NoError>
     let amount: Signal<Satoshi, NoError>
@@ -30,9 +31,10 @@ final class OnChainTransactionViewModel: NSObject, TransactionViewModel {
     
     let data = MutableObservableArray<DetailCellType>([])
     
-    init(onChainTransaction: OnChainTransaction, annotation: TransactionAnnotation) {
+    init(onChainTransaction: OnChainTransaction, annotation: TransactionAnnotation, aliasStore: ChannelAliasStore) {
         self.annotation = Observable(annotation)
         self.onChainTransaction = onChainTransaction
+        self.aliasStore = aliasStore
         
         time = DateFormatter.localizedString(from: onChainTransaction.date, dateStyle: .none, timeStyle: .short)
         
@@ -51,7 +53,8 @@ final class OnChainTransactionViewModel: NSObject, TransactionViewModel {
                     return customMemo
                 } else if let type = annotation.type,
                     case .openChannelTransaction(let channelPubKey) = type {
-                    return "Open Channel: \(channelPubKey)"
+                    let alias = aliasStore.data[channelPubKey] ?? channelPubKey
+                    return "Open Channel: \(alias)"
                 }
                 return onChainTransaction.firstDestinationAddress
             }

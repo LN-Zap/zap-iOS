@@ -8,14 +8,19 @@
 import Bond
 import Foundation
 
-final class TransactionStore {
-    let transactions: Observable<[TransactionViewModel]>
-    var annotations = [String: TransactionAnnotation]()
+final class TransactionStore: Persistable {
+    typealias Value = TransactionAnnotation
     
-    init() {
+    let aliasStore: ChannelAliasStore
+    let transactions: Observable<[TransactionViewModel]>
+    var data = [String: TransactionAnnotation]()
+    let fileName = "annotations"
+    
+    init(aliasStore: ChannelAliasStore) {
         transactions = Observable([])
+        self.aliasStore = aliasStore
         
-        loadAnnotations()
+        loadPersistable()
     }
     
     func update(transactions newTransactions: [Transaction]) {
@@ -30,13 +35,13 @@ final class TransactionStore {
     }
     
     func setMemo(_ memo: String, forPaymentHash paymentHash: String) {
-        annotations[paymentHash] = TransactionAnnotation(isHidden: false, customMemo: memo, type: nil)
+        data[paymentHash] = TransactionAnnotation(isHidden: false, customMemo: memo, type: nil)
         
-        saveAnnotations()
+        savePersistable()
     }
     
     func updateAnnotation(_ annotation: TransactionAnnotation, for transactionViewModel: TransactionViewModel) {
-        annotations[transactionViewModel.id] = annotation
+        data[transactionViewModel.id] = annotation
         
         if annotation.isHidden,
             let index = transactions.value.index(where: {
@@ -50,27 +55,7 @@ final class TransactionStore {
             transactionViewModel.annotation.value = annotation
         }
         
-        saveAnnotations()
-    }
-    
-    private var plistUrl: URL? {
-        return FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first?.appendingPathComponent("annotations.plist")
-    }
-    
-    private func saveAnnotations() {
-        guard
-            let encoded = try? PropertyListEncoder().encode(annotations),
-            let url = plistUrl
-            else { return }
-        try? encoded.write(to: url)
-    }
-    
-    private func loadAnnotations() {
-        guard
-            let url = plistUrl,
-            let data = try? Data(contentsOf: url),
-            let decoded = try? PropertyListDecoder().decode(Dictionary<String, TransactionAnnotation>.self, from: data) else { return }
-        annotations = decoded
+        savePersistable()
     }
     
     // MARK: - Private, refactor this shit
@@ -107,10 +92,10 @@ final class TransactionStore {
     }
     
     private func transcactionViewModel(for transaction: Transaction) -> TransactionViewModel {
-        let annotation = annotations[transaction.id] ?? TransactionAnnotation()
+        let annotation = data[transaction.id] ?? TransactionAnnotation()
         
         if let transaction = transaction as? OnChainTransaction {
-            return OnChainTransactionViewModel(onChainTransaction: transaction, annotation: annotation)
+            return OnChainTransactionViewModel(onChainTransaction: transaction, annotation: annotation, aliasStore: aliasStore)
         } else if let transaction = transaction as? LightningPayment {
             return LightningPaymentViewModel(lightningPayment: transaction, annotation: annotation)
         } else if let transaction = transaction as? LightningInvoice {

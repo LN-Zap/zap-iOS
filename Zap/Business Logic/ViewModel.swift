@@ -16,7 +16,9 @@ final class ViewModel: NSObject {
     let info: Wallet
     let balance: Balance
     let channels: Channels
-    private let transactionStore = TransactionStore()
+    private let transactionStore: TransactionStore
+    
+    let aliasStore: ChannelAliasStore
     
     // Transactions
     private let onChainTransactions = Observable<[Transaction]>([])
@@ -36,7 +38,9 @@ final class ViewModel: NSObject {
         info = Wallet(api: api)
         balance = Balance(api: api)
         channels = Channels(api: api)
-            
+        aliasStore = ChannelAliasStore(api: api)
+        transactionStore = TransactionStore(aliasStore: aliasStore)
+        
         super.init()
 
         channelTransactionAnnotationUpdater = ChannelTransactionAnnotationUpdater(viewModel: self, transactionStore: transactionStore)
@@ -100,11 +104,7 @@ final class ViewModel: NSObject {
     func addInvoice(amount: Satoshi, memo: String?, callback: @escaping (Result<String>) -> Void) {
         api.addInvoice(amount: amount, memo: memo, callback: callback)
     }
-    
-    func nodeInfo(pubKey: String, callback: @escaping (Result<NodeInfo>) -> Void) {
-        api.nodeInfo(pubKey: pubKey, callback: callback)
-    }
-    
+        
     // TODO: refactor - move this somewhere else
     
     func hideTransaction(_ transactionViewModel: TransactionViewModel) {

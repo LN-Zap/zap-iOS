@@ -19,15 +19,9 @@ final class ChannelViewModel {
         
         name = Observable(channel.remotePubKey)
         state = Observable(channel.state)
-        
-        viewModel.nodeInfo(pubKey: channel.remotePubKey) { [name] result in
-            guard
-                let nodeInfo = result.value,
-                let alias = nodeInfo.node.alias,
-                alias != ""
-                else { return }
-            
-            name.value = alias
+
+        viewModel.aliasStore.alias(for: channel.remotePubKey) { [name] in
+            name.value = $0
         }
     }
 }
