@@ -25,6 +25,10 @@
                                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                                         <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                     </view>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="4l3-5A-SjA">
+                                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                                        <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    </view>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="zfZ-6Q-UHf">
                                         <rect key="frame" x="0.0" y="603" width="375" height="64"/>
                                         <subviews>
@@ -57,11 +61,15 @@
                                     <constraint firstAttribute="trailing" secondItem="zfZ-6Q-UHf" secondAttribute="trailing" id="GkY-FR-3DV"/>
                                     <constraint firstAttribute="trailing" secondItem="suT-TO-7hY" secondAttribute="trailing" id="HXl-fN-yRc"/>
                                     <constraint firstItem="nON-Ym-xdN" firstAttribute="centerX" secondItem="Eno-d1-u3x" secondAttribute="centerX" id="I43-Qz-L1e"/>
+                                    <constraint firstItem="4l3-5A-SjA" firstAttribute="trailing" secondItem="suT-TO-7hY" secondAttribute="trailing" id="LCu-GF-N04"/>
                                     <constraint firstAttribute="bottom" secondItem="suT-TO-7hY" secondAttribute="bottom" id="LIR-ej-8rU"/>
                                     <constraint firstItem="nON-Ym-xdN" firstAttribute="centerY" secondItem="Eno-d1-u3x" secondAttribute="centerY" id="LfQ-yt-OWi"/>
                                     <constraint firstItem="zfZ-6Q-UHf" firstAttribute="leading" secondItem="Eno-d1-u3x" secondAttribute="leading" id="NTx-jv-FdO"/>
                                     <constraint firstItem="suT-TO-7hY" firstAttribute="top" secondItem="Eno-d1-u3x" secondAttribute="top" id="T24-Sh-sJ2"/>
+                                    <constraint firstItem="4l3-5A-SjA" firstAttribute="top" secondItem="suT-TO-7hY" secondAttribute="top" id="kHp-X5-XYH"/>
                                     <constraint firstItem="zfZ-6Q-UHf" firstAttribute="bottom" secondItem="suT-TO-7hY" secondAttribute="bottom" id="q3F-QG-SRu"/>
+                                    <constraint firstItem="4l3-5A-SjA" firstAttribute="leading" secondItem="suT-TO-7hY" secondAttribute="leading" id="z1I-3T-dob"/>
+                                    <constraint firstItem="4l3-5A-SjA" firstAttribute="bottom" secondItem="suT-TO-7hY" secondAttribute="bottom" id="zaT-Pg-6fb"/>
                                 </constraints>
                             </view>
                             <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="V7t-mB-fri">
@@ -99,6 +107,7 @@
                         <outlet property="pasteButtonContainer" destination="zfZ-6Q-UHf" id="aph-Op-oIz"/>
                         <outlet property="paymentTopConstraint" destination="rfk-aS-4Bp" id="Wfc-xR-nNX"/>
                         <outlet property="scannerView" destination="suT-TO-7hY" id="Zqd-BQ-io7"/>
+                        <outlet property="scannerViewOverlay" destination="4l3-5A-SjA" id="m6Y-sr-3op"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="aN4-Z4-gco" userLabel="First Responder" sceneMemberID="firstResponder"/>

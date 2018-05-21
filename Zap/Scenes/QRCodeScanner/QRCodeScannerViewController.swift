@@ -30,6 +30,7 @@ class QRCodeScannerViewController: UIViewController, ContainerViewController {
             }
         }
     }
+    @IBOutlet private weak var scannerViewOverlay: UIView!
 
     var strategy: QRCodeScannerStrategy? {
         didSet {
@@ -53,6 +54,8 @@ class QRCodeScannerViewController: UIViewController, ContainerViewController {
         navigationController?.navigationBar.backgroundColor = .clear
         navigationController?.navigationBar.shadowImage = UIImage()
         navigationController?.navigationBar.setBackgroundImage(UIImage(), for: .default)
+        
+        self.scannerViewOverlay.alpha = 0
     }
     
     private func displayViewControllerForAddress(type: AddressType, address: String) {
@@ -70,6 +73,7 @@ class QRCodeScannerViewController: UIViewController, ContainerViewController {
         }
         
         UIView.animate(withDuration: 0.25) {
+            self.scannerViewOverlay.alpha = 0.8
             self.pasteButtonContainer.isHidden = true
             self.paymentTopConstraint.isActive = false
             self.view.layoutIfNeeded()
