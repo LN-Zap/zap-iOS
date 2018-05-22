@@ -148,6 +148,8 @@
 		AD33B5EF20A8463600E32BD9 /* SendOnChainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD33B5EE20A8463600E32BD9 /* SendOnChainViewController.swift */; };
 		AD38EB30207DF233007DF14D /* UIButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD38EB2F207DF233007DF14D /* UIButton.swift */; };
 		AD38EB32207DFB59007DF14D /* SegmentButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD38EB31207DFB59007DF14D /* SegmentButton.swift */; };
+		AD3CF97720B4028400D78A54 /* SelectWalletCreationMethodTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD3CF97520B4028400D78A54 /* SelectWalletCreationMethodTableViewCell.swift */; };
+		AD3CF97820B4028400D78A54 /* SelectWalletCreationMethodTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = AD3CF97620B4028400D78A54 /* SelectWalletCreationMethodTableViewCell.xib */; };
 		AD5FA001207CCB8B000E9493 /* RequestViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD5FA000207CCB8B000E9493 /* RequestViewController.swift */; };
 		AD5FA003207D0D03000E9493 /* BitcoinURI.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD5FA002207D0D02000E9493 /* BitcoinURI.swift */; };
 		AD5FA005207D0E70000E9493 /* BitcoinURITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD5FA004207D0E70000E9493 /* BitcoinURITests.swift */; };
@@ -434,6 +436,8 @@
 		AD33B5EE20A8463600E32BD9 /* SendOnChainViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SendOnChainViewController.swift; sourceTree = "<group>"; };
 		AD38EB2F207DF233007DF14D /* UIButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIButton.swift; sourceTree = "<group>"; };
 		AD38EB31207DFB59007DF14D /* SegmentButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SegmentButton.swift; sourceTree = "<group>"; };
+		AD3CF97520B4028400D78A54 /* SelectWalletCreationMethodTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectWalletCreationMethodTableViewCell.swift; sourceTree = "<group>"; };
+		AD3CF97620B4028400D78A54 /* SelectWalletCreationMethodTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SelectWalletCreationMethodTableViewCell.xib; sourceTree = "<group>"; };
 		AD5FA000207CCB8B000E9493 /* RequestViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RequestViewController.swift; sourceTree = "<group>"; };
 		AD5FA002207D0D02000E9493 /* BitcoinURI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BitcoinURI.swift; sourceTree = "<group>"; };
 		AD5FA004207D0E70000E9493 /* BitcoinURITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BitcoinURITests.swift; sourceTree = "<group>"; };
@@ -1071,6 +1075,16 @@
 			path = DetailCell;
 			sourceTree = "<group>";
 		};
+		AD3CF97920B4028D00D78A54 /* Select Wallet Creation Method */ = {
+			isa = PBXGroup;
+			children = (
+				AD3CF97520B4028400D78A54 /* SelectWalletCreationMethodTableViewCell.swift */,
+				AD3CF97620B4028400D78A54 /* SelectWalletCreationMethodTableViewCell.xib */,
+				ADCE01BC207B598C00CA72E8 /* SelectWalletCreationMethodViewController.swift */,
+			);
+			path = "Select Wallet Creation Method";
+			sourceTree = "<group>";
+		};
 		AD680A9D20B07AC60018986B /* ConnectRemoteNode */ = {
 			isa = PBXGroup;
 			children = (
@@ -1211,11 +1225,11 @@
 		ADCE01B9207B57DA00CA72E8 /* CreateWallet */ = {
 			isa = PBXGroup;
 			children = (
-				ADF79374208F88CA0086B2CA /* Recover Wallet */,
+				ADCE01BA207B57ED00CA72E8 /* CreateWallet.storyboard */,
 				ADF79373208F87E60086B2CA /* Confirm Mnemonic */,
 				AD79BB38208CD9970027AAC9 /* Generate Mnemonic */,
-				ADCE01BA207B57ED00CA72E8 /* CreateWallet.storyboard */,
-				ADCE01BC207B598C00CA72E8 /* SelectWalletCreationMethodViewController.swift */,
+				ADF79374208F88CA0086B2CA /* Recover Wallet */,
+				AD3CF97920B4028D00D78A54 /* Select Wallet Creation Method */,
 			);
 			path = CreateWallet;
 			sourceTree = "<group>";
@@ -1456,6 +1470,7 @@
 				AD680A9F20B07AD90018986B /* ConnectRemoteNode.storyboard in Resources */,
 				ADBA12022090CD11001F7700 /* KeyPadView.xib in Resources */,
 				A0A05A082013CF960007D1C9 /* Root.storyboard in Resources */,
+				AD3CF97820B4028400D78A54 /* SelectWalletCreationMethodTableViewCell.xib in Resources */,
 				AD9E244120A3680C0014F9FA /* Debug.storyboard in Resources */,
 				A01009412014D4810001EF94 /* Toast.xib in Resources */,
 				AD99C9F5209085B20061C565 /* OpenChannel.storyboard in Resources */,
@@ -1710,6 +1725,7 @@
 				ADA6D2C720AC2406009398A5 /* Channels.swift in Sources */,
 				ADD6D80520B09770008BE461 /* RemoteNodeCertificates.swift in Sources */,
 				A0A05A5C20149F720007D1C9 /* TransactionListViewController.swift in Sources */,
+				AD3CF97720B4028400D78A54 /* SelectWalletCreationMethodTableViewCell.swift in Sources */,
 				A0A05A032013CF960007D1C9 /* AppDelegate.swift in Sources */,
 				ADBA120620930C94001F7700 /* UIViewController.swift in Sources */,
 				A0919145203B1CF400FA525A /* GroupedTableViewController.swift in Sources */,

@@ -13,7 +13,7 @@
         <!--Connect Remote Node View Controller-->
         <scene sceneID="dVF-wI-kSZ">
             <objects>
-                <viewController id="mlm-OI-MXW" customClass="ConnectRemoteNodeViewController" customModule="Zap" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="ConnectRemoteNodeViewController" id="mlm-OI-MXW" customClass="ConnectRemoteNodeViewController" customModule="Zap" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="ZVc-8H-ohS">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -129,7 +129,7 @@
                                 </connections>
                             </button>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="qr-code-overlay" translatesAutoresizingMaskIntoConstraints="NO" id="oBs-iW-c92">
-                                <rect key="frame" x="32" y="188.5" width="310" height="310"/>
+                                <rect key="frame" x="94" y="250.5" width="186" height="186"/>
                             </imageView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -156,6 +156,6 @@
         </scene>
     </scenes>
     <resources>
-        <image name="qr-code-overlay" width="310" height="310"/>
+        <image name="qr-code-overlay" width="186" height="186"/>
     </resources>
 </document>
