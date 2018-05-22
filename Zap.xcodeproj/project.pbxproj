@@ -747,7 +747,6 @@
 			isa = PBXGroup;
 			children = (
 				A0376B74201CD61B00F1FBEF /* NumericKeyPad.storyboard */,
-				A0E2690C202CC4E30069E83C /* AuthenticationViewModel.swift */,
 				A0F9AEE0206E3D8200E93DCA /* InputNumberFormatter.swift */,
 				A0376B76201CD67700F1FBEF /* PinViewController.swift */,
 				ADF79365208E000C0086B2CA /* SetupPinViewController.swift */,
@@ -848,6 +847,7 @@
 			isa = PBXGroup;
 			children = (
 				ADA6D2BE20AB215D009398A5 /* Persistence */,
+				A0E2690C202CC4E30069E83C /* AuthenticationViewModel.swift */,
 				ADA6D2C420AC1DDE009398A5 /* Balance.swift */,
 				ADA6D2C620AC2406009398A5 /* Channels.swift */,
 				ADD9DCDC20B453D000AEFC5C /* LndConnection.swift */,

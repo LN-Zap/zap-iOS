@@ -10,18 +10,20 @@ import Foundation
 import KeychainAccess
 
 final class AuthenticationViewModel {
-    static let instance = AuthenticationViewModel()
+    static let shared = AuthenticationViewModel()
 
     private let keychain = Keychain(service: "com.jackmallers.zap")
     
     var pin: String? {
         get { return keychain["pin"] }
-        set { keychain["pin"] = pin }
+        set { keychain["pin"] = newValue }
+    }
+    
+    var didSetupPin: Bool {
+        return keychain["pin"] != nil
     }
     
     let authenticated = Observable(false)
     
-    private init() {
-        keychain["pin"] = "00000"
-    }
+    private init() {}
 }

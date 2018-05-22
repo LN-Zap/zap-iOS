@@ -24,7 +24,7 @@ final class SetupPinViewModel {
     private var currentPin: String?
     
     init() {
-        topLabelText = Observable("Choose a Pin. bitcoin bitcoin bitcoin bitcoin.")
+        topLabelText = Observable("Choose a pin.")
     }
     
     func updateCurrentPin(_ pin: String) -> Bool {
@@ -41,13 +41,16 @@ final class SetupPinViewModel {
         
         if pin.count == firstPin?.count {
             if pin == firstPin {
-                state.value = .completed
+                AuthenticationViewModel.shared.pin = pin
+                AuthenticationViewModel.shared.authenticated.value = true
+
+                state.value = .completed                
             } else {
                 firstPin = nil
                 currentPin = nil
                 pinCharacterCount.value = 0
                 pinAtiveCount.value = 0
-                topLabelText.value = "Pins didn't match. try again."
+                topLabelText.value = "The pins didn't match. Please try again."
                 state.value = .reset
                 return false
             }
@@ -59,6 +62,6 @@ final class SetupPinViewModel {
     func doneButtonTapped() {
         firstPin = currentPin
         doneButtonEnabled.value = false
-        topLabelText.value = "Validate Pin. bitcoin bitcoin bitcoin bitcoin."
+        topLabelText.value = "Enter the pin again to validate."
     }
 }

@@ -27,10 +27,11 @@ final class ConnectRemoteNodeSettingsItem: SubtitleSettingsItem {
 }
 
 final class RemoveRemoteNodeSettingsItem: SettingsItem {
-    let title = "Remove Remote Node Connection"
+    let title = "Remove Remote Node & Pin"
     
     func didSelectItem(from fromViewController: UIViewController) {
         RemoteNodeConfiguration.delete()
+        AuthenticationViewModel.shared.pin = nil
         fatalError("Crash to restart.")
     }
 }

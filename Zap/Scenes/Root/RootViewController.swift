@@ -46,7 +46,7 @@ class RootViewController: UIViewController, ContainerViewController {
     
     private var pinViewController: PinViewController {
         let pinViewController = Storyboard.numericKeyPad.initial(viewController: PinViewController.self)
-        pinViewController.viewModel = viewModel
+        pinViewController.delegate = self
         return pinViewController
     }
     
@@ -57,10 +57,14 @@ class RootViewController: UIViewController, ContainerViewController {
         case .none:
             setInitialViewController(setupViewController)
         default:
-            viewModel = LndConnection.current.viewModel
-            if let viewModel = viewModel {
-                setInitialViewController(loadingViewController)
-                startWalletUI(with: viewModel)
+            if AuthenticationViewModel.shared.pin != nil {
+                setInitialViewController(pinViewController)
+            } else {
+                viewModel = LndConnection.current.viewModel
+                if let viewModel = viewModel {
+                    setInitialViewController(loadingViewController)
+                    startWalletUI(with: viewModel)
+                }
             }
         }
     }
@@ -110,13 +114,35 @@ class RootViewController: UIViewController, ContainerViewController {
         
         DebugButton.instance.setup()
     }
-}
-
-extension RootViewController: SetupWalletDelegate {
-    func didSetupWallet() {
+    
+    private func connect() {
         guard let viewModel = LndConnection.current.viewModel else { return }
         self.viewModel = viewModel
         
         startWalletUI(with: viewModel)
+    }
+}
+
+extension RootViewController: SetupWalletDelegate {
+    func didSetupWallet() {
+        if AuthenticationViewModel.shared.didSetupPin {
+            connect()
+        } else {
+            let setupPinViewController = Storyboard.numericKeyPad.instantiate(viewController: SetupPinViewController.self)
+            setupPinViewController.delegate = self
+            switchToViewController(setupPinViewController)
+        }
+    }
+}
+
+extension RootViewController: SetupPinDelegate {
+    func didSetupPin() {
+        connect()
+    }
+}
+
+extension RootViewController: PinViewDelegate {
+    func didAuthenticate() {
+        connect()
     }
 }

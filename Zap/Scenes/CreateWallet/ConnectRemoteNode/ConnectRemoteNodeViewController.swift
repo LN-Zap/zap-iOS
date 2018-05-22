@@ -58,7 +58,7 @@ class ConnectRemoteNodeViewController: UIViewController {
         
         let configuration = RemoteNodeConfiguration.load()
         certificates = configuration?.remoteNodeCertificates
-        urlTextField.text = configuration?.url.absoluteString
+        urlTextField.text = configuration?.url.absoluteString ?? "192.168.1.3:10011" // TODO: remove fallback
     }
     
     private func updateCertificatesUI() {

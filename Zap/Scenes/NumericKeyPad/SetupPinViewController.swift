@@ -9,17 +9,19 @@ import Bond
 import ReactiveKit
 import UIKit
 
+protocol SetupPinDelegate: class {
+    func didSetupPin()
+}
+
 class SetupPinViewController: UIViewController {
 
     @IBOutlet private weak var doneButton: UIButton!
     @IBOutlet private weak var topLabel: UILabel!
     @IBOutlet private weak var pinStackView: PinView!
-    @IBOutlet private weak var pinStackViewWidthConstraint: NSLayoutConstraint!
     @IBOutlet private weak var keyPadView: KeyPadView!
     
     private let setupPinViewModel = SetupPinViewModel()
-    
-    var viewModel: ViewModel?
+    weak var delegate: SetupPinDelegate?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -40,8 +42,9 @@ class SetupPinViewController: UIViewController {
                 case .reset:
                     self?.keyPadView?.numberString = ""
                 case .completed:
-                    self?.dismiss(animated: true, completion: nil)
-                    self?.viewModel?.info.walletState.value = .connecting
+                    print("completed")
+                    UINotificationFeedbackGenerator().notificationOccurred(.success)
+                    self?.delegate?.didSetupPin()
                 }
             },
          combineLatest(setupPinViewModel.pinCharacterCount, setupPinViewModel.pinAtiveCount)
@@ -72,18 +75,9 @@ class SetupPinViewController: UIViewController {
     }
     
     private func updatePinView(characterCount: Int, activeCount: Int) {
-        pinStackView.characterCount = characterCount
-        pinStackView.activeCount = activeCount
-        view?.layoutIfNeeded()
-        
-        if characterCount <= 1 {
-            pinStackViewWidthConstraint.constant = pinStackView.bounds.height
-        } else {
-            pinStackViewWidthConstraint.constant = pinStackView.bounds.height * CGFloat(characterCount) + (CGFloat(characterCount) - 1) * 20
-        }
-        
-        UIView.animate(withDuration: 0.2) { [view] in
-            view?.layoutIfNeeded()
-        }
+//        UIView.animate(withDuration: 0.2) { [pinStackView] in
+        pinStackView?.characterCount = characterCount
+        pinStackView?.activeCount = activeCount
+//        }
     }
 }

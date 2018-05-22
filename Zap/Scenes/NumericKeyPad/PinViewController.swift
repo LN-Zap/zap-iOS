@@ -7,17 +7,21 @@
 
 import UIKit
 
+protocol PinViewDelegate: class {
+    func didAuthenticate()
+}
+
 class PinViewController: UIViewController {
     
     @IBOutlet private weak var pinStackView: PinView!
     @IBOutlet private weak var keyPadView: KeyPadView!
     
-    var viewModel: ViewModel?
+    weak var delegate: PinViewDelegate?
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        let viewModel = AuthenticationViewModel.instance
+        let viewModel = AuthenticationViewModel.shared
         
         pinStackView.characterCount = viewModel.pin?.count ?? 0
         
@@ -34,26 +38,22 @@ class PinViewController: UIViewController {
         keyPadView.customPointButtonAction = { [weak self] in
             BiometricAuthentication.authenticate {
                 guard $0.error == nil else { return }
-                self?.setAuthenticated()
+                self?.delegate?.didAuthenticate()
             }
         }
         
         keyPadView.handler = { [weak self] number in
             self?.updatePinView(for: number)
             
-            if AuthenticationViewModel.instance.pin == number {
-                self?.setAuthenticated()
+            if AuthenticationViewModel.shared.pin == number {
+                self?.delegate?.didAuthenticate()
             }
             
-            return (AuthenticationViewModel.instance.pin?.count ?? Int.max) >= number.count
+            return (AuthenticationViewModel.shared.pin?.count ?? Int.max) >= number.count
         }
     }
     
     private func updatePinView(for string: String) {
         pinStackView.activeCount = string.count
-    }
-    
-    private func setAuthenticated() {
-        viewModel?.info.isLocked = false
     }
 }

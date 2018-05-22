@@ -27,11 +27,10 @@
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="KKn-a3-ds0">
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="352"/>
                                 <subviews>
-                                    <stackView opaque="NO" contentMode="scaleToFill" distribution="equalSpacing" translatesAutoresizingMaskIntoConstraints="NO" id="l6a-vs-Gmm" customClass="PinView" customModule="Zap" customModuleProvider="target">
+                                    <stackView opaque="NO" contentMode="scaleToFill" placeholderIntrinsicWidth="210" placeholderIntrinsicHeight="14" distribution="equalSpacing" spacing="25" translatesAutoresizingMaskIntoConstraints="NO" id="l6a-vs-Gmm" customClass="PinView" customModule="Zap" customModuleProvider="target">
                                         <rect key="frame" x="82" y="194" width="210" height="14"/>
                                         <color key="backgroundColor" white="0.75" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <constraints>
-                                            <constraint firstAttribute="width" constant="210" id="OMb-wm-wyV"/>
                                             <constraint firstAttribute="height" constant="14" id="VEn-31-X69"/>
                                         </constraints>
                                     </stackView>
@@ -82,11 +81,10 @@
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="YZN-GB-LBs">
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="255"/>
                                 <subviews>
-                                    <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="ey3-Yd-fVq" customClass="PinView" customModule="Zap" customModuleProvider="target">
+                                    <stackView opaque="NO" contentMode="scaleToFill" placeholderIntrinsicWidth="14" placeholderIntrinsicHeight="14" distribution="fillEqually" spacing="25" translatesAutoresizingMaskIntoConstraints="NO" id="ey3-Yd-fVq" customClass="PinView" customModule="Zap" customModuleProvider="target">
                                         <rect key="frame" x="180" y="145.5" width="14" height="14"/>
                                         <color key="backgroundColor" white="0.75" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <constraints>
-                                            <constraint firstAttribute="width" priority="250" constant="14" id="EZs-cE-mQ8"/>
                                             <constraint firstAttribute="height" constant="14" id="nYc-og-kq7"/>
                                         </constraints>
                                     </stackView>
@@ -124,8 +122,8 @@
                                     <constraint firstItem="I2x-up-50U" firstAttribute="top" secondItem="4MT-2g-2Tv" secondAttribute="top" id="xmf-Jp-WRG"/>
                                 </constraints>
                             </view>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="IqV-Z7-G85">
-                                <rect key="frame" x="20" y="40" width="42" height="21"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="IqV-Z7-G85">
+                                <rect key="frame" x="166.5" y="40" width="42" height="20.5"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
@@ -135,12 +133,12 @@
                         <constraints>
                             <constraint firstItem="YZN-GB-LBs" firstAttribute="top" secondItem="cr8-0a-y34" secondAttribute="top" id="1Sx-S1-LlB"/>
                             <constraint firstItem="RqX-V0-gds" firstAttribute="trailing" secondItem="huB-bK-k8S" secondAttribute="trailing" constant="15" id="75U-aZ-4f3"/>
-                            <constraint firstItem="IqV-Z7-G85" firstAttribute="leading" secondItem="RqX-V0-gds" secondAttribute="leading" constant="20" id="LGN-PZ-39S"/>
                             <constraint firstItem="huB-bK-k8S" firstAttribute="leading" secondItem="RqX-V0-gds" secondAttribute="leading" constant="15" id="MWe-0q-K9t"/>
                             <constraint firstItem="4MT-2g-2Tv" firstAttribute="leading" secondItem="RqX-V0-gds" secondAttribute="leading" id="PEd-BW-VMZ"/>
                             <constraint firstItem="4MT-2g-2Tv" firstAttribute="trailing" secondItem="RqX-V0-gds" secondAttribute="trailing" id="RTm-Le-ZIs"/>
                             <constraint firstItem="4MT-2g-2Tv" firstAttribute="bottom" secondItem="cr8-0a-y34" secondAttribute="bottom" id="U87-iV-G5i"/>
                             <constraint firstItem="RqX-V0-gds" firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="IqV-Z7-G85" secondAttribute="trailing" constant="20" id="UhN-bE-iX5"/>
+                            <constraint firstItem="IqV-Z7-G85" firstAttribute="centerX" secondItem="RqX-V0-gds" secondAttribute="centerX" id="bZh-zf-5SR"/>
                             <constraint firstItem="YZN-GB-LBs" firstAttribute="trailing" secondItem="RqX-V0-gds" secondAttribute="trailing" id="c8K-aw-e0C"/>
                             <constraint firstItem="YZN-GB-LBs" firstAttribute="leading" secondItem="RqX-V0-gds" secondAttribute="leading" id="db3-yK-ATO"/>
                             <constraint firstItem="IqV-Z7-G85" firstAttribute="top" secondItem="RqX-V0-gds" secondAttribute="top" constant="20" id="oZK-sq-1fL"/>
@@ -153,7 +151,6 @@
                         <outlet property="doneButton" destination="I2x-up-50U" id="Xef-R6-CUb"/>
                         <outlet property="keyPadView" destination="huB-bK-k8S" id="2Pj-lj-6Tq"/>
                         <outlet property="pinStackView" destination="ey3-Yd-fVq" id="8fn-fo-tpV"/>
-                        <outlet property="pinStackViewWidthConstraint" destination="EZs-cE-mQ8" id="vnv-Vb-3Pk"/>
                         <outlet property="topLabel" destination="IqV-Z7-G85" id="Bz1-IR-w3A"/>
                     </connections>
                 </viewController>

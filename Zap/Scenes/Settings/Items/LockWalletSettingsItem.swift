@@ -11,6 +11,6 @@ struct LockWalletSettingsItem: SettingsItem {
     let title = "scene.settings.item.lock_wallet".localized
     
     func didSelectItem(from fromViewController: UIViewController) {
-        AuthenticationViewModel.instance.authenticated.value = false
+        AuthenticationViewModel.shared.authenticated.value = false
     }
 }
