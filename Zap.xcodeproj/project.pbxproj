@@ -229,6 +229,7 @@
 		ADD6D80320B09260008BE461 /* RemoteNodeCertificatesScannerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADD6D80220B09260008BE461 /* RemoteNodeCertificatesScannerViewController.swift */; };
 		ADD6D80520B09770008BE461 /* RemoteNodeCertificates.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADD6D80420B09770008BE461 /* RemoteNodeCertificates.swift */; };
 		ADD6D80720B15603008BE461 /* RemoteNodeConfiguration.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADD6D80620B15603008BE461 /* RemoteNodeConfiguration.swift */; };
+		ADD9DCDD20B453D000AEFC5C /* LndConnection.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADD9DCDC20B453D000AEFC5C /* LndConnection.swift */; };
 		ADF79364208DCB630086B2CA /* PinView.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADF79363208DCB630086B2CA /* PinView.swift */; };
 		ADF79366208E000C0086B2CA /* SetupPinViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADF79365208E000C0086B2CA /* SetupPinViewController.swift */; };
 		ADF79368208E09D00086B2CA /* SetupPinViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADF79367208E09D00086B2CA /* SetupPinViewModel.swift */; };
@@ -518,6 +519,7 @@
 		ADD6D80220B09260008BE461 /* RemoteNodeCertificatesScannerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RemoteNodeCertificatesScannerViewController.swift; sourceTree = "<group>"; };
 		ADD6D80420B09770008BE461 /* RemoteNodeCertificates.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RemoteNodeCertificates.swift; sourceTree = "<group>"; };
 		ADD6D80620B15603008BE461 /* RemoteNodeConfiguration.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RemoteNodeConfiguration.swift; sourceTree = "<group>"; };
+		ADD9DCDC20B453D000AEFC5C /* LndConnection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LndConnection.swift; sourceTree = "<group>"; };
 		ADF79363208DCB630086B2CA /* PinView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PinView.swift; sourceTree = "<group>"; };
 		ADF79365208E000C0086B2CA /* SetupPinViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetupPinViewController.swift; sourceTree = "<group>"; };
 		ADF79367208E09D00086B2CA /* SetupPinViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetupPinViewModel.swift; sourceTree = "<group>"; };
@@ -637,7 +639,6 @@
 				A01009532015FA330001EF94 /* Abstract */,
 				A02C9FBE202EFFEF009821B1 /* ChannelDetail */,
 				A0DDC0702018C6D800AEFF94 /* ChannelList */,
-				AD680A9D20B07AC60018986B /* ConnectRemoteNode */,
 				ADCE01B9207B57DA00CA72E8 /* CreateWallet */,
 				AD9E243C20A367E00014F9FA /* Debug */,
 				ADCE01CA207B966200CA72E8 /* Loading */,
@@ -847,11 +848,12 @@
 			isa = PBXGroup;
 			children = (
 				ADA6D2BE20AB215D009398A5 /* Persistence */,
-				A0D3C9792060070D0015C5D7 /* WalletViewModel.swift */,
-				A07C1035203DE3E6006C7FE8 /* ViewModel.swift */,
-				ADA6D2C220AC1BD2009398A5 /* Wallet.swift */,
 				ADA6D2C420AC1DDE009398A5 /* Balance.swift */,
 				ADA6D2C620AC2406009398A5 /* Channels.swift */,
+				ADD9DCDC20B453D000AEFC5C /* LndConnection.swift */,
+				A07C1035203DE3E6006C7FE8 /* ViewModel.swift */,
+				ADA6D2C220AC1BD2009398A5 /* Wallet.swift */,
+				A0D3C9792060070D0015C5D7 /* WalletViewModel.swift */,
 			);
 			path = "Business Logic";
 			sourceTree = "<group>";
@@ -1230,6 +1232,7 @@
 			children = (
 				ADCE01BA207B57ED00CA72E8 /* CreateWallet.storyboard */,
 				ADF79373208F87E60086B2CA /* Confirm Mnemonic */,
+				AD680A9D20B07AC60018986B /* ConnectRemoteNode */,
 				AD79BB38208CD9970027AAC9 /* Generate Mnemonic */,
 				ADF79374208F88CA0086B2CA /* Recover Wallet */,
 				AD3CF97920B4028D00D78A54 /* Select Wallet Creation Method */,
@@ -1708,6 +1711,7 @@
 				AD6FFC9920A9C46B00B57330 /* LightningInvoiceTableViewCell.swift in Sources */,
 				ADC29C0C20A9B0A0008B2DC2 /* LightningInvoice.swift in Sources */,
 				ADBB36292080B2AE005662B4 /* TestingTemplates.swift in Sources */,
+				ADD9DCDD20B453D000AEFC5C /* LndConnection.swift in Sources */,
 				A0C2EAC4206F9539003AE56E /* ExchangeUpdaterJob.swift in Sources */,
 				A02C9FC4202F617D009821B1 /* LocalAuthentication.swift in Sources */,
 				A06660FC202E080400EE32FA /* UpdatePinSettingsItem.swift in Sources */,

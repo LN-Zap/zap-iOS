@@ -36,6 +36,6 @@ final class ConfirmMnemonicViewModel {
     }
     
     func didVerifyMnemonic() {
-        Wallet.didCreateWallet = true
+        fatalError("not implemented")
     }
 }

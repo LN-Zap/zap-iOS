@@ -29,6 +29,7 @@ class RootViewController: UIViewController, ContainerViewController {
         let navigationController = Storyboard.createWallet.initial(viewController: UINavigationController.self)
         if let setupWalletViewController = navigationController.topViewController as? SelectWalletCreationMethodViewController {
             setupWalletViewController.viewModel = viewModel
+            setupWalletViewController.delegate = self
         }
         return navigationController
     }
@@ -52,42 +53,19 @@ class RootViewController: UIViewController, ContainerViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        let viewController = Storyboard.connectRemoteNode.initial(viewController: ConnectRemoteNodeViewController.self)
-        viewController.connectCallback = { [weak self] in
-            self?.startWalletUI()
+        switch LndConnection.current {
+        case .none:
+            setInitialViewController(setupViewController)
+        default:
+            viewModel = LndConnection.current.viewModel
+            if let viewModel = viewModel {
+                setInitialViewController(loadingViewController)
+                startWalletUI(with: viewModel)
+            }
         }
-        setInitialViewController(viewController)
     }
     
-    func setupViewModel() {
-        if let remoteNodeConfiguration = RemoteNodeConfiguration.load() {
-            // RPC
-            let lndRPCServer = LndRpcServer(configuration: remoteNodeConfiguration)
-            viewModel = ViewModel(api: LightningRPC(lnd: lndRPCServer))
-        } else {
-            // LOCAL
-            Lnd.start()
-            viewModel = ViewModel(api: LightningStream())
-        }
-        // DEBUG
-//        ViewModel(api: LightningMock(
-//            info: Info.template,
-//            transactions: [
-//                OnChainTransaction.template,
-//                OnChainTransaction.template
-//            ],
-//            payments: [
-//                Payment.template,
-//                Payment.template
-//            ]
-//        ))
-    }
-    
-    func startWalletUI() {
-        setupViewModel()
-        
-        setInitialViewController(loadingViewController)
-        
+    func startWalletUI(with viewModel: ViewModel) {
         NotificationCenter.default.reactive.notification(name: .lndError)
             .observeNext { notification in
                 guard let message = notification.userInfo?["message"] as? String else { return }
@@ -99,7 +77,7 @@ class RootViewController: UIViewController, ContainerViewController {
             }
             .dispose(in: reactive.bag)
         
-        viewModel?.info.walletState
+        viewModel.info.walletState
             .distinct()
             .observeNext { [weak self] state in
                 var viewController: UIViewController?
@@ -112,8 +90,6 @@ class RootViewController: UIViewController, ContainerViewController {
                 case .noInternet:
                     viewController = self?.loadingViewController
                     (viewController as? LoadingViewController)?.message = LndError.noInternet.localizedDescription
-                case .noWallet:
-                    viewController = self?.setupViewController
                 case .syncing:
                     viewController = self?.syncViewController
                 case .ready:
@@ -133,5 +109,14 @@ class RootViewController: UIViewController, ContainerViewController {
         super.viewDidAppear(animated)
         
         DebugButton.instance.setup()
+    }
+}
+
+extension RootViewController: SetupWalletDelegate {
+    func didSetupWallet() {
+        guard let viewModel = LndConnection.current.viewModel else { return }
+        self.viewModel = viewModel
+        
+        startWalletUI(with: viewModel)
     }
 }

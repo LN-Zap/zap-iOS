@@ -32,4 +32,9 @@ struct RemoteNodeConfiguration: Codable {
             else { return nil }
         return try? JSONDecoder().decode(RemoteNodeConfiguration.self, from: data)
     }
+    
+    static func delete() {
+        guard let url = RemoteNodeConfiguration.url else { return }
+        try? FileManager.default.removeItem(at: url)
+    }
 }

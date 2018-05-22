@@ -24,6 +24,8 @@ class ConnectRemoteNodeViewController: UIViewController {
         }
     }
     
+    weak var delegate: SetupWalletDelegate?
+    
     var testServer: LndRpcServer?
     var connectCallback: (() -> Void)?
     
@@ -43,7 +45,7 @@ class ConnectRemoteNodeViewController: UIViewController {
         Style.button.apply(to: scanCertificatesButton, pasteCertificatesButton)
         
         urlTextField.attributedPlaceholder =
-            NSAttributedString(string: "192.168.1.3:10011", attributes: [.foregroundColor: UIColor.lightGray])
+            NSAttributedString(string: "192.168.1.3:10009", attributes: [.foregroundColor: UIColor.lightGray])
         urlTextField.delegate = self
         
         scanCertificatesButton.setTitle("scan", for: .normal)
@@ -56,12 +58,13 @@ class ConnectRemoteNodeViewController: UIViewController {
         
         let configuration = RemoteNodeConfiguration.load()
         certificates = configuration?.remoteNodeCertificates
-        urlTextField.text = configuration?.url.absoluteString ?? "192.168.1.3:10011"
+        urlTextField.text = configuration?.url.absoluteString
     }
     
     private func updateCertificatesUI() {
-        let certString: String = certificates?.certificate ?? "no cert"
-        let macString: String = certificates?.macaron.base64EncodedString() ?? "no mac"
+        guard let certificates = certificates else { return }
+        let certString: String = certificates.certificate
+        let macString: String = certificates.macaron.base64EncodedString()
         
         textView.text = "\(certString)\n\n\(macString)"
     }
@@ -112,7 +115,7 @@ class ConnectRemoteNodeViewController: UIViewController {
     
     private func connect() {
         DispatchQueue.main.async { [weak self] in
-            self?.connectCallback?()
+            self?.delegate?.didSetupWallet()
         }
     }
 }

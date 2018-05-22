@@ -17,6 +17,7 @@ final class SettingsViewController: GroupedTableViewController {
             ]),
             Section(title: "scene.settings.section.security".localized, rows: [
                 ConnectRemoteNodeSettingsItem(),
+                RemoveRemoteNodeSettingsItem(),
                 UpdatePinSettingsItem(),
                 TouchIDSettingItem(),
                 PaperKeySettingsItem()

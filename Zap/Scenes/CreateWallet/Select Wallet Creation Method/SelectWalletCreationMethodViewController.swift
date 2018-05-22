@@ -7,9 +7,14 @@
 
 import UIKit
 
+protocol SetupWalletDelegate: class {
+    func didSetupWallet()
+}
+
 class SelectWalletCreationMethodViewController: UIViewController {
     
     var viewModel: ViewModel?
+    weak var delegate: SetupWalletDelegate?
     
     @IBOutlet private weak var tableView: UITableView!
     
@@ -45,11 +50,11 @@ class SelectWalletCreationMethodViewController: UIViewController {
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        guard
+        if
             let viewModel = viewModel,
-            let destination = segue.destination as? MnemonicViewController
-            else { return }
-        destination.mnemonicViewModel = MnemonicViewModel(viewModel: viewModel)
+            let destination = segue.destination as? MnemonicViewController {
+            destination.mnemonicViewModel = MnemonicViewModel(viewModel: viewModel)
+        }
     }
 }
 
@@ -58,6 +63,10 @@ extension SelectWalletCreationMethodViewController: UITableViewDelegate {
         tableView.deselectRow(at: indexPath, animated: true)
         let cellContent = content[indexPath.row]
         let viewController = cellContent.2()
+        
+        if let viewController = viewController as? ConnectRemoteNodeViewController {
+            viewController.delegate = delegate
+        }
         navigationController?.pushViewController(viewController, animated: true)
     }
 }

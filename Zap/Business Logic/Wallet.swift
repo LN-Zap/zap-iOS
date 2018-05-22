@@ -11,7 +11,6 @@ import Foundation
 enum WalletState {
     case locked
     case noInternet
-    case noWallet
     case connecting
     case syncing
     case ready
@@ -31,23 +30,8 @@ final class Wallet {
         }
     }
     
-    static var didCreateWallet: Bool = true
-    //    {
-    //        get {
-    //            return false
-    //            return UserDefaults.Keys.didCreateWallet.get(defaultValue: false)
-    //        }
-    //        set {
-    //            UserDefaults.Keys.didCreateWallet.set(newValue)
-    //        }
-    //    }
-    
     init(api: LightningProtocol) {
-        if Wallet.didCreateWallet {
-            walletState = Observable(.connecting)
-        } else {
-            walletState = Observable(.noWallet)
-        }
+        walletState = Observable(.connecting)
         
         Scheduler.schedule(interval: 120, job: BlockChainHeightJob { [blockChainHeight] height in
             blockChainHeight.value = height
@@ -70,15 +54,11 @@ final class Wallet {
     }
     
     private func updateWalletState(result: Result<Info>?) {
-        if !Wallet.didCreateWallet {
-            walletState.value = .noWallet
-        } else if isLocked {
+        if isLocked {
             walletState.value = .locked
         } else if let result = result {
             if let info = result.value {
-                if !Wallet.didCreateWallet {
-                    walletState.value = .noWallet
-                } else if !info.isSyncedToChain {
+                if !info.isSyncedToChain {
                     walletState.value = .syncing
                 } else {
                     walletState.value = .ready

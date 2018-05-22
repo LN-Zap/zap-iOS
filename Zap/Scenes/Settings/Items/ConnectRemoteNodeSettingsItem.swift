@@ -25,3 +25,12 @@ final class ConnectRemoteNodeSettingsItem: SubtitleSettingsItem {
         fromViewController.navigationController?.pushViewController(connectRemoteNodeViewController, animated: true)
     }
 }
+
+final class RemoveRemoteNodeSettingsItem: SettingsItem {
+    let title = "Remove Remote Node Connection"
+    
+    func didSelectItem(from fromViewController: UIViewController) {
+        RemoteNodeConfiguration.delete()
+        fatalError("Crash to restart.")
+    }
+}
