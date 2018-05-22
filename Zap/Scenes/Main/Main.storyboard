@@ -190,7 +190,7 @@
                                 </constraints>
                             </view>
                         </subviews>
-                        <color key="backgroundColor" red="0.24266844309999999" green="0.70136024750000003" blue="0.60201817710000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="aId-T5-HyY" firstAttribute="bottom" relation="greaterThanOrEqual" secondItem="HmF-EI-3Zy" secondAttribute="bottom" constant="15" id="1A9-a5-4Ow"/>
                             <constraint firstItem="bpd-WA-6zK" firstAttribute="bottom" relation="greaterThanOrEqual" secondItem="HmF-EI-3Zy" secondAttribute="bottom" constant="-5" id="BZO-wt-X8D"/>

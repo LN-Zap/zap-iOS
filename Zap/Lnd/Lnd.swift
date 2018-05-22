@@ -9,15 +9,6 @@ import BTCUtil
 import Foundation
 import Lndmobile
 
-final class LndRpcServer {
-    let service: Lnrpc_LightningService
-    
-    init(configuration: RemoteNodeConfiguration) {
-        service = Lnrpc_LightningServiceClient(address: configuration.url.absoluteString, certificates: configuration.remoteNodeCertificates.certificate, host: nil)
-        service.metadata.add(key: "macaroon", value: configuration.remoteNodeCertificates.macaron.hexString())
-    }
-}
-
 final class Lnd {
     struct Constants {
         static let minChannelSize: Satoshi = 20000

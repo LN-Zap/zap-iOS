@@ -9,12 +9,13 @@ import UIKit
 
 class ConnectRemoteNodeViewController: UIViewController {
     
+    @IBOutlet private weak var urlLabel: UILabel!
     @IBOutlet private weak var urlTextField: UITextField!
     @IBOutlet private weak var zapconnectLabel: UILabel!
     @IBOutlet private weak var scanCertificatesButton: UIButton!
     @IBOutlet private weak var pasteCertificatesButton: UIButton!
     
-    @IBOutlet private weak var connectButton: UIButton!
+    @IBOutlet private weak var connectButton: GradientLoadingButtonView!
     @IBOutlet private weak var textView: UITextView!
     
     private var certificates: RemoteNodeCertificates? {
@@ -23,6 +24,7 @@ class ConnectRemoteNodeViewController: UIViewController {
         }
     }
     
+    var testServer: LndRpcServer?
     var connectCallback: (() -> Void)?
     
     override func viewDidLoad() {
@@ -32,12 +34,13 @@ class ConnectRemoteNodeViewController: UIViewController {
         
         view.backgroundColor = Color.darkBackground
         
-        Style.label.apply(to: zapconnectLabel)
-        zapconnectLabel.textColor = .white
+        Style.label.apply(to: zapconnectLabel, urlLabel) {
+            $0.textColor = .white
+        }
         Style.textField.apply(to: urlTextField) {
             $0.textColor = .white
         }
-        Style.button.apply(to: scanCertificatesButton, pasteCertificatesButton, connectButton)
+        Style.button.apply(to: scanCertificatesButton, pasteCertificatesButton)
         
         urlTextField.attributedPlaceholder =
             NSAttributedString(string: "192.168.1.3:10011", attributes: [.foregroundColor: UIColor.lightGray])
@@ -45,11 +48,11 @@ class ConnectRemoteNodeViewController: UIViewController {
         
         scanCertificatesButton.setTitle("scan", for: .normal)
         pasteCertificatesButton.setTitle("paste", for: .normal)
-        connectButton.setTitle("Connect", for: .normal)
+        connectButton.title = "Connect"
         
         textView.font = UIFont(name: "Courier", size: 12)
         textView.backgroundColor = .clear
-        textView.textColor = .white
+        textView.textColor = .lightGray
         
         let configuration = RemoteNodeConfiguration.load()
         certificates = configuration?.remoteNodeCertificates
@@ -85,9 +88,32 @@ class ConnectRemoteNodeViewController: UIViewController {
             else { return }
     
         let remoteNodeConfiguration = RemoteNodeConfiguration(remoteNodeCertificates: certificates, url: url)
-        
         remoteNodeConfiguration.save()
-        connectCallback?()
+
+        testServer = LndRpcServer(configuration: remoteNodeConfiguration)
+    
+        testServer?.canConnect { [weak self] in
+            print("🖇 can connect to remote server:", $0)
+            
+            if $0 {
+                self?.connect()
+            } else {
+                self?.displayError()
+            }
+        }
+    }
+    
+    private func displayError() {
+        DispatchQueue.main.async { [weak self] in
+            self?.displayError("Could not connect to server.")
+            self?.connectButton.isLoading = false
+        }
+    }
+    
+    private func connect() {
+        DispatchQueue.main.async { [weak self] in
+            self?.connectCallback?()
+        }
     }
 }
 
