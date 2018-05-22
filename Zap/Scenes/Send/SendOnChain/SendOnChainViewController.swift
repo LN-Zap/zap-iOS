@@ -8,6 +8,7 @@
 import UIKit
 
 final class SendOnChainViewController: UIViewController, QRCodeScannerChildViewController {
+    weak var delegate: QRCodeScannerChildDelegate?
     
     @IBOutlet private weak var addressLabel: UILabel!
     @IBOutlet private weak var amountInputView: AmountInputView!
@@ -40,7 +41,7 @@ final class SendOnChainViewController: UIViewController, QRCodeScannerChildViewC
     
     @IBAction private func sendButtonTapped(_ sender: Any) {
         sendOnChainViewModel?.send { [weak self] in
-            self?.dismiss(animated: true, completion: nil)
+            self?.delegate?.dismissSuccessfully()
         }
     }
 }

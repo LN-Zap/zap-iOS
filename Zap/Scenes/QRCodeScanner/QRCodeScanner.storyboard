@@ -54,9 +54,6 @@
                                     <imageView userInteractionEnabled="NO" alpha="0.5" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="qr-code-overlay" translatesAutoresizingMaskIntoConstraints="NO" id="nON-Ym-xdN">
                                         <rect key="frame" x="94.5" y="240.5" width="186" height="186"/>
                                     </imageView>
-                                    <imageView userInteractionEnabled="NO" alpha="0.0" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="qr-success" translatesAutoresizingMaskIntoConstraints="NO" id="E4b-Na-FVs">
-                                        <rect key="frame" x="147" y="293.5" width="80" height="80"/>
-                                    </imageView>
                                 </subviews>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
@@ -69,10 +66,8 @@
                                     <constraint firstItem="nON-Ym-xdN" firstAttribute="centerY" secondItem="Eno-d1-u3x" secondAttribute="centerY" id="LfQ-yt-OWi"/>
                                     <constraint firstItem="zfZ-6Q-UHf" firstAttribute="leading" secondItem="Eno-d1-u3x" secondAttribute="leading" id="NTx-jv-FdO"/>
                                     <constraint firstItem="suT-TO-7hY" firstAttribute="top" secondItem="Eno-d1-u3x" secondAttribute="top" id="T24-Sh-sJ2"/>
-                                    <constraint firstItem="E4b-Na-FVs" firstAttribute="centerY" secondItem="Eno-d1-u3x" secondAttribute="centerY" id="ivY-6a-yob"/>
                                     <constraint firstItem="4l3-5A-SjA" firstAttribute="top" secondItem="suT-TO-7hY" secondAttribute="top" id="kHp-X5-XYH"/>
                                     <constraint firstItem="zfZ-6Q-UHf" firstAttribute="bottom" secondItem="suT-TO-7hY" secondAttribute="bottom" id="q3F-QG-SRu"/>
-                                    <constraint firstItem="E4b-Na-FVs" firstAttribute="centerX" secondItem="Eno-d1-u3x" secondAttribute="centerX" id="tfY-K9-W1n"/>
                                     <constraint firstItem="4l3-5A-SjA" firstAttribute="leading" secondItem="suT-TO-7hY" secondAttribute="leading" id="z1I-3T-dob"/>
                                     <constraint firstItem="4l3-5A-SjA" firstAttribute="bottom" secondItem="suT-TO-7hY" secondAttribute="bottom" id="zaT-Pg-6fb"/>
                                 </constraints>
@@ -83,6 +78,13 @@
                                     <constraint firstAttribute="height" constant="650" id="RVI-Bw-HXy"/>
                                 </constraints>
                             </containerView>
+                            <view alpha="0.0" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="41s-yu-jEG">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            </view>
+                            <imageView userInteractionEnabled="NO" alpha="0.0" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="qr-success" translatesAutoresizingMaskIntoConstraints="NO" id="E4b-Na-FVs">
+                                <rect key="frame" x="147" y="293" width="80" height="80"/>
+                            </imageView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
@@ -91,10 +93,16 @@
                             <constraint firstItem="Eno-d1-u3x" firstAttribute="top" secondItem="aSj-aT-mt0" secondAttribute="top" id="H69-q5-apI"/>
                             <constraint firstAttribute="bottom" secondItem="V7t-mB-fri" secondAttribute="bottom" priority="200" id="Ykw-C6-mMT"/>
                             <constraint firstItem="V7t-mB-fri" firstAttribute="leading" secondItem="wCl-Jb-7G3" secondAttribute="leading" id="aY2-pY-kOY"/>
+                            <constraint firstItem="wCl-Jb-7G3" firstAttribute="trailing" secondItem="41s-yu-jEG" secondAttribute="trailing" id="d87-DD-Aab"/>
+                            <constraint firstItem="41s-yu-jEG" firstAttribute="top" secondItem="aSj-aT-mt0" secondAttribute="top" id="f2F-Cy-vfg"/>
+                            <constraint firstItem="E4b-Na-FVs" firstAttribute="centerY" secondItem="Eno-d1-u3x" secondAttribute="centerY" id="icv-6N-7wO"/>
+                            <constraint firstItem="E4b-Na-FVs" firstAttribute="centerX" secondItem="Eno-d1-u3x" secondAttribute="centerX" id="imA-ov-laF"/>
                             <constraint firstItem="Eno-d1-u3x" firstAttribute="leading" secondItem="wCl-Jb-7G3" secondAttribute="leading" id="kKY-pL-jcW"/>
                             <constraint firstItem="wCl-Jb-7G3" firstAttribute="bottom" relation="greaterThanOrEqual" secondItem="C2T-oe-PmX" secondAttribute="bottom" id="kcA-Ky-MbY"/>
+                            <constraint firstItem="41s-yu-jEG" firstAttribute="leading" secondItem="wCl-Jb-7G3" secondAttribute="leading" id="nBZ-6f-CeC"/>
                             <constraint firstItem="V7t-mB-fri" firstAttribute="top" secondItem="aSj-aT-mt0" secondAttribute="bottom" id="rfk-aS-4Bp"/>
                             <constraint firstItem="Eno-d1-u3x" firstAttribute="trailing" secondItem="wCl-Jb-7G3" secondAttribute="trailing" id="vLb-xT-uFR"/>
+                            <constraint firstAttribute="bottom" secondItem="41s-yu-jEG" secondAttribute="bottom" id="zi3-2F-BWh"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="wCl-Jb-7G3"/>
                     </view>
@@ -115,6 +123,7 @@
                         <outlet property="qrCodeSuccessImageView" destination="E4b-Na-FVs" id="D5v-jz-ZFc"/>
                         <outlet property="scannerView" destination="suT-TO-7hY" id="Zqd-BQ-io7"/>
                         <outlet property="scannerViewOverlay" destination="4l3-5A-SjA" id="m6Y-sr-3op"/>
+                        <outlet property="successView" destination="41s-yu-jEG" id="hma-Px-2A3"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="aN4-Z4-gco" userLabel="First Responder" sceneMemberID="firstResponder"/>

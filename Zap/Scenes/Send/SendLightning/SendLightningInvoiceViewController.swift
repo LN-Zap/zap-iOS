@@ -8,6 +8,8 @@
 import UIKit
 
 class SendLightningInvoiceViewController: UIViewController, QRCodeScannerChildViewController {
+    weak var delegate: QRCodeScannerChildDelegate?
+    
     @IBOutlet private weak var paymentRequestView: UIStackView!
     @IBOutlet private weak var memoLabel: UILabel!
     @IBOutlet private weak var amountLabel: UILabel!
@@ -74,7 +76,7 @@ class SendLightningInvoiceViewController: UIViewController, QRCodeScannerChildVi
     
     @IBAction private func sendButtonTapped(_ sender: Any) {
         sendViewModel?.send { [weak self] _ in
-            self?.dismiss(animated: true, completion: nil)
+            self?.delegate?.dismissSuccessfully()
         }
     }
 }

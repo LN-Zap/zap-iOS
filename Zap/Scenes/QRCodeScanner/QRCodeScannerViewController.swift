@@ -8,8 +8,13 @@
 import BTCUtil
 import UIKit
 
-protocol QRCodeScannerChildViewController {
+protocol QRCodeScannerChildViewController: class {
+    var delegate: QRCodeScannerChildDelegate? { get set }
     var contentHeight: CGFloat { get }
+}
+
+protocol QRCodeScannerChildDelegate: class {
+    func dismissSuccessfully()
 }
 
 class QRCodeScannerViewController: UIViewController, ContainerViewController {
@@ -18,6 +23,7 @@ class QRCodeScannerViewController: UIViewController, ContainerViewController {
     // swiftlint:disable:next private_outlet
     @IBOutlet weak var container: UIView?
     
+    @IBOutlet private weak var successView: UIView!
     @IBOutlet private weak var qrCodeOverlayImageView: UIImageView!
     @IBOutlet private weak var qrCodeSuccessImageView: UIImageView!
     
@@ -58,7 +64,9 @@ class QRCodeScannerViewController: UIViewController, ContainerViewController {
         navigationController?.navigationBar.shadowImage = UIImage()
         navigationController?.navigationBar.setBackgroundImage(UIImage(), for: .default)
         
-        self.scannerViewOverlay.alpha = 0
+        scannerViewOverlay.alpha = 0
+        successView.backgroundColor = Color.green
+        qrCodeSuccessImageView.tintColor = Color.green
     }
     
     private func displayViewControllerForAddress(type: AddressType, address: String) {
@@ -71,6 +79,7 @@ class QRCodeScannerViewController: UIViewController, ContainerViewController {
         
         if let viewController = viewController as? QRCodeScannerChildViewController {
             containerViewHeightConstraint?.constant = viewController.contentHeight
+            viewController.delegate = self
         } else {
             fatalError("no vc height provided")
         }
@@ -99,5 +108,20 @@ class QRCodeScannerViewController: UIViewController, ContainerViewController {
     
     @IBAction private func cancelButtonTapped(_ sender: Any) {
         dismiss(animated: true, completion: nil)
+    }
+}
+
+extension QRCodeScannerViewController: QRCodeScannerChildDelegate {
+    func dismissSuccessfully() {
+        DispatchQueue.main.async {
+            UINotificationFeedbackGenerator().notificationOccurred(.success)
+            
+            UIView.animate(withDuration: 0.25, animations: { [weak self] in
+                self?.successView.alpha = 1
+                self?.qrCodeSuccessImageView.tintColor = .white
+                }, completion: { [weak self] _ in
+                    self?.dismiss(animated: true, completion: nil)
+            })
+        }
     }
 }

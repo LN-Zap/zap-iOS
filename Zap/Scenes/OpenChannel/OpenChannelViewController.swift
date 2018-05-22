@@ -8,6 +8,8 @@
 import UIKit
 
 final class OpenChannelViewController: UIViewController, QRCodeScannerChildViewController {
+    weak var delegate: QRCodeScannerChildDelegate?
+    
     @IBOutlet private weak var helpLabel: UILabel!
     @IBOutlet private weak var helpImageView: UIImageView!
     @IBOutlet private weak var amountInputView: AmountInputView!
@@ -40,7 +42,7 @@ final class OpenChannelViewController: UIViewController, QRCodeScannerChildViewC
     
     @IBAction private func openChannel(_ sender: Any) {
         openChannelViewModel?.openChannel { [weak self] in
-            self?.dismiss(animated: true, completion: nil)
+            self?.delegate?.dismissSuccessfully()
         }
     }    
 }
