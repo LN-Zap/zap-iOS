@@ -94,7 +94,7 @@ final class MainViewController: UIViewController, ContainerViewController {
             transactionsButton.setTitleColor(.white, for: .normal)
         }
         
-        UIView.animate(withDuration: 0.18, delay: 0, usingSpringWithDamping: 0.7, initialSpringVelocity: 0.2, options: [], animations: {
+        UIView.animate(withDuration: 0.4, delay: 0, usingSpringWithDamping: 0.7, initialSpringVelocity: 0.2, options: [], animations: {
             self.selecteButtonLeadingConstraint.priority = UILayoutPriority(rawValue: UILayoutPriority.RawValue(selection == .network ? 700 : 800))
             self.view.layoutIfNeeded()
         }, completion: nil)
