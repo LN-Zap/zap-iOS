@@ -86,7 +86,7 @@ final class LightningRPC: LightningProtocol {
             return
         }
         _ = try? rpc.closeChannel(request, completion: { _ in
-            fatalError("not implemented")
+            // TODO
         })
     }
     

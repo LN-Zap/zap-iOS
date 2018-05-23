@@ -7,28 +7,34 @@
 
 import UIKit
 
-class OnChainTransactionTableViewCell: BondTableViewCell {
+class TransactionTableViewCell: BondTableViewCell {
     
     @IBOutlet private weak var titleLabel: UILabel!
     @IBOutlet private weak var primaryAmountLabel: UILabel!
     @IBOutlet private weak var secondaryAmountLabel: UILabel!
     @IBOutlet private weak var timeLabel: UILabel!
+    @IBOutlet private weak var iconImageView: UIImageView!
     
-    var onChainTransaction: OnChainTransactionViewModel? {
+    var transaction: TransactionViewModel? {
         didSet {
-            guard let transaction = onChainTransaction else { return }
+            guard let transaction = transaction else { return }
             
-            [transaction.displayText.bind(to: titleLabel.reactive.text),
+            [transaction.icon.map({ $0.image }).bind(to: iconImageView.reactive.image),
+             transaction.displayText.bind(to: titleLabel.reactive.text),
              transaction.amount.bind(to: primaryAmountLabel.reactive.text, currency: Settings.primaryCurrency),
-             transaction.amount.bind(to: secondaryAmountLabel.reactive.text, currency: Settings.secondaryCurrency)]
+             transaction.amount
+                .map { $0.absoluteValue() }
+                .bind(to: secondaryAmountLabel.reactive.text, currency: Settings.secondaryCurrency)]
                 .dispose(in: onReuseBag)
             
-            timeLabel.text = transaction.time
+            timeLabel.text = DateFormatter.localizedString(from: transaction.date, dateStyle: .none, timeStyle: .short)
         }
     }
     
     override func awakeFromNib() {
         super.awakeFromNib()
+        
+        iconImageView.tintColor = Color.text
         
         Style.label.apply(to: primaryAmountLabel, titleLabel) {
             $0.font = $0.font.withSize(14)

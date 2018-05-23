@@ -9,6 +9,16 @@ import Foundation
 
 extension NSDecimalNumber: Comparable {}
 
+public extension NSDecimalNumber {
+    public func absoluteValue() -> NSDecimalNumber {
+        if self < 0 {
+            return self * -1
+        } else {
+            return self
+        }
+    }
+}
+
 public func == (lhs: NSDecimalNumber, rhs: NSDecimalNumber) -> Bool {
     return lhs.compare(rhs) == .orderedSame
 }
@@ -40,12 +50,4 @@ public func / (lhs: NSDecimalNumber, rhs: NSDecimalNumber) -> NSDecimalNumber {
 
 public func ^ (lhs: NSDecimalNumber, rhs: Int) -> NSDecimalNumber {
     return lhs.raising(toPower: rhs)
-}
-
-public func abs(_ num: NSDecimalNumber) -> NSDecimalNumber {
-    if num < 0 {
-        return num * -1
-    } else {
-        return num
-    }
 }

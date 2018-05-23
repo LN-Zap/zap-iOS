@@ -10,6 +10,8 @@ import BTCUtil
 import Foundation
 
 final class LightningPaymentViewModel: NSObject, TransactionViewModel {
+    let icon = Observable<TransactionIcon>(.lightningPayment)
+    
     let detailViewControllerTitle = "Payment Detail"
     
     var id: String {
@@ -23,19 +25,17 @@ final class LightningPaymentViewModel: NSObject, TransactionViewModel {
     let annotation: Observable<TransactionAnnotation>
     let lightningPayment: LightningPayment
     
-    let displayText: String
-    let amount: Satoshi
-    let time: String
+    let displayText: Observable<String>
+    let amount: Observable<Satoshi>
     
-    let data = MutableObservableArray<DetailCellType>([])
+    let detailCells = MutableObservableArray<DetailCellType>([])
     
     init(lightningPayment: LightningPayment, annotation: TransactionAnnotation) {
         self.annotation = Observable(annotation)
         self.lightningPayment = lightningPayment
         
-        displayText = lightningPayment.paymentHash
-        amount = lightningPayment.amount
-        time = DateFormatter.localizedString(from: lightningPayment.date, dateStyle: .none, timeStyle: .short)
+        displayText = Observable(lightningPayment.paymentHash)
+        amount = Observable(lightningPayment.amount)
         
         super.init()
         
@@ -44,15 +44,15 @@ final class LightningPaymentViewModel: NSObject, TransactionViewModel {
     
     private func setupInfoArray() {
         if let amountString = Settings.primaryCurrency.value.format(satoshis: lightningPayment.amount) {
-            data.append(.info(DetailTableViewCell.Info(title: "Amount", data: amountString)))
+            detailCells.append(.info(DetailTableViewCell.Info(title: "Amount", data: amountString)))
         }
         
         if let feeString = Settings.primaryCurrency.value.format(satoshis: lightningPayment.fees) {
-            data.append(.info(DetailTableViewCell.Info(title: "Fee", data: feeString)))
+            detailCells.append(.info(DetailTableViewCell.Info(title: "Fee", data: feeString)))
         }
         
         let dateString = DateFormatter.localizedString(from: lightningPayment.date, dateStyle: .medium, timeStyle: .short)
-        data.append(.info(DetailTableViewCell.Info(title: "Date", data: dateString)))
+        detailCells.append(.info(DetailTableViewCell.Info(title: "Date", data: dateString)))
         
         let observableMemo = Observable<String?>(nil)
         annotation
@@ -60,6 +60,6 @@ final class LightningPaymentViewModel: NSObject, TransactionViewModel {
                 observableMemo.value = $0.customMemo
             }
             .dispose(in: reactive.bag)
-        data.append(.memo(DetailMemoTableViewCell.Info(memo: observableMemo, placeholder: lightningPayment.paymentHash)))
+        detailCells.append(.memo(DetailMemoTableViewCell.Info(memo: observableMemo, placeholder: lightningPayment.paymentHash)))
     }
 }

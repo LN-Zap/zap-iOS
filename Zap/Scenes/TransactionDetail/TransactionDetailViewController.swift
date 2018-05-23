@@ -40,7 +40,7 @@ class TransactionDetailViewController: UIViewController {
         tableView.tableFooterView = UIView()
         tableView.allowsSelection = false
         
-        transactionViewModel?.data
+        transactionViewModel?.detailCells
             .bind(to: tableView) { data, indexPath, tableView -> UITableViewCell in
                 switch data[indexPath.row] {
                 case .info(let info):

@@ -58,8 +58,8 @@
 		A070D966202B39A3000A8274 /* QRCodeDetailViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A070D965202B39A3000A8274 /* QRCodeDetailViewModel.swift */; };
 		A070D968202B5163000A8274 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = A070D967202B5163000A8274 /* Localizable.strings */; };
 		A070D96B202B569E000A8274 /* RequestViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A070D96A202B569E000A8274 /* RequestViewModel.swift */; };
-		A0731FE12014A22B00C55E45 /* OnChainTransactionTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0731FDF2014A22B00C55E45 /* OnChainTransactionTableViewCell.swift */; };
-		A0731FE22014A22B00C55E45 /* OnChainTransactionTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = A0731FE02014A22B00C55E45 /* OnChainTransactionTableViewCell.xib */; };
+		A0731FE12014A22B00C55E45 /* TransactionTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0731FDF2014A22B00C55E45 /* TransactionTableViewCell.swift */; };
+		A0731FE22014A22B00C55E45 /* TransactionTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = A0731FE02014A22B00C55E45 /* TransactionTableViewCell.xib */; };
 		A0731FE62014AC0800C55E45 /* ContainerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0731FE52014AC0800C55E45 /* ContainerViewController.swift */; };
 		A0731FE92014B27900C55E45 /* ChannelListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0731FE82014B27900C55E45 /* ChannelListViewController.swift */; };
 		A07C1033203DD5AF006C7FE8 /* Appearance.swift in Sources */ = {isa = PBXBuildFile; fileRef = A07C1032203DD5AF006C7FE8 /* Appearance.swift */; };
@@ -99,8 +99,6 @@
 		A0A96B84201748C200788808 /* UILabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0A96B83201748C200788808 /* UILabel.swift */; };
 		A0A96B8620174BAC00788808 /* CloseStatusUpdate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0A96B8520174BAC00788808 /* CloseStatusUpdate.swift */; };
 		A0A96B88201769F100788808 /* String.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0A96B87201769F100788808 /* String.swift */; };
-		A0A96B8F2017908600788808 /* LightningPaymentTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0A96B8D2017908600788808 /* LightningPaymentTableViewCell.swift */; };
-		A0A96B902017908600788808 /* LightningPaymentTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = A0A96B8E2017908600788808 /* LightningPaymentTableViewCell.xib */; };
 		A0B91A84202628EF009AD2D3 /* Settings.bundle in Resources */ = {isa = PBXBuildFile; fileRef = A0B91A83202628EF009AD2D3 /* Settings.bundle */; };
 		A0BD44DA206FB47300BF27A3 /* CurrencyTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0BD44D9206FB47300BF27A3 /* CurrencyTests.swift */; };
 		A0BD44DC206FCAD900BF27A3 /* SignalProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0BD44DB206FCAD900BF27A3 /* SignalProtocol.swift */; };
@@ -159,8 +157,6 @@
 		AD680A9C20B077980018986B /* ConnectRemoteNodeSettingsItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD680A9B20B077980018986B /* ConnectRemoteNodeSettingsItem.swift */; };
 		AD680A9F20B07AD90018986B /* ConnectRemoteNode.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AD680A9E20B07AD90018986B /* ConnectRemoteNode.storyboard */; };
 		AD680AA120B07AE90018986B /* ConnectRemoteNodeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD680AA020B07AE90018986B /* ConnectRemoteNodeViewController.swift */; };
-		AD6FFC9920A9C46B00B57330 /* LightningInvoiceTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD6FFC9720A9C46B00B57330 /* LightningInvoiceTableViewCell.swift */; };
-		AD6FFC9A20A9C46B00B57330 /* LightningInvoiceTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = AD6FFC9820A9C46B00B57330 /* LightningInvoiceTableViewCell.xib */; };
 		AD6FFC9C20A9D15E00B57330 /* OnChainTransactionViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD6FFC9B20A9D15E00B57330 /* OnChainTransactionViewModel.swift */; };
 		AD6FFC9E20A9D19400B57330 /* LightningPaymentViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD6FFC9D20A9D19400B57330 /* LightningPaymentViewModel.swift */; };
 		AD6FFCA020A9D19E00B57330 /* LightningInvoiceViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD6FFC9F20A9D19E00B57330 /* LightningInvoiceViewModel.swift */; };
@@ -330,8 +326,8 @@
 		A070D965202B39A3000A8274 /* QRCodeDetailViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QRCodeDetailViewModel.swift; sourceTree = "<group>"; };
 		A070D967202B5163000A8274 /* Localizable.strings */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; path = Localizable.strings; sourceTree = "<group>"; };
 		A070D96A202B569E000A8274 /* RequestViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RequestViewModel.swift; sourceTree = "<group>"; };
-		A0731FDF2014A22B00C55E45 /* OnChainTransactionTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnChainTransactionTableViewCell.swift; sourceTree = "<group>"; };
-		A0731FE02014A22B00C55E45 /* OnChainTransactionTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = OnChainTransactionTableViewCell.xib; sourceTree = "<group>"; };
+		A0731FDF2014A22B00C55E45 /* TransactionTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransactionTableViewCell.swift; sourceTree = "<group>"; };
+		A0731FE02014A22B00C55E45 /* TransactionTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TransactionTableViewCell.xib; sourceTree = "<group>"; };
 		A0731FE52014AC0800C55E45 /* ContainerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContainerViewController.swift; sourceTree = "<group>"; };
 		A0731FE82014B27900C55E45 /* ChannelListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChannelListViewController.swift; sourceTree = "<group>"; };
 		A0733CCA20471EF30005643A /* Bolt11.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Bolt11.swift; sourceTree = "<group>"; };
@@ -387,8 +383,6 @@
 		A0A96B83201748C200788808 /* UILabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UILabel.swift; sourceTree = "<group>"; };
 		A0A96B8520174BAC00788808 /* CloseStatusUpdate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CloseStatusUpdate.swift; sourceTree = "<group>"; };
 		A0A96B87201769F100788808 /* String.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = String.swift; sourceTree = "<group>"; };
-		A0A96B8D2017908600788808 /* LightningPaymentTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LightningPaymentTableViewCell.swift; sourceTree = "<group>"; };
-		A0A96B8E2017908600788808 /* LightningPaymentTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = LightningPaymentTableViewCell.xib; sourceTree = "<group>"; };
 		A0A96B932017965100788808 /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		A0A96B9620179CA700788808 /* FiatCurrency.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FiatCurrency.swift; sourceTree = "<group>"; };
 		A0B91A83202628EF009AD2D3 /* Settings.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = Settings.bundle; sourceTree = "<group>"; };
@@ -449,8 +443,6 @@
 		AD680A9B20B077980018986B /* ConnectRemoteNodeSettingsItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConnectRemoteNodeSettingsItem.swift; sourceTree = "<group>"; };
 		AD680A9E20B07AD90018986B /* ConnectRemoteNode.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = ConnectRemoteNode.storyboard; sourceTree = "<group>"; };
 		AD680AA020B07AE90018986B /* ConnectRemoteNodeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConnectRemoteNodeViewController.swift; sourceTree = "<group>"; };
-		AD6FFC9720A9C46B00B57330 /* LightningInvoiceTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LightningInvoiceTableViewCell.swift; sourceTree = "<group>"; };
-		AD6FFC9820A9C46B00B57330 /* LightningInvoiceTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = LightningInvoiceTableViewCell.xib; sourceTree = "<group>"; };
 		AD6FFC9B20A9D15E00B57330 /* OnChainTransactionViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnChainTransactionViewModel.swift; sourceTree = "<group>"; };
 		AD6FFC9D20A9D19400B57330 /* LightningPaymentViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LightningPaymentViewModel.swift; sourceTree = "<group>"; };
 		AD6FFC9F20A9D19E00B57330 /* LightningInvoiceViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LightningInvoiceViewModel.swift; sourceTree = "<group>"; };
@@ -1199,12 +1191,8 @@
 		ADA6D2C820AC2EFC009398A5 /* Cells */ = {
 			isa = PBXGroup;
 			children = (
-				AD6FFC9720A9C46B00B57330 /* LightningInvoiceTableViewCell.swift */,
-				AD6FFC9820A9C46B00B57330 /* LightningInvoiceTableViewCell.xib */,
-				A0A96B8D2017908600788808 /* LightningPaymentTableViewCell.swift */,
-				A0A96B8E2017908600788808 /* LightningPaymentTableViewCell.xib */,
-				A0731FDF2014A22B00C55E45 /* OnChainTransactionTableViewCell.swift */,
-				A0731FE02014A22B00C55E45 /* OnChainTransactionTableViewCell.xib */,
+				A0731FDF2014A22B00C55E45 /* TransactionTableViewCell.swift */,
+				A0731FE02014A22B00C55E45 /* TransactionTableViewCell.xib */,
 			);
 			path = Cells;
 			sourceTree = "<group>";
@@ -1455,12 +1443,11 @@
 			files = (
 				A0A05A0D2013CF960007D1C9 /* LaunchScreen.storyboard in Resources */,
 				A0B91A84202628EF009AD2D3 /* Settings.bundle in Resources */,
-				A0731FE22014A22B00C55E45 /* OnChainTransactionTableViewCell.xib in Resources */,
+				A0731FE22014A22B00C55E45 /* TransactionTableViewCell.xib in Resources */,
 				A0919154203C27C300FA525A /* Roboto-Bold.ttf in Resources */,
 				AD19F05C20AF00B4008090CB /* DetailTableViewCell.xib in Resources */,
 				A0A05A2D2013EDFB0007D1C9 /* QRCodeDetail.storyboard in Resources */,
 				A070D968202B5163000A8274 /* Localizable.strings in Resources */,
-				A0A96B902017908600788808 /* LightningPaymentTableViewCell.xib in Resources */,
 				AD680A9A20B06B840018986B /* DetailTimerTableViewCell.xib in Resources */,
 				A0A05A0A2013CF960007D1C9 /* Assets.xcassets in Resources */,
 				ADACC77220B02AAD00F86D63 /* DetailQRCodeTableViewCell.xib in Resources */,
@@ -1483,7 +1470,6 @@
 				AD99C9ED209072710061C565 /* QRCodeScanner.storyboard in Resources */,
 				AD19F06420AF1AB8008090CB /* DetailMemoTableViewCell.xib in Resources */,
 				A0605F88202C963800EA903C /* SectionHeaderView.xib in Resources */,
-				AD6FFC9A20A9C46B00B57330 /* LightningInvoiceTableViewCell.xib in Resources */,
 				A024B85720161586002B8897 /* Send.storyboard in Resources */,
 				AD99C9F92090C2600061C565 /* AmountInputView.xib in Resources */,
 				A024B85120160F93002B8897 /* ChannelTableViewCell.xib in Resources */,
@@ -1708,7 +1694,6 @@
 				A0C2EABB206F8B02003AE56E /* FiatCurrency.swift in Sources */,
 				AD19F05E20AF01A7008090CB /* DetailCellType.swift in Sources */,
 				AD77464E2076162300EC596B /* Network+Localizable.swift in Sources */,
-				AD6FFC9920A9C46B00B57330 /* LightningInvoiceTableViewCell.swift in Sources */,
 				ADC29C0C20A9B0A0008B2DC2 /* LightningInvoice.swift in Sources */,
 				ADBB36292080B2AE005662B4 /* TestingTemplates.swift in Sources */,
 				ADD9DCDD20B453D000AEFC5C /* LndConnection.swift in Sources */,
@@ -1765,7 +1750,7 @@
 				A0E2690D202CC4E30069E83C /* AuthenticationViewModel.swift in Sources */,
 				AD19F06320AF1AB8008090CB /* DetailMemoTableViewCell.swift in Sources */,
 				A0C2EAC2206F8D37003AE56E /* Currency.swift in Sources */,
-				A0731FE12014A22B00C55E45 /* OnChainTransactionTableViewCell.swift in Sources */,
+				A0731FE12014A22B00C55E45 /* TransactionTableViewCell.swift in Sources */,
 				A01009392014BE460001EF94 /* Channel.swift in Sources */,
 				A0D3C97A2060070D0015C5D7 /* WalletViewModel.swift in Sources */,
 				ADBB362D2080B755005662B4 /* AddressView.swift in Sources */,
@@ -1774,7 +1759,6 @@
 				A0919143203B152100FA525A /* UserDefaults.swift in Sources */,
 				A0D3C96A205D55570015C5D7 /* WalletUnlocker.swift in Sources */,
 				A0919156203C2CB600FA525A /* Style.swift in Sources */,
-				A0A96B8F2017908600788808 /* LightningPaymentTableViewCell.swift in Sources */,
 				A03F03602028C73F00F32279 /* SendLightningInvoiceViewModel.swift in Sources */,
 				A02C9FBD202EE9BE009821B1 /* OpenChannelViewModel.swift in Sources */,
 				A0A96B8620174BAC00788808 /* CloseStatusUpdate.swift in Sources */,

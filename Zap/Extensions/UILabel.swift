@@ -40,7 +40,7 @@ extension UILabel {
             result.append(NSAttributedString(string: "- ", attributes: [NSAttributedStringKey.foregroundColor: Color.red]))
         }
         
-        let string = abs(amount).format(unit: .bit) + " " + BitcoinUnit.bit.localized
+        let string = amount.absoluteValue().format(unit: .bit) + " " + BitcoinUnit.bit.localized
         
         result.append(NSAttributedString(string: string))
         

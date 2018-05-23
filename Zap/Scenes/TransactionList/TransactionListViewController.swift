@@ -15,16 +15,16 @@ final class TransactionBond: TableViewBinder<Observable2DArray<String, Transacti
         switch transaction {
             
         case .onChainTransaction(let viewModel):
-            let cell: OnChainTransactionTableViewCell = tableView.dequeueCellForIndexPath(indexPath)
-            cell.onChainTransaction = viewModel
+            let cell: TransactionTableViewCell = tableView.dequeueCellForIndexPath(indexPath)
+            cell.transaction = viewModel
             return cell
         case .lightningPayment(let viewModel):
-            let cell: LightningPaymentTableViewCell = tableView.dequeueCellForIndexPath(indexPath)
-            cell.payment = viewModel
+            let cell: TransactionTableViewCell = tableView.dequeueCellForIndexPath(indexPath)
+            cell.transaction = viewModel
             return cell
         case .lightningInvoice(let viewModel):
-            let cell: LightningInvoiceTableViewCell = tableView.dequeueCellForIndexPath(indexPath)
-            cell.invoice = viewModel
+            let cell: TransactionTableViewCell = tableView.dequeueCellForIndexPath(indexPath)
+            cell.transaction = viewModel
             return cell
         }
     }
@@ -55,6 +55,7 @@ class TransactionListViewController: UIViewController {
         
         guard let tableView = tableView else { return }
         
+        searchBar.placeholder = "search"
         searchBar.delegate = self
         searchBar.backgroundImage = UIImage()
         searchBackgroundView.backgroundColor = Color.searchBackground
@@ -63,9 +64,7 @@ class TransactionListViewController: UIViewController {
         emptyStateLabel.text = "0 transactions 🙁"
         
         tableView.rowHeight = 66
-        tableView.registerCell(OnChainTransactionTableViewCell.self)
-        tableView.registerCell(LightningPaymentTableViewCell.self)
-        tableView.registerCell(LightningInvoiceTableViewCell.self)
+        tableView.registerCell(TransactionTableViewCell.self)
         tableView.refreshControl = UIRefreshControl()
         tableView.refreshControl?.addTarget(self, action: #selector(refresh), for: .valueChanged)
         

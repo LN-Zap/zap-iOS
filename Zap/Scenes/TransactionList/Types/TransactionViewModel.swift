@@ -6,12 +6,46 @@
 //
 
 import Bond
+import BTCUtil
 import Foundation
+
+enum TransactionIcon {
+    case onChain
+    case lightningPayment
+    case settledInvoice
+    case unsettledInvoice
+    case expiredInvoice
+    case openChannel
+    case unconfirmed
+    
+    var image: UIImage {
+        switch self {
+        case .onChain:
+            return #imageLiteral(resourceName: "icon_transaction_onchain")
+        case .lightningPayment:
+            return #imageLiteral(resourceName: "icon_transaction_lightning")
+        case .settledInvoice:
+            return #imageLiteral(resourceName: "icon_transaction_invoice")
+        case .unsettledInvoice:
+            return #imageLiteral(resourceName: "icon_transaction_invoice")
+        case .expiredInvoice:
+            return #imageLiteral(resourceName: "icon_transaction_invoice")
+        case .openChannel:
+            return #imageLiteral(resourceName: "icon_transaction_openchannel")
+        case .unconfirmed:
+            return #imageLiteral(resourceName: "icon_transaction_unconfirmed")
+        }
+    }
+}
 
 protocol TransactionViewModel {
     var id: String { get }
     var annotation: Observable<TransactionAnnotation> { get }
     var date: Date { get }
+    var displayText: Observable<String> { get }
+    var amount: Observable<Satoshi> { get }
+    var icon: Observable<TransactionIcon> { get }
+    
     var detailViewControllerTitle: String { get }
-    var data: MutableObservableArray<DetailCellType> { get }
+    var detailCells: MutableObservableArray<DetailCellType> { get }
 }
