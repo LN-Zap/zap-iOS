@@ -23,7 +23,7 @@ class TransactionTableViewCell: BondTableViewCell {
              transaction.displayText.bind(to: titleLabel.reactive.text),
              transaction.amount.bind(to: primaryAmountLabel.reactive.text, currency: Settings.primaryCurrency),
              transaction.amount
-                .map { $0.absoluteValue() }
+                .map { $0?.absoluteValue() }
                 .bind(to: secondaryAmountLabel.reactive.text, currency: Settings.secondaryCurrency)]
                 .dispose(in: onReuseBag)
             

@@ -32,7 +32,7 @@ final class LightningInvoiceViewModel: NSObject, TransactionViewModel {
     let lightningInvoice: LightningInvoice
     
     let displayText: Observable<String>
-    let amount: Observable<Satoshi>
+    let amount: Observable<Satoshi?>
     
     let detailCells = MutableObservableArray<DetailCellType>([])
     
@@ -48,7 +48,11 @@ final class LightningInvoiceViewModel: NSObject, TransactionViewModel {
             displayText = Observable(lightningInvoice.paymentRequest)
         }
         
-        amount = Observable(lightningInvoice.amount)
+        if lightningInvoice.amount > 0 {
+            amount = Observable(lightningInvoice.amount)
+        } else {
+            amount = Observable(nil)
+        }
         
         if lightningInvoice.settled {
             state = Observable(.settled)

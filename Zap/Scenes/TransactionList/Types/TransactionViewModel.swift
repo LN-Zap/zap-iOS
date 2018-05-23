@@ -43,7 +43,7 @@ protocol TransactionViewModel {
     var annotation: Observable<TransactionAnnotation> { get }
     var date: Date { get }
     var displayText: Observable<String> { get }
-    var amount: Observable<Satoshi> { get }
+    var amount: Observable<Satoshi?> { get }
     var icon: Observable<TransactionIcon> { get }
     
     var detailViewControllerTitle: String { get }

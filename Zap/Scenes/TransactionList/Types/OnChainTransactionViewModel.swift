@@ -56,7 +56,7 @@ final class OnChainTransactionViewModel: NSObject, TransactionViewModel {
     let aliasStore: ChannelAliasStore
     
     let displayText: Observable<String>
-    let amount: Observable<Satoshi>
+    let amount: Observable<Satoshi?>
     
     let detailCells = MutableObservableArray<DetailCellType>([])
     

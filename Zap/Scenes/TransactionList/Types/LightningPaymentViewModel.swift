@@ -26,7 +26,7 @@ final class LightningPaymentViewModel: NSObject, TransactionViewModel {
     let lightningPayment: LightningPayment
     
     let displayText: Observable<String>
-    let amount: Observable<Satoshi>
+    let amount: Observable<Satoshi?>
     
     let detailCells = MutableObservableArray<DetailCellType>([])
     
