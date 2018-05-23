@@ -9,6 +9,13 @@ import Bond
 import BTCUtil
 import Foundation
 
+private func displayTextForAnnotation(_ annotation: TransactionAnnotation, lightningPayment: LightningPayment) -> String {
+    if let customMemo = annotation.customMemo {
+        return customMemo
+    }
+    return lightningPayment.paymentHash
+}
+
 final class LightningPaymentViewModel: NSObject, TransactionViewModel {
     let icon = Observable<TransactionIcon>(.lightningPayment)
     
@@ -34,10 +41,16 @@ final class LightningPaymentViewModel: NSObject, TransactionViewModel {
         self.annotation = Observable(annotation)
         self.lightningPayment = lightningPayment
         
-        displayText = Observable(lightningPayment.paymentHash)
+        displayText = Observable(displayTextForAnnotation(annotation, lightningPayment: lightningPayment))
         amount = Observable(lightningPayment.amount)
         
         super.init()
+        
+        self.annotation
+            .observeNext { [displayText] in
+                displayText.value = displayTextForAnnotation($0, lightningPayment: lightningPayment)
+            }
+            .dispose(in: reactive.bag)
         
         setupInfoArray()
     }
