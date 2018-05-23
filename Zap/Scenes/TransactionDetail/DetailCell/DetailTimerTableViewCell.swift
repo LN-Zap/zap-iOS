@@ -35,7 +35,7 @@ class DetailTimerTableViewCell: UITableViewCell {
         super.awakeFromNib()
 
         Style.label.apply(to: titleLabel, timerLabel)
-        titleLabel.font = Font.bold
+        titleLabel.font = UIFont.zap.bold
     }
     
     private func updateTimerLabel() {

@@ -44,7 +44,7 @@ class GroupedTableViewController: UITableViewController {
         if let item = item as? SubtitleSettingsItem {
             cell = UITableViewCell(style: .value1, reuseIdentifier: "Value1SettingsCell")
             if let detailLabel = cell.detailTextLabel {
-                detailLabel.font = Font.light
+                detailLabel.font = UIFont.zap.light
                 item.subtitle
                     .bind(to: detailLabel.reactive.text)
                     .dispose(in: reactive.bag)
@@ -54,7 +54,7 @@ class GroupedTableViewController: UITableViewController {
         }
         
         cell.textLabel?.text = item.title
-        cell.textLabel?.font = Font.light
+        cell.textLabel?.font = UIFont.zap.light
         cell.textLabel?.textColor = .white
         cell.backgroundColor = UIColor.zap.mediumBackground
 

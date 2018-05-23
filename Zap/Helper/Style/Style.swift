@@ -30,16 +30,16 @@ struct UIViewStyle<T: UIView> {
 
 enum Style {
     static let button = UIViewStyle<UIButton> {
-        $0.titleLabel?.font = Font.light
+        $0.titleLabel?.font = UIFont.zap.light
     }
     
     static let label = UIViewStyle<UILabel> {
-        $0.font = Font.light
+        $0.font = UIFont.zap.light
         $0.textColor = UIColor.zap.text
     }
     
     static let textField = UIViewStyle<UITextField> {
         $0.textColor = UIColor.zap.text
-        $0.font = Font.light
+        $0.font = UIFont.zap.light
     }
 }

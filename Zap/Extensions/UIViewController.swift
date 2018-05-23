@@ -20,7 +20,7 @@ extension UIViewController {
         }
         set {
             let newColor = newValue == .light ? UIColor.white : UIColor.zap.text
-            navigationController?.navigationBar.titleTextAttributes = [.font: Font.light.withSize(20), .foregroundColor: newColor]
+            navigationController?.navigationBar.titleTextAttributes = [.font: UIFont.zap.light.withSize(20), .foregroundColor: newColor]
         }
     }
     

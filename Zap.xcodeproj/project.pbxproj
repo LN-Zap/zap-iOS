@@ -72,7 +72,6 @@
 		A091914B203B297D00FA525A /* CurrencySettingsItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = A091914A203B297D00FA525A /* CurrencySettingsItem.swift */; };
 		A091914D203B3BAC00FA525A /* BitcoinUnitSettingsItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = A091914C203B3BAC00FA525A /* BitcoinUnitSettingsItem.swift */; };
 		A091914F203C23C100FA525A /* Roboto-Light.ttf in Resources */ = {isa = PBXBuildFile; fileRef = A091914E203C23C100FA525A /* Roboto-Light.ttf */; };
-		A0919151203C249200FA525A /* Font.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0919150203C249200FA525A /* Font.swift */; };
 		A0919154203C27C300FA525A /* Roboto-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = A0919153203C27C300FA525A /* Roboto-Bold.ttf */; };
 		A0919156203C2CB600FA525A /* Style.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0919155203C2CB600FA525A /* Style.swift */; };
 		A0A05A032013CF960007D1C9 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0A05A022013CF960007D1C9 /* AppDelegate.swift */; };
@@ -225,6 +224,7 @@
 		ADD6D80520B09770008BE461 /* RemoteNodeCertificates.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADD6D80420B09770008BE461 /* RemoteNodeCertificates.swift */; };
 		ADD6D80720B15603008BE461 /* RemoteNodeConfiguration.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADD6D80620B15603008BE461 /* RemoteNodeConfiguration.swift */; };
 		ADD9DCDD20B453D000AEFC5C /* LndConnection.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADD9DCDC20B453D000AEFC5C /* LndConnection.swift */; };
+		ADE4CF1D20B5B2BE007C987A /* UIFont.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADE4CF1C20B5B2BE007C987A /* UIFont.swift */; };
 		ADF79364208DCB630086B2CA /* PinView.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADF79363208DCB630086B2CA /* PinView.swift */; };
 		ADF79366208E000C0086B2CA /* SetupPinViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADF79365208E000C0086B2CA /* SetupPinViewController.swift */; };
 		ADF79368208E09D00086B2CA /* SetupPinViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADF79367208E09D00086B2CA /* SetupPinViewModel.swift */; };
@@ -351,7 +351,6 @@
 		A091914A203B297D00FA525A /* CurrencySettingsItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrencySettingsItem.swift; sourceTree = "<group>"; };
 		A091914C203B3BAC00FA525A /* BitcoinUnitSettingsItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BitcoinUnitSettingsItem.swift; sourceTree = "<group>"; };
 		A091914E203C23C100FA525A /* Roboto-Light.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Roboto-Light.ttf"; sourceTree = "<group>"; };
-		A0919150203C249200FA525A /* Font.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Font.swift; sourceTree = "<group>"; };
 		A0919153203C27C300FA525A /* Roboto-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Roboto-Bold.ttf"; sourceTree = "<group>"; };
 		A0919155203C2CB600FA525A /* Style.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Style.swift; sourceTree = "<group>"; };
 		A0A059FF2013CF960007D1C9 /* Zap.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Zap.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -510,6 +509,7 @@
 		ADD6D80420B09770008BE461 /* RemoteNodeCertificates.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RemoteNodeCertificates.swift; sourceTree = "<group>"; };
 		ADD6D80620B15603008BE461 /* RemoteNodeConfiguration.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RemoteNodeConfiguration.swift; sourceTree = "<group>"; };
 		ADD9DCDC20B453D000AEFC5C /* LndConnection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LndConnection.swift; sourceTree = "<group>"; };
+		ADE4CF1C20B5B2BE007C987A /* UIFont.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIFont.swift; sourceTree = "<group>"; };
 		ADF79363208DCB630086B2CA /* PinView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PinView.swift; sourceTree = "<group>"; };
 		ADF79365208E000C0086B2CA /* SetupPinViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetupPinViewController.swift; sourceTree = "<group>"; };
 		ADF79367208E09D00086B2CA /* SetupPinViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetupPinViewModel.swift; sourceTree = "<group>"; };
@@ -852,7 +852,6 @@
 			isa = PBXGroup;
 			children = (
 				A07C1032203DD5AF006C7FE8 /* Appearance.swift */,
-				A0919150203C249200FA525A /* Font.swift */,
 				A0919155203C2CB600FA525A /* Style.swift */,
 			);
 			path = Style;
@@ -943,6 +942,7 @@
 				AD38EB2F207DF233007DF14D /* UIButton.swift */,
 				ADF7936B208E66FA0086B2CA /* UICollectionView.swift */,
 				A0A05A222013D9BB0007D1C9 /* UIColor.swift */,
+				ADE4CF1C20B5B2BE007C987A /* UIFont.swift */,
 				A0A05A2F2013EFC00007D1C9 /* UIImage.swift */,
 				A0A96B83201748C200788808 /* UILabel.swift */,
 				A0A05A5D2014A0DE0007D1C9 /* UITableView.swift */,
@@ -1665,7 +1665,6 @@
 				AD19F06020AF19A9008090CB /* TransactionDetailViewController.swift in Sources */,
 				ADD6D80720B15603008BE461 /* RemoteNodeConfiguration.swift in Sources */,
 				AD9E244320A375130014F9FA /* DebugButton.swift in Sources */,
-				A0919151203C249200FA525A /* Font.swift in Sources */,
 				A0A05A4D20147B740007D1C9 /* RootViewController.swift in Sources */,
 				A0A05A5720149A0D0007D1C9 /* Settings.swift in Sources */,
 				AD99C9F120907AB30061C565 /* OpenChannelQRCodeScannerStrategy.swift in Sources */,
@@ -1746,6 +1745,7 @@
 				A0E2690D202CC4E30069E83C /* AuthenticationViewModel.swift in Sources */,
 				AD19F06320AF1AB8008090CB /* DetailMemoTableViewCell.swift in Sources */,
 				A0C2EAC2206F8D37003AE56E /* Currency.swift in Sources */,
+				ADE4CF1D20B5B2BE007C987A /* UIFont.swift in Sources */,
 				A0731FE12014A22B00C55E45 /* TransactionTableViewCell.swift in Sources */,
 				A01009392014BE460001EF94 /* Channel.swift in Sources */,
 				A0D3C97A2060070D0015C5D7 /* WalletViewModel.swift in Sources */,

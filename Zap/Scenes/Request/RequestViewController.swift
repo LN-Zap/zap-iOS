@@ -46,9 +46,9 @@ final class RequestViewController: UIViewController {
         gradientLoadingButtonView.title = "Generate Request"
         
         placeholderTextView.text = "Memo (optional)"
-        placeholderTextView.font = Font.light.withSize(14)
+        placeholderTextView.font = UIFont.zap.light.withSize(14)
         placeholderTextView.textColor = UIColor.zap.disabled
-        memoTextView.font = Font.light.withSize(14)
+        memoTextView.font = UIFont.zap.light.withSize(14)
         memoTextView.textColor = UIColor.zap.text
         
         memoTextView.reactive.text

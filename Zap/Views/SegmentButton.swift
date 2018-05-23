@@ -20,7 +20,7 @@ final class SegmentButton: UIButton {
 
         super.init(coder: aDecoder)
 
-        titleLabel?.font = Font.light.withSize(10)
+        titleLabel?.font = UIFont.zap.light.withSize(10)
         
         tintColor = UIColor.zap.disabled
         alignImageAndTitleVertically()

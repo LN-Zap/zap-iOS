@@ -62,7 +62,7 @@ class AmountInputView: UIControl {
         contentView.autoresizingMask = [.flexibleHeight, .flexibleWidth]
         
         amountTextField.textColor = UIColor.zap.text
-        amountTextField.font = Font.light.withSize(36)
+        amountTextField.font = UIFont.zap.light.withSize(36)
         amountTextField.placeholder = "Amount"
         amountTextField.inputView = UIView()
         amountTextField.delegate = self
@@ -70,7 +70,7 @@ class AmountInputView: UIControl {
         
         Style.button.apply(to: swapCurrencyButton)
         swapCurrencyButton.tintColor = UIColor.zap.text
-        swapCurrencyButton.titleLabel?.font = Font.light.withSize(36)
+        swapCurrencyButton.titleLabel?.font = UIFont.zap.light.withSize(36)
         downArrowImageView.tintColor = UIColor.zap.text
         
         Settings.primaryCurrency

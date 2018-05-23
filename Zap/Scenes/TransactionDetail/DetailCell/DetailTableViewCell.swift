@@ -27,6 +27,6 @@ class DetailTableViewCell: UITableViewCell {
         super.awakeFromNib()
 
         Style.label.apply(to: titleLabel, dataLabel)
-        titleLabel.font = Font.bold
+        titleLabel.font = UIFont.zap.bold
     }
 }

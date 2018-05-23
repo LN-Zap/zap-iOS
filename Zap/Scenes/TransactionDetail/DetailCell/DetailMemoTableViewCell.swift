@@ -34,7 +34,7 @@ class DetailMemoTableViewCell: BondTableViewCell {
         
         Style.textField.apply(to: textField)
         Style.label.apply(to: titleLabel) {
-            $0.font = Font.bold
+            $0.font = UIFont.zap.bold
         }
         
         textField.reactive.text

@@ -28,7 +28,7 @@ final class QRCodeDetailViewController: UIViewController {
         Style.button.apply(to: shareButton, copyButton)
         Style.label.apply(to: addressLabel)
         
-        requestMethodLabel.font = Font.light.withSize(10)
+        requestMethodLabel.font = UIFont.zap.light.withSize(10)
         requestMethodLabel.tintColor = UIColor.zap.text
         requestMethodImageView.tintColor = UIColor.zap.text
         
