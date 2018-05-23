@@ -25,7 +25,7 @@ final class Lnd {
     static func start() {
         LndConfiguration.standard.save(at: lndPath)
 
-        guard ProcessInfo.processInfo.environment["IS_RUNNING_TESTS"] != "1" else { return }
+        guard Environment.isRunningTests else { return }
         DispatchQueue.global(qos: .userInteractive).async {
             LndmobileStart(Lnd.lndPath.path, EmptyLndCallback())
         }

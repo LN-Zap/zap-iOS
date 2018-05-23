@@ -225,6 +225,7 @@
 		ADD6D80720B15603008BE461 /* RemoteNodeConfiguration.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADD6D80620B15603008BE461 /* RemoteNodeConfiguration.swift */; };
 		ADD9DCDD20B453D000AEFC5C /* LndConnection.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADD9DCDC20B453D000AEFC5C /* LndConnection.swift */; };
 		ADE4CF1D20B5B2BE007C987A /* UIFont.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADE4CF1C20B5B2BE007C987A /* UIFont.swift */; };
+		ADE4CF1F20B5B6FC007C987A /* Environment.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADE4CF1E20B5B6FC007C987A /* Environment.swift */; };
 		ADF79364208DCB630086B2CA /* PinView.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADF79363208DCB630086B2CA /* PinView.swift */; };
 		ADF79366208E000C0086B2CA /* SetupPinViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADF79365208E000C0086B2CA /* SetupPinViewController.swift */; };
 		ADF79368208E09D00086B2CA /* SetupPinViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADF79367208E09D00086B2CA /* SetupPinViewModel.swift */; };
@@ -510,6 +511,7 @@
 		ADD6D80620B15603008BE461 /* RemoteNodeConfiguration.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RemoteNodeConfiguration.swift; sourceTree = "<group>"; };
 		ADD9DCDC20B453D000AEFC5C /* LndConnection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LndConnection.swift; sourceTree = "<group>"; };
 		ADE4CF1C20B5B2BE007C987A /* UIFont.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIFont.swift; sourceTree = "<group>"; };
+		ADE4CF1E20B5B6FC007C987A /* Environment.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Environment.swift; sourceTree = "<group>"; };
 		ADF79363208DCB630086B2CA /* PinView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PinView.swift; sourceTree = "<group>"; };
 		ADF79365208E000C0086B2CA /* SetupPinViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetupPinViewController.swift; sourceTree = "<group>"; };
 		ADF79367208E09D00086B2CA /* SetupPinViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetupPinViewModel.swift; sourceTree = "<group>"; };
@@ -653,9 +655,10 @@
 			children = (
 				A0919159203C309E00FA525A /* Style */,
 				A0DDC077201B42EA00AEFF94 /* BockExplorer.swift */,
+				ADE4CF1E20B5B6FC007C987A /* Environment.swift */,
 				A0A05A5420148FA80007D1C9 /* Json.swift */,
-				A0A05A50201481A70007D1C9 /* Storyboard.swift */,
 				A0D3C97F20629B9D0015C5D7 /* Scheduler.swift */,
+				A0A05A50201481A70007D1C9 /* Storyboard.swift */,
 			);
 			path = Helper;
 			sourceTree = "<group>";
@@ -1703,6 +1706,7 @@
 				AD38EB30207DF233007DF14D /* UIButton.swift in Sources */,
 				AD93ED5620A09D59000E814E /* GraphTopologyUpdate.swift in Sources */,
 				AD3CF97D20B4416900D78A54 /* LndRpcServer.swift in Sources */,
+				ADE4CF1F20B5B6FC007C987A /* Environment.swift in Sources */,
 				ADBB36332084EC4D005662B4 /* MnemonicWordTableViewCell.swift in Sources */,
 				AD1EB9FF20B2EAF4001FF67E /* ChannelAliasStore.swift in Sources */,
 				ADF79366208E000C0086B2CA /* SetupPinViewController.swift in Sources */,

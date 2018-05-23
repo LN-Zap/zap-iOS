@@ -57,14 +57,14 @@ class RootViewController: UIViewController, ContainerViewController {
         case .none:
             setInitialViewController(setupViewController)
         default:
-            if AuthenticationViewModel.shared.pin != nil {
-                setInitialViewController(pinViewController)
-            } else {
+            if Environment.skipPinFlow || AuthenticationViewModel.shared.pin == nil {
                 viewModel = LndConnection.current.viewModel
                 if let viewModel = viewModel {
                     setInitialViewController(loadingViewController)
                     startWalletUI(with: viewModel)
                 }
+            } else {
+                setInitialViewController(pinViewController)
             }
         }
     }
@@ -125,7 +125,7 @@ class RootViewController: UIViewController, ContainerViewController {
 
 extension RootViewController: SetupWalletDelegate {
     func didSetupWallet() {
-        if AuthenticationViewModel.shared.didSetupPin {
+        if Environment.skipPinFlow || AuthenticationViewModel.shared.didSetupPin {
             connect()
         } else {
             let setupPinViewController = Storyboard.numericKeyPad.instantiate(viewController: SetupPinViewController.self)

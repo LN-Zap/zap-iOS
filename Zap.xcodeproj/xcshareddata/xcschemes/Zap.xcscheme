@@ -97,6 +97,11 @@
       </BuildableProductRunnable>
       <EnvironmentVariables>
          <EnvironmentVariable
+            key = "SKIP_PIN_FLOW"
+            value = "1"
+            isEnabled = "YES">
+         </EnvironmentVariable>
+         <EnvironmentVariable
             key = "GRPC_TRACE"
             value = "all"
             isEnabled = "YES">
