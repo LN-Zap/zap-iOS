@@ -25,9 +25,9 @@ extension UILabel {
         
         switch state {
         case .active, .opening:
-            textColor = Color.green
+            textColor = UIColor.zap.green
         default:
-            textColor = Color.disabled
+            textColor = UIColor.zap.disabled
         }
     }
     
@@ -35,9 +35,9 @@ extension UILabel {
         let result = NSMutableAttributedString()
         
         if amount >= 0 {
-            result.append(NSAttributedString(string: "+ ", attributes: [NSAttributedStringKey.foregroundColor: Color.green]))
+            result.append(NSAttributedString(string: "+ ", attributes: [NSAttributedStringKey.foregroundColor: UIColor.zap.green]))
         } else {
-            result.append(NSAttributedString(string: "- ", attributes: [NSAttributedStringKey.foregroundColor: Color.red]))
+            result.append(NSAttributedString(string: "- ", attributes: [NSAttributedStringKey.foregroundColor: UIColor.zap.red]))
         }
         
         let string = amount.absoluteValue().format(unit: .bit) + " " + BitcoinUnit.bit.localized

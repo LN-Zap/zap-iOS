@@ -34,7 +34,7 @@ class ConnectRemoteNodeViewController: UIViewController {
 
         title = "Connect Remote Node"
         
-        view.backgroundColor = Color.darkBackground
+        view.backgroundColor = UIColor.zap.darkBackground
         
         Style.label.apply(to: zapconnectLabel, urlLabel) {
             $0.textColor = .white

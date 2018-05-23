@@ -23,7 +23,7 @@ final class OpenChannelViewController: UIViewController, QRCodeScannerChildViewC
         
         Style.label.apply(to: helpLabel)
         
-        helpImageView.tintColor = Color.text
+        helpImageView.tintColor = UIColor.zap.text
         helpLabel.text = "Fund connection"
         
         gradientLoadingButton.title = "Add"

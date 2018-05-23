@@ -34,10 +34,10 @@ class SendLightningInvoiceViewController: UIViewController, QRCodeScannerChildVi
         
         gradientButtonView.title = "Send"
         
-        expiredView.backgroundColor = Color.red
+        expiredView.backgroundColor = UIColor.zap.red
         expiredLabel.textColor = .white
         
-        arrowImageView.tintColor = Color.text
+        arrowImageView.tintColor = UIColor.zap.text
         
         [sendViewModel?.memo.bind(to: memoLabel.reactive.text),
          sendViewModel?.satoshis.bind(to: amountLabel.reactive.text, currency: Settings.primaryCurrency),

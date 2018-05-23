@@ -75,7 +75,6 @@
 		A0919151203C249200FA525A /* Font.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0919150203C249200FA525A /* Font.swift */; };
 		A0919154203C27C300FA525A /* Roboto-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = A0919153203C27C300FA525A /* Roboto-Bold.ttf */; };
 		A0919156203C2CB600FA525A /* Style.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0919155203C2CB600FA525A /* Style.swift */; };
-		A0919158203C309100FA525A /* Color.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0919157203C309100FA525A /* Color.swift */; };
 		A0A05A032013CF960007D1C9 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0A05A022013CF960007D1C9 /* AppDelegate.swift */; };
 		A0A05A082013CF960007D1C9 /* Root.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A0A05A062013CF960007D1C9 /* Root.storyboard */; };
 		A0A05A0A2013CF960007D1C9 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A0A05A092013CF960007D1C9 /* Assets.xcassets */; };
@@ -355,7 +354,6 @@
 		A0919150203C249200FA525A /* Font.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Font.swift; sourceTree = "<group>"; };
 		A0919153203C27C300FA525A /* Roboto-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Roboto-Bold.ttf"; sourceTree = "<group>"; };
 		A0919155203C2CB600FA525A /* Style.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Style.swift; sourceTree = "<group>"; };
-		A0919157203C309100FA525A /* Color.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Color.swift; sourceTree = "<group>"; };
 		A0A059FF2013CF960007D1C9 /* Zap.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Zap.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A0A05A022013CF960007D1C9 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		A0A05A072013CF960007D1C9 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Root.storyboard; sourceTree = "<group>"; };
@@ -854,7 +852,6 @@
 			isa = PBXGroup;
 			children = (
 				A07C1032203DD5AF006C7FE8 /* Appearance.swift */,
-				A0919157203C309100FA525A /* Color.swift */,
 				A0919150203C249200FA525A /* Font.swift */,
 				A0919155203C2CB600FA525A /* Style.swift */,
 			);
@@ -1678,7 +1675,6 @@
 				A0D3C98020629B9D0015C5D7 /* Scheduler.swift in Sources */,
 				AD6FFC9E20A9D19400B57330 /* LightningPaymentViewModel.swift in Sources */,
 				A0A05A2B2013ED920007D1C9 /* QRCodeDetailViewController.swift in Sources */,
-				A0919158203C309100FA525A /* Color.swift in Sources */,
 				A0DDC06A2018BFFA00AEFF94 /* LockWalletSettingsItem.swift in Sources */,
 				A024B85320161560002B8897 /* QRCodeScannerViewController.swift in Sources */,
 				A0D3C971205FF0E10015C5D7 /* MnemonicViewController.swift in Sources */,

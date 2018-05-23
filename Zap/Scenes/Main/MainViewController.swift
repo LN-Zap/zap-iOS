@@ -53,9 +53,9 @@ final class MainViewController: UIViewController, ContainerViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        balanceView.backgroundColor = Color.darkBackground
-        segmentedControlView.backgroundColor = Color.mediumBackground
-        selectedButtonbackgroundView.backgroundColor = Color.darkBackground
+        balanceView.backgroundColor = UIColor.zap.darkBackground
+        segmentedControlView.backgroundColor = UIColor.zap.mediumBackground
+        selectedButtonbackgroundView.backgroundColor = UIColor.zap.darkBackground
         
         Style.button.apply(to: transactionsButton, networkButton, sendButton, requestButton)
         transactionsButton.titleEdgeInsets = UIEdgeInsets(top: 0, left: 10, bottom: 0, right: 0)
@@ -83,13 +83,13 @@ final class MainViewController: UIViewController, ContainerViewController {
     
     private func segmentedControl(select selection: ContainerContent) {
         if selection == .network {
-            networkButton.imageView?.tintColor = Color.tint
+            networkButton.imageView?.tintColor = UIColor.zap.tint
             transactionsButton.imageView?.tintColor = .lightGray
             networkButton.setTitleColor(.white, for: .normal)
             transactionsButton.setTitleColor(.lightGray, for: .normal)
         } else {
             networkButton.imageView?.tintColor = .lightGray
-            transactionsButton.imageView?.tintColor = Color.bottomGradientLeft
+            transactionsButton.imageView?.tintColor = UIColor.zap.bottomGradientLeft
             networkButton.setTitleColor(.lightGray, for: .normal)
             transactionsButton.setTitleColor(.white, for: .normal)
         }

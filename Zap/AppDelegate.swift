@@ -13,7 +13,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow? {
         didSet {
-            window?.tintColor = Color.tint
+            window?.tintColor = UIColor.zap.tint
         }
     }
     

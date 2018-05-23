@@ -41,15 +41,15 @@ final class RequestViewController: UIViewController {
 
         lightningButton.isSelected = true
         
-        segmentedControlBackgroundView.backgroundColor = Color.searchBackground
+        segmentedControlBackgroundView.backgroundColor = UIColor.zap.searchBackground
         
         gradientLoadingButtonView.title = "Generate Request"
         
         placeholderTextView.text = "Memo (optional)"
         placeholderTextView.font = Font.light.withSize(14)
-        placeholderTextView.textColor = Color.disabled
+        placeholderTextView.textColor = UIColor.zap.disabled
         memoTextView.font = Font.light.withSize(14)
-        memoTextView.textColor = Color.text
+        memoTextView.textColor = UIColor.zap.text
         
         memoTextView.reactive.text
             .map { !($0?.isEmpty ?? true) }

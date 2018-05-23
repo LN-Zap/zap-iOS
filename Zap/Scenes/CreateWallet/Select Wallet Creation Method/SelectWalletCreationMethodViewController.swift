@@ -34,7 +34,7 @@ class SelectWalletCreationMethodViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        view.backgroundColor = Color.darkBackground
+        view.backgroundColor = UIColor.zap.darkBackground
 
         tableView.delegate = self
         tableView.dataSource = self
@@ -42,7 +42,7 @@ class SelectWalletCreationMethodViewController: UIViewController {
         tableView.rowHeight = 140
         tableView.isScrollEnabled = false
         tableView.registerCell(SelectWalletCreationMethodTableViewCell.self)
-        tableView.backgroundColor = Color.darkBackground
+        tableView.backgroundColor = UIColor.zap.darkBackground
         
         navigationController?.navigationBar.backgroundColor = .clear
         navigationController?.navigationBar.shadowImage = UIImage()

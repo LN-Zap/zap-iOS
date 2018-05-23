@@ -20,7 +20,7 @@ final class MnemonicViewController: UIViewController {
         
         title = "Create Wallet"
         
-        view.backgroundColor = Color.darkBackground
+        view.backgroundColor = UIColor.zap.darkBackground
         
         Style.button.apply(to: doneButton)
         Style.label.apply(to: topLabel)

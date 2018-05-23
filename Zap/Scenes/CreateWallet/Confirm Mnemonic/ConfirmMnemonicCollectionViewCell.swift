@@ -61,7 +61,7 @@ class ConfirmMnemonicCollectionViewCell: UICollectionViewCell {
         if sender.text == confirmWordViewModel?.word {
             wordConfirmedCallback?()
         } else {
-            bottomLineView.backgroundColor = Color.red
+            bottomLineView.backgroundColor = UIColor.zap.red
         }
     }
 }

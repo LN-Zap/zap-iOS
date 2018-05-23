@@ -25,13 +25,13 @@ class PinViewController: UIViewController {
         
         pinStackView.characterCount = viewModel.pin?.count ?? 0
         
-        view.backgroundColor = Color.darkBackground
+        view.backgroundColor = UIColor.zap.darkBackground
         
         setupKeyPad()
     }
     
     private func setupKeyPad() {
-        keyPadView.backgroundColor = Color.darkBackground
+        keyPadView.backgroundColor = UIColor.zap.darkBackground
         keyPadView.textColor = .white
         keyPadView.state = .authenticate
         

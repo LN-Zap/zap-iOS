@@ -16,10 +16,10 @@ extension UIViewController {
     var titleTextStyle: TitleTextStyle {
         get {
             guard let color = navigationController?.navigationBar.titleTextAttributes?[.foregroundColor] as? UIColor else { return .light }
-            return color == Color.text ? .dark : .light
+            return color == UIColor.zap.text ? .dark : .light
         }
         set {
-            let newColor = newValue == .light ? UIColor.white : Color.text
+            let newColor = newValue == .light ? UIColor.white : UIColor.zap.text
             navigationController?.navigationBar.titleTextAttributes = [.font: Font.light.withSize(20), .foregroundColor: newColor]
         }
     }

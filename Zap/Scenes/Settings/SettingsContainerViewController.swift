@@ -26,9 +26,9 @@ class SettingsContainerViewController: UIViewController, ContainerViewController
         navigationController?.navigationBar.setBackgroundImage(UIImage(), for: .default)
         navigationController?.navigationBar.shadowImage = UIImage()
         navigationController?.navigationBar.isTranslucent = false
-        navigationController?.navigationBar.barTintColor = Color.darkBackground
+        navigationController?.navigationBar.barTintColor = UIColor.zap.darkBackground
         
-        headerBackground.backgroundColor = Color.darkBackground
+        headerBackground.backgroundColor = UIColor.zap.darkBackground
         
         viewModel?.balance.total
             .bind(to: primaryCurrencyLabel.reactive.text, currency: Settings.primaryCurrency)

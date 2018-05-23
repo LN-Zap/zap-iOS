@@ -35,11 +35,11 @@ enum Style {
     
     static let label = UIViewStyle<UILabel> {
         $0.font = Font.light
-        $0.textColor = Color.text
+        $0.textColor = UIColor.zap.text
     }
     
     static let textField = UIViewStyle<UITextField> {
-        $0.textColor = Color.text
+        $0.textColor = UIColor.zap.text
         $0.font = Font.light
     }
 }

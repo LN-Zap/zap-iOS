@@ -20,7 +20,7 @@ class MnemonicPageViewController: UIPageViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        view.backgroundColor = Color.mediumBackground
+        view.backgroundColor = UIColor.zap.mediumBackground
         
         orderedViewControllers = mnemonicViewModel?.pageWords.map {
             let viewModel = Storyboard.createWallet.instantiate(viewController: MnemonicWordListViewController.self)

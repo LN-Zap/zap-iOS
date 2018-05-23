@@ -65,8 +65,8 @@ class QRCodeScannerViewController: UIViewController, ContainerViewController {
         navigationController?.navigationBar.setBackgroundImage(UIImage(), for: .default)
         
         scannerViewOverlay.alpha = 0
-        successView.backgroundColor = Color.green
-        qrCodeSuccessImageView.tintColor = Color.green
+        successView.backgroundColor = UIColor.zap.green
+        qrCodeSuccessImageView.tintColor = UIColor.zap.green
     }
     
     private func displayViewControllerForAddress(type: AddressType, address: String) {
