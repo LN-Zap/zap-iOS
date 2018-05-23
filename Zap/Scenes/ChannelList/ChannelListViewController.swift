@@ -46,6 +46,7 @@ class ChannelListViewController: UIViewController {
         tableView.refreshControl = UIRefreshControl()
         tableView.refreshControl?.addTarget(self, action: #selector(refresh), for: .valueChanged)
         
+        searchBar.placeholder = "search"
         searchBar.delegate = self
         searchBar.backgroundImage = UIImage()
         searchBackgroundView.backgroundColor = UIColor.zap.searchBackground
