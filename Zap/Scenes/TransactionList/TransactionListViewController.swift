@@ -8,28 +8,16 @@
 import Bond
 import UIKit
 
-final class TransactionBond: TableViewBinder<Observable2DArray<String, TransactionType>> {
-    override func cellForRow(at indexPath: IndexPath, tableView: UITableView, dataSource: Observable2DArray<String, TransactionType>) -> UITableViewCell {
-        let transaction = dataSource.item(at: indexPath)
-
-        switch transaction {
-            
-        case .onChainTransaction(let viewModel):
-            let cell: TransactionTableViewCell = tableView.dequeueCellForIndexPath(indexPath)
-            cell.transaction = viewModel
-            return cell
-        case .lightningPayment(let viewModel):
-            let cell: TransactionTableViewCell = tableView.dequeueCellForIndexPath(indexPath)
-            cell.transaction = viewModel
-            return cell
-        case .lightningInvoice(let viewModel):
-            let cell: TransactionTableViewCell = tableView.dequeueCellForIndexPath(indexPath)
-            cell.transaction = viewModel
-            return cell
-        }
+final class TransactionBond: TableViewBinder<Observable2DArray<String, TransactionViewModel>> {
+    override func cellForRow(at indexPath: IndexPath, tableView: UITableView, dataSource: Observable2DArray<String, TransactionViewModel>) -> UITableViewCell {
+        let viewModel = dataSource.item(at: indexPath)
+        
+        let cell: TransactionTableViewCell = tableView.dequeueCellForIndexPath(indexPath)
+        cell.transaction = viewModel
+        return cell
     }
     
-    func titleForHeader(in section: Int, dataSource: Observable2DArray<String, TransactionType>) -> String? {
+    func titleForHeader(in section: Int, dataSource: Observable2DArray<String, TransactionViewModel>) -> String? {
         return dataSource[section].metadata
     }
 }
@@ -115,10 +103,10 @@ extension TransactionListViewController: UITableViewDelegate {
         present(viewControllerFor(transactionType), animated: true, completion: nil)
     }
     
-    private func viewControllerFor(_ transactionType: TransactionType) -> UIViewController {
+    private func viewControllerFor(_ transactionViewModel: TransactionViewModel) -> UIViewController {
         let viewController = Storyboard.transactionDetail.initial(viewController: UINavigationController.self)
         if let transactionDetailViewController = viewController.topViewController as? TransactionDetailViewController {
-            transactionDetailViewController.transactionViewModel = transactionType.transactionViewModel
+            transactionDetailViewController.transactionViewModel = transactionViewModel
             transactionDetailViewController.viewModel = viewModel
         }
         return viewController
@@ -140,8 +128,8 @@ extension TransactionListViewController: UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
         if editingStyle == .delete,
-            let transactionType = transactionListViewModel?.sections.item(at: indexPath) {
-            viewModel?.hideTransaction(transactionType.transactionViewModel)
+            let transactionViewModel = transactionListViewModel?.sections.item(at: indexPath) {
+            viewModel?.hideTransaction(transactionViewModel)
         }
     }
 }

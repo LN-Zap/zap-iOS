@@ -10,7 +10,7 @@ import Foundation
 import ReactiveKit
 
 final class TransactionListViewModel: NSObject {
-    let sections: MutableObservable2DArray<String, TransactionType>
+    let sections: MutableObservable2DArray<String, TransactionViewModel>
     
     init(viewModel: ViewModel) {
         sections = MutableObservable2DArray()
@@ -22,7 +22,7 @@ final class TransactionListViewModel: NSObject {
                 let array = Observable2DArray(result)
 
                 DispatchQueue.main.async {
-                    self?.sections.replace(with: array, performDiff: true)
+                    self?.sections.replace(with: array)//, performDiff: true)
                 }
             }
             .dispose(in: reactive.bag)
@@ -42,7 +42,7 @@ final class TransactionListViewModel: NSObject {
             .sorted { $0.0 > $1.0 }
     }
 
-    private func bondSections(transactions: [TransactionViewModel]) -> [Observable2DArraySection<String, TransactionType>] {
+    private func bondSections(transactions: [TransactionViewModel]) -> [Observable2DArraySection<String, TransactionViewModel>] {
         let sortedSections = self.sortedSections(transactions: transactions)
 
         return sortedSections.compactMap {
@@ -52,9 +52,9 @@ final class TransactionListViewModel: NSObject {
 
             let dateString = date.localized
 
-            return Observable2DArraySection<String, TransactionType>(
+            return Observable2DArraySection<String, TransactionViewModel>(
                 metadata: dateString,
-                items: sortedItems.map { TransactionType(transactionViewModel: $0) }
+                items: sortedItems
             )
         }
     }
