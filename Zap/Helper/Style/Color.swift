@@ -19,6 +19,7 @@ enum Color {
     
     static let red = UIColor(hex: 0xee4646)
     static let green = UIColor(hex: 0x77a33f)
+    static let lightGreen = UIColor(hex: 0xb8e986)
     
     static let bottomGradientLeft = UIColor(hex: 0xf7ce68)
     static let bottomGradientRight = UIColor(hex: 0xfbab7e)

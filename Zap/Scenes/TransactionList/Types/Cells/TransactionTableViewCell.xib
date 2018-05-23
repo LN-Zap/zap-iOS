@@ -22,6 +22,10 @@
                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" placeholderIntrinsicWidth="10" placeholderIntrinsicHeight="10" translatesAutoresizingMaskIntoConstraints="NO" id="zIS-sD-X1N">
                         <rect key="frame" x="20" y="52" width="10" height="10"/>
                     </imageView>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="bYV-df-7bD">
+                        <rect key="frame" x="399" y="32.5" width="52" height="24.5"/>
+                        <color key="backgroundColor" red="0.87450980392156863" green="0.95686274509803926" blue="0.792156862745098" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    </view>
                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="wdb-dN-XX1">
                         <rect key="frame" x="48" y="34.5" width="398" height="46"/>
                         <subviews>
@@ -63,10 +67,14 @@
                     </stackView>
                 </subviews>
                 <constraints>
+                    <constraint firstItem="bYV-df-7bD" firstAttribute="bottom" secondItem="v28-NH-cLK" secondAttribute="bottom" constant="2" id="4lS-cY-5pL"/>
                     <constraint firstAttribute="trailing" secondItem="wdb-dN-XX1" secondAttribute="trailing" constant="20" id="RcW-Bd-sGi"/>
+                    <constraint firstItem="bYV-df-7bD" firstAttribute="top" secondItem="v28-NH-cLK" secondAttribute="top" constant="-2" id="Uro-7t-lgC"/>
                     <constraint firstItem="wdb-dN-XX1" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="48" id="Vax-AI-Q6c"/>
                     <constraint firstItem="zIS-sD-X1N" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="cW1-pl-Ntf"/>
+                    <constraint firstItem="bYV-df-7bD" firstAttribute="trailing" secondItem="v28-NH-cLK" secondAttribute="trailing" constant="5" id="mWw-0w-3BO"/>
                     <constraint firstItem="zIS-sD-X1N" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="20" id="nsp-SC-jEY"/>
+                    <constraint firstItem="bYV-df-7bD" firstAttribute="leading" secondItem="v28-NH-cLK" secondAttribute="leading" constant="-5" id="saJ-pa-9vI"/>
                     <constraint firstItem="wdb-dN-XX1" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="tpR-Kl-JkM"/>
                 </constraints>
             </tableViewCellContentView>
@@ -74,6 +82,7 @@
             <inset key="separatorInset" minX="48" minY="0.0" maxX="0.0" maxY="0.0"/>
             <connections>
                 <outlet property="iconImageView" destination="zIS-sD-X1N" id="cDS-lv-rks"/>
+                <outlet property="positiveAmountBackgroundView" destination="bYV-df-7bD" id="uDF-eT-TQF"/>
                 <outlet property="primaryAmountLabel" destination="v28-NH-cLK" id="MNz-7J-pdV"/>
                 <outlet property="secondaryAmountLabel" destination="qLY-i3-v0O" id="Lfb-a8-4hC"/>
                 <outlet property="timeLabel" destination="Wh5-FH-9Jy" id="IV2-dC-KjR"/>
