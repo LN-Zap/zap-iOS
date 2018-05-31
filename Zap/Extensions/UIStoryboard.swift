@@ -14,10 +14,9 @@ extension UIStoryboard {
         return mainViewController
     }
     
-    static func instantiateSetupViewController(with viewModel: ViewModel, delegate: SetupWalletDelegate) -> UINavigationController {
+    static func instantiateSetupViewController(with delegate: SetupWalletDelegate) -> UINavigationController {
         let navigationController = Storyboard.createWallet.initial(viewController: UINavigationController.self)
         if let setupWalletViewController = navigationController.topViewController as? SelectWalletCreationMethodViewController {
-            setupWalletViewController.viewModel = viewModel
             setupWalletViewController.delegate = delegate
         }
         return navigationController

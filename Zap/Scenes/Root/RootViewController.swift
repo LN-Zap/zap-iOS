@@ -29,17 +29,18 @@ class RootViewController: UIViewController, ContainerViewController {
     weak var currentViewController: UIViewController?
     
     private func setChild(_ child: RootChildViewControllers) {
-        guard let viewModel = viewModel else { fatalError("viewModel not set") }
 
         let viewController: UIViewController
         
         switch child {
         case .main:
+            guard let viewModel = viewModel else { fatalError("viewModel not set") }
             viewController = UIStoryboard.instantiateMainViewController(with: viewModel)
-        case .setup:
-            viewController = UIStoryboard.instantiateSetupViewController(with: viewModel, delegate: self)
         case .sync:
+            guard let viewModel = viewModel else { fatalError("viewModel not set") }
             viewController = UIStoryboard.instantiateSyncViewController(with: viewModel)
+        case .setup:
+            viewController = UIStoryboard.instantiateSetupViewController(with: self)
         case .loading(let message):
             viewController = UIStoryboard.instantiateLoadingViewController(with: message)
         case .pin:

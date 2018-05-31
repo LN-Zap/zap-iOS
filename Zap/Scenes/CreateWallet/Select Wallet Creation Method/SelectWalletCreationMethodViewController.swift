@@ -13,7 +13,6 @@ protocol SetupWalletDelegate: class {
 
 class SelectWalletCreationMethodViewController: UIViewController {
     
-    var viewModel: ViewModel?
     weak var delegate: SetupWalletDelegate?
     
     @IBOutlet private weak var tableView: UITableView!
@@ -50,11 +49,10 @@ class SelectWalletCreationMethodViewController: UIViewController {
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if
-            let viewModel = viewModel,
-            let destination = segue.destination as? MnemonicViewController {
-            destination.mnemonicViewModel = MnemonicViewModel(viewModel: viewModel)
-        }
+//        if
+//            let destination = segue.destination as? MnemonicViewController {
+//            destination.mnemonicViewModel = MnemonicViewModel(viewModel: viewModel)
+//        }
     }
 }
 
