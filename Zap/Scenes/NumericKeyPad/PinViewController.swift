@@ -23,7 +23,7 @@ class PinViewController: UIViewController {
         
         let viewModel = AuthenticationViewModel.shared
         
-        pinStackView.characterCount = viewModel.pin?.count ?? 0
+        pinStackView.characterCount = viewModel.pinLength ?? 0
         
         view.backgroundColor = UIColor.zap.darkBackground
         
@@ -45,11 +45,11 @@ class PinViewController: UIViewController {
         keyPadView.handler = { [weak self] number in
             self?.updatePinView(for: number)
             
-            if AuthenticationViewModel.shared.pin == number {
+            if AuthenticationViewModel.shared.isMatchingPin(number) {
                 self?.delegate?.didAuthenticate()
             }
             
-            return (AuthenticationViewModel.shared.pin?.count ?? Int.max) >= number.count
+            return (AuthenticationViewModel.shared.pinLength ?? Int.max) >= number.count
         }
     }
     

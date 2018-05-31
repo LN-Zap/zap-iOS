@@ -31,7 +31,7 @@ final class RemoveRemoteNodeSettingsItem: SettingsItem {
     
     func didSelectItem(from fromViewController: UIViewController) {
         RemoteNodeConfiguration.delete()
-        AuthenticationViewModel.shared.pin = nil
+        AuthenticationViewModel.shared.resetPin()
         fatalError("Crash to restart.")
     }
 }

@@ -28,7 +28,7 @@ class RootViewController: UIViewController, ContainerViewController {
     
     weak var currentViewController: UIViewController?
     
-    func setChild(_ child: RootChildViewControllers) {
+    private func setChild(_ child: RootChildViewControllers) {
         guard let viewModel = viewModel else { fatalError("viewModel not set") }
 
         let viewController: UIViewController
@@ -60,7 +60,7 @@ class RootViewController: UIViewController, ContainerViewController {
         case .none:
             setChild(.setup)
         default:
-            if Environment.skipPinFlow || AuthenticationViewModel.shared.pin == nil {
+            if Environment.skipPinFlow || !AuthenticationViewModel.shared.didSetupPin {
                 viewModel = LndConnection.current.viewModel
                 if let viewModel = viewModel {
                     setChild(.loading(.none))

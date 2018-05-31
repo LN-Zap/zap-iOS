@@ -9,21 +9,52 @@ import Bond
 import Foundation
 import KeychainAccess
 
+private let keychainPinKey = "hashedPin"
+private let keychainPinLengthKey = "pinLength"
+
 final class AuthenticationViewModel {
     static let shared = AuthenticationViewModel()
 
     private let keychain = Keychain(service: "com.jackmallers.zap")
     
-    var pin: String? {
-        get { return keychain["pin"] }
-        set { keychain["pin"] = newValue }
+    private var hashedPin: String? {
+        get { return keychain[keychainPinKey] }
+        set { keychain[keychainPinKey] = newValue }
+    }
+    
+    private(set) var pinLength: Int? {
+        get {
+            guard let string = keychain[keychainPinLengthKey] else { return nil }
+            return Int(string)
+        }
+        set {
+            if let newValue = newValue {
+                keychain[keychainPinLengthKey] = String(newValue)
+            } else {
+                keychain[keychainPinLengthKey] = nil
+            }
+        }
     }
     
     var didSetupPin: Bool {
-        return keychain["pin"] != nil
+        return keychain[keychainPinKey] != nil
     }
     
     let authenticated = Observable(false)
     
     private init() {}
+    
+    func setPin(_ pin: String) {
+        hashedPin = pin.sha256()
+        pinLength = pin.count
+    }
+    
+    func isMatchingPin(_ pin: String) -> Bool {
+        return pin.sha256() == hashedPin
+    }
+    
+    func resetPin() {
+        hashedPin = nil
+        pinLength = nil
+    }
 }
