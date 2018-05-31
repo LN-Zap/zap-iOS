@@ -89,7 +89,8 @@ class ChannelDetailViewController: ModalViewController {
     
     @IBAction private func blockExplorerButtonTapped(_ sender: Any) {
         if let txid = channelViewModel?.channel.fundingTransactionId,
-            let url = Settings.blockExplorer.url(network: Settings.network, txid: txid) {
+            let network = viewModel?.info.network.value,
+            let url = Settings.blockExplorer.url(network: network, txid: txid) {
             let safariViewController = SFSafariViewController(url: url)
             safariViewController.preferredControlTintColor = UIColor.zap.tint
             present(safariViewController, animated: true)

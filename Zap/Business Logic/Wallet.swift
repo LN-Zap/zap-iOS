@@ -6,6 +6,7 @@
 //
 
 import Bond
+import BTCUtil
 import Foundation
 
 enum WalletState {
@@ -23,6 +24,7 @@ final class Wallet {
     let isSyncedToChain = Observable(false)
     let alias = Observable<String?>(nil)
     let walletState: Observable<WalletState>
+    let network = Observable<Network>(.testnet)
     
     var isLocked = false {
         didSet {
@@ -48,6 +50,7 @@ final class Wallet {
             isSyncedToChain.value = info.isSyncedToChain
             alias.value = info.alias
             bestHeaderDate.value = info.bestHeaderDate
+            network.value = info.network
         }
         
         updateWalletState(result: result)

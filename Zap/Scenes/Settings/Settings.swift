@@ -16,7 +16,6 @@ enum Settings {
     static var primaryCurrency = Observable<Currency>(Settings.cryptoCurrency.value)
     static var secondaryCurrency = Observable<Currency>(Settings.fiatCurrency.value)
 
-    static var network = Network.testnet
     static var blockExplorer = BlockExplorer.blockchainInfo
     
     static var onChainRequestAddressType = Observable<OnChainRequestAddressType>(.nestedPubkeyHash)

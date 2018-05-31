@@ -24,10 +24,10 @@ enum BlockExplorer {
     func url(network: Network, txid: String) -> URL? {
         switch self {
         case .blockchainInfo:
-            let networkId = Settings.network == .mainnet ? "" : "testnet."
+            let networkId = network == .mainnet ? "" : "testnet."
             return URL(string: "https://\(networkId)blockchain.info/tx/\(txid)")
         case .blockcypher:
-            let networkId = Settings.network == .mainnet ? "btc" : "btc-testnet"
+            let networkId = network == .mainnet ? "btc" : "btc-testnet"
             return URL(string: "https://live.blockcypher.com/\(networkId)/tx/\(txid)/")
         }
     }

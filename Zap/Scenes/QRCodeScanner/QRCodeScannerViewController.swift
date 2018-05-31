@@ -34,6 +34,7 @@ class QRCodeScannerViewController: UIViewController, ContainerViewController {
     @IBOutlet private weak var scannerView: QRCodeScannerView! {
         didSet {
             scannerView.addressTypes = strategy?.addressTypes
+            scannerView.viewModel = viewModel
             scannerView.handler = { [weak self] type, address in
                 self?.displayViewControllerForAddress(type: type, address: address)
             }
@@ -52,7 +53,11 @@ class QRCodeScannerViewController: UIViewController, ContainerViewController {
         return .lightContent
     }
     
-    var viewModel: ViewModel?
+    var viewModel: ViewModel? {
+        didSet {
+            scannerView?.viewModel = viewModel
+        }
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -97,10 +102,11 @@ class QRCodeScannerViewController: UIViewController, ContainerViewController {
     @IBAction private func pasteButtonTapped(_ sender: Any) {
         guard
             let string = UIPasteboard.general.string,
-            let strategy = strategy
+            let strategy = strategy,
+            let network = viewModel?.info.network.value
             else { return }
         
-        for addressType in strategy.addressTypes where addressType.isValidAddress(string, network: Settings.network) {
+        for addressType in strategy.addressTypes where addressType.isValidAddress(string, network: network) {
             displayViewControllerForAddress(type: addressType, address: string)
             break
         }

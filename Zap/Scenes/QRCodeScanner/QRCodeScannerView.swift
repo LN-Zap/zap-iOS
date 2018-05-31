@@ -22,6 +22,8 @@ final class QRCodeScannerView: UIView {
         setup()
     }
     
+    var viewModel: ViewModel?
+    
     private func setup() {
         let deviceDiscoverySession = AVCaptureDevice.DiscoverySession(deviceTypes: [.builtInDualCamera], mediaType: AVMediaType.video, position: .back)
         
@@ -59,11 +61,15 @@ extension QRCodeScannerView: AVCaptureMetadataOutputObjectsDelegate {
             let code = metadataObj.stringValue
             else { return }
         
+        // TODO: move this to the strategy?
         if let remoteNodeCertificateHandler = remoteNodeCertificateHandler,
             let remoteNodeCertificates = RemoteNodeCertificates(json: code) {
             remoteNodeCertificateHandler(remoteNodeCertificates)
-        } else if let addressTypes = addressTypes {
-            for addressType in addressTypes where addressType.isValidAddress(code, network: Settings.network) {
+            UISelectionFeedbackGenerator().selectionChanged() // TODO: remove duplicate code
+            captureSession.stopRunning()
+        } else if let addressTypes = addressTypes,
+            let network = viewModel?.info.network.value {
+            for addressType in addressTypes where addressType.isValidAddress(code, network: network) {
                 handler?(addressType, code)
                 UISelectionFeedbackGenerator().selectionChanged()
                 captureSession.stopRunning()
