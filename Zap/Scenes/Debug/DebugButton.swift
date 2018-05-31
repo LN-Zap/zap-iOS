@@ -41,6 +41,6 @@ final class DebugButton {
     
     @objc
     private func presentLog(_ sender: Any) {
-        UIApplication.topViewController?.present(Storyboard.debug.initial(), animated: true, completion: nil)
+        UIApplication.topViewController?.present(UIStoryboard.instantiateDebugViewController(), animated: true, completion: nil)
     }
 }

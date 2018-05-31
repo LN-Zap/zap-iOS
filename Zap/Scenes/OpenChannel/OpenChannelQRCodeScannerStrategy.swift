@@ -13,8 +13,7 @@ struct OpenChannelQRCodeScannerStrategy: QRCodeScannerStrategy {
     let addressTypes: [AddressType] = [.lightningNode]
     
     func viewControllerForAddressType(_ type: AddressType, address: String, viewModel: ViewModel) -> UIViewController? {
-        let viewController = Storyboard.openChannel.initial(viewController: OpenChannelViewController.self)
-        viewController.openChannelViewModel = OpenChannelViewModel(viewModel: viewModel, address: address)
-        return viewController
+        guard let openChannelViewModel = OpenChannelViewModel(viewModel: viewModel, address: address) else { return nil }
+        return UIStoryboard.instantiateOpenChannelViewController(with: openChannelViewModel)
     }
 }

@@ -20,13 +20,13 @@ class SelectWalletCreationMethodViewController: UIViewController {
     // swiftlint:disable:next large_tuple
     let content: [(String, String, (() -> UIViewController))] = [
         ("Create", "new wallet", {
-            Storyboard.createWallet.instantiate(viewController: MnemonicViewController.self)
+            UIStoryboard.instantiateMnemonicViewController()
         }),
         ("Recover", "existing wallet", {
-            Storyboard.createWallet.instantiate(viewController: RecoverWalletViewController.self)
+            UIStoryboard.instantiateRecoverWalletViewController()
         }),
         ("Connect", "remote node", {
-            Storyboard.connectRemoteNode.initial()
+            UIStoryboard.instantiateConnectRemoteNodeViewController()
         })
     ]
     

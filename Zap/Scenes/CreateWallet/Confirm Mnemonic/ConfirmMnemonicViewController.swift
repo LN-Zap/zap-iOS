@@ -44,8 +44,6 @@ class ConfirmMnemonicViewController: UIViewController {
     private func presentPinSetupViewController() {
         fatalError("not implemented")
 //        guard let confirmViewModel = confirmViewModel else { return }
-//        let setupPinViewController = Storyboard.numericKeyPad.instantiate(viewController: SetupPinViewController.self)
-//        setupPinViewController.viewModel = confirmViewModel.viewModel
 //        present(setupPinViewController, animated: true, completion: nil)
     }
     

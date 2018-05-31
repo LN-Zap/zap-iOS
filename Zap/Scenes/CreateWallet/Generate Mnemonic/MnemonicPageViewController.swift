@@ -23,9 +23,7 @@ class MnemonicPageViewController: UIPageViewController {
         view.backgroundColor = UIColor.zap.mediumBackground
         
         orderedViewControllers = mnemonicViewModel?.pageWords.map {
-            let viewModel = Storyboard.createWallet.instantiate(viewController: MnemonicWordListViewController.self)
-            viewModel.mnemonicPageViewModel = $0
-            return viewModel
+            UIStoryboard.instantiateMnemonicWordListViewController(with: $0)
         }
         
         dataSource = self

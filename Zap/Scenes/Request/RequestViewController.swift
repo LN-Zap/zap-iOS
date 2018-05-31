@@ -89,9 +89,8 @@ final class RequestViewController: UIViewController {
     }
     
     @IBAction private func createButtonTapped(_ sender: Any) {
-        requestViewModel?.create { [weak self] qrCodeViewModel in
-            let viewController = Storyboard.qrCodeDetail.instantiate(viewController: QRCodeDetailViewController.self)
-            viewController.viewModel = qrCodeViewModel
+        requestViewModel?.create { [weak self] in
+            let viewController = UIStoryboard.instantiateQRCodeDetailViewController(with: $0)
             DispatchQueue.main.async {
                 self?.navigationController?.pushViewController(viewController, animated: true)
             }

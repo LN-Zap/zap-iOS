@@ -21,7 +21,7 @@ final class ConnectRemoteNodeSettingsItem: SubtitleSettingsItem {
     }
     
     func didSelectItem(from fromViewController: UIViewController) {
-        let connectRemoteNodeViewController = Storyboard.connectRemoteNode.initial(viewController: ConnectRemoteNodeViewController.self)
+        let connectRemoteNodeViewController = UIStoryboard.instantiateConnectRemoteNodeViewController()
         fromViewController.navigationController?.pushViewController(connectRemoteNodeViewController, animated: true)
     }
 }

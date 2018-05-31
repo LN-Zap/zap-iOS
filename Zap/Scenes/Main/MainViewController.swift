@@ -39,15 +39,13 @@ final class MainViewController: UIViewController, ContainerViewController {
     }
     
     private var transactionViewController: TransactionListViewController {
-        let viewController = Storyboard.transactionList.initial(viewController: TransactionListViewController.self)
-        viewController.viewModel = viewModel
-        return viewController
+        guard let viewModel = viewModel else { fatalError("viewModel not set") }
+        return UIStoryboard.instantiateTransactionListViewController(with: viewModel)
     }
     
     private var channelViewController: ChannelListViewController {
-        let viewController = Storyboard.channelList.initial(viewController: ChannelListViewController.self)
-        viewController.viewModel = viewModel
-        return viewController
+        guard let viewModel = viewModel else { fatalError("viewModel not set") }
+        return UIStoryboard.instantiateChannelListViewController(with: viewModel)
     }
     
     override func viewDidLoad() {
@@ -111,11 +109,8 @@ final class MainViewController: UIViewController, ContainerViewController {
     }
     
     @IBAction private func expandHeaderButtonTapped(_ sender: Any) {
-        let viewController = Storyboard.settings.initial(viewController: UINavigationController.self)
-
-        if let settingsContainerViewController = viewController.topViewController as? SettingsContainerViewController {
-            settingsContainerViewController.viewModel = viewModel
-        }
+        guard let viewModel = viewModel else { fatalError("viewModel not set") }
+        let viewController = UIStoryboard.instantiateSettingsContainerViewController(with: viewModel)
 
         present(viewController, animated: true, completion: nil)
     }

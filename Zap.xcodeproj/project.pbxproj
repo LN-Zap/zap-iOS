@@ -86,7 +86,6 @@
 		A0A05A302013EFC00007D1C9 /* UIImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0A05A2F2013EFC00007D1C9 /* UIImage.swift */; };
 		A0A05A352014047B0007D1C9 /* Lnd.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0A05A342014047B0007D1C9 /* Lnd.swift */; };
 		A0A05A4D20147B740007D1C9 /* RootViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0A05A4C20147B740007D1C9 /* RootViewController.swift */; };
-		A0A05A51201481A70007D1C9 /* Storyboard.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0A05A50201481A70007D1C9 /* Storyboard.swift */; };
 		A0A05A5520148FA80007D1C9 /* Json.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0A05A5420148FA80007D1C9 /* Json.swift */; };
 		A0A05A5720149A0D0007D1C9 /* Settings.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0A05A5620149A0D0007D1C9 /* Settings.swift */; };
 		A0A05A5920149AF20007D1C9 /* Transaction.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0A05A5820149AF20007D1C9 /* Transaction.swift */; };
@@ -370,7 +369,6 @@
 		A0A05A2F2013EFC00007D1C9 /* UIImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIImage.swift; sourceTree = "<group>"; };
 		A0A05A342014047B0007D1C9 /* Lnd.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Lnd.swift; sourceTree = "<group>"; };
 		A0A05A4C20147B740007D1C9 /* RootViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RootViewController.swift; sourceTree = "<group>"; };
-		A0A05A50201481A70007D1C9 /* Storyboard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Storyboard.swift; sourceTree = "<group>"; };
 		A0A05A5420148FA80007D1C9 /* Json.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Json.swift; sourceTree = "<group>"; };
 		A0A05A5620149A0D0007D1C9 /* Settings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Settings.swift; sourceTree = "<group>"; };
 		A0A05A5820149AF20007D1C9 /* Transaction.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Transaction.swift; sourceTree = "<group>"; };
@@ -658,7 +656,6 @@
 				ADE4CF1E20B5B6FC007C987A /* Environment.swift */,
 				A0A05A5420148FA80007D1C9 /* Json.swift */,
 				A0D3C97F20629B9D0015C5D7 /* Scheduler.swift */,
-				A0A05A50201481A70007D1C9 /* Storyboard.swift */,
 			);
 			path = Helper;
 			sourceTree = "<group>";
@@ -1653,7 +1650,6 @@
 				AD6FFCA620AB0A3700B57330 /* OnChainRequestAddressTypeSettingsItem.swift in Sources */,
 				A0A96B88201769F100788808 /* String.swift in Sources */,
 				AD86BD002099FB4500A7866A /* rpc.grpc.swift in Sources */,
-				A0A05A51201481A70007D1C9 /* Storyboard.swift in Sources */,
 				ADA6D2C520AC1DDE009398A5 /* Balance.swift in Sources */,
 				A010093C2014CEE40001EF94 /* OpenStatusUpdate.swift in Sources */,
 				AD33B5EF20A8463600E32BD9 /* SendOnChainViewController.swift in Sources */,

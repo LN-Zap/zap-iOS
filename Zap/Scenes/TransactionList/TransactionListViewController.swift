@@ -104,12 +104,8 @@ extension TransactionListViewController: UITableViewDelegate {
     }
     
     private func viewControllerFor(_ transactionViewModel: TransactionViewModel) -> UIViewController {
-        let viewController = Storyboard.transactionDetail.initial(viewController: UINavigationController.self)
-        if let transactionDetailViewController = viewController.topViewController as? TransactionDetailViewController {
-            transactionDetailViewController.transactionViewModel = transactionViewModel
-            transactionDetailViewController.viewModel = viewModel
-        }
-        return viewController
+        guard let viewModel = viewModel else { fatalError("viewModel not set") }
+        return UIStoryboard.instantiateTransactionDetailViewController(with: viewModel, transactionViewModel: transactionViewModel)
     }
 }
 
