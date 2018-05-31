@@ -12,6 +12,7 @@ class ChannelTableViewCell: BondTableViewCell {
     
     @IBOutlet private weak var nameLabel: UILabel!
     @IBOutlet private weak var stateLabel: UILabel!
+    @IBOutlet private weak var channelBalanceLabel: UILabel!
     
     var channelViewModel: ChannelViewModel? {
         didSet {
@@ -26,15 +27,19 @@ class ChannelTableViewCell: BondTableViewCell {
                     stateLabel?.setChannelState(state)
                 }
                 .dispose(in: onReuseBag)
+            
+            channelViewModel.channel.localBalance
+                .bind(to: channelBalanceLabel.reactive.text, currency: Settings.primaryCurrency)
+                .dispose(in: onReuseBag)
         }
     }
     
     override func awakeFromNib() {
         super.awakeFromNib()
         
-        Style.label.apply(to: nameLabel, stateLabel)
-
-        nameLabel?.font = nameLabel?.font.withSize(14)
+        Style.label.apply(to: nameLabel, stateLabel, channelBalanceLabel) {
+            $0.font = $0.font.withSize(14)
+        }
         stateLabel?.font = stateLabel?.font.withSize(12)
     }
 }
