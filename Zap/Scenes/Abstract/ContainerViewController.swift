@@ -10,12 +10,23 @@ import UIKit
 protocol ContainerViewController: class {
     var container: UIView? { get }
     var currentViewController: UIViewController? { get set }
+    
+    func setContainerContent(_ viewController: UIViewController)
 }
 
 extension ContainerViewController where Self: UIViewController {
     
-    func setInitialViewController(_ viewController: UIViewController) {
+    func setContainerContent(_ viewController: UIViewController) {
+        if currentViewController == nil {
+            setInitialViewController(viewController)
+        } else {
+            switchToViewController(viewController)
+        }
+    }
+    
+    private func setInitialViewController(_ viewController: UIViewController) {
         guard let container = container else { return }
+        
         addChildViewController(viewController)
         viewController.view.frame = container.bounds
         container.addSubview(viewController.view)
@@ -23,7 +34,7 @@ extension ContainerViewController where Self: UIViewController {
         self.currentViewController = viewController
     }
     
-    func switchToViewController(_ viewController: UIViewController, completion: (() -> Void)? = nil) {
+    private func switchToViewController(_ viewController: UIViewController, completion: (() -> Void)? = nil) {
         guard
             let currentViewController = currentViewController,
             let container = container

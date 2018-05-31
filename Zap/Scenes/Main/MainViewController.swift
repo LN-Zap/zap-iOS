@@ -77,7 +77,7 @@ final class MainViewController: UIViewController, ContainerViewController {
          viewModel?.info.alias.bind(to: aliasLabel.reactive.text)]
             .dispose(in: reactive.bag)
         
-        setInitialViewController(transactionViewController)
+        setContainerContent(transactionViewController)
         segmentedControl(select: .transactions)
     }
     
@@ -102,12 +102,12 @@ final class MainViewController: UIViewController, ContainerViewController {
     
     @IBAction private func transactionsButtonTapped(_ smender: Any) {
         segmentedControl(select: .transactions)
-        switchToViewController(transactionViewController)
+        setContainerContent(transactionViewController)
     }
     
     @IBAction private func networkButtonTapped(_ sender: Any) {
         segmentedControl(select: .network)
-        switchToViewController(channelViewController)
+        setContainerContent(channelViewController)
     }
     
     @IBAction private func expandHeaderButtonTapped(_ sender: Any) {

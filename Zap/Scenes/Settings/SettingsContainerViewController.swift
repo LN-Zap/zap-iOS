@@ -45,7 +45,7 @@ class SettingsContainerViewController: UIViewController, ContainerViewController
         exchangeRateLabel.textColor = .gray
 
         let viewController = SettingsViewController()
-        setInitialViewController(viewController)
+        setContainerContent(viewController)
         
         title = "scene.settings.title".localized
     }

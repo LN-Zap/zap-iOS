@@ -55,16 +55,16 @@ class RootViewController: UIViewController, ContainerViewController {
         
         switch LndConnection.current {
         case .none:
-            setInitialViewController(setupViewController)
+            setContainerContent(setupViewController)
         default:
             if Environment.skipPinFlow || AuthenticationViewModel.shared.pin == nil {
                 viewModel = LndConnection.current.viewModel
                 if let viewModel = viewModel {
-                    setInitialViewController(loadingViewController)
+                    setContainerContent(loadingViewController)
                     startWalletUI(with: viewModel)
                 }
             } else {
-                setInitialViewController(pinViewController)
+                setContainerContent(pinViewController)
             }
         }
     }
@@ -102,7 +102,7 @@ class RootViewController: UIViewController, ContainerViewController {
                 
                 if let viewController = viewController {
                     DispatchQueue.main.async {
-                        self?.switchToViewController(viewController)
+                        self?.setContainerContent(viewController)
                     }
                 }
             }
@@ -130,7 +130,7 @@ extension RootViewController: SetupWalletDelegate {
         } else {
             let setupPinViewController = Storyboard.numericKeyPad.instantiate(viewController: SetupPinViewController.self)
             setupPinViewController.delegate = self
-            switchToViewController(setupPinViewController)
+            setContainerContent(setupPinViewController)
         }
     }
 }

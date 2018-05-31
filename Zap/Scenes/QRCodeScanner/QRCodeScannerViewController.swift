@@ -80,7 +80,7 @@ class QRCodeScannerViewController: UIViewController, ContainerViewController {
             let viewController = strategy?.viewControllerForAddressType(type, address: address, viewModel: viewModel)
             else { return }
         
-        setInitialViewController(viewController)
+        setContainerContent(viewController)
         
         if let viewController = viewController as? QRCodeScannerChildViewController {
             containerViewHeightConstraint?.constant = viewController.contentHeight
