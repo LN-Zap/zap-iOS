@@ -27,12 +27,21 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             print("💾", documentsDir.replacingOccurrences(of: "file://", with: ""))
         }
         
+        if let url = launchOptions?[.url] as? URL {
+            return handle(url: url)
+        }
+        
         return true
     }
     
     func application(_ app: UIApplication, open url: URL, options: [UIApplicationOpenURLOptionsKey: Any] = [:]) -> Bool {
+        return handle(url: url)
+    }
+    
+    private func handle(url: URL) -> Bool {
         print("OPEN URL: \(url)") // TODO
-        return true
+        
+        return false
     }
     
     func applicationWillResignActive(_ application: UIApplication) {
