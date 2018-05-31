@@ -173,6 +173,7 @@
 		AD77466C2078EE5600EC596B /* ChannelTransactionAnnotationUpdater.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD77466B2078EE5600EC596B /* ChannelTransactionAnnotationUpdater.swift */; };
 		AD86BCFE2099F50C00A7866A /* rpc.pb.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD86BCFD2099F50C00A7866A /* rpc.pb.swift */; };
 		AD86BD002099FB4500A7866A /* rpc.grpc.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD86BCFF2099FB4500A7866A /* rpc.grpc.swift */; };
+		AD8B13F120C0582D0091F9DA /* App.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD8B13F020C0582D0091F9DA /* App.swift */; };
 		AD93ED5420A07B0C000E814E /* Notification.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD93ED5220A07A24000E814E /* Notification.swift */; };
 		AD93ED5620A09D59000E814E /* GraphTopologyUpdate.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD93ED5520A09D59000E814E /* GraphTopologyUpdate.swift */; };
 		AD99C9ED209072710061C565 /* QRCodeScanner.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AD99C9EC209072710061C565 /* QRCodeScanner.storyboard */; };
@@ -458,6 +459,7 @@
 		AD77466B2078EE5600EC596B /* ChannelTransactionAnnotationUpdater.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChannelTransactionAnnotationUpdater.swift; sourceTree = "<group>"; };
 		AD86BCFD2099F50C00A7866A /* rpc.pb.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = rpc.pb.swift; path = Proto/rpc.pb.swift; sourceTree = SOURCE_ROOT; };
 		AD86BCFF2099FB4500A7866A /* rpc.grpc.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = rpc.grpc.swift; path = Proto/rpc.grpc.swift; sourceTree = SOURCE_ROOT; };
+		AD8B13F020C0582D0091F9DA /* App.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = App.swift; sourceTree = "<group>"; };
 		AD93ED5220A07A24000E814E /* Notification.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Notification.swift; sourceTree = "<group>"; };
 		AD93ED5520A09D59000E814E /* GraphTopologyUpdate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GraphTopologyUpdate.swift; sourceTree = "<group>"; };
 		AD99C9EC209072710061C565 /* QRCodeScanner.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = QRCodeScanner.storyboard; sourceTree = "<group>"; };
@@ -886,6 +888,7 @@
 		A0A05A012013CF960007D1C9 /* Zap */ = {
 			isa = PBXGroup;
 			children = (
+				AD8B13F020C0582D0091F9DA /* App.swift */,
 				A0A05A022013CF960007D1C9 /* AppDelegate.swift */,
 				A0A05A5F2014A10A0007D1C9 /* Extensions */,
 				A01009352014BE070001EF94 /* Helper */,
@@ -1785,6 +1788,7 @@
 				A0F57DC2201E700C003AFA66 /* TransactionListViewModel.swift in Sources */,
 				ADBB36242080A457005662B4 /* LightningMock.swift in Sources */,
 				ADBA4425209B067400D18B71 /* ProtobufExtensions.swift in Sources */,
+				AD8B13F120C0582D0091F9DA /* App.swift in Sources */,
 				ADBB36222080A3B1005662B4 /* LightningProtocol.swift in Sources */,
 				A0D3C96C205FCBF40015C5D7 /* Result.swift in Sources */,
 				AD93ED5420A07B0C000E814E /* Notification.swift in Sources */,

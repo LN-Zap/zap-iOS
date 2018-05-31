@@ -19,16 +19,16 @@ enum RootChildViewControllers {
 class RootViewController: UIViewController, ContainerViewController {
     // swiftlint:disable:next private_outlet
     @IBOutlet weak var container: UIView?
+    weak var currentViewController: UIViewController?
     
     var viewModel: ViewModel?
+    var connect: (() -> Void)?
     
     override var preferredStatusBarStyle: UIStatusBarStyle {
         return .lightContent
     }
     
-    weak var currentViewController: UIViewController?
-    
-    private func setChild(_ child: RootChildViewControllers) {
+    func setChild(_ child: RootChildViewControllers) {
 
         let viewController: UIViewController
         
@@ -54,74 +54,17 @@ class RootViewController: UIViewController, ContainerViewController {
         }
     }
     
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        
-        switch LndConnection.current {
-        case .none:
-            setChild(.setup)
-        default:
-            if Environment.skipPinFlow || !AuthenticationViewModel.shared.didSetupPin {
-                viewModel = LndConnection.current.viewModel
-                if let viewModel = viewModel {
-                    setChild(.loading(.none))
-                    startWalletUI(with: viewModel)
-                }
-            } else {
-                setChild(.pin)
-            }
-        }
-    }
-    
-    func startWalletUI(with viewModel: ViewModel) {
-        NotificationCenter.default.reactive.notification(name: .lndError)
-            .observeNext { notification in
-                guard let message = notification.userInfo?["message"] as? String else { return }
-                
-                DispatchQueue.main.async {
-                    let toast = Toast(message: message, style: .error)
-                    UIApplication.topViewController?.presentToast(toast, animated: true, completion: nil)
-                }
-            }
-            .dispose(in: reactive.bag)
-        
-        viewModel.info.walletState
-            .distinct()
-            .observeNext { [weak self] state in
-                switch state {
-                case .locked:
-                    self?.setChild(.pin)
-                case .connecting:
-                    self?.setChild(.loading(.none))
-                case .noInternet:
-                    self?.setChild(.loading(.noInternet))
-                case .syncing:
-                    self?.setChild(.sync)
-                case .ready:
-                    self?.setChild(.main)
-                }
-            }
-            .dispose(in: reactive.bag)
-    }
-    
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         
         DebugButton.instance.setup()
-    }
-    
-    private func connect() {
-        guard let viewModel = LndConnection.current.viewModel else { return }
-        self.viewModel = viewModel
-        
-        startWalletUI(with: viewModel)
     }
 }
 
 extension RootViewController: SetupWalletDelegate {
     func didSetupWallet() {
         if Environment.skipPinFlow || AuthenticationViewModel.shared.didSetupPin {
-            connect()
+            connect?()
         } else {
             setChild(.setupPin)
         }
@@ -130,12 +73,12 @@ extension RootViewController: SetupWalletDelegate {
 
 extension RootViewController: SetupPinDelegate {
     func didSetupPin() {
-        connect()
+        connect?()
     }
 }
 
 extension RootViewController: PinViewDelegate {
     func didAuthenticate() {
-        connect()
+        connect?()
     }
 }

@@ -11,6 +11,7 @@ import UIKit
 class AppDelegate: UIResponder, UIApplicationDelegate {
     private var blurEffectView: UIVisualEffectView?
 
+    var app: App?
     var window: UIWindow? {
         didSet {
             window?.tintColor = UIColor.zap.tint
@@ -25,6 +26,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         if let documentsDir = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first?.absoluteString {
             print("💾", documentsDir.replacingOccurrences(of: "file://", with: ""))
+        }
+        
+        if let window = window {
+            app = App(window: window)
         }
         
         if let url = launchOptions?[.url] as? URL {
