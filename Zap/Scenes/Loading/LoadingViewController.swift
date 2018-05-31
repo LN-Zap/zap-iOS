@@ -8,15 +8,26 @@
 import UIKit
 
 class LoadingViewController: UIViewController {
+    enum Message {
+        case none
+        case noInternet
+    }
+    
     @IBOutlet private weak var infoLabel: UILabel!
     
-    var message: String?
+    var state = Message.none
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
         Style.label.apply(to: infoLabel)
         infoLabel.textColor = .white
-        infoLabel.text = message
+        
+        switch state {
+        case .none:
+            infoLabel.text = nil
+        case .noInternet:
+            infoLabel.text = LndError.noInternet.localizedDescription
+        }
     }
 }

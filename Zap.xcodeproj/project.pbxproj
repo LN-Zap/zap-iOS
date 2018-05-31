@@ -141,6 +141,7 @@
 		AD1EB9FD20B2CEAA001FF67E /* StatusBarDelegatingNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD1EB9FC20B2CEAA001FF67E /* StatusBarDelegatingNavigationController.swift */; };
 		AD1EB9FF20B2EAF4001FF67E /* ChannelAliasStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD1EB9FE20B2EAF4001FF67E /* ChannelAliasStore.swift */; };
 		AD1EBA0120B2FD9D001FF67E /* Persistable.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD1EBA0020B2FD9D001FF67E /* Persistable.swift */; };
+		AD2EDBFA20C02616002E6EE5 /* UIStoryboard.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD2EDBF920C02616002E6EE5 /* UIStoryboard.swift */; };
 		AD33B5EF20A8463600E32BD9 /* SendOnChainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD33B5EE20A8463600E32BD9 /* SendOnChainViewController.swift */; };
 		AD38EB30207DF233007DF14D /* UIButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD38EB2F207DF233007DF14D /* UIButton.swift */; };
 		AD38EB32207DFB59007DF14D /* SegmentButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD38EB31207DFB59007DF14D /* SegmentButton.swift */; };
@@ -426,6 +427,7 @@
 		AD1EB9FC20B2CEAA001FF67E /* StatusBarDelegatingNavigationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatusBarDelegatingNavigationController.swift; sourceTree = "<group>"; };
 		AD1EB9FE20B2EAF4001FF67E /* ChannelAliasStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChannelAliasStore.swift; sourceTree = "<group>"; };
 		AD1EBA0020B2FD9D001FF67E /* Persistable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Persistable.swift; sourceTree = "<group>"; };
+		AD2EDBF920C02616002E6EE5 /* UIStoryboard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIStoryboard.swift; sourceTree = "<group>"; };
 		AD33B5EE20A8463600E32BD9 /* SendOnChainViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SendOnChainViewController.swift; sourceTree = "<group>"; };
 		AD38EB2F207DF233007DF14D /* UIButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIButton.swift; sourceTree = "<group>"; };
 		AD38EB31207DFB59007DF14D /* SegmentButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SegmentButton.swift; sourceTree = "<group>"; };
@@ -946,6 +948,7 @@
 				ADE4CF1C20B5B2BE007C987A /* UIFont.swift */,
 				A0A05A2F2013EFC00007D1C9 /* UIImage.swift */,
 				A0A96B83201748C200788808 /* UILabel.swift */,
+				AD2EDBF920C02616002E6EE5 /* UIStoryboard.swift */,
 				A0A05A5D2014A0DE0007D1C9 /* UITableView.swift */,
 				ADBA120520930C94001F7700 /* UIViewController.swift */,
 				A0919142203B152100FA525A /* UserDefaults.swift */,
@@ -1736,6 +1739,7 @@
 				ADF7936A208E5FEC0086B2CA /* ConfirmMnemonicCollectionViewCell.swift in Sources */,
 				ADA6D2CA20AC2F1D009398A5 /* TransactionViewModel.swift in Sources */,
 				ADA6D2C120AB217B009398A5 /* TransactionStore.swift in Sources */,
+				AD2EDBFA20C02616002E6EE5 /* UIStoryboard.swift in Sources */,
 				AD38EB32207DFB59007DF14D /* SegmentButton.swift in Sources */,
 				ADF79376208F88DE0086B2CA /* RecoverWalletViewController.swift in Sources */,
 				A0C2EABE206F8B5B003AE56E /* Localizable.swift in Sources */,

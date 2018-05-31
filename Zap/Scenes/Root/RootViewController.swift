@@ -7,6 +7,15 @@
 
 import UIKit
 
+enum RootChildViewControllers {
+    case main
+    case setup
+    case sync
+    case loading(LoadingViewController.Message)
+    case setupPin
+    case pin
+}
+
 class RootViewController: UIViewController, ContainerViewController {
     // swiftlint:disable:next private_outlet
     @IBOutlet weak var container: UIView?
@@ -19,35 +28,29 @@ class RootViewController: UIViewController, ContainerViewController {
     
     weak var currentViewController: UIViewController?
     
-    private var mainViewController: MainViewController {
-        let mainViewController = Storyboard.main.instantiate(viewController: MainViewController.self)
-        mainViewController.viewModel = viewModel
-        return mainViewController
-    }
-    
-    private var setupViewController: UINavigationController {
-        let navigationController = Storyboard.createWallet.initial(viewController: UINavigationController.self)
-        if let setupWalletViewController = navigationController.topViewController as? SelectWalletCreationMethodViewController {
-            setupWalletViewController.viewModel = viewModel
-            setupWalletViewController.delegate = self
+    func setChild(_ child: RootChildViewControllers) {
+        guard let viewModel = viewModel else { fatalError("viewModel not set") }
+
+        let viewController: UIViewController
+        
+        switch child {
+        case .main:
+            viewController = UIStoryboard.instantiateMainViewController(with: viewModel)
+        case .setup:
+            viewController = UIStoryboard.instantiateSetupViewController(with: viewModel, delegate: self)
+        case .sync:
+            viewController = UIStoryboard.instantiateSyncViewController(with: viewModel)
+        case .loading(let message):
+            viewController = UIStoryboard.instantiateLoadingViewController(with: message)
+        case .pin:
+            viewController = UIStoryboard.instantiatePinViewController(with: self)
+        case .setupPin:
+            viewController = UIStoryboard.instantiateSetupPinViewController(with: self)
         }
-        return navigationController
-    }
-    
-    private var syncViewController: SyncViewController {
-        let syncViewController = Storyboard.sync.initial(viewController: SyncViewController.self)
-        syncViewController.viewModel = viewModel
-        return syncViewController
-    }
-    
-    private var loadingViewController: LoadingViewController {
-        return Storyboard.loading.initial(viewController: LoadingViewController.self)
-    }
-    
-    private var pinViewController: PinViewController {
-        let pinViewController = Storyboard.numericKeyPad.initial(viewController: PinViewController.self)
-        pinViewController.delegate = self
-        return pinViewController
+        
+        DispatchQueue.main.async {
+            self.setContainerContent(viewController)
+        }
     }
     
     override func viewDidLoad() {
@@ -55,16 +58,16 @@ class RootViewController: UIViewController, ContainerViewController {
         
         switch LndConnection.current {
         case .none:
-            setContainerContent(setupViewController)
+            setChild(.setup)
         default:
             if Environment.skipPinFlow || AuthenticationViewModel.shared.pin == nil {
                 viewModel = LndConnection.current.viewModel
                 if let viewModel = viewModel {
-                    setContainerContent(loadingViewController)
+                    setChild(.loading(.none))
                     startWalletUI(with: viewModel)
                 }
             } else {
-                setContainerContent(pinViewController)
+                setChild(.pin)
             }
         }
     }
@@ -84,26 +87,17 @@ class RootViewController: UIViewController, ContainerViewController {
         viewModel.info.walletState
             .distinct()
             .observeNext { [weak self] state in
-                var viewController: UIViewController?
-                
                 switch state {
                 case .locked:
-                    viewController = self?.pinViewController
+                    self?.setChild(.pin)
                 case .connecting:
-                    viewController = self?.loadingViewController
+                    self?.setChild(.loading(.none))
                 case .noInternet:
-                    viewController = self?.loadingViewController
-                    (viewController as? LoadingViewController)?.message = LndError.noInternet.localizedDescription
+                    self?.setChild(.loading(.noInternet))
                 case .syncing:
-                    viewController = self?.syncViewController
+                    self?.setChild(.sync)
                 case .ready:
-                    viewController = self?.mainViewController
-                }
-                
-                if let viewController = viewController {
-                    DispatchQueue.main.async {
-                        self?.setContainerContent(viewController)
-                    }
+                    self?.setChild(.main)
                 }
             }
             .dispose(in: reactive.bag)
@@ -128,9 +122,7 @@ extension RootViewController: SetupWalletDelegate {
         if Environment.skipPinFlow || AuthenticationViewModel.shared.didSetupPin {
             connect()
         } else {
-            let setupPinViewController = Storyboard.numericKeyPad.instantiate(viewController: SetupPinViewController.self)
-            setupPinViewController.delegate = self
-            setContainerContent(setupPinViewController)
+            setChild(.setupPin)
         }
     }
 }
