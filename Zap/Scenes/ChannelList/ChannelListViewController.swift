@@ -28,10 +28,10 @@ class ChannelListViewController: UIViewController {
     var viewModel: ViewModel? {
         didSet {
             guard let viewModel = viewModel else { return }
-            channelViewModel = ChannelListViewModel(viewModel: viewModel)
+            channelListViewModel = ChannelListViewModel(viewModel: viewModel)
         }
     }
-    private var channelViewModel: ChannelListViewModel?
+    private var channelListViewModel: ChannelListViewModel?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -51,31 +51,23 @@ class ChannelListViewController: UIViewController {
         searchBar.backgroundImage = UIImage()
         searchBackgroundView.backgroundColor = UIColor.zap.searchBackground
         
-        channelViewModel?.sections
+        channelListViewModel?.sections
             .bind(to: tableView, using: ChannelBond())
             .dispose(in: reactive.bag)
         
         tableView.delegate = self
     }
     
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        let navigationController = segue.destination as? UINavigationController
-        
-        if let sendViewController = navigationController?.topViewController as? QRCodeScannerViewController {
-            sendViewController.viewModel = viewModel
-            sendViewController.strategy = OpenChannelQRCodeScannerStrategy()
-        } else if let channelDetailViewController = navigationController?.topViewController as? ChannelDetailViewController,
-            let channelViewModel = sender as? ChannelViewModel,
-            let viewModel = viewModel {
-            channelDetailViewController.channelViewModel = channelViewModel
-            channelDetailViewController.viewModel = viewModel
-        }
-    }
-    
     @objc
     func refresh(sender: UIRefreshControl) {
         viewModel?.channels.update()
         sender.endRefreshing()
+    }
+    
+    @IBAction private func presentAddChannel(_ sender: Any) {
+        guard let viewModel = viewModel else { fatalError("viewModel not set") }
+        let viewController = UIStoryboard.instantiateQRCodeScannerViewController(with: viewModel, strategy: OpenChannelQRCodeScannerStrategy())
+        present(viewController, animated: true, completion: nil)
     }
 }
 
@@ -93,15 +85,15 @@ extension ChannelListViewController: UISearchBarDelegate {
 extension ChannelListViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
         let sectionHeaderView = SectionHeaderView.instanceFromNib
-        sectionHeaderView.title = channelViewModel?.sections[section].metadata
+        sectionHeaderView.title = channelListViewModel?.sections[section].metadata
         sectionHeaderView.backgroundColor = .white
         return sectionHeaderView
     }
     
     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
-        guard let channelViewModel = channelViewModel else { return 0 }
+        guard let channelListViewModel = channelListViewModel else { return 0 }
         
-        if channelViewModel.sections.sections.count > 1 {
+        if channelListViewModel.sections.sections.count > 1 {
             return 60
         } else {
             return 0
@@ -110,8 +102,14 @@ extension ChannelListViewController: UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
-        let channel = channelViewModel?.sections.item(at: indexPath)
-        performSegue(withIdentifier: "showChannelDetailViewController", sender: channel)
+        
+        guard
+            let viewModel = viewModel,
+            let channelViewModel = channelListViewModel?.sections.item(at: indexPath)
+            else { return }
+        
+        let viewController = UIStoryboard.instantiateChannelDetailViewController(with: viewModel, channelViewModel: channelViewModel)
+        present(viewController, animated: true, completion: nil)
     }
     
     func scrollViewDidScroll(_ scrollView: UIScrollView) {

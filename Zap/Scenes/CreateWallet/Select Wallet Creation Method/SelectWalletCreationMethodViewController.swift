@@ -47,13 +47,6 @@ class SelectWalletCreationMethodViewController: UIViewController {
         navigationController?.navigationBar.shadowImage = UIImage()
         navigationController?.navigationBar.setBackgroundImage(UIImage(), for: .default)
     }
-    
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-//        if
-//            let destination = segue.destination as? MnemonicViewController {
-//            destination.mnemonicViewModel = MnemonicViewModel(viewModel: viewModel)
-//        }
-    }
 }
 
 extension SelectWalletCreationMethodViewController: UITableViewDelegate {

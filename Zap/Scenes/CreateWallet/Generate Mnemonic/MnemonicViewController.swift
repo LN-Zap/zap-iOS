@@ -33,7 +33,10 @@ final class MnemonicViewController: UIViewController {
     
     @IBAction private func nextButtonTapped(_ sender: Any) {
         if pageViewController?.isLastViewController == true {
-            performSegue(withIdentifier: "presentConfirmMnemonic", sender: nil)
+            if let confirmMnemonicViewModel = mnemonicViewModel?.confirmMnemonicViewModel {
+                let viewController = UIStoryboard.instantiateConfirmMnemonicViewController(with: confirmMnemonicViewModel)
+                navigationController?.pushViewController(viewController, animated: true)
+            }
         } else {
             pageViewController?.skipToNextViewController()
         }

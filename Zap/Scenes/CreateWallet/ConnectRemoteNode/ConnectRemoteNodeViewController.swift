@@ -69,10 +69,9 @@ class ConnectRemoteNodeViewController: UIViewController {
         textView.text = "\(certString)\n\n\(macString)"
     }
     
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if let viewController = segue.destination as? RemoteNodeCertificatesScannerViewController {
-            viewController.delegate = self
-        }
+    @IBAction private func presentQRCodeScanner(_ sender: Any) {
+        let viewController = UIStoryboard.instantiateRemoteNodeCertificatesScannerViewController(with: self)
+        present(viewController, animated: true, completion: nil)
     }
     
     @IBAction private func pasteCertificates(_ sender: Any) {

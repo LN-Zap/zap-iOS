@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14109" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14113" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
@@ -36,14 +36,14 @@
                                                 <rect key="frame" x="0.0" y="0.0" width="187.5" height="97"/>
                                                 <state key="normal" title="Send"/>
                                                 <connections>
-                                                    <segue destination="Tgt-Lj-oTL" kind="presentation" id="1QF-qZ-Pwc"/>
+                                                    <action selector="presentSend:" destination="smx-iD-hSn" eventType="touchUpInside" id="lWg-qk-emP"/>
                                                 </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Zaa-3u-HIJ">
                                                 <rect key="frame" x="187.5" y="0.0" width="187.5" height="97"/>
                                                 <state key="normal" title="Request"/>
                                                 <connections>
-                                                    <segue destination="pa3-un-XO8" kind="presentation" id="gId-8d-4bM"/>
+                                                    <action selector="presentRequest:" destination="smx-iD-hSn" eventType="touchUpInside" id="Yk5-jm-hIc"/>
                                                 </connections>
                                             </button>
                                         </subviews>
@@ -227,22 +227,6 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="RqO-9f-qWr" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="96.799999999999997" y="227.13643178410797"/>
-        </scene>
-        <!--QRCodeScanner-->
-        <scene sceneID="EPk-XX-Vxb">
-            <objects>
-                <viewControllerPlaceholder storyboardName="QRCodeScanner" id="Tgt-Lj-oTL" sceneMemberID="viewController"/>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="6h0-q6-emr" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="-71" y="725"/>
-        </scene>
-        <!--Request-->
-        <scene sceneID="wH1-a8-Mpt">
-            <objects>
-                <viewControllerPlaceholder storyboardName="Request" id="pa3-un-XO8" sceneMemberID="viewController"/>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="VgL-1t-U1i" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="265" y="725"/>
         </scene>
     </scenes>
     <resources>

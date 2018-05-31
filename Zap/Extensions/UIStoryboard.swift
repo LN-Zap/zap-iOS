@@ -121,6 +121,44 @@ extension UIStoryboard {
     static func instantiateDebugViewController() -> UINavigationController {
         return Storyboard.debug.initial(viewController: UINavigationController.self)
     }
+    
+    static func instantiateQRCodeScannerViewController(with viewModel: ViewModel, strategy: QRCodeScannerStrategy) -> UINavigationController {
+        let navigationController = Storyboard.qrCodeScanner.initial(viewController: UINavigationController.self)
+        if let viewController = navigationController.topViewController as? QRCodeScannerViewController {
+            viewController.viewModel = viewModel
+            viewController.strategy = strategy
+        }
+        return navigationController
+    }
+    
+    static func instantiateRequestViewController(with viewModel: ViewModel) -> UINavigationController {
+        let navigationController = Storyboard.request.initial(viewController: UINavigationController.self)
+        if let viewController = navigationController.topViewController as? RequestViewController {
+            viewController.viewModel = viewModel
+        }
+        return navigationController
+    }
+    
+    static func instantiateChannelDetailViewController(with viewModel: ViewModel, channelViewModel: ChannelViewModel) -> UINavigationController {
+        let navigationController = Storyboard.channelList.instantiate(viewController: ModalNavigationController.self)
+        if let viewController = navigationController.topViewController as? ChannelDetailViewController {
+            viewController.viewModel = viewModel
+            viewController.channelViewModel = channelViewModel
+        }
+        return navigationController
+    }
+    
+    static func instantiateRemoteNodeCertificatesScannerViewController(with delegate: RemoteNodeCertificatesScannerDelegate) -> RemoteNodeCertificatesScannerViewController {
+        let viewController = Storyboard.connectRemoteNode.instantiate(viewController: RemoteNodeCertificatesScannerViewController.self)
+        viewController.delegate = delegate
+        return viewController
+    }
+    
+    static func instantiateConfirmMnemonicViewController(with confirmMnemonicViewModel: ConfirmMnemonicViewModel) -> ConfirmMnemonicViewController {
+        let viewController = Storyboard.createWallet.instantiate(viewController: ConfirmMnemonicViewController.self)
+        viewController.confirmViewModel = confirmMnemonicViewModel
+        return viewController
+    }
 }
 
 private enum Storyboard: String {

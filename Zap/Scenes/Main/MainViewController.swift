@@ -111,19 +111,19 @@ final class MainViewController: UIViewController, ContainerViewController {
     @IBAction private func expandHeaderButtonTapped(_ sender: Any) {
         guard let viewModel = viewModel else { fatalError("viewModel not set") }
         let viewController = UIStoryboard.instantiateSettingsContainerViewController(with: viewModel)
-
         present(viewController, animated: true, completion: nil)
     }
     
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        guard let navigationController = segue.destination as? UINavigationController else { return }
-        
-        if let sendViewController = navigationController.topViewController as? QRCodeScannerViewController {
-            sendViewController.viewModel = viewModel
-            sendViewController.strategy = SendQRCodeScannerStrategy()
-        } else if let requestViewController = navigationController.topViewController as? RequestViewController {
-            requestViewController.viewModel = viewModel
-        }
+    @IBAction private func presentSend(_ sender: Any) {
+        guard let viewModel = viewModel else { fatalError("viewModel not set.") }
+        let viewController = UIStoryboard.instantiateQRCodeScannerViewController(with: viewModel, strategy: SendQRCodeScannerStrategy())
+        present(viewController, animated: true, completion: nil)
+    }
+    
+    @IBAction private func presentRequest(_ sender: Any) {
+        guard let viewModel = viewModel else { fatalError("viewModel not set.") }
+        let viewController = UIStoryboard.instantiateRequestViewController(with: viewModel)
+        present(viewController, animated: true, completion: nil)
     }
     
     @IBAction private func swapCurrencyButtonTapped(_ sender: Any) {

@@ -55,7 +55,7 @@
                                                 <rect key="frame" x="228" y="0.0" width="46" height="30"/>
                                                 <state key="normal" title="Button"/>
                                                 <connections>
-                                                    <segue destination="Cio-lo-XgE" kind="presentation" id="MfH-he-sGa"/>
+                                                    <action selector="presentQRCodeScanner:" destination="mlm-OI-MXW" eventType="touchUpInside" id="D7v-rU-MRn"/>
                                                 </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="JsS-8f-qAo">
@@ -122,7 +122,7 @@
         <!--Remote Node Certificates Scanner View Controller-->
         <scene sceneID="qHr-tO-JIs">
             <objects>
-                <viewController id="Cio-lo-XgE" customClass="RemoteNodeCertificatesScannerViewController" customModule="Zap" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="RemoteNodeCertificatesScannerViewController" id="Cio-lo-XgE" customClass="RemoteNodeCertificatesScannerViewController" customModule="Zap" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="maU-hY-rMM">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>

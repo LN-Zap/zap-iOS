@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14109" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="qfZ-HA-Q7u">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14113" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="qfZ-HA-Q7u">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
@@ -133,7 +133,7 @@
                                         </constraints>
                                         <state key="normal" image="icon-plus"/>
                                         <connections>
-                                            <segue destination="2cF-Hq-yyA" kind="show" id="GFe-Dv-fAU"/>
+                                            <action selector="presentAddChannel:" destination="qfZ-HA-Q7u" eventType="touchUpInside" id="hQH-nc-iVj"/>
                                         </connections>
                                     </button>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="tjv-go-bow" customClass="LineView" customModule="Zap" customModuleProvider="target">
@@ -187,25 +187,16 @@
                         <outlet property="searchBackgroundView" destination="LLv-cT-0ck" id="it3-AQ-8JW"/>
                         <outlet property="searchBar" destination="8Kj-e6-ZNh" id="Re8-4u-JtT"/>
                         <outlet property="tableView" destination="FET-KL-LGb" id="cBM-dk-rOx"/>
-                        <segue destination="tOg-JC-iar" kind="presentation" identifier="showChannelDetailViewController" id="Xl6-7N-NrV"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="bQd-Ir-gU6" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="2404" y="470.01499250374815"/>
         </scene>
-        <!--QRCodeScanner-->
-        <scene sceneID="B8e-e2-1p5">
-            <objects>
-                <viewControllerPlaceholder storyboardName="QRCodeScanner" id="2cF-Hq-yyA" sceneMemberID="viewController"/>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="6Bg-CS-Un5" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="3161" y="470"/>
-        </scene>
         <!--Modal Navigation Controller-->
         <scene sceneID="uCH-8P-Idt">
             <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="tOg-JC-iar" customClass="ModalNavigationController" customModule="Zap" customModuleProvider="target" sceneMemberID="viewController">
+                <navigationController storyboardIdentifier="ModalNavigationController" automaticallyAdjustsScrollViewInsets="NO" id="tOg-JC-iar" customClass="ModalNavigationController" customModule="Zap" customModuleProvider="target" sceneMemberID="viewController">
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="o05-vc-dS5">
                         <rect key="frame" x="0.0" y="20" width="375" height="44"/>
