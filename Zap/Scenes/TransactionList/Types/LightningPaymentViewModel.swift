@@ -10,7 +10,7 @@ import BTCUtil
 import Foundation
 
 private func displayTextForAnnotation(_ annotation: TransactionAnnotation, lightningPayment: LightningPayment) -> String {
-    if let customMemo = annotation.customMemo {
+    if let customMemo = annotation.customMemo, customMemo != "" {
         return customMemo
     }
     return lightningPayment.paymentHash
