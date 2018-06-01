@@ -52,6 +52,14 @@ class SelectWalletCreationMethodViewController: UIViewController {
 extension SelectWalletCreationMethodViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
+        
+        if indexPath.row < 2 {
+            let alertController = UIAlertController(title: "Sorry", message: "Running lnd on the phone is not yet supported in this beta.", preferredStyle: .alert)
+            alertController.addAction(UIAlertAction(title: "Ok", style: .cancel, handler: nil))
+            present(alertController, animated: true, completion: nil)
+            return
+        }
+        
         let cellContent = content[indexPath.row]
         let viewController = cellContent.2()
         
