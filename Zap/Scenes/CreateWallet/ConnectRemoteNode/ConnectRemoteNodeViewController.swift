@@ -11,9 +11,14 @@ class ConnectRemoteNodeViewController: UIViewController {
     
     @IBOutlet private weak var urlLabel: UILabel!
     @IBOutlet private weak var urlTextField: UITextField!
-    @IBOutlet private weak var zapconnectLabel: UILabel!
     @IBOutlet private weak var scanCertificatesButton: UIButton!
     @IBOutlet private weak var pasteCertificatesButton: UIButton!
+    @IBOutlet private weak var lightBackgroundView: UIView!
+    @IBOutlet private weak var lineView: LineView! {
+        didSet {
+            lineView.color = UIColor.zap.darkTableViewSeparator
+        }
+    }
     
     @IBOutlet private weak var connectButton: GradientLoadingButtonView!
     @IBOutlet private weak var textView: UITextView!
@@ -35,21 +40,30 @@ class ConnectRemoteNodeViewController: UIViewController {
         title = "Connect Remote Node"
         
         view.backgroundColor = UIColor.zap.darkBackground
+        lightBackgroundView.backgroundColor = UIColor.zap.mediumBackground
         
-        Style.label.apply(to: zapconnectLabel, urlLabel) {
+        Style.label.apply(to: urlLabel) {
             $0.textColor = .white
         }
         Style.textField.apply(to: urlTextField) {
             $0.textColor = .white
         }
-        Style.button.apply(to: scanCertificatesButton, pasteCertificatesButton)
+        Style.button.apply(to: scanCertificatesButton, pasteCertificatesButton) {
+            $0.imageEdgeInsets = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 10)
+            $0.tintColor = .white
+        }
         
         urlTextField.attributedPlaceholder =
             NSAttributedString(string: "192.168.1.3:10009", attributes: [.foregroundColor: UIColor.lightGray])
         urlTextField.delegate = self
         
-        scanCertificatesButton.setTitle("scan", for: .normal)
-        pasteCertificatesButton.setTitle("paste", for: .normal)
+        UIView.performWithoutAnimation {
+            scanCertificatesButton.setTitle("scan", for: .normal)
+            scanCertificatesButton.layoutIfNeeded()
+            pasteCertificatesButton.setTitle("paste", for: .normal)
+            pasteCertificatesButton.layoutIfNeeded()
+        }
+        
         connectButton.title = "Connect"
         
         textView.font = UIFont(name: "Courier", size: 12)

@@ -51,7 +51,7 @@
 		A03F03602028C73F00F32279 /* SendLightningInvoiceViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A03F035F2028C73F00F32279 /* SendLightningInvoiceViewModel.swift */; };
 		A0605F86202C962900EA903C /* SectionHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0605F85202C962900EA903C /* SectionHeaderView.swift */; };
 		A0605F88202C963800EA903C /* SectionHeaderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = A0605F87202C963800EA903C /* SectionHeaderView.xib */; };
-		A0605F8D202C9D8200EA903C /* HorizontalLineView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0605F8C202C9D8200EA903C /* HorizontalLineView.swift */; };
+		A0605F8D202C9D8200EA903C /* LineView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0605F8C202C9D8200EA903C /* LineView.swift */; };
 		A06660F5202D97A300EE32FA /* QRCodeScannerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A06660F4202D97A300EE32FA /* QRCodeScannerView.swift */; };
 		A06660FC202E080400EE32FA /* UpdatePinSettingsItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = A06660FB202E080400EE32FA /* UpdatePinSettingsItem.swift */; };
 		A070D962202A3CC7000A8274 /* SendOnChainViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A070D961202A3CC7000A8274 /* SendOnChainViewModel.swift */; };
@@ -319,7 +319,7 @@
 		A03F035F2028C73F00F32279 /* SendLightningInvoiceViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SendLightningInvoiceViewModel.swift; sourceTree = "<group>"; };
 		A0605F85202C962900EA903C /* SectionHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SectionHeaderView.swift; sourceTree = "<group>"; };
 		A0605F87202C963800EA903C /* SectionHeaderView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SectionHeaderView.xib; sourceTree = "<group>"; };
-		A0605F8C202C9D8200EA903C /* HorizontalLineView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HorizontalLineView.swift; sourceTree = "<group>"; };
+		A0605F8C202C9D8200EA903C /* LineView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LineView.swift; sourceTree = "<group>"; };
 		A06660F4202D97A300EE32FA /* QRCodeScannerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QRCodeScannerView.swift; sourceTree = "<group>"; };
 		A06660FB202E080400EE32FA /* UpdatePinSettingsItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpdatePinSettingsItem.swift; sourceTree = "<group>"; };
 		A070D961202A3CC7000A8274 /* SendOnChainViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SendOnChainViewModel.swift; sourceTree = "<group>"; };
@@ -684,7 +684,7 @@
 				A0BD44DE206FED1400BF27A3 /* BondTableViewCell.swift */,
 				A0F353CF20692570005B3639 /* GradientView.swift */,
 				ADB6DEDA20AD8F80001324C8 /* GradientLoadingButtonView.swift */,
-				A0605F8C202C9D8200EA903C /* HorizontalLineView.swift */,
+				A0605F8C202C9D8200EA903C /* LineView.swift */,
 				ADBA12082093587B001F7700 /* KeyPad */,
 				ADF79363208DCB630086B2CA /* PinView.swift */,
 				A0605F89202C9D1A00EA903C /* Section Header */,
@@ -1728,7 +1728,7 @@
 				A0DDC0622018955C00AEFF94 /* SettingsViewController.swift in Sources */,
 				A01009522015FA2D0001EF94 /* ModalViewController.swift in Sources */,
 				A024B85020160F93002B8897 /* ChannelTableViewCell.swift in Sources */,
-				A0605F8D202C9D8200EA903C /* HorizontalLineView.swift in Sources */,
+				A0605F8D202C9D8200EA903C /* LineView.swift in Sources */,
 				A0919147203B293000FA525A /* PaperKeySettingsItem.swift in Sources */,
 				A0A96B822017442D00788808 /* ChannelDetailViewController.swift in Sources */,
 				ADF79368208E09D00086B2CA /* SetupPinViewModel.swift in Sources */,
