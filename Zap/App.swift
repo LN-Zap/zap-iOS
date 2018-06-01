@@ -9,6 +9,7 @@ import UIKit
 
 final class App: NSObject {
     let rootViewController: RootViewController
+    
     var viewModel: ViewModel? {
         didSet {
             rootViewController.viewModel = viewModel
@@ -65,7 +66,14 @@ final class App: NSObject {
                 case .locked:
                     self?.rootViewController.setChild(.pin)
                 case .connecting:
-                    self?.rootViewController.setChild(.loading(.none))
+                    if case .remote = LndConnection.current {
+                        viewModel.stop()
+                        self?.viewModel = nil
+                        print("stop viewModel")
+                        self?.rootViewController.setChild(.setup)
+                    } else {
+                        self?.rootViewController.setChild(.loading(.none))
+                    }
                 case .noInternet:
                     self?.rootViewController.setChild(.loading(.noInternet))
                 case .syncing:

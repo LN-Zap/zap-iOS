@@ -22,7 +22,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         UIApplication.shared.isIdleTimerDisabled = true
         Appearance.setup()
         
-        Scheduler.schedule(interval: 60 * 10, job: ExchangeUpdaterJob()) // TODO: move this somewhere else?
+        _ = Scheduler.schedule(interval: 60 * 10, job: ExchangeUpdaterJob()) // TODO: move this somewhere else?
         
         if let documentsDir = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first?.absoluteString {
             print("💾", documentsDir.replacingOccurrences(of: "file://", with: ""))

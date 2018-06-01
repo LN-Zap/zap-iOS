@@ -104,6 +104,10 @@ final class ViewModel: NSObject {
     func addInvoice(amount: Satoshi, memo: String?, callback: @escaping (Result<String>) -> Void) {
         api.addInvoice(amount: amount, memo: memo, callback: callback)
     }
+    
+    func stop() {
+        info.stop()
+    }
         
     // TODO: refactor - move this somewhere else
     

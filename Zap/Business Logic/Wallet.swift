@@ -26,6 +26,9 @@ final class Wallet {
     let walletState: Observable<WalletState>
     let network = Observable<Network>(.testnet)
     
+    private let heightJobTimer: Timer?
+    private var updateInfoTimer: Timer?
+    
     var isLocked = false {
         didSet {
             updateWalletState(result: nil)
@@ -35,11 +38,11 @@ final class Wallet {
     init(api: LightningProtocol) {
         walletState = Observable(.connecting)
         
-        Scheduler.schedule(interval: 120, job: BlockChainHeightJob { [blockChainHeight] height in
+        heightJobTimer = Scheduler.schedule(interval: 120, job: BlockChainHeightJob { [blockChainHeight] height in
             blockChainHeight.value = height
         })
         
-        Scheduler.schedule(interval: 1, action: { [api, updateInfo] in
+        updateInfoTimer = Scheduler.schedule(interval: 1, action: { [api, updateInfo] in
             api.info(callback: updateInfo)
         })
     }
@@ -75,5 +78,10 @@ final class Wallet {
         } else {
             walletState.value = .connecting
         }
+    }
+    
+    func stop() {
+        heightJobTimer?.invalidate()
+        updateInfoTimer?.invalidate()
     }
 }

@@ -28,17 +28,19 @@ class Task: SchedulerJob {
 final class Scheduler {
     private static var jobs: [SchedulerJob] = []
     
-    static func schedule(interval: TimeInterval, job: SchedulerJob) {
+    static func schedule(interval: TimeInterval, job: SchedulerJob) -> Timer {
         guard Thread.isMainThread else { fatalError("'schedule' called from wrong thread.") }
         
-        Timer.scheduledTimer(timeInterval: interval, target: job, selector: #selector(job.run), userInfo: nil, repeats: true)
+        let timer = Timer.scheduledTimer(timeInterval: interval, target: job, selector: #selector(job.run), userInfo: nil, repeats: true)
         job.run()
         jobs.append(job)
+        
+        return timer
     }
     
-    static func schedule(interval: TimeInterval, action: @escaping () -> Void) {
+    static func schedule(interval: TimeInterval, action: @escaping () -> Void) -> Timer {
         let task = Task(action: action)
-        schedule(interval: interval, job: task)
+        return schedule(interval: interval, job: task)
     }
     
     static func job<T: SchedulerJob>() -> T? {

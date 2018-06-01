@@ -17,8 +17,7 @@ class LndLogViewController: UIViewController {
         titleTextStyle = .dark
         textView.font = UIFont(name: "Courier", size: 10)
         
-        Scheduler.schedule(interval: 0.1, action: updateTextView)
-        timer = Timer.scheduledTimer(timeInterval: 0.1, target: self, selector: #selector(updateTextView), userInfo: nil, repeats: true)
+        timer = Scheduler.schedule(interval: 0.1, action: updateTextView)
     }
     
     private var log: String? {
