@@ -9,9 +9,12 @@ import Bond
 import UIKit
 
 extension UIStoryboard {
-    static func instantiateTransactionListViewController(with viewModel: ViewModel) -> TransactionListViewController {
+    static func instantiateTransactionListViewController(with viewModel: ViewModel, presentTransactionDetail: @escaping (TransactionViewModel) -> Void) -> TransactionListViewController {
         let viewController = Storyboard.transactionList.initial(viewController: TransactionListViewController.self)
+        
         viewController.viewModel = viewModel
+        viewController.presentTransactionDetail = presentTransactionDetail
+        
         return viewController
     }
 }
@@ -36,6 +39,7 @@ class TransactionListViewController: UIViewController {
     @IBOutlet private weak var searchBar: UISearchBar!
     @IBOutlet private weak var emptyStateLabel: UILabel!
     
+    fileprivate var presentTransactionDetail: ((TransactionViewModel) -> Void)?
     fileprivate var viewModel: ViewModel? {
         didSet {
             guard let viewModel = viewModel else { return }
@@ -106,14 +110,8 @@ extension TransactionListViewController: UITableViewDelegate {
         
         tableView.deselectRow(at: indexPath, animated: true)
         
-        let transactionType = transactionListViewModel.sections.item(at: indexPath)
-        
-        present(viewControllerFor(transactionType), animated: true, completion: nil)
-    }
-    
-    private func viewControllerFor(_ transactionViewModel: TransactionViewModel) -> UIViewController {
-        guard let viewModel = viewModel else { fatalError("viewModel not set") }
-        return UIStoryboard.instantiateTransactionDetailViewController(with: viewModel, transactionViewModel: transactionViewModel)
+        let transactionViewModel = transactionListViewModel.sections.item(at: indexPath)
+        presentTransactionDetail?(transactionViewModel)
     }
 }
 

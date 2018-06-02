@@ -33,23 +33,37 @@ final class MainCoordinator {
     }
     
     private func presentTransactions() {
-        let viewController = UIStoryboard.instantiateTransactionListViewController(with: viewModel)
+        let viewController = UIStoryboard.instantiateTransactionListViewController(with: viewModel, presentTransactionDetail: presentTransactionDetail)
         mainViewController?.setContainerContent(viewController)
     }
     
     private func presentNetwork() {
-        let viewController = UIStoryboard.instantiateChannelListViewController(with: viewModel)
+        let viewController = UIStoryboard.instantiateChannelListViewController(with: viewModel, presentChannelDetail: presentChannelDetail, addChannelButtonTapped: presentAddChannel)
         mainViewController?.setContainerContent(viewController)
     }
     
     private func presentSend() {
         let viewController = UIStoryboard.instantiateQRCodeScannerViewController(with: viewModel, strategy: SendQRCodeScannerStrategy())
         mainViewController?.present(viewController, animated: true, completion: nil)
-
     }
     
     private func presentRequest() {
         let viewController = UIStoryboard.instantiateRequestViewController(with: viewModel)
+        mainViewController?.present(viewController, animated: true, completion: nil)
+    }
+    
+    private func presentAddChannel() {
+        let viewController = UIStoryboard.instantiateQRCodeScannerViewController(with: viewModel, strategy: OpenChannelQRCodeScannerStrategy())
+        mainViewController?.present(viewController, animated: true, completion: nil)
+    }
+    
+    private func presentChannelDetail(for channelViewModel: ChannelViewModel) {
+        let viewController = UIStoryboard.instantiateChannelDetailViewController(with: viewModel, channelViewModel: channelViewModel)
+        mainViewController?.present(viewController, animated: true, completion: nil)
+    }
+    
+    private func presentTransactionDetail(for transactionViewModel: TransactionViewModel) {
+        let viewController = UIStoryboard.instantiateTransactionDetailViewController(with: viewModel, transactionViewModel: transactionViewModel)
         mainViewController?.present(viewController, animated: true, completion: nil)
     }
 }

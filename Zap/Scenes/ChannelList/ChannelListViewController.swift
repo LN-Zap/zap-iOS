@@ -9,9 +9,13 @@ import Bond
 import UIKit
 
 extension UIStoryboard {
-    static func instantiateChannelListViewController(with viewModel: ViewModel) -> ChannelListViewController {
+    static func instantiateChannelListViewController(with viewModel: ViewModel, presentChannelDetail: @escaping (ChannelViewModel) -> Void, addChannelButtonTapped: @escaping () -> Void) -> ChannelListViewController {
         let viewController = Storyboard.channelList.initial(viewController: ChannelListViewController.self)
+        
         viewController.viewModel = viewModel
+        viewController.presentChannelDetail = presentChannelDetail
+        viewController.addChannelButtonTapped = addChannelButtonTapped
+        
         return viewController
     }
 }
@@ -32,6 +36,9 @@ class ChannelListViewController: UIViewController {
     @IBOutlet private weak var tableView: UITableView?
     @IBOutlet private weak var searchBackgroundView: UIView!
     @IBOutlet private weak var searchBar: UISearchBar!
+    
+    fileprivate var presentChannelDetail: ((ChannelViewModel) -> Void)?
+    fileprivate var addChannelButtonTapped: (() -> Void)?
     
     fileprivate var viewModel: ViewModel? {
         didSet {
@@ -73,9 +80,7 @@ class ChannelListViewController: UIViewController {
     }
     
     @IBAction private func presentAddChannel(_ sender: Any) {
-        guard let viewModel = viewModel else { fatalError("viewModel not set") }
-        let viewController = UIStoryboard.instantiateQRCodeScannerViewController(with: viewModel, strategy: OpenChannelQRCodeScannerStrategy())
-        present(viewController, animated: true, completion: nil)
+        addChannelButtonTapped?()
     }
 }
 
@@ -112,12 +117,10 @@ extension ChannelListViewController: UITableViewDelegate {
         tableView.deselectRow(at: indexPath, animated: true)
         
         guard
-            let viewModel = viewModel,
             let channelViewModel = channelListViewModel?.sections.item(at: indexPath)
             else { return }
         
-        let viewController = UIStoryboard.instantiateChannelDetailViewController(with: viewModel, channelViewModel: channelViewModel)
-        present(viewController, animated: true, completion: nil)
+        presentChannelDetail?(channelViewModel)
     }
     
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
