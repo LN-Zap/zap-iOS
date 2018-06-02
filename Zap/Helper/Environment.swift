@@ -15,4 +15,9 @@ enum Environment {
     static var skipPinFlow: Bool {
         return ProcessInfo.processInfo.environment["SKIP_PIN_FLOW"] == "1"
     }
+    
+    static var defaultRemoteIP: String? {
+        let defaultIp = ProcessInfo.processInfo.environment["DEFAULT_REMOTE_IP"]
+        return defaultIp == "" ? nil : defaultIp
+    }
 }
