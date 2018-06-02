@@ -184,6 +184,7 @@
                         <barButtonItem key="rightBarButtonItem" systemItem="add" id="E33-pH-DHU"/>
                     </navigationItem>
                     <connections>
+                        <outlet property="addChannelButton" destination="A4p-Og-P8b" id="wbI-Nb-KoO"/>
                         <outlet property="searchBackgroundView" destination="LLv-cT-0ck" id="it3-AQ-8JW"/>
                         <outlet property="searchBar" destination="8Kj-e6-ZNh" id="Re8-4u-JtT"/>
                         <outlet property="tableView" destination="FET-KL-LGb" id="cBM-dk-rOx"/>

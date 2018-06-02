@@ -36,6 +36,7 @@ class ChannelListViewController: UIViewController {
     @IBOutlet private weak var tableView: UITableView?
     @IBOutlet private weak var searchBackgroundView: UIView!
     @IBOutlet private weak var searchBar: UISearchBar!
+    @IBOutlet private weak var addChannelButton: UIButton!
     
     fileprivate var presentChannelDetail: ((ChannelViewModel) -> Void)?
     fileprivate var addChannelButtonTapped: (() -> Void)?
@@ -65,6 +66,7 @@ class ChannelListViewController: UIViewController {
         searchBar.delegate = self
         searchBar.backgroundImage = UIImage()
         searchBackgroundView.backgroundColor = UIColor.zap.searchBackground
+        addChannelButton.tintColor = UIColor.zap.text
         
         channelListViewModel?.sections
             .bind(to: tableView, using: ChannelBond())

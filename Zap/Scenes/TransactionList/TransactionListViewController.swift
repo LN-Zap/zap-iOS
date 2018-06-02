@@ -38,6 +38,7 @@ class TransactionListViewController: UIViewController {
     @IBOutlet private weak var searchBackgroundView: UIView!
     @IBOutlet private weak var searchBar: UISearchBar!
     @IBOutlet private weak var emptyStateLabel: UILabel!
+    @IBOutlet private weak var filterButton: UIButton!
     
     fileprivate var presentTransactionDetail: ((TransactionViewModel) -> Void)?
     fileprivate var viewModel: ViewModel? {
@@ -59,6 +60,7 @@ class TransactionListViewController: UIViewController {
         searchBar.delegate = self
         searchBar.backgroundImage = UIImage()
         searchBackgroundView.backgroundColor = UIColor.zap.searchBackground
+        filterButton.tintColor = UIColor.zap.text
         
         Style.label.apply(to: emptyStateLabel)
         emptyStateLabel.text = "0 transactions 🙁"
