@@ -13,6 +13,7 @@ final class LndRpcServer {
     init(configuration: RemoteNodeConfiguration) {
         service = Lnrpc_LightningServiceClient(address: configuration.url.absoluteString, certificates: configuration.remoteNodeCertificates.certificate, host: nil)
         service.metadata.add(key: "macaroon", value: configuration.remoteNodeCertificates.macaron.hexString())
+        service.timeout = Double(Int32.max) // otherwise streaming calls stop working after 10 minutes
     }
     
     func canConnect(callback: @escaping (Bool) -> Void) {

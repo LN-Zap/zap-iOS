@@ -29,4 +29,5 @@ protocol LightningProtocol {
     func addInvoice(amount: Satoshi?, memo: String?, callback: @escaping (Result<String>) -> Void)
     func invoices(callback: @escaping (Result<[Transaction]>) -> Void)
     func subscribeChannelGraph(callback: @escaping (Result<GraphTopologyUpdate>) -> Void)
+    func subscribeInvoices(callback: @escaping (Result<Transaction>) -> Void)
 }

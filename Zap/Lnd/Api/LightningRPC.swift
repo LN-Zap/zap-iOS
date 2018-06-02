@@ -43,12 +43,6 @@ final class LightningRPC: LightningProtocol {
         }))
     }
     
-    func subscribeTransactions(callback: @escaping (Result<Transaction>) -> Void) {
-        _ = try? rpc.subscribeTransactions(Lnrpc_GetTransactionsRequest(), completion: { _ in
-            fatalError("not implemented")
-        })
-    }
-    
     func payments(callback: @escaping (Result<[Transaction]>) -> Void) {        
         _ = try? rpc.listPayments(Lnrpc_ListPaymentsRequest(), completion: result(callback, map: {
             $0.payments.compactMap { LightningPayment(payment: $0) }
@@ -137,6 +131,64 @@ final class LightningRPC: LightningProtocol {
     }
     
     func subscribeChannelGraph(callback: @escaping (Result<GraphTopologyUpdate>) -> Void) {
-//        fatalError("not implemented")
+        do {
+            let call = try rpc.subscribeChannelGraph(Lnrpc_GraphTopologySubscription(), completion: { print(#function, $0) })
+            try receiveChannelGraphUpdate(call: call, callback: callback)
+        } catch {
+            print(error)
+        }
+    }
+    
+    func subscribeInvoices(callback: @escaping (Result<Transaction>) -> Void) {
+        do {
+            let call = try rpc.subscribeInvoices(Lnrpc_InvoiceSubscription(), completion: { print(#function, $0) })
+            try receiveInvoicesUpdate(call: call, callback: callback)
+        } catch {
+            print(error)
+        }
+    }
+    
+    func subscribeTransactions(callback: @escaping (Result<Transaction>) -> Void) {
+        do {
+            let call = try rpc.subscribeTransactions(Lnrpc_GetTransactionsRequest(), completion: { print(#function, $0) })
+            try receiveTransactionsUpdate(call: call, callback: callback)
+        } catch {
+           print(error)
+        }
+    }
+    
+    // MARK: - Streaming helper methods
+
+    private func receiveChannelGraphUpdate(call: Lnrpc_LightningSubscribeChannelGraphCall, callback: @escaping (Result<GraphTopologyUpdate>) -> Void) throws {
+        try call.receive { [weak self] in
+            if let result = $0.result.flatMap({ $0 }) {
+                callback(Result(value: GraphTopologyUpdate(graphTopologyUpdate: result)))
+            } else if let error = $0.error {
+                print(#function, error)
+            }
+            try? self?.receiveChannelGraphUpdate(call: call, callback: callback)
+        }
+    }
+    
+    private func receiveInvoicesUpdate(call: Lnrpc_LightningSubscribeInvoicesCall, callback: @escaping (Result<Transaction>) -> Void) throws {
+        try call.receive { [weak self] in
+            if let result = $0.result.flatMap({ $0 }) {
+                callback(Result(value: LightningInvoice(invoice: result)))
+            } else if let error = $0.error {
+                print(#function, error)
+            }
+            try? self?.receiveInvoicesUpdate(call: call, callback: callback)
+        }
+    }
+    
+    private func receiveTransactionsUpdate(call: Lnrpc_LightningSubscribeTransactionsCall, callback: @escaping (Result<Transaction>) -> Void) throws {
+        try call.receive { [weak self] in
+            if let result = $0.result.flatMap({ $0 }) {
+                callback(Result(value: OnChainTransaction(transaction: result)))
+            } else if let error = $0.error {
+                print(#function, error)
+            }
+            try? self?.receiveTransactionsUpdate(call: call, callback: callback)
+        }
     }
 }

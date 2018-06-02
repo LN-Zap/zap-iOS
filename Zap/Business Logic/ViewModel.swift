@@ -59,8 +59,15 @@ final class ViewModel: NSObject {
             }
             .dispose(in: reactive.bag)
         
-        api.subscribeChannelGraph { _ in
-
+//        api.subscribeChannelGraph { _ in }
+        
+        api.subscribeInvoices { [weak self] _ in
+            self?.updateTransactions()
+        }
+        
+        api.subscribeTransactions { [weak self] _ in
+            // unconfirmed transactions are not returned by GetTransactions
+            self?.updateTransactions()
         }
     }
     

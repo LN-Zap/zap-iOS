@@ -70,9 +70,7 @@ final class LightningStream: LightningProtocol {
     
     func openChannel(pubKey: String, amount: Satoshi, callback: @escaping (Result<Lnrpc_ChannelPoint>) -> Void) {
         let data = try? Lnrpc_OpenChannelRequest(pubKey: pubKey, amount: amount).serializedData()
-//        LndmobileOpenChannel(data, LndCallback<Lnrpc_OpenStatusUpdate, OpenStatusUpdate>(callback, map: OpenStatusUpdate.init))
         LndmobileOpenChannelSync(data, LndCallback<Lnrpc_ChannelPoint, Lnrpc_ChannelPoint>(callback) { $0 })
-
     }
     
     func closeChannel(channelPoint: String, callback: @escaping (Result<CloseStatusUpdate>) -> Void) {
@@ -117,5 +115,11 @@ final class LightningStream: LightningProtocol {
     
     func subscribeChannelGraph(callback: @escaping (Result<GraphTopologyUpdate>) -> Void) {
         LndmobileSubscribeChannelGraph(nil, LndCallback<Lnrpc_GraphTopologyUpdate, GraphTopologyUpdate>(callback, map: GraphTopologyUpdate.init))
+    }
+    
+    func subscribeInvoices(callback: @escaping (Result<Transaction>) -> Void) {
+        LndmobileSubscribeInvoices(nil, LndCallback<Lnrpc_Invoice, Transaction>(callback) {
+            LightningInvoice(invoice: $0)
+        })
     }
 }
