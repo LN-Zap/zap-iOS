@@ -25,7 +25,7 @@ final class SendLightningInvoiceViewModel {
     
     private var paymentRequest: PaymentRequest?
     
-    init (viewModel: ViewModel, lightningInvoice: String) {
+    init(viewModel: ViewModel, lightningInvoice: String) {
         self.viewModel = viewModel
         
         var lightningInvoice = lightningInvoice

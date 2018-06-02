@@ -230,6 +230,7 @@
 		ADEDBB8E20C2D70B00B71F17 /* MainCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADEDBB8D20C2D70B00B71F17 /* MainCoordinator.swift */; };
 		ADEDBB9020C2E55100B71F17 /* PinCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADEDBB8F20C2E55100B71F17 /* PinCoordinator.swift */; };
 		ADEDBB9220C2FC3200B71F17 /* PinSetupCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADEDBB9120C2FC3200B71F17 /* PinSetupCoordinator.swift */; };
+		ADEDBC0A20C31C5F00B71F17 /* Route.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADEDBC0920C31C5F00B71F17 /* Route.swift */; };
 		ADF79364208DCB630086B2CA /* PinView.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADF79363208DCB630086B2CA /* PinView.swift */; };
 		ADF79366208E000C0086B2CA /* SetupPinViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADF79365208E000C0086B2CA /* SetupPinViewController.swift */; };
 		ADF79368208E09D00086B2CA /* SetupPinViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADF79367208E09D00086B2CA /* SetupPinViewModel.swift */; };
@@ -520,6 +521,7 @@
 		ADEDBB8D20C2D70B00B71F17 /* MainCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainCoordinator.swift; sourceTree = "<group>"; };
 		ADEDBB8F20C2E55100B71F17 /* PinCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PinCoordinator.swift; sourceTree = "<group>"; };
 		ADEDBB9120C2FC3200B71F17 /* PinSetupCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PinSetupCoordinator.swift; sourceTree = "<group>"; };
+		ADEDBC0920C31C5F00B71F17 /* Route.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Route.swift; sourceTree = "<group>"; };
 		ADF79363208DCB630086B2CA /* PinView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PinView.swift; sourceTree = "<group>"; };
 		ADF79365208E000C0086B2CA /* SetupPinViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetupPinViewController.swift; sourceTree = "<group>"; };
 		ADF79367208E09D00086B2CA /* SetupPinViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetupPinViewModel.swift; sourceTree = "<group>"; };
@@ -1261,6 +1263,7 @@
 				ADEDBB8F20C2E55100B71F17 /* PinCoordinator.swift */,
 				ADEDBB9120C2FC3200B71F17 /* PinSetupCoordinator.swift */,
 				AD8B13F020C0582D0091F9DA /* RootCoordinator.swift */,
+				ADEDBC0920C31C5F00B71F17 /* Route.swift */,
 				ADEDBB8B20C2D6A700B71F17 /* SetupCoordinator.swift */,
 			);
 			path = Coordinators;
@@ -1697,6 +1700,7 @@
 				AD6FFC9E20A9D19400B57330 /* LightningPaymentViewModel.swift in Sources */,
 				A0A05A2B2013ED920007D1C9 /* QRCodeDetailViewController.swift in Sources */,
 				A0DDC06A2018BFFA00AEFF94 /* LockWalletSettingsItem.swift in Sources */,
+				ADEDBC0A20C31C5F00B71F17 /* Route.swift in Sources */,
 				A024B85320161560002B8897 /* QRCodeScannerViewController.swift in Sources */,
 				A0D3C971205FF0E10015C5D7 /* MnemonicViewController.swift in Sources */,
 				A0BD44DF206FED1400BF27A3 /* BondTableViewCell.swift in Sources */,

@@ -47,9 +47,18 @@ final class MainCoordinator {
         mainViewController?.setContainerContent(viewController)
     }
     
-    private func presentSend() {
+    func presentSend() {
+        presentSend(invoice: nil)
+    }
+    
+    func presentSend(invoice: String?) {
         let viewController = UIStoryboard.instantiateQRCodeScannerViewController(with: viewModel, strategy: SendQRCodeScannerStrategy())
-        mainViewController?.present(viewController, animated: true, completion: nil)
+        mainViewController?.present(viewController, animated: true) {
+            if let invoice = invoice,
+                let qrCodeScannerViewController = viewController.topViewController as? QRCodeScannerViewController {
+                qrCodeScannerViewController.displayViewControllerForAddress(type: .lightningInvoice, address: invoice)
+            }
+        }
     }
     
     private func presentRequest() {

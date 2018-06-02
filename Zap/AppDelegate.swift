@@ -45,9 +45,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     }
     
     private func handle(url: URL) -> Bool {
-        print("OPEN URL: \(url)") // TODO
-        
-        return false
+        guard let route = Route(url: url) else { return false }
+        rootCoordinator?.handle(route)
+        return true
     }
     
     func applicationWillResignActive(_ application: UIApplication) {

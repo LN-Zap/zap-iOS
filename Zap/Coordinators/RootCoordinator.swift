@@ -11,6 +11,9 @@ final class RootCoordinator: NSObject, SetupCoordinatorDelegate, PinCoordinatorD
     private let rootViewController: RootViewController
     private var viewModel: ViewModel?
     
+    private var currentCoordinator: Any?
+    private var route: Route?
+    
     init?(window: UIWindow) {
         guard
             let rootViewController = window.rootViewController as? RootViewController
@@ -38,14 +41,31 @@ final class RootCoordinator: NSObject, SetupCoordinatorDelegate, PinCoordinatorD
         }
     }
     
+    func handle(_ route: Route) {
+        switch route {
+        case .send(let invoice):
+            if let mainCoordinator = currentCoordinator as? MainCoordinator {
+                mainCoordinator.presentSend(invoice: invoice)
+            } else {
+                self.route = route
+            }
+        }
+    }
+    
     private func presentMain() {
         guard let viewModel = viewModel else { return }
         let mainCoordinator = MainCoordinator(rootViewController: rootViewController, viewModel: viewModel)
+        currentCoordinator = mainCoordinator
         mainCoordinator.start()
+                
+        if let route = self.route {
+            handle(route)
+        }
     }
     
     private func presentSetup() {
         let setupCoordinator = SetupCoordinator(rootViewController: rootViewController, delegate: self)
+        currentCoordinator = setupCoordinator
         setupCoordinator.start()
     }
     
@@ -62,11 +82,13 @@ final class RootCoordinator: NSObject, SetupCoordinatorDelegate, PinCoordinatorD
     
     private func presentPin() {
         let pinCoordinator = PinCoordinator(rootViewController: rootViewController, delegate: self)
+        currentCoordinator = pinCoordinator
         pinCoordinator.start()
     }
     
     internal func presentSetupPin() {
         let pinSetupCoordinator = PinSetupCoordinator(rootViewController: rootViewController, delegate: self)
+        currentCoordinator = pinSetupCoordinator
         pinSetupCoordinator.start()
     }
     

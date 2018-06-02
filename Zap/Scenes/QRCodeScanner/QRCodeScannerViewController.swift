@@ -74,7 +74,7 @@ class QRCodeScannerViewController: UIViewController, ContainerViewController {
         qrCodeSuccessImageView.tintColor = UIColor.zap.green
     }
     
-    private func displayViewControllerForAddress(type: AddressType, address: String) {
+    func displayViewControllerForAddress(type: AddressType, address: String) {
         guard
             let viewModel = viewModel,
             let viewController = strategy?.viewControllerForAddressType(type, address: address, viewModel: viewModel)
