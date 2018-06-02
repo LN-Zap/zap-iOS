@@ -8,28 +8,6 @@
 import UIKit
 
 extension UIStoryboard {
-    static func instantiateMainViewController(with viewModel: ViewModel) -> MainViewController {
-        let mainViewController = Storyboard.main.instantiate(viewController: MainViewController.self)
-        mainViewController.viewModel = viewModel
-        return mainViewController
-    }
-    
-    static func instantiateSyncViewController(with viewModel: ViewModel) -> SyncViewController {
-        let syncViewController = Storyboard.sync.initial(viewController: SyncViewController.self)
-        syncViewController.viewModel = viewModel
-        return syncViewController
-    }
-    
-    static func instantiateLoadingViewController(with: LoadingViewController.Message) -> LoadingViewController {
-        return Storyboard.loading.initial(viewController: LoadingViewController.self)
-    }
-    
-    static func instantiateSetupPinViewController(with delegate: SetupPinDelegate) -> SetupPinViewController {
-        let setupPinViewController = Storyboard.numericKeyPad.instantiate(viewController: SetupPinViewController.self)
-        setupPinViewController.delegate = delegate
-        return setupPinViewController
-    }
-
     static func instantiateTransactionDetailViewController(with viewModel: ViewModel, transactionViewModel: TransactionViewModel) -> UINavigationController {
         let viewController = Storyboard.transactionDetail.initial(viewController: UINavigationController.self)
         if let transactionDetailViewController = viewController.topViewController as? TransactionDetailViewController {
@@ -38,32 +16,6 @@ extension UIStoryboard {
         }
         return viewController
     }
-
-    static func instantiateSendLightningInvoiceViewController(with sendViewModel: SendLightningInvoiceViewModel) -> SendLightningInvoiceViewController {
-        let viewController = Storyboard.send.instantiate(viewController: SendLightningInvoiceViewController.self)
-        viewController.sendViewModel = sendViewModel
-        return viewController
-    }
-
-    static func instantiateSendOnChainViewController(with sendOnChainViewModel: SendOnChainViewModel) -> SendOnChainViewController {
-        let viewController = Storyboard.sendOnChain.instantiate(viewController: SendOnChainViewController.self)
-        viewController.sendOnChainViewModel = sendOnChainViewModel
-        return viewController
-    }
-
-    static func instantiateTransactionListViewController(with viewModel: ViewModel) -> TransactionListViewController {
-        let viewController = Storyboard.transactionList.initial(viewController: TransactionListViewController.self)
-        viewController.viewModel = viewModel
-        return viewController
-    }
-
-    static func instantiateChannelListViewController(with viewModel: ViewModel) -> ChannelListViewController {
-        let viewController = Storyboard.channelList.initial(viewController: ChannelListViewController.self)
-        viewController.viewModel = viewModel
-        return viewController
-    }
-
-    
     
     static func instantiateSettingsContainerViewController(with viewModel: ViewModel) -> UINavigationController {
         let viewController = Storyboard.settings.initial(viewController: UINavigationController.self)
@@ -73,33 +25,6 @@ extension UIStoryboard {
         }
 
         return viewController
-    }
-
-    static func instantiateMnemonicWordListViewController(with mnemonicWords: [MnemonicWord]) -> MnemonicWordListViewController {
-        let viewController = Storyboard.createWallet.instantiate(viewController: MnemonicWordListViewController.self)
-        viewController.mnemonicWords = mnemonicWords
-        return viewController
-    }
-
-    static func instantiateQRCodeDetailViewController(with qrCodeDetailViewModel: QRCodeDetailViewModel) -> QRCodeDetailViewController {
-        let viewController = Storyboard.qrCodeDetail.instantiate(viewController: QRCodeDetailViewController.self)
-        viewController.viewModel = qrCodeDetailViewModel
-        return viewController
-    }
-
-    static func instantiateOpenChannelViewController(with openChannelViewModel: OpenChannelViewModel) -> OpenChannelViewController {
-        let viewController = Storyboard.openChannel.initial(viewController: OpenChannelViewController.self)
-        viewController.openChannelViewModel = openChannelViewModel
-        return viewController
-
-    }
-
-    static func instantiateMnemonicViewController() -> MnemonicViewController {
-        return Storyboard.createWallet.instantiate(viewController: MnemonicViewController.self)
-    }
-    
-    static func instantiateRecoverWalletViewController() -> RecoverWalletViewController {
-        return Storyboard.createWallet.instantiate(viewController: RecoverWalletViewController.self)
     }
     
     static func instantiateDebugViewController() -> UINavigationController {
@@ -130,18 +55,6 @@ extension UIStoryboard {
             viewController.channelViewModel = channelViewModel
         }
         return navigationController
-    }
-    
-    static func instantiateRemoteNodeCertificatesScannerViewController(with delegate: RemoteNodeCertificatesScannerDelegate) -> RemoteNodeCertificatesScannerViewController {
-        let viewController = Storyboard.connectRemoteNode.instantiate(viewController: RemoteNodeCertificatesScannerViewController.self)
-        viewController.delegate = delegate
-        return viewController
-    }
-    
-    static func instantiateConfirmMnemonicViewController(with confirmMnemonicViewModel: ConfirmMnemonicViewModel) -> ConfirmMnemonicViewController {
-        let viewController = Storyboard.createWallet.instantiate(viewController: ConfirmMnemonicViewController.self)
-        viewController.confirmViewModel = confirmMnemonicViewModel
-        return viewController
     }
 }
 

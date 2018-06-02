@@ -8,12 +8,20 @@
 import ReactiveKit
 import UIKit
 
+extension UIStoryboard {
+    static func instantiateSyncViewController(with viewModel: ViewModel) -> SyncViewController {
+        let syncViewController = Storyboard.sync.initial(viewController: SyncViewController.self)
+        syncViewController.viewModel = viewModel
+        return syncViewController
+    }
+}
+
 class SyncViewController: UIViewController {
     @IBOutlet private weak var syncLabel: UILabel!
     @IBOutlet private weak var dateLabel: UILabel!
     @IBOutlet private weak var progressBar: UIProgressView!
     
-    var viewModel: ViewModel?
+    fileprivate var viewModel: ViewModel?
     
     override func viewDidLoad() {
         super.viewDidLoad()

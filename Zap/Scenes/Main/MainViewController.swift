@@ -9,6 +9,21 @@ import Bond
 import BTCUtil
 import Foundation
 
+extension UIStoryboard {
+    static func instantiateMainViewController(with viewModel: ViewModel, settingsButtonTapped: @escaping () -> Void, sendButtonTapped: @escaping () -> Void, requestButtonTapped: @escaping () -> Void, transactionsButtonTapped: @escaping () -> Void, networkButtonTapped: @escaping () -> Void) -> MainViewController {
+        let mainViewController = Storyboard.main.instantiate(viewController: MainViewController.self)
+        mainViewController.viewModel = viewModel
+        
+        mainViewController.settingsButtonTapped = settingsButtonTapped
+        mainViewController.sendButtonTapped = sendButtonTapped
+        mainViewController.requestButtonTapped = requestButtonTapped
+        mainViewController.transactionsButtonTapped = transactionsButtonTapped
+        mainViewController.networkButtonTapped = networkButtonTapped
+        
+        return mainViewController
+    }
+}
+
 final class MainViewController: UIViewController, ContainerViewController {
     var viewModel: ViewModel?
  
@@ -33,19 +48,15 @@ final class MainViewController: UIViewController, ContainerViewController {
     @IBOutlet weak var container: UIView?
     weak var currentViewController: UIViewController?
     
+    fileprivate var settingsButtonTapped: (() -> Void)?
+    fileprivate var sendButtonTapped: (() -> Void)?
+    fileprivate var requestButtonTapped: (() -> Void)?
+    fileprivate var transactionsButtonTapped: (() -> Void)?
+    fileprivate var networkButtonTapped: (() -> Void)?
+
     private enum ContainerContent {
         case transactions
         case network
-    }
-    
-    private var transactionViewController: TransactionListViewController {
-        guard let viewModel = viewModel else { fatalError("viewModel not set") }
-        return UIStoryboard.instantiateTransactionListViewController(with: viewModel)
-    }
-    
-    private var channelViewController: ChannelListViewController {
-        guard let viewModel = viewModel else { fatalError("viewModel not set") }
-        return UIStoryboard.instantiateChannelListViewController(with: viewModel)
     }
     
     override func viewDidLoad() {
@@ -75,7 +86,6 @@ final class MainViewController: UIViewController, ContainerViewController {
          viewModel?.info.alias.bind(to: aliasLabel.reactive.text)]
             .dispose(in: reactive.bag)
         
-        setContainerContent(transactionViewController)
         segmentedControl(select: .transactions)
     }
     
@@ -98,32 +108,26 @@ final class MainViewController: UIViewController, ContainerViewController {
         }, completion: nil)
     }
     
-    @IBAction private func transactionsButtonTapped(_ smender: Any) {
+    @IBAction private func presentSettings(_ sender: Any) {
+        settingsButtonTapped?()
+    }
+    
+    @IBAction private func showTransactions(_ smender: Any) {
         segmentedControl(select: .transactions)
-        setContainerContent(transactionViewController)
+        transactionsButtonTapped?()
     }
     
-    @IBAction private func networkButtonTapped(_ sender: Any) {
+    @IBAction private func showNetwork(_ sender: Any) {
         segmentedControl(select: .network)
-        setContainerContent(channelViewController)
-    }
-    
-    @IBAction private func expandHeaderButtonTapped(_ sender: Any) {
-        guard let viewModel = viewModel else { fatalError("viewModel not set") }
-        let viewController = UIStoryboard.instantiateSettingsContainerViewController(with: viewModel)
-        present(viewController, animated: true, completion: nil)
+        networkButtonTapped?()
     }
     
     @IBAction private func presentSend(_ sender: Any) {
-        guard let viewModel = viewModel else { fatalError("viewModel not set.") }
-        let viewController = UIStoryboard.instantiateQRCodeScannerViewController(with: viewModel, strategy: SendQRCodeScannerStrategy())
-        present(viewController, animated: true, completion: nil)
+        sendButtonTapped?()
     }
     
     @IBAction private func presentRequest(_ sender: Any) {
-        guard let viewModel = viewModel else { fatalError("viewModel not set.") }
-        let viewController = UIStoryboard.instantiateRequestViewController(with: viewModel)
-        present(viewController, animated: true, completion: nil)
+        requestButtonTapped?()
     }
     
     @IBAction private func swapCurrencyButtonTapped(_ sender: Any) {

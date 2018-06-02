@@ -81,14 +81,14 @@
                                                         <rect key="frame" x="0.0" y="0.0" width="172.5" height="70"/>
                                                         <state key="normal" title="Transactions" image="icon-transactions"/>
                                                         <connections>
-                                                            <action selector="transactionsButtonTapped:" destination="smx-iD-hSn" eventType="touchUpInside" id="Ubr-yt-SZP"/>
+                                                            <action selector="showTransactions:" destination="smx-iD-hSn" eventType="touchUpInside" id="DWQ-Rv-PMZ"/>
                                                         </connections>
                                                     </button>
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8Eo-BE-XE2">
                                                         <rect key="frame" x="182.5" y="0.0" width="172.5" height="70"/>
                                                         <state key="normal" title="Network" image="icon-network"/>
                                                         <connections>
-                                                            <action selector="networkButtonTapped:" destination="smx-iD-hSn" eventType="touchUpInside" id="E6S-jZ-mxX"/>
+                                                            <action selector="showNetwork:" destination="smx-iD-hSn" eventType="touchUpInside" id="1Jx-3I-sJO"/>
                                                         </connections>
                                                     </button>
                                                 </subviews>
@@ -152,7 +152,7 @@
                                                         <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                         <state key="normal" image="icon-chevronDown"/>
                                                         <connections>
-                                                            <action selector="expandHeaderButtonTapped:" destination="smx-iD-hSn" eventType="touchUpInside" id="IA0-lY-fK9"/>
+                                                            <action selector="presentSettings:" destination="smx-iD-hSn" eventType="touchUpInside" id="JLK-ku-kZc"/>
                                                         </connections>
                                                     </button>
                                                 </subviews>

@@ -9,6 +9,14 @@ import Bond
 import ReactiveKit
 import UIKit
 
+extension UIStoryboard {
+    static func instantiateSetupPinViewController(with delegate: SetupPinDelegate) -> SetupPinViewController {
+        let setupPinViewController = Storyboard.numericKeyPad.instantiate(viewController: SetupPinViewController.self)
+        setupPinViewController.delegate = delegate
+        return setupPinViewController
+    }
+}
+
 protocol SetupPinDelegate: class {
     func didSetupPin()
 }
@@ -21,7 +29,7 @@ class SetupPinViewController: UIViewController {
     @IBOutlet private weak var keyPadView: KeyPadView!
     
     private let setupPinViewModel = SetupPinViewModel()
-    weak var delegate: SetupPinDelegate?
+    fileprivate weak var delegate: SetupPinDelegate?
     
     override func viewDidLoad() {
         super.viewDidLoad()

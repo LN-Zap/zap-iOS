@@ -7,6 +7,14 @@
 
 import UIKit
 
+extension UIStoryboard {
+    static func instantiateOpenChannelViewController(with openChannelViewModel: OpenChannelViewModel) -> OpenChannelViewController {
+        let viewController = Storyboard.openChannel.initial(viewController: OpenChannelViewController.self)
+        viewController.openChannelViewModel = openChannelViewModel
+        return viewController
+    }
+}
+
 final class OpenChannelViewController: UIViewController, QRCodeScannerChildViewController {
     weak var delegate: QRCodeScannerChildDelegate?
     
@@ -15,7 +23,7 @@ final class OpenChannelViewController: UIViewController, QRCodeScannerChildViewC
     @IBOutlet private weak var amountInputView: AmountInputView!
     @IBOutlet private weak var gradientLoadingButton: GradientLoadingButtonView!
     
-    var openChannelViewModel: OpenChannelViewModel?
+    fileprivate var openChannelViewModel: OpenChannelViewModel?
     let contentHeight: CGFloat = 550 // QRCodeScannerChildViewController
     
     override func viewDidLoad() {

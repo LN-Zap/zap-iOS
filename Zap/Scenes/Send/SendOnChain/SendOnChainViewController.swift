@@ -7,6 +7,14 @@
 
 import UIKit
 
+extension UIStoryboard {
+    static func instantiateSendOnChainViewController(with sendOnChainViewModel: SendOnChainViewModel) -> SendOnChainViewController {
+        let viewController = Storyboard.sendOnChain.instantiate(viewController: SendOnChainViewController.self)
+        viewController.sendOnChainViewModel = sendOnChainViewModel
+        return viewController
+    }
+}
+
 final class SendOnChainViewController: UIViewController, QRCodeScannerChildViewController {
     weak var delegate: QRCodeScannerChildDelegate?
     
@@ -15,7 +23,7 @@ final class SendOnChainViewController: UIViewController, QRCodeScannerChildViewC
     @IBOutlet private weak var gradientLoadingButtonView: GradientLoadingButtonView!
     
     let contentHeight: CGFloat = 550 // QRCodeScannerChildViewController
-    var sendOnChainViewModel: SendOnChainViewModel?
+    fileprivate var sendOnChainViewModel: SendOnChainViewModel?
 
     override func viewDidLoad() {
         super.viewDidLoad()

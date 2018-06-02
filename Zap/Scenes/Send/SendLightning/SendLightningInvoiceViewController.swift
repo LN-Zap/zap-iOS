@@ -7,6 +7,14 @@
 
 import UIKit
 
+extension UIStoryboard {
+    static func instantiateSendLightningInvoiceViewController(with sendViewModel: SendLightningInvoiceViewModel) -> SendLightningInvoiceViewController {
+        let viewController = Storyboard.send.instantiate(viewController: SendLightningInvoiceViewController.self)
+        viewController.sendViewModel = sendViewModel
+        return viewController
+    }
+}
+
 class SendLightningInvoiceViewController: UIViewController, QRCodeScannerChildViewController {
     weak var delegate: QRCodeScannerChildDelegate?
     
@@ -21,7 +29,7 @@ class SendLightningInvoiceViewController: UIViewController, QRCodeScannerChildVi
     @IBOutlet private weak var expiredView: UIView!
     @IBOutlet private weak var expiredLabel: UILabel!
     
-    var sendViewModel: SendLightningInvoiceViewModel?
+    fileprivate var sendViewModel: SendLightningInvoiceViewModel?
     let contentHeight: CGFloat = 380 // QRCodeScannerChildViewController
     
     override func viewDidLoad() {

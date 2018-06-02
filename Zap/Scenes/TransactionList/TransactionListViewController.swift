@@ -8,6 +8,14 @@
 import Bond
 import UIKit
 
+extension UIStoryboard {
+    static func instantiateTransactionListViewController(with viewModel: ViewModel) -> TransactionListViewController {
+        let viewController = Storyboard.transactionList.initial(viewController: TransactionListViewController.self)
+        viewController.viewModel = viewModel
+        return viewController
+    }
+}
+
 final class TransactionBond: TableViewBinder<Observable2DArray<String, TransactionViewModel>> {
     override func cellForRow(at indexPath: IndexPath, tableView: UITableView, dataSource: Observable2DArray<String, TransactionViewModel>) -> UITableViewCell {
         let viewModel = dataSource.item(at: indexPath)
@@ -28,7 +36,7 @@ class TransactionListViewController: UIViewController {
     @IBOutlet private weak var searchBar: UISearchBar!
     @IBOutlet private weak var emptyStateLabel: UILabel!
     
-    var viewModel: ViewModel? {
+    fileprivate var viewModel: ViewModel? {
         didSet {
             guard let viewModel = viewModel else { return }
             transactionListViewModel = TransactionListViewModel(viewModel: viewModel)

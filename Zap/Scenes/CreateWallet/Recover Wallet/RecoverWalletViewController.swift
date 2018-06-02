@@ -7,6 +7,12 @@
 
 import UIKit
 
+extension UIStoryboard {
+    static func instantiateRecoverWalletViewController() -> RecoverWalletViewController {
+        return Storyboard.createWallet.instantiate(viewController: RecoverWalletViewController.self)
+    }
+}
+
 class RecoverWalletViewController: UIViewController {
 
     @IBOutlet private weak var topLabel: UILabel!

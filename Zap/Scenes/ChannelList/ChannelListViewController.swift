@@ -8,6 +8,14 @@
 import Bond
 import UIKit
 
+extension UIStoryboard {
+    static func instantiateChannelListViewController(with viewModel: ViewModel) -> ChannelListViewController {
+        let viewController = Storyboard.channelList.initial(viewController: ChannelListViewController.self)
+        viewController.viewModel = viewModel
+        return viewController
+    }
+}
+
 final class ChannelBond: TableViewBinder<Observable2DArray<String, ChannelViewModel>> {
     override func cellForRow(at indexPath: IndexPath, tableView: UITableView, dataSource: Observable2DArray<String, ChannelViewModel>) -> UITableViewCell {
         let cell: ChannelTableViewCell = tableView.dequeueCellForIndexPath(indexPath)
@@ -25,7 +33,7 @@ class ChannelListViewController: UIViewController {
     @IBOutlet private weak var searchBackgroundView: UIView!
     @IBOutlet private weak var searchBar: UISearchBar!
     
-    var viewModel: ViewModel? {
+    fileprivate var viewModel: ViewModel? {
         didSet {
             guard let viewModel = viewModel else { return }
             channelListViewModel = ChannelListViewModel(viewModel: viewModel)

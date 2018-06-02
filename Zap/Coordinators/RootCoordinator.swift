@@ -56,7 +56,7 @@ final class RootCoordinator: NSObject, SetupCoordinatorDelegate, PinCoordinatorD
     }
     
     private func presentLoading(message: LoadingViewController.Message) {
-        let viewController = UIStoryboard.instantiateLoadingViewController(with: message)
+        let viewController = UIStoryboard.instantiateLoadingViewController(message: message)
         presentViewController(viewController)
     }
     

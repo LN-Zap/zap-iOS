@@ -8,6 +8,12 @@
 import Bond
 import Foundation
 
+extension UIStoryboard {
+    static func instantiateMnemonicViewController() -> MnemonicViewController {
+        return Storyboard.createWallet.instantiate(viewController: MnemonicViewController.self)
+    }
+}
+
 final class MnemonicViewController: UIViewController {
     @IBOutlet private weak var doneButton: UIButton!
     @IBOutlet private weak var topLabel: UILabel!
@@ -42,9 +48,10 @@ final class MnemonicViewController: UIViewController {
         }
     }
     
+    // TODO: remove Segues
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if let destination = segue.destination as? ConfirmMnemonicViewController {
-            destination.confirmViewModel = mnemonicViewModel?.confirmMnemonicViewModel
+//            destination.confirmViewModel = mnemonicViewModel?.confirmMnemonicViewModel
         } else if let destination = segue.destination as? MnemonicPageViewController {
             destination.mnemonicViewModel = mnemonicViewModel
             pageViewController = destination
