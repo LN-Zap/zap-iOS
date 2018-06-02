@@ -91,13 +91,9 @@ final class MainViewController: UIViewController, ContainerViewController {
     
     private func segmentedControl(select selection: ContainerContent) {
         if selection == .network {
-            networkButton.imageView?.tintColor = UIColor.zap.tint
-            transactionsButton.imageView?.tintColor = .lightGray
             networkButton.setTitleColor(.white, for: .normal)
             transactionsButton.setTitleColor(.lightGray, for: .normal)
         } else {
-            networkButton.imageView?.tintColor = .lightGray
-            transactionsButton.imageView?.tintColor = UIColor.zap.bottomGradientLeft
             networkButton.setTitleColor(.lightGray, for: .normal)
             transactionsButton.setTitleColor(.white, for: .normal)
         }

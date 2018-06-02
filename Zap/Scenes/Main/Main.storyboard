@@ -32,14 +32,14 @@
                                     <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="BzM-Bj-Wdw">
                                         <rect key="frame" x="0.0" y="0.0" width="375" height="97"/>
                                         <subviews>
-                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Gty-6B-9yc">
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Gty-6B-9yc">
                                                 <rect key="frame" x="0.0" y="0.0" width="187.5" height="97"/>
                                                 <state key="normal" title="Send"/>
                                                 <connections>
                                                     <action selector="presentSend:" destination="smx-iD-hSn" eventType="touchUpInside" id="lWg-qk-emP"/>
                                                 </connections>
                                             </button>
-                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Zaa-3u-HIJ">
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Zaa-3u-HIJ">
                                                 <rect key="frame" x="187.5" y="0.0" width="187.5" height="97"/>
                                                 <state key="normal" title="Request"/>
                                                 <connections>
@@ -77,14 +77,14 @@
                                             <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="IZF-Tf-zth">
                                                 <rect key="frame" x="10" y="10" width="355" height="70"/>
                                                 <subviews>
-                                                    <button opaque="NO" contentMode="scaleToFill" selected="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6XJ-ho-YDb">
+                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6XJ-ho-YDb">
                                                         <rect key="frame" x="0.0" y="0.0" width="172.5" height="70"/>
                                                         <state key="normal" title="Transactions" image="icon-transactions"/>
                                                         <connections>
                                                             <action selector="showTransactions:" destination="smx-iD-hSn" eventType="touchUpInside" id="DWQ-Rv-PMZ"/>
                                                         </connections>
                                                     </button>
-                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8Eo-BE-XE2">
+                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8Eo-BE-XE2">
                                                         <rect key="frame" x="182.5" y="0.0" width="172.5" height="70"/>
                                                         <state key="normal" title="Network" image="icon-network"/>
                                                         <connections>
