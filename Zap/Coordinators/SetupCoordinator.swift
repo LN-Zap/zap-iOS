@@ -14,7 +14,8 @@ protocol SetupCoordinatorDelegate: class {
 
 final class SetupCoordinator {
     private let rootViewController: RootViewController
-    private var navigationController: UINavigationController?
+    private weak var navigationController: UINavigationController?
+    private weak var connectRemoteNodeViewController: ConnectRemoteNodeViewController?
     private weak var delegate: SetupCoordinatorDelegate?
     
     init(rootViewController: RootViewController, delegate: SetupCoordinatorDelegate) {
@@ -46,6 +47,7 @@ final class SetupCoordinator {
     
     private func connectRemoteNode() {
         let viewController = UIStoryboard.instantiateConnectRemoteNodeViewController(didSetupWallet: didSetupWallet)
+        connectRemoteNodeViewController = viewController
         navigationController?.pushViewController(viewController, animated: true)
     }
 
@@ -55,5 +57,14 @@ final class SetupCoordinator {
         } else {
             delegate?.presentSetupPin()
         }
+    }
+    
+    private func presentNodeCertificatesScanner() {
+        let viewController = UIStoryboard.instantiateRemoteNodeCertificatesScannerViewController(didScanRemoteNodeCertificates: didScanRemoteNodeCertificates)
+        navigationController?.present(viewController, animated: true, completion: nil)
+    }
+    
+    private func didScanRemoteNodeCertificates(_ certificates: RemoteNodeCertificates) {
+        connectRemoteNodeViewController?.didScanRemoteNodeCertificates(certificates)
     }
 }

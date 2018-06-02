@@ -41,6 +41,7 @@ class ConnectRemoteNodeViewController: UIViewController {
         }
     }
     
+    fileprivate var presentQRCodeScannerButtonTapped: (() -> Void)?
     fileprivate var didSetupWallet: (() -> Void)?
     
     var testServer: LndRpcServer?
@@ -84,7 +85,7 @@ class ConnectRemoteNodeViewController: UIViewController {
         
         let configuration = RemoteNodeConfiguration.load()
         certificates = configuration?.remoteNodeCertificates
-        urlTextField.text = configuration?.url.absoluteString ?? "192.168.1.3:10011" // TODO: remove fallback
+        urlTextField.text = configuration?.url.absoluteString ?? "192.168.1.3:10011" // TODO: remove fallback || move to env var
     }
     
     private func updateCertificatesUI() {
@@ -96,8 +97,7 @@ class ConnectRemoteNodeViewController: UIViewController {
     }
     
     @IBAction private func presentQRCodeScanner(_ sender: Any) {
-        let viewController = UIStoryboard.instantiateRemoteNodeCertificatesScannerViewController(with: self)
-        present(viewController, animated: true, completion: nil)
+        presentQRCodeScannerButtonTapped?()
     }
     
     @IBAction private func pasteCertificates(_ sender: Any) {
