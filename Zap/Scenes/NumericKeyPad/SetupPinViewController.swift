@@ -10,15 +10,11 @@ import ReactiveKit
 import UIKit
 
 extension UIStoryboard {
-    static func instantiateSetupPinViewController(with delegate: SetupPinDelegate) -> SetupPinViewController {
+    static func instantiateSetupPinViewController(didSetupPin: @escaping () -> Void) -> SetupPinViewController {
         let setupPinViewController = Storyboard.numericKeyPad.instantiate(viewController: SetupPinViewController.self)
-        setupPinViewController.delegate = delegate
+        setupPinViewController.didSetupPin = didSetupPin
         return setupPinViewController
     }
-}
-
-protocol SetupPinDelegate: class {
-    func didSetupPin()
 }
 
 class SetupPinViewController: UIViewController {
@@ -29,7 +25,7 @@ class SetupPinViewController: UIViewController {
     @IBOutlet private weak var keyPadView: KeyPadView!
     
     private let setupPinViewModel = SetupPinViewModel()
-    fileprivate weak var delegate: SetupPinDelegate?
+    fileprivate var didSetupPin: (() -> Void)?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -52,7 +48,7 @@ class SetupPinViewController: UIViewController {
                 case .completed:
                     print("completed")
                     UINotificationFeedbackGenerator().notificationOccurred(.success)
-                    self?.delegate?.didSetupPin()
+                    self?.didSetupPin?()
                 }
             },
          combineLatest(setupPinViewModel.pinCharacterCount, setupPinViewModel.pinAtiveCount)
@@ -83,9 +79,7 @@ class SetupPinViewController: UIViewController {
     }
     
     private func updatePinView(characterCount: Int, activeCount: Int) {
-//        UIView.animate(withDuration: 0.2) { [pinStackView] in
         pinStackView?.characterCount = characterCount
         pinStackView?.activeCount = activeCount
-//        }
     }
 }

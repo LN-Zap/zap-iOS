@@ -7,27 +7,23 @@
 
 import UIKit
 
-protocol PinCoordinatorDelegate: class {
-    func connect()
-}
-
-final class PinCoordinator {
+final class PinSetupCoordinator {
     private let rootViewController: RootViewController
     private weak var delegate: PinCoordinatorDelegate?
-    
+
     init(rootViewController: RootViewController, delegate: PinCoordinatorDelegate) {
         self.rootViewController = rootViewController
         self.delegate = delegate
     }
-
+    
     func start() {
-        let viewController = UIStoryboard.instantiatePinViewController(didAuthenticate: didAuthenticate)
+        let viewController = UIStoryboard.instantiateSetupPinViewController(didSetupPin: didSetupPin)
         DispatchQueue.main.async {
             self.rootViewController.setContainerContent(viewController)
         }
     }
     
-    func didAuthenticate() {
+    func didSetupPin() {
         delegate?.connect()
     }
 }

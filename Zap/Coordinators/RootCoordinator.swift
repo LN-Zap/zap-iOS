@@ -66,8 +66,8 @@ final class RootCoordinator: NSObject, SetupCoordinatorDelegate, PinCoordinatorD
     }
     
     internal func presentSetupPin() {
-        let viewController = UIStoryboard.instantiateSetupPinViewController(with: self)
-        presentViewController(viewController)
+        let pinSetupCoordinator = PinSetupCoordinator(rootViewController: rootViewController, delegate: self)
+        pinSetupCoordinator.start()
     }
     
     private func presentViewController(_ viewController: UIViewController) {
@@ -125,11 +125,5 @@ final class RootCoordinator: NSObject, SetupCoordinatorDelegate, PinCoordinatorD
             self.viewModel = viewModel
             self.startWalletUI(with: viewModel)
         }
-    }
-}
-
-extension RootCoordinator: SetupPinDelegate { // TODO: switch to coordinator pattern
-    func didSetupPin() {
-        connect()
     }
 }

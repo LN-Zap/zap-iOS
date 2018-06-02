@@ -229,6 +229,7 @@
 		ADEDBB8C20C2D6A700B71F17 /* SetupCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADEDBB8B20C2D6A700B71F17 /* SetupCoordinator.swift */; };
 		ADEDBB8E20C2D70B00B71F17 /* MainCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADEDBB8D20C2D70B00B71F17 /* MainCoordinator.swift */; };
 		ADEDBB9020C2E55100B71F17 /* PinCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADEDBB8F20C2E55100B71F17 /* PinCoordinator.swift */; };
+		ADEDBB9220C2FC3200B71F17 /* PinSetupCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADEDBB9120C2FC3200B71F17 /* PinSetupCoordinator.swift */; };
 		ADF79364208DCB630086B2CA /* PinView.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADF79363208DCB630086B2CA /* PinView.swift */; };
 		ADF79366208E000C0086B2CA /* SetupPinViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADF79365208E000C0086B2CA /* SetupPinViewController.swift */; };
 		ADF79368208E09D00086B2CA /* SetupPinViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADF79367208E09D00086B2CA /* SetupPinViewModel.swift */; };
@@ -518,6 +519,7 @@
 		ADEDBB8B20C2D6A700B71F17 /* SetupCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetupCoordinator.swift; sourceTree = "<group>"; };
 		ADEDBB8D20C2D70B00B71F17 /* MainCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainCoordinator.swift; sourceTree = "<group>"; };
 		ADEDBB8F20C2E55100B71F17 /* PinCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PinCoordinator.swift; sourceTree = "<group>"; };
+		ADEDBB9120C2FC3200B71F17 /* PinSetupCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PinSetupCoordinator.swift; sourceTree = "<group>"; };
 		ADF79363208DCB630086B2CA /* PinView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PinView.swift; sourceTree = "<group>"; };
 		ADF79365208E000C0086B2CA /* SetupPinViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetupPinViewController.swift; sourceTree = "<group>"; };
 		ADF79367208E09D00086B2CA /* SetupPinViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetupPinViewModel.swift; sourceTree = "<group>"; };
@@ -1257,6 +1259,7 @@
 			children = (
 				ADEDBB8D20C2D70B00B71F17 /* MainCoordinator.swift */,
 				ADEDBB8F20C2E55100B71F17 /* PinCoordinator.swift */,
+				ADEDBB9120C2FC3200B71F17 /* PinSetupCoordinator.swift */,
 				AD8B13F020C0582D0091F9DA /* RootCoordinator.swift */,
 				ADEDBB8B20C2D6A700B71F17 /* SetupCoordinator.swift */,
 			);
@@ -1754,6 +1757,7 @@
 				A0BD44DC206FCAD900BF27A3 /* SignalProtocol.swift in Sources */,
 				ADACC77120B02AAD00F86D63 /* DetailQRCodeTableViewCell.swift in Sources */,
 				A0A05A352014047B0007D1C9 /* Lnd.swift in Sources */,
+				ADEDBB9220C2FC3200B71F17 /* PinSetupCoordinator.swift in Sources */,
 				ADF7936A208E5FEC0086B2CA /* ConfirmMnemonicCollectionViewCell.swift in Sources */,
 				ADA6D2CA20AC2F1D009398A5 /* TransactionViewModel.swift in Sources */,
 				ADA6D2C120AB217B009398A5 /* TransactionStore.swift in Sources */,
