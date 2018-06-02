@@ -21,8 +21,9 @@ final class ConnectRemoteNodeSettingsItem: SubtitleSettingsItem {
     }
     
     func didSelectItem(from fromViewController: UIViewController) {
-        let connectRemoteNodeViewController = UIStoryboard.instantiateConnectRemoteNodeViewController()
-        fromViewController.navigationController?.pushViewController(connectRemoteNodeViewController, animated: true)
+        // TODO: refactor to coordinator pattern
+//        let connectRemoteNodeViewController = UIStoryboard.instantiateConnectRemoteNodeViewController()
+//        fromViewController.navigationController?.pushViewController(connectRemoteNodeViewController, animated: true)
     }
 }
 

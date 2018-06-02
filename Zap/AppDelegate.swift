@@ -11,7 +11,7 @@ import UIKit
 class AppDelegate: UIResponder, UIApplicationDelegate {
     private var blurEffectView: UIVisualEffectView?
 
-    var app: App?
+    var rootCoordinator: RootCoordinator?
     var window: UIWindow? {
         didSet {
             window?.tintColor = UIColor.zap.tint
@@ -29,7 +29,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         }
         
         if let window = window {
-            app = App(window: window)
+            rootCoordinator = RootCoordinator(window: window)
+            rootCoordinator?.start()
         }
         
         if let url = launchOptions?[.url] as? URL {

@@ -7,16 +7,19 @@
 
 import UIKit
 
-protocol PinViewDelegate: class {
-    func didAuthenticate()
+extension UIStoryboard {
+    static func instantiatePinViewController(didAuthenticate: @escaping () -> Void) -> PinViewController {
+        let pinViewController = Storyboard.numericKeyPad.initial(viewController: PinViewController.self)
+        pinViewController.didAuthenticate = didAuthenticate
+        return pinViewController
+    }
 }
 
 class PinViewController: UIViewController {
-    
     @IBOutlet private weak var pinStackView: PinView!
     @IBOutlet private weak var keyPadView: KeyPadView!
     
-    weak var delegate: PinViewDelegate?
+    fileprivate var didAuthenticate: (() -> Void)?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -38,7 +41,7 @@ class PinViewController: UIViewController {
         keyPadView.customPointButtonAction = { [weak self] in
             BiometricAuthentication.authenticate {
                 guard $0.error == nil else { return }
-                self?.delegate?.didAuthenticate()
+                self?.didAuthenticate?()
             }
         }
         
@@ -46,7 +49,7 @@ class PinViewController: UIViewController {
             self?.updatePinView(for: number)
             
             if AuthenticationViewModel.shared.isMatchingPin(number) {
-                self?.delegate?.didAuthenticate()
+                self?.didAuthenticate?()
             }
             
             return (AuthenticationViewModel.shared.pinLength ?? Int.max) >= number.count

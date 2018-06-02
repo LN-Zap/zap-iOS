@@ -173,7 +173,7 @@
 		AD77466C2078EE5600EC596B /* ChannelTransactionAnnotationUpdater.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD77466B2078EE5600EC596B /* ChannelTransactionAnnotationUpdater.swift */; };
 		AD86BCFE2099F50C00A7866A /* rpc.pb.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD86BCFD2099F50C00A7866A /* rpc.pb.swift */; };
 		AD86BD002099FB4500A7866A /* rpc.grpc.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD86BCFF2099FB4500A7866A /* rpc.grpc.swift */; };
-		AD8B13F120C0582D0091F9DA /* App.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD8B13F020C0582D0091F9DA /* App.swift */; };
+		AD8B13F120C0582D0091F9DA /* RootCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD8B13F020C0582D0091F9DA /* RootCoordinator.swift */; };
 		AD93ED5420A07B0C000E814E /* Notification.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD93ED5220A07A24000E814E /* Notification.swift */; };
 		AD93ED5620A09D59000E814E /* GraphTopologyUpdate.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD93ED5520A09D59000E814E /* GraphTopologyUpdate.swift */; };
 		AD99C9ED209072710061C565 /* QRCodeScanner.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AD99C9EC209072710061C565 /* QRCodeScanner.storyboard */; };
@@ -226,6 +226,9 @@
 		ADD9DCDD20B453D000AEFC5C /* LndConnection.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADD9DCDC20B453D000AEFC5C /* LndConnection.swift */; };
 		ADE4CF1D20B5B2BE007C987A /* UIFont.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADE4CF1C20B5B2BE007C987A /* UIFont.swift */; };
 		ADE4CF1F20B5B6FC007C987A /* Environment.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADE4CF1E20B5B6FC007C987A /* Environment.swift */; };
+		ADEDBB8C20C2D6A700B71F17 /* SetupCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADEDBB8B20C2D6A700B71F17 /* SetupCoordinator.swift */; };
+		ADEDBB8E20C2D70B00B71F17 /* MainCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADEDBB8D20C2D70B00B71F17 /* MainCoordinator.swift */; };
+		ADEDBB9020C2E55100B71F17 /* PinCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADEDBB8F20C2E55100B71F17 /* PinCoordinator.swift */; };
 		ADF79364208DCB630086B2CA /* PinView.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADF79363208DCB630086B2CA /* PinView.swift */; };
 		ADF79366208E000C0086B2CA /* SetupPinViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADF79365208E000C0086B2CA /* SetupPinViewController.swift */; };
 		ADF79368208E09D00086B2CA /* SetupPinViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADF79367208E09D00086B2CA /* SetupPinViewModel.swift */; };
@@ -459,7 +462,7 @@
 		AD77466B2078EE5600EC596B /* ChannelTransactionAnnotationUpdater.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChannelTransactionAnnotationUpdater.swift; sourceTree = "<group>"; };
 		AD86BCFD2099F50C00A7866A /* rpc.pb.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = rpc.pb.swift; path = Proto/rpc.pb.swift; sourceTree = SOURCE_ROOT; };
 		AD86BCFF2099FB4500A7866A /* rpc.grpc.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = rpc.grpc.swift; path = Proto/rpc.grpc.swift; sourceTree = SOURCE_ROOT; };
-		AD8B13F020C0582D0091F9DA /* App.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = App.swift; sourceTree = "<group>"; };
+		AD8B13F020C0582D0091F9DA /* RootCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RootCoordinator.swift; sourceTree = "<group>"; };
 		AD93ED5220A07A24000E814E /* Notification.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Notification.swift; sourceTree = "<group>"; };
 		AD93ED5520A09D59000E814E /* GraphTopologyUpdate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GraphTopologyUpdate.swift; sourceTree = "<group>"; };
 		AD99C9EC209072710061C565 /* QRCodeScanner.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = QRCodeScanner.storyboard; sourceTree = "<group>"; };
@@ -512,6 +515,9 @@
 		ADD9DCDC20B453D000AEFC5C /* LndConnection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LndConnection.swift; sourceTree = "<group>"; };
 		ADE4CF1C20B5B2BE007C987A /* UIFont.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIFont.swift; sourceTree = "<group>"; };
 		ADE4CF1E20B5B6FC007C987A /* Environment.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Environment.swift; sourceTree = "<group>"; };
+		ADEDBB8B20C2D6A700B71F17 /* SetupCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetupCoordinator.swift; sourceTree = "<group>"; };
+		ADEDBB8D20C2D70B00B71F17 /* MainCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainCoordinator.swift; sourceTree = "<group>"; };
+		ADEDBB8F20C2E55100B71F17 /* PinCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PinCoordinator.swift; sourceTree = "<group>"; };
 		ADF79363208DCB630086B2CA /* PinView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PinView.swift; sourceTree = "<group>"; };
 		ADF79365208E000C0086B2CA /* SetupPinViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetupPinViewController.swift; sourceTree = "<group>"; };
 		ADF79367208E09D00086B2CA /* SetupPinViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetupPinViewModel.swift; sourceTree = "<group>"; };
@@ -888,8 +894,9 @@
 		A0A05A012013CF960007D1C9 /* Zap */ = {
 			isa = PBXGroup;
 			children = (
-				AD8B13F020C0582D0091F9DA /* App.swift */,
 				A0A05A022013CF960007D1C9 /* AppDelegate.swift */,
+				A07C1034203DE3D0006C7FE8 /* Business Logic */,
+				ADEDBB8A20C2D48D00B71F17 /* Coordinators */,
 				A0A05A5F2014A10A0007D1C9 /* Extensions */,
 				A01009352014BE070001EF94 /* Helper */,
 				A0376B70201CC16D00F1FBEF /* Lnd */,
@@ -897,7 +904,6 @@
 				AD86BCFC2099F4E900A7866A /* Proto */,
 				A01009322014BD960001EF94 /* Scenes */,
 				A010093A2014BF440001EF94 /* Supporting Files */,
-				A07C1034203DE3D0006C7FE8 /* Business Logic */,
 				A010093E2014D4720001EF94 /* Views */,
 			);
 			path = Zap;
@@ -1244,6 +1250,17 @@
 				ADBB36252080AD70005662B4 /* LoadingViewController.swift */,
 			);
 			path = Loading;
+			sourceTree = "<group>";
+		};
+		ADEDBB8A20C2D48D00B71F17 /* Coordinators */ = {
+			isa = PBXGroup;
+			children = (
+				ADEDBB8D20C2D70B00B71F17 /* MainCoordinator.swift */,
+				ADEDBB8F20C2E55100B71F17 /* PinCoordinator.swift */,
+				AD8B13F020C0582D0091F9DA /* RootCoordinator.swift */,
+				ADEDBB8B20C2D6A700B71F17 /* SetupCoordinator.swift */,
+			);
+			path = Coordinators;
 			sourceTree = "<group>";
 		};
 		ADF79373208F87E60086B2CA /* Confirm Mnemonic */ = {
@@ -1682,6 +1699,7 @@
 				A0BD44DF206FED1400BF27A3 /* BondTableViewCell.swift in Sources */,
 				A070D966202B39A3000A8274 /* QRCodeDetailViewModel.swift in Sources */,
 				AD5FA001207CCB8B000E9493 /* RequestViewController.swift in Sources */,
+				ADEDBB9020C2E55100B71F17 /* PinCoordinator.swift in Sources */,
 				AD7746592076609400EC596B /* NodeInfo.swift in Sources */,
 				AD9E243F20A368020014F9FA /* LndLogViewController.swift in Sources */,
 				AD680AA120B07AE90018986B /* ConnectRemoteNodeViewController.swift in Sources */,
@@ -1716,6 +1734,7 @@
 				ADA6D2C720AC2406009398A5 /* Channels.swift in Sources */,
 				ADD6D80520B09770008BE461 /* RemoteNodeCertificates.swift in Sources */,
 				A0A05A5C20149F720007D1C9 /* TransactionListViewController.swift in Sources */,
+				ADEDBB8C20C2D6A700B71F17 /* SetupCoordinator.swift in Sources */,
 				AD3CF97720B4028400D78A54 /* SelectWalletCreationMethodTableViewCell.swift in Sources */,
 				A0A05A032013CF960007D1C9 /* AppDelegate.swift in Sources */,
 				ADBA120620930C94001F7700 /* UIViewController.swift in Sources */,
@@ -1788,7 +1807,8 @@
 				A0F57DC2201E700C003AFA66 /* TransactionListViewModel.swift in Sources */,
 				ADBB36242080A457005662B4 /* LightningMock.swift in Sources */,
 				ADBA4425209B067400D18B71 /* ProtobufExtensions.swift in Sources */,
-				AD8B13F120C0582D0091F9DA /* App.swift in Sources */,
+				AD8B13F120C0582D0091F9DA /* RootCoordinator.swift in Sources */,
+				ADEDBB8E20C2D70B00B71F17 /* MainCoordinator.swift in Sources */,
 				ADBB36222080A3B1005662B4 /* LightningProtocol.swift in Sources */,
 				A0D3C96C205FCBF40015C5D7 /* Result.swift in Sources */,
 				AD93ED5420A07B0C000E814E /* Notification.swift in Sources */,

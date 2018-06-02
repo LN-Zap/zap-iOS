@@ -7,6 +7,18 @@
 
 import UIKit
 
+extension UIStoryboard {
+    static func instantiateConnectRemoteNodeViewController(didSetupWallet: @escaping () -> Void) -> ConnectRemoteNodeViewController {
+        let viewController = Storyboard.connectRemoteNode.initial(viewController: ConnectRemoteNodeViewController.self)
+        viewController.didSetupWallet = didSetupWallet
+        return viewController
+    }
+}
+
+protocol SetupWalletDelegate: class {
+    func didSetupWallet()
+}
+
 class ConnectRemoteNodeViewController: UIViewController {
     
     @IBOutlet private weak var urlLabel: UILabel!
@@ -29,7 +41,7 @@ class ConnectRemoteNodeViewController: UIViewController {
         }
     }
     
-    weak var delegate: SetupWalletDelegate?
+    fileprivate var didSetupWallet: (() -> Void)?
     
     var testServer: LndRpcServer?
     var connectCallback: (() -> Void)?
@@ -127,9 +139,7 @@ class ConnectRemoteNodeViewController: UIViewController {
     }
     
     private func connect() {
-        DispatchQueue.main.async { [weak self] in
-            self?.delegate?.didSetupWallet()
-        }
+        didSetupWallet?()
     }
 }
 

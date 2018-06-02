@@ -7,31 +7,37 @@
 
 import UIKit
 
-protocol SetupWalletDelegate: class {
-    func didSetupWallet()
+extension UIStoryboard {
+    static func instantiateSetupViewController(createButtonTapped: @escaping () -> Void, recoverButtonTapped: @escaping () -> Void, connectButtonTapped: @escaping () -> Void) -> UINavigationController {
+        
+        let navigationController = Storyboard.createWallet.initial(viewController: UINavigationController.self)
+        if let setupWalletViewController = navigationController.topViewController as? SelectWalletCreationMethodViewController {
+            setupWalletViewController.createButtonTapped = createButtonTapped
+            setupWalletViewController.recoverButtonTapped = recoverButtonTapped
+            setupWalletViewController.connectButtonTapped = connectButtonTapped
+        }
+        return navigationController
+    }
 }
 
 class SelectWalletCreationMethodViewController: UIViewController {
-    
-    weak var delegate: SetupWalletDelegate?
+    fileprivate var createButtonTapped: (() -> Void)?
+    fileprivate var recoverButtonTapped: (() -> Void)?
+    fileprivate var connectButtonTapped: (() -> Void)?
     
     @IBOutlet private weak var tableView: UITableView!
     
     // swiftlint:disable:next large_tuple
-    let content: [(String, String, (() -> UIViewController))] = [
-        ("Create", "new wallet", {
-            UIStoryboard.instantiateMnemonicViewController()
-        }),
-        ("Recover", "existing wallet", {
-            UIStoryboard.instantiateRecoverWalletViewController()
-        }),
-        ("Connect", "remote node", {
-            UIStoryboard.instantiateConnectRemoteNodeViewController()
-        })
-    ]
+    var content: [(String, String, (() -> Void))]?
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        content = [
+            ("Create", "new wallet", { [weak self] in self?.createButtonTapped?() }),
+            ("Recover", "existing wallet", { self.recoverButtonTapped?() }),
+            ("Connect", "remote node", { self.connectButtonTapped?() })
+        ]
         
         view.backgroundColor = UIColor.zap.darkBackground
 
@@ -51,34 +57,23 @@ class SelectWalletCreationMethodViewController: UIViewController {
 
 extension SelectWalletCreationMethodViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        guard let cellContent = content?[indexPath.row] else { return }
+        
         tableView.deselectRow(at: indexPath, animated: true)
-        
-        if indexPath.row < 2 {
-            let alertController = UIAlertController(title: "Sorry", message: "Running lnd on the phone is not yet supported in this beta.", preferredStyle: .alert)
-            alertController.addAction(UIAlertAction(title: "Ok", style: .cancel, handler: nil))
-            present(alertController, animated: true, completion: nil)
-            return
-        }
-        
-        let cellContent = content[indexPath.row]
-        let viewController = cellContent.2()
-        
-        if let viewController = viewController as? ConnectRemoteNodeViewController {
-            viewController.delegate = delegate
-        }
-        navigationController?.pushViewController(viewController, animated: true)
+        cellContent.2()
     }
 }
 
 extension SelectWalletCreationMethodViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return content.count
+        return content?.count ?? 0
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell: SelectWalletCreationMethodTableViewCell = tableView.dequeueCellForIndexPath(indexPath)
-        let cellContent = content[indexPath.row]
-        cell.set(title: cellContent.0, description: cellContent.1)
+        if let cellContent = content?[indexPath.row] {
+            cell.set(title: cellContent.0, description: cellContent.1)
+        }
         return cell
     }
 }
