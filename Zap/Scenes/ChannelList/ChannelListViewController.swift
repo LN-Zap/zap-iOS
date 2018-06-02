@@ -9,10 +9,11 @@ import Bond
 import UIKit
 
 extension UIStoryboard {
-    static func instantiateChannelListViewController(with viewModel: ViewModel, presentChannelDetail: @escaping (ChannelViewModel) -> Void, addChannelButtonTapped: @escaping () -> Void) -> ChannelListViewController {
+    static func instantiateChannelListViewController(with viewModel: ViewModel, channelListViewModel: ChannelListViewModel, presentChannelDetail: @escaping (ChannelViewModel) -> Void, addChannelButtonTapped: @escaping () -> Void) -> ChannelListViewController {
         let viewController = Storyboard.channelList.initial(viewController: ChannelListViewController.self)
         
         viewController.viewModel = viewModel
+        viewController.channelListViewModel = channelListViewModel
         viewController.presentChannelDetail = presentChannelDetail
         viewController.addChannelButtonTapped = addChannelButtonTapped
         
@@ -40,14 +41,8 @@ class ChannelListViewController: UIViewController {
     
     fileprivate var presentChannelDetail: ((ChannelViewModel) -> Void)?
     fileprivate var addChannelButtonTapped: (() -> Void)?
-    
-    fileprivate var viewModel: ViewModel? {
-        didSet {
-            guard let viewModel = viewModel else { return }
-            channelListViewModel = ChannelListViewModel(viewModel: viewModel)
-        }
-    }
-    private var channelListViewModel: ChannelListViewModel?
+    fileprivate var viewModel: ViewModel?
+    fileprivate var channelListViewModel: ChannelListViewModel?
     
     override func viewDidLoad() {
         super.viewDidLoad()

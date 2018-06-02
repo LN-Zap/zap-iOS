@@ -10,12 +10,17 @@ import UIKit
 final class MainCoordinator {
     private let rootViewController: RootViewController
     private let viewModel: ViewModel
+    private let channelListViewModel: ChannelListViewModel
+    private let transactionListViewModel: TransactionListViewModel
     
     private var mainViewController: MainViewController?
     
     init(rootViewController: RootViewController, viewModel: ViewModel) {
         self.rootViewController = rootViewController
         self.viewModel = viewModel
+        
+        channelListViewModel = ChannelListViewModel(viewModel: viewModel)
+        transactionListViewModel = TransactionListViewModel(viewModel: viewModel)
     }
     
     func start() {
@@ -33,12 +38,12 @@ final class MainCoordinator {
     }
     
     private func presentTransactions() {
-        let viewController = UIStoryboard.instantiateTransactionListViewController(with: viewModel, presentTransactionDetail: presentTransactionDetail)
+        let viewController = UIStoryboard.instantiateTransactionListViewController(with: viewModel, transactionListViewModel: transactionListViewModel, presentTransactionDetail: presentTransactionDetail)
         mainViewController?.setContainerContent(viewController)
     }
     
     private func presentNetwork() {
-        let viewController = UIStoryboard.instantiateChannelListViewController(with: viewModel, presentChannelDetail: presentChannelDetail, addChannelButtonTapped: presentAddChannel)
+        let viewController = UIStoryboard.instantiateChannelListViewController(with: viewModel, channelListViewModel: channelListViewModel, presentChannelDetail: presentChannelDetail, addChannelButtonTapped: presentAddChannel)
         mainViewController?.setContainerContent(viewController)
     }
     
