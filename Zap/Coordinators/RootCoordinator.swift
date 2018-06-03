@@ -41,14 +41,18 @@ final class RootCoordinator: NSObject, SetupCoordinatorDelegate, PinCoordinatorD
         }
     }
     
-    func handle(_ route: Route) {
-        switch route {
-        case .send(let invoice):
-            if let mainCoordinator = currentCoordinator as? MainCoordinator {
-                mainCoordinator.presentSend(invoice: invoice)
-            } else {
-                self.route = route
+    func handle(_ route: Route?) {
+        if let route = route {
+            switch route {
+            case .send(let invoice):
+                if let mainCoordinator = currentCoordinator as? MainCoordinator {
+                    mainCoordinator.presentSend(invoice: invoice)
+                } else {
+                    self.route = route
+                }
             }
+        } else {
+            self.route = nil
         }
     }
     

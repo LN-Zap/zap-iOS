@@ -45,7 +45,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     }
     
     private func handle(url: URL) -> Bool {
-        guard let route = Route(url: url) else { return false }
+        let route = Route(url: url)
         rootCoordinator?.handle(route)
         return true
     }
@@ -59,6 +59,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         window.addSubview(blurEffectView)
         
         self.blurEffectView = blurEffectView
+    }
+    
+    func applicationDidEnterBackground(_ application: UIApplication) {
+        rootCoordinator?.handle(nil) // reset route when app enters background
     }
     
     func applicationDidBecomeActive(_ application: UIApplication) {
