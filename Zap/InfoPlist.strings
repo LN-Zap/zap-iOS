@@ -7,4 +7,4 @@
 */
 
 "applicationShortcutItem.send" = "Send";
-"applicationShortcutItem.receive" = "Receive";
+"applicationShortcutItem.request" = "Receive";

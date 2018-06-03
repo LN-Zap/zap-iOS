@@ -51,7 +51,7 @@ final class RootCoordinator: NSObject, SetupCoordinatorDelegate, PinCoordinatorD
                     mainCoordinator.presentSend(invoice: invoice)
                     self.route = nil
                 }
-            case .receive:
+            case .request:
                 if let mainCoordinator = currentCoordinator as? MainCoordinator {
                     mainCoordinator.presentRequest()
                     self.route = nil

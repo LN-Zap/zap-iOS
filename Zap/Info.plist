@@ -46,9 +46,9 @@
 			<key>UIApplicationShortcutItemIconType</key>
 			<string>UIApplicationShortcutIconTypeInvitation</string>
 			<key>UIApplicationShortcutItemTitle</key>
-			<string>applicationShortcutItem.receive</string>
+			<string>applicationShortcutItem.request</string>
 			<key>UIApplicationShortcutItemType</key>
-			<string>com.jackmallers.zap.receive</string>
+			<string>com.jackmallers.zap.request</string>
 		</dict>
 		<dict>
 			<key>UIApplicationShortcutItemIconType</key>

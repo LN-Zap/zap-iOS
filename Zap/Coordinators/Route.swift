@@ -11,7 +11,7 @@ import Foundation
 // Parses deep links to routes in the app.
 enum Route {
     case send(String?)
-    case receive
+    case request
     
     init?(url: URL) {
         guard AddressType.lightningInvoice.isValidAddress(url.absoluteString, network: .testnet) else { return nil } // TODO: use real network
@@ -22,8 +22,8 @@ enum Route {
         switch shortcutItem.type {
         case "com.jackmallers.zap.send":
             self = .send(nil)
-        case "com.jackmallers.zap.receive":
-            self = .receive
+        case "com.jackmallers.zap.request":
+            self = .request
         default:
             return nil
         }
