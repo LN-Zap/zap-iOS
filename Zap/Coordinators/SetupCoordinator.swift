@@ -17,6 +17,7 @@ final class SetupCoordinator {
     private weak var navigationController: UINavigationController?
     private weak var connectRemoteNodeViewController: ConnectRemoteNodeViewController?
     private weak var delegate: SetupCoordinatorDelegate?
+    private weak var connectRemoteNodeViewModel: ConnectRemoteNodeViewModel?
     
     init(rootViewController: RootViewController, delegate: SetupCoordinatorDelegate) {
         self.rootViewController = rootViewController
@@ -46,7 +47,9 @@ final class SetupCoordinator {
     }
     
     private func connectRemoteNode() {
-        let viewController = UIStoryboard.instantiateConnectRemoteNodeViewController(didSetupWallet: didSetupWallet)
+        let viewModel = ConnectRemoteNodeViewModel()
+        connectRemoteNodeViewModel = viewModel
+        let viewController = UIStoryboard.instantiateConnectRemoteNodeViewController(didSetupWallet: didSetupWallet, connectRemoteNodeViewModel: viewModel, presentQRCodeScannerButtonTapped: presentNodeCertificatesScanner)
         connectRemoteNodeViewController = viewController
         navigationController?.pushViewController(viewController, animated: true)
     }
@@ -60,11 +63,8 @@ final class SetupCoordinator {
     }
     
     private func presentNodeCertificatesScanner() {
-        let viewController = UIStoryboard.instantiateRemoteNodeCertificatesScannerViewController(didScanRemoteNodeCertificates: didScanRemoteNodeCertificates)
+        guard let connectRemoteNodeViewModel = connectRemoteNodeViewModel else { return }
+        let viewController = UIStoryboard.instantiateRemoteNodeCertificatesScannerViewController(connectRemoteNodeViewModel: connectRemoteNodeViewModel)
         navigationController?.present(viewController, animated: true, completion: nil)
-    }
-    
-    private func didScanRemoteNodeCertificates(_ certificates: RemoteNodeCertificates) {
-        connectRemoteNodeViewController?.didScanRemoteNodeCertificates(certificates)
     }
 }

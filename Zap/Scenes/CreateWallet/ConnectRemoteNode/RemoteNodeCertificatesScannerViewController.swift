@@ -8,27 +8,23 @@
 import UIKit
 
 extension UIStoryboard {
-    static func instantiateRemoteNodeCertificatesScannerViewController(didScanRemoteNodeCertificates: @escaping (RemoteNodeCertificates) -> Void) -> RemoteNodeCertificatesScannerViewController {
+    static func instantiateRemoteNodeCertificatesScannerViewController(connectRemoteNodeViewModel: ConnectRemoteNodeViewModel) -> RemoteNodeCertificatesScannerViewController {
         let viewController = Storyboard.connectRemoteNode.instantiate(viewController: RemoteNodeCertificatesScannerViewController.self)
-        viewController.didScanRemoteNodeCertificates = didScanRemoteNodeCertificates
+        viewController.connectRemoteNodeViewModel = connectRemoteNodeViewModel
         return viewController
     }
-}
-
-protocol RemoteNodeCertificatesScannerDelegate: class {
-    func didScanRemoteNodeCertificates(_: RemoteNodeCertificates)
 }
 
 // swiftlint:disable:next type_name
 class RemoteNodeCertificatesScannerViewController: UIViewController {
     @IBOutlet private weak var cancelButton: UIButton!
     
-    fileprivate var didScanRemoteNodeCertificates: ((RemoteNodeCertificates) -> Void)?
+    fileprivate var connectRemoteNodeViewModel: ConnectRemoteNodeViewModel?
     
     @IBOutlet private weak var scannerView: QRCodeScannerView! {
         didSet {
             scannerView.remoteNodeCertificateHandler = { [weak self] in
-                self?.didScanRemoteNodeCertificates?($0)
+                self?.connectRemoteNodeViewModel?.certificates = $0
                 self?.dismiss(animated: true, completion: nil)
             }
         }

@@ -8,15 +8,13 @@
 import UIKit
 
 extension UIStoryboard {
-    static func instantiateConnectRemoteNodeViewController(didSetupWallet: @escaping () -> Void) -> ConnectRemoteNodeViewController {
+    static func instantiateConnectRemoteNodeViewController(didSetupWallet: @escaping () -> Void, connectRemoteNodeViewModel: ConnectRemoteNodeViewModel, presentQRCodeScannerButtonTapped: @escaping (() -> Void)) -> ConnectRemoteNodeViewController {
         let viewController = Storyboard.connectRemoteNode.initial(viewController: ConnectRemoteNodeViewController.self)
         viewController.didSetupWallet = didSetupWallet
+        viewController.connectRemoteNodeViewModel = connectRemoteNodeViewModel
+        viewController.presentQRCodeScannerButtonTapped = presentQRCodeScannerButtonTapped
         return viewController
     }
-}
-
-protocol SetupWalletDelegate: class {
-    func didSetupWallet()
 }
 
 class ConnectRemoteNodeViewController: UIViewController {
@@ -35,17 +33,10 @@ class ConnectRemoteNodeViewController: UIViewController {
     @IBOutlet private weak var connectButton: GradientLoadingButtonView!
     @IBOutlet private weak var textView: UITextView!
     
-    private var certificates: RemoteNodeCertificates? {
-        didSet {
-            updateCertificatesUI()
-        }
-    }
-    
     fileprivate var presentQRCodeScannerButtonTapped: (() -> Void)?
     fileprivate var didSetupWallet: (() -> Void)?
     
-    var testServer: LndRpcServer?
-    var connectCallback: (() -> Void)?
+    var connectRemoteNodeViewModel: ConnectRemoteNodeViewModel?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -83,17 +74,17 @@ class ConnectRemoteNodeViewController: UIViewController {
         textView.backgroundColor = .clear
         textView.textColor = .lightGray
         
-        let configuration = RemoteNodeConfiguration.load()
-        certificates = configuration?.remoteNodeCertificates
-        urlTextField.text = configuration?.url.absoluteString ?? Environment.defaultRemoteIP
-    }
-    
-    private func updateCertificatesUI() {
-        guard let certificates = certificates else { return }
-        let certString: String = certificates.certificate
-        let macString: String = certificates.macaron.base64EncodedString()
+        connectRemoteNodeViewModel?.certificatesString
+            .bind(to: textView.reactive.text)
+            .dispose(in: reactive.bag)
         
-        textView.text = "\(certString)\n\n\(macString)"
+        connectRemoteNodeViewModel?.urlString
+            .bidirectionalBind(to: urlTextField.reactive.text)
+            .dispose(in: reactive.bag)
+        
+        connectRemoteNodeViewModel?.isInputValid
+            .bind(to: connectButton.reactive.isEnabled)
+            .dispose(in: reactive.bag)
     }
     
     @IBAction private func presentQRCodeScanner(_ sender: Any) {
@@ -101,30 +92,13 @@ class ConnectRemoteNodeViewController: UIViewController {
     }
     
     @IBAction private func pasteCertificates(_ sender: Any) {
-        guard
-            let jsonString = UIPasteboard.general.string,
-            let remoteNodeCertificates = RemoteNodeCertificates(json: jsonString)
-            else { return }
-        self.certificates = remoteNodeCertificates
+        connectRemoteNodeViewModel?.pasteCertificates()
     }
     
     @IBAction private func connectRemoteNode(_ sender: Any) {
-        guard
-            let urlString = urlTextField.text,
-            let url = URL(string: urlString),
-            let certificates = certificates
-            else { return }
-    
-        let remoteNodeConfiguration = RemoteNodeConfiguration(remoteNodeCertificates: certificates, url: url)
-        remoteNodeConfiguration.save()
-
-        testServer = LndRpcServer(configuration: remoteNodeConfiguration)
-    
-        testServer?.canConnect { [weak self] in
-            print("🖇 can connect to remote server:", $0)
-            
-            if $0 {
-                self?.connect()
+        connectRemoteNodeViewModel?.connect { [weak self] success in
+            if success {
+                self?.didSetupWallet?()
             } else {
                 self?.displayError()
             }
@@ -136,16 +110,6 @@ class ConnectRemoteNodeViewController: UIViewController {
             self?.displayError("Could not connect to server.")
             self?.connectButton.isLoading = false
         }
-    }
-    
-    private func connect() {
-        didSetupWallet?()
-    }
-}
-
-extension ConnectRemoteNodeViewController: RemoteNodeCertificatesScannerDelegate {
-    func didScanRemoteNodeCertificates(_ certificates: RemoteNodeCertificates) {
-        self.certificates = certificates
     }
 }
 

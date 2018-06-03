@@ -141,6 +141,7 @@
 		AD1EB9FF20B2EAF4001FF67E /* ChannelAliasStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD1EB9FE20B2EAF4001FF67E /* ChannelAliasStore.swift */; };
 		AD1EBA0120B2FD9D001FF67E /* Persistable.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD1EBA0020B2FD9D001FF67E /* Persistable.swift */; };
 		AD21768920C3DFDB007779DE /* BalanceView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD21768820C3DFDB007779DE /* BalanceView.swift */; };
+		AD21768B20C3F29C007779DE /* ConnectRemoteNodeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD21768A20C3F29C007779DE /* ConnectRemoteNodeViewModel.swift */; };
 		AD2EDBFA20C02616002E6EE5 /* UIStoryboard.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD2EDBF920C02616002E6EE5 /* UIStoryboard.swift */; };
 		AD33B5EF20A8463600E32BD9 /* SendOnChainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD33B5EE20A8463600E32BD9 /* SendOnChainViewController.swift */; };
 		AD38EB30207DF233007DF14D /* UIButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD38EB2F207DF233007DF14D /* UIButton.swift */; };
@@ -434,6 +435,7 @@
 		AD1EB9FE20B2EAF4001FF67E /* ChannelAliasStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChannelAliasStore.swift; sourceTree = "<group>"; };
 		AD1EBA0020B2FD9D001FF67E /* Persistable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Persistable.swift; sourceTree = "<group>"; };
 		AD21768820C3DFDB007779DE /* BalanceView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BalanceView.swift; sourceTree = "<group>"; };
+		AD21768A20C3F29C007779DE /* ConnectRemoteNodeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConnectRemoteNodeViewModel.swift; sourceTree = "<group>"; };
 		AD2EDBF920C02616002E6EE5 /* UIStoryboard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIStoryboard.swift; sourceTree = "<group>"; };
 		AD33B5EE20A8463600E32BD9 /* SendOnChainViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SendOnChainViewController.swift; sourceTree = "<group>"; };
 		AD38EB2F207DF233007DF14D /* UIButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIButton.swift; sourceTree = "<group>"; };
@@ -1103,8 +1105,9 @@
 			children = (
 				AD680A9E20B07AD90018986B /* ConnectRemoteNode.storyboard */,
 				AD680AA020B07AE90018986B /* ConnectRemoteNodeViewController.swift */,
-				ADD6D80220B09260008BE461 /* RemoteNodeCertificatesScannerViewController.swift */,
+				AD21768A20C3F29C007779DE /* ConnectRemoteNodeViewModel.swift */,
 				ADD6D80420B09770008BE461 /* RemoteNodeCertificates.swift */,
+				ADD6D80220B09260008BE461 /* RemoteNodeCertificatesScannerViewController.swift */,
 				ADD6D80620B15603008BE461 /* RemoteNodeConfiguration.swift */,
 			);
 			path = ConnectRemoteNode;
@@ -1719,6 +1722,7 @@
 				AD9E243F20A368020014F9FA /* LndLogViewController.swift in Sources */,
 				AD680AA120B07AE90018986B /* ConnectRemoteNodeViewController.swift in Sources */,
 				ADCE01C8207B720800CA72E8 /* SyncViewController.swift in Sources */,
+				AD21768B20C3F29C007779DE /* ConnectRemoteNodeViewModel.swift in Sources */,
 				ADBA4421209AE75600D18B71 /* LightningStream.swift in Sources */,
 				A0F353D020692570005B3639 /* GradientView.swift in Sources */,
 				A0C2EABB206F8B02003AE56E /* FiatCurrency.swift in Sources */,

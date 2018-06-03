@@ -28,6 +28,12 @@ class GradientLoadingButtonView: UIControl {
         }
     }
     
+    override var isEnabled: Bool {
+        didSet {
+            button?.isEnabled = isEnabled
+        }
+    }
+    
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
         
@@ -37,6 +43,7 @@ class GradientLoadingButtonView: UIControl {
         let button = UIButton(type: .system)
         button.setTitle("Button", for: .normal)
         button.setTitleColor(.white, for: .normal)
+        button.setTitleColor(UIColor.white.withAlphaComponent(0.4), for: .disabled)
         button.addTarget(self, action: #selector(buttonTapped), for: .touchUpInside)
         addSubviewSameSize(button)
         Style.button.apply(to: button)
