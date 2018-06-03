@@ -17,7 +17,7 @@ class ChannelDetailViewController: ModalViewController {
     @IBOutlet private weak var remoteBalanceLabel: UILabel!
     @IBOutlet private weak var updateCountLabel: UILabel!
     @IBOutlet private weak var blockHeightLabel: UILabel!
-    
+    @IBOutlet private weak var balanceView: BalanceView!
     @IBOutlet private weak var blockExplorerButton: UIButton!
     @IBOutlet private weak var closeChannelButton: UIButton!
     
@@ -64,6 +64,8 @@ class ChannelDetailViewController: ModalViewController {
         let blockHeight = (viewModel?.info.blockHeight.value ?? 0) - channel.blockHeight
         blockHeightLabel.text = "blockHeight: \(String(describing: blockHeight))"
         stateLabel.setChannelState(channel.state)
+        
+        balanceView.set(localBalance: channel.localBalance, remoteBalance: channel.remoteBalance)
     }
     
     @IBAction private func closeChannel(_ sender: Any) {

@@ -140,6 +140,7 @@
 		AD1EB9FD20B2CEAA001FF67E /* StatusBarDelegatingNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD1EB9FC20B2CEAA001FF67E /* StatusBarDelegatingNavigationController.swift */; };
 		AD1EB9FF20B2EAF4001FF67E /* ChannelAliasStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD1EB9FE20B2EAF4001FF67E /* ChannelAliasStore.swift */; };
 		AD1EBA0120B2FD9D001FF67E /* Persistable.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD1EBA0020B2FD9D001FF67E /* Persistable.swift */; };
+		AD21768920C3DFDB007779DE /* BalanceView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD21768820C3DFDB007779DE /* BalanceView.swift */; };
 		AD2EDBFA20C02616002E6EE5 /* UIStoryboard.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD2EDBF920C02616002E6EE5 /* UIStoryboard.swift */; };
 		AD33B5EF20A8463600E32BD9 /* SendOnChainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD33B5EE20A8463600E32BD9 /* SendOnChainViewController.swift */; };
 		AD38EB30207DF233007DF14D /* UIButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD38EB2F207DF233007DF14D /* UIButton.swift */; };
@@ -432,6 +433,7 @@
 		AD1EB9FC20B2CEAA001FF67E /* StatusBarDelegatingNavigationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatusBarDelegatingNavigationController.swift; sourceTree = "<group>"; };
 		AD1EB9FE20B2EAF4001FF67E /* ChannelAliasStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChannelAliasStore.swift; sourceTree = "<group>"; };
 		AD1EBA0020B2FD9D001FF67E /* Persistable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Persistable.swift; sourceTree = "<group>"; };
+		AD21768820C3DFDB007779DE /* BalanceView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BalanceView.swift; sourceTree = "<group>"; };
 		AD2EDBF920C02616002E6EE5 /* UIStoryboard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIStoryboard.swift; sourceTree = "<group>"; };
 		AD33B5EE20A8463600E32BD9 /* SendOnChainViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SendOnChainViewController.swift; sourceTree = "<group>"; };
 		AD38EB2F207DF233007DF14D /* UIButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIButton.swift; sourceTree = "<group>"; };
@@ -694,11 +696,12 @@
 			children = (
 				ADBB362C2080B755005662B4 /* AddressView.swift */,
 				ADBA120720935871001F7700 /* AmountInput */,
+				AD21768820C3DFDB007779DE /* BalanceView.swift */,
 				A0BD44DE206FED1400BF27A3 /* BondTableViewCell.swift */,
-				A0F353CF20692570005B3639 /* GradientView.swift */,
 				ADB6DEDA20AD8F80001324C8 /* GradientLoadingButtonView.swift */,
-				A0605F8C202C9D8200EA903C /* LineView.swift */,
+				A0F353CF20692570005B3639 /* GradientView.swift */,
 				ADBA12082093587B001F7700 /* KeyPad */,
+				A0605F8C202C9D8200EA903C /* LineView.swift */,
 				ADF79363208DCB630086B2CA /* PinView.swift */,
 				A0605F89202C9D1A00EA903C /* Section Header */,
 				AD38EB31207DFB59007DF14D /* SegmentButton.swift */,
@@ -1677,6 +1680,7 @@
 				AD9E244520A377190014F9FA /* UIApplication.swift in Sources */,
 				ADCE01C3207B66A500CA72E8 /* ConfirmMnemonicViewModel.swift in Sources */,
 				AD6FFC9C20A9D15E00B57330 /* OnChainTransactionViewModel.swift in Sources */,
+				AD21768920C3DFDB007779DE /* BalanceView.swift in Sources */,
 				AD6FFCA620AB0A3700B57330 /* OnChainRequestAddressTypeSettingsItem.swift in Sources */,
 				A0A96B88201769F100788808 /* String.swift in Sources */,
 				AD86BD002099FB4500A7866A /* rpc.grpc.swift in Sources */,
