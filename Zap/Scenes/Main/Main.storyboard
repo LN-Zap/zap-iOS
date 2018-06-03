@@ -34,14 +34,14 @@
                                         <subviews>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Gty-6B-9yc">
                                                 <rect key="frame" x="0.0" y="0.0" width="187.5" height="97"/>
-                                                <state key="normal" title="Send"/>
+                                                <state key="normal" title="_Send"/>
                                                 <connections>
                                                     <action selector="presentSend:" destination="smx-iD-hSn" eventType="touchUpInside" id="lWg-qk-emP"/>
                                                 </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Zaa-3u-HIJ">
                                                 <rect key="frame" x="187.5" y="0.0" width="187.5" height="97"/>
-                                                <state key="normal" title="Request"/>
+                                                <state key="normal" title="_Request"/>
                                                 <connections>
                                                     <action selector="presentRequest:" destination="smx-iD-hSn" eventType="touchUpInside" id="Yk5-jm-hIc"/>
                                                 </connections>
@@ -79,14 +79,14 @@
                                                 <subviews>
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6XJ-ho-YDb">
                                                         <rect key="frame" x="0.0" y="0.0" width="172.5" height="70"/>
-                                                        <state key="normal" title="Transactions" image="icon-transactions"/>
+                                                        <state key="normal" title="_Transactions" image="icon-transactions"/>
                                                         <connections>
                                                             <action selector="showTransactions:" destination="smx-iD-hSn" eventType="touchUpInside" id="DWQ-Rv-PMZ"/>
                                                         </connections>
                                                     </button>
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8Eo-BE-XE2">
                                                         <rect key="frame" x="182.5" y="0.0" width="172.5" height="70"/>
-                                                        <state key="normal" title="Network" image="icon-network"/>
+                                                        <state key="normal" title="_Network" image="icon-network"/>
                                                         <connections>
                                                             <action selector="showNetwork:" destination="smx-iD-hSn" eventType="touchUpInside" id="1Jx-3I-sJO"/>
                                                         </connections>

@@ -10,6 +10,7 @@ import BTCUtil
 import Foundation
 
 extension UIStoryboard {
+    // swiftlint:disable:next function_parameter_count
     static func instantiateMainViewController(with viewModel: ViewModel, settingsButtonTapped: @escaping () -> Void, sendButtonTapped: @escaping () -> Void, requestButtonTapped: @escaping () -> Void, transactionsButtonTapped: @escaping () -> Void, networkButtonTapped: @escaping () -> Void) -> MainViewController {
         let mainViewController = Storyboard.main.instantiate(viewController: MainViewController.self)
         mainViewController.viewModel = viewModel
@@ -74,6 +75,17 @@ final class MainViewController: UIViewController, ContainerViewController {
         
         sendButton.tintColor = .white
         requestButton.tintColor = .white
+        
+        UIView.performWithoutAnimation {
+            sendButton.setTitle("Send", for: .normal)
+            sendButton.layoutIfNeeded()
+            requestButton.setTitle("Receive", for: .normal)
+            requestButton.layoutIfNeeded()
+            transactionsButton.setTitle("Transactions", for: .normal)
+            transactionsButton.layoutIfNeeded()
+            networkButton.setTitle("Network", for: .normal)
+            networkButton.layoutIfNeeded()
+        }
         
         Style.label.apply(to: aliasLabel, balanceLabel, fiatBalanceLabel)
         aliasLabel.textColor = .white
