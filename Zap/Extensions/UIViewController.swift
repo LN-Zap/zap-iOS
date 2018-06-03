@@ -30,10 +30,10 @@ extension UIViewController {
         container.addSubview(viewController.view)
         
         NSLayoutConstraint.activate([
-            viewController.view.leadingAnchor.constraint(equalTo: container.leadingAnchor, constant: 0),
-            viewController.view.trailingAnchor.constraint(equalTo: container.trailingAnchor, constant: 0),
-            viewController.view.topAnchor.constraint(equalTo: container.topAnchor, constant: 0),
-            viewController.view.bottomAnchor.constraint(equalTo: container.bottomAnchor, constant: 0)
+            viewController.view.leadingAnchor.constraint(equalTo: container.leadingAnchor),
+            viewController.view.trailingAnchor.constraint(equalTo: container.trailingAnchor),
+            viewController.view.topAnchor.constraint(equalTo: container.topAnchor),
+            viewController.view.bottomAnchor.constraint(equalTo: container.bottomAnchor)
         ])
         
         viewController.didMove(toParentViewController: self)

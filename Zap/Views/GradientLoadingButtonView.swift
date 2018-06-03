@@ -53,8 +53,11 @@ class GradientLoadingButtonView: UIControl {
         let activityIndicator = UIActivityIndicatorView(activityIndicatorStyle: .white)
         addSubview(activityIndicator)
         activityIndicator.translatesAutoresizingMaskIntoConstraints = false
-        activityIndicator.centerXAnchor.constraint(equalTo: centerXAnchor).isActive = true
-        activityIndicator.centerYAnchor.constraint(equalTo: centerYAnchor).isActive = true
+        
+        NSLayoutConstraint.activate([
+            activityIndicator.centerXAnchor.constraint(equalTo: centerXAnchor),
+            activityIndicator.centerYAnchor.constraint(equalTo: centerYAnchor)
+        ])
         
         activityIndicator.startAnimating()
         
@@ -63,10 +66,14 @@ class GradientLoadingButtonView: UIControl {
     
     private func addSubviewSameSize(_ view: UIView) {
         addSubview(view)
+        
         view.translatesAutoresizingMaskIntoConstraints = false
-        view.leftAnchor.constraint(equalTo: leftAnchor).isActive = true
-        view.rightAnchor.constraint(equalTo: rightAnchor).isActive = true
-        view.topAnchor.constraint(equalTo: topAnchor).isActive = true
-        view.bottomAnchor.constraint(equalTo: bottomAnchor).isActive = true
+        
+        NSLayoutConstraint.activate([
+            view.leftAnchor.constraint(equalTo: leftAnchor),
+            view.rightAnchor.constraint(equalTo: rightAnchor),
+            view.topAnchor.constraint(equalTo: topAnchor),
+            view.bottomAnchor.constraint(equalTo: bottomAnchor)
+        ])
     }
 }

@@ -106,9 +106,11 @@ extension UIViewController {
         
         let margin: CGFloat = 10
         
-        NSLayoutConstraint(item: toast, attribute: .centerX, relatedBy: .equal, toItem: view, attribute: .centerX, multiplier: 1, constant: 0).isActive = true
-        toast.topAnchor.constraint(equalTo: layoutGuide.topAnchor, constant: margin).isActive = true
-        toast.leadingAnchor.constraint(greaterThanOrEqualTo: layoutGuide.leadingAnchor, constant: margin).isActive = true
-        toast.trailingAnchor.constraint(greaterThanOrEqualTo: layoutGuide.trailingAnchor, constant: margin).isActive = true
+        NSLayoutConstraint.activate([
+            NSLayoutConstraint(item: toast, attribute: .centerX, relatedBy: .equal, toItem: view, attribute: .centerX, multiplier: 1, constant: 0),
+            toast.topAnchor.constraint(equalTo: layoutGuide.topAnchor, constant: margin),
+            toast.leadingAnchor.constraint(greaterThanOrEqualTo: layoutGuide.leadingAnchor, constant: margin),
+            toast.trailingAnchor.constraint(greaterThanOrEqualTo: layoutGuide.trailingAnchor, constant: margin)
+        ])
     }
 }
