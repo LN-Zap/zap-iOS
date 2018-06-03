@@ -40,6 +40,25 @@
 		<string>Roboto-Light.ttf</string>
 		<string>Roboto-Bold.ttf</string>
 	</array>
+	<key>UIApplicationShortcutItems</key>
+	<array>
+		<dict>
+			<key>UIApplicationShortcutItemIconType</key>
+			<string>UIApplicationShortcutIconTypeInvitation</string>
+			<key>UIApplicationShortcutItemTitle</key>
+			<string>applicationShortcutItem.receive</string>
+			<key>UIApplicationShortcutItemType</key>
+			<string>com.jackmallers.zap.receive</string>
+		</dict>
+		<dict>
+			<key>UIApplicationShortcutItemIconType</key>
+			<string>UIApplicationShortcutIconTypeCompose</string>
+			<key>UIApplicationShortcutItemTitle</key>
+			<string>applicationShortcutItem.send</string>
+			<key>UIApplicationShortcutItemType</key>
+			<string>com.jackmallers.zap.send</string>
+		</dict>
+	</array>
 	<key>UILaunchStoryboardName</key>
 	<string>LaunchScreen</string>
 	<key>UIMainStoryboardFile</key>

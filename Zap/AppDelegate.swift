@@ -34,9 +34,13 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         }
         
         if let url = launchOptions?[.url] as? URL {
-            return handle(url: url)
+            _ = handle(url: url)
+            return false
+        } else if let shortcutItem = launchOptions?[.shortcutItem] as? UIApplicationShortcutItem {
+            _ = handle(shortcutItem: shortcutItem)
+            return false
         }
-        
+
         return true
     }
     
@@ -44,8 +48,19 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         return handle(url: url)
     }
     
+    func application(_ application: UIApplication, performActionFor shortcutItem: UIApplicationShortcutItem, completionHandler: @escaping (Bool) -> Void) {
+        let success = handle(shortcutItem: shortcutItem)
+        completionHandler(success)
+    }
+    
     private func handle(url: URL) -> Bool {
-        let route = Route(url: url)
+        guard let route = Route(url: url) else { return false }
+        rootCoordinator?.handle(route)
+        return true
+    }
+    
+    private func handle(shortcutItem: UIApplicationShortcutItem) -> Bool {
+        guard let route = Route(shortcutItem: shortcutItem) else { return false }
         rootCoordinator?.handle(route)
         return true
     }

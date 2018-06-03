@@ -61,7 +61,7 @@ final class MainCoordinator {
         }
     }
     
-    private func presentRequest() {
+    func presentRequest() {
         let viewController = UIStoryboard.instantiateRequestViewController(with: viewModel)
         mainViewController?.present(viewController, animated: true, completion: nil)
     }

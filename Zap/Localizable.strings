@@ -29,8 +29,8 @@
 "scene.settings.item.lock_wallet" = "Lock Wallet";
 "scene.settings.section.wallet" = "Wallet";
 "scene.deposit.send" = "Send";
-"scene.deposit.title" = "Deposit";
-"scene.request.title" = "Request";
+"scene.deposit.title" = "Receive";
+"scene.request.title" = "Receive";
 "scene.withdraw.title" = "Withdraw";
 "scene.channels.title" = "Channels";
 "scene.channels.section_header.pending" = "Pending";

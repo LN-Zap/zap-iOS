@@ -183,6 +183,7 @@
 		AD99C9F5209085B20061C565 /* OpenChannel.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AD99C9F4209085B20061C565 /* OpenChannel.storyboard */; };
 		AD99C9F72090C2560061C565 /* AmountInputView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD99C9F62090C2560061C565 /* AmountInputView.swift */; };
 		AD99C9F92090C2600061C565 /* AmountInputView.xib in Resources */ = {isa = PBXBuildFile; fileRef = AD99C9F82090C2600061C565 /* AmountInputView.xib */; };
+		AD9C4C8020C3D3AA009636E1 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = AD9C4C7F20C3D3AA009636E1 /* InfoPlist.strings */; };
 		AD9E243F20A368020014F9FA /* LndLogViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD9E243E20A368020014F9FA /* LndLogViewController.swift */; };
 		AD9E244120A3680C0014F9FA /* Debug.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AD9E244020A3680C0014F9FA /* Debug.storyboard */; };
 		AD9E244320A375130014F9FA /* DebugButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD9E244220A375130014F9FA /* DebugButton.swift */; };
@@ -474,6 +475,7 @@
 		AD99C9F4209085B20061C565 /* OpenChannel.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = OpenChannel.storyboard; sourceTree = "<group>"; };
 		AD99C9F62090C2560061C565 /* AmountInputView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AmountInputView.swift; sourceTree = "<group>"; };
 		AD99C9F82090C2600061C565 /* AmountInputView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AmountInputView.xib; sourceTree = "<group>"; };
+		AD9C4C7F20C3D3AA009636E1 /* InfoPlist.strings */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; path = InfoPlist.strings; sourceTree = "<group>"; };
 		AD9E243E20A368020014F9FA /* LndLogViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LndLogViewController.swift; sourceTree = "<group>"; };
 		AD9E244020A3680C0014F9FA /* Debug.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Debug.storyboard; sourceTree = "<group>"; };
 		AD9E244220A375130014F9FA /* DebugButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DebugButton.swift; sourceTree = "<group>"; };
@@ -682,6 +684,7 @@
 				A0A05A0E2013CF960007D1C9 /* Info.plist */,
 				A0B91A83202628EF009AD2D3 /* Settings.bundle */,
 				A070D967202B5163000A8274 /* Localizable.strings */,
+				AD9C4C7F20C3D3AA009636E1 /* InfoPlist.strings */,
 			);
 			name = "Supporting Files";
 			sourceTree = "<group>";
@@ -1489,6 +1492,7 @@
 				AD3CF97820B4028400D78A54 /* SelectWalletCreationMethodTableViewCell.xib in Resources */,
 				AD9E244120A3680C0014F9FA /* Debug.storyboard in Resources */,
 				A01009412014D4810001EF94 /* Toast.xib in Resources */,
+				AD9C4C8020C3D3AA009636E1 /* InfoPlist.strings in Resources */,
 				AD99C9F5209085B20061C565 /* OpenChannel.storyboard in Resources */,
 				AD99C9ED209072710061C565 /* QRCodeScanner.storyboard in Resources */,
 				AD19F06420AF1AB8008090CB /* DetailMemoTableViewCell.xib in Resources */,
