@@ -38,6 +38,7 @@ final class ConnectRemoteNodeViewModel: NSObject {
         
         let configuration = RemoteNodeConfiguration.load()
         certificates = configuration?.remoteNodeCertificates
+        updateCertificatesUI()
         urlString.value = configuration?.url.absoluteString ?? Environment.defaultRemoteIP
     }
     
