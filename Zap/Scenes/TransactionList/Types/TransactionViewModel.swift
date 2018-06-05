@@ -27,7 +27,7 @@ enum TransactionIcon {
         case .settledInvoice:
             return #imageLiteral(resourceName: "icon_transaction_invoice")
         case .unsettledInvoice:
-            return #imageLiteral(resourceName: "icon_transaction_invoice")
+            return #imageLiteral(resourceName: "icon_transaction_invoice_pending")
         case .expiredInvoice:
             return #imageLiteral(resourceName: "icon_transaction_invoice")
         case .openChannel:
