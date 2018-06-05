@@ -60,8 +60,8 @@ class ChannelListViewController: UIViewController {
         searchBar.placeholder = "search"
         searchBar.delegate = self
         searchBar.backgroundImage = UIImage()
-        searchBackgroundView.backgroundColor = UIColor.zap.searchBackground
-        addChannelButton.tintColor = UIColor.zap.text
+        searchBackgroundView.backgroundColor = UIColor.zap.white
+        addChannelButton.tintColor = UIColor.zap.black
         
         channelListViewModel?.sections
             .bind(to: tableView, using: ChannelBond())

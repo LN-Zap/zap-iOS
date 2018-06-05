@@ -26,7 +26,7 @@ class ConnectRemoteNodeViewController: UIViewController {
     @IBOutlet private weak var lightBackgroundView: UIView!
     @IBOutlet private weak var lineView: LineView! {
         didSet {
-            lineView.color = UIColor.zap.darkTableViewSeparator
+            lineView.color = UIColor.zap.warmGrey
         }
     }
     
@@ -43,8 +43,8 @@ class ConnectRemoteNodeViewController: UIViewController {
 
         title = "Connect Remote Node"
         
-        view.backgroundColor = UIColor.zap.darkBackground
-        lightBackgroundView.backgroundColor = UIColor.zap.mediumBackground
+        view.backgroundColor = UIColor.zap.charcoalGrey
+        lightBackgroundView.backgroundColor = UIColor.zap.charcoalGreyLight
         
         Style.label.apply(to: urlLabel) {
             $0.textColor = .white

@@ -29,7 +29,7 @@ class ConfirmMnemonicViewController: UIViewController {
         
         title = "Confirm Seed"
 
-        view.backgroundColor = UIColor.zap.darkBackground
+        view.backgroundColor = UIColor.zap.charcoalGrey
         collectionView.dataSource = self
         collectionView.isScrollEnabled = false
         collectionView.backgroundColor = .clear

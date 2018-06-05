@@ -24,7 +24,7 @@ class TransactionTableViewCell: BondTableViewCell {
                 .map { $0.flatMap { $0 > 0 } ?? false }
             
             [isPositive.map({ !$0 }).bind(to: positiveAmountBackgroundView.reactive.isHidden),
-             isPositive.map({ $0 ? UIColor.zap.green : UIColor.zap.text }).bind(to: primaryAmountLabel.reactive.textColor),
+             isPositive.map({ $0 ? UIColor.zap.nastyGreen : UIColor.zap.black }).bind(to: primaryAmountLabel.reactive.textColor),
              transaction.icon.map({ $0.image }).bind(to: iconImageView.reactive.image),
              transaction.displayText.bind(to: titleLabel.reactive.text),
              transaction.amount.bind(to: primaryAmountLabel.reactive.text, currency: Settings.primaryCurrency),
@@ -40,7 +40,7 @@ class TransactionTableViewCell: BondTableViewCell {
     override func awakeFromNib() {
         super.awakeFromNib()
         
-        iconImageView.tintColor = UIColor.zap.text
+        iconImageView.tintColor = UIColor.zap.black
         
         Style.label.apply(to: primaryAmountLabel, titleLabel) {
             $0.font = $0.font.withSize(14)

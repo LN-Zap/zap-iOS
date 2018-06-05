@@ -60,11 +60,11 @@ class SetupPinViewController: UIViewController {
             .dispose(in: reactive.bag)
         
         doneButton.setTitle("Done", for: .normal)
-        view.backgroundColor = UIColor.zap.darkBackground
+        view.backgroundColor = UIColor.zap.charcoalGrey
     }
     
     private func setupKeyPad() {
-        keyPadView.backgroundColor = UIColor.zap.darkBackground
+        keyPadView.backgroundColor = UIColor.zap.charcoalGrey
         keyPadView.textColor = .white
         keyPadView.state = .setupPin
         

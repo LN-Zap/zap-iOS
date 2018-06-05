@@ -63,9 +63,9 @@ final class MainViewController: UIViewController, ContainerViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        balanceView.backgroundColor = UIColor.zap.darkBackground
-        segmentedControlView.backgroundColor = UIColor.zap.mediumBackground
-        selectedButtonbackgroundView.backgroundColor = UIColor.zap.darkBackground
+        balanceView.backgroundColor = UIColor.zap.charcoalGrey
+        segmentedControlView.backgroundColor = UIColor.zap.charcoalGreyLight
+        selectedButtonbackgroundView.backgroundColor = UIColor.zap.charcoalGrey
         
         Style.button.apply(to: transactionsButton, networkButton, sendButton, requestButton)
         transactionsButton.titleEdgeInsets = UIEdgeInsets(top: 0, left: 10, bottom: 0, right: 0)

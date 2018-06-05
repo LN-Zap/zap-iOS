@@ -28,7 +28,7 @@ class TransactionDetailViewController: UIViewController {
         Style.button.apply(to: hideTransactionButton)
         
         hideTransactionButton.setTitle("delete", for: .normal)
-        hideTransactionButton.tintColor = UIColor.zap.red
+        hideTransactionButton.tintColor = UIColor.zap.tomato
         
         tableView.registerCell(DetailTableViewCell.self)
         tableView.registerCell(DetailMemoTableViewCell.self)

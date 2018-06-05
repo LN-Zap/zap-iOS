@@ -8,7 +8,7 @@
 import UIKit
 
 final class LineView: UIView {
-    var color = UIColor(hex: 0xD6D6D6)
+    var color = UIColor.zap.lightGrey
     
     override func draw(_ rect: CGRect) {
         let context = UIGraphicsGetCurrentContext()

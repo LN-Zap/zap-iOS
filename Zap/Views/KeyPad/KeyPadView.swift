@@ -51,7 +51,7 @@ final class KeyPadView: UIView {
             updatePointButton()
         }
     }
-    var textColor = UIColor.zap.text {
+    var textColor = UIColor.zap.black {
         didSet {
             updateButtonFont()
         }

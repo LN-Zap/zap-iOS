@@ -27,6 +27,6 @@ class GradientView: UIView {
         
         gradientLayer?.startPoint = CGPoint(x: 0.0, y: 1.0)
         gradientLayer?.endPoint = CGPoint(x: 1.0, y: 1.0)
-        gradientLayer?.colors = [UIColor.zap.bottomGradientLeft.cgColor, UIColor.zap.bottomGradientRight.cgColor]
+        gradientLayer?.colors = [UIColor.zap.lightMustard.cgColor, UIColor.zap.peach.cgColor]
     }
 }

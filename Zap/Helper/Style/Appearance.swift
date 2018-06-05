@@ -18,7 +18,7 @@ struct Appearance {
         UIBarButtonItem.appearance().setTitleTextAttributes([.font: UIFont.zap.light], for: .disabled)
         
         // Search Bar Font
-        let searchBarAttributes = [NSAttributedStringKey.font.rawValue: UIFont.zap.light, NSAttributedStringKey.foregroundColor.rawValue: UIColor.zap.text]
+        let searchBarAttributes = [NSAttributedStringKey.font.rawValue: UIFont.zap.light, NSAttributedStringKey.foregroundColor.rawValue: UIColor.zap.black]
         UITextField.appearance(whenContainedInInstancesOf: [UISearchBar.self]).defaultTextAttributes = searchBarAttributes
         UITextField.appearance().backgroundColor = .clear
     }

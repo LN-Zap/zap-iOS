@@ -30,7 +30,7 @@ class SyncViewController: UIViewController {
         syncLabel.textColor = .white
         dateLabel.textColor = .lightGray
         
-        view.backgroundColor = UIColor.zap.darkBackground
+        view.backgroundColor = UIColor.zap.charcoalGrey
         
         guard let viewModel = viewModel else { fatalError("viewModel not set.") }
         

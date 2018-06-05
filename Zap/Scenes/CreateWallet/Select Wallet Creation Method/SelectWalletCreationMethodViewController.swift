@@ -39,7 +39,7 @@ class SelectWalletCreationMethodViewController: UIViewController {
             ("Connect", "remote node", { self.connectButtonTapped?() })
         ]
         
-        view.backgroundColor = UIColor.zap.darkBackground
+        view.backgroundColor = UIColor.zap.charcoalGrey
 
         tableView.delegate = self
         tableView.dataSource = self
@@ -47,7 +47,7 @@ class SelectWalletCreationMethodViewController: UIViewController {
         tableView.rowHeight = 140
         tableView.isScrollEnabled = false
         tableView.registerCell(SelectWalletCreationMethodTableViewCell.self)
-        tableView.backgroundColor = UIColor.zap.darkBackground
+        tableView.backgroundColor = UIColor.zap.charcoalGrey
         
         navigationController?.navigationBar.backgroundColor = .clear
         navigationController?.navigationBar.shadowImage = UIImage()

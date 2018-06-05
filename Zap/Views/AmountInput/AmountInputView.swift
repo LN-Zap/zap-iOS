@@ -61,7 +61,7 @@ class AmountInputView: UIControl {
         contentView.frame = self.bounds
         contentView.autoresizingMask = [.flexibleHeight, .flexibleWidth]
         
-        amountTextField.textColor = UIColor.zap.text
+        amountTextField.textColor = UIColor.zap.black
         amountTextField.font = UIFont.zap.light.withSize(36)
         amountTextField.placeholder = "Amount"
         amountTextField.inputView = UIView()
@@ -69,9 +69,9 @@ class AmountInputView: UIControl {
         amountTextField.becomeFirstResponder()
         
         Style.button.apply(to: swapCurrencyButton)
-        swapCurrencyButton.tintColor = UIColor.zap.text
+        swapCurrencyButton.tintColor = UIColor.zap.black
         swapCurrencyButton.titleLabel?.font = UIFont.zap.light.withSize(36)
-        downArrowImageView.tintColor = UIColor.zap.text
+        downArrowImageView.tintColor = UIColor.zap.black
         
         Settings.primaryCurrency
             .map { $0.symbol }
@@ -99,7 +99,7 @@ class AmountInputView: UIControl {
     private func updateValidityIndicator() {
         if formattedAmount != nil,
             let range = validRange {
-            amountTextField.textColor = range.contains(satoshis) ? UIColor.zap.text : UIColor.zap.red
+            amountTextField.textColor = range.contains(satoshis) ? UIColor.zap.black : UIColor.zap.tomato
         }
     }
 }

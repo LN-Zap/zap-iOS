@@ -18,7 +18,7 @@ class SectionHeaderView: UIView {
         didSet {
             Style.label.apply(to: titleLabel)
             titleLabel.font = UIFont.zap.bold.withSize(10)
-            titleLabel.textColor = UIColor.zap.text
+            titleLabel.textColor = UIColor.zap.black
         }
     }
     

@@ -31,7 +31,7 @@ final class MnemonicWordTableViewCell: UITableViewCell {
             $0.font = $0.font.withSize(24)
         }
         
-        indexLabel.textColor = UIColor.zap.disabled
+        indexLabel.textColor = UIColor.zap.lightGrey
         wordLabel.textColor = .white
     }
 }

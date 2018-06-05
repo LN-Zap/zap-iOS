@@ -20,7 +20,7 @@ class MnemonicPageViewController: UIPageViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        view.backgroundColor = UIColor.zap.mediumBackground
+        view.backgroundColor = UIColor.zap.charcoalGreyLight
         
         orderedViewControllers = mnemonicViewModel?.pageWords.map {
             UIStoryboard.instantiateMnemonicWordListViewController(with: $0)

@@ -94,7 +94,7 @@ class ChannelDetailViewController: ModalViewController {
             let network = viewModel?.info.network.value,
             let url = Settings.blockExplorer.url(network: network, txid: txid) {
             let safariViewController = SFSafariViewController(url: url)
-            safariViewController.preferredControlTintColor = UIColor.zap.tint
+            safariViewController.preferredControlTintColor = UIColor.zap.peach
             present(safariViewController, animated: true)
         }
     }

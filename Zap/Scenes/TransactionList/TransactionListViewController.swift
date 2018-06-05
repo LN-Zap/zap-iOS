@@ -55,8 +55,8 @@ class TransactionListViewController: UIViewController {
         searchBar.placeholder = "search"
         searchBar.delegate = self
         searchBar.backgroundImage = UIImage()
-        searchBackgroundView.backgroundColor = UIColor.zap.searchBackground
-        filterButton.tintColor = UIColor.zap.text
+        searchBackgroundView.backgroundColor = UIColor.zap.white
+        filterButton.tintColor = UIColor.zap.black
         
         Style.label.apply(to: emptyStateLabel)
         emptyStateLabel.text = "0 transactions 🙁"

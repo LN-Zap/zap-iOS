@@ -14,7 +14,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     var rootCoordinator: RootCoordinator?
     var window: UIWindow? {
         didSet {
-            window?.tintColor = UIColor.zap.tint
+            window?.tintColor = UIColor.zap.peach
         }
     }
     

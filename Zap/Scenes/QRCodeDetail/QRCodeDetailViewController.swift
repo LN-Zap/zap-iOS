@@ -37,10 +37,10 @@ final class QRCodeDetailViewController: UIViewController {
         Style.label.apply(to: addressLabel)
         
         requestMethodLabel.font = UIFont.zap.light.withSize(10)
-        requestMethodLabel.tintColor = UIColor.zap.text
-        requestMethodImageView.tintColor = UIColor.zap.text
+        requestMethodLabel.tintColor = UIColor.zap.black
+        requestMethodImageView.tintColor = UIColor.zap.black
         
-        topView.backgroundColor = UIColor.zap.searchBackground
+        topView.backgroundColor = UIColor.zap.white
         
         qrCodeImageView?.image = UIImage.qrCode(from: viewModel.address)
         

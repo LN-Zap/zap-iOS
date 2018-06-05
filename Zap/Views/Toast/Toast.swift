@@ -48,9 +48,9 @@ final class Toast: UIView {
         guard let content = views?.first as? UIView else { return nil }
         
         if style == .error {
-            messageLabel?.textColor = UIColor.zap.red
+            messageLabel?.textColor = UIColor.zap.tomato
         } else {
-            messageLabel?.textColor = UIColor.zap.darkBackground
+            messageLabel?.textColor = UIColor.zap.charcoalGrey
         }
         
         translatesAutoresizingMaskIntoConstraints = false
