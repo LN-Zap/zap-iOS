@@ -28,8 +28,6 @@ class PinViewController: UIViewController {
         
         pinStackView.characterCount = viewModel.pinLength ?? 0
         
-        view.backgroundColor = UIColor.zap.charcoalGrey
-        
         setupKeyPad()
     }
     

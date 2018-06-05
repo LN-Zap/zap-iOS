@@ -9,7 +9,6 @@ import BTCUtil
 import UIKit
 
 class SettingsContainerViewController: UIViewController, ContainerViewController {
-    @IBOutlet private weak var headerBackground: UIView!
     @IBOutlet private weak var primaryCurrencyLabel: UILabel!
     @IBOutlet private weak var secondaryCurrencyLabel: UILabel!
     @IBOutlet private weak var exchangeRateLabel: UILabel!
@@ -27,8 +26,6 @@ class SettingsContainerViewController: UIViewController, ContainerViewController
         navigationController?.navigationBar.shadowImage = UIImage()
         navigationController?.navigationBar.isTranslucent = false
         navigationController?.navigationBar.barTintColor = UIColor.zap.charcoalGrey
-        
-        headerBackground.backgroundColor = UIColor.zap.charcoalGrey
         
         viewModel?.balance.total
             .bind(to: primaryCurrencyLabel.reactive.text, currency: Settings.primaryCurrency)

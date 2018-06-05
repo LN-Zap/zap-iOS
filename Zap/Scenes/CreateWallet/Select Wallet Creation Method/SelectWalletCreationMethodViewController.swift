@@ -39,8 +39,6 @@ class SelectWalletCreationMethodViewController: UIViewController {
             ("Connect", "remote node", { self.connectButtonTapped?() })
         ]
         
-        view.backgroundColor = UIColor.zap.charcoalGrey
-
         tableView.delegate = self
         tableView.dataSource = self
         tableView.tableFooterView = UIView()

@@ -28,15 +28,10 @@ extension UIStoryboard {
 final class MainViewController: UIViewController, ContainerViewController {
     var viewModel: ViewModel?
  
-    @IBOutlet private weak var balanceView: UIView!
-    @IBOutlet private weak var segmentedControlView: UIView!
-    
     @IBOutlet private weak var aliasLabel: UILabel!
     @IBOutlet private weak var balanceLabel: UILabel!
     @IBOutlet private weak var fiatBalanceLabel: UILabel!
     @IBOutlet private weak var expandHeaderButton: UIButton!
-    
-    @IBOutlet private weak var selectedButtonbackgroundView: UIView!
     @IBOutlet private weak var selecteButtonLeadingConstraint: NSLayoutConstraint!
     @IBOutlet private weak var transactionsButton: UIButton!
     @IBOutlet private weak var networkButton: UIButton!
@@ -62,10 +57,6 @@ final class MainViewController: UIViewController, ContainerViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        balanceView.backgroundColor = UIColor.zap.charcoalGrey
-        segmentedControlView.backgroundColor = UIColor.zap.charcoalGreyLight
-        selectedButtonbackgroundView.backgroundColor = UIColor.zap.charcoalGrey
         
         Style.button.apply(to: transactionsButton, networkButton, sendButton, requestButton)
         transactionsButton.titleEdgeInsets = UIEdgeInsets(top: 0, left: 10, bottom: 0, right: 0)

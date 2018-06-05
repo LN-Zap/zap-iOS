@@ -1,11 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14109" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="vzn-ka-eR5">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14113" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="vzn-ka-eR5">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
+        <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -45,7 +46,7 @@
                                         </subviews>
                                     </stackView>
                                 </subviews>
-                                <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <color key="backgroundColor" name="charcoalGrey"/>
                                 <constraints>
                                     <constraint firstItem="oQR-kc-1FR" firstAttribute="centerX" secondItem="Boy-sC-5iG" secondAttribute="centerX" id="MTY-Ty-eR5"/>
                                     <constraint firstItem="oQR-kc-1FR" firstAttribute="centerY" secondItem="Boy-sC-5iG" secondAttribute="centerY" id="ihm-WE-bLV"/>
@@ -80,7 +81,6 @@
                     <connections>
                         <outlet property="container" destination="qgH-DM-93y" id="syo-Cm-ne6"/>
                         <outlet property="exchangeRateLabel" destination="fcg-nP-0hE" id="ek2-aJ-3kd"/>
-                        <outlet property="headerBackground" destination="Boy-sC-5iG" id="w6s-iN-LLa"/>
                         <outlet property="primaryCurrencyLabel" destination="Zko-3F-74r" id="iI0-b9-I5h"/>
                         <outlet property="secondaryCurrencyLabel" destination="S1i-4J-U8h" id="5rg-o3-150"/>
                     </connections>
@@ -108,4 +108,9 @@
             <point key="canvasLocation" x="-74.400000000000006" y="166.8665667166417"/>
         </scene>
     </scenes>
+    <resources>
+        <namedColor name="charcoalGrey">
+            <color red="0.19215686274509805" green="0.20000000000000001" blue="0.23137254901960785" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+    </resources>
 </document>

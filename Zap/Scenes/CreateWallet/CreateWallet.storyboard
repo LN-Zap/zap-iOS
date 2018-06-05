@@ -7,6 +7,7 @@
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
+        <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -27,7 +28,7 @@
                                 </constraints>
                             </tableView>
                         </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <color key="backgroundColor" name="charcoalGrey"/>
                         <constraints>
                             <constraint firstItem="AiB-0H-Fag" firstAttribute="leading" secondItem="a72-sr-Qg5" secondAttribute="leading" id="CWf-vw-OWn"/>
                             <constraint firstItem="AiB-0H-Fag" firstAttribute="centerY" secondItem="ajR-GT-VlI" secondAttribute="centerY" id="Vvf-5p-R7w"/>
@@ -85,7 +86,7 @@
                                 </constraints>
                             </view>
                         </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <color key="backgroundColor" name="charcoalGrey"/>
                         <constraints>
                             <constraint firstItem="2hw-GH-ZzO" firstAttribute="trailing" secondItem="8Ah-Gl-chL" secondAttribute="trailing" id="2Jx-PF-K7z"/>
                             <constraint firstItem="8Ah-Gl-chL" firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="0Eh-4P-us5" secondAttribute="trailing" constant="20" id="8B7-HH-U5X"/>
@@ -128,7 +129,7 @@
                                     </label>
                                     <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="iMl-VL-7f4">
                                         <rect key="frame" x="0.0" y="171" width="375" height="45"/>
-                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="45" id="ZYi-Gn-sHQ"/>
                                         </constraints>
@@ -192,7 +193,7 @@
                                 </constraints>
                             </view>
                         </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <color key="backgroundColor" name="charcoalGrey"/>
                         <constraints>
                             <constraint firstItem="7rm-rd-4Fq" firstAttribute="leading" secondItem="0gb-af-vDr" secondAttribute="leading" id="CiA-BO-zxz"/>
                             <constraint firstAttribute="trailing" secondItem="7rm-rd-4Fq" secondAttribute="trailing" id="EbP-i1-uaG"/>
@@ -357,4 +358,9 @@
             <point key="canvasLocation" x="2480.8000000000002" y="897.30134932533736"/>
         </scene>
     </scenes>
+    <resources>
+        <namedColor name="charcoalGrey">
+            <color red="0.19215686274509805" green="0.20000000000000001" blue="0.23137254901960785" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+    </resources>
 </document>

@@ -29,9 +29,7 @@ class SyncViewController: UIViewController {
         Style.label.apply(to: syncLabel, dateLabel)
         syncLabel.textColor = .white
         dateLabel.textColor = .lightGray
-        
-        view.backgroundColor = UIColor.zap.charcoalGrey
-        
+                
         guard let viewModel = viewModel else { fatalError("viewModel not set.") }
         
         let percentSignal = combineLatest(viewModel.info.blockHeight, viewModel.info.blockChainHeight) { blockHeigh, maxBlockHeight -> Double in
