@@ -18,9 +18,8 @@ class BalanceView: UIView {
         layer.cornerRadius = 5
         clipsToBounds = true
         
-        let localBalanceView = UIView(frame: CGRect(x: 0, y: 0, width: 10, height: 10))
+        let localBalanceView = GradientView(frame: CGRect.zero)
         localBalanceView.translatesAutoresizingMaskIntoConstraints = false
-        localBalanceView.backgroundColor = UIColor.zap.nastyGreen
         self.addSubview(localBalanceView)
         
         let multiplier = CGFloat(truncating: localBalance / (localBalance + remoteBalance))

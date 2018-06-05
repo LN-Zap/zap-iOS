@@ -8,11 +8,11 @@
 import Bond
 import UIKit
 
-class TransactionDetailViewController: UIViewController {
+class DetailViewController: UIViewController {
     @IBOutlet private weak var hideTransactionButton: UIButton!
     @IBOutlet private weak var tableView: UITableView!
     
-    var transactionViewModel: TransactionViewModel?
+    var detailViewModel: DetailViewModel?
     var viewModel: ViewModel?
     
     override func viewDidLoad() {
@@ -22,7 +22,7 @@ class TransactionDetailViewController: UIViewController {
         navigationController?.navigationBar.isTranslucent = false
         navigationController?.navigationBar.barTintColor = .white
         
-        title = transactionViewModel?.detailViewControllerTitle
+        title = detailViewModel?.detailViewControllerTitle
         titleTextStyle = .dark
         
         Style.button.apply(to: hideTransactionButton)
@@ -34,13 +34,17 @@ class TransactionDetailViewController: UIViewController {
         tableView.registerCell(DetailMemoTableViewCell.self)
         tableView.registerCell(DetailQRCodeTableViewCell.self)
         tableView.registerCell(DetailTimerTableViewCell.self)
+        tableView.registerCell(DetailLegendTableViewCell.self)
+        tableView.registerCell(DetailBalanceTableViewCell.self)
+        tableView.registerCell(DetailSeparatorTableViewCell.self)
         
         tableView.rowHeight = UITableViewAutomaticDimension
         tableView.estimatedRowHeight = 48
         tableView.tableFooterView = UIView()
         tableView.allowsSelection = false
+        tableView.separatorStyle = .none
         
-        transactionViewModel?.detailCells
+        detailViewModel?.detailCells
             .bind(to: tableView) { data, indexPath, tableView -> UITableViewCell in
                 switch data[indexPath.row] {
                 case .info(let info):
@@ -50,7 +54,7 @@ class TransactionDetailViewController: UIViewController {
                 case .memo(let info):
                     let cell: DetailMemoTableViewCell = tableView.dequeueCellForIndexPath(indexPath)
                     cell.onChange = { [weak self] in
-                        guard let transactionViewModel = self?.transactionViewModel else { return }
+                        guard let transactionViewModel = self?.detailViewModel as? TransactionViewModel else { return }
                         self?.viewModel?.udpateMemo($0, for: transactionViewModel)
                     }
                     cell.info = info
@@ -64,6 +68,16 @@ class TransactionDetailViewController: UIViewController {
                     let cell: DetailTimerTableViewCell = tableView.dequeueCellForIndexPath(indexPath)
                     cell.info = info
                     return cell
+                case .legend(let info):
+                    let cell: DetailLegendTableViewCell = tableView.dequeueCellForIndexPath(indexPath)
+                    cell.info = info
+                    return cell
+                case .balance(let info):
+                    let cell: DetailBalanceTableViewCell = tableView.dequeueCellForIndexPath(indexPath)
+                    cell.info = info
+                    return cell
+                case .separator:
+                    return tableView.dequeueCellForIndexPath(indexPath) as DetailSeparatorTableViewCell
                 }
             }
     }
@@ -72,8 +86,9 @@ class TransactionDetailViewController: UIViewController {
         dismiss(animated: true, completion: nil)
     }
     
+    // TODO: move to cell
     @IBAction private func hideTransaction(_ sender: Any) {
-        guard let transactionViewModel = transactionViewModel else { return }
+        guard let transactionViewModel = detailViewModel as? TransactionViewModel else { return }
         viewModel?.hideTransaction(transactionViewModel)
         dismiss(animated: true, completion: nil)
     }

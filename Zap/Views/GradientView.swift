@@ -8,6 +8,14 @@
 import UIKit
 
 class GradientView: UIView {
+    var gradient: [UIColor] = [UIColor.zap.lightMustard, UIColor.zap.peach] {
+        didSet {
+            updateColors()
+        }
+    }
+    
+    var gradientLayer: CAGradientLayer?
+    
     override open class var layerClass: AnyClass {
         return CAGradientLayer.classForCoder()
     }
@@ -27,6 +35,11 @@ class GradientView: UIView {
         
         gradientLayer?.startPoint = CGPoint(x: 0.0, y: 1.0)
         gradientLayer?.endPoint = CGPoint(x: 1.0, y: 1.0)
-        gradientLayer?.colors = [UIColor.zap.lightMustard.cgColor, UIColor.zap.peach.cgColor]
+        self.gradientLayer = gradientLayer
+        updateColors()
+    }
+    
+    private func updateColors() {
+        gradientLayer?.colors = gradient.map { $0.cgColor }
     }
 }

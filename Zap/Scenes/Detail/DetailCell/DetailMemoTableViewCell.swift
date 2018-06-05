@@ -33,9 +33,7 @@ class DetailMemoTableViewCell: BondTableViewCell {
         super.awakeFromNib()
         
         Style.textField.apply(to: textField)
-        Style.label.apply(to: titleLabel) {
-            $0.font = UIFont.zap.bold
-        }
+        Style.label.apply(to: titleLabel)
         
         textField.reactive.text
             .observeNext { [weak self] text in

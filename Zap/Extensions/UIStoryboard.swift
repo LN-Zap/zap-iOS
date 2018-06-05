@@ -8,11 +8,11 @@
 import UIKit
 
 extension UIStoryboard {
-    static func instantiateTransactionDetailViewController(with viewModel: ViewModel, transactionViewModel: TransactionViewModel) -> UINavigationController {
-        let viewController = Storyboard.transactionDetail.initial(viewController: UINavigationController.self)
-        if let transactionDetailViewController = viewController.topViewController as? TransactionDetailViewController {
-            transactionDetailViewController.transactionViewModel = transactionViewModel
-            transactionDetailViewController.viewModel = viewModel
+    static func instantiateDetailViewController(with viewModel: ViewModel, detailViewModel: DetailViewModel) -> UINavigationController {
+        let viewController = Storyboard.detail.initial(viewController: UINavigationController.self)
+        if let detailViewController = viewController.topViewController as? DetailViewController {
+            detailViewController.detailViewModel = detailViewModel
+            detailViewController.viewModel = viewModel
         }
         return viewController
     }
@@ -47,15 +47,6 @@ extension UIStoryboard {
         }
         return navigationController
     }
-    
-    static func instantiateChannelDetailViewController(with viewModel: ViewModel, channelViewModel: ChannelViewModel) -> UINavigationController {
-        let navigationController = Storyboard.channelList.instantiate(viewController: ModalNavigationController.self)
-        if let viewController = navigationController.topViewController as? ChannelDetailViewController {
-            viewController.viewModel = viewModel
-            viewController.channelViewModel = channelViewModel
-        }
-        return navigationController
-    }
 }
 
 enum Storyboard: String {
@@ -77,7 +68,7 @@ enum Storyboard: String {
     case sendOnChain
     case settings
     case sync
-    case transactionDetail
+    case detail
     case transactionList
     
     var storyboard: UIStoryboard? {

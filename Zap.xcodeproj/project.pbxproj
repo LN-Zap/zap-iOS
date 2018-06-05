@@ -92,7 +92,6 @@
 		A0A05A5C20149F720007D1C9 /* TransactionListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0A05A5B20149F720007D1C9 /* TransactionListViewController.swift */; };
 		A0A05A5E2014A0DE0007D1C9 /* UITableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0A05A5D2014A0DE0007D1C9 /* UITableView.swift */; };
 		A0A33EF42028743200BB76F4 /* LightningRPC.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0A33EF32028743200BB76F4 /* LightningRPC.swift */; };
-		A0A96B822017442D00788808 /* ChannelDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0A96B812017442D00788808 /* ChannelDetailViewController.swift */; };
 		A0A96B84201748C200788808 /* UILabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0A96B83201748C200788808 /* UILabel.swift */; };
 		A0A96B8620174BAC00788808 /* CloseStatusUpdate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0A96B8520174BAC00788808 /* CloseStatusUpdate.swift */; };
 		A0A96B88201769F100788808 /* String.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0A96B87201769F100788808 /* String.swift */; };
@@ -134,7 +133,7 @@
 		AD19F05B20AF00B4008090CB /* DetailTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD19F05920AF00B4008090CB /* DetailTableViewCell.swift */; };
 		AD19F05C20AF00B4008090CB /* DetailTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = AD19F05A20AF00B4008090CB /* DetailTableViewCell.xib */; };
 		AD19F05E20AF01A7008090CB /* DetailCellType.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD19F05D20AF01A7008090CB /* DetailCellType.swift */; };
-		AD19F06020AF19A9008090CB /* TransactionDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD19F05F20AF19A9008090CB /* TransactionDetailViewController.swift */; };
+		AD19F06020AF19A9008090CB /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD19F05F20AF19A9008090CB /* DetailViewController.swift */; };
 		AD19F06320AF1AB8008090CB /* DetailMemoTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD19F06120AF1AB8008090CB /* DetailMemoTableViewCell.swift */; };
 		AD19F06420AF1AB8008090CB /* DetailMemoTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = AD19F06220AF1AB8008090CB /* DetailMemoTableViewCell.xib */; };
 		AD1EB9FD20B2CEAA001FF67E /* StatusBarDelegatingNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD1EB9FC20B2CEAA001FF67E /* StatusBarDelegatingNavigationController.swift */; };
@@ -149,6 +148,12 @@
 		AD3CF97720B4028400D78A54 /* SelectWalletCreationMethodTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD3CF97520B4028400D78A54 /* SelectWalletCreationMethodTableViewCell.swift */; };
 		AD3CF97820B4028400D78A54 /* SelectWalletCreationMethodTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = AD3CF97620B4028400D78A54 /* SelectWalletCreationMethodTableViewCell.xib */; };
 		AD3CF97D20B4416900D78A54 /* LndRpcServer.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD3CF97C20B4416900D78A54 /* LndRpcServer.swift */; };
+		AD46845320C6E549005DEF35 /* DetailLegendTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD46845120C6E549005DEF35 /* DetailLegendTableViewCell.swift */; };
+		AD46845420C6E549005DEF35 /* DetailLegendTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = AD46845220C6E549005DEF35 /* DetailLegendTableViewCell.xib */; };
+		AD46845720C6EA02005DEF35 /* DetailBalanceTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD46845520C6EA02005DEF35 /* DetailBalanceTableViewCell.swift */; };
+		AD46845820C6EA02005DEF35 /* DetailBalanceTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = AD46845620C6EA02005DEF35 /* DetailBalanceTableViewCell.xib */; };
+		AD46845B20C6EC7A005DEF35 /* DetailSeparatorTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD46845920C6EC7A005DEF35 /* DetailSeparatorTableViewCell.swift */; };
+		AD46845C20C6EC7A005DEF35 /* DetailSeparatorTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = AD46845A20C6EC7A005DEF35 /* DetailSeparatorTableViewCell.xib */; };
 		AD5FA001207CCB8B000E9493 /* RequestViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD5FA000207CCB8B000E9493 /* RequestViewController.swift */; };
 		AD5FA003207D0D03000E9493 /* BitcoinURI.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD5FA002207D0D02000E9493 /* BitcoinURI.swift */; };
 		AD5FA005207D0E70000E9493 /* BitcoinURITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD5FA004207D0E70000E9493 /* BitcoinURITests.swift */; };
@@ -171,13 +176,14 @@
 		AD7746552076253C00EC596B /* SendLightningInvoiceViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD7746542076253C00EC596B /* SendLightningInvoiceViewController.swift */; };
 		AD77465720765E4D00EC596B /* ChannelViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD77465620765E4D00EC596B /* ChannelViewModel.swift */; };
 		AD7746592076609400EC596B /* NodeInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD7746582076609400EC596B /* NodeInfo.swift */; };
-		AD77465D2077C11200EC596B /* TransactionDetail.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AD77465C2077C11200EC596B /* TransactionDetail.storyboard */; };
+		AD77465D2077C11200EC596B /* Detail.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AD77465C2077C11200EC596B /* Detail.storyboard */; };
 		AD77466C2078EE5600EC596B /* ChannelTransactionAnnotationUpdater.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD77466B2078EE5600EC596B /* ChannelTransactionAnnotationUpdater.swift */; };
 		AD86BCFE2099F50C00A7866A /* rpc.pb.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD86BCFD2099F50C00A7866A /* rpc.pb.swift */; };
 		AD86BD002099FB4500A7866A /* rpc.grpc.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD86BCFF2099FB4500A7866A /* rpc.grpc.swift */; };
 		AD8B13F120C0582D0091F9DA /* RootCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD8B13F020C0582D0091F9DA /* RootCoordinator.swift */; };
 		AD93ED5420A07B0C000E814E /* Notification.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD93ED5220A07A24000E814E /* Notification.swift */; };
 		AD93ED5620A09D59000E814E /* GraphTopologyUpdate.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD93ED5520A09D59000E814E /* GraphTopologyUpdate.swift */; };
+		AD98EB2420C6DFDE00B807D6 /* DetailViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD98EB2320C6DFDE00B807D6 /* DetailViewModel.swift */; };
 		AD99C9ED209072710061C565 /* QRCodeScanner.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AD99C9EC209072710061C565 /* QRCodeScanner.storyboard */; };
 		AD99C9EF209076650061C565 /* QRCodeScannerStrategy.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD99C9EE209076650061C565 /* QRCodeScannerStrategy.swift */; };
 		AD99C9F120907AB30061C565 /* OpenChannelQRCodeScannerStrategy.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD99C9F020907AB30061C565 /* OpenChannelQRCodeScannerStrategy.swift */; };
@@ -384,7 +390,6 @@
 		A0A05A5B20149F720007D1C9 /* TransactionListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransactionListViewController.swift; sourceTree = "<group>"; };
 		A0A05A5D2014A0DE0007D1C9 /* UITableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UITableView.swift; sourceTree = "<group>"; };
 		A0A33EF32028743200BB76F4 /* LightningRPC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LightningRPC.swift; sourceTree = "<group>"; };
-		A0A96B812017442D00788808 /* ChannelDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChannelDetailViewController.swift; sourceTree = "<group>"; };
 		A0A96B83201748C200788808 /* UILabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UILabel.swift; sourceTree = "<group>"; };
 		A0A96B8520174BAC00788808 /* CloseStatusUpdate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CloseStatusUpdate.swift; sourceTree = "<group>"; };
 		A0A96B87201769F100788808 /* String.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = String.swift; sourceTree = "<group>"; };
@@ -428,7 +433,7 @@
 		AD19F05920AF00B4008090CB /* DetailTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailTableViewCell.swift; sourceTree = "<group>"; };
 		AD19F05A20AF00B4008090CB /* DetailTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DetailTableViewCell.xib; sourceTree = "<group>"; };
 		AD19F05D20AF01A7008090CB /* DetailCellType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailCellType.swift; sourceTree = "<group>"; };
-		AD19F05F20AF19A9008090CB /* TransactionDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransactionDetailViewController.swift; sourceTree = "<group>"; };
+		AD19F05F20AF19A9008090CB /* DetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
 		AD19F06120AF1AB8008090CB /* DetailMemoTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailMemoTableViewCell.swift; sourceTree = "<group>"; };
 		AD19F06220AF1AB8008090CB /* DetailMemoTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DetailMemoTableViewCell.xib; sourceTree = "<group>"; };
 		AD1EB9FC20B2CEAA001FF67E /* StatusBarDelegatingNavigationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatusBarDelegatingNavigationController.swift; sourceTree = "<group>"; };
@@ -443,6 +448,12 @@
 		AD3CF97520B4028400D78A54 /* SelectWalletCreationMethodTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectWalletCreationMethodTableViewCell.swift; sourceTree = "<group>"; };
 		AD3CF97620B4028400D78A54 /* SelectWalletCreationMethodTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SelectWalletCreationMethodTableViewCell.xib; sourceTree = "<group>"; };
 		AD3CF97C20B4416900D78A54 /* LndRpcServer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LndRpcServer.swift; sourceTree = "<group>"; };
+		AD46845120C6E549005DEF35 /* DetailLegendTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailLegendTableViewCell.swift; sourceTree = "<group>"; };
+		AD46845220C6E549005DEF35 /* DetailLegendTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DetailLegendTableViewCell.xib; sourceTree = "<group>"; };
+		AD46845520C6EA02005DEF35 /* DetailBalanceTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailBalanceTableViewCell.swift; sourceTree = "<group>"; };
+		AD46845620C6EA02005DEF35 /* DetailBalanceTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DetailBalanceTableViewCell.xib; sourceTree = "<group>"; };
+		AD46845920C6EC7A005DEF35 /* DetailSeparatorTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailSeparatorTableViewCell.swift; sourceTree = "<group>"; };
+		AD46845A20C6EC7A005DEF35 /* DetailSeparatorTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DetailSeparatorTableViewCell.xib; sourceTree = "<group>"; };
 		AD5FA000207CCB8B000E9493 /* RequestViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RequestViewController.swift; sourceTree = "<group>"; };
 		AD5FA002207D0D02000E9493 /* BitcoinURI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BitcoinURI.swift; sourceTree = "<group>"; };
 		AD5FA004207D0E70000E9493 /* BitcoinURITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BitcoinURITests.swift; sourceTree = "<group>"; };
@@ -465,13 +476,14 @@
 		AD7746542076253C00EC596B /* SendLightningInvoiceViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SendLightningInvoiceViewController.swift; sourceTree = "<group>"; };
 		AD77465620765E4D00EC596B /* ChannelViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChannelViewModel.swift; sourceTree = "<group>"; };
 		AD7746582076609400EC596B /* NodeInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NodeInfo.swift; sourceTree = "<group>"; };
-		AD77465C2077C11200EC596B /* TransactionDetail.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = TransactionDetail.storyboard; sourceTree = "<group>"; };
+		AD77465C2077C11200EC596B /* Detail.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Detail.storyboard; sourceTree = "<group>"; };
 		AD77466B2078EE5600EC596B /* ChannelTransactionAnnotationUpdater.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChannelTransactionAnnotationUpdater.swift; sourceTree = "<group>"; };
 		AD86BCFD2099F50C00A7866A /* rpc.pb.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = rpc.pb.swift; path = Proto/rpc.pb.swift; sourceTree = SOURCE_ROOT; };
 		AD86BCFF2099FB4500A7866A /* rpc.grpc.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = rpc.grpc.swift; path = Proto/rpc.grpc.swift; sourceTree = SOURCE_ROOT; };
 		AD8B13F020C0582D0091F9DA /* RootCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RootCoordinator.swift; sourceTree = "<group>"; };
 		AD93ED5220A07A24000E814E /* Notification.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Notification.swift; sourceTree = "<group>"; };
 		AD93ED5520A09D59000E814E /* GraphTopologyUpdate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GraphTopologyUpdate.swift; sourceTree = "<group>"; };
+		AD98EB2320C6DFDE00B807D6 /* DetailViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewModel.swift; sourceTree = "<group>"; };
 		AD99C9EC209072710061C565 /* QRCodeScanner.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = QRCodeScanner.storyboard; sourceTree = "<group>"; };
 		AD99C9EE209076650061C565 /* QRCodeScannerStrategy.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QRCodeScannerStrategy.swift; sourceTree = "<group>"; };
 		AD99C9F020907AB30061C565 /* OpenChannelQRCodeScannerStrategy.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OpenChannelQRCodeScannerStrategy.swift; sourceTree = "<group>"; };
@@ -645,7 +657,6 @@
 			isa = PBXGroup;
 			children = (
 				A01009532015FA330001EF94 /* Abstract */,
-				A02C9FBE202EFFEF009821B1 /* ChannelDetail */,
 				A0DDC0702018C6D800AEFF94 /* ChannelList */,
 				ADCE01B9207B57DA00CA72E8 /* CreateWallet */,
 				AD9E243C20A367E00014F9FA /* Debug */,
@@ -660,7 +671,7 @@
 				A03F035E2028C71400F32279 /* Send */,
 				A0DDC06320189CCC00AEFF94 /* Settings */,
 				ADCE01C4207B714E00CA72E8 /* Sync */,
-				AD77465B2077C0FA00EC596B /* TransactionDetail */,
+				AD77465B2077C0FA00EC596B /* Detail */,
 				A0DDC0732018C74F00AEFF94 /* TransactionList */,
 			);
 			path = Scenes;
@@ -731,14 +742,6 @@
 				AD99C9F4209085B20061C565 /* OpenChannel.storyboard */,
 			);
 			path = OpenChannel;
-			sourceTree = "<group>";
-		};
-		A02C9FBE202EFFEF009821B1 /* ChannelDetail */ = {
-			isa = PBXGroup;
-			children = (
-				A0A96B812017442D00788808 /* ChannelDetailViewController.swift */,
-			);
-			path = ChannelDetail;
 			sourceTree = "<group>";
 		};
 		A0376B70201CC16D00F1FBEF /* Lnd */ = {
@@ -1077,11 +1080,17 @@
 		AD19F05820AF006F008090CB /* DetailCell */ = {
 			isa = PBXGroup;
 			children = (
+				AD46845520C6EA02005DEF35 /* DetailBalanceTableViewCell.swift */,
+				AD46845620C6EA02005DEF35 /* DetailBalanceTableViewCell.xib */,
 				AD19F05D20AF01A7008090CB /* DetailCellType.swift */,
-				ADACC76F20B02AAD00F86D63 /* DetailQRCodeTableViewCell.swift */,
-				ADACC77020B02AAD00F86D63 /* DetailQRCodeTableViewCell.xib */,
+				AD46845120C6E549005DEF35 /* DetailLegendTableViewCell.swift */,
+				AD46845220C6E549005DEF35 /* DetailLegendTableViewCell.xib */,
 				AD19F06120AF1AB8008090CB /* DetailMemoTableViewCell.swift */,
 				AD19F06220AF1AB8008090CB /* DetailMemoTableViewCell.xib */,
+				ADACC76F20B02AAD00F86D63 /* DetailQRCodeTableViewCell.swift */,
+				ADACC77020B02AAD00F86D63 /* DetailQRCodeTableViewCell.xib */,
+				AD46845920C6EC7A005DEF35 /* DetailSeparatorTableViewCell.swift */,
+				AD46845A20C6EC7A005DEF35 /* DetailSeparatorTableViewCell.xib */,
 				AD19F05920AF00B4008090CB /* DetailTableViewCell.swift */,
 				AD19F05A20AF00B4008090CB /* DetailTableViewCell.xib */,
 				AD680A9720B06B840018986B /* DetailTimerTableViewCell.swift */,
@@ -1134,14 +1143,15 @@
 			path = SendLightning;
 			sourceTree = "<group>";
 		};
-		AD77465B2077C0FA00EC596B /* TransactionDetail */ = {
+		AD77465B2077C0FA00EC596B /* Detail */ = {
 			isa = PBXGroup;
 			children = (
 				AD19F05820AF006F008090CB /* DetailCell */,
-				AD77465C2077C11200EC596B /* TransactionDetail.storyboard */,
-				AD19F05F20AF19A9008090CB /* TransactionDetailViewController.swift */,
+				AD77465C2077C11200EC596B /* Detail.storyboard */,
+				AD19F05F20AF19A9008090CB /* DetailViewController.swift */,
+				AD98EB2320C6DFDE00B807D6 /* DetailViewModel.swift */,
 			);
-			path = TransactionDetail;
+			path = Detail;
 			sourceTree = "<group>";
 		};
 		AD79BB38208CD9970027AAC9 /* Generate Mnemonic */ = {
@@ -1481,20 +1491,23 @@
 				A0A05A2D2013EDFB0007D1C9 /* QRCodeDetail.storyboard in Resources */,
 				A070D968202B5163000A8274 /* Localizable.strings in Resources */,
 				AD680A9A20B06B840018986B /* DetailTimerTableViewCell.xib in Resources */,
+				AD46845420C6E549005DEF35 /* DetailLegendTableViewCell.xib in Resources */,
 				A0A05A0A2013CF960007D1C9 /* Assets.xcassets in Resources */,
 				ADACC77220B02AAD00F86D63 /* DetailQRCodeTableViewCell.xib in Resources */,
 				ADCE01BB207B57ED00CA72E8 /* CreateWallet.storyboard in Resources */,
+				AD46845C20C6EC7A005DEF35 /* DetailSeparatorTableViewCell.xib in Resources */,
 				A0376B75201CD61B00F1FBEF /* NumericKeyPad.storyboard in Resources */,
 				A01009462014DCB40001EF94 /* SendOnChain.storyboard in Resources */,
 				A0DDC05C201883D800AEFF94 /* TransactionList.storyboard in Resources */,
 				ADCE01CC207B967200CA72E8 /* Loading.storyboard in Resources */,
 				A0F353CE20692415005B3639 /* Main.storyboard in Resources */,
-				AD77465D2077C11200EC596B /* TransactionDetail.storyboard in Resources */,
+				AD77465D2077C11200EC596B /* Detail.storyboard in Resources */,
 				AD77464220750D7700EC596B /* Settings.storyboard in Resources */,
 				A091914F203C23C100FA525A /* Roboto-Light.ttf in Resources */,
 				AD680A9F20B07AD90018986B /* ConnectRemoteNode.storyboard in Resources */,
 				ADBA12022090CD11001F7700 /* KeyPadView.xib in Resources */,
 				A0A05A082013CF960007D1C9 /* Root.storyboard in Resources */,
+				AD46845820C6EA02005DEF35 /* DetailBalanceTableViewCell.xib in Resources */,
 				AD3CF97820B4028400D78A54 /* SelectWalletCreationMethodTableViewCell.xib in Resources */,
 				AD9E244120A3680C0014F9FA /* Debug.storyboard in Resources */,
 				A01009412014D4810001EF94 /* Toast.xib in Resources */,
@@ -1698,7 +1711,7 @@
 				AD6FFCA020A9D19E00B57330 /* LightningInvoiceViewModel.swift in Sources */,
 				ADF7936C208E66FA0086B2CA /* UICollectionView.swift in Sources */,
 				AD1EBA0120B2FD9D001FF67E /* Persistable.swift in Sources */,
-				AD19F06020AF19A9008090CB /* TransactionDetailViewController.swift in Sources */,
+				AD19F06020AF19A9008090CB /* DetailViewController.swift in Sources */,
 				ADD6D80720B15603008BE461 /* RemoteNodeConfiguration.swift in Sources */,
 				AD9E244320A375130014F9FA /* DebugButton.swift in Sources */,
 				A0A05A4D20147B740007D1C9 /* RootViewController.swift in Sources */,
@@ -1716,6 +1729,7 @@
 				A0D3C971205FF0E10015C5D7 /* MnemonicViewController.swift in Sources */,
 				A0BD44DF206FED1400BF27A3 /* BondTableViewCell.swift in Sources */,
 				A070D966202B39A3000A8274 /* QRCodeDetailViewModel.swift in Sources */,
+				AD46845720C6EA02005DEF35 /* DetailBalanceTableViewCell.swift in Sources */,
 				AD5FA001207CCB8B000E9493 /* RequestViewController.swift in Sources */,
 				ADEDBB9020C2E55100B71F17 /* PinCoordinator.swift in Sources */,
 				AD7746592076609400EC596B /* NodeInfo.swift in Sources */,
@@ -1727,6 +1741,7 @@
 				A0F353D020692570005B3639 /* GradientView.swift in Sources */,
 				A0C2EABB206F8B02003AE56E /* FiatCurrency.swift in Sources */,
 				AD19F05E20AF01A7008090CB /* DetailCellType.swift in Sources */,
+				AD98EB2420C6DFDE00B807D6 /* DetailViewModel.swift in Sources */,
 				AD77464E2076162300EC596B /* Network+Localizable.swift in Sources */,
 				ADC29C0C20A9B0A0008B2DC2 /* LightningInvoice.swift in Sources */,
 				ADBB36292080B2AE005662B4 /* TestingTemplates.swift in Sources */,
@@ -1768,7 +1783,6 @@
 				A024B85020160F93002B8897 /* ChannelTableViewCell.swift in Sources */,
 				A0605F8D202C9D8200EA903C /* LineView.swift in Sources */,
 				A0919147203B293000FA525A /* PaperKeySettingsItem.swift in Sources */,
-				A0A96B822017442D00788808 /* ChannelDetailViewController.swift in Sources */,
 				ADF79368208E09D00086B2CA /* SetupPinViewModel.swift in Sources */,
 				A0BD44DC206FCAD900BF27A3 /* SignalProtocol.swift in Sources */,
 				ADACC77120B02AAD00F86D63 /* DetailQRCodeTableViewCell.swift in Sources */,
@@ -1807,11 +1821,13 @@
 				A010094E2015F97F0001EF94 /* OpenChannelViewController.swift in Sources */,
 				A02C9FC620304395009821B1 /* LndConfiguration.swift in Sources */,
 				A01009422014D4810001EF94 /* Toast.swift in Sources */,
+				AD46845B20C6EC7A005DEF35 /* DetailSeparatorTableViewCell.swift in Sources */,
 				A0731FE92014B27900C55E45 /* ChannelListViewController.swift in Sources */,
 				AD99C9F72090C2560061C565 /* AmountInputView.swift in Sources */,
 				A0A33EF42028743200BB76F4 /* LightningRPC.swift in Sources */,
 				A0C2EAC0206F8D10003AE56E /* Bitcoin.swift in Sources */,
 				AD99C9F320907AD10061C565 /* SendQRCodeScannerStrategy.swift in Sources */,
+				AD46845320C6E549005DEF35 /* DetailLegendTableViewCell.swift in Sources */,
 				A024B84D201606B4002B8897 /* Peer.swift in Sources */,
 				ADBB362F2084CA16005662B4 /* MnemonicPageViewController.swift in Sources */,
 				A024B85B20161AAE002B8897 /* PaymentRequest.swift in Sources */,
