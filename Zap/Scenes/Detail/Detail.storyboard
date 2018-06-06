@@ -22,21 +22,12 @@
                                 <rect key="frame" x="0.0" y="64" width="375" height="603"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             </tableView>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="tFm-xb-PNK">
-                                <rect key="frame" x="164" y="617" width="46" height="30"/>
-                                <state key="normal" title="Button"/>
-                                <connections>
-                                    <action selector="hideTransaction:" destination="d1h-ld-rAe" eventType="touchUpInside" id="KHm-wt-rfT"/>
-                                </connections>
-                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
-                            <constraint firstItem="tFm-xb-PNK" firstAttribute="centerX" secondItem="Pcr-4e-g1R" secondAttribute="centerX" id="8BY-yP-qu0"/>
                             <constraint firstItem="Pcr-4e-g1R" firstAttribute="trailing" secondItem="qKg-eB-eyp" secondAttribute="trailing" id="DOI-VH-KEV"/>
                             <constraint firstItem="qKg-eB-eyp" firstAttribute="bottom" secondItem="Pcr-4e-g1R" secondAttribute="bottom" id="TQz-Ph-vBv"/>
                             <constraint firstItem="qKg-eB-eyp" firstAttribute="leading" secondItem="Pcr-4e-g1R" secondAttribute="leading" id="TWQ-8x-Opx"/>
-                            <constraint firstItem="Pcr-4e-g1R" firstAttribute="bottom" secondItem="tFm-xb-PNK" secondAttribute="bottom" constant="20" id="WuA-ka-86U"/>
                             <constraint firstItem="qKg-eB-eyp" firstAttribute="top" secondItem="Pcr-4e-g1R" secondAttribute="top" id="lby-JR-pj0"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="Pcr-4e-g1R"/>
@@ -49,7 +40,6 @@
                         </barButtonItem>
                     </navigationItem>
                     <connections>
-                        <outlet property="hideTransactionButton" destination="tFm-xb-PNK" id="9Ws-kc-UNu"/>
                         <outlet property="tableView" destination="qKg-eB-eyp" id="Cii-iH-3vv"/>
                     </connections>
                 </viewController>
