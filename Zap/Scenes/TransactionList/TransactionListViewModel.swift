@@ -12,11 +12,11 @@ import ReactiveKit
 final class TransactionListViewModel: NSObject {
     let sections: MutableObservable2DArray<String, TransactionViewModel>
     
-    init(viewModel: ViewModel) {
+    init(viewModel: LightningService) {
         sections = MutableObservable2DArray()
         super.init()
         
-        viewModel.transactions
+        viewModel.transactionService.transactions
             .observeNext { [weak self] transactions in
                 guard let result = self?.bondSections(transactions: transactions) else { return }
                 let array = Observable2DArray(result)

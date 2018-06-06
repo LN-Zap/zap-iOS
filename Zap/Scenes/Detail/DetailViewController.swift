@@ -12,7 +12,7 @@ class DetailViewController: UIViewController {
     @IBOutlet private weak var tableView: UITableView!
     
     var detailViewModel: DetailViewModel?
-    var viewModel: ViewModel?
+    var viewModel: LightningService?
     
     override func viewDidLoad() {
         super.viewDidLoad()

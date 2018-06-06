@@ -9,7 +9,7 @@ import Bond
 import UIKit
 
 extension UIStoryboard {
-    static func instantiateChannelListViewController(with viewModel: ViewModel, channelListViewModel: ChannelListViewModel, presentChannelDetail: @escaping (ChannelViewModel) -> Void, addChannelButtonTapped: @escaping () -> Void) -> ChannelListViewController {
+    static func instantiateChannelListViewController(with viewModel: LightningService, channelListViewModel: ChannelListViewModel, presentChannelDetail: @escaping (ChannelViewModel) -> Void, addChannelButtonTapped: @escaping () -> Void) -> ChannelListViewController {
         let viewController = Storyboard.channelList.initial(viewController: ChannelListViewController.self)
         
         viewController.viewModel = viewModel
@@ -41,7 +41,7 @@ class ChannelListViewController: UIViewController {
     
     fileprivate var presentChannelDetail: ((ChannelViewModel) -> Void)?
     fileprivate var addChannelButtonTapped: (() -> Void)?
-    fileprivate var viewModel: ViewModel?
+    fileprivate var viewModel: LightningService?
     fileprivate var channelListViewModel: ChannelListViewModel?
     
     override func viewDidLoad() {
@@ -72,7 +72,7 @@ class ChannelListViewController: UIViewController {
     
     @objc
     func refresh(sender: UIRefreshControl) {
-        viewModel?.channels.update()
+        viewModel?.channelService.update()
         sender.endRefreshing()
     }
     

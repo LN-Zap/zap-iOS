@@ -10,17 +10,17 @@ import BTCUtil
 import Foundation
 
 final class SendOnChainViewModel {
-    private let viewModel: ViewModel
+    private let viewModel: LightningService
     let address: String
     let validRange: ClosedRange<Satoshi>
     
     var amount: Satoshi = 0
     
-    init(viewModel: ViewModel, address: String) {
+    init(viewModel: LightningService, address: String) {
         self.viewModel = viewModel
         self.address = address
         
-        validRange = (0...viewModel.balance.onChain.value)
+        validRange = (0...viewModel.balanceService.onChain.value)
     }
 
     func send(completion: @escaping () -> Void) {

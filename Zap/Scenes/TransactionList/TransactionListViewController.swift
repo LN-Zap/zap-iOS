@@ -9,7 +9,7 @@ import Bond
 import UIKit
 
 extension UIStoryboard {
-    static func instantiateTransactionListViewController(with viewModel: ViewModel, transactionListViewModel: TransactionListViewModel, presentTransactionDetail: @escaping (TransactionViewModel) -> Void) -> TransactionListViewController {
+    static func instantiateTransactionListViewController(with viewModel: LightningService, transactionListViewModel: TransactionListViewModel, presentTransactionDetail: @escaping (TransactionViewModel) -> Void) -> TransactionListViewController {
         let viewController = Storyboard.transactionList.initial(viewController: TransactionListViewController.self)
         
         viewController.viewModel = viewModel
@@ -42,7 +42,7 @@ class TransactionListViewController: UIViewController {
     @IBOutlet private weak var filterButton: UIButton!
     
     fileprivate var presentTransactionDetail: ((TransactionViewModel) -> Void)?
-    fileprivate var viewModel: ViewModel?
+    fileprivate var viewModel: LightningService?
     fileprivate var transactionListViewModel: TransactionListViewModel?
     
     override func viewDidLoad() {

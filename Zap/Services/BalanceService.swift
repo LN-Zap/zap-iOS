@@ -10,7 +10,7 @@ import BTCUtil
 import Foundation
 import ReactiveKit
 
-final class Balance {
+final class BalanceService {
     private let api: LightningProtocol
     
     let onChain = Observable<Satoshi>(0)

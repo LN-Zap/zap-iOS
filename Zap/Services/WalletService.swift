@@ -7,7 +7,7 @@
 
 import Foundation
 
-final class WalletViewModel {
+final class WalletService {
     
     private(set) var isUnlocked = false
     private let walletUnlocker: WalletUnlocker
@@ -27,6 +27,16 @@ final class WalletViewModel {
     
     var didCreateWallet: Bool {
         return mnemonic != nil
+    }
+    
+    // TODO: resolve naming conflict
+    static var didCreateWallet: Bool {
+        get {
+            return UserDefaults.Keys.didCreateWallet.get(defaultValue: false)
+        }
+        set {
+            UserDefaults.Keys.didCreateWallet.set(newValue)
+        }
     }
     
     func unlock(callback: @escaping (Result<Void>) -> Void) {

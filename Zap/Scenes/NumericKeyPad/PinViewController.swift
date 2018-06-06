@@ -24,7 +24,7 @@ class PinViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        let viewModel = AuthenticationViewModel.shared
+        let viewModel = AuthenticationService.shared
         
         pinStackView.characterCount = viewModel.pinLength ?? 0
         
@@ -46,11 +46,11 @@ class PinViewController: UIViewController {
         keyPadView.handler = { [weak self] number in
             self?.updatePinView(for: number)
             
-            if AuthenticationViewModel.shared.isMatchingPin(number) {
+            if AuthenticationService.shared.isMatchingPin(number) {
                 self?.didAuthenticate?()
             }
             
-            return (AuthenticationViewModel.shared.pinLength ?? Int.max) >= number.count
+            return (AuthenticationService.shared.pinLength ?? Int.max) >= number.count
         }
     }
     

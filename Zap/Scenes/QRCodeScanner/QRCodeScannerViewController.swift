@@ -53,7 +53,7 @@ class QRCodeScannerViewController: UIViewController, ContainerViewController {
         return .lightContent
     }
     
-    var viewModel: ViewModel? {
+    var viewModel: LightningService? {
         didSet {
             scannerView?.viewModel = viewModel
         }
@@ -102,7 +102,7 @@ class QRCodeScannerViewController: UIViewController, ContainerViewController {
         guard
             let string = UIPasteboard.general.string,
             let strategy = strategy,
-            let network = viewModel?.info.network.value
+            let network = viewModel?.infoService.network.value
             else { return }
         
         for addressType in strategy.addressTypes where addressType.isValidAddress(string, network: network) {

@@ -9,7 +9,7 @@ import UIKit
 
 final class RootCoordinator: NSObject, SetupCoordinatorDelegate, PinCoordinatorDelegate {
     private let rootViewController: RootViewController
-    private var viewModel: ViewModel?
+    private var viewModel: LightningService?
     
     private var currentCoordinator: Any?
     private var route: Route?
@@ -27,7 +27,7 @@ final class RootCoordinator: NSObject, SetupCoordinatorDelegate, PinCoordinatorD
         case .none:
             presentSetup()
         default:
-            if Environment.skipPinFlow || !AuthenticationViewModel.shared.didSetupPin {
+            if Environment.skipPinFlow || !AuthenticationService.shared.didSetupPin {
                 
                 viewModel = LndConnection.current.viewModel
                 
@@ -106,10 +106,10 @@ final class RootCoordinator: NSObject, SetupCoordinatorDelegate, PinCoordinatorD
         }
     }
     
-    private func startWalletUI(with viewModel: ViewModel) {
+    private func startWalletUI(with viewModel: LightningService) {
         startListeningForErrorNotifications()
         
-        viewModel.info.walletState
+        viewModel.infoService.walletState
             .skip(first: 1)
             .distinct()
             .observeNext { [weak self] state in

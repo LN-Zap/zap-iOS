@@ -12,12 +12,12 @@ import ReactiveKit
 final class ChannelListViewModel: NSObject {
     let sections: MutableObservable2DArray<String, ChannelViewModel>
     
-    init(viewModel: ViewModel) {
+    init(viewModel: LightningService) {
         sections = MutableObservable2DArray()
         
         super.init()
         
-        combineLatest(viewModel.channels.open, viewModel.channels.pending) { return ($0, $1) }
+        combineLatest(viewModel.channelService.open, viewModel.channelService.pending) { return ($0, $1) }
             .observeNext { [sections] open, pending in
                 let result = MutableObservable2DArray<String, ChannelViewModel>()
                 

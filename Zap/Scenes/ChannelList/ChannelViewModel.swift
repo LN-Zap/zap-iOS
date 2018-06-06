@@ -14,7 +14,7 @@ final class ChannelViewModel {
     let state: Observable<ChannelState>
     let name: Observable<String>
     
-    init(channel: Channel, viewModel: ViewModel) {
+    init(channel: Channel, viewModel: LightningService) {
         self.channel = channel
         
         name = Observable(channel.remotePubKey)

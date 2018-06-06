@@ -21,7 +21,7 @@ final class RequestViewController: UIViewController {
         return .default
     }
     
-    var viewModel: ViewModel? {
+    var viewModel: LightningService? {
         didSet {
             guard let viewModel = viewModel else { return }
             self.requestViewModel = RequestViewModel(viewModel: viewModel)

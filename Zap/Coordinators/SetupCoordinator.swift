@@ -53,7 +53,7 @@ final class SetupCoordinator {
     }
 
     private func didSetupWallet() {
-        if Environment.skipPinFlow || AuthenticationViewModel.shared.didSetupPin {
+        if Environment.skipPinFlow || AuthenticationService.shared.didSetupPin {
             delegate?.connect()
         } else {
             delegate?.presentSetupPin()

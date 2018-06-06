@@ -16,7 +16,7 @@ enum SendLightningInvoiceError {
 }
 
 final class SendLightningInvoiceViewModel {
-    private let viewModel: ViewModel
+    private let viewModel: LightningService
     
     let memo = Observable<String?>(nil)
     let satoshis = Observable<Satoshi>(0)
@@ -25,7 +25,7 @@ final class SendLightningInvoiceViewModel {
     
     private var paymentRequest: PaymentRequest?
     
-    init(viewModel: ViewModel, lightningInvoice: String) {
+    init(viewModel: LightningService, lightningInvoice: String) {
         self.viewModel = viewModel
         
         var lightningInvoice = lightningInvoice
@@ -55,7 +55,7 @@ final class SendLightningInvoiceViewModel {
         satoshis.value = paymentRequest.amount
         destination.value = paymentRequest.destination
         
-        if viewModel.transactions.value.contains(where: { $0.id == paymentRequest.paymentHash }) {
+        if viewModel.transactionService.transactions.value.contains(where: { $0.id == paymentRequest.paymentHash }) {
             invoiceError.value = .duplicate
         } else if paymentRequest.expiryDate < Date() {
             invoiceError.value = .expired(paymentRequest.expiryDate)

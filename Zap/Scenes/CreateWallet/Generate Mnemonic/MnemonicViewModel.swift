@@ -37,7 +37,7 @@ struct Aezeed {
 
 final class MnemonicViewModel {
     private let aezeed = Aezeed()
-    private let viewModel: ViewModel
+    private let viewModel: LightningService
     
     let wordList: Observable<[String]>
     
@@ -65,7 +65,7 @@ final class MnemonicViewModel {
         }
     }
     
-    init(viewModel: ViewModel) {
+    init(viewModel: LightningService) {
         self.viewModel = viewModel
         wordList = Observable<[String]>(aezeed.wordList)
     }

@@ -11,10 +11,10 @@ import ReactiveKit
 
 final class ChannelTransactionAnnotationUpdater: NSObject {
     
-    init(viewModel: ViewModel, transactionStore: TransactionStore) {
+    init(viewModel: LightningService, transactionStore: TransactionStore) {
         super.init()
         
-        combineLatest(viewModel.channels.all, viewModel.transactions)
+        combineLatest(viewModel.channelService.all, viewModel.transactionService.transactions)
             .observeNext { [weak self] arg in
                 let (channels, transactions) = arg
                 self?.updateMemos(in: transactionStore, channels: channels, transactions: transactions)

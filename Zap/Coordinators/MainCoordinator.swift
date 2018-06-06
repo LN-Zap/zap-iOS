@@ -9,13 +9,13 @@ import UIKit
 
 final class MainCoordinator {
     private let rootViewController: RootViewController
-    private let viewModel: ViewModel
+    private let viewModel: LightningService
     private let channelListViewModel: ChannelListViewModel
     private let transactionListViewModel: TransactionListViewModel
     
     private var mainViewController: MainViewController?
     
-    init(rootViewController: RootViewController, viewModel: ViewModel) {
+    init(rootViewController: RootViewController, viewModel: LightningService) {
         self.rootViewController = rootViewController
         self.viewModel = viewModel
         

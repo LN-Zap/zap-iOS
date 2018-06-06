@@ -10,7 +10,7 @@ import BTCUtil
 import Foundation
 import ReactiveKit
 
-final class Channels {
+final class ChannelService {
     private let api: LightningProtocol
 
     let all: Signal<[Channel], NoError>

@@ -12,5 +12,5 @@ protocol QRCodeScannerStrategy {
     var title: String { get }
     var addressTypes: [AddressType] { get }
     
-    func viewControllerForAddressType(_ type: AddressType, address: String, viewModel: ViewModel) -> UIViewController?
+    func viewControllerForAddressType(_ type: AddressType, address: String, viewModel: LightningService) -> UIViewController?
 }

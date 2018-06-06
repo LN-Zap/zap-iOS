@@ -8,7 +8,7 @@
 import UIKit
 
 extension UIStoryboard {
-    static func instantiateDetailViewController(with viewModel: ViewModel, detailViewModel: DetailViewModel) -> UINavigationController {
+    static func instantiateDetailViewController(with viewModel: LightningService, detailViewModel: DetailViewModel) -> UINavigationController {
         let viewController = Storyboard.detail.initial(viewController: UINavigationController.self)
         if let detailViewController = viewController.topViewController as? DetailViewController {
             detailViewController.detailViewModel = detailViewModel
@@ -17,7 +17,7 @@ extension UIStoryboard {
         return viewController
     }
     
-    static func instantiateSettingsContainerViewController(with viewModel: ViewModel) -> UINavigationController {
+    static func instantiateSettingsContainerViewController(with viewModel: LightningService) -> UINavigationController {
         let viewController = Storyboard.settings.initial(viewController: UINavigationController.self)
         
         if let settingsContainerViewController = viewController.topViewController as? SettingsContainerViewController {
@@ -31,7 +31,7 @@ extension UIStoryboard {
         return Storyboard.debug.initial(viewController: UINavigationController.self)
     }
     
-    static func instantiateQRCodeScannerViewController(with viewModel: ViewModel, strategy: QRCodeScannerStrategy) -> UINavigationController {
+    static func instantiateQRCodeScannerViewController(with viewModel: LightningService, strategy: QRCodeScannerStrategy) -> UINavigationController {
         let navigationController = Storyboard.qrCodeScanner.initial(viewController: UINavigationController.self)
         if let viewController = navigationController.topViewController as? QRCodeScannerViewController {
             viewController.viewModel = viewModel
@@ -40,7 +40,7 @@ extension UIStoryboard {
         return navigationController
     }
     
-    static func instantiateRequestViewController(with viewModel: ViewModel) -> UINavigationController {
+    static func instantiateRequestViewController(with viewModel: LightningService) -> UINavigationController {
         let navigationController = Storyboard.request.initial(viewController: UINavigationController.self)
         if let viewController = navigationController.topViewController as? RequestViewController {
             viewController.viewModel = viewModel

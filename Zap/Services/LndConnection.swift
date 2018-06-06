@@ -12,35 +12,26 @@ enum LndConnection {
     case local
     case remote(RemoteNodeConfiguration)
     
-    var viewModel: ViewModel? {
+    var viewModel: LightningService? {
         switch self {
         case .none:
             return nil
         case .local:
             Lnd.start()
-            return ViewModel(api: LightningStream())
+            return LightningService(api: LightningStream())
         case .remote(let remoteNodeConfiguration):
             let lndRPCServer = LndRpcServer(configuration: remoteNodeConfiguration)
-            return ViewModel(api: LightningRPC(lnd: lndRPCServer))
+            return LightningService(api: LightningRPC(lnd: lndRPCServer))
         }
     }
     
     static var current: LndConnection {
         if let remoteConfiguration = RemoteNodeConfiguration.load() {
             return .remote(remoteConfiguration)
-        } else if didCreateWallet {
+        } else if WalletService.didCreateWallet {
             return .local
         } else {
             return .none
-        }
-    }
-    
-    static private var didCreateWallet: Bool {
-        get {
-            return UserDefaults.Keys.didCreateWallet.get(defaultValue: false)
-        }
-        set {
-            UserDefaults.Keys.didCreateWallet.set(newValue)
         }
     }
 }

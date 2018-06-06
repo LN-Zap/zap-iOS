@@ -12,8 +12,8 @@ import KeychainAccess
 private let keychainPinKey = "hashedPin"
 private let keychainPinLengthKey = "pinLength"
 
-final class AuthenticationViewModel {
-    static let shared = AuthenticationViewModel()
+final class AuthenticationService {
+    static let shared = AuthenticationService()
 
     private let keychain = Keychain(service: "com.jackmallers.zap")
     

@@ -9,21 +9,21 @@ import Bond
 import BTCUtil
 import Foundation
 
-enum WalletState {
-    case locked
-    case noInternet
-    case connecting
-    case syncing
-    case ready
-}
-
-final class Wallet {
+final class InfoService {
+    enum State {
+        case locked
+        case noInternet
+        case connecting
+        case syncing
+        case ready
+    }
+    
     let bestHeaderDate = Observable<Date?>(nil)
     let blockChainHeight = Observable<Int?>(nil)
     let blockHeight = Observable(0)
     let isSyncedToChain = Observable(false)
     let alias = Observable<String?>(nil)
-    let walletState: Observable<WalletState>
+    let walletState: Observable<InfoService.State>
     let network = Observable<Network>(.testnet)
     
     private let heightJobTimer: Timer?

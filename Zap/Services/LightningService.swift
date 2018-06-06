@@ -10,51 +10,42 @@ import BTCUtil
 import Foundation
 import ReactiveKit
 
-final class ViewModel: NSObject {
+final class LightningService: NSObject {
     private let api: LightningProtocol
     
-    let info: Wallet
-    let balance: Balance
-    let channels: Channels
-    let transactionStore: TransactionStore
+    let infoService: InfoService
+    let balanceService: BalanceService
+    let channelService: ChannelService
     
+    // TODO: move stores somewhere else, why is there no transaction Service?
+    let transactionService: TransactionStore
     let aliasStore: ChannelAliasStore
     
-    // Transactions
-    private let onChainTransactions = Observable<[Transaction]>([])
-    private let payments = Observable<[Transaction]>([])
-    private let invoices = Observable<[Transaction]>([])
-    var transactions: Observable<[TransactionViewModel]> {
-        return transactionStore.transactions
-    }
-    
-    let errorMessages = Observable<String?>(nil)
-
     var channelTransactionAnnotationUpdater: ChannelTransactionAnnotationUpdater?
     
     init(api: LightningProtocol) {
         self.api = api
         
-        info = Wallet(api: api)
-        balance = Balance(api: api)
-        channels = Channels(api: api)
+        infoService = InfoService(api: api)
+        balanceService = BalanceService(api: api)
+        channelService = ChannelService(api: api)
         aliasStore = ChannelAliasStore(api: api)
-        transactionStore = TransactionStore(aliasStore: aliasStore)
+        transactionService = TransactionStore(aliasStore: aliasStore)
         
         super.init()
 
-        channelTransactionAnnotationUpdater = ChannelTransactionAnnotationUpdater(viewModel: self, transactionStore: transactionStore)
+        channelTransactionAnnotationUpdater = ChannelTransactionAnnotationUpdater(viewModel: self, transactionStore: transactionService)
 
         start()
     }
     
     private func start() {
-        info.walletState
+        infoService.walletState
             .filter { $0 != .connecting }
             .distinct()
             .observeNext { [weak self] _ in
-                self?.channels.update()
-                self?.balance.update()
+                self?.channelService.update()
+                self?.balanceService.update()
                 self?.updateTransactions()
             }
             .dispose(in: reactive.bag)
@@ -74,7 +65,7 @@ final class ViewModel: NSObject {
     func updateTransactions() {
         func callback(result: Result<[Transaction]>) {
             guard let transactions = result.value else { return }
-            transactionStore.update(transactions: transactions)
+            transactionService.update(transactions: transactions)
         }
         
         api.transactions(callback: callback)
@@ -91,14 +82,14 @@ final class ViewModel: NSObject {
     }
     
     func sendPayment(_ paymentRequest: PaymentRequest, callback: @escaping (Bool) -> Void) {
-        api.sendPayment(paymentRequest) { [weak self, transactionStore] result in
+        api.sendPayment(paymentRequest) { [weak self, transactionService] result in
             if result.value != nil {
                 if let memo = paymentRequest.memo {
                     transactionStore.setMemo(memo, forPaymentHash: paymentRequest.paymentHash)
                 }
-                self?.balance.update()
+                self?.balanceService.update()
                 self?.updateTransactions()
-                self?.channels.update()
+                self?.channelService.update()
             }
             callback(true)
         }
@@ -113,14 +104,14 @@ final class ViewModel: NSObject {
     }
     
     func stop() {
-        info.stop()
+        infoService.stop()
     }
         
     // TODO: refactor - move this somewhere else
     
     func hideTransaction(_ transactionViewModel: TransactionViewModel) {
         let newAnnotation = TransactionAnnotation.lens.isHidden.set(true, transactionViewModel.annotation.value)
-        transactionStore.updateAnnotation(newAnnotation, for: transactionViewModel)
+        transactionService.updateAnnotation(newAnnotation, for: transactionViewModel)
     }
     
     func udpateMemo(_ memo: String?, for transactionViewModel: TransactionViewModel) {
@@ -130,6 +121,6 @@ final class ViewModel: NSObject {
         }
         
         let newAnnotation = TransactionAnnotation.lens.customMemo.set(memo, transactionViewModel.annotation.value)
-        transactionStore.updateAnnotation(newAnnotation, for: transactionViewModel)
+        transactionService.updateAnnotation(newAnnotation, for: transactionViewModel)
     }
 }

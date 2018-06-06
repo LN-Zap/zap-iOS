@@ -11,7 +11,7 @@ import Foundation
 
 extension UIStoryboard {
     // swiftlint:disable:next function_parameter_count
-    static func instantiateMainViewController(with viewModel: ViewModel, settingsButtonTapped: @escaping () -> Void, sendButtonTapped: @escaping () -> Void, requestButtonTapped: @escaping () -> Void, transactionsButtonTapped: @escaping () -> Void, networkButtonTapped: @escaping () -> Void) -> MainViewController {
+    static func instantiateMainViewController(with viewModel: LightningService, settingsButtonTapped: @escaping () -> Void, sendButtonTapped: @escaping () -> Void, requestButtonTapped: @escaping () -> Void, transactionsButtonTapped: @escaping () -> Void, networkButtonTapped: @escaping () -> Void) -> MainViewController {
         let mainViewController = Storyboard.main.instantiate(viewController: MainViewController.self)
         mainViewController.viewModel = viewModel
         
@@ -26,7 +26,7 @@ extension UIStoryboard {
 }
 
 final class MainViewController: UIViewController, ContainerViewController {
-    var viewModel: ViewModel?
+    var viewModel: LightningService?
  
     @IBOutlet private weak var aliasLabel: UILabel!
     @IBOutlet private weak var balanceLabel: UILabel!
@@ -84,9 +84,9 @@ final class MainViewController: UIViewController, ContainerViewController {
         balanceLabel.font = balanceLabel.font.withSize(30)
         fiatBalanceLabel.textColor = .gray
         
-        [viewModel?.balance.total.bind(to: balanceLabel.reactive.text, currency: Settings.primaryCurrency),
-         viewModel?.balance.total.bind(to: fiatBalanceLabel.reactive.text, currency: Settings.secondaryCurrency),
-         viewModel?.info.alias.bind(to: aliasLabel.reactive.text)]
+        [viewModel?.balanceService.total.bind(to: balanceLabel.reactive.text, currency: Settings.primaryCurrency),
+         viewModel?.balanceService.total.bind(to: fiatBalanceLabel.reactive.text, currency: Settings.secondaryCurrency),
+         viewModel?.infoService.alias.bind(to: aliasLabel.reactive.text)]
             .dispose(in: reactive.bag)
         
         segmentedControl(select: .transactions)

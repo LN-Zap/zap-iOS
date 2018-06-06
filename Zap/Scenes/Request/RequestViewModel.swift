@@ -15,7 +15,7 @@ enum RequestMethod {
 }
 
 final class RequestViewModel {
-    private let viewModel: ViewModel
+    private let viewModel: LightningService
     private var cachedOnChainAddress: String?
 
     var requestMethod = RequestMethod.lightning
@@ -24,7 +24,7 @@ final class RequestViewModel {
         
     var amount: Satoshi = 0
     
-    init(viewModel: ViewModel) {
+    init(viewModel: LightningService) {
         self.viewModel = viewModel
     }
     
