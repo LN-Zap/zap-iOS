@@ -72,12 +72,13 @@ final class MainCoordinator {
     }
     
     private func presentChannelDetail(for channelViewModel: ChannelViewModel) {
-        let viewController = UIStoryboard.instantiateDetailViewController(with: viewModel, detailViewModel: channelViewModel)
+        let detailViewModel = ChannelDetailViewModel(channel: channelViewModel.channel)
+        let viewController = UIStoryboard.instantiateDetailViewController(with: viewModel, detailViewModel: detailViewModel)
         mainViewController?.present(viewController, animated: true, completion: nil)
     }
     
     private func presentTransactionDetail(for transactionViewModel: TransactionViewModel) {
-        let viewController = UIStoryboard.instantiateDetailViewController(with: viewModel, detailViewModel: transactionViewModel)
+        let viewController = UIStoryboard.instantiateDetailViewController(with: viewModel, detailViewModel: transactionViewModel.detailViewModel)
         mainViewController?.present(viewController, animated: true, completion: nil)
     }
 }

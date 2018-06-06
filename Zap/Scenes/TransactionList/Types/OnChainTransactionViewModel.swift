@@ -39,9 +39,11 @@ private func iconForAnnotation(_ annotation: TransactionAnnotation) -> Transacti
 }
 
 final class OnChainTransactionViewModel: NSObject, TransactionViewModel {
-    let icon: Observable<TransactionIcon>
+    var detailViewModel: DetailViewModel {
+        return OnChainTransactionDetailViewModel(onChainTransaction: onChainTransaction, annotation: annotation)
+    }
     
-    let detailViewControllerTitle = "Transaction Detail"
+    let icon: Observable<TransactionIcon>
     
     var id: String {
         return onChainTransaction.id
@@ -57,8 +59,6 @@ final class OnChainTransactionViewModel: NSObject, TransactionViewModel {
     
     let displayText: Observable<String>
     let amount: Observable<Satoshi?>
-    
-    let detailCells = MutableObservableArray<DetailCellType>([])
     
     init(onChainTransaction: OnChainTransaction, annotation: TransactionAnnotation, aliasStore: ChannelAliasStore) {
         self.annotation = Observable(annotation)
@@ -78,34 +78,5 @@ final class OnChainTransactionViewModel: NSObject, TransactionViewModel {
                 icon.value = iconForAnnotation(annotation)
             }
             .dispose(in: reactive.bag)
-        
-        setupInfoArray()
     }
-    
-    private func setupInfoArray() {
-        if let amountString = Settings.primaryCurrency.value.format(satoshis: onChainTransaction.amount) {
-            detailCells.append(.info(DetailTableViewCell.Info(title: "Amount", data: amountString)))
-        }
-        
-        let feesString = Settings.primaryCurrency.value.format(satoshis: onChainTransaction.fees) ?? "0"
-        detailCells.append(.info(DetailTableViewCell.Info(title: "Fees", data: feesString)))
-        
-        let dateString = DateFormatter.localizedString(from: onChainTransaction.date, dateStyle: .medium, timeStyle: .short)
-        detailCells.append(.info(DetailTableViewCell.Info(title: "Date", data: dateString)))
-        
-        detailCells.append(.info(DetailTableViewCell.Info(title: "Address", data: onChainTransaction.firstDestinationAddress)))
-        
-        let confirmationString = onChainTransaction.confirmations > 10 ? "10+" : String(onChainTransaction.confirmations)
-        detailCells.append(.info(DetailTableViewCell.Info(title: "Confirmations", data: confirmationString)))
-        
-        // TODO: show displayText instead of firstDestinationAddress
-        let observableMemo = Observable<String?>(nil)
-        annotation
-            .observeNext {
-                observableMemo.value = $0.customMemo
-            }
-            .dispose(in: reactive.bag)
-        detailCells.append(.memo(DetailMemoTableViewCell.Info(memo: observableMemo, placeholder: onChainTransaction.firstDestinationAddress)))
-    }
-
 }

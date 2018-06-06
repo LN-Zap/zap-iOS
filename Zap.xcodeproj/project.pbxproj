@@ -154,6 +154,10 @@
 		AD46845820C6EA02005DEF35 /* DetailBalanceTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = AD46845620C6EA02005DEF35 /* DetailBalanceTableViewCell.xib */; };
 		AD46845B20C6EC7A005DEF35 /* DetailSeparatorTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD46845920C6EC7A005DEF35 /* DetailSeparatorTableViewCell.swift */; };
 		AD46845C20C6EC7A005DEF35 /* DetailSeparatorTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = AD46845A20C6EC7A005DEF35 /* DetailSeparatorTableViewCell.xib */; };
+		AD46845E20C6F8EE005DEF35 /* ChannelDetailViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD46845D20C6F8EE005DEF35 /* ChannelDetailViewModel.swift */; };
+		AD46846720C7CEFD005DEF35 /* OnChainTransactionDetailViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD46846620C7CEFD005DEF35 /* OnChainTransactionDetailViewModel.swift */; };
+		AD46846920C7CF30005DEF35 /* LightningPaymentDetailViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD46846820C7CF30005DEF35 /* LightningPaymentDetailViewModel.swift */; };
+		AD46846B20C7CF58005DEF35 /* LightningInvoiceDetailViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD46846A20C7CF58005DEF35 /* LightningInvoiceDetailViewModel.swift */; };
 		AD5FA001207CCB8B000E9493 /* RequestViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD5FA000207CCB8B000E9493 /* RequestViewController.swift */; };
 		AD5FA003207D0D03000E9493 /* BitcoinURI.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD5FA002207D0D02000E9493 /* BitcoinURI.swift */; };
 		AD5FA005207D0E70000E9493 /* BitcoinURITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD5FA004207D0E70000E9493 /* BitcoinURITests.swift */; };
@@ -454,6 +458,10 @@
 		AD46845620C6EA02005DEF35 /* DetailBalanceTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DetailBalanceTableViewCell.xib; sourceTree = "<group>"; };
 		AD46845920C6EC7A005DEF35 /* DetailSeparatorTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailSeparatorTableViewCell.swift; sourceTree = "<group>"; };
 		AD46845A20C6EC7A005DEF35 /* DetailSeparatorTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DetailSeparatorTableViewCell.xib; sourceTree = "<group>"; };
+		AD46845D20C6F8EE005DEF35 /* ChannelDetailViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChannelDetailViewModel.swift; sourceTree = "<group>"; };
+		AD46846620C7CEFD005DEF35 /* OnChainTransactionDetailViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnChainTransactionDetailViewModel.swift; sourceTree = "<group>"; };
+		AD46846820C7CF30005DEF35 /* LightningPaymentDetailViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LightningPaymentDetailViewModel.swift; sourceTree = "<group>"; };
+		AD46846A20C7CF58005DEF35 /* LightningInvoiceDetailViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LightningInvoiceDetailViewModel.swift; sourceTree = "<group>"; };
 		AD5FA000207CCB8B000E9493 /* RequestViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RequestViewController.swift; sourceTree = "<group>"; };
 		AD5FA002207D0D02000E9493 /* BitcoinURI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BitcoinURI.swift; sourceTree = "<group>"; };
 		AD5FA004207D0E70000E9493 /* BitcoinURITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BitcoinURITests.swift; sourceTree = "<group>"; };
@@ -1109,6 +1117,18 @@
 			path = "Select Wallet Creation Method";
 			sourceTree = "<group>";
 		};
+		AD46846C20C7CF75005DEF35 /* View Models */ = {
+			isa = PBXGroup;
+			children = (
+				AD46845D20C6F8EE005DEF35 /* ChannelDetailViewModel.swift */,
+				AD98EB2320C6DFDE00B807D6 /* DetailViewModel.swift */,
+				AD46846A20C7CF58005DEF35 /* LightningInvoiceDetailViewModel.swift */,
+				AD46846820C7CF30005DEF35 /* LightningPaymentDetailViewModel.swift */,
+				AD46846620C7CEFD005DEF35 /* OnChainTransactionDetailViewModel.swift */,
+			);
+			path = "View Models";
+			sourceTree = "<group>";
+		};
 		AD680A9D20B07AC60018986B /* ConnectRemoteNode */ = {
 			isa = PBXGroup;
 			children = (
@@ -1147,9 +1167,9 @@
 			isa = PBXGroup;
 			children = (
 				AD19F05820AF006F008090CB /* DetailCell */,
+				AD46846C20C7CF75005DEF35 /* View Models */,
 				AD77465C2077C11200EC596B /* Detail.storyboard */,
 				AD19F05F20AF19A9008090CB /* DetailViewController.swift */,
-				AD98EB2320C6DFDE00B807D6 /* DetailViewModel.swift */,
 			);
 			path = Detail;
 			sourceTree = "<group>";
@@ -1710,6 +1730,7 @@
 				A0F353CC206923E4005B3639 /* MainViewController.swift in Sources */,
 				AD6FFCA020A9D19E00B57330 /* LightningInvoiceViewModel.swift in Sources */,
 				ADF7936C208E66FA0086B2CA /* UICollectionView.swift in Sources */,
+				AD46846720C7CEFD005DEF35 /* OnChainTransactionDetailViewModel.swift in Sources */,
 				AD1EBA0120B2FD9D001FF67E /* Persistable.swift in Sources */,
 				AD19F06020AF19A9008090CB /* DetailViewController.swift in Sources */,
 				ADD6D80720B15603008BE461 /* RemoteNodeConfiguration.swift in Sources */,
@@ -1750,6 +1771,7 @@
 				A02C9FC4202F617D009821B1 /* LocalAuthentication.swift in Sources */,
 				A06660FC202E080400EE32FA /* UpdatePinSettingsItem.swift in Sources */,
 				ADB6DEDB20AD8F80001324C8 /* GradientLoadingButtonView.swift in Sources */,
+				AD46846B20C7CF58005DEF35 /* LightningInvoiceDetailViewModel.swift in Sources */,
 				A0A05A292013ED4B0007D1C9 /* ModalPresentationController.swift in Sources */,
 				AD7746552076253C00EC596B /* SendLightningInvoiceViewController.swift in Sources */,
 				ADCE01BD207B598C00CA72E8 /* SelectWalletCreationMethodViewController.swift in Sources */,
@@ -1828,9 +1850,11 @@
 				A0C2EAC0206F8D10003AE56E /* Bitcoin.swift in Sources */,
 				AD99C9F320907AD10061C565 /* SendQRCodeScannerStrategy.swift in Sources */,
 				AD46845320C6E549005DEF35 /* DetailLegendTableViewCell.swift in Sources */,
+				AD46845E20C6F8EE005DEF35 /* ChannelDetailViewModel.swift in Sources */,
 				A024B84D201606B4002B8897 /* Peer.swift in Sources */,
 				ADBB362F2084CA16005662B4 /* MnemonicPageViewController.swift in Sources */,
 				A024B85B20161AAE002B8897 /* PaymentRequest.swift in Sources */,
+				AD46846920C7CF30005DEF35 /* LightningPaymentDetailViewModel.swift in Sources */,
 				AD77464720750DFB00EC596B /* SettingsContainerViewController.swift in Sources */,
 				A0A05A5920149AF20007D1C9 /* Transaction.swift in Sources */,
 				A0D3C97D20616AB80015C5D7 /* LndError.swift in Sources */,

@@ -17,9 +17,11 @@ private func displayTextForAnnotation(_ annotation: TransactionAnnotation, light
 }
 
 final class LightningPaymentViewModel: NSObject, TransactionViewModel {
-    let icon = Observable<TransactionIcon>(.lightningPayment)
+    var detailViewModel: DetailViewModel {
+        return LightningPaymentDetailViewModel(lightningPayment: lightningPayment, annotation: annotation)
+    }
     
-    let detailViewControllerTitle = "Payment Detail"
+    let icon = Observable<TransactionIcon>(.lightningPayment)
     
     var id: String {
         return lightningPayment.id
@@ -35,8 +37,6 @@ final class LightningPaymentViewModel: NSObject, TransactionViewModel {
     let displayText: Observable<String>
     let amount: Observable<Satoshi?>
     
-    let detailCells = MutableObservableArray<DetailCellType>([])
-    
     init(lightningPayment: LightningPayment, annotation: TransactionAnnotation) {
         self.annotation = Observable(annotation)
         self.lightningPayment = lightningPayment
@@ -51,28 +51,6 @@ final class LightningPaymentViewModel: NSObject, TransactionViewModel {
                 displayText.value = displayTextForAnnotation($0, lightningPayment: lightningPayment)
             }
             .dispose(in: reactive.bag)
-        
-        setupInfoArray()
-    }
-    
-    private func setupInfoArray() {
-        if let amountString = Settings.primaryCurrency.value.format(satoshis: lightningPayment.amount) {
-            detailCells.append(.info(DetailTableViewCell.Info(title: "Amount", data: amountString)))
-        }
-        
-        if let feeString = Settings.primaryCurrency.value.format(satoshis: lightningPayment.fees) {
-            detailCells.append(.info(DetailTableViewCell.Info(title: "Fee", data: feeString)))
-        }
-        
-        let dateString = DateFormatter.localizedString(from: lightningPayment.date, dateStyle: .medium, timeStyle: .short)
-        detailCells.append(.info(DetailTableViewCell.Info(title: "Date", data: dateString)))
-        
-        let observableMemo = Observable<String?>(nil)
-        annotation
-            .observeNext {
-                observableMemo.value = $0.customMemo
-            }
-            .dispose(in: reactive.bag)
-        detailCells.append(.memo(DetailMemoTableViewCell.Info(memo: observableMemo, placeholder: lightningPayment.paymentHash)))
     }
 }
+

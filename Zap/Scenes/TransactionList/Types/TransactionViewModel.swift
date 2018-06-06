@@ -38,11 +38,13 @@ enum TransactionIcon {
     }
 }
 
-protocol TransactionViewModel: DetailViewModel {
+protocol TransactionViewModel {
     var id: String { get }
     var annotation: Observable<TransactionAnnotation> { get }
     var date: Date { get }
     var displayText: Observable<String> { get }
     var amount: Observable<Satoshi?> { get }
     var icon: Observable<TransactionIcon> { get }
+    
+    var detailViewModel: DetailViewModel { get }
 }
