@@ -37,7 +37,7 @@ opt_in_rules:
   - yoda_condition
 excluded:
   - Pods
-  - Proto
+  - Zap/Services/Lnd/Api/Generated
 
 identifier_name:
   excluded:

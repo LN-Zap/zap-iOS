@@ -85,7 +85,7 @@ final class LightningService: NSObject {
         api.sendPayment(paymentRequest) { [weak self, transactionService] result in
             if result.value != nil {
                 if let memo = paymentRequest.memo {
-                    transactionStore.setMemo(memo, forPaymentHash: paymentRequest.paymentHash)
+                    transactionService.setMemo(memo, forPaymentHash: paymentRequest.paymentHash)
                 }
                 self?.balanceService.update()
                 self?.updateTransactions()

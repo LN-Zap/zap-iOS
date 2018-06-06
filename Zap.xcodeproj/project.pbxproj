@@ -128,6 +128,8 @@
 		A0F9AEE3206E3E0300E93DCA /* InputNumberFormatterTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0F9AEE2206E3E0300E93DCA /* InputNumberFormatterTests.swift */; };
 		A0FBCD91206BBBDF00800515 /* BitcoinUnit.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0FBCD90206BBBDF00800515 /* BitcoinUnit.swift */; };
 		A0FBCD93206BBD9800800515 /* SatoshiTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0FBCD92206BBD9800800515 /* SatoshiTests.swift */; };
+		AD0D933420C822C300E30C51 /* rpc.pb.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD0D933220C822C300E30C51 /* rpc.pb.swift */; };
+		AD0D933520C822C300E30C51 /* rpc.grpc.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD0D933320C822C300E30C51 /* rpc.grpc.swift */; };
 		AD19F05420AEAD3C008090CB /* TransactionAnnotation.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD19F05320AEAD3C008090CB /* TransactionAnnotation.swift */; };
 		AD19F05720AEAF1B008090CB /* Lens.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD19F05620AEAF1B008090CB /* Lens.swift */; };
 		AD19F05B20AF00B4008090CB /* DetailTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD19F05920AF00B4008090CB /* DetailTableViewCell.swift */; };
@@ -184,8 +186,6 @@
 		AD7746592076609400EC596B /* NodeInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD7746582076609400EC596B /* NodeInfo.swift */; };
 		AD77465D2077C11200EC596B /* Detail.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AD77465C2077C11200EC596B /* Detail.storyboard */; };
 		AD77466C2078EE5600EC596B /* ChannelTransactionAnnotationUpdater.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD77466B2078EE5600EC596B /* ChannelTransactionAnnotationUpdater.swift */; };
-		AD86BCFE2099F50C00A7866A /* rpc.pb.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD86BCFD2099F50C00A7866A /* rpc.pb.swift */; };
-		AD86BD002099FB4500A7866A /* rpc.grpc.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD86BCFF2099FB4500A7866A /* rpc.grpc.swift */; };
 		AD8B13F120C0582D0091F9DA /* RootCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD8B13F020C0582D0091F9DA /* RootCoordinator.swift */; };
 		AD93ED5420A07B0C000E814E /* Notification.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD93ED5220A07A24000E814E /* Notification.swift */; };
 		AD93ED5620A09D59000E814E /* GraphTopologyUpdate.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD93ED5520A09D59000E814E /* GraphTopologyUpdate.swift */; };
@@ -434,6 +434,8 @@
 		A0FBCD90206BBBDF00800515 /* BitcoinUnit.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BitcoinUnit.swift; sourceTree = "<group>"; };
 		A0FBCD92206BBD9800800515 /* SatoshiTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SatoshiTests.swift; sourceTree = "<group>"; };
 		A2EA9EBABE9A17490B3E282A /* Pods-BTCUtil.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BTCUtil.release.xcconfig"; path = "Pods/Target Support Files/Pods-BTCUtil/Pods-BTCUtil.release.xcconfig"; sourceTree = "<group>"; };
+		AD0D933220C822C300E30C51 /* rpc.pb.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = rpc.pb.swift; sourceTree = "<group>"; };
+		AD0D933320C822C300E30C51 /* rpc.grpc.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = rpc.grpc.swift; sourceTree = "<group>"; };
 		AD19F05320AEAD3C008090CB /* TransactionAnnotation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransactionAnnotation.swift; sourceTree = "<group>"; };
 		AD19F05620AEAF1B008090CB /* Lens.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Lens.swift; sourceTree = "<group>"; };
 		AD19F05920AF00B4008090CB /* DetailTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailTableViewCell.swift; sourceTree = "<group>"; };
@@ -490,8 +492,6 @@
 		AD7746582076609400EC596B /* NodeInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NodeInfo.swift; sourceTree = "<group>"; };
 		AD77465C2077C11200EC596B /* Detail.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Detail.storyboard; sourceTree = "<group>"; };
 		AD77466B2078EE5600EC596B /* ChannelTransactionAnnotationUpdater.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChannelTransactionAnnotationUpdater.swift; sourceTree = "<group>"; };
-		AD86BCFD2099F50C00A7866A /* rpc.pb.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = rpc.pb.swift; path = Proto/rpc.pb.swift; sourceTree = SOURCE_ROOT; };
-		AD86BCFF2099FB4500A7866A /* rpc.grpc.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = rpc.grpc.swift; path = Proto/rpc.grpc.swift; sourceTree = SOURCE_ROOT; };
 		AD8B13F020C0582D0091F9DA /* RootCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RootCoordinator.swift; sourceTree = "<group>"; };
 		AD93ED5220A07A24000E814E /* Notification.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Notification.swift; sourceTree = "<group>"; };
 		AD93ED5520A09D59000E814E /* GraphTopologyUpdate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GraphTopologyUpdate.swift; sourceTree = "<group>"; };
@@ -692,11 +692,14 @@
 		A01009352014BE070001EF94 /* Helper */ = {
 			isa = PBXGroup;
 			children = (
-				A0919159203C309E00FA525A /* Style */,
 				A0DDC077201B42EA00AEFF94 /* BockExplorer.swift */,
 				ADE4CF1E20B5B6FC007C987A /* Environment.swift */,
 				A0A05A5420148FA80007D1C9 /* Json.swift */,
+				AD19F05620AEAF1B008090CB /* Lens.swift */,
+				A02C9FC3202F617D009821B1 /* LocalAuthentication.swift */,
+				A0C2EABA206F8AD2003AE56E /* Money */,
 				A0D3C97F20629B9D0015C5D7 /* Scheduler.swift */,
+				A0919159203C309E00FA525A /* Style */,
 			);
 			path = Helper;
 			sourceTree = "<group>";
@@ -871,6 +874,7 @@
 		A07C1034203DE3D0006C7FE8 /* Services */ = {
 			isa = PBXGroup;
 			children = (
+				A0376B70201CC16D00F1FBEF /* Lnd */,
 				ADA6D2BE20AB215D009398A5 /* Persistence */,
 				A0E2690C202CC4E30069E83C /* AuthenticationService.swift */,
 				ADA6D2C420AC1DDE009398A5 /* BalanceService.swift */,
@@ -925,9 +929,6 @@
 				ADEDBB8A20C2D48D00B71F17 /* Coordinators */,
 				A0A05A5F2014A10A0007D1C9 /* Extensions */,
 				A01009352014BE070001EF94 /* Helper */,
-				A0376B70201CC16D00F1FBEF /* Lnd */,
-				A0C2EABA206F8AD2003AE56E /* Money */,
-				AD86BCFC2099F4E900A7866A /* Proto */,
 				A01009322014BD960001EF94 /* Scenes */,
 				A07C1034203DE3D0006C7FE8 /* Services */,
 				A010093A2014BF440001EF94 /* Supporting Files */,
@@ -968,8 +969,6 @@
 			isa = PBXGroup;
 			children = (
 				A08CF033201F5FCC000D5855 /* Array.swift */,
-				AD19F05620AEAF1B008090CB /* Lens.swift */,
-				A02C9FC3202F617D009821B1 /* LocalAuthentication.swift */,
 				AD77464C2076161300EC596B /* Localizable */,
 				AD93ED5220A07A24000E814E /* Notification.swift */,
 				A0BD44DB206FCAD900BF27A3 /* SignalProtocol.swift */,
@@ -1013,12 +1012,14 @@
 		A0D3C97B20616A9A0015C5D7 /* Api */ = {
 			isa = PBXGroup;
 			children = (
+				AD86BCFC2099F4E900A7866A /* Generated */,
 				ADBB36232080A457005662B4 /* LightningMock.swift */,
 				ADBB36212080A3B1005662B4 /* LightningProtocol.swift */,
 				A0A33EF32028743200BB76F4 /* LightningRPC.swift */,
 				ADBA4420209AE75600D18B71 /* LightningStream.swift */,
 				ADBA4422209B00D300D18B71 /* LndCallback.swift */,
 				A0D3C97C20616AB80015C5D7 /* LndError.swift */,
+				ADBA4424209B067400D18B71 /* ProtobufExtensions.swift */,
 				A0D3C96B205FCBF40015C5D7 /* Result.swift */,
 				A0D3C969205D55570015C5D7 /* WalletUnlocker.swift */,
 			);
@@ -1192,14 +1193,13 @@
 			path = "Generate Mnemonic";
 			sourceTree = "<group>";
 		};
-		AD86BCFC2099F4E900A7866A /* Proto */ = {
+		AD86BCFC2099F4E900A7866A /* Generated */ = {
 			isa = PBXGroup;
 			children = (
-				ADBA4424209B067400D18B71 /* ProtobufExtensions.swift */,
-				AD86BCFF2099FB4500A7866A /* rpc.grpc.swift */,
-				AD86BCFD2099F50C00A7866A /* rpc.pb.swift */,
+				AD0D933320C822C300E30C51 /* rpc.grpc.swift */,
+				AD0D933220C822C300E30C51 /* rpc.pb.swift */,
 			);
-			path = Proto;
+			path = Generated;
 			sourceTree = "<group>";
 		};
 		AD99C9EB209072530061C565 /* QRCodeScanner */ = {
@@ -1727,11 +1727,9 @@
 				AD21768920C3DFDB007779DE /* BalanceView.swift in Sources */,
 				AD6FFCA620AB0A3700B57330 /* OnChainRequestAddressTypeSettingsItem.swift in Sources */,
 				A0A96B88201769F100788808 /* String.swift in Sources */,
-				AD86BD002099FB4500A7866A /* rpc.grpc.swift in Sources */,
 				ADA6D2C520AC1DDE009398A5 /* BalanceService.swift in Sources */,
 				A010093C2014CEE40001EF94 /* OpenStatusUpdate.swift in Sources */,
 				AD33B5EF20A8463600E32BD9 /* SendOnChainViewController.swift in Sources */,
-				AD86BCFE2099F50C00A7866A /* rpc.pb.swift in Sources */,
 				A0731FE62014AC0800C55E45 /* ContainerViewController.swift in Sources */,
 				ADD6D80320B09260008BE461 /* RemoteNodeCertificatesScannerViewController.swift in Sources */,
 				AD680A9920B06B840018986B /* DetailTimerTableViewCell.swift in Sources */,
@@ -1868,6 +1866,7 @@
 				A0D3C97D20616AB80015C5D7 /* LndError.swift in Sources */,
 				AD1EB9FD20B2CEAA001FF67E /* StatusBarDelegatingNavigationController.swift in Sources */,
 				AD680A9C20B077980018986B /* ConnectRemoteNodeSettingsItem.swift in Sources */,
+				AD0D933420C822C300E30C51 /* rpc.pb.swift in Sources */,
 				A0F9AEE1206E3D8200E93DCA /* InputNumberFormatter.swift in Sources */,
 				ADBA4423209B00D300D18B71 /* LndCallback.swift in Sources */,
 				A091914B203B297D00FA525A /* CurrencySettingsItem.swift in Sources */,
@@ -1882,6 +1881,7 @@
 				AD93ED5420A07B0C000E814E /* Notification.swift in Sources */,
 				ADBB36262080AD70005662B4 /* LoadingViewController.swift in Sources */,
 				ADCE01BF207B59BD00CA72E8 /* ConfirmMnemonicViewController.swift in Sources */,
+				AD0D933520C822C300E30C51 /* rpc.grpc.swift in Sources */,
 				A08CF034201F5FCC000D5855 /* Array.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
