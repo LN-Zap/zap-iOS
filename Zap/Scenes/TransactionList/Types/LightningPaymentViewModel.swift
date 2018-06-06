@@ -53,4 +53,3 @@ final class LightningPaymentViewModel: NSObject, TransactionViewModel {
             .dispose(in: reactive.bag)
     }
 }
-
