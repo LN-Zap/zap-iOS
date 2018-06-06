@@ -7,6 +7,6 @@
 
 import UIKit
 
-class DetailSeparatorTableViewCell: UITableViewCell {
+final class DetailSeparatorTableViewCell: UITableViewCell {
     
 }

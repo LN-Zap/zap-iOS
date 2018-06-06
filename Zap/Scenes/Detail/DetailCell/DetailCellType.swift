@@ -9,6 +9,7 @@ import Foundation
 
 enum DetailCellType {
     case balance(DetailBalanceTableViewCell.Info)
+    case channelActions(DetailChannelActionsTableViewCell.Info)
     case hideTransaction
     case info(DetailTableViewCell.Info)
     case legend(DetailLegendTableViewCell.Info)
@@ -16,4 +17,9 @@ enum DetailCellType {
     case qrCode(String)
     case separator
     case timer(DetailTimerTableViewCell.Info)
+}
+
+protocol DetailCellDelegate: class {
+    func dismiss()
+    func presentSafariViewController(for url: URL)
 }

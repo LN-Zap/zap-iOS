@@ -5,6 +5,7 @@
 //  Copyright © 2018 Zap. All rights reserved.
 //
 
+import SafariServices
 import UIKit
 
 final class MainCoordinator {
@@ -13,7 +14,8 @@ final class MainCoordinator {
     private let channelListViewModel: ChannelListViewModel
     private let transactionListViewModel: TransactionListViewModel
     
-    private var mainViewController: MainViewController?
+    private weak var mainViewController: MainViewController?
+    private weak var detailViewController: UINavigationController?
     
     init(rootViewController: RootViewController, viewModel: LightningService) {
         self.rootViewController = rootViewController
@@ -81,7 +83,18 @@ final class MainCoordinator {
     }
     
     private func presentDetail(for detailViewModel: DetailViewModel) {
-        let viewController = UIStoryboard.instantiateDetailViewController(with: viewModel, detailViewModel: detailViewModel)
-        mainViewController?.present(viewController, animated: true, completion: nil)
+        let detailViewController = UIStoryboard.instantiateDetailViewController(detailViewModel: detailViewModel, dismissButtonTapped: dismissDetailViewController, safariButtonTapped: presentSafariViewController)
+        self.detailViewController = detailViewController
+        mainViewController?.present(detailViewController, animated: true, completion: nil)
+    }
+    
+    private func presentSafariViewController(for url: URL) {
+        let safariViewController = SFSafariViewController(url: url)
+        safariViewController.preferredControlTintColor = UIColor.zap.peach
+        detailViewController?.present(safariViewController, animated: true)
+    }
+    
+    private func dismissDetailViewController() {
+        detailViewController?.dismiss(animated: true, completion: nil)
     }
 }

@@ -8,7 +8,7 @@
 import Bond
 import UIKit
 
-class DetailMemoTableViewCell: BondTableViewCell {
+final class DetailMemoTableViewCell: BondTableViewCell {
     struct Info {
         let memo: Observable<String?>
         let placeholder: String

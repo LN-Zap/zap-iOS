@@ -8,11 +8,25 @@
 import Bond
 import UIKit
 
+extension UIStoryboard {
+    static func instantiateDetailViewController(detailViewModel: DetailViewModel, dismissButtonTapped: @escaping () -> Void, safariButtonTapped: @escaping (URL) -> Void) -> UINavigationController {
+        let viewController = Storyboard.detail.initial(viewController: UINavigationController.self)
+        if let detailViewController = viewController.topViewController as? DetailViewController {
+            detailViewController.detailViewModel = detailViewModel
+            detailViewController.dismissButtonTapped = dismissButtonTapped
+            detailViewController.safariButtonTapped = safariButtonTapped
+        }
+        return viewController
+    }
+}
+
 class DetailViewController: UIViewController {
     @IBOutlet private weak var tableView: UITableView!
     
+    var dismissButtonTapped: (() -> Void)?
+    var safariButtonTapped: ((URL) -> Void)?
+    
     var detailViewModel: DetailViewModel?
-    var viewModel: LightningService?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -32,6 +46,7 @@ class DetailViewController: UIViewController {
         tableView.registerCell(DetailBalanceTableViewCell.self)
         tableView.registerCell(DetailSeparatorTableViewCell.self)
         tableView.registerCell(DetailHideTransactionTableViewCell.self)
+        tableView.registerCell(DetailChannelActionsTableViewCell.self)
 
         tableView.rowHeight = UITableViewAutomaticDimension
         tableView.estimatedRowHeight = 48
@@ -52,9 +67,9 @@ class DetailViewController: UIViewController {
             return cell
         case .memo(let info):
             let cell: DetailMemoTableViewCell = tableView.dequeueCellForIndexPath(indexPath)
-            cell.onChange = { [weak self] in
+            cell.onChange = { [weak self] _ in
                 guard let transactionViewModel = self?.detailViewModel as? TransactionViewModel else { return } // TODO: always fails
-                self?.viewModel?.udpateMemo($0, for: transactionViewModel)
+//                self?.viewModel?.udpateMemo($0, for: transactionViewModel)
             }
             cell.info = info
             return cell
@@ -83,10 +98,25 @@ class DetailViewController: UIViewController {
                 self?.dismiss(animated: true, completion: nil)
             }
             return cell
+        case .channelActions(let info):
+            let cell: DetailChannelActionsTableViewCell = tableView.dequeueCellForIndexPath(indexPath)
+            cell.delegate = self
+            cell.info = info
+            return cell
         }
     }
     
     @IBAction private func doneButtonTapped(_ sender: Any) {
-        dismiss(animated: true, completion: nil)
+        dismissButtonTapped?()
+    }
+}
+
+extension DetailViewController: DetailCellDelegate {
+    func dismiss() {
+        dismissButtonTapped?()
+    }
+    
+    func presentSafariViewController(for url: URL) {
+        safariButtonTapped?(url)
     }
 }

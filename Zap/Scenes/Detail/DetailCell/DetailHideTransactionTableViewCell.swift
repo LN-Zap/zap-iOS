@@ -7,7 +7,7 @@
 
 import UIKit
 
-class DetailHideTransactionTableViewCell: UITableViewCell {
+final class DetailHideTransactionTableViewCell: UITableViewCell {
     @IBOutlet private weak var hideTransactionButton: UIButton!
     
     var hideAction: (() -> Void)?

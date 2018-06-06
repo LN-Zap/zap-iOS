@@ -7,7 +7,7 @@
 
 import UIKit
 
-class DetailQRCodeTableViewCell: UITableViewCell {
+final class DetailQRCodeTableViewCell: UITableViewCell {
     @IBOutlet private weak var qrCodeImageView: UIImageView!
     @IBOutlet private weak var addressLabel: UILabel!
     @IBOutlet private weak var copyButton: UIButton!

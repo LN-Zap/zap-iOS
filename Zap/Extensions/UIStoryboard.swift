@@ -8,15 +8,6 @@
 import UIKit
 
 extension UIStoryboard {
-    static func instantiateDetailViewController(with viewModel: LightningService, detailViewModel: DetailViewModel) -> UINavigationController {
-        let viewController = Storyboard.detail.initial(viewController: UINavigationController.self)
-        if let detailViewController = viewController.topViewController as? DetailViewController {
-            detailViewController.detailViewModel = detailViewModel
-            detailViewController.viewModel = viewModel
-        }
-        return viewController
-    }
-    
     static func instantiateSettingsContainerViewController(with viewModel: LightningService) -> UINavigationController {
         let viewController = Storyboard.settings.initial(viewController: UINavigationController.self)
         

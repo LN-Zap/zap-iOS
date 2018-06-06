@@ -8,7 +8,7 @@
 import BTCUtil
 import UIKit
 
-class DetailBalanceTableViewCell: UITableViewCell {
+final class DetailBalanceTableViewCell: UITableViewCell {
     struct Info {
         let localBalance: Satoshi
         let remoteBalance: Satoshi

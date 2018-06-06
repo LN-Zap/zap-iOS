@@ -7,7 +7,7 @@
 
 import UIKit
 
-class DetailTimerTableViewCell: UITableViewCell {
+final class DetailTimerTableViewCell: UITableViewCell {
     struct Info {
         let title: String
         let date: Date

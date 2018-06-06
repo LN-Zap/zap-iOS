@@ -6,13 +6,18 @@
 //
 
 import Bond
+import BTCUtil
 import Foundation
 
 final class ChannelDetailViewModel: DetailViewModel {
+    private let channel: Channel
+    
     var detailViewControllerTitle = "scene.channel_detail.title".localized
     var detailCells: MutableObservableArray<DetailCellType>
     
     init(channel: Channel) {
+        self.channel = channel
+        
         var cells = [DetailCellType]()
         
         cells.append(.info(DetailTableViewCell.Info(title: "remotePubKey:", data: channel.remotePubKey)))
@@ -38,6 +43,22 @@ final class ChannelDetailViewModel: DetailViewModel {
         let blockHeight = channel.blockHeight
         cells.append(.info(DetailTableViewCell.Info(title: "blockHeight:", data: String(describing: blockHeight))))
         
+        cells.append(.separator)
+
+        let network = Network.testnet // viewModel?.info.network.value
+        let txid = channel.fundingTransactionId
+        if let url = Settings.blockExplorer.url(network: network, txid: txid) {
+            cells.append(.channelActions(DetailChannelActionsTableViewCell.Info(fundingTransactionUrl: url)))
+        }
+        
         detailCells = MutableObservableArray(cells)
+    }
+    
+    private func closeChannel() {
+        let channelPoint = channel.channelPoint
+        
+//        viewModel?.channels.close(channelPoint: channelPoint) { [weak self] in
+//            self?.dismiss(animated: true, completion: nil)
+//        }
     }
 }

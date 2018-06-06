@@ -7,7 +7,7 @@
 
 import UIKit
 
-class DetailLegendTableViewCell: UITableViewCell {
+final class DetailLegendTableViewCell: UITableViewCell {
     struct Info {
         let title: String
         let data: String
