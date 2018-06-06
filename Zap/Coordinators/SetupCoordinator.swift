@@ -15,7 +15,6 @@ protocol SetupCoordinatorDelegate: class {
 final class SetupCoordinator {
     private let rootViewController: RootViewController
     private weak var navigationController: UINavigationController?
-    private weak var connectRemoteNodeViewController: ConnectRemoteNodeViewController?
     private weak var delegate: SetupCoordinatorDelegate?
     private weak var connectRemoteNodeViewModel: ConnectRemoteNodeViewModel?
     
@@ -50,7 +49,6 @@ final class SetupCoordinator {
         let viewModel = ConnectRemoteNodeViewModel()
         connectRemoteNodeViewModel = viewModel
         let viewController = UIStoryboard.instantiateConnectRemoteNodeViewController(didSetupWallet: didSetupWallet, connectRemoteNodeViewModel: viewModel, presentQRCodeScannerButtonTapped: presentNodeCertificatesScanner)
-        connectRemoteNodeViewController = viewController
         navigationController?.pushViewController(viewController, animated: true)
     }
 
