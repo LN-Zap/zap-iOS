@@ -41,6 +41,8 @@ final class OnChainTransactionDetailViewModel: NSObject, DetailViewModel {
             .dispose(in: reactive.bag)
         cells.append(.memo(DetailMemoTableViewCell.Info(memo: observableMemo, placeholder: onChainTransaction.firstDestinationAddress)))
         
+        cells.append(.hideTransaction)
+        
         detailCells.replace(with: cells)
     }
 }

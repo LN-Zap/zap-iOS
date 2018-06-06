@@ -36,6 +36,8 @@ final class LightningPaymentDetailViewModel: NSObject, DetailViewModel {
             .dispose(in: reactive.bag)
         cells.append(.memo(DetailMemoTableViewCell.Info(memo: observableMemo, placeholder: lightningPayment.paymentHash)))
         
+        cells.append(.hideTransaction)
+        
         detailCells.replace(with: cells)
     }
 }

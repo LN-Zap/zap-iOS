@@ -48,6 +48,8 @@ final class LightningInvoiceDetailViewModel: NSObject, DetailViewModel {
             cells.append(.info(DetailTableViewCell.Info(title: "Settled Date", data: dateString)))
         }
         
+        cells.append(.hideTransaction)
+        
         detailCells.replace(with: cells)
     }
 }

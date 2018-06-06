@@ -31,7 +31,8 @@ class DetailViewController: UIViewController {
         tableView.registerCell(DetailLegendTableViewCell.self)
         tableView.registerCell(DetailBalanceTableViewCell.self)
         tableView.registerCell(DetailSeparatorTableViewCell.self)
-        
+        tableView.registerCell(DetailHideTransactionTableViewCell.self)
+
         tableView.rowHeight = UITableViewAutomaticDimension
         tableView.estimatedRowHeight = 48
         tableView.tableFooterView = UIView()
@@ -52,7 +53,7 @@ class DetailViewController: UIViewController {
         case .memo(let info):
             let cell: DetailMemoTableViewCell = tableView.dequeueCellForIndexPath(indexPath)
             cell.onChange = { [weak self] in
-                guard let transactionViewModel = self?.detailViewModel as? TransactionViewModel else { return }
+                guard let transactionViewModel = self?.detailViewModel as? TransactionViewModel else { return } // TODO: always fails
                 self?.viewModel?.udpateMemo($0, for: transactionViewModel)
             }
             cell.info = info
@@ -76,6 +77,12 @@ class DetailViewController: UIViewController {
             return cell
         case .separator:
             return tableView.dequeueCellForIndexPath(indexPath) as DetailSeparatorTableViewCell
+        case .hideTransaction:
+            let cell: DetailHideTransactionTableViewCell = tableView.dequeueCellForIndexPath(indexPath)
+            cell.hideAction = { [weak self] in // TODO:
+                self?.dismiss(animated: true, completion: nil)
+            }
+            return cell
         }
     }
     

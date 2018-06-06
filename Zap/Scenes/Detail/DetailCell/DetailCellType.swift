@@ -8,11 +8,12 @@
 import Foundation
 
 enum DetailCellType {
-    case qrCode(String)
     case balance(DetailBalanceTableViewCell.Info)
+    case hideTransaction
     case info(DetailTableViewCell.Info)
     case legend(DetailLegendTableViewCell.Info)
     case memo(DetailMemoTableViewCell.Info)
+    case qrCode(String)
     case separator
     case timer(DetailTimerTableViewCell.Info)
 }

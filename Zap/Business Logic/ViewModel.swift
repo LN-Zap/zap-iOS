@@ -16,7 +16,7 @@ final class ViewModel: NSObject {
     let info: Wallet
     let balance: Balance
     let channels: Channels
-    private let transactionStore: TransactionStore
+    let transactionStore: TransactionStore
     
     let aliasStore: ChannelAliasStore
     
