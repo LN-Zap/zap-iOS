@@ -7,7 +7,7 @@
 
 import UIKit
 
-class ModalViewController: UIViewController {
+final class ModalViewController: UIViewController {
     private let modalPresentationManager = ModalPresentationManager()
 
     required init?(coder aDecoder: NSCoder) {
@@ -18,7 +18,7 @@ class ModalViewController: UIViewController {
     }
 }
 
-class ModalNavigationController: UINavigationController {
+final class ModalNavigationController: UINavigationController {
     private let modalPresentationManager = ModalPresentationManager()
     
     required init?(coder aDecoder: NSCoder) {

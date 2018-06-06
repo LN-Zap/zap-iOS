@@ -7,7 +7,7 @@
 
 import UIKit
 
-class MnemonicPageViewController: UIPageViewController {
+final class MnemonicPageViewController: UIPageViewController {
 
     var mnemonicViewModel: MnemonicViewModel?
     private var orderedViewControllers: [UIViewController]?

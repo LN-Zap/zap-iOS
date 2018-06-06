@@ -15,7 +15,7 @@ extension UIStoryboard {
     }
 }
 
-class PinViewController: UIViewController {
+final class PinViewController: UIViewController {
     @IBOutlet private weak var pinStackView: PinView!
     @IBOutlet private weak var keyPadView: KeyPadView!
     

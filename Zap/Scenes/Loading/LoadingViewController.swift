@@ -15,7 +15,7 @@ extension UIStoryboard {
     }
 }
 
-class LoadingViewController: UIViewController {
+final class LoadingViewController: UIViewController {
     enum Message {
         case none
         case noInternet

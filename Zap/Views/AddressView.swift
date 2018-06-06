@@ -7,7 +7,7 @@
 
 import UIKit
 
-class AddressView: UIStackView {
+final class AddressView: UIStackView {
     private let label1 = UILabel()
     private let label2 = UILabel()
     private let label3 = UILabel()

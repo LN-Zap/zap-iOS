@@ -10,7 +10,7 @@ import Foundation
 import XCTest
 @testable import Zap
 
-class CurrencyTests: XCTestCase {
+final class CurrencyTests: XCTestCase {
     private let usd = FiatCurrency(currencyCode: "USD", symbol: "$", localized: "US Dollar", exchangeRate: 7000.00)
     private let eur = FiatCurrency(currencyCode: "EUR", symbol: "€", localized: "Euro", exchangeRate: 5500.00)
     

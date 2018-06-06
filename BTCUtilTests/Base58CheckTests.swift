@@ -8,7 +8,7 @@
 @testable import BTCUtil
 import XCTest
 
-class Base58CheckTests: XCTestCase {
+final class Base58CheckTests: XCTestCase {
     func testValidBase58Check() {
         let decodeTests: [(String, (Int, String)?)] = [
             ("3MNQE1X", (20, "")),

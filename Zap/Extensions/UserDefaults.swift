@@ -16,7 +16,7 @@ extension UserDefaults {
     }
 }
 
-class DefaultKey<T> {
+final class DefaultKey<T> {
     private let name: String
     
     init(_ name: String) {

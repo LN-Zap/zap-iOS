@@ -8,7 +8,7 @@
 import BTCUtil
 import UIKit
 
-class BalanceView: UIView {
+final class BalanceView: UIView {
 
     private weak var localBalanceView: UIView?
     

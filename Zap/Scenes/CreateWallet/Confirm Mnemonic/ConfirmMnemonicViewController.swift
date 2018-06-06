@@ -18,7 +18,7 @@ extension UIStoryboard {
 
 private let itemWitdh: CGFloat = 140
 
-class ConfirmMnemonicViewController: UIViewController {
+final class ConfirmMnemonicViewController: UIViewController {
     
     @IBOutlet private weak var descriptionLabel: UILabel!
     @IBOutlet private weak var collectionView: UICollectionView!

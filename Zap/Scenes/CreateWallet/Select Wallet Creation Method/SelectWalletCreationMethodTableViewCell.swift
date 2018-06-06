@@ -7,7 +7,7 @@
 
 import UIKit
 
-class SelectWalletCreationMethodTableViewCell: UITableViewCell {
+final class SelectWalletCreationMethodTableViewCell: UITableViewCell {
 
     @IBOutlet private weak var mainLabel: UILabel!
     @IBOutlet private weak var descriptionLabel: UILabel!

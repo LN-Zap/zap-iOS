@@ -15,7 +15,7 @@ extension UIStoryboard {
     }
 }
 
-class SendLightningInvoiceViewController: UIViewController, QRCodeScannerChildViewController {
+final class SendLightningInvoiceViewController: UIViewController, QRCodeScannerChildViewController {
     weak var delegate: QRCodeScannerChildDelegate?
     
     @IBOutlet private weak var paymentRequestView: UIStackView!

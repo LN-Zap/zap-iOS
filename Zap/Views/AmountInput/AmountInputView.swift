@@ -9,7 +9,7 @@ import Bond
 import BTCUtil
 import UIKit
 
-class AmountInputView: UIControl {
+final class AmountInputView: UIControl {
     @IBOutlet private var contentView: UIView!
     @IBOutlet private weak var containerView: UIView!
     @IBOutlet private weak var amountTextField: UITextField!

@@ -16,7 +16,7 @@ extension UIStoryboard {
 }
 
 // swiftlint:disable:next type_name
-class RemoteNodeCertificatesScannerViewController: UIViewController {
+final class RemoteNodeCertificatesScannerViewController: UIViewController {
     @IBOutlet private weak var cancelButton: UIButton!
     
     fileprivate var connectRemoteNodeViewModel: ConnectRemoteNodeViewModel?

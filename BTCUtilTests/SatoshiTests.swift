@@ -8,7 +8,7 @@
 @testable import BTCUtil
 import XCTest
 
-class BitcoinUnitTests: XCTestCase {
+final class BitcoinUnitTests: XCTestCase {
     // swiftlint:disable:next large_tuple
     let inputs: [(BitcoinUnit, Satoshi, String)] = [
         (.satoshi, 1, "1"),

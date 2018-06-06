@@ -33,7 +33,7 @@ final class ChannelBond: TableViewBinder<Observable2DArray<String, ChannelViewMo
     }
 }
 
-class ChannelListViewController: UIViewController {
+final class ChannelListViewController: UIViewController {
     @IBOutlet private weak var tableView: UITableView?
     @IBOutlet private weak var searchBackgroundView: UIView!
     @IBOutlet private weak var searchBar: UISearchBar!

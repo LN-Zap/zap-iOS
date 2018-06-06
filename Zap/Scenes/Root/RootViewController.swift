@@ -7,7 +7,7 @@
 
 import UIKit
 
-class RootViewController: UIViewController, ContainerViewController {
+final class RootViewController: UIViewController, ContainerViewController {
     // swiftlint:disable:next private_outlet
     @IBOutlet weak var container: UIView?
     weak var currentViewController: UIViewController?

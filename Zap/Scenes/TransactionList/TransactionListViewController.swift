@@ -34,7 +34,7 @@ final class TransactionBond: TableViewBinder<Observable2DArray<String, Transacti
     }
 }
 
-class TransactionListViewController: UIViewController {
+final class TransactionListViewController: UIViewController {
     @IBOutlet private weak var tableView: UITableView?
     @IBOutlet private weak var searchBackgroundView: UIView!
     @IBOutlet private weak var searchBar: UISearchBar!

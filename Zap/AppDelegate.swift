@@ -8,7 +8,7 @@
 import UIKit
 
 @UIApplicationMain
-class AppDelegate: UIResponder, UIApplicationDelegate {
+final class AppDelegate: UIResponder, UIApplicationDelegate {
     private var blurEffectView: UIVisualEffectView?
 
     var rootCoordinator: RootCoordinator?

@@ -7,7 +7,7 @@
 
 import UIKit
 
-class ModalPresentationManager: NSObject, UIViewControllerTransitioningDelegate {
+final class ModalPresentationManager: NSObject, UIViewControllerTransitioningDelegate {
     let size: CGSize?
     
     var presentationController: ModalPresentationController?
@@ -35,7 +35,7 @@ class ModalPresentationManager: NSObject, UIViewControllerTransitioningDelegate 
     }
 }
 
-class ModalPresentationController: UIPresentationController {
+final class ModalPresentationController: UIPresentationController {
     var dimmingView: UIView?
     var size: CGSize?
     var customFrame: CGRect?
@@ -147,7 +147,7 @@ private func verticalTranslation(for viewController: UIViewController) -> CGFloa
     return (windowHeight + viewHeight) / 2
 }
 
-class TransitionPresentationAnimator: NSObject, UIViewControllerAnimatedTransitioning {
+final class TransitionPresentationAnimator: NSObject, UIViewControllerAnimatedTransitioning {
     func transitionDuration(using transitionContext: UIViewControllerContextTransitioning?) -> TimeInterval {
         return 0.3
     }
@@ -170,7 +170,7 @@ class TransitionPresentationAnimator: NSObject, UIViewControllerAnimatedTransiti
     }
 }
 
-class TransitionDismissAnimator: NSObject, UIViewControllerAnimatedTransitioning {
+final class TransitionDismissAnimator: NSObject, UIViewControllerAnimatedTransitioning {
     func transitionDuration(using transitionContext: UIViewControllerContextTransitioning?) -> TimeInterval {
         return 0.3
     }
@@ -188,7 +188,7 @@ class TransitionDismissAnimator: NSObject, UIViewControllerAnimatedTransitioning
     }
 }
 
-class InteractiveTransitionDismissAnimator: UIPercentDrivenInteractiveTransition {
+final class InteractiveTransitionDismissAnimator: UIPercentDrivenInteractiveTransition {
     var isInteractiveDismissal = false
     let gestureRecognizer: UIPanGestureRecognizer
     weak var viewController: UIViewController?

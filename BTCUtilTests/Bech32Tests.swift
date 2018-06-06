@@ -8,7 +8,7 @@
 @testable import BTCUtil
 import XCTest
 
-class Bech32Tests: XCTestCase {
+final class Bech32Tests: XCTestCase {
     func testValidBech32() {
         let valid = [
             "A12UEL5L",

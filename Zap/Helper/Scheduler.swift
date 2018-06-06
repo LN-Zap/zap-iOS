@@ -12,7 +12,7 @@ import Foundation
     func run()
 }
 
-class Task: SchedulerJob {
+final class Task: SchedulerJob {
     let action: () -> Void
     
     init(action: @escaping () -> Void) {

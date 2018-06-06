@@ -13,7 +13,7 @@ extension UIStoryboard {
     }
 }
 
-class RecoverWalletViewController: UIViewController {
+final class RecoverWalletViewController: UIViewController {
 
     @IBOutlet private weak var topLabel: UILabel!
     @IBOutlet private weak var textView: UITextView!

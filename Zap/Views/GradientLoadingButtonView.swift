@@ -7,7 +7,7 @@
 
 import UIKit
 
-class GradientLoadingButtonView: UIControl {
+final class GradientLoadingButtonView: UIControl {
     private weak var button: UIButton?
     private weak var activityIndicator: UIActivityIndicatorView?
     

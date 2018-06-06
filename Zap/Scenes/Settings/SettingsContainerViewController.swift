@@ -8,7 +8,7 @@
 import BTCUtil
 import UIKit
 
-class SettingsContainerViewController: UIViewController, ContainerViewController {
+final class SettingsContainerViewController: UIViewController, ContainerViewController {
     @IBOutlet private weak var primaryCurrencyLabel: UILabel!
     @IBOutlet private weak var secondaryCurrencyLabel: UILabel!
     @IBOutlet private weak var exchangeRateLabel: UILabel!

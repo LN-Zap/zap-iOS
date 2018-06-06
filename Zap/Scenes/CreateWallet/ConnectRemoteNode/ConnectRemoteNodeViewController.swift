@@ -17,7 +17,7 @@ extension UIStoryboard {
     }
 }
 
-class ConnectRemoteNodeViewController: UIViewController {
+final class ConnectRemoteNodeViewController: UIViewController {
     
     @IBOutlet private weak var urlLabel: UILabel!
     @IBOutlet private weak var urlTextField: UITextField!

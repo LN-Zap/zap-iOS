@@ -15,7 +15,7 @@ extension UIStoryboard {
     }
 }
 
-class MnemonicWordListViewController: UIViewController {
+final class MnemonicWordListViewController: UIViewController {
 
     @IBOutlet private weak var tableView: UITableView!
     

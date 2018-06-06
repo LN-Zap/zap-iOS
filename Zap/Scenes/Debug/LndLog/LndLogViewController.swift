@@ -7,7 +7,7 @@
 
 import UIKit
 
-class LndLogViewController: UIViewController {
+final class LndLogViewController: UIViewController {
     @IBOutlet private weak var textView: UITextView!
     private var timer: Timer?
     

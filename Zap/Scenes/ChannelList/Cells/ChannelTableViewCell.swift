@@ -8,7 +8,7 @@
 import Bond
 import UIKit
 
-class ChannelTableViewCell: BondTableViewCell {
+final class ChannelTableViewCell: BondTableViewCell {
     
     @IBOutlet private weak var nameLabel: UILabel!
     @IBOutlet private weak var stateLabel: UILabel!

@@ -7,7 +7,7 @@
 
 import UIKit
 
-class SectionHeaderView: UIView {
+final class SectionHeaderView: UIView {
     
     @IBOutlet private weak var backgroundView: UIView! {
         didSet {

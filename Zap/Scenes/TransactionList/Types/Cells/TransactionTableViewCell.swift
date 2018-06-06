@@ -7,7 +7,7 @@
 
 import UIKit
 
-class TransactionTableViewCell: BondTableViewCell {
+final class TransactionTableViewCell: BondTableViewCell {
     
     @IBOutlet private weak var titleLabel: UILabel!
     @IBOutlet private weak var primaryAmountLabel: UILabel!

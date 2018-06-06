@@ -17,7 +17,7 @@ extension UIStoryboard {
     }
 }
 
-class SetupPinViewController: UIViewController {
+final class SetupPinViewController: UIViewController {
 
     @IBOutlet private weak var doneButton: UIButton!
     @IBOutlet private weak var topLabel: UILabel!

@@ -8,7 +8,7 @@
 @testable import BTCUtil
 import XCTest
 
-class BitcoinURITests: XCTestCase {
+final class BitcoinURITests: XCTestCase {
     func testBitcoinURI() {
         XCTAssertEqual(BitcoinURI.from(address: "175tWpb8K1S7NmH4Zx6rewF9WQrcZv245W"), "bitcoin:175tWpb8K1S7NmH4Zx6rewF9WQrcZv245W")
         XCTAssertEqual(BitcoinURI.from(address: "175tWpb8K1S7NmH4Zx6rewF9WQrcZv245W", message: "Luke-Jr"), "bitcoin:175tWpb8K1S7NmH4Zx6rewF9WQrcZv245W?message=Luke-Jr")

@@ -7,7 +7,7 @@
 
 import UIKit
 
-class StatusBarDelegatingNavigationController: UINavigationController {
+final class StatusBarDelegatingNavigationController: UINavigationController {
     override var childViewControllerForStatusBarStyle: UIViewController? {
         return viewControllers.first
     }

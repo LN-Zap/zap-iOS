@@ -9,7 +9,7 @@ import BTCUtil
 import XCTest
 @testable import Zap
 
-class InputNumberFormatterTests: XCTestCase {
+final class InputNumberFormatterTests: XCTestCase {
     
     func testInputs() {
         let data: [(String, BitcoinUnit, String?)] = [

@@ -20,7 +20,7 @@ extension UIStoryboard {
     }
 }
 
-class SelectWalletCreationMethodViewController: UIViewController {
+final class SelectWalletCreationMethodViewController: UIViewController {
     fileprivate var createButtonTapped: (() -> Void)?
     fileprivate var recoverButtonTapped: (() -> Void)?
     fileprivate var connectButtonTapped: (() -> Void)?

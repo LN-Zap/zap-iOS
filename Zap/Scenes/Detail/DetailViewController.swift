@@ -20,7 +20,7 @@ extension UIStoryboard {
     }
 }
 
-class DetailViewController: UIViewController {
+final class DetailViewController: UIViewController {
     @IBOutlet private weak var tableView: UITableView!
     
     var dismissButtonTapped: (() -> Void)?

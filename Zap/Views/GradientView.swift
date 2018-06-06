@@ -7,7 +7,7 @@
 
 import UIKit
 
-class GradientView: UIView {
+final class GradientView: UIView {
     var gradient: [UIColor] = [UIColor.zap.lightMustard, UIColor.zap.peach] {
         didSet {
             updateColors()

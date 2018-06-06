@@ -7,7 +7,7 @@
 
 import UIKit
 
-class ConfirmMnemonicCollectionViewCell: UICollectionViewCell {
+final class ConfirmMnemonicCollectionViewCell: UICollectionViewCell {
     
     @IBOutlet private weak var textField: UITextField!
     @IBOutlet private weak var bottomLineView: UIView!

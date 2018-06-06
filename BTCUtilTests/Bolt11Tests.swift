@@ -8,7 +8,7 @@
 @testable import BTCUtil
 import XCTest
 
-class Bolt11Tests: XCTestCase {
+final class Bolt11Tests: XCTestCase {
     
     func testValidBolt11() {
         let validPayments: [(String, Network)] = [

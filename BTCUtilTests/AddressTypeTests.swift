@@ -8,7 +8,7 @@
 @testable import BTCUtil
 import XCTest
 
-class AddressTypeTests: XCTestCase {
+final class AddressTypeTests: XCTestCase {
     
     func testLightningNode() {
         XCTAssertTrue(AddressType.lightningNode.isValidAddress("039cc950286a8fa99218283d1adc2456e0d5e81be558da77dd6e85ba9a1fff5ad3@34.200.252.146", network: .mainnet))

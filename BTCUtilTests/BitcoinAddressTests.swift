@@ -8,7 +8,7 @@
 @testable import BTCUtil
 import XCTest
 
-class AddressTests: XCTestCase {
+final class AddressTests: XCTestCase {
     func testAddressTypes() {
         let tests: [(String, BitcoinAddress.AddressType)] = [
             ("17VZNX1SN5NtKa8UQFxwQbFeFc3iqRYhem", .pubkeyHash),

@@ -16,7 +16,7 @@ extension UIStoryboard {
     }
 }
 
-class SyncViewController: UIViewController {
+final class SyncViewController: UIViewController {
     @IBOutlet private weak var syncLabel: UILabel!
     @IBOutlet private weak var dateLabel: UILabel!
     @IBOutlet private weak var progressBar: UIProgressView!

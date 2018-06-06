@@ -17,7 +17,7 @@ protocol QRCodeScannerChildDelegate: class {
     func dismissSuccessfully()
 }
 
-class QRCodeScannerViewController: UIViewController, ContainerViewController {
+final class QRCodeScannerViewController: UIViewController, ContainerViewController {
     
     weak var currentViewController: UIViewController?
     // swiftlint:disable:next private_outlet
