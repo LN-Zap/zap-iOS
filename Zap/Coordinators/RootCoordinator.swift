@@ -28,13 +28,8 @@ final class RootCoordinator: NSObject, SetupCoordinatorDelegate, PinCoordinatorD
             presentSetup()
         default:
             if Environment.skipPinFlow || !AuthenticationService.shared.didSetupPin {
-                
-                viewModel = LndConnection.current.viewModel
-                
-                if let viewModel = viewModel {
-                    presentLoading(message: .none)
-                    startWalletUI(with: viewModel)
-                }
+                presentLoading(message: .none)
+                connect()
             } else {
                 presentPin()
             }
@@ -151,7 +146,8 @@ final class RootCoordinator: NSObject, SetupCoordinatorDelegate, PinCoordinatorD
     
     internal func connect() {
         DispatchQueue.main.async {
-            guard let viewModel = LndConnection.current.viewModel else { return }
+            guard let api = LndConnection.current.api else { return }
+            let viewModel = LightningService(api: api)
             self.viewModel = viewModel
             self.startWalletUI(with: viewModel)
         }

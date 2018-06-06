@@ -12,16 +12,15 @@ enum LndConnection {
     case local
     case remote(RemoteNodeConfiguration)
     
-    var viewModel: LightningService? {
+    var api: LightningProtocol? {
         switch self {
         case .none:
             return nil
         case .local:
-            Lnd.start()
-            return LightningService(api: LightningStream())
-        case .remote(let remoteNodeConfiguration):
-            let lndRPCServer = LndRpcServer(configuration: remoteNodeConfiguration)
-            return LightningService(api: LightningRPC(lnd: lndRPCServer))
+            Lnd.start() // start local Lnd
+            return LightningStream()
+        case .remote(let configuration):
+            return LightningRPC(configuration: configuration)
         }
     }
     

@@ -8,11 +8,29 @@
 import BTCUtil
 import Foundation
 
+private extension Lnrpc_LightningServiceClient {
+    convenience init(configuration: RemoteNodeConfiguration) {
+        self.init(address: configuration.url.absoluteString, certificates: configuration.remoteNodeCertificates.certificate, host: nil)
+        self.metadata.add(key: "macaroon", value: configuration.remoteNodeCertificates.macaron.hexString())
+        self.timeout = Double(Int32.max) // otherwise streaming calls stop working after 10 minutes
+    }
+}
+
 final class LightningRPC: LightningProtocol {
     private let rpc: Lnrpc_LightningService
     
-    init(lnd: LndRpcServer) {
-        rpc = lnd.service
+    init(configuration: RemoteNodeConfiguration) {
+        rpc = Lnrpc_LightningServiceClient(configuration: configuration)
+    }
+    
+    func canConnect(callback: @escaping (Bool) -> Void) {
+        do {
+            _ = try rpc.getInfo(Lnrpc_GetInfoRequest()) { response, _ in
+                callback(response != nil)
+            }
+        } catch {
+            callback(false)
+        }
     }
     
     func info(callback: @escaping (Result<Info>) -> Void) {

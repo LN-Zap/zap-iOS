@@ -21,7 +21,7 @@ final class ConnectRemoteNodeViewModel: NSObject {
         }
     }
     
-    private var testServer: LndRpcServer?
+    private var testServer: LightningRPC?
     
     override init() {
         super.init()
@@ -69,8 +69,7 @@ final class ConnectRemoteNodeViewModel: NSObject {
         let remoteNodeConfiguration = RemoteNodeConfiguration(remoteNodeCertificates: certificates, url: url)
         remoteNodeConfiguration.save()
         
-        testServer = LndRpcServer(configuration: remoteNodeConfiguration)
-        
+        testServer = LightningRPC(configuration: remoteNodeConfiguration)
         testServer?.canConnect(callback: callback)
     }
 }
