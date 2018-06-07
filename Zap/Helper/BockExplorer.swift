@@ -9,13 +9,10 @@ import BTCUtil
 import Foundation
 
 enum BlockExplorer {
-    case blockchainInfo
     case blockcypher
     
     var localized: String {
         switch self {
-        case .blockchainInfo:
-            return "blockchain.info"
         case .blockcypher:
             return "blockcypher.com"
         }
@@ -23,9 +20,6 @@ enum BlockExplorer {
     
     func url(network: Network, txid: String) -> URL? {
         switch self {
-        case .blockchainInfo:
-            let networkId = network == .mainnet ? "" : "testnet."
-            return URL(string: "https://\(networkId)blockchain.info/tx/\(txid)")
         case .blockcypher:
             let networkId = network == .mainnet ? "btc" : "btc-testnet"
             return URL(string: "https://live.blockcypher.com/\(networkId)/tx/\(txid)/")
