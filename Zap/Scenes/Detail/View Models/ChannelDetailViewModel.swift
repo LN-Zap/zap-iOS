@@ -45,10 +45,12 @@ final class ChannelDetailViewModel: DetailViewModel {
         
         cells.append(.separator)
 
-        let network = Network.testnet // viewModel?.info.network.value
+        let network = Network.testnet // TODO: viewModel?.info.network.value
         let txid = channel.fundingTransactionId
+        
         if let url = Settings.blockExplorer.url(network: network, txid: txid) {
-            cells.append(.channelActions(DetailChannelActionsTableViewCell.Info(fundingTransactionUrl: url)))
+            let info = DetailTransactionHashTableViewCell.Info(title: "Funding Transaction:", transactionUrl: url, transactionHash: txid)
+            cells.append(.transactionHash(info))
         }
         
         detailCells = MutableObservableArray(cells)

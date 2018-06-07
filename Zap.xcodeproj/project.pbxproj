@@ -130,8 +130,6 @@
 		A0FBCD93206BBD9800800515 /* SatoshiTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0FBCD92206BBD9800800515 /* SatoshiTests.swift */; };
 		AD0D933420C822C300E30C51 /* rpc.pb.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD0D933220C822C300E30C51 /* rpc.pb.swift */; };
 		AD0D933520C822C300E30C51 /* rpc.grpc.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD0D933320C822C300E30C51 /* rpc.grpc.swift */; };
-		AD0D933820C8537F00E30C51 /* DetailChannelActionsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD0D933620C8537F00E30C51 /* DetailChannelActionsTableViewCell.swift */; };
-		AD0D933920C8537F00E30C51 /* DetailChannelActionsTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = AD0D933720C8537F00E30C51 /* DetailChannelActionsTableViewCell.xib */; };
 		AD19F05420AEAD3C008090CB /* TransactionAnnotation.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD19F05320AEAD3C008090CB /* TransactionAnnotation.swift */; };
 		AD19F05720AEAF1B008090CB /* Lens.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD19F05620AEAF1B008090CB /* Lens.swift */; };
 		AD19F05B20AF00B4008090CB /* DetailTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD19F05920AF00B4008090CB /* DetailTableViewCell.swift */; };
@@ -227,6 +225,8 @@
 		ADBB362F2084CA16005662B4 /* MnemonicPageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADBB362E2084CA16005662B4 /* MnemonicPageViewController.swift */; };
 		ADBB36312084CA3B005662B4 /* MnemonicWordListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADBB36302084CA3B005662B4 /* MnemonicWordListViewController.swift */; };
 		ADBB36332084EC4D005662B4 /* MnemonicWordTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADBB36322084EC4D005662B4 /* MnemonicWordTableViewCell.swift */; };
+		ADBCC07220C97572002B6E59 /* DetailTransactionHashTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADBCC07020C97572002B6E59 /* DetailTransactionHashTableViewCell.swift */; };
+		ADBCC07320C97572002B6E59 /* DetailTransactionHashTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = ADBCC07120C97572002B6E59 /* DetailTransactionHashTableViewCell.xib */; };
 		ADC29C0C20A9B0A0008B2DC2 /* LightningInvoice.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADC29C0B20A9B0A0008B2DC2 /* LightningInvoice.swift */; };
 		ADCE01BB207B57ED00CA72E8 /* CreateWallet.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = ADCE01BA207B57ED00CA72E8 /* CreateWallet.storyboard */; };
 		ADCE01BD207B598C00CA72E8 /* SelectWalletCreationMethodViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADCE01BC207B598C00CA72E8 /* SelectWalletCreationMethodViewController.swift */; };
@@ -437,8 +437,6 @@
 		A2EA9EBABE9A17490B3E282A /* Pods-BTCUtil.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BTCUtil.release.xcconfig"; path = "Pods/Target Support Files/Pods-BTCUtil/Pods-BTCUtil.release.xcconfig"; sourceTree = "<group>"; };
 		AD0D933220C822C300E30C51 /* rpc.pb.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = rpc.pb.swift; sourceTree = "<group>"; };
 		AD0D933320C822C300E30C51 /* rpc.grpc.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = rpc.grpc.swift; sourceTree = "<group>"; };
-		AD0D933620C8537F00E30C51 /* DetailChannelActionsTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailChannelActionsTableViewCell.swift; sourceTree = "<group>"; };
-		AD0D933720C8537F00E30C51 /* DetailChannelActionsTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DetailChannelActionsTableViewCell.xib; sourceTree = "<group>"; };
 		AD19F05320AEAD3C008090CB /* TransactionAnnotation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransactionAnnotation.swift; sourceTree = "<group>"; };
 		AD19F05620AEAF1B008090CB /* Lens.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Lens.swift; sourceTree = "<group>"; };
 		AD19F05920AF00B4008090CB /* DetailTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailTableViewCell.swift; sourceTree = "<group>"; };
@@ -534,6 +532,8 @@
 		ADBB362E2084CA16005662B4 /* MnemonicPageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MnemonicPageViewController.swift; sourceTree = "<group>"; };
 		ADBB36302084CA3B005662B4 /* MnemonicWordListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MnemonicWordListViewController.swift; sourceTree = "<group>"; };
 		ADBB36322084EC4D005662B4 /* MnemonicWordTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MnemonicWordTableViewCell.swift; sourceTree = "<group>"; };
+		ADBCC07020C97572002B6E59 /* DetailTransactionHashTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailTransactionHashTableViewCell.swift; sourceTree = "<group>"; };
+		ADBCC07120C97572002B6E59 /* DetailTransactionHashTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DetailTransactionHashTableViewCell.xib; sourceTree = "<group>"; };
 		ADC29C0B20A9B0A0008B2DC2 /* LightningInvoice.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LightningInvoice.swift; sourceTree = "<group>"; };
 		ADCE01BA207B57ED00CA72E8 /* CreateWallet.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = CreateWallet.storyboard; sourceTree = "<group>"; };
 		ADCE01BC207B598C00CA72E8 /* SelectWalletCreationMethodViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectWalletCreationMethodViewController.swift; sourceTree = "<group>"; };
@@ -1097,8 +1097,6 @@
 				AD46845520C6EA02005DEF35 /* DetailBalanceTableViewCell.swift */,
 				AD46845620C6EA02005DEF35 /* DetailBalanceTableViewCell.xib */,
 				AD19F05D20AF01A7008090CB /* DetailCellType.swift */,
-				AD0D933620C8537F00E30C51 /* DetailChannelActionsTableViewCell.swift */,
-				AD0D933720C8537F00E30C51 /* DetailChannelActionsTableViewCell.xib */,
 				AD46846D20C7D83C005DEF35 /* DetailHideTransactionTableViewCell.swift */,
 				AD46846E20C7D83C005DEF35 /* DetailHideTransactionTableViewCell.xib */,
 				AD46845120C6E549005DEF35 /* DetailLegendTableViewCell.swift */,
@@ -1113,6 +1111,8 @@
 				AD19F05A20AF00B4008090CB /* DetailTableViewCell.xib */,
 				AD680A9720B06B840018986B /* DetailTimerTableViewCell.swift */,
 				AD680A9820B06B840018986B /* DetailTimerTableViewCell.xib */,
+				ADBCC07020C97572002B6E59 /* DetailTransactionHashTableViewCell.swift */,
+				ADBCC07120C97572002B6E59 /* DetailTransactionHashTableViewCell.xib */,
 			);
 			path = DetailCell;
 			sourceTree = "<group>";
@@ -1515,7 +1515,6 @@
 				A0A05A0D2013CF960007D1C9 /* LaunchScreen.storyboard in Resources */,
 				A0B91A84202628EF009AD2D3 /* Settings.bundle in Resources */,
 				A0731FE22014A22B00C55E45 /* TransactionTableViewCell.xib in Resources */,
-				AD0D933920C8537F00E30C51 /* DetailChannelActionsTableViewCell.xib in Resources */,
 				A0919154203C27C300FA525A /* Roboto-Bold.ttf in Resources */,
 				AD19F05C20AF00B4008090CB /* DetailTableViewCell.xib in Resources */,
 				AD46847020C7D83C005DEF35 /* DetailHideTransactionTableViewCell.xib in Resources */,
@@ -1551,6 +1550,7 @@
 				AD99C9F92090C2600061C565 /* AmountInputView.xib in Resources */,
 				A024B85120160F93002B8897 /* ChannelTableViewCell.xib in Resources */,
 				ADCE01C6207B71FC00CA72E8 /* Sync.storyboard in Resources */,
+				ADBCC07320C97572002B6E59 /* DetailTransactionHashTableViewCell.xib in Resources */,
 				A01009502015F99F0001EF94 /* ChannelList.storyboard in Resources */,
 				A024B85920161590002B8897 /* Request.storyboard in Resources */,
 			);
@@ -1813,7 +1813,6 @@
 				A01009522015FA2D0001EF94 /* ModalViewController.swift in Sources */,
 				A024B85020160F93002B8897 /* ChannelTableViewCell.swift in Sources */,
 				A0605F8D202C9D8200EA903C /* LineView.swift in Sources */,
-				AD0D933820C8537F00E30C51 /* DetailChannelActionsTableViewCell.swift in Sources */,
 				A0919147203B293000FA525A /* PaperKeySettingsItem.swift in Sources */,
 				ADF79368208E09D00086B2CA /* SetupPinViewModel.swift in Sources */,
 				A0BD44DC206FCAD900BF27A3 /* SignalProtocol.swift in Sources */,
@@ -1829,6 +1828,7 @@
 				A0C2EABE206F8B5B003AE56E /* Localizable.swift in Sources */,
 				A0DDC06E2018C08800AEFF94 /* Section.swift in Sources */,
 				A0F57DBE201E440F003AFA66 /* ChannelListViewModel.swift in Sources */,
+				ADBCC07220C97572002B6E59 /* DetailTransactionHashTableViewCell.swift in Sources */,
 				A0376B6F201CC04400F1FBEF /* Info.swift in Sources */,
 				A0A05A5520148FA80007D1C9 /* Json.swift in Sources */,
 				A0E2690D202CC4E30069E83C /* AuthenticationService.swift in Sources */,

@@ -6,6 +6,7 @@
 //
 
 import Bond
+import BTCUtil
 import Foundation
 
 final class OnChainTransactionDetailViewModel: NSObject, DetailViewModel {
@@ -41,6 +42,11 @@ final class OnChainTransactionDetailViewModel: NSObject, DetailViewModel {
             .dispose(in: reactive.bag)
         cells.append(.memo(DetailMemoTableViewCell.Info(memo: observableMemo, placeholder: onChainTransaction.firstDestinationAddress)))
         
+        let network = Network.testnet // TODO
+        if let url = Settings.blockExplorer.url(network: network, txid: onChainTransaction.id) {
+            let info = DetailTransactionHashTableViewCell.Info(title: "Transaction ID:", transactionUrl: url, transactionHash: onChainTransaction.id)
+            cells.append(.transactionHash(info))
+        }
         cells.append(.hideTransaction)
         
         detailCells.replace(with: cells)
