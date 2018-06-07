@@ -46,8 +46,6 @@ final class LightningInvoiceDetailViewModel: NSObject, DetailViewModel {
             detailCells.append(.info(DetailTableViewCell.Info(title: "Settled Date", data: dateString)))
         }
         
-        detailCells.append(.destructiveAction(DetailDestructiveActionTableViewCell.Info(title: "delete", action: {
-            // TODO: delete action
-        })))        
+        detailCells.append(hideTransactionCell())
     }
 }

@@ -22,6 +22,12 @@ extension DetailViewModel {
         }
         return nil
     }
+    
+    func hideTransactionCell() -> DetailCellType {
+        return .destructiveAction(DetailDestructiveActionTableViewCell.Info(title: "delete", action: {
+            // TODO: delete action
+        }))
+    }
 }
 
 final class DetailViewModelFactory {

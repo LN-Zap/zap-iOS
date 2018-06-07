@@ -44,8 +44,6 @@ final class OnChainTransactionDetailViewModel: NSObject, DetailViewModel {
             detailCells.append(cell)
         }
         
-        detailCells.append(.destructiveAction(DetailDestructiveActionTableViewCell.Info(title: "delete", action: {
-            // TODO: delete action
-        })))
+        detailCells.append(hideTransactionCell())
     }
 }
