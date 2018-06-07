@@ -16,10 +16,6 @@ enum LightningInvoiceState {
 }
 
 final class LightningInvoiceViewModel: NSObject, TransactionViewModel {
-    var detailViewModel: DetailViewModel {
-        return LightningInvoiceDetailViewModel(lightningInvoice: lightningInvoice, annotation: annotation)
-    }
-    
     let icon = Observable<TransactionIcon>(.unsettledInvoice)
     
     var id: String {

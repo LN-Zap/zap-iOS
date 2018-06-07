@@ -17,10 +17,6 @@ private func displayTextForAnnotation(_ annotation: TransactionAnnotation, light
 }
 
 final class LightningPaymentViewModel: NSObject, TransactionViewModel {
-    var detailViewModel: DetailViewModel {
-        return LightningPaymentDetailViewModel(lightningPayment: lightningPayment, annotation: annotation)
-    }
-    
     let icon = Observable<TransactionIcon>(.lightningPayment)
     
     var id: String {

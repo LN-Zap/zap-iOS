@@ -10,7 +10,7 @@ import UIKit
 
 final class MainCoordinator {
     private let rootViewController: RootViewController
-    private let viewModel: LightningService
+    private let lightningService: LightningService
     private let channelListViewModel: ChannelListViewModel
     private let transactionListViewModel: TransactionListViewModel
     
@@ -19,14 +19,14 @@ final class MainCoordinator {
     
     init(rootViewController: RootViewController, viewModel: LightningService) {
         self.rootViewController = rootViewController
-        self.viewModel = viewModel
+        self.lightningService = viewModel
         
         channelListViewModel = ChannelListViewModel(viewModel: viewModel)
         transactionListViewModel = TransactionListViewModel(viewModel: viewModel)
     }
     
     func start() {
-        let viewController = UIStoryboard.instantiateMainViewController(with: viewModel, settingsButtonTapped: presentSettings, sendButtonTapped: presentSend, requestButtonTapped: presentRequest, transactionsButtonTapped: presentTransactions, networkButtonTapped: presentNetwork)
+        let viewController = UIStoryboard.instantiateMainViewController(with: lightningService, settingsButtonTapped: presentSettings, sendButtonTapped: presentSend, requestButtonTapped: presentRequest, transactionsButtonTapped: presentTransactions, networkButtonTapped: presentNetwork)
         self.mainViewController = viewController
         DispatchQueue.main.async {
             self.rootViewController.setContainerContent(viewController)
@@ -35,17 +35,17 @@ final class MainCoordinator {
     }
     
     private func presentSettings() {
-        let viewController = UIStoryboard.instantiateSettingsContainerViewController(with: viewModel)
+        let viewController = UIStoryboard.instantiateSettingsContainerViewController(with: lightningService)
         mainViewController?.present(viewController, animated: true, completion: nil)
     }
     
     private func presentTransactions() {
-        let viewController = UIStoryboard.instantiateTransactionListViewController(with: viewModel, transactionListViewModel: transactionListViewModel, presentTransactionDetail: presentTransactionDetail)
+        let viewController = UIStoryboard.instantiateTransactionListViewController(with: lightningService, transactionListViewModel: transactionListViewModel, presentTransactionDetail: presentTransactionDetail)
         mainViewController?.setContainerContent(viewController)
     }
     
     private func presentNetwork() {
-        let viewController = UIStoryboard.instantiateChannelListViewController(with: viewModel, channelListViewModel: channelListViewModel, presentChannelDetail: presentChannelDetail, addChannelButtonTapped: presentAddChannel)
+        let viewController = UIStoryboard.instantiateChannelListViewController(with: lightningService, channelListViewModel: channelListViewModel, presentChannelDetail: presentChannelDetail, addChannelButtonTapped: presentAddChannel)
         mainViewController?.setContainerContent(viewController)
     }
     
@@ -54,7 +54,7 @@ final class MainCoordinator {
     }
     
     func presentSend(invoice: String?) {
-        let viewController = UIStoryboard.instantiateQRCodeScannerViewController(with: viewModel, strategy: SendQRCodeScannerStrategy())
+        let viewController = UIStoryboard.instantiateQRCodeScannerViewController(with: lightningService, strategy: SendQRCodeScannerStrategy())
         mainViewController?.present(viewController, animated: true) {
             if let invoice = invoice,
                 let qrCodeScannerViewController = viewController.topViewController as? QRCodeScannerViewController {
@@ -64,22 +64,22 @@ final class MainCoordinator {
     }
     
     func presentRequest() {
-        let viewController = UIStoryboard.instantiateRequestViewController(with: viewModel)
+        let viewController = UIStoryboard.instantiateRequestViewController(with: lightningService)
         mainViewController?.present(viewController, animated: true, completion: nil)
     }
     
     private func presentAddChannel() {
-        let viewController = UIStoryboard.instantiateQRCodeScannerViewController(with: viewModel, strategy: OpenChannelQRCodeScannerStrategy())
+        let viewController = UIStoryboard.instantiateQRCodeScannerViewController(with: lightningService, strategy: OpenChannelQRCodeScannerStrategy())
         mainViewController?.present(viewController, animated: true, completion: nil)
     }
     
     private func presentChannelDetail(for channelViewModel: ChannelViewModel) {
-        let detailViewModel = ChannelDetailViewModel(channel: channelViewModel.channel)
+        let detailViewModel = ChannelDetailViewModel(channel: channelViewModel.channel, lightningService: lightningService)
         presentDetail(for: detailViewModel)
     }
     
     private func presentTransactionDetail(for transactionViewModel: TransactionViewModel) {
-        presentDetail(for: transactionViewModel.detailViewModel)
+        presentDetail(for: DetailViewModelFactory.instantiate(from: transactionViewModel, lightningService: lightningService))
     }
     
     private func presentDetail(for detailViewModel: DetailViewModel) {

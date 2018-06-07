@@ -13,25 +13,23 @@ final class OnChainTransactionDetailViewModel: NSObject, DetailViewModel {
     let detailViewControllerTitle = "Transaction Detail"
     let detailCells = MutableObservableArray<DetailCellType>([])
     
-    init(onChainTransaction: OnChainTransaction, annotation: Observable<TransactionAnnotation>) {
+    init(onChainTransaction: OnChainTransaction, annotation: Observable<TransactionAnnotation>, lightningService: LightningService) {
         super.init()
         
-        var cells = [DetailCellType]()
-        
         if let amountString = Settings.primaryCurrency.value.format(satoshis: onChainTransaction.amount) {
-            cells.append(.info(DetailTableViewCell.Info(title: "Amount", data: amountString)))
+            detailCells.append(.info(DetailTableViewCell.Info(title: "Amount", data: amountString)))
         }
         
         let feesString = Settings.primaryCurrency.value.format(satoshis: onChainTransaction.fees) ?? "0"
-        cells.append(.info(DetailTableViewCell.Info(title: "Fees", data: feesString)))
+        detailCells.append(.info(DetailTableViewCell.Info(title: "Fees", data: feesString)))
         
         let dateString = DateFormatter.localizedString(from: onChainTransaction.date, dateStyle: .medium, timeStyle: .short)
-        cells.append(.info(DetailTableViewCell.Info(title: "Date", data: dateString)))
+        detailCells.append(.info(DetailTableViewCell.Info(title: "Date", data: dateString)))
         
-        cells.append(.info(DetailTableViewCell.Info(title: "Address", data: onChainTransaction.firstDestinationAddress)))
+        detailCells.append(.info(DetailTableViewCell.Info(title: "Address", data: onChainTransaction.firstDestinationAddress)))
         
         let confirmationString = onChainTransaction.confirmations > 10 ? "10+" : String(onChainTransaction.confirmations)
-        cells.append(.info(DetailTableViewCell.Info(title: "Confirmations", data: confirmationString)))
+        detailCells.append(.info(DetailTableViewCell.Info(title: "Confirmations", data: confirmationString)))
         
         // TODO: show displayText instead of firstDestinationAddress
         let observableMemo = Observable<String?>(nil)
@@ -40,15 +38,14 @@ final class OnChainTransactionDetailViewModel: NSObject, DetailViewModel {
                 observableMemo.value = $0.customMemo
             }
             .dispose(in: reactive.bag)
-        cells.append(.memo(DetailMemoTableViewCell.Info(memo: observableMemo, placeholder: onChainTransaction.firstDestinationAddress)))
+        detailCells.append(.memo(DetailMemoTableViewCell.Info(memo: observableMemo, placeholder: onChainTransaction.firstDestinationAddress)))
         
-        let network = Network.testnet // TODO
-        if let url = Settings.blockExplorer.url(network: network, txid: onChainTransaction.id) {
-            let info = DetailTransactionHashTableViewCell.Info(title: "Transaction ID:", transactionUrl: url, transactionHash: onChainTransaction.id)
-            cells.append(.transactionHash(info))
+        if let cell = blockExplorerCell(txid: onChainTransaction.id, title: "Transaction ID:", lightningService: lightningService) {
+            detailCells.append(cell)
         }
-        cells.append(.hideTransaction)
         
-        detailCells.replace(with: cells)
+        detailCells.append(.destructiveAction(DetailDestructiveActionTableViewCell.Info(title: "delete", action: {
+            // TODO: delete action
+        })))
     }
 }

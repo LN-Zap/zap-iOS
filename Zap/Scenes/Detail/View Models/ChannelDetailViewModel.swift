@@ -15,50 +15,46 @@ final class ChannelDetailViewModel: DetailViewModel {
     var detailViewControllerTitle = "scene.channel_detail.title".localized
     var detailCells: MutableObservableArray<DetailCellType>
     
-    init(channel: Channel) {
+    init(channel: Channel, lightningService: LightningService) {
         self.channel = channel
         
-        var cells = [DetailCellType]()
+        detailCells = MutableObservableArray([])
+
+        detailCells.append(.info(DetailTableViewCell.Info(title: "remotePubKey:", data: channel.remotePubKey)))
         
-        cells.append(.info(DetailTableViewCell.Info(title: "remotePubKey:", data: channel.remotePubKey)))
+        detailCells.append(.separator)
         
-        cells.append(.separator)
-        
-        cells.append(.balance(DetailBalanceTableViewCell.Info(localBalance: channel.localBalance, remoteBalance: channel.remoteBalance)))
+        detailCells.append(.balance(DetailBalanceTableViewCell.Info(localBalance: channel.localBalance, remoteBalance: channel.remoteBalance)))
         
         if let localBalance = Settings.primaryCurrency.value.format(satoshis: channel.localBalance) {
             let gradient = [UIColor.zap.lightMustard, UIColor.zap.peach]
-            cells.append(.legend(DetailLegendTableViewCell.Info(title: "local Balance:", data: localBalance, gradient: gradient)))
+            detailCells.append(.legend(DetailLegendTableViewCell.Info(title: "local Balance:", data: localBalance, gradient: gradient)))
         }
         
         if let remoteBalance = Settings.primaryCurrency.value.format(satoshis: channel.remoteBalance) {
             let gradient = [UIColor.zap.lightGrey, UIColor.zap.lightGrey]
-            cells.append(.legend(DetailLegendTableViewCell.Info(title: "remote Balance:", data: remoteBalance, gradient: gradient)))
+            detailCells.append(.legend(DetailLegendTableViewCell.Info(title: "remote Balance:", data: remoteBalance, gradient: gradient)))
         }
         
-        cells.append(.separator)
+        detailCells.append(.separator)
         
-        cells.append(.info(DetailTableViewCell.Info(title: "update Count:", data: String(describing: channel.updateCount ?? 0))))
+        detailCells.append(.info(DetailTableViewCell.Info(title: "update Count:", data: String(describing: channel.updateCount ?? 0))))
         
         let blockHeight = channel.blockHeight
-        cells.append(.info(DetailTableViewCell.Info(title: "blockHeight:", data: String(describing: blockHeight))))
+        detailCells.append(.info(DetailTableViewCell.Info(title: "blockHeight:", data: String(describing: blockHeight))))
         
-        cells.append(.separator)
-
-        let network = Network.testnet // TODO: viewModel?.info.network.value
-        let txid = channel.fundingTransactionId
+        detailCells.append(.separator)
         
-        if let url = Settings.blockExplorer.url(network: network, txid: txid) {
-            let info = DetailTransactionHashTableViewCell.Info(title: "Funding Transaction:", transactionUrl: url, transactionHash: txid)
-            cells.append(.transactionHash(info))
+        if let cell = blockExplorerCell(txid: channel.fundingTransactionId, title: "Funding Transaction:", lightningService: lightningService) {
+            detailCells.append(cell)
         }
         
-        detailCells = MutableObservableArray(cells)
+        detailCells.append(.destructiveAction(DetailDestructiveActionTableViewCell.Info(title: "close", action: closeChannel)))
     }
     
     private func closeChannel() {
-        let channelPoint = channel.channelPoint
-        
+//        let channelPoint = channel.channelPoint
+//
 //        viewModel?.channels.close(channelPoint: channelPoint) { [weak self] in
 //            self?.dismiss(animated: true, completion: nil)
 //        }

@@ -12,23 +12,21 @@ final class LightningInvoiceDetailViewModel: NSObject, DetailViewModel {
     let detailViewControllerTitle = "Invoice Detail"
     let detailCells = MutableObservableArray<DetailCellType>([])
     
-    init(lightningInvoice: LightningInvoice, annotation: Observable<TransactionAnnotation>) {
+    init(lightningInvoice: LightningInvoice, annotation: Observable<TransactionAnnotation>, lightningService: LightningService) {
         super.init()
         
-        var cells = [DetailCellType]()
-        
         if lightningInvoice.expiry > Date() {
-            cells.append(.qrCode(lightningInvoice.paymentRequest))
+            detailCells.append(.qrCode(lightningInvoice.paymentRequest))
         }
         
         if let amountString = lightningInvoice.amount > 0 ? Settings.primaryCurrency.value.format(satoshis: lightningInvoice.amount) : "Unspecified" {
-            cells.append(.info(DetailTableViewCell.Info(title: "Amount", data: amountString)))
+            detailCells.append(.info(DetailTableViewCell.Info(title: "Amount", data: amountString)))
         }
         
         let dateString = DateFormatter.localizedString(from: lightningInvoice.date, dateStyle: .medium, timeStyle: .short)
-        cells.append(.info(DetailTableViewCell.Info(title: "Created", data: dateString)))
+        detailCells.append(.info(DetailTableViewCell.Info(title: "Created", data: dateString)))
         
-        cells.append(.info(DetailTableViewCell.Info(title: "Payment Request", data: lightningInvoice.paymentRequest)))
+        detailCells.append(.info(DetailTableViewCell.Info(title: "Payment Request", data: lightningInvoice.paymentRequest)))
         
         let observableMemo = Observable<String?>(nil)
         annotation
@@ -36,20 +34,20 @@ final class LightningInvoiceDetailViewModel: NSObject, DetailViewModel {
                 observableMemo.value = $0.customMemo
             }
             .dispose(in: reactive.bag)
-        cells.append(.memo(DetailMemoTableViewCell.Info(memo: observableMemo, placeholder: lightningInvoice.memo)))
+        detailCells.append(.memo(DetailMemoTableViewCell.Info(memo: observableMemo, placeholder: lightningInvoice.memo)))
         
-        cells.append(.timer(DetailTimerTableViewCell.Info(title: "Expiry", date: lightningInvoice.expiry)))
+        detailCells.append(.timer(DetailTimerTableViewCell.Info(title: "Expiry", date: lightningInvoice.expiry)))
         
         let settledString = lightningInvoice.settled ? "Settled" : "Unsettled"
-        cells.append(.info(DetailTableViewCell.Info(title: "Settled", data: settledString)))
+        detailCells.append(.info(DetailTableViewCell.Info(title: "Settled", data: settledString)))
         
         if let settleDate = lightningInvoice.settleDate {
             let dateString = DateFormatter.localizedString(from: settleDate, dateStyle: .medium, timeStyle: .short)
-            cells.append(.info(DetailTableViewCell.Info(title: "Settled Date", data: dateString)))
+            detailCells.append(.info(DetailTableViewCell.Info(title: "Settled Date", data: dateString)))
         }
         
-        cells.append(.hideTransaction)
-        
-        detailCells.replace(with: cells)
+        detailCells.append(.destructiveAction(DetailDestructiveActionTableViewCell.Info(title: "delete", action: {
+            // TODO: delete action
+        })))        
     }
 }

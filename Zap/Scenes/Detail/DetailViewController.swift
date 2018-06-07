@@ -45,7 +45,7 @@ final class DetailViewController: UIViewController {
         tableView.registerCell(DetailLegendTableViewCell.self)
         tableView.registerCell(DetailBalanceTableViewCell.self)
         tableView.registerCell(DetailSeparatorTableViewCell.self)
-        tableView.registerCell(DetailHideTransactionTableViewCell.self)
+        tableView.registerCell(DetailDestructiveActionTableViewCell.self)
         tableView.registerCell(DetailTransactionHashTableViewCell.self)
 
         tableView.rowHeight = UITableViewAutomaticDimension
@@ -92,17 +92,11 @@ final class DetailViewController: UIViewController {
             return cell
         case .separator:
             return tableView.dequeueCellForIndexPath(indexPath) as DetailSeparatorTableViewCell
-        case .hideTransaction:
-            let cell: DetailHideTransactionTableViewCell = tableView.dequeueCellForIndexPath(indexPath)
-            cell.hideAction = { [weak self] in // TODO:
-                self?.dismiss(animated: true, completion: nil)
-            }
+        case .destructiveAction(let info):
+            let cell: DetailDestructiveActionTableViewCell = tableView.dequeueCellForIndexPath(indexPath)
+            cell.delegate = self
+            cell.info = info
             return cell
-//        case .channelActions(let info):
-//            let cell: DetailChannelActionsTableViewCell = tableView.dequeueCellForIndexPath(indexPath)
-//            cell.delegate = self
-//            cell.info = info
-//            return cell
         case .transactionHash(let info):
             let cell: DetailTransactionHashTableViewCell = tableView.dequeueCellForIndexPath(indexPath)
             cell.delegate = self

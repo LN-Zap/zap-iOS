@@ -10,39 +10,7 @@ import BTCUtil
 import Foundation
 import ReactiveKit
 
-private func amountForAnnotation(_ annotation: TransactionAnnotation, onChainTransaction: OnChainTransaction) -> Satoshi {
-    if let type = annotation.type,
-        case .openChannelTransaction = type {
-        return -onChainTransaction.fees
-    }
-    return onChainTransaction.amount
-}
-
-private func displayTextForAnnotation(_ annotation: TransactionAnnotation, onChainTransaction: OnChainTransaction, aliasStore: ChannelAliasStore) -> String {
-    if let customMemo = annotation.customMemo {
-        return customMemo
-    } else if let type = annotation.type,
-        case .openChannelTransaction(let channelPubKey) = type {
-        let alias = aliasStore.data[channelPubKey] ?? channelPubKey
-        return "Open Channel: \(alias)"
-    }
-    return onChainTransaction.firstDestinationAddress
-}
-
-private func iconForAnnotation(_ annotation: TransactionAnnotation) -> TransactionIcon {
-    if let type = annotation.type,
-        case .openChannelTransaction = type {
-        return .openChannel
-    } else {
-        return .onChain
-    }
-}
-
 final class OnChainTransactionViewModel: NSObject, TransactionViewModel {
-    var detailViewModel: DetailViewModel {
-        return OnChainTransactionDetailViewModel(onChainTransaction: onChainTransaction, annotation: annotation)
-    }
-    
     let icon: Observable<TransactionIcon>
     
     var id: String {
@@ -65,18 +33,46 @@ final class OnChainTransactionViewModel: NSObject, TransactionViewModel {
         self.onChainTransaction = onChainTransaction
         self.aliasStore = aliasStore
         
-        self.icon = Observable(iconForAnnotation(annotation))
-        self.amount = Observable(amountForAnnotation(annotation, onChainTransaction: onChainTransaction))
-        self.displayText = Observable(displayTextForAnnotation(annotation, onChainTransaction: onChainTransaction, aliasStore: aliasStore))
+        self.icon = Observable(OnChainTransactionViewModel.iconForAnnotation(annotation))
+        self.amount = Observable(OnChainTransactionViewModel.amountForAnnotation(annotation, onChainTransaction: onChainTransaction))
+        self.displayText = Observable(OnChainTransactionViewModel.displayTextForAnnotation(annotation, onChainTransaction: onChainTransaction, aliasStore: aliasStore))
         
         super.init()
         
         self.annotation
             .observeNext { [amount, displayText, icon] in
-                amount.value = amountForAnnotation($0, onChainTransaction: onChainTransaction)
-                displayText.value = displayTextForAnnotation($0, onChainTransaction: onChainTransaction, aliasStore: aliasStore)
-                icon.value = iconForAnnotation(annotation)
+                amount.value = OnChainTransactionViewModel.amountForAnnotation($0, onChainTransaction: onChainTransaction)
+                displayText.value = OnChainTransactionViewModel.displayTextForAnnotation($0, onChainTransaction: onChainTransaction, aliasStore: aliasStore)
+                icon.value = OnChainTransactionViewModel.iconForAnnotation(annotation)
             }
             .dispose(in: reactive.bag)
+    }
+    
+    private static func amountForAnnotation(_ annotation: TransactionAnnotation, onChainTransaction: OnChainTransaction) -> Satoshi {
+        if let type = annotation.type,
+            case .openChannelTransaction = type {
+            return -onChainTransaction.fees
+        }
+        return onChainTransaction.amount
+    }
+    
+    private static func displayTextForAnnotation(_ annotation: TransactionAnnotation, onChainTransaction: OnChainTransaction, aliasStore: ChannelAliasStore) -> String {
+        if let customMemo = annotation.customMemo {
+            return customMemo
+        } else if let type = annotation.type,
+            case .openChannelTransaction(let channelPubKey) = type {
+            let alias = aliasStore.data[channelPubKey] ?? channelPubKey
+            return "Open Channel: \(alias)"
+        }
+        return onChainTransaction.firstDestinationAddress
+    }
+    
+    private static func iconForAnnotation(_ annotation: TransactionAnnotation) -> TransactionIcon {
+        if let type = annotation.type,
+            case .openChannelTransaction = type {
+            return .openChannel
+        } else {
+            return .onChain
+        }
     }
 }

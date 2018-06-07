@@ -159,8 +159,8 @@
 		AD46846720C7CEFD005DEF35 /* OnChainTransactionDetailViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD46846620C7CEFD005DEF35 /* OnChainTransactionDetailViewModel.swift */; };
 		AD46846920C7CF30005DEF35 /* LightningPaymentDetailViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD46846820C7CF30005DEF35 /* LightningPaymentDetailViewModel.swift */; };
 		AD46846B20C7CF58005DEF35 /* LightningInvoiceDetailViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD46846A20C7CF58005DEF35 /* LightningInvoiceDetailViewModel.swift */; };
-		AD46846F20C7D83C005DEF35 /* DetailHideTransactionTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD46846D20C7D83C005DEF35 /* DetailHideTransactionTableViewCell.swift */; };
-		AD46847020C7D83C005DEF35 /* DetailHideTransactionTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = AD46846E20C7D83C005DEF35 /* DetailHideTransactionTableViewCell.xib */; };
+		AD46846F20C7D83C005DEF35 /* DetailDestructiveActionTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD46846D20C7D83C005DEF35 /* DetailDestructiveActionTableViewCell.swift */; };
+		AD46847020C7D83C005DEF35 /* DetailDestructiveActionTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = AD46846E20C7D83C005DEF35 /* DetailDestructiveActionTableViewCell.xib */; };
 		AD5FA001207CCB8B000E9493 /* RequestViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD5FA000207CCB8B000E9493 /* RequestViewController.swift */; };
 		AD5FA003207D0D03000E9493 /* BitcoinURI.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD5FA002207D0D02000E9493 /* BitcoinURI.swift */; };
 		AD5FA005207D0E70000E9493 /* BitcoinURITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD5FA004207D0E70000E9493 /* BitcoinURITests.swift */; };
@@ -466,8 +466,8 @@
 		AD46846620C7CEFD005DEF35 /* OnChainTransactionDetailViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnChainTransactionDetailViewModel.swift; sourceTree = "<group>"; };
 		AD46846820C7CF30005DEF35 /* LightningPaymentDetailViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LightningPaymentDetailViewModel.swift; sourceTree = "<group>"; };
 		AD46846A20C7CF58005DEF35 /* LightningInvoiceDetailViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LightningInvoiceDetailViewModel.swift; sourceTree = "<group>"; };
-		AD46846D20C7D83C005DEF35 /* DetailHideTransactionTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailHideTransactionTableViewCell.swift; sourceTree = "<group>"; };
-		AD46846E20C7D83C005DEF35 /* DetailHideTransactionTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DetailHideTransactionTableViewCell.xib; sourceTree = "<group>"; };
+		AD46846D20C7D83C005DEF35 /* DetailDestructiveActionTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailDestructiveActionTableViewCell.swift; sourceTree = "<group>"; };
+		AD46846E20C7D83C005DEF35 /* DetailDestructiveActionTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DetailDestructiveActionTableViewCell.xib; sourceTree = "<group>"; };
 		AD5FA000207CCB8B000E9493 /* RequestViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RequestViewController.swift; sourceTree = "<group>"; };
 		AD5FA002207D0D02000E9493 /* BitcoinURI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BitcoinURI.swift; sourceTree = "<group>"; };
 		AD5FA004207D0E70000E9493 /* BitcoinURITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BitcoinURITests.swift; sourceTree = "<group>"; };
@@ -1097,8 +1097,8 @@
 				AD46845520C6EA02005DEF35 /* DetailBalanceTableViewCell.swift */,
 				AD46845620C6EA02005DEF35 /* DetailBalanceTableViewCell.xib */,
 				AD19F05D20AF01A7008090CB /* DetailCellType.swift */,
-				AD46846D20C7D83C005DEF35 /* DetailHideTransactionTableViewCell.swift */,
-				AD46846E20C7D83C005DEF35 /* DetailHideTransactionTableViewCell.xib */,
+				AD46846D20C7D83C005DEF35 /* DetailDestructiveActionTableViewCell.swift */,
+				AD46846E20C7D83C005DEF35 /* DetailDestructiveActionTableViewCell.xib */,
 				AD46845120C6E549005DEF35 /* DetailLegendTableViewCell.swift */,
 				AD46845220C6E549005DEF35 /* DetailLegendTableViewCell.xib */,
 				AD19F06120AF1AB8008090CB /* DetailMemoTableViewCell.swift */,
@@ -1517,7 +1517,7 @@
 				A0731FE22014A22B00C55E45 /* TransactionTableViewCell.xib in Resources */,
 				A0919154203C27C300FA525A /* Roboto-Bold.ttf in Resources */,
 				AD19F05C20AF00B4008090CB /* DetailTableViewCell.xib in Resources */,
-				AD46847020C7D83C005DEF35 /* DetailHideTransactionTableViewCell.xib in Resources */,
+				AD46847020C7D83C005DEF35 /* DetailDestructiveActionTableViewCell.xib in Resources */,
 				A0A05A2D2013EDFB0007D1C9 /* QRCodeDetail.storyboard in Resources */,
 				A070D968202B5163000A8274 /* Localizable.strings in Resources */,
 				AD680A9A20B06B840018986B /* DetailTimerTableViewCell.xib in Resources */,
@@ -1722,7 +1722,7 @@
 				A0919149203B294900FA525A /* TouchIDSettingItem.swift in Sources */,
 				A0605F86202C962900EA903C /* SectionHeaderView.swift in Sources */,
 				ADBB36312084CA3B005662B4 /* MnemonicWordListViewController.swift in Sources */,
-				AD46846F20C7D83C005DEF35 /* DetailHideTransactionTableViewCell.swift in Sources */,
+				AD46846F20C7D83C005DEF35 /* DetailDestructiveActionTableViewCell.swift in Sources */,
 				AD19F05720AEAF1B008090CB /* Lens.swift in Sources */,
 				A0A96B84201748C200788808 /* UILabel.swift in Sources */,
 				AD9E244520A377190014F9FA /* UIApplication.swift in Sources */,

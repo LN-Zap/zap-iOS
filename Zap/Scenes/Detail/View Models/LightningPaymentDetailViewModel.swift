@@ -12,21 +12,19 @@ final class LightningPaymentDetailViewModel: NSObject, DetailViewModel {
     let detailViewControllerTitle = "Payment Detail"
     let detailCells = MutableObservableArray<DetailCellType>([])
     
-    init(lightningPayment: LightningPayment, annotation: Observable<TransactionAnnotation>) {
+    init(lightningPayment: LightningPayment, annotation: Observable<TransactionAnnotation>, lightningService: LightningService) {
         super.init()
         
-        var cells = [DetailCellType]()
-
         if let amountString = Settings.primaryCurrency.value.format(satoshis: lightningPayment.amount) {
-            cells.append(.info(DetailTableViewCell.Info(title: "Amount", data: amountString)))
+            detailCells.append(.info(DetailTableViewCell.Info(title: "Amount", data: amountString)))
         }
         
         if let feeString = Settings.primaryCurrency.value.format(satoshis: lightningPayment.fees) {
-            cells.append(.info(DetailTableViewCell.Info(title: "Fee", data: feeString)))
+            detailCells.append(.info(DetailTableViewCell.Info(title: "Fee", data: feeString)))
         }
         
         let dateString = DateFormatter.localizedString(from: lightningPayment.date, dateStyle: .medium, timeStyle: .short)
-        cells.append(.info(DetailTableViewCell.Info(title: "Date", data: dateString)))
+        detailCells.append(.info(DetailTableViewCell.Info(title: "Date", data: dateString)))
         
         let observableMemo = Observable<String?>(nil)
         annotation
@@ -34,10 +32,10 @@ final class LightningPaymentDetailViewModel: NSObject, DetailViewModel {
                 observableMemo.value = $0.customMemo
             }
             .dispose(in: reactive.bag)
-        cells.append(.memo(DetailMemoTableViewCell.Info(memo: observableMemo, placeholder: lightningPayment.paymentHash)))
+        detailCells.append(.memo(DetailMemoTableViewCell.Info(memo: observableMemo, placeholder: lightningPayment.paymentHash)))
         
-        cells.append(.hideTransaction)
-        
-        detailCells.replace(with: cells)
+        detailCells.append(.destructiveAction(DetailDestructiveActionTableViewCell.Info(title: "delete", action: {
+            // TODO: delete action
+        })))
     }
 }
