@@ -31,7 +31,17 @@ final class TransactionService {
     }
     
     func newAddress(callback: @escaping (Result<String>) -> Void) {
-        api.newAddress(type: Settings.onChainRequestAddressType.value, callback: callback)
+        let type = Settings.onChainRequestAddressType.value
+        api.newAddress(type: type) {
+            callback($0.map {
+                switch type {
+                case .witnessPubkeyHash:
+                    return $0.uppercased()
+                case .nestedPubkeyHash:
+                    return $0
+                }
+            })
+        }
     }
     
     func decodePaymentRequest(_ paymentRequest: String, callback: @escaping (Result<PaymentRequest>) -> Void) {
