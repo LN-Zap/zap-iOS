@@ -18,7 +18,6 @@ final class LightningService: NSObject {
     let channelService: ChannelService
     let transactionService: TransactionService
     
-//    var channelTransactionAnnotationUpdater: ChannelTransactionAnnotationUpdater?
     
     init(api: LightningProtocol) {
         self.api = api
@@ -27,10 +26,6 @@ final class LightningService: NSObject {
         balanceService = BalanceService(api: api)
         channelService = ChannelService(api: api)
         transactionService = TransactionService(api: api, balanceService: balanceService, channelService: channelService)
-            
-//        super.init()
-
-//        channelTransactionAnnotationUpdater = ChannelTransactionAnnotationUpdater(viewModel: self, transactionStore: transactionService)
     }
     
     func start() {

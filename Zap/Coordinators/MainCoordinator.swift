@@ -14,7 +14,8 @@ final class MainCoordinator {
     private let lightningService: LightningService
     private let channelListViewModel: ChannelListViewModel
     private let transactionListViewModel: TransactionListViewModel
-
+    private let channelTransactionAnnotationUpdater: ChannelTransactionAnnotationUpdater
+    
     private weak var mainViewController: MainViewController?
     private weak var detailViewController: UINavigationController?
     
@@ -25,6 +26,8 @@ final class MainCoordinator {
         let aliasStore = ChannelAliasStore(channelService: lightningService.channelService)
         channelListViewModel = ChannelListViewModel(channelService: lightningService.channelService, aliasStore: aliasStore)
         transactionListViewModel = TransactionListViewModel(transactionService: lightningService.transactionService, aliasStore: aliasStore)
+        
+        channelTransactionAnnotationUpdater = ChannelTransactionAnnotationUpdater(channelService: lightningService.channelService, transactionListViewModel: transactionListViewModel)
     }
     
     func start() {

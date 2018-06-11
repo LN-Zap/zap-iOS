@@ -37,6 +37,11 @@ final class TransactionListViewModel: NSObject {
         updateSections(for: transactionService.transactions.value)
     }
     
+    func updateAnnotation(_ annotation: TransactionAnnotation, for transactionViewModel: TransactionViewModel) {
+        transactionStore.updateAnnotation(annotation, for: transactionViewModel.transaction)
+        transactionViewModel.annotation.value = annotation
+    }
+    
     // MARK: - Private
     
     private func updateSections(for transactions: [Transaction]) {
