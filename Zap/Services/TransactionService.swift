@@ -55,8 +55,7 @@ final class TransactionService {
                 //                if let memo = paymentRequest.memo {
                 //                    transactionService.setMemo(memo, forPaymentHash: paymentRequest.paymentHash)
                 //                }
-                //                self?.updateTransactions()
-                
+                self?.update()
                 self?.balanceService.update()
                 self?.channelService.update()
             }
