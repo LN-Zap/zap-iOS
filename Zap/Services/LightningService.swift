@@ -18,7 +18,6 @@ final class LightningService: NSObject {
     let channelService: ChannelService
     let transactionService: TransactionService
     
-    
     init(api: LightningProtocol) {
         self.api = api
         

@@ -16,6 +16,7 @@ enum SendLightningInvoiceError {
 }
 
 final class SendLightningInvoiceViewModel {
+    private let transactionAnnotationStore: TransactionAnnotationStore
     private let transactionService: TransactionService
     
     let memo = Observable<String?>(nil)
@@ -25,7 +26,8 @@ final class SendLightningInvoiceViewModel {
     
     private var paymentRequest: PaymentRequest?
     
-    init(transactionService: TransactionService, lightningInvoice: String) {
+    init(transactionAnnotationStore: TransactionAnnotationStore, transactionService: TransactionService, lightningInvoice: String) {
+        self.transactionAnnotationStore = transactionAnnotationStore
         self.transactionService = transactionService
         
         var lightningInvoice = lightningInvoice
@@ -43,6 +45,7 @@ final class SendLightningInvoiceViewModel {
     
     func send(callback: @escaping (Bool) -> Void) {
         guard let paymentRequest = paymentRequest else { return }
+        transactionAnnotationStore.udpateMemo(paymentRequest.memo, forPaymentHash: paymentRequest.paymentHash)
         transactionService.sendPayment(paymentRequest, callback: callback)
     }
     

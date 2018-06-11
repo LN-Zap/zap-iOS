@@ -59,7 +59,8 @@ final class MainCoordinator {
     }
     
     func presentSend(invoice: String?) {
-        let viewController = UIStoryboard.instantiateQRCodeScannerViewController(with: lightningService, strategy: SendQRCodeScannerStrategy())
+        let strategy = SendQRCodeScannerStrategy(transactionAnnotationStore: transactionListViewModel.transactionAnnotationStore)
+        let viewController = UIStoryboard.instantiateQRCodeScannerViewController(with: lightningService, strategy: strategy)
         mainViewController?.present(viewController, animated: true) {
             if let invoice = invoice,
                 let qrCodeScannerViewController = viewController.topViewController as? QRCodeScannerViewController {

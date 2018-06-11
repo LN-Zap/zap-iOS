@@ -12,7 +12,7 @@ import ReactiveKit
 final class TransactionListViewModel: NSObject {
     private let transactionService: TransactionService
     private let aliasStore: ChannelAliasStore
-    private let transactionStore = TransactionAnnotationStore()
+    let transactionAnnotationStore = TransactionAnnotationStore()
     
     let sections: MutableObservable2DArray<String, TransactionViewModel>
     
@@ -33,12 +33,12 @@ final class TransactionListViewModel: NSObject {
     }
     
     func hideTransaction(_ transactionViewModel: TransactionViewModel) {
-        transactionStore.hideTransaction(transactionViewModel.transaction)
+        transactionAnnotationStore.hideTransaction(transactionViewModel.transaction)
         updateSections(for: transactionService.transactions.value)
     }
     
     func updateAnnotation(_ annotation: TransactionAnnotation, for transactionViewModel: TransactionViewModel) {
-        transactionStore.updateAnnotation(annotation, for: transactionViewModel.transaction)
+        transactionAnnotationStore.updateAnnotation(annotation, for: transactionViewModel.transaction)
         transactionViewModel.annotation.value = annotation
     }
     
@@ -46,7 +46,7 @@ final class TransactionListViewModel: NSObject {
     
     private func updateSections(for transactions: [Transaction]) {
         let transactionViewModels = transactions.map {
-            TransactionViewModel.instance(for: $0, transactionStore: transactionStore, aliasStore: aliasStore)
+            TransactionViewModel.instance(for: $0, transactionStore: transactionAnnotationStore, aliasStore: aliasStore)
         }
         
         let result = bondSections(transactionViewModels: transactionViewModels)

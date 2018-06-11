@@ -51,10 +51,6 @@ final class TransactionService {
     func sendPayment(_ paymentRequest: PaymentRequest, callback: @escaping (Bool) -> Void) {
         api.sendPayment(paymentRequest) { [weak self] result in
             if result.value != nil {
-                // TODO: insert memo somewhere else
-                //                if let memo = paymentRequest.memo {
-                //                    transactionService.setMemo(memo, forPaymentHash: paymentRequest.paymentHash)
-                //                }
                 self?.update()
                 self?.balanceService.update()
                 self?.channelService.update()

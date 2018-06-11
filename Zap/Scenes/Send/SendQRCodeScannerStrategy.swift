@@ -11,11 +11,16 @@ import Foundation
 struct SendQRCodeScannerStrategy: QRCodeScannerStrategy {
     let title = "scene.deposit.send".localized
     let addressTypes: [AddressType] = [.bitcoinAddress, .lightningInvoice]
+    let transactionAnnotationStore: TransactionAnnotationStore
+    
+    init(transactionAnnotationStore: TransactionAnnotationStore) {
+        self.transactionAnnotationStore = transactionAnnotationStore
+    }
     
     func viewControllerForAddressType(_ type: AddressType, address: String, viewModel: LightningService) -> UIViewController? {
         switch type {
         case .lightningInvoice:
-            let sendLightningInvoiceViewModel = SendLightningInvoiceViewModel(transactionService: viewModel.transactionService, lightningInvoice: address)
+            let sendLightningInvoiceViewModel = SendLightningInvoiceViewModel(transactionAnnotationStore: transactionAnnotationStore, transactionService: viewModel.transactionService, lightningInvoice: address)
             return UIStoryboard.instantiateSendLightningInvoiceViewController(with: sendLightningInvoiceViewModel)
         case .bitcoinAddress:
             let sendOnChainViewModel = SendOnChainViewModel(viewModel: viewModel, address: address)
