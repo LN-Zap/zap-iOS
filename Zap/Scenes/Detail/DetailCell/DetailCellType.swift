@@ -28,7 +28,7 @@ enum DetailCellType {
     }
     
     static func hideTransactionCell(transaction: Transaction, transactionListViewModel: TransactionListViewModel) -> DetailCellType {
-        return .destructiveAction(DetailDestructiveActionTableViewCell.Info(title: "delete", action: {
+        return .destructiveAction(DetailDestructiveActionTableViewCell.Info(title: "Archive", action: {
             transactionListViewModel.hideTransaction(transaction)
         }))
     }

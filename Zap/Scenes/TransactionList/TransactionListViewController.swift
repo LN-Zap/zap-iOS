@@ -119,16 +119,15 @@ extension TransactionListViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         fatalError("This will never be called.")
     }
-        
-    func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
-        return true
-    }
     
-    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
-        if editingStyle == .delete,
-            let transactionViewModel = transactionListViewModel?.sections.item(at: indexPath) {
-            transactionListViewModel?.hideTransaction(transactionViewModel.transaction)
+    func tableView(_ tableView: UITableView, editActionsForRowAt indexPath: IndexPath) -> [UITableViewRowAction]? {
+        let archiveAction = UITableViewRowAction(style: .destructive, title: "Archive") { [weak self] _, indexPath in
+            guard let transactionListViewModel = self?.transactionListViewModel else { return }
+            let transactionViewModel = transactionListViewModel.sections.item(at: indexPath)
+            transactionListViewModel.hideTransaction(transactionViewModel.transaction)
         }
+        archiveAction.backgroundColor = UIColor.zap.tomato
+        return [archiveAction]
     }
 }
 
