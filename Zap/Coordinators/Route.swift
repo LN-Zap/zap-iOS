@@ -14,7 +14,6 @@ enum Route {
     case request
     
     init?(url: URL) {
-        guard AddressType.lightningInvoice.isValidAddress(url.absoluteString, network: .testnet) else { return nil } // TODO: use real network
         self = .send(url.absoluteString)
     }
     
