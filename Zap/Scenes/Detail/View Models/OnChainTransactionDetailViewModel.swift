@@ -13,7 +13,7 @@ final class OnChainTransactionDetailViewModel: NSObject, DetailViewModel {
     let detailViewControllerTitle = "Transaction Detail"
     let detailCells = MutableObservableArray<DetailCellType>([])
     
-    init(onChainTransaction: OnChainTransaction, annotation: Observable<TransactionAnnotation>, lightningService: LightningService) {
+    init(onChainTransaction: OnChainTransaction, annotation: Observable<TransactionAnnotation>, network: Network, transactionListViewModel: TransactionListViewModel) {
         super.init()
         
         if let amountString = Settings.primaryCurrency.value.format(satoshis: onChainTransaction.amount) {
@@ -40,10 +40,10 @@ final class OnChainTransactionDetailViewModel: NSObject, DetailViewModel {
             .dispose(in: reactive.bag)
         detailCells.append(.memo(DetailMemoTableViewCell.Info(memo: observableMemo, placeholder: onChainTransaction.firstDestinationAddress)))
         
-        if let cell = blockExplorerCell(txid: onChainTransaction.id, title: "Transaction ID:", lightningService: lightningService) {
+        if let cell = DetailCellType.blockExplorerCell(txid: onChainTransaction.id, title: "Transaction ID:", network: network) {
             detailCells.append(cell)
         }
         
-        detailCells.append(hideTransactionCell())
+        detailCells.append(DetailCellType.hideTransactionCell(transaction: onChainTransaction, transactionListViewModel: transactionListViewModel))
     }
 }

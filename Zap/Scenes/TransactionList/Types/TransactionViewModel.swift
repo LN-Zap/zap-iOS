@@ -64,9 +64,7 @@ class TransactionViewModel: NSObject {
         return id == (object as? TransactionViewModel)?.id
     }
 
-    static func instance(for transaction: Transaction, transactionStore: TransactionAnnotationStore, aliasStore: ChannelAliasStore) -> TransactionViewModel {
-        let annotation = transactionStore.annotation(for: transaction)
-        
+    static func instance(for transaction: Transaction, annotation: TransactionAnnotation, aliasStore: ChannelAliasStore) -> TransactionViewModel {
         if let transaction = transaction as? OnChainTransaction {
             return OnChainTransactionViewModel(onChainTransaction: transaction, annotation: annotation, aliasStore: aliasStore)
         } else if let transaction = transaction as? LightningPayment {

@@ -45,7 +45,7 @@ final class ChannelDetailViewModel: DetailViewModel {
         
         detailCells.append(.separator)
         
-        if let cell = blockExplorerCell(txid: channel.fundingTransactionId, title: "Funding Transaction:", lightningService: lightningService) {
+        if let cell = DetailCellType.blockExplorerCell(txid: channel.fundingTransactionId, title: "Funding Transaction:", network: lightningService.infoService.network.value) {
             detailCells.append(cell)
         }
         
@@ -53,6 +53,7 @@ final class ChannelDetailViewModel: DetailViewModel {
     }
     
     private func closeChannel() {
+        // TODO: close Channel
 //        let channelPoint = channel.channelPoint
 //
 //        viewModel?.channels.close(channelPoint: channelPoint) { [weak self] in

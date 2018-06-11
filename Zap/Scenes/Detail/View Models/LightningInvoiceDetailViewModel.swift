@@ -12,7 +12,7 @@ final class LightningInvoiceDetailViewModel: NSObject, DetailViewModel {
     let detailViewControllerTitle = "Invoice Detail"
     let detailCells = MutableObservableArray<DetailCellType>([])
     
-    init(lightningInvoice: LightningInvoice, annotation: Observable<TransactionAnnotation>, lightningService: LightningService) {
+    init(lightningInvoice: LightningInvoice, annotation: Observable<TransactionAnnotation>, transactionListViewModel: TransactionListViewModel) {
         super.init()
         
         if lightningInvoice.expiry > Date() {
@@ -46,6 +46,6 @@ final class LightningInvoiceDetailViewModel: NSObject, DetailViewModel {
             detailCells.append(.info(DetailTableViewCell.Info(title: "Settled Date", data: dateString)))
         }
         
-        detailCells.append(hideTransactionCell())
+        detailCells.append(DetailCellType.hideTransactionCell(transaction: lightningInvoice, transactionListViewModel: transactionListViewModel))
     }
 }

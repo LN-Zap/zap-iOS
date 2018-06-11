@@ -32,8 +32,8 @@ final class TransactionListViewModel: NSObject {
         transactionService.update()
     }
     
-    func hideTransaction(_ transactionViewModel: TransactionViewModel) {
-        transactionAnnotationStore.hideTransaction(transactionViewModel.transaction)
+    func hideTransaction(_ transaction: Transaction) {
+        transactionAnnotationStore.hideTransaction(transaction)
         updateSections(for: transactionService.transactions.value)
     }
     
@@ -45,8 +45,13 @@ final class TransactionListViewModel: NSObject {
     // MARK: - Private
     
     private func updateSections(for transactions: [Transaction]) {
-        let transactionViewModels = transactions.map {
-            TransactionViewModel.instance(for: $0, transactionStore: transactionAnnotationStore, aliasStore: aliasStore)
+        let transactionViewModels = transactions.compactMap { transaction -> TransactionViewModel? in
+            let annotation = transactionAnnotationStore.annotation(for: transaction)
+            if annotation.isHidden {
+                return nil
+            } else {
+                return TransactionViewModel.instance(for: transaction, annotation: annotation, aliasStore: aliasStore)
+            }
         }
         
         let result = bondSections(transactionViewModels: transactionViewModels)

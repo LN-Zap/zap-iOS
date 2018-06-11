@@ -85,7 +85,8 @@ final class MainCoordinator {
     }
     
     private func presentTransactionDetail(for transactionViewModel: TransactionViewModel) {
-        presentDetail(for: DetailViewModelFactory.instantiate(from: transactionViewModel, lightningService: lightningService))
+        let network = lightningService.infoService.network.value
+        presentDetail(for: DetailViewModelFactory.instantiate(from: transactionViewModel, transactionListViewModel: transactionListViewModel, network: network))
     }
     
     private func presentDetail(for detailViewModel: DetailViewModel) {

@@ -127,7 +127,7 @@ extension TransactionListViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
         if editingStyle == .delete,
             let transactionViewModel = transactionListViewModel?.sections.item(at: indexPath) {
-            transactionListViewModel?.hideTransaction(transactionViewModel)
+            transactionListViewModel?.hideTransaction(transactionViewModel.transaction)
         }
     }
 }

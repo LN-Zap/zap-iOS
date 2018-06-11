@@ -6,6 +6,7 @@
 //
 
 import Bond
+import BTCUtil
 import Foundation
 
 protocol DetailViewModel {
@@ -13,32 +14,15 @@ protocol DetailViewModel {
     var detailCells: MutableObservableArray<DetailCellType> { get }
 }
 
-extension DetailViewModel {
-    func blockExplorerCell(txid: String, title: String, lightningService: LightningService) -> DetailCellType? {
-        let network = lightningService.infoService.network.value
-        if let url = Settings.blockExplorer.url(network: network, txid: txid) {
-            let info = DetailTransactionHashTableViewCell.Info(title: title, transactionUrl: url, transactionHash: txid)
-            return .transactionHash(info)
-        }
-        return nil
-    }
-    
-    func hideTransactionCell() -> DetailCellType {
-        return .destructiveAction(DetailDestructiveActionTableViewCell.Info(title: "delete", action: {
-            // TODO: delete action
-        }))
-    }
-}
-
 final class DetailViewModelFactory {
-    static func instantiate(from transactionViewModel: TransactionViewModel, lightningService: LightningService) -> DetailViewModel {
+    static func instantiate(from transactionViewModel: TransactionViewModel, transactionListViewModel: TransactionListViewModel, network: Network) -> DetailViewModel {
         
         if let transactionViewModel = transactionViewModel as? OnChainTransactionViewModel {
-            return OnChainTransactionDetailViewModel(onChainTransaction: transactionViewModel.onChainTransaction, annotation: transactionViewModel.annotation, lightningService: lightningService)
+            return OnChainTransactionDetailViewModel(onChainTransaction: transactionViewModel.onChainTransaction, annotation: transactionViewModel.annotation, network: network, transactionListViewModel: transactionListViewModel)
         } else if let transactionViewModel = transactionViewModel as? LightningPaymentViewModel {
-            return LightningPaymentDetailViewModel(lightningPayment: transactionViewModel.lightningPayment, annotation: transactionViewModel.annotation, lightningService: lightningService)
+            return LightningPaymentDetailViewModel(lightningPayment: transactionViewModel.lightningPayment, annotation: transactionViewModel.annotation, transactionListViewModel: transactionListViewModel)
         } else if let transactionViewModel = transactionViewModel as? LightningInvoiceViewModel {
-            return LightningInvoiceDetailViewModel(lightningInvoice: transactionViewModel.lightningInvoice, annotation: transactionViewModel.annotation, lightningService: lightningService)
+            return LightningInvoiceDetailViewModel(lightningInvoice: transactionViewModel.lightningInvoice, annotation: transactionViewModel.annotation, transactionListViewModel: transactionListViewModel)
         }
         fatalError("TransactionViewModel not supported")
     }
