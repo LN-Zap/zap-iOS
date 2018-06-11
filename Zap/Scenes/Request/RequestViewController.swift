@@ -7,6 +7,16 @@
 
 import UIKit
 
+extension UIStoryboard {
+    static func instantiateRequestViewController(with requestViewModel: RequestViewModel) -> UINavigationController {
+        let navigationController = Storyboard.request.initial(viewController: UINavigationController.self)
+        if let viewController = navigationController.topViewController as? RequestViewController {
+            viewController.requestViewModel = requestViewModel
+        }
+        return navigationController
+    }
+}
+
 final class RequestViewController: UIViewController {
     @IBOutlet private weak var segmentedControlBackgroundView: UIView!
     @IBOutlet private weak var lightningButton: UIButton!
@@ -21,13 +31,7 @@ final class RequestViewController: UIViewController {
         return .default
     }
     
-    var viewModel: LightningService? {
-        didSet {
-            guard let viewModel = viewModel else { return }
-            self.requestViewModel = RequestViewModel(viewModel: viewModel)
-        }
-    }
-    private var requestViewModel: RequestViewModel?
+    fileprivate var requestViewModel: RequestViewModel?
     
     override func viewDidLoad() {
         super.viewDidLoad()

@@ -12,7 +12,6 @@ extension UIStoryboard {
     static func instantiateTransactionListViewController(with viewModel: LightningService, transactionListViewModel: TransactionListViewModel, presentTransactionDetail: @escaping (TransactionViewModel) -> Void) -> TransactionListViewController {
         let viewController = Storyboard.transactionList.initial(viewController: TransactionListViewController.self)
         
-        viewController.viewModel = viewModel
         viewController.transactionListViewModel = transactionListViewModel
         viewController.presentTransactionDetail = presentTransactionDetail
         
@@ -42,7 +41,6 @@ final class TransactionListViewController: UIViewController {
     @IBOutlet private weak var filterButton: UIButton!
     
     fileprivate var presentTransactionDetail: ((TransactionViewModel) -> Void)?
-    fileprivate var viewModel: LightningService?
     fileprivate var transactionListViewModel: TransactionListViewModel?
     
     override func viewDidLoad() {
@@ -86,7 +84,7 @@ final class TransactionListViewController: UIViewController {
     
     @objc
     func refresh(sender: UIRefreshControl) {
-        viewModel?.updateTransactions()
+        transactionListViewModel?.refresh()
         sender.endRefreshing()
     }
 }
@@ -129,7 +127,7 @@ extension TransactionListViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
         if editingStyle == .delete,
             let transactionViewModel = transactionListViewModel?.sections.item(at: indexPath) {
-            viewModel?.hideTransaction(transactionViewModel)
+            transactionListViewModel?.hideTransaction(transactionViewModel)
         }
     }
 }

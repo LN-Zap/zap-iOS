@@ -24,6 +24,6 @@ final class SendOnChainViewModel {
     }
 
     func send(completion: @escaping () -> Void) {
-        viewModel.sendCoins(address: address, amount: amount, completion: completion)
+        viewModel.transactionService.sendCoins(address: address, amount: amount, completion: completion)
     }
 }

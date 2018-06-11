@@ -16,32 +16,16 @@ private func displayTextForAnnotation(_ annotation: TransactionAnnotation, light
     return lightningPayment.paymentHash
 }
 
-final class LightningPaymentViewModel: NSObject, TransactionViewModel {
-    let icon = Observable<TransactionIcon>(.lightningPayment)
-    
-    var id: String {
-        return lightningPayment.id
-    }
-    
-    var date: Date {
-        return lightningPayment.date
-    }
-    
-    let annotation: Observable<TransactionAnnotation>
+final class LightningPaymentViewModel: TransactionViewModel {
     let lightningPayment: LightningPayment
     
-    let displayText: Observable<String>
-    let amount: Observable<Satoshi?>
-    
     init(lightningPayment: LightningPayment, annotation: TransactionAnnotation) {
-        self.annotation = Observable(annotation)
         self.lightningPayment = lightningPayment
+
+        let displayTextString = displayTextForAnnotation(annotation, lightningPayment: lightningPayment)
         
-        displayText = Observable(displayTextForAnnotation(annotation, lightningPayment: lightningPayment))
-        amount = Observable(lightningPayment.amount)
-        
-        super.init()
-        
+        super.init(transaction: lightningPayment, annotation: annotation, displayText: displayTextString, amount: lightningPayment.amount, icon: .lightningPayment)
+                        
         self.annotation
             .observeNext { [displayText] in
                 displayText.value = displayTextForAnnotation($0, lightningPayment: lightningPayment)

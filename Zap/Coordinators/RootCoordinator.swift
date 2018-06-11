@@ -57,7 +57,7 @@ final class RootCoordinator: NSObject, SetupCoordinatorDelegate, PinCoordinatorD
     
     private func presentMain() {
         guard let viewModel = viewModel else { return }
-        let mainCoordinator = MainCoordinator(rootViewController: rootViewController, viewModel: viewModel)
+        let mainCoordinator = MainCoordinator(rootViewController: rootViewController, lightningService: viewModel)
         currentCoordinator = mainCoordinator
         mainCoordinator.start()
                 
@@ -148,6 +148,7 @@ final class RootCoordinator: NSObject, SetupCoordinatorDelegate, PinCoordinatorD
         DispatchQueue.main.async {
             guard let api = LndConnection.current.api else { return }
             let viewModel = LightningService(api: api)
+            viewModel.start()
             self.viewModel = viewModel
             self.startWalletUI(with: viewModel)
         }

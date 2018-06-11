@@ -16,7 +16,7 @@ enum SendLightningInvoiceError {
 }
 
 final class SendLightningInvoiceViewModel {
-    private let viewModel: LightningService
+    private let transactionService: TransactionService
     
     let memo = Observable<String?>(nil)
     let satoshis = Observable<Satoshi>(0)
@@ -25,8 +25,8 @@ final class SendLightningInvoiceViewModel {
     
     private var paymentRequest: PaymentRequest?
     
-    init(viewModel: LightningService, lightningInvoice: String) {
-        self.viewModel = viewModel
+    init(transactionService: TransactionService, lightningInvoice: String) {
+        self.transactionService = transactionService
         
         var lightningInvoice = lightningInvoice
         
@@ -35,7 +35,7 @@ final class SendLightningInvoiceViewModel {
             lightningInvoice = String(lightningInvoice.dropFirst(prefix.count))
         }
         
-        viewModel.decodePaymentRequest(lightningInvoice) { [weak self] result in
+        transactionService.decodePaymentRequest(lightningInvoice) { [weak self] result in
             guard let paymentRequest = result.value else { return }
             self?.updatePaymentRequest(paymentRequest)
         }
@@ -43,7 +43,7 @@ final class SendLightningInvoiceViewModel {
     
     func send(callback: @escaping (Bool) -> Void) {
         guard let paymentRequest = paymentRequest else { return }
-        viewModel.sendPayment(paymentRequest, callback: callback)
+        transactionService.sendPayment(paymentRequest, callback: callback)
     }
     
     private func updatePaymentRequest(_ paymentRequest: PaymentRequest) {
@@ -54,10 +54,12 @@ final class SendLightningInvoiceViewModel {
         }
         satoshis.value = paymentRequest.amount
         destination.value = paymentRequest.destination
-        
-        if viewModel.transactionService.transactions.value.contains(where: { $0.id == paymentRequest.paymentHash }) {
-            invoiceError.value = .duplicate
-        } else if paymentRequest.expiryDate < Date() {
+      
+        // TODO: fix duplicate check
+//        if viewModel.transactionService.transactions.value.contains(where: { $0.id == paymentRequest.paymentHash }) {
+//            invoiceError.value = .duplicate
+//        } else
+        if paymentRequest.expiryDate < Date() {
             invoiceError.value = .expired(paymentRequest.expiryDate)
         } else {
             invoiceError.value = .none

@@ -30,14 +30,6 @@ extension UIStoryboard {
         }
         return navigationController
     }
-    
-    static func instantiateRequestViewController(with viewModel: LightningService) -> UINavigationController {
-        let navigationController = Storyboard.request.initial(viewController: UINavigationController.self)
-        if let viewController = navigationController.topViewController as? RequestViewController {
-            viewController.viewModel = viewModel
-        }
-        return navigationController
-    }
 }
 
 enum Storyboard: String {

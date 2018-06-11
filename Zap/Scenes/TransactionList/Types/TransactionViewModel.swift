@@ -38,11 +38,43 @@ enum TransactionIcon {
     }
 }
 
-protocol TransactionViewModel {
-    var id: String { get }
-    var annotation: Observable<TransactionAnnotation> { get }
-    var date: Date { get }
-    var displayText: Observable<String> { get }
-    var amount: Observable<Satoshi?> { get }
-    var icon: Observable<TransactionIcon> { get }
+class TransactionViewModel: NSObject {
+    var id: String {
+        return transaction.id
+    }
+    var date: Date {
+        return transaction.date
+    }
+    
+    let annotation: Observable<TransactionAnnotation>
+    let displayText: Observable<String>
+    let amount: Observable<Satoshi?>
+    let icon: Observable<TransactionIcon>
+    let transaction: Transaction
+    
+    init(transaction: Transaction, annotation: TransactionAnnotation, displayText: String, amount: Satoshi?, icon: TransactionIcon) {
+        self.annotation = Observable(annotation)
+        self.icon = Observable(icon)
+        self.displayText = Observable(displayText)
+        self.amount = Observable(amount)
+        self.transaction = transaction
+    }
+    
+    override func isEqual(_ object: Any?) -> Bool {
+        return id == (object as? TransactionViewModel)?.id
+    }
+
+    static func instance(for transaction: Transaction, transactionStore: TransactionAnnotationStore, aliasStore: ChannelAliasStore) -> TransactionViewModel {
+        let annotation = transactionStore.annotation(for: transaction)
+        
+        if let transaction = transaction as? OnChainTransaction {
+            return OnChainTransactionViewModel(onChainTransaction: transaction, annotation: annotation, aliasStore: aliasStore)
+        } else if let transaction = transaction as? LightningPayment {
+            return LightningPaymentViewModel(lightningPayment: transaction, annotation: annotation)
+        } else if let transaction = transaction as? LightningInvoice {
+            return LightningInvoiceViewModel(lightningInvoice: transaction, annotation: annotation)
+        } else {
+            fatalError("type not implemented")
+        }
+    }
 }

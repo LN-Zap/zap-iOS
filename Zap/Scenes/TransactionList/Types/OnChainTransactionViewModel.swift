@@ -10,34 +10,19 @@ import BTCUtil
 import Foundation
 import ReactiveKit
 
-final class OnChainTransactionViewModel: NSObject, TransactionViewModel {
-    let icon: Observable<TransactionIcon>
-    
-    var id: String {
-        return onChainTransaction.id
-    }
-    
-    var date: Date {
-        return onChainTransaction.date
-    }
-    
-    let annotation: Observable<TransactionAnnotation>
+final class OnChainTransactionViewModel: TransactionViewModel {
     let onChainTransaction: OnChainTransaction
     let aliasStore: ChannelAliasStore
     
-    let displayText: Observable<String>
-    let amount: Observable<Satoshi?>
-    
     init(onChainTransaction: OnChainTransaction, annotation: TransactionAnnotation, aliasStore: ChannelAliasStore) {
-        self.annotation = Observable(annotation)
         self.onChainTransaction = onChainTransaction
         self.aliasStore = aliasStore
         
-        self.icon = Observable(OnChainTransactionViewModel.iconForAnnotation(annotation))
-        self.amount = Observable(OnChainTransactionViewModel.amountForAnnotation(annotation, onChainTransaction: onChainTransaction))
-        self.displayText = Observable(OnChainTransactionViewModel.displayTextForAnnotation(annotation, onChainTransaction: onChainTransaction, aliasStore: aliasStore))
+        let initialIcon = OnChainTransactionViewModel.iconForAnnotation(annotation)
+        let initialAmount = OnChainTransactionViewModel.amountForAnnotation(annotation, onChainTransaction: onChainTransaction)
+        let displayTextString = OnChainTransactionViewModel.displayTextForAnnotation(annotation, onChainTransaction: onChainTransaction, aliasStore: aliasStore)
         
-        super.init()
+        super.init(transaction: onChainTransaction, annotation: annotation, displayText: displayTextString, amount: initialAmount, icon: initialIcon)
         
         self.annotation
             .observeNext { [amount, displayText, icon] in

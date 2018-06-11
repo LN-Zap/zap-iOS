@@ -10,22 +10,46 @@ import Foundation
 import ReactiveKit
 
 final class TransactionListViewModel: NSObject {
+    private let transactionService: TransactionService
+    private let aliasStore: ChannelAliasStore
+    private let transactionStore = TransactionAnnotationStore()
+    
     let sections: MutableObservable2DArray<String, TransactionViewModel>
     
-    init(viewModel: LightningService) {
+    init(transactionService: TransactionService, aliasStore: ChannelAliasStore) {
+        self.transactionService = transactionService
+        self.aliasStore = aliasStore
         sections = MutableObservable2DArray()
+        
         super.init()
         
-        viewModel.transactionService.transactions
-            .observeNext { [weak self] transactions in
-                guard let result = self?.bondSections(transactions: transactions) else { return }
-                let array = Observable2DArray(result)
-
-                DispatchQueue.main.async {
-                    self?.sections.replace(with: array)//, performDiff: true)
-                }
-            }
+        transactionService.transactions
+            .observeNext(with: updateSections)
             .dispose(in: reactive.bag)
+    }
+    
+    func refresh() {
+        transactionService.update()
+    }
+    
+    func hideTransaction(_ transactionViewModel: TransactionViewModel) {
+        transactionStore.hideTransaction(transactionViewModel.transaction)
+        updateSections(for: transactionService.transactions.value)
+    }
+    
+    // MARK: - Private
+    
+    private func updateSections(for transactions: [Transaction]) {
+        let transactionViewModels = transactions.map {
+            TransactionViewModel.instance(for: $0, transactionStore: transactionStore, aliasStore: aliasStore)
+        }
+        
+        let result = bondSections(transactionViewModels: transactionViewModels)
+        let array = Observable2DArray(result)
+        
+        DispatchQueue.main.async {
+            self.sections.replace(with: array, performDiff: true)
+        }
     }
 
     private func dateWithoutTime(from date: Date) -> Date {
@@ -33,8 +57,8 @@ final class TransactionListViewModel: NSObject {
         return Calendar.current.date(from: components) ?? date
     }
 
-    private func sortedSections(transactions: [TransactionViewModel]) -> [(Date, [TransactionViewModel])] {
-        let grouped = transactions.grouped { transaction -> Date in
+    private func sortedSections(transactionViewModels: [TransactionViewModel]) -> [(Date, [TransactionViewModel])] {
+        let grouped = transactionViewModels.grouped { transaction -> Date in
             self.dateWithoutTime(from: transaction.date)
         }
 
@@ -42,8 +66,8 @@ final class TransactionListViewModel: NSObject {
             .sorted { $0.0 > $1.0 }
     }
 
-    private func bondSections(transactions: [TransactionViewModel]) -> [Observable2DArraySection<String, TransactionViewModel>] {
-        let sortedSections = self.sortedSections(transactions: transactions)
+    private func bondSections(transactionViewModels: [TransactionViewModel]) -> [Observable2DArraySection<String, TransactionViewModel>] {
+        let sortedSections = self.sortedSections(transactionViewModels: transactionViewModels)
 
         return sortedSections.compactMap {
             let sortedItems = $0.1.sorted { $0.date > $1.date }

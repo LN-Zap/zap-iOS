@@ -10,19 +10,21 @@ import UIKit
 
 final class MainCoordinator {
     private let rootViewController: RootViewController
+    
     private let lightningService: LightningService
     private let channelListViewModel: ChannelListViewModel
     private let transactionListViewModel: TransactionListViewModel
-    
+
     private weak var mainViewController: MainViewController?
     private weak var detailViewController: UINavigationController?
     
-    init(rootViewController: RootViewController, viewModel: LightningService) {
+    init(rootViewController: RootViewController, lightningService: LightningService) {
         self.rootViewController = rootViewController
-        self.lightningService = viewModel
+        self.lightningService = lightningService
         
-        channelListViewModel = ChannelListViewModel(viewModel: viewModel)
-        transactionListViewModel = TransactionListViewModel(viewModel: viewModel)
+        let aliasStore = ChannelAliasStore(channelService: lightningService.channelService)
+        channelListViewModel = ChannelListViewModel(channelService: lightningService.channelService, aliasStore: aliasStore)
+        transactionListViewModel = TransactionListViewModel(transactionService: lightningService.transactionService, aliasStore: aliasStore)
     }
     
     func start() {
@@ -64,7 +66,7 @@ final class MainCoordinator {
     }
     
     func presentRequest() {
-        let viewController = UIStoryboard.instantiateRequestViewController(with: lightningService)
+        let viewController = UIStoryboard.instantiateRequestViewController(with: RequestViewModel(transactionService: lightningService.transactionService))
         mainViewController?.present(viewController, animated: true, completion: nil)
     }
     
@@ -96,5 +98,6 @@ final class MainCoordinator {
     
     private func dismissDetailViewController() {
         detailViewController?.dismiss(animated: true, completion: nil)
+        detailViewController = nil
     }
 }

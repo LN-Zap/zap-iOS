@@ -15,7 +15,7 @@ enum RequestMethod {
 }
 
 final class RequestViewModel {
-    private let viewModel: LightningService
+    private let transactionService: TransactionService
     private var cachedOnChainAddress: String?
 
     var requestMethod = RequestMethod.lightning
@@ -24,8 +24,8 @@ final class RequestViewModel {
         
     var amount: Satoshi = 0
     
-    init(viewModel: LightningService) {
-        self.viewModel = viewModel
+    init(transactionService: TransactionService) {
+        self.transactionService = transactionService
     }
     
     func create(callback: @escaping (QRCodeDetailViewModel) -> Void) {
@@ -38,7 +38,7 @@ final class RequestViewModel {
     }
     
     private func createLightning(callback: @escaping (QRCodeDetailViewModel) -> Void) {
-        viewModel.addInvoice(amount: amount, memo: memo) { result in
+        transactionService.addInvoice(amount: amount, memo: memo) { result in
             guard let invoice = result.value else { return }
             let viewModel = LightningRequestQRCodeViewModel(invoice: invoice)
             callback(viewModel)
@@ -50,7 +50,7 @@ final class RequestViewModel {
             let viewModel = onChainRequestViewModel(for: address) {
             callback(viewModel)
         } else {
-            viewModel.newAddress { [weak self] result in
+            transactionService.newAddress { [weak self] result in
                 guard
                     let address = result.value,
                     let viewModel = self?.onChainRequestViewModel(for: address)

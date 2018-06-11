@@ -201,7 +201,7 @@
 		AD9E244120A3680C0014F9FA /* Debug.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AD9E244020A3680C0014F9FA /* Debug.storyboard */; };
 		AD9E244320A375130014F9FA /* DebugButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD9E244220A375130014F9FA /* DebugButton.swift */; };
 		AD9E244520A377190014F9FA /* UIApplication.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD9E244420A377190014F9FA /* UIApplication.swift */; };
-		ADA6D2C120AB217B009398A5 /* TransactionStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADA6D2C020AB217B009398A5 /* TransactionStore.swift */; };
+		ADA6D2C120AB217B009398A5 /* TransactionAnnotationStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADA6D2C020AB217B009398A5 /* TransactionAnnotationStore.swift */; };
 		ADA6D2C320AC1BD2009398A5 /* InfoService.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADA6D2C220AC1BD2009398A5 /* InfoService.swift */; };
 		ADA6D2C520AC1DDE009398A5 /* BalanceService.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADA6D2C420AC1DDE009398A5 /* BalanceService.swift */; };
 		ADA6D2C720AC2406009398A5 /* ChannelService.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADA6D2C620AC2406009398A5 /* ChannelService.swift */; };
@@ -227,6 +227,7 @@
 		ADBB36332084EC4D005662B4 /* MnemonicWordTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADBB36322084EC4D005662B4 /* MnemonicWordTableViewCell.swift */; };
 		ADBCC07220C97572002B6E59 /* DetailTransactionHashTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADBCC07020C97572002B6E59 /* DetailTransactionHashTableViewCell.swift */; };
 		ADBCC07320C97572002B6E59 /* DetailTransactionHashTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = ADBCC07120C97572002B6E59 /* DetailTransactionHashTableViewCell.xib */; };
+		ADBCC07520CC04A4002B6E59 /* TransactionService.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADBCC07420CC04A4002B6E59 /* TransactionService.swift */; };
 		ADC29C0C20A9B0A0008B2DC2 /* LightningInvoice.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADC29C0B20A9B0A0008B2DC2 /* LightningInvoice.swift */; };
 		ADCE01BB207B57ED00CA72E8 /* CreateWallet.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = ADCE01BA207B57ED00CA72E8 /* CreateWallet.storyboard */; };
 		ADCE01BD207B598C00CA72E8 /* SelectWalletCreationMethodViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADCE01BC207B598C00CA72E8 /* SelectWalletCreationMethodViewController.swift */; };
@@ -508,7 +509,7 @@
 		AD9E244020A3680C0014F9FA /* Debug.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Debug.storyboard; sourceTree = "<group>"; };
 		AD9E244220A375130014F9FA /* DebugButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DebugButton.swift; sourceTree = "<group>"; };
 		AD9E244420A377190014F9FA /* UIApplication.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIApplication.swift; sourceTree = "<group>"; };
-		ADA6D2C020AB217B009398A5 /* TransactionStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransactionStore.swift; sourceTree = "<group>"; };
+		ADA6D2C020AB217B009398A5 /* TransactionAnnotationStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransactionAnnotationStore.swift; sourceTree = "<group>"; };
 		ADA6D2C220AC1BD2009398A5 /* InfoService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfoService.swift; sourceTree = "<group>"; };
 		ADA6D2C420AC1DDE009398A5 /* BalanceService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BalanceService.swift; sourceTree = "<group>"; };
 		ADA6D2C620AC2406009398A5 /* ChannelService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChannelService.swift; sourceTree = "<group>"; };
@@ -534,6 +535,7 @@
 		ADBB36322084EC4D005662B4 /* MnemonicWordTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MnemonicWordTableViewCell.swift; sourceTree = "<group>"; };
 		ADBCC07020C97572002B6E59 /* DetailTransactionHashTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailTransactionHashTableViewCell.swift; sourceTree = "<group>"; };
 		ADBCC07120C97572002B6E59 /* DetailTransactionHashTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DetailTransactionHashTableViewCell.xib; sourceTree = "<group>"; };
+		ADBCC07420CC04A4002B6E59 /* TransactionService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransactionService.swift; sourceTree = "<group>"; };
 		ADC29C0B20A9B0A0008B2DC2 /* LightningInvoice.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LightningInvoice.swift; sourceTree = "<group>"; };
 		ADCE01BA207B57ED00CA72E8 /* CreateWallet.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = CreateWallet.storyboard; sourceTree = "<group>"; };
 		ADCE01BC207B598C00CA72E8 /* SelectWalletCreationMethodViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectWalletCreationMethodViewController.swift; sourceTree = "<group>"; };
@@ -883,6 +885,7 @@
 				ADA6D2C620AC2406009398A5 /* ChannelService.swift */,
 				ADA6D2C220AC1BD2009398A5 /* InfoService.swift */,
 				A07C1035203DE3E6006C7FE8 /* LightningService.swift */,
+				ADBCC07420CC04A4002B6E59 /* TransactionService.swift */,
 				A0D3C9792060070D0015C5D7 /* WalletService.swift */,
 			);
 			path = Services;
@@ -1241,7 +1244,7 @@
 				AD77466B2078EE5600EC596B /* ChannelTransactionAnnotationUpdater.swift */,
 				AD1EBA0020B2FD9D001FF67E /* Persistable.swift */,
 				AD19F05320AEAD3C008090CB /* TransactionAnnotation.swift */,
-				ADA6D2C020AB217B009398A5 /* TransactionStore.swift */,
+				ADA6D2C020AB217B009398A5 /* TransactionAnnotationStore.swift */,
 			);
 			path = Persistence;
 			sourceTree = "<group>";
@@ -1821,7 +1824,8 @@
 				ADEDBB9220C2FC3200B71F17 /* PinSetupCoordinator.swift in Sources */,
 				ADF7936A208E5FEC0086B2CA /* ConfirmMnemonicCollectionViewCell.swift in Sources */,
 				ADA6D2CA20AC2F1D009398A5 /* TransactionViewModel.swift in Sources */,
-				ADA6D2C120AB217B009398A5 /* TransactionStore.swift in Sources */,
+				ADA6D2C120AB217B009398A5 /* TransactionAnnotationStore.swift in Sources */,
+				ADBCC07520CC04A4002B6E59 /* TransactionService.swift in Sources */,
 				AD2EDBFA20C02616002E6EE5 /* UIStoryboard.swift in Sources */,
 				AD38EB32207DFB59007DF14D /* SegmentButton.swift in Sources */,
 				ADF79376208F88DE0086B2CA /* RecoverWalletViewController.swift in Sources */,

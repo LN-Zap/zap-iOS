@@ -7,33 +7,31 @@
 
 import Foundation
 
+// TODO: remove channel Service reference
 final class ChannelAliasStore: Persistable {
     typealias Value = String
 
     var fileName = "channelAliases"
     var data = [String: String]()
-    private let api: LightningProtocol
+    private let channelService: ChannelService
     
-    init(api: LightningProtocol) {
-        self.api = api
+    init(channelService: ChannelService) {
+        self.channelService = channelService
         
         loadPersistable()
     }
     
-    func alias(for remotePubkey: String, callback: @escaping (String) -> Void) {
+    func alias(for remotePubkey: String, callback: @escaping (String?) -> Void) {
         if let alias = data[remotePubkey] {
             callback(alias)
         } else {
-            api.nodeInfo(pubKey: remotePubkey) { [weak self] result in
-                guard
-                    let nodeInfo = result.value,
-                    let alias = nodeInfo.node.alias,
-                    alias != ""
-                    else { return }
-                callback(alias)
+            channelService.alias(for: remotePubkey) { [weak self] in
+                callback($0)
                 
-                self?.data[remotePubkey] = alias
-                self?.savePersistable()
+                if let alias = $0 {
+                    self?.data[remotePubkey] = alias
+                    self?.savePersistable()
+                }
             }
         }
     }

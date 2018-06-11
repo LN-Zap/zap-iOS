@@ -61,4 +61,18 @@ final class ChannelService {
             completion()
         }
     }
+    
+    func alias(for remotePubkey: String, callback: @escaping (String?) -> Void) {
+        api.nodeInfo(pubKey: remotePubkey) { result in
+            if
+                let nodeInfo = result.value,
+                let alias = nodeInfo.node.alias,
+                alias != "" {
+                callback(alias)
+            } else {
+                callback(nil)
+            }
+        }
+        
+    }
 }

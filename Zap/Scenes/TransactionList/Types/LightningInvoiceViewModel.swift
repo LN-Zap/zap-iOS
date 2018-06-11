@@ -15,39 +15,25 @@ enum LightningInvoiceState {
     case expired
 }
 
-final class LightningInvoiceViewModel: NSObject, TransactionViewModel {
-    let icon = Observable<TransactionIcon>(.unsettledInvoice)
-    
-    var id: String {
-        return lightningInvoice.id
-    }
-    
-    var date: Date {
-        return lightningInvoice.date
-    }
-    
-    let annotation: Observable<TransactionAnnotation>
+final class LightningInvoiceViewModel: TransactionViewModel {
     let lightningInvoice: LightningInvoice
-    
-    let displayText: Observable<String>
-    let amount: Observable<Satoshi?>
-    
     let state: Observable<LightningInvoiceState>
     
     init(lightningInvoice: LightningInvoice, annotation: TransactionAnnotation) {
-        self.annotation = Observable(annotation)
         self.lightningInvoice = lightningInvoice
         
+        let displayTextString: String
         if !lightningInvoice.memo.isEmpty {
-            displayText = Observable(lightningInvoice.memo)
+            displayTextString = lightningInvoice.memo
         } else {
-            displayText = Observable(lightningInvoice.paymentRequest)
+            displayTextString = lightningInvoice.paymentRequest
         }
         
+        let amount: Satoshi?
         if lightningInvoice.amount > 0 {
-            amount = Observable(lightningInvoice.amount)
+            amount = lightningInvoice.amount
         } else {
-            amount = Observable(nil)
+            amount = nil
         }
         
         if lightningInvoice.settled {
@@ -58,6 +44,6 @@ final class LightningInvoiceViewModel: NSObject, TransactionViewModel {
             state = Observable(.unsettled)
         }
         
-        super.init()
+        super.init(transaction: lightningInvoice, annotation: annotation, displayText: displayTextString, amount: amount, icon: .unsettledInvoice)
     }
 }
