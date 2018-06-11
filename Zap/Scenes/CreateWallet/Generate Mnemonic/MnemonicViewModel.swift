@@ -37,12 +37,12 @@ struct Aezeed {
 
 final class MnemonicViewModel {
     private let aezeed = Aezeed()
-    private let viewModel: LightningService
+    private let lightningService: LightningService
     
     let wordList: Observable<[String]>
     
     var confirmMnemonicViewModel: ConfirmMnemonicViewModel {
-        return ConfirmMnemonicViewModel(aezeed: aezeed, viewModel: viewModel)
+        return ConfirmMnemonicViewModel(aezeed: aezeed, lightningService: lightningService)
     }
     
     var pageWords: [[MnemonicWord]] {
@@ -65,8 +65,8 @@ final class MnemonicViewModel {
         }
     }
     
-    init(viewModel: LightningService) {
-        self.viewModel = viewModel
+    init(lightningService: LightningService) {
+        self.lightningService = lightningService
         wordList = Observable<[String]>(aezeed.wordList)
     }
 }

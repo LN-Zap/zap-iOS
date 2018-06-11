@@ -16,24 +16,24 @@ final class TransactionTableViewCell: BondTableViewCell {
     @IBOutlet private weak var iconImageView: UIImageView!
     @IBOutlet private weak var positiveAmountBackgroundView: UIView!
     
-    var transaction: TransactionViewModel? {
+    var transactionViewModel: TransactionViewModel? {
         didSet {
-            guard let transaction = transaction else { return }
+            guard let transactionViewModel = transactionViewModel else { return }
             
-            let isPositive = transaction.amount
+            let isPositive = transactionViewModel.amount
                 .map { $0.flatMap { $0 > 0 } ?? false }
             
             [isPositive.map({ !$0 }).bind(to: positiveAmountBackgroundView.reactive.isHidden),
              isPositive.map({ $0 ? UIColor.zap.nastyGreen : UIColor.zap.black }).bind(to: primaryAmountLabel.reactive.textColor),
-             transaction.icon.map({ $0.image }).bind(to: iconImageView.reactive.image),
-             transaction.displayText.bind(to: titleLabel.reactive.text),
-             transaction.amount.bind(to: primaryAmountLabel.reactive.text, currency: Settings.primaryCurrency),
-             transaction.amount
+             transactionViewModel.icon.map({ $0.image }).bind(to: iconImageView.reactive.image),
+             transactionViewModel.displayText.bind(to: titleLabel.reactive.text),
+             transactionViewModel.amount.bind(to: primaryAmountLabel.reactive.text, currency: Settings.primaryCurrency),
+             transactionViewModel.amount
                 .map { $0?.absoluteValue() }
                 .bind(to: secondaryAmountLabel.reactive.text, currency: Settings.secondaryCurrency)]
                 .dispose(in: onReuseBag)
     
-            timeLabel.text = DateFormatter.localizedString(from: transaction.date, dateStyle: .none, timeStyle: .short)
+            timeLabel.text = DateFormatter.localizedString(from: transactionViewModel.date, dateStyle: .none, timeStyle: .short)
         }
     }
     

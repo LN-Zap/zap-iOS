@@ -45,7 +45,7 @@ final class MainCoordinator {
     }
     
     private func presentTransactions() {
-        let viewController = UIStoryboard.instantiateTransactionListViewController(with: lightningService, transactionListViewModel: transactionListViewModel, presentTransactionDetail: presentTransactionDetail)
+        let viewController = UIStoryboard.instantiateTransactionListViewController(transactionListViewModel: transactionListViewModel, presentTransactionDetail: presentTransactionDetail)
         mainViewController?.setContainerContent(viewController)
     }
     

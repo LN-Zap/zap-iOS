@@ -22,7 +22,7 @@ final class QRCodeScannerView: UIView {
         setup()
     }
     
-    var viewModel: LightningService?
+    var lightningService: LightningService?
     
     private func setup() {
         let deviceDiscoverySession = AVCaptureDevice.DiscoverySession(deviceTypes: [.builtInDualCamera], mediaType: AVMediaType.video, position: .back)
@@ -68,7 +68,7 @@ extension QRCodeScannerView: AVCaptureMetadataOutputObjectsDelegate {
             UISelectionFeedbackGenerator().selectionChanged() // TODO: remove duplicate code
             captureSession.stopRunning()
         } else if let addressTypes = addressTypes,
-            let network = viewModel?.infoService.network.value {
+            let network = lightningService?.infoService.network.value {
             for addressType in addressTypes where addressType.isValidAddress(code, network: network) {
                 handler?(addressType, code)
                 UISelectionFeedbackGenerator().selectionChanged()

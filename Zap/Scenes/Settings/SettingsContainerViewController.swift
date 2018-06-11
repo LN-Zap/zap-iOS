@@ -17,7 +17,7 @@ final class SettingsContainerViewController: UIViewController, ContainerViewCont
     @IBOutlet weak var container: UIView?
     weak var currentViewController: UIViewController?
 
-    var viewModel: LightningService?
+    var lightningService: LightningService?
     
     override var preferredStatusBarStyle: UIStatusBarStyle {
         return .lightContent
@@ -31,11 +31,11 @@ final class SettingsContainerViewController: UIViewController, ContainerViewCont
         navigationController?.navigationBar.isTranslucent = false
         navigationController?.navigationBar.barTintColor = UIColor.zap.charcoalGrey
         
-        viewModel?.balanceService.total
+        lightningService?.balanceService.total
             .bind(to: primaryCurrencyLabel.reactive.text, currency: Settings.primaryCurrency)
             .dispose(in: reactive.bag)
         
-        viewModel?.balanceService.total
+        lightningService?.balanceService.total
             .bind(to: secondaryCurrencyLabel.reactive.text, currency: Settings.secondaryCurrency)
             .dispose(in: reactive.bag)
         

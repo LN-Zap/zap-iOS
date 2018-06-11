@@ -8,11 +8,11 @@
 import UIKit
 
 extension UIStoryboard {
-    static func instantiateSettingsContainerViewController(with viewModel: LightningService) -> UINavigationController {
+    static func instantiateSettingsContainerViewController(with lightningService: LightningService) -> UINavigationController {
         let viewController = Storyboard.settings.initial(viewController: UINavigationController.self)
         
         if let settingsContainerViewController = viewController.topViewController as? SettingsContainerViewController {
-            settingsContainerViewController.viewModel = viewModel
+            settingsContainerViewController.lightningService = lightningService
         }
 
         return viewController
@@ -22,10 +22,10 @@ extension UIStoryboard {
         return Storyboard.debug.initial(viewController: UINavigationController.self)
     }
     
-    static func instantiateQRCodeScannerViewController(with viewModel: LightningService, strategy: QRCodeScannerStrategy) -> UINavigationController {
+    static func instantiateQRCodeScannerViewController(with lightningService: LightningService, strategy: QRCodeScannerStrategy) -> UINavigationController {
         let navigationController = Storyboard.qrCodeScanner.initial(viewController: UINavigationController.self)
         if let viewController = navigationController.topViewController as? QRCodeScannerViewController {
-            viewController.viewModel = viewModel
+            viewController.lightningService = lightningService
             viewController.strategy = strategy
         }
         return navigationController

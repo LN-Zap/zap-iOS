@@ -11,9 +11,9 @@ import Foundation
 
 extension UIStoryboard {
     // swiftlint:disable:next function_parameter_count
-    static func instantiateMainViewController(with viewModel: LightningService, settingsButtonTapped: @escaping () -> Void, sendButtonTapped: @escaping () -> Void, requestButtonTapped: @escaping () -> Void, transactionsButtonTapped: @escaping () -> Void, networkButtonTapped: @escaping () -> Void) -> MainViewController {
+    static func instantiateMainViewController(with lightningService: LightningService, settingsButtonTapped: @escaping () -> Void, sendButtonTapped: @escaping () -> Void, requestButtonTapped: @escaping () -> Void, transactionsButtonTapped: @escaping () -> Void, networkButtonTapped: @escaping () -> Void) -> MainViewController {
         let mainViewController = Storyboard.main.instantiate(viewController: MainViewController.self)
-        mainViewController.viewModel = viewModel
+        mainViewController.lightningService = lightningService
         
         mainViewController.settingsButtonTapped = settingsButtonTapped
         mainViewController.sendButtonTapped = sendButtonTapped
@@ -26,7 +26,7 @@ extension UIStoryboard {
 }
 
 final class MainViewController: UIViewController, ContainerViewController {
-    var viewModel: LightningService?
+    var lightningService: LightningService?
  
     @IBOutlet private weak var aliasLabel: UILabel!
     @IBOutlet private weak var balanceLabel: UILabel!
@@ -84,9 +84,9 @@ final class MainViewController: UIViewController, ContainerViewController {
         balanceLabel.font = balanceLabel.font.withSize(30)
         fiatBalanceLabel.textColor = .gray
         
-        [viewModel?.balanceService.total.bind(to: balanceLabel.reactive.text, currency: Settings.primaryCurrency),
-         viewModel?.balanceService.total.bind(to: fiatBalanceLabel.reactive.text, currency: Settings.secondaryCurrency),
-         viewModel?.infoService.alias.bind(to: aliasLabel.reactive.text)]
+        [lightningService?.balanceService.total.bind(to: balanceLabel.reactive.text, currency: Settings.primaryCurrency),
+         lightningService?.balanceService.total.bind(to: fiatBalanceLabel.reactive.text, currency: Settings.secondaryCurrency),
+         lightningService?.infoService.alias.bind(to: aliasLabel.reactive.text)]
             .dispose(in: reactive.bag)
         
         segmentedControl(select: .transactions)

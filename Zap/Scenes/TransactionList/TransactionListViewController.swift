@@ -9,7 +9,7 @@ import Bond
 import UIKit
 
 extension UIStoryboard {
-    static func instantiateTransactionListViewController(with viewModel: LightningService, transactionListViewModel: TransactionListViewModel, presentTransactionDetail: @escaping (TransactionViewModel) -> Void) -> TransactionListViewController {
+    static func instantiateTransactionListViewController(transactionListViewModel: TransactionListViewModel, presentTransactionDetail: @escaping (TransactionViewModel) -> Void) -> TransactionListViewController {
         let viewController = Storyboard.transactionList.initial(viewController: TransactionListViewController.self)
         
         viewController.transactionListViewModel = transactionListViewModel
@@ -21,10 +21,10 @@ extension UIStoryboard {
 
 final class TransactionBond: TableViewBinder<Observable2DArray<String, TransactionViewModel>> {
     override func cellForRow(at indexPath: IndexPath, tableView: UITableView, dataSource: Observable2DArray<String, TransactionViewModel>) -> UITableViewCell {
-        let viewModel = dataSource.item(at: indexPath)
+        let transactionViewModel = dataSource.item(at: indexPath)
         
         let cell: TransactionTableViewCell = tableView.dequeueCellForIndexPath(indexPath)
-        cell.transaction = viewModel
+        cell.transactionViewModel = transactionViewModel
         return cell
     }
     

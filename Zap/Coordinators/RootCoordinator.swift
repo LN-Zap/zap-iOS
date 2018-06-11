@@ -9,7 +9,7 @@ import UIKit
 
 final class RootCoordinator: NSObject, SetupCoordinatorDelegate, PinCoordinatorDelegate {
     private let rootViewController: RootViewController
-    private var viewModel: LightningService?
+    private var lightningService: LightningService?
     
     private var currentCoordinator: Any?
     private var route: Route?
@@ -56,8 +56,8 @@ final class RootCoordinator: NSObject, SetupCoordinatorDelegate, PinCoordinatorD
     }
     
     private func presentMain() {
-        guard let viewModel = viewModel else { return }
-        let mainCoordinator = MainCoordinator(rootViewController: rootViewController, lightningService: viewModel)
+        guard let lightningService = lightningService else { return }
+        let mainCoordinator = MainCoordinator(rootViewController: rootViewController, lightningService: lightningService)
         currentCoordinator = mainCoordinator
         mainCoordinator.start()
                 
@@ -73,8 +73,8 @@ final class RootCoordinator: NSObject, SetupCoordinatorDelegate, PinCoordinatorD
     }
     
     private func presentSync() {
-        guard let viewModel = viewModel else { fatalError("viewModel not set") }
-        let viewController = UIStoryboard.instantiateSyncViewController(with: viewModel)
+        guard let lightningService = lightningService else { fatalError("viewModel not set") }
+        let viewController = UIStoryboard.instantiateSyncViewController(with: lightningService)
         presentViewController(viewController)
     }
     
@@ -101,10 +101,10 @@ final class RootCoordinator: NSObject, SetupCoordinatorDelegate, PinCoordinatorD
         }
     }
     
-    private func startWalletUI(with viewModel: LightningService) {
+    private func startWalletUI(with lightningService: LightningService) {
         startListeningForErrorNotifications()
         
-        viewModel.infoService.walletState
+        lightningService.infoService.walletState
             .skip(first: 1)
             .distinct()
             .observeNext { [weak self] state in
@@ -113,8 +113,8 @@ final class RootCoordinator: NSObject, SetupCoordinatorDelegate, PinCoordinatorD
                     self?.presentPin()
                 case .connecting:
                     if case .remote = LndConnection.current {
-                        viewModel.stop()
-                        self?.viewModel = nil
+                        lightningService.stop()
+                        self?.lightningService = nil
                         print("stop viewModel")
                         self?.presentSetup()
                     } else {
@@ -147,10 +147,10 @@ final class RootCoordinator: NSObject, SetupCoordinatorDelegate, PinCoordinatorD
     internal func connect() {
         DispatchQueue.main.async {
             guard let api = LndConnection.current.api else { return }
-            let viewModel = LightningService(api: api)
-            viewModel.start()
-            self.viewModel = viewModel
-            self.startWalletUI(with: viewModel)
+            let lightningService = LightningService(api: api)
+            lightningService.start()
+            self.lightningService = lightningService
+            self.startWalletUI(with: lightningService)
         }
     }
 }

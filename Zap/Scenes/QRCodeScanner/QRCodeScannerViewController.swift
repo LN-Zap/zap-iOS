@@ -34,7 +34,7 @@ final class QRCodeScannerViewController: UIViewController, ContainerViewControll
     @IBOutlet private weak var scannerView: QRCodeScannerView! {
         didSet {
             scannerView.addressTypes = strategy?.addressTypes
-            scannerView.viewModel = viewModel
+            scannerView.lightningService = lightningService
             scannerView.handler = { [weak self] type, address in
                 self?.displayViewControllerForAddress(type: type, address: address)
             }
@@ -53,9 +53,9 @@ final class QRCodeScannerViewController: UIViewController, ContainerViewControll
         return .lightContent
     }
     
-    var viewModel: LightningService? {
+    var lightningService: LightningService? {
         didSet {
-            scannerView?.viewModel = viewModel
+            scannerView?.lightningService = lightningService
         }
     }
     
@@ -75,8 +75,8 @@ final class QRCodeScannerViewController: UIViewController, ContainerViewControll
     
     func displayViewControllerForAddress(type: AddressType, address: String) {
         guard
-            let viewModel = viewModel,
-            let viewController = strategy?.viewControllerForAddressType(type, address: address, viewModel: viewModel)
+            let lightningService = lightningService,
+            let viewController = strategy?.viewControllerForAddressType(type, address: address, lightningService: lightningService)
             else { return }
         
         setContainerContent(viewController)
@@ -102,7 +102,7 @@ final class QRCodeScannerViewController: UIViewController, ContainerViewControll
         guard
             let string = UIPasteboard.general.string,
             let strategy = strategy,
-            let network = viewModel?.infoService.network.value
+            let network = lightningService?.infoService.network.value
             else { return }
         
         for addressType in strategy.addressTypes where addressType.isValidAddress(string, network: network) {

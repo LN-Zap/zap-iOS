@@ -9,9 +9,9 @@ import ReactiveKit
 import UIKit
 
 extension UIStoryboard {
-    static func instantiateSyncViewController(with viewModel: LightningService) -> SyncViewController {
+    static func instantiateSyncViewController(with lightningService: LightningService) -> SyncViewController {
         let syncViewController = Storyboard.sync.initial(viewController: SyncViewController.self)
-        syncViewController.viewModel = viewModel
+        syncViewController.lightningService = lightningService
         return syncViewController
     }
 }
@@ -21,7 +21,7 @@ final class SyncViewController: UIViewController {
     @IBOutlet private weak var dateLabel: UILabel!
     @IBOutlet private weak var progressBar: UIProgressView!
     
-    fileprivate var viewModel: LightningService?
+    fileprivate var lightningService: LightningService?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -30,9 +30,9 @@ final class SyncViewController: UIViewController {
         syncLabel.textColor = .white
         dateLabel.textColor = .lightGray
                 
-        guard let viewModel = viewModel else { fatalError("viewModel not set.") }
+        guard let lightningService = lightningService else { fatalError("viewModel not set.") }
         
-        let percentSignal = combineLatest(viewModel.infoService.blockHeight, viewModel.infoService.blockChainHeight) { blockHeigh, maxBlockHeight -> Double in
+        let percentSignal = combineLatest(lightningService.infoService.blockHeight, lightningService.infoService.blockChainHeight) { blockHeigh, maxBlockHeight -> Double in
             guard let maxBlockHeight = maxBlockHeight else { return 0 }
             return Double(blockHeigh) / Double(maxBlockHeight)
         }
@@ -47,7 +47,7 @@ final class SyncViewController: UIViewController {
             .bind(to: progressBar.reactive.progress)
             .dispose(in: reactive.bag)
         
-        viewModel.infoService.bestHeaderDate
+        lightningService.infoService.bestHeaderDate
             .map {
                 if let date = $0 {
                     return DateFormatter.localizedString(from: date, dateStyle: .medium, timeStyle: .short)

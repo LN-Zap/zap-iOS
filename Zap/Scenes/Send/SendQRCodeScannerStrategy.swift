@@ -17,13 +17,13 @@ struct SendQRCodeScannerStrategy: QRCodeScannerStrategy {
         self.transactionAnnotationStore = transactionAnnotationStore
     }
     
-    func viewControllerForAddressType(_ type: AddressType, address: String, viewModel: LightningService) -> UIViewController? {
+    func viewControllerForAddressType(_ type: AddressType, address: String, lightningService: LightningService) -> UIViewController? {
         switch type {
         case .lightningInvoice:
-            let sendLightningInvoiceViewModel = SendLightningInvoiceViewModel(transactionAnnotationStore: transactionAnnotationStore, transactionService: viewModel.transactionService, lightningInvoice: address)
+            let sendLightningInvoiceViewModel = SendLightningInvoiceViewModel(transactionAnnotationStore: transactionAnnotationStore, transactionService: lightningService.transactionService, lightningInvoice: address)
             return UIStoryboard.instantiateSendLightningInvoiceViewController(with: sendLightningInvoiceViewModel)
         case .bitcoinAddress:
-            let sendOnChainViewModel = SendOnChainViewModel(viewModel: viewModel, address: address)
+            let sendOnChainViewModel = SendOnChainViewModel(lightningService: lightningService, address: address)
             return UIStoryboard.instantiateSendOnChainViewController(with: sendOnChainViewModel)
         default:
             return nil

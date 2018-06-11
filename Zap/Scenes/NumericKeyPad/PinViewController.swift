@@ -24,9 +24,8 @@ final class PinViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        let viewModel = AuthenticationService.shared
-        
-        pinStackView.characterCount = viewModel.pinLength ?? 0
+        let authenticationService = AuthenticationService.shared
+        pinStackView.characterCount = authenticationService.pinLength ?? 0
         
         setupKeyPad()
     }

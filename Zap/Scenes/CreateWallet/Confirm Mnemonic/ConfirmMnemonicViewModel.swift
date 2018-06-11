@@ -16,11 +16,11 @@ struct ConfirmWordViewModel {
 }
 
 final class ConfirmMnemonicViewModel {
-    let viewModel: LightningService
+    let lightningService: LightningService
     let wordList: [ConfirmWordViewModel]
     
-    init(aezeed: Aezeed, viewModel: LightningService) {
-        self.viewModel = viewModel
+    init(aezeed: Aezeed, lightningService: LightningService) {
+        self.lightningService = lightningService
         
         var randomIndices = [Int]()
         while randomIndices.count < requiredWordCount {

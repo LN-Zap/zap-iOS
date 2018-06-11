@@ -10,14 +10,14 @@ import BTCUtil
 import Foundation
 
 final class OpenChannelViewModel {
-    private let viewModel: LightningService
+    private let lightningService: LightningService
     private let pubKey: String
     private let host: String
     
     var amount: Satoshi = 0
     
-    init?(viewModel: LightningService, address: String) {
-        self.viewModel = viewModel
+    init?(lightningService: LightningService, address: String) {
+        self.lightningService = lightningService
         
         let addressComponents = address.split { ["@", " "].contains(String($0)) }
         guard addressComponents.count == 2 else { return nil }
@@ -27,6 +27,6 @@ final class OpenChannelViewModel {
     }
     
     func openChannel(completion: @escaping () -> Void) {
-        viewModel.channelService.open(pubKey: pubKey, host: host, amount: amount, completion: completion)
+        lightningService.channelService.open(pubKey: pubKey, host: host, amount: amount, completion: completion)
     }
 }
