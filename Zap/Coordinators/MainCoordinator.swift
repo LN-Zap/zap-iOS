@@ -50,7 +50,7 @@ final class MainCoordinator {
     }
     
     private func presentNetwork() {
-        let viewController = UIStoryboard.instantiateChannelListViewController(with: lightningService, channelListViewModel: channelListViewModel, presentChannelDetail: presentChannelDetail, addChannelButtonTapped: presentAddChannel)
+        let viewController = UIStoryboard.instantiateChannelListViewController(channelListViewModel: channelListViewModel, presentChannelDetail: presentChannelDetail, addChannelButtonTapped: presentAddChannel)
         mainViewController?.setContainerContent(viewController)
     }
     

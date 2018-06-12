@@ -10,9 +10,13 @@ import Foundation
 import ReactiveKit
 
 final class ChannelListViewModel: NSObject {
+    private let channelService: ChannelService
+    
     let sections: MutableObservable2DArray<String, ChannelViewModel>
     
     init(channelService: ChannelService, aliasStore: ChannelAliasStore) {
+        self.channelService = channelService
+        
         sections = MutableObservable2DArray()
         
         super.init()
@@ -43,5 +47,9 @@ final class ChannelListViewModel: NSObject {
                 }
             }
             .dispose(in: reactive.bag)
+    }
+    
+    func refresh() {
+        channelService.update()
     }
 }
