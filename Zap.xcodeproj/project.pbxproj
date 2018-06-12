@@ -130,6 +130,7 @@
 		A0FBCD93206BBD9800800515 /* SatoshiTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0FBCD92206BBD9800800515 /* SatoshiTests.swift */; };
 		AD0D933420C822C300E30C51 /* rpc.pb.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD0D933220C822C300E30C51 /* rpc.pb.swift */; };
 		AD0D933520C822C300E30C51 /* rpc.grpc.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD0D933320C822C300E30C51 /* rpc.grpc.swift */; };
+		AD131B1620CFA0AD00E6FED3 /* UIAlertController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD131B1520CFA0AD00E6FED3 /* UIAlertController.swift */; };
 		AD19F05420AEAD3C008090CB /* TransactionAnnotation.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD19F05320AEAD3C008090CB /* TransactionAnnotation.swift */; };
 		AD19F05720AEAF1B008090CB /* Lens.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD19F05620AEAF1B008090CB /* Lens.swift */; };
 		AD19F05B20AF00B4008090CB /* DetailTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD19F05920AF00B4008090CB /* DetailTableViewCell.swift */; };
@@ -438,6 +439,7 @@
 		A2EA9EBABE9A17490B3E282A /* Pods-BTCUtil.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BTCUtil.release.xcconfig"; path = "Pods/Target Support Files/Pods-BTCUtil/Pods-BTCUtil.release.xcconfig"; sourceTree = "<group>"; };
 		AD0D933220C822C300E30C51 /* rpc.pb.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = rpc.pb.swift; sourceTree = "<group>"; };
 		AD0D933320C822C300E30C51 /* rpc.grpc.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = rpc.grpc.swift; sourceTree = "<group>"; };
+		AD131B1520CFA0AD00E6FED3 /* UIAlertController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIAlertController.swift; sourceTree = "<group>"; };
 		AD19F05320AEAD3C008090CB /* TransactionAnnotation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransactionAnnotation.swift; sourceTree = "<group>"; };
 		AD19F05620AEAF1B008090CB /* Lens.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Lens.swift; sourceTree = "<group>"; };
 		AD19F05920AF00B4008090CB /* DetailTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailTableViewCell.swift; sourceTree = "<group>"; };
@@ -977,6 +979,7 @@
 				AD93ED5220A07A24000E814E /* Notification.swift */,
 				A0BD44DB206FCAD900BF27A3 /* SignalProtocol.swift */,
 				A0A96B87201769F100788808 /* String.swift */,
+				AD131B1520CFA0AD00E6FED3 /* UIAlertController.swift */,
 				AD9E244420A377190014F9FA /* UIApplication.swift */,
 				AD38EB2F207DF233007DF14D /* UIButton.swift */,
 				ADF7936B208E66FA0086B2CA /* UICollectionView.swift */,
@@ -1881,6 +1884,7 @@
 				A0DDC06C2018C07100AEFF94 /* SettingsItem.swift in Sources */,
 				A0F57DC2201E700C003AFA66 /* TransactionListViewModel.swift in Sources */,
 				ADBB36242080A457005662B4 /* LightningMock.swift in Sources */,
+				AD131B1620CFA0AD00E6FED3 /* UIAlertController.swift in Sources */,
 				ADBA4425209B067400D18B71 /* ProtobufExtensions.swift in Sources */,
 				AD8B13F120C0582D0091F9DA /* RootCoordinator.swift in Sources */,
 				ADEDBB8E20C2D70B00B71F17 /* MainCoordinator.swift in Sources */,
