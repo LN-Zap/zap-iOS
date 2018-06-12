@@ -71,9 +71,7 @@ final class ChannelListViewController: UIViewController {
         tableView.reactive.dataSource.forwardTo = self
     }
     
-    @objc
-    func refresh(sender: UIRefreshControl) {
-        lightningService?.channelService.update()
+    @objc func refresh(sender: UIRefreshControl) {
         sender.endRefreshing()
     }
     

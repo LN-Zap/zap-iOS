@@ -50,8 +50,7 @@ final class GradientLoadingButtonView: UIControl {
         self.button = button
     }
     
-    @objc
-    private func buttonTapped() {
+    @objc private func buttonTapped() {
         isLoading = true
         sendActions(for: .touchUpInside)
     }

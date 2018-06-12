@@ -72,8 +72,7 @@ final class ModalPresentationController: UIPresentationController {
         dimmingView?.addGestureRecognizer(tapRecognizer)
     }
     
-    @objc
-    func dimmingViewTapped(tapRecognizer: UITapGestureRecognizer) {
+    @objc func dimmingViewTapped(tapRecognizer: UITapGestureRecognizer) {
         presentingViewController.dismiss(animated: true, completion: nil)
     }
     
@@ -204,8 +203,7 @@ final class InteractiveTransitionDismissAnimator: UIPercentDrivenInteractiveTran
         gestureRecognizer.addTarget(self, action: #selector(didPan(sender:)))
     }
     
-    @objc
-    func didPan(sender: UIPanGestureRecognizer) {
+    @objc func didPan(sender: UIPanGestureRecognizer) {
         switch sender.state {
         case .began:
             isInteractiveDismissal = true

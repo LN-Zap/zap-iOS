@@ -19,8 +19,7 @@ final class Task: SchedulerJob {
         self.action = action
     }
     
-    @objc
-    func run() {
+    @objc func run() {
         action()
     }
 }

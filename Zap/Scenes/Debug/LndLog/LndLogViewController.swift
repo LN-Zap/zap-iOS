@@ -25,8 +25,7 @@ final class LndLogViewController: UIViewController {
         return try? String(contentsOf: url)
     }
     
-    @objc
-    private func updateTextView() {
+    @objc private func updateTextView() {
         if let suffix = log?.suffix(10000) {
             textView.text = String(suffix)
         }

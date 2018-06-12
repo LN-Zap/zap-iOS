@@ -29,8 +29,7 @@ final class DebugButton {
         self.button = button
     }
     
-    @objc
-    private func hideLogButton(_ sender: Any) {
+    @objc private func hideLogButton(_ sender: Any) {
         guard
             let sender = sender as? UILongPressGestureRecognizer,
             sender.state == .began
@@ -39,8 +38,7 @@ final class DebugButton {
         button?.setTitle(newTitle, for: .normal)
     }
     
-    @objc
-    private func presentLog(_ sender: Any) {
+    @objc private func presentLog(_ sender: Any) {
         UIApplication.topViewController?.present(UIStoryboard.instantiateDebugViewController(), animated: true, completion: nil)
     }
 }

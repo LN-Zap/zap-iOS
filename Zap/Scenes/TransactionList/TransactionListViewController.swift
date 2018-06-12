@@ -82,8 +82,7 @@ final class TransactionListViewController: UIViewController {
         tableView.reactive.dataSource.forwardTo = self
     }
     
-    @objc
-    func refresh(sender: UIRefreshControl) {
+    @objc func refresh(sender: UIRefreshControl) {
         transactionListViewModel?.refresh()
         sender.endRefreshing()
     }
