@@ -19,7 +19,7 @@ final class LightningInvoiceDetailViewModel: NSObject, DetailViewModel {
             detailCells.append(.qrCode(lightningInvoice.paymentRequest))
         }
         
-        if let amountString = lightningInvoice.amount > 0 ? Settings.primaryCurrency.value.format(satoshis: lightningInvoice.amount) : "Unspecified" {
+        if let amountString = lightningInvoice.amount > 0 ? Settings.shared.primaryCurrency.value.format(satoshis: lightningInvoice.amount) : "Unspecified" {
             detailCells.append(.info(DetailTableViewCell.Info(title: "Amount", data: amountString)))
         }
         

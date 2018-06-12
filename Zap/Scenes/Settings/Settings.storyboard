@@ -72,7 +72,7 @@
                         <viewLayoutGuide key="safeArea" id="Web-ut-2SO"/>
                     </view>
                     <navigationItem key="navigationItem" id="ge9-zF-HV6">
-                        <barButtonItem key="rightBarButtonItem" systemItem="cancel" id="zJd-U4-DCk">
+                        <barButtonItem key="rightBarButtonItem" systemItem="done" id="zJd-U4-DCk">
                             <connections>
                                 <action selector="closeButtonTapped:" destination="PYl-Nq-2RQ" id="uJb-0Q-26Y"/>
                             </connections>

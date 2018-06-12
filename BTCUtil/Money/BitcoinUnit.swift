@@ -7,7 +7,7 @@
 
 import Foundation
 
-public enum BitcoinUnit {
+public enum BitcoinUnit: String, Codable {
     case bitcoin
     case milliBitcoin
     case bit

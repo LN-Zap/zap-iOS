@@ -8,7 +8,7 @@
 import BTCUtil
 import Foundation
 
-struct Bitcoin: Currency, Equatable {
+struct Bitcoin: Currency, Equatable, Codable {
     let unit: BitcoinUnit
     
     init(unit: BitcoinUnit) {

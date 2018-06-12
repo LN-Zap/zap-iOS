@@ -27,10 +27,10 @@ final class TransactionTableViewCell: BondTableViewCell {
              isPositive.map({ $0 ? UIColor.zap.nastyGreen : UIColor.zap.black }).bind(to: primaryAmountLabel.reactive.textColor),
              transactionViewModel.icon.map({ $0.image }).bind(to: iconImageView.reactive.image),
              transactionViewModel.displayText.bind(to: titleLabel.reactive.text),
-             transactionViewModel.amount.bind(to: primaryAmountLabel.reactive.text, currency: Settings.primaryCurrency),
+             transactionViewModel.amount.bind(to: primaryAmountLabel.reactive.text, currency: Settings.shared.primaryCurrency),
              transactionViewModel.amount
                 .map { $0?.absoluteValue() }
-                .bind(to: secondaryAmountLabel.reactive.text, currency: Settings.secondaryCurrency)]
+                .bind(to: secondaryAmountLabel.reactive.text, currency: Settings.shared.secondaryCurrency)]
                 .dispose(in: onReuseBag)
     
             timeLabel.text = DateFormatter.localizedString(from: transactionViewModel.date, dateStyle: .none, timeStyle: .short)

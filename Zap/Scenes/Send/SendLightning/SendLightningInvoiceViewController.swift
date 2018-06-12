@@ -48,9 +48,9 @@ final class SendLightningInvoiceViewController: UIViewController, QRCodeScannerC
         arrowImageView.tintColor = UIColor.zap.black
         
         [sendViewModel?.memo.bind(to: memoLabel.reactive.text),
-         sendViewModel?.satoshis.bind(to: amountLabel.reactive.text, currency: Settings.primaryCurrency),
+         sendViewModel?.satoshis.bind(to: amountLabel.reactive.text, currency: Settings.shared.primaryCurrency),
          sendViewModel?.destination.bind(to: destinationLabel.reactive.text),
-         sendViewModel?.satoshis.bind(to: secondaryAmountLabel.reactive.text, currency: Settings.secondaryCurrency),
+         sendViewModel?.satoshis.bind(to: secondaryAmountLabel.reactive.text, currency: Settings.shared.secondaryCurrency),
          sendViewModel?.invoiceError
             .map({ (error: SendLightningInvoiceError) -> Bool in
                 switch error {

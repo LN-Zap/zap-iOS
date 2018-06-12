@@ -8,11 +8,11 @@
 import BTCUtil
 import Foundation
 
-struct FiatCurrency: Currency, Equatable {
+struct FiatCurrency: Currency, Equatable, Codable {
     let currencyCode: String
     let symbol: String
     let localized: String
-    let exchangeRate: NSDecimalNumber
+    let exchangeRate: Decimal
     
     private var currencyFormatter: NumberFormatter {
         let currencyFormatter = NumberFormatter()
@@ -36,20 +36,20 @@ struct FiatCurrency: Currency, Equatable {
         if satoshis == Satoshi.notANumber {
             return format(value: 0)
         } else {
-            let fiatValue = satoshis.convert(to: .bitcoin) * exchangeRate
+            let fiatValue = satoshis.convert(to: .bitcoin) * NSDecimalNumber(decimal: exchangeRate)
             return format(value: fiatValue)
         }
     }
     
     func satoshis(from string: String) -> Satoshi? {
         guard let fiatValue = currencyFormatter.number(from: string) as? NSDecimalNumber else { return nil }
-        return Satoshi.from(value: fiatValue / exchangeRate, unit: .bitcoin)
+        return Satoshi.from(value: fiatValue / NSDecimalNumber(decimal: exchangeRate), unit: .bitcoin)
     }
     
     func value(satoshis: Satoshi) -> NSDecimalNumber? {
         return satoshis
             .multiplying(byPowerOf10: Int16(-BitcoinUnit.bitcoin.exponent))
-            .multiplying(by: exchangeRate)
+            .multiplying(by: NSDecimalNumber(decimal: exchangeRate))
     }
     
     func stringValue(satoshis: Satoshi) -> String? {

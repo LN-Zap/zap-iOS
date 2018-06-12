@@ -10,7 +10,7 @@ import BTCUtil
 import Foundation
 
 final class BitcoinUnitSelectionSettingsItem: DetailDisclosureSettingsItem, SubtitleSettingsItem {
-    let subtitle = Settings.cryptoCurrency.map { Optional($0.localized) }
+    let subtitle = Settings.shared.cryptoCurrency.map { Optional($0.localized) }
     
     let title = "scene.settings.item.bitcoin_unit".localized
 
@@ -42,7 +42,7 @@ final class BitcoinUnitSettingsItem: NSObject, SelectableSettingsItem {
         title = "\(currency.localized) (\(currency.symbol))"
         super.init()
         
-        Settings.cryptoCurrency
+        Settings.shared.cryptoCurrency
             .observeNext { [isSelectedOption] currentCurrency in
                 isSelectedOption.value = currentCurrency == currency
             }
@@ -50,6 +50,6 @@ final class BitcoinUnitSettingsItem: NSObject, SelectableSettingsItem {
     }
     
     func didSelectItem(from fromViewController: UIViewController) {
-        Settings.updateCurrency(currency)
+        Settings.shared.updateCurrency(currency)
     }
 }

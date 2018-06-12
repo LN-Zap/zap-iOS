@@ -16,11 +16,11 @@ final class OnChainTransactionDetailViewModel: NSObject, DetailViewModel {
     init(onChainTransaction: OnChainTransaction, annotation: Observable<TransactionAnnotation>, network: Network, transactionListViewModel: TransactionListViewModel) {
         super.init()
         
-        if let amountString = Settings.primaryCurrency.value.format(satoshis: onChainTransaction.amount) {
+        if let amountString = Settings.shared.primaryCurrency.value.format(satoshis: onChainTransaction.amount) {
             detailCells.append(.info(DetailTableViewCell.Info(title: "Amount", data: amountString)))
         }
         
-        let feesString = Settings.primaryCurrency.value.format(satoshis: onChainTransaction.fees) ?? "0"
+        let feesString = Settings.shared.primaryCurrency.value.format(satoshis: onChainTransaction.fees) ?? "0"
         detailCells.append(.info(DetailTableViewCell.Info(title: "Fees", data: feesString)))
         
         let dateString = DateFormatter.localizedString(from: onChainTransaction.date, dateStyle: .medium, timeStyle: .short)

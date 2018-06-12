@@ -31,7 +31,7 @@ final class TransactionService {
     }
     
     func newAddress(callback: @escaping (Result<String>) -> Void) {
-        let type = Settings.onChainRequestAddressType.value
+        let type = Settings.shared.onChainRequestAddressType.value
         api.newAddress(type: type) {
             callback($0.map {
                 switch type {

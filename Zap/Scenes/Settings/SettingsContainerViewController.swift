@@ -32,11 +32,11 @@ final class SettingsContainerViewController: UIViewController, ContainerViewCont
         navigationController?.navigationBar.barTintColor = UIColor.zap.charcoalGrey
         
         lightningService?.balanceService.total
-            .bind(to: primaryCurrencyLabel.reactive.text, currency: Settings.primaryCurrency)
+            .bind(to: primaryCurrencyLabel.reactive.text, currency: Settings.shared.primaryCurrency)
             .dispose(in: reactive.bag)
         
         lightningService?.balanceService.total
-            .bind(to: secondaryCurrencyLabel.reactive.text, currency: Settings.secondaryCurrency)
+            .bind(to: secondaryCurrencyLabel.reactive.text, currency: Settings.shared.secondaryCurrency)
             .dispose(in: reactive.bag)
         
         Style.label.apply(to: primaryCurrencyLabel, secondaryCurrencyLabel, exchangeRateLabel)
@@ -65,7 +65,7 @@ final class SettingsContainerViewController: UIViewController, ContainerViewCont
         let satoshis: Satoshi = 100_000_000
         
         if let bitcoin = bitcoin.format(satoshis: satoshis),
-            let fiat = Settings.fiatCurrency.value.format(satoshis: satoshis) {
+            let fiat = Settings.shared.fiatCurrency.value.format(satoshis: satoshis) {
             exchangeRateLabel.text = "\(bitcoin) = \(fiat)"
         }
     }

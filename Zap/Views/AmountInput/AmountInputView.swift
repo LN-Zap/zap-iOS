@@ -34,10 +34,10 @@ final class AmountInputView: UIControl {
     var satoshis: Satoshi {
         get {
             guard let formattedAmount = formattedAmount else { return 0 }
-            return Settings.primaryCurrency.value.satoshis(from: formattedAmount) ?? 0
+            return Settings.shared.primaryCurrency.value.satoshis(from: formattedAmount) ?? 0
         }
         set {
-            guard let stringValue = Settings.primaryCurrency.value.stringValue(satoshis: newValue) else { return }
+            guard let stringValue = Settings.shared.primaryCurrency.value.stringValue(satoshis: newValue) else { return }
             
             if updateKeyPadString(input: stringValue) {
                 keyPadView.numberString = stringValue
@@ -73,7 +73,7 @@ final class AmountInputView: UIControl {
         swapCurrencyButton.titleLabel?.font = UIFont.zap.light.withSize(36)
         downArrowImageView.tintColor = UIColor.zap.black
         
-        Settings.primaryCurrency
+        Settings.shared.primaryCurrency
             .map { $0.symbol }
             .bind(to: swapCurrencyButton.reactive.title )
             .dispose(in: reactive.bag)
@@ -81,7 +81,7 @@ final class AmountInputView: UIControl {
     
     @IBAction private func swapCurrencies(_ sender: Any) {
         let oldSatoshis = satoshis
-        Settings.swapCurrencies()
+        Settings.shared.swapCurrencies()
         satoshis = oldSatoshis
     }
     
@@ -90,7 +90,7 @@ final class AmountInputView: UIControl {
     }
     
     private func updateKeyPadString(input: String) -> Bool {
-        let numberFormatter = InputNumberFormatter(currency: Settings.primaryCurrency.value)
+        let numberFormatter = InputNumberFormatter(currency: Settings.shared.primaryCurrency.value)
         guard let output = numberFormatter.validate(input) else { return false }
         formattedAmount = output
         return true

@@ -29,7 +29,7 @@ final class ChannelTableViewCell: BondTableViewCell {
                 .dispose(in: onReuseBag)
             
             channelViewModel.channel.localBalance
-                .bind(to: channelBalanceLabel.reactive.text, currency: Settings.primaryCurrency)
+                .bind(to: channelBalanceLabel.reactive.text, currency: Settings.shared.primaryCurrency)
                 .dispose(in: onReuseBag)
         }
     }

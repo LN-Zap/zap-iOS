@@ -8,7 +8,7 @@
 import BTCUtil
 import Foundation
 
-enum BlockExplorer {
+enum BlockExplorer: String, Codable {
     case blockcypher
     
     var localized: String {

@@ -15,11 +15,11 @@ final class LightningPaymentDetailViewModel: NSObject, DetailViewModel {
     init(lightningPayment: LightningPayment, annotation: Observable<TransactionAnnotation>, transactionListViewModel: TransactionListViewModel) {
         super.init()
         
-        if let amountString = Settings.primaryCurrency.value.format(satoshis: lightningPayment.amount) {
+        if let amountString = Settings.shared.primaryCurrency.value.format(satoshis: lightningPayment.amount) {
             detailCells.append(.info(DetailTableViewCell.Info(title: "Amount", data: amountString)))
         }
         
-        if let feeString = Settings.primaryCurrency.value.format(satoshis: lightningPayment.fees) {
+        if let feeString = Settings.shared.primaryCurrency.value.format(satoshis: lightningPayment.fees) {
             detailCells.append(.info(DetailTableViewCell.Info(title: "Fee", data: feeString)))
         }
         

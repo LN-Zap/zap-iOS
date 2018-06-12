@@ -20,7 +20,7 @@ enum DetailCellType {
     case transactionHash(DetailTransactionHashTableViewCell.Info)
     
     static func blockExplorerCell(txid: String, title: String, network: Network) -> DetailCellType? {
-        if let url = Settings.blockExplorer.url(network: network, txid: txid) {
+        if let url = Settings.shared.blockExplorer.value.url(network: network, txid: txid) {
             let info = DetailTransactionHashTableViewCell.Info(title: title, transactionUrl: url, transactionHash: txid)
             return .transactionHash(info)
         }

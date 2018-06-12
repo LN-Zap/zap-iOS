@@ -28,12 +28,12 @@ final class ChannelDetailViewModel: DetailViewModel {
         
         detailCells.append(.balance(DetailBalanceTableViewCell.Info(localBalance: channel.localBalance, remoteBalance: channel.remoteBalance)))
         
-        if let localBalance = Settings.primaryCurrency.value.format(satoshis: channel.localBalance) {
+        if let localBalance = Settings.shared.primaryCurrency.value.format(satoshis: channel.localBalance) {
             let gradient = [UIColor.zap.lightMustard, UIColor.zap.peach]
             detailCells.append(.legend(DetailLegendTableViewCell.Info(title: "local Balance:", data: localBalance, gradient: gradient)))
         }
         
-        if let remoteBalance = Settings.primaryCurrency.value.format(satoshis: channel.remoteBalance) {
+        if let remoteBalance = Settings.shared.primaryCurrency.value.format(satoshis: channel.remoteBalance) {
             let gradient = [UIColor.zap.lightGrey, UIColor.zap.lightGrey]
             detailCells.append(.legend(DetailLegendTableViewCell.Info(title: "remote Balance:", data: remoteBalance, gradient: gradient)))
         }

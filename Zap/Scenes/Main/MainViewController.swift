@@ -84,8 +84,8 @@ final class MainViewController: UIViewController, ContainerViewController {
         balanceLabel.font = balanceLabel.font.withSize(30)
         fiatBalanceLabel.textColor = .gray
         
-        [lightningService?.balanceService.total.bind(to: balanceLabel.reactive.text, currency: Settings.primaryCurrency),
-         lightningService?.balanceService.total.bind(to: fiatBalanceLabel.reactive.text, currency: Settings.secondaryCurrency),
+        [lightningService?.balanceService.total.bind(to: balanceLabel.reactive.text, currency: Settings.shared.primaryCurrency),
+         lightningService?.balanceService.total.bind(to: fiatBalanceLabel.reactive.text, currency: Settings.shared.secondaryCurrency),
          lightningService?.infoService.alias.bind(to: aliasLabel.reactive.text)]
             .dispose(in: reactive.bag)
         
@@ -130,6 +130,6 @@ final class MainViewController: UIViewController, ContainerViewController {
     }
     
     @IBAction private func swapCurrencyButtonTapped(_ sender: Any) {
-        Settings.swapCurrencies()
+        Settings.shared.swapCurrencies()
     }
 }

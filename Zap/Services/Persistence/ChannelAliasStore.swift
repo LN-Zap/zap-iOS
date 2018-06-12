@@ -9,9 +9,9 @@ import Foundation
 
 // TODO: remove channel Service reference
 final class ChannelAliasStore: Persistable {
-    typealias Value = String
+    typealias Value = [String: String]
 
-    var fileName = "channelAliases"
+    static var fileName = "channelAliases"
     var data = [String: String]()
     private let channelService: ChannelService
     

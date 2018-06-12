@@ -11,7 +11,7 @@ import Foundation
 import ReactiveKit
 
 final class CurrencySelectionSettingsItem: DetailDisclosureSettingsItem, SubtitleSettingsItem {
-    let subtitle = Settings.fiatCurrency.map { Optional($0.localized) }
+    let subtitle = Settings.shared.fiatCurrency.map { Optional($0.localized) }
     
     let title = "scene.settings.item.currency".localized
     
@@ -43,7 +43,7 @@ final class CurrencySettingsItem: NSObject, SelectableSettingsItem {
         title = "\(currency.localized) (\(currency.symbol))"
         super.init()
         
-        Settings.fiatCurrency
+        Settings.shared.fiatCurrency
             .observeNext { [isSelectedOption] currentCurrency in
                 isSelectedOption.value = currentCurrency.currencyCode == currency.currencyCode
             }
@@ -51,6 +51,6 @@ final class CurrencySettingsItem: NSObject, SelectableSettingsItem {
     }
     
     func didSelectItem(from fromViewController: UIViewController) {
-        Settings.updateCurrency(currency)
+        Settings.shared.updateCurrency(currency)
     }
 }

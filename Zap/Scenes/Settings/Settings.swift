@@ -9,18 +9,87 @@ import Bond
 import BTCUtil
 import Foundation
 
-enum Settings {
-    static var fiatCurrency = Observable<FiatCurrency>(FiatCurrency(currencyCode: "USD", symbol: "$", localized: "US Dollar", exchangeRate: 7076.3512))
-    static var cryptoCurrency = Observable<Bitcoin>(Bitcoin(unit: .bit))
+final class Settings: NSObject, Persistable {
+    // Persistable
+    typealias Value = SettingsData
+    var data: SettingsData = SettingsData() {
+        didSet {
+            savePersistable()
+        }
+    }
+    static var fileName = "settings"
     
-    static var primaryCurrency = Observable<Currency>(Settings.cryptoCurrency.value)
-    static var secondaryCurrency = Observable<Currency>(Settings.fiatCurrency.value)
-
-    static var blockExplorer = BlockExplorer.blockcypher
+    struct SettingsData: Codable {
+        var isFiatCurrencyPrimary: Bool?
+        var fiatCurrency: FiatCurrency?
+        var cryptoCurrency: Bitcoin?
+        var blockExplorer: BlockExplorer?
+        var onChainRequestAddressType: OnChainRequestAddressType?
+    }
     
-    static var onChainRequestAddressType = Observable<OnChainRequestAddressType>(.nestedPubkeyHash)
+    let primaryCurrency: Observable<Currency>
+    let secondaryCurrency: Observable<Currency>
     
-    static func updateCurrency(_ currency: Currency) {
+    let fiatCurrency: Observable<FiatCurrency>
+    let cryptoCurrency: Observable<Bitcoin>
+    let blockExplorer: Observable<BlockExplorer>
+    let onChainRequestAddressType: Observable<OnChainRequestAddressType>
+    
+    static let shared = Settings()
+    
+    private init(data: SettingsData?) {
+        if let data = data {
+            self.data = data
+        }
+        
+        fiatCurrency = Observable(data?.fiatCurrency ?? FiatCurrency(currencyCode: "USD", symbol: "$", localized: "US Dollar", exchangeRate: 7076.3512))
+        cryptoCurrency = Observable(data?.cryptoCurrency ?? Bitcoin(unit: .bit))
+        
+        primaryCurrency = Observable(cryptoCurrency.value)
+        secondaryCurrency = Observable(fiatCurrency.value)
+        
+        blockExplorer = Observable(data?.blockExplorer ?? .blockcypher)
+        onChainRequestAddressType = Observable(data?.onChainRequestAddressType ?? .nestedPubkeyHash)
+        
+        super.init()
+        
+        if data?.isFiatCurrencyPrimary == true {
+            self.swapCurrencies()
+        }
+    }
+    
+    convenience override init() {
+        let data = Settings.decoded
+        self.init(data: data)
+        
+        setupSavingOnChange()
+    }
+    
+    private func setupSavingOnChange() {
+        [fiatCurrency
+            .skip(first: 1)
+            .observeNext { [weak self] in
+                self?.data.fiatCurrency = $0
+            },
+         cryptoCurrency
+            .skip(first: 1)
+            .observeNext { [weak self] in
+                self?.data.cryptoCurrency = $0
+            },
+         blockExplorer
+            .skip(first: 1)
+            .observeNext { [weak self] in
+                self?.data.blockExplorer = $0
+            },
+         onChainRequestAddressType
+            .skip(first: 1)
+            .observeNext { [weak self] in
+                self?.data.onChainRequestAddressType = $0
+            }
+        ].dispose(in: reactive.bag)
+    }
+    
+    func updateCurrency(_ currency: Currency) {
         if let currency = currency as? Bitcoin {
             cryptoCurrency.value = currency
         } else if let currency = currency as? FiatCurrency {
@@ -34,9 +103,11 @@ enum Settings {
         }
     }
     
-    static func swapCurrencies() {
-        let primary = Settings.primaryCurrency.value
-        Settings.primaryCurrency.value = Settings.secondaryCurrency.value
-        Settings.secondaryCurrency.value = primary
+    func swapCurrencies() {
+        let primary = primaryCurrency.value
+        primaryCurrency.value = secondaryCurrency.value
+        secondaryCurrency.value = primary
+        
+        data.isFiatCurrencyPrimary = primaryCurrency.value is FiatCurrency
     }
 }

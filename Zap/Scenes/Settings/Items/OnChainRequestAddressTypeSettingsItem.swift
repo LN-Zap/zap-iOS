@@ -8,7 +8,7 @@
 import Bond
 import Foundation
 
-enum OnChainRequestAddressType: Localizable {
+enum OnChainRequestAddressType: String, Codable, Localizable {
     case witnessPubkeyHash
     case nestedPubkeyHash
     
@@ -24,7 +24,7 @@ enum OnChainRequestAddressType: Localizable {
 
 // swiftlint:disable:next type_name
 final class OnChainRequestAddressTypeSelectionSettingsItem: DetailDisclosureSettingsItem, SubtitleSettingsItem {
-    var subtitle = Settings.onChainRequestAddressType.map { Optional($0.localized) }
+    var subtitle = Settings.shared.onChainRequestAddressType.map { Optional($0.localized) }
     
     let title = "Bitcoin Address Type"
     
@@ -54,7 +54,7 @@ final class OnChainRequestAddressTypeSettingsItem: NSObject, SelectableSettingsI
         title = onChainRequestAddressType.localized
         super.init()
         
-        Settings.onChainRequestAddressType
+        Settings.shared.onChainRequestAddressType
             .observeNext {  [isSelectedOption] currentType in
                 isSelectedOption.value = currentType == onChainRequestAddressType
             }
@@ -62,6 +62,6 @@ final class OnChainRequestAddressTypeSettingsItem: NSObject, SelectableSettingsI
     }
     
     func didSelectItem(from fromViewController: UIViewController) {
-        Settings.onChainRequestAddressType.value = onChainRequestAddressType
+        Settings.shared.onChainRequestAddressType.value = onChainRequestAddressType
     }
 }

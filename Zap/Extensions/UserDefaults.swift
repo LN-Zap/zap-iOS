@@ -9,8 +9,6 @@ import Foundation
 
 extension UserDefaults {
     enum Keys {
-        static let network = DefaultKey<String>("network")
-        static let currency = DefaultKey<String>("currency")
         static let mnemonic = DefaultKey<[String]>("mnemonic")
         static let didCreateWallet = DefaultKey<Bool>("didCreateWallet")
     }

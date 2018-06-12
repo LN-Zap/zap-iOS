@@ -102,7 +102,7 @@ final class RequestViewController: UIViewController {
     }
     
     @IBAction private func swapCurrencyButtonTapped(_ sender: Any) {
-        Settings.swapCurrencies()
+        Settings.shared.swapCurrencies()
     }
     
     private func setupKeyboardNotifications() {

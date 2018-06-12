@@ -29,7 +29,7 @@ final class ExchangeUpdaterJob: SchedulerJob {
             let symbol = data["symbol"] as? String,
             let valueNumber = data["15m"] as? NSNumber
             else { return nil }
-        let exchangeRate = NSDecimalNumber(decimal: valueNumber.decimalValue)
+        let exchangeRate = valueNumber.decimalValue
         
         return FiatCurrency(currencyCode: currencyCode, symbol: symbol, localized: localized, exchangeRate: exchangeRate)
     }
@@ -40,9 +40,9 @@ final class ExchangeData {
         didSet {
             guard let availableCurrencies = availableCurrencies else { return }
             
-            let currentFiatCurrencyCode = Settings.fiatCurrency.value.currencyCode
+            let currentFiatCurrencyCode = Settings.shared.fiatCurrency.value.currencyCode
             if let updatedCurrency = availableCurrencies.first(where: { $0.currencyCode == currentFiatCurrencyCode }) {
-                Settings.updateCurrency(updatedCurrency)
+                Settings.shared.updateCurrency(updatedCurrency)
             }
             
             print("✅ did update exchange rates")

@@ -9,10 +9,10 @@ import Bond
 import Foundation
 
 final class TransactionAnnotationStore: Persistable {
-    typealias Value = TransactionAnnotation
+    typealias Value = [String: TransactionAnnotation]
     
     var data = [String: TransactionAnnotation]()
-    let fileName = "annotations"
+    static let fileName = "annotations"
     
     init() {
         loadPersistable()
