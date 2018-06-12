@@ -14,6 +14,15 @@ enum ChannelState {
     case opening
     case closing
     case forceClosing
+    
+    var isClosing: Bool {
+        switch self {
+        case .closing, .forceClosing:
+            return true
+        default:
+           return false
+        }
+    }
 }
 
 struct Channel: Equatable {

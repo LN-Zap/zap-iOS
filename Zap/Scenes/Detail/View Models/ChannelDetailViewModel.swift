@@ -49,7 +49,9 @@ final class ChannelDetailViewModel: DetailViewModel {
             detailCells.append(cell)
         }
         
-        detailCells.append(.destructiveAction(DetailDestructiveActionTableViewCell.Info(title: "close", action: closeChannel)))
+        if !channel.state.isClosing {
+            detailCells.append(.destructiveAction(DetailDestructiveActionTableViewCell.Info(title: "close", action: closeChannel)))
+        }
     }
     
     private func closeChannel() {

@@ -133,13 +133,10 @@ extension ChannelListViewController: UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, editActionsForRowAt indexPath: IndexPath) -> [UITableViewRowAction]? {
-        guard let channelViewModel = channelListViewModel?.sections.item(at: indexPath) else { return [] }
-        switch channelViewModel.state.value {
-        case .closing, .forceClosing, .opening:
-            return []
-        default:
-            break
-        }
+        guard
+            let channelViewModel = channelListViewModel?.sections.item(at: indexPath),
+            !channelViewModel.state.value.isClosing
+            else { return [] }
         
         let closeAction = UITableViewRowAction(style: .destructive, title: "Close Channel") { [weak self] _, _ in
             let alertController = UIAlertController.closeChannelAlertController(channelName: channelViewModel.name.value) {
