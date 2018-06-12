@@ -9,7 +9,13 @@ import UIKit
 
 final class DetailDestructiveActionTableViewCell: UITableViewCell {
     struct Info {
+        enum DestructiveActionType {
+            case closeChannel(Channel, String)
+            case archiveTransaction
+        }
+        
         let title: String
+        let type: DestructiveActionType
         let action: () -> Void
     }
     
@@ -32,7 +38,16 @@ final class DetailDestructiveActionTableViewCell: UITableViewCell {
     }
     
     @IBAction private func executeAction(_ sender: Any) {
-        info?.action()
-        delegate?.dismiss()
+        guard let info = info else { return }
+        switch info.type {
+        case let .closeChannel(channel, nodeAlias):
+            delegate?.closeChannel(channel, nodeAlias: nodeAlias) { [weak self] in
+                info.action()
+                self?.delegate?.dismiss()
+            }
+        case .archiveTransaction:
+            info.action()
+            delegate?.dismiss()
+        }
     }
 }

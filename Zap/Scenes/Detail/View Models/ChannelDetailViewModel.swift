@@ -52,7 +52,8 @@ final class ChannelDetailViewModel: DetailViewModel {
         }
         
         if !channel.state.isClosing {
-            detailCells.append(.destructiveAction(DetailDestructiveActionTableViewCell.Info(title: "close", action: closeChannel)))
+            let closeTitle: String = channel.state == .active ? "Close" : "Force Close"
+            detailCells.append(.destructiveAction(DetailDestructiveActionTableViewCell.Info(title: closeTitle, type: .closeChannel(channel, channel.remotePubKey), action: closeChannel)))
         }
     }
     

@@ -56,7 +56,8 @@ final class ChannelService {
     }
     
     func close(_ channel: Channel) {
-        api.closeChannel(channelPoint: channel.channelPoint, force: true) { [weak self] _ in
+        let force = channel.state != .active
+        api.closeChannel(channelPoint: channel.channelPoint, force: force) { [weak self] _ in
             self?.update()
         }
     }

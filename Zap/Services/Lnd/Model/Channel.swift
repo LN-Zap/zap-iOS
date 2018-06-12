@@ -34,6 +34,7 @@ struct Channel: Equatable {
     let capacity: Satoshi
     let updateCount: Int?
     let channelPoint: String
+    let csvDelay: Int
     
     var fundingTransactionId: String {
         return channelPoint.components(separatedBy: ":")[0]
@@ -50,7 +51,8 @@ extension Lnrpc_Channel {
             remotePubKey: remotePubkey,
             capacity: Satoshi(value: capacity),
             updateCount: Int(numUpdates),
-            channelPoint: channelPoint)
+            channelPoint: channelPoint,
+            csvDelay: Int(csvDelay))
     }
 }
 
@@ -64,7 +66,8 @@ extension Lnrpc_PendingChannelsResponse.PendingOpenChannel {
             remotePubKey: channel.remoteNodePub,
             capacity: Satoshi(value: channel.capacity),
             updateCount: 0,
-            channelPoint: channel.channelPoint)
+            channelPoint: channel.channelPoint,
+            csvDelay: 0)
     }
 }
 
@@ -78,7 +81,8 @@ extension Lnrpc_PendingChannelsResponse.ClosedChannel {
             remotePubKey: channel.remoteNodePub,
             capacity: Satoshi(value: channel.capacity),
             updateCount: 0,
-            channelPoint: channel.channelPoint)
+            channelPoint: channel.channelPoint,
+            csvDelay: 0)
     }
 }
 
@@ -92,6 +96,7 @@ extension Lnrpc_PendingChannelsResponse.ForceClosedChannel {
             remotePubKey: channel.remoteNodePub,
             capacity: Satoshi(value: channel.capacity),
             updateCount: 0,
-            channelPoint: channel.channelPoint)
+            channelPoint: channel.channelPoint,
+            csvDelay: 0)
     }
 }

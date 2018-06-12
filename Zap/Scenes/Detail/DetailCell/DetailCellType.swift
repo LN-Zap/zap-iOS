@@ -28,7 +28,7 @@ enum DetailCellType {
     }
     
     static func hideTransactionCell(transaction: Transaction, transactionListViewModel: TransactionListViewModel) -> DetailCellType {
-        return .destructiveAction(DetailDestructiveActionTableViewCell.Info(title: "Archive", action: {
+        return .destructiveAction(DetailDestructiveActionTableViewCell.Info(title: "Archive", type: .archiveTransaction, action: {
             transactionListViewModel.hideTransaction(transaction)
         }))
     }
@@ -37,4 +37,5 @@ enum DetailCellType {
 protocol DetailCellDelegate: class {
     func dismiss()
     func presentSafariViewController(for url: URL)
+    func closeChannel(_ channel: Channel, nodeAlias: String, closeAction: @escaping () -> Void)
 }

@@ -50,7 +50,7 @@ final class MainCoordinator {
     }
     
     private func presentNetwork() {
-        let viewController = UIStoryboard.instantiateChannelListViewController(channelListViewModel: channelListViewModel, presentChannelDetail: presentChannelDetail, addChannelButtonTapped: presentAddChannel)
+        let viewController = UIStoryboard.instantiateChannelListViewController(channelListViewModel: channelListViewModel, presentChannelDetail: presentChannelDetail, closeButtonTapped: presentMainCloseConfirmation, addChannelButtonTapped: presentAddChannel)
         mainViewController?.setContainerContent(viewController)
     }
     
@@ -90,7 +90,7 @@ final class MainCoordinator {
     }
     
     private func presentDetail(for detailViewModel: DetailViewModel) {
-        let detailViewController = UIStoryboard.instantiateDetailViewController(detailViewModel: detailViewModel, dismissButtonTapped: dismissDetailViewController, safariButtonTapped: presentSafariViewController)
+        let detailViewController = UIStoryboard.instantiateDetailViewController(detailViewModel: detailViewModel, dismissButtonTapped: dismissDetailViewController, safariButtonTapped: presentSafariViewController, closeChannelButtonTapped: presentDetailCloseConfirmation)
         self.detailViewController = detailViewController
         mainViewController?.present(detailViewController, animated: true, completion: nil)
     }
@@ -104,5 +104,15 @@ final class MainCoordinator {
     private func dismissDetailViewController() {
         detailViewController?.dismiss(animated: true, completion: nil)
         detailViewController = nil
+    }
+    
+    private func presentMainCloseConfirmation(for channel: Channel, nodeAlias: String, closeAction: @escaping () -> Void) {
+        let alertController = UIAlertController.closeChannelAlertController(channel: channel, nodeAlias: nodeAlias, closeAction: closeAction)
+        mainViewController?.present(alertController, animated: true, completion: nil)
+    }
+    
+    private func presentDetailCloseConfirmation(for channel: Channel, nodeAlias: String, closeAction: @escaping () -> Void) {
+        let alertController = UIAlertController.closeChannelAlertController(channel: channel, nodeAlias: nodeAlias, closeAction: closeAction)
+        detailViewController?.present(alertController, animated: true, completion: nil)
     }
 }

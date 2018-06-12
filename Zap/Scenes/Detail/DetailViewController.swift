@@ -9,12 +9,18 @@ import Bond
 import UIKit
 
 extension UIStoryboard {
-    static func instantiateDetailViewController(detailViewModel: DetailViewModel, dismissButtonTapped: @escaping () -> Void, safariButtonTapped: @escaping (URL) -> Void) -> UINavigationController {
+    static func instantiateDetailViewController(
+        detailViewModel: DetailViewModel,
+        dismissButtonTapped: @escaping () -> Void,
+        safariButtonTapped: @escaping (URL) -> Void,
+        closeChannelButtonTapped: @escaping (Channel, String, @escaping () -> Void) -> Void
+        ) -> UINavigationController {
         let viewController = Storyboard.detail.initial(viewController: UINavigationController.self)
         if let detailViewController = viewController.topViewController as? DetailViewController {
             detailViewController.detailViewModel = detailViewModel
             detailViewController.dismissButtonTapped = dismissButtonTapped
             detailViewController.safariButtonTapped = safariButtonTapped
+            detailViewController.closeChannelButtonTapped = closeChannelButtonTapped
         }
         return viewController
     }
@@ -23,8 +29,9 @@ extension UIStoryboard {
 final class DetailViewController: UIViewController {
     @IBOutlet private weak var tableView: UITableView!
     
-    var dismissButtonTapped: (() -> Void)?
-    var safariButtonTapped: ((URL) -> Void)?
+    fileprivate var dismissButtonTapped: (() -> Void)?
+    fileprivate var safariButtonTapped: ((URL) -> Void)?
+    fileprivate var closeChannelButtonTapped: ((Channel, String, @escaping () -> Void) -> Void)?
     
     var detailViewModel: DetailViewModel?
     
@@ -111,6 +118,10 @@ final class DetailViewController: UIViewController {
 }
 
 extension DetailViewController: DetailCellDelegate {
+    func closeChannel(_ channel: Channel, nodeAlias: String, closeAction: @escaping () -> Void) {
+        closeChannelButtonTapped?(channel, nodeAlias, closeAction)
+    }
+    
     func dismiss() {
         dismissButtonTapped?()
     }

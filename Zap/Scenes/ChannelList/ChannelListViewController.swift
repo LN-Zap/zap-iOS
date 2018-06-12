@@ -9,11 +9,16 @@ import Bond
 import UIKit
 
 extension UIStoryboard {
-    static func instantiateChannelListViewController(channelListViewModel: ChannelListViewModel, presentChannelDetail: @escaping (ChannelViewModel) -> Void, addChannelButtonTapped: @escaping () -> Void) -> ChannelListViewController {
+    static func instantiateChannelListViewController(
+        channelListViewModel: ChannelListViewModel,
+        presentChannelDetail: @escaping (ChannelViewModel) -> Void,
+        closeButtonTapped: @escaping (Channel, String, @escaping () -> Void) -> Void,
+        addChannelButtonTapped: @escaping () -> Void) -> ChannelListViewController {
         let viewController = Storyboard.channelList.initial(viewController: ChannelListViewController.self)
         
         viewController.channelListViewModel = channelListViewModel
         viewController.presentChannelDetail = presentChannelDetail
+        viewController.closeButtonTapped = closeButtonTapped
         viewController.addChannelButtonTapped = addChannelButtonTapped
         
         return viewController
@@ -40,6 +45,7 @@ final class ChannelListViewController: UIViewController {
     
     fileprivate var presentChannelDetail: ((ChannelViewModel) -> Void)?
     fileprivate var addChannelButtonTapped: (() -> Void)?
+    fileprivate var closeButtonTapped: ((Channel, String, @escaping () -> Void) -> Void)?
     fileprivate var channelListViewModel: ChannelListViewModel?
     
     override func viewDidLoad() {
@@ -121,6 +127,12 @@ extension ChannelListViewController: UITableViewDelegate {
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
         searchBar.resignFirstResponder()
     }
+    
+    func closeChannel(for channelViewModel: ChannelViewModel) {
+        closeButtonTapped?(channelViewModel.channel, channelViewModel.name.value) { [weak self] in
+            self?.channelListViewModel?.close(channelViewModel.channel)
+        }
+    }
 }
 
 extension ChannelListViewController: UITableViewDataSource {
@@ -139,10 +151,7 @@ extension ChannelListViewController: UITableViewDataSource {
             else { return [] }
         
         let closeAction = UITableViewRowAction(style: .destructive, title: "Close Channel") { [weak self] _, _ in
-            let alertController = UIAlertController.closeChannelAlertController(channelName: channelViewModel.name.value) {
-                self?.channelListViewModel?.close(channelViewModel.channel)
-            }
-            self?.present(alertController, animated: true, completion: nil)
+            self?.closeChannel(for: channelViewModel)
         }
         closeAction.backgroundColor = UIColor.zap.tomato
         return [closeAction]
