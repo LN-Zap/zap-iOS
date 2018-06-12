@@ -140,7 +140,7 @@ extension ChannelListViewController: UITableViewDataSource {
         
         let closeAction = UITableViewRowAction(style: .destructive, title: "Close Channel") { [weak self] _, _ in
             let alertController = UIAlertController.closeChannelAlertController(channelName: channelViewModel.name.value) {
-                print("close")
+                self?.channelListViewModel?.close(channelViewModel.channel)
             }
             self?.present(alertController, animated: true, completion: nil)
         }

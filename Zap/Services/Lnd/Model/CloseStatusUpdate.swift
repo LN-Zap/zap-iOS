@@ -13,7 +13,7 @@ enum CloseStatusUpdate {
     case confirmation
     case channelClose
     
-    init(_ closeStatusUpdate: Lnrpc_CloseStatusUpdate) {
+    init(closeStatusUpdate: Lnrpc_CloseStatusUpdate) {
         if closeStatusUpdate.closePending.txid != SwiftProtobuf.Internal.emptyData {
             self = .pending
         } else if closeStatusUpdate.confirmation.blockSha != SwiftProtobuf.Internal.emptyData {

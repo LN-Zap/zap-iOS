@@ -76,7 +76,7 @@ extension Lnrpc_SendRequest {
 }
 
 extension Lnrpc_CloseChannelRequest {
-    init?(channelPoint: String) {
+    init?(channelPoint: String, force: Bool) {
         let channelPointParts = channelPoint.components(separatedBy: ":")
         guard let outputIndex = UInt32(channelPointParts[1]) else { return nil }
         
@@ -85,5 +85,6 @@ extension Lnrpc_CloseChannelRequest {
         if let fundingTxidBytes = channelPointParts[0].hexEndianSwap().hexadecimal() {
             self.channelPoint.fundingTxidBytes = fundingTxidBytes
         }
+        self.force = force
     }
 }

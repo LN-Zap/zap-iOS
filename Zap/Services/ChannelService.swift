@@ -55,10 +55,9 @@ final class ChannelService {
         }
     }
     
-    func close(channelPoint: String, completion: @escaping () -> Void) {
-        api.closeChannel(channelPoint: channelPoint) { [weak self] _ in
+    func close(_ channel: Channel) {
+        api.closeChannel(channelPoint: channel.channelPoint, force: true) { [weak self] _ in
             self?.update()
-            completion()
         }
     }
     

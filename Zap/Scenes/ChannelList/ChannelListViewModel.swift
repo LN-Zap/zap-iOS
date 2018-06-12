@@ -52,4 +52,8 @@ final class ChannelListViewModel: NSObject {
     func refresh() {
         channelService.update()
     }
+    
+    func close(_ channel: Channel) {
+        channelService.close(channel)
+    }
 }

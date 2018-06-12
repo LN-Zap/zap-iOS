@@ -11,12 +11,14 @@ import Foundation
 
 final class ChannelDetailViewModel: DetailViewModel {
     private let channel: Channel
+    private let channelListViewModel: ChannelListViewModel
     
     var detailViewControllerTitle = "scene.channel_detail.title".localized
     var detailCells: MutableObservableArray<DetailCellType>
     
-    init(channel: Channel, lightningService: LightningService) {
+    init(channel: Channel, infoService: InfoService, channelListViewModel: ChannelListViewModel) {
         self.channel = channel
+        self.channelListViewModel = channelListViewModel
         
         detailCells = MutableObservableArray([])
 
@@ -45,7 +47,7 @@ final class ChannelDetailViewModel: DetailViewModel {
         
         detailCells.append(.separator)
         
-        if let cell = DetailCellType.blockExplorerCell(txid: channel.fundingTransactionId, title: "Funding Transaction:", network: lightningService.infoService.network.value) {
+        if let cell = DetailCellType.blockExplorerCell(txid: channel.fundingTransactionId, title: "Funding Transaction:", network: infoService.network.value) {
             detailCells.append(cell)
         }
         
@@ -55,11 +57,6 @@ final class ChannelDetailViewModel: DetailViewModel {
     }
     
     private func closeChannel() {
-        // TODO: close Channel
-//        let channelPoint = channel.channelPoint
-//
-//        viewModel?.channels.close(channelPoint: channelPoint) { [weak self] in
-//            self?.dismiss(animated: true, completion: nil)
-//        }
+        channelListViewModel.close(channel)
     }
 }

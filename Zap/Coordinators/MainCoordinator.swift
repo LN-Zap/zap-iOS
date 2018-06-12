@@ -80,7 +80,7 @@ final class MainCoordinator {
     }
     
     private func presentChannelDetail(for channelViewModel: ChannelViewModel) {
-        let detailViewModel = ChannelDetailViewModel(channel: channelViewModel.channel, lightningService: lightningService)
+        let detailViewModel = ChannelDetailViewModel(channel: channelViewModel.channel, infoService: lightningService.infoService, channelListViewModel: channelListViewModel)
         presentDetail(for: detailViewModel)
     }
     

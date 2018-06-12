@@ -92,16 +92,6 @@ final class LightningRPC: LightningProtocol {
         _ = try? rpc.openChannelSync(request, completion: result(callback, map: { $0 }))
     }
     
-    func closeChannel(channelPoint: String, callback: @escaping (Result<CloseStatusUpdate>) -> Void) {
-        guard let request = Lnrpc_CloseChannelRequest(channelPoint: channelPoint) else {
-            callback(Result(error: LndError.invalidInput))
-            return
-        }
-        _ = try? rpc.closeChannel(request, completion: { _ in
-            fatalError("not implemented") // TODO
-        })
-    }
-    
     func sendCoins(address: String, amount: Satoshi, callback: @escaping (Result<String>) -> Void) {
         let request = Lnrpc_SendCoinsRequest(address: address, amount: amount)
         _ = try? rpc.sendCoins(request, completion: result(callback, map: { $0.txid }))
@@ -175,6 +165,19 @@ final class LightningRPC: LightningProtocol {
         }
     }
     
+    func closeChannel(channelPoint: String, force: Bool, callback: @escaping (Result<CloseStatusUpdate>) -> Void) {
+        guard let request = Lnrpc_CloseChannelRequest(channelPoint: channelPoint, force: force) else {
+            callback(Result(error: LndError.invalidInput))
+            return
+        }
+        do {
+            let call = try rpc.closeChannel(request, completion: { print(#function, "🏞 Result:", $0) })
+            try receiveCloseChannelUpdate(call: call, callback: callback)
+        } catch {
+            print(error)
+        }
+    }
+    
     // MARK: - Streaming helper methods
 
     private func receiveChannelGraphUpdate(call: Lnrpc_LightningSubscribeChannelGraphCall, callback: @escaping (Result<GraphTopologyUpdate>) -> Void) throws {
@@ -207,6 +210,17 @@ final class LightningRPC: LightningProtocol {
                 print(#function, error)
             }
             try? self?.receiveTransactionsUpdate(call: call, callback: callback)
+        }
+    }
+    
+    private func receiveCloseChannelUpdate(call: Lnrpc_LightningCloseChannelCall, callback: @escaping (Result<CloseStatusUpdate>) -> Void) throws {
+        try call.receive { [weak self] in
+            if let result = $0.result.flatMap({ $0 }) {
+                callback(Result(value: CloseStatusUpdate(closeStatusUpdate: result)))
+            } else if let error = $0.error {
+                print(#function, error)
+            }
+            try? self?.receiveCloseChannelUpdate(call: call, callback: callback)
         }
     }
 }
