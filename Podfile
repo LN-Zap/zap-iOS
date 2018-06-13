@@ -5,13 +5,19 @@ inhibit_all_warnings!
 install! 'cocoapods'
 
 target 'Zap' do
-  pod 'SwiftGRPC'
-  pod 'KeychainAccess'
-  pod 'Bond'
+    pod 'SwiftGRPC'
+    pod 'KeychainAccess'
+    pod 'Bond'
+    
+    target 'ZapTests' do
+        inherit! :search_paths
+    end
+end
 
-  target 'ZapTests' do
-    inherit! :search_paths
-  end
+target 'ZapShared' do
+    pod 'SwiftGRPC'
+    pod 'KeychainAccess'
+    pod 'Bond'
 end
 
 target 'BTCUtil' do

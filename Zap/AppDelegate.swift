@@ -6,27 +6,24 @@
 //
 
 import UIKit
+import ZapShared
 
 @UIApplicationMain
 final class AppDelegate: UIResponder, UIApplicationDelegate {
     private var blurEffectView: UIVisualEffectView?
 
     var rootCoordinator: RootCoordinator?
-    var window: UIWindow? {
-        didSet {
-            window?.tintColor = UIColor.zap.peach
-        }
-    }
+    var window: UIWindow?
     
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {        
         UIApplication.shared.isIdleTimerDisabled = true
-        Appearance.setup()
-        
-        _ = Scheduler.schedule(interval: 60 * 10, job: ExchangeUpdaterJob()) // TODO: move this somewhere else?
         
         if let documentsDir = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first?.absoluteString {
             print("💾", documentsDir.replacingOccurrences(of: "file://", with: ""))
         }
+        
+        window = UIWindow(frame: UIScreen.main.bounds)
+        window?.makeKeyAndVisible()
         
         if let window = window {
             rootCoordinator = RootCoordinator(window: window)

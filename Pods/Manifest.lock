@@ -40,7 +40,7 @@ DEPENDENCIES:
   - SwiftGRPC
 
 SPEC REPOS:
-  https://github.com/CocoaPods/Specs.git:
+  https://github.com/cocoapods/specs.git:
     - BigInt
     - Bond
     - BoringSSL
@@ -66,6 +66,6 @@ SPEC CHECKSUMS:
   SwiftGRPC: 4cb90d96998607003cf1df1e01017f30f6fd124b
   SwiftProtobuf: 5ccc0e4054e37c75800e5744acb2aa80bb72b39c
 
-PODFILE CHECKSUM: fc5903ddfab64356cc7abf81aef827d888ac585d
+PODFILE CHECKSUM: 68a7b22a98e075c65d1a1cff28ae691b0dd68097
 
-COCOAPODS: 1.5.0
+COCOAPODS: 1.5.3

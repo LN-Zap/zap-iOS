@@ -2,9 +2,12 @@
 <Workspace
    version = "1.0">
    <FileRef
-      location = "group:Zap.xcodeproj">
+      location = "group:/Users/ottosuess/Developer/zap-iOS/Zap.xcodeproj">
    </FileRef>
    <FileRef
       location = "group:Pods/Pods.xcodeproj">
+   </FileRef>
+   <FileRef
+      location = "group:Zap.xcodeproj">
    </FileRef>
 </Workspace>
