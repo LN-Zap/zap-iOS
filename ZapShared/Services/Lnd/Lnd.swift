@@ -9,11 +9,11 @@ import BTCUtil
 import Foundation
 import Lndmobile
 
-final class Lnd {
-    struct Constants {
+public final class Lnd {
+    public struct Constants {
         static let minChannelSize: Satoshi = 20000
         static let maxChannelSize: Satoshi = 16777216
-        static let maxPaymentAllowed: Satoshi = 4294967
+        public static let maxPaymentAllowed: Satoshi = 4294967
     }
     
     static var lndPath: URL {

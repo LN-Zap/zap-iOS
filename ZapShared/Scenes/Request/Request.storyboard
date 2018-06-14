@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14109" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="qvk-ti-gP6">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14113" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="qvk-ti-gP6">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
@@ -13,7 +13,7 @@
         <!--Request View Controller-->
         <scene sceneID="Qfk-dv-wT5">
             <objects>
-                <viewController id="rjQ-Ia-QeT" customClass="RequestViewController" customModule="Zap" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="rjQ-Ia-QeT" customClass="RequestViewController" customModule="ZapShared" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="CAJ-EG-VGU">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="800"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -27,14 +27,14 @@
                                             <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="cus-B2-Jdl">
                                                 <rect key="frame" x="0.0" y="0.0" width="375" height="86"/>
                                                 <subviews>
-                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="elu-Jk-EPg" customClass="SegmentButton" customModule="Zap" customModuleProvider="target">
+                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="elu-Jk-EPg" customClass="SegmentButton" customModule="ZapShared" customModuleProvider="target">
                                                         <rect key="frame" x="0.0" y="0.0" width="187.5" height="86"/>
                                                         <state key="normal" title="Button" image="icon-request-lightning"/>
                                                         <connections>
                                                             <action selector="segmentedControlDidChange:" destination="rjQ-Ia-QeT" eventType="touchUpInside" id="is3-sU-nX3"/>
                                                         </connections>
                                                     </button>
-                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ep1-xz-1ul" customClass="SegmentButton" customModule="Zap" customModuleProvider="target">
+                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ep1-xz-1ul" customClass="SegmentButton" customModule="ZapShared" customModuleProvider="target">
                                                         <rect key="frame" x="187.5" y="0.0" width="187.5" height="86"/>
                                                         <state key="normal" title="Button" image="icon-request-on-chain"/>
                                                         <connections>
@@ -43,7 +43,7 @@
                                                     </button>
                                                 </subviews>
                                             </stackView>
-                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="u9S-aO-ejC" customClass="LineView" customModule="Zap" customModuleProvider="target">
+                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="u9S-aO-ejC" customClass="LineView" customModule="ZapShared" customModuleProvider="target">
                                                 <rect key="frame" x="0.0" y="85" width="375" height="1"/>
                                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <constraints>
@@ -63,7 +63,7 @@
                                             <constraint firstAttribute="trailing" secondItem="cus-B2-Jdl" secondAttribute="trailing" id="plu-Wt-oNW"/>
                                         </constraints>
                                     </view>
-                                    <view contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" placeholderIntrinsicWidth="375" placeholderIntrinsicHeight="114" translatesAutoresizingMaskIntoConstraints="NO" id="NWD-uY-0J6" customClass="AmountInputView" customModule="Zap" customModuleProvider="target">
+                                    <view contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" placeholderIntrinsicWidth="375" placeholderIntrinsicHeight="114" translatesAutoresizingMaskIntoConstraints="NO" id="NWD-uY-0J6" customClass="AmountInputView" customModule="ZapShared" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="86" width="375" height="114"/>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <connections>
@@ -73,7 +73,7 @@
                                     <view contentMode="scaleToFill" verticalCompressionResistancePriority="250" translatesAutoresizingMaskIntoConstraints="NO" id="ubh-mT-jEZ">
                                         <rect key="frame" x="0.0" y="200" width="375" height="439"/>
                                         <subviews>
-                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Liu-RG-nQB" customClass="LineView" customModule="Zap" customModuleProvider="target">
+                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Liu-RG-nQB" customClass="LineView" customModule="ZapShared" customModuleProvider="target">
                                                 <rect key="frame" x="0.0" y="0.0" width="375" height="1"/>
                                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <constraints>
@@ -108,7 +108,7 @@
                                             <constraint firstItem="IQI-PO-y7e" firstAttribute="leading" secondItem="ubh-mT-jEZ" secondAttribute="leading" constant="20" id="sDz-KY-8Yo"/>
                                         </constraints>
                                     </view>
-                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="jiU-7w-Kmm" customClass="GradientLoadingButtonView" customModule="Zap" customModuleProvider="target">
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="jiU-7w-Kmm" customClass="GradientLoadingButtonView" customModule="ZapShared" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="639" width="375" height="97"/>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <constraints>
@@ -158,7 +158,7 @@
         <!--Status Bar Delegating Navigation Controller-->
         <scene sceneID="ZS6-tC-kn2">
             <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="qvk-ti-gP6" customClass="StatusBarDelegatingNavigationController" customModule="Zap" customModuleProvider="target" sceneMemberID="viewController">
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="qvk-ti-gP6" customClass="StatusBarDelegatingNavigationController" customModule="ZapShared" customModuleProvider="target" sceneMemberID="viewController">
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="8Oc-tV-J0r">
                         <rect key="frame" x="0.0" y="20" width="375" height="44"/>

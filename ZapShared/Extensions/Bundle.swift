@@ -7,6 +7,6 @@
 
 import Foundation
 
-extension Bundle {
-    static var zap = Bundle(for: RootViewController.self)
+public extension Bundle {
+    public static var zap = Bundle(for: RootViewController.self)
 }

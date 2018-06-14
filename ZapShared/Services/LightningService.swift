@@ -10,7 +10,7 @@ import BTCUtil
 import Foundation
 import ReactiveKit
 
-final class LightningService: NSObject {
+public final class LightningService: NSObject {
     private let api: LightningProtocol
     
     let infoService: InfoService

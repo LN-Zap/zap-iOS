@@ -7,10 +7,10 @@
 
 import UIKit
 
-final class LineView: UIView {
+public final class LineView: UIView {
     var color = UIColor.zap.lightGrey
     
-    override func draw(_ rect: CGRect) {
+    public override func draw(_ rect: CGRect) {
         let context = UIGraphicsGetCurrentContext()
         context?.setLineWidth(1)
         context?.setStrokeColor(color.cgColor)

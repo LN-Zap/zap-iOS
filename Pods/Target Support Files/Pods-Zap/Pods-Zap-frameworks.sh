@@ -152,6 +152,9 @@ if [[ "$CONFIGURATION" == "Debug" ]]; then
   install_framework "${BUILT_PRODUCTS_DIR}/SwiftProtobuf/SwiftProtobuf.framework"
   install_framework "${BUILT_PRODUCTS_DIR}/gRPC-Core/grpc.framework"
   install_framework "${BUILT_PRODUCTS_DIR}/nanopb/nanopb.framework"
+  install_framework "${BUILT_PRODUCTS_DIR}/Bond/Bond.framework"
+  install_framework "${BUILT_PRODUCTS_DIR}/Differ/Differ.framework"
+  install_framework "${BUILT_PRODUCTS_DIR}/ReactiveKit/ReactiveKit.framework"
   install_framework "${BUILT_PRODUCTS_DIR}/BigInt/BigInt.framework"
   install_framework "${BUILT_PRODUCTS_DIR}/SipHash/SipHash.framework"
 fi
@@ -165,6 +168,9 @@ if [[ "$CONFIGURATION" == "Release" ]]; then
   install_framework "${BUILT_PRODUCTS_DIR}/SwiftProtobuf/SwiftProtobuf.framework"
   install_framework "${BUILT_PRODUCTS_DIR}/gRPC-Core/grpc.framework"
   install_framework "${BUILT_PRODUCTS_DIR}/nanopb/nanopb.framework"
+  install_framework "${BUILT_PRODUCTS_DIR}/Bond/Bond.framework"
+  install_framework "${BUILT_PRODUCTS_DIR}/Differ/Differ.framework"
+  install_framework "${BUILT_PRODUCTS_DIR}/ReactiveKit/ReactiveKit.framework"
   install_framework "${BUILT_PRODUCTS_DIR}/BigInt/BigInt.framework"
   install_framework "${BUILT_PRODUCTS_DIR}/SipHash/SipHash.framework"
 fi

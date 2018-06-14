@@ -9,26 +9,32 @@ import Bond
 import BTCUtil
 import Foundation
 
-enum RequestMethod {
-    case lightning
-    case onChain
+public final class RequestViewModelFactory {
+    public static func create() -> RequestViewModel? {
+        guard let api = LndConnection.current.api else { return nil }
+        let lightningService = LightningService(api: api)
+        return RequestViewModel(transactionService: lightningService.transactionService)
+    }
 }
 
-final class RequestViewModel {
+public final class RequestViewModel {
+    public enum RequestMethod {
+        case lightning
+        case onChain
+    }
+    
     private let transactionService: TransactionService
     private var cachedOnChainAddress: String?
 
-    var requestMethod = RequestMethod.lightning
-
-    var memo: String?
-        
-    var amount: Satoshi = 0
+    public var requestMethod = RequestMethod.lightning
+    public var memo: String?
+    public var amount: Satoshi = 0
     
     init(transactionService: TransactionService) {
         self.transactionService = transactionService
     }
     
-    func create(callback: @escaping (QRCodeDetailViewModel) -> Void) {
+    public func create(callback: @escaping (QRCodeDetailViewModel) -> Void) {
         switch requestMethod {
         case .lightning:
             createLightning(callback: callback)

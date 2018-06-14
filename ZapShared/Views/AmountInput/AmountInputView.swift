@@ -9,7 +9,17 @@ import Bond
 import BTCUtil
 import UIKit
 
-final class AmountInputView: UIControl {
+public protocol AmountInputViewDelegate: class {
+    func amountInputViewDidBeginEditing(_ amountInputView: AmountInputView)
+    func amountInputViewDidEndEditing(_ amountInputView: AmountInputView)
+}
+
+public final class AmountInputView: UIControl {
+    public enum AmountInputViewContext {
+        case app
+        case messages
+    }
+    
     @IBOutlet private var contentView: UIView!
     @IBOutlet private weak var containerView: UIView!
     @IBOutlet private weak var amountTextField: UITextField!
@@ -21,6 +31,9 @@ final class AmountInputView: UIControl {
         }
     }
     @IBOutlet private weak var keyPadHeightConstraint: NSLayoutConstraint!
+    @IBOutlet private weak var inputHeightConstraint: NSLayoutConstraint!
+    
+    public weak var delegate: AmountInputViewDelegate?
     
     private var formattedAmount: String? {
         didSet {
@@ -30,8 +43,19 @@ final class AmountInputView: UIControl {
         }
     }
     
-    var validRange: ClosedRange<Satoshi>?
-    var satoshis: Satoshi {
+    public var context: AmountInputViewContext = .app {
+        didSet {
+            switch context {
+            case .app:
+                amountTextField.becomeFirstResponder()
+            case .messages:
+                keyPadHeightConstraint.constant = 0
+            }
+        }
+    }
+    
+    public var validRange: ClosedRange<Satoshi>?
+    public var satoshis: Satoshi {
         get {
             guard let formattedAmount = formattedAmount else { return 0 }
             return Settings.shared.primaryCurrency.value.satoshis(from: formattedAmount) ?? 0
@@ -45,12 +69,12 @@ final class AmountInputView: UIControl {
         }
     }
     
-    override init(frame: CGRect) {
+    public override init(frame: CGRect) {
         super.init(frame: frame)
         setup()
     }
     
-    required init?(coder aDecoder: NSCoder) {
+    public required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
         setup()
     }
@@ -66,7 +90,6 @@ final class AmountInputView: UIControl {
         amountTextField.placeholder = "Amount"
         amountTextField.inputView = UIView()
         amountTextField.delegate = self
-        amountTextField.becomeFirstResponder()
         
         Style.button.apply(to: swapCurrencyButton)
         swapCurrencyButton.tintColor = UIColor.zap.black
@@ -105,17 +128,19 @@ final class AmountInputView: UIControl {
 }
 
 extension AmountInputView: UITextFieldDelegate {
-    private func animateKeypad(hidden: Bool) {
+    public func animateKeypad(hidden: Bool) {
         UIView.animate(withDuration: 0.5, delay: 0, usingSpringWithDamping: 0.75, initialSpringVelocity: 0.5, options: .curveEaseInOut, animations: { [keyPadHeightConstraint] in
             keyPadHeightConstraint?.constant = hidden ? 0 : 280
             }, completion: nil)
     }
     
-    func textFieldDidBeginEditing(_ textField: UITextField) {
+    public func textFieldDidBeginEditing(_ textField: UITextField) {
+        delegate?.amountInputViewDidBeginEditing(self)
         animateKeypad(hidden: false)
     }
     
-    func textFieldDidEndEditing(_ textField: UITextField) {
+    public func textFieldDidEndEditing(_ textField: UITextField) {
+        delegate?.amountInputViewDidEndEditing(self)
         animateKeypad(hidden: true)
     }
 }

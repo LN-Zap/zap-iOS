@@ -6,35 +6,30 @@
 //
 
 import Foundation
+import KeychainAccess
 
-struct RemoteNodeConfiguration: Codable {
+public struct RemoteNodeConfiguration: Codable {
     let remoteNodeCertificates: RemoteNodeCertificates
     let url: URL
     
-    private static var url: URL? {
-        return FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first?.appendingPathComponent("remoteCertificates.json")
-    }
+    static private let keychain = Keychain(service: "com.jackmallers.zap")
     
     func save() {
-        // TODO: save in keychain instead of documents folder
         guard
-            let url = RemoteNodeConfiguration.url,
             let data = try? JSONEncoder().encode(self)
             else { return }
         
-        try? data.write(to: url)
+        let keychain = RemoteNodeConfiguration.keychain
+        keychain[data: "remoteNodeConfiguration"] = data
     }
     
     static func load() -> RemoteNodeConfiguration? {
-        guard
-            let url = RemoteNodeConfiguration.url,
-            let data = try? Data(contentsOf: url)
-            else { return nil }
-        return try? JSONDecoder().decode(RemoteNodeConfiguration.self, from: data)
+        let keychain = RemoteNodeConfiguration.keychain
+        guard let data = keychain[data: "remoteNodeConfiguration"] else { return nil }
+        return try? JSONDecoder().decode(self, from: data)
     }
     
     static func delete() {
-        guard let url = RemoteNodeConfiguration.url else { return }
-        try? FileManager.default.removeItem(at: url)
+        try? keychain.remove("remoteNodeConfiguration")
     }
 }

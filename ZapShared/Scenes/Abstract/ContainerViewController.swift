@@ -7,16 +7,16 @@
 
 import UIKit
 
-protocol ContainerViewController: class {
+public protocol ContainerViewController: class {
     var container: UIView? { get }
     var currentViewController: UIViewController? { get set }
     
     func setContainerContent(_ viewController: UIViewController)
 }
 
-extension ContainerViewController where Self: UIViewController {
+public extension ContainerViewController where Self: UIViewController {
     
-    func setContainerContent(_ viewController: UIViewController) {
+    public func setContainerContent(_ viewController: UIViewController) {
         if currentViewController == nil {
             setInitialViewController(viewController)
         } else {

@@ -7,20 +7,20 @@
 
 import UIKit
 
-extension UIColor {
+public extension UIColor {
     // swiftlint:disable:next type_name
-    enum zap {
-        static let charcoalGrey = color("charcoalGrey")
-        static let charcoalGreyLight = color("charcoalGreyLight")
-        static let white = color("white")
-        static let black = color("black")
-        static let lightGrey = color("lightGrey")
-        static let tomato = color("tomato")
-        static let nastyGreen = color("nastyGreen")
-        static let lightGreen = color("lightGreen")
-        static let lightMustard = color("lightMustard")
-        static let peach = color("peach")
-        static let warmGrey = color("warmGrey")
+    public enum zap {
+        public static let charcoalGrey = color("charcoalGrey")
+        public static let charcoalGreyLight = color("charcoalGreyLight")
+        public static let white = color("white")
+        public static let black = color("black")
+        public static let lightGrey = color("lightGrey")
+        public static let tomato = color("tomato")
+        public static let nastyGreen = color("nastyGreen")
+        public static let lightGreen = color("lightGreen")
+        public static let lightMustard = color("lightMustard")
+        public static let peach = color("peach")
+        public static let warmGrey = color("warmGrey")
         
         private static func color(_ name: String) -> UIColor {
             return UIColor(named: name, in: Bundle.zap, compatibleWith: nil) ?? UIColor.magenta

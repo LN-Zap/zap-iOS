@@ -8,23 +8,23 @@
 import Bond
 import Foundation
 
-protocol QRCodeDetailViewModel {
+public protocol QRCodeDetailViewModel {
     var title: String { get }
     var address: String { get }
 }
 
-final class OnChainRequestQRCodeViewModel: QRCodeDetailViewModel {
-    let title = "scene.deposit.title".localized
-    let address: String
+public final class OnChainRequestQRCodeViewModel: QRCodeDetailViewModel {
+    public let title = "scene.deposit.title".localized
+    public let address: String
 
     init(address: String) {
         self.address = address
     }
 }
 
-final class LightningRequestQRCodeViewModel: QRCodeDetailViewModel {
-    let title = "scene.request.title".localized
-    let address: String
+public final class LightningRequestQRCodeViewModel: QRCodeDetailViewModel {
+    public let title = "scene.request.title".localized
+    public let address: String
 
     init(invoice: String) {
         self.address = invoice

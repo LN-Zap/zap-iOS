@@ -7,11 +7,11 @@
 
 import UIKit
 
-final class GradientLoadingButtonView: UIControl {
+public final class GradientLoadingButtonView: UIControl {
     private weak var button: UIButton?
     private weak var activityIndicator: UIActivityIndicatorView?
     
-    var isLoading: Bool = false {
+    public var isLoading: Bool = false {
         didSet {
             button?.isHidden = isLoading
             if isLoading {
@@ -22,26 +22,37 @@ final class GradientLoadingButtonView: UIControl {
         }
     }
     
-    var title: String? {
+    public var title: String? {
         didSet {
-            button?.setTitle(title, for: .normal)
+            UIView.performWithoutAnimation {
+                button?.setTitle(title, for: .normal)
+                button?.layoutIfNeeded()
+            }
         }
     }
     
-    override var isEnabled: Bool {
+    public override var isEnabled: Bool {
         didSet {
             button?.isEnabled = isEnabled
         }
     }
     
-    required init?(coder aDecoder: NSCoder) {
+    public required override init(frame: CGRect) {
+        super.init(frame: frame)
+        setup()
+    }
+    
+    public required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
-        
+        setup()
+    }
+    
+    private func setup() {
         let gradient = GradientView(frame: CGRect.zero)
         addSubviewSameSize(gradient)
         
         let button = UIButton(type: .system)
-        button.setTitle("Button", for: .normal)
+        
         button.setTitleColor(.white, for: .normal)
         button.setTitleColor(UIColor.white.withAlphaComponent(0.4), for: .disabled)
         button.addTarget(self, action: #selector(buttonTapped), for: .touchUpInside)
