@@ -40,7 +40,8 @@ lane :beta do
     export_method: "ad-hoc",
     export_options: {
       provisioningProfiles: { 
-        "com.jackmallers.zap" => "zap ad-hoc Distribution"
+        "com.jackmallers.zap" => "zap ad-hoc Distribution",
+        "com.jackmallers.zap.ZapMessages" => "zapMessages ad-hoc Distribution"
       }
     }
   )  
@@ -77,6 +78,13 @@ lane :udid do
     force: true,
     app_identifier: "com.jackmallers.zap",
     provisioning_name: "zap ad-hoc Distribution"
+  )
+
+  get_provisioning_profile(
+    adhoc: true,
+    force: true,
+    app_identifier: "com.jackmallers.zap.ZapMessages",
+    provisioning_name: "zapMessages ad-hoc Distribution"
   )
 end
 
