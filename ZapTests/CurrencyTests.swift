@@ -8,7 +8,7 @@
 import BTCUtil
 import Foundation
 import XCTest
-@testable import Zap
+@testable import ZapShared
 
 final class CurrencyTests: XCTestCase {
     private let usd = FiatCurrency(currencyCode: "USD", symbol: "$", localized: "US Dollar", exchangeRate: 7000.00)

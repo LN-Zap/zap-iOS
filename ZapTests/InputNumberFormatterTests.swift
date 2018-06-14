@@ -7,7 +7,7 @@
 
 import BTCUtil
 import XCTest
-@testable import Zap
+@testable import ZapShared
 
 final class InputNumberFormatterTests: XCTestCase {
     
