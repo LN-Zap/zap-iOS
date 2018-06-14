@@ -9,7 +9,7 @@ import BTCUtil
 import Foundation
 
 extension BitcoinUnit: Localizable {
-    var localized: String {
+    public var localized: String {
         switch self {
         case .bitcoin:
             return "unit.bitcoin.btc".localized

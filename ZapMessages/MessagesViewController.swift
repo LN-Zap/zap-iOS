@@ -39,6 +39,5 @@ extension MessagesViewController: ReceiveViewControllerDelegate {
     func insertText(_ text: String) {
         activeConversation?.insertText(text, completionHandler: nil)
         dismiss()
-//        requestPresentationStyle(.compact)
     }
 }

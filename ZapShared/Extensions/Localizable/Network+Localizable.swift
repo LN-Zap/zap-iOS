@@ -9,7 +9,7 @@ import BTCUtil
 import Foundation
 
 extension Network: Localizable {
-    var localized: String {
+    public var localized: String {
         switch self {
         case .testnet:
             return "network.type.testnet".localized

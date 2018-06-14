@@ -7,7 +7,7 @@
 
 import UIKit
 
-protocol Localizable {
+public protocol Localizable {
     var localized: String { get }
 }
 

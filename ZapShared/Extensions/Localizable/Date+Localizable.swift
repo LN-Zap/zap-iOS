@@ -9,7 +9,7 @@ import Foundation
 
 extension Date: Localizable {
 
-    var localized: String {
+    public var localized: String {
         let dateFormatter = DateFormatter()
         dateFormatter.locale = Locale.autoupdatingCurrent
         dateFormatter.dateStyle = .long

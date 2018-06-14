@@ -9,7 +9,8 @@ import Bond
 import BTCUtil
 import Foundation
 
-final class Settings: NSObject, Persistable {
+// TODO: save in shared user defaults to share with Message Extension
+public final class Settings: NSObject, Persistable {
     // Persistable
     typealias Value = SettingsData
     var data: SettingsData = SettingsData() {
@@ -27,7 +28,7 @@ final class Settings: NSObject, Persistable {
         var onChainRequestAddressType: OnChainRequestAddressType?
     }
     
-    let primaryCurrency: Observable<Currency>
+    public let primaryCurrency: Observable<Currency>
     let secondaryCurrency: Observable<Currency>
     
     let fiatCurrency: Observable<FiatCurrency>
@@ -35,7 +36,7 @@ final class Settings: NSObject, Persistable {
     let blockExplorer: Observable<BlockExplorer>
     let onChainRequestAddressType: Observable<OnChainRequestAddressType>
     
-    static let shared = Settings()
+    public static let shared = Settings()
     
     private init(data: SettingsData?) {
         if let data = data {

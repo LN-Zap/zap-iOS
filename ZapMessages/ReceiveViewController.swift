@@ -79,7 +79,7 @@ class ReceiveViewController: UIViewController {
             memoLineView.bottomAnchor.constraint(equalTo: memoContainerView.topAnchor, constant: 1)
         ])
         
-        placeholderTextView.text = "Memo (optional)"
+        placeholderTextView.text = "what is this for"
         placeholderTextView.font = UIFont.zap.light.withSize(14)
         placeholderTextView.textColor = UIColor.zap.lightGrey
         memoTextView.font = UIFont.zap.light.withSize(14)
@@ -145,7 +145,22 @@ class ReceiveViewController: UIViewController {
                 case .onChain:
                     address = detail.address.replacingOccurrences(of: "bitcoin:", with: "bitcoin://")
                 }
-                self?.delegate?.insertText(address)
+                
+                var text = ""
+                
+                if requestViewModel.amount > 0,
+                    let amountString = Settings.shared.primaryCurrency.value.format(satoshis: requestViewModel.amount) {
+                    text = amountString + " "
+                }
+                
+                if let memo = requestViewModel.trimmedMemo,
+                    memo != "" {
+                    text += "for " + memo + " "
+                }
+                
+                text += address
+                
+                self?.delegate?.insertText(text)
                 sender.isLoading = false
             }
         }

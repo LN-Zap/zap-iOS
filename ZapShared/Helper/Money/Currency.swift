@@ -8,7 +8,7 @@
 import BTCUtil
 import Foundation
 
-protocol Currency: Localizable {
+public protocol Currency: Localizable {
     var symbol: String { get }
     
     // format the native value. (1000.53 -> "$1,000.53")
