@@ -87,7 +87,7 @@ final class KeyPadView: UIView {
     private func updatePointButton() {
         switch state {
         case .authenticate:
-            pointButton.setImage(#imageLiteral(resourceName: "icon-face-id"), for: .normal)
+            pointButton.setImage(UIImage(named: "icon-face-id", in: Bundle.zap, compatibleWith: nil), for: .normal)
             pointButton.imageView?.tintColor = textColor
             pointButton.setTitle(nil, for: .normal)
             pointButton.isEnabled = true
