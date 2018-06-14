@@ -14,7 +14,8 @@ public enum Route {
     case request
     
     public init?(url: URL) {
-        self = .send(url.absoluteString)
+        let urlString = url.absoluteString.replacingOccurrences(of: "//", with: "")
+        self = .send(urlString)
     }
     
     public init?(shortcutItem: UIApplicationShortcutItem) {
