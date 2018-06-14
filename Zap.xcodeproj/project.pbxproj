@@ -264,6 +264,8 @@
 		AD391D5420D2796F007EE22A /* BTCUtil.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A000F5EA2047F65100480D8E /* BTCUtil.framework */; };
 		AD391D5520D27DBD007EE22A /* ZapShared.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AD391C1820D16ED4007EE22A /* ZapShared.framework */; };
 		AD391D5720D28528007EE22A /* ReceiveViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD391D5620D28528007EE22A /* ReceiveViewController.swift */; };
+		AD391D5A20D2A831007EE22A /* Roboto-Light.ttf in Resources */ = {isa = PBXBuildFile; fileRef = A091914E203C23C100FA525A /* Roboto-Light.ttf */; };
+		AD391D5B20D2A831007EE22A /* Roboto-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = A0919153203C27C300FA525A /* Roboto-Bold.ttf */; };
 		AD5FA003207D0D03000E9493 /* BitcoinURI.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD5FA002207D0D02000E9493 /* BitcoinURI.swift */; };
 		AD5FA005207D0E70000E9493 /* BitcoinURITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD5FA004207D0E70000E9493 /* BitcoinURITests.swift */; };
 		AD7746492076122D00EC596B /* AddressType.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD7746482076122D00EC596B /* AddressType.swift */; };
@@ -1784,6 +1786,8 @@
 			files = (
 				AD391D4920D17FA9007EE22A /* Assets.xcassets in Resources */,
 				AD391D4720D17FA9007EE22A /* MainInterface.storyboard in Resources */,
+				AD391D5B20D2A831007EE22A /* Roboto-Bold.ttf in Resources */,
+				AD391D5A20D2A831007EE22A /* Roboto-Light.ttf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

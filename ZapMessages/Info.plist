@@ -20,6 +20,11 @@
 	<string>0.1.0</string>
 	<key>CFBundleVersion</key>
 	<string>1</string>
+    <key>UIAppFonts</key>
+    <array>
+        <string>Roboto-Light.ttf</string>
+        <string>Roboto-Bold.ttf</string>
+    </array>
 	<key>NSExtension</key>
 	<dict>
 		<key>NSExtensionMainStoryboard</key>
