@@ -33,11 +33,49 @@ class MessagesViewController: MSMessagesAppViewController, ContainerViewControll
         guard let viewController = currentViewController as? ReceiveViewController else { return }
         viewController.updatePresentationStyle(to: presentationStyle)
     }
+    
+    override func willBecomeActive(with conversation: MSConversation) {
+        guard let message = conversation.selectedMessage else { return }
+        handleSelectedMessage(message)
+    }
+    
+    override func willSelect(_ message: MSMessage, conversation: MSConversation) {
+        handleSelectedMessage(message)
+    }
+    
+    func handleSelectedMessage(_ message: MSMessage) {
+        guard
+            let url = message.url,
+            let components = NSURLComponents(url: url, resolvingAgainstBaseURL: false),
+            let queryItems = components.queryItems,
+            let invoice = queryItems.first(where: { $0.name == "invoice" })?.value,
+            let invoiceUrl = URL(string: invoice)
+            else { return }
+        self.extensionContext?.open(invoiceUrl, completionHandler: nil)
+    }
 }
 
 extension MessagesViewController: ReceiveViewControllerDelegate {
-    func insertText(_ text: String) {
-        activeConversation?.insertText(text, completionHandler: nil)
+    func insertMessage(text: String, invoice: String) {
+        let message = MSMessage()
+        
+        let layout = MSMessageTemplateLayout()
+        
+        if text != "" {
+            layout.caption = text
+        } else {
+            layout.caption = "zap invoice"
+        }
+        message.layout = layout
+
+        var components = URLComponents()
+        components.host = "zap.***REMOVED***"
+        components.scheme = "http"
+        let queryItem = URLQueryItem(name: "invoice", value: invoice)
+        components.queryItems = [queryItem]
+        message.url = components.url
+        
+        activeConversation?.insert(message, completionHandler: nil)
         dismiss()
     }
 }

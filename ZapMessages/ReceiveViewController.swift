@@ -12,7 +12,7 @@ import ZapShared
 
 protocol ReceiveViewControllerDelegate: class {
     func requestPresentationStyle(_ presentationStyle: MSMessagesAppPresentationStyle)
-    func insertText(_ text: String)
+    func insertMessage(text: String, invoice: String)
 }
 
 class ReceiveViewController: UIViewController {
@@ -155,12 +155,10 @@ class ReceiveViewController: UIViewController {
                 
                 if let memo = requestViewModel.trimmedMemo,
                     memo != "" {
-                    text += "for " + memo + " "
+                    text += "for " + memo
                 }
                 
-                text += address
-                
-                self?.delegate?.insertText(text)
+                self?.delegate?.insertMessage(text: text, invoice: address)
                 sender.isLoading = false
             }
         }
