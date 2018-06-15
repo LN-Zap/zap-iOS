@@ -71,10 +71,10 @@ final class QRCodeDetailViewController: UIViewController {
     private func updateRequestMethod() {
         if viewModel is LightningRequestQRCodeViewModel {
             requestMethodLabel.text = "Lightning"
-            requestMethodImageView.image = #imageLiteral(resourceName: "icon-request-lightning")
+            requestMethodImageView.image = UIImage(named: "icon-request-lightning", in: Bundle.zap, compatibleWith: nil)
         } else if viewModel is OnChainRequestQRCodeViewModel {
             requestMethodLabel.text = "On-chain"
-            requestMethodImageView.image = #imageLiteral(resourceName: "icon-request-on-chain")
+            requestMethodImageView.image = UIImage(named: "icon-request-on-chain", in: Bundle.zap, compatibleWith: nil)
         }
     }
 }
