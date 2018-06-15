@@ -14,7 +14,7 @@ final class QRCodeScannerView: UIView {
     private var videoPreviewLayer: AVCaptureVideoPreviewLayer?
     
     var addressTypes: [AddressType]? // Refactor. don't use enum but matching protocol
-    var remoteNodeCertificateHandler: ((RemoteNodeCertificates) -> Void)? // this should be handled by AddressType
+    var remoteNodeConfigurationHandler: ((RemoteNodeConfigurationQRCode) -> Void)? // this should be handled by AddressType
     var handler: ((AddressType, String) -> Void)?
     
     required init?(coder aDecoder: NSCoder) {
@@ -62,9 +62,9 @@ extension QRCodeScannerView: AVCaptureMetadataOutputObjectsDelegate {
             else { return }
         
         // TODO: move this to the strategy?
-        if let remoteNodeCertificateHandler = remoteNodeCertificateHandler,
-            let remoteNodeCertificates = RemoteNodeCertificates(json: code) {
-            remoteNodeCertificateHandler(remoteNodeCertificates)
+        if let remoteNodeConfigurationHandler = remoteNodeConfigurationHandler,
+            let remoteNodeConfigurationQRCode = RemoteNodeConfigurationQRCode(json: code) {
+            remoteNodeConfigurationHandler(remoteNodeConfigurationQRCode)
             UISelectionFeedbackGenerator().selectionChanged() // TODO: remove duplicate code
             captureSession.stopRunning()
         } else if let addressTypes = addressTypes,

@@ -15,11 +15,8 @@ final class ConnectRemoteNodeViewModel: NSObject {
     let urlString = Observable<String?>(nil)
     let certificatesString = Observable<String?>(nil)
     
-    var certificates: RemoteNodeCertificates? {
-        didSet {
-            updateCertificatesUI()
-        }
-    }
+    private var macaroon: Data?
+    private var certificate: String?
     
     private var testServer: LightningRPC?
     
@@ -36,37 +33,41 @@ final class ConnectRemoteNodeViewModel: NSObject {
             }
             .dispose(in: reactive.bag)
         
-        let configuration = RemoteNodeConfiguration.load()
-        certificates = configuration?.remoteNodeCertificates
-        updateCertificatesUI()
-        urlString.value = configuration?.url.absoluteString ?? Environment.defaultRemoteIP
+        if let savedConfiguration = RemoteNodeConfiguration.load() {
+            updateUI(certificate: savedConfiguration.certificate, macaroon: savedConfiguration.macaroon, url: savedConfiguration.url)
+        }
     }
     
-    private func updateCertificatesUI() {
-        guard let certificates = certificates else { return }
-        let certString: String = certificates.certificate
-        let macString: String = certificates.macaron.base64EncodedString()
+    private func updateUI(certificate: String, macaroon: Data, url: URL?) {
+        urlString.value = url?.absoluteString
+        self.certificate = certificate
+        self.macaroon = macaroon
         
-        certificatesString.value = "\(certString)\n\n\(macString)"
+        let macaroonString = macaroon.base64EncodedString()
+        certificatesString.value = "\(certificate)\n\n\(macaroonString)"
     }
     
     func pasteCertificates() {
         guard
             let jsonString = UIPasteboard.general.string,
-            let remoteNodeCertificates = RemoteNodeCertificates(json: jsonString)
+            let remoteNodeConfigurationQRCode = RemoteNodeConfigurationQRCode(json: jsonString)
             else { return }
-        
-        certificates = remoteNodeCertificates
+        updateQRCode(remoteNodeConfigurationQRCode)
+    }
+    
+    func updateQRCode(_ qrCode: RemoteNodeConfigurationQRCode) {
+        updateUI(certificate: qrCode.certificate, macaroon: qrCode.macaroon, url: qrCode.url)
     }
     
     func connect(callback: @escaping (Bool) -> Void) {
         guard
             let urlString = urlString.value,
             let url = URL(string: urlString),
-            let certificates = certificates
+            let certificate = certificate,
+            let macaroon = macaroon
             else { return }
         
-        let remoteNodeConfiguration = RemoteNodeConfiguration(remoteNodeCertificates: certificates, url: url)
+        let remoteNodeConfiguration = RemoteNodeConfiguration(certificate: certificate, macaroon: macaroon, url: url)
         remoteNodeConfiguration.save()
         
         testServer = LightningRPC(configuration: remoteNodeConfiguration)

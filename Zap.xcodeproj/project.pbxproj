@@ -93,7 +93,6 @@
 		AD391C5420D16F7A007EE22A /* ConnectRemoteNode.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AD680A9E20B07AD90018986B /* ConnectRemoteNode.storyboard */; };
 		AD391C5520D16F7A007EE22A /* ConnectRemoteNodeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD680AA020B07AE90018986B /* ConnectRemoteNodeViewController.swift */; };
 		AD391C5620D16F7A007EE22A /* ConnectRemoteNodeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD21768A20C3F29C007779DE /* ConnectRemoteNodeViewModel.swift */; };
-		AD391C5720D16F7A007EE22A /* RemoteNodeCertificates.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADD6D80420B09770008BE461 /* RemoteNodeCertificates.swift */; };
 		AD391C5820D16F7A007EE22A /* RemoteNodeCertificatesScannerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADD6D80220B09260008BE461 /* RemoteNodeCertificatesScannerViewController.swift */; };
 		AD391C5920D16F7A007EE22A /* RemoteNodeConfiguration.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADD6D80620B15603008BE461 /* RemoteNodeConfiguration.swift */; };
 		AD391C5A20D16F7A007EE22A /* MnemonicPageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADBB362E2084CA16005662B4 /* MnemonicPageViewController.swift */; };
@@ -624,7 +623,6 @@
 		ADCE01C7207B720800CA72E8 /* SyncViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SyncViewController.swift; sourceTree = "<group>"; };
 		ADCE01CB207B967200CA72E8 /* Loading.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Loading.storyboard; sourceTree = "<group>"; };
 		ADD6D80220B09260008BE461 /* RemoteNodeCertificatesScannerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RemoteNodeCertificatesScannerViewController.swift; sourceTree = "<group>"; };
-		ADD6D80420B09770008BE461 /* RemoteNodeCertificates.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RemoteNodeCertificates.swift; sourceTree = "<group>"; };
 		ADD6D80620B15603008BE461 /* RemoteNodeConfiguration.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RemoteNodeConfiguration.swift; sourceTree = "<group>"; };
 		ADD9DCDC20B453D000AEFC5C /* LndConnection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LndConnection.swift; sourceTree = "<group>"; };
 		ADE4CF1C20B5B2BE007C987A /* UIFont.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIFont.swift; sourceTree = "<group>"; };
@@ -1282,7 +1280,6 @@
 				AD680A9E20B07AD90018986B /* ConnectRemoteNode.storyboard */,
 				AD680AA020B07AE90018986B /* ConnectRemoteNodeViewController.swift */,
 				AD21768A20C3F29C007779DE /* ConnectRemoteNodeViewModel.swift */,
-				ADD6D80420B09770008BE461 /* RemoteNodeCertificates.swift */,
 				ADD6D80220B09260008BE461 /* RemoteNodeCertificatesScannerViewController.swift */,
 				ADD6D80620B15603008BE461 /* RemoteNodeConfiguration.swift */,
 			);
@@ -2164,7 +2161,6 @@
 				AD391C2720D16EFA007EE22A /* Network+Localizable.swift in Sources */,
 				AD391CCD20D16FE1007EE22A /* ChannelDetailViewModel.swift in Sources */,
 				AD391C9E20D16FA8007EE22A /* RequestViewModel.swift in Sources */,
-				AD391C5720D16F7A007EE22A /* RemoteNodeCertificates.swift in Sources */,
 				AD391CA620D16FA8007EE22A /* SendLightningInvoiceViewController.swift in Sources */,
 				AD391CFF20D16FEC007EE22A /* LightningService.swift in Sources */,
 				AD391C2B20D16EFA007EE22A /* SignalProtocol.swift in Sources */,

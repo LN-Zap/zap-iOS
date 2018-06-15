@@ -10,8 +10,8 @@ import Foundation
 
 private extension Lnrpc_LightningServiceClient {
     convenience init(configuration: RemoteNodeConfiguration) {
-        self.init(address: configuration.url.absoluteString, certificates: configuration.remoteNodeCertificates.certificate, host: nil)
-        self.metadata.add(key: "macaroon", value: configuration.remoteNodeCertificates.macaron.hexString())
+        self.init(address: configuration.url.absoluteString, certificates: configuration.certificate, host: nil)
+        self.metadata.add(key: "macaroon", value: configuration.macaroon.hexString())
         self.timeout = Double(Int32.max) // otherwise streaming calls stop working after 10 minutes
     }
 }
