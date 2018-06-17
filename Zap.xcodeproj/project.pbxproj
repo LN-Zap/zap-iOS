@@ -35,10 +35,8 @@
 		A0A05A0A2013CF960007D1C9 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A0A05A092013CF960007D1C9 /* Assets.xcassets */; };
 		A0A05A0D2013CF960007D1C9 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A0A05A0B2013CF960007D1C9 /* LaunchScreen.storyboard */; };
 		A0B91A84202628EF009AD2D3 /* Settings.bundle in Resources */ = {isa = PBXBuildFile; fileRef = A0B91A83202628EF009AD2D3 /* Settings.bundle */; };
-		A0BD44DA206FB47300BF27A3 /* CurrencyTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0BD44D9206FB47300BF27A3 /* CurrencyTests.swift */; };
 		A0F9AEDD206E155500E93DCA /* Satoshi.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0F9AEDC206E155500E93DCA /* Satoshi.swift */; };
 		A0F9AEDF206E175500E93DCA /* NSDecimalNumber.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0F9AEDE206E175500E93DCA /* NSDecimalNumber.swift */; };
-		A0F9AEE3206E3E0300E93DCA /* InputNumberFormatterTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0F9AEE2206E3E0300E93DCA /* InputNumberFormatterTests.swift */; };
 		A0FBCD91206BBBDF00800515 /* BitcoinUnit.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0FBCD90206BBBDF00800515 /* BitcoinUnit.swift */; };
 		A0FBCD93206BBD9800800515 /* SatoshiTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0FBCD92206BBD9800800515 /* SatoshiTests.swift */; };
 		AD391C1C20D16ED4007EE22A /* ZapShared.h in Headers */ = {isa = PBXBuildFile; fileRef = AD391C1A20D16ED4007EE22A /* ZapShared.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -271,7 +269,8 @@
 		AD774651207616B100EC596B /* Network.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD77464A207615E000EC596B /* Network.swift */; };
 		AD77465320761DB400EC596B /* AddressTypeTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD77465220761DB400EC596B /* AddressTypeTests.swift */; };
 		AD9C4C8020C3D3AA009636E1 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = AD9C4C7F20C3D3AA009636E1 /* InfoPlist.strings */; };
-		E2255ED911EB334C67EC4349 /* Pods_ZapTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 700FBCADDAD580B28F987D98 /* Pods_ZapTests.framework */; };
+		ADFE538520D693FF00B3BA2A /* InputNumberFormatterTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0F9AEE2206E3E0300E93DCA /* InputNumberFormatterTests.swift */; };
+		ADFE538620D693FF00B3BA2A /* CurrencyTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0BD44D9206FB47300BF27A3 /* CurrencyTests.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -295,13 +294,6 @@
 			proxyType = 1;
 			remoteGlobalIDString = A000F5E92047F65100480D8E;
 			remoteInfo = btcutil;
-		};
-		A0A05A142013CF960007D1C9 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = A0A059F72013CF960007D1C9 /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = A0A059FE2013CF960007D1C9;
-			remoteInfo = ThunderWallet;
 		};
 		AD391C1D20D16ED4007EE22A /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
@@ -330,6 +322,13 @@
 			proxyType = 1;
 			remoteGlobalIDString = AD391C1720D16ED4007EE22A;
 			remoteInfo = ZapShared;
+		};
+		ADFE538020D693F500B3BA2A /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = A0A059F72013CF960007D1C9 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = A0A059FE2013CF960007D1C9;
+			remoteInfo = Zap;
 		};
 /* End PBXContainerItemProxy section */
 
@@ -443,8 +442,6 @@
 		A0A05A092013CF960007D1C9 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		A0A05A0C2013CF960007D1C9 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		A0A05A0E2013CF960007D1C9 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		A0A05A132013CF960007D1C9 /* ZapTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ZapTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		A0A05A192013CF960007D1C9 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		A0A05A222013D9BB0007D1C9 /* UIColor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIColor.swift; sourceTree = "<group>"; };
 		A0A05A252013DC1D0007D1C9 /* BitcoinUnit+Localizable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "BitcoinUnit+Localizable.swift"; sourceTree = "<group>"; };
 		A0A05A282013ED4B0007D1C9 /* ModalPresentationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModalPresentationController.swift; sourceTree = "<group>"; };
@@ -638,6 +635,8 @@
 		ADF79369208E5FEC0086B2CA /* ConfirmMnemonicCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConfirmMnemonicCollectionViewCell.swift; sourceTree = "<group>"; };
 		ADF7936B208E66FA0086B2CA /* UICollectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UICollectionView.swift; sourceTree = "<group>"; };
 		ADF79375208F88DE0086B2CA /* RecoverWalletViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecoverWalletViewController.swift; sourceTree = "<group>"; };
+		ADFE537B20D693F500B3BA2A /* ZapSharedTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ZapSharedTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		ADFE537F20D693F500B3BA2A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		AE22E81B1B7AD6C27F3D49BD /* Pods-Zap.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Zap.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Zap/Pods-Zap.debug.xcconfig"; sourceTree = "<group>"; };
 		CAF208744C2CFC6A493BD8B1 /* Pods_btcutil.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_btcutil.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		DB877056D2A1225EA035E012 /* Pods-Zap.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Zap.release.xcconfig"; path = "Pods/Target Support Files/Pods-Zap/Pods-Zap.release.xcconfig"; sourceTree = "<group>"; };
@@ -674,14 +673,6 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		A0A05A102013CF960007D1C9 /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				E2255ED911EB334C67EC4349 /* Pods_ZapTests.framework in Frameworks */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 		AD391C1420D16ED4007EE22A /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -700,6 +691,13 @@
 				AD391D5420D2796F007EE22A /* BTCUtil.framework in Frameworks */,
 				AD391D4120D17FA9007EE22A /* Messages.framework in Frameworks */,
 				97912DF726B2C4F12871FB1B /* Pods_ZapMessages.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		ADFE537820D693F500B3BA2A /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1014,7 +1012,7 @@
 				A0A05A012013CF960007D1C9 /* Zap */,
 				AD391D4220D17FA9007EE22A /* ZapMessages */,
 				AD391C1920D16ED4007EE22A /* ZapShared */,
-				A0A05A162013CF960007D1C9 /* ZapTests */,
+				ADFE537C20D693F500B3BA2A /* ZapSharedTests */,
 			);
 			sourceTree = "<group>";
 		};
@@ -1022,11 +1020,11 @@
 			isa = PBXGroup;
 			children = (
 				A0A059FF2013CF960007D1C9 /* Zap.app */,
-				A0A05A132013CF960007D1C9 /* ZapTests.xctest */,
 				A000F5EA2047F65100480D8E /* BTCUtil.framework */,
 				A000F5F22047F65100480D8E /* BTCUtilTests.xctest */,
 				AD391C1820D16ED4007EE22A /* ZapShared.framework */,
 				AD391D3F20D17FA9007EE22A /* ZapMessages.appex */,
+				ADFE537B20D693F500B3BA2A /* ZapSharedTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -1039,16 +1037,6 @@
 				A010093A2014BF440001EF94 /* Supporting Files */,
 			);
 			path = Zap;
-			sourceTree = "<group>";
-		};
-		A0A05A162013CF960007D1C9 /* ZapTests */ = {
-			isa = PBXGroup;
-			children = (
-				A0A05A192013CF960007D1C9 /* Info.plist */,
-				A0BD44D9206FB47300BF27A3 /* CurrencyTests.swift */,
-				A0F9AEE2206E3E0300E93DCA /* InputNumberFormatterTests.swift */,
-			);
-			path = ZapTests;
 			sourceTree = "<group>";
 		};
 		A0A05A5A20149AF80007D1C9 /* Model */ = {
@@ -1469,6 +1457,16 @@
 			path = "Recover Wallet";
 			sourceTree = "<group>";
 		};
+		ADFE537C20D693F500B3BA2A /* ZapSharedTests */ = {
+			isa = PBXGroup;
+			children = (
+				A0BD44D9206FB47300BF27A3 /* CurrencyTests.swift */,
+				A0F9AEE2206E3E0300E93DCA /* InputNumberFormatterTests.swift */,
+				ADFE537F20D693F500B3BA2A /* Info.plist */,
+			);
+			path = ZapSharedTests;
+			sourceTree = "<group>";
+		};
 		CEF2960C33901153F2C1FFF4 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
@@ -1569,25 +1567,6 @@
 			productReference = A0A059FF2013CF960007D1C9 /* Zap.app */;
 			productType = "com.apple.product-type.application";
 		};
-		A0A05A122013CF960007D1C9 /* ZapTests */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = A0A05A1F2013CF960007D1C9 /* Build configuration list for PBXNativeTarget "ZapTests" */;
-			buildPhases = (
-				4F8DCD2ADCC456C635C1856D /* [CP] Check Pods Manifest.lock */,
-				A0A05A0F2013CF960007D1C9 /* Sources */,
-				A0A05A102013CF960007D1C9 /* Frameworks */,
-				A0A05A112013CF960007D1C9 /* Resources */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-				A0A05A152013CF960007D1C9 /* PBXTargetDependency */,
-			);
-			name = ZapTests;
-			productName = ThunderWalletTests;
-			productReference = A0A05A132013CF960007D1C9 /* ZapTests.xctest */;
-			productType = "com.apple.product-type.bundle.unit-test";
-		};
 		AD391C1720D16ED4007EE22A /* ZapShared */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = AD391C2320D16ED4007EE22A /* Build configuration list for PBXNativeTarget "ZapShared" */;
@@ -1627,6 +1606,24 @@
 			productReference = AD391D3F20D17FA9007EE22A /* ZapMessages.appex */;
 			productType = "com.apple.product-type.app-extension.messages";
 		};
+		ADFE537A20D693F500B3BA2A /* ZapSharedTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = ADFE538220D693F500B3BA2A /* Build configuration list for PBXNativeTarget "ZapSharedTests" */;
+			buildPhases = (
+				ADFE537720D693F500B3BA2A /* Sources */,
+				ADFE537820D693F500B3BA2A /* Frameworks */,
+				ADFE537920D693F500B3BA2A /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				ADFE538120D693F500B3BA2A /* PBXTargetDependency */,
+			);
+			name = ZapSharedTests;
+			productName = ZapSharedTests;
+			productReference = ADFE537B20D693F500B3BA2A /* ZapSharedTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -1656,11 +1653,6 @@
 							};
 						};
 					};
-					A0A05A122013CF960007D1C9 = {
-						CreatedOnToolsVersion = 9.2;
-						ProvisioningStyle = Automatic;
-						TestTargetID = A0A059FE2013CF960007D1C9;
-					};
 					AD391C1720D16ED4007EE22A = {
 						CreatedOnToolsVersion = 9.4;
 						ProvisioningStyle = Automatic;
@@ -1673,6 +1665,11 @@
 								enabled = 1;
 							};
 						};
+					};
+					ADFE537A20D693F500B3BA2A = {
+						CreatedOnToolsVersion = 9.4;
+						ProvisioningStyle = Automatic;
+						TestTargetID = A0A059FE2013CF960007D1C9;
 					};
 				};
 			};
@@ -1690,10 +1687,10 @@
 			projectRoot = "";
 			targets = (
 				A0A059FE2013CF960007D1C9 /* Zap */,
-				A0A05A122013CF960007D1C9 /* ZapTests */,
 				A000F5E92047F65100480D8E /* BTCUtil */,
 				A000F5F12047F65100480D8E /* BTCUtilTests */,
 				AD391C1720D16ED4007EE22A /* ZapShared */,
+				ADFE537A20D693F500B3BA2A /* ZapSharedTests */,
 				AD391D3E20D17FA9007EE22A /* ZapMessages */,
 			);
 		};
@@ -1725,13 +1722,6 @@
 				A0A05A0A2013CF960007D1C9 /* Assets.xcassets in Resources */,
 				A091914F203C23C100FA525A /* Roboto-Light.ttf in Resources */,
 				AD9C4C8020C3D3AA009636E1 /* InfoPlist.strings in Resources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		A0A05A112013CF960007D1C9 /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1785,6 +1775,13 @@
 				AD391D4720D17FA9007EE22A /* MainInterface.storyboard in Resources */,
 				AD391D5B20D2A831007EE22A /* Roboto-Bold.ttf in Resources */,
 				AD391D5A20D2A831007EE22A /* Roboto-Light.ttf in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		ADFE537920D693F500B3BA2A /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1863,24 +1860,6 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Zap/Pods-Zap-frameworks.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-		4F8DCD2ADCC456C635C1856D /* [CP] Check Pods Manifest.lock */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
-				"${PODS_ROOT}/Manifest.lock",
-			);
-			name = "[CP] Check Pods Manifest.lock";
-			outputPaths = (
-				"$(DERIVED_FILE_DIR)/Pods-ZapTests-checkManifestLockResult.txt",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
 		5A44D9D3AA962B0200BE0FD7 /* [CP] Check Pods Manifest.lock */ = {
@@ -1976,15 +1955,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				A0A05A032013CF960007D1C9 /* AppDelegate.swift in Sources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		A0A05A0F2013CF960007D1C9 /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				A0F9AEE3206E3E0300E93DCA /* InputNumberFormatterTests.swift in Sources */,
-				A0BD44DA206FB47300BF27A3 /* CurrencyTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -2178,6 +2148,15 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		ADFE537720D693F500B3BA2A /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				ADFE538520D693FF00B3BA2A /* InputNumberFormatterTests.swift in Sources */,
+				ADFE538620D693FF00B3BA2A /* CurrencyTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
@@ -2195,11 +2174,6 @@
 			isa = PBXTargetDependency;
 			target = A000F5E92047F65100480D8E /* BTCUtil */;
 			targetProxy = A000F5FD2047F65200480D8E /* PBXContainerItemProxy */;
-		};
-		A0A05A152013CF960007D1C9 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = A0A059FE2013CF960007D1C9 /* Zap */;
-			targetProxy = A0A05A142013CF960007D1C9 /* PBXContainerItemProxy */;
 		};
 		AD391C1E20D16ED4007EE22A /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
@@ -2220,6 +2194,11 @@
 			isa = PBXTargetDependency;
 			target = AD391C1720D16ED4007EE22A /* ZapShared */;
 			targetProxy = AD391D5220D1836D007EE22A /* PBXContainerItemProxy */;
+		};
+		ADFE538120D693F500B3BA2A /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = A0A059FE2013CF960007D1C9 /* Zap */;
+			targetProxy = ADFE538020D693F500B3BA2A /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
@@ -2547,51 +2526,6 @@
 			};
 			name = Release;
 		};
-		A0A05A202013CF960007D1C9 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = F628F8A8AB7C31776F8A8C90 /* Pods-ZapTests.debug.xcconfig */;
-			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
-				BUNDLE_LOADER = "$(TEST_HOST)";
-				CODE_SIGN_STYLE = Automatic;
-				GCC_PREPROCESSOR_DEFINITIONS = (
-					"$(inherited)",
-					"COCOAPODS=1",
-					"GPB_USE_PROTOBUF_FRAMEWORK_IMPORTS=1",
-					"PB_FIELD_32BIT=1",
-					"PB_NO_PACKED_STRUCTS=1",
-				);
-				INFOPLIST_FILE = ZapTests/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.jackmallers.ZapTests;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 4.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Zap.app/Zap";
-			};
-			name = Debug;
-		};
-		A0A05A212013CF960007D1C9 /* Release */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = 3441446DFC7B1DCD11C0A9EA /* Pods-ZapTests.release.xcconfig */;
-			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
-				BUNDLE_LOADER = "$(TEST_HOST)";
-				CODE_SIGN_STYLE = Automatic;
-				GCC_PREPROCESSOR_DEFINITIONS = (
-					"$(inherited)",
-					"COCOAPODS=1",
-				);
-				INFOPLIST_FILE = ZapTests/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.jackmallers.ZapTests;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 4.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Zap.app/Zap";
-			};
-			name = Release;
-		};
 		AD391C2120D16ED4007EE22A /* Debug */ = {
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 5BA7F4159E2F4430CC396CC9 /* Pods-ZapShared.debug.xcconfig */;
@@ -2698,6 +2632,40 @@
 			};
 			name = Release;
 		};
+		ADFE538320D693F500B3BA2A /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 69Y26T3886;
+				INFOPLIST_FILE = ZapSharedTests/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.4;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.jackmallers.ZapSharedTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 4.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Zap.app/Zap";
+			};
+			name = Debug;
+		};
+		ADFE538420D693F500B3BA2A /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 69Y26T3886;
+				INFOPLIST_FILE = ZapSharedTests/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.4;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.jackmallers.ZapSharedTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 4.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Zap.app/Zap";
+			};
+			name = Release;
+		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -2737,15 +2705,6 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		A0A05A1F2013CF960007D1C9 /* Build configuration list for PBXNativeTarget "ZapTests" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				A0A05A202013CF960007D1C9 /* Debug */,
-				A0A05A212013CF960007D1C9 /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
 		AD391C2320D16ED4007EE22A /* Build configuration list for PBXNativeTarget "ZapShared" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
@@ -2760,6 +2719,15 @@
 			buildConfigurations = (
 				AD391D4E20D17FA9007EE22A /* Debug */,
 				AD391D4F20D17FA9007EE22A /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		ADFE538220D693F500B3BA2A /* Build configuration list for PBXNativeTarget "ZapSharedTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				ADFE538320D693F500B3BA2A /* Debug */,
+				ADFE538420D693F500B3BA2A /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
