@@ -2247,6 +2247,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = DC890C8992F5662C3A5E9EA6 /* Pods-BTCUtil.debug.xcconfig */;
 			buildSettings = {
+				APPLICATION_EXTENSION_API_ONLY = YES;
 				CODE_SIGN_IDENTITY = "";
 				CODE_SIGN_STYLE = Automatic;
 				DEFINES_MODULE = YES;
@@ -2272,6 +2273,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = A2EA9EBABE9A17490B3E282A /* Pods-BTCUtil.release.xcconfig */;
 			buildSettings = {
+				APPLICATION_EXTENSION_API_ONLY = YES;
 				CODE_SIGN_IDENTITY = "";
 				CODE_SIGN_STYLE = Automatic;
 				DEFINES_MODULE = YES;
