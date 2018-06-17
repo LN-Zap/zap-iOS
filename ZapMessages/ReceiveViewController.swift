@@ -194,6 +194,11 @@ extension ReceiveViewController: AmountInputViewDelegate {
 }
 
 extension ReceiveViewController: UITextViewDelegate {
+    func textViewShouldBeginEditing(_ textView: UITextView) -> Bool {
+        amountInputView?.animateKeypad(hidden: true)
+        return true
+    }
+    
     func textViewDidChange(_ textView: UITextView) {
         guard var text = textView.text else { return }
         if text.last == "\n" {
