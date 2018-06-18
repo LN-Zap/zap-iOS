@@ -139,7 +139,6 @@
 		AD391CA720D16FA8007EE22A /* Send.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A024B85620161586002B8897 /* Send.storyboard */; };
 		AD391CA820D16FA8007EE22A /* SendQRCodeScannerStrategy.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD99C9F220907AD10061C565 /* SendQRCodeScannerStrategy.swift */; };
 		AD391CA920D16FA8007EE22A /* BitcoinUnitSettingsItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = A091914C203B3BAC00FA525A /* BitcoinUnitSettingsItem.swift */; };
-		AD391CAA20D16FA8007EE22A /* ConnectRemoteNodeSettingsItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD680A9B20B077980018986B /* ConnectRemoteNodeSettingsItem.swift */; };
 		AD391CAB20D16FA8007EE22A /* CurrencySettingsItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = A091914A203B297D00FA525A /* CurrencySettingsItem.swift */; };
 		AD391CAC20D16FA8007EE22A /* LockWalletSettingsItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0DDC0692018BFFA00AEFF94 /* LockWalletSettingsItem.swift */; };
 		AD391CAD20D16FA8007EE22A /* OnChainRequestAddressTypeSettingsItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD6FFCA520AB0A3700B57330 /* OnChainRequestAddressTypeSettingsItem.swift */; };
@@ -269,6 +268,8 @@
 		AD774651207616B100EC596B /* Network.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD77464A207615E000EC596B /* Network.swift */; };
 		AD77465320761DB400EC596B /* AddressTypeTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD77465220761DB400EC596B /* AddressTypeTests.swift */; };
 		AD9C4C8020C3D3AA009636E1 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = AD9C4C7F20C3D3AA009636E1 /* InfoPlist.strings */; };
+		ADCD5B0D20D7E3F50037F156 /* RemoveRemoteNodeSettingsItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADCD5B0C20D7E3F50037F156 /* RemoveRemoteNodeSettingsItem.swift */; };
+		ADCD5B0F20D7E40C0037F156 /* RemovePinSettingsItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADCD5B0E20D7E40C0037F156 /* RemovePinSettingsItem.swift */; };
 		ADFE538520D693FF00B3BA2A /* InputNumberFormatterTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0F9AEE2206E3E0300E93DCA /* InputNumberFormatterTests.swift */; };
 		ADFE538620D693FF00B3BA2A /* CurrencyTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0BD44D9206FB47300BF27A3 /* CurrencyTests.swift */; };
 /* End PBXBuildFile section */
@@ -570,7 +571,6 @@
 		AD5FA004207D0E70000E9493 /* BitcoinURITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BitcoinURITests.swift; sourceTree = "<group>"; };
 		AD680A9720B06B840018986B /* DetailTimerTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailTimerTableViewCell.swift; sourceTree = "<group>"; };
 		AD680A9820B06B840018986B /* DetailTimerTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DetailTimerTableViewCell.xib; sourceTree = "<group>"; };
-		AD680A9B20B077980018986B /* ConnectRemoteNodeSettingsItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConnectRemoteNodeSettingsItem.swift; sourceTree = "<group>"; };
 		AD680A9E20B07AD90018986B /* ConnectRemoteNode.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = ConnectRemoteNode.storyboard; sourceTree = "<group>"; };
 		AD680AA020B07AE90018986B /* ConnectRemoteNodeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConnectRemoteNodeViewController.swift; sourceTree = "<group>"; };
 		AD6FFC9B20A9D15E00B57330 /* OnChainTransactionViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnChainTransactionViewModel.swift; sourceTree = "<group>"; };
@@ -632,6 +632,8 @@
 		ADBCC07120C97572002B6E59 /* DetailTransactionHashTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DetailTransactionHashTableViewCell.xib; sourceTree = "<group>"; };
 		ADBCC07420CC04A4002B6E59 /* TransactionService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransactionService.swift; sourceTree = "<group>"; };
 		ADC29C0B20A9B0A0008B2DC2 /* LightningInvoice.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LightningInvoice.swift; sourceTree = "<group>"; };
+		ADCD5B0C20D7E3F50037F156 /* RemoveRemoteNodeSettingsItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RemoveRemoteNodeSettingsItem.swift; sourceTree = "<group>"; };
+		ADCD5B0E20D7E40C0037F156 /* RemovePinSettingsItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RemovePinSettingsItem.swift; sourceTree = "<group>"; };
 		ADCE01BA207B57ED00CA72E8 /* CreateWallet.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = CreateWallet.storyboard; sourceTree = "<group>"; };
 		ADCE01BC207B598C00CA72E8 /* SelectWalletCreationMethodViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectWalletCreationMethodViewController.swift; sourceTree = "<group>"; };
 		ADCE01BE207B59BD00CA72E8 /* ConfirmMnemonicViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConfirmMnemonicViewController.swift; sourceTree = "<group>"; };
@@ -940,7 +942,6 @@
 			isa = PBXGroup;
 			children = (
 				A091914C203B3BAC00FA525A /* BitcoinUnitSettingsItem.swift */,
-				AD680A9B20B077980018986B /* ConnectRemoteNodeSettingsItem.swift */,
 				A091914A203B297D00FA525A /* CurrencySettingsItem.swift */,
 				A0DDC0692018BFFA00AEFF94 /* LockWalletSettingsItem.swift */,
 				AD6FFCA520AB0A3700B57330 /* OnChainRequestAddressTypeSettingsItem.swift */,
@@ -948,6 +949,8 @@
 				A0DDC06B2018C07100AEFF94 /* SettingsItem.swift */,
 				A0919148203B294900FA525A /* TouchIDSettingItem.swift */,
 				A06660FB202E080400EE32FA /* UpdatePinSettingsItem.swift */,
+				ADCD5B0C20D7E3F50037F156 /* RemoveRemoteNodeSettingsItem.swift */,
+				ADCD5B0E20D7E40C0037F156 /* RemovePinSettingsItem.swift */,
 			);
 			path = Items;
 			sourceTree = "<group>";
@@ -2056,7 +2059,6 @@
 				AD391D1A20D174B4007EE22A /* PinCoordinator.swift in Sources */,
 				AD391C5220D16F7A007EE22A /* ConfirmMnemonicViewController.swift in Sources */,
 				AD391C3D20D16F0B007EE22A /* LocalAuthentication.swift in Sources */,
-				AD391CAA20D16FA8007EE22A /* ConnectRemoteNodeSettingsItem.swift in Sources */,
 				AD391C3020D16EFA007EE22A /* UICollectionView.swift in Sources */,
 				AD391C6520D16F89007EE22A /* LndLogViewController.swift in Sources */,
 				AD391CC720D16FE1007EE22A /* DetailTableViewCell.swift in Sources */,
@@ -2093,6 +2095,7 @@
 				AD391C5D20D16F7A007EE22A /* MnemonicWordListViewController.swift in Sources */,
 				AD391C3320D16EFA007EE22A /* UIImage.swift in Sources */,
 				AD391CAE20D16FA8007EE22A /* PaperKeySettingsItem.swift in Sources */,
+				ADCD5B0F20D7E40C0037F156 /* RemovePinSettingsItem.swift in Sources */,
 				AD391C4220D16F0B007EE22A /* Scheduler.swift in Sources */,
 				AD391CA520D16FA8007EE22A /* SendLightningInvoiceViewModel.swift in Sources */,
 				AD391C4D20D16F68007EE22A /* ChannelListViewController.swift in Sources */,
@@ -2137,6 +2140,7 @@
 				AD391CBC20D16FE1007EE22A /* DetailCellType.swift in Sources */,
 				AD391CED20D16FEC007EE22A /* NodeInfo.swift in Sources */,
 				AD391D0C20D16FF5007EE22A /* PinView.swift in Sources */,
+				ADCD5B0D20D7E3F50037F156 /* RemoveRemoteNodeSettingsItem.swift in Sources */,
 				AD391C4320D16F0B007EE22A /* Appearance.swift in Sources */,
 				AD391CD120D16FE1007EE22A /* OnChainTransactionDetailViewModel.swift in Sources */,
 				AD391CF720D16FEC007EE22A /* ChannelTransactionAnnotationUpdater.swift in Sources */,
