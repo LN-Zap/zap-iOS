@@ -5,9 +5,6 @@ inhibit_all_warnings!
 install! 'cocoapods'
 
 target 'Zap' do
-    target 'ZapTests' do
-        inherit! :search_paths
-    end
 end
 
 target 'ZapShared' do

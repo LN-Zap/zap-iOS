@@ -316,12 +316,33 @@
 			remoteGlobalIDString = AD391D3E20D17FA9007EE22A;
 			remoteInfo = ZapMessages;
 		};
-		AD391D5220D1836D007EE22A /* PBXContainerItemProxy */ = {
+		AD478B9120D7D4E3000E0475 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = A0A059F72013CF960007D1C9 /* Project object */;
 			proxyType = 1;
 			remoteGlobalIDString = AD391C1720D16ED4007EE22A;
 			remoteInfo = ZapShared;
+		};
+		AD478B9520D7D509000E0475 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = A0A059F72013CF960007D1C9 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = A000F5E92047F65100480D8E;
+			remoteInfo = BTCUtil;
+		};
+		AD478B9720D7D52E000E0475 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = A0A059F72013CF960007D1C9 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = AD391C1720D16ED4007EE22A;
+			remoteInfo = ZapShared;
+		};
+		AD478B9920D7D541000E0475 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = A0A059F72013CF960007D1C9 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = A000F5E92047F65100480D8E;
+			remoteInfo = BTCUtil;
 		};
 		ADFE538020D693F500B3BA2A /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
@@ -1599,7 +1620,8 @@
 			buildRules = (
 			);
 			dependencies = (
-				AD391D5320D1836D007EE22A /* PBXTargetDependency */,
+				AD478B9620D7D509000E0475 /* PBXTargetDependency */,
+				AD478B9220D7D4E3000E0475 /* PBXTargetDependency */,
 			);
 			name = ZapMessages;
 			productName = ZapMessages;
@@ -1617,6 +1639,8 @@
 			buildRules = (
 			);
 			dependencies = (
+				AD478B9A20D7D541000E0475 /* PBXTargetDependency */,
+				AD478B9820D7D52E000E0475 /* PBXTargetDependency */,
 				ADFE538120D693F500B3BA2A /* PBXTargetDependency */,
 			);
 			name = ZapSharedTests;
@@ -2190,10 +2214,25 @@
 			target = AD391D3E20D17FA9007EE22A /* ZapMessages */;
 			targetProxy = AD391D4B20D17FA9007EE22A /* PBXContainerItemProxy */;
 		};
-		AD391D5320D1836D007EE22A /* PBXTargetDependency */ = {
+		AD478B9220D7D4E3000E0475 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = AD391C1720D16ED4007EE22A /* ZapShared */;
-			targetProxy = AD391D5220D1836D007EE22A /* PBXContainerItemProxy */;
+			targetProxy = AD478B9120D7D4E3000E0475 /* PBXContainerItemProxy */;
+		};
+		AD478B9620D7D509000E0475 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = A000F5E92047F65100480D8E /* BTCUtil */;
+			targetProxy = AD478B9520D7D509000E0475 /* PBXContainerItemProxy */;
+		};
+		AD478B9820D7D52E000E0475 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = AD391C1720D16ED4007EE22A /* ZapShared */;
+			targetProxy = AD478B9720D7D52E000E0475 /* PBXContainerItemProxy */;
+		};
+		AD478B9A20D7D541000E0475 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = A000F5E92047F65100480D8E /* BTCUtil */;
+			targetProxy = AD478B9920D7D541000E0475 /* PBXContainerItemProxy */;
 		};
 		ADFE538120D693F500B3BA2A /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
@@ -2459,7 +2498,6 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = AE22E81B1B7AD6C27F3D49BD /* Pods-Zap.debug.xcconfig */;
 			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_ENTITLEMENTS = Zap/Zap.entitlements;
@@ -2495,7 +2533,6 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = DB877056D2A1225EA035E012 /* Pods-Zap.release.xcconfig */;
 			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_ENTITLEMENTS = Zap/Zap.entitlements;
