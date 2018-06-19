@@ -69,10 +69,11 @@ extension MessagesViewController: ReceiveViewControllerDelegate {
         message.layout = layout
 
         var components = URLComponents()
-        components.host = "zap.***REMOVED***"
-        components.scheme = "http"
-        let queryItem = URLQueryItem(name: "invoice", value: invoice)
+        components.host = "zap.jackmallers.com"
+        components.scheme = "https"
+        let queryItem = URLQueryItem(name: "payment_request", value: invoice)
         components.queryItems = [queryItem]
+        components.path = "/zapme"
         message.url = components.url
         
         activeConversation?.insert(message, completionHandler: nil)
