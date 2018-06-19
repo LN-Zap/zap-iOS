@@ -35,8 +35,8 @@ final class SelectWalletCreationMethodViewController: UIViewController {
         
         content = [
             ("Create", "new wallet", { [weak self] in self?.createButtonTapped?() }),
-            ("Recover", "existing wallet", { self.recoverButtonTapped?() }),
-            ("Connect", "remote node", { self.connectButtonTapped?() })
+            ("Recover", "existing wallet", { [weak self] in self?.recoverButtonTapped?() }),
+            ("Connect", "remote node", { [weak self] in self?.connectButtonTapped?() })
         ]
         
         tableView.delegate = self

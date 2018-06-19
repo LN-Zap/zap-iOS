@@ -32,17 +32,13 @@ final class SetupCoordinator {
     }
     
     private func createNewWallet() {
-        presentErrorMessage()
+        let viewController = UIStoryboard.instantiateMnemonicViewController()
+        navigationController?.pushViewController(viewController, animated: true)
     }
     
     private func recoverExistingWallet() {
-        presentErrorMessage()
-    }
-    
-    private func presentErrorMessage() {
-        let alertController = UIAlertController(title: "Sorry", message: "Running lnd on the phone is not yet supported in this beta.", preferredStyle: .alert)
-        alertController.addAction(UIAlertAction(title: "Ok", style: .cancel, handler: nil))
-        navigationController?.present(alertController, animated: true, completion: nil)
+        let viewController = UIStoryboard.instantiateRecoverWalletViewController()
+        navigationController?.pushViewController(viewController, animated: true)
     }
     
     private func connectRemoteNode() {
