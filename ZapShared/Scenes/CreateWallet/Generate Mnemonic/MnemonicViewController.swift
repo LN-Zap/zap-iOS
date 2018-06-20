@@ -19,6 +19,7 @@ extension UIStoryboard {
 final class MnemonicViewController: UIViewController {
     @IBOutlet private weak var doneButton: UIButton!
     @IBOutlet private weak var topLabel: UILabel!
+    @IBOutlet private weak var activityIndicator: UIActivityIndicatorView!
     
     private weak var pageViewController: MnemonicPageViewController?
     fileprivate var mnemonicViewModel: MnemonicViewModel?
@@ -35,6 +36,12 @@ final class MnemonicViewController: UIViewController {
         
         doneButton.setTitle("Next", for: .normal)
         doneButton.tintColor = .white
+        
+        mnemonicViewModel?.pageWords
+            .map { $0 != nil }
+            .observeOn(DispatchQueue.main)
+            .bind(to: activityIndicator.reactive.isHidden)
+            .dispose(in: reactive.bag)
     }
     
     @IBAction private func nextButtonTapped(_ sender: Any) {

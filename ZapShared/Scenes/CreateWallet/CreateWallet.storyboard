@@ -15,7 +15,7 @@
         <!--Select Wallet Creation Method View Controller-->
         <scene sceneID="WC4-Zb-V2Q">
             <objects>
-                <viewController id="SzU-8w-bgA" customClass="SelectWalletCreationMethodViewController" customModule="Zap" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="SzU-8w-bgA" customClass="SelectWalletCreationMethodViewController" customModule="ZapShared" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="ajR-GT-VlI">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -48,7 +48,7 @@
         <!--Mnemonic View Controller-->
         <scene sceneID="9Mq-r3-DFP">
             <objects>
-                <viewController storyboardIdentifier="MnemonicViewController" id="TXY-Ty-gHy" customClass="MnemonicViewController" customModule="Zap" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="MnemonicViewController" id="TXY-Ty-gHy" customClass="MnemonicViewController" customModule="ZapShared" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="djB-vy-Fcp">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -65,7 +65,7 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="wfp-6A-yeJ" customClass="GradientView" customModule="Zap" customModuleProvider="target">
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="wfp-6A-yeJ" customClass="GradientView" customModule="ZapShared" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="570" width="375" height="97"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="b1R-ha-hZK">
@@ -85,14 +85,19 @@
                                     <constraint firstItem="b1R-ha-hZK" firstAttribute="leading" secondItem="wfp-6A-yeJ" secondAttribute="leading" id="q30-t8-f9R"/>
                                 </constraints>
                             </view>
+                            <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" style="white" translatesAutoresizingMaskIntoConstraints="NO" id="raL-Iy-fWQ">
+                                <rect key="frame" x="177.5" y="335" width="20" height="20"/>
+                            </activityIndicatorView>
                         </subviews>
                         <color key="backgroundColor" name="charcoalGrey"/>
                         <constraints>
                             <constraint firstItem="2hw-GH-ZzO" firstAttribute="trailing" secondItem="8Ah-Gl-chL" secondAttribute="trailing" id="2Jx-PF-K7z"/>
+                            <constraint firstItem="raL-Iy-fWQ" firstAttribute="centerX" secondItem="2hw-GH-ZzO" secondAttribute="centerX" id="3bX-iT-xZU"/>
                             <constraint firstItem="8Ah-Gl-chL" firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="0Eh-4P-us5" secondAttribute="trailing" constant="20" id="8B7-HH-U5X"/>
                             <constraint firstItem="2hw-GH-ZzO" firstAttribute="leading" secondItem="8Ah-Gl-chL" secondAttribute="leading" id="CQa-7x-ELh"/>
                             <constraint firstItem="wfp-6A-yeJ" firstAttribute="trailing" secondItem="8Ah-Gl-chL" secondAttribute="trailing" id="HlV-uJ-A80"/>
                             <constraint firstItem="wfp-6A-yeJ" firstAttribute="bottom" secondItem="djB-vy-Fcp" secondAttribute="bottom" id="Igs-vw-1Se"/>
+                            <constraint firstItem="raL-Iy-fWQ" firstAttribute="centerY" secondItem="2hw-GH-ZzO" secondAttribute="centerY" id="RGK-5e-SOU"/>
                             <constraint firstItem="2hw-GH-ZzO" firstAttribute="top" secondItem="0Eh-4P-us5" secondAttribute="bottom" constant="20" id="Vqq-td-x3J"/>
                             <constraint firstItem="wfp-6A-yeJ" firstAttribute="leading" secondItem="8Ah-Gl-chL" secondAttribute="leading" id="c6E-wY-xK8"/>
                             <constraint firstItem="0Eh-4P-us5" firstAttribute="leading" secondItem="8Ah-Gl-chL" secondAttribute="leading" constant="20" id="oHD-b1-MFR"/>
@@ -102,6 +107,7 @@
                         <viewLayoutGuide key="safeArea" id="8Ah-Gl-chL"/>
                     </view>
                     <connections>
+                        <outlet property="activityIndicator" destination="raL-Iy-fWQ" id="xbA-Fi-T7z"/>
                         <outlet property="doneButton" destination="b1R-ha-hZK" id="eGq-hx-Ntn"/>
                         <outlet property="topLabel" destination="0Eh-4P-us5" id="Fh0-cT-xmY"/>
                     </connections>
@@ -113,7 +119,7 @@
         <!--Confirm Mnemonic View Controller-->
         <scene sceneID="0SF-u2-7r0">
             <objects>
-                <viewController storyboardIdentifier="ConfirmMnemonicViewController" id="tpG-El-WpN" customClass="ConfirmMnemonicViewController" customModule="Zap" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="ConfirmMnemonicViewController" id="tpG-El-WpN" customClass="ConfirmMnemonicViewController" customModule="ZapShared" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="0gb-af-vDr">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -140,7 +146,7 @@
                                             <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                                         </collectionViewFlowLayout>
                                         <cells>
-                                            <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="ConfirmMnemonicCollectionViewCell" id="pTE-Xh-qrv" customClass="ConfirmMnemonicCollectionViewCell" customModule="Zap" customModuleProvider="target">
+                                            <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="ConfirmMnemonicCollectionViewCell" id="pTE-Xh-qrv" customClass="ConfirmMnemonicCollectionViewCell" customModule="ZapShared" customModuleProvider="target">
                                                 <rect key="frame" x="0.0" y="-16.5" width="225" height="78"/>
                                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                 <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO">
@@ -232,7 +238,7 @@
         <!--Recover Wallet View Controller-->
         <scene sceneID="ys6-VJ-PKZ">
             <objects>
-                <viewController storyboardIdentifier="RecoverWalletViewController" id="qsX-RZ-eEH" customClass="RecoverWalletViewController" customModule="Zap" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="RecoverWalletViewController" id="qsX-RZ-eEH" customClass="RecoverWalletViewController" customModule="ZapShared" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="M6g-Hp-zql">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -276,7 +282,7 @@
         <!--Mnemonic Page View Controller-->
         <scene sceneID="fD5-rd-3Ia">
             <objects>
-                <pageViewController autoresizesArchivedViewToFullSize="NO" transitionStyle="scroll" navigationOrientation="horizontal" spineLocation="none" id="U1K-Gb-FhV" customClass="MnemonicPageViewController" customModule="Zap" customModuleProvider="target" sceneMemberID="viewController"/>
+                <pageViewController autoresizesArchivedViewToFullSize="NO" transitionStyle="scroll" navigationOrientation="horizontal" spineLocation="none" id="U1K-Gb-FhV" customClass="MnemonicPageViewController" customModule="ZapShared" customModuleProvider="target" sceneMemberID="viewController"/>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="I3f-kg-LM3" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1710" y="839"/>
@@ -284,7 +290,7 @@
         <!--Mnemonic Word List View Controller-->
         <scene sceneID="iVc-jy-mdd">
             <objects>
-                <viewController storyboardIdentifier="MnemonicWordListViewController" id="NfN-oY-Khn" customClass="MnemonicWordListViewController" customModule="Zap" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="MnemonicWordListViewController" id="NfN-oY-Khn" customClass="MnemonicWordListViewController" customModule="ZapShared" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="uZ8-S6-eho">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -293,7 +299,7 @@
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="MnemonicWordTableViewCell" id="Fjw-Ok-cRp" customClass="MnemonicWordTableViewCell" customModule="Zap" customModuleProvider="target">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="MnemonicWordTableViewCell" id="Fjw-Ok-cRp" customClass="MnemonicWordTableViewCell" customModule="ZapShared" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="28" width="375" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="Fjw-Ok-cRp" id="F4j-lz-ZHc">
@@ -360,7 +366,7 @@
     </scenes>
     <resources>
         <namedColor name="charcoalGrey">
-            <color red="0.19215686274509805" green="0.20000000000000001" blue="0.23137254901960785" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <color red="0.19200000166893005" green="0.20000000298023224" blue="0.23100000619888306" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
     </resources>
 </document>

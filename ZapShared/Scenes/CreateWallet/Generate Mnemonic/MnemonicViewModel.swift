@@ -8,42 +8,23 @@
 import Bond
 import Foundation
 
-let WORDLIST = [
-    "print",
-    "teach",
-    "burger",
-    "rack",
-    "eyebrow",
-    "sniff",
-    "nose",
-    "code",
-    "web",
-    "month",
-    "trial",
-    "gap",
-    "gap",
-    "employ",
-    "cabin",
-    "start",
-    "consider",
-    "input",
-    "manage",
-    "sentence",
-    "moon",
-    "hint",
-    "poverty",
-    "budget"
-]
-
 final class MnemonicViewModel {
-    private let aezeed = WORDLIST
     private let wallet: WalletProtocol
+    private var aezeed: [String]? {
+        didSet {
+            guard let aezeed = aezeed else { return }
+            updatePageWords(with: aezeed)
+        }
+    }
     
-    var confirmMnemonicViewModel: ConfirmMnemonicViewModel {
+    let pageWords = Observable<[[MnemonicWord]]?>(nil)
+    
+    var confirmMnemonicViewModel: ConfirmMnemonicViewModel? {
+        guard let aezeed = aezeed else { return  nil }
         return ConfirmMnemonicViewModel(aezeed: aezeed)
     }
     
-    var pageWords: [[MnemonicWord]] {
+    func updatePageWords(with aezeed: [String]) {
         let maxWordCount = 6
         var subArrays = [[String]]()
         var array = aezeed
@@ -55,7 +36,8 @@ final class MnemonicViewModel {
         }
         
         var index = 0
-        return subArrays.map {
+        
+        pageWords.value = subArrays.map {
             $0.map {
                 defer { index += 1 }
                 return MnemonicWord(index: index, word: $0)
@@ -65,6 +47,11 @@ final class MnemonicViewModel {
     
     init(walletUnlocker: WalletProtocol) {
         self.wallet = walletUnlocker
+        
+        walletUnlocker.generateSeed(passphrase: nil) { [weak self] result in
+            guard let aezeed = result.value else { return }
+            self?.aezeed = aezeed
+        }
     }
 }
 

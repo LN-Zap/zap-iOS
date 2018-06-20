@@ -22,14 +22,23 @@ final class MnemonicPageViewController: UIPageViewController {
         
         view.backgroundColor = UIColor.zap.charcoalGreyLight
         
-        orderedViewControllers = mnemonicViewModel?.pageWords.map {
-            UIStoryboard.instantiateMnemonicWordListViewController(with: $0)
-        }
+        mnemonicViewModel?.pageWords
+            .ignoreNil()
+            .observeOn(DispatchQueue.main)
+            .observeNext { [weak self] pageWords in
+                self?.updateViewControllers(pageWords: pageWords)
+            }
+            .dispose(in: reactive.bag)
         
         dataSource = self
-        
+    }
+    
+    func updateViewControllers(pageWords: [[MnemonicWord]]) {
+        orderedViewControllers = pageWords.map {
+            UIStoryboard.instantiateMnemonicWordListViewController(with: $0)
+        }
         if let firstViewController = orderedViewControllers?.first {
-            setViewControllers([firstViewController], direction: .forward, animated: true, completion: nil)
+            setViewControllers([firstViewController], direction: .forward, animated: false, completion: nil)
         }
     }
     
