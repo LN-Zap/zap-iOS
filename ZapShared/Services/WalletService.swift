@@ -8,11 +8,12 @@
 import Foundation
 
 final class WalletService {
+    static private let PASSWORD = "12345678"
     
     private(set) var isUnlocked = false
-    private let walletUnlocker: WalletUnlocker
+    private let walletUnlocker: WalletStream
     
-    init(walletUnlocker: WalletUnlocker = WalletUnlocker()) {
+    init(walletUnlocker: WalletStream) {
         self.walletUnlocker = walletUnlocker
     }
     
@@ -41,7 +42,7 @@ final class WalletService {
     
     func unlock(callback: @escaping (Result<Void>) -> Void) {
         guard !isUnlocked else { return }
-        walletUnlocker.unlockWallet { [weak self] result in
+        walletUnlocker.unlockWallet(password: WalletService.PASSWORD) { [weak self] result in
             if result.value != nil {
                 self?.isUnlocked = true
                 callback(Result(value: ()))
@@ -55,7 +56,7 @@ final class WalletService {
         walletUnlocker.generateSeed { [weak self] result in
             guard let mnemonic = result.value else { return }
             self?.mnemonic = mnemonic
-            self?.walletUnlocker.initWallet(mnemonic: mnemonic, callback: callback)
+            self?.walletUnlocker.initWallet(mnemonic: mnemonic, password: WalletService.PASSWORD, callback: callback)
         }
     }
 }

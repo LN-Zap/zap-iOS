@@ -8,47 +8,45 @@
 import Bond
 import Foundation
 
-struct Aezeed {
-    let wordList = ["print",
-                      "teach",
-                      "burger",
-                      "rack",
-                      "eyebrow",
-                      "sniff",
-                      "nose",
-                      "code",
-                      "web",
-                      "month",
-                      "trial",
-                      "gap",
-                      "gap",
-                      "employ",
-                      "cabin",
-                      "start",
-                      "consider",
-                      "input",
-                      "manage",
-                      "sentence",
-                      "moon",
-                      "hint",
-                      "poverty",
-                      "budget"]
-}
+let WORDLIST = [
+    "print",
+    "teach",
+    "burger",
+    "rack",
+    "eyebrow",
+    "sniff",
+    "nose",
+    "code",
+    "web",
+    "month",
+    "trial",
+    "gap",
+    "gap",
+    "employ",
+    "cabin",
+    "start",
+    "consider",
+    "input",
+    "manage",
+    "sentence",
+    "moon",
+    "hint",
+    "poverty",
+    "budget"
+]
 
 final class MnemonicViewModel {
-    private let aezeed = Aezeed()
-    private let lightningService: LightningService
-    
-    let wordList: Observable<[String]>
+    private let aezeed = WORDLIST
+    private let wallet: WalletProtocol
     
     var confirmMnemonicViewModel: ConfirmMnemonicViewModel {
-        return ConfirmMnemonicViewModel(aezeed: aezeed, lightningService: lightningService)
+        return ConfirmMnemonicViewModel(aezeed: aezeed)
     }
     
     var pageWords: [[MnemonicWord]] {
         let maxWordCount = 6
         var subArrays = [[String]]()
-        var array = aezeed.wordList
+        var array = aezeed
         
         while !array.isEmpty {
             let prefix = array.prefix(maxWordCount)
@@ -65,9 +63,8 @@ final class MnemonicViewModel {
         }
     }
     
-    init(lightningService: LightningService) {
-        self.lightningService = lightningService
-        wordList = Observable<[String]>(aezeed.wordList)
+    init(walletUnlocker: WalletProtocol) {
+        self.wallet = walletUnlocker
     }
 }
 

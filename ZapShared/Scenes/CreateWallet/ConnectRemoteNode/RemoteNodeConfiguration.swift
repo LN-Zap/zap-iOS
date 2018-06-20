@@ -30,7 +30,7 @@ struct RemoteNodeConfigurationQRCode: Codable {
 }
 
 /// saved to keychain. url is required.
-public struct RemoteNodeConfiguration: Codable {
+public struct RemoteRPCConfiguration: Codable {
     let certificate: String
     let macaroon: Data
     let url: URL
@@ -42,12 +42,12 @@ public struct RemoteNodeConfiguration: Codable {
             let data = try? JSONEncoder().encode(self)
             else { return }
         
-        let keychain = RemoteNodeConfiguration.keychain
+        let keychain = RemoteRPCConfiguration.keychain
         keychain[data: "remoteNodeConfiguration"] = data
     }
     
-    static func load() -> RemoteNodeConfiguration? {
-        let keychain = RemoteNodeConfiguration.keychain
+    static func load() -> RemoteRPCConfiguration? {
+        let keychain = RemoteRPCConfiguration.keychain
         guard let data = keychain[data: "remoteNodeConfiguration"] else { return nil }
         return try? JSONDecoder().decode(self, from: data)
     }

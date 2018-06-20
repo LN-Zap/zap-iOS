@@ -88,3 +88,30 @@ extension Lnrpc_CloseChannelRequest {
         self.force = force
     }
 }
+
+// MARK: - Wallet
+
+extension Lnrpc_GenSeedRequest {
+    init(passphrase: String?) {
+        if let passphrase = passphrase?.data(using: .utf8) {
+            self.aezeedPassphrase = passphrase
+        }
+    }
+}
+
+extension Lnrpc_InitWalletRequest {
+    init(password: String, mnemonic: [String]) {
+        if let passwordData = password.data(using: .utf8) {
+            self.walletPassword = passwordData
+        }
+        self.cipherSeedMnemonic = mnemonic
+    }
+}
+
+extension Lnrpc_UnlockWalletRequest {
+    init(password: String) {
+        if let passwordData = password.data(using: .utf8) {
+            self.walletPassword = passwordData
+        }
+    }
+}

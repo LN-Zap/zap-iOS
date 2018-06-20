@@ -33,7 +33,7 @@ final class ConnectRemoteNodeViewModel: NSObject {
             }
             .dispose(in: reactive.bag)
         
-        if let savedConfiguration = RemoteNodeConfiguration.load() {
+        if let savedConfiguration = RemoteRPCConfiguration.load() {
             updateUI(certificate: savedConfiguration.certificate, macaroon: savedConfiguration.macaroon, url: savedConfiguration.url)
         }
     }
@@ -67,7 +67,7 @@ final class ConnectRemoteNodeViewModel: NSObject {
             let macaroon = macaroon
             else { return }
         
-        let remoteNodeConfiguration = RemoteNodeConfiguration(certificate: certificate, macaroon: macaroon, url: url)
+        let remoteNodeConfiguration = RemoteRPCConfiguration(certificate: certificate, macaroon: macaroon, url: url)
         remoteNodeConfiguration.save()
         
         testServer = LightningRPC(configuration: remoteNodeConfiguration)

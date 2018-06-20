@@ -11,7 +11,7 @@ final class RemoveRemoteNodeSettingsItem: SettingsItem {
     let title = "Remove Remote Node"
     
     func didSelectItem(from fromViewController: UIViewController) {
-        RemoteNodeConfiguration.delete()
+        RemoteRPCConfiguration.delete()
         fatalError("Crash to restart.")
     }
 }

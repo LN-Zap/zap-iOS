@@ -9,8 +9,10 @@ import Bond
 import Foundation
 
 extension UIStoryboard {
-    static func instantiateMnemonicViewController() -> MnemonicViewController {
-        return Storyboard.createWallet.instantiate(viewController: MnemonicViewController.self)
+    static func instantiateMnemonicViewController(mnemonicViewModel: MnemonicViewModel) -> MnemonicViewController {
+        let viewController = Storyboard.createWallet.instantiate(viewController: MnemonicViewController.self)
+        viewController.mnemonicViewModel = mnemonicViewModel
+        return viewController
     }
 }
 
@@ -19,7 +21,7 @@ final class MnemonicViewController: UIViewController {
     @IBOutlet private weak var topLabel: UILabel!
     
     private weak var pageViewController: MnemonicPageViewController?
-    var mnemonicViewModel: MnemonicViewModel?
+    fileprivate var mnemonicViewModel: MnemonicViewModel?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -29,7 +31,7 @@ final class MnemonicViewController: UIViewController {
         Style.button.apply(to: doneButton)
         Style.label.apply(to: topLabel)
         topLabel.textColor = .white
-        topLabel.text = "Save your mnemonic text. Bitcoin Bitcoin Bitcoin Bitcoin Bitcoin Bitcoin."
+        topLabel.text = "Make sure to store the mnemonic at a save location."
         
         doneButton.setTitle("Next", for: .normal)
         doneButton.tintColor = .white

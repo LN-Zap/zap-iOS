@@ -32,7 +32,14 @@ final class SetupCoordinator {
     }
     
     private func createNewWallet() {
-        let viewController = UIStoryboard.instantiateMnemonicViewController()
+        if !Lnd.isRunning {
+            Lnd.start()
+        }
+
+        let unlocker = WalletStream()
+        let mnemonicViewModel = MnemonicViewModel(walletUnlocker: unlocker)
+
+        let viewController = UIStoryboard.instantiateMnemonicViewController(mnemonicViewModel: mnemonicViewModel)
         navigationController?.pushViewController(viewController, animated: true)
     }
     

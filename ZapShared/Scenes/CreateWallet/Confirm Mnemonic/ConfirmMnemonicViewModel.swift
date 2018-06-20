@@ -16,15 +16,12 @@ struct ConfirmWordViewModel {
 }
 
 final class ConfirmMnemonicViewModel {
-    let lightningService: LightningService
     let wordList: [ConfirmWordViewModel]
-    
-    init(aezeed: Aezeed, lightningService: LightningService) {
-        self.lightningService = lightningService
-        
+
+    init(aezeed: [String]) {
         var randomIndices = [Int]()
         while randomIndices.count < requiredWordCount {
-            let randomNumber = Int(arc4random_uniform(UInt32(aezeed.wordList.count)))
+            let randomNumber = Int(arc4random_uniform(UInt32(aezeed.count)))
             if !randomIndices.contains(randomNumber) {
                 randomIndices.append(randomNumber)
             }
@@ -32,7 +29,7 @@ final class ConfirmMnemonicViewModel {
         
         randomIndices.sort()
         
-        wordList = randomIndices.map { ConfirmWordViewModel(word: aezeed.wordList[$0], index: $0) }
+        wordList = randomIndices.map { ConfirmWordViewModel(word: aezeed[$0], index: $0) }
     }
     
     func didVerifyMnemonic() {

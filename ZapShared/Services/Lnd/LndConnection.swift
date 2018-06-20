@@ -10,7 +10,7 @@ import Foundation
 enum LndConnection {
     case none
     case local
-    case remote(RemoteNodeConfiguration)
+    case remote(RemoteRPCConfiguration)
     
     var api: LightningProtocol? {
         switch self {
@@ -25,7 +25,7 @@ enum LndConnection {
     }
     
     static var current: LndConnection {
-        if let remoteConfiguration = RemoteNodeConfiguration.load() {
+        if let remoteConfiguration = RemoteRPCConfiguration.load() {
             return .remote(remoteConfiguration)
         } else if WalletService.didCreateWallet {
             return .local

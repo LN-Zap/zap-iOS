@@ -195,11 +195,11 @@
 		AD391CE020D16FE1007EE22A /* LightningProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADBB36212080A3B1005662B4 /* LightningProtocol.swift */; };
 		AD391CE120D16FE1007EE22A /* LightningRPC.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0A33EF32028743200BB76F4 /* LightningRPC.swift */; };
 		AD391CE220D16FE1007EE22A /* LightningStream.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADBA4420209AE75600D18B71 /* LightningStream.swift */; };
-		AD391CE320D16FE1007EE22A /* LndCallback.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADBA4422209B00D300D18B71 /* LndCallback.swift */; };
+		AD391CE320D16FE1007EE22A /* StreamCallback.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADBA4422209B00D300D18B71 /* StreamCallback.swift */; };
 		AD391CE420D16FE1007EE22A /* LndError.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0D3C97C20616AB80015C5D7 /* LndError.swift */; };
 		AD391CE520D16FE1007EE22A /* ProtobufExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADBA4424209B067400D18B71 /* ProtobufExtensions.swift */; };
 		AD391CE620D16FE1007EE22A /* Result.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0D3C96B205FCBF40015C5D7 /* Result.swift */; };
-		AD391CE720D16FE1007EE22A /* WalletUnlocker.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0D3C969205D55570015C5D7 /* WalletUnlocker.swift */; };
+		AD391CE720D16FE1007EE22A /* WalletRPC.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0D3C969205D55570015C5D7 /* WalletRPC.swift */; };
 		AD391CE820D16FEC007EE22A /* Channel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A01009382014BE460001EF94 /* Channel.swift */; };
 		AD391CE920D16FEC007EE22A /* CloseStatusUpdate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0A96B8520174BAC00788808 /* CloseStatusUpdate.swift */; };
 		AD391CEA20D16FEC007EE22A /* GraphTopologyUpdate.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD93ED5520A09D59000E814E /* GraphTopologyUpdate.swift */; };
@@ -264,6 +264,8 @@
 		AD391D5B20D2A831007EE22A /* Roboto-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = A0919153203C27C300FA525A /* Roboto-Bold.ttf */; };
 		AD5FA003207D0D03000E9493 /* BitcoinURI.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD5FA002207D0D02000E9493 /* BitcoinURI.swift */; };
 		AD5FA005207D0E70000E9493 /* BitcoinURITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD5FA004207D0E70000E9493 /* BitcoinURITests.swift */; };
+		AD6F863220DA3C66008C371B /* WalletStream.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD6F863120DA3C66008C371B /* WalletStream.swift */; };
+		AD6F863420DA3C99008C371B /* WalletProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD6F863320DA3C99008C371B /* WalletProtocol.swift */; };
 		AD7746492076122D00EC596B /* AddressType.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD7746482076122D00EC596B /* AddressType.swift */; };
 		AD774651207616B100EC596B /* Network.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD77464A207615E000EC596B /* Network.swift */; };
 		AD77465320761DB400EC596B /* AddressTypeTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD77465220761DB400EC596B /* AddressTypeTests.swift */; };
@@ -491,7 +493,7 @@
 		A0C2EABF206F8D10003AE56E /* Bitcoin.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Bitcoin.swift; sourceTree = "<group>"; };
 		A0C2EAC1206F8D37003AE56E /* Currency.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Currency.swift; sourceTree = "<group>"; };
 		A0C2EAC3206F9539003AE56E /* ExchangeUpdaterJob.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExchangeUpdaterJob.swift; sourceTree = "<group>"; };
-		A0D3C969205D55570015C5D7 /* WalletUnlocker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WalletUnlocker.swift; sourceTree = "<group>"; };
+		A0D3C969205D55570015C5D7 /* WalletRPC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WalletRPC.swift; sourceTree = "<group>"; };
 		A0D3C96B205FCBF40015C5D7 /* Result.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Result.swift; sourceTree = "<group>"; };
 		A0D3C970205FF0E10015C5D7 /* MnemonicViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MnemonicViewController.swift; sourceTree = "<group>"; };
 		A0D3C9792060070D0015C5D7 /* WalletService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WalletService.swift; sourceTree = "<group>"; };
@@ -573,6 +575,8 @@
 		AD680A9820B06B840018986B /* DetailTimerTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DetailTimerTableViewCell.xib; sourceTree = "<group>"; };
 		AD680A9E20B07AD90018986B /* ConnectRemoteNode.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = ConnectRemoteNode.storyboard; sourceTree = "<group>"; };
 		AD680AA020B07AE90018986B /* ConnectRemoteNodeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConnectRemoteNodeViewController.swift; sourceTree = "<group>"; };
+		AD6F863120DA3C66008C371B /* WalletStream.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WalletStream.swift; sourceTree = "<group>"; };
+		AD6F863320DA3C99008C371B /* WalletProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WalletProtocol.swift; sourceTree = "<group>"; };
 		AD6FFC9B20A9D15E00B57330 /* OnChainTransactionViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnChainTransactionViewModel.swift; sourceTree = "<group>"; };
 		AD6FFC9D20A9D19400B57330 /* LightningPaymentViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LightningPaymentViewModel.swift; sourceTree = "<group>"; };
 		AD6FFC9F20A9D19E00B57330 /* LightningInvoiceViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LightningInvoiceViewModel.swift; sourceTree = "<group>"; };
@@ -617,7 +621,7 @@
 		ADBA12032090CD22001F7700 /* KeyPadView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyPadView.swift; sourceTree = "<group>"; };
 		ADBA120520930C94001F7700 /* UIViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIViewController.swift; sourceTree = "<group>"; };
 		ADBA4420209AE75600D18B71 /* LightningStream.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LightningStream.swift; sourceTree = "<group>"; };
-		ADBA4422209B00D300D18B71 /* LndCallback.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LndCallback.swift; sourceTree = "<group>"; };
+		ADBA4422209B00D300D18B71 /* StreamCallback.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StreamCallback.swift; sourceTree = "<group>"; };
 		ADBA4424209B067400D18B71 /* ProtobufExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProtobufExtensions.swift; sourceTree = "<group>"; };
 		ADBB361F207FA5D6005662B4 /* Date+Localizable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Date+Localizable.swift"; sourceTree = "<group>"; };
 		ADBB36212080A3B1005662B4 /* LightningProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LightningProtocol.swift; sourceTree = "<group>"; };
@@ -1135,11 +1139,13 @@
 				ADBB36212080A3B1005662B4 /* LightningProtocol.swift */,
 				A0A33EF32028743200BB76F4 /* LightningRPC.swift */,
 				ADBA4420209AE75600D18B71 /* LightningStream.swift */,
-				ADBA4422209B00D300D18B71 /* LndCallback.swift */,
 				A0D3C97C20616AB80015C5D7 /* LndError.swift */,
 				ADBA4424209B067400D18B71 /* ProtobufExtensions.swift */,
 				A0D3C96B205FCBF40015C5D7 /* Result.swift */,
-				A0D3C969205D55570015C5D7 /* WalletUnlocker.swift */,
+				ADBA4422209B00D300D18B71 /* StreamCallback.swift */,
+				AD6F863320DA3C99008C371B /* WalletProtocol.swift */,
+				A0D3C969205D55570015C5D7 /* WalletRPC.swift */,
+				AD6F863120DA3C66008C371B /* WalletStream.swift */,
 			);
 			path = Api;
 			sourceTree = "<group>";
@@ -1992,7 +1998,7 @@
 				AD391C5B20D16F7A007EE22A /* MnemonicViewController.swift in Sources */,
 				AD391C3420D16EFA007EE22A /* UILabel.swift in Sources */,
 				AD391CB120D16FA8007EE22A /* UpdatePinSettingsItem.swift in Sources */,
-				AD391CE720D16FE1007EE22A /* WalletUnlocker.swift in Sources */,
+				AD391CE720D16FE1007EE22A /* WalletRPC.swift in Sources */,
 				AD391CEA20D16FEC007EE22A /* GraphTopologyUpdate.swift in Sources */,
 				AD391CD020D16FE1007EE22A /* LightningPaymentDetailViewModel.swift in Sources */,
 				AD391CA120D16FA8007EE22A /* RootViewController.swift in Sources */,
@@ -2065,6 +2071,7 @@
 				AD391C4020D16F0B007EE22A /* FiatCurrency.swift in Sources */,
 				AD391CAD20D16FA8007EE22A /* OnChainRequestAddressTypeSettingsItem.swift in Sources */,
 				AD391CE120D16FE1007EE22A /* LightningRPC.swift in Sources */,
+				AD6F863420DA3C99008C371B /* WalletProtocol.swift in Sources */,
 				AD391CB720D16FA8007EE22A /* SettingsViewController.swift in Sources */,
 				AD391CD720D16FE1007EE22A /* LightningPaymentViewModel.swift in Sources */,
 				AD391C3620D16EFA007EE22A /* UITableView.swift in Sources */,
@@ -2087,6 +2094,7 @@
 				AD391D0F20D16FF5007EE22A /* SegmentButton.swift in Sources */,
 				AD391CB620D16FA8007EE22A /* SettingsContainerViewController.swift in Sources */,
 				AD391C7120D16F89007EE22A /* OpenChannelQRCodeScannerStrategy.swift in Sources */,
+				AD6F863220DA3C66008C371B /* WalletStream.swift in Sources */,
 				AD391CD920D16FE1007EE22A /* TransactionViewModel.swift in Sources */,
 				AD391C3B20D16F0B007EE22A /* Json.swift in Sources */,
 				AD391CD420D16FE1007EE22A /* TransactionTableViewCell.swift in Sources */,
@@ -2106,7 +2114,7 @@
 				AD391CE620D16FE1007EE22A /* Result.swift in Sources */,
 				AD391CFB20D16FEC007EE22A /* AuthenticationService.swift in Sources */,
 				AD391C6920D16F89007EE22A /* MainViewController.swift in Sources */,
-				AD391CE320D16FE1007EE22A /* LndCallback.swift in Sources */,
+				AD391CE320D16FE1007EE22A /* StreamCallback.swift in Sources */,
 				AD391C2A20D16EFA007EE22A /* Notification.swift in Sources */,
 				AD391D0920D16FF5007EE22A /* KeyPadView.swift in Sources */,
 				AD391CA420D16FA8007EE22A /* SendOnChainViewModel.swift in Sources */,

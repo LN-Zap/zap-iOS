@@ -10,28 +10,32 @@ import Foundation
 import Lndmobile
 
 public final class Lnd {
+    public private(set) static var isRunning: Bool = false
+    
     public struct Constants {
         static let minChannelSize: Satoshi = 20000
         static let maxChannelSize: Satoshi = 16777216
         public static let maxPaymentAllowed: Satoshi = 4294967
     }
     
-    static var lndPath: URL {
+    static var path: URL {
         guard let url = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first
             else { fatalError("lnd path not found") }
         return url
     }
     
     static func start() {
-        LndConfiguration.standard.save(at: lndPath)
+        isRunning = true
+        LndConfiguration.standard.save(at: path)
 
-        guard Environment.isRunningTests else { return }
+        guard !Environment.isRunningTests else { return }
         DispatchQueue.global(qos: .userInteractive).async {
-            LndmobileStart(Lnd.lndPath.path, EmptyLndCallback())
+            LndmobileStart(Lnd.path.path, EmptyStreamCallback())
         }
     }
     
     static func stop() {
-        LndmobileStopDaemon(nil, EmptyLndCallback())
+        isRunning = false
+        LndmobileStopDaemon(nil, EmptyStreamCallback())
     }
 }
