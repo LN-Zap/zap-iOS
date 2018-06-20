@@ -10,24 +10,24 @@ import Foundation
 
 final class MnemonicViewModel {
     private let wallet: WalletProtocol
-    private var aezeed: [String]? {
+    private var mnemonic: [String]? {
         didSet {
-            guard let aezeed = aezeed else { return }
-            updatePageWords(with: aezeed)
+            guard let mnemonic = mnemonic else { return }
+            updatePageWords(with: mnemonic)
         }
     }
     
     let pageWords = Observable<[[MnemonicWord]]?>(nil)
     
     var confirmMnemonicViewModel: ConfirmMnemonicViewModel? {
-        guard let aezeed = aezeed else { return  nil }
-        return ConfirmMnemonicViewModel(aezeed: aezeed)
+        guard let mnemonic = mnemonic else { return  nil }
+        return ConfirmMnemonicViewModel(wallet: wallet, mnemonic: mnemonic)
     }
     
-    func updatePageWords(with aezeed: [String]) {
+    func updatePageWords(with mnemonic: [String]) {
         let maxWordCount = 6
         var subArrays = [[String]]()
-        var array = aezeed
+        var array = mnemonic
         
         while !array.isEmpty {
             let prefix = array.prefix(maxWordCount)
@@ -49,8 +49,8 @@ final class MnemonicViewModel {
         self.wallet = walletUnlocker
         
         walletUnlocker.generateSeed(passphrase: nil) { [weak self] result in
-            guard let aezeed = result.value else { return }
-            self?.aezeed = aezeed
+            guard let mnemonic = result.value else { return }
+            self?.mnemonic = mnemonic
         }
     }
 }

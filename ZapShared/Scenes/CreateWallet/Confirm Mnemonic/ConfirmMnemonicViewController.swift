@@ -9,9 +9,10 @@ import Bond
 import UIKit
 
 extension UIStoryboard {
-    static func instantiateConfirmMnemonicViewController(with confirmMnemonicViewModel: ConfirmMnemonicViewModel) -> ConfirmMnemonicViewController {
+    static func instantiateConfirmMnemonicViewController(confirmMnemonicViewModel: ConfirmMnemonicViewModel, walletConfirmed: @escaping () -> Void) -> ConfirmMnemonicViewController {
         let viewController = Storyboard.createWallet.instantiate(viewController: ConfirmMnemonicViewController.self)
         viewController.confirmViewModel = confirmMnemonicViewModel
+        viewController.walletConfirmed = walletConfirmed
         return viewController
     }
 }
@@ -23,6 +24,7 @@ final class ConfirmMnemonicViewController: UIViewController {
     @IBOutlet private weak var descriptionLabel: UILabel!
     @IBOutlet private weak var collectionView: UICollectionView!
     fileprivate var confirmViewModel: ConfirmMnemonicViewModel?
+    fileprivate var walletConfirmed: (() -> Void)?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -47,19 +49,13 @@ final class ConfirmMnemonicViewController: UIViewController {
         collectionView.contentInset = UIEdgeInsets(top: 0, left: 20, bottom: 0, right: 20)
     }
     
-    private func presentPinSetupViewController() {
-        fatalError("not implemented")
-//        guard let confirmViewModel = confirmViewModel else { return }
-//        present(setupPinViewController, animated: true, completion: nil)
-    }
-    
     var currentCell = 0
     
     private func selectNextCell() {
         guard let confirmViewModel = confirmViewModel else { return }
         
         if currentCell >= confirmViewModel.wordList.count - 1 {
-            presentPinSetupViewController()
+            walletConfirmed?()
             confirmViewModel.didVerifyMnemonic()
             return
         }

@@ -17,6 +17,7 @@ final class SetupCoordinator {
     private weak var navigationController: UINavigationController?
     private weak var delegate: SetupCoordinatorDelegate?
     private weak var connectRemoteNodeViewModel: ConnectRemoteNodeViewModel?
+    private weak var mnemonicViewModel: MnemonicViewModel?
     
     init(rootViewController: RootViewController, delegate: SetupCoordinatorDelegate) {
         self.rootViewController = rootViewController
@@ -36,8 +37,19 @@ final class SetupCoordinator {
 
         let unlocker = WalletStream()
         let mnemonicViewModel = MnemonicViewModel(walletUnlocker: unlocker)
-
-        let viewController = UIStoryboard.instantiateMnemonicViewController(mnemonicViewModel: mnemonicViewModel)
+        self.mnemonicViewModel = mnemonicViewModel
+        
+        let viewController = UIStoryboard.instantiateMnemonicViewController(mnemonicViewModel: mnemonicViewModel, presentConfirmMnemonic: confirmMnemonic)
+        navigationController?.pushViewController(viewController, animated: true)
+    }
+    
+    private func confirmMnemonic() {
+        guard
+            let confirmMnemonicViewModel = mnemonicViewModel?.confirmMnemonicViewModel,
+            let delegate = delegate
+            else { return }
+        
+        let viewController = UIStoryboard.instantiateConfirmMnemonicViewController(confirmMnemonicViewModel: confirmMnemonicViewModel, walletConfirmed: delegate.presentSetupPin)
         navigationController?.pushViewController(viewController, animated: true)
     }
     

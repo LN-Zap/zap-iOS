@@ -39,24 +39,4 @@ final class WalletService {
             UserDefaults.Keys.didCreateWallet.set(newValue)
         }
     }
-    
-    func unlock(callback: @escaping (Result<Void>) -> Void) {
-        guard !isUnlocked else { return }
-        walletUnlocker.unlockWallet(password: WalletService.PASSWORD) { [weak self] result in
-            if result.value != nil {
-                self?.isUnlocked = true
-                callback(Result(value: ()))
-            } else {
-                print("error")
-            }
-        }
-    }
-    
-    func setup(callback: @escaping (Result<Void>) -> Void) {
-        walletUnlocker.generateSeed { [weak self] result in
-            guard let mnemonic = result.value else { return }
-            self?.mnemonic = mnemonic
-            self?.walletUnlocker.initWallet(mnemonic: mnemonic, password: WalletService.PASSWORD, callback: callback)
-        }
-    }
 }
