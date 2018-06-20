@@ -17,19 +17,28 @@ extension UIStoryboard {
 }
 
 final class SyncViewController: UIViewController {
+    @IBOutlet private weak var gradientView: GradientView!
+    @IBOutlet private weak var gradientViewHeightConstraint: NSLayoutConstraint!
     @IBOutlet private weak var syncLabel: UILabel!
+    @IBOutlet private weak var descriptionLabel: UILabel!
     @IBOutlet private weak var dateLabel: UILabel!
-    @IBOutlet private weak var progressBar: UIProgressView!
     
     fileprivate var lightningService: LightningService?
     
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        Style.label.apply(to: syncLabel, dateLabel)
+        gradientView.direction = .diagonal
+        Style.label.apply(to: syncLabel, dateLabel, descriptionLabel)
+        syncLabel.font = syncLabel.font.withSize(24)
+        descriptionLabel.font = descriptionLabel.font.withSize(16)
+        dateLabel.font = dateLabel.font.withSize(12)
         syncLabel.textColor = .white
-        dateLabel.textColor = .lightGray
-                
+        descriptionLabel.textColor = .white
+        dateLabel.textColor = .white
+        
+        descriptionLabel.text = "Syncing to blockchain…"
+        
         guard let lightningService = lightningService else { fatalError("viewModel not set.") }
         
         let percentSignal = combineLatest(lightningService.infoService.blockHeight, lightningService.infoService.blockChainHeight) { blockHeigh, maxBlockHeight -> Double in
@@ -38,13 +47,16 @@ final class SyncViewController: UIViewController {
         }
         
         percentSignal
-            .map { "Syncing \(Int($0 * 100))%" }
+            .map { "\(Int($0 * 100))%" }
             .bind(to: syncLabel.reactive.text)
             .dispose(in: reactive.bag)
         
         percentSignal
-            .map { Float($0) }
-            .bind(to: progressBar.reactive.progress)
+            .map { CGFloat($0) * UIScreen.main.bounds.height }
+            .observeOn(DispatchQueue.main)
+            .observeNext { [weak self] in
+                self?.gradientViewHeightConstraint.constant = $0
+            }
             .dispose(in: reactive.bag)
         
         lightningService.infoService.bestHeaderDate

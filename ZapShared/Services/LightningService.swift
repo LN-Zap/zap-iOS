@@ -31,7 +31,7 @@ public final class LightningService: NSObject {
         infoService.walletState
             .filter { $0 != .connecting }
             .distinct()
-            .observeNext { [weak self] _ in
+            .observeNext { [weak self] state in
                 self?.channelService.update()
                 self?.balanceService.update()
                 self?.transactionService.update()

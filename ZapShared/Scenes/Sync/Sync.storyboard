@@ -6,7 +6,6 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
-        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -15,25 +14,32 @@
         <!--Sync View Controller-->
         <scene sceneID="jO5-fM-adh">
             <objects>
-                <viewController storyboardIdentifier="SyncViewController" id="qMe-Xi-uzZ" customClass="SyncViewController" customModule="Zap" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="SyncViewController" id="qMe-Xi-uzZ" customClass="SyncViewController" customModule="ZapShared" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Hcq-Mz-amK">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <progressView opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="750" progress="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="SCa-1d-BZ6">
-                                <rect key="frame" x="36" y="336.5" width="303" height="2"/>
-                            </progressView>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="pin-logo" translatesAutoresizingMaskIntoConstraints="NO" id="vjP-ZI-WSV">
-                                <rect key="frame" x="168.5" y="140" width="38" height="36"/>
-                            </imageView>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="FSC-fR-MGu" customClass="GradientView" customModule="ZapShared" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="667" width="375" height="0.0"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" id="sKs-bq-pV4"/>
+                                </constraints>
+                            </view>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="u84-OV-yt2">
-                                <rect key="frame" x="166.5" y="296" width="42" height="20.5"/>
+                                <rect key="frame" x="166.5" y="273.5" width="42" height="20.5"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Lrl-O5-tIv">
-                                <rect key="frame" x="166.5" y="358.5" width="42" height="20.5"/>
+                                <rect key="frame" x="166" y="309" width="42" height="20.5"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="R2h-In-kXJ">
+                                <rect key="frame" x="166" y="334.5" width="42" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
@@ -41,23 +47,26 @@
                         </subviews>
                         <color key="backgroundColor" name="charcoalGrey"/>
                         <constraints>
-                            <constraint firstItem="vjP-ZI-WSV" firstAttribute="top" secondItem="pFh-z5-n7c" secondAttribute="top" constant="120" id="1IR-Bf-mh8"/>
-                            <constraint firstItem="Lrl-O5-tIv" firstAttribute="top" secondItem="SCa-1d-BZ6" secondAttribute="bottom" constant="20" id="6Jn-Xv-zVy"/>
-                            <constraint firstItem="u84-OV-yt2" firstAttribute="top" secondItem="vjP-ZI-WSV" secondAttribute="bottom" constant="120" id="BAz-qd-xc5"/>
-                            <constraint firstAttribute="trailingMargin" secondItem="SCa-1d-BZ6" secondAttribute="trailing" constant="20" id="KKr-tK-fdH"/>
-                            <constraint firstItem="SCa-1d-BZ6" firstAttribute="top" secondItem="u84-OV-yt2" secondAttribute="bottom" constant="20" id="OHz-GM-YFI"/>
+                            <constraint firstItem="u84-OV-yt2" firstAttribute="centerY" secondItem="pFh-z5-n7c" secondAttribute="centerY" constant="-60" id="0oB-Kt-uop"/>
+                            <constraint firstItem="FSC-fR-MGu" firstAttribute="leading" secondItem="pFh-z5-n7c" secondAttribute="leading" id="7fP-H7-YbQ"/>
+                            <constraint firstItem="R2h-In-kXJ" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="pFh-z5-n7c" secondAttribute="leading" constant="20" id="Hb3-Sf-zI5"/>
                             <constraint firstItem="Lrl-O5-tIv" firstAttribute="centerX" secondItem="pFh-z5-n7c" secondAttribute="centerX" id="TAa-mE-bok"/>
+                            <constraint firstItem="Lrl-O5-tIv" firstAttribute="top" secondItem="u84-OV-yt2" secondAttribute="bottom" constant="15" id="UG1-n5-f5d"/>
+                            <constraint firstItem="R2h-In-kXJ" firstAttribute="top" secondItem="Lrl-O5-tIv" secondAttribute="bottom" constant="5" id="aZB-aT-t2g"/>
+                            <constraint firstItem="R2h-In-kXJ" firstAttribute="centerX" secondItem="pFh-z5-n7c" secondAttribute="centerX" id="bxA-ZP-eVu"/>
                             <constraint firstItem="u84-OV-yt2" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="pFh-z5-n7c" secondAttribute="leading" constant="20" id="kf0-UT-7Bw"/>
-                            <constraint firstItem="SCa-1d-BZ6" firstAttribute="leading" secondItem="Hcq-Mz-amK" secondAttribute="leadingMargin" constant="20" id="nO8-CF-GwS"/>
+                            <constraint firstAttribute="bottom" secondItem="FSC-fR-MGu" secondAttribute="bottom" id="me8-pc-X6h"/>
                             <constraint firstItem="Lrl-O5-tIv" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="pFh-z5-n7c" secondAttribute="leading" constant="20" id="uDA-QU-h0c"/>
+                            <constraint firstItem="pFh-z5-n7c" firstAttribute="trailing" secondItem="FSC-fR-MGu" secondAttribute="trailing" id="vHA-PM-iLa"/>
                             <constraint firstItem="u84-OV-yt2" firstAttribute="centerX" secondItem="pFh-z5-n7c" secondAttribute="centerX" id="vxp-5i-M6w"/>
-                            <constraint firstItem="vjP-ZI-WSV" firstAttribute="centerX" secondItem="pFh-z5-n7c" secondAttribute="centerX" id="xTo-XJ-vo2"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="pFh-z5-n7c"/>
                     </view>
                     <connections>
-                        <outlet property="dateLabel" destination="Lrl-O5-tIv" id="Iy1-y8-Da9"/>
-                        <outlet property="progressBar" destination="SCa-1d-BZ6" id="uda-cc-wEP"/>
+                        <outlet property="dateLabel" destination="R2h-In-kXJ" id="DDl-2Y-FLX"/>
+                        <outlet property="descriptionLabel" destination="Lrl-O5-tIv" id="6a4-X2-XST"/>
+                        <outlet property="gradientView" destination="FSC-fR-MGu" id="ScX-QJ-t5w"/>
+                        <outlet property="gradientViewHeightConstraint" destination="sKs-bq-pV4" id="ZkB-cF-L1l"/>
                         <outlet property="syncLabel" destination="u84-OV-yt2" id="uKm-0f-jSS"/>
                     </connections>
                 </viewController>
@@ -67,9 +76,8 @@
         </scene>
     </scenes>
     <resources>
-        <image name="pin-logo" width="38" height="36"/>
         <namedColor name="charcoalGrey">
-            <color red="0.19215686274509805" green="0.20000000000000001" blue="0.23137254901960785" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <color red="0.19200000166893005" green="0.20000000298023224" blue="0.23100000619888306" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
     </resources>
 </document>
