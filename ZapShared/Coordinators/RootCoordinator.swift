@@ -150,9 +150,7 @@ public final class RootCoordinator: NSObject, SetupCoordinatorDelegate, PinCoord
         guard let api = LndConnection.current.api else { return }
         
         if case .local = LndConnection.current {
-            WalletStream().unlockWallet(password: "12345678") { result in
-                print(result)
-            }
+            WalletStream().unlockWallet(password: "12345678") { _ in }
         }
         
         let lightningService = LightningService(api: api)
