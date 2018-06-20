@@ -22,9 +22,7 @@ final class PinCoordinator {
 
     func start() {
         let viewController = UIStoryboard.instantiatePinViewController(didAuthenticate: didAuthenticate)
-        DispatchQueue.main.async {
-            self.rootViewController.setContainerContent(viewController)
-        }
+        self.rootViewController.setContainerContent(viewController)
     }
     
     func didAuthenticate() {

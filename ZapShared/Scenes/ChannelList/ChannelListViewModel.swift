@@ -22,6 +22,7 @@ final class ChannelListViewModel: NSObject {
         super.init()
         
         combineLatest(channelService.open, channelService.pending) { return ($0, $1) }
+            .observeOn(DispatchQueue.main)
             .observeNext { [sections] open, pending in
                 let result = MutableObservable2DArray<String, ChannelViewModel>()
                 
@@ -42,9 +43,7 @@ final class ChannelListViewModel: NSObject {
                     )
                 }
                 
-                DispatchQueue.main.async {
-                    sections.replace(with: result, performDiff: true)
-                }
+                sections.replace(with: result, performDiff: true)
             }
             .dispose(in: reactive.bag)
     }

@@ -26,9 +26,7 @@ final class SetupCoordinator {
     func start() {
         let viewController = UIStoryboard.instantiateSetupViewController(createButtonTapped: createNewWallet, recoverButtonTapped: recoverExistingWallet, connectButtonTapped: connectRemoteNode)
         navigationController = viewController
-        DispatchQueue.main.async {
-            self.rootViewController.setContainerContent(viewController)
-        }
+        self.rootViewController.setContainerContent(viewController)
     }
     
     private func createNewWallet() {

@@ -33,10 +33,9 @@ final class MainCoordinator {
     func start() {
         let viewController = UIStoryboard.instantiateMainViewController(with: lightningService, settingsButtonTapped: presentSettings, sendButtonTapped: presentSend, requestButtonTapped: presentRequest, transactionsButtonTapped: presentTransactions, networkButtonTapped: presentNetwork)
         self.mainViewController = viewController
-        DispatchQueue.main.async {
-            self.rootViewController.setContainerContent(viewController)
-            self.presentTransactions()
-        }
+
+        self.rootViewController.setContainerContent(viewController)
+        self.presentTransactions()
     }
     
     private func presentSettings() {

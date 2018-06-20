@@ -18,9 +18,7 @@ final class PinSetupCoordinator {
     
     func start() {
         let viewController = UIStoryboard.instantiateSetupPinViewController(didSetupPin: didSetupPin)
-        DispatchQueue.main.async {
-            self.rootViewController.setContainerContent(viewController)
-        }
+        self.rootViewController.setContainerContent(viewController)
     }
     
     func didSetupPin() {

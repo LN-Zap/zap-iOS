@@ -110,6 +110,7 @@ public final class RootCoordinator: NSObject, SetupCoordinatorDelegate, PinCoord
         lightningService.infoService.walletState
             .skip(first: 1)
             .distinct()
+            .observeOn(DispatchQueue.main)
             .observeNext { [weak self] state in
                 switch state {
                 case .locked:
@@ -136,24 +137,20 @@ public final class RootCoordinator: NSObject, SetupCoordinatorDelegate, PinCoord
     
     private func startListeningForErrorNotifications() { // TODO: replace this with something better
         NotificationCenter.default.reactive.notification(name: .lndError)
+            .observeOn(DispatchQueue.main)
             .observeNext { notification in
                 guard let message = notification.userInfo?["message"] as? String else { return }
-                
-                DispatchQueue.main.async {
-                    let toast = Toast(message: message, style: .error)
-                    UIApplication.topViewController?.presentToast(toast, animated: true, completion: nil)
-                }
+                let toast = Toast(message: message, style: .error)
+                UIApplication.topViewController?.presentToast(toast, animated: true, completion: nil)
             }
             .dispose(in: reactive.bag)
     }
     
     internal func connect() {
-        DispatchQueue.main.async {
-            guard let api = LndConnection.current.api else { return }
-            let lightningService = LightningService(api: api)
-            lightningService.start()
-            self.lightningService = lightningService
-            self.startWalletUI(with: lightningService)
-        }
+        guard let api = LndConnection.current.api else { return }
+        let lightningService = LightningService(api: api)
+        lightningService.start()
+        self.lightningService = lightningService
+        self.startWalletUI(with: lightningService)
     }
 }
