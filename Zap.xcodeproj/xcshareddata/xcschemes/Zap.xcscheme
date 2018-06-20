@@ -112,13 +112,13 @@
             isEnabled = "YES">
          </EnvironmentVariable>
          <EnvironmentVariable
-            key = "DEFAULT_REMOTE_IP"
-            value = "192.168.1.3:10011"
+            key = "GRPC_TRACE"
+            value = "all"
             isEnabled = "YES">
          </EnvironmentVariable>
          <EnvironmentVariable
-            key = "GRPC_TRACE"
-            value = "all"
+            key = "FAKE_MNEMONIC_CONF"
+            value = "1"
             isEnabled = "YES">
          </EnvironmentVariable>
       </EnvironmentVariables>

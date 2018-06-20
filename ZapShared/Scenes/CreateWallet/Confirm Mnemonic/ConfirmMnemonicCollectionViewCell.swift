@@ -58,7 +58,8 @@ final class ConfirmMnemonicCollectionViewCell: UICollectionViewCell {
     }
     
     @IBAction private func textFieldEdidtingChanged(_ sender: UITextField) {
-        if sender.text == confirmWordViewModel?.word {
+        if sender.text == confirmWordViewModel?.word ||
+            (Environment.allowFakeMnemonicConfirmation && sender.text == "xx") {
             wordConfirmedCallback?()
         } else {
             bottomLineView.backgroundColor = UIColor.zap.tomato
