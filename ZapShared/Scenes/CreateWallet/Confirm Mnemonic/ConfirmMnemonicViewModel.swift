@@ -38,6 +38,10 @@ final class ConfirmMnemonicViewModel {
     }
     
     func didVerifyMnemonic() {
-        wallet.initWallet(mnemonic: mnemonic, password: "12345678") { _ in } // TODO: store password somewhere save
+        // TODO: store password somewhere save
+        wallet.initWallet(mnemonic: mnemonic, password: "12345678") { result in
+            guard result.error == nil else { return }
+            WalletService.didCreateWallet = true
+        }
     }
 }
