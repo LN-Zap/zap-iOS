@@ -25,6 +25,8 @@ final class SyncViewController: UIViewController {
     
     fileprivate var lightningService: LightningService?
     
+    private var initialHeight: Int?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -41,9 +43,18 @@ final class SyncViewController: UIViewController {
         
         guard let lightningService = lightningService else { fatalError("viewModel not set.") }
         
-        let percentSignal = combineLatest(lightningService.infoService.blockHeight, lightningService.infoService.blockChainHeight) { blockHeigh, maxBlockHeight -> Double in
-            guard let maxBlockHeight = maxBlockHeight else { return 0 }
-            return Double(blockHeigh) / Double(maxBlockHeight)
+        let percentSignal = combineLatest(lightningService.infoService.blockHeight, lightningService.infoService.blockChainHeight) { [weak self] syncedBlockHeigh, maxBlockHeight -> Double in
+            if self?.initialHeight == nil {
+                self?.initialHeight = syncedBlockHeigh
+            }
+            
+            guard
+                let maxBlockHeight = maxBlockHeight,
+                let initialHeight = self?.initialHeight,
+                maxBlockHeight - initialHeight > 0
+                else { return 0 }
+            
+            return Double(syncedBlockHeigh - initialHeight) / Double(maxBlockHeight - initialHeight)
         }
         
         percentSignal
