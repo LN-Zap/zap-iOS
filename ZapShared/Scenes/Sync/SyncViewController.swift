@@ -65,9 +65,7 @@ final class SyncViewController: UIViewController {
         percentSignal
             .map { CGFloat($0) * UIScreen.main.bounds.height }
             .observeOn(DispatchQueue.main)
-            .observeNext { [weak self] in
-                self?.gradientViewHeightConstraint.constant = $0
-            }
+            .observeNext(with: updateGradientView)
             .dispose(in: reactive.bag)
         
         lightningService.infoService.bestHeaderDate
@@ -80,5 +78,13 @@ final class SyncViewController: UIViewController {
             }
             .bind(to: dateLabel.reactive.text)
             .dispose(in: reactive.bag)
+    }
+    
+    func updateGradientView(for height: CGFloat) {
+        view.layoutIfNeeded()
+        UIView.animate(withDuration: 0.99, animations: { [weak self] in
+            self?.gradientViewHeightConstraint.constant = height
+            self?.view.layoutIfNeeded()
+        })
     }
 }
