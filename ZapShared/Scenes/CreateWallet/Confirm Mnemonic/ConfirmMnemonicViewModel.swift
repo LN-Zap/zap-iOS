@@ -16,13 +16,13 @@ struct ConfirmWordViewModel {
 }
 
 final class ConfirmMnemonicViewModel {
-    private let wallet: WalletProtocol
+    private let walletService: WalletService
     private let mnemonic: [String]
     
     let wordList: [ConfirmWordViewModel]
     
-    init(wallet: WalletProtocol, mnemonic: [String]) {
-        self.wallet = wallet
+    init(walletService: WalletService, mnemonic: [String]) {
+        self.walletService = walletService
         self.mnemonic = mnemonic
         
         var randomIndices = [Int]()
@@ -38,10 +38,6 @@ final class ConfirmMnemonicViewModel {
     }
     
     func didVerifyMnemonic() {
-        // TODO: store password somewhere save
-        wallet.initWallet(mnemonic: mnemonic, password: "12345678") { result in
-            guard result.error == nil else { return }
-            WalletService.didCreateWallet = true
-        }
+        walletService.initWallet(mnemonic: mnemonic) { _ in }
     }
 }

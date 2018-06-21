@@ -36,8 +36,8 @@ final class SetupCoordinator {
             Lnd.start()
         }
 
-        let wallet = WalletStream()
-        let mnemonicViewModel = MnemonicViewModel(wallet: wallet)
+        let walletService = WalletService(wallet: WalletStream())
+        let mnemonicViewModel = MnemonicViewModel(walletService: walletService)
         self.mnemonicViewModel = mnemonicViewModel
         
         let viewController = UIStoryboard.instantiateMnemonicViewController(mnemonicViewModel: mnemonicViewModel, presentConfirmMnemonic: confirmMnemonic)
@@ -61,8 +61,8 @@ final class SetupCoordinator {
             Lnd.start()
         }
         
-        let wallet = WalletStream()
-        let viewModel = RecoverWalletViewModel(wallet: wallet)
+        let walletService = WalletService(wallet: WalletStream())
+        let viewModel = RecoverWalletViewModel(walletService: walletService)
         let viewController = UIStoryboard.instantiateRecoverWalletViewController(recoverWalletViewModel: viewModel, presentSetupPin: delegate.presentSetupPin)
         navigationController?.pushViewController(viewController, animated: true)
     }

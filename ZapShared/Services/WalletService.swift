@@ -8,35 +8,38 @@
 import Foundation
 
 final class WalletService {
-    static private let PASSWORD = "12345678"
+    private let password = "12345678" // TODO: save random pw in secure enclave
     
     private(set) var isUnlocked = false
-    private let walletUnlocker: WalletStream
+    private let wallet: WalletProtocol
     
-    init(walletUnlocker: WalletStream) {
-        self.walletUnlocker = walletUnlocker
+    init(wallet: WalletProtocol) {
+        self.wallet = wallet
     }
     
-    var mnemonic: [String]? {
-        get {
-            return UserDefaults.Keys.mnemonic.get()
-        }
-        set {
-            UserDefaults.Keys.mnemonic.set(newValue)
-        }
-    }
-    
-    var didCreateWallet: Bool {
-        return mnemonic != nil
-    }
-    
-    // TODO: resolve naming conflict
-    static var didCreateWallet: Bool {
+    private(set) static var didCreateWallet: Bool {
         get {
             return UserDefaults.Keys.didCreateWallet.get(defaultValue: false)
         }
         set {
             UserDefaults.Keys.didCreateWallet.set(newValue)
         }
+    }
+    
+    func generateSeed(callback: @escaping (Result<[String]>) -> Void) {
+        wallet.generateSeed(passphrase: nil, callback: callback)
+    }
+    
+    func initWallet(mnemonic: [String], callback: @escaping (Result<Void>) -> Void) {
+        wallet.initWallet(mnemonic: mnemonic, password: password) {
+            if $0.value != nil {
+                WalletService.didCreateWallet = true
+            }
+            callback($0)
+        }
+    }
+    
+    func unlockWallet(callback: @escaping (Result<Void>) -> Void) {
+        wallet.unlockWallet(password: password, callback: callback)
     }
 }

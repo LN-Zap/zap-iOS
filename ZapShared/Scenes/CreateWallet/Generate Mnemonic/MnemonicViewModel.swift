@@ -9,7 +9,7 @@ import Bond
 import Foundation
 
 final class MnemonicViewModel {
-    private let wallet: WalletProtocol
+    private let walletService: WalletService
     private var mnemonic: [String]? {
         didSet {
             guard let mnemonic = mnemonic else { return }
@@ -21,7 +21,7 @@ final class MnemonicViewModel {
     
     var confirmMnemonicViewModel: ConfirmMnemonicViewModel? {
         guard let mnemonic = mnemonic else { return  nil }
-        return ConfirmMnemonicViewModel(wallet: wallet, mnemonic: mnemonic)
+        return ConfirmMnemonicViewModel(walletService: walletService, mnemonic: mnemonic)
     }
     
     func updatePageWords(with mnemonic: [String]) {
@@ -45,10 +45,10 @@ final class MnemonicViewModel {
         }
     }
     
-    init(wallet: WalletProtocol) {
-        self.wallet = wallet
+    init(walletService: WalletService) {
+        self.walletService = walletService
         
-        wallet.generateSeed(passphrase: nil) { [weak self] result in
+        walletService.generateSeed { [weak self] result in
             guard let mnemonic = result.value else { return }
             self?.mnemonic = mnemonic
         }

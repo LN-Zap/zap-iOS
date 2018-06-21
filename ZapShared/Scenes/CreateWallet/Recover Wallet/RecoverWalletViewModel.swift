@@ -8,11 +8,11 @@
 import Foundation
 
 final class RecoverWalletViewModel {
-    let wallet: WalletProtocol
+    let walletService: WalletService
     let bip39Words: [String]
     
-    init(wallet: WalletProtocol) {
-        self.wallet = wallet
+    init(walletService: WalletService) {
+        self.walletService = walletService
         
         guard
             let path = Bundle.zap.path(forResource: "bip39", ofType: "txt"),
@@ -28,10 +28,7 @@ final class RecoverWalletViewModel {
     
     func recoverWallet(with text: String, callback: @escaping (Result<Void>) -> Void) {
         let mnemonic = self.mnemonic(from: text.lowercased())
-        wallet.initWallet(mnemonic: mnemonic, password: "12345678") {
-            callback($0)
-            WalletService.didCreateWallet = true
-        }
+        walletService.initWallet(mnemonic: mnemonic, callback: callback)
     }
     
     func attributedString(from text: String) -> NSAttributedString {
