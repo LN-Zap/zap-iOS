@@ -45,10 +45,10 @@ final class MnemonicViewModel {
         }
     }
     
-    init(walletUnlocker: WalletProtocol) {
-        self.wallet = walletUnlocker
+    init(wallet: WalletProtocol) {
+        self.wallet = wallet
         
-        walletUnlocker.generateSeed(passphrase: nil) { [weak self] result in
+        wallet.generateSeed(passphrase: nil) { [weak self] result in
             guard let mnemonic = result.value else { return }
             self?.mnemonic = mnemonic
         }

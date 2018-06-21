@@ -272,6 +272,8 @@
 		AD9C4C8020C3D3AA009636E1 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = AD9C4C7F20C3D3AA009636E1 /* InfoPlist.strings */; };
 		ADCD5B0D20D7E3F50037F156 /* RemoveRemoteNodeSettingsItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADCD5B0C20D7E3F50037F156 /* RemoveRemoteNodeSettingsItem.swift */; };
 		ADCD5B0F20D7E40C0037F156 /* RemovePinSettingsItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADCD5B0E20D7E40C0037F156 /* RemovePinSettingsItem.swift */; };
+		ADFC816F20DA80EF00D26913 /* RecoverWalletViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADFC816E20DA80EF00D26913 /* RecoverWalletViewModel.swift */; };
+		ADFC817120DB8F2700D26913 /* bip39.txt in Resources */ = {isa = PBXBuildFile; fileRef = ADFC817020DB8F2600D26913 /* bip39.txt */; };
 		ADFE538520D693FF00B3BA2A /* InputNumberFormatterTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0F9AEE2206E3E0300E93DCA /* InputNumberFormatterTests.swift */; };
 		ADFE538620D693FF00B3BA2A /* CurrencyTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0BD44D9206FB47300BF27A3 /* CurrencyTests.swift */; };
 /* End PBXBuildFile section */
@@ -662,6 +664,8 @@
 		ADF79369208E5FEC0086B2CA /* ConfirmMnemonicCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConfirmMnemonicCollectionViewCell.swift; sourceTree = "<group>"; };
 		ADF7936B208E66FA0086B2CA /* UICollectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UICollectionView.swift; sourceTree = "<group>"; };
 		ADF79375208F88DE0086B2CA /* RecoverWalletViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecoverWalletViewController.swift; sourceTree = "<group>"; };
+		ADFC816E20DA80EF00D26913 /* RecoverWalletViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecoverWalletViewModel.swift; sourceTree = "<group>"; };
+		ADFC817020DB8F2600D26913 /* bip39.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = bip39.txt; sourceTree = "<group>"; };
 		ADFE537B20D693F500B3BA2A /* ZapSharedTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ZapSharedTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		ADFE537F20D693F500B3BA2A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		AE22E81B1B7AD6C27F3D49BD /* Pods-Zap.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Zap.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Zap/Pods-Zap.debug.xcconfig"; sourceTree = "<group>"; };
@@ -1245,6 +1249,7 @@
 			children = (
 				AD391D1720D1725C007EE22A /* Lndmobile.framework */,
 				AD391D2120D1798A007EE22A /* Media.xcassets */,
+				ADFC817020DB8F2600D26913 /* bip39.txt */,
 				AD391C1A20D16ED4007EE22A /* ZapShared.h */,
 				AD391C1B20D16ED4007EE22A /* Info.plist */,
 				ADEDBB8A20C2D48D00B71F17 /* Coordinators */,
@@ -1483,6 +1488,7 @@
 			isa = PBXGroup;
 			children = (
 				ADF79375208F88DE0086B2CA /* RecoverWalletViewController.swift */,
+				ADFC816E20DA80EF00D26913 /* RecoverWalletViewModel.swift */,
 			);
 			path = "Recover Wallet";
 			sourceTree = "<group>";
@@ -1764,6 +1770,7 @@
 			files = (
 				AD391CC620D16FE1007EE22A /* DetailSeparatorTableViewCell.xib in Resources */,
 				AD391CA720D16FA8007EE22A /* Send.storyboard in Resources */,
+				ADFC817120DB8F2700D26913 /* bip39.txt in Resources */,
 				AD391CB820D16FA8007EE22A /* Sync.storyboard in Resources */,
 				AD391CB220D16FA8007EE22A /* Settings.storyboard in Resources */,
 				AD391C6A20D16F89007EE22A /* NumericKeyPad.storyboard in Resources */,
@@ -2063,6 +2070,7 @@
 				AD391D1920D174B4007EE22A /* MainCoordinator.swift in Sources */,
 				AD391C4120D16F0B007EE22A /* ExchangeUpdaterJob.swift in Sources */,
 				AD391D1A20D174B4007EE22A /* PinCoordinator.swift in Sources */,
+				ADFC816F20DA80EF00D26913 /* RecoverWalletViewModel.swift in Sources */,
 				AD391C5220D16F7A007EE22A /* ConfirmMnemonicViewController.swift in Sources */,
 				AD391C3D20D16F0B007EE22A /* LocalAuthentication.swift in Sources */,
 				AD391C3020D16EFA007EE22A /* UICollectionView.swift in Sources */,

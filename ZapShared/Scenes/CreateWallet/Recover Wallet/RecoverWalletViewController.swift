@@ -8,21 +8,74 @@
 import UIKit
 
 extension UIStoryboard {
-    static func instantiateRecoverWalletViewController() -> RecoverWalletViewController {
-        return Storyboard.createWallet.instantiate(viewController: RecoverWalletViewController.self)
+    static func instantiateRecoverWalletViewController(recoverWalletViewModel: RecoverWalletViewModel, presentSetupPin: @escaping () -> Void) -> RecoverWalletViewController {
+        let viewController = Storyboard.createWallet.instantiate(viewController: RecoverWalletViewController.self)
+        viewController.recoverWalletViewModel = recoverWalletViewModel
+        viewController.presentSetupPin = presentSetupPin
+        return viewController
     }
 }
 
 final class RecoverWalletViewController: UIViewController {
 
     @IBOutlet private weak var topLabel: UILabel!
+    @IBOutlet private weak var placeholderTextView: UITextView!
     @IBOutlet private weak var textView: UITextView!
+    @IBOutlet private weak var doneButton: UIButton!
+    
+    fileprivate var recoverWalletViewModel: RecoverWalletViewModel?
+    fileprivate var presentSetupPin: (() -> Void)?
     
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        Style.label.apply(to: topLabel)
+        title = "Recover Wallet"
         
+        Style.label.apply(to: topLabel)
+        Style.textView.apply(to: placeholderTextView, textView)
+        Style.button.apply(to: doneButton)
+        
+        doneButton.setTitle("Done", for: .normal)
+        topLabel.text = "Enter your seed:"
+        topLabel.textColor = .white
+        placeholderTextView.text = "abandon ability able about above absent absorb abstract absurd abuse access accident account accuse achieve acid acoustic acquire across act action actor actress actual"
+        placeholderTextView.textColor = .darkGray
+        placeholderTextView.backgroundColor = .clear
+        
+        textView.backgroundColor = .clear
+        textView.text = nil
+        textView.textColor = .white
+        textView.delegate = self
         textView.becomeFirstResponder()
+    }
+    
+    @IBAction private func recoverWallet(_ sender: Any) {
+        guard let mnemonic = textView.text else { return }
+        recoverWalletViewModel?.recoverWallet(with: mnemonic) { [weak self] result in
+            if let errorDescription = result.error?.localizedDescription {
+                DispatchQueue.main.async {
+                    let toast = Toast(message: errorDescription, style: .error)
+                    self?.presentToast(toast, animated: true, completion: nil)
+                }
+            } else {
+                DispatchQueue.main.async {
+                    self?.presentSetupPin?()
+                }
+            }
+        }
+    }
+}
+
+extension RecoverWalletViewController: UITextViewDelegate {
+    func updateColors() {
+        let cursorPosition = textView.selectedRange
+        textView.attributedText = recoverWalletViewModel?.attributedString(from: textView.text)
+        textView.selectedRange = cursorPosition
+    }
+    
+    func textViewDidChange(_ textView: UITextView) {
+        let isTextViewEmpty = textView.text == "" || textView.text == nil
+        placeholderTextView.isHidden = !isTextViewEmpty
+        updateColors()
     }
 }

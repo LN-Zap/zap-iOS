@@ -35,9 +35,9 @@ extension UILabel {
         let result = NSMutableAttributedString()
         
         if amount >= 0 {
-            result.append(NSAttributedString(string: "+ ", attributes: [NSAttributedStringKey.foregroundColor: UIColor.zap.nastyGreen]))
+            result.append(NSAttributedString(string: "+ ", attributes: [.foregroundColor: UIColor.zap.nastyGreen]))
         } else {
-            result.append(NSAttributedString(string: "- ", attributes: [NSAttributedStringKey.foregroundColor: UIColor.zap.tomato]))
+            result.append(NSAttributedString(string: "- ", attributes: [.foregroundColor: UIColor.zap.tomato]))
         }
         
         let string = amount.absoluteValue().format(unit: .bit) + " " + BitcoinUnit.bit.localized

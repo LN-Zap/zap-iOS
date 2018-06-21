@@ -31,12 +31,13 @@ final class SetupCoordinator {
     }
     
     private func createNewWallet() {
+        // TODO: stop Lnd when navigating back to Root
         if !Lnd.isRunning {
             Lnd.start()
         }
 
-        let unlocker = WalletStream()
-        let mnemonicViewModel = MnemonicViewModel(walletUnlocker: unlocker)
+        let wallet = WalletStream()
+        let mnemonicViewModel = MnemonicViewModel(wallet: wallet)
         self.mnemonicViewModel = mnemonicViewModel
         
         let viewController = UIStoryboard.instantiateMnemonicViewController(mnemonicViewModel: mnemonicViewModel, presentConfirmMnemonic: confirmMnemonic)
@@ -54,7 +55,15 @@ final class SetupCoordinator {
     }
     
     private func recoverExistingWallet() {
-        let viewController = UIStoryboard.instantiateRecoverWalletViewController()
+        guard let delegate = delegate else { return }
+
+        if !Lnd.isRunning {
+            Lnd.start()
+        }
+        
+        let wallet = WalletStream()
+        let viewModel = RecoverWalletViewModel(wallet: wallet)
+        let viewController = UIStoryboard.instantiateRecoverWalletViewController(recoverWalletViewModel: viewModel, presentSetupPin: delegate.presentSetupPin)
         navigationController?.pushViewController(viewController, animated: true)
     }
     

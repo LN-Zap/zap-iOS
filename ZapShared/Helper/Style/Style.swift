@@ -42,4 +42,9 @@ enum Style {
         $0.textColor = UIColor.zap.black
         $0.font = UIFont.zap.light
     }
+    
+    static let textView = UIViewStyle<UITextView> {
+        $0.textColor = UIColor.zap.black
+        $0.font = UIFont.zap.light
+    }
 }
