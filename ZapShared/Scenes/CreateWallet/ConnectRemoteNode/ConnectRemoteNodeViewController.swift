@@ -93,10 +93,12 @@ final class ConnectRemoteNodeViewController: UIViewController {
     
     @IBAction private func connectRemoteNode(_ sender: Any) {
         connectRemoteNodeViewModel?.connect { [weak self] success in
-            if success {
-                self?.didSetupWallet?()
-            } else {
-                self?.displayError()
+            DispatchQueue.main.async {
+                if success {
+                    self?.didSetupWallet?()
+                } else {
+                    self?.displayError()
+                }
             }
         }
     }
