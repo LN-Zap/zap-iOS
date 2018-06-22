@@ -832,6 +832,7 @@
 				AD19F05620AEAF1B008090CB /* Lens.swift */,
 				A02C9FC3202F617D009821B1 /* LocalAuthentication.swift */,
 				A0C2EABA206F8AD2003AE56E /* Money */,
+				ADEDBC0920C31C5F00B71F17 /* Route.swift */,
 				A0D3C97F20629B9D0015C5D7 /* Scheduler.swift */,
 				A0919159203C309E00FA525A /* Style */,
 			);
@@ -1009,7 +1010,6 @@
 		A07C1034203DE3D0006C7FE8 /* Services */ = {
 			isa = PBXGroup;
 			children = (
-				A0376B70201CC16D00F1FBEF /* Lnd */,
 				ADA6D2BE20AB215D009398A5 /* Persistence */,
 				A0E2690C202CC4E30069E83C /* AuthenticationService.swift */,
 				ADA6D2C420AC1DDE009398A5 /* BalanceService.swift */,
@@ -1248,13 +1248,14 @@
 			isa = PBXGroup;
 			children = (
 				AD391D1720D1725C007EE22A /* Lndmobile.framework */,
-				AD391D2120D1798A007EE22A /* Media.xcassets */,
-				ADFC817020DB8F2600D26913 /* bip39.txt */,
 				AD391C1A20D16ED4007EE22A /* ZapShared.h */,
 				AD391C1B20D16ED4007EE22A /* Info.plist */,
+				ADFC817020DB8F2600D26913 /* bip39.txt */,
+				AD391D2120D1798A007EE22A /* Media.xcassets */,
 				ADEDBB8A20C2D48D00B71F17 /* Coordinators */,
 				A0A05A5F2014A10A0007D1C9 /* Extensions */,
 				A01009352014BE070001EF94 /* Helper */,
+				A0376B70201CC16D00F1FBEF /* Lnd */,
 				A01009322014BD960001EF94 /* Scenes */,
 				A07C1034203DE3D0006C7FE8 /* Services */,
 				A010093E2014D4720001EF94 /* Views */,
@@ -1468,7 +1469,6 @@
 				ADEDBB8F20C2E55100B71F17 /* PinCoordinator.swift */,
 				ADEDBB9120C2FC3200B71F17 /* PinSetupCoordinator.swift */,
 				AD8B13F020C0582D0091F9DA /* RootCoordinator.swift */,
-				ADEDBC0920C31C5F00B71F17 /* Route.swift */,
 				ADEDBB8B20C2D6A700B71F17 /* SetupCoordinator.swift */,
 			);
 			path = Coordinators;

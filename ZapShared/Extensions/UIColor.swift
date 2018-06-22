@@ -23,7 +23,7 @@ public extension UIColor {
         public static let warmGrey = color("warmGrey")
         
         private static func color(_ name: String) -> UIColor {
-            return UIColor(named: name, in: Bundle.zap, compatibleWith: nil) ?? UIColor.magenta
+            return UIColor(named: name, in: Bundle.shared, compatibleWith: nil) ?? UIColor.magenta
         }
     }
 }

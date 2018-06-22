@@ -23,7 +23,7 @@ final class SectionHeaderView: UIView {
     }
     
     static var instanceFromNib: SectionHeaderView {
-        guard let view = UINib(nibName: "SectionHeaderView", bundle: Bundle.zap)
+        guard let view = UINib(nibName: "SectionHeaderView", bundle: Bundle.shared)
             .instantiate(withOwner: nil, options: nil)[0] as? SectionHeaderView
             else { fatalError("Could not initialize SectionHeaderView.") }
         return view

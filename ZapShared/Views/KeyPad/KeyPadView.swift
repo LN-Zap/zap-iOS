@@ -27,7 +27,7 @@ final class KeyPadView: UIView {
     }
 
     private func setup() {
-        Bundle.zap.loadNibNamed("KeyPadView", owner: self, options: nil)
+        Bundle.shared.loadNibNamed("KeyPadView", owner: self, options: nil)
         addSubview(contentView)
         contentView.frame = self.bounds
         contentView.autoresizingMask = [.flexibleHeight, .flexibleWidth]
@@ -87,7 +87,7 @@ final class KeyPadView: UIView {
     private func updatePointButton() {
         switch state {
         case .authenticate:
-            pointButton.setImage(UIImage(named: "icon-face-id", in: Bundle.zap, compatibleWith: nil), for: .normal)
+            pointButton.setImage(UIImage(named: "icon-face-id", in: Bundle.shared, compatibleWith: nil), for: .normal)
             pointButton.imageView?.tintColor = textColor
             pointButton.setTitle(nil, for: .normal)
             pointButton.isEnabled = true

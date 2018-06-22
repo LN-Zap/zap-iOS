@@ -57,7 +57,7 @@ enum Storyboard: String {
     
     var storyboard: UIStoryboard? {
         let storyboardName = uppercasedStart(rawValue)
-        return UIStoryboard(name: storyboardName, bundle: Bundle.zap)
+        return UIStoryboard(name: storyboardName, bundle: Bundle.shared)
     }
     
     func instantiate<VC: UIViewController>(viewController: VC.Type) -> VC {

@@ -8,5 +8,5 @@
 import Foundation
 
 public extension Bundle {
-    public static var zap = Bundle(for: RootViewController.self)
+    public static var shared = Bundle(for: RootViewController.self)
 }

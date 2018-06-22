@@ -35,7 +35,7 @@ opt_in_rules:
   - yoda_condition
 excluded:
   - Pods
-  - ZapShared/Services/Lnd/Api/Generated
+  - ZapShared/Lnd/Api/Generated
 
 identifier_name:
   excluded:

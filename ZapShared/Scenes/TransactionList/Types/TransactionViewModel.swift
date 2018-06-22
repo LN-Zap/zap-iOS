@@ -39,7 +39,7 @@ enum TransactionIcon {
     
     private func imageNamed(_ name: String) -> UIImage {
         // swiftlint:disable:next force_unwrapping
-        return UIImage(named: name, in: Bundle.zap, compatibleWith: nil)!
+        return UIImage(named: name, in: Bundle.shared, compatibleWith: nil)!
     }
 }
 

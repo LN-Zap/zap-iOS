@@ -44,7 +44,7 @@ final class Toast: UIView {
     }
     
     private func toastView() -> UIView? {
-        let views = Bundle.zap.loadNibNamed("Toast", owner: self, options: nil)
+        let views = Bundle.shared.loadNibNamed("Toast", owner: self, options: nil)
         guard let content = views?.first as? UIView else { return nil }
         
         if style == .error {

@@ -23,19 +23,4 @@ extension UIViewController {
             navigationController?.navigationBar.titleTextAttributes = [.font: UIFont.zap.light.withSize(20), .foregroundColor: newColor]
         }
     }
-    
-    func addChild(viewController: UIViewController, to container: UIView) {
-        addChildViewController(viewController)
-        viewController.view.translatesAutoresizingMaskIntoConstraints = false
-        container.addSubview(viewController.view)
-        
-        NSLayoutConstraint.activate([
-            viewController.view.leadingAnchor.constraint(equalTo: container.leadingAnchor),
-            viewController.view.trailingAnchor.constraint(equalTo: container.trailingAnchor),
-            viewController.view.topAnchor.constraint(equalTo: container.topAnchor),
-            viewController.view.bottomAnchor.constraint(equalTo: container.bottomAnchor)
-        ])
-        
-        viewController.didMove(toParentViewController: self)
-    }
 }
