@@ -87,7 +87,7 @@ public final class AmountInputView: UIControl {
         
         amountTextField.textColor = UIColor.zap.black
         amountTextField.font = UIFont.zap.light.withSize(36)
-        amountTextField.placeholder = "Amount"
+        amountTextField.placeholder = "view.amount_input.placeholder".localized
         amountTextField.inputView = UIView()
         amountTextField.delegate = self
         

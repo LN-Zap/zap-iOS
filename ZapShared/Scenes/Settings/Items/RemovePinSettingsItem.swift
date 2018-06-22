@@ -8,7 +8,7 @@
 import Foundation
 
 final class RemovePinSettingsItem: SettingsItem {
-    let title = "Remove Pin"
+    let title = "scene.settings.item.reset_pin".localized
     
     func didSelectItem(from fromViewController: UIViewController) {
         AuthenticationService.shared.resetPin()

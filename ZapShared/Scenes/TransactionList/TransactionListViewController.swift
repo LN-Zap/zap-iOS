@@ -50,14 +50,14 @@ final class TransactionListViewController: UIViewController {
         
         guard let tableView = tableView else { return }
         
-        searchBar.placeholder = "search"
+        searchBar.placeholder = "scene.transactions.search.placeholder".localized
         searchBar.delegate = self
         searchBar.backgroundImage = UIImage()
         searchBackgroundView.backgroundColor = UIColor.zap.white
         filterButton.tintColor = UIColor.zap.black
         
         Style.label.apply(to: emptyStateLabel)
-        emptyStateLabel.text = "0 transactions 🙁"
+        emptyStateLabel.text = "scene.transactions.empty_state_label".localized
         
         tableView.rowHeight = 66
         tableView.registerCell(TransactionTableViewCell.self)
@@ -120,7 +120,7 @@ extension TransactionListViewController: UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, editActionsForRowAt indexPath: IndexPath) -> [UITableViewRowAction]? {
-        let archiveAction = UITableViewRowAction(style: .destructive, title: "Archive") { [weak self] _, indexPath in
+        let archiveAction = UITableViewRowAction(style: .destructive, title: "scene.transactions.row_action.archive".localized) { [weak self] _, indexPath in
             guard let transactionListViewModel = self?.transactionListViewModel else { return }
             let transactionViewModel = transactionListViewModel.sections.item(at: indexPath)
             transactionListViewModel.hideTransaction(transactionViewModel.transaction)

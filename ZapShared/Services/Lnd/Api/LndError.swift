@@ -15,6 +15,7 @@ enum LndError: Error, LocalizedError, Equatable {
     case localizedError(String)
     case unknownError
     
+    // TODO: localize?
     var errorDescription: String? {
         switch self {
         case .localizedError(let description):

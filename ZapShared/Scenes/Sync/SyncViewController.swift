@@ -39,7 +39,7 @@ final class SyncViewController: UIViewController {
         descriptionLabel.textColor = .white
         dateLabel.textColor = .white
         
-        descriptionLabel.text = "Syncing to blockchain…"
+        descriptionLabel.text = "scene.sync.description_label".localized
         
         guard let lightningService = lightningService else { fatalError("viewModel not set.") }
         

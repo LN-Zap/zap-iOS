@@ -13,16 +13,16 @@ extension UIAlertController {
         let message: String
         
         if channel.state == .active {
-            title = "Close Channel"
-            message = "Do you really want to close the channel with node \(nodeAlias)?"
+            title = "scene.channels.close.title".localized
+            message = String(format: "scene.channels.close.message".localized, nodeAlias)
         } else {
-            title = "Force Close Channel"
-            message = "\(nodeAlias) is offline, are you sure you want to force close this channel? You’d have to wait for \(channel.csvDelay) blocks for your funds?"
+            title = "scene.channels.force_close.title".localized
+            message = String(format: "scene.channels.force_close.message".localized, nodeAlias, channel.csvDelay)
         }
         
         let alertController = UIAlertController(title: title, message: message, preferredStyle: .actionSheet)
-        let cancelAlertAction = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
-        let closeAlertAction = UIAlertAction(title: "Close", style: .destructive) { _ in
+        let cancelAlertAction = UIAlertAction(title: "scene.channels.alert.cancel".localized, style: .cancel, handler: nil)
+        let closeAlertAction = UIAlertAction(title: "scene.channels.alert.close".localized, style: .destructive) { _ in
             closeAction()
         }
         alertController.addAction(cancelAlertAction)

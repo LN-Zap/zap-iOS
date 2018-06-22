@@ -29,7 +29,7 @@ final class ConfirmMnemonicViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        title = "Confirm Seed"
+        title = "scene.confirm_mnemonic.title".localized
 
         collectionView.dataSource = self
         collectionView.isScrollEnabled = false
@@ -38,7 +38,7 @@ final class ConfirmMnemonicViewController: UIViewController {
             $0.textColor = .white
         }
         
-        descriptionLabel.text = "Enter your key."
+        descriptionLabel.text = "scene.confirm_mnemonic.description".localized
         
         if let flowLayout = collectionView.collectionViewLayout as? UICollectionViewFlowLayout {
             flowLayout.minimumInteritemSpacing = 0

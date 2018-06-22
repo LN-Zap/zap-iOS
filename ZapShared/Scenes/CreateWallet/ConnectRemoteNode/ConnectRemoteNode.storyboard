@@ -14,7 +14,7 @@
         <!--Connect Remote Node View Controller-->
         <scene sceneID="dVF-wI-kSZ">
             <objects>
-                <viewController storyboardIdentifier="ConnectRemoteNodeViewController" id="mlm-OI-MXW" customClass="ConnectRemoteNodeViewController" customModule="Zap" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="ConnectRemoteNodeViewController" id="mlm-OI-MXW" customClass="ConnectRemoteNodeViewController" customModule="ZapShared" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="ZVc-8H-ohS">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -32,7 +32,7 @@
                                             <stackView opaque="NO" contentMode="scaleToFill" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="72R-i4-UBb">
                                                 <rect key="frame" x="0.0" y="25" width="335" height="30"/>
                                                 <subviews>
-                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="750" verticalHuggingPriority="800" horizontalCompressionResistancePriority="250" text="address:" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="EBE-UY-L7l">
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="750" verticalHuggingPriority="800" horizontalCompressionResistancePriority="250" text="" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="EBE-UY-L7l">
                                                         <rect key="frame" x="0.0" y="0.0" width="66" height="30"/>
                                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                         <nil key="textColor"/>
@@ -81,7 +81,7 @@
                                             <constraint firstAttribute="height" constant="90" id="Cqb-Wp-4bT"/>
                                         </constraints>
                                     </stackView>
-                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Qv4-fn-dip" customClass="LineView" customModule="Zap" customModuleProvider="target">
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Qv4-fn-dip" customClass="LineView" customModule="ZapShared" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="170" width="335" height="1"/>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <constraints>
@@ -108,7 +108,7 @@
                                     </view>
                                 </subviews>
                             </stackView>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="uUQ-H4-s8F" customClass="GradientLoadingButtonView" customModule="Zap" customModuleProvider="target">
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="uUQ-H4-s8F" customClass="GradientLoadingButtonView" customModule="ZapShared" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="570" width="375" height="97"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
@@ -152,12 +152,12 @@
         <!--Remote Node Certificates Scanner View Controller-->
         <scene sceneID="qHr-tO-JIs">
             <objects>
-                <viewController storyboardIdentifier="RemoteNodeCertificatesScannerViewController" id="Cio-lo-XgE" customClass="RemoteNodeCertificatesScannerViewController" customModule="Zap" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="RemoteNodeCertificatesScannerViewController" id="Cio-lo-XgE" customClass="RemoteNodeCertificatesScannerViewController" customModule="ZapShared" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="maU-hY-rMM">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="CKI-B2-ogj" customClass="QRCodeScannerView" customModule="Zap" customModuleProvider="target">
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="CKI-B2-ogj" customClass="QRCodeScannerView" customModule="ZapShared" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             </view>
@@ -200,10 +200,10 @@
         <image name="icon_qr_code" width="20" height="20"/>
         <image name="qr-code-overlay" width="186" height="186"/>
         <namedColor name="charcoalGrey">
-            <color red="0.19215686274509805" green="0.20000000000000001" blue="0.23137254901960785" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <color red="0.19200000166893005" green="0.20000000298023224" blue="0.23100000619888306" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
         <namedColor name="charcoalGreyLight">
-            <color red="0.21176470588235294" green="0.22352941176470589" blue="0.2627450980392157" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <color red="0.21199999749660492" green="0.22400000691413879" blue="0.2630000114440918" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
     </resources>
 </document>

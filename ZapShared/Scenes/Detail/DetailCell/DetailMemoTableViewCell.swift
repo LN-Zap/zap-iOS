@@ -21,7 +21,7 @@ final class DetailMemoTableViewCell: BondTableViewCell {
     
     var info: Info? {
         didSet {
-            titleLabel.text = "Memo"
+            titleLabel.text = "scene.transaction_detail.memo_label".localized
             info?.memo
                 .bind(to: textField.reactive.text)
                 .dispose(in: onReuseBag)

@@ -59,7 +59,7 @@ final class SetupPinViewController: UIViewController {
          setupPinViewModel.topLabelText.bind(to: topLabel.reactive.text)]
             .dispose(in: reactive.bag)
         
-        doneButton.setTitle("Done", for: .normal)
+        doneButton.setTitle("scene.setup_pin.done_button".localized, for: .normal)
     }
     
     private func setupKeyPad() {

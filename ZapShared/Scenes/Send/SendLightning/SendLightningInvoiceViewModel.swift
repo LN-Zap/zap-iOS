@@ -53,7 +53,7 @@ final class SendLightningInvoiceViewModel {
         self.paymentRequest = paymentRequest
         
         if let memo = paymentRequest.memo {
-            self.memo.value = "Memo: " + memo
+            self.memo.value = "Memo: " + memo // TODO: localize
         }
         satoshis.value = paymentRequest.amount
         destination.value = paymentRequest.destination

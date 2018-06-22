@@ -61,7 +61,7 @@ final class ChannelListViewController: UIViewController {
         tableView.refreshControl = UIRefreshControl()
         tableView.refreshControl?.addTarget(self, action: #selector(refresh), for: .valueChanged)
         
-        searchBar.placeholder = "search"
+        searchBar.placeholder = "scene.channels.search.placeholder".localized
         searchBar.delegate = self
         searchBar.backgroundImage = UIImage()
         searchBackgroundView.backgroundColor = UIColor.zap.white
@@ -150,7 +150,7 @@ extension ChannelListViewController: UITableViewDataSource {
             !channelViewModel.state.value.isClosing
             else { return [] }
         
-        let closeAction = UITableViewRowAction(style: .destructive, title: "Close Channel") { [weak self] _, _ in
+        let closeAction = UITableViewRowAction(style: .destructive, title: "scene.channels.row_action.close".localized) { [weak self] _, _ in
             self?.closeChannel(for: channelViewModel)
         }
         closeAction.backgroundColor = UIColor.zap.tomato

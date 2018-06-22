@@ -15,9 +15,9 @@ enum OnChainRequestAddressType: String, Codable, Localizable {
     var localized: String {
         switch self {
         case .witnessPubkeyHash:
-            return "Bech32"
+            return "scene.settings.item.on_chain_request_address.bech32".localized
         case .nestedPubkeyHash:
-            return "P2SH"
+            return "scene.settings.item.on_chain_request_address.p2sh".localized
         }
     }
 }
@@ -26,7 +26,7 @@ enum OnChainRequestAddressType: String, Codable, Localizable {
 final class OnChainRequestAddressTypeSelectionSettingsItem: DetailDisclosureSettingsItem, SubtitleSettingsItem {
     var subtitle = Settings.shared.onChainRequestAddressType.map { Optional($0.localized) }
     
-    let title = "Bitcoin Address Type"
+    let title = "scene.settings.item.on_chain_request_address.title".localized
     
     func didSelectItem(from fromViewController: UIViewController) {
         let items: [SettingsItem] = [

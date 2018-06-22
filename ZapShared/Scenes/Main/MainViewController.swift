@@ -68,13 +68,13 @@ final class MainViewController: UIViewController, ContainerViewController {
         requestButton.tintColor = .white
         
         UIView.performWithoutAnimation {
-            sendButton.setTitle("Send", for: .normal)
+            sendButton.setTitle("scene.main.send_button".localized, for: .normal)
             sendButton.layoutIfNeeded()
-            requestButton.setTitle("Receive", for: .normal)
+            requestButton.setTitle("scene.main.receive_button".localized, for: .normal)
             requestButton.layoutIfNeeded()
-            transactionsButton.setTitle("Transactions", for: .normal)
+            transactionsButton.setTitle("scene.main.transactions_button".localized, for: .normal)
             transactionsButton.layoutIfNeeded()
-            networkButton.setTitle("Network", for: .normal)
+            networkButton.setTitle("scene.main.channels_button".localized, for: .normal)
             networkButton.layoutIfNeeded()
         }
         

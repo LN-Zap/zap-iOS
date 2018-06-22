@@ -32,9 +32,9 @@ final class OpenChannelViewController: UIViewController, QRCodeScannerChildViewC
         Style.label.apply(to: helpLabel)
         
         helpImageView.tintColor = UIColor.zap.black
-        helpLabel.text = "Fund connection"
+        helpLabel.text = "scene.open_channel.help_label".localized
         
-        gradientLoadingButton.title = "Add"
+        gradientLoadingButton.title = "scene.open_channel.add_button".localized
         
         amountInputView.satoshis = 1000000
         amountInputView.validRange = (Lnd.Constants.minChannelSize...Lnd.Constants.maxChannelSize)

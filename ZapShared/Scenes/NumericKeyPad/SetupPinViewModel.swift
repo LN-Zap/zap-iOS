@@ -24,7 +24,7 @@ final class SetupPinViewModel {
     private var currentPin: String?
     
     init() {
-        topLabelText = Observable("Choose a pin.")
+        topLabelText = Observable("scene.setup_pin.top_label.initial".localized)
     }
     
     func updateCurrentPin(_ pin: String) -> Bool {
@@ -50,7 +50,7 @@ final class SetupPinViewModel {
                 currentPin = nil
                 pinCharacterCount.value = 0
                 pinAtiveCount.value = 0
-                topLabelText.value = "The pins didn't match. Please try again."
+                topLabelText.value = "scene.setup_pin.top_label.non_matching".localized
                 state.value = .reset
                 return false
             }
@@ -62,6 +62,6 @@ final class SetupPinViewModel {
     func doneButtonTapped() {
         firstPin = currentPin
         doneButtonEnabled.value = false
-        topLabelText.value = "Enter the pin again to validate."
+        topLabelText.value = "scene.setup_pin.top_label.validate".localized
     }
 }

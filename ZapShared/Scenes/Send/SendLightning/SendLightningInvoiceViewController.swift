@@ -40,7 +40,7 @@ final class SendLightningInvoiceViewController: UIViewController, QRCodeScannerC
         secondaryAmountLabel.font = amountLabel.font.withSize(14)
         secondaryAmountLabel.textColor = .gray
         
-        gradientButtonView.title = "Send"
+        gradientButtonView.title = "scene.send.lightning.title".localized
         
         expiredView.backgroundColor = UIColor.zap.tomato
         expiredLabel.textColor = .white
@@ -72,9 +72,10 @@ final class SendLightningInvoiceViewController: UIViewController, QRCodeScannerC
                 case .none:
                     return nil
                 case .expired(let date):
-                    return "Payment Request expired:\n\(DateFormatter.localizedString(from: date, dateStyle: .medium, timeStyle: .short))"
+                    let date = DateFormatter.localizedString(from: date, dateStyle: .medium, timeStyle: .short)
+                    return String(format: "scene.send.lightning.error.expired".localized, date)
                 case .duplicate:
-                    return "Payment already paid."
+                    return "scene.send.lightning.error.duplicate".localized
                 }
             })
             .ignoreNil()

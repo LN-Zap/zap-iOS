@@ -40,16 +40,16 @@ final class RequestViewController: UIViewController {
         
         title = "scene.request.title".localized
 
-        lightningButton.setTitle("Lightning", for: .normal)
-        onChainButton.setTitle("On-chain", for: .normal)
+        lightningButton.setTitle("scene.request.lightning_button".localized, for: .normal)
+        onChainButton.setTitle("scene.request.on_chain_button".localized, for: .normal)
 
         lightningButton.isSelected = true
         
         segmentedControlBackgroundView.backgroundColor = UIColor.zap.white
         
-        gradientLoadingButtonView.title = "Generate Request"
+        gradientLoadingButtonView.title = "scene.request.generate_request_button".localized
         
-        placeholderTextView.text = "Memo (optional)"
+        placeholderTextView.text = "scene.request.memo_placeholder".localized
         placeholderTextView.font = UIFont.zap.light.withSize(14)
         placeholderTextView.textColor = UIColor.zap.lightGrey
         memoTextView.font = UIFont.zap.light.withSize(14)

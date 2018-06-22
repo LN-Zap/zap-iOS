@@ -11,10 +11,10 @@ import LocalAuthentication
 final class BiometricAuthentication {
     static func authenticate(callback: @escaping (Result<Void>) -> Void) {
         let localAuthenticationContext = LAContext()
-        localAuthenticationContext.localizedFallbackTitle = "Use Passcode"
+        localAuthenticationContext.localizedFallbackTitle = "scene.pin.biometric.fallback.title".localized
         
         var authError: NSError?
-        let reasonString = "To access the secure data"
+        let reasonString = "scene.pin.biometric.reason".localized
 
         if localAuthenticationContext.canEvaluatePolicy(.deviceOwnerAuthenticationWithBiometrics, error: &authError) {
             localAuthenticationContext.evaluatePolicy(.deviceOwnerAuthenticationWithBiometrics, localizedReason: reasonString) { success, evaluateError in
@@ -39,6 +39,7 @@ final class BiometricAuthentication {
 
     private static func errorMessage(for errorCode: Int) -> String {
         let messages: [Int32: String] = [
+            // TODO: simplify error messages & localize.
             kLAErrorAuthenticationFailed: "The user failed to provide valid credentials",
             kLAErrorAppCancel: "Authentication was cancelled by application",
             kLAErrorInvalidContext: "The context is invalid",

@@ -34,9 +34,18 @@ final class SelectWalletCreationMethodViewController: UIViewController {
         super.viewDidLoad()
         
         content = [
-            ("Create", "new wallet", { [weak self] in self?.createButtonTapped?() }),
-            ("Recover", "existing wallet", { [weak self] in self?.recoverButtonTapped?() }),
-            ("Connect", "remote node", { [weak self] in self?.connectButtonTapped?() })
+            ("scene.select_wallet_connection.create.title".localized,
+             "scene.select_wallet_connection.create.message".localized,
+             { [weak self] in self?.createButtonTapped?() }
+            ),
+            ("scene.select_wallet_connection.recover.title".localized,
+             "scene.select_wallet_connection.recover.message".localized,
+             { [weak self] in self?.recoverButtonTapped?() }
+            ),
+            ("scene.select_wallet_connection.connect.title".localized,
+             "scene.select_wallet_connection.connect.message".localized,
+             { [weak self] in self?.connectButtonTapped?() }
+            )
         ]
         
         tableView.delegate = self

@@ -47,7 +47,7 @@ final class OnChainTransactionViewModel: TransactionViewModel {
         } else if let type = annotation.type,
             case .openChannelTransaction(let channelPubKey) = type {
             let alias = aliasStore.data[channelPubKey] ?? channelPubKey
-            return "Open Channel: \(alias)"
+            return String(format: "transaction.open_channel.memo".localized, alias)
         }
         return onChainTransaction.firstDestinationAddress
     }

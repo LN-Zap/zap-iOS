@@ -28,11 +28,11 @@ final class SendOnChainViewController: UIViewController, QRCodeScannerChildViewC
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        title = "scene.withdraw.title".localized
+        title = "scene.send.title".localized
         
         Style.label.apply(to: addressLabel)
 
-        gradientLoadingButtonView.title = "Send"
+        gradientLoadingButtonView.title = "scene.send.send_button".localized
         
         addressLabel.text = sendOnChainViewModel?.address
         

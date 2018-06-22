@@ -9,22 +9,22 @@ import Bond
 import Foundation
 
 final class LightningPaymentDetailViewModel: NSObject, DetailViewModel {
-    let detailViewControllerTitle = "Payment Detail"
+    let detailViewControllerTitle = "scene.transaction_detail.title.payment_detail".localized
     let detailCells = MutableObservableArray<DetailCellType>([])
     
     init(lightningPayment: LightningPayment, annotation: Observable<TransactionAnnotation>, transactionListViewModel: TransactionListViewModel) {
         super.init()
         
         if let amountString = Settings.shared.primaryCurrency.value.format(satoshis: lightningPayment.amount) {
-            detailCells.append(.info(DetailTableViewCell.Info(title: "Amount", data: amountString)))
+            detailCells.append(.info(DetailTableViewCell.Info(title: "scene.transaction_detail.amount_label".localized, data: amountString)))
         }
         
         if let feeString = Settings.shared.primaryCurrency.value.format(satoshis: lightningPayment.fees) {
-            detailCells.append(.info(DetailTableViewCell.Info(title: "Fee", data: feeString)))
+            detailCells.append(.info(DetailTableViewCell.Info(title: "scene.transaction_detail.fee_label".localized, data: feeString)))
         }
         
         let dateString = DateFormatter.localizedString(from: lightningPayment.date, dateStyle: .medium, timeStyle: .short)
-        detailCells.append(.info(DetailTableViewCell.Info(title: "Date", data: dateString)))
+        detailCells.append(.info(DetailTableViewCell.Info(title: "scene.transaction_detail.date_label".localized, data: dateString)))
         
         let observableMemo = Observable<String?>(nil)
         annotation

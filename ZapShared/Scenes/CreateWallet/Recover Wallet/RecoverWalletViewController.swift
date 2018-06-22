@@ -29,16 +29,16 @@ final class RecoverWalletViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        title = "Recover Wallet"
+        title = "scene.recover_wallet.title".localized
         
         Style.label.apply(to: topLabel)
         Style.textView.apply(to: placeholderTextView, textView)
         Style.button.apply(to: doneButton)
         
-        doneButton.setTitle("Done", for: .normal)
-        topLabel.text = "Enter your seed:"
+        doneButton.setTitle("scene.recover_wallet.done_button".localized, for: .normal)
+        topLabel.text = "scene.recover_wallet.description_label".localized
         topLabel.textColor = .white
-        placeholderTextView.text = "abandon ability able about above absent absorb abstract absurd abuse access accident account accuse achieve acid acoustic acquire across act action actor actress actual"
+        placeholderTextView.text = "scene.recover_wallet.placeholder".localized
         placeholderTextView.textColor = .darkGray
         placeholderTextView.backgroundColor = .clear
         

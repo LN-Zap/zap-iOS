@@ -40,7 +40,7 @@ final class ConnectRemoteNodeViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        title = "Connect Remote Node"
+        title = "scene.connect_remote_node.title".localized
         
         Style.label.apply(to: urlLabel) {
             $0.textColor = .white
@@ -54,17 +54,18 @@ final class ConnectRemoteNodeViewController: UIViewController {
         }
         
         urlTextField.attributedPlaceholder =
-            NSAttributedString(string: "192.168.1.3:10009", attributes: [.foregroundColor: UIColor.lightGray])
+            NSAttributedString(string: "scene.connect_remote_node.url_placeholder".localized, attributes: [.foregroundColor: UIColor.lightGray])
         urlTextField.delegate = self
         
         UIView.performWithoutAnimation {
-            scanCertificatesButton.setTitle("scan", for: .normal)
+            scanCertificatesButton.setTitle("scene.connect_remote_node.scan_button".localized, for: .normal)
             scanCertificatesButton.layoutIfNeeded()
-            pasteCertificatesButton.setTitle("paste", for: .normal)
+            pasteCertificatesButton.setTitle("scene.connect_remote_node.paste_button".localized, for: .normal)
             pasteCertificatesButton.layoutIfNeeded()
         }
         
-        connectButton.title = "Connect"
+        urlLabel.text = "scene.connect_remote_node.url_label".localized
+        connectButton.title = "scene.connect_remote_node.connect_button".localized
         
         textView.font = UIFont(name: "Courier", size: 12)
         textView.backgroundColor = .clear
@@ -105,7 +106,7 @@ final class ConnectRemoteNodeViewController: UIViewController {
     
     private func displayError() {
         DispatchQueue.main.async { [weak self] in
-            self?.displayError("Could not connect to server.")
+            self?.displayError("scene.connect_remote_node.server_error".localized)
             self?.connectButton.isLoading = false
         }
     }

@@ -8,7 +8,7 @@
 import Foundation
 
 final class RemoveRemoteNodeSettingsItem: SettingsItem {
-    let title = "Remove Remote Node"
+    let title = "scene.settings.item.remove_remote_node".localized
     
     func didSelectItem(from fromViewController: UIViewController) {
         RemoteRPCConfiguration.delete()
