@@ -42,8 +42,6 @@ final class SetupPinViewModel {
         if pin.count == firstPin?.count {
             if pin == firstPin {
                 AuthenticationService.shared.setPin(pin)
-                AuthenticationService.shared.authenticated.value = true
-
                 state.value = .completed                
             } else {
                 firstPin = nil

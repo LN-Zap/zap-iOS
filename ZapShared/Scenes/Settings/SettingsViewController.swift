@@ -15,15 +15,9 @@ final class SettingsViewController: GroupedTableViewController {
                 BitcoinUnitSelectionSettingsItem(),
                 OnChainRequestAddressTypeSelectionSettingsItem()
             ]),
-            Section(title: "scene.settings.section.security".localized, rows: [
-                RemoveRemoteNodeSettingsItem(),
-                RemovePinSettingsItem(),
-                UpdatePinSettingsItem(),
-                TouchIDSettingItem(),
-                PaperKeySettingsItem()
-            ]),
             Section(title: "scene.settings.section.wallet".localized, rows: [
-                LockWalletSettingsItem()
+                RemoveRemoteNodeSettingsItem(),
+                RemovePinSettingsItem()
             ])
         ]
         

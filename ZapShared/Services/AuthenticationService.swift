@@ -40,8 +40,6 @@ final class AuthenticationService {
         return keychain[keychainPinKey] != nil
     }
     
-    let authenticated = Observable(false)
-    
     private init() {}
     
     func setPin(_ pin: String) {

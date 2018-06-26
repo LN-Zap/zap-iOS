@@ -39,7 +39,7 @@
 "scene.settings.item.on_chain_request_address.title" = "Bitcoin Address Type";
 "scene.settings.item.on_chain_request_address.bech32" = "Bech32";
 "scene.settings.item.on_chain_request_address.p2sh" = "P2SH";
-"scene.settings.item.remove_remote_node" = "Remove Remote Node";
+"scene.settings.item.remove_remote_node" = "Reset Remote Node Configuration";
 "scene.settings.item.reset_pin" = "Reset Pin";
 
 "scene.deposit.send" = "Send";
