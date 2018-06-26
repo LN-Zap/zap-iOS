@@ -47,5 +47,5 @@ This project has swiftlint rules and pull requests should pass before being merg
 
 Tests should try to be written for every feature/fix and should pass before being merged. With the demand for the Lightning Network and Zap rising, rapid development will naturally leave some code untested but we should all try our best.
 
-[issues]: https://github.com/LN-Zap/zap-desktop/issues
+[issues]: https://github.com/LN-Zap/zap-iOS/issues
 [slack]: https://join.slack.com/t/zaphq/shared_invite/enQtMzgyNDA2NDI2Nzg0LTQwZWQ2ZWEzOWFhMjRiNWZkZWMwYTA4MzA5NzhjMDNhNTM5YzliNDA4MmZkZWZkZTFmODM4ODJkYzU3YmI3ZmI
