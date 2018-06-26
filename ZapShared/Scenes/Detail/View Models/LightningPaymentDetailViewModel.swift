@@ -17,14 +17,17 @@ final class LightningPaymentDetailViewModel: NSObject, DetailViewModel {
         
         if let amountString = Settings.shared.primaryCurrency.value.format(satoshis: lightningPayment.amount) {
             detailCells.append(.info(DetailTableViewCell.Info(title: "scene.transaction_detail.amount_label".localized, data: amountString)))
+            detailCells.append(.separator)
         }
         
         if let feeString = Settings.shared.primaryCurrency.value.format(satoshis: lightningPayment.fees) {
             detailCells.append(.info(DetailTableViewCell.Info(title: "scene.transaction_detail.fee_label".localized, data: feeString)))
+            detailCells.append(.separator)
         }
         
         let dateString = DateFormatter.localizedString(from: lightningPayment.date, dateStyle: .medium, timeStyle: .short)
         detailCells.append(.info(DetailTableViewCell.Info(title: "scene.transaction_detail.date_label".localized, data: dateString)))
+        detailCells.append(.separator)
         
         let observableMemo = Observable<String?>(nil)
         annotation
@@ -33,6 +36,7 @@ final class LightningPaymentDetailViewModel: NSObject, DetailViewModel {
             }
             .dispose(in: reactive.bag)
         detailCells.append(.memo(DetailMemoTableViewCell.Info(memo: observableMemo, placeholder: lightningPayment.paymentHash)))
+        detailCells.append(.separator)
         
         detailCells.append(DetailCellType.hideTransactionCell(transaction: lightningPayment, transactionListViewModel: transactionListViewModel))
     }

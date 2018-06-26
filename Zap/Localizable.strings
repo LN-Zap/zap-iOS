@@ -146,13 +146,13 @@
 "scene.transaction_detail.date_label" = "Date";
 "scene.transaction_detail.confirmations_label" = "Confirmations";
 "scene.transaction_detail.address_label" = "Address";
-"scene.transaction_detail.transaction_id_label" = "Transaction ID:";
+"scene.transaction_detail.transaction_id_label" = "Transaction ID";
 
-"scene.channel_detail.remote_pub_key_label" = "remotePubKey:";
-"scene.channel_detail.local_balance_label" = "local Balance:";
-"scene.channel_detail.remote_balance_label" = "remote Balance:";
-"scene.channel_detail.update_count_label" = "update Count:";
-"scene.channel_detail.block_height_label" = "block Height:";
-"scene.channel_detail.funding_transaction_label" = "Funding Transaction:";
+"scene.channel_detail.remote_pub_key_label" = "remotePubKey";
+"scene.channel_detail.local_balance_label" = "local Balance";
+"scene.channel_detail.remote_balance_label" = "remote Balance";
+"scene.channel_detail.update_count_label" = "update Count";
+"scene.channel_detail.block_height_label" = "block Height";
+"scene.channel_detail.funding_transaction_label" = "Funding Transaction";
 "scene.channel_detail.close_button" = "Close";
 "scene.channel_detail.force_close_button" = "Force Close";

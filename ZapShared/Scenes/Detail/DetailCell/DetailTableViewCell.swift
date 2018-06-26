@@ -18,7 +18,7 @@ final class DetailTableViewCell: UITableViewCell {
     
     var info: Info? {
         didSet {
-            titleLabel.text = info?.title
+            titleLabel.text = info?.title.appending(":")
             dataLabel.text = info?.data
         }
     }
@@ -27,5 +27,7 @@ final class DetailTableViewCell: UITableViewCell {
         super.awakeFromNib()
 
         Style.label.apply(to: titleLabel, dataLabel)
+        titleLabel.font = DetailCellType.titleFont
+        dataLabel.font = DetailCellType.dataFont
     }
 }

@@ -20,7 +20,7 @@ final class DetailTimerTableViewCell: UITableViewCell {
         didSet {
             guard let info = info else { return }
             
-            titleLabel.text = info.title
+            titleLabel.text = info.title.appending(":")
             
             updateTimerLabel()
             timer = Timer.scheduledTimer(withTimeInterval: 1, repeats: true) { [weak self] _ in
@@ -35,6 +35,8 @@ final class DetailTimerTableViewCell: UITableViewCell {
         super.awakeFromNib()
 
         Style.label.apply(to: titleLabel, timerLabel)
+        titleLabel.font = DetailCellType.titleFont
+        timerLabel.font = DetailCellType.dataFont
     }
     
     private func updateTimerLabel() {
@@ -50,7 +52,7 @@ final class DetailTimerTableViewCell: UITableViewCell {
         guard date >= currentDate else { return "scene.transaction_detail.qr_code.expired_label".localized }
         let formatter = DateComponentsFormatter()
         formatter.allowedUnits = [.day, .hour, .minute, .second]
-        formatter.unitsStyle = .brief
+        formatter.unitsStyle = .positional
         formatter.maximumUnitCount = 3
         return formatter.string(from: currentDate, to: date)
     }

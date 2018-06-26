@@ -23,7 +23,7 @@ class DetailTransactionHashTableViewCell: UITableViewCell {
         didSet {
             guard let info = info else { return }
             
-            titleLabel.text = info.title
+            titleLabel.text = info.title.appending(":")
             detailButton.setTitle(info.transactionHash, for: .normal)
         }
     }
@@ -33,6 +33,9 @@ class DetailTransactionHashTableViewCell: UITableViewCell {
 
         Style.label.apply(to: titleLabel)
         Style.button.apply(to: detailButton)
+        
+        titleLabel.font = DetailCellType.titleFont
+        detailButton.titleLabel?.font = DetailCellType.dataFont
     }
 
     @IBAction private func displayFundingTransaction(_ sender: Any) {

@@ -32,5 +32,7 @@ final class DetailLegendTableViewCell: UITableViewCell {
         
         gradientView.layer.cornerRadius = 5
         Style.label.apply(to: titleLabel, dataLabel)
+        titleLabel.font = DetailCellType.titleFont
+        dataLabel.font = DetailCellType.dataFont
     }
 }

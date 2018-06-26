@@ -23,7 +23,6 @@ final class ChannelDetailViewModel: DetailViewModel {
         detailCells = MutableObservableArray([])
 
         detailCells.append(.info(DetailTableViewCell.Info(title: "scene.channel_detail.remote_pub_key_label".localized, data: channel.remotePubKey)))
-        
         detailCells.append(.separator)
         
         detailCells.append(.balance(DetailBalanceTableViewCell.Info(localBalance: channel.localBalance, remoteBalance: channel.remoteBalance)))
@@ -37,14 +36,13 @@ final class ChannelDetailViewModel: DetailViewModel {
             let gradient = [UIColor.zap.lightGrey, UIColor.zap.lightGrey]
             detailCells.append(.legend(DetailLegendTableViewCell.Info(title: "scene.channel_detail.remote_balance_label".localized, data: remoteBalance, gradient: gradient)))
         }
-        
         detailCells.append(.separator)
         
         detailCells.append(.info(DetailTableViewCell.Info(title: "scene.channel_detail.update_count_label".localized, data: String(describing: channel.updateCount ?? 0))))
+        detailCells.append(.separator)
         
         let blockHeight = channel.blockHeight
         detailCells.append(.info(DetailTableViewCell.Info(title: "scene.channel_detail.block_height_label".localized, data: String(describing: blockHeight))))
-        
         detailCells.append(.separator)
         
         if let cell = DetailCellType.blockExplorerCell(txid: channel.fundingTransactionId, title: "scene.channel_detail.funding_transaction_label".localized, network: infoService.network.value) {

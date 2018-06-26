@@ -18,6 +18,9 @@ enum DetailCellType {
     case separator
     case timer(DetailTimerTableViewCell.Info)
     case transactionHash(DetailTransactionHashTableViewCell.Info)
+
+    static var titleFont = UIFont.zap.regular.withSize(14)
+    static var dataFont = UIFont.zap.light.withSize(14)
     
     static func blockExplorerCell(txid: String, title: String, network: Network) -> DetailCellType? {
         if let url = Settings.shared.blockExplorer.value.url(network: network, txid: txid) {

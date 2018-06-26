@@ -265,6 +265,8 @@
 		AD71EA4720E228D800256307 /* ZapService.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD71EA4620E228D800256307 /* ZapService.swift */; };
 		AD71EA4920E2318000256307 /* RemoteRPCConfiguration.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD71EA4820E2318000256307 /* RemoteRPCConfiguration.swift */; };
 		AD71EA4B20E2321100256307 /* LndConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD71EA4A20E2321100256307 /* LndConstants.swift */; };
+		AD71EA4E20E2515700256307 /* Roboto-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = AD71EA4D20E2505D00256307 /* Roboto-Regular.ttf */; };
+		AD71EA4F20E2515700256307 /* Roboto-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = AD71EA4D20E2505D00256307 /* Roboto-Regular.ttf */; };
 		AD7746492076122D00EC596B /* AddressType.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD7746482076122D00EC596B /* AddressType.swift */; };
 		AD774651207616B100EC596B /* Network.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD77464A207615E000EC596B /* Network.swift */; };
 		AD77465320761DB400EC596B /* AddressTypeTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD77465220761DB400EC596B /* AddressTypeTests.swift */; };
@@ -581,6 +583,7 @@
 		AD71EA4620E228D800256307 /* ZapService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ZapService.swift; sourceTree = "<group>"; };
 		AD71EA4820E2318000256307 /* RemoteRPCConfiguration.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RemoteRPCConfiguration.swift; sourceTree = "<group>"; };
 		AD71EA4A20E2321100256307 /* LndConstants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LndConstants.swift; sourceTree = "<group>"; };
+		AD71EA4D20E2505D00256307 /* Roboto-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Roboto-Regular.ttf"; sourceTree = "<group>"; };
 		AD77464120750D7700EC596B /* Settings.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Settings.storyboard; sourceTree = "<group>"; };
 		AD77464620750DFB00EC596B /* SettingsContainerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsContainerViewController.swift; sourceTree = "<group>"; };
 		AD7746482076122D00EC596B /* AddressType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddressType.swift; sourceTree = "<group>"; };
@@ -842,6 +845,7 @@
 			children = (
 				A0A05A0B2013CF960007D1C9 /* LaunchScreen.storyboard */,
 				A091914E203C23C100FA525A /* Roboto-Light.ttf */,
+				AD71EA4D20E2505D00256307 /* Roboto-Regular.ttf */,
 				A0919153203C27C300FA525A /* Roboto-Bold.ttf */,
 				A0A05A092013CF960007D1C9 /* Assets.xcassets */,
 				A0A05A0E2013CF960007D1C9 /* Info.plist */,
@@ -1761,6 +1765,7 @@
 			files = (
 				A0A05A0D2013CF960007D1C9 /* LaunchScreen.storyboard in Resources */,
 				A0B91A84202628EF009AD2D3 /* Settings.bundle in Resources */,
+				AD71EA4F20E2515700256307 /* Roboto-Regular.ttf in Resources */,
 				A0919154203C27C300FA525A /* Roboto-Bold.ttf in Resources */,
 				A070D968202B5163000A8274 /* Localizable.strings in Resources */,
 				A0A05A0A2013CF960007D1C9 /* Assets.xcassets in Resources */,
@@ -1818,6 +1823,7 @@
 			files = (
 				AD391D4920D17FA9007EE22A /* Assets.xcassets in Resources */,
 				AD391D4720D17FA9007EE22A /* MainInterface.storyboard in Resources */,
+				AD71EA4E20E2515700256307 /* Roboto-Regular.ttf in Resources */,
 				AD391D5B20D2A831007EE22A /* Roboto-Bold.ttf in Resources */,
 				AD391D5A20D2A831007EE22A /* Roboto-Light.ttf in Resources */,
 			);

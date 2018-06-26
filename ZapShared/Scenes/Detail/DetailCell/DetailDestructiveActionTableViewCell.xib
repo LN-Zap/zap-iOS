@@ -12,15 +12,15 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
-        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="KGk-i7-Jjw" customClass="DetailDestructiveActionTableViewCell" customModule="Zap" customModuleProvider="target">
-            <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="70" id="KGk-i7-Jjw" customClass="DetailDestructiveActionTableViewCell" customModule="ZapShared" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="320" height="70"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
             <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
-                <rect key="frame" x="0.0" y="0.0" width="320" height="43.5"/>
+                <rect key="frame" x="0.0" y="0.0" width="320" height="69.5"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7gq-UA-fKC">
-                        <rect key="frame" x="137" y="0.0" width="46" height="43.5"/>
+                        <rect key="frame" x="137" y="15" width="46" height="54.5"/>
                         <state key="normal" title="Button"/>
                         <connections>
                             <action selector="executeAction:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="twb-Am-iXg"/>
@@ -28,8 +28,7 @@
                     </button>
                 </subviews>
                 <constraints>
-                    <constraint firstItem="7gq-UA-fKC" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="AxT-8w-jND"/>
-                    <constraint firstItem="7gq-UA-fKC" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" id="FAH-5o-srH"/>
+                    <constraint firstItem="7gq-UA-fKC" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="15" id="FAH-5o-srH"/>
                     <constraint firstAttribute="bottom" secondItem="7gq-UA-fKC" secondAttribute="bottom" id="K06-Tu-peE"/>
                     <constraint firstItem="7gq-UA-fKC" firstAttribute="centerX" secondItem="H2p-sc-9uM" secondAttribute="centerX" id="dOe-Bf-MTg"/>
                 </constraints>
@@ -38,6 +37,7 @@
             <connections>
                 <outlet property="destructiveActionButton" destination="7gq-UA-fKC" id="sU1-aU-fCZ"/>
             </connections>
+            <point key="canvasLocation" x="42" y="74"/>
         </tableViewCell>
     </objects>
 </document>

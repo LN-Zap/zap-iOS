@@ -21,7 +21,7 @@ final class DetailMemoTableViewCell: BondTableViewCell {
     
     var info: Info? {
         didSet {
-            titleLabel.text = "scene.transaction_detail.memo_label".localized
+            titleLabel.text = "scene.transaction_detail.memo_label".localized.appending(":")
             info?.memo
                 .bind(to: textField.reactive.text)
                 .dispose(in: onReuseBag)
@@ -34,6 +34,8 @@ final class DetailMemoTableViewCell: BondTableViewCell {
         
         Style.textField.apply(to: textField)
         Style.label.apply(to: titleLabel)
+        titleLabel.font = DetailCellType.titleFont
+        textField.font = DetailCellType.dataFont
         
         textField.reactive.text
             .observeNext { [weak self] text in
