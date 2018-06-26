@@ -9,7 +9,7 @@ import BTCUtil
 import Foundation
 import Lndmobile
 
-final class LightningStream: LightningProtocol {
+final class LightningApiStream: LightningApiProtocol {
     func info(callback: @escaping (Result<Info>) -> Void) {
         LndmobileGetInfo(nil, StreamCallback<Lnrpc_GetInfoResponse, Info>(callback, map: Info.init))
     }
@@ -75,7 +75,7 @@ final class LightningStream: LightningProtocol {
     
     func closeChannel(channelPoint: String, force: Bool, callback: @escaping (Result<CloseStatusUpdate>) -> Void) {
         guard let data = try? Lnrpc_CloseChannelRequest(channelPoint: channelPoint, force: force)?.serializedData() else {
-            callback(Result(error: LndError.invalidInput))
+            callback(Result(error: LndApiError.invalidInput))
             return
         }
         LndmobileCloseChannel(data, StreamCallback<Lnrpc_CloseStatusUpdate, CloseStatusUpdate>(callback, map: CloseStatusUpdate.init))

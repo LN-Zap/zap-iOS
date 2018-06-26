@@ -18,7 +18,7 @@ final class ConnectRemoteNodeViewModel: NSObject {
     private var macaroon: Data?
     private var certificate: String?
     
-    private var testServer: LightningRPC?
+    private var testServer: LightningApiRPC?
     
     override init() {
         super.init()
@@ -70,7 +70,7 @@ final class ConnectRemoteNodeViewModel: NSObject {
         let remoteNodeConfiguration = RemoteRPCConfiguration(certificate: certificate, macaroon: macaroon, url: url)
         remoteNodeConfiguration.save()
         
-        testServer = LightningRPC(configuration: remoteNodeConfiguration)
+        testServer = LightningApiRPC(configuration: remoteNodeConfiguration)
         testServer?.canConnect(callback: callback)
     }
 }

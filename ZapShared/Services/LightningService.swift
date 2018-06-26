@@ -11,14 +11,14 @@ import Foundation
 import ReactiveKit
 
 public final class LightningService: NSObject {
-    private let api: LightningProtocol
+    private let api: LightningApiProtocol
     
     let infoService: InfoService
     let balanceService: BalanceService
     let channelService: ChannelService
     let transactionService: TransactionService
     
-    init(api: LightningProtocol) {
+    init(api: LightningApiProtocol) {
         self.api = api
         
         infoService = InfoService(api: api)

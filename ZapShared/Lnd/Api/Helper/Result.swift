@@ -89,16 +89,16 @@ func result<T, U>(_ callback: @escaping (Result<U>) -> Void, map: @escaping (T) 
 //                print(LndError.lndNotRunning)
 //                callback(Result<U>(error: LndError.lndNotRunning))
             case .unavailable:
-                print(LndError.noInternet)
-                callback(Result<U>(error: LndError.noInternet))
+                print(LndApiError.noInternet)
+                callback(Result<U>(error: LndApiError.noInternet))
             default:
                 guard let message = callResult.statusMessage else { fatalError("No Error Message.") } // TODO: don't crash here
                 print(message)
-                callback(Result<U>(error: LndError.localizedError(message)))
+                callback(Result<U>(error: LndApiError.localizedError(message)))
             }
         } else {
-            print(LndError.unknownError, callResult)
-            callback(Result<U>(error: LndError.unknownError))
+            print(LndApiError.unknownError, callResult)
+            callback(Result<U>(error: LndApiError.unknownError))
         }
     }
 }

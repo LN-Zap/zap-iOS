@@ -10,13 +10,13 @@ import BTCUtil
 import Foundation
 
 final class TransactionService {
-    private let api: LightningProtocol
+    private let api: LightningApiProtocol
     private let balanceService: BalanceService
     private let channelService: ChannelService
     
     let transactions = Observable<[Transaction]>([])
     
-    init(api: LightningProtocol, balanceService: BalanceService, channelService: ChannelService) {
+    init(api: LightningApiProtocol, balanceService: BalanceService, channelService: ChannelService) {
         self.api = api
         self.balanceService = balanceService
         self.channelService = channelService

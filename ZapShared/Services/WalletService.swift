@@ -11,9 +11,9 @@ final class WalletService {
     private let password = "12345678" // TODO: save random pw in secure enclave
     
     private(set) var isUnlocked = false
-    private let wallet: WalletProtocol
+    private let wallet: WalletApiProtocol
     
-    init(wallet: WalletProtocol) {
+    init(wallet: WalletApiProtocol) {
         self.wallet = wallet
     }
     

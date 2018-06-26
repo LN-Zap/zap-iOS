@@ -14,13 +14,15 @@ protocol SetupCoordinatorDelegate: class {
 
 final class SetupCoordinator {
     private let rootViewController: RootViewController
+    private let zapService: ZapService
     private weak var navigationController: UINavigationController?
     private weak var delegate: SetupCoordinatorDelegate?
     private weak var connectRemoteNodeViewModel: ConnectRemoteNodeViewModel?
     private weak var mnemonicViewModel: MnemonicViewModel?
     
-    init(rootViewController: RootViewController, delegate: SetupCoordinatorDelegate) {
+    init(rootViewController: RootViewController, zapService: ZapService, delegate: SetupCoordinatorDelegate) {
         self.rootViewController = rootViewController
+        self.zapService = zapService
         self.delegate = delegate
     }
 
@@ -32,11 +34,11 @@ final class SetupCoordinator {
     
     private func createNewWallet() {
         // TODO: stop Lnd when navigating back to Root
-        if !Lnd.isRunning {
-            Lnd.start()
+        if !LocalLnd.isRunning {
+            LocalLnd.start()
         }
 
-        let walletService = WalletService(wallet: WalletStream())
+        let walletService = zapService.walletService
         let mnemonicViewModel = MnemonicViewModel(walletService: walletService)
         self.mnemonicViewModel = mnemonicViewModel
         
@@ -57,11 +59,11 @@ final class SetupCoordinator {
     private func recoverExistingWallet() {
         guard let delegate = delegate else { return }
 
-        if !Lnd.isRunning {
-            Lnd.start()
+        if !LocalLnd.isRunning {
+            LocalLnd.start()
         }
         
-        let walletService = WalletService(wallet: WalletStream())
+        let walletService = zapService.walletService
         let viewModel = RecoverWalletViewModel(walletService: walletService)
         let viewController = UIStoryboard.instantiateRecoverWalletViewController(recoverWalletViewModel: viewModel, presentSetupPin: delegate.presentSetupPin)
         navigationController?.pushViewController(viewController, animated: true)

@@ -22,12 +22,12 @@ final class BiometricAuthentication {
                     execute(callback, with: Result(value: ()))
                 } else if let error = evaluateError {
                     let message = self.errorMessage(for: error._code)
-                    execute(callback, with: Result(error: LndError.localizedError(message)))
+                    execute(callback, with: Result(error: LndApiError.localizedError(message)))
                 }
             }
         } else if let error = authError {
             let message = self.errorMessage(for: error._code)
-            execute(callback, with: Result(error: LndError.localizedError(message)))
+            execute(callback, with: Result(error: LndApiError.localizedError(message)))
         }
     }
     

@@ -7,7 +7,7 @@
 
 import Foundation
 
-protocol WalletProtocol {
+protocol WalletApiProtocol {
     func generateSeed(passphrase: String?, callback: @escaping (Result<[String]>) -> Void)
     func initWallet(mnemonic: [String], password: String, callback: @escaping (Result<Void>) -> Void)
     func unlockWallet(password: String, callback: @escaping (Result<Void>) -> Void)

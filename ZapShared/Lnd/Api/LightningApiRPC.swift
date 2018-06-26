@@ -16,7 +16,7 @@ private extension Lnrpc_LightningServiceClient {
     }
 }
 
-final class LightningRPC: LightningProtocol {
+final class LightningApiRPC: LightningApiProtocol {
     private let rpc: Lnrpc_LightningService
     
     init(configuration: RemoteRPCConfiguration) {
@@ -114,15 +114,15 @@ final class LightningRPC: LightningProtocol {
         let request = Lnrpc_SendRequest(paymentRequest: paymentRequest.raw)
         _ = try? rpc.sendPaymentSync(request) { response, error in
             if !error.success {
-                callback(Result(error: LndError.unknownError))
+                callback(Result(error: LndApiError.unknownError))
             } else if let errorMessage = response?.paymentError,
                 !errorMessage.isEmpty {
-                let error = LndError.localizedError(errorMessage)
+                let error = LndApiError.localizedError(errorMessage)
                 callback(Result(error: error))
             } else if let response = response {
                 callback(Result(value: response.paymentPreimage))
             } else {
-                callback(Result(error: LndError.unknownError))
+                callback(Result(error: LndApiError.unknownError))
             }
         }
     }
@@ -167,7 +167,7 @@ final class LightningRPC: LightningProtocol {
     
     func closeChannel(channelPoint: String, force: Bool, callback: @escaping (Result<CloseStatusUpdate>) -> Void) {
         guard let request = Lnrpc_CloseChannelRequest(channelPoint: channelPoint, force: force) else {
-            callback(Result(error: LndError.invalidInput))
+            callback(Result(error: LndApiError.invalidInput))
             return
         }
         do {

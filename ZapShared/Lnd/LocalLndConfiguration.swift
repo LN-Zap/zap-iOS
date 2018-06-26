@@ -7,11 +7,11 @@
 
 import Foundation
 
-final class LndConfiguration: NSObject {
+final class LocalLndConfiguration: NSObject {
     var sections = [String: [String: String]]()
     
-    static let standard: LndConfiguration = {
-        let configuration = LndConfiguration()
+    static let standard: LocalLndConfiguration = {
+        let configuration = LocalLndConfiguration()
         configuration.set("Application Options", key: "debuglevel", value: "ATPL=debug,BRAR=debug,BTCN=info,CHDB=debug,CMGR=debug,CNCT=debug,CRTR=warn,DISC=debug,FNDG=debug,HSWC=debug,LNWL=debug,LTND=debug,NTFN=debug,PEER=info,RPCS=debug,SPHX=debug,SRVR=debug,UTXN=debug")
         configuration.set("Application Options", key: "maxpendingchannels", value: "10")
         configuration.set("Application Options", key: "nobootstrap", value: "1")

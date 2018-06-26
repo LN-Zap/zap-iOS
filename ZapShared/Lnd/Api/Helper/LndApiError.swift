@@ -7,7 +7,7 @@
 
 import Foundation
 
-enum LndError: Error, LocalizedError, Equatable {
+enum LndApiError: Error, LocalizedError, Equatable {
     case invalidInput
     case walletEncrypted
     case lndNotRunning

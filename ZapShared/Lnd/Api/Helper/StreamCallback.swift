@@ -49,7 +49,7 @@ final class StreamCallback<T: SwiftProtobuf.Message, U>: NSObject, LndmobileCall
             }
             callback(Result(value: value))
         } else {
-            onError(LndError.unknownError)
+            onError(LndApiError.unknownError)
         }
     }
 }

@@ -8,7 +8,7 @@
 import Foundation
 import Lndmobile
 
-final class WalletStream: WalletProtocol {
+final class WalletApiStream: WalletApiProtocol {
     func generateSeed(passphrase: String? = nil, callback: @escaping (Result<[String]>) -> Void) {
         let data = try? Lnrpc_GenSeedRequest(passphrase: passphrase).serializedData()
         LndmobileGenSeed(data, StreamCallback<Lnrpc_GenSeedResponse, [String]>(callback) { $0.cipherSeedMnemonic })

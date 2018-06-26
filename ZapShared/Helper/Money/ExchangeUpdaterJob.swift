@@ -7,7 +7,11 @@
 
 import Foundation
 
-final class ExchangeUpdaterJob: SchedulerJob {    
+final class ExchangeUpdaterJob: SchedulerJob {
+    static func start() {
+        _ = Scheduler.schedule(interval: 60 * 10, job: ExchangeUpdaterJob())
+    }
+    
     func run() {
         guard let url = URL(string: "https://blockchain.info/ticker") else { fatalError("Invalid ticker url.") }
         let task = URLSession.shared.dataTask(with: url) { [weak self] data, _, error in

@@ -61,7 +61,7 @@ class ReceiveViewController: UIViewController {
         amountInputView.translatesAutoresizingMaskIntoConstraints = false
         amountInputView.context = .messages
         amountInputView.delegate = self
-        amountInputView.validRange = (0...Lnd.Constants.maxPaymentAllowed)
+        amountInputView.validRange = (0...LndConstants.maxPaymentAllowed)
         amountInputView.addTarget(self, action: #selector(updateAmount), for: .valueChanged)
         stackView.insertArrangedSubview(amountInputView, at: 1)
     }

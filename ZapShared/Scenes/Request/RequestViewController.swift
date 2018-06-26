@@ -68,7 +68,7 @@ final class RequestViewController: UIViewController {
 
         setupKeyboardNotifications()
         
-        amountInputView.validRange = (0...Lnd.Constants.maxPaymentAllowed)
+        amountInputView.validRange = (0...LndConstants.maxPaymentAllowed)
     }
     
     override func viewWillAppear(_ animated: Bool) {

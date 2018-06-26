@@ -11,13 +11,13 @@ import Foundation
 import ReactiveKit
 
 final class BalanceService {
-    private let api: LightningProtocol
+    private let api: LightningApiProtocol
     
     let onChain = Observable<Satoshi>(0)
     let lightning = Observable<Satoshi>(0)
     let total: Signal<Satoshi, NoError>
 
-    init(api: LightningProtocol) {
+    init(api: LightningApiProtocol) {
         self.api = api
         total = combineLatest(onChain, lightning) { $0 + $1 }
     }

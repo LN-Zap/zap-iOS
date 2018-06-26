@@ -11,13 +11,13 @@ import Foundation
 import ReactiveKit
 
 final class ChannelService {
-    private let api: LightningProtocol
+    private let api: LightningApiProtocol
 
     let all: Signal<[Channel], NoError>
     let open = Observable<[Channel]>([])
     let pending = Observable<[Channel]>([])
 
-    init(api: LightningProtocol) {
+    init(api: LightningApiProtocol) {
         self.api = api
         
         all = combineLatest(open, pending) {

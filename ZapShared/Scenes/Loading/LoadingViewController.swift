@@ -35,7 +35,7 @@ final class LoadingViewController: UIViewController {
         case .none:
             infoLabel.text = nil
         case .noInternet:
-            infoLabel.text = LndError.noInternet.localizedDescription
+            infoLabel.text = LndApiError.noInternet.localizedDescription
         }
     }
 }

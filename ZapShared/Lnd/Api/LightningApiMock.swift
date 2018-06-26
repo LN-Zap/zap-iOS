@@ -8,7 +8,7 @@
 import BTCUtil
 import Foundation
 /*
-final class LightningMock: LightningProtocol {
+final class LightningApiMock: LightningProtocol {
     private let info: Info?
     private let nodeInfo: NodeInfo?
     private let newAddress: String?

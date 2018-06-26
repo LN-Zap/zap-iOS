@@ -12,15 +12,15 @@ enum LndConnection {
     case local
     case remote(RemoteRPCConfiguration)
     
-    var api: LightningProtocol? {
+    var api: LightningApiProtocol? {
         switch self {
         case .none:
             return nil
         case .local:
-            Lnd.start() // start local Lnd
-            return LightningStream()
+            LocalLnd.start() // start local Lnd
+            return LightningApiStream()
         case .remote(let configuration):
-            return LightningRPC(configuration: configuration)
+            return LightningApiRPC(configuration: configuration)
         }
     }
     

@@ -191,15 +191,15 @@
 		AD391CDC20D16FE1007EE22A /* TransactionListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0F57DC1201E700C003AFA66 /* TransactionListViewModel.swift */; };
 		AD391CDD20D16FE1007EE22A /* rpc.grpc.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD0D933320C822C300E30C51 /* rpc.grpc.swift */; };
 		AD391CDE20D16FE1007EE22A /* rpc.pb.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD0D933220C822C300E30C51 /* rpc.pb.swift */; };
-		AD391CDF20D16FE1007EE22A /* LightningMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADBB36232080A457005662B4 /* LightningMock.swift */; };
-		AD391CE020D16FE1007EE22A /* LightningProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADBB36212080A3B1005662B4 /* LightningProtocol.swift */; };
-		AD391CE120D16FE1007EE22A /* LightningRPC.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0A33EF32028743200BB76F4 /* LightningRPC.swift */; };
-		AD391CE220D16FE1007EE22A /* LightningStream.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADBA4420209AE75600D18B71 /* LightningStream.swift */; };
+		AD391CDF20D16FE1007EE22A /* LightningApiMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADBB36232080A457005662B4 /* LightningApiMock.swift */; };
+		AD391CE020D16FE1007EE22A /* LightningApiProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADBB36212080A3B1005662B4 /* LightningApiProtocol.swift */; };
+		AD391CE120D16FE1007EE22A /* LightningApiRPC.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0A33EF32028743200BB76F4 /* LightningApiRPC.swift */; };
+		AD391CE220D16FE1007EE22A /* LightningApiStream.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADBA4420209AE75600D18B71 /* LightningApiStream.swift */; };
 		AD391CE320D16FE1007EE22A /* StreamCallback.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADBA4422209B00D300D18B71 /* StreamCallback.swift */; };
-		AD391CE420D16FE1007EE22A /* LndError.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0D3C97C20616AB80015C5D7 /* LndError.swift */; };
+		AD391CE420D16FE1007EE22A /* LndApiError.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0D3C97C20616AB80015C5D7 /* LndApiError.swift */; };
 		AD391CE520D16FE1007EE22A /* ProtobufExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADBA4424209B067400D18B71 /* ProtobufExtensions.swift */; };
 		AD391CE620D16FE1007EE22A /* Result.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0D3C96B205FCBF40015C5D7 /* Result.swift */; };
-		AD391CE720D16FE1007EE22A /* WalletRPC.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0D3C969205D55570015C5D7 /* WalletRPC.swift */; };
+		AD391CE720D16FE1007EE22A /* WalletApiRPC.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0D3C969205D55570015C5D7 /* WalletApiRPC.swift */; };
 		AD391CE820D16FEC007EE22A /* Channel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A01009382014BE460001EF94 /* Channel.swift */; };
 		AD391CE920D16FEC007EE22A /* CloseStatusUpdate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0A96B8520174BAC00788808 /* CloseStatusUpdate.swift */; };
 		AD391CEA20D16FEC007EE22A /* GraphTopologyUpdate.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD93ED5520A09D59000E814E /* GraphTopologyUpdate.swift */; };
@@ -211,8 +211,8 @@
 		AD391CF020D16FEC007EE22A /* Peer.swift in Sources */ = {isa = PBXBuildFile; fileRef = A024B84C201606B4002B8897 /* Peer.swift */; };
 		AD391CF120D16FEC007EE22A /* TestingTemplates.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADBB36282080B2AE005662B4 /* TestingTemplates.swift */; };
 		AD391CF220D16FEC007EE22A /* Transaction.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0A05A5820149AF20007D1C9 /* Transaction.swift */; };
-		AD391CF320D16FEC007EE22A /* Lnd.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0A05A342014047B0007D1C9 /* Lnd.swift */; };
-		AD391CF420D16FEC007EE22A /* LndConfiguration.swift in Sources */ = {isa = PBXBuildFile; fileRef = A02C9FC520304395009821B1 /* LndConfiguration.swift */; };
+		AD391CF320D16FEC007EE22A /* LocalLnd.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0A05A342014047B0007D1C9 /* LocalLnd.swift */; };
+		AD391CF420D16FEC007EE22A /* LocalLndConfiguration.swift in Sources */ = {isa = PBXBuildFile; fileRef = A02C9FC520304395009821B1 /* LocalLndConfiguration.swift */; };
 		AD391CF520D16FEC007EE22A /* LndConnection.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADD9DCDC20B453D000AEFC5C /* LndConnection.swift */; };
 		AD391CF620D16FEC007EE22A /* ChannelAliasStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD1EB9FE20B2EAF4001FF67E /* ChannelAliasStore.swift */; };
 		AD391CF720D16FEC007EE22A /* ChannelTransactionAnnotationUpdater.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD77466B2078EE5600EC596B /* ChannelTransactionAnnotationUpdater.swift */; };
@@ -264,8 +264,11 @@
 		AD391D5B20D2A831007EE22A /* Roboto-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = A0919153203C27C300FA525A /* Roboto-Bold.ttf */; };
 		AD5FA003207D0D03000E9493 /* BitcoinURI.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD5FA002207D0D02000E9493 /* BitcoinURI.swift */; };
 		AD5FA005207D0E70000E9493 /* BitcoinURITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD5FA004207D0E70000E9493 /* BitcoinURITests.swift */; };
-		AD6F863220DA3C66008C371B /* WalletStream.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD6F863120DA3C66008C371B /* WalletStream.swift */; };
-		AD6F863420DA3C99008C371B /* WalletProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD6F863320DA3C99008C371B /* WalletProtocol.swift */; };
+		AD6F863220DA3C66008C371B /* WalletApiStream.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD6F863120DA3C66008C371B /* WalletApiStream.swift */; };
+		AD6F863420DA3C99008C371B /* WalletApiProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD6F863320DA3C99008C371B /* WalletApiProtocol.swift */; };
+		AD71EA4720E228D800256307 /* ZapService.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD71EA4620E228D800256307 /* ZapService.swift */; };
+		AD71EA4920E2318000256307 /* RemoteRPCConfiguration.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD71EA4820E2318000256307 /* RemoteRPCConfiguration.swift */; };
+		AD71EA4B20E2321100256307 /* LndConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD71EA4A20E2321100256307 /* LndConstants.swift */; };
 		AD7746492076122D00EC596B /* AddressType.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD7746482076122D00EC596B /* AddressType.swift */; };
 		AD774651207616B100EC596B /* Network.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD77464A207615E000EC596B /* Network.swift */; };
 		AD77465320761DB400EC596B /* AddressTypeTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD77465220761DB400EC596B /* AddressTypeTests.swift */; };
@@ -421,7 +424,7 @@
 		A02C9FBC202EE9BE009821B1 /* OpenChannelViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OpenChannelViewModel.swift; sourceTree = "<group>"; };
 		A02C9FC1202F5BDC009821B1 /* LocalAuthentication.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = LocalAuthentication.framework; path = System/Library/Frameworks/LocalAuthentication.framework; sourceTree = SDKROOT; };
 		A02C9FC3202F617D009821B1 /* LocalAuthentication.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalAuthentication.swift; sourceTree = "<group>"; };
-		A02C9FC520304395009821B1 /* LndConfiguration.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LndConfiguration.swift; sourceTree = "<group>"; };
+		A02C9FC520304395009821B1 /* LocalLndConfiguration.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalLndConfiguration.swift; sourceTree = "<group>"; };
 		A0376B6E201CC04400F1FBEF /* Info.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Info.swift; sourceTree = "<group>"; };
 		A0376B74201CD61B00F1FBEF /* NumericKeyPad.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = NumericKeyPad.storyboard; sourceTree = "<group>"; };
 		A0376B76201CD67700F1FBEF /* PinViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PinViewController.swift; sourceTree = "<group>"; };
@@ -474,14 +477,14 @@
 		A0A05A2A2013ED920007D1C9 /* QRCodeDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QRCodeDetailViewController.swift; sourceTree = "<group>"; };
 		A0A05A2C2013EDFB0007D1C9 /* QRCodeDetail.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = QRCodeDetail.storyboard; sourceTree = "<group>"; };
 		A0A05A2F2013EFC00007D1C9 /* UIImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIImage.swift; sourceTree = "<group>"; };
-		A0A05A342014047B0007D1C9 /* Lnd.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Lnd.swift; sourceTree = "<group>"; };
+		A0A05A342014047B0007D1C9 /* LocalLnd.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalLnd.swift; sourceTree = "<group>"; };
 		A0A05A4C20147B740007D1C9 /* RootViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RootViewController.swift; sourceTree = "<group>"; };
 		A0A05A5420148FA80007D1C9 /* Json.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Json.swift; sourceTree = "<group>"; };
 		A0A05A5620149A0D0007D1C9 /* Settings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Settings.swift; sourceTree = "<group>"; };
 		A0A05A5820149AF20007D1C9 /* Transaction.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Transaction.swift; sourceTree = "<group>"; };
 		A0A05A5B20149F720007D1C9 /* TransactionListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransactionListViewController.swift; sourceTree = "<group>"; };
 		A0A05A5D2014A0DE0007D1C9 /* UITableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UITableView.swift; sourceTree = "<group>"; };
-		A0A33EF32028743200BB76F4 /* LightningRPC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LightningRPC.swift; sourceTree = "<group>"; };
+		A0A33EF32028743200BB76F4 /* LightningApiRPC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LightningApiRPC.swift; sourceTree = "<group>"; };
 		A0A96B83201748C200788808 /* UILabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UILabel.swift; sourceTree = "<group>"; };
 		A0A96B8520174BAC00788808 /* CloseStatusUpdate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CloseStatusUpdate.swift; sourceTree = "<group>"; };
 		A0A96B87201769F100788808 /* String.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = String.swift; sourceTree = "<group>"; };
@@ -495,11 +498,11 @@
 		A0C2EABF206F8D10003AE56E /* Bitcoin.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Bitcoin.swift; sourceTree = "<group>"; };
 		A0C2EAC1206F8D37003AE56E /* Currency.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Currency.swift; sourceTree = "<group>"; };
 		A0C2EAC3206F9539003AE56E /* ExchangeUpdaterJob.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExchangeUpdaterJob.swift; sourceTree = "<group>"; };
-		A0D3C969205D55570015C5D7 /* WalletRPC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WalletRPC.swift; sourceTree = "<group>"; };
+		A0D3C969205D55570015C5D7 /* WalletApiRPC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WalletApiRPC.swift; sourceTree = "<group>"; };
 		A0D3C96B205FCBF40015C5D7 /* Result.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Result.swift; sourceTree = "<group>"; };
 		A0D3C970205FF0E10015C5D7 /* MnemonicViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MnemonicViewController.swift; sourceTree = "<group>"; };
 		A0D3C9792060070D0015C5D7 /* WalletService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WalletService.swift; sourceTree = "<group>"; };
-		A0D3C97C20616AB80015C5D7 /* LndError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LndError.swift; sourceTree = "<group>"; };
+		A0D3C97C20616AB80015C5D7 /* LndApiError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LndApiError.swift; sourceTree = "<group>"; };
 		A0D3C97F20629B9D0015C5D7 /* Scheduler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Scheduler.swift; sourceTree = "<group>"; };
 		A0DDC05B201883D800AEFF94 /* TransactionList.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = TransactionList.storyboard; sourceTree = "<group>"; };
 		A0DDC0612018955C00AEFF94 /* SettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
@@ -577,12 +580,15 @@
 		AD680A9820B06B840018986B /* DetailTimerTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DetailTimerTableViewCell.xib; sourceTree = "<group>"; };
 		AD680A9E20B07AD90018986B /* ConnectRemoteNode.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = ConnectRemoteNode.storyboard; sourceTree = "<group>"; };
 		AD680AA020B07AE90018986B /* ConnectRemoteNodeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConnectRemoteNodeViewController.swift; sourceTree = "<group>"; };
-		AD6F863120DA3C66008C371B /* WalletStream.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WalletStream.swift; sourceTree = "<group>"; };
-		AD6F863320DA3C99008C371B /* WalletProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WalletProtocol.swift; sourceTree = "<group>"; };
+		AD6F863120DA3C66008C371B /* WalletApiStream.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WalletApiStream.swift; sourceTree = "<group>"; };
+		AD6F863320DA3C99008C371B /* WalletApiProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WalletApiProtocol.swift; sourceTree = "<group>"; };
 		AD6FFC9B20A9D15E00B57330 /* OnChainTransactionViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnChainTransactionViewModel.swift; sourceTree = "<group>"; };
 		AD6FFC9D20A9D19400B57330 /* LightningPaymentViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LightningPaymentViewModel.swift; sourceTree = "<group>"; };
 		AD6FFC9F20A9D19E00B57330 /* LightningInvoiceViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LightningInvoiceViewModel.swift; sourceTree = "<group>"; };
 		AD6FFCA520AB0A3700B57330 /* OnChainRequestAddressTypeSettingsItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnChainRequestAddressTypeSettingsItem.swift; sourceTree = "<group>"; };
+		AD71EA4620E228D800256307 /* ZapService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ZapService.swift; sourceTree = "<group>"; };
+		AD71EA4820E2318000256307 /* RemoteRPCConfiguration.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RemoteRPCConfiguration.swift; sourceTree = "<group>"; };
+		AD71EA4A20E2321100256307 /* LndConstants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LndConstants.swift; sourceTree = "<group>"; };
 		AD77464120750D7700EC596B /* Settings.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Settings.storyboard; sourceTree = "<group>"; };
 		AD77464620750DFB00EC596B /* SettingsContainerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsContainerViewController.swift; sourceTree = "<group>"; };
 		AD7746482076122D00EC596B /* AddressType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddressType.swift; sourceTree = "<group>"; };
@@ -622,12 +628,12 @@
 		ADBA12012090CD11001F7700 /* KeyPadView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = KeyPadView.xib; sourceTree = "<group>"; };
 		ADBA12032090CD22001F7700 /* KeyPadView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyPadView.swift; sourceTree = "<group>"; };
 		ADBA120520930C94001F7700 /* UIViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIViewController.swift; sourceTree = "<group>"; };
-		ADBA4420209AE75600D18B71 /* LightningStream.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LightningStream.swift; sourceTree = "<group>"; };
+		ADBA4420209AE75600D18B71 /* LightningApiStream.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LightningApiStream.swift; sourceTree = "<group>"; };
 		ADBA4422209B00D300D18B71 /* StreamCallback.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StreamCallback.swift; sourceTree = "<group>"; };
 		ADBA4424209B067400D18B71 /* ProtobufExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProtobufExtensions.swift; sourceTree = "<group>"; };
 		ADBB361F207FA5D6005662B4 /* Date+Localizable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Date+Localizable.swift"; sourceTree = "<group>"; };
-		ADBB36212080A3B1005662B4 /* LightningProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LightningProtocol.swift; sourceTree = "<group>"; };
-		ADBB36232080A457005662B4 /* LightningMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LightningMock.swift; sourceTree = "<group>"; };
+		ADBB36212080A3B1005662B4 /* LightningApiProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LightningApiProtocol.swift; sourceTree = "<group>"; };
+		ADBB36232080A457005662B4 /* LightningApiMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LightningApiMock.swift; sourceTree = "<group>"; };
 		ADBB36252080AD70005662B4 /* LoadingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingViewController.swift; sourceTree = "<group>"; };
 		ADBB36282080B2AE005662B4 /* TestingTemplates.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestingTemplates.swift; sourceTree = "<group>"; };
 		ADBB362C2080B755005662B4 /* AddressView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddressView.swift; sourceTree = "<group>"; };
@@ -899,9 +905,11 @@
 			children = (
 				A0D3C97B20616A9A0015C5D7 /* Api */,
 				A0A05A5A20149AF80007D1C9 /* Model */,
-				A0A05A342014047B0007D1C9 /* Lnd.swift */,
-				A02C9FC520304395009821B1 /* LndConfiguration.swift */,
 				ADD9DCDC20B453D000AEFC5C /* LndConnection.swift */,
+				AD71EA4A20E2321100256307 /* LndConstants.swift */,
+				A0A05A342014047B0007D1C9 /* LocalLnd.swift */,
+				A02C9FC520304395009821B1 /* LocalLndConfiguration.swift */,
+				AD71EA4820E2318000256307 /* RemoteRPCConfiguration.swift */,
 			);
 			path = Lnd;
 			sourceTree = "<group>";
@@ -1018,6 +1026,7 @@
 				A07C1035203DE3E6006C7FE8 /* LightningService.swift */,
 				ADBCC07420CC04A4002B6E59 /* TransactionService.swift */,
 				A0D3C9792060070D0015C5D7 /* WalletService.swift */,
+				AD71EA4620E228D800256307 /* ZapService.swift */,
 			);
 			path = Services;
 			sourceTree = "<group>";
@@ -1139,17 +1148,14 @@
 			isa = PBXGroup;
 			children = (
 				AD86BCFC2099F4E900A7866A /* Generated */,
-				ADBB36232080A457005662B4 /* LightningMock.swift */,
-				ADBB36212080A3B1005662B4 /* LightningProtocol.swift */,
-				A0A33EF32028743200BB76F4 /* LightningRPC.swift */,
-				ADBA4420209AE75600D18B71 /* LightningStream.swift */,
-				A0D3C97C20616AB80015C5D7 /* LndError.swift */,
-				ADBA4424209B067400D18B71 /* ProtobufExtensions.swift */,
-				A0D3C96B205FCBF40015C5D7 /* Result.swift */,
-				ADBA4422209B00D300D18B71 /* StreamCallback.swift */,
-				AD6F863320DA3C99008C371B /* WalletProtocol.swift */,
-				A0D3C969205D55570015C5D7 /* WalletRPC.swift */,
-				AD6F863120DA3C66008C371B /* WalletStream.swift */,
+				AD71EA4C20E2335B00256307 /* Helper */,
+				ADBB36232080A457005662B4 /* LightningApiMock.swift */,
+				ADBB36212080A3B1005662B4 /* LightningApiProtocol.swift */,
+				A0A33EF32028743200BB76F4 /* LightningApiRPC.swift */,
+				ADBA4420209AE75600D18B71 /* LightningApiStream.swift */,
+				AD6F863320DA3C99008C371B /* WalletApiProtocol.swift */,
+				A0D3C969205D55570015C5D7 /* WalletApiRPC.swift */,
+				AD6F863120DA3C66008C371B /* WalletApiStream.swift */,
 			);
 			path = Api;
 			sourceTree = "<group>";
@@ -1308,6 +1314,17 @@
 				ADD6D80620B15603008BE461 /* RemoteNodeConfiguration.swift */,
 			);
 			path = ConnectRemoteNode;
+			sourceTree = "<group>";
+		};
+		AD71EA4C20E2335B00256307 /* Helper */ = {
+			isa = PBXGroup;
+			children = (
+				A0D3C97C20616AB80015C5D7 /* LndApiError.swift */,
+				ADBA4424209B067400D18B71 /* ProtobufExtensions.swift */,
+				A0D3C96B205FCBF40015C5D7 /* Result.swift */,
+				ADBA4422209B00D300D18B71 /* StreamCallback.swift */,
+			);
+			path = Helper;
 			sourceTree = "<group>";
 		};
 		AD77464C2076161300EC596B /* Localizable */ = {
@@ -2005,7 +2022,7 @@
 				AD391C5B20D16F7A007EE22A /* MnemonicViewController.swift in Sources */,
 				AD391C3420D16EFA007EE22A /* UILabel.swift in Sources */,
 				AD391CB120D16FA8007EE22A /* UpdatePinSettingsItem.swift in Sources */,
-				AD391CE720D16FE1007EE22A /* WalletRPC.swift in Sources */,
+				AD391CE720D16FE1007EE22A /* WalletApiRPC.swift in Sources */,
 				AD391CEA20D16FEC007EE22A /* GraphTopologyUpdate.swift in Sources */,
 				AD391CD020D16FE1007EE22A /* LightningPaymentDetailViewModel.swift in Sources */,
 				AD391CA120D16FA8007EE22A /* RootViewController.swift in Sources */,
@@ -2013,7 +2030,7 @@
 				AD391D0820D16FF5007EE22A /* GradientView.swift in Sources */,
 				AD391C3120D16EFA007EE22A /* UIColor.swift in Sources */,
 				AD391C2820D16EFA007EE22A /* String+Localizable.swift in Sources */,
-				AD391CDF20D16FE1007EE22A /* LightningMock.swift in Sources */,
+				AD391CDF20D16FE1007EE22A /* LightningApiMock.swift in Sources */,
 				AD391C2920D16EFA007EE22A /* Date+Localizable.swift in Sources */,
 				AD391C5820D16F7A007EE22A /* RemoteNodeCertificatesScannerViewController.swift in Sources */,
 				AD391CBA20D16FE1007EE22A /* DetailBalanceTableViewCell.swift in Sources */,
@@ -2038,7 +2055,7 @@
 				AD391C5320D16F7A007EE22A /* ConfirmMnemonicViewModel.swift in Sources */,
 				AD391C6F20D16F89007EE22A /* OpenChannelViewController.swift in Sources */,
 				AD391C9B20D16FA8007EE22A /* QRCodeScannerViewController.swift in Sources */,
-				AD391CE020D16FE1007EE22A /* LightningProtocol.swift in Sources */,
+				AD391CE020D16FE1007EE22A /* LightningApiProtocol.swift in Sources */,
 				AD391CB520D16FA8007EE22A /* Settings.swift in Sources */,
 				AD391CAB20D16FA8007EE22A /* CurrencySettingsItem.swift in Sources */,
 				AD391CDE20D16FE1007EE22A /* rpc.pb.swift in Sources */,
@@ -2058,8 +2075,9 @@
 				AD391CCE20D16FE1007EE22A /* DetailViewModel.swift in Sources */,
 				AD391D1D20D174B4007EE22A /* Route.swift in Sources */,
 				AD391C6C20D16F89007EE22A /* PinViewController.swift in Sources */,
+				AD71EA4920E2318000256307 /* RemoteRPCConfiguration.swift in Sources */,
 				AD391C7020D16F89007EE22A /* OpenChannelViewModel.swift in Sources */,
-				AD391CF420D16FEC007EE22A /* LndConfiguration.swift in Sources */,
+				AD391CF420D16FEC007EE22A /* LocalLndConfiguration.swift in Sources */,
 				AD391C4F20D16F68007EE22A /* ChannelViewModel.swift in Sources */,
 				AD391D0320D16FF5007EE22A /* AmountInputView.swift in Sources */,
 				AD391CF220D16FEC007EE22A /* Transaction.swift in Sources */,
@@ -2078,8 +2096,8 @@
 				AD391CC720D16FE1007EE22A /* DetailTableViewCell.swift in Sources */,
 				AD391C4020D16F0B007EE22A /* FiatCurrency.swift in Sources */,
 				AD391CAD20D16FA8007EE22A /* OnChainRequestAddressTypeSettingsItem.swift in Sources */,
-				AD391CE120D16FE1007EE22A /* LightningRPC.swift in Sources */,
-				AD6F863420DA3C99008C371B /* WalletProtocol.swift in Sources */,
+				AD391CE120D16FE1007EE22A /* LightningApiRPC.swift in Sources */,
+				AD6F863420DA3C99008C371B /* WalletApiProtocol.swift in Sources */,
 				AD391CB720D16FA8007EE22A /* SettingsViewController.swift in Sources */,
 				AD391CD720D16FE1007EE22A /* LightningPaymentViewModel.swift in Sources */,
 				AD391C3620D16EFA007EE22A /* UITableView.swift in Sources */,
@@ -2102,7 +2120,7 @@
 				AD391D0F20D16FF5007EE22A /* SegmentButton.swift in Sources */,
 				AD391CB620D16FA8007EE22A /* SettingsContainerViewController.swift in Sources */,
 				AD391C7120D16F89007EE22A /* OpenChannelQRCodeScannerStrategy.swift in Sources */,
-				AD6F863220DA3C66008C371B /* WalletStream.swift in Sources */,
+				AD6F863220DA3C66008C371B /* WalletApiStream.swift in Sources */,
 				AD391CD920D16FE1007EE22A /* TransactionViewModel.swift in Sources */,
 				AD391C3B20D16F0B007EE22A /* Json.swift in Sources */,
 				AD391CD420D16FE1007EE22A /* TransactionTableViewCell.swift in Sources */,
@@ -2141,8 +2159,9 @@
 				AD391C4E20D16F68007EE22A /* ChannelListViewModel.swift in Sources */,
 				AD391C2620D16EFA007EE22A /* Localizable.swift in Sources */,
 				AD391C5C20D16F7A007EE22A /* MnemonicViewModel.swift in Sources */,
+				AD71EA4B20E2321100256307 /* LndConstants.swift in Sources */,
 				AD391C4720D16F68007EE22A /* ContainerViewController.swift in Sources */,
-				AD391CE220D16FE1007EE22A /* LightningStream.swift in Sources */,
+				AD391CE220D16FE1007EE22A /* LightningApiStream.swift in Sources */,
 				AD391CF820D16FEC007EE22A /* Persistable.swift in Sources */,
 				AD391CFC20D16FEC007EE22A /* BalanceService.swift in Sources */,
 				AD391CB320D16FA8007EE22A /* GroupedTableViewController.swift in Sources */,
@@ -2151,10 +2170,11 @@
 				AD391C9F20D16FA8007EE22A /* StatusBarDelegatingNavigationController.swift in Sources */,
 				AD391D0220D16FF5007EE22A /* AddressView.swift in Sources */,
 				AD391C5620D16F7A007EE22A /* ConnectRemoteNodeViewModel.swift in Sources */,
-				AD391CE420D16FE1007EE22A /* LndError.swift in Sources */,
+				AD391CE420D16FE1007EE22A /* LndApiError.swift in Sources */,
 				AD391C5E20D16F7A007EE22A /* MnemonicWordTableViewCell.swift in Sources */,
 				AD391CBC20D16FE1007EE22A /* DetailCellType.swift in Sources */,
 				AD391CED20D16FEC007EE22A /* NodeInfo.swift in Sources */,
+				AD71EA4720E228D800256307 /* ZapService.swift in Sources */,
 				AD391D0C20D16FF5007EE22A /* PinView.swift in Sources */,
 				ADCD5B0D20D7E3F50037F156 /* RemoveRemoteNodeSettingsItem.swift in Sources */,
 				AD391C4320D16F0B007EE22A /* Appearance.swift in Sources */,
@@ -2178,7 +2198,7 @@
 				AD391CA620D16FA8007EE22A /* SendLightningInvoiceViewController.swift in Sources */,
 				AD391CFF20D16FEC007EE22A /* LightningService.swift in Sources */,
 				AD391C2B20D16EFA007EE22A /* SignalProtocol.swift in Sources */,
-				AD391CF320D16FEC007EE22A /* Lnd.swift in Sources */,
+				AD391CF320D16FEC007EE22A /* LocalLnd.swift in Sources */,
 				AD391C2F20D16EFA007EE22A /* UIButton.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

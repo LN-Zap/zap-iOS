@@ -37,7 +37,7 @@ final class OpenChannelViewController: UIViewController, QRCodeScannerChildViewC
         gradientLoadingButton.title = "scene.open_channel.add_button".localized
         
         amountInputView.satoshis = 1000000
-        amountInputView.validRange = (Lnd.Constants.minChannelSize...Lnd.Constants.maxChannelSize)
+        amountInputView.validRange = (LndConstants.minChannelSize...LndConstants.maxChannelSize)
     }
     
     @IBAction private func presentHelp(_ sender: Any) {

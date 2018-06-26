@@ -14,7 +14,7 @@ private extension Lnrpc_WalletUnlockerServiceClient {
     }
 }
 
-final class WalletRPC: WalletProtocol {
+final class WalletApiRPC: WalletApiProtocol {
     private let rpc: Lnrpc_WalletUnlockerService
     
     init(configuration: RemoteRPCConfiguration) {

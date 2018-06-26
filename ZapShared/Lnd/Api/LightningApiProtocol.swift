@@ -8,7 +8,7 @@
 import BTCUtil
 import Foundation
 
-protocol LightningProtocol {
+protocol LightningApiProtocol {
     func info(callback: @escaping (Result<Info>) -> Void)
     func nodeInfo(pubKey: String, callback: @escaping (Result<NodeInfo>) -> Void)
     func newAddress(type: OnChainRequestAddressType, callback: @escaping (Result<String>) -> Void)

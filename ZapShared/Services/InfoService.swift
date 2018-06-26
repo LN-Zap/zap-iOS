@@ -11,11 +11,10 @@ import Foundation
 
 final class InfoService {
     enum State {
-        case locked
         case noInternet
         case connecting
         case syncing
-        case ready
+        case running
     }
     
     let bestHeaderDate = Observable<Date?>(nil)
@@ -29,13 +28,7 @@ final class InfoService {
     private let heightJobTimer: Timer?
     private var updateInfoTimer: Timer?
     
-    var isLocked = false {
-        didSet {
-            updateWalletState(result: nil)
-        }
-    }
-    
-    init(api: LightningProtocol) {
+    init(api: LightningApiProtocol) {
         walletState = Observable(.connecting)
         
         heightJobTimer = Scheduler.schedule(interval: 120, job: BlockChainHeightJob { [blockChainHeight] height in
@@ -60,17 +53,15 @@ final class InfoService {
     }
     
     private func updateWalletState(result: Result<Info>?) {
-        if isLocked {
-            walletState.value = .locked
-        } else if let result = result {
+        if let result = result {
             if let info = result.value {
                 if !info.isSyncedToChain {
                     walletState.value = .syncing
                 } else {
-                    walletState.value = .ready
+                    walletState.value = .running
                 }
-            } else if let error = result.error as? LndError,
-                error == LndError.noInternet {
+            } else if let error = result.error as? LndApiError,
+                error == LndApiError.noInternet {
                 walletState.value = .noInternet
             } else {
                 walletState.value = .connecting
