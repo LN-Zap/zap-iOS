@@ -47,7 +47,7 @@ final class DetailTimerTableViewCell: UITableViewCell {
     
     private func formatedTime(for date: Date) -> String? {
         let currentDate = Date()
-        guard date >= currentDate else { return "scene.transaction_detail.qr_core.expired_label".localized }
+        guard date >= currentDate else { return "scene.transaction_detail.qr_code.expired_label".localized }
         let formatter = DateComponentsFormatter()
         formatter.allowedUnits = [.day, .hour, .minute, .second]
         formatter.unitsStyle = .brief

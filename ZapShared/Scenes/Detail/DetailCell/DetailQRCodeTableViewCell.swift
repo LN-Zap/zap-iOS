@@ -29,8 +29,8 @@ final class DetailQRCodeTableViewCell: UITableViewCell {
         Style.label.apply(to: addressLabel)
         Style.button.apply(to: copyButton, shareButton)
         
-        copyButton.setTitle("scene.transaction_detail.qr_core.copy_button".localized, for: .normal)
-        shareButton.setTitle("scene.transaction_detail.qr_core.share_button".localized, for: .normal)
+        copyButton.setTitle("scene.transaction_detail.qr_code.copy_button".localized, for: .normal)
+        shareButton.setTitle("scene.transaction_detail.qr_code.share_button".localized, for: .normal)
     }
     
     @IBAction private func copyAddress(_ sender: Any) {

@@ -130,9 +130,9 @@
 "scene.transaction_detail.title.transaction_detail" = "Transaction Detail";
 "scene.transaction_detail.archive_button" = "Archive";
 "scene.transaction_detail.memo_label" = "Memo";
-"scene.transaction_detail.qr_core.copy_button" = "copy"; // TODO: rename core to code
-"scene.transaction_detail.qr_core.share_button" = "share";
-"scene.transaction_detail.qr_core.expired_label" = "Expired";
+"scene.transaction_detail.qr_code.copy_button" = "copy";
+"scene.transaction_detail.qr_code.share_button" = "share";
+"scene.transaction_detail.qr_code.expired_label" = "Expired";
 "scene.transaction_detail.amount.unspecified_label" = "Unspecified";
 "scene.transaction_detail.amount_label" = "Amount";
 "scene.transaction_detail.created_label" = "Created";
