@@ -33,6 +33,7 @@ final class SelectWalletCreationMethodViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        // swiftlint:disable opening_brace
         content = [
             ("scene.select_wallet_connection.create.title".localized,
              "scene.select_wallet_connection.create.message".localized,
@@ -47,6 +48,7 @@ final class SelectWalletCreationMethodViewController: UIViewController {
              { [weak self] in self?.connectButtonTapped?() }
             )
         ]
+        // swiftlint:enable opening_brace
         
         tableView.delegate = self
         tableView.dataSource = self
