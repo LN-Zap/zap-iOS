@@ -167,7 +167,7 @@ public final class LightningApiRPC: LightningApiProtocol {
         }
     }
     
-    func closeChannel(channelPoint: String, force: Bool, callback: @escaping (Result<CloseStatusUpdate>) -> Void) {
+    func closeChannel(channelPoint: ChannelPoint, force: Bool, callback: @escaping (Result<CloseStatusUpdate>) -> Void) {
         guard let request = Lnrpc_CloseChannelRequest(channelPoint: channelPoint, force: force) else {
             callback(Result(error: LndApiError.invalidInput))
             return

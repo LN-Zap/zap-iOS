@@ -46,7 +46,7 @@ final class ChannelDetailViewModel: DetailViewModel {
         detailCells.append(.info(DetailTableViewCell.Info(title: "scene.channel_detail.block_height_label".localized, data: String(describing: blockHeight))))
         detailCells.append(.separator)
         
-        if let cell = DetailCellType.blockExplorerCell(txid: channel.fundingTransactionId, title: "scene.channel_detail.funding_transaction_label".localized, network: infoService.network.value) {
+        if let cell = DetailCellType.blockExplorerCell(txid: channel.channelPoint.fundingTxid, title: "scene.channel_detail.funding_transaction_label".localized, network: infoService.network.value) {
             detailCells.append(cell)
         }
         

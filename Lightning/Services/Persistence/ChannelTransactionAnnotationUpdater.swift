@@ -24,7 +24,7 @@ public final class ChannelTransactionAnnotationUpdater: NSObject {
     private func updateMemos(channels: [Channel], transactions: [Transaction], updateCallback: (TransactionAnnotation, Transaction) -> Void) {
         for transaction in transactions {
             // search for matching channel for funding transaction
-            guard let channel = channels.first(where: { $0.channelPoint.hasPrefix(transaction.id) }) else { continue }
+            guard let channel = channels.first(where: { $0.channelPoint.fundingTxid == transaction.id }) else { continue }
 
             let annotation = TransactionAnnotation(isHidden: false, customMemo: nil, type: .openChannelTransaction(channel.remotePubKey))
             updateCallback(annotation, transaction)
