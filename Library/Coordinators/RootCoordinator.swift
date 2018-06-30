@@ -12,7 +12,7 @@ public final class RootCoordinator: NSObject, SetupCoordinatorDelegate, PinCoord
     
     private let rootViewController: RootViewController
     private let rootViewModel: RootViewModel
-    
+
     private var currentCoordinator: Any?
     private var route: Route?
     
@@ -66,6 +66,15 @@ public final class RootCoordinator: NSObject, SetupCoordinatorDelegate, PinCoord
                 }
             }
         }
+    }
+    
+    public func applicationWillEnterForeground() {
+        rootViewController.removeBlurEffect()
+    }
+    
+    public func applicationDidEnterBackground() {
+        rootViewController.addBlurEffect()
+        route = nil // reset route when app enters background
     }
     
     private func presentMain() {

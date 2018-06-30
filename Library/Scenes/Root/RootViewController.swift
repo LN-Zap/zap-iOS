@@ -11,7 +11,9 @@ final class RootViewController: UIViewController, ContainerViewController {
     // swiftlint:disable:next private_outlet
     @IBOutlet weak var container: UIView?
     weak var currentViewController: UIViewController?
-        
+
+    private var blurEffectView: UIVisualEffectView?
+
     override var preferredStatusBarStyle: UIStatusBarStyle {
         return .lightContent
     }
@@ -20,5 +22,18 @@ final class RootViewController: UIViewController, ContainerViewController {
         super.viewDidAppear(animated)
         
         DebugButton.instance.setup()
+    }
+    
+    func addBlurEffect() {
+        let blurEffect = UIBlurEffect(style: .regular)
+        let blurEffectView = UIVisualEffectView(effect: blurEffect)
+        blurEffectView.frame = view.frame
+        view.addSubview(blurEffectView)
+        
+        self.blurEffectView = blurEffectView
+    }
+    
+    func removeBlurEffect() {
+        blurEffectView?.removeFromSuperview()
     }
 }

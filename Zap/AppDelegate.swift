@@ -10,8 +10,6 @@ import UIKit
 
 @UIApplicationMain
 final class AppDelegate: UIResponder, UIApplicationDelegate {
-    private var blurEffectView: UIVisualEffectView?
-
     var rootCoordinator: RootCoordinator?
     var window: UIWindow?
     
@@ -62,22 +60,11 @@ final class AppDelegate: UIResponder, UIApplicationDelegate {
         return true
     }
     
-    func applicationWillResignActive(_ application: UIApplication) {
-        guard let window = window else { return }
-        
-        let blurEffect = UIBlurEffect(style: .dark)
-        let blurEffectView = UIVisualEffectView(effect: blurEffect)
-        blurEffectView.frame = window.frame
-        window.addSubview(blurEffectView)
-        
-        self.blurEffectView = blurEffectView
+    func applicationWillEnterForeground(_ application: UIApplication) {
+        rootCoordinator?.applicationWillEnterForeground()
     }
     
     func applicationDidEnterBackground(_ application: UIApplication) {
-        rootCoordinator?.handle(nil) // reset route when app enters background
-    }
-    
-    func applicationDidBecomeActive(_ application: UIApplication) {
-        blurEffectView?.removeFromSuperview()
+        rootCoordinator?.applicationDidEnterBackground()
     }
 }
