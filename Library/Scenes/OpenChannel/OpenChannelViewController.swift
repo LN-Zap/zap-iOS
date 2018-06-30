@@ -50,8 +50,15 @@ final class OpenChannelViewController: UIViewController, QRCodeScannerChildViewC
     }
     
     @IBAction private func openChannel(_ sender: Any) {
-        openChannelViewModel?.openChannel { [weak self] in
-            self?.delegate?.dismissSuccessfully()
+        openChannelViewModel?.openChannel { [weak self] result in
+            if let error = result.error {
+                DispatchQueue.main.async {
+                    self?.delegate?.presentError(message: error.localizedDescription)
+                    self?.gradientLoadingButton.isLoading = false
+                }
+            } else {
+                self?.delegate?.dismissSuccessfully()
+            }
         }
     }    
 }

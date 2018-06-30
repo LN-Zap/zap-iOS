@@ -27,7 +27,7 @@ final class OpenChannelViewModel {
         host = String(addressComponents[1])        
     }
     
-    func openChannel(completion: @escaping () -> Void) {
-        lightningService.channelService.open(pubKey: pubKey, host: host, amount: amount, completion: completion)
+    func openChannel(callback: @escaping (Result<ChannelPoint>) -> Void) {
+        lightningService.channelService.open(pubKey: pubKey, host: host, amount: amount, callback: callback)
     }
 }

@@ -82,20 +82,20 @@ func result<T, U>(_ callback: @escaping (Result<U>) -> Void, map: @escaping (T) 
             callback(Result<U>(value: value))
         } else if !callResult.success {
             switch callResult.statusCode {
-//            case .unimplemented:
-//                print(LndError.walletEncrypted)
-//                callback(Result<U>(error: LndError.walletEncrypted))
-//            case .internalError:
-//                print(LndError.lndNotRunning)
-//                callback(Result<U>(error: LndError.lndNotRunning))
             case .unavailable:
                 print(LndApiError.noInternet)
                 callback(Result<U>(error: LndApiError.noInternet))
             default:
-                guard let message = callResult.statusMessage else { fatalError("No Error Message.") } // TODO: don't crash here
-                print(message)
-                callback(Result<U>(error: LndApiError.localizedError(message)))
+                if let statusMessage = callResult.statusMessage {
+                    print(statusMessage)
+                    callback(Result<U>(error: LndApiError.localizedError(statusMessage)))
+                } else {
+                    callback(Result<U>(error: LndApiError.unknownError))
+                }
             }
+        } else if let statusMessage = callResult.statusMessage {
+            print(LndApiError.localizedError, callResult)
+            callback(Result<U>(error: LndApiError.localizedError(statusMessage)))
         } else {
             print(LndApiError.unknownError, callResult)
             callback(Result<U>(error: LndApiError.unknownError))

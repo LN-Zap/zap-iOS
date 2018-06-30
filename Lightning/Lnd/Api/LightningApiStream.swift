@@ -68,9 +68,9 @@ final class LightningApiStream: LightningApiProtocol {
         LndmobileConnectPeer(data, StreamCallback<Lnrpc_ConnectPeerResponse, Void>(callback) { _ in () })
     }
     
-    func openChannel(pubKey: String, amount: Satoshi, callback: @escaping (Result<Lnrpc_ChannelPoint>) -> Void) {
+    func openChannel(pubKey: String, amount: Satoshi, callback: @escaping (Result<ChannelPoint>) -> Void) {
         let data = try? Lnrpc_OpenChannelRequest(pubKey: pubKey, amount: amount).serializedData()
-        LndmobileOpenChannelSync(data, StreamCallback<Lnrpc_ChannelPoint, Lnrpc_ChannelPoint>(callback) { $0 })
+        LndmobileOpenChannelSync(data, StreamCallback<Lnrpc_ChannelPoint, ChannelPoint>(callback) { ChannelPoint(channelPoint: $0) })
     }
     
     func closeChannel(channelPoint: String, force: Bool, callback: @escaping (Result<CloseStatusUpdate>) -> Void) {

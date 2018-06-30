@@ -35,23 +35,26 @@ public final class ChannelService {
         }
     }
     
-    public func open(pubKey: String, host: String, amount: Satoshi, completion: @escaping () -> Void) {
+    public func open(pubKey: String, host: String, amount: Satoshi, callback: @escaping (Result<ChannelPoint>) -> Void) {
         api.peers { [weak self, api] peers in
             if peers.value?.contains(where: { $0.pubKey == pubKey }) == true {
-                self?.openConnectedChannel(pubKey: pubKey, amount: amount, completion: completion)
+                self?.openConnectedChannel(pubKey: pubKey, amount: amount, callback: callback)
             } else {
-                api.connect(pubKey: pubKey, host: host) {
-                    guard $0.error != nil else { return }
-                    self?.openConnectedChannel(pubKey: pubKey, amount: amount, completion: completion)
+                api.connect(pubKey: pubKey, host: host) { result in
+                    if let error = result.error {
+                        callback(Result<ChannelPoint>(error: error))
+                    } else {
+                        self?.openConnectedChannel(pubKey: pubKey, amount: amount, callback: callback)
+                    }
                 }
             }
         }
     }
     
-    private func openConnectedChannel(pubKey: String, amount: Satoshi, completion: @escaping () -> Void) {
-        api.openChannel(pubKey: pubKey, amount: amount) { [weak self] _ in
+    private func openConnectedChannel(pubKey: String, amount: Satoshi, callback: @escaping (Result<ChannelPoint>) -> Void) {
+        api.openChannel(pubKey: pubKey, amount: amount) { [weak self] in
             self?.update()
-            completion()
+            callback($0)
         }
     }
     
