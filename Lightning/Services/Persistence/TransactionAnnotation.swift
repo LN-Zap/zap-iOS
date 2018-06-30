@@ -40,7 +40,11 @@ public struct TransactionAnnotation: Codable {
     }
     
     public func settingMemo(to customMemo: String?) -> TransactionAnnotation {
-        return TransactionAnnotation(isHidden: isHidden, customMemo: customMemo, type: type)
+        var memo = customMemo?.trimmingCharacters(in: .whitespacesAndNewlines)
+        if memo == "" {
+            memo = nil
+        }
+        return TransactionAnnotation(isHidden: isHidden, customMemo: memo, type: type)
     }
 }
 
