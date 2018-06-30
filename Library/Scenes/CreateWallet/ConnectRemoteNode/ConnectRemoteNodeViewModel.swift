@@ -40,7 +40,9 @@ final class ConnectRemoteNodeViewModel: NSObject {
     }
     
     private func updateUI(certificate: String, macaroon: Data, url: URL?) {
-        urlString.value = url?.absoluteString
+        if let url = url, url.absoluteString != "" {
+            urlString.value = url.absoluteString
+        }
         self.certificate = certificate
         self.macaroon = macaroon
         
