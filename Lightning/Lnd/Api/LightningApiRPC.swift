@@ -121,6 +121,8 @@ public final class LightningApiRPC: LightningApiProtocol {
                 callback(Result(error: error))
             } else if let response = response {
                 callback(Result(value: response.paymentPreimage))
+            } else if let statusMessage = error.statusMessage {
+                callback(Result(error: LndApiError.localizedError(statusMessage)))
             } else {
                 callback(Result(error: LndApiError.unknownError))
             }

@@ -106,7 +106,7 @@ final class ConnectRemoteNodeViewController: UIViewController {
     
     private func displayError() {
         DispatchQueue.main.async { [weak self] in
-            self?.displayError("scene.connect_remote_node.server_error".localized)
+            self?.presentErrorToast("scene.connect_remote_node.server_error".localized)
             self?.connectButton.isLoading = false
         }
     }

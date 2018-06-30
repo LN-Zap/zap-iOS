@@ -84,8 +84,15 @@ final class SendLightningInvoiceViewController: UIViewController, QRCodeScannerC
     }
     
     @IBAction private func sendButtonTapped(_ sender: Any) {
-        sendViewModel?.send { [weak self] _ in
-            self?.delegate?.dismissSuccessfully()
+        sendViewModel?.send { [weak self] result in
+            if let error = result.error {
+                DispatchQueue.main.async {
+                    self?.delegate?.presentError(message: error.localizedDescription)
+                    self?.gradientButtonView.isLoading = false
+                }
+            } else {
+                self?.delegate?.dismissSuccessfully()
+            }
         }
     }
 }

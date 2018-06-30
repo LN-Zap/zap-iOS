@@ -44,7 +44,7 @@ final class SendLightningInvoiceViewModel {
         }
     }
     
-    func send(callback: @escaping (Bool) -> Void) {
+    func send(callback: @escaping (Result<Data>) -> Void) {
         guard let paymentRequest = paymentRequest else { return }
         transactionAnnotationStore.udpateMemo(paymentRequest.memo, forPaymentHash: paymentRequest.paymentHash)
         transactionService.sendPayment(paymentRequest, callback: callback)

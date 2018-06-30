@@ -75,9 +75,11 @@ final class Toast: UIView {
 }
 
 extension UIViewController {
-    func displayError(_ message: String) {
-        let toast = Toast(message: message, style: .error)
-        presentToast(toast, animated: true, completion: nil)
+    func presentErrorToast(_ message: String) {
+        DispatchQueue.main.async {
+            let toast = Toast(message: message, style: .error)
+            self.presentToast(toast, animated: true, completion: nil)
+        }
     }
     
     func presentToast(_ toast: Toast, animated: Bool, completion: ((Bool) -> Void)?) {

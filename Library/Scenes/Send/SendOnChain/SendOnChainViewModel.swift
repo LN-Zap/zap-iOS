@@ -24,7 +24,7 @@ final class SendOnChainViewModel {
         validRange = (0...lightningService.balanceService.onChain.value)
     }
 
-    func send(completion: @escaping () -> Void) {
-        lightningService.transactionService.sendCoins(address: address, amount: amount, completion: completion)
+    func send(callback: @escaping (Result<String>) -> Void) {
+        lightningService.transactionService.sendCoins(address: address, amount: amount, callback: callback)
     }
 }

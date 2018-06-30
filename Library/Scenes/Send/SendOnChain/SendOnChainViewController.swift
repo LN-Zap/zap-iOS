@@ -31,11 +31,8 @@ final class SendOnChainViewController: UIViewController, QRCodeScannerChildViewC
         title = "scene.send.title".localized
         
         Style.label.apply(to: addressLabel)
-
         gradientLoadingButtonView.title = "scene.send.send_button".localized
-        
         addressLabel.text = sendOnChainViewModel?.address
-        
         amountInputView.validRange = sendOnChainViewModel?.validRange
     }
     
@@ -48,8 +45,12 @@ final class SendOnChainViewController: UIViewController, QRCodeScannerChildViewC
     }
     
     @IBAction private func sendButtonTapped(_ sender: Any) {
-        sendOnChainViewModel?.send { [weak self] in
-            self?.delegate?.dismissSuccessfully()
+        sendOnChainViewModel?.send { [weak self] result in
+            if let error = result.error {
+                self?.delegate?.presentError(message: error.localizedDescription)
+            } else {
+                self?.delegate?.dismissSuccessfully()
+            }
         }
     }
 }

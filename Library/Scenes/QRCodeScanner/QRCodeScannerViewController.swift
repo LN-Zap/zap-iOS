@@ -9,6 +9,17 @@ import BTCUtil
 import Lightning
 import UIKit
 
+extension UIStoryboard {
+    static func instantiateQRCodeScannerViewController(with lightningService: LightningService, strategy: QRCodeScannerStrategy) -> UINavigationController {
+        let navigationController = Storyboard.qrCodeScanner.initial(viewController: UINavigationController.self)
+        if let viewController = navigationController.topViewController as? QRCodeScannerViewController {
+            viewController.lightningService = lightningService
+            viewController.strategy = strategy
+        }
+        return navigationController
+    }
+}
+
 protocol QRCodeScannerChildViewController: class {
     var delegate: QRCodeScannerChildDelegate? { get set }
     var contentHeight: CGFloat { get }
@@ -16,6 +27,7 @@ protocol QRCodeScannerChildViewController: class {
 
 protocol QRCodeScannerChildDelegate: class {
     func dismissSuccessfully()
+    func presentError(message: String)
 }
 
 final class QRCodeScannerViewController: UIViewController, ContainerViewController {
@@ -43,21 +55,21 @@ final class QRCodeScannerViewController: UIViewController, ContainerViewControll
     }
     @IBOutlet private weak var scannerViewOverlay: UIView!
 
-    var strategy: QRCodeScannerStrategy? {
+    fileprivate var strategy: QRCodeScannerStrategy? {
         didSet {
             scannerView?.addressTypes = strategy?.addressTypes
             title = strategy?.title
         }
     }
     
-    override var preferredStatusBarStyle: UIStatusBarStyle {
-        return .lightContent
-    }
-    
-    var lightningService: LightningService? {
+    fileprivate var lightningService: LightningService? {
         didSet {
             scannerView?.lightningService = lightningService
         }
+    }
+    
+    override var preferredStatusBarStyle: UIStatusBarStyle {
+        return .lightContent
     }
     
     override func viewDidLoad() {
@@ -118,6 +130,10 @@ final class QRCodeScannerViewController: UIViewController, ContainerViewControll
 }
 
 extension QRCodeScannerViewController: QRCodeScannerChildDelegate {
+    func presentError(message: String) {
+        presentErrorToast(message)
+    }
+    
     func dismissSuccessfully() {
         DispatchQueue.main.async {
             UINotificationFeedbackGenerator().notificationOccurred(.success)

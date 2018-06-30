@@ -22,15 +22,6 @@ extension UIStoryboard {
     static func instantiateDebugViewController() -> UINavigationController {
         return Storyboard.debug.initial(viewController: UINavigationController.self)
     }
-    
-    static func instantiateQRCodeScannerViewController(with lightningService: LightningService, strategy: QRCodeScannerStrategy) -> UINavigationController {
-        let navigationController = Storyboard.qrCodeScanner.initial(viewController: UINavigationController.self)
-        if let viewController = navigationController.topViewController as? QRCodeScannerViewController {
-            viewController.lightningService = lightningService
-            viewController.strategy = strategy
-        }
-        return navigationController
-    }
 }
 
 enum Storyboard: String {

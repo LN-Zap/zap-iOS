@@ -22,8 +22,8 @@ public final class TransactionService {
         self.channelService = channelService
     }
     
-    public func sendCoins(address: String, amount: Satoshi, completion: @escaping () -> Void) {
-        api.sendCoins(address: address, amount: amount) { _ in completion() }
+    public func sendCoins(address: String, amount: Satoshi, callback: @escaping (Result<String>) -> Void) {
+        api.sendCoins(address: address, amount: amount, callback: callback)
     }
     
     public func addInvoice(amount: Satoshi, memo: String?, callback: @escaping (Result<String>) -> Void) {
@@ -47,14 +47,14 @@ public final class TransactionService {
         api.decodePaymentRequest(paymentRequest, callback: callback)
     }
     
-    public func sendPayment(_ paymentRequest: PaymentRequest, callback: @escaping (Bool) -> Void) {
+    public func sendPayment(_ paymentRequest: PaymentRequest, callback: @escaping (Result<Data>) -> Void) {
         api.sendPayment(paymentRequest) { [weak self] result in
             if result.value != nil {
                 self?.update()
                 self?.balanceService.update()
                 self?.channelService.update()
             }
-            callback(true)
+            callback(result)
         }
     }
     
