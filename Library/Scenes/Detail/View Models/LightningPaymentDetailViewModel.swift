@@ -30,13 +30,7 @@ final class LightningPaymentDetailViewModel: NSObject, DetailViewModel {
         detailCells.append(.info(DetailTableViewCell.Info(title: "scene.transaction_detail.date_label".localized, data: dateString)))
         detailCells.append(.separator)
         
-        let observableMemo = Observable<String?>(nil)
-        annotation
-            .observeNext {
-                observableMemo.value = $0.customMemo
-            }
-            .dispose(in: reactive.bag)
-        detailCells.append(.memo(DetailMemoTableViewCell.Info(memo: observableMemo, placeholder: lightningPayment.paymentHash)))
+        detailCells.append(DetailCellType.memoCell(transaction: lightningPayment, annotation: annotation, transactionListViewModel: transactionListViewModel, placeholder: lightningPayment.paymentHash))
         detailCells.append(.separator)
         
         detailCells.append(DetailCellType.hideTransactionCell(transaction: lightningPayment, transactionListViewModel: transactionListViewModel))

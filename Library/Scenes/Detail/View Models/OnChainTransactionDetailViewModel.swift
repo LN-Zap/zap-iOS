@@ -37,14 +37,7 @@ final class OnChainTransactionDetailViewModel: NSObject, DetailViewModel {
         detailCells.append(.info(DetailTableViewCell.Info(title: "scene.transaction_detail.confirmations_label".localized, data: confirmationString)))
         detailCells.append(.separator)
 
-        // TODO: show displayText instead of firstDestinationAddress
-        let observableMemo = Observable<String?>(nil)
-        annotation
-            .observeNext {
-                observableMemo.value = $0.customMemo
-            }
-            .dispose(in: reactive.bag)
-        detailCells.append(.memo(DetailMemoTableViewCell.Info(memo: observableMemo, placeholder: onChainTransaction.firstDestinationAddress)))
+        detailCells.append(DetailCellType.memoCell(transaction: onChainTransaction, annotation: annotation, transactionListViewModel: transactionListViewModel, placeholder: onChainTransaction.firstDestinationAddress))
         detailCells.append(.separator)
 
         if let cell = DetailCellType.blockExplorerCell(txid: onChainTransaction.id, title: "scene.transaction_detail.transaction_id_label".localized, network: network) {

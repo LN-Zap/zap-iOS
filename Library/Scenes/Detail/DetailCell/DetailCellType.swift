@@ -5,6 +5,7 @@
 //  Copyright © 2018 Zap. All rights reserved.
 //
 
+import Bond
 import BTCUtil
 import Foundation
 import Lightning
@@ -35,6 +36,12 @@ enum DetailCellType {
         return .destructiveAction(DetailDestructiveActionTableViewCell.Info(title: "scene.transaction_detail.archive_button".localized, type: .archiveTransaction, action: {
             transactionListViewModel.hideTransaction(transaction)
         }))
+    }
+    
+    static func memoCell(transaction: Transaction, annotation: Observable<TransactionAnnotation>, transactionListViewModel: TransactionListViewModel, placeholder: String) -> DetailCellType {
+        return .memo(DetailMemoTableViewCell.Info(memo: annotation, placeholder: placeholder) {
+            transactionListViewModel.updateAnnotation(annotation.value.settingMemo(to: $0), for: transaction)
+        })
     }
 }
 

@@ -39,7 +39,7 @@ public struct TransactionAnnotation: Codable {
         return TransactionAnnotation(isHidden: isHidden, customMemo: customMemo, type: type)
     }
     
-    func settingMemo(to customMemo: String?) -> TransactionAnnotation {
+    public func settingMemo(to customMemo: String?) -> TransactionAnnotation {
         return TransactionAnnotation(isHidden: isHidden, customMemo: customMemo, type: type)
     }
 }

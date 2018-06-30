@@ -6,23 +6,24 @@
 //
 
 import Bond
+import Lightning
 import UIKit
 
 final class DetailMemoTableViewCell: BondTableViewCell {
     struct Info {
-        let memo: Observable<String?>
+        let memo: Observable<TransactionAnnotation>
         let placeholder: String
+        let onChange: ((String?) -> Void)?
     }
     
     @IBOutlet private weak var titleLabel: UILabel!
     @IBOutlet private weak var textField: UITextField!
     
-    var onChange: ((String?) -> Void)?
-    
     var info: Info? {
         didSet {
             titleLabel.text = "scene.transaction_detail.memo_label".localized.appending(":")
             info?.memo
+                .map { $0.customMemo }
                 .bind(to: textField.reactive.text)
                 .dispose(in: onReuseBag)
             textField.placeholder = info?.placeholder
@@ -39,7 +40,7 @@ final class DetailMemoTableViewCell: BondTableViewCell {
         
         textField.reactive.text
             .observeNext { [weak self] text in
-                self?.onChange?(text)
+                self?.info?.onChange?(text)
             }
             .dispose(in: onReuseBag)
     }

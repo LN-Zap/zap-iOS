@@ -75,10 +75,6 @@ final class DetailViewController: UIViewController {
             return cell
         case .memo(let info):
             let cell: DetailMemoTableViewCell = tableView.dequeueCellForIndexPath(indexPath)
-            cell.onChange = { [weak self] _ in
-                guard let transactionViewModel = self?.detailViewModel as? TransactionViewModel else { return } // TODO: always fails
-//                self?.viewModel?.udpateMemo($0, for: transactionViewModel)
-            }
             cell.info = info
             return cell
         case .qrCode(let address):

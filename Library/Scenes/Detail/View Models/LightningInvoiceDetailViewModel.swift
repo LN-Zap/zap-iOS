@@ -33,13 +33,7 @@ final class LightningInvoiceDetailViewModel: NSObject, DetailViewModel {
         detailCells.append(.info(DetailTableViewCell.Info(title: "scene.transaction_detail.payment_request".localized, data: lightningInvoice.paymentRequest)))
         detailCells.append(.separator)
         
-        let observableMemo = Observable<String?>(nil)
-        annotation
-            .observeNext {
-                observableMemo.value = $0.customMemo
-            }
-            .dispose(in: reactive.bag)
-        detailCells.append(.memo(DetailMemoTableViewCell.Info(memo: observableMemo, placeholder: lightningInvoice.paymentRequest)))
+        detailCells.append(DetailCellType.memoCell(transaction: lightningInvoice, annotation: annotation, transactionListViewModel: transactionListViewModel, placeholder: lightningInvoice.paymentRequest))
         detailCells.append(.separator)
         
         detailCells.append(.timer(DetailTimerTableViewCell.Info(title: "scene.transaction_detail.expiry_label".localized, date: lightningInvoice.expiry)))
