@@ -9,15 +9,18 @@ import UIKit
 
 final class PinSetupCoordinator {
     private let rootViewController: RootViewController
+    private let authenticationViewModel: AuthenticationViewModel
     private weak var delegate: PinCoordinatorDelegate?
 
-    init(rootViewController: RootViewController, delegate: PinCoordinatorDelegate) {
+    init(rootViewController: RootViewController, authenticationViewModel: AuthenticationViewModel, delegate: PinCoordinatorDelegate) {
         self.rootViewController = rootViewController
+        self.authenticationViewModel = authenticationViewModel
         self.delegate = delegate
     }
     
     func start() {
-        let viewController = UIStoryboard.instantiateSetupPinViewController(didSetupPin: didSetupPin)
+        let viewModel = SetupPinViewModel(authenticationViewModel: authenticationViewModel)
+        let viewController = UIStoryboard.instantiateSetupPinViewController(setupPinViewModel: viewModel, didSetupPin: didSetupPin)
         self.rootViewController.setContainerContent(viewController)
     }
     

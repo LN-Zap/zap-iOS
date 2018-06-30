@@ -981,7 +981,6 @@
 		A0376B73201CD60F00F1FBEF /* NumericKeyPad */ = {
 			isa = PBXGroup;
 			children = (
-				A0E2690C202CC4E30069E83C /* AuthenticationViewModel.swift */,
 				A0F9AEE0206E3D8200E93DCA /* InputNumberFormatter.swift */,
 				A0376B74201CD61B00F1FBEF /* NumericKeyPad.storyboard */,
 				A0376B76201CD67700F1FBEF /* PinViewController.swift */,
@@ -1564,14 +1563,23 @@
 			path = Loading;
 			sourceTree = "<group>";
 		};
+		ADE19C3E20E761A900340E2E /* ViewModels */ = {
+			isa = PBXGroup;
+			children = (
+				A0E2690C202CC4E30069E83C /* AuthenticationViewModel.swift */,
+				AD71EA4620E228D800256307 /* RootViewModel.swift */,
+			);
+			path = ViewModels;
+			sourceTree = "<group>";
+		};
 		ADEDBB8A20C2D48D00B71F17 /* Coordinators */ = {
 			isa = PBXGroup;
 			children = (
+				ADE19C3E20E761A900340E2E /* ViewModels */,
 				ADEDBB8D20C2D70B00B71F17 /* MainCoordinator.swift */,
 				ADEDBB8F20C2E55100B71F17 /* PinCoordinator.swift */,
 				ADEDBB9120C2FC3200B71F17 /* PinSetupCoordinator.swift */,
 				AD8B13F020C0582D0091F9DA /* RootCoordinator.swift */,
-				AD71EA4620E228D800256307 /* RootViewModel.swift */,
 				ADEDBB8B20C2D6A700B71F17 /* SetupCoordinator.swift */,
 			);
 			path = Coordinators;

@@ -25,7 +25,6 @@ final class AppDelegate: UIResponder, UIApplicationDelegate {
         
         if let window = window {
             rootCoordinator = RootCoordinator(window: window)
-            rootCoordinator?.start()
         }
         
         if let url = launchOptions?[.url] as? URL {

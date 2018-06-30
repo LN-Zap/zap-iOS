@@ -13,15 +13,17 @@ protocol PinCoordinatorDelegate: class {
 
 final class PinCoordinator {
     private let rootViewController: RootViewController
+    private let authenticationViewModel: AuthenticationViewModel
     private weak var delegate: PinCoordinatorDelegate?
     
-    init(rootViewController: RootViewController, delegate: PinCoordinatorDelegate) {
+    init(rootViewController: RootViewController, authenticationViewModel: AuthenticationViewModel, delegate: PinCoordinatorDelegate) {
         self.rootViewController = rootViewController
+        self.authenticationViewModel = authenticationViewModel
         self.delegate = delegate
     }
 
     func start() {
-        let viewController = UIStoryboard.instantiatePinViewController(didAuthenticate: didAuthenticate)
+        let viewController = UIStoryboard.instantiatePinViewController(authenticationViewModel: authenticationViewModel, didAuthenticate: didAuthenticate)
         self.rootViewController.setContainerContent(viewController)
     }
     

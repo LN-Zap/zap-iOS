@@ -9,8 +9,9 @@ import Lightning
 import UIKit
 
 extension UIStoryboard {
-    static func instantiatePinViewController(didAuthenticate: @escaping () -> Void) -> PinViewController {
+    static func instantiatePinViewController(authenticationViewModel: AuthenticationViewModel, didAuthenticate: @escaping () -> Void) -> PinViewController {
         let pinViewController = Storyboard.numericKeyPad.initial(viewController: PinViewController.self)
+        pinViewController.authenticationViewModel = authenticationViewModel
         pinViewController.didAuthenticate = didAuthenticate
         return pinViewController
     }
@@ -20,18 +21,19 @@ final class PinViewController: UIViewController {
     @IBOutlet private weak var pinStackView: PinView!
     @IBOutlet private weak var keyPadView: KeyPadView!
     
+    fileprivate var authenticationViewModel: AuthenticationViewModel?
     fileprivate var didAuthenticate: (() -> Void)?
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        let authenticationService = AuthenticationViewModel.shared
-        pinStackView.characterCount = authenticationService.pinLength ?? 0
+        pinStackView.characterCount = authenticationViewModel?.pinLength ?? 0
         
         setupKeyPad()
     }
     
     private func setupKeyPad() {
+        guard let authenticationViewModel = authenticationViewModel else { return }
         keyPadView.backgroundColor = UIColor.zap.charcoalGrey
         keyPadView.textColor = .white
         keyPadView.state = .authenticate
@@ -46,11 +48,11 @@ final class PinViewController: UIViewController {
         keyPadView.handler = { [weak self] number in
             self?.updatePinView(for: number)
             
-            if AuthenticationViewModel.shared.isMatchingPin(number) {
+            if authenticationViewModel.isMatchingPin(number) {
                 self?.didAuthenticate?()
             }
             
-            return (AuthenticationViewModel.shared.pinLength ?? Int.max) >= number.count
+            return (authenticationViewModel.pinLength ?? Int.max) >= number.count
         }
     }
     

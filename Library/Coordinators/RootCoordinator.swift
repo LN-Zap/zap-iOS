@@ -22,15 +22,14 @@ public final class RootCoordinator: NSObject, SetupCoordinatorDelegate, PinCoord
         
         window.rootViewController = self.rootViewController
         window.tintColor = UIColor.zap.peach
-        
         Appearance.setup()
         
         rootViewModel.start()
+        super.init()
+        listenForStateChanges()
     }
     
-    public func start() {
-        ExchangeUpdaterJob.start()
-
+    public func listenForStateChanges() {
         rootViewModel.state.observeNext { [weak self] state in
             switch state {
             case .locked:
@@ -70,11 +69,13 @@ public final class RootCoordinator: NSObject, SetupCoordinatorDelegate, PinCoord
     
     public func applicationWillEnterForeground() {
         rootViewController.removeBlurEffect()
+        rootViewModel.start()
     }
     
     public func applicationDidEnterBackground() {
         rootViewController.addBlurEffect()
         route = nil // reset route when app enters background
+        rootViewModel.stop()
     }
     
     private func presentMain() {
@@ -106,13 +107,13 @@ public final class RootCoordinator: NSObject, SetupCoordinatorDelegate, PinCoord
     }
     
     private func presentPin() {
-        let pinCoordinator = PinCoordinator(rootViewController: rootViewController, delegate: self)
+        let pinCoordinator = PinCoordinator(rootViewController: rootViewController, authenticationViewModel: rootViewModel.authenticationViewModel, delegate: self)
         currentCoordinator = pinCoordinator
         pinCoordinator.start()
     }
     
     internal func presentSetupPin() {
-        let pinSetupCoordinator = PinSetupCoordinator(rootViewController: rootViewController, delegate: self)
+        let pinSetupCoordinator = PinSetupCoordinator(rootViewController: rootViewController, authenticationViewModel: rootViewModel.authenticationViewModel, delegate: self)
         currentCoordinator = pinSetupCoordinator
         pinSetupCoordinator.start()
     }

@@ -19,6 +19,7 @@ final class ExchangeUpdaterJob {
     
     static func stop() {
         timer?.invalidate()
+        timer = nil
     }
     
     func run() {

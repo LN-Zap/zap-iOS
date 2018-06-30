@@ -23,8 +23,10 @@ final class SetupPinViewModel {
     let state = Observable<SetupPinState?>(nil)
     private var firstPin: String?
     private var currentPin: String?
+    private let authenticationViewModel: AuthenticationViewModel
     
-    init() {
+    init(authenticationViewModel: AuthenticationViewModel) {
+        self.authenticationViewModel = authenticationViewModel
         topLabelText = Observable("scene.setup_pin.top_label.initial".localized)
     }
     
@@ -42,7 +44,7 @@ final class SetupPinViewModel {
         
         if pin.count == firstPin?.count {
             if pin == firstPin {
-                AuthenticationViewModel.shared.setPin(pin)
+                authenticationViewModel.setPin(pin)
                 state.value = .completed                
             } else {
                 firstPin = nil

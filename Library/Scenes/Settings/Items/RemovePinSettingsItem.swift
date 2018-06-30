@@ -12,7 +12,7 @@ final class RemovePinSettingsItem: SettingsItem {
     let title = "scene.settings.item.reset_pin".localized
     
     func didSelectItem(from fromViewController: UIViewController) {
-        AuthenticationViewModel.shared.resetPin()
+        AuthenticationViewModel.resetPin()
         fatalError("Crash to restart.")
     }
 }

@@ -17,7 +17,9 @@ public enum LndConnection {
         case .none:
             return nil
         case .local:
-            LocalLnd.start() // start local Lnd
+            if !LocalLnd.isRunning {
+                LocalLnd.start() // TODO: don't start local Lnd in the getter. bad api!
+            }
             return LightningApiStream()
         case .remote(let configuration):
             return LightningApiRPC(configuration: configuration)

@@ -12,9 +12,7 @@ import KeychainAccess
 private let keychainPinKey = "hashedPin"
 private let keychainPinLengthKey = "pinLength"
 
-public final class AuthenticationViewModel {
-    public static let shared = AuthenticationViewModel()
-
+final class AuthenticationViewModel {
     private let keychain = Keychain(service: "com.jackmallers.zap")
     
     private var hashedPin: String? {
@@ -22,7 +20,7 @@ public final class AuthenticationViewModel {
         set { keychain[keychainPinKey] = newValue }
     }
     
-    public private(set) var pinLength: Int? {
+    private(set) var pinLength: Int? {
         get {
             guard let string = keychain[keychainPinLengthKey] else { return nil }
             return Int(string)
@@ -36,23 +34,22 @@ public final class AuthenticationViewModel {
         }
     }
     
-    public var didSetupPin: Bool {
+    var didSetupPin: Bool {
         return keychain[keychainPinKey] != nil
     }
     
-    private init() {}
-    
-    public func setPin(_ pin: String) {
+    func setPin(_ pin: String) {
         hashedPin = pin.sha256()
         pinLength = pin.count
     }
     
-    public func isMatchingPin(_ pin: String) -> Bool {
+    func isMatchingPin(_ pin: String) -> Bool {
         return pin.sha256() == hashedPin
     }
     
-    public func resetPin() {
-        hashedPin = nil
-        pinLength = nil
+    static func resetPin() {
+        let viewModel = AuthenticationViewModel()
+        viewModel.hashedPin = nil
+        viewModel.pinLength = nil
     }
 }

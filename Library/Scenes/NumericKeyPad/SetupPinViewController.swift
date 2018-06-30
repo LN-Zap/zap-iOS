@@ -10,8 +10,9 @@ import ReactiveKit
 import UIKit
 
 extension UIStoryboard {
-    static func instantiateSetupPinViewController(didSetupPin: @escaping () -> Void) -> SetupPinViewController {
+    static func instantiateSetupPinViewController(setupPinViewModel: SetupPinViewModel, didSetupPin: @escaping () -> Void) -> SetupPinViewController {
         let setupPinViewController = Storyboard.numericKeyPad.instantiate(viewController: SetupPinViewController.self)
+        setupPinViewController.setupPinViewModel = setupPinViewModel
         setupPinViewController.didSetupPin = didSetupPin
         return setupPinViewController
     }
@@ -24,11 +25,13 @@ final class SetupPinViewController: UIViewController {
     @IBOutlet private weak var pinStackView: PinView!
     @IBOutlet private weak var keyPadView: KeyPadView!
     
-    private let setupPinViewModel = SetupPinViewModel()
+    fileprivate var setupPinViewModel: SetupPinViewModel?
     fileprivate var didSetupPin: (() -> Void)?
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        guard let setupPinViewModel = setupPinViewModel else { return }
         
         Style.label.apply(to: topLabel) {
             $0.textColor = .white
@@ -63,6 +66,8 @@ final class SetupPinViewController: UIViewController {
     }
     
     private func setupKeyPad() {
+        guard let setupPinViewModel = setupPinViewModel else { return }
+        
         keyPadView.backgroundColor = UIColor.zap.charcoalGrey
         keyPadView.textColor = .white
         keyPadView.state = .setupPin
@@ -73,7 +78,7 @@ final class SetupPinViewController: UIViewController {
     }
     
     @IBAction private func doneButtonTapped(_ sender: Any) {
-        setupPinViewModel.doneButtonTapped()
+        setupPinViewModel?.doneButtonTapped()
         keyPadView.numberString = ""
     }
     

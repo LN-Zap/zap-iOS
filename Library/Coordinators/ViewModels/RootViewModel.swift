@@ -9,9 +9,10 @@ import Bond
 import Foundation
 import Lightning
 
-public final class RootViewModel: NSObject {
+final class RootViewModel: NSObject {
+    let authenticationViewModel = AuthenticationViewModel()
     
-    public enum State {
+    enum State {
         case locked
         case noWallet
         case connecting
@@ -20,23 +21,25 @@ public final class RootViewModel: NSObject {
         case running
     }
     
-    public let state = Observable<State>(.connecting)
+    let state = Observable<State>(.connecting)
     
-    public private(set) var lightningService: LightningService? {
+    private(set) var lightningService: LightningService? {
         didSet {
             bindStateToLnd()
         }
     }
-    public var walletService: WalletService {
+    var walletService: WalletService {
         return WalletService(wallet: WalletApiStream())
     }
 
-    public func start() {
+    func start() {
+        ExchangeUpdaterJob.start()
+
         switch LndConnection.current {
         case .none:
             state.value = .noWallet
         default:
-            if Environment.skipPinFlow || !AuthenticationViewModel.shared.didSetupPin {
+            if Environment.skipPinFlow || !authenticationViewModel.didSetupPin {
                 state.value = .connecting
                 connect()
             } else {
@@ -45,7 +48,13 @@ public final class RootViewModel: NSObject {
         }
     }
     
-    public func connect() {
+    func stop() {
+        ExchangeUpdaterJob.stop()
+        lightningService?.stop()
+        LocalLnd.stop()
+    }
+    
+    func connect() {
         let connection = LndConnection.current
         
         if case .local = LndConnection.current {

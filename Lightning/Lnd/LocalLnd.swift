@@ -28,7 +28,7 @@ public final class LocalLnd {
         }
     }
     
-    static func stop() {
+    public static func stop() {
         isRunning = false
         LndmobileStopDaemon(nil, EmptyStreamCallback())
     }
