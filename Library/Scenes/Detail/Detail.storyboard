@@ -13,7 +13,7 @@
         <!--Detail View Controller-->
         <scene sceneID="sD4-qN-ajj">
             <objects>
-                <viewController id="d1h-ld-rAe" customClass="DetailViewController" customModule="Zap" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="d1h-ld-rAe" customClass="DetailViewController" customModule="Library" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="uR7-lF-x5U">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -26,7 +26,7 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="Pcr-4e-g1R" firstAttribute="trailing" secondItem="qKg-eB-eyp" secondAttribute="trailing" id="DOI-VH-KEV"/>
-                            <constraint firstItem="qKg-eB-eyp" firstAttribute="bottom" secondItem="Pcr-4e-g1R" secondAttribute="bottom" id="TQz-Ph-vBv"/>
+                            <constraint firstAttribute="bottom" secondItem="qKg-eB-eyp" secondAttribute="bottom" id="TQz-Ph-vBv"/>
                             <constraint firstItem="qKg-eB-eyp" firstAttribute="leading" secondItem="Pcr-4e-g1R" secondAttribute="leading" id="TWQ-8x-Opx"/>
                             <constraint firstItem="qKg-eB-eyp" firstAttribute="top" secondItem="Pcr-4e-g1R" secondAttribute="top" id="lby-JR-pj0"/>
                         </constraints>
@@ -41,6 +41,7 @@
                     </navigationItem>
                     <connections>
                         <outlet property="tableView" destination="qKg-eB-eyp" id="Cii-iH-3vv"/>
+                        <outlet property="tableViewBottomConstraint" destination="TQz-Ph-vBv" id="eO8-nn-ubI"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="475-xD-lWP" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -50,7 +51,7 @@
         <!--Modal Navigation Controller-->
         <scene sceneID="fA5-7M-Lxe">
             <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="4z8-4j-5GR" customClass="ModalNavigationController" customModule="Zap" customModuleProvider="target" sceneMemberID="viewController">
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="4z8-4j-5GR" customClass="ModalNavigationController" customModule="Library" customModuleProvider="target" sceneMemberID="viewController">
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="qhH-EC-P4t">
                         <rect key="frame" x="0.0" y="20" width="375" height="44"/>

@@ -18,7 +18,7 @@ extension UIStoryboard {
     }
 }
 
-final class RequestViewController: UIViewController {
+final class RequestViewController: UIViewController, KeyboardAdjustable {
     @IBOutlet private weak var segmentedControlBackgroundView: UIView!
     @IBOutlet private weak var lightningButton: UIButton!
     @IBOutlet private weak var onChainButton: UIButton!
@@ -68,7 +68,7 @@ final class RequestViewController: UIViewController {
             }
             .dispose(in: reactive.bag)
 
-        setupKeyboardNotifications()
+        setupKeyboardNotifications(constraint: bottomConstraint)
         
         amountInputView.validRange = (0...LndConstants.maxPaymentAllowed)
     }
@@ -105,30 +105,6 @@ final class RequestViewController: UIViewController {
     
     @IBAction private func swapCurrencyButtonTapped(_ sender: Any) {
         Settings.shared.swapCurrencies()
-    }
-    
-    private func setupKeyboardNotifications() {
-        NotificationCenter.default.reactive.notification(name: .UIKeyboardWillHide)
-            .observeNext { [weak self] _ in
-                self?.updateKeyboardConstraint(to: 0)
-            }
-            .dispose(in: reactive.bag)
-        
-        NotificationCenter.default.reactive.notification(name: .UIKeyboardWillShow)
-            .observeNext { [weak self] notification in
-                guard
-                    let keyboardFrame = notification.userInfo?[UIKeyboardFrameEndUserInfoKey] as? CGRect
-                    else { return }
-                self?.updateKeyboardConstraint(to: keyboardFrame.height)
-            }
-            .dispose(in: reactive.bag)
-    }
-    
-    private func updateKeyboardConstraint(to height: CGFloat) {
-        UIView.animate(withDuration: 0.25) { [bottomConstraint, view] in
-            bottomConstraint?.constant = height
-            view?.layoutIfNeeded()
-        }
     }
 }
 

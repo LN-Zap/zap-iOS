@@ -27,8 +27,9 @@ extension UIStoryboard {
     }
 }
 
-final class DetailViewController: UIViewController {
+final class DetailViewController: UIViewController, KeyboardAdjustable {
     @IBOutlet private weak var tableView: UITableView!
+    @IBOutlet private weak var tableViewBottomConstraint: NSLayoutConstraint!
     
     fileprivate var dismissButtonTapped: (() -> Void)?
     fileprivate var safariButtonTapped: ((URL) -> Void)?
@@ -65,6 +66,8 @@ final class DetailViewController: UIViewController {
         detailViewModel?.detailCells
             .bind(to: tableView, createCell: createCell)
             .dispose(in: reactive.bag)
+        
+        setupKeyboardNotifications(constraint: tableViewBottomConstraint)
     }
     
     private func createCell(data: ObservableArray<DetailCellType>, indexPath: IndexPath, tableView: UITableView) -> UITableViewCell {
