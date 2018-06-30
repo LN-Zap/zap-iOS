@@ -1,6 +1,0 @@
-framework module Pods_ZapShared {
-  umbrella header "Pods-ZapShared-umbrella.h"
-
-  export *
-  module * { export * }
-}

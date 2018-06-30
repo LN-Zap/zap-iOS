@@ -8,11 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		07C7C322CDB492C226848EFA /* Pods_Zap.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9EC2E1672FBE02668AF94B5F /* Pods_Zap.framework */; };
-		32F22674C5B766E381D04347 /* Pods_BTCUtil.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2B635A47845C09C497E6D3C3 /* Pods_BTCUtil.framework */; };
-		4BB8DFD8AAF8FD9BA55751F4 /* Pods_btcutil.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CAF208744C2CFC6A493BD8B1 /* Pods_btcutil.framework */; };
+		5B653C24BD3BE413AD4B000B /* Pods_BTCUtil.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D8CE14830DF79132FBA7CD83 /* Pods_BTCUtil.framework */; };
 		5FC5D426F7846BE33B76F86B /* Pods_Lightning.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E9285C9D958086409E19ABBE /* Pods_Lightning.framework */; };
-		6715DD3105AC05A280517E29 /* Pods_ZapLightning.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0E07851153E2E6E5DCE4A29A /* Pods_ZapLightning.framework */; };
-		743B0B9424380D0917367A83 /* Pods_ZapShared.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 02C40AC08924BEF4DB60C5FF /* Pods_ZapShared.framework */; };
 		97912DF726B2C4F12871FB1B /* Pods_ZapMessages.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6E4840991E5C8581D6D62A34 /* Pods_ZapMessages.framework */; };
 		A000F5F32047F65200480D8E /* BTCUtil.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A000F5EA2047F65100480D8E /* BTCUtil.framework */; };
 		A000F5FC2047F65200480D8E /* btcutil.h in Headers */ = {isa = PBXBuildFile; fileRef = A000F5EC2047F65100480D8E /* btcutil.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -286,6 +283,7 @@
 		ADFEFA7720E629AA00FE1557 /* String.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADFEFA7620E629AA00FE1557 /* String.swift */; };
 		ADFEFA7920E62B1800FE1557 /* BlockChainHeightUpdater.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0D3C97F20629B9D0015C5D7 /* BlockChainHeightUpdater.swift */; };
 		ADFEFA8820E676A500FE1557 /* Lndmobile.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = ADFEFA8720E676A500FE1557 /* Lndmobile.framework */; };
+		D1443AA50FF452CE2F5EC248 /* Pods_Library.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F61CE75D40EFF0419D27C1E7 /* Pods_Library.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -310,19 +308,19 @@
 			remoteGlobalIDString = A000F5E92047F65100480D8E;
 			remoteInfo = btcutil;
 		};
+		AD292F9220E759D800211AE7 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = A0A059F72013CF960007D1C9 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = A000F5E92047F65100480D8E;
+			remoteInfo = BTCUtil;
+		};
 		AD391C1D20D16ED4007EE22A /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = A0A059F72013CF960007D1C9 /* Project object */;
 			proxyType = 1;
 			remoteGlobalIDString = AD391C1720D16ED4007EE22A;
 			remoteInfo = ZapShared;
-		};
-		AD391D1520D1723E007EE22A /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = A0A059F72013CF960007D1C9 /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = A000F5E92047F65100480D8E;
-			remoteInfo = BTCUtil;
 		};
 		AD391D4B20D17FA9007EE22A /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
@@ -424,18 +422,16 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
-		02C40AC08924BEF4DB60C5FF /* Pods_ZapShared.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ZapShared.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		0E07851153E2E6E5DCE4A29A /* Pods_ZapLightning.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ZapLightning.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		1F81C1A423D4B1E1F9360639 /* Pods-ZapMessages.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ZapMessages.release.xcconfig"; path = "Pods/Target Support Files/Pods-ZapMessages/Pods-ZapMessages.release.xcconfig"; sourceTree = "<group>"; };
-		2B635A47845C09C497E6D3C3 /* Pods_BTCUtil.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_BTCUtil.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		3441446DFC7B1DCD11C0A9EA /* Pods-ZapTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ZapTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-ZapTests/Pods-ZapTests.release.xcconfig"; sourceTree = "<group>"; };
 		459E9F08A5E1CA4E35D40A9D /* Pods-btcutil.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-btcutil.debug.xcconfig"; path = "Pods/Target Support Files/Pods-btcutil/Pods-btcutil.debug.xcconfig"; sourceTree = "<group>"; };
 		4C3201DB6F9E61135DF52550 /* Pods-Lightning.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Lightning.release.xcconfig"; path = "Pods/Target Support Files/Pods-Lightning/Pods-Lightning.release.xcconfig"; sourceTree = "<group>"; };
 		5BA7F4159E2F4430CC396CC9 /* Pods-ZapShared.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ZapShared.debug.xcconfig"; path = "Pods/Target Support Files/Pods-ZapShared/Pods-ZapShared.debug.xcconfig"; sourceTree = "<group>"; };
+		6A284164D7EB6F7A8649DC59 /* Pods-Library.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Library.release.xcconfig"; path = "Pods/Target Support Files/Pods-Library/Pods-Library.release.xcconfig"; sourceTree = "<group>"; };
 		6E4840991E5C8581D6D62A34 /* Pods_ZapMessages.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ZapMessages.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		700FBCADDAD580B28F987D98 /* Pods_ZapTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ZapTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		7CE8A04FCACE10A7B0FACAE7 /* Pods-btcutil.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-btcutil.release.xcconfig"; path = "Pods/Target Support Files/Pods-btcutil/Pods-btcutil.release.xcconfig"; sourceTree = "<group>"; };
 		8523FC0BE0EA7D00977CBF93 /* Pods-ZapLightning.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ZapLightning.release.xcconfig"; path = "Pods/Target Support Files/Pods-ZapLightning/Pods-ZapLightning.release.xcconfig"; sourceTree = "<group>"; };
+		853E07500DD4084FD1B0C434 /* Pods-Library.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Library.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Library/Pods-Library.debug.xcconfig"; sourceTree = "<group>"; };
 		92F22D865D02B474D402AEFA /* Pods-ZapShared.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ZapShared.release.xcconfig"; path = "Pods/Target Support Files/Pods-ZapShared/Pods-ZapShared.release.xcconfig"; sourceTree = "<group>"; };
 		9EC2E1672FBE02668AF94B5F /* Pods_Zap.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Zap.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		A000F5EA2047F65100480D8E /* BTCUtil.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = BTCUtil.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -719,11 +715,12 @@
 		ADFEFA7620E629AA00FE1557 /* String.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = String.swift; sourceTree = "<group>"; };
 		ADFEFA8720E676A500FE1557 /* Lndmobile.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Lndmobile.framework; path = Frameworks/Lndmobile.framework; sourceTree = SOURCE_ROOT; };
 		AE22E81B1B7AD6C27F3D49BD /* Pods-Zap.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Zap.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Zap/Pods-Zap.debug.xcconfig"; sourceTree = "<group>"; };
-		CAF208744C2CFC6A493BD8B1 /* Pods_btcutil.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_btcutil.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		D8CE14830DF79132FBA7CD83 /* Pods_BTCUtil.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_BTCUtil.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		DB877056D2A1225EA035E012 /* Pods-Zap.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Zap.release.xcconfig"; path = "Pods/Target Support Files/Pods-Zap/Pods-Zap.release.xcconfig"; sourceTree = "<group>"; };
 		DC890C8992F5662C3A5E9EA6 /* Pods-BTCUtil.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BTCUtil.debug.xcconfig"; path = "Pods/Target Support Files/Pods-BTCUtil/Pods-BTCUtil.debug.xcconfig"; sourceTree = "<group>"; };
 		E9285C9D958086409E19ABBE /* Pods_Lightning.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Lightning.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		F3523D67A3D3207EEFAB691A /* Pods-ZapLightning.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ZapLightning.debug.xcconfig"; path = "Pods/Target Support Files/Pods-ZapLightning/Pods-ZapLightning.debug.xcconfig"; sourceTree = "<group>"; };
+		F61CE75D40EFF0419D27C1E7 /* Pods_Library.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Library.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		F628F8A8AB7C31776F8A8C90 /* Pods-ZapTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ZapTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-ZapTests/Pods-ZapTests.debug.xcconfig"; sourceTree = "<group>"; };
 		FC5C7787B1879C9186703020 /* Pods-ZapMessages.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ZapMessages.debug.xcconfig"; path = "Pods/Target Support Files/Pods-ZapMessages/Pods-ZapMessages.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -733,8 +730,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				4BB8DFD8AAF8FD9BA55751F4 /* Pods_btcutil.framework in Frameworks */,
-				32F22674C5B766E381D04347 /* Pods_BTCUtil.framework in Frameworks */,
+				5B653C24BD3BE413AD4B000B /* Pods_BTCUtil.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -763,7 +759,7 @@
 			files = (
 				ADFEFA7120E628AC00FE1557 /* Lightning.framework in Frameworks */,
 				AD391D1220D170ED007EE22A /* BTCUtil.framework in Frameworks */,
-				743B0B9424380D0917367A83 /* Pods_ZapShared.framework in Frameworks */,
+				D1443AA50FF452CE2F5EC248 /* Pods_Library.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -782,7 +778,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				6715DD3105AC05A280517E29 /* Pods_ZapLightning.framework in Frameworks */,
 				ADFEFA8820E676A500FE1557 /* Lndmobile.framework in Frameworks */,
 				5FC5D426F7846BE33B76F86B /* Pods_Lightning.framework in Frameworks */,
 			);
@@ -825,6 +820,8 @@
 				8523FC0BE0EA7D00977CBF93 /* Pods-ZapLightning.release.xcconfig */,
 				A8517E12ED19329B536B9504 /* Pods-Lightning.debug.xcconfig */,
 				4C3201DB6F9E61135DF52550 /* Pods-Lightning.release.xcconfig */,
+				853E07500DD4084FD1B0C434 /* Pods-Library.debug.xcconfig */,
+				6A284164D7EB6F7A8649DC59 /* Pods-Library.release.xcconfig */,
 			);
 			name = Pods;
 			sourceTree = "<group>";
@@ -1621,15 +1618,12 @@
 			isa = PBXGroup;
 			children = (
 				A02C9FC1202F5BDC009821B1 /* LocalAuthentication.framework */,
-				9EC2E1672FBE02668AF94B5F /* Pods_Zap.framework */,
-				700FBCADDAD580B28F987D98 /* Pods_ZapTests.framework */,
-				CAF208744C2CFC6A493BD8B1 /* Pods_btcutil.framework */,
-				2B635A47845C09C497E6D3C3 /* Pods_BTCUtil.framework */,
-				02C40AC08924BEF4DB60C5FF /* Pods_ZapShared.framework */,
 				AD391D4020D17FA9007EE22A /* Messages.framework */,
-				6E4840991E5C8581D6D62A34 /* Pods_ZapMessages.framework */,
-				0E07851153E2E6E5DCE4A29A /* Pods_ZapLightning.framework */,
+				D8CE14830DF79132FBA7CD83 /* Pods_BTCUtil.framework */,
+				F61CE75D40EFF0419D27C1E7 /* Pods_Library.framework */,
 				E9285C9D958086409E19ABBE /* Pods_Lightning.framework */,
+				9EC2E1672FBE02668AF94B5F /* Pods_Zap.framework */,
+				6E4840991E5C8581D6D62A34 /* Pods_ZapMessages.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -1719,9 +1713,9 @@
 			);
 			dependencies = (
 				A000F5FE2047F65200480D8E /* PBXTargetDependency */,
+				AD536BFA20E62764002279BC /* PBXTargetDependency */,
 				AD391C1E20D16ED4007EE22A /* PBXTargetDependency */,
 				AD391D4C20D17FA9007EE22A /* PBXTargetDependency */,
-				AD536BFA20E62764002279BC /* PBXTargetDependency */,
 			);
 			name = Zap;
 			productName = ThunderWallet;
@@ -1742,7 +1736,6 @@
 			);
 			dependencies = (
 				ADFEFA7C20E66A4700FE1557 /* PBXTargetDependency */,
-				AD391D1620D1723E007EE22A /* PBXTargetDependency */,
 			);
 			name = Library;
 			productName = ZapShared;
@@ -1782,6 +1775,7 @@
 			buildRules = (
 			);
 			dependencies = (
+				AD292F9320E759D800211AE7 /* PBXTargetDependency */,
 			);
 			name = Lightning;
 			productName = ZapLightning;
@@ -2122,7 +2116,7 @@
 			);
 			name = "[CP] Check Pods Manifest.lock";
 			outputPaths = (
-				"$(DERIVED_FILE_DIR)/Pods-ZapShared-checkManifestLockResult.txt",
+				"$(DERIVED_FILE_DIR)/Pods-Library-checkManifestLockResult.txt",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -2443,15 +2437,15 @@
 			target = A000F5E92047F65100480D8E /* BTCUtil */;
 			targetProxy = A000F5FD2047F65200480D8E /* PBXContainerItemProxy */;
 		};
+		AD292F9320E759D800211AE7 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = A000F5E92047F65100480D8E /* BTCUtil */;
+			targetProxy = AD292F9220E759D800211AE7 /* PBXContainerItemProxy */;
+		};
 		AD391C1E20D16ED4007EE22A /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = AD391C1720D16ED4007EE22A /* Library */;
 			targetProxy = AD391C1D20D16ED4007EE22A /* PBXContainerItemProxy */;
-		};
-		AD391D1620D1723E007EE22A /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = A000F5E92047F65100480D8E /* BTCUtil */;
-			targetProxy = AD391D1520D1723E007EE22A /* PBXContainerItemProxy */;
 		};
 		AD391D4C20D17FA9007EE22A /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
@@ -2831,7 +2825,7 @@
 		};
 		AD391C2120D16ED4007EE22A /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 5BA7F4159E2F4430CC396CC9 /* Pods-ZapShared.debug.xcconfig */;
+			baseConfigurationReference = 853E07500DD4084FD1B0C434 /* Pods-Library.debug.xcconfig */;
 			buildSettings = {
 				CLANG_ENABLE_OBJC_WEAK = YES;
 				CODE_SIGN_IDENTITY = "";
@@ -2863,7 +2857,7 @@
 		};
 		AD391C2220D16ED4007EE22A /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 92F22D865D02B474D402AEFA /* Pods-ZapShared.release.xcconfig */;
+			baseConfigurationReference = 6A284164D7EB6F7A8649DC59 /* Pods-Library.release.xcconfig */;
 			buildSettings = {
 				CLANG_ENABLE_OBJC_WEAK = YES;
 				CODE_SIGN_IDENTITY = "";
@@ -2949,6 +2943,7 @@
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				ENABLE_BITCODE = NO;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/Lightning",
@@ -2982,6 +2977,7 @@
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				ENABLE_BITCODE = NO;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/Lightning",
