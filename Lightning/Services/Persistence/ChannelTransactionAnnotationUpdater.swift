@@ -9,31 +9,25 @@ import Bond
 import Foundation
 import ReactiveKit
 
-// TODO: define protocol to update viewmodel
 public final class ChannelTransactionAnnotationUpdater: NSObject {
-    
-//    init(channelService: ChannelService, transactionListViewModel: TransactionListViewModel) {
-//        super.init()
-//
-//        combineLatest(channelService.all, transactionListViewModel.sections)
-//            .observeNext { [weak self] arg in
-//                let (channels, transactionSections) = arg
-//                let transactions = transactionSections.source.sections.flatMap {
-//                    $0.items
-//                }
-//                
-//                self?.updateMemos(in: transactionListViewModel, channels: channels, transactions: transactions)
-//            }
-//            .dispose(in: reactive.bag)
-//    }
-//
-//    func updateMemos(in transactionListViewModel: TransactionListViewModel, channels: [Channel], transactions: [TransactionViewModel]) {
-//        for transaction in transactions where transaction.annotation.value.customMemo == nil {
-//            // search for matching channel for funding transaction
-//            guard let channel = channels.first(where: { $0.channelPoint.hasPrefix(transaction.id) }) else { continue }
-//
-//            let annotation = TransactionAnnotation(isHidden: false, customMemo: nil, type: .openChannelTransaction(channel.remotePubKey))
-//            transactionListViewModel.updateAnnotation(annotation, for: transaction)
-//        }
-//    }
+    public init(channelService: ChannelService, transactionService: TransactionService, updateCallback: @escaping (TransactionAnnotation, Transaction) -> Void) {
+        super.init()
+
+        combineLatest(channelService.all, transactionService.transactions)
+            .observeNext { [weak self] arg in
+                let (channels, transactions) = arg
+                self?.updateMemos(channels: channels, transactions: transactions, updateCallback: updateCallback)
+            }
+            .dispose(in: reactive.bag)
+    }
+
+    private func updateMemos(channels: [Channel], transactions: [Transaction], updateCallback: (TransactionAnnotation, Transaction) -> Void) {
+        for transaction in transactions {
+            // search for matching channel for funding transaction
+            guard let channel = channels.first(where: { $0.channelPoint.hasPrefix(transaction.id) }) else { continue }
+
+            let annotation = TransactionAnnotation(isHidden: false, customMemo: nil, type: .openChannelTransaction(channel.remotePubKey))
+            updateCallback(annotation, transaction)
+        }
+    }
 }
