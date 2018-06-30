@@ -15,18 +15,27 @@ final class TransactionListViewModel: NSObject {
     private let aliasStore: ChannelAliasStore
     let transactionAnnotationStore = TransactionAnnotationStore()
     
+    let isLoading = Observable(true)
     let sections: MutableObservable2DArray<String, TransactionViewModel>
+    let isEmpty: Signal<Bool, NoError>
     
     init(transactionService: TransactionService, aliasStore: ChannelAliasStore) {
         self.transactionService = transactionService
         self.aliasStore = aliasStore
         sections = MutableObservable2DArray()
         
+        isEmpty = combineLatest(sections, isLoading) { sections, isLoading in
+            return sections.dataSource.isEmpty && !isLoading
+        }
+        .distinct()
+        .debounce(interval: 0.5)
+        .start(with: false)
+
         super.init()
         
         transactionService.transactions
             .observeNext(with: updateSections)
-            .dispose(in: reactive.bag)
+            .dispose(in: reactive.bag)        
     }
     
     func refresh() {
@@ -60,6 +69,7 @@ final class TransactionListViewModel: NSObject {
         
         DispatchQueue.main.async {
             self.sections.replace(with: array, performDiff: true)
+            self.isLoading.value = false
         }
     }
 

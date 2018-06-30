@@ -39,6 +39,7 @@ final class TransactionListViewController: UIViewController {
     @IBOutlet private weak var searchBar: UISearchBar!
     @IBOutlet private weak var emptyStateLabel: UILabel!
     @IBOutlet private weak var filterButton: UIButton!
+    @IBOutlet private weak var loadingActivityIndicator: UIActivityIndicatorView!
     
     fileprivate var presentTransactionDetail: ((TransactionViewModel) -> Void)?
     fileprivate var transactionListViewModel: TransactionListViewModel?
@@ -64,16 +65,14 @@ final class TransactionListViewController: UIViewController {
         tableView.refreshControl = UIRefreshControl()
         tableView.refreshControl?.addTarget(self, action: #selector(refresh), for: .valueChanged)
         
-        transactionListViewModel?.sections.bind(to: tableView, using: TransactionBond())
-
-        let isDataSourceEmpty = transactionListViewModel?.sections
-            .map {
-                $0.dataSource.isEmpty
-            }
-        
-        [isDataSourceEmpty?
+        [transactionListViewModel?.sections
+            .bind(to: tableView, using: TransactionBond()),
+         transactionListViewModel?.isLoading
+            .map { !$0 }
+            .bind(to: loadingActivityIndicator.reactive.isHidden),
+         transactionListViewModel?.isEmpty
             .bind(to: tableView.reactive.isHidden),
-         isDataSourceEmpty?
+         transactionListViewModel?.isEmpty
             .map { !$0 }
             .bind(to: emptyStateLabel.reactive.isHidden)]
             .dispose(in: reactive.bag)

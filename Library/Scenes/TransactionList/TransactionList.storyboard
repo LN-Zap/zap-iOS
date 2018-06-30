@@ -13,7 +13,7 @@
         <!--Transaction List View Controller-->
         <scene sceneID="pCU-iQ-a1q">
             <objects>
-                <viewController storyboardIdentifier="TransactionHistoryViewController" automaticallyAdjustsScrollViewInsets="NO" id="J4r-Ef-mEB" customClass="TransactionListViewController" customModule="Zap" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="TransactionHistoryViewController" automaticallyAdjustsScrollViewInsets="NO" id="J4r-Ef-mEB" customClass="TransactionListViewController" customModule="Library" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="7bR-C8-Rp0">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -28,7 +28,7 @@
                                         </constraints>
                                         <state key="normal" image="icon-sliders"/>
                                     </button>
-                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="aCh-Fz-Im1" customClass="LineView" customModule="Zap" customModuleProvider="target">
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="aCh-Fz-Im1" customClass="LineView" customModule="Library" customModuleProvider="target">
                                         <rect key="frame" x="294" y="0.0" width="1" height="56"/>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <constraints>
@@ -65,6 +65,9 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" animating="YES" style="gray" translatesAutoresizingMaskIntoConstraints="NO" id="Wig-wX-cMw">
+                                <rect key="frame" x="177" y="271.5" width="20" height="20"/>
+                            </activityIndicatorView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
@@ -73,8 +76,10 @@
                             <constraint firstItem="MdZ-nX-bdg" firstAttribute="centerY" secondItem="pF1-OT-IUM" secondAttribute="centerY" constant="-80" id="I22-U7-68e"/>
                             <constraint firstItem="MdZ-nX-bdg" firstAttribute="centerX" secondItem="pF1-OT-IUM" secondAttribute="centerX" id="JVZ-4n-4YC"/>
                             <constraint firstItem="9Ju-Np-eQd" firstAttribute="top" secondItem="7bR-C8-Rp0" secondAttribute="top" id="Zdd-Q1-xsy"/>
+                            <constraint firstItem="MdZ-nX-bdg" firstAttribute="centerX" secondItem="Wig-wX-cMw" secondAttribute="centerX" id="czJ-2F-yCz"/>
                             <constraint firstAttribute="trailing" secondItem="pF1-OT-IUM" secondAttribute="trailing" id="dTE-8X-Q84"/>
                             <constraint firstItem="MdZ-nX-bdg" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="pF1-OT-IUM" secondAttribute="leading" constant="20" id="edu-qO-jmf"/>
+                            <constraint firstItem="MdZ-nX-bdg" firstAttribute="centerY" secondItem="Wig-wX-cMw" secondAttribute="centerY" id="gFc-7Z-q90"/>
                             <constraint firstItem="9Ju-Np-eQd" firstAttribute="trailing" secondItem="0Q0-UA-jDF" secondAttribute="trailing" id="gij-q1-z35"/>
                             <constraint firstItem="9Ju-Np-eQd" firstAttribute="leading" secondItem="0Q0-UA-jDF" secondAttribute="leading" id="kuU-iv-fi0"/>
                             <constraint firstItem="pF1-OT-IUM" firstAttribute="top" secondItem="9Ju-Np-eQd" secondAttribute="bottom" id="m1N-kC-HrP"/>
@@ -85,6 +90,7 @@
                     <connections>
                         <outlet property="emptyStateLabel" destination="MdZ-nX-bdg" id="Pwx-08-UrV"/>
                         <outlet property="filterButton" destination="jnM-EZ-LWT" id="3V2-t6-DxX"/>
+                        <outlet property="loadingActivityIndicator" destination="Wig-wX-cMw" id="m1D-Db-4ki"/>
                         <outlet property="searchBackgroundView" destination="9Ju-Np-eQd" id="mx1-Di-FXP"/>
                         <outlet property="searchBar" destination="yCq-wt-XFX" id="saj-4C-xAR"/>
                         <outlet property="tableView" destination="pF1-OT-IUM" id="iv8-dO-2AL"/>
