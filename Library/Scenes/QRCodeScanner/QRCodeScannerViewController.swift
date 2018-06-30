@@ -131,7 +131,7 @@ final class QRCodeScannerViewController: UIViewController, ContainerViewControll
 
 extension QRCodeScannerViewController: QRCodeScannerChildDelegate {
     func presentError(message: String) {
-        presentErrorToast(message)
+        navigationController?.presentErrorToast(message)
     }
     
     func dismissSuccessfully() {

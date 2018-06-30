@@ -36,11 +36,18 @@ final class Toast: UIView {
         guard let content = toastView() else { return }
         addSubview(content)
         
-        let views = ["content": content]
-        let horizontalConstraints = NSLayoutConstraint.constraints(withVisualFormat: "H:|[content]|", options: [], metrics: nil, views: views)
-        addConstraints(horizontalConstraints)
-        let verticalConstraints = NSLayoutConstraint.constraints(withVisualFormat: "V:|[content]|", options: [], metrics: nil, views: views)
-        addConstraints(verticalConstraints)
+//        let views = ["content": content]
+//        let horizontalConstraints = NSLayoutConstraint.constraints(withVisualFormat: "H:|[content]|", options: [], metrics: nil, views: views)
+//        addConstraints(horizontalConstraints)
+//        let verticalConstraints = NSLayoutConstraint.constraints(withVisualFormat: "V:|[content]|", options: [], metrics: nil, views: views)
+//        addConstraints(verticalConstraints)
+//
+        NSLayoutConstraint.activate([
+            content.topAnchor.constraint(equalTo: safeAreaLayoutGuide.topAnchor),
+            content.bottomAnchor.constraint(equalTo: bottomAnchor),
+            content.leadingAnchor.constraint(equalTo: leadingAnchor),
+            content.trailingAnchor.constraint(equalTo: trailingAnchor)
+        ])
     }
     
     private func toastView() -> UIView? {
@@ -48,14 +55,17 @@ final class Toast: UIView {
         guard let content = views?.first as? UIView else { return nil }
         
         if style == .error {
-            messageLabel?.textColor = UIColor.zap.tomato
+            backgroundColor = UIColor.zap.tomato
+            messageLabel?.textColor = .white
         } else {
+            backgroundColor = .white
             messageLabel?.textColor = UIColor.zap.charcoalGrey
         }
+        content.backgroundColor = backgroundColor
         
         translatesAutoresizingMaskIntoConstraints = false
+        
         content.translatesAutoresizingMaskIntoConstraints = false
-        content.backgroundColor = .white
         
         return content
     }
@@ -86,10 +96,11 @@ extension UIViewController {
         view.addSubview(toast)
         
         setupAutolayoutConstraints(forToast: toast)
-        toast.transform = CGAffineTransform(translationX: 0, y: -100)
+        
+        toast.alpha = 0
         
         UIView.animate(withDuration: 0.2, animations: {
-            toast.transform = CGAffineTransform.identity
+            toast.alpha = 1
             }, completion: completion)
         
         DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + Double(Int64(3.0 * Double(NSEC_PER_SEC))) / Double(NSEC_PER_SEC)) { () -> Void in
@@ -105,14 +116,11 @@ extension UIViewController {
         } else {
             layoutGuide = view.layoutMarginsGuide
         }
-        
-        let margin: CGFloat = 10
-        
+
         NSLayoutConstraint.activate([
-            NSLayoutConstraint(item: toast, attribute: .centerX, relatedBy: .equal, toItem: view, attribute: .centerX, multiplier: 1, constant: 0),
-            toast.topAnchor.constraint(equalTo: layoutGuide.topAnchor, constant: margin),
-            toast.leadingAnchor.constraint(greaterThanOrEqualTo: layoutGuide.leadingAnchor, constant: margin),
-            toast.trailingAnchor.constraint(greaterThanOrEqualTo: layoutGuide.trailingAnchor, constant: margin)
+            toast.topAnchor.constraint(equalTo: view.topAnchor),
+            toast.leadingAnchor.constraint(equalTo: layoutGuide.leadingAnchor),
+            toast.trailingAnchor.constraint(equalTo: layoutGuide.trailingAnchor)
         ])
     }
 }
