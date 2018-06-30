@@ -11,12 +11,12 @@ import Lightning
 import Messages
 import UIKit
 
-protocol ReceiveViewControllerDelegate: class {
+protocol MessagesRequestViewControllerDelegate: class {
     func requestPresentationStyle(_ presentationStyle: MSMessagesAppPresentationStyle)
     func insertMessage(text: String, invoice: String)
 }
 
-class ReceiveViewController: UIViewController {
+class MessagesRequestViewController: UIViewController {
     @IBOutlet private weak var segmentedControlBackgroundView: UIView!
     @IBOutlet private weak var segmentedControlStackView: UIStackView!
     @IBOutlet private weak var stackView: UIStackView!
@@ -28,7 +28,7 @@ class ReceiveViewController: UIViewController {
     private weak var onChainButton: SegmentButton?
     private weak var amountInputView: AmountInputView?
     
-    weak var delegate: ReceiveViewControllerDelegate?
+    weak var delegate: MessagesRequestViewControllerDelegate?
     
     var requestViewModel: RequestViewModel?
     
@@ -184,7 +184,7 @@ class ReceiveViewController: UIViewController {
     }
 }
 
-extension ReceiveViewController: AmountInputViewDelegate {
+extension MessagesRequestViewController: AmountInputViewDelegate {
     func amountInputViewDidBeginEditing(_ amountInputView: AmountInputView) {
         delegate?.requestPresentationStyle(.expanded)
     }
@@ -194,7 +194,7 @@ extension ReceiveViewController: AmountInputViewDelegate {
     }
 }
 
-extension ReceiveViewController: UITextViewDelegate {
+extension MessagesRequestViewController: UITextViewDelegate {
     func textViewShouldBeginEditing(_ textView: UITextView) -> Bool {
         amountInputView?.animateKeypad(hidden: true)
         return true

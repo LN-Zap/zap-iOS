@@ -18,7 +18,7 @@ class MessagesViewController: MSMessagesAppViewController, ContainerViewControll
         super.viewDidLoad()
         
         if let requestViewModel = RequestViewModelFactory.create() {
-            guard let viewController = storyboard?.instantiateViewController(withIdentifier: "ReceiveViewController") as? ReceiveViewController
+            guard let viewController = storyboard?.instantiateViewController(withIdentifier: "MessagesRequestViewController") as? MessagesRequestViewController
                 else { fatalError("missing vc") }
             viewController.delegate = self
             viewController.requestViewModel = requestViewModel
@@ -30,7 +30,7 @@ class MessagesViewController: MSMessagesAppViewController, ContainerViewControll
     }
     
     override func willTransition(to presentationStyle: MSMessagesAppPresentationStyle) {
-        guard let viewController = currentViewController as? ReceiveViewController else { return }
+        guard let viewController = currentViewController as? MessagesRequestViewController else { return }
         viewController.updatePresentationStyle(to: presentationStyle)
     }
     
@@ -55,7 +55,7 @@ class MessagesViewController: MSMessagesAppViewController, ContainerViewControll
     }
 }
 
-extension MessagesViewController: ReceiveViewControllerDelegate {
+extension MessagesViewController: MessagesRequestViewControllerDelegate {
     func insertMessage(text: String, invoice: String) {
         let message = MSMessage()
         

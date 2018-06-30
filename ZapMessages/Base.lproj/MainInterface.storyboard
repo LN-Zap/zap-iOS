@@ -41,10 +41,10 @@
             </objects>
             <point key="canvasLocation" x="670.39999999999998" y="39.580209895052477"/>
         </scene>
-        <!--Receive View Controller-->
+        <!--Messages Request View Controller-->
         <scene sceneID="0NZ-Fj-Pri">
             <objects>
-                <viewController storyboardIdentifier="ReceiveViewController" id="pfY-Bw-pSr" customClass="ReceiveViewController" customModule="ZapMessages" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="MessagesRequestViewController" id="pfY-Bw-pSr" customClass="MessagesRequestViewController" customModule="ZapMessages" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Qzz-JF-axZ">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -131,7 +131,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Could not connect to lightning network. Setup your wallet in the zap app." textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qzq-pG-6gN">
-                                <rect key="frame" x="20" y="323.5" width="334" height="41"/>
+                                <rect key="frame" x="20" y="323" width="335" height="41"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
