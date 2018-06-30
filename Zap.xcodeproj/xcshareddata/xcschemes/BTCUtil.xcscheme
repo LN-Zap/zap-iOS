@@ -38,6 +38,16 @@
                ReferencedContainer = "container:Zap.xcodeproj">
             </BuildableReference>
          </TestableReference>
+         <TestableReference
+            skipped = "NO">
+            <BuildableReference
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "AD536BED20E62764002279BC"
+               BuildableName = "LightningTests.xctest"
+               BlueprintName = "LightningTests"
+               ReferencedContainer = "container:Zap.xcodeproj">
+            </BuildableReference>
+         </TestableReference>
       </Testables>
       <MacroExpansion>
          <BuildableReference

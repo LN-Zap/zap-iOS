@@ -5,8 +5,8 @@
 //  Copyright © 2018 Otto Suess. All rights reserved.
 //
 
+import Library
 import UIKit
-import ZapShared
 
 @UIApplicationMain
 final class AppDelegate: UIResponder, UIApplicationDelegate {

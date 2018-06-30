@@ -5,9 +5,9 @@
 //  Copyright © 2018 Zap. All rights reserved.
 //
 
+import Library
 import Messages
 import UIKit
-import ZapShared
 
 class MessagesViewController: MSMessagesAppViewController, ContainerViewController {
     // swiftlint:disable:next private_outlet

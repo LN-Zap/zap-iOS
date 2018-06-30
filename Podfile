@@ -7,8 +7,13 @@ install! 'cocoapods'
 target 'Zap' do
 end
 
-target 'ZapShared' do
+target 'Lightning' do
+    pod 'Bond'
+    pod 'KeychainAccess'
     pod 'SwiftGRPC'
+end
+
+target 'Library' do
     pod 'KeychainAccess'
     pod 'Bond'
 end
