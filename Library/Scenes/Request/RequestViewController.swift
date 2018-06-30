@@ -55,6 +55,7 @@ final class RequestViewController: UIViewController {
         placeholderTextView.textColor = UIColor.zap.lightGrey
         memoTextView.font = UIFont.zap.light.withSize(14)
         memoTextView.textColor = UIColor.zap.black
+        memoTextView.delegate = self
         
         memoTextView.reactive.text
             .map { !($0?.isEmpty ?? true) }
@@ -128,5 +129,12 @@ final class RequestViewController: UIViewController {
             bottomConstraint?.constant = height
             view?.layoutIfNeeded()
         }
+    }
+}
+
+extension RequestViewController: UITextViewDelegate {
+    func textViewShouldBeginEditing(_ textView: UITextView) -> Bool {
+        amountInputView?.animateKeypad(hidden: true)
+        return true
     }
 }
