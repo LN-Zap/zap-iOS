@@ -8,6 +8,13 @@
 
 default_platform(:ios)
 
+app_identifier = "com.jackmallers.zap"
+app_identifier_messages = "com.jackmallers.zap.messages"
+provisioning_profile = "zap adHoc"
+provisioning_profile_messages = "zap.messages adHoc"
+
+puts(app_identifier)
+
 desc "Update build number."
 lane :build_number do
   new_build_number = Time.now.strftime("%Y.%m.%d.%H.%M")
@@ -40,8 +47,8 @@ lane :beta do
     export_method: "ad-hoc",
     export_options: {
       provisioningProfiles: { 
-        "com.jackmallers.zap" => "zap ad-hoc Distribution",
-        "com.jackmallers.zap.ZapMessages" => "zapMessages ad-hoc Distribution"
+        app_identifier => provisioning_profile,
+        app_identifier_messages => provisioning_profile_messages
       }
     }
   )  
@@ -76,15 +83,15 @@ lane :udid do
   get_provisioning_profile(
     adhoc: true,
     force: true,
-    app_identifier: "com.jackmallers.zap",
-    provisioning_name: "zap ad-hoc Distribution"
+    app_identifier: app_identifier,
+    provisioning_name: provisioning_profile
   )
 
   get_provisioning_profile(
     adhoc: true,
     force: true,
-    app_identifier: "com.jackmallers.zap.ZapMessages",
-    provisioning_name: "zapMessages ad-hoc Distribution"
+    app_identifier: app_identifier_messages,
+    provisioning_name: provisioning_profile_messages
   )
 end
 
