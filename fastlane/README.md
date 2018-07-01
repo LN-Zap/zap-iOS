@@ -25,11 +25,16 @@ Update build number.
 fastlane change_version
 ```
 Update app version.
+### s3_beta
+```
+fastlane s3_beta
+```
+Builds new Beta Build and uploads it to S3.
 ### beta
 ```
 fastlane beta
 ```
-Builds new Beta Build and uploads it to S3.
+
 ### udid
 ```
 fastlane udid

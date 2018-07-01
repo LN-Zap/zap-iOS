@@ -8,12 +8,7 @@
 
 default_platform(:ios)
 
-app_identifier = "com.jackmallers.zap"
-app_identifier_messages = "com.jackmallers.zap.messages"
-provisioning_profile = "zap adHoc"
-provisioning_profile_messages = "zap.messages adHoc"
-
-puts(app_identifier)
+app_identifier = ["com.jackmallers.zap", "com.jackmallers.zap.messages"]
 
 desc "Update build number."
 lane :build_number do
@@ -32,26 +27,28 @@ lane :change_version do |options|
 end
 
 desc "Builds new Beta Build and uploads it to S3."
-lane :beta do
+lane :s3_beta do
   unless ENV.key?('ZAP_BETA_S3_ACCESS_KEY')
     UI.user_error!("ZAP_BETA_S3_ACCESS_KEY not set.")
   end
 
   ensure_git_status_clean
   build_number
+
+  sync_code_signing(
+    username: "ottosuess@protonmail.com",
+    app_identifier: app_identifier,
+    type: "adhoc",
+    force_for_new_devices: true
+  )
+
   build_ios_app(
     workspace: "Zap.xcworkspace",
     configuration: "Debug",
     scheme: "Zap",
     output_directory: "./builds/beta",
-    export_method: "ad-hoc",
-    export_options: {
-      provisioningProfiles: { 
-        app_identifier => provisioning_profile,
-        app_identifier_messages => provisioning_profile_messages
-      }
-    }
-  )  
+    export_method: "ad-hoc"
+  )
   aws_s3(
     access_key: ENV['ZAP_BETA_S3_ACCESS_KEY'],
     secret_access_key: ENV['ZAP_BETA_S3_SECRET_ACCESS_KEY'],
@@ -61,13 +58,56 @@ lane :beta do
     app_directory: 'ios-beta',
     upload_metadata: true
   )
-  sh("git reset --hard")
+
+  changelog = changelog_from_git_commits(tag_match_pattern: 'builds/s3_beta/*', pretty: '- %s', merge_commit_filtering: "exclude_merges")
+
+  add_git_tag
+  push_git_tags
 
   slack(
-    message: "Just uploaded a new iOS beta: " + ENV['ZAP_BETA_S3_URL'],
+    message: "Just uploaded a new iOS beta: " + ENV['ZAP_BETA_S3_URL'] + "\n" + changelog.to_s,
     use_webhook_configured_username_and_icon: true,
     default_payloads: []
   )
+
+  sh("git reset --hard")
+end
+
+lane :beta do
+  ensure_git_status_clean
+
+  increment_build_number(build_number: latest_testflight_build_number(initial_build_number: 0) + 1)
+
+  sync_code_signing(
+    username: "ottosuess@protonmail.com",
+    app_identifier: app_identifier,
+    type: "appstore"
+  )
+
+  build_ios_app(
+    workspace: "Zap.xcworkspace",
+    scheme: "Zap",
+    output_directory: "./builds/beta",
+    export_method: "app-store"
+  )
+
+  changelog = changelog_from_git_commits(tag_match_pattern: 'builds/beta/*', pretty: '- %s', merge_commit_filtering: "exclude_merges")
+
+  upload_to_testflight(
+    username: "ottosuess@protonmail.com"
+  )
+
+  add_git_tag
+  push_git_tags
+
+  slack_message = "Just uploaded a new iOS beta to Fastlane\n" + changelog.to_s
+  slack(
+    message: slack_message,
+    use_webhook_configured_username_and_icon: true,
+    default_payloads: []
+  )
+
+  sh("git reset --hard")
 end
 
 desc "Add a new UDID to developer portal and update adhoc provisioning profile."
@@ -78,20 +118,6 @@ lane :udid do
   register_device(
     name: device_name,
     udid: udid
-  )
-
-  get_provisioning_profile(
-    adhoc: true,
-    force: true,
-    app_identifier: app_identifier,
-    provisioning_name: provisioning_profile
-  )
-
-  get_provisioning_profile(
-    adhoc: true,
-    force: true,
-    app_identifier: app_identifier_messages,
-    provisioning_name: provisioning_profile_messages
   )
 end
 
