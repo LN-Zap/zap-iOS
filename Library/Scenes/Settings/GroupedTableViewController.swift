@@ -9,7 +9,7 @@ import Bond
 import UIKit
 
 class GroupedTableViewController: UITableViewController {
-    private let sections: [Section<SettingsItem>]
+    let sections: [Section<SettingsItem>]
     
     init(sections: [Section<SettingsItem>]) {
         self.sections = sections
@@ -77,5 +77,17 @@ class GroupedTableViewController: UITableViewController {
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         sections[indexPath.section][indexPath.row].didSelectItem(from: self)
         tableView.deselectRow(at: indexPath, animated: true)
+    }
+    
+    override func tableView(_ tableView: UITableView, willDisplayHeaderView view: UIView, forSection section: Int) {
+        guard let view = view as? UITableViewHeaderFooterView else { return }
+        view.textLabel?.font = UIFont.zap.light
+        view.textLabel?.text = sections[section].title
+    }
+    
+    override func tableView(_ tableView: UITableView, willDisplayFooterView view: UIView, forSection section: Int) {
+        guard let view = view as? UITableViewHeaderFooterView else { return }
+        view.textLabel?.font = UIFont.zap.light.withSize(13)
+        view.textLabel?.textAlignment = .center
     }
 }
