@@ -14,6 +14,8 @@ protocol SetupCoordinatorDelegate: class {
 }
 
 final class SetupCoordinator {
+    private let isLocalLndDisabled = true
+    
     private let rootViewController: RootViewController
     private let rootViewModel: RootViewModel
     private weak var navigationController: UINavigationController?
@@ -34,6 +36,11 @@ final class SetupCoordinator {
     }
     
     private func createNewWallet() {
+        if isLocalLndDisabled {
+            presentDisabledAlert()
+            return
+        }
+        
         // TODO: stop Lnd when navigating back to Root
         if !LocalLnd.isRunning {
             LocalLnd.start()
@@ -58,6 +65,11 @@ final class SetupCoordinator {
     }
     
     private func recoverExistingWallet() {
+        if isLocalLndDisabled {
+            presentDisabledAlert()
+            return
+        }
+        
         guard let delegate = delegate else { return }
 
         if !LocalLnd.isRunning {
@@ -89,5 +101,11 @@ final class SetupCoordinator {
         guard let connectRemoteNodeViewModel = connectRemoteNodeViewModel else { return }
         let viewController = UIStoryboard.instantiateRemoteNodeCertificatesScannerViewController(connectRemoteNodeViewModel: connectRemoteNodeViewModel)
         navigationController?.present(viewController, animated: true, completion: nil)
+    }
+    
+    private func presentDisabledAlert() {
+        let alert = UIAlertController(title: "scene.select_wallet_connection.disabled_alert.title".localized, message: "scene.select_wallet_connection.disabled_alert.message".localized, preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: "Ok", style: .cancel, handler: nil))
+        navigationController?.present(alert, animated: true, completion: nil)
     }
 }
