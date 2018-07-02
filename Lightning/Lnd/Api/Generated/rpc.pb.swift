@@ -141,6 +141,36 @@ struct Lnrpc_UnlockWalletResponse {
   init() {}
 }
 
+struct Lnrpc_ChangePasswordRequest {
+  // SwiftProtobuf.Message conformance is added in an extension below. See the
+  // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
+  // methods supported on all messages.
+
+  ///*
+  ///current_password should be the current valid passphrase used to unlock the
+  ///daemon.
+  var currentPassword: Data = SwiftProtobuf.Internal.emptyData
+
+  ///*
+  ///new_password should be the new passphrase that will be needed to unlock the
+  ///daemon.
+  var newPassword: Data = SwiftProtobuf.Internal.emptyData
+
+  var unknownFields = SwiftProtobuf.UnknownStorage()
+
+  init() {}
+}
+
+struct Lnrpc_ChangePasswordResponse {
+  // SwiftProtobuf.Message conformance is added in an extension below. See the
+  // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
+  // methods supported on all messages.
+
+  var unknownFields = SwiftProtobuf.UnknownStorage()
+
+  init() {}
+}
+
 struct Lnrpc_Transaction {
   // SwiftProtobuf.Message conformance is added in an extension below. See the
   // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
@@ -198,38 +228,122 @@ struct Lnrpc_TransactionDetails {
   init() {}
 }
 
+struct Lnrpc_FeeLimit {
+  // SwiftProtobuf.Message conformance is added in an extension below. See the
+  // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
+  // methods supported on all messages.
+
+  var limit: Lnrpc_FeeLimit.OneOf_Limit? = nil
+
+  //// The fee limit expressed as a fixed amount of satoshis.
+  var fixed: Int64 {
+    get {
+      if case .fixed(let v)? = limit {return v}
+      return 0
+    }
+    set {limit = .fixed(newValue)}
+  }
+
+  //// The fee limit expressed as a percentage of the payment amount.
+  var percent: Int64 {
+    get {
+      if case .percent(let v)? = limit {return v}
+      return 0
+    }
+    set {limit = .percent(newValue)}
+  }
+
+  var unknownFields = SwiftProtobuf.UnknownStorage()
+
+  enum OneOf_Limit: Equatable {
+    //// The fee limit expressed as a fixed amount of satoshis.
+    case fixed(Int64)
+    //// The fee limit expressed as a percentage of the payment amount.
+    case percent(Int64)
+
+    static func ==(lhs: Lnrpc_FeeLimit.OneOf_Limit, rhs: Lnrpc_FeeLimit.OneOf_Limit) -> Bool {
+      switch (lhs, rhs) {
+      case (.fixed(let l), .fixed(let r)): return l == r
+      case (.percent(let l), .percent(let r)): return l == r
+      default: return false
+      }
+    }
+  }
+
+  init() {}
+}
+
 struct Lnrpc_SendRequest {
   // SwiftProtobuf.Message conformance is added in an extension below. See the
   // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
   // methods supported on all messages.
 
   //// The identity pubkey of the payment recipient
-  var dest: Data = SwiftProtobuf.Internal.emptyData
+  var dest: Data {
+    get {return _storage._dest}
+    set {_uniqueStorage()._dest = newValue}
+  }
 
   //// The hex-encoded identity pubkey of the payment recipient
-  var destString: String = String()
+  var destString: String {
+    get {return _storage._destString}
+    set {_uniqueStorage()._destString = newValue}
+  }
 
-  //// Number of satoshis to send. 
-  var amt: Int64 = 0
+  //// Number of satoshis to send.
+  var amt: Int64 {
+    get {return _storage._amt}
+    set {_uniqueStorage()._amt = newValue}
+  }
 
   //// The hash to use within the payment's HTLC
-  var paymentHash: Data = SwiftProtobuf.Internal.emptyData
+  var paymentHash: Data {
+    get {return _storage._paymentHash}
+    set {_uniqueStorage()._paymentHash = newValue}
+  }
 
   //// The hex-encoded hash to use within the payment's HTLC
-  var paymentHashString: String = String()
+  var paymentHashString: String {
+    get {return _storage._paymentHashString}
+    set {_uniqueStorage()._paymentHashString = newValue}
+  }
 
   ///*
   ///A bare-bones invoice for a payment within the Lightning Network.  With the
   ///details of the invoice, the sender has all the data necessary to send a
   ///payment to the recipient.
-  var paymentRequest: String = String()
+  var paymentRequest: String {
+    get {return _storage._paymentRequest}
+    set {_uniqueStorage()._paymentRequest = newValue}
+  }
 
-  //// The CLTV delta from the current height that should be used to set the timelock for the final hop.
-  var finalCltvDelta: Int32 = 0
+  ///*
+  ///The CLTV delta from the current height that should be used to set the
+  ///timelock for the final hop.
+  var finalCltvDelta: Int32 {
+    get {return _storage._finalCltvDelta}
+    set {_uniqueStorage()._finalCltvDelta = newValue}
+  }
+
+  ///*
+  ///The maximum number of satoshis that will be paid as a fee of the payment.
+  ///This value can be represented either as a percentage of the amount being
+  ///sent, or as a fixed amount of the maximum fee the user is willing the pay to
+  ///send the payment.
+  var feeLimit: Lnrpc_FeeLimit {
+    get {return _storage._feeLimit ?? Lnrpc_FeeLimit()}
+    set {_uniqueStorage()._feeLimit = newValue}
+  }
+  /// Returns true if `feeLimit` has been explicitly set.
+  var hasFeeLimit: Bool {return _storage._feeLimit != nil}
+  /// Clears the value of `feeLimit`. Subsequent reads from it will return its default value.
+  mutating func clearFeeLimit() {_storage._feeLimit = nil}
 
   var unknownFields = SwiftProtobuf.UnknownStorage()
 
   init() {}
+
+  fileprivate var _storage = _StorageClass.defaultInstance
 }
 
 struct Lnrpc_SendResponse {
@@ -261,6 +375,25 @@ struct Lnrpc_SendResponse {
   init() {}
 
   fileprivate var _storage = _StorageClass.defaultInstance
+}
+
+struct Lnrpc_SendToRouteRequest {
+  // SwiftProtobuf.Message conformance is added in an extension below. See the
+  // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
+  // methods supported on all messages.
+
+  //// The payment hash to use for the HTLC.
+  var paymentHash: Data = SwiftProtobuf.Internal.emptyData
+
+  //// An optional hex-encoded payment hash to be used for the HTLC.
+  var paymentHashString: String = String()
+
+  //// The set of routes that should be used to attempt to complete the payment.
+  var routes: [Lnrpc_Route] = []
+
+  var unknownFields = SwiftProtobuf.UnknownStorage()
+
+  init() {}
 }
 
 struct Lnrpc_ChannelPoint {
@@ -761,6 +894,115 @@ struct Lnrpc_ListChannelsResponse {
 
   //// The list of active channels
   var channels: [Lnrpc_Channel] = []
+
+  var unknownFields = SwiftProtobuf.UnknownStorage()
+
+  init() {}
+}
+
+struct Lnrpc_ChannelCloseSummary {
+  // SwiftProtobuf.Message conformance is added in an extension below. See the
+  // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
+  // methods supported on all messages.
+
+  //// The outpoint (txid:index) of the funding transaction. 
+  var channelPoint: String = String()
+
+  ////  The unique channel ID for the channel. 
+  var chanID: UInt64 = 0
+
+  //// The hash of the genesis block that this channel resides within.
+  var chainHash: String = String()
+
+  //// The txid of the transaction which ultimately closed this channel.
+  var closingTxHash: String = String()
+
+  //// Public key of the remote peer that we formerly had a channel with.
+  var remotePubkey: String = String()
+
+  //// Total capacity of the channel.
+  var capacity: Int64 = 0
+
+  //// Height at which the funding transaction was spent.
+  var closeHeight: UInt32 = 0
+
+  //// Settled balance at the time of channel closure
+  var settledBalance: Int64 = 0
+
+  //// The sum of all the time-locked outputs at the time of channel closure
+  var timeLockedBalance: Int64 = 0
+
+  //// Details on how the channel was closed.
+  var closeType: Lnrpc_ChannelCloseSummary.ClosureType = .cooperativeClose
+
+  var unknownFields = SwiftProtobuf.UnknownStorage()
+
+  enum ClosureType: SwiftProtobuf.Enum {
+    typealias RawValue = Int
+    case cooperativeClose // = 0
+    case localForceClose // = 1
+    case remoteForceClose // = 2
+    case breachClose // = 3
+    case fundingCanceled // = 4
+    case UNRECOGNIZED(Int)
+
+    init() {
+      self = .cooperativeClose
+    }
+
+    init?(rawValue: Int) {
+      switch rawValue {
+      case 0: self = .cooperativeClose
+      case 1: self = .localForceClose
+      case 2: self = .remoteForceClose
+      case 3: self = .breachClose
+      case 4: self = .fundingCanceled
+      default: self = .UNRECOGNIZED(rawValue)
+      }
+    }
+
+    var rawValue: Int {
+      switch self {
+      case .cooperativeClose: return 0
+      case .localForceClose: return 1
+      case .remoteForceClose: return 2
+      case .breachClose: return 3
+      case .fundingCanceled: return 4
+      case .UNRECOGNIZED(let i): return i
+      }
+    }
+
+  }
+
+  init() {}
+}
+
+struct Lnrpc_ClosedChannelsRequest {
+  // SwiftProtobuf.Message conformance is added in an extension below. See the
+  // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
+  // methods supported on all messages.
+
+  var cooperative: Bool = false
+
+  var localForce: Bool = false
+
+  var remoteForce: Bool = false
+
+  var breach: Bool = false
+
+  var fundingCanceled: Bool = false
+
+  var unknownFields = SwiftProtobuf.UnknownStorage()
+
+  init() {}
+}
+
+struct Lnrpc_ClosedChannelsResponse {
+  // SwiftProtobuf.Message conformance is added in an extension below. See the
+  // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
+  // methods supported on all messages.
+
+  var channels: [Lnrpc_ChannelCloseSummary] = []
 
   var unknownFields = SwiftProtobuf.UnknownStorage()
 
@@ -1457,17 +1699,48 @@ struct Lnrpc_QueryRoutesRequest {
   // methods supported on all messages.
 
   //// The 33-byte hex-encoded public key for the payment destination
-  var pubKey: String = String()
+  var pubKey: String {
+    get {return _storage._pubKey}
+    set {_uniqueStorage()._pubKey = newValue}
+  }
 
   //// The amount to send expressed in satoshis
-  var amt: Int64 = 0
+  var amt: Int64 {
+    get {return _storage._amt}
+    set {_uniqueStorage()._amt = newValue}
+  }
 
   //// The max number of routes to return.
-  var numRoutes: Int32 = 0
+  var numRoutes: Int32 {
+    get {return _storage._numRoutes}
+    set {_uniqueStorage()._numRoutes = newValue}
+  }
+
+  //// An optional CLTV delta from the current height that should be used for the timelock of the final hop
+  var finalCltvDelta: Int32 {
+    get {return _storage._finalCltvDelta}
+    set {_uniqueStorage()._finalCltvDelta = newValue}
+  }
+
+  ///*
+  ///The maximum number of satoshis that will be paid as a fee of the payment.
+  ///This value can be represented either as a percentage of the amount being
+  ///sent, or as a fixed amount of the maximum fee the user is willing the pay to
+  ///send the payment.
+  var feeLimit: Lnrpc_FeeLimit {
+    get {return _storage._feeLimit ?? Lnrpc_FeeLimit()}
+    set {_uniqueStorage()._feeLimit = newValue}
+  }
+  /// Returns true if `feeLimit` has been explicitly set.
+  var hasFeeLimit: Bool {return _storage._feeLimit != nil}
+  /// Clears the value of `feeLimit`. Subsequent reads from it will return its default value.
+  mutating func clearFeeLimit() {_storage._feeLimit = nil}
 
   var unknownFields = SwiftProtobuf.UnknownStorage()
 
   init() {}
+
+  fileprivate var _storage = _StorageClass.defaultInstance
 }
 
 struct Lnrpc_QueryRoutesResponse {
@@ -2688,6 +2961,60 @@ extension Lnrpc_UnlockWalletResponse: SwiftProtobuf.Message, SwiftProtobuf._Mess
   }
 }
 
+extension Lnrpc_ChangePasswordRequest: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+  static let protoMessageName: String = _protobuf_package + ".ChangePasswordRequest"
+  static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
+    1: .standard(proto: "current_password"),
+    2: .standard(proto: "new_password"),
+  ]
+
+  mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
+    while let fieldNumber = try decoder.nextFieldNumber() {
+      switch fieldNumber {
+      case 1: try decoder.decodeSingularBytesField(value: &self.currentPassword)
+      case 2: try decoder.decodeSingularBytesField(value: &self.newPassword)
+      default: break
+      }
+    }
+  }
+
+  func traverse<V: SwiftProtobuf.Visitor>(visitor: inout V) throws {
+    if !self.currentPassword.isEmpty {
+      try visitor.visitSingularBytesField(value: self.currentPassword, fieldNumber: 1)
+    }
+    if !self.newPassword.isEmpty {
+      try visitor.visitSingularBytesField(value: self.newPassword, fieldNumber: 2)
+    }
+    try unknownFields.traverse(visitor: &visitor)
+  }
+
+  func _protobuf_generated_isEqualTo(other: Lnrpc_ChangePasswordRequest) -> Bool {
+    if self.currentPassword != other.currentPassword {return false}
+    if self.newPassword != other.newPassword {return false}
+    if unknownFields != other.unknownFields {return false}
+    return true
+  }
+}
+
+extension Lnrpc_ChangePasswordResponse: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+  static let protoMessageName: String = _protobuf_package + ".ChangePasswordResponse"
+  static let _protobuf_nameMap = SwiftProtobuf._NameMap()
+
+  mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
+    while let _ = try decoder.nextFieldNumber() {
+    }
+  }
+
+  func traverse<V: SwiftProtobuf.Visitor>(visitor: inout V) throws {
+    try unknownFields.traverse(visitor: &visitor)
+  }
+
+  func _protobuf_generated_isEqualTo(other: Lnrpc_ChangePasswordResponse) -> Bool {
+    if unknownFields != other.unknownFields {return false}
+    return true
+  }
+}
+
 extension Lnrpc_Transaction: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
   static let protoMessageName: String = _protobuf_package + ".Transaction"
   static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
@@ -2807,6 +3134,49 @@ extension Lnrpc_TransactionDetails: SwiftProtobuf.Message, SwiftProtobuf._Messag
   }
 }
 
+extension Lnrpc_FeeLimit: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+  static let protoMessageName: String = _protobuf_package + ".FeeLimit"
+  static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
+    1: .same(proto: "fixed"),
+    2: .same(proto: "percent"),
+  ]
+
+  mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
+    while let fieldNumber = try decoder.nextFieldNumber() {
+      switch fieldNumber {
+      case 1:
+        if self.limit != nil {try decoder.handleConflictingOneOf()}
+        var v: Int64?
+        try decoder.decodeSingularInt64Field(value: &v)
+        if let v = v {self.limit = .fixed(v)}
+      case 2:
+        if self.limit != nil {try decoder.handleConflictingOneOf()}
+        var v: Int64?
+        try decoder.decodeSingularInt64Field(value: &v)
+        if let v = v {self.limit = .percent(v)}
+      default: break
+      }
+    }
+  }
+
+  func traverse<V: SwiftProtobuf.Visitor>(visitor: inout V) throws {
+    switch self.limit {
+    case .fixed(let v)?:
+      try visitor.visitSingularInt64Field(value: v, fieldNumber: 1)
+    case .percent(let v)?:
+      try visitor.visitSingularInt64Field(value: v, fieldNumber: 2)
+    case nil: break
+    }
+    try unknownFields.traverse(visitor: &visitor)
+  }
+
+  func _protobuf_generated_isEqualTo(other: Lnrpc_FeeLimit) -> Bool {
+    if self.limit != other.limit {return false}
+    if unknownFields != other.unknownFields {return false}
+    return true
+  }
+}
+
 extension Lnrpc_SendRequest: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
   static let protoMessageName: String = _protobuf_package + ".SendRequest"
   static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
@@ -2817,56 +3187,108 @@ extension Lnrpc_SendRequest: SwiftProtobuf.Message, SwiftProtobuf._MessageImplem
     5: .standard(proto: "payment_hash_string"),
     6: .standard(proto: "payment_request"),
     7: .standard(proto: "final_cltv_delta"),
+    8: .standard(proto: "fee_limit"),
   ]
 
+  fileprivate class _StorageClass {
+    var _dest: Data = SwiftProtobuf.Internal.emptyData
+    var _destString: String = String()
+    var _amt: Int64 = 0
+    var _paymentHash: Data = SwiftProtobuf.Internal.emptyData
+    var _paymentHashString: String = String()
+    var _paymentRequest: String = String()
+    var _finalCltvDelta: Int32 = 0
+    var _feeLimit: Lnrpc_FeeLimit? = nil
+
+    static let defaultInstance = _StorageClass()
+
+    private init() {}
+
+    init(copying source: _StorageClass) {
+      _dest = source._dest
+      _destString = source._destString
+      _amt = source._amt
+      _paymentHash = source._paymentHash
+      _paymentHashString = source._paymentHashString
+      _paymentRequest = source._paymentRequest
+      _finalCltvDelta = source._finalCltvDelta
+      _feeLimit = source._feeLimit
+    }
+  }
+
+  fileprivate mutating func _uniqueStorage() -> _StorageClass {
+    if !isKnownUniquelyReferenced(&_storage) {
+      _storage = _StorageClass(copying: _storage)
+    }
+    return _storage
+  }
+
   mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
-    while let fieldNumber = try decoder.nextFieldNumber() {
-      switch fieldNumber {
-      case 1: try decoder.decodeSingularBytesField(value: &self.dest)
-      case 2: try decoder.decodeSingularStringField(value: &self.destString)
-      case 3: try decoder.decodeSingularInt64Field(value: &self.amt)
-      case 4: try decoder.decodeSingularBytesField(value: &self.paymentHash)
-      case 5: try decoder.decodeSingularStringField(value: &self.paymentHashString)
-      case 6: try decoder.decodeSingularStringField(value: &self.paymentRequest)
-      case 7: try decoder.decodeSingularInt32Field(value: &self.finalCltvDelta)
-      default: break
+    _ = _uniqueStorage()
+    try withExtendedLifetime(_storage) { (_storage: _StorageClass) in
+      while let fieldNumber = try decoder.nextFieldNumber() {
+        switch fieldNumber {
+        case 1: try decoder.decodeSingularBytesField(value: &_storage._dest)
+        case 2: try decoder.decodeSingularStringField(value: &_storage._destString)
+        case 3: try decoder.decodeSingularInt64Field(value: &_storage._amt)
+        case 4: try decoder.decodeSingularBytesField(value: &_storage._paymentHash)
+        case 5: try decoder.decodeSingularStringField(value: &_storage._paymentHashString)
+        case 6: try decoder.decodeSingularStringField(value: &_storage._paymentRequest)
+        case 7: try decoder.decodeSingularInt32Field(value: &_storage._finalCltvDelta)
+        case 8: try decoder.decodeSingularMessageField(value: &_storage._feeLimit)
+        default: break
+        }
       }
     }
   }
 
   func traverse<V: SwiftProtobuf.Visitor>(visitor: inout V) throws {
-    if !self.dest.isEmpty {
-      try visitor.visitSingularBytesField(value: self.dest, fieldNumber: 1)
-    }
-    if !self.destString.isEmpty {
-      try visitor.visitSingularStringField(value: self.destString, fieldNumber: 2)
-    }
-    if self.amt != 0 {
-      try visitor.visitSingularInt64Field(value: self.amt, fieldNumber: 3)
-    }
-    if !self.paymentHash.isEmpty {
-      try visitor.visitSingularBytesField(value: self.paymentHash, fieldNumber: 4)
-    }
-    if !self.paymentHashString.isEmpty {
-      try visitor.visitSingularStringField(value: self.paymentHashString, fieldNumber: 5)
-    }
-    if !self.paymentRequest.isEmpty {
-      try visitor.visitSingularStringField(value: self.paymentRequest, fieldNumber: 6)
-    }
-    if self.finalCltvDelta != 0 {
-      try visitor.visitSingularInt32Field(value: self.finalCltvDelta, fieldNumber: 7)
+    try withExtendedLifetime(_storage) { (_storage: _StorageClass) in
+      if !_storage._dest.isEmpty {
+        try visitor.visitSingularBytesField(value: _storage._dest, fieldNumber: 1)
+      }
+      if !_storage._destString.isEmpty {
+        try visitor.visitSingularStringField(value: _storage._destString, fieldNumber: 2)
+      }
+      if _storage._amt != 0 {
+        try visitor.visitSingularInt64Field(value: _storage._amt, fieldNumber: 3)
+      }
+      if !_storage._paymentHash.isEmpty {
+        try visitor.visitSingularBytesField(value: _storage._paymentHash, fieldNumber: 4)
+      }
+      if !_storage._paymentHashString.isEmpty {
+        try visitor.visitSingularStringField(value: _storage._paymentHashString, fieldNumber: 5)
+      }
+      if !_storage._paymentRequest.isEmpty {
+        try visitor.visitSingularStringField(value: _storage._paymentRequest, fieldNumber: 6)
+      }
+      if _storage._finalCltvDelta != 0 {
+        try visitor.visitSingularInt32Field(value: _storage._finalCltvDelta, fieldNumber: 7)
+      }
+      if let v = _storage._feeLimit {
+        try visitor.visitSingularMessageField(value: v, fieldNumber: 8)
+      }
     }
     try unknownFields.traverse(visitor: &visitor)
   }
 
   func _protobuf_generated_isEqualTo(other: Lnrpc_SendRequest) -> Bool {
-    if self.dest != other.dest {return false}
-    if self.destString != other.destString {return false}
-    if self.amt != other.amt {return false}
-    if self.paymentHash != other.paymentHash {return false}
-    if self.paymentHashString != other.paymentHashString {return false}
-    if self.paymentRequest != other.paymentRequest {return false}
-    if self.finalCltvDelta != other.finalCltvDelta {return false}
+    if _storage !== other._storage {
+      let storagesAreEqual: Bool = withExtendedLifetime((_storage, other._storage)) { (_args: (_StorageClass, _StorageClass)) in
+        let _storage = _args.0
+        let other_storage = _args.1
+        if _storage._dest != other_storage._dest {return false}
+        if _storage._destString != other_storage._destString {return false}
+        if _storage._amt != other_storage._amt {return false}
+        if _storage._paymentHash != other_storage._paymentHash {return false}
+        if _storage._paymentHashString != other_storage._paymentHashString {return false}
+        if _storage._paymentRequest != other_storage._paymentRequest {return false}
+        if _storage._finalCltvDelta != other_storage._finalCltvDelta {return false}
+        if _storage._feeLimit != other_storage._feeLimit {return false}
+        return true
+      }
+      if !storagesAreEqual {return false}
+    }
     if unknownFields != other.unknownFields {return false}
     return true
   }
@@ -2944,6 +3366,47 @@ extension Lnrpc_SendResponse: SwiftProtobuf.Message, SwiftProtobuf._MessageImple
       }
       if !storagesAreEqual {return false}
     }
+    if unknownFields != other.unknownFields {return false}
+    return true
+  }
+}
+
+extension Lnrpc_SendToRouteRequest: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+  static let protoMessageName: String = _protobuf_package + ".SendToRouteRequest"
+  static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
+    1: .standard(proto: "payment_hash"),
+    2: .standard(proto: "payment_hash_string"),
+    3: .same(proto: "routes"),
+  ]
+
+  mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
+    while let fieldNumber = try decoder.nextFieldNumber() {
+      switch fieldNumber {
+      case 1: try decoder.decodeSingularBytesField(value: &self.paymentHash)
+      case 2: try decoder.decodeSingularStringField(value: &self.paymentHashString)
+      case 3: try decoder.decodeRepeatedMessageField(value: &self.routes)
+      default: break
+      }
+    }
+  }
+
+  func traverse<V: SwiftProtobuf.Visitor>(visitor: inout V) throws {
+    if !self.paymentHash.isEmpty {
+      try visitor.visitSingularBytesField(value: self.paymentHash, fieldNumber: 1)
+    }
+    if !self.paymentHashString.isEmpty {
+      try visitor.visitSingularStringField(value: self.paymentHashString, fieldNumber: 2)
+    }
+    if !self.routes.isEmpty {
+      try visitor.visitRepeatedMessageField(value: self.routes, fieldNumber: 3)
+    }
+    try unknownFields.traverse(visitor: &visitor)
+  }
+
+  func _protobuf_generated_isEqualTo(other: Lnrpc_SendToRouteRequest) -> Bool {
+    if self.paymentHash != other.paymentHash {return false}
+    if self.paymentHashString != other.paymentHashString {return false}
+    if self.routes != other.routes {return false}
     if unknownFields != other.unknownFields {return false}
     return true
   }
@@ -3833,6 +4296,181 @@ extension Lnrpc_ListChannelsResponse: SwiftProtobuf.Message, SwiftProtobuf._Mess
   }
 
   func _protobuf_generated_isEqualTo(other: Lnrpc_ListChannelsResponse) -> Bool {
+    if self.channels != other.channels {return false}
+    if unknownFields != other.unknownFields {return false}
+    return true
+  }
+}
+
+extension Lnrpc_ChannelCloseSummary: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+  static let protoMessageName: String = _protobuf_package + ".ChannelCloseSummary"
+  static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
+    1: .same(proto: "channel_point"),
+    2: .same(proto: "chan_id"),
+    3: .same(proto: "chain_hash"),
+    4: .same(proto: "closing_tx_hash"),
+    5: .same(proto: "remote_pubkey"),
+    6: .same(proto: "capacity"),
+    7: .same(proto: "close_height"),
+    8: .same(proto: "settled_balance"),
+    9: .same(proto: "time_locked_balance"),
+    10: .same(proto: "close_type"),
+  ]
+
+  mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
+    while let fieldNumber = try decoder.nextFieldNumber() {
+      switch fieldNumber {
+      case 1: try decoder.decodeSingularStringField(value: &self.channelPoint)
+      case 2: try decoder.decodeSingularUInt64Field(value: &self.chanID)
+      case 3: try decoder.decodeSingularStringField(value: &self.chainHash)
+      case 4: try decoder.decodeSingularStringField(value: &self.closingTxHash)
+      case 5: try decoder.decodeSingularStringField(value: &self.remotePubkey)
+      case 6: try decoder.decodeSingularInt64Field(value: &self.capacity)
+      case 7: try decoder.decodeSingularUInt32Field(value: &self.closeHeight)
+      case 8: try decoder.decodeSingularInt64Field(value: &self.settledBalance)
+      case 9: try decoder.decodeSingularInt64Field(value: &self.timeLockedBalance)
+      case 10: try decoder.decodeSingularEnumField(value: &self.closeType)
+      default: break
+      }
+    }
+  }
+
+  func traverse<V: SwiftProtobuf.Visitor>(visitor: inout V) throws {
+    if !self.channelPoint.isEmpty {
+      try visitor.visitSingularStringField(value: self.channelPoint, fieldNumber: 1)
+    }
+    if self.chanID != 0 {
+      try visitor.visitSingularUInt64Field(value: self.chanID, fieldNumber: 2)
+    }
+    if !self.chainHash.isEmpty {
+      try visitor.visitSingularStringField(value: self.chainHash, fieldNumber: 3)
+    }
+    if !self.closingTxHash.isEmpty {
+      try visitor.visitSingularStringField(value: self.closingTxHash, fieldNumber: 4)
+    }
+    if !self.remotePubkey.isEmpty {
+      try visitor.visitSingularStringField(value: self.remotePubkey, fieldNumber: 5)
+    }
+    if self.capacity != 0 {
+      try visitor.visitSingularInt64Field(value: self.capacity, fieldNumber: 6)
+    }
+    if self.closeHeight != 0 {
+      try visitor.visitSingularUInt32Field(value: self.closeHeight, fieldNumber: 7)
+    }
+    if self.settledBalance != 0 {
+      try visitor.visitSingularInt64Field(value: self.settledBalance, fieldNumber: 8)
+    }
+    if self.timeLockedBalance != 0 {
+      try visitor.visitSingularInt64Field(value: self.timeLockedBalance, fieldNumber: 9)
+    }
+    if self.closeType != .cooperativeClose {
+      try visitor.visitSingularEnumField(value: self.closeType, fieldNumber: 10)
+    }
+    try unknownFields.traverse(visitor: &visitor)
+  }
+
+  func _protobuf_generated_isEqualTo(other: Lnrpc_ChannelCloseSummary) -> Bool {
+    if self.channelPoint != other.channelPoint {return false}
+    if self.chanID != other.chanID {return false}
+    if self.chainHash != other.chainHash {return false}
+    if self.closingTxHash != other.closingTxHash {return false}
+    if self.remotePubkey != other.remotePubkey {return false}
+    if self.capacity != other.capacity {return false}
+    if self.closeHeight != other.closeHeight {return false}
+    if self.settledBalance != other.settledBalance {return false}
+    if self.timeLockedBalance != other.timeLockedBalance {return false}
+    if self.closeType != other.closeType {return false}
+    if unknownFields != other.unknownFields {return false}
+    return true
+  }
+}
+
+extension Lnrpc_ChannelCloseSummary.ClosureType: SwiftProtobuf._ProtoNameProviding {
+  static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
+    0: .same(proto: "COOPERATIVE_CLOSE"),
+    1: .same(proto: "LOCAL_FORCE_CLOSE"),
+    2: .same(proto: "REMOTE_FORCE_CLOSE"),
+    3: .same(proto: "BREACH_CLOSE"),
+    4: .same(proto: "FUNDING_CANCELED"),
+  ]
+}
+
+extension Lnrpc_ClosedChannelsRequest: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+  static let protoMessageName: String = _protobuf_package + ".ClosedChannelsRequest"
+  static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
+    1: .same(proto: "cooperative"),
+    2: .standard(proto: "local_force"),
+    3: .standard(proto: "remote_force"),
+    4: .same(proto: "breach"),
+    5: .standard(proto: "funding_canceled"),
+  ]
+
+  mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
+    while let fieldNumber = try decoder.nextFieldNumber() {
+      switch fieldNumber {
+      case 1: try decoder.decodeSingularBoolField(value: &self.cooperative)
+      case 2: try decoder.decodeSingularBoolField(value: &self.localForce)
+      case 3: try decoder.decodeSingularBoolField(value: &self.remoteForce)
+      case 4: try decoder.decodeSingularBoolField(value: &self.breach)
+      case 5: try decoder.decodeSingularBoolField(value: &self.fundingCanceled)
+      default: break
+      }
+    }
+  }
+
+  func traverse<V: SwiftProtobuf.Visitor>(visitor: inout V) throws {
+    if self.cooperative != false {
+      try visitor.visitSingularBoolField(value: self.cooperative, fieldNumber: 1)
+    }
+    if self.localForce != false {
+      try visitor.visitSingularBoolField(value: self.localForce, fieldNumber: 2)
+    }
+    if self.remoteForce != false {
+      try visitor.visitSingularBoolField(value: self.remoteForce, fieldNumber: 3)
+    }
+    if self.breach != false {
+      try visitor.visitSingularBoolField(value: self.breach, fieldNumber: 4)
+    }
+    if self.fundingCanceled != false {
+      try visitor.visitSingularBoolField(value: self.fundingCanceled, fieldNumber: 5)
+    }
+    try unknownFields.traverse(visitor: &visitor)
+  }
+
+  func _protobuf_generated_isEqualTo(other: Lnrpc_ClosedChannelsRequest) -> Bool {
+    if self.cooperative != other.cooperative {return false}
+    if self.localForce != other.localForce {return false}
+    if self.remoteForce != other.remoteForce {return false}
+    if self.breach != other.breach {return false}
+    if self.fundingCanceled != other.fundingCanceled {return false}
+    if unknownFields != other.unknownFields {return false}
+    return true
+  }
+}
+
+extension Lnrpc_ClosedChannelsResponse: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+  static let protoMessageName: String = _protobuf_package + ".ClosedChannelsResponse"
+  static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
+    1: .same(proto: "channels"),
+  ]
+
+  mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
+    while let fieldNumber = try decoder.nextFieldNumber() {
+      switch fieldNumber {
+      case 1: try decoder.decodeRepeatedMessageField(value: &self.channels)
+      default: break
+      }
+    }
+  }
+
+  func traverse<V: SwiftProtobuf.Visitor>(visitor: inout V) throws {
+    if !self.channels.isEmpty {
+      try visitor.visitRepeatedMessageField(value: self.channels, fieldNumber: 1)
+    }
+    try unknownFields.traverse(visitor: &visitor)
+  }
+
+  func _protobuf_generated_isEqualTo(other: Lnrpc_ClosedChannelsResponse) -> Bool {
     if self.channels != other.channels {return false}
     if unknownFields != other.unknownFields {return false}
     return true
@@ -5240,36 +5878,88 @@ extension Lnrpc_QueryRoutesRequest: SwiftProtobuf.Message, SwiftProtobuf._Messag
     1: .standard(proto: "pub_key"),
     2: .same(proto: "amt"),
     3: .standard(proto: "num_routes"),
+    4: .standard(proto: "final_cltv_delta"),
+    5: .standard(proto: "fee_limit"),
   ]
 
+  fileprivate class _StorageClass {
+    var _pubKey: String = String()
+    var _amt: Int64 = 0
+    var _numRoutes: Int32 = 0
+    var _finalCltvDelta: Int32 = 0
+    var _feeLimit: Lnrpc_FeeLimit? = nil
+
+    static let defaultInstance = _StorageClass()
+
+    private init() {}
+
+    init(copying source: _StorageClass) {
+      _pubKey = source._pubKey
+      _amt = source._amt
+      _numRoutes = source._numRoutes
+      _finalCltvDelta = source._finalCltvDelta
+      _feeLimit = source._feeLimit
+    }
+  }
+
+  fileprivate mutating func _uniqueStorage() -> _StorageClass {
+    if !isKnownUniquelyReferenced(&_storage) {
+      _storage = _StorageClass(copying: _storage)
+    }
+    return _storage
+  }
+
   mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
-    while let fieldNumber = try decoder.nextFieldNumber() {
-      switch fieldNumber {
-      case 1: try decoder.decodeSingularStringField(value: &self.pubKey)
-      case 2: try decoder.decodeSingularInt64Field(value: &self.amt)
-      case 3: try decoder.decodeSingularInt32Field(value: &self.numRoutes)
-      default: break
+    _ = _uniqueStorage()
+    try withExtendedLifetime(_storage) { (_storage: _StorageClass) in
+      while let fieldNumber = try decoder.nextFieldNumber() {
+        switch fieldNumber {
+        case 1: try decoder.decodeSingularStringField(value: &_storage._pubKey)
+        case 2: try decoder.decodeSingularInt64Field(value: &_storage._amt)
+        case 3: try decoder.decodeSingularInt32Field(value: &_storage._numRoutes)
+        case 4: try decoder.decodeSingularInt32Field(value: &_storage._finalCltvDelta)
+        case 5: try decoder.decodeSingularMessageField(value: &_storage._feeLimit)
+        default: break
+        }
       }
     }
   }
 
   func traverse<V: SwiftProtobuf.Visitor>(visitor: inout V) throws {
-    if !self.pubKey.isEmpty {
-      try visitor.visitSingularStringField(value: self.pubKey, fieldNumber: 1)
-    }
-    if self.amt != 0 {
-      try visitor.visitSingularInt64Field(value: self.amt, fieldNumber: 2)
-    }
-    if self.numRoutes != 0 {
-      try visitor.visitSingularInt32Field(value: self.numRoutes, fieldNumber: 3)
+    try withExtendedLifetime(_storage) { (_storage: _StorageClass) in
+      if !_storage._pubKey.isEmpty {
+        try visitor.visitSingularStringField(value: _storage._pubKey, fieldNumber: 1)
+      }
+      if _storage._amt != 0 {
+        try visitor.visitSingularInt64Field(value: _storage._amt, fieldNumber: 2)
+      }
+      if _storage._numRoutes != 0 {
+        try visitor.visitSingularInt32Field(value: _storage._numRoutes, fieldNumber: 3)
+      }
+      if _storage._finalCltvDelta != 0 {
+        try visitor.visitSingularInt32Field(value: _storage._finalCltvDelta, fieldNumber: 4)
+      }
+      if let v = _storage._feeLimit {
+        try visitor.visitSingularMessageField(value: v, fieldNumber: 5)
+      }
     }
     try unknownFields.traverse(visitor: &visitor)
   }
 
   func _protobuf_generated_isEqualTo(other: Lnrpc_QueryRoutesRequest) -> Bool {
-    if self.pubKey != other.pubKey {return false}
-    if self.amt != other.amt {return false}
-    if self.numRoutes != other.numRoutes {return false}
+    if _storage !== other._storage {
+      let storagesAreEqual: Bool = withExtendedLifetime((_storage, other._storage)) { (_args: (_StorageClass, _StorageClass)) in
+        let _storage = _args.0
+        let other_storage = _args.1
+        if _storage._pubKey != other_storage._pubKey {return false}
+        if _storage._amt != other_storage._amt {return false}
+        if _storage._numRoutes != other_storage._numRoutes {return false}
+        if _storage._finalCltvDelta != other_storage._finalCltvDelta {return false}
+        if _storage._feeLimit != other_storage._feeLimit {return false}
+        return true
+      }
+      if !storagesAreEqual {return false}
+    }
     if unknownFields != other.unknownFields {return false}
     return true
   }

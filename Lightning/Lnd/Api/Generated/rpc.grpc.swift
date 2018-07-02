@@ -43,6 +43,12 @@ fileprivate final class Lnrpc_WalletUnlockerUnlockWalletCallBase: ClientCallUnar
   override class var method: String { return "/lnrpc.WalletUnlocker/UnlockWallet" }
 }
 
+internal protocol Lnrpc_WalletUnlockerChangePasswordCall: ClientCallUnary {}
+
+fileprivate final class Lnrpc_WalletUnlockerChangePasswordCallBase: ClientCallUnaryBase<Lnrpc_ChangePasswordRequest, Lnrpc_ChangePasswordResponse>, Lnrpc_WalletUnlockerChangePasswordCall {
+  override class var method: String { return "/lnrpc.WalletUnlocker/ChangePassword" }
+}
+
 
 /// Instantiate Lnrpc_WalletUnlockerServiceClient, then call methods of this protocol to make API calls.
 internal protocol Lnrpc_WalletUnlockerService: ServiceClient {
@@ -60,6 +66,11 @@ internal protocol Lnrpc_WalletUnlockerService: ServiceClient {
   func unlockWallet(_ request: Lnrpc_UnlockWalletRequest) throws -> Lnrpc_UnlockWalletResponse
   /// Asynchronous. Unary.
   func unlockWallet(_ request: Lnrpc_UnlockWalletRequest, completion: @escaping (Lnrpc_UnlockWalletResponse?, CallResult) -> Void) throws -> Lnrpc_WalletUnlockerUnlockWalletCall
+
+  /// Synchronous. Unary.
+  func changePassword(_ request: Lnrpc_ChangePasswordRequest) throws -> Lnrpc_ChangePasswordResponse
+  /// Asynchronous. Unary.
+  func changePassword(_ request: Lnrpc_ChangePasswordRequest, completion: @escaping (Lnrpc_ChangePasswordResponse?, CallResult) -> Void) throws -> Lnrpc_WalletUnlockerChangePasswordCall
 
 }
 
@@ -94,6 +105,17 @@ internal final class Lnrpc_WalletUnlockerServiceClient: ServiceClientBase, Lnrpc
   /// Asynchronous. Unary.
   internal func unlockWallet(_ request: Lnrpc_UnlockWalletRequest, completion: @escaping (Lnrpc_UnlockWalletResponse?, CallResult) -> Void) throws -> Lnrpc_WalletUnlockerUnlockWalletCall {
     return try Lnrpc_WalletUnlockerUnlockWalletCallBase(channel)
+      .start(request: request, metadata: metadata, completion: completion)
+  }
+
+  /// Synchronous. Unary.
+  internal func changePassword(_ request: Lnrpc_ChangePasswordRequest) throws -> Lnrpc_ChangePasswordResponse {
+    return try Lnrpc_WalletUnlockerChangePasswordCallBase(channel)
+      .run(request: request, metadata: metadata)
+  }
+  /// Asynchronous. Unary.
+  internal func changePassword(_ request: Lnrpc_ChangePasswordRequest, completion: @escaping (Lnrpc_ChangePasswordResponse?, CallResult) -> Void) throws -> Lnrpc_WalletUnlockerChangePasswordCall {
+    return try Lnrpc_WalletUnlockerChangePasswordCallBase(channel)
       .start(request: request, metadata: metadata, completion: completion)
   }
 
@@ -204,6 +226,12 @@ fileprivate final class Lnrpc_LightningListChannelsCallBase: ClientCallUnaryBase
   override class var method: String { return "/lnrpc.Lightning/ListChannels" }
 }
 
+internal protocol Lnrpc_LightningClosedChannelsCall: ClientCallUnary {}
+
+fileprivate final class Lnrpc_LightningClosedChannelsCallBase: ClientCallUnaryBase<Lnrpc_ClosedChannelsRequest, Lnrpc_ClosedChannelsResponse>, Lnrpc_LightningClosedChannelsCall {
+  override class var method: String { return "/lnrpc.Lightning/ClosedChannels" }
+}
+
 internal protocol Lnrpc_LightningOpenChannelSyncCall: ClientCallUnary {}
 
 fileprivate final class Lnrpc_LightningOpenChannelSyncCallBase: ClientCallUnaryBase<Lnrpc_OpenChannelRequest, Lnrpc_ChannelPoint>, Lnrpc_LightningOpenChannelSyncCall {
@@ -277,6 +305,43 @@ internal protocol Lnrpc_LightningSendPaymentSyncCall: ClientCallUnary {}
 
 fileprivate final class Lnrpc_LightningSendPaymentSyncCallBase: ClientCallUnaryBase<Lnrpc_SendRequest, Lnrpc_SendResponse>, Lnrpc_LightningSendPaymentSyncCall {
   override class var method: String { return "/lnrpc.Lightning/SendPaymentSync" }
+}
+
+internal protocol Lnrpc_LightningSendToRouteCall: ClientCallBidirectionalStreaming {
+  /// Do not call this directly, call `receive()` in the protocol extension below instead.
+  func _receive(timeout: DispatchTime) throws -> Lnrpc_SendResponse?
+  /// Call this to wait for a result. Nonblocking.
+  func receive(completion: @escaping (ResultOrRPCError<Lnrpc_SendResponse?>) -> Void) throws
+
+  /// Send a message to the stream. Nonblocking.
+  func send(_ message: Lnrpc_SendToRouteRequest, completion: @escaping (Error?) -> Void) throws
+  /// Do not call this directly, call `send()` in the protocol extension below instead.
+  func _send(_ message: Lnrpc_SendToRouteRequest, timeout: DispatchTime) throws
+
+  /// Call this to close the sending connection. Blocking.
+  func closeSend() throws
+  /// Call this to close the sending connection. Nonblocking.
+  func closeSend(completion: (() -> Void)?) throws
+}
+
+internal extension Lnrpc_LightningSendToRouteCall {
+  /// Call this to wait for a result. Blocking.
+  func receive(timeout: DispatchTime = .distantFuture) throws -> Lnrpc_SendResponse? { return try self._receive(timeout: timeout) }
+}
+
+internal extension Lnrpc_LightningSendToRouteCall {
+  /// Send a message to the stream and wait for the send operation to finish. Blocking.
+  func send(_ message: Lnrpc_SendToRouteRequest, timeout: DispatchTime = .distantFuture) throws { try self._send(message, timeout: timeout) }
+}
+
+fileprivate final class Lnrpc_LightningSendToRouteCallBase: ClientCallBidirectionalStreamingBase<Lnrpc_SendToRouteRequest, Lnrpc_SendResponse>, Lnrpc_LightningSendToRouteCall {
+  override class var method: String { return "/lnrpc.Lightning/SendToRoute" }
+}
+
+internal protocol Lnrpc_LightningSendToRouteSyncCall: ClientCallUnary {}
+
+fileprivate final class Lnrpc_LightningSendToRouteSyncCallBase: ClientCallUnaryBase<Lnrpc_SendToRouteRequest, Lnrpc_SendResponse>, Lnrpc_LightningSendToRouteSyncCall {
+  override class var method: String { return "/lnrpc.Lightning/SendToRouteSync" }
 }
 
 internal protocol Lnrpc_LightningAddInvoiceCall: ClientCallUnary {}
@@ -491,6 +556,11 @@ internal protocol Lnrpc_LightningService: ServiceClient {
   func listChannels(_ request: Lnrpc_ListChannelsRequest, completion: @escaping (Lnrpc_ListChannelsResponse?, CallResult) -> Void) throws -> Lnrpc_LightningListChannelsCall
 
   /// Synchronous. Unary.
+  func closedChannels(_ request: Lnrpc_ClosedChannelsRequest) throws -> Lnrpc_ClosedChannelsResponse
+  /// Asynchronous. Unary.
+  func closedChannels(_ request: Lnrpc_ClosedChannelsRequest, completion: @escaping (Lnrpc_ClosedChannelsResponse?, CallResult) -> Void) throws -> Lnrpc_LightningClosedChannelsCall
+
+  /// Synchronous. Unary.
   func openChannelSync(_ request: Lnrpc_OpenChannelRequest) throws -> Lnrpc_ChannelPoint
   /// Asynchronous. Unary.
   func openChannelSync(_ request: Lnrpc_OpenChannelRequest, completion: @escaping (Lnrpc_ChannelPoint?, CallResult) -> Void) throws -> Lnrpc_LightningOpenChannelSyncCall
@@ -514,6 +584,16 @@ internal protocol Lnrpc_LightningService: ServiceClient {
   func sendPaymentSync(_ request: Lnrpc_SendRequest) throws -> Lnrpc_SendResponse
   /// Asynchronous. Unary.
   func sendPaymentSync(_ request: Lnrpc_SendRequest, completion: @escaping (Lnrpc_SendResponse?, CallResult) -> Void) throws -> Lnrpc_LightningSendPaymentSyncCall
+
+  /// Asynchronous. Bidirectional-streaming.
+  /// Use methods on the returned object to stream messages,
+  /// to wait for replies, and to close the connection.
+  func sendToRoute(completion: ((CallResult) -> Void)?) throws -> Lnrpc_LightningSendToRouteCall
+
+  /// Synchronous. Unary.
+  func sendToRouteSync(_ request: Lnrpc_SendToRouteRequest) throws -> Lnrpc_SendResponse
+  /// Asynchronous. Unary.
+  func sendToRouteSync(_ request: Lnrpc_SendToRouteRequest, completion: @escaping (Lnrpc_SendResponse?, CallResult) -> Void) throws -> Lnrpc_LightningSendToRouteSyncCall
 
   /// Synchronous. Unary.
   func addInvoice(_ request: Lnrpc_Invoice) throws -> Lnrpc_AddInvoiceResponse
@@ -782,6 +862,17 @@ internal final class Lnrpc_LightningServiceClient: ServiceClientBase, Lnrpc_Ligh
   }
 
   /// Synchronous. Unary.
+  internal func closedChannels(_ request: Lnrpc_ClosedChannelsRequest) throws -> Lnrpc_ClosedChannelsResponse {
+    return try Lnrpc_LightningClosedChannelsCallBase(channel)
+      .run(request: request, metadata: metadata)
+  }
+  /// Asynchronous. Unary.
+  internal func closedChannels(_ request: Lnrpc_ClosedChannelsRequest, completion: @escaping (Lnrpc_ClosedChannelsResponse?, CallResult) -> Void) throws -> Lnrpc_LightningClosedChannelsCall {
+    return try Lnrpc_LightningClosedChannelsCallBase(channel)
+      .start(request: request, metadata: metadata, completion: completion)
+  }
+
+  /// Synchronous. Unary.
   internal func openChannelSync(_ request: Lnrpc_OpenChannelRequest) throws -> Lnrpc_ChannelPoint {
     return try Lnrpc_LightningOpenChannelSyncCallBase(channel)
       .run(request: request, metadata: metadata)
@@ -824,6 +915,25 @@ internal final class Lnrpc_LightningServiceClient: ServiceClientBase, Lnrpc_Ligh
   /// Asynchronous. Unary.
   internal func sendPaymentSync(_ request: Lnrpc_SendRequest, completion: @escaping (Lnrpc_SendResponse?, CallResult) -> Void) throws -> Lnrpc_LightningSendPaymentSyncCall {
     return try Lnrpc_LightningSendPaymentSyncCallBase(channel)
+      .start(request: request, metadata: metadata, completion: completion)
+  }
+
+  /// Asynchronous. Bidirectional-streaming.
+  /// Use methods on the returned object to stream messages,
+  /// to wait for replies, and to close the connection.
+  internal func sendToRoute(completion: ((CallResult) -> Void)?) throws -> Lnrpc_LightningSendToRouteCall {
+    return try Lnrpc_LightningSendToRouteCallBase(channel)
+      .start(metadata: metadata, completion: completion)
+  }
+
+  /// Synchronous. Unary.
+  internal func sendToRouteSync(_ request: Lnrpc_SendToRouteRequest) throws -> Lnrpc_SendResponse {
+    return try Lnrpc_LightningSendToRouteSyncCallBase(channel)
+      .run(request: request, metadata: metadata)
+  }
+  /// Asynchronous. Unary.
+  internal func sendToRouteSync(_ request: Lnrpc_SendToRouteRequest, completion: @escaping (Lnrpc_SendResponse?, CallResult) -> Void) throws -> Lnrpc_LightningSendToRouteSyncCall {
+    return try Lnrpc_LightningSendToRouteSyncCallBase(channel)
       .start(request: request, metadata: metadata, completion: completion)
   }
 
@@ -1026,6 +1136,7 @@ internal protocol Lnrpc_WalletUnlockerProvider {
   func genSeed(request: Lnrpc_GenSeedRequest, session: Lnrpc_WalletUnlockerGenSeedSession) throws -> Lnrpc_GenSeedResponse
   func initWallet(request: Lnrpc_InitWalletRequest, session: Lnrpc_WalletUnlockerInitWalletSession) throws -> Lnrpc_InitWalletResponse
   func unlockWallet(request: Lnrpc_UnlockWalletRequest, session: Lnrpc_WalletUnlockerUnlockWalletSession) throws -> Lnrpc_UnlockWalletResponse
+  func changePassword(request: Lnrpc_ChangePasswordRequest, session: Lnrpc_WalletUnlockerChangePasswordSession) throws -> Lnrpc_ChangePasswordResponse
 }
 
 internal protocol Lnrpc_WalletUnlockerGenSeedSession: ServerSessionUnary {}
@@ -1039,6 +1150,10 @@ fileprivate final class Lnrpc_WalletUnlockerInitWalletSessionBase: ServerSession
 internal protocol Lnrpc_WalletUnlockerUnlockWalletSession: ServerSessionUnary {}
 
 fileprivate final class Lnrpc_WalletUnlockerUnlockWalletSessionBase: ServerSessionUnaryBase<Lnrpc_UnlockWalletRequest, Lnrpc_UnlockWalletResponse>, Lnrpc_WalletUnlockerUnlockWalletSession {}
+
+internal protocol Lnrpc_WalletUnlockerChangePasswordSession: ServerSessionUnary {}
+
+fileprivate final class Lnrpc_WalletUnlockerChangePasswordSessionBase: ServerSessionUnaryBase<Lnrpc_ChangePasswordRequest, Lnrpc_ChangePasswordResponse>, Lnrpc_WalletUnlockerChangePasswordSession {}
 
 
 /// Main server for generated service
@@ -1082,6 +1197,12 @@ internal final class Lnrpc_WalletUnlockerServer: ServiceServer {
         providerBlock: { try provider.unlockWallet(request: $0, session: $1 as! Lnrpc_WalletUnlockerUnlockWalletSessionBase) })
           .run(queue: queue)
       return true
+    case "/lnrpc.WalletUnlocker/ChangePassword":
+      try Lnrpc_WalletUnlockerChangePasswordSessionBase(
+        handler: handler,
+        providerBlock: { try provider.changePassword(request: $0, session: $1 as! Lnrpc_WalletUnlockerChangePasswordSessionBase) })
+          .run(queue: queue)
+      return true
     default:
       return false
     }
@@ -1106,11 +1227,14 @@ internal protocol Lnrpc_LightningProvider {
   func getInfo(request: Lnrpc_GetInfoRequest, session: Lnrpc_LightningGetInfoSession) throws -> Lnrpc_GetInfoResponse
   func pendingChannels(request: Lnrpc_PendingChannelsRequest, session: Lnrpc_LightningPendingChannelsSession) throws -> Lnrpc_PendingChannelsResponse
   func listChannels(request: Lnrpc_ListChannelsRequest, session: Lnrpc_LightningListChannelsSession) throws -> Lnrpc_ListChannelsResponse
+  func closedChannels(request: Lnrpc_ClosedChannelsRequest, session: Lnrpc_LightningClosedChannelsSession) throws -> Lnrpc_ClosedChannelsResponse
   func openChannelSync(request: Lnrpc_OpenChannelRequest, session: Lnrpc_LightningOpenChannelSyncSession) throws -> Lnrpc_ChannelPoint
   func openChannel(request: Lnrpc_OpenChannelRequest, session: Lnrpc_LightningOpenChannelSession) throws
   func closeChannel(request: Lnrpc_CloseChannelRequest, session: Lnrpc_LightningCloseChannelSession) throws
   func sendPayment(session: Lnrpc_LightningSendPaymentSession) throws
   func sendPaymentSync(request: Lnrpc_SendRequest, session: Lnrpc_LightningSendPaymentSyncSession) throws -> Lnrpc_SendResponse
+  func sendToRoute(session: Lnrpc_LightningSendToRouteSession) throws
+  func sendToRouteSync(request: Lnrpc_SendToRouteRequest, session: Lnrpc_LightningSendToRouteSyncSession) throws -> Lnrpc_SendResponse
   func addInvoice(request: Lnrpc_Invoice, session: Lnrpc_LightningAddInvoiceSession) throws -> Lnrpc_AddInvoiceResponse
   func listInvoices(request: Lnrpc_ListInvoiceRequest, session: Lnrpc_LightningListInvoicesSession) throws -> Lnrpc_ListInvoiceResponse
   func lookupInvoice(request: Lnrpc_PaymentHash, session: Lnrpc_LightningLookupInvoiceSession) throws -> Lnrpc_Invoice
@@ -1209,6 +1333,10 @@ internal protocol Lnrpc_LightningListChannelsSession: ServerSessionUnary {}
 
 fileprivate final class Lnrpc_LightningListChannelsSessionBase: ServerSessionUnaryBase<Lnrpc_ListChannelsRequest, Lnrpc_ListChannelsResponse>, Lnrpc_LightningListChannelsSession {}
 
+internal protocol Lnrpc_LightningClosedChannelsSession: ServerSessionUnary {}
+
+fileprivate final class Lnrpc_LightningClosedChannelsSessionBase: ServerSessionUnaryBase<Lnrpc_ClosedChannelsRequest, Lnrpc_ClosedChannelsResponse>, Lnrpc_LightningClosedChannelsSession {}
+
 internal protocol Lnrpc_LightningOpenChannelSyncSession: ServerSessionUnary {}
 
 fileprivate final class Lnrpc_LightningOpenChannelSyncSessionBase: ServerSessionUnaryBase<Lnrpc_OpenChannelRequest, Lnrpc_ChannelPoint>, Lnrpc_LightningOpenChannelSyncSession {}
@@ -1280,6 +1408,38 @@ fileprivate final class Lnrpc_LightningSendPaymentSessionBase: ServerSessionBidi
 internal protocol Lnrpc_LightningSendPaymentSyncSession: ServerSessionUnary {}
 
 fileprivate final class Lnrpc_LightningSendPaymentSyncSessionBase: ServerSessionUnaryBase<Lnrpc_SendRequest, Lnrpc_SendResponse>, Lnrpc_LightningSendPaymentSyncSession {}
+
+internal protocol Lnrpc_LightningSendToRouteSession: ServerSessionBidirectionalStreaming {
+  /// Do not call this directly, call `receive()` in the protocol extension below instead.
+  func _receive(timeout: DispatchTime) throws -> Lnrpc_SendToRouteRequest?
+  /// Call this to wait for a result. Nonblocking.
+  func receive(completion: @escaping (ResultOrRPCError<Lnrpc_SendToRouteRequest?>) -> Void) throws
+
+  /// Send a message to the stream. Nonblocking.
+  func send(_ message: Lnrpc_SendResponse, completion: @escaping (Error?) -> Void) throws
+  /// Do not call this directly, call `send()` in the protocol extension below instead.
+  func _send(_ message: Lnrpc_SendResponse, timeout: DispatchTime) throws
+
+  /// Close the connection and send the status. Non-blocking.
+  /// You MUST call this method once you are done processing the request.
+  func close(withStatus status: ServerStatus, completion: (() -> Void)?) throws
+}
+
+internal extension Lnrpc_LightningSendToRouteSession {
+  /// Call this to wait for a result. Blocking.
+  func receive(timeout: DispatchTime = .distantFuture) throws -> Lnrpc_SendToRouteRequest? { return try self._receive(timeout: timeout) }
+}
+
+internal extension Lnrpc_LightningSendToRouteSession {
+  /// Send a message to the stream and wait for the send operation to finish. Blocking.
+  func send(_ message: Lnrpc_SendResponse, timeout: DispatchTime = .distantFuture) throws { try self._send(message, timeout: timeout) }
+}
+
+fileprivate final class Lnrpc_LightningSendToRouteSessionBase: ServerSessionBidirectionalStreamingBase<Lnrpc_SendToRouteRequest, Lnrpc_SendResponse>, Lnrpc_LightningSendToRouteSession {}
+
+internal protocol Lnrpc_LightningSendToRouteSyncSession: ServerSessionUnary {}
+
+fileprivate final class Lnrpc_LightningSendToRouteSyncSessionBase: ServerSessionUnaryBase<Lnrpc_SendToRouteRequest, Lnrpc_SendResponse>, Lnrpc_LightningSendToRouteSyncSession {}
 
 internal protocol Lnrpc_LightningAddInvoiceSession: ServerSessionUnary {}
 
@@ -1501,6 +1661,12 @@ internal final class Lnrpc_LightningServer: ServiceServer {
         providerBlock: { try provider.listChannels(request: $0, session: $1 as! Lnrpc_LightningListChannelsSessionBase) })
           .run(queue: queue)
       return true
+    case "/lnrpc.Lightning/ClosedChannels":
+      try Lnrpc_LightningClosedChannelsSessionBase(
+        handler: handler,
+        providerBlock: { try provider.closedChannels(request: $0, session: $1 as! Lnrpc_LightningClosedChannelsSessionBase) })
+          .run(queue: queue)
+      return true
     case "/lnrpc.Lightning/OpenChannelSync":
       try Lnrpc_LightningOpenChannelSyncSessionBase(
         handler: handler,
@@ -1529,6 +1695,18 @@ internal final class Lnrpc_LightningServer: ServiceServer {
       try Lnrpc_LightningSendPaymentSyncSessionBase(
         handler: handler,
         providerBlock: { try provider.sendPaymentSync(request: $0, session: $1 as! Lnrpc_LightningSendPaymentSyncSessionBase) })
+          .run(queue: queue)
+      return true
+    case "/lnrpc.Lightning/SendToRoute":
+      try Lnrpc_LightningSendToRouteSessionBase(
+        handler: handler,
+        providerBlock: { try provider.sendToRoute(session: $0 as! Lnrpc_LightningSendToRouteSessionBase) })
+          .run(queue: queue)
+      return true
+    case "/lnrpc.Lightning/SendToRouteSync":
+      try Lnrpc_LightningSendToRouteSyncSessionBase(
+        handler: handler,
+        providerBlock: { try provider.sendToRouteSync(request: $0, session: $1 as! Lnrpc_LightningSendToRouteSyncSessionBase) })
           .run(queue: queue)
       return true
     case "/lnrpc.Lightning/AddInvoice":
