@@ -119,7 +119,7 @@
          <EnvironmentVariable
             key = "SKIP_PIN_FLOW"
             value = "1"
-            isEnabled = "NO">
+            isEnabled = "YES">
          </EnvironmentVariable>
          <EnvironmentVariable
             key = "GRPC_TRACE"
