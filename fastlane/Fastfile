@@ -100,7 +100,7 @@ lane :beta do
   add_git_tag
   push_git_tags
 
-  slack_message = "Just uploaded a new iOS beta to Fastlane\n" + changelog.to_s
+  slack_message = "Just uploaded a new iOS beta to Testflight\n" + changelog.to_s
   slack(
     message: slack_message,
     use_webhook_configured_username_and_icon: true,
