@@ -9,6 +9,18 @@ import BTCUtil
 import Lightning
 import UIKit
 
+extension UIStoryboard {
+    static func instantiateSettingsContainerViewController(with lightningService: LightningService) -> UINavigationController {
+        let viewController = Storyboard.settings.initial(viewController: UINavigationController.self)
+        
+        if let settingsContainerViewController = viewController.topViewController as? SettingsContainerViewController {
+            settingsContainerViewController.lightningService = lightningService
+        }
+        
+        return viewController
+    }
+}
+
 final class SettingsContainerViewController: UIViewController, ContainerViewController {
     @IBOutlet private weak var primaryCurrencyLabel: UILabel!
     @IBOutlet private weak var secondaryCurrencyLabel: UILabel!

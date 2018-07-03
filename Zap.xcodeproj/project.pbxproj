@@ -60,7 +60,7 @@
 		AD391C3220D16EFA007EE22A /* UIFont.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADE4CF1C20B5B2BE007C987A /* UIFont.swift */; };
 		AD391C3320D16EFA007EE22A /* UIImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0A05A2F2013EFC00007D1C9 /* UIImage.swift */; };
 		AD391C3420D16EFA007EE22A /* UILabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0A96B83201748C200788808 /* UILabel.swift */; };
-		AD391C3520D16EFA007EE22A /* UIStoryboard.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD2EDBF920C02616002E6EE5 /* UIStoryboard.swift */; };
+		AD391C3520D16EFA007EE22A /* Storyboard.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD2EDBF920C02616002E6EE5 /* Storyboard.swift */; };
 		AD391C3620D16EFA007EE22A /* UITableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0A05A5D2014A0DE0007D1C9 /* UITableView.swift */; };
 		AD391C3720D16EFA007EE22A /* UIViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADBA120520930C94001F7700 /* UIViewController.swift */; };
 		AD391C3820D16EFA007EE22A /* UserDefaults.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0919142203B152100FA525A /* UserDefaults.swift */; };
@@ -570,7 +570,7 @@
 		AD1EBA0020B2FD9D001FF67E /* Persistable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Persistable.swift; sourceTree = "<group>"; };
 		AD21768820C3DFDB007779DE /* BalanceView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BalanceView.swift; sourceTree = "<group>"; };
 		AD21768A20C3F29C007779DE /* ConnectRemoteNodeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConnectRemoteNodeViewModel.swift; sourceTree = "<group>"; };
-		AD2EDBF920C02616002E6EE5 /* UIStoryboard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIStoryboard.swift; sourceTree = "<group>"; };
+		AD2EDBF920C02616002E6EE5 /* Storyboard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Storyboard.swift; sourceTree = "<group>"; };
 		AD33B5EE20A8463600E32BD9 /* SendOnChainViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SendOnChainViewController.swift; sourceTree = "<group>"; };
 		AD38EB2F207DF233007DF14D /* UIButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIButton.swift; sourceTree = "<group>"; };
 		AD38EB31207DFB59007DF14D /* SegmentButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SegmentButton.swift; sourceTree = "<group>"; };
@@ -905,6 +905,7 @@
 				A02C9FC3202F617D009821B1 /* LocalAuthentication.swift */,
 				A0C2EABA206F8AD2003AE56E /* Money */,
 				ADEDBC0920C31C5F00B71F17 /* Route.swift */,
+				AD2EDBF920C02616002E6EE5 /* Storyboard.swift */,
 				A0919159203C309E00FA525A /* Style */,
 			);
 			path = Helper;
@@ -1182,7 +1183,6 @@
 				ADE4CF1C20B5B2BE007C987A /* UIFont.swift */,
 				A0A05A2F2013EFC00007D1C9 /* UIImage.swift */,
 				A0A96B83201748C200788808 /* UILabel.swift */,
-				AD2EDBF920C02616002E6EE5 /* UIStoryboard.swift */,
 				A0A05A5D2014A0DE0007D1C9 /* UITableView.swift */,
 				ADBA120520930C94001F7700 /* UIViewController.swift */,
 				A0919142203B152100FA525A /* UserDefaults.swift */,
@@ -2238,7 +2238,7 @@
 				AD292F9120E69F0E00211AE7 /* RootViewModel.swift in Sources */,
 				AD391CA320D16FA8007EE22A /* SendOnChainViewController.swift in Sources */,
 				AD391D0D20D16FF5007EE22A /* SectionHeaderView.swift in Sources */,
-				AD391C3520D16EFA007EE22A /* UIStoryboard.swift in Sources */,
+				AD391C3520D16EFA007EE22A /* Storyboard.swift in Sources */,
 				AD391CDB20D16FE1007EE22A /* TransactionListViewController.swift in Sources */,
 				AD391D0720D16FF5007EE22A /* GradientLoadingButtonView.swift in Sources */,
 				AD391C5320D16F7A007EE22A /* ConfirmMnemonicViewModel.swift in Sources */,

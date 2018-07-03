@@ -5,24 +5,7 @@
 //  Copyright © 2018 Zap. All rights reserved.
 //
 
-import Lightning
 import UIKit
-
-extension UIStoryboard {
-    static func instantiateSettingsContainerViewController(with lightningService: LightningService) -> UINavigationController {
-        let viewController = Storyboard.settings.initial(viewController: UINavigationController.self)
-        
-        if let settingsContainerViewController = viewController.topViewController as? SettingsContainerViewController {
-            settingsContainerViewController.lightningService = lightningService
-        }
-
-        return viewController
-    }
-    
-    static func instantiateDebugViewController() -> UINavigationController {
-        return Storyboard.debug.initial(viewController: UINavigationController.self)
-    }
-}
 
 enum Storyboard: String {
     case channelList

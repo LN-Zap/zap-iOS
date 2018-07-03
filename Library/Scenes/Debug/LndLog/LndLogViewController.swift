@@ -7,6 +7,12 @@
 
 import UIKit
 
+extension UIStoryboard {
+    static func instantiateDebugViewController() -> UINavigationController {
+        return Storyboard.debug.initial(viewController: UINavigationController.self)
+    }
+}
+
 final class LndLogViewController: UIViewController {
     @IBOutlet private weak var textView: UITextView!
     private var timer: Timer?
