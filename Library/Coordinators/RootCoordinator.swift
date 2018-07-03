@@ -33,7 +33,11 @@ public final class RootCoordinator: NSObject, SetupCoordinatorDelegate, PinCoord
         rootViewModel.state.observeNext { [weak self] state in
             switch state {
             case .locked:
-                self?.presentPin()
+                if self?.rootViewModel.authenticationViewModel.didSetupPin == true {
+                    self?.presentPin()
+                } else {
+                    self?.presentSetupPin()
+                }
             case .noWallet:
                 self?.presentSetup()
             case .connecting:

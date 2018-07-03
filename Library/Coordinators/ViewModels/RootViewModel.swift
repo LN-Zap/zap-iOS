@@ -39,7 +39,7 @@ final class RootViewModel: NSObject {
         case .none:
             state.value = .noWallet
         default:
-            if Environment.skipPinFlow || !authenticationViewModel.didSetupPin {
+            if Environment.skipPinFlow {
                 state.value = .connecting
                 connect()
             } else {
