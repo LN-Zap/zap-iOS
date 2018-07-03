@@ -49,6 +49,10 @@ final class ChannelListViewController: UIViewController {
     fileprivate var closeButtonTapped: ((Channel, String, @escaping () -> Void) -> Void)?
     fileprivate var channelListViewModel: ChannelListViewModel?
     
+    deinit {
+        tableView?.isEditing = false // fixes Bond bug. Binding is not released in editing mode.
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -71,9 +75,6 @@ final class ChannelListViewController: UIViewController {
         channelListViewModel?.sections
             .bind(to: tableView, using: ChannelBond())
             .dispose(in: reactive.bag)
-        
-        tableView.delegate = self
-        tableView.reactive.dataSource.forwardTo = self
     }
     
     @objc func refresh(sender: UIRefreshControl) {
@@ -83,6 +84,12 @@ final class ChannelListViewController: UIViewController {
     
     @IBAction private func presentAddChannel(_ sender: Any) {
         addChannelButtonTapped?()
+    }
+    
+    func closeChannel(for channelViewModel: ChannelViewModel) {
+        closeButtonTapped?(channelViewModel.channel, channelViewModel.name.value) { [weak self] in
+            self?.channelListViewModel?.close(channelViewModel.channel)
+        }
     }
 }
 
@@ -127,22 +134,6 @@ extension ChannelListViewController: UITableViewDelegate {
     
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
         searchBar.resignFirstResponder()
-    }
-    
-    func closeChannel(for channelViewModel: ChannelViewModel) {
-        closeButtonTapped?(channelViewModel.channel, channelViewModel.name.value) { [weak self] in
-            self?.channelListViewModel?.close(channelViewModel.channel)
-        }
-    }
-}
-
-extension ChannelListViewController: UITableViewDataSource {
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        fatalError("This will never be called.")
-    }
-    
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        fatalError("This will never be called.")
     }
     
     func tableView(_ tableView: UITableView, editActionsForRowAt indexPath: IndexPath) -> [UITableViewRowAction]? {

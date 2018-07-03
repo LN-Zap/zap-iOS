@@ -44,6 +44,10 @@ final class TransactionListViewController: UIViewController {
     fileprivate var presentTransactionDetail: ((TransactionViewModel) -> Void)?
     fileprivate var transactionListViewModel: TransactionListViewModel?
     
+    deinit {
+        tableView?.isEditing = false // fixes Bond bug. Binding is not released in editing mode.
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -76,9 +80,6 @@ final class TransactionListViewController: UIViewController {
             .map { !$0 }
             .bind(to: emptyStateLabel.reactive.isHidden)]
             .dispose(in: reactive.bag)
-        
-        tableView.delegate = self
-        tableView.reactive.dataSource.forwardTo = self
     }
     
     @objc func refresh(sender: UIRefreshControl) {
@@ -106,16 +107,6 @@ extension TransactionListViewController: UITableViewDelegate {
         
         let transactionViewModel = transactionListViewModel.sections.item(at: indexPath)
         presentTransactionDetail?(transactionViewModel)
-    }
-}
-
-extension TransactionListViewController: UITableViewDataSource {
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        fatalError("This will never be called.")
-    }
-    
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        fatalError("This will never be called.")
     }
     
     func tableView(_ tableView: UITableView, editActionsForRowAt indexPath: IndexPath) -> [UITableViewRowAction]? {
