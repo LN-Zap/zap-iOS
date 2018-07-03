@@ -118,6 +118,10 @@ extension TransactionListViewController: UITableViewDelegate {
         archiveAction.backgroundColor = UIColor.zap.tomato
         return [archiveAction]
     }
+    
+    func scrollViewDidScroll(_ scrollView: UIScrollView) {
+        searchBar.resignFirstResponder()
+    }
 }
 
 extension TransactionListViewController: UISearchBarDelegate {
