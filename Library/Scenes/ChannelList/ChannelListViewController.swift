@@ -151,7 +151,9 @@ extension ChannelListViewController: UITableViewDataSource {
             !channelViewModel.state.value.isClosing
             else { return [] }
         
-        let closeAction = UITableViewRowAction(style: .destructive, title: "scene.channels.row_action.close".localized) { [weak self] _, _ in
+        let closeTitle = channelViewModel.channel.state == .active ? "scene.channel_detail.close_button".localized : "scene.channel_detail.force_close_button".localized
+
+        let closeAction = UITableViewRowAction(style: .destructive, title: closeTitle) { [weak self] _, _ in
             self?.closeChannel(for: channelViewModel)
         }
         closeAction.backgroundColor = UIColor.zap.tomato
