@@ -11,8 +11,15 @@ import Lightning
 final class RemoveRemoteNodeSettingsItem: SettingsItem {
     let title = "scene.settings.item.remove_remote_node".localized
     
+    private weak var settingsDelegate: SettingsDelegate?
+    
+    init(settingsDelegate: SettingsDelegate) {
+        self.settingsDelegate = settingsDelegate
+    }
+    
     func didSelectItem(from fromViewController: UIViewController) {
         RemoteRPCConfiguration.delete()
-        fatalError("Crash to restart.")
+        settingsDelegate?.disconnect()
+        fromViewController.dismiss(animated: true, completion: nil)
     }
 }

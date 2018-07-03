@@ -11,8 +11,15 @@ import Lightning
 final class RemovePinSettingsItem: SettingsItem {
     let title = "scene.settings.item.reset_pin".localized
     
+    private weak var settingsDelegate: SettingsDelegate?
+    
+    init(settingsDelegate: SettingsDelegate) {
+        self.settingsDelegate = settingsDelegate
+    }
+    
     func didSelectItem(from fromViewController: UIViewController) {
         AuthenticationViewModel.resetPin()
-        fatalError("Crash to restart.")
+        settingsDelegate?.disconnect()
+        fromViewController.dismiss(animated: true, completion: nil)
     }
 }

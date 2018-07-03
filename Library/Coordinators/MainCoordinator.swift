@@ -19,10 +19,12 @@ final class MainCoordinator {
     
     private weak var mainViewController: MainViewController?
     private weak var detailViewController: UINavigationController?
+    private weak var settingsDelegate: SettingsDelegate?
     
-    init(rootViewController: RootViewController, lightningService: LightningService) {
+    init(rootViewController: RootViewController, lightningService: LightningService, settingsDelegate: SettingsDelegate) {
         self.rootViewController = rootViewController
         self.lightningService = lightningService
+        self.settingsDelegate = settingsDelegate
         
         let aliasStore = ChannelAliasStore(channelService: lightningService.channelService)
         channelListViewModel = ChannelListViewModel(channelService: lightningService.channelService, aliasStore: aliasStore)
@@ -40,7 +42,8 @@ final class MainCoordinator {
     }
     
     private func presentSettings() {
-        let viewController = UIStoryboard.instantiateSettingsContainerViewController(with: lightningService)
+        guard let settingsDelegate = settingsDelegate else { return }
+        let viewController = UIStoryboard.instantiateSettingsContainerViewController(lightningService: lightningService, settingsDelegate: settingsDelegate)
         mainViewController?.present(viewController, animated: true, completion: nil)
     }
     

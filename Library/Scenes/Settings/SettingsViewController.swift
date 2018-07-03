@@ -8,7 +8,7 @@
 import UIKit
 
 final class SettingsViewController: GroupedTableViewController {
-    init() {
+    init(settingsDelegate: SettingsDelegate) {
         let sections: [Section<SettingsItem>] = [
             Section(title: "scene.settings.title".localized, rows: [
                 CurrencySelectionSettingsItem(),
@@ -16,8 +16,8 @@ final class SettingsViewController: GroupedTableViewController {
                 OnChainRequestAddressTypeSelectionSettingsItem()
             ]),
             Section(title: "scene.settings.section.wallet".localized, rows: [
-                RemoveRemoteNodeSettingsItem(),
-                RemovePinSettingsItem()
+                RemoveRemoteNodeSettingsItem(settingsDelegate: settingsDelegate),
+                RemovePinSettingsItem(settingsDelegate: settingsDelegate)
             ])
         ]
         

@@ -35,14 +35,17 @@ final class RootViewModel: NSObject {
 
     func start() {
         ExchangeUpdaterJob.start()
-
+        setInitialState()
+    }
+    
+    private func setInitialState() {
         switch LndConnection.current {
         case .none:
             state.value = .noWallet
         default:
             if !authenticationViewModel.isLocked || Environment.skipPinFlow {
                 authenticationViewModel.didAuthenticate()
-
+                
                 state.value = .connecting
                 connect()
             } else {
@@ -69,6 +72,13 @@ final class RootViewModel: NSObject {
         guard let lightningService = LightningService(connection: connection) else { return }
         lightningService.start()
         self.lightningService = lightningService
+    }
+    
+    func disconnect() {
+        self.lightningService = nil
+        lightningService?.stop()
+        LocalLnd.stop()
+        setInitialState()
     }
     
     private func bindStateToLnd() {

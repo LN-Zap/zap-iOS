@@ -36,7 +36,9 @@ final class AuthenticationViewModel {
     }
     
     var isLocked: Bool {
-        if let lastAuthenticationDate = lastAuthenticationDate {
+        if !didSetupPin {
+            return true
+        } else if let lastAuthenticationDate = lastAuthenticationDate {
             return lastAuthenticationDate.addingTimeInterval(60) < Date()
         }
         return true

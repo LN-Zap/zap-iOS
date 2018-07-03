@@ -8,7 +8,7 @@
 import Lightning
 import UIKit
 
-public final class RootCoordinator: NSObject, SetupCoordinatorDelegate, PinCoordinatorDelegate {
+public final class RootCoordinator: NSObject, SetupCoordinatorDelegate, PinCoordinatorDelegate, SettingsDelegate {
     
     private let rootViewController: RootViewController
     private let rootViewModel: RootViewModel
@@ -84,7 +84,7 @@ public final class RootCoordinator: NSObject, SetupCoordinatorDelegate, PinCoord
     
     private func presentMain() {
         guard let lightningService = rootViewModel.lightningService else { return }
-        let mainCoordinator = MainCoordinator(rootViewController: rootViewController, lightningService: lightningService)
+        let mainCoordinator = MainCoordinator(rootViewController: rootViewController, lightningService: lightningService, settingsDelegate: self)
         currentCoordinator = mainCoordinator
         mainCoordinator.start()
                 
@@ -130,5 +130,9 @@ public final class RootCoordinator: NSObject, SetupCoordinatorDelegate, PinCoord
     
     func connect() {
         rootViewModel.connect()
+    }
+    
+    func disconnect() {
+        rootViewModel.disconnect()
     }
 }

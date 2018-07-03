@@ -9,12 +9,17 @@ import BTCUtil
 import Lightning
 import UIKit
 
+protocol SettingsDelegate: class {
+    func disconnect()
+}
+
 extension UIStoryboard {
-    static func instantiateSettingsContainerViewController(with lightningService: LightningService) -> UINavigationController {
+    static func instantiateSettingsContainerViewController(lightningService: LightningService, settingsDelegate: SettingsDelegate) -> UINavigationController {
         let viewController = Storyboard.settings.initial(viewController: UINavigationController.self)
         
         if let settingsContainerViewController = viewController.topViewController as? SettingsContainerViewController {
             settingsContainerViewController.lightningService = lightningService
+            settingsContainerViewController.settingsDelegate = settingsDelegate
         }
         
         return viewController
@@ -30,7 +35,8 @@ final class SettingsContainerViewController: UIViewController, ContainerViewCont
     @IBOutlet weak var container: UIView?
     weak var currentViewController: UIViewController?
 
-    var lightningService: LightningService?
+    fileprivate weak var settingsDelegate: SettingsDelegate?
+    fileprivate var lightningService: LightningService?
     
     override var preferredStatusBarStyle: UIStatusBarStyle {
         return .lightContent
@@ -58,7 +64,10 @@ final class SettingsContainerViewController: UIViewController, ContainerViewCont
         secondaryCurrencyLabel.textColor = .gray
         exchangeRateLabel.textColor = .gray
 
-        let viewController = SettingsViewController()
+        guard let settingsDelegate = settingsDelegate else { fatalError("settings delegate not set.") }
+        
+        let viewController = SettingsViewController(settingsDelegate: settingsDelegate)
+        
         setContainerContent(viewController)
         
         title = "scene.settings.title".localized
