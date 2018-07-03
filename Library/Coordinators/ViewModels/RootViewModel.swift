@@ -55,6 +55,8 @@ final class RootViewModel: NSObject {
     }
     
     func connect() {
+        state.value = .connecting
+        
         let connection = LndConnection.current
         
         if case .local = LndConnection.current {
