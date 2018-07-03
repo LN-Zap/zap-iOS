@@ -39,7 +39,9 @@ final class RootViewModel: NSObject {
         case .none:
             state.value = .noWallet
         default:
-            if Environment.skipPinFlow {
+            if !authenticationViewModel.isLocked || Environment.skipPinFlow {
+                authenticationViewModel.didAuthenticate()
+
                 state.value = .connecting
                 connect()
             } else {

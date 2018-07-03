@@ -41,6 +41,7 @@ final class PinViewController: UIViewController {
         keyPadView.customPointButtonAction = { [weak self] in
             BiometricAuthentication.authenticate {
                 guard $0.error == nil else { return }
+                self?.authenticationViewModel?.didAuthenticate()
                 self?.didAuthenticate?()
             }
         }
@@ -49,6 +50,7 @@ final class PinViewController: UIViewController {
             self?.updatePinView(for: number)
             
             if authenticationViewModel.isMatchingPin(number) {
+                self?.authenticationViewModel?.didAuthenticate()
                 self?.didAuthenticate?()
             }
             

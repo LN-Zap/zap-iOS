@@ -14,6 +14,7 @@ private let keychainPinLengthKey = "pinLength"
 
 final class AuthenticationViewModel {
     private let keychain = Keychain(service: "com.jackmallers.zap")
+    private var lastAuthenticationDate: Date?
     
     private var hashedPin: String? {
         get { return keychain[keychainPinKey] }
@@ -34,6 +35,13 @@ final class AuthenticationViewModel {
         }
     }
     
+    var isLocked: Bool {
+        if let lastAuthenticationDate = lastAuthenticationDate {
+            return lastAuthenticationDate.addingTimeInterval(60) < Date()
+        }
+        return true
+    }
+    
     var didSetupPin: Bool {
         return keychain[keychainPinKey] != nil
     }
@@ -45,6 +53,10 @@ final class AuthenticationViewModel {
     
     func isMatchingPin(_ pin: String) -> Bool {
         return pin.sha256() == hashedPin
+    }
+    
+    func didAuthenticate() {
+        lastAuthenticationDate = Date()
     }
     
     static func resetPin() {
