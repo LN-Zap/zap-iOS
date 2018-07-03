@@ -10,8 +10,6 @@ import Foundation
 import Lightning
 
 final class RootViewModel: NSObject {
-    let authenticationViewModel = AuthenticationViewModel()
-    
     enum State {
         case locked
         case noWallet
@@ -21,7 +19,10 @@ final class RootViewModel: NSObject {
         case running
     }
     
+    let authenticationViewModel = AuthenticationViewModel()
     let state = Observable<State>(.connecting)
+    
+    private var syncingStartTime: Date?
     
     private(set) var lightningService: LightningService? {
         didSet {
@@ -71,18 +72,18 @@ final class RootViewModel: NSObject {
     }
     
     private func bindStateToLnd() {
-        lightningService?.infoService.walletState
+        _ = lightningService?.infoService.walletState
             .skip(first: 1)
+            .filter(filterSyncing)
             .distinct()
             .observeOn(DispatchQueue.main)
-            .observeNext { [weak self] infoServiceState in
-                guard let strongSelf = self else { return }
-                strongSelf.state.value = strongSelf.state(for: infoServiceState)
-            }
+            .map(stateForInfoState)
+            .feedNext(into: state)
+            .observeNext { _ in }
             .dispose(in: reactive.bag)
     }
     
-    private func state(for state: InfoService.State) -> RootViewModel.State {
+    private func stateForInfoState(_ state: InfoService.State) -> RootViewModel.State {
         switch state {
         case .connecting:
             return handleConnectingState()
@@ -103,5 +104,21 @@ final class RootViewModel: NSObject {
         } else {
             return .connecting
         }
+    }
+    
+    // add 3 second debounce to syncing, so we don't switch to sync screen when the app is running and a new block is found.
+    private func filterSyncing(newState: InfoService.State) -> Bool {
+        if state.value == .running && newState == .syncing {
+            if let syncingStartTime = syncingStartTime {
+                if syncingStartTime.addingTimeInterval(3) < Date() {
+                    self.syncingStartTime = nil
+                    return true
+                }
+            } else {
+                syncingStartTime = Date()
+            }
+            return false
+        }
+        return true
     }
 }
