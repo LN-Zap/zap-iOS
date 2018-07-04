@@ -15,7 +15,6 @@ public enum LndApiError: Error, LocalizedError, Equatable {
     case localizedError(String)
     case unknownError
     
-    // TODO: localize?
     public var errorDescription: String? {
         switch self {
         case .localizedError(let description):
