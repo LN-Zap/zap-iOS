@@ -20,7 +20,10 @@ final class QRCodeScannerView: UIView {
     
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
-        setup()
+        
+        DispatchQueue.main.async {
+            self.setup()
+        }
     }
     
     var lightningService: LightningService?
