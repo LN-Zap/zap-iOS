@@ -20,22 +20,28 @@ final class TransactionListViewModel: NSObject {
     let isEmpty: Signal<Bool, NoError>
     
     let searchString = Observable<String?>(nil)
+    let filterSettings = Observable<FilterSettings>(FilterSettings())
+    let isFilterActive: Signal<Bool, NoError>
     
     init(transactionService: TransactionService, aliasStore: ChannelAliasStore) {
         self.transactionService = transactionService
         self.aliasStore = aliasStore
         sections = MutableObservable2DArray()
         
-        isEmpty = combineLatest(sections, isLoading) { sections, isLoading in
-            return sections.dataSource.isEmpty && !isLoading
-        }
-        .distinct()
-        .debounce(interval: 0.5)
-        .start(with: false)
+        isEmpty =
+            combineLatest(sections, isLoading) { sections, isLoading in
+                return sections.dataSource.isEmpty && !isLoading
+            }
+            .distinct()
+            .debounce(interval: 0.5)
+            .start(with: false)
 
+        isFilterActive = filterSettings
+            .map { $0 != FilterSettings() }
+        
         super.init()
         
-        combineLatest(transactionService.transactions, searchString)
+        combineLatest(transactionService.transactions, searchString, filterSettings)
             .observeNext(with: updateSections)
             .dispose(in: reactive.bag)
     }
@@ -46,7 +52,7 @@ final class TransactionListViewModel: NSObject {
     
     func hideTransaction(_ transaction: Transaction) {
         transactionAnnotationStore.hideTransaction(transaction)
-        updateSections(for: transactionService.transactions.value, searchString: searchString.value)
+        updateSections(for: transactionService.transactions.value, searchString: searchString.value, filterSettings: filterSettings.value)
     }
     
     func updateAnnotation(_ annotation: TransactionAnnotation, for transaction: Transaction) {
@@ -60,16 +66,13 @@ final class TransactionListViewModel: NSObject {
     
     // MARK: - Private
     
-    private func updateSections(for transactions: [Transaction], searchString: String?) {
+    private func updateSections(for transactions: [Transaction], searchString: String?, filterSettings: FilterSettings) {
         let transactionViewModels = transactions
-            .compactMap { transaction -> TransactionViewModel? in
+            .compactMap { transaction -> TransactionViewModel in
                 let annotation = transactionAnnotationStore.annotation(for: transaction)
-                if annotation.isHidden {
-                    return nil
-                } else {
-                    return TransactionViewModel.instance(for: transaction, annotation: annotation, aliasStore: aliasStore)
-                }
+                return TransactionViewModel.instance(for: transaction, annotation: annotation, aliasStore: aliasStore)
             }
+            .filter { $0.matchesFilterSettings(filterSettings) }
             .filter { $0.matchesSearchString(searchString) }
         
         let result = bondSections(transactionViewModels: transactionViewModels)

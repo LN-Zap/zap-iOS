@@ -158,3 +158,11 @@
 "scene.channel_detail.funding_transaction_label" = "Funding Transaction";
 "scene.channel_detail.close_button" = "Close";
 "scene.channel_detail.force_close_button" = "Force Close";
+
+"scene.filter.title" = "Transaction Filter";
+"scene.filter.section_header.transaction_types" = "Transaction Types";
+"scene.filter.displayOnChainTransactions" = "On Chain Transactions";
+"scene.filter.displayLightningPayments" = "Lightning Payments";
+"scene.filter.displayLightningInvoices" = "Lightning Invoices";
+"scene.filter.displayArchivedTransactions" = "Archived Transactions";
+

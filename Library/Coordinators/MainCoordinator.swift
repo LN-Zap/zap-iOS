@@ -48,7 +48,7 @@ final class MainCoordinator {
     }
     
     private func presentTransactions() {
-        let viewController = UIStoryboard.instantiateTransactionListViewController(transactionListViewModel: transactionListViewModel, presentTransactionDetail: presentTransactionDetail)
+        let viewController = UIStoryboard.instantiateTransactionListViewController(transactionListViewModel: transactionListViewModel, presentTransactionDetail: presentTransactionDetail, presentFilter: presentFilter)
         mainViewController?.setContainerContent(viewController)
     }
     
@@ -117,5 +117,10 @@ final class MainCoordinator {
     private func presentDetailCloseConfirmation(for channel: Channel, nodeAlias: String, closeAction: @escaping () -> Void) {
         let alertController = UIAlertController.closeChannelAlertController(channel: channel, nodeAlias: nodeAlias, closeAction: closeAction)
         detailViewController?.present(alertController, animated: true, completion: nil)
+    }
+    
+    private func presentFilter() {
+        let filterViewController = UIStoryboard.instantiateFilterViewController(transactionListViewModel: transactionListViewModel)
+        mainViewController?.present(filterViewController, animated: true, completion: nil)
     }
 }

@@ -9,11 +9,12 @@ import Bond
 import UIKit
 
 extension UIStoryboard {
-    static func instantiateTransactionListViewController(transactionListViewModel: TransactionListViewModel, presentTransactionDetail: @escaping (TransactionViewModel) -> Void) -> TransactionListViewController {
+    static func instantiateTransactionListViewController(transactionListViewModel: TransactionListViewModel, presentTransactionDetail: @escaping (TransactionViewModel) -> Void, presentFilter: @escaping () -> Void) -> TransactionListViewController {
         let viewController = Storyboard.transactionList.initial(viewController: TransactionListViewController.self)
         
         viewController.transactionListViewModel = transactionListViewModel
         viewController.presentTransactionDetail = presentTransactionDetail
+        viewController.presentFilter = presentFilter
         
         return viewController
     }
@@ -41,6 +42,7 @@ final class TransactionListViewController: UIViewController {
     @IBOutlet private weak var filterButton: UIButton!
     @IBOutlet private weak var loadingActivityIndicator: UIActivityIndicatorView!
     
+    fileprivate var presentFilter: (() -> Void)?
     fileprivate var presentTransactionDetail: ((TransactionViewModel) -> Void)?
     fileprivate var transactionListViewModel: TransactionListViewModel?
     
@@ -69,7 +71,10 @@ final class TransactionListViewController: UIViewController {
         tableView.refreshControl = UIRefreshControl()
         tableView.refreshControl?.addTarget(self, action: #selector(refresh), for: .valueChanged)
         
-        [transactionListViewModel?.searchString
+        [transactionListViewModel?.isFilterActive
+            .map { $0 ? UIColor.zap.lightMustard.withAlphaComponent(0.5) : UIColor.clear }
+            .bind(to: filterButton.reactive.backgroundColor),
+         transactionListViewModel?.searchString
             .bidirectionalBind(to: searchBar.reactive.text),
          transactionListViewModel?.sections
             .bind(to: tableView, using: TransactionBond()),
@@ -82,6 +87,10 @@ final class TransactionListViewController: UIViewController {
             .map { !$0 }
             .bind(to: emptyStateLabel.reactive.isHidden)]
             .dispose(in: reactive.bag)
+    }
+    
+    @IBAction func presentFilter(_ sender: Any) {
+        presentFilter?()
     }
     
     @objc func refresh(sender: UIRefreshControl) {
@@ -126,7 +135,7 @@ extension TransactionListViewController: UITableViewDelegate {
     }
 }
 
-extension TransactionListViewController: UISearchBarDelegate {    
+extension TransactionListViewController: UISearchBarDelegate {
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
         searchBar.resignFirstResponder()
     }

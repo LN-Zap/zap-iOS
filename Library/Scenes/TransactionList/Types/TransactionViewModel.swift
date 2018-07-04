@@ -69,7 +69,7 @@ class TransactionViewModel: NSObject {
     override func isEqual(_ object: Any?) -> Bool {
         return id == (object as? TransactionViewModel)?.id
     }
-
+    
     static func instance(for transaction: Transaction, annotation: TransactionAnnotation, aliasStore: ChannelAliasStore) -> TransactionViewModel {
         if let transaction = transaction as? OnChainTransaction {
             return OnChainTransactionViewModel(onChainTransaction: transaction, annotation: annotation, aliasStore: aliasStore)
@@ -80,6 +80,14 @@ class TransactionViewModel: NSObject {
         } else {
             fatalError("type not implemented")
         }
+    }
+    
+    func matchesFilterSettings(_ filterSettings: FilterSettings) -> Bool {
+        let isMatchingTransactionType = (transaction is OnChainTransaction && filterSettings.displayOnChainTransactions)
+            || (transaction is LightningPayment && filterSettings.displayLightningPayments)
+            || (transaction is LightningInvoice && filterSettings.displayLightningInvoices)
+        
+        return (!annotation.value.isHidden || filterSettings.displayArchivedTransactions) && isMatchingTransactionType
     }
     
     func matchesSearchString(_ string: String?) -> Bool {
