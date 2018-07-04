@@ -32,19 +32,19 @@ final class PinViewController: UIViewController {
         setupKeyPad()
     }
     
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        
+        startBiometricAuthentication()
+    }
+    
     private func setupKeyPad() {
         guard let authenticationViewModel = authenticationViewModel else { return }
         keyPadView.backgroundColor = UIColor.zap.charcoalGrey
         keyPadView.textColor = .white
         keyPadView.state = .authenticate
         
-        keyPadView.customPointButtonAction = { [weak self] in
-            BiometricAuthentication.authenticate {
-                guard $0.error == nil else { return }
-                self?.authenticationViewModel?.didAuthenticate()
-                self?.didAuthenticate?()
-            }
-        }
+        keyPadView.customPointButtonAction = startBiometricAuthentication
         
         keyPadView.handler = { [weak self] number in
             self?.updatePinView(for: number)
@@ -55,6 +55,14 @@ final class PinViewController: UIViewController {
             }
             
             return (authenticationViewModel.pinLength ?? Int.max) >= number.count
+        }
+    }
+    
+    private func startBiometricAuthentication() {
+        BiometricAuthentication.authenticate { [weak self] in
+            guard $0.error == nil else { return }
+            self?.authenticationViewModel?.didAuthenticate()
+            self?.didAuthenticate?()
         }
     }
     
