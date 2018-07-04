@@ -13,6 +13,7 @@ final class DetailDestructiveActionTableViewCell: UITableViewCell {
         enum DestructiveActionType {
             case closeChannel(Channel, String)
             case archiveTransaction
+            case unarchiveTransaction
         }
         
         let title: String
@@ -28,6 +29,12 @@ final class DetailDestructiveActionTableViewCell: UITableViewCell {
         didSet {
             guard let info = info else { return }
             destructiveActionButton.setTitle(info.title, for: .normal)
+            
+            if case .unarchiveTransaction = info.type {
+                destructiveActionButton.tintColor = UIColor.zap.nastyGreen
+            } else {
+                destructiveActionButton.tintColor = UIColor.zap.tomato
+            }
         }
     }
     
@@ -35,7 +42,6 @@ final class DetailDestructiveActionTableViewCell: UITableViewCell {
         super.awakeFromNib()
         
         Style.button.apply(to: destructiveActionButton)
-        destructiveActionButton.tintColor = UIColor.zap.tomato
     }
     
     @IBAction private func executeAction(_ sender: Any) {
@@ -46,7 +52,7 @@ final class DetailDestructiveActionTableViewCell: UITableViewCell {
                 info.action()
                 self?.delegate?.dismiss()
             }
-        case .archiveTransaction:
+        case .archiveTransaction, .unarchiveTransaction:
             info.action()
             delegate?.dismiss()
         }

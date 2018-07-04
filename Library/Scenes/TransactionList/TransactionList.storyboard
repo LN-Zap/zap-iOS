@@ -183,24 +183,6 @@
             </objects>
             <point key="canvasLocation" x="1224.8" y="161.46926536731635"/>
         </scene>
-        <!--Navigation Controller-->
-        <scene sceneID="9rA-Y1-pWx">
-            <objects>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="5jn-al-obD" userLabel="First Responder" sceneMemberID="firstResponder"/>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="VVT-1K-Ysa" sceneMemberID="viewController">
-                    <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="8lZ-hK-2ND">
-                        <rect key="frame" x="0.0" y="20" width="375" height="44"/>
-                        <autoresizingMask key="autoresizingMask"/>
-                    </navigationBar>
-                    <nil name="viewControllers"/>
-                    <connections>
-                        <segue destination="1wR-c1-cEe" kind="relationship" relationship="rootViewController" id="YkI-Ai-4Vl"/>
-                    </connections>
-                </navigationController>
-            </objects>
-            <point key="canvasLocation" x="366" y="161"/>
-        </scene>
     </scenes>
     <resources>
         <image name="icon-sliders" width="24" height="20"/>

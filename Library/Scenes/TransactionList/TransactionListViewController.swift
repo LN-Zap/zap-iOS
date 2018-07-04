@@ -89,7 +89,7 @@ final class TransactionListViewController: UIViewController {
             .dispose(in: reactive.bag)
     }
     
-    @IBAction func presentFilter(_ sender: Any) {
+    @IBAction private func presentFilter(_ sender: Any) {
         presentFilter?()
     }
     
@@ -121,13 +121,23 @@ extension TransactionListViewController: UITableViewDelegate {
     }
     
     func tableView(_ tableView: UITableView, editActionsForRowAt indexPath: IndexPath) -> [UITableViewRowAction]? {
-        let archiveAction = UITableViewRowAction(style: .destructive, title: "scene.transactions.row_action.archive".localized) { [weak self] _, indexPath in
+        guard let transactionViewModel = transactionListViewModel?.sections.item(at: indexPath) else { return nil }
+        
+        if transactionViewModel.annotation.value.isHidden {
+            return [archiveAction(title: "scene.transactions.row_action.unarchive".localized, color: UIColor.zap.nastyGreen, setHidden: false)]
+        } else {
+            return [archiveAction(title: "scene.transactions.row_action.archive".localized, color: UIColor.zap.tomato, setHidden: true)]
+        }
+    }
+    
+    private func archiveAction(title: String, color: UIColor, setHidden hidden: Bool) -> UITableViewRowAction {
+        let archiveAction = UITableViewRowAction(style: .destructive, title: title) { [weak self] _, indexPath in
             guard let transactionListViewModel = self?.transactionListViewModel else { return }
             let transactionViewModel = transactionListViewModel.sections.item(at: indexPath)
-            transactionListViewModel.hideTransaction(transactionViewModel.transaction)
+            transactionListViewModel.setTransactionHidden(transactionViewModel.transaction, hidden: hidden)
         }
-        archiveAction.backgroundColor = UIColor.zap.tomato
-        return [archiveAction]
+        archiveAction.backgroundColor = color
+        return archiveAction
     }
     
     func scrollViewWillBeginDragging(_ scrollView: UIScrollView) {

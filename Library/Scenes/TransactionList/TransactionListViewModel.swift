@@ -50,9 +50,13 @@ final class TransactionListViewModel: NSObject {
         transactionService.update()
     }
     
-    func hideTransaction(_ transaction: Transaction) {
-        transactionAnnotationStore.hideTransaction(transaction)
-        updateSections(for: transactionService.transactions.value, searchString: searchString.value, filterSettings: filterSettings.value)
+    func setTransactionHidden(_ transaction: Transaction, hidden: Bool) {
+        let newAnnotation = transactionAnnotationStore.setTransactionHidden(transaction, hidden: hidden)
+        updateAnnotation(newAnnotation, for: transaction)
+        
+        if !filterSettings.value.displayArchivedTransactions {
+            updateSections(for: transactionService.transactions.value, searchString: searchString.value, filterSettings: filterSettings.value)
+        }
     }
     
     func updateAnnotation(_ annotation: TransactionAnnotation, for transaction: Transaction) {

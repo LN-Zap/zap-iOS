@@ -45,6 +45,6 @@ final class OnChainTransactionDetailViewModel: NSObject, DetailViewModel {
             detailCells.append(.separator)
         }
         
-        detailCells.append(DetailCellType.hideTransactionCell(transaction: onChainTransaction, transactionListViewModel: transactionListViewModel))
+        detailCells.append(DetailCellType.hideTransactionCell(transaction: onChainTransaction, annotation: annotation.value, transactionListViewModel: transactionListViewModel))
     }
 }

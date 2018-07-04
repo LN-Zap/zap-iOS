@@ -27,10 +27,11 @@ public final class TransactionAnnotationStore: Persistable {
         savePersistable()
     }
     
-    public func hideTransaction(_ transaction: Transaction) {
+    public func setTransactionHidden(_ transaction: Transaction, hidden: Bool) -> TransactionAnnotation {
         let oldAnnotation = annotation(for: transaction)
-        let newAnnotation = oldAnnotation.settingHidden(to: true)
+        let newAnnotation = oldAnnotation.settingHidden(to: hidden)
         updateAnnotation(newAnnotation, for: transaction)
+        return newAnnotation
     }
     
     func udpateMemo(_ memo: String?, for transaction: Transaction) {

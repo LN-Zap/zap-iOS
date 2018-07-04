@@ -33,6 +33,6 @@ final class LightningPaymentDetailViewModel: NSObject, DetailViewModel {
         detailCells.append(DetailCellType.memoCell(transaction: lightningPayment, annotation: annotation, transactionListViewModel: transactionListViewModel, placeholder: lightningPayment.paymentHash))
         detailCells.append(.separator)
         
-        detailCells.append(DetailCellType.hideTransactionCell(transaction: lightningPayment, transactionListViewModel: transactionListViewModel))
+        detailCells.append(DetailCellType.hideTransactionCell(transaction: lightningPayment, annotation: annotation.value, transactionListViewModel: transactionListViewModel))
     }
 }

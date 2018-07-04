@@ -28,6 +28,7 @@
 "scene.transactions.search.placeholder" = "search";
 "scene.transactions.empty_state_label" = "0 transactions 🙁";
 "scene.transactions.row_action.archive" = "Archive";
+"scene.transactions.row_action.unarchive" = "Unarchive";
 
 "scene.settings.title" = "Settings";
 "scene.settings.section.wallet" = "Wallet";
@@ -131,6 +132,7 @@
 "scene.transaction_detail.title.payment_detail" = "Payment Detail";
 "scene.transaction_detail.title.transaction_detail" = "Transaction Detail";
 "scene.transaction_detail.archive_button" = "Archive";
+"scene.transaction_detail.unarchive_button" = "Unarchive";
 "scene.transaction_detail.memo_label" = "Memo";
 "scene.transaction_detail.qr_code.copy_button" = "Copy";
 "scene.transaction_detail.qr_code.share_button" = "Share";
@@ -165,4 +167,3 @@
 "scene.filter.displayLightningPayments" = "Lightning Payments";
 "scene.filter.displayLightningInvoices" = "Lightning Invoices";
 "scene.filter.displayArchivedTransactions" = "Archived Transactions";
-

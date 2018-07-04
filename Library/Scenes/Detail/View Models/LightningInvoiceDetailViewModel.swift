@@ -49,6 +49,6 @@ final class LightningInvoiceDetailViewModel: NSObject, DetailViewModel {
             detailCells.append(.separator)
         }
         
-        detailCells.append(DetailCellType.hideTransactionCell(transaction: lightningInvoice, transactionListViewModel: transactionListViewModel))
+        detailCells.append(DetailCellType.hideTransactionCell(transaction: lightningInvoice, annotation: annotation.value, transactionListViewModel: transactionListViewModel))
     }
 }

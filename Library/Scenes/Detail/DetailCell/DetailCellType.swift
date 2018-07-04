@@ -32,10 +32,16 @@ enum DetailCellType {
         return nil
     }
     
-    static func hideTransactionCell(transaction: Transaction, transactionListViewModel: TransactionListViewModel) -> DetailCellType {
-        return .destructiveAction(DetailDestructiveActionTableViewCell.Info(title: "scene.transaction_detail.archive_button".localized, type: .archiveTransaction, action: {
-            transactionListViewModel.hideTransaction(transaction)
-        }))
+    static func hideTransactionCell(transaction: Transaction, annotation: TransactionAnnotation, transactionListViewModel: TransactionListViewModel) -> DetailCellType {
+        if annotation.isHidden {
+            return .destructiveAction(DetailDestructiveActionTableViewCell.Info(title: "scene.transaction_detail.unarchive_button".localized, type: .unarchiveTransaction, action: {
+                transactionListViewModel.setTransactionHidden(transaction, hidden: false)
+            }))
+        } else {
+            return .destructiveAction(DetailDestructiveActionTableViewCell.Info(title: "scene.transaction_detail.archive_button".localized, type: .archiveTransaction, action: {
+                transactionListViewModel.setTransactionHidden(transaction, hidden: true)
+            }))
+        }
     }
     
     static func memoCell(transaction: Transaction, annotation: Observable<TransactionAnnotation>, transactionListViewModel: TransactionListViewModel, placeholder: String) -> DetailCellType {
