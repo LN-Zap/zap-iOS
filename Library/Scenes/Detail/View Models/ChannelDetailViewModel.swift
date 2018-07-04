@@ -23,6 +23,23 @@ final class ChannelDetailViewModel: DetailViewModel {
         
         detailCells = MutableObservableArray([])
 
+        if channel.state.isClosing,
+            let longestChainHeight = infoService.blockChainHeight.value {
+            let blocksUntilClose = channel.blockHeight - longestChainHeight
+            
+            let formatter = DateComponentsFormatter()
+            formatter.allowedUnits =  [.year, .month, .day, .hour, .minute]
+            formatter.unitsStyle = .short
+            formatter.maximumUnitCount = 2
+            
+            let blockTime: TimeInterval = 10 * 60
+            let timeUntilClose = formatter.string(from: TimeInterval(blocksUntilClose) * blockTime) ?? ""
+            let text = String(format: "scene.channel_detail.closing_time.data".localized, blocksUntilClose, timeUntilClose)
+            
+            detailCells.append(.info(DetailTableViewCell.Info(title: "scene.channel_detail.closing_time.label".localized, data: text)))
+            detailCells.append(.separator)
+        }
+        
         detailCells.append(.info(DetailTableViewCell.Info(title: "scene.channel_detail.remote_pub_key_label".localized, data: channel.remotePubKey)))
         detailCells.append(.separator)
         
@@ -42,9 +59,10 @@ final class ChannelDetailViewModel: DetailViewModel {
         detailCells.append(.info(DetailTableViewCell.Info(title: "scene.channel_detail.update_count_label".localized, data: String(describing: channel.updateCount ?? 0))))
         detailCells.append(.separator)
         
-        let blockHeight = channel.blockHeight
-        detailCells.append(.info(DetailTableViewCell.Info(title: "scene.channel_detail.block_height_label".localized, data: String(describing: blockHeight))))
-        detailCells.append(.separator)
+         if !channel.state.isClosing {
+            detailCells.append(.info(DetailTableViewCell.Info(title: "scene.channel_detail.block_height_label".localized, data: String(describing: channel.blockHeight))))
+            detailCells.append(.separator)
+        }
         
         if let cell = DetailCellType.blockExplorerCell(txid: channel.channelPoint.fundingTxid, title: "scene.channel_detail.funding_transaction_label".localized, network: infoService.network.value) {
             detailCells.append(cell)
