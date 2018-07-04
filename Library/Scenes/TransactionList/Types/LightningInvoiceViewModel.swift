@@ -23,12 +23,7 @@ final class LightningInvoiceViewModel: TransactionViewModel {
     init(lightningInvoice: LightningInvoice, annotation: TransactionAnnotation) {
         self.lightningInvoice = lightningInvoice
         
-        let displayTextString: String
-        if !lightningInvoice.memo.isEmpty {
-            displayTextString = lightningInvoice.memo
-        } else {
-            displayTextString = lightningInvoice.paymentRequest
-        }
+        let displayTextString = LightningInvoiceViewModel.displayTextForAnnotation(annotation, lightningInvoice: lightningInvoice)
         
         let amount: Satoshi?
         if lightningInvoice.amount > 0 {
@@ -46,5 +41,22 @@ final class LightningInvoiceViewModel: TransactionViewModel {
         }
         
         super.init(transaction: lightningInvoice, annotation: annotation, displayText: displayTextString, amount: amount, icon: .unsettledInvoice)
+        
+        self.annotation
+            .map { LightningInvoiceViewModel.displayTextForAnnotation($0, lightningInvoice: lightningInvoice) }
+            .feedNext(into: displayText)
+            .observeNext { _ in }
+            .dispose(in: reactive.bag)
+    }
+    
+    private static func displayTextForAnnotation(_ annotation: TransactionAnnotation, lightningInvoice: LightningInvoice) -> String {
+        if let customMemo = annotation.customMemo, customMemo != "" {
+            return customMemo
+        } else if !lightningInvoice.memo.isEmpty {
+            return lightningInvoice.memo
+        } else {
+            return lightningInvoice.paymentRequest
+        }
+    
     }
 }
