@@ -47,7 +47,7 @@ final class ChannelListViewModel: NSObject {
     
         guard !channelViewModels.isEmpty else { return }
         
-        let section = Observable2DArraySection<String, ChannelViewModel>(metadata: "scene.channels.section_header.open".localized, items: channelViewModels)
+        let section = Observable2DArraySection<String, ChannelViewModel>(metadata: metadata, items: channelViewModels)
         result.appendSection(section)
     }
     
