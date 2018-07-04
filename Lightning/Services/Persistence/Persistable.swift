@@ -18,16 +18,8 @@ public protocol Persistable: class {
 }
 
 extension Persistable {
-    private static var plistUrl: URL? {
-        return FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first?.appendingPathComponent("\(fileName).plist")
-    }
-    
     public func savePersistable() {
-        guard
-            let encoded = try? PropertyListEncoder().encode(data),
-            let url = Self.plistUrl
-            else { return }
-        try? encoded.write(to: url)
+        Storage.store(data, to: Self.fileName)
     }
     
     public func loadPersistable() {
@@ -37,10 +29,6 @@ extension Persistable {
     }
     
     public static var decoded: Value? {
-        guard
-            let url = plistUrl,
-            let data = try? Data(contentsOf: url),
-            let decoded = try? PropertyListDecoder().decode(Value.self, from: data) else { return nil }
-        return decoded
+        return Storage.restore(Self.fileName)
     }
 }

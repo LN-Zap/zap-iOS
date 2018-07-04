@@ -234,6 +234,7 @@
 		ADA865BC20ECB87B00B1B74B /* FilterSettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADA865BB20ECB87B00B1B74B /* FilterSettings.swift */; };
 		ADA865BE20ECB88500B1B74B /* FilterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADA865BD20ECB88500B1B74B /* FilterViewController.swift */; };
 		ADA865C020ECC89E00B1B74B /* FilterTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADA865BF20ECC89E00B1B74B /* FilterTableViewCell.swift */; };
+		ADA865C220ED041F00B1B74B /* Storage.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADA865C120ED041F00B1B74B /* Storage.swift */; };
 		ADCD060120E67FA5009D9650 /* Environment.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADCD060020E67FA5009D9650 /* Environment.swift */; };
 		ADCD5B0D20D7E3F50037F156 /* RemoveRemoteNodeSettingsItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADCD5B0C20D7E3F50037F156 /* RemoveRemoteNodeSettingsItem.swift */; };
 		ADCD5B0F20D7E40C0037F156 /* RemovePinSettingsItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADCD5B0E20D7E40C0037F156 /* RemovePinSettingsItem.swift */; };
@@ -665,6 +666,7 @@
 		ADA865BB20ECB87B00B1B74B /* FilterSettings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilterSettings.swift; sourceTree = "<group>"; };
 		ADA865BD20ECB88500B1B74B /* FilterViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilterViewController.swift; sourceTree = "<group>"; };
 		ADA865BF20ECC89E00B1B74B /* FilterTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilterTableViewCell.swift; sourceTree = "<group>"; };
+		ADA865C120ED041F00B1B74B /* Storage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Storage.swift; sourceTree = "<group>"; };
 		ADACC76F20B02AAD00F86D63 /* DetailQRCodeTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailQRCodeTableViewCell.swift; sourceTree = "<group>"; };
 		ADACC77020B02AAD00F86D63 /* DetailQRCodeTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DetailQRCodeTableViewCell.xib; sourceTree = "<group>"; };
 		ADB6DEDA20AD8F80001324C8 /* GradientLoadingButtonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GradientLoadingButtonView.swift; sourceTree = "<group>"; };
@@ -1509,6 +1511,7 @@
 				AD1EB9FE20B2EAF4001FF67E /* ChannelAliasStore.swift */,
 				AD77466B2078EE5600EC596B /* ChannelTransactionAnnotationUpdater.swift */,
 				AD1EBA0020B2FD9D001FF67E /* Persistable.swift */,
+				ADA865C120ED041F00B1B74B /* Storage.swift */,
 				AD19F05320AEAD3C008090CB /* TransactionAnnotation.swift */,
 				ADA6D2C020AB217B009398A5 /* TransactionAnnotationStore.swift */,
 			);
@@ -2401,6 +2404,7 @@
 				ADCD060120E67FA5009D9650 /* Environment.swift in Sources */,
 				ADFEFA5820E627F100FE1557 /* LightningInvoice.swift in Sources */,
 				ADFEFA6220E627F100FE1557 /* LocalLndConfiguration.swift in Sources */,
+				ADA865C220ED041F00B1B74B /* Storage.swift in Sources */,
 				ADFEFA5920E627F100FE1557 /* NodeInfo.swift in Sources */,
 				ADFEFA5620E627F100FE1557 /* GraphTopologyUpdate.swift in Sources */,
 				ADFEFA5120E627F100FE1557 /* WalletApiProtocol.swift in Sources */,

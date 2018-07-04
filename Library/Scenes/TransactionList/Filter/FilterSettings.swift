@@ -16,6 +16,8 @@ struct FilterSettings: Equatable, Codable {
 }
 
 extension FilterSettings {
+    static var fileName = "filterSettings"
+    
     init() {
         displayOnChainTransactions = true
         displayLightningPayments = true
@@ -23,24 +25,12 @@ extension FilterSettings {
         displayArchivedTransactions = false
     }
     
-    private static var plistUrl: URL? {
-        return FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first?.appendingPathComponent("filterSettings.plist")
-    }
-    
     public func save() {
-        guard
-            let encoded = try? PropertyListEncoder().encode(self),
-            let url = FilterSettings.plistUrl
-            else { return }
-        try? encoded.write(to: url)
+        Storage.store(self, to: FilterSettings.fileName)
     }
     
     public static func load() -> FilterSettings {
-        guard
-            let url = plistUrl,
-            let data = try? Data(contentsOf: url),
-            let decoded = try? PropertyListDecoder().decode(FilterSettings.self, from: data) else { return FilterSettings() }
-        return decoded
+        return Storage.restore(fileName) ?? FilterSettings()
     }
 }
 
