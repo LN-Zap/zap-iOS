@@ -26,6 +26,16 @@ final class ChannelViewModel {
             name.value = alias
         }
     }
+    
+    func matchesSearchString(_ string: String?) -> Bool {
+        guard
+            let string = string?.trimmingCharacters(in: .whitespacesAndNewlines).localizedLowercase,
+            !string.isEmpty
+            else { return true }
+        
+        return name.value.localizedLowercase.contains(string)
+            || channel.remotePubKey.lowercased().contains(string)
+    }
 }
 
 extension ChannelViewModel: Equatable {

@@ -126,12 +126,7 @@ extension TransactionListViewController: UITableViewDelegate {
     }
 }
 
-extension TransactionListViewController: UISearchBarDelegate {
-    func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
-        // TODO: search
-        print(searchText)
-    }
-    
+extension TransactionListViewController: UISearchBarDelegate {    
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
         searchBar.resignFirstResponder()
     }

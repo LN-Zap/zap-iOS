@@ -72,8 +72,10 @@ final class ChannelListViewController: UIViewController {
         searchBackgroundView.backgroundColor = UIColor.zap.white
         addChannelButton.tintColor = UIColor.zap.black
         
-        channelListViewModel?.sections
-            .bind(to: tableView, using: ChannelBond())
+        [channelListViewModel?.sections
+            .bind(to: tableView, using: ChannelBond()),
+         channelListViewModel?.searchString
+            .bidirectionalBind(to: searchBar.reactive.text)]
             .dispose(in: reactive.bag)
     }
     
@@ -94,11 +96,6 @@ final class ChannelListViewController: UIViewController {
 }
 
 extension ChannelListViewController: UISearchBarDelegate {
-    func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
-        // TODO: search
-        print(searchText)
-    }
-    
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
         searchBar.resignFirstResponder()
     }
