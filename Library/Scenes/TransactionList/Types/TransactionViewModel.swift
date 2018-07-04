@@ -81,4 +81,15 @@ class TransactionViewModel: NSObject {
             fatalError("type not implemented")
         }
     }
+    
+    func matchesSearchString(_ string: String?) -> Bool {
+        guard
+            let string = string?.trimmingCharacters(in: .whitespacesAndNewlines).localizedLowercase,
+            !string.isEmpty
+            else { return true }
+        
+        return annotation.value.customMemo?.localizedLowercase.contains(string) == true
+            || displayText.value.localizedLowercase.contains(string)
+            || id.localizedLowercase.contains(string)
+    }
 }

@@ -69,7 +69,9 @@ final class TransactionListViewController: UIViewController {
         tableView.refreshControl = UIRefreshControl()
         tableView.refreshControl?.addTarget(self, action: #selector(refresh), for: .valueChanged)
         
-        [transactionListViewModel?.sections
+        [transactionListViewModel?.searchString
+            .bidirectionalBind(to: searchBar.reactive.text),
+         transactionListViewModel?.sections
             .bind(to: tableView, using: TransactionBond()),
          transactionListViewModel?.isLoading
             .map { !$0 }
@@ -119,7 +121,7 @@ extension TransactionListViewController: UITableViewDelegate {
         return [archiveAction]
     }
     
-    func scrollViewDidScroll(_ scrollView: UIScrollView) {
+    func scrollViewWillBeginDragging(_ scrollView: UIScrollView) {
         searchBar.resignFirstResponder()
     }
 }

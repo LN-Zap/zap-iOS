@@ -132,7 +132,7 @@ extension ChannelListViewController: UITableViewDelegate {
         presentChannelDetail?(channelViewModel)
     }
     
-    func scrollViewDidScroll(_ scrollView: UIScrollView) {
+    func scrollViewWillBeginDragging(_ scrollView: UIScrollView) {
         searchBar.resignFirstResponder()
     }
     
