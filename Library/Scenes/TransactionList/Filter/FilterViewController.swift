@@ -86,6 +86,6 @@ extension FilterViewController: FilterTableViewCellDelegate {
     func setFilterSetting(_ filterSetting: FilterSetting, active: Bool) {
         guard let filterSettings = transactionListViewModel?.filterSettings.value else { return }
         let newFilterSettings = filterSetting.setActive(active, in: filterSettings)
-        transactionListViewModel?.filterSettings.value = newFilterSettings
+        transactionListViewModel?.updateFilterSettings(newFilterSettings)
     }
 }

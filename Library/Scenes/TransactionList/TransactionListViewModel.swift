@@ -20,7 +20,7 @@ final class TransactionListViewModel: NSObject {
     let isEmpty: Signal<Bool, NoError>
     
     let searchString = Observable<String?>(nil)
-    let filterSettings = Observable<FilterSettings>(FilterSettings())
+    let filterSettings = Observable<FilterSettings>(FilterSettings.load())
     let isFilterActive: Signal<Bool, NoError>
     
     init(transactionService: TransactionService, aliasStore: ChannelAliasStore) {
@@ -66,6 +66,11 @@ final class TransactionListViewModel: NSObject {
             transactionViewModel.annotation.value = annotation
             break
         }
+    }
+    
+    func updateFilterSettings(_ newFilterSettings: FilterSettings) {
+        filterSettings.value = newFilterSettings
+        newFilterSettings.save()
     }
     
     // MARK: - Private

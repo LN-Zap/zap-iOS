@@ -6,12 +6,42 @@
 //
 
 import Foundation
+import Lightning
 
-struct FilterSettings: Equatable {
-    var displayOnChainTransactions = true
-    var displayLightningPayments = true
-    var displayLightningInvoices = true
-    var displayArchivedTransactions = false
+struct FilterSettings: Equatable, Codable {
+    var displayOnChainTransactions: Bool
+    var displayLightningPayments: Bool
+    var displayLightningInvoices: Bool
+    var displayArchivedTransactions: Bool
+}
+
+extension FilterSettings {
+    init() {
+        displayOnChainTransactions = true
+        displayLightningPayments = true
+        displayLightningInvoices = true
+        displayArchivedTransactions = false
+    }
+    
+    private static var plistUrl: URL? {
+        return FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first?.appendingPathComponent("filterSettings.plist")
+    }
+    
+    public func save() {
+        guard
+            let encoded = try? PropertyListEncoder().encode(self),
+            let url = FilterSettings.plistUrl
+            else { return }
+        try? encoded.write(to: url)
+    }
+    
+    public static func load() -> FilterSettings {
+        guard
+            let url = plistUrl,
+            let data = try? Data(contentsOf: url),
+            let decoded = try? PropertyListDecoder().decode(FilterSettings.self, from: data) else { return FilterSettings() }
+        return decoded
+    }
 }
 
 enum FilterSetting: Localizable {

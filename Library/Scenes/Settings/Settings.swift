@@ -9,6 +9,7 @@ import Bond
 import BTCUtil
 import Foundation
 import Lightning
+
 // TODO: save in shared user defaults to share with Message Extension
 public final class Settings: NSObject, Persistable {
     // Persistable
