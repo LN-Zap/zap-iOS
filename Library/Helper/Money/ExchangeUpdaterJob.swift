@@ -15,6 +15,7 @@ final class ExchangeUpdaterJob {
         timer = Timer.scheduledTimer(withTimeInterval: 60 * 10, repeats: true) { _ in
             job.run()
         }
+        timer?.fire()
     }
     
     static func stop() {
