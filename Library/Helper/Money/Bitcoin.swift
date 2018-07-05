@@ -45,23 +45,14 @@ struct Bitcoin: Currency, Equatable, Codable {
     }
     
     func value(satoshis: Satoshi) -> NSDecimalNumber? {
-        let handler = NSDecimalNumberHandler(
-            roundingMode: .down,
-            scale: 0,
-            raiseOnExactness: false,
-            raiseOnOverflow: false,
-            raiseOnUnderflow: false,
-            raiseOnDivideByZero: false)
-        
-        return satoshis
-            .multiplying(byPowerOf10: Int16(-unit.exponent))
-            .rounding(accordingToBehavior: handler)
+        return satoshis.multiplying(byPowerOf10: Int16(-unit.exponent))
     }
     
     func stringValue(satoshis: Satoshi) -> String? {
         guard let value = self.value(satoshis: satoshis) else { return nil }
         
         let numberFormatter = unit.numberFormatter
+        numberFormatter.minimumFractionDigits = 0
         numberFormatter.usesGroupingSeparator = false
         
         return numberFormatter.string(from: value)

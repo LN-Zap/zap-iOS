@@ -32,11 +32,11 @@ final class CurrencyTests: XCTestCase {
     
     func testFiatStringToSatoshis() {
         let data: [(FiatCurrency, String, Satoshi)] = [
-            (usd, "$7,000.00", 100_000_000),
-            (usd, "$7000.00", 100_000_000),
-            (usd, "$3,500.00", 50_000_000),
-            (eur, "€5,500.00", 100_000_000),
-            (eur, "€0.00", 0)
+            (usd, "7,000.00", 100_000_000),
+            (usd, "7000.00", 100_000_000),
+            (usd, "3,500.00", 50_000_000),
+            (eur, "5,500.00", 100_000_000),
+            (eur, "0.00", 0)
         ]
         
         for (currency, string, output) in data {
