@@ -46,7 +46,7 @@ final class TransactionListViewController: UIViewController {
     fileprivate var presentTransactionDetail: ((TransactionViewModel) -> Void)?
     fileprivate var transactionListViewModel: TransactionListViewModel?
     
-    deinit {
+    deinit {    
         tableView?.isEditing = false // fixes Bond bug. Binding is not released in editing mode.
     }
     

@@ -13,9 +13,11 @@ private let keychainPinKey = "hashedPin"
 private let keychainPinLengthKey = "pinLength"
 
 final class AuthenticationViewModel {
+    private let unlockTime: TimeInterval = 60
+    
     private let keychain = Keychain(service: "com.jackmallers.zap")
     private var lastAuthenticationDate: Date?
-    
+
     private var hashedPin: String? {
         get { return keychain[keychainPinKey] }
         set { keychain[keychainPinKey] = newValue }
@@ -39,7 +41,7 @@ final class AuthenticationViewModel {
         if !didSetupPin {
             return true
         } else if let lastAuthenticationDate = lastAuthenticationDate {
-            return lastAuthenticationDate.addingTimeInterval(60) < Date()
+            return lastAuthenticationDate.addingTimeInterval(unlockTime) < Date()
         }
         return true
     }

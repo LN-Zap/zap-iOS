@@ -31,7 +31,7 @@ public extension ContainerViewController where Self: UIViewController {
         viewController.view.frame = container.bounds
         container.addSubview(viewController.view)
         viewController.didMove(toParentViewController: self)
-        self.currentViewController = viewController
+        currentViewController = viewController
     }
     
     private func switchToViewController(_ viewController: UIViewController, completion: (() -> Void)? = nil) {
@@ -54,6 +54,7 @@ public extension ContainerViewController where Self: UIViewController {
                     currentViewController.view.alpha = 0
             }, completion: { [weak self] _ in
                 guard let strongSelf = self else { return }
+                strongSelf.currentViewController?.view.removeFromSuperview()
                 strongSelf.currentViewController?.removeFromParentViewController()
                 viewController.didMove(toParentViewController: self)
                 strongSelf.currentViewController = viewController

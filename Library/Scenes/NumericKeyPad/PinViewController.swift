@@ -44,7 +44,9 @@ final class PinViewController: UIViewController {
         keyPadView.textColor = .white
         keyPadView.state = .authenticate
         
-        keyPadView.customPointButtonAction = startBiometricAuthentication
+        keyPadView.customPointButtonAction = { [weak self] in
+            self?.startBiometricAuthentication()
+        }
         
         keyPadView.handler = { [weak self] number in
             self?.updatePinView(for: number)
