@@ -18,12 +18,6 @@ final class RootViewController: UIViewController, ContainerViewController {
         return .lightContent
     }
     
-    override func viewDidAppear(_ animated: Bool) {
-        super.viewDidAppear(animated)
-        
-        DebugButton.instance.setup()
-    }
-    
     func addBlurEffect() {
         let blurEffect = UIBlurEffect(style: .regular)
         let blurEffectView = UIVisualEffectView(effect: blurEffect)
