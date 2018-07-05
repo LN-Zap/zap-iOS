@@ -7,19 +7,8 @@
 
 import UIKit
 
-final class ModalViewController: UIViewController {
-    private let modalPresentationManager = ModalPresentationManager()
-
-    required init?(coder aDecoder: NSCoder) {
-        super.init(coder: aDecoder)
-        
-        modalPresentationStyle = .custom
-        transitioningDelegate = modalPresentationManager
-    }
-}
-
 final class ModalNavigationController: UINavigationController {
-    private let modalPresentationManager = ModalPresentationManager()
+    private var modalPresentationManager: ModalPresentationManager?
     
     override init(nibName nibNameOrNil: String?, bundle nibBundleOrNil: Bundle?) {
         super.init(nibName: nibNameOrNil, bundle: nibBundleOrNil)
@@ -31,13 +20,21 @@ final class ModalNavigationController: UINavigationController {
         setup()
     }
     
-    override init(rootViewController: UIViewController) {
+    init(rootViewController: UIViewController, size: CGSize? = nil) {
         super.init(rootViewController: rootViewController)
-        setup()
+        setup(size: size)
     }
     
-    private func setup() {
-        modalPresentationStyle = .custom
+    private func setup(size: CGSize? = nil) {
+        modalPresentationManager = ModalPresentationManager(size: size)
         transitioningDelegate = modalPresentationManager
+        modalPresentationStyle = .custom
+    }
+    
+    override func viewDidDisappear(_ animated: Bool) {
+        modalPresentationManager = nil
+        transitioningDelegate = nil
+        
+        super.viewDidDisappear(true)
     }
 }

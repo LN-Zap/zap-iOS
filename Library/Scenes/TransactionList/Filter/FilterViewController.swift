@@ -12,7 +12,8 @@ extension UIStoryboard {
         let viewController = Storyboard.transactionList.instantiate(viewController: FilterViewController.self)
         viewController.transactionListViewModel = transactionListViewModel
         
-        return ModalNavigationController(rootViewController: viewController)
+        let size = CGSize(width: UIScreen.main.bounds.width, height: 365)
+        return ModalNavigationController(rootViewController: viewController, size: size)
     }
 }
 
