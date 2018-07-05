@@ -91,6 +91,7 @@
 "scene.send.lightning.title" = "Send";
 "scene.send.lightning.error.expired" = "Payment Request expired:\n%@";
 "scene.send.lightning.error.duplicate" = "Payment already paid.";
+"scene.send.lightning.memo" = "Memo: %@";
 
 "scene.connect_remote_node.title" = "Connect Remote Node";
 "scene.connect_remote_node.url_label" = "address:";

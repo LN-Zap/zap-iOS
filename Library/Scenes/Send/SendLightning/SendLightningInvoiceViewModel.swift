@@ -54,7 +54,7 @@ final class SendLightningInvoiceViewModel {
         self.paymentRequest = paymentRequest
         
         if let memo = paymentRequest.memo {
-            self.memo.value = "Memo: " + memo // TODO: localize
+            self.memo.value = String(format: "scene.send.lightning.memo".localized, memo)
         }
         satoshis.value = paymentRequest.amount
         destination.value = paymentRequest.destination
