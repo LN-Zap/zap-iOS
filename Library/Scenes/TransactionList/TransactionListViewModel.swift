@@ -42,7 +42,9 @@ final class TransactionListViewModel: NSObject {
         super.init()
         
         combineLatest(transactionService.transactions, searchString, filterSettings)
-            .observeNext(with: updateSections)
+            .observeNext { [weak self] in
+                self?.updateSections(for: $0, searchString: $1, filterSettings: $2)
+            }
             .dispose(in: reactive.bag)
     }
     

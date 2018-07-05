@@ -64,7 +64,10 @@ final class DetailViewController: UIViewController, KeyboardAdjustable {
         tableView.separatorStyle = .none
         
         detailViewModel?.detailCells
-            .bind(to: tableView, createCell: createCell)
+            .bind(to: tableView, createCell: { [weak self] in
+                guard let strongSelf = self else { fatalError() }
+                return strongSelf.createCell(data: $0, indexPath: $1, tableView: $2)
+            })
             .dispose(in: reactive.bag)
         
         setupKeyboardNotifications(constraint: tableViewBottomConstraint)

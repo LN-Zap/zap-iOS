@@ -27,7 +27,9 @@ final class ChannelListViewModel: NSObject {
         
         combineLatest(channelService.open, channelService.pending, searchString)
             .observeOn(DispatchQueue.main)
-            .observeNext(with: updateChannels)
+            .observeNext { [weak self] in
+                self?.updateChannels(open: $0, pending: $1, searchString: $2)
+            }
             .dispose(in: reactive.bag)
     }
     

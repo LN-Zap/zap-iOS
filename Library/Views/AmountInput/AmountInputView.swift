@@ -109,7 +109,9 @@ public final class AmountInputView: UIControl {
     }
     
     private func setupKeyPad() {
-        keyPadView.handler = updateKeyPadString
+        keyPadView.handler = { [weak self] in
+            self?.updateKeyPadString(input: $0) ?? false
+        }
     }
     
     private func updateKeyPadString(input: String) -> Bool {

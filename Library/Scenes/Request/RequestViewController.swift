@@ -95,9 +95,9 @@ final class RequestViewController: UIViewController, KeyboardAdjustable {
     }
     
     @IBAction private func createButtonTapped(_ sender: Any) {
-        requestViewModel?.create { [weak self] in
-            let viewController = UIStoryboard.instantiateQRCodeDetailViewController(with: $0)
+        requestViewModel?.create { [weak self] qrCodeDetailViewModel in
             DispatchQueue.main.async {
+                let viewController = UIStoryboard.instantiateQRCodeDetailViewController(with: qrCodeDetailViewModel)
                 self?.navigationController?.pushViewController(viewController, animated: true)
             }
         }

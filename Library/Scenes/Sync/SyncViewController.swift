@@ -66,7 +66,9 @@ final class SyncViewController: UIViewController {
         percentSignal
             .map { CGFloat($0) * UIScreen.main.bounds.height }
             .observeOn(DispatchQueue.main)
-            .observeNext(with: updateGradientView)
+            .observeNext { [weak self] in
+                self?.updateGradientView(for: $0)
+            }
             .dispose(in: reactive.bag)
         
         lightningService.infoService.bestHeaderDate

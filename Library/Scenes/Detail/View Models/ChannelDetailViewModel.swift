@@ -70,7 +70,9 @@ final class ChannelDetailViewModel: DetailViewModel {
         
         if !channel.state.isClosing {
             let closeTitle = channel.state == .active ? "scene.channel_detail.close_button".localized : "scene.channel_detail.force_close_button".localized
-            detailCells.append(.destructiveAction(DetailDestructiveActionTableViewCell.Info(title: closeTitle, type: .closeChannel(channel, channel.remotePubKey), action: closeChannel)))
+            detailCells.append(.destructiveAction(DetailDestructiveActionTableViewCell.Info(title: closeTitle, type: .closeChannel(channel, channel.remotePubKey), action: { [weak self] in
+                self?.closeChannel()
+            })))
         }
     }
     

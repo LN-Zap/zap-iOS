@@ -61,10 +61,10 @@ final class SendLightningInvoiceViewController: UIViewController, QRCodeScannerC
                 }
             })
             .observeOn(DispatchQueue.main)
-            .observeNext(with: { [weak self] in
+            .observeNext { [weak self] in
                 self?.expiredView.isHidden = $0
                 self?.gradientButtonView.isHidden = !$0
-            }),
+            },
          sendViewModel?.invoiceError
             .map({ (error: SendLightningInvoiceError) -> String? in
                 switch error {
