@@ -9,7 +9,7 @@ import Lightning
 import SafariServices
 import UIKit
 
-final class MainCoordinator {
+final class MainCoordinator: Routing {
     private let rootViewController: RootViewController
     
     private let lightningService: LightningService
@@ -41,6 +41,20 @@ final class MainCoordinator {
         self.presentTransactions()
     }
     
+    public func handle(_ route: Route) {
+        switch route {
+        case .send(let invoice):
+            if let invoice = invoice,
+                let error = SendViewModel(lightningService: lightningService).paymentURI(for: invoice).error as? PaymentURIError {
+                rootViewController.presentErrorToast(error.localized)
+            } else {
+                presentSend(invoice: invoice)
+            }
+        case .request:
+            presentRequest()
+        }
+    }
+
     private func presentSettings() {
         guard let settingsDelegate = settingsDelegate else { return }
         let viewController = UIStoryboard.instantiateSettingsContainerViewController(lightningService: lightningService, settingsDelegate: settingsDelegate)

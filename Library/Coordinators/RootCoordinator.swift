@@ -8,7 +8,7 @@
 import Lightning
 import UIKit
 
-public final class RootCoordinator: NSObject, SetupCoordinatorDelegate, PinCoordinatorDelegate, SettingsDelegate {
+public final class RootCoordinator: NSObject, SetupCoordinatorDelegate, PinCoordinatorDelegate, SettingsDelegate, Routing {
     
     private let rootViewController: RootViewController
     private let rootViewModel: RootViewModel
@@ -52,22 +52,12 @@ public final class RootCoordinator: NSObject, SetupCoordinatorDelegate, PinCoord
         }.dispose(in: reactive.bag)
     }
     
-    public func handle(_ route: Route?) {
+    public func handle(_ route: Route) {
         self.route = route
         
-        if let route = route {
-            switch route {
-            case .send(let invoice):
-                if let mainCoordinator = currentCoordinator as? MainCoordinator {
-                    mainCoordinator.presentSend(invoice: invoice)
-                    self.route = nil
-                }
-            case .request:
-                if let mainCoordinator = currentCoordinator as? MainCoordinator {
-                    mainCoordinator.presentRequest()
-                    self.route = nil
-                }
-            }
+        if let mainCoordinator = currentCoordinator as? MainCoordinator {
+            mainCoordinator.handle(route)
+            self.route = nil
         }
     }
     

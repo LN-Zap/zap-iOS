@@ -8,6 +8,10 @@
 import BTCUtil
 import Foundation
 
+protocol Routing {
+    func handle(_ route: Route)
+}
+
 // Parses deep links to routes in the app.
 public enum Route {
     case send(String?)

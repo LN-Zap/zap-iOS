@@ -7,7 +7,7 @@
 
 import Foundation
 
-public struct LightningURI {
+public struct LightningURI: PaymentURI {
     public let address: String
     public let network: Network
     public let stringValue: String

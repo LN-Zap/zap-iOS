@@ -231,6 +231,8 @@
 		AD97A91120EFCF6D008344EA /* Currency.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0C2EAC1206F8D37003AE56E /* Currency.swift */; };
 		AD97A91220EFCF79008344EA /* FiatCurrency.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0A96B9620179CA700788808 /* FiatCurrency.swift */; };
 		AD97A91420EFCFC3008344EA /* Bitcoin+Localizable.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD97A91320EFCFC3008344EA /* Bitcoin+Localizable.swift */; };
+		AD97A91620EFEB94008344EA /* SendViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD97A91520EFEB94008344EA /* SendViewModel.swift */; };
+		AD97A91820EFEEB8008344EA /* PaymentURI.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD97A91720EFEEB8008344EA /* PaymentURI.swift */; };
 		AD9C4C8020C3D3AA009636E1 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = AD9C4C7F20C3D3AA009636E1 /* InfoPlist.strings */; };
 		ADA865BC20ECB87B00B1B74B /* FilterSettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADA865BB20ECB87B00B1B74B /* FilterSettings.swift */; };
 		ADA865BE20ECB88500B1B74B /* FilterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADA865BD20ECB88500B1B74B /* FilterViewController.swift */; };
@@ -648,6 +650,8 @@
 		AD97A90B20EFC127008344EA /* LightningURI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LightningURI.swift; sourceTree = "<group>"; };
 		AD97A90E20EFC1E6008344EA /* LightningNodeURI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LightningNodeURI.swift; sourceTree = "<group>"; };
 		AD97A91320EFCFC3008344EA /* Bitcoin+Localizable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Bitcoin+Localizable.swift"; sourceTree = "<group>"; };
+		AD97A91520EFEB94008344EA /* SendViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SendViewModel.swift; sourceTree = "<group>"; };
+		AD97A91720EFEEB8008344EA /* PaymentURI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaymentURI.swift; sourceTree = "<group>"; };
 		AD98EB2320C6DFDE00B807D6 /* DetailViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewModel.swift; sourceTree = "<group>"; };
 		AD99C9EC209072710061C565 /* QRCodeScanner.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = QRCodeScanner.storyboard; sourceTree = "<group>"; };
 		AD99C9EE209076650061C565 /* QRCodeScannerStrategy.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QRCodeScannerStrategy.swift; sourceTree = "<group>"; };
@@ -1004,10 +1008,11 @@
 		A03F035E2028C71400F32279 /* Send */ = {
 			isa = PBXGroup;
 			children = (
-				A070D960202A3CA6000A8274 /* SendOnChain */,
 				AD77465A2076827100EC596B /* SendLightning */,
+				A070D960202A3CA6000A8274 /* SendOnChain */,
 				A024B85620161586002B8897 /* Send.storyboard */,
 				AD99C9F220907AD10061C565 /* SendQRCodeScannerStrategy.swift */,
+				AD97A91520EFEB94008344EA /* SendViewModel.swift */,
 			);
 			path = Send;
 			sourceTree = "<group>";
@@ -1481,8 +1486,9 @@
 			isa = PBXGroup;
 			children = (
 				AD5FA002207D0D02000E9493 /* BitcoinURI.swift */,
-				AD97A90B20EFC127008344EA /* LightningURI.swift */,
 				AD97A90E20EFC1E6008344EA /* LightningNodeURI.swift */,
+				AD97A90B20EFC127008344EA /* LightningURI.swift */,
+				AD97A91720EFEEB8008344EA /* PaymentURI.swift */,
 			);
 			path = URIs;
 			sourceTree = "<group>";
@@ -2213,6 +2219,7 @@
 				A000F60A2047F66300480D8E /* String.swift in Sources */,
 				AD774651207616B100EC596B /* Network.swift in Sources */,
 				A0F9AEDD206E155500E93DCA /* Satoshi.swift in Sources */,
+				AD97A91820EFEEB8008344EA /* PaymentURI.swift in Sources */,
 				A0FBCD91206BBBDF00800515 /* BitcoinUnit.swift in Sources */,
 				A000F60B2047F66300480D8E /* BitcoinAddress.swift in Sources */,
 				AD97A91220EFCF79008344EA /* FiatCurrency.swift in Sources */,
@@ -2279,6 +2286,7 @@
 				AD391C6F20D16F89007EE22A /* OpenChannelViewController.swift in Sources */,
 				AD391C9B20D16FA8007EE22A /* QRCodeScannerViewController.swift in Sources */,
 				AD391CB520D16FA8007EE22A /* Settings.swift in Sources */,
+				AD97A91620EFEB94008344EA /* SendViewModel.swift in Sources */,
 				AD391CAB20D16FA8007EE22A /* CurrencySettingsItem.swift in Sources */,
 				AD391CCB20D16FE1007EE22A /* DetailTransactionHashTableViewCell.swift in Sources */,
 				AD391C4420D16F0B007EE22A /* Style.swift in Sources */,

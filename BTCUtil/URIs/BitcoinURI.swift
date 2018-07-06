@@ -13,7 +13,7 @@ private extension URLComponents {
     }
 }
 
-public struct BitcoinURI {
+public struct BitcoinURI: PaymentURI {
     public let address: String
     public let amount: Satoshi?
     public let memo: String?
