@@ -13,7 +13,7 @@ private extension URLComponents {
     }
 }
 
-public struct BitcoinURI: PaymentURI {
+public struct BitcoinURI {
     public let address: String
     public let amount: Satoshi?
     public let memo: String?
@@ -40,8 +40,11 @@ public struct BitcoinURI: PaymentURI {
         guard let components = URLComponents(string: string) else { return nil }
 
         let amount: Satoshi?
-        if let amountString = components.queryItem(name: "amount") {
-            amount = Satoshi.from(string: amountString, unit: .bitcoin)
+        if var amountString = components.queryItem(name: "amount") {
+            if let decimalSeparator = Locale.current.decimalSeparator, decimalSeparator != "." {
+                amountString = amountString.replacingOccurrences(of: ".", with: decimalSeparator)
+            }
+            amount = Bitcoin(unit: .bitcoin).satoshis(from: amountString)
         } else {
             amount = nil
         }
@@ -51,7 +54,7 @@ public struct BitcoinURI: PaymentURI {
         self.init(address: components.path, amount: amount, memo: memo)
     }
     
-    public init?(address: String, amount: Satoshi? = nil, memo: String? = nil) {
+    public init?(address: String, amount: Satoshi?, memo: String?) {
         if let (humanReadablePart, _) = Bech32.decode(address) {
             if humanReadablePart.lowercased() == "tb" {
                 network = .testnet

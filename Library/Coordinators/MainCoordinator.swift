@@ -67,7 +67,7 @@ final class MainCoordinator {
         mainViewController?.present(viewController, animated: true) {
             if let invoice = invoice,
                 let qrCodeScannerViewController = viewController.topViewController as? QRCodeScannerViewController {
-                qrCodeScannerViewController.displayViewControllerForAddress(type: .lightningInvoice, address: invoice)
+                _ = qrCodeScannerViewController.checkAddress(invoice)
             }
         }
     }

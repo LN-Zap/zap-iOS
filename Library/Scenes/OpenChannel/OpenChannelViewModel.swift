@@ -12,22 +12,16 @@ import Lightning
 
 final class OpenChannelViewModel {
     private let lightningService: LightningService
-    private let pubKey: String
-    private let host: String
+    private let lightningNodeURI: LightningNodeURI
     
     var amount: Satoshi = 0
     
-    init?(lightningService: LightningService, address: String) {
+    init(lightningService: LightningService, lightningNodeURI: LightningNodeURI) {
         self.lightningService = lightningService
-        
-        let addressComponents = address.split { ["@", " "].contains(String($0)) }
-        guard addressComponents.count == 2 else { return nil }
-        
-        pubKey = String(addressComponents[0])
-        host = String(addressComponents[1])        
+        self.lightningNodeURI = lightningNodeURI
     }
     
     func openChannel(callback: @escaping (Result<ChannelPoint>) -> Void) {
-        lightningService.channelService.open(pubKey: pubKey, host: host, amount: amount, callback: callback)
+        lightningService.channelService.open(pubKey: lightningNodeURI.pubKey, host: lightningNodeURI.host, amount: amount, callback: callback)
     }
 }

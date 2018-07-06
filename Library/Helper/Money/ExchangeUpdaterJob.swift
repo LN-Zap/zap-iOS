@@ -5,6 +5,7 @@
 //  Copyright © 2018 Otto Suess. All rights reserved.
 //
 
+import BTCUtil
 import Foundation
 
 final class ExchangeUpdaterJob {

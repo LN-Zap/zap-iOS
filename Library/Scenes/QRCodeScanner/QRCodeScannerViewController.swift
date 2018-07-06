@@ -46,10 +46,9 @@ final class QRCodeScannerViewController: UIViewController, ContainerViewControll
     @IBOutlet private weak var pasteButton: UIButton!
     @IBOutlet private weak var scannerView: QRCodeScannerView! {
         didSet {
-            scannerView.addressTypes = strategy?.addressTypes
             scannerView.lightningService = lightningService
-            scannerView.handler = { [weak self] type, address in
-                self?.displayViewControllerForAddress(type: type, address: address)
+            scannerView.handler = { [weak self] address in
+                return self?.checkAddress(address) ?? false
             }
         }
     }
@@ -57,7 +56,6 @@ final class QRCodeScannerViewController: UIViewController, ContainerViewControll
 
     fileprivate var strategy: QRCodeScannerStrategy? {
         didSet {
-            scannerView?.addressTypes = strategy?.addressTypes
             title = strategy?.title
         }
     }
@@ -86,11 +84,11 @@ final class QRCodeScannerViewController: UIViewController, ContainerViewControll
         qrCodeSuccessImageView.tintColor = UIColor.zap.nastyGreen
     }
     
-    func displayViewControllerForAddress(type: AddressType, address: String) {
+    func checkAddress(_ address: String) -> Bool { // TODO: rename. this does not just check
         guard
             let lightningService = lightningService,
-            let viewController = strategy?.viewControllerForAddressType(type, address: address, lightningService: lightningService)
-            else { return }
+            let viewController = strategy?.viewControllerForAddress(address: address, lightningService: lightningService)
+            else { return false }
         
         setContainerContent(viewController)
         
@@ -109,19 +107,13 @@ final class QRCodeScannerViewController: UIViewController, ContainerViewControll
             self.paymentTopConstraint.isActive = false
             self.view.layoutIfNeeded()
         }
+        
+        return true
     }
     
     @IBAction private func pasteButtonTapped(_ sender: Any) {
-        guard
-            let string = UIPasteboard.general.string,
-            let strategy = strategy,
-            let network = lightningService?.infoService.network.value
-            else { return }
-        
-        for addressType in strategy.addressTypes where addressType.isValidAddress(string, network: network) {
-            displayViewControllerForAddress(type: addressType, address: string)
-            break
-        }
+        guard let string = UIPasteboard.general.string else { return }
+        _ = checkAddress(string)
     }
     
     @IBAction private func cancelButtonTapped(_ sender: Any) {

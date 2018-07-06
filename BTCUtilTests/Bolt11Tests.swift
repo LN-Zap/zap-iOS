@@ -23,7 +23,8 @@ final class Bolt11Tests: XCTestCase {
         ]
         
         for (payment, network) in validPayments {
-            XCTAssertTrue(Bolt11.isValid(payment, network: network))
+            let lightningURI = LightningURI(string: payment)
+            XCTAssertEqual(lightningURI?.network, network)
         }
     }
     
@@ -36,7 +37,8 @@ final class Bolt11Tests: XCTestCase {
         ]
         
         for (payment, network) in validPayments {
-            XCTAssertFalse(Bolt11.isValid(payment, network: network))
+            let lightningURI = LightningURI(string: payment)
+            XCTAssertNotEqual(lightningURI?.network, network)
         }
     }
 

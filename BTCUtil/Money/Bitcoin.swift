@@ -5,17 +5,16 @@
 //  Copyright © 2018 Otto Suess. All rights reserved.
 //
 
-import BTCUtil
 import Foundation
 
-struct Bitcoin: Currency, Equatable, Codable {
-    let unit: BitcoinUnit
+public struct Bitcoin: Currency, Equatable, Codable {
+    public let unit: BitcoinUnit
     
-    init(unit: BitcoinUnit) {
+    public init(unit: BitcoinUnit) {
         self.unit = unit
     }
     
-    var symbol: String {
+    public var symbol: String {
         switch unit {
         case .bitcoin:
             return "Ƀ"
@@ -28,27 +27,23 @@ struct Bitcoin: Currency, Equatable, Codable {
         }
     }
     
-    var localized: String {
-        return unit.localized
-    }
-    
-    func format(value: NSDecimalNumber) -> String? {
+    public func format(value: NSDecimalNumber) -> String? {
         fatalError("not implemented")
     }
     
-    func format(satoshis: Satoshi) -> String? {
+    public func format(satoshis: Satoshi) -> String? {
         return satoshis.format(unit: unit) + symbol
     }
     
-    func satoshis(from string: String) -> Satoshi? {
+    public func satoshis(from string: String) -> Satoshi? {
         return Satoshi.from(string: string, unit: unit)
     }
     
-    func value(satoshis: Satoshi) -> NSDecimalNumber? {
+    public func value(satoshis: Satoshi) -> NSDecimalNumber? {
         return satoshis.multiplying(byPowerOf10: Int16(-unit.exponent))
     }
     
-    func stringValue(satoshis: Satoshi) -> String? {
+    public func stringValue(satoshis: Satoshi) -> String? {
         guard let value = self.value(satoshis: satoshis) else { return nil }
         
         let numberFormatter = unit.numberFormatter

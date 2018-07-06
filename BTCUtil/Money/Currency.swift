@@ -5,10 +5,9 @@
 //  Copyright © 2018 Otto Suess. All rights reserved.
 //
 
-import BTCUtil
 import Foundation
 
-public protocol Currency: Localizable {
+public protocol Currency {
     var symbol: String { get }
     
     // format the native value. (1000.53 -> "$1,000.53")
