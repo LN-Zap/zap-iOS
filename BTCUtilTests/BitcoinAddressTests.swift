@@ -10,22 +10,23 @@ import XCTest
 
 final class AddressTests: XCTestCase {
     func testAddressTypes() {
-        let tests: [(String, BitcoinAddress.AddressType)] = [
-            ("17VZNX1SN5NtKa8UQFxwQbFeFc3iqRYhem", .pubkeyHash),
-            ("3EktnHQD7RiAE6uzMj2ZifT9YgRrkSgzQX", .scriptHash),
-            ("5Hwgr3u458GLafKBgxtssHSPqJnYoGrSzgQsPwLFhLNYskDPyyA", .privateKey),
-            ("mipcBbFg9gMiCh81Kj8tqqdgoZub1ZJRfn", .testnetPubkeyHash),
-            ("2MzQwSSnBHWHqSAqtTVQ6v47XtaisrJa1Vc", .testnetScriptHash),
-            ("92Pg46rUhgTT7romnV7iGW6W1gbGdeezqdbJCzShkCsYNzyyNcc", .testnetPrivateKey),
-            ("1AGNa15ZQXAZUgFiqJ2i7Z2DPU2J6hW62i", .pubkeyHash),
-            ("1111111111111111111114oLvT2", .pubkeyHash),
-            ("17NdbrSGoUotzeGCcMMCqnFkEvLymoou9j", .pubkeyHash),
-            ("1Q1pE5vPGEEMqRcVRMbtBK842Y6Pzo6nK9", .pubkeyHash)
+        let tests: [(String, BitcoinAddress.AddressType, Network)] = [
+            ("17VZNX1SN5NtKa8UQFxwQbFeFc3iqRYhem", .pubkeyHash, .mainnet),
+            ("3EktnHQD7RiAE6uzMj2ZifT9YgRrkSgzQX", .scriptHash, .mainnet),
+            ("5Hwgr3u458GLafKBgxtssHSPqJnYoGrSzgQsPwLFhLNYskDPyyA", .privateKey, .mainnet),
+            ("mipcBbFg9gMiCh81Kj8tqqdgoZub1ZJRfn", .pubkeyHash, .testnet),
+            ("2MzQwSSnBHWHqSAqtTVQ6v47XtaisrJa1Vc", .scriptHash, .testnet),
+            ("92Pg46rUhgTT7romnV7iGW6W1gbGdeezqdbJCzShkCsYNzyyNcc", .privateKey, .testnet),
+            ("1AGNa15ZQXAZUgFiqJ2i7Z2DPU2J6hW62i", .pubkeyHash, .mainnet),
+            ("1111111111111111111114oLvT2", .pubkeyHash, .mainnet),
+            ("17NdbrSGoUotzeGCcMMCqnFkEvLymoou9j", .pubkeyHash, .mainnet),
+            ("1Q1pE5vPGEEMqRcVRMbtBK842Y6Pzo6nK9", .pubkeyHash, .mainnet)
         ]
         
-        for (input, type) in tests {
+        for (input, type, network) in tests {
             let address = BitcoinAddress(string: input)
             XCTAssertEqual(address?.type, type)
+            XCTAssertEqual(address?.network, network)
         }
     }
     

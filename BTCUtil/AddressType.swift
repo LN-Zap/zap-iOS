@@ -52,14 +52,10 @@ public enum AddressType {
             string = String(string.dropFirst(prefix.count))
         }
         
-        if let address = BitcoinAddress(string: string) {
-            switch (address.type, network) {
-            case (.pubkeyHash, .mainnet), (.scriptHash, .mainnet),
-                 (.testnetPubkeyHash, .testnet), (.testnetScriptHash, .testnet):
-                return true
-            default:
-                return false
-            }
+        if let address = BitcoinAddress(string: string),
+            address.network == network,
+            address.type == .pubkeyHash || address.type == .scriptHash {
+            return true
         } else if let (humanReadablePart, _) = Bech32.decode(string) {
             switch network {
             case .testnet:

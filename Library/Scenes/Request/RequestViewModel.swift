@@ -76,7 +76,7 @@ public final class RequestViewModel {
     }
     
     private func onChainRequestViewModel(for address: String) -> OnChainRequestQRCodeViewModel? {
-        guard let uri = BitcoinURI.from(address: address, amount: amount, message: trimmedMemo) else { return nil }
-        return OnChainRequestQRCodeViewModel(address: uri)
+        guard let uri = BitcoinURI(address: address, amount: amount, memo: trimmedMemo) else { return nil }
+        return OnChainRequestQRCodeViewModel(address: uri.stringValue)
     }
 }

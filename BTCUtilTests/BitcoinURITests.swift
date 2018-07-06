@@ -9,10 +9,26 @@
 import XCTest
 
 final class BitcoinURITests: XCTestCase {
+    // swiftlint:disable:next large_tuple
+    let tests: [(String, String, Satoshi?, String?)] = [
+        ("bitcoin:mioi9QugUZFSsSm61Gx4u43s6jYkes2L9p", "mioi9QugUZFSsSm61Gx4u43s6jYkes2L9p", nil, nil),
+        ("bitcoin:mioi9QugUZFSsSm61Gx4u43s6jYkes2L9p?message=Luke-Jr", "mioi9QugUZFSsSm61Gx4u43s6jYkes2L9p", nil, "Luke-Jr"),
+        ("bitcoin:mioi9QugUZFSsSm61Gx4u43s6jYkes2L9p?amount=20.3&message=Luke-Jr", "mioi9QugUZFSsSm61Gx4u43s6jYkes2L9p", 2030000000, "Luke-Jr"),
+        ("bitcoin:mioi9QugUZFSsSm61Gx4u43s6jYkes2L9p?amount=50&message=Donation%20for%20project%20xyz", "mioi9QugUZFSsSm61Gx4u43s6jYkes2L9p", 5000000000, "Donation for project xyz")
+    ]
+
     func testBitcoinURI() {
-        XCTAssertEqual(BitcoinURI.from(address: "175tWpb8K1S7NmH4Zx6rewF9WQrcZv245W"), "bitcoin:175tWpb8K1S7NmH4Zx6rewF9WQrcZv245W")
-        XCTAssertEqual(BitcoinURI.from(address: "175tWpb8K1S7NmH4Zx6rewF9WQrcZv245W", message: "Luke-Jr"), "bitcoin:175tWpb8K1S7NmH4Zx6rewF9WQrcZv245W?message=Luke-Jr")
-        XCTAssertEqual(BitcoinURI.from(address: "175tWpb8K1S7NmH4Zx6rewF9WQrcZv245W", amount: 2030000000, message: "Luke-Jr"), "bitcoin:175tWpb8K1S7NmH4Zx6rewF9WQrcZv245W?amount=20.3&message=Luke-Jr")
-        XCTAssertEqual(BitcoinURI.from(address: "175tWpb8K1S7NmH4Zx6rewF9WQrcZv245W", amount: 5000000000, message: "Donation for project xyz"), "bitcoin:175tWpb8K1S7NmH4Zx6rewF9WQrcZv245W?amount=50&message=Donation%20for%20project%20xyz")
+        for (uriString, address, amount, memo) in tests {
+            XCTAssertEqual(BitcoinURI(address: address, amount: amount, memo: memo)?.stringValue, uriString)
+        }
+    }
+    
+    func testInitWithString() {
+        for (uriString, address, amount, memo) in tests {
+            let uri = BitcoinURI(string: uriString)
+            XCTAssertEqual(uri?.address, address)
+            XCTAssertEqual(uri?.amount, amount)
+            XCTAssertEqual(uri?.memo, memo)
+        }
     }
 }

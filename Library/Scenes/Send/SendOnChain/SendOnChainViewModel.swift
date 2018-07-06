@@ -11,20 +11,28 @@ import Foundation
 import Lightning
 
 final class SendOnChainViewModel {
+    private let minimumOnChainTransaction: Satoshi = 547
+    
     private let lightningService: LightningService
-    let address: String
+    let bitcoinURI: BitcoinURI
     let validRange: ClosedRange<Satoshi>
     
-    var amount: Satoshi = 0
+    let isSendButtonEnabled = Observable(false)
     
-    init(lightningService: LightningService, address: String) {
+    var amount: Satoshi = 0 {
+        didSet {
+            isSendButtonEnabled.value = validRange.contains(amount)
+        }
+    }
+    
+    init(lightningService: LightningService, bitcoinURI: BitcoinURI) {
         self.lightningService = lightningService
-        self.address = address
+        self.bitcoinURI = bitcoinURI
         
-        validRange = (0...lightningService.balanceService.onChain.value)
+        validRange = (minimumOnChainTransaction...lightningService.balanceService.onChain.value)
     }
 
     func send(callback: @escaping (Result<String>) -> Void) {
-        lightningService.transactionService.sendCoins(address: address, amount: amount, callback: callback)
+        lightningService.transactionService.sendCoins(address: bitcoinURI.address, amount: amount, callback: callback)
     }
 }

@@ -32,8 +32,17 @@ final class SendOnChainViewController: UIViewController, QRCodeScannerChildViewC
         
         Style.label.apply(to: addressLabel)
         gradientLoadingButtonView.title = "scene.send.send_button".localized
-        addressLabel.text = sendOnChainViewModel?.address
+        addressLabel.text = sendOnChainViewModel?.bitcoinURI.address
+        
+        if let amount = sendOnChainViewModel?.bitcoinURI.amount {
+            amountInputView.satoshis = amount
+        }
+        
         amountInputView.validRange = sendOnChainViewModel?.validRange
+        
+        sendOnChainViewModel?.isSendButtonEnabled
+            .bind(to: gradientLoadingButtonView.reactive.isEnabled)
+            .dispose(in: reactive.bag)
     }
     
     @IBAction private func updateAmount(_ sender: Any) {
@@ -48,6 +57,7 @@ final class SendOnChainViewController: UIViewController, QRCodeScannerChildViewC
         sendOnChainViewModel?.send { [weak self] result in
             if let error = result.error {
                 self?.delegate?.presentError(message: error.localizedDescription)
+                self?.gradientLoadingButtonView.isLoading = false
             } else {
                 self?.delegate?.dismissSuccessfully()
             }

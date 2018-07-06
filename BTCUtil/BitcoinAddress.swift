@@ -8,7 +8,7 @@
 import Foundation
 
 struct BitcoinAddress {
-    enum AddressType: Int {
+    private enum AddressTypeVersion: Int {
         case pubkeyHash = 0
         case scriptHash = 5
         case privateKey = 128
@@ -17,16 +17,43 @@ struct BitcoinAddress {
         case testnetPrivateKey = 239
     }
     
-    let type: AddressType
+    enum AddressType {
+        case pubkeyHash
+        case scriptHash
+        case privateKey
+    }
+    
     let string: String
+    let network: Network
+    let type: AddressType
     
     init?(string: String) {
         guard
             let (version, _) = Base58Check.checkDecode(string),
-            let type = AddressType(rawValue: version)
+            let typeVersion = AddressTypeVersion(rawValue: version)
             else { return nil }
         
         self.string = string
-        self.type = type
+        
+        switch typeVersion {
+        case .pubkeyHash:
+            type = .pubkeyHash
+            network = .mainnet
+        case .scriptHash:
+            type = .scriptHash
+            network = .mainnet
+        case .privateKey:
+            type = .privateKey
+            network = .mainnet
+        case .testnetPubkeyHash:
+            type = .pubkeyHash
+            network = .testnet
+        case .testnetScriptHash:
+            type = .scriptHash
+            network = .testnet
+        case .testnetPrivateKey:
+            type = .privateKey
+            network = .testnet
+        }
     }
 }
