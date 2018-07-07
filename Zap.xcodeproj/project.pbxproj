@@ -233,6 +233,7 @@
 		AD97A91420EFCFC3008344EA /* Bitcoin+Localizable.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD97A91320EFCFC3008344EA /* Bitcoin+Localizable.swift */; };
 		AD97A91620EFEB94008344EA /* SendViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD97A91520EFEB94008344EA /* SendViewModel.swift */; };
 		AD97A91820EFEEB8008344EA /* PaymentURI.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD97A91720EFEEB8008344EA /* PaymentURI.swift */; };
+		AD97A91A20F09699008344EA /* ReportIssueSettingsItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD97A91920F09699008344EA /* ReportIssueSettingsItem.swift */; };
 		AD9C4C8020C3D3AA009636E1 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = AD9C4C7F20C3D3AA009636E1 /* InfoPlist.strings */; };
 		ADA865BC20ECB87B00B1B74B /* FilterSettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADA865BB20ECB87B00B1B74B /* FilterSettings.swift */; };
 		ADA865BE20ECB88500B1B74B /* FilterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADA865BD20ECB88500B1B74B /* FilterViewController.swift */; };
@@ -652,6 +653,7 @@
 		AD97A91320EFCFC3008344EA /* Bitcoin+Localizable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Bitcoin+Localizable.swift"; sourceTree = "<group>"; };
 		AD97A91520EFEB94008344EA /* SendViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SendViewModel.swift; sourceTree = "<group>"; };
 		AD97A91720EFEEB8008344EA /* PaymentURI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaymentURI.swift; sourceTree = "<group>"; };
+		AD97A91920F09699008344EA /* ReportIssueSettingsItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReportIssueSettingsItem.swift; sourceTree = "<group>"; };
 		AD98EB2320C6DFDE00B807D6 /* DetailViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewModel.swift; sourceTree = "<group>"; };
 		AD99C9EC209072710061C565 /* QRCodeScanner.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = QRCodeScanner.storyboard; sourceTree = "<group>"; };
 		AD99C9EE209076650061C565 /* QRCodeScannerStrategy.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QRCodeScannerStrategy.swift; sourceTree = "<group>"; };
@@ -1041,9 +1043,10 @@
 				A091914C203B3BAC00FA525A /* BitcoinUnitSettingsItem.swift */,
 				A091914A203B297D00FA525A /* CurrencySettingsItem.swift */,
 				AD6FFCA520AB0A3700B57330 /* OnChainRequestAddressTypeSettingsItem.swift */,
-				A0DDC06B2018C07100AEFF94 /* SettingsItem.swift */,
-				ADCD5B0C20D7E3F50037F156 /* RemoveRemoteNodeSettingsItem.swift */,
 				ADCD5B0E20D7E40C0037F156 /* RemovePinSettingsItem.swift */,
+				ADCD5B0C20D7E3F50037F156 /* RemoveRemoteNodeSettingsItem.swift */,
+				AD97A91920F09699008344EA /* ReportIssueSettingsItem.swift */,
+				A0DDC06B2018C07100AEFF94 /* SettingsItem.swift */,
 			);
 			path = Items;
 			sourceTree = "<group>";
@@ -2374,6 +2377,7 @@
 				AD391CBC20D16FE1007EE22A /* DetailCellType.swift in Sources */,
 				AD391D0C20D16FF5007EE22A /* PinView.swift in Sources */,
 				ADCD5B0D20D7E3F50037F156 /* RemoveRemoteNodeSettingsItem.swift in Sources */,
+				AD97A91A20F09699008344EA /* ReportIssueSettingsItem.swift in Sources */,
 				AD391C4320D16F0B007EE22A /* Appearance.swift in Sources */,
 				AD391CD120D16FE1007EE22A /* OnChainTransactionDetailViewModel.swift in Sources */,
 				AD391CC120D16FE1007EE22A /* DetailMemoTableViewCell.swift in Sources */,

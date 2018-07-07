@@ -45,6 +45,7 @@
 "scene.settings.item.on_chain_request_address.p2sh" = "P2SH";
 "scene.settings.item.remove_remote_node" = "Reset Remote Node Configuration";
 "scene.settings.item.reset_pin" = "Reset Pin";
+"scene.settings.item.report_issue" = "Report an Issue";
 
 "scene.deposit.send" = "Send";
 "scene.deposit.title" = "Receive";
