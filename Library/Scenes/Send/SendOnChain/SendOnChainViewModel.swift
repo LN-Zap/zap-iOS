@@ -13,6 +13,7 @@ import Lightning
 final class SendOnChainViewModel {
     private let minimumOnChainTransaction: Satoshi = 547
     
+    private let transactionAnnotationStore: TransactionAnnotationStore
     private let lightningService: LightningService
     let bitcoinURI: BitcoinURI
     let validRange: ClosedRange<Satoshi>
@@ -25,7 +26,8 @@ final class SendOnChainViewModel {
         }
     }
     
-    init(lightningService: LightningService, bitcoinURI: BitcoinURI) {
+    init(transactionAnnotationStore: TransactionAnnotationStore, lightningService: LightningService, bitcoinURI: BitcoinURI) {
+        self.transactionAnnotationStore = transactionAnnotationStore
         self.lightningService = lightningService
         self.bitcoinURI = bitcoinURI
         
@@ -33,6 +35,12 @@ final class SendOnChainViewModel {
     }
 
     func send(callback: @escaping (Result<String>) -> Void) {
-        lightningService.transactionService.sendCoins(address: bitcoinURI.address, amount: amount, callback: callback)
+        lightningService.transactionService.sendCoins(address: bitcoinURI.address, amount: amount) { [weak self] in
+            if let txid = $0.value,
+                let memo = self?.bitcoinURI.memo {
+                self?.transactionAnnotationStore.udpateMemo(memo, forTransactionId: txid)
+            }
+            callback($0)
+        }
     }
 }

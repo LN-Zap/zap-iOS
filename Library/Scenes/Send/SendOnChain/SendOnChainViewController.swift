@@ -55,11 +55,13 @@ final class SendOnChainViewController: UIViewController, QRCodeScannerChildViewC
     
     @IBAction private func sendButtonTapped(_ sender: Any) {
         sendOnChainViewModel?.send { [weak self] result in
-            if let error = result.error {
-                self?.delegate?.presentError(message: error.localizedDescription)
-                self?.gradientLoadingButtonView.isLoading = false
-            } else {
-                self?.delegate?.dismissSuccessfully()
+            DispatchQueue.main.async {
+                if let error = result.error {
+                    self?.delegate?.presentError(message: error.localizedDescription)
+                    self?.gradientLoadingButtonView.isLoading = false
+                } else {
+                    self?.delegate?.dismissSuccessfully()
+                }
             }
         }
     }

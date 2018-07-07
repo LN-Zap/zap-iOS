@@ -46,8 +46,10 @@ final class SendLightningInvoiceViewModel {
     
     func send(callback: @escaping (Result<Data>) -> Void) {
         guard let paymentRequest = paymentRequest else { return }
-        transactionAnnotationStore.udpateMemo(paymentRequest.memo, forPaymentHash: paymentRequest.paymentHash)
-        transactionService.sendPayment(paymentRequest, callback: callback)
+        transactionService.sendPayment(paymentRequest) { [weak self] in
+            self?.transactionAnnotationStore.udpateMemo(paymentRequest.memo, forTransactionId: paymentRequest.paymentHash)
+            callback($0)
+        }
     }
     
     private func updatePaymentRequest(_ paymentRequest: PaymentRequest) {
@@ -58,12 +60,10 @@ final class SendLightningInvoiceViewModel {
         }
         satoshis.value = paymentRequest.amount
         destination.value = paymentRequest.destination
-      
-        // TODO: fix duplicate check
-//        if viewModel.transactionService.transactions.value.contains(where: { $0.id == paymentRequest.paymentHash }) {
-//            invoiceError.value = .duplicate
-//        } else
-        if paymentRequest.expiryDate < Date() {
+        
+        if transactionService.transactions.value.contains(where: { $0.id == paymentRequest.paymentHash }) {
+            invoiceError.value = .duplicate
+        } else if paymentRequest.expiryDate < Date() {
             invoiceError.value = .expired(paymentRequest.expiryDate)
         } else {
             invoiceError.value = .none

@@ -45,8 +45,9 @@ public final class TransactionAnnotationStore: Persistable {
         updateAnnotation(newAnnotation, for: transaction)
     }
     
-    public func udpateMemo(_ memo: String?, forPaymentHash paymentHash: String) {
-        data[paymentHash] = TransactionAnnotation(isHidden: false, customMemo: memo, type: nil)
+    public func udpateMemo(_ memo: String?, forTransactionId transactionId: String) {
+        let annotation = data[transactionId] ?? TransactionAnnotation()
+        data[transactionId] = annotation.settingMemo(to: memo)
         savePersistable()
     }
 }

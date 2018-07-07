@@ -27,7 +27,7 @@ class SendQRCodeScannerStrategy: QRCodeScannerStrategy {
         
         return result.map {
             if let bitcoinURI = $0 as? BitcoinURI {
-                let sendOnChainViewModel = SendOnChainViewModel(lightningService: lightningService, bitcoinURI: bitcoinURI)
+                let sendOnChainViewModel = SendOnChainViewModel(transactionAnnotationStore: transactionAnnotationStore, lightningService: lightningService, bitcoinURI: bitcoinURI)
                 return UIStoryboard.instantiateSendOnChainViewController(with: sendOnChainViewModel)
             } else if let lightningURI = $0 as? LightningInvoiceURI {
                 let sendLightningInvoiceViewModel = SendLightningInvoiceViewModel(transactionAnnotationStore: transactionAnnotationStore, transactionService: lightningService.transactionService, lightningInvoice: lightningURI.address)
