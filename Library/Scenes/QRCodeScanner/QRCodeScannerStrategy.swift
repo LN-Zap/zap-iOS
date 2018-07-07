@@ -12,5 +12,5 @@ import Lightning
 protocol QRCodeScannerStrategy {
     var title: String { get }
     
-    func viewControllerForAddress(address: String, lightningService: LightningService) -> UIViewController?
+    func viewControllerForAddress(address: String, lightningService: LightningService) -> Result<UIViewController>?
 }

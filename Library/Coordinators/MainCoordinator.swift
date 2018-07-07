@@ -81,7 +81,7 @@ final class MainCoordinator: Routing {
         mainViewController?.present(viewController, animated: true) {
             if let invoice = invoice,
                 let qrCodeScannerViewController = viewController.topViewController as? QRCodeScannerViewController {
-                _ = qrCodeScannerViewController.checkAddress(invoice)
+                _ = qrCodeScannerViewController.tryPresentingViewController(for: invoice)
             }
         }
     }

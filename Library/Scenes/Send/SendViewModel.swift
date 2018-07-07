@@ -11,14 +11,14 @@ import Lightning
 
 enum PaymentURIError: Error, Localizable {
     case unknownFormat
-    case wrongNetworkError(Network)
+    case wrongNetworkError(linkNetwork: Network, nodeNetwork: Network)
     
     var localized: String {
         switch self {
         case .unknownFormat:
             return "error.wrong_uri_format".localized
-        case .wrongNetworkError(let network):
-            return String(format: "error.wrong_uri_network".localized, network.localized)
+        case let .wrongNetworkError(linkNetwork, nodeNetwork):
+            return String(format: "error.wrong_uri_network".localized, linkNetwork.localized, nodeNetwork.localized)
         }
     }
 }
@@ -43,7 +43,7 @@ final class SendViewModel {
         
         let currentNetwork = lightningService.infoService.network.value
         if paymentURI.network != currentNetwork {
-            return Result(error: PaymentURIError.wrongNetworkError(paymentURI.network))
+            return Result(error: PaymentURIError.wrongNetworkError(linkNetwork: paymentURI.network, nodeNetwork: currentNetwork))
         } else {
             return Result(value: paymentURI)
         }

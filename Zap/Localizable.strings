@@ -6,8 +6,8 @@
   Copyright © 2018 Otto Suess. All rights reserved.
 */
 
-"error.wrong_uri_format" = "Can't open that link. Format seems to be broken.";
-"error.wrong_uri_network" = "You tried opening a link for %@. That's the wrong network.";
+"error.wrong_uri_format" = "Unknown link format.";
+"error.wrong_uri_network" = "You tried opening a link for %@ but your node is connected to %@.";
 
 "channel.state.active" = "Online";
 "channel.state.inactive" = "Offline";

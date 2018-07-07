@@ -46,7 +46,7 @@ public enum Result<Value>: CustomStringConvertible, CustomDebugStringConvertible
         }
     }
     
-    func map<U>(_ transform: (Value) -> U) -> Result<U> {
+    public func map<U>(_ transform: (Value) -> U) -> Result<U> {
         return flatMap { .success(transform($0)) }
     }
     

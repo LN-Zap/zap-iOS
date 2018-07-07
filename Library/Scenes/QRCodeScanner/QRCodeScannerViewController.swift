@@ -48,7 +48,7 @@ final class QRCodeScannerViewController: UIViewController, ContainerViewControll
         didSet {
             scannerView.lightningService = lightningService
             scannerView.handler = { [weak self] address in
-                return self?.checkAddress(address) ?? false
+                return self?.tryPresentingViewController(for: address) ?? false
             }
         }
     }
@@ -84,12 +84,25 @@ final class QRCodeScannerViewController: UIViewController, ContainerViewControll
         qrCodeSuccessImageView.tintColor = UIColor.zap.nastyGreen
     }
     
-    func checkAddress(_ address: String) -> Bool { // TODO: rename. this does not just check
+    func tryPresentingViewController(for address: String) -> Bool {
         guard
             let lightningService = lightningService,
-            let viewController = strategy?.viewControllerForAddress(address: address, lightningService: lightningService)
+            let result = strategy?.viewControllerForAddress(address: address, lightningService: lightningService)
             else { return false }
         
+        switch result {
+        case .success(let viewController):
+            presentViewController(viewController)
+            return true
+        case .failure(let error):
+            if let message = (error as? PaymentURIError)?.localized {
+                presentError(message: message)
+            }
+            return false
+        }
+    }
+    
+    private func presentViewController(_ viewController: UIViewController) {
         setContainerContent(viewController)
         
         if let viewController = viewController as? QRCodeScannerChildViewController {
@@ -107,13 +120,12 @@ final class QRCodeScannerViewController: UIViewController, ContainerViewControll
             self.paymentTopConstraint.isActive = false
             self.view.layoutIfNeeded()
         }
-        
-        return true
+
     }
     
     @IBAction private func pasteButtonTapped(_ sender: Any) {
         guard let string = UIPasteboard.general.string else { return }
-        _ = checkAddress(string)
+        _ = tryPresentingViewController(for: string)
     }
     
     @IBAction private func cancelButtonTapped(_ sender: Any) {
