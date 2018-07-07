@@ -16,7 +16,8 @@ public final class ChannelService {
     let all: Signal<[Channel], NoError>
     public let open = Observable<[Channel]>([])
     public let pending = Observable<[Channel]>([])
-
+    public let closed = Observable<[ChannelCloseSummary]>([])
+    
     init(api: LightningApiProtocol) {
         self.api = api
         
@@ -32,6 +33,10 @@ public final class ChannelService {
         
         api.pendingChannels { [pending] result in
             pending.value = result.value ?? []
+        }
+        
+        api.closedChannels { [closed] result in
+            closed.value = result.value ?? []
         }
     }
     

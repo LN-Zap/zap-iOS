@@ -234,6 +234,8 @@
 		AD97A91620EFEB94008344EA /* SendViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD97A91520EFEB94008344EA /* SendViewModel.swift */; };
 		AD97A91820EFEEB8008344EA /* PaymentURI.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD97A91720EFEEB8008344EA /* PaymentURI.swift */; };
 		AD97A91A20F09699008344EA /* ReportIssueSettingsItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD97A91920F09699008344EA /* ReportIssueSettingsItem.swift */; };
+		AD97A91D20F0FA92008344EA /* ChannelCloseSummary.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD97A91C20F0FA92008344EA /* ChannelCloseSummary.swift */; };
+		AD97A91F20F108C0008344EA /* CloseType+Localizable.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD97A91E20F108C0008344EA /* CloseType+Localizable.swift */; };
 		AD9C4C8020C3D3AA009636E1 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = AD9C4C7F20C3D3AA009636E1 /* InfoPlist.strings */; };
 		ADA865BC20ECB87B00B1B74B /* FilterSettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADA865BB20ECB87B00B1B74B /* FilterSettings.swift */; };
 		ADA865BE20ECB88500B1B74B /* FilterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADA865BD20ECB88500B1B74B /* FilterViewController.swift */; };
@@ -654,6 +656,8 @@
 		AD97A91520EFEB94008344EA /* SendViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SendViewModel.swift; sourceTree = "<group>"; };
 		AD97A91720EFEEB8008344EA /* PaymentURI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaymentURI.swift; sourceTree = "<group>"; };
 		AD97A91920F09699008344EA /* ReportIssueSettingsItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReportIssueSettingsItem.swift; sourceTree = "<group>"; };
+		AD97A91C20F0FA92008344EA /* ChannelCloseSummary.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChannelCloseSummary.swift; sourceTree = "<group>"; };
+		AD97A91E20F108C0008344EA /* CloseType+Localizable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CloseType+Localizable.swift"; sourceTree = "<group>"; };
 		AD98EB2320C6DFDE00B807D6 /* DetailViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewModel.swift; sourceTree = "<group>"; };
 		AD99C9EC209072710061C565 /* QRCodeScanner.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = QRCodeScanner.storyboard; sourceTree = "<group>"; };
 		AD99C9EE209076650061C565 /* QRCodeScannerStrategy.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QRCodeScannerStrategy.swift; sourceTree = "<group>"; };
@@ -1165,6 +1169,7 @@
 			isa = PBXGroup;
 			children = (
 				A01009382014BE460001EF94 /* Channel.swift */,
+				AD97A91C20F0FA92008344EA /* ChannelCloseSummary.swift */,
 				ADE19C3F20E7892000340E2E /* ChannelPoint.swift */,
 				A0A96B8520174BAC00788808 /* CloseStatusUpdate.swift */,
 				AD93ED5520A09D59000E814E /* GraphTopologyUpdate.swift */,
@@ -1435,6 +1440,7 @@
 			children = (
 				AD97A91320EFCFC3008344EA /* Bitcoin+Localizable.swift */,
 				A0A05A252013DC1D0007D1C9 /* BitcoinUnit+Localizable.swift */,
+				AD97A91E20F108C0008344EA /* CloseType+Localizable.swift */,
 				ADBB361F207FA5D6005662B4 /* Date+Localizable.swift */,
 				A0C2EABD206F8B5B003AE56E /* Localizable.swift */,
 				AD77464D2076162300EC596B /* Network+Localizable.swift */,
@@ -2279,6 +2285,7 @@
 				AD391C2920D16EFA007EE22A /* Date+Localizable.swift in Sources */,
 				AD391C5820D16F7A007EE22A /* RemoteNodeCertificatesScannerViewController.swift in Sources */,
 				AD391CBA20D16FE1007EE22A /* DetailBalanceTableViewCell.swift in Sources */,
+				AD97A91F20F108C0008344EA /* CloseType+Localizable.swift in Sources */,
 				AD391C5120D16F7A007EE22A /* ConfirmMnemonicCollectionViewCell.swift in Sources */,
 				AD391C3920D16F0B007EE22A /* BockExplorer.swift in Sources */,
 				AD391C9A20D16FA8007EE22A /* QRCodeScannerView.swift in Sources */,
@@ -2451,6 +2458,7 @@
 				ADFEFA5520E627F100FE1557 /* CloseStatusUpdate.swift in Sources */,
 				ADFEFA6C20E627F100FE1557 /* InfoService.swift in Sources */,
 				ADFEFA5020E627F100FE1557 /* LightningApiStream.swift in Sources */,
+				AD97A91D20F0FA92008344EA /* ChannelCloseSummary.swift in Sources */,
 				ADFEFA5D20E627F100FE1557 /* TestingTemplates.swift in Sources */,
 				ADFEFA5F20E627F100FE1557 /* LndConnection.swift in Sources */,
 				ADFEFA6A20E627F100FE1557 /* BalanceService.swift in Sources */,

@@ -73,6 +73,12 @@ public final class LightningApiRPC: LightningApiProtocol {
         }))
     }
     
+    func closedChannels(callback: @escaping (Result<[ChannelCloseSummary]>) -> Void) {
+        _ = try? rpc.closedChannels(Lnrpc_ClosedChannelsRequest(), completion: result(callback, map: {
+            $0.channels.map { ChannelCloseSummary(channelCloseSummary: $0) }
+        }))
+    }
+    
     func pendingChannels(callback: @escaping (Result<[Channel]>) -> Void) {
         _ = try? rpc.pendingChannels(Lnrpc_PendingChannelsRequest(), completion: result(callback, map: {
             let pendingOpenChannels: [Channel] = $0.pendingOpenChannels.compactMap { $0.channelModel }

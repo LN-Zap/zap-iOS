@@ -18,6 +18,7 @@ protocol LightningApiProtocol {
     func subscribeTransactions(callback: @escaping (Result<Transaction>) -> Void)
     func payments(callback: @escaping (Result<[Transaction]>) -> Void)
     func channels(callback: @escaping (Result<[Channel]>) -> Void)
+    func closedChannels(callback: @escaping (Result<[ChannelCloseSummary]>) -> Void)
     func pendingChannels(callback: @escaping (Result<[Channel]>) -> Void)
     func connect(pubKey: String, host: String, callback: @escaping (Result<Void>) -> Void)
     func openChannel(pubKey: String, amount: Satoshi, callback: @escaping (Result<ChannelPoint>) -> Void)

@@ -8,24 +8,47 @@
 import Foundation
 
 public enum TransactionAnnotationType {
-    case openChannelTransaction(String)
+    case openChannelTransaction(remotePubKey: String)
+    case closeChannelTransaction(remotePubKey: String, type: CloseType)
 }
 
 extension TransactionAnnotationType: Codable {
     enum CodingKeys: String, CodingKey {
-        case openChannelTransaction
+        case openChannelTransactionRemotePubKey
+        case closeChannelTransactionRemotePubKey
+        case closeChannelTransactionType
+    }
+    
+    enum TransactionAnnotationTypeCodingError: Error {
+        case decoding(String)
     }
     
     public init(from decoder: Decoder) throws {
         let container = try decoder.container(keyedBy: CodingKeys.self)
-        self = .openChannelTransaction(try container.decode(String.self, forKey: .openChannelTransaction))
+        
+        if let remotePubKey = try? container.decode(String.self, forKey: .openChannelTransactionRemotePubKey) {
+            self = .openChannelTransaction(remotePubKey: remotePubKey)
+            return
+        }
+        
+        if
+            let remotePubKey = try? container.decode(String.self, forKey: .closeChannelTransactionRemotePubKey),
+            let type = try? container.decode(CloseType.self, forKey: .closeChannelTransactionType) {
+            self = .closeChannelTransaction(remotePubKey: remotePubKey, type: type)
+            return
+        }
+        
+        throw TransactionAnnotationTypeCodingError.decoding("Error decoding: \(dump(container))")
     }
     
     public func encode(to encoder: Encoder) throws {
         var container = encoder.container(keyedBy: CodingKeys.self)
         switch self {
-        case .openChannelTransaction(let value):
-            try container.encode(value, forKey: .openChannelTransaction)
+        case .openChannelTransaction(let remotePubKey):
+            try container.encode(remotePubKey, forKey: .openChannelTransactionRemotePubKey)
+        case let .closeChannelTransaction(remotePubKey, type):
+            try container.encode(remotePubKey, forKey: .closeChannelTransactionRemotePubKey)
+            try container.encode(type, forKey: .closeChannelTransactionType)
         }
     }
 }

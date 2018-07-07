@@ -17,9 +17,10 @@ enum TransactionIcon {
     case unsettledInvoice
     case expiredInvoice
     case openChannel
+    case closeChannel
     case unconfirmed
     
-    var image: UIImage {
+    var image: UIImage? {
         switch self {
         case .onChain:
             return imageNamed("icon_transaction_onchain")
@@ -32,15 +33,16 @@ enum TransactionIcon {
         case .expiredInvoice:
             return imageNamed("icon_transaction_invoice")
         case .openChannel:
-            return imageNamed("icon_transaction_openchannel")
+            return imageNamed("icon_transaction_open_channel")
         case .unconfirmed:
             return imageNamed("icon_transaction_unconfirmed")
+        case .closeChannel:
+            return imageNamed("icon_transaction_close_channel")
         }
     }
     
-    private func imageNamed(_ name: String) -> UIImage {
-        // swiftlint:disable:next force_unwrapping
-        return UIImage(named: name, in: Bundle.shared, compatibleWith: nil)!
+    private func imageNamed(_ name: String) -> UIImage? {
+        return UIImage(named: name, in: Bundle.shared, compatibleWith: nil)
     }
 }
 

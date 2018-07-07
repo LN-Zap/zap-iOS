@@ -54,6 +54,10 @@ final class LightningApiStream: LightningApiProtocol {
         })
     }
     
+    func closedChannels(callback: @escaping (Result<[ChannelCloseSummary]>) -> Void) {
+        // TODO
+    }
+    
     func pendingChannels(callback: @escaping (Result<[Channel]>) -> Void) {
         LndmobilePendingChannels(nil, StreamCallback<Lnrpc_PendingChannelsResponse, [Channel]>(callback) {
             let pendingOpenChannels: [Channel] = $0.pendingOpenChannels.compactMap { $0.channelModel }

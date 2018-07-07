@@ -35,9 +35,11 @@ final class OnChainTransactionViewModel: TransactionViewModel {
     }
     
     private static func amountForAnnotation(_ annotation: TransactionAnnotation, onChainTransaction: OnChainTransaction) -> Satoshi {
-        if let type = annotation.type,
-            case .openChannelTransaction = type {
-            return -onChainTransaction.fees
+        if let type = annotation.type {
+            switch type {
+            case .openChannelTransaction, .closeChannelTransaction:
+                return -onChainTransaction.fees
+            }
         }
         return onChainTransaction.amount
     }
@@ -45,18 +47,27 @@ final class OnChainTransactionViewModel: TransactionViewModel {
     private static func displayTextForAnnotation(_ annotation: TransactionAnnotation, onChainTransaction: OnChainTransaction, aliasStore: ChannelAliasStore) -> String {
         if let customMemo = annotation.customMemo {
             return customMemo
-        } else if let type = annotation.type,
-            case .openChannelTransaction(let channelPubKey) = type {
-            let alias = aliasStore.data[channelPubKey] ?? channelPubKey
-            return String(format: "transaction.open_channel.memo".localized, alias)
+        } else if let type = annotation.type {
+            switch type {
+            case .openChannelTransaction(let remotePubKey):
+                let alias = aliasStore.data[remotePubKey] ?? remotePubKey
+                return String(format: "transaction.open_channel.memo".localized, alias)
+            case let .closeChannelTransaction(remotePubKey, type):
+                let alias = aliasStore.data[remotePubKey] ?? remotePubKey
+                return String(format: "transaction.close_channel.memo".localized, type.localized, alias)
+            }
         }
         return onChainTransaction.firstDestinationAddress
     }
     
     private static func iconForAnnotation(_ annotation: TransactionAnnotation) -> TransactionIcon {
-        if let type = annotation.type,
-            case .openChannelTransaction = type {
-            return .openChannel
+        if let type = annotation.type {
+            switch type {
+            case .openChannelTransaction:
+                return .openChannel
+            case .closeChannelTransaction:
+                return .closeChannel
+            }
         } else {
             return .onChain
         }
