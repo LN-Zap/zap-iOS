@@ -12,9 +12,9 @@ import ReactiveKit
 public final class ChannelTransactionAnnotationUpdater: NSObject {
     let channelService: ChannelService
     let transactionService: TransactionService
-    let updateCallback: (TransactionAnnotation, Transaction) -> Void
+    let updateCallback: (TransactionAnnotationType, Transaction) -> Void
     
-    public init(channelService: ChannelService, transactionService: TransactionService, updateCallback: @escaping (TransactionAnnotation, Transaction) -> Void) {
+    public init(channelService: ChannelService, transactionService: TransactionService, updateCallback: @escaping (TransactionAnnotationType, Transaction) -> Void) {
         self.channelService = channelService
         self.transactionService = transactionService
         self.updateCallback = updateCallback
@@ -40,29 +40,32 @@ public final class ChannelTransactionAnnotationUpdater: NSObject {
         for transaction in transactions {
             guard let channelCloseSummary = channelCloseSummaries.first(where: { $0.closingTxHash == transaction.id }) else { continue }
             
-            let annotation = TransactionAnnotation(isHidden: false, customMemo: nil, type: .closeChannelTransaction(remotePubKey: channelCloseSummary.remotePubKey, type: channelCloseSummary.closeType))
-            updateCallback(annotation, transaction)
+            let type = TransactionAnnotationType.closeChannelTransaction(remotePubKey: channelCloseSummary.remotePubKey, type: channelCloseSummary.closeType)
+            updateCallback(type, transaction)
         }
     }
 
     // MARK: - Opening
     
     private func observeOpeningTransactions() {
-        combineLatest(channelService.all, transactionService.transactions)
+        combineLatest(channelService.closed, channelService.all, transactionService.transactions)
             .observeNext { [weak self] arg in
-                let (channels, transactions) = arg
-                self?.updateOpenChannelMemos(channels: channels, transactions: transactions)
+                let (channelCloseSummaries, channels, transactions) = arg
+                self?.updateOpenChannelMemos(channelCloseSummaries: channelCloseSummaries, channels: channels, transactions: transactions)
             }
             .dispose(in: reactive.bag)
     }
 
-    private func updateOpenChannelMemos(channels: [Channel], transactions: [Transaction]) {
+    private func updateOpenChannelMemos(channelCloseSummaries: [ChannelCloseSummary], channels: [Channel], transactions: [Transaction]) {
         for transaction in transactions {
             // search for matching channel for funding transaction
-            guard let channel = channels.first(where: { $0.channelPoint.fundingTxid == transaction.id }) else { continue }
-
-            let annotation = TransactionAnnotation(isHidden: false, customMemo: nil, type: .openChannelTransaction(remotePubKey: channel.remotePubKey))
-            updateCallback(annotation, transaction)
+            if let channel = channels.first(where: { $0.channelPoint.fundingTxid == transaction.id }) {
+                let type = TransactionAnnotationType.openChannelTransaction(remotePubKey: channel.remotePubKey)
+                updateCallback(type, transaction)
+            } else if let channelCloseSummary = channelCloseSummaries.first(where: { $0.channelPoint.fundingTxid == transaction.id }) {
+                let type = TransactionAnnotationType.openChannelTransaction(remotePubKey: channelCloseSummary.remotePubKey)
+                updateCallback(type, transaction)
+            }
         }
     }
 }

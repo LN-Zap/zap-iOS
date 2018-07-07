@@ -61,6 +61,12 @@ final class TransactionListViewModel: NSObject {
         }
     }
     
+    func updateAnnotationType(_ type: TransactionAnnotationType, for transaction: Transaction) {
+        let annotation = transactionAnnotationStore.annotation(for: transaction)
+        let newAnnotation = annotation.settingType(to: type)
+        updateAnnotation(newAnnotation, for: transaction)
+    }
+    
     func updateAnnotation(_ annotation: TransactionAnnotation, for transaction: Transaction) {
         transactionAnnotationStore.updateAnnotation(annotation, for: transaction)
         let transactionViewModels = sections.sections.flatMap { $0.items }

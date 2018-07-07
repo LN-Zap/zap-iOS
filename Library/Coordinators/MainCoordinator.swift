@@ -30,7 +30,7 @@ final class MainCoordinator: Routing {
         channelListViewModel = ChannelListViewModel(channelService: lightningService.channelService, aliasStore: aliasStore)
         transactionListViewModel = TransactionListViewModel(transactionService: lightningService.transactionService, aliasStore: aliasStore)
         
-        channelTransactionAnnotationUpdater = ChannelTransactionAnnotationUpdater(channelService: lightningService.channelService, transactionService: lightningService.transactionService, updateCallback: transactionListViewModel.updateAnnotation)
+        channelTransactionAnnotationUpdater = ChannelTransactionAnnotationUpdater(channelService: lightningService.channelService, transactionService: lightningService.transactionService, updateCallback: transactionListViewModel.updateAnnotationType)
     }
     
     func start() {

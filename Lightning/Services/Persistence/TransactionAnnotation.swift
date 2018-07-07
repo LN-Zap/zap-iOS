@@ -69,6 +69,10 @@ public struct TransactionAnnotation: Codable {
         }
         return TransactionAnnotation(isHidden: isHidden, customMemo: memo, type: type)
     }
+    
+    public func settingType(to type: TransactionAnnotationType) -> TransactionAnnotation {
+        return TransactionAnnotation(isHidden: isHidden, customMemo: customMemo, type: type)
+    }
 }
 
 extension TransactionAnnotation {
