@@ -35,7 +35,7 @@ final class SendViewModel {
         
         if let bitcoinURI = BitcoinURI(string: uri) {
             paymentURI = bitcoinURI
-        } else if let lightningURI = LightningURI(string: uri) {
+        } else if let lightningURI = LightningInvoiceURI(string: uri) {
             paymentURI = lightningURI
         } else {
             return Result(error: PaymentURIError.unknownFormat)

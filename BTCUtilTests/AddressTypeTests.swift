@@ -70,7 +70,7 @@ final class AddressTypeTests: XCTestCase {
         ]
         
         for (uri, network) in tests {
-            let uri = LightningURI(string: uri)
+            let uri = LightningInvoiceURI(string: uri)
             XCTAssertEqual(uri?.network, network)
         }
     }

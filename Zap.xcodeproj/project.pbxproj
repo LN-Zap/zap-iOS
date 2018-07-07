@@ -225,7 +225,7 @@
 		AD774651207616B100EC596B /* Network.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD77464A207615E000EC596B /* Network.swift */; };
 		AD77465320761DB400EC596B /* AddressTypeTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD77465220761DB400EC596B /* AddressTypeTests.swift */; };
 		AD97A90620EE7FD9008344EA /* BitcoinTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD97A90520EE7FD9008344EA /* BitcoinTests.swift */; };
-		AD97A90C20EFC127008344EA /* LightningURI.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD97A90B20EFC127008344EA /* LightningURI.swift */; };
+		AD97A90C20EFC127008344EA /* LightningInvoiceURI.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD97A90B20EFC127008344EA /* LightningInvoiceURI.swift */; };
 		AD97A90F20EFC1E6008344EA /* LightningNodeURI.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD97A90E20EFC1E6008344EA /* LightningNodeURI.swift */; };
 		AD97A91020EFCF6D008344EA /* Bitcoin.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0C2EABF206F8D10003AE56E /* Bitcoin.swift */; };
 		AD97A91120EFCF6D008344EA /* Currency.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0C2EAC1206F8D37003AE56E /* Currency.swift */; };
@@ -648,7 +648,7 @@
 		AD93ED5220A07A24000E814E /* Notification.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Notification.swift; sourceTree = "<group>"; };
 		AD93ED5520A09D59000E814E /* GraphTopologyUpdate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GraphTopologyUpdate.swift; sourceTree = "<group>"; };
 		AD97A90520EE7FD9008344EA /* BitcoinTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BitcoinTests.swift; sourceTree = "<group>"; };
-		AD97A90B20EFC127008344EA /* LightningURI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LightningURI.swift; sourceTree = "<group>"; };
+		AD97A90B20EFC127008344EA /* LightningInvoiceURI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LightningInvoiceURI.swift; sourceTree = "<group>"; };
 		AD97A90E20EFC1E6008344EA /* LightningNodeURI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LightningNodeURI.swift; sourceTree = "<group>"; };
 		AD97A91320EFCFC3008344EA /* Bitcoin+Localizable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Bitcoin+Localizable.swift"; sourceTree = "<group>"; };
 		AD97A91520EFEB94008344EA /* SendViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SendViewModel.swift; sourceTree = "<group>"; };
@@ -852,10 +852,9 @@
 				A0733CCF20471EF30005643A /* Base58.swift */,
 				A0733CCB20471EF30005643A /* Bech32.swift */,
 				A0733CCE20471EF30005643A /* BitcoinAddress.swift */,
-				A0733CCC20471EF30005643A /* Data.swift */,
 				AD77464A207615E000EC596B /* Network.swift */,
-				A0733CCD20471EF30005643A /* String.swift */,
 				A000F60E2047FA2500480D8E /* CommonCrypto */,
+				AD97A91B20F09B00008344EA /* Extensions */,
 				A0C2EAB5206F8916003AE56E /* Money */,
 				AD97A90D20EFC169008344EA /* URIs */,
 			);
@@ -1490,10 +1489,19 @@
 			children = (
 				AD5FA002207D0D02000E9493 /* BitcoinURI.swift */,
 				AD97A90E20EFC1E6008344EA /* LightningNodeURI.swift */,
-				AD97A90B20EFC127008344EA /* LightningURI.swift */,
+				AD97A90B20EFC127008344EA /* LightningInvoiceURI.swift */,
 				AD97A91720EFEEB8008344EA /* PaymentURI.swift */,
 			);
 			path = URIs;
+			sourceTree = "<group>";
+		};
+		AD97A91B20F09B00008344EA /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				A0733CCC20471EF30005643A /* Data.swift */,
+				A0733CCD20471EF30005643A /* String.swift */,
+			);
+			path = Extensions;
 			sourceTree = "<group>";
 		};
 		AD99C9EB209072530061C565 /* QRCodeScanner */ = {
@@ -2214,7 +2222,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				A0F9AEDF206E175500E93DCA /* NSDecimalNumber.swift in Sources */,
-				AD97A90C20EFC127008344EA /* LightningURI.swift in Sources */,
+				AD97A90C20EFC127008344EA /* LightningInvoiceURI.swift in Sources */,
 				AD97A91020EFCF6D008344EA /* Bitcoin.swift in Sources */,
 				A000F6082047F66300480D8E /* Bech32.swift in Sources */,
 				AD97A90F20EFC1E6008344EA /* LightningNodeURI.swift in Sources */,

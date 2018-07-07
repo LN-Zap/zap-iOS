@@ -51,8 +51,12 @@ public final class RequestViewModel {
     
     private func createLightning(callback: @escaping (QRCodeDetailViewModel) -> Void) {
         transactionService.addInvoice(amount: amount, memo: trimmedMemo) { result in
-            guard let invoice = result.value else { return }
-            let viewModel = LightningRequestQRCodeViewModel(invoice: invoice)
+            guard
+                let invoice = result.value,
+                let invoiceURI = LightningInvoiceURI(string: invoice)
+                else { return }
+            
+            let viewModel = LightningRequestQRCodeViewModel(paymentURI: invoiceURI)
             callback(viewModel)
         }
     }
@@ -77,6 +81,6 @@ public final class RequestViewModel {
     
     private func onChainRequestViewModel(for address: String) -> OnChainRequestQRCodeViewModel? {
         guard let uri = BitcoinURI(address: address, amount: amount, memo: trimmedMemo) else { return nil }
-        return OnChainRequestQRCodeViewModel(address: uri.stringValue)
+        return OnChainRequestQRCodeViewModel(paymentURI: uri)
     }
 }

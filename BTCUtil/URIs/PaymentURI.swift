@@ -8,5 +8,7 @@
 import Foundation
 
 public protocol PaymentURI {
+    var address: String { get }
     var network: Network { get }
+    var stringValue: String { get }
 }

@@ -21,7 +21,7 @@ struct SendQRCodeScannerStrategy: QRCodeScannerStrategy {
         if let bitcoinURI = BitcoinURI(string: address) {
             let sendOnChainViewModel = SendOnChainViewModel(lightningService: lightningService, bitcoinURI: bitcoinURI)
             return UIStoryboard.instantiateSendOnChainViewController(with: sendOnChainViewModel)
-        } else if let lightningURI = LightningURI(string: address) {
+        } else if let lightningURI = LightningInvoiceURI(string: address) {
             let sendLightningInvoiceViewModel = SendLightningInvoiceViewModel(transactionAnnotationStore: transactionAnnotationStore, transactionService: lightningService.transactionService, lightningInvoice: lightningURI.address)
             return UIStoryboard.instantiateSendLightningInvoiceViewController(with: sendLightningInvoiceViewModel)
         } else {

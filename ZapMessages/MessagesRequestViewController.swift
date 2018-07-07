@@ -139,14 +139,7 @@ class MessagesRequestViewController: UIViewController {
         
         requestViewModel.create { [weak self] detail in
             DispatchQueue.main.async {
-                let address: String
-                switch requestViewModel.requestMethod {
-                case .lightning:
-                    address = "lightning://\(detail.address)"
-                case .onChain:
-                    address = detail.address.replacingOccurrences(of: "bitcoin:", with: "bitcoin://")
-                }
-                
+                let address = detail.paymentURI.stringValue
                 var text = ""
                 
                 if requestViewModel.amount > 0,

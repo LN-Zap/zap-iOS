@@ -6,27 +6,28 @@
 //
 
 import Bond
+import BTCUtil
 import Foundation
 
 public protocol QRCodeDetailViewModel {
     var title: String { get }
-    var address: String { get }
+    var paymentURI: PaymentURI { get }
 }
 
 public final class OnChainRequestQRCodeViewModel: QRCodeDetailViewModel {
     public let title = "scene.deposit.title".localized
-    public let address: String
+    public let paymentURI: PaymentURI
 
-    init(address: String) {
-        self.address = address
+    init(paymentURI: PaymentURI) {
+        self.paymentURI = paymentURI
     }
 }
 
 public final class LightningRequestQRCodeViewModel: QRCodeDetailViewModel {
     public let title = "scene.request.title".localized
-    public let address: String
+    public let paymentURI: PaymentURI
 
-    init(invoice: String) {
-        self.address = invoice
+    init(paymentURI: PaymentURI) {
+        self.paymentURI = paymentURI
     }
 }

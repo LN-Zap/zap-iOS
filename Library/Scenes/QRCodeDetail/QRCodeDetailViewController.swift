@@ -42,15 +42,15 @@ final class QRCodeDetailViewController: UIViewController {
         
         topView.backgroundColor = UIColor.zap.white
         
-        qrCodeImageView?.image = UIImage.qrCode(from: viewModel.address)
+        qrCodeImageView?.image = UIImage.qrCode(from: viewModel.paymentURI.stringValue)
         
-        addressLabel.text = viewModel.address.replacingOccurrences(of: "bitcoin:", with: "").replacingOccurrences(of: "lightning:", with: "")
+        addressLabel.text = viewModel.paymentURI.address
         
         updateRequestMethod()
     }
     
     @IBAction private func qrCodeTapped(_ sender: Any) {
-        guard let address = viewModel?.address else { return }
+        guard let address = viewModel?.paymentURI.stringValue else { return }
         print(address)
         UIPasteboard.general.string = address
     }
@@ -60,7 +60,7 @@ final class QRCodeDetailViewController: UIViewController {
     }
     
     @IBAction private func shareButtonTapped(_ sender: Any) {
-        guard let address = viewModel?.address else { return }
+        guard let address = viewModel?.paymentURI.stringValue else { return }
 
         let items: [Any] = [address]
         

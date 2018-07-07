@@ -7,11 +7,14 @@
 
 import Foundation
 
-public struct LightningURI: PaymentURI {
+public struct LightningInvoiceURI: PaymentURI {
     public let address: String
     public let network: Network
-    public let stringValue: String
 
+    public var stringValue: String {
+        return "lightning:\(address)"
+    }
+    
     public init?(string: String) {
         var string = string
         let prefix = "lightning:"
@@ -22,7 +25,6 @@ public struct LightningURI: PaymentURI {
         guard let (humanReadablePart, _) = Bech32.decode(string, limit: false) else { return nil }
         
         address = string
-        stringValue = string
         
         if humanReadablePart.hasPrefix("lntb") {
             network = .testnet
