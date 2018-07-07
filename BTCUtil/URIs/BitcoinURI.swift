@@ -24,7 +24,10 @@ public struct BitcoinURI: PaymentURI {
         var queryItems = [URLQueryItem]()
         
         if let amount = amount, amount > 0 {
-            queryItems.append(URLQueryItem(name: "amount", value: amount.convert(to: .bitcoin).stringValue))
+            let amountInBitcoin = amount.convert(to: .bitcoin)
+            let usLocale = Locale(identifier: "en_US")
+            let amountString = amountInBitcoin.description(withLocale: usLocale)
+            queryItems.append(URLQueryItem(name: "amount", value: amountString))
         }
         if let memo = memo, !memo.isEmpty {
             queryItems.append(URLQueryItem(name: "message", value: memo))
