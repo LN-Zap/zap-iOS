@@ -69,7 +69,7 @@ class TransactionViewModel: NSObject {
     }
     
     override func isEqual(_ object: Any?) -> Bool {
-        return id == (object as? TransactionViewModel)?.id
+        return (object as? TransactionViewModel)?.transaction.isEqual(to: transaction) ?? false
     }
     
     static func instance(for transaction: Transaction, annotation: TransactionAnnotation, aliasStore: ChannelAliasStore) -> TransactionViewModel {

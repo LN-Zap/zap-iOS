@@ -244,6 +244,8 @@
 		ADCD5B0D20D7E3F50037F156 /* RemoveRemoteNodeSettingsItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADCD5B0C20D7E3F50037F156 /* RemoveRemoteNodeSettingsItem.swift */; };
 		ADCD5B0F20D7E40C0037F156 /* RemovePinSettingsItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADCD5B0E20D7E40C0037F156 /* RemovePinSettingsItem.swift */; };
 		ADE19C4020E7892000340E2E /* ChannelPoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADE19C3F20E7892000340E2E /* ChannelPoint.swift */; };
+		ADECC36920F257AF00D00546 /* LightningPayment.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADECC36820F257AF00D00546 /* LightningPayment.swift */; };
+		ADECC36B20F257BE00D00546 /* OnChainTransaction.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADECC36A20F257BE00D00546 /* OnChainTransaction.swift */; };
 		ADFC816F20DA80EF00D26913 /* RecoverWalletViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADFC816E20DA80EF00D26913 /* RecoverWalletViewModel.swift */; };
 		ADFC817120DB8F2700D26913 /* bip39.txt in Resources */ = {isa = PBXBuildFile; fileRef = ADFC817020DB8F2600D26913 /* bip39.txt */; };
 		ADFE538520D693FF00B3BA2A /* InputNumberFormatterTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0F9AEE2206E3E0300E93DCA /* InputNumberFormatterTests.swift */; };
@@ -716,6 +718,8 @@
 		ADE19C3F20E7892000340E2E /* ChannelPoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChannelPoint.swift; sourceTree = "<group>"; };
 		ADE4CF1C20B5B2BE007C987A /* UIFont.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIFont.swift; sourceTree = "<group>"; };
 		ADE4CF1E20B5B6FC007C987A /* Environment.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Environment.swift; sourceTree = "<group>"; };
+		ADECC36820F257AF00D00546 /* LightningPayment.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LightningPayment.swift; sourceTree = "<group>"; };
+		ADECC36A20F257BE00D00546 /* OnChainTransaction.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnChainTransaction.swift; sourceTree = "<group>"; };
 		ADEDBB8B20C2D6A700B71F17 /* SetupCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetupCoordinator.swift; sourceTree = "<group>"; };
 		ADEDBB8D20C2D70B00B71F17 /* MainCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainCoordinator.swift; sourceTree = "<group>"; };
 		ADEDBB8F20C2E55100B71F17 /* PinCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PinCoordinator.swift; sourceTree = "<group>"; };
@@ -1165,20 +1169,19 @@
 		A0A05A5A20149AF80007D1C9 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				AD63CC0820F2586F002876D8 /* Transaction */,
 				A01009382014BE460001EF94 /* Channel.swift */,
 				AD97A91C20F0FA92008344EA /* ChannelCloseSummary.swift */,
 				ADE19C3F20E7892000340E2E /* ChannelPoint.swift */,
 				A0A96B8520174BAC00788808 /* CloseStatusUpdate.swift */,
 				AD93ED5520A09D59000E814E /* GraphTopologyUpdate.swift */,
 				A0376B6E201CC04400F1FBEF /* Info.swift */,
-				ADC29C0B20A9B0A0008B2DC2 /* LightningInvoice.swift */,
 				AD7746582076609400EC596B /* NodeInfo.swift */,
 				ADFEFA7320E6294000FE1557 /* OnChainRequestAddressType.swift */,
 				A010093B2014CEE40001EF94 /* OpenStatusUpdate.swift */,
 				A024B85A20161AAE002B8897 /* PaymentRequest.swift */,
 				A024B84C201606B4002B8897 /* Peer.swift */,
 				ADBB36282080B2AE005662B4 /* TestingTemplates.swift */,
-				A0A05A5820149AF20007D1C9 /* Transaction.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -1407,6 +1410,17 @@
 				AD536BF720E62764002279BC /* Info.plist */,
 			);
 			path = LightningTests;
+			sourceTree = "<group>";
+		};
+		AD63CC0820F2586F002876D8 /* Transaction */ = {
+			isa = PBXGroup;
+			children = (
+				ADC29C0B20A9B0A0008B2DC2 /* LightningInvoice.swift */,
+				ADECC36820F257AF00D00546 /* LightningPayment.swift */,
+				ADECC36A20F257BE00D00546 /* OnChainTransaction.swift */,
+				A0A05A5820149AF20007D1C9 /* Transaction.swift */,
+			);
+			path = Transaction;
 			sourceTree = "<group>";
 		};
 		AD680A9D20B07AC60018986B /* ConnectRemoteNode */ = {
@@ -2425,6 +2439,7 @@
 			files = (
 				ADFEFA4F20E627F100FE1557 /* LightningApiRPC.swift in Sources */,
 				ADFEFA5220E627F100FE1557 /* WalletApiRPC.swift in Sources */,
+				ADECC36B20F257BE00D00546 /* OnChainTransaction.swift in Sources */,
 				ADFEFA5E20E627F100FE1557 /* Transaction.swift in Sources */,
 				ADFEFA4A20E627F100FE1557 /* ProtobufExtensions.swift in Sources */,
 				ADFEFA5C20E627F100FE1557 /* Peer.swift in Sources */,
@@ -2442,6 +2457,7 @@
 				ADFEFA5920E627F100FE1557 /* NodeInfo.swift in Sources */,
 				ADFEFA5620E627F100FE1557 /* GraphTopologyUpdate.swift in Sources */,
 				ADFEFA5120E627F100FE1557 /* WalletApiProtocol.swift in Sources */,
+				ADECC36920F257AF00D00546 /* LightningPayment.swift in Sources */,
 				ADFEFA5420E627F100FE1557 /* Channel.swift in Sources */,
 				ADFEFA4820E627F100FE1557 /* rpc.pb.swift in Sources */,
 				ADFEFA6E20E627F100FE1557 /* TransactionService.swift in Sources */,
