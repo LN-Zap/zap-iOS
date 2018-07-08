@@ -22,10 +22,7 @@ final class DetailMemoTableViewCell: BondTableViewCell {
     var info: Info? {
         didSet {
             titleLabel.text = "scene.transaction_detail.memo_label".localized.appending(":")
-            info?.memo
-                .map { $0.customMemo }
-                .bind(to: textField.reactive.text)
-                .dispose(in: onReuseBag)
+            textField.text = info?.memo.value.customMemo
             textField.placeholder = info?.placeholder
         }
     }
