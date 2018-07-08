@@ -23,6 +23,8 @@ final class TransactionListViewModel: NSObject {
     let filterSettings = Observable<FilterSettings>(FilterSettings.load())
     let isFilterActive: Signal<Bool, NoError>
     
+    private var transactionViewModels = [TransactionViewModel]()
+    
     init(transactionService: TransactionService, aliasStore: ChannelAliasStore) {
         self.transactionService = transactionService
         self.aliasStore = aliasStore
@@ -41,9 +43,15 @@ final class TransactionListViewModel: NSObject {
         
         super.init()
         
-        combineLatest(transactionService.transactions, searchString, filterSettings)
+        transactionService.transactions
             .observeNext { [weak self] in
-                self?.updateSections(for: $0, searchString: $1, filterSettings: $2)
+                self?.updateTransactionViewModels(transactions: $0)
+            }
+            .dispose(in: reactive.bag)
+        
+        combineLatest(searchString, filterSettings)
+            .observeNext { [weak self] in
+                self?.filterTransactionViewModels(searchString: $0, filterSettings: $1)
             }
             .dispose(in: reactive.bag)
     }
@@ -57,7 +65,7 @@ final class TransactionListViewModel: NSObject {
         updateAnnotation(newAnnotation, for: transaction)
         
         if !filterSettings.value.displayArchivedTransactions {
-            updateSections(for: transactionService.transactions.value, searchString: searchString.value, filterSettings: filterSettings.value)
+            filterTransactionViewModels(searchString: searchString.value, filterSettings: filterSettings.value)
         }
     }
     
@@ -69,7 +77,6 @@ final class TransactionListViewModel: NSObject {
     
     func updateAnnotation(_ annotation: TransactionAnnotation, for transaction: Transaction) {
         transactionAnnotationStore.updateAnnotation(annotation, for: transaction)
-        let transactionViewModels = sections.sections.flatMap { $0.items }
         for transactionViewModel in transactionViewModels where transactionViewModel.id == transaction.id {
             transactionViewModel.annotation.value = annotation
             break
@@ -83,16 +90,28 @@ final class TransactionListViewModel: NSObject {
     
     // MARK: - Private
     
-    private func updateSections(for transactions: [Transaction], searchString: String?, filterSettings: FilterSettings) {
-        let transactionViewModels = transactions
+    private func updateTransactionViewModels(transactions: [Transaction]) {
+        let newTransactionViewModels = transactions
             .compactMap { transaction -> TransactionViewModel in
                 let annotation = transactionAnnotationStore.annotation(for: transaction)
-                return TransactionViewModel.instance(for: transaction, annotation: annotation, aliasStore: aliasStore)
+                
+                if let oldTransactionViewModel = self.transactionViewModels.first(where: { $0.transaction.isEqual(to: transaction) }) {
+                    return oldTransactionViewModel
+                } else {
+                    return TransactionViewModel.instance(for: transaction, annotation: annotation, aliasStore: aliasStore)
+                }
             }
+        
+        transactionViewModels = newTransactionViewModels
+        filterTransactionViewModels(searchString: searchString.value, filterSettings: filterSettings.value)
+    }
+    
+    private func filterTransactionViewModels(searchString: String?, filterSettings: FilterSettings) {
+        let filteredTransactionViewModels = transactionViewModels
             .filter { $0.matchesFilterSettings(filterSettings) }
             .filter { $0.matchesSearchString(searchString) }
         
-        let result = bondSections(transactionViewModels: transactionViewModels)
+        let result = bondSections(transactionViewModels: filteredTransactionViewModels)
         let array = Observable2DArray(result)
         
         DispatchQueue.main.async {
