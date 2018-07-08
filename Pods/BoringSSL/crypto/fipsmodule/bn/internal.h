@@ -140,9 +140,12 @@ extern "C" {
 
 #if defined(OPENSSL_64_BIT)
 
-#if !defined(_MSC_VER)
+#if defined(BORINGSSL_HAS_UINT128)
 // MSVC doesn't support two-word integers on 64-bit.
 #define BN_ULLONG uint128_t
+#if defined(BORINGSSL_CAN_DIVIDE_UINT128)
+#define BN_CAN_DIVIDE_ULLONG
+#endif
 #endif
 
 #define BN_BITS2 64
@@ -160,6 +163,7 @@ extern "C" {
 #elif defined(OPENSSL_32_BIT)
 
 #define BN_ULLONG uint64_t
+#define BN_CAN_DIVIDE_ULLONG
 #define BN_BITS2 32
 #define BN_BYTES 4
 #define BN_BITS4 16
@@ -193,9 +197,13 @@ extern "C" {
 #define Hw(t) ((BN_ULONG)((t) >> BN_BITS2))
 #endif
 
-// bn_correct_top decrements |bn->top| until |bn->d[top-1]| is non-zero or
-// until |top| is zero. If |bn| is zero, |bn->neg| is set to zero.
-void bn_correct_top(BIGNUM *bn);
+// bn_minimal_width returns the minimal value of |bn->top| which fits the
+// value of |bn|.
+int bn_minimal_width(const BIGNUM *bn);
+
+// bn_set_minimal_width sets |bn->width| to |bn_minimal_width(bn)|. If |bn| is
+// zero, |bn->neg| is set to zero.
+void bn_set_minimal_width(BIGNUM *bn);
 
 // bn_wexpand ensures that |bn| has at least |words| works of space without
 // altering its value. It returns one on success or zero on allocation
@@ -206,9 +214,26 @@ int bn_wexpand(BIGNUM *bn, size_t words);
 // than a number of words.
 int bn_expand(BIGNUM *bn, size_t bits);
 
+// bn_resize_words adjusts |bn->top| to be |words|. It returns one on success
+// and zero on allocation error or if |bn|'s value is too large.
+OPENSSL_EXPORT int bn_resize_words(BIGNUM *bn, size_t words);
+
+// bn_select_words sets |r| to |a| if |mask| is all ones or |b| if |mask| is
+// all zeros.
+void bn_select_words(BN_ULONG *r, BN_ULONG mask, const BN_ULONG *a,
+                     const BN_ULONG *b, size_t num);
+
 // bn_set_words sets |bn| to the value encoded in the |num| words in |words|,
 // least significant word first.
 int bn_set_words(BIGNUM *bn, const BN_ULONG *words, size_t num);
+
+// bn_fits_in_words returns one if |bn| may be represented in |num| words, plus
+// a sign bit, and zero otherwise.
+int bn_fits_in_words(const BIGNUM *bn, size_t num);
+
+// bn_copy_words copies the value of |bn| to |out| and returns one if the value
+// is representable in |num| words. Otherwise, it returns zero.
+int bn_copy_words(BN_ULONG *out, size_t num, const BIGNUM *bn);
 
 // bn_mul_add_words multiples |ap| by |w|, adds the result to |rp|, and places
 // the result in |rp|. |ap| and |rp| must both be |num| words long. It returns
@@ -255,16 +280,6 @@ void bn_sqr_comba8(BN_ULONG r[16], const BN_ULONG a[4]);
 // bn_sqr_comba4 sets |r| to |a|^2.
 void bn_sqr_comba4(BN_ULONG r[8], const BN_ULONG a[4]);
 
-// bn_cmp_words returns a value less than, equal to or greater than zero if
-// the, length |n|, array |a| is less than, equal to or greater than |b|.
-int bn_cmp_words(const BN_ULONG *a, const BN_ULONG *b, int n);
-
-// bn_cmp_words returns a value less than, equal to or greater than zero if the
-// array |a| is less than, equal to or greater than |b|. The arrays can be of
-// different lengths: |cl| gives the minimum of the two lengths and |dl| gives
-// the length of |a| minus the length of |b|.
-int bn_cmp_part_words(const BN_ULONG *a, const BN_ULONG *b, int cl, int dl);
-
 // bn_less_than_words returns one if |a| < |b| and zero otherwise, where |a|
 // and |b| both are |len| words long. It runs in constant time.
 int bn_less_than_words(const BN_ULONG *a, const BN_ULONG *b, size_t len);
@@ -292,7 +307,13 @@ int bn_mul_mont(BN_ULONG *rp, const BN_ULONG *ap, const BN_ULONG *bp,
                 const BN_ULONG *np, const BN_ULONG *n0, int num);
 
 uint64_t bn_mont_n0(const BIGNUM *n);
-int bn_mod_exp_base_2_vartime(BIGNUM *r, unsigned p, const BIGNUM *n);
+
+// bn_mod_exp_base_2_consttime calculates r = 2**p (mod n). |p| must be larger
+// than log_2(n); i.e. 2**p must be larger than |n|. |n| must be positive and
+// odd. |p| and the bit width of |n| are assumed public, but |n| is otherwise
+// treated as secret.
+int bn_mod_exp_base_2_consttime(BIGNUM *r, unsigned p, const BIGNUM *n,
+                                BN_CTX *ctx);
 
 #if defined(OPENSSL_X86_64) && defined(_MSC_VER)
 #define BN_UMULT_LOHI(low, high, a, b) ((low) = _umul128((a), (b), &(high)))
@@ -321,6 +342,61 @@ int bn_jacobi(const BIGNUM *a, const BIGNUM *b, BN_CTX *ctx);
 // bn_is_bit_set_words returns one if bit |bit| is set in |a| and zero
 // otherwise.
 int bn_is_bit_set_words(const BN_ULONG *a, size_t num, unsigned bit);
+
+// bn_one_to_montgomery sets |r| to one in Montgomery form. It returns one on
+// success and zero on error. This function treats the bit width of the modulus
+// as public.
+int bn_one_to_montgomery(BIGNUM *r, const BN_MONT_CTX *mont, BN_CTX *ctx);
+
+// bn_less_than_montgomery_R returns one if |bn| is less than the Montgomery R
+// value for |mont| and zero otherwise.
+int bn_less_than_montgomery_R(const BIGNUM *bn, const BN_MONT_CTX *mont);
+
+
+// Fixed-width arithmetic.
+//
+// The following functions implement non-modular arithmetic in constant-time
+// and pessimally set |r->width| to the largest possible word size.
+//
+// Note this means that, e.g., repeatedly multiplying by one will cause widths
+// to increase without bound. The corresponding public API functions minimize
+// their outputs to avoid regressing calculator consumers.
+
+// bn_uadd_fixed behaves like |BN_uadd|, but it pessimally sets
+// |r->width| = |a->width| + |b->width| + 1.
+int bn_uadd_fixed(BIGNUM *r, const BIGNUM *a, const BIGNUM *b);
+
+// bn_mul_fixed behaves like |BN_mul|, but it rejects negative inputs and
+// pessimally sets |r->width| to |a->width| + |b->width|, to avoid leaking
+// information about |a| and |b|.
+int bn_mul_fixed(BIGNUM *r, const BIGNUM *a, const BIGNUM *b, BN_CTX *ctx);
+
+// bn_sqrt_fixed behaves like |BN_sqrt|, but it pessimally sets |r->width| to
+// 2*|a->width|, to avoid leaking information about |a| and |b|.
+int bn_sqr_fixed(BIGNUM *r, const BIGNUM *a, BN_CTX *ctx);
+
+
+// Constant-time modular arithmetic.
+//
+// The following functions implement basic constant-time modular arithemtic on
+// word arrays.
+
+// bn_mod_add_quick_ctx acts like |BN_mod_add_quick| but takes a |BN_CTX|.
+int bn_mod_add_quick_ctx(BIGNUM *r, const BIGNUM *a, const BIGNUM *b,
+                         const BIGNUM *m, BN_CTX *ctx);
+
+// bn_mod_sub_quick_ctx acts like |BN_mod_sub_quick| but takes a |BN_CTX|.
+int bn_mod_sub_quick_ctx(BIGNUM *r, const BIGNUM *a, const BIGNUM *b,
+                         const BIGNUM *m, BN_CTX *ctx);
+
+// bn_mod_lshift1_quick_ctx acts like |BN_mod_lshift1_quick| but takes a
+// |BN_CTX|.
+int bn_mod_lshift1_quick_ctx(BIGNUM *r, const BIGNUM *a, const BIGNUM *m,
+                             BN_CTX *ctx);
+
+// bn_mod_lshift_quick_ctx acts like |BN_mod_lshift_quick| but takes a |BN_CTX|.
+int bn_mod_lshift_quick_ctx(BIGNUM *r, const BIGNUM *a, int n, const BIGNUM *m,
+                            BN_CTX *ctx);
 
 
 // Low-level operations for small numbers.
@@ -367,6 +443,13 @@ int bn_to_montgomery_small(BN_ULONG *r, size_t num_r, const BN_ULONG *a,
 // inconsistent. |r| and |a| may alias.
 int bn_from_montgomery_small(BN_ULONG *r, size_t num_r, const BN_ULONG *a,
                              size_t num_a, const BN_MONT_CTX *mont);
+
+// bn_one_to_montgomery_small sets |r| to one in Montgomery form. It returns one
+// on success and zero on error. |num_r| must be the length of the modulus,
+// which is |mont->N.top|. This function treats the bit width of the modulus as
+// public.
+int bn_one_to_montgomery_small(BN_ULONG *r, size_t num_r,
+                               const BN_MONT_CTX *mont);
 
 // bn_mod_mul_montgomery_small sets |r| to |a| * |b| mod |mont->N|. Both inputs
 // and outputs are in the Montgomery domain. |num_r| must be the length of the

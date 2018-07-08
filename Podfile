@@ -10,7 +10,7 @@ end
 target 'Lightning' do
     pod 'Bond'
     pod 'KeychainAccess'
-    pod 'SwiftGRPC'
+    pod 'SwiftGRPC', :git => 'https://github.com/grpc/grpc-swift'
 end
 
 target 'Library' do

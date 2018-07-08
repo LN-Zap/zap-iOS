@@ -49,23 +49,22 @@ open class ServiceClientBase: ServiceClient {
   }
 
   /// Create a client.
-  public init(address: String, secure: Bool = true) {
+  required public init(address: String, secure: Bool = true, arguments: [Channel.Argument] = []) {
     gRPC.initialize()
-    channel = Channel(address: address, secure: secure)
+    channel = Channel(address: address, secure: secure, arguments: arguments)
     metadata = Metadata()
   }
 
   /// Create a client using a pre-defined channel.
-  public init(channel: Channel) {
-    gRPC.initialize()
+  required public init(channel: Channel) {
     self.channel = channel
-    self.metadata = Metadata()
+    metadata = Metadata()
   }
-
-  /// Create a client that makes secure connections with a custom certificate and (optional) hostname.
-  public init(address: String, certificates: String, host: String?) {
+  
+  /// Create a client that makes secure connections with a custom certificate.
+  required public init(address: String, certificates: String, clientCertificates: String? = nil, clientKey: String? = nil, arguments: [Channel.Argument] = []) {
     gRPC.initialize()
-    channel = Channel(address: address, certificates: certificates, host: host)
+    channel = Channel(address: address, certificates: certificates, clientCertificates: clientCertificates, clientKey: clientKey, arguments: arguments)
     metadata = Metadata()
   }
 }

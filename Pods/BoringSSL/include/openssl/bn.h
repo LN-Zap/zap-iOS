@@ -459,6 +459,7 @@ OPENSSL_EXPORT int BN_is_odd(const BIGNUM *bn);
 // BN_is_pow2 returns 1 if |a| is a power of two, and 0 otherwise.
 OPENSSL_EXPORT int BN_is_pow2(const BIGNUM *a);
 
+
 // Bitwise operations.
 
 // BN_lshift sets |r| equal to |a| << n. The |a| and |r| arguments may be the
@@ -494,6 +495,11 @@ OPENSSL_EXPORT int BN_is_bit_set(const BIGNUM *a, int n);
 // BN_mask_bits truncates |a| so that it is only |n| bits long. It returns one
 // on success or zero if |n| is greater than the length of |a| already.
 OPENSSL_EXPORT int BN_mask_bits(BIGNUM *a, int n);
+
+// BN_count_low_zero_bits returns the number of low-order zero bits in |bn|, or
+// the number of factors of two which divide it. It returns zero if |bn| is
+// zero.
+OPENSSL_EXPORT int BN_count_low_zero_bits(const BIGNUM *bn);
 
 
 // Modulo arithmetic.
@@ -788,8 +794,10 @@ int BN_mod_inverse_odd(BIGNUM *out, int *out_no_inverse, const BIGNUM *a,
 // BN_MONT_CTX contains the precomputed values needed to work in a specific
 // Montgomery domain.
 
-// BN_MONT_CTX_new returns a fresh BN_MONT_CTX or NULL on allocation failure.
-OPENSSL_EXPORT BN_MONT_CTX *BN_MONT_CTX_new(void);
+// BN_MONT_CTX_new_for_modulus returns a fresh |BN_MONT_CTX| given the modulus,
+// |mod| or NULL on error.
+OPENSSL_EXPORT BN_MONT_CTX *BN_MONT_CTX_new_for_modulus(const BIGNUM *mod,
+                                                        BN_CTX *ctx);
 
 // BN_MONT_CTX_free frees memory associated with |mont|.
 OPENSSL_EXPORT void BN_MONT_CTX_free(BN_MONT_CTX *mont);
@@ -798,11 +806,6 @@ OPENSSL_EXPORT void BN_MONT_CTX_free(BN_MONT_CTX *mont);
 // NULL on error.
 OPENSSL_EXPORT BN_MONT_CTX *BN_MONT_CTX_copy(BN_MONT_CTX *to,
                                              const BN_MONT_CTX *from);
-
-// BN_MONT_CTX_set sets up a Montgomery context given the modulus, |mod|. It
-// returns one on success and zero on error.
-OPENSSL_EXPORT int BN_MONT_CTX_set(BN_MONT_CTX *mont, const BIGNUM *mod,
-                                   BN_CTX *ctx);
 
 // BN_MONT_CTX_set_locked takes |lock| and checks whether |*pmont| is NULL. If
 // so, it creates a new |BN_MONT_CTX| and sets the modulus for it to |mod|. It
@@ -891,21 +894,52 @@ OPENSSL_EXPORT int BN_mod_exp2_mont(BIGNUM *r, const BIGNUM *a1,
                                     const BIGNUM *p2, const BIGNUM *m,
                                     BN_CTX *ctx, const BN_MONT_CTX *mont);
 
+// BN_MONT_CTX_new returns a fresh |BN_MONT_CTX| or NULL on allocation failure.
+// Use |BN_MONT_CTX_new_for_modulus| instead.
+OPENSSL_EXPORT BN_MONT_CTX *BN_MONT_CTX_new(void);
+
+// BN_MONT_CTX_set sets up a Montgomery context given the modulus, |mod|. It
+// returns one on success and zero on error. Use |BN_MONT_CTX_new_for_modulus|
+// instead.
+OPENSSL_EXPORT int BN_MONT_CTX_set(BN_MONT_CTX *mont, const BIGNUM *mod,
+                                   BN_CTX *ctx);
+
 
 // Private functions
 
 struct bignum_st {
-  BN_ULONG *d; /* Pointer to an array of 'BN_BITS2' bit chunks in little-endian
-                  order. */
-  int top;    // Index of last used element in |d|, plus one.
-  int dmax;   // Size of |d|, in words.
-  int neg;    // one if the number is negative
-  int flags;  // bitmask of BN_FLG_* values
+  // d is a pointer to an array of |width| |BN_BITS2|-bit chunks in
+  // little-endian order. This stores the absolute value of the number.
+  BN_ULONG *d;
+  // width is the number of elements of |d| which are valid. This value is not
+  // necessarily minimal; the most-significant words of |d| may be zero.
+  // |width| determines a potentially loose upper-bound on the absolute value
+  // of the |BIGNUM|.
+  //
+  // Functions taking |BIGNUM| inputs must compute the same answer for all
+  // possible widths. |bn_minimal_width|, |bn_set_minimal_width|, and other
+  // helpers may be used to recover the minimal width, provided it is not
+  // secret. If it is secret, use a different algorithm. Functions may output
+  // minimal or non-minimal |BIGNUM|s depending on secrecy requirements, but
+  // those which cause widths to unboundedly grow beyond the minimal value
+  // should be documented such.
+  //
+  // Note this is different from historical |BIGNUM| semantics.
+  int width;
+  // dmax is number of elements of |d| which are allocated.
+  int dmax;
+  // neg is one if the number if negative and zero otherwise.
+  int neg;
+  // flags is a bitmask of |BN_FLG_*| values
+  int flags;
 };
 
 struct bn_mont_ctx_st {
-  BIGNUM RR;  // used to convert to montgomery form
-  BIGNUM N;   // The modulus
+  // RR is R^2, reduced modulo |N|. It is used to convert to Montgomery form.
+  BIGNUM RR;
+  // N is the modulus. It is always stored in minimal form, so |N.top|
+  // determines R.
+  BIGNUM N;
   BN_ULONG n0[2];  // least significant words of (R*Ri-1)/N
 };
 

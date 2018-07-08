@@ -151,7 +151,7 @@ extern "C" {
 // A consumer may use this symbol in the preprocessor to temporarily build
 // against multiple revisions of BoringSSL at the same time. It is not
 // recommended to do so for longer than is necessary.
-#define BORINGSSL_API_VERSION 6
+#define BORINGSSL_API_VERSION 7
 
 #if defined(BORINGSSL_SHARED_LIBRARY)
 
@@ -221,19 +221,6 @@ extern "C" {
 #if __has_feature(memory_sanitizer)
 #define OPENSSL_MSAN
 #endif
-#endif
-
-// Have a generic fall-through for different versions of C/C++.
-#if defined(__cplusplus) && __cplusplus >= 201703L
-#define OPENSSL_FALLTHROUGH [[fallthrough]]
-#elif defined(__cplusplus) && __cplusplus >= 201103L && defined(__clang__)
-#define OPENSSL_FALLTHROUGH [[clang::fallthrough]]
-#elif defined(__cplusplus) && __cplusplus >= 201103L && __GNUC__ >= 7
-#define OPENSSL_FALLTHROUGH [[gnu::fallthrough]]
-#elif  __GNUC__ >= 7 // gcc 7
-#define OPENSSL_FALLTHROUGH __attribute__ ((fallthrough))
-#else // C++11 on gcc 6, and all other cases
-#define OPENSSL_FALLTHROUGH
 #endif
 
 // CRYPTO_THREADID is a dummy value.

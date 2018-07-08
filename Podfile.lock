@@ -1,35 +1,35 @@
 PODS:
-  - BigInt (3.0.1):
+  - BigInt (3.1.0):
     - SipHash (~> 1.2)
-  - Bond (6.8.0):
+  - Bond (6.8.3):
     - Differ (~> 1.0)
     - ReactiveKit (~> 3.9)
-  - BoringSSL (10.0.2):
-    - BoringSSL/Implementation (= 10.0.2)
-    - BoringSSL/Interface (= 10.0.2)
-  - BoringSSL/Implementation (10.0.2):
-    - BoringSSL/Interface (= 10.0.2)
-  - BoringSSL/Interface (10.0.2)
-  - Differ (1.2.2)
-  - gRPC-Core (1.11.0):
-    - gRPC-Core/Implementation (= 1.11.0)
-    - gRPC-Core/Interface (= 1.11.0)
-  - gRPC-Core/Implementation (1.11.0):
+  - BoringSSL (10.0.5):
+    - BoringSSL/Implementation (= 10.0.5)
+    - BoringSSL/Interface (= 10.0.5)
+  - BoringSSL/Implementation (10.0.5):
+    - BoringSSL/Interface (= 10.0.5)
+  - BoringSSL/Interface (10.0.5)
+  - Differ (1.2.3)
+  - gRPC-Core (1.12.0):
+    - gRPC-Core/Implementation (= 1.12.0)
+    - gRPC-Core/Interface (= 1.12.0)
+  - gRPC-Core/Implementation (1.12.0):
     - BoringSSL (~> 10.0)
-    - gRPC-Core/Interface (= 1.11.0)
+    - gRPC-Core/Interface (= 1.12.0)
     - nanopb (~> 0.3)
-  - gRPC-Core/Interface (1.11.0)
+  - gRPC-Core/Interface (1.12.0)
   - KeychainAccess (3.1.1)
   - nanopb (0.3.8):
     - nanopb/decode (= 0.3.8)
     - nanopb/encode (= 0.3.8)
   - nanopb/decode (0.3.8)
   - nanopb/encode (0.3.8)
-  - ReactiveKit (3.9.4)
-  - SipHash (1.2.0)
-  - SwiftGRPC (0.4.2):
+  - ReactiveKit (3.9.6)
+  - SipHash (1.2.2)
+  - SwiftGRPC (0.5.0):
     - BoringSSL (~> 10.0)
-    - gRPC-Core (~> 1.11.0)
+    - gRPC-Core (~> 1.12.0)
     - SwiftProtobuf (~> 1.0.3)
   - SwiftProtobuf (1.0.3)
 
@@ -37,7 +37,7 @@ DEPENDENCIES:
   - BigInt (~> 3.0)
   - Bond
   - KeychainAccess
-  - SwiftGRPC
+  - SwiftGRPC (from `https://github.com/grpc/grpc-swift`)
 
 SPEC REPOS:
   https://github.com/cocoapods/specs.git:
@@ -50,22 +50,30 @@ SPEC REPOS:
     - nanopb
     - ReactiveKit
     - SipHash
-    - SwiftGRPC
     - SwiftProtobuf
 
+EXTERNAL SOURCES:
+  SwiftGRPC:
+    :git: https://github.com/grpc/grpc-swift
+
+CHECKOUT OPTIONS:
+  SwiftGRPC:
+    :commit: f11ad0b7986211a67e4ab843a12fe34ff5fddc77
+    :git: https://github.com/grpc/grpc-swift
+
 SPEC CHECKSUMS:
-  BigInt: 8e8a52161c745cd3ab78e3dc346a9fbee51e6cf6
-  Bond: f07e371c05e07c46589c4a518515ea39c6263055
-  BoringSSL: 60dd24df4af296bf41d78e5841dbb95d75f88c0d
-  Differ: 5ac7b6d0d3a60274b52a0ef087ec0e411b57db2c
-  gRPC-Core: 164639cd8ae18ca8b65477fafb2efbaecf4f181a
+  BigInt: 76b5dfdfa3e2e478d4ffdf161aeede5502e2742f
+  Bond: d6d25c0cb90459b9d27197251405c6db254da4cf
+  BoringSSL: cf3f1793eb6e3c445c4d150456341f149c268a35
+  Differ: 061f3298ea9408494c43b530c44583e555884daf
+  gRPC-Core: 9696b220565b283e021cf2722d473a4a74b7622a
   KeychainAccess: 7bd430028059754a3debab3cfc0bd1fc7fb85df3
   nanopb: 5601e6bca2dbf1ed831b519092ec110f66982ca3
-  ReactiveKit: cafbc91f72751d09baa9a3c3cf6d82b646328a6c
-  SipHash: c6e9e43e9c531b5bc6602545130c26194a6d31ce
-  SwiftGRPC: 4cb90d96998607003cf1df1e01017f30f6fd124b
+  ReactiveKit: 804d3093ad42dee0de19e42d4f7dcae9c14364b0
+  SipHash: fad90a4683e420c52ef28063063dbbce248ea6d4
+  SwiftGRPC: f0c79f81e90b1006a83f73f802ba1d01851d5def
   SwiftProtobuf: 5ccc0e4054e37c75800e5744acb2aa80bb72b39c
 
-PODFILE CHECKSUM: 4d9687b616a48f9ccf6c20753175b9d981885080
+PODFILE CHECKSUM: 8ccafea35c576da28e34cb2c3c8eabe546743bac
 
 COCOAPODS: 1.5.3

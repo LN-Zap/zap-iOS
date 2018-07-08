@@ -50,8 +50,9 @@ public class Server {
   /// - Parameter address: the address where the server will listen
   /// - Parameter key: the private key for the server's certificates
   /// - Parameter certs: the server's certificates
-  public init(address: String, key: String, certs: String) {
-    underlyingServer = cgrpc_server_create_secure(address, key, certs)
+  /// - Parameter rootCerts: used to validate client certificates; will enable enforcing valid client certificates when provided
+  public init(address: String, key: String, certs: String, rootCerts: String? = nil) {
+    underlyingServer = cgrpc_server_create_secure(address, key, certs, rootCerts, rootCerts == nil ? 0 : 1)
     completionQueue = CompletionQueue(
       underlyingCompletionQueue: cgrpc_server_get_completion_queue(underlyingServer), name: "Server " + address)
   }
@@ -61,12 +62,14 @@ public class Server {
     completionQueue.shutdown()
   }
 
-  /// Run the server
-  public func run(dispatchQueue: DispatchQueue = DispatchQueue.global(),
-                  handlerFunction: @escaping (Handler) -> Void) {
+  /// Run the server.
+  ///
+  /// - Parameter handlerFunction: will be called to handle an incoming request. Dispatched on a new thread, so can be blocking.
+  public func run(handlerFunction: @escaping (Handler) -> Void) {
     cgrpc_server_start(underlyingServer)
     // run the server on a new background thread
-    dispatchQueue.async {
+    let spinloopThreadQueue = DispatchQueue(label: "SwiftGRPC.CompletionQueue.runToCompletion.spinloopThread")
+    spinloopThreadQueue.async {
       spinloop: while true {
         do {
           let handler = Handler(underlyingServer: self.underlyingServer)
@@ -86,13 +89,13 @@ public class Server {
                 _ = strongHandlerReference
                 // this will start the completion queue on a new thread
                 handler.completionQueue.runToCompletion {
-                  dispatchQueue.async {
-                    // release the handler when it finishes
-                    strongHandlerReference = nil
-                  }
+                  // release the handler when it finishes
+                  strongHandlerReference = nil
                 }
-                dispatchQueue.async {
-                  // dispatch the handler function on a separate thread
+                
+                // Dispatch the handler function on a separate thread.
+                let handlerDispatchThreadQueue = DispatchQueue(label: "SwiftGRPC.Server.run.dispatchHandlerThread")
+                handlerDispatchThreadQueue.async {
                   handlerFunction(handler)
                 }
               }

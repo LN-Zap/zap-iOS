@@ -100,61 +100,38 @@ int BN_add(BIGNUM *r, const BIGNUM *a, const BIGNUM *b) {
   return ret;
 }
 
-int BN_uadd(BIGNUM *r, const BIGNUM *a, const BIGNUM *b) {
-  int max, min, dif;
-  BN_ULONG *ap, *bp, *rp, carry, t1, t2;
-  const BIGNUM *tmp;
-
-  if (a->top < b->top) {
-    tmp = a;
+int bn_uadd_fixed(BIGNUM *r, const BIGNUM *a, const BIGNUM *b) {
+  // Widths are public, so we normalize to make |a| the larger one.
+  if (a->width < b->width) {
+    const BIGNUM *tmp = a;
     a = b;
     b = tmp;
   }
-  max = a->top;
-  min = b->top;
-  dif = max - min;
 
+  int max = a->width;
+  int min = b->width;
   if (!bn_wexpand(r, max + 1)) {
     return 0;
   }
+  r->width = max + 1;
 
-  r->top = max;
-
-  ap = a->d;
-  bp = b->d;
-  rp = r->d;
-
-  carry = bn_add_words(rp, ap, bp, min);
-  rp += min;
-  ap += min;
-  bp += min;
-
-  if (carry) {
-    while (dif) {
-      dif--;
-      t1 = *(ap++);
-      t2 = t1 + 1;
-      *(rp++) = t2;
-      if (t2) {
-        carry = 0;
-        break;
-      }
-    }
-    if (carry) {
-      // carry != 0 => dif == 0
-      *rp = 1;
-      r->top++;
-    }
+  BN_ULONG carry = bn_add_words(r->d, a->d, b->d, min);
+  for (int i = min; i < max; i++) {
+    // |r| and |a| may alias, so use a temporary.
+    BN_ULONG tmp = carry + a->d[i];
+    carry = tmp < a->d[i];
+    r->d[i] = tmp;
   }
 
-  if (dif && rp != ap) {
-    while (dif--) {
-      // copy remaining words if ap != rp
-      *(rp++) = *(ap++);
-    }
-  }
+  r->d[max] = carry;
+  return 1;
+}
 
-  r->neg = 0;
+int BN_uadd(BIGNUM *r, const BIGNUM *a, const BIGNUM *b) {
+  if (!bn_uadd_fixed(r, a, b)) {
+    return 0;
+  }
+  bn_set_minimal_width(r);
   return 1;
 }
 
@@ -182,16 +159,16 @@ int BN_add_word(BIGNUM *a, BN_ULONG w) {
     return i;
   }
 
-  for (i = 0; w != 0 && i < a->top; i++) {
+  for (i = 0; w != 0 && i < a->width; i++) {
     a->d[i] = l = a->d[i] + w;
     w = (w > l) ? 1 : 0;
   }
 
-  if (w && i == a->top) {
-    if (!bn_wexpand(a, a->top + 1)) {
+  if (w && i == a->width) {
+    if (!bn_wexpand(a, a->width + 1)) {
       return 0;
     }
-    a->top++;
+    a->width++;
     a->d[i] = w;
   }
 
@@ -199,7 +176,6 @@ int BN_add_word(BIGNUM *a, BN_ULONG w) {
 }
 
 int BN_sub(BIGNUM *r, const BIGNUM *a, const BIGNUM *b) {
-  int max;
   int add = 0, neg = 0;
   const BIGNUM *tmp;
 
@@ -232,13 +208,6 @@ int BN_sub(BIGNUM *r, const BIGNUM *a, const BIGNUM *b) {
     return 1;
   }
 
-  // We are actually doing a - b :-)
-
-  max = (a->top > b->top) ? a->top : b->top;
-  if (!bn_wexpand(r, max)) {
-    return 0;
-  }
-
   if (BN_ucmp(a, b) < 0) {
     if (!BN_usub(r, b, a)) {
       return 0;
@@ -259,8 +228,8 @@ int BN_usub(BIGNUM *r, const BIGNUM *a, const BIGNUM *b) {
   register BN_ULONG t1, t2, *ap, *bp, *rp;
   int i, carry;
 
-  max = a->top;
-  min = b->top;
+  max = bn_minimal_width(a);
+  min = bn_minimal_width(b);
   dif = max - min;
 
   if (dif < 0)  // hmm... should not be happening
@@ -313,9 +282,9 @@ int BN_usub(BIGNUM *r, const BIGNUM *a, const BIGNUM *b) {
     OPENSSL_memcpy(rp, ap, sizeof(*rp) * dif);
   }
 
-  r->top = max;
+  r->width = max;
   r->neg = 0;
-  bn_correct_top(r);
+  bn_set_minimal_width(r);
 
   return 1;
 }
@@ -345,7 +314,7 @@ int BN_sub_word(BIGNUM *a, BN_ULONG w) {
     return i;
   }
 
-  if ((a->top == 1) && (a->d[0] < w)) {
+  if ((bn_minimal_width(a) == 1) && (a->d[0] < w)) {
     a->d[0] = w - a->d[0];
     a->neg = 1;
     return 1;
@@ -363,8 +332,8 @@ int BN_sub_word(BIGNUM *a, BN_ULONG w) {
     }
   }
 
-  if ((a->d[i] == 0) && (i == (a->top - 1))) {
-    a->top--;
+  if ((a->d[i] == 0) && (i == (a->width - 1))) {
+    a->width--;
   }
 
   return 1;
