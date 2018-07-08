@@ -10,7 +10,7 @@ import BTCUtil
 import XCTest
 
 final class InputNumberFormatterTests: XCTestCase {
-    // swiftling:disable:next function_body_length
+    // swiftlint:disable:next function_body_length
     func testInputs() {
         let fiat = FiatCurrency(currencyCode: "USD", symbol: "$", localized: "$", exchangeRate: 1)
         
