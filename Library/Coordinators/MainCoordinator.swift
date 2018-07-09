@@ -76,7 +76,7 @@ final class MainCoordinator: Routing {
     }
     
     func presentSend(invoice: String?) {
-        let strategy = SendQRCodeScannerStrategy(transactionAnnotationStore: transactionListViewModel.transactionAnnotationStore)
+        let strategy = SendQRCodeScannerStrategy(transactionAnnotationStore: transactionListViewModel.transactionAnnotationStore, channelAliasStore: channelListViewModel.aliasStore)
         let viewController = UIStoryboard.instantiateQRCodeScannerViewController(with: lightningService, strategy: strategy)
         mainViewController?.present(viewController, animated: true) {
             if let invoice = invoice,

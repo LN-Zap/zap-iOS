@@ -10,12 +10,15 @@ import Foundation
 import Lightning
 
 class SendQRCodeScannerStrategy: QRCodeScannerStrategy {
-    let title = "scene.deposit.send".localized
-    let transactionAnnotationStore: TransactionAnnotationStore
-    var lastScannedAddress: String?
+    private let transactionAnnotationStore: TransactionAnnotationStore
+    private let channelAliasStore: ChannelAliasStore
+    private var lastScannedAddress: String?
     
-    init(transactionAnnotationStore: TransactionAnnotationStore) {
+    let title = "scene.deposit.send".localized
+    
+    init(transactionAnnotationStore: TransactionAnnotationStore, channelAliasStore: ChannelAliasStore) {
         self.transactionAnnotationStore = transactionAnnotationStore
+        self.channelAliasStore = channelAliasStore
     }
     
     func viewControllerForAddress(address: String, lightningService: LightningService) -> Result<UIViewController>? {
@@ -30,7 +33,7 @@ class SendQRCodeScannerStrategy: QRCodeScannerStrategy {
                 let sendOnChainViewModel = SendOnChainViewModel(transactionAnnotationStore: transactionAnnotationStore, lightningService: lightningService, bitcoinURI: bitcoinURI)
                 return UIStoryboard.instantiateSendOnChainViewController(with: sendOnChainViewModel)
             } else if let lightningURI = $0 as? LightningInvoiceURI {
-                let sendLightningInvoiceViewModel = SendLightningInvoiceViewModel(transactionAnnotationStore: transactionAnnotationStore, transactionService: lightningService.transactionService, lightningInvoice: lightningURI.address)
+                let sendLightningInvoiceViewModel = SendLightningInvoiceViewModel(transactionAnnotationStore: transactionAnnotationStore, channelAliasStore: channelAliasStore, transactionService: lightningService.transactionService, lightningInvoice: lightningURI.address)
                 return UIStoryboard.instantiateSendLightningInvoiceViewController(with: sendLightningInvoiceViewModel)
             } else {
                 fatalError("No ViewController implemented for URI")

@@ -18,6 +18,7 @@ enum SendLightningInvoiceError {
 
 final class SendLightningInvoiceViewModel {
     private let transactionAnnotationStore: TransactionAnnotationStore
+    private let channelAliasStore: ChannelAliasStore
     private let transactionService: TransactionService
     
     let memo = Observable<String?>(nil)
@@ -27,8 +28,9 @@ final class SendLightningInvoiceViewModel {
     
     private var paymentRequest: PaymentRequest?
     
-    init(transactionAnnotationStore: TransactionAnnotationStore, transactionService: TransactionService, lightningInvoice: String) {
+    init(transactionAnnotationStore: TransactionAnnotationStore, channelAliasStore: ChannelAliasStore, transactionService: TransactionService, lightningInvoice: String) {
         self.transactionAnnotationStore = transactionAnnotationStore
+        self.channelAliasStore = channelAliasStore
         self.transactionService = transactionService
         
         var lightningInvoice = lightningInvoice
@@ -59,7 +61,11 @@ final class SendLightningInvoiceViewModel {
             self.memo.value = String(format: "scene.send.lightning.memo".localized, memo)
         }
         satoshis.value = paymentRequest.amount
+        
         destination.value = paymentRequest.destination
+        channelAliasStore.alias(for: paymentRequest.destination) { [weak self] in
+            self?.destination.value = $0
+        }
         
         if transactionService.transactions.value.contains(where: { $0.id == paymentRequest.paymentHash }) {
             invoiceError.value = .duplicate

@@ -12,7 +12,8 @@ import ReactiveKit
 
 final class ChannelListViewModel: NSObject {
     private let channelService: ChannelService
-    private let aliasStore: ChannelAliasStore
+    
+    let aliasStore: ChannelAliasStore
     
     let sections: MutableObservable2DArray<String, ChannelViewModel>
     let searchString = Observable<String?>(nil)
