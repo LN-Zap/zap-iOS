@@ -7,16 +7,23 @@
 
 import Foundation
 
+extension Bolt11.Invoice {
+    init(network: Network, date: Date) {
+        self.network = network
+        self.date = date
+    }
+}
+
 struct Bolt11 {
     struct Invoice: Equatable {
-        var network: Network?
-        var date: Date?
+        var network: Network
+        var date: Date
         var amount: Satoshi?
         var description: String?
         var expiry: TimeInterval?
     }
     
-    enum Prefix: String {
+    private enum Prefix: String {
         case lnbc
         case lntb
         case lnbcrt
@@ -31,7 +38,7 @@ struct Bolt11 {
         }
     }
     
-    enum Multiplier: Character {
+    private enum Multiplier: Character {
         case milli = "m"
         case micro = "u"
         case nano = "n"
@@ -51,7 +58,7 @@ struct Bolt11 {
         }
     }
     
-    enum FieldTypes: UInt8 {
+    private enum FieldTypes: UInt8 {
         case fieldTypeP = 1     // fieldTypeP is the field containing the payment hash.
         case fieldTypeD = 13    // fieldTypeD contains a short description of the payment.
         case fieldTypeN = 19    // fieldTypeN contains the pubkey of the target node.
@@ -62,46 +69,30 @@ struct Bolt11 {
         case fieldTypeC = 24    // fieldTypeC contains an optional requested final CLTV delta.
     }
     
-    let signatureBase32Len = 104
-    let timestampBase32Len = 7
-    
-    let network: Network
-    
-    init(network: Network) {
-        self.network = network
-    }
+    private let signatureBase32Len = 104
+    private let timestampBase32Len = 7
     
     func decode(string: String) -> Invoice? {
-        var invoice: Invoice = Invoice()
-
-        guard let (humanReadablePart, data) = Bech32.decode(string, limit: false) else { return nil }
-
-        if humanReadablePart.count < 3 {
-            return nil
-        }
-        
-        if !humanReadablePart.starts(with: Prefix.forNetwork(network).rawValue) {
-            return nil
-        }
-        invoice.network = network
-        invoice.amount = decodeAmount(for: humanReadablePart)
-        
+        guard
+            let (humanReadablePart, data) = Bech32.decode(string, limit: false),
+            humanReadablePart.count > 3,
+            let network = decodeNetwork(humanReadablePart: humanReadablePart) else { return nil }
+    
         let invoiceData = data.dropLast(signatureBase32Len)
         
-        if invoiceData.count < timestampBase32Len {
-            return nil
-        }
+        guard invoiceData.count >= timestampBase32Len else { return nil }
         
-        invoice = parseTimestamp(data: invoiceData[invoiceData.startIndex..<invoiceData.startIndex + timestampBase32Len], invoice: invoice)
-        
+        let date = parseTimestamp(data: invoiceData[invoiceData.startIndex..<invoiceData.startIndex + timestampBase32Len])
+        var invoice = Invoice(network: network, date: date)
+
+        invoice.amount = decodeAmount(for: humanReadablePart, network: network)
+
         let tagData = invoiceData[invoiceData.startIndex + timestampBase32Len..<invoiceData.endIndex]
         return parseTaggedFields(data: tagData, invoice: invoice)
     }
     
-    private func parseTimestamp(data: Data, invoice: Invoice) -> Invoice {
-        var invoice = invoice
-        invoice.date = Date(timeIntervalSince1970: TimeInterval(base32ToUInt(data)))
-        return invoice
+    private func parseTimestamp(data: Data) -> Date {
+        return Date(timeIntervalSince1970: TimeInterval(base32ToUInt(data)))
     }
     
     private func parseTaggedFields(data: Data, invoice: Invoice) -> Invoice? {
@@ -169,7 +160,7 @@ struct Bolt11 {
         return TimeInterval(base32ToUInt(data))
     }
     
-    private func decodeAmount(for humanReadablePart: String) -> Satoshi? {
+    private func decodeAmount(for humanReadablePart: String, network: Network) -> Satoshi? {
         let netPrefixLength = Prefix.forNetwork(network).rawValue.count
         var amountString = humanReadablePart[humanReadablePart.index(humanReadablePart.startIndex, offsetBy: netPrefixLength)..<humanReadablePart.endIndex]
         
@@ -183,5 +174,14 @@ struct Bolt11 {
             else { return nil }
         
         return NSDecimalNumber(value: amount) * multiplier.value
+    }
+    
+    private func decodeNetwork(humanReadablePart: String) -> Network? {
+        if humanReadablePart.starts(with: Prefix.forNetwork(.mainnet).rawValue) {
+            return .mainnet
+        } else if humanReadablePart.starts(with: Prefix.forNetwork(.testnet).rawValue) {
+            return .testnet
+        }
+        return nil
     }
 }

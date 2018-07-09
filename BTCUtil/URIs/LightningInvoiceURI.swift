@@ -8,6 +8,8 @@
 import Foundation
 
 public struct LightningInvoiceURI: PaymentURI {
+    public let amount: Satoshi?
+    public let memo: String?
     public let address: String
     public let network: Network
 
@@ -22,16 +24,11 @@ public struct LightningInvoiceURI: PaymentURI {
             string = String(string.dropFirst(prefix.count))
         }
         
-        guard let (humanReadablePart, _) = Bech32.decode(string, limit: false) else { return nil }
+        guard let invoice = Bolt11().decode(string: string) else { return nil }
         
         address = string
-        
-        if humanReadablePart.hasPrefix("lntb") {
-            network = .testnet
-        } else if humanReadablePart.hasPrefix("lnbc") {
-            network = .mainnet
-        } else {
-            return nil
-        }
+        amount = invoice.amount
+        memo = invoice.description
+        network = invoice.network
     }
 }

@@ -10,5 +10,7 @@ import Foundation
 public protocol PaymentURI {
     var address: String { get }
     var network: Network { get }
+    var amount: Satoshi? { get }
+    var memo: String? { get }
     var stringValue: String { get }
 }
