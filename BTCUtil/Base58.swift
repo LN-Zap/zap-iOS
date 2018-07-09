@@ -32,8 +32,9 @@ enum Base58 {
 }
 
 enum Base58Check {
-    private static func checksum(_ input: Data) -> [UInt8] {
-        return Array(input.sha256().sha256().bytes.prefix(4))
+    private static func checksum(_ input: Data) -> Data {
+        let hashed = input.sha256().sha256()
+        return hashed[hashed.startIndex..<hashed.startIndex + 4]
     }
     
     static func checkDecode(_ input: String) -> (version: Int, payload: Data)? {
@@ -42,11 +43,10 @@ enum Base58Check {
             decoded.count >= 5
             else { return nil }
         
-        let bytes = decoded.bytes
-        let checksum = bytes.suffix(4)
-        let testData = bytes.prefix(bytes.count - 4)
+        let checksum = decoded[decoded.endIndex - 4..<decoded.endIndex]
+        let testData = decoded[decoded.startIndex..<decoded.endIndex - 4]
         
-        if Array(checksum) != Base58Check.checksum(Data(testData)) {
+        if !checksum.elementsEqual(Base58Check.checksum(Data(testData))) {
             return nil
         }
 

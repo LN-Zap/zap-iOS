@@ -99,7 +99,7 @@ enum SegwitAddress {
         var ret = Data()
         let maxv: Int = (1 << toBits) - 1
 
-        for value in data.bytes {
+        for value in data {
             if value < 0 || (value >> fromBits) != 0 {
                 return nil
             }
