@@ -18,6 +18,7 @@ struct Bolt11 {
     struct Invoice: Equatable {
         var network: Network
         var date: Date
+        var paymentHash: Data?
         var amount: Satoshi?
         var description: String?
         var expiry: TimeInterval?
@@ -71,6 +72,7 @@ struct Bolt11 {
     
     private let signatureBase32Len = 104
     private let timestampBase32Len = 7
+    private let hashBase32Len = 52
     
     func decode(string: String) -> Invoice? {
         guard
@@ -112,25 +114,17 @@ struct Bolt11 {
             
             if let type = type {
                 switch type {
-                // TODO: parse the other stuff too.
                 case .fieldTypeP:
-                    break //parsePaymentHash(base32Data)
+                    guard invoice.paymentHash == nil else { break }
+                    invoice.paymentHash = parsePaymentHash(data: base32Data)
                 case .fieldTypeD:
                     guard invoice.description == nil else { break }
                     invoice.description = parseDescription(data: base32Data)
-                case .fieldTypeN:
-                    break //parseDestination(base32Data)
-                case .fieldTypeH:
-                    break //parseDescriptionHash(base32Data)
                 case .fieldTypeX:
                     guard invoice.expiry == nil else { break }
                     invoice.expiry = parseExpiry(data: base32Data)
-                case .fieldTypeF:
-                    break //parseFallbackAddr(base32Data, net)
-                case .fieldTypeR:
-                    break //parseRouteHint(base32Data)
-                case .fieldTypeC:
-                    break //parseMinFinalCLTVExpiry(base32Data)
+                case .fieldTypeF, .fieldTypeN, .fieldTypeH, .fieldTypeC, .fieldTypeR:
+                    break
                 }
             }            
         }
@@ -158,6 +152,11 @@ struct Bolt11 {
     
     private func parseExpiry(data: Data) -> TimeInterval {
         return TimeInterval(base32ToUInt(data))
+    }
+
+    func parsePaymentHash(data: Data) -> Data? {
+        guard data.count == hashBase32Len else { return nil }
+        return SegwitAddress.convertBits(data: data, fromBits: 5, toBits: 8, pad: false)
     }
     
     private func decodeAmount(for humanReadablePart: String, network: Network) -> Satoshi? {
