@@ -9,13 +9,13 @@ import Bond
 import Foundation
 import KeychainAccess
 
-private let keychainPinKey = "hashedPin"
+private let keychainPinKey = "hashedSaltPin"
 private let keychainPinLengthKey = "pinLength"
 
 final class AuthenticationViewModel {
     private let unlockTime: TimeInterval = 60
     
-    private let keychain = Keychain(service: "com.jackmallers.zap")
+    private let keychain = Keychain(service: "com.jackmallers.zap.password").accessibility(.whenUnlocked)
     private var lastAuthenticationDate: Date?
 
     private var hashedPin: String? {
@@ -50,13 +50,18 @@ final class AuthenticationViewModel {
         return keychain[keychainPinKey] != nil
     }
     
+    func hashPin(_ pin: String) -> String {
+        let salt = "kZF86kneOPAm09Wpl6XOLixuyctCM/lK"
+        return "\(salt)\(pin)".sha256()
+    }
+    
     func setPin(_ pin: String) {
-        hashedPin = pin.sha256()
+        hashedPin = hashPin(pin)
         pinLength = pin.count
     }
     
     func isMatchingPin(_ pin: String) -> Bool {
-        return pin.sha256() == hashedPin
+        return hashPin(pin) == hashedPin
     }
     
     func didAuthenticate() {
