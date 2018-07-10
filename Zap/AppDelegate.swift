@@ -5,8 +5,10 @@
 //  Copyright © 2018 Otto Suess. All rights reserved.
 //
 
+import BTCUtil
 import Library
 import UIKit
+import UserNotifications
 
 @UIApplicationMain
 final class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -25,6 +27,15 @@ final class AppDelegate: UIResponder, UIApplicationDelegate {
         
         if let window = window {
             rootCoordinator = RootCoordinator(window: window)
+        }
+        
+        registerForPushNotifications()
+  
+        do {
+            let pem = try NotificationKeyPair.manager.publicKey().data().PEM
+            print(pem)
+        } catch {
+            print(error)
         }
         
         if let url = launchOptions?[.url] as? URL {
@@ -65,5 +76,32 @@ final class AppDelegate: UIResponder, UIApplicationDelegate {
     
     func applicationDidEnterBackground(_ application: UIApplication) {
         rootCoordinator?.applicationDidEnterBackground()
+    }
+    
+    func registerForPushNotifications() {
+        UNUserNotificationCenter.current().delegate = self
+        UNUserNotificationCenter.current().requestAuthorization(options: [.alert, .sound, .badge]) { granted, _ in
+            print("Permission granted: \(granted)")
+            guard granted else { return }
+
+            DispatchQueue.main.async {
+                UIApplication.shared.registerForRemoteNotifications()
+            }
+        }
+    }
+}
+
+extension AppDelegate: UNUserNotificationCenterDelegate {
+    func application(_ application: UIApplication, didRegisterForRemoteNotificationsWithDeviceToken deviceToken: Data) {
+        let tokenParts = deviceToken.map { data -> String in
+            String(format: "%02.2hhx", data)
+        }
+        let token = tokenParts.joined()
+
+        print("Device Token: \(token)")
+    }
+    
+    func application(_ application: UIApplication, didFailToRegisterForRemoteNotificationsWithError error: Error) {
+        print("Failed to register for remote notifications with error: \(error)")
     }
 }

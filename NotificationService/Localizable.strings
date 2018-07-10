@@ -1,0 +1,12 @@
+/* 
+  Localizable.strings
+  Zap
+
+  Created by Otto Suess on 10.07.18.
+  Copyright © 2018 Zap. All rights reserved.
+*/
+
+"notification.receive.on_chain" = "Received %@ satoshis on chain.";
+"notification.receive.lightning" = "Received %@ satoshis from %@.";
+"notification.channel.open" = "Opened new channel with %@";
+"notification.channel.close" = "Closed channel with %@";
