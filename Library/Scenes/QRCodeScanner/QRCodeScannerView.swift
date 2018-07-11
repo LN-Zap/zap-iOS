@@ -27,7 +27,7 @@ final class QRCodeScannerView: UIView {
     var lightningService: LightningService?
     
     private func setup() {
-        let deviceDiscoverySession = AVCaptureDevice.DiscoverySession(deviceTypes: [.builtInDualCamera], mediaType: AVMediaType.video, position: .back)
+        let deviceDiscoverySession = AVCaptureDevice.DiscoverySession(deviceTypes: [.builtInWideAngleCamera, .builtInTrueDepthCamera, .builtInTelephotoCamera, .builtInDualCamera], mediaType: AVMediaType.video, position: .back)
         
         guard
             let captureDevice = deviceDiscoverySession.devices.first,
