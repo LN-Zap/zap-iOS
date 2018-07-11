@@ -50,13 +50,9 @@ final class PinViewController: UIViewController {
         
         keyPadView.handler = { [weak self] number in
             self?.updatePinView(for: number)
+            self?.checkPin(string: number)
             
-            if authenticationViewModel.isMatchingPin(number) {
-                self?.authenticationViewModel?.didAuthenticate()
-                self?.didAuthenticate?()
-            }
-            
-            return (authenticationViewModel.pinLength ?? Int.max) >= number.count
+            return (authenticationViewModel.pinLength ?? Int.max) > number.count
         }
     }
     
@@ -70,5 +66,21 @@ final class PinViewController: UIViewController {
     
     private func updatePinView(for string: String) {
         pinStackView.activeCount = string.count
+    }
+    
+    private func checkPin(string: String) {
+        guard let authenticationViewModel = authenticationViewModel else { return }
+
+        if authenticationViewModel.isMatchingPin(string) {
+            authenticationViewModel.didAuthenticate()
+            didAuthenticate?()
+        } else if authenticationViewModel.pinLength == string.count {
+            keyPadView.isUserInteractionEnabled = false
+            DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) { [weak self] in
+                self?.keyPadView.isUserInteractionEnabled = true
+                self?.keyPadView.numberString = ""
+                self?.updatePinView(for: "")
+            }
+        }
     }
 }
