@@ -31,7 +31,7 @@ public final class InfoService {
     init(api: LightningApiProtocol) {
         walletState = Observable(.connecting)
         
-        heightJobTimer = Timer.scheduledTimer(withTimeInterval: 1, repeats: true) { [blockChainHeight] _ in
+        heightJobTimer = Timer.scheduledTimer(withTimeInterval: 120, repeats: true) { [blockChainHeight] _ in
             BlockchainHeight.get(for: .testnet) { blockChainHeight.value = $0 }
         }
         heightJobTimer?.fire()
