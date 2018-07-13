@@ -9,10 +9,7 @@ import Foundation
 
 public protocol Currency {
     var symbol: String { get }
-    
-    // format the native value. (1000.53 -> "$1,000.53")
-    func format(value: NSDecimalNumber) -> String?
-    
+        
     // format satoshis. (1253 -> "$0.10")
     func format(satoshis: Satoshi) -> String?
     

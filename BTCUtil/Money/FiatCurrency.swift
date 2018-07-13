@@ -30,7 +30,7 @@ public struct FiatCurrency: Currency, Equatable, Codable {
         self.exchangeRate = exchangeRate
     }
     
-    public func format(value: NSDecimalNumber) -> String? {
+    private func format(value: NSDecimalNumber) -> String? {
         if value == NSDecimalNumber.notANumber {
             return currencyFormatter.string(from: 0)
         } else {

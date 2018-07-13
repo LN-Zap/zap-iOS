@@ -15,20 +15,7 @@ public struct Bitcoin: Currency, Equatable, Codable {
     }
     
     public var symbol: String {
-        switch unit {
-        case .bitcoin:
-            return "Ƀ"
-        case .milliBitcoin:
-            return "mɃ"
-        case .bit:
-            return "ƀ"
-        case .satoshi:
-            return "s"
-        }
-    }
-    
-    public func format(value: NSDecimalNumber) -> String? {
-        fatalError("not implemented")
+        return unit.symbol
     }
     
     public func format(satoshis: Satoshi) -> String? {

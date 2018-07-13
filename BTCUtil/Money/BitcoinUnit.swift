@@ -37,6 +37,19 @@ public enum BitcoinUnit: String, Codable {
         }
     }
     
+    public var symbol: String {
+        switch self {
+        case .bitcoin:
+            return "Ƀ"
+        case .milliBitcoin:
+            return "mɃ"
+        case .bit:
+            return "ƀ"
+        case .satoshi:
+            return "s"
+        }
+    }
+    
     public var numberFormatter: NumberFormatter {
         let numberFormatter = NumberFormatter()
         numberFormatter.numberStyle = .decimal
