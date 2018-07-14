@@ -86,7 +86,6 @@ final class RootViewModel: NSObject {
             .skip(first: 1)
             .filter(filterSyncing)
             .distinct()
-            .observeOn(DispatchQueue.main)
             .map(stateForInfoState)
             .feedNext(into: state)
             .observeNext { _ in }

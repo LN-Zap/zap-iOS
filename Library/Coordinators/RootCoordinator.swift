@@ -30,26 +30,29 @@ public final class RootCoordinator: NSObject, SetupCoordinatorDelegate, PinCoord
     }
     
     public func listenForStateChanges() {
-        rootViewModel.state.observeNext { [weak self] state in
-            switch state {
-            case .locked:
-                if self?.rootViewModel.authenticationViewModel.didSetupPin == true {
-                    self?.presentPin()
-                } else {
-                    self?.presentSetupPin()
+        rootViewModel.state
+            .distinct()
+            .observeOn(DispatchQueue.main)
+            .observeNext { [weak self] state in
+                switch state {
+                case .locked:
+                    if self?.rootViewModel.authenticationViewModel.didSetupPin == true {
+                        self?.presentPin()
+                    } else {
+                        self?.presentSetupPin()
+                    }
+                case .noWallet:
+                    self?.presentSetup()
+                case .connecting:
+                    self?.presentLoading(message: .none)
+                case .noInternet:
+                    self?.presentLoading(message: .noInternet)
+                case .syncing:
+                    self?.presentSync()
+                case .running:
+                    self?.presentMain()
                 }
-            case .noWallet:
-                self?.presentSetup()
-            case .connecting:
-                self?.presentLoading(message: .none)
-            case .noInternet:
-                self?.presentLoading(message: .noInternet)
-            case .syncing:
-                self?.presentSync()
-            case .running:
-                self?.presentMain()
-            }
-        }.dispose(in: reactive.bag)
+            }.dispose(in: reactive.bag)
     }
     
     public func handle(_ route: Route) {
