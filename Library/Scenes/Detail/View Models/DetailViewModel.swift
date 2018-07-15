@@ -23,6 +23,8 @@ final class DetailViewModelFactory {
             return LightningPaymentDetailViewModel(lightningPayment: transactionViewModel.lightningPayment, annotation: transactionViewModel.annotation, transactionListViewModel: transactionListViewModel)
         } else if let transactionViewModel = transactionViewModel as? LightningInvoiceViewModel {
             return LightningInvoiceDetailViewModel(lightningInvoice: transactionViewModel.lightningInvoice, annotation: transactionViewModel.annotation, transactionListViewModel: transactionListViewModel)
+        } else if let transactionViewModel = transactionViewModel as? UnconfirmedTransactionViewModel {
+            return UnconfirmedTransactionDetailViewModel(unconfirmedTransaction: transactionViewModel.unconfirmedTransaction, annotation: transactionViewModel.annotation, network: network, transactionListViewModel: transactionListViewModel)
         }
         fatalError("TransactionViewModel not supported")
     }

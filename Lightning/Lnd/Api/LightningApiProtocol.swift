@@ -10,25 +10,35 @@ import Foundation
 
 protocol LightningApiProtocol {
     func info(callback: @escaping (Result<Info>) -> Void)
-    func nodeInfo(pubKey: String, callback: @escaping (Result<NodeInfo>) -> Void)
-    func newAddress(type: OnChainRequestAddressType, callback: @escaping (Result<String>) -> Void)
-    func walletBalance(callback: @escaping (Result<Satoshi>) -> Void)
-    func channelBalance(callback: @escaping (Result<Satoshi>) -> Void)
-    func transactions(callback: @escaping (Result<[Transaction]>) -> Void)
-    func subscribeTransactions(callback: @escaping (Result<Transaction>) -> Void)
-    func payments(callback: @escaping (Result<[Transaction]>) -> Void)
-    func channels(callback: @escaping (Result<[Channel]>) -> Void)
-    func closedChannels(callback: @escaping (Result<[ChannelCloseSummary]>) -> Void)
-    func pendingChannels(callback: @escaping (Result<[Channel]>) -> Void)
-    func connect(pubKey: String, host: String, callback: @escaping (Result<Void>) -> Void)
+    
+    // Channels
     func openChannel(pubKey: String, amount: Satoshi, callback: @escaping (Result<ChannelPoint>) -> Void)
     func closeChannel(channelPoint: ChannelPoint, force: Bool, callback: @escaping (Result<CloseStatusUpdate>) -> Void)
-    func sendCoins(address: String, amount: Satoshi, callback: @escaping (Result<String>) -> Void)
-    func peers(callback: @escaping (Result<[Peer]>) -> Void)
+    func channelBalance(callback: @escaping (Result<Satoshi>) -> Void)
+    func pendingChannels(callback: @escaping (Result<[Channel]>) -> Void)
+    func channels(callback: @escaping (Result<[Channel]>) -> Void)
+    func closedChannels(callback: @escaping (Result<[ChannelCloseSummary]>) -> Void)
+    func subscribeChannelGraph(callback: @escaping (Result<GraphTopologyUpdate>) -> Void)
+
+    // On-chain
+    func sendCoins(address: String, amount: Satoshi, callback: @escaping (Result<UnconfirmedTransaction>) -> Void)
+    func transactions(callback: @escaping (Result<[Transaction]>) -> Void)
+    func subscribeTransactions(callback: @escaping (Result<Transaction>) -> Void)
+
+    // Payments
     func decodePaymentRequest(_ paymentRequest: String, callback: @escaping (Result<PaymentRequest>) -> Void)
+    func payments(callback: @escaping (Result<[Transaction]>) -> Void)
     func sendPayment(_ paymentRequest: PaymentRequest, callback: @escaping (Result<Data>) -> Void)
     func addInvoice(amount: Satoshi?, memo: String?, callback: @escaping (Result<String>) -> Void)
     func invoices(callback: @escaping (Result<[Transaction]>) -> Void)
-    func subscribeChannelGraph(callback: @escaping (Result<GraphTopologyUpdate>) -> Void)
     func subscribeInvoices(callback: @escaping (Result<Transaction>) -> Void)
+
+    // Peers
+    func connect(pubKey: String, host: String, callback: @escaping (Result<Void>) -> Void)
+    func nodeInfo(pubKey: String, callback: @escaping (Result<NodeInfo>) -> Void)
+    func peers(callback: @escaping (Result<[Peer]>) -> Void)
+    
+    // Wallet
+    func newAddress(type: OnChainRequestAddressType, callback: @escaping (Result<String>) -> Void)
+    func walletBalance(callback: @escaping (Result<Satoshi>) -> Void)
 }

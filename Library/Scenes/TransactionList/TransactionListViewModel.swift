@@ -95,7 +95,7 @@ final class TransactionListViewModel: NSObject {
             .compactMap { transaction -> TransactionViewModel in
                 let annotation = transactionAnnotationStore.annotation(for: transaction)
                 
-                if let oldTransactionViewModel = self.transactionViewModels.first(where: { $0.transaction.isEqual(to: transaction) }) {
+                if let oldTransactionViewModel = self.transactionViewModels.first(where: { $0.transaction.isTransactionEqual(to: transaction) }) {
                     return oldTransactionViewModel
                 } else {
                     return TransactionViewModel.instance(for: transaction, annotation: annotation, aliasStore: aliasStore)

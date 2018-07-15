@@ -100,9 +100,11 @@ public final class LightningApiRPC: LightningApiProtocol {
         _ = try? rpc.openChannelSync(request, completion: result(callback, map: { ChannelPoint(channelPoint: $0) }))
     }
     
-    func sendCoins(address: String, amount: Satoshi, callback: @escaping (Result<String>) -> Void) {
+    func sendCoins(address: String, amount: Satoshi, callback: @escaping (Result<UnconfirmedTransaction>) -> Void) {
         let request = Lnrpc_SendCoinsRequest(address: address, amount: amount)
-        _ = try? rpc.sendCoins(request, completion: result(callback, map: { $0.txid }))
+        _ = try? rpc.sendCoins(request, completion: result(callback, map: {
+            UnconfirmedTransaction(id: $0.txid, amount: -amount, date: Date(), destinationAddress: address)
+        }))
     }
     
     func peers(callback: @escaping (Result<[Peer]>) -> Void) {

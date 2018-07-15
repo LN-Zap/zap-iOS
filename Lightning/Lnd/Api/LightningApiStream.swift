@@ -85,9 +85,11 @@ final class LightningApiStream: LightningApiProtocol {
         LndmobileCloseChannel(data, StreamCallback<Lnrpc_CloseStatusUpdate, CloseStatusUpdate>(callback, map: CloseStatusUpdate.init))
     }
     
-    func sendCoins(address: String, amount: Satoshi, callback: @escaping (Result<String>) -> Void) {
+    func sendCoins(address: String, amount: Satoshi, callback: @escaping (Result<UnconfirmedTransaction>) -> Void) {
         let data = try? Lnrpc_SendCoinsRequest(address: address, amount: amount).serializedData()
-        LndmobileSendCoins(data, StreamCallback<Lnrpc_SendCoinsResponse, String>(callback) { $0.txid })
+        LndmobileSendCoins(data, StreamCallback<Lnrpc_SendCoinsResponse, UnconfirmedTransaction>(callback) {
+            UnconfirmedTransaction(id: $0.txid, amount: -amount, date: Date(), destinationAddress: address)
+        })
     }
     
     func peers(callback: @escaping (Result<[Peer]>) -> Void) {
