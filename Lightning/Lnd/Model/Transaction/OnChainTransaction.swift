@@ -20,9 +20,9 @@ public struct OnChainTransaction: Transaction, Equatable {
 extension OnChainTransaction {
     init(transaction: Lnrpc_Transaction) {
         id = transaction.txHash
-        amount = Satoshi(value: transaction.amount)
+        amount = Satoshi(transaction.amount)
         date = Date(timeIntervalSince1970: TimeInterval(transaction.timeStamp))
-        fees = Satoshi(value: transaction.totalFees)
+        fees = Satoshi(transaction.totalFees)
         confirmations = Int(transaction.numConfirmations)
         firstDestinationAddress = transaction.destAddresses.first ?? ""
     }

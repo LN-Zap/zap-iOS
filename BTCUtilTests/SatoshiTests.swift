@@ -30,7 +30,7 @@ final class BitcoinUnitTests: XCTestCase {
         (.bitcoin, 123456789, "1.23456789"),
         (.bitcoin, 100000000, "1.0"),
         (.bitcoin, 100000000000, "1,000.0"),
-        (.bitcoin, 100000000001, "1,000.00000001")
+        (.bitcoin, 100000000008, "1,000.00000008")
     ]
 
     func testFormating() {
@@ -53,8 +53,8 @@ final class BitcoinUnitTests: XCTestCase {
             (.bit, 0, "0.0010"),
             (.milliBitcoin, 0, "0.000001"),
             (.milliBitcoin, 1, "0.00001000001"),
-            (.bitcoin, 1, "0.000000019"),
-            (.bitcoin, 0, "0.000000009")
+            (.bitcoin, 2, "0.000000019"),
+            (.bitcoin, 1, "0.000000009")
         ]
         
         for (unit, satoshis, string) in msat {
@@ -68,7 +68,7 @@ final class BitcoinUnitTests: XCTestCase {
             (.bit, 123456789, "1234567.89"),
             (.milliBitcoin, 123456789, "1234.56789"),
             (.bitcoin, 100000000000, "1000.0"),
-            (.bitcoin, 100000000001, "1000.00000001")
+            (.bitcoin, 100000000008, "1000.00000008")
         ]
         
         for (unit, satoshis, string) in noCommas {
@@ -77,12 +77,12 @@ final class BitcoinUnitTests: XCTestCase {
     }
     
     func testFromValue() {
-        let data: [(NSDecimalNumber, BitcoinUnit, Satoshi)] = [
+        let data: [(Decimal, BitcoinUnit, Satoshi)] = [
             (0, .satoshi, 0),
             (1, .satoshi, 1),
             (123456, .satoshi, 123456),
             (1, .bit, 100),
-            (1.678, .bit, 167),
+            (1.678, .bit, 168),
             (-1.678, .bit, -168),
             (1, .milliBitcoin, 100000),
             (1, .bitcoin, 100000000)

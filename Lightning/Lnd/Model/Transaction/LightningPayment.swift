@@ -19,9 +19,9 @@ public struct LightningPayment: Transaction, Equatable {
 extension LightningPayment {
     init(payment: Lnrpc_Payment) {
         id = payment.paymentHash
-        amount = Satoshi(value: -payment.value)
+        amount = Satoshi(-payment.value)
         date = Date(timeIntervalSince1970: TimeInterval(payment.creationDate))
-        fees = Satoshi(value: payment.fee)
+        fees = Satoshi(payment.fee)
         paymentHash = payment.paymentHash
     }
 }

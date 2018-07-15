@@ -24,7 +24,7 @@ extension LightningInvoice {
     init(invoice: Lnrpc_Invoice) {
         id = invoice.rHash.hexString()
         memo = invoice.memo
-        amount = Satoshi(value: invoice.value)
+        amount = Satoshi(invoice.value)
         settled = invoice.settled
         date = Date(timeIntervalSince1970: TimeInterval(invoice.creationDate))
         if invoice.settled {

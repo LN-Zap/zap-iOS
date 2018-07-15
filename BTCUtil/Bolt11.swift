@@ -45,7 +45,7 @@ struct Bolt11 {
         case nano = "n"
         case pico = "p"
         
-        var value: NSDecimalNumber {
+        var value: Decimal {
             switch self {
             case .milli:
                 return 100000
@@ -172,7 +172,7 @@ struct Bolt11 {
             let amount = Int(amountString)
             else { return nil }
         
-        return NSDecimalNumber(value: amount) * multiplier.value
+        return Decimal(amount) * multiplier.value
     }
     
     private func decodeNetwork(humanReadablePart: String) -> Network? {

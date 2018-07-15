@@ -42,10 +42,10 @@ extension Lnrpc_Channel {
         return Channel(
             blockHeight: Int(chanID >> 40),
             state: active ? .active : .inactive,
-            localBalance: Satoshi(value: localBalance),
-            remoteBalance: Satoshi(value: remoteBalance),
+            localBalance: Satoshi(localBalance),
+            remoteBalance: Satoshi(remoteBalance),
             remotePubKey: remotePubkey,
-            capacity: Satoshi(value: capacity),
+            capacity: Satoshi(capacity),
             updateCount: Int(numUpdates),
             channelPoint: ChannelPoint(string: channelPoint),
             csvDelay: Int(csvDelay))
@@ -57,10 +57,10 @@ extension Lnrpc_PendingChannelsResponse.PendingOpenChannel {
         return Channel(
             blockHeight: Int(confirmationHeight),
             state: .opening,
-            localBalance: Satoshi(value: channel.localBalance),
-            remoteBalance: Satoshi(value: channel.remoteBalance),
+            localBalance: Satoshi(channel.localBalance),
+            remoteBalance: Satoshi(channel.remoteBalance),
             remotePubKey: channel.remoteNodePub,
-            capacity: Satoshi(value: channel.capacity),
+            capacity: Satoshi(channel.capacity),
             updateCount: 0,
             channelPoint: ChannelPoint(string: channel.channelPoint),
             csvDelay: 0)
@@ -72,10 +72,10 @@ extension Lnrpc_PendingChannelsResponse.ClosedChannel {
         return Channel(
             blockHeight: 0,
             state: .closing,
-            localBalance: Satoshi(value: channel.localBalance),
-            remoteBalance: Satoshi(value: channel.remoteBalance),
+            localBalance: Satoshi(channel.localBalance),
+            remoteBalance: Satoshi(channel.remoteBalance),
             remotePubKey: channel.remoteNodePub,
-            capacity: Satoshi(value: channel.capacity),
+            capacity: Satoshi(channel.capacity),
             updateCount: 0,
             channelPoint: ChannelPoint(string: channel.channelPoint),
             csvDelay: 0)
@@ -87,10 +87,10 @@ extension Lnrpc_PendingChannelsResponse.ForceClosedChannel {
         return Channel(
             blockHeight: Int(maturityHeight),
             state: .forceClosing,
-            localBalance: Satoshi(value: channel.localBalance),
-            remoteBalance: Satoshi(value: channel.remoteBalance),
+            localBalance: Satoshi(channel.localBalance),
+            remoteBalance: Satoshi(channel.remoteBalance),
             remotePubKey: channel.remoteNodePub,
-            capacity: Satoshi(value: channel.capacity),
+            capacity: Satoshi(channel.capacity),
             updateCount: 0,
             channelPoint: ChannelPoint(string: channel.channelPoint),
             csvDelay: 0)

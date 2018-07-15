@@ -25,11 +25,11 @@ final class LightningApiStream: LightningApiProtocol {
     }
     
     func walletBalance(callback: @escaping (Result<Satoshi>) -> Void) {
-        LndmobileWalletBalance(nil, StreamCallback<Lnrpc_WalletBalanceResponse, Satoshi>(callback) { Satoshi(value: $0.totalBalance) })
+        LndmobileWalletBalance(nil, StreamCallback<Lnrpc_WalletBalanceResponse, Satoshi>(callback) { Satoshi($0.totalBalance) })
     }
     
     func channelBalance(callback: @escaping (Result<Satoshi>) -> Void) {
-        LndmobileChannelBalance(nil, StreamCallback<Lnrpc_ChannelBalanceResponse, Satoshi>(callback) { Satoshi(value: $0.balance) })
+        LndmobileChannelBalance(nil, StreamCallback<Lnrpc_ChannelBalanceResponse, Satoshi>(callback) { Satoshi($0.balance) })
     }
     
     func transactions(callback: @escaping (Result<[Transaction]>) -> Void) {

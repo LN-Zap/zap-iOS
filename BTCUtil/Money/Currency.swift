@@ -21,5 +21,5 @@ public protocol Currency {
     
     func satoshis(from: String) -> Satoshi?
     
-    func value(satoshis: Satoshi) -> NSDecimalNumber?
+    func value(satoshis: Satoshi) -> Decimal?
 }

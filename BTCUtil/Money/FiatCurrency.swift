@@ -39,11 +39,11 @@ public struct FiatCurrency: Currency, Equatable, Codable {
     }
     
     public func format(satoshis: Satoshi) -> String? {
-        if satoshis == Satoshi.notANumber {
+        if !satoshis.isNormal {
             return format(value: 0)
         } else {
-            let fiatValue = satoshis.convert(to: .bitcoin) * NSDecimalNumber(decimal: exchangeRate)
-            return format(value: fiatValue)
+            let fiatValue = satoshis.convert(to: .bitcoin) * exchangeRate
+            return format(value: fiatValue as NSDecimalNumber)
         }
     }
     
@@ -55,13 +55,11 @@ public struct FiatCurrency: Currency, Equatable, Codable {
         numberFormatter.numberStyle = .decimal
         
         guard let fiatValue = (numberFormatter.number(from: string)) as? NSDecimalNumber else { return nil }
-        return Satoshi.from(value: fiatValue / NSDecimalNumber(decimal: exchangeRate), unit: .bitcoin)
+        return Satoshi.from(value: fiatValue.decimalValue / exchangeRate, unit: .bitcoin)
     }
     
-    public func value(satoshis: Satoshi) -> NSDecimalNumber? {
-        return satoshis
-            .multiplying(byPowerOf10: Int16(-BitcoinUnit.bitcoin.exponent))
-            .multiplying(by: NSDecimalNumber(decimal: exchangeRate))
+    public func value(satoshis: Satoshi) -> Decimal? {
+        return satoshis.multiplying(byPowerOf10: -BitcoinUnit.bitcoin.exponent) * exchangeRate
     }
     
     public func stringValue(satoshis: Satoshi) -> String? {
@@ -71,6 +69,6 @@ public struct FiatCurrency: Currency, Equatable, Codable {
         valueFormatter.maximumFractionDigits = 2
         valueFormatter.usesGroupingSeparator = false
         
-        return valueFormatter.string(from: value)
+        return valueFormatter.string(from: value as NSDecimalNumber)
     }
 }

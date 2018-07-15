@@ -22,7 +22,7 @@ final class BalanceView: UIView {
         localBalanceView.translatesAutoresizingMaskIntoConstraints = false
         self.addSubview(localBalanceView)
         
-        let multiplier = CGFloat(truncating: localBalance / (localBalance + remoteBalance))
+        let multiplier = CGFloat(truncating: localBalance / (localBalance + remoteBalance) as NSDecimalNumber)
         
         NSLayoutConstraint.activate([
             localBalanceView.leadingAnchor.constraint(equalTo: leadingAnchor),

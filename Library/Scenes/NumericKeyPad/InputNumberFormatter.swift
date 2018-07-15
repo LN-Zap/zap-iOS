@@ -81,7 +81,7 @@ final class InputNumberFormatter {
         }
         
         if let satoshis = Satoshi.from(string: input, unit: unit),
-            let result = numberFormatter.string(from: satoshis.convert(to: unit)) {
+            let result = numberFormatter.string(from: satoshis.convert(to: unit) as NSDecimalNumber) {
             
             if input.hasSuffix(numberFormatter.decimalSeparator) {
                 return result + numberFormatter.decimalSeparator

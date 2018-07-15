@@ -11,7 +11,7 @@ import XCTest
 
 class BitcoinTests: XCTestCase {
     func testValue() {
-        let data: [(Bitcoin, Satoshi, NSDecimalNumber)] = [
+        let data: [(Bitcoin, Satoshi, Decimal)] = [
             (Bitcoin(unit: .bitcoin), 100_000_000, 1),
             (Bitcoin(unit: .bitcoin), 10_000_000, 0.1),
             (Bitcoin(unit: .bitcoin), 1_000_000, 0.01),

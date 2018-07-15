@@ -26,7 +26,7 @@ public struct BitcoinURI: PaymentURI {
         if let amount = amount, amount > 0 {
             let amountInBitcoin = amount.convert(to: .bitcoin)
             let usLocale = Locale(identifier: "en_US")
-            let amountString = amountInBitcoin.description(withLocale: usLocale)
+            let amountString = (amountInBitcoin as NSDecimalNumber).description(withLocale: usLocale)
             queryItems.append(URLQueryItem(name: "amount", value: amountString))
         }
         if let memo = memo, !memo.isEmpty {

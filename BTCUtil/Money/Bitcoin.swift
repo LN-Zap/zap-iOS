@@ -39,8 +39,8 @@ public struct Bitcoin: Currency, Equatable, Codable {
         return Satoshi.from(string: string, unit: unit)
     }
     
-    public func value(satoshis: Satoshi) -> NSDecimalNumber? {
-        return satoshis.multiplying(byPowerOf10: Int16(-unit.exponent))
+    public func value(satoshis: Satoshi) -> Decimal? {
+        return satoshis.multiplying(byPowerOf10: -unit.exponent)
     }
     
     public func stringValue(satoshis: Satoshi) -> String? {
@@ -50,6 +50,6 @@ public struct Bitcoin: Currency, Equatable, Codable {
         numberFormatter.minimumFractionDigits = 0
         numberFormatter.usesGroupingSeparator = false
         
-        return numberFormatter.string(from: value)
+        return numberFormatter.string(from: value as NSDecimalNumber)
     }
 }

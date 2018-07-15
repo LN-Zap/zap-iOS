@@ -15,7 +15,7 @@ extension Lnrpc_Invoice {
             self.memo = memo
         }
         if let amount = amount {
-            value = Int64(truncating: amount)
+            value = Int64(truncating: amount as NSDecimalNumber)
         }
     }
 }
@@ -57,7 +57,7 @@ extension Lnrpc_OpenChannelRequest {
             nodePubkey = pubKey
         }
         nodePubkeyString = pubKey
-        localFundingAmount = Int64(truncating: amount)
+        localFundingAmount = Int64(truncating: amount as NSDecimalNumber)
         `private` = true
     }
 }
@@ -65,7 +65,7 @@ extension Lnrpc_OpenChannelRequest {
 extension Lnrpc_SendCoinsRequest {
     init(address: String, amount: Satoshi) {
         self.addr = address
-        self.amount = Int64(truncating: amount)
+        self.amount = Int64(truncating: amount as NSDecimalNumber)
     }
 }
 

@@ -7,21 +7,14 @@
 
 import Foundation
 
-public typealias Satoshi = NSDecimalNumber
+public typealias Satoshi = Decimal
 
 extension Satoshi {
-    public static func from(value: NSDecimalNumber, unit: BitcoinUnit = .bitcoin) -> Satoshi {
-        let handler = NSDecimalNumberHandler(
-            roundingMode: .down,
-            scale: 0,
-            raiseOnExactness: false,
-            raiseOnOverflow: false,
-            raiseOnUnderflow: false,
-            raiseOnDivideByZero: false)
-
-        return value
-            .multiplying(byPowerOf10: Int16(unit.exponent))
-            .rounding(accordingToBehavior: handler)
+    public static func from(value: Decimal, unit: BitcoinUnit = .bitcoin) -> Satoshi {
+        var approximate = value.multiplying(byPowerOf10: unit.exponent)
+        var rounded = Decimal()
+        NSDecimalRound(&rounded, &approximate, 0, .bankers)
+        return rounded
     }
     
     public static func from(string: String, unit: BitcoinUnit) -> Satoshi? {
@@ -32,20 +25,21 @@ extension Satoshi {
             string = string.replacingOccurrences(of: groupingSeparator, with: "")
         }
         
-        let satoshis = Satoshi(string: string, locale: Locale.autoupdatingCurrent)
-        if satoshis != Satoshi.notANumber {
+        if
+            let satoshis = Satoshi(string: string, locale: Locale.current),
+            satoshis.isNormal {
             return Satoshi.from(value: satoshis, unit: unit)
         } else {
-            return 0
+            return nil
         }
     }
     
-    public func convert(to unit: BitcoinUnit) -> NSDecimalNumber {
-        return self.multiplying(byPowerOf10: Int16(-unit.exponent))
+    public func convert(to unit: BitcoinUnit) -> Decimal {
+        return self.multiplying(byPowerOf10: -unit.exponent)
     }
     
     public func format(unit: BitcoinUnit) -> String {
         let number = convert(to: unit)
-        return unit.numberFormatter.string(from: number) ?? ""
+        return unit.numberFormatter.string(from: number as NSDecimalNumber) ?? ""
     }
 }

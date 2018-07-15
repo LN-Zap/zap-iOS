@@ -50,11 +50,11 @@ public final class LightningApiRPC: LightningApiProtocol {
     }
     
     func walletBalance(callback: @escaping (Result<Satoshi>) -> Void) {
-        _ = try? rpc.walletBalance(Lnrpc_WalletBalanceRequest(), completion: result(callback, map: { Satoshi(value: $0.totalBalance) }))
+        _ = try? rpc.walletBalance(Lnrpc_WalletBalanceRequest(), completion: result(callback, map: { Satoshi($0.totalBalance) }))
     }
     
     func channelBalance(callback: @escaping (Result<Satoshi>) -> Void) {
-        _ = try? rpc.channelBalance(Lnrpc_ChannelBalanceRequest(), completion: result(callback, map: { Satoshi(value: $0.balance) }))
+        _ = try? rpc.channelBalance(Lnrpc_ChannelBalanceRequest(), completion: result(callback, map: { Satoshi($0.balance) }))
     }
     
     func transactions(callback: @escaping (Result<[Transaction]>) -> Void) {

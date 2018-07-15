@@ -28,7 +28,7 @@ public struct PaymentRequest {
 
 extension PaymentRequest {
     init(payReq: Lnrpc_PayReq, raw: String) {
-        self.amount = Satoshi(value: payReq.numSatoshis)
+        self.amount = Satoshi(payReq.numSatoshis)
         
         if let data = payReq.description_p.data(using: .utf8, allowLossyConversion: false) {
             if let json = try? JSONDecoder().decode(PaymentDescription.self, from: data) {
