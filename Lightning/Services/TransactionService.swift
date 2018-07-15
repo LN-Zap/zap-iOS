@@ -35,7 +35,12 @@ public final class TransactionService {
     }
     
     public func addInvoice(amount: Satoshi, memo: String?, callback: @escaping (Result<String>) -> Void) {
-        api.addInvoice(amount: amount, memo: memo, callback: callback)
+        api.addInvoice(amount: amount, memo: memo) { [weak self] in
+            if $0.value != nil {
+                self?.update()
+            }
+            callback($0)
+        }
     }
     
     public func newAddress(with type: OnChainRequestAddressType, callback: @escaping (Result<String>) -> Void) {
