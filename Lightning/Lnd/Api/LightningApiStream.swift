@@ -34,12 +34,12 @@ final class LightningApiStream: LightningApiProtocol {
     
     func transactions(callback: @escaping (Result<[Transaction]>) -> Void) {
         LndmobileGetTransactions(nil, StreamCallback<Lnrpc_TransactionDetails, [Transaction]>(callback) {
-            $0.transactions.compactMap { OnChainTransaction(transaction: $0) }
+            $0.transactions.compactMap { OnChainConfirmedTransaction(transaction: $0) }
         })
     }
     
     func subscribeTransactions(callback: @escaping (Result<Transaction>) -> Void) {
-        LndmobileSubscribeTransactions(nil, StreamCallback<Lnrpc_Transaction, Transaction>(callback, map: OnChainTransaction.init))
+        LndmobileSubscribeTransactions(nil, StreamCallback<Lnrpc_Transaction, Transaction>(callback, map: OnChainConfirmedTransaction.init))
     }
     
     func payments(callback: @escaping (Result<[Transaction]>) -> Void) {
@@ -85,10 +85,10 @@ final class LightningApiStream: LightningApiProtocol {
         LndmobileCloseChannel(data, StreamCallback<Lnrpc_CloseStatusUpdate, CloseStatusUpdate>(callback, map: CloseStatusUpdate.init))
     }
     
-    func sendCoins(address: String, amount: Satoshi, callback: @escaping (Result<UnconfirmedTransaction>) -> Void) {
+    func sendCoins(address: String, amount: Satoshi, callback: @escaping (Result<OnChainUnconfirmedTransaction>) -> Void) {
         let data = try? Lnrpc_SendCoinsRequest(address: address, amount: amount).serializedData()
-        LndmobileSendCoins(data, StreamCallback<Lnrpc_SendCoinsResponse, UnconfirmedTransaction>(callback) {
-            UnconfirmedTransaction(id: $0.txid, amount: -amount, date: Date(), destinationAddress: address)
+        LndmobileSendCoins(data, StreamCallback<Lnrpc_SendCoinsResponse, OnChainUnconfirmedTransaction>(callback) {
+            OnChainUnconfirmedTransaction(id: $0.txid, amount: -amount, date: Date(), destinationAddress: address)
         })
     }
     

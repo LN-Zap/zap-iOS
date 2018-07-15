@@ -21,15 +21,15 @@ extension Info {
     }
 }
 
-extension OnChainTransaction {
-    static var template: OnChainTransaction {
-        return OnChainTransaction(
+extension OnChainConfirmedTransaction {
+    static var template: OnChainConfirmedTransaction {
+        return OnChainConfirmedTransaction(
             id: "100",
             amount: 21005000,
             date: Date(),
             fees: 12,
             confirmations: 14,
-            firstDestinationAddress: "tb1qrp33g0q5c5txsp9arysrx4k6zdkfs4nce4xj0gdcccefvpysxf3q0sl5k7"
+            destinationAddress: "tb1qrp33g0q5c5txsp9arysrx4k6zdkfs4nce4xj0gdcccefvpysxf3q0sl5k7"
         )
     }
 }

@@ -24,7 +24,7 @@ public final class TransactionService {
         self.channelService = channelService
     }
     
-    public func sendCoins(address: String, amount: Satoshi, callback: @escaping (Result<UnconfirmedTransaction>) -> Void) {
+    public func sendCoins(address: String, amount: Satoshi, callback: @escaping (Result<OnChainUnconfirmedTransaction>) -> Void) {
         api.sendCoins(address: address, amount: amount) { [weak self] in
             if let newTransaction = $0.value {
                 self?.unconfirmedTransactionStore.add(newTransaction)

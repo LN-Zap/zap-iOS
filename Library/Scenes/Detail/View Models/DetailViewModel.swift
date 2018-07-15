@@ -17,14 +17,14 @@ protocol DetailViewModel {
 final class DetailViewModelFactory {
     static func instantiate(from transactionViewModel: TransactionViewModel, transactionListViewModel: TransactionListViewModel, network: Network) -> DetailViewModel {
         
-        if let transactionViewModel = transactionViewModel as? OnChainTransactionViewModel {
+        if let transactionViewModel = transactionViewModel as? OnChainConfirmedTransactionViewModel {
             return OnChainTransactionDetailViewModel(onChainTransaction: transactionViewModel.onChainTransaction, annotation: transactionViewModel.annotation, network: network, transactionListViewModel: transactionListViewModel)
         } else if let transactionViewModel = transactionViewModel as? LightningPaymentViewModel {
             return LightningPaymentDetailViewModel(lightningPayment: transactionViewModel.lightningPayment, annotation: transactionViewModel.annotation, transactionListViewModel: transactionListViewModel)
         } else if let transactionViewModel = transactionViewModel as? LightningInvoiceViewModel {
             return LightningInvoiceDetailViewModel(lightningInvoice: transactionViewModel.lightningInvoice, annotation: transactionViewModel.annotation, transactionListViewModel: transactionListViewModel)
-        } else if let transactionViewModel = transactionViewModel as? UnconfirmedTransactionViewModel {
-            return UnconfirmedTransactionDetailViewModel(unconfirmedTransaction: transactionViewModel.unconfirmedTransaction, annotation: transactionViewModel.annotation, network: network, transactionListViewModel: transactionListViewModel)
+        } else if let transactionViewModel = transactionViewModel as? OnChainUnconfirmedTransactionViewModel {
+            return OnChainTransactionDetailViewModel(onChainTransaction: transactionViewModel.unconfirmedTransaction, annotation: transactionViewModel.annotation, network: network, transactionListViewModel: transactionListViewModel)
         }
         fatalError("TransactionViewModel not supported")
     }

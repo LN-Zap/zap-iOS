@@ -8,9 +8,9 @@
 import Foundation
 
 final class UnconfirmedTransactionStore: Persistable {
-    typealias Value = [String: UnconfirmedTransaction]
+    typealias Value = [String: OnChainUnconfirmedTransaction]
 
-    var data = [String: UnconfirmedTransaction]()
+    var data = [String: OnChainUnconfirmedTransaction]()
     
     static var fileName = "unconfirmed_transactions"
     
@@ -18,11 +18,11 @@ final class UnconfirmedTransactionStore: Persistable {
         loadPersistable()
     }
     
-    var all: [UnconfirmedTransaction] {
+    var all: [OnChainUnconfirmedTransaction] {
         return Array(data.values)
     }
     
-    func add(_ unconfirmedTransaction: UnconfirmedTransaction) {
+    func add(_ unconfirmedTransaction: OnChainUnconfirmedTransaction) {
         data[unconfirmedTransaction.id] = unconfirmedTransaction
         savePersistable()
     }

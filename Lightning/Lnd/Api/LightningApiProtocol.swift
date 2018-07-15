@@ -21,7 +21,7 @@ protocol LightningApiProtocol {
     func subscribeChannelGraph(callback: @escaping (Result<GraphTopologyUpdate>) -> Void)
 
     // On-chain
-    func sendCoins(address: String, amount: Satoshi, callback: @escaping (Result<UnconfirmedTransaction>) -> Void)
+    func sendCoins(address: String, amount: Satoshi, callback: @escaping (Result<OnChainUnconfirmedTransaction>) -> Void)
     func transactions(callback: @escaping (Result<[Transaction]>) -> Void)
     func subscribeTransactions(callback: @escaping (Result<Transaction>) -> Void)
 

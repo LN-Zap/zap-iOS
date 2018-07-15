@@ -34,7 +34,7 @@ final class SendOnChainViewModel {
         validRange = (minimumOnChainTransaction...lightningService.balanceService.onChain.value)
     }
 
-    func send(callback: @escaping (Result<UnconfirmedTransaction>) -> Void) {
+    func send(callback: @escaping (Result<OnChainUnconfirmedTransaction>) -> Void) {
         lightningService.transactionService.sendCoins(address: bitcoinURI.address, amount: amount) { [weak self] in
             if let unconfirmedTransaction = $0.value,
                 let memo = self?.bitcoinURI.memo {

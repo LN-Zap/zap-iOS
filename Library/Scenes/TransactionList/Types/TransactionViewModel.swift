@@ -73,14 +73,14 @@ class TransactionViewModel: NSObject {
     }
     
     static func instance(for transaction: Transaction, annotation: TransactionAnnotation, aliasStore: ChannelAliasStore) -> TransactionViewModel {
-        if let transaction = transaction as? OnChainTransaction {
-            return OnChainTransactionViewModel(onChainTransaction: transaction, annotation: annotation, aliasStore: aliasStore)
+        if let transaction = transaction as? OnChainConfirmedTransaction {
+            return OnChainConfirmedTransactionViewModel(onChainTransaction: transaction, annotation: annotation, aliasStore: aliasStore)
         } else if let transaction = transaction as? LightningPayment {
             return LightningPaymentViewModel(lightningPayment: transaction, annotation: annotation)
         } else if let transaction = transaction as? LightningInvoice {
             return LightningInvoiceViewModel(lightningInvoice: transaction, annotation: annotation)
-        } else if let transaction = transaction as? UnconfirmedTransaction {
-            return UnconfirmedTransactionViewModel(unconfirmedTransaction: transaction, annotation: annotation)
+        } else if let transaction = transaction as? OnChainUnconfirmedTransaction {
+            return OnChainUnconfirmedTransactionViewModel(unconfirmedTransaction: transaction, annotation: annotation)
         } else {
             fatalError("type not implemented")
         }
@@ -88,7 +88,7 @@ class TransactionViewModel: NSObject {
     
     func matchesFilterSettings(_ filterSettings: FilterSettings) -> Bool {
         let isMatchingTransactionType =
-            ((transaction is OnChainTransaction || transaction is UnconfirmedTransaction) && filterSettings.displayOnChainTransactions)
+            (transaction is OnChainTransaction && filterSettings.displayOnChainTransactions)
             || (transaction is LightningPayment && filterSettings.displayLightningPayments)
             || (transaction is LightningInvoice && filterSettings.displayLightningInvoices)
         

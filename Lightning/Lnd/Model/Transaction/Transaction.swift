@@ -16,13 +16,13 @@ public protocol Transaction {
 
 extension Transaction {
     public func isTransactionEqual(to transaction: Transaction) -> Bool {
-        if let lhs = self as? OnChainTransaction, let rhs = transaction as? OnChainTransaction {
+        if let lhs = self as? OnChainConfirmedTransaction, let rhs = transaction as? OnChainConfirmedTransaction {
             return lhs == rhs
         } else if let lhs = self as? LightningInvoice, let rhs = transaction as? LightningInvoice {
             return lhs == rhs
         } else if let lhs = self as? LightningPayment, let rhs = transaction as? LightningPayment {
             return lhs == rhs
-        } else if let lhs = self as? UnconfirmedTransaction, let rhs = transaction as? UnconfirmedTransaction {
+        } else if let lhs = self as? OnChainUnconfirmedTransaction, let rhs = transaction as? OnChainUnconfirmedTransaction {
             return lhs == rhs
         } else {
             return false
