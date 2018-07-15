@@ -39,6 +39,13 @@ final class ModalPresentationController: UIPresentationController {
         dimmingView?.addGestureRecognizer(tapRecognizer)
     }
     
+    private func applyCornerRoundingMask(to view: UIView) {
+        let path = UIBezierPath(roundedRect: view.bounds, byRoundingCorners: [.topRight, .topLeft], cornerRadii: CGSize(width: 20, height: 20))
+        let maskLayer = CAShapeLayer()
+        maskLayer.path = path.cgPath
+        view.layer.mask = maskLayer
+    }
+    
     @objc private func dimmingViewTapped(tapRecognizer: UITapGestureRecognizer) {
         presentingViewController.dismiss(animated: true, completion: nil)
     }
@@ -57,6 +64,8 @@ final class ModalPresentationController: UIPresentationController {
         if parentSize != presentedSize {
             presentedViewController.view.clipsToBounds = true
         }
+        
+        applyCornerRoundingMask(to: presentedViewController.view)
         
         presentedViewController.transitionCoordinator?.animate(alongsideTransition: { _ in
             self.dimmingView?.alpha = 1.0
