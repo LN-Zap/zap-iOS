@@ -69,23 +69,26 @@ class TransactionViewModel: NSObject {
     }
     
     override func isEqual(_ object: Any?) -> Bool {
-        return (object as? TransactionViewModel)?.transaction.isEqual(to: transaction) ?? false
+        return (object as? TransactionViewModel)?.transaction.isTransactionEqual(to: transaction) ?? false
     }
     
     static func instance(for transaction: Transaction, annotation: TransactionAnnotation, aliasStore: ChannelAliasStore) -> TransactionViewModel {
-        if let transaction = transaction as? OnChainTransaction {
-            return OnChainTransactionViewModel(onChainTransaction: transaction, annotation: annotation, aliasStore: aliasStore)
+        if let transaction = transaction as? OnChainConfirmedTransaction {
+            return OnChainConfirmedTransactionViewModel(onChainTransaction: transaction, annotation: annotation, aliasStore: aliasStore)
         } else if let transaction = transaction as? LightningPayment {
             return LightningPaymentViewModel(lightningPayment: transaction, annotation: annotation)
         } else if let transaction = transaction as? LightningInvoice {
             return LightningInvoiceViewModel(lightningInvoice: transaction, annotation: annotation)
+        } else if let transaction = transaction as? OnChainUnconfirmedTransaction {
+            return OnChainUnconfirmedTransactionViewModel(unconfirmedTransaction: transaction, annotation: annotation)
         } else {
             fatalError("type not implemented")
         }
     }
     
     func matchesFilterSettings(_ filterSettings: FilterSettings) -> Bool {
-        let isMatchingTransactionType = (transaction is OnChainTransaction && filterSettings.displayOnChainTransactions)
+        let isMatchingTransactionType =
+            (transaction is OnChainTransaction && filterSettings.displayOnChainTransactions)
             || (transaction is LightningPayment && filterSettings.displayLightningPayments)
             || (transaction is LightningInvoice && filterSettings.displayLightningInvoices)
         

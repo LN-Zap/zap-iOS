@@ -14,6 +14,8 @@ public final class TransactionService {
     private let balanceService: BalanceService
     private let channelService: ChannelService
     
+    private let unconfirmedTransactionStore = UnconfirmedTransactionStore()
+    
     public let transactions = Observable<[Transaction]>([])
     
     init(api: LightningApiProtocol, balanceService: BalanceService, channelService: ChannelService) {
@@ -22,8 +24,14 @@ public final class TransactionService {
         self.channelService = channelService
     }
     
-    public func sendCoins(address: String, amount: Satoshi, callback: @escaping (Result<String>) -> Void) {
-        api.sendCoins(address: address, amount: amount, callback: callback)
+    public func sendCoins(address: String, amount: Satoshi, callback: @escaping (Result<OnChainUnconfirmedTransaction>) -> Void) {
+        api.sendCoins(address: address, amount: amount) { [weak self] in
+            if let newTransaction = $0.value {
+                self?.unconfirmedTransactionStore.add(newTransaction)
+                self?.transactions.value.append(newTransaction)
+            }
+            callback($0)
+        }
     }
     
     public func addInvoice(amount: Satoshi, memo: String?, callback: @escaping (Result<String>) -> Void) {
@@ -80,6 +88,10 @@ public final class TransactionService {
         api.invoices(callback: apiCallback)
         
         taskGroup.notify(queue: .main, work: DispatchWorkItem(block: { [weak self] in
+            self?.unconfirmedTransactionStore.remove(confirmed: allTransactions)
+            if let unconfirmed = self?.unconfirmedTransactionStore.all {
+                allTransactions.append(contentsOf: unconfirmed)
+            }
             self?.transactions.value = allTransactions
         }))
     }
