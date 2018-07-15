@@ -44,12 +44,14 @@ final class MainViewController: UIViewController, ContainerViewController {
     @IBOutlet weak var container: UIView?
     weak var currentViewController: UIViewController?
     
+    private var currenctContainerContent: ContainerContent?
+    
     fileprivate var settingsButtonTapped: (() -> Void)?
     fileprivate var sendButtonTapped: (() -> Void)?
     fileprivate var requestButtonTapped: (() -> Void)?
     fileprivate var transactionsButtonTapped: (() -> Void)?
     fileprivate var networkButtonTapped: (() -> Void)?
-
+    
     private enum ContainerContent {
         case transactions
         case network
@@ -91,10 +93,17 @@ final class MainViewController: UIViewController, ContainerViewController {
     }
     
     private func segmentedControl(select selection: ContainerContent) {
+        guard currenctContainerContent == nil || currenctContainerContent != selection else { return }
+        currenctContainerContent = selection
+        
         if selection == .network {
+            networkButtonTapped?()
+
             networkButton.setTitleColor(.white, for: .normal)
             transactionsButton.setTitleColor(.lightGray, for: .normal)
         } else {
+            transactionsButtonTapped?()
+
             networkButton.setTitleColor(.lightGray, for: .normal)
             transactionsButton.setTitleColor(.white, for: .normal)
         }
@@ -111,12 +120,10 @@ final class MainViewController: UIViewController, ContainerViewController {
     
     @IBAction private func showTransactions(_ smender: Any) {
         segmentedControl(select: .transactions)
-        transactionsButtonTapped?()
     }
     
     @IBAction private func showNetwork(_ sender: Any) {
         segmentedControl(select: .network)
-        networkButtonTapped?()
     }
     
     @IBAction private func presentSend(_ sender: Any) {

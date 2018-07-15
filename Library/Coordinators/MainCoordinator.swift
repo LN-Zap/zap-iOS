@@ -38,7 +38,6 @@ final class MainCoordinator: Routing {
         self.mainViewController = viewController
 
         self.rootViewController.setContainerContent(viewController)
-        self.presentTransactions()
     }
     
     public func handle(_ route: Route) {
