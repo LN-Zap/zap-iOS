@@ -14,29 +14,29 @@
         <!--Code Scanner View Controller-->
         <scene sceneID="UId-xB-u6g">
             <objects>
-                <viewController storyboardIdentifier="QRCodeScannerViewController" id="XWI-i7-W3A" customClass="QRCodeScannerViewController" customModule="Zap" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="QRCodeScannerViewController" id="XWI-i7-W3A" customClass="QRCodeScannerViewController" customModule="Library" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="aSj-aT-mt0">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Eno-d1-u3x">
-                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="687"/>
                                 <subviews>
-                                    <view opaque="NO" contentMode="scaleAspectFill" translatesAutoresizingMaskIntoConstraints="NO" id="suT-TO-7hY" customClass="QRCodeScannerView" customModule="Zap" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                                    <view opaque="NO" contentMode="scaleAspectFill" translatesAutoresizingMaskIntoConstraints="NO" id="suT-TO-7hY" customClass="QRCodeScannerView" customModule="Library" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="0.0" width="375" height="687"/>
                                         <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                     </view>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="4l3-5A-SjA">
-                                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="375" height="687"/>
                                         <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                     </view>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="zfZ-6Q-UHf">
-                                        <rect key="frame" x="0.0" y="603" width="375" height="64"/>
+                                        <rect key="frame" x="0.0" y="570" width="375" height="97"/>
                                         <subviews>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="C2T-oe-PmX">
-                                                <rect key="frame" x="0.0" y="0.0" width="375" height="64"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="375" height="97"/>
                                                 <constraints>
-                                                    <constraint firstAttribute="height" constant="64" id="4nr-3j-I1g"/>
+                                                    <constraint firstAttribute="height" constant="97" id="4nr-3j-I1g"/>
                                                 </constraints>
                                                 <state key="normal" title="Paste"/>
                                                 <connections>
@@ -53,7 +53,7 @@
                                         </constraints>
                                     </view>
                                     <imageView userInteractionEnabled="NO" alpha="0.5" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="qr-code-overlay" translatesAutoresizingMaskIntoConstraints="NO" id="nON-Ym-xdN">
-                                        <rect key="frame" x="94.5" y="240.5" width="186" height="186"/>
+                                        <rect key="frame" x="94.5" y="250.5" width="186" height="186"/>
                                     </imageView>
                                 </subviews>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -68,7 +68,7 @@
                                     <constraint firstItem="zfZ-6Q-UHf" firstAttribute="leading" secondItem="Eno-d1-u3x" secondAttribute="leading" id="NTx-jv-FdO"/>
                                     <constraint firstItem="suT-TO-7hY" firstAttribute="top" secondItem="Eno-d1-u3x" secondAttribute="top" id="T24-Sh-sJ2"/>
                                     <constraint firstItem="4l3-5A-SjA" firstAttribute="top" secondItem="suT-TO-7hY" secondAttribute="top" id="kHp-X5-XYH"/>
-                                    <constraint firstItem="zfZ-6Q-UHf" firstAttribute="bottom" secondItem="suT-TO-7hY" secondAttribute="bottom" id="q3F-QG-SRu"/>
+                                    <constraint firstItem="zfZ-6Q-UHf" firstAttribute="bottom" secondItem="suT-TO-7hY" secondAttribute="bottom" constant="-20" id="q3F-QG-SRu"/>
                                     <constraint firstItem="4l3-5A-SjA" firstAttribute="leading" secondItem="suT-TO-7hY" secondAttribute="leading" id="z1I-3T-dob"/>
                                     <constraint firstItem="4l3-5A-SjA" firstAttribute="bottom" secondItem="suT-TO-7hY" secondAttribute="bottom" id="zaT-Pg-6fb"/>
                                 </constraints>
@@ -84,12 +84,12 @@
                                 <color key="backgroundColor" name="nastyGreen"/>
                             </view>
                             <imageView userInteractionEnabled="NO" alpha="0.0" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="qr-success" translatesAutoresizingMaskIntoConstraints="NO" id="E4b-Na-FVs">
-                                <rect key="frame" x="147" y="293" width="80" height="80"/>
+                                <rect key="frame" x="147" y="303" width="80" height="80"/>
                             </imageView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
-                            <constraint firstItem="V7t-mB-fri" firstAttribute="top" secondItem="Eno-d1-u3x" secondAttribute="bottom" id="BCV-KX-hTX"/>
+                            <constraint firstItem="V7t-mB-fri" firstAttribute="top" secondItem="Eno-d1-u3x" secondAttribute="bottom" constant="-20" id="BCV-KX-hTX"/>
                             <constraint firstItem="V7t-mB-fri" firstAttribute="trailing" secondItem="wCl-Jb-7G3" secondAttribute="trailing" id="DtW-Fc-7a3"/>
                             <constraint firstItem="Eno-d1-u3x" firstAttribute="top" secondItem="aSj-aT-mt0" secondAttribute="top" id="H69-q5-apI"/>
                             <constraint firstAttribute="bottom" secondItem="V7t-mB-fri" secondAttribute="bottom" priority="200" id="Ykw-C6-mMT"/>
@@ -99,7 +99,7 @@
                             <constraint firstItem="E4b-Na-FVs" firstAttribute="centerY" secondItem="Eno-d1-u3x" secondAttribute="centerY" id="icv-6N-7wO"/>
                             <constraint firstItem="E4b-Na-FVs" firstAttribute="centerX" secondItem="Eno-d1-u3x" secondAttribute="centerX" id="imA-ov-laF"/>
                             <constraint firstItem="Eno-d1-u3x" firstAttribute="leading" secondItem="wCl-Jb-7G3" secondAttribute="leading" id="kKY-pL-jcW"/>
-                            <constraint firstItem="wCl-Jb-7G3" firstAttribute="bottom" relation="greaterThanOrEqual" secondItem="C2T-oe-PmX" secondAttribute="bottom" id="kcA-Ky-MbY"/>
+                            <constraint firstItem="zfZ-6Q-UHf" firstAttribute="bottom" relation="greaterThanOrEqual" secondItem="C2T-oe-PmX" secondAttribute="bottom" id="kcA-Ky-MbY"/>
                             <constraint firstItem="41s-yu-jEG" firstAttribute="leading" secondItem="wCl-Jb-7G3" secondAttribute="leading" id="nBZ-6f-CeC"/>
                             <constraint firstItem="V7t-mB-fri" firstAttribute="top" secondItem="aSj-aT-mt0" secondAttribute="bottom" id="rfk-aS-4Bp"/>
                             <constraint firstItem="Eno-d1-u3x" firstAttribute="trailing" secondItem="wCl-Jb-7G3" secondAttribute="trailing" id="vLb-xT-uFR"/>
@@ -134,7 +134,7 @@
         <!--Status Bar Delegating Navigation Controller-->
         <scene sceneID="aCV-zW-E1s">
             <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="kjt-IL-FgQ" customClass="StatusBarDelegatingNavigationController" customModule="Zap" customModuleProvider="target" sceneMemberID="viewController">
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="kjt-IL-FgQ" customClass="StatusBarDelegatingNavigationController" customModule="Library" customModuleProvider="target" sceneMemberID="viewController">
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="mfT-8C-5S4">
                         <rect key="frame" x="0.0" y="20" width="375" height="44"/>
@@ -156,7 +156,7 @@
         <image name="qr-code-overlay" width="186" height="186"/>
         <image name="qr-success" width="80" height="80"/>
         <namedColor name="nastyGreen">
-            <color red="0.46666666666666667" green="0.63921568627450975" blue="0.24705882352941178" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <color red="0.46700000762939453" green="0.63899999856948853" blue="0.24699999392032623" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
     </resources>
 </document>

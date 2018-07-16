@@ -72,7 +72,7 @@ final class QRCodeScannerViewController: UIViewController, ContainerViewControll
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+                
         Style.button.apply(to: pasteButton)
         pasteButton.setTitleColor(.white, for: .normal)
         
@@ -105,6 +105,8 @@ final class QRCodeScannerViewController: UIViewController, ContainerViewControll
     private func presentViewController(_ viewController: UIViewController) {
         setContainerContent(viewController)
         
+        applyCornerRoundingMask(to: viewController.view)
+        
         if let viewController = viewController as? QRCodeScannerChildViewController {
             containerViewHeightConstraint?.constant = viewController.contentHeight
             viewController.delegate = self
@@ -121,6 +123,13 @@ final class QRCodeScannerViewController: UIViewController, ContainerViewControll
             self.view.layoutIfNeeded()
         }
 
+    }
+    
+    private func applyCornerRoundingMask(to view: UIView) {
+        let path = UIBezierPath(roundedRect: view.bounds, byRoundingCorners: [.topRight, .topLeft], cornerRadii: CGSize(width: 20, height: 20))
+        let maskLayer = CAShapeLayer()
+        maskLayer.path = path.cgPath
+        view.layer.mask = maskLayer
     }
     
     @IBAction private func pasteButtonTapped(_ sender: Any) {
