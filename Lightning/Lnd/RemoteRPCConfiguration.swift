@@ -16,7 +16,7 @@ public struct RemoteRPCConfiguration: Codable {
     static private let keychain = Keychain(service: "com.jackmallers.zap")
     
     public init(certificate: String, macaroon: Data, url: URL) {
-        self.certificate = certificate
+        self.certificate = Pem(key: certificate).string
         self.macaroon = macaroon
         self.url = url
     }

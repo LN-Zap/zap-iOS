@@ -41,6 +41,7 @@
 		AD27B00E20FB89BE00F232A8 /* UnconfirmedTransactionStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD27B00D20FB89BE00F232A8 /* UnconfirmedTransactionStore.swift */; };
 		AD27B01020FB8E6D00F232A8 /* OnChainUnconfirmedTransactionViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD27B00F20FB8E6D00F232A8 /* OnChainUnconfirmedTransactionViewModel.swift */; };
 		AD27B01420FBBF8700F232A8 /* OnChainTransaction.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD27B01320FBBF8700F232A8 /* OnChainTransaction.swift */; };
+		AD27B01620FC8BBF00F232A8 /* Pem.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD27B01520FC8BBF00F232A8 /* Pem.swift */; };
 		AD292F9020E69F0E00211AE7 /* AuthenticationViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0E2690C202CC4E30069E83C /* AuthenticationViewModel.swift */; };
 		AD292F9120E69F0E00211AE7 /* RootViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD71EA4620E228D800256307 /* RootViewModel.swift */; };
 		AD391C1C20D16ED4007EE22A /* Library.h in Headers */ = {isa = PBXBuildFile; fileRef = AD391C1A20D16ED4007EE22A /* Library.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -90,7 +91,7 @@
 		AD391C5520D16F7A007EE22A /* ConnectRemoteNodeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD680AA020B07AE90018986B /* ConnectRemoteNodeViewController.swift */; };
 		AD391C5620D16F7A007EE22A /* ConnectRemoteNodeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD21768A20C3F29C007779DE /* ConnectRemoteNodeViewModel.swift */; };
 		AD391C5820D16F7A007EE22A /* RemoteNodeCertificatesScannerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADD6D80220B09260008BE461 /* RemoteNodeCertificatesScannerViewController.swift */; };
-		AD391C5920D16F7A007EE22A /* RemoteNodeConfiguration.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADD6D80620B15603008BE461 /* RemoteNodeConfiguration.swift */; };
+		AD391C5920D16F7A007EE22A /* RemoteNodeConfigurationQRCode.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADD6D80620B15603008BE461 /* RemoteNodeConfigurationQRCode.swift */; };
 		AD391C5A20D16F7A007EE22A /* MnemonicPageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADBB362E2084CA16005662B4 /* MnemonicPageViewController.swift */; };
 		AD391C5B20D16F7A007EE22A /* MnemonicViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0D3C970205FF0E10015C5D7 /* MnemonicViewController.swift */; };
 		AD391C5C20D16F7A007EE22A /* MnemonicViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADCE01C0207B5C0300CA72E8 /* MnemonicViewModel.swift */; };
@@ -590,6 +591,7 @@
 		AD27B00D20FB89BE00F232A8 /* UnconfirmedTransactionStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UnconfirmedTransactionStore.swift; sourceTree = "<group>"; };
 		AD27B00F20FB8E6D00F232A8 /* OnChainUnconfirmedTransactionViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnChainUnconfirmedTransactionViewModel.swift; sourceTree = "<group>"; };
 		AD27B01320FBBF8700F232A8 /* OnChainTransaction.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnChainTransaction.swift; sourceTree = "<group>"; };
+		AD27B01520FC8BBF00F232A8 /* Pem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Pem.swift; sourceTree = "<group>"; };
 		AD2EDBF920C02616002E6EE5 /* Storyboard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Storyboard.swift; sourceTree = "<group>"; };
 		AD33B5EE20A8463600E32BD9 /* SendOnChainViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SendOnChainViewController.swift; sourceTree = "<group>"; };
 		AD38EB2F207DF233007DF14D /* UIButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIButton.swift; sourceTree = "<group>"; };
@@ -725,7 +727,7 @@
 		ADCE01C7207B720800CA72E8 /* SyncViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SyncViewController.swift; sourceTree = "<group>"; };
 		ADCE01CB207B967200CA72E8 /* Loading.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Loading.storyboard; sourceTree = "<group>"; };
 		ADD6D80220B09260008BE461 /* RemoteNodeCertificatesScannerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RemoteNodeCertificatesScannerViewController.swift; sourceTree = "<group>"; };
-		ADD6D80620B15603008BE461 /* RemoteNodeConfiguration.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RemoteNodeConfiguration.swift; sourceTree = "<group>"; };
+		ADD6D80620B15603008BE461 /* RemoteNodeConfigurationQRCode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RemoteNodeConfigurationQRCode.swift; sourceTree = "<group>"; };
 		ADD9DCDC20B453D000AEFC5C /* LndConnection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LndConnection.swift; sourceTree = "<group>"; };
 		ADE19C3F20E7892000340E2E /* ChannelPoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChannelPoint.swift; sourceTree = "<group>"; };
 		ADE4CF1C20B5B2BE007C987A /* UIFont.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIFont.swift; sourceTree = "<group>"; };
@@ -1008,6 +1010,7 @@
 				AD71EA4A20E2321100256307 /* LndConstants.swift */,
 				A0A05A342014047B0007D1C9 /* LocalLnd.swift */,
 				A02C9FC520304395009821B1 /* LocalLndConfiguration.swift */,
+				AD27B01520FC8BBF00F232A8 /* Pem.swift */,
 				AD71EA4820E2318000256307 /* RemoteRPCConfiguration.swift */,
 			);
 			path = Lnd;
@@ -1446,7 +1449,7 @@
 				AD680AA020B07AE90018986B /* ConnectRemoteNodeViewController.swift */,
 				AD21768A20C3F29C007779DE /* ConnectRemoteNodeViewModel.swift */,
 				ADD6D80220B09260008BE461 /* RemoteNodeCertificatesScannerViewController.swift */,
-				ADD6D80620B15603008BE461 /* RemoteNodeConfiguration.swift */,
+				ADD6D80620B15603008BE461 /* RemoteNodeConfigurationQRCode.swift */,
 			);
 			path = ConnectRemoteNode;
 			sourceTree = "<group>";
@@ -2356,7 +2359,7 @@
 				AD391D0320D16FF5007EE22A /* AmountInputView.swift in Sources */,
 				AD391D0620D16FF5007EE22A /* BondTableViewCell.swift in Sources */,
 				AD391C6D20D16F89007EE22A /* SetupPinViewController.swift in Sources */,
-				AD391C5920D16F7A007EE22A /* RemoteNodeConfiguration.swift in Sources */,
+				AD391C5920D16F7A007EE22A /* RemoteNodeConfigurationQRCode.swift in Sources */,
 				AD391D1920D174B4007EE22A /* MainCoordinator.swift in Sources */,
 				AD391C4120D16F0B007EE22A /* ExchangeUpdaterJob.swift in Sources */,
 				AD391D1A20D174B4007EE22A /* PinCoordinator.swift in Sources */,
@@ -2464,6 +2467,7 @@
 				ADFEFA5E20E627F100FE1557 /* Transaction.swift in Sources */,
 				ADFEFA4A20E627F100FE1557 /* ProtobufExtensions.swift in Sources */,
 				ADFEFA5C20E627F100FE1557 /* Peer.swift in Sources */,
+				AD27B01620FC8BBF00F232A8 /* Pem.swift in Sources */,
 				ADFEFA4D20E627F100FE1557 /* LightningApiMock.swift in Sources */,
 				ADFEFA4B20E627F100FE1557 /* Result.swift in Sources */,
 				ADFEFA4C20E627F100FE1557 /* StreamCallback.swift in Sources */,
