@@ -22,6 +22,7 @@ final class RootViewModel: NSObject {
     let authenticationViewModel = AuthenticationViewModel()
     let state = Observable<State>(.connecting)
     
+    private var connectionTimeoutTimer: Timer?
     private var syncingStartTime: Date?
     
     private(set) var lightningService: LightningService? {
@@ -72,6 +73,11 @@ final class RootViewModel: NSObject {
         guard let lightningService = LightningService(connection: connection) else { return }
         lightningService.start()
         self.lightningService = lightningService
+        
+        connectionTimeoutTimer = Timer.scheduledTimer(withTimeInterval: 3, repeats: false) { [weak self] _ in
+            self?.connectionTimeoutTimer = nil
+            self?.state.value = .noWallet
+        }
     }
     
     func disconnect() {
@@ -88,7 +94,10 @@ final class RootViewModel: NSObject {
             .distinct()
             .map(stateForInfoState)
             .feedNext(into: state)
-            .observeNext { _ in }
+            .observeNext { [weak self] _ in
+                self?.connectionTimeoutTimer?.invalidate()
+                self?.connectionTimeoutTimer = nil
+            }
             .dispose(in: reactive.bag)
     }
     
