@@ -140,6 +140,11 @@
 "scene.qr_code_detail.method_label.on_chain" = "On-chain";
 
 "scene.sync.description_label" = "Syncing to blockchain…";
+"scene.sync.disconnect_bar_button" = "Disconnect";
+"scene.sync.disconnect_alert.title" = "Disconnect";
+"scene.sync.disconnect_alert.message" = "Do you really want to cancel syncing? You will have to reconnect to your node afterwards.";
+"scene.sync.disconnect_alert.destructive_action" = "Disconnect Node";
+"scene.sync.disconnect_alert.cancel_action" = "Cancel";
 
 "scene.transaction_detail.title.lightning_invoice" = "Invoice Detail";
 "scene.transaction_detail.title.payment_detail" = "Payment Detail";

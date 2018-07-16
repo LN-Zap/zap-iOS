@@ -9,10 +9,15 @@ import Lightning
 import ReactiveKit
 import UIKit
 
+protocol SyncDelegate: class {
+    func disconnect()
+}
+
 extension UIStoryboard {
-    static func instantiateSyncViewController(with lightningService: LightningService) -> SyncViewController {
+    static func instantiateSyncViewController(with lightningService: LightningService, delegate: SyncDelegate) -> SyncViewController {
         let syncViewController = Storyboard.sync.initial(viewController: SyncViewController.self)
         syncViewController.lightningService = lightningService
+        syncViewController.delegate = delegate
         return syncViewController
     }
 }
@@ -23,9 +28,12 @@ final class SyncViewController: UIViewController {
     @IBOutlet private weak var syncLabel: UILabel!
     @IBOutlet private weak var descriptionLabel: UILabel!
     @IBOutlet private weak var dateLabel: UILabel!
+    @IBOutlet private weak var navigationBar: UINavigationBar!
+    @IBOutlet private weak var disconnectBarButton: UIBarButtonItem!
     
     fileprivate var lightningService: LightningService?
-    
+    fileprivate weak var delegate: SyncDelegate?
+
     private var initialHeight: Int?
     
     override func viewDidLoad() {
@@ -39,11 +47,18 @@ final class SyncViewController: UIViewController {
         syncLabel.textColor = .white
         descriptionLabel.textColor = .white
         dateLabel.textColor = .white
-        
+        navigationBar.shadowImage = UIImage()
+        navigationBar.setBackgroundImage(UIImage(), for: .default)
+
         descriptionLabel.text = "scene.sync.description_label".localized
+        disconnectBarButton.title = "scene.sync.disconnect_bar_button".localized
         
+        setupBindings()
+    }
+    
+    private func setupBindings() {
         guard let lightningService = lightningService else { fatalError("viewModel not set.") }
-        
+
         let percentSignal = combineLatest(lightningService.infoService.blockHeight, lightningService.infoService.blockChainHeight) { [weak self] syncedBlockHeigh, maxBlockHeight -> Double in
             if self?.initialHeight == nil {
                 self?.initialHeight = syncedBlockHeigh
@@ -89,5 +104,16 @@ final class SyncViewController: UIViewController {
             self?.gradientViewHeightConstraint.constant = height
             self?.view.layoutIfNeeded()
         })
+    }
+    
+    @IBAction private func disconnectNode(_ sender: Any) {
+        let alertController = UIAlertController(title: "scene.sync.disconnect_alert.title".localized, message: "scene.sync.disconnect_alert.message".localized, preferredStyle: .actionSheet)
+        alertController.addAction(UIAlertAction(title: "scene.sync.disconnect_alert.destructive_action".localized, style: .destructive, handler: { [weak self] _ in
+            RemoteRPCConfiguration.delete()
+            self?.delegate?.disconnect()
+        }))
+        alertController.addAction(UIAlertAction(title: "scene.sync.disconnect_alert.cancel_action".localized, style: .cancel, handler: nil))
+        
+        present(alertController, animated: true, completion: nil)
     }
 }

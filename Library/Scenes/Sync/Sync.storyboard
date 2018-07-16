@@ -14,12 +14,12 @@
         <!--Sync View Controller-->
         <scene sceneID="jO5-fM-adh">
             <objects>
-                <viewController storyboardIdentifier="SyncViewController" id="qMe-Xi-uzZ" customClass="SyncViewController" customModule="ZapShared" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="SyncViewController" id="qMe-Xi-uzZ" customClass="SyncViewController" customModule="Library" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Hcq-Mz-amK">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="FSC-fR-MGu" customClass="GradientView" customModule="ZapShared" customModuleProvider="target">
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="FSC-fR-MGu" customClass="GradientView" customModule="Library" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="667" width="375" height="0.0"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
@@ -44,12 +44,29 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <navigationBar contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="D8f-nP-bGi">
+                                <rect key="frame" x="0.0" y="20" width="375" height="44"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <color key="barTintColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <items>
+                                    <navigationItem id="qjl-Kc-sAi">
+                                        <barButtonItem key="leftBarButtonItem" title="Item" id="7eC-hu-5kH">
+                                            <connections>
+                                                <action selector="disconnectNode:" destination="qMe-Xi-uzZ" id="mTq-UY-uK3"/>
+                                            </connections>
+                                        </barButtonItem>
+                                    </navigationItem>
+                                </items>
+                            </navigationBar>
                         </subviews>
                         <color key="backgroundColor" name="charcoalGrey"/>
                         <constraints>
                             <constraint firstItem="u84-OV-yt2" firstAttribute="centerY" secondItem="pFh-z5-n7c" secondAttribute="centerY" constant="-60" id="0oB-Kt-uop"/>
+                            <constraint firstItem="D8f-nP-bGi" firstAttribute="leading" secondItem="pFh-z5-n7c" secondAttribute="leading" id="4az-jB-QY9"/>
                             <constraint firstItem="FSC-fR-MGu" firstAttribute="leading" secondItem="pFh-z5-n7c" secondAttribute="leading" id="7fP-H7-YbQ"/>
+                            <constraint firstItem="D8f-nP-bGi" firstAttribute="top" secondItem="pFh-z5-n7c" secondAttribute="top" id="H7I-i3-MEu"/>
                             <constraint firstItem="R2h-In-kXJ" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="pFh-z5-n7c" secondAttribute="leading" constant="20" id="Hb3-Sf-zI5"/>
+                            <constraint firstItem="D8f-nP-bGi" firstAttribute="trailing" secondItem="pFh-z5-n7c" secondAttribute="trailing" id="QAd-gH-2Ee"/>
                             <constraint firstItem="Lrl-O5-tIv" firstAttribute="centerX" secondItem="pFh-z5-n7c" secondAttribute="centerX" id="TAa-mE-bok"/>
                             <constraint firstItem="Lrl-O5-tIv" firstAttribute="top" secondItem="u84-OV-yt2" secondAttribute="bottom" constant="15" id="UG1-n5-f5d"/>
                             <constraint firstItem="R2h-In-kXJ" firstAttribute="top" secondItem="Lrl-O5-tIv" secondAttribute="bottom" constant="5" id="aZB-aT-t2g"/>
@@ -65,8 +82,10 @@
                     <connections>
                         <outlet property="dateLabel" destination="R2h-In-kXJ" id="DDl-2Y-FLX"/>
                         <outlet property="descriptionLabel" destination="Lrl-O5-tIv" id="6a4-X2-XST"/>
+                        <outlet property="disconnectBarButton" destination="7eC-hu-5kH" id="yCm-cJ-hSN"/>
                         <outlet property="gradientView" destination="FSC-fR-MGu" id="ScX-QJ-t5w"/>
                         <outlet property="gradientViewHeightConstraint" destination="sKs-bq-pV4" id="ZkB-cF-L1l"/>
+                        <outlet property="navigationBar" destination="D8f-nP-bGi" id="oC1-Lz-unX"/>
                         <outlet property="syncLabel" destination="u84-OV-yt2" id="uKm-0f-jSS"/>
                     </connections>
                 </viewController>

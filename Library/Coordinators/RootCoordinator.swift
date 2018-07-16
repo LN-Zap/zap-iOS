@@ -8,7 +8,7 @@
 import Lightning
 import UIKit
 
-public final class RootCoordinator: NSObject, SetupCoordinatorDelegate, PinCoordinatorDelegate, SettingsDelegate, Routing {
+public final class RootCoordinator: NSObject, SetupCoordinatorDelegate, PinCoordinatorDelegate, SettingsDelegate, SyncDelegate, Routing {
     
     private let rootViewController: RootViewController
     private let rootViewModel: RootViewModel
@@ -94,7 +94,7 @@ public final class RootCoordinator: NSObject, SetupCoordinatorDelegate, PinCoord
     
     private func presentSync() {
         guard let lightningService = rootViewModel.lightningService else { fatalError("viewModel not set") }
-        let viewController = UIStoryboard.instantiateSyncViewController(with: lightningService)
+        let viewController = UIStoryboard.instantiateSyncViewController(with: lightningService, delegate: self)
         presentViewController(viewController)
     }
     
