@@ -75,6 +75,19 @@ final class KeyPadView: UIView {
         return Locale.autoupdatingCurrent.decimalSeparator ?? "."
     }
     
+    private var authenticationImage: UIImage? {
+        let imageName: String
+        switch BiometricAuthentication.type {
+        case .none:
+            return nil
+        case .touchID:
+            imageName = "icon_touch_id"
+        case .faceID:
+            imageName = "icon_face_id"
+        }
+        return UIImage(named: imageName, in: Bundle.shared, compatibleWith: nil)
+    }
+    
     private func updateButtonFont() {
         buttons?.forEach {
             Style.button.apply(to: $0)
@@ -87,7 +100,7 @@ final class KeyPadView: UIView {
     private func updatePointButton() {
         switch state {
         case .authenticate:
-            pointButton.setImage(UIImage(named: "icon-face-id", in: Bundle.shared, compatibleWith: nil), for: .normal)
+            pointButton.setImage(authenticationImage, for: .normal)
             pointButton.imageView?.tintColor = textColor
             pointButton.setTitle(nil, for: .normal)
             pointButton.isEnabled = true

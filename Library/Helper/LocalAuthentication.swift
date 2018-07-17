@@ -10,6 +10,31 @@ import Lightning
 import LocalAuthentication
 
 final class BiometricAuthentication {
+    enum BiometricType {
+        case none
+        case touchID
+        case faceID
+    }
+    
+    static var type: BiometricType {
+        let context = LAContext()
+        
+        guard context.canEvaluatePolicy(.deviceOwnerAuthenticationWithBiometrics, error: nil) else { return .none }
+        
+        if #available(iOS 11.0, *) {
+            switch context.biometryType {
+            case .none:
+                return .none
+            case .touchID:
+                return .touchID
+            case .faceID:
+                return .faceID
+            }
+        } else {
+            return  .touchID
+        }
+    }
+    
     static func authenticate(callback: @escaping (Result<Void>) -> Void) {
         let localAuthenticationContext = LAContext()
         localAuthenticationContext.localizedFallbackTitle = "scene.pin.biometric.fallback.title".localized

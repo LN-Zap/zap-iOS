@@ -57,6 +57,8 @@ final class PinViewController: UIViewController {
     }
     
     private func startBiometricAuthentication() {
+        guard BiometricAuthentication.type != .none else { return }
+        
         BiometricAuthentication.authenticate { [weak self] in
             guard $0.error == nil else { return }
             self?.authenticationViewModel?.didAuthenticate()
