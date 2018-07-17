@@ -14,7 +14,7 @@ final class QRCodeScannerView: UIView {
     private var captureSession = AVCaptureSession()
     private var videoPreviewLayer: AVCaptureVideoPreviewLayer?
     
-    var handler: ((String) -> Bool)?
+    var handler: ((String) -> Void)?
     
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
@@ -54,6 +54,11 @@ final class QRCodeScannerView: UIView {
         
         videoPreviewLayer?.frame = layer.bounds
     }
+    
+    func stop() {
+        UISelectionFeedbackGenerator().selectionChanged()
+        captureSession.stopRunning()
+    }
 }
 
 extension QRCodeScannerView: AVCaptureMetadataOutputObjectsDelegate {
@@ -63,9 +68,6 @@ extension QRCodeScannerView: AVCaptureMetadataOutputObjectsDelegate {
             let code = metadataObj.stringValue
             else { return }
         
-        if handler?(code) == true {
-            UISelectionFeedbackGenerator().selectionChanged()
-            captureSession.stopRunning()
-        }
+        handler?(code)
     }
 }

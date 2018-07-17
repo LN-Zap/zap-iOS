@@ -48,7 +48,7 @@ final class QRCodeScannerViewController: UIViewController, ContainerViewControll
         didSet {
             scannerView.lightningService = lightningService
             scannerView.handler = { [weak self] address in
-                return self?.tryPresentingViewController(for: address) ?? false
+                self?.tryPresentingViewController(for: address)
             }
         }
     }
@@ -84,21 +84,21 @@ final class QRCodeScannerViewController: UIViewController, ContainerViewControll
         qrCodeSuccessImageView.tintColor = UIColor.zap.nastyGreen
     }
     
-    func tryPresentingViewController(for address: String) -> Bool {
+    func tryPresentingViewController(for address: String) {
         guard
             let lightningService = lightningService,
             let result = strategy?.viewControllerForAddress(address: address, lightningService: lightningService)
-            else { return false }
+            else { return }
         
         switch result {
         case .success(let viewController):
             presentViewController(viewController)
-            return true
+
+            scannerView.stop()
         case .failure(let error):
             if let message = (error as? PaymentURIError)?.localized {
                 presentError(message: message)
             }
-            return false
         }
     }
     

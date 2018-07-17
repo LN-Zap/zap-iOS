@@ -23,14 +23,12 @@ final class RemoteNodeCertificatesScannerViewController: UIViewController {
     
     @IBOutlet private weak var scannerView: QRCodeScannerView! {
         didSet {
-            scannerView.handler = { [weak self] code -> Bool in
+            scannerView.handler = { [weak self] code in
                 if let remoteNodeConfigurationQRCode = RemoteNodeConfigurationQRCode(json: code) {
+                    self?.scannerView.stop()
                     self?.connectRemoteNodeViewModel?.updateQRCode(remoteNodeConfigurationQRCode)
                     self?.dismiss(animated: true, completion: nil)
-                    return true
                 }
-                
-                return false
             }
         }
     }
