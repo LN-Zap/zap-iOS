@@ -27,7 +27,7 @@ extension Satoshi {
         
         if
             let satoshis = Satoshi(string: string, locale: Locale.current),
-            satoshis.isNormal {
+            satoshis.isNormal || satoshis.isZero {
             return Satoshi.from(value: satoshis, unit: unit)
         } else {
             return nil

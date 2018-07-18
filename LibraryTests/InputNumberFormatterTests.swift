@@ -50,7 +50,29 @@ final class InputNumberFormatterTests: XCTestCase {
             ("10000.", fiat, "10,000."),
             ("10000..", fiat, nil),
             ("8888.8", fiat, "8,888.8"),
-            ("100000000", fiat, "100,000,000")
+            ("100000000", fiat, "100,000,000"),
+            (".0", Bitcoin(unit: .bitcoin), "0.0"),
+            (".00", Bitcoin(unit: .bitcoin), "0.00"),
+            (".000", Bitcoin(unit: .bitcoin), "0.000"),
+            (".0000", Bitcoin(unit: .bitcoin), "0.0000"),
+            (".00001", Bitcoin(unit: .bitcoin), "0.00001"),
+            (".00010000", Bitcoin(unit: .bitcoin), "0.00010000"),
+            (".00000000", Bitcoin(unit: .bitcoin), "0.00000000"),
+            (".00000001", Bitcoin(unit: .bitcoin), "0.00000001"),
+            (".000000001", Bitcoin(unit: .bitcoin), nil),
+            (".0000", Bitcoin(unit: .milliBitcoin), "0.0000"),
+            (".00001", Bitcoin(unit: .milliBitcoin), "0.00001"),
+            (".000001", Bitcoin(unit: .milliBitcoin), nil),
+            (".00", Bitcoin(unit: .bit), "0.00"),
+            (".01", Bitcoin(unit: .bit), "0.01"),
+            (".001", Bitcoin(unit: .bit), nil),
+            (".", Bitcoin(unit: .satoshi), nil),
+            (".0", Bitcoin(unit: .satoshi), nil),
+            (".0", fiat, "0.0"),
+            (".00", fiat, "0.00"),
+            (".000", fiat, nil),
+            (".0000", fiat, nil),
+            (".00001", fiat, nil)
         ]
         
         for (input, currency, output) in data {

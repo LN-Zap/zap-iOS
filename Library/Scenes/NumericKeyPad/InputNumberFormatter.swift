@@ -46,12 +46,15 @@ final class InputNumberFormatter {
     
     // TODO: remove duplicate code
     private func validateFiat(_ input: String) -> String? {
-        guard let numberFormatter = numberFormatter(for: input, exponent: 2) else { return nil }
-        
+        guard
+            let numberFormatter = numberFormatter(for: input, exponent: 2),
+            let decimalSeparator = numberFormatter.decimalSeparator
+            else { return nil }
+
         if input == "" {
             return ""
-        } else if input == numberFormatter.decimalSeparator {
-            return "0."
+        } else if input == decimalSeparator {
+            return "0\(decimalSeparator)"
         } else if input == "00" {
             return nil
         }
@@ -59,8 +62,8 @@ final class InputNumberFormatter {
         if let number = numberFormatter.number(from: input),
             let result = numberFormatter.string(from: number) {
             
-            if input.hasSuffix(numberFormatter.decimalSeparator) {
-                return result + numberFormatter.decimalSeparator
+            if input.hasSuffix(decimalSeparator) {
+                return result + decimalSeparator
             } else {
                 return result
             }
@@ -70,21 +73,26 @@ final class InputNumberFormatter {
     }
     
     private func validate(_ input: String, for unit: BitcoinUnit) -> String? {
-        guard let numberFormatter = numberFormatter(for: input, exponent: unit.exponent) else { return nil }
+        guard
+            let numberFormatter = numberFormatter(for: input, exponent: unit.exponent),
+            let decimalSeparator = numberFormatter.decimalSeparator
+            else { return nil }
 
         if input == "" {
             return ""
-        } else if input == numberFormatter.decimalSeparator {
-            return "0."
-        } else if input == "00" || unit == .satoshi && input.contains(numberFormatter.decimalSeparator) {
+        } else if unit == .satoshi && input.contains(decimalSeparator) {
+            return nil
+        } else if input == decimalSeparator {
+            return "0\(decimalSeparator)"
+        } else if input == "00" {
             return nil
         }
         
         if let satoshis = Satoshi.from(string: input, unit: unit),
             let result = numberFormatter.string(from: satoshis.convert(to: unit) as NSDecimalNumber) {
             
-            if input.hasSuffix(numberFormatter.decimalSeparator) {
-                return result + numberFormatter.decimalSeparator
+            if input.hasSuffix(decimalSeparator) {
+                return result + decimalSeparator
             } else {
                 return result
             }
