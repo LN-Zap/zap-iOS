@@ -17,7 +17,7 @@ extension UIStoryboard {
 
 // swiftlint:disable:next type_name
 final class RemoteNodeCertificatesScannerViewController: UIViewController {
-    @IBOutlet private weak var cancelButton: UIButton!
+    @IBOutlet private weak var navigationBar: UINavigationBar!
     
     fileprivate var connectRemoteNodeViewModel: ConnectRemoteNodeViewModel?
     
@@ -36,7 +36,8 @@ final class RemoteNodeCertificatesScannerViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        Style.button.apply(to: cancelButton)
+        navigationBar.shadowImage = UIImage()
+        navigationBar.setBackgroundImage(UIImage(), for: .default)
     }
     
     @IBAction private func cancel(_ sender: Any) {
