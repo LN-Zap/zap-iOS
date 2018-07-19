@@ -27,12 +27,12 @@ final class ConnectRemoteNodeViewModel: NSObject {
         }
     }
     
-    let tableContent: MutableObservable2DArray<String?, CellType>
+    let dataSource: MutableObservable2DArray<String?, CellType>
     
     private var testServer: LightningApiRPC?
     
     override init() {
-        tableContent = MutableObservable2DArray([])
+        dataSource = MutableObservable2DArray([])
         
         super.init()
         
@@ -61,7 +61,7 @@ final class ConnectRemoteNodeViewModel: NSObject {
             items: [.help]
         ))
         
-        tableContent.replace(with: sections, performDiff: true)
+        dataSource.replace(with: sections, performDiff: true)
     }
     
     private func certificateSection(for qrCode: RemoteRPCConfiguration) -> Observable2DArraySection<String?, CellType> {

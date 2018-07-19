@@ -20,20 +20,6 @@ extension UIStoryboard {
     }
 }
 
-final class TransactionBond: TableViewBinder<Observable2DArray<String, TransactionViewModel>> {
-    override func cellForRow(at indexPath: IndexPath, tableView: UITableView, dataSource: Observable2DArray<String, TransactionViewModel>) -> UITableViewCell {
-        let transactionViewModel = dataSource.item(at: indexPath)
-        
-        let cell: TransactionTableViewCell = tableView.dequeueCellForIndexPath(indexPath)
-        cell.transactionViewModel = transactionViewModel
-        return cell
-    }
-    
-    func titleForHeader(in section: Int, dataSource: Observable2DArray<String, TransactionViewModel>) -> String? {
-        return dataSource[section].metadata
-    }
-}
-
 final class TransactionListViewController: UIViewController {
     @IBOutlet private weak var tableView: UITableView?
     @IBOutlet private weak var searchBackgroundView: UIView!
@@ -71,13 +57,19 @@ final class TransactionListViewController: UIViewController {
         tableView.refreshControl = UIRefreshControl()
         tableView.refreshControl?.addTarget(self, action: #selector(refresh), for: .valueChanged)
         
+        transactionListViewModel?.dataSource
+            .bind(to: tableView) { dataSource, indexPath, tableView in
+                let cell: TransactionTableViewCell = tableView.dequeueCellForIndexPath(indexPath)
+                cell.transactionViewModel = dataSource[indexPath]
+                return cell
+            }
+            .dispose(in: reactive.bag)
+        
         [transactionListViewModel?.isFilterActive
             .map { $0 ? UIColor.zap.lightMustard.withAlphaComponent(0.5) : UIColor.clear }
             .bind(to: filterButton.reactive.backgroundColor),
          transactionListViewModel?.searchString
             .bidirectionalBind(to: searchBar.reactive.text),
-         transactionListViewModel?.sections
-            .bind(to: tableView, using: TransactionBond()),
          transactionListViewModel?.isLoading
             .map { !$0 }
             .bind(to: loadingActivityIndicator.reactive.isHidden),
@@ -102,7 +94,7 @@ final class TransactionListViewController: UIViewController {
 extension TransactionListViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
         let sectionHeaderView = SectionHeaderView.instanceFromNib
-        sectionHeaderView.title = transactionListViewModel?.sections[section].metadata
+        sectionHeaderView.title = transactionListViewModel?.dataSource[section].metadata
         sectionHeaderView.backgroundColor = .white
         return sectionHeaderView
     }
@@ -116,12 +108,12 @@ extension TransactionListViewController: UITableViewDelegate {
         
         tableView.deselectRow(at: indexPath, animated: true)
         
-        let transactionViewModel = transactionListViewModel.sections.item(at: indexPath)
+        let transactionViewModel = transactionListViewModel.dataSource.item(at: indexPath)
         presentTransactionDetail?(transactionViewModel)
     }
     
     func tableView(_ tableView: UITableView, editActionsForRowAt indexPath: IndexPath) -> [UITableViewRowAction]? {
-        guard let transactionViewModel = transactionListViewModel?.sections.item(at: indexPath) else { return nil }
+        guard let transactionViewModel = transactionListViewModel?.dataSource.item(at: indexPath) else { return nil }
         
         if transactionViewModel.annotation.value.isHidden {
             return [archiveAction(title: "scene.transactions.row_action.unarchive".localized, color: UIColor.zap.nastyGreen, setHidden: false)]
@@ -133,7 +125,7 @@ extension TransactionListViewController: UITableViewDelegate {
     private func archiveAction(title: String, color: UIColor, setHidden hidden: Bool) -> UITableViewRowAction {
         let archiveAction = UITableViewRowAction(style: .destructive, title: title) { [weak self] _, indexPath in
             guard let transactionListViewModel = self?.transactionListViewModel else { return }
-            let transactionViewModel = transactionListViewModel.sections.item(at: indexPath)
+            let transactionViewModel = transactionListViewModel.dataSource.item(at: indexPath)
             transactionListViewModel.setTransactionHidden(transactionViewModel.transaction, hidden: hidden)
         }
         archiveAction.backgroundColor = color

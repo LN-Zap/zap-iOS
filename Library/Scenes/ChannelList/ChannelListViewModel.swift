@@ -15,14 +15,14 @@ final class ChannelListViewModel: NSObject {
     
     let aliasStore: ChannelAliasStore
     
-    let sections: MutableObservable2DArray<String, ChannelViewModel>
+    let dataSource: MutableObservable2DArray<String, ChannelViewModel>
     let searchString = Observable<String?>(nil)
     
     init(channelService: ChannelService, aliasStore: ChannelAliasStore) {
         self.channelService = channelService
         self.aliasStore = aliasStore
         
-        sections = MutableObservable2DArray()
+        dataSource = MutableObservable2DArray()
         
         super.init()
         
@@ -40,7 +40,7 @@ final class ChannelListViewModel: NSObject {
         addSection(for: pending, metadata: "scene.channels.section_header.pending".localized, searchString: searchString, to: result)
         addSection(for: open, metadata: "scene.channels.section_header.open".localized, searchString: searchString, to: result)
         
-        sections.replace(with: result, performDiff: true)
+        dataSource.replace(with: result, performDiff: true)
     }
     
     private func addSection(for channels: [Channel], metadata: String, searchString: String?, to result: MutableObservable2DArray<String, ChannelViewModel>) {

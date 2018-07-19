@@ -26,18 +26,6 @@ extension UIStoryboard {
     }
 }
 
-final class ChannelBond: TableViewBinder<Observable2DArray<String, ChannelViewModel>> {
-    override func cellForRow(at indexPath: IndexPath, tableView: UITableView, dataSource: Observable2DArray<String, ChannelViewModel>) -> UITableViewCell {
-        let cell: ChannelTableViewCell = tableView.dequeueCellForIndexPath(indexPath)
-        cell.channelViewModel = dataSource.item(at: indexPath)
-        return cell
-    }
-    
-    func titleForHeader(in section: Int, dataSource: Observable2DArray<String, ChannelViewModel>) -> String? {
-        return dataSource[section].metadata
-    }
-}
-
 final class ChannelListViewController: UIViewController {
     @IBOutlet private weak var tableView: UITableView?
     @IBOutlet private weak var searchBackgroundView: UIView!
@@ -72,10 +60,16 @@ final class ChannelListViewController: UIViewController {
         searchBackgroundView.backgroundColor = UIColor.zap.white
         addChannelButton.tintColor = UIColor.zap.black
         
-        [channelListViewModel?.sections
-            .bind(to: tableView, using: ChannelBond()),
-         channelListViewModel?.searchString
-            .bidirectionalBind(to: searchBar.reactive.text)]
+        channelListViewModel?.dataSource
+            .bind(to: tableView) { dataSource, indexPath, tableView in
+                let cell: ChannelTableViewCell = tableView.dequeueCellForIndexPath(indexPath)
+                cell.channelViewModel = dataSource[indexPath]
+                return cell
+            }
+            .dispose(in: reactive.bag)
+
+        channelListViewModel?.searchString
+            .bidirectionalBind(to: searchBar.reactive.text)
             .dispose(in: reactive.bag)
     }
     
@@ -104,7 +98,7 @@ extension ChannelListViewController: UISearchBarDelegate {
 extension ChannelListViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
         let sectionHeaderView = SectionHeaderView.instanceFromNib
-        sectionHeaderView.title = channelListViewModel?.sections[section].metadata
+        sectionHeaderView.title = channelListViewModel?.dataSource[section].metadata
         sectionHeaderView.backgroundColor = .white
         return sectionHeaderView
     }
@@ -112,7 +106,7 @@ extension ChannelListViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
         guard let channelListViewModel = channelListViewModel else { return 0 }
         
-        if channelListViewModel.sections.sections.count > 1 {
+        if channelListViewModel.dataSource.sections.count > 1 {
             return 60
         } else {
             return 0
@@ -123,7 +117,7 @@ extension ChannelListViewController: UITableViewDelegate {
         tableView.deselectRow(at: indexPath, animated: true)
         
         guard
-            let channelViewModel = channelListViewModel?.sections.item(at: indexPath)
+            let channelViewModel = channelListViewModel?.dataSource.item(at: indexPath)
             else { return }
         
         presentChannelDetail?(channelViewModel)
@@ -135,7 +129,7 @@ extension ChannelListViewController: UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, editActionsForRowAt indexPath: IndexPath) -> [UITableViewRowAction]? {
         guard
-            let channelViewModel = channelListViewModel?.sections.item(at: indexPath),
+            let channelViewModel = channelListViewModel?.dataSource.item(at: indexPath),
             !channelViewModel.state.value.isClosing
             else { return [] }
         

@@ -108,7 +108,7 @@ final class ConnectRemoteNodeViewController: UIViewController {
         tableView.separatorColor = UIColor.zap.warmGrey
         tableView.reactive.dataSource.forwardTo = self
                 
-        connectRemoteNodeViewModel?.tableContent
+        connectRemoteNodeViewModel?.dataSource
             .bind(to: tableView, using: ConnectCellBond())
             .dispose(in: reactive.bag)
     }
@@ -158,7 +158,7 @@ extension ConnectRemoteNodeViewController: UITableViewDelegate {
         tableView.deselectRow(at: indexPath, animated: true)
         
         guard let connectRemoteNodeViewModel = connectRemoteNodeViewModel else { return }
-        let cellType = connectRemoteNodeViewModel.tableContent[indexPath]
+        let cellType = connectRemoteNodeViewModel.dataSource[indexPath]
         
         switch cellType {
         case .address:
@@ -182,7 +182,7 @@ extension ConnectRemoteNodeViewController: UITableViewDelegate {
         let cellHeight: CGFloat = 76
         
         guard let connectRemoteNodeViewModel = connectRemoteNodeViewModel else { return cellHeight }
-        if case .emptyState = connectRemoteNodeViewModel.tableContent[indexPath] {
+        if case .emptyState = connectRemoteNodeViewModel.dataSource[indexPath] {
             return cellHeight * 3
         } else {
             return cellHeight
@@ -192,7 +192,7 @@ extension ConnectRemoteNodeViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, willDisplayHeaderView view: UIView, forSection section: Int) {
         guard let view = view as? UITableViewHeaderFooterView else { return }
         view.textLabel?.font = UIFont.zap.light
-        view.textLabel?.text = connectRemoteNodeViewModel?.tableContent[section].metadata
+        view.textLabel?.text = connectRemoteNodeViewModel?.dataSource[section].metadata
     }
 }
 
@@ -206,6 +206,6 @@ extension ConnectRemoteNodeViewController: UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
-        return connectRemoteNodeViewModel?.tableContent[section].metadata
+        return connectRemoteNodeViewModel?.dataSource[section].metadata
     }
 }
