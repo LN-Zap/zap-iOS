@@ -20,6 +20,7 @@ final class SettingsViewController: GroupedTableViewController {
                 RemovePinSettingsItem(settingsDelegate: settingsDelegate)
             ]),
             Section(title: nil, rows: [
+                HelpSettingsItem(),
                 ReportIssueSettingsItem()
             ])
         ]

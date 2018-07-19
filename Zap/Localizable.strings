@@ -54,6 +54,7 @@
 "scene.settings.item.remove_remote_node" = "Reset Remote Node Configuration";
 "scene.settings.item.reset_pin" = "Reset Pin";
 "scene.settings.item.report_issue" = "Report an Issue";
+"scene.settings.item.help" = "Need Help?";
 
 "scene.deposit.send" = "Send";
 "scene.deposit.title" = "Receive";
