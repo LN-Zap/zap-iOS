@@ -5,6 +5,7 @@
 //  Copyright © 2018 Zap. All rights reserved.
 //
 
+import SafariServices
 import UIKit
 
 extension UIStoryboard {
@@ -55,10 +56,10 @@ final class SelectWalletCreationMethodViewController: UIViewController {
         tableView.delegate = self
         tableView.dataSource = self
         tableView.tableFooterView = UIView()
-        tableView.rowHeight = 140
         tableView.isScrollEnabled = false
         tableView.registerCell(SelectWalletCreationMethodTableViewCell.self)
         tableView.backgroundColor = UIColor.zap.charcoalGrey
+        tableView.separatorColor = UIColor.zap.warmGrey
         
         navigationController?.navigationBar.barTintColor = UIColor.zap.charcoalGrey
     }
@@ -66,23 +67,48 @@ final class SelectWalletCreationMethodViewController: UIViewController {
 
 extension SelectWalletCreationMethodViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        guard let cellContent = content?[indexPath.row] else { return }
-        
         tableView.deselectRow(at: indexPath, animated: true)
-        cellContent.2()
+        if indexPath.section == 1 {
+            guard let url = URL(string: "https://github.com/LN-Zap/zap-tutorials") else { return }
+            let safariViewController = SFSafariViewController(url: url)
+            safariViewController.preferredBarTintColor = UIColor.zap.charcoalGrey
+            safariViewController.preferredControlTintColor = UIColor.zap.peach
+            present(safariViewController, animated: true, completion: nil)
+        } else if let cellContent = content?[indexPath.row] {
+            cellContent.2()
+        }
+    }
+    
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return indexPath.section == 0 ? 140 : 76
     }
 }
 
 extension SelectWalletCreationMethodViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return content?.count ?? 0
+        return section == 0 ? content?.count ?? 0 : 1
+    }
+    
+    func numberOfSections(in tableView: UITableView) -> Int {
+        return 2
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell: SelectWalletCreationMethodTableViewCell = tableView.dequeueCellForIndexPath(indexPath)
-        if let cellContent = content?[indexPath.row] {
-            cell.set(title: cellContent.0, description: cellContent.1)
+        if indexPath.section == 0 {
+            let cell: SelectWalletCreationMethodTableViewCell = tableView.dequeueCellForIndexPath(indexPath)
+            if let cellContent = content?[indexPath.row] {
+                cell.set(title: cellContent.0, description: cellContent.1)
+            }
+            return cell
+        } else {
+            let cell = UITableViewCell(style: .default, reuseIdentifier: "default")
+            cell.backgroundColor = UIColor.zap.charcoalGreyLight
+            if let label = cell.textLabel {
+                Style.label.apply(to: label)
+                label.text = "scene.select_wallet_connection.create.help".localized
+                label.textColor = .white
+            }
+            return cell
         }
-        return cell
     }
 }
