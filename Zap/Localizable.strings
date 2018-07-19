@@ -106,12 +106,19 @@
 "scene.send.lightning.memo" = "Memo: %@";
 
 "scene.connect_remote_node.title" = "Connect Remote Node";
-"scene.connect_remote_node.url_label" = "address:";
-"scene.connect_remote_node.url_placeholder" = "192.168.1.3:10009";
+"scene.connect_remote_node.empty_state" = "Scan the QRCode generate with zapconnect or paste the connection code to connect to your node.";
+"scene.connect_remote_node.url_label" = "Address";
+"scene.connect_remote_node.certificate_label" = "Certificate";
 "scene.connect_remote_node.connect_button" = "Connect";
-"scene.connect_remote_node.scan_button" = "scan";
-"scene.connect_remote_node.paste_button" = "paste";
+"scene.connect_remote_node.scan_button" = "Scan";
+"scene.connect_remote_node.paste_button" = "Paste";
+"scene.connect_remote_node.help_button" = "Need Help?";
 "scene.connect_remote_node.server_error" = "Could not connect to server.";
+"scene.connect_remote_node.your_node_title" = "Your Node";
+"scene.connect_remote_node.certificate_detail.certificate_title" = "Certificate";
+"scene.connect_remote_node.certificate_detail.macaroon_title" = "Macaroon";
+"scene.connect_remote_node.edit_url.title" = "Address";
+
 
 "scene.create_wallet.title" = "Create Wallet";
 "scene.create_wallet.description_label" = "Make sure to store the mnemonic at a save location.";
@@ -122,6 +129,7 @@
 "scene.recover_wallet.description_label" = "Enter your seed:";
 "scene.recover_wallet.placeholder" = "abandon ability able about above absent absorb abstract absurd abuse access accident account accuse achieve acid acoustic acquire across act action actor actress actual";
 
+"scene.select_wallet_connection.title" = "Setup Zap";
 "scene.select_wallet_connection.create.title" = "Create";
 "scene.select_wallet_connection.create.message" = "new wallet";
 "scene.select_wallet_connection.recover.title" = "Recover";

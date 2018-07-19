@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14113" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
+        <capability name="Named colors" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="CertificateDetailCell" rowHeight="128" id="JqF-Iw-VPN" customClass="CertificateDetailCell" customModule="Library" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="405" height="128"/>
+            <autoresizingMask key="autoresizingMask"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="JqF-Iw-VPN" id="xpv-ze-iu5">
+                <rect key="frame" x="0.0" y="0.0" width="405" height="127.5"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ybp-nd-5nO">
+                        <rect key="frame" x="15" y="15" width="375" height="97.5"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                        <color key="textColor" name="white"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                </subviews>
+                <color key="backgroundColor" name="charcoalGreyLight"/>
+                <constraints>
+                    <constraint firstAttribute="bottom" secondItem="Ybp-nd-5nO" secondAttribute="bottom" constant="15" id="Esn-G8-2LH"/>
+                    <constraint firstItem="Ybp-nd-5nO" firstAttribute="leading" secondItem="xpv-ze-iu5" secondAttribute="leading" constant="15" id="dPf-hj-836"/>
+                    <constraint firstItem="Ybp-nd-5nO" firstAttribute="top" secondItem="xpv-ze-iu5" secondAttribute="top" constant="15" id="kJp-Is-5KW"/>
+                    <constraint firstAttribute="trailing" secondItem="Ybp-nd-5nO" secondAttribute="trailing" constant="15" id="o10-tm-JsH"/>
+                </constraints>
+            </tableViewCellContentView>
+            <connections>
+                <outlet property="descriptionLabel" destination="Ybp-nd-5nO" id="Y02-76-BSr"/>
+            </connections>
+            <point key="canvasLocation" x="-95.5" y="89"/>
+        </tableViewCell>
+    </objects>
+    <resources>
+        <namedColor name="charcoalGreyLight">
+            <color red="0.21199999749660492" green="0.22400000691413879" blue="0.2630000114440918" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <namedColor name="white">
+            <color red="0.9570000171661377" green="0.9570000171661377" blue="0.9570000171661377" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+    </resources>
+</document>

@@ -33,6 +33,8 @@ final class SelectWalletCreationMethodViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        title = "scene.select_wallet_connection.title".localized
+        
         // swiftlint:disable opening_brace
         content = [
             ("scene.select_wallet_connection.create.title".localized,
@@ -58,9 +60,7 @@ final class SelectWalletCreationMethodViewController: UIViewController {
         tableView.registerCell(SelectWalletCreationMethodTableViewCell.self)
         tableView.backgroundColor = UIColor.zap.charcoalGrey
         
-        navigationController?.navigationBar.backgroundColor = .clear
-        navigationController?.navigationBar.shadowImage = UIImage()
-        navigationController?.navigationBar.setBackgroundImage(UIImage(), for: .default)
+        navigationController?.navigationBar.barTintColor = UIColor.zap.charcoalGrey
     }
 }
 
