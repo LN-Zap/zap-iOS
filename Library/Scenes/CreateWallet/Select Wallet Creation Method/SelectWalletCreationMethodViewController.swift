@@ -80,7 +80,7 @@ extension SelectWalletCreationMethodViewController: UITableViewDelegate {
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return indexPath.section == 0 ? 140 : 76
+        return indexPath.section == 0 ? 114 : 76
     }
 }
 
@@ -105,6 +105,7 @@ extension SelectWalletCreationMethodViewController: UITableViewDataSource {
             cell.backgroundColor = UIColor.zap.charcoalGreyLight
             if let label = cell.textLabel {
                 Style.label.apply(to: label)
+                label.font = label.font.withSize(14)
                 label.text = "scene.select_wallet_connection.create.help".localized
                 label.textColor = .white
             }
