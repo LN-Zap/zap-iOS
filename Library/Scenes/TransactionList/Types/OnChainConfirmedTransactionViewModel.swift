@@ -39,7 +39,7 @@ final class OnChainConfirmedTransactionViewModel: TransactionViewModel {
             let fees = onChainTransaction.fees {
             switch type {
             case .openChannelTransaction, .closeChannelTransaction:
-                return -fees
+                return fees == 0 ? fees : -fees
             }
         }
         return onChainTransaction.amount
