@@ -98,6 +98,8 @@ final class ConnectRemoteNodeViewController: UIViewController {
     fileprivate var didSetupWallet: (() -> Void)?
     fileprivate var connectRemoteNodeViewModel: ConnectRemoteNodeViewModel?
     
+    private var isConnecting = false
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -128,7 +130,22 @@ final class ConnectRemoteNodeViewController: UIViewController {
         present(safariViewController, animated: true, completion: nil)
     }
     
-    fileprivate func connect() {
+    fileprivate func connect(cell: UITableViewCell) {
+        guard !isConnecting else { return }
+        isConnecting = true
+        
+        let activityIndicator = UIActivityIndicatorView(activityIndicatorStyle: .white)
+        activityIndicator.translatesAutoresizingMaskIntoConstraints = false
+        activityIndicator.startAnimating()
+        cell.addSubview(activityIndicator)
+        
+        NSLayoutConstraint.activate([
+            activityIndicator.centerXAnchor.constraint(equalTo: cell.centerXAnchor),
+            activityIndicator.centerYAnchor.constraint(equalTo: cell.centerYAnchor)
+        ])
+        
+        cell.textLabel?.isHidden = true
+        
         connectRemoteNodeViewModel?.connect { [weak self] success in
             DispatchQueue.main.async {
                 if success {
@@ -136,6 +153,10 @@ final class ConnectRemoteNodeViewController: UIViewController {
                 } else {
                     self?.displayError()
                 }
+                
+                activityIndicator.removeFromSuperview()
+                cell.textLabel?.isHidden = false
+                self?.isConnecting = false
             }
         }
     }
@@ -172,7 +193,8 @@ extension ConnectRemoteNodeViewController: UITableViewDelegate {
         case .paste:
             connectRemoteNodeViewModel.pasteCertificates()
         case .connect:
-            connect()
+            guard let cell = tableView.cellForRow(at: indexPath) else { return }
+            connect(cell: cell)
         default:
             return
         }
