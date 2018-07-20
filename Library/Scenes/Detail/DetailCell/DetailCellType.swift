@@ -34,12 +34,14 @@ enum DetailCellType {
     
     static func hideTransactionCell(transaction: Transaction, annotation: TransactionAnnotation, transactionListViewModel: TransactionListViewModel) -> DetailCellType {
         if annotation.isHidden {
-            return .destructiveAction(DetailDestructiveActionTableViewCell.Info(title: "scene.transaction_detail.unarchive_button".localized, type: .unarchiveTransaction, action: {
+            return .destructiveAction(DetailDestructiveActionTableViewCell.Info(title: "scene.transaction_detail.unarchive_button".localized, type: .unarchiveTransaction, action: { completion in
                 transactionListViewModel.setTransactionHidden(transaction, hidden: false)
+                completion(Result(value: ()))
             }))
         } else {
-            return .destructiveAction(DetailDestructiveActionTableViewCell.Info(title: "scene.transaction_detail.archive_button".localized, type: .archiveTransaction, action: {
+            return .destructiveAction(DetailDestructiveActionTableViewCell.Info(title: "scene.transaction_detail.archive_button".localized, type: .archiveTransaction, action: { completion in
                 transactionListViewModel.setTransactionHidden(transaction, hidden: true)
+                completion(Result(value: ()))
             }))
         }
     }

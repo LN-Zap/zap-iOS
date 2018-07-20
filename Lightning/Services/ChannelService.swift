@@ -63,10 +63,11 @@ public final class ChannelService {
         }
     }
     
-    public func close(_ channel: Channel) {
+    public func close(_ channel: Channel, callback: @escaping (Result<CloseStatusUpdate>) -> Void) {
         let force = channel.state != .active
-        api.closeChannel(channelPoint: channel.channelPoint, force: force) { [weak self] _ in
+        api.closeChannel(channelPoint: channel.channelPoint, force: force) { [weak self] in
             self?.update()
+            callback($0)
         }
     }
     

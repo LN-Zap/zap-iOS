@@ -84,7 +84,13 @@ final class ChannelListViewController: UIViewController {
     
     func closeChannel(for channelViewModel: ChannelViewModel) {
         closeButtonTapped?(channelViewModel.channel, channelViewModel.name.value) { [weak self] in
-            self?.channelListViewModel?.close(channelViewModel.channel)
+            self?.channelListViewModel?.close(channelViewModel.channel) { result in
+                if let error = result.error {
+                    self?.parent?.presentErrorToast(error.localizedDescription)
+                } else {
+                    self?.parent?.presentSuccessToast("scene.channels.close_success.toast".localized)
+                }
+            }
         }
     }
 }

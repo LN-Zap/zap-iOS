@@ -18,9 +18,10 @@ final class DetailDestructiveActionTableViewCell: UITableViewCell {
         
         let title: String
         let type: DestructiveActionType
-        let action: () -> Void
+        let action: (@escaping (Result<Void>) -> Void) -> Void
     }
     
+    @IBOutlet private weak var activityIndicator: UIActivityIndicatorView!
     @IBOutlet private weak var destructiveActionButton: UIButton!
     
     weak var delegate: DetailCellDelegate?
@@ -35,12 +36,13 @@ final class DetailDestructiveActionTableViewCell: UITableViewCell {
             } else {
                 destructiveActionButton.tintColor = UIColor.zap.tomato
             }
+            
+            setActivityIndicator(hidden: true)
         }
     }
     
     override func awakeFromNib() {
         super.awakeFromNib()
-        
         Style.button.apply(to: destructiveActionButton)
     }
     
@@ -49,12 +51,31 @@ final class DetailDestructiveActionTableViewCell: UITableViewCell {
         switch info.type {
         case let .closeChannel(channel, nodeAlias):
             delegate?.closeChannel(channel, nodeAlias: nodeAlias) { [weak self] in
-                info.action()
-                self?.delegate?.dismiss()
+                self?.setActivityIndicator(hidden: false)
+                info.action { result in
+                    if let error = result.error {
+                        self?.setActivityIndicator(hidden: true)
+                        print("😡", error)
+                    } else {
+                        self?.delegate?.dismiss()
+                    }
+                }
             }
         case .archiveTransaction, .unarchiveTransaction:
-            info.action()
-            delegate?.dismiss()
+            info.action { [weak self] _ in
+                self?.delegate?.dismiss()
+            }
+        }
+    }
+    
+    private func setActivityIndicator(hidden: Bool) {
+        activityIndicator.isHidden = hidden
+        destructiveActionButton.isHidden = !hidden
+        
+        if hidden {
+            activityIndicator.stopAnimating()
+        } else {
+            activityIndicator.startAnimating()
         }
     }
 }

@@ -8,7 +8,7 @@
 import Foundation
 import SwiftProtobuf
 
-enum CloseStatusUpdate {
+public enum CloseStatusUpdate {
     case pending
     case confirmation
     case channelClose

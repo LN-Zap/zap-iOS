@@ -10,6 +10,7 @@ import UIKit
 enum ToastStyle: Int {
     case info
     case error
+    case success
 }
 
 final class Toast: UIView {
@@ -36,12 +37,6 @@ final class Toast: UIView {
         guard let content = toastView() else { return }
         addSubview(content)
         
-//        let views = ["content": content]
-//        let horizontalConstraints = NSLayoutConstraint.constraints(withVisualFormat: "H:|[content]|", options: [], metrics: nil, views: views)
-//        addConstraints(horizontalConstraints)
-//        let verticalConstraints = NSLayoutConstraint.constraints(withVisualFormat: "V:|[content]|", options: [], metrics: nil, views: views)
-//        addConstraints(verticalConstraints)
-//
         NSLayoutConstraint.activate([
             content.topAnchor.constraint(equalTo: safeAreaLayoutGuide.topAnchor),
             content.bottomAnchor.constraint(equalTo: bottomAnchor),
@@ -54,17 +49,20 @@ final class Toast: UIView {
         let views = Bundle.shared.loadNibNamed("Toast", owner: self, options: nil)
         guard let content = views?.first as? UIView else { return nil }
         
-        if style == .error {
-            backgroundColor = UIColor.zap.tomato
-            messageLabel?.textColor = .white
-        } else {
+        switch style {
+        case .info:
             backgroundColor = .white
             messageLabel?.textColor = UIColor.zap.charcoalGrey
+        case .error:
+            backgroundColor = UIColor.zap.tomato
+            messageLabel?.textColor = .white
+        case .success:
+            backgroundColor = UIColor.zap.nastyGreen
+            messageLabel?.textColor = .white
         }
+        
         content.backgroundColor = backgroundColor
-        
         translatesAutoresizingMaskIntoConstraints = false
-        
         content.translatesAutoresizingMaskIntoConstraints = false
         
         return content
@@ -88,6 +86,13 @@ extension UIViewController {
     func presentErrorToast(_ message: String) {
         DispatchQueue.main.async {
             let toast = Toast(message: message, style: .error)
+            self.presentToast(toast, animated: true, completion: nil)
+        }
+    }
+    
+    func presentSuccessToast(_ message: String) {
+        DispatchQueue.main.async {
+            let toast = Toast(message: message, style: .success)
             self.presentToast(toast, animated: true, completion: nil)
         }
     }

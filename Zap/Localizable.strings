@@ -76,6 +76,7 @@
 "scene.channels.alert.close" = "Close";
 "scene.channels.search.placeholder" = "search";
 "scene.channels.row_action.close" = "Close Channel";
+"scene.channels.close_success.toast" = "Channel is closing.";
 
 "scene.open_channel.title" = "Open Channel";
 "scene.open_channel.help_label" = "Fund connection";
