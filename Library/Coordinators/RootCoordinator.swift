@@ -34,6 +34,7 @@ public final class RootCoordinator: NSObject, SetupCoordinatorDelegate, PinCoord
             .distinct()
             .observeOn(DispatchQueue.main)
             .observeNext { [weak self] state in
+                print("🗽 state:", state)
                 switch state {
                 case .locked:
                     if self?.rootViewModel.authenticationViewModel.didSetupPin == true {
@@ -116,9 +117,7 @@ public final class RootCoordinator: NSObject, SetupCoordinatorDelegate, PinCoord
     }
     
     private func presentViewController(_ viewController: UIViewController) {
-        DispatchQueue.main.async {
-            self.rootViewController.setContainerContent(viewController)
-        }
+        self.rootViewController.setContainerContent(viewController)
     }
     
     func connect() {

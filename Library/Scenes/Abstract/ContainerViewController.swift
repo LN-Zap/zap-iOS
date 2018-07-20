@@ -17,10 +17,12 @@ public protocol ContainerViewController: class {
 public extension ContainerViewController where Self: UIViewController {
     
     public func setContainerContent(_ viewController: UIViewController) {
-        if currentViewController == nil {
-            setInitialViewController(viewController)
-        } else {
-            switchToViewController(viewController)
+        DispatchQueue.main.async {            
+            if self.currentViewController == nil {
+                self.setInitialViewController(viewController)
+            } else {
+                self.switchToViewController(viewController)
+            }
         }
     }
     
@@ -48,7 +50,7 @@ public extension ContainerViewController where Self: UIViewController {
         
         transition(from: currentViewController,
                    to: viewController,
-                   duration: 0.3,
+                   duration: 0.0,
                    options: [],
                    animations: { [currentViewController] in
                     currentViewController.view.alpha = 0

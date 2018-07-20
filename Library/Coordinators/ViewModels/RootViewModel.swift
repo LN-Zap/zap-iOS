@@ -46,8 +46,6 @@ final class RootViewModel: NSObject {
         default:
             if !authenticationViewModel.isLocked || Environment.skipPinFlow {
                 authenticationViewModel.didAuthenticate()
-                
-                state.value = .connecting
                 connect()
             } else {
                 state.value = .locked
@@ -66,7 +64,7 @@ final class RootViewModel: NSObject {
         
         let connection = LndConnection.current
         
-        if case .local = LndConnection.current {
+        if case .local = connection {
             walletService.unlockWallet { _ in }
         }
         
