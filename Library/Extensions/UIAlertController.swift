@@ -18,7 +18,16 @@ extension UIAlertController {
             message = String(format: "scene.channels.close.message".localized, nodeAlias)
         } else {
             title = "scene.channels.force_close.title".localized
-            message = String(format: "scene.channels.force_close.message".localized, nodeAlias, channel.csvDelay)
+            
+            let formatter = DateComponentsFormatter()
+            formatter.allowedUnits =  [.year, .month, .day, .hour, .minute]
+            formatter.unitsStyle = .full
+            formatter.maximumUnitCount = 2
+            
+            let blockTime: TimeInterval = 10 * 60
+            let timeUntilClose = formatter.string(from: TimeInterval(channel.csvDelay) * blockTime) ?? ""
+            
+            message = String(format: "scene.channels.force_close.message".localized, nodeAlias, timeUntilClose)
         }
         
         let alertController = UIAlertController(title: title, message: message, preferredStyle: .actionSheet)
