@@ -5,12 +5,14 @@
 //  Copyright © 2018 Otto Suess. All rights reserved.
 //
 
+#if !LOCALONLY
+
 import Foundation
 import Lndmobile
 
 // TODO: should be private
 public final class LocalLnd {
-    public private(set) static var isRunning: Bool = false
+    public private(set) static var isRunning = false
     
     static var path: URL {
         guard let url = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first
@@ -33,3 +35,13 @@ public final class LocalLnd {
         LndmobileStopDaemon(nil, EmptyStreamCallback())
     }
 }
+
+#else
+
+public final class LocalLnd {
+    public static let isRunning = false
+    public static func start() {}
+    public static func stop() {}
+}
+
+#endif

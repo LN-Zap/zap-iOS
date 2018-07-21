@@ -13,8 +13,20 @@ public final class WalletService {
     private(set) var isUnlocked = false
     private let wallet: WalletApiProtocol
     
-    public init(wallet: WalletApiProtocol) {
-        self.wallet = wallet
+    public init(connection: LndConnection) {
+        switch connection {
+        #if !LOCALONLY
+        case .local:
+            self.wallet = WalletApiStream()
+        case .none:
+            self.wallet = WalletApiStream()
+        #else
+        case .none:
+            fatalError("can't create wallet service.")
+        #endif
+        case .remote(let configuration):
+            self.wallet = WalletApiRPC(configuration: configuration)
+        }
     }
     
     private(set) static var didCreateWallet: Bool {

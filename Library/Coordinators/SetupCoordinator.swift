@@ -14,8 +14,6 @@ protocol SetupCoordinatorDelegate: class {
 }
 
 final class SetupCoordinator {
-    private let isLocalLndDisabled = true
-    
     private let rootViewController: RootViewController
     private let rootViewModel: RootViewModel
     private weak var navigationController: UINavigationController?
@@ -36,22 +34,21 @@ final class SetupCoordinator {
     }
     
     private func createNewWallet() {
-        if isLocalLndDisabled {
-            presentDisabledAlert()
-            return
-        }
-        
+        #if LOCALONLY
+        presentDisabledAlert()
+        #else
         // TODO: stop Lnd when navigating back to Root
         if !LocalLnd.isRunning {
             LocalLnd.start()
         }
-
+        
         let walletService = rootViewModel.walletService
         let mnemonicViewModel = MnemonicViewModel(walletService: walletService)
         self.mnemonicViewModel = mnemonicViewModel
         
         let viewController = UIStoryboard.instantiateMnemonicViewController(mnemonicViewModel: mnemonicViewModel, presentConfirmMnemonic: confirmMnemonic)
         navigationController?.pushViewController(viewController, animated: true)
+        #endif
     }
     
     private func confirmMnemonic() {
@@ -65,13 +62,11 @@ final class SetupCoordinator {
     }
     
     private func recoverExistingWallet() {
-        if isLocalLndDisabled {
-            presentDisabledAlert()
-            return
-        }
-        
+        #if LOCALONLY
+        presentDisabledAlert()
+        #else
         guard let delegate = delegate else { return }
-
+        
         if !LocalLnd.isRunning {
             LocalLnd.start()
         }
@@ -80,6 +75,7 @@ final class SetupCoordinator {
         let viewModel = RecoverWalletViewModel(walletService: walletService)
         let viewController = UIStoryboard.instantiateRecoverWalletViewController(recoverWalletViewModel: viewModel, presentSetupPin: delegate.presentSetupPin)
         navigationController?.pushViewController(viewController, animated: true)
+        #endif
     }
     
     private func connectRemoteNode() {

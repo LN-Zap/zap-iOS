@@ -9,18 +9,22 @@ import Foundation
 
 public enum LndConnection {
     case none
+    #if !LOCALONLY
     case local
+    #endif
     case remote(RemoteRPCConfiguration)
     
     var api: LightningApiProtocol? {
         switch self {
         case .none:
             return nil
+        #if !LOCALONLY
         case .local:
             if !LocalLnd.isRunning {
                 LocalLnd.start() // TODO: don't start local Lnd in the getter. bad api!
             }
             return LightningApiStream()
+        #endif
         case .remote(let configuration):
             return LightningApiRPC(configuration: configuration)
         }
@@ -29,10 +33,13 @@ public enum LndConnection {
     public static var current: LndConnection {
         if let remoteConfiguration = RemoteRPCConfiguration.load() {
             return .remote(remoteConfiguration)
-        } else if WalletService.didCreateWallet {
-            return .local
-        } else {
-            return .none
         }
+        #if !LOCALONLY
+        if WalletService.didCreateWallet {
+            return .local
+        }
+        #endif
+        
+        return .none
     }
 }

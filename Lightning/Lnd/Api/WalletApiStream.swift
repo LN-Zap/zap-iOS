@@ -5,6 +5,8 @@
 //  Copyright © 2018 Zap. All rights reserved.
 //
 
+#if !LOCALONLY
+
 import Foundation
 import Lndmobile
 
@@ -26,3 +28,5 @@ public final class WalletApiStream: WalletApiProtocol {
         LndmobileUnlockWallet(data, StreamCallback<Lnrpc_UnlockWalletResponse, Void>(callback) { _ in () })
     }
 }
+
+#endif

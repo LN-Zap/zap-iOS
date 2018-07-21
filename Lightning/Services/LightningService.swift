@@ -52,6 +52,7 @@ public final class LightningService: NSObject {
     }
     
     public func stop() {
+        LocalLnd.stop()
         infoService.stop()
     }
 }

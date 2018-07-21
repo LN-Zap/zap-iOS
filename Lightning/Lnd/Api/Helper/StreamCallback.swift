@@ -5,6 +5,8 @@
 //  Copyright © 2018 Zap. All rights reserved.
 //
 
+#if !LOCALONLY
+
 import Foundation
 import Lndmobile
 import SwiftProtobuf
@@ -46,3 +48,5 @@ final class StreamCallback<T: SwiftProtobuf.Message, U>: NSObject, LndmobileCall
         }
     }
 }
+
+#endif

@@ -5,6 +5,8 @@
 //  Copyright © 2018 Zap. All rights reserved.
 //
 
+#if !LOCALONLY
+
 import BTCUtil
 import Foundation
 import Lndmobile
@@ -129,3 +131,5 @@ final class LightningApiStream: LightningApiProtocol {
         })
     }
 }
+
+#endif

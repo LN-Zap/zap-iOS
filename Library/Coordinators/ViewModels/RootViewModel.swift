@@ -31,7 +31,7 @@ final class RootViewModel: NSObject {
         }
     }
     var walletService: WalletService {
-        return WalletService(wallet: WalletApiStream())
+        return WalletService(connection: LndConnection.current)
     }
 
     func start() {
@@ -64,13 +64,15 @@ final class RootViewModel: NSObject {
         
         let connection = LndConnection.current
         
+        #if !LOCALONLY
         if case .local = connection {
             walletService.unlockWallet { _ in }
         }
+        #endif
         
         guard let lightningService = LightningService(connection: connection) else { return }
-        lightningService.start()
         self.lightningService = lightningService
+        lightningService.start()
         
         connectionTimeoutTimer = Timer.scheduledTimer(withTimeInterval: 3, repeats: false) { [weak self] _ in
             self?.connectionTimeoutTimer = nil
@@ -81,7 +83,6 @@ final class RootViewModel: NSObject {
     func disconnect() {
         self.lightningService = nil
         lightningService?.stop()
-        LocalLnd.stop()
         setInitialState()
     }
     
