@@ -46,4 +46,4 @@ googleapis/
 .env.default
 protoc-gen-swift
 protoc-gen-swiftgrpc
-Frameworks/Lndmobile.framework
+
