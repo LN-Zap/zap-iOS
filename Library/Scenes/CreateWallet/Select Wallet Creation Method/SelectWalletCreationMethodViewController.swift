@@ -69,7 +69,7 @@ extension SelectWalletCreationMethodViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
         if indexPath.section == 1 {
-            guard let url = URL(string: "https://github.com/LN-Zap/zap-tutorials") else { return }
+            guard let url = URL(string: "link.help".localized) else { return }
             let safariViewController = SFSafariViewController(url: url)
             safariViewController.preferredBarTintColor = UIColor.zap.charcoalGrey
             safariViewController.preferredControlTintColor = UIColor.zap.peach

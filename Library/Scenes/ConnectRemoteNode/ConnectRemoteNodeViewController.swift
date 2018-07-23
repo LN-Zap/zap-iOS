@@ -122,7 +122,7 @@ final class ConnectRemoteNodeViewController: UIViewController {
     }
     
     fileprivate func presentHelp() {
-        guard let url = URL(string: "https://github.com/LN-Zap/zap-tutorials/blob/master/iOS-remote-node-setup.md") else { return }
+        guard let url = URL(string: "link.help.zapconnect".localized) else { return }
         
         let safariViewController = SFSafariViewController(url: url)
         safariViewController.preferredBarTintColor = UIColor.zap.charcoalGrey

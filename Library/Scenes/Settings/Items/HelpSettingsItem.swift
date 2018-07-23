@@ -12,7 +12,7 @@ final class HelpSettingsItem: SettingsItem {
     let title = "scene.settings.item.help".localized
     
     func didSelectItem(from fromViewController: UIViewController) {
-        guard let url = URL(string: "https://github.com/LN-Zap/zap-tutorials") else { return }
+        guard let url = URL(string: "link.help".localized) else { return }
         
         let safariViewController = SFSafariViewController(url: url)
         safariViewController.preferredBarTintColor = UIColor.zap.charcoalGrey
