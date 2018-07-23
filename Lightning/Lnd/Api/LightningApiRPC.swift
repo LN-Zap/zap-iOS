@@ -11,8 +11,13 @@ import Foundation
 private extension Lnrpc_LightningServiceClient {
     convenience init(configuration: RemoteRPCConfiguration) {
         setenv("GRPC_SSL_CIPHER_SUITES", "ECDHE-RSA-AES128-GCM-SHA256:ECDHE-RSA-AES128-SHA256:ECDHE-RSA-AES256-SHA384:ECDHE-RSA-AES256-GCM-SHA384:ECDHE-ECDSA-AES128-GCM-SHA256:ECDHE-ECDSA-AES128-SHA256:ECDHE-ECDSA-AES256-SHA384:ECDHE-ECDSA-AES256-GCM-SHA384", 1)
-
-        self.init(address: configuration.url.absoluteString, certificates: configuration.certificate)
+        
+        if let certificate = configuration.certificate {
+            self.init(address: configuration.url.absoluteString, certificates: certificate)
+        } else {
+            self.init(address: configuration.url.absoluteString)
+        }
+        
         try? metadata.add(key: "macaroon", value: configuration.macaroon.hexString())
         timeout = Double(Int32.max) // otherwise streaming calls stop working after 10 minutes
     }

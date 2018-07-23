@@ -9,14 +9,19 @@ import Foundation
 import KeychainAccess
 
 public struct RemoteRPCConfiguration: Codable {
-    public let certificate: String
+    public let certificate: String?
     public let macaroon: Data
     public let url: URL
     
     static private let keychain = Keychain(service: "com.jackmallers.zap")
     
-    public init(certificate: String, macaroon: Data, url: URL) {
-        self.certificate = Pem(key: certificate).string
+    public init(certificate: String?, macaroon: Data, url: URL) {
+        if let certificate = certificate {
+            self.certificate = Pem(key: certificate).string
+        } else {
+            self.certificate = nil
+        }
+        
         self.macaroon = macaroon
         self.url = url
     }

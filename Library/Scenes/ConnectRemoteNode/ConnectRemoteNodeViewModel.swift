@@ -65,16 +65,16 @@ final class ConnectRemoteNodeViewModel: NSObject {
     }
     
     private func certificateSection(for qrCode: RemoteRPCConfiguration) -> Observable2DArraySection<String?, CellType> {
-        
-        let certificateDescription = qrCode.certificate
-            .replacingOccurrences(of: "-----BEGIN CERTIFICATE-----", with: "")
-            .trimmingCharacters(in: .whitespacesAndNewlines)
-        
-        let items: [CellType] = [
-            .certificate(certificateDescription),
+        var items: [CellType] = [
             .address(qrCode.url.absoluteString),
             .connect
         ]
+        
+        if let certificateDescription = qrCode.certificate?
+            .replacingOccurrences(of: "-----BEGIN CERTIFICATE-----", with: "")
+            .trimmingCharacters(in: .whitespacesAndNewlines) {
+            items.insert(.certificate(certificateDescription), at: 0)
+        }
         
         return Observable2DArraySection<String?, CellType>(
             metadata: "scene.connect_remote_node.your_node_title".localized,
@@ -82,16 +82,20 @@ final class ConnectRemoteNodeViewModel: NSObject {
         )
     }
     
-    func pasteCertificates() {
-        guard
-            let jsonString = UIPasteboard.general.string,
-            let remoteNodeConfigurationQRCode = RemoteNodeConfigurationQRCode(json: jsonString)
-            else { return }
-        updateQRCode(remoteNodeConfigurationQRCode)
-    }
-    
-    func updateQRCode(_ qrCode: RemoteNodeConfigurationQRCode) {
-        remoteNodeConfiguration = RemoteRPCConfiguration(qrCode: qrCode)
+    func pasteCertificates(callback: @escaping (RPCConnectQRCodeError) -> Void) {
+        guard let string = UIPasteboard.general.string else { return }
+       
+        RPCConnectQRCode.configuration(for: string) { [weak self] result in
+            DispatchQueue.main.async {
+                switch result {
+                case .success(let configuration):
+                    self?.remoteNodeConfiguration = configuration
+                case .failure(let error):
+                    guard let error = error as? RPCConnectQRCodeError else { return }
+                    callback(error)
+                }
+            }
+        }
     }
     
     func connect(callback: @escaping (Bool) -> Void) {

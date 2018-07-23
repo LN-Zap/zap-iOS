@@ -9,7 +9,11 @@ import Foundation
 
 private extension Lnrpc_WalletUnlockerServiceClient {
     convenience init(configuration: RemoteRPCConfiguration) {
-        self.init(address: configuration.url.absoluteString, certificates: configuration.certificate)
+        if let certificate = configuration.certificate {
+            self.init(address: configuration.url.absoluteString, certificates: certificate)
+        } else {
+            self.init(address: configuration.url.absoluteString)
+        }
         try? metadata.add(key: "macaroon", value: configuration.macaroon.hexString())
     }
 }

@@ -172,6 +172,12 @@ final class ConnectRemoteNodeViewController: UIViewController {
         let viewController = UIStoryboard.instantiateCertificateDetailViewController(connectRemoteNodeViewModel: viewModel)
         navigationController?.pushViewController(viewController, animated: true)
     }
+    
+    private func paste() {
+        connectRemoteNodeViewModel?.pasteCertificates { [weak self] error in
+            self?.presentErrorToast(error.localized)
+        }
+    }
 }
 
 extension ConnectRemoteNodeViewController: UITableViewDelegate {
@@ -191,7 +197,7 @@ extension ConnectRemoteNodeViewController: UITableViewDelegate {
         case .scan:
             presentQRCodeScannerButtonTapped?()
         case .paste:
-            connectRemoteNodeViewModel.pasteCertificates()
+            paste()
         case .connect:
             guard let cell = tableView.cellForRow(at: indexPath) else { return }
             connect(cell: cell)

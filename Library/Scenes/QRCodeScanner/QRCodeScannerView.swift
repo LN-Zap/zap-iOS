@@ -13,6 +13,7 @@ import UIKit
 final class QRCodeScannerView: UIView {
     private var captureSession = AVCaptureSession()
     private var videoPreviewLayer: AVCaptureVideoPreviewLayer?
+    private var oldCode: String?
     
     var handler: ((String) -> Void)?
     
@@ -65,9 +66,11 @@ extension QRCodeScannerView: AVCaptureMetadataOutputObjectsDelegate {
     func metadataOutput(_ output: AVCaptureMetadataOutput, didOutput metadataObjects: [AVMetadataObject], from connection: AVCaptureConnection) {
         guard
             let metadataObj = metadataObjects.first as? AVMetadataMachineReadableCodeObject,
-            let code = metadataObj.stringValue
+            let code = metadataObj.stringValue,
+            code != oldCode
             else { return }
         
+        oldCode = code
         handler?(code)
     }
 }

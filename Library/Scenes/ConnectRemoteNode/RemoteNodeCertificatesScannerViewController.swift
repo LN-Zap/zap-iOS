@@ -5,6 +5,7 @@
 //  Copyright © 2018 Zap. All rights reserved.
 //
 
+import Lightning
 import UIKit
 
 extension UIStoryboard {
@@ -23,12 +24,8 @@ final class RemoteNodeCertificatesScannerViewController: UIViewController {
     
     @IBOutlet private weak var scannerView: QRCodeScannerView! {
         didSet {
-            scannerView.handler = { [weak self] code in
-                if let remoteNodeConfigurationQRCode = RemoteNodeConfigurationQRCode(json: code) {
-                    self?.scannerView.stop()
-                    self?.connectRemoteNodeViewModel?.updateQRCode(remoteNodeConfigurationQRCode)
-                    self?.dismiss(animated: true, completion: nil)
-                }
+            scannerView.handler = { [weak self] in
+                self?.getConfigurationFrom(code: $0)
             }
         }
     }
@@ -42,5 +39,22 @@ final class RemoteNodeCertificatesScannerViewController: UIViewController {
     
     @IBAction private func cancel(_ sender: Any) {
         dismiss(animated: true, completion: nil)
+    }
+    
+    private func getConfigurationFrom(code: String) {
+        RPCConnectQRCode.configuration(for: code) { [weak self] result in
+            DispatchQueue.main.async {
+                switch result {
+                case .success(let configuration):
+                    self?.scannerView.stop()
+                    self?.connectRemoteNodeViewModel?.remoteNodeConfiguration = configuration
+                    self?.dismiss(animated: true, completion: nil)
+                case .failure(let error):
+                    if let error = error as? Localizable {
+                        self?.presentErrorToast(error.localized)
+                    }
+                }
+            }
+        }
     }
 }
