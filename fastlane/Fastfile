@@ -27,7 +27,7 @@ lane :change_version do |options|
 end
 
 desc "Builds new Alpha Build and uploads it to S3."
-lane :s3_alpha do
+lane :internal_alpha do
   unless ENV.key?('ZAP_ALPHA_S3_ACCESS_KEY')
     UI.user_error!("ZAP_ALPHA_S3_ACCESS_KEY not set.")
   end
@@ -135,7 +135,9 @@ desc "Run all tests."
 lane :tests do
   run_tests(
     workspace: "Zap.xcworkspace",
+    configuration: "DebugLocal",
     devices: ["iPhone 8"],
-    scheme: "Zap"
+    scheme: "Zap",
+    slack_only_on_failure: true
   )
 end
