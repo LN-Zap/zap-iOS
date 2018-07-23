@@ -5,6 +5,7 @@
 //  Copyright © 2018 Otto Suess. All rights reserved.
 //
 
+import BTCUtil
 import UIKit
 
 extension UIStoryboard {
@@ -42,15 +43,25 @@ final class QRCodeDetailViewController: UIViewController {
         
         topView.backgroundColor = UIColor.zap.white
         
-        qrCodeImageView?.image = UIImage.qrCode(from: viewModel.paymentURI.stringValue)
+        if let address = address {
+            qrCodeImageView?.image = UIImage.qrCode(from: address)
+        }
         
         addressLabel.text = viewModel.paymentURI.address
         
         updateRequestMethod()
     }
     
+    var address: String? {
+        if let paymentURI = viewModel?.paymentURI as? BitcoinURI {
+            return paymentURI.addressOrURI
+        } else {
+            return viewModel?.paymentURI.address
+        }
+    }
+    
     @IBAction private func qrCodeTapped(_ sender: Any) {
-        guard let address = viewModel?.paymentURI.stringValue else { return }
+        guard let address = address else { return }
         print(address)
         UIPasteboard.general.string = address
     }
@@ -60,7 +71,7 @@ final class QRCodeDetailViewController: UIViewController {
     }
     
     @IBAction private func shareButtonTapped(_ sender: Any) {
-        guard let address = viewModel?.paymentURI.stringValue else { return }
+        guard let address = address else { return }
 
         let items: [Any] = [address]
         

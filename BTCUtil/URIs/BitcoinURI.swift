@@ -19,6 +19,13 @@ public struct BitcoinURI: PaymentURI {
     public let memo: String?
     public let network: Network
     
+    public var addressOrURI: String {
+        if (amount == nil || amount == 0) && (memo == nil || memo?.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty == true) {
+            return address
+        }
+        return stringValue
+    }
+    
     public var stringValue: String {
         var urlComponents = URLComponents(string: "bitcoin:\(address)")
         var queryItems = [URLQueryItem]()
