@@ -80,7 +80,7 @@ public final class AmountInputView: UIControl {
     }
     
     private func setup() {
-        Bundle.shared.loadNibNamed("AmountInputView", owner: self, options: nil)
+        Bundle.library.loadNibNamed("AmountInputView", owner: self, options: nil)
         addSubview(contentView)
         contentView.frame = self.bounds
         contentView.autoresizingMask = [.flexibleHeight, .flexibleWidth]

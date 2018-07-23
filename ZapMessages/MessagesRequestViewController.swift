@@ -106,7 +106,7 @@ class MessagesRequestViewController: UIViewController {
         lightningButton.translatesAutoresizingMaskIntoConstraints = false
         lightningButton.setTitle("Lightning", for: .normal)
         lightningButton.alignment = .horizontal
-        lightningButton.setImage(UIImage(named: "icon-request-lightning", in: Bundle.shared, compatibleWith: nil), for: .normal)
+        lightningButton.setImage(UIImage(named: "icon-request-lightning", in: Bundle.library, compatibleWith: nil), for: .normal)
         lightningButton.addTarget(self, action: #selector(segmentedControlDidChange), for: .touchUpInside)
         segmentedControlStackView.addArrangedSubview(lightningButton)
         
@@ -115,7 +115,7 @@ class MessagesRequestViewController: UIViewController {
         onChainButton.translatesAutoresizingMaskIntoConstraints = false
         onChainButton.setTitle("On-chain", for: .normal)
         onChainButton.alignment = .horizontal
-        onChainButton.setImage(UIImage(named: "icon-request-on-chain", in: Bundle.shared, compatibleWith: nil), for: .normal)
+        onChainButton.setImage(UIImage(named: "icon-request-on-chain", in: Bundle.library, compatibleWith: nil), for: .normal)
         onChainButton.addTarget(self, action: #selector(segmentedControlDidChange), for: .touchUpInside)
         segmentedControlStackView.addArrangedSubview(onChainButton)
         

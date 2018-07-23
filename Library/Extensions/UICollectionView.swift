@@ -9,7 +9,7 @@ import UIKit
 
 extension UICollectionView {
     func registerCell(_ type: UICollectionViewCell.Type) {
-        register(UINib(nibName: String(describing: type), bundle: Bundle.shared), forCellWithReuseIdentifier: String(describing: type))
+        register(UINib(nibName: String(describing: type), bundle: Bundle.library), forCellWithReuseIdentifier: String(describing: type))
     }
     
     func dequeueCellForIndexPath<T: UICollectionViewCell>(_ indexPath: IndexPath) -> T {

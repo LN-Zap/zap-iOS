@@ -77,11 +77,11 @@ final class ConnectCellBond: TableViewBinder<Observable2DArray<String?, ConnectR
         case .scan:
             cell = dequeueCell(for: tableView, style: .default)
             cell.textLabel?.text = "scene.connect_remote_node.scan_button".localized
-            cell.imageView?.image = UIImage(named: "icon_qr_code", in: .shared, compatibleWith: nil)
+            cell.imageView?.image = UIImage(named: "icon_qr_code", in: .library, compatibleWith: nil)
         case .paste:
             cell = dequeueCell(for: tableView, style: .default)
             cell.textLabel?.text = "scene.connect_remote_node.paste_button".localized
-            cell.imageView?.image = UIImage(named: "icon_copy", in: .shared, compatibleWith: nil)
+            cell.imageView?.image = UIImage(named: "icon_copy", in: .library, compatibleWith: nil)
         case .help:
             cell = dequeueCell(for: tableView, style: .default)
             cell.textLabel?.text = "scene.connect_remote_node.help_button".localized

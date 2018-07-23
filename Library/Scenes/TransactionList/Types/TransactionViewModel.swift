@@ -42,7 +42,7 @@ enum TransactionIcon {
     }
     
     private func imageNamed(_ name: String) -> UIImage? {
-        return UIImage(named: name, in: Bundle.shared, compatibleWith: nil)
+        return UIImage(named: name, in: Bundle.library, compatibleWith: nil)
     }
 }
 

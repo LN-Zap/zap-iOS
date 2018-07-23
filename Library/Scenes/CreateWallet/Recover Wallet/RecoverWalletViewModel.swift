@@ -16,7 +16,7 @@ final class RecoverWalletViewModel {
         self.walletService = walletService
         
         guard
-            let path = Bundle.shared.path(forResource: "bip39", ofType: "txt"),
+            let path = Bundle.library.path(forResource: "bip39", ofType: "txt"),
             let bip39String = try? String(contentsOfFile: path, encoding: String.Encoding.utf8)
             else { fatalError("bip39 file missing") }
         bip39Words = bip39String.components(separatedBy: .whitespacesAndNewlines).filter { $0 != "" }

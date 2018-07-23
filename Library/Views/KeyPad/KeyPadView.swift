@@ -27,7 +27,7 @@ final class KeyPadView: UIView {
     }
 
     private func setup() {
-        Bundle.shared.loadNibNamed("KeyPadView", owner: self, options: nil)
+        Bundle.library.loadNibNamed("KeyPadView", owner: self, options: nil)
         addSubview(contentView)
         contentView.frame = self.bounds
         contentView.autoresizingMask = [.flexibleHeight, .flexibleWidth]
@@ -85,7 +85,7 @@ final class KeyPadView: UIView {
         case .faceID:
             imageName = "icon_face_id"
         }
-        return UIImage(named: imageName, in: Bundle.shared, compatibleWith: nil)
+        return UIImage(named: imageName, in: Bundle.library, compatibleWith: nil)
     }
     
     private func updateButtonFont() {

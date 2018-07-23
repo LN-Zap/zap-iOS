@@ -32,7 +32,7 @@ enum Storyboard: String {
     
     var storyboard: UIStoryboard? {
         let storyboardName = uppercasedStart(rawValue)
-        return UIStoryboard(name: storyboardName, bundle: Bundle.shared)
+        return UIStoryboard(name: storyboardName, bundle: Bundle.library)
     }
     
     func instantiate<VC: UIViewController>(viewController: VC.Type) -> VC {
