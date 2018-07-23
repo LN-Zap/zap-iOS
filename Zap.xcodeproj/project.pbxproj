@@ -26,7 +26,6 @@
 		A000F61B2047FB8200480D8E /* LightningInvoiceURITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0733CD920471F0A0005643A /* LightningInvoiceURITests.swift */; };
 		A000F61C2047FB8200480D8E /* CryptoTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0733CD620471F090005643A /* CryptoTests.swift */; };
 		A02C9FC2202F5BDC009821B1 /* LocalAuthentication.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A02C9FC1202F5BDC009821B1 /* LocalAuthentication.framework */; };
-		A070D968202B5163000A8274 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = A070D967202B5163000A8274 /* Localizable.strings */; };
 		A091914F203C23C100FA525A /* Roboto-Light.ttf in Resources */ = {isa = PBXBuildFile; fileRef = A091914E203C23C100FA525A /* Roboto-Light.ttf */; };
 		A0919154203C27C300FA525A /* Roboto-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = A0919153203C27C300FA525A /* Roboto-Bold.ttf */; };
 		A0A05A032013CF960007D1C9 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0A05A022013CF960007D1C9 /* AppDelegate.swift */; };
@@ -240,6 +239,7 @@
 		AD967FE9210610D90048085B /* RPCConnectQRCode.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD967FE8210610D90048085B /* RPCConnectQRCode.swift */; };
 		AD967FEA2106122E0048085B /* ZapconnectQRCode.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADD6D80620B15603008BE461 /* ZapconnectQRCode.swift */; };
 		AD967FF021062AB20048085B /* RPCConnectQRCodeError+Localizable.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD967FEF21062AB20048085B /* RPCConnectQRCodeError+Localizable.swift */; };
+		AD967FF2210645780048085B /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = A070D967202B5163000A8274 /* Localizable.strings */; };
 		AD97A90620EE7FD9008344EA /* BitcoinTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD97A90520EE7FD9008344EA /* BitcoinTests.swift */; };
 		AD97A90C20EFC127008344EA /* LightningInvoiceURI.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD97A90B20EFC127008344EA /* LightningInvoiceURI.swift */; };
 		AD97A90F20EFC1E6008344EA /* LightningNodeURI.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD97A90E20EFC1E6008344EA /* LightningNodeURI.swift */; };
@@ -985,7 +985,6 @@
 				A0A05A092013CF960007D1C9 /* Assets.xcassets */,
 				A0A05A0E2013CF960007D1C9 /* Info.plist */,
 				A0B91A83202628EF009AD2D3 /* Settings.bundle */,
-				A070D967202B5163000A8274 /* Localizable.strings */,
 				AD9C4C7F20C3D3AA009636E1 /* InfoPlist.strings */,
 			);
 			name = "Supporting Files";
@@ -1390,6 +1389,7 @@
 			children = (
 				AD391C1A20D16ED4007EE22A /* Library.h */,
 				AD391C1B20D16ED4007EE22A /* Info.plist */,
+				A070D967202B5163000A8274 /* Localizable.strings */,
 				ADFC817020DB8F2600D26913 /* bip39.txt */,
 				AD391D2120D1798A007EE22A /* Media.xcassets */,
 				ADEDBB8A20C2D48D00B71F17 /* Coordinators */,
@@ -2078,7 +2078,6 @@
 				A0B91A84202628EF009AD2D3 /* Settings.bundle in Resources */,
 				AD71EA4F20E2515700256307 /* Roboto-Regular.ttf in Resources */,
 				A0919154203C27C300FA525A /* Roboto-Bold.ttf in Resources */,
-				A070D968202B5163000A8274 /* Localizable.strings in Resources */,
 				A0A05A0A2013CF960007D1C9 /* Assets.xcassets in Resources */,
 				A091914F203C23C100FA525A /* Roboto-Light.ttf in Resources */,
 				AD9C4C8020C3D3AA009636E1 /* InfoPlist.strings in Resources */,
@@ -2089,6 +2088,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				AD967FF2210645780048085B /* Localizable.strings in Resources */,
 				AD391CC620D16FE1007EE22A /* DetailSeparatorTableViewCell.xib in Resources */,
 				AD391CA720D16FA8007EE22A /* Send.storyboard in Resources */,
 				ADFC817120DB8F2700D26913 /* bip39.txt in Resources */,
