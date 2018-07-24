@@ -241,6 +241,7 @@
 		AD967FF021062AB20048085B /* RPCConnectQRCodeError+Localizable.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD967FEF21062AB20048085B /* RPCConnectQRCodeError+Localizable.swift */; };
 		AD967FF2210645780048085B /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = A070D967202B5163000A8274 /* Localizable.strings */; };
 		AD967FF621072D2C0048085B /* Success.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD967FF521072D2C0048085B /* Success.swift */; };
+		AD967FF8210731110048085B /* PinnedURLSession.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD967FF7210731110048085B /* PinnedURLSession.swift */; };
 		AD97A90620EE7FD9008344EA /* BitcoinTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD97A90520EE7FD9008344EA /* BitcoinTests.swift */; };
 		AD97A90C20EFC127008344EA /* LightningInvoiceURI.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD97A90B20EFC127008344EA /* LightningInvoiceURI.swift */; };
 		AD97A90F20EFC1E6008344EA /* LightningNodeURI.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD97A90E20EFC1E6008344EA /* LightningNodeURI.swift */; };
@@ -258,6 +259,15 @@
 		ADA865BE20ECB88500B1B74B /* FilterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADA865BD20ECB88500B1B74B /* FilterViewController.swift */; };
 		ADA865C020ECC89E00B1B74B /* FilterTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADA865BF20ECC89E00B1B74B /* FilterTableViewCell.swift */; };
 		ADA865C220ED041F00B1B74B /* Storage.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADA865C120ED041F00B1B74B /* Storage.swift */; };
+		ADC0D2F02107953100B8C62F /* PinnedHost.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADC0D2EF2107953100B8C62F /* PinnedHost.swift */; };
+		ADC0D2F321079FF700B8C62F /* www.blockchain.com.cer in Resources */ = {isa = PBXBuildFile; fileRef = ADC0D2F221079FF600B8C62F /* www.blockchain.com.cer */; };
+		ADC0D2F52107A13900B8C62F /* DigiCert SHA2 Extended Validation Server CA.cer in Resources */ = {isa = PBXBuildFile; fileRef = ADC0D2F42107A13800B8C62F /* DigiCert SHA2 Extended Validation Server CA.cer */; };
+		ADC0D2FA2107A23400B8C62F /* *.blockcypher.com.cer in Resources */ = {isa = PBXBuildFile; fileRef = ADC0D2F62107A19A00B8C62F /* *.blockcypher.com.cer */; };
+		ADC0D2FB2107A23400B8C62F /* COMODO RSA Domain Validation Secure Server CA.cer in Resources */ = {isa = PBXBuildFile; fileRef = ADC0D2F72107A19A00B8C62F /* COMODO RSA Domain Validation Secure Server CA.cer */; };
+		ADC0D2FE2107A30200B8C62F /* GlobalSign Organization Validation CA - SHA256 - G2.cer in Resources */ = {isa = PBXBuildFile; fileRef = ADC0D2FC2107A30100B8C62F /* GlobalSign Organization Validation CA - SHA256 - G2.cer */; };
+		ADC0D2FF2107A30200B8C62F /* *.api.btc.com.cer in Resources */ = {isa = PBXBuildFile; fileRef = ADC0D2FD2107A30200B8C62F /* *.api.btc.com.cer */; };
+		ADC0D3042107A3D700B8C62F /* blockexplorer.com.cer in Resources */ = {isa = PBXBuildFile; fileRef = ADC0D3022107A3D600B8C62F /* blockexplorer.com.cer */; };
+		ADC0D3052107A3D700B8C62F /* CloudFlare Inc ECC CA-2.cer in Resources */ = {isa = PBXBuildFile; fileRef = ADC0D3032107A3D700B8C62F /* CloudFlare Inc ECC CA-2.cer */; };
 		ADCD060120E67FA5009D9650 /* Environment.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADCD060020E67FA5009D9650 /* Environment.swift */; };
 		ADCD5B0D20D7E3F50037F156 /* RemoveRemoteNodeSettingsItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADCD5B0C20D7E3F50037F156 /* RemoveRemoteNodeSettingsItem.swift */; };
 		ADCD5B0F20D7E40C0037F156 /* RemovePinSettingsItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADCD5B0E20D7E40C0037F156 /* RemovePinSettingsItem.swift */; };
@@ -688,6 +698,7 @@
 		AD967FE8210610D90048085B /* RPCConnectQRCode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RPCConnectQRCode.swift; sourceTree = "<group>"; };
 		AD967FEF21062AB20048085B /* RPCConnectQRCodeError+Localizable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "RPCConnectQRCodeError+Localizable.swift"; sourceTree = "<group>"; };
 		AD967FF521072D2C0048085B /* Success.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Success.swift; sourceTree = "<group>"; };
+		AD967FF7210731110048085B /* PinnedURLSession.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PinnedURLSession.swift; sourceTree = "<group>"; };
 		AD97A90520EE7FD9008344EA /* BitcoinTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BitcoinTests.swift; sourceTree = "<group>"; };
 		AD97A90B20EFC127008344EA /* LightningInvoiceURI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LightningInvoiceURI.swift; sourceTree = "<group>"; };
 		AD97A90E20EFC1E6008344EA /* LightningNodeURI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LightningNodeURI.swift; sourceTree = "<group>"; };
@@ -738,6 +749,15 @@
 		ADBCC07020C97572002B6E59 /* DetailTransactionHashTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailTransactionHashTableViewCell.swift; sourceTree = "<group>"; };
 		ADBCC07120C97572002B6E59 /* DetailTransactionHashTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DetailTransactionHashTableViewCell.xib; sourceTree = "<group>"; };
 		ADBCC07420CC04A4002B6E59 /* TransactionService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransactionService.swift; sourceTree = "<group>"; };
+		ADC0D2EF2107953100B8C62F /* PinnedHost.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PinnedHost.swift; sourceTree = "<group>"; };
+		ADC0D2F221079FF600B8C62F /* www.blockchain.com.cer */ = {isa = PBXFileReference; lastKnownFileType = file; path = www.blockchain.com.cer; sourceTree = "<group>"; };
+		ADC0D2F42107A13800B8C62F /* DigiCert SHA2 Extended Validation Server CA.cer */ = {isa = PBXFileReference; lastKnownFileType = file; path = "DigiCert SHA2 Extended Validation Server CA.cer"; sourceTree = "<group>"; };
+		ADC0D2F62107A19A00B8C62F /* *.blockcypher.com.cer */ = {isa = PBXFileReference; lastKnownFileType = file; path = "*.blockcypher.com.cer"; sourceTree = "<group>"; };
+		ADC0D2F72107A19A00B8C62F /* COMODO RSA Domain Validation Secure Server CA.cer */ = {isa = PBXFileReference; lastKnownFileType = file; path = "COMODO RSA Domain Validation Secure Server CA.cer"; sourceTree = "<group>"; };
+		ADC0D2FC2107A30100B8C62F /* GlobalSign Organization Validation CA - SHA256 - G2.cer */ = {isa = PBXFileReference; lastKnownFileType = file; path = "GlobalSign Organization Validation CA - SHA256 - G2.cer"; sourceTree = "<group>"; };
+		ADC0D2FD2107A30200B8C62F /* *.api.btc.com.cer */ = {isa = PBXFileReference; lastKnownFileType = file; path = "*.api.btc.com.cer"; sourceTree = "<group>"; };
+		ADC0D3022107A3D600B8C62F /* blockexplorer.com.cer */ = {isa = PBXFileReference; lastKnownFileType = file; path = blockexplorer.com.cer; sourceTree = "<group>"; };
+		ADC0D3032107A3D700B8C62F /* CloudFlare Inc ECC CA-2.cer */ = {isa = PBXFileReference; lastKnownFileType = file; path = "CloudFlare Inc ECC CA-2.cer"; sourceTree = "<group>"; };
 		ADC29C0B20A9B0A0008B2DC2 /* LightningInvoice.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LightningInvoice.swift; sourceTree = "<group>"; };
 		ADCD060020E67FA5009D9650 /* Environment.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Environment.swift; sourceTree = "<group>"; };
 		ADCD5B0C20D7E3F50037F156 /* RemoveRemoteNodeSettingsItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RemoveRemoteNodeSettingsItem.swift; sourceTree = "<group>"; };
@@ -1446,6 +1466,7 @@
 				AD536BE820E62763002279BC /* Lightning.h */,
 				AD536BE920E62763002279BC /* Info.plist */,
 				ADCD060020E67FA5009D9650 /* Environment.swift */,
+				ADEF96BB21078C31006AE1EC /* Certificates */,
 				ADFEFA7520E6298400FE1557 /* Extensions */,
 				A0376B70201CC16D00F1FBEF /* Lnd */,
 				AD967FE12105FD400048085B /* QrCodes */,
@@ -1678,6 +1699,42 @@
 			path = KeyPad;
 			sourceTree = "<group>";
 		};
+		ADC0D2F82107A19F00B8C62F /* blockcypher.com */ = {
+			isa = PBXGroup;
+			children = (
+				ADC0D2F62107A19A00B8C62F /* *.blockcypher.com.cer */,
+				ADC0D2F72107A19A00B8C62F /* COMODO RSA Domain Validation Secure Server CA.cer */,
+			);
+			path = blockcypher.com;
+			sourceTree = "<group>";
+		};
+		ADC0D2F92107A1AE00B8C62F /* blockchain.info */ = {
+			isa = PBXGroup;
+			children = (
+				ADC0D2F42107A13800B8C62F /* DigiCert SHA2 Extended Validation Server CA.cer */,
+				ADC0D2F221079FF600B8C62F /* www.blockchain.com.cer */,
+			);
+			path = blockchain.info;
+			sourceTree = "<group>";
+		};
+		ADC0D3002107A30900B8C62F /* api.btc.com */ = {
+			isa = PBXGroup;
+			children = (
+				ADC0D2FD2107A30200B8C62F /* *.api.btc.com.cer */,
+				ADC0D2FC2107A30100B8C62F /* GlobalSign Organization Validation CA - SHA256 - G2.cer */,
+			);
+			path = api.btc.com;
+			sourceTree = "<group>";
+		};
+		ADC0D3012107A3C500B8C62F /* blockexplorer.com */ = {
+			isa = PBXGroup;
+			children = (
+				ADC0D3022107A3D600B8C62F /* blockexplorer.com.cer */,
+				ADC0D3032107A3D700B8C62F /* CloudFlare Inc ECC CA-2.cer */,
+			);
+			path = blockexplorer.com;
+			sourceTree = "<group>";
+		};
 		ADCE01B9207B57DA00CA72E8 /* CreateWallet */ = {
 			isa = PBXGroup;
 			children = (
@@ -1728,6 +1785,19 @@
 				ADEDBB8B20C2D6A700B71F17 /* SetupCoordinator.swift */,
 			);
 			path = Coordinators;
+			sourceTree = "<group>";
+		};
+		ADEF96BB21078C31006AE1EC /* Certificates */ = {
+			isa = PBXGroup;
+			children = (
+				ADC0D3002107A30900B8C62F /* api.btc.com */,
+				ADC0D2F92107A1AE00B8C62F /* blockchain.info */,
+				ADC0D2F82107A19F00B8C62F /* blockcypher.com */,
+				ADC0D3012107A3C500B8C62F /* blockexplorer.com */,
+				ADC0D2EF2107953100B8C62F /* PinnedHost.swift */,
+				AD967FF7210731110048085B /* PinnedURLSession.swift */,
+			);
+			path = Certificates;
 			sourceTree = "<group>";
 		};
 		ADF79373208F87E60086B2CA /* Confirm Mnemonic */ = {
@@ -2148,6 +2218,14 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				ADC0D2F321079FF700B8C62F /* www.blockchain.com.cer in Resources */,
+				ADC0D2FE2107A30200B8C62F /* GlobalSign Organization Validation CA - SHA256 - G2.cer in Resources */,
+				ADC0D2FB2107A23400B8C62F /* COMODO RSA Domain Validation Secure Server CA.cer in Resources */,
+				ADC0D3042107A3D700B8C62F /* blockexplorer.com.cer in Resources */,
+				ADC0D3052107A3D700B8C62F /* CloudFlare Inc ECC CA-2.cer in Resources */,
+				ADC0D2FA2107A23400B8C62F /* *.blockcypher.com.cer in Resources */,
+				ADC0D2F52107A13900B8C62F /* DigiCert SHA2 Extended Validation Server CA.cer in Resources */,
+				ADC0D2FF2107A30200B8C62F /* *.api.btc.com.cer in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -2525,6 +2603,7 @@
 			files = (
 				ADFEFA4F20E627F100FE1557 /* LightningApiRPC.swift in Sources */,
 				ADFEFA5220E627F100FE1557 /* WalletApiRPC.swift in Sources */,
+				AD967FF8210731110048085B /* PinnedURLSession.swift in Sources */,
 				ADECC36B20F257BE00D00546 /* OnChainConfirmedTransaction.swift in Sources */,
 				ADFEFA5E20E627F100FE1557 /* Transaction.swift in Sources */,
 				ADFEFA4A20E627F100FE1557 /* ProtobufExtensions.swift in Sources */,
@@ -2575,6 +2654,7 @@
 				ADFEFA6420E627F100FE1557 /* ChannelAliasStore.swift in Sources */,
 				ADFEFA6B20E627F100FE1557 /* ChannelService.swift in Sources */,
 				ADFEFA6820E627F100FE1557 /* TransactionAnnotationStore.swift in Sources */,
+				ADC0D2F02107953100B8C62F /* PinnedHost.swift in Sources */,
 				ADFEFA5B20E627F100FE1557 /* PaymentRequest.swift in Sources */,
 				ADFEFA4920E627F100FE1557 /* LndApiError.swift in Sources */,
 				ADFEFA5720E627F100FE1557 /* Info.swift in Sources */,

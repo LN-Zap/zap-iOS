@@ -7,6 +7,7 @@
 
 import BTCUtil
 import Foundation
+import Lightning
 
 final class ExchangeUpdaterJob {
     private static var timer: Timer?
@@ -26,7 +27,7 @@ final class ExchangeUpdaterJob {
     
     func run() {
         guard let url = URL(string: "https://blockchain.info/ticker") else { fatalError("Invalid ticker url.") }
-        let task = URLSession.shared.dataTask(with: url) { [weak self] data, _, error in
+        let task = URLSession.pinned.dataTask(with: url) { [weak self] data, _, error in
             if error != nil {
                 print(String(describing: error))
             } else if let data = data,

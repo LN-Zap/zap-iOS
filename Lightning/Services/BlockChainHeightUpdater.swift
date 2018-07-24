@@ -74,7 +74,7 @@ enum BlockchainHeight {
     }
     
     private func fetch(url: URL, completion: @escaping (Int) -> Void, map: @escaping ([String: Any]) -> Int?) {
-        let task = URLSession.shared.dataTask(with: url) { data, _, error in
+        let task = URLSession.pinned.dataTask(with: url) { data, _, error in
             if error != nil {
                 print(String(describing: error))
             } else if let data = data,
