@@ -48,6 +48,7 @@ public final class LightningService: NSObject {
         api.subscribeTransactions { [weak self] _ in
             // unconfirmed transactions are not returned by GetTransactions
             self?.transactionService.update()
+            self?.balanceService.update()
         }
     }
     
