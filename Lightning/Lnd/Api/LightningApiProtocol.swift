@@ -34,7 +34,7 @@ protocol LightningApiProtocol {
     func subscribeInvoices(callback: @escaping (Result<Transaction>) -> Void)
 
     // Peers
-    func connect(pubKey: String, host: String, callback: @escaping (Result<Void>) -> Void)
+    func connect(pubKey: String, host: String, callback: @escaping (Result<Success>) -> Void)
     func nodeInfo(pubKey: String, callback: @escaping (Result<NodeInfo>) -> Void)
     func peers(callback: @escaping (Result<[Peer]>) -> Void)
     

@@ -36,12 +36,12 @@ enum DetailCellType {
         if annotation.isHidden {
             return .destructiveAction(DetailDestructiveActionTableViewCell.Info(title: "scene.transaction_detail.unarchive_button".localized, type: .unarchiveTransaction, action: { completion in
                 transactionListViewModel.setTransactionHidden(transaction, hidden: false)
-                completion(Result(value: ()))
+                completion(Result(value: Success()))
             }))
         } else {
             return .destructiveAction(DetailDestructiveActionTableViewCell.Info(title: "scene.transaction_detail.archive_button".localized, type: .archiveTransaction, action: { completion in
                 transactionListViewModel.setTransactionHidden(transaction, hidden: true)
-                completion(Result(value: ()))
+                completion(Result(value: Success()))
             }))
         }
     }

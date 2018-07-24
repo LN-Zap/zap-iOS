@@ -95,9 +95,9 @@ public final class LightningApiRPC: LightningApiProtocol {
         }))
     }
     
-    func connect(pubKey: String, host: String, callback: @escaping (Result<Void>) -> Void) {
+    func connect(pubKey: String, host: String, callback: @escaping (Result<Success>) -> Void) {
         let request = Lnrpc_ConnectPeerRequest(pubKey: pubKey, host: host)        
-        _ = try? rpc.connectPeer(request, completion: result(callback, map: { _ in () }))
+        _ = try? rpc.connectPeer(request, completion: result(callback, map: { _ in Success() }))
     }
     
     func openChannel(pubKey: String, amount: Satoshi, callback: @escaping (Result<ChannelPoint>) -> Void) {

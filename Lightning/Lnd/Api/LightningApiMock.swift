@@ -111,7 +111,7 @@ final class LightningApiMock: LightningProtocol {
         callback(Result(value: pendingChannels, error: LndError.unknownError))
     }
     
-    func connect(pubKey: String, host: String, callback: @escaping (Result<Void>) -> Void) {
+    func connect(pubKey: String, host: String, callback: @escaping (Result<Success>) -> Void) {
         if connectError == true {
             callback(Result(value: ()))
         } else {

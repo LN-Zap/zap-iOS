@@ -240,6 +240,7 @@
 		AD967FEA2106122E0048085B /* ZapconnectQRCode.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADD6D80620B15603008BE461 /* ZapconnectQRCode.swift */; };
 		AD967FF021062AB20048085B /* RPCConnectQRCodeError+Localizable.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD967FEF21062AB20048085B /* RPCConnectQRCodeError+Localizable.swift */; };
 		AD967FF2210645780048085B /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = A070D967202B5163000A8274 /* Localizable.strings */; };
+		AD967FF621072D2C0048085B /* Success.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD967FF521072D2C0048085B /* Success.swift */; };
 		AD97A90620EE7FD9008344EA /* BitcoinTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD97A90520EE7FD9008344EA /* BitcoinTests.swift */; };
 		AD97A90C20EFC127008344EA /* LightningInvoiceURI.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD97A90B20EFC127008344EA /* LightningInvoiceURI.swift */; };
 		AD97A90F20EFC1E6008344EA /* LightningNodeURI.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD97A90E20EFC1E6008344EA /* LightningNodeURI.swift */; };
@@ -686,6 +687,7 @@
 		AD967FE6210603D50048085B /* BTCPayConfigurationTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BTCPayConfigurationTests.swift; sourceTree = "<group>"; };
 		AD967FE8210610D90048085B /* RPCConnectQRCode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RPCConnectQRCode.swift; sourceTree = "<group>"; };
 		AD967FEF21062AB20048085B /* RPCConnectQRCodeError+Localizable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "RPCConnectQRCodeError+Localizable.swift"; sourceTree = "<group>"; };
+		AD967FF521072D2C0048085B /* Success.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Success.swift; sourceTree = "<group>"; };
 		AD97A90520EE7FD9008344EA /* BitcoinTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BitcoinTests.swift; sourceTree = "<group>"; };
 		AD97A90B20EFC127008344EA /* LightningInvoiceURI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LightningInvoiceURI.swift; sourceTree = "<group>"; };
 		AD97A90E20EFC1E6008344EA /* LightningNodeURI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LightningNodeURI.swift; sourceTree = "<group>"; };
@@ -1228,6 +1230,7 @@
 				A010093B2014CEE40001EF94 /* OpenStatusUpdate.swift */,
 				A024B85A20161AAE002B8897 /* PaymentRequest.swift */,
 				A024B84C201606B4002B8897 /* Peer.swift */,
+				AD967FF521072D2C0048085B /* Success.swift */,
 				ADBB36282080B2AE005662B4 /* TestingTemplates.swift */,
 			);
 			path = Model;
@@ -2565,6 +2568,7 @@
 				ADFEFA6A20E627F100FE1557 /* BalanceService.swift in Sources */,
 				ADFEFA6720E627F100FE1557 /* TransactionAnnotation.swift in Sources */,
 				ADFEFA4720E627F100FE1557 /* rpc.grpc.swift in Sources */,
+				AD967FF621072D2C0048085B /* Success.swift in Sources */,
 				ADFEFA7720E629AA00FE1557 /* String.swift in Sources */,
 				AD967FEA2106122E0048085B /* ZapconnectQRCode.swift in Sources */,
 				ADFEFA6120E627F100FE1557 /* LocalLnd.swift in Sources */,

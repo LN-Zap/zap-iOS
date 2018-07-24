@@ -35,7 +35,7 @@ final class BiometricAuthentication {
         }
     }
     
-    static func authenticate(callback: @escaping (Result<Void>) -> Void) {
+    static func authenticate(callback: @escaping (Result<Success>) -> Void) {
         let localAuthenticationContext = LAContext()
         localAuthenticationContext.localizedFallbackTitle = "scene.pin.biometric.fallback.title".localized
         
@@ -45,7 +45,7 @@ final class BiometricAuthentication {
         if localAuthenticationContext.canEvaluatePolicy(.deviceOwnerAuthenticationWithBiometrics, error: &authError) {
             localAuthenticationContext.evaluatePolicy(.deviceOwnerAuthenticationWithBiometrics, localizedReason: reasonString) { success, evaluateError in
                 if success {
-                    execute(callback, with: Result(value: ()))
+                    execute(callback, with: Result(value: Success()))
                 } else if let error = evaluateError {
                     let message = self.errorMessage(for: error._code)
                     execute(callback, with: Result(error: LndApiError.localizedError(message)))
@@ -57,7 +57,7 @@ final class BiometricAuthentication {
         }
     }
     
-    private static func execute(_ callback: @escaping (Result<Void>) -> Void, with result: Result<Void>) {
+    private static func execute(_ callback: @escaping (Result<Success>) -> Void, with result: Result<Success>) {
         DispatchQueue.main.async {
             callback(result)
         }

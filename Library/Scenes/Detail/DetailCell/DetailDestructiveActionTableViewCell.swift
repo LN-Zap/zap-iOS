@@ -18,7 +18,7 @@ final class DetailDestructiveActionTableViewCell: UITableViewCell {
         
         let title: String
         let type: DestructiveActionType
-        let action: (@escaping (Result<Void>) -> Void) -> Void
+        let action: (@escaping (Result<Success>) -> Void) -> Void
     }
     
     @IBOutlet private weak var activityIndicator: UIActivityIndicatorView!

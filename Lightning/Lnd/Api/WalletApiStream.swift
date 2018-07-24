@@ -18,12 +18,12 @@ public final class WalletApiStream: WalletApiProtocol {
         LndmobileGenSeed(data, StreamCallback<Lnrpc_GenSeedResponse, [String]>(callback) { $0.cipherSeedMnemonic })
     }
     
-    public func initWallet(mnemonic: [String], password: String, callback: @escaping (Result<Void>) -> Void) {
+    public func initWallet(mnemonic: [String], password: String, callback: @escaping (Result<Success>) -> Void) {
         let data = try? Lnrpc_InitWalletRequest(password: password, mnemonic: mnemonic).serializedData()
         LndmobileInitWallet(data, StreamCallback<Lnrpc_InitWalletResponse, Void>(callback) { _ in () })
     }
     
-    public func unlockWallet(password: String, callback: @escaping (Result<Void>) -> Void) {
+    public func unlockWallet(password: String, callback: @escaping (Result<Success>) -> Void) {
         let data = try? Lnrpc_UnlockWalletRequest(password: password).serializedData()
         LndmobileUnlockWallet(data, StreamCallback<Lnrpc_UnlockWalletResponse, Void>(callback) { _ in () })
     }

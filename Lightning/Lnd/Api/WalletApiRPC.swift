@@ -30,13 +30,13 @@ final class WalletApiRPC: WalletApiProtocol {
         _ = try? rpc.genSeed(request, completion: result(callback, map: { $0.cipherSeedMnemonic }))
     }
     
-    func initWallet(mnemonic: [String], password: String, callback: @escaping (Result<Void>) -> Void) {
+    func initWallet(mnemonic: [String], password: String, callback: @escaping (Result<Success>) -> Void) {
         let request = Lnrpc_InitWalletRequest(password: password, mnemonic: mnemonic)
-        _ = try? rpc.initWallet(request, completion: result(callback, map: { _ in () }))
+        _ = try? rpc.initWallet(request, completion: result(callback, map: { _ in Success() }))
     }
     
-    func unlockWallet(password: String, callback: @escaping (Result<Void>) -> Void) {
+    func unlockWallet(password: String, callback: @escaping (Result<Success>) -> Void) {
         let request = Lnrpc_UnlockWalletRequest(password: password)
-        _ = try? rpc.unlockWallet(request, completion: result(callback, map: { _ in () }))
+        _ = try? rpc.unlockWallet(request, completion: result(callback, map: { _ in Success() }))
     }
 }

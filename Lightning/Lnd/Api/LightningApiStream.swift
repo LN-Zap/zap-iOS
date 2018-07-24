@@ -69,7 +69,7 @@ final class LightningApiStream: LightningApiProtocol {
         })
     }
     
-    func connect(pubKey: String, host: String, callback: @escaping (Result<Void>) -> Void) {
+    func connect(pubKey: String, host: String, callback: @escaping (Result<Success>) -> Void) {
         let data = try? Lnrpc_ConnectPeerRequest(pubKey: pubKey, host: host).serializedData()
         LndmobileConnectPeer(data, StreamCallback<Lnrpc_ConnectPeerResponse, Void>(callback) { _ in () })
     }
