@@ -133,6 +133,8 @@ end
 
 desc "Run all tests."
 lane :tests do
+  swiftlint()
+  
   run_tests(
     workspace: "Zap.xcworkspace",
     configuration: "DebugLocal",
