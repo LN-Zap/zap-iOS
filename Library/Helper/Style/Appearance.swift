@@ -10,7 +10,7 @@ import UIKit
 enum Appearance {
     static func setup() {
         // UINavigationBar
-        UINavigationBar.appearance().largeTitleTextAttributes = [.font: UIFont.zap.light.withSize(25)]
+        UINavigationBar.appearance().largeTitleTextAttributes = [.font: UIFont.zap.light.withSize(40), .foregroundColor: UIColor.white]
         UINavigationBar.appearance().titleTextAttributes = [.font: UIFont.zap.light.withSize(20), .foregroundColor: UIColor.white]
         
         // UIBarButtonItem

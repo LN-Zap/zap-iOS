@@ -14,7 +14,7 @@ extension UIStoryboard {
         channelListViewModel: ChannelListViewModel,
         presentChannelDetail: @escaping (ChannelViewModel) -> Void,
         closeButtonTapped: @escaping (Channel, String, @escaping () -> Void) -> Void,
-        addChannelButtonTapped: @escaping () -> Void) -> ChannelListViewController {
+        addChannelButtonTapped: @escaping () -> Void) -> UINavigationController {
         let viewController = Storyboard.channelList.initial(viewController: ChannelListViewController.self)
         
         viewController.channelListViewModel = channelListViewModel
@@ -22,15 +22,16 @@ extension UIStoryboard {
         viewController.closeButtonTapped = closeButtonTapped
         viewController.addChannelButtonTapped = addChannelButtonTapped
         
-        return viewController
+        let navigationController = ZapNavigationController(rootViewController: viewController)
+        navigationController.tabBarItem.title = "Channels"
+        navigationController.tabBarItem.image = UIImage(named: "tabbar_wallet", in: Bundle.library, compatibleWith: nil)
+
+        return navigationController
     }
 }
 
 final class ChannelListViewController: UIViewController {
     @IBOutlet private weak var tableView: UITableView?
-    @IBOutlet private weak var searchBackgroundView: UIView!
-    @IBOutlet private weak var searchBar: UISearchBar!
-    @IBOutlet private weak var addChannelButton: UIButton!
     
     fileprivate var presentChannelDetail: ((ChannelViewModel) -> Void)?
     fileprivate var addChannelButtonTapped: (() -> Void)?
@@ -54,22 +55,12 @@ final class ChannelListViewController: UIViewController {
         tableView.refreshControl = UIRefreshControl()
         tableView.refreshControl?.addTarget(self, action: #selector(refresh), for: .valueChanged)
         
-        searchBar.placeholder = "scene.channels.search.placeholder".localized
-        searchBar.delegate = self
-        searchBar.backgroundImage = UIImage()
-        searchBackgroundView.backgroundColor = UIColor.zap.white
-        addChannelButton.tintColor = UIColor.zap.black
-        
         channelListViewModel?.dataSource
             .bind(to: tableView) { dataSource, indexPath, tableView in
                 let cell: ChannelTableViewCell = tableView.dequeueCellForIndexPath(indexPath)
                 cell.channelViewModel = dataSource[indexPath]
                 return cell
             }
-            .dispose(in: reactive.bag)
-
-        channelListViewModel?.searchString
-            .bidirectionalBind(to: searchBar.reactive.text)
             .dispose(in: reactive.bag)
     }
     
@@ -127,10 +118,6 @@ extension ChannelListViewController: UITableViewDelegate {
             else { return }
         
         presentChannelDetail?(channelViewModel)
-    }
-    
-    func scrollViewWillBeginDragging(_ scrollView: UIScrollView) {
-        searchBar.resignFirstResponder()
     }
     
     func tableView(_ tableView: UITableView, editActionsForRowAt indexPath: IndexPath) -> [UITableViewRowAction]? {

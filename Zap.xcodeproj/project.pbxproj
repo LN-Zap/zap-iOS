@@ -106,8 +106,6 @@
 		AD391C6520D16F89007EE22A /* LndLogViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD9E243E20A368020014F9FA /* LndLogViewController.swift */; };
 		AD391C6620D16F89007EE22A /* Loading.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = ADCE01CB207B967200CA72E8 /* Loading.storyboard */; };
 		AD391C6720D16F89007EE22A /* LoadingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADBB36252080AD70005662B4 /* LoadingViewController.swift */; };
-		AD391C6820D16F89007EE22A /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A0F353CD20692415005B3639 /* Main.storyboard */; };
-		AD391C6920D16F89007EE22A /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0F353CB206923E4005B3639 /* MainViewController.swift */; };
 		AD391C6A20D16F89007EE22A /* NumericKeyPad.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A0376B74201CD61B00F1FBEF /* NumericKeyPad.storyboard */; };
 		AD391C6B20D16F89007EE22A /* InputNumberFormatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0F9AEE0206E3D8200E93DCA /* InputNumberFormatter.swift */; };
 		AD391C6C20D16F89007EE22A /* PinViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0376B76201CD67700F1FBEF /* PinViewController.swift */; };
@@ -141,11 +139,9 @@
 		AD391CAB20D16FA8007EE22A /* CurrencySettingsItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = A091914A203B297D00FA525A /* CurrencySettingsItem.swift */; };
 		AD391CAD20D16FA8007EE22A /* OnChainRequestAddressTypeSettingsItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD6FFCA520AB0A3700B57330 /* OnChainRequestAddressTypeSettingsItem.swift */; };
 		AD391CAF20D16FA8007EE22A /* SettingsItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0DDC06B2018C07100AEFF94 /* SettingsItem.swift */; };
-		AD391CB220D16FA8007EE22A /* Settings.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AD77464120750D7700EC596B /* Settings.storyboard */; };
 		AD391CB320D16FA8007EE22A /* GroupedTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0919144203B1CF400FA525A /* GroupedTableViewController.swift */; };
 		AD391CB420D16FA8007EE22A /* Section.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0DDC06D2018C08800AEFF94 /* Section.swift */; };
 		AD391CB520D16FA8007EE22A /* Settings.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0A05A5620149A0D0007D1C9 /* Settings.swift */; };
-		AD391CB620D16FA8007EE22A /* SettingsContainerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD77464620750DFB00EC596B /* SettingsContainerViewController.swift */; };
 		AD391CB720D16FA8007EE22A /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0DDC0612018955C00AEFF94 /* SettingsViewController.swift */; };
 		AD391CB820D16FA8007EE22A /* Sync.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = ADCE01C5207B71FC00CA72E8 /* Sync.storyboard */; };
 		AD391CB920D16FA8007EE22A /* SyncViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADCE01C7207B720800CA72E8 /* SyncViewController.swift */; };
@@ -231,6 +227,9 @@
 		AD71EA4F20E2515700256307 /* Roboto-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = AD71EA4D20E2505D00256307 /* Roboto-Regular.ttf */; };
 		AD774651207616B100EC596B /* Network.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD77464A207615E000EC596B /* Network.swift */; };
 		AD77465320761DB400EC596B /* AddressTypeTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD77465220761DB400EC596B /* AddressTypeTests.swift */; };
+		AD7EDAE32108C4150058CCCA /* Wallet.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AD7EDAE22108C4150058CCCA /* Wallet.storyboard */; };
+		AD7EDAE52108C41D0058CCCA /* WalletViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD7EDAE42108C41D0058CCCA /* WalletViewController.swift */; };
+		AD7EDAE72108D39D0058CCCA /* ZapNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD7EDAE62108D39D0058CCCA /* ZapNavigationController.swift */; };
 		AD967FD42100D8E80048085B /* CertificateDetailCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = AD967FD32100D8E80048085B /* CertificateDetailCell.xib */; };
 		AD967FD72100EFFA0048085B /* HelpSettingsItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD967FD62100EFFA0048085B /* HelpSettingsItem.swift */; };
 		AD967FE32105FD770048085B /* BTCPayQRCode.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD967FE22105FD770048085B /* BTCPayQRCode.swift */; };
@@ -582,8 +581,6 @@
 		A0DDC06D2018C08800AEFF94 /* Section.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Section.swift; sourceTree = "<group>"; };
 		A0DDC077201B42EA00AEFF94 /* BockExplorer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BockExplorer.swift; sourceTree = "<group>"; };
 		A0E2690C202CC4E30069E83C /* AuthenticationViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthenticationViewModel.swift; sourceTree = "<group>"; };
-		A0F353CB206923E4005B3639 /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
-		A0F353CD20692415005B3639 /* Main.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
 		A0F353CF20692570005B3639 /* GradientView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GradientView.swift; sourceTree = "<group>"; };
 		A0F57DBD201E440F003AFA66 /* ChannelListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChannelListViewModel.swift; sourceTree = "<group>"; };
 		A0F57DC1201E700C003AFA66 /* TransactionListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransactionListViewModel.swift; sourceTree = "<group>"; };
@@ -676,8 +673,6 @@
 		AD71EA4820E2318000256307 /* RemoteRPCConfiguration.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RemoteRPCConfiguration.swift; sourceTree = "<group>"; };
 		AD71EA4A20E2321100256307 /* LndConstants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LndConstants.swift; sourceTree = "<group>"; };
 		AD71EA4D20E2505D00256307 /* Roboto-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Roboto-Regular.ttf"; sourceTree = "<group>"; };
-		AD77464120750D7700EC596B /* Settings.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Settings.storyboard; sourceTree = "<group>"; };
-		AD77464620750DFB00EC596B /* SettingsContainerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsContainerViewController.swift; sourceTree = "<group>"; };
 		AD77464A207615E000EC596B /* Network.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Network.swift; sourceTree = "<group>"; };
 		AD77464D2076162300EC596B /* Network+Localizable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Network+Localizable.swift"; sourceTree = "<group>"; };
 		AD77464F2076165600EC596B /* String+Localizable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Localizable.swift"; sourceTree = "<group>"; };
@@ -687,6 +682,9 @@
 		AD7746582076609400EC596B /* NodeInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NodeInfo.swift; sourceTree = "<group>"; };
 		AD77465C2077C11200EC596B /* Detail.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Detail.storyboard; sourceTree = "<group>"; };
 		AD77466B2078EE5600EC596B /* ChannelTransactionAnnotationUpdater.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChannelTransactionAnnotationUpdater.swift; sourceTree = "<group>"; };
+		AD7EDAE22108C4150058CCCA /* Wallet.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Wallet.storyboard; sourceTree = "<group>"; };
+		AD7EDAE42108C41D0058CCCA /* WalletViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WalletViewController.swift; sourceTree = "<group>"; };
+		AD7EDAE62108D39D0058CCCA /* ZapNavigationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ZapNavigationController.swift; sourceTree = "<group>"; };
 		AD8B13F020C0582D0091F9DA /* RootCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RootCoordinator.swift; sourceTree = "<group>"; };
 		AD93ED5220A07A24000E814E /* Notification.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Notification.swift; sourceTree = "<group>"; };
 		AD93ED5520A09D59000E814E /* GraphTopologyUpdate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GraphTopologyUpdate.swift; sourceTree = "<group>"; };
@@ -968,7 +966,6 @@
 				AD9E243C20A367E00014F9FA /* Debug */,
 				AD77465B2077C0FA00EC596B /* Detail */,
 				ADCE01CA207B966200CA72E8 /* Loading */,
-				A0F353CA206923D7005B3639 /* Main */,
 				A0376B73201CD60F00F1FBEF /* NumericKeyPad */,
 				A02C9FBB202EE995009821B1 /* OpenChannel */,
 				A070D963202A3CFC000A8274 /* QRCodeDetail */,
@@ -979,6 +976,7 @@
 				A0DDC06320189CCC00AEFF94 /* Settings */,
 				ADCE01C4207B714E00CA72E8 /* Sync */,
 				A0DDC0732018C74F00AEFF94 /* TransactionList */,
+				AD7EDAE12108C4050058CCCA /* Wallet */,
 			);
 			path = Scenes;
 			sourceTree = "<group>";
@@ -1026,6 +1024,7 @@
 				A0605F89202C9D1A00EA903C /* Section Header */,
 				AD38EB31207DFB59007DF14D /* SegmentButton.swift */,
 				A0605F8A202C9D2F00EA903C /* Toast */,
+				AD7EDAE62108D39D0058CCCA /* ZapNavigationController.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -1320,11 +1319,9 @@
 			isa = PBXGroup;
 			children = (
 				A06660F8202E070D00EE32FA /* Items */,
-				AD77464120750D7700EC596B /* Settings.storyboard */,
 				A0919144203B1CF400FA525A /* GroupedTableViewController.swift */,
 				A0DDC06D2018C08800AEFF94 /* Section.swift */,
 				A0A05A5620149A0D0007D1C9 /* Settings.swift */,
-				AD77464620750DFB00EC596B /* SettingsContainerViewController.swift */,
 				A0DDC0612018955C00AEFF94 /* SettingsViewController.swift */,
 			);
 			path = Settings;
@@ -1370,15 +1367,6 @@
 				A024B84F20160F93002B8897 /* ChannelTableViewCell.xib */,
 			);
 			path = Cells;
-			sourceTree = "<group>";
-		};
-		A0F353CA206923D7005B3639 /* Main */ = {
-			isa = PBXGroup;
-			children = (
-				A0F353CD20692415005B3639 /* Main.storyboard */,
-				A0F353CB206923E4005B3639 /* MainViewController.swift */,
-			);
-			path = Main;
 			sourceTree = "<group>";
 		};
 		AD19F05820AF006F008090CB /* DetailCell */ = {
@@ -1567,6 +1555,15 @@
 				ADBB36322084EC4D005662B4 /* MnemonicWordTableViewCell.swift */,
 			);
 			path = "Generate Mnemonic";
+			sourceTree = "<group>";
+		};
+		AD7EDAE12108C4050058CCCA /* Wallet */ = {
+			isa = PBXGroup;
+			children = (
+				AD7EDAE22108C4150058CCCA /* Wallet.storyboard */,
+				AD7EDAE42108C41D0058CCCA /* WalletViewController.swift */,
+			);
+			path = Wallet;
 			sourceTree = "<group>";
 		};
 		AD86BCFC2099F4E900A7866A /* Generated */ = {
@@ -2166,7 +2163,6 @@
 				AD391CA720D16FA8007EE22A /* Send.storyboard in Resources */,
 				ADFC817120DB8F2700D26913 /* bip39.txt in Resources */,
 				AD391CB820D16FA8007EE22A /* Sync.storyboard in Resources */,
-				AD391CB220D16FA8007EE22A /* Settings.storyboard in Resources */,
 				AD967FD42100D8E80048085B /* CertificateDetailCell.xib in Resources */,
 				AD391C6A20D16F89007EE22A /* NumericKeyPad.storyboard in Resources */,
 				AD391CC020D16FE1007EE22A /* DetailLegendTableViewCell.xib in Resources */,
@@ -2181,8 +2177,8 @@
 				AD391C6120D16F7A007EE22A /* SelectWalletCreationMethodTableViewCell.xib in Resources */,
 				AD391C6320D16F89007EE22A /* Debug.storyboard in Resources */,
 				AD391C7220D16F89007EE22A /* OpenChannel.storyboard in Resources */,
+				AD7EDAE32108C4150058CCCA /* Wallet.storyboard in Resources */,
 				AD391C9C20D16FA8007EE22A /* Request.storyboard in Resources */,
-				AD391C6820D16F89007EE22A /* Main.storyboard in Resources */,
 				AD391C5020D16F7A007EE22A /* CreateWallet.storyboard in Resources */,
 				AD391CCC20D16FE1007EE22A /* DetailTransactionHashTableViewCell.xib in Resources */,
 				AD391CC420D16FE1007EE22A /* DetailQRCodeTableViewCell.xib in Resources */,
@@ -2444,6 +2440,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				AD7EDAE52108C41D0058CCCA /* WalletViewController.swift in Sources */,
 				AD391C5B20D16F7A007EE22A /* MnemonicViewController.swift in Sources */,
 				AD391C3420D16EFA007EE22A /* UILabel.swift in Sources */,
 				AD391CD020D16FE1007EE22A /* LightningPaymentDetailViewModel.swift in Sources */,
@@ -2460,6 +2457,7 @@
 				AD391C5120D16F7A007EE22A /* ConfirmMnemonicCollectionViewCell.swift in Sources */,
 				AD391C3920D16F0B007EE22A /* BockExplorer.swift in Sources */,
 				AD391C9A20D16FA8007EE22A /* QRCodeScannerView.swift in Sources */,
+				AD7EDAE72108D39D0058CCCA /* ZapNavigationController.swift in Sources */,
 				AD27B01020FB8E6D00F232A8 /* OnChainUnconfirmedTransactionViewModel.swift in Sources */,
 				AD391C4820D16F68007EE22A /* ModalViewController.swift in Sources */,
 				AD391C7520D16F89007EE22A /* QRCodeDetailViewModel.swift in Sources */,
@@ -2523,7 +2521,6 @@
 				AD391CDC20D16FE1007EE22A /* TransactionListViewModel.swift in Sources */,
 				AD391C3220D16EFA007EE22A /* UIFont.swift in Sources */,
 				AD391D0F20D16FF5007EE22A /* SegmentButton.swift in Sources */,
-				AD391CB620D16FA8007EE22A /* SettingsContainerViewController.swift in Sources */,
 				AD391C7120D16F89007EE22A /* OpenChannelQRCodeScannerStrategy.swift in Sources */,
 				AD391CD920D16FE1007EE22A /* TransactionViewModel.swift in Sources */,
 				AD391CD420D16FE1007EE22A /* TransactionTableViewCell.swift in Sources */,
@@ -2538,7 +2535,6 @@
 				AD391CBD20D16FE1007EE22A /* DetailDestructiveActionTableViewCell.swift in Sources */,
 				AD391CC920D16FE1007EE22A /* DetailTimerTableViewCell.swift in Sources */,
 				AD391D2020D178C2007EE22A /* Bundle.swift in Sources */,
-				AD391C6920D16F89007EE22A /* MainViewController.swift in Sources */,
 				AD391C2A20D16EFA007EE22A /* Notification.swift in Sources */,
 				AD391D0920D16FF5007EE22A /* KeyPadView.swift in Sources */,
 				AD391CA420D16FA8007EE22A /* SendOnChainViewModel.swift in Sources */,

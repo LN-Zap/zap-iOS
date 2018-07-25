@@ -9,14 +9,18 @@ import Bond
 import UIKit
 
 extension UIStoryboard {
-    static func instantiateTransactionListViewController(transactionListViewModel: TransactionListViewModel, presentTransactionDetail: @escaping (TransactionViewModel) -> Void, presentFilter: @escaping () -> Void) -> TransactionListViewController {
+    static func instantiateTransactionListViewController(transactionListViewModel: TransactionListViewModel, presentTransactionDetail: @escaping (TransactionViewModel) -> Void, presentFilter: @escaping () -> Void) -> UINavigationController {
         let viewController = Storyboard.transactionList.initial(viewController: TransactionListViewController.self)
         
         viewController.transactionListViewModel = transactionListViewModel
         viewController.presentTransactionDetail = presentTransactionDetail
         viewController.presentFilter = presentFilter
         
-        return viewController
+        let navigationController = ZapNavigationController(rootViewController: viewController)
+        navigationController.tabBarItem.title = "Transactions"
+        navigationController.tabBarItem.image = UIImage(named: "tabbar_wallet", in: Bundle.library, compatibleWith: nil)
+
+        return navigationController
     }
 }
 

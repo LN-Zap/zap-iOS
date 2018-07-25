@@ -78,10 +78,23 @@ public final class RootCoordinator: NSObject, SetupCoordinatorDelegate, PinCoord
     
     private func presentMain() {
         guard let lightningService = rootViewModel.lightningService else { return }
+        
+        let tabBarController = UITabBarController()
+        tabBarController.tabBar.barTintColor = UIColor.zap.backgroundGradientBottom
+        tabBarController.tabBar.isTranslucent = false
+        
         let mainCoordinator = MainCoordinator(rootViewController: rootViewController, lightningService: lightningService, settingsDelegate: self)
+
+        tabBarController.viewControllers = [
+            mainCoordinator.walletViewController(),
+            mainCoordinator.transactionListViewController(),
+            mainCoordinator.channelListViewController(),
+            mainCoordinator.settingsViewController()
+        ]
+        presentViewController(tabBarController)
+    
         currentCoordinator = mainCoordinator
-        mainCoordinator.start()
-                
+
         if let route = self.route {
             handle(route)
         }

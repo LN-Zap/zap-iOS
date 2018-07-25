@@ -22,6 +22,9 @@ public extension UIColor {
         public static let peach = color("peach")
         public static let warmGrey = color("warmGrey")
         
+        public static let backgroundGradientTop = color("backgroundGradientTop")
+        public static let backgroundGradientBottom = color("backgroundGradientBottom")
+        
         private static func color(_ name: String) -> UIColor {
             return UIColor(named: name, in: Bundle.library, compatibleWith: nil) ?? UIColor.magenta
         }
