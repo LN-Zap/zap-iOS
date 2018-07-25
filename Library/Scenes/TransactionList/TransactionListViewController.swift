@@ -43,7 +43,7 @@ final class TransactionListViewController: UIViewController {
         title = "scene.transactions.title".localized
         
         guard let tableView = tableView else { return }
-        
+        view.backgroundColor = .clear
         let searchController = UISearchController(searchResultsController: nil)
         searchController.dimsBackgroundDuringPresentation = false
         searchController.searchResultsUpdater = self
@@ -54,14 +54,24 @@ final class TransactionListViewController: UIViewController {
         
         tableView.rowHeight = 66
         tableView.registerCell(TransactionTableViewCell.self)
+        tableView.registerCell(HeaderTableViewCell.self)
         tableView.refreshControl = UIRefreshControl()
         tableView.refreshControl?.addTarget(self, action: #selector(refresh), for: .valueChanged)
         
+        setupGradient()
+        
         transactionListViewModel?.dataSource
             .bind(to: tableView) { dataSource, indexPath, tableView in
-                let cell: TransactionTableViewCell = tableView.dequeueCellForIndexPath(indexPath)
-                cell.transactionViewModel = dataSource[indexPath]
-                return cell
+                switch dataSource[indexPath.row] {
+                case .header(let title):
+                    let cell: HeaderTableViewCell = tableView.dequeueCellForIndexPath(indexPath)
+                    cell.headerText = title
+                    return cell
+                case .cell(let transactionViewModel):
+                    let cell: TransactionTableViewCell = tableView.dequeueCellForIndexPath(indexPath)
+                    cell.transactionViewModel = transactionViewModel
+                    return cell
+                }
             }
             .dispose(in: reactive.bag)
         
@@ -76,6 +86,25 @@ final class TransactionListViewController: UIViewController {
             .dispose(in: reactive.bag)
     }
     
+    private func setupGradient() {
+        guard let view = navigationController?.view else { return }
+        
+        let backgroundGradientView = GradientView()
+        backgroundGradientView.direction = .vertical
+        backgroundGradientView.gradient = [UIColor.zap.backgroundGradientTop, UIColor.zap.backgroundGradientBottom]
+        backgroundGradientView.translatesAutoresizingMaskIntoConstraints = false
+        
+        view.addSubview(backgroundGradientView)
+        view.sendSubview(toBack: backgroundGradientView)
+        
+        NSLayoutConstraint.activate([
+            backgroundGradientView.topAnchor.constraint(equalTo: view.topAnchor),
+            backgroundGradientView.bottomAnchor.constraint(equalTo: view.bottomAnchor),
+            backgroundGradientView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
+            backgroundGradientView.trailingAnchor.constraint(equalTo: view.trailingAnchor)
+        ])
+    }
+    
     @IBAction private func presentFilter(_ sender: Any) {
         presentFilter?()
     }
@@ -87,41 +116,33 @@ final class TransactionListViewController: UIViewController {
 }
 
 extension TransactionListViewController: UITableViewDelegate {
-    func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
-        let sectionHeaderView = SectionHeaderView.instanceFromNib
-        sectionHeaderView.title = transactionListViewModel?.dataSource[section].metadata
-        sectionHeaderView.backgroundColor = .white
-        return sectionHeaderView
-    }
-    
-    func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
-        return 60
-    }
-    
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        guard let transactionListViewModel = transactionListViewModel else { return }
-        
         tableView.deselectRow(at: indexPath, animated: true)
         
-        let transactionViewModel = transactionListViewModel.dataSource.item(at: indexPath)
-        presentTransactionDetail?(transactionViewModel)
+        if let transactionListViewModel = transactionListViewModel,
+            case .cell(let transactionViewModel) = transactionListViewModel.dataSource.item(at: indexPath.row) {
+            presentTransactionDetail?(transactionViewModel)
+        }
     }
     
     func tableView(_ tableView: UITableView, editActionsForRowAt indexPath: IndexPath) -> [UITableViewRowAction]? {
-        guard let transactionViewModel = transactionListViewModel?.dataSource.item(at: indexPath) else { return nil }
-        
-        if transactionViewModel.annotation.value.isHidden {
-            return [archiveAction(title: "scene.transactions.row_action.unarchive".localized, color: UIColor.zap.nastyGreen, setHidden: false)]
-        } else {
-            return [archiveAction(title: "scene.transactions.row_action.archive".localized, color: UIColor.zap.tomato, setHidden: true)]
+        if let transactionListViewModel = transactionListViewModel,
+            case .cell(let transactionViewModel) = transactionListViewModel.dataSource.item(at: indexPath.row) {
+            if transactionViewModel.annotation.value.isHidden {
+                return [archiveAction(title: "scene.transactions.row_action.unarchive".localized, color: UIColor.zap.nastyGreen, setHidden: false)]
+            } else {
+                return [archiveAction(title: "scene.transactions.row_action.archive".localized, color: UIColor.zap.tomato, setHidden: true)]
+            }
         }
+        return []
     }
     
     private func archiveAction(title: String, color: UIColor, setHidden hidden: Bool) -> UITableViewRowAction {
         let archiveAction = UITableViewRowAction(style: .destructive, title: title) { [weak self] _, indexPath in
-            guard let transactionListViewModel = self?.transactionListViewModel else { return }
-            let transactionViewModel = transactionListViewModel.dataSource.item(at: indexPath)
-            transactionListViewModel.setTransactionHidden(transactionViewModel.transaction, hidden: hidden)
+            if let transactionListViewModel = self?.transactionListViewModel,
+                case .cell(let transactionViewModel) = transactionListViewModel.dataSource.item(at: indexPath.row) {
+                transactionListViewModel.setTransactionHidden(transactionViewModel.transaction, hidden: hidden)
+            }
         }
         archiveAction.backgroundColor = color
         return archiveAction

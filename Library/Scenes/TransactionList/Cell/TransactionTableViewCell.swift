@@ -24,7 +24,7 @@ final class TransactionTableViewCell: BondTableViewCell {
                 .map { $0.flatMap { $0 > 0 } ?? false }
             
             [isPositive.map({ !$0 }).bind(to: positiveAmountBackgroundView.reactive.isHidden),
-             isPositive.map({ $0 ? UIColor.zap.nastyGreen : UIColor.zap.black }).bind(to: primaryAmountLabel.reactive.textColor),
+             isPositive.map({ $0 ? UIColor.zap.black : .white }).bind(to: primaryAmountLabel.reactive.textColor),
              transactionViewModel.icon.map({ $0.image }).bind(to: iconImageView.reactive.image),
              transactionViewModel.displayText.bind(to: titleLabel.reactive.text),
              transactionViewModel.amount.bind(to: primaryAmountLabel.reactive.text, currency: Settings.shared.primaryCurrency),
@@ -32,7 +32,7 @@ final class TransactionTableViewCell: BondTableViewCell {
                 .map { $0?.absoluteValue() }
                 .bind(to: secondaryAmountLabel.reactive.text, currency: Settings.shared.secondaryCurrency),
              transactionViewModel.annotation
-                .map { $0.isHidden ? UIColor.zap.tomato.withAlphaComponent(0.1) : UIColor.white }
+                .map { $0.isHidden ? UIColor.zap.tomato.withAlphaComponent(0.1) : UIColor.clear }
                 .bind(to: reactive.backgroundColor)]
                 .dispose(in: onReuseBag)
     
@@ -43,15 +43,16 @@ final class TransactionTableViewCell: BondTableViewCell {
     override func awakeFromNib() {
         super.awakeFromNib()
         
-        iconImageView.tintColor = UIColor.zap.black
+        iconImageView.tintColor = .white
         
         Style.label.apply(to: primaryAmountLabel, titleLabel) {
             $0.font = $0.font.withSize(14)
+            $0.textColor = .white
         }
         
         Style.label.apply(to: secondaryAmountLabel, timeLabel) {
             $0.font = $0.font.withSize(12)
-            $0.textColor = .lightGray
+            $0.textColor = .white
         }
     }
 }

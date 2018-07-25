@@ -10,13 +10,18 @@ import Foundation
 import Lightning
 import ReactiveKit
 
+enum HeaderTableCellType<Value: Equatable>: Equatable {
+    case header(String)
+    case cell(Value)
+}
+
 final class TransactionListViewModel: NSObject {
     private let transactionService: TransactionService
     private let aliasStore: ChannelAliasStore
     let transactionAnnotationStore = TransactionAnnotationStore()
     
     let isLoading = Observable(true)
-    let dataSource: MutableObservable2DArray<String, TransactionViewModel>
+    let dataSource: MutableObservableArray<HeaderTableCellType<TransactionViewModel>>
     let isEmpty: Signal<Bool, NoError>
     
     let searchString = Observable<String?>(nil)
@@ -28,7 +33,7 @@ final class TransactionListViewModel: NSObject {
     init(transactionService: TransactionService, aliasStore: ChannelAliasStore) {
         self.transactionService = transactionService
         self.aliasStore = aliasStore
-        dataSource = MutableObservable2DArray()
+        dataSource = MutableObservableArray()
         
         isEmpty =
             combineLatest(dataSource, isLoading) { sections, isLoading in
@@ -112,10 +117,9 @@ final class TransactionListViewModel: NSObject {
             .filter { $0.matchesSearchString(searchString) }
         
         let result = bondSections(transactionViewModels: filteredTransactionViewModels)
-        let array = Observable2DArray(result)
         
         DispatchQueue.main.async {
-            self.dataSource.replace(with: array, performDiff: true)
+            self.dataSource.replace(with: result, performDiff: true)
             self.isLoading.value = false
         }
     }
@@ -134,20 +138,14 @@ final class TransactionListViewModel: NSObject {
             .sorted { $0.0 > $1.0 }
     }
 
-    private func bondSections(transactionViewModels: [TransactionViewModel]) -> [Observable2DArraySection<String, TransactionViewModel>] {
+    private func bondSections(transactionViewModels: [TransactionViewModel]) -> [HeaderTableCellType<TransactionViewModel>] {
         let sortedSections = self.sortedSections(transactionViewModels: transactionViewModels)
 
-        return sortedSections.compactMap {
-            let sortedItems = $0.1.sorted { $0.date > $1.date }
-
-            guard let date = $0.1.first?.date else { return nil }
-
+        return sortedSections.flatMap { input -> [HeaderTableCellType<TransactionViewModel>] in
+            let sortedItems = input.1.sorted { $0.date > $1.date }
+            guard let date = input.1.first?.date else { return [] }
             let dateString = date.localized
-
-            return Observable2DArraySection<String, TransactionViewModel>(
-                metadata: dateString,
-                items: sortedItems
-            )
+            return [HeaderTableCellType.header(dateString)] + sortedItems.map { HeaderTableCellType.cell($0) }
         }
     }
 }

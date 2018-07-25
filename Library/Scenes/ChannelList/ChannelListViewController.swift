@@ -92,24 +92,7 @@ extension ChannelListViewController: UISearchBarDelegate {
     }
 }
 
-extension ChannelListViewController: UITableViewDelegate {
-    func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
-        let sectionHeaderView = SectionHeaderView.instanceFromNib
-        sectionHeaderView.title = channelListViewModel?.dataSource[section].metadata
-        sectionHeaderView.backgroundColor = .white
-        return sectionHeaderView
-    }
-    
-    func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
-        guard let channelListViewModel = channelListViewModel else { return 0 }
-        
-        if channelListViewModel.dataSource.sections.count > 1 {
-            return 60
-        } else {
-            return 0
-        }
-    }
-    
+extension ChannelListViewController: UITableViewDelegate {    
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
         

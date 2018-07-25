@@ -190,8 +190,6 @@
 		AD391D0A20D16FF5007EE22A /* KeyPadView.xib in Resources */ = {isa = PBXBuildFile; fileRef = ADBA12012090CD11001F7700 /* KeyPadView.xib */; };
 		AD391D0B20D16FF5007EE22A /* LineView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0605F8C202C9D8200EA903C /* LineView.swift */; };
 		AD391D0C20D16FF5007EE22A /* PinView.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADF79363208DCB630086B2CA /* PinView.swift */; };
-		AD391D0D20D16FF5007EE22A /* SectionHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0605F85202C962900EA903C /* SectionHeaderView.swift */; };
-		AD391D0E20D16FF5007EE22A /* SectionHeaderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = A0605F87202C963800EA903C /* SectionHeaderView.xib */; };
 		AD391D0F20D16FF5007EE22A /* SegmentButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD38EB31207DFB59007DF14D /* SegmentButton.swift */; };
 		AD391D1020D16FF5007EE22A /* Toast.swift in Sources */ = {isa = PBXBuildFile; fileRef = A01009402014D4810001EF94 /* Toast.swift */; };
 		AD391D1120D16FF5007EE22A /* Toast.xib in Resources */ = {isa = PBXBuildFile; fileRef = A010093F2014D4810001EF94 /* Toast.xib */; };
@@ -230,6 +228,8 @@
 		AD7EDAE32108C4150058CCCA /* Wallet.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AD7EDAE22108C4150058CCCA /* Wallet.storyboard */; };
 		AD7EDAE52108C41D0058CCCA /* WalletViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD7EDAE42108C41D0058CCCA /* WalletViewController.swift */; };
 		AD7EDAE72108D39D0058CCCA /* ZapNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD7EDAE62108D39D0058CCCA /* ZapNavigationController.swift */; };
+		AD7EDAEA2108EA170058CCCA /* HeaderTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD7EDAE82108EA170058CCCA /* HeaderTableViewCell.swift */; };
+		AD7EDAEB2108EA170058CCCA /* HeaderTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = AD7EDAE92108EA170058CCCA /* HeaderTableViewCell.xib */; };
 		AD967FD42100D8E80048085B /* CertificateDetailCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = AD967FD32100D8E80048085B /* CertificateDetailCell.xib */; };
 		AD967FD72100EFFA0048085B /* HelpSettingsItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD967FD62100EFFA0048085B /* HelpSettingsItem.swift */; };
 		AD967FE32105FD770048085B /* BTCPayQRCode.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD967FE22105FD770048085B /* BTCPayQRCode.swift */; };
@@ -505,8 +505,6 @@
 		A0376B74201CD61B00F1FBEF /* NumericKeyPad.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = NumericKeyPad.storyboard; sourceTree = "<group>"; };
 		A0376B76201CD67700F1FBEF /* PinViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PinViewController.swift; sourceTree = "<group>"; };
 		A03F035F2028C73F00F32279 /* SendLightningInvoiceViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SendLightningInvoiceViewModel.swift; sourceTree = "<group>"; };
-		A0605F85202C962900EA903C /* SectionHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SectionHeaderView.swift; sourceTree = "<group>"; };
-		A0605F87202C963800EA903C /* SectionHeaderView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SectionHeaderView.xib; sourceTree = "<group>"; };
 		A0605F8C202C9D8200EA903C /* LineView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LineView.swift; sourceTree = "<group>"; };
 		A06660F4202D97A300EE32FA /* QRCodeScannerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QRCodeScannerView.swift; sourceTree = "<group>"; };
 		A070D961202A3CC7000A8274 /* SendOnChainViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SendOnChainViewModel.swift; sourceTree = "<group>"; };
@@ -685,6 +683,8 @@
 		AD7EDAE22108C4150058CCCA /* Wallet.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Wallet.storyboard; sourceTree = "<group>"; };
 		AD7EDAE42108C41D0058CCCA /* WalletViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WalletViewController.swift; sourceTree = "<group>"; };
 		AD7EDAE62108D39D0058CCCA /* ZapNavigationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ZapNavigationController.swift; sourceTree = "<group>"; };
+		AD7EDAE82108EA170058CCCA /* HeaderTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeaderTableViewCell.swift; sourceTree = "<group>"; };
+		AD7EDAE92108EA170058CCCA /* HeaderTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = HeaderTableViewCell.xib; sourceTree = "<group>"; };
 		AD8B13F020C0582D0091F9DA /* RootCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RootCoordinator.swift; sourceTree = "<group>"; };
 		AD93ED5220A07A24000E814E /* Notification.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Notification.swift; sourceTree = "<group>"; };
 		AD93ED5520A09D59000E814E /* GraphTopologyUpdate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GraphTopologyUpdate.swift; sourceTree = "<group>"; };
@@ -1021,7 +1021,6 @@
 				ADBA12082093587B001F7700 /* KeyPad */,
 				A0605F8C202C9D8200EA903C /* LineView.swift */,
 				ADF79363208DCB630086B2CA /* PinView.swift */,
-				A0605F89202C9D1A00EA903C /* Section Header */,
 				AD38EB31207DFB59007DF14D /* SegmentButton.swift */,
 				A0605F8A202C9D2F00EA903C /* Toast */,
 				AD7EDAE62108D39D0058CCCA /* ZapNavigationController.swift */,
@@ -1089,15 +1088,6 @@
 			path = Send;
 			sourceTree = "<group>";
 		};
-		A0605F89202C9D1A00EA903C /* Section Header */ = {
-			isa = PBXGroup;
-			children = (
-				A0605F85202C962900EA903C /* SectionHeaderView.swift */,
-				A0605F87202C963800EA903C /* SectionHeaderView.xib */,
-			);
-			path = "Section Header";
-			sourceTree = "<group>";
-		};
 		A0605F8A202C9D2F00EA903C /* Toast */ = {
 			isa = PBXGroup;
 			children = (
@@ -1156,7 +1146,6 @@
 		A0731FDE2014A20500C55E45 /* Types */ = {
 			isa = PBXGroup;
 			children = (
-				ADA6D2C820AC2EFC009398A5 /* Cells */,
 				AD6FFC9F20A9D19E00B57330 /* LightningInvoiceViewModel.swift */,
 				AD6FFC9D20A9D19400B57330 /* LightningPaymentViewModel.swift */,
 				AD6FFC9B20A9D15E00B57330 /* OnChainConfirmedTransactionViewModel.swift */,
@@ -1351,6 +1340,7 @@
 		A0DDC0732018C74F00AEFF94 /* TransactionList */ = {
 			isa = PBXGroup;
 			children = (
+				ADA6D2C820AC2EFC009398A5 /* Cell */,
 				ADA865BA20ECB86700B1B74B /* Filter */,
 				A0731FDE2014A20500C55E45 /* Types */,
 				A0DDC05B201883D800AEFF94 /* TransactionList.storyboard */,
@@ -1659,13 +1649,15 @@
 			path = Persistence;
 			sourceTree = "<group>";
 		};
-		ADA6D2C820AC2EFC009398A5 /* Cells */ = {
+		ADA6D2C820AC2EFC009398A5 /* Cell */ = {
 			isa = PBXGroup;
 			children = (
+				AD7EDAE82108EA170058CCCA /* HeaderTableViewCell.swift */,
+				AD7EDAE92108EA170058CCCA /* HeaderTableViewCell.xib */,
 				A0731FDF2014A22B00C55E45 /* TransactionTableViewCell.swift */,
 				A0731FE02014A22B00C55E45 /* TransactionTableViewCell.xib */,
 			);
-			path = Cells;
+			path = Cell;
 			sourceTree = "<group>";
 		};
 		ADA865BA20ECB86700B1B74B /* Filter */ = {
@@ -2178,6 +2170,7 @@
 				AD391C6320D16F89007EE22A /* Debug.storyboard in Resources */,
 				AD391C7220D16F89007EE22A /* OpenChannel.storyboard in Resources */,
 				AD7EDAE32108C4150058CCCA /* Wallet.storyboard in Resources */,
+				AD7EDAEB2108EA170058CCCA /* HeaderTableViewCell.xib in Resources */,
 				AD391C9C20D16FA8007EE22A /* Request.storyboard in Resources */,
 				AD391C5020D16F7A007EE22A /* CreateWallet.storyboard in Resources */,
 				AD391CCC20D16FE1007EE22A /* DetailTransactionHashTableViewCell.xib in Resources */,
@@ -2186,7 +2179,6 @@
 				AD391C7320D16F89007EE22A /* QRCodeDetail.storyboard in Resources */,
 				AD391D0A20D16FF5007EE22A /* KeyPadView.xib in Resources */,
 				AD391D1120D16FF5007EE22A /* Toast.xib in Resources */,
-				AD391D0E20D16FF5007EE22A /* SectionHeaderView.xib in Resources */,
 				AD391D0420D16FF5007EE22A /* AmountInputView.xib in Resources */,
 				AD391CC220D16FE1007EE22A /* DetailMemoTableViewCell.xib in Resources */,
 				AD391CCA20D16FE1007EE22A /* DetailTimerTableViewCell.xib in Resources */,
@@ -2466,7 +2458,6 @@
 				AD391CD820D16FE1007EE22A /* OnChainConfirmedTransactionViewModel.swift in Sources */,
 				AD292F9120E69F0E00211AE7 /* RootViewModel.swift in Sources */,
 				AD391CA320D16FA8007EE22A /* SendOnChainViewController.swift in Sources */,
-				AD391D0D20D16FF5007EE22A /* SectionHeaderView.swift in Sources */,
 				AD391C3520D16EFA007EE22A /* Storyboard.swift in Sources */,
 				AD391CDB20D16FE1007EE22A /* TransactionListViewController.swift in Sources */,
 				AD391D0720D16FF5007EE22A /* GradientLoadingButtonView.swift in Sources */,
@@ -2505,6 +2496,7 @@
 				AD391C3020D16EFA007EE22A /* UICollectionView.swift in Sources */,
 				AD391C6520D16F89007EE22A /* LndLogViewController.swift in Sources */,
 				AD391CC720D16FE1007EE22A /* DetailTableViewCell.swift in Sources */,
+				AD7EDAEA2108EA170058CCCA /* HeaderTableViewCell.swift in Sources */,
 				AD391CAD20D16FA8007EE22A /* OnChainRequestAddressTypeSettingsItem.swift in Sources */,
 				AD97A91420EFCFC3008344EA /* Bitcoin+Localizable.swift in Sources */,
 				AD391CB720D16FA8007EE22A /* SettingsViewController.swift in Sources */,
