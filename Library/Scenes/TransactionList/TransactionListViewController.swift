@@ -10,7 +10,7 @@ import UIKit
 
 extension UIStoryboard {
     static func instantiateTransactionListViewController(transactionListViewModel: TransactionListViewModel, presentTransactionDetail: @escaping (TransactionViewModel) -> Void, presentFilter: @escaping () -> Void) -> UINavigationController {
-        let viewController = Storyboard.transactionList.initial(viewController: TransactionListViewController.self)
+        let viewController = Storyboard.transactionList.instantiate(viewController: TransactionListViewController.self)
         
         viewController.transactionListViewModel = transactionListViewModel
         viewController.presentTransactionDetail = presentTransactionDetail
@@ -26,10 +26,7 @@ extension UIStoryboard {
 
 final class TransactionListViewController: UIViewController {
     @IBOutlet private weak var tableView: UITableView?
-    @IBOutlet private weak var searchBackgroundView: UIView!
-    @IBOutlet private weak var searchBar: UISearchBar!
     @IBOutlet private weak var emptyStateLabel: UILabel!
-    @IBOutlet private weak var filterButton: UIButton!
     @IBOutlet private weak var loadingActivityIndicator: UIActivityIndicatorView!
     
     fileprivate var presentFilter: (() -> Void)?
@@ -47,12 +44,11 @@ final class TransactionListViewController: UIViewController {
         
         guard let tableView = tableView else { return }
         
-        searchBar.placeholder = "scene.transactions.search.placeholder".localized
-        searchBar.delegate = self
-        searchBar.backgroundImage = UIImage()
-        searchBackgroundView.backgroundColor = UIColor.zap.white
-        filterButton.tintColor = UIColor.zap.black
-        
+        let searchController = UISearchController(searchResultsController: nil)
+        searchController.dimsBackgroundDuringPresentation = false
+        searchController.searchResultsUpdater = self
+        navigationItem.searchController = searchController
+
         Style.label.apply(to: emptyStateLabel)
         emptyStateLabel.text = "scene.transactions.empty_state_label".localized
         
@@ -69,12 +65,7 @@ final class TransactionListViewController: UIViewController {
             }
             .dispose(in: reactive.bag)
         
-        [transactionListViewModel?.isFilterActive
-            .map { $0 ? UIColor.zap.lightMustard.withAlphaComponent(0.5) : UIColor.clear }
-            .bind(to: filterButton.reactive.backgroundColor),
-         transactionListViewModel?.searchString
-            .bidirectionalBind(to: searchBar.reactive.text),
-         transactionListViewModel?.isLoading
+        [transactionListViewModel?.isLoading
             .map { !$0 }
             .bind(to: loadingActivityIndicator.reactive.isHidden),
          transactionListViewModel?.isEmpty
@@ -135,14 +126,18 @@ extension TransactionListViewController: UITableViewDelegate {
         archiveAction.backgroundColor = color
         return archiveAction
     }
-    
-    func scrollViewWillBeginDragging(_ scrollView: UIScrollView) {
-        searchBar.resignFirstResponder()
-    }
 }
 
 extension TransactionListViewController: UISearchBarDelegate {
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
         searchBar.resignFirstResponder()
+    }
+}
+
+extension TransactionListViewController: UISearchResultsUpdating {
+    func updateSearchResults(for searchController: UISearchController) {
+        if let text = searchController.searchBar.text {
+            transactionListViewModel?.searchString.value = text
+        }
     }
 }
