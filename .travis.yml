@@ -1,8 +1,14 @@
-osx_image: xcode9.2
+osx_image: xcode9.4 
 language: objective-c
-before_install:
-- gem update fastlane --no-ri --no-rdoc --no-document
+xcode_workspace: Zap.xcworkspace
+xcode_scheme: Zap
+cache: bundler
+git:
+  quiet: true
+  depth: 3
+notifications:
+  email:
+    on_failure: change
 script:
-- fastlane tests
-
-
+  - xcodebuild -showBuildSettings -workspace Zap.xcworkspace -list
+  - bundle exec fastlane tests

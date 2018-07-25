@@ -20,20 +20,6 @@
                ReferencedContainer = "container:Zap.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
-         <BuildActionEntry
-            buildForTesting = "YES"
-            buildForRunning = "NO"
-            buildForProfiling = "NO"
-            buildForArchiving = "NO"
-            buildForAnalyzing = "NO">
-            <BuildableReference
-               BuildableIdentifier = "primary"
-               BlueprintIdentifier = "A0A05A122013CF960007D1C9"
-               BuildableName = "ZapTests.xctest"
-               BlueprintName = "ZapTests"
-               ReferencedContainer = "container:Zap.xcodeproj">
-            </BuildableReference>
-         </BuildActionEntry>
       </BuildActionEntries>
    </BuildAction>
    <TestAction
@@ -43,16 +29,6 @@
       region = "US"
       shouldUseLaunchSchemeArgsEnv = "NO">
       <Testables>
-         <TestableReference
-            skipped = "NO">
-            <BuildableReference
-               BuildableIdentifier = "primary"
-               BlueprintIdentifier = "A0A05A122013CF960007D1C9"
-               BuildableName = "ZapTests.xctest"
-               BlueprintName = "ZapTests"
-               ReferencedContainer = "container:Zap.xcodeproj">
-            </BuildableReference>
-         </TestableReference>
          <TestableReference
             skipped = "NO">
             <BuildableReference
@@ -152,7 +128,7 @@
       </MacroExpansion>
    </ProfileAction>
    <AnalyzeAction
-      buildConfiguration = "Debug">
+      buildConfiguration = "DebugLocal">
    </AnalyzeAction>
    <ArchiveAction
       buildConfiguration = "Release"
