@@ -31,13 +31,13 @@ public final class GradientLoadingButtonView: UIControl {
         }
     }
     
-    public override var isEnabled: Bool {
+    override public var isEnabled: Bool {
         didSet {
             button?.isEnabled = isEnabled
         }
     }
     
-    public required override init(frame: CGRect) {
+    override public required init(frame: CGRect) {
         super.init(frame: frame)
         setup()
     }

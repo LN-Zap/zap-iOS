@@ -60,7 +60,7 @@ public final class Settings: NSObject, Persistable {
         }
     }
     
-    convenience override init() {
+    override convenience init() {
         let data = Settings.decoded
         self.init(data: data)
         

@@ -52,7 +52,7 @@ final class ExchangeUpdaterJob {
     }
 }
 
-final class ExchangeData {
+enum ExchangeData {
     static var availableCurrencies: [FiatCurrency]? {
         didSet {
             guard let availableCurrencies = availableCurrencies else { return }

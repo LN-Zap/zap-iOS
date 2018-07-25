@@ -51,7 +51,7 @@ final class InputNumberFormatter {
             let decimalSeparator = numberFormatter.decimalSeparator
             else { return nil }
 
-        if input == "" {
+        if input.isEmpty {
             return ""
         } else if input == decimalSeparator {
             return "0\(decimalSeparator)"
@@ -78,7 +78,7 @@ final class InputNumberFormatter {
             let decimalSeparator = numberFormatter.decimalSeparator
             else { return nil }
 
-        if input == "" {
+        if input.isEmpty {
             return ""
         } else if unit == .satoshi && input.contains(decimalSeparator) {
             return nil

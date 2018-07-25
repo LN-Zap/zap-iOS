@@ -8,7 +8,7 @@
 import BTCUtil
 import Foundation
 
-public struct LndConstants {
+public enum LndConstants {
     public static let minChannelSize: Satoshi = 20000
     public static let maxChannelSize: Satoshi = 16777216
     public static let maxPaymentAllowed: Satoshi = 4294967

@@ -148,7 +148,7 @@ class MessagesRequestViewController: UIViewController {
                 }
                 
                 if let memo = requestViewModel.trimmedMemo,
-                    memo != "" {
+                    !memo.isEmpty {
                     text += "for " + memo
                 }
                 

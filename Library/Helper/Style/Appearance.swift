@@ -7,7 +7,7 @@
 
 import UIKit
 
-struct Appearance {
+enum Appearance {
     static func setup() {
         // UINavigationBar
         UINavigationBar.appearance().largeTitleTextAttributes = [.font: UIFont.zap.light.withSize(25)]

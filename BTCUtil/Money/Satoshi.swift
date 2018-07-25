@@ -18,7 +18,7 @@ extension Satoshi {
     }
     
     public static func from(string: String, unit: BitcoinUnit) -> Satoshi? {
-        guard string != "" else { return 0 }
+        guard !string.isEmpty else { return 0 }
         var string = string
         
         if let groupingSeparator = Locale.autoupdatingCurrent.groupingSeparator {

@@ -26,7 +26,7 @@ public final class SegmentButton: UIButton {
         return CGRect(x: 0, y: bounds.height - lineHeight, width: bounds.width, height: lineHeight)
     }
     
-    public override init(frame: CGRect) {
+    override public init(frame: CGRect) {
         super.init(frame: frame)
         setup()
     }
@@ -61,7 +61,7 @@ public final class SegmentButton: UIButton {
         self.selectedLineView = selectedLineView
     }
     
-    public override func layoutSubviews() {
+    override public func layoutSubviews() {
         super.layoutSubviews()
         
         switch alignment {
@@ -72,7 +72,7 @@ public final class SegmentButton: UIButton {
         }
     }
     
-    public override var isSelected: Bool {
+    override public var isSelected: Bool {
         didSet {
             selectedLineView?.isHidden = !isSelected
             tintColor = isSelected ? UIColor.zap.black : UIColor.zap.lightGrey

@@ -10,7 +10,7 @@ import BTCUtil
 import Foundation
 import Lightning
 
-public final class RequestViewModelFactory {
+public enum RequestViewModelFactory {
     public static func create() -> RequestViewModel? {
         let zapSerview = RootViewModel()
         zapSerview.connect()

@@ -7,7 +7,7 @@
 
 import Foundation
 
-public class Storage {
+public enum Storage {
     public static func store<T: Encodable>(_ object: T, to filename: String) {
         guard
             let encoded = try? PropertyListEncoder().encode(object),

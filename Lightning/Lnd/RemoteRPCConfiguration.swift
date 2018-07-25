@@ -13,7 +13,7 @@ public struct RemoteRPCConfiguration: Codable {
     public let macaroon: Data
     public let url: URL
     
-    static private let keychain = Keychain(service: "com.jackmallers.zap")
+    private static let keychain = Keychain(service: "com.jackmallers.zap")
     
     public init(certificate: String?, macaroon: Data, url: URL) {
         if let certificate = certificate {

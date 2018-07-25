@@ -76,7 +76,7 @@ public final class ChannelService {
             if
                 let nodeInfo = result.value,
                 let alias = nodeInfo.node.alias,
-                alias != "" {
+                !alias.isEmpty {
                 callback(alias)
             } else {
                 callback(nil)

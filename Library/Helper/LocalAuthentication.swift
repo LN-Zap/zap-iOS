@@ -9,7 +9,7 @@ import Foundation
 import Lightning
 import LocalAuthentication
 
-final class BiometricAuthentication {
+enum BiometricAuthentication {
     enum BiometricType {
         case none
         case touchID

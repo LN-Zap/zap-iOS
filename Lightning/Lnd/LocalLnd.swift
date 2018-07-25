@@ -11,7 +11,7 @@ import Foundation
 import Lndmobile
 
 // TODO: should be private
-public final class LocalLnd {
+public enum LocalLnd {
     public private(set) static var isRunning = false
     
     static var path: URL {
@@ -38,8 +38,9 @@ public final class LocalLnd {
 
 #else
 
-public final class LocalLnd {
+public enum LocalLnd {
     public static let isRunning = false
+    
     public static func start() {}
     public static func stop() {}
 }

@@ -14,7 +14,7 @@ protocol DetailViewModel {
     var detailCells: MutableObservableArray<DetailCellType> { get }
 }
 
-final class DetailViewModelFactory {
+enum DetailViewModelFactory {
     static func instantiate(from transactionViewModel: TransactionViewModel, transactionListViewModel: TransactionListViewModel, network: Network) -> DetailViewModel {
         
         if let transactionViewModel = transactionViewModel as? OnChainConfirmedTransactionViewModel {

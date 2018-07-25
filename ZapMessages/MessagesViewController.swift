@@ -61,7 +61,7 @@ extension MessagesViewController: MessagesRequestViewControllerDelegate {
         
         let layout = MSMessageTemplateLayout()
         
-        if text != "" {
+        if !text.isEmpty {
             layout.caption = text
         } else {
             layout.caption = "zap invoice"

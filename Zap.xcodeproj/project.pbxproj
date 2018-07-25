@@ -241,7 +241,7 @@
 		AD967FF021062AB20048085B /* RPCConnectQRCodeError+Localizable.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD967FEF21062AB20048085B /* RPCConnectQRCodeError+Localizable.swift */; };
 		AD967FF2210645780048085B /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = A070D967202B5163000A8274 /* Localizable.strings */; };
 		AD967FF621072D2C0048085B /* Success.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD967FF521072D2C0048085B /* Success.swift */; };
-		AD967FF8210731110048085B /* PinnedURLSession.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD967FF7210731110048085B /* PinnedURLSession.swift */; };
+		AD967FF8210731110048085B /* PinnedURLSessionDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD967FF7210731110048085B /* PinnedURLSessionDelegate.swift */; };
 		AD97A90620EE7FD9008344EA /* BitcoinTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD97A90520EE7FD9008344EA /* BitcoinTests.swift */; };
 		AD97A90C20EFC127008344EA /* LightningInvoiceURI.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD97A90B20EFC127008344EA /* LightningInvoiceURI.swift */; };
 		AD97A90F20EFC1E6008344EA /* LightningNodeURI.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD97A90E20EFC1E6008344EA /* LightningNodeURI.swift */; };
@@ -698,7 +698,7 @@
 		AD967FE8210610D90048085B /* RPCConnectQRCode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RPCConnectQRCode.swift; sourceTree = "<group>"; };
 		AD967FEF21062AB20048085B /* RPCConnectQRCodeError+Localizable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "RPCConnectQRCodeError+Localizable.swift"; sourceTree = "<group>"; };
 		AD967FF521072D2C0048085B /* Success.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Success.swift; sourceTree = "<group>"; };
-		AD967FF7210731110048085B /* PinnedURLSession.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PinnedURLSession.swift; sourceTree = "<group>"; };
+		AD967FF7210731110048085B /* PinnedURLSessionDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PinnedURLSessionDelegate.swift; sourceTree = "<group>"; };
 		AD97A90520EE7FD9008344EA /* BitcoinTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BitcoinTests.swift; sourceTree = "<group>"; };
 		AD97A90B20EFC127008344EA /* LightningInvoiceURI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LightningInvoiceURI.swift; sourceTree = "<group>"; };
 		AD97A90E20EFC1E6008344EA /* LightningNodeURI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LightningNodeURI.swift; sourceTree = "<group>"; };
@@ -1795,7 +1795,7 @@
 				ADC0D2F82107A19F00B8C62F /* blockcypher.com */,
 				ADC0D3012107A3C500B8C62F /* blockexplorer.com */,
 				ADC0D2EF2107953100B8C62F /* PinnedHost.swift */,
-				AD967FF7210731110048085B /* PinnedURLSession.swift */,
+				AD967FF7210731110048085B /* PinnedURLSessionDelegate.swift */,
 			);
 			path = Certificates;
 			sourceTree = "<group>";
@@ -2603,7 +2603,7 @@
 			files = (
 				ADFEFA4F20E627F100FE1557 /* LightningApiRPC.swift in Sources */,
 				ADFEFA5220E627F100FE1557 /* WalletApiRPC.swift in Sources */,
-				AD967FF8210731110048085B /* PinnedURLSession.swift in Sources */,
+				AD967FF8210731110048085B /* PinnedURLSessionDelegate.swift in Sources */,
 				ADECC36B20F257BE00D00546 /* OnChainConfirmedTransaction.swift in Sources */,
 				ADFEFA5E20E627F100FE1557 /* Transaction.swift in Sources */,
 				ADFEFA4A20E627F100FE1557 /* ProtobufExtensions.swift in Sources */,
