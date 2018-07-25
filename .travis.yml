@@ -10,5 +10,4 @@ notifications:
   email:
     on_failure: change
 script:
-  - xcodebuild -showBuildSettings -workspace Zap.xcworkspace -list
   - bundle exec fastlane tests

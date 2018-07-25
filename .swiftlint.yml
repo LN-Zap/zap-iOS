@@ -36,6 +36,7 @@ opt_in_rules:
 excluded:
   - Pods
   - Lightning/Lnd/Api/Generated
+  - vendor
 identifier_name:
   excluded:
     - id
