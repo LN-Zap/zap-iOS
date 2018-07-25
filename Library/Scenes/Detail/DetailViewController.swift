@@ -65,7 +65,7 @@ final class DetailViewController: UIViewController, KeyboardAdjustable {
         
         detailViewModel?.detailCells
             .bind(to: tableView, createCell: { [unowned self] in
-                return self.createCell(data: $0, indexPath: $1, tableView: $2)
+                self.createCell(data: $0, indexPath: $1, tableView: $2)
             })
             .dispose(in: reactive.bag)
         

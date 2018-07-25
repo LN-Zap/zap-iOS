@@ -22,7 +22,7 @@ public final class ChannelService {
         self.api = api
         
         all = combineLatest(open, pending) {
-            return $0 as [Channel] + $1 as [Channel]
+            $0 as [Channel] + $1 as [Channel]
         }
     }
 

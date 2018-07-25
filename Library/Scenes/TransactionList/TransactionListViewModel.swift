@@ -32,7 +32,7 @@ final class TransactionListViewModel: NSObject {
         
         isEmpty =
             combineLatest(dataSource, isLoading) { sections, isLoading in
-                return sections.dataSource.isEmpty && !isLoading
+                sections.dataSource.isEmpty && !isLoading
             }
             .distinct()
             .debounce(interval: 0.5)
