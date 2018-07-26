@@ -51,8 +51,6 @@ final class DetailViewController: UIViewController, KeyboardAdjustable {
         tableView.registerCell(DetailMemoTableViewCell.self)
         tableView.registerCell(DetailQRCodeTableViewCell.self)
         tableView.registerCell(DetailTimerTableViewCell.self)
-        tableView.registerCell(DetailLegendTableViewCell.self)
-        tableView.registerCell(DetailBalanceTableViewCell.self)
         tableView.registerCell(DetailSeparatorTableViewCell.self)
         tableView.registerCell(DetailDestructiveActionTableViewCell.self)
         tableView.registerCell(DetailTransactionHashTableViewCell.self)
@@ -91,14 +89,6 @@ final class DetailViewController: UIViewController, KeyboardAdjustable {
             let cell: DetailTimerTableViewCell = tableView.dequeueCellForIndexPath(indexPath)
             cell.info = info
             return cell
-        case .legend(let info):
-            let cell: DetailLegendTableViewCell = tableView.dequeueCellForIndexPath(indexPath)
-            cell.info = info
-            return cell
-        case .balance(let info):
-            let cell: DetailBalanceTableViewCell = tableView.dequeueCellForIndexPath(indexPath)
-            cell.info = info
-            return cell
         case .separator:
             return tableView.dequeueCellForIndexPath(indexPath) as DetailSeparatorTableViewCell
         case .destructiveAction(let info):
@@ -120,10 +110,6 @@ final class DetailViewController: UIViewController, KeyboardAdjustable {
 }
 
 extension DetailViewController: DetailCellDelegate {
-    func closeChannel(_ channel: Channel, nodeAlias: String, closeAction: @escaping () -> Void) {
-        closeChannelButtonTapped?(channel, nodeAlias, closeAction)
-    }
-    
     func dismiss() {
         dismissButtonTapped?()
     }

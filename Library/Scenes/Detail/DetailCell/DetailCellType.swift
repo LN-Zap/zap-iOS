@@ -11,10 +11,8 @@ import Foundation
 import Lightning
 
 enum DetailCellType {
-    case balance(DetailBalanceTableViewCell.Info)
     case destructiveAction(DetailDestructiveActionTableViewCell.Info)
     case info(DetailTableViewCell.Info)
-    case legend(DetailLegendTableViewCell.Info)
     case memo(DetailMemoTableViewCell.Info)
     case qrCode(String)
     case separator
@@ -56,5 +54,4 @@ enum DetailCellType {
 protocol DetailCellDelegate: class {
     func dismiss()
     func presentSafariViewController(for url: URL)
-    func closeChannel(_ channel: Channel, nodeAlias: String, closeAction: @escaping () -> Void)
 }

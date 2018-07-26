@@ -15,14 +15,14 @@ final class ChannelListViewModel: NSObject {
     
     let nodeStore: LightningNodeStore
     
-    let dataSource: MutableObservable2DArray<String, ChannelViewModel>
+    let dataSource: MutableObservableArray<ChannelViewModel>
     let searchString = Observable<String?>(nil)
     
     init(channelService: ChannelService, nodeStore: LightningNodeStore) {
         self.channelService = channelService
         self.nodeStore = nodeStore
         
-        dataSource = MutableObservable2DArray()
+        dataSource = MutableObservableArray()
         
         super.init()
         
@@ -35,23 +35,11 @@ final class ChannelListViewModel: NSObject {
     }
     
     private func updateChannels(open: [Channel], pending: [Channel], searchString: String?) {
-        let result = MutableObservable2DArray<String, ChannelViewModel>()
-        
-        addSection(for: pending, metadata: "scene.channels.section_header.pending".localized, searchString: searchString, to: result)
-        addSection(for: open, metadata: "scene.channels.section_header.open".localized, searchString: searchString, to: result)
-        
-        dataSource.replace(with: result, performDiff: true)
-    }
-    
-    private func addSection(for channels: [Channel], metadata: String, searchString: String?, to result: MutableObservable2DArray<String, ChannelViewModel>) {
-        let channelViewModels = channels
+        let viewModels = (open + pending)
             .map { ChannelViewModel(channel: $0, nodeStore: nodeStore) }
             .filter { $0.matchesSearchString(searchString) }
-    
-        guard !channelViewModels.isEmpty else { return }
         
-        let section = Observable2DArraySection<String, ChannelViewModel>(metadata: metadata, items: channelViewModels)
-        result.appendSection(section)
+        dataSource.replace(with: viewModels, performDiff: true)
     }
     
     func refresh() {

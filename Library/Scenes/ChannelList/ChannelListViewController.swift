@@ -8,60 +8,60 @@
 import Bond
 import Lightning
 import UIKit
+import Wallet
 
 extension UIStoryboard {
     static func instantiateChannelListViewController(
         channelListViewModel: ChannelListViewModel,
-        presentChannelDetail: @escaping (ChannelViewModel) -> Void,
         closeButtonTapped: @escaping (Channel, String, @escaping () -> Void) -> Void,
-        addChannelButtonTapped: @escaping () -> Void) -> UINavigationController {
+        addChannelButtonTapped: @escaping () -> Void) -> UIViewController {
         let viewController = Storyboard.channelList.initial(viewController: ChannelListViewController.self)
         
         viewController.channelListViewModel = channelListViewModel
-        viewController.presentChannelDetail = presentChannelDetail
         viewController.closeButtonTapped = closeButtonTapped
         viewController.addChannelButtonTapped = addChannelButtonTapped
-        
-        let navigationController = ZapNavigationController(rootViewController: viewController)
-        navigationController.tabBarItem.title = "Channels"
-        navigationController.tabBarItem.image = UIImage(named: "tabbar_wallet", in: Bundle.library, compatibleWith: nil)
 
-        return navigationController
+        viewController.tabBarItem.title = "Channels"
+        viewController.tabBarItem.image = UIImage(named: "tabbar_wallet", in: Bundle.library, compatibleWith: nil)
+        
+        return viewController
     }
 }
 
 final class ChannelListViewController: UIViewController {
-    @IBOutlet private weak var tableView: UITableView?
+    @IBOutlet private weak var backgroundGradientView: GradientView! {
+        didSet {
+            backgroundGradientView.direction = .vertical
+            backgroundGradientView.gradient = [UIColor.zap.backgroundGradientTop, UIColor.zap.backgroundGradientBottom]
+        }
+    }
+    @IBOutlet private weak var walletView: WalletView!
+    @IBOutlet private weak var walletHeaderView: UIView!
+    @IBOutlet private weak var headerLabel: UILabel!
     
-    fileprivate var presentChannelDetail: ((ChannelViewModel) -> Void)?
     fileprivate var addChannelButtonTapped: (() -> Void)?
     fileprivate var closeButtonTapped: ((Channel, String, @escaping () -> Void) -> Void)?
     fileprivate var channelListViewModel: ChannelListViewModel?
     
-    deinit {
-        tableView?.isEditing = false // fixes Bond bug. Binding is not released in editing mode.
-    }
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        title = "scene.channels.title".localized
+        headerLabel.font = UIFont.zap.light.withSize(40)
+        headerLabel.text = "scene.channels.title".localized
         
-        guard let tableView = tableView else { return }
+        walletView.walletHeader = walletHeaderView
+        walletView.minimalDistanceBetweenStackedCardViews = 50
+        walletView.contentInset = UIEdgeInsets(top: 100, left: 0, bottom: 0, right: 0)
+        guard let channels = channelListViewModel?.dataSource.array else { fatalError("view model not set") }
+
+        var coloredCardViews = [ChannelDetailView]()
         
-        tableView.rowHeight = 60
-        tableView.registerCell(ChannelTableViewCell.self)
-        
-        tableView.refreshControl = UIRefreshControl()
-        tableView.refreshControl?.addTarget(self, action: #selector(refresh), for: .valueChanged)
-        
-        channelListViewModel?.dataSource
-            .bind(to: tableView) { dataSource, indexPath, tableView in
-                let cell: ChannelTableViewCell = tableView.dequeueCellForIndexPath(indexPath)
-                cell.channelViewModel = dataSource[indexPath]
-                return cell
-            }
-            .dispose(in: reactive.bag)
+        for channel in channels {
+            let cardView = ChannelDetailView.nibForClass()
+            cardView.channelViewModel = channel
+            coloredCardViews.append(cardView)
+        }
+        walletView.reload(cardViews: coloredCardViews)
     }
     
     @objc func refresh(sender: UIRefreshControl) {
@@ -83,38 +83,5 @@ final class ChannelListViewController: UIViewController {
                 }
             }
         }
-    }
-}
-
-extension ChannelListViewController: UISearchBarDelegate {
-    func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
-        searchBar.resignFirstResponder()
-    }
-}
-
-extension ChannelListViewController: UITableViewDelegate {    
-    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        tableView.deselectRow(at: indexPath, animated: true)
-        
-        guard
-            let channelViewModel = channelListViewModel?.dataSource.item(at: indexPath)
-            else { return }
-        
-        presentChannelDetail?(channelViewModel)
-    }
-    
-    func tableView(_ tableView: UITableView, editActionsForRowAt indexPath: IndexPath) -> [UITableViewRowAction]? {
-        guard
-            let channelViewModel = channelListViewModel?.dataSource.item(at: indexPath),
-            !channelViewModel.state.value.isClosing
-            else { return [] }
-        
-        let closeTitle = channelViewModel.channel.state == .active ? "scene.channel_detail.close_button".localized : "scene.channel_detail.force_close_button".localized
-
-        let closeAction = UITableViewRowAction(style: .destructive, title: closeTitle) { [weak self] _, _ in
-            self?.closeChannel(for: channelViewModel)
-        }
-        closeAction.backgroundColor = UIColor.zap.tomato
-        return [closeAction]
     }
 }

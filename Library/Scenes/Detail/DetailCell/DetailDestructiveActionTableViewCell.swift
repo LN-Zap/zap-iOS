@@ -11,7 +11,6 @@ import UIKit
 final class DetailDestructiveActionTableViewCell: UITableViewCell {
     struct Info {
         enum DestructiveActionType {
-            case closeChannel(Channel, String)
             case archiveTransaction
             case unarchiveTransaction
         }
@@ -48,23 +47,9 @@ final class DetailDestructiveActionTableViewCell: UITableViewCell {
     
     @IBAction private func executeAction(_ sender: Any) {
         guard let info = info else { return }
-        switch info.type {
-        case let .closeChannel(channel, nodeAlias):
-            delegate?.closeChannel(channel, nodeAlias: nodeAlias) { [weak self] in
-                self?.setActivityIndicator(hidden: false)
-                info.action { result in
-                    if let error = result.error {
-                        self?.setActivityIndicator(hidden: true)
-                        print("😡", error)
-                    } else {
-                        self?.delegate?.dismiss()
-                    }
-                }
-            }
-        case .archiveTransaction, .unarchiveTransaction:
-            info.action { [weak self] _ in
-                self?.delegate?.dismiss()
-            }
+        
+        info.action { [weak self] _ in
+            self?.delegate?.dismiss()
         }
     }
     

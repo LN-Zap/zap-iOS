@@ -61,7 +61,7 @@ final class MainCoordinator: Routing {
     }
     
     func channelListViewController() -> UIViewController {
-        return UIStoryboard.instantiateChannelListViewController(channelListViewModel: channelListViewModel, presentChannelDetail: presentChannelDetail, closeButtonTapped: presentMainCloseConfirmation, addChannelButtonTapped: presentAddChannel)
+        return UIStoryboard.instantiateChannelListViewController(channelListViewModel: channelListViewModel, closeButtonTapped: presentMainCloseConfirmation, addChannelButtonTapped: presentAddChannel)
     }
     
     func presentSend() {
@@ -87,11 +87,6 @@ final class MainCoordinator: Routing {
     private func presentAddChannel() {
         let viewController = UIStoryboard.instantiateQRCodeScannerViewController(with: lightningService, strategy: OpenChannelQRCodeScannerStrategy())
         rootViewController.present(viewController, animated: true, completion: nil)
-    }
-    
-    private func presentChannelDetail(for channelViewModel: ChannelViewModel) {
-        let detailViewModel = ChannelDetailViewModel(channel: channelViewModel.channel, infoService: lightningService.infoService, channelListViewModel: channelListViewModel)
-        presentDetail(for: detailViewModel)
     }
     
     private func presentTransactionDetail(for transactionViewModel: TransactionViewModel) {

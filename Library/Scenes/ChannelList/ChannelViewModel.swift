@@ -14,16 +14,23 @@ final class ChannelViewModel {
     
     let state: Observable<ChannelState>
     let name: Observable<String>
+    let color: Observable<UIColor>
     
     init(channel: Channel, nodeStore: LightningNodeStore) {
         self.channel = channel
         
         name = Observable(channel.remotePubKey)
         state = Observable(channel.state)
-
-        nodeStore.node(for: channel.remotePubKey) { [name] in
-            guard let alias = $0?.alias else { return }
-            name.value = alias
+        color = Observable(UIColor.zap.peach)
+        
+        nodeStore.node(for: channel.remotePubKey) { [name, color] in
+            if let alias = $0?.alias {
+                name.value = alias
+            }
+            if let colorString = $0?.color,
+                let newColor = UIColor(hex: colorString) {
+                color.value = newColor
+            }
         }
     }
     

@@ -29,4 +29,30 @@ public extension UIColor {
             return UIColor(named: name, in: Bundle.library, compatibleWith: nil) ?? UIColor.magenta
         }
     }
+    
+    private convenience init(red: Int, green: Int, blue: Int) {
+        self.init(red: CGFloat(red) / 255.0, green: CGFloat(green) / 255.0, blue: CGFloat(blue) / 255.0, alpha: 1.0)
+    }
+    
+    convenience init(hex: Int) {
+        self.init(red: (hex >> 16) & 0xff, green: (hex >> 8) & 0xff, blue: hex & 0xff)
+    }
+    
+    convenience init?(hex: String) {
+        var cString = hex.trimmingCharacters(in: .whitespacesAndNewlines).uppercased()
+        
+        if cString.hasPrefix("#") {
+            cString.remove(at: cString.startIndex)
+        }
+        
+        if cString.count != 6 {
+            return nil
+        }
+        
+        var rgbValue: UInt32 = 0
+        Scanner(string: cString).scanHexInt32(&rgbValue)
+
+        
+        self.init(hex: Int(rgbValue))
+    }
 }

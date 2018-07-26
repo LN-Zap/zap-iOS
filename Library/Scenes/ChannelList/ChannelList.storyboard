@@ -6,6 +6,7 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
+        <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -18,20 +19,41 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="FET-KL-LGb">
-                                <rect key="frame" x="0.0" y="20" width="375" height="647"/>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="f1p-v1-mdp" customClass="GradientView" customModule="Library" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <connections>
-                                    <outlet property="delegate" destination="qfZ-HA-Q7u" id="XQ3-jU-tVu"/>
-                                </connections>
-                            </tableView>
+                            </view>
+                            <view contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="nNx-c6-MWR">
+                                <rect key="frame" x="0.0" y="20" width="375" height="100"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="V84-xy-gEy">
+                                        <rect key="frame" x="20" y="74" width="42" height="21"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                                <color key="backgroundColor" name="backgroundGradientTop"/>
+                                <constraints>
+                                    <constraint firstAttribute="bottom" secondItem="V84-xy-gEy" secondAttribute="bottom" constant="5" id="4cf-Lh-f12"/>
+                                    <constraint firstItem="V84-xy-gEy" firstAttribute="leading" secondItem="nNx-c6-MWR" secondAttribute="leading" constant="20" id="rGU-vF-Oyb"/>
+                                </constraints>
+                            </view>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="qAJ-WV-soa" customClass="WalletView" customModule="Wallet">
+                                <rect key="frame" x="20" y="20" width="335" height="647"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            </view>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
-                            <constraint firstItem="FET-KL-LGb" firstAttribute="leading" secondItem="evo-uh-dCS" secondAttribute="leading" id="7ZC-dF-Ixy"/>
-                            <constraint firstItem="FET-KL-LGb" firstAttribute="top" secondItem="evo-uh-dCS" secondAttribute="top" id="Fm5-JO-5dh"/>
-                            <constraint firstItem="FET-KL-LGb" firstAttribute="trailing" secondItem="evo-uh-dCS" secondAttribute="trailing" id="N0z-Jm-7oS"/>
-                            <constraint firstItem="FET-KL-LGb" firstAttribute="bottom" secondItem="evo-uh-dCS" secondAttribute="bottom" id="Qi5-p2-wK3"/>
+                            <constraint firstItem="f1p-v1-mdp" firstAttribute="trailing" secondItem="evo-uh-dCS" secondAttribute="trailing" id="5qd-Rt-1xN"/>
+                            <constraint firstItem="f1p-v1-mdp" firstAttribute="bottom" secondItem="evo-uh-dCS" secondAttribute="bottom" id="MOO-bB-DXf"/>
+                            <constraint firstItem="qAJ-WV-soa" firstAttribute="leading" secondItem="evo-uh-dCS" secondAttribute="leading" constant="20" id="Sjb-hm-END"/>
+                            <constraint firstItem="f1p-v1-mdp" firstAttribute="leading" secondItem="evo-uh-dCS" secondAttribute="leading" id="ZaO-Z4-0Cw"/>
+                            <constraint firstItem="f1p-v1-mdp" firstAttribute="top" secondItem="Ycu-RX-JKK" secondAttribute="top" id="e8N-Bo-9yd"/>
+                            <constraint firstItem="qAJ-WV-soa" firstAttribute="top" secondItem="evo-uh-dCS" secondAttribute="top" id="i0O-64-Tak"/>
+                            <constraint firstItem="evo-uh-dCS" firstAttribute="trailing" secondItem="qAJ-WV-soa" secondAttribute="trailing" constant="20" id="kAs-rE-pfc"/>
+                            <constraint firstItem="qAJ-WV-soa" firstAttribute="bottom" secondItem="evo-uh-dCS" secondAttribute="bottom" id="kKj-Km-AYZ"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="evo-uh-dCS"/>
                     </view>
@@ -43,7 +65,10 @@
                         </barButtonItem>
                     </navigationItem>
                     <connections>
-                        <outlet property="tableView" destination="FET-KL-LGb" id="cBM-dk-rOx"/>
+                        <outlet property="backgroundGradientView" destination="f1p-v1-mdp" id="lDG-Qf-PPD"/>
+                        <outlet property="headerLabel" destination="V84-xy-gEy" id="Xhb-WG-5q1"/>
+                        <outlet property="walletHeaderView" destination="nNx-c6-MWR" id="a9H-Xp-17D"/>
+                        <outlet property="walletView" destination="qAJ-WV-soa" id="bHc-Tl-c1g"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="bQd-Ir-gU6" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -53,5 +78,8 @@
     </scenes>
     <resources>
         <image name="icon_transaction_open_channel" width="12" height="12"/>
+        <namedColor name="backgroundGradientTop">
+            <color red="0.33333333333333331" green="0.3411764705882353" blue="0.38039215686274508" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
     </resources>
 </document>

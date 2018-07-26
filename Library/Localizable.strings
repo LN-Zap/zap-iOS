@@ -72,8 +72,6 @@
 "scene.request.generate_request_button" = "Generate Request";
 
 "scene.channels.title" = "Channels";
-"scene.channels.section_header.pending" = "Pending";
-"scene.channels.section_header.open" = "Open";
 "scene.channels.close.title" = "Close Channel";
 "scene.channels.close.message" = "Do you really want to close the channel with node %@?";
 "scene.channels.force_close.title" = "Force Close Channel";

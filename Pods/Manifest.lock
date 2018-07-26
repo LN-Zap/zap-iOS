@@ -32,12 +32,14 @@ PODS:
     - gRPC-Core (~> 1.12.0)
     - SwiftProtobuf (~> 1.0.3)
   - SwiftProtobuf (1.0.3)
+  - Wallet (1.4.1)
 
 DEPENDENCIES:
   - BigInt (~> 3.0)
   - Bond
   - KeychainAccess
   - SwiftGRPC (from `https://github.com/grpc/grpc-swift`)
+  - Wallet
 
 SPEC REPOS:
   https://github.com/cocoapods/specs.git:
@@ -51,6 +53,7 @@ SPEC REPOS:
     - ReactiveKit
     - SipHash
     - SwiftProtobuf
+    - Wallet
 
 EXTERNAL SOURCES:
   SwiftGRPC:
@@ -73,7 +76,8 @@ SPEC CHECKSUMS:
   SipHash: fad90a4683e420c52ef28063063dbbce248ea6d4
   SwiftGRPC: f0c79f81e90b1006a83f73f802ba1d01851d5def
   SwiftProtobuf: 5ccc0e4054e37c75800e5744acb2aa80bb72b39c
+  Wallet: 9f2942aa81aacf627fee3a42c11acf97fbacbd5d
 
-PODFILE CHECKSUM: 8ccafea35c576da28e34cb2c3c8eabe546743bac
+PODFILE CHECKSUM: cb718c77a9afd648d2fd2300a6067bf87ee0fb7e
 
 COCOAPODS: 1.5.3

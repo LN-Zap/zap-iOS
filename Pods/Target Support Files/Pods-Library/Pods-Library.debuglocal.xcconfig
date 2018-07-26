@@ -1,8 +1,8 @@
-FRAMEWORK_SEARCH_PATHS = $(inherited) "${PODS_CONFIGURATION_BUILD_DIR}/Bond" "${PODS_CONFIGURATION_BUILD_DIR}/Differ" "${PODS_CONFIGURATION_BUILD_DIR}/KeychainAccess" "${PODS_CONFIGURATION_BUILD_DIR}/ReactiveKit"
+FRAMEWORK_SEARCH_PATHS = $(inherited) "${PODS_CONFIGURATION_BUILD_DIR}/Bond" "${PODS_CONFIGURATION_BUILD_DIR}/Differ" "${PODS_CONFIGURATION_BUILD_DIR}/KeychainAccess" "${PODS_CONFIGURATION_BUILD_DIR}/ReactiveKit" "${PODS_CONFIGURATION_BUILD_DIR}/Wallet"
 GCC_PREPROCESSOR_DEFINITIONS = $(inherited) COCOAPODS=1
 LD_RUNPATH_SEARCH_PATHS = $(inherited) '@executable_path/Frameworks' '@loader_path/Frameworks' '@executable_path/../../Frameworks'
-OTHER_CFLAGS = $(inherited) -iquote "${PODS_CONFIGURATION_BUILD_DIR}/Bond/Bond.framework/Headers" -iquote "${PODS_CONFIGURATION_BUILD_DIR}/Differ/Differ.framework/Headers" -iquote "${PODS_CONFIGURATION_BUILD_DIR}/KeychainAccess/KeychainAccess.framework/Headers" -iquote "${PODS_CONFIGURATION_BUILD_DIR}/ReactiveKit/ReactiveKit.framework/Headers"
-OTHER_LDFLAGS = $(inherited) -framework "Bond" -framework "Differ" -framework "KeychainAccess" -framework "ReactiveKit"
+OTHER_CFLAGS = $(inherited) -iquote "${PODS_CONFIGURATION_BUILD_DIR}/Bond/Bond.framework/Headers" -iquote "${PODS_CONFIGURATION_BUILD_DIR}/Differ/Differ.framework/Headers" -iquote "${PODS_CONFIGURATION_BUILD_DIR}/KeychainAccess/KeychainAccess.framework/Headers" -iquote "${PODS_CONFIGURATION_BUILD_DIR}/ReactiveKit/ReactiveKit.framework/Headers" -iquote "${PODS_CONFIGURATION_BUILD_DIR}/Wallet/Wallet.framework/Headers"
+OTHER_LDFLAGS = $(inherited) -framework "Bond" -framework "Differ" -framework "KeychainAccess" -framework "ReactiveKit" -framework "Wallet"
 OTHER_SWIFT_FLAGS = $(inherited) "-D" "COCOAPODS"
 PODS_BUILD_DIR = ${BUILD_DIR}
 PODS_CONFIGURATION_BUILD_DIR = ${PODS_BUILD_DIR}/$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)
