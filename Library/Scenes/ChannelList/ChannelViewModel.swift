@@ -15,14 +15,14 @@ final class ChannelViewModel {
     let state: Observable<ChannelState>
     let name: Observable<String>
     
-    init(channel: Channel, aliasStore: ChannelAliasStore) {
+    init(channel: Channel, nodeStore: LightningNodeStore) {
         self.channel = channel
         
         name = Observable(channel.remotePubKey)
         state = Observable(channel.state)
 
-        aliasStore.alias(for: channel.remotePubKey) { [name] in
-            guard let alias = $0 else { return }
+        nodeStore.node(for: channel.remotePubKey) { [name] in
+            guard let alias = $0?.alias else { return }
             name.value = alias
         }
     }

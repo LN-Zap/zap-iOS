@@ -306,7 +306,7 @@
 		ADFEFA6120E627F100FE1557 /* LocalLnd.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0A05A342014047B0007D1C9 /* LocalLnd.swift */; };
 		ADFEFA6220E627F100FE1557 /* LocalLndConfiguration.swift in Sources */ = {isa = PBXBuildFile; fileRef = A02C9FC520304395009821B1 /* LocalLndConfiguration.swift */; };
 		ADFEFA6320E627F100FE1557 /* RemoteRPCConfiguration.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD71EA4820E2318000256307 /* RemoteRPCConfiguration.swift */; };
-		ADFEFA6420E627F100FE1557 /* ChannelAliasStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD1EB9FE20B2EAF4001FF67E /* ChannelAliasStore.swift */; };
+		ADFEFA6420E627F100FE1557 /* LightningNodeStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD1EB9FE20B2EAF4001FF67E /* LightningNodeStore.swift */; };
 		ADFEFA6520E627F100FE1557 /* ChannelTransactionAnnotationUpdater.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD77466B2078EE5600EC596B /* ChannelTransactionAnnotationUpdater.swift */; };
 		ADFEFA6620E627F100FE1557 /* Persistable.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD1EBA0020B2FD9D001FF67E /* Persistable.swift */; };
 		ADFEFA6720E627F100FE1557 /* TransactionAnnotation.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD19F05320AEAD3C008090CB /* TransactionAnnotation.swift */; };
@@ -600,7 +600,7 @@
 		AD19F06120AF1AB8008090CB /* DetailMemoTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailMemoTableViewCell.swift; sourceTree = "<group>"; };
 		AD19F06220AF1AB8008090CB /* DetailMemoTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DetailMemoTableViewCell.xib; sourceTree = "<group>"; };
 		AD1EB9FC20B2CEAA001FF67E /* StatusBarDelegatingNavigationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatusBarDelegatingNavigationController.swift; sourceTree = "<group>"; };
-		AD1EB9FE20B2EAF4001FF67E /* ChannelAliasStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChannelAliasStore.swift; sourceTree = "<group>"; };
+		AD1EB9FE20B2EAF4001FF67E /* LightningNodeStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LightningNodeStore.swift; sourceTree = "<group>"; };
 		AD1EBA0020B2FD9D001FF67E /* Persistable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Persistable.swift; sourceTree = "<group>"; };
 		AD21768820C3DFDB007779DE /* BalanceView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BalanceView.swift; sourceTree = "<group>"; };
 		AD21768A20C3F29C007779DE /* ConnectRemoteNodeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConnectRemoteNodeViewModel.swift; sourceTree = "<group>"; };
@@ -1638,7 +1638,7 @@
 		ADA6D2BE20AB215D009398A5 /* Persistence */ = {
 			isa = PBXGroup;
 			children = (
-				AD1EB9FE20B2EAF4001FF67E /* ChannelAliasStore.swift */,
+				AD1EB9FE20B2EAF4001FF67E /* LightningNodeStore.swift */,
 				AD77466B2078EE5600EC596B /* ChannelTransactionAnnotationUpdater.swift */,
 				AD1EBA0020B2FD9D001FF67E /* Persistable.swift */,
 				ADA865C120ED041F00B1B74B /* Storage.swift */,
@@ -2639,7 +2639,7 @@
 				ADFEFA7720E629AA00FE1557 /* String.swift in Sources */,
 				AD967FEA2106122E0048085B /* ZapconnectQRCode.swift in Sources */,
 				ADFEFA6120E627F100FE1557 /* LocalLnd.swift in Sources */,
-				ADFEFA6420E627F100FE1557 /* ChannelAliasStore.swift in Sources */,
+				ADFEFA6420E627F100FE1557 /* LightningNodeStore.swift in Sources */,
 				ADFEFA6B20E627F100FE1557 /* ChannelService.swift in Sources */,
 				ADFEFA6820E627F100FE1557 /* TransactionAnnotationStore.swift in Sources */,
 				ADC0D2F02107953100B8C62F /* PinnedHost.swift in Sources */,

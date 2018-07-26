@@ -17,7 +17,7 @@ enum HeaderTableCellType<Value: Equatable>: Equatable {
 
 final class TransactionListViewModel: NSObject {
     private let transactionService: TransactionService
-    private let aliasStore: ChannelAliasStore
+    private let nodeStore: LightningNodeStore
     let transactionAnnotationStore = TransactionAnnotationStore()
     
     let isLoading = Observable(true)
@@ -30,9 +30,9 @@ final class TransactionListViewModel: NSObject {
     
     private var transactionViewModels = [TransactionViewModel]()
     
-    init(transactionService: TransactionService, aliasStore: ChannelAliasStore) {
+    init(transactionService: TransactionService, nodeStore: LightningNodeStore) {
         self.transactionService = transactionService
-        self.aliasStore = aliasStore
+        self.nodeStore = nodeStore
         dataSource = MutableObservableArray()
         
         isEmpty =
@@ -103,7 +103,7 @@ final class TransactionListViewModel: NSObject {
                 if let oldTransactionViewModel = self.transactionViewModels.first(where: { $0.transaction.isTransactionEqual(to: transaction) }) {
                     return oldTransactionViewModel
                 } else {
-                    return TransactionViewModel.instance(for: transaction, annotation: annotation, aliasStore: aliasStore)
+                    return TransactionViewModel.instance(for: transaction, annotation: annotation, nodeStore: nodeStore)
                 }
             }
         

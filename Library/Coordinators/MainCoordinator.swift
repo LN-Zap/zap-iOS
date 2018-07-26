@@ -25,9 +25,9 @@ final class MainCoordinator: Routing {
         self.lightningService = lightningService
         self.settingsDelegate = settingsDelegate
         
-        let aliasStore = ChannelAliasStore(channelService: lightningService.channelService)
-        channelListViewModel = ChannelListViewModel(channelService: lightningService.channelService, aliasStore: aliasStore)
-        transactionListViewModel = TransactionListViewModel(transactionService: lightningService.transactionService, aliasStore: aliasStore)
+        let nodeStore = LightningNodeStore(channelService: lightningService.channelService)
+        channelListViewModel = ChannelListViewModel(channelService: lightningService.channelService, nodeStore: nodeStore)
+        transactionListViewModel = TransactionListViewModel(transactionService: lightningService.transactionService, nodeStore: nodeStore)
         
         channelTransactionAnnotationUpdater = ChannelTransactionAnnotationUpdater(channelService: lightningService.channelService, transactionService: lightningService.transactionService, updateCallback: transactionListViewModel.updateAnnotationType)
     }
@@ -69,7 +69,7 @@ final class MainCoordinator: Routing {
     }
     
     func presentSend(invoice: String?) {
-        let strategy = SendQRCodeScannerStrategy(transactionAnnotationStore: transactionListViewModel.transactionAnnotationStore, channelAliasStore: channelListViewModel.aliasStore)
+        let strategy = SendQRCodeScannerStrategy(transactionAnnotationStore: transactionListViewModel.transactionAnnotationStore, nodeStore: channelListViewModel.nodeStore)
         let viewController = UIStoryboard.instantiateQRCodeScannerViewController(with: lightningService, strategy: strategy)
         rootViewController.present(viewController, animated: true) {
             if let invoice = invoice,

@@ -13,14 +13,14 @@ import ReactiveKit
 final class ChannelListViewModel: NSObject {
     private let channelService: ChannelService
     
-    let aliasStore: ChannelAliasStore
+    let nodeStore: LightningNodeStore
     
     let dataSource: MutableObservable2DArray<String, ChannelViewModel>
     let searchString = Observable<String?>(nil)
     
-    init(channelService: ChannelService, aliasStore: ChannelAliasStore) {
+    init(channelService: ChannelService, nodeStore: LightningNodeStore) {
         self.channelService = channelService
-        self.aliasStore = aliasStore
+        self.nodeStore = nodeStore
         
         dataSource = MutableObservable2DArray()
         
@@ -45,7 +45,7 @@ final class ChannelListViewModel: NSObject {
     
     private func addSection(for channels: [Channel], metadata: String, searchString: String?, to result: MutableObservable2DArray<String, ChannelViewModel>) {
         let channelViewModels = channels
-            .map { ChannelViewModel(channel: $0, aliasStore: aliasStore) }
+            .map { ChannelViewModel(channel: $0, nodeStore: nodeStore) }
             .filter { $0.matchesSearchString(searchString) }
     
         guard !channelViewModels.isEmpty else { return }

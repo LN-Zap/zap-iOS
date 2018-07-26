@@ -11,14 +11,14 @@ import Lightning
 
 class SendQRCodeScannerStrategy: QRCodeScannerStrategy {
     private let transactionAnnotationStore: TransactionAnnotationStore
-    private let channelAliasStore: ChannelAliasStore
+    private let nodeStore: LightningNodeStore
     private var lastScannedAddress: String?
     
     let title = "scene.deposit.send".localized
     
-    init(transactionAnnotationStore: TransactionAnnotationStore, channelAliasStore: ChannelAliasStore) {
+    init(transactionAnnotationStore: TransactionAnnotationStore, nodeStore: LightningNodeStore) {
         self.transactionAnnotationStore = transactionAnnotationStore
-        self.channelAliasStore = channelAliasStore
+        self.nodeStore = nodeStore
     }
     
     func viewControllerForAddress(address: String, lightningService: LightningService) -> Result<UIViewController>? {
@@ -33,7 +33,7 @@ class SendQRCodeScannerStrategy: QRCodeScannerStrategy {
                 let sendOnChainViewModel = SendOnChainViewModel(transactionAnnotationStore: transactionAnnotationStore, lightningService: lightningService, bitcoinURI: bitcoinURI)
                 return UIStoryboard.instantiateSendOnChainViewController(with: sendOnChainViewModel)
             } else if let lightningURI = $0 as? LightningInvoiceURI {
-                let sendLightningInvoiceViewModel = SendLightningInvoiceViewModel(transactionAnnotationStore: transactionAnnotationStore, channelAliasStore: channelAliasStore, transactionService: lightningService.transactionService, lightningInvoice: lightningURI.address)
+                let sendLightningInvoiceViewModel = SendLightningInvoiceViewModel(transactionAnnotationStore: transactionAnnotationStore, nodeStore: nodeStore, transactionService: lightningService.transactionService, lightningInvoice: lightningURI.address)
                 return UIStoryboard.instantiateSendLightningInvoiceViewController(with: sendLightningInvoiceViewModel)
             } else {
                 fatalError("No ViewController implemented for URI")
