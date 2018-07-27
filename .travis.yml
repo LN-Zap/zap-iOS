@@ -8,6 +8,7 @@ git:
   depth: 3
 notifications:
   email:
+    on_success: never
     on_failure: change
 script:
   - bundle exec fastlane tests
