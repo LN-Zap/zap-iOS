@@ -1,9 +1,17 @@
-# Zap
+# Zap iOS
+
+<p align='center'>
+  <a href='https://zap.jackmallers.com'>
+    <img src='https://raw.githubusercontent.com/LN-Zap/zap-iOS/master/docs/screenshot.png' height='450' alt='screenshot' />
+  </a>
+</p>
 
 > Lightning wallet focused on user experience and ease of use ⚡️
 
 [![Build Status](https://travis-ci.org/LN-Zap/zap-iOS.svg?branch=master)](https://travis-ci.org/LN-Zap/zap-iOS)
-[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://github.com/LN-Zap/zap-iOS/blob/master/LICENSE)
+[![GitHub license](https://img.shields.io/github/license/LN-Zap/zap-iOS.svg)](LICENSE)
+
+**Sign up for alpha testing here: [zap-ios.jackmallers.com][alpha]!** 
 
 Zap is a free Lightning Network wallet focused on user experience and ease of use, with the overall goal of helping the cryptocurrency community scale Bitcoin and other cryptocurrencies.
 
@@ -55,5 +63,6 @@ This project is open source under the MIT license, which means you have full acc
 
 [MIT](LICENSE) © Jack Mallers
 
+[alpha]: http://www.zap-ios.jackmallers.com/
 [issues]: https://github.com/LN-Zap/zap-iOS/issues
 [slack]: https://join.slack.com/t/zaphq/shared_invite/enQtMzgyNDA2NDI2Nzg0LTQwZWQ2ZWEzOWFhMjRiNWZkZWMwYTA4MzA5NzhjMDNhNTM5YzliNDA4MmZkZWZkZTFmODM4ODJkYzU3YmI3ZmI
