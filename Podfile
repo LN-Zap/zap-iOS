@@ -14,7 +14,6 @@ target 'Lightning' do
 end
 
 target 'Library' do
-    pod 'Wallet'
     pod 'KeychainAccess'
     pod 'Bond'
 end

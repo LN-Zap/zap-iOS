@@ -266,8 +266,8 @@
 		ADCD5B0D20D7E3F50037F156 /* RemoveRemoteNodeSettingsItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADCD5B0C20D7E3F50037F156 /* RemoveRemoteNodeSettingsItem.swift */; };
 		ADCD5B0F20D7E40C0037F156 /* RemovePinSettingsItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADCD5B0E20D7E40C0037F156 /* RemovePinSettingsItem.swift */; };
 		ADE0C4082108F6C8004597C3 /* UIViewExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADE0C4052108F6C8004597C3 /* UIViewExtension.swift */; };
-		ADE0C4092108F6C8004597C3 /* ChannelDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADE0C4062108F6C8004597C3 /* ChannelDetailView.swift */; };
-		ADE0C40A2108F6C8004597C3 /* ChannelDetailView.xib in Resources */ = {isa = PBXBuildFile; fileRef = ADE0C4072108F6C8004597C3 /* ChannelDetailView.xib */; };
+		ADE0C4092108F6C8004597C3 /* ChannelCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADE0C4062108F6C8004597C3 /* ChannelCell.swift */; };
+		ADE0C40A2108F6C8004597C3 /* ChannelCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = ADE0C4072108F6C8004597C3 /* ChannelCell.xib */; };
 		ADE19C4020E7892000340E2E /* ChannelPoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADE19C3F20E7892000340E2E /* ChannelPoint.swift */; };
 		ADECC36920F257AF00D00546 /* LightningPayment.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADECC36820F257AF00D00546 /* LightningPayment.swift */; };
 		ADECC36B20F257BE00D00546 /* OnChainConfirmedTransaction.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADECC36A20F257BE00D00546 /* OnChainConfirmedTransaction.swift */; };
@@ -765,8 +765,8 @@
 		ADD6D80620B15603008BE461 /* ZapconnectQRCode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ZapconnectQRCode.swift; sourceTree = "<group>"; };
 		ADD9DCDC20B453D000AEFC5C /* LndConnection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LndConnection.swift; sourceTree = "<group>"; };
 		ADE0C4052108F6C8004597C3 /* UIViewExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIViewExtension.swift; sourceTree = "<group>"; };
-		ADE0C4062108F6C8004597C3 /* ChannelDetailView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChannelDetailView.swift; sourceTree = "<group>"; };
-		ADE0C4072108F6C8004597C3 /* ChannelDetailView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ChannelDetailView.xib; sourceTree = "<group>"; };
+		ADE0C4062108F6C8004597C3 /* ChannelCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChannelCell.swift; sourceTree = "<group>"; };
+		ADE0C4072108F6C8004597C3 /* ChannelCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ChannelCell.xib; sourceTree = "<group>"; };
 		ADE19C3F20E7892000340E2E /* ChannelPoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChannelPoint.swift; sourceTree = "<group>"; };
 		ADE4CF1C20B5B2BE007C987A /* UIFont.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIFont.swift; sourceTree = "<group>"; };
 		ADE4CF1E20B5B6FC007C987A /* Environment.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Environment.swift; sourceTree = "<group>"; };
@@ -1749,9 +1749,9 @@
 		ADE0C40B2108F6CE004597C3 /* remove this shit */ = {
 			isa = PBXGroup;
 			children = (
-				ADE0C4072108F6C8004597C3 /* ChannelDetailView.xib */,
+				ADE0C4072108F6C8004597C3 /* ChannelCell.xib */,
 				ADE0C4052108F6C8004597C3 /* UIViewExtension.swift */,
-				ADE0C4062108F6C8004597C3 /* ChannelDetailView.swift */,
+				ADE0C4062108F6C8004597C3 /* ChannelCell.swift */,
 			);
 			path = "remove this shit";
 			sourceTree = "<group>";
@@ -2185,7 +2185,7 @@
 				AD391D2220D1798A007EE22A /* Media.xcassets in Resources */,
 				AD391CA220D16FA8007EE22A /* SendOnChain.storyboard in Resources */,
 				AD391C9820D16FA8007EE22A /* QRCodeScanner.storyboard in Resources */,
-				ADE0C40A2108F6C8004597C3 /* ChannelDetailView.xib in Resources */,
+				ADE0C40A2108F6C8004597C3 /* ChannelCell.xib in Resources */,
 				AD391CBE20D16FE1007EE22A /* DetailDestructiveActionTableViewCell.xib in Resources */,
 				AD391CDA20D16FE1007EE22A /* TransactionList.storyboard in Resources */,
 			);
@@ -2305,7 +2305,6 @@
 				"${BUILT_PRODUCTS_DIR}/SwiftProtobuf/SwiftProtobuf.framework",
 				"${BUILT_PRODUCTS_DIR}/gRPC-Core/grpc.framework",
 				"${BUILT_PRODUCTS_DIR}/nanopb/nanopb.framework",
-				"${BUILT_PRODUCTS_DIR}/Wallet/Wallet.framework",
 				"${BUILT_PRODUCTS_DIR}/BigInt/BigInt.framework",
 				"${BUILT_PRODUCTS_DIR}/SipHash/SipHash.framework",
 			);
@@ -2320,7 +2319,6 @@
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SwiftProtobuf.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/grpc.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/nanopb.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Wallet.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/BigInt.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SipHash.framework",
 			);
@@ -2535,7 +2533,7 @@
 				ADA865C020ECC89E00B1B74B /* FilterTableViewCell.swift in Sources */,
 				AD391CB420D16FA8007EE22A /* Section.swift in Sources */,
 				AD391D1B20D174B4007EE22A /* PinSetupCoordinator.swift in Sources */,
-				ADE0C4092108F6C8004597C3 /* ChannelDetailView.swift in Sources */,
+				ADE0C4092108F6C8004597C3 /* ChannelCell.swift in Sources */,
 				AD391C6020D16F7A007EE22A /* SelectWalletCreationMethodTableViewCell.swift in Sources */,
 				AD391C9920D16FA8007EE22A /* QRCodeScannerStrategy.swift in Sources */,
 				AD391D0520D16FF5007EE22A /* BalanceView.swift in Sources */,

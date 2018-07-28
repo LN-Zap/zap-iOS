@@ -6,10 +6,8 @@
 //
 
 import UIKit
-import Wallet
 
-class ChannelDetailView: CardView {
-    @IBOutlet private weak var contentView: UIView!
+class ChannelCell: UICollectionViewCell {
     @IBOutlet private weak var onlineIndicatorView: UIView!
     @IBOutlet private weak var amountLabel: UILabel!
     @IBOutlet private weak var nameLabel: UILabel!
@@ -26,12 +24,6 @@ class ChannelDetailView: CardView {
     @IBOutlet private weak var fundingTransactionTxIdButton: UIButton!
     @IBOutlet private weak var closeChannelButton: UIButton!
     
-    override var presented: Bool {
-        didSet {
-            presentedDidUpdate()
-        }
-    }
-    
     var channelViewModel: ChannelViewModel? {
         didSet {
             guard let channel = channelViewModel?.channel else { return }
@@ -44,14 +36,12 @@ class ChannelDetailView: CardView {
             channelViewModel?.name
                 .bind(to: nameLabel.reactive.text)
                 .dispose(in: reactive.bag)
-            
-            channelViewModel?.color
-                .observeNext { [weak self] in
-                    self?.presentedCardViewColor = $0
-                    self?.depresentedCardViewColor = $0
-                    self?.presentedDidUpdate(animated: false)
-                }
-                .dispose(in: reactive.bag)
+
+            // TODO: color and stuff
+//            channelViewModel?.color
+//                .observeNext { [weak self] in
+//                }
+//                .dispose(in: reactive.bag)
 
             remotePubKeyLabel.text = channel.remotePubKey
             
@@ -75,9 +65,6 @@ class ChannelDetailView: CardView {
         }
     }
     
-    var presentedCardViewColor: UIColor? = .white
-    var depresentedCardViewColor: UIColor? = .white
-    
     override func awakeFromNib() {
         super.awakeFromNib()
 
@@ -97,18 +84,5 @@ class ChannelDetailView: CardView {
         receiveLimitTitleLabel.text = "scene.channel_detail.remote_balance_label".localized
         receiveLimitCircleView.layer.cornerRadius = 5
         receiveLimitCircleView.gradient = [UIColor.zap.lightGrey, UIColor.zap.lightGrey]
-    
-        presentedDidUpdate()
-    }
-    
-    func presentedDidUpdate(animated: Bool = true) {
-        contentView.backgroundColor = presented ? presentedCardViewColor : depresentedCardViewColor
-        if animated {
-            contentView.addTransitionFade()
-        }
-    }
-    
-    @IBAction private func removeCardView(_ sender: Any) {
-        walletView?.remove(cardView: self, animated: true)
     }
 }

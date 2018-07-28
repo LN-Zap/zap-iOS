@@ -8,7 +8,6 @@
 import Bond
 import Lightning
 import UIKit
-import Wallet
 
 extension UIStoryboard {
     static func instantiateChannelListViewController(
@@ -35,9 +34,7 @@ final class ChannelListViewController: UIViewController {
             backgroundGradientView.gradient = [UIColor.zap.backgroundGradientTop, UIColor.zap.backgroundGradientBottom]
         }
     }
-    @IBOutlet private weak var walletView: WalletView!
-    @IBOutlet private weak var walletHeaderView: UIView!
-    @IBOutlet private weak var headerLabel: UILabel!
+    @IBOutlet private weak var collectionView: UICollectionView!
     
     fileprivate var addChannelButtonTapped: (() -> Void)?
     fileprivate var closeButtonTapped: ((Channel, String, @escaping () -> Void) -> Void)?
@@ -46,22 +43,13 @@ final class ChannelListViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        headerLabel.font = UIFont.zap.light.withSize(40)
-        headerLabel.text = "scene.channels.title".localized
+        collectionView.registerCell(ChannelCell.self)
         
-        walletView.walletHeader = walletHeaderView
-        walletView.minimalDistanceBetweenStackedCardViews = 50
-        walletView.contentInset = UIEdgeInsets(top: 100, left: 0, bottom: 0, right: 0)
-        guard let channels = channelListViewModel?.dataSource.array else { fatalError("view model not set") }
-
-        var coloredCardViews = [ChannelDetailView]()
-        
-        for channel in channels {
-            let cardView = ChannelDetailView.nibForClass()
-            cardView.channelViewModel = channel
-            coloredCardViews.append(cardView)
+        channelListViewModel?.dataSource.bind(to: collectionView) { (dataSource, indexPath, collectionView) -> UICollectionViewCell in
+            let channelCell: ChannelCell = collectionView.dequeueCellForIndexPath(indexPath)
+            channelCell.channelViewModel = dataSource[indexPath.item]
+            return channelCell
         }
-        walletView.reload(cardViews: coloredCardViews)
     }
     
     @objc func refresh(sender: UIRefreshControl) {
