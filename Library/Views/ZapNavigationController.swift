@@ -15,6 +15,7 @@ class ZapNavigationController: UINavigationController {
         navigationBar.prefersLargeTitles = true
         navigationBar.barTintColor = UIColor.zap.backgroundGradientTop
         navigationBar.isTranslucent = false
+        navigationBar.shadowImage = UIImage()
     }
     
     override var childViewControllerForStatusBarStyle: UIViewController? {

@@ -82,6 +82,8 @@ public final class RootCoordinator: NSObject, SetupCoordinatorDelegate, PinCoord
         let tabBarController = UITabBarController()
         tabBarController.tabBar.barTintColor = UIColor.zap.backgroundGradientBottom
         tabBarController.tabBar.isTranslucent = false
+        tabBarController.tabBar.shadowImage = UIImage()
+        tabBarController.tabBar.backgroundImage = UIImage()
         
         let mainCoordinator = MainCoordinator(rootViewController: rootViewController, lightningService: lightningService, settingsDelegate: self)
 
