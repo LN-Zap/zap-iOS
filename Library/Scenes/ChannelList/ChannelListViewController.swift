@@ -19,7 +19,7 @@ extension UIStoryboard {
         viewController.channelListViewModel = channelListViewModel
         viewController.closeButtonTapped = closeButtonTapped
         viewController.addChannelButtonTapped = addChannelButtonTapped
-
+        
         viewController.tabBarItem.title = "Channels"
         viewController.tabBarItem.image = UIImage(named: "tabbar_wallet", in: Bundle.library, compatibleWith: nil)
         
@@ -35,6 +35,7 @@ final class ChannelListViewController: UIViewController {
         }
     }
     @IBOutlet private weak var collectionView: UICollectionView!
+    @IBOutlet private var headerView: UICollectionReusableView!
     
     fileprivate var addChannelButtonTapped: (() -> Void)?
     fileprivate var closeButtonTapped: ((Channel, String, @escaping () -> Void) -> Void)?
@@ -43,13 +44,20 @@ final class ChannelListViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        collectionView.registerCell(ChannelCell.self)
+        title = "Channels"
         
-        channelListViewModel?.dataSource.bind(to: collectionView) { (dataSource, indexPath, collectionView) -> UICollectionViewCell in
+        collectionView.registerCell(ChannelCell.self)
+        collectionView.register(UINib(nibName: HeaderCollectionReusableView.kind, bundle: Bundle.library), forSupplementaryViewOfKind: HeaderCollectionReusableView.kind, withReuseIdentifier: HeaderCollectionReusableView.kind)
+
+        view.addBackgroundGradient()
+        
+        channelListViewModel?.dataSource.bind(to: collectionView) { dataSource, indexPath, collectionView -> UICollectionViewCell in
             let channelCell: ChannelCell = collectionView.dequeueCellForIndexPath(indexPath)
             channelCell.channelViewModel = dataSource[indexPath.item]
             return channelCell
         }
+        
+        collectionView.reactive.dataSource.forwardTo = self
     }
     
     @objc func refresh(sender: UIRefreshControl) {
@@ -71,5 +79,20 @@ final class ChannelListViewController: UIViewController {
                 }
             }
         }
+    }
+}
+
+extension ChannelListViewController: UICollectionViewDataSource {
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        fatalError("not implemented")
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        fatalError("not implemented")
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
+        let view = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: HeaderCollectionReusableView.kind, for: indexPath)
+        return view
     }
 }

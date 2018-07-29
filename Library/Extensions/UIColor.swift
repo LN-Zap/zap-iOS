@@ -25,9 +25,79 @@ public extension UIColor {
         public static let backgroundGradientTop = color("backgroundGradientTop")
         public static let backgroundGradientBottom = color("backgroundGradientBottom")
         
+        static let validNodeColors: [UIColor] = [
+            0x1abc9c,
+            0x2ecc71,
+            0x3498db,
+            0x9b59b6,
+            0x34495e,
+            0x16a085,
+            0x27ae60,
+            0x2980b9,
+            0x8e44ad,
+            0x2c3e50,
+            0xf1c40f,
+            0xe67e22,
+            0xe74c3c,
+            0xecf0f1,
+            0x95a5a6,
+            0xf39c12,
+            0xd35400,
+            0xc0392b,
+            0xbdc3c7,
+            0x7f8c8d,
+            0xC4E538,
+            0x0652DD,
+            0x1B1464,
+            0xA3CB38,
+            0x12CBC4
+        ].map { UIColor(hex: $0) }
+        
         private static func color(_ name: String) -> UIColor {
             return UIColor(named: name, in: Bundle.library, compatibleWith: nil) ?? UIColor.magenta
         }
+    }
+    
+    var verified: UIColor {
+        var smallestDistance: CGFloat = CGFloat.greatestFiniteMagnitude
+        var closestColor = UIColor.black
+        
+        for color in UIColor.zap.validNodeColors {
+            let distance = self.distance(to: color)
+            if distance < smallestDistance {
+                smallestDistance = distance
+                closestColor = color
+            }
+        }
+        
+        return closestColor
+    }
+
+    var darker: UIColor {
+        return darkerColor(removeBrightness: 0.2)
+    }
+    
+    var isLight: Bool {
+        var white: CGFloat = 0
+        getWhite(&white, alpha: nil)
+        return white > 0.5
+    }
+    
+    private func darkerColor(removeBrightness val: CGFloat) -> UIColor {
+        var hue: CGFloat = 0
+        var saturation: CGFloat = 0
+        var brightness: CGFloat = 0
+        var alpha: CGFloat = 0
+        
+        guard getHue(&hue, saturation: &saturation, brightness: &brightness, alpha: &alpha) else { return self }
+        
+        return UIColor(hue: hue, saturation: saturation, brightness: max(0, brightness - val), alpha: alpha)
+    }
+    
+    private func distance(to color2: UIColor) -> CGFloat {
+        let color1 = LabColor(color: self)
+        let color2 = LabColor(color: color2)
+        return color1.distance(to: color2)
     }
     
     private convenience init(red: Int, green: Int, blue: Int) {
@@ -52,7 +122,6 @@ public extension UIColor {
         var rgbValue: UInt32 = 0
         Scanner(string: cString).scanHexInt32(&rgbValue)
 
-        
         self.init(hex: Int(rgbValue))
     }
 }

@@ -20,6 +20,12 @@ struct UIViewStyle<T: UIView> {
         }
     }
     
+    func apply(to views: [T]) {
+        for view in views {
+            styling(view)
+        }
+    }
+    
     func apply(to views: T..., action: (T) -> Void) {
         for view in views {
             styling(view)

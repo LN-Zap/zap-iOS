@@ -7,7 +7,8 @@
 
 import UIKit
 
-class ChannelCell: UICollectionViewCell {
+class ChannelCell: BondCollectionViewCell {
+    @IBOutlet private weak var containerView: UIView!
     @IBOutlet private weak var onlineIndicatorView: UIView!
     @IBOutlet private weak var amountLabel: UILabel!
     @IBOutlet private weak var nameLabel: UILabel!
@@ -24,6 +25,18 @@ class ChannelCell: UICollectionViewCell {
     @IBOutlet private weak var fundingTransactionTxIdButton: UIButton!
     @IBOutlet private weak var closeChannelButton: UIButton!
     
+    private var gradientLayer: CAGradientLayer?
+
+    var allLabels: [UILabel] {
+        return [amountLabel, nameLabel, remotePubKeyTitleLabel, remotePubKeyLabel, sendLimitTitleLabel, sendLimitAmountLabel, receiveLimitTitleLabel, receiveLimitAmountLabel, fundingTransactionTitleLabel]
+    }
+    
+    var isLightBackgound = true {
+        didSet {
+            allLabels.forEach { $0.textColor = isLightBackgound ? UIColor.zap.black : UIColor.white }
+        }
+    }
+    
     var channelViewModel: ChannelViewModel? {
         didSet {
             guard let channel = channelViewModel?.channel else { return }
@@ -31,17 +44,17 @@ class ChannelCell: UICollectionViewCell {
             channelViewModel?.state
                 .map { $0 == .active ? UIColor.zap.nastyGreen : UIColor.zap.tomato }
                 .bind(to: onlineIndicatorView.reactive.backgroundColor)
-                .dispose(in: reactive.bag)
+                .dispose(in: onReuseBag)
             
             channelViewModel?.name
                 .bind(to: nameLabel.reactive.text)
-                .dispose(in: reactive.bag)
+                .dispose(in: onReuseBag)
 
-            // TODO: color and stuff
-//            channelViewModel?.color
-//                .observeNext { [weak self] in
-//                }
-//                .dispose(in: reactive.bag)
+            channelViewModel?.color
+                .observeNext { [weak self] in
+                    self?.updateGradient(color: $0)
+                }
+                .dispose(in: onReuseBag)
 
             remotePubKeyLabel.text = channel.remotePubKey
             
@@ -65,15 +78,39 @@ class ChannelCell: UICollectionViewCell {
         }
     }
     
+    override func prepareForReuse() {
+        super.prepareForReuse()
+        
+        gradientLayer?.removeFromSuperlayer()
+    }
+    
+    private func updateGradient(color: UIColor) {
+        
+        self.gradientLayer?.removeFromSuperlayer()
+        
+        let verifiedColor = color.verified
+        
+        isLightBackgound = verifiedColor.isLight
+        
+        layer.borderColor = verifiedColor.darker.cgColor
+
+        let gradientLayer = CAGradientLayer()
+        gradientLayer.frame = bounds
+        gradientLayer.colors = [verifiedColor.cgColor, verifiedColor.darker.cgColor]
+        layer.insertSublayer(gradientLayer, at: 0)
+        self.gradientLayer = gradientLayer
+    }
+    
     override func awakeFromNib() {
         super.awakeFromNib()
 
-        contentView.layer.cornerRadius = 11
-        contentView.layer.masksToBounds = true
+        layer.cornerRadius = 11
+        layer.borderWidth = 1
+        layer.masksToBounds = true
         
         onlineIndicatorView.layer.cornerRadius = 5
         
-        Style.label.apply(to: amountLabel, nameLabel, remotePubKeyTitleLabel, remotePubKeyLabel, sendLimitTitleLabel, sendLimitAmountLabel, receiveLimitTitleLabel, receiveLimitAmountLabel, fundingTransactionTitleLabel)
+        Style.label.apply(to: allLabels)
         Style.button.apply(to: fundingTransactionTxIdButton, closeChannelButton)
         
         remotePubKeyTitleLabel.text = "scene.channel_detail.remote_pub_key_label".localized

@@ -18,19 +18,7 @@
                 <rect key="frame" x="0.0" y="0.0" width="321" height="448"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
-                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Shadow" translatesAutoresizingMaskIntoConstraints="NO" id="dFo-lK-dVP">
-                        <rect key="frame" x="-2" y="-4" width="325" height="20"/>
-                        <constraints>
-                            <constraint firstAttribute="height" constant="20" id="1VU-9u-ISR"/>
-                        </constraints>
-                    </imageView>
-                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Shadow" translatesAutoresizingMaskIntoConstraints="NO" id="kce-7u-mqm">
-                        <rect key="frame" x="-2" y="432" width="325" height="20"/>
-                        <constraints>
-                            <constraint firstAttribute="height" constant="20" id="gtL-kg-ePc"/>
-                        </constraints>
-                    </imageView>
-                    <view clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="bMU-sR-VEf" customClass="LineView" customModule="Library" customModuleProvider="target">
+                    <view clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="bMU-sR-VEf">
                         <rect key="frame" x="0.0" y="0.0" width="321" height="448"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kp1-kV-vhH">
@@ -234,23 +222,19 @@
                     </view>
                 </subviews>
             </view>
+            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
             <constraints>
                 <constraint firstAttribute="bottom" secondItem="bMU-sR-VEf" secondAttribute="bottom" id="9Pb-Hb-v79"/>
                 <constraint firstItem="bMU-sR-VEf" firstAttribute="top" secondItem="QGR-l7-EsV" secondAttribute="top" id="DWx-Xn-7hr"/>
-                <constraint firstAttribute="bottom" secondItem="kce-7u-mqm" secondAttribute="bottom" constant="-4" id="JBU-Rf-ztP"/>
-                <constraint firstItem="kce-7u-mqm" firstAttribute="leading" secondItem="QGR-l7-EsV" secondAttribute="leading" constant="-2" id="QWs-GI-ItW"/>
-                <constraint firstAttribute="trailing" secondItem="dFo-lK-dVP" secondAttribute="trailing" constant="-2" id="R20-zl-TBW"/>
                 <constraint firstAttribute="trailing" secondItem="bMU-sR-VEf" secondAttribute="trailing" id="V1R-bm-Lfx"/>
                 <constraint firstItem="bMU-sR-VEf" firstAttribute="leading" secondItem="QGR-l7-EsV" secondAttribute="leading" id="ZI9-I5-3Jv"/>
-                <constraint firstItem="dFo-lK-dVP" firstAttribute="top" secondItem="QGR-l7-EsV" secondAttribute="top" constant="-4" id="bcG-Aq-Bnk"/>
-                <constraint firstItem="dFo-lK-dVP" firstAttribute="leading" secondItem="QGR-l7-EsV" secondAttribute="leading" constant="-2" id="gdO-tR-GTq"/>
-                <constraint firstAttribute="trailing" secondItem="kce-7u-mqm" secondAttribute="trailing" constant="-2" id="mHZ-iL-JKC"/>
             </constraints>
             <size key="customSize" width="321" height="448"/>
             <connections>
                 <outlet property="amountLabel" destination="kp1-kV-vhH" id="tp9-d4-l9m"/>
                 <outlet property="balanceView" destination="0dR-DS-Xd2" id="4hD-MU-L8S"/>
                 <outlet property="closeChannelButton" destination="DXl-FU-kIh" id="OkD-mg-Zhn"/>
+                <outlet property="containerView" destination="bMU-sR-VEf" id="qDm-IZ-nc9"/>
                 <outlet property="fundingTransactionTitleLabel" destination="XGV-MC-Npt" id="j5J-nE-utX"/>
                 <outlet property="fundingTransactionTxIdButton" destination="dEm-HI-aIi" id="nCz-MH-I1M"/>
                 <outlet property="nameLabel" destination="Qxs-0B-0f1" id="c8R-GK-ofb"/>
@@ -267,7 +251,4 @@
             <point key="canvasLocation" x="-453" y="-179"/>
         </collectionViewCell>
     </objects>
-    <resources>
-        <image name="Shadow" width="27" height="18"/>
-    </resources>
 </document>

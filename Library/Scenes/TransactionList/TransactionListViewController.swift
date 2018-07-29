@@ -58,7 +58,7 @@ final class TransactionListViewController: UIViewController {
         tableView.refreshControl = UIRefreshControl()
         tableView.refreshControl?.addTarget(self, action: #selector(refresh), for: .valueChanged)
         
-        setupGradient()
+        navigationController?.view.addBackgroundGradient()
         
         transactionListViewModel?.dataSource
             .bind(to: tableView) { dataSource, indexPath, tableView in
@@ -84,25 +84,6 @@ final class TransactionListViewController: UIViewController {
             .map { !$0 }
             .bind(to: emptyStateLabel.reactive.isHidden)]
             .dispose(in: reactive.bag)
-    }
-    
-    private func setupGradient() {
-        guard let view = navigationController?.view else { return }
-        
-        let backgroundGradientView = GradientView()
-        backgroundGradientView.direction = .vertical
-        backgroundGradientView.gradient = [UIColor.zap.backgroundGradientTop, UIColor.zap.backgroundGradientBottom]
-        backgroundGradientView.translatesAutoresizingMaskIntoConstraints = false
-        
-        view.addSubview(backgroundGradientView)
-        view.sendSubview(toBack: backgroundGradientView)
-        
-        NSLayoutConstraint.activate([
-            backgroundGradientView.topAnchor.constraint(equalTo: view.topAnchor),
-            backgroundGradientView.bottomAnchor.constraint(equalTo: view.bottomAnchor),
-            backgroundGradientView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
-            backgroundGradientView.trailingAnchor.constraint(equalTo: view.trailingAnchor)
-        ])
     }
     
     @IBAction private func presentFilter(_ sender: Any) {
