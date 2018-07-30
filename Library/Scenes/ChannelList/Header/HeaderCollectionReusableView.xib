@@ -23,16 +23,23 @@
                     <nil key="highlightedColor"/>
                 </label>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="PzB-ug-jp2">
-                    <rect key="frame" x="393" y="238.5" width="16" height="22"/>
+                    <rect key="frame" x="380" y="228.5" width="42" height="42"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="42" id="EFR-JK-eaE"/>
+                        <constraint firstAttribute="height" constant="42" id="egL-SB-QIa"/>
+                    </constraints>
                     <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     <state key="normal" image="icon-plus"/>
+                    <connections>
+                        <action selector="openChannel:" destination="U6b-Vx-4bR" eventType="touchUpInside" id="Puw-nI-HMM"/>
+                    </connections>
                 </button>
             </subviews>
             <constraints>
                 <constraint firstItem="U5C-f0-eZE" firstAttribute="leading" secondItem="VXr-Tz-HHm" secondAttribute="leading" constant="20" id="5BE-8F-4IN"/>
                 <constraint firstItem="U5C-f0-eZE" firstAttribute="bottom" secondItem="VXr-Tz-HHm" secondAttribute="bottom" id="SXZ-mb-n7U"/>
                 <constraint firstItem="PzB-ug-jp2" firstAttribute="centerY" secondItem="U5C-f0-eZE" secondAttribute="centerY" id="Yd5-lH-ShV"/>
-                <constraint firstItem="VXr-Tz-HHm" firstAttribute="trailing" secondItem="PzB-ug-jp2" secondAttribute="trailing" constant="20" id="qEZ-nE-QJC"/>
+                <constraint firstItem="VXr-Tz-HHm" firstAttribute="trailing" secondItem="PzB-ug-jp2" secondAttribute="trailing" constant="7" id="qEZ-nE-QJC"/>
             </constraints>
             <viewLayoutGuide key="safeArea" id="VXr-Tz-HHm"/>
             <connections>

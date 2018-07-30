@@ -7,6 +7,11 @@
 
 import UIKit
 
+protocol ChannelCellDelegate: class {
+    func closeChannelButtonTapped(channelViewModel: ChannelViewModel)
+    func fundingTransactionTxIdButtonTapped(channelViewModel: ChannelViewModel)
+}
+
 class ChannelCell: BondCollectionViewCell {
     @IBOutlet private weak var containerView: UIView!
     @IBOutlet private weak var onlineIndicatorView: UIView!
@@ -27,6 +32,8 @@ class ChannelCell: BondCollectionViewCell {
     
     private var gradientLayer: CAGradientLayer?
 
+    weak var delegate: ChannelCellDelegate?
+    
     var allLabels: [UILabel] {
         return [amountLabel, nameLabel, remotePubKeyTitleLabel, remotePubKeyLabel, sendLimitTitleLabel, sendLimitAmountLabel, receiveLimitTitleLabel, receiveLimitAmountLabel, fundingTransactionTitleLabel]
     }
@@ -121,5 +128,15 @@ class ChannelCell: BondCollectionViewCell {
         receiveLimitTitleLabel.text = "scene.channel_detail.remote_balance_label".localized
         receiveLimitCircleView.layer.cornerRadius = 5
         receiveLimitCircleView.gradient = [UIColor.zap.lightGrey, UIColor.zap.lightGrey]
+    }
+    
+    @IBAction func presentBlockExplorer(_ sender: Any) {
+        guard let viewModel = channelViewModel else { return }
+        delegate?.fundingTransactionTxIdButtonTapped(channelViewModel: viewModel)
+    }
+    
+    @IBAction func closeChannel(_ sender: Any) {
+        guard let viewModel = channelViewModel else { return }
+        delegate?.closeChannelButtonTapped(channelViewModel: viewModel)
     }
 }

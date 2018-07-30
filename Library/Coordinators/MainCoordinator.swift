@@ -61,11 +61,17 @@ final class MainCoordinator: Routing {
     }
     
     func channelListViewController() -> UIViewController {
-        return UIStoryboard.instantiateChannelListViewController(channelListViewModel: channelListViewModel, closeButtonTapped: presentMainCloseConfirmation, addChannelButtonTapped: presentAddChannel)
+        return UIStoryboard.instantiateChannelListViewController(channelListViewModel: channelListViewModel, closeButtonTapped: presentCloseConfirmation, addChannelButtonTapped: presentAddChannel, transactionDetailButtonTapped: presentTransactionDetail)
     }
     
     func presentSend() {
         presentSend(invoice: nil)
+    }
+    
+    func presentTransactionDetail(txid: String) {
+        let network = lightningService.infoService.network.value
+        guard let url = Settings.shared.blockExplorer.value.url(network: network, txid: txid) else { return }
+        presentSafariViewController(for: url)
     }
     
     func presentSend(invoice: String?) {
@@ -95,7 +101,7 @@ final class MainCoordinator: Routing {
     }
     
     private func presentDetail(for detailViewModel: DetailViewModel) {
-        let detailViewController = UIStoryboard.instantiateDetailViewController(detailViewModel: detailViewModel, dismissButtonTapped: dismissDetailViewController, safariButtonTapped: presentSafariViewController, closeChannelButtonTapped: presentDetailCloseConfirmation)
+        let detailViewController = UIStoryboard.instantiateDetailViewController(detailViewModel: detailViewModel, dismissButtonTapped: dismissDetailViewController, safariButtonTapped: presentSafariViewController)
         self.detailViewController = detailViewController
         rootViewController.present(detailViewController, animated: true, completion: nil)
     }
@@ -104,7 +110,7 @@ final class MainCoordinator: Routing {
         let safariViewController = SFSafariViewController(url: url)
         safariViewController.preferredBarTintColor = UIColor.zap.charcoalGrey
         safariViewController.preferredControlTintColor = UIColor.zap.peach
-        detailViewController?.present(safariViewController, animated: true)
+        (detailViewController ?? rootViewController).present(safariViewController, animated: true)
     }
     
     private func dismissDetailViewController() {
@@ -112,14 +118,9 @@ final class MainCoordinator: Routing {
         detailViewController = nil
     }
     
-    private func presentMainCloseConfirmation(for channel: Channel, nodeAlias: String, closeAction: @escaping () -> Void) {
+    private func presentCloseConfirmation(for channel: Channel, nodeAlias: String, closeAction: @escaping () -> Void) {
         let alertController = UIAlertController.closeChannelAlertController(channel: channel, nodeAlias: nodeAlias, closeAction: closeAction)
         rootViewController.present(alertController, animated: true, completion: nil)
-    }
-    
-    private func presentDetailCloseConfirmation(for channel: Channel, nodeAlias: String, closeAction: @escaping () -> Void) {
-        let alertController = UIAlertController.closeChannelAlertController(channel: channel, nodeAlias: nodeAlias, closeAction: closeAction)
-        detailViewController?.present(alertController, animated: true, completion: nil)
     }
     
     private func presentFilter() {

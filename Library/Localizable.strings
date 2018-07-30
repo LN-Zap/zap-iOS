@@ -78,6 +78,7 @@
 "scene.channels.force_close.message" = "%@ is offline, are you sure you want to force close this channel? You’d have to wait about %@ for your funds?";
 "scene.channels.alert.cancel" = "Cancel";
 "scene.channels.alert.close" = "Close";
+"scene.channels.alert.force_close" = "Force Close";
 "scene.channels.row_action.close" = "Close Channel";
 "scene.channels.close_success.toast" = "Channel is closing.";
 

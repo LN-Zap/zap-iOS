@@ -7,10 +7,16 @@
 
 import UIKit
 
+protocol ChannelListHeaderDelegate: class {
+    func openChannelButtonTapped()
+}
+
 class HeaderCollectionReusableView: UICollectionReusableView {
+    static let kind = "HeaderCollectionReusableView"
+
     @IBOutlet private weak var titleLabel: UILabel!
 
-    static let kind = "HeaderCollectionReusableView"
+    weak var delegate: ChannelListHeaderDelegate?
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -20,4 +26,7 @@ class HeaderCollectionReusableView: UICollectionReusableView {
         titleLabel.text = "Network"
     }
     
+    @IBAction private func openChannel(_ sender: Any) {
+        delegate?.openChannelButtonTapped()
+    }
 }

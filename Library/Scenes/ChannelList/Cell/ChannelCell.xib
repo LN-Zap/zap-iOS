@@ -170,6 +170,9 @@
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dEm-HI-aIi">
                                         <rect key="frame" x="47" y="0.0" width="234" height="30"/>
                                         <state key="normal" title="Button"/>
+                                        <connections>
+                                            <action selector="presentBlockExplorer:" destination="QGR-l7-EsV" eventType="touchUpInside" id="Qoh-Im-vd3"/>
+                                        </connections>
                                     </button>
                                 </subviews>
                             </stackView>
@@ -183,6 +186,9 @@
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="DXl-FU-kIh">
                                 <rect key="frame" x="137.5" y="310" width="46" height="30"/>
                                 <state key="normal" title="Button"/>
+                                <connections>
+                                    <action selector="closeChannel:" destination="QGR-l7-EsV" eventType="touchUpInside" id="S2K-B1-Wwa"/>
+                                </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>

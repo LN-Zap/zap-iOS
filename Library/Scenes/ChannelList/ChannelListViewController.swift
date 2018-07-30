@@ -13,12 +13,14 @@ extension UIStoryboard {
     static func instantiateChannelListViewController(
         channelListViewModel: ChannelListViewModel,
         closeButtonTapped: @escaping (Channel, String, @escaping () -> Void) -> Void,
-        addChannelButtonTapped: @escaping () -> Void) -> UIViewController {
+        addChannelButtonTapped: @escaping () -> Void,
+        transactionDetailButtonTapped: @escaping (String) -> Void) -> UIViewController {
         let viewController = Storyboard.channelList.initial(viewController: ChannelListViewController.self)
         
         viewController.channelListViewModel = channelListViewModel
         viewController.closeButtonTapped = closeButtonTapped
         viewController.addChannelButtonTapped = addChannelButtonTapped
+        viewController.transactionDetailButtonTapped = transactionDetailButtonTapped
         
         viewController.tabBarItem.title = "Channels"
         viewController.tabBarItem.image = UIImage(named: "tabbar_wallet", in: Bundle.library, compatibleWith: nil)
@@ -37,9 +39,11 @@ final class ChannelListViewController: UIViewController {
     @IBOutlet private weak var collectionView: UICollectionView!
     @IBOutlet private var headerView: UICollectionReusableView!
     
+    fileprivate var channelListViewModel: ChannelListViewModel?
+    
     fileprivate var addChannelButtonTapped: (() -> Void)?
     fileprivate var closeButtonTapped: ((Channel, String, @escaping () -> Void) -> Void)?
-    fileprivate var channelListViewModel: ChannelListViewModel?
+    fileprivate var transactionDetailButtonTapped: ((String) -> Void)?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -54,6 +58,7 @@ final class ChannelListViewController: UIViewController {
         channelListViewModel?.dataSource.bind(to: collectionView) { dataSource, indexPath, collectionView -> UICollectionViewCell in
             let channelCell: ChannelCell = collectionView.dequeueCellForIndexPath(indexPath)
             channelCell.channelViewModel = dataSource[indexPath.item]
+            channelCell.delegate = self
             return channelCell
         }
         
@@ -82,6 +87,12 @@ final class ChannelListViewController: UIViewController {
     }
 }
 
+extension ChannelListViewController: ChannelListHeaderDelegate {
+    func openChannelButtonTapped() {
+        addChannelButtonTapped?()
+    }
+}
+
 extension ChannelListViewController: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         fatalError("not implemented")
@@ -93,6 +104,23 @@ extension ChannelListViewController: UICollectionViewDataSource {
     
     func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
         let view = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: HeaderCollectionReusableView.kind, for: indexPath)
+        if let view = view as? HeaderCollectionReusableView {
+            view.delegate = self
+        }
         return view
+    }
+}
+
+extension ChannelListViewController: ChannelCellDelegate {
+    func closeChannelButtonTapped(channelViewModel: ChannelViewModel) {
+        closeButtonTapped?(channelViewModel.channel, channelViewModel.name.value) { [weak self] in
+            self?.channelListViewModel?.close(channelViewModel.channel) { result in
+                print(result)
+            }
+        }
+    }
+    
+    func fundingTransactionTxIdButtonTapped(channelViewModel: ChannelViewModel) {
+        transactionDetailButtonTapped?(channelViewModel.channel.channelPoint.fundingTxid)
     }
 }

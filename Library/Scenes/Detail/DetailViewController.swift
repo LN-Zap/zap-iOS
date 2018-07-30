@@ -13,15 +13,12 @@ extension UIStoryboard {
     static func instantiateDetailViewController(
         detailViewModel: DetailViewModel,
         dismissButtonTapped: @escaping () -> Void,
-        safariButtonTapped: @escaping (URL) -> Void,
-        closeChannelButtonTapped: @escaping (Channel, String, @escaping () -> Void) -> Void
-        ) -> UINavigationController {
+        safariButtonTapped: @escaping (URL) -> Void) -> UINavigationController {
         let viewController = Storyboard.detail.initial(viewController: UINavigationController.self)
         if let detailViewController = viewController.topViewController as? DetailViewController {
             detailViewController.detailViewModel = detailViewModel
             detailViewController.dismissButtonTapped = dismissButtonTapped
             detailViewController.safariButtonTapped = safariButtonTapped
-            detailViewController.closeChannelButtonTapped = closeChannelButtonTapped
         }
         return viewController
     }
@@ -33,7 +30,6 @@ final class DetailViewController: UIViewController, KeyboardAdjustable {
     
     fileprivate var dismissButtonTapped: (() -> Void)?
     fileprivate var safariButtonTapped: ((URL) -> Void)?
-    fileprivate var closeChannelButtonTapped: ((Channel, String, @escaping () -> Void) -> Void)?
     
     var detailViewModel: DetailViewModel?
     
