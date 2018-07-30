@@ -35,9 +35,17 @@ final class WalletViewController: UIViewController {
         }
     }
     @IBOutlet private weak var primaryBalanceLabel: UILabel!
-    @IBOutlet private weak var buttonBackgroundGradient: GradientView! {
+    @IBOutlet private weak var sendButtonBackgroundGradient: GradientView! {
         didSet {
-            buttonBackgroundGradient.layer.cornerRadius = 40
+            sendButtonBackgroundGradient.layer.cornerRadius = 40
+            sendButtonBackgroundGradient.layer.maskedCorners = [.layerMinXMinYCorner, .layerMinXMaxYCorner]
+        }
+    }
+    @IBOutlet private weak var receiveButtonBackgroundGradient: GradientView! {
+        didSet {
+            receiveButtonBackgroundGradient.layer.cornerRadius = 40
+            receiveButtonBackgroundGradient.layer.maskedCorners = [.layerMaxXMaxYCorner, .layerMaxXMinYCorner]
+            receiveButtonBackgroundGradient.gradient = [UIColor.zap.peach, UIColor.zap.lightMustard]
         }
     }
     @IBOutlet private weak var secondaryBalanceLabel: UILabel!
