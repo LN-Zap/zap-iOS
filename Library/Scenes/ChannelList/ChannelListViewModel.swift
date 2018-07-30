@@ -10,6 +10,27 @@ import Foundation
 import Lightning
 import ReactiveKit
 
+extension ChannelState: Comparable {
+    var sortRank: Int {
+        switch self {
+        case .active:
+            return 0
+        case .opening:
+            return 1
+        case .forceClosing:
+            return 2
+        case .closing:
+            return 3
+        case .inactive:
+            return 4
+        }
+    }
+    
+    public static func < (lhs: ChannelState, rhs: ChannelState) -> Bool {
+        return lhs.sortRank < rhs.sortRank
+    }
+}
+
 final class ChannelListViewModel: NSObject {
     private let channelService: ChannelService
     
@@ -39,7 +60,15 @@ final class ChannelListViewModel: NSObject {
             .map { ChannelViewModel(channel: $0, nodeStore: nodeStore) }
             .filter { $0.matchesSearchString(searchString) }
         
-        dataSource.replace(with: viewModels, performDiff: true)
+        let sortedViewModels = viewModels.sorted {
+            if $0.channel.state != $1.channel.state {
+                return $0.channel.state < $1.channel.state
+            } else {
+                return $0.channel.remotePubKey < $1.channel.remotePubKey
+            }
+        }
+        
+        dataSource.replace(with: sortedViewModels, performDiff: true)
     }
     
     func refresh() {
