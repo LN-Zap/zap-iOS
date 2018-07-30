@@ -28,19 +28,11 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Qxs-0B-0f1">
-                                <rect key="frame" x="35" y="15" width="42" height="20.5"/>
+                                <rect key="frame" x="20" y="15" width="42" height="20.5"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="eZe-Cj-lUJ">
-                                <rect key="frame" x="20" y="20" width="10" height="10"/>
-                                <color key="backgroundColor" red="1" green="0.0" blue="0.065431795060000006" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="10" id="Dex-vf-Xub"/>
-                                    <constraint firstAttribute="width" constant="10" id="eIH-PP-X4Z"/>
-                                </constraints>
-                            </view>
                             <view opaque="NO" alpha="0.85000002384185791" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="i3Q-sW-fLO" customClass="LineView" customModule="Library" customModuleProvider="target">
                                 <rect key="frame" x="20" y="50" width="281" height="1"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -200,11 +192,8 @@
                             <constraint firstItem="6BA-pe-Ncs" firstAttribute="trailing" secondItem="Pcz-QC-wpP" secondAttribute="trailing" id="88m-8Y-gP2"/>
                             <constraint firstItem="3wK-WY-u2X" firstAttribute="leading" secondItem="i3Q-sW-fLO" secondAttribute="leading" id="9qc-Rh-6es"/>
                             <constraint firstItem="DXl-FU-kIh" firstAttribute="top" secondItem="vEG-kK-lht" secondAttribute="bottom" constant="16" id="A6I-bH-naj"/>
-                            <constraint firstItem="eZe-Cj-lUJ" firstAttribute="top" secondItem="bMU-sR-VEf" secondAttribute="top" constant="20" id="CHu-fk-tqT"/>
                             <constraint firstItem="DXl-FU-kIh" firstAttribute="centerX" secondItem="bMU-sR-VEf" secondAttribute="centerX" id="Cyy-W3-8oc"/>
                             <constraint firstItem="SBp-ZK-RAO" firstAttribute="top" secondItem="3wK-WY-u2X" secondAttribute="bottom" constant="1" id="HK2-Rv-JNL"/>
-                            <constraint firstItem="eZe-Cj-lUJ" firstAttribute="leading" secondItem="bMU-sR-VEf" secondAttribute="leading" constant="20" id="HTV-NP-vfl"/>
-                            <constraint firstItem="Qxs-0B-0f1" firstAttribute="leading" secondItem="eZe-Cj-lUJ" secondAttribute="trailing" constant="5" id="JJa-e3-fKT"/>
                             <constraint firstItem="i3Q-sW-fLO" firstAttribute="leading" secondItem="bMU-sR-VEf" secondAttribute="leading" constant="20" id="KOF-p3-K20"/>
                             <constraint firstItem="3wK-WY-u2X" firstAttribute="top" secondItem="i3Q-sW-fLO" secondAttribute="bottom" constant="14" id="MEI-iA-rKF"/>
                             <constraint firstItem="SBp-ZK-RAO" firstAttribute="trailing" secondItem="i3Q-sW-fLO" secondAttribute="trailing" id="Nij-kn-JmT"/>
@@ -212,12 +201,13 @@
                             <constraint firstItem="vEG-kK-lht" firstAttribute="top" secondItem="rIE-NI-w8s" secondAttribute="bottom" constant="14" id="T1N-ZE-XAI"/>
                             <constraint firstItem="Pcz-QC-wpP" firstAttribute="leading" secondItem="i3Q-sW-fLO" secondAttribute="leading" id="W9W-2E-aTb"/>
                             <constraint firstAttribute="trailing" secondItem="kp1-kV-vhH" secondAttribute="trailing" constant="20" id="aDa-Ii-p8h"/>
+                            <constraint firstItem="Qxs-0B-0f1" firstAttribute="top" secondItem="bMU-sR-VEf" secondAttribute="top" constant="15" id="dEf-Pe-iNQ"/>
                             <constraint firstItem="Pcz-QC-wpP" firstAttribute="top" secondItem="SBp-ZK-RAO" secondAttribute="bottom" constant="15" id="dEq-Zy-Hrz"/>
+                            <constraint firstItem="i3Q-sW-fLO" firstAttribute="top" secondItem="Qxs-0B-0f1" secondAttribute="bottom" constant="15" id="g7m-8W-wN6"/>
                             <constraint firstItem="rIE-NI-w8s" firstAttribute="trailing" secondItem="6BA-pe-Ncs" secondAttribute="trailing" id="i00-IV-MXq"/>
+                            <constraint firstItem="Qxs-0B-0f1" firstAttribute="leading" secondItem="bMU-sR-VEf" secondAttribute="leading" constant="20" id="jR3-iC-9GK"/>
                             <constraint firstItem="i7Z-oc-dCz" firstAttribute="trailing" secondItem="Pcz-QC-wpP" secondAttribute="trailing" id="kQv-7P-gz3"/>
                             <constraint firstItem="6BA-pe-Ncs" firstAttribute="leading" secondItem="Pcz-QC-wpP" secondAttribute="leading" id="kUB-he-KXv"/>
-                            <constraint firstItem="Qxs-0B-0f1" firstAttribute="centerY" secondItem="eZe-Cj-lUJ" secondAttribute="centerY" id="lBX-kA-f4b"/>
-                            <constraint firstItem="i3Q-sW-fLO" firstAttribute="top" secondItem="eZe-Cj-lUJ" secondAttribute="bottom" constant="20" id="p9u-br-fPU"/>
                             <constraint firstItem="rIE-NI-w8s" firstAttribute="leading" secondItem="6BA-pe-Ncs" secondAttribute="leading" id="sMO-cI-GeF"/>
                             <constraint firstItem="i7Z-oc-dCz" firstAttribute="top" secondItem="Pcz-QC-wpP" secondAttribute="bottom" constant="14" id="t2h-xw-Q78"/>
                             <constraint firstItem="i7Z-oc-dCz" firstAttribute="leading" secondItem="Pcz-QC-wpP" secondAttribute="leading" id="v8I-Sd-I4U"/>
@@ -244,7 +234,6 @@
                 <outlet property="fundingTransactionTitleLabel" destination="XGV-MC-Npt" id="j5J-nE-utX"/>
                 <outlet property="fundingTransactionTxIdButton" destination="dEm-HI-aIi" id="nCz-MH-I1M"/>
                 <outlet property="nameLabel" destination="Qxs-0B-0f1" id="c8R-GK-ofb"/>
-                <outlet property="onlineIndicatorView" destination="eZe-Cj-lUJ" id="ad4-As-MUf"/>
                 <outlet property="receiveLimitAmountLabel" destination="qwB-1L-aBB" id="pGX-C8-jOC"/>
                 <outlet property="receiveLimitCircleView" destination="LtH-G2-JjE" id="TbO-eL-Px8"/>
                 <outlet property="receiveLimitTitleLabel" destination="Yb2-HM-Xsc" id="REq-08-f8Z"/>

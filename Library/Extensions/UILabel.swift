@@ -10,28 +10,6 @@ import Foundation
 import Lightning
 
 extension UILabel {
-    func setChannelState(_ state: ChannelState) {
-        switch state {
-        case .active:
-            text = "channel.state.active".localized
-        case .inactive:
-            text = "channel.state.inactive".localized
-        case .opening:
-            text = "channel.state.opening".localized
-        case .closing:
-            text = "channel.state.closing".localized
-        case .forceClosing:
-            text = "channel.state.force_closing".localized
-        }
-        
-        switch state {
-        case .active, .opening:
-            textColor = UIColor.zap.nastyGreen
-        default:
-            textColor = UIColor.zap.lightGrey
-        }
-    }
-    
     func setAmount(_ amount: Satoshi) {
         let result = NSMutableAttributedString()
         

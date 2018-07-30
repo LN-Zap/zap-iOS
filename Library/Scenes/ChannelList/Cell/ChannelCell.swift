@@ -14,7 +14,6 @@ protocol ChannelCellDelegate: class {
 
 class ChannelCell: BondCollectionViewCell {
     @IBOutlet private weak var containerView: UIView!
-    @IBOutlet private weak var onlineIndicatorView: UIView!
     @IBOutlet private weak var amountLabel: UILabel!
     @IBOutlet private weak var nameLabel: UILabel!
     @IBOutlet private weak var remotePubKeyTitleLabel: UILabel!
@@ -48,11 +47,6 @@ class ChannelCell: BondCollectionViewCell {
         didSet {
             guard let channel = channelViewModel?.channel else { return }
             
-            channelViewModel?.state
-                .map { $0 == .active ? UIColor.zap.nastyGreen : UIColor.zap.tomato }
-                .bind(to: onlineIndicatorView.reactive.backgroundColor)
-                .dispose(in: onReuseBag)
-            
             channelViewModel?.name
                 .bind(to: nameLabel.reactive.text)
                 .dispose(in: onReuseBag)
@@ -79,6 +73,10 @@ class ChannelCell: BondCollectionViewCell {
             if !channel.state.isClosing {
                 let closeTitle = channel.state == .active ? "scene.channel_detail.close_button".localized : "scene.channel_detail.force_close_button".localized
                 closeChannelButton.setTitle(closeTitle, for: .normal)
+            }
+            
+            if channel.state != .active {
+                amountLabel.text = channel.state.localized
             }
             
             fundingTransactionTxIdButton.setTitle(channel.channelPoint.fundingTxid, for: .normal)
@@ -114,8 +112,6 @@ class ChannelCell: BondCollectionViewCell {
         layer.cornerRadius = 11
         layer.borderWidth = 1
         layer.masksToBounds = true
-        
-        onlineIndicatorView.layer.cornerRadius = 5
         
         Style.label.apply(to: allLabels)
         Style.button.apply(to: fundingTransactionTxIdButton, closeChannelButton)

@@ -50,7 +50,9 @@ public extension UIColor {
             0x0652DD,
             0x1B1464,
             0xA3CB38,
-            0x12CBC4
+            0x12CBC4,
+            0xf8e71c,
+            0x000000
         ].map { UIColor(hex: $0) }
         
         private static func color(_ name: String) -> UIColor {
