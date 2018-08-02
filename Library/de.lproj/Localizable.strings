@@ -119,28 +119,28 @@
 "scene.connect_remote_node.url_label" = "Adresse";
 "scene.connect_remote_node.certificate_label" = "Certificate";
 "scene.connect_remote_node.connect_button" = "Verbinden";
-"scene.connect_remote_node.scan_button" = "Scan";
-"scene.connect_remote_node.paste_button" = "Paste";
-"scene.connect_remote_node.help_button" = "Need Help?";
-"scene.connect_remote_node.server_error" = "Could not connect to server.";
-"scene.connect_remote_node.your_node_title" = "Your Node";
+"scene.connect_remote_node.scan_button" = "Scannen";
+"scene.connect_remote_node.paste_button" = "Einfügen";
+"scene.connect_remote_node.help_button" = "Brauchst du Hilfe?";
+"scene.connect_remote_node.server_error" = "Verbindung zum Server gescheitert.";
+"scene.connect_remote_node.your_node_title" = "Dein Node";
 "scene.connect_remote_node.certificate_detail.certificate_title" = "Certificate";
 "scene.connect_remote_node.certificate_detail.macaroon_title" = "Macaroon";
-"scene.connect_remote_node.edit_url.title" = "Address";
+"scene.connect_remote_node.edit_url.title" = "Adresse";
 
 
 "scene.create_wallet.title" = "Neues Wallet erstellen";
-"scene.create_wallet.description_label" = "Make sure to store the mnemonic at a save location.";
-"scene.create_wallet.next_button" = "Next";
+"scene.create_wallet.description_label" = "Bewahre deinen Mnemonic-Code an einem sicheren Ort auf.";
+"scene.create_wallet.next_button" = "Weiter";
 
-"scene.recover_wallet.title" = "Recover Wallet";
-"scene.recover_wallet.done_button" = "Done";
-"scene.recover_wallet.description_label" = "Enter your seed:";
+"scene.recover_wallet.title" = "Wallet wiederherstellen";
+"scene.recover_wallet.done_button" = "Fertig";
+"scene.recover_wallet.description_label" = "Gib deinen Seed ein:";
 "scene.recover_wallet.placeholder" = "abandon ability able about above absent absorb abstract absurd abuse access accident account accuse achieve acid acoustic acquire across act action actor actress actual";
 
 "scene.select_wallet_connection.title" = "Setup Zap";
-"scene.select_wallet_connection.create.title" = "Create";
-"scene.select_wallet_connection.create.message" = "new wallet";
+"scene.select_wallet_connection.create.title" = "Erstellen";
+"scene.select_wallet_connection.create.message" = "neues Wallet";
 "scene.select_wallet_connection.recover.title" = "Recover";
 "scene.select_wallet_connection.recover.message" = "existing wallet";
 "scene.select_wallet_connection.connect.title" = "Connect";
