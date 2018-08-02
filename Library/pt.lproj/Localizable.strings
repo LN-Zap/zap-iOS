@@ -7,7 +7,7 @@
 */
 
 "link.help" = "https://ln-zap.github.io/zap-tutorials/";
-"link.help.zapconnect" = "https://ln-zap.github.io/zap-tutorials/iOS-remote-node-setup";
+"link.help.zapconnect" = "ligação.ajuda.zapconnect";
 
 "error.wrong_uri_format" = "Unknown link format.";
 "error.wrong_uri_network" = "You tried opening a link for %@ but your node is connected to %@.";
@@ -81,13 +81,13 @@
 "scene.channels.force_close.message" = "%@ is offline, are you sure you want to force close this channel? You’d have to wait about %@ for your funds?";
 "scene.channels.alert.cancel" = "Cancel";
 "scene.channels.alert.close" = "Close";
-"scene.channels.search.placeholder" = "search";
-"scene.channels.row_action.close" = "Close Channel";
-"scene.channels.close_success.toast" = "Channel is closing.";
+"scene.channels.search.placeholder" = "procurar";
+"scene.channels.row_action.close" = "Encerrar Canal";
+"scene.channels.close_success.toast" = "O Canal está a encerrar.";
 
-"scene.open_channel.title" = "Open Channel";
+"scene.open_channel.title" = "Abrir Canal";
 "scene.open_channel.help_label" = "Fund connection";
-"scene.open_channel.add_button" = "Add";
+"scene.open_channel.add_button" = "Adicionar";
 
 "scene.balance.title" = "Balance";
 "scene.balance.label.on_chain" = "Ƀ";
@@ -95,10 +95,10 @@
 "scene.pin.biometric.fallback.title" = "Use Passcode";
 "scene.pin.biometric.reason" = "To access the secure data";
 
-"scene.setup_pin.done_button" = "Done";
-"scene.setup_pin.top_label.initial" = "Choose a pin.";
-"scene.setup_pin.top_label.non_matching" = "The pins didn't match. Please try again.";
-"scene.setup_pin.top_label.validate" = "Enter the pin again to validate.";
+"scene.setup_pin.done_button" = "Feito";
+"scene.setup_pin.top_label.initial" = "Escolha um pin.";
+"scene.setup_pin.top_label.non_matching" = "Os pins não coincidem. Tente de novo.";
+"scene.setup_pin.top_label.validate" = "Insira o pin de novo para validar.";
 
 "scene.confirm_mnemonic.title" = "Confirm Seed";
 "scene.confirm_mnemonic.description" = "Enter your key.";
