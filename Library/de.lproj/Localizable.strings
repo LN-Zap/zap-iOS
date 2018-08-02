@@ -86,10 +86,10 @@
 "scene.channels.close_success.toast" = "Channel wird geschlossen.";
 
 "scene.open_channel.title" = "Channel öffnen";
-"scene.open_channel.help_label" = "Fund connection";
+"scene.open_channel.help_label" = "Verbindung mit Guthaben versehen";
 "scene.open_channel.add_button" = "Hinzufügen";
 
-"scene.balance.title" = "Balance";
+"scene.balance.title" = "Kontostand";
 "scene.balance.label.on_chain" = "Ƀ";
 
 "scene.pin.biometric.fallback.title" = "PIN eingeben";
@@ -164,7 +164,7 @@
 "scene.sync.disconnect_alert.destructive_action" = "Vom Node trennen";
 "scene.sync.disconnect_alert.cancel_action" = "Abbrechen";
 
-"scene.transaction_detail.title.lightning_invoice" = "Invoice Detail";
+"scene.transaction_detail.title.lightning_invoice" = "Rechnungsdetail";
 "scene.transaction_detail.title.payment_detail" = "Zahlungsdetail";
 "scene.transaction_detail.title.transaction_detail" = "Transaktionsdetail";
 "scene.transaction_detail.archive_button" = "Archivieren";
