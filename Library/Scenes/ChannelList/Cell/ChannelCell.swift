@@ -130,12 +130,12 @@ class ChannelCell: BondCollectionViewCell {
         receiveLimitCircleView.gradient = [UIColor.zap.lightGrey, UIColor.zap.lightGrey]
     }
     
-    @IBAction func presentBlockExplorer(_ sender: Any) {
+    @IBAction private func presentBlockExplorer(_ sender: Any) {
         guard let viewModel = channelViewModel else { return }
         delegate?.fundingTransactionTxIdButtonTapped(channelViewModel: viewModel)
     }
     
-    @IBAction func closeChannel(_ sender: Any) {
+    @IBAction private func closeChannel(_ sender: Any) {
         guard let viewModel = channelViewModel else { return }
         delegate?.closeChannelButtonTapped(channelViewModel: viewModel)
     }
