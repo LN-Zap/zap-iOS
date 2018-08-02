@@ -601,6 +601,8 @@
 		AD10D05F2113307E00A0F0D3 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		AD10D0612113342800A0F0D3 /* de */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = de; path = de.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		AD10D0622113342800A0F0D3 /* de */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = de; path = de.lproj/Localizable.strings; sourceTree = "<group>"; };
+		AD10D06521133CF700A0F0D3 /* Base */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = Base; path = Base.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		AD10D06621133CFC00A0F0D3 /* Base */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = Base; path = Base.lproj/Localizable.strings; sourceTree = "<group>"; };
 		AD131B1520CFA0AD00E6FED3 /* UIAlertController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIAlertController.swift; sourceTree = "<group>"; };
 		AD19F05320AEAD3C008090CB /* TransactionAnnotation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransactionAnnotation.swift; sourceTree = "<group>"; };
 		AD19F05920AF00B4008090CB /* DetailTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailTableViewCell.swift; sourceTree = "<group>"; };
@@ -2774,6 +2776,7 @@
 			children = (
 				AD10D05B21132F1800A0F0D3 /* en */,
 				AD10D0622113342800A0F0D3 /* de */,
+				AD10D06621133CFC00A0F0D3 /* Base */,
 			);
 			name = Localizable.strings;
 			sourceTree = "<group>";
@@ -2783,6 +2786,7 @@
 			children = (
 				AD10D05D21132F3500A0F0D3 /* en */,
 				AD10D0612113342800A0F0D3 /* de */,
+				AD10D06521133CF700A0F0D3 /* Base */,
 			);
 			name = InfoPlist.strings;
 			sourceTree = "<group>";
