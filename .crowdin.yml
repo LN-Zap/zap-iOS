@@ -1,0 +1,5 @@
+files:
+  - source: /Library/Base.lproj/*.strings
+    translation: /Library/%two_letters_code%.lproj/%original_file_name%
+  - source: /Zap/Base.lproj/*.strings
+    translation: /Zap/%two_letters_code%.lproj/%original_file_name%
