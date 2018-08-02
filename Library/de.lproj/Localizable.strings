@@ -203,5 +203,5 @@
 "scene.filter.section_header.transaction_types" = "Transaktionstypen";
 "scene.filter.displayOnChainTransactions" = "On-chain Transaktion";
 "scene.filter.displayLightningPayments" = "Lightning Zahlung";
-"scene.filter.displayLightningInvoices" = "Lightning Invoices";
+"scene.filter.displayLightningInvoices" = "Lightning Rechnungen";
 "scene.filter.displayArchivedTransactions" = "Archivierte Transaktionen";
