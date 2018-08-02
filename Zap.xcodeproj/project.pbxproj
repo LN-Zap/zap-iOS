@@ -30,11 +30,12 @@
 		A0919154203C27C300FA525A /* Roboto-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = A0919153203C27C300FA525A /* Roboto-Bold.ttf */; };
 		A0A05A032013CF960007D1C9 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0A05A022013CF960007D1C9 /* AppDelegate.swift */; };
 		A0A05A0A2013CF960007D1C9 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A0A05A092013CF960007D1C9 /* Assets.xcassets */; };
-		A0A05A0D2013CF960007D1C9 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A0A05A0B2013CF960007D1C9 /* LaunchScreen.storyboard */; };
 		A0B91A84202628EF009AD2D3 /* Settings.bundle in Resources */ = {isa = PBXBuildFile; fileRef = A0B91A83202628EF009AD2D3 /* Settings.bundle */; };
 		A0F9AEDD206E155500E93DCA /* Satoshi.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0F9AEDC206E155500E93DCA /* Satoshi.swift */; };
 		A0FBCD91206BBBDF00800515 /* BitcoinUnit.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0FBCD90206BBBDF00800515 /* BitcoinUnit.swift */; };
 		A0FBCD93206BBD9800800515 /* SatoshiTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0FBCD92206BBD9800800515 /* SatoshiTests.swift */; };
+		AD10D04A21132A2F00A0F0D3 /* MainInterface.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AD10D04921132A2F00A0F0D3 /* MainInterface.storyboard */; };
+		AD10D04C21132A6000A0F0D3 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AD10D04B21132A6000A0F0D3 /* LaunchScreen.storyboard */; };
 		AD22FD0F20F737690016399D /* OnChainUnconfirmedTransaction.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD22FD0E20F737690016399D /* OnChainUnconfirmedTransaction.swift */; };
 		AD27B00C20FB642100F232A8 /* Decimal.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD27B00B20FB642100F232A8 /* Decimal.swift */; };
 		AD27B00E20FB89BE00F232A8 /* UnconfirmedTransactionStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD27B00D20FB89BE00F232A8 /* UnconfirmedTransactionStore.swift */; };
@@ -210,7 +211,6 @@
 		AD391D2220D1798A007EE22A /* Media.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = AD391D2120D1798A007EE22A /* Media.xcassets */; };
 		AD391D4120D17FA9007EE22A /* Messages.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AD391D4020D17FA9007EE22A /* Messages.framework */; };
 		AD391D4420D17FA9007EE22A /* MessagesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD391D4320D17FA9007EE22A /* MessagesViewController.swift */; };
-		AD391D4720D17FA9007EE22A /* MainInterface.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AD391D4520D17FA9007EE22A /* MainInterface.storyboard */; };
 		AD391D4920D17FA9007EE22A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = AD391D4820D17FA9007EE22A /* Assets.xcassets */; };
 		AD391D4D20D17FA9007EE22A /* ZapMessages.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = AD391D3F20D17FA9007EE22A /* ZapMessages.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		AD391D5420D2796F007EE22A /* BTCUtil.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A000F5EA2047F65100480D8E /* BTCUtil.framework */; };
@@ -542,7 +542,6 @@
 		A0A059FF2013CF960007D1C9 /* Zap.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Zap.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A0A05A022013CF960007D1C9 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		A0A05A092013CF960007D1C9 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
-		A0A05A0C2013CF960007D1C9 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		A0A05A0E2013CF960007D1C9 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		A0A05A222013D9BB0007D1C9 /* UIColor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIColor.swift; sourceTree = "<group>"; };
 		A0A05A252013DC1D0007D1C9 /* BitcoinUnit+Localizable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "BitcoinUnit+Localizable.swift"; sourceTree = "<group>"; };
@@ -596,6 +595,8 @@
 		A8517E12ED19329B536B9504 /* Pods-Lightning.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Lightning.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Lightning/Pods-Lightning.debug.xcconfig"; sourceTree = "<group>"; };
 		AD0D933220C822C300E30C51 /* rpc.pb.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = rpc.pb.swift; sourceTree = "<group>"; };
 		AD0D933320C822C300E30C51 /* rpc.grpc.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = rpc.grpc.swift; sourceTree = "<group>"; };
+		AD10D04921132A2F00A0F0D3 /* MainInterface.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = MainInterface.storyboard; sourceTree = "<group>"; };
+		AD10D04B21132A6000A0F0D3 /* LaunchScreen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = LaunchScreen.storyboard; sourceTree = "<group>"; };
 		AD131B1520CFA0AD00E6FED3 /* UIAlertController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIAlertController.swift; sourceTree = "<group>"; };
 		AD19F05320AEAD3C008090CB /* TransactionAnnotation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransactionAnnotation.swift; sourceTree = "<group>"; };
 		AD19F05920AF00B4008090CB /* DetailTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailTableViewCell.swift; sourceTree = "<group>"; };
@@ -631,7 +632,6 @@
 		AD391D3F20D17FA9007EE22A /* ZapMessages.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = ZapMessages.appex; sourceTree = BUILT_PRODUCTS_DIR; };
 		AD391D4020D17FA9007EE22A /* Messages.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Messages.framework; path = System/Library/Frameworks/Messages.framework; sourceTree = SDKROOT; };
 		AD391D4320D17FA9007EE22A /* MessagesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessagesViewController.swift; sourceTree = "<group>"; };
-		AD391D4620D17FA9007EE22A /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/MainInterface.storyboard; sourceTree = "<group>"; };
 		AD391D4820D17FA9007EE22A /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		AD391D4A20D17FA9007EE22A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		AD391D5620D28528007EE22A /* MessagesRequestViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessagesRequestViewController.swift; sourceTree = "<group>"; };
@@ -1000,14 +1000,14 @@
 		A010093A2014BF440001EF94 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
-				A0A05A0B2013CF960007D1C9 /* LaunchScreen.storyboard */,
+				A0B91A83202628EF009AD2D3 /* Settings.bundle */,
+				A0A05A0E2013CF960007D1C9 /* Info.plist */,
+				AD10D04B21132A6000A0F0D3 /* LaunchScreen.storyboard */,
+				AD9C4C7F20C3D3AA009636E1 /* InfoPlist.strings */,
+				A0919153203C27C300FA525A /* Roboto-Bold.ttf */,
 				A091914E203C23C100FA525A /* Roboto-Light.ttf */,
 				AD71EA4D20E2505D00256307 /* Roboto-Regular.ttf */,
-				A0919153203C27C300FA525A /* Roboto-Bold.ttf */,
 				A0A05A092013CF960007D1C9 /* Assets.xcassets */,
-				A0A05A0E2013CF960007D1C9 /* Info.plist */,
-				A0B91A83202628EF009AD2D3 /* Settings.bundle */,
-				AD9C4C7F20C3D3AA009636E1 /* InfoPlist.strings */,
 			);
 			name = "Supporting Files";
 			sourceTree = "<group>";
@@ -1429,10 +1429,10 @@
 			children = (
 				AD391D5920D290EF007EE22A /* ZapMessages.entitlements */,
 				AD391D4A20D17FA9007EE22A /* Info.plist */,
-				AD391D4320D17FA9007EE22A /* MessagesViewController.swift */,
+				AD10D04921132A2F00A0F0D3 /* MainInterface.storyboard */,
 				AD391D5620D28528007EE22A /* MessagesRequestViewController.swift */,
+				AD391D4320D17FA9007EE22A /* MessagesViewController.swift */,
 				AD391D4820D17FA9007EE22A /* Assets.xcassets */,
-				AD391D4520D17FA9007EE22A /* MainInterface.storyboard */,
 			);
 			path = ZapMessages;
 			sourceTree = "<group>";
@@ -2147,11 +2147,11 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				A0A05A0D2013CF960007D1C9 /* LaunchScreen.storyboard in Resources */,
 				A0B91A84202628EF009AD2D3 /* Settings.bundle in Resources */,
 				AD71EA4F20E2515700256307 /* Roboto-Regular.ttf in Resources */,
 				A0919154203C27C300FA525A /* Roboto-Bold.ttf in Resources */,
 				A0A05A0A2013CF960007D1C9 /* Assets.xcassets in Resources */,
+				AD10D04C21132A6000A0F0D3 /* LaunchScreen.storyboard in Resources */,
 				A091914F203C23C100FA525A /* Roboto-Light.ttf in Resources */,
 				AD9C4C8020C3D3AA009636E1 /* InfoPlist.strings in Resources */,
 			);
@@ -2207,7 +2207,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				AD391D4920D17FA9007EE22A /* Assets.xcassets in Resources */,
-				AD391D4720D17FA9007EE22A /* MainInterface.storyboard in Resources */,
+				AD10D04A21132A2F00A0F0D3 /* MainInterface.storyboard in Resources */,
 				AD71EA4E20E2515700256307 /* Roboto-Regular.ttf in Resources */,
 				AD391D5B20D2A831007EE22A /* Roboto-Bold.ttf in Resources */,
 				AD391D5A20D2A831007EE22A /* Roboto-Light.ttf in Resources */,
@@ -2762,25 +2762,6 @@
 			targetProxy = ADFEFA7B20E66A4700FE1557 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
-
-/* Begin PBXVariantGroup section */
-		A0A05A0B2013CF960007D1C9 /* LaunchScreen.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				A0A05A0C2013CF960007D1C9 /* Base */,
-			);
-			name = LaunchScreen.storyboard;
-			sourceTree = "<group>";
-		};
-		AD391D4520D17FA9007EE22A /* MainInterface.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				AD391D4620D17FA9007EE22A /* Base */,
-			);
-			name = MainInterface.storyboard;
-			sourceTree = "<group>";
-		};
-/* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
 		A000F6012047F65200480D8E /* Debug */ = {
