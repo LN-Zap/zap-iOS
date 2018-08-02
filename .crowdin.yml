@@ -1,0 +1,5 @@
+files:
+  - source: /Library/en.lproj/*.strings
+    translation: /Library/%osx_code%/%original_file_name%
+  - source: /Zap/en.lproj/*.strings
+    translation: /Zap/%osx_code%/%original_file_name%
