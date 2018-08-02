@@ -18,9 +18,9 @@
 
 "channel.state.active" = "Online";
 "channel.state.inactive" = "Offline";
-"channel.state.opening" = "Opening";
-"channel.state.closing" = "Closing";
-"channel.state.force_closing" = "Force Closing";
+"channel.state.opening" = "Öffne";
+"channel.state.closing" = "Schließe";
+"channel.state.force_closing" = "Schließen erzwungen";
 
 "network.type.testnet" = "Testnet";
 "network.type.mainnet" = "Mainnet";
