@@ -95,7 +95,7 @@
 "scene.pin.biometric.fallback.title" = "Use Passcode";
 "scene.pin.biometric.reason" = "To access the secure data";
 
-"scene.setup_pin.done_button" = "Done";
+"scene.setup_pin.done_button" = "Fertig";
 "scene.setup_pin.top_label.initial" = "Choose a pin.";
 "scene.setup_pin.top_label.non_matching" = "The pins didn't match. Please try again.";
 "scene.setup_pin.top_label.validate" = "Enter the pin again to validate.";
@@ -129,7 +129,7 @@
 "scene.connect_remote_node.edit_url.title" = "Address";
 
 
-"scene.create_wallet.title" = "Create Wallet";
+"scene.create_wallet.title" = "Neues Wallet erstellen";
 "scene.create_wallet.description_label" = "Make sure to store the mnemonic at a save location.";
 "scene.create_wallet.next_button" = "Next";
 
