@@ -191,7 +191,7 @@
 "scene.channel_detail.remote_pub_key_label" = "Remote PubKey";
 "scene.channel_detail.local_balance_label" = "Local Balance";
 "scene.channel_detail.remote_balance_label" = "Remote Balance";
-"scene.channel_detail.update_count_label" = "Update Count";
+"scene.channel_detail.update_count_label" = "Anzahl updaten";
 "scene.channel_detail.block_height_label" = "Block Height";
 "scene.channel_detail.closing_time.label" = "Closing in";
 "scene.channel_detail.closing_time.data" = "%d blocks (%@)";
