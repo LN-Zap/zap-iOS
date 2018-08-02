@@ -40,18 +40,18 @@
 "close_type.funding_canceled" = "Funding Canceled";
 "close_type.unknown" = "Unknown Close";
 
-"view.amount_input.placeholder" = "Amount";
+"view.amount_input.placeholder" = "Betrag";
 
-"scene.transactions.title" = "Transactions";
-"scene.transactions.search.placeholder" = "search";
+"scene.transactions.title" = "Transaktionen";
+"scene.transactions.search.placeholder" = "suchen";
 "scene.transactions.empty_state_label" = "0 transactions 🙁";
-"scene.transactions.row_action.archive" = "Archive";
-"scene.transactions.row_action.unarchive" = "Unarchive";
+"scene.transactions.row_action.archive" = "Archivieren";
+"scene.transactions.row_action.unarchive" = "Dearchivieren";
 
 "scene.settings.title" = "Settings";
 "scene.settings.section.wallet" = "Wallet";
 "scene.settings.item.bitcoin_unit" = "Bitcoin Unit";
-"scene.settings.item.currency" = "Currency";
+"scene.settings.item.currency" = "Währung";
 "scene.settings.item.network" = "Network";
 "scene.settings.item.block_explorer" = "Block Explorer";
 "scene.settings.item.lock_wallet" = "Lock Wallet";
@@ -61,9 +61,9 @@
 "scene.settings.item.remove_remote_node" = "Reset Remote Node Configuration";
 "scene.settings.item.reset_pin" = "Reset Pin";
 "scene.settings.item.report_issue" = "Report an Issue";
-"scene.settings.item.help" = "Need Help?";
+"scene.settings.item.help" = "Brauchst du Hilfe?";
 
-"scene.deposit.send" = "Send";
+"scene.deposit.send" = "Senden";
 "scene.deposit.title" = "Receive";
 
 "scene.request.title" = "Receive";
