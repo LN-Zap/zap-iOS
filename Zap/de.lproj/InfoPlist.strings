@@ -6,7 +6,7 @@
   Copyright © 2018 Zap. All rights reserved.
 */
 
-"applicationShortcutItem.send" = "Send";
-"applicationShortcutItem.request" = "Receive";
-NSCameraUsageDescription = "Zap requires access to your phone’s camera.";
-NSFaceIDUsageDescription = "Zap requires access to Face ID.";
+"applicationShortcutItem.send" = "Senden";
+"applicationShortcutItem.request" = "Empfangen";
+"NSCameraUsageDescription" = "Um QR Codes zu scannen muss Zap auf die Kamera zugreifen.";
+"NSFaceIDUsageDescription" = "Um das Entsperren zu erleichtern braucht Zap Zugriff auf Face ID.";
