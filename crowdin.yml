@@ -1,0 +1,5 @@
+files:
+  - source: Library/en.lproj/Localizable.strings
+    translation: Library/%two_letters_code%.lproj/Localizable.strings
+  - source: Zap/en.lproj/InfoPlist.strings
+    translation: Zap/%two_letters_code%.lproj/InfoPlist.strings
