@@ -48,18 +48,18 @@
 "scene.transactions.row_action.archive" = "Archivieren";
 "scene.transactions.row_action.unarchive" = "Dearchivieren";
 
-"scene.settings.title" = "Settings";
+"scene.settings.title" = "Einstellungen";
 "scene.settings.section.wallet" = "Wallet";
-"scene.settings.item.bitcoin_unit" = "Bitcoin Unit";
+"scene.settings.item.bitcoin_unit" = "Bitcoin Einheit";
 "scene.settings.item.currency" = "Währung";
-"scene.settings.item.network" = "Network";
+"scene.settings.item.network" = "Netzwerk";
 "scene.settings.item.block_explorer" = "Block Explorer";
 "scene.settings.item.lock_wallet" = "Lock Wallet";
-"scene.settings.item.on_chain_request_address.title" = "Bitcoin Address Type";
+"scene.settings.item.on_chain_request_address.title" = "Bitcoinadressen-Typ";
 "scene.settings.item.on_chain_request_address.bech32" = "Bech32";
 "scene.settings.item.on_chain_request_address.p2sh" = "P2SH";
 "scene.settings.item.remove_remote_node" = "Reset Remote Node Configuration";
-"scene.settings.item.reset_pin" = "Reset Pin";
+"scene.settings.item.reset_pin" = "PIN zurücksetzen";
 "scene.settings.item.report_issue" = "Report an Issue";
 "scene.settings.item.help" = "Brauchst du Hilfe?";
 
