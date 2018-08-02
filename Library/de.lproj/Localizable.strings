@@ -77,7 +77,7 @@
 "scene.channels.section_header.open" = "Öffnen";
 "scene.channels.close.title" = "Channel schließen";
 "scene.channels.close.message" = "Willst du wirklich den Channel mit dem Node %@ schließen?";
-"scene.channels.force_close.title" = "Erzwinge Schließung des Channels";
+"scene.channels.force_close.title" = "Erzwungene Schließung des Channels";
 "scene.channels.force_close.message" = "%@ is offline, are you sure you want to force close this channel? You’d have to wait about %@ for your funds?";
 "scene.channels.alert.cancel" = "Abbrechen";
 "scene.channels.alert.close" = "Schließen";
@@ -151,15 +151,15 @@
 
 "scene.main.send_button" = "Send";
 "scene.main.receive_button" = "Receive";
-"scene.main.transactions_button" = "Transactions";
-"scene.main.channels_button" = "Network";
+"scene.main.transactions_button" = "Transaktionen";
+"scene.main.channels_button" = "Netzwerk";
 
 "scene.qr_code_detail.method_label.lightning" = "Lightning";
-"scene.qr_code_detail.method_label.on_chain" = "On-chain";
+"scene.qr_code_detail.method_label.on_chain" = "On-Chain";
 
-"scene.sync.description_label" = "Syncing to blockchain…";
-"scene.sync.disconnect_bar_button" = "Disconnect";
-"scene.sync.disconnect_alert.title" = "Disconnect";
+"scene.sync.description_label" = "Synchronisiere mit der Blockchain...";
+"scene.sync.disconnect_bar_button" = "Trennen";
+"scene.sync.disconnect_alert.title" = "Trennen";
 "scene.sync.disconnect_alert.message" = "Do you really want to cancel syncing? You will have to reconnect to your node afterwards.";
 "scene.sync.disconnect_alert.destructive_action" = "Disconnect Node";
 "scene.sync.disconnect_alert.cancel_action" = "Cancel";
