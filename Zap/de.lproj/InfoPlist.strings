@@ -8,3 +8,5 @@
 
 "applicationShortcutItem.send" = "Send";
 "applicationShortcutItem.request" = "Receive";
+NSCameraUsageDescription = "_Zap requires access to your phone’s camera.";
+NSFaceIDUsageDescription = "_Zap requires access to Face ID.";
