@@ -9,8 +9,8 @@
 "link.help" = "https://ln-zap.github.io/zap-tutorials/";
 "link.help.zapconnect" = "https://ln-zap.github.io/zap-tutorials/iOS-remote-node-setup";
 
-"error.wrong_uri_format" = "Unknown link format.";
-"error.wrong_uri_network" = "You tried opening a link for %@ but your node is connected to %@.";
+"error.wrong_uri_format" = "Unbekanntes Linkformat.";
+"error.wrong_uri_network" = "Du hast versucht den Link %@ zu öffnen, aber dein Node ist mit %@ verbunden.";
 
 "rpc_connect_qrcode_error.btc_pay_expired" = "Sieht so aus als wäre der QR-Code abgelaufen.";
 "rpc_connect_qrcode_error.btc_pay_configuration_broken" = "BTCPay Konfigurationsdatei konnte nicht gelesen werden.";
@@ -34,11 +34,11 @@
 "transaction.close_channel.memo" = "%@ Channel: %@";
 
 "close_type.cooperative_close" = "Schließen";
-"close_type.local_force_close" = "Force Close";
+"close_type.local_force_close" = "Erzwungene Schließung";
 "close_type.remote_force_close" = "Remote Force Close";
 "close_type.breach_close" = "Breach Close";
 "close_type.funding_canceled" = "Funding Canceled";
-"close_type.unknown" = "Unknown Close";
+"close_type.unknown" = "Unbekannte Schließung";
 
 "view.amount_input.placeholder" = "Betrag";
 
@@ -141,16 +141,16 @@
 "scene.select_wallet_connection.title" = "Setup Zap";
 "scene.select_wallet_connection.create.title" = "Erstellen";
 "scene.select_wallet_connection.create.message" = "neues Wallet";
-"scene.select_wallet_connection.recover.title" = "Recover";
-"scene.select_wallet_connection.recover.message" = "existing wallet";
-"scene.select_wallet_connection.connect.title" = "Connect";
+"scene.select_wallet_connection.recover.title" = "Wiederherstellen";
+"scene.select_wallet_connection.recover.message" = "bestehendes Wallet";
+"scene.select_wallet_connection.connect.title" = "Verbinden";
 "scene.select_wallet_connection.connect.message" = "remote node";
 "scene.select_wallet_connection.disabled_alert.title" = "Sorry!";
 "scene.select_wallet_connection.disabled_alert.message" = "Running Lnd on the phone is disabled in this beta. Connect to a remote node instead.";
-"scene.select_wallet_connection.create.help" = "Need Help?";
+"scene.select_wallet_connection.create.help" = "Brauchst du Hilfe?";
 
-"scene.main.send_button" = "Send";
-"scene.main.receive_button" = "Receive";
+"scene.main.send_button" = "Senden";
+"scene.main.receive_button" = "Empfangen";
 "scene.main.transactions_button" = "Transaktionen";
 "scene.main.channels_button" = "Netzwerk";
 
