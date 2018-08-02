@@ -59,7 +59,7 @@ class ChannelLayout: UICollectionViewLayout {
     }
     
     func heightForItem(at index: Int) -> CGFloat {
-        return 400
+        return 360
     }
     
     // MARK: - Header

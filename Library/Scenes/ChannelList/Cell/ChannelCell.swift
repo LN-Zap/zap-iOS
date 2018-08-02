@@ -114,14 +114,18 @@ class ChannelCell: BondCollectionViewCell {
         layer.masksToBounds = true
         
         Style.label.apply(to: allLabels)
+        [amountLabel, nameLabel, remotePubKeyLabel, sendLimitAmountLabel, receiveLimitAmountLabel].forEach {
+            $0.font = UIFont.zap.regular
+        }
+        
         Style.button.apply(to: fundingTransactionTxIdButton, closeChannelButton)
         
-        remotePubKeyTitleLabel.text = "scene.channel_detail.remote_pub_key_label".localized
-        fundingTransactionTitleLabel.text = "scene.channel_detail.funding_transaction_label".localized
-        sendLimitTitleLabel.text = "scene.channel_detail.local_balance_label".localized
+        remotePubKeyTitleLabel.text = "scene.channel_detail.remote_pub_key_label".localized + ":"
+        fundingTransactionTitleLabel.text = "scene.channel_detail.funding_transaction_label".localized + ":"
+        sendLimitTitleLabel.text = "scene.channel_detail.local_balance_label".localized + ":"
         sendLimitCircleView.layer.cornerRadius = 5
         sendLimitCircleView.gradient = [UIColor.zap.lightMustard, UIColor.zap.peach]
-        receiveLimitTitleLabel.text = "scene.channel_detail.remote_balance_label".localized
+        receiveLimitTitleLabel.text = "scene.channel_detail.remote_balance_label".localized + ":"
         receiveLimitCircleView.layer.cornerRadius = 5
         receiveLimitCircleView.gradient = [UIColor.zap.lightGrey, UIColor.zap.lightGrey]
     }
