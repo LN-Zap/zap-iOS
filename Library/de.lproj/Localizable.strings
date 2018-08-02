@@ -36,7 +36,7 @@
 "close_type.cooperative_close" = "Schließen";
 "close_type.local_force_close" = "Erzwungene Schließung";
 "close_type.remote_force_close" = "Remote Force Close";
-"close_type.breach_close" = "Breach Close";
+"close_type.breach_close" = "Schließung wegen Verstoßes";
 "close_type.funding_canceled" = "Finanzierung abgebrochen";
 "close_type.unknown" = "Unbekannte Schließung";
 
@@ -78,7 +78,7 @@
 "scene.channels.close.title" = "Channel schließen";
 "scene.channels.close.message" = "Willst du wirklich den Channel mit dem Node %@ schließen?";
 "scene.channels.force_close.title" = "Erzwungene Schließung des Channels";
-"scene.channels.force_close.message" = "%@ is offline, are you sure you want to force close this channel? You’d have to wait about %@ for your funds?";
+"scene.channels.force_close.message" = "%@ ist offline, bist du dir sicher die Schließung dieses Channels erzwingen zu wollen? Du musst dann ungefähr %@ auf dein Guthaben warten.";
 "scene.channels.alert.cancel" = "Abbrechen";
 "scene.channels.alert.close" = "Schließen";
 "scene.channels.search.placeholder" = "suchen";
@@ -93,7 +93,7 @@
 "scene.balance.label.on_chain" = "Ƀ";
 
 "scene.pin.biometric.fallback.title" = "PIN eingeben";
-"scene.pin.biometric.reason" = "To access the secure data";
+"scene.pin.biometric.reason" = "Um auf die Sicherheitsdaten zu zugreifen";
 
 "scene.setup_pin.done_button" = "Fertig";
 "scene.setup_pin.top_label.initial" = "Wählen Sie eine PIN.";
@@ -114,7 +114,7 @@
 "scene.send.lightning.error.duplicate" = "Schon bezahlt.";
 "scene.send.lightning.memo" = "Memo: %@";
 
-"scene.connect_remote_node.title" = "Connect Remote Node";
+"scene.connect_remote_node.title" = "Remote-Node verbinden";
 "scene.connect_remote_node.empty_state" = "Scan the QRCode generate with zapconnect or paste the connection code to connect to your node.";
 "scene.connect_remote_node.url_label" = "Adresse";
 "scene.connect_remote_node.certificate_label" = "Zertifikat";
