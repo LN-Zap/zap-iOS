@@ -117,14 +117,14 @@
 "scene.connect_remote_node.title" = "Connect Remote Node";
 "scene.connect_remote_node.empty_state" = "Scan the QRCode generate with zapconnect or paste the connection code to connect to your node.";
 "scene.connect_remote_node.url_label" = "Adresse";
-"scene.connect_remote_node.certificate_label" = "Certificate";
+"scene.connect_remote_node.certificate_label" = "Zertifikat";
 "scene.connect_remote_node.connect_button" = "Verbinden";
 "scene.connect_remote_node.scan_button" = "Scannen";
 "scene.connect_remote_node.paste_button" = "Einfügen";
 "scene.connect_remote_node.help_button" = "Brauchst du Hilfe?";
 "scene.connect_remote_node.server_error" = "Verbindung zum Server gescheitert.";
 "scene.connect_remote_node.your_node_title" = "Dein Node";
-"scene.connect_remote_node.certificate_detail.certificate_title" = "Certificate";
+"scene.connect_remote_node.certificate_detail.certificate_title" = "Zertifikat";
 "scene.connect_remote_node.certificate_detail.macaroon_title" = "Macaroon";
 "scene.connect_remote_node.edit_url.title" = "Adresse";
 
@@ -144,7 +144,7 @@
 "scene.select_wallet_connection.recover.title" = "Wiederherstellen";
 "scene.select_wallet_connection.recover.message" = "bestehendes Wallet";
 "scene.select_wallet_connection.connect.title" = "Verbinden";
-"scene.select_wallet_connection.connect.message" = "remote node";
+"scene.select_wallet_connection.connect.message" = "Remote-Node";
 "scene.select_wallet_connection.disabled_alert.title" = "Sorry!";
 "scene.select_wallet_connection.disabled_alert.message" = "Running Lnd on the phone is disabled in this beta. Connect to a remote node instead.";
 "scene.select_wallet_connection.create.help" = "Brauchst du Hilfe?";
@@ -196,12 +196,12 @@
 "scene.channel_detail.closing_time.label" = "Closing in";
 "scene.channel_detail.closing_time.data" = "%d blocks (%@)";
 "scene.channel_detail.funding_transaction_label" = "Funding Transaction";
-"scene.channel_detail.close_button" = "Close";
-"scene.channel_detail.force_close_button" = "Force Close";
+"scene.channel_detail.close_button" = "Schließen";
+"scene.channel_detail.force_close_button" = "Erzwungene Schließung";
 
-"scene.filter.title" = "Transaction Filter";
-"scene.filter.section_header.transaction_types" = "Transaction Types";
-"scene.filter.displayOnChainTransactions" = "On Chain Transactions";
-"scene.filter.displayLightningPayments" = "Lightning Payments";
+"scene.filter.title" = "Transaktionsfilter";
+"scene.filter.section_header.transaction_types" = "Transaktionstypen";
+"scene.filter.displayOnChainTransactions" = "On-chain Transaktion";
+"scene.filter.displayLightningPayments" = "Lightning Zahlung";
 "scene.filter.displayLightningInvoices" = "Lightning Invoices";
-"scene.filter.displayArchivedTransactions" = "Archived Transactions";
+"scene.filter.displayArchivedTransactions" = "Archivierte Transaktionen";
