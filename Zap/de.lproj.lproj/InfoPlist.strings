@@ -1,0 +1,12 @@
+/* 
+  InfoPlist.strings
+  Zap
+
+  Created by Otto Suess on 03.06.18.
+  Copyright © 2018 Zap. All rights reserved.
+*/
+
+"applicationShortcutItem.send" = "Senden";
+"applicationShortcutItem.request" = "Empfangen";
+"NSCameraUsageDescription" = "Um QR Codes zu scannen muss Zap auf die Kamera zugreifen.";
+"NSFaceIDUsageDescription" = "Um das Entsperren zu erleichtern braucht Zap Zugriff auf Face ID.";
