@@ -10,6 +10,7 @@
 
 [![Build Status](https://travis-ci.org/LN-Zap/zap-iOS.svg?branch=master)](https://travis-ci.org/LN-Zap/zap-iOS)
 [![GitHub license](https://img.shields.io/github/license/LN-Zap/zap-iOS.svg)](LICENSE)
+[![Crowdin](https://d322cqt584bo4o.cloudfront.net/zap-ios/localized.svg)](https://crowdin.com/project/zap-ios)
 
 **Sign up for alpha testing here: [zap-ios.jackmallers.com][alpha]!** 
 
@@ -46,6 +47,7 @@ Hey! Do you like Zap? Awesome! We could actually really use your help!
 Open source isn't just writing code. Zap could use your help with any of the following:
 
 - Finding (and reporting!) bugs
+- [Help translating the app](https://crowdin.com/project/zap-ios)
 - New feature suggestions
 - Answering questions on issues
 - Documentation improvements
