@@ -20,7 +20,7 @@
 "channel.state.inactive" = "Offline";
 "channel.state.opening" = "Öffne";
 "channel.state.closing" = "Schließe";
-"channel.state.force_closing" = "Schließen erzwungen";
+"channel.state.force_closing" = "Erzwungenes Schließen";
 
 "network.type.testnet" = "Testnet";
 "network.type.mainnet" = "Mainnet";
@@ -98,19 +98,19 @@
 "scene.setup_pin.done_button" = "Fertig";
 "scene.setup_pin.top_label.initial" = "Wählen Sie eine PIN.";
 "scene.setup_pin.top_label.non_matching" = "Der PIN stimmt nicht überein. Bitte versuche es erneut.";
-"scene.setup_pin.top_label.validate" = "Enter the pin again to validate.";
+"scene.setup_pin.top_label.validate" = "Gib den PIN erneut ein.";
 
-"scene.confirm_mnemonic.title" = "Confirm Seed";
-"scene.confirm_mnemonic.description" = "Enter your key.";
+"scene.confirm_mnemonic.title" = "Seed bestätigen";
+"scene.confirm_mnemonic.description" = "Gib deinen Key ein.";
 
-"scene.channel_detail.title" = "Channel Detail";
+"scene.channel_detail.title" = "Channel-Detail";
 
-"scene.send.title" = "Send";
-"scene.send.send_button" = "Send";
-"scene.send.error.invalid_payment_request" = "Invalid Payment request";
+"scene.send.title" = "Senden";
+"scene.send.send_button" = "Senden";
+"scene.send.error.invalid_payment_request" = "Ungültige Zahlungsanfrage";
 
-"scene.send.lightning.title" = "Send";
-"scene.send.lightning.error.expired" = "Payment Request expired:\n%@";
+"scene.send.lightning.title" = "Senden";
+"scene.send.lightning.error.expired" = "Zahlungsanfrage abgelaufen:\n%@";
 "scene.send.lightning.error.duplicate" = "Payment already paid.";
 "scene.send.lightning.memo" = "Memo: %@";
 
