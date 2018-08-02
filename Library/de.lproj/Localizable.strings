@@ -37,7 +37,7 @@
 "close_type.local_force_close" = "Erzwungene Schließung";
 "close_type.remote_force_close" = "Remote Force Close";
 "close_type.breach_close" = "Breach Close";
-"close_type.funding_canceled" = "Funding Canceled";
+"close_type.funding_canceled" = "Finanzierung abgebrochen";
 "close_type.unknown" = "Unbekannte Schließung";
 
 "view.amount_input.placeholder" = "Betrag";
@@ -146,7 +146,7 @@
 "scene.select_wallet_connection.connect.title" = "Verbinden";
 "scene.select_wallet_connection.connect.message" = "Remote-Node";
 "scene.select_wallet_connection.disabled_alert.title" = "Sorry!";
-"scene.select_wallet_connection.disabled_alert.message" = "Running Lnd on the phone is disabled in this beta. Connect to a remote node instead.";
+"scene.select_wallet_connection.disabled_alert.message" = "Lnd ist in dieser mobilen Beta-Version deaktiviert. Verbinde dich stattdessen mit einem Remote-Node.";
 "scene.select_wallet_connection.create.help" = "Brauchst du Hilfe?";
 
 "scene.main.send_button" = "Senden";
@@ -178,10 +178,10 @@
 "scene.transaction_detail.created_label" = "Erstellt";
 "scene.transaction_detail.payment_request" = "Zahlungsanfrage";
 "scene.transaction_detail.expiry_label" = "Ablauf";
-"scene.transaction_detail.settled_label" = "Settled";
-"scene.transaction_detail.settled_date_label" = "Settled Date";
-"scene.transaction_detail.settled_state.settled" = "Settled";
-"scene.transaction_detail.settled_state.unsettled" = "Unsettled";
+"scene.transaction_detail.settled_label" = "Bezahlt";
+"scene.transaction_detail.settled_date_label" = "Zahlungsdatum";
+"scene.transaction_detail.settled_state.settled" = "Bezahlt";
+"scene.transaction_detail.settled_state.unsettled" = "Nicht bezahlt";
 "scene.transaction_detail.fee_label" = "Gebühr";
 "scene.transaction_detail.date_label" = "Datum";
 "scene.transaction_detail.confirmations_label" = "Bestätigungen";
@@ -189,13 +189,13 @@
 "scene.transaction_detail.transaction_id_label" = "Transaktions-ID";
 
 "scene.channel_detail.remote_pub_key_label" = "Remote PubKey";
-"scene.channel_detail.local_balance_label" = "Local Balance";
-"scene.channel_detail.remote_balance_label" = "Remote Balance";
+"scene.channel_detail.local_balance_label" = "Lokaler Kontostand";
+"scene.channel_detail.remote_balance_label" = "Remote Kontostand";
 "scene.channel_detail.update_count_label" = "Anzahl updaten";
 "scene.channel_detail.block_height_label" = "Block Height";
-"scene.channel_detail.closing_time.label" = "Closing in";
+"scene.channel_detail.closing_time.label" = "Schließt in";
 "scene.channel_detail.closing_time.data" = "%d blocks (%@)";
-"scene.channel_detail.funding_transaction_label" = "Funding Transaction";
+"scene.channel_detail.funding_transaction_label" = "Finanzierungstransaktion";
 "scene.channel_detail.close_button" = "Schließen";
 "scene.channel_detail.force_close_button" = "Erzwungene Schließung";
 
