@@ -93,7 +93,7 @@
 "scene.balance.label.on_chain" = "Ƀ";
 
 "scene.pin.biometric.fallback.title" = "Använd PIN-kod";
-"scene.pin.biometric.reason" = "To access the secure data";
+"scene.pin.biometric.reason" = "För åtkomst till säker data";
 
 "scene.setup_pin.done_button" = "Klart";
 "scene.setup_pin.top_label.initial" = "Välj en PIN-kod.";
@@ -101,7 +101,7 @@
 "scene.setup_pin.top_label.validate" = "Repetera PIN-koden för att validera.";
 
 "scene.confirm_mnemonic.title" = "Bekräfta seeden";
-"scene.confirm_mnemonic.description" = "Enter your key.";
+"scene.confirm_mnemonic.description" = "Ange din kod.";
 
 "scene.channel_detail.title" = "Kanalinfo";
 
@@ -110,7 +110,7 @@
 "scene.send.error.invalid_payment_request" = "Ogilting betalningsbegäran";
 
 "scene.send.lightning.title" = "Skicka";
-"scene.send.lightning.error.expired" = "Payment Request expired:\n%@";
+"scene.send.lightning.error.expired" = "Betalningsbegäran har utgått:\n%@";
 "scene.send.lightning.error.duplicate" = "Betalning redan betald.";
 "scene.send.lightning.memo" = "Memo: %@";
 
@@ -146,7 +146,7 @@
 "scene.select_wallet_connection.connect.title" = "Anslut";
 "scene.select_wallet_connection.connect.message" = "fjärrnod";
 "scene.select_wallet_connection.disabled_alert.title" = "Förlåt!";
-"scene.select_wallet_connection.disabled_alert.message" = "Running Lnd on the phone is disabled in this beta. Connect to a remote node instead.";
+"scene.select_wallet_connection.disabled_alert.message" = "Körande av Lnd på telefonen är inaktiverat i den här betaversionen. Anslut till en fjärrnod istället.";
 "scene.select_wallet_connection.create.help" = "Behöver du hjälp?";
 
 "scene.main.send_button" = "Skicka";
