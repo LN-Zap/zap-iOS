@@ -50,21 +50,21 @@
 
 "scene.settings.title" = "Postavke";
 "scene.settings.section.wallet" = "Novčanik";
-"scene.settings.item.bitcoin_unit" = "Bitcoin Unit";
-"scene.settings.item.currency" = "Currency";
-"scene.settings.item.network" = "Network";
-"scene.settings.item.block_explorer" = "Block Explorer";
-"scene.settings.item.lock_wallet" = "Lock Wallet";
-"scene.settings.item.on_chain_request_address.title" = "Bitcoin Address Type";
+"scene.settings.item.bitcoin_unit" = "Bitkoin jedinica";
+"scene.settings.item.currency" = "Valuta";
+"scene.settings.item.network" = "Mreža";
+"scene.settings.item.block_explorer" = "Blok preglednik";
+"scene.settings.item.lock_wallet" = "Zaključaj novčanik";
+"scene.settings.item.on_chain_request_address.title" = "Tip bitkoin adrese";
 "scene.settings.item.on_chain_request_address.bech32" = "Bech32";
 "scene.settings.item.on_chain_request_address.p2sh" = "P2SH";
-"scene.settings.item.remove_remote_node" = "Reset Remote Node Configuration";
-"scene.settings.item.reset_pin" = "Reset Pin";
-"scene.settings.item.report_issue" = "Report an Issue";
-"scene.settings.item.help" = "Need Help?";
+"scene.settings.item.remove_remote_node" = "Resetiraj konfiguraciju udaljenog čvora";
+"scene.settings.item.reset_pin" = "Resetiraj PIN";
+"scene.settings.item.report_issue" = "Prijavi problem";
+"scene.settings.item.help" = "Trebate li pomoć?";
 
-"scene.deposit.send" = "Send";
-"scene.deposit.title" = "Receive";
+"scene.deposit.send" = "Pošalji";
+"scene.deposit.title" = "Primanje";
 
 "scene.request.title" = "Receive";
 "scene.request.lightning_button" = "Lightning";
