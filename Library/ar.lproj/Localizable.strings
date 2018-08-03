@@ -44,27 +44,27 @@
 
 "scene.transactions.title" = "المعاملات";
 "scene.transactions.search.placeholder" = "بحث";
-"scene.transactions.empty_state_label" = "0 transactions 🙁";
-"scene.transactions.row_action.archive" = "Archive";
-"scene.transactions.row_action.unarchive" = "Unarchive";
+"scene.transactions.empty_state_label" = "المعاملات 0 🙁";
+"scene.transactions.row_action.archive" = "أرشيف";
+"scene.transactions.row_action.unarchive" = "إلغاء الأرشفة";
 
-"scene.settings.title" = "Settings";
-"scene.settings.section.wallet" = "Wallet";
-"scene.settings.item.bitcoin_unit" = "Bitcoin Unit";
-"scene.settings.item.currency" = "Currency";
-"scene.settings.item.network" = "Network";
-"scene.settings.item.block_explorer" = "Block Explorer";
-"scene.settings.item.lock_wallet" = "Lock Wallet";
-"scene.settings.item.on_chain_request_address.title" = "Bitcoin Address Type";
+"scene.settings.title" = "إعدادات";
+"scene.settings.section.wallet" = "محفظة";
+"scene.settings.item.bitcoin_unit" = "وحدة البت كوين";
+"scene.settings.item.currency" = "عملة";
+"scene.settings.item.network" = "شبكة";
+"scene.settings.item.block_explorer" = "مستكشف البلوك";
+"scene.settings.item.lock_wallet" = "قفل المحفظة";
+"scene.settings.item.on_chain_request_address.title" = "نوع عنوان البت كوين";
 "scene.settings.item.on_chain_request_address.bech32" = "Bech32";
 "scene.settings.item.on_chain_request_address.p2sh" = "P2SH";
-"scene.settings.item.remove_remote_node" = "Reset Remote Node Configuration";
-"scene.settings.item.reset_pin" = "Reset Pin";
-"scene.settings.item.report_issue" = "Report an Issue";
-"scene.settings.item.help" = "Need Help?";
+"scene.settings.item.remove_remote_node" = "إعادة تعيين تكوين العقدة البعيدة";
+"scene.settings.item.reset_pin" = "إعادة تعيين الرمز السري";
+"scene.settings.item.report_issue" = "الإبلاغ عن مشكلة";
+"scene.settings.item.help" = "تحتاج مساعدة؟";
 
-"scene.deposit.send" = "Send";
-"scene.deposit.title" = "Receive";
+"scene.deposit.send" = "إرسال";
+"scene.deposit.title" = "تلقى";
 
 "scene.request.title" = "Receive";
 "scene.request.lightning_button" = "Lightning";
