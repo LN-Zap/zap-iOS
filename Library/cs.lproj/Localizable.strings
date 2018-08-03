@@ -10,10 +10,10 @@
 "link.help.zapconnect" = "https://ln-zap.github.io/zap-tutorials/iOS-remote-node-setup";
 
 "error.wrong_uri_format" = "Neznámý formát odkazu.";
-"error.wrong_uri_network" = "You tried opening a link for %@ but your node is connected to %@.";
+"error.wrong_uri_network" = "Pokusili jste se otevřít odkaz pro %@, ale Váš uzel je připojen k %@.";
 
 "rpc_connect_qrcode_error.btc_pay_expired" = "Looks like the code is expired.";
-"rpc_connect_qrcode_error.btc_pay_configuration_broken" = "Could not read BTCPay configurations file.";
+"rpc_connect_qrcode_error.btc_pay_configuration_broken" = "Nebylo možné načíst konfigurační soubor BTCPay.";
 "rpc_connect_qrcode_error.cant_read_qrcode" = "Can't connect to this code.";
 
 "channel.state.active" = "Online";
@@ -49,7 +49,7 @@
 "scene.transactions.row_action.unarchive" = "Unarchive";
 
 "scene.settings.title" = "Settings";
-"scene.settings.section.wallet" = "Wallet";
+"scene.settings.section.wallet" = "Peněženka";
 "scene.settings.item.bitcoin_unit" = "Bitcoin Unit";
 "scene.settings.item.currency" = "Currency";
 "scene.settings.item.network" = "Network";
