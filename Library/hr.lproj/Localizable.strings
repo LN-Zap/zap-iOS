@@ -106,26 +106,26 @@
 "scene.channel_detail.title" = "Detalji kanala";
 
 "scene.send.title" = "Slanje";
-"scene.send.send_button" = "Send";
-"scene.send.error.invalid_payment_request" = "Invalid Payment request";
+"scene.send.send_button" = "Slanje";
+"scene.send.error.invalid_payment_request" = "Nevaljan zahtjev za plaćanje";
 
-"scene.send.lightning.title" = "Send";
-"scene.send.lightning.error.expired" = "Payment Request expired:\n%@";
-"scene.send.lightning.error.duplicate" = "Payment already paid.";
-"scene.send.lightning.memo" = "Memo: %@";
+"scene.send.lightning.title" = "Slanje";
+"scene.send.lightning.error.expired" = "Zahtjev za plaćanje istekao:\n%@";
+"scene.send.lightning.error.duplicate" = "Plaćanje je već plaćeno.";
+"scene.send.lightning.memo" = "Bilješka: %@";
 
-"scene.connect_remote_node.title" = "Connect Remote Node";
-"scene.connect_remote_node.empty_state" = "Scan the QRCode generate with zapconnect or paste the connection code to connect to your node.";
-"scene.connect_remote_node.url_label" = "Address";
-"scene.connect_remote_node.certificate_label" = "Certificate";
-"scene.connect_remote_node.connect_button" = "Connect";
-"scene.connect_remote_node.scan_button" = "Scan";
-"scene.connect_remote_node.paste_button" = "Paste";
-"scene.connect_remote_node.help_button" = "Need Help?";
-"scene.connect_remote_node.server_error" = "Could not connect to server.";
-"scene.connect_remote_node.your_node_title" = "Your Node";
-"scene.connect_remote_node.certificate_detail.certificate_title" = "Certificate";
-"scene.connect_remote_node.certificate_detail.macaroon_title" = "Macaroon";
+"scene.connect_remote_node.title" = "Povezivanje udaljenog čvora";
+"scene.connect_remote_node.empty_state" = "Skenirajte QRCode generiran sa zapconnect ili zalijepite kôd veze za povezivanje na tvoj čvor.";
+"scene.connect_remote_node.url_label" = "Adresa";
+"scene.connect_remote_node.certificate_label" = "Certifikat";
+"scene.connect_remote_node.connect_button" = "Povezivanje";
+"scene.connect_remote_node.scan_button" = "Skeniraj";
+"scene.connect_remote_node.paste_button" = "Zalijepi";
+"scene.connect_remote_node.help_button" = "Trebate li pomoć?";
+"scene.connect_remote_node.server_error" = "Ne mogu se povezati s poslužiteljem.";
+"scene.connect_remote_node.your_node_title" = "Tvoj čvor";
+"scene.connect_remote_node.certificate_detail.certificate_title" = "Certifikat";
+"scene.connect_remote_node.certificate_detail.macaroon_title" = "Makaron";
 "scene.connect_remote_node.edit_url.title" = "Adresa";
 
 
