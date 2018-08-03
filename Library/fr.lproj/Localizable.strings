@@ -16,11 +16,11 @@
 "rpc_connect_qrcode_error.btc_pay_configuration_broken" = "Could not read BTCPay configurations file.";
 "rpc_connect_qrcode_error.cant_read_qrcode" = "Can't connect to this code.";
 
-"channel.state.active" = "Online";
-"channel.state.inactive" = "Offline";
-"channel.state.opening" = "Opening";
-"channel.state.closing" = "Closing";
-"channel.state.force_closing" = "Force Closing";
+"channel.state.active" = "En ligne";
+"channel.state.inactive" = "Déconnecté";
+"channel.state.opening" = "Ouverture";
+"channel.state.closing" = "Fermeture";
+"channel.state.force_closing" = "Fermeture forcée";
 
 "network.type.testnet" = "Testnet";
 "network.type.mainnet" = "Mainnet";
@@ -43,12 +43,12 @@
 "view.amount_input.placeholder" = "Amount";
 
 "scene.transactions.title" = "Transactions";
-"scene.transactions.search.placeholder" = "search";
+"scene.transactions.search.placeholder" = "recherche";
 "scene.transactions.empty_state_label" = "0 transactions 🙁";
 "scene.transactions.row_action.archive" = "Archive";
 "scene.transactions.row_action.unarchive" = "Unarchive";
 
-"scene.settings.title" = "Settings";
+"scene.settings.title" = "Paramètres";
 "scene.settings.section.wallet" = "Wallet";
 "scene.settings.item.bitcoin_unit" = "Bitcoin Unit";
 "scene.settings.item.currency" = "Currency";
