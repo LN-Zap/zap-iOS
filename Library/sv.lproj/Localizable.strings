@@ -13,7 +13,7 @@
 "error.wrong_uri_network" = "Du försökte öppna en länk för %@ men din nod är ansluten till %@.";
 
 "rpc_connect_qrcode_error.btc_pay_expired" = "Looks like the code is expired.";
-"rpc_connect_qrcode_error.btc_pay_configuration_broken" = "Could not read BTCPay configurations file.";
+"rpc_connect_qrcode_error.btc_pay_configuration_broken" = "Kunde inte läsa konfigurationsfilen för BTCPay.";
 "rpc_connect_qrcode_error.cant_read_qrcode" = "Kan inte ansluta till denna kod.";
 
 "channel.state.active" = "Online";
@@ -30,10 +30,10 @@
 "unit.bitcoin.bit" = "Bits";
 "unit.bitcoin.satoshi" = "Satoshi";
 
-"transaction.open_channel.memo" = "Open Channel: %@";
-"transaction.close_channel.memo" = "%@ Channel: %@";
+"transaction.open_channel.memo" = "Öppna kanal: %@";
+"transaction.close_channel.memo" = "%@ Kanal: %@";
 
-"close_type.cooperative_close" = "Close";
+"close_type.cooperative_close" = "Stäng";
 "close_type.local_force_close" = "Force Close";
 "close_type.remote_force_close" = "Remote Force Close";
 "close_type.breach_close" = "Breach Close";
@@ -70,23 +70,23 @@
 "scene.request.lightning_button" = "Lightning";
 "scene.request.on_chain_button" = "On-chain";
 "scene.request.memo_placeholder" = "Memo (optional)";
-"scene.request.generate_request_button" = "Generate Request";
+"scene.request.generate_request_button" = "Skapa begäran";
 
-"scene.channels.title" = "Channels";
+"scene.channels.title" = "Kanaler";
 "scene.channels.section_header.pending" = "Pending";
-"scene.channels.section_header.open" = "Open";
-"scene.channels.close.title" = "Close Channel";
-"scene.channels.close.message" = "Do you really want to close the channel with node %@?";
+"scene.channels.section_header.open" = "Öppna";
+"scene.channels.close.title" = "Stäng kanal";
+"scene.channels.close.message" = "Vill du verkligen stänga kanalen med nod %@?";
 "scene.channels.force_close.title" = "Force Close Channel";
 "scene.channels.force_close.message" = "%@ is offline, are you sure you want to force close this channel? You’d have to wait about %@ for your funds?";
-"scene.channels.alert.cancel" = "Cancel";
-"scene.channels.alert.close" = "Close";
-"scene.channels.search.placeholder" = "search";
-"scene.channels.row_action.close" = "Close Channel";
-"scene.channels.close_success.toast" = "Channel is closing.";
+"scene.channels.alert.cancel" = "Avbryt";
+"scene.channels.alert.close" = "Stäng";
+"scene.channels.search.placeholder" = "sök";
+"scene.channels.row_action.close" = "Stäng kanal";
+"scene.channels.close_success.toast" = "Kanalen stängs.";
 
-"scene.open_channel.title" = "Open Channel";
-"scene.open_channel.help_label" = "Fund connection";
+"scene.open_channel.title" = "Öppna kanal";
+"scene.open_channel.help_label" = "Finansiera anslutning";
 "scene.open_channel.add_button" = "Add";
 
 "scene.balance.title" = "Balance";
@@ -95,26 +95,26 @@
 "scene.pin.biometric.fallback.title" = "Use Passcode";
 "scene.pin.biometric.reason" = "To access the secure data";
 
-"scene.setup_pin.done_button" = "Done";
-"scene.setup_pin.top_label.initial" = "Choose a pin.";
-"scene.setup_pin.top_label.non_matching" = "The pins didn't match. Please try again.";
+"scene.setup_pin.done_button" = "Klart";
+"scene.setup_pin.top_label.initial" = "Välj en PIN-kod.";
+"scene.setup_pin.top_label.non_matching" = "PIN-koderna matchar ej. Vänligen försök igen.";
 "scene.setup_pin.top_label.validate" = "Enter the pin again to validate.";
 
-"scene.confirm_mnemonic.title" = "Confirm Seed";
+"scene.confirm_mnemonic.title" = "Bekräfta seeden";
 "scene.confirm_mnemonic.description" = "Enter your key.";
 
-"scene.channel_detail.title" = "Channel Detail";
+"scene.channel_detail.title" = "Kanalinfo";
 
 "scene.send.title" = "Skicka";
 "scene.send.send_button" = "Skicka";
-"scene.send.error.invalid_payment_request" = "Invalid Payment request";
+"scene.send.error.invalid_payment_request" = "Ogilting betalningsbegäran";
 
 "scene.send.lightning.title" = "Skicka";
 "scene.send.lightning.error.expired" = "Payment Request expired:\n%@";
 "scene.send.lightning.error.duplicate" = "Betalning redan betald.";
 "scene.send.lightning.memo" = "Memo: %@";
 
-"scene.connect_remote_node.title" = "Connect Remote Node";
+"scene.connect_remote_node.title" = "Anslutt Fjärrnod";
 "scene.connect_remote_node.empty_state" = "Skanna QR-koden genererad med zapconnect eller klistra in anslutningskoden för att ansluta till din nod.";
 "scene.connect_remote_node.url_label" = "Adress";
 "scene.connect_remote_node.certificate_label" = "Certifikat";
