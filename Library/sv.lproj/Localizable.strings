@@ -20,7 +20,7 @@
 "channel.state.inactive" = "Offline";
 "channel.state.opening" = "Öppnar";
 "channel.state.closing" = "Stänger";
-"channel.state.force_closing" = "Force Closing";
+"channel.state.force_closing" = "Tvingad stängning";
 
 "network.type.testnet" = "Testnet";
 "network.type.mainnet" = "Mainnet";
@@ -34,7 +34,7 @@
 "transaction.close_channel.memo" = "%@ Kanal: %@";
 
 "close_type.cooperative_close" = "Stäng";
-"close_type.local_force_close" = "Force Close";
+"close_type.local_force_close" = "Tvinga stängning";
 "close_type.remote_force_close" = "Remote Force Close";
 "close_type.breach_close" = "Breach Close";
 "close_type.funding_canceled" = "Funding Canceled";
