@@ -48,36 +48,36 @@
 "scene.transactions.row_action.archive" = "Archive";
 "scene.transactions.row_action.unarchive" = "Unarchive";
 
-"scene.settings.title" = "Settings";
-"scene.settings.section.wallet" = "Wallet";
+"scene.settings.title" = "Ustawienia";
+"scene.settings.section.wallet" = "Portfel";
 "scene.settings.item.bitcoin_unit" = "Bitcoin Unit";
-"scene.settings.item.currency" = "Currency";
-"scene.settings.item.network" = "Network";
+"scene.settings.item.currency" = "Waluta";
+"scene.settings.item.network" = "Sieci";
 "scene.settings.item.block_explorer" = "Block Explorer";
-"scene.settings.item.lock_wallet" = "Lock Wallet";
-"scene.settings.item.on_chain_request_address.title" = "Bitcoin Address Type";
+"scene.settings.item.lock_wallet" = "Zablokuj portfel";
+"scene.settings.item.on_chain_request_address.title" = "Rodzaj adresu";
 "scene.settings.item.on_chain_request_address.bech32" = "Bech32";
 "scene.settings.item.on_chain_request_address.p2sh" = "P2SH";
-"scene.settings.item.remove_remote_node" = "Reset Remote Node Configuration";
-"scene.settings.item.reset_pin" = "Reset Pin";
-"scene.settings.item.report_issue" = "Report an Issue";
-"scene.settings.item.help" = "Need Help?";
+"scene.settings.item.remove_remote_node" = "Zresetuj ustawienia zdalnego node'a";
+"scene.settings.item.reset_pin" = "Zresetuj PIN";
+"scene.settings.item.report_issue" = "Zgłoś problem";
+"scene.settings.item.help" = "Potrzebujesz pomocy?";
 
-"scene.deposit.send" = "Send";
-"scene.deposit.title" = "Receive";
+"scene.deposit.send" = "Wyślij";
+"scene.deposit.title" = "Otrzymaj";
 
 "scene.request.title" = "Receive";
 "scene.request.lightning_button" = "Lightning";
 "scene.request.on_chain_button" = "On-chain";
-"scene.request.memo_placeholder" = "Memo (optional)";
-"scene.request.generate_request_button" = "Generate Request";
+"scene.request.memo_placeholder" = "Notatka (opcjonalnie)";
+"scene.request.generate_request_button" = "Wygeneruj Żądanie";
 
-"scene.channels.title" = "Channels";
+"scene.channels.title" = "Kanały";
 "scene.channels.section_header.pending" = "Pending";
 "scene.channels.section_header.open" = "Open";
 "scene.channels.close.title" = "Close Channel";
-"scene.channels.close.message" = "Do you really want to close the channel with node %@?";
-"scene.channels.force_close.title" = "Force Close Channel";
+"scene.channels.close.message" = "Czy naprawdę chcesz zamknąć kanał z nodem %@?";
+"scene.channels.force_close.title" = "Wymuś Zamknięcie Kanału";
 "scene.channels.force_close.message" = "%@ is offline, are you sure you want to force close this channel? You’d have to wait about %@ for your funds?";
 "scene.channels.alert.cancel" = "Cancel";
 "scene.channels.alert.close" = "Close";
