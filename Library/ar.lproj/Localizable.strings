@@ -66,16 +66,16 @@
 "scene.deposit.send" = "إرسال";
 "scene.deposit.title" = "تلقى";
 
-"scene.request.title" = "Receive";
+"scene.request.title" = "تلقى";
 "scene.request.lightning_button" = "Lightning";
 "scene.request.on_chain_button" = "On-chain";
-"scene.request.memo_placeholder" = "Memo (optional)";
-"scene.request.generate_request_button" = "Generate Request";
+"scene.request.memo_placeholder" = "مذكرة (اختياري)";
+"scene.request.generate_request_button" = "إنشاء طلب";
 
-"scene.channels.title" = "Channels";
-"scene.channels.section_header.pending" = "Pending";
-"scene.channels.section_header.open" = "Open";
-"scene.channels.close.title" = "Close Channel";
+"scene.channels.title" = "قنوات";
+"scene.channels.section_header.pending" = "قيد الانتظار";
+"scene.channels.section_header.open" = "فتح";
+"scene.channels.close.title" = "إغلاق القناة";
 "scene.channels.close.message" = "Do you really want to close the channel with node %@?";
 "scene.channels.force_close.title" = "Force Close Channel";
 "scene.channels.force_close.message" = "%@ is offline, are you sure you want to force close this channel? You’d have to wait about %@ for your funds?";
