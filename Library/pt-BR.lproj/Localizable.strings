@@ -12,9 +12,9 @@
 "error.wrong_uri_format" = "Unknown link format.";
 "error.wrong_uri_network" = "You tried opening a link for %@ but your node is connected to %@.";
 
-"rpc_connect_qrcode_error.btc_pay_expired" = "Looks like the code is expired.";
+"rpc_connect_qrcode_error.btc_pay_expired" = "O código parece ser expirado.";
 "rpc_connect_qrcode_error.btc_pay_configuration_broken" = "Could not read BTCPay configurations file.";
-"rpc_connect_qrcode_error.cant_read_qrcode" = "Can't connect to this code.";
+"rpc_connect_qrcode_error.cant_read_qrcode" = "Não pode se conectar a esse código.";
 
 "channel.state.active" = "Online";
 "channel.state.inactive" = "Offline";
@@ -33,19 +33,19 @@
 "transaction.open_channel.memo" = "Open Channel: %@";
 "transaction.close_channel.memo" = "%@ Channel: %@";
 
-"close_type.cooperative_close" = "Close";
-"close_type.local_force_close" = "Force Close";
+"close_type.cooperative_close" = "Fechar";
+"close_type.local_force_close" = "Forçar Encerramento";
 "close_type.remote_force_close" = "Remote Force Close";
 "close_type.breach_close" = "Breach Close";
 "close_type.funding_canceled" = "Funding Canceled";
 "close_type.unknown" = "Unknown Close";
 
-"view.amount_input.placeholder" = "Amount";
+"view.amount_input.placeholder" = "Quantidade";
 
 "scene.transactions.title" = "Transactions";
 "scene.transactions.search.placeholder" = "search";
-"scene.transactions.empty_state_label" = "0 transactions 🙁";
-"scene.transactions.row_action.archive" = "Archive";
+"scene.transactions.empty_state_label" = "0 transações 🙁";
+"scene.transactions.row_action.archive" = "Arquivo";
 "scene.transactions.row_action.unarchive" = "Unarchive";
 
 "scene.settings.title" = "Settings";
@@ -79,24 +79,24 @@
 "scene.channels.close.message" = "Do you really want to close the channel with node %@?";
 "scene.channels.force_close.title" = "Force Close Channel";
 "scene.channels.force_close.message" = "%@ is offline, are you sure you want to force close this channel? You’d have to wait about %@ for your funds?";
-"scene.channels.alert.cancel" = "Cancel";
-"scene.channels.alert.close" = "Close";
+"scene.channels.alert.cancel" = "Cancelar";
+"scene.channels.alert.close" = "Fechar";
 "scene.channels.search.placeholder" = "search";
-"scene.channels.row_action.close" = "Close Channel";
+"scene.channels.row_action.close" = "Encerrar Canal";
 "scene.channels.close_success.toast" = "Channel is closing.";
 
 "scene.open_channel.title" = "Open Channel";
 "scene.open_channel.help_label" = "Fund connection";
-"scene.open_channel.add_button" = "Add";
+"scene.open_channel.add_button" = "Adicionar";
 
-"scene.balance.title" = "Balance";
+"scene.balance.title" = "Balanço";
 "scene.balance.label.on_chain" = "Ƀ";
 
 "scene.pin.biometric.fallback.title" = "Use Passcode";
 "scene.pin.biometric.reason" = "To access the secure data";
 
 "scene.setup_pin.done_button" = "Done";
-"scene.setup_pin.top_label.initial" = "Choose a pin.";
+"scene.setup_pin.top_label.initial" = "Escolher um pin.";
 "scene.setup_pin.top_label.non_matching" = "The pins didn't match. Please try again.";
 "scene.setup_pin.top_label.validate" = "Enter the pin again to validate.";
 
@@ -105,7 +105,7 @@
 
 "scene.channel_detail.title" = "Channel Detail";
 
-"scene.send.title" = "Send";
+"scene.send.title" = "Enviar";
 "scene.send.send_button" = "Send";
 "scene.send.error.invalid_payment_request" = "Invalid Payment request";
 
@@ -120,25 +120,25 @@
 "scene.connect_remote_node.certificate_label" = "Certificate";
 "scene.connect_remote_node.connect_button" = "Connect";
 "scene.connect_remote_node.scan_button" = "Scan";
-"scene.connect_remote_node.paste_button" = "Paste";
+"scene.connect_remote_node.paste_button" = "Colar";
 "scene.connect_remote_node.help_button" = "Need Help?";
 "scene.connect_remote_node.server_error" = "Could not connect to server.";
 "scene.connect_remote_node.your_node_title" = "Your Node";
 "scene.connect_remote_node.certificate_detail.certificate_title" = "Certificate";
 "scene.connect_remote_node.certificate_detail.macaroon_title" = "Macaroon";
-"scene.connect_remote_node.edit_url.title" = "Address";
+"scene.connect_remote_node.edit_url.title" = "Endereço";
 
 
-"scene.create_wallet.title" = "Create Wallet";
+"scene.create_wallet.title" = "Criar carteira";
 "scene.create_wallet.description_label" = "Make sure to store the mnemonic at a save location.";
-"scene.create_wallet.next_button" = "Next";
+"scene.create_wallet.next_button" = "Seguinte";
 
 "scene.recover_wallet.title" = "Recover Wallet";
 "scene.recover_wallet.done_button" = "Done";
 "scene.recover_wallet.description_label" = "Enter your seed:";
 "scene.recover_wallet.placeholder" = "abandon ability able about above absent absorb abstract absurd abuse access accident account accuse achieve acid acoustic acquire across act action actor actress actual";
 
-"scene.select_wallet_connection.title" = "Setup Zap";
+"scene.select_wallet_connection.title" = "Configurar Zap";
 "scene.select_wallet_connection.create.title" = "Create";
 "scene.select_wallet_connection.create.message" = "new wallet";
 "scene.select_wallet_connection.recover.title" = "Recover";
@@ -152,13 +152,13 @@
 "scene.main.send_button" = "Send";
 "scene.main.receive_button" = "Receive";
 "scene.main.transactions_button" = "Transactions";
-"scene.main.channels_button" = "Network";
+"scene.main.channels_button" = "Rede";
 
 "scene.qr_code_detail.method_label.lightning" = "Lightning";
 "scene.qr_code_detail.method_label.on_chain" = "On-chain";
 
 "scene.sync.description_label" = "Syncing to blockchain…";
-"scene.sync.disconnect_bar_button" = "Disconnect";
+"scene.sync.disconnect_bar_button" = "Desconectar-se";
 "scene.sync.disconnect_alert.title" = "Disconnect";
 "scene.sync.disconnect_alert.message" = "Do you really want to cancel syncing? You will have to reconnect to your node afterwards.";
 "scene.sync.disconnect_alert.destructive_action" = "Disconnect Node";
@@ -170,22 +170,22 @@
 "scene.transaction_detail.archive_button" = "Archive";
 "scene.transaction_detail.unarchive_button" = "Unarchive";
 "scene.transaction_detail.memo_label" = "Memo";
-"scene.transaction_detail.qr_code.copy_button" = "Copy";
-"scene.transaction_detail.qr_code.share_button" = "Share";
+"scene.transaction_detail.qr_code.copy_button" = "Copiar";
+"scene.transaction_detail.qr_code.share_button" = "Compartilhar";
 "scene.transaction_detail.qr_code.expired_label" = "Expired";
 "scene.transaction_detail.amount.unspecified_label" = "Unspecified";
-"scene.transaction_detail.amount_label" = "Amount";
-"scene.transaction_detail.created_label" = "Created";
+"scene.transaction_detail.amount_label" = "Quantidade";
+"scene.transaction_detail.created_label" = "Criado";
 "scene.transaction_detail.payment_request" = "Payment Request";
 "scene.transaction_detail.expiry_label" = "Expiry";
 "scene.transaction_detail.settled_label" = "Settled";
 "scene.transaction_detail.settled_date_label" = "Settled Date";
 "scene.transaction_detail.settled_state.settled" = "Settled";
 "scene.transaction_detail.settled_state.unsettled" = "Unsettled";
-"scene.transaction_detail.fee_label" = "Fee";
-"scene.transaction_detail.date_label" = "Date";
-"scene.transaction_detail.confirmations_label" = "Confirmations";
-"scene.transaction_detail.address_label" = "Address";
+"scene.transaction_detail.fee_label" = "Taxa";
+"scene.transaction_detail.date_label" = "Data";
+"scene.transaction_detail.confirmations_label" = "Confirmações";
+"scene.transaction_detail.address_label" = "Endereço";
 "scene.transaction_detail.transaction_id_label" = "Transaction ID";
 
 "scene.channel_detail.remote_pub_key_label" = "Remote PubKey";
