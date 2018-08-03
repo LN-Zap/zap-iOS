@@ -86,26 +86,26 @@
 "scene.channels.close_success.toast" = "Kanal se zatvara.";
 
 "scene.open_channel.title" = "Otvori kanal";
-"scene.open_channel.help_label" = "Fund connection";
-"scene.open_channel.add_button" = "Add";
+"scene.open_channel.help_label" = "Novci veze";
+"scene.open_channel.add_button" = "Dodaj";
 
-"scene.balance.title" = "Balance";
+"scene.balance.title" = "Saldo";
 "scene.balance.label.on_chain" = "Ƀ";
 
-"scene.pin.biometric.fallback.title" = "Use Passcode";
-"scene.pin.biometric.reason" = "To access the secure data";
+"scene.pin.biometric.fallback.title" = "Koristiti zaporku";
+"scene.pin.biometric.reason" = "Za pristup zaštićenim podacima";
 
-"scene.setup_pin.done_button" = "Done";
-"scene.setup_pin.top_label.initial" = "Choose a pin.";
-"scene.setup_pin.top_label.non_matching" = "The pins didn't match. Please try again.";
-"scene.setup_pin.top_label.validate" = "Enter the pin again to validate.";
+"scene.setup_pin.done_button" = "Gotovo";
+"scene.setup_pin.top_label.initial" = "Izaberite pin.";
+"scene.setup_pin.top_label.non_matching" = "Pin je pogrešan. Molimo pokušajte ponovo.";
+"scene.setup_pin.top_label.validate" = "Unesite pin ponovo za potvrdu.";
 
-"scene.confirm_mnemonic.title" = "Confirm Seed";
-"scene.confirm_mnemonic.description" = "Enter your key.";
+"scene.confirm_mnemonic.title" = "Potvrdite niz";
+"scene.confirm_mnemonic.description" = "Unesite vaš ključ.";
 
-"scene.channel_detail.title" = "Channel Detail";
+"scene.channel_detail.title" = "Detalji kanala";
 
-"scene.send.title" = "Send";
+"scene.send.title" = "Slanje";
 "scene.send.send_button" = "Send";
 "scene.send.error.invalid_payment_request" = "Invalid Payment request";
 
