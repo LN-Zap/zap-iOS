@@ -90,14 +90,14 @@
 "scene.open_channel.add_button" = "Dodaj";
 
 "scene.balance.title" = "Saldo";
-"scene.balance.label.on_chain" = "Ƀ";
+"scene.balance.label.on_chain" = "₿";
 
 "scene.pin.biometric.fallback.title" = "Koristiti zaporku";
 "scene.pin.biometric.reason" = "Za pristup zaštićenim podacima";
 
 "scene.setup_pin.done_button" = "Gotovo";
 "scene.setup_pin.top_label.initial" = "Izaberite pin.";
-"scene.setup_pin.top_label.non_matching" = "Pin je pogrešan. Molimo pokušajte ponovo.";
+"scene.setup_pin.top_label.non_matching" = "Pinovi se razlikuju. Molimo pokušajte ponovo.";
 "scene.setup_pin.top_label.validate" = "Unesite pin ponovo za potvrdu.";
 
 "scene.confirm_mnemonic.title" = "Potvrdite niz";
@@ -155,7 +155,7 @@
 "scene.main.channels_button" = "Mreža";
 
 "scene.qr_code_detail.method_label.lightning" = "Munja";
-"scene.qr_code_detail.method_label.on_chain" = "Na-lanačano";
+"scene.qr_code_detail.method_label.on_chain" = "Na lanac";
 
 "scene.sync.description_label" = "Sinkronizacija na blokčein…";
 "scene.sync.disconnect_bar_button" = "Prekinuti vezu";
