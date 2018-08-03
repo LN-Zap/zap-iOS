@@ -33,8 +33,8 @@
 "transaction.open_channel.memo" = "Otvori kanal: %@";
 "transaction.close_channel.memo" = "%@ Kanal: %@";
 
-"close_type.cooperative_close" = "Zatvaranje";
-"close_type.local_force_close" = "Prisilno zatvaranje";
+"close_type.cooperative_close" = "Zatvori";
+"close_type.local_force_close" = "Prisilno zatvori";
 "close_type.remote_force_close" = "Udaljeno prisilno zatvaranje";
 "close_type.breach_close" = "Probojno zatvaranje";
 "close_type.funding_canceled" = "Uplata poništena";
@@ -68,7 +68,7 @@
 
 "scene.request.title" = "Primanje";
 "scene.request.lightning_button" = "Munja";
-"scene.request.on_chain_button" = "Na lanac";
+"scene.request.on_chain_button" = "Na-lanac";
 "scene.request.memo_placeholder" = "Bilješka (opcija)";
 "scene.request.generate_request_button" = "Generiraj zahtjev";
 
@@ -200,8 +200,8 @@
 "scene.channel_detail.force_close_button" = "Prisilno zatvaranje";
 
 "scene.filter.title" = "Filter transakcija";
-"scene.filter.section_header.transaction_types" = "Transaction Types";
-"scene.filter.displayOnChainTransactions" = "On Chain Transactions";
-"scene.filter.displayLightningPayments" = "Lightning Payments";
-"scene.filter.displayLightningInvoices" = "Lightning Invoices";
-"scene.filter.displayArchivedTransactions" = "Archived Transactions";
+"scene.filter.section_header.transaction_types" = "Vrste transakcija";
+"scene.filter.displayOnChainTransactions" = "Na-lanac transakcije";
+"scene.filter.displayLightningPayments" = "Munja plaćanja";
+"scene.filter.displayLightningInvoices" = "Munja fakture";
+"scene.filter.displayArchivedTransactions" = "Arhivirane transakcije";
