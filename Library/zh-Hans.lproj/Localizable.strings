@@ -10,7 +10,7 @@
 "link.help.zapconnect" = "https://ln-zap.github.io/zap-tutorials/iOS-remote-node-setup";
 
 "error.wrong_uri_format" = "未知的链接格式。";
-"error.wrong_uri_network" = "正在尝试新的链接 %@, 但目前节点已连接到 %@。";
+"error.wrong_uri_network" = "尝试链接到 %@, 但目前您的节点已连接到 %@。";
 
 "rpc_connect_qrcode_error.btc_pay_expired" = "代码已过期。";
 "rpc_connect_qrcode_error.btc_pay_configuration_broken" = "无法读取 BTCPay 配置文件。";
@@ -18,7 +18,7 @@
 
 "channel.state.active" = "在线";
 "channel.state.inactive" = "离线";
-"channel.state.opening" = "开放中";
+"channel.state.opening" = "打开中";
 "channel.state.closing" = "关闭中";
 "channel.state.force_closing" = "强制关闭";
 
@@ -26,7 +26,7 @@
 "network.type.mainnet" = "主网";
 
 "unit.bitcoin.btc" = "比特币";
-"unit.bitcoin.mbtc" = "Milli Bitcoin";
+"unit.bitcoin.mbtc" = "mBTC";
 "unit.bitcoin.bit" = "Bits";
 "unit.bitcoin.satoshi" = "聪";
 
@@ -115,10 +115,10 @@
 "scene.send.lightning.memo" = "备注: %@";
 
 "scene.connect_remote_node.title" = "连接远程节点";
-"scene.connect_remote_node.empty_state" = "Scan the QRCode generate with zapconnect or paste the connection code to connect to your node.";
-"scene.connect_remote_node.url_label" = "Address";
-"scene.connect_remote_node.certificate_label" = "Certificate";
-"scene.connect_remote_node.connect_button" = "Connect";
+"scene.connect_remote_node.empty_state" = "使用 zapconnect 扫描 QRCode 生成或粘贴连接代码以连接到您的节点。";
+"scene.connect_remote_node.url_label" = "地址";
+"scene.connect_remote_node.certificate_label" = "证书";
+"scene.connect_remote_node.connect_button" = "连接";
 "scene.connect_remote_node.scan_button" = "扫描";
 "scene.connect_remote_node.paste_button" = "粘贴";
 "scene.connect_remote_node.help_button" = "需要帮助吗？";
