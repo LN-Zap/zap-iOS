@@ -115,7 +115,7 @@
 "scene.send.lightning.memo" = "Memo: %@";
 
 "scene.connect_remote_node.title" = "Connect Remote Node";
-"scene.connect_remote_node.empty_state" = "Scan the QRCode generate with zapconnect or paste the connection code to connect to your node.";
+"scene.connect_remote_node.empty_state" = "Skanna QR-koden genererad med zapconnect eller klistra in anslutningskoden för att ansluta till din nod.";
 "scene.connect_remote_node.url_label" = "Adress";
 "scene.connect_remote_node.certificate_label" = "Certifikat";
 "scene.connect_remote_node.connect_button" = "Anslut";
@@ -130,7 +130,7 @@
 
 
 "scene.create_wallet.title" = "Skapa ny plånbok";
-"scene.create_wallet.description_label" = "Make sure to store the mnemonic at a save location.";
+"scene.create_wallet.description_label" = "Se till att lagra mnemonicen på en säker plats.";
 "scene.create_wallet.next_button" = "Nästa";
 
 "scene.recover_wallet.title" = "Återställ plånbok";
@@ -138,14 +138,14 @@
 "scene.recover_wallet.description_label" = "Ange din seed:";
 "scene.recover_wallet.placeholder" = "abandon ability able about above absent absorb abstract absurd abuse access accident account accuse achieve acid acoustic acquire across act action actor actress actual";
 
-"scene.select_wallet_connection.title" = "Setup Zap";
+"scene.select_wallet_connection.title" = "Konfigurera Zap";
 "scene.select_wallet_connection.create.title" = "Skapa";
 "scene.select_wallet_connection.create.message" = "ny plånbok";
 "scene.select_wallet_connection.recover.title" = "Återfå";
 "scene.select_wallet_connection.recover.message" = "befintliga plånbok";
 "scene.select_wallet_connection.connect.title" = "Anslut";
 "scene.select_wallet_connection.connect.message" = "fjärrnod";
-"scene.select_wallet_connection.disabled_alert.title" = "Sorry!";
+"scene.select_wallet_connection.disabled_alert.title" = "Förlåt!";
 "scene.select_wallet_connection.disabled_alert.message" = "Running Lnd on the phone is disabled in this beta. Connect to a remote node instead.";
 "scene.select_wallet_connection.create.help" = "Behöver du hjälp?";
 
@@ -157,36 +157,36 @@
 "scene.qr_code_detail.method_label.lightning" = "Lightning";
 "scene.qr_code_detail.method_label.on_chain" = "On-Chain";
 
-"scene.sync.description_label" = "Syncing to blockchain…";
-"scene.sync.disconnect_bar_button" = "Disconnect";
-"scene.sync.disconnect_alert.title" = "Disconnect";
-"scene.sync.disconnect_alert.message" = "Do you really want to cancel syncing? You will have to reconnect to your node afterwards.";
+"scene.sync.description_label" = "Synkroniserar med blockkedjan…";
+"scene.sync.disconnect_bar_button" = "Koppla från";
+"scene.sync.disconnect_alert.title" = "Koppla från";
+"scene.sync.disconnect_alert.message" = "Vill du verkligen avbryta synkroniseringen? Du måste återansluta till din nod efteråt.";
 "scene.sync.disconnect_alert.destructive_action" = "Disconnect Node";
-"scene.sync.disconnect_alert.cancel_action" = "Cancel";
+"scene.sync.disconnect_alert.cancel_action" = "Avbryt";
 
-"scene.transaction_detail.title.lightning_invoice" = "Invoice Detail";
-"scene.transaction_detail.title.payment_detail" = "Payment Detail";
-"scene.transaction_detail.title.transaction_detail" = "Transaction Detail";
-"scene.transaction_detail.archive_button" = "Archive";
+"scene.transaction_detail.title.lightning_invoice" = "Fakturadetaljer";
+"scene.transaction_detail.title.payment_detail" = "Betalningsinfo";
+"scene.transaction_detail.title.transaction_detail" = "Transaktionsinfo";
+"scene.transaction_detail.archive_button" = "Arkivet";
 "scene.transaction_detail.unarchive_button" = "Unarchive";
 "scene.transaction_detail.memo_label" = "Memo";
-"scene.transaction_detail.qr_code.copy_button" = "Copy";
-"scene.transaction_detail.qr_code.share_button" = "Share";
+"scene.transaction_detail.qr_code.copy_button" = "Kopiera";
+"scene.transaction_detail.qr_code.share_button" = "Dela";
 "scene.transaction_detail.qr_code.expired_label" = "Expired";
-"scene.transaction_detail.amount.unspecified_label" = "Unspecified";
-"scene.transaction_detail.amount_label" = "Amount";
-"scene.transaction_detail.created_label" = "Created";
-"scene.transaction_detail.payment_request" = "Payment Request";
+"scene.transaction_detail.amount.unspecified_label" = "Ospecificerad";
+"scene.transaction_detail.amount_label" = "Belopp";
+"scene.transaction_detail.created_label" = "Skapad";
+"scene.transaction_detail.payment_request" = "Betalningsbegäran";
 "scene.transaction_detail.expiry_label" = "Expiry";
 "scene.transaction_detail.settled_label" = "Settled";
 "scene.transaction_detail.settled_date_label" = "Settled Date";
 "scene.transaction_detail.settled_state.settled" = "Settled";
 "scene.transaction_detail.settled_state.unsettled" = "Unsettled";
-"scene.transaction_detail.fee_label" = "Fee";
-"scene.transaction_detail.date_label" = "Date";
-"scene.transaction_detail.confirmations_label" = "Confirmations";
-"scene.transaction_detail.address_label" = "Address";
-"scene.transaction_detail.transaction_id_label" = "Transaction ID";
+"scene.transaction_detail.fee_label" = "Avgift";
+"scene.transaction_detail.date_label" = "Datum";
+"scene.transaction_detail.confirmations_label" = "Bekräftelser";
+"scene.transaction_detail.address_label" = "Adress";
+"scene.transaction_detail.transaction_id_label" = "Transaktions-ID";
 
 "scene.channel_detail.remote_pub_key_label" = "Remote PubKey";
 "scene.channel_detail.local_balance_label" = "Local Balance";
@@ -196,11 +196,11 @@
 "scene.channel_detail.closing_time.label" = "Closing in";
 "scene.channel_detail.closing_time.data" = "%d blocks (%@)";
 "scene.channel_detail.funding_transaction_label" = "Funding Transaction";
-"scene.channel_detail.close_button" = "Close";
+"scene.channel_detail.close_button" = "Stäng";
 "scene.channel_detail.force_close_button" = "Force Close";
 
-"scene.filter.title" = "Transaction Filter";
-"scene.filter.section_header.transaction_types" = "Transaction Types";
+"scene.filter.title" = "Transaktionsfilter";
+"scene.filter.section_header.transaction_types" = "Transaktionstyper";
 "scene.filter.displayOnChainTransactions" = "On Chain Transactions";
 "scene.filter.displayLightningPayments" = "Lightning Payments";
 "scene.filter.displayLightningInvoices" = "Lightning Invoices";
