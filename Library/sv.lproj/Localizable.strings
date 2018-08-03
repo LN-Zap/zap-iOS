@@ -95,7 +95,7 @@
 "scene.pin.biometric.fallback.title" = "Använd PIN-kod";
 "scene.pin.biometric.reason" = "För åtkomst till säker data";
 
-"scene.setup_pin.done_button" = "Klart";
+"scene.setup_pin.done_button" = "Färdigt";
 "scene.setup_pin.top_label.initial" = "Välj en PIN-kod.";
 "scene.setup_pin.top_label.non_matching" = "PIN-koderna matchar ej. Vänligen försök igen.";
 "scene.setup_pin.top_label.validate" = "Repetera PIN-koden för att validera.";
@@ -107,14 +107,14 @@
 
 "scene.send.title" = "Skicka";
 "scene.send.send_button" = "Skicka";
-"scene.send.error.invalid_payment_request" = "Ogilting betalningsbegäran";
+"scene.send.error.invalid_payment_request" = "Ogiltig betalningsbegäran";
 
 "scene.send.lightning.title" = "Skicka";
 "scene.send.lightning.error.expired" = "Betalningsbegäran har utgått:\n%@";
 "scene.send.lightning.error.duplicate" = "Betalning redan betald.";
 "scene.send.lightning.memo" = "Memo: %@";
 
-"scene.connect_remote_node.title" = "Anslutt Fjärrnod";
+"scene.connect_remote_node.title" = "Anslut Fjärrnod";
 "scene.connect_remote_node.empty_state" = "Skanna QR-koden genererad med zapconnect eller klistra in anslutningskoden för att ansluta till din nod.";
 "scene.connect_remote_node.url_label" = "Adress";
 "scene.connect_remote_node.certificate_label" = "Certifikat";
@@ -134,7 +134,7 @@
 "scene.create_wallet.next_button" = "Nästa";
 
 "scene.recover_wallet.title" = "Återställ plånbok";
-"scene.recover_wallet.done_button" = "Klart";
+"scene.recover_wallet.done_button" = "Klar";
 "scene.recover_wallet.description_label" = "Ange din seed:";
 "scene.recover_wallet.placeholder" = "abandon ability able about above absent absorb abstract absurd abuse access accident account accuse achieve acid acoustic acquire across act action actor actress actual";
 
@@ -145,17 +145,17 @@
 "scene.select_wallet_connection.recover.message" = "befintliga plånbok";
 "scene.select_wallet_connection.connect.title" = "Anslut";
 "scene.select_wallet_connection.connect.message" = "fjärrnod";
-"scene.select_wallet_connection.disabled_alert.title" = "Förlåt!";
-"scene.select_wallet_connection.disabled_alert.message" = "Körande av Lnd på telefonen är inaktiverat i den här betaversionen. Anslut till en fjärrnod istället.";
+"scene.select_wallet_connection.disabled_alert.title" = "Tyvärr!";
+"scene.select_wallet_connection.disabled_alert.message" = "Användandet av Lnd på mobiltelefon är inaktiverat i denna betaversion. Anslut till en fjärrnod istället.";
 "scene.select_wallet_connection.create.help" = "Behöver du hjälp?";
 
 "scene.main.send_button" = "Skicka";
 "scene.main.receive_button" = "Ta emot";
-"scene.main.transactions_button" = "Transaktioner";
+"scene.main.transactions_button" = "Överföringar";
 "scene.main.channels_button" = "Nätverk";
 
 "scene.qr_code_detail.method_label.lightning" = "Lightning";
-"scene.qr_code_detail.method_label.on_chain" = "On-Chain";
+"scene.qr_code_detail.method_label.on_chain" = "On-chain";
 
 "scene.sync.description_label" = "Synkroniserar med blockkedjan…";
 "scene.sync.disconnect_bar_button" = "Koppla från";
