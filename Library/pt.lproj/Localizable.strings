@@ -49,24 +49,24 @@
 "scene.transactions.row_action.unarchive" = "Remover do Arquivo";
 
 "scene.settings.title" = "Definições";
-"scene.settings.section.wallet" = "Wallet";
-"scene.settings.item.bitcoin_unit" = "Bitcoin Unit";
-"scene.settings.item.currency" = "Currency";
-"scene.settings.item.network" = "Network";
+"scene.settings.section.wallet" = "Carteira";
+"scene.settings.item.bitcoin_unit" = "Unidade de Bitcoin";
+"scene.settings.item.currency" = "Moeda";
+"scene.settings.item.network" = "Rede";
 "scene.settings.item.block_explorer" = "Block Explorer";
-"scene.settings.item.lock_wallet" = "Lock Wallet";
+"scene.settings.item.lock_wallet" = "Proteger Carteira";
 "scene.settings.item.on_chain_request_address.title" = "Bitcoin Address Type";
 "scene.settings.item.on_chain_request_address.bech32" = "Bech32";
 "scene.settings.item.on_chain_request_address.p2sh" = "P2SH";
-"scene.settings.item.remove_remote_node" = "Reset Remote Node Configuration";
-"scene.settings.item.reset_pin" = "Reset Pin";
-"scene.settings.item.report_issue" = "Report an Issue";
-"scene.settings.item.help" = "Need Help?";
+"scene.settings.item.remove_remote_node" = "Apagar as Configurações do Node Remoto";
+"scene.settings.item.reset_pin" = "Apagar PIN";
+"scene.settings.item.report_issue" = "Reportar um problema";
+"scene.settings.item.help" = "Precisa de Ajuda?";
 
-"scene.deposit.send" = "Send";
-"scene.deposit.title" = "Receive";
+"scene.deposit.send" = "Enviar";
+"scene.deposit.title" = "Receber";
 
-"scene.request.title" = "Receive";
+"scene.request.title" = "Receber";
 "scene.request.lightning_button" = "Lightning";
 "scene.request.on_chain_button" = "On-chain";
 "scene.request.memo_placeholder" = "Memo (optional)";
