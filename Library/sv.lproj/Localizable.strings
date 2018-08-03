@@ -28,7 +28,7 @@
 "unit.bitcoin.btc" = "Bitcoin";
 "unit.bitcoin.mbtc" = "Milli Bitcoin";
 "unit.bitcoin.bit" = "Bits";
-"unit.bitcoin.satoshi" = "Satoshis";
+"unit.bitcoin.satoshi" = "Satoshi";
 
 "transaction.open_channel.memo" = "Open Channel: %@";
 "transaction.close_channel.memo" = "%@ Channel: %@";
@@ -45,12 +45,12 @@
 "scene.transactions.title" = "Transaktioner";
 "scene.transactions.search.placeholder" = "sök";
 "scene.transactions.empty_state_label" = "0 transaktioner 🙁";
-"scene.transactions.row_action.archive" = "Archive";
+"scene.transactions.row_action.archive" = "Arkivera";
 "scene.transactions.row_action.unarchive" = "Unarchive";
 
 "scene.settings.title" = "Inställningar";
 "scene.settings.section.wallet" = "Plånbok";
-"scene.settings.item.bitcoin_unit" = "Bitcoin Unit";
+"scene.settings.item.bitcoin_unit" = "Bitcoinenhet";
 "scene.settings.item.currency" = "Valuta";
 "scene.settings.item.network" = "Nätverk";
 "scene.settings.item.block_explorer" = "Blockutforskaren";
@@ -58,9 +58,9 @@
 "scene.settings.item.on_chain_request_address.title" = "Bitcoin Addresstyp";
 "scene.settings.item.on_chain_request_address.bech32" = "Bech32";
 "scene.settings.item.on_chain_request_address.p2sh" = "P2SH";
-"scene.settings.item.remove_remote_node" = "Reset Remote Node Configuration";
+"scene.settings.item.remove_remote_node" = "Återställ fjärrnodskonfiguration";
 "scene.settings.item.reset_pin" = "Återställ PIN-koden";
-"scene.settings.item.report_issue" = "Report an Issue";
+"scene.settings.item.report_issue" = "Rapportera ett problem";
 "scene.settings.item.help" = "Behöver du hjälp?";
 
 "scene.deposit.send" = "Skicka";
@@ -111,7 +111,7 @@
 
 "scene.send.lightning.title" = "Skicka";
 "scene.send.lightning.error.expired" = "Payment Request expired:\n%@";
-"scene.send.lightning.error.duplicate" = "Payment already paid.";
+"scene.send.lightning.error.duplicate" = "Betalning redan betald.";
 "scene.send.lightning.memo" = "Memo: %@";
 
 "scene.connect_remote_node.title" = "Connect Remote Node";
@@ -192,16 +192,16 @@
 "scene.channel_detail.local_balance_label" = "Local Balance";
 "scene.channel_detail.remote_balance_label" = "Remote Balance";
 "scene.channel_detail.update_count_label" = "Update Count";
-"scene.channel_detail.block_height_label" = "Block Height";
-"scene.channel_detail.closing_time.label" = "Closing in";
-"scene.channel_detail.closing_time.data" = "%d blocks (%@)";
-"scene.channel_detail.funding_transaction_label" = "Funding Transaction";
+"scene.channel_detail.block_height_label" = "Blockhöjd";
+"scene.channel_detail.closing_time.label" = "Stänger om";
+"scene.channel_detail.closing_time.data" = "%d block (%@)";
+"scene.channel_detail.funding_transaction_label" = "Finansierar transaktion";
 "scene.channel_detail.close_button" = "Stäng";
 "scene.channel_detail.force_close_button" = "Force Close";
 
 "scene.filter.title" = "Transaktionsfilter";
 "scene.filter.section_header.transaction_types" = "Transaktionstyper";
-"scene.filter.displayOnChainTransactions" = "On Chain Transactions";
-"scene.filter.displayLightningPayments" = "Lightning Payments";
-"scene.filter.displayLightningInvoices" = "Lightning Invoices";
-"scene.filter.displayArchivedTransactions" = "Archived Transactions";
+"scene.filter.displayOnChainTransactions" = "On-chain transaktioner";
+"scene.filter.displayLightningPayments" = "Lightningbetalningar";
+"scene.filter.displayLightningInvoices" = "Lightningfakturor";
+"scene.filter.displayArchivedTransactions" = "Arkiverade transaktioner";
