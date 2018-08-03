@@ -92,13 +92,13 @@
 "scene.balance.title" = "Balans";
 "scene.balance.label.on_chain" = "Ƀ";
 
-"scene.pin.biometric.fallback.title" = "Använd passerkod";
+"scene.pin.biometric.fallback.title" = "Använd PIN-kod";
 "scene.pin.biometric.reason" = "To access the secure data";
 
 "scene.setup_pin.done_button" = "Klart";
 "scene.setup_pin.top_label.initial" = "Välj en PIN-kod.";
 "scene.setup_pin.top_label.non_matching" = "PIN-koderna matchar ej. Vänligen försök igen.";
-"scene.setup_pin.top_label.validate" = "Enter the pin again to validate.";
+"scene.setup_pin.top_label.validate" = "Repetera PIN-koden för att validera.";
 
 "scene.confirm_mnemonic.title" = "Bekräfta seeden";
 "scene.confirm_mnemonic.description" = "Enter your key.";
@@ -161,14 +161,14 @@
 "scene.sync.disconnect_bar_button" = "Koppla från";
 "scene.sync.disconnect_alert.title" = "Koppla från";
 "scene.sync.disconnect_alert.message" = "Vill du verkligen avbryta synkroniseringen? Du måste återansluta till din nod efteråt.";
-"scene.sync.disconnect_alert.destructive_action" = "Disconnect Node";
+"scene.sync.disconnect_alert.destructive_action" = "Koppla från nod";
 "scene.sync.disconnect_alert.cancel_action" = "Avbryt";
 
 "scene.transaction_detail.title.lightning_invoice" = "Fakturadetaljer";
 "scene.transaction_detail.title.payment_detail" = "Betalningsinfo";
 "scene.transaction_detail.title.transaction_detail" = "Transaktionsinfo";
 "scene.transaction_detail.archive_button" = "Arkivet";
-"scene.transaction_detail.unarchive_button" = "Unarchive";
+"scene.transaction_detail.unarchive_button" = "Uppackning";
 "scene.transaction_detail.memo_label" = "Memo";
 "scene.transaction_detail.qr_code.copy_button" = "Kopiera";
 "scene.transaction_detail.qr_code.share_button" = "Dela";
@@ -188,16 +188,16 @@
 "scene.transaction_detail.address_label" = "Adress";
 "scene.transaction_detail.transaction_id_label" = "Transaktions-ID";
 
-"scene.channel_detail.remote_pub_key_label" = "Remote PubKey";
-"scene.channel_detail.local_balance_label" = "Local Balance";
-"scene.channel_detail.remote_balance_label" = "Remote Balance";
-"scene.channel_detail.update_count_label" = "Update Count";
+"scene.channel_detail.remote_pub_key_label" = "Fjärran publik nyckel";
+"scene.channel_detail.local_balance_label" = "Lokal balans";
+"scene.channel_detail.remote_balance_label" = "Fjärrbalans";
+"scene.channel_detail.update_count_label" = "Uppdatera antal";
 "scene.channel_detail.block_height_label" = "Blockhöjd";
 "scene.channel_detail.closing_time.label" = "Stänger om";
 "scene.channel_detail.closing_time.data" = "%d block (%@)";
 "scene.channel_detail.funding_transaction_label" = "Finansierar transaktion";
 "scene.channel_detail.close_button" = "Stäng";
-"scene.channel_detail.force_close_button" = "Force Close";
+"scene.channel_detail.force_close_button" = "Tvinga stängning";
 
 "scene.filter.title" = "Transaktionsfilter";
 "scene.filter.section_header.transaction_types" = "Transaktionstyper";
