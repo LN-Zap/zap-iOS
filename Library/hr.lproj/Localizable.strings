@@ -178,11 +178,11 @@
 "scene.transaction_detail.created_label" = "Stvoreno";
 "scene.transaction_detail.payment_request" = "Zahtjev za plaćanje";
 "scene.transaction_detail.expiry_label" = "Rok isteka";
-"scene.transaction_detail.settled_label" = "Settled";
-"scene.transaction_detail.settled_date_label" = "Settled Date";
-"scene.transaction_detail.settled_state.settled" = "Settled";
-"scene.transaction_detail.settled_state.unsettled" = "Unsettled";
-"scene.transaction_detail.fee_label" = "Fee";
+"scene.transaction_detail.settled_label" = "Podmireno";
+"scene.transaction_detail.settled_date_label" = "Datum podmirenja";
+"scene.transaction_detail.settled_state.settled" = "Podmireno";
+"scene.transaction_detail.settled_state.unsettled" = "Nije podmireno";
+"scene.transaction_detail.fee_label" = "Naknada";
 "scene.transaction_detail.date_label" = "Date";
 "scene.transaction_detail.confirmations_label" = "Confirmations";
 "scene.transaction_detail.address_label" = "Address";
