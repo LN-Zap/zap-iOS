@@ -9,56 +9,56 @@
 "link.help" = "https://ln-zap.github.io/zap-tutorials/";
 "link.help.zapconnect" = "https://ln-zap.github.io/zap-tutorials/iOS-remote-node-setup";
 
-"error.wrong_uri_format" = "Unknown link format.";
-"error.wrong_uri_network" = "You tried opening a link for %@ but your node is connected to %@.";
+"error.wrong_uri_format" = "Formatul link-ului este necunoscut.";
+"error.wrong_uri_network" = "Aţi încercat sa deschideti  un link pentru %@ dar nodul dumneavoastră este conectat la %@.";
 
-"rpc_connect_qrcode_error.btc_pay_expired" = "Looks like the code is expired.";
-"rpc_connect_qrcode_error.btc_pay_configuration_broken" = "Could not read BTCPay configurations file.";
-"rpc_connect_qrcode_error.cant_read_qrcode" = "Can't connect to this code.";
+"rpc_connect_qrcode_error.btc_pay_expired" = "Se pare ca codul este expirat.";
+"rpc_connect_qrcode_error.btc_pay_configuration_broken" = "Imposibil de citit fișierul de config al BTCPay.";
+"rpc_connect_qrcode_error.cant_read_qrcode" = "Nu se poate realiza conexiunea la acest cod.";
 
 "channel.state.active" = "Online";
 "channel.state.inactive" = "Offline";
-"channel.state.opening" = "Opening";
-"channel.state.closing" = "Closing";
-"channel.state.force_closing" = "Force Closing";
+"channel.state.opening" = "Deschidere";
+"channel.state.closing" = "Închidere";
+"channel.state.force_closing" = "Forțeaza închiderea";
 
-"network.type.testnet" = "Testnet";
+"network.type.testnet" = "TestNet";
 "network.type.mainnet" = "Mainnet";
 
 "unit.bitcoin.btc" = "Bitcoin";
 "unit.bitcoin.mbtc" = "Milli Bitcoin";
-"unit.bitcoin.bit" = "Bits";
+"unit.bitcoin.bit" = "Biţi";
 "unit.bitcoin.satoshi" = "Satoshis";
 
-"transaction.open_channel.memo" = "Open Channel: %@";
-"transaction.close_channel.memo" = "%@ Channel: %@";
+"transaction.open_channel.memo" = "Canal deschis: %@";
+"transaction.close_channel.memo" = "canal de %@ : %@";
 
-"close_type.cooperative_close" = "Close";
-"close_type.local_force_close" = "Force Close";
-"close_type.remote_force_close" = "Remote Force Close";
-"close_type.breach_close" = "Breach Close";
-"close_type.funding_canceled" = "Funding Canceled";
-"close_type.unknown" = "Unknown Close";
+"close_type.cooperative_close" = "Închide";
+"close_type.local_force_close" = "Forțeaza închiderea";
+"close_type.remote_force_close" = "Forteaza inchiderea de la distanta";
+"close_type.breach_close" = "Inchidere unilaterala";
+"close_type.funding_canceled" = "Finanţare anulata";
+"close_type.unknown" = "Inchidere necunoscuta";
 
-"view.amount_input.placeholder" = "Amount";
+"view.amount_input.placeholder" = "Suma";
 
-"scene.transactions.title" = "Transactions";
-"scene.transactions.search.placeholder" = "search";
-"scene.transactions.empty_state_label" = "0 transactions 🙁";
-"scene.transactions.row_action.archive" = "Archive";
+"scene.transactions.title" = "Tranzacţii";
+"scene.transactions.search.placeholder" = "căutare";
+"scene.transactions.empty_state_label" = "0 tranzacţii 🙁";
+"scene.transactions.row_action.archive" = "Arhiva";
 "scene.transactions.row_action.unarchive" = "Unarchive";
 
-"scene.settings.title" = "Settings";
-"scene.settings.section.wallet" = "Wallet";
-"scene.settings.item.bitcoin_unit" = "Bitcoin Unit";
-"scene.settings.item.currency" = "Currency";
-"scene.settings.item.network" = "Network";
+"scene.settings.title" = "Setări";
+"scene.settings.section.wallet" = "Portofel";
+"scene.settings.item.bitcoin_unit" = "Unitate de bitcoin";
+"scene.settings.item.currency" = "Moneda";
+"scene.settings.item.network" = "Reţea";
 "scene.settings.item.block_explorer" = "Block Explorer";
-"scene.settings.item.lock_wallet" = "Lock Wallet";
-"scene.settings.item.on_chain_request_address.title" = "Bitcoin Address Type";
+"scene.settings.item.lock_wallet" = "Blocare portofel";
+"scene.settings.item.on_chain_request_address.title" = "Tip adresă bitcoin";
 "scene.settings.item.on_chain_request_address.bech32" = "Bech32";
 "scene.settings.item.on_chain_request_address.p2sh" = "P2SH";
-"scene.settings.item.remove_remote_node" = "Reset Remote Node Configuration";
+"scene.settings.item.remove_remote_node" = "Resetare configurare de la distanţă a nodului";
 "scene.settings.item.reset_pin" = "Reset Pin";
 "scene.settings.item.report_issue" = "Report an Issue";
 "scene.settings.item.help" = "Need Help?";
