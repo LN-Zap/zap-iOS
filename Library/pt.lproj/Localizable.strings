@@ -9,10 +9,10 @@
 "link.help" = "https://ln-zap.github.io/zap-tutorials/";
 "link.help.zapconnect" = "ligação.ajuda.zapconnect";
 
-"error.wrong_uri_format" = "Unknown link format.";
-"error.wrong_uri_network" = "You tried opening a link for %@ but your node is connected to %@.";
+"error.wrong_uri_format" = "Formato de link desconhecido.";
+"error.wrong_uri_network" = "Tentou abrir um link para %@ mas o seu node está conectado a %@.";
 
-"rpc_connect_qrcode_error.btc_pay_expired" = "Looks like the code is expired.";
+"rpc_connect_qrcode_error.btc_pay_expired" = "O QR Code expirou.";
 "rpc_connect_qrcode_error.btc_pay_configuration_broken" = "Could not read BTCPay configurations file.";
 "rpc_connect_qrcode_error.cant_read_qrcode" = "Can't connect to this code.";
 
@@ -101,15 +101,15 @@
 "scene.setup_pin.top_label.validate" = "Insira o pin de novo para validar.";
 
 "scene.confirm_mnemonic.title" = "Confirm Seed";
-"scene.confirm_mnemonic.description" = "Enter your key.";
+"scene.confirm_mnemonic.description" = "Insira a sua chave.";
 
-"scene.channel_detail.title" = "Channel Detail";
+"scene.channel_detail.title" = "Detalhes do Canal";
 
-"scene.send.title" = "Send";
-"scene.send.send_button" = "Send";
+"scene.send.title" = "Enviar";
+"scene.send.send_button" = "Enviar";
 "scene.send.error.invalid_payment_request" = "Invalid Payment request";
 
-"scene.send.lightning.title" = "Send";
+"scene.send.lightning.title" = "Enviar";
 "scene.send.lightning.error.expired" = "Payment Request expired:\n%@";
 "scene.send.lightning.error.duplicate" = "Payment already paid.";
 "scene.send.lightning.memo" = "Memo: %@";
