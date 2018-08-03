@@ -76,16 +76,16 @@
 "scene.channels.section_header.pending" = "Na čekanju";
 "scene.channels.section_header.open" = "Otvori";
 "scene.channels.close.title" = "Zatvori kanal";
-"scene.channels.close.message" = "Do you really want to close the channel with node %@?";
-"scene.channels.force_close.title" = "Force Close Channel";
-"scene.channels.force_close.message" = "%@ is offline, are you sure you want to force close this channel? You’d have to wait about %@ for your funds?";
-"scene.channels.alert.cancel" = "Cancel";
-"scene.channels.alert.close" = "Close";
-"scene.channels.search.placeholder" = "search";
-"scene.channels.row_action.close" = "Close Channel";
-"scene.channels.close_success.toast" = "Channel is closing.";
+"scene.channels.close.message" = "Stvarno želite zatvoriti kanal sa čvorom %@?";
+"scene.channels.force_close.title" = "Prisilno zatvaranje kanala";
+"scene.channels.force_close.message" = "%@ nije spojen, jeste li sigurni da želite prisilno zatvoriti ovaj kanal? Morat ćete pričekati otprilike %@ za svoje novce?";
+"scene.channels.alert.cancel" = "Odustani";
+"scene.channels.alert.close" = "Zatvori";
+"scene.channels.search.placeholder" = "pretraživanje";
+"scene.channels.row_action.close" = "Zatvori kanal";
+"scene.channels.close_success.toast" = "Kanal se zatvara.";
 
-"scene.open_channel.title" = "Open Channel";
+"scene.open_channel.title" = "Otvori kanal";
 "scene.open_channel.help_label" = "Fund connection";
 "scene.open_channel.add_button" = "Add";
 
