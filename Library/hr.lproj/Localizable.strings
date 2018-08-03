@@ -184,22 +184,22 @@
 "scene.transaction_detail.settled_state.unsettled" = "Nije podmireno";
 "scene.transaction_detail.fee_label" = "Naknada";
 "scene.transaction_detail.date_label" = "Datum";
-"scene.transaction_detail.confirmations_label" = "Confirmations";
-"scene.transaction_detail.address_label" = "Address";
-"scene.transaction_detail.transaction_id_label" = "Transaction ID";
+"scene.transaction_detail.confirmations_label" = "Potvrde";
+"scene.transaction_detail.address_label" = "Adresa";
+"scene.transaction_detail.transaction_id_label" = "ID transakcije";
 
-"scene.channel_detail.remote_pub_key_label" = "Remote PubKey";
-"scene.channel_detail.local_balance_label" = "Local Balance";
-"scene.channel_detail.remote_balance_label" = "Remote Balance";
-"scene.channel_detail.update_count_label" = "Update Count";
-"scene.channel_detail.block_height_label" = "Block Height";
-"scene.channel_detail.closing_time.label" = "Closing in";
-"scene.channel_detail.closing_time.data" = "%d blocks (%@)";
-"scene.channel_detail.funding_transaction_label" = "Funding Transaction";
-"scene.channel_detail.close_button" = "Close";
-"scene.channel_detail.force_close_button" = "Force Close";
+"scene.channel_detail.remote_pub_key_label" = "Udaljeni PubKey";
+"scene.channel_detail.local_balance_label" = "Lokalni saldo";
+"scene.channel_detail.remote_balance_label" = "Udaljeni saldo";
+"scene.channel_detail.update_count_label" = "Ažuriranje broja";
+"scene.channel_detail.block_height_label" = "Broj bloka";
+"scene.channel_detail.closing_time.label" = "Zatvaranje";
+"scene.channel_detail.closing_time.data" = "%d blokovi (%@)";
+"scene.channel_detail.funding_transaction_label" = "Financiranje transakcije";
+"scene.channel_detail.close_button" = "Zatvori";
+"scene.channel_detail.force_close_button" = "Prisilno zatvaranje";
 
-"scene.filter.title" = "Transaction Filter";
+"scene.filter.title" = "Filter transakcija";
 "scene.filter.section_header.transaction_types" = "Transaction Types";
 "scene.filter.displayOnChainTransactions" = "On Chain Transactions";
 "scene.filter.displayLightningPayments" = "Lightning Payments";
