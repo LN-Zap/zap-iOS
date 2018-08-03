@@ -75,7 +75,7 @@
 "scene.channels.title" = "Kanały";
 "scene.channels.section_header.pending" = "Pending";
 "scene.channels.section_header.open" = "Open";
-"scene.channels.close.title" = "Close Channel";
+"scene.channels.close.title" = "Zamknij kanał";
 "scene.channels.close.message" = "Czy naprawdę chcesz zamknąć kanał z nodem %@?";
 "scene.channels.force_close.title" = "Wymuś Zamknięcie Kanału";
 "scene.channels.force_close.message" = "%@ jest offline, czy na pewno chcesz wymusić zamknięcie tego kanału? Na środki z kanału będzie trzeba poczekać około %@ ?";
@@ -92,7 +92,7 @@
 "scene.balance.title" = "Saldo";
 "scene.balance.label.on_chain" = "Ƀ";
 
-"scene.pin.biometric.fallback.title" = "Use Passcode";
+"scene.pin.biometric.fallback.title" = "Użyj kod dostępu";
 "scene.pin.biometric.reason" = "To access the secure data";
 
 "scene.setup_pin.done_button" = "Gotowe";
@@ -167,8 +167,8 @@
 "scene.transaction_detail.title.lightning_invoice" = "Szczegóły faktury";
 "scene.transaction_detail.title.payment_detail" = "Szczegóły płatności";
 "scene.transaction_detail.title.transaction_detail" = "Szczegóły transakcji";
-"scene.transaction_detail.archive_button" = "Archive";
-"scene.transaction_detail.unarchive_button" = "Unarchive";
+"scene.transaction_detail.archive_button" = "Archiwizuj";
+"scene.transaction_detail.unarchive_button" = "Przywróć z archiwum";
 "scene.transaction_detail.memo_label" = "Notatka";
 "scene.transaction_detail.qr_code.copy_button" = "Kopiuj";
 "scene.transaction_detail.qr_code.share_button" = "Udostępnij";
