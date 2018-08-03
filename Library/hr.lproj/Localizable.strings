@@ -18,23 +18,23 @@
 
 "channel.state.active" = "Spojeno";
 "channel.state.inactive" = "Nije spojeno";
-"channel.state.opening" = "Opening";
-"channel.state.closing" = "Closing";
-"channel.state.force_closing" = "Force Closing";
+"channel.state.opening" = "Otvaranje";
+"channel.state.closing" = "Zatvaranje";
+"channel.state.force_closing" = "Prisilno zatvaranje";
 
-"network.type.testnet" = "Testnet";
-"network.type.mainnet" = "Mainnet";
+"network.type.testnet" = "Probna mreža";
+"network.type.mainnet" = "Glavna mreža";
 
-"unit.bitcoin.btc" = "Bitcoin";
-"unit.bitcoin.mbtc" = "Milli Bitcoin";
-"unit.bitcoin.bit" = "Bits";
-"unit.bitcoin.satoshi" = "Satoshis";
+"unit.bitcoin.btc" = "Bitkoin";
+"unit.bitcoin.mbtc" = "Mili Bitkoin";
+"unit.bitcoin.bit" = "Bit";
+"unit.bitcoin.satoshi" = "Satoši";
 
-"transaction.open_channel.memo" = "Open Channel: %@";
-"transaction.close_channel.memo" = "%@ Channel: %@";
+"transaction.open_channel.memo" = "Otvori kanal: %@";
+"transaction.close_channel.memo" = "%@ Kanal: %@";
 
-"close_type.cooperative_close" = "Close";
-"close_type.local_force_close" = "Force Close";
+"close_type.cooperative_close" = "Zatvori";
+"close_type.local_force_close" = "Prisilno zatvori";
 "close_type.remote_force_close" = "Remote Force Close";
 "close_type.breach_close" = "Breach Close";
 "close_type.funding_canceled" = "Funding Canceled";
