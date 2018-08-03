@@ -116,40 +116,40 @@
 
 "scene.connect_remote_node.title" = "Connect Remote Node";
 "scene.connect_remote_node.empty_state" = "Scan the QRCode generate with zapconnect or paste the connection code to connect to your node.";
-"scene.connect_remote_node.url_label" = "Address";
-"scene.connect_remote_node.certificate_label" = "Certificate";
-"scene.connect_remote_node.connect_button" = "Connect";
-"scene.connect_remote_node.scan_button" = "Scan";
-"scene.connect_remote_node.paste_button" = "Paste";
-"scene.connect_remote_node.help_button" = "Need Help?";
-"scene.connect_remote_node.server_error" = "Could not connect to server.";
-"scene.connect_remote_node.your_node_title" = "Your Node";
-"scene.connect_remote_node.certificate_detail.certificate_title" = "Certificate";
+"scene.connect_remote_node.url_label" = "Adres";
+"scene.connect_remote_node.certificate_label" = "Certyfikat";
+"scene.connect_remote_node.connect_button" = "Połącz";
+"scene.connect_remote_node.scan_button" = "Skanuj";
+"scene.connect_remote_node.paste_button" = "Wklej";
+"scene.connect_remote_node.help_button" = "Potrzebujesz pomocy?";
+"scene.connect_remote_node.server_error" = "Nie udało się połączyć z serwerem.";
+"scene.connect_remote_node.your_node_title" = "Twój Node";
+"scene.connect_remote_node.certificate_detail.certificate_title" = "Certyfikat";
 "scene.connect_remote_node.certificate_detail.macaroon_title" = "Macaroon";
-"scene.connect_remote_node.edit_url.title" = "Address";
+"scene.connect_remote_node.edit_url.title" = "Adres";
 
 
-"scene.create_wallet.title" = "Create Wallet";
-"scene.create_wallet.description_label" = "Make sure to store the mnemonic at a save location.";
-"scene.create_wallet.next_button" = "Next";
+"scene.create_wallet.title" = "Stwórz Portfel";
+"scene.create_wallet.description_label" = "Zapisz i przechowuj swój mnemonik w bezpiecznym miejscu.";
+"scene.create_wallet.next_button" = "Dalej";
 
-"scene.recover_wallet.title" = "Recover Wallet";
-"scene.recover_wallet.done_button" = "Done";
-"scene.recover_wallet.description_label" = "Enter your seed:";
+"scene.recover_wallet.title" = "Odzyskaj Portfel";
+"scene.recover_wallet.done_button" = "Gotowe";
+"scene.recover_wallet.description_label" = "Wprowadź swój seed:";
 "scene.recover_wallet.placeholder" = "abandon ability able about above absent absorb abstract absurd abuse access accident account accuse achieve acid acoustic acquire across act action actor actress actual";
 
-"scene.select_wallet_connection.title" = "Setup Zap";
-"scene.select_wallet_connection.create.title" = "Create";
-"scene.select_wallet_connection.create.message" = "new wallet";
-"scene.select_wallet_connection.recover.title" = "Recover";
-"scene.select_wallet_connection.recover.message" = "existing wallet";
-"scene.select_wallet_connection.connect.title" = "Connect";
-"scene.select_wallet_connection.connect.message" = "remote node";
-"scene.select_wallet_connection.disabled_alert.title" = "Sorry!";
-"scene.select_wallet_connection.disabled_alert.message" = "Running Lnd on the phone is disabled in this beta. Connect to a remote node instead.";
-"scene.select_wallet_connection.create.help" = "Need Help?";
+"scene.select_wallet_connection.title" = "Skonfiguruj Zap";
+"scene.select_wallet_connection.create.title" = "Utwórz";
+"scene.select_wallet_connection.create.message" = "nowy portfel";
+"scene.select_wallet_connection.recover.title" = "Odzyskaj";
+"scene.select_wallet_connection.recover.message" = "istniejący portfel";
+"scene.select_wallet_connection.connect.title" = "Połącz";
+"scene.select_wallet_connection.connect.message" = "zdalny node";
+"scene.select_wallet_connection.disabled_alert.title" = "Przepraszamy!";
+"scene.select_wallet_connection.disabled_alert.message" = "Uruchamianie Lnd na telefonie jest zablokowane w wersji beta. Połącz się ze zdalnym nodem.";
+"scene.select_wallet_connection.create.help" = "Potrzebujesz pomocy?";
 
-"scene.main.send_button" = "Send";
+"scene.main.send_button" = "Wyślij";
 "scene.main.receive_button" = "Receive";
 "scene.main.transactions_button" = "Transactions";
 "scene.main.channels_button" = "Sieć";
@@ -191,17 +191,17 @@
 "scene.channel_detail.remote_pub_key_label" = "Zdalny klucz publiczny";
 "scene.channel_detail.local_balance_label" = "Lokalne saldo";
 "scene.channel_detail.remote_balance_label" = "Zdalne saldo";
-"scene.channel_detail.update_count_label" = "Update Count";
+"scene.channel_detail.update_count_label" = "Liczba zmian";
 "scene.channel_detail.block_height_label" = "Block Height";
 "scene.channel_detail.closing_time.label" = "Closing in";
 "scene.channel_detail.closing_time.data" = "%d blocks (%@)";
-"scene.channel_detail.funding_transaction_label" = "Funding Transaction";
-"scene.channel_detail.close_button" = "Close";
-"scene.channel_detail.force_close_button" = "Force Close";
+"scene.channel_detail.funding_transaction_label" = "Transakcja otwierająca";
+"scene.channel_detail.close_button" = "Zamknij";
+"scene.channel_detail.force_close_button" = "Wymuś zamknięcie";
 
-"scene.filter.title" = "Transaction Filter";
-"scene.filter.section_header.transaction_types" = "Transaction Types";
-"scene.filter.displayOnChainTransactions" = "On Chain Transactions";
-"scene.filter.displayLightningPayments" = "Lightning Payments";
-"scene.filter.displayLightningInvoices" = "Lightning Invoices";
-"scene.filter.displayArchivedTransactions" = "Archived Transactions";
+"scene.filter.title" = "Filtr Transakcji";
+"scene.filter.section_header.transaction_types" = "Rodzaje Transakcji";
+"scene.filter.displayOnChainTransactions" = "Transakcje On-Chain";
+"scene.filter.displayLightningPayments" = "Płatności LN";
+"scene.filter.displayLightningInvoices" = "Faktury LN";
+"scene.filter.displayArchivedTransactions" = "Zarchiwizowane transakcje";
