@@ -63,11 +63,11 @@
 "scene.settings.item.report_issue" = "Prijavi problem";
 "scene.settings.item.help" = "Trebate li pomoć?";
 
-"scene.deposit.send" = "Pošalji";
+"scene.deposit.send" = "Slanje";
 "scene.deposit.title" = "Primanje";
 
-"scene.request.title" = "Receive";
-"scene.request.lightning_button" = "Lightning";
+"scene.request.title" = "Primanje";
+"scene.request.lightning_button" = "Munja";
 "scene.request.on_chain_button" = "On-chain";
 "scene.request.memo_placeholder" = "Memo (optional)";
 "scene.request.generate_request_button" = "Generate Request";
@@ -126,17 +126,17 @@
 "scene.connect_remote_node.your_node_title" = "Your Node";
 "scene.connect_remote_node.certificate_detail.certificate_title" = "Certificate";
 "scene.connect_remote_node.certificate_detail.macaroon_title" = "Macaroon";
-"scene.connect_remote_node.edit_url.title" = "Address";
+"scene.connect_remote_node.edit_url.title" = "Adresa";
 
 
-"scene.create_wallet.title" = "Create Wallet";
-"scene.create_wallet.description_label" = "Make sure to store the mnemonic at a save location.";
-"scene.create_wallet.next_button" = "Next";
+"scene.create_wallet.title" = "Stvaranje novčanika";
+"scene.create_wallet.description_label" = "Obavezno pohranite mnemonički niz na sigurno mjesto.";
+"scene.create_wallet.next_button" = "Slijedeće";
 
-"scene.recover_wallet.title" = "Recover Wallet";
-"scene.recover_wallet.done_button" = "Done";
-"scene.recover_wallet.description_label" = "Enter your seed:";
-"scene.recover_wallet.placeholder" = "abandon ability able about above absent absorb abstract absurd abuse access accident account accuse achieve acid acoustic acquire across act action actor actress actual";
+"scene.recover_wallet.title" = "Povratite novčanik";
+"scene.recover_wallet.done_button" = "Gotovo";
+"scene.recover_wallet.description_label" = "Upišite svoj niz:";
+"scene.recover_wallet.placeholder" = "napustiti sposobnosti mogućnosti iznad odsutna apsorbirati apstraktni apsurd zlostavljanja pristup nesreći račun optužuju postići kiselina akustične nabaviti preko zakona akcijski glumac glumica stvarni";
 
 "scene.select_wallet_connection.title" = "Setup Zap";
 "scene.select_wallet_connection.create.title" = "Create";
