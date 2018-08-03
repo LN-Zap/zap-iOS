@@ -18,9 +18,9 @@
 
 "channel.state.active" = "Online";
 "channel.state.inactive" = "Offline";
-"channel.state.opening" = "Opening";
-"channel.state.closing" = "Closing";
-"channel.state.force_closing" = "Force Closing";
+"channel.state.opening" = "A abrir...";
+"channel.state.closing" = "A encerrar...";
+"channel.state.force_closing" = "Forçar o Encerramento";
 
 "network.type.testnet" = "Testnet";
 "network.type.mainnet" = "Mainnet";
@@ -30,25 +30,25 @@
 "unit.bitcoin.bit" = "Bits";
 "unit.bitcoin.satoshi" = "Satoshis";
 
-"transaction.open_channel.memo" = "Open Channel: %@";
-"transaction.close_channel.memo" = "%@ Channel: %@";
+"transaction.open_channel.memo" = "Abrir Canal: %@";
+"transaction.close_channel.memo" = "%@ Canal: %@";
 
-"close_type.cooperative_close" = "Close";
-"close_type.local_force_close" = "Force Close";
-"close_type.remote_force_close" = "Remote Force Close";
+"close_type.cooperative_close" = "Fechar";
+"close_type.local_force_close" = "Forçar Encerramento";
+"close_type.remote_force_close" = "Forçar Encerramento Remoto";
 "close_type.breach_close" = "Breach Close";
 "close_type.funding_canceled" = "Funding Canceled";
-"close_type.unknown" = "Unknown Close";
+"close_type.unknown" = "Encerramento Inesperado";
 
-"view.amount_input.placeholder" = "Amount";
+"view.amount_input.placeholder" = "Quantidade";
 
-"scene.transactions.title" = "Transactions";
-"scene.transactions.search.placeholder" = "search";
-"scene.transactions.empty_state_label" = "0 transactions 🙁";
-"scene.transactions.row_action.archive" = "Archive";
-"scene.transactions.row_action.unarchive" = "Unarchive";
+"scene.transactions.title" = "Transações";
+"scene.transactions.search.placeholder" = "procurar";
+"scene.transactions.empty_state_label" = "0 transações 🙁";
+"scene.transactions.row_action.archive" = "Arquivar";
+"scene.transactions.row_action.unarchive" = "Remover do Arquivo";
 
-"scene.settings.title" = "Settings";
+"scene.settings.title" = "Definições";
 "scene.settings.section.wallet" = "Wallet";
 "scene.settings.item.bitcoin_unit" = "Bitcoin Unit";
 "scene.settings.item.currency" = "Currency";
