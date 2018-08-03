@@ -20,7 +20,7 @@
 "channel.state.inactive" = "Offline";
 "channel.state.opening" = "Öppnar";
 "channel.state.closing" = "Stänger";
-"channel.state.force_closing" = "Tvingad stängning";
+"channel.state.force_closing" = "Tvinga stängning";
 
 "network.type.testnet" = "Testnet";
 "network.type.mainnet" = "Mainnet";
@@ -34,11 +34,11 @@
 "transaction.close_channel.memo" = "%@ Kanal: %@";
 
 "close_type.cooperative_close" = "Stäng";
-"close_type.local_force_close" = "Tvinga stängning";
-"close_type.remote_force_close" = "Remote Force Close";
-"close_type.breach_close" = "Breach Close";
-"close_type.funding_canceled" = "Funding Canceled";
-"close_type.unknown" = "Unknown Close";
+"close_type.local_force_close" = "Tvingad stängning";
+"close_type.remote_force_close" = "Fjärrtvingad stängning";
+"close_type.breach_close" = "Brytande stängning";
+"close_type.funding_canceled" = "Påfyllning avbruten";
+"close_type.unknown" = "Okänd stängning";
 
 "view.amount_input.placeholder" = "Belopp";
 
@@ -46,7 +46,7 @@
 "scene.transactions.search.placeholder" = "sök";
 "scene.transactions.empty_state_label" = "0 transaktioner 🙁";
 "scene.transactions.row_action.archive" = "Arkivera";
-"scene.transactions.row_action.unarchive" = "Unarchive";
+"scene.transactions.row_action.unarchive" = "Uppackning";
 
 "scene.settings.title" = "Inställningar";
 "scene.settings.section.wallet" = "Plånbok";
@@ -69,16 +69,16 @@
 "scene.request.title" = "Ta emot";
 "scene.request.lightning_button" = "Lightning";
 "scene.request.on_chain_button" = "On-chain";
-"scene.request.memo_placeholder" = "Memo (optional)";
+"scene.request.memo_placeholder" = "Memo (frivilligt)";
 "scene.request.generate_request_button" = "Skapa begäran";
 
 "scene.channels.title" = "Kanaler";
-"scene.channels.section_header.pending" = "Pending";
+"scene.channels.section_header.pending" = "Väntande";
 "scene.channels.section_header.open" = "Öppna";
 "scene.channels.close.title" = "Stäng kanal";
 "scene.channels.close.message" = "Vill du verkligen stänga kanalen med nod %@?";
-"scene.channels.force_close.title" = "Force Close Channel";
-"scene.channels.force_close.message" = "%@ is offline, are you sure you want to force close this channel? You’d have to wait about %@ for your funds?";
+"scene.channels.force_close.title" = "Tvinga stängning av kanal";
+"scene.channels.force_close.message" = "%@ är offline, är du säker på att du vill tvinga stängning av denna kanal? Du kommer att få vänta ungefär %@ för dina pengar?";
 "scene.channels.alert.cancel" = "Avbryt";
 "scene.channels.alert.close" = "Stäng";
 "scene.channels.search.placeholder" = "sök";
@@ -87,12 +87,12 @@
 
 "scene.open_channel.title" = "Öppna kanal";
 "scene.open_channel.help_label" = "Finansiera anslutning";
-"scene.open_channel.add_button" = "Add";
+"scene.open_channel.add_button" = "Lägg till";
 
-"scene.balance.title" = "Balance";
+"scene.balance.title" = "Balans";
 "scene.balance.label.on_chain" = "Ƀ";
 
-"scene.pin.biometric.fallback.title" = "Use Passcode";
+"scene.pin.biometric.fallback.title" = "Använd passerkod";
 "scene.pin.biometric.reason" = "To access the secure data";
 
 "scene.setup_pin.done_button" = "Klart";
