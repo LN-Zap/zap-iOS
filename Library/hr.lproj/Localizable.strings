@@ -33,23 +33,23 @@
 "transaction.open_channel.memo" = "Otvori kanal: %@";
 "transaction.close_channel.memo" = "%@ Kanal: %@";
 
-"close_type.cooperative_close" = "Zatvori";
-"close_type.local_force_close" = "Prisilno zatvori";
-"close_type.remote_force_close" = "Remote Force Close";
-"close_type.breach_close" = "Breach Close";
-"close_type.funding_canceled" = "Funding Canceled";
-"close_type.unknown" = "Unknown Close";
+"close_type.cooperative_close" = "Zatvaranje";
+"close_type.local_force_close" = "Prisilno zatvaranje";
+"close_type.remote_force_close" = "Udaljeno prisilno zatvaranje";
+"close_type.breach_close" = "Probojno zatvaranje";
+"close_type.funding_canceled" = "Uplata poništena";
+"close_type.unknown" = "Nepoznato zatvaranje";
 
-"view.amount_input.placeholder" = "Amount";
+"view.amount_input.placeholder" = "Iznos";
 
-"scene.transactions.title" = "Transactions";
-"scene.transactions.search.placeholder" = "search";
-"scene.transactions.empty_state_label" = "0 transactions 🙁";
-"scene.transactions.row_action.archive" = "Archive";
-"scene.transactions.row_action.unarchive" = "Unarchive";
+"scene.transactions.title" = "Transakcije";
+"scene.transactions.search.placeholder" = "pretraživanje";
+"scene.transactions.empty_state_label" = "0 transakcija 🙁";
+"scene.transactions.row_action.archive" = "Arhiviraj";
+"scene.transactions.row_action.unarchive" = "Dearhiviraj";
 
-"scene.settings.title" = "Settings";
-"scene.settings.section.wallet" = "Wallet";
+"scene.settings.title" = "Postavke";
+"scene.settings.section.wallet" = "Novčanik";
 "scene.settings.item.bitcoin_unit" = "Bitcoin Unit";
 "scene.settings.item.currency" = "Currency";
 "scene.settings.item.network" = "Network";
