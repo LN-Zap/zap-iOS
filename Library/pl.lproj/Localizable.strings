@@ -78,39 +78,39 @@
 "scene.channels.close.title" = "Close Channel";
 "scene.channels.close.message" = "Czy naprawdę chcesz zamknąć kanał z nodem %@?";
 "scene.channels.force_close.title" = "Wymuś Zamknięcie Kanału";
-"scene.channels.force_close.message" = "%@ is offline, are you sure you want to force close this channel? You’d have to wait about %@ for your funds?";
-"scene.channels.alert.cancel" = "Cancel";
-"scene.channels.alert.close" = "Close";
-"scene.channels.search.placeholder" = "search";
-"scene.channels.row_action.close" = "Close Channel";
-"scene.channels.close_success.toast" = "Channel is closing.";
+"scene.channels.force_close.message" = "%@ jest offline, czy na pewno chcesz wymusić zamknięcie tego kanału? Na środki z kanału będzie trzeba poczekać około %@ ?";
+"scene.channels.alert.cancel" = "Anuluj";
+"scene.channels.alert.close" = "Zamknij";
+"scene.channels.search.placeholder" = "wyszukaj";
+"scene.channels.row_action.close" = "Zamknij kanał";
+"scene.channels.close_success.toast" = "Kanał jest zamykany.";
 
-"scene.open_channel.title" = "Open Channel";
+"scene.open_channel.title" = "Otwórz kanał";
 "scene.open_channel.help_label" = "Fund connection";
-"scene.open_channel.add_button" = "Add";
+"scene.open_channel.add_button" = "Dodaj";
 
-"scene.balance.title" = "Balance";
+"scene.balance.title" = "Saldo";
 "scene.balance.label.on_chain" = "Ƀ";
 
 "scene.pin.biometric.fallback.title" = "Use Passcode";
 "scene.pin.biometric.reason" = "To access the secure data";
 
-"scene.setup_pin.done_button" = "Done";
-"scene.setup_pin.top_label.initial" = "Choose a pin.";
-"scene.setup_pin.top_label.non_matching" = "The pins didn't match. Please try again.";
-"scene.setup_pin.top_label.validate" = "Enter the pin again to validate.";
+"scene.setup_pin.done_button" = "Gotowe";
+"scene.setup_pin.top_label.initial" = "Wybierz kod pin.";
+"scene.setup_pin.top_label.non_matching" = "Podane piny różnią się. Proszę spróbować jeszcze raz.";
+"scene.setup_pin.top_label.validate" = "Wprowadź kod pin ponownie, aby sprawdzić jego poprawność.";
 
-"scene.confirm_mnemonic.title" = "Confirm Seed";
-"scene.confirm_mnemonic.description" = "Enter your key.";
+"scene.confirm_mnemonic.title" = "Potwierdź Seed";
+"scene.confirm_mnemonic.description" = "Wprowadź klucz.";
 
-"scene.channel_detail.title" = "Channel Detail";
+"scene.channel_detail.title" = "Szczegóły kanału";
 
-"scene.send.title" = "Send";
-"scene.send.send_button" = "Send";
-"scene.send.error.invalid_payment_request" = "Invalid Payment request";
+"scene.send.title" = "Wyślij";
+"scene.send.send_button" = "Wyślij";
+"scene.send.error.invalid_payment_request" = "Nieprawidłowe żądanie płatności";
 
-"scene.send.lightning.title" = "Send";
-"scene.send.lightning.error.expired" = "Payment Request expired:\n%@";
+"scene.send.lightning.title" = "Wyślij";
+"scene.send.lightning.error.expired" = "Żądanie płatności wygasło: %@";
 "scene.send.lightning.error.duplicate" = "Payment already paid.";
 "scene.send.lightning.memo" = "Memo: %@";
 
@@ -152,20 +152,20 @@
 "scene.main.send_button" = "Send";
 "scene.main.receive_button" = "Receive";
 "scene.main.transactions_button" = "Transactions";
-"scene.main.channels_button" = "Network";
+"scene.main.channels_button" = "Sieć";
 
 "scene.qr_code_detail.method_label.lightning" = "Lightning";
 "scene.qr_code_detail.method_label.on_chain" = "On-chain";
 
-"scene.sync.description_label" = "Syncing to blockchain…";
-"scene.sync.disconnect_bar_button" = "Disconnect";
-"scene.sync.disconnect_alert.title" = "Disconnect";
-"scene.sync.disconnect_alert.message" = "Do you really want to cancel syncing? You will have to reconnect to your node afterwards.";
-"scene.sync.disconnect_alert.destructive_action" = "Disconnect Node";
-"scene.sync.disconnect_alert.cancel_action" = "Cancel";
+"scene.sync.description_label" = "Synchronizacji z blockchainem...";
+"scene.sync.disconnect_bar_button" = "Rozłącz";
+"scene.sync.disconnect_alert.title" = "Rozłącz";
+"scene.sync.disconnect_alert.message" = "Czy na pewno chcesz anulować synchronizację? Później i tak będziesz musiał ponownie połączyć się ze swoim nodem.";
+"scene.sync.disconnect_alert.destructive_action" = "Odłącz";
+"scene.sync.disconnect_alert.cancel_action" = "Anuluj";
 
-"scene.transaction_detail.title.lightning_invoice" = "Invoice Detail";
-"scene.transaction_detail.title.payment_detail" = "Payment Detail";
+"scene.transaction_detail.title.lightning_invoice" = "Szczegóły faktury";
+"scene.transaction_detail.title.payment_detail" = "Szczegóły płatności";
 "scene.transaction_detail.title.transaction_detail" = "Transaction Detail";
 "scene.transaction_detail.archive_button" = "Archive";
 "scene.transaction_detail.unarchive_button" = "Unarchive";
