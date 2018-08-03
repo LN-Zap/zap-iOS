@@ -42,23 +42,23 @@
 
 "view.amount_input.placeholder" = "Belopp";
 
-"scene.transactions.title" = "Transaktioner";
+"scene.transactions.title" = "Överföringar";
 "scene.transactions.search.placeholder" = "sök";
-"scene.transactions.empty_state_label" = "0 transaktioner 🙁";
+"scene.transactions.empty_state_label" = "0 överföringar 🙁";
 "scene.transactions.row_action.archive" = "Arkivera";
 "scene.transactions.row_action.unarchive" = "Uppackning";
 
 "scene.settings.title" = "Inställningar";
-"scene.settings.section.wallet" = "Plånbok";
+"scene.settings.section.wallet" = "Wallet";
 "scene.settings.item.bitcoin_unit" = "Bitcoinenhet";
 "scene.settings.item.currency" = "Valuta";
 "scene.settings.item.network" = "Nätverk";
-"scene.settings.item.block_explorer" = "Blockutforskaren";
-"scene.settings.item.lock_wallet" = "Lås Plånbok";
-"scene.settings.item.on_chain_request_address.title" = "Bitcoin Addresstyp";
+"scene.settings.item.block_explorer" = "Blockutforskare";
+"scene.settings.item.lock_wallet" = "Lås Wallet";
+"scene.settings.item.on_chain_request_address.title" = "Bitcoin Adresstyp";
 "scene.settings.item.on_chain_request_address.bech32" = "Bech32";
 "scene.settings.item.on_chain_request_address.p2sh" = "P2SH";
-"scene.settings.item.remove_remote_node" = "Återställ fjärrnodskonfiguration";
+"scene.settings.item.remove_remote_node" = "Återställ Fjärrnodskonfiguration";
 "scene.settings.item.reset_pin" = "Återställ PIN-koden";
 "scene.settings.item.report_issue" = "Rapportera ett problem";
 "scene.settings.item.help" = "Behöver du hjälp?";
@@ -93,9 +93,9 @@
 "scene.balance.label.on_chain" = "Ƀ";
 
 "scene.pin.biometric.fallback.title" = "Använd PIN-kod";
-"scene.pin.biometric.reason" = "För åtkomst till säker data";
+"scene.pin.biometric.reason" = "Få åtkomst till den säkra datan";
 
-"scene.setup_pin.done_button" = "Färdigt";
+"scene.setup_pin.done_button" = "Klar";
 "scene.setup_pin.top_label.initial" = "Välj en PIN-kod.";
 "scene.setup_pin.top_label.non_matching" = "PIN-koderna matchar ej. Vänligen försök igen.";
 "scene.setup_pin.top_label.validate" = "Repetera PIN-koden för att validera.";
@@ -160,11 +160,11 @@
 "scene.sync.description_label" = "Synkroniserar med blockkedjan…";
 "scene.sync.disconnect_bar_button" = "Koppla från";
 "scene.sync.disconnect_alert.title" = "Koppla från";
-"scene.sync.disconnect_alert.message" = "Vill du verkligen avbryta synkroniseringen? Du måste återansluta till din nod efteråt.";
+"scene.sync.disconnect_alert.message" = "Vill du verkligen avbryta syncandet? Du måste återansluta till din nod efteråt.";
 "scene.sync.disconnect_alert.destructive_action" = "Koppla från nod";
 "scene.sync.disconnect_alert.cancel_action" = "Avbryt";
 
-"scene.transaction_detail.title.lightning_invoice" = "Fakturadetaljer";
+"scene.transaction_detail.title.lightning_invoice" = "Fakturainfo";
 "scene.transaction_detail.title.payment_detail" = "Betalningsinfo";
 "scene.transaction_detail.title.transaction_detail" = "Transaktionsinfo";
 "scene.transaction_detail.archive_button" = "Arkivet";
@@ -179,7 +179,7 @@
 "scene.transaction_detail.payment_request" = "Betalningsbegäran";
 "scene.transaction_detail.expiry_label" = "Utgår";
 "scene.transaction_detail.settled_label" = "Fastställd";
-"scene.transaction_detail.settled_date_label" = "Fastställd datum";
+"scene.transaction_detail.settled_date_label" = "Fastställt datum";
 "scene.transaction_detail.settled_state.settled" = "Fastställd";
 "scene.transaction_detail.settled_state.unsettled" = "Ej fastställd";
 "scene.transaction_detail.fee_label" = "Avgift";
@@ -188,7 +188,7 @@
 "scene.transaction_detail.address_label" = "Adress";
 "scene.transaction_detail.transaction_id_label" = "Transaktions-ID";
 
-"scene.channel_detail.remote_pub_key_label" = "Fjärran publik nyckel";
+"scene.channel_detail.remote_pub_key_label" = "Fjärr-publiknyckel";
 "scene.channel_detail.local_balance_label" = "Lokal balans";
 "scene.channel_detail.remote_balance_label" = "Fjärrbalans";
 "scene.channel_detail.update_count_label" = "Uppdatera antal";
