@@ -10,17 +10,17 @@
 "link.help.zapconnect" = "https://ln-zap.github.io/zap-tutorials/iOS-remote-node-setup";
 
 "error.wrong_uri_format" = "Nieznany format linku.";
-"error.wrong_uri_network" = "You tried opening a link for %@ but your node is connected to %@.";
+"error.wrong_uri_network" = "Próbowałeś utworzyć połączenie z %@, ale Twój node nie jest połączony z %@.";
 
-"rpc_connect_qrcode_error.btc_pay_expired" = "Looks like the code is expired.";
-"rpc_connect_qrcode_error.btc_pay_configuration_broken" = "Could not read BTCPay configurations file.";
-"rpc_connect_qrcode_error.cant_read_qrcode" = "Can't connect to this code.";
+"rpc_connect_qrcode_error.btc_pay_expired" = "Wygląda na to, że czas ważności kodu dobiegł końca.";
+"rpc_connect_qrcode_error.btc_pay_configuration_broken" = "Nie udało się odczytać pliku konfiguracyjnego BTCPay.";
+"rpc_connect_qrcode_error.cant_read_qrcode" = "Nie można się połączyć za pomocą podanego kodu.";
 
 "channel.state.active" = "Online";
 "channel.state.inactive" = "Offline";
-"channel.state.opening" = "Opening";
-"channel.state.closing" = "Closing";
-"channel.state.force_closing" = "Force Closing";
+"channel.state.opening" = "Otwieranie";
+"channel.state.closing" = "Zamykanie";
+"channel.state.force_closing" = "Wymuś zamknięcie";
 
 "network.type.testnet" = "Testnet";
 "network.type.mainnet" = "Mainnet";
@@ -30,21 +30,21 @@
 "unit.bitcoin.bit" = "Bits";
 "unit.bitcoin.satoshi" = "Satoshis";
 
-"transaction.open_channel.memo" = "Open Channel: %@";
-"transaction.close_channel.memo" = "%@ Channel: %@";
+"transaction.open_channel.memo" = "Otwórz kanał: %@";
+"transaction.close_channel.memo" = "%@ kanał: %@";
 
-"close_type.cooperative_close" = "Close";
+"close_type.cooperative_close" = "Zamknij";
 "close_type.local_force_close" = "Force Close";
 "close_type.remote_force_close" = "Remote Force Close";
 "close_type.breach_close" = "Breach Close";
 "close_type.funding_canceled" = "Funding Canceled";
 "close_type.unknown" = "Unknown Close";
 
-"view.amount_input.placeholder" = "Amount";
+"view.amount_input.placeholder" = "Kwota";
 
-"scene.transactions.title" = "Transactions";
-"scene.transactions.search.placeholder" = "search";
-"scene.transactions.empty_state_label" = "0 transactions 🙁";
+"scene.transactions.title" = "Transakcje";
+"scene.transactions.search.placeholder" = "wyszukaj";
+"scene.transactions.empty_state_label" = "brak transakcji";
 "scene.transactions.row_action.archive" = "Archive";
 "scene.transactions.row_action.unarchive" = "Unarchive";
 
