@@ -45,8 +45,8 @@
 "scene.transactions.title" = "Transakcje";
 "scene.transactions.search.placeholder" = "wyszukaj";
 "scene.transactions.empty_state_label" = "brak transakcji";
-"scene.transactions.row_action.archive" = "Archive";
-"scene.transactions.row_action.unarchive" = "Unarchive";
+"scene.transactions.row_action.archive" = "Archiwizuj";
+"scene.transactions.row_action.unarchive" = "Przywróć z archiwum";
 
 "scene.settings.title" = "Ustawienia";
 "scene.settings.section.wallet" = "Portfel";
@@ -66,7 +66,7 @@
 "scene.deposit.send" = "Wyślij";
 "scene.deposit.title" = "Otrzymaj";
 
-"scene.request.title" = "Receive";
+"scene.request.title" = "Otrzymaj";
 "scene.request.lightning_button" = "Lightning";
 "scene.request.on_chain_button" = "On-chain";
 "scene.request.memo_placeholder" = "Notatka (opcjonalnie)";
@@ -111,11 +111,11 @@
 
 "scene.send.lightning.title" = "Wyślij";
 "scene.send.lightning.error.expired" = "Żądanie płatności wygasło: %@";
-"scene.send.lightning.error.duplicate" = "Payment already paid.";
-"scene.send.lightning.memo" = "Memo: %@";
+"scene.send.lightning.error.duplicate" = "Płatność już uiszczona.";
+"scene.send.lightning.memo" = "Notatka: %@";
 
-"scene.connect_remote_node.title" = "Connect Remote Node";
-"scene.connect_remote_node.empty_state" = "Scan the QRCode generate with zapconnect or paste the connection code to connect to your node.";
+"scene.connect_remote_node.title" = "Połącz Ze Zdalnym Nodem";
+"scene.connect_remote_node.empty_state" = "Zeskanuj kode QR wygenerowany przez zapconnect lub wklej kod do połączenia ze swoim nodem.";
 "scene.connect_remote_node.url_label" = "Adres";
 "scene.connect_remote_node.certificate_label" = "Certyfikat";
 "scene.connect_remote_node.connect_button" = "Połącz";
@@ -150,8 +150,8 @@
 "scene.select_wallet_connection.create.help" = "Potrzebujesz pomocy?";
 
 "scene.main.send_button" = "Wyślij";
-"scene.main.receive_button" = "Receive";
-"scene.main.transactions_button" = "Transactions";
+"scene.main.receive_button" = "Otrzymaj";
+"scene.main.transactions_button" = "Transakcje";
 "scene.main.channels_button" = "Sieć";
 
 "scene.qr_code_detail.method_label.lightning" = "Lightning";
