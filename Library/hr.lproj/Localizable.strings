@@ -59,7 +59,7 @@
 "scene.settings.item.on_chain_request_address.bech32" = "Bech32";
 "scene.settings.item.on_chain_request_address.p2sh" = "P2SH";
 "scene.settings.item.remove_remote_node" = "Resetiraj konfiguraciju udaljenog čvora";
-"scene.settings.item.reset_pin" = "Resetiraj PIN";
+"scene.settings.item.reset_pin" = "Resetiraj pin";
 "scene.settings.item.report_issue" = "Prijavi problem";
 "scene.settings.item.help" = "Trebate li pomoć?";
 
