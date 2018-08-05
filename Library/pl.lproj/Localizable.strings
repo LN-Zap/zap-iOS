@@ -10,7 +10,7 @@
 "link.help.zapconnect" = "https://ln-zap.github.io/zap-tutorials/iOS-remote-node-setup";
 
 "error.wrong_uri_format" = "Nieznany format linku.";
-"error.wrong_uri_network" = "Próbowałeś utworzyć połączenie z %@, ale Twój node nie jest połączony z %@.";
+"error.wrong_uri_network" = "Próbowałeś utworzyć połączenie z %@, ale Twój node nie ma połączenia z %@.";
 
 "rpc_connect_qrcode_error.btc_pay_expired" = "Wygląda na to, że czas ważności kodu dobiegł końca.";
 "rpc_connect_qrcode_error.btc_pay_configuration_broken" = "Nie udało się odczytać pliku konfiguracyjnego BTCPay.";
@@ -193,8 +193,8 @@
 "scene.channel_detail.remote_balance_label" = "Zdalne saldo";
 "scene.channel_detail.update_count_label" = "Liczba zmian";
 "scene.channel_detail.block_height_label" = "Block Height";
-"scene.channel_detail.closing_time.label" = "Closing in";
-"scene.channel_detail.closing_time.data" = "%d blocks (%@)";
+"scene.channel_detail.closing_time.label" = "Zamknięcia za";
+"scene.channel_detail.closing_time.data" = "%d bloków (%@)";
 "scene.channel_detail.funding_transaction_label" = "Transakcja otwierająca";
 "scene.channel_detail.close_button" = "Zamknij";
 "scene.channel_detail.force_close_button" = "Wymuś zamknięcie";
