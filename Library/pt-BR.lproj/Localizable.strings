@@ -30,7 +30,7 @@
 "unit.bitcoin.bit" = "Bits";
 "unit.bitcoin.satoshi" = "Satoshis";
 
-"transaction.open_channel.memo" = "Open Channel: %@";
+"transaction.open_channel.memo" = "Abrir Canal: %@";
 "transaction.close_channel.memo" = "%@ Channel: %@";
 
 "close_type.cooperative_close" = "Fechar";
