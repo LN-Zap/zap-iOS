@@ -67,7 +67,7 @@
 "scene.deposit.title" = "Отримати";
 
 "scene.request.title" = "Отримати";
-"scene.request.lightning_button" = "Lightning";
+"scene.request.lightning_button" = "Блискавичні";
 "scene.request.on_chain_button" = "On-chain";
 "scene.request.memo_placeholder" = "Memo (optional)";
 "scene.request.generate_request_button" = "Generate Request";
@@ -103,13 +103,13 @@
 "scene.confirm_mnemonic.title" = "Confirm Seed";
 "scene.confirm_mnemonic.description" = "Enter your key.";
 
-"scene.channel_detail.title" = "Channel Detail";
+"scene.channel_detail.title" = "Деталі каналу";
 
-"scene.send.title" = "Send";
-"scene.send.send_button" = "Send";
+"scene.send.title" = "Надіслати";
+"scene.send.send_button" = "Надіслати";
 "scene.send.error.invalid_payment_request" = "Invalid Payment request";
 
-"scene.send.lightning.title" = "Send";
+"scene.send.lightning.title" = "Надіслати";
 "scene.send.lightning.error.expired" = "Payment Request expired:\n%@";
 "scene.send.lightning.error.duplicate" = "Payment already paid.";
 "scene.send.lightning.memo" = "Memo: %@";
@@ -144,8 +144,8 @@
 "scene.select_wallet_connection.recover.title" = "Відновити";
 "scene.select_wallet_connection.recover.message" = "існуючий гаманець";
 "scene.select_wallet_connection.connect.title" = "Підключення";
-"scene.select_wallet_connection.connect.message" = "remote node";
-"scene.select_wallet_connection.disabled_alert.title" = "Sorry!";
+"scene.select_wallet_connection.connect.message" = "віддалений вузол";
+"scene.select_wallet_connection.disabled_alert.title" = "Вибачте!";
 "scene.select_wallet_connection.disabled_alert.message" = "Running Lnd on the phone is disabled in this beta. Connect to a remote node instead.";
 "scene.select_wallet_connection.create.help" = "Need Help?";
 
@@ -164,7 +164,7 @@
 "scene.sync.disconnect_alert.destructive_action" = "Disconnect Node";
 "scene.sync.disconnect_alert.cancel_action" = "Cancel";
 
-"scene.transaction_detail.title.lightning_invoice" = "Invoice Detail";
+"scene.transaction_detail.title.lightning_invoice" = "Деталі фактури";
 "scene.transaction_detail.title.payment_detail" = "Payment Detail";
 "scene.transaction_detail.title.transaction_detail" = "Transaction Detail";
 "scene.transaction_detail.archive_button" = "Archive";
@@ -175,8 +175,8 @@
 "scene.transaction_detail.qr_code.expired_label" = "Expired";
 "scene.transaction_detail.amount.unspecified_label" = "Unspecified";
 "scene.transaction_detail.amount_label" = "Amount";
-"scene.transaction_detail.created_label" = "Created";
-"scene.transaction_detail.payment_request" = "Payment Request";
+"scene.transaction_detail.created_label" = "Створено";
+"scene.transaction_detail.payment_request" = "Запит оплати";
 "scene.transaction_detail.expiry_label" = "Expiry";
 "scene.transaction_detail.settled_label" = "Settled";
 "scene.transaction_detail.settled_date_label" = "Settled Date";
@@ -202,6 +202,6 @@
 "scene.filter.title" = "Transaction Filter";
 "scene.filter.section_header.transaction_types" = "Transaction Types";
 "scene.filter.displayOnChainTransactions" = "On Chain Transactions";
-"scene.filter.displayLightningPayments" = "Lightning Payments";
-"scene.filter.displayLightningInvoices" = "Lightning Invoices";
-"scene.filter.displayArchivedTransactions" = "Archived Transactions";
+"scene.filter.displayLightningPayments" = "Блискавичні платежі";
+"scene.filter.displayLightningInvoices" = "Блискавичні фактури";
+"scene.filter.displayArchivedTransactions" = "Архівовані транзакції";
