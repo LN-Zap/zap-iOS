@@ -31,7 +31,7 @@
 "unit.bitcoin.satoshi" = "Satoshis";
 
 "transaction.open_channel.memo" = "Abrir Canal: %@";
-"transaction.close_channel.memo" = "%@ Channel: %@";
+"transaction.close_channel.memo" = "Canal %@: %@";
 
 "close_type.cooperative_close" = "Fechar";
 "close_type.local_force_close" = "Forçar Encerramento";
