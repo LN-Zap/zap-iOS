@@ -72,16 +72,16 @@
 "scene.request.memo_placeholder" = "Memo (optional)";
 "scene.request.generate_request_button" = "Generate Request";
 
-"scene.channels.title" = "Channels";
+"scene.channels.title" = "Канали";
 "scene.channels.section_header.pending" = "Pending";
 "scene.channels.section_header.open" = "Open";
-"scene.channels.close.title" = "Close Channel";
+"scene.channels.close.title" = "Канал закритий";
 "scene.channels.close.message" = "Do you really want to close the channel with node %@?";
-"scene.channels.force_close.title" = "Force Close Channel";
+"scene.channels.force_close.title" = "Примусове закриття каналу";
 "scene.channels.force_close.message" = "%@ is offline, are you sure you want to force close this channel? You’d have to wait about %@ for your funds?";
-"scene.channels.alert.cancel" = "Cancel";
-"scene.channels.alert.close" = "Close";
-"scene.channels.search.placeholder" = "search";
+"scene.channels.alert.cancel" = "Скасувати";
+"scene.channels.alert.close" = "Закритий";
+"scene.channels.search.placeholder" = "пошук";
 "scene.channels.row_action.close" = "Close Channel";
 "scene.channels.close_success.toast" = "Channel is closing.";
 
