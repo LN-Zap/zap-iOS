@@ -76,7 +76,7 @@
 "scene.channels.section_header.pending" = "قيد الانتظار";
 "scene.channels.section_header.open" = "فتح";
 "scene.channels.close.title" = "إغلاق القناة";
-"scene.channels.close.message" = "Do you really want to close the channel with node %@?";
+"scene.channels.close.message" = "هل تريد حقاً إغلاق القناة مع العقدة %@؟";
 "scene.channels.force_close.title" = "Force Close Channel";
 "scene.channels.force_close.message" = "%@ is offline, are you sure you want to force close this channel? You’d have to wait about %@ for your funds?";
 "scene.channels.alert.cancel" = "Cancel";
