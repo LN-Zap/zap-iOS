@@ -8,6 +8,10 @@
 
 import UIKit
 
+protocol ChannelListDataSource: UICollectionViewDataSource {
+    func heightForItem(at index: Int) -> CGFloat
+}
+
 class ChannelLayout: UICollectionViewLayout {
     var overwriteContentOffset: CGPoint?
     var overwriteHeaderHeight: CGFloat?
@@ -59,6 +63,9 @@ class ChannelLayout: UICollectionViewLayout {
     }
     
     func heightForItem(at index: Int) -> CGFloat {
+        if let dataSource = self.collectionView?.dataSource as? ChannelListDataSource {
+            return dataSource.heightForItem(at: index)
+        }
         return 360
     }
     

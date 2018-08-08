@@ -15,6 +15,10 @@ final class ChannelViewModel {
     let state: Observable<ChannelState>
     let name: Observable<String>
     let color: Observable<UIColor>
+
+    lazy var detailViewModel: ChannelDetailViewModel = {
+        return ChannelDetailViewModel(channelViewModel: self)
+    }()
     
     init(channel: Channel, nodeStore: LightningNodeStore) {
         self.channel = channel

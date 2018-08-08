@@ -19,7 +19,7 @@ final class StackedLayout: ChannelLayout {
     var visibleIndices: Range<Int> {
         guard let collectionView = collectionView else { return 0..<1 }
         
-        let start = Int((contentOffset.y - easingOffset - maxHeaderHeight - minHeaderHeight + headerMargin) / visibleCellHeaderHeight)
+        let start = max(0, Int((contentOffset.y - easingOffset - maxHeaderHeight - minHeaderHeight + headerMargin) / visibleCellHeaderHeight))
         let end = min(start + Int(collectionView.bounds.height / visibleCellHeaderHeight) + 2, collectionView.numberOfItems(inSection: 0))
         
         return start..<end
@@ -29,7 +29,7 @@ final class StackedLayout: ChannelLayout {
         guard let collectionView = collectionView else { return CGSize.zero }
         
         let itemCount = collectionView.numberOfItems(inSection: 0)
-        let height = CGFloat(itemCount - 1) * visibleCellHeaderHeight + heightForItem(at: itemCount) + maxHeaderHeight + headerMargin + bottomMargin
+        let height = CGFloat(itemCount - 1) * visibleCellHeaderHeight + heightForItem(at: itemCount - 1) + maxHeaderHeight + headerMargin + bottomMargin
         return CGSize(width: collectionView.bounds.width, height: height)
     }
     

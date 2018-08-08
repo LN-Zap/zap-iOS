@@ -272,6 +272,10 @@
 		ADCD060120E67FA5009D9650 /* Environment.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADCD060020E67FA5009D9650 /* Environment.swift */; };
 		ADCD5B0D20D7E3F50037F156 /* RemoveRemoteNodeSettingsItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADCD5B0C20D7E3F50037F156 /* RemoveRemoteNodeSettingsItem.swift */; };
 		ADCD5B0F20D7E40C0037F156 /* RemovePinSettingsItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADCD5B0E20D7E40C0037F156 /* RemovePinSettingsItem.swift */; };
+		ADDD13B62119CE740035D2F9 /* StackViewElement.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADDD13B52119CE740035D2F9 /* StackViewElement.swift */; };
+		ADDD13B92119CEB40035D2F9 /* UIStackView.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADDD13B82119CEB40035D2F9 /* UIStackView.swift */; };
+		ADDD13BB2119CF110035D2F9 /* CallbackButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADDD13BA2119CF110035D2F9 /* CallbackButton.swift */; };
+		ADDD13BD2119E3240035D2F9 /* ChannelDetailViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADDD13BC2119E3240035D2F9 /* ChannelDetailViewModel.swift */; };
 		ADE0C4092108F6C8004597C3 /* ChannelCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADE0C4062108F6C8004597C3 /* ChannelCell.swift */; };
 		ADE0C40A2108F6C8004597C3 /* ChannelCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = ADE0C4072108F6C8004597C3 /* ChannelCell.xib */; };
 		ADE19C4020E7892000340E2E /* ChannelPoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADE19C3F20E7892000340E2E /* ChannelPoint.swift */; };
@@ -777,6 +781,10 @@
 		ADD6D80220B09260008BE461 /* RemoteNodeCertificatesScannerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RemoteNodeCertificatesScannerViewController.swift; sourceTree = "<group>"; };
 		ADD6D80620B15603008BE461 /* ZapconnectQRCode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ZapconnectQRCode.swift; sourceTree = "<group>"; };
 		ADD9DCDC20B453D000AEFC5C /* LndConnection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LndConnection.swift; sourceTree = "<group>"; };
+		ADDD13B52119CE740035D2F9 /* StackViewElement.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StackViewElement.swift; sourceTree = "<group>"; };
+		ADDD13B82119CEB40035D2F9 /* UIStackView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIStackView.swift; sourceTree = "<group>"; };
+		ADDD13BA2119CF110035D2F9 /* CallbackButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CallbackButton.swift; sourceTree = "<group>"; };
+		ADDD13BC2119E3240035D2F9 /* ChannelDetailViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChannelDetailViewModel.swift; sourceTree = "<group>"; };
 		ADE0C4062108F6C8004597C3 /* ChannelCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChannelCell.swift; sourceTree = "<group>"; };
 		ADE0C4072108F6C8004597C3 /* ChannelCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ChannelCell.xib; sourceTree = "<group>"; };
 		ADE19C3F20E7892000340E2E /* ChannelPoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChannelPoint.swift; sourceTree = "<group>"; };
@@ -1789,11 +1797,23 @@
 			path = Loading;
 			sourceTree = "<group>";
 		};
+		ADDD13B72119CE980035D2F9 /* Stack View */ = {
+			isa = PBXGroup;
+			children = (
+				ADDD13B52119CE740035D2F9 /* StackViewElement.swift */,
+				ADDD13B82119CEB40035D2F9 /* UIStackView.swift */,
+				ADDD13BA2119CF110035D2F9 /* CallbackButton.swift */,
+			);
+			path = "Stack View";
+			sourceTree = "<group>";
+		};
 		ADE0C40B2108F6CE004597C3 /* Cell */ = {
 			isa = PBXGroup;
 			children = (
+				ADDD13BC2119E3240035D2F9 /* ChannelDetailViewModel.swift */,
 				ADE0C4062108F6C8004597C3 /* ChannelCell.swift */,
 				ADE0C4072108F6C8004597C3 /* ChannelCell.xib */,
+				ADDD13B72119CE980035D2F9 /* Stack View */,
 			);
 			path = Cell;
 			sourceTree = "<group>";
@@ -2492,6 +2512,7 @@
 				AD391C5120D16F7A007EE22A /* ConfirmMnemonicCollectionViewCell.swift in Sources */,
 				AD391C3920D16F0B007EE22A /* BockExplorer.swift in Sources */,
 				ADA81E9E210DE14100B7C6F2 /* UIView.swift in Sources */,
+				ADDD13B62119CE740035D2F9 /* StackViewElement.swift in Sources */,
 				AD391C9A20D16FA8007EE22A /* QRCodeScannerView.swift in Sources */,
 				AD7EDAE72108D39D0058CCCA /* ZapNavigationController.swift in Sources */,
 				AD27B01020FB8E6D00F232A8 /* OnChainUnconfirmedTransactionViewModel.swift in Sources */,
@@ -2503,6 +2524,7 @@
 				AD292F9120E69F0E00211AE7 /* RootViewModel.swift in Sources */,
 				AD0D5DED210DCC6700D11D0B /* ChannelCollectionView.swift in Sources */,
 				AD391CA320D16FA8007EE22A /* SendOnChainViewController.swift in Sources */,
+				ADDD13BD2119E3240035D2F9 /* ChannelDetailViewModel.swift in Sources */,
 				AD391C3520D16EFA007EE22A /* Storyboard.swift in Sources */,
 				AD391CDB20D16FE1007EE22A /* TransactionListViewController.swift in Sources */,
 				AD391D0720D16FF5007EE22A /* GradientLoadingButtonView.swift in Sources */,
@@ -2566,6 +2588,7 @@
 				AD391C5D20D16F7A007EE22A /* MnemonicWordListViewController.swift in Sources */,
 				AD391C3320D16EFA007EE22A /* UIImage.swift in Sources */,
 				ADCD5B0F20D7E40C0037F156 /* RemovePinSettingsItem.swift in Sources */,
+				ADDD13BB2119CF110035D2F9 /* CallbackButton.swift in Sources */,
 				AD391CA520D16FA8007EE22A /* SendLightningInvoiceViewModel.swift in Sources */,
 				AD391C4D20D16F68007EE22A /* ChannelListViewController.swift in Sources */,
 				AD391CC520D16FE1007EE22A /* DetailSeparatorTableViewCell.swift in Sources */,
@@ -2621,6 +2644,7 @@
 				AD391C2B20D16EFA007EE22A /* SignalProtocol.swift in Sources */,
 				AD0D5DEB210DCC6300D11D0B /* StackedLayout.swift in Sources */,
 				AD391C2F20D16EFA007EE22A /* UIButton.swift in Sources */,
+				ADDD13B92119CEB40035D2F9 /* UIStackView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

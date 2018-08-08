@@ -55,14 +55,11 @@ final class ChannelListViewController: UIViewController {
 
         view.addBackgroundGradient()
         
-        channelListViewModel?.dataSource.bind(to: collectionView) { dataSource, indexPath, collectionView -> UICollectionViewCell in
-            let channelCell: ChannelCell = collectionView.dequeueCellForIndexPath(indexPath)
-            channelCell.channelViewModel = dataSource[indexPath.item]
-            channelCell.delegate = self
-            return channelCell
-        }
+        channelListViewModel?.dataSource.observeNext { [weak self] _ in
+            self?.collectionView.reloadData()
+        }.dispose(in: reactive.bag)
         
-        collectionView.reactive.dataSource.forwardTo = self
+        collectionView.dataSource = self
     }
     
     @objc func refresh(sender: UIRefreshControl) {
@@ -93,13 +90,20 @@ extension ChannelListViewController: ChannelListHeaderDelegate {
     }
 }
 
-extension ChannelListViewController: UICollectionViewDataSource {
+extension ChannelListViewController: ChannelListDataSource {
+    func heightForItem(at index: Int) -> CGFloat {
+        return channelListViewModel?.dataSource[index].detailViewModel.elements.height ?? 100
+    }
+    
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        fatalError("not implemented")
+        return channelListViewModel?.dataSource.count ?? 0
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        fatalError("not implemented")
+        let channelCell: ChannelCell = collectionView.dequeueCellForIndexPath(indexPath)
+        channelCell.channelViewModel = channelListViewModel?.dataSource[indexPath.item]
+        channelCell.delegate = self
+        return channelCell
     }
     
     func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {

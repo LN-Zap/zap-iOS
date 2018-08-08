@@ -32,6 +32,13 @@ struct UIViewStyle<T: UIView> {
             action(view)
         }
     }
+    
+    func apply(to views: [T], action: (T) -> Void) {
+        for view in views {
+            styling(view)
+            action(view)
+        }
+    }
 }
 
 enum Style {
@@ -39,9 +46,23 @@ enum Style {
         $0.titleLabel?.font = UIFont.zap.light
     }
     
+    static func button(color: UIColor = UIColor.zap.peach, fontSize: CGFloat = UIFont.labelFontSize) -> UIViewStyle<UIButton> {
+        return UIViewStyle<UIButton> {
+            $0.titleLabel?.font = UIFont.zap.light.withSize(fontSize)
+            $0.setTitleColor(color, for: .normal)
+        }
+    }
+    
     static let label = UIViewStyle<UILabel> {
         $0.font = UIFont.zap.light
         $0.textColor = UIColor.zap.black
+    }
+    
+    static func label(color: UIColor = UIColor.zap.black, fontSize: CGFloat = UIFont.labelFontSize) -> UIViewStyle<UILabel> {
+        return UIViewStyle<UILabel> {
+            $0.font = UIFont.zap.light.withSize(fontSize)
+            $0.textColor = color
+        }
     }
     
     static let textField = UIViewStyle<UITextField> {

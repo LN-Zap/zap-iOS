@@ -24,36 +24,33 @@ public extension UIColor {
         
         public static let backgroundGradientTop = color("backgroundGradientTop")
         public static let backgroundGradientBottom = color("backgroundGradientBottom")
-        
-        static let validNodeColors: [UIColor] = [
-            0x1abc9c,
-            0x2ecc71,
-            0x3498db,
-            0x9b59b6,
-            0x34495e,
-            0x16a085,
-            0x27ae60,
-            0x2980b9,
-            0x8e44ad,
-            0x2c3e50,
-            0xf1c40f,
-            0xe67e22,
-            0xe74c3c,
-            0xecf0f1,
-            0x95a5a6,
-            0xf39c12,
-            0xd35400,
-            0xc0392b,
-            0xbdc3c7,
-            0x7f8c8d,
-            0xC4E538,
-            0x0652DD,
-            0x1B1464,
-            0xA3CB38,
-            0x12CBC4,
-            0xf8e71c,
-            0x000000
-        ].map { UIColor(hex: $0) }
+
+        static let validNodeColors: [UIColor] =
+            [
+                0xe6194b,
+                0x3cb44b,
+                0xffe119,
+                0x0082c8,
+                0xf58231,
+                0x911eb4,
+                0x46f0f0,
+                0xf032e6,
+                0xd2f53c,
+                0xfabebe,
+                0x008080,
+                0xe6beff,
+                0xaa6e28,
+                0xfffac8,
+                0x800000,
+                0xaaffc3,
+                0x808000,
+                0xffd8b1,
+                0x000080,
+                0x808080,
+                0xFFFFFF,
+                0x000000
+            ]
+            .map { UIColor(hex: $0) }
         
         private static func color(_ name: String) -> UIColor {
             return UIColor(named: name, in: Bundle.library, compatibleWith: nil) ?? UIColor.magenta
