@@ -29,7 +29,7 @@ final class LoadingViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        view.backgroundColor = UIColor.zap.deepSeaBlue
+        view.backgroundColor = UIColor.zap.seaBlue
         
         Style.label().apply(to: infoLabel)
         infoLabel.textColor = .white

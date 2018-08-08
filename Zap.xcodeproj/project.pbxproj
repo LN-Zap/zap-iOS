@@ -73,7 +73,6 @@
 		AD391C3120D16EFA007EE22A /* UIColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0A05A222013D9BB0007D1C9 /* UIColor.swift */; };
 		AD391C3220D16EFA007EE22A /* UIFont.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADE4CF1C20B5B2BE007C987A /* UIFont.swift */; };
 		AD391C3320D16EFA007EE22A /* UIImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0A05A2F2013EFC00007D1C9 /* UIImage.swift */; };
-		AD391C3420D16EFA007EE22A /* UILabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0A96B83201748C200788808 /* UILabel.swift */; };
 		AD391C3520D16EFA007EE22A /* Storyboard.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD2EDBF920C02616002E6EE5 /* Storyboard.swift */; };
 		AD391C3620D16EFA007EE22A /* UITableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0A05A5D2014A0DE0007D1C9 /* UITableView.swift */; };
 		AD391C3720D16EFA007EE22A /* UIViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADBA120520930C94001F7700 /* UIViewController.swift */; };
@@ -275,7 +274,7 @@
 		ADDD13B62119CE740035D2F9 /* StackViewElement.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADDD13B52119CE740035D2F9 /* StackViewElement.swift */; };
 		ADDD13B92119CEB40035D2F9 /* UIStackView.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADDD13B82119CEB40035D2F9 /* UIStackView.swift */; };
 		ADDD13BB2119CF110035D2F9 /* CallbackButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADDD13BA2119CF110035D2F9 /* CallbackButton.swift */; };
-		ADDD13BD2119E3240035D2F9 /* ChannelDetailViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADDD13BC2119E3240035D2F9 /* ChannelDetailViewModel.swift */; };
+		ADDD13BD2119E3240035D2F9 /* ChannelDetailConfiguration.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADDD13BC2119E3240035D2F9 /* ChannelDetailConfiguration.swift */; };
 		ADE0C4092108F6C8004597C3 /* ChannelCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADE0C4062108F6C8004597C3 /* ChannelCell.swift */; };
 		ADE0C40A2108F6C8004597C3 /* ChannelCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = ADE0C4072108F6C8004597C3 /* ChannelCell.xib */; };
 		ADE19C4020E7892000340E2E /* ChannelPoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADE19C3F20E7892000340E2E /* ChannelPoint.swift */; };
@@ -557,7 +556,6 @@
 		A0A05A5B20149F720007D1C9 /* TransactionListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransactionListViewController.swift; sourceTree = "<group>"; };
 		A0A05A5D2014A0DE0007D1C9 /* UITableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UITableView.swift; sourceTree = "<group>"; };
 		A0A33EF32028743200BB76F4 /* LightningApiRPC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LightningApiRPC.swift; sourceTree = "<group>"; };
-		A0A96B83201748C200788808 /* UILabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UILabel.swift; sourceTree = "<group>"; };
 		A0A96B8520174BAC00788808 /* CloseStatusUpdate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CloseStatusUpdate.swift; sourceTree = "<group>"; };
 		A0A96B87201769F100788808 /* String.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = String.swift; sourceTree = "<group>"; };
 		A0A96B932017965100788808 /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
@@ -784,7 +782,7 @@
 		ADDD13B52119CE740035D2F9 /* StackViewElement.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StackViewElement.swift; sourceTree = "<group>"; };
 		ADDD13B82119CEB40035D2F9 /* UIStackView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIStackView.swift; sourceTree = "<group>"; };
 		ADDD13BA2119CF110035D2F9 /* CallbackButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CallbackButton.swift; sourceTree = "<group>"; };
-		ADDD13BC2119E3240035D2F9 /* ChannelDetailViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChannelDetailViewModel.swift; sourceTree = "<group>"; };
+		ADDD13BC2119E3240035D2F9 /* ChannelDetailConfiguration.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChannelDetailConfiguration.swift; sourceTree = "<group>"; };
 		ADE0C4062108F6C8004597C3 /* ChannelCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChannelCell.swift; sourceTree = "<group>"; };
 		ADE0C4072108F6C8004597C3 /* ChannelCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ChannelCell.xib; sourceTree = "<group>"; };
 		ADE19C3F20E7892000340E2E /* ChannelPoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChannelPoint.swift; sourceTree = "<group>"; };
@@ -1276,7 +1274,6 @@
 				A0A05A222013D9BB0007D1C9 /* UIColor.swift */,
 				ADE4CF1C20B5B2BE007C987A /* UIFont.swift */,
 				A0A05A2F2013EFC00007D1C9 /* UIImage.swift */,
-				A0A96B83201748C200788808 /* UILabel.swift */,
 				A0A05A5D2014A0DE0007D1C9 /* UITableView.swift */,
 				ADA81E9D210DE14100B7C6F2 /* UIView.swift */,
 				ADBA120520930C94001F7700 /* UIViewController.swift */,
@@ -1336,9 +1333,9 @@
 		A0DDC0702018C6D800AEFF94 /* ChannelList */ = {
 			isa = PBXGroup;
 			children = (
-				ADA81E9F210E19BA00B7C6F2 /* Header */,
 				ADE0C40B2108F6CE004597C3 /* Cell */,
 				AD0D5DE0210DCAC600D11D0B /* ChannelCollectionView */,
+				ADA81E9F210E19BA00B7C6F2 /* Header */,
 				A010094F2015F99F0001EF94 /* ChannelList.storyboard */,
 				A0731FE82014B27900C55E45 /* ChannelListViewController.swift */,
 				A0F57DBD201E440F003AFA66 /* ChannelListViewModel.swift */,
@@ -1800,9 +1797,9 @@
 		ADDD13B72119CE980035D2F9 /* Stack View */ = {
 			isa = PBXGroup;
 			children = (
+				ADDD13BA2119CF110035D2F9 /* CallbackButton.swift */,
 				ADDD13B52119CE740035D2F9 /* StackViewElement.swift */,
 				ADDD13B82119CEB40035D2F9 /* UIStackView.swift */,
-				ADDD13BA2119CF110035D2F9 /* CallbackButton.swift */,
 			);
 			path = "Stack View";
 			sourceTree = "<group>";
@@ -1810,10 +1807,10 @@
 		ADE0C40B2108F6CE004597C3 /* Cell */ = {
 			isa = PBXGroup;
 			children = (
-				ADDD13BC2119E3240035D2F9 /* ChannelDetailViewModel.swift */,
-				ADE0C4062108F6C8004597C3 /* ChannelCell.swift */,
-				ADE0C4072108F6C8004597C3 /* ChannelCell.xib */,
 				ADDD13B72119CE980035D2F9 /* Stack View */,
+				ADE0C4062108F6C8004597C3 /* ChannelCell.swift */,
+				ADDD13BC2119E3240035D2F9 /* ChannelDetailConfiguration.swift */,
+				ADE0C4072108F6C8004597C3 /* ChannelCell.xib */,
 			);
 			path = Cell;
 			sourceTree = "<group>";
@@ -2497,7 +2494,6 @@
 			files = (
 				AD7EDAE52108C41D0058CCCA /* WalletViewController.swift in Sources */,
 				AD391C5B20D16F7A007EE22A /* MnemonicViewController.swift in Sources */,
-				AD391C3420D16EFA007EE22A /* UILabel.swift in Sources */,
 				AD391CD020D16FE1007EE22A /* LightningPaymentDetailViewModel.swift in Sources */,
 				AD967FD72100EFFA0048085B /* HelpSettingsItem.swift in Sources */,
 				AD391CA120D16FA8007EE22A /* RootViewController.swift in Sources */,
@@ -2524,7 +2520,7 @@
 				AD292F9120E69F0E00211AE7 /* RootViewModel.swift in Sources */,
 				AD0D5DED210DCC6700D11D0B /* ChannelCollectionView.swift in Sources */,
 				AD391CA320D16FA8007EE22A /* SendOnChainViewController.swift in Sources */,
-				ADDD13BD2119E3240035D2F9 /* ChannelDetailViewModel.swift in Sources */,
+				ADDD13BD2119E3240035D2F9 /* ChannelDetailConfiguration.swift in Sources */,
 				AD391C3520D16EFA007EE22A /* Storyboard.swift in Sources */,
 				AD391CDB20D16FE1007EE22A /* TransactionListViewController.swift in Sources */,
 				AD391D0720D16FF5007EE22A /* GradientLoadingButtonView.swift in Sources */,

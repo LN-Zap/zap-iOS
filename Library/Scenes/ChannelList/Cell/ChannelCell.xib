@@ -19,15 +19,15 @@
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <stackView opaque="NO" contentMode="scaleToFill" placeholderIntrinsicWidth="281" placeholderIntrinsicHeight="20.5" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="Adm-ti-qUU">
-                        <rect key="frame" x="20" y="0.0" width="281" height="20.5"/>
+                        <rect key="frame" x="0.0" y="0.0" width="321" height="20.5"/>
                     </stackView>
                 </subviews>
             </view>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
             <constraints>
                 <constraint firstItem="Adm-ti-qUU" firstAttribute="top" secondItem="QGR-l7-EsV" secondAttribute="top" id="LLb-3x-wxr"/>
-                <constraint firstItem="Adm-ti-qUU" firstAttribute="leading" secondItem="QGR-l7-EsV" secondAttribute="leading" constant="20" id="YID-bd-7zI"/>
-                <constraint firstAttribute="trailing" secondItem="Adm-ti-qUU" secondAttribute="trailing" constant="20" id="mjJ-VU-tvD"/>
+                <constraint firstItem="Adm-ti-qUU" firstAttribute="leading" secondItem="QGR-l7-EsV" secondAttribute="leading" id="YID-bd-7zI"/>
+                <constraint firstAttribute="trailing" secondItem="Adm-ti-qUU" secondAttribute="trailing" id="mjJ-VU-tvD"/>
             </constraints>
             <size key="customSize" width="321" height="448"/>
             <connections>

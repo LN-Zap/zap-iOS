@@ -35,9 +35,9 @@ enum Style {
         }
     }
     
-    static func label(color: UIColor = UIColor.zap.black, fontSize: CGFloat = UIFont.labelFontSize) -> UIViewStyle<UILabel> {
+    static func label(color: UIColor = UIColor.zap.black, font: UIFont = UIFont.zap.light, fontSize: CGFloat = UIFont.labelFontSize) -> UIViewStyle<UILabel> {
         return UIViewStyle<UILabel> {
-            $0.font = UIFont.zap.light.withSize(fontSize)
+            $0.font = font.withSize(fontSize)
             $0.textColor = color
         }
     }

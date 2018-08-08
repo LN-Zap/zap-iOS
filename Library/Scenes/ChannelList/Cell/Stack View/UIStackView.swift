@@ -10,6 +10,7 @@ import UIKit
 extension UIStackView {
     convenience init(elements: [StackViewElement]) {
         self.init()
+        
         set(elements: elements)
     }
     

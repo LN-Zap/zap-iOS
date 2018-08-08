@@ -92,7 +92,9 @@ extension ChannelListViewController: ChannelListHeaderDelegate {
 
 extension ChannelListViewController: ChannelListDataSource {
     func heightForItem(at index: Int) -> CGFloat {
-        return channelListViewModel?.dataSource[index].detailViewModel.elements.height ?? 100
+        guard let elements = channelListViewModel?.dataSource[index].detailViewModel.elements else { return 0 }
+        
+        return elements.height + CGFloat(elements.count + 1) * 14
     }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {

@@ -33,4 +33,18 @@ extension UIView {
             self.rightAnchor.constraint(equalTo: view.rightAnchor)
         ])
     }
+    
+    func constrainCenter(to view: UIView) {
+        NSLayoutConstraint.activate([
+            self.centerXAnchor.constraint(equalTo: view.centerXAnchor),
+            self.centerYAnchor.constraint(equalTo: view.centerYAnchor)
+        ])
+    }
+    
+    func constrainSize(to size: CGSize) {
+        NSLayoutConstraint.activate([
+            self.widthAnchor.constraint(equalToConstant: size.width),
+            self.heightAnchor.constraint(equalToConstant: size.height)
+        ])
+    }
 }

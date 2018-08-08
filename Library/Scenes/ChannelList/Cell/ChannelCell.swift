@@ -28,8 +28,7 @@ class ChannelCell: BondCollectionViewCell {
             detailViewModel.closeChannel = closeChannel
             detailViewModel.presentBlockExplorer = presentBlockExplorer
             
-            updateGradient(color: channelViewModel.color.value)
-
+            updateGradient()
             stackView.set(elements: detailViewModel.elements)
         }
     }
@@ -41,16 +40,17 @@ class ChannelCell: BondCollectionViewCell {
         gradientLayer?.removeFromSuperlayer()
     }
     
-    private func updateGradient(color: UIColor) {
+    private func updateGradient() {
         self.gradientLayer?.removeFromSuperlayer()
         
-        let verifiedColor = color.verified
+        guard let channelViewModel = channelViewModel else { return }
+        let color = channelViewModel.color.value.verified
         
-        layer.borderColor = verifiedColor.darker.cgColor
+        layer.borderColor = color.darker.cgColor
 
         let gradientLayer = CAGradientLayer()
         gradientLayer.frame = bounds
-        gradientLayer.colors = [verifiedColor.cgColor, verifiedColor.darker.cgColor]
+        gradientLayer.colors = [color.cgColor, color.darker.cgColor]
         layer.insertSublayer(gradientLayer, at: 0)
         self.gradientLayer = gradientLayer
     }
@@ -58,6 +58,10 @@ class ChannelCell: BondCollectionViewCell {
     override func awakeFromNib() {
         super.awakeFromNib()
 
+        stackView.spacing = 14
+        stackView.directionalLayoutMargins = NSDirectionalEdgeInsets(top: 14, leading: 20, bottom: 14, trailing: 20)
+        stackView.isLayoutMarginsRelativeArrangement = true
+        
         layer.cornerRadius = 11
         layer.borderWidth = 1
         layer.masksToBounds = true

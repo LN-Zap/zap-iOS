@@ -91,7 +91,7 @@ final class ExposedLayout: ChannelLayout {
     private func transform(for index: Int) -> CGAffineTransform {
         guard let collectionView = collectionView else { return CGAffineTransform.identity }
         
-        let index = index - visibleIndices.lowerBound
+        let index = max(0, index - visibleIndices.lowerBound)
         let count = visibleIndices.count
         let height = heightForItem(at: index)
         let hiddenElementHeight = bottomStackHeight / CGFloat(count)
