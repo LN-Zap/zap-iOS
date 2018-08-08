@@ -202,3 +202,5 @@
 "scene.filter.displayLightningPayments" = "Lightning Payments";
 "scene.filter.displayLightningInvoices" = "Lightning Invoices";
 "scene.filter.displayArchivedTransactions" = "Archived Transactions";
+
+"scene.qrcode_scanner.top_label" = "Scan QR-Code";

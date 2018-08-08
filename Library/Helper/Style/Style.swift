@@ -28,10 +28,14 @@ struct UIViewStyle<T: UIView> {
 }
 
 enum Style {
-    static func button(color: UIColor = UIColor.zap.lightningOrange, fontSize: CGFloat = UIFont.labelFontSize) -> UIViewStyle<UIButton> {
+    static func button(color: UIColor = UIColor.zap.lightningOrange, backgroundColor: UIColor = UIColor.clear, fontSize: CGFloat = UIFont.labelFontSize) -> UIViewStyle<UIButton> {
         return UIViewStyle<UIButton> {
             $0.titleLabel?.font = UIFont.zap.light.withSize(fontSize)
             $0.setTitleColor(color, for: .normal)
+            if backgroundColor != .clear {
+                $0.backgroundColor = backgroundColor
+                $0.layer.cornerRadius = 14
+            }
         }
     }
     
