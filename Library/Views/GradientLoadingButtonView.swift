@@ -52,12 +52,12 @@ public final class GradientLoadingButtonView: UIControl {
         addSubviewSameSize(gradient)
         
         let button = UIButton(type: .system)
-        
-        button.setTitleColor(.white, for: .normal)
+
+        Style.button(color: .white).apply(to: button)
+
         button.setTitleColor(UIColor.white.withAlphaComponent(0.4), for: .disabled)
         button.addTarget(self, action: #selector(buttonTapped), for: .touchUpInside)
         addSubviewSameSize(button)
-        Style.button.apply(to: button)
         self.button = button
     }
     

@@ -45,14 +45,7 @@ final class TransactionTableViewCell: BondTableViewCell {
         
         iconImageView.tintColor = .white
         
-        Style.label.apply(to: primaryAmountLabel, titleLabel) {
-            $0.font = $0.font.withSize(14)
-            $0.textColor = .white
-        }
-        
-        Style.label.apply(to: secondaryAmountLabel, timeLabel) {
-            $0.font = $0.font.withSize(12)
-            $0.textColor = .white
-        }
+        Style.label(color: .white, fontSize: 14).apply(to: primaryAmountLabel, titleLabel)
+        Style.label(color: .white, fontSize: 12).apply(to: secondaryAmountLabel, timeLabel)
     }
 }

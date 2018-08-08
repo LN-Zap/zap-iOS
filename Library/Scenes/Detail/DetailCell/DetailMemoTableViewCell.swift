@@ -30,8 +30,8 @@ final class DetailMemoTableViewCell: BondTableViewCell {
     override func awakeFromNib() {
         super.awakeFromNib()
         
-        Style.textField.apply(to: textField)
-        Style.label.apply(to: titleLabel)
+        Style.textField().apply(to: textField)
+        Style.label().apply(to: titleLabel)
         titleLabel.font = DetailCellType.titleFont
         textField.font = DetailCellType.dataFont
         

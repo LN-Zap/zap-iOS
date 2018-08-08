@@ -35,7 +35,7 @@ final class SendLightningInvoiceViewController: UIViewController, QRCodeScannerC
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        Style.label.apply(to: memoLabel, amountLabel, secondaryAmountLabel, destinationLabel, expiredLabel)
+        Style.label().apply(to: memoLabel, amountLabel, secondaryAmountLabel, destinationLabel, expiredLabel)
         amountLabel.font = amountLabel.font.withSize(36)
         secondaryAmountLabel.font = amountLabel.font.withSize(14)
         secondaryAmountLabel.textColor = .gray

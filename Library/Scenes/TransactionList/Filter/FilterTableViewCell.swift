@@ -28,7 +28,7 @@ final class FilterTableViewCell: UITableViewCell {
     
     override func awakeFromNib() {
         super.awakeFromNib()
-        Style.label.apply(to: filterSettingLabel)
+        Style.label().apply(to: filterSettingLabel)
         
         filterSwitch.onTintColor = UIColor.zap.lightningOrange
     }

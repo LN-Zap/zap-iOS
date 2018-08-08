@@ -34,7 +34,7 @@ final class UpdateAddressViewController: UITableViewController {
 
         tableView.separatorColor = UIColor.zap.warmGrey
 
-        Style.textField.apply(to: addressTextField)
+        Style.textField().apply(to: addressTextField)
         addressTextField.textColor = .white
     }
     

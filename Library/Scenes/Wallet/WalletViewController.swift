@@ -62,7 +62,7 @@ final class WalletViewController: UIViewController {
         
         title = "Wallet"
         
-        Style.button.apply(to: sendButton, requestButton)
+        Style.button().apply(to: sendButton, requestButton)
 
         UIView.performWithoutAnimation {
             sendButton.setTitle("scene.main.send_button".localized, for: .normal)
@@ -71,7 +71,7 @@ final class WalletViewController: UIViewController {
             requestButton.layoutIfNeeded()
         }
         
-        Style.label.apply(to: secondaryBalanceLabel)
+        Style.label().apply(to: secondaryBalanceLabel)
         primaryBalanceLabel.textColor = .white
         primaryBalanceLabel.font = primaryBalanceLabel.font.withSize(40)
         secondaryBalanceLabel.textColor = .gray

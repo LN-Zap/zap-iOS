@@ -104,7 +104,7 @@ extension SelectWalletCreationMethodViewController: UITableViewDataSource {
             let cell = UITableViewCell(style: .default, reuseIdentifier: "default")
             cell.backgroundColor = UIColor.zap.seaBlue
             if let label = cell.textLabel {
-                Style.label.apply(to: label)
+                Style.label().apply(to: label)
                 label.font = label.font.withSize(14)
                 label.text = "scene.select_wallet_connection.create.help".localized
                 label.textColor = .white

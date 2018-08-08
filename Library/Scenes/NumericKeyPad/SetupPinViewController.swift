@@ -33,12 +33,8 @@ final class SetupPinViewController: UIViewController {
         
         guard let setupPinViewModel = setupPinViewModel else { return }
         
-        Style.label.apply(to: topLabel) {
-            $0.textColor = .white
-        }
-        Style.button.apply(to: doneButton) {
-            $0.tintColor = .white
-        }
+        Style.label(color: .white).apply(to: topLabel)
+        Style.button(color: .white).apply(to: doneButton)
         
         setupKeyPad()
         

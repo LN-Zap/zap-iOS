@@ -42,7 +42,7 @@ final class DetailDestructiveActionTableViewCell: UITableViewCell {
     
     override func awakeFromNib() {
         super.awakeFromNib()
-        Style.button.apply(to: destructiveActionButton)
+        Style.button().apply(to: destructiveActionButton)
     }
     
     @IBAction private func executeAction(_ sender: Any) {

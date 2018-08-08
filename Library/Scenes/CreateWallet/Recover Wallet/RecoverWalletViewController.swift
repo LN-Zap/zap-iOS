@@ -31,9 +31,9 @@ final class RecoverWalletViewController: UIViewController {
 
         title = "scene.recover_wallet.title".localized
         
-        Style.label.apply(to: topLabel)
+        Style.label().apply(to: topLabel)
         Style.textView.apply(to: placeholderTextView, textView)
-        Style.button.apply(to: doneButton)
+        Style.button().apply(to: doneButton)
         
         doneButton.setTitle("scene.recover_wallet.done_button".localized, for: .normal)
         topLabel.text = "scene.recover_wallet.description_label".localized

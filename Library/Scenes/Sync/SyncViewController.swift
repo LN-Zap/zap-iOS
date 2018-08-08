@@ -40,7 +40,7 @@ final class SyncViewController: UIViewController {
         super.viewDidLoad()
 
         gradientView.direction = .diagonal
-        Style.label.apply(to: syncLabel, dateLabel, descriptionLabel)
+        Style.label().apply(to: syncLabel, dateLabel, descriptionLabel)
         syncLabel.font = syncLabel.font.withSize(24)
         descriptionLabel.font = descriptionLabel.font.withSize(16)
         dateLabel.font = dateLabel.font.withSize(12)

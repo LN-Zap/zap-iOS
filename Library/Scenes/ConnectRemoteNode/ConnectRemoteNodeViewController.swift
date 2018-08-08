@@ -39,7 +39,7 @@ final class ConnectCellBond: TableViewBinder<Observable2DArray<String?, ConnectR
             cell.backgroundColor = UIColor.zap.seaBlue
 
             if let cellTextLabel = cell.textLabel {
-                Style.label.apply(to: cellTextLabel)
+                Style.label().apply(to: cellTextLabel)
                 cellTextLabel.textColor = .white
             }
             

@@ -31,8 +31,8 @@ class DetailTransactionHashTableViewCell: UITableViewCell {
     override func awakeFromNib() {
         super.awakeFromNib()
 
-        Style.label.apply(to: titleLabel)
-        Style.button.apply(to: detailButton)
+        Style.label().apply(to: titleLabel)
+        Style.button().apply(to: detailButton)
         
         titleLabel.font = DetailCellType.titleFont
         detailButton.titleLabel?.font = DetailCellType.dataFont
