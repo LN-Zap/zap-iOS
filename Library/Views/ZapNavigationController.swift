@@ -13,7 +13,7 @@ class ZapNavigationController: UINavigationController {
         super.viewDidLoad()
 
         navigationBar.prefersLargeTitles = true
-        navigationBar.barTintColor = UIColor.zap.backgroundGradientTop
+        navigationBar.barTintColor = UIColor.zap.seaBlue
         navigationBar.isTranslucent = false
         navigationBar.shadowImage = UIImage()
     }

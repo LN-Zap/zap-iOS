@@ -16,12 +16,16 @@ extension UIStoryboard {
 }
 
 final class UpdateAddressViewController: UITableViewController {
+    @IBOutlet private weak var addressCell: UITableViewCell!
     @IBOutlet private weak var addressTextField: UITextField!
     
     fileprivate var connectRemoteNodeViewModel: ConnectRemoteNodeViewModel?
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        view.backgroundColor = UIColor.zap.deepSeaBlue
+        addressCell.backgroundColor = UIColor.zap.seaBlue
         
         title = "scene.connect_remote_node.edit_url.title".localized
         

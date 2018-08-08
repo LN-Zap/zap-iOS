@@ -6,7 +6,6 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
-        <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -24,7 +23,7 @@
                                 <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                             </tableView>
                         </subviews>
-                        <color key="backgroundColor" name="charcoalGrey"/>
+                        <color key="backgroundColor" white="0.55909358129999998" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="rWU-eG-FKX" firstAttribute="top" secondItem="ZVc-8H-ohS" secondAttribute="top" id="1We-uM-5Qn"/>
                             <constraint firstItem="rWU-eG-FKX" firstAttribute="trailing" secondItem="fqu-z6-Num" secondAttribute="trailing" id="Aig-gE-P8a"/>
@@ -48,7 +47,7 @@
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" dataMode="static" style="grouped" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="18" sectionFooterHeight="18" id="Xsq-3v-grK">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" name="charcoalGrey"/>
+                        <color key="backgroundColor" white="0.55909358129999998" alpha="1" colorSpace="calibratedWhite"/>
                         <sections>
                             <tableViewSection id="MeO-eg-8aw">
                                 <cells>
@@ -72,7 +71,7 @@
                                                 <constraint firstItem="5OR-Rx-Bxr" firstAttribute="leading" secondItem="D6l-O0-60E" secondAttribute="leading" constant="15" id="g0J-ow-0WK"/>
                                             </constraints>
                                         </tableViewCellContentView>
-                                        <color key="backgroundColor" name="charcoalGreyLight"/>
+                                        <color key="backgroundColor" white="0.55909358129999998" alpha="1" colorSpace="calibratedWhite"/>
                                     </tableViewCell>
                                 </cells>
                             </tableViewSection>
@@ -83,6 +82,7 @@
                         </connections>
                     </tableView>
                     <connections>
+                        <outlet property="addressCell" destination="xPH-bl-G9g" id="fJ9-6Y-K30"/>
                         <outlet property="addressTextField" destination="5OR-Rx-Bxr" id="NKL-Wf-2z0"/>
                     </connections>
                 </tableViewController>
@@ -97,7 +97,7 @@
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" dataMode="prototypes" style="grouped" separatorStyle="default" allowsSelection="NO" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="18" sectionFooterHeight="18" id="1Xh-U5-Jkm">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" name="charcoalGrey"/>
+                        <color key="backgroundColor" white="0.55909358129999998" alpha="1" colorSpace="calibratedWhite"/>
                         <connections>
                             <outlet property="dataSource" destination="ScL-BD-Aew" id="Dvp-4V-i83"/>
                             <outlet property="delegate" destination="ScL-BD-Aew" id="0yr-dR-51m"/>
@@ -164,11 +164,5 @@
     </scenes>
     <resources>
         <image name="qr-code-overlay" width="186" height="186"/>
-        <namedColor name="charcoalGrey">
-            <color red="0.19200000166893005" green="0.20000000298023224" blue="0.23100000619888306" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-        </namedColor>
-        <namedColor name="charcoalGreyLight">
-            <color red="0.21199999749660492" green="0.22400000691413879" blue="0.2630000114440918" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-        </namedColor>
     </resources>
 </document>

@@ -68,7 +68,7 @@ final class SetupPinViewController: UIViewController {
     private func setupKeyPad() {
         guard let setupPinViewModel = setupPinViewModel else { return }
         
-        keyPadView.backgroundColor = UIColor.zap.charcoalGrey
+        keyPadView.backgroundColor = UIColor.zap.deepSeaBlue
         keyPadView.textColor = .white
         keyPadView.state = .setupPin
         

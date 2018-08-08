@@ -43,7 +43,7 @@
                     <constraint firstItem="fbk-9p-MLd" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="20" id="yuW-mo-v9E"/>
                 </constraints>
             </tableViewCellContentView>
-            <color key="backgroundColor" name="charcoalGreyLight"/>
+            <color key="backgroundColor" white="0.55909358129999998" alpha="1" colorSpace="calibratedWhite"/>
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
             <inset key="separatorInset" minX="20" minY="0.0" maxX="0.0" maxY="0.0"/>
             <connections>
@@ -54,9 +54,6 @@
         </tableViewCell>
     </objects>
     <resources>
-        <namedColor name="charcoalGreyLight">
-            <color red="0.21199999749660492" green="0.22400000691413879" blue="0.2630000114440918" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-        </namedColor>
         <namedColor name="white">
             <color red="0.9570000171661377" green="0.9570000171661377" blue="0.9570000171661377" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>

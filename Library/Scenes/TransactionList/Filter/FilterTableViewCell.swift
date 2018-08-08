@@ -30,7 +30,7 @@ final class FilterTableViewCell: UITableViewCell {
         super.awakeFromNib()
         Style.label.apply(to: filterSettingLabel)
         
-        filterSwitch.onTintColor = UIColor.zap.lightMustard
+        filterSwitch.onTintColor = UIColor.zap.lightningOrange
     }
     
     @IBAction private func toggleSettingsItem(_ sender: UISwitch) {

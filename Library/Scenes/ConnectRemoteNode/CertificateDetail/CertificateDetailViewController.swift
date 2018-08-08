@@ -24,6 +24,7 @@ final class CertificateDetailViewController: UITableViewController {
         title = "scene.connect_remote_node.certificate_detail.certificate_title".localized
         
         tableView.rowHeight = UITableViewAutomaticDimension
+        tableView.backgroundColor = UIColor.zap.deepSeaBlue
         tableView.separatorColor = UIColor.zap.warmGrey
         tableView.estimatedRowHeight = 300
         tableView.registerCell(CertificateDetailCell.self)
@@ -52,6 +53,7 @@ final class CertificateDetailViewController: UITableViewController {
         } else {
             cell.descriptionText = connectRemoteNodeViewModel?.remoteNodeConfiguration?.macaroon.hexString()
         }
+        cell.contentView.backgroundColor = UIColor.zap.seaBlue
         return cell
     }
     

@@ -7,7 +7,6 @@
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
-        <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -25,7 +24,7 @@
                                 <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                             </tableView>
                         </subviews>
-                        <color key="backgroundColor" name="charcoalGrey"/>
+                        <color key="backgroundColor" white="0.55909358129999998" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstAttribute="bottom" secondItem="AiB-0H-Fag" secondAttribute="bottom" id="27p-NA-dzq"/>
                             <constraint firstItem="AiB-0H-Fag" firstAttribute="top" secondItem="a72-sr-Qg5" secondAttribute="top" id="3O9-sT-cab"/>
@@ -87,7 +86,7 @@
                                 <rect key="frame" x="177.5" y="335" width="20" height="20"/>
                             </activityIndicatorView>
                         </subviews>
-                        <color key="backgroundColor" name="charcoalGrey"/>
+                        <color key="backgroundColor" white="0.55909358129999998" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="2hw-GH-ZzO" firstAttribute="trailing" secondItem="8Ah-Gl-chL" secondAttribute="trailing" id="2Jx-PF-K7z"/>
                             <constraint firstItem="raL-Iy-fWQ" firstAttribute="centerX" secondItem="2hw-GH-ZzO" secondAttribute="centerX" id="3bX-iT-xZU"/>
@@ -197,7 +196,7 @@
                                 </constraints>
                             </view>
                         </subviews>
-                        <color key="backgroundColor" name="charcoalGrey"/>
+                        <color key="backgroundColor" white="0.55909358129999998" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="7rm-rd-4Fq" firstAttribute="leading" secondItem="0gb-af-vDr" secondAttribute="leading" id="CiA-BO-zxz"/>
                             <constraint firstAttribute="trailing" secondItem="7rm-rd-4Fq" secondAttribute="trailing" id="EbP-i1-uaG"/>
@@ -271,7 +270,7 @@
                                 </connections>
                             </button>
                         </subviews>
-                        <color key="backgroundColor" name="charcoalGrey"/>
+                        <color key="backgroundColor" white="0.55909358129999998" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="AUC-sA-DFo" firstAttribute="trailing" secondItem="8JC-0g-WEx" secondAttribute="trailing" id="1pU-xn-dBb"/>
                             <constraint firstItem="Zmq-HS-Ejy" firstAttribute="trailing" secondItem="8JC-0g-WEx" secondAttribute="trailing" constant="20" id="5ZF-CE-ohf"/>
@@ -384,9 +383,4 @@
             <point key="canvasLocation" x="2480.8000000000002" y="897.30134932533736"/>
         </scene>
     </scenes>
-    <resources>
-        <namedColor name="charcoalGrey">
-            <color red="0.19200000166893005" green="0.20000000298023224" blue="0.23100000619888306" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-        </namedColor>
-    </resources>
 </document>

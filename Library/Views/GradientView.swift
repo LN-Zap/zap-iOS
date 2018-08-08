@@ -20,7 +20,7 @@ final class GradientView: UIView {
         }
     }
     
-    var gradient: [UIColor] = [UIColor.zap.lightMustard, UIColor.zap.peach] {
+    var gradient: [UIColor] = [UIColor.zap.lightningOrangeGradient, UIColor.zap.lightningOrange] {
         didSet {
             updateColors()
         }

@@ -40,7 +40,7 @@ final class PinViewController: UIViewController {
     
     private func setupKeyPad() {
         guard let authenticationViewModel = authenticationViewModel else { return }
-        keyPadView.backgroundColor = UIColor.zap.charcoalGrey
+        keyPadView.backgroundColor = UIColor.zap.deepSeaBlue
         keyPadView.textColor = .white
         keyPadView.state = .authenticate
         

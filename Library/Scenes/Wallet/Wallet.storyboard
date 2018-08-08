@@ -64,7 +64,7 @@
                             <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="Eqp-q1-Sn8">
                                 <rect key="frame" x="25" y="547" width="325" height="80"/>
                                 <subviews>
-                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="EBp-3s-E1M" customClass="GradientView" customModule="Library" customModuleProvider="target">
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="EBp-3s-E1M">
                                         <rect key="frame" x="0.0" y="0.0" width="160" height="80"/>
                                         <subviews>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="GgB-G7-lfE">
@@ -83,7 +83,7 @@
                                             <constraint firstAttribute="trailing" secondItem="GgB-G7-lfE" secondAttribute="trailing" id="WiY-dT-V3T"/>
                                         </constraints>
                                     </view>
-                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ybB-Mk-ugZ" customClass="GradientView" customModule="Library" customModuleProvider="target">
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ybB-Mk-ugZ">
                                         <rect key="frame" x="165" y="0.0" width="160" height="80"/>
                                         <subviews>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="C3P-tR-t4P">
@@ -127,11 +127,11 @@
                     <connections>
                         <outlet property="backgroundGradientView" destination="G9l-Ej-4IG" id="1HF-lZ-RDT"/>
                         <outlet property="primaryBalanceLabel" destination="aTc-aL-iRn" id="suc-9B-KGg"/>
-                        <outlet property="receiveButtonBackgroundGradient" destination="ybB-Mk-ugZ" id="rT9-vL-iYM"/>
+                        <outlet property="receiveButtonBackground" destination="ybB-Mk-ugZ" id="rT9-vL-iYM"/>
                         <outlet property="requestButton" destination="C3P-tR-t4P" id="MYK-pQ-yxP"/>
                         <outlet property="secondaryBalanceLabel" destination="x9j-76-Ee6" id="wv9-Zx-5ud"/>
                         <outlet property="sendButton" destination="GgB-G7-lfE" id="2v8-32-YCu"/>
-                        <outlet property="sendButtonBackgroundGradient" destination="EBp-3s-E1M" id="nrY-9P-zYq"/>
+                        <outlet property="sendButtonBackground" destination="EBp-3s-E1M" id="nrY-9P-zYq"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Y9w-si-BR4" userLabel="First Responder" sceneMemberID="firstResponder"/>

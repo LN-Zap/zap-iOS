@@ -58,10 +58,10 @@ final class SelectWalletCreationMethodViewController: UIViewController {
         tableView.tableFooterView = UIView()
         tableView.isScrollEnabled = false
         tableView.registerCell(SelectWalletCreationMethodTableViewCell.self)
-        tableView.backgroundColor = UIColor.zap.charcoalGrey
+        tableView.backgroundColor = UIColor.zap.deepSeaBlue
         tableView.separatorColor = UIColor.zap.warmGrey
         
-        navigationController?.navigationBar.barTintColor = UIColor.zap.charcoalGrey
+        navigationController?.navigationBar.barTintColor = UIColor.zap.deepSeaBlue
     }
 }
 
@@ -71,8 +71,8 @@ extension SelectWalletCreationMethodViewController: UITableViewDelegate {
         if indexPath.section == 1 {
             guard let url = URL(string: "link.help".localized) else { return }
             let safariViewController = SFSafariViewController(url: url)
-            safariViewController.preferredBarTintColor = UIColor.zap.charcoalGrey
-            safariViewController.preferredControlTintColor = UIColor.zap.peach
+            safariViewController.preferredBarTintColor = UIColor.zap.deepSeaBlue
+            safariViewController.preferredControlTintColor = UIColor.zap.lightningOrange
             present(safariViewController, animated: true, completion: nil)
         } else if let cellContent = content?[indexPath.row] {
             cellContent.2()
@@ -102,7 +102,7 @@ extension SelectWalletCreationMethodViewController: UITableViewDataSource {
             return cell
         } else {
             let cell = UITableViewCell(style: .default, reuseIdentifier: "default")
-            cell.backgroundColor = UIColor.zap.charcoalGreyLight
+            cell.backgroundColor = UIColor.zap.seaBlue
             if let label = cell.textLabel {
                 Style.label.apply(to: label)
                 label.font = label.font.withSize(14)

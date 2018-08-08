@@ -31,21 +31,22 @@ final class WalletViewController: UIViewController {
     @IBOutlet private weak var backgroundGradientView: GradientView! {
         didSet {
             backgroundGradientView.direction = .vertical
-            backgroundGradientView.gradient = [UIColor.zap.backgroundGradientTop, UIColor.zap.backgroundGradientBottom]
+            backgroundGradientView.gradient = [UIColor.zap.seaBlue, UIColor.zap.seaBlueGradient]
         }
     }
     @IBOutlet private weak var primaryBalanceLabel: UILabel!
-    @IBOutlet private weak var sendButtonBackgroundGradient: GradientView! {
+    @IBOutlet private weak var sendButtonBackground: UIView! {
         didSet {
-            sendButtonBackgroundGradient.layer.cornerRadius = 40
-            sendButtonBackgroundGradient.layer.maskedCorners = [.layerMinXMinYCorner, .layerMinXMaxYCorner]
+            sendButtonBackground.backgroundColor = UIColor.zap.deepSeaBlue
+            sendButtonBackground.layer.cornerRadius = 40
+            sendButtonBackground.layer.maskedCorners = [.layerMinXMinYCorner, .layerMinXMaxYCorner]
         }
     }
-    @IBOutlet private weak var receiveButtonBackgroundGradient: GradientView! {
+    @IBOutlet private weak var receiveButtonBackground: UIView! {
         didSet {
-            receiveButtonBackgroundGradient.layer.cornerRadius = 40
-            receiveButtonBackgroundGradient.layer.maskedCorners = [.layerMaxXMaxYCorner, .layerMaxXMinYCorner]
-            receiveButtonBackgroundGradient.gradient = [UIColor.zap.peach, UIColor.zap.lightMustard]
+            receiveButtonBackground.backgroundColor = UIColor.zap.deepSeaBlue
+            receiveButtonBackground.layer.cornerRadius = 40
+            receiveButtonBackground.layer.maskedCorners = [.layerMaxXMaxYCorner, .layerMaxXMinYCorner]
         }
     }
     @IBOutlet private weak var secondaryBalanceLabel: UILabel!
@@ -61,9 +62,7 @@ final class WalletViewController: UIViewController {
         
         title = "Wallet"
         
-        Style.button.apply(to: sendButton, requestButton) {
-            $0.tintColor = .white
-        }
+        Style.button.apply(to: sendButton, requestButton)
 
         UIView.performWithoutAnimation {
             sendButton.setTitle("scene.main.send_button".localized, for: .normal)

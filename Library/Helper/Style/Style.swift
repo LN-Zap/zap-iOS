@@ -46,7 +46,7 @@ enum Style {
         $0.titleLabel?.font = UIFont.zap.light
     }
     
-    static func button(color: UIColor = UIColor.zap.peach, fontSize: CGFloat = UIFont.labelFontSize) -> UIViewStyle<UIButton> {
+    static func button(color: UIColor = UIColor.zap.lightningOrange, fontSize: CGFloat = UIFont.labelFontSize) -> UIViewStyle<UIButton> {
         return UIViewStyle<UIButton> {
             $0.titleLabel?.font = UIFont.zap.light.withSize(fontSize)
             $0.setTitleColor(color, for: .normal)
