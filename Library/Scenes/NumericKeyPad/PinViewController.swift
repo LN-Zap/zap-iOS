@@ -27,6 +27,7 @@ final class PinViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        view.backgroundColor = UIColor.zap.seaBlue
         pinStackView.characterCount = authenticationViewModel?.pinLength ?? 0
         
         setupKeyPad()
@@ -40,7 +41,7 @@ final class PinViewController: UIViewController {
     
     private func setupKeyPad() {
         guard let authenticationViewModel = authenticationViewModel else { return }
-        keyPadView.backgroundColor = UIColor.zap.deepSeaBlue
+        keyPadView.backgroundColor = UIColor.zap.seaBlue
         keyPadView.textColor = .white
         keyPadView.state = .authenticate
         
