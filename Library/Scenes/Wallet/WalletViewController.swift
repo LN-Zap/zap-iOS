@@ -38,10 +38,17 @@ final class WalletViewController: UIViewController {
             networkLabel.text = Network.testnet.localized
         }
     }
+    
+    @IBOutlet private weak var swapIconImageView: UIImageView! {
+        didSet {
+            swapIconImageView.tintColor = .gray
+        }
+    }
+    
     @IBOutlet private weak var backgroundGradientView: GradientView! {
         didSet {
             backgroundGradientView.direction = .vertical
-            backgroundGradientView.gradient = [UIColor.zap.seaBlue, UIColor.zap.seaBlueGradient]
+            backgroundGradientView.gradient = [UIColor.zap.seaBlueGradient, UIColor.zap.seaBlue]
         }
     }
     @IBOutlet private weak var primaryBalanceLabel: UILabel!
@@ -83,8 +90,8 @@ final class WalletViewController: UIViewController {
         }
         
         Style.label(color: .gray).apply(to: exchangeRateLabel)
-        Style.label(color: .gray, alignment: .center).apply(to: secondaryBalanceLabel)
-        Style.label(color: .white, fontSize: 40, alignment: .center).apply(to: primaryBalanceLabel)
+        Style.label(color: .gray, fontSize: 25, alignment: .center).apply(to: secondaryBalanceLabel)
+        Style.label(color: .white, fontSize: 45, alignment: .center).apply(to: primaryBalanceLabel)
         
         Settings.shared.fiatCurrency
             .map { $0.format(satoshis: 100_000_000) }
