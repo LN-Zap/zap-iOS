@@ -79,7 +79,7 @@ final class WalletViewController: UIViewController {
         Settings.shared.fiatCurrency
             .map { $0.format(satoshis: 100_000_000) }
             .ignoreNil()
-            .map { String(format: "%@ per Bitcoin", $0) }
+            .map { String(format: "scene.main.exchange_rate_label".localized, $0) }
             .bind(to: exchangeRateLabel.reactive.text)
             .dispose(in: reactive.bag)
         
