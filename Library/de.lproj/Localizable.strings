@@ -43,7 +43,6 @@
 "view.amount_input.placeholder" = "Betrag";
 
 "scene.transactions.title" = "Transaktionen";
-"scene.transactions.search.placeholder" = "suchen";
 "scene.transactions.empty_state_label" = "0 Transaktionen 🙁";
 "scene.transactions.row_action.archive" = "Archivieren";
 "scene.transactions.row_action.unarchive" = "Dearchivieren";
@@ -73,15 +72,13 @@
 "scene.request.generate_request_button" = "Anfrage generieren";
 
 "scene.channels.title" = "Channels";
-"scene.channels.section_header.pending" = "Ausstehend";
-"scene.channels.section_header.open" = "Öffnen";
 "scene.channels.close.title" = "Channel schließen";
 "scene.channels.close.message" = "Willst du wirklich den Channel mit dem Node %@ schließen?";
 "scene.channels.force_close.title" = "Erzwungene Schließung des Channels";
 "scene.channels.force_close.message" = "%@ ist offline, bist du dir sicher die Schließung dieses Channels erzwingen zu wollen? Du musst dann ungefähr %@ auf dein Guthaben warten.";
 "scene.channels.alert.cancel" = "Abbrechen";
 "scene.channels.alert.close" = "Schließen";
-"scene.channels.search.placeholder" = "suchen";
+"scene.channels.alert.force_close" = "Force Close";
 "scene.channels.row_action.close" = "Channel schließen";
 "scene.channels.close_success.toast" = "Channel wird geschlossen.";
 
@@ -205,3 +202,5 @@
 "scene.filter.displayLightningPayments" = "Lightning Zahlung";
 "scene.filter.displayLightningInvoices" = "Lightning Rechnungen";
 "scene.filter.displayArchivedTransactions" = "Archivierte Transaktionen";
+
+"scene.qrcode_scanner.top_label" = "Scan QR-Code";
