@@ -49,7 +49,7 @@ final class TransactionListViewController: UIViewController {
         searchController.searchResultsUpdater = self
         navigationItem.searchController = searchController
 
-        Style.label().apply(to: emptyStateLabel)
+        Style.label(color: UIColor.zap.white).apply(to: emptyStateLabel)
         emptyStateLabel.text = "scene.transactions.empty_state_label".localized
         
         tableView.rowHeight = 66
