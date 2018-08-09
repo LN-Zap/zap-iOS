@@ -33,7 +33,7 @@ final class LightningApiMock: LightningApiProtocol {
     private let invoices: [Transaction]?
     
     init(
-        info: Info? = nil,
+        info: Info? = Info.template.testnet,
         nodeInfo: NodeInfo? = nil,
         newAddress: String? = nil,
         walletBalance: Satoshi? = nil,
@@ -177,17 +177,23 @@ enum ApiMockTemplate {
     case syncedEmpty
     case oneChannel
     case manyChannels
+    case balance
+    case mainnet
     
-    static let selected: ApiMockTemplate = .manyChannels
+    static let selected: ApiMockTemplate = .mainnet
     
     var instance: LightningApiMock {
         switch self {
         case .syncedEmpty:
-            return LightningApiMock(info: Info.template)
+            return LightningApiMock()
         case .oneChannel:
-            return LightningApiMock(info: Info.template, channels: [Channel.template])
+            return LightningApiMock(channels: [Channel.template])
         case .manyChannels:
-            return LightningApiMock(info: Info.template, channels: Array(repeating: Channel.template, count: 200))
+            return LightningApiMock(channels: Array(repeating: Channel.template, count: 200))
+        case .balance:
+            return LightningApiMock(walletBalance: 4_200_000)
+        case .mainnet:
+            return LightningApiMock(info: Info.template.mainnet)
         }
     }
 }

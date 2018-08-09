@@ -8,16 +8,31 @@
 import Foundation
 
 extension Info {
-    static var template: Info {
-        return Info(
-            alias: "test",
-            blockHeight: 124,
-            isSyncedToChain: true,
-            network: .testnet,
-            pubKey: "",
-            activeChannelCount: 2,
-            bestHeaderDate: Date()
-        )
+    // swiftlint:disable type_name
+    enum template {
+        static var testnet: Info {
+            return Info(
+                alias: "test",
+                blockHeight: 124,
+                isSyncedToChain: true,
+                network: .testnet,
+                pubKey: "",
+                activeChannelCount: 2,
+                bestHeaderDate: Date()
+            )
+        }
+        
+        static var mainnet: Info {
+            return Info(
+                alias: "test",
+                blockHeight: 124,
+                isSyncedToChain: true,
+                network: .mainnet,
+                pubKey: "",
+                activeChannelCount: 2,
+                bestHeaderDate: Date()
+            )
+        }
     }
 }
 
