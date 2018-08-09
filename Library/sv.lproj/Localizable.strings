@@ -148,8 +148,7 @@
 
 "scene.main.send_button" = "Skicka";
 "scene.main.receive_button" = "Ta emot";
-"scene.main.transactions_button" = "Överföringar";
-"scene.main.channels_button" = "Nätverk";
+"scene.main.exchange_rate_label" = "%@ per BTC";
 
 "scene.qr_code_detail.method_label.lightning" = "Lightning";
 "scene.qr_code_detail.method_label.on_chain" = "On-chain";
@@ -188,8 +187,6 @@
 "scene.channel_detail.remote_pub_key_label" = "Fjärr-publiknyckel";
 "scene.channel_detail.local_balance_label" = "Lokal balans";
 "scene.channel_detail.remote_balance_label" = "Fjärrbalans";
-"scene.channel_detail.update_count_label" = "Uppdatera antal";
-"scene.channel_detail.block_height_label" = "Blockhöjd";
 "scene.channel_detail.closing_time.label" = "Stänger om";
 "scene.channel_detail.closing_time.data" = "%d block (%@)";
 "scene.channel_detail.funding_transaction_label" = "Finansierar transaktion";
