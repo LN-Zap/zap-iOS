@@ -59,7 +59,7 @@ lane :internal_alpha do
     upload_metadata: true
   )
 
-  changelog = changelog_from_git_commits(tag_match_pattern: 'builds/s3_alpha/*', pretty: '- %s', merge_commit_filtering: "exclude_merges")
+  changelog = changelog_from_git_commits(tag_match_pattern: 'builds/internal_alpha/*', pretty: '- %s', merge_commit_filtering: "exclude_merges")
 
   add_git_tag
   push_git_tags
