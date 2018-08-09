@@ -28,7 +28,45 @@
       selectedLauncherIdentifier = "Xcode.DebuggerFoundation.Launcher.LLDB"
       region = "US"
       codeCoverageEnabled = "YES"
+      onlyGenerateCoverageForSpecifiedTargets = "YES"
       shouldUseLaunchSchemeArgsEnv = "NO">
+      <CodeCoverageTargets>
+         <BuildableReference
+            BuildableIdentifier = "primary"
+            BlueprintIdentifier = "A000F5E92047F65100480D8E"
+            BuildableName = "BTCUtil.framework"
+            BlueprintName = "BTCUtil"
+            ReferencedContainer = "container:Zap.xcodeproj">
+         </BuildableReference>
+         <BuildableReference
+            BuildableIdentifier = "primary"
+            BlueprintIdentifier = "AD391C1720D16ED4007EE22A"
+            BuildableName = "Library.framework"
+            BlueprintName = "Library"
+            ReferencedContainer = "container:Zap.xcodeproj">
+         </BuildableReference>
+         <BuildableReference
+            BuildableIdentifier = "primary"
+            BlueprintIdentifier = "AD536BE520E62763002279BC"
+            BuildableName = "Lightning.framework"
+            BlueprintName = "Lightning"
+            ReferencedContainer = "container:Zap.xcodeproj">
+         </BuildableReference>
+         <BuildableReference
+            BuildableIdentifier = "primary"
+            BlueprintIdentifier = "A0A059FE2013CF960007D1C9"
+            BuildableName = "Zap.app"
+            BlueprintName = "Zap"
+            ReferencedContainer = "container:Zap.xcodeproj">
+         </BuildableReference>
+         <BuildableReference
+            BuildableIdentifier = "primary"
+            BlueprintIdentifier = "AD391D3E20D17FA9007EE22A"
+            BuildableName = "ZapMessages.appex"
+            BlueprintName = "ZapMessages"
+            ReferencedContainer = "container:Zap.xcodeproj">
+         </BuildableReference>
+      </CodeCoverageTargets>
       <Testables>
          <TestableReference
             skipped = "NO">

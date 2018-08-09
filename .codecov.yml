@@ -1,0 +1,5 @@
+ignore:
+  - BTCUtilTests
+  - LibraryTests
+  - LightningTests
+  - Pods
