@@ -52,20 +52,6 @@
             BlueprintName = "Lightning"
             ReferencedContainer = "container:Zap.xcodeproj">
          </BuildableReference>
-         <BuildableReference
-            BuildableIdentifier = "primary"
-            BlueprintIdentifier = "A0A059FE2013CF960007D1C9"
-            BuildableName = "Zap.app"
-            BlueprintName = "Zap"
-            ReferencedContainer = "container:Zap.xcodeproj">
-         </BuildableReference>
-         <BuildableReference
-            BuildableIdentifier = "primary"
-            BlueprintIdentifier = "AD391D3E20D17FA9007EE22A"
-            BuildableName = "ZapMessages.appex"
-            BlueprintName = "ZapMessages"
-            ReferencedContainer = "container:Zap.xcodeproj">
-         </BuildableReference>
       </CodeCoverageTargets>
       <Testables>
          <TestableReference

@@ -28,6 +28,16 @@ extension UIStoryboard {
 }
 
 final class WalletViewController: UIViewController {
+    @IBOutlet private weak var networkLabel: PaddingLabel! {
+        didSet {
+            networkLabel.edgeInsets = UIEdgeInsets(top: 5, left: 10, bottom: 5, right: 10)
+            Style.label().apply(to: networkLabel)
+            networkLabel.layer.cornerRadius = 10
+            networkLabel.clipsToBounds = true
+            networkLabel.backgroundColor = UIColor.zap.lightGreen
+            networkLabel.text = Network.testnet.localized
+        }
+    }
     @IBOutlet private weak var backgroundGradientView: GradientView! {
         didSet {
             backgroundGradientView.direction = .vertical
@@ -84,7 +94,8 @@ final class WalletViewController: UIViewController {
             .dispose(in: reactive.bag)
         
         [lightningService?.balanceService.total.bind(to: primaryBalanceLabel.reactive.text, currency: Settings.shared.primaryCurrency),
-         lightningService?.balanceService.total.bind(to: secondaryBalanceLabel.reactive.text, currency: Settings.shared.secondaryCurrency)]
+         lightningService?.balanceService.total.bind(to: secondaryBalanceLabel.reactive.text, currency: Settings.shared.secondaryCurrency),
+         lightningService?.infoService.network.map({ $0 == .mainnet }).bind(to: networkLabel.reactive.isHidden)]
             .dispose(in: reactive.bag)
     }
     

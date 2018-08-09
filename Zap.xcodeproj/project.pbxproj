@@ -219,6 +219,7 @@
 		AD5FA003207D0D03000E9493 /* BitcoinURI.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD5FA002207D0D02000E9493 /* BitcoinURI.swift */; };
 		AD5FA005207D0E70000E9493 /* BitcoinURITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD5FA004207D0E70000E9493 /* BitcoinURITests.swift */; };
 		AD615CF5211C82E600680790 /* LoadingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD615CF4211C82E600680790 /* LoadingView.swift */; };
+		AD615CF7211CAB0900680790 /* PaddingLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD615CF6211CAB0900680790 /* PaddingLabel.swift */; };
 		AD66377620F399F900284E2B /* Bolt11.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD66377520F399F900284E2B /* Bolt11.swift */; };
 		AD66377820F39A7700284E2B /* Bolt11Tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD66377720F39A7700284E2B /* Bolt11Tests.swift */; };
 		AD71EA4E20E2515700256307 /* Roboto-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = AD71EA4D20E2505D00256307 /* Roboto-Regular.ttf */; };
@@ -663,6 +664,7 @@
 		AD5FA002207D0D02000E9493 /* BitcoinURI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BitcoinURI.swift; sourceTree = "<group>"; };
 		AD5FA004207D0E70000E9493 /* BitcoinURITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BitcoinURITests.swift; sourceTree = "<group>"; };
 		AD615CF4211C82E600680790 /* LoadingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingView.swift; sourceTree = "<group>"; };
+		AD615CF6211CAB0900680790 /* PaddingLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaddingLabel.swift; sourceTree = "<group>"; };
 		AD66377520F399F900284E2B /* Bolt11.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Bolt11.swift; sourceTree = "<group>"; };
 		AD66377720F39A7700284E2B /* Bolt11Tests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Bolt11Tests.swift; sourceTree = "<group>"; };
 		AD680A9720B06B840018986B /* DetailTimerTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailTimerTableViewCell.swift; sourceTree = "<group>"; };
@@ -1036,6 +1038,7 @@
 				A0BD44DE206FED1400BF27A3 /* BondCell.swift */,
 				ADB6DEDA20AD8F80001324C8 /* GradientLoadingButtonView.swift */,
 				A0F353CF20692570005B3639 /* GradientView.swift */,
+				AD615CF6211CAB0900680790 /* PaddingLabel.swift */,
 				ADBA12082093587B001F7700 /* KeyPad */,
 				A0605F8C202C9D8200EA903C /* LineView.swift */,
 				ADF79363208DCB630086B2CA /* PinView.swift */,
@@ -2632,6 +2635,7 @@
 				AD391C4320D16F0B007EE22A /* Appearance.swift in Sources */,
 				AD391CD120D16FE1007EE22A /* OnChainTransactionDetailViewModel.swift in Sources */,
 				AD967FF021062AB20048085B /* RPCConnectQRCodeError+Localizable.swift in Sources */,
+				AD615CF7211CAB0900680790 /* PaddingLabel.swift in Sources */,
 				AD391CC120D16FE1007EE22A /* DetailMemoTableViewCell.swift in Sources */,
 				AD391C6E20D16F89007EE22A /* SetupPinViewModel.swift in Sources */,
 				ADA865BE20ECB88500B1B74B /* FilterViewController.swift in Sources */,
