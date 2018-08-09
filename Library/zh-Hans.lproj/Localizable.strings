@@ -43,7 +43,6 @@
 "view.amount_input.placeholder" = "数量";
 
 "scene.transactions.title" = "交易";
-"scene.transactions.search.placeholder" = "搜索";
 "scene.transactions.empty_state_label" = "0个交易🙁";
 "scene.transactions.row_action.archive" = "归档";
 "scene.transactions.row_action.unarchive" = "取消归档";
@@ -73,15 +72,13 @@
 "scene.request.generate_request_button" = "生成请求";
 
 "scene.channels.title" = "通道";
-"scene.channels.section_header.pending" = "等待";
-"scene.channels.section_header.open" = "打开";
 "scene.channels.close.title" = "关闭通道";
 "scene.channels.close.message" = "是否确实要关闭节点 %@ 的通道？";
 "scene.channels.force_close.title" = "强制关闭通道";
 "scene.channels.force_close.message" = "%@ 处于脱机状态, 是否确实要强制关闭此通道？您必须等待资金的 %@ 吗？";
 "scene.channels.alert.cancel" = "取消";
 "scene.channels.alert.close" = "关闭";
-"scene.channels.search.placeholder" = "搜索";
+"scene.channels.alert.force_close" = "Force Close";
 "scene.channels.row_action.close" = "关闭通道";
 "scene.channels.close_success.toast" = "通道正在关闭。";
 
@@ -205,3 +202,5 @@
 "scene.filter.displayLightningPayments" = "闪电网络支付";
 "scene.filter.displayLightningInvoices" = "闪电账单";
 "scene.filter.displayArchivedTransactions" = "归档交易";
+
+"scene.qrcode_scanner.top_label" = "Scan QR-Code";
