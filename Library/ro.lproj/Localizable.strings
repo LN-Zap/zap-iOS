@@ -43,7 +43,6 @@
 "view.amount_input.placeholder" = "Suma";
 
 "scene.transactions.title" = "Tranzacţii";
-"scene.transactions.search.placeholder" = "căutare";
 "scene.transactions.empty_state_label" = "0 tranzacţii 🙁";
 "scene.transactions.row_action.archive" = "Arhiva";
 "scene.transactions.row_action.unarchive" = "Unarchive";
@@ -73,15 +72,13 @@
 "scene.request.generate_request_button" = "Genereaza cerere";
 
 "scene.channels.title" = "Canale";
-"scene.channels.section_header.pending" = "În aşteptare";
-"scene.channels.section_header.open" = "Deschis";
 "scene.channels.close.title" = "Inchide canal";
 "scene.channels.close.message" = "Chiar vrei sa inchidezi acest canal cu nod %@?";
 "scene.channels.force_close.title" = "Inchidere fortata canal";
 "scene.channels.force_close.message" = "%@ is offline, are you sure you want to force close this channel? You’d have to wait about %@ for your funds?";
 "scene.channels.alert.cancel" = "Revocare";
 "scene.channels.alert.close" = "Închide";
-"scene.channels.search.placeholder" = "căutare";
+"scene.channels.alert.force_close" = "Force Close";
 "scene.channels.row_action.close" = "Inchide canal";
 "scene.channels.close_success.toast" = "Canalul se închide.";
 
@@ -205,3 +202,5 @@
 "scene.filter.displayLightningPayments" = "Plati Lightning";
 "scene.filter.displayLightningInvoices" = "Facturi Lightning";
 "scene.filter.displayArchivedTransactions" = "Tranzactii Arhivate";
+
+"scene.qrcode_scanner.top_label" = "Scan QR-Code";
