@@ -15,3 +15,5 @@ notifications:
     on_failure: change
 script:
   - bundle exec fastlane tests
+after_success:
+  - bash <(curl -s https://codecov.io/bash)

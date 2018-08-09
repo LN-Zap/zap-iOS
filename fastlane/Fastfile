@@ -140,6 +140,7 @@ lane :tests do
     configuration: "DebugLocal",
     devices: ["iPhone 8"],
     scheme: "Zap",
-    slack_only_on_failure: true
+    slack_only_on_failure: true,
+    code_coverage: true
   )
 end
