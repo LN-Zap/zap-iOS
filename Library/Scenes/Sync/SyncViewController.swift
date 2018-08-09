@@ -39,6 +39,8 @@ final class SyncViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        view.backgroundColor = UIColor.zap.seaBlue
+        
         gradientView.direction = .diagonal
         Style.label().apply(to: syncLabel, dateLabel, descriptionLabel)
         syncLabel.font = syncLabel.font.withSize(24)
