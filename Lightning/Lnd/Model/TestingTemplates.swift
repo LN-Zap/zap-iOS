@@ -45,3 +45,24 @@ extension LightningPayment {
         )
     }
 }
+
+extension Channel {
+    static var template: Channel {
+        return Channel(
+            blockHeight: 1,
+            state: .active,
+            localBalance: 100,
+            remoteBalance: 100,
+            remotePubKey: "abc",
+            capacity: 200,
+            updateCount: 0,
+            channelPoint: ChannelPoint.template,
+            csvDelay: 10)
+    }
+}
+
+extension ChannelPoint {
+    static var template: ChannelPoint {
+        return ChannelPoint(string: "abc:123")
+    }
+}

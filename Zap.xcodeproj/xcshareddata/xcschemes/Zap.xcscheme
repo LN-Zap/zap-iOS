@@ -118,7 +118,7 @@
       </BuildableProductRunnable>
       <EnvironmentVariables>
          <EnvironmentVariable
-            key = "SKIP_PIN_FLOW"
+            key = "FAKE_MNEMONIC_CONF"
             value = "1"
             isEnabled = "YES">
          </EnvironmentVariable>
@@ -128,7 +128,12 @@
             isEnabled = "YES">
          </EnvironmentVariable>
          <EnvironmentVariable
-            key = "FAKE_MNEMONIC_CONF"
+            key = "SKIP_PIN_FLOW"
+            value = "1"
+            isEnabled = "YES">
+         </EnvironmentVariable>
+         <EnvironmentVariable
+            key = "USE_MOCK_API"
             value = "1"
             isEnabled = "YES">
          </EnvironmentVariable>
