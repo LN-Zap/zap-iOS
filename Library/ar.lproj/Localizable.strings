@@ -43,7 +43,6 @@
 "view.amount_input.placeholder" = "المبلغ";
 
 "scene.transactions.title" = "المعاملات";
-"scene.transactions.search.placeholder" = "بحث";
 "scene.transactions.empty_state_label" = "المعاملات 0 🙁";
 "scene.transactions.row_action.archive" = "أرشيف";
 "scene.transactions.row_action.unarchive" = "إلغاء الأرشفة";
@@ -73,15 +72,13 @@
 "scene.request.generate_request_button" = "إنشاء طلب";
 
 "scene.channels.title" = "قنوات";
-"scene.channels.section_header.pending" = "قيد الانتظار";
-"scene.channels.section_header.open" = "فتح";
 "scene.channels.close.title" = "إغلاق القناة";
 "scene.channels.close.message" = "هل تريد حقاً إغلاق القناة مع العقدة %@؟";
 "scene.channels.force_close.title" = "Force Close Channel";
 "scene.channels.force_close.message" = "%@ is offline, are you sure you want to force close this channel? You’d have to wait about %@ for your funds?";
 "scene.channels.alert.cancel" = "Cancel";
 "scene.channels.alert.close" = "Close";
-"scene.channels.search.placeholder" = "search";
+"scene.channels.alert.force_close" = "Force Close";
 "scene.channels.row_action.close" = "Close Channel";
 "scene.channels.close_success.toast" = "Channel is closing.";
 
@@ -205,3 +202,5 @@
 "scene.filter.displayLightningPayments" = "Lightning Payments";
 "scene.filter.displayLightningInvoices" = "Lightning Invoices";
 "scene.filter.displayArchivedTransactions" = "Archived Transactions";
+
+"scene.qrcode_scanner.top_label" = "Scan QR-Code";
