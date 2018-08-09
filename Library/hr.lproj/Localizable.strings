@@ -43,7 +43,6 @@
 "view.amount_input.placeholder" = "Iznos";
 
 "scene.transactions.title" = "Transakcije";
-"scene.transactions.search.placeholder" = "pretraživanje";
 "scene.transactions.empty_state_label" = "0 transakcija 🙁";
 "scene.transactions.row_action.archive" = "Arhiviraj";
 "scene.transactions.row_action.unarchive" = "Dearhiviraj";
@@ -73,15 +72,13 @@
 "scene.request.generate_request_button" = "Generiraj zahtjev";
 
 "scene.channels.title" = "Kanali";
-"scene.channels.section_header.pending" = "Na čekanju";
-"scene.channels.section_header.open" = "Otvori";
 "scene.channels.close.title" = "Zatvori kanal";
 "scene.channels.close.message" = "Stvarno želite zatvoriti kanal sa čvorom %@?";
 "scene.channels.force_close.title" = "Prisilno zatvaranje kanala";
 "scene.channels.force_close.message" = "%@ nije spojen, jeste li sigurni da želite prisilno zatvoriti ovaj kanal? Morat ćete pričekati otprilike %@ za svoje novce?";
 "scene.channels.alert.cancel" = "Odustani";
 "scene.channels.alert.close" = "Zatvori";
-"scene.channels.search.placeholder" = "pretraživanje";
+"scene.channels.alert.force_close" = "Force Close";
 "scene.channels.row_action.close" = "Zatvori kanal";
 "scene.channels.close_success.toast" = "Kanal se zatvara.";
 
@@ -205,3 +202,5 @@
 "scene.filter.displayLightningPayments" = "Munja plaćanja";
 "scene.filter.displayLightningInvoices" = "Munja fakture";
 "scene.filter.displayArchivedTransactions" = "Arhivirane transakcije";
+
+"scene.qrcode_scanner.top_label" = "Scan QR-Code";
