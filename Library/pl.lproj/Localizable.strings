@@ -148,8 +148,7 @@
 
 "scene.main.send_button" = "Wyślij";
 "scene.main.receive_button" = "Otrzymaj";
-"scene.main.transactions_button" = "Transakcje";
-"scene.main.channels_button" = "Sieć";
+"scene.main.exchange_rate_label" = "%@ per BTC";
 
 "scene.qr_code_detail.method_label.lightning" = "Lightning";
 "scene.qr_code_detail.method_label.on_chain" = "On-chain";
@@ -188,8 +187,6 @@
 "scene.channel_detail.remote_pub_key_label" = "Zdalny klucz publiczny";
 "scene.channel_detail.local_balance_label" = "Lokalne saldo";
 "scene.channel_detail.remote_balance_label" = "Zdalne saldo";
-"scene.channel_detail.update_count_label" = "Liczba zmian";
-"scene.channel_detail.block_height_label" = "Block Height";
 "scene.channel_detail.closing_time.label" = "Zamknięcia za";
 "scene.channel_detail.closing_time.data" = "%d bloków (%@)";
 "scene.channel_detail.funding_transaction_label" = "Transakcja otwierająca";
