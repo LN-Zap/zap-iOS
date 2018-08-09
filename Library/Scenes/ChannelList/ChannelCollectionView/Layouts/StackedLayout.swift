@@ -29,6 +29,11 @@ final class StackedLayout: ChannelLayout {
         guard let collectionView = collectionView else { return CGSize.zero }
         
         let itemCount = collectionView.numberOfItems(inSection: 0)
+        
+        if itemCount == 0 {
+            return CGSize.zero
+        }
+        
         let height = CGFloat(itemCount - 1) * visibleCellHeaderHeight + heightForItem(at: itemCount - 1) + maxHeaderHeight + headerMargin + bottomMargin
         return CGSize(width: collectionView.bounds.width, height: height)
     }
