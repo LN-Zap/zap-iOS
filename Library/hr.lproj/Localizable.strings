@@ -148,8 +148,7 @@
 
 "scene.main.send_button" = "Slanje";
 "scene.main.receive_button" = "Primanje";
-"scene.main.transactions_button" = "Transakcije";
-"scene.main.channels_button" = "Mreža";
+"scene.main.exchange_rate_label" = "%@ per BTC";
 
 "scene.qr_code_detail.method_label.lightning" = "Munja";
 "scene.qr_code_detail.method_label.on_chain" = "Na lanac";
@@ -188,8 +187,6 @@
 "scene.channel_detail.remote_pub_key_label" = "Udaljeni PubKey";
 "scene.channel_detail.local_balance_label" = "Lokalni saldo";
 "scene.channel_detail.remote_balance_label" = "Udaljeni saldo";
-"scene.channel_detail.update_count_label" = "Ažuriranje broja";
-"scene.channel_detail.block_height_label" = "Broj bloka";
 "scene.channel_detail.closing_time.label" = "Zatvaranje";
 "scene.channel_detail.closing_time.data" = "%d blokovi (%@)";
 "scene.channel_detail.funding_transaction_label" = "Financiranje transakcije";
