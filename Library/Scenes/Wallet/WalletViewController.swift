@@ -52,7 +52,8 @@ final class WalletViewController: UIViewController {
     @IBOutlet private weak var secondaryBalanceLabel: UILabel!
     @IBOutlet private weak var sendButton: UIButton!
     @IBOutlet private weak var requestButton: UIButton!
-
+    @IBOutlet private weak var exchangeRateLabel: UILabel!
+    
     fileprivate var lightningService: LightningService?
     fileprivate var sendButtonTapped: (() -> Void)?
     fileprivate var requestButtonTapped: (() -> Void)?
@@ -71,11 +72,17 @@ final class WalletViewController: UIViewController {
             requestButton.layoutIfNeeded()
         }
         
-        Style.label().apply(to: secondaryBalanceLabel)
-        primaryBalanceLabel.textColor = .white
-        primaryBalanceLabel.font = primaryBalanceLabel.font.withSize(40)
-        secondaryBalanceLabel.textColor = .gray
-
+        Style.label(color: .gray).apply(to: exchangeRateLabel)
+        Style.label(color: .gray, alignment: .center).apply(to: secondaryBalanceLabel)
+        Style.label(color: .white, fontSize: 40, alignment: .center).apply(to: primaryBalanceLabel)
+        
+        Settings.shared.fiatCurrency
+            .map { $0.format(satoshis: 100_000_000) }
+            .ignoreNil()
+            .map { String(format: "%@ per Bitcoin", $0) }
+            .bind(to: exchangeRateLabel.reactive.text)
+            .dispose(in: reactive.bag)
+        
         [lightningService?.balanceService.total.bind(to: primaryBalanceLabel.reactive.text, currency: Settings.shared.primaryCurrency),
          lightningService?.balanceService.total.bind(to: secondaryBalanceLabel.reactive.text, currency: Settings.shared.secondaryCurrency)]
             .dispose(in: reactive.bag)

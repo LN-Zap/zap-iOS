@@ -23,6 +23,12 @@
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             </view>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="a67-GE-D3Y">
+                                <rect key="frame" x="15" y="25" width="42" height="20.5"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="i6j-qG-UZ5" userLabel="save area container">
                                 <rect key="frame" x="0.0" y="45" width="375" height="477"/>
                                 <subviews>
@@ -113,6 +119,7 @@
                             <constraint firstItem="G9l-Ej-4IG" firstAttribute="trailing" secondItem="Nqe-wQ-xfx" secondAttribute="trailing" id="0Wg-00-1rW"/>
                             <constraint firstItem="Eqp-q1-Sn8" firstAttribute="centerX" secondItem="Nqe-wQ-xfx" secondAttribute="centerX" id="8GE-FR-Tk8"/>
                             <constraint firstItem="G9l-Ej-4IG" firstAttribute="bottom" secondItem="YSf-Dd-ahO" secondAttribute="bottom" id="A4T-1Z-o3g"/>
+                            <constraint firstItem="a67-GE-D3Y" firstAttribute="leading" secondItem="Nqe-wQ-xfx" secondAttribute="leading" constant="15" id="CcT-GF-yn8"/>
                             <constraint firstItem="G9l-Ej-4IG" firstAttribute="top" secondItem="YSf-Dd-ahO" secondAttribute="top" id="HWn-OQ-AoI"/>
                             <constraint firstItem="i6j-qG-UZ5" firstAttribute="top" secondItem="Nqe-wQ-xfx" secondAttribute="top" constant="25" id="Lih-5Z-lms"/>
                             <constraint firstItem="i6j-qG-UZ5" firstAttribute="leading" secondItem="Nqe-wQ-xfx" secondAttribute="leading" id="OUa-o4-xcA"/>
@@ -120,12 +127,14 @@
                             <constraint firstItem="Eqp-q1-Sn8" firstAttribute="leading" secondItem="Nqe-wQ-xfx" secondAttribute="leading" constant="25" id="cSm-el-TFa"/>
                             <constraint firstItem="i6j-qG-UZ5" firstAttribute="trailing" secondItem="Nqe-wQ-xfx" secondAttribute="trailing" id="ifE-qu-dZ7"/>
                             <constraint firstItem="G9l-Ej-4IG" firstAttribute="leading" secondItem="Nqe-wQ-xfx" secondAttribute="leading" id="pII-Bu-Q4x"/>
+                            <constraint firstItem="a67-GE-D3Y" firstAttribute="top" secondItem="Nqe-wQ-xfx" secondAttribute="top" constant="5" id="t4V-hb-gI7"/>
                             <constraint firstItem="Nqe-wQ-xfx" firstAttribute="bottom" secondItem="Eqp-q1-Sn8" secondAttribute="bottom" constant="40" id="zbM-O8-jM7"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="Nqe-wQ-xfx"/>
                     </view>
                     <connections>
                         <outlet property="backgroundGradientView" destination="G9l-Ej-4IG" id="1HF-lZ-RDT"/>
+                        <outlet property="exchangeRateLabel" destination="a67-GE-D3Y" id="hk5-ci-8DM"/>
                         <outlet property="primaryBalanceLabel" destination="aTc-aL-iRn" id="suc-9B-KGg"/>
                         <outlet property="receiveButtonBackground" destination="ybB-Mk-ugZ" id="rT9-vL-iYM"/>
                         <outlet property="requestButton" destination="C3P-tR-t4P" id="MYK-pQ-yxP"/>
