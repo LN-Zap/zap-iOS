@@ -58,6 +58,26 @@ final class SyncViewController: UIViewController {
         setupBindings()
     }
     
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        
+        setIdleTimer(disabled: true)
+    }
+    
+    override func viewDidDisappear(_ animated: Bool) {
+        super.viewDidDisappear(animated)
+        
+        setIdleTimer(disabled: false)
+    }
+    
+    private func setIdleTimer(disabled: Bool) {
+        #if !LOCALONLY
+        if case .local = LndConnection.current {
+            UIApplication.shared.isIdleTimerDisabled = disabled
+        }
+        #endif
+    }
+    
     private func setupBindings() {
         guard let lightningService = lightningService else { fatalError("viewModel not set.") }
 
