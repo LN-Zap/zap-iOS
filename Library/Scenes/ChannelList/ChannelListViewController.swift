@@ -36,7 +36,7 @@ final class ChannelListViewController: UIViewController {
             backgroundGradientView.gradient = [UIColor.zap.seaBlue, UIColor.zap.seaBlueGradient]
         }
     }
-    @IBOutlet private weak var collectionView: UICollectionView!
+    @IBOutlet private weak var collectionView: ChannelCollectionView!
     @IBOutlet private var headerView: UICollectionReusableView!
     
     fileprivate var channelListViewModel: ChannelListViewModel?
@@ -120,8 +120,14 @@ extension ChannelListViewController: ChannelListDataSource {
 extension ChannelListViewController: ChannelCellDelegate {
     func closeChannelButtonTapped(channelViewModel: ChannelViewModel) {
         closeButtonTapped?(channelViewModel.channel, channelViewModel.name.value) { [weak self] in
-            self?.channelListViewModel?.close(channelViewModel.channel) { result in
-                print(result)
+            let loadingView = self?.presentLoadingView(text: "Closing Channel")
+            self?.view.isUserInteractionEnabled = false
+            self?.channelListViewModel?.close(channelViewModel.channel) { _ in
+                DispatchQueue.main.async {
+                    self?.view.isUserInteractionEnabled = true
+                    self?.collectionView.switchToStackView()
+                    loadingView?.dismiss()
+                }
             }
         }
     }

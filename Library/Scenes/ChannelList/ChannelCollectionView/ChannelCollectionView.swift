@@ -46,6 +46,10 @@ final class ChannelCollectionView: UICollectionView {
             }
         }
     }
+    
+    func switchToStackView() {
+        exposedItemIndexPath = nil
+    }
 }
 
 extension ChannelCollectionView: ExposedLayoutDelegate {
