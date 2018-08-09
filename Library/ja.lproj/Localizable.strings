@@ -43,7 +43,6 @@
 "view.amount_input.placeholder" = "Amount";
 
 "scene.transactions.title" = "Transactions";
-"scene.transactions.search.placeholder" = "search";
 "scene.transactions.empty_state_label" = "0 transactions 🙁";
 "scene.transactions.row_action.archive" = "Archive";
 "scene.transactions.row_action.unarchive" = "Unarchive";
@@ -73,15 +72,13 @@
 "scene.request.generate_request_button" = "Generate Request";
 
 "scene.channels.title" = "Channels";
-"scene.channels.section_header.pending" = "Pending";
-"scene.channels.section_header.open" = "Open";
 "scene.channels.close.title" = "Close Channel";
 "scene.channels.close.message" = "Do you really want to close the channel with node %@?";
 "scene.channels.force_close.title" = "Force Close Channel";
 "scene.channels.force_close.message" = "%@ is offline, are you sure you want to force close this channel? You’d have to wait about %@ for your funds?";
 "scene.channels.alert.cancel" = "Cancel";
 "scene.channels.alert.close" = "Close";
-"scene.channels.search.placeholder" = "search";
+"scene.channels.alert.force_close" = "Force Close";
 "scene.channels.row_action.close" = "Close Channel";
 "scene.channels.close_success.toast" = "Channel is closing.";
 
@@ -205,3 +202,5 @@
 "scene.filter.displayLightningPayments" = "Lightning Payments";
 "scene.filter.displayLightningInvoices" = "Lightning Invoices";
 "scene.filter.displayArchivedTransactions" = "Archived Transactions";
+
+"scene.qrcode_scanner.top_label" = "Scan QR-Code";
