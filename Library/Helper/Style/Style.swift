@@ -39,10 +39,16 @@ enum Style {
         }
     }
     
-    static func label(color: UIColor = UIColor.zap.black, font: UIFont = UIFont.zap.light, fontSize: CGFloat = UIFont.labelFontSize) -> UIViewStyle<UILabel> {
+    static func label(
+        color: UIColor = UIColor.zap.black,
+        font: UIFont = UIFont.zap.light,
+        fontSize: CGFloat = UIFont.labelFontSize,
+        alignment: NSTextAlignment = .left
+        ) -> UIViewStyle<UILabel> {
         return UIViewStyle<UILabel> {
             $0.font = font.withSize(fontSize)
             $0.textColor = color
+            $0.textAlignment = alignment
         }
     }
     

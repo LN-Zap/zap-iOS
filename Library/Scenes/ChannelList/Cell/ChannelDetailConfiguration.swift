@@ -20,20 +20,29 @@ final class ChannelDetailConfiguration {
         
         let labelStyle = Style.label(color: textColor, fontSize: 14)
         let textStyle = Style.label(color: textColor, font: UIFont.zap.regular, fontSize: 14)
-        
+        let rightAlignedTextStyle = Style.label(color: textColor, font: UIFont.zap.regular, fontSize: 14, alignment: .right)
+
         var elements = [StackViewElement]()
         
         let headerElement: StackViewElement
         if channelViewModel.channel.state == .active {
-            headerElement = .amountLabel(amount: channelViewModel.channel.localBalance, style: textStyle)
+            headerElement = .amountLabel(amount: channelViewModel.channel.localBalance, style: rightAlignedTextStyle)
         } else {
-            headerElement = .label(text: channelViewModel.channel.state.localized, style: textStyle)
+            headerElement = .label(text: channelViewModel.channel.state.localized, style: rightAlignedTextStyle)
         }
         
         elements.append(.horizontalStackView(content: [
             .label(text: channelViewModel.name.value, style: textStyle),
             headerElement
         ]))
+        
+        if channelViewModel.channel.state.isClosing {
+            elements.append(.separator)
+            elements.append(.horizontalStackView(content: [
+                .label(text: "scene.channel_detail.closing_time.label".localized + ":", style: labelStyle),
+                .label(text: channelViewModel.csvDelayTimeString, style: rightAlignedTextStyle)
+            ]))
+        }
         
         elements.append(.separator)
         elements.append(.verticalStackView(content: [
@@ -52,12 +61,12 @@ final class ChannelDetailConfiguration {
             .horizontalStackView(content: [
                 .custom(view: circleIndicatorView(gradient: [UIColor.zap.lightningOrange, UIColor.zap.lightningOrangeGradient]), height: horizontalStackViewHeight),
                 .label(text: "scene.channel_detail.local_balance_label".localized + ":", style: labelStyle),
-                .amountLabel(amount: channelViewModel.channel.localBalance, style: textStyle)
+                .amountLabel(amount: channelViewModel.channel.localBalance, style: rightAlignedTextStyle)
             ]),
             .horizontalStackView(content: [
                 .custom(view: circleIndicatorView(gradient: [UIColor.zap.seaBlue, UIColor.zap.seaBlueGradient]), height: horizontalStackViewHeight),
                 .label(text: "scene.channel_detail.remote_balance_label".localized + ":", style: labelStyle),
-                .amountLabel(amount: channelViewModel.channel.remoteBalance, style: textStyle)
+                .amountLabel(amount: channelViewModel.channel.remoteBalance, style: rightAlignedTextStyle)
             ])
         ], spacing: 5))
         

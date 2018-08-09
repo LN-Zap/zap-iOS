@@ -93,6 +93,6 @@ extension Lnrpc_PendingChannelsResponse.ForceClosedChannel {
             capacity: Satoshi(channel.capacity),
             updateCount: 0,
             channelPoint: ChannelPoint(string: channel.channelPoint),
-            csvDelay: 0)
+            csvDelay: Int(blocksTilMaturity))
     }
 }

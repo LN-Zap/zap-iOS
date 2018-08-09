@@ -118,8 +118,8 @@ final class MainCoordinator: Routing {
         detailViewController = nil
     }
     
-    private func presentCloseConfirmation(for channel: Channel, nodeAlias: String, closeAction: @escaping () -> Void) {
-        let alertController = UIAlertController.closeChannelAlertController(channel: channel, nodeAlias: nodeAlias, closeAction: closeAction)
+    private func presentCloseConfirmation(for channelViewModel: ChannelViewModel, closeAction: @escaping () -> Void) {
+        let alertController = UIAlertController.closeChannelAlertController(channelViewModel: channelViewModel, closeAction: closeAction)
         rootViewController.present(alertController, animated: true, completion: nil)
     }
     

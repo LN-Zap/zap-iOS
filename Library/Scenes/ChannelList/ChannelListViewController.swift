@@ -12,7 +12,7 @@ import UIKit
 extension UIStoryboard {
     static func instantiateChannelListViewController(
         channelListViewModel: ChannelListViewModel,
-        closeButtonTapped: @escaping (Channel, String, @escaping () -> Void) -> Void,
+        closeButtonTapped: @escaping (ChannelViewModel, @escaping () -> Void) -> Void,
         addChannelButtonTapped: @escaping () -> Void,
         transactionDetailButtonTapped: @escaping (String) -> Void) -> UIViewController {
         let viewController = Storyboard.channelList.initial(viewController: ChannelListViewController.self)
@@ -42,7 +42,7 @@ final class ChannelListViewController: UIViewController {
     fileprivate var channelListViewModel: ChannelListViewModel?
     
     fileprivate var addChannelButtonTapped: (() -> Void)?
-    fileprivate var closeButtonTapped: ((Channel, String, @escaping () -> Void) -> Void)?
+    fileprivate var closeButtonTapped: ((ChannelViewModel, @escaping () -> Void) -> Void)?
     fileprivate var transactionDetailButtonTapped: ((String) -> Void)?
     
     override func viewDidLoad() {
@@ -72,7 +72,7 @@ final class ChannelListViewController: UIViewController {
     }
     
     func closeChannel(for channelViewModel: ChannelViewModel) {
-        closeButtonTapped?(channelViewModel.channel, channelViewModel.name.value) { [weak self] in
+        closeButtonTapped?(channelViewModel) { [weak self] in
             self?.channelListViewModel?.close(channelViewModel.channel) { result in
                 if let error = result.error {
                     self?.parent?.presentErrorToast(error.localizedDescription)
@@ -119,7 +119,7 @@ extension ChannelListViewController: ChannelListDataSource {
 
 extension ChannelListViewController: ChannelCellDelegate {
     func closeChannelButtonTapped(channelViewModel: ChannelViewModel) {
-        closeButtonTapped?(channelViewModel.channel, channelViewModel.name.value) { [weak self] in
+        closeButtonTapped?(channelViewModel) { [weak self] in
             let loadingView = self?.presentLoadingView(text: "Closing Channel")
             self?.view.isUserInteractionEnabled = false
             self?.channelListViewModel?.close(channelViewModel.channel) { _ in

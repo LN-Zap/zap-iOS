@@ -16,6 +16,17 @@ final class ChannelViewModel {
     let name: Observable<String>
     let color: Observable<UIColor>
 
+    var csvDelayTimeString: String {
+        let formatter = DateComponentsFormatter()
+        formatter.allowedUnits =  [.year, .month, .day, .hour, .minute]
+        formatter.unitsStyle = .full
+        formatter.maximumUnitCount = 2
+        
+        let blockTime: TimeInterval = 10 * 60
+
+        return formatter.string(from: TimeInterval(channel.csvDelay) * blockTime) ?? ""
+    }
+    
     lazy var detailViewModel: ChannelDetailConfiguration = {
         ChannelDetailConfiguration(channelViewModel: self)
     }()

@@ -38,7 +38,6 @@ indirect enum StackViewElement {
             let label = UILabel()
 
             style.apply(to: label)
-            label.textAlignment = .right
             label.lineBreakMode = .byTruncatingMiddle
             label.setContentCompressionResistancePriority(.required, for: .horizontal)
             label.setContentHuggingPriority(UILayoutPriority(rawValue: 1), for: .horizontal)
