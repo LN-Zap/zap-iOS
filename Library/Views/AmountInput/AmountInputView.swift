@@ -105,7 +105,10 @@ public final class AmountInputView: UIControl {
     @IBAction private func swapCurrencies(_ sender: Any) {
         let oldSatoshis = satoshis
         Settings.shared.swapCurrencies()
-        satoshis = oldSatoshis
+        
+        if formattedAmount != nil && formattedAmount != "" {
+            satoshis = oldSatoshis
+        }
     }
     
     private func setupKeyPad() {
