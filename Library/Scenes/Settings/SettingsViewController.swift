@@ -19,6 +19,7 @@ final class SettingsViewController: GroupedTableViewController {
         
         navigationController.tabBarItem.title = "Settings"
         navigationController.tabBarItem.image = UIImage(named: "tabbar_wallet", in: Bundle.library, compatibleWith: nil)
+        navigationController.view.backgroundColor = UIColor.zap.deepSeaBlue
         
         return navigationController
     }
@@ -52,7 +53,6 @@ final class SettingsViewController: GroupedTableViewController {
         super.viewDidLoad()
         
         title = "scene.settings.title".localized
-
     }
     
     override func tableView(_ tableView: UITableView, titleForFooterInSection section: Int) -> String? {
