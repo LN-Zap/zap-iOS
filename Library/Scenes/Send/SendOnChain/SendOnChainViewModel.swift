@@ -16,13 +16,13 @@ final class SendOnChainViewModel {
     private let transactionAnnotationStore: TransactionAnnotationStore
     private let lightningService: LightningService
     let bitcoinURI: BitcoinURI
-    let validRange: ClosedRange<Satoshi>
+    let validRange: ClosedRange<Satoshi>?
     
     let isSendButtonEnabled = Observable(false)
     
     var amount: Satoshi = 0 {
         didSet {
-            isSendButtonEnabled.value = validRange.contains(amount)
+            isSendButtonEnabled.value = validRange?.contains(amount) ?? false
         }
     }
     
@@ -31,7 +31,11 @@ final class SendOnChainViewModel {
         self.lightningService = lightningService
         self.bitcoinURI = bitcoinURI
         
-        validRange = (minimumOnChainTransaction...lightningService.balanceService.onChain.value)
+        if lightningService.balanceService.onChain.value == 0 {
+            validRange = nil
+        } else {
+            validRange = minimumOnChainTransaction...lightningService.balanceService.onChain.value
+        }
     }
 
     func send(callback: @escaping (Result<OnChainUnconfirmedTransaction>) -> Void) {
