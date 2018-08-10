@@ -14,13 +14,13 @@ extension UIStoryboard {
         channelListViewModel: ChannelListViewModel,
         closeButtonTapped: @escaping (ChannelViewModel, @escaping () -> Void) -> Void,
         addChannelButtonTapped: @escaping () -> Void,
-        transactionDetailButtonTapped: @escaping (String) -> Void) -> UIViewController {
+        blockExplorerButtonTapped: @escaping (String, BlockExplorer.CodeType) -> Void) -> UIViewController {
         let viewController = Storyboard.channelList.initial(viewController: ChannelListViewController.self)
         
         viewController.channelListViewModel = channelListViewModel
         viewController.closeButtonTapped = closeButtonTapped
         viewController.addChannelButtonTapped = addChannelButtonTapped
-        viewController.transactionDetailButtonTapped = transactionDetailButtonTapped
+        viewController.blockExplorerButtonTapped = blockExplorerButtonTapped
         
         viewController.tabBarItem.title = "Channels"
         viewController.tabBarItem.image = UIImage(named: "tabbar_wallet", in: Bundle.library, compatibleWith: nil)
@@ -43,7 +43,7 @@ final class ChannelListViewController: UIViewController {
     
     fileprivate var addChannelButtonTapped: (() -> Void)?
     fileprivate var closeButtonTapped: ((ChannelViewModel, @escaping () -> Void) -> Void)?
-    fileprivate var transactionDetailButtonTapped: ((String) -> Void)?
+    fileprivate var blockExplorerButtonTapped: ((String, BlockExplorer.CodeType) -> Void)?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -133,6 +133,6 @@ extension ChannelListViewController: ChannelCellDelegate {
     }
     
     func fundingTransactionTxIdButtonTapped(channelViewModel: ChannelViewModel) {
-        transactionDetailButtonTapped?(channelViewModel.channel.channelPoint.fundingTxid)
+        blockExplorerButtonTapped?(channelViewModel.channel.channelPoint.fundingTxid, .transactionId)
     }
 }

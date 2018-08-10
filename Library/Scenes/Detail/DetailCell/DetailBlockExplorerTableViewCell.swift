@@ -7,11 +7,11 @@
 
 import UIKit
 
-class DetailTransactionHashTableViewCell: UITableViewCell {
+class DetailBlockExplorerTableViewCell: UITableViewCell {
     struct Info {
         let title: String
-        let transactionUrl: URL
-        let transactionHash: String
+        let code: String
+        let type: BlockExplorer.CodeType
     }
     
     @IBOutlet private weak var titleLabel: UILabel!
@@ -19,12 +19,12 @@ class DetailTransactionHashTableViewCell: UITableViewCell {
     
     weak var delegate: DetailCellDelegate?
     
-    var info: DetailTransactionHashTableViewCell.Info? {
+    var info: DetailBlockExplorerTableViewCell.Info? {
         didSet {
             guard let info = info else { return }
             
             titleLabel.text = info.title.appending(":")
-            detailButton.setTitle(info.transactionHash, for: .normal)
+            detailButton.setTitle(info.code, for: .normal)
         }
     }
     
@@ -38,9 +38,9 @@ class DetailTransactionHashTableViewCell: UITableViewCell {
         detailButton.titleLabel?.font = DetailCellType.dataFont
     }
 
-    @IBAction private func displayFundingTransaction(_ sender: Any) {
+    @IBAction private func presentBlockExplorer(_ sender: Any) {
         guard let info = info else { return }
-        delegate?.presentSafariViewController(for: info.transactionUrl)
+        delegate?.presentBlockExplorer(info.code, type: info.type)
     }
     
 }

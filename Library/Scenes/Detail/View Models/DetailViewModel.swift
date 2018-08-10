@@ -15,16 +15,16 @@ protocol DetailViewModel {
 }
 
 enum DetailViewModelFactory {
-    static func instantiate(from transactionViewModel: TransactionViewModel, transactionListViewModel: TransactionListViewModel, network: Network) -> DetailViewModel {
+    static func instantiate(from transactionViewModel: TransactionViewModel, transactionListViewModel: TransactionListViewModel) -> DetailViewModel {
         
         if let transactionViewModel = transactionViewModel as? OnChainConfirmedTransactionViewModel {
-            return OnChainTransactionDetailViewModel(onChainTransaction: transactionViewModel.onChainTransaction, annotation: transactionViewModel.annotation, network: network, transactionListViewModel: transactionListViewModel)
+            return OnChainTransactionDetailViewModel(onChainTransaction: transactionViewModel.onChainTransaction, annotation: transactionViewModel.annotation, transactionListViewModel: transactionListViewModel)
         } else if let transactionViewModel = transactionViewModel as? LightningPaymentViewModel {
             return LightningPaymentDetailViewModel(lightningPayment: transactionViewModel.lightningPayment, annotation: transactionViewModel.annotation, transactionListViewModel: transactionListViewModel)
         } else if let transactionViewModel = transactionViewModel as? LightningInvoiceViewModel {
             return LightningInvoiceDetailViewModel(lightningInvoice: transactionViewModel.lightningInvoice, annotation: transactionViewModel.annotation, transactionListViewModel: transactionListViewModel)
         } else if let transactionViewModel = transactionViewModel as? OnChainUnconfirmedTransactionViewModel {
-            return OnChainTransactionDetailViewModel(onChainTransaction: transactionViewModel.unconfirmedTransaction, annotation: transactionViewModel.annotation, network: network, transactionListViewModel: transactionListViewModel)
+            return OnChainTransactionDetailViewModel(onChainTransaction: transactionViewModel.unconfirmedTransaction, annotation: transactionViewModel.annotation, transactionListViewModel: transactionListViewModel)
         }
         fatalError("TransactionViewModel not supported")
     }

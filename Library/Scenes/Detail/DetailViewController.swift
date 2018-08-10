@@ -13,12 +13,12 @@ extension UIStoryboard {
     static func instantiateDetailViewController(
         detailViewModel: DetailViewModel,
         dismissButtonTapped: @escaping () -> Void,
-        safariButtonTapped: @escaping (URL) -> Void) -> UINavigationController {
+        blockExplorerButtonTapped: @escaping (String, BlockExplorer.CodeType) -> Void) -> UINavigationController {
         let viewController = Storyboard.detail.initial(viewController: UINavigationController.self)
         if let detailViewController = viewController.topViewController as? DetailViewController {
             detailViewController.detailViewModel = detailViewModel
             detailViewController.dismissButtonTapped = dismissButtonTapped
-            detailViewController.safariButtonTapped = safariButtonTapped
+            detailViewController.blockExplorerButtonTapped = blockExplorerButtonTapped
         }
         return viewController
     }
@@ -29,7 +29,7 @@ final class DetailViewController: UIViewController, KeyboardAdjustable {
     @IBOutlet private weak var tableViewBottomConstraint: NSLayoutConstraint!
     
     fileprivate var dismissButtonTapped: (() -> Void)?
-    fileprivate var safariButtonTapped: ((URL) -> Void)?
+    fileprivate var blockExplorerButtonTapped: ((String, BlockExplorer.CodeType) -> Void)?
     
     var detailViewModel: DetailViewModel?
     
@@ -49,7 +49,7 @@ final class DetailViewController: UIViewController, KeyboardAdjustable {
         tableView.registerCell(DetailTimerTableViewCell.self)
         tableView.registerCell(DetailSeparatorTableViewCell.self)
         tableView.registerCell(DetailDestructiveActionTableViewCell.self)
-        tableView.registerCell(DetailTransactionHashTableViewCell.self)
+        tableView.registerCell(DetailBlockExplorerTableViewCell.self)
 
         tableView.rowHeight = UITableViewAutomaticDimension
         tableView.estimatedRowHeight = 48
@@ -93,7 +93,7 @@ final class DetailViewController: UIViewController, KeyboardAdjustable {
             cell.info = info
             return cell
         case .transactionHash(let info):
-            let cell: DetailTransactionHashTableViewCell = tableView.dequeueCellForIndexPath(indexPath)
+            let cell: DetailBlockExplorerTableViewCell = tableView.dequeueCellForIndexPath(indexPath)
             cell.delegate = self
             cell.info = info
             return cell
@@ -110,7 +110,7 @@ extension DetailViewController: DetailCellDelegate {
         dismissButtonTapped?()
     }
     
-    func presentSafariViewController(for url: URL) {
-        safariButtonTapped?(url)
+    func presentBlockExplorer(_ transactionId: String, type: BlockExplorer.CodeType) {
+        blockExplorerButtonTapped?(transactionId, type)
     }
 }

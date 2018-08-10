@@ -29,7 +29,8 @@ final class SettingsViewController: GroupedTableViewController {
             Section(title: "scene.settings.title".localized, rows: [
                 CurrencySelectionSettingsItem(),
                 BitcoinUnitSelectionSettingsItem(),
-                OnChainRequestAddressTypeSelectionSettingsItem()
+                OnChainRequestAddressTypeSelectionSettingsItem(),
+                BlockExplorerSelectionSettingsItem()
             ]),
             Section(title: "scene.settings.section.wallet".localized, rows: [
                 RemoveRemoteNodeSettingsItem(settingsDelegate: settingsDelegate),

@@ -61,17 +61,23 @@ final class MainCoordinator: Routing {
     }
     
     func channelListViewController() -> UIViewController {
-        return UIStoryboard.instantiateChannelListViewController(channelListViewModel: channelListViewModel, closeButtonTapped: presentCloseConfirmation, addChannelButtonTapped: presentAddChannel, transactionDetailButtonTapped: presentTransactionDetail)
+        return UIStoryboard.instantiateChannelListViewController(channelListViewModel: channelListViewModel, closeButtonTapped: presentCloseConfirmation, addChannelButtonTapped: presentAddChannel, blockExplorerButtonTapped: presentBlockExplorer)
     }
     
     func presentSend() {
         presentSend(invoice: nil)
     }
     
-    func presentTransactionDetail(txid: String) {
+    func presentBlockExplorer(code: String, type: BlockExplorer.CodeType) {
         let network = lightningService.infoService.network.value
-        guard let url = Settings.shared.blockExplorer.value.url(network: network, txid: txid) else { return }
-        presentSafariViewController(for: url)
+        do {
+            guard let url = try Settings.shared.blockExplorer.value.url(network: network, code: code, type: type) else { return }
+            presentSafariViewController(for: url)
+        } catch BlockExplorerError.unsupportedNetwork {
+            (detailViewController ?? rootViewController).presentErrorToast(String(format: "error.block_explorer.unsupported_network".localized, Settings.shared.blockExplorer.value.localized, lightningService.infoService.network.value.localized))
+        } catch {
+            print("Unexpected error: \(error).")
+        }
     }
     
     func presentSend(invoice: String?) {
@@ -96,12 +102,8 @@ final class MainCoordinator: Routing {
     }
     
     private func presentTransactionDetail(for transactionViewModel: TransactionViewModel) {
-        let network = lightningService.infoService.network.value
-        presentDetail(for: DetailViewModelFactory.instantiate(from: transactionViewModel, transactionListViewModel: transactionListViewModel, network: network))
-    }
-    
-    private func presentDetail(for detailViewModel: DetailViewModel) {
-        let detailViewController = UIStoryboard.instantiateDetailViewController(detailViewModel: detailViewModel, dismissButtonTapped: dismissDetailViewController, safariButtonTapped: presentSafariViewController)
+        let detailViewModel = DetailViewModelFactory.instantiate(from: transactionViewModel, transactionListViewModel: transactionListViewModel)
+        let detailViewController = UIStoryboard.instantiateDetailViewController(detailViewModel: detailViewModel, dismissButtonTapped: dismissDetailViewController, blockExplorerButtonTapped: presentBlockExplorer)
         self.detailViewController = detailViewController
         rootViewController.present(detailViewController, animated: true, completion: nil)
     }

@@ -53,6 +53,8 @@
 		AD27B01A2100D5CC00F232A8 /* CertificateDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD27B0192100D5CC00F232A8 /* CertificateDetailViewController.swift */; };
 		AD27B01C2100D7CF00F232A8 /* CertificateDetailCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD27B01B2100D7CF00F232A8 /* CertificateDetailCell.swift */; };
 		AD28CB79211D9DFF00A31004 /* UINavigationBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD28CB78211D9DFF00A31004 /* UINavigationBar.swift */; };
+		AD28CB7B211DE93300A31004 /* BlockExplorerSettingsItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD28CB7A211DE93300A31004 /* BlockExplorerSettingsItem.swift */; };
+		AD28CB7D211DF12E00A31004 /* DetailBlockExplorerTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = AD28CB7C211DF12E00A31004 /* DetailBlockExplorerTableViewCell.xib */; };
 		AD292F9020E69F0E00211AE7 /* AuthenticationViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0E2690C202CC4E30069E83C /* AuthenticationViewModel.swift */; };
 		AD292F9120E69F0E00211AE7 /* RootViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD71EA4620E228D800256307 /* RootViewModel.swift */; };
 		AD391C1C20D16ED4007EE22A /* Library.h in Headers */ = {isa = PBXBuildFile; fileRef = AD391C1A20D16ED4007EE22A /* Library.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -164,8 +166,7 @@
 		AD391CC820D16FE1007EE22A /* DetailTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = AD19F05A20AF00B4008090CB /* DetailTableViewCell.xib */; };
 		AD391CC920D16FE1007EE22A /* DetailTimerTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD680A9720B06B840018986B /* DetailTimerTableViewCell.swift */; };
 		AD391CCA20D16FE1007EE22A /* DetailTimerTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = AD680A9820B06B840018986B /* DetailTimerTableViewCell.xib */; };
-		AD391CCB20D16FE1007EE22A /* DetailTransactionHashTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADBCC07020C97572002B6E59 /* DetailTransactionHashTableViewCell.swift */; };
-		AD391CCC20D16FE1007EE22A /* DetailTransactionHashTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = ADBCC07120C97572002B6E59 /* DetailTransactionHashTableViewCell.xib */; };
+		AD391CCB20D16FE1007EE22A /* DetailBlockExplorerTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADBCC07020C97572002B6E59 /* DetailBlockExplorerTableViewCell.swift */; };
 		AD391CCE20D16FE1007EE22A /* DetailViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD98EB2320C6DFDE00B807D6 /* DetailViewModel.swift */; };
 		AD391CCF20D16FE1007EE22A /* LightningInvoiceDetailViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD46846A20C7CF58005DEF35 /* LightningInvoiceDetailViewModel.swift */; };
 		AD391CD020D16FE1007EE22A /* LightningPaymentDetailViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD46846820C7CF30005DEF35 /* LightningPaymentDetailViewModel.swift */; };
@@ -629,6 +630,8 @@
 		AD27B0192100D5CC00F232A8 /* CertificateDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CertificateDetailViewController.swift; sourceTree = "<group>"; };
 		AD27B01B2100D7CF00F232A8 /* CertificateDetailCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CertificateDetailCell.swift; sourceTree = "<group>"; };
 		AD28CB78211D9DFF00A31004 /* UINavigationBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UINavigationBar.swift; sourceTree = "<group>"; };
+		AD28CB7A211DE93300A31004 /* BlockExplorerSettingsItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BlockExplorerSettingsItem.swift; sourceTree = "<group>"; };
+		AD28CB7C211DF12E00A31004 /* DetailBlockExplorerTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DetailBlockExplorerTableViewCell.xib; sourceTree = "<group>"; };
 		AD2EDBF920C02616002E6EE5 /* Storyboard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Storyboard.swift; sourceTree = "<group>"; };
 		AD33B5EE20A8463600E32BD9 /* SendOnChainViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SendOnChainViewController.swift; sourceTree = "<group>"; };
 		AD38EB2F207DF233007DF14D /* UIButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIButton.swift; sourceTree = "<group>"; };
@@ -760,8 +763,7 @@
 		ADBB362E2084CA16005662B4 /* MnemonicPageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MnemonicPageViewController.swift; sourceTree = "<group>"; };
 		ADBB36302084CA3B005662B4 /* MnemonicWordListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MnemonicWordListViewController.swift; sourceTree = "<group>"; };
 		ADBB36322084EC4D005662B4 /* MnemonicWordTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MnemonicWordTableViewCell.swift; sourceTree = "<group>"; };
-		ADBCC07020C97572002B6E59 /* DetailTransactionHashTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailTransactionHashTableViewCell.swift; sourceTree = "<group>"; };
-		ADBCC07120C97572002B6E59 /* DetailTransactionHashTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DetailTransactionHashTableViewCell.xib; sourceTree = "<group>"; };
+		ADBCC07020C97572002B6E59 /* DetailBlockExplorerTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailBlockExplorerTableViewCell.swift; sourceTree = "<group>"; };
 		ADBCC07420CC04A4002B6E59 /* TransactionService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransactionService.swift; sourceTree = "<group>"; };
 		ADC0D2EF2107953100B8C62F /* PinnedHost.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PinnedHost.swift; sourceTree = "<group>"; };
 		ADC0D2F221079FF600B8C62F /* www.blockchain.com.cer */ = {isa = PBXFileReference; lastKnownFileType = file; path = www.blockchain.com.cer; sourceTree = "<group>"; };
@@ -1124,6 +1126,7 @@
 			isa = PBXGroup;
 			children = (
 				A091914C203B3BAC00FA525A /* BitcoinUnitSettingsItem.swift */,
+				AD28CB7A211DE93300A31004 /* BlockExplorerSettingsItem.swift */,
 				A091914A203B297D00FA525A /* CurrencySettingsItem.swift */,
 				AD967FD62100EFFA0048085B /* HelpSettingsItem.swift */,
 				AD6FFCA520AB0A3700B57330 /* OnChainRequestAddressTypeSettingsItem.swift */,
@@ -1408,6 +1411,8 @@
 		AD19F05820AF006F008090CB /* DetailCell */ = {
 			isa = PBXGroup;
 			children = (
+				ADBCC07020C97572002B6E59 /* DetailBlockExplorerTableViewCell.swift */,
+				AD28CB7C211DF12E00A31004 /* DetailBlockExplorerTableViewCell.xib */,
 				AD19F05D20AF01A7008090CB /* DetailCellType.swift */,
 				AD46846D20C7D83C005DEF35 /* DetailDestructiveActionTableViewCell.swift */,
 				AD46846E20C7D83C005DEF35 /* DetailDestructiveActionTableViewCell.xib */,
@@ -1421,8 +1426,6 @@
 				AD19F05A20AF00B4008090CB /* DetailTableViewCell.xib */,
 				AD680A9720B06B840018986B /* DetailTimerTableViewCell.swift */,
 				AD680A9820B06B840018986B /* DetailTimerTableViewCell.xib */,
-				ADBCC07020C97572002B6E59 /* DetailTransactionHashTableViewCell.swift */,
-				ADBCC07120C97572002B6E59 /* DetailTransactionHashTableViewCell.xib */,
 			);
 			path = DetailCell;
 			sourceTree = "<group>";
@@ -2244,7 +2247,6 @@
 				AD391C9C20D16FA8007EE22A /* Request.storyboard in Resources */,
 				AD391C5020D16F7A007EE22A /* CreateWallet.storyboard in Resources */,
 				ADA81EA3210E19F600B7C6F2 /* HeaderCollectionReusableView.xib in Resources */,
-				AD391CCC20D16FE1007EE22A /* DetailTransactionHashTableViewCell.xib in Resources */,
 				AD391CC420D16FE1007EE22A /* DetailQRCodeTableViewCell.xib in Resources */,
 				AD391C6620D16F89007EE22A /* Loading.storyboard in Resources */,
 				AD391C7320D16F89007EE22A /* QRCodeDetail.storyboard in Resources */,
@@ -2259,6 +2261,7 @@
 				ADE0C40A2108F6C8004597C3 /* ChannelCell.xib in Resources */,
 				AD391CBE20D16FE1007EE22A /* DetailDestructiveActionTableViewCell.xib in Resources */,
 				AD391CDA20D16FE1007EE22A /* TransactionList.storyboard in Resources */,
+				AD28CB7D211DF12E00A31004 /* DetailBlockExplorerTableViewCell.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -2542,7 +2545,7 @@
 				AD391CB520D16FA8007EE22A /* Settings.swift in Sources */,
 				AD97A91620EFEB94008344EA /* SendViewModel.swift in Sources */,
 				AD391CAB20D16FA8007EE22A /* CurrencySettingsItem.swift in Sources */,
-				AD391CCB20D16FE1007EE22A /* DetailTransactionHashTableViewCell.swift in Sources */,
+				AD391CCB20D16FE1007EE22A /* DetailBlockExplorerTableViewCell.swift in Sources */,
 				AD391C4420D16F0B007EE22A /* Style.swift in Sources */,
 				AD391C9D20D16FA8007EE22A /* RequestViewController.swift in Sources */,
 				AD391C2C20D16EFA007EE22A /* String.swift in Sources */,
@@ -2578,6 +2581,7 @@
 				AD391CAD20D16FA8007EE22A /* OnChainRequestAddressTypeSettingsItem.swift in Sources */,
 				AD97A91420EFCFC3008344EA /* Bitcoin+Localizable.swift in Sources */,
 				AD0D5DEA210DCC6300D11D0B /* ChannelLayout.swift in Sources */,
+				AD28CB7B211DE93300A31004 /* BlockExplorerSettingsItem.swift in Sources */,
 				AD391CB720D16FA8007EE22A /* SettingsViewController.swift in Sources */,
 				AD391CD720D16FE1007EE22A /* LightningPaymentViewModel.swift in Sources */,
 				AD391C3620D16EFA007EE22A /* UITableView.swift in Sources */,
