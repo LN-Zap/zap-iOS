@@ -37,7 +37,7 @@ final class RequestViewController: UIViewController, KeyboardAdjustable {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        titleTextStyle = .dark
+        navigationController?.navigationBar.titleTextStyle = .dark
         
         title = "scene.request.title".localized
 

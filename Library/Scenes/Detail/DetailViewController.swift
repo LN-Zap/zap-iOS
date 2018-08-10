@@ -41,7 +41,7 @@ final class DetailViewController: UIViewController, KeyboardAdjustable {
         navigationController?.navigationBar.barTintColor = .white
         
         title = detailViewModel?.detailViewControllerTitle
-        titleTextStyle = .dark
+        navigationController?.navigationBar.titleTextStyle = .dark
         
         tableView.registerCell(DetailTableViewCell.self)
         tableView.registerCell(DetailMemoTableViewCell.self)

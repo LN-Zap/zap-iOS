@@ -28,9 +28,10 @@ final class FilterTableViewCell: UITableViewCell {
     
     override func awakeFromNib() {
         super.awakeFromNib()
-        Style.label().apply(to: filterSettingLabel)
+        Style.label(color: UIColor.zap.white).apply(to: filterSettingLabel)
         
         filterSwitch.onTintColor = UIColor.zap.lightningOrange
+        backgroundColor = UIColor.zap.seaBlue
     }
     
     @IBAction private func toggleSettingsItem(_ sender: UISwitch) {
