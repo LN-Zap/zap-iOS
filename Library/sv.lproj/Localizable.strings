@@ -11,6 +11,7 @@
 
 "error.wrong_uri_format" = "Okänt länkformat.";
 "error.wrong_uri_network" = "Du försökte öppna en länk för %@ men din nod är ansluten till %@.";
+"error.block_explorer.unsupported_network" = "%@ does not support %@.";
 
 "rpc_connect_qrcode_error.btc_pay_expired" = "Det ser ut som koden har utgått.";
 "rpc_connect_qrcode_error.btc_pay_configuration_broken" = "Kunde inte läsa konfigurationsfilen för BTCPay.";
