@@ -11,6 +11,7 @@
 
 "error.wrong_uri_format" = "Neznámý formát odkazu.";
 "error.wrong_uri_network" = "Pokusili jste se otevřít odkaz pro %@, ale Váš uzel je připojen k %@.";
+"error.block_explorer.unsupported_network" = "%@ does not support %@.";
 
 "rpc_connect_qrcode_error.btc_pay_expired" = "Looks like the code is expired.";
 "rpc_connect_qrcode_error.btc_pay_configuration_broken" = "Nebylo možné načíst konfigurační soubor BTCPay.";
