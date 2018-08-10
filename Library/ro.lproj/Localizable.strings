@@ -11,6 +11,7 @@
 
 "error.wrong_uri_format" = "Formatul link-ului este necunoscut.";
 "error.wrong_uri_network" = "Aţi încercat sa deschideti  un link pentru %@ dar nodul dumneavoastră este conectat la %@.";
+"error.block_explorer.unsupported_network" = "%@ does not support %@.";
 
 "rpc_connect_qrcode_error.btc_pay_expired" = "Se pare ca codul este expirat.";
 "rpc_connect_qrcode_error.btc_pay_configuration_broken" = "Imposibil de citit fișierul de config al BTCPay.";
