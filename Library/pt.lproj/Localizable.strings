@@ -11,6 +11,7 @@
 
 "error.wrong_uri_format" = "Formato de link desconhecido.";
 "error.wrong_uri_network" = "Tentou abrir um link para %@ mas o seu node está conectado a %@.";
+"error.block_explorer.unsupported_network" = "%@ does not support %@.";
 
 "rpc_connect_qrcode_error.btc_pay_expired" = "O QR Code expirou.";
 "rpc_connect_qrcode_error.btc_pay_configuration_broken" = "Could not read BTCPay configurations file.";
