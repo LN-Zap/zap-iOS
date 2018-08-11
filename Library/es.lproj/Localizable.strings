@@ -136,20 +136,20 @@
 "scene.recover_wallet.description_label" = "Introduzca su semilla:";
 "scene.recover_wallet.placeholder" = "abandonar capacidad capaz sobre encima ausente absorber abstracto absurdo abuso accidente cuenta acusar lograr ácido acústico adquirir tras acto acción actor actriz real";
 
-"scene.select_wallet_connection.title" = "Setup Zap";
-"scene.select_wallet_connection.create.title" = "Create";
-"scene.select_wallet_connection.create.message" = "new wallet";
-"scene.select_wallet_connection.recover.title" = "Recover";
-"scene.select_wallet_connection.recover.message" = "existing wallet";
-"scene.select_wallet_connection.connect.title" = "Connect";
-"scene.select_wallet_connection.connect.message" = "remote node";
-"scene.select_wallet_connection.disabled_alert.title" = "Sorry!";
-"scene.select_wallet_connection.disabled_alert.message" = "Running Lnd on the phone is disabled in this beta. Connect to a remote node instead.";
-"scene.select_wallet_connection.create.help" = "Need Help?";
+"scene.select_wallet_connection.title" = "Configurar Zap";
+"scene.select_wallet_connection.create.title" = "Crear";
+"scene.select_wallet_connection.create.message" = "nueva cartera";
+"scene.select_wallet_connection.recover.title" = "Recuperar";
+"scene.select_wallet_connection.recover.message" = "cartera existente";
+"scene.select_wallet_connection.connect.title" = "Conectar";
+"scene.select_wallet_connection.connect.message" = "nodo remoto";
+"scene.select_wallet_connection.disabled_alert.title" = "¡Lo siento!";
+"scene.select_wallet_connection.disabled_alert.message" = "Ejecutar tu propio nodo de Lightning Network no esta disponible en esta beta. En su lugar, Tendrás que conectarte a un nodo remoto.";
+"scene.select_wallet_connection.create.help" = "¿Necesitas ayuda?";
 
-"scene.main.send_button" = "Send";
-"scene.main.receive_button" = "Receive";
-"scene.main.exchange_rate_label" = "%@ per BTC";
+"scene.main.send_button" = "Enviar";
+"scene.main.receive_button" = "Recibir";
+"scene.main.exchange_rate_label" = "%@ por BTC";
 
 "scene.qr_code_detail.method_label.lightning" = "Lightning";
 "scene.qr_code_detail.method_label.on_chain" = "On-chain";
