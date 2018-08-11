@@ -144,27 +144,27 @@
 "scene.select_wallet_connection.connect.title" = "התחבר";
 "scene.select_wallet_connection.connect.message" = "Node מרוחק";
 "scene.select_wallet_connection.disabled_alert.title" = "מצטער!";
-"scene.select_wallet_connection.disabled_alert.message" = "Running Lnd on the phone is disabled in this beta. Connect to a remote node instead.";
-"scene.select_wallet_connection.create.help" = "Need Help?";
+"scene.select_wallet_connection.disabled_alert.message" = "הפעלת Lnd במכשיר מבוטלת בגירסת הביטא.התחבר לnode מרוחק במקום.";
+"scene.select_wallet_connection.create.help" = "צריך עזרה?";
 
-"scene.main.send_button" = "Send";
-"scene.main.receive_button" = "Receive";
+"scene.main.send_button" = "שלח";
+"scene.main.receive_button" = "קבל";
 "scene.main.exchange_rate_label" = "%@ per BTC";
 
 "scene.qr_code_detail.method_label.lightning" = "Lightning";
 "scene.qr_code_detail.method_label.on_chain" = "On-chain";
 
-"scene.sync.description_label" = "Syncing to blockchain…";
-"scene.sync.disconnect_bar_button" = "Disconnect";
-"scene.sync.disconnect_alert.title" = "Disconnect";
-"scene.sync.disconnect_alert.message" = "Do you really want to cancel syncing? You will have to reconnect to your node afterwards.";
-"scene.sync.disconnect_alert.destructive_action" = "Disconnect Node";
-"scene.sync.disconnect_alert.cancel_action" = "Cancel";
+"scene.sync.description_label" = "סינכרון ל blockchain...";
+"scene.sync.disconnect_bar_button" = "התנתק";
+"scene.sync.disconnect_alert.title" = "התנתק";
+"scene.sync.disconnect_alert.message" = "האם אתם בטוחים שברצונכם לבטל את הסינכרון? אתם תאלצו להתחבר מחדש לnode שלכם לאחר מכן.";
+"scene.sync.disconnect_alert.destructive_action" = "נתק את הnode";
+"scene.sync.disconnect_alert.cancel_action" = "בטל";
 
-"scene.transaction_detail.title.lightning_invoice" = "Invoice Detail";
-"scene.transaction_detail.title.payment_detail" = "Payment Detail";
-"scene.transaction_detail.title.transaction_detail" = "Transaction Detail";
-"scene.transaction_detail.archive_button" = "Archive";
+"scene.transaction_detail.title.lightning_invoice" = "פירוט חשבונית";
+"scene.transaction_detail.title.payment_detail" = "פירוט התשלום";
+"scene.transaction_detail.title.transaction_detail" = "פירוט תנועות";
+"scene.transaction_detail.archive_button" = "ארכיון";
 "scene.transaction_detail.unarchive_button" = "Unarchive";
 "scene.transaction_detail.memo_label" = "Memo";
 "scene.transaction_detail.qr_code.copy_button" = "Copy";
