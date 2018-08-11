@@ -128,54 +128,54 @@
 
 
 "scene.create_wallet.title" = "Opret tegnebog";
-"scene.create_wallet.description_label" = "Make sure to store the mnemonic at a save location.";
-"scene.create_wallet.next_button" = "Next";
+"scene.create_wallet.description_label" = "Sørg for at gemme huskeregel på et sikkert sted.";
+"scene.create_wallet.next_button" = "Næste";
 
-"scene.recover_wallet.title" = "Recover Wallet";
-"scene.recover_wallet.done_button" = "Done";
-"scene.recover_wallet.description_label" = "Enter your seed:";
+"scene.recover_wallet.title" = "Genskab tegnebog";
+"scene.recover_wallet.done_button" = "Udført";
+"scene.recover_wallet.description_label" = "Indtast dit seed:";
 "scene.recover_wallet.placeholder" = "abandon ability able about above absent absorb abstract absurd abuse access accident account accuse achieve acid acoustic acquire across act action actor actress actual";
 
 "scene.select_wallet_connection.title" = "Setup Zap";
-"scene.select_wallet_connection.create.title" = "Create";
-"scene.select_wallet_connection.create.message" = "new wallet";
-"scene.select_wallet_connection.recover.title" = "Recover";
-"scene.select_wallet_connection.recover.message" = "existing wallet";
-"scene.select_wallet_connection.connect.title" = "Connect";
+"scene.select_wallet_connection.create.title" = "Opret";
+"scene.select_wallet_connection.create.message" = "ny tegnebog";
+"scene.select_wallet_connection.recover.title" = "Genskab";
+"scene.select_wallet_connection.recover.message" = "eksisterende tegnebog";
+"scene.select_wallet_connection.connect.title" = "Tilslut";
 "scene.select_wallet_connection.connect.message" = "remote node";
-"scene.select_wallet_connection.disabled_alert.title" = "Sorry!";
-"scene.select_wallet_connection.disabled_alert.message" = "Running Lnd on the phone is disabled in this beta. Connect to a remote node instead.";
-"scene.select_wallet_connection.create.help" = "Need Help?";
+"scene.select_wallet_connection.disabled_alert.title" = "Beklager!";
+"scene.select_wallet_connection.disabled_alert.message" = "Lnd på telefonen er deaktiveret i denne betaversion. Oprette forbindelse til en ekstern node i stedet.";
+"scene.select_wallet_connection.create.help" = "Brug for hjælp?";
 
 "scene.main.send_button" = "Send";
-"scene.main.receive_button" = "Receive";
+"scene.main.receive_button" = "Modtag";
 "scene.main.exchange_rate_label" = "%@ per BTC";
 
 "scene.qr_code_detail.method_label.lightning" = "Lightning";
-"scene.qr_code_detail.method_label.on_chain" = "On-chain";
+"scene.qr_code_detail.method_label.on_chain" = "På kæde";
 
-"scene.sync.description_label" = "Syncing to blockchain…";
-"scene.sync.disconnect_bar_button" = "Disconnect";
-"scene.sync.disconnect_alert.title" = "Disconnect";
-"scene.sync.disconnect_alert.message" = "Do you really want to cancel syncing? You will have to reconnect to your node afterwards.";
-"scene.sync.disconnect_alert.destructive_action" = "Disconnect Node";
-"scene.sync.disconnect_alert.cancel_action" = "Cancel";
+"scene.sync.description_label" = "Synkronisering til blockkæde…";
+"scene.sync.disconnect_bar_button" = "Afbryd";
+"scene.sync.disconnect_alert.title" = "Afbryd";
+"scene.sync.disconnect_alert.message" = "Vil du annullere synkroniseringen? Du vil bliver nødt til at genoprette forbindelsen til din node bagefter.";
+"scene.sync.disconnect_alert.destructive_action" = "Afbryde Node";
+"scene.sync.disconnect_alert.cancel_action" = "Annuller";
 
-"scene.transaction_detail.title.lightning_invoice" = "Invoice Detail";
-"scene.transaction_detail.title.payment_detail" = "Payment Detail";
-"scene.transaction_detail.title.transaction_detail" = "Transaction Detail";
-"scene.transaction_detail.archive_button" = "Archive";
-"scene.transaction_detail.unarchive_button" = "Unarchive";
+"scene.transaction_detail.title.lightning_invoice" = "Faktura detaljer";
+"scene.transaction_detail.title.payment_detail" = "Betalings detaljer";
+"scene.transaction_detail.title.transaction_detail" = "Posterings detaljer";
+"scene.transaction_detail.archive_button" = "Arkiv";
+"scene.transaction_detail.unarchive_button" = "Udpakke";
 "scene.transaction_detail.memo_label" = "Memo";
-"scene.transaction_detail.qr_code.copy_button" = "Copy";
-"scene.transaction_detail.qr_code.share_button" = "Share";
-"scene.transaction_detail.qr_code.expired_label" = "Expired";
-"scene.transaction_detail.amount.unspecified_label" = "Unspecified";
-"scene.transaction_detail.amount_label" = "Amount";
-"scene.transaction_detail.created_label" = "Created";
-"scene.transaction_detail.payment_request" = "Payment Request";
+"scene.transaction_detail.qr_code.copy_button" = "Kopier";
+"scene.transaction_detail.qr_code.share_button" = "Del";
+"scene.transaction_detail.qr_code.expired_label" = "Udløbet";
+"scene.transaction_detail.amount.unspecified_label" = "Uspecificeret";
+"scene.transaction_detail.amount_label" = "Beløb";
+"scene.transaction_detail.created_label" = "Oprettet";
+"scene.transaction_detail.payment_request" = "Anmodning om betaling";
 "scene.transaction_detail.expiry_label" = "Expiry";
-"scene.transaction_detail.settled_label" = "Settled";
+"scene.transaction_detail.settled_label" = "Afgjort";
 "scene.transaction_detail.settled_date_label" = "Settled Date";
 "scene.transaction_detail.settled_state.settled" = "Settled";
 "scene.transaction_detail.settled_state.unsettled" = "Unsettled";
