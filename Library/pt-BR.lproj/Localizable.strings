@@ -11,7 +11,7 @@
 
 "error.wrong_uri_format" = "Formato de link desconhecido.";
 "error.wrong_uri_network" = "Você tentou abrir um link para %@, mas seu node está conectado a %@.";
-"error.block_explorer.unsupported_network" = "%@ does not support %@.";
+"error.block_explorer.unsupported_network" = "%@ não suporta %@.";
 
 "rpc_connect_qrcode_error.btc_pay_expired" = "O código parece ser expirado.";
 "rpc_connect_qrcode_error.btc_pay_configuration_broken" = "Não foi possível ler o arquivo de configurações do BTCPay.";
@@ -39,23 +39,23 @@
 "close_type.remote_force_close" = "Fechamento forçado remoto";
 "close_type.breach_close" = "Breach Close";
 "close_type.funding_canceled" = "Funding Canceled";
-"close_type.unknown" = "Unknown Close";
+"close_type.unknown" = "Encerramento Inesperado";
 
 "view.amount_input.placeholder" = "Quantidade";
 
-"scene.transactions.title" = "Transactions";
+"scene.transactions.title" = "Transações";
 "scene.transactions.empty_state_label" = "0 transações 🙁";
 "scene.transactions.row_action.archive" = "Arquivo";
-"scene.transactions.row_action.unarchive" = "Unarchive";
+"scene.transactions.row_action.unarchive" = "Desarquivar";
 
-"scene.settings.title" = "Settings";
-"scene.settings.section.wallet" = "Wallet";
-"scene.settings.item.bitcoin_unit" = "Bitcoin Unit";
-"scene.settings.item.currency" = "Currency";
-"scene.settings.item.network" = "Network";
+"scene.settings.title" = "Configurações";
+"scene.settings.section.wallet" = "Carteira";
+"scene.settings.item.bitcoin_unit" = "Unidade de Bitcoin";
+"scene.settings.item.currency" = "Moeda";
+"scene.settings.item.network" = "Rede";
 "scene.settings.item.block_explorer" = "Block Explorer";
-"scene.settings.item.lock_wallet" = "Lock Wallet";
-"scene.settings.item.on_chain_request_address.title" = "Bitcoin Address Type";
+"scene.settings.item.lock_wallet" = "Travar Carteira";
+"scene.settings.item.on_chain_request_address.title" = "Tipo de endereço Bitcoin";
 "scene.settings.item.on_chain_request_address.bech32" = "Bech32";
 "scene.settings.item.on_chain_request_address.p2sh" = "P2SH";
 "scene.settings.item.remove_remote_node" = "Reset Remote Node Configuration";
