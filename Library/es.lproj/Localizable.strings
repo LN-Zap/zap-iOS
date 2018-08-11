@@ -45,8 +45,8 @@
 
 "scene.transactions.title" = "Transacciones";
 "scene.transactions.empty_state_label" = "0 transacciones 🙁";
-"scene.transactions.row_action.archive" = "Archive";
-"scene.transactions.row_action.unarchive" = "Unarchive";
+"scene.transactions.row_action.archive" = "Archivar";
+"scene.transactions.row_action.unarchive" = "Desarchivar";
 
 "scene.settings.title" = "Configuración";
 "scene.settings.section.wallet" = "Cartera";
@@ -55,18 +55,18 @@
 "scene.settings.item.network" = "Red";
 "scene.settings.item.block_explorer" = "Explorador de bloques";
 "scene.settings.item.lock_wallet" = "Cerrar cartera";
-"scene.settings.item.on_chain_request_address.title" = "Bitcoin Address Type";
+"scene.settings.item.on_chain_request_address.title" = "Tipo de Dirección de Bitcoin";
 "scene.settings.item.on_chain_request_address.bech32" = "Bech32";
 "scene.settings.item.on_chain_request_address.p2sh" = "P2SH";
-"scene.settings.item.remove_remote_node" = "Reset Remote Node Configuration";
-"scene.settings.item.reset_pin" = "Reset Pin";
-"scene.settings.item.report_issue" = "Report an Issue";
-"scene.settings.item.help" = "Need Help?";
+"scene.settings.item.remove_remote_node" = "Restablecer la configuración de nodos remotos";
+"scene.settings.item.reset_pin" = "Restablecer Pin";
+"scene.settings.item.report_issue" = "Informar sobre un problema";
+"scene.settings.item.help" = "¿Necesitas ayuda?";
 
-"scene.deposit.send" = "Send";
-"scene.deposit.title" = "Receive";
+"scene.deposit.send" = "Enviar";
+"scene.deposit.title" = "Recibir";
 
-"scene.request.title" = "Receive";
+"scene.request.title" = "Recibir";
 "scene.request.lightning_button" = "Lightning";
 "scene.request.on_chain_button" = "On-chain";
 "scene.request.memo_placeholder" = "Memo (optional)";
@@ -129,12 +129,12 @@
 
 "scene.create_wallet.title" = "Create Wallet";
 "scene.create_wallet.description_label" = "Make sure to store the mnemonic at a save location.";
-"scene.create_wallet.next_button" = "Next";
+"scene.create_wallet.next_button" = "Siguiente";
 
-"scene.recover_wallet.title" = "Recover Wallet";
-"scene.recover_wallet.done_button" = "Done";
-"scene.recover_wallet.description_label" = "Enter your seed:";
-"scene.recover_wallet.placeholder" = "abandon ability able about above absent absorb abstract absurd abuse access accident account accuse achieve acid acoustic acquire across act action actor actress actual";
+"scene.recover_wallet.title" = "Recuperar cartera";
+"scene.recover_wallet.done_button" = "Hecho";
+"scene.recover_wallet.description_label" = "Introduzca su semilla:";
+"scene.recover_wallet.placeholder" = "abandonar capacidad capaz sobre encima ausente absorber abstracto absurdo abuso accidente cuenta acusar lograr ácido acústico adquirir tras acto acción actor actriz real";
 
 "scene.select_wallet_connection.title" = "Setup Zap";
 "scene.select_wallet_connection.create.title" = "Create";
