@@ -19,9 +19,9 @@
 
 "channel.state.active" = "En línea";
 "channel.state.inactive" = "Desconectado";
-"channel.state.opening" = "Opening";
-"channel.state.closing" = "Closing";
-"channel.state.force_closing" = "Force Closing";
+"channel.state.opening" = "Abriendo";
+"channel.state.closing" = "Cerrando";
+"channel.state.force_closing" = "Forzando cierre";
 
 "network.type.testnet" = "TestNet";
 "network.type.mainnet" = "Mainnet";
@@ -38,23 +38,23 @@
 "close_type.local_force_close" = "Forzar cierre";
 "close_type.remote_force_close" = "Forzar cierre remotamente";
 "close_type.breach_close" = "Breach Close";
-"close_type.funding_canceled" = "Funding Canceled";
-"close_type.unknown" = "Unknown Close";
+"close_type.funding_canceled" = "Financiamiento cancelado";
+"close_type.unknown" = "Cierre desconocido";
 
-"view.amount_input.placeholder" = "Amount";
+"view.amount_input.placeholder" = "Cantidad";
 
-"scene.transactions.title" = "Transactions";
-"scene.transactions.empty_state_label" = "0 transactions 🙁";
+"scene.transactions.title" = "Transacciones";
+"scene.transactions.empty_state_label" = "0 transacciones 🙁";
 "scene.transactions.row_action.archive" = "Archive";
 "scene.transactions.row_action.unarchive" = "Unarchive";
 
-"scene.settings.title" = "Settings";
-"scene.settings.section.wallet" = "Wallet";
-"scene.settings.item.bitcoin_unit" = "Bitcoin Unit";
-"scene.settings.item.currency" = "Currency";
-"scene.settings.item.network" = "Network";
-"scene.settings.item.block_explorer" = "Block Explorer";
-"scene.settings.item.lock_wallet" = "Lock Wallet";
+"scene.settings.title" = "Configuración";
+"scene.settings.section.wallet" = "Cartera";
+"scene.settings.item.bitcoin_unit" = "Unidad de Bitcoin";
+"scene.settings.item.currency" = "Moneda";
+"scene.settings.item.network" = "Red";
+"scene.settings.item.block_explorer" = "Explorador de bloques";
+"scene.settings.item.lock_wallet" = "Cerrar cartera";
 "scene.settings.item.on_chain_request_address.title" = "Bitcoin Address Type";
 "scene.settings.item.on_chain_request_address.bech32" = "Bech32";
 "scene.settings.item.on_chain_request_address.p2sh" = "P2SH";
