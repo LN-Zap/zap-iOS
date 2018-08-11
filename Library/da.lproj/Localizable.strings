@@ -31,42 +31,42 @@
 "unit.bitcoin.bit" = "Bits";
 "unit.bitcoin.satoshi" = "Satoshis";
 
-"transaction.open_channel.memo" = "Open Channel: %@";
-"transaction.close_channel.memo" = "%@ Channel: %@";
+"transaction.open_channel.memo" = "Åben kanal: %@";
+"transaction.close_channel.memo" = "%@ kanal: %@";
 
-"close_type.cooperative_close" = "Close";
+"close_type.cooperative_close" = "Luk";
 "close_type.local_force_close" = "Force Close";
 "close_type.remote_force_close" = "Remote Force Close";
 "close_type.breach_close" = "Breach Close";
-"close_type.funding_canceled" = "Funding Canceled";
-"close_type.unknown" = "Unknown Close";
+"close_type.funding_canceled" = "Finansiering annulleret";
+"close_type.unknown" = "Ukendt luk";
 
-"view.amount_input.placeholder" = "Amount";
+"view.amount_input.placeholder" = "Beløb";
 
-"scene.transactions.title" = "Transactions";
-"scene.transactions.empty_state_label" = "0 transactions 🙁";
-"scene.transactions.row_action.archive" = "Archive";
+"scene.transactions.title" = "Transaktioner";
+"scene.transactions.empty_state_label" = "0 transaktioner 🙁";
+"scene.transactions.row_action.archive" = "Arkiv";
 "scene.transactions.row_action.unarchive" = "Unarchive";
 
-"scene.settings.title" = "Settings";
+"scene.settings.title" = "Indstillinger";
 "scene.settings.section.wallet" = "Wallet";
-"scene.settings.item.bitcoin_unit" = "Bitcoin Unit";
-"scene.settings.item.currency" = "Currency";
-"scene.settings.item.network" = "Network";
-"scene.settings.item.block_explorer" = "Block Explorer";
+"scene.settings.item.bitcoin_unit" = "Bitcoin enhed";
+"scene.settings.item.currency" = "Valuta";
+"scene.settings.item.network" = "Netværk";
+"scene.settings.item.block_explorer" = "Blok Explorer";
 "scene.settings.item.lock_wallet" = "Lock Wallet";
-"scene.settings.item.on_chain_request_address.title" = "Bitcoin Address Type";
+"scene.settings.item.on_chain_request_address.title" = "Bitcoin adresse Type";
 "scene.settings.item.on_chain_request_address.bech32" = "Bech32";
 "scene.settings.item.on_chain_request_address.p2sh" = "P2SH";
-"scene.settings.item.remove_remote_node" = "Reset Remote Node Configuration";
-"scene.settings.item.reset_pin" = "Reset Pin";
-"scene.settings.item.report_issue" = "Report an Issue";
-"scene.settings.item.help" = "Need Help?";
+"scene.settings.item.remove_remote_node" = "Nulstil konfiguration af Remote Node";
+"scene.settings.item.reset_pin" = "Nulstil Pin";
+"scene.settings.item.report_issue" = "Rapporter et problem";
+"scene.settings.item.help" = "Brug for hjælp?";
 
 "scene.deposit.send" = "Send";
-"scene.deposit.title" = "Receive";
+"scene.deposit.title" = "Modtag";
 
-"scene.request.title" = "Receive";
+"scene.request.title" = "Modtag";
 "scene.request.lightning_button" = "Lightning";
 "scene.request.on_chain_button" = "On-chain";
 "scene.request.memo_placeholder" = "Memo (optional)";
@@ -119,15 +119,15 @@
 "scene.connect_remote_node.connect_button" = "Connect";
 "scene.connect_remote_node.scan_button" = "Scan";
 "scene.connect_remote_node.paste_button" = "Paste";
-"scene.connect_remote_node.help_button" = "Need Help?";
-"scene.connect_remote_node.server_error" = "Could not connect to server.";
-"scene.connect_remote_node.your_node_title" = "Your Node";
-"scene.connect_remote_node.certificate_detail.certificate_title" = "Certificate";
-"scene.connect_remote_node.certificate_detail.macaroon_title" = "Macaroon";
-"scene.connect_remote_node.edit_url.title" = "Address";
+"scene.connect_remote_node.help_button" = "Brug for hjælp?";
+"scene.connect_remote_node.server_error" = "Kunne ikke forbinde til server.";
+"scene.connect_remote_node.your_node_title" = "Din Node";
+"scene.connect_remote_node.certificate_detail.certificate_title" = "Certifikat";
+"scene.connect_remote_node.certificate_detail.macaroon_title" = "Makron";
+"scene.connect_remote_node.edit_url.title" = "Adresse";
 
 
-"scene.create_wallet.title" = "Create Wallet";
+"scene.create_wallet.title" = "Opret tegnebog";
 "scene.create_wallet.description_label" = "Make sure to store the mnemonic at a save location.";
 "scene.create_wallet.next_button" = "Next";
 
