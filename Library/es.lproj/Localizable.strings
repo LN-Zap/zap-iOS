@@ -23,20 +23,20 @@
 "channel.state.closing" = "Closing";
 "channel.state.force_closing" = "Force Closing";
 
-"network.type.testnet" = "Testnet";
+"network.type.testnet" = "TestNet";
 "network.type.mainnet" = "Mainnet";
 
 "unit.bitcoin.btc" = "Bitcoin";
-"unit.bitcoin.mbtc" = "Milli Bitcoin";
+"unit.bitcoin.mbtc" = "MiliBitcoin";
 "unit.bitcoin.bit" = "Bits";
 "unit.bitcoin.satoshi" = "Satoshis";
 
-"transaction.open_channel.memo" = "Open Channel: %@";
-"transaction.close_channel.memo" = "%@ Channel: %@";
+"transaction.open_channel.memo" = "Abrir Canal: %@";
+"transaction.close_channel.memo" = "%@ Canal: %@";
 
-"close_type.cooperative_close" = "Close";
-"close_type.local_force_close" = "Force Close";
-"close_type.remote_force_close" = "Remote Force Close";
+"close_type.cooperative_close" = "Cerrar";
+"close_type.local_force_close" = "Forzar cierre";
+"close_type.remote_force_close" = "Forzar cierre remotamente";
 "close_type.breach_close" = "Breach Close";
 "close_type.funding_canceled" = "Funding Canceled";
 "close_type.unknown" = "Unknown Close";
