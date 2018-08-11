@@ -81,33 +81,33 @@
 "scene.channels.alert.close" = "סגור";
 "scene.channels.alert.force_close" = "כפה סגירה";
 "scene.channels.row_action.close" = "סגור ערוץ";
-"scene.channels.close_success.toast" = "Channel is closing.";
+"scene.channels.close_success.toast" = "הערות נסגר.";
 
-"scene.open_channel.title" = "Open Channel";
-"scene.open_channel.help_label" = "Fund connection";
-"scene.open_channel.add_button" = "Add";
+"scene.open_channel.title" = "פתח ערוץ";
+"scene.open_channel.help_label" = "ממן את החיבור";
+"scene.open_channel.add_button" = "הוסף";
 
-"scene.balance.title" = "Balance";
+"scene.balance.title" = "יתרה";
 "scene.balance.label.on_chain" = "Ƀ";
 
-"scene.pin.biometric.fallback.title" = "Use Passcode";
-"scene.pin.biometric.reason" = "To access the secure data";
+"scene.pin.biometric.fallback.title" = "השתמש בקוד גישה";
+"scene.pin.biometric.reason" = "בכדי לגשת למידע המאובטח";
 
-"scene.setup_pin.done_button" = "Done";
-"scene.setup_pin.top_label.initial" = "Choose a pin.";
-"scene.setup_pin.top_label.non_matching" = "The pins didn't match. Please try again.";
-"scene.setup_pin.top_label.validate" = "Enter the pin again to validate.";
+"scene.setup_pin.done_button" = "בוצע";
+"scene.setup_pin.top_label.initial" = "אנא בחר Pin.";
+"scene.setup_pin.top_label.non_matching" = "קוד הגישה אינו תואם. אנא נסו שנית.";
+"scene.setup_pin.top_label.validate" = "הזינו את הקוד הגישה שוב לצורך אימות.";
 
-"scene.confirm_mnemonic.title" = "Confirm Seed";
-"scene.confirm_mnemonic.description" = "Enter your key.";
+"scene.confirm_mnemonic.title" = "אמתו את הSeed";
+"scene.confirm_mnemonic.description" = "הזינו את המפתח שלכם.";
 
-"scene.channel_detail.title" = "Channel Detail";
+"scene.channel_detail.title" = "פרטי הערוץ";
 
-"scene.send.title" = "Send";
-"scene.send.send_button" = "Send";
-"scene.send.error.invalid_payment_request" = "Invalid Payment request";
+"scene.send.title" = "שלח";
+"scene.send.send_button" = "שלח";
+"scene.send.error.invalid_payment_request" = "בקשת תשלום לא חוקית";
 
-"scene.send.lightning.title" = "Send";
+"scene.send.lightning.title" = "שלח";
 "scene.send.lightning.error.expired" = "Payment Request expired:\n%@";
 "scene.send.lightning.error.duplicate" = "Payment already paid.";
 "scene.send.lightning.memo" = "Memo: %@";
