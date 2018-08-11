@@ -11,7 +11,7 @@
 
 "error.wrong_uri_format" = "Unbekanntes Linkformat.";
 "error.wrong_uri_network" = "Du hast versucht den Link %@ zu öffnen, aber dein Node ist mit %@ verbunden.";
-"error.block_explorer.unsupported_network" = "%@ does not support %@.";
+"error.block_explorer.unsupported_network" = "%@ unterstützt kein %@.";
 
 "rpc_connect_qrcode_error.btc_pay_expired" = "Sieht so aus als wäre der QR-Code abgelaufen.";
 "rpc_connect_qrcode_error.btc_pay_configuration_broken" = "BTCPay Konfigurationsdatei konnte nicht gelesen werden.";
@@ -201,4 +201,4 @@
 "scene.filter.displayLightningInvoices" = "Lightning Rechnungen";
 "scene.filter.displayArchivedTransactions" = "Archivierte Transaktionen";
 
-"scene.qrcode_scanner.top_label" = "Scan QR-Code";
+"scene.qrcode_scanner.top_label" = "QR-Code scannen";
