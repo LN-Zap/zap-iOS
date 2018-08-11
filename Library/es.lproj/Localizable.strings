@@ -9,16 +9,16 @@
 "link.help" = "https://ln-zap.github.io/zap-tutorials/";
 "link.help.zapconnect" = "https://ln-zap.github.io/zap-tutorials/iOS-remote-node-setup";
 
-"error.wrong_uri_format" = "Unknown link format.";
-"error.wrong_uri_network" = "You tried opening a link for %@ but your node is connected to %@.";
-"error.block_explorer.unsupported_network" = "%@ does not support %@.";
+"error.wrong_uri_format" = "Formate de link desconocido.";
+"error.wrong_uri_network" = "Has intentado establecer una conexión para %@ pero tu nodo esta conectado a %@.";
+"error.block_explorer.unsupported_network" = "%@ no es compatible con %@.";
 
-"rpc_connect_qrcode_error.btc_pay_expired" = "Looks like the code is expired.";
-"rpc_connect_qrcode_error.btc_pay_configuration_broken" = "Could not read BTCPay configurations file.";
-"rpc_connect_qrcode_error.cant_read_qrcode" = "Can't connect to this code.";
+"rpc_connect_qrcode_error.btc_pay_expired" = "Parece que el código ha caducado.";
+"rpc_connect_qrcode_error.btc_pay_configuration_broken" = "No se pudo leer el archivo de configuraciones de BTCPay.";
+"rpc_connect_qrcode_error.cant_read_qrcode" = "No se puede conectar a este código.";
 
-"channel.state.active" = "Online";
-"channel.state.inactive" = "Offline";
+"channel.state.active" = "En línea";
+"channel.state.inactive" = "Desconectado";
 "channel.state.opening" = "Opening";
 "channel.state.closing" = "Closing";
 "channel.state.force_closing" = "Force Closing";
