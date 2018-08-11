@@ -46,7 +46,7 @@
 "scene.transactions.title" = "תנועות";
 "scene.transactions.empty_state_label" = "0 עיסקאות  🙁";
 "scene.transactions.row_action.archive" = "ארכיון";
-"scene.transactions.row_action.unarchive" = "Unarchive";
+"scene.transactions.row_action.unarchive" = "חילוץ הארכיון";
 
 "scene.settings.title" = "הגדרות";
 "scene.settings.section.wallet" = "ארנק";
@@ -69,18 +69,18 @@
 "scene.request.title" = "קבל";
 "scene.request.lightning_button" = "Lightning";
 "scene.request.on_chain_button" = "On-chain";
-"scene.request.memo_placeholder" = "Memo (optional)";
-"scene.request.generate_request_button" = "Generate Request";
+"scene.request.memo_placeholder" = "תזכיר(אופציונלי)";
+"scene.request.generate_request_button" = "צור בקשה";
 
-"scene.channels.title" = "Channels";
-"scene.channels.close.title" = "Close Channel";
-"scene.channels.close.message" = "Do you really want to close the channel with node %@?";
-"scene.channels.force_close.title" = "Force Close Channel";
-"scene.channels.force_close.message" = "%@ is offline, are you sure you want to force close this channel? You’d have to wait about %@ for your funds?";
-"scene.channels.alert.cancel" = "Cancel";
-"scene.channels.alert.close" = "Close";
-"scene.channels.alert.force_close" = "Force Close";
-"scene.channels.row_action.close" = "Close Channel";
+"scene.channels.title" = "ערוצים";
+"scene.channels.close.title" = "סגור ערוץ";
+"scene.channels.close.message" = "אתה בטוח שברצונך לסגור את הערוץ עם node %@?";
+"scene.channels.force_close.title" = "כפה את סגירת הערוץ";
+"scene.channels.force_close.message" = "%@ מנותק, האם אתם בטוחים כי ברצונכם לכפות את סגירת הערוץ? אתם תצטרכו לחכות בערך %@ עבור הכספים שלכם?";
+"scene.channels.alert.cancel" = "בטל";
+"scene.channels.alert.close" = "סגור";
+"scene.channels.alert.force_close" = "כפה סגירה";
+"scene.channels.row_action.close" = "סגור ערוץ";
 "scene.channels.close_success.toast" = "Channel is closing.";
 
 "scene.open_channel.title" = "Open Channel";
