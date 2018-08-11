@@ -55,18 +55,18 @@
 "scene.settings.item.network" = "רשת";
 "scene.settings.item.block_explorer" = "סייר הבלוקצ׳יין";
 "scene.settings.item.lock_wallet" = "נעל את הארנק";
-"scene.settings.item.on_chain_request_address.title" = "Bitcoin Address Type";
+"scene.settings.item.on_chain_request_address.title" = "סוג כתובת ביטקוין";
 "scene.settings.item.on_chain_request_address.bech32" = "Bech32";
 "scene.settings.item.on_chain_request_address.p2sh" = "P2SH";
-"scene.settings.item.remove_remote_node" = "Reset Remote Node Configuration";
-"scene.settings.item.reset_pin" = "Reset Pin";
-"scene.settings.item.report_issue" = "Report an Issue";
-"scene.settings.item.help" = "Need Help?";
+"scene.settings.item.remove_remote_node" = "איפוס תצורת node מרחוק";
+"scene.settings.item.reset_pin" = "איפוס Pin";
+"scene.settings.item.report_issue" = "דווח על תקלה";
+"scene.settings.item.help" = "צריך עזרה?";
 
-"scene.deposit.send" = "Send";
-"scene.deposit.title" = "Receive";
+"scene.deposit.send" = "שלח";
+"scene.deposit.title" = "קבל";
 
-"scene.request.title" = "Receive";
+"scene.request.title" = "קבל";
 "scene.request.lightning_button" = "Lightning";
 "scene.request.on_chain_button" = "On-chain";
 "scene.request.memo_placeholder" = "Memo (optional)";
@@ -119,15 +119,15 @@
 "scene.connect_remote_node.connect_button" = "Connect";
 "scene.connect_remote_node.scan_button" = "Scan";
 "scene.connect_remote_node.paste_button" = "Paste";
-"scene.connect_remote_node.help_button" = "Need Help?";
-"scene.connect_remote_node.server_error" = "Could not connect to server.";
-"scene.connect_remote_node.your_node_title" = "Your Node";
-"scene.connect_remote_node.certificate_detail.certificate_title" = "Certificate";
+"scene.connect_remote_node.help_button" = "צריך עזרה?";
+"scene.connect_remote_node.server_error" = "לא היתה אפשרות להתחבר לשרת.";
+"scene.connect_remote_node.your_node_title" = "ה-node שלך";
+"scene.connect_remote_node.certificate_detail.certificate_title" = "אישור";
 "scene.connect_remote_node.certificate_detail.macaroon_title" = "Macaroon";
-"scene.connect_remote_node.edit_url.title" = "Address";
+"scene.connect_remote_node.edit_url.title" = "כתובת";
 
 
-"scene.create_wallet.title" = "Create Wallet";
+"scene.create_wallet.title" = "צור ארנק";
 "scene.create_wallet.description_label" = "Make sure to store the mnemonic at a save location.";
 "scene.create_wallet.next_button" = "Next";
 
