@@ -149,7 +149,7 @@
 
 "scene.main.send_button" = "付款";
 "scene.main.receive_button" = "收款";
-"scene.main.exchange_rate_label" = "%@ per BTC";
+"scene.main.exchange_rate_label" = "%@ 每BTC";
 
 "scene.qr_code_detail.method_label.lightning" = "闪电";
 "scene.qr_code_detail.method_label.on_chain" = "链上";
@@ -190,7 +190,7 @@
 "scene.channel_detail.remote_balance_label" = "远程余额";
 "scene.channel_detail.closing_time.label" = "关闭中";
 "scene.channel_detail.closing_time.data" = "%d 区块 (%@)";
-"scene.channel_detail.funding_transaction_label" = "Funding Transaction";
+"scene.channel_detail.funding_transaction_label" = "资金交易";
 "scene.channel_detail.close_button" = "关闭";
 "scene.channel_detail.force_close_button" = "强制关闭";
 
