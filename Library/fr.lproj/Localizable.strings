@@ -50,7 +50,7 @@
 
 "scene.settings.title" = "Paramètres";
 "scene.settings.section.wallet" = "Portefeuille";
-"scene.settings.item.bitcoin_unit" = "Bitcoin Unit";
+"scene.settings.item.bitcoin_unit" = "Unité Bitcoin";
 "scene.settings.item.currency" = "Devise";
 "scene.settings.item.network" = "Réseau";
 "scene.settings.item.block_explorer" = "Block Explorer";
