@@ -29,16 +29,16 @@
 "unit.bitcoin.btc" = "ביטקוין";
 "unit.bitcoin.mbtc" = "מילי ביטקוין";
 "unit.bitcoin.bit" = "ביטס";
-"unit.bitcoin.satoshi" = "Satoshis";
+"unit.bitcoin.satoshi" = "סטושיס";
 
-"transaction.open_channel.memo" = "Open Channel: %@";
-"transaction.close_channel.memo" = "%@ Channel: %@";
+"transaction.open_channel.memo" = "ערוץ פתוח: %@";
+"transaction.close_channel.memo" = "ערוץ %@ : %@";
 
-"close_type.cooperative_close" = "Close";
+"close_type.cooperative_close" = "סגור";
 "close_type.local_force_close" = "Force Close";
 "close_type.remote_force_close" = "Remote Force Close";
 "close_type.breach_close" = "Breach Close";
-"close_type.funding_canceled" = "Funding Canceled";
+"close_type.funding_canceled" = "מימון בוטל ";
 "close_type.unknown" = "Unknown Close";
 
 "view.amount_input.placeholder" = "Amount";
