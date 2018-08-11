@@ -134,16 +134,16 @@
 "scene.recover_wallet.title" = "שיחזור ארנק";
 "scene.recover_wallet.done_button" = "הושלם";
 "scene.recover_wallet.description_label" = "הזן את הSeed שלך:";
-"scene.recover_wallet.placeholder" = "abandon ability able about above absent absorb abstract absurd abuse access accident account accuse achieve acid acoustic acquire across act action actor actress actual";
+"scene.recover_wallet.placeholder" = "לנטוש יכולת מסוגל אודות מעל נעדר לספוג מופשט(לא מוחשי) לא הגיוני(מגוחך) ניצול גישה תקלה(תאונה) חשבון האשים השיג חומצה אקוסטי(קולי) השיג(רכש) מעבר(לעבר) מעשה(פעולה) מעשה(פעולה) שחקן שחקנית ממשי(ראלי)";
 
-"scene.select_wallet_connection.title" = "Setup Zap";
-"scene.select_wallet_connection.create.title" = "Create";
-"scene.select_wallet_connection.create.message" = "new wallet";
-"scene.select_wallet_connection.recover.title" = "Recover";
-"scene.select_wallet_connection.recover.message" = "existing wallet";
-"scene.select_wallet_connection.connect.title" = "Connect";
-"scene.select_wallet_connection.connect.message" = "remote node";
-"scene.select_wallet_connection.disabled_alert.title" = "Sorry!";
+"scene.select_wallet_connection.title" = "הגדרת Zap";
+"scene.select_wallet_connection.create.title" = "צור";
+"scene.select_wallet_connection.create.message" = "ארנק חדש";
+"scene.select_wallet_connection.recover.title" = "שיחזור";
+"scene.select_wallet_connection.recover.message" = "ארנק קיים";
+"scene.select_wallet_connection.connect.title" = "התחבר";
+"scene.select_wallet_connection.connect.message" = "Node מרוחק";
+"scene.select_wallet_connection.disabled_alert.title" = "מצטער!";
 "scene.select_wallet_connection.disabled_alert.message" = "Running Lnd on the phone is disabled in this beta. Connect to a remote node instead.";
 "scene.select_wallet_connection.create.help" = "Need Help?";
 
