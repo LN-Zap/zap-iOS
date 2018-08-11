@@ -149,7 +149,7 @@
 
 "scene.main.send_button" = "Senden";
 "scene.main.receive_button" = "Empfangen";
-"scene.main.exchange_rate_label" = "%@ per BTC";
+"scene.main.exchange_rate_label" = "%@ pro BTC";
 
 "scene.qr_code_detail.method_label.lightning" = "Lightning";
 "scene.qr_code_detail.method_label.on_chain" = "On-Chain";
