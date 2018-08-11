@@ -39,22 +39,22 @@
 "close_type.remote_force_close" = "Remote Force Close";
 "close_type.breach_close" = "Breach Close";
 "close_type.funding_canceled" = "מימון בוטל ";
-"close_type.unknown" = "Unknown Close";
+"close_type.unknown" = "נסגר מסיבה לא ידועה";
 
-"view.amount_input.placeholder" = "Amount";
+"view.amount_input.placeholder" = "סכום";
 
-"scene.transactions.title" = "Transactions";
-"scene.transactions.empty_state_label" = "0 transactions 🙁";
-"scene.transactions.row_action.archive" = "Archive";
+"scene.transactions.title" = "תנועות";
+"scene.transactions.empty_state_label" = "0 עיסקאות  🙁";
+"scene.transactions.row_action.archive" = "ארכיון";
 "scene.transactions.row_action.unarchive" = "Unarchive";
 
-"scene.settings.title" = "Settings";
-"scene.settings.section.wallet" = "Wallet";
-"scene.settings.item.bitcoin_unit" = "Bitcoin Unit";
-"scene.settings.item.currency" = "Currency";
-"scene.settings.item.network" = "Network";
-"scene.settings.item.block_explorer" = "Block Explorer";
-"scene.settings.item.lock_wallet" = "Lock Wallet";
+"scene.settings.title" = "הגדרות";
+"scene.settings.section.wallet" = "ארנק";
+"scene.settings.item.bitcoin_unit" = "יחידת ביטקוין";
+"scene.settings.item.currency" = "מטבע";
+"scene.settings.item.network" = "רשת";
+"scene.settings.item.block_explorer" = "סייר הבלוקצ׳יין";
+"scene.settings.item.lock_wallet" = "נעל את הארנק";
 "scene.settings.item.on_chain_request_address.title" = "Bitcoin Address Type";
 "scene.settings.item.on_chain_request_address.bech32" = "Bech32";
 "scene.settings.item.on_chain_request_address.p2sh" = "P2SH";
