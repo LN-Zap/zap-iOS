@@ -46,7 +46,7 @@
 "scene.transactions.title" = "Transaktioner";
 "scene.transactions.empty_state_label" = "0 transaktioner 🙁";
 "scene.transactions.row_action.archive" = "Arkiv";
-"scene.transactions.row_action.unarchive" = "Unarchive";
+"scene.transactions.row_action.unarchive" = "Udpak";
 
 "scene.settings.title" = "Indstillinger";
 "scene.settings.section.wallet" = "Tegnebog";
@@ -70,7 +70,7 @@
 "scene.request.lightning_button" = "Lightning";
 "scene.request.on_chain_button" = "På-kæde";
 "scene.request.memo_placeholder" = "Notat (valgfrit)";
-"scene.request.generate_request_button" = "Generate Request";
+"scene.request.generate_request_button" = "Generer anmodning";
 
 "scene.channels.title" = "Kanaler";
 "scene.channels.close.title" = "Luk kanal";
@@ -95,30 +95,30 @@
 
 "scene.setup_pin.done_button" = "Udført";
 "scene.setup_pin.top_label.initial" = "Vælg en pinkode.";
-"scene.setup_pin.top_label.non_matching" = "The pins didn't match. Please try again.";
-"scene.setup_pin.top_label.validate" = "Enter the pin again to validate.";
+"scene.setup_pin.top_label.non_matching" = "Pin koderne er ikke de samme. Prøv venligst igen.";
+"scene.setup_pin.top_label.validate" = "Indtast Pin-koden igen for at validere.";
 
 "scene.confirm_mnemonic.title" = "Confirm Seed";
-"scene.confirm_mnemonic.description" = "Enter your key.";
+"scene.confirm_mnemonic.description" = "Indtast din nøgle.";
 
-"scene.channel_detail.title" = "Channel Detail";
+"scene.channel_detail.title" = "Kanal detaljer";
 
 "scene.send.title" = "Send";
 "scene.send.send_button" = "Send";
-"scene.send.error.invalid_payment_request" = "Invalid Payment request";
+"scene.send.error.invalid_payment_request" = "Ugyldig anmodning om betaling";
 
 "scene.send.lightning.title" = "Send";
-"scene.send.lightning.error.expired" = "Payment Request expired:\n%@";
-"scene.send.lightning.error.duplicate" = "Payment already paid.";
-"scene.send.lightning.memo" = "Memo: %@";
+"scene.send.lightning.error.expired" = "Anmodning om betaling er udløbet:\n%@";
+"scene.send.lightning.error.duplicate" = "Betaling allerede udført.";
+"scene.send.lightning.memo" = "Notat: %@";
 
-"scene.connect_remote_node.title" = "Connect Remote Node";
-"scene.connect_remote_node.empty_state" = "Scan the QRCode generate with zapconnect or paste the connection code to connect to your node.";
-"scene.connect_remote_node.url_label" = "Address";
-"scene.connect_remote_node.certificate_label" = "Certificate";
-"scene.connect_remote_node.connect_button" = "Connect";
+"scene.connect_remote_node.title" = "Tilslut ekstern Node";
+"scene.connect_remote_node.empty_state" = "Scan QR-kode genereret med zapconnect eller indsæt forbindelseskode for at forbinde til din Node.";
+"scene.connect_remote_node.url_label" = "Adresse";
+"scene.connect_remote_node.certificate_label" = "Certifikat";
+"scene.connect_remote_node.connect_button" = "Tilslut";
 "scene.connect_remote_node.scan_button" = "Scan";
-"scene.connect_remote_node.paste_button" = "Paste";
+"scene.connect_remote_node.paste_button" = "Indsæt";
 "scene.connect_remote_node.help_button" = "Brug for hjælp?";
 "scene.connect_remote_node.server_error" = "Kunne ikke forbinde til server.";
 "scene.connect_remote_node.your_node_title" = "Din Node";
@@ -174,7 +174,7 @@
 "scene.transaction_detail.amount_label" = "Beløb";
 "scene.transaction_detail.created_label" = "Oprettet";
 "scene.transaction_detail.payment_request" = "Anmodning om betaling";
-"scene.transaction_detail.expiry_label" = "Expiry";
+"scene.transaction_detail.expiry_label" = "Udløber";
 "scene.transaction_detail.settled_label" = "Afgjort";
 "scene.transaction_detail.settled_date_label" = "Udlignings dato";
 "scene.transaction_detail.settled_state.settled" = "Udlignet";
@@ -188,11 +188,11 @@
 "scene.channel_detail.remote_pub_key_label" = "Remote PubKey";
 "scene.channel_detail.local_balance_label" = "Lokal Balance";
 "scene.channel_detail.remote_balance_label" = "Remore Balance";
-"scene.channel_detail.closing_time.label" = "Closing in";
+"scene.channel_detail.closing_time.label" = "Lukning i";
 "scene.channel_detail.closing_time.data" = "%d blokke (%@)";
 "scene.channel_detail.funding_transaction_label" = "Finansier transaktion";
 "scene.channel_detail.close_button" = "Luk";
-"scene.channel_detail.force_close_button" = "Force Close";
+"scene.channel_detail.force_close_button" = "Luk med magt";
 
 "scene.filter.title" = "Transaktionsfilter";
 "scene.filter.section_header.transaction_types" = "Transaktionstyper";
