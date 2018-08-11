@@ -58,45 +58,45 @@
 "scene.settings.item.on_chain_request_address.title" = "Tipo de endereço Bitcoin";
 "scene.settings.item.on_chain_request_address.bech32" = "Bech32";
 "scene.settings.item.on_chain_request_address.p2sh" = "P2SH";
-"scene.settings.item.remove_remote_node" = "Reset Remote Node Configuration";
-"scene.settings.item.reset_pin" = "Reset Pin";
-"scene.settings.item.report_issue" = "Report an Issue";
-"scene.settings.item.help" = "Need Help?";
+"scene.settings.item.remove_remote_node" = "Redefinir configurações do nó remoto";
+"scene.settings.item.reset_pin" = "Redefinir Pin";
+"scene.settings.item.report_issue" = "Reportar um problema";
+"scene.settings.item.help" = "Precisa de Ajuda?";
 
-"scene.deposit.send" = "Send";
-"scene.deposit.title" = "Receive";
+"scene.deposit.send" = "Enviar";
+"scene.deposit.title" = "Receber";
 
-"scene.request.title" = "Receive";
+"scene.request.title" = "Receber";
 "scene.request.lightning_button" = "Lightning";
 "scene.request.on_chain_button" = "On-chain";
 "scene.request.memo_placeholder" = "Memo (optional)";
-"scene.request.generate_request_button" = "Generate Request";
+"scene.request.generate_request_button" = "Gerar solicitação";
 
-"scene.channels.title" = "Channels";
-"scene.channels.close.title" = "Close Channel";
-"scene.channels.close.message" = "Do you really want to close the channel with node %@?";
-"scene.channels.force_close.title" = "Force Close Channel";
-"scene.channels.force_close.message" = "%@ is offline, are you sure you want to force close this channel? You’d have to wait about %@ for your funds?";
+"scene.channels.title" = "Canais";
+"scene.channels.close.title" = "Encerrar Canal";
+"scene.channels.close.message" = "Você quer realmente fechar o canal com o nó %@?";
+"scene.channels.force_close.title" = "Forçar fechamento do canal";
+"scene.channels.force_close.message" = "%@ está offline, você tem certeza que você deseja forçar o fechamento deste canal? Você teria que esperar cerca de %@ para receber seus fundos?";
 "scene.channels.alert.cancel" = "Cancelar";
 "scene.channels.alert.close" = "Fechar";
-"scene.channels.alert.force_close" = "Force Close";
+"scene.channels.alert.force_close" = "Forçar Encerramento";
 "scene.channels.row_action.close" = "Encerrar Canal";
-"scene.channels.close_success.toast" = "Channel is closing.";
+"scene.channels.close_success.toast" = "Encerrando canal.";
 
-"scene.open_channel.title" = "Open Channel";
-"scene.open_channel.help_label" = "Fund connection";
+"scene.open_channel.title" = "Abrir Canal";
+"scene.open_channel.help_label" = "Depositar fundos na conexão";
 "scene.open_channel.add_button" = "Adicionar";
 
 "scene.balance.title" = "Balanço";
 "scene.balance.label.on_chain" = "Ƀ";
 
-"scene.pin.biometric.fallback.title" = "Use Passcode";
-"scene.pin.biometric.reason" = "To access the secure data";
+"scene.pin.biometric.fallback.title" = "Usar senha";
+"scene.pin.biometric.reason" = "Para acessar os dados seguros";
 
-"scene.setup_pin.done_button" = "Done";
+"scene.setup_pin.done_button" = "Concluído";
 "scene.setup_pin.top_label.initial" = "Escolher um pin.";
-"scene.setup_pin.top_label.non_matching" = "The pins didn't match. Please try again.";
-"scene.setup_pin.top_label.validate" = "Enter the pin again to validate.";
+"scene.setup_pin.top_label.non_matching" = "Os pinos não correspondem. Por favor, tente novamente.";
+"scene.setup_pin.top_label.validate" = "Insira o pin de novo para validar.";
 
 "scene.confirm_mnemonic.title" = "Confirm Seed";
 "scene.confirm_mnemonic.description" = "Enter your key.";
