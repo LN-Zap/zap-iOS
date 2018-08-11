@@ -128,12 +128,12 @@
 
 
 "scene.create_wallet.title" = "צור ארנק";
-"scene.create_wallet.description_label" = "Make sure to store the mnemonic at a save location.";
-"scene.create_wallet.next_button" = "Next";
+"scene.create_wallet.description_label" = "אנא וודאו שאתם שומרים את ה-mnemonic במקום בטוח.";
+"scene.create_wallet.next_button" = "הבא";
 
-"scene.recover_wallet.title" = "Recover Wallet";
-"scene.recover_wallet.done_button" = "Done";
-"scene.recover_wallet.description_label" = "Enter your seed:";
+"scene.recover_wallet.title" = "שיחזור ארנק";
+"scene.recover_wallet.done_button" = "הושלם";
+"scene.recover_wallet.description_label" = "הזן את הSeed שלך:";
 "scene.recover_wallet.placeholder" = "abandon ability able about above absent absorb abstract absurd abuse access accident account accuse achieve acid acoustic acquire across act action actor actress actual";
 
 "scene.select_wallet_connection.title" = "Setup Zap";
