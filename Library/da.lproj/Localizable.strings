@@ -49,12 +49,12 @@
 "scene.transactions.row_action.unarchive" = "Unarchive";
 
 "scene.settings.title" = "Indstillinger";
-"scene.settings.section.wallet" = "Wallet";
+"scene.settings.section.wallet" = "Tegnebog";
 "scene.settings.item.bitcoin_unit" = "Bitcoin enhed";
 "scene.settings.item.currency" = "Valuta";
 "scene.settings.item.network" = "Netværk";
 "scene.settings.item.block_explorer" = "Blok Explorer";
-"scene.settings.item.lock_wallet" = "Lock Wallet";
+"scene.settings.item.lock_wallet" = "Lås tegnebog";
 "scene.settings.item.on_chain_request_address.title" = "Bitcoin adresse Type";
 "scene.settings.item.on_chain_request_address.bech32" = "Bech32";
 "scene.settings.item.on_chain_request_address.p2sh" = "P2SH";
@@ -68,33 +68,33 @@
 
 "scene.request.title" = "Modtag";
 "scene.request.lightning_button" = "Lightning";
-"scene.request.on_chain_button" = "On-chain";
-"scene.request.memo_placeholder" = "Memo (optional)";
+"scene.request.on_chain_button" = "På-kæde";
+"scene.request.memo_placeholder" = "Notat (valgfrit)";
 "scene.request.generate_request_button" = "Generate Request";
 
-"scene.channels.title" = "Channels";
-"scene.channels.close.title" = "Close Channel";
-"scene.channels.close.message" = "Do you really want to close the channel with node %@?";
+"scene.channels.title" = "Kanaler";
+"scene.channels.close.title" = "Luk kanal";
+"scene.channels.close.message" = "Vil du lukke kanalen med node %@?";
 "scene.channels.force_close.title" = "Force Close Channel";
 "scene.channels.force_close.message" = "%@ is offline, are you sure you want to force close this channel? You’d have to wait about %@ for your funds?";
-"scene.channels.alert.cancel" = "Cancel";
-"scene.channels.alert.close" = "Close";
+"scene.channels.alert.cancel" = "Annuller";
+"scene.channels.alert.close" = "Luk";
 "scene.channels.alert.force_close" = "Force Close";
-"scene.channels.row_action.close" = "Close Channel";
-"scene.channels.close_success.toast" = "Channel is closing.";
+"scene.channels.row_action.close" = "Luk kanal";
+"scene.channels.close_success.toast" = "Kanalen lukkes.";
 
-"scene.open_channel.title" = "Open Channel";
+"scene.open_channel.title" = "Åben kanal";
 "scene.open_channel.help_label" = "Fund connection";
-"scene.open_channel.add_button" = "Add";
+"scene.open_channel.add_button" = "Tilføj";
 
 "scene.balance.title" = "Balance";
 "scene.balance.label.on_chain" = "Ƀ";
 
-"scene.pin.biometric.fallback.title" = "Use Passcode";
-"scene.pin.biometric.reason" = "To access the secure data";
+"scene.pin.biometric.fallback.title" = "Brug adgangskode";
+"scene.pin.biometric.reason" = "For at få adgang til sikre data";
 
-"scene.setup_pin.done_button" = "Done";
-"scene.setup_pin.top_label.initial" = "Choose a pin.";
+"scene.setup_pin.done_button" = "Udført";
+"scene.setup_pin.top_label.initial" = "Vælg en pinkode.";
 "scene.setup_pin.top_label.non_matching" = "The pins didn't match. Please try again.";
 "scene.setup_pin.top_label.validate" = "Enter the pin again to validate.";
 
@@ -176,29 +176,29 @@
 "scene.transaction_detail.payment_request" = "Anmodning om betaling";
 "scene.transaction_detail.expiry_label" = "Expiry";
 "scene.transaction_detail.settled_label" = "Afgjort";
-"scene.transaction_detail.settled_date_label" = "Settled Date";
-"scene.transaction_detail.settled_state.settled" = "Settled";
-"scene.transaction_detail.settled_state.unsettled" = "Unsettled";
-"scene.transaction_detail.fee_label" = "Fee";
-"scene.transaction_detail.date_label" = "Date";
-"scene.transaction_detail.confirmations_label" = "Confirmations";
-"scene.transaction_detail.address_label" = "Address";
-"scene.transaction_detail.transaction_id_label" = "Transaction ID";
+"scene.transaction_detail.settled_date_label" = "Udlignings dato";
+"scene.transaction_detail.settled_state.settled" = "Udlignet";
+"scene.transaction_detail.settled_state.unsettled" = "Uafvikledt";
+"scene.transaction_detail.fee_label" = "Gebyr";
+"scene.transaction_detail.date_label" = "Dato";
+"scene.transaction_detail.confirmations_label" = "Bekræftelser";
+"scene.transaction_detail.address_label" = "Adresse";
+"scene.transaction_detail.transaction_id_label" = "Transaktions-ID";
 
 "scene.channel_detail.remote_pub_key_label" = "Remote PubKey";
-"scene.channel_detail.local_balance_label" = "Local Balance";
-"scene.channel_detail.remote_balance_label" = "Remote Balance";
+"scene.channel_detail.local_balance_label" = "Lokal Balance";
+"scene.channel_detail.remote_balance_label" = "Remore Balance";
 "scene.channel_detail.closing_time.label" = "Closing in";
-"scene.channel_detail.closing_time.data" = "%d blocks (%@)";
-"scene.channel_detail.funding_transaction_label" = "Funding Transaction";
-"scene.channel_detail.close_button" = "Close";
+"scene.channel_detail.closing_time.data" = "%d blokke (%@)";
+"scene.channel_detail.funding_transaction_label" = "Finansier transaktion";
+"scene.channel_detail.close_button" = "Luk";
 "scene.channel_detail.force_close_button" = "Force Close";
 
-"scene.filter.title" = "Transaction Filter";
-"scene.filter.section_header.transaction_types" = "Transaction Types";
-"scene.filter.displayOnChainTransactions" = "On Chain Transactions";
-"scene.filter.displayLightningPayments" = "Lightning Payments";
-"scene.filter.displayLightningInvoices" = "Lightning Invoices";
-"scene.filter.displayArchivedTransactions" = "Archived Transactions";
+"scene.filter.title" = "Transaktionsfilter";
+"scene.filter.section_header.transaction_types" = "Transaktionstyper";
+"scene.filter.displayOnChainTransactions" = "På-kæde transaktioner";
+"scene.filter.displayLightningPayments" = "Lightning betalinger";
+"scene.filter.displayLightningInvoices" = "Lightning fakturaer";
+"scene.filter.displayArchivedTransactions" = "Arkiverede transaktioner";
 
-"scene.qrcode_scanner.top_label" = "Scan QR-Code";
+"scene.qrcode_scanner.top_label" = "Skan QR-kode";
