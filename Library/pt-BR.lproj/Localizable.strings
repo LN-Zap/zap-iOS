@@ -170,10 +170,10 @@
 "scene.transaction_detail.qr_code.copy_button" = "Copiar";
 "scene.transaction_detail.qr_code.share_button" = "Compartilhar";
 "scene.transaction_detail.qr_code.expired_label" = "Expired";
-"scene.transaction_detail.amount.unspecified_label" = "Unspecified";
+"scene.transaction_detail.amount.unspecified_label" = "Não especificado";
 "scene.transaction_detail.amount_label" = "Quantidade";
 "scene.transaction_detail.created_label" = "Criado";
-"scene.transaction_detail.payment_request" = "Payment Request";
+"scene.transaction_detail.payment_request" = "Pedido de Pagamento";
 "scene.transaction_detail.expiry_label" = "Expiry";
 "scene.transaction_detail.settled_label" = "Settled";
 "scene.transaction_detail.settled_date_label" = "Settled Date";
