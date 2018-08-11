@@ -11,7 +11,7 @@
 
 "error.wrong_uri_format" = "未知的链接格式。";
 "error.wrong_uri_network" = "尝试链接到 %@, 但目前您的节点已连接到 %@。";
-"error.block_explorer.unsupported_network" = "%@ does not support %@.";
+"error.block_explorer.unsupported_network" = "%@ 不支持 %@。";
 
 "rpc_connect_qrcode_error.btc_pay_expired" = "代码已过期。";
 "rpc_connect_qrcode_error.btc_pay_configuration_broken" = "无法读取 BTCPay 配置文件。";
@@ -79,12 +79,12 @@
 "scene.channels.force_close.message" = "%@ 处于脱机状态, 是否确实要强制关闭此通道？您必须等待资金的 %@ 吗？";
 "scene.channels.alert.cancel" = "取消";
 "scene.channels.alert.close" = "关闭";
-"scene.channels.alert.force_close" = "Force Close";
+"scene.channels.alert.force_close" = "强制关闭";
 "scene.channels.row_action.close" = "关闭通道";
 "scene.channels.close_success.toast" = "通道正在关闭。";
 
 "scene.open_channel.title" = "打开通道";
-"scene.open_channel.help_label" = "Fund connection";
+"scene.open_channel.help_label" = "资金连接";
 "scene.open_channel.add_button" = "添加";
 
 "scene.balance.title" = "余额";
@@ -201,4 +201,4 @@
 "scene.filter.displayLightningInvoices" = "闪电账单";
 "scene.filter.displayArchivedTransactions" = "归档交易";
 
-"scene.qrcode_scanner.top_label" = "Scan QR-Code";
+"scene.qrcode_scanner.top_label" = "扫描 QR 码";
