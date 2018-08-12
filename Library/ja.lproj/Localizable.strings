@@ -19,27 +19,27 @@
 
 "channel.state.active" = "オンライン";
 "channel.state.inactive" = "オフライン";
-"channel.state.opening" = "Opening";
-"channel.state.closing" = "Closing";
-"channel.state.force_closing" = "Force Closing";
+"channel.state.opening" = "開放中。";
+"channel.state.closing" = "閉鎖中";
+"channel.state.force_closing" = "強制閉鎖";
 
-"network.type.testnet" = "Testnet";
-"network.type.mainnet" = "Mainnet";
+"network.type.testnet" = "テストネット";
+"network.type.mainnet" = "メインネット";
 
 "unit.bitcoin.btc" = "Bitcoin";
 "unit.bitcoin.mbtc" = "Milli Bitcoin";
 "unit.bitcoin.bit" = "Bits";
 "unit.bitcoin.satoshi" = "Satoshis";
 
-"transaction.open_channel.memo" = "Open Channel: %@";
-"transaction.close_channel.memo" = "%@ Channel: %@";
+"transaction.open_channel.memo" = "開くチャンネル: %@";
+"transaction.close_channel.memo" = "%@ チャンネル: %@";
 
-"close_type.cooperative_close" = "Close";
-"close_type.local_force_close" = "Force Close";
-"close_type.remote_force_close" = "Remote Force Close";
-"close_type.breach_close" = "Breach Close";
-"close_type.funding_canceled" = "Funding Canceled";
-"close_type.unknown" = "Unknown Close";
+"close_type.cooperative_close" = "閉鎖";
+"close_type.local_force_close" = "強制閉鎖";
+"close_type.remote_force_close" = "リモートで強制閉鎖";
+"close_type.breach_close" = "違反閉鎖";
+"close_type.funding_canceled" = "資金調達はキャンセルされました。";
+"close_type.unknown" = "不明な閉鎖";
 
 "view.amount_input.placeholder" = "Amount";
 
