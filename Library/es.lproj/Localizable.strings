@@ -70,47 +70,47 @@
 "scene.request.lightning_button" = "Lightning";
 "scene.request.on_chain_button" = "En la cadena";
 "scene.request.memo_placeholder" = "Nota (opcional)";
-"scene.request.generate_request_button" = "Generate Request";
+"scene.request.generate_request_button" = "Generar solicitud";
 
-"scene.channels.title" = "Channels";
-"scene.channels.close.title" = "Close Channel";
-"scene.channels.close.message" = "Do you really want to close the channel with node %@?";
-"scene.channels.force_close.title" = "Force Close Channel";
-"scene.channels.force_close.message" = "%@ is offline, are you sure you want to force close this channel? You’d have to wait about %@ for your funds?";
-"scene.channels.alert.cancel" = "Cancel";
-"scene.channels.alert.close" = "Close";
-"scene.channels.alert.force_close" = "Force Close";
-"scene.channels.row_action.close" = "Close Channel";
-"scene.channels.close_success.toast" = "Channel is closing.";
+"scene.channels.title" = "Canales";
+"scene.channels.close.title" = "Cerrar canal";
+"scene.channels.close.message" = "¿Realmente desea cerrar el canal con nodo %@?";
+"scene.channels.force_close.title" = "Forzar cierre de canal";
+"scene.channels.force_close.message" = "%@ está offline, ¿está seguro de que desea forzar el cierre de este canal? Tendrá que esperar alrededor de %@ para recuperar sus fondos.";
+"scene.channels.alert.cancel" = "Cancelar";
+"scene.channels.alert.close" = "Cerrar";
+"scene.channels.alert.force_close" = "Forzar cierre";
+"scene.channels.row_action.close" = "Cerrar canal";
+"scene.channels.close_success.toast" = "El canal está cerrándose.";
 
-"scene.open_channel.title" = "Open Channel";
+"scene.open_channel.title" = "Abrir Canal";
 "scene.open_channel.help_label" = "Fund connection";
-"scene.open_channel.add_button" = "Add";
+"scene.open_channel.add_button" = "Añadir";
 
 "scene.balance.title" = "Balance";
 "scene.balance.label.on_chain" = "Ƀ";
 
-"scene.pin.biometric.fallback.title" = "Use Passcode";
-"scene.pin.biometric.reason" = "To access the secure data";
+"scene.pin.biometric.fallback.title" = "Usa contraseña";
+"scene.pin.biometric.reason" = "Acceder datos seguros";
 
-"scene.setup_pin.done_button" = "Done";
-"scene.setup_pin.top_label.initial" = "Choose a pin.";
-"scene.setup_pin.top_label.non_matching" = "The pins didn't match. Please try again.";
-"scene.setup_pin.top_label.validate" = "Enter the pin again to validate.";
+"scene.setup_pin.done_button" = "Hecho";
+"scene.setup_pin.top_label.initial" = "Elija un pin.";
+"scene.setup_pin.top_label.non_matching" = "Los pines no coinciden. Por favor, inténtelo de nuevo.";
+"scene.setup_pin.top_label.validate" = "Introduzca el pin de nuevo para validar.";
 
-"scene.confirm_mnemonic.title" = "Confirm Seed";
-"scene.confirm_mnemonic.description" = "Enter your key.";
+"scene.confirm_mnemonic.title" = "Confirmar la semilla";
+"scene.confirm_mnemonic.description" = "Introduzca su clave.";
 
-"scene.channel_detail.title" = "Channel Detail";
+"scene.channel_detail.title" = "Detalle de canal";
 
-"scene.send.title" = "Send";
-"scene.send.send_button" = "Send";
-"scene.send.error.invalid_payment_request" = "Invalid Payment request";
+"scene.send.title" = "Enviar";
+"scene.send.send_button" = "Enviar";
+"scene.send.error.invalid_payment_request" = "Solicitud de pago inválida";
 
-"scene.send.lightning.title" = "Send";
-"scene.send.lightning.error.expired" = "Payment Request expired:\n%@";
-"scene.send.lightning.error.duplicate" = "Payment already paid.";
-"scene.send.lightning.memo" = "Memo: %@";
+"scene.send.lightning.title" = "Enviar";
+"scene.send.lightning.error.expired" = "Solicitud de pago expiró:\n%@";
+"scene.send.lightning.error.duplicate" = "Pago ya pagado.";
+"scene.send.lightning.memo" = "Nota: %@";
 
 "scene.connect_remote_node.title" = "Connect Remote Node";
 "scene.connect_remote_node.empty_state" = "Scan the QRCode generate with zapconnect or paste the connection code to connect to your node.";
