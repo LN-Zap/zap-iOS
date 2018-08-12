@@ -41,33 +41,33 @@
 "close_type.funding_canceled" = "資金調達はキャンセルされました。";
 "close_type.unknown" = "不明な閉鎖";
 
-"view.amount_input.placeholder" = "Amount";
+"view.amount_input.placeholder" = "数量";
 
-"scene.transactions.title" = "Transactions";
-"scene.transactions.empty_state_label" = "0 transactions 🙁";
-"scene.transactions.row_action.archive" = "Archive";
-"scene.transactions.row_action.unarchive" = "Unarchive";
+"scene.transactions.title" = "トランザクション";
+"scene.transactions.empty_state_label" = "0 トランザクション 🙁";
+"scene.transactions.row_action.archive" = "アーカイブ";
+"scene.transactions.row_action.unarchive" = "アーカイブしません";
 
-"scene.settings.title" = "Settings";
-"scene.settings.section.wallet" = "Wallet";
+"scene.settings.title" = "設定";
+"scene.settings.section.wallet" = "ウォレット";
 "scene.settings.item.bitcoin_unit" = "Bitcoin Unit";
-"scene.settings.item.currency" = "Currency";
-"scene.settings.item.network" = "Network";
-"scene.settings.item.block_explorer" = "Block Explorer";
-"scene.settings.item.lock_wallet" = "Lock Wallet";
-"scene.settings.item.on_chain_request_address.title" = "Bitcoin Address Type";
+"scene.settings.item.currency" = "通貨";
+"scene.settings.item.network" = "ネットワーク";
+"scene.settings.item.block_explorer" = "ブロックエクスプローラー";
+"scene.settings.item.lock_wallet" = "ウォレットをロック";
+"scene.settings.item.on_chain_request_address.title" = "Bitcoin アドレスタイプ";
 "scene.settings.item.on_chain_request_address.bech32" = "Bech32";
 "scene.settings.item.on_chain_request_address.p2sh" = "P2SH";
-"scene.settings.item.remove_remote_node" = "Reset Remote Node Configuration";
-"scene.settings.item.reset_pin" = "Reset Pin";
-"scene.settings.item.report_issue" = "Report an Issue";
-"scene.settings.item.help" = "Need Help?";
+"scene.settings.item.remove_remote_node" = "リモートノードの設定をリセットします。";
+"scene.settings.item.reset_pin" = "Pin をリセットします。";
+"scene.settings.item.report_issue" = "問題を報告します。";
+"scene.settings.item.help" = "ヘルプが必要ですか。";
 
-"scene.deposit.send" = "Send";
-"scene.deposit.title" = "Receive";
+"scene.deposit.send" = "送る";
+"scene.deposit.title" = "受け取る";
 
-"scene.request.title" = "Receive";
-"scene.request.lightning_button" = "Lightning";
+"scene.request.title" = "受け取る";
+"scene.request.lightning_button" = "ライトニング";
 "scene.request.on_chain_button" = "On-chain";
 "scene.request.memo_placeholder" = "Memo (optional)";
 "scene.request.generate_request_button" = "Generate Request";
