@@ -28,29 +28,29 @@
 
 "unit.bitcoin.btc" = "Bitcoin";
 "unit.bitcoin.mbtc" = "Milli Bitcoin";
-"unit.bitcoin.bit" = "Bits";
-"unit.bitcoin.satoshi" = "Satoshis";
+"unit.bitcoin.bit" = "Bit";
+"unit.bitcoin.satoshi" = "Satoshi";
 
-"transaction.open_channel.memo" = "Open Channel: %@";
-"transaction.close_channel.memo" = "%@ Channel: %@";
+"transaction.open_channel.memo" = "Canale aperto: %@";
+"transaction.close_channel.memo" = "%@ Canale: %@";
 
-"close_type.cooperative_close" = "Close";
-"close_type.local_force_close" = "Force Close";
-"close_type.remote_force_close" = "Remote Force Close";
-"close_type.breach_close" = "Breach Close";
+"close_type.cooperative_close" = "Chiusura";
+"close_type.local_force_close" = "Chiusura forzata";
+"close_type.remote_force_close" = "Chiusura Forzata Remota";
+"close_type.breach_close" = "Chiusura per Violazione";
 "close_type.funding_canceled" = "Funding Canceled";
-"close_type.unknown" = "Unknown Close";
+"close_type.unknown" = "Chiusura sconosciuta";
 
-"view.amount_input.placeholder" = "Amount";
+"view.amount_input.placeholder" = "Importo";
 
-"scene.transactions.title" = "Transactions";
-"scene.transactions.empty_state_label" = "0 transactions 🙁";
-"scene.transactions.row_action.archive" = "Archive";
+"scene.transactions.title" = "Transazioni";
+"scene.transactions.empty_state_label" = "🙁 0 transazioni";
+"scene.transactions.row_action.archive" = "Archivia";
 "scene.transactions.row_action.unarchive" = "Unarchive";
 
-"scene.settings.title" = "Settings";
-"scene.settings.section.wallet" = "Wallet";
-"scene.settings.item.bitcoin_unit" = "Bitcoin Unit";
+"scene.settings.title" = "Impostazioni";
+"scene.settings.section.wallet" = "Portafoglio";
+"scene.settings.item.bitcoin_unit" = "Unità di Bitcoin";
 "scene.settings.item.currency" = "Currency";
 "scene.settings.item.network" = "Network";
 "scene.settings.item.block_explorer" = "Block Explorer";
