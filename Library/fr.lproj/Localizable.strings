@@ -113,22 +113,22 @@
 "scene.send.lightning.memo" = "Note : %@";
 
 "scene.connect_remote_node.title" = "Connect Remote Node";
-"scene.connect_remote_node.empty_state" = "Scan the QRCode generate with zapconnect or paste the connection code to connect to your node.";
+"scene.connect_remote_node.empty_state" = "Numérisez le code QR généré avec zapconnect ou collez le code de connexion pour vous connecter à votre nœud.";
 "scene.connect_remote_node.url_label" = "Adresse";
 "scene.connect_remote_node.certificate_label" = "Certificat";
 "scene.connect_remote_node.connect_button" = "Connect";
 "scene.connect_remote_node.scan_button" = "Scan";
-"scene.connect_remote_node.paste_button" = "Paste";
+"scene.connect_remote_node.paste_button" = "Coller";
 "scene.connect_remote_node.help_button" = "Besoin d'aide ?";
-"scene.connect_remote_node.server_error" = "Could not connect to server.";
+"scene.connect_remote_node.server_error" = "Impossible de se connecter au serveur.";
 "scene.connect_remote_node.your_node_title" = "Votre nœud";
 "scene.connect_remote_node.certificate_detail.certificate_title" = "Certificat";
-"scene.connect_remote_node.certificate_detail.macaroon_title" = "Macaroon";
+"scene.connect_remote_node.certificate_detail.macaroon_title" = "Macaron";
 "scene.connect_remote_node.edit_url.title" = "Adresse";
 
 
-"scene.create_wallet.title" = "Create Wallet";
-"scene.create_wallet.description_label" = "Make sure to store the mnemonic at a save location.";
+"scene.create_wallet.title" = "Créer un portefeuille";
+"scene.create_wallet.description_label" = "Assurez-vous de conserver le mnémonique dans un endroit sûr.";
 "scene.create_wallet.next_button" = "Suivant";
 
 "scene.recover_wallet.title" = "Recover Wallet";
@@ -142,7 +142,7 @@
 "scene.select_wallet_connection.recover.title" = "Récupérer";
 "scene.select_wallet_connection.recover.message" = "portefeuille existant";
 "scene.select_wallet_connection.connect.title" = "Connect";
-"scene.select_wallet_connection.connect.message" = "remote node";
+"scene.select_wallet_connection.connect.message" = "nœud distant";
 "scene.select_wallet_connection.disabled_alert.title" = "Désolé !";
 "scene.select_wallet_connection.disabled_alert.message" = "Running Lnd on the phone is disabled in this beta. Connect to a remote node instead.";
 "scene.select_wallet_connection.create.help" = "Besoin d'aide ?";
@@ -154,7 +154,7 @@
 "scene.qr_code_detail.method_label.lightning" = "Lightning";
 "scene.qr_code_detail.method_label.on_chain" = "On-chain";
 
-"scene.sync.description_label" = "Syncing to blockchain…";
+"scene.sync.description_label" = "Synchronisation à la blockchain…";
 "scene.sync.disconnect_bar_button" = "Déconnexion";
 "scene.sync.disconnect_alert.title" = "Déconnexion";
 "scene.sync.disconnect_alert.message" = "Souhaitez-vous vraiment annuler la synchronisation ? Vous devrez vous reconnecter à votre nœud par la suite.";
@@ -185,7 +185,7 @@
 "scene.transaction_detail.address_label" = "Adresse";
 "scene.transaction_detail.transaction_id_label" = "Transaction ID";
 
-"scene.channel_detail.remote_pub_key_label" = "Remote PubKey";
+"scene.channel_detail.remote_pub_key_label" = "PubKey distante";
 "scene.channel_detail.local_balance_label" = "Solde local";
 "scene.channel_detail.remote_balance_label" = "Solde distant";
 "scene.channel_detail.closing_time.label" = "Fermeture dans";
@@ -194,7 +194,7 @@
 "scene.channel_detail.close_button" = "Fermer";
 "scene.channel_detail.force_close_button" = "Force Close";
 
-"scene.filter.title" = "Transaction Filter";
+"scene.filter.title" = "Filtre de transaction";
 "scene.filter.section_header.transaction_types" = "Types de transaction";
 "scene.filter.displayOnChainTransactions" = "Transactions On-Chain ";
 "scene.filter.displayLightningPayments" = "Paiements Lightning";
