@@ -21,7 +21,7 @@
 "channel.state.inactive" = "לא מקוון ";
 "channel.state.opening" = "פותח";
 "channel.state.closing" = "סוגר";
-"channel.state.force_closing" = "Force Closing";
+"channel.state.force_closing" = "כפה סגירה";
 
 "network.type.testnet" = "Testnet";
 "network.type.mainnet" = "Mainnet";
@@ -35,8 +35,8 @@
 "transaction.close_channel.memo" = "ערוץ %@ : %@";
 
 "close_type.cooperative_close" = "סגור";
-"close_type.local_force_close" = "Force Close";
-"close_type.remote_force_close" = "Remote Force Close";
+"close_type.local_force_close" = "סגירה כפויה";
+"close_type.remote_force_close" = "סגירה כפויה מרחוק";
 "close_type.breach_close" = "Breach Close";
 "close_type.funding_canceled" = "מימון בוטל ";
 "close_type.unknown" = "נסגר מסיבה לא ידועה";
@@ -108,17 +108,17 @@
 "scene.send.error.invalid_payment_request" = "בקשת תשלום לא חוקית";
 
 "scene.send.lightning.title" = "שלח";
-"scene.send.lightning.error.expired" = "Payment Request expired:\n%@";
-"scene.send.lightning.error.duplicate" = "Payment already paid.";
-"scene.send.lightning.memo" = "Memo: %@";
+"scene.send.lightning.error.expired" = "תוקף בקשת התשלום פג:\n%@";
+"scene.send.lightning.error.duplicate" = "התשלום כבר שולם.";
+"scene.send.lightning.memo" = "תזכיר: %@";
 
-"scene.connect_remote_node.title" = "Connect Remote Node";
-"scene.connect_remote_node.empty_state" = "Scan the QRCode generate with zapconnect or paste the connection code to connect to your node.";
-"scene.connect_remote_node.url_label" = "Address";
-"scene.connect_remote_node.certificate_label" = "Certificate";
-"scene.connect_remote_node.connect_button" = "Connect";
-"scene.connect_remote_node.scan_button" = "Scan";
-"scene.connect_remote_node.paste_button" = "Paste";
+"scene.connect_remote_node.title" = "התחבר לnode מרוחק";
+"scene.connect_remote_node.empty_state" = "סרוק את הQRCode שנוצר באמצעות zapconnect או הדבק את קוד החיבור כדי להתחבר אל הnode שלך.";
+"scene.connect_remote_node.url_label" = "כתובת";
+"scene.connect_remote_node.certificate_label" = "תעודה";
+"scene.connect_remote_node.connect_button" = "התחבר";
+"scene.connect_remote_node.scan_button" = "סרוק";
+"scene.connect_remote_node.paste_button" = "הדבק";
 "scene.connect_remote_node.help_button" = "צריך עזרה?";
 "scene.connect_remote_node.server_error" = "לא היתה אפשרות להתחבר לשרת.";
 "scene.connect_remote_node.your_node_title" = "ה-node שלך";
@@ -165,7 +165,7 @@
 "scene.transaction_detail.title.payment_detail" = "פירוט התשלום";
 "scene.transaction_detail.title.transaction_detail" = "פירוט תנועות";
 "scene.transaction_detail.archive_button" = "ארכיון";
-"scene.transaction_detail.unarchive_button" = "Unarchive";
+"scene.transaction_detail.unarchive_button" = "חילוץ הארכיון";
 "scene.transaction_detail.memo_label" = "תזכיר";
 "scene.transaction_detail.qr_code.copy_button" = "העתק";
 "scene.transaction_detail.qr_code.share_button" = "שיתוף";
