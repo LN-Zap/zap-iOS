@@ -6,7 +6,7 @@
   Copyright © 2018 Zap. All rights reserved.
 */
 
-"applicationShortcutItem.send" = "Send";
-"applicationShortcutItem.request" = "Receive";
+"applicationShortcutItem.send" = "送る";
+"applicationShortcutItem.request" = "受け取る";
 "NSCameraUsageDescription" = "Zap requires access to your phone’s camera.";
 "NSFaceIDUsageDescription" = "Zap requires access to Face ID.";
