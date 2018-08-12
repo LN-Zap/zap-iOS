@@ -185,20 +185,20 @@
 "scene.transaction_detail.address_label" = "כתובת";
 "scene.transaction_detail.transaction_id_label" = "מזהה תנועה";
 
-"scene.channel_detail.remote_pub_key_label" = "Remote PubKey";
+"scene.channel_detail.remote_pub_key_label" = "PubKey מרחוק";
 "scene.channel_detail.local_balance_label" = "יתרה מקומית";
 "scene.channel_detail.remote_balance_label" = "יתרה מרוחקת";
 "scene.channel_detail.closing_time.label" = "סוגר";
 "scene.channel_detail.closing_time.data" = "%d blocks (%@)";
-"scene.channel_detail.funding_transaction_label" = "Funding Transaction";
-"scene.channel_detail.close_button" = "Close";
-"scene.channel_detail.force_close_button" = "Force Close";
+"scene.channel_detail.funding_transaction_label" = "פעולת מימון";
+"scene.channel_detail.close_button" = "סגור";
+"scene.channel_detail.force_close_button" = "כפה סגירה";
 
-"scene.filter.title" = "Transaction Filter";
-"scene.filter.section_header.transaction_types" = "Transaction Types";
-"scene.filter.displayOnChainTransactions" = "On Chain Transactions";
-"scene.filter.displayLightningPayments" = "Lightning Payments";
-"scene.filter.displayLightningInvoices" = "Lightning Invoices";
-"scene.filter.displayArchivedTransactions" = "Archived Transactions";
+"scene.filter.title" = "מסנן פעולות";
+"scene.filter.section_header.transaction_types" = "סוג פעולה";
+"scene.filter.displayOnChainTransactions" = "תשלום On Chain";
+"scene.filter.displayLightningPayments" = "תשלומי Lightning";
+"scene.filter.displayLightningInvoices" = "קבלות Lightning";
+"scene.filter.displayArchivedTransactions" = "תנועות בארכיון";
 
-"scene.qrcode_scanner.top_label" = "Scan QR-Code";
+"scene.qrcode_scanner.top_label" = "לסרוק קוד QR";
