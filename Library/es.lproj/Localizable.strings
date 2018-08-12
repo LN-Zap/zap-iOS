@@ -179,26 +179,26 @@
 "scene.transaction_detail.settled_date_label" = "Fecha establecida";
 "scene.transaction_detail.settled_state.settled" = "Resuelto";
 "scene.transaction_detail.settled_state.unsettled" = "Sin resolver";
-"scene.transaction_detail.fee_label" = "Fee";
-"scene.transaction_detail.date_label" = "Date";
-"scene.transaction_detail.confirmations_label" = "Confirmations";
-"scene.transaction_detail.address_label" = "Address";
-"scene.transaction_detail.transaction_id_label" = "Transaction ID";
+"scene.transaction_detail.fee_label" = "Tarifa";
+"scene.transaction_detail.date_label" = "Fecha";
+"scene.transaction_detail.confirmations_label" = "Confirmaciones";
+"scene.transaction_detail.address_label" = "Dirección";
+"scene.transaction_detail.transaction_id_label" = "ID de la transacción";
 
-"scene.channel_detail.remote_pub_key_label" = "Remote PubKey";
-"scene.channel_detail.local_balance_label" = "Local Balance";
-"scene.channel_detail.remote_balance_label" = "Remote Balance";
-"scene.channel_detail.closing_time.label" = "Closing in";
-"scene.channel_detail.closing_time.data" = "%d blocks (%@)";
-"scene.channel_detail.funding_transaction_label" = "Funding Transaction";
-"scene.channel_detail.close_button" = "Close";
-"scene.channel_detail.force_close_button" = "Force Close";
+"scene.channel_detail.remote_pub_key_label" = "Clave pública";
+"scene.channel_detail.local_balance_label" = "Balance local";
+"scene.channel_detail.remote_balance_label" = "Balance remoto";
+"scene.channel_detail.closing_time.label" = "Cerrando";
+"scene.channel_detail.closing_time.data" = "%d bloques (%@)";
+"scene.channel_detail.funding_transaction_label" = "Financiando Transacción";
+"scene.channel_detail.close_button" = "Cerrar";
+"scene.channel_detail.force_close_button" = "Forzar cierre";
 
-"scene.filter.title" = "Transaction Filter";
-"scene.filter.section_header.transaction_types" = "Transaction Types";
-"scene.filter.displayOnChainTransactions" = "On Chain Transactions";
-"scene.filter.displayLightningPayments" = "Lightning Payments";
+"scene.filter.title" = "Filtro de transacciones";
+"scene.filter.section_header.transaction_types" = "Tipos de transacción";
+"scene.filter.displayOnChainTransactions" = "Transacciones en la cadena";
+"scene.filter.displayLightningPayments" = "Pagos \"Lightning\"";
 "scene.filter.displayLightningInvoices" = "Lightning Invoices";
-"scene.filter.displayArchivedTransactions" = "Archived Transactions";
+"scene.filter.displayArchivedTransactions" = "Transacciones archivadas";
 
-"scene.qrcode_scanner.top_label" = "Scan QR-Code";
+"scene.qrcode_scanner.top_label" = "Escanear código QR";
