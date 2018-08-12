@@ -161,7 +161,7 @@
 "scene.sync.disconnect_alert.destructive_action" = "Desconectar Nodo";
 "scene.sync.disconnect_alert.cancel_action" = "Cancelar";
 
-"scene.transaction_detail.title.lightning_invoice" = "Invoice Detail";
+"scene.transaction_detail.title.lightning_invoice" = "Detalle de la factura";
 "scene.transaction_detail.title.payment_detail" = "Detalle de pago";
 "scene.transaction_detail.title.transaction_detail" = "Detalle de la transacción";
 "scene.transaction_detail.archive_button" = "Archivar";
@@ -198,7 +198,7 @@
 "scene.filter.section_header.transaction_types" = "Tipos de transacción";
 "scene.filter.displayOnChainTransactions" = "Transacciones en la cadena";
 "scene.filter.displayLightningPayments" = "Pagos \"Lightning\"";
-"scene.filter.displayLightningInvoices" = "Lightning Invoices";
+"scene.filter.displayLightningInvoices" = "Factura Lightning";
 "scene.filter.displayArchivedTransactions" = "Transacciones archivadas";
 
 "scene.qrcode_scanner.top_label" = "Escanear código QR";
