@@ -98,7 +98,7 @@
 "scene.setup_pin.top_label.non_matching" = "Los pines no coinciden. Por favor, inténtelo de nuevo.";
 "scene.setup_pin.top_label.validate" = "Introduzca el pin de nuevo para validar.";
 
-"scene.confirm_mnemonic.title" = "Confirmar la semilla";
+"scene.confirm_mnemonic.title" = "Confirme la semilla";
 "scene.confirm_mnemonic.description" = "Introduzca su clave.";
 
 "scene.channel_detail.title" = "Detalle de canal";
@@ -108,12 +108,12 @@
 "scene.send.error.invalid_payment_request" = "Solicitud de pago inválida";
 
 "scene.send.lightning.title" = "Enviar";
-"scene.send.lightning.error.expired" = "Solicitud de pago expiró:\n%@";
+"scene.send.lightning.error.expired" = "La solicitud de pago expiró:\n%@";
 "scene.send.lightning.error.duplicate" = "Pago ya pagado.";
 "scene.send.lightning.memo" = "Nota: %@";
 
-"scene.connect_remote_node.title" = "Conectar el nodo remoto";
-"scene.connect_remote_node.empty_state" = "Escanee el código QR generado con zapconnect o pegue el código de conexión para conectar a su nodo.";
+"scene.connect_remote_node.title" = "Conecte el nodo remoto";
+"scene.connect_remote_node.empty_state" = "Escanee el código QR generado con zapconnect o pegue el código de conexión para conectarse a su nodo.";
 "scene.connect_remote_node.url_label" = "Dirección";
 "scene.connect_remote_node.certificate_label" = "Certificado";
 "scene.connect_remote_node.connect_button" = "Conectar";
@@ -121,9 +121,9 @@
 "scene.connect_remote_node.paste_button" = "Pegar";
 "scene.connect_remote_node.help_button" = "¿Necesita ayuda?";
 "scene.connect_remote_node.server_error" = "No se pudo conectar al servidor.";
-"scene.connect_remote_node.your_node_title" = "Tu nodo";
+"scene.connect_remote_node.your_node_title" = "Su nodo";
 "scene.connect_remote_node.certificate_detail.certificate_title" = "Certificado";
-"scene.connect_remote_node.certificate_detail.macaroon_title" = "Macarons";
+"scene.connect_remote_node.certificate_detail.macaroon_title" = "Galletas de almendra";
 "scene.connect_remote_node.edit_url.title" = "Dirección";
 
 
@@ -144,20 +144,20 @@
 "scene.select_wallet_connection.connect.title" = "Conectar";
 "scene.select_wallet_connection.connect.message" = "nodo remoto";
 "scene.select_wallet_connection.disabled_alert.title" = "¡Lo siento!";
-"scene.select_wallet_connection.disabled_alert.message" = "Ejecutar tu propio nodo de Lightning Network no esta disponible en esta beta. En su lugar, Tendrás que conectarte a un nodo remoto.";
-"scene.select_wallet_connection.create.help" = "¿Necesitas ayuda?";
+"scene.select_wallet_connection.disabled_alert.message" = "Ejecutar su propio nodo de Lightning Network no está disponible en esta beta. En su lugar, tendrá que conectarse a un nodo remoto.";
+"scene.select_wallet_connection.create.help" = "¿Necesita ayuda?";
 
 "scene.main.send_button" = "Enviar";
 "scene.main.receive_button" = "Recibir";
 "scene.main.exchange_rate_label" = "%@ por BTC";
 
 "scene.qr_code_detail.method_label.lightning" = "Lightning";
-"scene.qr_code_detail.method_label.on_chain" = "En la cadena";
+"scene.qr_code_detail.method_label.on_chain" = "En cadena";
 
 "scene.sync.description_label" = "Sincronizando con la cadena…";
 "scene.sync.disconnect_bar_button" = "Desconectar";
 "scene.sync.disconnect_alert.title" = "Desconectar";
-"scene.sync.disconnect_alert.message" = "¿Realmente desea cancelar la sincronización? Tendrás que reconectarte a tu nodo luego.";
+"scene.sync.disconnect_alert.message" = "¿Realmente desea cancelar la sincronización? Luego tendrá que reconectarse a su nodo.";
 "scene.sync.disconnect_alert.destructive_action" = "Desconectar Nodo";
 "scene.sync.disconnect_alert.cancel_action" = "Cancelar";
 
