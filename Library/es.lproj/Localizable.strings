@@ -37,7 +37,7 @@
 "close_type.cooperative_close" = "Cerrar";
 "close_type.local_force_close" = "Forzar cierre";
 "close_type.remote_force_close" = "Forzar cierre remotamente";
-"close_type.breach_close" = "Breach Close";
+"close_type.breach_close" = "Cierre por incumplimiento";
 "close_type.funding_canceled" = "Financiamiento cancelado";
 "close_type.unknown" = "Cierre desconocido";
 
@@ -84,7 +84,7 @@
 "scene.channels.close_success.toast" = "El canal está cerrándose.";
 
 "scene.open_channel.title" = "Abrir Canal";
-"scene.open_channel.help_label" = "Fund connection";
+"scene.open_channel.help_label" = "Conexión a los fondos";
 "scene.open_channel.add_button" = "Añadir";
 
 "scene.balance.title" = "Balance";
