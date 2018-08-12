@@ -61,7 +61,7 @@
 "scene.settings.item.remove_remote_node" = "Restablecer la configuración de nodos remotos";
 "scene.settings.item.reset_pin" = "Restablecer Pin";
 "scene.settings.item.report_issue" = "Informar sobre un problema";
-"scene.settings.item.help" = "¿Necesitas ayuda?";
+"scene.settings.item.help" = "¿Necesita ayuda?";
 
 "scene.deposit.send" = "Enviar";
 "scene.deposit.title" = "Recibir";
