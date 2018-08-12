@@ -155,9 +155,9 @@
 "scene.qr_code_detail.method_label.on_chain" = "On-chain";
 
 "scene.sync.description_label" = "Syncing to blockchain…";
-"scene.sync.disconnect_bar_button" = "Disconnect";
-"scene.sync.disconnect_alert.title" = "Disconnect";
-"scene.sync.disconnect_alert.message" = "Do you really want to cancel syncing? You will have to reconnect to your node afterwards.";
+"scene.sync.disconnect_bar_button" = "Déconnexion";
+"scene.sync.disconnect_alert.title" = "Déconnexion";
+"scene.sync.disconnect_alert.message" = "Souhaitez-vous vraiment annuler la synchronisation ? Vous devrez vous reconnecter à votre nœud par la suite.";
 "scene.sync.disconnect_alert.destructive_action" = "Déconnecter le nœud";
 "scene.sync.disconnect_alert.cancel_action" = "Annuler";
 
@@ -188,7 +188,7 @@
 "scene.channel_detail.remote_pub_key_label" = "Remote PubKey";
 "scene.channel_detail.local_balance_label" = "Solde local";
 "scene.channel_detail.remote_balance_label" = "Solde distant";
-"scene.channel_detail.closing_time.label" = "Closing in";
+"scene.channel_detail.closing_time.label" = "Fermeture dans";
 "scene.channel_detail.closing_time.data" = "%d blocs (%@)";
 "scene.channel_detail.funding_transaction_label" = "Funding Transaction";
 "scene.channel_detail.close_button" = "Fermer";
