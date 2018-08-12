@@ -68,8 +68,8 @@
 
 "scene.request.title" = "Recibir";
 "scene.request.lightning_button" = "Lightning";
-"scene.request.on_chain_button" = "On-chain";
-"scene.request.memo_placeholder" = "Memo (optional)";
+"scene.request.on_chain_button" = "En la cadena";
+"scene.request.memo_placeholder" = "Nota (opcional)";
 "scene.request.generate_request_button" = "Generate Request";
 
 "scene.channels.title" = "Channels";
