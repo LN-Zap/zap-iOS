@@ -112,23 +112,23 @@
 "scene.send.lightning.error.duplicate" = "Pago ya pagado.";
 "scene.send.lightning.memo" = "Nota: %@";
 
-"scene.connect_remote_node.title" = "Connect Remote Node";
-"scene.connect_remote_node.empty_state" = "Scan the QRCode generate with zapconnect or paste the connection code to connect to your node.";
-"scene.connect_remote_node.url_label" = "Address";
-"scene.connect_remote_node.certificate_label" = "Certificate";
-"scene.connect_remote_node.connect_button" = "Connect";
-"scene.connect_remote_node.scan_button" = "Scan";
-"scene.connect_remote_node.paste_button" = "Paste";
-"scene.connect_remote_node.help_button" = "Need Help?";
-"scene.connect_remote_node.server_error" = "Could not connect to server.";
-"scene.connect_remote_node.your_node_title" = "Your Node";
-"scene.connect_remote_node.certificate_detail.certificate_title" = "Certificate";
-"scene.connect_remote_node.certificate_detail.macaroon_title" = "Macaroon";
-"scene.connect_remote_node.edit_url.title" = "Address";
+"scene.connect_remote_node.title" = "Conectar el nodo remoto";
+"scene.connect_remote_node.empty_state" = "Escanee el código QR generado con zapconnect o pegue el código de conexión para conectar a su nodo.";
+"scene.connect_remote_node.url_label" = "Dirección";
+"scene.connect_remote_node.certificate_label" = "Certificado";
+"scene.connect_remote_node.connect_button" = "Conectar";
+"scene.connect_remote_node.scan_button" = "Escanear";
+"scene.connect_remote_node.paste_button" = "Pegar";
+"scene.connect_remote_node.help_button" = "¿Necesita ayuda?";
+"scene.connect_remote_node.server_error" = "No se pudo conectar al servidor.";
+"scene.connect_remote_node.your_node_title" = "Tu nodo";
+"scene.connect_remote_node.certificate_detail.certificate_title" = "Certificado";
+"scene.connect_remote_node.certificate_detail.macaroon_title" = "Macarons";
+"scene.connect_remote_node.edit_url.title" = "Dirección";
 
 
-"scene.create_wallet.title" = "Create Wallet";
-"scene.create_wallet.description_label" = "Make sure to store the mnemonic at a save location.";
+"scene.create_wallet.title" = "Crear Cartera";
+"scene.create_wallet.description_label" = "Asegúrese de almacenar el mnemónico en un lugar seguro.";
 "scene.create_wallet.next_button" = "Siguiente";
 
 "scene.recover_wallet.title" = "Recuperar cartera";
