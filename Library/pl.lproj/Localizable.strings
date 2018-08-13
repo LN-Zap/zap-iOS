@@ -174,7 +174,7 @@
 "scene.transaction_detail.amount_label" = "Kwota";
 "scene.transaction_detail.created_label" = "Created";
 "scene.transaction_detail.payment_request" = "Żądanie płatności";
-"scene.transaction_detail.expiry_label" = "Expiry";
+"scene.transaction_detail.expiry_label" = "Czas wygaśniecia";
 "scene.transaction_detail.settled_label" = "Settled";
 "scene.transaction_detail.settled_date_label" = "Settled Date";
 "scene.transaction_detail.settled_state.settled" = "Settled";
@@ -201,4 +201,4 @@
 "scene.filter.displayLightningInvoices" = "Faktury LN";
 "scene.filter.displayArchivedTransactions" = "Zarchiwizowane transakcje";
 
-"scene.qrcode_scanner.top_label" = "Scan QR-Code";
+"scene.qrcode_scanner.top_label" = "Zeskanuj kod QR";
