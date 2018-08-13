@@ -37,8 +37,8 @@
 "close_type.cooperative_close" = "Fechar";
 "close_type.local_force_close" = "Forçar Encerramento";
 "close_type.remote_force_close" = "Fechamento forçado remoto";
-"close_type.breach_close" = "Breach Close";
-"close_type.funding_canceled" = "Funding Canceled";
+"close_type.breach_close" = "Fechamento por violação";
+"close_type.funding_canceled" = "Financiamento cancelado";
 "close_type.unknown" = "Encerramento Inesperado";
 
 "view.amount_input.placeholder" = "Quantidade";
@@ -110,9 +110,9 @@
 "scene.send.lightning.title" = "Enviar";
 "scene.send.lightning.error.expired" = "Pedido de pagamento expirou:\n%@";
 "scene.send.lightning.error.duplicate" = "Pagamento já efetuado.";
-"scene.send.lightning.memo" = "Memo: %@";
+"scene.send.lightning.memo" = "Nota: %@";
 
-"scene.connect_remote_node.title" = "Connect Remote Node";
+"scene.connect_remote_node.title" = "Conectar Nó Remoto";
 "scene.connect_remote_node.empty_state" = "Scan the QRCode generate with zapconnect or paste the connection code to connect to your node.";
 "scene.connect_remote_node.url_label" = "Address";
 "scene.connect_remote_node.certificate_label" = "Certificate";
