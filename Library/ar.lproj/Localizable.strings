@@ -11,7 +11,7 @@
 
 "error.wrong_uri_format" = "تنسيق رابط غير معروف.";
 "error.wrong_uri_network" = "لقد حاولت فتح رابط لـ %@ ولكن العقدة الخاصة بك متصلة بـ %@.";
-"error.block_explorer.unsupported_network" = "%@ does not support %@.";
+"error.block_explorer.unsupported_network" = "%@ لا يدعم %@.";
 
 "rpc_connect_qrcode_error.btc_pay_expired" = "يبدو أن الرمز منتهي الصلاحية.";
 "rpc_connect_qrcode_error.btc_pay_configuration_broken" = "لا يمكن قراءة ملف تكوينات الـ BTCPay.";
