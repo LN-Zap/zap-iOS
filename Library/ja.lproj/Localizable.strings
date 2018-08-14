@@ -68,14 +68,14 @@
 
 "scene.request.title" = "受け取る";
 "scene.request.lightning_button" = "ライトニング";
-"scene.request.on_chain_button" = "On-chain";
-"scene.request.memo_placeholder" = "Memo (optional)";
-"scene.request.generate_request_button" = "Generate Request";
+"scene.request.on_chain_button" = "オンチェイン";
+"scene.request.memo_placeholder" = "メモ (オプション)";
+"scene.request.generate_request_button" = "要求を生成します。";
 
-"scene.channels.title" = "Channels";
-"scene.channels.close.title" = "Close Channel";
-"scene.channels.close.message" = "Do you really want to close the channel with node %@?";
-"scene.channels.force_close.title" = "Force Close Channel";
+"scene.channels.title" = "チャンネル";
+"scene.channels.close.title" = "チャンネルを閉鎖";
+"scene.channels.close.message" = "ノード %@ とチャネルを本当に終了しますか。";
+"scene.channels.force_close.title" = "チャンネルの強制終了";
 "scene.channels.force_close.message" = "%@ is offline, are you sure you want to force close this channel? You’d have to wait about %@ for your funds?";
 "scene.channels.alert.cancel" = "Cancel";
 "scene.channels.alert.close" = "Close";
