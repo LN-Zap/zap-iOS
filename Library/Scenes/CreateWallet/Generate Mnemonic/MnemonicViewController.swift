@@ -33,7 +33,7 @@ final class MnemonicViewController: UIViewController {
         title = "scene.create_wallet.title".localized
         
         Style.button().apply(to: doneButton)
-        Style.label().apply(to: topLabel)
+        Style.Label.custom().apply(to: topLabel)
         topLabel.textColor = .white
         topLabel.text = "scene.create_wallet.description_label".localized
         

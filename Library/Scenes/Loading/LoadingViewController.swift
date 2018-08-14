@@ -31,7 +31,7 @@ final class LoadingViewController: UIViewController {
         
         view.backgroundColor = UIColor.zap.seaBlue
         
-        Style.label().apply(to: infoLabel)
+        Style.Label.custom().apply(to: infoLabel)
         infoLabel.textColor = .white
         
         switch message {

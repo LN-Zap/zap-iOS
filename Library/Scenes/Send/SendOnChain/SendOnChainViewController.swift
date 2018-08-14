@@ -30,7 +30,7 @@ final class SendOnChainViewController: UIViewController, QRCodeScannerChildViewC
         
         title = "scene.send.title".localized
         
-        Style.label().apply(to: addressLabel)
+        Style.Label.custom().apply(to: addressLabel)
         gradientLoadingButtonView.title = "scene.send.send_button".localized
         addressLabel.text = sendOnChainViewModel?.bitcoinURI.address
         

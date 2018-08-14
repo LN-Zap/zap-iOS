@@ -24,7 +24,7 @@ final class SelectWalletCreationMethodTableViewCell: UITableViewCell {
         
         accessoryType = .disclosureIndicator
 
-        Style.label(fontSize: 36).apply(to: mainLabel)
-        Style.label(fontSize: 18).apply(to: descriptionLabel)
+        Style.Label.custom(fontSize: 36).apply(to: mainLabel)
+        Style.Label.custom(fontSize: 18).apply(to: descriptionLabel)
     }
 }

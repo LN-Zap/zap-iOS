@@ -26,7 +26,7 @@ final class DetailQRCodeTableViewCell: UITableViewCell {
     override func awakeFromNib() {
         super.awakeFromNib()
 
-        Style.label().apply(to: addressLabel)
+        Style.Label.custom().apply(to: addressLabel)
         addressLabel.font = DetailCellType.dataFont
         Style.button().apply(to: copyButton, shareButton)
         

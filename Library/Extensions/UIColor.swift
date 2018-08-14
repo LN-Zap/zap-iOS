@@ -10,19 +10,22 @@ import UIKit
 public extension UIColor {
     // swiftlint:disable:next type_name
     public enum zap {
+        public static let black = color("black")
+        public static let white = color("white")
+        public static let gray = color("gray")
+        public static let invisibleGray = color("invisibleGray")
+        
         public static let deepSeaBlue = color("deepSeaBlue")
         public static let lightningOrange = color("lightningOrange")
         public static let lightningOrangeGradient = color("lightningOrangeGradient")
         public static let seaBlue = color("seaBlue")
         public static let seaBlueGradient = color("seaBlueGradient")
+        public static let superRed = color("superRed")
+        public static let superGreen = color("superGreen")
         
-        public static let white = color("white")
-        public static let black = color("black")
         public static let lightGrey = color("lightGrey")
-        public static let tomato = color("tomato")
-        public static let nastyGreen = color("nastyGreen")
+        
         public static let lightGreen = color("lightGreen")
-        public static let warmGrey = color("warmGrey")
         
         static let validNodeColors: [UIColor] =
             [

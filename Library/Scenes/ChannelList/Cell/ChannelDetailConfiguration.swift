@@ -18,9 +18,9 @@ final class ChannelDetailConfiguration {
 
         let textColor = verifiedColor.isLight ? UIColor.zap.black : UIColor.zap.white
         
-        let labelStyle = Style.label(color: textColor, fontSize: 14)
-        let textStyle = Style.label(color: textColor, font: UIFont.zap.regular, fontSize: 14)
-        let rightAlignedTextStyle = Style.label(color: textColor, font: UIFont.zap.regular, fontSize: 14, alignment: .right)
+        let labelStyle = Style.Label.custom(color: textColor, fontSize: 14)
+        let textStyle = Style.Label.custom(color: textColor, font: UIFont.zap.regular, fontSize: 14)
+        let rightAlignedTextStyle = Style.Label.custom(color: textColor, font: UIFont.zap.regular, fontSize: 14, alignment: .right)
 
         var elements = [StackViewElement]()
         

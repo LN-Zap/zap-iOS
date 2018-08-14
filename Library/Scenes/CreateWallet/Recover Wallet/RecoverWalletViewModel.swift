@@ -47,7 +47,7 @@ final class RecoverWalletViewModel {
                 let wordRange = text.range(of: word)
                 else { continue }
             let range = NSRange(wordRange, in: text)
-            attributestText.addAttributes([.foregroundColor: UIColor.zap.tomato], range: range)
+            attributestText.addAttributes([.foregroundColor: UIColor.zap.superRed], range: range)
         }
         
         return attributestText

@@ -80,7 +80,7 @@ final class QRCodeScannerViewController: UIViewController, ContainerViewControll
         navigationController?.navigationBar.setBackgroundImage(UIImage(), for: .default)
 
         scannerViewOverlay.alpha = 0
-        qrCodeSuccessImageView.tintColor = UIColor.zap.nastyGreen
+        qrCodeSuccessImageView.tintColor = UIColor.zap.superGreen
     }
     
     func tryPresentingViewController(for address: String) {

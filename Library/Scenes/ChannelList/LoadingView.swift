@@ -23,7 +23,7 @@ final class LoadingView: UIView {
         activityIndicator.translatesAutoresizingMaskIntoConstraints = false
         
         let label = UILabel(frame: CGRect.zero)
-        Style.label(color: .white).apply(to: label)
+        Style.Label.custom(color: .white).apply(to: label)
         label.translatesAutoresizingMaskIntoConstraints = false
         label.text = text
         addSubview(label)

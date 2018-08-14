@@ -31,7 +31,7 @@ final class DetailMemoTableViewCell: BondTableViewCell {
         super.awakeFromNib()
         
         Style.textField().apply(to: textField)
-        Style.label().apply(to: titleLabel)
+        Style.Label.custom().apply(to: titleLabel)
         titleLabel.font = DetailCellType.titleFont
         textField.font = DetailCellType.dataFont
         

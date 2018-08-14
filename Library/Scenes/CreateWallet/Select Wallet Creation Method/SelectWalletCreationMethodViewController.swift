@@ -59,7 +59,7 @@ final class SelectWalletCreationMethodViewController: UIViewController {
         tableView.isScrollEnabled = false
         tableView.registerCell(SelectWalletCreationMethodTableViewCell.self)
         tableView.backgroundColor = UIColor.zap.deepSeaBlue
-        tableView.separatorColor = UIColor.zap.warmGrey
+        tableView.separatorColor = UIColor.zap.gray
         
         navigationController?.navigationBar.barTintColor = UIColor.zap.deepSeaBlue
     }
@@ -104,7 +104,7 @@ extension SelectWalletCreationMethodViewController: UITableViewDataSource {
             let cell = UITableViewCell(style: .default, reuseIdentifier: "default")
             cell.backgroundColor = UIColor.zap.seaBlue
             if let label = cell.textLabel {
-                Style.label().apply(to: label)
+                Style.Label.custom().apply(to: label)
                 label.font = label.font.withSize(14)
                 label.text = "scene.select_wallet_connection.create.help".localized
                 label.textColor = .white

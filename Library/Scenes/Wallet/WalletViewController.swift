@@ -31,7 +31,7 @@ final class WalletViewController: UIViewController {
     @IBOutlet private weak var networkLabel: PaddingLabel! {
         didSet {
             networkLabel.edgeInsets = UIEdgeInsets(top: 5, left: 10, bottom: 5, right: 10)
-            Style.label().apply(to: networkLabel)
+            Style.Label.custom().apply(to: networkLabel)
             networkLabel.layer.cornerRadius = 10
             networkLabel.clipsToBounds = true
             networkLabel.backgroundColor = UIColor.zap.lightGreen
@@ -89,9 +89,13 @@ final class WalletViewController: UIViewController {
             requestButton.layoutIfNeeded()
         }
         
-        Style.label(color: .gray).apply(to: exchangeRateLabel)
-        Style.label(color: .gray, fontSize: 25, alignment: .center).apply(to: secondaryBalanceLabel)
-        Style.label(color: .white, fontSize: 45, alignment: .center).apply(to: primaryBalanceLabel)
+        Style.Label.body.apply(to: exchangeRateLabel)
+        exchangeRateLabel.textColor = UIColor.zap.gray
+        Style.Label.body.apply(to: secondaryBalanceLabel)
+        secondaryBalanceLabel.textColor = UIColor.zap.gray
+        secondaryBalanceLabel.textAlignment = .center
+        Style.Label.title.apply(to: primaryBalanceLabel)
+        primaryBalanceLabel.textAlignment = .center
         
         Settings.shared.fiatCurrency
             .map { $0.format(satoshis: 100_000_000) }

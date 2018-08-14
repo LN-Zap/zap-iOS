@@ -39,7 +39,7 @@ final class ConnectCellBond: TableViewBinder<Observable2DArray<String?, ConnectR
             cell.backgroundColor = UIColor.zap.seaBlue
 
             if let cellTextLabel = cell.textLabel {
-                Style.label().apply(to: cellTextLabel)
+                Style.Label.custom().apply(to: cellTextLabel)
                 cellTextLabel.textColor = .white
             }
             
@@ -107,7 +107,7 @@ final class ConnectRemoteNodeViewController: UIViewController {
         
         tableView.delegate = self
         tableView.backgroundColor = UIColor.zap.deepSeaBlue
-        tableView.separatorColor = UIColor.zap.warmGrey
+        tableView.separatorColor = UIColor.zap.gray
         tableView.reactive.dataSource.forwardTo = self
                 
         connectRemoteNodeViewModel?.dataSource
@@ -219,7 +219,6 @@ extension ConnectRemoteNodeViewController: UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, willDisplayHeaderView view: UIView, forSection section: Int) {
         guard let view = view as? UITableViewHeaderFooterView else { return }
-        view.textLabel?.font = UIFont.zap.light
         view.textLabel?.text = connectRemoteNodeViewModel?.dataSource[section].metadata
     }
 }

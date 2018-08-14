@@ -15,7 +15,7 @@ class HeaderTableViewCell: UITableViewCell {
         
         backgroundColor = .clear
         selectionStyle = .none
-        Style.label().apply(to: headerLabel)
+        Style.Label.custom().apply(to: headerLabel)
         headerLabel.textColor = .white
     }
     

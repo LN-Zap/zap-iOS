@@ -60,7 +60,7 @@ final class ConfirmMnemonicCollectionViewCell: UICollectionViewCell {
             (Environment.allowFakeMnemonicConfirmation && sender.text == "xx") {
             wordConfirmedCallback?()
         } else {
-            bottomLineView.backgroundColor = UIColor.zap.tomato
+            bottomLineView.backgroundColor = UIColor.zap.superRed
         }
     }
 }

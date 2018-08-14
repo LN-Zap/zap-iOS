@@ -25,7 +25,7 @@ final class CertificateDetailViewController: UITableViewController {
         
         tableView.rowHeight = UITableViewAutomaticDimension
         tableView.backgroundColor = UIColor.zap.deepSeaBlue
-        tableView.separatorColor = UIColor.zap.warmGrey
+        tableView.separatorColor = UIColor.zap.gray
         tableView.estimatedRowHeight = 300
         tableView.registerCell(CertificateDetailCell.self)
     }
@@ -59,7 +59,6 @@ final class CertificateDetailViewController: UITableViewController {
     
     override func tableView(_ tableView: UITableView, willDisplayHeaderView view: UIView, forSection section: Int) {
         guard let view = view as? UITableViewHeaderFooterView else { return }
-        view.textLabel?.font = UIFont.zap.light
         view.textLabel?.text = view.textLabel?.text?.capitalized
     }
 }

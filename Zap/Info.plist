@@ -47,12 +47,6 @@
 	<string>$(PRODUCT_NAME) requires access to your phone’s camera.</string>
 	<key>NSFaceIDUsageDescription</key>
 	<string>$(PRODUCT_NAME) requires access to Face ID.</string>
-	<key>UIAppFonts</key>
-	<array>
-		<string>Roboto-Light.ttf</string>
-		<string>Roboto-Regular.ttf</string>
-		<string>Roboto-Bold.ttf</string>
-	</array>
 	<key>UIApplicationShortcutItems</key>
 	<array>
 		<dict>

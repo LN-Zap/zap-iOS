@@ -30,7 +30,7 @@ final class OpenChannelViewController: UIViewController, QRCodeScannerChildViewC
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        Style.label().apply(to: helpLabel)
+        Style.Label.custom().apply(to: helpLabel)
         
         helpImageView.tintColor = UIColor.zap.black
         helpLabel.text = "scene.open_channel.help_label".localized

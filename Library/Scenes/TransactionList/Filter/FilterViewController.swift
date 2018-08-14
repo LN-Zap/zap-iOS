@@ -48,7 +48,7 @@ final class FilterViewController: UIViewController {
         
         tableView.allowsSelection = false
         tableView.backgroundColor = UIColor.zap.deepSeaBlue
-        tableView.separatorColor = UIColor.zap.warmGrey
+        tableView.separatorColor = UIColor.zap.gray
     }
     
     @IBAction private func dismissFilterViewController(_ sender: Any) {
@@ -86,7 +86,6 @@ extension FilterViewController: UITableViewDataSource {
 extension FilterViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, willDisplayHeaderView view: UIView, forSection section: Int) {
         guard let view = view as? UITableViewHeaderFooterView else { return }
-        view.textLabel?.font = UIFont.zap.light
         view.textLabel?.text = view.textLabel?.text?.capitalized
     }
 }

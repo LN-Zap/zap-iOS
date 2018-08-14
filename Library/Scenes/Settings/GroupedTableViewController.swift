@@ -17,7 +17,7 @@ class GroupedTableViewController: UITableViewController {
         super.init(style: .grouped)
         
         tableView.backgroundColor = UIColor.zap.deepSeaBlue
-        tableView.separatorColor = UIColor.zap.warmGrey
+        tableView.separatorColor = UIColor.zap.gray
         tableView.rowHeight = 76
     }
     
@@ -44,7 +44,6 @@ class GroupedTableViewController: UITableViewController {
         if let item = item as? SubtitleSettingsItem {
             cell = UITableViewCell(style: .value1, reuseIdentifier: "Value1SettingsCell")
             if let detailLabel = cell.detailTextLabel {
-                detailLabel.font = UIFont.zap.light
                 item.subtitle
                     .bind(to: detailLabel.reactive.text)
                     .dispose(in: reactive.bag)
@@ -54,7 +53,6 @@ class GroupedTableViewController: UITableViewController {
         }
         
         cell.textLabel?.text = item.title
-        cell.textLabel?.font = UIFont.zap.light
         cell.textLabel?.textColor = .white
         cell.backgroundColor = UIColor.zap.seaBlue
 
@@ -81,13 +79,11 @@ class GroupedTableViewController: UITableViewController {
     
     override func tableView(_ tableView: UITableView, willDisplayHeaderView view: UIView, forSection section: Int) {
         guard let view = view as? UITableViewHeaderFooterView else { return }
-        view.textLabel?.font = UIFont.zap.light
         view.textLabel?.text = sections[section].title
     }
     
     override func tableView(_ tableView: UITableView, willDisplayFooterView view: UIView, forSection section: Int) {
         guard let view = view as? UITableViewHeaderFooterView else { return }
-        view.textLabel?.font = UIFont.zap.light.withSize(13)
         view.textLabel?.textAlignment = .center
     }
 }

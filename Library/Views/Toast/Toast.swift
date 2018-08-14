@@ -54,10 +54,10 @@ final class Toast: UIView {
             backgroundColor = .white
             messageLabel?.textColor = UIColor.zap.deepSeaBlue
         case .error:
-            backgroundColor = UIColor.zap.tomato
+            backgroundColor = UIColor.zap.superRed
             messageLabel?.textColor = .white
         case .success:
-            backgroundColor = UIColor.zap.nastyGreen
+            backgroundColor = UIColor.zap.superGreen
             messageLabel?.textColor = .white
         }
         

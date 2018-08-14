@@ -42,7 +42,7 @@ final class SyncViewController: UIViewController {
         view.backgroundColor = UIColor.zap.seaBlue
         
         gradientView.direction = .diagonal
-        Style.label().apply(to: syncLabel, dateLabel, descriptionLabel)
+        Style.Label.custom().apply(to: syncLabel, dateLabel, descriptionLabel)
         syncLabel.font = syncLabel.font.withSize(24)
         descriptionLabel.font = descriptionLabel.font.withSize(16)
         dateLabel.font = dateLabel.font.withSize(12)

@@ -127,7 +127,7 @@ public final class AmountInputView: UIControl {
     private func updateValidityIndicator() {
         if formattedAmount != nil,
             let range = validRange {
-            amountTextField.textColor = range.contains(satoshis) ? UIColor.zap.black : UIColor.zap.tomato
+            amountTextField.textColor = range.contains(satoshis) ? UIColor.zap.black : UIColor.zap.superRed
         }
     }
 }

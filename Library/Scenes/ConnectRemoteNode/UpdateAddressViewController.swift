@@ -32,7 +32,7 @@ final class UpdateAddressViewController: UITableViewController {
         addressTextField.text = connectRemoteNodeViewModel?.remoteNodeConfiguration?.url.absoluteString
         addressTextField.becomeFirstResponder()
 
-        tableView.separatorColor = UIColor.zap.warmGrey
+        tableView.separatorColor = UIColor.zap.gray
 
         Style.textField().apply(to: addressTextField)
         addressTextField.textColor = .white
