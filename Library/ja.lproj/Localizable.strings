@@ -76,14 +76,14 @@
 "scene.channels.close.title" = "チャンネルを閉鎖";
 "scene.channels.close.message" = "ノード %@ とチャネルを本当に終了しますか。";
 "scene.channels.force_close.title" = "チャンネルの強制終了";
-"scene.channels.force_close.message" = "%@ is offline, are you sure you want to force close this channel? You’d have to wait about %@ for your funds?";
-"scene.channels.alert.cancel" = "Cancel";
-"scene.channels.alert.close" = "Close";
-"scene.channels.alert.force_close" = "Force Close";
-"scene.channels.row_action.close" = "Close Channel";
-"scene.channels.close_success.toast" = "Channel is closing.";
+"scene.channels.force_close.message" = "%@ はオフラインですが、このチャネルを強制終了してもよろしいですか。あなたの資金の %@ に関して待たなければなりません。";
+"scene.channels.alert.cancel" = "キャンセル";
+"scene.channels.alert.close" = "閉鎖";
+"scene.channels.alert.force_close" = "強制閉鎖";
+"scene.channels.row_action.close" = "チャンネルを閉鎖";
+"scene.channels.close_success.toast" = "チャネルは閉じています。";
 
-"scene.open_channel.title" = "Open Channel";
+"scene.open_channel.title" = "チャンネルを開く";
 "scene.open_channel.help_label" = "Fund connection";
 "scene.open_channel.add_button" = "Add";
 
