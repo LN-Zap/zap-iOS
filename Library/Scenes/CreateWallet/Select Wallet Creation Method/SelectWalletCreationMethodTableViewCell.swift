@@ -20,7 +20,7 @@ final class SelectWalletCreationMethodTableViewCell: UITableViewCell {
     override func awakeFromNib() {
         super.awakeFromNib()
         
-        backgroundColor = UIColor.zap.seaBlue
+        backgroundColor = UIColor.Zap.seaBlue
         
         accessoryType = .disclosureIndicator
 

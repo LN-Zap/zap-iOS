@@ -24,7 +24,7 @@ final class TransactionTableViewCell: BondTableViewCell {
                 .map { $0.flatMap { $0 > 0 } ?? false }
             
             [isPositive.map({ !$0 }).bind(to: positiveAmountBackgroundView.reactive.isHidden),
-             isPositive.map({ $0 ? UIColor.zap.black : .white }).bind(to: primaryAmountLabel.reactive.textColor),
+             isPositive.map({ $0 ? UIColor.Zap.black : .white }).bind(to: primaryAmountLabel.reactive.textColor),
              transactionViewModel.icon.map({ $0.image }).bind(to: iconImageView.reactive.image),
              transactionViewModel.displayText.bind(to: titleLabel.reactive.text),
              transactionViewModel.amount.bind(to: primaryAmountLabel.reactive.text, currency: Settings.shared.primaryCurrency),
@@ -32,7 +32,7 @@ final class TransactionTableViewCell: BondTableViewCell {
                 .map { $0?.absoluteValue() }
                 .bind(to: secondaryAmountLabel.reactive.text, currency: Settings.shared.secondaryCurrency),
              transactionViewModel.annotation
-                .map { $0.isHidden ? UIColor.zap.superRed.withAlphaComponent(0.1) : UIColor.clear }
+                .map { $0.isHidden ? UIColor.Zap.superRed.withAlphaComponent(0.1) : UIColor.clear }
                 .bind(to: reactive.backgroundColor)]
                 .dispose(in: onReuseBag)
     

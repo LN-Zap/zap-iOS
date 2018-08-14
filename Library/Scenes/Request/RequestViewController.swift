@@ -46,15 +46,15 @@ final class RequestViewController: UIViewController, KeyboardAdjustable {
 
         lightningButton.isSelected = true
         
-        segmentedControlBackgroundView.backgroundColor = UIColor.zap.white
+        segmentedControlBackgroundView.backgroundColor = UIColor.Zap.white
         
         gradientLoadingButtonView.title = "scene.request.generate_request_button".localized
         
         placeholderTextView.text = "scene.request.memo_placeholder".localized
-        placeholderTextView.font = UIFont.zap.light.withSize(14)
-        placeholderTextView.textColor = UIColor.zap.lightGrey
-        memoTextView.font = UIFont.zap.light.withSize(14)
-        memoTextView.textColor = UIColor.zap.black
+        placeholderTextView.font = UIFont.Zap.light.withSize(14)
+        placeholderTextView.textColor = UIColor.Zap.lightGrey
+        memoTextView.font = UIFont.Zap.light.withSize(14)
+        memoTextView.textColor = UIColor.Zap.black
         memoTextView.delegate = self
         
         memoTextView.reactive.text

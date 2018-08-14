@@ -73,14 +73,14 @@ final class QRCodeScannerViewController: UIViewController, ContainerViewControll
                 
         Style.button().apply(to: pasteButton)
         
-        Style.button(backgroundColor: UIColor.zap.deepSeaBlue).apply(to: pasteButton)
+        Style.button(backgroundColor: UIColor.Zap.deepSeaBlue).apply(to: pasteButton)
         
         navigationController?.navigationBar.backgroundColor = .clear
         navigationController?.navigationBar.shadowImage = UIImage()
         navigationController?.navigationBar.setBackgroundImage(UIImage(), for: .default)
 
         scannerViewOverlay.alpha = 0
-        qrCodeSuccessImageView.tintColor = UIColor.zap.superGreen
+        qrCodeSuccessImageView.tintColor = UIColor.Zap.superGreen
     }
     
     func tryPresentingViewController(for address: String) {

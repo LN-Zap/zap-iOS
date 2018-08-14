@@ -31,9 +31,9 @@ final class DetailDestructiveActionTableViewCell: UITableViewCell {
             destructiveActionButton.setTitle(info.title, for: .normal)
             
             if case .unarchiveTransaction = info.type {
-                destructiveActionButton.tintColor = UIColor.zap.superGreen
+                destructiveActionButton.tintColor = UIColor.Zap.superGreen
             } else {
-                destructiveActionButton.tintColor = UIColor.zap.superRed
+                destructiveActionButton.tintColor = UIColor.Zap.superRed
             }
             
             setActivityIndicator(hidden: true)

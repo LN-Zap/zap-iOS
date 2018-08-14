@@ -11,7 +11,7 @@ extension UIView {
     func addBackgroundGradient() {
         let backgroundGradientView = GradientView()
         backgroundGradientView.direction = .vertical
-        backgroundGradientView.gradient = [UIColor.zap.seaBlueGradient, UIColor.zap.seaBlue]
+        backgroundGradientView.gradient = [UIColor.Zap.seaBlueGradient, UIColor.Zap.seaBlue]
         backgroundGradientView.translatesAutoresizingMaskIntoConstraints = false
         
         addSubview(backgroundGradientView)

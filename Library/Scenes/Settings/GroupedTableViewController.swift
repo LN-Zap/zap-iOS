@@ -16,8 +16,8 @@ class GroupedTableViewController: UITableViewController {
 
         super.init(style: .grouped)
         
-        tableView.backgroundColor = UIColor.zap.deepSeaBlue
-        tableView.separatorColor = UIColor.zap.gray
+        tableView.backgroundColor = UIColor.Zap.deepSeaBlue
+        tableView.separatorColor = UIColor.Zap.gray
         tableView.rowHeight = 76
     }
     
@@ -54,13 +54,13 @@ class GroupedTableViewController: UITableViewController {
         
         cell.textLabel?.text = item.title
         cell.textLabel?.textColor = .white
-        cell.backgroundColor = UIColor.zap.seaBlue
+        cell.backgroundColor = UIColor.Zap.seaBlue
 
         if let item = item as? SelectableSettingsItem {
             item.isSelectedOption
                 .observeNext {
                     cell.accessoryType = $0 ? .checkmark : .none
-                    cell.textLabel?.textColor = $0 ? UIColor.zap.lightningOrange : .white
+                    cell.textLabel?.textColor = $0 ? UIColor.Zap.lightningOrange : .white
                 }
                 .dispose(in: reactive.bag)
         } else if item is DetailDisclosureSettingsItem {

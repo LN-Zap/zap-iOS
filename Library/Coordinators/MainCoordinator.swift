@@ -110,8 +110,8 @@ final class MainCoordinator: Routing {
     
     private func presentSafariViewController(for url: URL) {
         let safariViewController = SFSafariViewController(url: url)
-        safariViewController.preferredBarTintColor = UIColor.zap.deepSeaBlue
-        safariViewController.preferredControlTintColor = UIColor.zap.lightningOrange
+        safariViewController.preferredBarTintColor = UIColor.Zap.deepSeaBlue
+        safariViewController.preferredControlTintColor = UIColor.Zap.lightningOrange
         (detailViewController ?? rootViewController).present(safariViewController, animated: true)
     }
     

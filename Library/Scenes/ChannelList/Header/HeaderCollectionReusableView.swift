@@ -21,7 +21,7 @@ class HeaderCollectionReusableView: UICollectionReusableView {
     override func awakeFromNib() {
         super.awakeFromNib()
         
-        titleLabel.font = UIFont.zap.light.withSize(30)
+        titleLabel.font = UIFont.Zap.light.withSize(30)
         titleLabel.textColor = .white
         titleLabel.text = "Network"
     }

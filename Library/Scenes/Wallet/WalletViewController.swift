@@ -34,7 +34,7 @@ final class WalletViewController: UIViewController {
             Style.Label.custom().apply(to: networkLabel)
             networkLabel.layer.cornerRadius = 10
             networkLabel.clipsToBounds = true
-            networkLabel.backgroundColor = UIColor.zap.lightGreen
+            networkLabel.backgroundColor = UIColor.Zap.lightGreen
             networkLabel.text = Network.testnet.localized
         }
     }
@@ -48,20 +48,20 @@ final class WalletViewController: UIViewController {
     @IBOutlet private weak var backgroundGradientView: GradientView! {
         didSet {
             backgroundGradientView.direction = .vertical
-            backgroundGradientView.gradient = [UIColor.zap.seaBlueGradient, UIColor.zap.seaBlue]
+            backgroundGradientView.gradient = [UIColor.Zap.seaBlueGradient, UIColor.Zap.seaBlue]
         }
     }
     @IBOutlet private weak var primaryBalanceLabel: UILabel!
     @IBOutlet private weak var sendButtonBackground: UIView! {
         didSet {
-            sendButtonBackground.backgroundColor = UIColor.zap.deepSeaBlue
+            sendButtonBackground.backgroundColor = UIColor.Zap.deepSeaBlue
             sendButtonBackground.layer.cornerRadius = 40
             sendButtonBackground.layer.maskedCorners = [.layerMinXMinYCorner, .layerMinXMaxYCorner]
         }
     }
     @IBOutlet private weak var receiveButtonBackground: UIView! {
         didSet {
-            receiveButtonBackground.backgroundColor = UIColor.zap.deepSeaBlue
+            receiveButtonBackground.backgroundColor = UIColor.Zap.deepSeaBlue
             receiveButtonBackground.layer.cornerRadius = 40
             receiveButtonBackground.layer.maskedCorners = [.layerMaxXMaxYCorner, .layerMaxXMinYCorner]
         }
@@ -90,9 +90,9 @@ final class WalletViewController: UIViewController {
         }
         
         Style.Label.body.apply(to: exchangeRateLabel)
-        exchangeRateLabel.textColor = UIColor.zap.gray
+        exchangeRateLabel.textColor = UIColor.Zap.gray
         Style.Label.body.apply(to: secondaryBalanceLabel)
-        secondaryBalanceLabel.textColor = UIColor.zap.gray
+        secondaryBalanceLabel.textColor = UIColor.Zap.gray
         secondaryBalanceLabel.textAlignment = .center
         Style.Label.title.apply(to: primaryBalanceLabel)
         primaryBalanceLabel.textAlignment = .center

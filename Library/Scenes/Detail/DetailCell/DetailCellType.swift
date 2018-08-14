@@ -19,8 +19,8 @@ enum DetailCellType {
     case timer(DetailTimerTableViewCell.Info)
     case transactionHash(DetailBlockExplorerTableViewCell.Info)
 
-    static var titleFont = UIFont.zap.regular.withSize(14)
-    static var dataFont = UIFont.zap.light.withSize(14)
+    static var titleFont = UIFont.Zap.regular.withSize(14)
+    static var dataFont = UIFont.Zap.light.withSize(14)
     
     static func blockExplorerCell(title: String, code: String, type: BlockExplorer.CodeType) -> DetailCellType {
         let info = DetailBlockExplorerTableViewCell.Info(title: title, code: code, type: type)

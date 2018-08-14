@@ -33,7 +33,7 @@ final class ChannelListViewController: UIViewController {
     @IBOutlet private weak var backgroundGradientView: GradientView! {
         didSet {
             backgroundGradientView.direction = .vertical
-            backgroundGradientView.gradient = [UIColor.zap.seaBlueGradient, UIColor.zap.seaBlue]
+            backgroundGradientView.gradient = [UIColor.Zap.seaBlueGradient, UIColor.Zap.seaBlue]
         }
     }
     @IBOutlet private weak var collectionView: ChannelCollectionView!

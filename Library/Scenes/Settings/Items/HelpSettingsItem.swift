@@ -15,8 +15,8 @@ final class HelpSettingsItem: SettingsItem {
         guard let url = URL(string: "link.help".localized) else { return }
         
         let safariViewController = SFSafariViewController(url: url)
-        safariViewController.preferredBarTintColor = UIColor.zap.deepSeaBlue
-        safariViewController.preferredControlTintColor = UIColor.zap.lightningOrange
+        safariViewController.preferredBarTintColor = UIColor.Zap.deepSeaBlue
+        safariViewController.preferredControlTintColor = UIColor.Zap.lightningOrange
         fromViewController.present(safariViewController, animated: true)
     }
 }

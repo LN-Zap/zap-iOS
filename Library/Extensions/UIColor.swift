@@ -8,8 +8,7 @@
 import UIKit
 
 public extension UIColor {
-    // swiftlint:disable:next type_name
-    public enum zap {
+    public enum Zap {
         public static let black = color("black")
         public static let white = color("white")
         public static let gray = color("gray")
@@ -63,7 +62,7 @@ public extension UIColor {
         var smallestDistance: CGFloat = CGFloat.greatestFiniteMagnitude
         var closestColor = UIColor.black
         
-        for color in UIColor.zap.validNodeColors {
+        for color in UIColor.Zap.validNodeColors {
             let distance = self.distance(to: color)
             if distance < smallestDistance {
                 smallestDistance = distance

@@ -24,15 +24,15 @@ final class UpdateAddressViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        view.backgroundColor = UIColor.zap.deepSeaBlue
-        addressCell.backgroundColor = UIColor.zap.seaBlue
+        view.backgroundColor = UIColor.Zap.deepSeaBlue
+        addressCell.backgroundColor = UIColor.Zap.seaBlue
         
         title = "scene.connect_remote_node.edit_url.title".localized
         
         addressTextField.text = connectRemoteNodeViewModel?.remoteNodeConfiguration?.url.absoluteString
         addressTextField.becomeFirstResponder()
 
-        tableView.separatorColor = UIColor.zap.gray
+        tableView.separatorColor = UIColor.Zap.gray
 
         Style.textField().apply(to: addressTextField)
         addressTextField.textColor = .white

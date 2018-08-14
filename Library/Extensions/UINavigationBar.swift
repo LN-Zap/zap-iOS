@@ -16,11 +16,11 @@ extension UINavigationBar {
     var titleTextStyle: TitleTextStyle {
         get {
             guard let color = titleTextAttributes?[.foregroundColor] as? UIColor else { return .light }
-            return color == UIColor.zap.black ? .dark : .light
+            return color == UIColor.Zap.black ? .dark : .light
         }
         set {
-            let newColor = newValue == .light ? UIColor.white : UIColor.zap.black
-            titleTextAttributes = [.font: UIFont.zap.light.withSize(20), .foregroundColor: newColor]
+            let newColor = newValue == .light ? UIColor.white : UIColor.Zap.black
+            titleTextAttributes = [.font: UIFont.Zap.light.withSize(20), .foregroundColor: newColor]
         }
     }
 }

@@ -16,11 +16,11 @@ final class ChannelDetailConfiguration {
     var elements: [StackViewElement] {
         let verifiedColor = channelViewModel.color.value.verified
 
-        let textColor = verifiedColor.isLight ? UIColor.zap.black : UIColor.zap.white
+        let textColor = verifiedColor.isLight ? UIColor.Zap.black : UIColor.Zap.white
         
         let labelStyle = Style.Label.custom(color: textColor, fontSize: 14)
-        let textStyle = Style.Label.custom(color: textColor, font: UIFont.zap.regular, fontSize: 14)
-        let rightAlignedTextStyle = Style.Label.custom(color: textColor, font: UIFont.zap.regular, fontSize: 14, alignment: .right)
+        let textStyle = Style.Label.custom(color: textColor, font: UIFont.Zap.regular, fontSize: 14)
+        let rightAlignedTextStyle = Style.Label.custom(color: textColor, font: UIFont.Zap.regular, fontSize: 14, alignment: .right)
 
         var elements = [StackViewElement]()
         
@@ -59,12 +59,12 @@ final class ChannelDetailConfiguration {
         elements.append(.verticalStackView(content: [
             .custom(view: balanceView, height: 10),
             .horizontalStackView(content: [
-                .custom(view: circleIndicatorView(gradient: [UIColor.zap.lightningOrange, UIColor.zap.lightningOrangeGradient]), height: horizontalStackViewHeight),
+                .custom(view: circleIndicatorView(gradient: [UIColor.Zap.lightningOrange, UIColor.Zap.lightningOrangeGradient]), height: horizontalStackViewHeight),
                 .label(text: "scene.channel_detail.local_balance_label".localized + ":", style: labelStyle),
                 .amountLabel(amount: channelViewModel.channel.localBalance, style: rightAlignedTextStyle)
             ]),
             .horizontalStackView(content: [
-                .custom(view: circleIndicatorView(gradient: [UIColor.zap.seaBlue, UIColor.zap.seaBlueGradient]), height: horizontalStackViewHeight),
+                .custom(view: circleIndicatorView(gradient: [UIColor.Zap.seaBlue, UIColor.Zap.seaBlueGradient]), height: horizontalStackViewHeight),
                 .label(text: "scene.channel_detail.remote_balance_label".localized + ":", style: labelStyle),
                 .amountLabel(amount: channelViewModel.channel.remoteBalance, style: rightAlignedTextStyle)
             ])

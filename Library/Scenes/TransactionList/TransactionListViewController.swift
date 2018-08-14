@@ -49,7 +49,7 @@ final class TransactionListViewController: UIViewController {
         searchController.searchResultsUpdater = self
         navigationItem.searchController = searchController
 
-        Style.Label.custom(color: UIColor.zap.white).apply(to: emptyStateLabel)
+        Style.Label.custom(color: UIColor.Zap.white).apply(to: emptyStateLabel)
         emptyStateLabel.text = "scene.transactions.empty_state_label".localized
         
         tableView.rowHeight = 66
@@ -110,9 +110,9 @@ extension TransactionListViewController: UITableViewDelegate {
         if let transactionListViewModel = transactionListViewModel,
             case .cell(let transactionViewModel) = transactionListViewModel.dataSource.item(at: indexPath.row) {
             if transactionViewModel.annotation.value.isHidden {
-                return [archiveAction(title: "scene.transactions.row_action.unarchive".localized, color: UIColor.zap.superGreen, setHidden: false)]
+                return [archiveAction(title: "scene.transactions.row_action.unarchive".localized, color: UIColor.Zap.superGreen, setHidden: false)]
             } else {
-                return [archiveAction(title: "scene.transactions.row_action.archive".localized, color: UIColor.zap.superRed, setHidden: true)]
+                return [archiveAction(title: "scene.transactions.row_action.archive".localized, color: UIColor.Zap.superRed, setHidden: true)]
             }
         }
         return []

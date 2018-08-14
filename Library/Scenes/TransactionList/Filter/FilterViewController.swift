@@ -16,7 +16,7 @@ extension UIStoryboard {
         
         let navigationController = ModalNavigationController(rootViewController: viewController, size: size)
         
-        navigationController.navigationBar.backgroundColor = UIColor.zap.seaBlueGradient
+        navigationController.navigationBar.backgroundColor = UIColor.Zap.seaBlueGradient
         navigationController.navigationBar.shadowImage = UIImage()
         navigationController.navigationBar.setBackgroundImage(UIImage(), for: .default)
 
@@ -47,8 +47,8 @@ final class FilterViewController: UIViewController {
         title = "scene.filter.title".localized
         
         tableView.allowsSelection = false
-        tableView.backgroundColor = UIColor.zap.deepSeaBlue
-        tableView.separatorColor = UIColor.zap.gray
+        tableView.backgroundColor = UIColor.Zap.deepSeaBlue
+        tableView.separatorColor = UIColor.Zap.gray
     }
     
     @IBAction private func dismissFilterViewController(_ sender: Any) {

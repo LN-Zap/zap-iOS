@@ -21,7 +21,7 @@ public final class RootCoordinator: NSObject, SetupCoordinatorDelegate, PinCoord
         rootViewModel = RootViewModel()
         
         window.rootViewController = self.rootViewController
-        window.tintColor = UIColor.zap.lightningOrange
+        window.tintColor = UIColor.Zap.lightningOrange
         Appearance.setup()
         
         rootViewModel.start()
@@ -80,7 +80,7 @@ public final class RootCoordinator: NSObject, SetupCoordinatorDelegate, PinCoord
         guard let lightningService = rootViewModel.lightningService else { return }
         
         let tabBarController = UITabBarController()
-        tabBarController.tabBar.barTintColor = UIColor.zap.deepSeaBlue
+        tabBarController.tabBar.barTintColor = UIColor.Zap.deepSeaBlue
         tabBarController.tabBar.isTranslucent = false
         tabBarController.tabBar.shadowImage = UIImage()
         tabBarController.tabBar.backgroundImage = UIImage()

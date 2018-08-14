@@ -36,7 +36,7 @@ final class ChannelViewModel {
         
         name = Observable(channel.remotePubKey)
         state = Observable(channel.state)
-        color = Observable(UIColor.zap.lightningOrange)
+        color = Observable(UIColor.Zap.lightningOrange)
         
         nodeStore.node(for: channel.remotePubKey) { [name, color] in
             if let alias = $0?.alias {

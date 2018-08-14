@@ -36,7 +36,7 @@ final class ConnectCellBond: TableViewBinder<Observable2DArray<String?, ConnectR
 
             cell.imageView?.image = nil
             cell.imageView?.tintColor = .white
-            cell.backgroundColor = UIColor.zap.seaBlue
+            cell.backgroundColor = UIColor.Zap.seaBlue
 
             if let cellTextLabel = cell.textLabel {
                 Style.Label.custom().apply(to: cellTextLabel)
@@ -73,7 +73,7 @@ final class ConnectCellBond: TableViewBinder<Observable2DArray<String?, ConnectR
             cell = dequeueCell(for: tableView, style: .default)
             cell.textLabel?.text = "scene.connect_remote_node.connect_button".localized
             cell.textLabel?.textAlignment = .center
-            cell.textLabel?.textColor = UIColor.zap.lightningOrange
+            cell.textLabel?.textColor = UIColor.Zap.lightningOrange
         case .scan:
             cell = dequeueCell(for: tableView, style: .default)
             cell.textLabel?.text = "scene.connect_remote_node.scan_button".localized
@@ -106,8 +106,8 @@ final class ConnectRemoteNodeViewController: UIViewController {
         title = "scene.connect_remote_node.title".localized
         
         tableView.delegate = self
-        tableView.backgroundColor = UIColor.zap.deepSeaBlue
-        tableView.separatorColor = UIColor.zap.gray
+        tableView.backgroundColor = UIColor.Zap.deepSeaBlue
+        tableView.separatorColor = UIColor.Zap.gray
         tableView.reactive.dataSource.forwardTo = self
                 
         connectRemoteNodeViewModel?.dataSource
@@ -125,8 +125,8 @@ final class ConnectRemoteNodeViewController: UIViewController {
         guard let url = URL(string: "link.help.zapconnect".localized) else { return }
         
         let safariViewController = SFSafariViewController(url: url)
-        safariViewController.preferredBarTintColor = UIColor.zap.deepSeaBlue
-        safariViewController.preferredControlTintColor = UIColor.zap.lightningOrange
+        safariViewController.preferredBarTintColor = UIColor.Zap.deepSeaBlue
+        safariViewController.preferredControlTintColor = UIColor.Zap.lightningOrange
         present(safariViewController, animated: true, completion: nil)
     }
     

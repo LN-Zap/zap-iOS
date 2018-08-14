@@ -37,7 +37,7 @@ final class RecoverWalletViewModel {
         
         let attributestText = NSMutableAttributedString(string: text, attributes: [
             .foregroundColor: UIColor.white,
-            .font: UIFont.zap.light
+            .font: UIFont.Zap.light
         ])
         
         // TODO: highlight correct range
@@ -47,7 +47,7 @@ final class RecoverWalletViewModel {
                 let wordRange = text.range(of: word)
                 else { continue }
             let range = NSRange(wordRange, in: text)
-            attributestText.addAttributes([.foregroundColor: UIColor.zap.superRed], range: range)
+            attributestText.addAttributes([.foregroundColor: UIColor.Zap.superRed], range: range)
         }
         
         return attributestText
