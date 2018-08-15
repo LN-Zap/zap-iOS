@@ -7,6 +7,6 @@
 */
 
 "applicationShortcutItem.send" = "Send";
-"applicationShortcutItem.request" = "Receive";
-NSCameraUsageDescription = "Zap requires access to your phone’s camera.";
-NSFaceIDUsageDescription = "Zap requires access to Face ID.";
+"applicationShortcutItem.request" = "Modtag";
+"NSCameraUsageDescription" = "Zap kræver adgang til din telefons kamera.";
+"NSFaceIDUsageDescription" = "ZAP kræver adgang til Face ID.";

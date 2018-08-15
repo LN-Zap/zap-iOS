@@ -9,13 +9,13 @@
 "link.help" = "https://ln-zap.github.io/zap-tutorials/";
 "link.help.zapconnect" = "https://ln-zap.github.io/zap-tutorials/iOS-remote-node-setup";
 
-"error.wrong_uri_format" = "Unknown link format.";
-"error.wrong_uri_network" = "You tried opening a link for %@ but your node is connected to %@.";
-"error.block_explorer.unsupported_network" = "%@ does not support %@.";
+"error.wrong_uri_format" = "Formato link sconosciuto.";
+"error.wrong_uri_network" = "Hai tentato di aprire un collegamento a %@ ma il tuo nodo è connesso a %@.";
+"error.block_explorer.unsupported_network" = "%@ non supporta %@.";
 
-"rpc_connect_qrcode_error.btc_pay_expired" = "Looks like the code is expired.";
-"rpc_connect_qrcode_error.btc_pay_configuration_broken" = "Could not read BTCPay configurations file.";
-"rpc_connect_qrcode_error.cant_read_qrcode" = "Can't connect to this code.";
+"rpc_connect_qrcode_error.btc_pay_expired" = "Sembra che il codice sia scaduto.";
+"rpc_connect_qrcode_error.btc_pay_configuration_broken" = "Impossibile leggere il file di configurazione BTCPay.";
+"rpc_connect_qrcode_error.cant_read_qrcode" = "Impossibile connettersi a questo codice.";
 
 "channel.state.active" = "Online";
 "channel.state.inactive" = "Offline";
@@ -28,29 +28,29 @@
 
 "unit.bitcoin.btc" = "Bitcoin";
 "unit.bitcoin.mbtc" = "Milli Bitcoin";
-"unit.bitcoin.bit" = "Bits";
-"unit.bitcoin.satoshi" = "Satoshis";
+"unit.bitcoin.bit" = "Bit";
+"unit.bitcoin.satoshi" = "Satoshi";
 
-"transaction.open_channel.memo" = "Open Channel: %@";
-"transaction.close_channel.memo" = "%@ Channel: %@";
+"transaction.open_channel.memo" = "Canale aperto: %@";
+"transaction.close_channel.memo" = "%@ Canale: %@";
 
-"close_type.cooperative_close" = "Close";
-"close_type.local_force_close" = "Force Close";
-"close_type.remote_force_close" = "Remote Force Close";
-"close_type.breach_close" = "Breach Close";
+"close_type.cooperative_close" = "Chiusura";
+"close_type.local_force_close" = "Chiusura forzata";
+"close_type.remote_force_close" = "Chiusura Forzata Remota";
+"close_type.breach_close" = "Chiusura per Violazione";
 "close_type.funding_canceled" = "Funding Canceled";
-"close_type.unknown" = "Unknown Close";
+"close_type.unknown" = "Chiusura sconosciuta";
 
-"view.amount_input.placeholder" = "Amount";
+"view.amount_input.placeholder" = "Importo";
 
-"scene.transactions.title" = "Transactions";
-"scene.transactions.empty_state_label" = "0 transactions 🙁";
-"scene.transactions.row_action.archive" = "Archive";
+"scene.transactions.title" = "Transazioni";
+"scene.transactions.empty_state_label" = "🙁 0 transazioni";
+"scene.transactions.row_action.archive" = "Archivia";
 "scene.transactions.row_action.unarchive" = "Unarchive";
 
-"scene.settings.title" = "Settings";
-"scene.settings.section.wallet" = "Wallet";
-"scene.settings.item.bitcoin_unit" = "Bitcoin Unit";
+"scene.settings.title" = "Impostazioni";
+"scene.settings.section.wallet" = "Portafoglio";
+"scene.settings.item.bitcoin_unit" = "Unità di Bitcoin";
 "scene.settings.item.currency" = "Currency";
 "scene.settings.item.network" = "Network";
 "scene.settings.item.block_explorer" = "Block Explorer";

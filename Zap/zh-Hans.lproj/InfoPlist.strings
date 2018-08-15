@@ -6,7 +6,7 @@
   Copyright © 2018 Zap. All rights reserved.
 */
 
-"applicationShortcutItem.send" = "Send";
-"applicationShortcutItem.request" = "Receive";
-NSCameraUsageDescription = "Zap requires access to your phone’s camera.";
-NSFaceIDUsageDescription = "Zap requires access to Face ID.";
+"applicationShortcutItem.send" = "转账";
+"applicationShortcutItem.request" = "收款";
+"NSCameraUsageDescription" = "Zap 需要访问你手机的摄像头";
+"NSFaceIDUsageDescription" = "Zap需要访问人脸 ID。";

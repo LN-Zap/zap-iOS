@@ -9,19 +9,19 @@
 "link.help" = "https://ln-zap.github.io/zap-tutorials/";
 "link.help.zapconnect" = "https://ln-zap.github.io/zap-tutorials/iOS-remote-node-setup";
 
-"error.wrong_uri_format" = "Unknown link format.";
-"error.wrong_uri_network" = "You tried opening a link for %@ but your node is connected to %@.";
+"error.wrong_uri_format" = "Neznámý formát odkazu.";
+"error.wrong_uri_network" = "Pokusili jste se otevřít odkaz pro %@, ale Váš uzel je připojen k %@.";
 "error.block_explorer.unsupported_network" = "%@ does not support %@.";
 
 "rpc_connect_qrcode_error.btc_pay_expired" = "Looks like the code is expired.";
-"rpc_connect_qrcode_error.btc_pay_configuration_broken" = "Could not read BTCPay configurations file.";
+"rpc_connect_qrcode_error.btc_pay_configuration_broken" = "Nebylo možné načíst konfigurační soubor BTCPay.";
 "rpc_connect_qrcode_error.cant_read_qrcode" = "Can't connect to this code.";
 
 "channel.state.active" = "Online";
 "channel.state.inactive" = "Offline";
-"channel.state.opening" = "Opening";
-"channel.state.closing" = "Closing";
-"channel.state.force_closing" = "Force Closing";
+"channel.state.opening" = "Otevírání";
+"channel.state.closing" = "Zavírání";
+"channel.state.force_closing" = "Vynucené zavírání";
 
 "network.type.testnet" = "Testnet";
 "network.type.mainnet" = "Mainnet";
@@ -45,14 +45,14 @@
 
 "scene.transactions.title" = "Transactions";
 "scene.transactions.empty_state_label" = "0 transactions 🙁";
-"scene.transactions.row_action.archive" = "Archive";
+"scene.transactions.row_action.archive" = "Archivovat";
 "scene.transactions.row_action.unarchive" = "Unarchive";
 
-"scene.settings.title" = "Settings";
-"scene.settings.section.wallet" = "Wallet";
+"scene.settings.title" = "Nastavení";
+"scene.settings.section.wallet" = "Peněženka";
 "scene.settings.item.bitcoin_unit" = "Bitcoin Unit";
-"scene.settings.item.currency" = "Currency";
-"scene.settings.item.network" = "Network";
+"scene.settings.item.currency" = "Měna";
+"scene.settings.item.network" = "Síť";
 "scene.settings.item.block_explorer" = "Block Explorer";
 "scene.settings.item.lock_wallet" = "Lock Wallet";
 "scene.settings.item.on_chain_request_address.title" = "Bitcoin Address Type";
@@ -74,7 +74,7 @@
 
 "scene.channels.title" = "Channels";
 "scene.channels.close.title" = "Close Channel";
-"scene.channels.close.message" = "Do you really want to close the channel with node %@?";
+"scene.channels.close.message" = "Opravdu chcete uzavřít kanál s uzlem %@?";
 "scene.channels.force_close.title" = "Force Close Channel";
 "scene.channels.force_close.message" = "%@ is offline, are you sure you want to force close this channel? You’d have to wait about %@ for your funds?";
 "scene.channels.alert.cancel" = "Cancel";

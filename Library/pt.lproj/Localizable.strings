@@ -7,85 +7,85 @@
 */
 
 "link.help" = "https://ln-zap.github.io/zap-tutorials/";
-"link.help.zapconnect" = "https://ln-zap.github.io/zap-tutorials/iOS-remote-node-setup";
+"link.help.zapconnect" = "ligação.ajuda.zapconnect";
 
-"error.wrong_uri_format" = "不明なリンク形式です。";
-"error.wrong_uri_network" = "%@ のリンクを開こうとしましたが、 %@ にノードが接続されています。";
-"error.block_explorer.unsupported_network" = "%@ %@ をサポートしていません。";
+"error.wrong_uri_format" = "Formato de link desconhecido.";
+"error.wrong_uri_network" = "Tentou abrir um link para %@ mas o seu node está conectado a %@.";
+"error.block_explorer.unsupported_network" = "%@ does not support %@.";
 
-"rpc_connect_qrcode_error.btc_pay_expired" = "コードは期限切れのようです。";
-"rpc_connect_qrcode_error.btc_pay_configuration_broken" = "BTCPayの設定ファイルを読み取ることができません。";
-"rpc_connect_qrcode_error.cant_read_qrcode" = "このコードには接続できません。";
+"rpc_connect_qrcode_error.btc_pay_expired" = "O QR Code expirou.";
+"rpc_connect_qrcode_error.btc_pay_configuration_broken" = "Could not read BTCPay configurations file.";
+"rpc_connect_qrcode_error.cant_read_qrcode" = "Can't connect to this code.";
 
-"channel.state.active" = "オンライン";
-"channel.state.inactive" = "オフライン";
-"channel.state.opening" = "開放中。";
-"channel.state.closing" = "閉鎖中";
-"channel.state.force_closing" = "強制閉鎖";
+"channel.state.active" = "Online";
+"channel.state.inactive" = "Offline";
+"channel.state.opening" = "A abrir...";
+"channel.state.closing" = "A encerrar...";
+"channel.state.force_closing" = "Forçar o Encerramento";
 
-"network.type.testnet" = "テストネット";
-"network.type.mainnet" = "メインネット";
+"network.type.testnet" = "Testnet";
+"network.type.mainnet" = "Mainnet";
 
 "unit.bitcoin.btc" = "Bitcoin";
 "unit.bitcoin.mbtc" = "Milli Bitcoin";
 "unit.bitcoin.bit" = "Bits";
 "unit.bitcoin.satoshi" = "Satoshis";
 
-"transaction.open_channel.memo" = "開くチャンネル: %@";
-"transaction.close_channel.memo" = "%@ チャンネル: %@";
+"transaction.open_channel.memo" = "Abrir Canal: %@";
+"transaction.close_channel.memo" = "%@ Canal: %@";
 
-"close_type.cooperative_close" = "閉鎖";
-"close_type.local_force_close" = "強制閉鎖";
-"close_type.remote_force_close" = "リモートで強制閉鎖";
-"close_type.breach_close" = "違反閉鎖";
-"close_type.funding_canceled" = "資金調達はキャンセルされました。";
-"close_type.unknown" = "不明な閉鎖";
+"close_type.cooperative_close" = "Fechar";
+"close_type.local_force_close" = "Forçar Encerramento";
+"close_type.remote_force_close" = "Forçar Encerramento Remoto";
+"close_type.breach_close" = "Breach Close";
+"close_type.funding_canceled" = "Funding Canceled";
+"close_type.unknown" = "Encerramento Inesperado";
 
-"view.amount_input.placeholder" = "数量";
+"view.amount_input.placeholder" = "Quantidade";
 
-"scene.transactions.title" = "トランザクション";
-"scene.transactions.empty_state_label" = "0 トランザクション 🙁";
-"scene.transactions.row_action.archive" = "アーカイブ";
-"scene.transactions.row_action.unarchive" = "アーカイブしません";
+"scene.transactions.title" = "Transações";
+"scene.transactions.empty_state_label" = "0 transações 🙁";
+"scene.transactions.row_action.archive" = "Arquivar";
+"scene.transactions.row_action.unarchive" = "Remover do Arquivo";
 
-"scene.settings.title" = "設定";
-"scene.settings.section.wallet" = "ウォレット";
-"scene.settings.item.bitcoin_unit" = "Bitcoin Unit";
-"scene.settings.item.currency" = "通貨";
-"scene.settings.item.network" = "ネットワーク";
-"scene.settings.item.block_explorer" = "ブロックエクスプローラー";
-"scene.settings.item.lock_wallet" = "ウォレットをロック";
-"scene.settings.item.on_chain_request_address.title" = "Bitcoin アドレスタイプ";
+"scene.settings.title" = "Definições";
+"scene.settings.section.wallet" = "Carteira";
+"scene.settings.item.bitcoin_unit" = "Unidade de Bitcoin";
+"scene.settings.item.currency" = "Moeda";
+"scene.settings.item.network" = "Rede";
+"scene.settings.item.block_explorer" = "Block Explorer";
+"scene.settings.item.lock_wallet" = "Proteger Carteira";
+"scene.settings.item.on_chain_request_address.title" = "Bitcoin Address Type";
 "scene.settings.item.on_chain_request_address.bech32" = "Bech32";
 "scene.settings.item.on_chain_request_address.p2sh" = "P2SH";
-"scene.settings.item.remove_remote_node" = "リモートノードの設定をリセットします。";
-"scene.settings.item.reset_pin" = "Pin をリセットします。";
-"scene.settings.item.report_issue" = "問題を報告します。";
-"scene.settings.item.help" = "ヘルプが必要ですか。";
+"scene.settings.item.remove_remote_node" = "Apagar as Configurações do Node Remoto";
+"scene.settings.item.reset_pin" = "Apagar PIN";
+"scene.settings.item.report_issue" = "Reportar um problema";
+"scene.settings.item.help" = "Precisa de Ajuda?";
 
-"scene.deposit.send" = "送る";
-"scene.deposit.title" = "受け取る";
+"scene.deposit.send" = "Enviar";
+"scene.deposit.title" = "Receber";
 
-"scene.request.title" = "受け取る";
-"scene.request.lightning_button" = "ライトニング";
-"scene.request.on_chain_button" = "オンチェイン";
-"scene.request.memo_placeholder" = "メモ (オプション)";
-"scene.request.generate_request_button" = "要求を生成します。";
+"scene.request.title" = "Receber";
+"scene.request.lightning_button" = "Lightning";
+"scene.request.on_chain_button" = "On-chain";
+"scene.request.memo_placeholder" = "Memo (optional)";
+"scene.request.generate_request_button" = "Generate Request";
 
-"scene.channels.title" = "チャンネル";
-"scene.channels.close.title" = "チャンネルを閉鎖";
-"scene.channels.close.message" = "ノード %@ とチャネルを本当に終了しますか。";
-"scene.channels.force_close.title" = "チャンネルの強制終了";
-"scene.channels.force_close.message" = "%@ はオフラインですが、このチャネルを強制終了してもよろしいですか。あなたの資金の %@ に関して待たなければなりません。";
-"scene.channels.alert.cancel" = "キャンセル";
-"scene.channels.alert.close" = "閉鎖";
-"scene.channels.alert.force_close" = "強制閉鎖";
-"scene.channels.row_action.close" = "チャンネルを閉鎖";
-"scene.channels.close_success.toast" = "チャネルは閉じています。";
+"scene.channels.title" = "Channels";
+"scene.channels.close.title" = "Close Channel";
+"scene.channels.close.message" = "Do you really want to close the channel with node %@?";
+"scene.channels.force_close.title" = "Force Close Channel";
+"scene.channels.force_close.message" = "%@ is offline, are you sure you want to force close this channel? You’d have to wait about %@ for your funds?";
+"scene.channels.alert.cancel" = "Cancel";
+"scene.channels.alert.close" = "Close";
+"scene.channels.alert.force_close" = "Force Close";
+"scene.channels.row_action.close" = "Encerrar Canal";
+"scene.channels.close_success.toast" = "O Canal está a encerrar.";
 
-"scene.open_channel.title" = "チャンネルを開く";
-"scene.open_channel.help_label" = "基金の接続";
-"scene.open_channel.add_button" = "追加";
+"scene.open_channel.title" = "Abrir Canal";
+"scene.open_channel.help_label" = "Fund connection";
+"scene.open_channel.add_button" = "Adicionar";
 
 "scene.balance.title" = "Balance";
 "scene.balance.label.on_chain" = "Ƀ";
@@ -93,21 +93,21 @@
 "scene.pin.biometric.fallback.title" = "Use Passcode";
 "scene.pin.biometric.reason" = "To access the secure data";
 
-"scene.setup_pin.done_button" = "Done";
-"scene.setup_pin.top_label.initial" = "Choose a pin.";
-"scene.setup_pin.top_label.non_matching" = "The pins didn't match. Please try again.";
-"scene.setup_pin.top_label.validate" = "Enter the pin again to validate.";
+"scene.setup_pin.done_button" = "Feito";
+"scene.setup_pin.top_label.initial" = "Escolha um pin.";
+"scene.setup_pin.top_label.non_matching" = "Os pins não coincidem. Tente de novo.";
+"scene.setup_pin.top_label.validate" = "Insira o pin de novo para validar.";
 
 "scene.confirm_mnemonic.title" = "Confirm Seed";
-"scene.confirm_mnemonic.description" = "Enter your key.";
+"scene.confirm_mnemonic.description" = "Insira a sua chave.";
 
-"scene.channel_detail.title" = "Channel Detail";
+"scene.channel_detail.title" = "Detalhes do Canal";
 
-"scene.send.title" = "Send";
-"scene.send.send_button" = "Send";
+"scene.send.title" = "Enviar";
+"scene.send.send_button" = "Enviar";
 "scene.send.error.invalid_payment_request" = "Invalid Payment request";
 
-"scene.send.lightning.title" = "Send";
+"scene.send.lightning.title" = "Enviar";
 "scene.send.lightning.error.expired" = "Payment Request expired:\n%@";
 "scene.send.lightning.error.duplicate" = "Payment already paid.";
 "scene.send.lightning.memo" = "Memo: %@";

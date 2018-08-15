@@ -9,19 +9,19 @@
 "link.help" = "https://ln-zap.github.io/zap-tutorials/";
 "link.help.zapconnect" = "https://ln-zap.github.io/zap-tutorials/iOS-remote-node-setup";
 
-"error.wrong_uri_format" = "Unknown link format.";
+"error.wrong_uri_format" = "Невідомий формат посилання.";
 "error.wrong_uri_network" = "You tried opening a link for %@ but your node is connected to %@.";
 "error.block_explorer.unsupported_network" = "%@ does not support %@.";
 
-"rpc_connect_qrcode_error.btc_pay_expired" = "Looks like the code is expired.";
-"rpc_connect_qrcode_error.btc_pay_configuration_broken" = "Could not read BTCPay configurations file.";
-"rpc_connect_qrcode_error.cant_read_qrcode" = "Can't connect to this code.";
+"rpc_connect_qrcode_error.btc_pay_expired" = "Схоже, термін дії QR-коду закінчився.";
+"rpc_connect_qrcode_error.btc_pay_configuration_broken" = "Не вдалося прочитати файл конфігурації BTCPay.";
+"rpc_connect_qrcode_error.cant_read_qrcode" = "Ви не можете підключитися, використовуючи наданий код.";
 
-"channel.state.active" = "Online";
-"channel.state.inactive" = "Offline";
-"channel.state.opening" = "Opening";
-"channel.state.closing" = "Closing";
-"channel.state.force_closing" = "Force Closing";
+"channel.state.active" = "В мережі";
+"channel.state.inactive" = "Не в мережі";
+"channel.state.opening" = "Відкриття";
+"channel.state.closing" = "Закриття";
+"channel.state.force_closing" = "Примусове закриття";
 
 "network.type.testnet" = "Testnet";
 "network.type.mainnet" = "Mainnet";
@@ -31,69 +31,69 @@
 "unit.bitcoin.bit" = "Bits";
 "unit.bitcoin.satoshi" = "Satoshis";
 
-"transaction.open_channel.memo" = "Open Channel: %@";
-"transaction.close_channel.memo" = "%@ Channel: %@";
+"transaction.open_channel.memo" = "Відкрити канал: %@";
+"transaction.close_channel.memo" = "%@ канал: %@";
 
-"close_type.cooperative_close" = "Close";
-"close_type.local_force_close" = "Force Close";
+"close_type.cooperative_close" = "Закритий";
+"close_type.local_force_close" = "Закритий примусово";
 "close_type.remote_force_close" = "Remote Force Close";
 "close_type.breach_close" = "Breach Close";
 "close_type.funding_canceled" = "Funding Canceled";
 "close_type.unknown" = "Unknown Close";
 
-"view.amount_input.placeholder" = "Amount";
+"view.amount_input.placeholder" = "Сума";
 
-"scene.transactions.title" = "Transactions";
-"scene.transactions.empty_state_label" = "0 transactions 🙁";
-"scene.transactions.row_action.archive" = "Archive";
-"scene.transactions.row_action.unarchive" = "Unarchive";
+"scene.transactions.title" = "Операції";
+"scene.transactions.empty_state_label" = "0 операцій 🙁";
+"scene.transactions.row_action.archive" = "Архів";
+"scene.transactions.row_action.unarchive" = "Витягнути з архіву";
 
-"scene.settings.title" = "Settings";
-"scene.settings.section.wallet" = "Wallet";
-"scene.settings.item.bitcoin_unit" = "Bitcoin Unit";
-"scene.settings.item.currency" = "Currency";
-"scene.settings.item.network" = "Network";
-"scene.settings.item.block_explorer" = "Block Explorer";
-"scene.settings.item.lock_wallet" = "Lock Wallet";
-"scene.settings.item.on_chain_request_address.title" = "Bitcoin Address Type";
+"scene.settings.title" = "Налаштування";
+"scene.settings.section.wallet" = "Гаманець";
+"scene.settings.item.bitcoin_unit" = "Біткоїнова одиниця";
+"scene.settings.item.currency" = "Валюта";
+"scene.settings.item.network" = "Мережа";
+"scene.settings.item.block_explorer" = "Заблокувати браузер";
+"scene.settings.item.lock_wallet" = "Заблокувати гаманець";
+"scene.settings.item.on_chain_request_address.title" = "Тип адреси";
 "scene.settings.item.on_chain_request_address.bech32" = "Bech32";
 "scene.settings.item.on_chain_request_address.p2sh" = "P2SH";
-"scene.settings.item.remove_remote_node" = "Reset Remote Node Configuration";
-"scene.settings.item.reset_pin" = "Reset Pin";
-"scene.settings.item.report_issue" = "Report an Issue";
-"scene.settings.item.help" = "Need Help?";
+"scene.settings.item.remove_remote_node" = "Скинути налаштування дистанційного вузла";
+"scene.settings.item.reset_pin" = "Скинути пін";
+"scene.settings.item.report_issue" = "Повідомте про проблему";
+"scene.settings.item.help" = "Потрібна допомога?";
 
-"scene.deposit.send" = "Send";
-"scene.deposit.title" = "Receive";
+"scene.deposit.send" = "Надіслати";
+"scene.deposit.title" = "Отримати";
 
-"scene.request.title" = "Receive";
-"scene.request.lightning_button" = "Lightning";
+"scene.request.title" = "Отримати";
+"scene.request.lightning_button" = "Блискавичні";
 "scene.request.on_chain_button" = "On-chain";
 "scene.request.memo_placeholder" = "Memo (optional)";
 "scene.request.generate_request_button" = "Generate Request";
 
-"scene.channels.title" = "Channels";
-"scene.channels.close.title" = "Close Channel";
+"scene.channels.title" = "Канали";
+"scene.channels.close.title" = "Канал закритий";
 "scene.channels.close.message" = "Do you really want to close the channel with node %@?";
-"scene.channels.force_close.title" = "Force Close Channel";
+"scene.channels.force_close.title" = "Примусове закриття каналу";
 "scene.channels.force_close.message" = "%@ is offline, are you sure you want to force close this channel? You’d have to wait about %@ for your funds?";
-"scene.channels.alert.cancel" = "Cancel";
-"scene.channels.alert.close" = "Close";
+"scene.channels.alert.cancel" = "Скасувати";
+"scene.channels.alert.close" = "Закритий";
 "scene.channels.alert.force_close" = "Force Close";
 "scene.channels.row_action.close" = "Close Channel";
 "scene.channels.close_success.toast" = "Channel is closing.";
 
-"scene.open_channel.title" = "Open Channel";
+"scene.open_channel.title" = "Відкрити канал";
 "scene.open_channel.help_label" = "Fund connection";
-"scene.open_channel.add_button" = "Add";
+"scene.open_channel.add_button" = "Додати";
 
-"scene.balance.title" = "Balance";
+"scene.balance.title" = "Баланс";
 "scene.balance.label.on_chain" = "Ƀ";
 
 "scene.pin.biometric.fallback.title" = "Use Passcode";
 "scene.pin.biometric.reason" = "To access the secure data";
 
-"scene.setup_pin.done_button" = "Done";
+"scene.setup_pin.done_button" = "Готово";
 "scene.setup_pin.top_label.initial" = "Choose a pin.";
 "scene.setup_pin.top_label.non_matching" = "The pins didn't match. Please try again.";
 "scene.setup_pin.top_label.validate" = "Enter the pin again to validate.";
@@ -101,13 +101,13 @@
 "scene.confirm_mnemonic.title" = "Confirm Seed";
 "scene.confirm_mnemonic.description" = "Enter your key.";
 
-"scene.channel_detail.title" = "Channel Detail";
+"scene.channel_detail.title" = "Деталі каналу";
 
-"scene.send.title" = "Send";
-"scene.send.send_button" = "Send";
+"scene.send.title" = "Надіслати";
+"scene.send.send_button" = "Надіслати";
 "scene.send.error.invalid_payment_request" = "Invalid Payment request";
 
-"scene.send.lightning.title" = "Send";
+"scene.send.lightning.title" = "Надіслати";
 "scene.send.lightning.error.expired" = "Payment Request expired:\n%@";
 "scene.send.lightning.error.duplicate" = "Payment already paid.";
 "scene.send.lightning.memo" = "Memo: %@";
@@ -121,29 +121,29 @@
 "scene.connect_remote_node.paste_button" = "Paste";
 "scene.connect_remote_node.help_button" = "Need Help?";
 "scene.connect_remote_node.server_error" = "Could not connect to server.";
-"scene.connect_remote_node.your_node_title" = "Your Node";
-"scene.connect_remote_node.certificate_detail.certificate_title" = "Certificate";
-"scene.connect_remote_node.certificate_detail.macaroon_title" = "Macaroon";
-"scene.connect_remote_node.edit_url.title" = "Address";
+"scene.connect_remote_node.your_node_title" = "Ваш вузол";
+"scene.connect_remote_node.certificate_detail.certificate_title" = "Сертифікат";
+"scene.connect_remote_node.certificate_detail.macaroon_title" = "Макарон";
+"scene.connect_remote_node.edit_url.title" = "Адреса";
 
 
-"scene.create_wallet.title" = "Create Wallet";
-"scene.create_wallet.description_label" = "Make sure to store the mnemonic at a save location.";
-"scene.create_wallet.next_button" = "Next";
+"scene.create_wallet.title" = "Створити гаманець";
+"scene.create_wallet.description_label" = "Переконайтеся, що ви зберегли мнемонік у безпечному місці.";
+"scene.create_wallet.next_button" = "Далі";
 
-"scene.recover_wallet.title" = "Recover Wallet";
-"scene.recover_wallet.done_button" = "Done";
-"scene.recover_wallet.description_label" = "Enter your seed:";
+"scene.recover_wallet.title" = "Відновити гаманець";
+"scene.recover_wallet.done_button" = "Готово";
+"scene.recover_wallet.description_label" = "Введіть свій seed:";
 "scene.recover_wallet.placeholder" = "abandon ability able about above absent absorb abstract absurd abuse access accident account accuse achieve acid acoustic acquire across act action actor actress actual";
 
 "scene.select_wallet_connection.title" = "Setup Zap";
-"scene.select_wallet_connection.create.title" = "Create";
-"scene.select_wallet_connection.create.message" = "new wallet";
-"scene.select_wallet_connection.recover.title" = "Recover";
-"scene.select_wallet_connection.recover.message" = "existing wallet";
-"scene.select_wallet_connection.connect.title" = "Connect";
-"scene.select_wallet_connection.connect.message" = "remote node";
-"scene.select_wallet_connection.disabled_alert.title" = "Sorry!";
+"scene.select_wallet_connection.create.title" = "Створити";
+"scene.select_wallet_connection.create.message" = "новий гаманець";
+"scene.select_wallet_connection.recover.title" = "Відновити";
+"scene.select_wallet_connection.recover.message" = "існуючий гаманець";
+"scene.select_wallet_connection.connect.title" = "Підключення";
+"scene.select_wallet_connection.connect.message" = "віддалений вузол";
+"scene.select_wallet_connection.disabled_alert.title" = "Вибачте!";
 "scene.select_wallet_connection.disabled_alert.message" = "Running Lnd on the phone is disabled in this beta. Connect to a remote node instead.";
 "scene.select_wallet_connection.create.help" = "Need Help?";
 
@@ -161,7 +161,7 @@
 "scene.sync.disconnect_alert.destructive_action" = "Disconnect Node";
 "scene.sync.disconnect_alert.cancel_action" = "Cancel";
 
-"scene.transaction_detail.title.lightning_invoice" = "Invoice Detail";
+"scene.transaction_detail.title.lightning_invoice" = "Деталі фактури";
 "scene.transaction_detail.title.payment_detail" = "Payment Detail";
 "scene.transaction_detail.title.transaction_detail" = "Transaction Detail";
 "scene.transaction_detail.archive_button" = "Archive";
@@ -172,8 +172,8 @@
 "scene.transaction_detail.qr_code.expired_label" = "Expired";
 "scene.transaction_detail.amount.unspecified_label" = "Unspecified";
 "scene.transaction_detail.amount_label" = "Amount";
-"scene.transaction_detail.created_label" = "Created";
-"scene.transaction_detail.payment_request" = "Payment Request";
+"scene.transaction_detail.created_label" = "Створено";
+"scene.transaction_detail.payment_request" = "Запит оплати";
 "scene.transaction_detail.expiry_label" = "Expiry";
 "scene.transaction_detail.settled_label" = "Settled";
 "scene.transaction_detail.settled_date_label" = "Settled Date";
@@ -197,8 +197,8 @@
 "scene.filter.title" = "Transaction Filter";
 "scene.filter.section_header.transaction_types" = "Transaction Types";
 "scene.filter.displayOnChainTransactions" = "On Chain Transactions";
-"scene.filter.displayLightningPayments" = "Lightning Payments";
-"scene.filter.displayLightningInvoices" = "Lightning Invoices";
-"scene.filter.displayArchivedTransactions" = "Archived Transactions";
+"scene.filter.displayLightningPayments" = "Блискавичні платежі";
+"scene.filter.displayLightningInvoices" = "Блискавичні фактури";
+"scene.filter.displayArchivedTransactions" = "Архівовані транзакції";
 
 "scene.qrcode_scanner.top_label" = "Scan QR-Code";
