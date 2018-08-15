@@ -23,7 +23,7 @@ class HeaderCollectionReusableView: UICollectionReusableView {
         
         titleLabel.font = UIFont.Zap.light.withSize(30)
         titleLabel.textColor = .white
-        titleLabel.text = "Network"
+        titleLabel.text = "scene.channels.title".localized
     }
     
     @IBAction private func openChannel(_ sender: Any) {
