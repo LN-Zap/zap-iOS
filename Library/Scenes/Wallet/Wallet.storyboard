@@ -44,7 +44,7 @@
                                 <rect key="frame" x="0.0" y="45" width="375" height="477"/>
                                 <subviews>
                                     <stackView opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="1000" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="dnL-8p-g9H">
-                                        <rect key="frame" x="25" y="91" width="326.5" height="152"/>
+                                        <rect key="frame" x="25" y="87.5" width="326.5" height="159"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="000,000,000.00" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="30" translatesAutoresizingMaskIntoConstraints="NO" id="aTc-aL-iRn">
                                                 <rect key="frame" x="0.0" y="0.0" width="326.5" height="119.5"/>
@@ -53,22 +53,22 @@
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <view contentMode="scaleToFill" verticalHuggingPriority="1000" translatesAutoresizingMaskIntoConstraints="NO" id="g9r-DZ-Q93">
-                                                <rect key="frame" x="0.0" y="119.5" width="326.5" height="12"/>
+                                                <rect key="frame" x="0.0" y="119.5" width="326.5" height="19"/>
                                                 <subviews>
                                                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="750" image="icon_swap" translatesAutoresizingMaskIntoConstraints="NO" id="seN-vh-fFQ">
-                                                        <rect key="frame" x="157.5" y="0.0" width="12" height="12"/>
+                                                        <rect key="frame" x="157" y="0.0" width="13" height="13"/>
                                                         <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                     </imageView>
                                                 </subviews>
                                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <constraints>
                                                     <constraint firstItem="seN-vh-fFQ" firstAttribute="centerX" secondItem="g9r-DZ-Q93" secondAttribute="centerX" id="K5u-QY-mXB"/>
-                                                    <constraint firstAttribute="bottom" secondItem="seN-vh-fFQ" secondAttribute="bottom" id="jfm-p7-Agm"/>
+                                                    <constraint firstAttribute="bottom" secondItem="seN-vh-fFQ" secondAttribute="bottom" constant="6" id="jfm-p7-Agm"/>
                                                     <constraint firstItem="seN-vh-fFQ" firstAttribute="top" secondItem="g9r-DZ-Q93" secondAttribute="top" id="y9A-j7-g9F"/>
                                                 </constraints>
                                             </view>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="$0" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="x9j-76-Ee6">
-                                                <rect key="frame" x="0.0" y="131.5" width="326.5" height="20.5"/>
+                                                <rect key="frame" x="0.0" y="138.5" width="326.5" height="20.5"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
@@ -76,7 +76,7 @@
                                         </subviews>
                                     </stackView>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Hxa-LE-scT">
-                                        <rect key="frame" x="25" y="91" width="326.5" height="152"/>
+                                        <rect key="frame" x="25" y="87.5" width="326.5" height="159"/>
                                         <connections>
                                             <action selector="swapCurrencyButtonTapped:" destination="KOM-Jt-Qkh" eventType="touchUpInside" id="g8M-HC-Edz"/>
                                         </connections>
@@ -178,6 +178,6 @@
         </scene>
     </scenes>
     <resources>
-        <image name="icon_swap" width="12" height="12"/>
+        <image name="icon_swap" width="13" height="13"/>
     </resources>
 </document>

@@ -41,7 +41,7 @@ final class WalletViewController: UIViewController {
     
     @IBOutlet private weak var swapIconImageView: UIImageView! {
         didSet {
-            swapIconImageView.tintColor = .gray
+            swapIconImageView.tintColor = UIColor.Zap.lightningOrange
         }
     }
     
