@@ -95,16 +95,16 @@
 
 "scene.setup_pin.done_button" = "完了";
 "scene.setup_pin.top_label.initial" = "ピンを選ぶ";
-"scene.setup_pin.top_label.non_matching" = "The pins didn't match. Please try again.";
-"scene.setup_pin.top_label.validate" = "Enter the pin again to validate.";
+"scene.setup_pin.top_label.non_matching" = "ピンが一致しません。もう一度やり直して下さい。";
+"scene.setup_pin.top_label.validate" = "検証するためもう一度ピンを入力してください。";
 
-"scene.confirm_mnemonic.title" = "Confirm Seed";
-"scene.confirm_mnemonic.description" = "Enter your key.";
+"scene.confirm_mnemonic.title" = "シードを確認して下さい。";
+"scene.confirm_mnemonic.description" = "キーを入力して下さい。";
 
-"scene.channel_detail.title" = "Channel Detail";
+"scene.channel_detail.title" = "チャンネル詳細";
 
-"scene.send.title" = "Send";
-"scene.send.send_button" = "Send";
+"scene.send.title" = "送る";
+"scene.send.send_button" = "送る";
 "scene.send.error.invalid_payment_request" = "Invalid Payment request";
 
 "scene.send.lightning.title" = "Send";
