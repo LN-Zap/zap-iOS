@@ -20,12 +20,12 @@ public final class WalletApiStream: WalletApiProtocol {
     
     public func initWallet(mnemonic: [String], password: String, callback: @escaping (Result<Success>) -> Void) {
         let data = try? Lnrpc_InitWalletRequest(password: password, mnemonic: mnemonic).serializedData()
-        LndmobileInitWallet(data, StreamCallback<Lnrpc_InitWalletResponse, Void>(callback) { _ in () })
+        LndmobileInitWallet(data, StreamCallback<Lnrpc_InitWalletResponse, Success>(callback) { _ in Success() })
     }
     
     public func unlockWallet(password: String, callback: @escaping (Result<Success>) -> Void) {
         let data = try? Lnrpc_UnlockWalletRequest(password: password).serializedData()
-        LndmobileUnlockWallet(data, StreamCallback<Lnrpc_UnlockWalletResponse, Void>(callback) { _ in () })
+        LndmobileUnlockWallet(data, StreamCallback<Lnrpc_UnlockWalletResponse, Success>(callback) { _ in Success() })
     }
 }
 
