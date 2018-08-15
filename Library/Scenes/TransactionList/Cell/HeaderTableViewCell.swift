@@ -15,13 +15,12 @@ class HeaderTableViewCell: UITableViewCell {
         
         backgroundColor = .clear
         selectionStyle = .none
-        Style.Label.custom().apply(to: headerLabel)
-        headerLabel.textColor = .white
+        Style.Label.caption.apply(to: headerLabel)
     }
     
     var headerText: String? {
         didSet {
-            headerLabel.text = headerText
+            headerLabel.text = headerText?.uppercased()
         }
     }
 }

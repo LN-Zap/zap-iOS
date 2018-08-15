@@ -45,19 +45,31 @@ enum Style {
         
         static let title = UIViewStyle<UILabel> {
             $0.font = UIFontMetrics(forTextStyle: .title1).scaledFont(for: UIFont.Zap.regular.withSize(40))
-            $0.textColor = .white
+            $0.textColor = UIColor.Zap.white
             $0.adjustsFontForContentSizeCategory = true
         }
         
         static let body = UIViewStyle<UILabel> {
             $0.font = UIFontMetrics(forTextStyle: .body).scaledFont(for: UIFont.Zap.light.withSize(17))
-            $0.textColor = .white
+            $0.textColor = UIColor.Zap.white
+            $0.adjustsFontForContentSizeCategory = true
+        }
+        
+        static let subHeadline = UIViewStyle<UILabel> {
+            $0.font = UIFontMetrics(forTextStyle: .subheadline).scaledFont(for: UIFont.Zap.light.withSize(15))
+            $0.textColor = UIColor.Zap.gray
             $0.adjustsFontForContentSizeCategory = true
         }
         
         static let headline = UIViewStyle<UILabel> {
             $0.font = UIFontMetrics(forTextStyle: .body).scaledFont(for: UIFont.Zap.regular.withSize(17))
-            $0.textColor = .white
+            $0.textColor = UIColor.Zap.white
+            $0.adjustsFontForContentSizeCategory = true
+        }
+        
+        static let caption = UIViewStyle<UILabel> {
+            $0.font = UIFontMetrics(forTextStyle: .caption1).scaledFont(for: UIFont.Zap.regular.withSize(10))
+            $0.textColor = UIColor.Zap.gray
             $0.adjustsFontForContentSizeCategory = true
         }
     }

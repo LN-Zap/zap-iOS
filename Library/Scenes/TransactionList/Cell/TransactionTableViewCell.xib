@@ -23,11 +23,11 @@
                         <rect key="frame" x="20" y="52" width="10" height="10"/>
                     </imageView>
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="bYV-df-7bD">
-                        <rect key="frame" x="399" y="32.5" width="52" height="24.5"/>
+                        <rect key="frame" x="399" y="33.5" width="52" height="24.5"/>
                         <color key="backgroundColor" red="0.87450980392156863" green="0.95686274509803926" blue="0.792156862745098" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     </view>
-                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="wdb-dN-XX1">
-                        <rect key="frame" x="48" y="34.5" width="398" height="46"/>
+                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" spacing="3" translatesAutoresizingMaskIntoConstraints="NO" id="wdb-dN-XX1">
+                        <rect key="frame" x="48" y="35.5" width="398" height="44"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="zGL-XR-fcw">
                                 <rect key="frame" x="0.0" y="0.0" width="398" height="20.5"/>
@@ -47,7 +47,7 @@
                                 </subviews>
                             </stackView>
                             <stackView opaque="NO" contentMode="scaleToFill" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="GZg-fG-32f">
-                                <rect key="frame" x="0.0" y="25.5" width="398" height="20.5"/>
+                                <rect key="frame" x="0.0" y="23.5" width="398" height="20.5"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Wh5-FH-9Jy">
                                         <rect key="frame" x="0.0" y="0.0" width="351" height="20.5"/>
