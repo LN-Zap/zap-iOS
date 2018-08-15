@@ -84,7 +84,7 @@
 "scene.channels.close_success.toast" = "チャネルは閉じています。";
 
 "scene.open_channel.title" = "チャンネルを開く";
-"scene.open_channel.help_label" = "Fund connection";
+"scene.open_channel.help_label" = "基金の接続";
 "scene.open_channel.add_button" = "Add";
 
 "scene.balance.title" = "Balance";
