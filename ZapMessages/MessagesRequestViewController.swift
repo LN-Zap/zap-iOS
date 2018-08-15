@@ -137,9 +137,9 @@ class MessagesRequestViewController: UIViewController {
     @objc private func generateRequest(_ sender: GradientLoadingButtonView) {
         guard let requestViewModel = requestViewModel else { return }
         
-        requestViewModel.create { [weak self] detail in
+        requestViewModel.create { [weak self] result in
             DispatchQueue.main.async {
-                let address = detail.paymentURI.stringValue
+                guard let address = result.value?.paymentURI.stringValue else { return }
                 var text = ""
                 
                 if requestViewModel.amount > 0,
