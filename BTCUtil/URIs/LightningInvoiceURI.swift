@@ -18,7 +18,8 @@ public struct LightningInvoiceURI: PaymentURI {
     }
     
     public init?(string: String) {
-        var string = string
+        var string = string.lowercased()
+
         let prefix = "lightning:"
         if string.starts(with: prefix) {
             string = String(string.dropFirst(prefix.count))
