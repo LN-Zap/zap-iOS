@@ -81,10 +81,10 @@ class MessagesRequestViewController: UIViewController {
         ])
         
         placeholderTextView.text = "what is this for"
-        placeholderTextView.font = UIFont.zap.light.withSize(14)
-        placeholderTextView.textColor = UIColor.zap.lightGrey
-        memoTextView.font = UIFont.zap.light.withSize(14)
-        memoTextView.textColor = UIColor.zap.black
+        placeholderTextView.font = UIFont.Zap.light.withSize(14)
+        placeholderTextView.textColor = UIColor.Zap.lightGrey
+        memoTextView.font = UIFont.Zap.light.withSize(14)
+        memoTextView.textColor = UIColor.Zap.black
         memoTextView.returnKeyType = .done
         memoTextView.delegate = self
         
@@ -119,7 +119,7 @@ class MessagesRequestViewController: UIViewController {
         onChainButton.addTarget(self, action: #selector(segmentedControlDidChange), for: .touchUpInside)
         segmentedControlStackView.addArrangedSubview(onChainButton)
         
-        segmentedControlBackgroundView.backgroundColor = UIColor.zap.white
+        segmentedControlBackgroundView.backgroundColor = UIColor.Zap.white
         
         let segmentedControlLineView = LineView(frame: CGRect.zero)
         segmentedControlLineView.translatesAutoresizingMaskIntoConstraints = false
@@ -137,9 +137,9 @@ class MessagesRequestViewController: UIViewController {
     @objc private func generateRequest(_ sender: GradientLoadingButtonView) {
         guard let requestViewModel = requestViewModel else { return }
         
-        requestViewModel.create { [weak self] detail in
+        requestViewModel.create { [weak self] result in
             DispatchQueue.main.async {
-                let address = detail.paymentURI.stringValue
+                guard let address = result.value?.paymentURI.stringValue else { return }
                 var text = ""
                 
                 if requestViewModel.amount > 0,

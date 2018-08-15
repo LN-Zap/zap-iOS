@@ -11,6 +11,7 @@ final class GradientView: UIView {
     enum Direction {
         case horizontal
         case diagonal
+        case vertical
     }
     
     var direction: Direction = .horizontal {
@@ -19,7 +20,7 @@ final class GradientView: UIView {
         }
     }
     
-    var gradient: [UIColor] = [UIColor.zap.lightMustard, UIColor.zap.peach] {
+    var gradient: [UIColor] = [UIColor.Zap.lightningOrangeGradient, UIColor.Zap.lightningOrange] {
         didSet {
             updateColors()
         }
@@ -60,6 +61,9 @@ final class GradientView: UIView {
         case .diagonal:
             gradientLayer?.startPoint = CGPoint(x: 0.0, y: 0.0)
             gradientLayer?.endPoint = CGPoint(x: 1.0, y: 1.0)
+        case .vertical:
+            gradientLayer?.startPoint = CGPoint(x: 0.0, y: 0.0)
+            gradientLayer?.endPoint = CGPoint(x: 0.0, y: 1.0)
         }
     }
 }

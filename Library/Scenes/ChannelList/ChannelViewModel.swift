@@ -14,16 +14,38 @@ final class ChannelViewModel {
     
     let state: Observable<ChannelState>
     let name: Observable<String>
+    let color: Observable<UIColor>
+
+    var csvDelayTimeString: String {
+        let formatter = DateComponentsFormatter()
+        formatter.allowedUnits =  [.year, .month, .day, .hour, .minute]
+        formatter.unitsStyle = .full
+        formatter.maximumUnitCount = 2
+        
+        let blockTime: TimeInterval = 10 * 60
+
+        return formatter.string(from: TimeInterval(channel.csvDelay) * blockTime) ?? ""
+    }
     
-    init(channel: Channel, aliasStore: ChannelAliasStore) {
+    lazy var detailViewModel: ChannelDetailConfiguration = {
+        ChannelDetailConfiguration(channelViewModel: self)
+    }()
+    
+    init(channel: Channel, nodeStore: LightningNodeStore) {
         self.channel = channel
         
         name = Observable(channel.remotePubKey)
         state = Observable(channel.state)
-
-        aliasStore.alias(for: channel.remotePubKey) { [name] in
-            guard let alias = $0 else { return }
-            name.value = alias
+        color = Observable(UIColor.Zap.lightningOrange)
+        
+        nodeStore.node(for: channel.remotePubKey) { [name, color] in
+            if let alias = $0?.alias {
+                name.value = alias
+            }
+            if let colorString = $0?.color,
+                let newColor = UIColor(hex: colorString) {
+                color.value = newColor
+            }
         }
     }
     

@@ -24,7 +24,7 @@
                                 <rect key="frame" x="168" y="211" width="38" height="36"/>
                             </imageView>
                         </subviews>
-                        <color key="backgroundColor" name="charcoalGrey"/>
+                        <color key="backgroundColor" name="seaBlue"/>
                         <constraints>
                             <constraint firstItem="F4Q-mO-bIw" firstAttribute="centerX" secondItem="6Tk-OE-BBY" secondAttribute="centerX" id="2Xk-en-5e2"/>
                             <constraint firstItem="F4Q-mO-bIw" firstAttribute="centerY" secondItem="6Tk-OE-BBY" secondAttribute="centerY" multiplier="0.6666" id="cLv-fj-3J0"/>
@@ -39,8 +39,8 @@
     </scenes>
     <resources>
         <image name="pin-logo" width="38" height="36"/>
-        <namedColor name="charcoalGrey">
-            <color red="0.19200000166893005" green="0.20000000298023224" blue="0.23100000619888306" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        <namedColor name="seaBlue">
+            <color red="0.19215686274509805" green="0.20000000000000001" blue="0.25098039215686274" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
     </resources>
 </document>

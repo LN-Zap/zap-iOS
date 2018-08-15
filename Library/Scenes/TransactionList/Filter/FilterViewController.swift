@@ -13,7 +13,14 @@ extension UIStoryboard {
         viewController.transactionListViewModel = transactionListViewModel
         
         let size = CGSize(width: UIScreen.main.bounds.width, height: 365)
-        return ModalNavigationController(rootViewController: viewController, size: size)
+        
+        let navigationController = ModalNavigationController(rootViewController: viewController, size: size)
+        
+        navigationController.navigationBar.backgroundColor = UIColor.Zap.seaBlueGradient
+        navigationController.navigationBar.shadowImage = UIImage()
+        navigationController.navigationBar.setBackgroundImage(UIImage(), for: .default)
+
+        return navigationController
     }
 }
 
@@ -38,9 +45,10 @@ final class FilterViewController: UIViewController {
         super.viewDidLoad()
         
         title = "scene.filter.title".localized
-        titleTextStyle = .dark
         
         tableView.allowsSelection = false
+        tableView.backgroundColor = UIColor.Zap.deepSeaBlue
+        tableView.separatorColor = UIColor.Zap.gray
     }
     
     @IBAction private func dismissFilterViewController(_ sender: Any) {
@@ -78,7 +86,6 @@ extension FilterViewController: UITableViewDataSource {
 extension FilterViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, willDisplayHeaderView view: UIView, forSection section: Int) {
         guard let view = view as? UITableViewHeaderFooterView else { return }
-        view.textLabel?.font = UIFont.zap.light
         view.textLabel?.text = view.textLabel?.text?.capitalized
     }
 }

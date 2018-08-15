@@ -11,7 +11,6 @@ import UIKit
 final class DetailDestructiveActionTableViewCell: UITableViewCell {
     struct Info {
         enum DestructiveActionType {
-            case closeChannel(Channel, String)
             case archiveTransaction
             case unarchiveTransaction
         }
@@ -32,9 +31,9 @@ final class DetailDestructiveActionTableViewCell: UITableViewCell {
             destructiveActionButton.setTitle(info.title, for: .normal)
             
             if case .unarchiveTransaction = info.type {
-                destructiveActionButton.tintColor = UIColor.zap.nastyGreen
+                destructiveActionButton.tintColor = UIColor.Zap.superGreen
             } else {
-                destructiveActionButton.tintColor = UIColor.zap.tomato
+                destructiveActionButton.tintColor = UIColor.Zap.superRed
             }
             
             setActivityIndicator(hidden: true)
@@ -43,28 +42,14 @@ final class DetailDestructiveActionTableViewCell: UITableViewCell {
     
     override func awakeFromNib() {
         super.awakeFromNib()
-        Style.button.apply(to: destructiveActionButton)
+        Style.button().apply(to: destructiveActionButton)
     }
     
     @IBAction private func executeAction(_ sender: Any) {
         guard let info = info else { return }
-        switch info.type {
-        case let .closeChannel(channel, nodeAlias):
-            delegate?.closeChannel(channel, nodeAlias: nodeAlias) { [weak self] in
-                self?.setActivityIndicator(hidden: false)
-                info.action { result in
-                    if let error = result.error {
-                        self?.setActivityIndicator(hidden: true)
-                        print("😡", error)
-                    } else {
-                        self?.delegate?.dismiss()
-                    }
-                }
-            }
-        case .archiveTransaction, .unarchiveTransaction:
-            info.action { [weak self] _ in
-                self?.delegate?.dismiss()
-            }
+        
+        info.action { [weak self] _ in
+            self?.delegate?.dismiss()
         }
     }
     

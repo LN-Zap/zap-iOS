@@ -36,10 +36,10 @@ final class ConnectCellBond: TableViewBinder<Observable2DArray<String?, ConnectR
 
             cell.imageView?.image = nil
             cell.imageView?.tintColor = .white
-            cell.backgroundColor = UIColor.zap.charcoalGreyLight
+            cell.backgroundColor = UIColor.Zap.seaBlue
 
             if let cellTextLabel = cell.textLabel {
-                Style.label.apply(to: cellTextLabel)
+                Style.Label.custom().apply(to: cellTextLabel)
                 cellTextLabel.textColor = .white
             }
             
@@ -73,7 +73,7 @@ final class ConnectCellBond: TableViewBinder<Observable2DArray<String?, ConnectR
             cell = dequeueCell(for: tableView, style: .default)
             cell.textLabel?.text = "scene.connect_remote_node.connect_button".localized
             cell.textLabel?.textAlignment = .center
-            cell.textLabel?.textColor = UIColor.zap.peach
+            cell.textLabel?.textColor = UIColor.Zap.lightningOrange
         case .scan:
             cell = dequeueCell(for: tableView, style: .default)
             cell.textLabel?.text = "scene.connect_remote_node.scan_button".localized
@@ -106,8 +106,8 @@ final class ConnectRemoteNodeViewController: UIViewController {
         title = "scene.connect_remote_node.title".localized
         
         tableView.delegate = self
-        tableView.backgroundColor = UIColor.zap.charcoalGrey
-        tableView.separatorColor = UIColor.zap.warmGrey
+        tableView.backgroundColor = UIColor.Zap.deepSeaBlue
+        tableView.separatorColor = UIColor.Zap.gray
         tableView.reactive.dataSource.forwardTo = self
                 
         connectRemoteNodeViewModel?.dataSource
@@ -125,8 +125,8 @@ final class ConnectRemoteNodeViewController: UIViewController {
         guard let url = URL(string: "link.help.zapconnect".localized) else { return }
         
         let safariViewController = SFSafariViewController(url: url)
-        safariViewController.preferredBarTintColor = UIColor.zap.charcoalGrey
-        safariViewController.preferredControlTintColor = UIColor.zap.peach
+        safariViewController.preferredBarTintColor = UIColor.Zap.deepSeaBlue
+        safariViewController.preferredControlTintColor = UIColor.Zap.lightningOrange
         present(safariViewController, animated: true, completion: nil)
     }
     
@@ -219,7 +219,6 @@ extension ConnectRemoteNodeViewController: UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, willDisplayHeaderView view: UIView, forSection section: Int) {
         guard let view = view as? UITableViewHeaderFooterView else { return }
-        view.textLabel?.font = UIFont.zap.light
         view.textLabel?.text = connectRemoteNodeViewModel?.dataSource[section].metadata
     }
 }

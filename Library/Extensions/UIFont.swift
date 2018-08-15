@@ -8,11 +8,9 @@
 import UIKit
 
 public extension UIFont {
-    // swiftlint:disable:next type_name
-    public enum zap {
-        // swiftlint:disable force_unwrapping
-        public static let light = UIFont(name: "Roboto-Light", size: UIFont.labelFontSize)!
-        public static let regular = UIFont(name: "Roboto-Regular", size: UIFont.labelFontSize)!
-        public static let bold = UIFont(name: "Roboto-Bold", size: UIFont.labelFontSize)!
+    public enum Zap {
+        public static let light = UIFont.systemFont(ofSize: UIFont.labelFontSize, weight: .light)
+        public static let regular = UIFont.systemFont(ofSize: UIFont.labelFontSize)
+        public static let bold = UIFont.boldSystemFont(ofSize: UIFont.labelFontSize)
     }
 }

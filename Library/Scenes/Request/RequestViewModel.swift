@@ -40,7 +40,7 @@ public final class RequestViewModel {
         self.transactionService = transactionService
     }
     
-    public func create(callback: @escaping (QRCodeDetailViewModel) -> Void) {
+    public func create(callback: @escaping (Result<QRCodeDetailViewModel>) -> Void) {
         switch requestMethod {
         case .lightning:
             createLightning(callback: callback)
@@ -49,34 +49,29 @@ public final class RequestViewModel {
         }
     }
     
-    private func createLightning(callback: @escaping (QRCodeDetailViewModel) -> Void) {
+    private func createLightning(callback: @escaping (Result<QRCodeDetailViewModel>) -> Void) {
         transactionService.addInvoice(amount: amount, memo: trimmedMemo) { result in
-            guard
-                let invoice = result.value,
-                let invoiceURI = LightningInvoiceURI(string: invoice)
-                else { return }
-            
-            let viewModel = LightningRequestQRCodeViewModel(paymentURI: invoiceURI)
-            callback(viewModel)
+            callback(result.flatMap {
+                guard let invoiceURI = LightningInvoiceURI(string: $0) else { return .failure(LndApiError.unknownError) }
+                return .success(LightningRequestQRCodeViewModel(paymentURI: invoiceURI))
+            })
         }
     }
     
-    private func createOnChain(callback: @escaping (QRCodeDetailViewModel) -> Void) {
+    private func createOnChain(callback: @escaping (Result<QRCodeDetailViewModel>) -> Void) {
         if let address = cachedOnChainAddress,
             let viewModel = onChainRequestViewModel(for: address) {
-            callback(viewModel)
+            callback(.success(viewModel))
         } else {
             let type = Settings.shared.onChainRequestAddressType.value
             transactionService.newAddress(with: type) { [weak self] result in
-                guard
-                    let address = result.value,
-                    let viewModel = self?.onChainRequestViewModel(for: address)
-                    else { return }
-                self?.cachedOnChainAddress = address
-                callback(viewModel)
+                callback(result.flatMap {
+                    guard let viewModel = self?.onChainRequestViewModel(for: $0) else { return .failure(LndApiError.unknownError) }
+                    self?.cachedOnChainAddress = $0
+                    return .success(viewModel)
+                })
             }
         }
-
     }
     
     private func onChainRequestViewModel(for address: String) -> OnChainRequestQRCodeViewModel? {

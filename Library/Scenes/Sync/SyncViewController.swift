@@ -39,8 +39,10 @@ final class SyncViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        view.backgroundColor = UIColor.Zap.seaBlue
+        
         gradientView.direction = .diagonal
-        Style.label.apply(to: syncLabel, dateLabel, descriptionLabel)
+        Style.Label.custom().apply(to: syncLabel, dateLabel, descriptionLabel)
         syncLabel.font = syncLabel.font.withSize(24)
         descriptionLabel.font = descriptionLabel.font.withSize(16)
         dateLabel.font = dateLabel.font.withSize(12)
@@ -54,6 +56,26 @@ final class SyncViewController: UIViewController {
         disconnectBarButton.title = "scene.sync.disconnect_bar_button".localized
         
         setupBindings()
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        
+        setIdleTimer(disabled: true)
+    }
+    
+    override func viewDidDisappear(_ animated: Bool) {
+        super.viewDidDisappear(animated)
+        
+        setIdleTimer(disabled: false)
+    }
+    
+    private func setIdleTimer(disabled: Bool) {
+        #if !LOCALONLY
+        if case .local = LndConnection.current {
+            UIApplication.shared.isIdleTimerDisabled = disabled
+        }
+        #endif
     }
     
     private func setupBindings() {

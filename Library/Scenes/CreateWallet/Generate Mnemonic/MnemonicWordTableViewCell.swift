@@ -27,11 +27,9 @@ final class MnemonicWordTableViewCell: UITableViewCell {
     override func awakeFromNib() {
         super.awakeFromNib()
         
-        Style.label.apply(to: indexLabel, wordLabel) {
-            $0.font = $0.font.withSize(24)
-        }
+        Style.Label.custom(fontSize: 24).apply(to: indexLabel, wordLabel)
         
-        indexLabel.textColor = UIColor.zap.lightGrey
+        indexLabel.textColor = UIColor.Zap.lightGrey
         wordLabel.textColor = .white
     }
 }

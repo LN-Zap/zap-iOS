@@ -18,17 +18,4 @@ class BTCPayQRCodeTests: XCTestCase {
         let qrCode = BTCPayQRCode(string: "https://testlnd1.btcpayserver.com/lnd-config/4210935981/lnd.config")
         XCTAssertNil(qrCode)
     }
-    
-    // TODO: remove this
-    func testFetch() {
-        let expectation = XCTestExpectation(description: "Download config")
-
-        let qrCode = BTCPayQRCode(string: "config=https://testlnd1.btcpayserver.com/lnd-config/1957466572/lnd.config")
-        qrCode?.fetchConfiguration { result in
-            print(result)
-            expectation.fulfill()
-        }
-        
-        wait(for: [expectation], timeout: 10.0)
-    }
 }

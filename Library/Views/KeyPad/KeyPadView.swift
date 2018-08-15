@@ -51,7 +51,7 @@ final class KeyPadView: UIView {
             updatePointButton()
         }
     }
-    var textColor = UIColor.zap.black {
+    var textColor = UIColor.Zap.black {
         didSet {
             updateButtonFont()
         }
@@ -90,7 +90,7 @@ final class KeyPadView: UIView {
     
     private func updateButtonFont() {
         buttons?.forEach {
-            Style.button.apply(to: $0)
+            Style.button().apply(to: $0)
             $0.setTitleColor(textColor, for: .normal)
             $0.imageView?.tintColor = textColor
             $0.titleLabel?.font = $0.titleLabel?.font.withSize(24)

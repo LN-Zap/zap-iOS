@@ -13,15 +13,12 @@ extension UIStoryboard {
     static func instantiateDetailViewController(
         detailViewModel: DetailViewModel,
         dismissButtonTapped: @escaping () -> Void,
-        safariButtonTapped: @escaping (URL) -> Void,
-        closeChannelButtonTapped: @escaping (Channel, String, @escaping () -> Void) -> Void
-        ) -> UINavigationController {
+        blockExplorerButtonTapped: @escaping (String, BlockExplorer.CodeType) -> Void) -> UINavigationController {
         let viewController = Storyboard.detail.initial(viewController: UINavigationController.self)
         if let detailViewController = viewController.topViewController as? DetailViewController {
             detailViewController.detailViewModel = detailViewModel
             detailViewController.dismissButtonTapped = dismissButtonTapped
-            detailViewController.safariButtonTapped = safariButtonTapped
-            detailViewController.closeChannelButtonTapped = closeChannelButtonTapped
+            detailViewController.blockExplorerButtonTapped = blockExplorerButtonTapped
         }
         return viewController
     }
@@ -32,8 +29,7 @@ final class DetailViewController: UIViewController, KeyboardAdjustable {
     @IBOutlet private weak var tableViewBottomConstraint: NSLayoutConstraint!
     
     fileprivate var dismissButtonTapped: (() -> Void)?
-    fileprivate var safariButtonTapped: ((URL) -> Void)?
-    fileprivate var closeChannelButtonTapped: ((Channel, String, @escaping () -> Void) -> Void)?
+    fileprivate var blockExplorerButtonTapped: ((String, BlockExplorer.CodeType) -> Void)?
     
     var detailViewModel: DetailViewModel?
     
@@ -45,17 +41,15 @@ final class DetailViewController: UIViewController, KeyboardAdjustable {
         navigationController?.navigationBar.barTintColor = .white
         
         title = detailViewModel?.detailViewControllerTitle
-        titleTextStyle = .dark
+        navigationController?.navigationBar.titleTextStyle = .dark
         
         tableView.registerCell(DetailTableViewCell.self)
         tableView.registerCell(DetailMemoTableViewCell.self)
         tableView.registerCell(DetailQRCodeTableViewCell.self)
         tableView.registerCell(DetailTimerTableViewCell.self)
-        tableView.registerCell(DetailLegendTableViewCell.self)
-        tableView.registerCell(DetailBalanceTableViewCell.self)
         tableView.registerCell(DetailSeparatorTableViewCell.self)
         tableView.registerCell(DetailDestructiveActionTableViewCell.self)
-        tableView.registerCell(DetailTransactionHashTableViewCell.self)
+        tableView.registerCell(DetailBlockExplorerTableViewCell.self)
 
         tableView.rowHeight = UITableViewAutomaticDimension
         tableView.estimatedRowHeight = 48
@@ -91,14 +85,6 @@ final class DetailViewController: UIViewController, KeyboardAdjustable {
             let cell: DetailTimerTableViewCell = tableView.dequeueCellForIndexPath(indexPath)
             cell.info = info
             return cell
-        case .legend(let info):
-            let cell: DetailLegendTableViewCell = tableView.dequeueCellForIndexPath(indexPath)
-            cell.info = info
-            return cell
-        case .balance(let info):
-            let cell: DetailBalanceTableViewCell = tableView.dequeueCellForIndexPath(indexPath)
-            cell.info = info
-            return cell
         case .separator:
             return tableView.dequeueCellForIndexPath(indexPath) as DetailSeparatorTableViewCell
         case .destructiveAction(let info):
@@ -107,7 +93,7 @@ final class DetailViewController: UIViewController, KeyboardAdjustable {
             cell.info = info
             return cell
         case .transactionHash(let info):
-            let cell: DetailTransactionHashTableViewCell = tableView.dequeueCellForIndexPath(indexPath)
+            let cell: DetailBlockExplorerTableViewCell = tableView.dequeueCellForIndexPath(indexPath)
             cell.delegate = self
             cell.info = info
             return cell
@@ -120,15 +106,11 @@ final class DetailViewController: UIViewController, KeyboardAdjustable {
 }
 
 extension DetailViewController: DetailCellDelegate {
-    func closeChannel(_ channel: Channel, nodeAlias: String, closeAction: @escaping () -> Void) {
-        closeChannelButtonTapped?(channel, nodeAlias, closeAction)
-    }
-    
     func dismiss() {
         dismissButtonTapped?()
     }
     
-    func presentSafariViewController(for url: URL) {
-        safariButtonTapped?(url)
+    func presentBlockExplorer(_ transactionId: String, type: BlockExplorer.CodeType) {
+        blockExplorerButtonTapped?(transactionId, type)
     }
 }

@@ -12,65 +12,54 @@ import UIKit
 extension UIStoryboard {
     static func instantiateChannelListViewController(
         channelListViewModel: ChannelListViewModel,
-        presentChannelDetail: @escaping (ChannelViewModel) -> Void,
-        closeButtonTapped: @escaping (Channel, String, @escaping () -> Void) -> Void,
-        addChannelButtonTapped: @escaping () -> Void) -> ChannelListViewController {
+        closeButtonTapped: @escaping (ChannelViewModel, @escaping () -> Void) -> Void,
+        addChannelButtonTapped: @escaping () -> Void,
+        blockExplorerButtonTapped: @escaping (String, BlockExplorer.CodeType) -> Void) -> UIViewController {
         let viewController = Storyboard.channelList.initial(viewController: ChannelListViewController.self)
         
         viewController.channelListViewModel = channelListViewModel
-        viewController.presentChannelDetail = presentChannelDetail
         viewController.closeButtonTapped = closeButtonTapped
         viewController.addChannelButtonTapped = addChannelButtonTapped
+        viewController.blockExplorerButtonTapped = blockExplorerButtonTapped
+        
+        viewController.tabBarItem.title = "Channels"
+        viewController.tabBarItem.image = UIImage(named: "tabbar_wallet", in: Bundle.library, compatibleWith: nil)
         
         return viewController
     }
 }
 
 final class ChannelListViewController: UIViewController {
-    @IBOutlet private weak var tableView: UITableView?
-    @IBOutlet private weak var searchBackgroundView: UIView!
-    @IBOutlet private weak var searchBar: UISearchBar!
-    @IBOutlet private weak var addChannelButton: UIButton!
+    @IBOutlet private weak var backgroundGradientView: GradientView! {
+        didSet {
+            backgroundGradientView.direction = .vertical
+            backgroundGradientView.gradient = [UIColor.Zap.seaBlueGradient, UIColor.Zap.seaBlue]
+        }
+    }
+    @IBOutlet private weak var collectionView: ChannelCollectionView!
+    @IBOutlet private var headerView: UICollectionReusableView!
     
-    fileprivate var presentChannelDetail: ((ChannelViewModel) -> Void)?
-    fileprivate var addChannelButtonTapped: (() -> Void)?
-    fileprivate var closeButtonTapped: ((Channel, String, @escaping () -> Void) -> Void)?
     fileprivate var channelListViewModel: ChannelListViewModel?
     
-    deinit {
-        tableView?.isEditing = false // fixes Bond bug. Binding is not released in editing mode.
-    }
+    fileprivate var addChannelButtonTapped: (() -> Void)?
+    fileprivate var closeButtonTapped: ((ChannelViewModel, @escaping () -> Void) -> Void)?
+    fileprivate var blockExplorerButtonTapped: ((String, BlockExplorer.CodeType) -> Void)?
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        title = "scene.channels.title".localized
+        title = "Channels"
         
-        guard let tableView = tableView else { return }
-        
-        tableView.rowHeight = 60
-        tableView.registerCell(ChannelTableViewCell.self)
-        
-        tableView.refreshControl = UIRefreshControl()
-        tableView.refreshControl?.addTarget(self, action: #selector(refresh), for: .valueChanged)
-        
-        searchBar.placeholder = "scene.channels.search.placeholder".localized
-        searchBar.delegate = self
-        searchBar.backgroundImage = UIImage()
-        searchBackgroundView.backgroundColor = UIColor.zap.white
-        addChannelButton.tintColor = UIColor.zap.black
-        
-        channelListViewModel?.dataSource
-            .bind(to: tableView) { dataSource, indexPath, tableView in
-                let cell: ChannelTableViewCell = tableView.dequeueCellForIndexPath(indexPath)
-                cell.channelViewModel = dataSource[indexPath]
-                return cell
-            }
-            .dispose(in: reactive.bag)
+        collectionView.registerCell(ChannelCell.self)
+        collectionView.register(UINib(nibName: HeaderCollectionReusableView.kind, bundle: Bundle.library), forSupplementaryViewOfKind: HeaderCollectionReusableView.kind, withReuseIdentifier: HeaderCollectionReusableView.kind)
 
-        channelListViewModel?.searchString
-            .bidirectionalBind(to: searchBar.reactive.text)
-            .dispose(in: reactive.bag)
+        view.addBackgroundGradient()
+        
+        channelListViewModel?.dataSource.observeNext { [weak self] _ in
+            self?.collectionView.reloadData()
+        }.dispose(in: reactive.bag)
+        
+        collectionView.dataSource = self
     }
     
     @objc func refresh(sender: UIRefreshControl) {
@@ -83,7 +72,7 @@ final class ChannelListViewController: UIViewController {
     }
     
     func closeChannel(for channelViewModel: ChannelViewModel) {
-        closeButtonTapped?(channelViewModel.channel, channelViewModel.name.value) { [weak self] in
+        closeButtonTapped?(channelViewModel) { [weak self] in
             self?.channelListViewModel?.close(channelViewModel.channel) { result in
                 if let error = result.error {
                     self?.parent?.presentErrorToast(error.localizedDescription)
@@ -95,56 +84,55 @@ final class ChannelListViewController: UIViewController {
     }
 }
 
-extension ChannelListViewController: UISearchBarDelegate {
-    func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
-        searchBar.resignFirstResponder()
+extension ChannelListViewController: ChannelListHeaderDelegate {
+    func openChannelButtonTapped() {
+        addChannelButtonTapped?()
     }
 }
 
-extension ChannelListViewController: UITableViewDelegate {
-    func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
-        let sectionHeaderView = SectionHeaderView.instanceFromNib
-        sectionHeaderView.title = channelListViewModel?.dataSource[section].metadata
-        sectionHeaderView.backgroundColor = .white
-        return sectionHeaderView
+extension ChannelListViewController: ChannelListDataSource {
+    func heightForItem(at index: Int) -> CGFloat {
+        guard let elements = channelListViewModel?.dataSource[index].detailViewModel.elements else { return 0 }
+        
+        return elements.height + CGFloat(elements.count + 1) * 14
     }
     
-    func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
-        guard let channelListViewModel = channelListViewModel else { return 0 }
-        
-        if channelListViewModel.dataSource.sections.count > 1 {
-            return 60
-        } else {
-            return 0
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        return channelListViewModel?.dataSource.count ?? 0
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        let channelCell: ChannelCell = collectionView.dequeueCellForIndexPath(indexPath)
+        channelCell.channelViewModel = channelListViewModel?.dataSource[indexPath.item]
+        channelCell.delegate = self
+        return channelCell
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
+        let view = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: HeaderCollectionReusableView.kind, for: indexPath)
+        if let view = view as? HeaderCollectionReusableView {
+            view.delegate = self
         }
+        return view
     }
-    
-    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        tableView.deselectRow(at: indexPath, animated: true)
-        
-        guard
-            let channelViewModel = channelListViewModel?.dataSource.item(at: indexPath)
-            else { return }
-        
-        presentChannelDetail?(channelViewModel)
-    }
-    
-    func scrollViewWillBeginDragging(_ scrollView: UIScrollView) {
-        searchBar.resignFirstResponder()
-    }
-    
-    func tableView(_ tableView: UITableView, editActionsForRowAt indexPath: IndexPath) -> [UITableViewRowAction]? {
-        guard
-            let channelViewModel = channelListViewModel?.dataSource.item(at: indexPath),
-            !channelViewModel.state.value.isClosing
-            else { return [] }
-        
-        let closeTitle = channelViewModel.channel.state == .active ? "scene.channel_detail.close_button".localized : "scene.channel_detail.force_close_button".localized
+}
 
-        let closeAction = UITableViewRowAction(style: .destructive, title: closeTitle) { [weak self] _, _ in
-            self?.closeChannel(for: channelViewModel)
+extension ChannelListViewController: ChannelCellDelegate {
+    func closeChannelButtonTapped(channelViewModel: ChannelViewModel) {
+        closeButtonTapped?(channelViewModel) { [weak self] in
+            let loadingView = self?.presentLoadingView(text: "Closing Channel")
+            self?.view.isUserInteractionEnabled = false
+            self?.channelListViewModel?.close(channelViewModel.channel) { _ in
+                DispatchQueue.main.async {
+                    self?.view.isUserInteractionEnabled = true
+                    self?.collectionView.switchToStackView()
+                    loadingView?.dismiss()
+                }
+            }
         }
-        closeAction.backgroundColor = UIColor.zap.tomato
-        return [closeAction]
+    }
+    
+    func fundingTransactionTxIdButtonTapped(channelViewModel: ChannelViewModel) {
+        blockExplorerButtonTapped?(channelViewModel.channel.channelPoint.fundingTxid, .transactionId)
     }
 }

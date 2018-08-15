@@ -1,3 +1,8 @@
+[![Build Status](https://travis-ci.org/LN-Zap/zap-iOS.svg?branch=master)](https://travis-ci.org/LN-Zap/zap-iOS)
+[![GitHub license](https://img.shields.io/github/license/LN-Zap/zap-iOS.svg)](LICENSE)
+[![Crowdin](https://d322cqt584bo4o.cloudfront.net/zap-ios/localized.svg)](https://crowdin.com/project/zap-ios)
+[![codecov](https://codecov.io/gh/LN-Zap/zap-iOS/branch/master/graph/badge.svg)](https://codecov.io/gh/LN-Zap/zap-iOS)
+
 # Zap iOS
 
 <p align='center'>
@@ -5,11 +10,6 @@
     <img src='https://raw.githubusercontent.com/LN-Zap/zap-iOS/master/docs/screenshot.png' height='450' alt='screenshot' />
   </a>
 </p>
-
-> Lightning wallet focused on user experience and ease of use ⚡️
-
-[![Build Status](https://travis-ci.org/LN-Zap/zap-iOS.svg?branch=master)](https://travis-ci.org/LN-Zap/zap-iOS)
-[![GitHub license](https://img.shields.io/github/license/LN-Zap/zap-iOS.svg)](LICENSE)
 
 **Sign up for alpha testing here: [zap-ios.jackmallers.com][alpha]!** 
 
@@ -46,6 +46,7 @@ Hey! Do you like Zap? Awesome! We could actually really use your help!
 Open source isn't just writing code. Zap could use your help with any of the following:
 
 - Finding (and reporting!) bugs
+- [Help translating the app](https://crowdin.com/project/zap-ios)
 - New feature suggestions
 - Answering questions on issues
 - Documentation improvements

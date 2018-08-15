@@ -24,7 +24,8 @@ final class CertificateDetailViewController: UITableViewController {
         title = "scene.connect_remote_node.certificate_detail.certificate_title".localized
         
         tableView.rowHeight = UITableViewAutomaticDimension
-        tableView.separatorColor = UIColor.zap.warmGrey
+        tableView.backgroundColor = UIColor.Zap.deepSeaBlue
+        tableView.separatorColor = UIColor.Zap.gray
         tableView.estimatedRowHeight = 300
         tableView.registerCell(CertificateDetailCell.self)
     }
@@ -52,12 +53,12 @@ final class CertificateDetailViewController: UITableViewController {
         } else {
             cell.descriptionText = connectRemoteNodeViewModel?.remoteNodeConfiguration?.macaroon.hexString()
         }
+        cell.contentView.backgroundColor = UIColor.Zap.seaBlue
         return cell
     }
     
     override func tableView(_ tableView: UITableView, willDisplayHeaderView view: UIView, forSection section: Int) {
         guard let view = view as? UITableViewHeaderFooterView else { return }
-        view.textLabel?.font = UIFont.zap.light
         view.textLabel?.text = view.textLabel?.text?.capitalized
     }
 }

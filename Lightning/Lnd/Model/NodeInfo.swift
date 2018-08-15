@@ -22,11 +22,11 @@ extension NodeInfo {
     }
 }
 
-struct LightningNode {
-    let lastUpdate: Int?
-    let pubKey: String?
-    let alias: String?
-    let color: String?
+public struct LightningNode: Codable {
+    public let lastUpdate: Int?
+    public let pubKey: String?
+    public let alias: String?
+    public let color: String?
 }
 
 extension LightningNode {

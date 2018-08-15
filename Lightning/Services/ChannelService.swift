@@ -71,16 +71,9 @@ public final class ChannelService {
         }
     }
     
-    func alias(for remotePubkey: String, callback: @escaping (String?) -> Void) {
+    func node(for remotePubkey: String, callback: @escaping (LightningNode?) -> Void) {
         api.nodeInfo(pubKey: remotePubkey) { result in
-            if
-                let nodeInfo = result.value,
-                let alias = nodeInfo.node.alias,
-                !alias.isEmpty {
-                callback(alias)
-            } else {
-                callback(nil)
-            }
+            callback(result.value?.node)
         }
     }
 }

@@ -13,9 +13,9 @@ enum Storyboard: String {
     case createWallet
     case debug
     case deposit
+    case detail
     case invoiceDetail
     case loading
-    case main
     case numericKeyPad
     case openChannel
     case paymentDetail
@@ -27,8 +27,8 @@ enum Storyboard: String {
     case sendOnChain
     case settings
     case sync
-    case detail
     case transactionList
+    case wallet
     
     var storyboard: UIStoryboard? {
         let storyboardName = uppercasedStart(rawValue)

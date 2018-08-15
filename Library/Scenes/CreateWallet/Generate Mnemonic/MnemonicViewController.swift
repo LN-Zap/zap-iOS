@@ -31,14 +31,14 @@ final class MnemonicViewController: UIViewController {
         super.viewDidLoad()
         
         title = "scene.create_wallet.title".localized
+        view.backgroundColor = UIColor.Zap.deepSeaBlue
         
-        Style.button.apply(to: doneButton)
-        Style.label.apply(to: topLabel)
+        Style.button(color: UIColor.Zap.white).apply(to: doneButton)
+        Style.Label.custom().apply(to: topLabel)
         topLabel.textColor = .white
         topLabel.text = "scene.create_wallet.description_label".localized
         
         doneButton.setTitle("scene.create_wallet.next_button".localized, for: .normal)
-        doneButton.tintColor = .white
         
         mnemonicViewModel?.pageWords
             .map { $0 != nil }

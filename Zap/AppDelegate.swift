@@ -13,9 +13,7 @@ final class AppDelegate: UIResponder, UIApplicationDelegate {
     var rootCoordinator: RootCoordinator?
     var window: UIWindow?
     
-    func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {        
-        UIApplication.shared.isIdleTimerDisabled = true
-                
+    func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         if let documentsDir = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first?.absoluteString {
             print("💾", documentsDir.replacingOccurrences(of: "file://", with: ""))
         }

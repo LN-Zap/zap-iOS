@@ -31,12 +31,12 @@ final class ConfirmMnemonicViewController: UIViewController {
         
         title = "scene.confirm_mnemonic.title".localized
 
+        view.backgroundColor = UIColor.Zap.seaBlue
+    
         collectionView.dataSource = self
         collectionView.isScrollEnabled = false
         
-        Style.label.apply(to: descriptionLabel) {
-            $0.textColor = .white
-        }
+        Style.Label.custom(color: .white).apply(to: descriptionLabel)
         
         descriptionLabel.text = "scene.confirm_mnemonic.description".localized
         

@@ -45,9 +45,7 @@ final class ConfirmMnemonicCollectionViewCell: UICollectionViewCell {
         textField?.delegate = self
         
         if let textField = textField {
-            Style.textField.apply(to: textField) {
-                $0.textColor = .white
-            }
+            Style.textField(color: .white).apply(to: textField)
         }
     }
     
@@ -62,7 +60,7 @@ final class ConfirmMnemonicCollectionViewCell: UICollectionViewCell {
             (Environment.allowFakeMnemonicConfirmation && sender.text == "xx") {
             wordConfirmedCallback?()
         } else {
-            bottomLineView.backgroundColor = UIColor.zap.tomato
+            bottomLineView.backgroundColor = UIColor.Zap.superRed
         }
     }
 }

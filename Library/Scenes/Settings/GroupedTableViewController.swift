@@ -16,8 +16,8 @@ class GroupedTableViewController: UITableViewController {
 
         super.init(style: .grouped)
         
-        tableView.backgroundColor = UIColor.zap.charcoalGrey
-        tableView.separatorColor = UIColor.zap.warmGrey
+        tableView.backgroundColor = UIColor.Zap.deepSeaBlue
+        tableView.separatorColor = UIColor.Zap.gray
         tableView.rowHeight = 76
     }
     
@@ -44,7 +44,6 @@ class GroupedTableViewController: UITableViewController {
         if let item = item as? SubtitleSettingsItem {
             cell = UITableViewCell(style: .value1, reuseIdentifier: "Value1SettingsCell")
             if let detailLabel = cell.detailTextLabel {
-                detailLabel.font = UIFont.zap.light
                 item.subtitle
                     .bind(to: detailLabel.reactive.text)
                     .dispose(in: reactive.bag)
@@ -54,15 +53,14 @@ class GroupedTableViewController: UITableViewController {
         }
         
         cell.textLabel?.text = item.title
-        cell.textLabel?.font = UIFont.zap.light
         cell.textLabel?.textColor = .white
-        cell.backgroundColor = UIColor.zap.charcoalGreyLight
+        cell.backgroundColor = UIColor.Zap.seaBlue
 
         if let item = item as? SelectableSettingsItem {
             item.isSelectedOption
                 .observeNext {
                     cell.accessoryType = $0 ? .checkmark : .none
-                    cell.textLabel?.textColor = $0 ? UIColor.zap.peach : .white
+                    cell.textLabel?.textColor = $0 ? UIColor.Zap.lightningOrange : .white
                 }
                 .dispose(in: reactive.bag)
         } else if item is DetailDisclosureSettingsItem {
@@ -81,13 +79,11 @@ class GroupedTableViewController: UITableViewController {
     
     override func tableView(_ tableView: UITableView, willDisplayHeaderView view: UIView, forSection section: Int) {
         guard let view = view as? UITableViewHeaderFooterView else { return }
-        view.textLabel?.font = UIFont.zap.light
         view.textLabel?.text = sections[section].title
     }
     
     override func tableView(_ tableView: UITableView, willDisplayFooterView view: UIView, forSection section: Int) {
         guard let view = view as? UITableViewHeaderFooterView else { return }
-        view.textLabel?.font = UIFont.zap.light.withSize(13)
         view.textLabel?.textAlignment = .center
     }
 }

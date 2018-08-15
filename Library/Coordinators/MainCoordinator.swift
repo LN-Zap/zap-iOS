@@ -17,7 +17,6 @@ final class MainCoordinator: Routing {
     private let transactionListViewModel: TransactionListViewModel
     private let channelTransactionAnnotationUpdater: ChannelTransactionAnnotationUpdater
     
-    private weak var mainViewController: MainViewController?
     private weak var detailViewController: UINavigationController?
     private weak var settingsDelegate: SettingsDelegate?
     
@@ -26,18 +25,11 @@ final class MainCoordinator: Routing {
         self.lightningService = lightningService
         self.settingsDelegate = settingsDelegate
         
-        let aliasStore = ChannelAliasStore(channelService: lightningService.channelService)
-        channelListViewModel = ChannelListViewModel(channelService: lightningService.channelService, aliasStore: aliasStore)
-        transactionListViewModel = TransactionListViewModel(transactionService: lightningService.transactionService, aliasStore: aliasStore)
+        let nodeStore = LightningNodeStore(channelService: lightningService.channelService)
+        channelListViewModel = ChannelListViewModel(channelService: lightningService.channelService, nodeStore: nodeStore)
+        transactionListViewModel = TransactionListViewModel(transactionService: lightningService.transactionService, nodeStore: nodeStore)
         
         channelTransactionAnnotationUpdater = ChannelTransactionAnnotationUpdater(channelService: lightningService.channelService, transactionService: lightningService.transactionService, updateCallback: transactionListViewModel.updateAnnotationType)
-    }
-    
-    func start() {
-        let viewController = UIStoryboard.instantiateMainViewController(with: lightningService, settingsButtonTapped: presentSettings, sendButtonTapped: presentSend, requestButtonTapped: presentRequest, transactionsButtonTapped: presentTransactions, networkButtonTapped: presentNetwork)
-        self.mainViewController = viewController
-
-        self.rootViewController.setContainerContent(viewController)
     }
     
     public func handle(_ route: Route) {
@@ -53,31 +45,45 @@ final class MainCoordinator: Routing {
             presentRequest()
         }
     }
+    
+    func walletViewController() -> UIViewController {
+        return UIStoryboard.instantiateWalletViewController(lightningService: lightningService, sendButtonTapped: presentSend, requestButtonTapped: presentRequest)
+    }
 
-    private func presentSettings() {
-        guard let settingsDelegate = settingsDelegate else { return }
-        let viewController = UIStoryboard.instantiateSettingsContainerViewController(lightningService: lightningService, settingsDelegate: settingsDelegate)
-        mainViewController?.present(viewController, animated: true, completion: nil)
+    func settingsViewController() -> UIViewController {
+        guard let settingsDelegate = settingsDelegate else { fatalError("Didn't set settings Delegate") }
+        
+        return SettingsViewController.instantiate(settingsDelegate: settingsDelegate)
     }
     
-    private func presentTransactions() {
-        let viewController = UIStoryboard.instantiateTransactionListViewController(transactionListViewModel: transactionListViewModel, presentTransactionDetail: presentTransactionDetail, presentFilter: presentFilter)
-        mainViewController?.setContainerContent(viewController)
+    func transactionListViewController() -> UIViewController {
+        return UIStoryboard.instantiateTransactionListViewController(transactionListViewModel: transactionListViewModel, presentTransactionDetail: presentTransactionDetail, presentFilter: presentFilter)
     }
     
-    private func presentNetwork() {
-        let viewController = UIStoryboard.instantiateChannelListViewController(channelListViewModel: channelListViewModel, presentChannelDetail: presentChannelDetail, closeButtonTapped: presentMainCloseConfirmation, addChannelButtonTapped: presentAddChannel)
-        mainViewController?.setContainerContent(viewController)
+    func channelListViewController() -> UIViewController {
+        return UIStoryboard.instantiateChannelListViewController(channelListViewModel: channelListViewModel, closeButtonTapped: presentCloseConfirmation, addChannelButtonTapped: presentAddChannel, blockExplorerButtonTapped: presentBlockExplorer)
     }
     
     func presentSend() {
         presentSend(invoice: nil)
     }
     
+    func presentBlockExplorer(code: String, type: BlockExplorer.CodeType) {
+        let network = lightningService.infoService.network.value
+        do {
+            guard let url = try Settings.shared.blockExplorer.value.url(network: network, code: code, type: type) else { return }
+            presentSafariViewController(for: url)
+        } catch BlockExplorerError.unsupportedNetwork {
+            (detailViewController ?? rootViewController).presentErrorToast(String(format: "error.block_explorer.unsupported_network".localized, Settings.shared.blockExplorer.value.localized, lightningService.infoService.network.value.localized))
+        } catch {
+            print("Unexpected error: \(error).")
+        }
+    }
+    
     func presentSend(invoice: String?) {
-        let strategy = SendQRCodeScannerStrategy(transactionAnnotationStore: transactionListViewModel.transactionAnnotationStore, channelAliasStore: channelListViewModel.aliasStore)
+        let strategy = SendQRCodeScannerStrategy(transactionAnnotationStore: transactionListViewModel.transactionAnnotationStore, nodeStore: channelListViewModel.nodeStore)
         let viewController = UIStoryboard.instantiateQRCodeScannerViewController(with: lightningService, strategy: strategy)
-        mainViewController?.present(viewController, animated: true) {
+        rootViewController.present(viewController, animated: true) {
             if let invoice = invoice,
                 let qrCodeScannerViewController = viewController.topViewController as? QRCodeScannerViewController {
                 _ = qrCodeScannerViewController.tryPresentingViewController(for: invoice)
@@ -87,35 +93,26 @@ final class MainCoordinator: Routing {
     
     func presentRequest() {
         let viewController = UIStoryboard.instantiateRequestViewController(with: RequestViewModel(transactionService: lightningService.transactionService))
-        mainViewController?.present(viewController, animated: true, completion: nil)
+        rootViewController.present(viewController, animated: true, completion: nil)
     }
     
     private func presentAddChannel() {
         let viewController = UIStoryboard.instantiateQRCodeScannerViewController(with: lightningService, strategy: OpenChannelQRCodeScannerStrategy())
-        mainViewController?.present(viewController, animated: true, completion: nil)
-    }
-    
-    private func presentChannelDetail(for channelViewModel: ChannelViewModel) {
-        let detailViewModel = ChannelDetailViewModel(channel: channelViewModel.channel, infoService: lightningService.infoService, channelListViewModel: channelListViewModel)
-        presentDetail(for: detailViewModel)
+        rootViewController.present(viewController, animated: true, completion: nil)
     }
     
     private func presentTransactionDetail(for transactionViewModel: TransactionViewModel) {
-        let network = lightningService.infoService.network.value
-        presentDetail(for: DetailViewModelFactory.instantiate(from: transactionViewModel, transactionListViewModel: transactionListViewModel, network: network))
-    }
-    
-    private func presentDetail(for detailViewModel: DetailViewModel) {
-        let detailViewController = UIStoryboard.instantiateDetailViewController(detailViewModel: detailViewModel, dismissButtonTapped: dismissDetailViewController, safariButtonTapped: presentSafariViewController, closeChannelButtonTapped: presentDetailCloseConfirmation)
+        let detailViewModel = DetailViewModelFactory.instantiate(from: transactionViewModel, transactionListViewModel: transactionListViewModel)
+        let detailViewController = UIStoryboard.instantiateDetailViewController(detailViewModel: detailViewModel, dismissButtonTapped: dismissDetailViewController, blockExplorerButtonTapped: presentBlockExplorer)
         self.detailViewController = detailViewController
-        mainViewController?.present(detailViewController, animated: true, completion: nil)
+        rootViewController.present(detailViewController, animated: true, completion: nil)
     }
     
     private func presentSafariViewController(for url: URL) {
         let safariViewController = SFSafariViewController(url: url)
-        safariViewController.preferredBarTintColor = UIColor.zap.charcoalGrey
-        safariViewController.preferredControlTintColor = UIColor.zap.peach
-        detailViewController?.present(safariViewController, animated: true)
+        safariViewController.preferredBarTintColor = UIColor.Zap.deepSeaBlue
+        safariViewController.preferredControlTintColor = UIColor.Zap.lightningOrange
+        (detailViewController ?? rootViewController).present(safariViewController, animated: true)
     }
     
     private func dismissDetailViewController() {
@@ -123,18 +120,13 @@ final class MainCoordinator: Routing {
         detailViewController = nil
     }
     
-    private func presentMainCloseConfirmation(for channel: Channel, nodeAlias: String, closeAction: @escaping () -> Void) {
-        let alertController = UIAlertController.closeChannelAlertController(channel: channel, nodeAlias: nodeAlias, closeAction: closeAction)
-        mainViewController?.present(alertController, animated: true, completion: nil)
-    }
-    
-    private func presentDetailCloseConfirmation(for channel: Channel, nodeAlias: String, closeAction: @escaping () -> Void) {
-        let alertController = UIAlertController.closeChannelAlertController(channel: channel, nodeAlias: nodeAlias, closeAction: closeAction)
-        detailViewController?.present(alertController, animated: true, completion: nil)
+    private func presentCloseConfirmation(for channelViewModel: ChannelViewModel, closeAction: @escaping () -> Void) {
+        let alertController = UIAlertController.closeChannelAlertController(channelViewModel: channelViewModel, closeAction: closeAction)
+        rootViewController.present(alertController, animated: true, completion: nil)
     }
     
     private func presentFilter() {
         let filterViewController = UIStoryboard.instantiateFilterViewController(transactionListViewModel: transactionListViewModel)
-        mainViewController?.present(filterViewController, animated: true, completion: nil)
+        rootViewController.present(filterViewController, animated: true, completion: nil)
     }
 }

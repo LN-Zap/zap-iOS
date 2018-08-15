@@ -20,13 +20,11 @@ final class SelectWalletCreationMethodTableViewCell: UITableViewCell {
     override func awakeFromNib() {
         super.awakeFromNib()
         
+        backgroundColor = UIColor.Zap.seaBlue
+        
         accessoryType = .disclosureIndicator
 
-        Style.label.apply(to: mainLabel) {
-            $0.font = $0.font.withSize(36)
-        }
-        Style.label.apply(to: descriptionLabel) {
-            $0.font = $0.font.withSize(18)
-        }
+        Style.Label.custom(fontSize: 36).apply(to: mainLabel)
+        Style.Label.custom(fontSize: 18).apply(to: descriptionLabel)
     }
 }

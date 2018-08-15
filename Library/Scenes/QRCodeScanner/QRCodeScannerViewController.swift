@@ -37,12 +37,10 @@ final class QRCodeScannerViewController: UIViewController, ContainerViewControll
     @IBOutlet weak var container: UIView?
     
     @IBOutlet private weak var successView: UIView!
-    @IBOutlet private weak var qrCodeOverlayImageView: UIImageView!
     @IBOutlet private weak var qrCodeSuccessImageView: UIImageView!
     
     @IBOutlet private weak var containerViewHeightConstraint: NSLayoutConstraint!
     @IBOutlet private weak var paymentTopConstraint: NSLayoutConstraint!
-    @IBOutlet private weak var pasteButtonContainer: UIView!
     @IBOutlet private weak var pasteButton: UIButton!
     @IBOutlet private weak var scannerView: QRCodeScannerView! {
         didSet {
@@ -73,15 +71,16 @@ final class QRCodeScannerViewController: UIViewController, ContainerViewControll
     override func viewDidLoad() {
         super.viewDidLoad()
                 
-        Style.button.apply(to: pasteButton)
-        pasteButton.setTitleColor(.white, for: .normal)
+        Style.button().apply(to: pasteButton)
+        
+        Style.button(backgroundColor: UIColor.Zap.deepSeaBlue).apply(to: pasteButton)
         
         navigationController?.navigationBar.backgroundColor = .clear
         navigationController?.navigationBar.shadowImage = UIImage()
         navigationController?.navigationBar.setBackgroundImage(UIImage(), for: .default)
-        
+
         scannerViewOverlay.alpha = 0
-        qrCodeSuccessImageView.tintColor = UIColor.zap.nastyGreen
+        qrCodeSuccessImageView.tintColor = UIColor.Zap.superGreen
     }
     
     func tryPresentingViewController(for address: String) {
@@ -115,14 +114,11 @@ final class QRCodeScannerViewController: UIViewController, ContainerViewControll
         }
         
         UIView.animate(withDuration: 0.25) {
-            self.qrCodeOverlayImageView.alpha = 0
             self.qrCodeSuccessImageView.alpha = 1
             self.scannerViewOverlay.alpha = 0.8
-            self.pasteButtonContainer.isHidden = true
             self.paymentTopConstraint.isActive = false
             self.view.layoutIfNeeded()
         }
-
     }
     
     private func applyCornerRoundingMask(to view: UIView) {

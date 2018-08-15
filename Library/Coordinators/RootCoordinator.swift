@@ -21,7 +21,7 @@ public final class RootCoordinator: NSObject, SetupCoordinatorDelegate, PinCoord
         rootViewModel = RootViewModel()
         
         window.rootViewController = self.rootViewController
-        window.tintColor = UIColor.zap.peach
+        window.tintColor = UIColor.Zap.lightningOrange
         Appearance.setup()
         
         rootViewModel.start()
@@ -78,10 +78,25 @@ public final class RootCoordinator: NSObject, SetupCoordinatorDelegate, PinCoord
     
     private func presentMain() {
         guard let lightningService = rootViewModel.lightningService else { return }
+        
+        let tabBarController = UITabBarController()
+        tabBarController.tabBar.barTintColor = UIColor.Zap.deepSeaBlue
+        tabBarController.tabBar.isTranslucent = false
+        tabBarController.tabBar.shadowImage = UIImage()
+        tabBarController.tabBar.backgroundImage = UIImage()
+        
         let mainCoordinator = MainCoordinator(rootViewController: rootViewController, lightningService: lightningService, settingsDelegate: self)
+
+        tabBarController.viewControllers = [
+            mainCoordinator.walletViewController(),
+            mainCoordinator.transactionListViewController(),
+            mainCoordinator.channelListViewController(),
+            mainCoordinator.settingsViewController()
+        ]
+        presentViewController(tabBarController)
+    
         currentCoordinator = mainCoordinator
-        mainCoordinator.start()
-                
+
         if let route = self.route {
             handle(route)
         }

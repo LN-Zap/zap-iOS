@@ -11,25 +11,20 @@ import Foundation
 import Lightning
 
 enum DetailCellType {
-    case balance(DetailBalanceTableViewCell.Info)
     case destructiveAction(DetailDestructiveActionTableViewCell.Info)
     case info(DetailTableViewCell.Info)
-    case legend(DetailLegendTableViewCell.Info)
     case memo(DetailMemoTableViewCell.Info)
     case qrCode(String)
     case separator
     case timer(DetailTimerTableViewCell.Info)
-    case transactionHash(DetailTransactionHashTableViewCell.Info)
+    case transactionHash(DetailBlockExplorerTableViewCell.Info)
 
-    static var titleFont = UIFont.zap.regular.withSize(14)
-    static var dataFont = UIFont.zap.light.withSize(14)
+    static var titleFont = UIFont.Zap.regular.withSize(14)
+    static var dataFont = UIFont.Zap.light.withSize(14)
     
-    static func blockExplorerCell(txid: String, title: String, network: Network) -> DetailCellType? {
-        if let url = Settings.shared.blockExplorer.value.url(network: network, txid: txid) {
-            let info = DetailTransactionHashTableViewCell.Info(title: title, transactionUrl: url, transactionHash: txid)
-            return .transactionHash(info)
-        }
-        return nil
+    static func blockExplorerCell(title: String, code: String, type: BlockExplorer.CodeType) -> DetailCellType {
+        let info = DetailBlockExplorerTableViewCell.Info(title: title, code: code, type: type)
+        return .transactionHash(info)
     }
     
     static func hideTransactionCell(transaction: Transaction, annotation: TransactionAnnotation, transactionListViewModel: TransactionListViewModel) -> DetailCellType {
@@ -55,6 +50,5 @@ enum DetailCellType {
 
 protocol DetailCellDelegate: class {
     func dismiss()
-    func presentSafariViewController(for url: URL)
-    func closeChannel(_ channel: Channel, nodeAlias: String, closeAction: @escaping () -> Void)
+    func presentBlockExplorer(_ transactionId: String, type: BlockExplorer.CodeType)
 }

@@ -6,7 +6,6 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
-        <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -14,12 +13,12 @@
         <!--Pin View Controller-->
         <scene sceneID="C4M-21-GqT">
             <objects>
-                <viewController id="w5j-WH-aZe" customClass="PinViewController" customModule="Zap" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="w5j-WH-aZe" customClass="PinViewController" customModule="Library" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="VJq-Lz-K9r">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="vX5-PH-Lj6" customClass="KeyPadView" customModule="Zap" customModuleProvider="target">
+                            <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="vX5-PH-Lj6" customClass="KeyPadView" customModule="Library" customModuleProvider="target">
                                 <rect key="frame" x="15" y="352" width="345" height="300"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="300" id="J15-NH-8nk"/>
@@ -28,7 +27,7 @@
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="KKn-a3-ds0">
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="352"/>
                                 <subviews>
-                                    <stackView opaque="NO" contentMode="scaleToFill" placeholderIntrinsicWidth="210" placeholderIntrinsicHeight="14" distribution="equalSpacing" spacing="25" translatesAutoresizingMaskIntoConstraints="NO" id="l6a-vs-Gmm" customClass="PinView" customModule="Zap" customModuleProvider="target">
+                                    <stackView opaque="NO" contentMode="scaleToFill" placeholderIntrinsicWidth="210" placeholderIntrinsicHeight="14" distribution="equalSpacing" spacing="25" translatesAutoresizingMaskIntoConstraints="NO" id="l6a-vs-Gmm" customClass="PinView" customModule="Library" customModuleProvider="target">
                                         <rect key="frame" x="82" y="194" width="210" height="14"/>
                                         <color key="backgroundColor" white="0.75" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <constraints>
@@ -50,7 +49,7 @@
                                 </constraints>
                             </view>
                         </subviews>
-                        <color key="backgroundColor" name="charcoalGrey"/>
+                        <color key="backgroundColor" white="0.55909358129999998" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="jgC-LF-iyx" firstAttribute="trailing" secondItem="vX5-PH-Lj6" secondAttribute="trailing" constant="15" id="8PL-3W-6FT"/>
                             <constraint firstItem="vX5-PH-Lj6" firstAttribute="top" secondItem="KKn-a3-ds0" secondAttribute="bottom" id="GO8-eP-ALe"/>
@@ -74,7 +73,7 @@
         <!--Setup Pin View Controller-->
         <scene sceneID="7Th-FE-rWF">
             <objects>
-                <viewController storyboardIdentifier="SetupPinViewController" id="Kce-Vs-DG0" customClass="SetupPinViewController" customModule="Zap" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="SetupPinViewController" id="Kce-Vs-DG0" customClass="SetupPinViewController" customModule="Library" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="cr8-0a-y34">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -82,7 +81,7 @@
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="YZN-GB-LBs">
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="255"/>
                                 <subviews>
-                                    <stackView opaque="NO" contentMode="scaleToFill" placeholderIntrinsicWidth="14" placeholderIntrinsicHeight="14" distribution="fillEqually" spacing="25" translatesAutoresizingMaskIntoConstraints="NO" id="ey3-Yd-fVq" customClass="PinView" customModule="Zap" customModuleProvider="target">
+                                    <stackView opaque="NO" contentMode="scaleToFill" placeholderIntrinsicWidth="14" placeholderIntrinsicHeight="14" distribution="fillEqually" spacing="25" translatesAutoresizingMaskIntoConstraints="NO" id="ey3-Yd-fVq" customClass="PinView" customModule="Library" customModuleProvider="target">
                                         <rect key="frame" x="180" y="145.5" width="14" height="14"/>
                                         <color key="backgroundColor" white="0.75" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <constraints>
@@ -97,13 +96,13 @@
                                     <constraint firstItem="ey3-Yd-fVq" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="YZN-GB-LBs" secondAttribute="leading" constant="20" id="ryi-F8-i2K"/>
                                 </constraints>
                             </view>
-                            <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="huB-bK-k8S" customClass="KeyPadView" customModule="Zap" customModuleProvider="target">
+                            <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="huB-bK-k8S" customClass="KeyPadView" customModule="Library" customModuleProvider="target">
                                 <rect key="frame" x="15" y="255" width="345" height="300"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="300" id="Oe9-3J-ivx"/>
                                 </constraints>
                             </containerView>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="4MT-2g-2Tv" customClass="GradientView" customModule="Zap" customModuleProvider="target">
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="4MT-2g-2Tv" customClass="GradientView" customModule="Library" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="570" width="375" height="97"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="I2x-up-50U">
@@ -130,7 +129,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                         </subviews>
-                        <color key="backgroundColor" name="charcoalGrey"/>
+                        <color key="backgroundColor" white="0.55909358129999998" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="YZN-GB-LBs" firstAttribute="top" secondItem="cr8-0a-y34" secondAttribute="top" id="1Sx-S1-LlB"/>
                             <constraint firstItem="RqX-V0-gds" firstAttribute="trailing" secondItem="huB-bK-k8S" secondAttribute="trailing" constant="15" id="75U-aZ-4f3"/>
@@ -162,8 +161,5 @@
     </scenes>
     <resources>
         <image name="pin-logo" width="38" height="36"/>
-        <namedColor name="charcoalGrey">
-            <color red="0.19215686274509805" green="0.20000000000000001" blue="0.23137254901960785" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-        </namedColor>
     </resources>
 </document>

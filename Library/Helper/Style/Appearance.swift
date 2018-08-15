@@ -10,15 +10,15 @@ import UIKit
 enum Appearance {
     static func setup() {
         // UINavigationBar
-        UINavigationBar.appearance().largeTitleTextAttributes = [.font: UIFont.zap.light.withSize(25)]
-        UINavigationBar.appearance().titleTextAttributes = [.font: UIFont.zap.light.withSize(20), .foregroundColor: UIColor.white]
+        UINavigationBar.appearance().largeTitleTextAttributes = [.font: UIFont.Zap.light.withSize(40), .foregroundColor: UIColor.white]
+        UINavigationBar.appearance().titleTextAttributes = [.font: UIFont.Zap.light.withSize(20), .foregroundColor: UIColor.white]
         
         // UIBarButtonItem
-        UIBarButtonItem.appearance().setTitleTextAttributes([.font: UIFont.zap.light], for: .normal)
-        UIBarButtonItem.appearance().setTitleTextAttributes([.font: UIFont.zap.light], for: .disabled)
+        UIBarButtonItem.appearance().setTitleTextAttributes([.font: UIFont.Zap.light], for: .normal)
+        UIBarButtonItem.appearance().setTitleTextAttributes([.font: UIFont.Zap.light], for: .disabled)
         
         // Search Bar Font
-        let searchBarAttributes = [NSAttributedStringKey.font.rawValue: UIFont.zap.light, NSAttributedStringKey.foregroundColor.rawValue: UIColor.zap.black]
+        let searchBarAttributes = [NSAttributedStringKey.font.rawValue: UIFont.Zap.light, NSAttributedStringKey.foregroundColor.rawValue: UIColor.Zap.black]
         UITextField.appearance(whenContainedInInstancesOf: [UISearchBar.self]).defaultTextAttributes = searchBarAttributes
         UITextField.appearance().backgroundColor = .clear
     }

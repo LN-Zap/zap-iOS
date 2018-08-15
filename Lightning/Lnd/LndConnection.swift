@@ -15,6 +15,10 @@ public enum LndConnection {
     case remote(RemoteRPCConfiguration)
     
     var api: LightningApiProtocol? {
+        if Environment.useMockApi {
+            return ApiMockTemplate.selected.instance
+        }
+        
         switch self {
         case .none:
             return nil

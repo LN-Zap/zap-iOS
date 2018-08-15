@@ -4,12 +4,12 @@ PODS:
   - Bond (6.8.3):
     - Differ (~> 1.0)
     - ReactiveKit (~> 3.9)
-  - BoringSSL (10.0.5):
-    - BoringSSL/Implementation (= 10.0.5)
-    - BoringSSL/Interface (= 10.0.5)
-  - BoringSSL/Implementation (10.0.5):
-    - BoringSSL/Interface (= 10.0.5)
-  - BoringSSL/Interface (10.0.5)
+  - BoringSSL (10.0.6):
+    - BoringSSL/Implementation (= 10.0.6)
+    - BoringSSL/Interface (= 10.0.6)
+  - BoringSSL/Implementation (10.0.6):
+    - BoringSSL/Interface (= 10.0.6)
+  - BoringSSL/Interface (10.0.6)
   - Differ (1.2.3)
   - gRPC-Core (1.12.0):
     - gRPC-Core/Implementation (= 1.12.0)
@@ -58,13 +58,13 @@ EXTERNAL SOURCES:
 
 CHECKOUT OPTIONS:
   SwiftGRPC:
-    :commit: f11ad0b7986211a67e4ab843a12fe34ff5fddc77
+    :commit: b2084686f01625f581d19773cc508b8040375ad6
     :git: https://github.com/grpc/grpc-swift
 
 SPEC CHECKSUMS:
   BigInt: 76b5dfdfa3e2e478d4ffdf161aeede5502e2742f
   Bond: d6d25c0cb90459b9d27197251405c6db254da4cf
-  BoringSSL: cf3f1793eb6e3c445c4d150456341f149c268a35
+  BoringSSL: e10f92a27043805c01071fe815a5cd98ae8212e7
   Differ: 061f3298ea9408494c43b530c44583e555884daf
   gRPC-Core: 9696b220565b283e021cf2722d473a4a74b7622a
   KeychainAccess: 7bd430028059754a3debab3cfc0bd1fc7fb85df3

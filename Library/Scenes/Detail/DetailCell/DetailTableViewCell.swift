@@ -26,7 +26,7 @@ final class DetailTableViewCell: UITableViewCell {
     override func awakeFromNib() {
         super.awakeFromNib()
 
-        Style.label.apply(to: titleLabel, dataLabel)
+        Style.Label.custom().apply(to: titleLabel, dataLabel)
         titleLabel.font = DetailCellType.titleFont
         dataLabel.font = DetailCellType.dataFont
     }

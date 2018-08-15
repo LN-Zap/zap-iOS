@@ -20,31 +20,81 @@ struct UIViewStyle<T: UIView> {
         }
     }
     
-    func apply(to views: T..., action: (T) -> Void) {
+    func apply(to views: [T]) {
         for view in views {
             styling(view)
-            action(view)
         }
     }
 }
 
 enum Style {
-    static let button = UIViewStyle<UIButton> {
-        $0.titleLabel?.font = UIFont.zap.light
+    enum Label {
+        static func custom(
+            color: UIColor = UIColor.Zap.black,
+            font: UIFont = UIFont.Zap.light,
+            fontSize: CGFloat = 17,
+            alignment: NSTextAlignment = .left
+            ) -> UIViewStyle<UILabel> {
+            return UIViewStyle<UILabel> {
+                $0.font = UIFontMetrics(forTextStyle: .body).scaledFont(for: font.withSize(fontSize))
+                $0.textColor = color
+                $0.textAlignment = alignment
+                $0.adjustsFontForContentSizeCategory = true
+            }
+        }
+        
+        static let title = UIViewStyle<UILabel> {
+            $0.font = UIFontMetrics(forTextStyle: .title1).scaledFont(for: UIFont.Zap.regular.withSize(40))
+            $0.textColor = UIColor.Zap.white
+            $0.adjustsFontForContentSizeCategory = true
+        }
+        
+        static let body = UIViewStyle<UILabel> {
+            $0.font = UIFontMetrics(forTextStyle: .body).scaledFont(for: UIFont.Zap.light.withSize(17))
+            $0.textColor = UIColor.Zap.white
+            $0.adjustsFontForContentSizeCategory = true
+        }
+        
+        static let subHeadline = UIViewStyle<UILabel> {
+            $0.font = UIFontMetrics(forTextStyle: .subheadline).scaledFont(for: UIFont.Zap.light.withSize(15))
+            $0.textColor = UIColor.Zap.gray
+            $0.adjustsFontForContentSizeCategory = true
+        }
+        
+        static let headline = UIViewStyle<UILabel> {
+            $0.font = UIFontMetrics(forTextStyle: .body).scaledFont(for: UIFont.Zap.regular.withSize(17))
+            $0.textColor = UIColor.Zap.white
+            $0.adjustsFontForContentSizeCategory = true
+        }
+        
+        static let caption = UIViewStyle<UILabel> {
+            $0.font = UIFontMetrics(forTextStyle: .caption1).scaledFont(for: UIFont.Zap.regular.withSize(10))
+            $0.textColor = UIColor.Zap.gray
+            $0.adjustsFontForContentSizeCategory = true
+        }
     }
     
-    static let label = UIViewStyle<UILabel> {
-        $0.font = UIFont.zap.light
-        $0.textColor = UIColor.zap.black
+    static func button(color: UIColor = UIColor.Zap.lightningOrange, backgroundColor: UIColor = UIColor.clear, fontSize: CGFloat = 17) -> UIViewStyle<UIButton> {
+        return UIViewStyle<UIButton> {
+            $0.titleLabel?.font = UIFontMetrics(forTextStyle: .body).scaledFont(for: UIFont.Zap.regular.withSize(17))
+            $0.setTitleColor(color, for: .normal)
+            $0.titleLabel?.adjustsFontForContentSizeCategory = true
+            if backgroundColor != .clear {
+                $0.backgroundColor = backgroundColor
+                $0.layer.cornerRadius = 14
+            }
+        }
     }
     
-    static let textField = UIViewStyle<UITextField> {
-        $0.textColor = UIColor.zap.black
-        $0.font = UIFont.zap.light
+    static func textField(color: UIColor = UIColor.Zap.black) -> UIViewStyle<UITextField> {
+        return UIViewStyle<UITextField> {
+            $0.textColor = color
+            $0.font = UIFont.Zap.light
+        }
     }
     
     static let textView = UIViewStyle<UITextView> {
-        $0.textColor = UIColor.zap.black
-        $0.font = UIFont.zap.light
+        $0.textColor = UIColor.Zap.black
+        $0.font = UIFont.Zap.light
     }
 }

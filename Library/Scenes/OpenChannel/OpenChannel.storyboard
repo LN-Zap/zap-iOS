@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14109" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="GFz-8t-Uep">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14113" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="GFz-8t-Uep">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
@@ -13,12 +13,12 @@
         <!--Open Channel View Controller-->
         <scene sceneID="KXz-ma-5Pz">
             <objects>
-                <viewController storyboardIdentifier="OpenChannelViewController" id="GFz-8t-Uep" customClass="OpenChannelViewController" customModule="Zap" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="OpenChannelViewController" id="GFz-8t-Uep" customClass="OpenChannelViewController" customModule="Library" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="etn-sy-Zrc">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="DND-pD-x1X" customClass="GradientLoadingButtonView" customModule="Zap" customModuleProvider="target">
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="DND-pD-x1X" customClass="GradientLoadingButtonView" customModule="Library" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="570" width="375" height="97"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
@@ -40,7 +40,7 @@
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
-                                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="icon-network" translatesAutoresizingMaskIntoConstraints="NO" id="Mwu-XX-uM3">
+                                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="icon_network" translatesAutoresizingMaskIntoConstraints="NO" id="Mwu-XX-uM3">
                                                 <rect key="frame" x="67" y="23.5" width="13" height="13"/>
                                             </imageView>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="DuK-yo-I9i">
@@ -64,7 +64,7 @@
                                             <constraint firstItem="BAd-u1-nNE" firstAttribute="leading" secondItem="Eb5-HY-SJf" secondAttribute="leading" constant="20" id="vj3-nB-a7e"/>
                                         </constraints>
                                     </view>
-                                    <view contentMode="scaleToFill" verticalHuggingPriority="200" translatesAutoresizingMaskIntoConstraints="NO" id="1an-69-F13" customClass="AmountInputView" customModule="Zap" customModuleProvider="target">
+                                    <view contentMode="scaleToFill" verticalHuggingPriority="200" translatesAutoresizingMaskIntoConstraints="NO" id="1an-69-F13" customClass="AmountInputView" customModule="Library" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="60.5" width="375" height="489.5"/>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <connections>
@@ -98,6 +98,6 @@
         </scene>
     </scenes>
     <resources>
-        <image name="icon-network" width="13" height="13"/>
+        <image name="icon_network" width="13" height="13"/>
     </resources>
 </document>

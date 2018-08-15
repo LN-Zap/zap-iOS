@@ -8,16 +8,31 @@
 import Foundation
 
 extension Info {
-    static var template: Info {
-        return Info(
-            alias: "test",
-            blockHeight: 124,
-            isSyncedToChain: true,
-            network: .testnet,
-            pubKey: "",
-            activeChannelCount: 2,
-            bestHeaderDate: Date()
-        )
+    // swiftlint:disable type_name
+    enum template {
+        static var testnet: Info {
+            return Info(
+                alias: "test",
+                blockHeight: 124,
+                isSyncedToChain: true,
+                network: .testnet,
+                pubKey: "",
+                activeChannelCount: 2,
+                bestHeaderDate: Date()
+            )
+        }
+        
+        static var mainnet: Info {
+            return Info(
+                alias: "test",
+                blockHeight: 124,
+                isSyncedToChain: true,
+                network: .mainnet,
+                pubKey: "",
+                activeChannelCount: 2,
+                bestHeaderDate: Date()
+            )
+        }
     }
 }
 
@@ -43,5 +58,26 @@ extension LightningPayment {
             fees: 12,
             paymentHash: "paymentHash"
         )
+    }
+}
+
+extension Channel {
+    static var template: Channel {
+        return Channel(
+            blockHeight: 1,
+            state: .active,
+            localBalance: 100,
+            remoteBalance: 100,
+            remotePubKey: "abc",
+            capacity: 200,
+            updateCount: 0,
+            channelPoint: ChannelPoint.template,
+            csvDelay: 10)
+    }
+}
+
+extension ChannelPoint {
+    static var template: ChannelPoint {
+        return ChannelPoint(string: "abc:123")
     }
 }

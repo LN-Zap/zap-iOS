@@ -58,10 +58,10 @@ final class SelectWalletCreationMethodViewController: UIViewController {
         tableView.tableFooterView = UIView()
         tableView.isScrollEnabled = false
         tableView.registerCell(SelectWalletCreationMethodTableViewCell.self)
-        tableView.backgroundColor = UIColor.zap.charcoalGrey
-        tableView.separatorColor = UIColor.zap.warmGrey
+        tableView.backgroundColor = UIColor.Zap.deepSeaBlue
+        tableView.separatorColor = UIColor.Zap.gray
         
-        navigationController?.navigationBar.barTintColor = UIColor.zap.charcoalGrey
+        navigationController?.navigationBar.barTintColor = UIColor.Zap.deepSeaBlue
     }
 }
 
@@ -71,8 +71,8 @@ extension SelectWalletCreationMethodViewController: UITableViewDelegate {
         if indexPath.section == 1 {
             guard let url = URL(string: "link.help".localized) else { return }
             let safariViewController = SFSafariViewController(url: url)
-            safariViewController.preferredBarTintColor = UIColor.zap.charcoalGrey
-            safariViewController.preferredControlTintColor = UIColor.zap.peach
+            safariViewController.preferredBarTintColor = UIColor.Zap.deepSeaBlue
+            safariViewController.preferredControlTintColor = UIColor.Zap.lightningOrange
             present(safariViewController, animated: true, completion: nil)
         } else if let cellContent = content?[indexPath.row] {
             cellContent.2()
@@ -102,9 +102,9 @@ extension SelectWalletCreationMethodViewController: UITableViewDataSource {
             return cell
         } else {
             let cell = UITableViewCell(style: .default, reuseIdentifier: "default")
-            cell.backgroundColor = UIColor.zap.charcoalGreyLight
+            cell.backgroundColor = UIColor.Zap.seaBlue
             if let label = cell.textLabel {
-                Style.label.apply(to: label)
+                Style.Label.custom().apply(to: label)
                 label.font = label.font.withSize(14)
                 label.text = "scene.select_wallet_connection.create.help".localized
                 label.textColor = .white

@@ -52,12 +52,12 @@ final class Toast: UIView {
         switch style {
         case .info:
             backgroundColor = .white
-            messageLabel?.textColor = UIColor.zap.charcoalGrey
+            messageLabel?.textColor = UIColor.Zap.deepSeaBlue
         case .error:
-            backgroundColor = UIColor.zap.tomato
+            backgroundColor = UIColor.Zap.superRed
             messageLabel?.textColor = .white
         case .success:
-            backgroundColor = UIColor.zap.nastyGreen
+            backgroundColor = UIColor.Zap.superGreen
             messageLabel?.textColor = .white
         }
         

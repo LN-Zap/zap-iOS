@@ -50,7 +50,7 @@ public enum Result<Value>: CustomStringConvertible, CustomDebugStringConvertible
         return flatMap { .success(transform($0)) }
     }
     
-    func flatMap<U>(_ transform: (Value) -> Result<U>) -> Result<U> {
+    public func flatMap<U>(_ transform: (Value) -> Result<U>) -> Result<U> {
         switch self {
         case let .success(value):
             return transform(value)

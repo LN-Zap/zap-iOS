@@ -10,19 +10,40 @@ import Foundation
 import Lightning
 import ReactiveKit
 
+extension ChannelState: Comparable {
+    var sortRank: Int {
+        switch self {
+        case .active:
+            return 0
+        case .opening:
+            return 1
+        case .forceClosing:
+            return 2
+        case .closing:
+            return 3
+        case .inactive:
+            return 4
+        }
+    }
+    
+    public static func < (lhs: ChannelState, rhs: ChannelState) -> Bool {
+        return lhs.sortRank < rhs.sortRank
+    }
+}
+
 final class ChannelListViewModel: NSObject {
     private let channelService: ChannelService
     
-    let aliasStore: ChannelAliasStore
+    let nodeStore: LightningNodeStore
     
-    let dataSource: MutableObservable2DArray<String, ChannelViewModel>
+    let dataSource: MutableObservableArray<ChannelViewModel>
     let searchString = Observable<String?>(nil)
     
-    init(channelService: ChannelService, aliasStore: ChannelAliasStore) {
+    init(channelService: ChannelService, nodeStore: LightningNodeStore) {
         self.channelService = channelService
-        self.aliasStore = aliasStore
+        self.nodeStore = nodeStore
         
-        dataSource = MutableObservable2DArray()
+        dataSource = MutableObservableArray()
         
         super.init()
         
@@ -35,23 +56,19 @@ final class ChannelListViewModel: NSObject {
     }
     
     private func updateChannels(open: [Channel], pending: [Channel], searchString: String?) {
-        let result = MutableObservable2DArray<String, ChannelViewModel>()
-        
-        addSection(for: pending, metadata: "scene.channels.section_header.pending".localized, searchString: searchString, to: result)
-        addSection(for: open, metadata: "scene.channels.section_header.open".localized, searchString: searchString, to: result)
-        
-        dataSource.replace(with: result, performDiff: true)
-    }
-    
-    private func addSection(for channels: [Channel], metadata: String, searchString: String?, to result: MutableObservable2DArray<String, ChannelViewModel>) {
-        let channelViewModels = channels
-            .map { ChannelViewModel(channel: $0, aliasStore: aliasStore) }
+        let viewModels = (open + pending)
+            .map { ChannelViewModel(channel: $0, nodeStore: nodeStore) }
             .filter { $0.matchesSearchString(searchString) }
-    
-        guard !channelViewModels.isEmpty else { return }
         
-        let section = Observable2DArraySection<String, ChannelViewModel>(metadata: metadata, items: channelViewModels)
-        result.appendSection(section)
+        let sortedViewModels = viewModels.sorted {
+            if $0.channel.state != $1.channel.state {
+                return $0.channel.state < $1.channel.state
+            } else {
+                return $0.channel.remotePubKey < $1.channel.remotePubKey
+            }
+        }
+        
+        dataSource.replace(with: sortedViewModels, performDiff: true)
     }
     
     func refresh() {

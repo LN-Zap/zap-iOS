@@ -37,7 +37,7 @@ final class RequestViewController: UIViewController, KeyboardAdjustable {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        titleTextStyle = .dark
+        navigationController?.navigationBar.titleTextStyle = .dark
         
         title = "scene.request.title".localized
 
@@ -46,15 +46,15 @@ final class RequestViewController: UIViewController, KeyboardAdjustable {
 
         lightningButton.isSelected = true
         
-        segmentedControlBackgroundView.backgroundColor = UIColor.zap.white
+        segmentedControlBackgroundView.backgroundColor = UIColor.Zap.white
         
         gradientLoadingButtonView.title = "scene.request.generate_request_button".localized
         
         placeholderTextView.text = "scene.request.memo_placeholder".localized
-        placeholderTextView.font = UIFont.zap.light.withSize(14)
-        placeholderTextView.textColor = UIColor.zap.lightGrey
-        memoTextView.font = UIFont.zap.light.withSize(14)
-        memoTextView.textColor = UIColor.zap.black
+        placeholderTextView.font = UIFont.Zap.light.withSize(14)
+        placeholderTextView.textColor = UIColor.Zap.lightGrey
+        memoTextView.font = UIFont.Zap.light.withSize(14)
+        memoTextView.textColor = UIColor.Zap.black
         memoTextView.delegate = self
         
         memoTextView.reactive.text
@@ -95,10 +95,16 @@ final class RequestViewController: UIViewController, KeyboardAdjustable {
     }
     
     @IBAction private func createButtonTapped(_ sender: Any) {
-        requestViewModel?.create { [weak self] qrCodeDetailViewModel in
+        requestViewModel?.create { [weak self] result in
             DispatchQueue.main.async {
-                let viewController = UIStoryboard.instantiateQRCodeDetailViewController(with: qrCodeDetailViewModel)
-                self?.navigationController?.pushViewController(viewController, animated: true)
+                switch result {
+                case .success(let qrCodeDetailViewModel):
+                    let viewController = UIStoryboard.instantiateQRCodeDetailViewController(with: qrCodeDetailViewModel)
+                    self?.navigationController?.pushViewController(viewController, animated: true)
+                case .failure(let error):
+                    self?.presentErrorToast(error.localizedDescription)
+                    self?.gradientLoadingButtonView.isLoading = false
+                }
             }
         }
     }

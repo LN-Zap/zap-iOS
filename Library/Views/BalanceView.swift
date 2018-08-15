@@ -13,7 +13,7 @@ final class BalanceView: UIView {
     private weak var localBalanceView: UIView?
     
     func set(localBalance: Satoshi, remoteBalance: Satoshi) {
-        backgroundColor = UIColor.zap.white
+        backgroundColor = UIColor.Zap.white
         
         layer.cornerRadius = 5
         clipsToBounds = true
