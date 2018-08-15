@@ -202,3 +202,5 @@
 "scene.filter.displayArchivedTransactions" = "Archived Transactions";
 
 "scene.qrcode_scanner.top_label" = "Scan QR-Code";
+
+"scene.wallet.title" = "Wallet";
