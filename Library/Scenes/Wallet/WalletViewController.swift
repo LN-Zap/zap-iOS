@@ -20,7 +20,7 @@ extension UIStoryboard {
         walletViewController.requestButtonTapped = requestButtonTapped
         
         let navigationController = ZapNavigationController(rootViewController: walletViewController)
-        navigationController.tabBarItem.title = "Wallet"
+        navigationController.tabBarItem.title = "scene.wallet.title".localized
         navigationController.tabBarItem.image = UIImage(named: "tabbar_wallet", in: Bundle.library, compatibleWith: nil)
         
         return navigationController
@@ -78,7 +78,7 @@ final class WalletViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        title = "Wallet"
+        title = "scene.wallet.title".localized
         
         Style.button().apply(to: sendButton, requestButton)
 

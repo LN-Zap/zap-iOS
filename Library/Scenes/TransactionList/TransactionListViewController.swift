@@ -17,7 +17,7 @@ extension UIStoryboard {
         viewController.presentFilter = presentFilter
         
         let navigationController = ZapNavigationController(rootViewController: viewController)
-        navigationController.tabBarItem.title = "Transactions"
+        navigationController.tabBarItem.title = "scene.transactions.title".localized
         navigationController.tabBarItem.image = UIImage(named: "tabbar_wallet", in: Bundle.library, compatibleWith: nil)
 
         return navigationController

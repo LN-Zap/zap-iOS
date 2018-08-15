@@ -22,7 +22,7 @@ extension UIStoryboard {
         viewController.addChannelButtonTapped = addChannelButtonTapped
         viewController.blockExplorerButtonTapped = blockExplorerButtonTapped
         
-        viewController.tabBarItem.title = "Channels"
+        viewController.tabBarItem.title = "scene.channels.title".localized
         viewController.tabBarItem.image = UIImage(named: "tabbar_wallet", in: Bundle.library, compatibleWith: nil)
         
         return viewController
@@ -48,7 +48,7 @@ final class ChannelListViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        title = "Channels"
+        title = "scene.channels.title".localized
         
         collectionView.registerCell(ChannelCell.self)
         collectionView.register(UINib(nibName: HeaderCollectionReusableView.kind, bundle: Bundle.library), forSupplementaryViewOfKind: HeaderCollectionReusableView.kind, withReuseIdentifier: HeaderCollectionReusableView.kind)
