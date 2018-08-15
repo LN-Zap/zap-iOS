@@ -85,7 +85,7 @@
 
 "scene.open_channel.title" = "チャンネルを開く";
 "scene.open_channel.help_label" = "基金の接続";
-"scene.open_channel.add_button" = "Add";
+"scene.open_channel.add_button" = "追加";
 
 "scene.balance.title" = "Balance";
 "scene.balance.label.on_chain" = "Ƀ";
