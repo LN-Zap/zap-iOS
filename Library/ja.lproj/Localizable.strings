@@ -108,11 +108,11 @@
 "scene.send.error.invalid_payment_request" = "無効な支払要求";
 
 "scene.send.lightning.title" = "送る";
-"scene.send.lightning.error.expired" = "Payment Request expired:\n%@";
-"scene.send.lightning.error.duplicate" = "Payment already paid.";
-"scene.send.lightning.memo" = "Memo: %@";
+"scene.send.lightning.error.expired" = "期限切れの支払い要求:\n%@";
+"scene.send.lightning.error.duplicate" = "既に支払われています。";
+"scene.send.lightning.memo" = "メモ: %@";
 
-"scene.connect_remote_node.title" = "Connect Remote Node";
+"scene.connect_remote_node.title" = "リモートノードに接続";
 "scene.connect_remote_node.empty_state" = "Scan the QRCode generate with zapconnect or paste the connection code to connect to your node.";
 "scene.connect_remote_node.url_label" = "Address";
 "scene.connect_remote_node.certificate_label" = "Certificate";
