@@ -113,7 +113,7 @@
 "scene.send.lightning.memo" = "メモ: %@";
 
 "scene.connect_remote_node.title" = "リモートノードに接続";
-"scene.connect_remote_node.empty_state" = "Scan the QRCode generate with zapconnect or paste the connection code to connect to your node.";
+"scene.connect_remote_node.empty_state" = "ノードに接続するためにzapconnectで生成したQRCodeをスキャンするか、接続コードを貼り付けて下さい。";
 "scene.connect_remote_node.url_label" = "Address";
 "scene.connect_remote_node.certificate_label" = "Certificate";
 "scene.connect_remote_node.connect_button" = "Connect";
