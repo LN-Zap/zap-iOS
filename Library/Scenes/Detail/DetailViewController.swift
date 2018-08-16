@@ -15,6 +15,11 @@ extension UIStoryboard {
         dismissButtonTapped: @escaping () -> Void,
         blockExplorerButtonTapped: @escaping (String, BlockExplorer.CodeType) -> Void) -> UINavigationController {
         let viewController = Storyboard.detail.initial(viewController: UINavigationController.self)
+        viewController.navigationBar.backgroundColor = UIColor.Zap.seaBlue
+        viewController.navigationBar.shadowImage = UIImage()
+        viewController.navigationBar.setBackgroundImage(UIImage(), for: .default)
+        viewController.navigationBar.titleTextStyle = .light
+        
         if let detailViewController = viewController.topViewController as? DetailViewController {
             detailViewController.detailViewModel = detailViewModel
             detailViewController.dismissButtonTapped = dismissButtonTapped
@@ -36,12 +41,10 @@ final class DetailViewController: UIViewController, KeyboardAdjustable {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        navigationController?.navigationBar.setBackgroundImage(UIImage(), for: .default)
-        navigationController?.navigationBar.isTranslucent = false
-        navigationController?.navigationBar.barTintColor = .white
+        tableView.backgroundColor = UIColor.Zap.seaBlue
+        tableView.separatorColor = UIColor.Zap.gray
         
         title = detailViewModel?.detailViewControllerTitle
-        navigationController?.navigationBar.titleTextStyle = .dark
         
         tableView.registerCell(DetailTableViewCell.self)
         tableView.registerCell(DetailMemoTableViewCell.self)

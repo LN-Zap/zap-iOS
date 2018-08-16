@@ -8,5 +8,9 @@
 import UIKit
 
 final class DetailSeparatorTableViewCell: UITableViewCell {
-    
+    override func awakeFromNib() {
+        super.awakeFromNib()
+        
+        backgroundColor = .clear
+    }
 }

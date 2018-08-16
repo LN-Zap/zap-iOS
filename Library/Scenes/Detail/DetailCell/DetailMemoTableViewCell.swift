@@ -21,19 +21,25 @@ final class DetailMemoTableViewCell: BondTableViewCell {
     
     var info: Info? {
         didSet {
+            guard let info = info else { return }
+            
             titleLabel.text = "scene.transaction_detail.memo_label".localized.appending(":")
-            textField.text = info?.memo.value.customMemo
-            textField.placeholder = info?.placeholder
+            textField.text = info.memo.value.customMemo
+            
+            textField?.attributedPlaceholder = NSAttributedString(
+                string: info.placeholder,
+                attributes: [.foregroundColor: UIColor.gray]
+            )
         }
     }
     
     override func awakeFromNib() {
         super.awakeFromNib()
         
-        Style.textField().apply(to: textField)
-        Style.Label.custom().apply(to: titleLabel)
-        titleLabel.font = DetailCellType.titleFont
-        textField.font = DetailCellType.dataFont
+        Style.textField(color: .white).apply(to: textField)
+        DetailCellType.titleFontStyle.apply(to: titleLabel)
+        
+        backgroundColor = .clear
         
         textField.reactive.text
             .observeNext { [weak self] text in

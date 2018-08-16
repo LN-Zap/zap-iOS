@@ -34,9 +34,10 @@ final class DetailTimerTableViewCell: UITableViewCell {
     override func awakeFromNib() {
         super.awakeFromNib()
 
-        Style.Label.custom().apply(to: titleLabel, timerLabel)
-        titleLabel.font = DetailCellType.titleFont
-        timerLabel.font = DetailCellType.dataFont
+        DetailCellType.titleFontStyle.apply(to: titleLabel)
+        DetailCellType.dataFontStyle.apply(to: timerLabel)
+        
+        backgroundColor = .clear
     }
     
     private func updateTimerLabel() {

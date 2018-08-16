@@ -42,6 +42,7 @@ final class DetailDestructiveActionTableViewCell: UITableViewCell {
     
     override func awakeFromNib() {
         super.awakeFromNib()
+        backgroundColor = .clear
         Style.button().apply(to: destructiveActionButton)
     }
     

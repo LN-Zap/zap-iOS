@@ -31,11 +31,9 @@ class DetailBlockExplorerTableViewCell: UITableViewCell {
     override func awakeFromNib() {
         super.awakeFromNib()
 
-        Style.Label.custom().apply(to: titleLabel)
         Style.button().apply(to: detailButton)
-        
-        titleLabel.font = DetailCellType.titleFont
-        detailButton.titleLabel?.font = DetailCellType.dataFont
+        DetailCellType.titleFontStyle.apply(to: titleLabel)
+        backgroundColor = .clear
     }
 
     @IBAction private func presentBlockExplorer(_ sender: Any) {

@@ -26,12 +26,13 @@ final class DetailQRCodeTableViewCell: UITableViewCell {
     override func awakeFromNib() {
         super.awakeFromNib()
 
-        Style.Label.custom().apply(to: addressLabel)
-        addressLabel.font = DetailCellType.dataFont
+        DetailCellType.dataFontStyle.apply(to: addressLabel)
         Style.button().apply(to: copyButton, shareButton)
         
         copyButton.setTitle("scene.transaction_detail.qr_code.copy_button".localized, for: .normal)
         shareButton.setTitle("scene.transaction_detail.qr_code.share_button".localized, for: .normal)
+        
+        backgroundColor = .clear
     }
     
     @IBAction private func copyAddress(_ sender: Any) {
