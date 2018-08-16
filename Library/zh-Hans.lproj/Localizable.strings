@@ -26,7 +26,7 @@
 "network.type.testnet" = "测试网络";
 "network.type.mainnet" = "主网";
 
-"unit.bitcoin.btc" = "比特币";
+"unit.bitcoin.btc" = "BTC";
 "unit.bitcoin.mbtc" = "mBTC";
 "unit.bitcoin.bit" = "Bits";
 "unit.bitcoin.satoshi" = "聪";
@@ -58,7 +58,7 @@
 "scene.settings.item.on_chain_request_address.title" = "比特币地址类型";
 "scene.settings.item.on_chain_request_address.bech32" = "Bech32";
 "scene.settings.item.on_chain_request_address.p2sh" = "P2SH";
-"scene.settings.item.remove_remote_node" = "重置远程节点配置";
+"scene.settings.item.remove_remote_node" = "重置节点";
 "scene.settings.item.reset_pin" = "复位Pin码";
 "scene.settings.item.report_issue" = "报告问题";
 "scene.settings.item.help" = "需要帮助吗？";
@@ -84,7 +84,7 @@
 "scene.channels.close_success.toast" = "通道正在关闭。";
 
 "scene.open_channel.title" = "打开通道";
-"scene.open_channel.help_label" = "资金连接";
+"scene.open_channel.help_label" = "资金连接通道";
 "scene.open_channel.add_button" = "添加";
 
 "scene.balance.title" = "余额";
