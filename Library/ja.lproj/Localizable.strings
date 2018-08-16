@@ -105,9 +105,9 @@
 
 "scene.send.title" = "送る";
 "scene.send.send_button" = "送る";
-"scene.send.error.invalid_payment_request" = "Invalid Payment request";
+"scene.send.error.invalid_payment_request" = "無効な支払要求";
 
-"scene.send.lightning.title" = "Send";
+"scene.send.lightning.title" = "送る";
 "scene.send.lightning.error.expired" = "Payment Request expired:\n%@";
 "scene.send.lightning.error.duplicate" = "Payment already paid.";
 "scene.send.lightning.memo" = "Memo: %@";
