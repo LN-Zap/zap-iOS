@@ -128,35 +128,35 @@
 
 
 "scene.create_wallet.title" = "ウォレットを作成します。";
-"scene.create_wallet.description_label" = "Make sure to store the mnemonic at a save location.";
-"scene.create_wallet.next_button" = "Next";
+"scene.create_wallet.description_label" = "ニーモニックを保存する場所を確認して下さい。";
+"scene.create_wallet.next_button" = "次に";
 
-"scene.recover_wallet.title" = "Recover Wallet";
-"scene.recover_wallet.done_button" = "Done";
-"scene.recover_wallet.description_label" = "Enter your seed:";
+"scene.recover_wallet.title" = "ウォレットを回復します。";
+"scene.recover_wallet.done_button" = "完了";
+"scene.recover_wallet.description_label" = "シードを入力して下さい。";
 "scene.recover_wallet.placeholder" = "abandon ability able about above absent absorb abstract absurd abuse access accident account accuse achieve acid acoustic acquire across act action actor actress actual";
 
-"scene.select_wallet_connection.title" = "Setup Zap";
-"scene.select_wallet_connection.create.title" = "Create";
-"scene.select_wallet_connection.create.message" = "new wallet";
-"scene.select_wallet_connection.recover.title" = "Recover";
-"scene.select_wallet_connection.recover.message" = "existing wallet";
-"scene.select_wallet_connection.connect.title" = "Connect";
-"scene.select_wallet_connection.connect.message" = "remote node";
-"scene.select_wallet_connection.disabled_alert.title" = "Sorry!";
-"scene.select_wallet_connection.disabled_alert.message" = "Running Lnd on the phone is disabled in this beta. Connect to a remote node instead.";
-"scene.select_wallet_connection.create.help" = "Need Help?";
+"scene.select_wallet_connection.title" = "Zapをセットアップ";
+"scene.select_wallet_connection.create.title" = "作成します。";
+"scene.select_wallet_connection.create.message" = "新しいウォレット";
+"scene.select_wallet_connection.recover.title" = "回復";
+"scene.select_wallet_connection.recover.message" = "既存のウォレット";
+"scene.select_wallet_connection.connect.title" = "接続";
+"scene.select_wallet_connection.connect.message" = "リモート ノード";
+"scene.select_wallet_connection.disabled_alert.title" = "すみません！";
+"scene.select_wallet_connection.disabled_alert.message" = "端末で動いているLndはこのベータ版では無効です。代わりにリモートノードを接続して下さい。";
+"scene.select_wallet_connection.create.help" = "ヘルプが必要ですか。";
 
-"scene.main.send_button" = "Send";
-"scene.main.receive_button" = "Receive";
+"scene.main.send_button" = "送る";
+"scene.main.receive_button" = "受け取る";
 "scene.main.exchange_rate_label" = "%@ per BTC";
 
-"scene.qr_code_detail.method_label.lightning" = "Lightning";
-"scene.qr_code_detail.method_label.on_chain" = "On-chain";
+"scene.qr_code_detail.method_label.lightning" = "ライトニング";
+"scene.qr_code_detail.method_label.on_chain" = "オンチェイン";
 
-"scene.sync.description_label" = "Syncing to blockchain…";
-"scene.sync.disconnect_bar_button" = "Disconnect";
-"scene.sync.disconnect_alert.title" = "Disconnect";
+"scene.sync.description_label" = "Blockchain に同期.";
+"scene.sync.disconnect_bar_button" = "切断";
+"scene.sync.disconnect_alert.title" = "切断";
 "scene.sync.disconnect_alert.message" = "Do you really want to cancel syncing? You will have to reconnect to your node afterwards.";
 "scene.sync.disconnect_alert.destructive_action" = "Disconnect Node";
 "scene.sync.disconnect_alert.cancel_action" = "Cancel";
