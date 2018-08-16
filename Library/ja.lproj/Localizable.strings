@@ -114,8 +114,8 @@
 
 "scene.connect_remote_node.title" = "リモートノードに接続";
 "scene.connect_remote_node.empty_state" = "ノードに接続するためにzapconnectで生成したQRCodeをスキャンするか、接続コードを貼り付けて下さい。";
-"scene.connect_remote_node.url_label" = "Address";
-"scene.connect_remote_node.certificate_label" = "Certificate";
+"scene.connect_remote_node.url_label" = "アドレス";
+"scene.connect_remote_node.certificate_label" = "証明書";
 "scene.connect_remote_node.connect_button" = "Connect";
 "scene.connect_remote_node.scan_button" = "Scan";
 "scene.connect_remote_node.paste_button" = "Paste";
