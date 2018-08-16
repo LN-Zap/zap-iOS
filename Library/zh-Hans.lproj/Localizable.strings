@@ -94,7 +94,7 @@
 "scene.pin.biometric.reason" = "访问安全数据";
 
 "scene.setup_pin.done_button" = "完成";
-"scene.setup_pin.top_label.initial" = "选择一个 pin码";
+"scene.setup_pin.top_label.initial" = "设置pin码";
 "scene.setup_pin.top_label.non_matching" = "Pin码不正确，请重试。";
 "scene.setup_pin.top_label.validate" = "再次输入 pin 码以进行验证。";
 
@@ -154,10 +154,10 @@
 "scene.qr_code_detail.method_label.lightning" = "闪电";
 "scene.qr_code_detail.method_label.on_chain" = "链上";
 
-"scene.sync.description_label" = "同步到 blockchain..。";
+"scene.sync.description_label" = "同步到 blockchain...";
 "scene.sync.disconnect_bar_button" = "断开";
 "scene.sync.disconnect_alert.title" = "断开";
-"scene.sync.disconnect_alert.message" = "是否确实要取消同步？之后, 您必须重新连接到您的节点。";
+"scene.sync.disconnect_alert.message" = "确实要取消同步？您将需要重新连接到您的节点。";
 "scene.sync.disconnect_alert.destructive_action" = "断开节点链接";
 "scene.sync.disconnect_alert.cancel_action" = "取消";
 
