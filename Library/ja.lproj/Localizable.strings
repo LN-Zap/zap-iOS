@@ -119,15 +119,15 @@
 "scene.connect_remote_node.connect_button" = "接続";
 "scene.connect_remote_node.scan_button" = "スキャン";
 "scene.connect_remote_node.paste_button" = "貼り付け";
-"scene.connect_remote_node.help_button" = "Need Help?";
-"scene.connect_remote_node.server_error" = "Could not connect to server.";
-"scene.connect_remote_node.your_node_title" = "Your Node";
-"scene.connect_remote_node.certificate_detail.certificate_title" = "Certificate";
+"scene.connect_remote_node.help_button" = "ヘルプが必要ですか。";
+"scene.connect_remote_node.server_error" = "サーバーに接続できませんでした。";
+"scene.connect_remote_node.your_node_title" = "あなたのノード";
+"scene.connect_remote_node.certificate_detail.certificate_title" = "証明書";
 "scene.connect_remote_node.certificate_detail.macaroon_title" = "Macaroon";
-"scene.connect_remote_node.edit_url.title" = "Address";
+"scene.connect_remote_node.edit_url.title" = "アドレス";
 
 
-"scene.create_wallet.title" = "Create Wallet";
+"scene.create_wallet.title" = "ウォレットを作成します。";
 "scene.create_wallet.description_label" = "Make sure to store the mnemonic at a save location.";
 "scene.create_wallet.next_button" = "Next";
 
@@ -190,17 +190,17 @@
 "scene.channel_detail.remote_balance_label" = "リモートの残高";
 "scene.channel_detail.closing_time.label" = "閉鎖中";
 "scene.channel_detail.closing_time.data" = "%d ブロック (%@)";
-"scene.channel_detail.funding_transaction_label" = "Funding Transaction";
-"scene.channel_detail.close_button" = "Close";
-"scene.channel_detail.force_close_button" = "Force Close";
+"scene.channel_detail.funding_transaction_label" = "ファンディングトランザクション";
+"scene.channel_detail.close_button" = "閉鎖";
+"scene.channel_detail.force_close_button" = "強制閉鎖";
 
-"scene.filter.title" = "Transaction Filter";
-"scene.filter.section_header.transaction_types" = "Transaction Types";
-"scene.filter.displayOnChainTransactions" = "On Chain Transactions";
-"scene.filter.displayLightningPayments" = "Lightning Payments";
-"scene.filter.displayLightningInvoices" = "Lightning Invoices";
-"scene.filter.displayArchivedTransactions" = "Archived Transactions";
+"scene.filter.title" = "トランザクションフィルター";
+"scene.filter.section_header.transaction_types" = "トランザクションタイプ";
+"scene.filter.displayOnChainTransactions" = "オンチェイントランザクション";
+"scene.filter.displayLightningPayments" = "ライトニングペイメンツ";
+"scene.filter.displayLightningInvoices" = "ライトニングインボイス";
+"scene.filter.displayArchivedTransactions" = "アーカイブされたトランザクション";
 
-"scene.qrcode_scanner.top_label" = "Scan QR-Code";
+"scene.qrcode_scanner.top_label" = "QR-Codeをスキャンして下さい。";
 
-"scene.wallet.title" = "Wallet";
+"scene.wallet.title" = "ウォレット";
