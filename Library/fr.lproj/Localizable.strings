@@ -14,7 +14,7 @@
 "error.block_explorer.unsupported_network" = "%@ ne prend pas en charge %@.";
 
 "rpc_connect_qrcode_error.btc_pay_expired" = "On dirait que le code à expiré.";
-"rpc_connect_qrcode_error.btc_pay_configuration_broken" = "Could not read BTCPay configurations file.";
+"rpc_connect_qrcode_error.btc_pay_configuration_broken" = "Impossible de lire le fichier des configurations de BTCPay.";
 "rpc_connect_qrcode_error.cant_read_qrcode" = "Impossible de se connecter à ce code.";
 
 "channel.state.active" = "En ligne";
@@ -32,14 +32,14 @@
 "unit.bitcoin.satoshi" = "Satoshis";
 
 "transaction.open_channel.memo" = "Open Channel: %@";
-"transaction.close_channel.memo" = "%@ Channel: %@";
+"transaction.close_channel.memo" = "%@ Canal : %@";
 
 "close_type.cooperative_close" = "Fermer";
 "close_type.local_force_close" = "Force Close";
 "close_type.remote_force_close" = "Remote Force Close";
 "close_type.breach_close" = "Breach Close";
 "close_type.funding_canceled" = "Funding Canceled";
-"close_type.unknown" = "Unknown Close";
+"close_type.unknown" = "Fermeture inconnue";
 
 "view.amount_input.placeholder" = "Montant";
 
@@ -117,7 +117,7 @@
 "scene.connect_remote_node.url_label" = "Adresse";
 "scene.connect_remote_node.certificate_label" = "Certificat";
 "scene.connect_remote_node.connect_button" = "Connect";
-"scene.connect_remote_node.scan_button" = "Scan";
+"scene.connect_remote_node.scan_button" = "Numériser";
 "scene.connect_remote_node.paste_button" = "Coller";
 "scene.connect_remote_node.help_button" = "Besoin d'aide ?";
 "scene.connect_remote_node.server_error" = "Impossible de se connecter au serveur.";
@@ -203,4 +203,4 @@
 
 "scene.qrcode_scanner.top_label" = "Scan QR-Code";
 
-"scene.wallet.title" = "Wallet";
+"scene.wallet.title" = "Portefeuille";
