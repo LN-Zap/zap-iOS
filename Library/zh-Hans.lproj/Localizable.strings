@@ -80,7 +80,6 @@
 "scene.channels.alert.cancel" = "取消";
 "scene.channels.alert.close" = "关闭";
 "scene.channels.alert.force_close" = "强制关闭";
-"scene.channels.row_action.close" = "关闭通道";
 "scene.channels.close_success.toast" = "通道正在关闭。";
 
 "scene.open_channel.title" = "打开通道";
@@ -191,8 +190,8 @@
 "scene.channel_detail.closing_time.label" = "关闭中";
 "scene.channel_detail.closing_time.data" = "%d 区块 (%@)";
 "scene.channel_detail.funding_transaction_label" = "资金交易";
-"scene.channel_detail.close_button" = "关闭";
-"scene.channel_detail.force_close_button" = "强制关闭";
+"scene.channel_detail.close_button" = "Close Channel";
+"scene.channel_detail.force_close_button" = "Force Close Channel";
 
 "scene.filter.title" = "交易筛选器";
 "scene.filter.section_header.transaction_types" = "交易类型";
