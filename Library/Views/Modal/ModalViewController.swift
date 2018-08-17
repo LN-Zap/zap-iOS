@@ -1,14 +1,14 @@
 //
-//  Zap
+//  Library
 //
-//  Created by Otto Suess on 22.01.18.
-//  Copyright © 2018 Otto Suess. All rights reserved.
+//  Created by Otto Suess on 17.08.18.
+//  Copyright © 2018 Zap. All rights reserved.
 //
 
 import UIKit
 
-final class ModalNavigationController: UINavigationController {
-    private var modalPresentationManager: ModalPresentationManager?
+class ModalViewController: UIViewController {
+    var modalPresentationManager: ModalPresentationManager?
     
     override init(nibName nibNameOrNil: String?, bundle nibBundleOrNil: Bundle?) {
         super.init(nibName: nibNameOrNil, bundle: nibBundleOrNil)
@@ -20,13 +20,8 @@ final class ModalNavigationController: UINavigationController {
         setup()
     }
     
-    init(rootViewController: UIViewController, size: CGSize? = nil) {
-        super.init(rootViewController: rootViewController)
-        setup(size: size)
-    }
-    
-    private func setup(size: CGSize? = nil) {
-        modalPresentationManager = ModalPresentationManager(size: size)
+    fileprivate func setup() {
+        modalPresentationManager = ModalPresentationManager()
         transitioningDelegate = modalPresentationManager
         modalPresentationStyle = .custom
     }

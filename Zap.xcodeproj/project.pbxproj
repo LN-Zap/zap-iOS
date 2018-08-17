@@ -50,6 +50,7 @@
 		AD27B0182100C59500F232A8 /* UpdateAddressViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD27B0172100C59500F232A8 /* UpdateAddressViewController.swift */; };
 		AD27B01A2100D5CC00F232A8 /* CertificateDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD27B0192100D5CC00F232A8 /* CertificateDetailViewController.swift */; };
 		AD27B01C2100D7CF00F232A8 /* CertificateDetailCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD27B01B2100D7CF00F232A8 /* CertificateDetailCell.swift */; };
+		AD2884352126B51C003C3D94 /* ModalViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD2884342126B51C003C3D94 /* ModalViewController.swift */; };
 		AD28CB79211D9DFF00A31004 /* UINavigationBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD28CB78211D9DFF00A31004 /* UINavigationBar.swift */; };
 		AD28CB7B211DE93300A31004 /* BlockExplorerSettingsItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD28CB7A211DE93300A31004 /* BlockExplorerSettingsItem.swift */; };
 		AD28CB7D211DF12E00A31004 /* DetailBlockExplorerTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = AD28CB7C211DF12E00A31004 /* DetailBlockExplorerTableViewCell.xib */; };
@@ -85,7 +86,7 @@
 		AD391C4320D16F0B007EE22A /* Appearance.swift in Sources */ = {isa = PBXBuildFile; fileRef = A07C1032203DD5AF006C7FE8 /* Appearance.swift */; };
 		AD391C4420D16F0B007EE22A /* Style.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0919155203C2CB600FA525A /* Style.swift */; };
 		AD391C4720D16F68007EE22A /* ContainerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0731FE52014AC0800C55E45 /* ContainerViewController.swift */; };
-		AD391C4820D16F68007EE22A /* ModalViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A01009512015FA2D0001EF94 /* ModalViewController.swift */; };
+		AD391C4820D16F68007EE22A /* ModalNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A01009512015FA2D0001EF94 /* ModalNavigationController.swift */; };
 		AD391C4920D16F68007EE22A /* ModalPresentationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0A05A282013ED4B0007D1C9 /* ModalPresentationController.swift */; };
 		AD391C4C20D16F68007EE22A /* ChannelList.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A010094F2015F99F0001EF94 /* ChannelList.storyboard */; };
 		AD391C4D20D16F68007EE22A /* ChannelListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0731FE82014B27900C55E45 /* ChannelListViewController.swift */; };
@@ -494,7 +495,7 @@
 		A01009452014DCB40001EF94 /* SendOnChain.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = SendOnChain.storyboard; sourceTree = "<group>"; };
 		A010094D2015F97F0001EF94 /* OpenChannelViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OpenChannelViewController.swift; sourceTree = "<group>"; };
 		A010094F2015F99F0001EF94 /* ChannelList.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = ChannelList.storyboard; sourceTree = "<group>"; };
-		A01009512015FA2D0001EF94 /* ModalViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModalViewController.swift; sourceTree = "<group>"; };
+		A01009512015FA2D0001EF94 /* ModalNavigationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModalNavigationController.swift; sourceTree = "<group>"; };
 		A024B84C201606B4002B8897 /* Peer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Peer.swift; sourceTree = "<group>"; };
 		A024B85220161560002B8897 /* QRCodeScannerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QRCodeScannerViewController.swift; sourceTree = "<group>"; };
 		A024B85620161586002B8897 /* Send.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Send.storyboard; sourceTree = "<group>"; };
@@ -621,6 +622,7 @@
 		AD27B0172100C59500F232A8 /* UpdateAddressViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpdateAddressViewController.swift; sourceTree = "<group>"; };
 		AD27B0192100D5CC00F232A8 /* CertificateDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CertificateDetailViewController.swift; sourceTree = "<group>"; };
 		AD27B01B2100D7CF00F232A8 /* CertificateDetailCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CertificateDetailCell.swift; sourceTree = "<group>"; };
+		AD2884342126B51C003C3D94 /* ModalViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModalViewController.swift; sourceTree = "<group>"; };
 		AD28CB78211D9DFF00A31004 /* UINavigationBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UINavigationBar.swift; sourceTree = "<group>"; };
 		AD28CB7A211DE93300A31004 /* BlockExplorerSettingsItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BlockExplorerSettingsItem.swift; sourceTree = "<group>"; };
 		AD28CB7C211DF12E00A31004 /* DetailBlockExplorerTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DetailBlockExplorerTableViewCell.xib; sourceTree = "<group>"; };
@@ -1036,7 +1038,6 @@
 		A01009322014BD960001EF94 /* Scenes */ = {
 			isa = PBXGroup;
 			children = (
-				A01009532015FA330001EF94 /* Abstract */,
 				A0DDC0702018C6D800AEFF94 /* ChannelList */,
 				AD680A9D20B07AC60018986B /* ConnectRemoteNode */,
 				ADCE01B9207B57DA00CA72E8 /* CreateWallet */,
@@ -1090,27 +1091,19 @@
 				ADBA120720935871001F7700 /* AmountInput */,
 				AD21768820C3DFDB007779DE /* BalanceView.swift */,
 				A0BD44DE206FED1400BF27A3 /* BondCell.swift */,
+				A0731FE52014AC0800C55E45 /* ContainerViewController.swift */,
 				ADB6DEDA20AD8F80001324C8 /* GradientLoadingButtonView.swift */,
 				A0F353CF20692570005B3639 /* GradientView.swift */,
-				AD615CF6211CAB0900680790 /* PaddingLabel.swift */,
 				ADBA12082093587B001F7700 /* KeyPad */,
 				A0605F8C202C9D8200EA903C /* LineView.swift */,
+				AD2884332126B458003C3D94 /* Modal */,
+				AD615CF6211CAB0900680790 /* PaddingLabel.swift */,
 				ADF79363208DCB630086B2CA /* PinView.swift */,
 				AD38EB31207DFB59007DF14D /* SegmentButton.swift */,
 				A0605F8A202C9D2F00EA903C /* Toast */,
 				AD7EDAE62108D39D0058CCCA /* ZapNavigationController.swift */,
 			);
 			path = Views;
-			sourceTree = "<group>";
-		};
-		A01009532015FA330001EF94 /* Abstract */ = {
-			isa = PBXGroup;
-			children = (
-				A0731FE52014AC0800C55E45 /* ContainerViewController.swift */,
-				A01009512015FA2D0001EF94 /* ModalViewController.swift */,
-				A0A05A282013ED4B0007D1C9 /* ModalPresentationController.swift */,
-			);
-			path = Abstract;
 			sourceTree = "<group>";
 		};
 		A02C9FBB202EE995009821B1 /* OpenChannel */ = {
@@ -1478,6 +1471,16 @@
 				AD680A9820B06B840018986B /* DetailTimerTableViewCell.xib */,
 			);
 			path = DetailCell;
+			sourceTree = "<group>";
+		};
+		AD2884332126B458003C3D94 /* Modal */ = {
+			isa = PBXGroup;
+			children = (
+				A01009512015FA2D0001EF94 /* ModalNavigationController.swift */,
+				A0A05A282013ED4B0007D1C9 /* ModalPresentationController.swift */,
+				AD2884342126B51C003C3D94 /* ModalViewController.swift */,
+			);
+			path = Modal;
 			sourceTree = "<group>";
 		};
 		AD391C1920D16ED4007EE22A /* Library */ = {
@@ -2602,7 +2605,7 @@
 				AD391C9A20D16FA8007EE22A /* QRCodeScannerView.swift in Sources */,
 				AD7EDAE72108D39D0058CCCA /* ZapNavigationController.swift in Sources */,
 				AD27B01020FB8E6D00F232A8 /* OnChainUnconfirmedTransactionViewModel.swift in Sources */,
-				AD391C4820D16F68007EE22A /* ModalViewController.swift in Sources */,
+				AD391C4820D16F68007EE22A /* ModalNavigationController.swift in Sources */,
 				AD391C7520D16F89007EE22A /* QRCodeDetailViewModel.swift in Sources */,
 				AD391C3820D16EFA007EE22A /* UserDefaults.swift in Sources */,
 				AD391C2E20D16EFA007EE22A /* UIApplication.swift in Sources */,
@@ -2618,6 +2621,7 @@
 				AD391C6F20D16F89007EE22A /* OpenChannelViewController.swift in Sources */,
 				AD391C9B20D16FA8007EE22A /* QRCodeScannerViewController.swift in Sources */,
 				AD391CB520D16FA8007EE22A /* Settings.swift in Sources */,
+				AD2884352126B51C003C3D94 /* ModalViewController.swift in Sources */,
 				AD97A91620EFEB94008344EA /* SendViewModel.swift in Sources */,
 				AD391CAB20D16FA8007EE22A /* CurrencySettingsItem.swift in Sources */,
 				AD391CCB20D16FE1007EE22A /* DetailBlockExplorerTableViewCell.swift in Sources */,

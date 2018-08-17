@@ -7,26 +7,39 @@
 
 import UIKit
 
+protocol SizeProviding {
+    var contentSize: CGSize? { get }
+}
+
+protocol ModalTransitionAnimating {
+    func animatePresentationTransition()
+    func animateDismissalTransition()
+}
+
 final class ModalPresentationManager: NSObject, UIViewControllerTransitioningDelegate {
-    let size: CGSize?
-    
-    init(size: CGSize? = nil) {
-        self.size = size
-    }
+    var modalPresentationController: ModalPresentationController?
     
     func presentationController(forPresented presented: UIViewController, presenting: UIViewController?, source: UIViewController) -> UIPresentationController? {
-        return ModalPresentationController(presentedViewController: presented, presenting: presenting, size: size)
+        let modalPresentationController = ModalPresentationController(presentedViewController: presented, presenting: presenting)
+        self.modalPresentationController = modalPresentationController
+        return modalPresentationController
     }
 }
 
 final class ModalPresentationController: UIPresentationController {
     var dimmingView: UIView?
-    var size: CGSize?
-    var customFrame: CGRect?
+    var contentHeight: CGFloat? {
+        didSet {
+            presentedView?.setNeedsUpdateConstraints()
+            UIView.animate(withDuration: 0.3) { [weak self] in
+                guard let frame = self?.frameOfPresentedViewInContainerView else { return }
+                self?.presentedView?.frame = frame
+                self?.presentedView?.layoutIfNeeded()
+            }
+        }
+    }
     
-    init(presentedViewController: UIViewController, presenting presentingViewController: UIViewController?, size: CGSize?) {
-        self.size = size
-        
+    override init(presentedViewController: UIViewController, presenting presentingViewController: UIViewController?) {
         super.init(presentedViewController: presentedViewController, presenting: presentingViewController)
         setupDimmingView()
     }
@@ -34,16 +47,9 @@ final class ModalPresentationController: UIPresentationController {
     private func setupDimmingView() {
         guard let frame = UIApplication.shared.keyWindow?.frame else { return }
         dimmingView = UIView(frame: frame)
-        dimmingView?.backgroundColor = UIColor.black.withAlphaComponent(0.6)
+        dimmingView?.backgroundColor = UIColor.black.withAlphaComponent(0.9)
         let tapRecognizer = UITapGestureRecognizer(target: self, action: #selector(dimmingViewTapped(tapRecognizer:)))
         dimmingView?.addGestureRecognizer(tapRecognizer)
-    }
-    
-    private func applyCornerRoundingMask(to view: UIView) {
-        let path = UIBezierPath(roundedRect: view.bounds, byRoundingCorners: [.topRight, .topLeft], cornerRadii: CGSize(width: 20, height: 20))
-        let maskLayer = CAShapeLayer()
-        maskLayer.path = path.cgPath
-        view.layer.mask = maskLayer
     }
     
     @objc private func dimmingViewTapped(tapRecognizer: UITapGestureRecognizer) {
@@ -59,22 +65,16 @@ final class ModalPresentationController: UIPresentationController {
         
         containerView.insertSubview(dimmingView, at: 0)
         
-        let parentSize = containerView.bounds.size
-        let presentedSize = size(forChildContentContainer: presentedViewController, withParentContainerSize: parentSize)
-        if parentSize != presentedSize {
-            presentedViewController.view.clipsToBounds = true
-        }
-        
-        applyCornerRoundingMask(to: presentedViewController.view)
-        
         presentedViewController.transitionCoordinator?.animate(alongsideTransition: { _ in
             self.dimmingView?.alpha = 1.0
+            (self.presentedViewController as? ModalTransitionAnimating)?.animatePresentationTransition()
         }, completion: nil)
     }
     
     override func dismissalTransitionWillBegin() {
         presentedViewController.transitionCoordinator?.animate(alongsideTransition: { _ in
             self.dimmingView?.alpha = 0.0
+            (self.presentedViewController as? ModalTransitionAnimating)?.animateDismissalTransition()
         }, completion: nil)
     }
     
@@ -89,24 +89,27 @@ final class ModalPresentationController: UIPresentationController {
     }
     
     override func size(forChildContentContainer container: UIContentContainer, withParentContainerSize parentSize: CGSize) -> CGSize {
-        return size ?? CGSize(width: parentSize.width, height: floor(parentSize.height * 0.75))
+        let height = contentHeight ?? floor(parentSize.height * 0.75)
+        return CGSize(width: parentSize.width, height: height)
     }
     
     override var frameOfPresentedViewInContainerView: CGRect {
-        if let customFrame = customFrame {
-            return customFrame
+        guard let parentSize = containerView?.bounds.size else { return CGRect.zero }
+        
+        let presentedSize: CGSize
+        
+        if contentHeight == nil,
+            let detailViewController = presentedViewController as? SizeProviding,
+            let contentSize = detailViewController.contentSize {
+            presentedSize = contentSize
+        } else {
+            presentedSize = size(forChildContentContainer: presentedViewController, withParentContainerSize: parentSize)
         }
         
-        guard let parentSize = containerView?.bounds.size else { return CGRect.zero }
-
-        let presentedSize = size(forChildContentContainer: presentedViewController, withParentContainerSize: parentSize)
-
-        var presentedViewFrame = CGRect.zero
-        presentedViewFrame.size = presentedSize
-        presentedViewFrame.origin = CGPoint(
-            x: (parentSize.width - presentedSize.width) / 2,
-            y: (parentSize.height - presentedSize.height))
-
-        return presentedViewFrame
+        return CGRect(origin:
+            CGPoint(
+                x: (parentSize.width - presentedSize.width) / 2,
+                y: (parentSize.height - presentedSize.height)
+        ), size: presentedSize)
     }
 }
