@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14113" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
+        <capability name="Alignment constraints with different attributes" minToolsVersion="5.1"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--Modal Detail View Controller-->
+        <scene sceneID="8kR-ji-I6W">
+            <objects>
+                <viewController storyboardIdentifier="ModalDetailViewController" id="KcC-lE-Bvl" customClass="ModalDetailViewController" customModule="Library" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="wWW-h3-OmW">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="H0u-qC-cNQ">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                                <subviews>
+                                    <stackView opaque="NO" contentMode="scaleToFill" placeholderIntrinsicWidth="infinite" placeholderIntrinsicHeight="100" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="BF7-ai-tzJ">
+                                        <rect key="frame" x="0.0" y="0.0" width="375" height="100"/>
+                                    </stackView>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="PMp-z3-j4L">
+                                        <rect key="frame" x="330" y="0.0" width="45" height="45"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="45" id="Jf3-n5-pUa"/>
+                                            <constraint firstAttribute="height" constant="45" id="wuz-yp-IbB"/>
+                                        </constraints>
+                                        <state key="normal" image="icon_close"/>
+                                        <connections>
+                                            <action selector="dismiss:" destination="KcC-lE-Bvl" eventType="touchUpInside" id="KpV-vi-cYa"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                                <color key="backgroundColor" red="0.0" green="0.56284224989999998" blue="0.31881666180000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="trailing" secondItem="PMp-z3-j4L" secondAttribute="trailing" id="W6I-yK-hqu"/>
+                                    <constraint firstItem="BF7-ai-tzJ" firstAttribute="top" secondItem="H0u-qC-cNQ" secondAttribute="top" id="WGk-qU-akQ"/>
+                                    <constraint firstItem="BF7-ai-tzJ" firstAttribute="leading" secondItem="H0u-qC-cNQ" secondAttribute="leading" id="XE9-Hu-Kom"/>
+                                    <constraint firstAttribute="trailing" secondItem="BF7-ai-tzJ" secondAttribute="trailing" id="oUc-J8-jDV"/>
+                                    <constraint firstItem="PMp-z3-j4L" firstAttribute="top" secondItem="H0u-qC-cNQ" secondAttribute="top" id="tGl-mR-kex"/>
+                                </constraints>
+                            </view>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" placeholderIntrinsicWidth="100" placeholderIntrinsicHeight="100" translatesAutoresizingMaskIntoConstraints="NO" id="MBj-n8-bBp">
+                                <rect key="frame" x="137" y="-50" width="100" height="100"/>
+                            </imageView>
+                        </subviews>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="Gaw-rH-5gz" firstAttribute="trailing" secondItem="H0u-qC-cNQ" secondAttribute="trailing" id="6Wc-ds-N2Q"/>
+                            <constraint firstItem="H0u-qC-cNQ" firstAttribute="leading" secondItem="Gaw-rH-5gz" secondAttribute="leading" id="LFn-JQ-1il"/>
+                            <constraint firstItem="MBj-n8-bBp" firstAttribute="centerY" secondItem="H0u-qC-cNQ" secondAttribute="top" id="b8P-Ft-XfI"/>
+                            <constraint firstItem="MBj-n8-bBp" firstAttribute="centerX" secondItem="Gaw-rH-5gz" secondAttribute="centerX" id="isz-Bg-NNQ"/>
+                            <constraint firstItem="H0u-qC-cNQ" firstAttribute="top" secondItem="wWW-h3-OmW" secondAttribute="top" id="ocN-hI-6fl"/>
+                            <constraint firstAttribute="bottom" secondItem="H0u-qC-cNQ" secondAttribute="bottom" id="uL9-2V-g7M"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="Gaw-rH-5gz"/>
+                    </view>
+                    <connections>
+                        <outlet property="backgroundView" destination="H0u-qC-cNQ" id="S6D-aR-O3Z"/>
+                        <outlet property="contentStackView" destination="BF7-ai-tzJ" id="Ydd-jP-r21"/>
+                        <outlet property="headerIconImageView" destination="MBj-n8-bBp" id="237-N4-b3k"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="f2D-OX-gkU" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-58.399999999999999" y="224.4377811094453"/>
+        </scene>
+    </scenes>
+    <resources>
+        <image name="icon_close" width="25" height="25"/>
+    </resources>
+</document>
