@@ -15,22 +15,26 @@ indirect enum StackViewElement {
     case horizontalStackView(content: [StackViewElement])
     case button(title: String, style: UIViewStyle<UIButton>, callback: () -> Void)
     case separator
-    case custom(view: UIView, height: CGFloat)
+    case customView(UIView, height: CGFloat)
+    case customHeight(CGFloat, element: StackViewElement)
     
     var height: CGFloat {
         switch self {
         case .separator:
             return 1
         case let .verticalStackView(content, spacing):
-            return content.height + CGFloat(content.count - 1) * spacing
-        case .custom(_, let height):
+            return content.height(spacing: spacing)
+        case .customView(_, let height):
+            return height
+        case .customHeight(let height, _):
             return height
         default:
             return 22
         }
     }
     
-    var view: UIView {
+    // swiftlint:disable:next function_body_length
+    func view(constainHeight: Bool = true) -> UIView {
         let result: UIView
         
         switch self {
@@ -80,18 +84,22 @@ indirect enum StackViewElement {
             view.heightAnchor.constraint(equalToConstant: 1).isActive = true
             result = view
             
-        case let .custom(view, _):
+        case let .customView(view, _):
             result = view
             result.setContentHuggingPriority(UILayoutPriority(rawValue: 999), for: .horizontal)
+        case let .customHeight(_, element):
+            result = element.view(constainHeight: false)
         }
         
-        result.heightAnchor.constraint(equalToConstant: height).isActive = true
+        if constainHeight {
+            result.heightAnchor.constraint(equalToConstant: height).isActive = true
+        }
         return result
     }
 }
 
 extension Array where Element == StackViewElement {
-    var height: CGFloat {
-        return self.reduce(0) { $0 + $1.height }
+    func height(spacing: CGFloat) -> CGFloat {
+        return self.reduce(CGFloat(count - 1) * spacing) { $0 + $1.height }
     }
 }
