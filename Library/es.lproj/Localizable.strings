@@ -80,7 +80,6 @@
 "scene.channels.alert.cancel" = "Cancelar";
 "scene.channels.alert.close" = "Cerrar";
 "scene.channels.alert.force_close" = "Forzar cierre";
-"scene.channels.row_action.close" = "Cerrar canal";
 "scene.channels.close_success.toast" = "El canal está cerrándose.";
 
 "scene.open_channel.title" = "Abrir Canal";
@@ -191,8 +190,8 @@
 "scene.channel_detail.closing_time.label" = "Cerrando";
 "scene.channel_detail.closing_time.data" = "%d bloques (%@)";
 "scene.channel_detail.funding_transaction_label" = "Financiando Transacción";
-"scene.channel_detail.close_button" = "Cerrar";
-"scene.channel_detail.force_close_button" = "Forzar cierre";
+"scene.channel_detail.close_button" = "Close Channel";
+"scene.channel_detail.force_close_button" = "Force Close Channel";
 
 "scene.filter.title" = "Filtro de transacciones";
 "scene.filter.section_header.transaction_types" = "Tipos de transacción";
