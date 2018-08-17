@@ -80,7 +80,6 @@
 "scene.channels.alert.cancel" = "Odustani";
 "scene.channels.alert.close" = "Zatvori";
 "scene.channels.alert.force_close" = "Force Close";
-"scene.channels.row_action.close" = "Zatvori kanal";
 "scene.channels.close_success.toast" = "Kanal se zatvara.";
 
 "scene.open_channel.title" = "Otvori kanal";
@@ -191,8 +190,8 @@
 "scene.channel_detail.closing_time.label" = "Zatvaranje";
 "scene.channel_detail.closing_time.data" = "%d blokovi (%@)";
 "scene.channel_detail.funding_transaction_label" = "Financiranje transakcije";
-"scene.channel_detail.close_button" = "Zatvori";
-"scene.channel_detail.force_close_button" = "Prisilno zatvaranje";
+"scene.channel_detail.close_button" = "Close Channel";
+"scene.channel_detail.force_close_button" = "Force Close Channel";
 
 "scene.filter.title" = "Filter transakcija";
 "scene.filter.section_header.transaction_types" = "Vrste transakcija";
