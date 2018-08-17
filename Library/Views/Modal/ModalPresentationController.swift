@@ -7,8 +7,8 @@
 
 import UIKit
 
-protocol SizeProviding {
-    var contentSize: CGSize? { get }
+protocol ContentHeightProviding {
+    var contentHeight: CGFloat? { get }
 }
 
 protocol ModalTransitionAnimating {
@@ -99,17 +99,19 @@ final class ModalPresentationController: UIPresentationController {
         let presentedSize: CGSize
         
         if contentHeight == nil,
-            let detailViewController = presentedViewController as? SizeProviding,
-            let contentSize = detailViewController.contentSize {
-            presentedSize = contentSize
+            let detailViewController = presentedViewController as? ContentHeightProviding,
+            let contentHeight = detailViewController.contentHeight {
+            presentedSize = CGSize(width: parentSize.width, height: contentHeight)
         } else {
             presentedSize = size(forChildContentContainer: presentedViewController, withParentContainerSize: parentSize)
         }
         
-        return CGRect(origin:
-            CGPoint(
+        return CGRect(
+            origin: CGPoint(
                 x: (parentSize.width - presentedSize.width) / 2,
                 y: (parentSize.height - presentedSize.height)
-        ), size: presentedSize)
+            ),
+            size: presentedSize
+        )
     }
 }

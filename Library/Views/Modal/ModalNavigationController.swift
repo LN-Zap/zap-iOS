@@ -9,7 +9,7 @@ import UIKit
 
 final class ModalNavigationController: UINavigationController {
     private var modalPresentationManager: ModalPresentationManager?
-    private var size: CGSize?
+    private var height: CGFloat?
     
     override init(nibName nibNameOrNil: String?, bundle nibBundleOrNil: Bundle?) {
         super.init(nibName: nibNameOrNil, bundle: nibBundleOrNil)
@@ -21,10 +21,10 @@ final class ModalNavigationController: UINavigationController {
         setup()
     }
     
-    init(rootViewController: UIViewController, size: CGSize? = nil) {
+    init(rootViewController: UIViewController, height: CGFloat? = nil) {
         super.init(rootViewController: rootViewController)
         setup()
-        self.size = size
+        self.height = height
     }
     
     private func setup() {
@@ -49,8 +49,8 @@ final class ModalNavigationController: UINavigationController {
     }
 }
 
-extension ModalNavigationController: SizeProviding {
-    var contentSize: CGSize? {
-        return size
+extension ModalNavigationController: ContentHeightProviding {
+    var contentHeight: CGFloat? {
+        return height
     }
 }

@@ -12,7 +12,6 @@ import Lightning
 class SendQRCodeScannerStrategy: QRCodeScannerStrategy {
     private let transactionAnnotationStore: TransactionAnnotationStore
     private let nodeStore: LightningNodeStore
-    private var lastScannedAddress: String?
     
     let title = "scene.deposit.send".localized
     
@@ -22,9 +21,6 @@ class SendQRCodeScannerStrategy: QRCodeScannerStrategy {
     }
     
     func viewControllerForAddress(address: String, lightningService: LightningService) -> Result<UIViewController>? {
-        guard address != lastScannedAddress else { return nil }
-        lastScannedAddress = address
-        
         let sendViewModel = SendViewModel(lightningService: lightningService)
         let result = sendViewModel.paymentURI(for: address)
         

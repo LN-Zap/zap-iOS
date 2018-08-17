@@ -175,6 +175,7 @@ final class QRCodeScannerView: UIView {
         overlayView?.alpha = 0
         
         captureSession.stopRunning()
+        oldCode = nil
     }
 }
 

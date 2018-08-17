@@ -22,7 +22,6 @@ extension UIStoryboard {
 
 protocol QRCodeScannerChildViewController: class {
     var delegate: QRCodeScannerChildDelegate? { get set }
-    var contentHeight: CGFloat { get }
 }
 
 protocol QRCodeScannerChildDelegate: class {
@@ -30,17 +29,9 @@ protocol QRCodeScannerChildDelegate: class {
     func presentError(message: String)
 }
 
-final class QRCodeScannerViewController: UIViewController, ContainerViewController {
-    
-    weak var currentViewController: UIViewController?
-    // swiftlint:disable:next private_outlet
-    @IBOutlet weak var container: UIView?
-    
+final class QRCodeScannerViewController: UIViewController {
     @IBOutlet private weak var successView: UIView!
     @IBOutlet private weak var qrCodeSuccessImageView: UIImageView!
-    
-    @IBOutlet private weak var containerViewHeightConstraint: NSLayoutConstraint!
-    @IBOutlet private weak var paymentTopConstraint: NSLayoutConstraint!
     @IBOutlet private weak var pasteButton: UIButton!
     @IBOutlet private weak var scannerView: QRCodeScannerView! {
         didSet {
@@ -102,30 +93,9 @@ final class QRCodeScannerViewController: UIViewController, ContainerViewControll
     }
     
     private func presentViewController(_ viewController: UIViewController) {
-        setContainerContent(viewController)
-        
-        applyCornerRoundingMask(to: viewController.view)
-        
-        if let viewController = viewController as? QRCodeScannerChildViewController {
-            containerViewHeightConstraint?.constant = viewController.contentHeight
-            viewController.delegate = self
-        } else {
-            fatalError("no vc height provided")
-        }
-        
-        UIView.animate(withDuration: 0.25) {
-            self.qrCodeSuccessImageView.alpha = 1
-            self.scannerViewOverlay.alpha = 0.8
-            self.paymentTopConstraint.isActive = false
-            self.view.layoutIfNeeded()
-        }
-    }
-    
-    private func applyCornerRoundingMask(to view: UIView) {
-        let path = UIBezierPath(roundedRect: view.bounds, byRoundingCorners: [.topRight, .topLeft], cornerRadii: CGSize(width: 20, height: 20))
-        let maskLayer = CAShapeLayer()
-        maskLayer.path = path.cgPath
-        view.layer.mask = maskLayer
+        guard let qrCodeScannerChildViewController = viewController as? QRCodeScannerChildViewController else { fatalError("presented view is not of type QRCodeScannerChildViewController") }
+        qrCodeScannerChildViewController.delegate = self
+        present(viewController, animated: true, completion: nil)
     }
     
     @IBAction private func pasteButtonTapped(_ sender: Any) {

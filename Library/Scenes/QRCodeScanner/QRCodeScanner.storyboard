@@ -55,12 +55,6 @@
                                     <constraint firstItem="4l3-5A-SjA" firstAttribute="bottom" secondItem="suT-TO-7hY" secondAttribute="bottom" id="zaT-Pg-6fb"/>
                                 </constraints>
                             </view>
-                            <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="V7t-mB-fri">
-                                <rect key="frame" x="0.0" y="667" width="375" height="650"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="650" id="RVI-Bw-HXy"/>
-                                </constraints>
-                            </containerView>
                             <view alpha="0.0" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="41s-yu-jEG">
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                                 <color key="backgroundColor" name="nastyGreen"/>
@@ -71,11 +65,8 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
-                            <constraint firstItem="V7t-mB-fri" firstAttribute="top" secondItem="Eno-d1-u3x" secondAttribute="bottom" id="BCV-KX-hTX"/>
-                            <constraint firstItem="V7t-mB-fri" firstAttribute="trailing" secondItem="wCl-Jb-7G3" secondAttribute="trailing" id="DtW-Fc-7a3"/>
+                            <constraint firstItem="Eno-d1-u3x" firstAttribute="bottom" secondItem="aSj-aT-mt0" secondAttribute="bottom" id="CL6-VU-CVI"/>
                             <constraint firstItem="Eno-d1-u3x" firstAttribute="top" secondItem="aSj-aT-mt0" secondAttribute="top" id="H69-q5-apI"/>
-                            <constraint firstAttribute="bottom" secondItem="V7t-mB-fri" secondAttribute="bottom" priority="200" id="Ykw-C6-mMT"/>
-                            <constraint firstItem="V7t-mB-fri" firstAttribute="leading" secondItem="wCl-Jb-7G3" secondAttribute="leading" id="aY2-pY-kOY"/>
                             <constraint firstItem="wCl-Jb-7G3" firstAttribute="trailing" secondItem="41s-yu-jEG" secondAttribute="trailing" id="d87-DD-Aab"/>
                             <constraint firstItem="41s-yu-jEG" firstAttribute="top" secondItem="aSj-aT-mt0" secondAttribute="top" id="f2F-Cy-vfg"/>
                             <constraint firstItem="E4b-Na-FVs" firstAttribute="centerY" secondItem="Eno-d1-u3x" secondAttribute="centerY" id="icv-6N-7wO"/>
@@ -83,7 +74,6 @@
                             <constraint firstItem="Eno-d1-u3x" firstAttribute="leading" secondItem="wCl-Jb-7G3" secondAttribute="leading" id="kKY-pL-jcW"/>
                             <constraint firstItem="41s-yu-jEG" firstAttribute="leading" secondItem="wCl-Jb-7G3" secondAttribute="leading" id="nBZ-6f-CeC"/>
                             <constraint firstItem="wCl-Jb-7G3" firstAttribute="bottom" secondItem="C2T-oe-PmX" secondAttribute="bottom" constant="20" id="p2t-IX-mxv"/>
-                            <constraint firstItem="V7t-mB-fri" firstAttribute="top" secondItem="aSj-aT-mt0" secondAttribute="bottom" id="rfk-aS-4Bp"/>
                             <constraint firstItem="Eno-d1-u3x" firstAttribute="trailing" secondItem="wCl-Jb-7G3" secondAttribute="trailing" id="vLb-xT-uFR"/>
                             <constraint firstAttribute="bottom" secondItem="41s-yu-jEG" secondAttribute="bottom" id="zi3-2F-BWh"/>
                         </constraints>
@@ -97,10 +87,7 @@
                         </barButtonItem>
                     </navigationItem>
                     <connections>
-                        <outlet property="container" destination="V7t-mB-fri" id="WGY-Vn-2If"/>
-                        <outlet property="containerViewHeightConstraint" destination="RVI-Bw-HXy" id="QcM-e5-Pab"/>
                         <outlet property="pasteButton" destination="C2T-oe-PmX" id="Iw7-DT-EN9"/>
-                        <outlet property="paymentTopConstraint" destination="rfk-aS-4Bp" id="Wfc-xR-nNX"/>
                         <outlet property="qrCodeSuccessImageView" destination="E4b-Na-FVs" id="D5v-jz-ZFc"/>
                         <outlet property="scannerView" destination="suT-TO-7hY" id="Zqd-BQ-io7"/>
                         <outlet property="scannerViewOverlay" destination="4l3-5A-SjA" id="m6Y-sr-3op"/>

@@ -15,14 +15,14 @@ extension UIStoryboard {
     }
 }
 
-final class SendOnChainViewController: UIViewController, QRCodeScannerChildViewController {
+final class SendOnChainViewController: ModalViewController, ContentHeightProviding, QRCodeScannerChildViewController {
     weak var delegate: QRCodeScannerChildDelegate?
     
     @IBOutlet private weak var addressLabel: UILabel!
     @IBOutlet private weak var amountInputView: AmountInputView!
     @IBOutlet private weak var gradientLoadingButtonView: GradientLoadingButtonView!
     
-    let contentHeight: CGFloat = 550 // QRCodeScannerChildViewController
+    let contentHeight: CGFloat? = 550 // ContentHeightProviding
     fileprivate var sendOnChainViewModel: SendOnChainViewModel?
 
     override func viewDidLoad() {
