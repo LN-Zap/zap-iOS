@@ -57,14 +57,14 @@ final class ChannelDetailConfiguration {
         let horizontalStackViewHeight = StackViewElement.horizontalStackView(content: []).height
         
         elements.append(.verticalStackView(content: [
-            .custom(view: balanceView, height: 10),
+            .customView(balanceView, height: 10),
             .horizontalStackView(content: [
-                .custom(view: circleIndicatorView(gradient: [UIColor.Zap.lightningOrange, UIColor.Zap.lightningOrangeGradient]), height: horizontalStackViewHeight),
+                .customView(circleIndicatorView(gradient: [UIColor.Zap.lightningOrange, UIColor.Zap.lightningOrangeGradient]), height: horizontalStackViewHeight),
                 .label(text: "scene.channel_detail.local_balance_label".localized + ":", style: labelStyle),
                 .amountLabel(amount: channelViewModel.channel.localBalance, style: rightAlignedTextStyle)
             ]),
             .horizontalStackView(content: [
-                .custom(view: circleIndicatorView(gradient: [UIColor.Zap.seaBlue, UIColor.Zap.seaBlueGradient]), height: horizontalStackViewHeight),
+                .customView(circleIndicatorView(gradient: [UIColor.Zap.seaBlue, UIColor.Zap.seaBlueGradient]), height: horizontalStackViewHeight),
                 .label(text: "scene.channel_detail.remote_balance_label".localized + ":", style: labelStyle),
                 .amountLabel(amount: channelViewModel.channel.remoteBalance, style: rightAlignedTextStyle)
             ])
