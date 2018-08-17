@@ -6,7 +6,6 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
-        <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -55,10 +54,6 @@
                                     <constraint firstItem="4l3-5A-SjA" firstAttribute="bottom" secondItem="suT-TO-7hY" secondAttribute="bottom" id="zaT-Pg-6fb"/>
                                 </constraints>
                             </view>
-                            <view alpha="0.0" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="41s-yu-jEG">
-                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
-                                <color key="backgroundColor" name="nastyGreen"/>
-                            </view>
                             <imageView userInteractionEnabled="NO" alpha="0.0" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="qr-success" translatesAutoresizingMaskIntoConstraints="NO" id="E4b-Na-FVs">
                                 <rect key="frame" x="147" y="293" width="80" height="80"/>
                             </imageView>
@@ -67,15 +62,11 @@
                         <constraints>
                             <constraint firstItem="Eno-d1-u3x" firstAttribute="bottom" secondItem="aSj-aT-mt0" secondAttribute="bottom" id="CL6-VU-CVI"/>
                             <constraint firstItem="Eno-d1-u3x" firstAttribute="top" secondItem="aSj-aT-mt0" secondAttribute="top" id="H69-q5-apI"/>
-                            <constraint firstItem="wCl-Jb-7G3" firstAttribute="trailing" secondItem="41s-yu-jEG" secondAttribute="trailing" id="d87-DD-Aab"/>
-                            <constraint firstItem="41s-yu-jEG" firstAttribute="top" secondItem="aSj-aT-mt0" secondAttribute="top" id="f2F-Cy-vfg"/>
                             <constraint firstItem="E4b-Na-FVs" firstAttribute="centerY" secondItem="Eno-d1-u3x" secondAttribute="centerY" id="icv-6N-7wO"/>
                             <constraint firstItem="E4b-Na-FVs" firstAttribute="centerX" secondItem="Eno-d1-u3x" secondAttribute="centerX" id="imA-ov-laF"/>
                             <constraint firstItem="Eno-d1-u3x" firstAttribute="leading" secondItem="wCl-Jb-7G3" secondAttribute="leading" id="kKY-pL-jcW"/>
-                            <constraint firstItem="41s-yu-jEG" firstAttribute="leading" secondItem="wCl-Jb-7G3" secondAttribute="leading" id="nBZ-6f-CeC"/>
                             <constraint firstItem="wCl-Jb-7G3" firstAttribute="bottom" secondItem="C2T-oe-PmX" secondAttribute="bottom" constant="20" id="p2t-IX-mxv"/>
                             <constraint firstItem="Eno-d1-u3x" firstAttribute="trailing" secondItem="wCl-Jb-7G3" secondAttribute="trailing" id="vLb-xT-uFR"/>
-                            <constraint firstAttribute="bottom" secondItem="41s-yu-jEG" secondAttribute="bottom" id="zi3-2F-BWh"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="wCl-Jb-7G3"/>
                     </view>
@@ -91,7 +82,6 @@
                         <outlet property="qrCodeSuccessImageView" destination="E4b-Na-FVs" id="D5v-jz-ZFc"/>
                         <outlet property="scannerView" destination="suT-TO-7hY" id="Zqd-BQ-io7"/>
                         <outlet property="scannerViewOverlay" destination="4l3-5A-SjA" id="m6Y-sr-3op"/>
-                        <outlet property="successView" destination="41s-yu-jEG" id="hma-Px-2A3"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="aN4-Z4-gco" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -121,8 +111,5 @@
     </scenes>
     <resources>
         <image name="qr-success" width="80" height="80"/>
-        <namedColor name="nastyGreen">
-            <color red="0.46700000762939453" green="0.63899999856948853" blue="0.24699999392032623" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-        </namedColor>
     </resources>
 </document>

@@ -30,7 +30,6 @@ protocol QRCodeScannerChildDelegate: class {
 }
 
 final class QRCodeScannerViewController: UIViewController {
-    @IBOutlet private weak var successView: UIView!
     @IBOutlet private weak var qrCodeSuccessImageView: UIImageView!
     @IBOutlet private weak var pasteButton: UIButton!
     @IBOutlet private weak var scannerView: QRCodeScannerView! {
@@ -118,7 +117,6 @@ extension QRCodeScannerViewController: QRCodeScannerChildDelegate {
             UINotificationFeedbackGenerator().notificationOccurred(.success)
             
             UIView.animate(withDuration: 0.25, animations: { [weak self] in
-                self?.successView.alpha = 1
                 self?.qrCodeSuccessImageView.tintColor = .white
                 }, completion: { [weak self] _ in
                     self?.dismiss(animated: true, completion: nil)
