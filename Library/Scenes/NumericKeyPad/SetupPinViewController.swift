@@ -36,7 +36,7 @@ final class SetupPinViewController: UIViewController {
         view.backgroundColor = UIColor.Zap.seaBlue
         
         Style.Label.custom(color: .white).apply(to: topLabel)
-        Style.button(color: .white).apply(to: doneButton)
+        Style.Button.custom(color: .white).apply(to: doneButton)
         
         setupKeyPad()
         

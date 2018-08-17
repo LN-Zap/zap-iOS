@@ -61,9 +61,9 @@ final class QRCodeScannerViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
                 
-        Style.button().apply(to: pasteButton)
+        Style.Button.custom().apply(to: pasteButton)
         
-        Style.button(backgroundColor: UIColor.Zap.deepSeaBlue).apply(to: pasteButton)
+        Style.Button.background.apply(to: pasteButton)
         
         navigationController?.navigationBar.backgroundColor = .clear
         navigationController?.navigationBar.shadowImage = UIImage()

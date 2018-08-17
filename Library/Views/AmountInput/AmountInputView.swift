@@ -91,7 +91,7 @@ public final class AmountInputView: UIControl {
         amountTextField.inputView = UIView()
         amountTextField.delegate = self
         
-        Style.button().apply(to: swapCurrencyButton)
+        Style.Button.custom().apply(to: swapCurrencyButton)
         swapCurrencyButton.tintColor = UIColor.Zap.black
         swapCurrencyButton.titleLabel?.font = UIFont.Zap.light.withSize(36)
         downArrowImageView.tintColor = UIColor.Zap.black

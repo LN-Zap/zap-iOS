@@ -53,7 +53,7 @@ public final class GradientLoadingButtonView: UIControl {
         
         let button = UIButton(type: .system)
 
-        Style.button(color: .white).apply(to: button)
+        Style.Button.custom(color: .white).apply(to: button)
 
         button.setTitleColor(UIColor.white.withAlphaComponent(0.4), for: .disabled)
         button.addTarget(self, action: #selector(buttonTapped), for: .touchUpInside)
