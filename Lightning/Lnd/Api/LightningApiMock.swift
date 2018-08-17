@@ -212,7 +212,9 @@ enum ApiMockTemplate {
                 ],
                 channels: [
                     Channel.template
-                ]
+                ],
+                decodePaymentRequest: PaymentRequest.template,
+                sendPayment: Data()
             )
         }
     }
