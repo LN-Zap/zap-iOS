@@ -179,8 +179,10 @@ enum ApiMockTemplate {
     case manyChannels
     case balance
     case mainnet
+    case transactions
+    case everything
     
-    static let selected: ApiMockTemplate = .mainnet
+    static let selected: ApiMockTemplate = .everything
     
     var instance: LightningApiMock {
         switch self {
@@ -194,6 +196,24 @@ enum ApiMockTemplate {
             return LightningApiMock(walletBalance: 4_200_000)
         case .mainnet:
             return LightningApiMock(info: Info.template.mainnet)
+        case .transactions:
+            return LightningApiMock(transactions: [
+                OnChainConfirmedTransaction.template,
+                OnChainUnconfirmedTransaction.template,
+                LightningPayment.template
+            ])
+        case .everything:
+            return LightningApiMock(
+                walletBalance: 4_200_000,
+                transactions: [
+                    OnChainConfirmedTransaction.template,
+                    OnChainUnconfirmedTransaction.template,
+                    LightningPayment.template
+                ],
+                channels: [
+                    Channel.template
+                ]
+            )
         }
     }
 }
