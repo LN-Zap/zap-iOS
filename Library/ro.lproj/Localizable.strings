@@ -80,7 +80,6 @@
 "scene.channels.alert.cancel" = "Revocare";
 "scene.channels.alert.close" = "Închide";
 "scene.channels.alert.force_close" = "Force Close";
-"scene.channels.row_action.close" = "Inchide canal";
 "scene.channels.close_success.toast" = "Canalul se închide.";
 
 "scene.open_channel.title" = "Deschide un canal";
@@ -191,8 +190,8 @@
 "scene.channel_detail.closing_time.label" = "Closing in";
 "scene.channel_detail.closing_time.data" = "%d blocks (%@)";
 "scene.channel_detail.funding_transaction_label" = "Funding Transaction";
-"scene.channel_detail.close_button" = "Închide";
-"scene.channel_detail.force_close_button" = "Forțeaza închiderea";
+"scene.channel_detail.close_button" = "Close Channel";
+"scene.channel_detail.force_close_button" = "Force Close Channel";
 
 "scene.filter.title" = "Filtru de tranzactie";
 "scene.filter.section_header.transaction_types" = "Tipuri de tranzacţii";
