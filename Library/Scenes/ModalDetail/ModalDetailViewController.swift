@@ -7,41 +7,83 @@
 
 import UIKit
 
-final class ModalDetailViewController: ModalViewController, QRCodeScannerChildViewController {
-    @IBOutlet private weak var backgroundView: UIView!
-    @IBOutlet private weak var contentStackView: UIStackView!
-    @IBOutlet private weak var headerIconImageView: UIImageView!
+class ModalDetailViewController: ModalViewController, QRCodeScannerChildViewController {
+    private weak var backgroundView: UIView?
+    private weak var contentStackView: UIStackView?
+    private weak var headerIconImageView: UIImageView?
     
     weak var delegate: QRCodeScannerChildDelegate?
+    
+    var stackViewContent: [StackViewElement] = [] {
+        didSet {
+            contentStackView?.set(elements: stackViewContent)
+            updateHeight()
+        }
+    }
+    
+    private func setupLayout() {
+        let backgroundView = UIView(frame: CGRect.zero)
+        backgroundView.translatesAutoresizingMaskIntoConstraints = false
+        view.addSubview(backgroundView)
+        backgroundView.constrainEdges(to: view)
+        backgroundView.layer.cornerRadius = 14
+        backgroundView.layer.maskedCorners = [.layerMaxXMinYCorner, .layerMinXMinYCorner]
+        backgroundView.backgroundColor = UIColor.Zap.seaBlue
+        self.backgroundView = backgroundView
+        
+        let closeButton = UIButton(type: .custom)
+        closeButton.translatesAutoresizingMaskIntoConstraints = false
+        closeButton.setImage(UIImage(named: "icon_close", in: Bundle.library, compatibleWith: nil), for: .normal)
+        backgroundView.addSubview(closeButton)
+        NSLayoutConstraint.activate([
+            closeButton.widthAnchor.constraint(equalToConstant: 45),
+            closeButton.heightAnchor.constraint(equalToConstant: 45),
+            closeButton.topAnchor.constraint(equalTo: backgroundView.topAnchor),
+            closeButton.trailingAnchor.constraint(equalTo: backgroundView.trailingAnchor)
+        ])
+        closeButton.addTarget(self, action: #selector(dismissParent), for: .touchUpInside)
+        
+        let headerIconImageView = UIImageView(image: nil)
+        headerIconImageView.translatesAutoresizingMaskIntoConstraints = false
+        headerIconImageView.alpha = 0
+        view.addSubview(headerIconImageView)
+        NSLayoutConstraint.activate([
+            headerIconImageView.centerXAnchor.constraint(equalTo: view.centerXAnchor),
+            headerIconImageView.centerYAnchor.constraint(equalTo: view.topAnchor)
+        ])
+        self.headerIconImageView = headerIconImageView
+        
+        let contentStackView = UIStackView()
+        contentStackView.axis = .vertical
+        contentStackView.spacing = 14
+        contentStackView.directionalLayoutMargins = NSDirectionalEdgeInsets(top: 15, leading: 20, bottom: 0, trailing: 20)
+        contentStackView.isLayoutMarginsRelativeArrangement = true
+        contentStackView.translatesAutoresizingMaskIntoConstraints = false
+        backgroundView.addSubview(contentStackView)
+        NSLayoutConstraint.activate([
+            contentStackView.topAnchor.constraint(equalTo: headerIconImageView.bottomAnchor),
+            contentStackView.leadingAnchor.constraint(equalTo: backgroundView.leadingAnchor),
+            contentStackView.trailingAnchor.constraint(equalTo: backgroundView.trailingAnchor)
+        ])
+        self.contentStackView = contentStackView
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        setupLayout()
+        
         view.clipsToBounds = false
         
-        backgroundView.layer.cornerRadius = 14
-        backgroundView.layer.maskedCorners = [.layerMaxXMinYCorner, .layerMinXMinYCorner]
-        
-        contentStackView.spacing = 14
-        contentStackView.directionalLayoutMargins = NSDirectionalEdgeInsets(top: 14, leading: 20, bottom: 14, trailing: 20)
-        contentStackView.isLayoutMarginsRelativeArrangement = true
-        
-        headerIconImageView.image = UIImage(named: "icon_header_lightning", in: Bundle.library, compatibleWith: nil)
-        headerIconImageView.alpha = 0
+        headerIconImageView?.image = UIImage(named: "icon_header_lightning", in: Bundle.library, compatibleWith: nil)
     }
     
-    var contentSize: CGSize {
-        var size = contentStackView?.systemLayoutSizeFitting(CGSize(width: 375, height: 0), withHorizontalFittingPriority: .defaultHigh, verticalFittingPriority: .defaultLow) ?? CGSize.zero
-        size.height += 29 + 30
-        return size
-    }
-    
-    @IBAction private func changeSize(_ sender: Any) {
-        let height: CGFloat = modalPresentationManager?.modalPresentationController?.contentHeight == 150 ? 400 : 150
+    func updateHeight() {
+        guard let height = contentHeight else { return }
         modalPresentationManager?.modalPresentationController?.contentHeight = height
     }
     
-    @IBAction private func dismiss(_ sender: Any) {
+    @objc private func dismissParent() {
         guard let presentingViewController = presentingViewController else { return }
         
         // fixes the dismiss animation of two modals at once
@@ -54,12 +96,21 @@ final class ModalDetailViewController: ModalViewController, QRCodeScannerChildVi
     }
 }
 
+extension ModalDetailViewController: ContentHeightProviding {
+    var contentHeight: CGFloat? {
+        let headerImageMargin = (headerIconImageView?.image?.size.height ?? 0) / 2
+        let topMargin: CGFloat = 15
+        let bottomMargin: CGFloat = 34
+        return stackViewContent.height(spacing: contentStackView?.spacing ?? 0) + headerImageMargin + topMargin + bottomMargin
+    }
+}
+
 extension ModalDetailViewController: ModalTransitionAnimating {
     func animatePresentationTransition() {
-        headerIconImageView.alpha = 1
+        headerIconImageView?.alpha = 1
     }
     
     func animateDismissalTransition() {
-        headerIconImageView.alpha = 0
+        headerIconImageView?.alpha = 0
     }
 }
