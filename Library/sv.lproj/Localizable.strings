@@ -80,7 +80,6 @@
 "scene.channels.alert.cancel" = "Avbryt";
 "scene.channels.alert.close" = "Stäng";
 "scene.channels.alert.force_close" = "Force Close";
-"scene.channels.row_action.close" = "Stäng kanal";
 "scene.channels.close_success.toast" = "Kanalen stängs.";
 
 "scene.open_channel.title" = "Öppna kanal";
@@ -191,8 +190,8 @@
 "scene.channel_detail.closing_time.label" = "Stänger om";
 "scene.channel_detail.closing_time.data" = "%d block (%@)";
 "scene.channel_detail.funding_transaction_label" = "Finansierar transaktion";
-"scene.channel_detail.close_button" = "Stäng";
-"scene.channel_detail.force_close_button" = "Tvinga stängning";
+"scene.channel_detail.close_button" = "Close Channel";
+"scene.channel_detail.force_close_button" = "Force Close Channel";
 
 "scene.filter.title" = "Transaktionsfilter";
 "scene.filter.section_header.transaction_types" = "Transaktionstyper";
