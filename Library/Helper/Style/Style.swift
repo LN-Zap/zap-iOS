@@ -25,6 +25,14 @@ struct UIViewStyle<T: UIView> {
             styling(view)
         }
     }
+    
+    func with(_ adjustment: @escaping (T) -> Void) -> UIViewStyle<T> {
+        let styling = self.styling
+        return UIViewStyle<T> {
+            styling($0)
+            adjustment($0)
+        }
+    }
 }
 
 enum Style {
@@ -75,15 +83,11 @@ enum Style {
     }
     
     enum Button {
-        static func custom(color: UIColor = UIColor.Zap.lightningOrange, backgroundColor: UIColor = UIColor.clear, fontSize: CGFloat = 17) -> UIViewStyle<UIButton> {
+        static func custom(color: UIColor = UIColor.Zap.lightningOrange, fontSize: CGFloat = 17) -> UIViewStyle<UIButton> {
             return UIViewStyle<UIButton> {
                 $0.titleLabel?.font = UIFontMetrics(forTextStyle: .body).scaledFont(for: UIFont.Zap.regular.withSize(17))
                 $0.setTitleColor(color, for: .normal)
                 $0.titleLabel?.adjustsFontForContentSizeCategory = true
-                if backgroundColor != .clear {
-                    $0.backgroundColor = backgroundColor
-                    $0.layer.cornerRadius = 14
-                }
             }
         }
         
