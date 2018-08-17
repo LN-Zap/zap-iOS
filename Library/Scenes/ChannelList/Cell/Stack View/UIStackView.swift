@@ -15,6 +15,7 @@ extension UIStackView {
     }
     
     func set(elements: [StackViewElement]) {
+        clear()
         for element in elements {
             addArrangedSubview(element.view())
         }

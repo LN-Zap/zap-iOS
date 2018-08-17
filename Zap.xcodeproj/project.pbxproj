@@ -52,7 +52,7 @@
 		AD27B01C2100D7CF00F232A8 /* CertificateDetailCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD27B01B2100D7CF00F232A8 /* CertificateDetailCell.swift */; };
 		AD2884352126B51C003C3D94 /* ModalViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD2884342126B51C003C3D94 /* ModalViewController.swift */; };
 		AD2884372126DDA2003C3D94 /* ModalDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD2884362126DDA2003C3D94 /* ModalDetailViewController.swift */; };
-		AD28843A2126DDFE003C3D94 /* ModalDetail.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AD2884392126DDFE003C3D94 /* ModalDetail.storyboard */; };
+		AD28843E21272B9A003C3D94 /* SendModalDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD28843D21272B9A003C3D94 /* SendModalDetailViewController.swift */; };
 		AD28CB79211D9DFF00A31004 /* UINavigationBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD28CB78211D9DFF00A31004 /* UINavigationBar.swift */; };
 		AD28CB7B211DE93300A31004 /* BlockExplorerSettingsItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD28CB7A211DE93300A31004 /* BlockExplorerSettingsItem.swift */; };
 		AD28CB7D211DF12E00A31004 /* DetailBlockExplorerTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = AD28CB7C211DF12E00A31004 /* DetailBlockExplorerTableViewCell.xib */; };
@@ -626,7 +626,7 @@
 		AD27B01B2100D7CF00F232A8 /* CertificateDetailCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CertificateDetailCell.swift; sourceTree = "<group>"; };
 		AD2884342126B51C003C3D94 /* ModalViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModalViewController.swift; sourceTree = "<group>"; };
 		AD2884362126DDA2003C3D94 /* ModalDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModalDetailViewController.swift; sourceTree = "<group>"; };
-		AD2884392126DDFE003C3D94 /* ModalDetail.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = ModalDetail.storyboard; sourceTree = "<group>"; };
+		AD28843D21272B9A003C3D94 /* SendModalDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SendModalDetailViewController.swift; sourceTree = "<group>"; };
 		AD28CB78211D9DFF00A31004 /* UINavigationBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UINavigationBar.swift; sourceTree = "<group>"; };
 		AD28CB7A211DE93300A31004 /* BlockExplorerSettingsItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BlockExplorerSettingsItem.swift; sourceTree = "<group>"; };
 		AD28CB7C211DF12E00A31004 /* DetailBlockExplorerTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DetailBlockExplorerTableViewCell.xib; sourceTree = "<group>"; };
@@ -1492,7 +1492,7 @@
 			isa = PBXGroup;
 			children = (
 				AD2884362126DDA2003C3D94 /* ModalDetailViewController.swift */,
-				AD2884392126DDFE003C3D94 /* ModalDetail.storyboard */,
+				AD28843D21272B9A003C3D94 /* SendModalDetailViewController.swift */,
 			);
 			path = ModalDetail;
 			sourceTree = "<group>";
@@ -2330,7 +2330,6 @@
 				AD391C6A20D16F89007EE22A /* NumericKeyPad.storyboard in Resources */,
 				AD391CC820D16FE1007EE22A /* DetailTableViewCell.xib in Resources */,
 				AD391C4C20D16F68007EE22A /* ChannelList.storyboard in Resources */,
-				AD28843A2126DDFE003C3D94 /* ModalDetail.storyboard in Resources */,
 				AD391C5420D16F7A007EE22A /* ConnectRemoteNode.storyboard in Resources */,
 				AD391CD220D16FE1007EE22A /* Detail.storyboard in Resources */,
 				AD391CA020D16FA8007EE22A /* Root.storyboard in Resources */,
@@ -2650,6 +2649,7 @@
 				AD391C7420D16F89007EE22A /* QRCodeDetailViewController.swift in Sources */,
 				AD391C2D20D16EFA007EE22A /* UIAlertController.swift in Sources */,
 				AD391CCF20D16FE1007EE22A /* LightningInvoiceDetailViewModel.swift in Sources */,
+				AD28843E21272B9A003C3D94 /* SendModalDetailViewController.swift in Sources */,
 				AD391D1E20D174B4007EE22A /* SetupCoordinator.swift in Sources */,
 				AD391CCE20D16FE1007EE22A /* DetailViewModel.swift in Sources */,
 				ADA81EA2210E19F600B7C6F2 /* HeaderCollectionReusableView.swift in Sources */,

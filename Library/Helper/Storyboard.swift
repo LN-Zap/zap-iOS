@@ -16,7 +16,6 @@ enum Storyboard: String {
     case detail
     case invoiceDetail
     case loading
-    case modalDetail
     case numericKeyPad
     case openChannel
     case paymentDetail
