@@ -42,8 +42,15 @@ final class ModalDetailViewController: ModalViewController, QRCodeScannerChildVi
     }
     
     @IBAction private func dismiss(_ sender: Any) {
-        dismiss(animated: false, completion: nil)
-        presentingViewController?.dismiss(animated: true, completion: nil)
+        guard let presentingViewController = presentingViewController else { return }
+        
+        // fixes the dismiss animation of two modals at once
+        if let snapshotView = view.superview?.snapshotView(afterScreenUpdates: false) {
+            snapshotView.frame.origin.y = presentingViewController.view.frame.height - snapshotView.frame.height
+            presentingViewController.view.addSubview(snapshotView)
+        }
+
+        presentingViewController.presentingViewController?.dismiss(animated: true, completion: nil)
     }
 }
 
