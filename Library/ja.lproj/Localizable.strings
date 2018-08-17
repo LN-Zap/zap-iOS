@@ -80,7 +80,6 @@
 "scene.channels.alert.cancel" = "キャンセル";
 "scene.channels.alert.close" = "閉鎖";
 "scene.channels.alert.force_close" = "強制閉鎖";
-"scene.channels.row_action.close" = "チャンネルを閉鎖";
 "scene.channels.close_success.toast" = "チャネルは閉じています。";
 
 "scene.open_channel.title" = "チャンネルを開く";
@@ -191,8 +190,8 @@
 "scene.channel_detail.closing_time.label" = "閉鎖中";
 "scene.channel_detail.closing_time.data" = "%d ブロック (%@)";
 "scene.channel_detail.funding_transaction_label" = "ファンディングトランザクション";
-"scene.channel_detail.close_button" = "閉鎖";
-"scene.channel_detail.force_close_button" = "強制閉鎖";
+"scene.channel_detail.close_button" = "Close Channel";
+"scene.channel_detail.force_close_button" = "Force Close Channel";
 
 "scene.filter.title" = "トランザクションフィルター";
 "scene.filter.section_header.transaction_types" = "トランザクションタイプ";
