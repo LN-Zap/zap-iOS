@@ -8,6 +8,10 @@
 import UIKit
 
 enum Appearance {
+    enum Constants {
+        static let modalCornerRadius: CGFloat = 14
+    }
+    
     static func setup() {
         // UINavigationBar
         UINavigationBar.appearance().largeTitleTextAttributes = [.font: UIFont.Zap.light.withSize(40), .foregroundColor: UIColor.white]
