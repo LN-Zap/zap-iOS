@@ -80,7 +80,6 @@
 "scene.channels.alert.cancel" = "Annuller";
 "scene.channels.alert.close" = "Luk";
 "scene.channels.alert.force_close" = "Force Close";
-"scene.channels.row_action.close" = "Luk kanal";
 "scene.channels.close_success.toast" = "Kanalen lukkes.";
 
 "scene.open_channel.title" = "Åben kanal";
@@ -191,8 +190,8 @@
 "scene.channel_detail.closing_time.label" = "Lukning i";
 "scene.channel_detail.closing_time.data" = "%d blokke (%@)";
 "scene.channel_detail.funding_transaction_label" = "Finansier transaktion";
-"scene.channel_detail.close_button" = "Luk";
-"scene.channel_detail.force_close_button" = "Luk med magt";
+"scene.channel_detail.close_button" = "Close Channel";
+"scene.channel_detail.force_close_button" = "Force Close Channel";
 
 "scene.filter.title" = "Transaktionsfilter";
 "scene.filter.section_header.transaction_types" = "Transaktionstyper";
