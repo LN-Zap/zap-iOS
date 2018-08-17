@@ -73,14 +73,14 @@ final class ChannelDetailConfiguration {
         elements.append(.separator)
         elements.append(.horizontalStackView(content: [
             .label(text: "scene.channel_detail.funding_transaction_label".localized + ":", style: labelStyle),
-            .button(title: channelViewModel.channel.channelPoint.fundingTxid, style: Style.button(fontSize: 14)) { [weak self] in self?.presentBlockExplorer?() }
+            .button(title: channelViewModel.channel.channelPoint.fundingTxid, style: Style.Button.custom(fontSize: 14)) { [weak self] in self?.presentBlockExplorer?() }
         ]))
         
         if !channelViewModel.channel.state.isClosing {
             let closeTitle = channelViewModel.channel.state == .active ? "scene.channel_detail.close_button".localized : "scene.channel_detail.force_close_button".localized
             
             elements.append(.separator)
-            elements.append(.button(title: closeTitle, style: Style.button(fontSize: 20)) { [weak self] in self?.closeChannel?() })
+            elements.append(.button(title: closeTitle, style: Style.Button.custom(fontSize: 20)) { [weak self] in self?.closeChannel?() })
         }
         
         return elements

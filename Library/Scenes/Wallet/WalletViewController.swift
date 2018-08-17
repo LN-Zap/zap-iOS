@@ -80,7 +80,7 @@ final class WalletViewController: UIViewController {
         
         title = "scene.wallet.title".localized
         
-        Style.button().apply(to: sendButton, requestButton)
+        Style.Button.custom().apply(to: sendButton, requestButton)
 
         UIView.performWithoutAnimation {
             sendButton.setTitle("scene.main.send_button".localized, for: .normal)

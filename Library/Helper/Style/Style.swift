@@ -74,15 +74,23 @@ enum Style {
         }
     }
     
-    static func button(color: UIColor = UIColor.Zap.lightningOrange, backgroundColor: UIColor = UIColor.clear, fontSize: CGFloat = 17) -> UIViewStyle<UIButton> {
-        return UIViewStyle<UIButton> {
-            $0.titleLabel?.font = UIFontMetrics(forTextStyle: .body).scaledFont(for: UIFont.Zap.regular.withSize(17))
-            $0.setTitleColor(color, for: .normal)
-            $0.titleLabel?.adjustsFontForContentSizeCategory = true
-            if backgroundColor != .clear {
-                $0.backgroundColor = backgroundColor
-                $0.layer.cornerRadius = 14
+    enum Button {
+        static func custom(color: UIColor = UIColor.Zap.lightningOrange, backgroundColor: UIColor = UIColor.clear, fontSize: CGFloat = 17) -> UIViewStyle<UIButton> {
+            return UIViewStyle<UIButton> {
+                $0.titleLabel?.font = UIFontMetrics(forTextStyle: .body).scaledFont(for: UIFont.Zap.regular.withSize(17))
+                $0.setTitleColor(color, for: .normal)
+                $0.titleLabel?.adjustsFontForContentSizeCategory = true
+                if backgroundColor != .clear {
+                    $0.backgroundColor = backgroundColor
+                    $0.layer.cornerRadius = 14
+                }
             }
+        }
+        
+        static let background = UIViewStyle<UIButton> {
+            $0.titleLabel?.font = UIFontMetrics(forTextStyle: .body).scaledFont(for: UIFont.Zap.regular.withSize(17))
+            $0.backgroundColor = UIColor.Zap.deepSeaBlue
+            $0.layer.cornerRadius = 14
         }
     }
     

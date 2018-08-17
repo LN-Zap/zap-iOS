@@ -27,7 +27,7 @@ final class DetailQRCodeTableViewCell: UITableViewCell {
         super.awakeFromNib()
 
         DetailCellType.dataFontStyle.apply(to: addressLabel)
-        Style.button().apply(to: copyButton, shareButton)
+        Style.Button.custom().apply(to: copyButton, shareButton)
         
         copyButton.setTitle("scene.transaction_detail.qr_code.copy_button".localized, for: .normal)
         shareButton.setTitle("scene.transaction_detail.qr_code.share_button".localized, for: .normal)
