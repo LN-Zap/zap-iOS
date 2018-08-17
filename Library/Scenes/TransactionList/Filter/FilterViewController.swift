@@ -12,9 +12,7 @@ extension UIStoryboard {
         let viewController = Storyboard.transactionList.instantiate(viewController: FilterViewController.self)
         viewController.transactionListViewModel = transactionListViewModel
         
-        let size = CGSize(width: UIScreen.main.bounds.width, height: 365)
-        
-        let navigationController = ModalNavigationController(rootViewController: viewController, size: size)
+        let navigationController = ModalNavigationController(rootViewController: viewController, height: 365)
         
         navigationController.navigationBar.backgroundColor = UIColor.Zap.seaBlueGradient
         navigationController.navigationBar.shadowImage = UIImage()

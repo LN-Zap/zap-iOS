@@ -16,7 +16,7 @@ extension UIStoryboard {
     }
 }
 
-final class OpenChannelViewController: UIViewController, QRCodeScannerChildViewController {
+final class OpenChannelViewController: ModalViewController, ContentHeightProviding, QRCodeScannerChildViewController {
     weak var delegate: QRCodeScannerChildDelegate?
     
     @IBOutlet private weak var helpLabel: UILabel!
@@ -25,7 +25,7 @@ final class OpenChannelViewController: UIViewController, QRCodeScannerChildViewC
     @IBOutlet private weak var gradientLoadingButton: GradientLoadingButtonView!
     
     fileprivate var openChannelViewModel: OpenChannelViewModel?
-    let contentHeight: CGFloat = 550 // QRCodeScannerChildViewController
+    let contentHeight: CGFloat? = 550 // ContentHeightProviding
     
     override func viewDidLoad() {
         super.viewDidLoad()

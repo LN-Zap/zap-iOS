@@ -15,7 +15,7 @@ extension UIStoryboard {
     }
 }
 
-final class SendLightningInvoiceViewController: UIViewController, QRCodeScannerChildViewController {
+final class SendLightningInvoiceViewController: ModalViewController, ContentHeightProviding, QRCodeScannerChildViewController {
     weak var delegate: QRCodeScannerChildDelegate?
     
     @IBOutlet private weak var paymentRequestView: UIStackView!
@@ -30,7 +30,7 @@ final class SendLightningInvoiceViewController: UIViewController, QRCodeScannerC
     @IBOutlet private weak var expiredLabel: UILabel!
     
     fileprivate var sendViewModel: SendLightningInvoiceViewModel?
-    let contentHeight: CGFloat = 380 // QRCodeScannerChildViewController
+    let contentHeight: CGFloat? = 380 // ContentHeightProviding
     
     override func viewDidLoad() {
         super.viewDidLoad()
