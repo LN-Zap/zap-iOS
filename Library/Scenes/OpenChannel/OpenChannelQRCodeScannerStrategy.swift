@@ -12,10 +12,12 @@ import Lightning
 struct OpenChannelQRCodeScannerStrategy: QRCodeScannerStrategy {
     let title = "scene.open_channel.title".localized
     
-    func viewControllerForAddress(address: String, lightningService: LightningService) -> Result<UIViewController>? {
-        guard let nodeURI = LightningNodeURI(string: address) else { return nil }
-            
-        let openChannelViewModel = OpenChannelViewModel(lightningService: lightningService, lightningNodeURI: nodeURI)
-        return Result(value: UIStoryboard.instantiateOpenChannelViewController(with: openChannelViewModel))
+    func viewControllerForAddress(address: String, lightningService: LightningService, callback: (Result<UIViewController>) -> Void) {
+        if let nodeURI = LightningNodeURI(string: address) {
+            let openChannelViewModel = OpenChannelViewModel(lightningService: lightningService, lightningNodeURI: nodeURI)
+            callback(.success(UIStoryboard.instantiateOpenChannelViewController(with: openChannelViewModel)))
+        } else {
+            callback(.failure(InvoiceError.unknownFormat))
+        }
     }
 }

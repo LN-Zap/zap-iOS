@@ -72,19 +72,19 @@ final class QRCodeScannerViewController: UIViewController {
     }
     
     func tryPresentingViewController(for address: String) {
-        guard
-            let lightningService = lightningService,
-            let result = strategy?.viewControllerForAddress(address: address, lightningService: lightningService)
-            else { return }
+        guard let lightningService = lightningService else { return }
         
-        switch result {
-        case .success(let viewController):
-            presentViewController(viewController)
-
-            scannerView.stop()
-        case .failure(let error):
-            if let message = (error as? InvoiceError)?.localized {
-                presentError(message: message)
+        strategy?.viewControllerForAddress(address: address, lightningService: lightningService) { [weak self] result in
+            DispatchQueue.main.async {
+                switch result {
+                case .success(let viewController):
+                    self?.presentViewController(viewController)
+                    self?.scannerView.stop()
+                case .failure(let error):
+                    if let message = (error as? InvoiceError)?.localized {
+                        self?.presentError(message: message)
+                    }
+                }
             }
         }
     }
