@@ -47,8 +47,7 @@ public final class SegmentButton: UIButton {
         
         let selectedLineView = UIView(frame: CGRect.zero)
         selectedLineView.backgroundColor = UIColor.Zap.black
-        selectedLineView.translatesAutoresizingMaskIntoConstraints = false
-        addSubview(selectedLineView)
+        addAutolayoutSubview(selectedLineView)
         
         NSLayoutConstraint.activate([
             selectedLineView.heightAnchor.constraint(equalToConstant: 3),

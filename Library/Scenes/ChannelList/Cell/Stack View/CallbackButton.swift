@@ -15,8 +15,7 @@ final class CallbackButton: UIView {
         self.onTap = onTap
         self.button = UIButton(type: .system)
         super.init(frame: .zero)
-        addSubview(button)
-        button.translatesAutoresizingMaskIntoConstraints = false
+        addAutolayoutSubview(button)
         button.constrainEdges(to: self)
         button.setTitle(title, for: .normal)
         button.addTarget(self, action: #selector(tapped), for: .touchUpInside)

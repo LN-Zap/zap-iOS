@@ -8,13 +8,17 @@
 import Foundation
 
 extension UIView {
+    public func addAutolayoutSubview(_ view: UIView) {
+        view.translatesAutoresizingMaskIntoConstraints = false
+        addSubview(view)
+    }
+    
     func addBackgroundGradient() {
         let backgroundGradientView = GradientView()
         backgroundGradientView.direction = .vertical
         backgroundGradientView.gradient = [UIColor.Zap.seaBlueGradient, UIColor.Zap.seaBlue]
-        backgroundGradientView.translatesAutoresizingMaskIntoConstraints = false
         
-        addSubview(backgroundGradientView)
+        addAutolayoutSubview(backgroundGradientView)
         sendSubview(toBack: backgroundGradientView)
         
         NSLayoutConstraint.activate([

@@ -19,8 +19,8 @@ final class BalanceView: UIView {
         clipsToBounds = true
         
         let localBalanceView = GradientView(frame: CGRect.zero)
-        localBalanceView.translatesAutoresizingMaskIntoConstraints = false
-        self.addSubview(localBalanceView)
+        
+        addAutolayoutSubview(localBalanceView)
         
         let multiplier = CGFloat(truncating: localBalance / (localBalance + remoteBalance) as NSDecimalNumber)
         

@@ -49,7 +49,7 @@ public final class GradientLoadingButtonView: UIControl {
     
     private func setup() {
         let gradient = GradientView(frame: CGRect.zero)
-        addSubviewSameSize(gradient)
+        addSameSizeSubview(gradient)
         
         let button = UIButton(type: .system)
 
@@ -57,7 +57,7 @@ public final class GradientLoadingButtonView: UIControl {
 
         button.setTitleColor(UIColor.white.withAlphaComponent(0.4), for: .disabled)
         button.addTarget(self, action: #selector(buttonTapped), for: .touchUpInside)
-        addSubviewSameSize(button)
+        addSameSizeSubview(button)
         self.button = button
     }
     
@@ -68,8 +68,7 @@ public final class GradientLoadingButtonView: UIControl {
     
     private func addActivityIndicator() {
         let activityIndicator = UIActivityIndicatorView(activityIndicatorStyle: .white)
-        addSubview(activityIndicator)
-        activityIndicator.translatesAutoresizingMaskIntoConstraints = false
+        addAutolayoutSubview(activityIndicator)
         
         NSLayoutConstraint.activate([
             activityIndicator.centerXAnchor.constraint(equalTo: centerXAnchor),
@@ -81,16 +80,8 @@ public final class GradientLoadingButtonView: UIControl {
         self.activityIndicator = activityIndicator
     }
     
-    private func addSubviewSameSize(_ view: UIView) {
-        addSubview(view)
-        
-        view.translatesAutoresizingMaskIntoConstraints = false
-        
-        NSLayoutConstraint.activate([
-            view.leftAnchor.constraint(equalTo: leftAnchor),
-            view.rightAnchor.constraint(equalTo: rightAnchor),
-            view.topAnchor.constraint(equalTo: topAnchor),
-            view.bottomAnchor.constraint(equalTo: bottomAnchor)
-        ])
+    private func addSameSizeSubview(_ view: UIView) {
+        addAutolayoutSubview(view)
+        self.constrainEdges(to: view)
     }
 }
