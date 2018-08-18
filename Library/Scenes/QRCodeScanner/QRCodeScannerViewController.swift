@@ -83,7 +83,7 @@ final class QRCodeScannerViewController: UIViewController {
 
             scannerView.stop()
         case .failure(let error):
-            if let message = (error as? PaymentURIError)?.localized {
+            if let message = (error as? InvoiceError)?.localized {
                 presentError(message: message)
             }
         }

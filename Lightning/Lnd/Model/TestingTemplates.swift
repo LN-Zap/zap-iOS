@@ -8,8 +8,7 @@
 import Foundation
 
 extension Info {
-    // swiftlint:disable type_name
-    enum template {
+    enum Template {
         static var testnet: Info {
             return Info(
                 alias: "test",
@@ -89,7 +88,13 @@ extension ChannelPoint {
 }
 
 extension PaymentRequest {
-    static var template: PaymentRequest {
-        return PaymentRequest(paymentHash: "444663acd9833c2a05ba0a481a8800f97e0ae12066eadd65993edcbcbdbee11b", destination: " 03e50492eab4107a773141bb419e107bda3de3d55652e6e1a41225f06a0bbf2d56", amount: 150000, memo: "Read: Opinion Editorial: Crypto Wolves", date: Date(), expiryDate: Date().addingTimeInterval(3600), raw: "lntb1500n1pdhdgqjpp5g3rx8txesv7z5pd6pfyp4zqql9lq4cfqvm4d6eve8mwte0d7uydsdpa2fjkzep6yp8hq6twd9hkugz9v35hgmmjd9skcw3qgde8jur5dus9wmmvwejhxcqzysqwez4c6m2070ltq2mfz3ffc5chvwwq6q7tec2pmauths5wpng8ny24aq8gqtuj4w9jmprqt4y50ux27222nkmqfmlkulfr2h6swuqrgpj3ekm4")
+    enum Template {
+        static var testnet: PaymentRequest {
+        return PaymentRequest(paymentHash: "444663acd9833c2a05ba0a481a8800f97e0ae12066eadd65993edcbcbdbee11b", destination: " 03e50492eab4107a773141bb419e107bda3de3d55652e6e1a41225f06a0bbf2d56", amount: 150000, memo: "Read: Opinion Editorial: Crypto Wolves", date: Date(), expiryDate: Date().addingTimeInterval(3600), raw: "lntb1500n1pdhdgqjpp5g3rx8txesv7z5pd6pfyp4zqql9lq4cfqvm4d6eve8mwte0d7uydsdpa2fjkzep6yp8hq6twd9hkugz9v35hgmmjd9skcw3qgde8jur5dus9wmmvwejhxcqzysqwez4c6m2070ltq2mfz3ffc5chvwwq6q7tec2pmauths5wpng8ny24aq8gqtuj4w9jmprqt4y50ux27222nkmqfmlkulfr2h6swuqrgpj3ekm4", fallbackAddress: nil, network: .testnet)
+        }
+        
+        static var testnetFallback: PaymentRequest {
+            return PaymentRequest(paymentHash: "444663acd9833c2a05ba0a481a8800f97e0ae12066eadd65993edcbcbdbee11b", destination: " 03e50492eab4107a773141bb419e107bda3de3d55652e6e1a41225f06a0bbf2d56", amount: 150000, memo: "Read: Opinion Editorial: Crypto Wolves", date: Date(), expiryDate: Date().addingTimeInterval(3600), raw: "lntb1500n1pdhdgqjpp5g3rx8txesv7z5pd6pfyp4zqql9lq4cfqvm4d6eve8mwte0d7uydsdpa2fjkzep6yp8hq6twd9hkugz9v35hgmmjd9skcw3qgde8jur5dus9wmmvwejhxcqzysqwez4c6m2070ltq2mfz3ffc5chvwwq6q7tec2pmauths5wpng8ny24aq8gqtuj4w9jmprqt4y50ux27222nkmqfmlkulfr2h6swuqrgpj3ekm4", fallbackAddress: "mzMD4CTKR6Essspredb5MSBPECtJrnVgBC", network: .testnet)
+        }
     }
 }

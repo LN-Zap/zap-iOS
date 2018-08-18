@@ -36,7 +36,7 @@ final class MainCoordinator: Routing {
         switch route {
         case .send(let invoice):
             if let invoice = invoice,
-                let error = SendViewModel(lightningService: lightningService).paymentURI(for: invoice).error as? PaymentURIError {
+                let error = SendViewModel(lightningService: lightningService).paymentURI(for: invoice).error as? InvoiceError {
                 rootViewController.presentErrorToast(error.localized)
             } else {
                 presentSend(invoice: invoice)

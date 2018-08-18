@@ -8,7 +8,7 @@
 import BTCUtil
 import Foundation
 
-public struct PaymentRequest {
+public struct PaymentRequest: Equatable {
     fileprivate struct PaymentDescription: Decodable {
         let description: String
         
@@ -24,6 +24,8 @@ public struct PaymentRequest {
     public let date: Date
     public let expiryDate: Date
     public let raw: String
+    public let fallbackAddress: String?
+    public let network: Network
 }
 
 extension PaymentRequest {
@@ -46,6 +48,11 @@ extension PaymentRequest {
         destination = payReq.destination
         date = Date(timeIntervalSince1970: TimeInterval(payReq.timestamp))
         expiryDate = Date(timeInterval: TimeInterval(payReq.expiry), since: date)
+        fallbackAddress = payReq.fallbackAddr
+        
+        guard let network = LightningInvoiceURI(string: raw)?.network else { fatalError("Error decoding payment request: \(raw)") }
+        self.network = network
+        
         self.raw = raw
     }
 }

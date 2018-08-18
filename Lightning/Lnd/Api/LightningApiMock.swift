@@ -33,7 +33,7 @@ final class LightningApiMock: LightningApiProtocol {
     private let invoices: [Transaction]?
     
     init(
-        info: Info? = Info.template.testnet,
+        info: Info? = Info.Template.testnet,
         nodeInfo: NodeInfo? = nil,
         newAddress: String? = nil,
         walletBalance: Satoshi? = nil,
@@ -195,7 +195,7 @@ enum ApiMockTemplate {
         case .balance:
             return LightningApiMock(walletBalance: 4_200_000)
         case .mainnet:
-            return LightningApiMock(info: Info.template.mainnet)
+            return LightningApiMock(info: Info.Template.mainnet)
         case .transactions:
             return LightningApiMock(transactions: [
                 OnChainConfirmedTransaction.template,
@@ -213,7 +213,7 @@ enum ApiMockTemplate {
                 channels: [
                     Channel.template
                 ],
-                decodePaymentRequest: PaymentRequest.template,
+                decodePaymentRequest: PaymentRequest.Template.testnetFallback,
                 sendPayment: Data()
             )
         }

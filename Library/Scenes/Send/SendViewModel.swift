@@ -9,11 +9,8 @@ import BTCUtil
 import Foundation
 import Lightning
 
-enum PaymentURIError: Error, Localizable {
-    case unknownFormat
-    case wrongNetworkError(linkNetwork: Network, nodeNetwork: Network)
-    
-    var localized: String {
+extension InvoiceError: Localizable {
+    public var localized: String {
         switch self {
         case .unknownFormat:
             return "error.wrong_uri_format".localized
@@ -38,12 +35,12 @@ final class SendViewModel {
         } else if let lightningURI = LightningInvoiceURI(string: uri) {
             paymentURI = lightningURI
         } else {
-            return Result(error: PaymentURIError.unknownFormat)
+            return Result(error: InvoiceError.unknownFormat)
         }
         
         let currentNetwork = lightningService.infoService.network.value
         if paymentURI.network != currentNetwork {
-            return Result(error: PaymentURIError.wrongNetworkError(linkNetwork: paymentURI.network, nodeNetwork: currentNetwork))
+            return Result(error: InvoiceError.wrongNetworkError(linkNetwork: paymentURI.network, nodeNetwork: currentNetwork))
         } else {
             return Result(value: paymentURI)
         }
