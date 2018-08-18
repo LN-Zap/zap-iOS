@@ -20,20 +20,18 @@ class SendQRCodeScannerStrategy: QRCodeScannerStrategy {
         self.nodeStore = nodeStore
     }
     
-    func viewControllerForAddress(address: String, lightningService: LightningService) -> Result<UIViewController>? {
+    func viewControllerForAddress(address: String, lightningService: LightningService, callback: (Result<UIViewController>) -> Void) {
         let sendViewModel = SendViewModel(lightningService: lightningService)
         let result = sendViewModel.paymentURI(for: address)
-        
-        return result.map {
-            if let bitcoinURI = $0 as? BitcoinURI {
-                let sendOnChainViewModel = SendOnChainViewModel(transactionAnnotationStore: transactionAnnotationStore, lightningService: lightningService, bitcoinURI: bitcoinURI)
-                return UIStoryboard.instantiateSendOnChainViewController(with: sendOnChainViewModel)
-            } else if let lightningURI = $0 as? LightningInvoiceURI {
-                let sendLightningInvoiceViewModel = SendLightningInvoiceViewModel(transactionAnnotationStore: transactionAnnotationStore, nodeStore: nodeStore, transactionService: lightningService.transactionService, lightningInvoice: lightningURI.address)
-                return UIStoryboard.instantiateSendLightningInvoiceViewController(with: sendLightningInvoiceViewModel)
-            } else {
-                fatalError("No ViewController implemented for URI")
-            }
+
+        if let bitcoinURI = result.value as? BitcoinURI {
+            let sendOnChainViewModel = SendOnChainViewModel(transactionAnnotationStore: transactionAnnotationStore, lightningService: lightningService, bitcoinURI: bitcoinURI)
+            callback(.success(UIStoryboard.instantiateSendOnChainViewController(with: sendOnChainViewModel)))
+        } else if let lightningURI = result.value as? LightningInvoiceURI {
+            let sendLightningInvoiceViewModel = SendLightningInvoiceViewModel(transactionAnnotationStore: transactionAnnotationStore, nodeStore: nodeStore, transactionService: lightningService.transactionService, lightningInvoice: lightningURI.address)
+            callback(.success(UIStoryboard.instantiateSendLightningInvoiceViewController(with: sendLightningInvoiceViewModel)))
+        } else {
+            fatalError("No ViewController implemented for URI")
         }
     }
 }
