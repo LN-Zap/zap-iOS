@@ -14,10 +14,17 @@ private extension URLComponents {
 }
 
 public struct BitcoinURI: PaymentURI {
+    enum Constants {
+        static let amount = "amount"
+        static let message = "message"
+        static let lightning = "lightning"
+    }
+    
     public let address: String
     public let amount: Satoshi?
     public let memo: String?
     public let network: Network
+    public let lightningFallback: String?
     
     public var addressOrURI: String {
         if (amount == nil || amount == 0) && (memo == nil || memo?.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty == true) {
@@ -34,10 +41,13 @@ public struct BitcoinURI: PaymentURI {
             let amountInBitcoin = amount.convert(to: .bitcoin)
             let usLocale = Locale(identifier: "en_US")
             let amountString = (amountInBitcoin as NSDecimalNumber).description(withLocale: usLocale)
-            queryItems.append(URLQueryItem(name: "amount", value: amountString))
+            queryItems.append(URLQueryItem(name: Constants.amount, value: amountString))
         }
         if let memo = memo, !memo.isEmpty {
-            queryItems.append(URLQueryItem(name: "message", value: memo))
+            queryItems.append(URLQueryItem(name: Constants.message, value: memo))
+        }
+        if let lightningFallback = lightningFallback, !lightningFallback.isEmpty {
+            queryItems.append(URLQueryItem(name: Constants.lightning, value: lightningFallback))
         }
         if !queryItems.isEmpty {
             urlComponents?.queryItems = queryItems
@@ -50,7 +60,7 @@ public struct BitcoinURI: PaymentURI {
         guard let components = URLComponents(string: string) else { return nil }
 
         let amount: Satoshi?
-        if var amountString = components.queryItem(name: "amount") {
+        if var amountString = components.queryItem(name: Constants.amount) {
             if let decimalSeparator = Locale.current.decimalSeparator, decimalSeparator != "." {
                 amountString = amountString.replacingOccurrences(of: ".", with: decimalSeparator)
             }
@@ -59,12 +69,13 @@ public struct BitcoinURI: PaymentURI {
             amount = nil
         }
         
-        let memo = components.queryItem(name: "message")
+        let memo = components.queryItem(name: Constants.message)
+        let lightningFallback = components.queryItem(name: Constants.lightning)
         
-        self.init(address: components.path, amount: amount, memo: memo)
+        self.init(address: components.path, amount: amount, memo: memo, lightningFallback: lightningFallback)
     }
     
-    public init?(address: String, amount: Satoshi?, memo: String?) {
+    public init?(address: String, amount: Satoshi?, memo: String?, lightningFallback: String?) {
         if let (humanReadablePart, _) = Bech32.decode(address) {
             if humanReadablePart.lowercased() == "tb" {
                 network = .testnet
@@ -83,5 +94,6 @@ public struct BitcoinURI: PaymentURI {
         self.address = address
         self.amount = amount
         self.memo = memo
+        self.lightningFallback = lightningFallback
     }
 }
