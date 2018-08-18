@@ -5,6 +5,7 @@
 //  Copyright © 2018 Zap. All rights reserved.
 //
 
+import BTCUtil
 import Foundation
 
 extension Bolt11.Invoice {

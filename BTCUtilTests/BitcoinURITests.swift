@@ -44,4 +44,32 @@ final class BitcoinURITests: XCTestCase {
             XCTAssertEqual(BitcoinURI(address: address, amount: amount, memo: memo)?.addressOrURI, uriString)
         }
     }
+    
+    func testBitcoinAddress() {
+        let tests: [(String, Network)] = [
+            ("17VZNX1SN5NtKa8UQFxwQbFeFc3iqRYhem", .mainnet),
+            ("2N8hwP1WmJrFF5QWABn38y63uYLhnJYJYTF", .testnet),
+            ("bitcoin:17VZNX1SN5NtKa8UQFxwQbFeFc3iqRYhem", .mainnet),
+            ("bitcoin:2N8hwP1WmJrFF5QWABn38y63uYLhnJYJYTF", .testnet)
+        ]
+        
+        for (input, network) in tests {
+            let uri = BitcoinURI(string: input)
+            XCTAssertEqual(uri?.network, network, "\(input), \(network) = \(String(describing: uri?.network))")
+        }
+    }
+    
+    func testBech32Address() {
+        let tests: [(String, Network)] = [
+            ("bc1qw508d6qejxtdg4y5r3zarvary0c5xw7kv8f3t4", .mainnet),
+            ("bc1qrp33g0q5c5txsp9arysrx4k6zdkfs4nce4xj0gdcccefvpysxf3qccfmv3", .mainnet),
+            ("tb1qw508d6qejxtdg4y5r3zarvary0c5xw7kxpjzsx", .testnet),
+            ("tb1qrp33g0q5c5txsp9arysrx4k6zdkfs4nce4xj0gdcccefvpysxf3q0sl5k7", .testnet)
+        ]
+        
+        for (uri, network) in tests {
+            let uri = BitcoinURI(string: uri)
+            XCTAssertEqual(uri?.network, network)
+        }
+    }
 }
