@@ -125,8 +125,8 @@ public final class LightningApiRPC: LightningApiProtocol {
         }))
     }
     
-    func sendPayment(_ paymentRequest: PaymentRequest, callback: @escaping (Result<Data>) -> Void) {
-        let request = Lnrpc_SendRequest(paymentRequest: paymentRequest.raw)
+    func sendPayment(_ paymentRequest: PaymentRequest, amount: Satoshi?, callback: @escaping (Result<Data>) -> Void) {
+        let request = Lnrpc_SendRequest(paymentRequest: paymentRequest.raw, amount: amount)
         _ = try? rpc.sendPaymentSync(request) { response, error in
             if !error.success {
                 callback(Result(error: LndApiError.unknownError))

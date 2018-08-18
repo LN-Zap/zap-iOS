@@ -56,12 +56,12 @@ public final class TransactionService {
         }
     }
     
-    public func decodePaymentRequest(_ paymentRequest: String, callback: @escaping (Result<PaymentRequest>) -> Void) {
+    func decodePaymentRequest(_ paymentRequest: String, callback: @escaping (Result<PaymentRequest>) -> Void) {
         api.decodePaymentRequest(paymentRequest, callback: callback)
     }
     
     public func sendPayment(_ paymentRequest: PaymentRequest, callback: @escaping (Result<Data>) -> Void) {
-        api.sendPayment(paymentRequest) { [weak self] result in
+        api.sendPayment(paymentRequest, amount: nil) { [weak self] result in
             if result.value != nil {
                 self?.update()
                 self?.balanceService.update()
