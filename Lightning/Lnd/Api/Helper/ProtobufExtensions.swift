@@ -70,8 +70,11 @@ extension Lnrpc_SendCoinsRequest {
 }
 
 extension Lnrpc_SendRequest {
-    init(paymentRequest: String) {
+    init(paymentRequest: String, amount: Satoshi?) {
         self.paymentRequest = paymentRequest
+        if let amount = amount {
+            self.amt = Int64(truncating: amount as NSDecimalNumber)
+        }
     }
 }
 

@@ -40,10 +40,10 @@ final class SendLightningInvoiceViewModel {
             lightningInvoice = String(lightningInvoice.dropFirst(prefix.count))
         }
         
-        transactionService.decodePaymentRequest(lightningInvoice) { [weak self] result in
-            guard let paymentRequest = result.value else { return }
-            self?.updatePaymentRequest(paymentRequest)
-        }
+//        transactionService.decodePaymentRequest(lightningInvoice) { [weak self] result in
+//            guard let paymentRequest = result.value else { return }
+//            self?.updatePaymentRequest(paymentRequest)
+//        }
     }
     
     func send(callback: @escaping (Result<Data>) -> Void) {

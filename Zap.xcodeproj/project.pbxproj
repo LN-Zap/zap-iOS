@@ -1500,8 +1500,8 @@
 		AD28844221281F9E003C3D94 /* Invoice */ = {
 			isa = PBXGroup;
 			children = (
-				AD28844A212824DC003C3D94 /* Invoice.swift */,
 				AD66377520F399F900284E2B /* Bolt11.swift */,
+				AD28844A212824DC003C3D94 /* Invoice.swift */,
 				AD97A90B20EFC127008344EA /* LightningInvoiceURI.swift */,
 			);
 			path = Invoice;
