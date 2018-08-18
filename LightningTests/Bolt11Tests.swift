@@ -5,11 +5,11 @@
 //  Copyright © 2018 Zap. All rights reserved.
 //
 
-@testable import BTCUtil
+@testable import Lightning
 import XCTest
 
 class Bolt11Tests: XCTestCase {
-    func testExample() {
+    func testBolt11Decoding() {
         let paymentHash = Data(bytes: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 1, 2])
         
         let data: [(String, Bolt11.Invoice)] = [

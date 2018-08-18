@@ -9,7 +9,7 @@ import Foundation
 
 // BIP: https://github.com/bitcoin/bips/blob/master/bip-0173.mediawiki
 
-enum Bech32 {
+public enum Bech32 {
     private static let alphabet = "qpzry9x8gf2tvdw0s3jn54khce6mua7l"
     private static let generator = [0x3b6a57b2, 0x26508e6d, 0x1ea119fa, 0x3d4233dd, 0x2a1462b3]
     
@@ -65,7 +65,7 @@ enum Bech32 {
         return !(hasLower && hasUpper)
     }
     
-    static func decode(_ bechString: String, limit: Bool = true) -> (humanReadablePart: String, data: Data)? {
+    public static func decode(_ bechString: String, limit: Bool = true) -> (humanReadablePart: String, data: Data)? {
         guard hasValidCharacters(bechString) else { return nil }
         
         let bechString = bechString.lowercased()
@@ -92,8 +92,8 @@ enum Bech32 {
     }
 }
 
-enum SegwitAddress {
-    static func convertBits(data: Data, fromBits: Int, toBits: Int, pad: Bool) -> Data? {
+public enum SegwitAddress {
+    public static func convertBits(data: Data, fromBits: Int, toBits: Int, pad: Bool) -> Data? {
         var acc: Int = 0
         var bits: Int = 0
         var ret = Data()
