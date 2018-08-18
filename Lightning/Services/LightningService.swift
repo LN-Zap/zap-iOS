@@ -18,8 +18,12 @@ public final class LightningService: NSObject {
     public let channelService: ChannelService
     public let transactionService: TransactionService
     
-    public init?(connection: LndConnection) {
+    public convenience init?(connection: LndConnection) {
         guard let api = connection.api else { return nil }
+        self.init(api: api)
+    }
+    
+    init(api: LightningApiProtocol) {
         self.api = api
         
         infoService = InfoService(api: api)

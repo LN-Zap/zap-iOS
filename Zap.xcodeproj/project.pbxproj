@@ -58,6 +58,8 @@
 		AD28844621282073003C3D94 /* Bolt11Tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD66377720F39A7700284E2B /* Bolt11Tests.swift */; };
 		AD2884472128209B003C3D94 /* LightningInvoiceURITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0733CD920471F0A0005643A /* LightningInvoiceURITests.swift */; };
 		AD28844921282139003C3D94 /* LightningNodeURITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD28844821282139003C3D94 /* LightningNodeURITests.swift */; };
+		AD28844B212824DC003C3D94 /* Invoice.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD28844A212824DC003C3D94 /* Invoice.swift */; };
+		AD28844D21284DAC003C3D94 /* InvoiceTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD28844C21284DAC003C3D94 /* InvoiceTests.swift */; };
 		AD28CB79211D9DFF00A31004 /* UINavigationBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD28CB78211D9DFF00A31004 /* UINavigationBar.swift */; };
 		AD28CB7B211DE93300A31004 /* BlockExplorerSettingsItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD28CB7A211DE93300A31004 /* BlockExplorerSettingsItem.swift */; };
 		AD28CB7D211DF12E00A31004 /* DetailBlockExplorerTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = AD28CB7C211DF12E00A31004 /* DetailBlockExplorerTableViewCell.xib */; };
@@ -628,6 +630,8 @@
 		AD2884362126DDA2003C3D94 /* ModalDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModalDetailViewController.swift; sourceTree = "<group>"; };
 		AD28843D21272B9A003C3D94 /* SendModalDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SendModalDetailViewController.swift; sourceTree = "<group>"; };
 		AD28844821282139003C3D94 /* LightningNodeURITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LightningNodeURITests.swift; sourceTree = "<group>"; };
+		AD28844A212824DC003C3D94 /* Invoice.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Invoice.swift; sourceTree = "<group>"; };
+		AD28844C21284DAC003C3D94 /* InvoiceTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InvoiceTests.swift; sourceTree = "<group>"; };
 		AD28CB78211D9DFF00A31004 /* UINavigationBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UINavigationBar.swift; sourceTree = "<group>"; };
 		AD28CB7A211DE93300A31004 /* BlockExplorerSettingsItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BlockExplorerSettingsItem.swift; sourceTree = "<group>"; };
 		AD28CB7C211DF12E00A31004 /* DetailBlockExplorerTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DetailBlockExplorerTableViewCell.xib; sourceTree = "<group>"; };
@@ -1496,6 +1500,7 @@
 		AD28844221281F9E003C3D94 /* Invoice */ = {
 			isa = PBXGroup;
 			children = (
+				AD28844A212824DC003C3D94 /* Invoice.swift */,
 				AD66377520F399F900284E2B /* Bolt11.swift */,
 				AD97A90B20EFC127008344EA /* LightningInvoiceURI.swift */,
 			);
@@ -1578,6 +1583,7 @@
 				AD66377720F39A7700284E2B /* Bolt11Tests.swift */,
 				AD967FE6210603D50048085B /* BTCPayConfigurationTests.swift */,
 				AD536BF520E62764002279BC /* BTCPayQRCodeTests.swift */,
+				AD28844C21284DAC003C3D94 /* InvoiceTests.swift */,
 				A0733CD920471F0A0005643A /* LightningInvoiceURITests.swift */,
 				AD28844821282139003C3D94 /* LightningNodeURITests.swift */,
 			);
@@ -2827,6 +2833,7 @@
 				AD967FEA2106122E0048085B /* ZapconnectQRCode.swift in Sources */,
 				AD28844521281FBC003C3D94 /* LightningNodeURI.swift in Sources */,
 				ADFEFA6120E627F100FE1557 /* LocalLnd.swift in Sources */,
+				AD28844B212824DC003C3D94 /* Invoice.swift in Sources */,
 				ADFEFA6420E627F100FE1557 /* LightningNodeStore.swift in Sources */,
 				ADFEFA6B20E627F100FE1557 /* ChannelService.swift in Sources */,
 				ADFEFA6820E627F100FE1557 /* TransactionAnnotationStore.swift in Sources */,
@@ -2849,6 +2856,7 @@
 				AD2884472128209B003C3D94 /* LightningInvoiceURITests.swift in Sources */,
 				AD28844621282073003C3D94 /* Bolt11Tests.swift in Sources */,
 				AD967FE7210603D50048085B /* BTCPayConfigurationTests.swift in Sources */,
+				AD28844D21284DAC003C3D94 /* InvoiceTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
