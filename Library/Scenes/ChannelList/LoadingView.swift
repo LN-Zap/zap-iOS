@@ -10,23 +10,20 @@ import Foundation
 final class LoadingView: UIView {
     private let size = CGSize(width: 100, height: 100)
     
-    init(text: String) {
+    fileprivate init(text: String) {
         super.init(frame: CGRect.zero)
         
-        translatesAutoresizingMaskIntoConstraints = false
         backgroundColor = UIColor.black.withAlphaComponent(0.8)
         layer.cornerRadius = 15
         
         let activityIndicator = UIActivityIndicatorView(activityIndicatorStyle: .whiteLarge)
-        addSubview(activityIndicator)
+        addAutolayoutSubview(activityIndicator)
         activityIndicator.startAnimating()
-        activityIndicator.translatesAutoresizingMaskIntoConstraints = false
         
         let label = UILabel(frame: CGRect.zero)
         Style.Label.body.apply(to: label)
-        label.translatesAutoresizingMaskIntoConstraints = false
         label.text = text
-        addSubview(label)
+        addAutolayoutSubview(label)
         
         NSLayoutConstraint.activate([
             widthAnchor.constraint(greaterThanOrEqualToConstant: size.width),
@@ -57,7 +54,7 @@ final class LoadingView: UIView {
 extension UIViewController {
     func presentLoadingView(text: String) -> LoadingView {        
         let loadingView = LoadingView(text: text)
-        view.addSubview(loadingView)
+        view.addAutolayoutSubview(loadingView)
         loadingView.constrainCenter(to: view)
         return loadingView
     }

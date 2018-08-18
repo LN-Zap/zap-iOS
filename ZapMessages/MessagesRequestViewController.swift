@@ -69,9 +69,8 @@ class MessagesRequestViewController: UIViewController {
     
     private func setupMemo() {
         let memoLineView = LineView(frame: CGRect.zero)
-        memoLineView.translatesAutoresizingMaskIntoConstraints = false
         memoLineView.backgroundColor = .clear
-        memoContainerView.addSubview(memoLineView)
+        memoContainerView.addAutolayoutSubview(memoLineView)
         
         NSLayoutConstraint.activate([
             memoLineView.heightAnchor.constraint(equalToConstant: 1),
@@ -122,9 +121,8 @@ class MessagesRequestViewController: UIViewController {
         segmentedControlBackgroundView.backgroundColor = UIColor.Zap.white
         
         let segmentedControlLineView = LineView(frame: CGRect.zero)
-        segmentedControlLineView.translatesAutoresizingMaskIntoConstraints = false
         segmentedControlLineView.backgroundColor = .white
-        segmentedControlBackgroundView.addSubview(segmentedControlLineView)
+        segmentedControlBackgroundView.addAutolayoutSubview(segmentedControlLineView)
         
         NSLayoutConstraint.activate([
             segmentedControlLineView.heightAnchor.constraint(equalToConstant: 1),

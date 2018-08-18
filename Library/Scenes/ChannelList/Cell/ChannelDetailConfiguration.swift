@@ -93,12 +93,11 @@ final class ChannelDetailConfiguration {
     private func circleIndicatorView(gradient: [UIColor]) -> UIView {
         let localIndicator = GradientView()
         localIndicator.constrainSize(to: CGSize(width: 10, height: 10))
-        localIndicator.translatesAutoresizingMaskIntoConstraints = false
         localIndicator.layer.cornerRadius = 5
         localIndicator.gradient = gradient
 
         let localIndicatorContainer = UIView()
-        localIndicatorContainer.addSubview(localIndicator)
+        localIndicatorContainer.addAutolayoutSubview(localIndicator)
         localIndicatorContainer.constrainCenter(to: localIndicator)
 
         NSLayoutConstraint.activate([

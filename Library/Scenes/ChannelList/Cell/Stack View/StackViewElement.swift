@@ -89,6 +89,7 @@ indirect enum StackViewElement {
             result.setContentHuggingPriority(UILayoutPriority(rawValue: 999), for: .horizontal)
         case let .customHeight(_, element):
             result = element.view(constainHeight: false)
+            result.translatesAutoresizingMaskIntoConstraints = false
         }
         
         if constainHeight {

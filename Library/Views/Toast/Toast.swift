@@ -35,7 +35,7 @@ final class Toast: UIView {
     
     private func setupToast() {
         guard let content = toastView() else { return }
-        addSubview(content)
+        addAutolayoutSubview(content)
         
         NSLayoutConstraint.activate([
             content.topAnchor.constraint(equalTo: safeAreaLayoutGuide.topAnchor),
@@ -62,7 +62,6 @@ final class Toast: UIView {
         }
         
         content.backgroundColor = backgroundColor
-        translatesAutoresizingMaskIntoConstraints = false
         content.translatesAutoresizingMaskIntoConstraints = false
         
         return content
@@ -98,7 +97,7 @@ extension UIViewController {
     }
     
     func presentToast(_ toast: Toast, animated: Bool, completion: ((Bool) -> Void)?) {
-        view.addSubview(toast)
+        view.addAutolayoutSubview(toast)
         
         setupAutolayoutConstraints(forToast: toast)
         

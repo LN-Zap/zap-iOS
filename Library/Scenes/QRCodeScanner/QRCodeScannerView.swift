@@ -72,9 +72,9 @@ final class QRCodeScannerView: UIView {
         
         let topLabelContainer = UIView()
         topLabelContainer.backgroundColor = UIColor.black.withAlphaComponent(0.6)
-        topLabelContainer.translatesAutoresizingMaskIntoConstraints = false
         topLabelContainer.layer.cornerRadius = 16
-        addSubview(topLabelContainer)
+        
+        addAutolayoutSubview(topLabelContainer)
         
         NSLayoutConstraint.activate([
             topLabelContainer.centerXAnchor.constraint(equalTo: centerXAnchor),
@@ -84,9 +84,8 @@ final class QRCodeScannerView: UIView {
         let topLabel = UILabel()
         Style.Label.custom(color: UIColor.white.withAlphaComponent(0.6)).apply(to: topLabel)
         topLabel.text = "scene.qrcode_scanner.top_label".localized
-        topLabel.translatesAutoresizingMaskIntoConstraints = false
         
-        topLabelContainer.addSubview(topLabel)
+        topLabelContainer.addAutolayoutSubview(topLabel)
         
         NSLayoutConstraint.activate([
             topLabel.topAnchor.constraint(equalTo: topLabelContainer.topAnchor, constant: 5),
@@ -101,8 +100,8 @@ final class QRCodeScannerView: UIView {
         overlay.backgroundColor = .black
         overlay.alpha = 0.8
         overlay.clipsToBounds = true
-        overlay.translatesAutoresizingMaskIntoConstraints = false
-        addSubview(overlay)
+        
+        addAutolayoutSubview(overlay)
         constrainEdges(to: overlay)
         self.overlayView = overlay
         
@@ -132,10 +131,11 @@ final class QRCodeScannerView: UIView {
         guard let scanRectView = scanRectView else { return }
         
         let button = UIButton(type: .custom)
-        button.translatesAutoresizingMaskIntoConstraints = false
         button.setImage(UIImage(named: "icon_flashlight", in: Bundle.library, compatibleWith: nil), for: .normal)
         button.addTarget(self, action: #selector(toggleTorch), for: .touchUpInside)
-        addSubview(button)
+        
+        addAutolayoutSubview(button)
+        
         bringSubview(toFront: button)
         NSLayoutConstraint.activate([
             button.centerXAnchor.constraint(equalTo: centerXAnchor),

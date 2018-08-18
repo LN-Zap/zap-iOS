@@ -135,9 +135,8 @@ final class ConnectRemoteNodeViewController: UIViewController {
         isConnecting = true
         
         let activityIndicator = UIActivityIndicatorView(activityIndicatorStyle: .white)
-        activityIndicator.translatesAutoresizingMaskIntoConstraints = false
         activityIndicator.startAnimating()
-        cell.addSubview(activityIndicator)
+        cell.addAutolayoutSubview(activityIndicator)
         
         NSLayoutConstraint.activate([
             activityIndicator.centerXAnchor.constraint(equalTo: cell.centerXAnchor),
