@@ -144,11 +144,11 @@
 "scene.select_wallet_connection.connect.message" = "віддалений вузол";
 "scene.select_wallet_connection.disabled_alert.title" = "Вибачте!";
 "scene.select_wallet_connection.disabled_alert.message" = "Running Lnd on the phone is disabled in this beta. Connect to a remote node instead.";
-"scene.select_wallet_connection.create.help" = "Need Help?";
+"scene.select_wallet_connection.create.help" = "Потрібна допомога?";
 
-"scene.main.send_button" = "Send";
-"scene.main.receive_button" = "Receive";
-"scene.main.exchange_rate_label" = "%@ per BTC";
+"scene.main.send_button" = "Надіслати";
+"scene.main.receive_button" = "Отримати";
+"scene.main.exchange_rate_label" = "%@ за BTC";
 
 "scene.qr_code_detail.method_label.lightning" = "Lightning";
 "scene.qr_code_detail.method_label.on_chain" = "On-chain";
