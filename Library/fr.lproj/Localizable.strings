@@ -130,7 +130,7 @@
 "scene.create_wallet.description_label" = "Assurez-vous de conserver le mnémonique dans un endroit sûr.";
 "scene.create_wallet.next_button" = "Suivant";
 
-"scene.recover_wallet.title" = "Recover Wallet";
+"scene.recover_wallet.title" = "Récupérer un portefeuille";
 "scene.recover_wallet.done_button" = "Terminé";
 "scene.recover_wallet.description_label" = "Enter your seed:";
 "scene.recover_wallet.placeholder" = "abandon ability able about above absent absorb abstract absurd abuse access accident account accuse achieve acid acoustic acquire across act action actor actress actual";
