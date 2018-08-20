@@ -24,8 +24,8 @@ protocol QRCodeScannerChildViewController: class {
 }
 
 protocol QRCodeScannerChildDelegate: class {
-    func dismissSuccessfully()
     func presentError(message: String)
+    func childWillDisappear()
 }
 
 final class QRCodeScannerViewController: UIViewController {
@@ -73,6 +73,8 @@ final class QRCodeScannerViewController: UIViewController {
                 case .failure(let error):
                     if let message = (error as? InvoiceError)?.localized {
                         self?.presentError(message: message)
+                    } else if let message = (error as? LocalizedError)?.errorDescription {
+                        self?.presentError(message: message)
                     }
                 }
             }
@@ -96,19 +98,11 @@ final class QRCodeScannerViewController: UIViewController {
 }
 
 extension QRCodeScannerViewController: QRCodeScannerChildDelegate {
-    func presentError(message: String) {
-        navigationController?.presentErrorToast(message)
+    func childWillDisappear() {
+        scannerView.start()
     }
     
-    func dismissSuccessfully() {
-        DispatchQueue.main.async {
-            UINotificationFeedbackGenerator().notificationOccurred(.success)
-            
-            UIView.animate(withDuration: 0.25, animations: { [weak self] in
-                self?.qrCodeSuccessImageView.tintColor = .white
-                }, completion: { [weak self] _ in
-                    self?.dismiss(animated: true, completion: nil)
-            })
-        }
+    func presentError(message: String) {
+        navigationController?.presentErrorToast(message)
     }
 }

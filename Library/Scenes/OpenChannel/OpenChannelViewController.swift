@@ -57,7 +57,7 @@ final class OpenChannelViewController: ModalViewController, ContentHeightProvidi
                     self?.gradientLoadingButton.isLoading = false
                 }
             } else {
-                self?.delegate?.dismissSuccessfully()
+                self?.dismiss(animated: true, completion: nil)
             }
         }
     }    

@@ -50,7 +50,7 @@ final class QRCodeScannerView: UIView {
         layer.addSublayer(videoPreviewLayer)
         self.videoPreviewLayer = videoPreviewLayer
         
-        captureSession.startRunning()
+        self.start()
         
         let scanRectView = ScanRectView(frame: frame)
         addSubview(scanRectView)
@@ -96,7 +96,7 @@ final class QRCodeScannerView: UIView {
     private func setupOverlay() {
         let overlay = UIView()
         overlay.backgroundColor = .black
-        overlay.alpha = 0.8
+        overlay.alpha = 0.5
         overlay.clipsToBounds = true
         
         addAutolayoutSubview(overlay)
@@ -167,10 +167,12 @@ final class QRCodeScannerView: UIView {
         updateOverlayMask()
     }
     
+    func start() {
+        captureSession.startRunning()
+    }
+    
     func stop() {
         UISelectionFeedbackGenerator().selectionChanged()
-        
-        overlayView?.alpha = 0
         
         captureSession.stopRunning()
         oldCode = nil

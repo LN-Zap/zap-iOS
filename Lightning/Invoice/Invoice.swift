@@ -25,20 +25,21 @@ public final class Invoice {
     public static func create(from address: String, lightningService: LightningService, callback: @escaping (Result<Invoice>) -> Void) {
 
         if let bitcoinURI = BitcoinURI(string: address) {
-            if let lightningPaymentRequest = bitcoinURI.lightningFallback {
-                decodeLightningPaymentRequest(paymentRequest: lightningPaymentRequest, bitcoinURI: bitcoinURI, lightningService: lightningService, callback: callback)
+            if let paymentRequest = bitcoinURI.lightningFallback,
+                let invoiceURI = LightningInvoiceURI(string: paymentRequest) {
+                decodeLightningPaymentRequest(invoiceURI: invoiceURI, bitcoinURI: bitcoinURI, lightningService: lightningService, callback: callback)
             } else {
                 validateInvoice(Invoice(lightningPaymentRequest: nil, bitcoinURI: bitcoinURI), lightningService: lightningService, callback: callback)
             }
-        } else if LightningInvoiceURI(string: address) != nil {
-            decodeLightningPaymentRequest(paymentRequest: address, bitcoinURI: nil, lightningService: lightningService, callback: callback)
+        } else if let invoiceURI = LightningInvoiceURI(string: address) {
+            decodeLightningPaymentRequest(invoiceURI: invoiceURI, bitcoinURI: nil, lightningService: lightningService, callback: callback)
         } else {
             callback(.failure(InvoiceError.unknownFormat))
         }
     }
     
-    private static func decodeLightningPaymentRequest(paymentRequest: String, bitcoinURI: BitcoinURI?, lightningService: LightningService, callback: @escaping (Result<Invoice>) -> Void) {
-        lightningService.transactionService.decodePaymentRequest(paymentRequest) { result in
+    private static func decodeLightningPaymentRequest(invoiceURI: LightningInvoiceURI, bitcoinURI: BitcoinURI?, lightningService: LightningService, callback: @escaping (Result<Invoice>) -> Void) {
+        lightningService.transactionService.decodePaymentRequest(invoiceURI.address) { result in
             switch result {
             case .success(let paymentRequest):
                 let invoice: Invoice

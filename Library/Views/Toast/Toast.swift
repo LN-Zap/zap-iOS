@@ -81,7 +81,7 @@ final class Toast: UIView {
     }
 }
 
-extension UIViewController {
+extension UIView {
     func presentErrorToast(_ message: String) {
         DispatchQueue.main.async {
             let toast = Toast(message: message, style: .error)
@@ -97,7 +97,7 @@ extension UIViewController {
     }
     
     func presentToast(_ toast: Toast, animated: Bool, completion: ((Bool) -> Void)?) {
-        view.addAutolayoutSubview(toast)
+        addAutolayoutSubview(toast)
         
         setupAutolayoutConstraints(forToast: toast)
         
@@ -105,7 +105,7 @@ extension UIViewController {
         
         UIView.animate(withDuration: 0.2, animations: {
             toast.alpha = 1
-            }, completion: completion)
+        }, completion: completion)
         
         DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + Double(Int64(3.0 * Double(NSEC_PER_SEC))) / Double(NSEC_PER_SEC)) { () -> Void in
             toast.dismissToast()
@@ -116,15 +116,29 @@ extension UIViewController {
         toast.translatesAutoresizingMaskIntoConstraints = false
         let layoutGuide: UILayoutGuide
         if #available(iOS 11.0, *) {
-            layoutGuide = view.safeAreaLayoutGuide
+            layoutGuide = safeAreaLayoutGuide
         } else {
-            layoutGuide = view.layoutMarginsGuide
+            layoutGuide = layoutMarginsGuide
         }
-
+        
         NSLayoutConstraint.activate([
-            toast.topAnchor.constraint(equalTo: view.topAnchor),
+            toast.topAnchor.constraint(equalTo: topAnchor),
             toast.leadingAnchor.constraint(equalTo: layoutGuide.leadingAnchor),
             toast.trailingAnchor.constraint(equalTo: layoutGuide.trailingAnchor)
         ])
+    }
+}
+
+extension UIViewController {
+    func presentErrorToast(_ message: String) {
+        view.presentErrorToast(message)
+    }
+    
+    func presentSuccessToast(_ message: String) {
+        view.presentSuccessToast(message)
+    }
+    
+    func presentToast(_ toast: Toast, animated: Bool, completion: ((Bool) -> Void)?) {
+        view.presentToast(toast, animated: animated, completion: completion)
     }
 }

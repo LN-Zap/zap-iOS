@@ -81,6 +81,11 @@ class ModalDetailViewController: ModalViewController, QRCodeScannerChildViewCont
         modalPresentationManager?.modalPresentationController?.contentHeight = height
     }
     
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        delegate?.childWillDisappear()
+    }
+    
     @objc func dismissParent() {
         guard let presentingViewController = presentingViewController else { return }
         
