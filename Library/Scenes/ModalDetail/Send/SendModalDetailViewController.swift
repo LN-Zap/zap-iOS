@@ -5,6 +5,7 @@
 //  Copyright © 2018 Zap. All rights reserved.
 //
 
+import Lightning
 import UIKit
 
 final class SendModalDetailViewController: ModalDetailViewController {
@@ -27,10 +28,14 @@ final class SendModalDetailViewController: ModalDetailViewController {
         amountInputView.backgroundColor = UIColor.Zap.seaBlue
         amountInputView.textColor = UIColor.Zap.white
         amountInputView.delegate = self
+        amountInputView.addTarget(self, action: #selector(amountChanged(sender:)), for: .valueChanged)
         
         if let amount = viewModel.amount {
             amountInputView.satoshis = amount
             amountInputView.setKeypad(hidden: true, animated: false)
+            if case .lightning = viewModel.method {
+                amountInputView.isEditable = false
+            }
         } else {
             amountInputView.becomeFirstResponder()
         }
@@ -55,26 +60,35 @@ final class SendModalDetailViewController: ModalDetailViewController {
         
         contentStackView.addArrangedElement(.customHeight(56, element: .button(title: "Send", style: Style.Button.background, callback: { [weak self] button in
             button.isEnabled = false
-            self?.viewModel.send(callback: { result in
-                button.isEnabled = true
-                switch result {
-                case .success:
-                    self?.dismissParent()
-                case .failure(let error):
-                    guard let error = error as? LocalizedError,
-                        let errorMessage = error.errorDescription
-                        else { return }
-                    self?.delegate?.presentError(message: errorMessage)
-                }
-            })
+            self?.viewModel.send { self?.handleSendResult($0, button: button) }
         })))
 
         setHeaderImage(viewModel.method.headerImage)
     }
     
+    private func handleSendResult(_ result: Result<Success>, button: UIButton) {
+        DispatchQueue.main.async {
+            button.isEnabled = true
+            switch result {
+            case .success:
+                self.dismissParent()
+            case .failure(let error):
+                guard let error = error as? LocalizedError,
+                    let errorMessage = error.errorDescription
+                    else { return }
+                self.delegate?.presentError(message: errorMessage)
+            }
+        }
+
+    }
+    
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         didViewAppear = true
+    }
+    
+    @objc private func amountChanged(sender: AmountInputView) {
+        viewModel.amount = sender.satoshis
     }
 }
 

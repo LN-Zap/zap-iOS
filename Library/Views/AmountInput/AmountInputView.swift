@@ -33,6 +33,8 @@ public final class AmountInputView: UIControl {
         }
     }
     
+    var isEditable: Bool = true
+    
     public weak var delegate: AmountInputViewDelegate?
     
     private var formattedAmount: String? {
@@ -71,11 +73,11 @@ public final class AmountInputView: UIControl {
     
     override public var backgroundColor: UIColor? {
         didSet {
-            contentView.backgroundColor = backgroundColor
-            stackView.backgroundColor = backgroundColor
-            keyPadView.backgroundColor = backgroundColor
-            topViewBackground.backgroundColor = backgroundColor
-            bottomViewBackground.backgroundColor = backgroundColor
+            contentView?.backgroundColor = backgroundColor
+            stackView?.backgroundColor = backgroundColor
+            keyPadView?.backgroundColor = backgroundColor
+            topViewBackground?.backgroundColor = backgroundColor
+            bottomViewBackground?.backgroundColor = backgroundColor
         }
     }
     
@@ -168,6 +170,10 @@ extension AmountInputView: UITextFieldDelegate {
         } else {
             bottomViewBackground.isHidden = hidden
         }
+    }
+    
+    public func textFieldShouldBeginEditing(_ textField: UITextField) -> Bool {
+        return isEditable
     }
     
     public func textFieldDidBeginEditing(_ textField: UITextField) {
