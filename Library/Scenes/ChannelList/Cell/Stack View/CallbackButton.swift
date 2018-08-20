@@ -8,10 +8,10 @@
 import Foundation
 
 final class CallbackButton: UIView {
-    let onTap: () -> Void
+    let onTap: (UIButton) -> Void
     let button: UIButton
     
-    init(title: String, onTap: @escaping () -> Void) {
+    init(title: String, onTap: @escaping (UIButton) -> Void) {
         self.onTap = onTap
         self.button = UIButton(type: .system)
         super.init(frame: .zero)
@@ -26,6 +26,6 @@ final class CallbackButton: UIView {
     }
     
     @objc func tapped(sender: AnyObject) {
-        onTap()
+        onTap(button)
     }
 }

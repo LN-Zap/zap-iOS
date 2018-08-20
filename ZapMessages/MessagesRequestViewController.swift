@@ -170,7 +170,7 @@ class MessagesRequestViewController: UIViewController {
     
     func updatePresentationStyle(to presentationStyle: MSMessagesAppPresentationStyle) {
         let isCompact = presentationStyle == .compact
-        amountInputView?.animateKeypad(hidden: isCompact)
+        amountInputView?.setKeypad(hidden: isCompact, animated: true)
         memoContainerView.isHidden = isCompact
     }
 }
@@ -187,7 +187,7 @@ extension MessagesRequestViewController: AmountInputViewDelegate {
 
 extension MessagesRequestViewController: UITextViewDelegate {
     func textViewShouldBeginEditing(_ textView: UITextView) -> Bool {
-        amountInputView?.animateKeypad(hidden: true)
+        amountInputView?.setKeypad(hidden: true, animated: true)
         return true
     }
     

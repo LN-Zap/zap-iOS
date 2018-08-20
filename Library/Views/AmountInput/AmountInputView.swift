@@ -21,7 +21,9 @@ public final class AmountInputView: UIControl {
     }
     
     @IBOutlet private var contentView: UIView!
-    @IBOutlet private weak var containerView: UIView!
+    @IBOutlet private weak var stackView: UIStackView!
+    @IBOutlet private weak var topViewBackground: UIView!
+    @IBOutlet private weak var bottomViewBackground: UIView!
     @IBOutlet private weak var amountTextField: UITextField!
     @IBOutlet private weak var swapCurrencyButton: UIButton!
     @IBOutlet private weak var downArrowImageView: UIImageView!
@@ -30,8 +32,6 @@ public final class AmountInputView: UIControl {
             setupKeyPad()
         }
     }
-    @IBOutlet private weak var keyPadHeightConstraint: NSLayoutConstraint!
-    @IBOutlet private weak var inputHeightConstraint: NSLayoutConstraint!
     
     public weak var delegate: AmountInputViewDelegate?
     
@@ -49,7 +49,7 @@ public final class AmountInputView: UIControl {
             case .app:
                 amountTextField.becomeFirstResponder()
             case .messages:
-                keyPadHeightConstraint.constant = 0
+                bottomViewBackground.isHidden = true
             }
         }
     }
@@ -66,6 +66,23 @@ public final class AmountInputView: UIControl {
             if updateKeyPadString(input: stringValue) {
                 keyPadView.numberString = stringValue
             }
+        }
+    }
+    
+    override public var backgroundColor: UIColor? {
+        didSet {
+            contentView.backgroundColor = backgroundColor
+            stackView.backgroundColor = backgroundColor
+            keyPadView.backgroundColor = backgroundColor
+            topViewBackground.backgroundColor = backgroundColor
+            bottomViewBackground.backgroundColor = backgroundColor
+        }
+    }
+    
+    var textColor: UIColor = UIColor.Zap.black {
+        didSet {
+            amountTextField.textColor = textColor
+            keyPadView.textColor = textColor
         }
     }
     
@@ -90,11 +107,9 @@ public final class AmountInputView: UIControl {
         amountTextField.placeholder = "view.amount_input.placeholder".localized
         amountTextField.inputView = UIView()
         amountTextField.delegate = self
-        
-        Style.Button.custom().apply(to: swapCurrencyButton)
-        swapCurrencyButton.tintColor = UIColor.Zap.black
-        swapCurrencyButton.titleLabel?.font = UIFont.Zap.light.withSize(36)
-        downArrowImageView.tintColor = UIColor.Zap.black
+
+        Style.Button.custom(color: UIColor.Zap.white, fontSize: 36).apply(to: swapCurrencyButton)
+        downArrowImageView.tintColor = UIColor.Zap.lightningOrange
         
         Settings.shared.primaryCurrency
             .map { $0.symbol }
@@ -127,25 +142,39 @@ public final class AmountInputView: UIControl {
     private func updateValidityIndicator() {
         if formattedAmount != nil,
             let range = validRange {
-            amountTextField.textColor = range.contains(satoshis) ? UIColor.Zap.black : UIColor.Zap.superRed
+            amountTextField.textColor = range.contains(satoshis) ? textColor : UIColor.Zap.superRed
         }
+    }
+    
+    @discardableResult
+    override public func becomeFirstResponder() -> Bool {
+        return amountTextField.becomeFirstResponder()
+    }
+    
+    @discardableResult
+    override public func resignFirstResponder() -> Bool {
+        return amountTextField.resignFirstResponder()
     }
 }
 
 extension AmountInputView: UITextFieldDelegate {
-    public func animateKeypad(hidden: Bool) {
-        UIView.animate(withDuration: 0.5, delay: 0, usingSpringWithDamping: 0.75, initialSpringVelocity: 0.5, options: .curveEaseInOut, animations: { [keyPadHeightConstraint] in
-            keyPadHeightConstraint?.constant = hidden ? 0 : 280
-            }, completion: nil)
+    public func setKeypad(hidden: Bool, animated: Bool) {
+        if animated {
+            layoutIfNeeded()
+            UIView.animate(withDuration: 0.3) { [weak self] in
+                self?.bottomViewBackground.isHidden = hidden
+                self?.layoutIfNeeded()
+            }
+        } else {
+            bottomViewBackground.isHidden = hidden
+        }
     }
     
     public func textFieldDidBeginEditing(_ textField: UITextField) {
         delegate?.amountInputViewDidBeginEditing(self)
-        animateKeypad(hidden: false)
     }
     
     public func textFieldDidEndEditing(_ textField: UITextField) {
         delegate?.amountInputViewDidEndEditing(self)
-        animateKeypad(hidden: true)
     }
 }

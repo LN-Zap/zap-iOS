@@ -13,16 +13,16 @@ public enum InvoiceError: Error {
     case wrongNetworkError(linkNetwork: Network, nodeNetwork: Network)
 }
 
-final class Invoice {
-    let lightningPaymentRequest: PaymentRequest?
-    let bitcoinURI: BitcoinURI?
+public final class Invoice {
+    public let lightningPaymentRequest: PaymentRequest?
+    public let bitcoinURI: BitcoinURI?
 
     private init(lightningPaymentRequest: PaymentRequest?, bitcoinURI: BitcoinURI?) {
         self.lightningPaymentRequest = lightningPaymentRequest
         self.bitcoinURI = bitcoinURI
     }
     
-    static func create(from address: String, lightningService: LightningService, callback: @escaping (Result<Invoice>) -> Void) {
+    public static func create(from address: String, lightningService: LightningService, callback: @escaping (Result<Invoice>) -> Void) {
 
         if let bitcoinURI = BitcoinURI(string: address) {
             if let lightningPaymentRequest = bitcoinURI.lightningFallback {

@@ -60,7 +60,7 @@ public final class TransactionService {
         api.decodePaymentRequest(paymentRequest, callback: callback)
     }
     
-    public func sendPayment(_ paymentRequest: PaymentRequest, callback: @escaping (Result<Data>) -> Void) {
+    public func sendPayment(_ paymentRequest: PaymentRequest, amount: Satoshi, callback: @escaping (Result<Data>) -> Void) {
         api.sendPayment(paymentRequest, amount: nil) { [weak self] result in
             if result.value != nil {
                 self?.update()

@@ -6,14 +6,14 @@
 //
 
 import BTCUtil
-import Foundation
+import UIKit
 
 indirect enum StackViewElement {
     case amountLabel(amount: Satoshi, style: UIViewStyle<UILabel>)
     case verticalStackView(content: [StackViewElement], spacing: CGFloat)
     case label(text: String, style: UIViewStyle<UILabel>)
     case horizontalStackView(content: [StackViewElement])
-    case button(title: String, style: UIViewStyle<UIButton>, callback: () -> Void)
+    case button(title: String, style: UIViewStyle<UIButton>, callback: (UIButton) -> Void)
     case separator
     case customView(UIView, height: CGFloat)
     case customHeight(CGFloat, element: StackViewElement)
@@ -70,6 +70,10 @@ indirect enum StackViewElement {
             let stackView = UIStackView(elements: content)
             stackView.axis = .horizontal
             stackView.spacing = 5
+            stackView.arrangedSubviews.first?.setContentCompressionResistancePriority(.required, for: .horizontal)
+            stackView.arrangedSubviews.first?.setContentHuggingPriority(UILayoutPriority(rawValue: 0), for: .horizontal)
+            stackView.arrangedSubviews.last?.setContentCompressionResistancePriority(.defaultLow, for: .horizontal)
+            stackView.arrangedSubviews.last?.setContentHuggingPriority(.defaultHigh, for: .horizontal)
             result = stackView
             
         case let .button(title, style, callback):
@@ -87,6 +91,7 @@ indirect enum StackViewElement {
         case let .customView(view, _):
             result = view
             result.setContentHuggingPriority(UILayoutPriority(rawValue: 999), for: .horizontal)
+            
         case let .customHeight(_, element):
             result = element.view(constainHeight: false)
             result.translatesAutoresizingMaskIntoConstraints = false

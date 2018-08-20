@@ -85,7 +85,7 @@ enum Style {
     enum Button {
         static func custom(color: UIColor = UIColor.Zap.lightningOrange, fontSize: CGFloat = 17) -> UIViewStyle<UIButton> {
             return UIViewStyle<UIButton> {
-                $0.titleLabel?.font = UIFontMetrics(forTextStyle: .body).scaledFont(for: UIFont.Zap.regular.withSize(17))
+                $0.titleLabel?.font = UIFontMetrics(forTextStyle: .body).scaledFont(for: UIFont.Zap.regular.withSize(fontSize))
                 $0.setTitleColor(color, for: .normal)
                 $0.titleLabel?.adjustsFontForContentSizeCategory = true
             }
