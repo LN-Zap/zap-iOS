@@ -81,7 +81,7 @@ final class LightningApiStream: LightningApiProtocol {
     
     func closeChannel(channelPoint: ChannelPoint, force: Bool, callback: @escaping (Result<CloseStatusUpdate>) -> Void) {
         guard let data = try? Lnrpc_CloseChannelRequest(channelPoint: channelPoint, force: force)?.serializedData() else {
-            callback(Result(error: LndApiError.invalidInput))
+            callback(.failure(LndApiError.invalidInput))
             return
         }
         LndmobileCloseChannel(data, StreamCallback<Lnrpc_CloseStatusUpdate, CloseStatusUpdate>(callback, map: CloseStatusUpdate.init))

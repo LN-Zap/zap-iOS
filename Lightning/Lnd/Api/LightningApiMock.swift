@@ -118,9 +118,9 @@ final class LightningApiMock: LightningApiProtocol {
     
     func connect(pubKey: String, host: String, callback: @escaping (Result<Success>) -> Void) {
         if connectError == true {
-            callback(Result(value: Success()))
+            callback(.success(Success()))
         } else {
-            callback(Result(error: LndApiError.unknownError))
+            callback(.failure(LndApiError.unknownError))
         }
     }
 

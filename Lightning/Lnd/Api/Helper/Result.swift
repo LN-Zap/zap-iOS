@@ -12,14 +12,6 @@ public enum Result<Value>: CustomStringConvertible, CustomDebugStringConvertible
     case success(Value)
     case failure(Error)
     
-    public init(value: Value) {
-        self = .success(value)
-    }
-    
-    public init(error: Error) {
-        self = .failure(error)
-    }
-    
     init(value: Value?, error: Error) {
         if let value = value {
             self = .success(value)
@@ -79,26 +71,26 @@ func result<T, U>(_ callback: @escaping (Result<U>) -> Void, map: @escaping (T) 
     return { (response: T?, callResult: CallResult) in
         if let response = response,
             let value = map(response) {
-            callback(Result<U>(value: value))
+            callback(.success(value))
         } else if !callResult.success {
             switch callResult.statusCode {
             case .unavailable:
                 print(LndApiError.noInternet)
-                callback(Result<U>(error: LndApiError.noInternet))
+                callback(.failure(LndApiError.noInternet))
             default:
                 if let statusMessage = callResult.statusMessage {
                     print(statusMessage)
-                    callback(Result<U>(error: LndApiError.localizedError(statusMessage)))
+                    callback(.failure(LndApiError.localizedError(statusMessage)))
                 } else {
-                    callback(Result<U>(error: LndApiError.unknownError))
+                    callback(.failure(LndApiError.unknownError))
                 }
             }
         } else if let statusMessage = callResult.statusMessage {
             print(LndApiError.localizedError, callResult)
-            callback(Result<U>(error: LndApiError.localizedError(statusMessage)))
+            callback(.failure(LndApiError.localizedError(statusMessage)))
         } else {
             print(LndApiError.unknownError, callResult)
-            callback(Result<U>(error: LndApiError.unknownError))
+            callback(.failure(LndApiError.unknownError))
         }
     }
 }

@@ -25,9 +25,9 @@ struct BTCPayQRCode {
         DispatchQueue.global().async {
             do {
                 let data = try Data(contentsOf: self.configURL)                
-                completion(Result(value: data))
+                completion(.success(data))
             } catch {
-                completion(Result(error: RPCConnectQRCodeError.btcPayExpired))
+                completion(.failure(RPCConnectQRCodeError.btcPayExpired))
             }
         }
     }

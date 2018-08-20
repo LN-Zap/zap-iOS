@@ -32,7 +32,7 @@ final class StreamCallback<T: SwiftProtobuf.Message, U>: NSObject, LndmobileCall
     
     func onError(_ error: Error) {
         print("🅾️ Callback Error:", error)
-        callback(Result(error: error))
+        callback(.failure(error))
     }
     
     func onResponse(_ data: Data) {
@@ -42,7 +42,7 @@ final class StreamCallback<T: SwiftProtobuf.Message, U>: NSObject, LndmobileCall
             if !(value is Info) && !(value is GraphTopologyUpdate) {
                 print("✅ Callback:", value)
             }
-            callback(Result(value: value))
+            callback(.success(value))
         } else {
             onError(LndApiError.unknownError)
         }
