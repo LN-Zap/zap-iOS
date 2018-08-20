@@ -129,17 +129,17 @@ public final class LightningApiRPC: LightningApiProtocol {
         let request = Lnrpc_SendRequest(paymentRequest: paymentRequest.raw, amount: amount)
         _ = try? rpc.sendPaymentSync(request) { response, error in
             if !error.success {
-                callback(Result(error: LndApiError.unknownError))
+                callback(.failure(LndApiError.unknownError))
             } else if let errorMessage = response?.paymentError,
                 !errorMessage.isEmpty {
                 let error = LndApiError.localizedError(errorMessage)
-                callback(Result(error: error))
+                callback(.failure(error))
             } else if let response = response {
-                callback(Result(value: response.paymentPreimage))
+                callback(.success(response.paymentPreimage))
             } else if let statusMessage = error.statusMessage {
-                callback(Result(error: LndApiError.localizedError(statusMessage)))
+                callback(.failure(LndApiError.localizedError(statusMessage)))
             } else {
-                callback(Result(error: LndApiError.unknownError))
+                callback(.failure(LndApiError.unknownError))
             }
         }
     }
@@ -184,7 +184,7 @@ public final class LightningApiRPC: LightningApiProtocol {
     
     func closeChannel(channelPoint: ChannelPoint, force: Bool, callback: @escaping (Result<CloseStatusUpdate>) -> Void) {
         guard let request = Lnrpc_CloseChannelRequest(channelPoint: channelPoint, force: force) else {
-            callback(Result(error: LndApiError.invalidInput))
+            callback(.failure(LndApiError.invalidInput))
             return
         }
         do {
@@ -200,7 +200,7 @@ public final class LightningApiRPC: LightningApiProtocol {
     private func receiveChannelGraphUpdate(call: Lnrpc_LightningSubscribeChannelGraphCall, callback: @escaping (Result<GraphTopologyUpdate>) -> Void) throws {
         try call.receive { [weak self] in
             if let result = $0.result.flatMap({ $0 }) {
-                callback(Result(value: GraphTopologyUpdate(graphTopologyUpdate: result)))
+                callback(.success(GraphTopologyUpdate(graphTopologyUpdate: result)))
             } else if let error = $0.error {
                 print(#function, error)
             }
@@ -211,7 +211,7 @@ public final class LightningApiRPC: LightningApiProtocol {
     private func receiveInvoicesUpdate(call: Lnrpc_LightningSubscribeInvoicesCall, callback: @escaping (Result<Transaction>) -> Void) throws {
         try call.receive { [weak self] in
             if let result = $0.result.flatMap({ $0 }) {
-                callback(Result(value: LightningInvoice(invoice: result)))
+                callback(.success(LightningInvoice(invoice: result)))
             } else if let error = $0.error {
                 print(#function, error)
             }
@@ -222,7 +222,7 @@ public final class LightningApiRPC: LightningApiProtocol {
     private func receiveTransactionsUpdate(call: Lnrpc_LightningSubscribeTransactionsCall, callback: @escaping (Result<Transaction>) -> Void) throws {
         try call.receive { [weak self] in
             if let result = $0.result.flatMap({ $0 }) {
-                callback(Result(value: OnChainConfirmedTransaction(transaction: result)))
+                callback(.success(OnChainConfirmedTransaction(transaction: result)))
             } else if let error = $0.error {
                 print(#function, error)
             }
@@ -233,7 +233,7 @@ public final class LightningApiRPC: LightningApiProtocol {
     private func receiveCloseChannelUpdate(call: Lnrpc_LightningCloseChannelCall, callback: @escaping (Result<CloseStatusUpdate>) -> Void) throws {
         try call.receive { [weak self] in
             if let result = $0.result.flatMap({ $0 }) {
-                callback(Result(value: CloseStatusUpdate(closeStatusUpdate: result)))
+                callback(.success(CloseStatusUpdate(closeStatusUpdate: result)))
             } else if let error = $0.error {
                 print(#function, error)
             }

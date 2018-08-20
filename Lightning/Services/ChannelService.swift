@@ -47,7 +47,7 @@ public final class ChannelService {
             } else {
                 api.connect(pubKey: pubKey, host: host) { result in
                     if let error = result.error {
-                        callback(Result<ChannelPoint>(error: error))
+                        callback(.failure(error))
                     } else {
                         self?.openConnectedChannel(pubKey: pubKey, amount: amount, callback: callback)
                     }

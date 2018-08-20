@@ -45,15 +45,15 @@ enum BiometricAuthentication {
         if localAuthenticationContext.canEvaluatePolicy(.deviceOwnerAuthenticationWithBiometrics, error: &authError) {
             localAuthenticationContext.evaluatePolicy(.deviceOwnerAuthenticationWithBiometrics, localizedReason: reasonString) { success, evaluateError in
                 if success {
-                    execute(callback, with: Result(value: Success()))
+                    execute(callback, with: .success(Success()))
                 } else if let error = evaluateError {
                     let message = self.errorMessage(for: error._code)
-                    execute(callback, with: Result(error: LndApiError.localizedError(message)))
+                    execute(callback, with: .failure(LndApiError.localizedError(message)))
                 }
             }
         } else if let error = authError {
             let message = self.errorMessage(for: error._code)
-            execute(callback, with: Result(error: LndApiError.localizedError(message)))
+            execute(callback, with: .failure(LndApiError.localizedError(message)))
         }
     }
     

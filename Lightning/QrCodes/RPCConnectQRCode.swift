@@ -17,20 +17,20 @@ public enum RPCConnectQRCodeError: Error {
 public enum RPCConnectQRCode {
     public static func configuration(for string: String, callback: @escaping (Result<RemoteRPCConfiguration>) -> Void) {
         if let qrCode = ZapconnectQRCode(json: string) {
-            callback(Result(value: qrCode.rpcConfiguration))
+            callback(.success(qrCode.rpcConfiguration))
         } else if let btcPayQRCode = BTCPayQRCode(string: string) {
             btcPayQRCode.fetchConfiguration { result in
                 let mappedResult = result.flatMap { configData -> Result<RemoteRPCConfiguration> in
                     if let configuration = BTCPayConfiguration(data: configData)?.rpcConfiguration {
-                        return Result(value: configuration)
+                        return .success(configuration)
                     } else {
-                        return Result(error: RPCConnectQRCodeError.btcPayConfigurationBroken)
+                        return .failure(RPCConnectQRCodeError.btcPayConfigurationBroken)
                     }
                 }
                 callback(mappedResult)
             }
         } else {
-            callback(Result(error: RPCConnectQRCodeError.cantReadQRCode))
+            callback(.failure(RPCConnectQRCodeError.cantReadQRCode))
         }
     }
 }
