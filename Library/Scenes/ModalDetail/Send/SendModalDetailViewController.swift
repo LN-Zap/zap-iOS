@@ -11,6 +11,7 @@ import UIKit
 final class SendModalDetailViewController: ModalDetailViewController {
     private let viewModel: SendModalDetailViewModel
     private var didViewAppear = false
+    private weak var sendButton: CallbackButton?
     
     init(viewModel: SendModalDetailViewModel) {
         self.viewModel = viewModel
@@ -30,16 +31,6 @@ final class SendModalDetailViewController: ModalDetailViewController {
         amountInputView.delegate = self
         amountInputView.addTarget(self, action: #selector(amountChanged(sender:)), for: .valueChanged)
         
-        if let amount = viewModel.amount {
-            amountInputView.satoshis = amount
-            amountInputView.setKeypad(hidden: true, animated: false)
-            if case .lightning = viewModel.method {
-                amountInputView.isEditable = false
-            }
-        } else {
-            amountInputView.becomeFirstResponder()
-        }
-            
         contentStackView.addArrangedElement(.label(text: viewModel.method.headline, style: Style.Label.headline.with({ $0.textAlignment = .center })))
         contentStackView.addArrangedElement(.separator)
         contentStackView.addArrangedElement(.horizontalStackView(content: [
@@ -58,10 +49,21 @@ final class SendModalDetailViewController: ModalDetailViewController {
             contentStackView.addArrangedElement(.separator)
         }
         
-        contentStackView.addArrangedElement(.customHeight(56, element: .button(title: "Send", style: Style.Button.background, callback: { [weak self] button in
+        sendButton = contentStackView.addArrangedElement(.customHeight(56, element: .button(title: "Send", style: Style.Button.background, callback: { [weak self] button in
             button.isEnabled = false
             self?.viewModel.send { self?.handleSendResult($0, button: button) }
-        })))
+        }))) as? CallbackButton
+        
+        if let amount = viewModel.amount {
+            amountInputView.satoshis = amount
+            amountInputView.setKeypad(hidden: true, animated: false)
+            if case .lightning = viewModel.method {
+                amountInputView.isEditable = false
+            }
+        } else {
+            amountInputView.becomeFirstResponder()
+            sendButton?.isEnabled = false
+        }
 
         setHeaderImage(viewModel.method.headerImage)
     }
@@ -76,7 +78,7 @@ final class SendModalDetailViewController: ModalDetailViewController {
                 guard let error = error as? LocalizedError,
                     let errorMessage = error.errorDescription
                     else { return }
-                self.delegate?.presentError(message: errorMessage)
+                self.view.superview?.presentErrorToast(errorMessage)
             }
         }
 
@@ -89,6 +91,7 @@ final class SendModalDetailViewController: ModalDetailViewController {
     
     @objc private func amountChanged(sender: AmountInputView) {
         viewModel.amount = sender.satoshis
+        sendButton?.isEnabled = sender.satoshis > 0
     }
 }
 

@@ -11,6 +11,15 @@ final class CallbackButton: UIView {
     let onTap: (UIButton) -> Void
     let button: UIButton
     
+    var isEnabled: Bool {
+        get {
+            return button.isEnabled
+        }
+        set {
+            button.isEnabled = newValue
+        }
+    }
+    
     init(title: String, onTap: @escaping (UIButton) -> Void) {
         self.onTap = onTap
         self.button = UIButton(type: .system)
