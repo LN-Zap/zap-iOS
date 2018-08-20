@@ -61,7 +61,7 @@ public final class TransactionService {
     }
     
     public func sendPayment(_ paymentRequest: PaymentRequest, amount: Satoshi, callback: @escaping (Result<Data>) -> Void) {
-        api.sendPayment(paymentRequest, amount: nil) { [weak self] result in
+        api.sendPayment(paymentRequest, amount: amount) { [weak self] result in
             if result.value != nil {
                 self?.update()
                 self?.balanceService.update()

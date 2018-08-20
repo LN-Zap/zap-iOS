@@ -51,10 +51,10 @@ final class SendModalDetailViewModel {
         }
     }
     
-    let invoice: Invoice
+    private let invoice: Invoice
     let method: SendMethod
     
-    let amount: Satoshi?
+    var amount: Satoshi?
     let receiver: String
     let memo: String?
     
