@@ -41,8 +41,6 @@ final class KeyPadView: UIView {
         }
     }
     
-    //////
-    
     var handler: ((String) -> Bool)?
     var customPointButtonAction: (() -> Void)?
     

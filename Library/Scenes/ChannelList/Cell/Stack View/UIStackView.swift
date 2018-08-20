@@ -21,6 +21,13 @@ extension UIStackView {
         }
     }
     
+    @discardableResult
+    func addArrangedElement(_ element: StackViewElement) -> UIView {
+        let view = element.view()
+        addArrangedSubview(view)
+        return view
+    }
+    
     func clear() {
         for view in arrangedSubviews {
             view.removeFromSuperview()

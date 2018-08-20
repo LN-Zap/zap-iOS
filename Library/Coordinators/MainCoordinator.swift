@@ -35,9 +35,18 @@ final class MainCoordinator: Routing {
     public func handle(_ route: Route) {
         switch route {
         case .send(let invoice):
-            if let invoice = invoice,
-                let error = SendViewModel(lightningService: lightningService).paymentURI(for: invoice).error as? InvoiceError {
-                rootViewController.presentErrorToast(error.localized)
+            if let invoice = invoice {
+                Invoice.create(from: invoice, lightningService: lightningService, callback: { [weak self] result in
+                    DispatchQueue.main.async {
+                        switch result {
+                        case .success:
+                            self?.presentSend(invoice: invoice)
+                        case .failure(let error):
+                            guard let localizedError = error as? Localizable else { break }
+                            self?.rootViewController.presentErrorToast(localizedError.localized)
+                        }
+                    }
+                })
             } else {
                 presentSend(invoice: invoice)
             }
@@ -81,8 +90,8 @@ final class MainCoordinator: Routing {
     }
     
     func presentSend(invoice: String?) {
-        let strategy = SendQRCodeScannerStrategy(transactionAnnotationStore: transactionListViewModel.transactionAnnotationStore, nodeStore: channelListViewModel.nodeStore)
-        let viewController = UIStoryboard.instantiateQRCodeScannerViewController(with: lightningService, strategy: strategy)
+        let strategy = SendQRCodeScannerStrategy(transactionAnnotationStore: transactionListViewModel.transactionAnnotationStore, nodeStore: channelListViewModel.nodeStore, lightningService: lightningService)
+        let viewController = UIStoryboard.instantiateQRCodeScannerViewController(strategy: strategy)
         rootViewController.present(viewController, animated: true) {
             if let invoice = invoice,
                 let qrCodeScannerViewController = viewController.topViewController as? QRCodeScannerViewController {
@@ -97,7 +106,8 @@ final class MainCoordinator: Routing {
     }
     
     private func presentAddChannel() {
-        let viewController = UIStoryboard.instantiateQRCodeScannerViewController(with: lightningService, strategy: OpenChannelQRCodeScannerStrategy())
+        let strategy = OpenChannelQRCodeScannerStrategy(lightningService: lightningService)
+        let viewController = UIStoryboard.instantiateQRCodeScannerViewController(strategy: strategy)
         rootViewController.present(viewController, animated: true, completion: nil)
     }
     

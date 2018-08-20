@@ -10,10 +10,9 @@ import Lightning
 import UIKit
 
 extension UIStoryboard {
-    static func instantiateQRCodeScannerViewController(with lightningService: LightningService, strategy: QRCodeScannerStrategy) -> UINavigationController {
+    static func instantiateQRCodeScannerViewController(strategy: QRCodeScannerStrategy) -> UINavigationController {
         let navigationController = Storyboard.qrCodeScanner.initial(viewController: UINavigationController.self)
         if let viewController = navigationController.topViewController as? QRCodeScannerViewController {
-            viewController.lightningService = lightningService
             viewController.strategy = strategy
         }
         return navigationController
@@ -34,7 +33,6 @@ final class QRCodeScannerViewController: UIViewController {
     @IBOutlet private weak var pasteButton: UIButton!
     @IBOutlet private weak var scannerView: QRCodeScannerView! {
         didSet {
-            scannerView.lightningService = lightningService
             scannerView.handler = { [weak self] address in
                 self?.tryPresentingViewController(for: address)
             }
@@ -45,12 +43,6 @@ final class QRCodeScannerViewController: UIViewController {
     fileprivate var strategy: QRCodeScannerStrategy? {
         didSet {
             title = strategy?.title
-        }
-    }
-    
-    fileprivate var lightningService: LightningService? {
-        didSet {
-            scannerView?.lightningService = lightningService
         }
     }
     
@@ -72,9 +64,7 @@ final class QRCodeScannerViewController: UIViewController {
     }
     
     func tryPresentingViewController(for address: String) {
-        guard let lightningService = lightningService else { return }
-        
-        strategy?.viewControllerForAddress(address: address, lightningService: lightningService) { [weak self] result in
+        strategy?.viewControllerForAddress(address: address) { [weak self] result in
             DispatchQueue.main.async {
                 switch result {
                 case .success(let viewController):

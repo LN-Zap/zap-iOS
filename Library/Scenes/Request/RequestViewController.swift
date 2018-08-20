@@ -116,7 +116,7 @@ final class RequestViewController: UIViewController, KeyboardAdjustable {
 
 extension RequestViewController: UITextViewDelegate {
     func textViewShouldBeginEditing(_ textView: UITextView) -> Bool {
-        amountInputView?.animateKeypad(hidden: true)
+        amountInputView?.setKeypad(hidden: true, animated: true)
         return true
     }
 }

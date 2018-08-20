@@ -23,7 +23,7 @@ class ModalDetailViewController: ModalViewController, QRCodeScannerChildViewCont
         return backgroundView
     }()
     
-    private let contentStackView: UIStackView = {
+    let contentStackView: UIStackView = {
         let contentStackView = UIStackView(frame: CGRect(x: 0, y: 0, width: 100, height: 100))
         contentStackView.axis = .vertical
         contentStackView.spacing = 14
@@ -37,12 +37,6 @@ class ModalDetailViewController: ModalViewController, QRCodeScannerChildViewCont
     }()
     
     weak var delegate: QRCodeScannerChildDelegate?
-    
-    var stackViewContent: [StackViewElement] = [] {
-        didSet {
-            contentStackView.set(elements: stackViewContent)
-        }
-    }
     
     private func setupLayout(for view: UIView) {
         view.addAutolayoutSubview(backgroundView)
@@ -76,8 +70,10 @@ class ModalDetailViewController: ModalViewController, QRCodeScannerChildViewCont
         setupLayout(for: view)
 
         view.clipsToBounds = false
-        
-        headerIconImageView.image = UIImage(named: "icon_header_lightning", in: Bundle.library, compatibleWith: nil)
+    }
+    
+    func setHeaderImage(_ image: UIImage) {
+        headerIconImageView.image = image
     }
     
     func updateHeight() {
@@ -85,7 +81,7 @@ class ModalDetailViewController: ModalViewController, QRCodeScannerChildViewCont
         modalPresentationManager?.modalPresentationController?.contentHeight = height
     }
     
-    @objc private func dismissParent() {
+    @objc func dismissParent() {
         guard let presentingViewController = presentingViewController else { return }
         
         // fixes the dismiss animation of two modals at once
@@ -103,7 +99,11 @@ extension ModalDetailViewController: ContentHeightProviding {
         let headerImageMargin = (headerIconImageView.image?.size.height ?? 0) / 2
         let topMargin: CGFloat = 15
         let bottomMargin: CGFloat = 34
-        return stackViewContent.height(spacing: contentStackView.spacing) + headerImageMargin + topMargin + bottomMargin
+        
+        let width = view.frame.width - 40
+        let stackViewHeight = contentStackView.systemLayoutSizeFitting(CGSize(width: width, height: 0), withHorizontalFittingPriority: .defaultHigh, verticalFittingPriority: .defaultLow).height
+
+        return stackViewHeight + headerImageMargin + topMargin + bottomMargin
     }
 }
 

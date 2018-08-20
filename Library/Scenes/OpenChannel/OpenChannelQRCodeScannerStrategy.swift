@@ -10,9 +10,15 @@ import Foundation
 import Lightning
 
 struct OpenChannelQRCodeScannerStrategy: QRCodeScannerStrategy {
+    private let lightningService: LightningService
+    
     let title = "scene.open_channel.title".localized
     
-    func viewControllerForAddress(address: String, lightningService: LightningService, callback: (Result<UIViewController>) -> Void) {
+    init(lightningService: LightningService) {
+        self.lightningService = lightningService
+    }
+    
+    func viewControllerForAddress(address: String, callback: @escaping (Result<UIViewController>) -> Void) {
         if let nodeURI = LightningNodeURI(string: address) {
             let openChannelViewModel = OpenChannelViewModel(lightningService: lightningService, lightningNodeURI: nodeURI)
             callback(.success(UIStoryboard.instantiateOpenChannelViewController(with: openChannelViewModel)))
