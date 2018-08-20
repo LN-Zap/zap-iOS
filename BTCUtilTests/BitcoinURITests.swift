@@ -77,4 +77,19 @@ final class BitcoinURITests: XCTestCase {
             XCTAssertEqual(uri?.network, network)
         }
     }
+    
+    func testWhiteSpace() {
+        let tests: [String] = [
+            "  17VZNX1SN5NtKa8UQFxwQbFeFc3iqRYhem",
+            "2N8hwP1WmJrFF5QWABn38y63uYLhnJYJYTF  ",
+            "\n\tbc1qw508d6qejxtdg4y5r3zarvary0c5xw7kv8f3t4\n\n",
+            "bc1qrp33g0q5c5txsp9arysrx4k6zdkfs4nce4xj0gdcccefvpysxf3qccfmv3\n",
+            " bitcoin:mioi9QugUZFSsSm61Gx4u43s6jYkes2L9p "
+        ]
+        
+        for input in tests {
+            let uri = BitcoinURI(string: input)
+            XCTAssertNotNil(uri)
+        }
+    }
 }

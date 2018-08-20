@@ -57,6 +57,7 @@ public struct BitcoinURI: PaymentURI {
     }
     
     public init?(string: String) {
+        let string = string.trimmingCharacters(in: .whitespacesAndNewlines)
         guard let components = URLComponents(string: string) else { return nil }
 
         let amount: Satoshi?
