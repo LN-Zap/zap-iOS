@@ -8,7 +8,7 @@
 import Foundation
 import Lightning
 
-final class RequestModalDetailViewController: ModalDetailViewController {
+final class RequestViewController: ModalDetailViewController {
     private weak var lightningButton: CallbackButton?
     private weak var onChainButton: CallbackButton?
     private weak var titleLabel: UILabel?
@@ -31,7 +31,7 @@ final class RequestModalDetailViewController: ModalDetailViewController {
         case amountInput
         case memoInput
         
-        func configure(viewController: RequestModalDetailViewController) {
+        func configure(viewController: RequestViewController) {
             switch self {
             case .methodSelection:
                 break
@@ -176,7 +176,7 @@ final class RequestModalDetailViewController: ModalDetailViewController {
     }
 }
 
-extension RequestModalDetailViewController: AmountInputViewDelegate {
+extension RequestViewController: AmountInputViewDelegate {
     func amountInputViewDidBeginEditing(_ amountInputView: AmountInputView) {
         currentState = .amountInput
     }

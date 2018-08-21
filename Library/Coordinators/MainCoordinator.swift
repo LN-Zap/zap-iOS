@@ -102,7 +102,7 @@ final class MainCoordinator: Routing {
     
     func presentRequest() {
         let viewModel = RequestViewModel(transactionService: lightningService.transactionService)
-        let viewController = RequestModalDetailViewController(viewModel: viewModel)
+        let viewController = RequestViewController(viewModel: viewModel)
         rootViewController.present(viewController, animated: true, completion: nil)
     }
     

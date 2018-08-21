@@ -8,12 +8,12 @@
 import Lightning
 import UIKit
 
-final class SendModalDetailViewController: ModalDetailViewController {
-    private let viewModel: SendModalDetailViewModel
+final class SendViewController: ModalDetailViewController {
+    private let viewModel: SendViewModel
     private var didViewAppear = false
     private weak var sendButton: CallbackButton?
     
-    init(viewModel: SendModalDetailViewModel) {
+    init(viewModel: SendViewModel) {
         self.viewModel = viewModel
         super.init(nibName: nil, bundle: nil)
     }
@@ -95,7 +95,7 @@ final class SendModalDetailViewController: ModalDetailViewController {
     }
 }
 
-extension SendModalDetailViewController: AmountInputViewDelegate {
+extension SendViewController: AmountInputViewDelegate {
     func amountInputViewDidBeginEditing(_ amountInputView: AmountInputView) {
         guard didViewAppear else { return }
         amountInputView.setKeypad(hidden: false, animated: true)

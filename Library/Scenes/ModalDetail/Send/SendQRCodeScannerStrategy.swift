@@ -26,13 +26,13 @@ class SendQRCodeScannerStrategy: QRCodeScannerStrategy {
         Invoice.create(from: address, lightningService: lightningService) { [weak self] result in
             guard let strongSelf = self else { return }
             callback(result.map {
-                let viewModel = SendModalDetailViewModel(
+                let viewModel = SendViewModel(
                     invoice: $0,
                     transactionAnnotationStore: strongSelf.transactionAnnotationStore,
                     nodeStore: strongSelf.nodeStore,
                     lightningService: strongSelf.lightningService
                 )
-                return SendModalDetailViewController(viewModel: viewModel)
+                return SendViewController(viewModel: viewModel)
             })
         }
     }

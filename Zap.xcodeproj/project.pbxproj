@@ -31,7 +31,7 @@
 		A0F9AEDD206E155500E93DCA /* Satoshi.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0F9AEDC206E155500E93DCA /* Satoshi.swift */; };
 		A0FBCD91206BBBDF00800515 /* BitcoinUnit.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0FBCD90206BBBDF00800515 /* BitcoinUnit.swift */; };
 		A0FBCD93206BBD9800800515 /* SatoshiTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0FBCD92206BBD9800800515 /* SatoshiTests.swift */; };
-		AD0D0BC2212BE3C800E4F7F7 /* RequestModalDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD0D0BC1212BE3C800E4F7F7 /* RequestModalDetailViewController.swift */; };
+		AD0D0BC2212BE3C800E4F7F7 /* RequestViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD0D0BC1212BE3C800E4F7F7 /* RequestViewController.swift */; };
 		AD0D5DE9210DCC5F00D11D0B /* LabColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD0D5DE8210DCADC00D11D0B /* LabColor.swift */; };
 		AD0D5DEA210DCC6300D11D0B /* ChannelLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD0D5DE2210DCADC00D11D0B /* ChannelLayout.swift */; };
 		AD0D5DEB210DCC6300D11D0B /* StackedLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD0D5DE3210DCADC00D11D0B /* StackedLayout.swift */; };
@@ -52,7 +52,7 @@
 		AD27B01C2100D7CF00F232A8 /* CertificateDetailCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD27B01B2100D7CF00F232A8 /* CertificateDetailCell.swift */; };
 		AD2884352126B51C003C3D94 /* ModalViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD2884342126B51C003C3D94 /* ModalViewController.swift */; };
 		AD2884372126DDA2003C3D94 /* ModalDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD2884362126DDA2003C3D94 /* ModalDetailViewController.swift */; };
-		AD28843E21272B9A003C3D94 /* SendModalDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD28843D21272B9A003C3D94 /* SendModalDetailViewController.swift */; };
+		AD28843E21272B9A003C3D94 /* SendViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD28843D21272B9A003C3D94 /* SendViewController.swift */; };
 		AD28844321281FAC003C3D94 /* LightningInvoiceURI.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD97A90B20EFC127008344EA /* LightningInvoiceURI.swift */; };
 		AD28844421281FAF003C3D94 /* Bolt11.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD66377520F399F900284E2B /* Bolt11.swift */; };
 		AD28844521281FBC003C3D94 /* LightningNodeURI.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD97A90E20EFC1E6008344EA /* LightningNodeURI.swift */; };
@@ -61,7 +61,7 @@
 		AD28844921282139003C3D94 /* LightningNodeURITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD28844821282139003C3D94 /* LightningNodeURITests.swift */; };
 		AD28844B212824DC003C3D94 /* Invoice.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD28844A212824DC003C3D94 /* Invoice.swift */; };
 		AD28844D21284DAC003C3D94 /* InvoiceTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD28844C21284DAC003C3D94 /* InvoiceTests.swift */; };
-		AD28844F21287B56003C3D94 /* SendModalDetailViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD28844E21287B56003C3D94 /* SendModalDetailViewModel.swift */; };
+		AD28844F21287B56003C3D94 /* SendViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD28844E21287B56003C3D94 /* SendViewModel.swift */; };
 		AD28CB79211D9DFF00A31004 /* UINavigationBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD28CB78211D9DFF00A31004 /* UINavigationBar.swift */; };
 		AD28CB7B211DE93300A31004 /* BlockExplorerSettingsItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD28CB7A211DE93300A31004 /* BlockExplorerSettingsItem.swift */; };
 		AD28CB7D211DF12E00A31004 /* DetailBlockExplorerTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = AD28CB7C211DF12E00A31004 /* DetailBlockExplorerTableViewCell.xib */; };
@@ -580,7 +580,7 @@
 		A0FBCD92206BBD9800800515 /* SatoshiTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SatoshiTests.swift; sourceTree = "<group>"; };
 		A2EA9EBABE9A17490B3E282A /* Pods-BTCUtil.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BTCUtil.release.xcconfig"; path = "Pods/Target Support Files/Pods-BTCUtil/Pods-BTCUtil.release.xcconfig"; sourceTree = "<group>"; };
 		A8517E12ED19329B536B9504 /* Pods-Lightning.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Lightning.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Lightning/Pods-Lightning.debug.xcconfig"; sourceTree = "<group>"; };
-		AD0D0BC1212BE3C800E4F7F7 /* RequestModalDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RequestModalDetailViewController.swift; sourceTree = "<group>"; };
+		AD0D0BC1212BE3C800E4F7F7 /* RequestViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RequestViewController.swift; sourceTree = "<group>"; };
 		AD0D5DE2210DCADC00D11D0B /* ChannelLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChannelLayout.swift; sourceTree = "<group>"; };
 		AD0D5DE3210DCADC00D11D0B /* StackedLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StackedLayout.swift; sourceTree = "<group>"; };
 		AD0D5DE4210DCADC00D11D0B /* ExposedLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExposedLayout.swift; sourceTree = "<group>"; };
@@ -617,11 +617,11 @@
 		AD27B01B2100D7CF00F232A8 /* CertificateDetailCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CertificateDetailCell.swift; sourceTree = "<group>"; };
 		AD2884342126B51C003C3D94 /* ModalViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModalViewController.swift; sourceTree = "<group>"; };
 		AD2884362126DDA2003C3D94 /* ModalDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModalDetailViewController.swift; sourceTree = "<group>"; };
-		AD28843D21272B9A003C3D94 /* SendModalDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SendModalDetailViewController.swift; sourceTree = "<group>"; };
+		AD28843D21272B9A003C3D94 /* SendViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SendViewController.swift; sourceTree = "<group>"; };
 		AD28844821282139003C3D94 /* LightningNodeURITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LightningNodeURITests.swift; sourceTree = "<group>"; };
 		AD28844A212824DC003C3D94 /* Invoice.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Invoice.swift; sourceTree = "<group>"; };
 		AD28844C21284DAC003C3D94 /* InvoiceTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InvoiceTests.swift; sourceTree = "<group>"; };
-		AD28844E21287B56003C3D94 /* SendModalDetailViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SendModalDetailViewModel.swift; sourceTree = "<group>"; };
+		AD28844E21287B56003C3D94 /* SendViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SendViewModel.swift; sourceTree = "<group>"; };
 		AD28CB78211D9DFF00A31004 /* UINavigationBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UINavigationBar.swift; sourceTree = "<group>"; };
 		AD28CB7A211DE93300A31004 /* BlockExplorerSettingsItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BlockExplorerSettingsItem.swift; sourceTree = "<group>"; };
 		AD28CB7C211DF12E00A31004 /* DetailBlockExplorerTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DetailBlockExplorerTableViewCell.xib; sourceTree = "<group>"; };
@@ -1382,7 +1382,7 @@
 		AD0D0BC0212BE36A00E4F7F7 /* Request */ = {
 			isa = PBXGroup;
 			children = (
-				AD0D0BC1212BE3C800E4F7F7 /* RequestModalDetailViewController.swift */,
+				AD0D0BC1212BE3C800E4F7F7 /* RequestViewController.swift */,
 				A070D96A202B569E000A8274 /* RequestViewModel.swift */,
 			);
 			path = Request;
@@ -1471,9 +1471,9 @@
 		AD288450212AE81B003C3D94 /* Send */ = {
 			isa = PBXGroup;
 			children = (
-				AD28843D21272B9A003C3D94 /* SendModalDetailViewController.swift */,
-				AD28844E21287B56003C3D94 /* SendModalDetailViewModel.swift */,
 				AD99C9F220907AD10061C565 /* SendQRCodeScannerStrategy.swift */,
+				AD28843D21272B9A003C3D94 /* SendViewController.swift */,
+				AD28844E21287B56003C3D94 /* SendViewModel.swift */,
 			);
 			path = Send;
 			sourceTree = "<group>";
@@ -2614,12 +2614,12 @@
 				AD391C7420D16F89007EE22A /* QRCodeDetailViewController.swift in Sources */,
 				AD391C2D20D16EFA007EE22A /* UIAlertController.swift in Sources */,
 				AD391CCF20D16FE1007EE22A /* LightningInvoiceDetailViewModel.swift in Sources */,
-				AD28843E21272B9A003C3D94 /* SendModalDetailViewController.swift in Sources */,
+				AD28843E21272B9A003C3D94 /* SendViewController.swift in Sources */,
 				AD391D1E20D174B4007EE22A /* SetupCoordinator.swift in Sources */,
 				AD391CCE20D16FE1007EE22A /* DetailViewModel.swift in Sources */,
 				ADA81EA2210E19F600B7C6F2 /* HeaderCollectionReusableView.swift in Sources */,
 				AD28CB79211D9DFF00A31004 /* UINavigationBar.swift in Sources */,
-				AD0D0BC2212BE3C800E4F7F7 /* RequestModalDetailViewController.swift in Sources */,
+				AD0D0BC2212BE3C800E4F7F7 /* RequestViewController.swift in Sources */,
 				AD391D1D20D174B4007EE22A /* Route.swift in Sources */,
 				AD391C6C20D16F89007EE22A /* PinViewController.swift in Sources */,
 				AD391C7020D16F89007EE22A /* OpenChannelViewModel.swift in Sources */,
@@ -2698,7 +2698,7 @@
 				AD391CBC20D16FE1007EE22A /* DetailCellType.swift in Sources */,
 				AD391D0C20D16FF5007EE22A /* PinView.swift in Sources */,
 				ADCD5B0D20D7E3F50037F156 /* RemoveRemoteNodeSettingsItem.swift in Sources */,
-				AD28844F21287B56003C3D94 /* SendModalDetailViewModel.swift in Sources */,
+				AD28844F21287B56003C3D94 /* SendViewModel.swift in Sources */,
 				AD97A91A20F09699008344EA /* ReportIssueSettingsItem.swift in Sources */,
 				AD391C4320D16F0B007EE22A /* Appearance.swift in Sources */,
 				AD391CD120D16FE1007EE22A /* OnChainTransactionDetailViewModel.swift in Sources */,
