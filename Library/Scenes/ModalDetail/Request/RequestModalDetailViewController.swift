@@ -13,8 +13,9 @@ final class RequestModalDetailViewController: ModalDetailViewController {
     private weak var onChainButton: CallbackButton?
     private weak var titleLabel: UILabel?
     private weak var amountInputView: AmountInputView?
-    private weak var bottomSeparator: UIView?
     private weak var nextButton: CallbackButton?
+    private weak var memoSeparator: UIView?
+    private weak var memoTextField: UITextField?
     
     private var viewModel: RequestViewModel
     
@@ -35,13 +36,19 @@ final class RequestModalDetailViewController: ModalDetailViewController {
             case .methodSelection:
                 break
             case .amountInput:
+                viewController.amountInputView?.setKeypad(hidden: false, animated: true)
                 viewController.lightningButton?.isHidden = true
                 viewController.onChainButton?.isHidden = true
                 viewController.amountInputView?.isHidden = false
                 viewController.nextButton?.isHidden = false
-                viewController.bottomSeparator?.isHidden = false
+                viewController.memoTextField?.isHidden = true
+                viewController.memoSeparator?.isHidden = true
+                viewController.nextButton?.button.setTitle("Next", for: .normal)
+
             case .memoInput:
                 viewController.amountInputView?.setKeypad(hidden: true, animated: true)
+                viewController.memoTextField?.isHidden = false
+                viewController.memoSeparator?.isHidden = false
                 viewController.nextButton?.button.setTitle("Generate Request", for: .normal)
             }
         }
@@ -68,12 +75,23 @@ final class RequestModalDetailViewController: ModalDetailViewController {
         amountInputView.textColor = UIColor.Zap.white
         amountInputView.delegate = self
         amountInputView.addTarget(self, action: #selector(amountChanged(sender:)), for: .valueChanged)
-        contentStackView.addArrangedSubview(amountInputView)
         amountInputView.isHidden = true
         self.amountInputView = amountInputView
+        contentStackView.addArrangedSubview(amountInputView)
         
-        bottomSeparator = contentStackView.addArrangedElement(.separator)
-        bottomSeparator?.isHidden = true
+        memoSeparator = contentStackView.addArrangedElement(.separator)
+        memoSeparator?.isHidden = true
+        let memoTextField = UITextField()
+        Style.textField(color: UIColor.Zap.white).apply(to: memoTextField)
+        memoTextField.backgroundColor = UIColor.Zap.seaBlue
+        memoTextField.attributedPlaceholder = NSAttributedString(
+            string: "What is this for?",
+            attributes: [.foregroundColor: UIColor.Zap.gray]
+        )
+        contentStackView.addArrangedElement(.customView(memoTextField, height: 30))
+        memoTextField.isHidden = true
+        memoTextField.addTarget(self, action: #selector(updateMemo(sender:)), for: .editingChanged)
+        self.memoTextField = memoTextField
         
         nextButton = contentStackView.addArrangedElement(.customHeight(56, element: .button(title: "Next", style: Style.Button.background, callback: { [weak self] _ in
             self?.bottomButtonTapped()
@@ -152,12 +170,15 @@ final class RequestModalDetailViewController: ModalDetailViewController {
     @objc private func amountChanged(sender: AmountInputView) {
         viewModel.amount = sender.satoshis
     }
+    
+    @objc private func updateMemo(sender: UITextField) {
+        viewModel.memo = sender.text
+    }
 }
 
 extension RequestModalDetailViewController: AmountInputViewDelegate {
     func amountInputViewDidBeginEditing(_ amountInputView: AmountInputView) {
-        amountInputView.setKeypad(hidden: false, animated: true)
-        updateHeight()
+        currentState = .amountInput
     }
     
     func amountInputViewDidEndEditing(_ amountInputView: AmountInputView) {
