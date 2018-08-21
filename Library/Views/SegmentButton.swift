@@ -39,11 +39,11 @@ public final class SegmentButton: UIButton {
     private func setup() {
         titleLabel?.font = UIFont.Zap.light.withSize(10)
         
-        tintColor = UIColor.Zap.lightGrey
+        tintColor = UIColor.Zap.gray
         alignImageAndTitleVertically()
      
         setTitleColor(UIColor.Zap.black, for: .selected)
-        setTitleColor(UIColor.Zap.lightGrey, for: .normal)
+        setTitleColor(UIColor.Zap.gray, for: .normal)
         
         let selectedLineView = UIView(frame: CGRect.zero)
         selectedLineView.backgroundColor = UIColor.Zap.black
@@ -74,7 +74,7 @@ public final class SegmentButton: UIButton {
     override public var isSelected: Bool {
         didSet {
             selectedLineView?.isHidden = !isSelected
-            tintColor = isSelected ? UIColor.Zap.black : UIColor.Zap.lightGrey
+            tintColor = isSelected ? UIColor.Zap.black : UIColor.Zap.gray
         }
     }
 }
