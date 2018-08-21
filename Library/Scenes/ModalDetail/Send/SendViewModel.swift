@@ -20,7 +20,7 @@ extension InvoiceError: Localizable {
     }
 }
 
-final class SendModalDetailViewModel {
+final class SendViewModel {
     enum Constants {
         fileprivate static let minimumOnChainTransaction: Satoshi = 547
     }
