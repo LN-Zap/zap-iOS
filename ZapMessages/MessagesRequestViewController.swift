@@ -81,7 +81,7 @@ class MessagesRequestViewController: UIViewController {
         
         placeholderTextView.text = "what is this for"
         placeholderTextView.font = UIFont.Zap.light.withSize(14)
-        placeholderTextView.textColor = UIColor.Zap.lightGrey
+        placeholderTextView.textColor = UIColor.Zap.gray
         memoTextView.font = UIFont.Zap.light.withSize(14)
         memoTextView.textColor = UIColor.Zap.black
         memoTextView.returnKeyType = .done

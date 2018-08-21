@@ -29,7 +29,7 @@ final class MnemonicWordTableViewCell: UITableViewCell {
         
         Style.Label.custom(fontSize: 24).apply(to: indexLabel, wordLabel)
         
-        indexLabel.textColor = UIColor.Zap.lightGrey
+        indexLabel.textColor = UIColor.Zap.gray
         wordLabel.textColor = .white
     }
 }

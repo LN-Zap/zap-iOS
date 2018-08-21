@@ -21,9 +21,7 @@ public extension UIColor {
         public static let seaBlueGradient = color("seaBlueGradient")
         public static let superRed = color("superRed")
         public static let superGreen = color("superGreen")
-        
-        public static let lightGrey = color("lightGrey")
-        
+                
         public static let lightGreen = color("lightGreen")
         
         static let validNodeColors: [UIColor] =
