@@ -38,10 +38,12 @@ final class ModalPresentationController: UIPresentationController {
             }
         }
     }
+    private var bottomOffset: CGFloat = 0
     
     override init(presentedViewController: UIViewController, presenting presentingViewController: UIViewController?) {
         super.init(presentedViewController: presentedViewController, presenting: presentingViewController)
         setupDimmingView()
+        setupKeyboardNotifications()
     }
     
     private func setupDimmingView() {
@@ -109,9 +111,40 @@ final class ModalPresentationController: UIPresentationController {
         return CGRect(
             origin: CGPoint(
                 x: (parentSize.width - presentedSize.width) / 2,
-                y: (parentSize.height - presentedSize.height)
+                y: (parentSize.height - presentedSize.height - bottomOffset)
             ),
             size: presentedSize
         )
     }
+    
+    // MARK: - Keyboard
+    
+    func setupKeyboardNotifications() {
+        NotificationCenter.default.reactive.notification(name: .UIKeyboardWillHide)
+            .observeNext { [weak self] _ in
+                self?.updateKeyboardHeight(to: 0)
+            }
+            .dispose(in: reactive.bag)
+        
+        NotificationCenter.default.reactive.notification(name: .UIKeyboardWillShow)
+            .observeNext { [weak self] notification in
+                guard
+                    let keyboardFrame = notification.userInfo?[UIKeyboardFrameEndUserInfoKey] as? CGRect
+                    else { return }
+                self?.updateKeyboardHeight(to: keyboardFrame.height)
+            }
+            .dispose(in: reactive.bag)
+    }
+    
+    private func updateKeyboardHeight(to height: CGFloat) {
+        bottomOffset = height
+        
+        presentedView?.setNeedsUpdateConstraints()
+        UIView.animate(withDuration: 0.25) { [weak self] in
+            guard let frame = self?.frameOfPresentedViewInContainerView else { return }
+            self?.presentedView?.frame = frame
+            self?.presentedView?.layoutIfNeeded()
+        }
+    }
+
 }
