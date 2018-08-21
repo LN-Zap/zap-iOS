@@ -1028,7 +1028,6 @@
 		A01009322014BD960001EF94 /* Scenes */ = {
 			isa = PBXGroup;
 			children = (
-				AD2884382126DDDD003C3D94 /* ModalDetail */,
 				A0DDC0702018C6D800AEFF94 /* ChannelList */,
 				AD680A9D20B07AC60018986B /* ConnectRemoteNode */,
 				ADCE01B9207B57DA00CA72E8 /* CreateWallet */,
@@ -1039,7 +1038,9 @@
 				A02C9FBB202EE995009821B1 /* OpenChannel */,
 				A070D963202A3CFC000A8274 /* QRCodeDetail */,
 				AD99C9EB209072530061C565 /* QRCodeScanner */,
+				AD0D0BC0212BE36A00E4F7F7 /* Request */,
 				A0DDC0722018C72D00AEFF94 /* Root */,
+				AD288450212AE81B003C3D94 /* Send */,
 				A0DDC06320189CCC00AEFF94 /* Settings */,
 				ADCE01C4207B714E00CA72E8 /* Sync */,
 				A0DDC0732018C74F00AEFF94 /* TransactionList */,
@@ -1086,6 +1087,7 @@
 				ADBA12082093587B001F7700 /* KeyPad */,
 				A0605F8C202C9D8200EA903C /* LineView.swift */,
 				AD2884332126B458003C3D94 /* Modal */,
+				AD2884362126DDA2003C3D94 /* ModalDetailViewController.swift */,
 				AD615CF6211CAB0900680790 /* PaddingLabel.swift */,
 				ADF79363208DCB630086B2CA /* PinView.swift */,
 				AD38EB31207DFB59007DF14D /* SegmentButton.swift */,
@@ -1385,7 +1387,8 @@
 				AD0D0BC1212BE3C800E4F7F7 /* RequestViewController.swift */,
 				A070D96A202B569E000A8274 /* RequestViewModel.swift */,
 			);
-			path = Request;
+			name = Request;
+			path = ModalDetail/Request;
 			sourceTree = "<group>";
 		};
 		AD0D5DE0210DCAC600D11D0B /* ChannelCollectionView */ = {
@@ -1448,16 +1451,6 @@
 			path = Modal;
 			sourceTree = "<group>";
 		};
-		AD2884382126DDDD003C3D94 /* ModalDetail */ = {
-			isa = PBXGroup;
-			children = (
-				AD2884362126DDA2003C3D94 /* ModalDetailViewController.swift */,
-				AD0D0BC0212BE36A00E4F7F7 /* Request */,
-				AD288450212AE81B003C3D94 /* Send */,
-			);
-			path = ModalDetail;
-			sourceTree = "<group>";
-		};
 		AD28844221281F9E003C3D94 /* Invoice */ = {
 			isa = PBXGroup;
 			children = (
@@ -1475,7 +1468,8 @@
 				AD28843D21272B9A003C3D94 /* SendViewController.swift */,
 				AD28844E21287B56003C3D94 /* SendViewModel.swift */,
 			);
-			path = Send;
+			name = Send;
+			path = ModalDetail/Send;
 			sourceTree = "<group>";
 		};
 		AD391C1920D16ED4007EE22A /* Library */ = {
