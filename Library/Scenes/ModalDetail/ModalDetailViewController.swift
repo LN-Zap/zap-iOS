@@ -41,14 +41,6 @@ class ModalDetailViewController: ModalViewController, QRCodeScannerChildViewCont
     private func setupLayout(for view: UIView) {
         view.addAutolayoutSubview(backgroundView)
         backgroundView.constrainEdges(to: view)
-
-        backgroundView.addAutolayoutSubview(closeButton)
-        NSLayoutConstraint.activate([
-            closeButton.widthAnchor.constraint(equalToConstant: 45),
-            closeButton.heightAnchor.constraint(equalToConstant: 45),
-            closeButton.topAnchor.constraint(equalTo: backgroundView.topAnchor),
-            closeButton.trailingAnchor.constraint(equalTo: backgroundView.trailingAnchor)
-        ])
         
         view.addAutolayoutSubview(headerIconImageView)
         NSLayoutConstraint.activate([
@@ -61,6 +53,14 @@ class ModalDetailViewController: ModalViewController, QRCodeScannerChildViewCont
             contentStackView.topAnchor.constraint(equalTo: headerIconImageView.bottomAnchor, constant: 15),
             contentStackView.leadingAnchor.constraint(equalTo: backgroundView.leadingAnchor, constant: 20),
             contentStackView.trailingAnchor.constraint(equalTo: backgroundView.trailingAnchor, constant: -20)
+        ])
+        
+        backgroundView.addAutolayoutSubview(closeButton)
+        NSLayoutConstraint.activate([
+            closeButton.widthAnchor.constraint(equalToConstant: 45),
+            closeButton.heightAnchor.constraint(equalToConstant: 45),
+            closeButton.topAnchor.constraint(equalTo: backgroundView.topAnchor),
+            closeButton.trailingAnchor.constraint(equalTo: backgroundView.trailingAnchor)
         ])
     }
     
@@ -87,15 +87,20 @@ class ModalDetailViewController: ModalViewController, QRCodeScannerChildViewCont
     }
     
     @objc func dismissParent() {
-        guard let presentingViewController = presentingViewController else { return }
-        
-        // fixes the dismiss animation of two modals at once
-        if let snapshotView = view.superview?.snapshotView(afterScreenUpdates: false) {
-            snapshotView.frame.origin.y = presentingViewController.view.frame.height - snapshotView.frame.height
-            presentingViewController.view.addSubview(snapshotView)
+        if presentingViewController?.presentingViewController == nil {
+            dismiss(animated: true, completion: nil)
+        } else {
+            // if presented from QR Code VC, also dismiss the QRCode VC
+            guard let presentingViewController = presentingViewController else { return }
+            
+            // fixes the dismiss animation of two modals at once
+            if let snapshotView = view.superview?.snapshotView(afterScreenUpdates: false) {
+                snapshotView.frame.origin.y = presentingViewController.view.frame.height - snapshotView.frame.height
+                presentingViewController.view.addSubview(snapshotView)
+            }
+            
+            presentingViewController.presentingViewController?.dismiss(animated: true, completion: nil)
         }
-
-        presentingViewController.presentingViewController?.dismiss(animated: true, completion: nil)
     }
 }
 

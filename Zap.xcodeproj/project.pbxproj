@@ -31,6 +31,7 @@
 		A0F9AEDD206E155500E93DCA /* Satoshi.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0F9AEDC206E155500E93DCA /* Satoshi.swift */; };
 		A0FBCD91206BBBDF00800515 /* BitcoinUnit.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0FBCD90206BBBDF00800515 /* BitcoinUnit.swift */; };
 		A0FBCD93206BBD9800800515 /* SatoshiTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0FBCD92206BBD9800800515 /* SatoshiTests.swift */; };
+		AD0D0BC2212BE3C800E4F7F7 /* RequestModalDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD0D0BC1212BE3C800E4F7F7 /* RequestModalDetailViewController.swift */; };
 		AD0D5DE9210DCC5F00D11D0B /* LabColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD0D5DE8210DCADC00D11D0B /* LabColor.swift */; };
 		AD0D5DEA210DCC6300D11D0B /* ChannelLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD0D5DE2210DCADC00D11D0B /* ChannelLayout.swift */; };
 		AD0D5DEB210DCC6300D11D0B /* StackedLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD0D5DE3210DCADC00D11D0B /* StackedLayout.swift */; };
@@ -139,8 +140,6 @@
 		AD391C9920D16FA8007EE22A /* QRCodeScannerStrategy.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD99C9EE209076650061C565 /* QRCodeScannerStrategy.swift */; };
 		AD391C9A20D16FA8007EE22A /* QRCodeScannerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A06660F4202D97A300EE32FA /* QRCodeScannerView.swift */; };
 		AD391C9B20D16FA8007EE22A /* QRCodeScannerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A024B85220161560002B8897 /* QRCodeScannerViewController.swift */; };
-		AD391C9C20D16FA8007EE22A /* Request.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A024B85820161590002B8897 /* Request.storyboard */; };
-		AD391C9D20D16FA8007EE22A /* RequestViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD5FA000207CCB8B000E9493 /* RequestViewController.swift */; };
 		AD391C9E20D16FA8007EE22A /* RequestViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A070D96A202B569E000A8274 /* RequestViewModel.swift */; };
 		AD391C9F20D16FA8007EE22A /* StatusBarDelegatingNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD1EB9FC20B2CEAA001FF67E /* StatusBarDelegatingNavigationController.swift */; };
 		AD391CA020D16FA8007EE22A /* Root.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AD391C4520D16F53007EE22A /* Root.storyboard */; };
@@ -495,7 +494,6 @@
 		A01009512015FA2D0001EF94 /* ModalNavigationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModalNavigationController.swift; sourceTree = "<group>"; };
 		A024B84C201606B4002B8897 /* Peer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Peer.swift; sourceTree = "<group>"; };
 		A024B85220161560002B8897 /* QRCodeScannerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QRCodeScannerViewController.swift; sourceTree = "<group>"; };
-		A024B85820161590002B8897 /* Request.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Request.storyboard; sourceTree = "<group>"; };
 		A024B85A20161AAE002B8897 /* PaymentRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaymentRequest.swift; sourceTree = "<group>"; };
 		A02C52F62024A98F00780D5A /* Podfile */ = {isa = PBXFileReference; lastKnownFileType = text; path = Podfile; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
 		A02C9FBC202EE9BE009821B1 /* OpenChannelViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OpenChannelViewModel.swift; sourceTree = "<group>"; };
@@ -582,6 +580,7 @@
 		A0FBCD92206BBD9800800515 /* SatoshiTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SatoshiTests.swift; sourceTree = "<group>"; };
 		A2EA9EBABE9A17490B3E282A /* Pods-BTCUtil.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BTCUtil.release.xcconfig"; path = "Pods/Target Support Files/Pods-BTCUtil/Pods-BTCUtil.release.xcconfig"; sourceTree = "<group>"; };
 		A8517E12ED19329B536B9504 /* Pods-Lightning.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Lightning.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Lightning/Pods-Lightning.debug.xcconfig"; sourceTree = "<group>"; };
+		AD0D0BC1212BE3C800E4F7F7 /* RequestModalDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RequestModalDetailViewController.swift; sourceTree = "<group>"; };
 		AD0D5DE2210DCADC00D11D0B /* ChannelLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChannelLayout.swift; sourceTree = "<group>"; };
 		AD0D5DE3210DCADC00D11D0B /* StackedLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StackedLayout.swift; sourceTree = "<group>"; };
 		AD0D5DE4210DCADC00D11D0B /* ExposedLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExposedLayout.swift; sourceTree = "<group>"; };
@@ -658,7 +657,6 @@
 		AD536BEE20E62764002279BC /* LightningTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = LightningTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		AD536BF520E62764002279BC /* BTCPayQRCodeTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BTCPayQRCodeTests.swift; sourceTree = "<group>"; };
 		AD536BF720E62764002279BC /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		AD5FA000207CCB8B000E9493 /* RequestViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RequestViewController.swift; sourceTree = "<group>"; };
 		AD5FA002207D0D02000E9493 /* BitcoinURI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BitcoinURI.swift; sourceTree = "<group>"; };
 		AD5FA004207D0E70000E9493 /* BitcoinURITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BitcoinURITests.swift; sourceTree = "<group>"; };
 		AD615CF4211C82E600680790 /* LoadingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingView.swift; sourceTree = "<group>"; };
@@ -1041,7 +1039,6 @@
 				A02C9FBB202EE995009821B1 /* OpenChannel */,
 				A070D963202A3CFC000A8274 /* QRCodeDetail */,
 				AD99C9EB209072530061C565 /* QRCodeScanner */,
-				A070D964202A3D0C000A8274 /* Request */,
 				A0DDC0722018C72D00AEFF94 /* Root */,
 				A0DDC06320189CCC00AEFF94 /* Settings */,
 				ADCE01C4207B714E00CA72E8 /* Sync */,
@@ -1169,17 +1166,6 @@
 				A070D965202B39A3000A8274 /* QRCodeDetailViewModel.swift */,
 			);
 			path = QRCodeDetail;
-			sourceTree = "<group>";
-		};
-		A070D964202A3D0C000A8274 /* Request */ = {
-			isa = PBXGroup;
-			children = (
-				A024B85820161590002B8897 /* Request.storyboard */,
-				AD5FA000207CCB8B000E9493 /* RequestViewController.swift */,
-				A070D96A202B569E000A8274 /* RequestViewModel.swift */,
-				AD1EB9FC20B2CEAA001FF67E /* StatusBarDelegatingNavigationController.swift */,
-			);
-			path = Request;
 			sourceTree = "<group>";
 		};
 		A0731FDE2014A20500C55E45 /* Types */ = {
@@ -1393,6 +1379,15 @@
 			path = TransactionList;
 			sourceTree = "<group>";
 		};
+		AD0D0BC0212BE36A00E4F7F7 /* Request */ = {
+			isa = PBXGroup;
+			children = (
+				AD0D0BC1212BE3C800E4F7F7 /* RequestModalDetailViewController.swift */,
+				A070D96A202B569E000A8274 /* RequestViewModel.swift */,
+			);
+			path = Request;
+			sourceTree = "<group>";
+		};
 		AD0D5DE0210DCAC600D11D0B /* ChannelCollectionView */ = {
 			isa = PBXGroup;
 			children = (
@@ -1457,6 +1452,7 @@
 			isa = PBXGroup;
 			children = (
 				AD2884362126DDA2003C3D94 /* ModalDetailViewController.swift */,
+				AD0D0BC0212BE36A00E4F7F7 /* Request */,
 				AD288450212AE81B003C3D94 /* Send */,
 			);
 			path = ModalDetail;
@@ -1707,6 +1703,7 @@
 				A06660F4202D97A300EE32FA /* QRCodeScannerView.swift */,
 				A024B85220161560002B8897 /* QRCodeScannerViewController.swift */,
 				ADA6BBBE211B3AEC00A1FF19 /* ScanRectView.swift */,
+				AD1EB9FC20B2CEAA001FF67E /* StatusBarDelegatingNavigationController.swift */,
 			);
 			path = QRCodeScanner;
 			sourceTree = "<group>";
@@ -2318,7 +2315,6 @@
 				AD391C7220D16F89007EE22A /* OpenChannel.storyboard in Resources */,
 				AD7EDAE32108C4150058CCCA /* Wallet.storyboard in Resources */,
 				AD7EDAEB2108EA170058CCCA /* HeaderTableViewCell.xib in Resources */,
-				AD391C9C20D16FA8007EE22A /* Request.storyboard in Resources */,
 				AD391C5020D16F7A007EE22A /* CreateWallet.storyboard in Resources */,
 				ADA81EA3210E19F600B7C6F2 /* HeaderCollectionReusableView.xib in Resources */,
 				AD391CC420D16FE1007EE22A /* DetailQRCodeTableViewCell.xib in Resources */,
@@ -2611,7 +2607,6 @@
 				AD391CAB20D16FA8007EE22A /* CurrencySettingsItem.swift in Sources */,
 				AD391CCB20D16FE1007EE22A /* DetailBlockExplorerTableViewCell.swift in Sources */,
 				AD391C4420D16F0B007EE22A /* Style.swift in Sources */,
-				AD391C9D20D16FA8007EE22A /* RequestViewController.swift in Sources */,
 				AD391C2C20D16EFA007EE22A /* String.swift in Sources */,
 				AD292F9020E69F0E00211AE7 /* AuthenticationViewModel.swift in Sources */,
 				ADA6BBBF211B3AEC00A1FF19 /* ScanRectView.swift in Sources */,
@@ -2624,6 +2619,7 @@
 				AD391CCE20D16FE1007EE22A /* DetailViewModel.swift in Sources */,
 				ADA81EA2210E19F600B7C6F2 /* HeaderCollectionReusableView.swift in Sources */,
 				AD28CB79211D9DFF00A31004 /* UINavigationBar.swift in Sources */,
+				AD0D0BC2212BE3C800E4F7F7 /* RequestModalDetailViewController.swift in Sources */,
 				AD391D1D20D174B4007EE22A /* Route.swift in Sources */,
 				AD391C6C20D16F89007EE22A /* PinViewController.swift in Sources */,
 				AD391C7020D16F89007EE22A /* OpenChannelViewModel.swift in Sources */,

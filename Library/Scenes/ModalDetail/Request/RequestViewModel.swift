@@ -10,6 +10,7 @@ import BTCUtil
 import Foundation
 import Lightning
 
+// Only used by Messages Extension
 public enum RequestViewModelFactory {
     public static func create() -> RequestViewModel? {
         let zapSerview = RootViewModel()
