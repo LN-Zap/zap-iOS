@@ -17,9 +17,9 @@ public final class LineView: UIView {
         
         let points: [CGPoint]
         if bounds.width > bounds.height {
-            points = [CGPoint(x: 0, y: 0), CGPoint(x: bounds.width, y: 0)]
+            points = [CGPoint(x: 0, y: rect.maxY / 2), CGPoint(x: bounds.width, y: rect.maxY / 2)]
         } else {
-            points = [CGPoint(x: 0, y: 0), CGPoint(x: 0, y: bounds.height)]
+            points = [CGPoint(x: rect.maxX / 2, y: 0), CGPoint(x: rect.maxX / 2, y: bounds.height)]
         }
         
         context?.strokeLineSegments(between: points)

@@ -109,7 +109,15 @@ final class RequestViewController: ModalDetailViewController {
             self?.presentAmountInput(requestMethod: .lightning)
         }))) as? CallbackButton
         
-        contentStackView.addArrangedElement(.separator)
+        let horizontalStackView = UIStackView()
+        horizontalStackView.spacing = 15
+        horizontalStackView.axis = .horizontal
+        horizontalStackView.distribution = .fill
+        let leftSeparator = horizontalStackView.addArrangedElement(.separator)
+        horizontalStackView.addArrangedElement(.label(text: "or", style: Style.Label.body))
+        let rightSeparator = horizontalStackView.addArrangedElement(.separator)
+        contentStackView.addArrangedElement(.customView(horizontalStackView, height: 20))
+        leftSeparator.widthAnchor.constraint(equalTo: rightSeparator.widthAnchor, multiplier: 1, constant: 0).isActive = true
         
         let onChainImage = UIImage(named: "icon_request_on_chain_button", in: .library, compatibleWith: nil)
         let onChainButtonStyle = Style.Button.background.with({
