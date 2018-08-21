@@ -47,7 +47,7 @@ final class ModalPresentationController: UIPresentationController {
     private func setupDimmingView() {
         guard let frame = UIApplication.shared.keyWindow?.frame else { return }
         dimmingView = UIView(frame: frame)
-        dimmingView?.backgroundColor = UIColor.black.withAlphaComponent(0.9)
+        dimmingView?.backgroundColor = UIColor.black.withAlphaComponent(0.8)
         let tapRecognizer = UITapGestureRecognizer(target: self, action: #selector(dimmingViewTapped(tapRecognizer:)))
         dimmingView?.addGestureRecognizer(tapRecognizer)
     }
