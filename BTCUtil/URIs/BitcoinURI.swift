@@ -9,7 +9,7 @@ import Foundation
 
 private extension URLComponents {
     func queryItem(name: String) -> String? {
-        return queryItems?.first(where: { $0.name == name })?.value
+        return queryItems?.first(where: { $0.name.lowercased() == name.lowercased() })?.value
     }
 }
 
@@ -23,7 +23,7 @@ public struct BitcoinURI: PaymentURI {
     public let bitcoinAddress: BitcoinAddress
     public var address: String { return bitcoinAddress.string }
     public var network: Network { return bitcoinAddress.network }
-    public var isCaseSensitive: Bool { return bitcoinAddress.type != .bech32 }
+    public var isCaseSensitive: Bool { return bitcoinAddress.type != .bech32 || memo != nil }
     public let amount: Satoshi?
     public let memo: String?
     public let lightningFallback: String?
