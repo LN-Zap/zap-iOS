@@ -20,9 +20,6 @@ final class QRCodeDetailViewController: UIViewController {
     @IBOutlet private weak var qrCodeImageView: UIImageView!
     @IBOutlet private weak var shareButton: UIButton!
     @IBOutlet private weak var copyButton: UIButton!
-    @IBOutlet private weak var topView: UIView!
-    @IBOutlet private weak var requestMethodImageView: UIImageView!
-    @IBOutlet private weak var requestMethodLabel: UILabel!
     @IBOutlet private weak var addressLabel: UILabel!
     
     fileprivate var viewModel: QRCodeDetailViewModel?
@@ -32,27 +29,29 @@ final class QRCodeDetailViewController: UIViewController {
 
         guard let viewModel = viewModel else { fatalError("No ViewModel set.") }
 
+        view.addBackgroundGradient()
+        
         title = viewModel.title
         
-        Style.Button.custom().apply(to: shareButton, copyButton)
-        Style.Label.custom().apply(to: addressLabel)
+        navigationController?.navigationBar.backgroundColor = .clear
+        navigationController?.navigationBar.setBackgroundImage(UIImage(), for: .default)
+        navigationController?.navigationBar.shadowImage = UIImage()
         
-        requestMethodLabel.font = UIFont.Zap.light.withSize(10)
-        requestMethodLabel.tintColor = UIColor.Zap.black
-        requestMethodImageView.tintColor = UIColor.Zap.black
-        
-        topView.backgroundColor = UIColor.Zap.white
+        Style.Button.background.apply(to: shareButton, copyButton)
+        Style.Label.body.with({ $0.numberOfLines = 0 }).apply(to: addressLabel)
         
         qrCodeImageView?.image = UIImage.qrCode(from: viewModel.paymentURI)
         
         addressLabel.text = viewModel.paymentURI.address
         
-        updateRequestMethod()
+        shareButton.setTitle("generic.qr_code.share_button".localized, for: .normal)
+        copyButton.setTitle("generic.qr_code.copy_button".localized, for: .normal)
     }
     
     @IBAction private func qrCodeTapped(_ sender: Any) {
         guard let address = viewModel?.paymentURI.uriString else { return }
         print(address)
+        UISelectionFeedbackGenerator().selectionChanged()
         UIPasteboard.general.string = address
     }
     
@@ -79,15 +78,5 @@ final class QRCodeDetailViewController: UIViewController {
         
         let activityViewController = UIActivityViewController(activityItems: items, applicationActivities: nil)
         present(activityViewController, animated: true, completion: nil)
-    }
-    
-    private func updateRequestMethod() {
-        if viewModel is LightningRequestQRCodeViewModel {
-            requestMethodLabel.text = "scene.qr_code_detail.method_label.lightning".localized
-            requestMethodImageView.image = UIImage(named: "icon-request-lightning", in: Bundle.library, compatibleWith: nil)
-        } else if viewModel is OnChainRequestQRCodeViewModel {
-            requestMethodLabel.text = "scene.qr_code_detail.method_label.on_chain".localized
-            requestMethodImageView.image = UIImage(named: "icon-request-on-chain", in: Bundle.library, compatibleWith: nil)
-        }
     }
 }

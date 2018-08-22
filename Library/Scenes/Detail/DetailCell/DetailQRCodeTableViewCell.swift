@@ -30,8 +30,8 @@ final class DetailQRCodeTableViewCell: UITableViewCell {
         DetailCellType.dataFontStyle.apply(to: addressLabel)
         Style.Button.custom().apply(to: copyButton, shareButton)
         
-        copyButton.setTitle("scene.transaction_detail.qr_code.copy_button".localized, for: .normal)
-        shareButton.setTitle("scene.transaction_detail.qr_code.share_button".localized, for: .normal)
+        copyButton.setTitle("generic.qr_code.copy_button".localized, for: .normal)
+        shareButton.setTitle("generic.qr_code.share_button".localized, for: .normal)
         
         backgroundColor = .clear
     }
