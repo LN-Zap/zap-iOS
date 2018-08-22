@@ -120,10 +120,14 @@ final class RequestViewController: ModalDetailViewController {
         horizontalStackView.spacing = 15
         horizontalStackView.axis = .horizontal
         horizontalStackView.distribution = .fill
-        let leftSeparator = horizontalStackView.addArrangedElement(.separator)
+        let leftSeparator = LineView()
+        leftSeparator.backgroundColor = UIColor.Zap.seaBlue
+        horizontalStackView.addArrangedSubview(leftSeparator)
         horizontalStackView.addArrangedElement(.label(text: "or", style: Style.Label.body))
-        let rightSeparator = horizontalStackView.addArrangedElement(.separator)
-        contentStackView.addArrangedElement(.customView(horizontalStackView, height: 20))
+        let rightSeparator = LineView()
+        rightSeparator.backgroundColor = UIColor.Zap.seaBlue
+        horizontalStackView.addArrangedSubview(rightSeparator)
+        contentStackView.addArrangedElement(.customView(horizontalStackView, height: 22))
         leftSeparator.widthAnchor.constraint(equalTo: rightSeparator.widthAnchor, multiplier: 1, constant: 0).isActive = true
         self.orSeparator = horizontalStackView
         
