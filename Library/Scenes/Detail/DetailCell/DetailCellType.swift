@@ -14,7 +14,7 @@ enum DetailCellType {
     case destructiveAction(DetailDestructiveActionTableViewCell.Info)
     case info(DetailTableViewCell.Info)
     case memo(DetailMemoTableViewCell.Info)
-    case qrCode(String)
+    case qrCode(PaymentURI)
     case separator
     case timer(DetailTimerTableViewCell.Info)
     case transactionHash(DetailBlockExplorerTableViewCell.Info)

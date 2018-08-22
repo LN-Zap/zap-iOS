@@ -79,9 +79,9 @@ final class DetailViewController: UIViewController, KeyboardAdjustable {
             let cell: DetailMemoTableViewCell = tableView.dequeueCellForIndexPath(indexPath)
             cell.info = info
             return cell
-        case .qrCode(let address):
+        case .qrCode(let paymentURI):
             let cell: DetailQRCodeTableViewCell = tableView.dequeueCellForIndexPath(indexPath)
-            cell.address = address
+            cell.paymentURI = paymentURI
             cell.delegate = self
             return cell
         case .timer(let info):
