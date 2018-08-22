@@ -20,20 +20,21 @@ public struct BitcoinURI: PaymentURI {
         static let lightning = "lightning"
     }
     
-    public let address: String
+    public let bitcoinAddress: BitcoinAddress
+    public var address: String { return bitcoinAddress.string }
+    public var network: Network { return bitcoinAddress.network }
     public let amount: Satoshi?
     public let memo: String?
-    public let network: Network
     public let lightningFallback: String?
     
     public var addressOrURI: String {
         if (amount == nil || amount == 0) && (memo == nil || memo?.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty == true) {
             return address
         }
-        return stringValue
+        return uriString
     }
     
-    public var stringValue: String {
+    public var uriString: String {
         var urlComponents = URLComponents(string: "bitcoin:\(address)")
         var queryItems = [URLQueryItem]()
         
@@ -58,7 +59,10 @@ public struct BitcoinURI: PaymentURI {
     
     public init?(string: String) {
         let string = string.trimmingCharacters(in: .whitespacesAndNewlines)
-        guard let components = URLComponents(string: string) else { return nil }
+        guard
+            let components = URLComponents(string: string),
+            let address = BitcoinAddress(string: components.path)
+            else { return nil }
 
         let amount: Satoshi?
         if var amountString = components.queryItem(name: Constants.amount) {
@@ -73,26 +77,11 @@ public struct BitcoinURI: PaymentURI {
         let memo = components.queryItem(name: Constants.message)
         let lightningFallback = components.queryItem(name: Constants.lightning)
         
-        self.init(address: components.path, amount: amount, memo: memo, lightningFallback: lightningFallback)
+        self.init(address: address, amount: amount, memo: memo, lightningFallback: lightningFallback)
     }
     
-    public init?(address: String, amount: Satoshi?, memo: String?, lightningFallback: String?) {
-        if let (humanReadablePart, _) = Bech32.decode(address) {
-            if humanReadablePart.lowercased() == "tb" {
-                network = .testnet
-            } else if humanReadablePart.lowercased() == "bc" {
-                network = .mainnet
-            } else {
-                return nil
-            }
-        } else if let bitcoinAddress = BitcoinAddress(string: address),
-            bitcoinAddress.type != .privateKey {
-            self.network = bitcoinAddress.network
-        } else {
-            return nil
-        }
-        
-        self.address = address
+    public init?(address: BitcoinAddress, amount: Satoshi?, memo: String?, lightningFallback: String?) {
+        self.bitcoinAddress = address
         self.amount = amount
         self.memo = memo
         self.lightningFallback = lightningFallback

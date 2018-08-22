@@ -58,7 +58,7 @@ final class OnChainConfirmedTransactionViewModel: TransactionViewModel {
                 return String(format: "transaction.close_channel.memo".localized, type.localized, alias)
             }
         }
-        return onChainTransaction.destinationAddress
+        return onChainTransaction.destinationAddresses.first?.string ?? "transaction.no_destination_address".localized
     }
     
     private static func iconForAnnotation(_ annotation: TransactionAnnotation) -> TransactionIcon {

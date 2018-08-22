@@ -32,8 +32,10 @@ final class OnChainTransactionDetailViewModel: NSObject, DetailViewModel {
         detailCells.append(.info(DetailTableViewCell.Info(title: "scene.transaction_detail.date_label".localized, data: dateString)))
         detailCells.append(.separator)
 
-        detailCells.append(DetailCellType.blockExplorerCell(title: "scene.transaction_detail.address_label".localized, code: onChainTransaction.destinationAddress, type: .address))
-        detailCells.append(.separator)
+        if let address = onChainTransaction.destinationAddresses.first {
+            detailCells.append(DetailCellType.blockExplorerCell(title: "scene.transaction_detail.address_label".localized, code: address.string, type: .address))
+            detailCells.append(.separator)
+        }
         
         detailCells.append(DetailCellType.blockExplorerCell(title: "scene.transaction_detail.transaction_id_label".localized, code: onChainTransaction.id, type: .transactionId))
         detailCells.append(.separator)
@@ -42,7 +44,8 @@ final class OnChainTransactionDetailViewModel: NSObject, DetailViewModel {
         detailCells.append(.info(DetailTableViewCell.Info(title: "scene.transaction_detail.confirmations_label".localized, data: confirmationString)))
         detailCells.append(.separator)
 
-        detailCells.append(DetailCellType.memoCell(transaction: onChainTransaction, annotation: annotation, transactionListViewModel: transactionListViewModel, placeholder: onChainTransaction.destinationAddress))
+        let placeholder = onChainTransaction.destinationAddresses.first?.string ?? "generic.memo.placeholder".localized
+        detailCells.append(DetailCellType.memoCell(transaction: onChainTransaction, annotation: annotation, transactionListViewModel: transactionListViewModel, placeholder: placeholder))
         detailCells.append(.separator)
 
         detailCells.append(DetailCellType.hideTransactionCell(transaction: onChainTransaction, annotation: annotation.value, transactionListViewModel: transactionListViewModel))

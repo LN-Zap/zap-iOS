@@ -85,7 +85,7 @@ final class RequestViewController: ModalDetailViewController {
         Style.textField(color: UIColor.Zap.white).apply(to: memoTextField)
         memoTextField.backgroundColor = UIColor.Zap.seaBlue
         memoTextField.attributedPlaceholder = NSAttributedString(
-            string: "What is this for?",
+            string: "generic.memo.placeholder".localized,
             attributes: [.foregroundColor: UIColor.Zap.gray]
         )
         contentStackView.addArrangedElement(.customView(memoTextField, height: 30))

@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct BitcoinAddress {
+struct LegacyBitcoinAddress {
     private enum AddressTypeVersion: Int {
         case pubkeyHash = 0
         case scriptHash = 5

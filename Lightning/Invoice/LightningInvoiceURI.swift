@@ -8,13 +8,13 @@
 import BTCUtil
 import Foundation
 
-public struct LightningInvoiceURI: PaymentURI {
+public struct LightningInvoiceURI: PaymentURI {    
     public let amount: Satoshi?
     public let memo: String?
     public let address: String
     public let network: Network
 
-    public var stringValue: String {
+    public var uriString: String {
         return "lightning:\(address)"
     }
     

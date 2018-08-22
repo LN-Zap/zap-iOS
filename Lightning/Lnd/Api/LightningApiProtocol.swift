@@ -21,7 +21,7 @@ protocol LightningApiProtocol {
     func subscribeChannelGraph(callback: @escaping (Result<GraphTopologyUpdate>) -> Void)
 
     // On-chain
-    func sendCoins(address: String, amount: Satoshi, callback: @escaping (Result<OnChainUnconfirmedTransaction>) -> Void)
+    func sendCoins(address: BitcoinAddress, amount: Satoshi, callback: @escaping (Result<OnChainUnconfirmedTransaction>) -> Void)
     func transactions(callback: @escaping (Result<[Transaction]>) -> Void)
     func subscribeTransactions(callback: @escaping (Result<Transaction>) -> Void)
 
@@ -39,6 +39,6 @@ protocol LightningApiProtocol {
     func peers(callback: @escaping (Result<[Peer]>) -> Void)
     
     // Wallet
-    func newAddress(type: OnChainRequestAddressType, callback: @escaping (Result<String>) -> Void)
+    func newAddress(type: OnChainRequestAddressType, callback: @escaping (Result<BitcoinAddress>) -> Void)
     func walletBalance(callback: @escaping (Result<Satoshi>) -> Void)
 }
