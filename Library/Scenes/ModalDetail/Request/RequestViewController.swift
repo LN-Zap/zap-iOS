@@ -23,6 +23,7 @@ final class RequestViewController: ModalDetailViewController {
     
     private var currentState = State.methodSelection {
         didSet {
+            guard oldValue != currentState else { return }
             currentState.configure(viewController: self)
             updateHeight()
         }
@@ -38,6 +39,7 @@ final class RequestViewController: ModalDetailViewController {
             case .methodSelection:
                 break
             case .amountInput:
+                viewController.amountInputView?.becomeFirstResponder()
                 viewController.amountInputView?.setKeypad(hidden: false, animated: true)
                 viewController.topSeparator?.isHidden = false
                 viewController.lightningButton?.isHidden = true
@@ -48,9 +50,9 @@ final class RequestViewController: ModalDetailViewController {
                 viewController.memoTextField?.isHidden = true
                 viewController.memoSeparator?.isHidden = true
                 viewController.nextButton?.button.setTitle("Next", for: .normal)
-
             case .memoInput:
                 viewController.amountInputView?.setKeypad(hidden: true, animated: true)
+                viewController.memoTextField?.becomeFirstResponder()
                 viewController.memoTextField?.isHidden = false
                 viewController.memoSeparator?.isHidden = false
                 viewController.nextButton?.button.setTitle("Generate Request", for: .normal)
@@ -178,7 +180,9 @@ final class RequestViewController: ModalDetailViewController {
                 switch result {
                 case .success(let qrCodeDetailViewModel):
                     let viewController = UIStoryboard.instantiateQRCodeDetailViewController(with: qrCodeDetailViewModel)
-                    self?.present(UINavigationController(rootViewController: viewController), animated: true, completion: nil)
+                    self?.present(UINavigationController(rootViewController: viewController), animated: true) { [weak self] in
+                        self?.setHeaderImage(nil)
+                    }
                 case .failure(let error):
                     guard let error = error as? LocalizedError else { return }
                     self?.view.superview?.presentErrorToast(error.localizedDescription)
@@ -201,8 +205,5 @@ extension RequestViewController: AmountInputViewDelegate {
         currentState = .amountInput
     }
     
-    func amountInputViewDidEndEditing(_ amountInputView: AmountInputView) {
-        amountInputView.setKeypad(hidden: true, animated: true)
-        updateHeight()
-    }
+    func amountInputViewDidEndEditing(_ amountInputView: AmountInputView) {}
 }

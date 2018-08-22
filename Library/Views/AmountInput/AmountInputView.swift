@@ -148,6 +148,11 @@ public final class AmountInputView: UIControl {
         }
     }
     
+    @IBAction private func didSelectTextField(_ sender: Any) {
+        guard !amountTextField.isFirstResponder else { return }
+        becomeFirstResponder()
+    }
+    
     @discardableResult
     override public func becomeFirstResponder() -> Bool {
         return amountTextField.becomeFirstResponder()
