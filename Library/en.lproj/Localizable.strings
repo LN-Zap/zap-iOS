@@ -6,6 +6,8 @@
   Copyright © 2018 Otto Suess. All rights reserved.
 */
 
+"generic.memo.placeholder" = "What is this for?";
+
 "link.help" = "https://ln-zap.github.io/zap-tutorials/";
 "link.help.zapconnect" = "https://ln-zap.github.io/zap-tutorials/iOS-remote-node-setup";
 
@@ -33,6 +35,7 @@
 
 "transaction.open_channel.memo" = "Open Channel: %@";
 "transaction.close_channel.memo" = "%@ Channel: %@";
+"transaction.no_destination_address" = "No destination address";
 
 "close_type.cooperative_close" = "Close";
 "close_type.local_force_close" = "Force Close";

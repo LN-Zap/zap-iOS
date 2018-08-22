@@ -14,7 +14,7 @@ public struct OnChainConfirmedTransaction: OnChainTransaction, Equatable {
     public let date: Date
     public let fees: Satoshi?
     public let confirmations: Int
-    public let destinationAddress: String
+    public let destinationAddresses: [BitcoinAddress]
 }
 
 extension OnChainConfirmedTransaction {
@@ -24,6 +24,6 @@ extension OnChainConfirmedTransaction {
         date = Date(timeIntervalSince1970: TimeInterval(transaction.timeStamp))
         fees = Satoshi(transaction.totalFees)
         confirmations = Int(transaction.numConfirmations)
-        destinationAddress = transaction.destAddresses.first ?? ""
+        destinationAddresses = transaction.destAddresses.compactMap { BitcoinAddress(string: $0) }
     }
 }

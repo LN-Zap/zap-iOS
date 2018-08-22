@@ -49,9 +49,11 @@ public final class LightningApiRPC: LightningApiProtocol {
         _ = try? rpc.getNodeInfo(request, completion: result(callback, map: { NodeInfo(nodeInfo: $0) }))
     }
     
-    func newAddress(type: OnChainRequestAddressType, callback: @escaping (Result<String>) -> Void) {
+    func newAddress(type: OnChainRequestAddressType, callback: @escaping (Result<BitcoinAddress>) -> Void) {
         let request = Lnrpc_NewAddressRequest(type: type)
-        _ = try? rpc.newAddress(request, completion: result(callback, map: { $0.address }))
+        _ = try? rpc.newAddress(request, completion: result(callback, map: {
+            BitcoinAddress(string: $0.address)
+        }))
     }
     
     func walletBalance(callback: @escaping (Result<Satoshi>) -> Void) {
@@ -105,10 +107,10 @@ public final class LightningApiRPC: LightningApiProtocol {
         _ = try? rpc.openChannelSync(request, completion: result(callback, map: { ChannelPoint(channelPoint: $0) }))
     }
     
-    func sendCoins(address: String, amount: Satoshi, callback: @escaping (Result<OnChainUnconfirmedTransaction>) -> Void) {
+    func sendCoins(address: BitcoinAddress, amount: Satoshi, callback: @escaping (Result<OnChainUnconfirmedTransaction>) -> Void) {
         let request = Lnrpc_SendCoinsRequest(address: address, amount: amount)
         _ = try? rpc.sendCoins(request, completion: result(callback, map: {
-            OnChainUnconfirmedTransaction(id: $0.txid, amount: -amount, date: Date(), destinationAddress: address)
+            OnChainUnconfirmedTransaction(id: $0.txid, amount: -amount, date: Date(), destinationAddresses: [address])
         }))
     }
     

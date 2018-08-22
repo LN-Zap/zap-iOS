@@ -27,7 +27,7 @@ public final class RequestViewModel {
     }
     
     private let transactionService: TransactionService
-    private var cachedOnChainAddress: String?
+    private var cachedOnChainAddress: BitcoinAddress?
 
     public var requestMethod = RequestMethod.lightning
     public var memo: String?
@@ -75,7 +75,7 @@ public final class RequestViewModel {
         }
     }
     
-    private func onChainRequestViewModel(for address: String) -> OnChainRequestQRCodeViewModel? {
+    private func onChainRequestViewModel(for address: BitcoinAddress) -> OnChainRequestQRCodeViewModel? {
         guard let uri = BitcoinURI(address: address, amount: amount, memo: trimmedMemo, lightningFallback: nil) else { return nil }
         return OnChainRequestQRCodeViewModel(paymentURI: uri)
     }

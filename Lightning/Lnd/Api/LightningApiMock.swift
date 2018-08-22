@@ -11,7 +11,7 @@ import Foundation
 final class LightningApiMock: LightningApiProtocol {
     private let info: Info?
     private let nodeInfo: NodeInfo?
-    private let newAddress: String?
+    private let newAddress: BitcoinAddress?
     private let walletBalance: Satoshi?
     private let channelBalance: Satoshi?
     private let transactions: [Transaction]?
@@ -35,7 +35,7 @@ final class LightningApiMock: LightningApiProtocol {
     init(
         info: Info? = Info.Template.testnet,
         nodeInfo: NodeInfo? = nil,
-        newAddress: String? = nil,
+        newAddress: BitcoinAddress? = nil,
         walletBalance: Satoshi? = nil,
         channelBalance: Satoshi? = nil,
         transactions: [Transaction]? = nil,
@@ -156,7 +156,7 @@ final class LightningApiMock: LightningApiProtocol {
         callback(Result(value: closedChannels, error: LndApiError.unknownError))
     }
     
-    func sendCoins(address: String, amount: Satoshi, callback: @escaping (Result<OnChainUnconfirmedTransaction>) -> Void) {
+    func sendCoins(address: BitcoinAddress, amount: Satoshi, callback: @escaping (Result<OnChainUnconfirmedTransaction>) -> Void) {
         callback(Result(value: sendCoins, error: LndApiError.unknownError))
     }
     
@@ -168,7 +168,7 @@ final class LightningApiMock: LightningApiProtocol {
         callback(Result(value: subscribeInvoices, error: LndApiError.unknownError))
     }
     
-    func newAddress(type: OnChainRequestAddressType, callback: @escaping (Result<String>) -> Void) {
+    func newAddress(type: OnChainRequestAddressType, callback: @escaping (Result<BitcoinAddress>) -> Void) {
         callback(Result(value: newAddress, error: LndApiError.unknownError))
     }
 }

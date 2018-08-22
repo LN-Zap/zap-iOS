@@ -14,5 +14,5 @@ public protocol OnChainTransaction: Transaction {
     var date: Date { get }
     var fees: Satoshi? { get }
     var confirmations: Int { get }
-    var destinationAddress: String { get }
+    var destinationAddresses: [BitcoinAddress] { get }
 }

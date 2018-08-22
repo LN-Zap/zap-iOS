@@ -105,7 +105,7 @@ final class SendViewModel {
     }
     
     private func sendOnChain(bitcoinURI: BitcoinURI, amount: Satoshi, callback: @escaping (Result<OnChainUnconfirmedTransaction>) -> Void) {
-        lightningService.transactionService.sendCoins(address: bitcoinURI.address, amount: amount) { [weak self] in
+        lightningService.transactionService.sendCoins(address: bitcoinURI.bitcoinAddress, amount: amount) { [weak self] in
             if let unconfirmedTransaction = $0.value,
                 let memo = self?.memo {
                 self?.transactionAnnotationStore.udpateMemo(memo, forTransactionId: unconfirmedTransaction.id)

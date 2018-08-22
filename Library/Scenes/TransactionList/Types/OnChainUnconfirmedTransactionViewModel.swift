@@ -30,6 +30,6 @@ final class OnChainUnconfirmedTransactionViewModel: TransactionViewModel {
         if let customMemo = annotation.customMemo {
             return customMemo
         }
-        return unconfirmedTransaction.destinationAddress
+        return unconfirmedTransaction.destinationAddresses.first?.string ?? "transaction.no_destination_address".localized
     }
 }

@@ -24,7 +24,7 @@ public final class TransactionService {
         self.channelService = channelService
     }
     
-    public func sendCoins(address: String, amount: Satoshi, callback: @escaping (Result<OnChainUnconfirmedTransaction>) -> Void) {
+    public func sendCoins(address: BitcoinAddress, amount: Satoshi, callback: @escaping (Result<OnChainUnconfirmedTransaction>) -> Void) {
         api.sendCoins(address: address, amount: amount) { [weak self] in
             if let newTransaction = $0.value {
                 self?.unconfirmedTransactionStore.add(newTransaction)
@@ -43,17 +43,8 @@ public final class TransactionService {
         }
     }
     
-    public func newAddress(with type: OnChainRequestAddressType, callback: @escaping (Result<String>) -> Void) {
-        api.newAddress(type: type) {
-            callback($0.map {
-                switch type {
-                case .witnessPubkeyHash:
-                    return $0.uppercased()
-                case .nestedPubkeyHash:
-                    return $0
-                }
-            })
-        }
+    public func newAddress(with type: OnChainRequestAddressType, callback: @escaping (Result<BitcoinAddress>) -> Void) {
+        api.newAddress(type: type, callback: callback)
     }
     
     func decodePaymentRequest(_ paymentRequest: String, callback: @escaping (Result<PaymentRequest>) -> Void) {

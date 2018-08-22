@@ -20,7 +20,9 @@ final class BitcoinURITests: XCTestCase {
 
     func testBitcoinURI() {
         for (uriString, address, amount, memo, lightningFallback) in tests {
-            XCTAssertEqual(BitcoinURI(address: address, amount: amount, memo: memo, lightningFallback: lightningFallback)?.stringValue, uriString)
+            // swiftlint:disable:next force_unwrapping
+            let address = BitcoinAddress(string: address)!
+            XCTAssertEqual(BitcoinURI(address: address, amount: amount, memo: memo, lightningFallback: lightningFallback)?.uriString, uriString)
         }
     }
     
@@ -46,6 +48,8 @@ final class BitcoinURITests: XCTestCase {
         ]
         
         for (uriString, address, amount, memo, lightningFallback) in tests {
+            // swiftlint:disable:next force_unwrapping
+            let address = BitcoinAddress(string: address)!
             XCTAssertEqual(BitcoinURI(address: address, amount: amount, memo: memo, lightningFallback: lightningFallback)?.addressOrURI, uriString)
         }
     }

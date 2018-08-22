@@ -8,9 +8,9 @@
 @testable import BTCUtil
 import XCTest
 
-final class BitcoinAddressTests: XCTestCase {
+final class LegacyBitcoinAddressTests: XCTestCase {
     func testAddressTypes() {
-        let tests: [(String, BitcoinAddress.AddressType, Network)] = [
+        let tests: [(String, LegacyBitcoinAddress.AddressType, Network)] = [
             ("17VZNX1SN5NtKa8UQFxwQbFeFc3iqRYhem", .pubkeyHash, .mainnet),
             ("3EktnHQD7RiAE6uzMj2ZifT9YgRrkSgzQX", .scriptHash, .mainnet),
             ("5Hwgr3u458GLafKBgxtssHSPqJnYoGrSzgQsPwLFhLNYskDPyyA", .privateKey, .mainnet),
@@ -24,7 +24,7 @@ final class BitcoinAddressTests: XCTestCase {
         ]
         
         for (input, type, network) in tests {
-            let address = BitcoinAddress(string: input)
+            let address = LegacyBitcoinAddress(string: input)
             XCTAssertEqual(address?.type, type)
             XCTAssertEqual(address?.network, network)
         }
@@ -39,7 +39,7 @@ final class BitcoinAddressTests: XCTestCase {
         ]
         
         for input in invalid {
-            XCTAssertNil(BitcoinAddress(string: input))
+            XCTAssertNil(LegacyBitcoinAddress(string: input))
         }
     }
 }

@@ -5,6 +5,7 @@
 //  Copyright © 2018 Zap. All rights reserved.
 //
 
+import BTCUtil
 import Foundation
 
 extension Info {
@@ -35,6 +36,13 @@ extension Info {
     }
 }
 
+extension BitcoinAddress {
+    static var template: BitcoinAddress {
+        // swiftlint:disable:next force_unwrapping
+        return BitcoinAddress(string: "tb1qrp33g0q5c5txsp9arysrx4k6zdkfs4nce4xj0gdcccefvpysxf3q0sl5k7")!
+    }
+}
+
 extension OnChainConfirmedTransaction {
     static var template: OnChainConfirmedTransaction {
         return OnChainConfirmedTransaction(
@@ -43,14 +51,14 @@ extension OnChainConfirmedTransaction {
             date: Date(),
             fees: 12,
             confirmations: 14,
-            destinationAddress: "tb1qrp33g0q5c5txsp9arysrx4k6zdkfs4nce4xj0gdcccefvpysxf3q0sl5k7"
+            destinationAddresses: [BitcoinAddress.template]
         )
     }
 }
 
 extension OnChainUnconfirmedTransaction {
     static var template: OnChainUnconfirmedTransaction {
-        return OnChainUnconfirmedTransaction(id: "abc", amount: 1000, date: Date(), destinationAddress: "asdfghjkllkjhgfdsasdfghjkljsasdfghjk")
+        return OnChainUnconfirmedTransaction(id: "abc", amount: 1000, date: Date(), destinationAddresses: [BitcoinAddress.template])
     }
 }
 

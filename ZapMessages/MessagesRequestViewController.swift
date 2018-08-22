@@ -79,7 +79,7 @@ class MessagesRequestViewController: UIViewController {
             memoLineView.bottomAnchor.constraint(equalTo: memoContainerView.topAnchor, constant: 1)
         ])
         
-        placeholderTextView.text = "what is this for"
+        placeholderTextView.text = "generic.memo.placeholder".localized
         placeholderTextView.font = UIFont.Zap.light.withSize(14)
         placeholderTextView.textColor = UIColor.Zap.gray
         memoTextView.font = UIFont.Zap.light.withSize(14)
@@ -137,7 +137,7 @@ class MessagesRequestViewController: UIViewController {
         
         requestViewModel.create { [weak self] result in
             DispatchQueue.main.async {
-                guard let address = result.value?.paymentURI.stringValue else { return }
+                guard let address = result.value?.paymentURI.uriString else { return }
                 var text = ""
                 
                 if requestViewModel.amount > 0,

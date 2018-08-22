@@ -63,8 +63,8 @@ extension Lnrpc_OpenChannelRequest {
 }
 
 extension Lnrpc_SendCoinsRequest {
-    init(address: String, amount: Satoshi) {
-        self.addr = address
+    init(address: BitcoinAddress, amount: Satoshi) {
+        self.addr = address.string
         self.amount = Int64(truncating: amount as NSDecimalNumber)
     }
 }
