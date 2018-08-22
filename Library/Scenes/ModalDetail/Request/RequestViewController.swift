@@ -9,7 +9,9 @@ import Foundation
 import Lightning
 
 final class RequestViewController: ModalDetailViewController {
+    private weak var topSeparator: UIView?
     private weak var lightningButton: CallbackButton?
+    private weak var orSeparator: UIView?
     private weak var onChainButton: CallbackButton?
     private weak var titleLabel: UILabel?
     private weak var amountInputView: AmountInputView?
@@ -37,7 +39,9 @@ final class RequestViewController: ModalDetailViewController {
                 break
             case .amountInput:
                 viewController.amountInputView?.setKeypad(hidden: false, animated: true)
+                viewController.topSeparator?.isHidden = false
                 viewController.lightningButton?.isHidden = true
+                viewController.orSeparator?.isHidden = true
                 viewController.onChainButton?.isHidden = true
                 viewController.amountInputView?.isHidden = false
                 viewController.nextButton?.isHidden = false
@@ -67,6 +71,9 @@ final class RequestViewController: ModalDetailViewController {
         super.viewDidLoad()
         
         titleLabel = contentStackView.addArrangedElement(.label(text: "Payment Request", style: Style.Label.headline.with({ $0.textAlignment = .center }))) as? UILabel
+        
+        topSeparator = contentStackView.addArrangedElement(.separator)
+        topSeparator?.isHidden = true
         
         setupRequestMethodSelection()
         
@@ -118,6 +125,7 @@ final class RequestViewController: ModalDetailViewController {
         let rightSeparator = horizontalStackView.addArrangedElement(.separator)
         contentStackView.addArrangedElement(.customView(horizontalStackView, height: 20))
         leftSeparator.widthAnchor.constraint(equalTo: rightSeparator.widthAnchor, multiplier: 1, constant: 0).isActive = true
+        self.orSeparator = horizontalStackView
         
         let onChainImage = UIImage(named: "icon_request_on_chain_button", in: .library, compatibleWith: nil)
         let onChainButtonStyle = Style.Button.background.with({
