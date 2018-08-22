@@ -72,7 +72,7 @@ class ModalDetailViewController: ModalViewController, QRCodeScannerChildViewCont
         view.clipsToBounds = false
     }
     
-    func setHeaderImage(_ image: UIImage) {
+    func setHeaderImage(_ image: UIImage?) {
         headerIconImageView.image = image
     }
     
@@ -87,12 +87,9 @@ class ModalDetailViewController: ModalViewController, QRCodeScannerChildViewCont
     }
     
     @objc func dismissParent() {
-        if presentingViewController?.presentingViewController == nil {
-            dismiss(animated: true, completion: nil)
-        } else {
-            // if presented from QR Code VC, also dismiss the QRCode VC
-            guard let presentingViewController = presentingViewController else { return }
-            
+        // if presented from QR Code VC, also dismiss the QRCode VC
+        if let presentingViewController = presentingViewController,
+            presentingViewController.presentingViewController != nil {
             // fixes the dismiss animation of two modals at once
             if let snapshotView = view.superview?.snapshotView(afterScreenUpdates: false) {
                 snapshotView.frame.origin.y = presentingViewController.view.frame.height - snapshotView.frame.height
@@ -100,6 +97,8 @@ class ModalDetailViewController: ModalViewController, QRCodeScannerChildViewCont
             }
             
             presentingViewController.presentingViewController?.dismiss(animated: true, completion: nil)
+        } else {
+            dismiss(animated: true, completion: nil)
         }
     }
 }

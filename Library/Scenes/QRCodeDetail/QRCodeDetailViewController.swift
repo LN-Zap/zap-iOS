@@ -56,8 +56,20 @@ final class QRCodeDetailViewController: UIViewController {
         UIPasteboard.general.string = address
     }
     
+    private func dismissParent() {
+        if presentingViewController?.presentingViewController == nil {
+            dismiss(animated: true, completion: nil)
+        } else {
+            // fixes the dismiss animation of two modals at once
+            if let snapshotView = view.superview?.snapshotView(afterScreenUpdates: false) {
+                presentingViewController?.view.addSubview(snapshotView)
+            }
+            view.window?.rootViewController?.dismiss(animated: true, completion: nil)
+        }
+    }
+    
     @IBAction private func doneButtonTapped(_ sender: Any) {
-        dismiss(animated: true, completion: nil)
+        dismissParent()
     }
     
     @IBAction private func shareButtonTapped(_ sender: Any) {
