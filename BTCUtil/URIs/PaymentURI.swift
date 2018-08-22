@@ -12,5 +12,7 @@ public protocol PaymentURI {
     var network: Network { get }
     var amount: Satoshi? { get }
     var memo: String? { get }
+    
     var uriString: String { get }
+    var isCaseSensitive: Bool { get }
 }

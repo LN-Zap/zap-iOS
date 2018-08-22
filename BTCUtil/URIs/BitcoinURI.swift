@@ -23,16 +23,10 @@ public struct BitcoinURI: PaymentURI {
     public let bitcoinAddress: BitcoinAddress
     public var address: String { return bitcoinAddress.string }
     public var network: Network { return bitcoinAddress.network }
+    public var isCaseSensitive: Bool { return bitcoinAddress.type != .bech32 }
     public let amount: Satoshi?
     public let memo: String?
     public let lightningFallback: String?
-    
-    public var addressOrURI: String {
-        if (amount == nil || amount == 0) && (memo == nil || memo?.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty == true) {
-            return address
-        }
-        return uriString
-    }
     
     public var uriString: String {
         var urlComponents = URLComponents(string: "bitcoin:\(address)")

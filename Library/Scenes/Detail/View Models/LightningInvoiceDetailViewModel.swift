@@ -16,8 +16,9 @@ final class LightningInvoiceDetailViewModel: NSObject, DetailViewModel {
     init(lightningInvoice: LightningInvoice, annotation: Observable<TransactionAnnotation>, transactionListViewModel: TransactionListViewModel) {
         super.init()
         
-        if lightningInvoice.expiry > Date() {
-            detailCells.append(.qrCode(lightningInvoice.paymentRequest))
+        if lightningInvoice.expiry > Date(),
+            let invoiceURI = LightningInvoiceURI(invoice: lightningInvoice) {
+            detailCells.append(.qrCode(invoiceURI))
             detailCells.append(.separator)
         }
         

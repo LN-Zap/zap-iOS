@@ -5,6 +5,7 @@
 //  Copyright © 2018 Zap. All rights reserved.
 //
 
+import BTCUtil
 import UIKit
 
 final class DetailQRCodeTableViewCell: UITableViewCell {
@@ -15,11 +16,11 @@ final class DetailQRCodeTableViewCell: UITableViewCell {
     
     weak var delegate: UIViewController?
     
-    var address: String? {
+    var paymentURI: PaymentURI? {
         didSet {
-            guard let address = address else { return }
-            qrCodeImageView.image = UIImage.qrCode(from: address)
-            addressLabel.text = address
+            guard let paymentURI = paymentURI else { return }
+            qrCodeImageView.image = UIImage.qrCode(from: paymentURI)
+            addressLabel.text = paymentURI.uriString
         }
     }
     
@@ -36,14 +37,14 @@ final class DetailQRCodeTableViewCell: UITableViewCell {
     }
     
     @IBAction private func copyAddress(_ sender: Any) {
-        guard let address = address else { return }
-        print(address)
-        UIPasteboard.general.string = address
+        guard let uriString = paymentURI?.uriString else { return }
+        print(uriString)
+        UIPasteboard.general.string = uriString
     }
     
     @IBAction private func shareAddress(_ sender: Any) {
-        guard let address = address else { return }
-        let activityViewController = UIActivityViewController(activityItems: [address], applicationActivities: nil)
+        guard let uriString = paymentURI?.uriString else { return }
+        let activityViewController = UIActivityViewController(activityItems: [uriString], applicationActivities: nil)
         delegate?.present(activityViewController, animated: true, completion: nil)
     }
 }
