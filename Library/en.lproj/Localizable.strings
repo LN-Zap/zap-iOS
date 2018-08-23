@@ -67,15 +67,16 @@
 "scene.settings.item.reset_pin" = "Reset Pin";
 "scene.settings.item.report_issue" = "Report an Issue";
 "scene.settings.item.help" = "Need Help?";
-
-"scene.deposit.send" = "Send";
-"scene.deposit.title" = "Receive";
+"scene.settings.item.block_explorer.title" = "Block Explorer";
 
 "scene.request.title" = "Receive";
 "scene.request.lightning_button" = "Lightning";
+"scene.request.or_separator_label" = "or";
 "scene.request.on_chain_button" = "On-chain";
-"scene.request.memo_placeholder" = "Memo (optional)";
 "scene.request.generate_request_button" = "Generate Request";
+"scene.request.lightning_header_title" = "Lightning Payment Request";
+"scene.request.on_chain_header_title" = "On Chain Payment Request";
+"scene.request.next_button_title" = "Next";
 
 "scene.channels.title" = "Channels";
 "scene.channels.close.title" = "Close Channel";
@@ -109,12 +110,14 @@
 
 "scene.send.title" = "Send";
 "scene.send.send_button" = "Send";
+"scene.send.address_headline" = "To:";
+"scene.send.memo_headline" = "Memo:";
 "scene.send.error.invalid_payment_request" = "Invalid Payment request";
 
-"scene.send.lightning.title" = "Send";
+"scene.send.lightning.title" = "Send Lightning Payment";
 "scene.send.lightning.error.expired" = "Payment Request expired:\n%@";
 "scene.send.lightning.error.duplicate" = "Payment already paid.";
-"scene.send.lightning.memo" = "Memo: %@";
+"scene.send.on_chain.title" = "Send On Chain";
 
 "scene.connect_remote_node.title" = "Connect Remote Node";
 "scene.connect_remote_node.empty_state" = "Scan the QRCode generate with zapconnect or paste the connection code to connect to your node.";
@@ -129,7 +132,6 @@
 "scene.connect_remote_node.certificate_detail.certificate_title" = "Certificate";
 "scene.connect_remote_node.certificate_detail.macaroon_title" = "Macaroon";
 "scene.connect_remote_node.edit_url.title" = "Address";
-
 
 "scene.create_wallet.title" = "Create Wallet";
 "scene.create_wallet.description_label" = "Make sure to store the mnemonic at a save location.";
@@ -149,14 +151,14 @@
 "scene.select_wallet_connection.connect.message" = "remote node";
 "scene.select_wallet_connection.disabled_alert.title" = "Sorry!";
 "scene.select_wallet_connection.disabled_alert.message" = "Running Lnd on the phone is disabled in this beta. Connect to a remote node instead.";
+"scene.select_wallet_connection.disabled_alert.ok_button" = "Ok";
 "scene.select_wallet_connection.create.help" = "Need Help?";
 
 "scene.main.send_button" = "Send";
 "scene.main.receive_button" = "Receive";
 "scene.main.exchange_rate_label" = "%@ per BTC";
 
-"scene.qr_code_detail.method_label.lightning" = "Lightning";
-"scene.qr_code_detail.method_label.on_chain" = "On-chain";
+"scene.qr_code_detail.title" = "Receive";
 
 "scene.sync.description_label" = "Syncing to blockchain…";
 "scene.sync.disconnect_bar_button" = "Disconnect";

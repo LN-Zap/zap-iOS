@@ -44,9 +44,9 @@ final class SendViewModel {
         var headline: String {
             switch self {
             case .lightning:
-                return "Send Lightning Payment"
+                return "scene.send.lightning.title".localized
             case .onChain:
-                return "Send On Chain"
+                return "scene.send.on_chain.title".localized
             }
         }
     }

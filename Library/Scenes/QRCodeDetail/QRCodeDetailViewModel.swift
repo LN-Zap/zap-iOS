@@ -15,7 +15,7 @@ public protocol QRCodeDetailViewModel {
 }
 
 public final class OnChainRequestQRCodeViewModel: QRCodeDetailViewModel {
-    public let title = "scene.deposit.title".localized
+    public let title = "scene.qr_code_detail.title".localized
     public let paymentURI: PaymentURI
 
     init(paymentURI: PaymentURI) {
@@ -24,7 +24,7 @@ public final class OnChainRequestQRCodeViewModel: QRCodeDetailViewModel {
 }
 
 public final class LightningRequestQRCodeViewModel: QRCodeDetailViewModel {
-    public let title = "scene.request.title".localized
+    public let title = "scene.qr_code_detail.title".localized
     public let paymentURI: PaymentURI
 
     init(paymentURI: PaymentURI) {

@@ -14,7 +14,7 @@ class SendQRCodeScannerStrategy: QRCodeScannerStrategy {
     private let nodeStore: LightningNodeStore
     private let lightningService: LightningService
     
-    let title = "scene.deposit.send".localized
+    let title = "scene.send.title".localized
     
     init(transactionAnnotationStore: TransactionAnnotationStore, nodeStore: LightningNodeStore, lightningService: LightningService) {
         self.transactionAnnotationStore = transactionAnnotationStore

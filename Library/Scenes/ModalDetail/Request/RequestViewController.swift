@@ -49,13 +49,13 @@ final class RequestViewController: ModalDetailViewController {
                 viewController.nextButton?.isHidden = false
                 viewController.memoTextField?.isHidden = true
                 viewController.memoSeparator?.isHidden = true
-                viewController.nextButton?.button.setTitle("Next", for: .normal)
+                viewController.nextButton?.button.setTitle("scene.request.next_button_title".localized, for: .normal)
             case .memoInput:
                 viewController.amountInputView?.setKeypad(hidden: true, animated: true)
                 viewController.memoTextField?.becomeFirstResponder()
                 viewController.memoTextField?.isHidden = false
                 viewController.memoSeparator?.isHidden = false
-                viewController.nextButton?.button.setTitle("Generate Request", for: .normal)
+                viewController.nextButton?.button.setTitle("scene.request.generate_request_button".localized, for: .normal)
             }
         }
     }
@@ -72,7 +72,7 @@ final class RequestViewController: ModalDetailViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        titleLabel = contentStackView.addArrangedElement(.label(text: "Payment Request", style: Style.Label.headline.with({ $0.textAlignment = .center }))) as? UILabel
+        titleLabel = contentStackView.addArrangedElement(.label(text: "scene.request.title".localized, style: Style.Label.headline.with({ $0.textAlignment = .center }))) as? UILabel
         
         topSeparator = contentStackView.addArrangedElement(.separator)
         topSeparator?.isHidden = true
@@ -102,7 +102,7 @@ final class RequestViewController: ModalDetailViewController {
         memoTextField.addTarget(self, action: #selector(updateMemo(sender:)), for: .editingChanged)
         self.memoTextField = memoTextField
         
-        nextButton = contentStackView.addArrangedElement(.customHeight(56, element: .button(title: "Next", style: Style.Button.background, callback: { [weak self] _ in
+        nextButton = contentStackView.addArrangedElement(.customHeight(56, element: .button(title: "scene.request.next_button_title".localized, style: Style.Button.background, callback: { [weak self] _ in
             self?.bottomButtonTapped()
         }))) as? CallbackButton
         nextButton?.isHidden = true
@@ -114,7 +114,7 @@ final class RequestViewController: ModalDetailViewController {
             $0.setImage(lightningImage, for: .normal)
             $0.imageEdgeInsets = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 10)
         })
-        lightningButton = contentStackView.addArrangedElement(.customHeight(56, element: .button(title: "Lightning Transaction", style: lightningButtonStyle, callback: { [weak self] _ in
+        lightningButton = contentStackView.addArrangedElement(.customHeight(56, element: .button(title: "scene.request.lightning_button".localized, style: lightningButtonStyle, callback: { [weak self] _ in
             self?.presentAmountInput(requestMethod: .lightning)
         }))) as? CallbackButton
         
@@ -125,7 +125,7 @@ final class RequestViewController: ModalDetailViewController {
         let leftSeparator = LineView()
         leftSeparator.backgroundColor = UIColor.Zap.seaBlue
         horizontalStackView.addArrangedSubview(leftSeparator)
-        horizontalStackView.addArrangedElement(.label(text: "or", style: Style.Label.body))
+        horizontalStackView.addArrangedElement(.label(text: "scene.request.or_separator_label".localized, style: Style.Label.body))
         let rightSeparator = LineView()
         rightSeparator.backgroundColor = UIColor.Zap.seaBlue
         horizontalStackView.addArrangedSubview(rightSeparator)
@@ -138,7 +138,7 @@ final class RequestViewController: ModalDetailViewController {
             $0.setImage(onChainImage, for: .normal)
             $0.imageEdgeInsets = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 10)
         })
-        onChainButton = contentStackView.addArrangedElement(.customHeight(56, element: .button(title: "On-Chain Transaction", style: onChainButtonStyle, callback: { [weak self] _ in
+        onChainButton = contentStackView.addArrangedElement(.customHeight(56, element: .button(title: "scene.request.on_chain_button".localized, style: onChainButtonStyle, callback: { [weak self] _ in
             self?.presentAmountInput(requestMethod: .onChain)
         }))) as? CallbackButton
     }
@@ -148,10 +148,10 @@ final class RequestViewController: ModalDetailViewController {
         switch requestMethod {
         case .lightning:
             name = "icon_header_lightning"
-            titleLabel?.text = "Lightning Payment Request"
+            titleLabel?.text = "scene.request.lightning_header_title".localized
         case .onChain:
             name = "icon_header_on_chain"
-            titleLabel?.text = "On Chain Payment Request"
+            titleLabel?.text = "scene.request.on_chain_header_title".localized
         }
         guard let image = UIImage(named: name, in: Bundle.library, compatibleWith: nil) else { fatalError("Image not found") }
         return image
