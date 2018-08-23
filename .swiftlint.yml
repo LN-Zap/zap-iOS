@@ -37,6 +37,7 @@ opt_in_rules:
   - modifier_order
   - empty_xctest_method
   - convenience_type
+  - conditional_returns_on_newline
 excluded:
   - Pods
   - Lightning/Lnd/Api/Generated
@@ -44,6 +45,8 @@ excluded:
 identifier_name:
   excluded:
     - id
+conditional_returns_on_newline:
+  if_only: true
 
 custom_rules:
   localized_string:
