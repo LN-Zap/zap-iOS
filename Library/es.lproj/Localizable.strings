@@ -190,8 +190,8 @@
 "scene.channel_detail.closing_time.label" = "Cerrando";
 "scene.channel_detail.closing_time.data" = "%d bloques (%@)";
 "scene.channel_detail.funding_transaction_label" = "Financiando Transacción";
-"scene.channel_detail.close_button" = "Close Channel";
-"scene.channel_detail.force_close_button" = "Force Close Channel";
+"scene.channel_detail.close_button" = "Cerrar canal";
+"scene.channel_detail.force_close_button" = "Forzar cierre de canal";
 
 "scene.filter.title" = "Filtro de transacciones";
 "scene.filter.section_header.transaction_types" = "Tipos de transacción";
@@ -202,4 +202,4 @@
 
 "scene.qrcode_scanner.top_label" = "Escanear código QR";
 
-"scene.wallet.title" = "Wallet";
+"scene.wallet.title" = "Cartera";
