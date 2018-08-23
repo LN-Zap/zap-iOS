@@ -174,7 +174,7 @@ final class ConnectRemoteNodeViewController: UIViewController {
     
     private func paste() {
         connectRemoteNodeViewModel?.pasteCertificates { [weak self] error in
-            self?.presentErrorToast(error.localized)
+            self?.presentErrorToast(error.localizedDescription)
         }
     }
 }

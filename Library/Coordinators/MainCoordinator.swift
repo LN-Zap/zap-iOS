@@ -42,8 +42,7 @@ final class MainCoordinator: Routing {
                         case .success:
                             self?.presentSend(invoice: invoice)
                         case .failure(let error):
-                            guard let localizedError = error as? Localizable else { break }
-                            self?.rootViewController.presentErrorToast(localizedError.localized)
+                            self?.rootViewController.presentErrorToast(error.localizedDescription)
                         }
                     }
                 })

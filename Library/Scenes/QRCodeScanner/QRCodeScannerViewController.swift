@@ -71,11 +71,7 @@ final class QRCodeScannerViewController: UIViewController {
                     self?.presentViewController(viewController)
                     self?.scannerView.stop()
                 case .failure(let error):
-                    if let message = (error as? InvoiceError)?.localized {
-                        self?.presentError(message: message)
-                    } else if let message = (error as? LocalizedError)?.errorDescription {
-                        self?.presentError(message: message)
-                    }
+                    self?.presentError(message: error.localizedDescription)
                 }
             }
         }

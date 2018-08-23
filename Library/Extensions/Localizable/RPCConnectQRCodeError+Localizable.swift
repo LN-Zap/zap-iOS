@@ -8,8 +8,8 @@
 import Foundation
 import Lightning
 
-extension RPCConnectQRCodeError: Localizable {
-    public var localized: String {
+extension RPCConnectQRCodeError: LocalizedError {
+    public var errorDescription: String? {
         switch self {
         case .btcPayExpired:
             return "rpc_connect_qrcode_error.btc_pay_expired".localized

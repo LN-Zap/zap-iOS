@@ -9,8 +9,8 @@ import BTCUtil
 import Foundation
 import Lightning
 
-extension InvoiceError: Localizable {
-    public var localized: String {
+extension InvoiceError: LocalizedError {
+    public var errorDescription: String? {
         switch self {
         case .unknownFormat:
             return "error.wrong_uri_format".localized

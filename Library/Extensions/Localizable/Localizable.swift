@@ -10,9 +10,3 @@ import UIKit
 public protocol Localizable {
     var localized: String { get }
 }
-
-extension UILabel {
-    func setLocalizable(_ localizable: Localizable) {
-        text = localizable.localized
-    }
-}

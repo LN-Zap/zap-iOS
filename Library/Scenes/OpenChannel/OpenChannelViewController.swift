@@ -56,7 +56,6 @@ final class OpenChannelViewController: ModalDetailViewController {
                 case .success:
                     self?.dismissParent()
                 case .failure(let error):
-                    guard let error = error as? LocalizedError else { return }
                     self?.view.superview?.presentErrorToast(error.localizedDescription)
                 }
             }

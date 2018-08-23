@@ -182,7 +182,7 @@ enum ApiMockTemplate {
     case transactions
     case everything
     
-    static let selected: ApiMockTemplate = .everything
+    static let selected: ApiMockTemplate = .mainnet
     
     var instance: LightningApiMock {
         switch self {

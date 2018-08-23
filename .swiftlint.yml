@@ -44,3 +44,20 @@ excluded:
 identifier_name:
   excluded:
     - id
+
+custom_rules:
+  localized_string:
+    name: "Avoid NSLocalizedString"
+    regex: "NSLocalizedString"
+    message: "Use .localized instead"
+    severity: error
+  cast_to_localized_error:
+    name: "Cast to LocalizedError"
+    regex: "as\\? LocalizedError"
+    message: "don't cast to LocalizedError. Use .localizedDescription"
+    severity: error
+  localizable_error:
+    name: Localizable Error"
+    regex: "Error.*:.*Localizable"
+    message: "Errors should be LocalizedError"
+    severity: error
