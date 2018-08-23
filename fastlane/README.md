@@ -50,6 +50,11 @@ Generate new app icon assets.
 fastlane tests
 ```
 Run all tests.
+### check_l10n
+```
+fastlane check_l10n
+```
+Check for duplicate or missing localizations.
 
 ----
 
