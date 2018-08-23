@@ -82,7 +82,6 @@
 		AD391C2C20D16EFA007EE22A /* String.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0A96B87201769F100788808 /* String.swift */; };
 		AD391C2D20D16EFA007EE22A /* UIAlertController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD131B1520CFA0AD00E6FED3 /* UIAlertController.swift */; };
 		AD391C2E20D16EFA007EE22A /* UIApplication.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD9E244420A377190014F9FA /* UIApplication.swift */; };
-		AD391C2F20D16EFA007EE22A /* UIButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD38EB2F207DF233007DF14D /* UIButton.swift */; };
 		AD391C3020D16EFA007EE22A /* UICollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADF7936B208E66FA0086B2CA /* UICollectionView.swift */; };
 		AD391C3120D16EFA007EE22A /* UIColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0A05A222013D9BB0007D1C9 /* UIColor.swift */; };
 		AD391C3220D16EFA007EE22A /* UIFont.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADE4CF1C20B5B2BE007C987A /* UIFont.swift */; };
@@ -133,7 +132,6 @@
 		AD391C6F20D16F89007EE22A /* OpenChannelViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A010094D2015F97F0001EF94 /* OpenChannelViewController.swift */; };
 		AD391C7020D16F89007EE22A /* OpenChannelViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A02C9FBC202EE9BE009821B1 /* OpenChannelViewModel.swift */; };
 		AD391C7120D16F89007EE22A /* OpenChannelQRCodeScannerStrategy.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD99C9F020907AB30061C565 /* OpenChannelQRCodeScannerStrategy.swift */; };
-		AD391C7220D16F89007EE22A /* OpenChannel.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AD99C9F4209085B20061C565 /* OpenChannel.storyboard */; };
 		AD391C7320D16F89007EE22A /* QRCodeDetail.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A0A05A2C2013EDFB0007D1C9 /* QRCodeDetail.storyboard */; };
 		AD391C7420D16F89007EE22A /* QRCodeDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0A05A2A2013ED920007D1C9 /* QRCodeDetailViewController.swift */; };
 		AD391C7520D16F89007EE22A /* QRCodeDetailViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A070D965202B39A3000A8274 /* QRCodeDetailViewModel.swift */; };
@@ -189,13 +187,11 @@
 		AD391D0420D16FF5007EE22A /* AmountInputView.xib in Resources */ = {isa = PBXBuildFile; fileRef = AD99C9F82090C2600061C565 /* AmountInputView.xib */; };
 		AD391D0520D16FF5007EE22A /* BalanceView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD21768820C3DFDB007779DE /* BalanceView.swift */; };
 		AD391D0620D16FF5007EE22A /* BondCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0BD44DE206FED1400BF27A3 /* BondCell.swift */; };
-		AD391D0720D16FF5007EE22A /* GradientLoadingButtonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADB6DEDA20AD8F80001324C8 /* GradientLoadingButtonView.swift */; };
 		AD391D0820D16FF5007EE22A /* GradientView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0F353CF20692570005B3639 /* GradientView.swift */; };
 		AD391D0920D16FF5007EE22A /* KeyPadView.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADBA12032090CD22001F7700 /* KeyPadView.swift */; };
 		AD391D0A20D16FF5007EE22A /* KeyPadView.xib in Resources */ = {isa = PBXBuildFile; fileRef = ADBA12012090CD11001F7700 /* KeyPadView.xib */; };
 		AD391D0B20D16FF5007EE22A /* LineView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0605F8C202C9D8200EA903C /* LineView.swift */; };
 		AD391D0C20D16FF5007EE22A /* PinView.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADF79363208DCB630086B2CA /* PinView.swift */; };
-		AD391D0F20D16FF5007EE22A /* SegmentButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD38EB31207DFB59007DF14D /* SegmentButton.swift */; };
 		AD391D1020D16FF5007EE22A /* Toast.swift in Sources */ = {isa = PBXBuildFile; fileRef = A01009402014D4810001EF94 /* Toast.swift */; };
 		AD391D1120D16FF5007EE22A /* Toast.xib in Resources */ = {isa = PBXBuildFile; fileRef = A010093F2014D4810001EF94 /* Toast.xib */; };
 		AD391D1220D170ED007EE22A /* BTCUtil.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A000F5EA2047F65100480D8E /* BTCUtil.framework */; };
@@ -270,6 +266,7 @@
 		ADCD5B0D20D7E3F50037F156 /* RemoveRemoteNodeSettingsItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADCD5B0C20D7E3F50037F156 /* RemoveRemoteNodeSettingsItem.swift */; };
 		ADCD5B0F20D7E40C0037F156 /* RemovePinSettingsItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADCD5B0E20D7E40C0037F156 /* RemovePinSettingsItem.swift */; };
 		ADD5B015212D36DB00BEA24D /* Bech32Address.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADD5B014212D36DB00BEA24D /* Bech32Address.swift */; };
+		ADD5B016212E926B00BEA24D /* GradientLoadingButtonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADB6DEDA20AD8F80001324C8 /* GradientLoadingButtonView.swift */; };
 		ADDD13B62119CE740035D2F9 /* StackViewElement.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADDD13B52119CE740035D2F9 /* StackViewElement.swift */; };
 		ADDD13B92119CEB40035D2F9 /* UIStackView.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADDD13B82119CEB40035D2F9 /* UIStackView.swift */; };
 		ADDD13BB2119CF110035D2F9 /* CallbackButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADDD13BA2119CF110035D2F9 /* CallbackButton.swift */; };
@@ -281,6 +278,8 @@
 		ADECC36B20F257BE00D00546 /* OnChainConfirmedTransaction.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADECC36A20F257BE00D00546 /* OnChainConfirmedTransaction.swift */; };
 		ADFC816F20DA80EF00D26913 /* RecoverWalletViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADFC816E20DA80EF00D26913 /* RecoverWalletViewModel.swift */; };
 		ADFC817120DB8F2700D26913 /* bip39.txt in Resources */ = {isa = PBXBuildFile; fileRef = ADFC817020DB8F2600D26913 /* bip39.txt */; };
+		ADFD8DC3212E92A7005CA8FD /* SegmentButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD38EB31207DFB59007DF14D /* SegmentButton.swift */; };
+		ADFD8DC4212E92F1005CA8FD /* UIButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD38EB2F207DF233007DF14D /* UIButton.swift */; };
 		ADFE538520D693FF00B3BA2A /* InputNumberFormatterTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0F9AEE2206E3E0300E93DCA /* InputNumberFormatterTests.swift */; };
 		ADFE538620D693FF00B3BA2A /* CurrencyTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0BD44D9206FB47300BF27A3 /* CurrencyTests.swift */; };
 		ADFEFA4720E627F100FE1557 /* rpc.grpc.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD0D933320C822C300E30C51 /* rpc.grpc.swift */; };
@@ -716,7 +715,6 @@
 		AD99C9EE209076650061C565 /* QRCodeScannerStrategy.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QRCodeScannerStrategy.swift; sourceTree = "<group>"; };
 		AD99C9F020907AB30061C565 /* OpenChannelQRCodeScannerStrategy.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OpenChannelQRCodeScannerStrategy.swift; sourceTree = "<group>"; };
 		AD99C9F220907AD10061C565 /* SendQRCodeScannerStrategy.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SendQRCodeScannerStrategy.swift; sourceTree = "<group>"; };
-		AD99C9F4209085B20061C565 /* OpenChannel.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = OpenChannel.storyboard; sourceTree = "<group>"; };
 		AD99C9F62090C2560061C565 /* AmountInputView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AmountInputView.swift; sourceTree = "<group>"; };
 		AD99C9F82090C2600061C565 /* AmountInputView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AmountInputView.xib; sourceTree = "<group>"; };
 		AD9E243E20A368020014F9FA /* LndLogViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LndLogViewController.swift; sourceTree = "<group>"; };
@@ -1086,7 +1084,6 @@
 				AD21768820C3DFDB007779DE /* BalanceView.swift */,
 				A0BD44DE206FED1400BF27A3 /* BondCell.swift */,
 				A0731FE52014AC0800C55E45 /* ContainerViewController.swift */,
-				ADB6DEDA20AD8F80001324C8 /* GradientLoadingButtonView.swift */,
 				A0F353CF20692570005B3639 /* GradientView.swift */,
 				ADBA12082093587B001F7700 /* KeyPad */,
 				A0605F8C202C9D8200EA903C /* LineView.swift */,
@@ -1094,7 +1091,6 @@
 				AD2884362126DDA2003C3D94 /* ModalDetailViewController.swift */,
 				AD615CF6211CAB0900680790 /* PaddingLabel.swift */,
 				ADF79363208DCB630086B2CA /* PinView.swift */,
-				AD38EB31207DFB59007DF14D /* SegmentButton.swift */,
 				A0605F8A202C9D2F00EA903C /* Toast */,
 				AD7EDAE62108D39D0058CCCA /* ZapNavigationController.swift */,
 			);
@@ -1107,7 +1103,6 @@
 				A010094D2015F97F0001EF94 /* OpenChannelViewController.swift */,
 				A02C9FBC202EE9BE009821B1 /* OpenChannelViewModel.swift */,
 				AD99C9F020907AB30061C565 /* OpenChannelQRCodeScannerStrategy.swift */,
-				AD99C9F4209085B20061C565 /* OpenChannel.storyboard */,
 			);
 			path = OpenChannel;
 			sourceTree = "<group>";
@@ -1286,7 +1281,6 @@
 				A0A96B87201769F100788808 /* String.swift */,
 				AD131B1520CFA0AD00E6FED3 /* UIAlertController.swift */,
 				AD9E244420A377190014F9FA /* UIApplication.swift */,
-				AD38EB2F207DF233007DF14D /* UIButton.swift */,
 				ADF7936B208E66FA0086B2CA /* UICollectionView.swift */,
 				A0A05A222013D9BB0007D1C9 /* UIColor.swift */,
 				ADE4CF1C20B5B2BE007C987A /* UIFont.swift */,
@@ -1499,8 +1493,11 @@
 				AD391D5920D290EF007EE22A /* ZapMessages.entitlements */,
 				AD391D4A20D17FA9007EE22A /* Info.plist */,
 				AD10D04921132A2F00A0F0D3 /* MainInterface.storyboard */,
+				ADB6DEDA20AD8F80001324C8 /* GradientLoadingButtonView.swift */,
 				AD391D5620D28528007EE22A /* MessagesRequestViewController.swift */,
 				AD391D4320D17FA9007EE22A /* MessagesViewController.swift */,
+				AD38EB31207DFB59007DF14D /* SegmentButton.swift */,
+				AD38EB2F207DF233007DF14D /* UIButton.swift */,
 				AD391D4820D17FA9007EE22A /* Assets.xcassets */,
 			);
 			path = ZapMessages;
@@ -2320,7 +2317,6 @@
 				AD391CD520D16FE1007EE22A /* TransactionTableViewCell.xib in Resources */,
 				AD391C6120D16F7A007EE22A /* SelectWalletCreationMethodTableViewCell.xib in Resources */,
 				AD391C6320D16F89007EE22A /* Debug.storyboard in Resources */,
-				AD391C7220D16F89007EE22A /* OpenChannel.storyboard in Resources */,
 				AD7EDAE32108C4150058CCCA /* Wallet.storyboard in Resources */,
 				AD7EDAEB2108EA170058CCCA /* HeaderTableViewCell.xib in Resources */,
 				AD391C5020D16F7A007EE22A /* CreateWallet.storyboard in Resources */,
@@ -2608,7 +2604,6 @@
 				ADDD13BD2119E3240035D2F9 /* ChannelDetailConfiguration.swift in Sources */,
 				AD391C3520D16EFA007EE22A /* Storyboard.swift in Sources */,
 				AD391CDB20D16FE1007EE22A /* TransactionListViewController.swift in Sources */,
-				AD391D0720D16FF5007EE22A /* GradientLoadingButtonView.swift in Sources */,
 				AD391C5320D16F7A007EE22A /* ConfirmMnemonicViewModel.swift in Sources */,
 				AD391C6F20D16F89007EE22A /* OpenChannelViewController.swift in Sources */,
 				AD391C9B20D16FA8007EE22A /* QRCodeScannerViewController.swift in Sources */,
@@ -2664,7 +2659,6 @@
 				AD391C3A20D16F0B007EE22A /* Environment.swift in Sources */,
 				AD391CDC20D16FE1007EE22A /* TransactionListViewModel.swift in Sources */,
 				AD391C3220D16EFA007EE22A /* UIFont.swift in Sources */,
-				AD391D0F20D16FF5007EE22A /* SegmentButton.swift in Sources */,
 				AD391C7120D16F89007EE22A /* OpenChannelQRCodeScannerStrategy.swift in Sources */,
 				AD391CD920D16FE1007EE22A /* TransactionViewModel.swift in Sources */,
 				AD391CD420D16FE1007EE22A /* TransactionTableViewCell.swift in Sources */,
@@ -2728,7 +2722,6 @@
 				AD391C9E20D16FA8007EE22A /* RequestViewModel.swift in Sources */,
 				AD391C2B20D16EFA007EE22A /* SignalProtocol.swift in Sources */,
 				AD0D5DEB210DCC6300D11D0B /* StackedLayout.swift in Sources */,
-				AD391C2F20D16EFA007EE22A /* UIButton.swift in Sources */,
 				ADDD13B92119CEB40035D2F9 /* UIStackView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -2737,8 +2730,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				ADFD8DC4212E92F1005CA8FD /* UIButton.swift in Sources */,
 				AD391D5720D28528007EE22A /* MessagesRequestViewController.swift in Sources */,
+				ADFD8DC3212E92A7005CA8FD /* SegmentButton.swift in Sources */,
 				AD391D4420D17FA9007EE22A /* MessagesViewController.swift in Sources */,
+				ADD5B016212E926B00BEA24D /* GradientLoadingButtonView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

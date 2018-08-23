@@ -5,60 +5,65 @@
 //  Copyright © 2018 Otto Suess. All rights reserved.
 //
 
-import Lightning
 import UIKit
 
-extension UIStoryboard {
-    static func instantiateOpenChannelViewController(with openChannelViewModel: OpenChannelViewModel) -> OpenChannelViewController {
-        let viewController = Storyboard.openChannel.initial(viewController: OpenChannelViewController.self)
-        viewController.openChannelViewModel = openChannelViewModel
-        return viewController
+final class OpenChannelViewController: ModalDetailViewController {
+    private let viewModel: OpenChannelViewModel
+    private weak var openButton: CallbackButton?
+    
+    init(viewModel: OpenChannelViewModel) {
+        self.viewModel = viewModel
+        super.init(nibName: nil, bundle: nil)
     }
-}
-
-final class OpenChannelViewController: ModalViewController, ContentHeightProviding, QRCodeScannerChildViewController {
-    weak var delegate: QRCodeScannerChildDelegate?
     
-    @IBOutlet private weak var helpLabel: UILabel!
-    @IBOutlet private weak var helpImageView: UIImageView!
-    @IBOutlet private weak var amountInputView: AmountInputView!
-    @IBOutlet private weak var gradientLoadingButton: GradientLoadingButtonView!
-    
-    fileprivate var openChannelViewModel: OpenChannelViewModel?
-    let contentHeight: CGFloat? = 550 // ContentHeightProviding
+    required init?(coder aDecoder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
+
+        contentStackView.addArrangedElement(.label(text: "scene.open_channel.title".localized, style: Style.Label.headline.with({ $0.textAlignment = .center })))
+        contentStackView.addArrangedElement(.separator)
+
+        contentStackView.addArrangedElement(.verticalStackView(content: [
+            .label(text: "scene.open_channel.channel_uri_label".localized, style: Style.Label.headline),
+            .label(text: viewModel.lightningNodeURI.stringValue, style: Style.Label.body)
+        ], spacing: -5))
+        contentStackView.addArrangedElement(.separator)
         
-        Style.Label.custom().apply(to: helpLabel)
+        let amountInputView = AmountInputView()
+        amountInputView.backgroundColor = UIColor.Zap.seaBlue
+        amountInputView.textColor = UIColor.Zap.white
+        amountInputView.addTarget(self, action: #selector(updateAmount(_:)), for: .valueChanged)
+        amountInputView.satoshis = viewModel.amount
+        amountInputView.validRange = viewModel.validRange
         
-        helpImageView.tintColor = UIColor.Zap.black
-        helpLabel.text = "scene.open_channel.help_label".localized
+        contentStackView.addArrangedSubview(amountInputView)
         
-        gradientLoadingButton.title = "scene.open_channel.add_button".localized
-        
-        amountInputView.satoshis = 1000000
-        amountInputView.validRange = (LndConstants.minChannelSize...LndConstants.maxChannelSize)
+        openButton = contentStackView.addArrangedElement(.customHeight(56, element: .button(title: "scene.open_channel.add_button".localized, style: Style.Button.background, callback: { [weak self] button in
+            button.isEnabled = false
+            self?.openChannel()
+        }))) as? CallbackButton
     }
     
-    @IBAction private func presentHelp(_ sender: Any) {
-        print("halp")
-    }
-    
-    @IBAction private func updateAmount(_ sender: Any) {
-        openChannelViewModel?.amount = amountInputView.satoshis
-    }
-    
-    @IBAction private func openChannel(_ sender: Any) {
-        openChannelViewModel?.openChannel { [weak self] result in
-            if let error = result.error {
-                DispatchQueue.main.async {
-                    self?.delegate?.presentError(message: error.localizedDescription)
-                    self?.gradientLoadingButton.isLoading = false
+    @objc private func openChannel() {
+        viewModel.openChannel { [weak self] result in
+            
+            DispatchQueue.main.async {
+                self?.openButton?.isEnabled = true
+                switch result {
+                case .success:
+                    self?.dismissParent()
+                case .failure(let error):
+                    guard let error = error as? LocalizedError else { return }
+                    self?.view.superview?.presentErrorToast(error.localizedDescription)
                 }
-            } else {
-                self?.dismiss(animated: true, completion: nil)
             }
         }
-    }    
+    }
+    
+    @objc private func updateAmount(_ sender: AmountInputView) {
+        viewModel.amount = sender.satoshis
+    }
 }

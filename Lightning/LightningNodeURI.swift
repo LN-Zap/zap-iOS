@@ -11,6 +11,10 @@ public struct LightningNodeURI {
     public let pubKey: String
     public let host: String
 
+    public var stringValue: String {
+        return "\(pubKey):\(host)"
+    }
+    
     public init?(string: String) {
         let parts = string
             .split { [":", "@", " "].contains(String($0)) }

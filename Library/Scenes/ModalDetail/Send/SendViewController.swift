@@ -49,7 +49,7 @@ final class SendViewController: ModalDetailViewController {
             contentStackView.addArrangedElement(.separator)
         }
         
-        sendButton = contentStackView.addArrangedElement(.customHeight(56, element: .button(title: "Send", style: Style.Button.background, callback: { [weak self] button in
+        sendButton = contentStackView.addArrangedElement(.customHeight(56, element: .button(title: "scene.send.send_button".localized, style: Style.Button.background, callback: { [weak self] button in
             button.isEnabled = false
             self?.viewModel.send { self?.handleSendResult($0, button: button) }
         }))) as? CallbackButton
@@ -75,10 +75,8 @@ final class SendViewController: ModalDetailViewController {
             case .success:
                 self.dismissParent()
             case .failure(let error):
-                guard let error = error as? LocalizedError,
-                    let errorMessage = error.errorDescription
-                    else { return }
-                self.view.superview?.presentErrorToast(errorMessage)
+                guard let error = error as? LocalizedError else { return }
+                self.view.superview?.presentErrorToast(error.localizedDescription)
             }
         }
 

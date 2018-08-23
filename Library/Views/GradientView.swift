@@ -7,7 +7,7 @@
 
 import UIKit
 
-final class GradientView: UIView {
+public final class GradientView: UIView {
     enum Direction {
         case horizontal
         case diagonal
@@ -32,12 +32,12 @@ final class GradientView: UIView {
         return CAGradientLayer.classForCoder()
     }
     
-    override init(frame: CGRect) {
+    override public init(frame: CGRect) {
         super.init(frame: frame)
         setup()
     }
     
-    required init?(coder aDecoder: NSCoder) {
+    public required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
         setup()
     }

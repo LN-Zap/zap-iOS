@@ -29,7 +29,7 @@ extension UIView {
         ])
     }
     
-    func constrainEdges(to view: UIView) {
+    public func constrainEdges(to view: UIView) {
         NSLayoutConstraint.activate([
             self.topAnchor.constraint(equalTo: view.topAnchor),
             self.bottomAnchor.constraint(equalTo: view.bottomAnchor),
