@@ -1,6 +1,6 @@
 "generic.memo.placeholder" = "What is this for?";
-"generic.qr_code.copy_button" = "Copy";
-"generic.qr_code.share_button" = "Share";
+"generic.qr_code.copy_button" = "Copier";
+"generic.qr_code.share_button" = "Partager";
 
 "link.help" = "https://ln-zap.github.io/zap-tutorials/";
 "link.help.zapconnect" = "https://ln-zap.github.io/zap-tutorials/iOS-remote-node-setup";
@@ -94,8 +94,8 @@
 
 "scene.send.title" = "Envoyer";
 "scene.send.send_button" = "Envoyer";
-"scene.send.address_headline" = "To:";
-"scene.send.memo_headline" = "Memo:";
+"scene.send.address_headline" = "À :";
+"scene.send.memo_headline" = "Note :";
 
 "scene.send.lightning.title" = "Send Lightning Payment";
 "scene.send.on_chain.title" = "Send On Chain";
@@ -139,7 +139,7 @@
 "scene.main.receive_button" = "Recevoir";
 "scene.main.exchange_rate_label" = "%@ par BTC";
 
-"scene.qr_code_detail.title" = "Receive";
+"scene.qr_code_detail.title" = "Recevoir";
 
 "scene.sync.description_label" = "Synchronisation à la blockchain…";
 "scene.sync.disconnect_bar_button" = "Déconnexion";
