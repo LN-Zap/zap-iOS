@@ -5,6 +5,7 @@
 //  Copyright © 2018 Zap. All rights reserved.
 //
 
+import Library
 import UIKit
 
 public final class GradientLoadingButtonView: UIControl {

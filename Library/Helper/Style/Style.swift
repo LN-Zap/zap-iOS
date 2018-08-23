@@ -7,10 +7,10 @@
 
 import UIKit
 
-struct UIViewStyle<T: UIView> {
+public struct UIViewStyle<T: UIView> {
     let styling: (T) -> Void
     
-    func apply(to view: T) {
+    public func apply(to view: T) {
         styling(view)
     }
     
@@ -35,7 +35,7 @@ struct UIViewStyle<T: UIView> {
     }
 }
 
-enum Style {
+public enum Style {
     enum Label {
         static func custom(
             color: UIColor = UIColor.Zap.black,
@@ -82,8 +82,8 @@ enum Style {
         }
     }
     
-    enum Button {
-        static func custom(color: UIColor = UIColor.Zap.lightningOrange, fontSize: CGFloat = 17) -> UIViewStyle<UIButton> {
+    public enum Button {
+        public static func custom(color: UIColor = UIColor.Zap.lightningOrange, fontSize: CGFloat = 17) -> UIViewStyle<UIButton> {
             return UIViewStyle<UIButton> {
                 $0.titleLabel?.font = UIFontMetrics(forTextStyle: .body).scaledFont(for: UIFont.Zap.regular.withSize(fontSize))
                 $0.setTitleColor(color, for: .normal)

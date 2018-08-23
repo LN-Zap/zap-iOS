@@ -21,7 +21,7 @@ struct OpenChannelQRCodeScannerStrategy: QRCodeScannerStrategy {
     func viewControllerForAddress(address: String, callback: @escaping (Result<UIViewController>) -> Void) {
         if let nodeURI = LightningNodeURI(string: address) {
             let openChannelViewModel = OpenChannelViewModel(lightningService: lightningService, lightningNodeURI: nodeURI)
-            callback(.success(UIStoryboard.instantiateOpenChannelViewController(with: openChannelViewModel)))
+            callback(.success(OpenChannelViewController(viewModel: openChannelViewModel)))
         } else {
             callback(.failure(InvoiceError.unknownFormat))
         }

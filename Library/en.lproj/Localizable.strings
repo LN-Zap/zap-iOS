@@ -88,8 +88,8 @@
 "scene.channels.close_success.toast" = "Channel is closing.";
 
 "scene.open_channel.title" = "Open Channel";
-"scene.open_channel.help_label" = "Fund connection";
-"scene.open_channel.add_button" = "Add";
+"scene.open_channel.channel_uri_label" = "Channel:";
+"scene.open_channel.add_button" = "Open Channel";
 
 "scene.balance.title" = "Balance";
 "scene.balance.label.on_chain" = "Ƀ";
