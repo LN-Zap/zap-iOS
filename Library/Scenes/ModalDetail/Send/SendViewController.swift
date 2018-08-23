@@ -34,7 +34,7 @@ final class SendViewController: ModalDetailViewController {
         contentStackView.addArrangedElement(.label(text: viewModel.method.headline, style: Style.Label.headline.with({ $0.textAlignment = .center })))
         contentStackView.addArrangedElement(.separator)
         contentStackView.addArrangedElement(.horizontalStackView(content: [
-            .label(text: "To:", style: Style.Label.headline),
+            .label(text: "scene.send.address_headline".localized, style: Style.Label.headline),
             .label(text: viewModel.receiver, style: Style.Label.body)
         ]))
         contentStackView.addArrangedElement(.separator)
@@ -43,7 +43,7 @@ final class SendViewController: ModalDetailViewController {
         
         if let memo = viewModel.memo {
             contentStackView.addArrangedElement(.verticalStackView(content: [
-                .label(text: "Memo:", style: Style.Label.headline),
+                .label(text: "scene.send.memo_headline".localized, style: Style.Label.headline),
                 .label(text: memo, style: Style.Label.body)
             ], spacing: -5))
             contentStackView.addArrangedElement(.separator)

@@ -11,7 +11,7 @@ import Foundation
 final class BlockExplorerSelectionSettingsItem: DetailDisclosureSettingsItem, SubtitleSettingsItem {
     var subtitle = Settings.shared.blockExplorer.map { Optional($0.localized) }
     
-    var title = "Block Explorer"
+    var title = "scene.settings.item.block_explorer.title".localized
     
     func didSelectItem(from fromViewController: UIViewController) {
         
