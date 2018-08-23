@@ -98,7 +98,7 @@
 "scene.setup_pin.top_label.validate" = "Enter the pin again to validate.";
 
 "scene.confirm_mnemonic.title" = "Confirm Seed";
-"scene.confirm_mnemonic.description" = "Enter your key.";
+"scene.confirm_mnemonic.description" = "Введіть свій ключ.";
 
 "scene.channel_detail.title" = "Деталі каналу";
 
@@ -108,16 +108,16 @@
 
 "scene.send.lightning.title" = "Надіслати";
 "scene.send.lightning.error.expired" = "Payment Request expired:\n%@";
-"scene.send.lightning.error.duplicate" = "Payment already paid.";
-"scene.send.lightning.memo" = "Memo: %@";
+"scene.send.lightning.error.duplicate" = "Оплата уже проведена.";
+"scene.send.lightning.memo" = "Нотатка: %@";
 
-"scene.connect_remote_node.title" = "Connect Remote Node";
+"scene.connect_remote_node.title" = "Підключитися до віддаленого вузла";
 "scene.connect_remote_node.empty_state" = "Scan the QRCode generate with zapconnect or paste the connection code to connect to your node.";
-"scene.connect_remote_node.url_label" = "Address";
+"scene.connect_remote_node.url_label" = "Адреса";
 "scene.connect_remote_node.certificate_label" = "Certificate";
-"scene.connect_remote_node.connect_button" = "Connect";
-"scene.connect_remote_node.scan_button" = "Scan";
-"scene.connect_remote_node.paste_button" = "Paste";
+"scene.connect_remote_node.connect_button" = "Підключення";
+"scene.connect_remote_node.scan_button" = "Просканувати";
+"scene.connect_remote_node.paste_button" = "Вставити";
 "scene.connect_remote_node.help_button" = "Need Help?";
 "scene.connect_remote_node.server_error" = "Could not connect to server.";
 "scene.connect_remote_node.your_node_title" = "Ваш вузол";
