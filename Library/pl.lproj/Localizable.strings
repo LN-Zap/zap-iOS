@@ -1,10 +1,6 @@
-/* 
-  Localizable.strings
-  Zap
-
-  Created by Otto Suess on 07.02.18.
-  Copyright © 2018 Otto Suess. All rights reserved.
-*/
+"generic.memo.placeholder" = "What is this for?";
+"generic.qr_code.copy_button" = "Copy";
+"generic.qr_code.share_button" = "Share";
 
 "link.help" = "https://ln-zap.github.io/zap-tutorials/";
 "link.help.zapconnect" = "https://ln-zap.github.io/zap-tutorials/iOS-remote-node-setup";
@@ -33,6 +29,7 @@
 
 "transaction.open_channel.memo" = "Otwórz kanał: %@";
 "transaction.close_channel.memo" = "%@ kanał: %@";
+"transaction.no_destination_address" = "No destination address";
 
 "close_type.cooperative_close" = "Zamknij";
 "close_type.local_force_close" = "Force Close";
@@ -52,9 +49,7 @@
 "scene.settings.section.wallet" = "Portfel";
 "scene.settings.item.bitcoin_unit" = "Bitcoin Unit";
 "scene.settings.item.currency" = "Waluta";
-"scene.settings.item.network" = "Sieci";
 "scene.settings.item.block_explorer" = "Block Explorer";
-"scene.settings.item.lock_wallet" = "Zablokuj portfel";
 "scene.settings.item.on_chain_request_address.title" = "Rodzaj adresu";
 "scene.settings.item.on_chain_request_address.bech32" = "Bech32";
 "scene.settings.item.on_chain_request_address.p2sh" = "P2SH";
@@ -63,14 +58,14 @@
 "scene.settings.item.report_issue" = "Zgłoś problem";
 "scene.settings.item.help" = "Potrzebujesz pomocy?";
 
-"scene.deposit.send" = "Wyślij";
-"scene.deposit.title" = "Otrzymaj";
-
 "scene.request.title" = "Otrzymaj";
 "scene.request.lightning_button" = "Lightning";
+"scene.request.or_separator_label" = "or";
 "scene.request.on_chain_button" = "On-chain";
-"scene.request.memo_placeholder" = "Notatka (opcjonalnie)";
 "scene.request.generate_request_button" = "Wygeneruj Żądanie";
+"scene.request.lightning_header_title" = "Lightning Payment Request";
+"scene.request.on_chain_header_title" = "On Chain Payment Request";
+"scene.request.next_button_title" = "Next";
 
 "scene.channels.title" = "Kanały";
 "scene.channels.close.title" = "Zamknij kanał";
@@ -83,11 +78,8 @@
 "scene.channels.close_success.toast" = "Kanał jest zamykany.";
 
 "scene.open_channel.title" = "Otwórz kanał";
-"scene.open_channel.help_label" = "Fund connection";
-"scene.open_channel.add_button" = "Dodaj";
-
-"scene.balance.title" = "Saldo";
-"scene.balance.label.on_chain" = "Ƀ";
+"scene.open_channel.channel_uri_label" = "Channel:";
+"scene.open_channel.add_button" = "Open Channel";
 
 "scene.pin.biometric.fallback.title" = "Użyj kod dostępu";
 "scene.pin.biometric.reason" = "To access the secure data";
@@ -100,16 +92,13 @@
 "scene.confirm_mnemonic.title" = "Potwierdź Seed";
 "scene.confirm_mnemonic.description" = "Wprowadź klucz.";
 
-"scene.channel_detail.title" = "Szczegóły kanału";
-
 "scene.send.title" = "Wyślij";
 "scene.send.send_button" = "Wyślij";
-"scene.send.error.invalid_payment_request" = "Nieprawidłowe żądanie płatności";
+"scene.send.address_headline" = "To:";
+"scene.send.memo_headline" = "Memo:";
 
-"scene.send.lightning.title" = "Wyślij";
-"scene.send.lightning.error.expired" = "Żądanie płatności wygasło: %@";
-"scene.send.lightning.error.duplicate" = "Płatność już uiszczona.";
-"scene.send.lightning.memo" = "Notatka: %@";
+"scene.send.lightning.title" = "Send Lightning Payment";
+"scene.send.on_chain.title" = "Send On Chain";
 
 "scene.connect_remote_node.title" = "Połącz Ze Zdalnym Nodem";
 "scene.connect_remote_node.empty_state" = "Zeskanuj kode QR wygenerowany przez zapconnect lub wklej kod do połączenia ze swoim nodem.";
@@ -124,7 +113,6 @@
 "scene.connect_remote_node.certificate_detail.certificate_title" = "Certyfikat";
 "scene.connect_remote_node.certificate_detail.macaroon_title" = "Macaroon";
 "scene.connect_remote_node.edit_url.title" = "Adres";
-
 
 "scene.create_wallet.title" = "Stwórz Portfel";
 "scene.create_wallet.description_label" = "Zapisz i przechowuj swój mnemonik w bezpiecznym miejscu.";
@@ -144,14 +132,14 @@
 "scene.select_wallet_connection.connect.message" = "zdalny node";
 "scene.select_wallet_connection.disabled_alert.title" = "Przepraszamy!";
 "scene.select_wallet_connection.disabled_alert.message" = "Uruchamianie Lnd na telefonie jest zablokowane w wersji beta. Połącz się ze zdalnym nodem.";
+"scene.select_wallet_connection.disabled_alert.ok_button" = "Ok";
 "scene.select_wallet_connection.create.help" = "Potrzebujesz pomocy?";
 
 "scene.main.send_button" = "Wyślij";
 "scene.main.receive_button" = "Otrzymaj";
 "scene.main.exchange_rate_label" = "%@ per BTC";
 
-"scene.qr_code_detail.method_label.lightning" = "Lightning";
-"scene.qr_code_detail.method_label.on_chain" = "On-chain";
+"scene.qr_code_detail.title" = "Receive";
 
 "scene.sync.description_label" = "Synchronizacji z blockchainem...";
 "scene.sync.disconnect_bar_button" = "Rozłącz";
@@ -166,8 +154,6 @@
 "scene.transaction_detail.archive_button" = "Archiwizuj";
 "scene.transaction_detail.unarchive_button" = "Przywróć z archiwum";
 "scene.transaction_detail.memo_label" = "Notatka";
-"scene.transaction_detail.qr_code.copy_button" = "Kopiuj";
-"scene.transaction_detail.qr_code.share_button" = "Udostępnij";
 "scene.transaction_detail.qr_code.expired_label" = "Expired";
 "scene.transaction_detail.amount.unspecified_label" = "Nieokreślona";
 "scene.transaction_detail.amount_label" = "Kwota";
@@ -188,7 +174,6 @@
 "scene.channel_detail.local_balance_label" = "Lokalne saldo";
 "scene.channel_detail.remote_balance_label" = "Zdalne saldo";
 "scene.channel_detail.closing_time.label" = "Zamknięcia za";
-"scene.channel_detail.closing_time.data" = "%d bloków (%@)";
 "scene.channel_detail.funding_transaction_label" = "Transakcja otwierająca";
 "scene.channel_detail.close_button" = "Close Channel";
 "scene.channel_detail.force_close_button" = "Force Close Channel";
