@@ -1,10 +1,6 @@
-/* 
-  Localizable.strings
-  Zap
-
-  Created by Otto Suess on 07.02.18.
-  Copyright © 2018 Otto Suess. All rights reserved.
-*/
+"generic.memo.placeholder" = "What is this for?";
+"generic.qr_code.copy_button" = "Copy";
+"generic.qr_code.share_button" = "Share";
 
 "link.help" = "https://ln-zap.github.io/zap-tutorials/";
 "link.help.zapconnect" = "https://ln-zap.github.io/zap-tutorials/iOS-remote-node-setup";
@@ -33,6 +29,7 @@
 
 "transaction.open_channel.memo" = "Otvori kanal: %@";
 "transaction.close_channel.memo" = "%@ Kanal: %@";
+"transaction.no_destination_address" = "No destination address";
 
 "close_type.cooperative_close" = "Zatvori";
 "close_type.local_force_close" = "Prisilno zatvori";
@@ -52,9 +49,7 @@
 "scene.settings.section.wallet" = "Novčanik";
 "scene.settings.item.bitcoin_unit" = "Bitkoin jedinica";
 "scene.settings.item.currency" = "Valuta";
-"scene.settings.item.network" = "Mreža";
 "scene.settings.item.block_explorer" = "Blok preglednik";
-"scene.settings.item.lock_wallet" = "Zaključaj novčanik";
 "scene.settings.item.on_chain_request_address.title" = "Tip bitkoin adrese";
 "scene.settings.item.on_chain_request_address.bech32" = "Bech32";
 "scene.settings.item.on_chain_request_address.p2sh" = "P2SH";
@@ -63,14 +58,14 @@
 "scene.settings.item.report_issue" = "Prijavi problem";
 "scene.settings.item.help" = "Trebate li pomoć?";
 
-"scene.deposit.send" = "Slanje";
-"scene.deposit.title" = "Primanje";
-
 "scene.request.title" = "Primanje";
 "scene.request.lightning_button" = "Munja";
+"scene.request.or_separator_label" = "or";
 "scene.request.on_chain_button" = "Na-lanac";
-"scene.request.memo_placeholder" = "Bilješka (opcija)";
 "scene.request.generate_request_button" = "Generiraj zahtjev";
+"scene.request.lightning_header_title" = "Lightning Payment Request";
+"scene.request.on_chain_header_title" = "On Chain Payment Request";
+"scene.request.next_button_title" = "Next";
 
 "scene.channels.title" = "Kanali";
 "scene.channels.close.title" = "Zatvori kanal";
@@ -80,15 +75,11 @@
 "scene.channels.alert.cancel" = "Odustani";
 "scene.channels.alert.close" = "Zatvori";
 "scene.channels.alert.force_close" = "Force Close";
-"scene.channels.row_action.close" = "Zatvori kanal";
 "scene.channels.close_success.toast" = "Kanal se zatvara.";
 
 "scene.open_channel.title" = "Otvori kanal";
-"scene.open_channel.help_label" = "Novci veze";
-"scene.open_channel.add_button" = "Dodaj";
-
-"scene.balance.title" = "Saldo";
-"scene.balance.label.on_chain" = "₿";
+"scene.open_channel.channel_uri_label" = "Channel:";
+"scene.open_channel.add_button" = "Open Channel";
 
 "scene.pin.biometric.fallback.title" = "Koristiti zaporku";
 "scene.pin.biometric.reason" = "Za pristup zaštićenim podacima";
@@ -101,16 +92,13 @@
 "scene.confirm_mnemonic.title" = "Potvrdite niz";
 "scene.confirm_mnemonic.description" = "Unesite vaš ključ.";
 
-"scene.channel_detail.title" = "Detalji kanala";
-
 "scene.send.title" = "Slanje";
 "scene.send.send_button" = "Slanje";
-"scene.send.error.invalid_payment_request" = "Nevaljan zahtjev za plaćanje";
+"scene.send.address_headline" = "To:";
+"scene.send.memo_headline" = "Memo:";
 
-"scene.send.lightning.title" = "Slanje";
-"scene.send.lightning.error.expired" = "Zahtjev za plaćanje istekao:\n%@";
-"scene.send.lightning.error.duplicate" = "Plaćanje je već plaćeno.";
-"scene.send.lightning.memo" = "Bilješka: %@";
+"scene.send.lightning.title" = "Send Lightning Payment";
+"scene.send.on_chain.title" = "Send On Chain";
 
 "scene.connect_remote_node.title" = "Povezivanje udaljenog čvora";
 "scene.connect_remote_node.empty_state" = "Skenirajte QRCode generiran sa zapconnect ili zalijepite kôd veze za povezivanje na tvoj čvor.";
@@ -125,7 +113,6 @@
 "scene.connect_remote_node.certificate_detail.certificate_title" = "Certifikat";
 "scene.connect_remote_node.certificate_detail.macaroon_title" = "Makaron";
 "scene.connect_remote_node.edit_url.title" = "Adresa";
-
 
 "scene.create_wallet.title" = "Stvaranje novčanika";
 "scene.create_wallet.description_label" = "Obavezno pohranite mnemonički niz na sigurno mjesto.";
@@ -145,14 +132,14 @@
 "scene.select_wallet_connection.connect.message" = "udaljeni čvor";
 "scene.select_wallet_connection.disabled_alert.title" = "Žao mi je!";
 "scene.select_wallet_connection.disabled_alert.message" = "Izvođenje Lnd na mobitelu je onemogućeno u ovoj beti. Umjesto toga povežite sa na udaljeni čvor.";
+"scene.select_wallet_connection.disabled_alert.ok_button" = "Ok";
 "scene.select_wallet_connection.create.help" = "Trebate li pomoć?";
 
 "scene.main.send_button" = "Slanje";
 "scene.main.receive_button" = "Primanje";
 "scene.main.exchange_rate_label" = "%@ per BTC";
 
-"scene.qr_code_detail.method_label.lightning" = "Munja";
-"scene.qr_code_detail.method_label.on_chain" = "Na lanac";
+"scene.qr_code_detail.title" = "Receive";
 
 "scene.sync.description_label" = "Sinkronizacija na blokčein…";
 "scene.sync.disconnect_bar_button" = "Prekinuti vezu";
@@ -167,8 +154,6 @@
 "scene.transaction_detail.archive_button" = "Arhiviraj";
 "scene.transaction_detail.unarchive_button" = "Dearhiviraj";
 "scene.transaction_detail.memo_label" = "Bilješka";
-"scene.transaction_detail.qr_code.copy_button" = "Kopiraj";
-"scene.transaction_detail.qr_code.share_button" = "Dijeli";
 "scene.transaction_detail.qr_code.expired_label" = "Rok je istekao";
 "scene.transaction_detail.amount.unspecified_label" = "Neodređeno";
 "scene.transaction_detail.amount_label" = "Iznos";
@@ -189,10 +174,9 @@
 "scene.channel_detail.local_balance_label" = "Lokalni saldo";
 "scene.channel_detail.remote_balance_label" = "Udaljeni saldo";
 "scene.channel_detail.closing_time.label" = "Zatvaranje";
-"scene.channel_detail.closing_time.data" = "%d blokovi (%@)";
 "scene.channel_detail.funding_transaction_label" = "Financiranje transakcije";
-"scene.channel_detail.close_button" = "Zatvori";
-"scene.channel_detail.force_close_button" = "Prisilno zatvaranje";
+"scene.channel_detail.close_button" = "Close Channel";
+"scene.channel_detail.force_close_button" = "Force Close Channel";
 
 "scene.filter.title" = "Filter transakcija";
 "scene.filter.section_header.transaction_types" = "Vrste transakcija";
@@ -202,3 +186,5 @@
 "scene.filter.displayArchivedTransactions" = "Arhivirane transakcije";
 
 "scene.qrcode_scanner.top_label" = "Scan QR-Code";
+
+"scene.wallet.title" = "Wallet";
