@@ -1,10 +1,6 @@
-/* 
-  Localizable.strings
-  Zap
-
-  Created by Otto Suess on 07.02.18.
-  Copyright © 2018 Otto Suess. All rights reserved.
-*/
+"generic.memo.placeholder" = "What is this for?";
+"generic.qr_code.copy_button" = "Copy";
+"generic.qr_code.share_button" = "Share";
 
 "link.help" = "https://ln-zap.github.io/zap-tutorials/";
 "link.help.zapconnect" = "https://ln-zap.github.io/zap-tutorials/iOS-remote-node-setup";
@@ -33,6 +29,7 @@
 
 "transaction.open_channel.memo" = "Öppna kanal: %@";
 "transaction.close_channel.memo" = "%@ Kanal: %@";
+"transaction.no_destination_address" = "No destination address";
 
 "close_type.cooperative_close" = "Stäng";
 "close_type.local_force_close" = "Tvingad stängning";
@@ -52,9 +49,7 @@
 "scene.settings.section.wallet" = "Wallet";
 "scene.settings.item.bitcoin_unit" = "Bitcoinenhet";
 "scene.settings.item.currency" = "Valuta";
-"scene.settings.item.network" = "Nätverk";
 "scene.settings.item.block_explorer" = "Blockutforskare";
-"scene.settings.item.lock_wallet" = "Lås Wallet";
 "scene.settings.item.on_chain_request_address.title" = "Bitcoin Adresstyp";
 "scene.settings.item.on_chain_request_address.bech32" = "Bech32";
 "scene.settings.item.on_chain_request_address.p2sh" = "P2SH";
@@ -63,14 +58,14 @@
 "scene.settings.item.report_issue" = "Rapportera ett problem";
 "scene.settings.item.help" = "Behöver du hjälp?";
 
-"scene.deposit.send" = "Skicka";
-"scene.deposit.title" = "Ta emot";
-
 "scene.request.title" = "Ta emot";
 "scene.request.lightning_button" = "Lightning";
+"scene.request.or_separator_label" = "or";
 "scene.request.on_chain_button" = "On-chain";
-"scene.request.memo_placeholder" = "Memo (frivilligt)";
 "scene.request.generate_request_button" = "Skapa begäran";
+"scene.request.lightning_header_title" = "Lightning Payment Request";
+"scene.request.on_chain_header_title" = "On Chain Payment Request";
+"scene.request.next_button_title" = "Next";
 
 "scene.channels.title" = "Kanaler";
 "scene.channels.close.title" = "Stäng kanal";
@@ -83,11 +78,8 @@
 "scene.channels.close_success.toast" = "Kanalen stängs.";
 
 "scene.open_channel.title" = "Öppna kanal";
-"scene.open_channel.help_label" = "Finansiera anslutning";
-"scene.open_channel.add_button" = "Lägg till";
-
-"scene.balance.title" = "Balans";
-"scene.balance.label.on_chain" = "Ƀ";
+"scene.open_channel.channel_uri_label" = "Channel:";
+"scene.open_channel.add_button" = "Open Channel";
 
 "scene.pin.biometric.fallback.title" = "Använd PIN-kod";
 "scene.pin.biometric.reason" = "Få åtkomst till den säkra datan";
@@ -100,16 +92,13 @@
 "scene.confirm_mnemonic.title" = "Bekräfta seeden";
 "scene.confirm_mnemonic.description" = "Ange din kod.";
 
-"scene.channel_detail.title" = "Kanalinfo";
-
 "scene.send.title" = "Skicka";
 "scene.send.send_button" = "Skicka";
-"scene.send.error.invalid_payment_request" = "Ogiltig betalningsbegäran";
+"scene.send.address_headline" = "To:";
+"scene.send.memo_headline" = "Memo:";
 
-"scene.send.lightning.title" = "Skicka";
-"scene.send.lightning.error.expired" = "Betalningsbegäran har utgått:\n%@";
-"scene.send.lightning.error.duplicate" = "Betalning redan betald.";
-"scene.send.lightning.memo" = "Memo: %@";
+"scene.send.lightning.title" = "Send Lightning Payment";
+"scene.send.on_chain.title" = "Send On Chain";
 
 "scene.connect_remote_node.title" = "Anslut Fjärrnod";
 "scene.connect_remote_node.empty_state" = "Skanna QR-koden genererad med zapconnect eller klistra in anslutningskoden för att ansluta till din nod.";
@@ -124,7 +113,6 @@
 "scene.connect_remote_node.certificate_detail.certificate_title" = "Certifikat";
 "scene.connect_remote_node.certificate_detail.macaroon_title" = "Macaroon";
 "scene.connect_remote_node.edit_url.title" = "Adress";
-
 
 "scene.create_wallet.title" = "Skapa ny plånbok";
 "scene.create_wallet.description_label" = "Se till att lagra mnemonicen på en säker plats.";
@@ -144,14 +132,14 @@
 "scene.select_wallet_connection.connect.message" = "fjärrnod";
 "scene.select_wallet_connection.disabled_alert.title" = "Tyvärr!";
 "scene.select_wallet_connection.disabled_alert.message" = "Användandet av Lnd på mobiltelefon är inaktiverat i denna betaversion. Anslut till en fjärrnod istället.";
+"scene.select_wallet_connection.disabled_alert.ok_button" = "Ok";
 "scene.select_wallet_connection.create.help" = "Behöver du hjälp?";
 
 "scene.main.send_button" = "Skicka";
 "scene.main.receive_button" = "Ta emot";
 "scene.main.exchange_rate_label" = "%@ per BTC";
 
-"scene.qr_code_detail.method_label.lightning" = "Lightning";
-"scene.qr_code_detail.method_label.on_chain" = "On-chain";
+"scene.qr_code_detail.title" = "Receive";
 
 "scene.sync.description_label" = "Synkroniserar med blockkedjan…";
 "scene.sync.disconnect_bar_button" = "Koppla från";
@@ -166,8 +154,6 @@
 "scene.transaction_detail.archive_button" = "Arkivet";
 "scene.transaction_detail.unarchive_button" = "Uppackning";
 "scene.transaction_detail.memo_label" = "Memo";
-"scene.transaction_detail.qr_code.copy_button" = "Kopiera";
-"scene.transaction_detail.qr_code.share_button" = "Dela";
 "scene.transaction_detail.qr_code.expired_label" = "Utgången";
 "scene.transaction_detail.amount.unspecified_label" = "Ospecificerad";
 "scene.transaction_detail.amount_label" = "Belopp";
@@ -188,7 +174,6 @@
 "scene.channel_detail.local_balance_label" = "Lokal balans";
 "scene.channel_detail.remote_balance_label" = "Fjärrbalans";
 "scene.channel_detail.closing_time.label" = "Stänger om";
-"scene.channel_detail.closing_time.data" = "%d block (%@)";
 "scene.channel_detail.funding_transaction_label" = "Finansierar transaktion";
 "scene.channel_detail.close_button" = "Close Channel";
 "scene.channel_detail.force_close_button" = "Force Close Channel";
