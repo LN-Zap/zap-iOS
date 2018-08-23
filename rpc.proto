@@ -1129,11 +1129,10 @@ message PendingUpdate {
 }
 
 message OpenChannelRequest {
-
     /// The pubkey of the node to open a channel with
     bytes node_pubkey = 2 [json_name = "node_pubkey"];
 
-    /// The hex encoded pubkey of the node to open a channel with 
+    /// The hex encoded pubkey of the node to open a channel with
     string node_pubkey_string = 3 [json_name = "node_pubkey_string"];
 
     /// The number of satoshis the wallet should commit to the channel
@@ -1156,6 +1155,9 @@ message OpenChannelRequest {
 
     /// The delay we require on the remote's commitment transaction. If this is not set, it will be scaled automatically with the channel size.
     uint32 remote_csv_delay = 10 [json_name = "remote_csv_delay"];
+
+    /// The minimum number of confirmations each one of your outputs used for the funding transaction must satisfy.
+    int32 min_confs = 11 [json_name = "min_confs"];
 }
 message OpenStatusUpdate {
     oneof update {
@@ -1705,12 +1707,33 @@ message PaymentHash {
     /// The payment hash of the invoice to be looked up.
     bytes r_hash = 2 [json_name = "r_hash"];
 }
+
 message ListInvoiceRequest {
-    /// Toggles if all invoices should be returned, or only those that are currently unsettled.
-    bool pending_only = 1;
+    /// If set, only unsettled invoices will be returned in the response.
+    bool pending_only = 1 [json_name = "pending_only"];
+
+    /**
+    The offset in the time series to start at. As each response can only contain
+    50k invoices, callers can use this to skip around within a packed time
+    series.
+    */
+    uint32 index_offset = 4 [json_name = "index_offset"];
+
+    /// The max number of invoices to return in the response to this query.
+    uint32 num_max_invoices = 5 [json_name = "num_max_invoices"];
 }
 message ListInvoiceResponse {
+    /**
+    A list of invoices from the time slice of the time series specified in the
+    request.
+    */
     repeated Invoice invoices = 1 [json_name = "invoices"];
+
+    /**
+    The index of the last time in the set of returned invoices. Can be used to
+    seek further, pagination style.
+    */
+    uint32 last_index_offset = 2 [json_name = "last_index_offset"];
 }
 
 message InvoiceSubscription {

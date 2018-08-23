@@ -1297,7 +1297,7 @@ struct Lnrpc_OpenChannelRequest {
   //// The pubkey of the node to open a channel with
   var nodePubkey: Data = SwiftProtobuf.Internal.emptyData
 
-  //// The hex encoded pubkey of the node to open a channel with 
+  //// The hex encoded pubkey of the node to open a channel with
   var nodePubkeyString: String = String()
 
   //// The number of satoshis the wallet should commit to the channel
@@ -1320,6 +1320,9 @@ struct Lnrpc_OpenChannelRequest {
 
   //// The delay we require on the remote's commitment transaction. If this is not set, it will be scaled automatically with the channel size.
   var remoteCsvDelay: UInt32 = 0
+
+  //// The minimum number of confirmations each one of your outputs used for the funding transaction must satisfy.
+  var minConfs: Int32 = 0
 
   var unknownFields = SwiftProtobuf.UnknownStorage()
 
@@ -2487,8 +2490,17 @@ struct Lnrpc_ListInvoiceRequest {
   // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
   // methods supported on all messages.
 
-  //// Toggles if all invoices should be returned, or only those that are currently unsettled.
+  //// If set, only unsettled invoices will be returned in the response.
   var pendingOnly: Bool = false
+
+  ///*
+  ///The offset in the time series to start at. As each response can only contain
+  ///50k invoices, callers can use this to skip around within a packed time
+  ///series.
+  var indexOffset: UInt32 = 0
+
+  //// The max number of invoices to return in the response to this query.
+  var numMaxInvoices: UInt32 = 0
 
   var unknownFields = SwiftProtobuf.UnknownStorage()
 
@@ -2500,7 +2512,15 @@ struct Lnrpc_ListInvoiceResponse {
   // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
   // methods supported on all messages.
 
+  ///*
+  ///A list of invoices from the time slice of the time series specified in the
+  ///request.
   var invoices: [Lnrpc_Invoice] = []
+
+  ///*
+  ///The index of the last time in the set of returned invoices. Can be used to
+  ///seek further, pagination style.
+  var lastIndexOffset: UInt32 = 0
 
   var unknownFields = SwiftProtobuf.UnknownStorage()
 
@@ -5179,6 +5199,7 @@ extension Lnrpc_OpenChannelRequest: SwiftProtobuf.Message, SwiftProtobuf._Messag
     8: .same(proto: "private"),
     9: .same(proto: "min_htlc_msat"),
     10: .same(proto: "remote_csv_delay"),
+    11: .same(proto: "min_confs"),
   ]
 
   mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
@@ -5193,6 +5214,7 @@ extension Lnrpc_OpenChannelRequest: SwiftProtobuf.Message, SwiftProtobuf._Messag
       case 8: try decoder.decodeSingularBoolField(value: &self.`private`)
       case 9: try decoder.decodeSingularInt64Field(value: &self.minHtlcMsat)
       case 10: try decoder.decodeSingularUInt32Field(value: &self.remoteCsvDelay)
+      case 11: try decoder.decodeSingularInt32Field(value: &self.minConfs)
       default: break
       }
     }
@@ -5226,6 +5248,9 @@ extension Lnrpc_OpenChannelRequest: SwiftProtobuf.Message, SwiftProtobuf._Messag
     if self.remoteCsvDelay != 0 {
       try visitor.visitSingularUInt32Field(value: self.remoteCsvDelay, fieldNumber: 10)
     }
+    if self.minConfs != 0 {
+      try visitor.visitSingularInt32Field(value: self.minConfs, fieldNumber: 11)
+    }
     try unknownFields.traverse(visitor: &visitor)
   }
 
@@ -5239,6 +5264,7 @@ extension Lnrpc_OpenChannelRequest: SwiftProtobuf.Message, SwiftProtobuf._Messag
     if self.`private` != other.`private` {return false}
     if self.minHtlcMsat != other.minHtlcMsat {return false}
     if self.remoteCsvDelay != other.remoteCsvDelay {return false}
+    if self.minConfs != other.minConfs {return false}
     if unknownFields != other.unknownFields {return false}
     return true
   }
@@ -7452,13 +7478,17 @@ extension Lnrpc_PaymentHash: SwiftProtobuf.Message, SwiftProtobuf._MessageImplem
 extension Lnrpc_ListInvoiceRequest: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
   static let protoMessageName: String = _protobuf_package + ".ListInvoiceRequest"
   static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
-    1: .standard(proto: "pending_only"),
+    1: .same(proto: "pending_only"),
+    4: .same(proto: "index_offset"),
+    5: .same(proto: "num_max_invoices"),
   ]
 
   mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
     while let fieldNumber = try decoder.nextFieldNumber() {
       switch fieldNumber {
       case 1: try decoder.decodeSingularBoolField(value: &self.pendingOnly)
+      case 4: try decoder.decodeSingularUInt32Field(value: &self.indexOffset)
+      case 5: try decoder.decodeSingularUInt32Field(value: &self.numMaxInvoices)
       default: break
       }
     }
@@ -7468,11 +7498,19 @@ extension Lnrpc_ListInvoiceRequest: SwiftProtobuf.Message, SwiftProtobuf._Messag
     if self.pendingOnly != false {
       try visitor.visitSingularBoolField(value: self.pendingOnly, fieldNumber: 1)
     }
+    if self.indexOffset != 0 {
+      try visitor.visitSingularUInt32Field(value: self.indexOffset, fieldNumber: 4)
+    }
+    if self.numMaxInvoices != 0 {
+      try visitor.visitSingularUInt32Field(value: self.numMaxInvoices, fieldNumber: 5)
+    }
     try unknownFields.traverse(visitor: &visitor)
   }
 
   func _protobuf_generated_isEqualTo(other: Lnrpc_ListInvoiceRequest) -> Bool {
     if self.pendingOnly != other.pendingOnly {return false}
+    if self.indexOffset != other.indexOffset {return false}
+    if self.numMaxInvoices != other.numMaxInvoices {return false}
     if unknownFields != other.unknownFields {return false}
     return true
   }
@@ -7482,12 +7520,14 @@ extension Lnrpc_ListInvoiceResponse: SwiftProtobuf.Message, SwiftProtobuf._Messa
   static let protoMessageName: String = _protobuf_package + ".ListInvoiceResponse"
   static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
     1: .same(proto: "invoices"),
+    2: .same(proto: "last_index_offset"),
   ]
 
   mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
     while let fieldNumber = try decoder.nextFieldNumber() {
       switch fieldNumber {
       case 1: try decoder.decodeRepeatedMessageField(value: &self.invoices)
+      case 2: try decoder.decodeSingularUInt32Field(value: &self.lastIndexOffset)
       default: break
       }
     }
@@ -7497,11 +7537,15 @@ extension Lnrpc_ListInvoiceResponse: SwiftProtobuf.Message, SwiftProtobuf._Messa
     if !self.invoices.isEmpty {
       try visitor.visitRepeatedMessageField(value: self.invoices, fieldNumber: 1)
     }
+    if self.lastIndexOffset != 0 {
+      try visitor.visitSingularUInt32Field(value: self.lastIndexOffset, fieldNumber: 2)
+    }
     try unknownFields.traverse(visitor: &visitor)
   }
 
   func _protobuf_generated_isEqualTo(other: Lnrpc_ListInvoiceResponse) -> Bool {
     if self.invoices != other.invoices {return false}
+    if self.lastIndexOffset != other.lastIndexOffset {return false}
     if unknownFields != other.unknownFields {return false}
     return true
   }
