@@ -1,13 +1,13 @@
-"generic.memo.placeholder" = "What is this for?";
-"generic.qr_code.copy_button" = "Copy";
-"generic.qr_code.share_button" = "Share";
+"generic.memo.placeholder" = "Do czego to służy?";
+"generic.qr_code.copy_button" = "Kopiuj";
+"generic.qr_code.share_button" = "Udostępnij";
 
 "link.help" = "https://ln-zap.github.io/zap-tutorials/";
 "link.help.zapconnect" = "https://ln-zap.github.io/zap-tutorials/iOS-remote-node-setup";
 
 "error.wrong_uri_format" = "Nieznany format linku.";
 "error.wrong_uri_network" = "Próbowałeś utworzyć połączenie z %@, ale Twój node nie ma połączenia z %@.";
-"error.block_explorer.unsupported_network" = "%@ does not support %@.";
+"error.block_explorer.unsupported_network" = "%@ nie obsługuje %@.";
 
 "rpc_connect_qrcode_error.btc_pay_expired" = "Wygląda na to, że czas ważności kodu dobiegł końca.";
 "rpc_connect_qrcode_error.btc_pay_configuration_broken" = "Nie udało się odczytać pliku konfiguracyjnego BTCPay.";
@@ -29,7 +29,7 @@
 
 "transaction.open_channel.memo" = "Otwórz kanał: %@";
 "transaction.close_channel.memo" = "%@ kanał: %@";
-"transaction.no_destination_address" = "No destination address";
+"transaction.no_destination_address" = "Brak adresy docelowego";
 
 "close_type.cooperative_close" = "Zamknij";
 "close_type.local_force_close" = "Force Close";
@@ -60,12 +60,12 @@
 
 "scene.request.title" = "Otrzymaj";
 "scene.request.lightning_button" = "Lightning";
-"scene.request.or_separator_label" = "or";
+"scene.request.or_separator_label" = "lub";
 "scene.request.on_chain_button" = "On-chain";
 "scene.request.generate_request_button" = "Wygeneruj Żądanie";
-"scene.request.lightning_header_title" = "Lightning Payment Request";
-"scene.request.on_chain_header_title" = "On Chain Payment Request";
-"scene.request.next_button_title" = "Next";
+"scene.request.lightning_header_title" = "Żądanie płatności LN";
+"scene.request.on_chain_header_title" = "Żądanie płatności blokchain";
+"scene.request.next_button_title" = "Dalej";
 
 "scene.channels.title" = "Kanały";
 "scene.channels.close.title" = "Zamknij kanał";
@@ -78,8 +78,8 @@
 "scene.channels.close_success.toast" = "Kanał jest zamykany.";
 
 "scene.open_channel.title" = "Otwórz kanał";
-"scene.open_channel.channel_uri_label" = "Channel:";
-"scene.open_channel.add_button" = "Open Channel";
+"scene.open_channel.channel_uri_label" = "Kanał:";
+"scene.open_channel.add_button" = "Otwórz Kanał";
 
 "scene.pin.biometric.fallback.title" = "Użyj kod dostępu";
 "scene.pin.biometric.reason" = "To access the secure data";
@@ -94,11 +94,11 @@
 
 "scene.send.title" = "Wyślij";
 "scene.send.send_button" = "Wyślij";
-"scene.send.address_headline" = "To:";
-"scene.send.memo_headline" = "Memo:";
+"scene.send.address_headline" = "Do:";
+"scene.send.memo_headline" = "Notatka:";
 
-"scene.send.lightning.title" = "Send Lightning Payment";
-"scene.send.on_chain.title" = "Send On Chain";
+"scene.send.lightning.title" = "Wyślij płatność LN";
+"scene.send.on_chain.title" = "Wyślij płatność blokchain";
 
 "scene.connect_remote_node.title" = "Połącz Ze Zdalnym Nodem";
 "scene.connect_remote_node.empty_state" = "Zeskanuj kode QR wygenerowany przez zapconnect lub wklej kod do połączenia ze swoim nodem.";
@@ -137,9 +137,9 @@
 
 "scene.main.send_button" = "Wyślij";
 "scene.main.receive_button" = "Otrzymaj";
-"scene.main.exchange_rate_label" = "%@ per BTC";
+"scene.main.exchange_rate_label" = "%@ za BTC";
 
-"scene.qr_code_detail.title" = "Receive";
+"scene.qr_code_detail.title" = "Otrzymaj";
 
 "scene.sync.description_label" = "Synchronizacji z blockchainem...";
 "scene.sync.disconnect_bar_button" = "Rozłącz";
@@ -187,4 +187,4 @@
 
 "scene.qrcode_scanner.top_label" = "Zeskanuj kod QR";
 
-"scene.wallet.title" = "Wallet";
+"scene.wallet.title" = "Portfel";
