@@ -65,47 +65,47 @@
 "scene.request.generate_request_button" = "Δημιουργία αίτησης";
 "scene.request.lightning_header_title" = "Αίτημα πληρωμής Lightning";
 "scene.request.on_chain_header_title" = "Αίτημα πληρωμής στο blockchain";
-"scene.request.next_button_title" = "Next";
+"scene.request.next_button_title" = "Επόμενη";
 
-"scene.channels.title" = "Channels";
-"scene.channels.close.title" = "Close Channel";
-"scene.channels.close.message" = "Do you really want to close the channel with node %@?";
-"scene.channels.force_close.title" = "Force Close Channel";
-"scene.channels.force_close.message" = "%@ is offline, are you sure you want to force close this channel? You’d have to wait about %@ for your funds?";
-"scene.channels.alert.cancel" = "Cancel";
-"scene.channels.alert.close" = "Close";
-"scene.channels.alert.force_close" = "Force Close";
-"scene.channels.close_success.toast" = "Channel is closing.";
+"scene.channels.title" = "Κανάλια";
+"scene.channels.close.title" = "Κλείσιμο καναλιού";
+"scene.channels.close.message" = "Θέλετε πραγματικά να κλείσετε το κανάλι με τον κόμβο %@;";
+"scene.channels.force_close.title" = "Κλείστε το κανάλι με δύναμη";
+"scene.channels.force_close.message" = "Το %@ είναι εκτός σύνδεσης, είστε βέβαιοι ότι θέλετε να εξαναγκάσετε να κλείσετε αυτό το κανάλι; Θα πρέπει να περιμένετε περίπου %@ για τα χρήματά σας;";
+"scene.channels.alert.cancel" = "Ματαίωση";
+"scene.channels.alert.close" = "Κλείστε";
+"scene.channels.alert.force_close" = "Κλείστε το με δύναμη";
+"scene.channels.close_success.toast" = "Το κανάλι κλείνει.";
 
-"scene.open_channel.title" = "Open Channel";
-"scene.open_channel.channel_uri_label" = "Channel:";
-"scene.open_channel.add_button" = "Open Channel";
+"scene.open_channel.title" = "Ανοίξει ένα κανάλι";
+"scene.open_channel.channel_uri_label" = "Κανάλι:";
+"scene.open_channel.add_button" = "Ανοίξει ένα κανάλι";
 
-"scene.pin.biometric.fallback.title" = "Use Passcode";
-"scene.pin.biometric.reason" = "To access the secure data";
+"scene.pin.biometric.fallback.title" = "Χρησιμοποιήστε τον κωδικό πρόσβασης";
+"scene.pin.biometric.reason" = "Για πρόσβαση στα ασφαλή δεδομένα";
 
-"scene.setup_pin.done_button" = "Done";
-"scene.setup_pin.top_label.initial" = "Choose a pin.";
-"scene.setup_pin.top_label.non_matching" = "The pins didn't match. Please try again.";
-"scene.setup_pin.top_label.validate" = "Enter the pin again to validate.";
+"scene.setup_pin.done_button" = "Έγινε";
+"scene.setup_pin.top_label.initial" = "Επιλέξτε έναν κωδικό PIN.";
+"scene.setup_pin.top_label.non_matching" = "Ο κωδικός PIN δεν ταιριάζει. Προσπαθήστε ξανά παρακαλώ.";
+"scene.setup_pin.top_label.validate" = "Εισαγάγετε ξανά τον κωδικό PIN για επικύρωση.";
 
-"scene.confirm_mnemonic.title" = "Confirm Seed";
-"scene.confirm_mnemonic.description" = "Enter your key.";
+"scene.confirm_mnemonic.title" = "Επιβεβαιώστε το σπόρο";
+"scene.confirm_mnemonic.description" = "Εισαγάγετε το κλειδί σας.";
 
-"scene.send.title" = "Send";
-"scene.send.send_button" = "Send";
-"scene.send.address_headline" = "To:";
-"scene.send.memo_headline" = "Memo:";
+"scene.send.title" = "Στείλετε";
+"scene.send.send_button" = "Στείλετε";
+"scene.send.address_headline" = "Προς:";
+"scene.send.memo_headline" = "Σημείωμα:";
 
-"scene.send.lightning.title" = "Send Lightning Payment";
-"scene.send.on_chain.title" = "Send On Chain";
+"scene.send.lightning.title" = "Αποστολή πληρωμής Lightning";
+"scene.send.on_chain.title" = "Στείλτε στο blockchain";
 
-"scene.connect_remote_node.title" = "Connect Remote Node";
-"scene.connect_remote_node.empty_state" = "Scan the QRCode generate with zapconnect or paste the connection code to connect to your node.";
-"scene.connect_remote_node.url_label" = "Address";
-"scene.connect_remote_node.certificate_label" = "Certificate";
-"scene.connect_remote_node.connect_button" = "Connect";
-"scene.connect_remote_node.scan_button" = "Scan";
+"scene.connect_remote_node.title" = "Σύνδεση απομακρυσμένου κόμβου";
+"scene.connect_remote_node.empty_state" = "Σάρωση του Κώδικα QR δημιουργήστε με zapconnect ή επικολλήστε τον κωδικό σύνδεσης για να συνδεθείτε με τον κόμβο σας.";
+"scene.connect_remote_node.url_label" = "Διεύθυνση";
+"scene.connect_remote_node.certificate_label" = "Πιστοποιητικό";
+"scene.connect_remote_node.connect_button" = "Συνδέω-συωδεομαι";
+"scene.connect_remote_node.scan_button" = "Σάρωση";
 "scene.connect_remote_node.paste_button" = "Paste";
 "scene.connect_remote_node.help_button" = "Need Help?";
 "scene.connect_remote_node.server_error" = "Could not connect to server.";
