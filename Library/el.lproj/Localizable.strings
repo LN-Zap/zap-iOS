@@ -10,14 +10,14 @@
 "error.block_explorer.unsupported_network" = "%@ δεν υποστηρίζει %@.";
 
 "rpc_connect_qrcode_error.btc_pay_expired" = "Μοιάζει με τον κώδικα που έχει λήξει.";
-"rpc_connect_qrcode_error.btc_pay_configuration_broken" = "Could not read BTCPay configurations file.";
-"rpc_connect_qrcode_error.cant_read_qrcode" = "Can't connect to this code.";
+"rpc_connect_qrcode_error.btc_pay_configuration_broken" = "Δεν ήταν η ανάγνωση του αρχείου BTCPay ρυθμίσεις παραμέτρων.";
+"rpc_connect_qrcode_error.cant_read_qrcode" = "Δεν μπορεί να συνδεθεί σε αυτόν τον κωδικό.";
 
-"channel.state.active" = "Online";
-"channel.state.inactive" = "Offline";
-"channel.state.opening" = "Opening";
-"channel.state.closing" = "Closing";
-"channel.state.force_closing" = "Force Closing";
+"channel.state.active" = "Σε απευθείας σύνδεση";
+"channel.state.inactive" = "Χωρίς σύνδεση";
+"channel.state.opening" = "Άνοιγμα";
+"channel.state.closing" = "Κλείσιμο";
+"channel.state.force_closing" = "Κλείστε το με δύναμη";
 
 "network.type.testnet" = "Testnet";
 "network.type.mainnet" = "Mainnet";
@@ -27,40 +27,40 @@
 "unit.bitcoin.bit" = "Bits";
 "unit.bitcoin.satoshi" = "Satoshis";
 
-"transaction.open_channel.memo" = "Open Channel: %@";
-"transaction.close_channel.memo" = "%@ Channel: %@";
-"transaction.no_destination_address" = "No destination address";
+"transaction.open_channel.memo" = "Άνοιγμα καναλιού: %@";
+"transaction.close_channel.memo" = "%@ Κανάλι: %@";
+"transaction.no_destination_address" = "Καμία διεύθυνση προορισμού";
 
-"close_type.cooperative_close" = "Close";
-"close_type.local_force_close" = "Force Close";
-"close_type.remote_force_close" = "Remote Force Close";
-"close_type.breach_close" = "Breach Close";
-"close_type.funding_canceled" = "Funding Canceled";
-"close_type.unknown" = "Unknown Close";
+"close_type.cooperative_close" = "Κλείστε";
+"close_type.local_force_close" = "Κλείστε το με δύναμη";
+"close_type.remote_force_close" = "Απομακρυσμένη δύναμη κλείστε";
+"close_type.breach_close" = "Παραβίαση κλείσιμο";
+"close_type.funding_canceled" = "Χρηματοδότηση ακυρώθηκε";
+"close_type.unknown" = "Άγνωστο κλείσιμο";
 
-"view.amount_input.placeholder" = "Amount";
+"view.amount_input.placeholder" = "Ποσό";
 
-"scene.transactions.title" = "Transactions";
-"scene.transactions.empty_state_label" = "0 transactions 🙁";
-"scene.transactions.row_action.archive" = "Archive";
-"scene.transactions.row_action.unarchive" = "Unarchive";
+"scene.transactions.title" = "Συναλλαγές";
+"scene.transactions.empty_state_label" = "0 συναλλαγές 🙁";
+"scene.transactions.row_action.archive" = "Αρχείο";
+"scene.transactions.row_action.unarchive" = "Ακατάλληλο";
 
-"scene.settings.title" = "Settings";
-"scene.settings.section.wallet" = "Wallet";
-"scene.settings.item.bitcoin_unit" = "Bitcoin Unit";
-"scene.settings.item.currency" = "Currency";
+"scene.settings.title" = "Ρυθμίσεις";
+"scene.settings.section.wallet" = "Πορτοφόλι";
+"scene.settings.item.bitcoin_unit" = "Bitcoin μονάδα";
+"scene.settings.item.currency" = "Νόμισμα";
 "scene.settings.item.block_explorer" = "Block Explorer";
-"scene.settings.item.on_chain_request_address.title" = "Bitcoin Address Type";
+"scene.settings.item.on_chain_request_address.title" = "Τύπος διεύθυνσης Bitcoin";
 "scene.settings.item.on_chain_request_address.bech32" = "Bech32";
 "scene.settings.item.on_chain_request_address.p2sh" = "P2SH";
-"scene.settings.item.remove_remote_node" = "Reset Remote Node Configuration";
-"scene.settings.item.reset_pin" = "Reset Pin";
-"scene.settings.item.report_issue" = "Report an Issue";
-"scene.settings.item.help" = "Need Help?";
+"scene.settings.item.remove_remote_node" = "Επαναφορά διαμόρφωσης απομακρυσμένου κόμβου";
+"scene.settings.item.reset_pin" = "Επαναφορά κωδικού PIN";
+"scene.settings.item.report_issue" = "Αναφέρετε ένα πρόβλημα";
+"scene.settings.item.help" = "Χρειάζεστε βοήθεια;";
 
-"scene.request.title" = "Receive";
+"scene.request.title" = "Λάβετε";
 "scene.request.lightning_button" = "Lightning";
-"scene.request.or_separator_label" = "or";
+"scene.request.or_separator_label" = "ή";
 "scene.request.on_chain_button" = "Στο blockchain";
 "scene.request.generate_request_button" = "Δημιουργία αίτησης";
 "scene.request.lightning_header_title" = "Αίτημα πληρωμής Lightning";
@@ -123,48 +123,48 @@
 "scene.recover_wallet.description_label" = "Εισάγετε το σπόρο σας:";
 "scene.recover_wallet.placeholder" = "abandon ability able about above absent absorb abstract absurd abuse access accident account accuse achieve acid acoustic acquire across act action actor actress actual";
 
-"scene.select_wallet_connection.title" = "Setup Zap";
-"scene.select_wallet_connection.create.title" = "Create";
-"scene.select_wallet_connection.create.message" = "new wallet";
-"scene.select_wallet_connection.recover.title" = "Recover";
-"scene.select_wallet_connection.recover.message" = "existing wallet";
-"scene.select_wallet_connection.connect.title" = "Connect";
-"scene.select_wallet_connection.connect.message" = "remote node";
-"scene.select_wallet_connection.disabled_alert.title" = "Sorry!";
-"scene.select_wallet_connection.disabled_alert.message" = "Running Lnd on the phone is disabled in this beta. Connect to a remote node instead.";
+"scene.select_wallet_connection.title" = "Ρυθμίστε το πορτοφόλι Zap";
+"scene.select_wallet_connection.create.title" = "Δημιουργία";
+"scene.select_wallet_connection.create.message" = "νέα πορτοφόλι";
+"scene.select_wallet_connection.recover.title" = "Ανάκτηση";
+"scene.select_wallet_connection.recover.message" = "υπάρχοντα πορτοφόλι";
+"scene.select_wallet_connection.connect.title" = "Συνδέω-συωδεομαι";
+"scene.select_wallet_connection.connect.message" = "απομακρυσμένο κόμβο";
+"scene.select_wallet_connection.disabled_alert.title" = "Συγνώμη!";
+"scene.select_wallet_connection.disabled_alert.message" = "Τρέξιμο Lnd στο τηλέφωνο είναι απενεργοποιημένη σε αυτό το beta. Αντί να συνδεθείτε με έναν απομακρυσμένο κόμβο.";
 "scene.select_wallet_connection.disabled_alert.ok_button" = "Ok";
-"scene.select_wallet_connection.create.help" = "Need Help?";
+"scene.select_wallet_connection.create.help" = "Χρειάζεστε βοήθεια;";
 
-"scene.main.send_button" = "Send";
-"scene.main.receive_button" = "Receive";
-"scene.main.exchange_rate_label" = "%@ per BTC";
+"scene.main.send_button" = "Στείλετε";
+"scene.main.receive_button" = "Λάβετε";
+"scene.main.exchange_rate_label" = "%@ ανά BTC";
 
-"scene.qr_code_detail.title" = "Receive";
+"scene.qr_code_detail.title" = "Λάβετε";
 
-"scene.sync.description_label" = "Syncing to blockchain…";
-"scene.sync.disconnect_bar_button" = "Disconnect";
-"scene.sync.disconnect_alert.title" = "Disconnect";
-"scene.sync.disconnect_alert.message" = "Do you really want to cancel syncing? You will have to reconnect to your node afterwards.";
-"scene.sync.disconnect_alert.destructive_action" = "Disconnect Node";
-"scene.sync.disconnect_alert.cancel_action" = "Cancel";
+"scene.sync.description_label" = "Συγχρονισμός με το blockchain";
+"scene.sync.disconnect_bar_button" = "Αποσύνδεση";
+"scene.sync.disconnect_alert.title" = "Αποσύνδεση";
+"scene.sync.disconnect_alert.message" = "Θέλετε πραγματικά να ακυρώσετε το συγχρονισμό; Θα πρέπει να επανασυνδεθείτε με τον κόμβο σας αργότερα.";
+"scene.sync.disconnect_alert.destructive_action" = "Αποσυνδέστε τον κόμβο";
+"scene.sync.disconnect_alert.cancel_action" = "Ματαίωση";
 
-"scene.transaction_detail.title.lightning_invoice" = "Invoice Detail";
-"scene.transaction_detail.title.payment_detail" = "Payment Detail";
-"scene.transaction_detail.title.transaction_detail" = "Transaction Detail";
-"scene.transaction_detail.archive_button" = "Archive";
-"scene.transaction_detail.unarchive_button" = "Unarchive";
-"scene.transaction_detail.memo_label" = "Memo";
-"scene.transaction_detail.qr_code.expired_label" = "Expired";
-"scene.transaction_detail.amount.unspecified_label" = "Unspecified";
-"scene.transaction_detail.amount_label" = "Amount";
-"scene.transaction_detail.created_label" = "Created";
-"scene.transaction_detail.payment_request" = "Payment Request";
-"scene.transaction_detail.expiry_label" = "Expiry";
-"scene.transaction_detail.settled_label" = "Settled";
-"scene.transaction_detail.settled_date_label" = "Settled Date";
-"scene.transaction_detail.settled_state.settled" = "Settled";
-"scene.transaction_detail.settled_state.unsettled" = "Unsettled";
-"scene.transaction_detail.fee_label" = "Fee";
+"scene.transaction_detail.title.lightning_invoice" = "Λεπτομέρειες τιμολογίου";
+"scene.transaction_detail.title.payment_detail" = "Λεπτομέρειες πληρωμής";
+"scene.transaction_detail.title.transaction_detail" = "Λεπτομέρειες συναλλαγής";
+"scene.transaction_detail.archive_button" = "Αρχείο";
+"scene.transaction_detail.unarchive_button" = "Ακατάλληλο";
+"scene.transaction_detail.memo_label" = "Τιμολόγιο";
+"scene.transaction_detail.qr_code.expired_label" = "Έχει λήξει";
+"scene.transaction_detail.amount.unspecified_label" = "Απροσδιόριστος";
+"scene.transaction_detail.amount_label" = "Ποσό";
+"scene.transaction_detail.created_label" = "Δημιουργήθηκε";
+"scene.transaction_detail.payment_request" = "Αίτηση πληρωμής";
+"scene.transaction_detail.expiry_label" = "Λήξη";
+"scene.transaction_detail.settled_label" = "Τακτοποιημένο";
+"scene.transaction_detail.settled_date_label" = "Καθορισμένη ημερομηνία";
+"scene.transaction_detail.settled_state.settled" = "Τακτοποιημένο";
+"scene.transaction_detail.settled_state.unsettled" = "Αστατος";
+"scene.transaction_detail.fee_label" = "Αμοιβή";
 "scene.transaction_detail.date_label" = "Date";
 "scene.transaction_detail.confirmations_label" = "Confirmations";
 "scene.transaction_detail.address_label" = "Address";
