@@ -1,15 +1,15 @@
-"generic.memo.placeholder" = "What is this for?";
-"generic.qr_code.copy_button" = "Copy";
-"generic.qr_code.share_button" = "Share";
+"generic.memo.placeholder" = "Τι είναι αυτό για;";
+"generic.qr_code.copy_button" = "Αντίγραφο";
+"generic.qr_code.share_button" = "Μετοχή";
 
 "link.help" = "https://ln-zap.github.io/zap-tutorials/";
 "link.help.zapconnect" = "https://ln-zap.github.io/zap-tutorials/iOS-remote-node-setup";
 
-"error.wrong_uri_format" = "Unknown link format.";
-"error.wrong_uri_network" = "You tried opening a link for %@ but your node is connected to %@.";
-"error.block_explorer.unsupported_network" = "%@ does not support %@.";
+"error.wrong_uri_format" = "Άγνωστη μορφή σύνδεσης.";
+"error.wrong_uri_network" = "Έχετε δοκιμάσει το άνοιγμα ενός συνδέσμου για %@ αλλά κόμβο σας είναι συνδεδεμένο σε %@.";
+"error.block_explorer.unsupported_network" = "%@ δεν υποστηρίζει %@.";
 
-"rpc_connect_qrcode_error.btc_pay_expired" = "Looks like the code is expired.";
+"rpc_connect_qrcode_error.btc_pay_expired" = "Μοιάζει με τον κώδικα που έχει λήξει.";
 "rpc_connect_qrcode_error.btc_pay_configuration_broken" = "Could not read BTCPay configurations file.";
 "rpc_connect_qrcode_error.cant_read_qrcode" = "Can't connect to this code.";
 
@@ -108,19 +108,19 @@
 "scene.connect_remote_node.scan_button" = "Σάρωση";
 "scene.connect_remote_node.paste_button" = "Επικόλληση";
 "scene.connect_remote_node.help_button" = "Χρειάζεστε βοήθεια;";
-"scene.connect_remote_node.server_error" = "Could not connect to server.";
-"scene.connect_remote_node.your_node_title" = "Your Node";
-"scene.connect_remote_node.certificate_detail.certificate_title" = "Certificate";
+"scene.connect_remote_node.server_error" = "Δε μπόρεσε να συνδεθεί με τον διακομιστή.";
+"scene.connect_remote_node.your_node_title" = "Ο κόμβος σας";
+"scene.connect_remote_node.certificate_detail.certificate_title" = "Πιστοποιητικό";
 "scene.connect_remote_node.certificate_detail.macaroon_title" = "Macaroon";
-"scene.connect_remote_node.edit_url.title" = "Address";
+"scene.connect_remote_node.edit_url.title" = "Διεύθυνση";
 
-"scene.create_wallet.title" = "Create Wallet";
-"scene.create_wallet.description_label" = "Make sure to store the mnemonic at a save location.";
-"scene.create_wallet.next_button" = "Next";
+"scene.create_wallet.title" = "Δημιουργήστε πορτοφόλι";
+"scene.create_wallet.description_label" = "Βεβαιωθείτε ότι έχετε αποθηκεύσει το μνημονικό (τον σπόρο σας) σε μια θέση αποθήκευσης.";
+"scene.create_wallet.next_button" = "Επόμενη";
 
-"scene.recover_wallet.title" = "Recover Wallet";
-"scene.recover_wallet.done_button" = "Done";
-"scene.recover_wallet.description_label" = "Enter your seed:";
+"scene.recover_wallet.title" = "Ανακτήστε το Πορτοφόλι";
+"scene.recover_wallet.done_button" = "Έγινε";
+"scene.recover_wallet.description_label" = "Εισάγετε το σπόρο σας:";
 "scene.recover_wallet.placeholder" = "abandon ability able about above absent absorb abstract absurd abuse access accident account accuse achieve acid acoustic acquire across act action actor actress actual";
 
 "scene.select_wallet_connection.title" = "Setup Zap";
@@ -178,13 +178,13 @@
 "scene.channel_detail.close_button" = "Close Channel";
 "scene.channel_detail.force_close_button" = "Force Close Channel";
 
-"scene.filter.title" = "Transaction Filter";
-"scene.filter.section_header.transaction_types" = "Transaction Types";
-"scene.filter.displayOnChainTransactions" = "On Chain Transactions";
-"scene.filter.displayLightningPayments" = "Lightning Payments";
-"scene.filter.displayLightningInvoices" = "Lightning Invoices";
-"scene.filter.displayArchivedTransactions" = "Archived Transactions";
+"scene.filter.title" = "Συναλλαγή φίλτρο";
+"scene.filter.section_header.transaction_types" = "Τύποι συναλλαγών";
+"scene.filter.displayOnChainTransactions" = "Συναλλαγές στο blockchain";
+"scene.filter.displayLightningPayments" = "Πληρωμές Lightning";
+"scene.filter.displayLightningInvoices" = "Τιμολόγια Lightning";
+"scene.filter.displayArchivedTransactions" = "Αρχειοθετημένα συναλλαγές";
 
-"scene.qrcode_scanner.top_label" = "Scan QR-Code";
+"scene.qrcode_scanner.top_label" = "Σάρωση κώδικα QR";
 
-"scene.wallet.title" = "Wallet";
+"scene.wallet.title" = "Πορτοφόλι";
