@@ -106,8 +106,8 @@
 "scene.connect_remote_node.certificate_label" = "Πιστοποιητικό";
 "scene.connect_remote_node.connect_button" = "Συνδέω-συωδεομαι";
 "scene.connect_remote_node.scan_button" = "Σάρωση";
-"scene.connect_remote_node.paste_button" = "Paste";
-"scene.connect_remote_node.help_button" = "Need Help?";
+"scene.connect_remote_node.paste_button" = "Επικόλληση";
+"scene.connect_remote_node.help_button" = "Χρειάζεστε βοήθεια;";
 "scene.connect_remote_node.server_error" = "Could not connect to server.";
 "scene.connect_remote_node.your_node_title" = "Your Node";
 "scene.connect_remote_node.certificate_detail.certificate_title" = "Certificate";
