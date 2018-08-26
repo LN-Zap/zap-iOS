@@ -165,18 +165,18 @@
 "scene.transaction_detail.settled_state.settled" = "Τακτοποιημένο";
 "scene.transaction_detail.settled_state.unsettled" = "Αστατος";
 "scene.transaction_detail.fee_label" = "Αμοιβή";
-"scene.transaction_detail.date_label" = "Date";
-"scene.transaction_detail.confirmations_label" = "Confirmations";
-"scene.transaction_detail.address_label" = "Address";
-"scene.transaction_detail.transaction_id_label" = "Transaction ID";
+"scene.transaction_detail.date_label" = "Ημερομηνία";
+"scene.transaction_detail.confirmations_label" = "Επιβεβαιώσεις";
+"scene.transaction_detail.address_label" = "Διεύθυνση";
+"scene.transaction_detail.transaction_id_label" = "Ταυτότητα συναλλαγής";
 
-"scene.channel_detail.remote_pub_key_label" = "Remote PubKey";
-"scene.channel_detail.local_balance_label" = "Local Balance";
-"scene.channel_detail.remote_balance_label" = "Remote Balance";
-"scene.channel_detail.closing_time.label" = "Closing in";
-"scene.channel_detail.funding_transaction_label" = "Funding Transaction";
-"scene.channel_detail.close_button" = "Close Channel";
-"scene.channel_detail.force_close_button" = "Force Close Channel";
+"scene.channel_detail.remote_pub_key_label" = "Απομακρυσμένο δημόσιο κλειδί (Remote PubKey)";
+"scene.channel_detail.local_balance_label" = "Τοπική ισορροπία";
+"scene.channel_detail.remote_balance_label" = "Απόσταση απομακρυσμένης πρόσβασης";
+"scene.channel_detail.closing_time.label" = "Κλείνοντας";
+"scene.channel_detail.funding_transaction_label" = "Χρηματοδοτική συναλλαγή";
+"scene.channel_detail.close_button" = "Κλείσιμο καναλιού";
+"scene.channel_detail.force_close_button" = "Κλείστε το κανάλι με δύναμη";
 
 "scene.filter.title" = "Συναλλαγή φίλτρο";
 "scene.filter.section_header.transaction_types" = "Τύποι συναλλαγών";
