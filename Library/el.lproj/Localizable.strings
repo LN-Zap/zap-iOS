@@ -61,10 +61,10 @@
 "scene.request.title" = "Receive";
 "scene.request.lightning_button" = "Lightning";
 "scene.request.or_separator_label" = "or";
-"scene.request.on_chain_button" = "On-chain";
-"scene.request.generate_request_button" = "Generate Request";
-"scene.request.lightning_header_title" = "Lightning Payment Request";
-"scene.request.on_chain_header_title" = "On Chain Payment Request";
+"scene.request.on_chain_button" = "Στο blockchain";
+"scene.request.generate_request_button" = "Δημιουργία αίτησης";
+"scene.request.lightning_header_title" = "Αίτημα πληρωμής Lightning";
+"scene.request.on_chain_header_title" = "Αίτημα πληρωμής στο blockchain";
 "scene.request.next_button_title" = "Next";
 
 "scene.channels.title" = "Channels";
