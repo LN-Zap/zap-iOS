@@ -18,7 +18,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="vX5-PH-Lj6" customClass="KeyPadView" customModule="Library" customModuleProvider="target">
+                            <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="vX5-PH-Lj6" customClass="KeyPadPinView" customModule="Library" customModuleProvider="target">
                                 <rect key="frame" x="15" y="352" width="345" height="300"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="300" id="J15-NH-8nk"/>
@@ -63,7 +63,7 @@
                     </view>
                     <connections>
                         <outlet property="keyPadView" destination="vX5-PH-Lj6" id="fGd-xz-kHa"/>
-                        <outlet property="pinStackView" destination="l6a-vs-Gmm" id="H4S-ph-Nro"/>
+                        <outlet property="pinView" destination="l6a-vs-Gmm" id="r8t-FJ-ueN"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="hef-gl-v91" userLabel="First Responder" sceneMemberID="firstResponder"/>

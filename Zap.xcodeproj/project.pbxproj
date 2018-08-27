@@ -276,6 +276,7 @@
 		ADE19C4020E7892000340E2E /* ChannelPoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADE19C3F20E7892000340E2E /* ChannelPoint.swift */; };
 		ADECC36920F257AF00D00546 /* LightningPayment.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADECC36820F257AF00D00546 /* LightningPayment.swift */; };
 		ADECC36B20F257BE00D00546 /* OnChainConfirmedTransaction.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADECC36A20F257BE00D00546 /* OnChainConfirmedTransaction.swift */; };
+		ADEEB5332134277400D2F992 /* KeyPadPinView.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADEEB5322134277400D2F992 /* KeyPadPinView.swift */; };
 		ADFC816F20DA80EF00D26913 /* RecoverWalletViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADFC816E20DA80EF00D26913 /* RecoverWalletViewModel.swift */; };
 		ADFC817120DB8F2700D26913 /* bip39.txt in Resources */ = {isa = PBXBuildFile; fileRef = ADFC817020DB8F2600D26913 /* bip39.txt */; };
 		ADFD8DC3212E92A7005CA8FD /* SegmentButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD38EB31207DFB59007DF14D /* SegmentButton.swift */; };
@@ -856,6 +857,7 @@
 		ADEDBB8F20C2E55100B71F17 /* PinCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PinCoordinator.swift; sourceTree = "<group>"; };
 		ADEDBB9120C2FC3200B71F17 /* PinSetupCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PinSetupCoordinator.swift; sourceTree = "<group>"; };
 		ADEDBC0920C31C5F00B71F17 /* Route.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Route.swift; sourceTree = "<group>"; };
+		ADEEB5322134277400D2F992 /* KeyPadPinView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyPadPinView.swift; sourceTree = "<group>"; };
 		ADF79363208DCB630086B2CA /* PinView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PinView.swift; sourceTree = "<group>"; };
 		ADF79365208E000C0086B2CA /* SetupPinViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetupPinViewController.swift; sourceTree = "<group>"; };
 		ADF79367208E09D00086B2CA /* SetupPinViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetupPinViewModel.swift; sourceTree = "<group>"; };
@@ -1776,6 +1778,7 @@
 		ADBA12082093587B001F7700 /* KeyPad */ = {
 			isa = PBXGroup;
 			children = (
+				ADEEB5322134277400D2F992 /* KeyPadPinView.swift */,
 				ADBA12032090CD22001F7700 /* KeyPadView.swift */,
 				ADBA12012090CD11001F7700 /* KeyPadView.xib */,
 			);
@@ -2717,6 +2720,7 @@
 				AD391CA820D16FA8007EE22A /* SendQRCodeScannerStrategy.swift in Sources */,
 				AD391C5520D16F7A007EE22A /* ConnectRemoteNodeViewController.swift in Sources */,
 				ADA865BC20ECB87B00B1B74B /* FilterSettings.swift in Sources */,
+				ADEEB5332134277400D2F992 /* KeyPadPinView.swift in Sources */,
 				AD391C2520D16EFA007EE22A /* BitcoinUnit+Localizable.swift in Sources */,
 				AD391C2720D16EFA007EE22A /* Network+Localizable.swift in Sources */,
 				AD391C9E20D16FA8007EE22A /* RequestViewModel.swift in Sources */,

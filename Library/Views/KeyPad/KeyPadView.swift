@@ -13,7 +13,7 @@ enum KeyPadState {
     case amountInput
 }
 
-final class KeyPadView: UIView {
+class KeyPadView: UIView {
     @IBOutlet private var contentView: UIView!
 
     override init(frame: CGRect) {
