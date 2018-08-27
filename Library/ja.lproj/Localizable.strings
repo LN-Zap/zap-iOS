@@ -99,6 +99,7 @@
 
 "scene.send.lightning.title" = "Send Lightning Payment";
 "scene.send.on_chain.title" = "Send On Chain";
+"scene.send.authentication_failed" = "Authentication failed";
 
 "scene.connect_remote_node.title" = "リモートノードに接続";
 "scene.connect_remote_node.empty_state" = "ノードに接続するためにzapconnectで生成したQRCodeをスキャンするか、接続コードを貼り付けて下さい。";
