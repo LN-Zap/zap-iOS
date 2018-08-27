@@ -99,6 +99,7 @@
 
 "scene.send.lightning.title" = "Send Lightning Payment";
 "scene.send.on_chain.title" = "Send On Chain";
+"scene.send.authentication_failed" = "Authentication failed";
 
 "scene.connect_remote_node.title" = "Povezivanje udaljenog čvora";
 "scene.connect_remote_node.empty_state" = "Skenirajte QRCode generiran sa zapconnect ili zalijepite kôd veze za povezivanje na tvoj čvor.";
