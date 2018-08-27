@@ -12,20 +12,12 @@ enum Storyboard: String {
     case connectRemoteNode
     case createWallet
     case debug
-    case deposit
     case detail
-    case invoiceDetail
     case loading
     case numericKeyPad
-    case openChannel
-    case paymentDetail
     case qrCodeDetail = "QRCodeDetail"
     case qrCodeScanner = "QRCodeScanner"
-    case request
     case root
-    case send
-    case sendOnChain
-    case settings
     case sync
     case transactionList
     case wallet
