@@ -99,6 +99,7 @@
 
 "scene.send.lightning.title" = "Send Lightning Payment";
 "scene.send.on_chain.title" = "Send On Chain";
+"scene.send.authentication_failed" = "Authentication failed";
 
 "scene.connect_remote_node.title" = "Anslut Fjärrnod";
 "scene.connect_remote_node.empty_state" = "Skanna QR-koden genererad med zapconnect eller klistra in anslutningskoden för att ansluta till din nod.";
