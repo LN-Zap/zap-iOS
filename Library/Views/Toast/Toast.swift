@@ -130,7 +130,7 @@ extension UIView {
 }
 
 extension UIViewController {
-    func presentErrorToast(_ message: String) {
+    @objc func presentErrorToast(_ message: String) {
         view.presentErrorToast(message)
     }
     

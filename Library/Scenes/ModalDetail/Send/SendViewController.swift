@@ -49,9 +49,8 @@ final class SendViewController: ModalDetailViewController {
             contentStackView.addArrangedElement(.separator)
         }
         
-        sendButton = contentStackView.addArrangedElement(.customHeight(56, element: .button(title: "scene.send.send_button".localized, style: Style.Button.background, callback: { [weak self] button in
-            button.isEnabled = false
-            self?.viewModel.send { self?.handleSendResult($0, button: button) }
+        sendButton = contentStackView.addArrangedElement(.customHeight(56, element: .button(title: "scene.send.send_button".localized, style: Style.Button.background, callback: { [weak self] _ in
+            self?.sendButtonTapped()
         }))) as? CallbackButton
         
         if let amount = viewModel.amount {
@@ -68,17 +67,34 @@ final class SendViewController: ModalDetailViewController {
         setHeaderImage(viewModel.method.headerImage)
     }
     
-    private func handleSendResult(_ result: Result<Success>, button: UIButton) {
+    private func sendButtonTapped() {
+        sendButton?.isEnabled = false
+        BiometricAuthentication.authenticate { [weak self] result in
+            switch result {
+            case .success:
+                self?.viewModel.send { self?.handleSendResult($0) }
+            case .failure:
+                self?.sendButton?.isEnabled = true
+                self?.presentErrorToast("scene.send.authentication_failed".localized)
+            }
+        }
+    }
+    
+    private func handleSendResult(_ result: Result<Success>) {
         DispatchQueue.main.async {
-            button.isEnabled = true
+            self.sendButton?.isEnabled = true
             switch result {
             case .success:
                 self.dismissParent()
             case .failure(let error):
-                self.view.superview?.presentErrorToast(error.localizedDescription)
+                self.presentErrorToast(error.localizedDescription)
             }
         }
 
+    }
+    
+    override func presentErrorToast(_ message: String) {
+        view.superview?.presentErrorToast(message)
     }
     
     override func viewDidAppear(_ animated: Bool) {

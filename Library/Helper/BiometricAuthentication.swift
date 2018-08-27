@@ -55,7 +55,12 @@ enum BiometricAuthentication {
         let alertController = UIAlertController(title: "Authenticate", message: "Fake Biometric Authenticatyion", preferredStyle: .alert)
         alertController.addAction(UIAlertAction(title: "cancel", style: .cancel) { _ in callback(.failure(BiometricAuthenticationError.canceled)) })
         alertController.addAction(UIAlertAction(title: "authenticate", style: .default) { _ in callback(.success(Success())) })
-        UIApplication.shared.windows.first?.rootViewController?.present(alertController, animated: true, completion: nil)
+        
+        let alertWindow = UIWindow(frame: UIScreen.main.bounds)
+        alertWindow.rootViewController = UIViewController()
+        alertWindow.windowLevel = UIWindowLevelAlert + 1
+        alertWindow.makeKeyAndVisible()
+        alertWindow.rootViewController?.present(alertController, animated: true, completion: nil)
         #else
         let localAuthenticationContext = LAContext()
         localAuthenticationContext.localizedFallbackTitle = "scene.pin.biometric.fallback.title".localized
