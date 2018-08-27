@@ -64,10 +64,10 @@ final class KeyPadPinView: KeyPadView {
             delegate?.didAuthenticate()
         } else if authenticationViewModel.pinLength == string.count {
             isUserInteractionEnabled = false
-            DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) { [weak self] in
-                self?.isUserInteractionEnabled = true
-                self?.numberString = ""
-                self?.updatePinView(for: "")
+            pinView?.startShakeAnimation {
+                self.isUserInteractionEnabled = true
+                self.numberString = ""
+                self.updatePinView(for: "")
             }
         }
     }
