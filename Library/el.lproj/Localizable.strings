@@ -99,6 +99,7 @@
 
 "scene.send.lightning.title" = "Αποστολή πληρωμής Lightning";
 "scene.send.on_chain.title" = "Στείλτε στο blockchain";
+"scene.send.authentication_failed" = "Authentication failed";
 
 "scene.connect_remote_node.title" = "Σύνδεση απομακρυσμένου κόμβου";
 "scene.connect_remote_node.empty_state" = "Σάρωση του Κώδικα QR δημιουργήστε με zapconnect ή επικολλήστε τον κωδικό σύνδεσης για να συνδεθείτε με τον κόμβο σας.";
