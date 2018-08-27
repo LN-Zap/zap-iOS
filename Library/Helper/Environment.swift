@@ -15,4 +15,8 @@ enum Environment {
     static var skipPinFlow: Bool {
         return ProcessInfo.processInfo.environment["SKIP_PIN_FLOW"] == "1"
     }
+    
+    static var fakeBiometricAuthentication: Bool {
+        return ProcessInfo.processInfo.environment["FAKE_BIOMETRIC_AUTHENTICATION"] == "1"
+    }
 }

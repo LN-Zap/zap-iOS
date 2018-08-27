@@ -6,6 +6,7 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
+        <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -35,24 +36,23 @@
                                         </constraints>
                                     </stackView>
                                     <imageView userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="pin-logo" translatesAutoresizingMaskIntoConstraints="NO" id="lUe-bL-uQc">
-                                        <rect key="frame" x="0.0" y="0.0" width="375" height="194"/>
+                                        <rect key="frame" x="168.5" y="211" width="38" height="36"/>
                                     </imageView>
                                 </subviews>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
-                                    <constraint firstItem="lUe-bL-uQc" firstAttribute="leading" secondItem="KKn-a3-ds0" secondAttribute="leading" id="1it-Hd-cBh"/>
-                                    <constraint firstAttribute="trailing" secondItem="lUe-bL-uQc" secondAttribute="trailing" id="71Q-er-vxZ"/>
-                                    <constraint firstItem="lUe-bL-uQc" firstAttribute="top" secondItem="KKn-a3-ds0" secondAttribute="top" id="ZgG-rV-qFO"/>
+                                    <constraint firstItem="l6a-vs-Gmm" firstAttribute="top" secondItem="lUe-bL-uQc" secondAttribute="bottom" priority="749" constant="40" id="S27-N9-niC"/>
                                     <constraint firstItem="l6a-vs-Gmm" firstAttribute="centerY" secondItem="KKn-a3-ds0" secondAttribute="centerY" constant="25" id="dSd-J7-7T5"/>
                                     <constraint firstItem="l6a-vs-Gmm" firstAttribute="centerX" secondItem="KKn-a3-ds0" secondAttribute="centerX" id="dyn-3p-HIB"/>
-                                    <constraint firstItem="l6a-vs-Gmm" firstAttribute="top" secondItem="lUe-bL-uQc" secondAttribute="bottom" id="pWV-gc-Pvt"/>
                                 </constraints>
                             </view>
                         </subviews>
                         <color key="backgroundColor" white="0.55909358129999998" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="jgC-LF-iyx" firstAttribute="trailing" secondItem="vX5-PH-Lj6" secondAttribute="trailing" constant="15" id="8PL-3W-6FT"/>
+                            <constraint firstItem="lUe-bL-uQc" firstAttribute="centerY" secondItem="jgC-LF-iyx" secondAttribute="centerY" multiplier="0.6666" priority="750" id="F6c-KS-Xkt"/>
                             <constraint firstItem="vX5-PH-Lj6" firstAttribute="top" secondItem="KKn-a3-ds0" secondAttribute="bottom" id="GO8-eP-ALe"/>
+                            <constraint firstItem="lUe-bL-uQc" firstAttribute="centerX" secondItem="jgC-LF-iyx" secondAttribute="centerX" id="NFC-il-UVG"/>
                             <constraint firstItem="KKn-a3-ds0" firstAttribute="trailing" secondItem="jgC-LF-iyx" secondAttribute="trailing" id="Uxs-90-D8U"/>
                             <constraint firstItem="KKn-a3-ds0" firstAttribute="leading" secondItem="jgC-LF-iyx" secondAttribute="leading" id="bcL-SV-YIQ"/>
                             <constraint firstItem="KKn-a3-ds0" firstAttribute="top" secondItem="VJq-Lz-K9r" secondAttribute="top" id="kSz-kz-m8B"/>
@@ -62,13 +62,14 @@
                         <viewLayoutGuide key="safeArea" id="jgC-LF-iyx"/>
                     </view>
                     <connections>
+                        <outlet property="imageBottomConstraint" destination="S27-N9-niC" id="8pt-XU-759"/>
                         <outlet property="keyPadView" destination="vX5-PH-Lj6" id="fGd-xz-kHa"/>
                         <outlet property="pinView" destination="l6a-vs-Gmm" id="r8t-FJ-ueN"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="hef-gl-v91" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-1724" y="233"/>
+            <point key="canvasLocation" x="-1724" y="232.53373313343329"/>
         </scene>
         <!--Setup Pin View Controller-->
         <scene sceneID="7Th-FE-rWF">
@@ -156,7 +157,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="mHw-ld-yd6" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-855" y="233"/>
+            <point key="canvasLocation" x="-690" y="162"/>
         </scene>
     </scenes>
     <resources>

@@ -92,7 +92,7 @@
 		AD391C3820D16EFA007EE22A /* UserDefaults.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0919142203B152100FA525A /* UserDefaults.swift */; };
 		AD391C3920D16F0B007EE22A /* BockExplorer.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0DDC077201B42EA00AEFF94 /* BockExplorer.swift */; };
 		AD391C3A20D16F0B007EE22A /* Environment.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADE4CF1E20B5B6FC007C987A /* Environment.swift */; };
-		AD391C3D20D16F0B007EE22A /* LocalAuthentication.swift in Sources */ = {isa = PBXBuildFile; fileRef = A02C9FC3202F617D009821B1 /* LocalAuthentication.swift */; };
+		AD391C3D20D16F0B007EE22A /* BiometricAuthentication.swift in Sources */ = {isa = PBXBuildFile; fileRef = A02C9FC3202F617D009821B1 /* BiometricAuthentication.swift */; };
 		AD391C4120D16F0B007EE22A /* ExchangeUpdaterJob.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0C2EAC3206F9539003AE56E /* ExchangeUpdaterJob.swift */; };
 		AD391C4320D16F0B007EE22A /* Appearance.swift in Sources */ = {isa = PBXBuildFile; fileRef = A07C1032203DD5AF006C7FE8 /* Appearance.swift */; };
 		AD391C4420D16F0B007EE22A /* Style.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0919155203C2CB600FA525A /* Style.swift */; };
@@ -500,7 +500,7 @@
 		A02C52F62024A98F00780D5A /* Podfile */ = {isa = PBXFileReference; lastKnownFileType = text; path = Podfile; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
 		A02C9FBC202EE9BE009821B1 /* OpenChannelViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OpenChannelViewModel.swift; sourceTree = "<group>"; };
 		A02C9FC1202F5BDC009821B1 /* LocalAuthentication.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = LocalAuthentication.framework; path = System/Library/Frameworks/LocalAuthentication.framework; sourceTree = SDKROOT; };
-		A02C9FC3202F617D009821B1 /* LocalAuthentication.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalAuthentication.swift; sourceTree = "<group>"; };
+		A02C9FC3202F617D009821B1 /* BiometricAuthentication.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BiometricAuthentication.swift; sourceTree = "<group>"; };
 		A02C9FC520304395009821B1 /* LocalLndConfiguration.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalLndConfiguration.swift; sourceTree = "<group>"; };
 		A0376B6E201CC04400F1FBEF /* Info.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Info.swift; sourceTree = "<group>"; };
 		A0376B74201CD61B00F1FBEF /* NumericKeyPad.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = NumericKeyPad.storyboard; sourceTree = "<group>"; };
@@ -1056,9 +1056,9 @@
 		A01009352014BE070001EF94 /* Helper */ = {
 			isa = PBXGroup;
 			children = (
+				A02C9FC3202F617D009821B1 /* BiometricAuthentication.swift */,
 				A0DDC077201B42EA00AEFF94 /* BockExplorer.swift */,
 				ADE4CF1E20B5B6FC007C987A /* Environment.swift */,
-				A02C9FC3202F617D009821B1 /* LocalAuthentication.swift */,
 				A0C2EABA206F8AD2003AE56E /* Money */,
 				ADEDBC0920C31C5F00B71F17 /* Route.swift */,
 				AD2EDBF920C02616002E6EE5 /* Storyboard.swift */,
@@ -2642,7 +2642,7 @@
 				AD27B01A2100D5CC00F232A8 /* CertificateDetailViewController.swift in Sources */,
 				ADFC816F20DA80EF00D26913 /* RecoverWalletViewModel.swift in Sources */,
 				AD391C5220D16F7A007EE22A /* ConfirmMnemonicViewController.swift in Sources */,
-				AD391C3D20D16F0B007EE22A /* LocalAuthentication.swift in Sources */,
+				AD391C3D20D16F0B007EE22A /* BiometricAuthentication.swift in Sources */,
 				AD391C3020D16EFA007EE22A /* UICollectionView.swift in Sources */,
 				AD391C6520D16F89007EE22A /* LndLogViewController.swift in Sources */,
 				AD391CC720D16FE1007EE22A /* DetailTableViewCell.swift in Sources */,

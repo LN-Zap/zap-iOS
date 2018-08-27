@@ -124,6 +124,11 @@
             isEnabled = "YES">
          </EnvironmentVariable>
          <EnvironmentVariable
+            key = "FAKE_BIOMETRIC_AUTHENTICATION"
+            value = "1"
+            isEnabled = "YES">
+         </EnvironmentVariable>
+         <EnvironmentVariable
             key = "GRPC_TRACE"
             value = "all"
             isEnabled = "YES">
