@@ -1,6 +1,6 @@
-"generic.memo.placeholder" = "What is this for?";
-"generic.qr_code.copy_button" = "Copy";
-"generic.qr_code.share_button" = "Share";
+"generic.memo.placeholder" = "这是什么？";
+"generic.qr_code.copy_button" = "复制";
+"generic.qr_code.share_button" = "分享";
 
 "link.help" = "https://ln-zap.github.io/zap-tutorials/";
 "link.help.zapconnect" = "https://ln-zap.github.io/zap-tutorials/iOS-remote-node-setup";
@@ -29,7 +29,7 @@
 
 "transaction.open_channel.memo" = "打开通道: %@";
 "transaction.close_channel.memo" = "%@ 通道: %@";
-"transaction.no_destination_address" = "No destination address";
+"transaction.no_destination_address" = "没有目标地址";
 
 "close_type.cooperative_close" = "关闭";
 "close_type.local_force_close" = "强制关闭";
@@ -60,12 +60,12 @@
 
 "scene.request.title" = "收款";
 "scene.request.lightning_button" = "闪电";
-"scene.request.or_separator_label" = "or";
+"scene.request.or_separator_label" = "或";
 "scene.request.on_chain_button" = "链上";
 "scene.request.generate_request_button" = "生成请求";
-"scene.request.lightning_header_title" = "Lightning Payment Request";
-"scene.request.on_chain_header_title" = "On Chain Payment Request";
-"scene.request.next_button_title" = "Next";
+"scene.request.lightning_header_title" = "闪电网络支付请求";
+"scene.request.on_chain_header_title" = "链上支付请求";
+"scene.request.next_button_title" = "下一个";
 
 "scene.channels.title" = "通道";
 "scene.channels.close.title" = "关闭通道";
@@ -78,8 +78,8 @@
 "scene.channels.close_success.toast" = "通道正在关闭。";
 
 "scene.open_channel.title" = "打开通道";
-"scene.open_channel.channel_uri_label" = "Channel:";
-"scene.open_channel.add_button" = "Open Channel";
+"scene.open_channel.channel_uri_label" = "通道:";
+"scene.open_channel.add_button" = "打开通道";
 
 "scene.pin.biometric.fallback.title" = "使用密码";
 "scene.pin.biometric.reason" = "访问安全数据";
@@ -94,11 +94,11 @@
 
 "scene.send.title" = "转账";
 "scene.send.send_button" = "转账";
-"scene.send.address_headline" = "To:";
-"scene.send.memo_headline" = "Memo:";
+"scene.send.address_headline" = "目标:";
+"scene.send.memo_headline" = "备注:";
 
-"scene.send.lightning.title" = "Send Lightning Payment";
-"scene.send.on_chain.title" = "Send On Chain";
+"scene.send.lightning.title" = "通过闪电网络支付";
+"scene.send.on_chain.title" = "链上交易";
 
 "scene.connect_remote_node.title" = "连接远程节点";
 "scene.connect_remote_node.empty_state" = "使用 zapconnect 扫描 QRCode 生成或粘贴连接代码以连接到您的节点。";
@@ -132,14 +132,14 @@
 "scene.select_wallet_connection.connect.message" = "远程节点";
 "scene.select_wallet_connection.disabled_alert.title" = "对不起！";
 "scene.select_wallet_connection.disabled_alert.message" = "在这个 beta 版中, 在手机上禁用了 Lnd 。改为连接到远程节点。";
-"scene.select_wallet_connection.disabled_alert.ok_button" = "Ok";
+"scene.select_wallet_connection.disabled_alert.ok_button" = "确认";
 "scene.select_wallet_connection.create.help" = "需要帮助吗？";
 
 "scene.main.send_button" = "付款";
 "scene.main.receive_button" = "收款";
 "scene.main.exchange_rate_label" = "%@ 每BTC";
 
-"scene.qr_code_detail.title" = "Receive";
+"scene.qr_code_detail.title" = "接收";
 
 "scene.sync.description_label" = "同步到 blockchain...";
 "scene.sync.disconnect_bar_button" = "断开";
