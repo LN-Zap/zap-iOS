@@ -1,6 +1,7 @@
 "generic.memo.placeholder" = "这是什么？";
 "generic.qr_code.copy_button" = "复制";
 "generic.qr_code.share_button" = "分享";
+"generic.cancel" = "Cancel";
 
 "link.help" = "https://ln-zap.github.io/zap-tutorials/";
 "link.help.zapconnect" = "https://ln-zap.github.io/zap-tutorials/iOS-remote-node-setup";
