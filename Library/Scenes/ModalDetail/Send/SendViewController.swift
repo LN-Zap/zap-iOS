@@ -10,11 +10,14 @@ import UIKit
 
 final class SendViewController: ModalDetailViewController {
     private let viewModel: SendViewModel
+    private let authenticationViewModel: AuthenticationViewModel
+
     private var didViewAppear = false
     private weak var sendButton: CallbackButton?
     
-    init(viewModel: SendViewModel) {
+    init(viewModel: SendViewModel, authenticationViewModel: AuthenticationViewModel) {
         self.viewModel = viewModel
+        self.authenticationViewModel = authenticationViewModel
         super.init(nibName: nil, bundle: nil)
     }
     
@@ -66,10 +69,26 @@ final class SendViewController: ModalDetailViewController {
 
         setHeaderImage(viewModel.method.headerImage)
     }
+
+    private func authenticate(completion: @escaping (Result<Success>) -> Void) {
+        if BiometricAuthentication.type == .none {
+            ModalPinViewController.authenticate(authenticationViewModel: authenticationViewModel) { completion($0) }
+        } else {
+            BiometricAuthentication.authenticate { [authenticationViewModel] result in
+                if case .failure(let error) = result,
+                    (error as? AuthenticationError) == AuthenticationError.useFallback {
+                    ModalPinViewController.authenticate(authenticationViewModel: authenticationViewModel) { completion($0) }
+                } else {
+                    completion(result)
+                }
+            }
+        }
+    }
     
     private func sendButtonTapped() {
         sendButton?.isEnabled = false
-        BiometricAuthentication.authenticate { [weak self] result in
+        
+        authenticate { [weak self] result in
             switch result {
             case .success:
                 self?.viewModel.send { self?.handleSendResult($0) }

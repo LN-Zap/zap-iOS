@@ -9,12 +9,13 @@ import Foundation
 import Lightning
 import LocalAuthentication
 
-enum BiometricAuthenticationError: Error {
+enum AuthenticationError: Error {
     case lockout
     case notAvailable
     case canceled
     case failed
     case unknown
+    case useFallback
 }
 
 enum BiometricAuthentication {
@@ -51,9 +52,13 @@ enum BiometricAuthentication {
     
     static func authenticate(callback: @escaping (Result<Success>) -> Void) {
         #if targetEnvironment(simulator)
+        guard Environment.fakeBiometricAuthentication else {
+            callback(.failure(AuthenticationError.notAvailable))
+            return
+        }
         // display a fake local authentication view when run on simulator.
         let alertController = UIAlertController(title: "Authenticate", message: "Fake Biometric Authenticatyion", preferredStyle: .alert)
-        alertController.addAction(UIAlertAction(title: "cancel", style: .cancel) { _ in callback(.failure(BiometricAuthenticationError.canceled)) })
+        alertController.addAction(UIAlertAction(title: "cancel", style: .cancel) { _ in callback(.failure(AuthenticationError.canceled)) })
         alertController.addAction(UIAlertAction(title: "authenticate", style: .default) { _ in callback(.success(Success())) })
         
         let alertWindow = UIWindow(frame: UIScreen.main.bounds)
@@ -73,11 +78,11 @@ enum BiometricAuthentication {
                 if success {
                     execute(callback, with: .success(Success()))
                 } else if let error = evaluateError {
-                    execute(callback, with: .failure(error(for: error)))
+                    execute(callback, with: .failure(authenticationError(for: error)))
                 }
             }
         } else if let error = authError {
-            execute(callback, with: .failure(error(for: error)))
+            execute(callback, with: .failure(authenticationError(for: error)))
         }
         #endif
     }
@@ -88,13 +93,13 @@ enum BiometricAuthentication {
         }
     }
 
-    private static func error(for error: NSError) -> BiometricAuthenticationError {
-        let messages: [Int32: BiometricAuthenticationError] = [
+    private static func authenticationError(for error: Error) -> AuthenticationError {
+        let messages: [Int32: AuthenticationError] = [
             kLAErrorAuthenticationFailed: .failed,
             kLAErrorAppCancel: .canceled,
             kLAErrorSystemCancel: .canceled,
-            kLAErrorUserFallback: .canceled,
             kLAErrorUserCancel: .canceled,
+            kLAErrorUserFallback: .useFallback,
             kLAErrorInvalidContext: .notAvailable,
             kLAErrorNotInteractive: .notAvailable,
             kLAErrorPasscodeNotSet: .notAvailable,
@@ -102,6 +107,6 @@ enum BiometricAuthentication {
             kLAErrorBiometryNotEnrolled: .notAvailable,
             kLAErrorBiometryLockout: .lockout
         ]
-        return messages[Int32(error.code)] ?? .unknown
+        return messages[Int32(error._code)] ?? .unknown
     }
 }

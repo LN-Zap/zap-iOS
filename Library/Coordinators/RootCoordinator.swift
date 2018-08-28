@@ -85,7 +85,7 @@ public final class RootCoordinator: NSObject, SetupCoordinatorDelegate, PinCoord
         tabBarController.tabBar.shadowImage = UIImage()
         tabBarController.tabBar.backgroundImage = UIImage()
         
-        let mainCoordinator = MainCoordinator(rootViewController: rootViewController, lightningService: lightningService, settingsDelegate: self)
+        let mainCoordinator = MainCoordinator(rootViewController: rootViewController, lightningService: lightningService, settingsDelegate: self, authenticationViewModel: rootViewModel.authenticationViewModel)
 
         tabBarController.viewControllers = [
             mainCoordinator.walletViewController(),

@@ -17,7 +17,7 @@ class ModalDetailViewController: ModalViewController, QRCodeScannerChildViewCont
     
     private let backgroundView: UIView = {
         let backgroundView = UIView(frame: CGRect.zero)
-        backgroundView.layer.cornerRadius = 14
+        backgroundView.layer.cornerRadius = Appearance.Constants.modalCornerRadius
         backgroundView.layer.maskedCorners = [.layerMaxXMinYCorner, .layerMinXMinYCorner]
         backgroundView.backgroundColor = UIColor.Zap.seaBlue
         return backgroundView

@@ -13,13 +13,15 @@ class SendQRCodeScannerStrategy: QRCodeScannerStrategy {
     private let transactionAnnotationStore: TransactionAnnotationStore
     private let nodeStore: LightningNodeStore
     private let lightningService: LightningService
+    private let authenticationViewModel: AuthenticationViewModel
     
     let title = "scene.send.title".localized
     
-    init(transactionAnnotationStore: TransactionAnnotationStore, nodeStore: LightningNodeStore, lightningService: LightningService) {
+    init(transactionAnnotationStore: TransactionAnnotationStore, nodeStore: LightningNodeStore, lightningService: LightningService, authenticationViewModel: AuthenticationViewModel) {
         self.transactionAnnotationStore = transactionAnnotationStore
         self.nodeStore = nodeStore
         self.lightningService = lightningService
+        self.authenticationViewModel = authenticationViewModel
     }
     
     func viewControllerForAddress(address: String, callback: @escaping (Result<UIViewController>) -> Void) {
@@ -32,7 +34,7 @@ class SendQRCodeScannerStrategy: QRCodeScannerStrategy {
                     nodeStore: strongSelf.nodeStore,
                     lightningService: strongSelf.lightningService
                 )
-                return SendViewController(viewModel: viewModel)
+                return SendViewController(viewModel: viewModel, authenticationViewModel: strongSelf.authenticationViewModel)
             })
         }
     }

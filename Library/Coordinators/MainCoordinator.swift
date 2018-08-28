@@ -16,14 +16,16 @@ final class MainCoordinator: Routing {
     private let channelListViewModel: ChannelListViewModel
     private let transactionListViewModel: TransactionListViewModel
     private let channelTransactionAnnotationUpdater: ChannelTransactionAnnotationUpdater
+    private let authenticationViewModel: AuthenticationViewModel
     
     private weak var detailViewController: UINavigationController?
     private weak var settingsDelegate: SettingsDelegate?
     
-    init(rootViewController: RootViewController, lightningService: LightningService, settingsDelegate: SettingsDelegate) {
+    init(rootViewController: RootViewController, lightningService: LightningService, settingsDelegate: SettingsDelegate, authenticationViewModel: AuthenticationViewModel) {
         self.rootViewController = rootViewController
         self.lightningService = lightningService
         self.settingsDelegate = settingsDelegate
+        self.authenticationViewModel = authenticationViewModel
         
         let nodeStore = LightningNodeStore(channelService: lightningService.channelService)
         channelListViewModel = ChannelListViewModel(channelService: lightningService.channelService, nodeStore: nodeStore)
@@ -89,7 +91,7 @@ final class MainCoordinator: Routing {
     }
     
     func presentSend(invoice: String?) {
-        let strategy = SendQRCodeScannerStrategy(transactionAnnotationStore: transactionListViewModel.transactionAnnotationStore, nodeStore: channelListViewModel.nodeStore, lightningService: lightningService)
+        let strategy = SendQRCodeScannerStrategy(transactionAnnotationStore: transactionListViewModel.transactionAnnotationStore, nodeStore: channelListViewModel.nodeStore, lightningService: lightningService, authenticationViewModel: authenticationViewModel)
         let viewController = UIStoryboard.instantiateQRCodeScannerViewController(strategy: strategy)
         rootViewController.present(viewController, animated: true) {
             if let invoice = invoice,

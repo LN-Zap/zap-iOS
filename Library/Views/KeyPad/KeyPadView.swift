@@ -37,7 +37,7 @@ class KeyPadView: UIView {
 
     override var backgroundColor: UIColor? {
         didSet {
-            contentView.backgroundColor = backgroundColor
+            contentView?.backgroundColor = backgroundColor
         }
     }
     

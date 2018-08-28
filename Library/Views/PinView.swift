@@ -8,10 +8,13 @@
 import UIKit
 
 final class PinView: UIStackView {
+    var activeColor: UIColor = .white
+    var inactiveColor: UIColor = .black
+    
     var activeCount: Int = 0 {
         didSet {
             for (count, view) in arrangedSubviews.enumerated() {
-                view.backgroundColor = count < activeCount ? .white : .black
+                view.backgroundColor = count < activeCount ? activeColor : inactiveColor
             }
         }
     }
@@ -25,19 +28,18 @@ final class PinView: UIStackView {
             let circleSize = bounds.height
             for _ in (0..<characterCount) {
                 let circleView = UIView()
-                circleView.backgroundColor = .black
+                circleView.backgroundColor = inactiveColor
                 NSLayoutConstraint(item: circleView, attribute: .height, relatedBy: .equal, toItem: nil, attribute: .notAnAttribute, multiplier: 1, constant: circleSize).isActive = true
                 NSLayoutConstraint(item: circleView, attribute: .width, relatedBy: .equal, toItem: nil, attribute: .notAnAttribute, multiplier: 1, constant: circleSize).isActive = true
                 circleView.layer.cornerRadius = circleSize / 2
                 addArrangedSubview(circleView)
             }
-
         }
     }
     
     required init(coder: NSCoder) {
         super.init(coder: coder)
-        
+        spacing = 15
         distribution = .equalSpacing
     }
     
