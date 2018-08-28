@@ -9,6 +9,7 @@ import Bond
 import BTCUtil
 import Foundation
 import Lightning
+import ReactiveKit
 
 extension UIStoryboard {
     static func instantiateWalletViewController(lightningService: LightningService, sendButtonTapped: @escaping () -> Void, requestButtonTapped: @escaping () -> Void) -> UINavigationController {
@@ -104,8 +105,21 @@ final class WalletViewController: UIViewController {
             .bind(to: exchangeRateLabel.reactive.text)
             .dispose(in: reactive.bag)
         
-        [lightningService?.balanceService.total.bind(to: primaryBalanceLabel.reactive.text, currency: Settings.shared.primaryCurrency),
-         lightningService?.balanceService.total.bind(to: secondaryBalanceLabel.reactive.text, currency: Settings.shared.secondaryCurrency),
+        if let lightningService = lightningService {
+            ReactiveKit
+                .combineLatest(lightningService.balanceService.total, Settings.shared.primaryCurrency) { satoshis, currency -> NSAttributedString? in
+                    if let bitcoin = currency as? Bitcoin {
+                        return bitcoin.attributedFormat(satoshis: satoshis)
+                    } else {
+                        guard let string = currency.format(satoshis: satoshis) else { return nil }
+                        return NSAttributedString(string: string)
+                    }
+                }
+                .bind(to: primaryBalanceLabel.reactive.attributedText)
+                .dispose(in: reactive.bag)
+        }
+        
+        [lightningService?.balanceService.total.bind(to: secondaryBalanceLabel.reactive.text, currency: Settings.shared.secondaryCurrency),
          lightningService?.infoService.network.map({ $0 == .mainnet }).bind(to: networkLabel.reactive.isHidden)]
             .dispose(in: reactive.bag)
     }
@@ -120,5 +134,14 @@ final class WalletViewController: UIViewController {
     
     @IBAction private func swapCurrencyButtonTapped(_ sender: Any) {
         Settings.shared.swapCurrencies()
+    }
+}
+
+extension Bitcoin {
+    public func attributedFormat(satoshis: Satoshi) -> NSAttributedString? {
+        let string = satoshis.format(unit: unit)
+        let attributedString = NSMutableAttributedString(string: string)
+        attributedString.append(NSAttributedString(string: " " + symbol, attributes: [.font: UIFont.Zap.light]))
+        return attributedString
     }
 }
