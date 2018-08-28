@@ -37,7 +37,7 @@ public final class InfoService {
         heightJobTimer?.fire()
         
         updateInfoTimer = Timer.scheduledTimer(withTimeInterval: 1, repeats: true) { [api, updateInfo] _ in
-            api.info(callback: updateInfo)
+            api.info(completion: updateInfo)
         }
         updateInfoTimer?.fire()
     }

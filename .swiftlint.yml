@@ -49,6 +49,11 @@ conditional_returns_on_newline:
   if_only: true
 
 custom_rules:
+  callback_naming:
+    name: "Callback naming"
+    regex: "callback:"
+    message: Prefer 'completion' over 'callback'"
+    severity: warning
   localized_string:
     name: "Avoid NSLocalizedString"
     regex: "NSLocalizedString"

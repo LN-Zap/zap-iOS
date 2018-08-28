@@ -24,41 +24,41 @@ public final class TransactionService {
         self.channelService = channelService
     }
     
-    public func sendCoins(address: BitcoinAddress, amount: Satoshi, callback: @escaping (Result<OnChainUnconfirmedTransaction>) -> Void) {
+    public func sendCoins(address: BitcoinAddress, amount: Satoshi, completion: @escaping (Result<OnChainUnconfirmedTransaction>) -> Void) {
         api.sendCoins(address: address, amount: amount) { [weak self] in
             if let newTransaction = $0.value {
                 self?.unconfirmedTransactionStore.add(newTransaction)
                 self?.transactions.value.append(newTransaction)
             }
-            callback($0)
+            completion($0)
         }
     }
     
-    public func addInvoice(amount: Satoshi, memo: String?, callback: @escaping (Result<String>) -> Void) {
+    public func addInvoice(amount: Satoshi, memo: String?, completion: @escaping (Result<String>) -> Void) {
         api.addInvoice(amount: amount, memo: memo) { [weak self] in
             if $0.value != nil {
                 self?.update()
             }
-            callback($0)
+            completion($0)
         }
     }
     
-    public func newAddress(with type: OnChainRequestAddressType, callback: @escaping (Result<BitcoinAddress>) -> Void) {
-        api.newAddress(type: type, callback: callback)
+    public func newAddress(with type: OnChainRequestAddressType, completion: @escaping (Result<BitcoinAddress>) -> Void) {
+        api.newAddress(type: type, completion: completion)
     }
     
-    func decodePaymentRequest(_ paymentRequest: String, callback: @escaping (Result<PaymentRequest>) -> Void) {
-        api.decodePaymentRequest(paymentRequest, callback: callback)
+    func decodePaymentRequest(_ paymentRequest: String, completion: @escaping (Result<PaymentRequest>) -> Void) {
+        api.decodePaymentRequest(paymentRequest, completion: completion)
     }
     
-    public func sendPayment(_ paymentRequest: PaymentRequest, amount: Satoshi, callback: @escaping (Result<Data>) -> Void) {
+    public func sendPayment(_ paymentRequest: PaymentRequest, amount: Satoshi, completion: @escaping (Result<Data>) -> Void) {
         api.sendPayment(paymentRequest, amount: amount) { [weak self] result in
             if result.value != nil {
                 self?.update()
                 self?.balanceService.update()
                 self?.channelService.update()
             }
-            callback(result)
+            completion(result)
         }
     }
     
@@ -75,13 +75,13 @@ public final class TransactionService {
         }
         
         taskGroup.enter()
-        api.transactions(callback: apiCallback)
+        api.transactions(completion: apiCallback)
 
         taskGroup.enter()
-        api.payments(callback: apiCallback)
+        api.payments(completion: apiCallback)
         
         taskGroup.enter()
-        api.invoices(callback: apiCallback)
+        api.invoices(completion: apiCallback)
         
         taskGroup.notify(queue: .main, work: DispatchWorkItem(block: { [weak self] in
             self?.unconfirmedTransactionStore.remove(confirmed: allTransactions)

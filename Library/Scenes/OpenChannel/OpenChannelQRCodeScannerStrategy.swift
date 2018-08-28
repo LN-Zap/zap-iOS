@@ -18,12 +18,12 @@ struct OpenChannelQRCodeScannerStrategy: QRCodeScannerStrategy {
         self.lightningService = lightningService
     }
     
-    func viewControllerForAddress(address: String, callback: @escaping (Result<UIViewController>) -> Void) {
+    func viewControllerForAddress(address: String, completion: @escaping (Result<UIViewController>) -> Void) {
         if let nodeURI = LightningNodeURI(string: address) {
             let openChannelViewModel = OpenChannelViewModel(lightningService: lightningService, lightningNodeURI: nodeURI)
-            callback(.success(OpenChannelViewController(viewModel: openChannelViewModel)))
+            completion(.success(OpenChannelViewController(viewModel: openChannelViewModel)))
         } else {
-            callback(.failure(InvoiceError.unknownFormat))
+            completion(.failure(InvoiceError.unknownFormat))
         }
     }
 }

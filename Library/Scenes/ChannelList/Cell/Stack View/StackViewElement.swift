@@ -13,7 +13,7 @@ indirect enum StackViewElement {
     case verticalStackView(content: [StackViewElement], spacing: CGFloat)
     case label(text: String, style: UIViewStyle<UILabel>)
     case horizontalStackView(content: [StackViewElement])
-    case button(title: String, style: UIViewStyle<UIButton>, callback: (UIButton) -> Void)
+    case button(title: String, style: UIViewStyle<UIButton>, completion: (UIButton) -> Void)
     case separator
     case customView(UIView, height: CGFloat)
     case customHeight(CGFloat, element: StackViewElement)
@@ -76,8 +76,8 @@ indirect enum StackViewElement {
             stackView.arrangedSubviews.last?.setContentHuggingPriority(.defaultHigh, for: .horizontal)
             result = stackView
             
-        case let .button(title, style, callback):
-            let button = CallbackButton(title: title, onTap: callback)
+        case let .button(title, style, completion):
+            let button = CallbackButton(title: title, onTap: completion)
             style.apply(to: button.button)
             result = button
             

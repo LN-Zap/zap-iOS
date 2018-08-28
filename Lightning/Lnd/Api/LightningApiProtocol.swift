@@ -9,36 +9,36 @@ import BTCUtil
 import Foundation
 
 protocol LightningApiProtocol {
-    func info(callback: @escaping (Result<Info>) -> Void)
+    func info(completion: @escaping (Result<Info>) -> Void)
     
     // Channels
-    func openChannel(pubKey: String, amount: Satoshi, callback: @escaping (Result<ChannelPoint>) -> Void)
-    func closeChannel(channelPoint: ChannelPoint, force: Bool, callback: @escaping (Result<CloseStatusUpdate>) -> Void)
-    func channelBalance(callback: @escaping (Result<Satoshi>) -> Void)
-    func pendingChannels(callback: @escaping (Result<[Channel]>) -> Void)
-    func channels(callback: @escaping (Result<[Channel]>) -> Void)
-    func closedChannels(callback: @escaping (Result<[ChannelCloseSummary]>) -> Void)
-    func subscribeChannelGraph(callback: @escaping (Result<GraphTopologyUpdate>) -> Void)
+    func openChannel(pubKey: String, amount: Satoshi, completion: @escaping (Result<ChannelPoint>) -> Void)
+    func closeChannel(channelPoint: ChannelPoint, force: Bool, completion: @escaping (Result<CloseStatusUpdate>) -> Void)
+    func channelBalance(completion: @escaping (Result<Satoshi>) -> Void)
+    func pendingChannels(completion: @escaping (Result<[Channel]>) -> Void)
+    func channels(completion: @escaping (Result<[Channel]>) -> Void)
+    func closedChannels(completion: @escaping (Result<[ChannelCloseSummary]>) -> Void)
+    func subscribeChannelGraph(completion: @escaping (Result<GraphTopologyUpdate>) -> Void)
 
     // On-chain
-    func sendCoins(address: BitcoinAddress, amount: Satoshi, callback: @escaping (Result<OnChainUnconfirmedTransaction>) -> Void)
-    func transactions(callback: @escaping (Result<[Transaction]>) -> Void)
-    func subscribeTransactions(callback: @escaping (Result<Transaction>) -> Void)
+    func sendCoins(address: BitcoinAddress, amount: Satoshi, completion: @escaping (Result<OnChainUnconfirmedTransaction>) -> Void)
+    func transactions(completion: @escaping (Result<[Transaction]>) -> Void)
+    func subscribeTransactions(completion: @escaping (Result<Transaction>) -> Void)
 
     // Payments
-    func decodePaymentRequest(_ paymentRequest: String, callback: @escaping (Result<PaymentRequest>) -> Void)
-    func payments(callback: @escaping (Result<[Transaction]>) -> Void)
-    func sendPayment(_ paymentRequest: PaymentRequest, amount: Satoshi?, callback: @escaping (Result<Data>) -> Void)
-    func addInvoice(amount: Satoshi?, memo: String?, callback: @escaping (Result<String>) -> Void)
-    func invoices(callback: @escaping (Result<[Transaction]>) -> Void)
-    func subscribeInvoices(callback: @escaping (Result<Transaction>) -> Void)
+    func decodePaymentRequest(_ paymentRequest: String, completion: @escaping (Result<PaymentRequest>) -> Void)
+    func payments(completion: @escaping (Result<[Transaction]>) -> Void)
+    func sendPayment(_ paymentRequest: PaymentRequest, amount: Satoshi?, completion: @escaping (Result<Data>) -> Void)
+    func addInvoice(amount: Satoshi?, memo: String?, completion: @escaping (Result<String>) -> Void)
+    func invoices(completion: @escaping (Result<[Transaction]>) -> Void)
+    func subscribeInvoices(completion: @escaping (Result<Transaction>) -> Void)
 
     // Peers
-    func connect(pubKey: String, host: String, callback: @escaping (Result<Success>) -> Void)
-    func nodeInfo(pubKey: String, callback: @escaping (Result<NodeInfo>) -> Void)
-    func peers(callback: @escaping (Result<[Peer]>) -> Void)
+    func connect(pubKey: String, host: String, completion: @escaping (Result<Success>) -> Void)
+    func nodeInfo(pubKey: String, completion: @escaping (Result<NodeInfo>) -> Void)
+    func peers(completion: @escaping (Result<[Peer]>) -> Void)
     
     // Wallet
-    func newAddress(type: OnChainRequestAddressType, callback: @escaping (Result<BitcoinAddress>) -> Void)
-    func walletBalance(callback: @escaping (Result<Satoshi>) -> Void)
+    func newAddress(type: OnChainRequestAddressType, completion: @escaping (Result<BitcoinAddress>) -> Void)
+    func walletBalance(completion: @escaping (Result<Satoshi>) -> Void)
 }

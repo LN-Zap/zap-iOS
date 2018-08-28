@@ -75,7 +75,7 @@ final class ChannelListViewModel: NSObject {
         channelService.update()
     }
     
-    func close(_ channel: Channel, callback: @escaping (Lightning.Result<CloseStatusUpdate>) -> Void) {
-        channelService.close(channel, callback: callback)
+    func close(_ channel: Channel, completion: @escaping (Lightning.Result<CloseStatusUpdate>) -> Void) {
+        channelService.close(channel, completion: completion)
     }
 }

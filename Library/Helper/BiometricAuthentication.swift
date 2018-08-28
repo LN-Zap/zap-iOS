@@ -50,16 +50,16 @@ enum BiometricAuthentication {
         #endif
     }
     
-    static func authenticate(callback: @escaping (Result<Success>) -> Void) {
+    static func authenticate(completion: @escaping (Result<Success>) -> Void) {
         #if targetEnvironment(simulator)
         guard Environment.fakeBiometricAuthentication else {
-            callback(.failure(AuthenticationError.notAvailable))
+            completion(.failure(AuthenticationError.notAvailable))
             return
         }
         // display a fake local authentication view when run on simulator.
         let alertController = UIAlertController(title: "Authenticate", message: "Fake Biometric Authenticatyion", preferredStyle: .alert)
-        alertController.addAction(UIAlertAction(title: "cancel", style: .cancel) { _ in callback(.failure(AuthenticationError.canceled)) })
-        alertController.addAction(UIAlertAction(title: "authenticate", style: .default) { _ in callback(.success(Success())) })
+        alertController.addAction(UIAlertAction(title: "cancel", style: .cancel) { _ in completion(.failure(AuthenticationError.canceled)) })
+        alertController.addAction(UIAlertAction(title: "authenticate", style: .default) { _ in completion(.success(Success())) })
         
         let alertWindow = UIWindow(frame: UIScreen.main.bounds)
         alertWindow.rootViewController = UIViewController()
@@ -76,20 +76,20 @@ enum BiometricAuthentication {
         if localAuthenticationContext.canEvaluatePolicy(.deviceOwnerAuthenticationWithBiometrics, error: &authError) {
             localAuthenticationContext.evaluatePolicy(.deviceOwnerAuthenticationWithBiometrics, localizedReason: reasonString) { success, evaluateError in
                 if success {
-                    execute(callback, with: .success(Success()))
+                    execute(completion, with: .success(Success()))
                 } else if let error = evaluateError {
-                    execute(callback, with: .failure(authenticationError(for: error)))
+                    execute(completion, with: .failure(authenticationError(for: error)))
                 }
             }
         } else if let error = authError {
-            execute(callback, with: .failure(authenticationError(for: error)))
+            execute(completion, with: .failure(authenticationError(for: error)))
         }
         #endif
     }
     
-    private static func execute(_ callback: @escaping (Result<Success>) -> Void, with result: Result<Success>) {
+    private static func execute(_ completion: @escaping (Result<Success>) -> Void, with result: Result<Success>) {
         DispatchQueue.main.async {
-            callback(result)
+            completion(result)
         }
     }
 

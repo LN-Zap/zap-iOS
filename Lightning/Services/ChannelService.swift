@@ -40,40 +40,40 @@ public final class ChannelService {
         }
     }
     
-    public func open(pubKey: String, host: String, amount: Satoshi, callback: @escaping (Result<ChannelPoint>) -> Void) {
+    public func open(pubKey: String, host: String, amount: Satoshi, completion: @escaping (Result<ChannelPoint>) -> Void) {
         api.peers { [weak self, api] peers in
             if peers.value?.contains(where: { $0.pubKey == pubKey }) == true {
-                self?.openConnectedChannel(pubKey: pubKey, amount: amount, callback: callback)
+                self?.openConnectedChannel(pubKey: pubKey, amount: amount, completion: completion)
             } else {
                 api.connect(pubKey: pubKey, host: host) { result in
                     if let error = result.error {
-                        callback(.failure(error))
+                        completion(.failure(error))
                     } else {
-                        self?.openConnectedChannel(pubKey: pubKey, amount: amount, callback: callback)
+                        self?.openConnectedChannel(pubKey: pubKey, amount: amount, completion: completion)
                     }
                 }
             }
         }
     }
     
-    private func openConnectedChannel(pubKey: String, amount: Satoshi, callback: @escaping (Result<ChannelPoint>) -> Void) {
+    private func openConnectedChannel(pubKey: String, amount: Satoshi, completion: @escaping (Result<ChannelPoint>) -> Void) {
         api.openChannel(pubKey: pubKey, amount: amount) { [weak self] in
             self?.update()
-            callback($0)
+            completion($0)
         }
     }
     
-    public func close(_ channel: Channel, callback: @escaping (Result<CloseStatusUpdate>) -> Void) {
+    public func close(_ channel: Channel, completion: @escaping (Result<CloseStatusUpdate>) -> Void) {
         let force = channel.state != .active
         api.closeChannel(channelPoint: channel.channelPoint, force: force) { [weak self] in
             self?.update()
-            callback($0)
+            completion($0)
         }
     }
     
-    func node(for remotePubkey: String, callback: @escaping (LightningNode?) -> Void) {
+    func node(for remotePubkey: String, completion: @escaping (LightningNode?) -> Void) {
         api.nodeInfo(pubKey: remotePubkey) { result in
-            callback(result.value?.node)
+            completion(result.value?.node)
         }
     }
 }

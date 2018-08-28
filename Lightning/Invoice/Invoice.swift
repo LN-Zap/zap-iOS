@@ -22,23 +22,23 @@ public final class Invoice {
         self.bitcoinURI = bitcoinURI
     }
     
-    public static func create(from address: String, lightningService: LightningService, callback: @escaping (Result<Invoice>) -> Void) {
+    public static func create(from address: String, lightningService: LightningService, completion: @escaping (Result<Invoice>) -> Void) {
 
         if let bitcoinURI = BitcoinURI(string: address) {
             if let paymentRequest = bitcoinURI.lightningFallback,
                 let invoiceURI = LightningInvoiceURI(string: paymentRequest) {
-                decodeLightningPaymentRequest(invoiceURI: invoiceURI, bitcoinURI: bitcoinURI, lightningService: lightningService, callback: callback)
+                decodeLightningPaymentRequest(invoiceURI: invoiceURI, bitcoinURI: bitcoinURI, lightningService: lightningService, completion: completion)
             } else {
-                validateInvoice(Invoice(lightningPaymentRequest: nil, bitcoinURI: bitcoinURI), lightningService: lightningService, callback: callback)
+                validateInvoice(Invoice(lightningPaymentRequest: nil, bitcoinURI: bitcoinURI), lightningService: lightningService, completion: completion)
             }
         } else if let invoiceURI = LightningInvoiceURI(string: address) {
-            decodeLightningPaymentRequest(invoiceURI: invoiceURI, bitcoinURI: nil, lightningService: lightningService, callback: callback)
+            decodeLightningPaymentRequest(invoiceURI: invoiceURI, bitcoinURI: nil, lightningService: lightningService, completion: completion)
         } else {
-            callback(.failure(InvoiceError.unknownFormat))
+            completion(.failure(InvoiceError.unknownFormat))
         }
     }
     
-    private static func decodeLightningPaymentRequest(invoiceURI: LightningInvoiceURI, bitcoinURI: BitcoinURI?, lightningService: LightningService, callback: @escaping (Result<Invoice>) -> Void) {
+    private static func decodeLightningPaymentRequest(invoiceURI: LightningInvoiceURI, bitcoinURI: BitcoinURI?, lightningService: LightningService, completion: @escaping (Result<Invoice>) -> Void) {
         lightningService.transactionService.decodePaymentRequest(invoiceURI.address) { result in
             switch result {
             case .success(let paymentRequest):
@@ -52,24 +52,24 @@ public final class Invoice {
                     invoice = Invoice(lightningPaymentRequest: paymentRequest, bitcoinURI: bitcoinURI)
                 }
                 
-                validateInvoice(invoice, lightningService: lightningService, callback: callback)
+                validateInvoice(invoice, lightningService: lightningService, completion: completion)
             case .failure(let error):
-                callback(.failure(error))
+                completion(.failure(error))
             }
         }
     }
     
-    private static func validateInvoice(_ invoice: Invoice, lightningService: LightningService, callback: (Result<Invoice>) -> Void) {
+    private static func validateInvoice(_ invoice: Invoice, lightningService: LightningService, completion: (Result<Invoice>) -> Void) {
         let currentNetwork = lightningService.infoService.network.value
         
         if let bitcoinURI = invoice.bitcoinURI,
             bitcoinURI.network != currentNetwork {
-            callback(.failure(InvoiceError.wrongNetworkError(linkNetwork: bitcoinURI.network, nodeNetwork: currentNetwork)))
+            completion(.failure(InvoiceError.wrongNetworkError(linkNetwork: bitcoinURI.network, nodeNetwork: currentNetwork)))
         } else if let lightningPaymentRequest = invoice.lightningPaymentRequest,
             lightningPaymentRequest.network != currentNetwork {
-            callback(.failure(InvoiceError.wrongNetworkError(linkNetwork: lightningPaymentRequest.network, nodeNetwork: currentNetwork)))
+            completion(.failure(InvoiceError.wrongNetworkError(linkNetwork: lightningPaymentRequest.network, nodeNetwork: currentNetwork)))
         } else {
-            callback(.success(invoice))
+            completion(.success(invoice))
         }
     }
 }

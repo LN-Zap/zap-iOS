@@ -24,10 +24,10 @@ class SendQRCodeScannerStrategy: QRCodeScannerStrategy {
         self.authenticationViewModel = authenticationViewModel
     }
     
-    func viewControllerForAddress(address: String, callback: @escaping (Result<UIViewController>) -> Void) {
+    func viewControllerForAddress(address: String, completion: @escaping (Result<UIViewController>) -> Void) {
         Invoice.create(from: address, lightningService: lightningService) { [weak self] result in
             guard let strongSelf = self else { return }
-            callback(result.map {
+            completion(result.map {
                 let viewModel = SendViewModel(
                     invoice: $0,
                     transactionAnnotationStore: strongSelf.transactionAnnotationStore,

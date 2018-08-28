@@ -80,96 +80,96 @@ final class LightningApiMock: LightningApiProtocol {
         self.invoices = invoices
     }
     
-    func info(callback: @escaping (Result<Info>) -> Void) {
-        callback(Result(value: info, error: LndApiError.unknownError))
+    func info(completion: @escaping (Result<Info>) -> Void) {
+        completion(Result(value: info, error: LndApiError.unknownError))
     }
     
-    func nodeInfo(pubKey: String, callback: @escaping (Result<NodeInfo>) -> Void) {
-        callback(Result(value: nodeInfo, error: LndApiError.unknownError))
+    func nodeInfo(pubKey: String, completion: @escaping (Result<NodeInfo>) -> Void) {
+        completion(Result(value: nodeInfo, error: LndApiError.unknownError))
     }
     
-    func walletBalance(callback: @escaping (Result<Satoshi>) -> Void) {
-        callback(Result(value: walletBalance, error: LndApiError.unknownError))
+    func walletBalance(completion: @escaping (Result<Satoshi>) -> Void) {
+        completion(Result(value: walletBalance, error: LndApiError.unknownError))
     }
     
-    func channelBalance(callback: @escaping (Result<Satoshi>) -> Void) {
-        callback(Result(value: channelBalance, error: LndApiError.unknownError))
+    func channelBalance(completion: @escaping (Result<Satoshi>) -> Void) {
+        completion(Result(value: channelBalance, error: LndApiError.unknownError))
     }
     
-    func transactions(callback: @escaping (Result<[Transaction]>) -> Void) {
-        callback(Result(value: transactions, error: LndApiError.unknownError))
+    func transactions(completion: @escaping (Result<[Transaction]>) -> Void) {
+        completion(Result(value: transactions, error: LndApiError.unknownError))
     }
     
-    func subscribeTransactions(callback: @escaping (Result<Transaction>) -> Void) {
-        callback(Result(value: subscribeTransactions, error: LndApiError.unknownError))
+    func subscribeTransactions(completion: @escaping (Result<Transaction>) -> Void) {
+        completion(Result(value: subscribeTransactions, error: LndApiError.unknownError))
     }
     
-    func payments(callback: @escaping (Result<[Transaction]>) -> Void) {
-        callback(Result(value: payments, error: LndApiError.unknownError))
+    func payments(completion: @escaping (Result<[Transaction]>) -> Void) {
+        completion(Result(value: payments, error: LndApiError.unknownError))
     }
     
-    func channels(callback: @escaping (Result<[Channel]>) -> Void) {
-        callback(Result(value: channels, error: LndApiError.unknownError))
+    func channels(completion: @escaping (Result<[Channel]>) -> Void) {
+        completion(Result(value: channels, error: LndApiError.unknownError))
     }
     
-    func pendingChannels(callback: @escaping (Result<[Channel]>) -> Void) {
-        callback(Result(value: pendingChannels, error: LndApiError.unknownError))
+    func pendingChannels(completion: @escaping (Result<[Channel]>) -> Void) {
+        completion(Result(value: pendingChannels, error: LndApiError.unknownError))
     }
     
-    func connect(pubKey: String, host: String, callback: @escaping (Result<Success>) -> Void) {
+    func connect(pubKey: String, host: String, completion: @escaping (Result<Success>) -> Void) {
         if connectError == true {
-            callback(.success(Success()))
+            completion(.success(Success()))
         } else {
-            callback(.failure(LndApiError.unknownError))
+            completion(.failure(LndApiError.unknownError))
         }
     }
 
-    func peers(callback: @escaping (Result<[Peer]>) -> Void) {
-        callback(Result(value: peers, error: LndApiError.unknownError))
+    func peers(completion: @escaping (Result<[Peer]>) -> Void) {
+        completion(Result(value: peers, error: LndApiError.unknownError))
     }
     
-    func decodePaymentRequest(_ paymentRequest: String, callback: @escaping (Result<PaymentRequest>) -> Void) {
-        callback(Result(value: decodePaymentRequest, error: LndApiError.unknownError))
+    func decodePaymentRequest(_ paymentRequest: String, completion: @escaping (Result<PaymentRequest>) -> Void) {
+        completion(Result(value: decodePaymentRequest, error: LndApiError.unknownError))
     }
     
-    func sendPayment(_ paymentRequest: PaymentRequest, amount: Satoshi?, callback: @escaping (Result<Data>) -> Void) {
-        callback(Result(value: sendPayment, error: LndApiError.unknownError))
+    func sendPayment(_ paymentRequest: PaymentRequest, amount: Satoshi?, completion: @escaping (Result<Data>) -> Void) {
+        completion(Result(value: sendPayment, error: LndApiError.unknownError))
     }
     
-    func addInvoice(amount: Satoshi?, memo: String?, callback: @escaping (Result<String>) -> Void) {
-        callback(Result(value: addInvoice, error: LndApiError.unknownError))
+    func addInvoice(amount: Satoshi?, memo: String?, completion: @escaping (Result<String>) -> Void) {
+        completion(Result(value: addInvoice, error: LndApiError.unknownError))
     }
     
-    func subscribeChannelGraph(callback: @escaping (Result<GraphTopologyUpdate>) -> Void) {
-        callback(Result(value: graphTopologyUpdate, error: LndApiError.unknownError))
+    func subscribeChannelGraph(completion: @escaping (Result<GraphTopologyUpdate>) -> Void) {
+        completion(Result(value: graphTopologyUpdate, error: LndApiError.unknownError))
     }
     
-    func openChannel(pubKey: String, amount: Satoshi, callback: @escaping (Result<ChannelPoint>) -> Void) {
-        callback(Result(value: channelPoint, error: LndApiError.unknownError))
+    func openChannel(pubKey: String, amount: Satoshi, completion: @escaping (Result<ChannelPoint>) -> Void) {
+        completion(Result(value: channelPoint, error: LndApiError.unknownError))
     }
     
-    func closeChannel(channelPoint: ChannelPoint, force: Bool, callback: @escaping (Result<CloseStatusUpdate>) -> Void) {
-        callback(Result(value: closeChannelStatusUpdate, error: LndApiError.unknownError))
+    func closeChannel(channelPoint: ChannelPoint, force: Bool, completion: @escaping (Result<CloseStatusUpdate>) -> Void) {
+        completion(Result(value: closeChannelStatusUpdate, error: LndApiError.unknownError))
     }
     
-    func closedChannels(callback: @escaping (Result<[ChannelCloseSummary]>) -> Void) {
-        callback(Result(value: closedChannels, error: LndApiError.unknownError))
+    func closedChannels(completion: @escaping (Result<[ChannelCloseSummary]>) -> Void) {
+        completion(Result(value: closedChannels, error: LndApiError.unknownError))
     }
     
-    func sendCoins(address: BitcoinAddress, amount: Satoshi, callback: @escaping (Result<OnChainUnconfirmedTransaction>) -> Void) {
-        callback(Result(value: sendCoins, error: LndApiError.unknownError))
+    func sendCoins(address: BitcoinAddress, amount: Satoshi, completion: @escaping (Result<OnChainUnconfirmedTransaction>) -> Void) {
+        completion(Result(value: sendCoins, error: LndApiError.unknownError))
     }
     
-    func invoices(callback: @escaping (Result<[Transaction]>) -> Void) {
-        callback(Result(value: invoices, error: LndApiError.unknownError))
+    func invoices(completion: @escaping (Result<[Transaction]>) -> Void) {
+        completion(Result(value: invoices, error: LndApiError.unknownError))
     }
     
-    func subscribeInvoices(callback: @escaping (Result<Transaction>) -> Void) {
-        callback(Result(value: subscribeInvoices, error: LndApiError.unknownError))
+    func subscribeInvoices(completion: @escaping (Result<Transaction>) -> Void) {
+        completion(Result(value: subscribeInvoices, error: LndApiError.unknownError))
     }
     
-    func newAddress(type: OnChainRequestAddressType, callback: @escaping (Result<BitcoinAddress>) -> Void) {
-        callback(Result(value: newAddress, error: LndApiError.unknownError))
+    func newAddress(type: OnChainRequestAddressType, completion: @escaping (Result<BitcoinAddress>) -> Void) {
+        completion(Result(value: newAddress, error: LndApiError.unknownError))
     }
 }
 

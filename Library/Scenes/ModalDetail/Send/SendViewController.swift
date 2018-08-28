@@ -52,7 +52,7 @@ final class SendViewController: ModalDetailViewController {
             contentStackView.addArrangedElement(.separator)
         }
         
-        sendButton = contentStackView.addArrangedElement(.customHeight(56, element: .button(title: "scene.send.send_button".localized, style: Style.Button.background, callback: { [weak self] _ in
+        sendButton = contentStackView.addArrangedElement(.customHeight(56, element: .button(title: "scene.send.send_button".localized, style: Style.Button.background, completion: { [weak self] _ in
             self?.sendButtonTapped()
         }))) as? CallbackButton
         

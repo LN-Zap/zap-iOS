@@ -38,20 +38,20 @@ public final class WalletService {
         }
     }
     
-    public func generateSeed(callback: @escaping (Result<[String]>) -> Void) {
-        wallet.generateSeed(passphrase: nil, callback: callback)
+    public func generateSeed(completion: @escaping (Result<[String]>) -> Void) {
+        wallet.generateSeed(passphrase: nil, completion: completion)
     }
     
-    public func initWallet(mnemonic: [String], callback: @escaping (Result<Success>) -> Void) {
+    public func initWallet(mnemonic: [String], completion: @escaping (Result<Success>) -> Void) {
         wallet.initWallet(mnemonic: mnemonic, password: password) {
             if $0.value != nil {
                 WalletService.didCreateWallet = true
             }
-            callback($0)
+            completion($0)
         }
     }
     
-    public func unlockWallet(callback: @escaping (Result<Success>) -> Void) {
-        wallet.unlockWallet(password: password, callback: callback)
+    public func unlockWallet(completion: @escaping (Result<Success>) -> Void) {
+        wallet.unlockWallet(password: password, completion: completion)
     }
 }

@@ -67,30 +67,30 @@ public enum Result<Value>: CustomStringConvertible, CustomDebugStringConvertible
 
 /// Helper methods to create `Result` objects from grpc results
 
-func result<T, U>(_ callback: @escaping (Result<U>) -> Void, map: @escaping (T) -> U?) -> (T?, CallResult) -> Void {
+func result<T, U>(_ completion: @escaping (Result<U>) -> Void, map: @escaping (T) -> U?) -> (T?, CallResult) -> Void {
     return { (response: T?, callResult: CallResult) in
         if let response = response,
             let value = map(response) {
-            callback(.success(value))
+            completion(.success(value))
         } else if !callResult.success {
             switch callResult.statusCode {
             case .unavailable:
                 print(LndApiError.noInternet)
-                callback(.failure(LndApiError.noInternet))
+                completion(.failure(LndApiError.noInternet))
             default:
                 if let statusMessage = callResult.statusMessage {
                     print(statusMessage)
-                    callback(.failure(LndApiError.localizedError(statusMessage)))
+                    completion(.failure(LndApiError.localizedError(statusMessage)))
                 } else {
-                    callback(.failure(LndApiError.unknownError))
+                    completion(.failure(LndApiError.unknownError))
                 }
             }
         } else if let statusMessage = callResult.statusMessage {
             print(LndApiError.localizedError, callResult)
-            callback(.failure(LndApiError.localizedError(statusMessage)))
+            completion(.failure(LndApiError.localizedError(statusMessage)))
         } else {
             print(LndApiError.unknownError, callResult)
-            callback(.failure(LndApiError.unknownError))
+            completion(.failure(LndApiError.unknownError))
         }
     }
 }

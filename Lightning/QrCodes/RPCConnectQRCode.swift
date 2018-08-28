@@ -15,9 +15,9 @@ public enum RPCConnectQRCodeError: Error {
 
 /// Decodes RPCConfiguration from both BTCPay & zapconnect QRCodes
 public enum RPCConnectQRCode {
-    public static func configuration(for string: String, callback: @escaping (Result<RemoteRPCConfiguration>) -> Void) {
+    public static func configuration(for string: String, completion: @escaping (Result<RemoteRPCConfiguration>) -> Void) {
         if let qrCode = ZapconnectQRCode(json: string) {
-            callback(.success(qrCode.rpcConfiguration))
+            completion(.success(qrCode.rpcConfiguration))
         } else if let btcPayQRCode = BTCPayQRCode(string: string) {
             btcPayQRCode.fetchConfiguration { result in
                 let mappedResult = result.flatMap { configData -> Result<RemoteRPCConfiguration> in
@@ -27,10 +27,10 @@ public enum RPCConnectQRCode {
                         return .failure(RPCConnectQRCodeError.btcPayConfigurationBroken)
                     }
                 }
-                callback(mappedResult)
+                completion(mappedResult)
             }
         } else {
-            callback(.failure(RPCConnectQRCodeError.cantReadQRCode))
+            completion(.failure(RPCConnectQRCodeError.cantReadQRCode))
         }
     }
 }

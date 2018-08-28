@@ -25,18 +25,18 @@ final class WalletApiRPC: WalletApiProtocol {
         rpc = Lnrpc_WalletUnlockerServiceClient(configuration: configuration)
     }
     
-    func generateSeed(passphrase: String? = nil, callback: @escaping (Result<[String]>) -> Void) {
+    func generateSeed(passphrase: String? = nil, completion: @escaping (Result<[String]>) -> Void) {
         let request = Lnrpc_GenSeedRequest(passphrase: passphrase)
-        _ = try? rpc.genSeed(request, completion: result(callback, map: { $0.cipherSeedMnemonic }))
+        _ = try? rpc.genSeed(request, completion: result(completion, map: { $0.cipherSeedMnemonic }))
     }
     
-    func initWallet(mnemonic: [String], password: String, callback: @escaping (Result<Success>) -> Void) {
+    func initWallet(mnemonic: [String], password: String, completion: @escaping (Result<Success>) -> Void) {
         let request = Lnrpc_InitWalletRequest(password: password, mnemonic: mnemonic)
-        _ = try? rpc.initWallet(request, completion: result(callback, map: { _ in Success() }))
+        _ = try? rpc.initWallet(request, completion: result(completion, map: { _ in Success() }))
     }
     
-    func unlockWallet(password: String, callback: @escaping (Result<Success>) -> Void) {
+    func unlockWallet(password: String, completion: @escaping (Result<Success>) -> Void) {
         let request = Lnrpc_UnlockWalletRequest(password: password)
-        _ = try? rpc.unlockWallet(request, completion: result(callback, map: { _ in Success() }))
+        _ = try? rpc.unlockWallet(request, completion: result(completion, map: { _ in Success() }))
     }
 }

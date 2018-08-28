@@ -41,32 +41,32 @@ public final class RequestViewModel {
         self.transactionService = transactionService
     }
     
-    public func create(callback: @escaping (Result<QRCodeDetailViewModel>) -> Void) {
+    public func create(completion: @escaping (Result<QRCodeDetailViewModel>) -> Void) {
         switch requestMethod {
         case .lightning:
-            createLightning(callback: callback)
+            createLightning(completion: completion)
         case .onChain:
-            createOnChain(callback: callback)
+            createOnChain(completion: completion)
         }
     }
     
-    private func createLightning(callback: @escaping (Result<QRCodeDetailViewModel>) -> Void) {
+    private func createLightning(completion: @escaping (Result<QRCodeDetailViewModel>) -> Void) {
         transactionService.addInvoice(amount: amount, memo: trimmedMemo) { result in
-            callback(result.flatMap {
+            completion(result.flatMap {
                 guard let invoiceURI = LightningInvoiceURI(string: $0) else { return .failure(LndApiError.unknownError) }
                 return .success(LightningRequestQRCodeViewModel(paymentURI: invoiceURI))
             })
         }
     }
     
-    private func createOnChain(callback: @escaping (Result<QRCodeDetailViewModel>) -> Void) {
+    private func createOnChain(completion: @escaping (Result<QRCodeDetailViewModel>) -> Void) {
         if let address = cachedOnChainAddress,
             let viewModel = onChainRequestViewModel(for: address) {
-            callback(.success(viewModel))
+            completion(.success(viewModel))
         } else {
             let type = Settings.shared.onChainRequestAddressType.value
             transactionService.newAddress(with: type) { [weak self] result in
-                callback(result.flatMap {
+                completion(result.flatMap {
                     guard let viewModel = self?.onChainRequestViewModel(for: $0) else { return .failure(LndApiError.unknownError) }
                     self?.cachedOnChainAddress = $0
                     return .success(viewModel)

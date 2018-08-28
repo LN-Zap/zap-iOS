@@ -27,9 +27,9 @@ final class RecoverWalletViewModel {
         return text.components(separatedBy: characters).filter { $0 != "" }
     }
     
-    func recoverWallet(with text: String, callback: @escaping (Result<Success>) -> Void) {
+    func recoverWallet(with text: String, completion: @escaping (Result<Success>) -> Void) {
         let mnemonic = self.mnemonic(from: text.lowercased())
-        walletService.initWallet(mnemonic: mnemonic, callback: callback)
+        walletService.initWallet(mnemonic: mnemonic, completion: completion)
     }
     
     func attributedString(from text: String) -> NSAttributedString {

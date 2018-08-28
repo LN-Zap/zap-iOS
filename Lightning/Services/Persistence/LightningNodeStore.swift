@@ -21,12 +21,12 @@ public final class LightningNodeStore: Persistable {
         loadPersistable()
     }
     
-    public func node(for remotePubkey: String, callback: @escaping (LightningNode?) -> Void) {
+    public func node(for remotePubkey: String, completion: @escaping (LightningNode?) -> Void) {
         if let node = data[remotePubkey] {
-            callback(node)
+            completion(node)
         } else {
             channelService.node(for: remotePubkey) { [weak self] in
-                callback($0)
+                completion($0)
                 
                 if let node = $0 {
                     self?.data[remotePubkey] = node

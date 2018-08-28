@@ -22,17 +22,17 @@ final class EmptyStreamCallback: NSObject, LndmobileCallbackProtocol {
 }
 
 final class StreamCallback<T: SwiftProtobuf.Message, U>: NSObject, LndmobileCallbackProtocol {
-    private let callback: (Result<U>) -> Void
+    private let completion: (Result<U>) -> Void
     private let mapping: (T) -> U?
     
-    init(_ callback: @escaping (Result<U>) -> Void, map: @escaping (T) -> U?) {
-        self.callback = callback
+    init(_ completion: @escaping (Result<U>) -> Void, map: @escaping (T) -> U?) {
+        self.completion = completion
         self.mapping = map
     }
     
     func onError(_ error: Error) {
         print("🅾️ Callback Error:", error)
-        callback(.failure(error))
+        completion(.failure(error))
     }
     
     func onResponse(_ data: Data) {
@@ -42,7 +42,7 @@ final class StreamCallback<T: SwiftProtobuf.Message, U>: NSObject, LndmobileCall
             if !(value is Info) && !(value is GraphTopologyUpdate) {
                 print("✅ Callback:", value)
             }
-            callback(.success(value))
+            completion(.success(value))
         } else {
             onError(LndApiError.unknownError)
         }

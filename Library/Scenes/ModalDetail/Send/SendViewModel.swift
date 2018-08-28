@@ -89,35 +89,35 @@ final class SendViewModel {
         }
     }
     
-    func send(callback: @escaping (Result<Success>) -> Void) {
+    func send(completion: @escaping (Result<Success>) -> Void) {
         guard let amount = amount else { return }
         
         switch method {
         case .lightning(let paymentRequest):
             sendLightning(paymentRequest: paymentRequest, amount: amount) { result in
-                callback(result.map { _ in Success() })
+                completion(result.map { _ in Success() })
             }
         case .onChain(let bitcoinURI):
             sendOnChain(bitcoinURI: bitcoinURI, amount: amount) { result in
-                callback(result.map { _ in Success() })
+                completion(result.map { _ in Success() })
             }
         }
     }
     
-    private func sendOnChain(bitcoinURI: BitcoinURI, amount: Satoshi, callback: @escaping (Result<OnChainUnconfirmedTransaction>) -> Void) {
+    private func sendOnChain(bitcoinURI: BitcoinURI, amount: Satoshi, completion: @escaping (Result<OnChainUnconfirmedTransaction>) -> Void) {
         lightningService.transactionService.sendCoins(address: bitcoinURI.bitcoinAddress, amount: amount) { [weak self] in
             if let unconfirmedTransaction = $0.value,
                 let memo = self?.memo {
                 self?.transactionAnnotationStore.udpateMemo(memo, forTransactionId: unconfirmedTransaction.id)
             }
-            callback($0)
+            completion($0)
         }
     }
 
-    private func sendLightning(paymentRequest: PaymentRequest, amount: Satoshi, callback: @escaping (Result<Data>) -> Void) {
+    private func sendLightning(paymentRequest: PaymentRequest, amount: Satoshi, completion: @escaping (Result<Data>) -> Void) {
         lightningService.transactionService.sendPayment(paymentRequest, amount: amount) { [weak self] in
             self?.transactionAnnotationStore.udpateMemo(paymentRequest.memo, forTransactionId: paymentRequest.paymentHash)
-            callback($0)
+            completion($0)
         }
     }
 }

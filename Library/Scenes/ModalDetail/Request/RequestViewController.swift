@@ -102,7 +102,7 @@ final class RequestViewController: ModalDetailViewController {
         memoTextField.addTarget(self, action: #selector(updateMemo(sender:)), for: .editingChanged)
         self.memoTextField = memoTextField
         
-        nextButton = contentStackView.addArrangedElement(.customHeight(56, element: .button(title: "scene.request.next_button_title".localized, style: Style.Button.background, callback: { [weak self] _ in
+        nextButton = contentStackView.addArrangedElement(.customHeight(56, element: .button(title: "scene.request.next_button_title".localized, style: Style.Button.background, completion: { [weak self] _ in
             self?.bottomButtonTapped()
         }))) as? CallbackButton
         nextButton?.isHidden = true
@@ -114,7 +114,7 @@ final class RequestViewController: ModalDetailViewController {
             $0.setImage(lightningImage, for: .normal)
             $0.imageEdgeInsets = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 10)
         })
-        lightningButton = contentStackView.addArrangedElement(.customHeight(56, element: .button(title: "scene.request.lightning_button".localized, style: lightningButtonStyle, callback: { [weak self] _ in
+        lightningButton = contentStackView.addArrangedElement(.customHeight(56, element: .button(title: "scene.request.lightning_button".localized, style: lightningButtonStyle, completion: { [weak self] _ in
             self?.presentAmountInput(requestMethod: .lightning)
         }))) as? CallbackButton
         
@@ -138,7 +138,7 @@ final class RequestViewController: ModalDetailViewController {
             $0.setImage(onChainImage, for: .normal)
             $0.imageEdgeInsets = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 10)
         })
-        onChainButton = contentStackView.addArrangedElement(.customHeight(56, element: .button(title: "scene.request.on_chain_button".localized, style: onChainButtonStyle, callback: { [weak self] _ in
+        onChainButton = contentStackView.addArrangedElement(.customHeight(56, element: .button(title: "scene.request.on_chain_button".localized, style: onChainButtonStyle, completion: { [weak self] _ in
             self?.presentAmountInput(requestMethod: .onChain)
         }))) as? CallbackButton
     }

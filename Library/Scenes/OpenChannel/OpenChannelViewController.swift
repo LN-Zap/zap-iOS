@@ -41,7 +41,7 @@ final class OpenChannelViewController: ModalDetailViewController {
         
         contentStackView.addArrangedSubview(amountInputView)
         
-        openButton = contentStackView.addArrangedElement(.customHeight(56, element: .button(title: "scene.open_channel.add_button".localized, style: Style.Button.background, callback: { [weak self] button in
+        openButton = contentStackView.addArrangedElement(.customHeight(56, element: .button(title: "scene.open_channel.add_button".localized, style: Style.Button.background, completion: { [weak self] button in
             button.isEnabled = false
             self?.openChannel()
         }))) as? CallbackButton
