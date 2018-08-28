@@ -41,6 +41,7 @@ final class ModalPinViewController: ModalViewController, ContentHeightProviding 
 
         pinViewContainer.layer.cornerRadius = Appearance.Constants.modalCornerRadius
         
+        keyPadPinView.state = .pin
         keyPadPinView.delegate = self
         keyPadPinView.authenticationViewModel = authenticationViewModel
         keyPadPinView.pinView = pinView

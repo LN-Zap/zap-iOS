@@ -38,7 +38,7 @@ final class KeyPadPinView: KeyPadView {
     }
     
     private func setup() {
-        state = .authenticate
+        state = .pinBiometric
         
         customPointButtonAction = { [weak self] in
             self?.delegate?.startBiometricAuthentication()

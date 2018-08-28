@@ -8,9 +8,9 @@
 import UIKit
 
 enum KeyPadState {
-    case authenticate
-    case setupPin
-    case amountInput
+    case pin
+    case pinBiometric
+    case amount
 }
 
 class KeyPadView: UIView {
@@ -44,7 +44,7 @@ class KeyPadView: UIView {
     var handler: ((String) -> Bool)?
     var customPointButtonAction: (() -> Void)?
     
-    var state: KeyPadState = .amountInput {
+    var state: KeyPadState = .amount {
         didSet {
             updatePointButton()
         }
@@ -97,16 +97,16 @@ class KeyPadView: UIView {
     
     private func updatePointButton() {
         switch state {
-        case .authenticate:
+        case .pinBiometric:
             pointButton.setImage(authenticationImage, for: .normal)
             pointButton.imageView?.tintColor = textColor
             pointButton.setTitle(nil, for: .normal)
             pointButton.isEnabled = true
-        case .setupPin:
+        case .pin:
             pointButton.setImage(nil, for: .normal)
             pointButton.setTitle(nil, for: .normal)
             pointButton.isEnabled = false
-        case .amountInput:
+        case .amount:
             pointButton.setImage(nil, for: .normal)
             pointButton.setTitle(pointCharacter, for: .normal)
             pointButton.isEnabled = true
@@ -114,7 +114,7 @@ class KeyPadView: UIView {
     }
     
     private func numberTapped(_ number: Int) {
-        if numberString == "0" && state == .amountInput {
+        if numberString == "0" && state == .amount {
             proposeNumberString(String(describing: number))
         } else {
             proposeNumberString(numberString + String(describing: number))

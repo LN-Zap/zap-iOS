@@ -68,7 +68,7 @@ final class SetupPinViewController: UIViewController {
         
         keyPadView.backgroundColor = UIColor.Zap.seaBlue
         keyPadView.textColor = .white
-        keyPadView.state = .setupPin
+        keyPadView.state = .pin
         
         keyPadView.handler = { [setupPinViewModel] in
             return setupPinViewModel.updateCurrentPin($0)
