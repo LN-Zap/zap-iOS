@@ -15,7 +15,6 @@
                 <outlet property="amountTextField" destination="ak7-6C-Pex" id="mcf-9q-Boh"/>
                 <outlet property="bottomViewBackground" destination="MuO-hq-S7R" id="x6S-Cq-lrf"/>
                 <outlet property="contentView" destination="iN0-l3-epB" id="PEq-UD-efn"/>
-                <outlet property="downArrowImageView" destination="zrr-yP-9YI" id="8wl-zm-Li3"/>
                 <outlet property="keyPadView" destination="767-f4-0y8" id="35L-0R-jOQ"/>
                 <outlet property="stackView" destination="Czb-Oz-bjO" id="kjG-vG-sq9"/>
                 <outlet property="swapCurrencyButton" destination="wU0-aQ-UVA" id="gIv-GT-zXY"/>
@@ -34,32 +33,24 @@
                             <rect key="frame" x="0.0" y="0.0" width="257" height="50"/>
                             <subviews>
                                 <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="ak7-6C-Pex">
-                                    <rect key="frame" x="0.0" y="0.0" width="207" height="50"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="225" height="50"/>
                                     <nil key="textColor"/>
                                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                     <textInputTraits key="textInputTraits"/>
                                 </textField>
                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Qa7-ko-NW5">
-                                    <rect key="frame" x="0.0" y="0.0" width="207" height="50"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="225" height="50"/>
                                     <connections>
                                         <action selector="didSelectTextField:" destination="-1" eventType="touchUpInside" id="1NV-4z-YWe"/>
                                     </connections>
                                 </button>
-                                <button opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="255" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wU0-aQ-UVA">
-                                    <rect key="frame" x="217" y="-2.5" width="40" height="55"/>
-                                    <constraints>
-                                        <constraint firstAttribute="width" constant="40" id="rBS-tK-C41"/>
-                                    </constraints>
-                                    <fontDescription key="fontDescription" type="system" pointSize="36"/>
-                                    <state key="normal" title="$"/>
+                                <button opaque="NO" contentMode="scaleToFill" semanticContentAttribute="forceRightToLeft" horizontalHuggingPriority="255" contentHorizontalAlignment="left" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wU0-aQ-UVA">
+                                    <rect key="frame" x="235" y="14.5" width="22" height="22"/>
+                                    <state key="normal" title="$" image="icon_arrow_down_small"/>
                                     <connections>
                                         <action selector="swapCurrencies:" destination="-1" eventType="touchUpInside" id="CXN-LE-Wt1"/>
                                     </connections>
                                 </button>
-                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="icon_arrow_down_small" translatesAutoresizingMaskIntoConstraints="NO" id="zrr-yP-9YI">
-                                    <rect key="frame" x="247" y="23" width="10" height="4"/>
-                                    <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                </imageView>
                             </subviews>
                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             <constraints>
@@ -71,11 +62,9 @@
                                 <constraint firstItem="Qa7-ko-NW5" firstAttribute="trailing" secondItem="ak7-6C-Pex" secondAttribute="trailing" id="IRc-jZ-8o8"/>
                                 <constraint firstItem="ak7-6C-Pex" firstAttribute="top" secondItem="H41-EN-9UT" secondAttribute="top" id="Jyn-ig-aDH"/>
                                 <constraint firstItem="Qa7-ko-NW5" firstAttribute="height" secondItem="ak7-6C-Pex" secondAttribute="height" id="RMd-G5-zou"/>
-                                <constraint firstItem="zrr-yP-9YI" firstAttribute="trailing" secondItem="wU0-aQ-UVA" secondAttribute="trailing" id="nOO-Br-bua"/>
                                 <constraint firstItem="Qa7-ko-NW5" firstAttribute="top" secondItem="ak7-6C-Pex" secondAttribute="top" id="nxe-pH-D2c"/>
                                 <constraint firstItem="Qa7-ko-NW5" firstAttribute="leading" secondItem="ak7-6C-Pex" secondAttribute="leading" id="rG4-ZK-yjJ"/>
                                 <constraint firstAttribute="height" constant="50" id="uLI-1c-1NR"/>
-                                <constraint firstItem="zrr-yP-9YI" firstAttribute="centerY" secondItem="wU0-aQ-UVA" secondAttribute="centerY" id="won-BL-8ew"/>
                             </constraints>
                         </view>
                         <view clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="MuO-hq-S7R">

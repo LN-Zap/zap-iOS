@@ -40,13 +40,13 @@ public enum BitcoinUnit: String, Codable {
     public var symbol: String {
         switch self {
         case .bitcoin:
-            return "Ƀ"
+            return "BTC"
         case .milliBitcoin:
-            return "mɃ"
+            return "mBTC"
         case .bit:
-            return "ƀ"
+            return "bit"
         case .satoshi:
-            return "s"
+            return "sat"
         }
     }
     

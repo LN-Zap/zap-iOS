@@ -19,7 +19,7 @@ public struct Bitcoin: Currency, Equatable, Codable {
     }
     
     public func format(satoshis: Satoshi) -> String? {
-        return satoshis.format(unit: unit) + symbol
+        return "\(satoshis.format(unit: unit)) \(symbol)"
     }
     
     public func satoshis(from string: String) -> Satoshi? {

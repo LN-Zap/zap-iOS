@@ -20,9 +20,9 @@ final class CurrencyTests: XCTestCase {
             (usd, 50_000_000, "$3,500.00"),
             (eur, 100_000_000, "€5,500.00"),
             (eur, 1, "€0.00"),
-            (Bitcoin(unit: .bitcoin), 100_000_000, "1.0Ƀ"),
-            (Bitcoin(unit: .satoshi), 1, "1s"),
-            (Bitcoin(unit: .satoshi), 1234, "1,234s")
+            (Bitcoin(unit: .bitcoin), 100_000_000, "1.0 BTC"),
+            (Bitcoin(unit: .satoshi), 1, "1 sat"),
+            (Bitcoin(unit: .satoshi), 1234, "1,234 sat")
         ]
         
         for (currency, value, output) in data {

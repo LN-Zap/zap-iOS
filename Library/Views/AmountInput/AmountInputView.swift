@@ -26,7 +26,6 @@ public final class AmountInputView: UIControl {
     @IBOutlet private weak var bottomViewBackground: UIView!
     @IBOutlet private weak var amountTextField: UITextField!
     @IBOutlet private weak var swapCurrencyButton: UIButton!
-    @IBOutlet private weak var downArrowImageView: UIImageView!
     @IBOutlet private weak var keyPadView: KeyPadView! {
         didSet {
             setupKeyPad()
@@ -111,12 +110,11 @@ public final class AmountInputView: UIControl {
         amountTextField.delegate = self
 
         Style.Button.custom(color: UIColor.Zap.white, fontSize: 36).apply(to: swapCurrencyButton)
-        downArrowImageView.tintColor = UIColor.Zap.lightningOrange
         
         Settings.shared.primaryCurrency
             .map { $0.symbol }
             .bind(to: swapCurrencyButton.reactive.title )
-            .dispose(in: reactive.bag)
+            .dispose(in: reactive.bag)        
     }
     
     @IBAction private func swapCurrencies(_ sender: Any) {
