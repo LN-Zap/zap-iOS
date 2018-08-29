@@ -1,7 +1,7 @@
 "generic.memo.placeholder" = "What is this for?";
-"generic.qr_code.copy_button" = "Copy";
-"generic.qr_code.share_button" = "Share";
-"generic.cancel" = "Cancel";
+"generic.qr_code.copy_button" = "Kopieren";
+"generic.qr_code.share_button" = "Teilen";
+"generic.cancel" = "Abbrechen";
 
 "link.help" = "https://ln-zap.github.io/zap-tutorials/";
 "link.help.zapconnect" = "https://ln-zap.github.io/zap-tutorials/iOS-remote-node-setup";
@@ -61,12 +61,12 @@
 
 "scene.request.title" = "Empfangen";
 "scene.request.lightning_button" = "Lightning";
-"scene.request.or_separator_label" = "or";
+"scene.request.or_separator_label" = "oder";
 "scene.request.on_chain_button" = "On-Chain";
 "scene.request.generate_request_button" = "Anfrage generieren";
 "scene.request.lightning_header_title" = "Lightning Payment Request";
 "scene.request.on_chain_header_title" = "On Chain Payment Request";
-"scene.request.next_button_title" = "Next";
+"scene.request.next_button_title" = "Weiter";
 
 "scene.channels.title" = "Channels";
 "scene.channels.close.title" = "Channel schließen";
@@ -95,7 +95,7 @@
 
 "scene.send.title" = "Senden";
 "scene.send.send_button" = "Senden";
-"scene.send.address_headline" = "To:";
+"scene.send.address_headline" = "An:";
 "scene.send.memo_headline" = "Memo:";
 
 "scene.send.lightning.title" = "Send Lightning Payment";
