@@ -37,25 +37,26 @@ final class AuthenticationCoordinator {
         case .locked:
             presentPin()
         case .timeLocked:
-            break // Present Time Lock Screen
+            presentTimeLock()
         case .unlocked:
             unlock()
         }
     }
     
     private func presentWindow(with viewController: UIViewController) {
-        guard self.viewController == nil else { return }
+        guard self.viewController == nil || type(of: self.viewController) != type(of: viewController) else { return }
         
-        let pinWindow = UIWindow(frame: UIScreen.main.bounds)
-        pinWindow.rootViewController = RootViewController()
-        pinWindow.windowLevel = UIWindowLevelNormal + 1
-        pinWindow.tintColor = UIColor.Zap.lightningOrange
+        if self.authenticationWindow == nil {
+            let authenticationWindow = UIWindow(frame: UIScreen.main.bounds)
+            authenticationWindow.windowLevel = UIWindowLevelNormal + 1
+            authenticationWindow.tintColor = UIColor.Zap.lightningOrange
+            authenticationWindow.makeKeyAndVisible()
+            self.authenticationWindow = authenticationWindow
+        }
         
         viewController.modalTransitionStyle = .crossDissolve
-        pinWindow.makeKeyAndVisible()
-        pinWindow.rootViewController?.present(viewController, animated: false, completion: nil)
+        authenticationWindow?.rootViewController = viewController //RootViewController()
         
-        authenticationWindow = pinWindow
         self.viewController = viewController
     }
     
@@ -64,9 +65,17 @@ final class AuthenticationCoordinator {
         presentWindow(with: pinViewController)
     }
     
+    private func presentTimeLock() {
+        let timeLockedViewController = UIStoryboard.instantiateTimeLockedViewController(authenticationViewModel: authenticationViewModel)
+        presentWindow(with: timeLockedViewController)
+    }
+    
     private func unlock() {
-        viewController?.dismiss(animated: true) { [weak self] in
-            self?.authenticationWindow = nil
-        }
+        UIView.animate(withDuration: 0.25, animations: {
+            self.viewController?.view.alpha = 0
+        }, completion: { _ in
+            self.authenticationWindow?.rootViewController = nil
+            self.authenticationWindow = nil
+        })
     }
 }

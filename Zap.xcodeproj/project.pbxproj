@@ -219,6 +219,9 @@
 		AD667E4921367A35007B9160 /* BackgroundCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD667E4821367A35007B9160 /* BackgroundCoordinator.swift */; };
 		AD667E4B21367E1B007B9160 /* BackgroundViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD667E4A21367E1B007B9160 /* BackgroundViewController.swift */; };
 		AD667E4D21367E3A007B9160 /* Background.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AD667E4C21367E3A007B9160 /* Background.storyboard */; };
+		AD667E522136B062007B9160 /* TimeLockedViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD667E502136B062007B9160 /* TimeLockedViewController.swift */; };
+		AD667E552136B074007B9160 /* TimeLocked.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AD667E542136B074007B9160 /* TimeLocked.storyboard */; };
+		AD667E572136E622007B9160 /* TimeLockStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD667E562136E622007B9160 /* TimeLockStore.swift */; };
 		AD774651207616B100EC596B /* Network.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD77464A207615E000EC596B /* Network.swift */; };
 		AD7EDAE32108C4150058CCCA /* Wallet.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AD7EDAE22108C4150058CCCA /* Wallet.storyboard */; };
 		AD7EDAE52108C41D0058CCCA /* WalletViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD7EDAE42108C41D0058CCCA /* WalletViewController.swift */; };
@@ -670,6 +673,9 @@
 		AD667E4821367A35007B9160 /* BackgroundCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BackgroundCoordinator.swift; sourceTree = "<group>"; };
 		AD667E4A21367E1B007B9160 /* BackgroundViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BackgroundViewController.swift; sourceTree = "<group>"; };
 		AD667E4C21367E3A007B9160 /* Background.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Background.storyboard; sourceTree = "<group>"; };
+		AD667E502136B062007B9160 /* TimeLockedViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimeLockedViewController.swift; sourceTree = "<group>"; };
+		AD667E542136B074007B9160 /* TimeLocked.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = TimeLocked.storyboard; sourceTree = "<group>"; };
+		AD667E562136E622007B9160 /* TimeLockStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimeLockStore.swift; sourceTree = "<group>"; };
 		AD680A9720B06B840018986B /* DetailTimerTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailTimerTableViewCell.swift; sourceTree = "<group>"; };
 		AD680A9820B06B840018986B /* DetailTimerTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DetailTimerTableViewCell.xib; sourceTree = "<group>"; };
 		AD680A9E20B07AD90018986B /* ConnectRemoteNode.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = ConnectRemoteNode.storyboard; sourceTree = "<group>"; };
@@ -1036,6 +1042,7 @@
 		A01009322014BD960001EF94 /* Scenes */ = {
 			isa = PBXGroup;
 			children = (
+				AD667E4F2136B042007B9160 /* TimeLocked */,
 				AD667E4E21367E41007B9160 /* Background */,
 				A0DDC0702018C6D800AEFF94 /* ChannelList */,
 				AD680A9D20B07AC60018986B /* ConnectRemoteNode */,
@@ -1584,6 +1591,15 @@
 			path = Background;
 			sourceTree = "<group>";
 		};
+		AD667E4F2136B042007B9160 /* TimeLocked */ = {
+			isa = PBXGroup;
+			children = (
+				AD667E542136B074007B9160 /* TimeLocked.storyboard */,
+				AD667E502136B062007B9160 /* TimeLockedViewController.swift */,
+			);
+			path = TimeLocked;
+			sourceTree = "<group>";
+		};
 		AD680A9D20B07AC60018986B /* ConnectRemoteNode */ = {
 			isa = PBXGroup;
 			children = (
@@ -1905,6 +1921,7 @@
 				AD8B13F020C0582D0091F9DA /* RootCoordinator.swift */,
 				AD71EA4620E228D800256307 /* RootViewModel.swift */,
 				ADEDBB8B20C2D6A700B71F17 /* SetupCoordinator.swift */,
+				AD667E562136E622007B9160 /* TimeLockStore.swift */,
 			);
 			path = Coordinators;
 			sourceTree = "<group>";
@@ -2326,6 +2343,7 @@
 				AD391CB820D16FA8007EE22A /* Sync.storyboard in Resources */,
 				AD967FD42100D8E80048085B /* CertificateDetailCell.xib in Resources */,
 				AD391C6A20D16F89007EE22A /* NumericKeyPad.storyboard in Resources */,
+				AD667E552136B074007B9160 /* TimeLocked.storyboard in Resources */,
 				AD391CC820D16FE1007EE22A /* DetailTableViewCell.xib in Resources */,
 				AD391C4C20D16F68007EE22A /* ChannelList.storyboard in Resources */,
 				AD391C5420D16F7A007EE22A /* ConnectRemoteNode.storyboard in Resources */,
@@ -2624,6 +2642,7 @@
 				ADEEB5362134669B00D2F992 /* ModalPinViewController.swift in Sources */,
 				AD391C3520D16EFA007EE22A /* Storyboard.swift in Sources */,
 				AD391CDB20D16FE1007EE22A /* TransactionListViewController.swift in Sources */,
+				AD667E572136E622007B9160 /* TimeLockStore.swift in Sources */,
 				AD391C5320D16F7A007EE22A /* ConfirmMnemonicViewModel.swift in Sources */,
 				AD391C6F20D16F89007EE22A /* OpenChannelViewController.swift in Sources */,
 				AD391C9B20D16FA8007EE22A /* QRCodeScannerViewController.swift in Sources */,
@@ -2713,6 +2732,7 @@
 				AD391C5C20D16F7A007EE22A /* MnemonicViewModel.swift in Sources */,
 				AD391C4720D16F68007EE22A /* ContainerViewController.swift in Sources */,
 				AD391CB320D16FA8007EE22A /* GroupedTableViewController.swift in Sources */,
+				AD667E522136B062007B9160 /* TimeLockedViewController.swift in Sources */,
 				AD391CA920D16FA8007EE22A /* BitcoinUnitSettingsItem.swift in Sources */,
 				AD0D5DEC210DCC6300D11D0B /* ExposedLayout.swift in Sources */,
 				AD391CAF20D16FA8007EE22A /* SettingsItem.swift in Sources */,

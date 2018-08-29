@@ -21,6 +21,7 @@ enum Storyboard: String {
     case qrCodeScanner = "QRCodeScanner"
     case root
     case sync
+    case timeLocked
     case transactionList
     case wallet
     

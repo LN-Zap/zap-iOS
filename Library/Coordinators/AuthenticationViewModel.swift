@@ -8,9 +8,21 @@
 import Bond
 import Foundation
 import KeychainAccess
+import Lightning
 
 private let keychainPinKey = "hashedSaltPin"
 private let keychainPinLengthKey = "pinLength"
+private let salt = "kZF86kneOPAm09Wpl6XOLixuyctCM/lK"
+
+enum AuthenticationError: Error {
+    case lockout
+    case notAvailable
+    case canceled
+    case failed
+    case unknown
+    case useFallback
+    case wrongPin
+}
 
 final class AuthenticationViewModel: NSObject {
     @objc enum State: Int {
@@ -19,13 +31,15 @@ final class AuthenticationViewModel: NSObject {
         case unlocked   // wallet is unlocked
     }
     
-    @objc public dynamic var state: State = .locked
+    @objc public dynamic var state = State.locked
     
     private let unlockTime: TimeInterval = 60
     
     private let keychain = Keychain(service: "com.jackmallers.zap.password").accessibility(.whenUnlocked)
     private var lastAuthenticationDate: Date?
 
+    let timeLockStore = TimeLockStore()
+    
     private var hashedPin: String? {
         get { return keychain[keychainPinKey] }
         set { keychain[keychainPinKey] = newValue }
@@ -60,14 +74,15 @@ final class AuthenticationViewModel: NSObject {
     
     override init() {
         super.init()
-        
-        if !didSetupPin || Environment.skipPinFlow {
+
+        if timeLockStore.isLocked {
+            state = .timeLocked
+        } else if !didSetupPin || Environment.skipPinFlow {
             state = .unlocked
         }
     }
     
-    func hashPin(_ pin: String) -> String {
-        let salt = "kZF86kneOPAm09Wpl6XOLixuyctCM/lK"
+    private func hashPin(_ pin: String) -> String {
         return "\(salt)\(pin)".sha256()
     }
     
@@ -76,11 +91,24 @@ final class AuthenticationViewModel: NSObject {
         pinLength = pin.count
     }
     
-    func isMatchingPin(_ pin: String) -> Bool {
-        return hashPin(pin) == hashedPin
+    func authenticate(_ pin: String) -> Result<Success> {
+        if hashPin(pin) == hashedPin {
+            didAuthenticate()
+            return .success(Success())
+        } else {
+            timeLockStore.increase()
+            
+            if timeLockStore.isLocked {
+                state = .timeLocked
+                return .failure(AuthenticationError.lockout)
+            } else {
+                return .failure(AuthenticationError.wrongPin)
+            }
+        }
     }
     
     func didAuthenticate() {
+        timeLockStore.reset()
         lastAuthenticationDate = Date()
         state = .unlocked
     }

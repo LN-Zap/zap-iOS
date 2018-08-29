@@ -9,15 +9,6 @@ import Foundation
 import Lightning
 import LocalAuthentication
 
-enum AuthenticationError: Error {
-    case lockout
-    case notAvailable
-    case canceled
-    case failed
-    case unknown
-    case useFallback
-}
-
 enum BiometricAuthentication {
     enum BiometricType {
         case none

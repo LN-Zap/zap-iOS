@@ -57,12 +57,15 @@ final class KeyPadPinView: KeyPadView {
     }
     
     private func checkPin(string: String) {
-        guard let authenticationViewModel = authenticationViewModel else { return }
+        guard
+            let authenticationViewModel = authenticationViewModel,
+            string.count == authenticationViewModel.pinLength
+            else { return }
         
-        if authenticationViewModel.isMatchingPin(string) {
-            authenticationViewModel.didAuthenticate()
+        switch authenticationViewModel.authenticate(string) {
+        case .success:
             delegate?.didAuthenticate()
-        } else if authenticationViewModel.pinLength == string.count {
+        case .failure:
             isUserInteractionEnabled = false
             pinView?.startShakeAnimation {
                 self.isUserInteractionEnabled = true

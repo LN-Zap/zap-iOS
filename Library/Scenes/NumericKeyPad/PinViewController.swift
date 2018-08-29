@@ -23,9 +23,7 @@ final class PinViewController: UIViewController {
     
     fileprivate var authenticationViewModel: AuthenticationViewModel?
     
-    override var preferredStatusBarStyle: UIStatusBarStyle {
-        return .lightContent
-    }
+    override var preferredStatusBarStyle: UIStatusBarStyle { return .lightContent }
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -80,14 +78,12 @@ extension PinViewController: KeyPadPinViewDelegate {
         BiometricAuthentication.authenticate { [weak self] result in
             switch result {
             case .success:
-                self?.didAuthenticate()
+                self?.authenticationViewModel?.didAuthenticate()
             case .failure:
                 self?.setPinView(hidden: false, animated: true)
             }
         }
     }
     
-    func didAuthenticate() {
-        authenticationViewModel?.didAuthenticate()
-    }
+    func didAuthenticate() {}
 }
