@@ -30,6 +30,8 @@ final class ModalPinViewController: ModalViewController, ContentHeightProviding 
     var contentHeight: CGFloat? { return window?.bounds.height }
     var completion: ((Result<Success>) -> Void)?
     
+    override var preferredStatusBarStyle: UIStatusBarStyle { return .lightContent }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -52,7 +54,7 @@ final class ModalPinViewController: ModalViewController, ContentHeightProviding 
     
     static func authenticate(authenticationViewModel: AuthenticationViewModel, completion: @escaping (Result<Success>) -> Void) {
         let pinWindow = UIWindow(frame: UIScreen.main.bounds)
-        pinWindow.rootViewController = UIViewController()
+        pinWindow.rootViewController = RootViewController()
         pinWindow.windowLevel = UIWindowLevelAlert + 1
         pinWindow.makeKeyAndVisible()
         
