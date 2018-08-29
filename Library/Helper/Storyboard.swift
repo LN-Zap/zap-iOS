@@ -8,6 +8,7 @@
 import UIKit
 
 enum Storyboard: String {
+    case background
     case channelList
     case connectRemoteNode
     case createWallet

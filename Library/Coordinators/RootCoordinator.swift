@@ -13,6 +13,7 @@ public final class RootCoordinator: NSObject, SetupCoordinatorDelegate, PinCoord
     private let rootViewController: RootViewController
     private let rootViewModel: RootViewModel
     private let authenticationCoordinator: AuthenticationCoordinator
+    private let backgroundCoordinator: BackgroundCoordinator
     
     private var currentCoordinator: Any?
     private var route: Route?
@@ -21,6 +22,7 @@ public final class RootCoordinator: NSObject, SetupCoordinatorDelegate, PinCoord
         rootViewController = Storyboard.root.initial(viewController: RootViewController.self)
         rootViewModel = RootViewModel()
         authenticationCoordinator = AuthenticationCoordinator(rootViewController: rootViewController)
+        backgroundCoordinator = BackgroundCoordinator(rootViewController: rootViewController)
         
         window.rootViewController = self.rootViewController
         window.tintColor = UIColor.Zap.lightningOrange
@@ -39,12 +41,13 @@ public final class RootCoordinator: NSObject, SetupCoordinatorDelegate, PinCoord
             .distinct()
             .observeOn(DispatchQueue.main)
             .observeNext { [weak self] state in
-                print("🗽 state:", state)
                 self?.updateFor(state: state)
             }.dispose(in: reactive.bag)
     }
     
     private func updateFor(state: RootViewModel.State) {
+        print("🗽 state:", state)
+
         switch state {
         case .noWallet:
             presentSetup()
@@ -69,12 +72,12 @@ public final class RootCoordinator: NSObject, SetupCoordinatorDelegate, PinCoord
     }
     
     public func applicationWillEnterForeground() {
-        rootViewController.removeBlurEffect()
+        backgroundCoordinator.applicationWillEnterForeground()
         rootViewModel.start()
     }
     
     public func applicationDidEnterBackground() {
-        rootViewController.addBlurEffect()
+        backgroundCoordinator.applicationDidEnterBackground()
         route = nil // reset route when app enters background
         rootViewModel.stop()
     }

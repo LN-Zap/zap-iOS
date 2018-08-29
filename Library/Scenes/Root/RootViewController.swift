@@ -12,22 +12,7 @@ final class RootViewController: UIViewController, ContainerViewController {
     @IBOutlet weak var container: UIView?
     weak var currentViewController: UIViewController?
 
-    private var blurEffectView: UIVisualEffectView?
-
     override var preferredStatusBarStyle: UIStatusBarStyle {
         return .lightContent
-    }
-    
-    func addBlurEffect() {
-        let blurEffect = UIBlurEffect(style: .regular)
-        let blurEffectView = UIVisualEffectView(effect: blurEffect)
-        blurEffectView.frame = view.frame
-        view.addSubview(blurEffectView)
-        
-        self.blurEffectView = blurEffectView
-    }
-    
-    func removeBlurEffect() {
-        blurEffectView?.removeFromSuperview()
     }
 }

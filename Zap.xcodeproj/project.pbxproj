@@ -218,6 +218,9 @@
 		AD615CF5211C82E600680790 /* LoadingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD615CF4211C82E600680790 /* LoadingView.swift */; };
 		AD615CF7211CAB0900680790 /* PaddingLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD615CF6211CAB0900680790 /* PaddingLabel.swift */; };
 		AD667E4721359D79007B9160 /* AuthenticationCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD667E4621359D79007B9160 /* AuthenticationCoordinator.swift */; };
+		AD667E4921367A35007B9160 /* BackgroundCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD667E4821367A35007B9160 /* BackgroundCoordinator.swift */; };
+		AD667E4B21367E1B007B9160 /* BackgroundViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD667E4A21367E1B007B9160 /* BackgroundViewController.swift */; };
+		AD667E4D21367E3A007B9160 /* Background.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AD667E4C21367E3A007B9160 /* Background.storyboard */; };
 		AD774651207616B100EC596B /* Network.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD77464A207615E000EC596B /* Network.swift */; };
 		AD7EDAE32108C4150058CCCA /* Wallet.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AD7EDAE22108C4150058CCCA /* Wallet.storyboard */; };
 		AD7EDAE52108C41D0058CCCA /* WalletViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD7EDAE42108C41D0058CCCA /* WalletViewController.swift */; };
@@ -668,6 +671,9 @@
 		AD66377520F399F900284E2B /* Bolt11.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Bolt11.swift; sourceTree = "<group>"; };
 		AD66377720F39A7700284E2B /* Bolt11Tests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Bolt11Tests.swift; sourceTree = "<group>"; };
 		AD667E4621359D79007B9160 /* AuthenticationCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthenticationCoordinator.swift; sourceTree = "<group>"; };
+		AD667E4821367A35007B9160 /* BackgroundCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BackgroundCoordinator.swift; sourceTree = "<group>"; };
+		AD667E4A21367E1B007B9160 /* BackgroundViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BackgroundViewController.swift; sourceTree = "<group>"; };
+		AD667E4C21367E3A007B9160 /* Background.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Background.storyboard; sourceTree = "<group>"; };
 		AD680A9720B06B840018986B /* DetailTimerTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailTimerTableViewCell.swift; sourceTree = "<group>"; };
 		AD680A9820B06B840018986B /* DetailTimerTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DetailTimerTableViewCell.xib; sourceTree = "<group>"; };
 		AD680A9E20B07AD90018986B /* ConnectRemoteNode.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = ConnectRemoteNode.storyboard; sourceTree = "<group>"; };
@@ -1034,13 +1040,14 @@
 		A01009322014BD960001EF94 /* Scenes */ = {
 			isa = PBXGroup;
 			children = (
-				ADEEB5342134668B00D2F992 /* ModalPin */,
+				AD667E4E21367E41007B9160 /* Background */,
 				A0DDC0702018C6D800AEFF94 /* ChannelList */,
 				AD680A9D20B07AC60018986B /* ConnectRemoteNode */,
 				ADCE01B9207B57DA00CA72E8 /* CreateWallet */,
 				AD9E243C20A367E00014F9FA /* Debug */,
 				AD77465B2077C0FA00EC596B /* Detail */,
 				ADCE01CA207B966200CA72E8 /* Loading */,
+				ADEEB5342134668B00D2F992 /* ModalPin */,
 				A0376B73201CD60F00F1FBEF /* NumericKeyPad */,
 				A02C9FBB202EE995009821B1 /* OpenChannel */,
 				A070D963202A3CFC000A8274 /* QRCodeDetail */,
@@ -1573,6 +1580,15 @@
 			path = Transaction;
 			sourceTree = "<group>";
 		};
+		AD667E4E21367E41007B9160 /* Background */ = {
+			isa = PBXGroup;
+			children = (
+				AD667E4C21367E3A007B9160 /* Background.storyboard */,
+				AD667E4A21367E1B007B9160 /* BackgroundViewController.swift */,
+			);
+			path = Background;
+			sourceTree = "<group>";
+		};
 		AD680A9D20B07AC60018986B /* ConnectRemoteNode */ = {
 			isa = PBXGroup;
 			children = (
@@ -1889,6 +1905,7 @@
 			children = (
 				AD667E4621359D79007B9160 /* AuthenticationCoordinator.swift */,
 				A0E2690C202CC4E30069E83C /* AuthenticationViewModel.swift */,
+				AD667E4821367A35007B9160 /* BackgroundCoordinator.swift */,
 				ADEDBB8D20C2D70B00B71F17 /* MainCoordinator.swift */,
 				ADEDBB9120C2FC3200B71F17 /* PinSetupCoordinator.swift */,
 				AD8B13F020C0582D0091F9DA /* RootCoordinator.swift */,
@@ -2327,6 +2344,7 @@
 				AD7EDAEB2108EA170058CCCA /* HeaderTableViewCell.xib in Resources */,
 				AD391C5020D16F7A007EE22A /* CreateWallet.storyboard in Resources */,
 				ADA81EA3210E19F600B7C6F2 /* HeaderCollectionReusableView.xib in Resources */,
+				AD667E4D21367E3A007B9160 /* Background.storyboard in Resources */,
 				AD391CC420D16FE1007EE22A /* DetailQRCodeTableViewCell.xib in Resources */,
 				AD391C6620D16F89007EE22A /* Loading.storyboard in Resources */,
 				AD391C7320D16F89007EE22A /* QRCodeDetail.storyboard in Resources */,
@@ -2631,6 +2649,7 @@
 				AD391D1E20D174B4007EE22A /* SetupCoordinator.swift in Sources */,
 				AD391CCE20D16FE1007EE22A /* DetailViewModel.swift in Sources */,
 				ADA81EA2210E19F600B7C6F2 /* HeaderCollectionReusableView.swift in Sources */,
+				AD667E4B21367E1B007B9160 /* BackgroundViewController.swift in Sources */,
 				AD28CB79211D9DFF00A31004 /* UINavigationBar.swift in Sources */,
 				AD0D0BC2212BE3C800E4F7F7 /* RequestViewController.swift in Sources */,
 				AD391D1D20D174B4007EE22A /* Route.swift in Sources */,
@@ -2662,6 +2681,7 @@
 				AD391C6720D16F89007EE22A /* LoadingViewController.swift in Sources */,
 				AD391CB920D16FA8007EE22A /* SyncViewController.swift in Sources */,
 				AD391C5A20D16F7A007EE22A /* MnemonicPageViewController.swift in Sources */,
+				AD667E4921367A35007B9160 /* BackgroundCoordinator.swift in Sources */,
 				AD27B01C2100D7CF00F232A8 /* CertificateDetailCell.swift in Sources */,
 				AD391CD320D16FE1007EE22A /* DetailViewController.swift in Sources */,
 				AD391C3A20D16F0B007EE22A /* Environment.swift in Sources */,
