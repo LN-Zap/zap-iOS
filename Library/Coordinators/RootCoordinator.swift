@@ -12,13 +12,15 @@ public final class RootCoordinator: NSObject, SetupCoordinatorDelegate, PinCoord
     
     private let rootViewController: RootViewController
     private let rootViewModel: RootViewModel
-
+    private let authenticationCoordinator: AuthenticationCoordinator
+    
     private var currentCoordinator: Any?
     private var route: Route?
     
     public init(window: UIWindow) {
         rootViewController = Storyboard.root.initial(viewController: RootViewController.self)
         rootViewModel = RootViewModel()
+        authenticationCoordinator = AuthenticationCoordinator(rootViewController: rootViewController)
         
         window.rootViewController = self.rootViewController
         window.tintColor = UIColor.Zap.lightningOrange
@@ -26,34 +28,35 @@ public final class RootCoordinator: NSObject, SetupCoordinatorDelegate, PinCoord
         
         rootViewModel.start()
         super.init()
+        
+        updateFor(state: rootViewModel.state.value)
         listenForStateChanges()
     }
     
     public func listenForStateChanges() {
         rootViewModel.state
+            .skip(first: 1)
             .distinct()
             .observeOn(DispatchQueue.main)
             .observeNext { [weak self] state in
                 print("🗽 state:", state)
-                switch state {
-                case .locked:
-                    if self?.rootViewModel.authenticationViewModel.didSetupPin == true {
-                        self?.presentPin()
-                    } else {
-                        self?.presentSetupPin()
-                    }
-                case .noWallet:
-                    self?.presentSetup()
-                case .connecting:
-                    self?.presentLoading(message: .none)
-                case .noInternet:
-                    self?.presentLoading(message: .noInternet)
-                case .syncing:
-                    self?.presentSync()
-                case .running:
-                    self?.presentMain()
-                }
+                self?.updateFor(state: state)
             }.dispose(in: reactive.bag)
+    }
+    
+    private func updateFor(state: RootViewModel.State) {
+        switch state {
+        case .noWallet:
+            presentSetup()
+        case .connecting:
+            presentLoading(message: .none)
+        case .noInternet:
+            presentLoading(message: .noInternet)
+        case .syncing:
+            presentSync()
+        case .running:
+            presentMain()
+        }
     }
     
     public func handle(_ route: Route) {
@@ -85,7 +88,7 @@ public final class RootCoordinator: NSObject, SetupCoordinatorDelegate, PinCoord
         tabBarController.tabBar.shadowImage = UIImage()
         tabBarController.tabBar.backgroundImage = UIImage()
         
-        let mainCoordinator = MainCoordinator(rootViewController: rootViewController, lightningService: lightningService, settingsDelegate: self, authenticationViewModel: rootViewModel.authenticationViewModel)
+        let mainCoordinator = MainCoordinator(rootViewController: rootViewController, lightningService: lightningService, settingsDelegate: self, authenticationViewModel: authenticationCoordinator.authenticationViewModel)
 
         tabBarController.viewControllers = [
             mainCoordinator.walletViewController(),
@@ -103,7 +106,7 @@ public final class RootCoordinator: NSObject, SetupCoordinatorDelegate, PinCoord
     }
     
     private func presentSetup() {
-        let setupCoordinator = SetupCoordinator(rootViewController: rootViewController, rootViewModel: rootViewModel, delegate: self)
+        let setupCoordinator = SetupCoordinator(rootViewController: rootViewController, rootViewModel: rootViewModel, authenticationViewModel: authenticationCoordinator.authenticationViewModel, delegate: self)
         currentCoordinator = setupCoordinator
         setupCoordinator.start()
     }
@@ -119,14 +122,8 @@ public final class RootCoordinator: NSObject, SetupCoordinatorDelegate, PinCoord
         presentViewController(viewController)
     }
     
-    private func presentPin() {
-        let pinCoordinator = PinCoordinator(rootViewController: rootViewController, authenticationViewModel: rootViewModel.authenticationViewModel, delegate: self)
-        currentCoordinator = pinCoordinator
-        pinCoordinator.start()
-    }
-    
     internal func presentSetupPin() {
-        let pinSetupCoordinator = PinSetupCoordinator(rootViewController: rootViewController, authenticationViewModel: rootViewModel.authenticationViewModel, delegate: self)
+        let pinSetupCoordinator = PinSetupCoordinator(rootViewController: rootViewController, authenticationViewModel: authenticationCoordinator.authenticationViewModel, delegate: self)
         currentCoordinator = pinSetupCoordinator
         pinSetupCoordinator.start()
     }

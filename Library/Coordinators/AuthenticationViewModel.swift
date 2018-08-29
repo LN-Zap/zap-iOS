@@ -12,7 +12,15 @@ import KeychainAccess
 private let keychainPinKey = "hashedSaltPin"
 private let keychainPinLengthKey = "pinLength"
 
-final class AuthenticationViewModel {
+final class AuthenticationViewModel: NSObject {
+    @objc enum State: Int {
+        case locked     // user has to enter a pin to unlock
+        case timeLocked // user entered wrong pin to often and has to wait until unlock
+        case unlocked   // wallet is unlocked
+    }
+    
+    @objc public dynamic var state: State = .locked
+    
     private let unlockTime: TimeInterval = 60
     
     private let keychain = Keychain(service: "com.jackmallers.zap.password").accessibility(.whenUnlocked)
@@ -50,6 +58,14 @@ final class AuthenticationViewModel {
         return keychain[keychainPinKey] != nil
     }
     
+    override init() {
+        super.init()
+        
+        if !didSetupPin || Environment.skipPinFlow {
+            state = .unlocked
+        }
+    }
+    
     func hashPin(_ pin: String) -> String {
         let salt = "kZF86kneOPAm09Wpl6XOLixuyctCM/lK"
         return "\(salt)\(pin)".sha256()
@@ -66,6 +82,7 @@ final class AuthenticationViewModel {
     
     func didAuthenticate() {
         lastAuthenticationDate = Date()
+        state = .unlocked
     }
     
     static func resetPin() {

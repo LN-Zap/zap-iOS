@@ -11,7 +11,6 @@ import Lightning
 
 final class RootViewModel: NSObject {
     enum State {
-        case locked
         case noWallet
         case connecting
         case noInternet
@@ -19,7 +18,6 @@ final class RootViewModel: NSObject {
         case running
     }
     
-    let authenticationViewModel = AuthenticationViewModel()
     let state = Observable<State>(.connecting)
     
     private var connectionTimeoutTimer: Timer?
@@ -44,12 +42,8 @@ final class RootViewModel: NSObject {
         case .none:
             state.value = .noWallet
         default:
-            if !authenticationViewModel.isLocked || Environment.skipPinFlow {
-                authenticationViewModel.didAuthenticate()
-                connect()
-            } else {
-                state.value = .locked
-            }
+            state.value = .connecting
+            connect()
         }
     }
     

@@ -9,10 +9,9 @@ import Lightning
 import UIKit
 
 extension UIStoryboard {
-    static func instantiatePinViewController(authenticationViewModel: AuthenticationViewModel, didAuthenticate: @escaping () -> Void) -> PinViewController {
+    static func instantiatePinViewController(authenticationViewModel: AuthenticationViewModel) -> PinViewController {
         let pinViewController = Storyboard.numericKeyPad.initial(viewController: PinViewController.self)
         pinViewController.authenticationViewModel = authenticationViewModel
-        pinViewController.didAuthenticateCallback = didAuthenticate
         return pinViewController
     }
 }
@@ -23,7 +22,10 @@ final class PinViewController: UIViewController {
     @IBOutlet private weak var imageBottomConstraint: NSLayoutConstraint!
     
     fileprivate var authenticationViewModel: AuthenticationViewModel?
-    fileprivate var didAuthenticateCallback: (() -> Void)?
+    
+    override var preferredStatusBarStyle: UIStatusBarStyle {
+        return .lightContent
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -78,7 +80,6 @@ extension PinViewController: KeyPadPinViewDelegate {
         BiometricAuthentication.authenticate { [weak self] result in
             switch result {
             case .success:
-                self?.authenticationViewModel?.didAuthenticate()
                 self?.didAuthenticate()
             case .failure:
                 self?.setPinView(hidden: false, animated: true)
@@ -87,6 +88,6 @@ extension PinViewController: KeyPadPinViewDelegate {
     }
     
     func didAuthenticate() {
-        didAuthenticateCallback?()
+        authenticationViewModel?.didAuthenticate()
     }
 }

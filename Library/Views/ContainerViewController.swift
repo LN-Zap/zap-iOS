@@ -17,12 +17,10 @@ public protocol ContainerViewController: class {
 public extension ContainerViewController where Self: UIViewController {
     
     public func setContainerContent(_ viewController: UIViewController) {
-        DispatchQueue.main.async {            
-            if self.currentViewController == nil {
-                self.setInitialViewController(viewController)
-            } else {
-                self.switchToViewController(viewController)
-            }
+        if self.currentViewController == nil {
+            self.setInitialViewController(viewController)
+        } else {
+            self.switchToViewController(viewController)
         }
     }
     

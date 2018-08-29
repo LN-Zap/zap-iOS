@@ -16,14 +16,17 @@ protocol SetupCoordinatorDelegate: class {
 final class SetupCoordinator {
     private let rootViewController: RootViewController
     private let rootViewModel: RootViewModel
+    private let authenticationViewModel: AuthenticationViewModel
+    
     private weak var navigationController: UINavigationController?
     private weak var delegate: SetupCoordinatorDelegate?
     private weak var connectRemoteNodeViewModel: ConnectRemoteNodeViewModel?
     private weak var mnemonicViewModel: MnemonicViewModel?
     
-    init(rootViewController: RootViewController, rootViewModel: RootViewModel, delegate: SetupCoordinatorDelegate) {
+    init(rootViewController: RootViewController, rootViewModel: RootViewModel, authenticationViewModel: AuthenticationViewModel, delegate: SetupCoordinatorDelegate) {
         self.rootViewController = rootViewController
         self.rootViewModel = rootViewModel
+        self.authenticationViewModel = authenticationViewModel
         self.delegate = delegate
     }
 
@@ -86,7 +89,7 @@ final class SetupCoordinator {
     }
 
     private func didSetupWallet() {
-        if Environment.skipPinFlow || rootViewModel.authenticationViewModel.didSetupPin {
+        if Environment.skipPinFlow || authenticationViewModel.didSetupPin {
             delegate?.connect()
         } else {
             delegate?.presentSetupPin()

@@ -62,9 +62,10 @@ enum BiometricAuthentication {
         alertController.addAction(UIAlertAction(title: "authenticate", style: .default) { _ in completion(.success(Success())) })
         
         let alertWindow = UIWindow(frame: UIScreen.main.bounds)
-        alertWindow.rootViewController = UIViewController()
+        alertWindow.rootViewController = RootViewController()
         alertWindow.windowLevel = UIWindowLevelAlert + 1
         alertWindow.makeKeyAndVisible()
+        alertWindow.tintColor = UIColor.Zap.lightningOrange
         alertWindow.rootViewController?.present(alertController, animated: true, completion: nil)
         #else
         let localAuthenticationContext = LAContext()
