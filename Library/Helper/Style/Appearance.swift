@@ -16,6 +16,7 @@ enum Appearance {
         // UINavigationBar
         UINavigationBar.appearance().largeTitleTextAttributes = [.font: UIFont.Zap.light.withSize(40), .foregroundColor: UIColor.white]
         UINavigationBar.appearance().titleTextAttributes = [.font: UIFont.Zap.light.withSize(20), .foregroundColor: UIColor.white]
+        UINavigationBar.appearance().barStyle = .black
         
         // UIBarButtonItem
         UIBarButtonItem.appearance().setTitleTextAttributes([.font: UIFont.Zap.light], for: .normal)

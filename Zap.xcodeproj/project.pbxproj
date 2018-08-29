@@ -63,7 +63,6 @@
 		AD28844B212824DC003C3D94 /* Invoice.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD28844A212824DC003C3D94 /* Invoice.swift */; };
 		AD28844D21284DAC003C3D94 /* InvoiceTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD28844C21284DAC003C3D94 /* InvoiceTests.swift */; };
 		AD28844F21287B56003C3D94 /* SendViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD28844E21287B56003C3D94 /* SendViewModel.swift */; };
-		AD28CB79211D9DFF00A31004 /* UINavigationBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD28CB78211D9DFF00A31004 /* UINavigationBar.swift */; };
 		AD28CB7B211DE93300A31004 /* BlockExplorerSettingsItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD28CB7A211DE93300A31004 /* BlockExplorerSettingsItem.swift */; };
 		AD28CB7D211DF12E00A31004 /* DetailBlockExplorerTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = AD28CB7C211DF12E00A31004 /* DetailBlockExplorerTableViewCell.xib */; };
 		AD292F9020E69F0E00211AE7 /* AuthenticationViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0E2690C202CC4E30069E83C /* AuthenticationViewModel.swift */; };
@@ -139,7 +138,6 @@
 		AD391C9A20D16FA8007EE22A /* QRCodeScannerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A06660F4202D97A300EE32FA /* QRCodeScannerView.swift */; };
 		AD391C9B20D16FA8007EE22A /* QRCodeScannerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A024B85220161560002B8897 /* QRCodeScannerViewController.swift */; };
 		AD391C9E20D16FA8007EE22A /* RequestViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A070D96A202B569E000A8274 /* RequestViewModel.swift */; };
-		AD391C9F20D16FA8007EE22A /* StatusBarDelegatingNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD1EB9FC20B2CEAA001FF67E /* StatusBarDelegatingNavigationController.swift */; };
 		AD391CA020D16FA8007EE22A /* Root.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AD391C4520D16F53007EE22A /* Root.storyboard */; };
 		AD391CA120D16FA8007EE22A /* RootViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0A05A4C20147B740007D1C9 /* RootViewController.swift */; };
 		AD391CA820D16FA8007EE22A /* SendQRCodeScannerStrategy.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD99C9F220907AD10061C565 /* SendQRCodeScannerStrategy.swift */; };
@@ -608,7 +606,6 @@
 		AD19F05F20AF19A9008090CB /* DetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
 		AD19F06120AF1AB8008090CB /* DetailMemoTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailMemoTableViewCell.swift; sourceTree = "<group>"; };
 		AD19F06220AF1AB8008090CB /* DetailMemoTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DetailMemoTableViewCell.xib; sourceTree = "<group>"; };
-		AD1EB9FC20B2CEAA001FF67E /* StatusBarDelegatingNavigationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatusBarDelegatingNavigationController.swift; sourceTree = "<group>"; };
 		AD1EB9FE20B2EAF4001FF67E /* LightningNodeStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LightningNodeStore.swift; sourceTree = "<group>"; };
 		AD1EBA0020B2FD9D001FF67E /* Persistable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Persistable.swift; sourceTree = "<group>"; };
 		AD21768820C3DFDB007779DE /* BalanceView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BalanceView.swift; sourceTree = "<group>"; };
@@ -629,7 +626,6 @@
 		AD28844A212824DC003C3D94 /* Invoice.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Invoice.swift; sourceTree = "<group>"; };
 		AD28844C21284DAC003C3D94 /* InvoiceTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InvoiceTests.swift; sourceTree = "<group>"; };
 		AD28844E21287B56003C3D94 /* SendViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SendViewModel.swift; sourceTree = "<group>"; };
-		AD28CB78211D9DFF00A31004 /* UINavigationBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UINavigationBar.swift; sourceTree = "<group>"; };
 		AD28CB7A211DE93300A31004 /* BlockExplorerSettingsItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BlockExplorerSettingsItem.swift; sourceTree = "<group>"; };
 		AD28CB7C211DF12E00A31004 /* DetailBlockExplorerTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DetailBlockExplorerTableViewCell.xib; sourceTree = "<group>"; };
 		AD2EDBF920C02616002E6EE5 /* Storyboard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Storyboard.swift; sourceTree = "<group>"; };
@@ -1300,7 +1296,6 @@
 				ADA81E9D210DE14100B7C6F2 /* UIView.swift */,
 				ADBA120520930C94001F7700 /* UIViewController.swift */,
 				A0919142203B152100FA525A /* UserDefaults.swift */,
-				AD28CB78211D9DFF00A31004 /* UINavigationBar.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -1718,7 +1713,6 @@
 				A06660F4202D97A300EE32FA /* QRCodeScannerView.swift */,
 				A024B85220161560002B8897 /* QRCodeScannerViewController.swift */,
 				ADA6BBBE211B3AEC00A1FF19 /* ScanRectView.swift */,
-				AD1EB9FC20B2CEAA001FF67E /* StatusBarDelegatingNavigationController.swift */,
 			);
 			path = QRCodeScanner;
 			sourceTree = "<group>";
@@ -2650,7 +2644,6 @@
 				AD391CCE20D16FE1007EE22A /* DetailViewModel.swift in Sources */,
 				ADA81EA2210E19F600B7C6F2 /* HeaderCollectionReusableView.swift in Sources */,
 				AD667E4B21367E1B007B9160 /* BackgroundViewController.swift in Sources */,
-				AD28CB79211D9DFF00A31004 /* UINavigationBar.swift in Sources */,
 				AD0D0BC2212BE3C800E4F7F7 /* RequestViewController.swift in Sources */,
 				AD391D1D20D174B4007EE22A /* Route.swift in Sources */,
 				AD391C6C20D16F89007EE22A /* PinViewController.swift in Sources */,
@@ -2723,7 +2716,6 @@
 				AD391CA920D16FA8007EE22A /* BitcoinUnitSettingsItem.swift in Sources */,
 				AD0D5DEC210DCC6300D11D0B /* ExposedLayout.swift in Sources */,
 				AD391CAF20D16FA8007EE22A /* SettingsItem.swift in Sources */,
-				AD391C9F20D16FA8007EE22A /* StatusBarDelegatingNavigationController.swift in Sources */,
 				AD391C5620D16F7A007EE22A /* ConnectRemoteNodeViewModel.swift in Sources */,
 				AD391C5E20D16F7A007EE22A /* MnemonicWordTableViewCell.swift in Sources */,
 				AD391CBC20D16FE1007EE22A /* DetailCellType.swift in Sources */,

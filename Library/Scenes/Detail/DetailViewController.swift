@@ -18,7 +18,6 @@ extension UIStoryboard {
         viewController.navigationBar.backgroundColor = UIColor.Zap.seaBlue
         viewController.navigationBar.shadowImage = UIImage()
         viewController.navigationBar.setBackgroundImage(UIImage(), for: .default)
-        viewController.navigationBar.titleTextStyle = .light
         
         if let detailViewController = viewController.topViewController as? DetailViewController {
             detailViewController.detailViewModel = detailViewModel
