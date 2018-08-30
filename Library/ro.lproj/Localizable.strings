@@ -55,7 +55,7 @@
 "scene.settings.item.on_chain_request_address.bech32" = "Bech32";
 "scene.settings.item.on_chain_request_address.p2sh" = "P2SH";
 "scene.settings.item.remove_remote_node" = "Resetare configurare de la distanţă a nodului";
-"scene.settings.item.reset_pin" = "Resetare Pin";
+"scene.settings.item.change_pin" = "Change Pin";
 "scene.settings.item.report_issue" = "Raportaţi o problemă";
 "scene.settings.item.help" = "Ai nevoie de ajutor?";
 
