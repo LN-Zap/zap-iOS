@@ -55,7 +55,7 @@
 "scene.settings.item.on_chain_request_address.bech32" = "Bech32";
 "scene.settings.item.on_chain_request_address.p2sh" = "P2SH";
 "scene.settings.item.remove_remote_node" = "リモートノードの設定をリセットします。";
-"scene.settings.item.reset_pin" = "Pin をリセットします。";
+"scene.settings.item.change_pin" = "Change Pin";
 "scene.settings.item.report_issue" = "問題を報告します。";
 "scene.settings.item.help" = "ヘルプが必要ですか。";
 
