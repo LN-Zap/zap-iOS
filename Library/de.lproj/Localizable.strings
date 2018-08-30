@@ -193,3 +193,6 @@
 
 "scene.time_lock.headline" = "Wrong Passcode";
 "scene.time_lock.description" = "Your wallet is locked for:";
+
+"scene.modal_pin.headline" = "Enter Passcode";
+"scene.modal_pin.description" = "Please enter your passcode to continue";
