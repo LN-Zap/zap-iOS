@@ -48,7 +48,7 @@ final class AuthenticationCoordinator {
         
         if self.authenticationWindow == nil {
             let authenticationWindow = UIWindow(frame: UIScreen.main.bounds)
-            authenticationWindow.windowLevel = UIWindowLevelNormal + 1
+            authenticationWindow.windowLevel = WindowLevel.authentication
             authenticationWindow.tintColor = UIColor.Zap.lightningOrange
             authenticationWindow.makeKeyAndVisible()
             self.authenticationWindow = authenticationWindow

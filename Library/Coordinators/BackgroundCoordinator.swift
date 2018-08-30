@@ -32,7 +32,7 @@ final class BackgroundCoordinator {
         
         let backgroundWindow = UIWindow(frame: UIScreen.main.bounds)
         backgroundWindow.rootViewController = RootViewController()
-        backgroundWindow.windowLevel = UIWindowLevelAlert + 10
+        backgroundWindow.windowLevel = WindowLevel.backgroundWindow
         backgroundWindow.tintColor = UIColor.Zap.lightningOrange
         
         let viewController = Storyboard.background.instantiate(viewController: BackgoundViewController.self)

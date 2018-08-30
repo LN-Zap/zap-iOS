@@ -61,7 +61,7 @@ final class ModalPinViewController: ModalViewController, ContentHeightProviding 
     static func authenticate(authenticationViewModel: AuthenticationViewModel, completion: @escaping (Result<Success>) -> Void) {
         let pinWindow = UIWindow(frame: UIScreen.main.bounds)
         pinWindow.rootViewController = RootViewController()
-        pinWindow.windowLevel = UIWindowLevelAlert + 1
+        pinWindow.windowLevel = WindowLevel.modalPin
         pinWindow.makeKeyAndVisible()
         
         let modalPinViewController = UIStoryboard.instantiateModalPinViewController(authenticationViewModel: authenticationViewModel)

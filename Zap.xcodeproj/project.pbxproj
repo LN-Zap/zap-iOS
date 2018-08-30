@@ -222,6 +222,7 @@
 		AD667E522136B062007B9160 /* TimeLockedViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD667E502136B062007B9160 /* TimeLockedViewController.swift */; };
 		AD667E552136B074007B9160 /* TimeLocked.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AD667E542136B074007B9160 /* TimeLocked.storyboard */; };
 		AD667E572136E622007B9160 /* TimeLockStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD667E562136E622007B9160 /* TimeLockStore.swift */; };
+		AD667E5921384966007B9160 /* WindowLevel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD667E5821384966007B9160 /* WindowLevel.swift */; };
 		AD774651207616B100EC596B /* Network.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD77464A207615E000EC596B /* Network.swift */; };
 		AD7EDAE32108C4150058CCCA /* Wallet.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AD7EDAE22108C4150058CCCA /* Wallet.storyboard */; };
 		AD7EDAE52108C41D0058CCCA /* WalletViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD7EDAE42108C41D0058CCCA /* WalletViewController.swift */; };
@@ -676,6 +677,7 @@
 		AD667E502136B062007B9160 /* TimeLockedViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimeLockedViewController.swift; sourceTree = "<group>"; };
 		AD667E542136B074007B9160 /* TimeLocked.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = TimeLocked.storyboard; sourceTree = "<group>"; };
 		AD667E562136E622007B9160 /* TimeLockStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimeLockStore.swift; sourceTree = "<group>"; };
+		AD667E5821384966007B9160 /* WindowLevel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WindowLevel.swift; sourceTree = "<group>"; };
 		AD680A9720B06B840018986B /* DetailTimerTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailTimerTableViewCell.swift; sourceTree = "<group>"; };
 		AD680A9820B06B840018986B /* DetailTimerTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DetailTimerTableViewCell.xib; sourceTree = "<group>"; };
 		AD680A9E20B07AD90018986B /* ConnectRemoteNode.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = ConnectRemoteNode.storyboard; sourceTree = "<group>"; };
@@ -1076,6 +1078,7 @@
 				ADEDBC0920C31C5F00B71F17 /* Route.swift */,
 				AD2EDBF920C02616002E6EE5 /* Storyboard.swift */,
 				A0919159203C309E00FA525A /* Style */,
+				AD667E5821384966007B9160 /* WindowLevel.swift */,
 			);
 			path = Helper;
 			sourceTree = "<group>";
@@ -2716,6 +2719,7 @@
 				AD391D0920D16FF5007EE22A /* KeyPadView.swift in Sources */,
 				AD615CF5211C82E600680790 /* LoadingView.swift in Sources */,
 				ADA865C020ECC89E00B1B74B /* FilterTableViewCell.swift in Sources */,
+				AD667E5921384966007B9160 /* WindowLevel.swift in Sources */,
 				AD391CB420D16FA8007EE22A /* Section.swift in Sources */,
 				AD391D1B20D174B4007EE22A /* PinSetupCoordinator.swift in Sources */,
 				ADE0C4092108F6C8004597C3 /* ChannelCell.swift in Sources */,

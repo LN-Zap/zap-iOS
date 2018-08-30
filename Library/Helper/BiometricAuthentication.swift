@@ -54,7 +54,7 @@ enum BiometricAuthentication {
         
         let alertWindow = UIWindow(frame: UIScreen.main.bounds)
         alertWindow.rootViewController = RootViewController()
-        alertWindow.windowLevel = UIWindowLevelAlert + 1
+        alertWindow.windowLevel = WindowLevel.fakeBiometricAuthentication
         alertWindow.makeKeyAndVisible()
         alertWindow.tintColor = UIColor.Zap.lightningOrange
         alertWindow.rootViewController?.present(alertController, animated: true, completion: nil)
