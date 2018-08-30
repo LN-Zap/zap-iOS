@@ -18,6 +18,7 @@ extension UIStoryboard {
 class TimeLockedViewController: UIViewController {
     fileprivate var authenticationViewModel: AuthenticationViewModel?
 
+    @IBOutlet private weak var headlineLabel: UILabel!
     @IBOutlet private weak var descriptionLabel: UILabel!
     @IBOutlet private weak var countdownLabel: UILabel!
     
@@ -28,10 +29,12 @@ class TimeLockedViewController: UIViewController {
         
         view.backgroundColor = UIColor.Zap.seaBlue
 
+        Style.Label.headline.apply(to: headlineLabel)
         Style.Label.body.apply(to: descriptionLabel)
-        Style.Label.headline.apply(to: countdownLabel)
+        Style.Label.title.apply(to: countdownLabel)
         
-        descriptionLabel.text = "Your wallet is locked.\nYou have to wait until you can enter your pin again."
+        headlineLabel.text = "scene.time_lock.headline".localized
+        descriptionLabel.text = "scene.time_lock.description".localized
         
         if let timeLockEnd = authenticationViewModel?.timeLockStore.timeLockEnd {
             let dateFormatter = DateFormatter()
@@ -51,7 +54,7 @@ class TimeLockedViewController: UIViewController {
                 formatter.maximumUnitCount = 3
 
                 if let formattedDuration = formatter.string(from: duration) {
-                    self?.countdownLabel.text = formattedDuration
+                    self?.countdownLabel.text = formattedDuration.replacingOccurrences(of: ", ", with: ",\n")
                 }
             }
             timer.fire()
