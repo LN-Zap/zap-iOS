@@ -55,7 +55,7 @@
 "scene.settings.item.on_chain_request_address.bech32" = "Bech32";
 "scene.settings.item.on_chain_request_address.p2sh" = "P2SH";
 "scene.settings.item.remove_remote_node" = "Återställ Fjärrnodskonfiguration";
-"scene.settings.item.reset_pin" = "Återställ PIN-koden";
+"scene.settings.item.change_pin" = "Change Pin";
 "scene.settings.item.report_issue" = "Rapportera ett problem";
 "scene.settings.item.help" = "Behöver du hjälp?";
 
