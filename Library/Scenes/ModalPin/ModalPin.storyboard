@@ -60,16 +60,34 @@
                                         </constraints>
                                     </view>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="RqX-eO-thv">
-                                        <rect key="frame" x="314" y="292" width="46" height="30"/>
+                                        <rect key="frame" x="314" y="301.5" width="46" height="30"/>
                                         <state key="normal" title="Button"/>
                                         <connections>
                                             <action selector="cancel:" destination="rE1-V2-QDQ" eventType="touchUpInside" id="QPj-83-UYP"/>
                                         </connections>
                                     </button>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Kd5-hE-zsP">
+                                        <rect key="frame" x="166.5" y="156" width="42" height="20.5"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Nih-kd-mr7">
+                                        <rect key="frame" x="166.5" y="134.5" width="42" height="20.5"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
                                 </subviews>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
                                     <constraint firstItem="T8Y-gr-POL" firstAttribute="centerX" secondItem="gCo-Fv-tYu" secondAttribute="centerX" id="O4z-Wc-G5k"/>
+                                    <constraint firstItem="Nih-kd-mr7" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="gCo-Fv-tYu" secondAttribute="leading" constant="15" id="OHH-64-5Qz"/>
+                                    <constraint firstItem="T8Y-gr-POL" firstAttribute="top" secondItem="Kd5-hE-zsP" secondAttribute="bottom" constant="26" id="Tay-Cp-yuV"/>
+                                    <constraint firstItem="Kd5-hE-zsP" firstAttribute="top" secondItem="Nih-kd-mr7" secondAttribute="bottom" constant="1" id="VlR-Un-oyf"/>
+                                    <constraint firstItem="Kd5-hE-zsP" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="gCo-Fv-tYu" secondAttribute="leading" constant="15" id="eTZ-aP-2NO"/>
+                                    <constraint firstItem="Nih-kd-mr7" firstAttribute="centerX" secondItem="gCo-Fv-tYu" secondAttribute="centerX" id="r6m-IR-HZJ"/>
+                                    <constraint firstItem="Kd5-hE-zsP" firstAttribute="centerX" secondItem="gCo-Fv-tYu" secondAttribute="centerX" id="ynv-0Q-i6k"/>
                                     <constraint firstItem="T8Y-gr-POL" firstAttribute="centerY" secondItem="gCo-Fv-tYu" secondAttribute="centerY" multiplier="1.3333" id="zQm-xR-81J"/>
                                 </constraints>
                             </view>
@@ -80,7 +98,7 @@
                             <constraint firstAttribute="bottom" secondItem="iaW-Fb-lcp" secondAttribute="bottom" id="A73-d4-w2G"/>
                             <constraint firstItem="4N4-0j-aBQ" firstAttribute="trailing" secondItem="gCo-Fv-tYu" secondAttribute="trailing" id="B9x-5n-AMh"/>
                             <constraint firstItem="RqX-eO-thv" firstAttribute="trailing" secondItem="WPl-9a-hfv" secondAttribute="trailing" id="BNe-du-ghE"/>
-                            <constraint firstItem="iaW-Fb-lcp" firstAttribute="top" secondItem="RqX-eO-thv" secondAttribute="bottom" constant="15" id="BSK-kf-M1p"/>
+                            <constraint firstItem="iaW-Fb-lcp" firstAttribute="top" secondItem="RqX-eO-thv" secondAttribute="baseline" constant="15" id="BSK-kf-M1p"/>
                             <constraint firstItem="gCo-Fv-tYu" firstAttribute="leading" secondItem="4N4-0j-aBQ" secondAttribute="leading" id="JlT-MM-KFu"/>
                             <constraint firstItem="iaW-Fb-lcp" firstAttribute="leading" secondItem="Sfg-5k-BYm" secondAttribute="leading" id="Kvo-Zs-6Cu"/>
                             <constraint firstAttribute="trailing" secondItem="iaW-Fb-lcp" secondAttribute="trailing" id="LMp-UK-Xkg"/>
@@ -90,6 +108,8 @@
                     </view>
                     <connections>
                         <outlet property="cancelButton" destination="RqX-eO-thv" id="d9i-g2-ozn"/>
+                        <outlet property="descriptionLabel" destination="Kd5-hE-zsP" id="yGC-Kp-K8G"/>
+                        <outlet property="headlineLabel" destination="Nih-kd-mr7" id="KOJ-cF-Y3Q"/>
                         <outlet property="keyPadContainer" destination="iaW-Fb-lcp" id="gfm-kg-uff"/>
                         <outlet property="keyPadPinView" destination="WPl-9a-hfv" id="CL7-th-Zx6"/>
                         <outlet property="pinView" destination="K1c-HU-Nxc" id="H40-JD-Yaa"/>

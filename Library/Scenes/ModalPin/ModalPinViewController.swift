@@ -26,6 +26,8 @@ final class ModalPinViewController: ModalViewController, ContentHeightProviding 
     @IBOutlet private weak var pinView: PinView!
     @IBOutlet private weak var pinViewContainer: UIView!
     @IBOutlet private weak var cancelButton: UIButton!
+    @IBOutlet weak var headlineLabel: UILabel!
+    @IBOutlet weak var descriptionLabel: UILabel!
     
     var contentHeight: CGFloat? { return window?.bounds.height }
     var completion: ((Result<Success>) -> Void)?
@@ -35,18 +37,22 @@ final class ModalPinViewController: ModalViewController, ContentHeightProviding 
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        pinView.activeColor = .black
-        pinView.inactiveColor = UIColor.Zap.gray
-        
         keyPadContainer.layer.cornerRadius = Appearance.Constants.modalCornerRadius
         keyPadContainer.layer.maskedCorners = [.layerMaxXMinYCorner, .layerMinXMinYCorner]
-
+        keyPadContainer.backgroundColor = UIColor.Zap.seaBlue
+        
         pinViewContainer.layer.cornerRadius = Appearance.Constants.modalCornerRadius
+        pinViewContainer.backgroundColor = UIColor.Zap.seaBlue
         
         keyPadPinView.state = .pin
         keyPadPinView.delegate = self
         keyPadPinView.authenticationViewModel = authenticationViewModel
         keyPadPinView.pinView = pinView
+        
+        Style.Label.headline.apply(to: headlineLabel)
+        headlineLabel.text = "scene.modal_pin.headline".localized
+        Style.Label.body.apply(to: descriptionLabel)
+        descriptionLabel.text = "scene.modal_pin.description".localized
         
         Style.Button.custom().apply(to: cancelButton)
         cancelButton.setTitle("generic.cancel".localized, for: .normal)

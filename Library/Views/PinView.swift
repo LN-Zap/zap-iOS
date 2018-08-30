@@ -8,8 +8,8 @@
 import UIKit
 
 final class PinView: UIStackView {
-    var activeColor: UIColor = .white
-    var inactiveColor: UIColor = .black
+    private let activeColor: UIColor = .white
+    private let inactiveColor: UIColor = .black
     
     var activeCount: Int = 0 {
         didSet {

@@ -45,8 +45,6 @@ final class PinViewController: UIViewController {
     }
     
     private func setupKeyPad() {
-        keyPadView.backgroundColor = UIColor.Zap.seaBlue
-        keyPadView.textColor = .white
         keyPadView.authenticationViewModel = authenticationViewModel
         keyPadView.delegate = self
         keyPadView.pinView = pinView
