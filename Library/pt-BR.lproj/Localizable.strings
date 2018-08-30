@@ -190,3 +190,6 @@
 "scene.qrcode_scanner.top_label" = "Escanear QR-Code";
 
 "scene.wallet.title" = "Wallet";
+
+"scene.time_lock.headline" = "Wrong Passcode";
+"scene.time_lock.description" = "Your wallet is locked for:";
