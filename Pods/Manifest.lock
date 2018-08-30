@@ -27,11 +27,11 @@ PODS:
   - nanopb/encode (0.3.8)
   - ReactiveKit (3.9.6)
   - SipHash (1.2.2)
-  - SwiftGRPC (0.5.0):
+  - SwiftGRPC (0.5.1):
     - BoringSSL (~> 10.0)
     - gRPC-Core (~> 1.12.0)
-    - SwiftProtobuf (~> 1.0.3)
-  - SwiftProtobuf (1.0.3)
+    - SwiftProtobuf (~> 1.1.1)
+  - SwiftProtobuf (1.1.1)
 
 DEPENDENCIES:
   - BigInt (~> 3.0)
@@ -58,7 +58,7 @@ EXTERNAL SOURCES:
 
 CHECKOUT OPTIONS:
   SwiftGRPC:
-    :commit: b2084686f01625f581d19773cc508b8040375ad6
+    :commit: 7c7876ce49b2137e043d29a03b9b0b4b032b06fc
     :git: https://github.com/grpc/grpc-swift
 
 SPEC CHECKSUMS:
@@ -71,8 +71,8 @@ SPEC CHECKSUMS:
   nanopb: 5601e6bca2dbf1ed831b519092ec110f66982ca3
   ReactiveKit: 804d3093ad42dee0de19e42d4f7dcae9c14364b0
   SipHash: fad90a4683e420c52ef28063063dbbce248ea6d4
-  SwiftGRPC: f0c79f81e90b1006a83f73f802ba1d01851d5def
-  SwiftProtobuf: 5ccc0e4054e37c75800e5744acb2aa80bb72b39c
+  SwiftGRPC: aef4936e7cffb35e5f3f996d44008303f4f150e7
+  SwiftProtobuf: 4298b0b814dd49031c3218fdfb8d42f7107c8a6d
 
 PODFILE CHECKSUM: 8ccafea35c576da28e34cb2c3c8eabe546743bac
 

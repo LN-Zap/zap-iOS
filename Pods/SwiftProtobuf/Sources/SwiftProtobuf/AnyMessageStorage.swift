@@ -56,13 +56,15 @@ fileprivate func unpack(contentJSON: Data,
                         as messageType: Message.Type) throws -> Message {
   guard messageType is _CustomJSONCodable.Type else {
     let contentJSONAsObject = asJSONObject(body: contentJSON)
-    return try messageType.init(jsonUTF8Data: contentJSONAsObject)
+    return try messageType.init(jsonUTF8Data: contentJSONAsObject, options: options)
   }
 
   var value = String()
   try contentJSON.withUnsafeBytes { (bytes:UnsafePointer<UInt8>) in
     let buffer = UnsafeBufferPointer(start: bytes, count: contentJSON.count)
-    var scanner = JSONScanner(source: buffer, messageDepthLimit: options.messageDepthLimit)
+    var scanner = JSONScanner(source: buffer,
+                              messageDepthLimit: options.messageDepthLimit,
+                              ignoreUnknownFields: options.ignoreUnknownFields)
     let key = try scanner.nextQuotedString()
     if key != "value" {
       // The only thing within a WKT should be "value".
