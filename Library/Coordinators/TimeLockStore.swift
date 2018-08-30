@@ -9,7 +9,11 @@ import Foundation
 import Lightning
 
 private enum Constants {
+    #if targetEnvironment(simulator)
+    static let firstLockDuration: TimeInterval = 2
+    #else
     static let firstLockDuration: TimeInterval = 60
+    #endif
     static let numberOfTriesAllowed = 3
 }
 
