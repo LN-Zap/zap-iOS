@@ -12,7 +12,7 @@ final class UnconfirmedTransactionStore: Persistable {
 
     var data = [String: OnChainUnconfirmedTransaction]()
     
-    static var fileName = "unconfirmed_transactions"
+    static var fileName = "unconfirmedTransactions"
     
     init() {
         loadPersistable()
