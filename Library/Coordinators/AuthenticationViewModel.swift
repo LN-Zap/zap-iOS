@@ -112,10 +112,4 @@ final class AuthenticationViewModel: NSObject {
         lastAuthenticationDate = Date()
         state = .unlocked
     }
-    
-    static func resetPin() {
-        let viewModel = AuthenticationViewModel()
-        viewModel.hashedPin = nil
-        viewModel.pinLength = nil
-    }
 }

@@ -26,11 +26,11 @@ final class ModalPinViewController: ModalViewController, ContentHeightProviding 
     @IBOutlet private weak var pinView: PinView!
     @IBOutlet private weak var pinViewContainer: UIView!
     @IBOutlet private weak var cancelButton: UIButton!
-    @IBOutlet weak var headlineLabel: UILabel!
-    @IBOutlet weak var descriptionLabel: UILabel!
+    @IBOutlet private weak var headlineLabel: UILabel!
+    @IBOutlet private weak var descriptionLabel: UILabel!
     
-    var contentHeight: CGFloat? { return window?.bounds.height }
     var completion: ((Result<Success>) -> Void)?
+    var contentHeight: CGFloat? { return window?.bounds.height } // ContentHeightProviding
     
     override var preferredStatusBarStyle: UIStatusBarStyle { return .lightContent }
     

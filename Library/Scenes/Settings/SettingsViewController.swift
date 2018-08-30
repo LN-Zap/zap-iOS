@@ -8,6 +8,8 @@
 import UIKit
 
 protocol SettingsDelegate: class {
+    var authenticationViewModel: AuthenticationViewModel { get }
+    
     func disconnect()
 }
 
@@ -34,7 +36,7 @@ final class SettingsViewController: GroupedTableViewController {
             ]),
             Section(title: "scene.settings.section.wallet".localized, rows: [
                 RemoveRemoteNodeSettingsItem(settingsDelegate: settingsDelegate),
-                RemovePinSettingsItem(settingsDelegate: settingsDelegate)
+                ChangePinSettingsItem(settingsDelegate: settingsDelegate)
             ]),
             Section(title: nil, rows: [
                 HelpSettingsItem(),

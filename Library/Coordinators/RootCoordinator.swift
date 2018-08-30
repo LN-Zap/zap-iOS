@@ -9,7 +9,6 @@ import Lightning
 import UIKit
 
 public final class RootCoordinator: NSObject, SetupCoordinatorDelegate, PinCoordinatorDelegate, SettingsDelegate, SyncDelegate, Routing {
-    
     private let rootViewController: RootViewController
     private let rootViewModel: RootViewModel
     private let authenticationCoordinator: AuthenticationCoordinator
@@ -17,6 +16,10 @@ public final class RootCoordinator: NSObject, SetupCoordinatorDelegate, PinCoord
     
     private var currentCoordinator: Any?
     private var route: Route?
+    
+    var authenticationViewModel: AuthenticationViewModel { // SettingsDelegate
+        return authenticationCoordinator.authenticationViewModel
+    }
     
     public init(window: UIWindow) {
         rootViewController = Storyboard.root.initial(viewController: RootViewController.self)
