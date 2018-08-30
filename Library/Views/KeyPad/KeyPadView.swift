@@ -5,6 +5,7 @@
 //  Copyright © 2018 Zap. All rights reserved.
 //
 
+import AudioToolbox
 import UIKit
 
 enum KeyPadState {
@@ -15,7 +16,7 @@ enum KeyPadState {
 
 class KeyPadView: UIView {
     @IBOutlet private var contentView: UIView!
-
+    
     override init(frame: CGRect) {
         super.init(frame: frame)
         setup()
@@ -135,6 +136,8 @@ class KeyPadView: UIView {
     }
     
     @IBAction private func buttonTapped(_ sender: UIButton) {
+        AudioServicesPlaySystemSound(0x450)
+        
         if sender.tag < 10 {
             numberTapped(sender.tag)
         } else if sender.tag == 10 {
