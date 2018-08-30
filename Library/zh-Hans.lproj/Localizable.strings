@@ -55,7 +55,7 @@
 "scene.settings.item.on_chain_request_address.bech32" = "Bech32";
 "scene.settings.item.on_chain_request_address.p2sh" = "P2SH";
 "scene.settings.item.remove_remote_node" = "重置节点";
-"scene.settings.item.reset_pin" = "复位Pin码";
+"scene.settings.item.change_pin" = "Change Pin";
 "scene.settings.item.report_issue" = "报告问题";
 "scene.settings.item.help" = "需要帮助吗？";
 
