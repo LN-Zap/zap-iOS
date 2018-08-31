@@ -1,7 +1,7 @@
 "generic.memo.placeholder" = "这是什么？";
 "generic.qr_code.copy_button" = "复制";
 "generic.qr_code.share_button" = "分享";
-"generic.cancel" = "Cancel";
+"generic.cancel" = "取消";
 
 "link.help" = "https://ln-zap.github.io/zap-tutorials/";
 "link.help.zapconnect" = "https://ln-zap.github.io/zap-tutorials/iOS-remote-node-setup";
@@ -55,7 +55,7 @@
 "scene.settings.item.on_chain_request_address.bech32" = "Bech32";
 "scene.settings.item.on_chain_request_address.p2sh" = "P2SH";
 "scene.settings.item.remove_remote_node" = "重置节点";
-"scene.settings.item.change_pin" = "Change Pin";
+"scene.settings.item.change_pin" = "更改 Pin码";
 "scene.settings.item.report_issue" = "报告问题";
 "scene.settings.item.help" = "需要帮助吗？";
 
@@ -100,7 +100,7 @@
 
 "scene.send.lightning.title" = "通过闪电网络支付";
 "scene.send.on_chain.title" = "链上交易";
-"scene.send.authentication_failed" = "Authentication failed";
+"scene.send.authentication_failed" = "身份验证失败";
 
 "scene.connect_remote_node.title" = "连接远程节点";
 "scene.connect_remote_node.empty_state" = "使用 zapconnect 扫描 QRCode 生成或粘贴连接代码以连接到您的节点。";
@@ -191,8 +191,8 @@
 
 "scene.wallet.title" = "钱包";
 
-"scene.time_lock.headline" = "Wrong Passcode";
-"scene.time_lock.description" = "Your wallet is locked for:";
+"scene.time_lock.headline" = "密码错误";
+"scene.time_lock.description" = "你的钱包被锁住:";
 
-"scene.modal_pin.headline" = "Enter Passcode";
-"scene.modal_pin.description" = "Please enter your passcode to continue";
+"scene.modal_pin.headline" = "输入密码";
+"scene.modal_pin.description" = "请输入您的密码以继续";
