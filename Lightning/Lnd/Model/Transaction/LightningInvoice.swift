@@ -10,7 +10,6 @@ import Foundation
 
 public struct LightningInvoice: Transaction, Equatable {
     public let id: String
-    public let fees: Satoshi = 0
     public let memo: String
     public let amount: Satoshi
     public let settled: Bool
