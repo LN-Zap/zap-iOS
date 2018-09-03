@@ -1082,13 +1082,14 @@
 		A01009352014BE070001EF94 /* Helper */ = {
 			isa = PBXGroup;
 			children = (
+				A07C1032203DD5AF006C7FE8 /* Appearance.swift */,
 				A02C9FC3202F617D009821B1 /* BiometricAuthentication.swift */,
 				A0DDC077201B42EA00AEFF94 /* BockExplorer.swift */,
 				ADE4CF1E20B5B6FC007C987A /* Environment.swift */,
-				A0C2EABA206F8AD2003AE56E /* Money */,
+				A0C2EAC3206F9539003AE56E /* ExchangeUpdaterJob.swift */,
 				ADEDBC0920C31C5F00B71F17 /* Route.swift */,
 				AD2EDBF920C02616002E6EE5 /* Storyboard.swift */,
-				A0919159203C309E00FA525A /* Style */,
+				A0919155203C2CB600FA525A /* Style.swift */,
 				AD667E5821384966007B9160 /* WindowLevel.swift */,
 			);
 			path = Helper;
@@ -1225,15 +1226,6 @@
 			path = Services;
 			sourceTree = "<group>";
 		};
-		A0919159203C309E00FA525A /* Style */ = {
-			isa = PBXGroup;
-			children = (
-				A07C1032203DD5AF006C7FE8 /* Appearance.swift */,
-				A0919155203C2CB600FA525A /* Style.swift */,
-			);
-			path = Style;
-			sourceTree = "<group>";
-		};
 		A0A059F62013CF960007D1C9 = {
 			isa = PBXGroup;
 			children = (
@@ -1326,14 +1318,6 @@
 				A0C2EAC1206F8D37003AE56E /* Currency.swift */,
 				A0A96B9620179CA700788808 /* FiatCurrency.swift */,
 				A0F9AEDC206E155500E93DCA /* Satoshi.swift */,
-			);
-			path = Money;
-			sourceTree = "<group>";
-		};
-		A0C2EABA206F8AD2003AE56E /* Money */ = {
-			isa = PBXGroup;
-			children = (
-				A0C2EAC3206F9539003AE56E /* ExchangeUpdaterJob.swift */,
 			);
 			path = Money;
 			sourceTree = "<group>";
