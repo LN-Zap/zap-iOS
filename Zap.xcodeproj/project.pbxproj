@@ -211,6 +211,8 @@
 		AD536BF820E62764002279BC /* Lightning.h in Headers */ = {isa = PBXBuildFile; fileRef = AD536BE820E62763002279BC /* Lightning.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		AD536BFB20E62764002279BC /* Lightning.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AD536BE620E62763002279BC /* Lightning.framework */; };
 		AD536BFC20E62764002279BC /* Lightning.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = AD536BE620E62763002279BC /* Lightning.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		AD5EA1E4213D896000AB8031 /* Bip39.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD5EA1E3213D896000AB8031 /* Bip39.swift */; };
+		AD5EA1E6213D8AB500AB8031 /* Bip39Tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD5EA1E5213D8AB500AB8031 /* Bip39Tests.swift */; };
 		AD5FA003207D0D03000E9493 /* BitcoinURI.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD5FA002207D0D02000E9493 /* BitcoinURI.swift */; };
 		AD5FA005207D0E70000E9493 /* BitcoinURITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD5FA004207D0E70000E9493 /* BitcoinURITests.swift */; };
 		AD615CF5211C82E600680790 /* LoadingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD615CF4211C82E600680790 /* LoadingView.swift */; };
@@ -667,6 +669,8 @@
 		AD5EA1DD213D825800AB8031 /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		AD5EA1DF213D826A00AB8031 /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		AD5EA1E1213D827B00AB8031 /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
+		AD5EA1E3213D896000AB8031 /* Bip39.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Bip39.swift; sourceTree = "<group>"; };
+		AD5EA1E5213D8AB500AB8031 /* Bip39Tests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Bip39Tests.swift; sourceTree = "<group>"; };
 		AD5FA002207D0D02000E9493 /* BitcoinURI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BitcoinURI.swift; sourceTree = "<group>"; };
 		AD5FA004207D0E70000E9493 /* BitcoinURITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BitcoinURITests.swift; sourceTree = "<group>"; };
 		AD615CF4211C82E600680790 /* LoadingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingView.swift; sourceTree = "<group>"; };
@@ -1013,6 +1017,7 @@
 				A000F5ED2047F65100480D8E /* Info.plist */,
 				A0733CCF20471EF30005643A /* Base58.swift */,
 				A0733CCB20471EF30005643A /* Bech32.swift */,
+				AD5EA1E3213D896000AB8031 /* Bip39.swift */,
 				AD77464A207615E000EC596B /* Network.swift */,
 				ADD5B013212D36B500BEA24D /* Address */,
 				A000F60E2047FA2500480D8E /* CommonCrypto */,
@@ -1030,9 +1035,10 @@
 				A0733CD720471F0A0005643A /* Base58CheckTests.swift */,
 				A0733CD820471F0A0005643A /* Base58Tests.swift */,
 				A0733CDA20471F0A0005643A /* Bech32Tests.swift */,
-				A0733CDB20471F0A0005643A /* LegacyBitcoinAddressTests.swift */,
+				AD5EA1E5213D8AB500AB8031 /* Bip39Tests.swift */,
 				AD5FA004207D0E70000E9493 /* BitcoinURITests.swift */,
 				A0733CD620471F090005643A /* CryptoTests.swift */,
+				A0733CDB20471F0A0005643A /* LegacyBitcoinAddressTests.swift */,
 				A0FBCD92206BBD9800800515 /* SatoshiTests.swift */,
 			);
 			path = Tests;
@@ -2587,6 +2593,7 @@
 				A000F60B2047F66300480D8E /* LegacyBitcoinAddress.swift in Sources */,
 				ADD5B015212D36DB00BEA24D /* Bech32Address.swift in Sources */,
 				AD97A91220EFCF79008344EA /* FiatCurrency.swift in Sources */,
+				AD5EA1E4213D896000AB8031 /* Bip39.swift in Sources */,
 				A000F60C2047F66300480D8E /* Base58.swift in Sources */,
 				A000F6092047F66300480D8E /* Data.swift in Sources */,
 				AD5FA003207D0D03000E9493 /* BitcoinURI.swift in Sources */,
@@ -2602,6 +2609,7 @@
 				AD5FA005207D0E70000E9493 /* BitcoinURITests.swift in Sources */,
 				A000F61A2047FB8200480D8E /* Bech32Tests.swift in Sources */,
 				A000F61C2047FB8200480D8E /* CryptoTests.swift in Sources */,
+				AD5EA1E6213D8AB500AB8031 /* Bip39Tests.swift in Sources */,
 				A000F6172047FB8200480D8E /* LegacyBitcoinAddressTests.swift in Sources */,
 				A0FBCD93206BBD9800800515 /* SatoshiTests.swift in Sources */,
 			);
