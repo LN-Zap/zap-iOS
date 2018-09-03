@@ -7,6 +7,7 @@
 
 import Foundation
 
+/// Represents p2pkh, p2sh & bech32 bitcoin addresses
 public struct BitcoinAddress: Codable, Equatable {
     public enum AddressType {
         case p2pkh

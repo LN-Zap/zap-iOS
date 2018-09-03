@@ -664,6 +664,9 @@
 		AD536BEE20E62764002279BC /* LightningTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = LightningTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		AD536BF520E62764002279BC /* BTCPayQRCodeTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BTCPayQRCodeTests.swift; sourceTree = "<group>"; };
 		AD536BF720E62764002279BC /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		AD5EA1DD213D825800AB8031 /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
+		AD5EA1DF213D826A00AB8031 /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
+		AD5EA1E1213D827B00AB8031 /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		AD5FA002207D0D02000E9493 /* BitcoinURI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BitcoinURI.swift; sourceTree = "<group>"; };
 		AD5FA004207D0E70000E9493 /* BitcoinURITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BitcoinURITests.swift; sourceTree = "<group>"; };
 		AD615CF4211C82E600680790 /* LoadingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingView.swift; sourceTree = "<group>"; };
@@ -1004,6 +1007,8 @@
 		A000F5EB2047F65100480D8E /* BTCUtil */ = {
 			isa = PBXGroup;
 			children = (
+				AD5EA1DD213D825800AB8031 /* README.md */,
+				A000F5F82047F65200480D8E /* Tests */,
 				A000F5EC2047F65100480D8E /* btcutil.h */,
 				A000F5ED2047F65100480D8E /* Info.plist */,
 				A0733CCF20471EF30005643A /* Base58.swift */,
@@ -1018,7 +1023,7 @@
 			path = BTCUtil;
 			sourceTree = "<group>";
 		};
-		A000F5F82047F65200480D8E /* BTCUtilTests */ = {
+		A000F5F82047F65200480D8E /* Tests */ = {
 			isa = PBXGroup;
 			children = (
 				A000F5FB2047F65200480D8E /* Info.plist */,
@@ -1030,7 +1035,7 @@
 				A0733CD620471F090005643A /* CryptoTests.swift */,
 				A0FBCD92206BBD9800800515 /* SatoshiTests.swift */,
 			);
-			path = BTCUtilTests;
+			path = Tests;
 			sourceTree = "<group>";
 		};
 		A000F60E2047FA2500480D8E /* CommonCrypto */ = {
@@ -1044,7 +1049,6 @@
 		A01009322014BD960001EF94 /* Scenes */ = {
 			isa = PBXGroup;
 			children = (
-				AD667E4F2136B042007B9160 /* TimeLocked */,
 				AD667E4E21367E41007B9160 /* Background */,
 				A0DDC0702018C6D800AEFF94 /* ChannelList */,
 				AD680A9D20B07AC60018986B /* ConnectRemoteNode */,
@@ -1062,6 +1066,7 @@
 				AD288450212AE81B003C3D94 /* Send */,
 				A0DDC06320189CCC00AEFF94 /* Settings */,
 				ADCE01C4207B714E00CA72E8 /* Sync */,
+				AD667E4F2136B042007B9160 /* TimeLocked */,
 				A0DDC0732018C74F00AEFF94 /* TransactionList */,
 				AD7EDAE12108C4050058CCCA /* Wallet */,
 			);
@@ -1229,15 +1234,12 @@
 				A02C52F62024A98F00780D5A /* Podfile */,
 				A0A96B932017965100788808 /* README.md */,
 				A000F5EB2047F65100480D8E /* BTCUtil */,
-				A000F5F82047F65200480D8E /* BTCUtilTests */,
 				CEF2960C33901153F2C1FFF4 /* Frameworks */,
 				79BED151A3179927B0FEA963 /* Pods */,
 				A0A05A002013CF960007D1C9 /* Products */,
 				A0A05A012013CF960007D1C9 /* Zap */,
 				AD391C1920D16ED4007EE22A /* Library */,
-				ADFE537C20D693F500B3BA2A /* LibraryTests */,
 				AD536BE720E62763002279BC /* Lightning */,
-				AD536BF420E62764002279BC /* LightningTests */,
 				AD391D4220D17FA9007EE22A /* ZapMessages */,
 			);
 			sourceTree = "<group>";
@@ -1489,6 +1491,8 @@
 		AD391C1920D16ED4007EE22A /* Library */ = {
 			isa = PBXGroup;
 			children = (
+				AD5EA1DF213D826A00AB8031 /* README.md */,
+				ADFE537C20D693F500B3BA2A /* Tests */,
 				AD391C1A20D16ED4007EE22A /* Library.h */,
 				AD391C1B20D16ED4007EE22A /* Info.plist */,
 				AD10D05921132EFB00A0F0D3 /* Localizable.strings */,
@@ -1543,6 +1547,8 @@
 		AD536BE720E62763002279BC /* Lightning */ = {
 			isa = PBXGroup;
 			children = (
+				AD5EA1E1213D827B00AB8031 /* README.md */,
+				AD536BF420E62764002279BC /* Tests */,
 				ADFEFA8720E676A500FE1557 /* Lndmobile.framework */,
 				AD536BE820E62763002279BC /* Lightning.h */,
 				AD536BE920E62763002279BC /* Info.plist */,
@@ -1558,7 +1564,7 @@
 			path = Lightning;
 			sourceTree = "<group>";
 		};
-		AD536BF420E62764002279BC /* LightningTests */ = {
+		AD536BF420E62764002279BC /* Tests */ = {
 			isa = PBXGroup;
 			children = (
 				AD536BF720E62764002279BC /* Info.plist */,
@@ -1569,7 +1575,7 @@
 				A0733CD920471F0A0005643A /* LightningInvoiceURITests.swift */,
 				AD28844821282139003C3D94 /* LightningNodeURITests.swift */,
 			);
-			path = LightningTests;
+			path = Tests;
 			sourceTree = "<group>";
 		};
 		AD63CC0820F2586F002876D8 /* Transaction */ = {
@@ -1970,7 +1976,7 @@
 			path = "Recover Wallet";
 			sourceTree = "<group>";
 		};
-		ADFE537C20D693F500B3BA2A /* LibraryTests */ = {
+		ADFE537C20D693F500B3BA2A /* Tests */ = {
 			isa = PBXGroup;
 			children = (
 				A0BD44D9206FB47300BF27A3 /* CurrencyTests.swift */,
@@ -1978,7 +1984,7 @@
 				AD97A90520EE7FD9008344EA /* BitcoinTests.swift */,
 				ADFE537F20D693F500B3BA2A /* Info.plist */,
 			);
-			path = LibraryTests;
+			path = Tests;
 			sourceTree = "<group>";
 		};
 		ADFEFA7520E6298400FE1557 /* Extensions */ = {
@@ -3099,7 +3105,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEBUG_INFORMATION_FORMAT = dwarf;
 				DEVELOPMENT_TEAM = CS73H95RB8;
-				INFOPLIST_FILE = BTCUtilTests/Info.plist;
+				INFOPLIST_FILE = BTCUtil/Tests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.jackmallers.btcutilTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -3116,7 +3122,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEBUG_INFORMATION_FORMAT = dwarf;
 				DEVELOPMENT_TEAM = CS73H95RB8;
-				INFOPLIST_FILE = BTCUtilTests/Info.plist;
+				INFOPLIST_FILE = BTCUtil/Tests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.jackmallers.btcutilTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -3538,7 +3544,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEBUG_INFORMATION_FORMAT = dwarf;
 				DEVELOPMENT_TEAM = CS73H95RB8;
-				INFOPLIST_FILE = LightningTests/Info.plist;
+				INFOPLIST_FILE = Lightning/Tests/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 11.4;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.jackmallers.ZapLightningTests;
@@ -3557,7 +3563,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEBUG_INFORMATION_FORMAT = dwarf;
 				DEVELOPMENT_TEAM = CS73H95RB8;
-				INFOPLIST_FILE = LightningTests/Info.plist;
+				INFOPLIST_FILE = Lightning/Tests/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 11.4;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.jackmallers.ZapLightningTests;
@@ -3738,7 +3744,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEBUG_INFORMATION_FORMAT = dwarf;
 				DEVELOPMENT_TEAM = CS73H95RB8;
-				INFOPLIST_FILE = BTCUtilTests/Info.plist;
+				INFOPLIST_FILE = BTCUtil/Tests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.jackmallers.btcutilTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -3791,7 +3797,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEBUG_INFORMATION_FORMAT = dwarf;
 				DEVELOPMENT_TEAM = CS73H95RB8;
-				INFOPLIST_FILE = LightningTests/Info.plist;
+				INFOPLIST_FILE = Lightning/Tests/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 11.4;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.jackmallers.ZapLightningTests;
@@ -3842,7 +3848,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEBUG_INFORMATION_FORMAT = dwarf;
 				DEVELOPMENT_TEAM = CS73H95RB8;
-				INFOPLIST_FILE = LibraryTests/Info.plist;
+				INFOPLIST_FILE = Library/Tests/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 11.4;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.jackmallers.ZapSharedTests;
@@ -3860,7 +3866,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEBUG_INFORMATION_FORMAT = dwarf;
 				DEVELOPMENT_TEAM = CS73H95RB8;
-				INFOPLIST_FILE = LibraryTests/Info.plist;
+				INFOPLIST_FILE = Library/Tests/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 11.4;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.jackmallers.ZapSharedTests;
@@ -3878,7 +3884,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEBUG_INFORMATION_FORMAT = dwarf;
 				DEVELOPMENT_TEAM = CS73H95RB8;
-				INFOPLIST_FILE = LibraryTests/Info.plist;
+				INFOPLIST_FILE = Library/Tests/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 11.4;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.jackmallers.ZapSharedTests;
