@@ -147,7 +147,7 @@ struct Bolt11 {
     }
     
     private func parseDescription(data: Data) -> String? {
-        guard let base256Data = SegwitAddress.convertBits(data: data, fromBits: 5, toBits: 8, pad: false) else { return nil }
+        guard let base256Data = data.convertBits(fromBits: 5, toBits: 8, pad: false) else { return nil }
         return String(data: base256Data, encoding: .utf8)
     }
     
@@ -157,7 +157,7 @@ struct Bolt11 {
 
     func parsePaymentHash(data: Data) -> Data? {
         guard data.count == hashBase32Len else { return nil }
-        return SegwitAddress.convertBits(data: data, fromBits: 5, toBits: 8, pad: false)
+        return data.convertBits(fromBits: 5, toBits: 8, pad: false)
     }
     
     private func decodeAmount(for humanReadablePart: String, network: Network) -> Satoshi? {

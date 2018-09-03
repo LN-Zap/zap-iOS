@@ -24,4 +24,37 @@ public extension Data {
     public func hexString() -> String {
         return reduce("") { $0 + String(format: "%02x", UInt8($1)) }
     }
+    
+    // ConvertBits converts a byte slice where each byte is encoding fromBits bits,
+    // to a byte slice where each byte is encoding toBits bits.
+    public func convertBits(fromBits: Int, toBits: Int, pad: Bool) -> Data? {
+        var acc: Int = 0
+        var bits: Int = 0
+        var result = Data()
+        let maxv: Int = (1 << toBits) - 1
+        
+        for value in self {
+            if value < 0 || (value >> fromBits) != 0 {
+                return nil
+            }
+            
+            acc = (acc << fromBits) | Int(value)
+            bits += fromBits
+            
+            while bits >= toBits {
+                bits -= toBits
+                result.append(UInt8((acc >> bits) & maxv))
+            }
+        }
+        
+        if pad {
+            if bits > 0 {
+                result.append(UInt8((acc << (toBits - bits)) & maxv))
+            }
+        } else if bits >= fromBits || ((acc << (toBits - bits)) & maxv) != 0 {
+            return nil
+        }
+        
+        return result
+    }
 }
