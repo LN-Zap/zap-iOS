@@ -88,11 +88,7 @@ public final class RootCoordinator: NSObject, SetupCoordinatorDelegate, PinCoord
     private func presentMain() {
         guard let lightningService = rootViewModel.lightningService else { return }
         
-        let tabBarController = UITabBarController()
-        tabBarController.tabBar.barTintColor = UIColor.Zap.seaBlue
-        tabBarController.tabBar.isTranslucent = false
-        tabBarController.tabBar.shadowImage = UIImage()
-        tabBarController.tabBar.backgroundImage = UIImage()
+        let tabBarController = RootTabBarController()
         
         let mainCoordinator = MainCoordinator(rootViewController: rootViewController, lightningService: lightningService, settingsDelegate: self, authenticationViewModel: authenticationCoordinator.authenticationViewModel)
 

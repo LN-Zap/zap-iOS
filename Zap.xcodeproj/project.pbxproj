@@ -206,6 +206,7 @@
 		AD391D5420D2796F007EE22A /* BTCUtil.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A000F5EA2047F65100480D8E /* BTCUtil.framework */; };
 		AD391D5520D27DBD007EE22A /* Library.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AD391C1820D16ED4007EE22A /* Library.framework */; };
 		AD391D5720D28528007EE22A /* MessagesRequestViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD391D5620D28528007EE22A /* MessagesRequestViewController.swift */; };
+		AD3DDC03213EE4000008379C /* RootTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD3DDC02213EE4000008379C /* RootTabBarController.swift */; };
 		AD536BEF20E62764002279BC /* Lightning.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AD536BE620E62763002279BC /* Lightning.framework */; };
 		AD536BF620E62764002279BC /* BTCPayQRCodeTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD536BF520E62764002279BC /* BTCPayQRCodeTests.swift */; };
 		AD536BF820E62764002279BC /* Lightning.h in Headers */ = {isa = PBXBuildFile; fileRef = AD536BE820E62763002279BC /* Lightning.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -653,6 +654,7 @@
 		AD391D5920D290EF007EE22A /* ZapMessages.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = ZapMessages.entitlements; sourceTree = "<group>"; };
 		AD3CF97520B4028400D78A54 /* SelectWalletCreationMethodTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectWalletCreationMethodTableViewCell.swift; sourceTree = "<group>"; };
 		AD3CF97620B4028400D78A54 /* SelectWalletCreationMethodTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SelectWalletCreationMethodTableViewCell.xib; sourceTree = "<group>"; };
+		AD3DDC02213EE4000008379C /* RootTabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RootTabBarController.swift; sourceTree = "<group>"; };
 		AD46845920C6EC7A005DEF35 /* DetailSeparatorTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailSeparatorTableViewCell.swift; sourceTree = "<group>"; };
 		AD46845A20C6EC7A005DEF35 /* DetailSeparatorTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DetailSeparatorTableViewCell.xib; sourceTree = "<group>"; };
 		AD46846620C7CEFD005DEF35 /* OnChainTransactionDetailViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnChainTransactionDetailViewModel.swift; sourceTree = "<group>"; };
@@ -1369,6 +1371,7 @@
 			isa = PBXGroup;
 			children = (
 				AD391C4520D16F53007EE22A /* Root.storyboard */,
+				AD3DDC02213EE4000008379C /* RootTabBarController.swift */,
 				A0A05A4C20147B740007D1C9 /* RootViewController.swift */,
 			);
 			path = Root;
@@ -2638,6 +2641,7 @@
 				AD391C2E20D16EFA007EE22A /* UIApplication.swift in Sources */,
 				AD391CD820D16FE1007EE22A /* OnChainConfirmedTransactionViewModel.swift in Sources */,
 				AD292F9120E69F0E00211AE7 /* RootViewModel.swift in Sources */,
+				AD3DDC03213EE4000008379C /* RootTabBarController.swift in Sources */,
 				AD0D5DED210DCC6700D11D0B /* ChannelCollectionView.swift in Sources */,
 				ADDD13BD2119E3240035D2F9 /* ChannelDetailConfiguration.swift in Sources */,
 				ADEEB5362134669B00D2F992 /* ModalPinViewController.swift in Sources */,
