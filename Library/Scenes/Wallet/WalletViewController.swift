@@ -35,7 +35,7 @@ final class WalletViewController: UIViewController {
             Style.Label.custom().apply(to: networkLabel)
             networkLabel.layer.cornerRadius = 10
             networkLabel.clipsToBounds = true
-            networkLabel.backgroundColor = UIColor.Zap.lightGreen
+            networkLabel.backgroundColor = UIColor.Zap.superGreen
             networkLabel.text = Network.testnet.localized
         }
     }
@@ -46,23 +46,17 @@ final class WalletViewController: UIViewController {
         }
     }
     
-    @IBOutlet private weak var backgroundGradientView: GradientView! {
-        didSet {
-            backgroundGradientView.direction = .vertical
-            backgroundGradientView.gradient = [UIColor.Zap.seaBlueGradient, UIColor.Zap.seaBlue]
-        }
-    }
     @IBOutlet private weak var primaryBalanceLabel: UILabel!
     @IBOutlet private weak var sendButtonBackground: UIView! {
         didSet {
-            sendButtonBackground.backgroundColor = UIColor.Zap.deepSeaBlue
+            sendButtonBackground.backgroundColor = UIColor.Zap.seaBlue
             sendButtonBackground.layer.cornerRadius = 40
             sendButtonBackground.layer.maskedCorners = [.layerMinXMinYCorner, .layerMinXMaxYCorner]
         }
     }
     @IBOutlet private weak var receiveButtonBackground: UIView! {
         didSet {
-            receiveButtonBackground.backgroundColor = UIColor.Zap.deepSeaBlue
+            receiveButtonBackground.backgroundColor = UIColor.Zap.seaBlue
             receiveButtonBackground.layer.cornerRadius = 40
             receiveButtonBackground.layer.maskedCorners = [.layerMaxXMaxYCorner, .layerMaxXMinYCorner]
         }
@@ -80,6 +74,7 @@ final class WalletViewController: UIViewController {
         super.viewDidLoad()
         
         title = "scene.wallet.title".localized
+        view.backgroundColor = UIColor.Zap.background
         
         Style.Button.custom().apply(to: sendButton, requestButton)
 

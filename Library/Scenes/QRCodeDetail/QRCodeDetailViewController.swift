@@ -28,8 +28,6 @@ final class QRCodeDetailViewController: UIViewController {
         super.viewDidLoad()
 
         guard let viewModel = viewModel else { fatalError("No ViewModel set.") }
-
-        view.addBackgroundGradient()
         
         title = viewModel.title
         

@@ -43,7 +43,8 @@ final class TransactionListViewController: UIViewController {
         title = "scene.transactions.title".localized
         
         guard let tableView = tableView else { return }
-        view.backgroundColor = .clear
+        view.backgroundColor = UIColor.Zap.background
+
         let searchController = UISearchController(searchResultsController: nil)
         searchController.dimsBackgroundDuringPresentation = false
         searchController.searchResultsUpdater = self
@@ -57,8 +58,6 @@ final class TransactionListViewController: UIViewController {
         tableView.registerCell(HeaderTableViewCell.self)
         tableView.refreshControl = UIRefreshControl()
         tableView.refreshControl?.addTarget(self, action: #selector(refresh), for: .valueChanged)
-        
-        navigationController?.view.addBackgroundGradient()
         
         transactionListViewModel?.dataSource
             .bind(to: tableView) { dataSource, indexPath, tableView in

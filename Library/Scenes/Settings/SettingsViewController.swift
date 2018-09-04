@@ -21,7 +21,7 @@ final class SettingsViewController: GroupedTableViewController {
         
         navigationController.tabBarItem.title = "scene.settings.title".localized
         navigationController.tabBarItem.image = UIImage(named: "tabbar_wallet", in: Bundle.library, compatibleWith: nil)
-        navigationController.view.backgroundColor = UIColor.Zap.deepSeaBlue
+        navigationController.view.backgroundColor = UIColor.Zap.background
         
         return navigationController
     }

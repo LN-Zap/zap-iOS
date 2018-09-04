@@ -30,14 +30,7 @@ extension UIStoryboard {
 }
 
 final class ChannelListViewController: UIViewController {
-    @IBOutlet private weak var backgroundGradientView: GradientView! {
-        didSet {
-            backgroundGradientView.direction = .vertical
-            backgroundGradientView.gradient = [UIColor.Zap.seaBlueGradient, UIColor.Zap.seaBlue]
-        }
-    }
     @IBOutlet private weak var collectionView: ChannelCollectionView!
-    @IBOutlet private var headerView: UICollectionReusableView!
     
     fileprivate var channelListViewModel: ChannelListViewModel?
     
@@ -49,11 +42,10 @@ final class ChannelListViewController: UIViewController {
         super.viewDidLoad()
         
         title = "scene.channels.title".localized
-        
+        view.backgroundColor = UIColor.Zap.background
+
         collectionView.registerCell(ChannelCell.self)
         collectionView.register(UINib(nibName: HeaderCollectionReusableView.kind, bundle: Bundle.library), forSupplementaryViewOfKind: HeaderCollectionReusableView.kind, withReuseIdentifier: HeaderCollectionReusableView.kind)
-
-        view.addBackgroundGradient()
         
         channelListViewModel?.dataSource.observeNext { [weak self] _ in
             self?.collectionView.reloadData()

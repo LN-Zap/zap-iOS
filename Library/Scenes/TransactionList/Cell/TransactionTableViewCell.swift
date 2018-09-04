@@ -44,7 +44,7 @@ final class TransactionTableViewCell: BondTableViewCell {
         super.awakeFromNib()
         
         iconImageView.tintColor = .white
-        
+        positiveAmountBackgroundView.backgroundColor = UIColor.Zap.superGreen
         Style.Label.body.apply(to: primaryAmountLabel, titleLabel)
         Style.Label.subHeadline.apply(to: secondaryAmountLabel, timeLabel)
     }

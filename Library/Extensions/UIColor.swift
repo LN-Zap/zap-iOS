@@ -13,7 +13,6 @@ public extension UIColor {
         public static let white = color("white")
         public static let gray = color("gray")
         public static let invisibleGray = color("invisibleGray")
-        
         public static let deepSeaBlue = color("deepSeaBlue")
         public static let lightningOrange = color("lightningOrange")
         public static let lightningOrangeGradient = color("lightningOrangeGradient")
@@ -21,8 +20,10 @@ public extension UIColor {
         public static let seaBlueGradient = color("seaBlueGradient")
         public static let superRed = color("superRed")
         public static let superGreen = color("superGreen")
-                
-        public static let lightGreen = color("lightGreen")
+        
+        // concrete uses of previously defined colors, to make changing easier
+        // throughout the app.
+        public static let background = deepSeaBlue
         
         static let validNodeColors: [UIColor] =
             [

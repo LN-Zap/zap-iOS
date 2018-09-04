@@ -89,7 +89,7 @@ public final class RootCoordinator: NSObject, SetupCoordinatorDelegate, PinCoord
         guard let lightningService = rootViewModel.lightningService else { return }
         
         let tabBarController = UITabBarController()
-        tabBarController.tabBar.barTintColor = UIColor.Zap.deepSeaBlue
+        tabBarController.tabBar.barTintColor = UIColor.Zap.seaBlue
         tabBarController.tabBar.isTranslucent = false
         tabBarController.tabBar.shadowImage = UIImage()
         tabBarController.tabBar.backgroundImage = UIImage()

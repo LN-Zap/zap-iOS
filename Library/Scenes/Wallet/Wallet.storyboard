@@ -19,10 +19,6 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="G9l-Ej-4IG" customClass="GradientView" customModule="Library" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                            </view>
                             <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Tgv-5l-myg">
                                 <rect key="frame" x="15" y="25" width="345" height="20.5"/>
                                 <subviews>
@@ -41,22 +37,22 @@
                                 </subviews>
                             </stackView>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="i6j-qG-UZ5" userLabel="save area container">
-                                <rect key="frame" x="0.0" y="45" width="375" height="477"/>
+                                <rect key="frame" x="0.0" y="45" width="375" height="502"/>
                                 <subviews>
                                     <stackView opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="1000" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="dnL-8p-g9H">
-                                        <rect key="frame" x="25" y="87.5" width="326.5" height="159"/>
+                                        <rect key="frame" x="25" y="96.5" width="326.5" height="159"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="000,000,000.00" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="30" translatesAutoresizingMaskIntoConstraints="NO" id="aTc-aL-iRn">
-                                                <rect key="frame" x="0.0" y="0.0" width="326.5" height="119.5"/>
+                                                <rect key="frame" x="0.0" y="0.5" width="326.5" height="119.5"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="100"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <view contentMode="scaleToFill" verticalHuggingPriority="1000" translatesAutoresizingMaskIntoConstraints="NO" id="g9r-DZ-Q93">
-                                                <rect key="frame" x="0.0" y="119.5" width="326.5" height="19"/>
+                                                <rect key="frame" x="0.0" y="120" width="326.5" height="19"/>
                                                 <subviews>
                                                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="750" image="icon_swap" translatesAutoresizingMaskIntoConstraints="NO" id="seN-vh-fFQ">
-                                                        <rect key="frame" x="157" y="0.0" width="13" height="13"/>
+                                                        <rect key="frame" x="157" y="0.5" width="13" height="13"/>
                                                         <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                     </imageView>
                                                 </subviews>
@@ -68,7 +64,7 @@
                                                 </constraints>
                                             </view>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="$0" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="x9j-76-Ee6">
-                                                <rect key="frame" x="0.0" y="138.5" width="326.5" height="20.5"/>
+                                                <rect key="frame" x="0.0" y="139" width="326.5" height="20.5"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
@@ -76,7 +72,7 @@
                                         </subviews>
                                     </stackView>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Hxa-LE-scT">
-                                        <rect key="frame" x="25" y="87.5" width="326.5" height="159"/>
+                                        <rect key="frame" x="25" y="96.5" width="326.5" height="159"/>
                                         <connections>
                                             <action selector="swapCurrencyButtonTapped:" destination="KOM-Jt-Qkh" eventType="touchUpInside" id="g8M-HC-Edz"/>
                                         </connections>
@@ -94,13 +90,13 @@
                                 </constraints>
                             </view>
                             <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="Eqp-q1-Sn8">
-                                <rect key="frame" x="25" y="547" width="325" height="80"/>
+                                <rect key="frame" x="15" y="572" width="345" height="80"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="EBp-3s-E1M">
-                                        <rect key="frame" x="0.0" y="0.0" width="160" height="80"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="170" height="80"/>
                                         <subviews>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="GgB-G7-lfE">
-                                                <rect key="frame" x="0.0" y="0.0" width="160" height="80"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="170" height="80"/>
                                                 <state key="normal" title="_Send"/>
                                                 <connections>
                                                     <action selector="presentSend:" destination="KOM-Jt-Qkh" eventType="touchUpInside" id="MYC-MT-LYe"/>
@@ -116,10 +112,10 @@
                                         </constraints>
                                     </view>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ybB-Mk-ugZ">
-                                        <rect key="frame" x="165" y="0.0" width="160" height="80"/>
+                                        <rect key="frame" x="175" y="0.0" width="170" height="80"/>
                                         <subviews>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="C3P-tR-t4P">
-                                                <rect key="frame" x="-0.5" y="0.0" width="160.5" height="80"/>
+                                                <rect key="frame" x="-0.5" y="0.0" width="170.5" height="80"/>
                                                 <state key="normal" title="_Request"/>
                                                 <connections>
                                                     <action selector="presentRequest:" destination="KOM-Jt-Qkh" eventType="touchUpInside" id="NWt-F3-m4O"/>
@@ -142,25 +138,20 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
-                            <constraint firstItem="G9l-Ej-4IG" firstAttribute="trailing" secondItem="Nqe-wQ-xfx" secondAttribute="trailing" id="0Wg-00-1rW"/>
                             <constraint firstItem="Tgv-5l-myg" firstAttribute="top" secondItem="Nqe-wQ-xfx" secondAttribute="top" constant="5" id="22z-ul-xmq"/>
                             <constraint firstItem="Tgv-5l-myg" firstAttribute="leading" secondItem="Nqe-wQ-xfx" secondAttribute="leading" constant="15" id="6XX-6d-XbW"/>
                             <constraint firstItem="Eqp-q1-Sn8" firstAttribute="centerX" secondItem="Nqe-wQ-xfx" secondAttribute="centerX" id="8GE-FR-Tk8"/>
-                            <constraint firstItem="G9l-Ej-4IG" firstAttribute="bottom" secondItem="YSf-Dd-ahO" secondAttribute="bottom" id="A4T-1Z-o3g"/>
-                            <constraint firstItem="G9l-Ej-4IG" firstAttribute="top" secondItem="YSf-Dd-ahO" secondAttribute="top" id="HWn-OQ-AoI"/>
                             <constraint firstItem="i6j-qG-UZ5" firstAttribute="top" secondItem="Nqe-wQ-xfx" secondAttribute="top" constant="25" id="Lih-5Z-lms"/>
                             <constraint firstItem="i6j-qG-UZ5" firstAttribute="leading" secondItem="Nqe-wQ-xfx" secondAttribute="leading" id="OUa-o4-xcA"/>
                             <constraint firstItem="Nqe-wQ-xfx" firstAttribute="trailing" secondItem="Tgv-5l-myg" secondAttribute="trailing" constant="15" id="VJ1-8Z-Q1F"/>
                             <constraint firstItem="Eqp-q1-Sn8" firstAttribute="top" secondItem="i6j-qG-UZ5" secondAttribute="bottom" constant="25" id="bFg-Du-CuB"/>
-                            <constraint firstItem="Eqp-q1-Sn8" firstAttribute="leading" secondItem="Nqe-wQ-xfx" secondAttribute="leading" constant="25" id="cSm-el-TFa"/>
+                            <constraint firstItem="Eqp-q1-Sn8" firstAttribute="leading" secondItem="Nqe-wQ-xfx" secondAttribute="leading" constant="15" id="cSm-el-TFa"/>
                             <constraint firstItem="i6j-qG-UZ5" firstAttribute="trailing" secondItem="Nqe-wQ-xfx" secondAttribute="trailing" id="ifE-qu-dZ7"/>
-                            <constraint firstItem="G9l-Ej-4IG" firstAttribute="leading" secondItem="Nqe-wQ-xfx" secondAttribute="leading" id="pII-Bu-Q4x"/>
-                            <constraint firstItem="Nqe-wQ-xfx" firstAttribute="bottom" secondItem="Eqp-q1-Sn8" secondAttribute="bottom" constant="40" id="zbM-O8-jM7"/>
+                            <constraint firstItem="Nqe-wQ-xfx" firstAttribute="bottom" secondItem="Eqp-q1-Sn8" secondAttribute="bottom" constant="15" id="zbM-O8-jM7"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="Nqe-wQ-xfx"/>
                     </view>
                     <connections>
-                        <outlet property="backgroundGradientView" destination="G9l-Ej-4IG" id="1HF-lZ-RDT"/>
                         <outlet property="exchangeRateLabel" destination="a67-GE-D3Y" id="hk5-ci-8DM"/>
                         <outlet property="networkLabel" destination="oHO-DG-N6I" id="Jfz-Bo-77h"/>
                         <outlet property="primaryBalanceLabel" destination="aTc-aL-iRn" id="suc-9B-KGg"/>
