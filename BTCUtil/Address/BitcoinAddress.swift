@@ -19,6 +19,27 @@ public struct BitcoinAddress: Codable, Equatable {
     public let network: Network
     public let type: AddressType
     
+    public init?(witnessPubKeyHash: Data, network: Network) {
+        guard witnessPubKeyHash.count == 20 else { return nil }
+        self.network = network
+        return nil
+    }
+    
+    public init?(witnessScriptHash: Data, network: Network) {
+        self.network = network
+        return nil
+    }
+    
+    public init?(pubKeyHash: Data, network: Network) {
+        self.network = network
+        return nil
+    }
+    
+    public init?(scriptHashFromHash: Data, network: Network) {
+        self.network = network
+        return nil
+    }
+    
     public init?(string: String) {
         if let legacyAddress = LegacyBitcoinAddress(string: string) {
             switch legacyAddress.type {

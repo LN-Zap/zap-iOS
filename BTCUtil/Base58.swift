@@ -29,9 +29,7 @@ enum Base58 {
 
         return prefix + answer.serialize()
     }
-}
 
-enum Base58Check {
     private static func checksum(_ input: Data) -> Data {
         let hashed = input.sha256().sha256()
         return hashed[hashed.startIndex..<hashed.startIndex + 4]
@@ -46,7 +44,7 @@ enum Base58Check {
         let checksum = decoded[decoded.endIndex - 4..<decoded.endIndex]
         let testData = decoded[decoded.startIndex..<decoded.endIndex - 4]
         
-        if !checksum.elementsEqual(Base58Check.checksum(Data(testData))) {
+        if !checksum.elementsEqual(Base58.checksum(Data(testData))) {
             return nil
         }
 
