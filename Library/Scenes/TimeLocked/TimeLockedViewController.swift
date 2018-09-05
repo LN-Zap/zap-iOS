@@ -27,7 +27,7 @@ class TimeLockedViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        view.backgroundColor = UIColor.Zap.seaBlue
+        view.backgroundColor = UIColor.Zap.background
 
         Style.Label.headline.apply(to: headlineLabel)
         Style.Label.body.apply(to: descriptionLabel)

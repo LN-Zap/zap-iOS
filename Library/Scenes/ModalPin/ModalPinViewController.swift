@@ -39,10 +39,10 @@ final class ModalPinViewController: ModalViewController, ContentHeightProviding 
         
         keyPadContainer.layer.cornerRadius = Appearance.Constants.modalCornerRadius
         keyPadContainer.layer.maskedCorners = [.layerMaxXMinYCorner, .layerMinXMinYCorner]
-        keyPadContainer.backgroundColor = UIColor.Zap.seaBlue
+        keyPadContainer.backgroundColor = UIColor.Zap.background
         
         pinViewContainer.layer.cornerRadius = Appearance.Constants.modalCornerRadius
-        pinViewContainer.backgroundColor = UIColor.Zap.seaBlue
+        pinViewContainer.backgroundColor = UIColor.Zap.background
         
         keyPadPinView.state = .pin
         keyPadPinView.delegate = self

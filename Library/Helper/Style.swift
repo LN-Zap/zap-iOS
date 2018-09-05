@@ -93,7 +93,7 @@ public enum Style {
         
         static let background = UIViewStyle<UIButton> {
             $0.titleLabel?.font = UIFontMetrics(forTextStyle: .body).scaledFont(for: UIFont.Zap.regular.withSize(17))
-            $0.backgroundColor = UIColor.Zap.deepSeaBlue
+            $0.backgroundColor = UIColor.Zap.seaBlue
             $0.layer.cornerRadius = 14
         }
     }

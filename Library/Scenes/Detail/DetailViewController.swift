@@ -40,7 +40,7 @@ final class DetailViewController: UIViewController, KeyboardAdjustable {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        tableView.backgroundColor = UIColor.Zap.seaBlue
+        tableView.backgroundColor = UIColor.Zap.background
         tableView.separatorColor = UIColor.Zap.gray
         
         title = detailViewModel?.detailViewControllerTitle

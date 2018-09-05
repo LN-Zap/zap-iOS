@@ -80,7 +80,7 @@ final class RequestViewController: ModalDetailViewController {
         setupRequestMethodSelection()
         
         let amountInputView = AmountInputView()
-        amountInputView.backgroundColor = UIColor.Zap.seaBlue
+        amountInputView.backgroundColor = UIColor.Zap.background
         amountInputView.textColor = UIColor.Zap.white
         amountInputView.delegate = self
         amountInputView.addTarget(self, action: #selector(amountChanged(sender:)), for: .valueChanged)
@@ -92,7 +92,7 @@ final class RequestViewController: ModalDetailViewController {
         memoSeparator?.isHidden = true
         let memoTextField = UITextField()
         Style.textField(color: UIColor.Zap.white).apply(to: memoTextField)
-        memoTextField.backgroundColor = UIColor.Zap.seaBlue
+        memoTextField.backgroundColor = UIColor.Zap.background
         memoTextField.attributedPlaceholder = NSAttributedString(
             string: "generic.memo.placeholder".localized,
             attributes: [.foregroundColor: UIColor.Zap.gray]
@@ -123,11 +123,11 @@ final class RequestViewController: ModalDetailViewController {
         horizontalStackView.axis = .horizontal
         horizontalStackView.distribution = .fill
         let leftSeparator = LineView()
-        leftSeparator.backgroundColor = UIColor.Zap.seaBlue
+        leftSeparator.backgroundColor = UIColor.Zap.background
         horizontalStackView.addArrangedSubview(leftSeparator)
         horizontalStackView.addArrangedElement(.label(text: "scene.request.or_separator_label".localized, style: Style.Label.body))
         let rightSeparator = LineView()
-        rightSeparator.backgroundColor = UIColor.Zap.seaBlue
+        rightSeparator.backgroundColor = UIColor.Zap.background
         horizontalStackView.addArrangedSubview(rightSeparator)
         contentStackView.addArrangedElement(.customView(horizontalStackView, height: 22))
         leftSeparator.widthAnchor.constraint(equalTo: rightSeparator.widthAnchor, multiplier: 1, constant: 0).isActive = true

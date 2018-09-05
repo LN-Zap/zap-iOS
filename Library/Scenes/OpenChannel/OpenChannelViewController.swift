@@ -33,7 +33,7 @@ final class OpenChannelViewController: ModalDetailViewController {
         contentStackView.addArrangedElement(.separator)
         
         let amountInputView = AmountInputView()
-        amountInputView.backgroundColor = UIColor.Zap.seaBlue
+        amountInputView.backgroundColor = UIColor.Zap.background
         amountInputView.textColor = UIColor.Zap.white
         amountInputView.addTarget(self, action: #selector(updateAmount(_:)), for: .valueChanged)
         amountInputView.satoshis = viewModel.amount

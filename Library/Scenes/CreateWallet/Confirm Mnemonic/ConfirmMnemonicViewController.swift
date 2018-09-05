@@ -31,7 +31,7 @@ final class ConfirmMnemonicViewController: UIViewController {
         
         title = "scene.confirm_mnemonic.title".localized
 
-        view.backgroundColor = UIColor.Zap.seaBlue
+        view.backgroundColor = UIColor.Zap.background
     
         collectionView.dataSource = self
         collectionView.isScrollEnabled = false

@@ -32,7 +32,7 @@ class KeyPadView: UIView {
         addSubview(contentView)
         contentView.frame = self.bounds
         contentView.autoresizingMask = [.flexibleHeight, .flexibleWidth]
-        backgroundColor = UIColor.Zap.seaBlue
+        backgroundColor = UIColor.Zap.background
         
         updateButtonFont()
     }

@@ -29,7 +29,7 @@ final class SendViewController: ModalDetailViewController {
         super.viewDidLoad()
         
         let amountInputView = AmountInputView()
-        amountInputView.backgroundColor = UIColor.Zap.seaBlue
+        amountInputView.backgroundColor = UIColor.Zap.background
         amountInputView.textColor = UIColor.Zap.white
         amountInputView.delegate = self
         amountInputView.addTarget(self, action: #selector(amountChanged(sender:)), for: .valueChanged)
