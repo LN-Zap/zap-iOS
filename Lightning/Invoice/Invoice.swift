@@ -10,7 +10,7 @@ import Foundation
 
 public enum InvoiceError: Error {
     case unknownFormat
-    case wrongNetworkError(linkNetwork: Network, nodeNetwork: Network)
+    case wrongNetworkError(linkNetwork: Network, expectedNetwork: Network)
 }
 
 public final class Invoice {
@@ -64,10 +64,10 @@ public final class Invoice {
         
         if let bitcoinURI = invoice.bitcoinURI,
             bitcoinURI.network != currentNetwork {
-            completion(.failure(InvoiceError.wrongNetworkError(linkNetwork: bitcoinURI.network, nodeNetwork: currentNetwork)))
+            completion(.failure(InvoiceError.wrongNetworkError(linkNetwork: bitcoinURI.network, expectedNetwork: currentNetwork)))
         } else if let lightningPaymentRequest = invoice.lightningPaymentRequest,
             lightningPaymentRequest.network != currentNetwork {
-            completion(.failure(InvoiceError.wrongNetworkError(linkNetwork: lightningPaymentRequest.network, nodeNetwork: currentNetwork)))
+            completion(.failure(InvoiceError.wrongNetworkError(linkNetwork: lightningPaymentRequest.network, expectedNetwork: currentNetwork)))
         } else {
             completion(.success(invoice))
         }

@@ -14,8 +14,8 @@ extension InvoiceError: LocalizedError {
         switch self {
         case .unknownFormat:
             return "error.wrong_uri_format".localized
-        case let .wrongNetworkError(linkNetwork, nodeNetwork):
-            return String(format: "error.wrong_uri_network".localized, linkNetwork.localized, nodeNetwork.localized)
+        case let .wrongNetworkError(linkNetwork, expectedNetwork):
+            return String(format: "error.wrong_uri_network".localized, linkNetwork.localized, expectedNetwork.localized)
         }
     }
 }

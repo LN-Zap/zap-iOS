@@ -72,9 +72,9 @@ class InvoiceTests: XCTestCase {
                 XCTFail("Should Fail")
             case .failure(let error):
                 if let error = error as? InvoiceError,
-                    case let .wrongNetworkError(linkNetwork, nodeNetwork) = error,
+                    case let .wrongNetworkError(linkNetwork, expectedNetwork) = error,
                     linkNetwork == .testnet,
-                    nodeNetwork == .mainnet {
+                    expectedNetwork == .mainnet {
                     // pass
                 } else {
                     XCTFail("Wrong Error Type")
@@ -123,9 +123,9 @@ class InvoiceTests: XCTestCase {
                 XCTFail("Should Fail")
             case .failure(let error):
                 if let error = error as? InvoiceError,
-                    case let .wrongNetworkError(linkNetwork, nodeNetwork) = error,
+                    case let .wrongNetworkError(linkNetwork, expectedNetwork) = error,
                     linkNetwork == .testnet,
-                    nodeNetwork == .mainnet {
+                    expectedNetwork == .mainnet {
                     // pass
                 } else {
                     XCTFail("Wrong Error Type")
