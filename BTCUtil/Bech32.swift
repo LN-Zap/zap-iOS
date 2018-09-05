@@ -104,7 +104,6 @@ public enum Bech32 {
     
     private static func toChars(data: Data) -> String {
         return data.reduce("") {
-            print($1)
             let index = Bech32.alphabet.index(Bech32.alphabet.startIndex, offsetBy: Int($1))
             return $0 + String(Bech32.alphabet[index])
         }

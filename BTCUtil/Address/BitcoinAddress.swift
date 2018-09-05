@@ -7,6 +7,26 @@
 
 import Foundation
 
+private extension Network {
+    var pubKeyHashAddrID: Int {
+        switch self {
+        case .testnet:
+            return 0x6f // starts with m or n
+        case .mainnet:
+            return 0x00 // starts with 1
+        }
+    }
+    
+    var scriptHashAddrID: Int {
+        switch self {
+        case .testnet:
+            return 0xc4 // starts with 2
+        case .mainnet:
+            return 0x05 // starts with 3
+        }
+    }
+}
+
 /// Represents p2pkh, p2sh & bech32 bitcoin addresses
 public struct BitcoinAddress: Codable, Equatable {
     public enum AddressType {
@@ -20,24 +40,38 @@ public struct BitcoinAddress: Codable, Equatable {
     public let type: AddressType
     
     public init?(witnessPubKeyHash: Data, network: Network) {
-        guard witnessPubKeyHash.count == 20 else { return nil }
+        guard
+            witnessPubKeyHash.count == 20,
+            let address = Bech32Address(network: network, witnessVersion: 0x00, witnessProgram: witnessPubKeyHash)?.string
+            else { return nil }
+        
         self.network = network
-        return nil
+        self.string = address
+        self.type = .bech32
     }
     
     public init?(witnessScriptHash: Data, network: Network) {
+        guard
+            witnessScriptHash.count == 32,
+            let address = Bech32Address(network: network, witnessVersion: 0x00, witnessProgram: witnessScriptHash)?.string
+            else { return nil }
+        
         self.network = network
-        return nil
+        self.string = address
+        self.type = .bech32
     }
     
     public init?(pubKeyHash: Data, network: Network) {
+        guard pubKeyHash.count == 20 else { return nil }
         self.network = network
-        return nil
+        self.type = .p2pkh
+        self.string = Base58.checkEncode(pubKeyHash, version: network.pubKeyHashAddrID)
     }
     
     public init?(scriptHashFromHash: Data, network: Network) {
         self.network = network
-        return nil
+        self.type = .p2sh
+        self.string = Base58.checkEncode(scriptHashFromHash, version: network.scriptHashAddrID)
     }
     
     public init?(string: String) {
