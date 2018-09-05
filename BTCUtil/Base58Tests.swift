@@ -9,6 +9,7 @@
 import XCTest
 
 final class Base58Tests: XCTestCase {
+    // swiftlint:disable force_unwrapping
     func testValidBase58() {
         let valid: [(String, String)] = [
             ("StV1DL6CwTryKyV", "hello world"),
@@ -27,11 +28,13 @@ final class Base58Tests: XCTestCase {
         ]
         
         for (base58, output) in valid {
-            let data = Base58.decode(base58)
+            let data = Data(base58Encoded: base58)
             XCTAssertNotNil(data)
-            if let data = data {
-                XCTAssertEqual(String(data: data, encoding: .utf8), output)
-            }
+            XCTAssertEqual(String(data: data!, encoding: .utf8), output)
+            
+            let encoded = data?.base58EncodedString()
+            XCTAssertNotNil(encoded)
+            XCTAssertEqual(base58, encoded)
         }
     }
     
@@ -49,7 +52,7 @@ final class Base58Tests: XCTestCase {
             "!@#$%^&*()-_=+~`"]
         
         for base58 in invalid {
-            let data = Base58.decode(base58)
+            let data = Data(base58Encoded: base58)
             XCTAssertNil(data)
         }
     }
@@ -77,6 +80,8 @@ final class Base58Tests: XCTestCase {
                 XCTAssertEqual(version, expectedVersion)
                 XCTAssertEqual(String(data: payload, encoding: .utf8), expectedPayload)
                 
+                let encoded = Base58.checkEncode(payload, version: version)
+                XCTAssertEqual(encoded, input)
             }
         }
     }

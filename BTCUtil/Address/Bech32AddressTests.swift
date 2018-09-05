@@ -61,7 +61,7 @@ class Bech32AddressTests: XCTestCase {
     
     func testInvalidSegwitAddresses() {
         let invalid = [
-            // "tc1qw508d6qejxtdg4y5r3zarvary0c5xw7kg3g4ty",
+            "tc1qw508d6qejxtdg4y5r3zarvary0c5xw7kg3g4ty",
             "bc1qw508d6qejxtdg4y5r3zarvary0c5xw7kv8f3t5",
             "BC13W508D6QEJXTDG4Y5R3ZARVARY0C5XW7KN40WF2",
             "bc1rw5uspcuh",

@@ -48,6 +48,6 @@ class BTCPayConfigurationTests: XCTestCase {
         XCTAssertNotNil(configuration?.rpcConfiguration)
         XCTAssertNil(configuration?.rpcConfiguration?.certificate)
         XCTAssertEqual(configuration?.rpcConfiguration?.url.absoluteString, "test.test.com:443")
-        XCTAssertEqual(configuration?.rpcConfiguration?.macaroon, "02deadbeef0202deadbeef02".hexadecimal())
+        XCTAssertEqual(configuration?.rpcConfiguration?.macaroon, "02deadbeef0202deadbeef02".hexadecimal)
     }
 }
