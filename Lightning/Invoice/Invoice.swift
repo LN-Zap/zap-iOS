@@ -13,6 +13,10 @@ public enum InvoiceError: Error {
     case wrongNetworkError(linkNetwork: Network, expectedNetwork: Network)
 }
 
+/*
+ Can be either a payment request or a bitcoinURI or both. (bitcoin uri with
+ ln fallback or ln invoice with on-chain fallback.
+*/
 public final class Invoice {
     public let lightningPaymentRequest: PaymentRequest?
     public let bitcoinURI: BitcoinURI?
@@ -23,7 +27,6 @@ public final class Invoice {
     }
     
     public static func create(from address: String, lightningService: LightningService, completion: @escaping (Result<Invoice>) -> Void) {
-
         if let bitcoinURI = BitcoinURI(string: address) {
             if let paymentRequest = bitcoinURI.lightningFallback,
                 let invoiceURI = LightningInvoiceURI(string: paymentRequest) {

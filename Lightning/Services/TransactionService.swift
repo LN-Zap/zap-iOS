@@ -24,13 +24,17 @@ public final class TransactionService {
         self.channelService = channelService
     }
     
-    public func sendCoins(address: BitcoinAddress, amount: Satoshi, completion: @escaping (Result<OnChainUnconfirmedTransaction>) -> Void) {
-        api.sendCoins(address: address, amount: amount) { [weak self] in
-            if let newTransaction = $0.value {
-                self?.unconfirmedTransactionStore.add(newTransaction)
-                self?.transactions.value.append(newTransaction)
+    public func send(_ invoice: Invoice, amount: Satoshi, completion: @escaping (Result<Transaction>) -> Void) {
+        if let paymentRequest = invoice.lightningPaymentRequest {
+            sendPayment(paymentRequest, amount: amount) {
+                completion($0.map { $0 })
             }
-            completion($0)
+        } else if let bitcoinURI = invoice.bitcoinURI {
+            sendCoins(address: bitcoinURI.bitcoinAddress, amount: amount) {
+                completion($0.map { $0 })
+            }
+        } else {
+            fatalError("There should not be an invoice without either a paymentRequest or bitcoinURI")
         }
     }
     
@@ -47,24 +51,9 @@ public final class TransactionService {
         api.newAddress(type: type, completion: completion)
     }
     
-    func decodePaymentRequest(_ paymentRequest: String, completion: @escaping (Result<PaymentRequest>) -> Void) {
-        api.decodePaymentRequest(paymentRequest, completion: completion)
-    }
-    
-    public func sendPayment(_ paymentRequest: PaymentRequest, amount: Satoshi, completion: @escaping (Result<Data>) -> Void) {
-        api.sendPayment(paymentRequest, amount: amount) { [weak self] result in
-            if result.value != nil {
-                self?.update()
-                self?.balanceService.update()
-                self?.channelService.update()
-            }
-            completion(result)
-        }
-    }
-    
     public func update() {
         let taskGroup = DispatchGroup()
-
+        
         var allTransactions = [Transaction]()
         
         func apiCallback(result: Result<[Transaction]>) {
@@ -76,7 +65,7 @@ public final class TransactionService {
         
         taskGroup.enter()
         api.transactions(completion: apiCallback)
-
+        
         taskGroup.enter()
         api.payments(completion: apiCallback)
         
@@ -90,5 +79,30 @@ public final class TransactionService {
             }
             self?.transactions.value = allTransactions
         }))
+    }
+    
+    internal func decodePaymentRequest(_ paymentRequest: String, completion: @escaping (Result<PaymentRequest>) -> Void) {
+        api.decodePaymentRequest(paymentRequest, completion: completion)
+    }
+    
+    private func sendPayment(_ paymentRequest: PaymentRequest, amount: Satoshi, completion: @escaping (Result<LightningPayment>) -> Void) {
+        api.sendPayment(paymentRequest, amount: amount) { [weak self] in
+            if case .success = $0 {
+                self?.update()
+                self?.balanceService.update()
+                self?.channelService.update()
+            }
+            completion($0)
+        }
+    }
+    
+    private func sendCoins(address: BitcoinAddress, amount: Satoshi, completion: @escaping (Result<OnChainUnconfirmedTransaction>) -> Void) {
+        api.sendCoins(address: address, amount: amount) { [weak self] in
+            if let newTransaction = $0.value {
+                self?.unconfirmedTransactionStore.add(newTransaction)
+                self?.transactions.value.append(newTransaction)
+            }
+            completion($0)
+        }
     }
 }

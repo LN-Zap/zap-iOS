@@ -21,9 +21,9 @@ final class LightningApiStream: LightningApiProtocol {
         LndmobileGetNodeInfo(data, StreamCallback<Lnrpc_NodeInfo, NodeInfo>(completion, map: NodeInfo.init))
     }
     
-    func newAddress(type: OnChainRequestAddressType, completion: @escaping (Result<String>) -> Void) {
+    func newAddress(type: OnChainRequestAddressType, completion: @escaping (Result<BitcoinAddress>) -> Void) {
         let data = try? Lnrpc_NewAddressRequest(type: type).serializedData()
-        LndmobileNewAddress(data, StreamCallback<Lnrpc_NewAddressResponse, String>(completion) { $0.address })
+        LndmobileNewAddress(data, StreamCallback<Lnrpc_NewAddressResponse, BitcoinAddress>(completion) { BitcoinAddress(string: $0.address) })
     }
     
     func walletBalance(completion: @escaping (Result<Satoshi>) -> Void) {
@@ -87,10 +87,10 @@ final class LightningApiStream: LightningApiProtocol {
         LndmobileCloseChannel(data, StreamCallback<Lnrpc_CloseStatusUpdate, CloseStatusUpdate>(completion, map: CloseStatusUpdate.init))
     }
     
-    func sendCoins(address: String, amount: Satoshi, completion: @escaping (Result<OnChainUnconfirmedTransaction>) -> Void) {
+    func sendCoins(address: BitcoinAddress, amount: Satoshi, completion: @escaping (Result<OnChainUnconfirmedTransaction>) -> Void) {
         let data = try? Lnrpc_SendCoinsRequest(address: address, amount: amount).serializedData()
         LndmobileSendCoins(data, StreamCallback<Lnrpc_SendCoinsResponse, OnChainUnconfirmedTransaction>(completion) {
-            OnChainUnconfirmedTransaction(id: $0.txid, amount: -amount, date: Date(), destinationAddress: address)
+            OnChainUnconfirmedTransaction(id: $0.txid, amount: -amount, date: Date(), destinationAddresses: [address])
         })
     }
     
@@ -105,9 +105,9 @@ final class LightningApiStream: LightningApiProtocol {
         LndmobileDecodePayReq(data, StreamCallback<Lnrpc_PayReq, PaymentRequest>(completion) { PaymentRequest(payReq: $0, raw: paymentRequest) })
     }
     
-    func sendPayment(_ paymentRequest: PaymentRequest, completion: @escaping (Result<Data>) -> Void) {
-        let data = try? Lnrpc_SendRequest(paymentRequest: paymentRequest.raw).serializedData()
-        LndmobileSendPaymentSync(data, StreamCallback<Lnrpc_SendResponse, Data>(completion) { $0.paymentPreimage })
+    func sendPayment(_ paymentRequest: PaymentRequest, amount: Satoshi?, completion: @escaping (Result<LightningPayment>) -> Void) {
+        let data = try? Lnrpc_SendRequest(paymentRequest: paymentRequest.raw, amount: amount).serializedData()
+        LndmobileSendPaymentSync(data, StreamCallback<Lnrpc_SendResponse, LightningPayment>(completion) { LightningPayment(paymentRequest: paymentRequest, sendResponse: $0) })
     }
     
     func addInvoice(amount: Satoshi?, memo: String?, completion: @escaping (Result<String>) -> Void) {

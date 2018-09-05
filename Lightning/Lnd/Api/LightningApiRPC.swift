@@ -127,7 +127,7 @@ public final class LightningApiRPC: LightningApiProtocol {
         }))
     }
     
-    func sendPayment(_ paymentRequest: PaymentRequest, amount: Satoshi?, completion: @escaping (Result<Data>) -> Void) {
+    func sendPayment(_ paymentRequest: PaymentRequest, amount: Satoshi?, completion: @escaping (Result<LightningPayment>) -> Void) {
         let request = Lnrpc_SendRequest(paymentRequest: paymentRequest.raw, amount: amount)
         _ = try? rpc.sendPaymentSync(request) { response, error in
             if !error.success {
@@ -136,8 +136,8 @@ public final class LightningApiRPC: LightningApiProtocol {
                 !errorMessage.isEmpty {
                 let error = LndApiError.localizedError(errorMessage)
                 completion(.failure(error))
-            } else if let response = response {
-                completion(.success(response.paymentPreimage))
+            } else if let sendResponse = response {
+                completion(.success(LightningPayment(paymentRequest: paymentRequest, sendResponse: sendResponse)))
             } else if let statusMessage = error.statusMessage {
                 completion(.failure(LndApiError.localizedError(statusMessage)))
             } else {

@@ -25,7 +25,7 @@ final class LightningApiMock: LightningApiProtocol {
     private let sendCoins: OnChainUnconfirmedTransaction?
     private let peers: [Peer]?
     private let decodePaymentRequest: PaymentRequest?
-    private let sendPayment: Data?
+    private let sendPayment: LightningPayment?
     private let addInvoice: String?
     private let graphTopologyUpdate: GraphTopologyUpdate?
     private let closedChannels: [ChannelCloseSummary]?
@@ -49,7 +49,7 @@ final class LightningApiMock: LightningApiProtocol {
         sendCoins: OnChainUnconfirmedTransaction? = nil,
         peers: [Peer]? = nil,
         decodePaymentRequest: PaymentRequest? = nil,
-        sendPayment: Data? = nil,
+        sendPayment: LightningPayment? = nil,
         addInvoice: String? = nil,
         graphTopologyUpdate: GraphTopologyUpdate? = nil,
         closedChannels: [ChannelCloseSummary]? = nil,
@@ -132,7 +132,7 @@ final class LightningApiMock: LightningApiProtocol {
         completion(Result(value: decodePaymentRequest, error: LndApiError.unknownError))
     }
     
-    func sendPayment(_ paymentRequest: PaymentRequest, amount: Satoshi?, completion: @escaping (Result<Data>) -> Void) {
+    func sendPayment(_ paymentRequest: PaymentRequest, amount: Satoshi?, completion: @escaping (Result<LightningPayment>) -> Void) {
         completion(Result(value: sendPayment, error: LndApiError.unknownError))
     }
     
@@ -214,7 +214,7 @@ enum ApiMockTemplate {
                     Channel.template
                 ],
                 decodePaymentRequest: PaymentRequest.Template.testnetFallback,
-                sendPayment: Data()
+                sendPayment: LightningPayment.template
             )
         }
     }

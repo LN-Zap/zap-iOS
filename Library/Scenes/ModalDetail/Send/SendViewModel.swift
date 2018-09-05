@@ -91,33 +91,12 @@ final class SendViewModel {
     
     func send(completion: @escaping (Result<Success>) -> Void) {
         guard let amount = amount else { return }
-        
-        switch method {
-        case .lightning(let paymentRequest):
-            sendLightning(paymentRequest: paymentRequest, amount: amount) { result in
-                completion(result.map { _ in Success() })
-            }
-        case .onChain(let bitcoinURI):
-            sendOnChain(bitcoinURI: bitcoinURI, amount: amount) { result in
-                completion(result.map { _ in Success() })
-            }
-        }
-    }
-    
-    private func sendOnChain(bitcoinURI: BitcoinURI, amount: Satoshi, completion: @escaping (Result<OnChainUnconfirmedTransaction>) -> Void) {
-        lightningService.transactionService.sendCoins(address: bitcoinURI.bitcoinAddress, amount: amount) { [weak self] in
-            if let unconfirmedTransaction = $0.value,
-                let memo = self?.memo {
-                self?.transactionAnnotationStore.udpateMemo(memo, forTransactionId: unconfirmedTransaction.id)
-            }
-            completion($0)
-        }
-    }
 
-    private func sendLightning(paymentRequest: PaymentRequest, amount: Satoshi, completion: @escaping (Result<Data>) -> Void) {
-        lightningService.transactionService.sendPayment(paymentRequest, amount: amount) { [weak self] in
-            self?.transactionAnnotationStore.udpateMemo(paymentRequest.memo, forTransactionId: paymentRequest.paymentHash)
-            completion($0)
+        lightningService.transactionService.send(invoice, amount: amount) { [weak self] in
+            if let transaction = $0.value, let memo = self?.memo {
+                self?.transactionAnnotationStore.udpateMemo(memo, forTransactionId: transaction.id)
+            }
+            completion($0.map { _ in Success() })
         }
     }
 }

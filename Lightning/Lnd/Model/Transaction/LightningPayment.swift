@@ -24,4 +24,12 @@ extension LightningPayment {
         fees = Satoshi(payment.fee)
         paymentHash = payment.paymentHash
     }
+    
+    init(paymentRequest: PaymentRequest, sendResponse: Lnrpc_SendResponse) {
+        id = paymentRequest.paymentHash
+        amount = -paymentRequest.amount
+        date = paymentRequest.date
+        fees = Satoshi(sendResponse.paymentRoute.totalFees)
+        paymentHash = paymentRequest.paymentHash
+    }
 }

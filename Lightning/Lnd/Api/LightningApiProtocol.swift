@@ -28,7 +28,7 @@ protocol LightningApiProtocol {
     // Payments
     func decodePaymentRequest(_ paymentRequest: String, completion: @escaping (Result<PaymentRequest>) -> Void)
     func payments(completion: @escaping (Result<[Transaction]>) -> Void)
-    func sendPayment(_ paymentRequest: PaymentRequest, amount: Satoshi?, completion: @escaping (Result<Data>) -> Void)
+    func sendPayment(_ paymentRequest: PaymentRequest, amount: Satoshi?, completion: @escaping (Result<LightningPayment>) -> Void)
     func addInvoice(amount: Satoshi?, memo: String?, completion: @escaping (Result<String>) -> Void)
     func invoices(completion: @escaping (Result<[Transaction]>) -> Void)
     func subscribeInvoices(completion: @escaping (Result<Transaction>) -> Void)
