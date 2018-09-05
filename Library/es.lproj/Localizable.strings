@@ -194,5 +194,5 @@
 "scene.time_lock.headline" = "Contraseña incorrecta";
 "scene.time_lock.description" = "Su cartera está bloqueada para:";
 
-"scene.modal_pin.headline" = "Usa contraseña";
-"scene.modal_pin.description" = "Introduzca su contraseña para continuar";
+"scene.modal_pin.headline" = "Use contraseña";
+"scene.modal_pin.description" = "Por favor, introduzca su contraseña para continuar";
