@@ -30,6 +30,7 @@ final class QRCodeDetailViewController: UIViewController {
         guard let viewModel = viewModel else { fatalError("No ViewModel set.") }
         
         title = viewModel.title
+        view.backgroundColor = UIColor.Zap.background
         
         navigationController?.navigationBar.backgroundColor = .clear
         navigationController?.navigationBar.setBackgroundImage(UIImage(), for: .default)
