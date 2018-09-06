@@ -260,6 +260,9 @@
 		ADA865BE20ECB88500B1B74B /* FilterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADA865BD20ECB88500B1B74B /* FilterViewController.swift */; };
 		ADA865C020ECC89E00B1B74B /* FilterTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADA865BF20ECC89E00B1B74B /* FilterTableViewCell.swift */; };
 		ADA865C220ED041F00B1B74B /* Storage.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADA865C120ED041F00B1B74B /* Storage.swift */; };
+		ADADAD56214118E500A48E1F /* GraphView.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADADAD55214118E500A48E1F /* GraphView.swift */; };
+		ADADAD5821411F7200A48E1F /* GraphViewDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADADAD5721411F7200A48E1F /* GraphViewDataSource.swift */; };
+		ADADAD5A214126BB00A48E1F /* Date.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADADAD59214126BB00A48E1F /* Date.swift */; };
 		ADC0D2F02107953100B8C62F /* PinnedHost.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADC0D2EF2107953100B8C62F /* PinnedHost.swift */; };
 		ADC0D2F321079FF700B8C62F /* www.blockchain.com.cer in Resources */ = {isa = PBXBuildFile; fileRef = ADC0D2F221079FF600B8C62F /* www.blockchain.com.cer */; };
 		ADC0D2F52107A13900B8C62F /* DigiCert SHA2 Extended Validation Server CA.cer in Resources */ = {isa = PBXBuildFile; fileRef = ADC0D2F42107A13800B8C62F /* DigiCert SHA2 Extended Validation Server CA.cer */; };
@@ -819,6 +822,9 @@
 		ADAB0B98212487D000914974 /* vi */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = vi; path = vi.lproj/Localizable.strings; sourceTree = "<group>"; };
 		ADACC76F20B02AAD00F86D63 /* DetailQRCodeTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailQRCodeTableViewCell.swift; sourceTree = "<group>"; };
 		ADACC77020B02AAD00F86D63 /* DetailQRCodeTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DetailQRCodeTableViewCell.xib; sourceTree = "<group>"; };
+		ADADAD55214118E500A48E1F /* GraphView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GraphView.swift; sourceTree = "<group>"; };
+		ADADAD5721411F7200A48E1F /* GraphViewDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GraphViewDataSource.swift; sourceTree = "<group>"; };
+		ADADAD59214126BB00A48E1F /* Date.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Date.swift; sourceTree = "<group>"; };
 		ADB6DEDA20AD8F80001324C8 /* GradientLoadingButtonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GradientLoadingButtonView.swift; sourceTree = "<group>"; };
 		ADBA12012090CD11001F7700 /* KeyPadView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = KeyPadView.xib; sourceTree = "<group>"; };
 		ADBA12032090CD22001F7700 /* KeyPadView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyPadView.swift; sourceTree = "<group>"; };
@@ -1291,6 +1297,7 @@
 			children = (
 				A08CF033201F5FCC000D5855 /* Array.swift */,
 				AD391D1F20D178C2007EE22A /* Bundle.swift */,
+				ADADAD59214126BB00A48E1F /* Date.swift */,
 				AD77464C2076161300EC596B /* Localizable */,
 				A0BD44DB206FCAD900BF27A3 /* SignalProtocol.swift */,
 				A0A96B87201769F100788808 /* String.swift */,
@@ -1667,6 +1674,8 @@
 			children = (
 				AD7EDAE22108C4150058CCCA /* Wallet.storyboard */,
 				AD7EDAE42108C41D0058CCCA /* WalletViewController.swift */,
+				ADADAD55214118E500A48E1F /* GraphView.swift */,
+				ADADAD5721411F7200A48E1F /* GraphViewDataSource.swift */,
 			);
 			path = Wallet;
 			sourceTree = "<group>";
@@ -2625,6 +2634,7 @@
 				AD391D0820D16FF5007EE22A /* GradientView.swift in Sources */,
 				AD391C3120D16EFA007EE22A /* UIColor.swift in Sources */,
 				AD391C2820D16EFA007EE22A /* String+Localizable.swift in Sources */,
+				ADADAD5A214126BB00A48E1F /* Date.swift in Sources */,
 				AD0D5DE9210DCC5F00D11D0B /* LabColor.swift in Sources */,
 				AD391C2920D16EFA007EE22A /* Date+Localizable.swift in Sources */,
 				AD391C5820D16F7A007EE22A /* RemoteNodeCertificatesScannerViewController.swift in Sources */,
@@ -2687,6 +2697,7 @@
 				AD391C3D20D16F0B007EE22A /* BiometricAuthentication.swift in Sources */,
 				AD391C3020D16EFA007EE22A /* UICollectionView.swift in Sources */,
 				AD391C6520D16F89007EE22A /* LndLogViewController.swift in Sources */,
+				ADADAD56214118E500A48E1F /* GraphView.swift in Sources */,
 				AD391CC720D16FE1007EE22A /* DetailTableViewCell.swift in Sources */,
 				AD7EDAEA2108EA170058CCCA /* HeaderTableViewCell.swift in Sources */,
 				AD391CAD20D16FA8007EE22A /* OnChainRequestAddressTypeSettingsItem.swift in Sources */,
@@ -2744,6 +2755,7 @@
 				AD391CA920D16FA8007EE22A /* BitcoinUnitSettingsItem.swift in Sources */,
 				AD0D5DEC210DCC6300D11D0B /* ExposedLayout.swift in Sources */,
 				AD391CAF20D16FA8007EE22A /* SettingsItem.swift in Sources */,
+				ADADAD5821411F7200A48E1F /* GraphViewDataSource.swift in Sources */,
 				AD391C5620D16F7A007EE22A /* ConnectRemoteNodeViewModel.swift in Sources */,
 				AD391C5E20D16F7A007EE22A /* MnemonicWordTableViewCell.swift in Sources */,
 				AD391CBC20D16FE1007EE22A /* DetailCellType.swift in Sources */,

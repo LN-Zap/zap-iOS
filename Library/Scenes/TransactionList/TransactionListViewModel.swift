@@ -123,15 +123,10 @@ final class TransactionListViewModel: NSObject {
             self.isLoading.value = false
         }
     }
-
-    private func dateWithoutTime(from date: Date) -> Date {
-        let components = Calendar.current.dateComponents([.day, .month, .year], from: date)
-        return Calendar.current.date(from: components) ?? date
-    }
-
+    
     private func sortedSections(transactionViewModels: [TransactionViewModel]) -> [(Date, [TransactionViewModel])] {
         let grouped = transactionViewModels.grouped { transaction -> Date in
-            self.dateWithoutTime(from: transaction.date)
+            transaction.date.withoutTime
         }
 
         return Array(zip(grouped.keys, grouped.values))

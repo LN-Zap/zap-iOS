@@ -10,9 +10,10 @@ import BTCUtil
 import Foundation
 import Lightning
 import ReactiveKit
+import ScrollableGraphView
 
 extension UIStoryboard {
-    static func instantiateWalletViewController(lightningService: LightningService, sendButtonTapped: @escaping () -> Void, requestButtonTapped: @escaping () -> Void) -> UINavigationController {
+    static func instantiateWalletViewController(lightningService: LightningService, sendButtonTapped: @escaping () -> Void, requestButtonTapped: @escaping () -> Void) -> WalletViewController {
         
         let walletViewController = Storyboard.wallet.instantiate(viewController: WalletViewController.self)
         walletViewController.lightningService = lightningService
@@ -20,22 +21,22 @@ extension UIStoryboard {
         walletViewController.sendButtonTapped = sendButtonTapped
         walletViewController.requestButtonTapped = requestButtonTapped
         
-        let navigationController = ZapNavigationController(rootViewController: walletViewController)
-        navigationController.tabBarItem.title = "scene.wallet.title".localized
-        navigationController.tabBarItem.image = UIImage(named: "tabbar_wallet", in: Bundle.library, compatibleWith: nil)
+        walletViewController.tabBarItem.title = "scene.wallet.title".localized
+        walletViewController.tabBarItem.image = UIImage(named: "tabbar_wallet", in: Bundle.library, compatibleWith: nil)
         
-        return navigationController
+        return walletViewController
     }
 }
 
 final class WalletViewController: UIViewController {
+    @IBOutlet private weak var graphContainer: UIView!
     @IBOutlet private weak var networkLabel: PaddingLabel! {
         didSet {
             networkLabel.edgeInsets = UIEdgeInsets(top: 5, left: 10, bottom: 5, right: 10)
-            Style.Label.custom().apply(to: networkLabel)
+            Style.Label.body.apply(to: networkLabel)
             networkLabel.layer.cornerRadius = 10
             networkLabel.clipsToBounds = true
-            networkLabel.backgroundColor = UIColor.Zap.superGreen
+            networkLabel.backgroundColor = UIColor.Zap.invisibleGray
             networkLabel.text = Network.testnet.localized
         }
     }
@@ -70,6 +71,8 @@ final class WalletViewController: UIViewController {
     fileprivate var sendButtonTapped: (() -> Void)?
     fileprivate var requestButtonTapped: (() -> Void)?
 
+    private var graphDataSource: GraphViewDataSource?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -92,6 +95,19 @@ final class WalletViewController: UIViewController {
         secondaryBalanceLabel.textAlignment = .center
         Style.Label.title.apply(to: primaryBalanceLabel)
         primaryBalanceLabel.textAlignment = .center
+        
+        graphContainer.backgroundColor = UIColor.Zap.background
+
+        lightningService?.transactionService.transactions
+            .observeNext { [weak self] in
+                guard let graphContainer = self?.graphContainer else { return }
+                graphContainer.subviews.first?.removeFromSuperview()
+                let graphDataSource = GraphViewDataSource(transactions: $0)
+                self?.graphDataSource = graphDataSource
+                let graphView = GraphView(frame: graphContainer.bounds, dataSource: graphDataSource)
+                graphContainer.addSubview(graphView)
+            }
+            .dispose(in: reactive.bag)
         
         Settings.shared.fiatCurrency
             .map { $0.format(satoshis: 100_000_000) }
