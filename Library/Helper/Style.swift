@@ -51,6 +51,12 @@ public enum Style {
             }
         }
         
+        static let boldTitle = UIViewStyle<UILabel> {
+            $0.font = UIFontMetrics(forTextStyle: .title1).scaledFont(for: UIFont.Zap.bold.withSize(40))
+            $0.textColor = UIColor.Zap.white
+            $0.adjustsFontForContentSizeCategory = true
+        }
+        
         static let title = UIViewStyle<UILabel> {
             $0.font = UIFontMetrics(forTextStyle: .title1).scaledFont(for: UIFont.Zap.regular.withSize(40))
             $0.textColor = UIColor.Zap.white

@@ -93,9 +93,16 @@ final class WalletViewController: UIViewController {
         Style.Label.body.apply(to: secondaryBalanceLabel)
         secondaryBalanceLabel.textColor = UIColor.Zap.gray
         secondaryBalanceLabel.textAlignment = .center
-        Style.Label.title.apply(to: primaryBalanceLabel)
+        Style.Label.boldTitle.apply(to: primaryBalanceLabel)
         primaryBalanceLabel.textAlignment = .center
-        
+    
+        setupGraphView()
+        setupExchangeRateLabel()
+        setupPrimaryBalanceLabel()
+        setupBindings()
+    }
+    
+    private func setupGraphView() {
         graphContainer.backgroundColor = UIColor.Zap.background
 
         lightningService?.transactionService.transactions
@@ -108,14 +115,18 @@ final class WalletViewController: UIViewController {
                 graphContainer.addSubview(graphView)
             }
             .dispose(in: reactive.bag)
-        
+    }
+    
+    private func setupExchangeRateLabel() {
         Settings.shared.fiatCurrency
             .map { $0.format(satoshis: 100_000_000) }
             .ignoreNil()
             .map { String(format: "scene.main.exchange_rate_label".localized, $0) }
             .bind(to: exchangeRateLabel.reactive.text)
             .dispose(in: reactive.bag)
-        
+    }
+    
+    private func setupPrimaryBalanceLabel() {
         if let lightningService = lightningService {
             ReactiveKit
                 .combineLatest(lightningService.balanceService.total, Settings.shared.primaryCurrency) { satoshis, currency -> NSAttributedString? in
@@ -129,7 +140,9 @@ final class WalletViewController: UIViewController {
                 .bind(to: primaryBalanceLabel.reactive.attributedText)
                 .dispose(in: reactive.bag)
         }
-        
+    }
+    
+    private func setupBindings() {
         [lightningService?.balanceService.total.bind(to: secondaryBalanceLabel.reactive.text, currency: Settings.shared.secondaryCurrency),
          lightningService?.infoService.network.map({ $0 == .mainnet }).bind(to: networkLabel.reactive.isHidden)]
             .dispose(in: reactive.bag)
