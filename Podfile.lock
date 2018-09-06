@@ -26,6 +26,7 @@ PODS:
   - nanopb/decode (0.3.8)
   - nanopb/encode (0.3.8)
   - ReactiveKit (3.9.6)
+  - ScrollableGraphView (4.0.5)
   - SipHash (1.2.2)
   - SwiftGRPC (0.5.1):
     - BoringSSL (~> 10.0)
@@ -37,6 +38,7 @@ DEPENDENCIES:
   - BigInt (~> 3.0)
   - Bond
   - KeychainAccess
+  - ScrollableGraphView
   - SwiftGRPC (from `https://github.com/grpc/grpc-swift`)
 
 SPEC REPOS:
@@ -49,6 +51,7 @@ SPEC REPOS:
     - KeychainAccess
     - nanopb
     - ReactiveKit
+    - ScrollableGraphView
     - SipHash
     - SwiftProtobuf
 
@@ -70,10 +73,11 @@ SPEC CHECKSUMS:
   KeychainAccess: 7bd430028059754a3debab3cfc0bd1fc7fb85df3
   nanopb: 5601e6bca2dbf1ed831b519092ec110f66982ca3
   ReactiveKit: 804d3093ad42dee0de19e42d4f7dcae9c14364b0
+  ScrollableGraphView: 6386dbae8d92e8ec9fda9f386f2ba6e2c90c59a3
   SipHash: fad90a4683e420c52ef28063063dbbce248ea6d4
   SwiftGRPC: aef4936e7cffb35e5f3f996d44008303f4f150e7
   SwiftProtobuf: 4298b0b814dd49031c3218fdfb8d42f7107c8a6d
 
-PODFILE CHECKSUM: 8ccafea35c576da28e34cb2c3c8eabe546743bac
+PODFILE CHECKSUM: 6f7c68b04633cae3add7a29eaf302961d18adf2a
 
 COCOAPODS: 1.5.3

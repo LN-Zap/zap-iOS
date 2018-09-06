@@ -1,0 +1,6 @@
+framework module ScrollableGraphView {
+  umbrella header "ScrollableGraphView-umbrella.h"
+
+  export *
+  module * { export * }
+}
