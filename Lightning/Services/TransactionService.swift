@@ -14,6 +14,7 @@ public final class TransactionService {
     private let balanceService: BalanceService
     private let channelService: ChannelService
     
+    private let transactionAnnotationStore = TransactionAnnotationStore()
     private let unconfirmedTransactionStore = UnconfirmedTransactionStore()
     
     public let transactions = Observable<[Transaction]>([])
@@ -24,15 +25,11 @@ public final class TransactionService {
         self.channelService = channelService
     }
     
-    public func send(_ invoice: Invoice, amount: Satoshi, completion: @escaping (Result<Transaction>) -> Void) {
+    public func send(_ invoice: Invoice, amount: Satoshi, completion: @escaping (Result<Success>) -> Void) {
         if let paymentRequest = invoice.lightningPaymentRequest {
-            sendPayment(paymentRequest, amount: amount) {
-                completion($0.map { $0 })
-            }
+            sendPayment(paymentRequest, amount: amount, completion: completion)
         } else if let bitcoinURI = invoice.bitcoinURI {
-            sendCoins(address: bitcoinURI.bitcoinAddress, amount: amount) {
-                completion($0.map { $0 })
-            }
+            sendCoins(bitcoinURI: bitcoinURI, amount: amount, completion: completion)
         } else {
             fatalError("There should not be an invoice without either a paymentRequest or bitcoinURI")
         }
@@ -85,24 +82,50 @@ public final class TransactionService {
         api.decodePaymentRequest(paymentRequest, completion: completion)
     }
     
-    private func sendPayment(_ paymentRequest: PaymentRequest, amount: Satoshi, completion: @escaping (Result<LightningPayment>) -> Void) {
+    private func sendPayment(_ paymentRequest: PaymentRequest, amount: Satoshi, completion: @escaping (Result<Success>) -> Void) {
         api.sendPayment(paymentRequest, amount: amount) { [weak self] in
-            if case .success = $0 {
+            if case .success(let transaction) = $0 {
                 self?.update()
                 self?.balanceService.update()
                 self?.channelService.update()
+                
+                if let memo = paymentRequest.memo {
+                    self?.udpateMemo(memo, forTransactionId: transaction.id)
+                }
             }
-            completion($0)
+            completion($0.map { _ in Success() })
         }
     }
     
-    private func sendCoins(address: BitcoinAddress, amount: Satoshi, completion: @escaping (Result<OnChainUnconfirmedTransaction>) -> Void) {
-        api.sendCoins(address: address, amount: amount) { [weak self] in
+    private func sendCoins(bitcoinURI: BitcoinURI, amount: Satoshi, completion: @escaping (Result<Success>) -> Void) {
+        api.sendCoins(address: bitcoinURI.bitcoinAddress, amount: amount) { [weak self] in
             if let newTransaction = $0.value {
                 self?.unconfirmedTransactionStore.add(newTransaction)
                 self?.transactions.value.append(newTransaction)
+                
+                if let memo = bitcoinURI.memo {
+                    self?.udpateMemo(memo, forTransactionId: newTransaction.id)
+                }
             }
-            completion($0)
+            completion($0.map { _ in Success() })
         }
+    }
+    
+    // annotations
+    
+    public func annotation(for transaction: Transaction) -> TransactionAnnotation {
+        return transactionAnnotationStore.annotation(for: transaction)
+    }
+    
+    public func updateAnnotation(_ annotation: TransactionAnnotation, for transaction: Transaction) {
+        transactionAnnotationStore.updateAnnotation(annotation, for: transaction)
+    }
+    
+    public func setTransactionHidden(_ transaction: Transaction, hidden: Bool) -> TransactionAnnotation {
+        return transactionAnnotationStore.setTransactionHidden(transaction, hidden: hidden)
+    }
+    
+    public func udpateMemo(_ memo: String?, forTransactionId transactionId: String) {
+        return transactionAnnotationStore.udpateMemo(memo, forTransactionId: transactionId)
     }
 }

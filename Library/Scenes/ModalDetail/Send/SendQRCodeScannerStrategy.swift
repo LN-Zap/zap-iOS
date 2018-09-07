@@ -10,15 +10,13 @@ import Foundation
 import Lightning
 
 class SendQRCodeScannerStrategy: QRCodeScannerStrategy {
-    private let transactionAnnotationStore: TransactionAnnotationStore
     private let nodeStore: LightningNodeStore
     private let lightningService: LightningService
     private let authenticationViewModel: AuthenticationViewModel
     
     let title = "scene.send.title".localized
     
-    init(transactionAnnotationStore: TransactionAnnotationStore, nodeStore: LightningNodeStore, lightningService: LightningService, authenticationViewModel: AuthenticationViewModel) {
-        self.transactionAnnotationStore = transactionAnnotationStore
+    init(nodeStore: LightningNodeStore, lightningService: LightningService, authenticationViewModel: AuthenticationViewModel) {
         self.nodeStore = nodeStore
         self.lightningService = lightningService
         self.authenticationViewModel = authenticationViewModel
@@ -30,7 +28,6 @@ class SendQRCodeScannerStrategy: QRCodeScannerStrategy {
             completion(result.map {
                 let viewModel = SendViewModel(
                     invoice: $0,
-                    transactionAnnotationStore: strongSelf.transactionAnnotationStore,
                     nodeStore: strongSelf.nodeStore,
                     lightningService: strongSelf.lightningService
                 )

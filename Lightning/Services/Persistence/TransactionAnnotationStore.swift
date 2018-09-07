@@ -8,33 +8,33 @@
 import Bond
 import Foundation
 
-public final class TransactionAnnotationStore: Persistable {
-    public typealias Value = [String: TransactionAnnotation]
+final class TransactionAnnotationStore: Persistable {
+    typealias Value = [String: TransactionAnnotation]
     
-    public var data = [String: TransactionAnnotation]()
-    public static let fileName = "annotations"
+    var data = [String: TransactionAnnotation]()
+    static let fileName = "annotations"
     
-    public init() {
+    init() {
         loadPersistable()
     }
     
-    public func annotation(for transaction: Transaction) -> TransactionAnnotation {
+    func annotation(for transaction: Transaction) -> TransactionAnnotation {
         return data[transaction.id] ?? TransactionAnnotation()
     }
     
-    public func updateAnnotation(_ annotation: TransactionAnnotation, for transaction: Transaction) {
+    func updateAnnotation(_ annotation: TransactionAnnotation, for transaction: Transaction) {
         data[transaction.id] = annotation
         savePersistable()
     }
     
-    public func setTransactionHidden(_ transaction: Transaction, hidden: Bool) -> TransactionAnnotation {
+    func setTransactionHidden(_ transaction: Transaction, hidden: Bool) -> TransactionAnnotation {
         let oldAnnotation = annotation(for: transaction)
         let newAnnotation = oldAnnotation.settingHidden(to: hidden)
         updateAnnotation(newAnnotation, for: transaction)
         return newAnnotation
     }
     
-    func udpateMemo(_ memo: String?, for transaction: Transaction) {
+    private func udpateMemo(_ memo: String?, for transaction: Transaction) {
         var memo = memo
         if memo == "" {
             memo = nil
@@ -45,7 +45,7 @@ public final class TransactionAnnotationStore: Persistable {
         updateAnnotation(newAnnotation, for: transaction)
     }
     
-    public func udpateMemo(_ memo: String?, forTransactionId transactionId: String) {
+    func udpateMemo(_ memo: String?, forTransactionId transactionId: String) {
         let annotation = data[transactionId] ?? TransactionAnnotation()
         data[transactionId] = annotation.settingMemo(to: memo)
         savePersistable()

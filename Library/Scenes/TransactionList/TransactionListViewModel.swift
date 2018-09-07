@@ -18,7 +18,6 @@ enum HeaderTableCellType<Value: Equatable>: Equatable {
 final class TransactionListViewModel: NSObject {
     private let transactionService: TransactionService
     private let nodeStore: LightningNodeStore
-    let transactionAnnotationStore = TransactionAnnotationStore()
     
     let isLoading = Observable(true)
     let dataSource: MutableObservableArray<HeaderTableCellType<TransactionViewModel>>
@@ -66,7 +65,7 @@ final class TransactionListViewModel: NSObject {
     }
     
     func setTransactionHidden(_ transaction: Transaction, hidden: Bool) {
-        let newAnnotation = transactionAnnotationStore.setTransactionHidden(transaction, hidden: hidden)
+        let newAnnotation = transactionService.setTransactionHidden(transaction, hidden: hidden)
         updateAnnotation(newAnnotation, for: transaction)
         
         if !filterSettings.value.displayArchivedTransactions {
@@ -75,13 +74,13 @@ final class TransactionListViewModel: NSObject {
     }
     
     func updateAnnotationType(_ type: TransactionAnnotationType, for transaction: Transaction) {
-        let annotation = transactionAnnotationStore.annotation(for: transaction)
+        let annotation = transactionService.annotation(for: transaction)
         let newAnnotation = annotation.settingType(to: type)
         updateAnnotation(newAnnotation, for: transaction)
     }
     
     func updateAnnotation(_ annotation: TransactionAnnotation, for transaction: Transaction) {
-        transactionAnnotationStore.updateAnnotation(annotation, for: transaction)
+        transactionService.updateAnnotation(annotation, for: transaction)
         for transactionViewModel in transactionViewModels where transactionViewModel.id == transaction.id {
             transactionViewModel.annotation.value = annotation
             break
@@ -98,7 +97,7 @@ final class TransactionListViewModel: NSObject {
     private func updateTransactionViewModels(transactions: [Transaction]) {
         let newTransactionViewModels = transactions
             .compactMap { transaction -> TransactionViewModel in
-                let annotation = transactionAnnotationStore.annotation(for: transaction)
+                let annotation = transactionService.annotation(for: transaction)
                 
                 if let oldTransactionViewModel = self.transactionViewModels.first(where: { $0.transaction.isTransactionEqual(to: transaction) }) {
                     return oldTransactionViewModel

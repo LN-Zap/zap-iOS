@@ -60,13 +60,11 @@ final class SendViewModel {
     
     let validRange: ClosedRange<Satoshi>?
 
-    private let transactionAnnotationStore: TransactionAnnotationStore
     private let nodeStore: LightningNodeStore
     private let lightningService: LightningService
     
-    init(invoice: Invoice, transactionAnnotationStore: TransactionAnnotationStore, nodeStore: LightningNodeStore, lightningService: LightningService) {
+    init(invoice: Invoice, nodeStore: LightningNodeStore, lightningService: LightningService) {
         self.invoice = invoice
-        self.transactionAnnotationStore = transactionAnnotationStore
         self.nodeStore = nodeStore
         self.lightningService = lightningService
         
@@ -91,12 +89,6 @@ final class SendViewModel {
     
     func send(completion: @escaping (Result<Success>) -> Void) {
         guard let amount = amount else { return }
-
-        lightningService.transactionService.send(invoice, amount: amount) { [weak self] in
-            if let transaction = $0.value, let memo = self?.memo {
-                self?.transactionAnnotationStore.udpateMemo(memo, forTransactionId: transaction.id)
-            }
-            completion($0.map { _ in Success() })
-        }
+        lightningService.transactionService.send(invoice, amount: amount, completion: completion)
     }
 }
