@@ -9,6 +9,7 @@ import BTCUtil
 import Foundation
 import Lightning
 import ScrollableGraphView
+import SwiftLnd
 
 final class GraphViewDataSource: ScrollableGraphViewDataSource {
     let plotData: [(date: Date, amount: Satoshi)]

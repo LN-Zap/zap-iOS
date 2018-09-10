@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import SwiftLnd
 
 public enum RPCConnectQRCodeError: Error {
     case btcPayExpired

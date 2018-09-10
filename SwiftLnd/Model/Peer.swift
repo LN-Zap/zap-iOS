@@ -7,9 +7,9 @@
 
 import Foundation
 
-struct Peer {
-    let pubKey: String
-    let host: String
+public struct Peer {
+    public let pubKey: String
+    public let host: String
 }
 
 extension Peer {

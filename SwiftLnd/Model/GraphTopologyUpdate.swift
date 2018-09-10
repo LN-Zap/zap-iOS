@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct GraphTopologyUpdate {
+public struct GraphTopologyUpdate {
     let nodeUpdates: [NodeUpdate]
     let channelUpdates: [ChannelEdgeUpdate]
     let closedChannelUpdates: [ClosedChannelUpdate]

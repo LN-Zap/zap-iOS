@@ -8,6 +8,7 @@
 import Bond
 import BTCUtil
 import Foundation
+import SwiftLnd
 
 public final class InfoService {
     public enum State {

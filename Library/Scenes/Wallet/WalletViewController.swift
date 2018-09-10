@@ -11,6 +11,7 @@ import Foundation
 import Lightning
 import ReactiveKit
 import ScrollableGraphView
+import SwiftLnd
 
 extension UIStoryboard {
     static func instantiateWalletViewController(lightningService: LightningService, sendButtonTapped: @escaping () -> Void, requestButtonTapped: @escaping () -> Void) -> WalletViewController {

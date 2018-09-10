@@ -84,6 +84,16 @@
                ReferencedContainer = "container:Zap.xcodeproj">
             </BuildableReference>
          </TestableReference>
+         <TestableReference
+            skipped = "NO">
+            <BuildableReference
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "ADADAD6A2143B2E700A48E1F"
+               BuildableName = "SwiftLndTests.xctest"
+               BlueprintName = "SwiftLndTests"
+               ReferencedContainer = "container:Zap.xcodeproj">
+            </BuildableReference>
+         </TestableReference>
       </Testables>
       <EnvironmentVariables>
          <EnvironmentVariable

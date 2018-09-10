@@ -10,6 +10,7 @@ import BTCUtil
 import Foundation
 import Lightning
 import ReactiveKit
+import SwiftLnd
 
 final class OnChainConfirmedTransactionViewModel: TransactionViewModel {
     let onChainTransaction: OnChainConfirmedTransaction

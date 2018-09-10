@@ -7,6 +7,7 @@
 
 import BTCUtil
 import Foundation
+import SwiftLnd
 
 // we need this to display unconfirmed transactions in the ui. neutrino only notifies us
 // about confirmed transactions.

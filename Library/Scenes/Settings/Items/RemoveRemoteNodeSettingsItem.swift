@@ -7,6 +7,7 @@
 
 import Foundation
 import Lightning
+import SwiftLnd
 
 final class RemoveRemoteNodeSettingsItem: SettingsItem {
     let title = "scene.settings.item.remove_remote_node".localized

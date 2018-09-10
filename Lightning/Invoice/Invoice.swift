@@ -7,6 +7,7 @@
 
 import BTCUtil
 import Foundation
+import SwiftLnd
 
 public enum InvoiceError: Error {
     case unknownFormat

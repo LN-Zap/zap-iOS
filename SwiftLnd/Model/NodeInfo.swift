@@ -8,10 +8,10 @@
 import BTCUtil
 import Foundation
 
-struct NodeInfo {
-    let node: LightningNode
-    let numChannels: Int
-    let totalCapacity: Int
+public struct NodeInfo {
+    public let node: LightningNode
+    public let numChannels: Int
+    public let totalCapacity: Int
 }
 
 extension NodeInfo {

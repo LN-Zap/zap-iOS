@@ -8,7 +8,7 @@
 import BTCUtil
 import Foundation
 
-protocol LightningApiProtocol {
+public protocol LightningApiProtocol {
     func info(completion: @escaping (Result<Info>) -> Void)
     
     // Channels
@@ -21,7 +21,7 @@ protocol LightningApiProtocol {
     func subscribeChannelGraph(completion: @escaping (Result<GraphTopologyUpdate>) -> Void)
 
     // On-chain
-    func sendCoins(address: BitcoinAddress, amount: Satoshi, completion: @escaping (Result<OnChainUnconfirmedTransaction>) -> Void)
+    func sendCoins(address: BitcoinAddress, amount: Satoshi, completion: @escaping (Result<String>) -> Void)
     func transactions(completion: @escaping (Result<[Transaction]>) -> Void)
     func subscribeTransactions(completion: @escaping (Result<Transaction>) -> Void)
 

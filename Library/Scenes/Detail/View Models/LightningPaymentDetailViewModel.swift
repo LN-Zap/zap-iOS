@@ -8,6 +8,7 @@
 import Bond
 import Foundation
 import Lightning
+import SwiftLnd
 
 final class LightningPaymentDetailViewModel: NSObject, DetailViewModel {
     let detailViewControllerTitle = "scene.transaction_detail.title.payment_detail".localized

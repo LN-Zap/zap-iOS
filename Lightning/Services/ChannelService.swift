@@ -9,6 +9,7 @@ import Bond
 import BTCUtil
 import Foundation
 import ReactiveKit
+import SwiftLnd
 
 public final class ChannelService {
     private let api: LightningApiProtocol
@@ -40,7 +41,7 @@ public final class ChannelService {
         }
     }
     
-    public func open(pubKey: String, host: String, amount: Satoshi, completion: @escaping (Result<ChannelPoint>) -> Void) {
+    public func open(pubKey: String, host: String, amount: Satoshi, completion: @escaping (SwiftLnd.Result<ChannelPoint>) -> Void) {
         api.peers { [weak self, api] peers in
             if peers.value?.contains(where: { $0.pubKey == pubKey }) == true {
                 self?.openConnectedChannel(pubKey: pubKey, amount: amount, completion: completion)
@@ -56,14 +57,14 @@ public final class ChannelService {
         }
     }
     
-    private func openConnectedChannel(pubKey: String, amount: Satoshi, completion: @escaping (Result<ChannelPoint>) -> Void) {
+    private func openConnectedChannel(pubKey: String, amount: Satoshi, completion: @escaping (SwiftLnd.Result<ChannelPoint>) -> Void) {
         api.openChannel(pubKey: pubKey, amount: amount) { [weak self] in
             self?.update()
             completion($0)
         }
     }
     
-    public func close(_ channel: Channel, completion: @escaping (Result<CloseStatusUpdate>) -> Void) {
+    public func close(_ channel: Channel, completion: @escaping (SwiftLnd.Result<CloseStatusUpdate>) -> Void) {
         let force = channel.state != .active
         api.closeChannel(channelPoint: channel.channelPoint, force: force) { [weak self] in
             self?.update()

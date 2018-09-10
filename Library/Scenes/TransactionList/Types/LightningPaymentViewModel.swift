@@ -9,6 +9,7 @@ import Bond
 import BTCUtil
 import Foundation
 import Lightning
+import SwiftLnd
 
 final class LightningPaymentViewModel: TransactionViewModel {
     let lightningPayment: LightningPayment

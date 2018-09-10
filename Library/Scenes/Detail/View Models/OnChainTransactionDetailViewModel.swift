@@ -9,6 +9,7 @@ import Bond
 import BTCUtil
 import Foundation
 import Lightning
+import SwiftLnd
 
 final class OnChainTransactionDetailViewModel: NSObject, DetailViewModel {
     let detailViewControllerTitle = "scene.transaction_detail.title.transaction_detail".localized

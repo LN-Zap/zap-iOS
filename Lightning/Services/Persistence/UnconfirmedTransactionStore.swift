@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import SwiftLnd
 
 final class UnconfirmedTransactionStore: Persistable {
     typealias Value = [String: OnChainUnconfirmedTransaction]

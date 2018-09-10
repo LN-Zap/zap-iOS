@@ -8,6 +8,7 @@
 import BTCUtil
 import Foundation
 import Lightning
+import SwiftLnd
 
 final class OpenChannelViewModel {
     private let lightningService: LightningService

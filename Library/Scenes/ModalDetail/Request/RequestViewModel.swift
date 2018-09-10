@@ -9,6 +9,7 @@ import Bond
 import BTCUtil
 import Foundation
 import Lightning
+import SwiftLnd
 
 // Only used by Messages Extension
 public enum RequestViewModelFactory {

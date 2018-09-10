@@ -7,6 +7,7 @@
 
 import BTCUtil
 import Foundation
+import SwiftLnd
 
 public struct LightningInvoiceURI: PaymentURI {
     public let amount: Satoshi?

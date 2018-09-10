@@ -8,6 +8,7 @@
 import BTCUtil
 import Foundation
 import Lightning
+import SwiftLnd
 
 final class OnChainUnconfirmedTransactionViewModel: TransactionViewModel {
     let unconfirmedTransaction: OnChainUnconfirmedTransaction

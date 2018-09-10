@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import SwiftLnd
 
 public final class WalletService {
     private let password = "12345678" // TODO: save random pw in secure enclave

@@ -8,6 +8,7 @@
 import Bond
 import BTCUtil
 import Foundation
+import SwiftLnd
 
 public final class TransactionService {
     private let api: LightningApiProtocol
@@ -98,13 +99,15 @@ public final class TransactionService {
     }
     
     private func sendCoins(bitcoinURI: BitcoinURI, amount: Satoshi, completion: @escaping (Result<Success>) -> Void) {
-        api.sendCoins(address: bitcoinURI.bitcoinAddress, amount: amount) { [weak self] in
-            if let newTransaction = $0.value {
-                self?.unconfirmedTransactionStore.add(newTransaction)
-                self?.transactions.value.append(newTransaction)
+        let destinationAddress = bitcoinURI.bitcoinAddress
+        api.sendCoins(address: destinationAddress, amount: amount) { [weak self] in
+            if let txid = $0.value {
+                let unconfirmedTransaction = OnChainUnconfirmedTransaction(id: txid, amount: -amount, date: Date(), destinationAddresses: [destinationAddress])
+                self?.unconfirmedTransactionStore.add(unconfirmedTransaction)
+                self?.transactions.value.append(unconfirmedTransaction)
                 
                 if let memo = bitcoinURI.memo {
-                    self?.udpateMemo(memo, forTransactionId: newTransaction.id)
+                    self?.udpateMemo(memo, forTransactionId: unconfirmedTransaction.id)
                 }
             }
             completion($0.map { _ in Success() })

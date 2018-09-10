@@ -7,6 +7,7 @@
 
 import Bond
 import Foundation
+import SwiftLnd
 
 final class TransactionAnnotationStore: Persistable {
     typealias Value = [String: TransactionAnnotation]

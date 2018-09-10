@@ -8,6 +8,7 @@
 import BTCUtil
 import Foundation
 import Lightning
+import SwiftLnd
 
 protocol QRCodeScannerStrategy {
     var title: String { get }

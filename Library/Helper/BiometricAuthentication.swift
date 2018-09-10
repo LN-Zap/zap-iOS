@@ -8,6 +8,7 @@
 import Foundation
 import Lightning
 import LocalAuthentication
+import SwiftLnd
 
 enum BiometricAuthentication {
     enum BiometricType {

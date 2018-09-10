@@ -34,14 +34,14 @@ extension PaymentRequest {
         
         if let data = payReq.description_p.data(using: .utf8, allowLossyConversion: false) {
             if let json = try? JSONDecoder().decode(PaymentDescription.self, from: data) {
-                self.memo = json.description
+                memo = json.description
             } else if let string = String(data: data, encoding: .utf8) {
-                self.memo = string
+                memo = string
             } else {
-                self.memo = nil
+                memo = nil
             }
         } else {
-            self.memo = nil
+            memo = nil
         }
         
         paymentHash = payReq.paymentHash
@@ -49,10 +49,8 @@ extension PaymentRequest {
         date = Date(timeIntervalSince1970: TimeInterval(payReq.timestamp))
         expiryDate = Date(timeInterval: TimeInterval(payReq.expiry), since: date)
         fallbackAddress = payReq.fallbackAddr
-        
-        guard let network = LightningInvoiceURI(string: raw)?.network else { fatalError("Error decoding payment request: \(raw)") }
-        self.network = network
-        
+    
+        network = raw.hasPrefix("lnbc") ? .mainnet : .testnet
         self.raw = raw
     }
 }

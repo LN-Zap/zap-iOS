@@ -40,55 +40,55 @@ public final class LightningApiRPC: LightningApiProtocol {
         }
     }
     
-    func info(completion: @escaping (Result<Info>) -> Void) {
+    public func info(completion: @escaping (Result<Info>) -> Void) {
         _ = try? rpc.getInfo(Lnrpc_GetInfoRequest(), completion: result(completion, map: { Info(getInfoResponse: $0) }))
     }
     
-    func nodeInfo(pubKey: String, completion: @escaping (Result<NodeInfo>) -> Void) {
+    public func nodeInfo(pubKey: String, completion: @escaping (Result<NodeInfo>) -> Void) {
         let request = Lnrpc_NodeInfoRequest(pubKey: pubKey)
         _ = try? rpc.getNodeInfo(request, completion: result(completion, map: { NodeInfo(nodeInfo: $0) }))
     }
     
-    func newAddress(type: OnChainRequestAddressType, completion: @escaping (Result<BitcoinAddress>) -> Void) {
+    public func newAddress(type: OnChainRequestAddressType, completion: @escaping (Result<BitcoinAddress>) -> Void) {
         let request = Lnrpc_NewAddressRequest(type: type)
         _ = try? rpc.newAddress(request, completion: result(completion, map: {
             BitcoinAddress(string: $0.address)
         }))
     }
     
-    func walletBalance(completion: @escaping (Result<Satoshi>) -> Void) {
+    public func walletBalance(completion: @escaping (Result<Satoshi>) -> Void) {
         _ = try? rpc.walletBalance(Lnrpc_WalletBalanceRequest(), completion: result(completion, map: { Satoshi($0.totalBalance) }))
     }
     
-    func channelBalance(completion: @escaping (Result<Satoshi>) -> Void) {
+    public func channelBalance(completion: @escaping (Result<Satoshi>) -> Void) {
         _ = try? rpc.channelBalance(Lnrpc_ChannelBalanceRequest(), completion: result(completion, map: { Satoshi($0.balance) }))
     }
     
-    func transactions(completion: @escaping (Result<[Transaction]>) -> Void) {
+    public func transactions(completion: @escaping (Result<[Transaction]>) -> Void) {
         _ = try? rpc.getTransactions(Lnrpc_GetTransactionsRequest(), completion: result(completion, map: {
             $0.transactions.compactMap { OnChainConfirmedTransaction(transaction: $0) }
         }))
     }
     
-    func payments(completion: @escaping (Result<[Transaction]>) -> Void) {        
+    public func payments(completion: @escaping (Result<[Transaction]>) -> Void) {
         _ = try? rpc.listPayments(Lnrpc_ListPaymentsRequest(), completion: result(completion, map: {
             $0.payments.compactMap { LightningPayment(payment: $0) }
         }))
     }
     
-    func channels(completion: @escaping (Result<[Channel]>) -> Void) {
+    public func channels(completion: @escaping (Result<[Channel]>) -> Void) {
         _ = try? rpc.listChannels(Lnrpc_ListChannelsRequest(), completion: result(completion, map: {
             $0.channels.compactMap { $0.channelModel }
         }))
     }
     
-    func closedChannels(completion: @escaping (Result<[ChannelCloseSummary]>) -> Void) {
+    public func closedChannels(completion: @escaping (Result<[ChannelCloseSummary]>) -> Void) {
         _ = try? rpc.closedChannels(Lnrpc_ClosedChannelsRequest(), completion: result(completion, map: {
             $0.channels.map { ChannelCloseSummary(channelCloseSummary: $0) }
         }))
     }
     
-    func pendingChannels(completion: @escaping (Result<[Channel]>) -> Void) {
+    public func pendingChannels(completion: @escaping (Result<[Channel]>) -> Void) {
         _ = try? rpc.pendingChannels(Lnrpc_PendingChannelsRequest(), completion: result(completion, map: {
             let pendingOpenChannels: [Channel] = $0.pendingOpenChannels.compactMap { $0.channelModel }
             let pendingClosingChannels: [Channel] = $0.pendingClosingChannels.compactMap { $0.channelModel }
@@ -97,37 +97,35 @@ public final class LightningApiRPC: LightningApiProtocol {
         }))
     }
     
-    func connect(pubKey: String, host: String, completion: @escaping (Result<Success>) -> Void) {
+    public func connect(pubKey: String, host: String, completion: @escaping (Result<Success>) -> Void) {
         let request = Lnrpc_ConnectPeerRequest(pubKey: pubKey, host: host)        
         _ = try? rpc.connectPeer(request, completion: result(completion, map: { _ in Success() }))
     }
     
-    func openChannel(pubKey: String, amount: Satoshi, completion: @escaping (Result<ChannelPoint>) -> Void) {
+    public func openChannel(pubKey: String, amount: Satoshi, completion: @escaping (Result<ChannelPoint>) -> Void) {
         let request = Lnrpc_OpenChannelRequest(pubKey: pubKey, amount: amount)
         _ = try? rpc.openChannelSync(request, completion: result(completion, map: { ChannelPoint(channelPoint: $0) }))
     }
     
-    func sendCoins(address: BitcoinAddress, amount: Satoshi, completion: @escaping (Result<OnChainUnconfirmedTransaction>) -> Void) {
+    public func sendCoins(address: BitcoinAddress, amount: Satoshi, completion: @escaping (Result<String>) -> Void) {
         let request = Lnrpc_SendCoinsRequest(address: address, amount: amount)
-        _ = try? rpc.sendCoins(request, completion: result(completion, map: {
-            OnChainUnconfirmedTransaction(id: $0.txid, amount: -amount, date: Date(), destinationAddresses: [address])
-        }))
+        _ = try? rpc.sendCoins(request, completion: result(completion, map: { $0.txid }))
     }
     
-    func peers(completion: @escaping (Result<[Peer]>) -> Void) {
+    public func peers(completion: @escaping (Result<[Peer]>) -> Void) {
         _ = try? rpc.listPeers(Lnrpc_ListPeersRequest(), completion: result(completion, map: {
             $0.peers.compactMap { Peer(peer: $0) }
         }))
     }
     
-    func decodePaymentRequest(_ paymentRequest: String, completion: @escaping (Result<PaymentRequest>) -> Void) {
+    public func decodePaymentRequest(_ paymentRequest: String, completion: @escaping (Result<PaymentRequest>) -> Void) {
         let request = Lnrpc_PayReqString(payReq: paymentRequest)
         _ = try? rpc.decodePayReq(request, completion: result(completion, map: {
             PaymentRequest(payReq: $0, raw: paymentRequest)
         }))
     }
     
-    func sendPayment(_ paymentRequest: PaymentRequest, amount: Satoshi?, completion: @escaping (Result<LightningPayment>) -> Void) {
+    public func sendPayment(_ paymentRequest: PaymentRequest, amount: Satoshi?, completion: @escaping (Result<LightningPayment>) -> Void) {
         let request = Lnrpc_SendRequest(paymentRequest: paymentRequest.raw, amount: amount)
         _ = try? rpc.sendPaymentSync(request) { response, error in
             if !error.success {
@@ -146,18 +144,18 @@ public final class LightningApiRPC: LightningApiProtocol {
         }
     }
     
-    func addInvoice(amount: Satoshi?, memo: String?, completion: @escaping (Result<String>) -> Void) {
+    public func addInvoice(amount: Satoshi?, memo: String?, completion: @escaping (Result<String>) -> Void) {
         let request = Lnrpc_Invoice(amount: amount, memo: memo)
         _ = try? rpc.addInvoice(request, completion: result(completion, map: { $0.paymentRequest }))
     }
     
-    func invoices(completion: @escaping (Result<[Transaction]>) -> Void) {
+    public func invoices(completion: @escaping (Result<[Transaction]>) -> Void) {
         _ = try? rpc.listInvoices(Lnrpc_ListInvoiceRequest(), completion: result(completion, map: {
             $0.invoices.compactMap { LightningInvoice(invoice: $0) }
         }))
     }
     
-    func subscribeChannelGraph(completion: @escaping (Result<GraphTopologyUpdate>) -> Void) {
+    public func subscribeChannelGraph(completion: @escaping (Result<GraphTopologyUpdate>) -> Void) {
         do {
             let call = try rpc.subscribeChannelGraph(Lnrpc_GraphTopologySubscription(), completion: { print(#function, $0) })
             try receiveChannelGraphUpdate(call: call, completion: completion)
@@ -166,7 +164,7 @@ public final class LightningApiRPC: LightningApiProtocol {
         }
     }
     
-    func subscribeInvoices(completion: @escaping (Result<Transaction>) -> Void) {
+    public func subscribeInvoices(completion: @escaping (Result<Transaction>) -> Void) {
         do {
             let call = try rpc.subscribeInvoices(Lnrpc_InvoiceSubscription(), completion: { print(#function, $0) })
             try receiveInvoicesUpdate(call: call, completion: completion)
@@ -175,7 +173,7 @@ public final class LightningApiRPC: LightningApiProtocol {
         }
     }
     
-    func subscribeTransactions(completion: @escaping (Result<Transaction>) -> Void) {
+    public func subscribeTransactions(completion: @escaping (Result<Transaction>) -> Void) {
         do {
             let call = try rpc.subscribeTransactions(Lnrpc_GetTransactionsRequest(), completion: { print(#function, $0) })
             try receiveTransactionsUpdate(call: call, completion: completion)
@@ -184,7 +182,7 @@ public final class LightningApiRPC: LightningApiProtocol {
         }
     }
     
-    func closeChannel(channelPoint: ChannelPoint, force: Bool, completion: @escaping (Result<CloseStatusUpdate>) -> Void) {
+    public func closeChannel(channelPoint: ChannelPoint, force: Bool, completion: @escaping (Result<CloseStatusUpdate>) -> Void) {
         guard let request = Lnrpc_CloseChannelRequest(channelPoint: channelPoint, force: force) else {
             completion(.failure(LndApiError.invalidInput))
             return

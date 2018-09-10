@@ -8,6 +8,7 @@
 import Bond
 import Foundation
 import ReactiveKit
+import SwiftLnd
 
 public final class ChannelTransactionAnnotationUpdater: NSObject {
     let channelService: ChannelService

@@ -9,6 +9,7 @@ import Bond
 import Foundation
 import KeychainAccess
 import Lightning
+import SwiftLnd
 
 private let keychainPinKey = "hashedSaltPin"
 private let keychainPinLengthKey = "pinLength"

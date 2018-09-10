@@ -22,8 +22,6 @@ extension Transaction {
             return lhs == rhs
         } else if let lhs = self as? LightningPayment, let rhs = transaction as? LightningPayment {
             return lhs == rhs
-        } else if let lhs = self as? OnChainUnconfirmedTransaction, let rhs = transaction as? OnChainUnconfirmedTransaction {
-            return lhs == rhs
         } else {
             return false
         }

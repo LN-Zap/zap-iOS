@@ -9,6 +9,7 @@ import Bond
 import Foundation
 import Lightning
 import ReactiveKit
+import SwiftLnd
 
 extension ChannelState: Comparable {
     var sortRank: Int {
@@ -75,7 +76,7 @@ final class ChannelListViewModel: NSObject {
         channelService.update()
     }
     
-    func close(_ channel: Channel, completion: @escaping (Lightning.Result<CloseStatusUpdate>) -> Void) {
+    func close(_ channel: Channel, completion: @escaping (SwiftLnd.Result<CloseStatusUpdate>) -> Void) {
         channelService.close(channel, completion: completion)
     }
 }

@@ -56,12 +56,6 @@ extension OnChainConfirmedTransaction {
     }
 }
 
-extension OnChainUnconfirmedTransaction {
-    static var template: OnChainUnconfirmedTransaction {
-        return OnChainUnconfirmedTransaction(id: "abc", amount: 1000, date: Date(), destinationAddresses: [BitcoinAddress.template])
-    }
-}
-
 extension LightningPayment {
     static var template: LightningPayment {
         return LightningPayment(

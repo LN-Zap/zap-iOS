@@ -8,6 +8,7 @@
 import BTCUtil
 import Foundation
 import Lightning
+import SwiftLnd
 
 class SendQRCodeScannerStrategy: QRCodeScannerStrategy {
     private let nodeStore: LightningNodeStore

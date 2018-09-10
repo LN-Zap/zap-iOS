@@ -8,6 +8,7 @@
 import Bond
 import Foundation
 import Lightning
+import SwiftLnd
 
 final class RootViewModel: NSObject {
     enum State {

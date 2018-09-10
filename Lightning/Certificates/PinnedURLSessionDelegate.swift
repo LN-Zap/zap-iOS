@@ -5,7 +5,7 @@
 //  Copyright © 2018 Zap. All rights reserved.
 //
 
-import CommonCrypto
+//import CommonCrypto
 import Foundation
 
 public extension URLSession {

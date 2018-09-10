@@ -22,7 +22,7 @@ final class LightningApiMock: LightningApiProtocol {
     private let connectError: Bool?
     private let channelPoint: ChannelPoint?
     private let closeChannelStatusUpdate: CloseStatusUpdate?
-    private let sendCoins: OnChainUnconfirmedTransaction?
+    private let sendCoins: String?
     private let peers: [Peer]?
     private let decodePaymentRequest: PaymentRequest?
     private let sendPayment: LightningPayment?
@@ -46,7 +46,7 @@ final class LightningApiMock: LightningApiProtocol {
         connectError: Bool? = nil,
         channelPoint: ChannelPoint? = nil,
         closeChannelStatusUpdate: CloseStatusUpdate? = nil,
-        sendCoins: OnChainUnconfirmedTransaction? = nil,
+        sendCoins: String? = nil,
         peers: [Peer]? = nil,
         decodePaymentRequest: PaymentRequest? = nil,
         sendPayment: LightningPayment? = nil,
@@ -156,7 +156,7 @@ final class LightningApiMock: LightningApiProtocol {
         completion(Result(value: closedChannels, error: LndApiError.unknownError))
     }
     
-    func sendCoins(address: BitcoinAddress, amount: Satoshi, completion: @escaping (Result<OnChainUnconfirmedTransaction>) -> Void) {
+    func sendCoins(address: BitcoinAddress, amount: Satoshi, completion: @escaping (Result<String>) -> Void) {
         completion(Result(value: sendCoins, error: LndApiError.unknownError))
     }
     
@@ -199,7 +199,6 @@ enum ApiMockTemplate {
         case .transactions:
             return LightningApiMock(transactions: [
                 OnChainConfirmedTransaction.template,
-                OnChainUnconfirmedTransaction.template,
                 LightningPayment.template
             ])
         case .everything:
@@ -207,7 +206,6 @@ enum ApiMockTemplate {
                 walletBalance: 4_200_000,
                 transactions: [
                     OnChainConfirmedTransaction.template,
-                    OnChainUnconfirmedTransaction.template,
                     LightningPayment.template
                 ],
                 channels: [

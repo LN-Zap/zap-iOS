@@ -8,6 +8,7 @@
 import Bond
 import BTCUtil
 import Foundation
+import SwiftLnd
 
 protocol DetailViewModel {
     var detailViewControllerTitle: String { get }

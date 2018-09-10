@@ -8,6 +8,7 @@
 import BTCUtil
 import Foundation
 import Lightning
+import SwiftLnd
 
 extension InvoiceError: LocalizedError {
     public var errorDescription: String? {

@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import SwiftLnd
 
 // TODO: remove channel Service reference
 public final class LightningNodeStore: Persistable {

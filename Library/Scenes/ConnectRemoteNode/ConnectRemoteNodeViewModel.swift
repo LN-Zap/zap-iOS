@@ -9,6 +9,7 @@ import Bond
 import Foundation
 import Lightning
 import ReactiveKit
+import SwiftLnd
 
 final class ConnectRemoteNodeViewModel: NSObject {
     enum CellType: Equatable {

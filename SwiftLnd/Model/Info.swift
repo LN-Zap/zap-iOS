@@ -8,14 +8,14 @@
 import BTCUtil
 import Foundation
 
-struct Info {
-    let alias: String
-    let blockHeight: Int
-    let isSyncedToChain: Bool
-    let network: Network
-    let pubKey: String
-    let activeChannelCount: Int
-    let bestHeaderDate: Date
+public struct Info {
+    public let alias: String
+    public let blockHeight: Int
+    public let isSyncedToChain: Bool
+    public let network: Network
+    public let pubKey: String
+    public let activeChannelCount: Int
+    public let bestHeaderDate: Date
 }
 
 extension Info {

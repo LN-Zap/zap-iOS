@@ -6,6 +6,7 @@
 //
 
 import Lightning
+import SwiftLnd
 import UIKit
 
 final class SendViewController: ModalDetailViewController {

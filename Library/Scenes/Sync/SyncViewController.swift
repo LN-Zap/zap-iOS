@@ -7,6 +7,7 @@
 
 import Lightning
 import ReactiveKit
+import SwiftLnd
 import UIKit
 
 protocol SyncDelegate: class {

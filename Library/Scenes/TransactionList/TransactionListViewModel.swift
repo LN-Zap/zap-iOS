@@ -9,6 +9,7 @@ import Bond
 import Foundation
 import Lightning
 import ReactiveKit
+import SwiftLnd
 
 enum HeaderTableCellType<Value: Equatable>: Equatable {
     case header(String)

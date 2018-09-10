@@ -6,7 +6,7 @@
 //
 
 import Foundation
-import Lightning
+import SwiftLnd
 
 extension CloseType: Localizable {
     public var localized: String {
