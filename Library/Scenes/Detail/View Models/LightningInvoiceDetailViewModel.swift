@@ -14,7 +14,7 @@ final class LightningInvoiceDetailViewModel: NSObject, DetailViewModel {
     let detailViewControllerTitle = "scene.transaction_detail.title.lightning_invoice".localized
     let detailCells = MutableObservableArray<DetailCellType>([])
     
-    init(lightningInvoice: LightningInvoice, annotation: Observable<TransactionAnnotation>, transactionListViewModel: TransactionListViewModel) {
+    init(lightningInvoice: Invoice, annotation: Observable<TransactionAnnotation>, transactionListViewModel: TransactionListViewModel) {
         super.init()
         
         if lightningInvoice.expiry > Date(),

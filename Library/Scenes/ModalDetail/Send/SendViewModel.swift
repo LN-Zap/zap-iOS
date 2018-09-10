@@ -52,7 +52,7 @@ final class SendViewModel {
         }
     }
     
-    private let invoice: Invoice
+    private let invoice: BitcoinInvoice
     let method: SendMethod
     
     var amount: Satoshi?
@@ -64,7 +64,7 @@ final class SendViewModel {
     private let nodeStore: LightningNodeStore
     private let lightningService: LightningService
     
-    init(invoice: Invoice, nodeStore: LightningNodeStore, lightningService: LightningService) {
+    init(invoice: BitcoinInvoice, nodeStore: LightningNodeStore, lightningService: LightningService) {
         self.invoice = invoice
         self.nodeStore = nodeStore
         self.lightningService = lightningService

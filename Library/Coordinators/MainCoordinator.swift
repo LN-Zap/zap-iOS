@@ -38,7 +38,7 @@ final class MainCoordinator: Routing {
         switch route {
         case .send(let invoice):
             if let invoice = invoice {
-                Invoice.create(from: invoice, lightningService: lightningService, completion: { [weak self] result in
+                BitcoinInvoice.create(from: invoice, lightningService: lightningService, completion: { [weak self] result in
                     DispatchQueue.main.async {
                         switch result {
                         case .success:

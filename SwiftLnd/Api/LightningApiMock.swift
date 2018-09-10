@@ -16,7 +16,7 @@ final class LightningApiMock: LightningApiProtocol {
     private let channelBalance: Satoshi?
     private let transactions: [OnChainConfirmedTransaction]?
     private let subscribeTransactions: OnChainConfirmedTransaction?
-    private let payments: [LightningPayment]?
+    private let payments: [Payment]?
     private let channels: [Channel]?
     private let pendingChannels: [Channel]?
     private let connectError: Bool?
@@ -25,12 +25,12 @@ final class LightningApiMock: LightningApiProtocol {
     private let sendCoins: String?
     private let peers: [Peer]?
     private let decodePaymentRequest: PaymentRequest?
-    private let sendPayment: LightningPayment?
+    private let sendPayment: Payment?
     private let addInvoice: String?
     private let graphTopologyUpdate: GraphTopologyUpdate?
     private let closedChannels: [ChannelCloseSummary]?
-    private let subscribeInvoices: LightningInvoice?
-    private let invoices: [LightningInvoice]?
+    private let subscribeInvoices: Invoice?
+    private let invoices: [Invoice]?
     
     init(
         info: Info? = Info.Template.testnet,
@@ -40,7 +40,7 @@ final class LightningApiMock: LightningApiProtocol {
         channelBalance: Satoshi? = nil,
         transactions: [OnChainConfirmedTransaction]? = nil,
         subscribeTransactions: OnChainConfirmedTransaction? = nil,
-        payments: [LightningPayment]? = nil,
+        payments: [Payment]? = nil,
         channels: [Channel]? = nil,
         pendingChannels: [Channel]? = nil,
         connectError: Bool? = nil,
@@ -49,12 +49,12 @@ final class LightningApiMock: LightningApiProtocol {
         sendCoins: String? = nil,
         peers: [Peer]? = nil,
         decodePaymentRequest: PaymentRequest? = nil,
-        sendPayment: LightningPayment? = nil,
+        sendPayment: Payment? = nil,
         addInvoice: String? = nil,
         graphTopologyUpdate: GraphTopologyUpdate? = nil,
         closedChannels: [ChannelCloseSummary]? = nil,
-        subscribeInvoices: LightningInvoice? = nil,
-        invoices: [LightningInvoice]? = nil
+        subscribeInvoices: Invoice? = nil,
+        invoices: [Invoice]? = nil
         ) {
         self.info = info
         self.nodeInfo = nodeInfo
@@ -104,7 +104,7 @@ final class LightningApiMock: LightningApiProtocol {
         completion(Result(value: subscribeTransactions, error: LndApiError.unknownError))
     }
     
-    func payments(completion: @escaping (Result<[LightningPayment]>) -> Void) {
+    func payments(completion: @escaping (Result<[Payment]>) -> Void) {
         completion(Result(value: payments, error: LndApiError.unknownError))
     }
     
@@ -132,7 +132,7 @@ final class LightningApiMock: LightningApiProtocol {
         completion(Result(value: decodePaymentRequest, error: LndApiError.unknownError))
     }
     
-    func sendPayment(_ paymentRequest: PaymentRequest, amount: Satoshi?, completion: @escaping (Result<LightningPayment>) -> Void) {
+    func sendPayment(_ paymentRequest: PaymentRequest, amount: Satoshi?, completion: @escaping (Result<Payment>) -> Void) {
         completion(Result(value: sendPayment, error: LndApiError.unknownError))
     }
     
@@ -160,11 +160,11 @@ final class LightningApiMock: LightningApiProtocol {
         completion(Result(value: sendCoins, error: LndApiError.unknownError))
     }
     
-    func invoices(completion: @escaping (Result<[LightningInvoice]>) -> Void) {
+    func invoices(completion: @escaping (Result<[Invoice]>) -> Void) {
         completion(Result(value: invoices, error: LndApiError.unknownError))
     }
     
-    func subscribeInvoices(completion: @escaping (Result<LightningInvoice>) -> Void) {
+    func subscribeInvoices(completion: @escaping (Result<Invoice>) -> Void) {
         completion(Result(value: subscribeInvoices, error: LndApiError.unknownError))
     }
     
@@ -202,7 +202,7 @@ enum ApiMockTemplate {
                     OnChainConfirmedTransaction.template
                 ],
                 payments: [
-                    LightningPayment.template
+                    Payment.template
                 ]
             )
         case .everything:
@@ -212,13 +212,13 @@ enum ApiMockTemplate {
                     OnChainConfirmedTransaction.template
                 ],
                 payments: [
-                    LightningPayment.template
+                    Payment.template
                 ],
                 channels: [
                     Channel.template
                 ],
                 decodePaymentRequest: PaymentRequest.Template.testnetFallback,
-                sendPayment: LightningPayment.template
+                sendPayment: Payment.template
             )
         }
     }

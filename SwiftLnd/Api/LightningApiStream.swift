@@ -46,7 +46,7 @@ final class LightningApiStream: LightningApiProtocol {
     
     func payments(completion: @escaping (Result<[Transaction]>) -> Void) {
         LndmobileListPayments(nil, StreamCallback<Lnrpc_ListPaymentsResponse, [Transaction]>(completion) {
-            $0.payments.compactMap { LightningPayment(payment: $0) }
+            $0.payments.compactMap { Payment(payment: $0) }
         })
     }
     
@@ -105,9 +105,9 @@ final class LightningApiStream: LightningApiProtocol {
         LndmobileDecodePayReq(data, StreamCallback<Lnrpc_PayReq, PaymentRequest>(completion) { PaymentRequest(payReq: $0, raw: paymentRequest) })
     }
     
-    func sendPayment(_ paymentRequest: PaymentRequest, amount: Satoshi?, completion: @escaping (Result<LightningPayment>) -> Void) {
+    func sendPayment(_ paymentRequest: PaymentRequest, amount: Satoshi?, completion: @escaping (Result<Payment>) -> Void) {
         let data = try? Lnrpc_SendRequest(paymentRequest: paymentRequest.raw, amount: amount).serializedData()
-        LndmobileSendPaymentSync(data, StreamCallback<Lnrpc_SendResponse, LightningPayment>(completion) { LightningPayment(paymentRequest: paymentRequest, sendResponse: $0) })
+        LndmobileSendPaymentSync(data, StreamCallback<Lnrpc_SendResponse, LightningPayment>(completion) { Payment(paymentRequest: paymentRequest, sendResponse: $0) })
     }
     
     func addInvoice(amount: Satoshi?, memo: String?, completion: @escaping (Result<String>) -> Void) {
@@ -117,7 +117,7 @@ final class LightningApiStream: LightningApiProtocol {
     
     func invoices(completion: @escaping (Result<[Transaction]>) -> Void) {
         LndmobileListInvoices(nil, StreamCallback<Lnrpc_ListInvoiceResponse, [Transaction]>(completion) {
-            $0.invoices.compactMap { LightningInvoice(invoice: $0) }
+            $0.invoices.compactMap { Invoice(invoice: $0) }
         })
     }
     
@@ -127,7 +127,7 @@ final class LightningApiStream: LightningApiProtocol {
     
     func subscribeInvoices(completion: @escaping (Result<Transaction>) -> Void) {
         LndmobileSubscribeInvoices(nil, StreamCallback<Lnrpc_Invoice, Transaction>(completion) {
-            LightningInvoice(invoice: $0)
+            Invoice(invoice: $0)
         })
     }
 }

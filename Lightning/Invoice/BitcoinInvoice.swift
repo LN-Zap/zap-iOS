@@ -18,7 +18,7 @@ public enum InvoiceError: Error {
  Can be either a payment request or a bitcoinURI or both. (bitcoin uri with
  ln fallback or ln invoice with on-chain fallback.
 */
-public final class Invoice {
+public final class BitcoinInvoice {
     public let lightningPaymentRequest: PaymentRequest?
     public let bitcoinURI: BitcoinURI?
 
@@ -27,13 +27,13 @@ public final class Invoice {
         self.bitcoinURI = bitcoinURI
     }
     
-    public static func create(from address: String, lightningService: LightningService, completion: @escaping (Result<Invoice>) -> Void) {
+    public static func create(from address: String, lightningService: LightningService, completion: @escaping (Result<BitcoinInvoice>) -> Void) {
         if let bitcoinURI = BitcoinURI(string: address) {
             if let paymentRequest = bitcoinURI.lightningFallback,
                 let invoiceURI = LightningInvoiceURI(string: paymentRequest) {
                 decodeLightningPaymentRequest(invoiceURI: invoiceURI, bitcoinURI: bitcoinURI, lightningService: lightningService, completion: completion)
             } else {
-                validateInvoice(Invoice(lightningPaymentRequest: nil, bitcoinURI: bitcoinURI), lightningService: lightningService, completion: completion)
+                validateInvoice(BitcoinInvoice(lightningPaymentRequest: nil, bitcoinURI: bitcoinURI), lightningService: lightningService, completion: completion)
             }
         } else if let invoiceURI = LightningInvoiceURI(string: address) {
             decodeLightningPaymentRequest(invoiceURI: invoiceURI, bitcoinURI: nil, lightningService: lightningService, completion: completion)
@@ -42,18 +42,18 @@ public final class Invoice {
         }
     }
     
-    private static func decodeLightningPaymentRequest(invoiceURI: LightningInvoiceURI, bitcoinURI: BitcoinURI?, lightningService: LightningService, completion: @escaping (Result<Invoice>) -> Void) {
+    private static func decodeLightningPaymentRequest(invoiceURI: LightningInvoiceURI, bitcoinURI: BitcoinURI?, lightningService: LightningService, completion: @escaping (Result<BitcoinInvoice>) -> Void) {
         lightningService.transactionService.decodePaymentRequest(invoiceURI.address) { result in
             switch result {
             case .success(let paymentRequest):
-                let invoice: Invoice
+                let invoice: BitcoinInvoice
                 
                 if bitcoinURI == nil,
                     let fallbackAddress = paymentRequest.fallbackAddress,
                     let fallbackBitcoinURI = BitcoinURI(string: fallbackAddress) {
-                    invoice = Invoice(lightningPaymentRequest: paymentRequest, bitcoinURI: fallbackBitcoinURI)
+                    invoice = BitcoinInvoice(lightningPaymentRequest: paymentRequest, bitcoinURI: fallbackBitcoinURI)
                 } else {
-                    invoice = Invoice(lightningPaymentRequest: paymentRequest, bitcoinURI: bitcoinURI)
+                    invoice = BitcoinInvoice(lightningPaymentRequest: paymentRequest, bitcoinURI: bitcoinURI)
                 }
                 
                 validateInvoice(invoice, lightningService: lightningService, completion: completion)
@@ -63,7 +63,7 @@ public final class Invoice {
         }
     }
     
-    private static func validateInvoice(_ invoice: Invoice, lightningService: LightningService, completion: (Result<Invoice>) -> Void) {
+    private static func validateInvoice(_ invoice: BitcoinInvoice, lightningService: LightningService, completion: (Result<BitcoinInvoice>) -> Void) {
         let currentNetwork = lightningService.infoService.network.value
         
         if let bitcoinURI = invoice.bitcoinURI,

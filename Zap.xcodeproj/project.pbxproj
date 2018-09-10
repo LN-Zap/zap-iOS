@@ -54,7 +54,7 @@
 		AD28844621282073003C3D94 /* Bolt11Tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD66377720F39A7700284E2B /* Bolt11Tests.swift */; };
 		AD2884472128209B003C3D94 /* LightningInvoiceURITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0733CD920471F0A0005643A /* LightningInvoiceURITests.swift */; };
 		AD28844921282139003C3D94 /* LightningNodeURITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD28844821282139003C3D94 /* LightningNodeURITests.swift */; };
-		AD28844B212824DC003C3D94 /* Invoice.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD28844A212824DC003C3D94 /* Invoice.swift */; };
+		AD28844B212824DC003C3D94 /* BitcoinInvoice.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD28844A212824DC003C3D94 /* BitcoinInvoice.swift */; };
 		AD28844D21284DAC003C3D94 /* InvoiceTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD28844C21284DAC003C3D94 /* InvoiceTests.swift */; };
 		AD28844F21287B56003C3D94 /* SendViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD28844E21287B56003C3D94 /* SendViewModel.swift */; };
 		AD28CB7B211DE93300A31004 /* BlockExplorerSettingsItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD28CB7A211DE93300A31004 /* BlockExplorerSettingsItem.swift */; };
@@ -322,8 +322,8 @@
 		ADFB36DB2143B73C00146FCC /* RemoteRPCConfiguration.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD71EA4820E2318000256307 /* RemoteRPCConfiguration.swift */; };
 		ADFB36DC2143B8C000146FCC /* String.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADFEFA7620E629AA00FE1557 /* String.swift */; };
 		ADFB36DF2143B93300146FCC /* Environment.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADCD060020E67FA5009D9650 /* Environment.swift */; };
-		ADFB36E62143BA6F00146FCC /* LightningInvoice.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADC29C0B20A9B0A0008B2DC2 /* LightningInvoice.swift */; };
-		ADFB36E72143BAC500146FCC /* LightningPayment.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADECC36820F257AF00D00546 /* LightningPayment.swift */; };
+		ADFB36E62143BA6F00146FCC /* Invoice.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADC29C0B20A9B0A0008B2DC2 /* Invoice.swift */; };
+		ADFB36E72143BAC500146FCC /* Payment.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADECC36820F257AF00D00546 /* Payment.swift */; };
 		ADFB36E92143BB2200146FCC /* OnChainConfirmedTransaction.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADECC36A20F257BE00D00546 /* OnChainConfirmedTransaction.swift */; };
 		ADFB36EC2146517700146FCC /* OnChainUnconfirmedTransaction.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD22FD0E20F737690016399D /* OnChainUnconfirmedTransaction.swift */; };
 		ADFB36ED21465C0100146FCC /* Transaction.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0A05A5820149AF20007D1C9 /* Transaction.swift */; };
@@ -671,7 +671,7 @@
 		AD2884362126DDA2003C3D94 /* ModalDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModalDetailViewController.swift; sourceTree = "<group>"; };
 		AD28843D21272B9A003C3D94 /* SendViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SendViewController.swift; sourceTree = "<group>"; };
 		AD28844821282139003C3D94 /* LightningNodeURITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LightningNodeURITests.swift; sourceTree = "<group>"; };
-		AD28844A212824DC003C3D94 /* Invoice.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Invoice.swift; sourceTree = "<group>"; };
+		AD28844A212824DC003C3D94 /* BitcoinInvoice.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BitcoinInvoice.swift; sourceTree = "<group>"; };
 		AD28844C21284DAC003C3D94 /* InvoiceTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InvoiceTests.swift; sourceTree = "<group>"; };
 		AD28844E21287B56003C3D94 /* SendViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SendViewModel.swift; sourceTree = "<group>"; };
 		AD28CB7A211DE93300A31004 /* BlockExplorerSettingsItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BlockExplorerSettingsItem.swift; sourceTree = "<group>"; };
@@ -896,7 +896,7 @@
 		ADC0D2FD2107A30200B8C62F /* *.api.btc.com.cer */ = {isa = PBXFileReference; lastKnownFileType = file; path = "*.api.btc.com.cer"; sourceTree = "<group>"; };
 		ADC0D3022107A3D600B8C62F /* blockexplorer.com.cer */ = {isa = PBXFileReference; lastKnownFileType = file; path = blockexplorer.com.cer; sourceTree = "<group>"; };
 		ADC0D3032107A3D700B8C62F /* CloudFlare Inc ECC CA-2.cer */ = {isa = PBXFileReference; lastKnownFileType = file; path = "CloudFlare Inc ECC CA-2.cer"; sourceTree = "<group>"; };
-		ADC29C0B20A9B0A0008B2DC2 /* LightningInvoice.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LightningInvoice.swift; sourceTree = "<group>"; };
+		ADC29C0B20A9B0A0008B2DC2 /* Invoice.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Invoice.swift; sourceTree = "<group>"; };
 		ADCD060020E67FA5009D9650 /* Environment.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Environment.swift; sourceTree = "<group>"; };
 		ADCD5B0C20D7E3F50037F156 /* RemoveRemoteNodeSettingsItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RemoveRemoteNodeSettingsItem.swift; sourceTree = "<group>"; };
 		ADCD5B0E20D7E40C0037F156 /* ChangePinSettingsItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChangePinSettingsItem.swift; sourceTree = "<group>"; };
@@ -921,7 +921,7 @@
 		ADE19C3F20E7892000340E2E /* ChannelPoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChannelPoint.swift; sourceTree = "<group>"; };
 		ADE4CF1C20B5B2BE007C987A /* UIFont.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIFont.swift; sourceTree = "<group>"; };
 		ADE4CF1E20B5B6FC007C987A /* Environment.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Environment.swift; sourceTree = "<group>"; };
-		ADECC36820F257AF00D00546 /* LightningPayment.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LightningPayment.swift; sourceTree = "<group>"; };
+		ADECC36820F257AF00D00546 /* Payment.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Payment.swift; sourceTree = "<group>"; };
 		ADECC36A20F257BE00D00546 /* OnChainConfirmedTransaction.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnChainConfirmedTransaction.swift; sourceTree = "<group>"; };
 		ADEDBB8B20C2D6A700B71F17 /* SetupCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetupCoordinator.swift; sourceTree = "<group>"; };
 		ADEDBB8D20C2D70B00B71F17 /* MainCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainCoordinator.swift; sourceTree = "<group>"; };
@@ -1351,8 +1351,8 @@
 				A0A96B8520174BAC00788808 /* CloseStatusUpdate.swift */,
 				AD93ED5520A09D59000E814E /* GraphTopologyUpdate.swift */,
 				A0376B6E201CC04400F1FBEF /* Info.swift */,
-				ADC29C0B20A9B0A0008B2DC2 /* LightningInvoice.swift */,
-				ADECC36820F257AF00D00546 /* LightningPayment.swift */,
+				ADC29C0B20A9B0A0008B2DC2 /* Invoice.swift */,
+				ADECC36820F257AF00D00546 /* Payment.swift */,
 				AD7746582076609400EC596B /* NodeInfo.swift */,
 				ADECC36A20F257BE00D00546 /* OnChainConfirmedTransaction.swift */,
 				ADFEFA7320E6294000FE1557 /* OnChainRequestAddressType.swift */,
@@ -1540,7 +1540,7 @@
 			isa = PBXGroup;
 			children = (
 				AD66377520F399F900284E2B /* Bolt11.swift */,
-				AD28844A212824DC003C3D94 /* Invoice.swift */,
+				AD28844A212824DC003C3D94 /* BitcoinInvoice.swift */,
 				AD97A90B20EFC127008344EA /* LightningInvoiceURI.swift */,
 			);
 			path = Invoice;
@@ -2989,7 +2989,7 @@
 				ADFB36EC2146517700146FCC /* OnChainUnconfirmedTransaction.swift in Sources */,
 				AD28844521281FBC003C3D94 /* LightningNodeURI.swift in Sources */,
 				ADFB36ED21465C0100146FCC /* Transaction.swift in Sources */,
-				AD28844B212824DC003C3D94 /* Invoice.swift in Sources */,
+				AD28844B212824DC003C3D94 /* BitcoinInvoice.swift in Sources */,
 				ADFEFA6420E627F100FE1557 /* LightningNodeStore.swift in Sources */,
 				ADFEFA6B20E627F100FE1557 /* ChannelService.swift in Sources */,
 				ADFEFA6820E627F100FE1557 /* TransactionAnnotationStore.swift in Sources */,
@@ -3023,7 +3023,7 @@
 				ADADAD9E2143B3C900A48E1F /* LightningApiStream.swift in Sources */,
 				ADADAD8E2143B3C900A48E1F /* NodeInfo.swift in Sources */,
 				ADADAD972143B3C900A48E1F /* LndApiError.swift in Sources */,
-				ADFB36E72143BAC500146FCC /* LightningPayment.swift in Sources */,
+				ADFB36E72143BAC500146FCC /* Payment.swift in Sources */,
 				ADADAD992143B3C900A48E1F /* Result.swift in Sources */,
 				ADADAD892143B3C900A48E1F /* ChannelCloseSummary.swift in Sources */,
 				ADFB36DF2143B93300146FCC /* Environment.swift in Sources */,
@@ -3052,7 +3052,7 @@
 				ADFB36DB2143B73C00146FCC /* RemoteRPCConfiguration.swift in Sources */,
 				ADADAD8C2143B3C900A48E1F /* GraphTopologyUpdate.swift in Sources */,
 				ADADADA12143B3C900A48E1F /* WalletApiStream.swift in Sources */,
-				ADFB36E62143BA6F00146FCC /* LightningInvoice.swift in Sources */,
+				ADFB36E62143BA6F00146FCC /* Invoice.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

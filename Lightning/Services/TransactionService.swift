@@ -26,7 +26,7 @@ public final class TransactionService {
         self.channelService = channelService
     }
     
-    public func send(_ invoice: Invoice, amount: Satoshi, completion: @escaping (Result<Success>) -> Void) {
+    public func send(_ invoice: BitcoinInvoice, amount: Satoshi, completion: @escaping (Result<Success>) -> Void) {
         if let paymentRequest = invoice.lightningPaymentRequest {
             sendPayment(paymentRequest, amount: amount, completion: completion)
         } else if let bitcoinURI = invoice.bitcoinURI {

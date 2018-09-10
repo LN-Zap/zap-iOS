@@ -14,7 +14,7 @@ final class LightningPaymentDetailViewModel: NSObject, DetailViewModel {
     let detailViewControllerTitle = "scene.transaction_detail.title.payment_detail".localized
     let detailCells = MutableObservableArray<DetailCellType>([])
     
-    init(lightningPayment: LightningPayment, annotation: Observable<TransactionAnnotation>, transactionListViewModel: TransactionListViewModel) {
+    init(lightningPayment: Payment, annotation: Observable<TransactionAnnotation>, transactionListViewModel: TransactionListViewModel) {
         super.init()
         
         if let amountString = Settings.shared.primaryCurrency.value.format(satoshis: lightningPayment.amount) {

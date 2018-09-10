@@ -11,13 +11,13 @@ import XCTest
 
 class InvoiceTests: XCTestCase {
     
-    func createInvoice(address: String, network: Network, decodedPaymentRequest: PaymentRequest, testAssertions: @escaping (Result<Invoice>) -> Void) {
+    func createInvoice(address: String, network: Network, decodedPaymentRequest: PaymentRequest, testAssertions: @escaping (Result<BitcoinInvoice>) -> Void) {
         let api = LightningApiMock(info: network == .mainnet ? Info.Template.mainnet : Info.Template.testnet, decodePaymentRequest: decodedPaymentRequest)
         let mockService = LightningService(api: api)
         
         let expectation = self.expectation(description: "Decoding")
         
-        Invoice.create(from: address, lightningService: mockService) {
+        BitcoinInvoice.create(from: address, lightningService: mockService) {
                 testAssertions($0)
                 expectation.fulfill()
         }

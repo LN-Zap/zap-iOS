@@ -12,9 +12,9 @@ import Lightning
 import SwiftLnd
 
 final class LightningPaymentViewModel: TransactionViewModel {
-    let lightningPayment: LightningPayment
+    let lightningPayment: Payment
     
-    init(lightningPayment: LightningPayment, annotation: TransactionAnnotation) {
+    init(lightningPayment: Payment, annotation: TransactionAnnotation) {
         self.lightningPayment = lightningPayment
 
         let displayTextString = LightningPaymentViewModel.displayTextForAnnotation(annotation, lightningPayment: lightningPayment)
@@ -28,7 +28,7 @@ final class LightningPaymentViewModel: TransactionViewModel {
             .dispose(in: reactive.bag)
     }
     
-    private static func displayTextForAnnotation(_ annotation: TransactionAnnotation, lightningPayment: LightningPayment) -> String {
+    private static func displayTextForAnnotation(_ annotation: TransactionAnnotation, lightningPayment: Payment) -> String {
         if let customMemo = annotation.customMemo, customMemo != "" {
             return customMemo
         }

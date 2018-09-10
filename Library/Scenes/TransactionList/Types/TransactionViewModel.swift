@@ -76,9 +76,9 @@ class TransactionViewModel: NSObject {
     static func instance(for transaction: Transaction, annotation: TransactionAnnotation, nodeStore: LightningNodeStore) -> TransactionViewModel {
         if let transaction = transaction as? OnChainConfirmedTransaction {
             return OnChainConfirmedTransactionViewModel(onChainTransaction: transaction, annotation: annotation, nodeStore: nodeStore)
-        } else if let transaction = transaction as? LightningPayment {
+        } else if let transaction = transaction as? Payment {
             return LightningPaymentViewModel(lightningPayment: transaction, annotation: annotation)
-        } else if let transaction = transaction as? LightningInvoice {
+        } else if let transaction = transaction as? Invoice {
             return LightningInvoiceViewModel(lightningInvoice: transaction, annotation: annotation)
         } else if let transaction = transaction as? OnChainUnconfirmedTransaction {
             return OnChainUnconfirmedTransactionViewModel(unconfirmedTransaction: transaction, annotation: annotation)
@@ -90,8 +90,8 @@ class TransactionViewModel: NSObject {
     func matchesFilterSettings(_ filterSettings: FilterSettings) -> Bool {
         let isMatchingTransactionType =
             (transaction is OnChainTransaction && filterSettings.displayOnChainTransactions)
-            || (transaction is LightningPayment && filterSettings.displayLightningPayments)
-            || (transaction is LightningInvoice && filterSettings.displayLightningInvoices)
+            || (transaction is Payment && filterSettings.displayLightningPayments)
+            || (transaction is Invoice && filterSettings.displayLightningInvoices)
         
         return (!annotation.value.isHidden || filterSettings.displayArchivedTransactions) && isMatchingTransactionType
     }

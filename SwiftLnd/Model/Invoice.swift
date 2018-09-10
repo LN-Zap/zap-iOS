@@ -8,7 +8,7 @@
 import BTCUtil
 import Foundation
 
-public struct LightningInvoice: Equatable {
+public struct Invoice: Equatable {
     public let id: String
     public let memo: String
     public let amount: Satoshi
@@ -19,7 +19,7 @@ public struct LightningInvoice: Equatable {
     public let paymentRequest: String
 }
 
-extension LightningInvoice {
+extension Invoice {
     init(invoice: Lnrpc_Invoice) {
         id = invoice.rHash.hexString()
         memo = invoice.memo

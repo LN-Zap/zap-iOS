@@ -18,10 +18,10 @@ enum LightningInvoiceState {
 }
 
 final class LightningInvoiceViewModel: TransactionViewModel {
-    let lightningInvoice: LightningInvoice
+    let lightningInvoice: Invoice
     let state: Observable<LightningInvoiceState>
     
-    init(lightningInvoice: LightningInvoice, annotation: TransactionAnnotation) {
+    init(lightningInvoice: Invoice, annotation: TransactionAnnotation) {
         self.lightningInvoice = lightningInvoice
         
         let displayTextString = LightningInvoiceViewModel.displayTextForAnnotation(annotation, lightningInvoice: lightningInvoice)
@@ -50,7 +50,7 @@ final class LightningInvoiceViewModel: TransactionViewModel {
             .dispose(in: reactive.bag)
     }
     
-    private static func displayTextForAnnotation(_ annotation: TransactionAnnotation, lightningInvoice: LightningInvoice) -> String {
+    private static func displayTextForAnnotation(_ annotation: TransactionAnnotation, lightningInvoice: Invoice) -> String {
         if let customMemo = annotation.customMemo, customMemo != "" {
             return customMemo
         } else if !lightningInvoice.memo.isEmpty {

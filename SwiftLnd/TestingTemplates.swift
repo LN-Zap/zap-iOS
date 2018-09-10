@@ -56,9 +56,9 @@ extension OnChainConfirmedTransaction {
     }
 }
 
-extension LightningPayment {
-    static var template: LightningPayment {
-        return LightningPayment(
+extension Payment {
+    static var template: Payment {
+        return Payment(
             id: "id31234567896543",
             amount: 1645,
             date: Date(),

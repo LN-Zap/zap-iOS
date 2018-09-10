@@ -70,9 +70,9 @@ public final class LightningApiRPC: LightningApiProtocol {
         }))
     }
     
-    public func payments(completion: @escaping (Result<[LightningPayment]>) -> Void) {
+    public func payments(completion: @escaping (Result<[Payment]>) -> Void) {
         _ = try? rpc.listPayments(Lnrpc_ListPaymentsRequest(), completion: result(completion, map: {
-            $0.payments.compactMap { LightningPayment(payment: $0) }
+            $0.payments.compactMap { Payment(payment: $0) }
         }))
     }
     
@@ -125,7 +125,7 @@ public final class LightningApiRPC: LightningApiProtocol {
         }))
     }
     
-    public func sendPayment(_ paymentRequest: PaymentRequest, amount: Satoshi?, completion: @escaping (Result<LightningPayment>) -> Void) {
+    public func sendPayment(_ paymentRequest: PaymentRequest, amount: Satoshi?, completion: @escaping (Result<Payment>) -> Void) {
         let request = Lnrpc_SendRequest(paymentRequest: paymentRequest.raw, amount: amount)
         _ = try? rpc.sendPaymentSync(request) { response, error in
             if !error.success {
@@ -135,7 +135,7 @@ public final class LightningApiRPC: LightningApiProtocol {
                 let error = LndApiError.localizedError(errorMessage)
                 completion(.failure(error))
             } else if let sendResponse = response {
-                completion(.success(LightningPayment(paymentRequest: paymentRequest, sendResponse: sendResponse)))
+                completion(.success(Payment(paymentRequest: paymentRequest, sendResponse: sendResponse)))
             } else if let statusMessage = error.statusMessage {
                 completion(.failure(LndApiError.localizedError(statusMessage)))
             } else {
@@ -149,7 +149,7 @@ public final class LightningApiRPC: LightningApiProtocol {
         _ = try? rpc.addInvoice(request, completion: result(completion, map: { $0.paymentRequest }))
     }
     
-    public func invoices(completion: @escaping (Result<[LightningInvoice]>) -> Void) {
+    public func invoices(completion: @escaping (Result<[Invoice]>) -> Void) {
         _ = try? rpc.listInvoices(Lnrpc_ListInvoiceRequest(), completion: result(completion, map: {
             $0.invoices.compactMap { .init(invoice: $0) }
         }))
@@ -164,7 +164,7 @@ public final class LightningApiRPC: LightningApiProtocol {
         }
     }
     
-    public func subscribeInvoices(completion: @escaping (Result<LightningInvoice>) -> Void) {
+    public func subscribeInvoices(completion: @escaping (Result<Invoice>) -> Void) {
         do {
             let call = try rpc.subscribeInvoices(Lnrpc_InvoiceSubscription(), completion: { print(#function, $0) })
             try receiveInvoicesUpdate(call: call, completion: completion)
@@ -208,10 +208,10 @@ public final class LightningApiRPC: LightningApiProtocol {
         }
     }
     
-    private func receiveInvoicesUpdate(call: Lnrpc_LightningSubscribeInvoicesCall, completion: @escaping (Result<LightningInvoice>) -> Void) throws {
+    private func receiveInvoicesUpdate(call: Lnrpc_LightningSubscribeInvoicesCall, completion: @escaping (Result<Invoice>) -> Void) throws {
         try call.receive { [weak self] in
             if let result = $0.result.flatMap({ $0 }) {
-                completion(.success(LightningInvoice(invoice: result)))
+                completion(.success(Invoice(invoice: result)))
             } else if let error = $0.error {
                 print(#function, error)
             }

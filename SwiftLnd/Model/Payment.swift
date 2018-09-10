@@ -8,7 +8,7 @@
 import BTCUtil
 import Foundation
 
-public struct LightningPayment: Equatable {
+public struct Payment: Equatable {
     public let id: String
     public let amount: Satoshi
     public let date: Date
@@ -16,7 +16,7 @@ public struct LightningPayment: Equatable {
     public let paymentHash: String
 }
 
-extension LightningPayment {
+extension Payment {
     init(payment: Lnrpc_Payment) {
         id = payment.paymentHash
         amount = Satoshi(-payment.value)

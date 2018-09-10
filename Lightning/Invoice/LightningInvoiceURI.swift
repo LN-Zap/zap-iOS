@@ -36,7 +36,7 @@ public struct LightningInvoiceURI: PaymentURI {
         network = invoice.network
     }
     
-    public init?(invoice: LightningInvoice) {
+    public init?(invoice: Invoice) {
         self.init(string: invoice.paymentRequest)
     }
 }
