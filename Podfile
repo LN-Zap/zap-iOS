@@ -14,6 +14,7 @@ end
 
 target 'Lightning' do
     pod 'Bond'
+    pod 'SQLite.swift', '~> 0.11.5'
 end
 
 target 'Library' do

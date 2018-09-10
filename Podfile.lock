@@ -28,6 +28,9 @@ PODS:
   - ReactiveKit (3.9.6)
   - ScrollableGraphView (4.0.5)
   - SipHash (1.2.2)
+  - SQLite.swift (0.11.5):
+    - SQLite.swift/standard (= 0.11.5)
+  - SQLite.swift/standard (0.11.5)
   - SwiftGRPC (0.5.1):
     - BoringSSL (~> 10.0)
     - gRPC-Core (~> 1.12.0)
@@ -39,6 +42,7 @@ DEPENDENCIES:
   - Bond
   - KeychainAccess
   - ScrollableGraphView
+  - SQLite.swift (~> 0.11.5)
   - SwiftGRPC (from `https://github.com/grpc/grpc-swift`)
 
 SPEC REPOS:
@@ -53,6 +57,7 @@ SPEC REPOS:
     - ReactiveKit
     - ScrollableGraphView
     - SipHash
+    - SQLite.swift
     - SwiftProtobuf
 
 EXTERNAL SOURCES:
@@ -75,9 +80,10 @@ SPEC CHECKSUMS:
   ReactiveKit: 804d3093ad42dee0de19e42d4f7dcae9c14364b0
   ScrollableGraphView: 6386dbae8d92e8ec9fda9f386f2ba6e2c90c59a3
   SipHash: fad90a4683e420c52ef28063063dbbce248ea6d4
+  SQLite.swift: 6e5356850bb1791459f8c16d6ee9195b28714a2e
   SwiftGRPC: aef4936e7cffb35e5f3f996d44008303f4f150e7
   SwiftProtobuf: 4298b0b814dd49031c3218fdfb8d42f7107c8a6d
 
-PODFILE CHECKSUM: 6a6cf1e33cc2fa53a64702bcc0a3519fb47dc4a8
+PODFILE CHECKSUM: f4af6d807d7fe598dcee8d4e80d15f784afe57e4
 
 COCOAPODS: 1.5.3
