@@ -8,7 +8,7 @@
 import BTCUtil
 import Foundation
 
-public struct LightningPayment: Transaction, Equatable {
+public struct LightningPayment: Equatable {
     public let id: String
     public let amount: Satoshi
     public let date: Date

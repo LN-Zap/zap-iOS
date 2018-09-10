@@ -7,6 +7,7 @@
 
 import BTCUtil
 import Foundation
+import SwiftLnd
 
 public protocol Transaction {
     var id: String { get }
@@ -27,3 +28,9 @@ extension Transaction {
         }
     }
 }
+
+extension OnChainConfirmedTransaction: OnChainTransaction {}
+
+extension LightningPayment: Transaction {}
+
+extension LightningInvoice: Transaction {}

@@ -62,13 +62,13 @@ public final class TransactionService {
         }
         
         taskGroup.enter()
-        api.transactions(completion: apiCallback)
+        api.transactions { apiCallback(result: $0.map({ $0 as [Transaction] })) }
         
         taskGroup.enter()
-        api.payments(completion: apiCallback)
+        api.payments { apiCallback(result: $0.map({ $0 as [Transaction] })) }
         
         taskGroup.enter()
-        api.invoices(completion: apiCallback)
+        api.invoices { apiCallback(result: $0.map({ $0 as [Transaction] })) }
         
         taskGroup.notify(queue: .main, work: DispatchWorkItem(block: { [weak self] in
             self?.unconfirmedTransactionStore.remove(confirmed: allTransactions)

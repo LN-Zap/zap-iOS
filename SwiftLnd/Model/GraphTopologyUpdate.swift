@@ -37,9 +37,7 @@ extension NodeUpdate {
 
 struct ChannelEdgeUpdate {
     let chanId: Int?
-//    let chanPoint: ChannelPoint?
     let capacity: Int?
-//    let routingPolicy: RoutingPolicy?
     let advertisingNode: String?
     let connectingNode: String?
 }
@@ -57,7 +55,6 @@ struct ClosedChannelUpdate {
     let chanId: Int
     let capacity: Int
     let closedHeight: Int
-//    let chanPoint    ChannelPoint    optional
 }
 
 extension ClosedChannelUpdate {

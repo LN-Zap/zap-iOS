@@ -64,13 +64,13 @@ public final class LightningApiRPC: LightningApiProtocol {
         _ = try? rpc.channelBalance(Lnrpc_ChannelBalanceRequest(), completion: result(completion, map: { Satoshi($0.balance) }))
     }
     
-    public func transactions(completion: @escaping (Result<[Transaction]>) -> Void) {
+    public func transactions(completion: @escaping (Result<[OnChainConfirmedTransaction]>) -> Void) {
         _ = try? rpc.getTransactions(Lnrpc_GetTransactionsRequest(), completion: result(completion, map: {
             $0.transactions.compactMap { OnChainConfirmedTransaction(transaction: $0) }
         }))
     }
     
-    public func payments(completion: @escaping (Result<[Transaction]>) -> Void) {
+    public func payments(completion: @escaping (Result<[LightningPayment]>) -> Void) {
         _ = try? rpc.listPayments(Lnrpc_ListPaymentsRequest(), completion: result(completion, map: {
             $0.payments.compactMap { LightningPayment(payment: $0) }
         }))
@@ -149,9 +149,9 @@ public final class LightningApiRPC: LightningApiProtocol {
         _ = try? rpc.addInvoice(request, completion: result(completion, map: { $0.paymentRequest }))
     }
     
-    public func invoices(completion: @escaping (Result<[Transaction]>) -> Void) {
+    public func invoices(completion: @escaping (Result<[LightningInvoice]>) -> Void) {
         _ = try? rpc.listInvoices(Lnrpc_ListInvoiceRequest(), completion: result(completion, map: {
-            $0.invoices.compactMap { LightningInvoice(invoice: $0) }
+            $0.invoices.compactMap { .init(invoice: $0) }
         }))
     }
     
@@ -164,7 +164,7 @@ public final class LightningApiRPC: LightningApiProtocol {
         }
     }
     
-    public func subscribeInvoices(completion: @escaping (Result<Transaction>) -> Void) {
+    public func subscribeInvoices(completion: @escaping (Result<LightningInvoice>) -> Void) {
         do {
             let call = try rpc.subscribeInvoices(Lnrpc_InvoiceSubscription(), completion: { print(#function, $0) })
             try receiveInvoicesUpdate(call: call, completion: completion)
@@ -173,7 +173,7 @@ public final class LightningApiRPC: LightningApiProtocol {
         }
     }
     
-    public func subscribeTransactions(completion: @escaping (Result<Transaction>) -> Void) {
+    public func subscribeTransactions(completion: @escaping (Result<OnChainConfirmedTransaction>) -> Void) {
         do {
             let call = try rpc.subscribeTransactions(Lnrpc_GetTransactionsRequest(), completion: { print(#function, $0) })
             try receiveTransactionsUpdate(call: call, completion: completion)
@@ -208,7 +208,7 @@ public final class LightningApiRPC: LightningApiProtocol {
         }
     }
     
-    private func receiveInvoicesUpdate(call: Lnrpc_LightningSubscribeInvoicesCall, completion: @escaping (Result<Transaction>) -> Void) throws {
+    private func receiveInvoicesUpdate(call: Lnrpc_LightningSubscribeInvoicesCall, completion: @escaping (Result<LightningInvoice>) -> Void) throws {
         try call.receive { [weak self] in
             if let result = $0.result.flatMap({ $0 }) {
                 completion(.success(LightningInvoice(invoice: result)))
@@ -219,7 +219,7 @@ public final class LightningApiRPC: LightningApiProtocol {
         }
     }
     
-    private func receiveTransactionsUpdate(call: Lnrpc_LightningSubscribeTransactionsCall, completion: @escaping (Result<Transaction>) -> Void) throws {
+    private func receiveTransactionsUpdate(call: Lnrpc_LightningSubscribeTransactionsCall, completion: @escaping (Result<OnChainConfirmedTransaction>) -> Void) throws {
         try call.receive { [weak self] in
             if let result = $0.result.flatMap({ $0 }) {
                 completion(.success(OnChainConfirmedTransaction(transaction: result)))

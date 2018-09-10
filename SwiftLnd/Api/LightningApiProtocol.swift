@@ -22,16 +22,16 @@ public protocol LightningApiProtocol {
 
     // On-chain
     func sendCoins(address: BitcoinAddress, amount: Satoshi, completion: @escaping (Result<String>) -> Void)
-    func transactions(completion: @escaping (Result<[Transaction]>) -> Void)
-    func subscribeTransactions(completion: @escaping (Result<Transaction>) -> Void)
+    func transactions(completion: @escaping (Result<[OnChainConfirmedTransaction]>) -> Void)
+    func subscribeTransactions(completion: @escaping (Result<OnChainConfirmedTransaction>) -> Void)
 
     // Payments
     func decodePaymentRequest(_ paymentRequest: String, completion: @escaping (Result<PaymentRequest>) -> Void)
-    func payments(completion: @escaping (Result<[Transaction]>) -> Void)
+    func payments(completion: @escaping (Result<[LightningPayment]>) -> Void)
     func sendPayment(_ paymentRequest: PaymentRequest, amount: Satoshi?, completion: @escaping (Result<LightningPayment>) -> Void)
     func addInvoice(amount: Satoshi?, memo: String?, completion: @escaping (Result<String>) -> Void)
-    func invoices(completion: @escaping (Result<[Transaction]>) -> Void)
-    func subscribeInvoices(completion: @escaping (Result<Transaction>) -> Void)
+    func invoices(completion: @escaping (Result<[LightningInvoice]>) -> Void)
+    func subscribeInvoices(completion: @escaping (Result<LightningInvoice>) -> Void)
 
     // Peers
     func connect(pubKey: String, host: String, completion: @escaping (Result<Success>) -> Void)

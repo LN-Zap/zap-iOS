@@ -8,7 +8,7 @@
 import BTCUtil
 import Foundation
 
-public struct OnChainConfirmedTransaction: OnChainTransaction, Equatable {
+public struct OnChainConfirmedTransaction: Equatable {
     public let id: String
     public let amount: Satoshi
     public let date: Date

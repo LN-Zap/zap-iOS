@@ -325,9 +325,9 @@
 		ADFB36E62143BA6F00146FCC /* LightningInvoice.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADC29C0B20A9B0A0008B2DC2 /* LightningInvoice.swift */; };
 		ADFB36E72143BAC500146FCC /* LightningPayment.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADECC36820F257AF00D00546 /* LightningPayment.swift */; };
 		ADFB36E92143BB2200146FCC /* OnChainConfirmedTransaction.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADECC36A20F257BE00D00546 /* OnChainConfirmedTransaction.swift */; };
-		ADFB36EA2143BC8A00146FCC /* OnChainTransaction.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD27B01320FBBF8700F232A8 /* OnChainTransaction.swift */; };
-		ADFB36EB2143BC8D00146FCC /* Transaction.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0A05A5820149AF20007D1C9 /* Transaction.swift */; };
 		ADFB36EC2146517700146FCC /* OnChainUnconfirmedTransaction.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD22FD0E20F737690016399D /* OnChainUnconfirmedTransaction.swift */; };
+		ADFB36ED21465C0100146FCC /* Transaction.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0A05A5820149AF20007D1C9 /* Transaction.swift */; };
+		ADFB36EE21465CA800146FCC /* OnChainTransaction.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD27B01320FBBF8700F232A8 /* OnChainTransaction.swift */; };
 		ADFC816F20DA80EF00D26913 /* RecoverWalletViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADFC816E20DA80EF00D26913 /* RecoverWalletViewModel.swift */; };
 		ADFC817120DB8F2700D26913 /* bip39.txt in Resources */ = {isa = PBXBuildFile; fileRef = ADFC817020DB8F2600D26913 /* bip39.txt */; };
 		ADFD8DC3212E92A7005CA8FD /* SegmentButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD38EB31207DFB59007DF14D /* SegmentButton.swift */; };
@@ -1351,6 +1351,7 @@
 				A0A96B8520174BAC00788808 /* CloseStatusUpdate.swift */,
 				AD93ED5520A09D59000E814E /* GraphTopologyUpdate.swift */,
 				A0376B6E201CC04400F1FBEF /* Info.swift */,
+				ADC29C0B20A9B0A0008B2DC2 /* LightningInvoice.swift */,
 				ADECC36820F257AF00D00546 /* LightningPayment.swift */,
 				AD7746582076609400EC596B /* NodeInfo.swift */,
 				ADECC36A20F257BE00D00546 /* OnChainConfirmedTransaction.swift */,
@@ -1359,7 +1360,6 @@
 				A024B85A20161AAE002B8897 /* PaymentRequest.swift */,
 				A024B84C201606B4002B8897 /* Peer.swift */,
 				AD967FF521072D2C0048085B /* Success.swift */,
-				ADBB36282080B2AE005662B4 /* TestingTemplates.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -1406,7 +1406,6 @@
 				AD86BCFC2099F4E900A7866A /* Generated */,
 				AD71EA4C20E2335B00256307 /* Helper */,
 				ADBB36232080A457005662B4 /* LightningApiMock.swift */,
-				ADC29C0B20A9B0A0008B2DC2 /* LightningInvoice.swift */,
 				ADBB36212080A3B1005662B4 /* LightningApiProtocol.swift */,
 				A0A33EF32028743200BB76F4 /* LightningApiRPC.swift */,
 				ADBA4420209AE75600D18B71 /* LightningApiStream.swift */,
@@ -1621,6 +1620,8 @@
 				AD536BF420E62764002279BC /* Tests */,
 				AD536BE820E62763002279BC /* Lightning.h */,
 				AD536BE920E62763002279BC /* Info.plist */,
+				A0A05A5820149AF20007D1C9 /* Transaction.swift */,
+				AD27B01320FBBF8700F232A8 /* OnChainTransaction.swift */,
 				AD97A90E20EFC1E6008344EA /* LightningNodeURI.swift */,
 				AD22FD0E20F737690016399D /* OnChainUnconfirmedTransaction.swift */,
 				ADEF96BB21078C31006AE1EC /* Certificates */,
@@ -1643,15 +1644,6 @@
 				AD28844821282139003C3D94 /* LightningNodeURITests.swift */,
 			);
 			path = Tests;
-			sourceTree = "<group>";
-		};
-		AD63CC0820F2586F002876D8 /* Transaction */ = {
-			isa = PBXGroup;
-			children = (
-				AD27B01320FBBF8700F232A8 /* OnChainTransaction.swift */,
-				A0A05A5820149AF20007D1C9 /* Transaction.swift */,
-			);
-			path = Transaction;
 			sourceTree = "<group>";
 		};
 		AD667E4E21367E41007B9160 /* Background */ = {
@@ -1877,7 +1869,7 @@
 				ADADAD662143B2E700A48E1F /* Info.plist */,
 				ADFEFA7620E629AA00FE1557 /* String.swift */,
 				ADCD060020E67FA5009D9650 /* Environment.swift */,
-				AD63CC0820F2586F002876D8 /* Transaction */,
+				ADBB36282080B2AE005662B4 /* TestingTemplates.swift */,
 				A0376B70201CC16D00F1FBEF /* Lnd */,
 				A0A05A5A20149AF80007D1C9 /* Model */,
 				A0D3C97B20616A9A0015C5D7 /* Api */,
@@ -2990,11 +2982,13 @@
 				ADFEFA6C20E627F100FE1557 /* InfoService.swift in Sources */,
 				AD967FE5210602C10048085B /* BTCPayConfiguration.swift in Sources */,
 				AD28844321281FAC003C3D94 /* LightningInvoiceURI.swift in Sources */,
+				ADFB36EE21465CA800146FCC /* OnChainTransaction.swift in Sources */,
 				ADFEFA6A20E627F100FE1557 /* BalanceService.swift in Sources */,
 				ADFEFA6720E627F100FE1557 /* TransactionAnnotation.swift in Sources */,
 				AD967FEA2106122E0048085B /* ZapconnectQRCode.swift in Sources */,
 				ADFB36EC2146517700146FCC /* OnChainUnconfirmedTransaction.swift in Sources */,
 				AD28844521281FBC003C3D94 /* LightningNodeURI.swift in Sources */,
+				ADFB36ED21465C0100146FCC /* Transaction.swift in Sources */,
 				AD28844B212824DC003C3D94 /* Invoice.swift in Sources */,
 				ADFEFA6420E627F100FE1557 /* LightningNodeStore.swift in Sources */,
 				ADFEFA6B20E627F100FE1557 /* ChannelService.swift in Sources */,
@@ -3026,7 +3020,6 @@
 				ADADAD882143B3C900A48E1F /* Channel.swift in Sources */,
 				ADADAD932143B3C900A48E1F /* Success.swift in Sources */,
 				ADADAD8B2143B3C900A48E1F /* CloseStatusUpdate.swift in Sources */,
-				ADFB36EA2143BC8A00146FCC /* OnChainTransaction.swift in Sources */,
 				ADADAD9E2143B3C900A48E1F /* LightningApiStream.swift in Sources */,
 				ADADAD8E2143B3C900A48E1F /* NodeInfo.swift in Sources */,
 				ADADAD972143B3C900A48E1F /* LndApiError.swift in Sources */,
@@ -3055,7 +3048,6 @@
 				ADADAD902143B3C900A48E1F /* OpenStatusUpdate.swift in Sources */,
 				ADFB36D62143B73C00146FCC /* LndConnection.swift in Sources */,
 				ADADAD8D2143B3C900A48E1F /* Info.swift in Sources */,
-				ADFB36EB2143BC8D00146FCC /* Transaction.swift in Sources */,
 				ADFB36D72143B73C00146FCC /* LndConstants.swift in Sources */,
 				ADFB36DB2143B73C00146FCC /* RemoteRPCConfiguration.swift in Sources */,
 				ADADAD8C2143B3C900A48E1F /* GraphTopologyUpdate.swift in Sources */,
