@@ -314,8 +314,8 @@
 		ADEEB5332134277400D2F992 /* KeyPadPinView.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADEEB5322134277400D2F992 /* KeyPadPinView.swift */; };
 		ADEEB5362134669B00D2F992 /* ModalPinViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADEEB5352134669B00D2F992 /* ModalPinViewController.swift */; };
 		ADEEB53821346DEA00D2F992 /* ModalPin.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = ADEEB53721346DEA00D2F992 /* ModalPin.storyboard */; };
-		ADF093062147C72000B48853 /* OnChainPaymentEvent.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADF093052147C72000B48853 /* OnChainPaymentEvent.swift */; };
-		ADF093082147C79D00B48853 /* ConnectedNodes.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADF093072147C79D00B48853 /* ConnectedNodes.swift */; };
+		ADF093062147C72000B48853 /* TransactionEvent.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADF093052147C72000B48853 /* TransactionEvent.swift */; };
+		ADF093082147C79D00B48853 /* ConnectedNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADF093072147C79D00B48853 /* ConnectedNode.swift */; };
 		ADF0930A2147D5FA00B48853 /* Satoshi+Value.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADF093092147D5FA00B48853 /* Satoshi+Value.swift */; };
 		ADF0930D214832C700B48853 /* FailedPaymentEvent.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADF0930C214832C700B48853 /* FailedPaymentEvent.swift */; };
 		ADF0930F2148FA7300B48853 /* CreateInvoiceEvent.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADF0930E2148FA7300B48853 /* CreateInvoiceEvent.swift */; };
@@ -942,8 +942,8 @@
 		ADEEB5322134277400D2F992 /* KeyPadPinView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyPadPinView.swift; sourceTree = "<group>"; };
 		ADEEB5352134669B00D2F992 /* ModalPinViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModalPinViewController.swift; sourceTree = "<group>"; };
 		ADEEB53721346DEA00D2F992 /* ModalPin.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = ModalPin.storyboard; sourceTree = "<group>"; };
-		ADF093052147C72000B48853 /* OnChainPaymentEvent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnChainPaymentEvent.swift; sourceTree = "<group>"; };
-		ADF093072147C79D00B48853 /* ConnectedNodes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConnectedNodes.swift; sourceTree = "<group>"; };
+		ADF093052147C72000B48853 /* TransactionEvent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransactionEvent.swift; sourceTree = "<group>"; };
+		ADF093072147C79D00B48853 /* ConnectedNode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConnectedNode.swift; sourceTree = "<group>"; };
 		ADF093092147D5FA00B48853 /* Satoshi+Value.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Satoshi+Value.swift"; sourceTree = "<group>"; };
 		ADF0930C214832C700B48853 /* FailedPaymentEvent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FailedPaymentEvent.swift; sourceTree = "<group>"; };
 		ADF0930E2148FA7300B48853 /* CreateInvoiceEvent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateInvoiceEvent.swift; sourceTree = "<group>"; };
@@ -2066,21 +2066,21 @@
 			isa = PBXGroup;
 			children = (
 				ADF093122148FEB900B48853 /* ChannelEvent.swift */,
-				ADF093072147C79D00B48853 /* ConnectedNodes.swift */,
+				ADF093072147C79D00B48853 /* ConnectedNode.swift */,
 				ADF0930E2148FA7300B48853 /* CreateInvoiceEvent.swift */,
 				ADF0930C214832C700B48853 /* FailedPaymentEvent.swift */,
 				ADF093102148FDC600B48853 /* LightningPaymentEvent.swift */,
-				ADF093052147C72000B48853 /* OnChainPaymentEvent.swift */,
+				ADF093052147C72000B48853 /* TransactionEvent.swift */,
 			);
 			path = Rows;
 			sourceTree = "<group>";
 		};
-		ADF0930B2147D60000B48853 /* Value */ = {
+		ADF0930B2147D60000B48853 /* SQLiteValue */ = {
 			isa = PBXGroup;
 			children = (
 				ADF093092147D5FA00B48853 /* Satoshi+Value.swift */,
 			);
-			path = Value;
+			path = SQLiteValue;
 			sourceTree = "<group>";
 		};
 		ADF79373208F87E60086B2CA /* Confirm Mnemonic */ = {
@@ -2108,7 +2108,7 @@
 				ADFB36F421466BCE00146FCC /* DatabaseUpdater.swift */,
 				AD9920202146B5CA000F20AE /* SQLiteDataStore.swift */,
 				ADF093042147C6F000B48853 /* Rows */,
-				ADF0930B2147D60000B48853 /* Value */,
+				ADF0930B2147D60000B48853 /* SQLiteValue */,
 			);
 			path = SQLite;
 			sourceTree = "<group>";
@@ -3056,9 +3056,9 @@
 				ADFB36EE21465CA800146FCC /* OnChainTransaction.swift in Sources */,
 				ADFEFA6A20E627F100FE1557 /* BalanceService.swift in Sources */,
 				ADFEFA6720E627F100FE1557 /* TransactionAnnotation.swift in Sources */,
-				ADF093082147C79D00B48853 /* ConnectedNodes.swift in Sources */,
+				ADF093082147C79D00B48853 /* ConnectedNode.swift in Sources */,
 				ADF0930A2147D5FA00B48853 /* Satoshi+Value.swift in Sources */,
-				ADF093062147C72000B48853 /* OnChainPaymentEvent.swift in Sources */,
+				ADF093062147C72000B48853 /* TransactionEvent.swift in Sources */,
 				AD967FEA2106122E0048085B /* ZapconnectQRCode.swift in Sources */,
 				ADFB36EC2146517700146FCC /* OnChainUnconfirmedTransaction.swift in Sources */,
 				AD28844521281FBC003C3D94 /* LightningNodeURI.swift in Sources */,

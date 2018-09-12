@@ -8,7 +8,7 @@
 import Foundation
 import SQLite
 
-struct ConnectedNodes {
+struct ConnectedNode {
     enum Column {
         static let pubKey = Expression<String>("pubKey")
         static let alias = Expression<String?>("alias")
@@ -21,8 +21,8 @@ struct ConnectedNodes {
     let alias: String?
     let color: String?
     
-    static func createTable(connection: Connection) throws {
-        try connection.run(ConnectedNodes.table.create(ifNotExists: true) { t in
+    static func createTable(database: Connection) throws {
+        try database.run(ConnectedNode.table.create(ifNotExists: true) { t in
             t.column(Column.pubKey, primaryKey: true)
             t.column(Column.alias)
             t.column(Column.color)
@@ -30,11 +30,18 @@ struct ConnectedNodes {
     }
     
     func insert() throws {
-        try SQLiteDataStore.shared.connection.run(ConnectedNodes.table.insert(
+        try SQLiteDataStore.shared.database.run(ConnectedNode.table.insert(
             or: .replace,
             Column.pubKey <- pubKey,
             Column.alias <- alias,
             Column.color <- color)
+        )
+    }
+    
+    func insertPubKey() throws {
+        try SQLiteDataStore.shared.database.run(ConnectedNode.table.insert(
+            or: .replace,
+            Column.pubKey <- pubKey)
         )
     }
 }

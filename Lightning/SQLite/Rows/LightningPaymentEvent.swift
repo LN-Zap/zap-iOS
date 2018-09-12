@@ -19,7 +19,6 @@ struct LightningPaymentEvent {
     let amount: Satoshi // amount + optional fees
     let fee: Satoshi
     let date: Date
-    let preimage: String
 }
 
 // SQL
@@ -30,30 +29,27 @@ extension LightningPaymentEvent {
         static let amount = Expression<Satoshi>("amount")
         static let fee = Expression<Satoshi>("fee")
         static let date = Expression<Date>("date")
-        static let preimage = Expression<String>("preimage")
     }
     
     private static let table = Table("lightningPaymentEvent")
     
-    static func createTable(connection: Connection) throws {
-        try connection.run(table.create(ifNotExists: true) { t in
+    static func createTable(database: Connection) throws {
+        try database.run(table.create(ifNotExists: true) { t in
             t.column(Column.paymentHash, primaryKey: true)
             t.column(Column.memo)
             t.column(Column.amount)
             t.column(Column.fee)
             t.column(Column.date)
-            t.column(Column.preimage)
         })
     }
     
     func insert() throws {
-        try SQLiteDataStore.shared.connection.run(LightningPaymentEvent.table.insert(
+        try SQLiteDataStore.shared.database.run(LightningPaymentEvent.table.insert(
             Column.paymentHash <- paymentHash,
             Column.memo <- memo,
             Column.amount <- amount,
             Column.fee <- fee,
-            Column.date <- date,
-            Column.preimage <- preimage)
+            Column.date <- date)
         )
     }
 }

@@ -25,7 +25,6 @@ public final class LightningService: NSObject {
         
         do {
             try SQLiteDataStore.shared.createTables()
-            try ConnectedNodes(pubKey: "1245678", alias: "bier", color: "282828").insert()
         } catch {
             print(error)
         }

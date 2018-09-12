@@ -30,14 +30,17 @@ public final class ChannelService {
     public func update() {
         api.channels { [open] result in
             open.value = result.value ?? []
+            DatabaseUpdater.channelsUpdated(open.value)
         }
         
         api.pendingChannels { [pending] result in
             pending.value = result.value ?? []
+            DatabaseUpdater.channelsUpdated(pending.value)
         }
         
         api.closedChannels { [closed] result in
             closed.value = result.value ?? []
+            DatabaseUpdater.closedChannelsUpdated(closed.value)
         }
     }
     

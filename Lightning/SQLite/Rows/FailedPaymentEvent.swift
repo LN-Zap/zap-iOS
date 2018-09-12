@@ -36,8 +36,8 @@ extension FailedPaymentEvent {
     
     private static let table = Table("failedPaymentEvent")
 
-    static func createTable(connection: Connection) throws {
-        try connection.run(table.create(ifNotExists: true) { t in
+    static func createTable(database: Connection) throws {
+        try database.run(table.create(ifNotExists: true) { t in
             t.column(Column.paymentHash, primaryKey: true)
             t.column(Column.memo)
             t.column(Column.amount)
@@ -50,7 +50,7 @@ extension FailedPaymentEvent {
     }
     
     func insert() throws {
-        try SQLiteDataStore.shared.connection.run(FailedPaymentEvent.table.insert(
+        try SQLiteDataStore.shared.database.run(FailedPaymentEvent.table.insert(
             Column.paymentHash <- paymentHash,
             Column.memo <- memo,
             Column.amount <- amount,

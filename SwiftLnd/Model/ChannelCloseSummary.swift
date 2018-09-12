@@ -38,11 +38,15 @@ public struct ChannelCloseSummary {
     public let channelPoint: ChannelPoint
     public let remotePubKey: String
     public let closeType: CloseType
+    public let closeHeight: Int
+    public let openHeight: Int
     
     init(channelCloseSummary: Lnrpc_ChannelCloseSummary) {
         closingTxHash = channelCloseSummary.closingTxHash
         channelPoint = ChannelPoint(string: channelCloseSummary.channelPoint)
         remotePubKey = channelCloseSummary.remotePubkey
         closeType = CloseType(closeType: channelCloseSummary.closeType)
+        closeHeight = Int(channelCloseSummary.closeHeight)
+        openHeight = Int(channelCloseSummary.chanID >> 40)
     }
 }

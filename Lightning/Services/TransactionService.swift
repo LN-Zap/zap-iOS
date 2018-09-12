@@ -64,17 +64,27 @@ public final class TransactionService {
         taskGroup.enter()
         api.transactions { result in
             if let transactions = result.value {
-                let events = transactions.map { OnChainPaymentEvent(transaction: $0) }
+                let events = transactions.map { TransactionEvent(transaction: $0) }
                 DatabaseUpdater.addTransactions(events)
             }
             apiCallback(result: result.map({ $0 as [Transaction] }))
         }
         
         taskGroup.enter()
-        api.payments { apiCallback(result: $0.map({ $0 as [Transaction] })) }
+        api.payments {
+            if let payments = $0.value {
+                DatabaseUpdater.addPayments(payments)
+            }
+            apiCallback(result: $0.map({ $0 as [Transaction] }))
+        }
         
         taskGroup.enter()
-        api.invoices { apiCallback(result: $0.map({ $0 as [Transaction] })) }
+        api.invoices {
+            if let invoices = $0.value {
+                DatabaseUpdater.addInvoices(invoices)
+            }
+            apiCallback(result: $0.map({ $0 as [Transaction] }))
+        }
         
         taskGroup.notify(queue: .main, work: DispatchWorkItem(block: { [weak self] in
             self?.unconfirmedTransactionStore.remove(confirmed: allTransactions)
