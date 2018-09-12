@@ -6,3 +6,8 @@
 //
 
 import Foundation
+
+public enum Layer {
+    case onChain
+    case lightning
+}

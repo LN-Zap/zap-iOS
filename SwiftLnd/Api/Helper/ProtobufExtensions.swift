@@ -17,6 +17,7 @@ extension Lnrpc_Invoice {
         if let amount = amount {
             value = Int64(truncating: amount as NSDecimalNumber)
         }
+        self.private = true
     }
 }
 

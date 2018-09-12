@@ -45,6 +45,7 @@ excluded:
 identifier_name:
   excluded:
     - id
+    - t
 conditional_returns_on_newline:
   if_only: true
 

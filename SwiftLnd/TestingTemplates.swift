@@ -51,7 +51,8 @@ extension OnChainConfirmedTransaction {
             date: Date(),
             fees: 12,
             confirmations: 14,
-            destinationAddresses: [BitcoinAddress.template]
+            destinationAddresses: [BitcoinAddress.template],
+            blockHeight: 400000
         )
     }
 }

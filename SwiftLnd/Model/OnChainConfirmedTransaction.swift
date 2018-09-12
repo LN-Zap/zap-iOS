@@ -15,6 +15,7 @@ public struct OnChainConfirmedTransaction: Equatable {
     public let fees: Satoshi?
     public let confirmations: Int
     public let destinationAddresses: [BitcoinAddress]
+    public let blockHeight: Int
 }
 
 extension OnChainConfirmedTransaction {
@@ -25,5 +26,6 @@ extension OnChainConfirmedTransaction {
         fees = Satoshi(transaction.totalFees)
         confirmations = Int(transaction.numConfirmations)
         destinationAddresses = transaction.destAddresses.compactMap { BitcoinAddress(string: $0) }
+        blockHeight = Int(transaction.blockHeight)
     }
 }

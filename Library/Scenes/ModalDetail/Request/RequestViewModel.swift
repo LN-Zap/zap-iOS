@@ -22,15 +22,10 @@ public enum RequestViewModelFactory {
 }
 
 public final class RequestViewModel {
-    public enum RequestMethod {
-        case lightning
-        case onChain
-    }
-    
     private let transactionService: TransactionService
     private var cachedOnChainAddress: BitcoinAddress?
 
-    public var requestMethod = RequestMethod.lightning
+    public var requestMethod = Layer.lightning
     public var memo: String?
     public var amount: Satoshi = 0
     

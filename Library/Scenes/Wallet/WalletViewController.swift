@@ -107,6 +107,7 @@ final class WalletViewController: UIViewController {
         graphContainer.backgroundColor = UIColor.Zap.background
 
         lightningService?.transactionService.transactions
+            .observeOn(.main)
             .observeNext { [weak self] in
                 guard let graphContainer = self?.graphContainer else { return }
                 graphContainer.subviews.first?.removeFromSuperview()

@@ -22,6 +22,13 @@ public final class LightningService: NSObject {
     public convenience init?(connection: LndConnection) {
         guard let api = connection.api else { return nil }
         self.init(api: api)
+        
+        do {
+            try SQLiteDataStore.shared.createTables()
+            try ConnectedNodes(pubKey: "1245678", alias: "bier", color: "282828").insert()
+        } catch {
+            print(error)
+        }
     }
     
     init(api: LightningApiProtocol) {

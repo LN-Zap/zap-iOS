@@ -143,7 +143,7 @@ final class RequestViewController: ModalDetailViewController {
         }))) as? CallbackButton
     }
     
-    private func headerImage(for requestMethod: RequestViewModel.RequestMethod) -> UIImage {
+    private func headerImage(for requestMethod: Layer) -> UIImage {
         let name: String
         switch requestMethod {
         case .lightning:
@@ -157,7 +157,7 @@ final class RequestViewController: ModalDetailViewController {
         return image
     }
     
-    private func presentAmountInput(requestMethod: RequestViewModel.RequestMethod) {
+    private func presentAmountInput(requestMethod: Layer) {
         viewModel.requestMethod = requestMethod
         setHeaderImage(headerImage(for: requestMethod))
         currentState = .amountInput

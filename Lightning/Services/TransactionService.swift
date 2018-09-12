@@ -62,7 +62,13 @@ public final class TransactionService {
         }
         
         taskGroup.enter()
-        api.transactions { apiCallback(result: $0.map({ $0 as [Transaction] })) }
+        api.transactions { result in
+            if let transactions = result.value {
+                let events = transactions.map { OnChainPaymentEvent(transaction: $0) }
+                DatabaseUpdater.addTransactions(events)
+            }
+            apiCallback(result: result.map({ $0 as [Transaction] }))
+        }
         
         taskGroup.enter()
         api.payments { apiCallback(result: $0.map({ $0 as [Transaction] })) }
@@ -101,7 +107,9 @@ public final class TransactionService {
     private func sendCoins(bitcoinURI: BitcoinURI, amount: Satoshi, completion: @escaping (Result<Success>) -> Void) {
         let destinationAddress = bitcoinURI.bitcoinAddress
         api.sendCoins(address: destinationAddress, amount: amount) { [weak self] in
-            if let txid = $0.value {
+            if let txid = $0.value {                
+                DatabaseUpdater.addUnconfirmedTransaction(txId: txid, amount: amount, memo: bitcoinURI.memo, destinationAddress: destinationAddress)
+                
                 let unconfirmedTransaction = OnChainUnconfirmedTransaction(id: txid, amount: -amount, date: Date(), destinationAddresses: [destinationAddress])
                 self?.unconfirmedTransactionStore.add(unconfirmedTransaction)
                 self?.transactions.value.append(unconfirmedTransaction)
