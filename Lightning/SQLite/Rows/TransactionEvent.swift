@@ -14,15 +14,15 @@ import SwiftLnd
  This is any event that transfers bitcoin from one wallet to another.
  Includes transactions, except those resulting from opening or closing channels.
  */
-struct TransactionEvent {
-    let txHash: String
-    let memo: String?
-    let amount: Satoshi
-    let fee: Satoshi
-    let date: Date
-    let destinationAddresses: [BitcoinAddress]
-    let blockHeight: Int? // nil if transaction is unconfirmed
-    let channelRelated: Bool? // does it result from opening or closing a channel?
+public struct TransactionEvent {
+    public let txHash: String
+    public let memo: String?
+    public let amount: Satoshi
+    public let fee: Satoshi
+    public let date: Date
+    public let destinationAddresses: [BitcoinAddress]
+    public let blockHeight: Int? // nil if transaction is unconfirmed
+    public let channelRelated: Bool? // does it result from opening or closing a channel?
 }
 
 extension TransactionEvent {

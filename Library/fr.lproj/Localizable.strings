@@ -40,10 +40,10 @@
 
 "view.amount_input.placeholder" = "Montant";
 
-"scene.transactions.title" = "Transactions";
-"scene.transactions.empty_state_label" = "0 transaction 🙁";
-"scene.transactions.row_action.archive" = "Archiver";
-"scene.transactions.row_action.unarchive" = "Désarchiver";
+"scene.history.title" = "Transactions";
+"scene.history.empty_state_label" = "0 transaction 🙁";
+"scene.history.row_action.archive" = "Archiver";
+"scene.history.row_action.unarchive" = "Désarchiver";
 
 "scene.settings.title" = "Paramètres";
 "scene.settings.section.wallet" = "Portefeuille";

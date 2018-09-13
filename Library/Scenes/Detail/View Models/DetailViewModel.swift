@@ -16,16 +16,16 @@ protocol DetailViewModel {
 }
 
 enum DetailViewModelFactory {
-    static func instantiate(from transactionViewModel: TransactionViewModel, transactionListViewModel: TransactionListViewModel) -> DetailViewModel {
+    static func instantiate(from transactionViewModel: TransactionViewModel, historyViewModel: HistoryViewModel) -> DetailViewModel {
         
         if let transactionViewModel = transactionViewModel as? OnChainConfirmedTransactionViewModel {
-            return OnChainTransactionDetailViewModel(onChainTransaction: transactionViewModel.onChainTransaction, annotation: transactionViewModel.annotation, transactionListViewModel: transactionListViewModel)
+            return OnChainTransactionDetailViewModel(onChainTransaction: transactionViewModel.onChainTransaction, annotation: transactionViewModel.annotation, historyViewModel: historyViewModel)
         } else if let transactionViewModel = transactionViewModel as? LightningPaymentViewModel {
-            return LightningPaymentDetailViewModel(lightningPayment: transactionViewModel.lightningPayment, annotation: transactionViewModel.annotation, transactionListViewModel: transactionListViewModel)
+            return LightningPaymentDetailViewModel(lightningPayment: transactionViewModel.lightningPayment, annotation: transactionViewModel.annotation, historyViewModel: historyViewModel)
         } else if let transactionViewModel = transactionViewModel as? LightningInvoiceViewModel {
-            return LightningInvoiceDetailViewModel(lightningInvoice: transactionViewModel.lightningInvoice, annotation: transactionViewModel.annotation, transactionListViewModel: transactionListViewModel)
+            return LightningInvoiceDetailViewModel(lightningInvoice: transactionViewModel.lightningInvoice, annotation: transactionViewModel.annotation, historyViewModel: historyViewModel)
         } else if let transactionViewModel = transactionViewModel as? OnChainUnconfirmedTransactionViewModel {
-            return OnChainTransactionDetailViewModel(onChainTransaction: transactionViewModel.unconfirmedTransaction, annotation: transactionViewModel.annotation, transactionListViewModel: transactionListViewModel)
+            return OnChainTransactionDetailViewModel(onChainTransaction: transactionViewModel.unconfirmedTransaction, annotation: transactionViewModel.annotation, historyViewModel: historyViewModel)
         }
         fatalError("TransactionViewModel not supported")
     }

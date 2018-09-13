@@ -40,10 +40,10 @@
 
 "view.amount_input.placeholder" = "Сума";
 
-"scene.transactions.title" = "Операції";
-"scene.transactions.empty_state_label" = "0 операцій 🙁";
-"scene.transactions.row_action.archive" = "Архів";
-"scene.transactions.row_action.unarchive" = "Витягнути з архіву";
+"scene.history.title" = "Операції";
+"scene.history.empty_state_label" = "0 операцій 🙁";
+"scene.history.row_action.archive" = "Архів";
+"scene.history.row_action.unarchive" = "Витягнути з архіву";
 
 "scene.settings.title" = "Налаштування";
 "scene.settings.section.wallet" = "Гаманець";

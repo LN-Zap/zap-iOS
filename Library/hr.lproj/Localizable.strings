@@ -40,10 +40,10 @@
 
 "view.amount_input.placeholder" = "Iznos";
 
-"scene.transactions.title" = "Transakcije";
-"scene.transactions.empty_state_label" = "0 transakcija 🙁";
-"scene.transactions.row_action.archive" = "Arhiviraj";
-"scene.transactions.row_action.unarchive" = "Dearhiviraj";
+"scene.history.title" = "Transakcije";
+"scene.history.empty_state_label" = "0 transakcija 🙁";
+"scene.history.row_action.archive" = "Arhiviraj";
+"scene.history.row_action.unarchive" = "Dearhiviraj";
 
 "scene.settings.title" = "Postavke";
 "scene.settings.section.wallet" = "Novčanik";

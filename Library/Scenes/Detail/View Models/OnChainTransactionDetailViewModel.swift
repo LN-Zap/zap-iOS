@@ -15,7 +15,7 @@ final class OnChainTransactionDetailViewModel: NSObject, DetailViewModel {
     let detailViewControllerTitle = "scene.transaction_detail.title.transaction_detail".localized
     let detailCells = MutableObservableArray<DetailCellType>([])
     
-    init(onChainTransaction: OnChainTransaction, annotation: Observable<TransactionAnnotation>, transactionListViewModel: TransactionListViewModel) {
+    init(onChainTransaction: OnChainTransaction, annotation: Observable<TransactionAnnotation>, historyViewModel: HistoryViewModel) {
         super.init()
         
         if let amountString = Settings.shared.primaryCurrency.value.format(satoshis: onChainTransaction.amount) {
@@ -46,9 +46,9 @@ final class OnChainTransactionDetailViewModel: NSObject, DetailViewModel {
         detailCells.append(.separator)
 
         let placeholder = onChainTransaction.destinationAddresses.first?.string ?? "generic.memo.placeholder".localized
-        detailCells.append(DetailCellType.memoCell(transaction: onChainTransaction, annotation: annotation, transactionListViewModel: transactionListViewModel, placeholder: placeholder))
+        detailCells.append(DetailCellType.memoCell(transaction: onChainTransaction, annotation: annotation, historyViewModel: historyViewModel, placeholder: placeholder))
         detailCells.append(.separator)
 
-        detailCells.append(DetailCellType.hideTransactionCell(transaction: onChainTransaction, annotation: annotation.value, transactionListViewModel: transactionListViewModel))
+        detailCells.append(DetailCellType.hideTransactionCell(transaction: onChainTransaction, annotation: annotation.value, historyViewModel: historyViewModel))
     }
 }

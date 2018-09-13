@@ -28,23 +28,23 @@ enum DetailCellType {
         return .transactionHash(info)
     }
     
-    static func hideTransactionCell(transaction: Transaction, annotation: TransactionAnnotation, transactionListViewModel: TransactionListViewModel) -> DetailCellType {
+    static func hideTransactionCell(transaction: Transaction, annotation: TransactionAnnotation, historyViewModel: HistoryViewModel) -> DetailCellType {
         if annotation.isHidden {
             return .destructiveAction(DetailDestructiveActionTableViewCell.Info(title: "scene.transaction_detail.unarchive_button".localized, type: .unarchiveTransaction, action: { completion in
-                transactionListViewModel.setTransactionHidden(transaction, hidden: false)
+                historyViewModel.setTransactionHidden(transaction, hidden: false)
                 completion(.success(Success()))
             }))
         } else {
             return .destructiveAction(DetailDestructiveActionTableViewCell.Info(title: "scene.transaction_detail.archive_button".localized, type: .archiveTransaction, action: { completion in
-                transactionListViewModel.setTransactionHidden(transaction, hidden: true)
+                historyViewModel.setTransactionHidden(transaction, hidden: true)
                 completion(.success(Success()))
             }))
         }
     }
     
-    static func memoCell(transaction: Transaction, annotation: Observable<TransactionAnnotation>, transactionListViewModel: TransactionListViewModel, placeholder: String) -> DetailCellType {
+    static func memoCell(transaction: Transaction, annotation: Observable<TransactionAnnotation>, historyViewModel: HistoryViewModel, placeholder: String) -> DetailCellType {
         return .memo(DetailMemoTableViewCell.Info(memo: annotation, placeholder: placeholder) {
-            transactionListViewModel.updateAnnotation(annotation.value.settingMemo(to: $0), for: transaction)
+            historyViewModel.updateAnnotation(annotation.value.settingMemo(to: $0), for: transaction)
         })
     }
 }

@@ -40,10 +40,10 @@
 
 "view.amount_input.placeholder" = "数量";
 
-"scene.transactions.title" = "トランザクション";
-"scene.transactions.empty_state_label" = "0 トランザクション 🙁";
-"scene.transactions.row_action.archive" = "アーカイブ";
-"scene.transactions.row_action.unarchive" = "アーカイブしません";
+"scene.history.title" = "トランザクション";
+"scene.history.empty_state_label" = "0 トランザクション 🙁";
+"scene.history.row_action.archive" = "アーカイブ";
+"scene.history.row_action.unarchive" = "アーカイブしません";
 
 "scene.settings.title" = "設定";
 "scene.settings.section.wallet" = "ウォレット";

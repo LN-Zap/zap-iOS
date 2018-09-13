@@ -40,10 +40,10 @@
 
 "view.amount_input.placeholder" = "Suma";
 
-"scene.transactions.title" = "Tranzacţii";
-"scene.transactions.empty_state_label" = "0 tranzacţii 🙁";
-"scene.transactions.row_action.archive" = "Arhiva";
-"scene.transactions.row_action.unarchive" = "Unarchive";
+"scene.history.title" = "Tranzacţii";
+"scene.history.empty_state_label" = "0 tranzacţii 🙁";
+"scene.history.row_action.archive" = "Arhiva";
+"scene.history.row_action.unarchive" = "Unarchive";
 
 "scene.settings.title" = "Setări";
 "scene.settings.section.wallet" = "Portofel";

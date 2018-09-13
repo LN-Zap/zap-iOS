@@ -16,7 +16,7 @@ enum HeaderTableCellType<Value: Equatable>: Equatable {
     case cell(Value)
 }
 
-final class TransactionListViewModel: NSObject {
+final class HistoryViewModel: NSObject {
     private let transactionService: TransactionService
     private let nodeStore: LightningNodeStore
     

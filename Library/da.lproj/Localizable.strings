@@ -40,10 +40,10 @@
 
 "view.amount_input.placeholder" = "Beløb";
 
-"scene.transactions.title" = "Transaktioner";
-"scene.transactions.empty_state_label" = "0 transaktioner 🙁";
-"scene.transactions.row_action.archive" = "Arkiv";
-"scene.transactions.row_action.unarchive" = "Udpak";
+"scene.history.title" = "Transaktioner";
+"scene.history.empty_state_label" = "0 transaktioner 🙁";
+"scene.history.row_action.archive" = "Arkiv";
+"scene.history.row_action.unarchive" = "Udpak";
 
 "scene.settings.title" = "Indstillinger";
 "scene.settings.section.wallet" = "Tegnebog";

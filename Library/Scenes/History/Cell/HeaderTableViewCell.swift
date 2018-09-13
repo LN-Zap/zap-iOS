@@ -9,10 +9,10 @@ import UIKit
 
 class HeaderTableViewCell: UITableViewCell {
     @IBOutlet private weak var headerLabel: UILabel!
+    @IBOutlet private weak var lineView: LineView!
     
     override func awakeFromNib() {
         super.awakeFromNib()
-        
         backgroundColor = .clear
         selectionStyle = .none
         Style.Label.caption.apply(to: headerLabel)

@@ -40,10 +40,10 @@
 
 "view.amount_input.placeholder" = "Amount";
 
-"scene.transactions.title" = "Transactions";
-"scene.transactions.empty_state_label" = "0 transactions 🙁";
-"scene.transactions.row_action.archive" = "Archive";
-"scene.transactions.row_action.unarchive" = "Unarchive";
+"scene.history.title" = "Transactions";
+"scene.history.empty_state_label" = "0 transactions 🙁";
+"scene.history.row_action.archive" = "Archive";
+"scene.history.row_action.unarchive" = "Unarchive";
 
 "scene.settings.title" = "Settings";
 "scene.settings.section.wallet" = "Wallet";

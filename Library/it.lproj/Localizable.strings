@@ -40,10 +40,10 @@
 
 "view.amount_input.placeholder" = "Importo";
 
-"scene.transactions.title" = "Transazioni";
-"scene.transactions.empty_state_label" = "🙁 0 transazioni";
-"scene.transactions.row_action.archive" = "Archivia";
-"scene.transactions.row_action.unarchive" = "Unarchive";
+"scene.history.title" = "Transazioni";
+"scene.history.empty_state_label" = "🙁 0 transazioni";
+"scene.history.row_action.archive" = "Archivia";
+"scene.history.row_action.unarchive" = "Unarchive";
 
 "scene.settings.title" = "Impostazioni";
 "scene.settings.section.wallet" = "Portafoglio";

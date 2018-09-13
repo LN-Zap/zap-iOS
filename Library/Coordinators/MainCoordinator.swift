@@ -14,7 +14,7 @@ final class MainCoordinator: Routing {
     
     private let lightningService: LightningService
     private let channelListViewModel: ChannelListViewModel
-    private let transactionListViewModel: TransactionListViewModel
+    private let historyViewModel: HistoryViewModel
     private let channelTransactionAnnotationUpdater: ChannelTransactionAnnotationUpdater
     private let authenticationViewModel: AuthenticationViewModel
     
@@ -29,9 +29,9 @@ final class MainCoordinator: Routing {
         
         let nodeStore = LightningNodeStore(channelService: lightningService.channelService)
         channelListViewModel = ChannelListViewModel(channelService: lightningService.channelService, nodeStore: nodeStore)
-        transactionListViewModel = TransactionListViewModel(transactionService: lightningService.transactionService, nodeStore: nodeStore)
+        historyViewModel = HistoryViewModel(transactionService: lightningService.transactionService, nodeStore: nodeStore)
         
-        channelTransactionAnnotationUpdater = ChannelTransactionAnnotationUpdater(channelService: lightningService.channelService, transactionService: lightningService.transactionService, updateCallback: transactionListViewModel.updateAnnotationType)
+        channelTransactionAnnotationUpdater = ChannelTransactionAnnotationUpdater(channelService: lightningService.channelService, transactionService: lightningService.transactionService, updateCallback: historyViewModel.updateAnnotationType)
     }
     
     public func handle(_ route: Route) {
@@ -67,7 +67,7 @@ final class MainCoordinator: Routing {
     }
     
     func transactionListViewController() -> UIViewController {
-        return UIStoryboard.instantiateTransactionListViewController(transactionListViewModel: transactionListViewModel, presentTransactionDetail: presentTransactionDetail, presentFilter: presentFilter)
+        return UIStoryboard.instantiateHistoryViewController(historyViewModel: historyViewModel, presentTransactionDetail: presentTransactionDetail, presentFilter: presentFilter)
     }
     
     func channelListViewController() -> UIViewController {
@@ -114,7 +114,7 @@ final class MainCoordinator: Routing {
     }
     
     private func presentTransactionDetail(for transactionViewModel: TransactionViewModel) {
-        let detailViewModel = DetailViewModelFactory.instantiate(from: transactionViewModel, transactionListViewModel: transactionListViewModel)
+        let detailViewModel = DetailViewModelFactory.instantiate(from: transactionViewModel, historyViewModel: historyViewModel)
         let detailViewController = UIStoryboard.instantiateDetailViewController(detailViewModel: detailViewModel, dismissButtonTapped: dismissDetailViewController, blockExplorerButtonTapped: presentBlockExplorer)
         self.detailViewController = detailViewController
         rootViewController.present(detailViewController, animated: true, completion: nil)
@@ -138,7 +138,7 @@ final class MainCoordinator: Routing {
     }
     
     private func presentFilter() {
-        let filterViewController = UIStoryboard.instantiateFilterViewController(transactionListViewModel: transactionListViewModel)
+        let filterViewController = UIStoryboard.instantiateFilterViewController(historyViewModel: historyViewModel)
         rootViewController.present(filterViewController, animated: true, completion: nil)
     }
 }

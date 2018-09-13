@@ -40,10 +40,10 @@
 
 "view.amount_input.placeholder" = "المبلغ";
 
-"scene.transactions.title" = "المعاملات";
-"scene.transactions.empty_state_label" = "المعاملات 0 🙁";
-"scene.transactions.row_action.archive" = "أرشيف";
-"scene.transactions.row_action.unarchive" = "إلغاء الأرشفة";
+"scene.history.title" = "المعاملات";
+"scene.history.empty_state_label" = "المعاملات 0 🙁";
+"scene.history.row_action.archive" = "أرشيف";
+"scene.history.row_action.unarchive" = "إلغاء الأرشفة";
 
 "scene.settings.title" = "إعدادات";
 "scene.settings.section.wallet" = "محفظة";

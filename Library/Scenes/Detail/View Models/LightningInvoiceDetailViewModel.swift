@@ -14,7 +14,7 @@ final class LightningInvoiceDetailViewModel: NSObject, DetailViewModel {
     let detailViewControllerTitle = "scene.transaction_detail.title.lightning_invoice".localized
     let detailCells = MutableObservableArray<DetailCellType>([])
     
-    init(lightningInvoice: Invoice, annotation: Observable<TransactionAnnotation>, transactionListViewModel: TransactionListViewModel) {
+    init(lightningInvoice: Invoice, annotation: Observable<TransactionAnnotation>, historyViewModel: HistoryViewModel) {
         super.init()
         
         if lightningInvoice.expiry > Date(),
@@ -35,7 +35,7 @@ final class LightningInvoiceDetailViewModel: NSObject, DetailViewModel {
         detailCells.append(.info(DetailTableViewCell.Info(title: "scene.transaction_detail.payment_request".localized, data: lightningInvoice.paymentRequest)))
         detailCells.append(.separator)
         
-        detailCells.append(DetailCellType.memoCell(transaction: lightningInvoice, annotation: annotation, transactionListViewModel: transactionListViewModel, placeholder: lightningInvoice.paymentRequest))
+        detailCells.append(DetailCellType.memoCell(transaction: lightningInvoice, annotation: annotation, historyViewModel: historyViewModel, placeholder: lightningInvoice.paymentRequest))
         detailCells.append(.separator)
         
         detailCells.append(.timer(DetailTimerTableViewCell.Info(title: "scene.transaction_detail.expiry_label".localized, date: lightningInvoice.expiry)))
@@ -51,6 +51,6 @@ final class LightningInvoiceDetailViewModel: NSObject, DetailViewModel {
             detailCells.append(.separator)
         }
         
-        detailCells.append(DetailCellType.hideTransactionCell(transaction: lightningInvoice, annotation: annotation.value, transactionListViewModel: transactionListViewModel))
+        detailCells.append(DetailCellType.hideTransactionCell(transaction: lightningInvoice, annotation: annotation.value, historyViewModel: historyViewModel))
     }
 }

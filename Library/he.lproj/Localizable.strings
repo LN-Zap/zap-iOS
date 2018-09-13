@@ -40,10 +40,10 @@
 
 "view.amount_input.placeholder" = "סכום";
 
-"scene.transactions.title" = "תנועות";
-"scene.transactions.empty_state_label" = "0 עיסקאות  🙁";
-"scene.transactions.row_action.archive" = "ארכיון";
-"scene.transactions.row_action.unarchive" = "חילוץ הארכיון";
+"scene.history.title" = "תנועות";
+"scene.history.empty_state_label" = "0 עיסקאות  🙁";
+"scene.history.row_action.archive" = "ארכיון";
+"scene.history.row_action.unarchive" = "חילוץ הארכיון";
 
 "scene.settings.title" = "הגדרות";
 "scene.settings.section.wallet" = "ארנק";

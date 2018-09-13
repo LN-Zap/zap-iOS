@@ -8,9 +8,9 @@
 import UIKit
 
 extension UIStoryboard {
-    static func instantiateFilterViewController(transactionListViewModel: TransactionListViewModel) -> UINavigationController {
-        let viewController = Storyboard.transactionList.instantiate(viewController: FilterViewController.self)
-        viewController.transactionListViewModel = transactionListViewModel
+    static func instantiateFilterViewController(historyViewModel: HistoryViewModel) -> UINavigationController {
+        let viewController = Storyboard.history.instantiate(viewController: FilterViewController.self)
+        viewController.historyViewModel = historyViewModel
         
         let navigationController = ModalNavigationController(rootViewController: viewController, height: 365)
         
@@ -26,7 +26,7 @@ final class FilterViewController: UIViewController {
     
     @IBOutlet private weak var tableView: UITableView!
     
-    fileprivate var transactionListViewModel: TransactionListViewModel?
+    fileprivate var historyViewModel: HistoryViewModel?
     
     let cells: [[FilterSetting]] = [
         [
@@ -64,7 +64,7 @@ extension FilterViewController: UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        guard let filterSettings = transactionListViewModel?.filterSettings.value else { fatalError("ViewModel not set") }
+        guard let filterSettings = historyViewModel?.filterSettings.value else { fatalError("ViewModel not set") }
         
         let cell: FilterTableViewCell = tableView.dequeueCellForIndexPath(indexPath)
         let filterSetting = cells[indexPath.section][indexPath.row]
@@ -90,8 +90,8 @@ extension FilterViewController: UITableViewDelegate {
 
 extension FilterViewController: FilterTableViewCellDelegate {
     func setFilterSetting(_ filterSetting: FilterSetting, active: Bool) {
-        guard let filterSettings = transactionListViewModel?.filterSettings.value else { return }
+        guard let filterSettings = historyViewModel?.filterSettings.value else { return }
         let newFilterSettings = filterSetting.setActive(active, in: filterSettings)
-        transactionListViewModel?.updateFilterSettings(newFilterSettings)
+        historyViewModel?.updateFilterSettings(newFilterSettings)
     }
 }

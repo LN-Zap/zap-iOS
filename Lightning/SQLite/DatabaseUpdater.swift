@@ -11,7 +11,6 @@ import SQLite
 import SwiftLnd
 
 final class DatabaseUpdater {
-    
     static func channelsUpdated(_ channels: [Channel]) {
         do {
             for channel in channels {

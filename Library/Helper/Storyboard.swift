@@ -14,6 +14,7 @@ enum Storyboard: String {
     case createWallet
     case debug
     case detail
+    case history
     case loading
     case modalPin
     case numericKeyPad
@@ -22,7 +23,6 @@ enum Storyboard: String {
     case root
     case sync
     case timeLocked
-    case transactionList
     case wallet
     
     var storyboard: UIStoryboard? {

@@ -81,6 +81,12 @@ public enum Style {
             $0.adjustsFontForContentSizeCategory = true
         }
         
+        static let footnote = UIViewStyle<UILabel> {
+            $0.font = UIFontMetrics(forTextStyle: .body).scaledFont(for: UIFont.Zap.regular.withSize(13))
+            $0.textColor = UIColor.Zap.gray
+            $0.adjustsFontForContentSizeCategory = true
+        }
+        
         static let caption = UIViewStyle<UILabel> {
             $0.font = UIFontMetrics(forTextStyle: .caption1).scaledFont(for: UIFont.Zap.regular.withSize(10))
             $0.textColor = UIColor.Zap.gray

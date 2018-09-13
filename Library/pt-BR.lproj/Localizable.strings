@@ -40,10 +40,10 @@
 
 "view.amount_input.placeholder" = "Quantidade";
 
-"scene.transactions.title" = "Transações";
-"scene.transactions.empty_state_label" = "0 transações 🙁";
-"scene.transactions.row_action.archive" = "Arquivo";
-"scene.transactions.row_action.unarchive" = "Desarquivar";
+"scene.history.title" = "Transações";
+"scene.history.empty_state_label" = "0 transações 🙁";
+"scene.history.row_action.archive" = "Arquivo";
+"scene.history.row_action.unarchive" = "Desarquivar";
 
 "scene.settings.title" = "Configurações";
 "scene.settings.section.wallet" = "Carteira";

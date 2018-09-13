@@ -40,10 +40,10 @@
 
 "view.amount_input.placeholder" = "Belopp";
 
-"scene.transactions.title" = "Överföringar";
-"scene.transactions.empty_state_label" = "0 överföringar 🙁";
-"scene.transactions.row_action.archive" = "Arkivera";
-"scene.transactions.row_action.unarchive" = "Uppackning";
+"scene.history.title" = "Överföringar";
+"scene.history.empty_state_label" = "0 överföringar 🙁";
+"scene.history.row_action.archive" = "Arkivera";
+"scene.history.row_action.unarchive" = "Uppackning";
 
 "scene.settings.title" = "Inställningar";
 "scene.settings.section.wallet" = "Wallet";

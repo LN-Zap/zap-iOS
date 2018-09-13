@@ -40,10 +40,10 @@
 
 "view.amount_input.placeholder" = "数量";
 
-"scene.transactions.title" = "交易";
-"scene.transactions.empty_state_label" = "0个交易🙁";
-"scene.transactions.row_action.archive" = "归档";
-"scene.transactions.row_action.unarchive" = "取消归档";
+"scene.history.title" = "交易";
+"scene.history.empty_state_label" = "0个交易🙁";
+"scene.history.row_action.archive" = "归档";
+"scene.history.row_action.unarchive" = "取消归档";
 
 "scene.settings.title" = "设置";
 "scene.settings.section.wallet" = "钱包";

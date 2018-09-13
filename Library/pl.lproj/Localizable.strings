@@ -40,10 +40,10 @@
 
 "view.amount_input.placeholder" = "Kwota";
 
-"scene.transactions.title" = "Transakcje";
-"scene.transactions.empty_state_label" = "brak transakcji";
-"scene.transactions.row_action.archive" = "Archiwizuj";
-"scene.transactions.row_action.unarchive" = "Przywróć z archiwum";
+"scene.history.title" = "Transakcje";
+"scene.history.empty_state_label" = "brak transakcji";
+"scene.history.row_action.archive" = "Archiwizuj";
+"scene.history.row_action.unarchive" = "Przywróć z archiwum";
 
 "scene.settings.title" = "Ustawienia";
 "scene.settings.section.wallet" = "Portfel";

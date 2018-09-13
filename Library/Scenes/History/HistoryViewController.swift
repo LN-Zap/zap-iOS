@@ -9,29 +9,29 @@ import Bond
 import UIKit
 
 extension UIStoryboard {
-    static func instantiateTransactionListViewController(transactionListViewModel: TransactionListViewModel, presentTransactionDetail: @escaping (TransactionViewModel) -> Void, presentFilter: @escaping () -> Void) -> UINavigationController {
-        let viewController = Storyboard.transactionList.instantiate(viewController: TransactionListViewController.self)
+    static func instantiateHistoryViewController(historyViewModel: HistoryViewModel, presentTransactionDetail: @escaping (TransactionViewModel) -> Void, presentFilter: @escaping () -> Void) -> UINavigationController {
+        let viewController = Storyboard.history.instantiate(viewController: HistoryViewController.self)
         
-        viewController.transactionListViewModel = transactionListViewModel
+        viewController.historyViewModel = historyViewModel
         viewController.presentTransactionDetail = presentTransactionDetail
         viewController.presentFilter = presentFilter
         
         let navigationController = ZapNavigationController(rootViewController: viewController)
-        navigationController.tabBarItem.title = "scene.transactions.title".localized
+        navigationController.tabBarItem.title = "scene.history.title".localized
         navigationController.tabBarItem.image = UIImage(named: "tabbar_wallet", in: Bundle.library, compatibleWith: nil)
 
         return navigationController
     }
 }
 
-final class TransactionListViewController: UIViewController {
+final class HistoryViewController: UIViewController {
     @IBOutlet private weak var tableView: UITableView?
     @IBOutlet private weak var emptyStateLabel: UILabel!
     @IBOutlet private weak var loadingActivityIndicator: UIActivityIndicatorView!
     
     fileprivate var presentFilter: (() -> Void)?
     fileprivate var presentTransactionDetail: ((TransactionViewModel) -> Void)?
-    fileprivate var transactionListViewModel: TransactionListViewModel?
+    fileprivate var historyViewModel: HistoryViewModel?
     
     deinit {    
         tableView?.isEditing = false // fixes Bond bug. Binding is not released in editing mode.
@@ -40,7 +40,7 @@ final class TransactionListViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        title = "scene.transactions.title".localized
+        title = "scene.history.title".localized
         
         guard let tableView = tableView else { return }
         view.backgroundColor = UIColor.Zap.background
@@ -51,15 +51,17 @@ final class TransactionListViewController: UIViewController {
         navigationItem.searchController = searchController
 
         Style.Label.body.apply(to: emptyStateLabel)
-        emptyStateLabel.text = "scene.transactions.empty_state_label".localized
+        emptyStateLabel.text = "scene.history.empty_state_label".localized
         
-        tableView.rowHeight = 66
-        tableView.registerCell(TransactionTableViewCell.self)
+        tableView.rowHeight = UITableViewAutomaticDimension
+        tableView.estimatedRowHeight = 82
+        tableView.registerCell(HistoryCell.self)
         tableView.registerCell(HeaderTableViewCell.self)
         tableView.refreshControl = UIRefreshControl()
         tableView.refreshControl?.addTarget(self, action: #selector(refresh), for: .valueChanged)
+        tableView.contentInset = UIEdgeInsets(top: 15, left: 0, bottom: 15, right: 0)
         
-        transactionListViewModel?.dataSource
+        historyViewModel?.dataSource
             .bind(to: tableView) { dataSource, indexPath, tableView in
                 switch dataSource[indexPath.row] {
                 case .header(let title):
@@ -67,19 +69,19 @@ final class TransactionListViewController: UIViewController {
                     cell.headerText = title
                     return cell
                 case .cell(let transactionViewModel):
-                    let cell: TransactionTableViewCell = tableView.dequeueCellForIndexPath(indexPath)
-                    cell.transactionViewModel = transactionViewModel
+                    let cell: HistoryCell = tableView.dequeueCellForIndexPath(indexPath)
+//                    cell.transactionViewModel = transactionViewModel
                     return cell
                 }
             }
             .dispose(in: reactive.bag)
         
-        [transactionListViewModel?.isLoading
+        [historyViewModel?.isLoading
             .map { !$0 }
             .bind(to: loadingActivityIndicator.reactive.isHidden),
-         transactionListViewModel?.isEmpty
+         historyViewModel?.isEmpty
             .bind(to: tableView.reactive.isHidden),
-         transactionListViewModel?.isEmpty
+         historyViewModel?.isEmpty
             .map { !$0 }
             .bind(to: emptyStateLabel.reactive.isHidden)]
             .dispose(in: reactive.bag)
@@ -90,28 +92,28 @@ final class TransactionListViewController: UIViewController {
     }
     
     @objc func refresh(sender: UIRefreshControl) {
-        transactionListViewModel?.refresh()
+        historyViewModel?.refresh()
         sender.endRefreshing()
     }
 }
 
-extension TransactionListViewController: UITableViewDelegate {
+extension HistoryViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
         
-        if let transactionListViewModel = transactionListViewModel,
-            case .cell(let transactionViewModel) = transactionListViewModel.dataSource.item(at: indexPath.row) {
+        if let historyViewModel = historyViewModel,
+            case .cell(let transactionViewModel) = historyViewModel.dataSource.item(at: indexPath.row) {
             presentTransactionDetail?(transactionViewModel)
         }
     }
     
     func tableView(_ tableView: UITableView, editActionsForRowAt indexPath: IndexPath) -> [UITableViewRowAction]? {
-        if let transactionListViewModel = transactionListViewModel,
-            case .cell(let transactionViewModel) = transactionListViewModel.dataSource.item(at: indexPath.row) {
+        if let historyViewModel = historyViewModel,
+            case .cell(let transactionViewModel) = historyViewModel.dataSource.item(at: indexPath.row) {
             if transactionViewModel.annotation.value.isHidden {
-                return [archiveAction(title: "scene.transactions.row_action.unarchive".localized, color: UIColor.Zap.superGreen, setHidden: false)]
+                return [archiveAction(title: "scene.history.row_action.unarchive".localized, color: UIColor.Zap.superGreen, setHidden: false)]
             } else {
-                return [archiveAction(title: "scene.transactions.row_action.archive".localized, color: UIColor.Zap.superRed, setHidden: true)]
+                return [archiveAction(title: "scene.history.row_action.archive".localized, color: UIColor.Zap.superRed, setHidden: true)]
             }
         }
         return []
@@ -119,9 +121,9 @@ extension TransactionListViewController: UITableViewDelegate {
     
     private func archiveAction(title: String, color: UIColor, setHidden hidden: Bool) -> UITableViewRowAction {
         let archiveAction = UITableViewRowAction(style: .destructive, title: title) { [weak self] _, indexPath in
-            if let transactionListViewModel = self?.transactionListViewModel,
-                case .cell(let transactionViewModel) = transactionListViewModel.dataSource.item(at: indexPath.row) {
-                transactionListViewModel.setTransactionHidden(transactionViewModel.transaction, hidden: hidden)
+            if let historyViewModel = self?.historyViewModel,
+                case .cell(let transactionViewModel) = historyViewModel.dataSource.item(at: indexPath.row) {
+                historyViewModel.setTransactionHidden(transactionViewModel.transaction, hidden: hidden)
             }
         }
         archiveAction.backgroundColor = color
@@ -129,16 +131,16 @@ extension TransactionListViewController: UITableViewDelegate {
     }
 }
 
-extension TransactionListViewController: UISearchBarDelegate {
+extension HistoryViewController: UISearchBarDelegate {
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
         searchBar.resignFirstResponder()
     }
 }
 
-extension TransactionListViewController: UISearchResultsUpdating {
+extension HistoryViewController: UISearchResultsUpdating {
     func updateSearchResults(for searchController: UISearchController) {
         if let text = searchController.searchBar.text {
-            transactionListViewModel?.searchString.value = text
+            historyViewModel?.searchString.value = text
         }
     }
 }
