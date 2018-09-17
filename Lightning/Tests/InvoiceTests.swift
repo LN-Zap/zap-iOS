@@ -7,6 +7,7 @@
 
 import BTCUtil
 @testable import Lightning
+@testable import SwiftLnd
 import XCTest
 
 class InvoiceTests: XCTestCase {

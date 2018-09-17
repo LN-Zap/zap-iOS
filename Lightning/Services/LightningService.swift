@@ -24,6 +24,8 @@ public final class LightningService: NSObject {
         self.init(api: api)
         
         do {
+//            try FailedPaymentEvent(paymentHash: "abab", memo: "failed memo", amount: 12, destination: "020kk", date: Date(), expiry: Date().addingTimeInterval(100000), fallbackAddress: nil, paymentRequest: "abc").insert()
+            
             try SQLiteDataStore.shared.createTables()
         } catch {
             print(error)

@@ -27,7 +27,6 @@ extension UIStoryboard {
 final class HistoryViewController: UIViewController {
     @IBOutlet private weak var tableView: UITableView?
     @IBOutlet private weak var emptyStateLabel: UILabel!
-    @IBOutlet private weak var loadingActivityIndicator: UIActivityIndicatorView!
     
     fileprivate var presentFilter: (() -> Void)?
     fileprivate var presentTransactionDetail: ((TransactionViewModel) -> Void)?
@@ -59,7 +58,7 @@ final class HistoryViewController: UIViewController {
         tableView.registerCell(HeaderTableViewCell.self)
         tableView.refreshControl = UIRefreshControl()
         tableView.refreshControl?.addTarget(self, action: #selector(refresh), for: .valueChanged)
-        tableView.contentInset = UIEdgeInsets(top: 15, left: 0, bottom: 15, right: 0)
+        tableView.contentInset = UIEdgeInsets(top: 10, left: 0, bottom: 10, right: 0)
         
         historyViewModel?.dataSource
             .bind(to: tableView) { dataSource, indexPath, tableView in
@@ -68,18 +67,27 @@ final class HistoryViewController: UIViewController {
                     let cell: HeaderTableViewCell = tableView.dequeueCellForIndexPath(indexPath)
                     cell.headerText = title
                     return cell
-                case .cell(let transactionViewModel):
+                case .transactionEvent(let transactionEvent):
                     let cell: HistoryCell = tableView.dequeueCellForIndexPath(indexPath)
-//                    cell.transactionViewModel = transactionViewModel
+                    cell.setTransactionEvent(transactionEvent)
+                    return cell
+                case .channelEvent(let channelEvent):
+                    let cell: HistoryCell = tableView.dequeueCellForIndexPath(indexPath)
+                    cell.setChannelEvent(channelEvent)
+                    return cell
+                case .createInvoiceEvent(let createInvoiceEvent):
+                    let cell: HistoryCell = tableView.dequeueCellForIndexPath(indexPath)
+                    cell.setCreateInvoiceEvent(createInvoiceEvent)
+                    return cell
+                case .failedPayemntEvent(let failedPayemntEvent):
+                    let cell: HistoryCell = tableView.dequeueCellForIndexPath(indexPath)
+                    cell.setFailedPayemntEvent(failedPayemntEvent)
                     return cell
                 }
             }
             .dispose(in: reactive.bag)
         
-        [historyViewModel?.isLoading
-            .map { !$0 }
-            .bind(to: loadingActivityIndicator.reactive.isHidden),
-         historyViewModel?.isEmpty
+        [historyViewModel?.isEmpty
             .bind(to: tableView.reactive.isHidden),
          historyViewModel?.isEmpty
             .map { !$0 }
@@ -92,7 +100,7 @@ final class HistoryViewController: UIViewController {
     }
     
     @objc func refresh(sender: UIRefreshControl) {
-        historyViewModel?.refresh()
+//        historyViewModel?.refresh()
         sender.endRefreshing()
     }
 }
@@ -101,34 +109,34 @@ extension HistoryViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
         
-        if let historyViewModel = historyViewModel,
-            case .cell(let transactionViewModel) = historyViewModel.dataSource.item(at: indexPath.row) {
-            presentTransactionDetail?(transactionViewModel)
-        }
+//        if let historyViewModel = historyViewModel,
+//            case .cell(let transactionViewModel) = historyViewModel.dataSource.item(at: indexPath.row) {
+//            presentTransactionDetail?(transactionViewModel)
+//        }
     }
     
-    func tableView(_ tableView: UITableView, editActionsForRowAt indexPath: IndexPath) -> [UITableViewRowAction]? {
-        if let historyViewModel = historyViewModel,
-            case .cell(let transactionViewModel) = historyViewModel.dataSource.item(at: indexPath.row) {
-            if transactionViewModel.annotation.value.isHidden {
-                return [archiveAction(title: "scene.history.row_action.unarchive".localized, color: UIColor.Zap.superGreen, setHidden: false)]
-            } else {
-                return [archiveAction(title: "scene.history.row_action.archive".localized, color: UIColor.Zap.superRed, setHidden: true)]
-            }
-        }
-        return []
-    }
-    
-    private func archiveAction(title: String, color: UIColor, setHidden hidden: Bool) -> UITableViewRowAction {
-        let archiveAction = UITableViewRowAction(style: .destructive, title: title) { [weak self] _, indexPath in
-            if let historyViewModel = self?.historyViewModel,
-                case .cell(let transactionViewModel) = historyViewModel.dataSource.item(at: indexPath.row) {
-                historyViewModel.setTransactionHidden(transactionViewModel.transaction, hidden: hidden)
-            }
-        }
-        archiveAction.backgroundColor = color
-        return archiveAction
-    }
+//    func tableView(_ tableView: UITableView, editActionsForRowAt indexPath: IndexPath) -> [UITableViewRowAction]? {
+//        if let historyViewModel = historyViewModel,
+//            case .cell(let transactionViewModel) = historyViewModel.dataSource.item(at: indexPath.row) {
+//            if transactionViewModel.annotation.value.isHidden {
+//                return [archiveAction(title: "scene.history.row_action.unarchive".localized, color: UIColor.Zap.superGreen, setHidden: false)]
+//            } else {
+//                return [archiveAction(title: "scene.history.row_action.archive".localized, color: UIColor.Zap.superRed, setHidden: true)]
+//            }
+//        }
+//        return []
+//    }
+//
+//    private func archiveAction(title: String, color: UIColor, setHidden hidden: Bool) -> UITableViewRowAction {
+//        let archiveAction = UITableViewRowAction(style: .destructive, title: title) { [weak self] _, indexPath in
+//            if let historyViewModel = self?.historyViewModel,
+//                case .cell(let transactionViewModel) = historyViewModel.dataSource.item(at: indexPath.row) {
+//                historyViewModel.setTransactionHidden(transactionViewModel.transaction, hidden: hidden)
+//            }
+//        }
+//        archiveAction.backgroundColor = color
+//        return archiveAction
+//    }
 }
 
 extension HistoryViewController: UISearchBarDelegate {

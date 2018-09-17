@@ -10,7 +10,7 @@ import Foundation
 import SQLite
 import SwiftLnd
 
-final class DatabaseUpdater {
+enum DatabaseUpdater {
     static func channelsUpdated(_ channels: [Channel]) {
         do {
             for channel in channels {
@@ -19,7 +19,8 @@ final class DatabaseUpdater {
                     txHash: channel.channelPoint.fundingTxid,
                     node: ConnectedNode(pubKey: channel.remotePubKey, alias: nil, color: nil),
                     blockHeight: blockHeight,
-                    type: .open
+                    type: .open,
+                    fee: nil
                 )
                 try openEvent.insert()
             }
@@ -41,7 +42,8 @@ final class DatabaseUpdater {
                     txHash: channelCloseSummary.closingTxHash,
                     node: ConnectedNode(pubKey: channelCloseSummary.remotePubKey, alias: nil, color: nil),
                     blockHeight: channelCloseSummary.closeHeight,
-                    type: ChannelEvent.ChanneEventType(closeType: channelCloseSummary.closeType)
+                    type: ChannelEvent.ChanneEventType(closeType: channelCloseSummary.closeType),
+                    fee: nil
                 )
                 try closeEvent.insert()
                 
@@ -50,7 +52,8 @@ final class DatabaseUpdater {
                         txHash: channelCloseSummary.channelPoint.fundingTxid,
                         node: ConnectedNode(pubKey: channelCloseSummary.remotePubKey, alias: nil, color: nil),
                         blockHeight: channelCloseSummary.openHeight,
-                        type: .open
+                        type: .open,
+                        fee: nil
                     )
                     try openEvent.insert()
                 }

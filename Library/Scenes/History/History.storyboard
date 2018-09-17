@@ -31,9 +31,6 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" animating="YES" style="gray" translatesAutoresizingMaskIntoConstraints="NO" id="Wig-wX-cMw">
-                                <rect key="frame" x="177" y="275.5" width="20" height="20"/>
-                            </activityIndicatorView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
@@ -42,10 +39,8 @@
                             <constraint firstItem="pF1-OT-IUM" firstAttribute="top" secondItem="0Q0-UA-jDF" secondAttribute="top" id="E0P-MV-75r"/>
                             <constraint firstItem="MdZ-nX-bdg" firstAttribute="centerY" secondItem="pF1-OT-IUM" secondAttribute="centerY" constant="-80" id="I22-U7-68e"/>
                             <constraint firstItem="MdZ-nX-bdg" firstAttribute="centerX" secondItem="pF1-OT-IUM" secondAttribute="centerX" id="JVZ-4n-4YC"/>
-                            <constraint firstItem="MdZ-nX-bdg" firstAttribute="centerX" secondItem="Wig-wX-cMw" secondAttribute="centerX" id="czJ-2F-yCz"/>
                             <constraint firstAttribute="trailing" secondItem="pF1-OT-IUM" secondAttribute="trailing" id="dTE-8X-Q84"/>
                             <constraint firstItem="MdZ-nX-bdg" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="pF1-OT-IUM" secondAttribute="leading" constant="20" id="edu-qO-jmf"/>
-                            <constraint firstItem="MdZ-nX-bdg" firstAttribute="centerY" secondItem="Wig-wX-cMw" secondAttribute="centerY" id="gFc-7Z-q90"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="0Q0-UA-jDF"/>
                     </view>
@@ -58,7 +53,6 @@
                     </navigationItem>
                     <connections>
                         <outlet property="emptyStateLabel" destination="MdZ-nX-bdg" id="Pwx-08-UrV"/>
-                        <outlet property="loadingActivityIndicator" destination="Wig-wX-cMw" id="m1D-Db-4ki"/>
                         <outlet property="tableView" destination="pF1-OT-IUM" id="iv8-dO-2AL"/>
                     </connections>
                 </viewController>
@@ -78,7 +72,7 @@
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                                 <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" misplaced="YES" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="FilterTableViewCell" id="fjQ-JQ-mIB" customClass="FilterTableViewCell" customModule="Library" customModuleProvider="target">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="FilterTableViewCell" id="fjQ-JQ-mIB" customClass="FilterTableViewCell" customModule="Library" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="55.5" width="375" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="fjQ-JQ-mIB" id="bYW-zw-CCB">

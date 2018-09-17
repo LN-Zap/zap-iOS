@@ -14,7 +14,7 @@ import SwiftLnd
  This is any event that transfers bitcoin from one wallet to another.
  Includes transactions, except those resulting from opening or closing channels.
  */
-public struct TransactionEvent {
+public struct TransactionEvent: Equatable, DateProvidingEvent {
     public let txHash: String
     public let memo: String?
     public let amount: Satoshi
@@ -110,8 +110,11 @@ extension TransactionEvent {
         return try events(query: query)
     }
     
-    static func tsss() {
-        
+    public static func payments() throws -> [TransactionEvent] {
+        let query = TransactionEvent.table
+            .filter(Column.channelRelated == false || Column.channelRelated == nil) // nil or false
+            .order(Column.date.desc)
+        return try events(query: query)
     }
     
     func updateBlockHeight() throws -> Bool {

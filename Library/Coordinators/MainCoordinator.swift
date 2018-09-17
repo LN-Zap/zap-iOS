@@ -15,7 +15,6 @@ final class MainCoordinator: Routing {
     private let lightningService: LightningService
     private let channelListViewModel: ChannelListViewModel
     private let historyViewModel: HistoryViewModel
-    private let channelTransactionAnnotationUpdater: ChannelTransactionAnnotationUpdater
     private let authenticationViewModel: AuthenticationViewModel
     
     private weak var detailViewController: UINavigationController?
@@ -30,8 +29,6 @@ final class MainCoordinator: Routing {
         let nodeStore = LightningNodeStore(channelService: lightningService.channelService)
         channelListViewModel = ChannelListViewModel(channelService: lightningService.channelService, nodeStore: nodeStore)
         historyViewModel = HistoryViewModel(transactionService: lightningService.transactionService, nodeStore: nodeStore)
-        
-        channelTransactionAnnotationUpdater = ChannelTransactionAnnotationUpdater(channelService: lightningService.channelService, transactionService: lightningService.transactionService, updateCallback: historyViewModel.updateAnnotationType)
     }
     
     public func handle(_ route: Route) {

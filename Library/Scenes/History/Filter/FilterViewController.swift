@@ -92,6 +92,6 @@ extension FilterViewController: FilterTableViewCellDelegate {
     func setFilterSetting(_ filterSetting: FilterSetting, active: Bool) {
         guard let filterSettings = historyViewModel?.filterSettings.value else { return }
         let newFilterSettings = filterSetting.setActive(active, in: filterSettings)
-        historyViewModel?.updateFilterSettings(newFilterSettings)
+//        historyViewModel?.updateFilterSettings(newFilterSettings)
     }
 }

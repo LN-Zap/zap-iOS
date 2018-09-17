@@ -10,17 +10,17 @@ import Foundation
 import SQLite
 
 /// Includes all unsettled invoices.
-struct CreateInvoiceEvent {
-    let id: String
-    let memo: String?
-    let amount: Satoshi?
-    let date: Date
-    let expiry: Date
-    let paymentRequest: String
+public struct CreateInvoiceEvent: Equatable {
+    public let id: String
+    public let memo: String?
+    public let amount: Satoshi?
+    public let date: Date
+    public let expiry: Date
+    public let paymentRequest: String
 }
 
 // SQL
-extension CreateInvoiceEvent {
+extension CreateInvoiceEvent: DateProvidingEvent {
     private enum Column {
         static let id = Expression<String>("id")
         static let memo = Expression<String?>("memo")
@@ -31,6 +31,15 @@ extension CreateInvoiceEvent {
     }
     
     private static let table = Table("createInvoiceEvent")
+    
+    init(row: Row) {
+        id = row[Column.id]
+        memo = row[Column.memo]
+        amount = row[Column.amount]
+        date = row[Column.date]
+        expiry = row[Column.expiry]
+        paymentRequest = row[Column.paymentRequest]
+    }
     
     static func createTable(database: Connection) throws {
         try database.run(table.create(ifNotExists: true) { t in
@@ -44,6 +53,11 @@ extension CreateInvoiceEvent {
     }
     
     func insert() throws {
+        var memo = self.memo
+        if memo == "" {
+            memo = nil
+        }
+        
         try SQLiteDataStore.shared.database.run(CreateInvoiceEvent.table.insert(
             Column.id <- id,
             Column.memo <- memo,
@@ -52,5 +66,10 @@ extension CreateInvoiceEvent {
             Column.expiry <- expiry,
             Column.paymentRequest <- paymentRequest)
         )
+    }
+    
+    public static func events() throws -> [CreateInvoiceEvent] {
+        return try SQLiteDataStore.shared.database.prepare(CreateInvoiceEvent.table)
+            .map(CreateInvoiceEvent.init)
     }
 }

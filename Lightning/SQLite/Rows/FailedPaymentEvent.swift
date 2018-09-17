@@ -10,15 +10,15 @@ import Foundation
 import SQLite
 
 /// Gets created when a payment request fails to complete.
-struct FailedPaymentEvent {
-    let paymentHash: String
-    let memo: String?
-    let amount: Satoshi?
-    let destination: String
-    let date: Date
-    let expiry: Date
-    let fallbackAddress: BitcoinAddress?
-    let paymentRequest: String
+public struct FailedPaymentEvent: Equatable, DateProvidingEvent {
+    public let paymentHash: String
+    public let memo: String?
+    public let amount: Satoshi?
+    public let destination: String
+    public let date: Date
+    public let expiry: Date
+    public let fallbackAddress: BitcoinAddress?
+    public let paymentRequest: String
 }
 
 // SQL
@@ -36,6 +36,23 @@ extension FailedPaymentEvent {
     
     private static let table = Table("failedPaymentEvent")
 
+    init(row: Row) {
+        paymentHash = row[Column.paymentHash]
+        memo = row[Column.memo]
+        amount = row[Column.amount]
+        destination = row[Column.destination]
+        date = row[Column.date]
+        expiry = row[Column.expiry]
+        
+        if let addressString = row[Column.fallbackAddress] {
+            fallbackAddress = BitcoinAddress(string: addressString)
+        } else {
+            fallbackAddress = nil
+        }
+        
+        paymentRequest = row[Column.paymentRequest]
+    }
+    
     static func createTable(database: Connection) throws {
         try database.run(table.create(ifNotExists: true) { t in
             t.column(Column.paymentHash, primaryKey: true)
@@ -60,5 +77,10 @@ extension FailedPaymentEvent {
             Column.fallbackAddress <- fallbackAddress?.string,
             Column.paymentRequest <- paymentRequest)
         )
+    }
+    
+    public static func events() throws -> [FailedPaymentEvent] {
+        return try SQLiteDataStore.shared.database.prepare(FailedPaymentEvent.table)
+            .map(FailedPaymentEvent.init)
     }
 }

@@ -230,6 +230,7 @@
 		AD8FE126214A7E3200C00DF2 /* LightningPaymentViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD8FE121214A7E3200C00DF2 /* LightningPaymentViewModel.swift */; };
 		AD8FE127214A7E3200C00DF2 /* LightningInvoiceViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD8FE122214A7E3200C00DF2 /* LightningInvoiceViewModel.swift */; };
 		AD8FE128214A7E3200C00DF2 /* OnChainUnconfirmedTransactionViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD8FE123214A7E3200C00DF2 /* OnChainUnconfirmedTransactionViewModel.swift */; };
+		AD8FE12B214AD42900C00DF2 /* DateEstimator.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD8FE129214AD3E900C00DF2 /* DateEstimator.swift */; };
 		AD967FD42100D8E80048085B /* CertificateDetailCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = AD967FD32100D8E80048085B /* CertificateDetailCell.xib */; };
 		AD967FD72100EFFA0048085B /* HelpSettingsItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD967FD62100EFFA0048085B /* HelpSettingsItem.swift */; };
 		AD967FE32105FD770048085B /* BTCPayQRCode.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD967FE22105FD770048085B /* BTCPayQRCode.swift */; };
@@ -301,6 +302,7 @@
 		ADC0D2FF2107A30200B8C62F /* *.api.btc.com.cer in Resources */ = {isa = PBXBuildFile; fileRef = ADC0D2FD2107A30200B8C62F /* *.api.btc.com.cer */; };
 		ADC0D3042107A3D700B8C62F /* blockexplorer.com.cer in Resources */ = {isa = PBXBuildFile; fileRef = ADC0D3022107A3D600B8C62F /* blockexplorer.com.cer */; };
 		ADC0D3052107A3D700B8C62F /* CloudFlare Inc ECC CA-2.cer in Resources */ = {isa = PBXBuildFile; fileRef = ADC0D3032107A3D700B8C62F /* CloudFlare Inc ECC CA-2.cer */; };
+		ADC48CA7214AD8B800949CD9 /* DateEstimatorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADC48CA6214AD8B800949CD9 /* DateEstimatorTests.swift */; };
 		ADCD5B0D20D7E3F50037F156 /* RemoveRemoteNodeSettingsItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADCD5B0C20D7E3F50037F156 /* RemoveRemoteNodeSettingsItem.swift */; };
 		ADCD5B0F20D7E40C0037F156 /* ChangePinSettingsItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADCD5B0E20D7E40C0037F156 /* ChangePinSettingsItem.swift */; };
 		ADD5B015212D36DB00BEA24D /* Bech32Address.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADD5B014212D36DB00BEA24D /* Bech32Address.swift */; };
@@ -766,6 +768,7 @@
 		AD8FE121214A7E3200C00DF2 /* LightningPaymentViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = LightningPaymentViewModel.swift; path = Library/Scenes/History/Types/LightningPaymentViewModel.swift; sourceTree = SOURCE_ROOT; };
 		AD8FE122214A7E3200C00DF2 /* LightningInvoiceViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = LightningInvoiceViewModel.swift; path = Library/Scenes/History/Types/LightningInvoiceViewModel.swift; sourceTree = SOURCE_ROOT; };
 		AD8FE123214A7E3200C00DF2 /* OnChainUnconfirmedTransactionViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = OnChainUnconfirmedTransactionViewModel.swift; path = Library/Scenes/History/Types/OnChainUnconfirmedTransactionViewModel.swift; sourceTree = SOURCE_ROOT; };
+		AD8FE129214AD3E900C00DF2 /* DateEstimator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateEstimator.swift; sourceTree = "<group>"; };
 		AD93ED5520A09D59000E814E /* GraphTopologyUpdate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GraphTopologyUpdate.swift; sourceTree = "<group>"; };
 		AD967FD32100D8E80048085B /* CertificateDetailCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CertificateDetailCell.xib; sourceTree = "<group>"; };
 		AD967FD62100EFFA0048085B /* HelpSettingsItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HelpSettingsItem.swift; sourceTree = "<group>"; };
@@ -909,6 +912,7 @@
 		ADC0D3022107A3D600B8C62F /* blockexplorer.com.cer */ = {isa = PBXFileReference; lastKnownFileType = file; path = blockexplorer.com.cer; sourceTree = "<group>"; };
 		ADC0D3032107A3D700B8C62F /* CloudFlare Inc ECC CA-2.cer */ = {isa = PBXFileReference; lastKnownFileType = file; path = "CloudFlare Inc ECC CA-2.cer"; sourceTree = "<group>"; };
 		ADC29C0B20A9B0A0008B2DC2 /* Invoice.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Invoice.swift; sourceTree = "<group>"; };
+		ADC48CA6214AD8B800949CD9 /* DateEstimatorTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateEstimatorTests.swift; sourceTree = "<group>"; };
 		ADCD060020E67FA5009D9650 /* Environment.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Environment.swift; sourceTree = "<group>"; };
 		ADCD5B0C20D7E3F50037F156 /* RemoveRemoteNodeSettingsItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RemoveRemoteNodeSettingsItem.swift; sourceTree = "<group>"; };
 		ADCD5B0E20D7E40C0037F156 /* ChangePinSettingsItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChangePinSettingsItem.swift; sourceTree = "<group>"; };
@@ -1650,6 +1654,7 @@
 				AD28844C21284DAC003C3D94 /* InvoiceTests.swift */,
 				A0733CD920471F0A0005643A /* LightningInvoiceURITests.swift */,
 				AD28844821282139003C3D94 /* LightningNodeURITests.swift */,
+				ADC48CA6214AD8B800949CD9 /* DateEstimatorTests.swift */,
 			);
 			path = Tests;
 			sourceTree = "<group>";
@@ -2106,6 +2111,7 @@
 		ADFB36F121466AF200146FCC /* SQLite */ = {
 			isa = PBXGroup;
 			children = (
+				AD8FE129214AD3E900C00DF2 /* DateEstimator.swift */,
 				ADFB36F421466BCE00146FCC /* DatabaseUpdater.swift */,
 				AD9920202146B5CA000F20AE /* SQLiteDataStore.swift */,
 				ADF093042147C6F000B48853 /* Rows */,
@@ -3064,6 +3070,7 @@
 				ADFB36EC2146517700146FCC /* OnChainUnconfirmedTransaction.swift in Sources */,
 				AD28844521281FBC003C3D94 /* LightningNodeURI.swift in Sources */,
 				ADFB36ED21465C0100146FCC /* Transaction.swift in Sources */,
+				AD8FE12B214AD42900C00DF2 /* DateEstimator.swift in Sources */,
 				AD28844B212824DC003C3D94 /* BitcoinInvoice.swift in Sources */,
 				ADFEFA6420E627F100FE1557 /* LightningNodeStore.swift in Sources */,
 				ADFEFA6B20E627F100FE1557 /* ChannelService.swift in Sources */,
@@ -3084,6 +3091,7 @@
 				AD28844621282073003C3D94 /* Bolt11Tests.swift in Sources */,
 				AD967FE7210603D50048085B /* BTCPayConfigurationTests.swift in Sources */,
 				AD28844D21284DAC003C3D94 /* InvoiceTests.swift in Sources */,
+				ADC48CA7214AD8B800949CD9 /* DateEstimatorTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

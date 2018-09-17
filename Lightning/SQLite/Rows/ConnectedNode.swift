@@ -8,7 +8,14 @@
 import Foundation
 import SQLite
 
-struct ConnectedNode {
+public struct ConnectedNode: Equatable {
+    public let pubKey: String
+    public let alias: String?
+    public let color: String?
+}
+
+// SQL
+extension ConnectedNode {
     enum Column {
         static let pubKey = Expression<String>("pubKey")
         static let alias = Expression<String?>("alias")
@@ -17,9 +24,11 @@ struct ConnectedNode {
     
     static let table = Table("connectedNodes")
     
-    let pubKey: String
-    let alias: String?
-    let color: String?
+    init(row: Row) {
+        pubKey = row[Column.pubKey]
+        alias = row[Column.alias]
+        color = row[Column.color]
+    }
     
     static func createTable(database: Connection) throws {
         try database.run(ConnectedNode.table.create(ifNotExists: true) { t in
