@@ -30,9 +30,7 @@ final class HistoryViewModel: NSObject {
     let searchString = Observable<String?>(nil)
     let filterSettings = Observable<FilterSettings>(FilterSettings.load())
     let isFilterActive: Signal<Bool, NoError>
-    
-    private var transactionViewModels = [TransactionViewModel]()
-    
+        
     init(transactionService: TransactionService, nodeStore: LightningNodeStore) {
         self.transactionService = transactionService
         self.nodeStore = nodeStore

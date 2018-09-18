@@ -9,11 +9,10 @@ import Bond
 import UIKit
 
 extension UIStoryboard {
-    static func instantiateHistoryViewController(historyViewModel: HistoryViewModel, presentTransactionDetail: @escaping (TransactionViewModel) -> Void, presentFilter: @escaping () -> Void) -> UINavigationController {
+    static func instantiateHistoryViewController(historyViewModel: HistoryViewModel, presentFilter: @escaping () -> Void) -> UINavigationController {
         let viewController = Storyboard.history.instantiate(viewController: HistoryViewController.self)
         
         viewController.historyViewModel = historyViewModel
-        viewController.presentTransactionDetail = presentTransactionDetail
         viewController.presentFilter = presentFilter
         
         let navigationController = ZapNavigationController(rootViewController: viewController)
@@ -29,7 +28,6 @@ final class HistoryViewController: UIViewController {
     @IBOutlet private weak var emptyStateLabel: UILabel!
     
     fileprivate var presentFilter: (() -> Void)?
-    fileprivate var presentTransactionDetail: ((TransactionViewModel) -> Void)?
     fileprivate var historyViewModel: HistoryViewModel?
     
     deinit {    

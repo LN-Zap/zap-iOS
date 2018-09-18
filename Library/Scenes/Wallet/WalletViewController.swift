@@ -106,17 +106,17 @@ final class WalletViewController: UIViewController {
     private func setupGraphView() {
         graphContainer.backgroundColor = UIColor.Zap.background
 
-        lightningService?.transactionService.transactions
-            .observeOn(.main)
-            .observeNext { [weak self] in
-                guard let graphContainer = self?.graphContainer else { return }
-                graphContainer.subviews.first?.removeFromSuperview()
-                let graphDataSource = GraphViewDataSource(transactions: $0)
-                self?.graphDataSource = graphDataSource
-                let graphView = GraphView(frame: graphContainer.bounds, dataSource: graphDataSource)
-                graphContainer.addSubview(graphView)
-            }
-            .dispose(in: reactive.bag)
+//        lightningService?.transactionService.transactions
+//            .observeOn(.main)
+//            .observeNext { [weak self] in
+//                guard let graphContainer = self?.graphContainer else { return }
+//                graphContainer.subviews.first?.removeFromSuperview()
+//                let graphDataSource = GraphViewDataSource(transactions: $0)
+//                self?.graphDataSource = graphDataSource
+//                let graphView = GraphView(frame: graphContainer.bounds, dataSource: graphDataSource)
+//                graphContainer.addSubview(graphView)
+//            }
+//            .dispose(in: reactive.bag)
     }
     
     private func setupExchangeRateLabel() {

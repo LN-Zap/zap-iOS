@@ -64,7 +64,7 @@ final class MainCoordinator: Routing {
     }
     
     func transactionListViewController() -> UIViewController {
-        return UIStoryboard.instantiateHistoryViewController(historyViewModel: historyViewModel, presentTransactionDetail: presentTransactionDetail, presentFilter: presentFilter)
+        return UIStoryboard.instantiateHistoryViewController(historyViewModel: historyViewModel, presentFilter: presentFilter)
     }
     
     func channelListViewController() -> UIViewController {
@@ -108,13 +108,6 @@ final class MainCoordinator: Routing {
         let strategy = OpenChannelQRCodeScannerStrategy(lightningService: lightningService)
         let viewController = UIStoryboard.instantiateQRCodeScannerViewController(strategy: strategy)
         rootViewController.present(viewController, animated: true, completion: nil)
-    }
-    
-    private func presentTransactionDetail(for transactionViewModel: TransactionViewModel) {
-        let detailViewModel = DetailViewModelFactory.instantiate(from: transactionViewModel, historyViewModel: historyViewModel)
-        let detailViewController = UIStoryboard.instantiateDetailViewController(detailViewModel: detailViewModel, dismissButtonTapped: dismissDetailViewController, blockExplorerButtonTapped: presentBlockExplorer)
-        self.detailViewController = detailViewController
-        rootViewController.present(detailViewController, animated: true, completion: nil)
     }
     
     private func presentSafariViewController(for url: URL) {

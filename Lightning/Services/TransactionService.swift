@@ -15,10 +15,10 @@ public final class TransactionService {
     private let balanceService: BalanceService
     private let channelService: ChannelService
     
-    private let transactionAnnotationStore = TransactionAnnotationStore()
-    private let unconfirmedTransactionStore = UnconfirmedTransactionStore()
+//    private let transactionAnnotationStore = TransactionAnnotationStore()
+//    private let unconfirmedTransactionStore = UnconfirmedTransactionStore()
     
-    public let transactions = Observable<[Transaction]>([])
+//    public let transactions = Observable<[Transaction]>([])
     
     init(api: LightningApiProtocol, balanceService: BalanceService, channelService: ChannelService) {
         self.api = api
@@ -50,49 +50,22 @@ public final class TransactionService {
     }
     
     public func update() {
-        let taskGroup = DispatchGroup()
-        
-        var allTransactions = [Transaction]()
-        
-        func apiCallback(result: Result<[Transaction]>) {
-            if let transactions = result.value {
-                allTransactions.append(contentsOf: transactions)
-            }
-            taskGroup.leave()
-        }
-        
-        taskGroup.enter()
         api.transactions { result in
             if let transactions = result.value {
-                let events = transactions.map { TransactionEvent(transaction: $0) }
+                let events = transactions.map { TransactionEvent(transaction: $0) } // todo: don't
                 DatabaseUpdater.addTransactions(events)
             }
-            apiCallback(result: result.map({ $0 as [Transaction] }))
         }
         
-        taskGroup.enter()
         api.payments {
-            if let payments = $0.value {
-                DatabaseUpdater.addPayments(payments)
-            }
-            apiCallback(result: $0.map({ $0 as [Transaction] }))
+            guard let payments = $0.value else { return }
+            DatabaseUpdater.addPayments(payments)
         }
         
-        taskGroup.enter()
         api.invoices {
-            if let invoices = $0.value {
-                DatabaseUpdater.addInvoices(invoices)
-            }
-            apiCallback(result: $0.map({ $0 as [Transaction] }))
+            guard let invoices = $0.value else { return }
+            DatabaseUpdater.addInvoices(invoices)
         }
-        
-        taskGroup.notify(queue: .main, work: DispatchWorkItem(block: { [weak self] in
-            self?.unconfirmedTransactionStore.remove(confirmed: allTransactions)
-            if let unconfirmed = self?.unconfirmedTransactionStore.all {
-                allTransactions.append(contentsOf: unconfirmed)
-            }
-            self?.transactions.value = allTransactions
-        }))
     }
     
     internal func decodePaymentRequest(_ paymentRequest: String, completion: @escaping (Result<PaymentRequest>) -> Void) {
@@ -106,9 +79,9 @@ public final class TransactionService {
                 self?.balanceService.update()
                 self?.channelService.update()
                 
-                if let memo = paymentRequest.memo {
-                    self?.udpateMemo(memo, forTransactionId: transaction.id)
-                }
+//                if let memo = paymentRequest.memo {
+//                    self?.udpateMemo(memo, forTransactionId: transaction.id)
+//                }
             }
             completion($0.map { _ in Success() })
         }
@@ -120,33 +93,15 @@ public final class TransactionService {
             if let txid = $0.value {                
                 DatabaseUpdater.addUnconfirmedTransaction(txId: txid, amount: amount, memo: bitcoinURI.memo, destinationAddress: destinationAddress)
                 
-                let unconfirmedTransaction = OnChainUnconfirmedTransaction(id: txid, amount: -amount, date: Date(), destinationAddresses: [destinationAddress])
-                self?.unconfirmedTransactionStore.add(unconfirmedTransaction)
-                self?.transactions.value.append(unconfirmedTransaction)
+//                let unconfirmedTransaction = OnChainUnconfirmedTransaction(id: txid, amount: -amount, date: Date(), destinationAddresses: [destinationAddress])
+//                self?.unconfirmedTransactionStore.add(unconfirmedTransaction)
+//                self?.transactions.value.append(unconfirmedTransaction)
                 
-                if let memo = bitcoinURI.memo {
-                    self?.udpateMemo(memo, forTransactionId: unconfirmedTransaction.id)
-                }
+//                if let memo = bitcoinURI.memo {
+//                    self?.udpateMemo(memo, forTransactionId: unconfirmedTransaction.id)
+//                }
             }
             completion($0.map { _ in Success() })
         }
-    }
-    
-    // annotations
-    
-    public func annotation(for transaction: Transaction) -> TransactionAnnotation {
-        return transactionAnnotationStore.annotation(for: transaction)
-    }
-    
-    public func updateAnnotation(_ annotation: TransactionAnnotation, for transaction: Transaction) {
-        transactionAnnotationStore.updateAnnotation(annotation, for: transaction)
-    }
-    
-    public func setTransactionHidden(_ transaction: Transaction, hidden: Bool) -> TransactionAnnotation {
-        return transactionAnnotationStore.setTransactionHidden(transaction, hidden: hidden)
-    }
-    
-    public func udpateMemo(_ memo: String?, forTransactionId transactionId: String) {
-        return transactionAnnotationStore.udpateMemo(memo, forTransactionId: transactionId)
     }
 }
