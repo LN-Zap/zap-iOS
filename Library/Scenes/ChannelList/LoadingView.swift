@@ -16,7 +16,7 @@ final class LoadingView: UIView {
         backgroundColor = UIColor.black.withAlphaComponent(0.8)
         layer.cornerRadius = 15
         
-        let activityIndicator = UIActivityIndicatorView(activityIndicatorStyle: .whiteLarge)
+        let activityIndicator = UIActivityIndicatorView(style: .whiteLarge)
         addAutolayoutSubview(activityIndicator)
         activityIndicator.startAnimating()
         

@@ -18,7 +18,7 @@ class ZapNavigationController: UINavigationController {
         navigationBar.shadowImage = UIImage()
     }
     
-    override var childViewControllerForStatusBarStyle: UIViewController? {
+    override var childForStatusBarStyle: UIViewController? {
         return viewControllers.first
     }
 }

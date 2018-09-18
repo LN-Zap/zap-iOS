@@ -15,16 +15,16 @@ protocol KeyboardAdjustable {
 
 extension KeyboardAdjustable where Self: UIViewController {
     func setupKeyboardNotifications(constraint: NSLayoutConstraint) {
-        NotificationCenter.default.reactive.notification(name: .UIKeyboardWillHide)
+        NotificationCenter.default.reactive.notification(name: UIResponder.keyboardWillHideNotification)
             .observeNext { [weak self] _ in
                 self?.updateKeyboardConstraint(to: 0, constraint: constraint)
             }
             .dispose(in: reactive.bag)
         
-        NotificationCenter.default.reactive.notification(name: .UIKeyboardWillShow)
+        NotificationCenter.default.reactive.notification(name: UIResponder.keyboardWillShowNotification)
             .observeNext { [weak self] notification in
                 guard
-                    let keyboardFrame = notification.userInfo?[UIKeyboardFrameEndUserInfoKey] as? CGRect
+                    let keyboardFrame = notification.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? CGRect
                     else { return }
                 self?.updateKeyboardConstraint(to: keyboardFrame.height, constraint: constraint)
             }

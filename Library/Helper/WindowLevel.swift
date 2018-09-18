@@ -8,8 +8,8 @@
 import Foundation
 
 enum WindowLevel {
-    static let backgroundWindow = UIWindowLevelAlert + 10
-    static let fakeBiometricAuthentication = UIWindowLevelNormal + 30
-    static let authentication = UIWindowLevelNormal + 20
-    static let modalPin = UIWindowLevelNormal + 10
+    static let backgroundWindow = UIWindow.Level.alert + 10
+    static let fakeBiometricAuthentication = UIWindow.Level.normal + 30
+    static let authentication = UIWindow.Level.normal + 20
+    static let modalPin = UIWindow.Level.normal + 10
 }

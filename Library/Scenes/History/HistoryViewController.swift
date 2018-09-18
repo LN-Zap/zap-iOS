@@ -50,7 +50,7 @@ final class HistoryViewController: UIViewController {
         Style.Label.body.apply(to: emptyStateLabel)
         emptyStateLabel.text = "scene.history.empty_state_label".localized
         
-        tableView.rowHeight = UITableViewAutomaticDimension
+        tableView.rowHeight = UITableView.automaticDimension
         tableView.estimatedRowHeight = 82
         tableView.registerCell(HistoryCell.self)
         tableView.registerCell(HeaderTableViewCell.self)

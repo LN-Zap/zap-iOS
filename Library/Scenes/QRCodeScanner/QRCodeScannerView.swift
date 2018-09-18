@@ -134,7 +134,7 @@ final class QRCodeScannerView: UIView {
         
         addAutolayoutSubview(button)
         
-        bringSubview(toFront: button)
+        bringSubviewToFront(button)
         NSLayoutConstraint.activate([
             button.centerXAnchor.constraint(equalTo: centerXAnchor),
             button.topAnchor.constraint(equalTo: scanRectView.bottomAnchor, constant: 30)

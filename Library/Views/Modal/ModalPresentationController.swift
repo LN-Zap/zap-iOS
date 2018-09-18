@@ -120,16 +120,16 @@ final class ModalPresentationController: UIPresentationController {
     // MARK: - Keyboard
     
     func setupKeyboardNotifications() {
-        NotificationCenter.default.reactive.notification(name: .UIKeyboardWillHide)
+        NotificationCenter.default.reactive.notification(name: UIResponder.keyboardWillHideNotification)
             .observeNext { [weak self] _ in
                 self?.updateKeyboardHeight(to: 0)
             }
             .dispose(in: reactive.bag)
         
-        NotificationCenter.default.reactive.notification(name: .UIKeyboardWillShow)
+        NotificationCenter.default.reactive.notification(name: UIResponder.keyboardWillShowNotification)
             .observeNext { [weak self] notification in
                 guard
-                    let keyboardFrame = notification.userInfo?[UIKeyboardFrameEndUserInfoKey] as? CGRect
+                    let keyboardFrame = notification.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? CGRect
                     else { return }
                 self?.updateKeyboardHeight(to: keyboardFrame.height)
             }
