@@ -201,8 +201,6 @@
 		AD7EDAE32108C4150058CCCA /* Wallet.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AD7EDAE22108C4150058CCCA /* Wallet.storyboard */; };
 		AD7EDAE52108C41D0058CCCA /* WalletViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD7EDAE42108C41D0058CCCA /* WalletViewController.swift */; };
 		AD7EDAE72108D39D0058CCCA /* ZapNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD7EDAE62108D39D0058CCCA /* ZapNavigationController.swift */; };
-		AD7EDAEA2108EA170058CCCA /* HeaderTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD7EDAE82108EA170058CCCA /* HeaderTableViewCell.swift */; };
-		AD7EDAEB2108EA170058CCCA /* HeaderTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = AD7EDAE92108EA170058CCCA /* HeaderTableViewCell.xib */; };
 		AD8FE12B214AD42900C00DF2 /* DateEstimator.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD8FE129214AD3E900C00DF2 /* DateEstimator.swift */; };
 		AD967FD42100D8E80048085B /* CertificateDetailCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = AD967FD32100D8E80048085B /* CertificateDetailCell.xib */; };
 		AD967FD72100EFFA0048085B /* HelpSettingsItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD967FD62100EFFA0048085B /* HelpSettingsItem.swift */; };
@@ -223,6 +221,8 @@
 		AD97A91F20F108C0008344EA /* CloseType+Localizable.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD97A91E20F108C0008344EA /* CloseType+Localizable.swift */; };
 		AD9920212146B5CA000F20AE /* SQLiteDataStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD9920202146B5CA000F20AE /* SQLiteDataStore.swift */; };
 		AD9920232146E13B000F20AE /* Layer.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD9920222146E13B000F20AE /* Layer.swift */; };
+		ADA179BE21515095001401F3 /* SectionHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADA179BD21515095001401F3 /* SectionHeaderView.swift */; };
+		ADA179C02151509E001401F3 /* SectionHeaderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = ADA179BF2151509E001401F3 /* SectionHeaderView.xib */; };
 		ADA6BBBF211B3AEC00A1FF19 /* ScanRectView.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADA6BBBE211B3AEC00A1FF19 /* ScanRectView.swift */; };
 		ADA75DF2210F389100003068 /* ChannelState+Localizable.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADA75DF1210F389100003068 /* ChannelState+Localizable.swift */; };
 		ADA81E9E210DE14100B7C6F2 /* UIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADA81E9D210DE14100B7C6F2 /* UIView.swift */; };
@@ -310,9 +310,6 @@
 		ADFB36E62143BA6F00146FCC /* Invoice.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADC29C0B20A9B0A0008B2DC2 /* Invoice.swift */; };
 		ADFB36E72143BAC500146FCC /* Payment.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADECC36820F257AF00D00546 /* Payment.swift */; };
 		ADFB36E92143BB2200146FCC /* OnChainConfirmedTransaction.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADECC36A20F257BE00D00546 /* OnChainConfirmedTransaction.swift */; };
-		ADFB36EC2146517700146FCC /* OnChainUnconfirmedTransaction.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD22FD0E20F737690016399D /* OnChainUnconfirmedTransaction.swift */; };
-		ADFB36ED21465C0100146FCC /* Transaction.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0A05A5820149AF20007D1C9 /* Transaction.swift */; };
-		ADFB36EE21465CA800146FCC /* OnChainTransaction.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD27B01320FBBF8700F232A8 /* OnChainTransaction.swift */; };
 		ADFB36F521466BCE00146FCC /* DatabaseUpdater.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADFB36F421466BCE00146FCC /* DatabaseUpdater.swift */; };
 		ADFC816F20DA80EF00D26913 /* RecoverWalletViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADFC816E20DA80EF00D26913 /* RecoverWalletViewModel.swift */; };
 		ADFC817120DB8F2700D26913 /* bip39.txt in Resources */ = {isa = PBXBuildFile; fileRef = ADFC817020DB8F2600D26913 /* bip39.txt */; };
@@ -576,7 +573,6 @@
 		A0A05A342014047B0007D1C9 /* LocalLnd.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalLnd.swift; sourceTree = "<group>"; };
 		A0A05A4C20147B740007D1C9 /* RootViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RootViewController.swift; sourceTree = "<group>"; };
 		A0A05A5620149A0D0007D1C9 /* Settings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Settings.swift; sourceTree = "<group>"; };
-		A0A05A5820149AF20007D1C9 /* Transaction.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Transaction.swift; sourceTree = "<group>"; };
 		A0A05A5B20149F720007D1C9 /* HistoryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistoryViewController.swift; sourceTree = "<group>"; };
 		A0A05A5D2014A0DE0007D1C9 /* UITableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UITableView.swift; sourceTree = "<group>"; };
 		A0A33EF32028743200BB76F4 /* LightningApiRPC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LightningApiRPC.swift; sourceTree = "<group>"; };
@@ -633,9 +629,7 @@
 		AD1EBA0020B2FD9D001FF67E /* Persistable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Persistable.swift; sourceTree = "<group>"; };
 		AD21768820C3DFDB007779DE /* BalanceView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BalanceView.swift; sourceTree = "<group>"; };
 		AD21768A20C3F29C007779DE /* ConnectRemoteNodeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConnectRemoteNodeViewModel.swift; sourceTree = "<group>"; };
-		AD22FD0E20F737690016399D /* OnChainUnconfirmedTransaction.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnChainUnconfirmedTransaction.swift; sourceTree = "<group>"; };
 		AD27B00B20FB642100F232A8 /* Decimal.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Decimal.swift; sourceTree = "<group>"; };
-		AD27B01320FBBF8700F232A8 /* OnChainTransaction.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnChainTransaction.swift; sourceTree = "<group>"; };
 		AD27B01520FC8BBF00F232A8 /* Pem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Pem.swift; sourceTree = "<group>"; };
 		AD27B0172100C59500F232A8 /* UpdateAddressViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpdateAddressViewController.swift; sourceTree = "<group>"; };
 		AD27B0192100D5CC00F232A8 /* CertificateDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CertificateDetailViewController.swift; sourceTree = "<group>"; };
@@ -710,8 +704,6 @@
 		AD7EDAE22108C4150058CCCA /* Wallet.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Wallet.storyboard; sourceTree = "<group>"; };
 		AD7EDAE42108C41D0058CCCA /* WalletViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WalletViewController.swift; sourceTree = "<group>"; };
 		AD7EDAE62108D39D0058CCCA /* ZapNavigationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ZapNavigationController.swift; sourceTree = "<group>"; };
-		AD7EDAE82108EA170058CCCA /* HeaderTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeaderTableViewCell.swift; sourceTree = "<group>"; };
-		AD7EDAE92108EA170058CCCA /* HeaderTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = HeaderTableViewCell.xib; sourceTree = "<group>"; };
 		AD8B13F020C0582D0091F9DA /* RootCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RootCoordinator.swift; sourceTree = "<group>"; };
 		AD8FE129214AD3E900C00DF2 /* DateEstimator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateEstimator.swift; sourceTree = "<group>"; };
 		AD93ED5520A09D59000E814E /* GraphTopologyUpdate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GraphTopologyUpdate.swift; sourceTree = "<group>"; };
@@ -743,6 +735,8 @@
 		AD9E243E20A368020014F9FA /* LndLogViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LndLogViewController.swift; sourceTree = "<group>"; };
 		AD9E244020A3680C0014F9FA /* Debug.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Debug.storyboard; sourceTree = "<group>"; };
 		AD9E244420A377190014F9FA /* UIApplication.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIApplication.swift; sourceTree = "<group>"; };
+		ADA179BD21515095001401F3 /* SectionHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SectionHeaderView.swift; sourceTree = "<group>"; };
+		ADA179BF2151509E001401F3 /* SectionHeaderView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SectionHeaderView.xib; sourceTree = "<group>"; };
 		ADA6BBBE211B3AEC00A1FF19 /* ScanRectView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScanRectView.swift; sourceTree = "<group>"; };
 		ADA6D2C220AC1BD2009398A5 /* InfoService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfoService.swift; sourceTree = "<group>"; };
 		ADA6D2C420AC1DDE009398A5 /* BalanceService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BalanceService.swift; sourceTree = "<group>"; };
@@ -1399,11 +1393,14 @@
 		A0DDC0732018C74F00AEFF94 /* History */ = {
 			isa = PBXGroup;
 			children = (
-				ADA6D2C820AC2EFC009398A5 /* Cell */,
 				ADA865BA20ECB86700B1B74B /* Filter */,
 				A0DDC05B201883D800AEFF94 /* History.storyboard */,
+				A0731FDF2014A22B00C55E45 /* HistoryCell.swift */,
+				A0731FE02014A22B00C55E45 /* HistoryCell.xib */,
 				A0A05A5B20149F720007D1C9 /* HistoryViewController.swift */,
 				A0F57DC1201E700C003AFA66 /* HistoryViewModel.swift */,
+				ADA179BD21515095001401F3 /* SectionHeaderView.swift */,
+				ADA179BF2151509E001401F3 /* SectionHeaderView.xib */,
 			);
 			path = History;
 			sourceTree = "<group>";
@@ -1529,7 +1526,6 @@
 				AD536BF420E62764002279BC /* Tests */,
 				AD536BE820E62763002279BC /* Lightning.h */,
 				AD536BE920E62763002279BC /* Info.plist */,
-				ADFB36F621466BE700146FCC /* Legacy */,
 				AD97A90E20EFC1E6008344EA /* LightningNodeURI.swift */,
 				ADEF96BB21078C31006AE1EC /* Certificates */,
 				ADFB36F121466AF200146FCC /* SQLite */,
@@ -1725,17 +1721,6 @@
 				ADA865C120ED041F00B1B74B /* Storage.swift */,
 			);
 			path = Persistence;
-			sourceTree = "<group>";
-		};
-		ADA6D2C820AC2EFC009398A5 /* Cell */ = {
-			isa = PBXGroup;
-			children = (
-				AD7EDAE82108EA170058CCCA /* HeaderTableViewCell.swift */,
-				AD7EDAE92108EA170058CCCA /* HeaderTableViewCell.xib */,
-				A0731FDF2014A22B00C55E45 /* HistoryCell.swift */,
-				A0731FE02014A22B00C55E45 /* HistoryCell.xib */,
-			);
-			path = Cell;
 			sourceTree = "<group>";
 		};
 		ADA81E9F210E19BA00B7C6F2 /* Header */ = {
@@ -1988,16 +1973,6 @@
 				ADF0930B2147D60000B48853 /* SQLiteValue */,
 			);
 			path = SQLite;
-			sourceTree = "<group>";
-		};
-		ADFB36F621466BE700146FCC /* Legacy */ = {
-			isa = PBXGroup;
-			children = (
-				A0A05A5820149AF20007D1C9 /* Transaction.swift */,
-				AD27B01320FBBF8700F232A8 /* OnChainTransaction.swift */,
-				AD22FD0E20F737690016399D /* OnChainUnconfirmedTransaction.swift */,
-			);
-			path = Legacy;
 			sourceTree = "<group>";
 		};
 		ADFE537C20D693F500B3BA2A /* Tests */ = {
@@ -2435,6 +2410,7 @@
 				ADFC817120DB8F2700D26913 /* bip39.txt in Resources */,
 				AD391CB820D16FA8007EE22A /* Sync.storyboard in Resources */,
 				AD967FD42100D8E80048085B /* CertificateDetailCell.xib in Resources */,
+				ADA179C02151509E001401F3 /* SectionHeaderView.xib in Resources */,
 				AD391C6A20D16F89007EE22A /* NumericKeyPad.storyboard in Resources */,
 				AD667E552136B074007B9160 /* TimeLocked.storyboard in Resources */,
 				AD391C4C20D16F68007EE22A /* ChannelList.storyboard in Resources */,
@@ -2444,7 +2420,6 @@
 				AD391C6120D16F7A007EE22A /* SelectWalletCreationMethodTableViewCell.xib in Resources */,
 				AD391C6320D16F89007EE22A /* Debug.storyboard in Resources */,
 				AD7EDAE32108C4150058CCCA /* Wallet.storyboard in Resources */,
-				AD7EDAEB2108EA170058CCCA /* HeaderTableViewCell.xib in Resources */,
 				AD391C5020D16F7A007EE22A /* CreateWallet.storyboard in Resources */,
 				ADA81EA3210E19F600B7C6F2 /* HeaderCollectionReusableView.xib in Resources */,
 				AD667E4D21367E3A007B9160 /* Background.storyboard in Resources */,
@@ -2801,7 +2776,7 @@
 				AD391C3020D16EFA007EE22A /* UICollectionView.swift in Sources */,
 				AD391C6520D16F89007EE22A /* LndLogViewController.swift in Sources */,
 				ADADAD56214118E500A48E1F /* GraphView.swift in Sources */,
-				AD7EDAEA2108EA170058CCCA /* HeaderTableViewCell.swift in Sources */,
+				ADA179BE21515095001401F3 /* SectionHeaderView.swift in Sources */,
 				AD391CAD20D16FA8007EE22A /* OnChainRequestAddressTypeSettingsItem.swift in Sources */,
 				AD97A91420EFCFC3008344EA /* Bitcoin+Localizable.swift in Sources */,
 				AD0D5DEA210DCC6300D11D0B /* ChannelLayout.swift in Sources */,
@@ -2912,15 +2887,12 @@
 				ADF093132148FEB900B48853 /* ChannelEvent.swift in Sources */,
 				AD9920212146B5CA000F20AE /* SQLiteDataStore.swift in Sources */,
 				AD28844321281FAC003C3D94 /* LightningInvoiceURI.swift in Sources */,
-				ADFB36EE21465CA800146FCC /* OnChainTransaction.swift in Sources */,
 				ADFEFA6A20E627F100FE1557 /* BalanceService.swift in Sources */,
 				ADF093082147C79D00B48853 /* ConnectedNode.swift in Sources */,
 				ADF0930A2147D5FA00B48853 /* Satoshi+Value.swift in Sources */,
 				ADF093062147C72000B48853 /* TransactionEvent.swift in Sources */,
 				AD967FEA2106122E0048085B /* ZapconnectQRCode.swift in Sources */,
-				ADFB36EC2146517700146FCC /* OnChainUnconfirmedTransaction.swift in Sources */,
 				AD28844521281FBC003C3D94 /* LightningNodeURI.swift in Sources */,
-				ADFB36ED21465C0100146FCC /* Transaction.swift in Sources */,
 				AD8FE12B214AD42900C00DF2 /* DateEstimator.swift in Sources */,
 				AD28844B212824DC003C3D94 /* BitcoinInvoice.swift in Sources */,
 				ADFEFA6420E627F100FE1557 /* LightningNodeStore.swift in Sources */,

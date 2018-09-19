@@ -14,16 +14,13 @@ public final class TransactionService {
     private let api: LightningApiProtocol
     private let balanceService: BalanceService
     private let channelService: ChannelService
+    private let historyService: HistoryService
     
-//    private let transactionAnnotationStore = TransactionAnnotationStore()
-//    private let unconfirmedTransactionStore = UnconfirmedTransactionStore()
-    
-//    public let transactions = Observable<[Transaction]>([])
-    
-    init(api: LightningApiProtocol, balanceService: BalanceService, channelService: ChannelService) {
+    init(api: LightningApiProtocol, balanceService: BalanceService, channelService: ChannelService, historyService: HistoryService) {
         self.api = api
         self.balanceService = balanceService
         self.channelService = channelService
+        self.historyService = historyService
     }
     
     public func send(_ invoice: BitcoinInvoice, amount: Satoshi, completion: @escaping (Result<Success>) -> Void) {
@@ -37,35 +34,11 @@ public final class TransactionService {
     }
     
     public func addInvoice(amount: Satoshi, memo: String?, completion: @escaping (Result<String>) -> Void) {
-        api.addInvoice(amount: amount, memo: memo) { [weak self] in
-            if $0.value != nil {
-                self?.update()
-            }
-            completion($0)
-        }
+        api.addInvoice(amount: amount, memo: memo, completion: completion)
     }
     
     public func newAddress(with type: OnChainRequestAddressType, completion: @escaping (Result<BitcoinAddress>) -> Void) {
         api.newAddress(type: type, completion: completion)
-    }
-    
-    public func update() {
-        api.transactions { result in
-            if let transactions = result.value {
-                let events = transactions.map { TransactionEvent(transaction: $0) } // todo: don't
-                DatabaseUpdater.addTransactions(events)
-            }
-        }
-        
-        api.payments {
-            guard let payments = $0.value else { return }
-            DatabaseUpdater.addPayments(payments)
-        }
-        
-        api.invoices {
-            guard let invoices = $0.value else { return }
-            DatabaseUpdater.addInvoices(invoices)
-        }
     }
     
     internal func decodePaymentRequest(_ paymentRequest: String, completion: @escaping (Result<PaymentRequest>) -> Void) {
@@ -74,15 +47,16 @@ public final class TransactionService {
     
     private func sendPayment(_ paymentRequest: PaymentRequest, amount: Satoshi, completion: @escaping (Result<Success>) -> Void) {
         api.sendPayment(paymentRequest, amount: amount) { [weak self] in
-            if case .success(let transaction) = $0 {
-                self?.update()
+            
+            switch $0 {
+            case .success(let payment):
                 self?.balanceService.update()
                 self?.channelService.update()
-                
-//                if let memo = paymentRequest.memo {
-//                    self?.udpateMemo(memo, forTransactionId: transaction.id)
-//                }
+                self?.historyService.addPaymentEvent(payment: payment, memo: paymentRequest.memo)
+            case .failure:
+                self?.historyService.addFailedPaymentEvent(paymentRequest: paymentRequest, amount: amount)
             }
+
             completion($0.map { _ in Success() })
         }
     }
@@ -91,15 +65,7 @@ public final class TransactionService {
         let destinationAddress = bitcoinURI.bitcoinAddress
         api.sendCoins(address: destinationAddress, amount: amount) { [weak self] in
             if let txid = $0.value {                
-                DatabaseUpdater.addUnconfirmedTransaction(txId: txid, amount: amount, memo: bitcoinURI.memo, destinationAddress: destinationAddress)
-                
-//                let unconfirmedTransaction = OnChainUnconfirmedTransaction(id: txid, amount: -amount, date: Date(), destinationAddresses: [destinationAddress])
-//                self?.unconfirmedTransactionStore.add(unconfirmedTransaction)
-//                self?.transactions.value.append(unconfirmedTransaction)
-                
-//                if let memo = bitcoinURI.memo {
-//                    self?.udpateMemo(memo, forTransactionId: unconfirmedTransaction.id)
-//                }
+                self?.historyService.addUnconfirmedTransaction(txId: txid, amount: amount, memo: bitcoinURI.memo, destinationAddress: destinationAddress)
             }
             completion($0.map { _ in Success() })
         }

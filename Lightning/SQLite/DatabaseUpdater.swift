@@ -25,7 +25,7 @@ enum DatabaseUpdater {
                 try openEvent.insert()
             }
         } catch {
-            print("🤷🏻‍♂️ error", error)
+            print("⚠️ `\(#function)`:", error)
         }
     }
     
@@ -47,7 +47,7 @@ enum DatabaseUpdater {
                 )
                 try closeEvent.insert()
                 
-                if channelCloseSummary.openHeight > 0 { // i guess chanID is 0 for channels opened by remote nodes
+                if channelCloseSummary.openHeight > 0 { // chanID is 0 for channels opened by remote nodes
                     let openEvent = ChannelEvent(
                         txHash: channelCloseSummary.channelPoint.fundingTxid,
                         node: ConnectedNode(pubKey: channelCloseSummary.remotePubKey, alias: nil, color: nil),
@@ -60,7 +60,7 @@ enum DatabaseUpdater {
             }
             
         } catch {
-            print("🤷🏻‍♂️ error", error)
+            print("⚠️ `\(#function)`:", error)
         }
     }
     
@@ -71,7 +71,9 @@ enum DatabaseUpdater {
         try SQLiteDataStore.shared.database.run(query.update(TransactionEvent.Column.channelRelated <- true))
     }
     
-    static func addTransactions(_ transactions: [TransactionEvent]) {
+    static func addTransactions(_ transactions: [OnChainConfirmedTransaction]) {
+        let transactions = transactions.map { TransactionEvent(transaction: $0) }
+        
         // update unconfirmed transaction block height
         do {
             let txHashes = transactions.map { $0.txHash }
@@ -83,7 +85,7 @@ enum DatabaseUpdater {
                 print("❤️ updated unconfirmed transaction")
             }
         } catch {
-            print("⚠️ unconf:", error)
+            print("⚠️ `\(#function)`:", error)
         }
     
         // add unknown transactions, fail on first error
@@ -92,70 +94,34 @@ enum DatabaseUpdater {
                 try transaction.insert()
             }
         } catch {
-            print("⚠️ add:", error)
-        }
-    }
-    
-    static func addUnconfirmedTransaction(txId: String, amount: Satoshi, memo: String?, destinationAddress: BitcoinAddress) {
-        let transactionEvent = TransactionEvent(
-            txHash: txId,
-            memo: memo,
-            amount: amount,
-            fee: 0,
-            date: Date(),
-            destinationAddresses: [destinationAddress],
-            blockHeight: nil,
-            channelRelated: true)
-        
-        do {
-            try transactionEvent.insert()
-            print("❤️ added unconfirmed transaction")
-        } catch {
-            print("⚠️", error)
+            print("⚠️ `\(#function)`:", error)
         }
     }
     
     static func addInvoices(_ invoices: [Invoice]) {
         do {
             for invoice in invoices {
-                let createInvoiceEvent = CreateInvoiceEvent(
-                    id: invoice.id,
-                    memo: invoice.memo,
-                    amount: invoice.amount,
-                    date: invoice.date,
-                    expiry: invoice.expiry,
-                    paymentRequest: invoice.paymentRequest)
-                
+                let createInvoiceEvent = CreateInvoiceEvent(invoice: invoice)
                 try createInvoiceEvent.insert()
                 
                 if invoice.settled {
-                    let paymentEvent = LightningPaymentEvent(
-                        paymentHash: invoice.id,
-                        memo: invoice.memo,
-                        amount: invoice.amount,
-                        fee: 0,
-                        date: invoice.date)
+                    let paymentEvent = LightningPaymentEvent(invoice: invoice)
                     try paymentEvent.insert()
                 }
             }
         } catch {
-            print("⚠️", error)
+            print("⚠️ `\(#function)`:", error)
         }
     }
     
     static func addPayments(_ payments: [Payment]) {
         do {
             for payment in payments {
-                let paymentEvent = LightningPaymentEvent(
-                    paymentHash: payment.paymentHash,
-                    memo: nil,
-                    amount: payment.amount,
-                    fee: payment.fees,
-                    date: payment.date)
+                let paymentEvent = LightningPaymentEvent(payment: payment, memo: nil)
                 try paymentEvent.insert()
             }
         } catch {
-            print("⚠️", error)
+            print("⚠️ `\(#function)`:", error)
         }
     }
 }

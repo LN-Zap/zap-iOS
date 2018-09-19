@@ -18,18 +18,11 @@ public final class LightningService: NSObject {
     public let balanceService: BalanceService
     public let channelService: ChannelService
     public let transactionService: TransactionService
+    public let historyService: HistoryService
     
     public convenience init?(connection: LndConnection) {
         guard let api = connection.api else { return nil }
         self.init(api: api)
-        
-        do {
-//            try FailedPaymentEvent(paymentHash: "abab", memo: "failed memo", amount: 12, destination: "020kk", date: Date(), expiry: Date().addingTimeInterval(100000), fallbackAddress: nil, paymentRequest: "abc").insert()
-            
-            try SQLiteDataStore.shared.createTables()
-        } catch {
-            print(error)
-        }
     }
     
     init(api: LightningApiProtocol) {
@@ -38,7 +31,8 @@ public final class LightningService: NSObject {
         infoService = InfoService(api: api)
         balanceService = BalanceService(api: api)
         channelService = ChannelService(api: api)
-        transactionService = TransactionService(api: api, balanceService: balanceService, channelService: channelService)
+        historyService = HistoryService(api: api, channelService: channelService)
+        transactionService = TransactionService(api: api, balanceService: balanceService, channelService: channelService, historyService: historyService)
     }
     
     public func start() {
@@ -48,19 +42,20 @@ public final class LightningService: NSObject {
             .observeNext { [weak self] _ in
                 self?.channelService.update()
                 self?.balanceService.update()
-                self?.transactionService.update()
+                self?.historyService.update()
             }
             .dispose(in: reactive.bag)
         
         api.subscribeChannelGraph { _ in }
         
-        api.subscribeInvoices { [weak self] _ in
-            self?.transactionService.update()
+        api.subscribeInvoices { [weak self] in
+            guard let invoice = $0.value else { return }
+            self?.historyService.addedInvoice(invoice)
         }
 
-        api.subscribeTransactions { [weak self] _ in
-            // unconfirmed transactions are not returned by GetTransactions
-            self?.transactionService.update()
+        api.subscribeTransactions { [weak self] in
+            guard let transaction = $0.value else { return }
+            self?.historyService.addedTransaction(transaction)
             self?.balanceService.update()
         }
     }

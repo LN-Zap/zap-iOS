@@ -71,7 +71,7 @@ final class SetupPinViewController: UIViewController {
         keyPadView.state = .pin
         
         keyPadView.handler = { [setupPinViewModel] in
-            return setupPinViewModel.updateCurrentPin($0)
+            setupPinViewModel.updateCurrentPin($0)
         }
     }
     

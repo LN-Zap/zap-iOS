@@ -23,6 +23,12 @@ final class SQLiteDataStore {
         database.trace { print($0) }
 
         self.database = database
+        
+        do {
+            try createTables()
+        } catch {
+            fatalError(error.localizedDescription)
+        }
     }
     
     func createTables() throws {

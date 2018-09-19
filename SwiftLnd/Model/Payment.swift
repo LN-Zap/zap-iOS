@@ -14,6 +14,7 @@ public struct Payment: Equatable {
     public let date: Date
     public let fees: Satoshi
     public let paymentHash: String
+    public let destination: String
 }
 
 extension Payment {
@@ -23,6 +24,7 @@ extension Payment {
         date = Date(timeIntervalSince1970: TimeInterval(payment.creationDate))
         fees = Satoshi(payment.fee)
         paymentHash = payment.paymentHash
+        destination = payment.path.last ?? ""
     }
     
     init(paymentRequest: PaymentRequest, sendResponse: Lnrpc_SendResponse) {
@@ -31,5 +33,6 @@ extension Payment {
         date = paymentRequest.date
         fees = Satoshi(sendResponse.paymentRoute.totalFees)
         paymentHash = paymentRequest.paymentHash
+        destination = paymentRequest.destination
     }
 }

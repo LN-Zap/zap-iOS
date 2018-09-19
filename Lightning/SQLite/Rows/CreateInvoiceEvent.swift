@@ -8,6 +8,7 @@
 import BTCUtil
 import Foundation
 import SQLite
+import SwiftLnd
 
 /// Includes all unsettled invoices.
 public struct CreateInvoiceEvent: Equatable {
@@ -17,6 +18,17 @@ public struct CreateInvoiceEvent: Equatable {
     public let date: Date
     public let expiry: Date
     public let paymentRequest: String
+}
+
+extension CreateInvoiceEvent {
+    init(invoice: Invoice) {
+        id = invoice.id
+        memo = invoice.memo
+        amount = invoice.amount
+        date = invoice.date
+        expiry = invoice.expiry
+        paymentRequest = invoice.paymentRequest
+    }
 }
 
 // SQL

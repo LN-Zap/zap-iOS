@@ -36,6 +36,18 @@ extension TransactionEvent {
         blockHeight = transaction.blockHeight
         channelRelated = nil
     }
+    
+    /// Initialize unconfirmed transaction
+    init(txId: String, amount: Satoshi, memo: String?, destinationAddress: BitcoinAddress) {
+        txHash = txId
+        self.amount = amount
+        fee = 0
+        self.memo = memo
+        date = Date()
+        self.destinationAddresses = [destinationAddress]
+        blockHeight = nil
+        channelRelated = false
+    }
 }
 
 // SQL

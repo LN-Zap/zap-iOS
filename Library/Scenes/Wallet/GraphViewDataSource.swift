@@ -11,6 +11,10 @@ import Lightning
 import ScrollableGraphView
 import SwiftLnd
 
+protocol Transaction: DateProvidingEvent {
+    var amount: Satoshi { get }
+}
+
 final class GraphViewDataSource: ScrollableGraphViewDataSource {
     let plotData: [(date: Date, amount: Satoshi)]
     

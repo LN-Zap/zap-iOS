@@ -28,7 +28,7 @@ final class MainCoordinator: Routing {
         
         let nodeStore = LightningNodeStore(channelService: lightningService.channelService)
         channelListViewModel = ChannelListViewModel(channelService: lightningService.channelService, nodeStore: nodeStore)
-        historyViewModel = HistoryViewModel(transactionService: lightningService.transactionService, nodeStore: nodeStore)
+        historyViewModel = HistoryViewModel(historyService: lightningService.historyService)
     }
     
     public func handle(_ route: Route) {

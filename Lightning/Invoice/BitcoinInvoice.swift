@@ -50,7 +50,7 @@ public final class BitcoinInvoice {
                 
                 if bitcoinURI == nil,
                     let fallbackAddress = paymentRequest.fallbackAddress,
-                    let fallbackBitcoinURI = BitcoinURI(string: fallbackAddress) {
+                    let fallbackBitcoinURI = BitcoinURI(address: fallbackAddress, amount: nil, memo: nil, lightningFallback: nil) {
                     invoice = BitcoinInvoice(lightningPaymentRequest: paymentRequest, bitcoinURI: fallbackBitcoinURI)
                 } else {
                     invoice = BitcoinInvoice(lightningPaymentRequest: paymentRequest, bitcoinURI: bitcoinURI)

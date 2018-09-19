@@ -18,7 +18,7 @@ extension UIStoryboard {
         let navigationController = ZapNavigationController(rootViewController: viewController)
         navigationController.tabBarItem.title = "scene.history.title".localized
         navigationController.tabBarItem.image = UIImage(named: "tabbar_wallet", in: Bundle.library, compatibleWith: nil)
-
+        
         return navigationController
     }
 }
@@ -46,25 +46,18 @@ final class HistoryViewController: UIViewController {
         searchController.dimsBackgroundDuringPresentation = false
         searchController.searchResultsUpdater = self
         navigationItem.searchController = searchController
-
+        
         Style.Label.body.apply(to: emptyStateLabel)
         emptyStateLabel.text = "scene.history.empty_state_label".localized
         
         tableView.rowHeight = UITableView.automaticDimension
         tableView.estimatedRowHeight = 82
         tableView.registerCell(HistoryCell.self)
-        tableView.registerCell(HeaderTableViewCell.self)
-        tableView.refreshControl = UIRefreshControl()
-        tableView.refreshControl?.addTarget(self, action: #selector(refresh), for: .valueChanged)
-        tableView.contentInset = UIEdgeInsets(top: 10, left: 0, bottom: 10, right: 0)
+        tableView.contentInset = UIEdgeInsets(top: 0, left: 0, bottom: 10, right: 0)
         
         historyViewModel?.dataSource
             .bind(to: tableView) { dataSource, indexPath, tableView in
-                switch dataSource[indexPath.row] {
-                case .header(let title):
-                    let cell: HeaderTableViewCell = tableView.dequeueCellForIndexPath(indexPath)
-                    cell.headerText = title
-                    return cell
+                switch dataSource[indexPath] {
                 case .transactionEvent(let transactionEvent):
                     let cell: HistoryCell = tableView.dequeueCellForIndexPath(indexPath)
                     cell.setTransactionEvent(transactionEvent)
@@ -77,9 +70,13 @@ final class HistoryViewController: UIViewController {
                     let cell: HistoryCell = tableView.dequeueCellForIndexPath(indexPath)
                     cell.setCreateInvoiceEvent(createInvoiceEvent)
                     return cell
-                case .failedPayemntEvent(let failedPayemntEvent):
+                case .failedPaymentEvent(let failedPayemntEvent):
                     let cell: HistoryCell = tableView.dequeueCellForIndexPath(indexPath)
                     cell.setFailedPayemntEvent(failedPayemntEvent)
+                    return cell
+                case .lightningPaymentEvent(let lightningPaymentEvent):
+                    let cell: HistoryCell = tableView.dequeueCellForIndexPath(indexPath)
+                    cell.setLightningPaymentEvent(lightningPaymentEvent)
                     return cell
                 }
             }
@@ -96,45 +93,21 @@ final class HistoryViewController: UIViewController {
     @IBAction private func presentFilter(_ sender: Any) {
         presentFilter?()
     }
-    
-    @objc func refresh(sender: UIRefreshControl) {
-//        historyViewModel?.refresh()
-        sender.endRefreshing()
-    }
 }
 
 extension HistoryViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
         
-//        if let historyViewModel = historyViewModel,
-//            case .cell(let transactionViewModel) = historyViewModel.dataSource.item(at: indexPath.row) {
-//            presentTransactionDetail?(transactionViewModel)
-//        }
+        // TODO: present detail
     }
     
-//    func tableView(_ tableView: UITableView, editActionsForRowAt indexPath: IndexPath) -> [UITableViewRowAction]? {
-//        if let historyViewModel = historyViewModel,
-//            case .cell(let transactionViewModel) = historyViewModel.dataSource.item(at: indexPath.row) {
-//            if transactionViewModel.annotation.value.isHidden {
-//                return [archiveAction(title: "scene.history.row_action.unarchive".localized, color: UIColor.Zap.superGreen, setHidden: false)]
-//            } else {
-//                return [archiveAction(title: "scene.history.row_action.archive".localized, color: UIColor.Zap.superRed, setHidden: true)]
-//            }
-//        }
-//        return []
-//    }
-//
-//    private func archiveAction(title: String, color: UIColor, setHidden hidden: Bool) -> UITableViewRowAction {
-//        let archiveAction = UITableViewRowAction(style: .destructive, title: title) { [weak self] _, indexPath in
-//            if let historyViewModel = self?.historyViewModel,
-//                case .cell(let transactionViewModel) = historyViewModel.dataSource.item(at: indexPath.row) {
-//                historyViewModel.setTransactionHidden(transactionViewModel.transaction, hidden: hidden)
-//            }
-//        }
-//        archiveAction.backgroundColor = color
-//        return archiveAction
-//    }
+    func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+        let sectionHeaderView = SectionHeaderView.instanceFromNib
+        sectionHeaderView.title = historyViewModel?.dataSource[section].metadata
+        sectionHeaderView.backgroundColor = .white
+        return sectionHeaderView
+    }
 }
 
 extension HistoryViewController: UISearchBarDelegate {

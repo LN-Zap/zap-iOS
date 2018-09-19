@@ -8,6 +8,7 @@
 import BTCUtil
 import Foundation
 import SQLite
+import SwiftLnd
 
 /// Gets created when a payment request fails to complete.
 public struct FailedPaymentEvent: Equatable, DateProvidingEvent {
@@ -19,6 +20,19 @@ public struct FailedPaymentEvent: Equatable, DateProvidingEvent {
     public let expiry: Date
     public let fallbackAddress: BitcoinAddress?
     public let paymentRequest: String
+}
+
+extension FailedPaymentEvent {
+    init(paymentRequest: PaymentRequest, amount: Satoshi) {
+        paymentHash = paymentRequest.paymentHash
+        memo = paymentRequest.memo
+        self.amount = amount
+        destination = paymentRequest.destination
+        date = paymentRequest.date
+        expiry = paymentRequest.expiryDate
+        fallbackAddress = paymentRequest.fallbackAddress
+        self.paymentRequest = paymentRequest.raw
+    }
 }
 
 // SQL

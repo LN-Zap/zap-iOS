@@ -11,30 +11,20 @@ import Lightning
 import ReactiveKit
 import SwiftLnd
 
-enum HeaderTableCellType: Equatable {
-    case header(String)
-    case transactionEvent(TransactionEvent)
-    case channelEvent(DateWrappedChannelEvent)
-    case createInvoiceEvent(CreateInvoiceEvent)
-    case failedPayemntEvent(FailedPaymentEvent)
-}
-
 final class HistoryViewModel: NSObject {
-    private let transactionService: TransactionService
-    private let nodeStore: LightningNodeStore
+    private let historyService: HistoryService
     
     let isLoading = Observable(true)
-    let dataSource: MutableObservableArray<HeaderTableCellType>
+    let dataSource: MutableObservable2DArray<String, HistoryEventType>
     let isEmpty: Signal<Bool, NoError>
     
     let searchString = Observable<String?>(nil)
     let filterSettings = Observable<FilterSettings>(FilterSettings.load())
     let isFilterActive: Signal<Bool, NoError>
         
-    init(transactionService: TransactionService, nodeStore: LightningNodeStore) {
-        self.transactionService = transactionService
-        self.nodeStore = nodeStore
-        dataSource = MutableObservableArray()
+    init(historyService: HistoryService) {
+        self.historyService = historyService
+        dataSource = MutableObservable2DArray()
 
         isEmpty =
             combineLatest(dataSource, isLoading) { sections, isLoading in
@@ -49,12 +39,6 @@ final class HistoryViewModel: NSObject {
 
         super.init()
 
-//        transactionService.transactions
-//            .observeNext { [weak self] in
-//                self?.updateTransactionViewModels(transactions: $0)
-//            }
-//            .dispose(in: reactive.bag)
-
 //        combineLatest(searchString, filterSettings)
 //            .observeNext { [weak self] in
 //                self?.filterTransactionViewModels(searchString: $0, filterSettings: $1)
@@ -63,30 +47,8 @@ final class HistoryViewModel: NSObject {
         
         /////// new stuff
         
-        do {
-            let payments = try TransactionEvent.payments()
-            
-            let createInvoiceEvents = try CreateInvoiceEvent.events()
-            
-            let dateEstimator = DateEstimator()
-            let channelEvents = try ChannelEvent.events().map { (channelEvent: ChannelEvent) -> DateWrappedChannelEvent in
-                dateEstimator.wrapChannelEvent(channelEvent)
-            }
-            
-            let failedPaymentEvents = try FailedPaymentEvent.events()
-            
-            var cellTypes = [DateProvidingEvent]()
-            cellTypes.append(contentsOf: payments)
-            cellTypes.append(contentsOf: channelEvents)
-            cellTypes.append(contentsOf: createInvoiceEvents)
-            cellTypes.append(contentsOf: failedPaymentEvents)
-            
-            let sectionedCellTypes = bondSections(cellTypes)
-            
-            dataSource.replace(with: sectionedCellTypes)
-        } catch {
-            print(error)
-        }
+        let sectionedCellTypes = bondSections(transactionViewModels: historyService.events)
+        dataSource.replace(with: Observable2DArray(sectionedCellTypes), performDiff: true)
     }
     
 //    func refresh() {
@@ -152,7 +114,7 @@ final class HistoryViewModel: NSObject {
 //        }
 //    }
 //
-    private func sortedSections(transactionViewModels: [DateProvidingEvent]) -> [(Date, [DateProvidingEvent])] {
+    private func sortedSections(transactionViewModels: [HistoryEventType]) -> [(Date, [HistoryEventType])] {
         let grouped = transactionViewModels
             .grouped { transaction -> Date in
                 transaction.date.withoutTime
@@ -162,26 +124,20 @@ final class HistoryViewModel: NSObject {
             .sorted { $0.0 > $1.0 }
     }
 
-    private func bondSections(_ transactionViewModels: [DateProvidingEvent]) -> [HeaderTableCellType] {
+    private func bondSections(transactionViewModels: [HistoryEventType]) -> [Observable2DArraySection<String, HistoryEventType>] {
         let sortedSections = self.sortedSections(transactionViewModels: transactionViewModels)
-
-        return sortedSections.flatMap { input -> [HeaderTableCellType] in
-            let sortedItems = input.1.sorted { $0.date > $1.date }
-            guard let date = input.1.first?.date else { return [] }
+        
+        return sortedSections.compactMap {
+            let sortedItems = $0.1.sorted { $0.date > $1.date }
+            
+            guard let date = $0.1.first?.date else { return nil }
+            
             let dateString = date.localized
-            return [HeaderTableCellType.header(dateString)] + sortedItems.compactMap {
-                if let channelEvent = $0 as? DateWrappedChannelEvent {
-                    return HeaderTableCellType.channelEvent(channelEvent)
-                } else if let transactionEvent = $0 as? TransactionEvent {
-                    return HeaderTableCellType.transactionEvent(transactionEvent)
-                } else if let createInvoiceEvent = $0 as? CreateInvoiceEvent {
-                    return HeaderTableCellType.createInvoiceEvent(createInvoiceEvent)
-                } else if let failedPaymentEvent = $0 as? FailedPaymentEvent {
-                    return HeaderTableCellType.failedPayemntEvent(failedPaymentEvent)
-                } else {
-                    fatalError("missing cell implementation")
-                }
-            }
+            
+            return Observable2DArraySection<String, HistoryEventType>(
+                metadata: dateString,
+                items: sortedItems
+            )
         }
     }
 }

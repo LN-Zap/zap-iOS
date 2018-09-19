@@ -181,4 +181,16 @@ final class HistoryCell: BondTableViewCell {
         buttonContainer.isHidden = false
         actionButton.setTitle("Try Again", for: .normal)
     }
+    
+    func setLightningPaymentEvent(_ lightningPaymentEvent: LightningPaymentEvent) {
+        if lightningPaymentEvent.amount < 0 {
+            titleLabel.text = "Lightning Payment sent"
+        } else {
+            titleLabel.text = "Lightning Payment received"
+        }
+        
+        setDate(lightningPaymentEvent.date)
+        setAmount(lightningPaymentEvent.amount, completed: true)
+        descriptionLabel?.text = lightningPaymentEvent.memo ?? lightningPaymentEvent.paymentHash
+    }
 }

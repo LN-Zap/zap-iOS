@@ -24,7 +24,7 @@ public struct PaymentRequest: Equatable {
     public let date: Date
     public let expiryDate: Date
     public let raw: String
-    public let fallbackAddress: String?
+    public let fallbackAddress: BitcoinAddress?
     public let network: Network
 }
 
@@ -48,7 +48,11 @@ extension PaymentRequest {
         destination = payReq.destination
         date = Date(timeIntervalSince1970: TimeInterval(payReq.timestamp))
         expiryDate = Date(timeInterval: TimeInterval(payReq.expiry), since: date)
-        fallbackAddress = payReq.fallbackAddr
+        if !payReq.fallbackAddr.isEmpty {
+            fallbackAddress = BitcoinAddress(string: payReq.fallbackAddr)
+        } else {
+            fallbackAddress = nil
+        }
     
         network = raw.hasPrefix("lnbc") ? .mainnet : .testnet
         self.raw = raw
