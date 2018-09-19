@@ -94,7 +94,7 @@ public final class RootCoordinator: NSObject, SetupCoordinatorDelegate, PinCoord
 
         tabBarController.viewControllers = [
             mainCoordinator.walletViewController(),
-            mainCoordinator.transactionListViewController(),
+            mainCoordinator.historyViewController(),
             mainCoordinator.channelListViewController(),
             mainCoordinator.settingsViewController()
         ]
@@ -102,6 +102,10 @@ public final class RootCoordinator: NSObject, SetupCoordinatorDelegate, PinCoord
     
         currentCoordinator = mainCoordinator
 
+        if let tabBarItem = tabBarController.tabBar.items?[1] {
+            mainCoordinator.historyViewModel.setupTabBarBadge(tabBarItem: tabBarItem)
+        }
+        
         if let route = self.route {
             handle(route)
         }

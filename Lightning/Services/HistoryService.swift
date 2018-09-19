@@ -9,45 +9,6 @@ import BTCUtil
 import Foundation
 import SwiftLnd
 
-public enum HistoryEventType: Equatable {
-    case transactionEvent(TransactionEvent)
-    case channelEvent(DateWrappedChannelEvent)
-    case createInvoiceEvent(CreateInvoiceEvent)
-    case failedPaymentEvent(FailedPaymentEvent)
-    case lightningPaymentEvent(LightningPaymentEvent)
-    
-    fileprivate static func create(event: DateProvidingEvent) -> HistoryEventType {
-        if let channelEvent = event as? DateWrappedChannelEvent {
-            return HistoryEventType.channelEvent(channelEvent)
-        } else if let transactionEvent = event as? TransactionEvent {
-            return HistoryEventType.transactionEvent(transactionEvent)
-        } else if let createInvoiceEvent = event as? CreateInvoiceEvent {
-            return HistoryEventType.createInvoiceEvent(createInvoiceEvent)
-        } else if let failedPaymentEvent = event as? FailedPaymentEvent {
-            return HistoryEventType.failedPaymentEvent(failedPaymentEvent)
-        } else if let lightningPaymentEvent = event as? LightningPaymentEvent {
-            return HistoryEventType.lightningPaymentEvent(lightningPaymentEvent)
-        } else {
-            fatalError("missing cell implementation")
-        }
-    }
-    
-    public var date: Date {
-        switch self {
-        case .transactionEvent(let event):
-            return event.date
-        case .channelEvent(let event):
-            return event.date
-        case .createInvoiceEvent(let event):
-            return event.date
-        case .failedPaymentEvent(let event):
-            return event.date
-        case .lightningPaymentEvent(let event):
-            return event.date
-        }
-    }
-}
-
 public final class HistoryService {
     private let api: LightningApiProtocol
     private let channelService: ChannelService

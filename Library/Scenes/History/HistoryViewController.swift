@@ -39,7 +39,11 @@ final class HistoryViewController: UIViewController {
         
         title = "scene.history.title".localized
         
-        guard let tableView = tableView else { return }
+        guard
+            let tableView = tableView,
+            let historyViewModel = historyViewModel
+            else { return }
+        
         view.backgroundColor = UIColor.Zap.background
 
         let searchController = UISearchController(searchResultsController: nil)
@@ -55,38 +59,40 @@ final class HistoryViewController: UIViewController {
         tableView.registerCell(HistoryCell.self)
         tableView.contentInset = UIEdgeInsets(top: 0, left: 0, bottom: 10, right: 0)
         
-        historyViewModel?.dataSource
-            .bind(to: tableView) { dataSource, indexPath, tableView in
-                switch dataSource[indexPath] {
-                case .transactionEvent(let transactionEvent):
-                    let cell: HistoryCell = tableView.dequeueCellForIndexPath(indexPath)
-                    cell.setTransactionEvent(transactionEvent)
-                    return cell
-                case .channelEvent(let channelEvent):
-                    let cell: HistoryCell = tableView.dequeueCellForIndexPath(indexPath)
-                    cell.setChannelEvent(channelEvent)
-                    return cell
-                case .createInvoiceEvent(let createInvoiceEvent):
-                    let cell: HistoryCell = tableView.dequeueCellForIndexPath(indexPath)
-                    cell.setCreateInvoiceEvent(createInvoiceEvent)
-                    return cell
-                case .failedPaymentEvent(let failedPayemntEvent):
-                    let cell: HistoryCell = tableView.dequeueCellForIndexPath(indexPath)
-                    cell.setFailedPayemntEvent(failedPayemntEvent)
-                    return cell
-                case .lightningPaymentEvent(let lightningPaymentEvent):
-                    let cell: HistoryCell = tableView.dequeueCellForIndexPath(indexPath)
-                    cell.setLightningPaymentEvent(lightningPaymentEvent)
-                    return cell
-                }
-            }
-            .dispose(in: reactive.bag)
+        setupDataSourceBinding(tableView, historyViewModel)
         
-        [historyViewModel?.isEmpty
+        [historyViewModel.isEmpty
             .bind(to: tableView.reactive.isHidden),
-         historyViewModel?.isEmpty
+         historyViewModel.isEmpty
             .map { !$0 }
             .bind(to: emptyStateLabel.reactive.isHidden)]
+            .dispose(in: reactive.bag)
+    }
+    
+    private func setupDataSourceBinding(_ tableView: UITableView, _ historyViewModel: HistoryViewModel) {
+        historyViewModel.dataSource
+            .bind(to: tableView) { dataSource, indexPath, tableView in
+                let cell: HistoryCell = tableView.dequeueCellForIndexPath(indexPath)
+                
+                switch dataSource[indexPath] {
+                case .transactionEvent(let transactionEvent):
+                    cell.setTransactionEvent(transactionEvent)
+                case .channelEvent(let channelEvent):
+                    cell.setChannelEvent(channelEvent)
+                case .createInvoiceEvent(let createInvoiceEvent):
+                    cell.setCreateInvoiceEvent(createInvoiceEvent)
+                case .failedPaymentEvent(let failedPayemntEvent):
+                    cell.setFailedPaymentEvent(failedPayemntEvent)
+                case .lightningPaymentEvent(let lightningPaymentEvent):
+                    cell.setLightningPaymentEvent(lightningPaymentEvent)
+                }
+                
+                if dataSource[indexPath].date > historyViewModel.lastSeenDate {
+                    cell.addNotificationLabel(type: .new)
+                }
+                
+                return cell
+            }
             .dispose(in: reactive.bag)
     }
     

@@ -10,6 +10,22 @@ import Lightning
 import UIKit
 
 final class HistoryCell: BondTableViewCell {
+    enum NotificationType {
+        case error
+        case new
+        case pending
+        
+        var style: (UIColor, String) {
+            switch self {
+            case .error:
+                return (UIColor.Zap.superRed, "error")
+            case .new:
+                return (UIColor.Zap.purple, "new")
+            case .pending:
+                return (UIColor.Zap.purple, "pending")
+            }
+        }
+    }
     
     @IBOutlet private weak var containerView: UIView!
     @IBOutlet private weak var titleLabel: UILabel!
@@ -21,14 +37,16 @@ final class HistoryCell: BondTableViewCell {
     
     private weak var notificationLabel: PaddingLabel?
     
-    func addNotificationLabel() {
+    func addNotificationLabel(type: NotificationType) {
         let label = PaddingLabel(frame: CGRect(x: 0, y: 0, width: 100, height: 20))
-        label.text = "error"
-
+        
+        let (color, text) = type.style
+        label.backgroundColor = color
+        label.text = text
+        
         Style.Label.footnote.apply(to: label)
         label.textColor = UIColor.Zap.white
         label.edgeInsets = UIEdgeInsets(top: 0, left: 7, bottom: 0, right: 7)
-        label.backgroundColor = UIColor.Zap.superRed
         label.layer.cornerRadius = 7
         label.layer.masksToBounds = true
 
@@ -171,13 +189,13 @@ final class HistoryCell: BondTableViewCell {
         setAmount(createInvoiceEvent.amount, completed: false)
     }
     
-    func setFailedPayemntEvent(_ failedPaymentEvent: FailedPaymentEvent) {
+    func setFailedPaymentEvent(_ failedPaymentEvent: FailedPaymentEvent) {
         titleLabel.text = "Payment did not send"
         setDate(failedPaymentEvent.date)
         descriptionLabel?.text = failedPaymentEvent.memo ?? failedPaymentEvent.paymentRequest
         descriptionLabel.textColor = UIColor.Zap.gray
         setAmount(failedPaymentEvent.amount, completed: false)
-        addNotificationLabel()
+        addNotificationLabel(type: .error)
         buttonContainer.isHidden = false
         actionButton.setTitle("Try Again", for: .normal)
     }

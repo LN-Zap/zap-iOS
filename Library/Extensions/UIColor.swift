@@ -20,6 +20,7 @@ public extension UIColor {
         public static let seaBlueGradient = color("seaBlueGradient")
         public static let superRed = color("superRed")
         public static let superGreen = color("superGreen")
+        public static let purple = color("purple")
         
         // concrete uses of previously defined colors, to make changing easier
         // throughout the app.

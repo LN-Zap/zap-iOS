@@ -14,7 +14,7 @@ final class MainCoordinator: Routing {
     
     private let lightningService: LightningService
     private let channelListViewModel: ChannelListViewModel
-    private let historyViewModel: HistoryViewModel
+    let historyViewModel: HistoryViewModel
     private let authenticationViewModel: AuthenticationViewModel
     
     private weak var detailViewController: UINavigationController?
@@ -63,7 +63,7 @@ final class MainCoordinator: Routing {
         return SettingsViewController.instantiate(settingsDelegate: settingsDelegate)
     }
     
-    func transactionListViewController() -> UIViewController {
+    func historyViewController() -> UIViewController {
         return UIStoryboard.instantiateHistoryViewController(historyViewModel: historyViewModel, presentFilter: presentFilter)
     }
     

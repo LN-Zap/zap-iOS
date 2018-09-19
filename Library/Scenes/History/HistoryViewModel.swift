@@ -21,7 +21,11 @@ final class HistoryViewModel: NSObject {
     let searchString = Observable<String?>(nil)
     let filterSettings = Observable<FilterSettings>(FilterSettings.load())
     let isFilterActive: Signal<Bool, NoError>
-        
+    
+    var lastSeenDate = Date(timeIntervalSinceNow: -60 * 60 * 24 * 2)
+    
+    public private(set) var notificationCount = 2
+    
     init(historyService: HistoryService) {
         self.historyService = historyService
         dataSource = MutableObservable2DArray()
@@ -49,6 +53,17 @@ final class HistoryViewModel: NSObject {
         
         let sectionedCellTypes = bondSections(transactionViewModels: historyService.events)
         dataSource.replace(with: Observable2DArray(sectionedCellTypes), performDiff: true)
+    }
+    
+    func setupTabBarBadge(tabBarItem: UITabBarItem) {
+        let sortedEvents = historyService.events.sorted(by: { $0.date > $1.date })
+        if let unseenEventCount = sortedEvents.firstIndex(where: { $0.date < lastSeenDate }),
+            unseenEventCount > 0 {
+            tabBarItem.badgeColor = UIColor.Zap.superRed
+            tabBarItem.badgeValue = String(unseenEventCount)
+        } else {
+            tabBarItem.badgeValue = nil
+        }
     }
     
 //    func refresh() {

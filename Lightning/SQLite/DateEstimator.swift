@@ -7,8 +7,6 @@
 
 import Foundation
 
-
-
 public struct DateWrappedChannelEvent: Equatable, DateProvidingEvent {
     public let date: Date
     public let channelEvent: ChannelEvent

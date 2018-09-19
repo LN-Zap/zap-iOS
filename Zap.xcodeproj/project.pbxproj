@@ -224,6 +224,7 @@
 		ADA179BE21515095001401F3 /* SectionHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADA179BD21515095001401F3 /* SectionHeaderView.swift */; };
 		ADA179C02151509E001401F3 /* SectionHeaderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = ADA179BF2151509E001401F3 /* SectionHeaderView.xib */; };
 		ADA179C221526036001401F3 /* EventProtocols.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADA179C121526036001401F3 /* EventProtocols.swift */; };
+		ADA179C421527AEA001401F3 /* HistoryEventType.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADA179C321527AEA001401F3 /* HistoryEventType.swift */; };
 		ADA6BBBF211B3AEC00A1FF19 /* ScanRectView.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADA6BBBE211B3AEC00A1FF19 /* ScanRectView.swift */; };
 		ADA75DF2210F389100003068 /* ChannelState+Localizable.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADA75DF1210F389100003068 /* ChannelState+Localizable.swift */; };
 		ADA81E9E210DE14100B7C6F2 /* UIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADA81E9D210DE14100B7C6F2 /* UIView.swift */; };
@@ -739,6 +740,7 @@
 		ADA179BD21515095001401F3 /* SectionHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SectionHeaderView.swift; sourceTree = "<group>"; };
 		ADA179BF2151509E001401F3 /* SectionHeaderView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SectionHeaderView.xib; sourceTree = "<group>"; };
 		ADA179C121526036001401F3 /* EventProtocols.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventProtocols.swift; sourceTree = "<group>"; };
+		ADA179C321527AEA001401F3 /* HistoryEventType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistoryEventType.swift; sourceTree = "<group>"; };
 		ADA6BBBE211B3AEC00A1FF19 /* ScanRectView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScanRectView.swift; sourceTree = "<group>"; };
 		ADA6D2C220AC1BD2009398A5 /* InfoService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfoService.swift; sourceTree = "<group>"; };
 		ADA6D2C420AC1DDE009398A5 /* BalanceService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BalanceService.swift; sourceTree = "<group>"; };
@@ -1227,6 +1229,7 @@
 				ADA6D2C420AC1DDE009398A5 /* BalanceService.swift */,
 				A0D3C97F20629B9D0015C5D7 /* BlockChainHeightUpdater.swift */,
 				ADA6D2C620AC2406009398A5 /* ChannelService.swift */,
+				ADA179C321527AEA001401F3 /* HistoryEventType.swift */,
 				ADC48CA82150FBA200949CD9 /* HistoryService.swift */,
 				ADA6D2C220AC1BD2009398A5 /* InfoService.swift */,
 				A07C1035203DE3E6006C7FE8 /* LightningService.swift */,
@@ -1931,10 +1934,10 @@
 				ADF093122148FEB900B48853 /* ChannelEvent.swift */,
 				ADF093072147C79D00B48853 /* ConnectedNode.swift */,
 				ADF0930E2148FA7300B48853 /* CreateInvoiceEvent.swift */,
+				ADA179C121526036001401F3 /* EventProtocols.swift */,
 				ADF0930C214832C700B48853 /* FailedPaymentEvent.swift */,
 				ADF093102148FDC600B48853 /* LightningPaymentEvent.swift */,
 				ADF093052147C72000B48853 /* TransactionEvent.swift */,
-				ADA179C121526036001401F3 /* EventProtocols.swift */,
 			);
 			path = Rows;
 			sourceTree = "<group>";
@@ -2894,6 +2897,7 @@
 				ADF093082147C79D00B48853 /* ConnectedNode.swift in Sources */,
 				ADF0930A2147D5FA00B48853 /* Satoshi+Value.swift in Sources */,
 				ADF093062147C72000B48853 /* TransactionEvent.swift in Sources */,
+				ADA179C421527AEA001401F3 /* HistoryEventType.swift in Sources */,
 				AD967FEA2106122E0048085B /* ZapconnectQRCode.swift in Sources */,
 				AD28844521281FBC003C3D94 /* LightningNodeURI.swift in Sources */,
 				AD8FE12B214AD42900C00DF2 /* DateEstimator.swift in Sources */,
