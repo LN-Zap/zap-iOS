@@ -14,7 +14,7 @@ import SwiftLnd
  This is any event that transfers bitcoin from one wallet to another.
  Includes transactions, except those resulting from opening or closing channels.
  */
-public struct TransactionEvent: Equatable, DateProvidingEvent {
+public struct TransactionEvent: Equatable, DateProvidingEvent, AmountProvidingEvent {
     public let txHash: String
     public let memo: String?
     public let amount: Satoshi

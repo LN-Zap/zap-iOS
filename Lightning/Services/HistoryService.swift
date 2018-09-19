@@ -53,6 +53,7 @@ public final class HistoryService {
     private let channelService: ChannelService
 
     public var events = [HistoryEventType]()
+    public var userTransaction = [PlottableEvent]()
     
     init(api: LightningApiProtocol, channelService: ChannelService) {
         self.api = api
@@ -64,11 +65,13 @@ public final class HistoryService {
     private func updateEvents() {
         do {
             var dateProvidingEvents = [DateProvidingEvent]()
+            let payments = try TransactionEvent.payments()
+            let lightningPayments = try LightningPaymentEvent.events()
             
-            dateProvidingEvents.append(contentsOf: try TransactionEvent.payments())
+            dateProvidingEvents.append(contentsOf: payments)
+            dateProvidingEvents.append(contentsOf: lightningPayments)
             dateProvidingEvents.append(contentsOf: try CreateInvoiceEvent.events())
             dateProvidingEvents.append(contentsOf: try FailedPaymentEvent.events())
-            dateProvidingEvents.append(contentsOf: try LightningPaymentEvent.events())
             
             let dateEstimator = DateEstimator()
             let channelEvents = try ChannelEvent.events().map { (channelEvent: ChannelEvent) -> DateWrappedChannelEvent in
@@ -78,6 +81,7 @@ public final class HistoryService {
             dateProvidingEvents.append(contentsOf: channelEvents)
             
             events = dateProvidingEvents.map(HistoryEventType.create)
+            userTransaction = payments as [PlottableEvent] + lightningPayments as [PlottableEvent]
         } catch {
             fatalError("DB Error: \(error)")
         }

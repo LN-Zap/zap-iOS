@@ -223,6 +223,7 @@
 		AD9920232146E13B000F20AE /* Layer.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD9920222146E13B000F20AE /* Layer.swift */; };
 		ADA179BE21515095001401F3 /* SectionHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADA179BD21515095001401F3 /* SectionHeaderView.swift */; };
 		ADA179C02151509E001401F3 /* SectionHeaderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = ADA179BF2151509E001401F3 /* SectionHeaderView.xib */; };
+		ADA179C221526036001401F3 /* EventProtocols.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADA179C121526036001401F3 /* EventProtocols.swift */; };
 		ADA6BBBF211B3AEC00A1FF19 /* ScanRectView.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADA6BBBE211B3AEC00A1FF19 /* ScanRectView.swift */; };
 		ADA75DF2210F389100003068 /* ChannelState+Localizable.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADA75DF1210F389100003068 /* ChannelState+Localizable.swift */; };
 		ADA81E9E210DE14100B7C6F2 /* UIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADA81E9D210DE14100B7C6F2 /* UIView.swift */; };
@@ -737,6 +738,7 @@
 		AD9E244420A377190014F9FA /* UIApplication.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIApplication.swift; sourceTree = "<group>"; };
 		ADA179BD21515095001401F3 /* SectionHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SectionHeaderView.swift; sourceTree = "<group>"; };
 		ADA179BF2151509E001401F3 /* SectionHeaderView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SectionHeaderView.xib; sourceTree = "<group>"; };
+		ADA179C121526036001401F3 /* EventProtocols.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventProtocols.swift; sourceTree = "<group>"; };
 		ADA6BBBE211B3AEC00A1FF19 /* ScanRectView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScanRectView.swift; sourceTree = "<group>"; };
 		ADA6D2C220AC1BD2009398A5 /* InfoService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfoService.swift; sourceTree = "<group>"; };
 		ADA6D2C420AC1DDE009398A5 /* BalanceService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BalanceService.swift; sourceTree = "<group>"; };
@@ -1932,6 +1934,7 @@
 				ADF0930C214832C700B48853 /* FailedPaymentEvent.swift */,
 				ADF093102148FDC600B48853 /* LightningPaymentEvent.swift */,
 				ADF093052147C72000B48853 /* TransactionEvent.swift */,
+				ADA179C121526036001401F3 /* EventProtocols.swift */,
 			);
 			path = Rows;
 			sourceTree = "<group>";
@@ -2895,6 +2898,7 @@
 				AD28844521281FBC003C3D94 /* LightningNodeURI.swift in Sources */,
 				AD8FE12B214AD42900C00DF2 /* DateEstimator.swift in Sources */,
 				AD28844B212824DC003C3D94 /* BitcoinInvoice.swift in Sources */,
+				ADA179C221526036001401F3 /* EventProtocols.swift in Sources */,
 				ADFEFA6420E627F100FE1557 /* LightningNodeStore.swift in Sources */,
 				ADFEFA6B20E627F100FE1557 /* ChannelService.swift in Sources */,
 				ADC0D2F02107953100B8C62F /* PinnedHost.swift in Sources */,

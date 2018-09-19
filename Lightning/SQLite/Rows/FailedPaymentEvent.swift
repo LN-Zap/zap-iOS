@@ -11,10 +11,10 @@ import SQLite
 import SwiftLnd
 
 /// Gets created when a payment request fails to complete.
-public struct FailedPaymentEvent: Equatable, DateProvidingEvent {
+public struct FailedPaymentEvent: Equatable, DateProvidingEvent, AmountProvidingEvent {
     public let paymentHash: String
     public let memo: String?
-    public let amount: Satoshi?
+    public let amount: Satoshi
     public let destination: String
     public let date: Date
     public let expiry: Date
@@ -40,7 +40,7 @@ extension FailedPaymentEvent {
     private enum Column {
         static let paymentHash = Expression<String>("paymentHash")
         static let memo = Expression<String?>("memo")
-        static let amount = Expression<Satoshi?>("amount")
+        static let amount = Expression<Satoshi>("amount")
         static let destination = Expression<String>("destination")
         static let date = Expression<Date>("date")
         static let expiry = Expression<Date>("expiry")

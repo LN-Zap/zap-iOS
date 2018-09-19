@@ -11,7 +11,7 @@ import SQLite
 import SwiftLnd
 
 /// Includes all unsettled invoices.
-public struct CreateInvoiceEvent: Equatable {
+public struct CreateInvoiceEvent: Equatable, DateProvidingEvent {
     public let id: String
     public let memo: String?
     public let amount: Satoshi?
@@ -32,7 +32,7 @@ extension CreateInvoiceEvent {
 }
 
 // SQL
-extension CreateInvoiceEvent: DateProvidingEvent {
+extension CreateInvoiceEvent {
     private enum Column {
         static let id = Expression<String>("id")
         static let memo = Expression<String?>("memo")

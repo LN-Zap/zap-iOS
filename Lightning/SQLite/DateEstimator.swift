@@ -7,9 +7,7 @@
 
 import Foundation
 
-public protocol DateProvidingEvent {
-    var date: Date { get }
-}
+
 
 public struct DateWrappedChannelEvent: Equatable, DateProvidingEvent {
     public let date: Date

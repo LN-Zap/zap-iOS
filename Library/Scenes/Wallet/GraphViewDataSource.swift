@@ -9,25 +9,20 @@ import BTCUtil
 import Foundation
 import Lightning
 import ScrollableGraphView
-import SwiftLnd
-
-protocol Transaction: DateProvidingEvent {
-    var amount: Satoshi { get }
-}
 
 final class GraphViewDataSource: ScrollableGraphViewDataSource {
     let plotData: [(date: Date, amount: Satoshi)]
     
-    init(transactions: [Transaction]) {
-        var transactionsByDay = [Int: [Transaction]]()
+    init(plottableEvents: [PlottableEvent]) {
+        var transactionsByDay = [Int: [PlottableEvent]]()
         let currentDate = Date()
         
-        for transaction in transactions {
-            let dayDistance = currentDate.daysTo(end: transaction.date)
+        for plottableEvent in plottableEvents {
+            let dayDistance = currentDate.daysTo(end: plottableEvent.date)
             if transactionsByDay[dayDistance] == nil {
-                transactionsByDay[dayDistance] = [transaction]
+                transactionsByDay[dayDistance] = [plottableEvent]
             } else {
-                transactionsByDay[dayDistance]?.append(transaction)
+                transactionsByDay[dayDistance]?.append(plottableEvent)
             }
         }
         
@@ -45,8 +40,8 @@ final class GraphViewDataSource: ScrollableGraphViewDataSource {
         }
     }
     
-    private static func transactionSum(_ transactions: [Transaction]) -> Satoshi {
-        return transactions.reduce(0) { $0 + $1.amount }
+    private static func transactionSum(_ events: [PlottableEvent]) -> Satoshi {
+        return events.reduce(0) { $0 + $1.amount }
     }
     
     // MARK: - ScrollableGraphViewDataSource

@@ -14,7 +14,7 @@ import SwiftLnd
  Includes all Payments.
  Inlcudes invoices that have been settled.
  */
-public struct LightningPaymentEvent: Equatable, DateProvidingEvent {
+public struct LightningPaymentEvent: Equatable, DateProvidingEvent, AmountProvidingEvent {
     public let paymentHash: String
     public let memo: String?
     public let amount: Satoshi // amount + optional fees
