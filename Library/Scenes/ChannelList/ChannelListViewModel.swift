@@ -35,14 +35,11 @@ extension ChannelState: Comparable {
 final class ChannelListViewModel: NSObject {
     private let channelService: ChannelService
     
-    let nodeStore: LightningNodeStore
-    
     let dataSource: MutableObservableArray<ChannelViewModel>
     let searchString = Observable<String?>(nil)
     
-    init(channelService: ChannelService, nodeStore: LightningNodeStore) {
+    init(channelService: ChannelService) {
         self.channelService = channelService
-        self.nodeStore = nodeStore
         
         dataSource = MutableObservableArray()
         
@@ -58,7 +55,7 @@ final class ChannelListViewModel: NSObject {
     
     private func updateChannels(open: [Channel], pending: [Channel], searchString: String?) {
         let viewModels = (open + pending)
-            .map { ChannelViewModel(channel: $0, nodeStore: nodeStore) }
+            .map { ChannelViewModel(channel: $0, channelService: channelService) }
             .filter { $0.matchesSearchString(searchString) }
         
         let sortedViewModels = viewModels.sorted {

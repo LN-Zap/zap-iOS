@@ -75,7 +75,7 @@ public final class ChannelService {
         }
     }
     
-    func node(for remotePubkey: String, completion: @escaping (LightningNode?) -> Void) {
+    public func node(for remotePubkey: String, completion: @escaping (LightningNode?) -> Void) {
         api.nodeInfo(pubKey: remotePubkey) { result in
             completion(result.value?.node)
         }

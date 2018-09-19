@@ -11,14 +11,12 @@ import Lightning
 import SwiftLnd
 
 class SendQRCodeScannerStrategy: QRCodeScannerStrategy {
-    private let nodeStore: LightningNodeStore
     private let lightningService: LightningService
     private let authenticationViewModel: AuthenticationViewModel
     
     let title = "scene.send.title".localized
     
-    init(nodeStore: LightningNodeStore, lightningService: LightningService, authenticationViewModel: AuthenticationViewModel) {
-        self.nodeStore = nodeStore
+    init(lightningService: LightningService, authenticationViewModel: AuthenticationViewModel) {
         self.lightningService = lightningService
         self.authenticationViewModel = authenticationViewModel
     }
@@ -29,7 +27,6 @@ class SendQRCodeScannerStrategy: QRCodeScannerStrategy {
             completion(result.map {
                 let viewModel = SendViewModel(
                     invoice: $0,
-                    nodeStore: strongSelf.nodeStore,
                     lightningService: strongSelf.lightningService
                 )
                 return SendViewController(viewModel: viewModel, authenticationViewModel: strongSelf.authenticationViewModel)

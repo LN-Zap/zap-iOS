@@ -61,12 +61,10 @@ final class SendViewModel {
     
     let validRange: ClosedRange<Satoshi>?
 
-    private let nodeStore: LightningNodeStore
     private let lightningService: LightningService
     
-    init(invoice: BitcoinInvoice, nodeStore: LightningNodeStore, lightningService: LightningService) {
+    init(invoice: BitcoinInvoice, lightningService: LightningService) {
         self.invoice = invoice
-        self.nodeStore = nodeStore
         self.lightningService = lightningService
         
         if let paymentRequest = invoice.lightningPaymentRequest {
