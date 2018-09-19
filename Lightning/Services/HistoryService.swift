@@ -49,19 +49,19 @@ public final class HistoryService {
     }
     
     public func update() {
-        api.transactions {
+        api.transactions { [addTransactions] in
             guard let transactions = $0.value else { return }
-            DatabaseUpdater.addTransactions(transactions)
+            addTransactions(transactions)
         }
         
-        api.payments {
+        api.payments { [addPayments] in
             guard let payments = $0.value else { return }
-            DatabaseUpdater.addPayments(payments)
+            addPayments(payments)
         }
         
-        api.invoices {
+        api.invoices { [addInvoices] in
             guard let invoices = $0.value else { return }
-            DatabaseUpdater.addInvoices(invoices)
+            addInvoices(invoices)
         }
     }
     
@@ -99,14 +99,14 @@ public final class HistoryService {
     }
     
     func addedTransaction(_ transaction: OnChainConfirmedTransaction) {
-        DatabaseUpdater.addTransactions([transaction])
+        addTransactions([transaction])
         let transactionEvent = TransactionEvent(transaction: transaction)
         events.insert(.transactionEvent(transactionEvent), at: 0)
         sendChangeNotification()
     }
     
     func addedInvoice(_ invoice: Invoice) {
-        DatabaseUpdater.addInvoices([invoice])
+        addInvoices([invoice])
         let invoiceEvent = CreateInvoiceEvent(invoice: invoice)
         events.insert(.createInvoiceEvent(invoiceEvent), at: 0)
         sendChangeNotification()
@@ -114,5 +114,61 @@ public final class HistoryService {
     
     private func sendChangeNotification() {
         
+    }
+}
+
+// MARK: - Persistance
+extension HistoryService {
+    func addTransactions(_ transactions: [OnChainConfirmedTransaction]) {
+        let transactions = transactions.map { TransactionEvent(transaction: $0) }
+        
+        // update unconfirmed transaction block height
+        do {
+            let txHashes = transactions.map { $0.txHash }
+            let unconfirmedTransactions = try TransactionEvent.unconfirmedEvents(for: txHashes)
+            
+            for unconfirmedTransaction in unconfirmedTransactions {
+                guard let transaction = transactions.first(where: { $0.txHash == unconfirmedTransaction.txHash }) else { continue }
+                try transaction.updateBlockHeight()
+            }
+        } catch {
+            print("⚠️ `\(#function)`:", error)
+        }
+        
+        // add unknown transactions, fail on first error
+        do {
+            for transaction in transactions {
+                try transaction.insert()
+            }
+        } catch {
+            print("⚠️ `\(#function)`:", error)
+        }
+    }
+    
+    func addInvoices(_ invoices: [Invoice]) {
+        do {
+            for invoice in invoices {
+                let createInvoiceEvent = CreateInvoiceEvent(invoice: invoice)
+                try createInvoiceEvent.insert()
+                
+                if invoice.settled {
+                    let paymentEvent = LightningPaymentEvent(invoice: invoice)
+                    try paymentEvent.insert()
+                }
+            }
+        } catch {
+            print("⚠️ `\(#function)`:", error)
+        }
+    }
+    
+    func addPayments(_ payments: [Payment]) {
+        do {
+            for payment in payments {
+                let paymentEvent = LightningPaymentEvent(payment: payment, memo: nil)
+                try paymentEvent.insert()
+            }
+        } catch {
+            print("⚠️ `\(#function)`:", error)
+        }
     }
 }

@@ -129,12 +129,12 @@ extension TransactionEvent {
         return try events(query: query)
     }
     
-    func updateBlockHeight() throws -> Bool {
+    func updateBlockHeight() throws {
         let query = TransactionEvent.table
             .filter(Column.txHash == txHash)
             .filter(Column.blockHeight == nil)
             .limit(1)
         
-        return try SQLiteDataStore.shared.database.run(query.update(Column.blockHeight <- blockHeight)) > 0
+        try SQLiteDataStore.shared.database.run(query.update(Column.blockHeight <- blockHeight))
     }
 }
