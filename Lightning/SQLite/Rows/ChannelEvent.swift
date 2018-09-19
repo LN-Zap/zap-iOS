@@ -46,7 +46,35 @@ public struct ChannelEvent: Equatable {
     public let fee: Satoshi?
 }
 
-// SQL
+extension ChannelEvent {
+    init?(channel: Channel) {
+        guard let blockHeight = channel.blockHeight else { return nil }
+        txHash = channel.channelPoint.fundingTxid
+        node = ConnectedNode(pubKey: channel.remotePubKey, alias: nil, color: nil)
+        self.blockHeight = blockHeight
+        type = .open
+        fee = nil
+    }
+    
+    init(closing channelCloseSummary: ChannelCloseSummary) {
+        txHash = channelCloseSummary.closingTxHash
+        node = ConnectedNode(pubKey: channelCloseSummary.remotePubKey, alias: nil, color: nil)
+        blockHeight = channelCloseSummary.closeHeight
+        type = ChannelEvent.ChanneEventType(closeType: channelCloseSummary.closeType)
+        fee = nil
+    }
+    
+    init(opening channelCloseSummary: ChannelCloseSummary) {
+        txHash = channelCloseSummary.channelPoint.fundingTxid
+        node = ConnectedNode(pubKey: channelCloseSummary.remotePubKey, alias: nil, color: nil)
+        blockHeight = channelCloseSummary.openHeight
+        type = .open
+        fee = nil
+    }
+
+}
+
+// MARK: - Persistance
 extension ChannelEvent {
     private enum Column {
         static let txHash = Expression<String>("txHash")

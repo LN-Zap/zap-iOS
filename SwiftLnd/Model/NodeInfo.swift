@@ -24,7 +24,7 @@ extension NodeInfo {
 
 public struct LightningNode: Codable {
     public let lastUpdate: Int?
-    public let pubKey: String?
+    public let pubKey: String
     public let alias: String?
     public let color: String?
 }

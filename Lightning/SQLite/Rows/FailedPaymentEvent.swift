@@ -35,7 +35,7 @@ extension FailedPaymentEvent {
     }
 }
 
-// SQL
+// MARK: - Persistance
 extension FailedPaymentEvent {
     private enum Column {
         static let paymentHash = Expression<String>("paymentHash")

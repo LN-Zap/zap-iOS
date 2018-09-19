@@ -9,6 +9,7 @@ import Bond
 import BTCUtil
 import Foundation
 import ReactiveKit
+import SQLite
 import SwiftLnd
 
 public final class ChannelService {
@@ -28,19 +29,19 @@ public final class ChannelService {
     }
 
     public func update() {
-        api.channels { [open] result in
+        api.channels { [open, channelsUpdated] result in
             open.value = result.value ?? []
-            DatabaseUpdater.channelsUpdated(open.value)
+            channelsUpdated(open.value)
         }
         
-        api.pendingChannels { [pending] result in
+        api.pendingChannels { [pending, channelsUpdated] result in
             pending.value = result.value ?? []
-            DatabaseUpdater.channelsUpdated(pending.value)
+            channelsUpdated(pending.value)
         }
         
-        api.closedChannels { [closed] result in
+        api.closedChannels { [closed, closedChannelsUpdated] result in
             closed.value = result.value ?? []
-            DatabaseUpdater.closedChannelsUpdated(closed.value)
+            closedChannelsUpdated(closed.value)
         }
     }
     
@@ -75,9 +76,65 @@ public final class ChannelService {
         }
     }
     
-    public func node(for remotePubkey: String, completion: @escaping (LightningNode?) -> Void) {
+    public func node(for remotePubkey: String, completion: @escaping (ConnectedNode?) -> Void) {
         api.nodeInfo(pubKey: remotePubkey) { result in
-            completion(result.value?.node)
+            if let lightningNode = result.value {
+                let connectedNode = ConnectedNode(lightningNode: lightningNode.node)
+                try? connectedNode.insert()
+                completion(connectedNode)
+            } else {
+                completion(nil)
+            }
         }
+    }
+}
+
+// MARK: - Persistance
+extension ChannelService {
+    private func channelsUpdated(_ channels: [Channel]) {
+        do {
+            for channel in channels {
+                guard let openEvent = ChannelEvent(channel: channel) else { continue }
+                try openEvent.insert()
+                try updateNodeIfNeeded(openEvent.node)
+            }
+        } catch {
+            print("⚠️ `\(#function)`:", error)
+        }
+    }
+    
+    private func closedChannelsUpdated(_ channelCloseSummaries: [ChannelCloseSummary]) {
+        do {
+            let closingTxIds = channelCloseSummaries.map { $0.closingTxHash }
+            try markTxIdsAsChannelRelated(txIds: closingTxIds)
+            
+            let openingTxIds = channelCloseSummaries.map { $0.channelPoint.fundingTxid }
+            try markTxIdsAsChannelRelated(txIds: openingTxIds)
+            
+            for channelCloseSummary in channelCloseSummaries {
+                let closeEvent = ChannelEvent(closing: channelCloseSummary)
+                try closeEvent.insert()
+                try updateNodeIfNeeded(closeEvent.node)
+                
+                if channelCloseSummary.openHeight > 0 { // chanID is 0 for channels opened by remote nodes
+                    let openEvent = ChannelEvent(opening: channelCloseSummary)
+                    try openEvent.insert()
+                    try updateNodeIfNeeded(openEvent.node)
+                }
+            }
+        } catch {
+            print("⚠️ `\(#function)`:", error)
+        }
+    }
+    
+    private func markTxIdsAsChannelRelated(txIds: [String]) throws {
+        let query = TransactionEvent.table
+            .filter(TransactionEvent.Column.channelRelated == nil)
+            .filter(txIds.contains(TransactionEvent.Column.txHash))
+        try SQLiteDataStore.shared.database.run(query.update(TransactionEvent.Column.channelRelated <- true))
+    }
+    
+    private func updateNodeIfNeeded(_ node: ConnectedNode) throws {
+        self.node(for: node.pubKey) { _ in }
     }
 }

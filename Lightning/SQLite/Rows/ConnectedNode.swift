@@ -7,6 +7,7 @@
 
 import Foundation
 import SQLite
+import SwiftLnd
 
 public struct ConnectedNode: Equatable {
     public let pubKey: String
@@ -14,7 +15,15 @@ public struct ConnectedNode: Equatable {
     public let color: String?
 }
 
-// SQL
+extension ConnectedNode {
+    init(lightningNode: LightningNode) {
+        self.pubKey = lightningNode.pubKey
+        self.alias = lightningNode.alias
+        self.color = lightningNode.color
+    }
+}
+
+// MARK: - Persistance
 extension ConnectedNode {
     enum Column {
         static let pubKey = Expression<String>("pubKey")

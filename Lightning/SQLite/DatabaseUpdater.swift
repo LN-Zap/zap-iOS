@@ -11,66 +11,6 @@ import SQLite
 import SwiftLnd
 
 enum DatabaseUpdater {
-    static func channelsUpdated(_ channels: [Channel]) {
-        do {
-            for channel in channels {
-                guard let blockHeight = channel.blockHeight else { continue }
-                let openEvent = ChannelEvent(
-                    txHash: channel.channelPoint.fundingTxid,
-                    node: ConnectedNode(pubKey: channel.remotePubKey, alias: nil, color: nil),
-                    blockHeight: blockHeight,
-                    type: .open,
-                    fee: nil
-                )
-                try openEvent.insert()
-            }
-        } catch {
-            print("⚠️ `\(#function)`:", error)
-        }
-    }
-    
-    static func closedChannelsUpdated(_ channelCloseSummaries: [ChannelCloseSummary]) {
-        do {
-            let closingTxIds = channelCloseSummaries.map { $0.closingTxHash }
-            try markTxIdsAsChannelRelated(txIds: closingTxIds)
-            
-            let openingTxIds = channelCloseSummaries.map { $0.channelPoint.fundingTxid }
-            try markTxIdsAsChannelRelated(txIds: openingTxIds)
-            
-            for channelCloseSummary in channelCloseSummaries {
-                let closeEvent = ChannelEvent(
-                    txHash: channelCloseSummary.closingTxHash,
-                    node: ConnectedNode(pubKey: channelCloseSummary.remotePubKey, alias: nil, color: nil),
-                    blockHeight: channelCloseSummary.closeHeight,
-                    type: ChannelEvent.ChanneEventType(closeType: channelCloseSummary.closeType),
-                    fee: nil
-                )
-                try closeEvent.insert()
-                
-                if channelCloseSummary.openHeight > 0 { // chanID is 0 for channels opened by remote nodes
-                    let openEvent = ChannelEvent(
-                        txHash: channelCloseSummary.channelPoint.fundingTxid,
-                        node: ConnectedNode(pubKey: channelCloseSummary.remotePubKey, alias: nil, color: nil),
-                        blockHeight: channelCloseSummary.openHeight,
-                        type: .open,
-                        fee: nil
-                    )
-                    try openEvent.insert()
-                }
-            }
-            
-        } catch {
-            print("⚠️ `\(#function)`:", error)
-        }
-    }
-    
-    private static func markTxIdsAsChannelRelated(txIds: [String]) throws {
-        let query = TransactionEvent.table
-            .filter(TransactionEvent.Column.channelRelated == nil)
-            .filter(txIds.contains(TransactionEvent.Column.txHash))
-        try SQLiteDataStore.shared.database.run(query.update(TransactionEvent.Column.channelRelated <- true))
-    }
-    
     static func addTransactions(_ transactions: [OnChainConfirmedTransaction]) {
         let transactions = transactions.map { TransactionEvent(transaction: $0) }
         
