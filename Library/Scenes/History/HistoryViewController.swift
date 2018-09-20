@@ -61,11 +61,9 @@ final class HistoryViewController: UIViewController {
         
         setupDataSourceBinding(tableView, historyViewModel)
         
-        [historyViewModel.isEmpty
-            .bind(to: tableView.reactive.isHidden),
-         historyViewModel.isEmpty
-            .map { !$0 }
-            .bind(to: emptyStateLabel.reactive.isHidden)]
+        historyViewModel.dataSource
+            .map { !$0.dataSource.isEmpty }
+            .bind(to: emptyStateLabel.reactive.isHidden)
             .dispose(in: reactive.bag)
     }
     
@@ -125,7 +123,7 @@ extension HistoryViewController: UISearchBarDelegate {
 extension HistoryViewController: UISearchResultsUpdating {
     func updateSearchResults(for searchController: UISearchController) {
         if let text = searchController.searchBar.text {
-            historyViewModel?.searchString.value = text
+            historyViewModel?.searchString = text
         }
     }
 }

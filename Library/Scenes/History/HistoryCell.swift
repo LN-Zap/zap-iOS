@@ -131,7 +131,7 @@ final class HistoryCell: BondTableViewCell {
                 amountLabel.edgeInsets = UIEdgeInsets(top: 2, left: 6, bottom: 2, right: 6)
             }
         } else {
-            amountLabel.text = "not completed"
+            amountLabel.text = nil
         }
     }
     

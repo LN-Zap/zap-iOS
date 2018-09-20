@@ -14,13 +14,19 @@ import SwiftLnd
 final class HistoryViewModel: NSObject {
     private let historyService: HistoryService
     
-    let isLoading = Observable(true)
     let dataSource: MutableObservable2DArray<String, HistoryEventType>
-    let isEmpty: Signal<Bool, NoError>
     
-    let searchString = Observable<String?>(nil)
-    let filterSettings = Observable<FilterSettings>(FilterSettings.load())
-    let isFilterActive: Signal<Bool, NoError>
+    var searchString: String? {
+        didSet {
+            updateEvents()
+        }
+    }
+    var filterSettings = FilterSettings.load() {
+        didSet {
+            updateEvents()
+            filterSettings.save()
+        }
+    }
     
     var lastSeenDate = Date(timeIntervalSinceNow: -60 * 60 * 24 * 2)
     
@@ -30,28 +36,15 @@ final class HistoryViewModel: NSObject {
         self.historyService = historyService
         dataSource = MutableObservable2DArray()
 
-        isEmpty =
-            combineLatest(dataSource, isLoading) { sections, isLoading in
-                sections.dataSource.isEmpty && !isLoading
-            }
-            .distinct()
-            .debounce(interval: 0.5)
-            .start(with: false)
-
-        isFilterActive = filterSettings
-            .map { $0 != FilterSettings() }
-
         super.init()
-
-//        combineLatest(searchString, filterSettings)
-//            .observeNext { [weak self] in
-//                self?.filterTransactionViewModels(searchString: $0, filterSettings: $1)
-//            }
-//            .dispose(in: reactive.bag)
         
-        /////// new stuff
-        
-        let sectionedCellTypes = bondSections(transactionViewModels: historyService.events)
+        updateEvents()
+    }
+    
+    private func updateEvents() {
+        let events = historyService.events
+        let filteredEvents = filterEvents(events, searchString: searchString, filterSettings: filterSettings)
+        let sectionedCellTypes = bondSections(transactionViewModels: filteredEvents)
         dataSource.replace(with: Observable2DArray(sectionedCellTypes), performDiff: true)
     }
     
@@ -66,69 +59,14 @@ final class HistoryViewModel: NSObject {
         }
     }
     
-//    func refresh() {
-//        transactionService.update()
-//    }
-//
-//    func setTransactionHidden(_ transaction: Transaction, hidden: Bool) {
-//        let newAnnotation = transactionService.setTransactionHidden(transaction, hidden: hidden)
-//        updateAnnotation(newAnnotation, for: transaction)
-//
-//        if !filterSettings.value.displayArchivedTransactions {
-//            filterTransactionViewModels(searchString: searchString.value, filterSettings: filterSettings.value)
-//        }
-//    }
-//
-//    func updateAnnotationType(_ type: TransactionAnnotationType, for transaction: Transaction) {
-//        let annotation = transactionService.annotation(for: transaction)
-//        let newAnnotation = annotation.settingType(to: type)
-//        updateAnnotation(newAnnotation, for: transaction)
-//    }
-//
-//    func updateAnnotation(_ annotation: TransactionAnnotation, for transaction: Transaction) {
-//        transactionService.updateAnnotation(annotation, for: transaction)
-//        for transactionViewModel in transactionViewModels where transactionViewModel.id == transaction.id {
-//            transactionViewModel.annotation.value = annotation
-//            break
-//        }
-//    }
-//
-//    func updateFilterSettings(_ newFilterSettings: FilterSettings) {
-//        filterSettings.value = newFilterSettings
-//        newFilterSettings.save()
-//    }
-    
     // MARK: - Private
-    
-//    private func updateTransactionViewModels(transactions: [Transaction]) {
-//        let newTransactionViewModels = transactions
-//            .compactMap { transaction -> TransactionViewModel in
-//                let annotation = transactionService.annotation(for: transaction)
-//
-//                if let oldTransactionViewModel = self.transactionViewModels.first(where: { $0.transaction.isTransactionEqual(to: transaction) }) {
-//                    return oldTransactionViewModel
-//                } else {
-//                    return TransactionViewModel.instance(for: transaction, annotation: annotation, nodeStore: nodeStore)
-//                }
-//            }
-//
-//        transactionViewModels = newTransactionViewModels
-//        filterTransactionViewModels(searchString: searchString.value, filterSettings: filterSettings.value)
-//    }
-//
-//    private func filterTransactionViewModels(searchString: String?, filterSettings: FilterSettings) {
-//        let filteredTransactionViewModels = transactionViewModels
-//            .filter { $0.matchesFilterSettings(filterSettings) }
-//            .filter { $0.matchesSearchString(searchString) }
-//
-//        let result = bondSections(transactionViewModels: filteredTransactionViewModels)
-//
-//        DispatchQueue.main.async {
-//            self.dataSource.replace(with: result, performDiff: true)
-//            self.isLoading.value = false
-//        }
-//    }
-//
+
+    private func filterEvents(_ events: [HistoryEventType], searchString: String?, filterSettings: FilterSettings) -> [HistoryEventType] {
+        return events
+            .filter { $0.matchesFilterSettings(filterSettings) }
+            .filter { $0.matchesSearchString(searchString) }
+    }
+
     private func sortedSections(transactionViewModels: [HistoryEventType]) -> [(Date, [HistoryEventType])] {
         let grouped = transactionViewModels
             .grouped { transaction -> Date in
@@ -154,5 +92,52 @@ final class HistoryViewModel: NSObject {
                 items: sortedItems
             )
         }
+    }
+}
+
+extension HistoryEventType {
+    func matchesFilterSettings(_ filterSettings: FilterSettings) -> Bool {
+        switch self {
+        case .transactionEvent:
+            return filterSettings.transactionEvents
+        case .channelEvent:
+            return filterSettings.channelEvents
+        case .createInvoiceEvent:
+            return filterSettings.createInvoiceEvents
+        case .failedPaymentEvent:
+            return filterSettings.failedPaymentEvents
+        case .lightningPaymentEvent:
+            return filterSettings.lightningPaymentEvents
+        }
+    }
+    
+    func matchesSearchString(_ searchString: String?) -> Bool {
+        guard
+            let searchString = searchString,
+            !searchString.isEmpty
+            else { return true }
+        
+        switch self {
+        case .transactionEvent(let event):
+            return matches(content: [event.memo, event.txHash], searchString: searchString)
+        case .channelEvent(let event):
+            return matches(content: [event.channelEvent.node.pubKey], searchString: searchString)
+        case .createInvoiceEvent(let event):
+            return matches(content: [event.memo], searchString: searchString)
+        case .failedPaymentEvent(let event):
+            return matches(content: [event.memo], searchString: searchString)
+        case .lightningPaymentEvent(let event):
+            return matches(content: [event.memo], searchString: searchString)
+        }
+    }
+    
+    private func matches(content: [String?], searchString: String) -> Bool {
+        for string in content {
+            guard let string = string else { continue }
+            if string.contains(searchString) {
+                return true
+            }
+        }
+        return false
     }
 }

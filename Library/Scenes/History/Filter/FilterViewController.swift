@@ -30,12 +30,11 @@ final class FilterViewController: UIViewController {
     
     let cells: [[FilterSetting]] = [
         [
-            .displayOnChainTransactions,
-            .displayLightningPayments,
-            .displayLightningInvoices
-        ],
-        [
-            .displayArchivedTransactions
+            .channelEvents,
+            .transactionEvents,
+            .createInvoiceEvents,
+            .failedPaymentEvents,
+            .lightningPaymentEvents
         ]
     ]
     
@@ -64,7 +63,7 @@ extension FilterViewController: UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        guard let filterSettings = historyViewModel?.filterSettings.value else { fatalError("ViewModel not set") }
+        guard let filterSettings = historyViewModel?.filterSettings else { fatalError("ViewModel not set") }
         
         let cell: FilterTableViewCell = tableView.dequeueCellForIndexPath(indexPath)
         let filterSetting = cells[indexPath.section][indexPath.row]
@@ -90,8 +89,7 @@ extension FilterViewController: UITableViewDelegate {
 
 extension FilterViewController: FilterTableViewCellDelegate {
     func setFilterSetting(_ filterSetting: FilterSetting, active: Bool) {
-        guard let filterSettings = historyViewModel?.filterSettings.value else { return }
-        let newFilterSettings = filterSetting.setActive(active, in: filterSettings)
-//        historyViewModel?.updateFilterSettings(newFilterSettings)
+        guard let filterSettings = historyViewModel?.filterSettings else { return }
+        historyViewModel?.filterSettings = filterSetting.setActive(active, in: filterSettings)
     }
 }

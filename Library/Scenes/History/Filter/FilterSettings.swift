@@ -9,20 +9,22 @@ import Foundation
 import Lightning
 
 struct FilterSettings: Equatable, Codable {
-    var displayOnChainTransactions: Bool
-    var displayLightningPayments: Bool
-    var displayLightningInvoices: Bool
-    var displayArchivedTransactions: Bool
+    var channelEvents: Bool
+    var transactionEvents: Bool
+    var createInvoiceEvents: Bool
+    var failedPaymentEvents: Bool
+    var lightningPaymentEvents: Bool
 }
 
 extension FilterSettings {
     static var fileName = "filterSettings"
     
     init() {
-        displayOnChainTransactions = true
-        displayLightningPayments = true
-        displayLightningInvoices = true
-        displayArchivedTransactions = false
+        channelEvents = true
+        transactionEvents = true
+        createInvoiceEvents = true
+        failedPaymentEvents = true
+        lightningPaymentEvents = true
     }
     
     public func save() {
@@ -35,34 +37,39 @@ extension FilterSettings {
 }
 
 enum FilterSetting: Localizable {
-    case displayOnChainTransactions
-    case displayLightningPayments
-    case displayLightningInvoices
-    case displayArchivedTransactions
+    case channelEvents
+    case transactionEvents
+    case createInvoiceEvents
+    case failedPaymentEvents
+    case lightningPaymentEvents
     
     var localized: String {
         switch self {
-        case .displayOnChainTransactions:
+        case .transactionEvents:
             return "scene.filter.displayOnChainTransactions".localized
-        case .displayLightningPayments:
+        case .lightningPaymentEvents:
             return "scene.filter.displayLightningPayments".localized
-        case .displayLightningInvoices:
+        case .createInvoiceEvents:
             return "scene.filter.displayLightningInvoices".localized
-        case .displayArchivedTransactions:
-            return "scene.filter.displayArchivedTransactions".localized
+        case .failedPaymentEvents:
+            return "scene.filter.displayFailedPaymentEvents".localized
+        case .channelEvents:
+            return "scene.filter.displayChannelEvents".localized
         }
     }
     
     func isActive(in filterSettings: FilterSettings) -> Bool {
         switch self {
-        case .displayOnChainTransactions:
-            return filterSettings.displayOnChainTransactions
-        case .displayLightningPayments:
-            return filterSettings.displayLightningPayments
-        case .displayLightningInvoices:
-            return filterSettings.displayLightningInvoices
-        case .displayArchivedTransactions:
-            return filterSettings.displayArchivedTransactions
+        case .transactionEvents:
+            return filterSettings.transactionEvents
+        case .lightningPaymentEvents:
+            return filterSettings.lightningPaymentEvents
+        case .createInvoiceEvents:
+            return filterSettings.createInvoiceEvents
+        case .channelEvents:
+            return filterSettings.channelEvents
+        case .failedPaymentEvents:
+            return filterSettings.failedPaymentEvents
         }
     }
     
@@ -70,14 +77,16 @@ enum FilterSetting: Localizable {
         var filterSettings = filterSettings
         
         switch self {
-        case .displayOnChainTransactions:
-            filterSettings.displayOnChainTransactions = isActive
-        case .displayLightningPayments:
-            filterSettings.displayLightningPayments = isActive
-        case .displayLightningInvoices:
-            filterSettings.displayLightningInvoices = isActive
-        case .displayArchivedTransactions:
-            filterSettings.displayArchivedTransactions = isActive
+        case .transactionEvents:
+            filterSettings.transactionEvents = isActive
+        case .lightningPaymentEvents:
+            filterSettings.lightningPaymentEvents = isActive
+        case .createInvoiceEvents:
+            filterSettings.createInvoiceEvents = isActive
+        case .channelEvents:
+            filterSettings.channelEvents = isActive
+        case .failedPaymentEvents:
+            filterSettings.failedPaymentEvents = isActive
         }
         return filterSettings
     }

@@ -184,8 +184,9 @@
 "scene.filter.section_header.transaction_types" = "Transaction Types";
 "scene.filter.displayOnChainTransactions" = "On Chain Transactions";
 "scene.filter.displayLightningPayments" = "Lightning Payments";
-"scene.filter.displayLightningInvoices" = "Lightning Invoices";
-"scene.filter.displayArchivedTransactions" = "Archived Transactions";
+"scene.filter.displayLightningInvoices" = "Created Invoices";
+"scene.filter.displayChannelEvents" = "Channel Events";
+"scene.filter.displayFailedPaymentEvents" = "Failed Payments";
 
 "scene.qrcode_scanner.top_label" = "Scan QR-Code";
 
