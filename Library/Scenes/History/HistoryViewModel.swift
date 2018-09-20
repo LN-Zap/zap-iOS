@@ -28,7 +28,14 @@ final class HistoryViewModel: NSObject {
         }
     }
     
-    var lastSeenDate = Date(timeIntervalSinceNow: -60 * 60 * 24 * 2)
+    var lastSeenDate: Date {
+        get {
+            return UserDefaults.Keys.lastSeenHistoryDate.get(defaultValue: Date(timeIntervalSince1970: 0))
+        }
+        set {
+            UserDefaults.Keys.lastSeenHistoryDate.set(newValue)
+        }
+    }
     
     public private(set) var notificationCount = 2
     

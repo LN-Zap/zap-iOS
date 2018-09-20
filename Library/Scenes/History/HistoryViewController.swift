@@ -67,6 +67,18 @@ final class HistoryViewController: UIViewController {
             .dispose(in: reactive.bag)
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        tabBarController?.tabBar.items?[1].badgeValue = nil
+    }
+    
+    override func viewDidDisappear(_ animated: Bool) {
+        super.viewDidDisappear(animated)
+        
+        historyViewModel?.lastSeenDate = Date()
+    }
+    
     private func setupDataSourceBinding(_ tableView: UITableView, _ historyViewModel: HistoryViewModel) {
         historyViewModel.dataSource
             .bind(to: tableView) { dataSource, indexPath, tableView in
