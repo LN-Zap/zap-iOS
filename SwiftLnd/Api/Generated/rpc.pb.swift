@@ -2423,16 +2423,34 @@ struct Lnrpc_Invoice {
     set {_uniqueStorage()._settleIndex = newValue}
   }
 
-  ///*
-  ///The amount that was accepted for this invoice. This will ONLY be set if
-  ///this invoice has been settled. We provide this field as if the invoice was
-  ///created with a zero value, then we need to record what amount was
-  ///ultimately accepted. Additionally, it's possible that the sender paid MORE
-  ///that was specified in the original invoice. So we'll record that here as
-  ///well.
+  //// Deprecated, use amt_paid_sat or amt_paid_msat.
   var amtPaid: Int64 {
     get {return _storage._amtPaid}
     set {_uniqueStorage()._amtPaid = newValue}
+  }
+
+  ///*
+  ///The amount that was accepted for this invoice, in satoshis. This will ONLY
+  ///be set if this invoice has been settled. We provide this field as if the
+  ///invoice was created with a zero value, then we need to record what amount
+  ///was ultimately accepted. Additionally, it's possible that the sender paid
+  ///MORE that was specified in the original invoice. So we'll record that here
+  ///as well.
+  var amtPaidSat: Int64 {
+    get {return _storage._amtPaidSat}
+    set {_uniqueStorage()._amtPaidSat = newValue}
+  }
+
+  ///*
+  ///The amount that was accepted for this invoice, in millisatoshis. This will
+  ///ONLY be set if this invoice has been settled. We provide this field as if
+  ///the invoice was created with a zero value, then we need to record what
+  ///amount was ultimately accepted. Additionally, it's possible that the sender
+  ///paid MORE that was specified in the original invoice. So we'll record that
+  ///here as well.
+  var amtPaidMsat: Int64 {
+    get {return _storage._amtPaidMsat}
+    set {_uniqueStorage()._amtPaidMsat = newValue}
   }
 
   var unknownFields = SwiftProtobuf.UnknownStorage()
@@ -2494,13 +2512,17 @@ struct Lnrpc_ListInvoiceRequest {
   var pendingOnly: Bool = false
 
   ///*
-  ///The offset in the time series to start at. As each response can only contain
-  ///50k invoices, callers can use this to skip around within a packed time
-  ///series.
-  var indexOffset: UInt32 = 0
+  ///The index of an invoice that will be used as either the start or end of a
+  ///query to determine which invoices should be returned in the response.
+  var indexOffset: UInt64 = 0
 
   //// The max number of invoices to return in the response to this query.
-  var numMaxInvoices: UInt32 = 0
+  var numMaxInvoices: UInt64 = 0
+
+  ///*
+  ///If set, the invoices returned will result from seeking backwards from the
+  ///specified index offset. This can be used to paginate backwards.
+  var reversed: Bool = false
 
   var unknownFields = SwiftProtobuf.UnknownStorage()
 
@@ -2518,9 +2540,14 @@ struct Lnrpc_ListInvoiceResponse {
   var invoices: [Lnrpc_Invoice] = []
 
   ///*
-  ///The index of the last time in the set of returned invoices. Can be used to
-  ///seek further, pagination style.
-  var lastIndexOffset: UInt32 = 0
+  ///The index of the last item in the set of returned invoices. This can be used
+  ///to seek further, pagination style.
+  var lastIndexOffset: UInt64 = 0
+
+  ///*
+  ///The index of the last item in the set of returned invoices. This can be used
+  ///to seek backwards, pagination style.
+  var firstIndexOffset: UInt64 = 0
 
   var unknownFields = SwiftProtobuf.UnknownStorage()
 
@@ -7223,6 +7250,8 @@ extension Lnrpc_Invoice: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementa
     16: .same(proto: "add_index"),
     17: .same(proto: "settle_index"),
     18: .same(proto: "amt_paid"),
+    19: .same(proto: "amt_paid_sat"),
+    20: .same(proto: "amt_paid_msat"),
   ]
 
   fileprivate class _StorageClass {
@@ -7244,6 +7273,8 @@ extension Lnrpc_Invoice: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementa
     var _addIndex: UInt64 = 0
     var _settleIndex: UInt64 = 0
     var _amtPaid: Int64 = 0
+    var _amtPaidSat: Int64 = 0
+    var _amtPaidMsat: Int64 = 0
 
     static let defaultInstance = _StorageClass()
 
@@ -7268,6 +7299,8 @@ extension Lnrpc_Invoice: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementa
       _addIndex = source._addIndex
       _settleIndex = source._settleIndex
       _amtPaid = source._amtPaid
+      _amtPaidSat = source._amtPaidSat
+      _amtPaidMsat = source._amtPaidMsat
     }
   }
 
@@ -7301,6 +7334,8 @@ extension Lnrpc_Invoice: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementa
         case 16: try decoder.decodeSingularUInt64Field(value: &_storage._addIndex)
         case 17: try decoder.decodeSingularUInt64Field(value: &_storage._settleIndex)
         case 18: try decoder.decodeSingularInt64Field(value: &_storage._amtPaid)
+        case 19: try decoder.decodeSingularInt64Field(value: &_storage._amtPaidSat)
+        case 20: try decoder.decodeSingularInt64Field(value: &_storage._amtPaidMsat)
         default: break
         }
       }
@@ -7363,6 +7398,12 @@ extension Lnrpc_Invoice: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementa
       if _storage._amtPaid != 0 {
         try visitor.visitSingularInt64Field(value: _storage._amtPaid, fieldNumber: 18)
       }
+      if _storage._amtPaidSat != 0 {
+        try visitor.visitSingularInt64Field(value: _storage._amtPaidSat, fieldNumber: 19)
+      }
+      if _storage._amtPaidMsat != 0 {
+        try visitor.visitSingularInt64Field(value: _storage._amtPaidMsat, fieldNumber: 20)
+      }
     }
     try unknownFields.traverse(visitor: &visitor)
   }
@@ -7390,6 +7431,8 @@ extension Lnrpc_Invoice: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementa
         if _storage._addIndex != other_storage._addIndex {return false}
         if _storage._settleIndex != other_storage._settleIndex {return false}
         if _storage._amtPaid != other_storage._amtPaid {return false}
+        if _storage._amtPaidSat != other_storage._amtPaidSat {return false}
+        if _storage._amtPaidMsat != other_storage._amtPaidMsat {return false}
         return true
       }
       if !storagesAreEqual {return false}
@@ -7481,14 +7524,16 @@ extension Lnrpc_ListInvoiceRequest: SwiftProtobuf.Message, SwiftProtobuf._Messag
     1: .same(proto: "pending_only"),
     4: .same(proto: "index_offset"),
     5: .same(proto: "num_max_invoices"),
+    6: .same(proto: "reversed"),
   ]
 
   mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
     while let fieldNumber = try decoder.nextFieldNumber() {
       switch fieldNumber {
       case 1: try decoder.decodeSingularBoolField(value: &self.pendingOnly)
-      case 4: try decoder.decodeSingularUInt32Field(value: &self.indexOffset)
-      case 5: try decoder.decodeSingularUInt32Field(value: &self.numMaxInvoices)
+      case 4: try decoder.decodeSingularUInt64Field(value: &self.indexOffset)
+      case 5: try decoder.decodeSingularUInt64Field(value: &self.numMaxInvoices)
+      case 6: try decoder.decodeSingularBoolField(value: &self.reversed)
       default: break
       }
     }
@@ -7499,10 +7544,13 @@ extension Lnrpc_ListInvoiceRequest: SwiftProtobuf.Message, SwiftProtobuf._Messag
       try visitor.visitSingularBoolField(value: self.pendingOnly, fieldNumber: 1)
     }
     if self.indexOffset != 0 {
-      try visitor.visitSingularUInt32Field(value: self.indexOffset, fieldNumber: 4)
+      try visitor.visitSingularUInt64Field(value: self.indexOffset, fieldNumber: 4)
     }
     if self.numMaxInvoices != 0 {
-      try visitor.visitSingularUInt32Field(value: self.numMaxInvoices, fieldNumber: 5)
+      try visitor.visitSingularUInt64Field(value: self.numMaxInvoices, fieldNumber: 5)
+    }
+    if self.reversed != false {
+      try visitor.visitSingularBoolField(value: self.reversed, fieldNumber: 6)
     }
     try unknownFields.traverse(visitor: &visitor)
   }
@@ -7511,6 +7559,7 @@ extension Lnrpc_ListInvoiceRequest: SwiftProtobuf.Message, SwiftProtobuf._Messag
     if self.pendingOnly != other.pendingOnly {return false}
     if self.indexOffset != other.indexOffset {return false}
     if self.numMaxInvoices != other.numMaxInvoices {return false}
+    if self.reversed != other.reversed {return false}
     if unknownFields != other.unknownFields {return false}
     return true
   }
@@ -7521,13 +7570,15 @@ extension Lnrpc_ListInvoiceResponse: SwiftProtobuf.Message, SwiftProtobuf._Messa
   static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
     1: .same(proto: "invoices"),
     2: .same(proto: "last_index_offset"),
+    3: .same(proto: "first_index_offset"),
   ]
 
   mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
     while let fieldNumber = try decoder.nextFieldNumber() {
       switch fieldNumber {
       case 1: try decoder.decodeRepeatedMessageField(value: &self.invoices)
-      case 2: try decoder.decodeSingularUInt32Field(value: &self.lastIndexOffset)
+      case 2: try decoder.decodeSingularUInt64Field(value: &self.lastIndexOffset)
+      case 3: try decoder.decodeSingularUInt64Field(value: &self.firstIndexOffset)
       default: break
       }
     }
@@ -7538,7 +7589,10 @@ extension Lnrpc_ListInvoiceResponse: SwiftProtobuf.Message, SwiftProtobuf._Messa
       try visitor.visitRepeatedMessageField(value: self.invoices, fieldNumber: 1)
     }
     if self.lastIndexOffset != 0 {
-      try visitor.visitSingularUInt32Field(value: self.lastIndexOffset, fieldNumber: 2)
+      try visitor.visitSingularUInt64Field(value: self.lastIndexOffset, fieldNumber: 2)
+    }
+    if self.firstIndexOffset != 0 {
+      try visitor.visitSingularUInt64Field(value: self.firstIndexOffset, fieldNumber: 3)
     }
     try unknownFields.traverse(visitor: &visitor)
   }
@@ -7546,6 +7600,7 @@ extension Lnrpc_ListInvoiceResponse: SwiftProtobuf.Message, SwiftProtobuf._Messa
   func _protobuf_generated_isEqualTo(other: Lnrpc_ListInvoiceResponse) -> Bool {
     if self.invoices != other.invoices {return false}
     if self.lastIndexOffset != other.lastIndexOffset {return false}
+    if self.firstIndexOffset != other.firstIndexOffset {return false}
     if unknownFields != other.unknownFields {return false}
     return true
   }
