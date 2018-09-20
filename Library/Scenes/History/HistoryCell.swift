@@ -34,51 +34,39 @@ final class HistoryCell: BondTableViewCell {
     @IBOutlet private weak var amountLabel: PaddingLabel!
     @IBOutlet private weak var buttonContainer: UIView!
     @IBOutlet private weak var actionButton: UIButton!
-    
-    private weak var notificationLabel: PaddingLabel?
+    @IBOutlet private weak var notificationLabel: PaddingLabel!
+    @IBOutlet private var notificationTopConstraint: NSLayoutConstraint!
     
     func addNotificationLabel(type: NotificationType) {
-        let label = PaddingLabel(frame: CGRect(x: 0, y: 0, width: 100, height: 20))
-        
         let (color, text) = type.style
-        label.backgroundColor = color
-        label.text = text
+        notificationLabel.backgroundColor = color
+        notificationLabel.text = text
         
-        Style.Label.footnote.apply(to: label)
-        label.textColor = UIColor.Zap.white
-        label.edgeInsets = UIEdgeInsets(top: 0, left: 7, bottom: 0, right: 7)
-        label.layer.cornerRadius = 7
-        label.layer.masksToBounds = true
-
-        addAutolayoutSubview(label)
-        
-        NSLayoutConstraint.activate([
-            label.centerYAnchor.constraint(equalTo: containerView.topAnchor),
-            containerView.trailingAnchor.constraint(equalTo: label.trailingAnchor, constant: 15),
-            label.topAnchor.constraint(equalTo: topAnchor, constant: 10)
-        ])
-        
-        label.setContentCompressionResistancePriority(UILayoutPriority(rawValue: 999), for: .vertical)
-        
-        notificationLabel = label
+        setNotificationLabelHidden(false)
+    }
+    
+    func setNotificationLabelHidden(_ hidden: Bool) {
+        notificationTopConstraint.isActive = !hidden
+        notificationLabel.isHidden = hidden
     }
     
     override func prepareForReuse() {
         super.prepareForReuse()
-        
-        notificationLabel?.removeFromSuperview()
-        notificationLabel = nil
         
         amountLabel.backgroundColor = .clear
         amountLabel.textColor = UIColor.Zap.white
         amountLabel.edgeInsets = .zero
         
         buttonContainer.isHidden = true
+        
+        setNotificationLabelHidden(true)
     }
     
     override func awakeFromNib() {
         super.awakeFromNib()
         
+        setNotificationLabelHidden(true)
+
         containerView.backgroundColor = UIColor.Zap.seaBlue
         containerView.layer.cornerRadius = Appearance.Constants.modalCornerRadius
         
@@ -86,6 +74,12 @@ final class HistoryCell: BondTableViewCell {
         Style.Label.body.apply(to: descriptionLabel, amountLabel)
         Style.Label.footnote.apply(to: dateLabel)
         buttonContainer.isHidden = true
+        
+        Style.Label.footnote.apply(to: notificationLabel)
+        notificationLabel.textColor = UIColor.Zap.white
+        notificationLabel.edgeInsets = UIEdgeInsets(top: 0, left: 7, bottom: 0, right: 7)
+        notificationLabel.layer.cornerRadius = 7
+        notificationLabel.layer.masksToBounds = true
     }
     
     override func setHighlighted(_ highlighted: Bool, animated: Bool) {
