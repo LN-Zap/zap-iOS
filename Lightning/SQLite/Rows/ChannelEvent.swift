@@ -104,23 +104,23 @@ extension ChannelEvent {
         })
     }
     
-    func insert() throws {
-        try SQLiteDataStore.shared.database.run(ChannelEvent.table.insert(
+    func insert(database: Connection) throws {
+        try database.run(ChannelEvent.table.insert(
             Column.txHash <- txHash,
             Column.node <- node.pubKey,
             Column.blockHeight <- blockHeight,
             Column.type <- type.rawValue)
         )
         
-        try node.insertPubKey()
+        try node.insertPubKey(database: database)
     }
     
-    public static func events() throws -> [ChannelEvent] {
+    public static func events(database: Connection) throws -> [ChannelEvent] {
         let query = ChannelEvent.table
             .join(ConnectedNode.table, on: ConnectedNode.Column.pubKey == ChannelEvent.table[Column.node])
             .join(.leftOuter, TransactionEvent.table, on: TransactionEvent.table[TransactionEvent.Column.txHash] == ChannelEvent.table[Column.txHash])
             .order(Column.blockHeight.desc)
-        return try SQLiteDataStore.shared.database.prepare(query)
+        return try database.prepare(query)
             .map(ChannelEvent.init)
     }
 }

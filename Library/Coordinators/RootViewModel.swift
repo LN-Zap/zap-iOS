@@ -55,6 +55,7 @@ final class RootViewModel: NSObject {
     }
     
     func connect() {
+        // TODO: move this shit to Lightning target
         state.value = .connecting
         
         let connection = LndConnection.current

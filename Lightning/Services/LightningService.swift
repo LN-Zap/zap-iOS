@@ -20,6 +20,8 @@ public final class LightningService: NSObject {
     public let transactionService: TransactionService
     public let historyService: HistoryService
     
+    var persistance = Persistance()
+    
     public convenience init?(connection: LndConnection) {
         guard let api = connection.api else { return nil }
         self.init(api: api)
@@ -28,24 +30,15 @@ public final class LightningService: NSObject {
     init(api: LightningApiProtocol) {
         self.api = api
         
-        infoService = InfoService(api: api)
         balanceService = BalanceService(api: api)
-        channelService = ChannelService(api: api)
-        historyService = HistoryService(api: api, channelService: channelService)
+        channelService = ChannelService(api: api, persistance: persistance)
+        historyService = HistoryService(api: api, channelService: channelService, persistance: persistance)
         transactionService = TransactionService(api: api, balanceService: balanceService, channelService: channelService, historyService: historyService)
+        
+        infoService = InfoService(api: api, persistance: persistance, channelService: channelService, balanceService: balanceService, historyService: historyService)
     }
     
     public func start() {
-        infoService.walletState
-            .filter { $0 != .connecting }
-            .distinct()
-            .observeNext { [weak self] _ in
-                self?.channelService.update()
-                self?.balanceService.update()
-                self?.historyService.update()
-            }
-            .dispose(in: reactive.bag)
-        
         api.subscribeChannelGraph { _ in }
         
         api.subscribeInvoices { [weak self] in

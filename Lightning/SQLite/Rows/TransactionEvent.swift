@@ -93,12 +93,12 @@ extension TransactionEvent {
         })
     }
     
-    func insert() throws {
+    func insert(database: Connection) throws {
         let addressString = destinationAddresses
             .map { $0.string }
             .joined(separator: ",")
         
-        try SQLiteDataStore.shared.database.run(TransactionEvent.table.insert(
+        try database.run(TransactionEvent.table.insert(
             Column.txHash <- txHash,
             Column.amount <- amount,
             Column.fee <- fee,
@@ -110,31 +110,30 @@ extension TransactionEvent {
         )
     }
     
-    static func events(query: Table = TransactionEvent.table) throws -> [TransactionEvent] {
-        return try SQLiteDataStore.shared.database.prepare(query)
+    static func events(query: Table = TransactionEvent.table, database: Connection) throws -> [TransactionEvent] {
+        return try database.prepare(query)
             .map(TransactionEvent.init)
     }
     
-    static func unconfirmedEvents(for txHashes: [String]) throws -> [TransactionEvent] {
+    static func unconfirmedEvents(for txHashes: [String], database: Connection) throws -> [TransactionEvent] {
         let query = TransactionEvent.table
             .filter(Column.blockHeight == nil)
             .filter(txHashes.contains(Column.txHash))
-        return try events(query: query)
+        return try events(query: query, database: database)
     }
     
-    public static func payments() throws -> [TransactionEvent] {
+    public static func payments(database: Connection) throws -> [TransactionEvent] {
         let query = TransactionEvent.table
             .filter(Column.channelRelated == false || Column.channelRelated == nil) // nil or false
-            .order(Column.date.desc)
-        return try events(query: query)
+        return try events(query: query, database: database)
     }
     
-    func updateBlockHeight() throws {
+    func updateBlockHeight(database: Connection) throws {
         let query = TransactionEvent.table
             .filter(Column.txHash == txHash)
             .filter(Column.blockHeight == nil)
             .limit(1)
         
-        try SQLiteDataStore.shared.database.run(query.update(Column.blockHeight <- blockHeight))
+        try database.run(query.update(Column.blockHeight <- blockHeight))
     }
 }

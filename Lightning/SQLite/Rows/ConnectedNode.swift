@@ -47,8 +47,8 @@ extension ConnectedNode {
         })
     }
     
-    func insert() throws {
-        try SQLiteDataStore.shared.database.run(ConnectedNode.table.insert(
+    func insert(database: Connection) throws {
+        try database.run(ConnectedNode.table.insert(
             or: .replace,
             Column.pubKey <- pubKey,
             Column.alias <- alias,
@@ -56,7 +56,7 @@ extension ConnectedNode {
         )
     }
     
-    func insertPubKey() throws {
-        try SQLiteDataStore.shared.database.run(ConnectedNode.table.insert(or: .replace, Column.pubKey <- pubKey))
+    func insertPubKey(database: Connection) throws {
+        try database.run(ConnectedNode.table.insert(or: .replace, Column.pubKey <- pubKey))
     }
 }

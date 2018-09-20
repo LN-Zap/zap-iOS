@@ -76,8 +76,8 @@ extension LightningPaymentEvent {
         })
     }
     
-    func insert() throws {
-        try SQLiteDataStore.shared.database.run(LightningPaymentEvent.table.insert(
+    func insert(database: Connection) throws {
+        try database.run(LightningPaymentEvent.table.insert(
             Column.paymentHash <- paymentHash,
             Column.memo <- memo,
             Column.amount <- amount,
@@ -86,8 +86,8 @@ extension LightningPaymentEvent {
         )
     }
     
-    public static func events() throws -> [LightningPaymentEvent] {
-        return try SQLiteDataStore.shared.database.prepare(LightningPaymentEvent.table)
+    public static func events(database: Connection) throws -> [LightningPaymentEvent] {
+        return try database.prepare(LightningPaymentEvent.table)
             .map(LightningPaymentEvent.init)
     }
 }

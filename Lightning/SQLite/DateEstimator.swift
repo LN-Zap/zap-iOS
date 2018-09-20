@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import SQLite
 
 public struct DateWrappedChannelEvent: Equatable, DateProvidingEvent {
     public let date: Date
@@ -15,8 +16,8 @@ public struct DateWrappedChannelEvent: Equatable, DateProvidingEvent {
 public final class DateEstimator {
     private let transactions: [(date: Date, blockHeight: Int)]
     
-    public convenience init() {
-        let transactions = (try? TransactionEvent.events()) ?? []
+    public convenience init(database: Connection) {
+        let transactions = (try? TransactionEvent.events(database: database)) ?? []
         self.init(transactions: transactions)
     }
     

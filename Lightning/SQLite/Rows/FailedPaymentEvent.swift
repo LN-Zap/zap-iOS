@@ -80,8 +80,8 @@ extension FailedPaymentEvent {
         })
     }
     
-    func insert() throws {
-        try SQLiteDataStore.shared.database.run(FailedPaymentEvent.table.insert(
+    func insert(database: Connection) throws {
+        try database.run(FailedPaymentEvent.table.insert(
             Column.paymentHash <- paymentHash,
             Column.memo <- memo,
             Column.amount <- amount,
@@ -93,8 +93,8 @@ extension FailedPaymentEvent {
         )
     }
     
-    public static func events() throws -> [FailedPaymentEvent] {
-        return try SQLiteDataStore.shared.database.prepare(FailedPaymentEvent.table)
+    public static func events(database: Connection) throws -> [FailedPaymentEvent] {
+        return try database.prepare(FailedPaymentEvent.table)
             .map(FailedPaymentEvent.init)
     }
 }

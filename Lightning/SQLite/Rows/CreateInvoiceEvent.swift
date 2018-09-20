@@ -64,13 +64,13 @@ extension CreateInvoiceEvent {
         })
     }
     
-    func insert() throws {
+    func insert(database: Connection) throws {
         var memo = self.memo
         if memo == "" {
             memo = nil
         }
         
-        try SQLiteDataStore.shared.database.run(CreateInvoiceEvent.table.insert(
+        try database.run(CreateInvoiceEvent.table.insert(
             Column.id <- id,
             Column.memo <- memo,
             Column.amount <- amount,
@@ -80,8 +80,8 @@ extension CreateInvoiceEvent {
         )
     }
     
-    public static func events() throws -> [CreateInvoiceEvent] {
-        return try SQLiteDataStore.shared.database.prepare(CreateInvoiceEvent.table)
+    public static func events(database: Connection) throws -> [CreateInvoiceEvent] {
+        return try database.prepare(CreateInvoiceEvent.table)
             .map(CreateInvoiceEvent.init)
     }
 }

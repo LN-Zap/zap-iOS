@@ -18,6 +18,11 @@ public final class InfoService {
         case running
     }
     
+    private let persistance: Persistance
+    public let balanceService: BalanceService
+    public let channelService: ChannelService
+    public let historyService: HistoryService
+    
     public let bestHeaderDate = Observable<Date?>(nil)
     public let blockChainHeight = Observable<Int?>(nil)
     public let blockHeight = Observable(0)
@@ -29,7 +34,12 @@ public final class InfoService {
     private let heightJobTimer: Timer?
     private var updateInfoTimer: Timer?
     
-    init(api: LightningApiProtocol) {
+    init(api: LightningApiProtocol, persistance: Persistance, channelService: ChannelService, balanceService: BalanceService, historyService: HistoryService) {
+        self.persistance = persistance
+        self.channelService = channelService
+        self.balanceService = balanceService
+        self.historyService = historyService
+        
         walletState = Observable(.connecting)
         
         heightJobTimer = Timer.scheduledTimer(withTimeInterval: 120, repeats: true) { [blockChainHeight, network] _ in
@@ -49,28 +59,37 @@ public final class InfoService {
             isSyncedToChain.value = info.isSyncedToChain
             bestHeaderDate.value = info.bestHeaderDate
             network.value = info.network
+            
+            persistance.setConnectedNode(pubKey: info.pubKey)
         }
         
-        updateWalletState(result: result)
+        let newState = walletState(for: result)
+        if walletState.value != newState {
+            if newState != .connecting && newState != .noInternet {
+                channelService.update()
+                balanceService.update()
+                historyService.update()
+            }
+            
+            walletState.value = newState
+        }
     }
     
-    private func updateWalletState(result: Result<Info>?) {
-        if let result = result {
-            if let info = result.value {
-                if !info.isSyncedToChain {
-                    walletState.value = .syncing
-                } else {
-                    walletState.value = .running
-                }
-            } else if let error = result.error as? LndApiError,
-                error == LndApiError.noInternet {
-                walletState.value = .noInternet
+    private func walletState(for result: Result<Info>?) -> State {
+        guard let result = result else { return .connecting }
+        
+        if let info = result.value {
+            if !info.isSyncedToChain {
+                return .syncing
             } else {
-                walletState.value = .connecting
+                return .running
             }
-        } else {
-            walletState.value = .connecting
+        } else if let error = result.error as? LndApiError,
+            error == LndApiError.noInternet {
+            return .noInternet
         }
+        
+        return .connecting
     }
     
     func stop() {
