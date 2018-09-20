@@ -55,7 +55,7 @@
 "scene.settings.item.on_chain_request_address.bech32" = "Bech32";
 "scene.settings.item.on_chain_request_address.p2sh" = "P2SH";
 "scene.settings.item.remove_remote_node" = "Zurücksetzen der Remote-Node-Konfiguration";
-"scene.settings.item.change_pin" = "Change Pin";
+"scene.settings.item.change_pin" = "Pin ändern";
 "scene.settings.item.report_issue" = "Ein Problem melden";
 "scene.settings.item.help" = "Brauchst du Hilfe?";
 
@@ -191,8 +191,8 @@
 
 "scene.wallet.title" = "Wallet";
 
-"scene.time_lock.headline" = "Wrong Passcode";
+"scene.time_lock.headline" = "Falsches Passcode";
 "scene.time_lock.description" = "Your wallet is locked for:";
 
-"scene.modal_pin.headline" = "Enter Passcode";
+"scene.modal_pin.headline" = "PIN eingeben";
 "scene.modal_pin.description" = "Please enter your passcode to continue";
