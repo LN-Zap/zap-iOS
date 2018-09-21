@@ -44,21 +44,23 @@ public final class BitcoinInvoice {
     
     private static func decodeLightningPaymentRequest(invoiceURI: LightningInvoiceURI, bitcoinURI: BitcoinURI?, lightningService: LightningService, completion: @escaping (Result<BitcoinInvoice>) -> Void) {
         lightningService.transactionService.decodePaymentRequest(invoiceURI.address) { result in
-            switch result {
-            case .success(let paymentRequest):
-                let invoice: BitcoinInvoice
-                
-                if bitcoinURI == nil,
-                    let fallbackAddress = paymentRequest.fallbackAddress,
-                    let fallbackBitcoinURI = BitcoinURI(address: fallbackAddress, amount: nil, memo: nil, lightningFallback: nil) {
-                    invoice = BitcoinInvoice(lightningPaymentRequest: paymentRequest, bitcoinURI: fallbackBitcoinURI)
-                } else {
-                    invoice = BitcoinInvoice(lightningPaymentRequest: paymentRequest, bitcoinURI: bitcoinURI)
+            DispatchQueue.main.async {
+                switch result {
+                case .success(let paymentRequest):
+                    let invoice: BitcoinInvoice
+                    
+                    if bitcoinURI == nil,
+                        let fallbackAddress = paymentRequest.fallbackAddress,
+                        let fallbackBitcoinURI = BitcoinURI(address: fallbackAddress, amount: nil, memo: nil, lightningFallback: nil) {
+                        invoice = BitcoinInvoice(lightningPaymentRequest: paymentRequest, bitcoinURI: fallbackBitcoinURI)
+                    } else {
+                        invoice = BitcoinInvoice(lightningPaymentRequest: paymentRequest, bitcoinURI: bitcoinURI)
+                    }
+                    
+                    validateInvoice(invoice, lightningService: lightningService, completion: completion)
+                case .failure(let error):
+                    completion(.failure(error))
                 }
-                
-                validateInvoice(invoice, lightningService: lightningService, completion: completion)
-            case .failure(let error):
-                completion(.failure(error))
             }
         }
     }

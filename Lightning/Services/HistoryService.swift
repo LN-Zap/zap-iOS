@@ -114,7 +114,7 @@ public final class HistoryService {
     
     func addUnconfirmedTransaction(txId: String, amount: Satoshi, memo: String?, destinationAddress: BitcoinAddress) {
         do {
-            let transactionEvent = TransactionEvent(txId: txId, amount: amount, memo: memo, destinationAddress: destinationAddress)
+            let transactionEvent = TransactionEvent(txId: txId, amount: -amount, memo: memo, destinationAddress: destinationAddress)
             try transactionEvent.insert(database: persistance.connection())
             events.insert(.transactionEvent(transactionEvent), at: 0)
             sendChangeNotification()

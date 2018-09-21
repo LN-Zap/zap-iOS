@@ -29,12 +29,7 @@ class SendQRCodeScannerStrategy: QRCodeScannerStrategy {
                     invoice: $0,
                     lightningService: self.lightningService
                 )
-                var sendViewController: UIViewController?
-                DispatchQueue.main.sync {
-                    sendViewController = SendViewController(viewModel: viewModel, authenticationViewModel: self.authenticationViewModel)
-                }
-                
-                return sendViewController! // swiftlint:disable:this force_unwrapping
+                return SendViewController(viewModel: viewModel, authenticationViewModel: self.authenticationViewModel)
             })
         }
     }
