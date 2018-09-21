@@ -58,6 +58,7 @@
 		AD28CB7B211DE93300A31004 /* BlockExplorerSettingsItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD28CB7A211DE93300A31004 /* BlockExplorerSettingsItem.swift */; };
 		AD292F9020E69F0E00211AE7 /* AuthenticationViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0E2690C202CC4E30069E83C /* AuthenticationViewModel.swift */; };
 		AD292F9120E69F0E00211AE7 /* RootViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD71EA4620E228D800256307 /* RootViewModel.swift */; };
+		AD2D912921554D62001015B6 /* Lndmobile.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AD2D912821554D61001015B6 /* Lndmobile.framework */; };
 		AD391C1C20D16ED4007EE22A /* Library.h in Headers */ = {isa = PBXBuildFile; fileRef = AD391C1A20D16ED4007EE22A /* Library.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		AD391C1F20D16ED4007EE22A /* Library.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AD391C1820D16ED4007EE22A /* Library.framework */; };
 		AD391C2020D16ED4007EE22A /* Library.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = AD391C1820D16ED4007EE22A /* Library.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
@@ -640,6 +641,7 @@
 		AD28844C21284DAC003C3D94 /* InvoiceTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InvoiceTests.swift; sourceTree = "<group>"; };
 		AD28844E21287B56003C3D94 /* SendViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SendViewModel.swift; sourceTree = "<group>"; };
 		AD28CB7A211DE93300A31004 /* BlockExplorerSettingsItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BlockExplorerSettingsItem.swift; sourceTree = "<group>"; };
+		AD2D912821554D61001015B6 /* Lndmobile.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Lndmobile.framework; path = Frameworks/Lndmobile.framework; sourceTree = SOURCE_ROOT; };
 		AD2EDBF920C02616002E6EE5 /* Storyboard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Storyboard.swift; sourceTree = "<group>"; };
 		AD38EB2F207DF233007DF14D /* UIButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIButton.swift; sourceTree = "<group>"; };
 		AD38EB31207DFB59007DF14D /* SegmentButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SegmentButton.swift; sourceTree = "<group>"; };
@@ -899,7 +901,6 @@
 		ADFE537F20D693F500B3BA2A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		ADFEFA7320E6294000FE1557 /* OnChainRequestAddressType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnChainRequestAddressType.swift; sourceTree = "<group>"; };
 		ADFEFA7620E629AA00FE1557 /* String.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = String.swift; sourceTree = "<group>"; };
-		ADFEFA8720E676A500FE1557 /* Lndmobile.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Lndmobile.framework; path = SwiftLnd/Lndmobile.framework; sourceTree = SOURCE_ROOT; };
 		AE22E81B1B7AD6C27F3D49BD /* Pods-Zap.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Zap.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Zap/Pods-Zap.debug.xcconfig"; sourceTree = "<group>"; };
 		CAD12A67577C1815DFBA2A40 /* Pods-SwiftLnd.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SwiftLnd.release.xcconfig"; path = "Pods/Target Support Files/Pods-SwiftLnd/Pods-SwiftLnd.release.xcconfig"; sourceTree = "<group>"; };
 		CCFC255EDBA08ADC6BE71105 /* Pods-SwiftLnd.debuglocal.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SwiftLnd.debuglocal.xcconfig"; path = "Pods/Target Support Files/Pods-SwiftLnd/Pods-SwiftLnd.debuglocal.xcconfig"; sourceTree = "<group>"; };
@@ -987,6 +988,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				ADFB36D22143B63200146FCC /* BTCUtil.framework in Frameworks */,
+				AD2D912921554D62001015B6 /* Lndmobile.framework in Frameworks */,
 				8EF96BCDD8DA8EA53847228A /* Pods_SwiftLnd.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1742,7 +1744,7 @@
 		ADADAD642143B2E700A48E1F /* SwiftLnd */ = {
 			isa = PBXGroup;
 			children = (
-				ADFEFA8720E676A500FE1557 /* Lndmobile.framework */,
+				AD2D912821554D61001015B6 /* Lndmobile.framework */,
 				ADADAD652143B2E700A48E1F /* SwiftLnd.h */,
 				ADADAD662143B2E700A48E1F /* Info.plist */,
 				ADFEFA7620E629AA00FE1557 /* String.swift */,
@@ -3986,6 +3988,10 @@
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Frameworks",
+				);
 				INFOPLIST_FILE = SwiftLnd/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				IPHONEOS_DEPLOYMENT_TARGET = 11.2;
@@ -4019,6 +4025,10 @@
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Frameworks",
+				);
 				INFOPLIST_FILE = SwiftLnd/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				IPHONEOS_DEPLOYMENT_TARGET = 11.2;
@@ -4047,6 +4057,10 @@
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Frameworks",
+				);
 				INFOPLIST_FILE = SwiftLnd/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				IPHONEOS_DEPLOYMENT_TARGET = 11.2;
