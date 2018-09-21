@@ -143,7 +143,7 @@ extension HistoryEventType {
         case .transactionEvent(let event):
             return matches(content: [event.memo, event.txHash], searchString: searchString)
         case .channelEvent(let event):
-            return matches(content: [event.channelEvent.node.pubKey], searchString: searchString)
+            return matches(content: [event.channelEvent.node.pubKey, event.channelEvent.node.alias], searchString: searchString)
         case .createInvoiceEvent(let event):
             return matches(content: [event.memo], searchString: searchString)
         case .failedPaymentEvent(let event):
@@ -154,9 +154,10 @@ extension HistoryEventType {
     }
     
     private func matches(content: [String?], searchString: String) -> Bool {
+        let searchString = searchString.lowercased()
         for string in content {
             guard let string = string else { continue }
-            if string.contains(searchString) {
+            if string.lowercased().contains(searchString) {
                 return true
             }
         }

@@ -22,9 +22,6 @@ enum Appearance {
         UIBarButtonItem.appearance().setTitleTextAttributes([.font: UIFont.Zap.light], for: .normal)
         UIBarButtonItem.appearance().setTitleTextAttributes([.font: UIFont.Zap.light], for: .disabled)
         
-        // Search Bar Font
-        let searchBarAttributes = [NSAttributedString.Key.font: UIFont.Zap.light, NSAttributedString.Key.foregroundColor: UIColor.Zap.black]
-        UITextField.appearance(whenContainedInInstancesOf: [UISearchBar.self]).defaultTextAttributes = searchBarAttributes
         UITextField.appearance().backgroundColor = .clear
     }
 }
