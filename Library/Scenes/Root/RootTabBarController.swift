@@ -22,3 +22,11 @@ class RootTabBarController: UITabBarController {
         fatalError("init(coder:) has not been implemented")
     }
 }
+
+extension RootTabBarController: HistoryBadgeUpdaterDelegate {
+    func updateBadgeCount(_ value: Int) {
+        DispatchQueue.main.async {
+            self.tabBar.items?[1].badgeValue = value <= 0 ? nil : String(value)
+        }
+    }
+}

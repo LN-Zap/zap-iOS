@@ -10,6 +10,10 @@ import Foundation
 import SQLite
 import SwiftLnd
 
+public extension Notification.Name {
+    public static let historyDidChange = Notification.Name(rawValue: "historyDidChange")
+}
+
 public final class HistoryService {
     private let api: LightningApiProtocol
     private let channelService: ChannelService
@@ -134,7 +138,7 @@ public final class HistoryService {
     }
     
     private func sendChangeNotification() {
-        
+        NotificationCenter.default.post(name: .historyDidChange, object: nil)
     }
 }
 

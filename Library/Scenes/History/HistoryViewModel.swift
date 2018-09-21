@@ -11,8 +11,14 @@ import Lightning
 import ReactiveKit
 import SwiftLnd
 
+protocol HistoryBadgeUpdaterDelegate: class {
+    func updateBadgeCount(_ value: Int)
+}
+
 final class HistoryViewModel: NSObject {
     private let historyService: HistoryService
+    
+    weak var delegate: HistoryBadgeUpdaterDelegate?
     
     let dataSource: MutableObservable2DArray<String, HistoryEventType>
     
@@ -46,23 +52,32 @@ final class HistoryViewModel: NSObject {
         super.init()
         
         updateEvents()
+        
+        NotificationCenter.default.addObserver(self, selector: #selector(updateEvents), name: .historyDidChange, object: nil)
     }
     
-    private func updateEvents() {
+    @objc private func updateEvents() {
         let events = historyService.events
         let filteredEvents = filterEvents(events, searchString: searchString, filterSettings: filterSettings)
         let sectionedCellTypes = bondSections(transactionViewModels: filteredEvents)
         dataSource.replace(with: Observable2DArray(sectionedCellTypes), performDiff: true)
+        updateTabBarBadge()
     }
     
-    func setupTabBarBadge(tabBarItem: UITabBarItem) {
+    func setupTabBarBadge(delegate: HistoryBadgeUpdaterDelegate) {
+        self.delegate = delegate
+        updateTabBarBadge()
+    }
+    
+    private func updateTabBarBadge() {
+        guard let delegate = delegate else { return }
+        
         let sortedEvents = historyService.events.sorted(by: { $0.date > $1.date })
         if let unseenEventCount = sortedEvents.firstIndex(where: { $0.date < lastSeenDate }),
             unseenEventCount > 0 {
-            tabBarItem.badgeColor = UIColor.Zap.superRed
-            tabBarItem.badgeValue = String(unseenEventCount)
+            delegate.updateBadgeCount(unseenEventCount)
         } else {
-            tabBarItem.badgeValue = nil
+            delegate.updateBadgeCount(0)
         }
     }
     

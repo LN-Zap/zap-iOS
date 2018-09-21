@@ -102,9 +102,7 @@ public final class RootCoordinator: NSObject, SetupCoordinatorDelegate, PinCoord
     
         currentCoordinator = mainCoordinator
 
-        if let tabBarItem = tabBarController.tabBar.items?[1] {
-            mainCoordinator.historyViewModel.setupTabBarBadge(tabBarItem: tabBarItem)
-        }
+        mainCoordinator.historyViewModel.setupTabBarBadge(delegate: tabBarController)
         
         if let route = self.route {
             handle(route)
