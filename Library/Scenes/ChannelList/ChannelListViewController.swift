@@ -23,7 +23,7 @@ extension UIStoryboard {
         viewController.blockExplorerButtonTapped = blockExplorerButtonTapped
         
         viewController.tabBarItem.title = "scene.channels.title".localized
-        viewController.tabBarItem.image = UIImage(named: "tabbar_wallet", in: Bundle.library, compatibleWith: nil)
+        viewController.tabBarItem.image = UIImage(named: "tabbar_channels", in: Bundle.library, compatibleWith: nil)
         
         return viewController
     }

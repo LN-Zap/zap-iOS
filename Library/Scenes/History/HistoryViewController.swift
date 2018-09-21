@@ -17,7 +17,7 @@ extension UIStoryboard {
         
         let navigationController = ZapNavigationController(rootViewController: viewController)
         navigationController.tabBarItem.title = "scene.history.title".localized
-        navigationController.tabBarItem.image = UIImage(named: "tabbar_wallet", in: Bundle.library, compatibleWith: nil)
+        navigationController.tabBarItem.image = UIImage(named: "tabbar_history", in: Bundle.library, compatibleWith: nil)
         
         return navigationController
     }
