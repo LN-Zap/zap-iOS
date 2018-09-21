@@ -188,7 +188,7 @@ final class HistoryCell: BondTableViewCell {
         setDate(failedPaymentEvent.date)
         descriptionLabel?.text = failedPaymentEvent.memo ?? failedPaymentEvent.paymentRequest
         descriptionLabel.textColor = UIColor.Zap.gray
-        setAmount(failedPaymentEvent.amount, completed: false)
+        setAmount(-failedPaymentEvent.amount, completed: false)
         addNotificationLabel(type: .error)
         buttonContainer.isHidden = false
         actionButton.setTitle("Try Again", for: .normal)
