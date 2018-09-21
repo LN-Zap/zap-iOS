@@ -53,11 +53,11 @@ public extension ContainerViewController where Self: UIViewController {
                    animations: { [currentViewController] in
                     currentViewController.view.alpha = 0
             }, completion: { [weak self] _ in
-                guard let strongSelf = self else { return }
+                guard let self = self else { return }
                 currentViewController.view.removeFromSuperview()
                 currentViewController.removeFromParent()
                 viewController.didMove(toParent: self)
-                strongSelf.currentViewController = viewController
+                self.currentViewController = viewController
                 viewController.view.isUserInteractionEnabled = true
                 completion?()
         })

@@ -23,13 +23,13 @@ class SendQRCodeScannerStrategy: QRCodeScannerStrategy {
     
     func viewControllerForAddress(address: String, completion: @escaping (Result<UIViewController>) -> Void) {
         BitcoinInvoice.create(from: address, lightningService: lightningService) { [weak self] result in
-            guard let strongSelf = self else { return }
+            guard let self = self else { return }
             completion(result.map {
                 let viewModel = SendViewModel(
                     invoice: $0,
-                    lightningService: strongSelf.lightningService
+                    lightningService: self.lightningService
                 )
-                return SendViewController(viewModel: viewModel, authenticationViewModel: strongSelf.authenticationViewModel)
+                return SendViewController(viewModel: viewModel, authenticationViewModel: self.authenticationViewModel)
             })
         }
     }
