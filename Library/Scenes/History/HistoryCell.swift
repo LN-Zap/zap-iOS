@@ -142,7 +142,7 @@ final class HistoryCell: BondTableViewCell {
             titleLabel.text = "Payment received"
         }
         setDate(transactionEvent.date)
-        descriptionLabel.text = transactionEvent.memo ?? transactionEvent.destinationAddresses.first?.string
+        descriptionLabel.text = transactionEvent.memo ?? transactionEvent.destinationAddresses.first?.string ?? "transaction.no_destination_address".localized
         descriptionLabel.textColor = UIColor.Zap.white
         setAmount(transactionEvent.amount)
     }
