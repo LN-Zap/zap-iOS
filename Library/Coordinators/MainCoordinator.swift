@@ -63,7 +63,7 @@ final class MainCoordinator: Routing {
     }
     
     func historyViewController() -> UIViewController {
-        return UIStoryboard.instantiateHistoryViewController(historyViewModel: historyViewModel, presentFilter: presentFilter)
+        return UIStoryboard.instantiateHistoryViewController(historyViewModel: historyViewModel, presentFilter: presentFilter, presentDetail: presentDetail)
     }
     
     func channelListViewController() -> UIViewController {
@@ -100,13 +100,13 @@ final class MainCoordinator: Routing {
     func presentRequest() {
         let viewModel = RequestViewModel(transactionService: lightningService.transactionService)
         let viewController = RequestViewController(viewModel: viewModel)
-        rootViewController.present(viewController, animated: true, completion: nil)
+        rootViewController.present(viewController, animated: true)
     }
     
     private func presentAddChannel() {
         let strategy = OpenChannelQRCodeScannerStrategy(lightningService: lightningService)
         let viewController = UIStoryboard.instantiateQRCodeScannerViewController(strategy: strategy)
-        rootViewController.present(viewController, animated: true, completion: nil)
+        rootViewController.present(viewController, animated: true)
     }
     
     private func presentSafariViewController(for url: URL) {
@@ -117,17 +117,22 @@ final class MainCoordinator: Routing {
     }
     
     private func dismissDetailViewController() {
-        detailViewController?.dismiss(animated: true, completion: nil)
+        detailViewController?.dismiss(animated: true)
         detailViewController = nil
     }
     
     private func presentCloseConfirmation(for channelViewModel: ChannelViewModel, closeAction: @escaping () -> Void) {
         let alertController = UIAlertController.closeChannelAlertController(channelViewModel: channelViewModel, closeAction: closeAction)
-        rootViewController.present(alertController, animated: true, completion: nil)
+        rootViewController.present(alertController, animated: true)
     }
     
     private func presentFilter() {
         let filterViewController = UIStoryboard.instantiateFilterViewController(historyViewModel: historyViewModel)
-        rootViewController.present(filterViewController, animated: true, completion: nil)
+        rootViewController.present(filterViewController, animated: true)
+    }
+    
+    private func presentDetail(event: HistoryEventType) {
+        let detailViewController = EventDetailViewController(event: event, presentBlockExplorer: presentBlockExplorer)
+        rootViewController.present(detailViewController, animated: true)
     }
 }

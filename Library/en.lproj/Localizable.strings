@@ -146,6 +146,19 @@
 "scene.sync.disconnect_alert.destructive_action" = "Disconnect Node";
 "scene.sync.disconnect_alert.cancel_action" = "Cancel";
 
+"scene.transaction_detail.title.lightning_invoice" = "Invoice Detail";
+"scene.transaction_detail.title.payment_detail" = "Payment Detail";
+"scene.transaction_detail.title.transaction_detail" = "Transaction Detail";
+"scene.transaction_detail.title.channel_event_detail" = "Channel Event";
+"scene.transaction_detail.title.failed_payment" = "Failed Payment";
+"scene.transaction_detail.memo_label" = "Memo";
+"scene.transaction_detail.amount_label" = "Amount";
+"scene.transaction_detail.fee_label" = "Fee";
+"scene.transaction_detail.date_label" = "Date";
+"scene.transaction_detail.transaction_id_label" = "Transaction ID";
+"scene.transaction_detail.address_label" = "Address";
+"scene.transaction_detail.expiry_label" = "Expiry";
+
 "scene.channel_detail.remote_pub_key_label" = "Remote PubKey";
 "scene.channel_detail.local_balance_label" = "Local Balance";
 "scene.channel_detail.remote_balance_label" = "Remote Balance";

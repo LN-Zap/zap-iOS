@@ -42,9 +42,7 @@ final class HistoryViewModel: NSObject {
             UserDefaults.Keys.lastSeenHistoryDate.set(newValue)
         }
     }
-    
-    public private(set) var notificationCount = 2
-    
+        
     init(historyService: HistoryService) {
         self.historyService = historyService
         dataSource = MutableObservable2DArray()

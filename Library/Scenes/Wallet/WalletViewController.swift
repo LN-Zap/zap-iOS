@@ -101,18 +101,25 @@ final class WalletViewController: UIViewController {
         setupExchangeRateLabel()
         setupPrimaryBalanceLabel()
         setupBindings()
+        
+        NotificationCenter.default.addObserver(self, selector: #selector(updateGraphEvents), name: .historyDidChange, object: nil)
     }
     
     private func setupGraphView() {
         graphContainer.backgroundColor = UIColor.Zap.background
-
+        updateGraphEvents()
+    }
+    
+    @objc private func updateGraphEvents() {
         guard let historyService = lightningService?.historyService else { return }
         
-        graphContainer.subviews.first?.removeFromSuperview()
-        let graphDataSource = GraphViewDataSource(plottableEvents: historyService.userTransaction)
-        self.graphDataSource = graphDataSource
-        let graphView = GraphView(frame: graphContainer.bounds, dataSource: graphDataSource)
-        graphContainer.addSubview(graphView)
+        DispatchQueue.main.async {
+            self.graphContainer.subviews.first?.removeFromSuperview()
+            let graphDataSource = GraphViewDataSource(plottableEvents: historyService.userTransaction)
+            self.graphDataSource = graphDataSource
+            let graphView = GraphView(frame: self.graphContainer.bounds, dataSource: graphDataSource)
+            self.graphContainer.addSubview(graphView)
+        }
     }
     
     private func setupExchangeRateLabel() {

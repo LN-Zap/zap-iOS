@@ -7,13 +7,15 @@
 
 import Bond
 import UIKit
+import Lightning
 
 extension UIStoryboard {
-    static func instantiateHistoryViewController(historyViewModel: HistoryViewModel, presentFilter: @escaping () -> Void) -> UINavigationController {
+    static func instantiateHistoryViewController(historyViewModel: HistoryViewModel, presentFilter: @escaping () -> Void, presentDetail: @escaping (HistoryEventType) -> Void) -> UINavigationController {
         let viewController = Storyboard.history.instantiate(viewController: HistoryViewController.self)
         
         viewController.historyViewModel = historyViewModel
         viewController.presentFilter = presentFilter
+        viewController.presentDetail = presentDetail
         
         let navigationController = ZapNavigationController(rootViewController: viewController)
         navigationController.tabBarItem.title = "scene.history.title".localized
@@ -27,8 +29,9 @@ final class HistoryViewController: UIViewController {
     @IBOutlet private weak var tableView: UITableView?
     @IBOutlet private weak var emptyStateLabel: UILabel!
     
-    fileprivate var presentFilter: (() -> Void)?
     fileprivate var historyViewModel: HistoryViewModel?
+    fileprivate var presentFilter: (() -> Void)?
+    fileprivate var presentDetail: ((HistoryEventType) -> Void)?
     
     deinit {    
         tableView?.isEditing = false // fixes Bond bug. Binding is not released in editing mode.
@@ -115,7 +118,8 @@ extension HistoryViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
         
-        // TODO: present detail
+        guard let event = historyViewModel?.dataSource[indexPath] else { return }
+        presentDetail?(event)
     }
     
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
