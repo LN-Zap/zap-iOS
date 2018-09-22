@@ -26,7 +26,9 @@ public struct TransactionEvent: Equatable, DateProvidingEvent, AmountProvidingEv
 }
 
 extension TransactionEvent {
-    init(transaction: OnChainConfirmedTransaction) {
+    init?(transaction: Transaction) {
+        guard transaction.amount != 0 else { return nil }
+        
         txHash = transaction.id
         amount = transaction.amount
         fee = transaction.fees ?? 0
@@ -35,18 +37,6 @@ extension TransactionEvent {
         destinationAddresses = transaction.destinationAddresses
         blockHeight = transaction.blockHeight
         channelRelated = nil
-    }
-    
-    /// Initialize unconfirmed transaction
-    init(txId: String, amount: Satoshi, memo: String?, destinationAddress: BitcoinAddress) {
-        txHash = txId
-        self.amount = amount
-        fee = 0
-        self.memo = memo
-        date = Date()
-        self.destinationAddresses = [destinationAddress]
-        blockHeight = nil
-        channelRelated = false
     }
 }
 

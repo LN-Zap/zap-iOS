@@ -112,20 +112,9 @@ public final class HistoryService {
         }
     }
     
-    func addUnconfirmedTransaction(txId: String, amount: Satoshi, memo: String?, destinationAddress: BitcoinAddress) {
-        do {
-            let transactionEvent = TransactionEvent(txId: txId, amount: -amount, memo: memo, destinationAddress: destinationAddress)
-            try transactionEvent.insert(database: persistance.connection())
-            events.insert(.transactionEvent(transactionEvent), at: 0)
-            sendChangeNotification()
-        } catch {
-            print(error)
-        }
-    }
-    
-    func addedTransaction(_ transaction: OnChainConfirmedTransaction) {
+    func addedTransaction(_ transaction: Transaction) {
         addTransactions([transaction])
-        let transactionEvent = TransactionEvent(transaction: transaction)
+        guard let transactionEvent = TransactionEvent(transaction: transaction) else { return }
         events.insert(.transactionEvent(transactionEvent), at: 0)
         sendChangeNotification()
     }
@@ -144,8 +133,8 @@ public final class HistoryService {
 
 // MARK: - Persistance
 extension HistoryService {
-    private func addTransactions(_ transactions: [OnChainConfirmedTransaction]) {
-        let transactions = transactions.map { TransactionEvent(transaction: $0) }
+    private func addTransactions(_ transactions: [Transaction]) {
+        let transactions = transactions.compactMap { TransactionEvent(transaction: $0) }
         
         // update unconfirmed transaction block height
         do {

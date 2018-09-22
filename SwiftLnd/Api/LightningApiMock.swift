@@ -14,8 +14,8 @@ final class LightningApiMock: LightningApiProtocol {
     private let newAddress: BitcoinAddress?
     private let walletBalance: Satoshi?
     private let channelBalance: Satoshi?
-    private let transactions: [OnChainConfirmedTransaction]?
-    private let subscribeTransactions: OnChainConfirmedTransaction?
+    private let transactions: [Transaction]?
+    private let subscribeTransactions: Transaction?
     private let payments: [Payment]?
     private let channels: [Channel]?
     private let pendingChannels: [Channel]?
@@ -38,8 +38,8 @@ final class LightningApiMock: LightningApiProtocol {
         newAddress: BitcoinAddress? = nil,
         walletBalance: Satoshi? = nil,
         channelBalance: Satoshi? = nil,
-        transactions: [OnChainConfirmedTransaction]? = nil,
-        subscribeTransactions: OnChainConfirmedTransaction? = nil,
+        transactions: [Transaction]? = nil,
+        subscribeTransactions: Transaction? = nil,
         payments: [Payment]? = nil,
         channels: [Channel]? = nil,
         pendingChannels: [Channel]? = nil,
@@ -96,11 +96,11 @@ final class LightningApiMock: LightningApiProtocol {
         completion(Result(value: channelBalance, error: LndApiError.unknownError))
     }
     
-    func transactions(completion: @escaping (Result<[OnChainConfirmedTransaction]>) -> Void) {
+    func transactions(completion: @escaping (Result<[Transaction]>) -> Void) {
         completion(Result(value: transactions, error: LndApiError.unknownError))
     }
     
-    func subscribeTransactions(completion: @escaping (Result<OnChainConfirmedTransaction>) -> Void) {
+    func subscribeTransactions(completion: @escaping (Result<Transaction>) -> Void) {
         completion(Result(value: subscribeTransactions, error: LndApiError.unknownError))
     }
     
@@ -199,7 +199,7 @@ enum ApiMockTemplate {
         case .transactions:
             return LightningApiMock(
                 transactions: [
-                    OnChainConfirmedTransaction.template
+                    Transaction.template
                 ],
                 payments: [
                     Payment.template
@@ -209,7 +209,7 @@ enum ApiMockTemplate {
             return LightningApiMock(
                 walletBalance: 4_200_000,
                 transactions: [
-                    OnChainConfirmedTransaction.template
+                    Transaction.template
                 ],
                 payments: [
                     Payment.template

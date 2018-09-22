@@ -64,9 +64,9 @@ public final class LightningApiRPC: LightningApiProtocol {
         _ = try? rpc.channelBalance(Lnrpc_ChannelBalanceRequest(), completion: result(completion, map: { Satoshi($0.balance) }))
     }
     
-    public func transactions(completion: @escaping (Result<[OnChainConfirmedTransaction]>) -> Void) {
+    public func transactions(completion: @escaping (Result<[Transaction]>) -> Void) {
         _ = try? rpc.getTransactions(Lnrpc_GetTransactionsRequest(), completion: result(completion, map: {
-            $0.transactions.compactMap { OnChainConfirmedTransaction(transaction: $0) }
+            $0.transactions.compactMap { Transaction(transaction: $0) }
         }))
     }
     
@@ -173,7 +173,7 @@ public final class LightningApiRPC: LightningApiProtocol {
         }
     }
     
-    public func subscribeTransactions(completion: @escaping (Result<OnChainConfirmedTransaction>) -> Void) {
+    public func subscribeTransactions(completion: @escaping (Result<Transaction>) -> Void) {
         do {
             let call = try rpc.subscribeTransactions(Lnrpc_GetTransactionsRequest(), completion: { print(#function, $0) })
             try receiveTransactionsUpdate(call: call, completion: completion)
@@ -219,10 +219,10 @@ public final class LightningApiRPC: LightningApiProtocol {
         }
     }
     
-    private func receiveTransactionsUpdate(call: Lnrpc_LightningSubscribeTransactionsCall, completion: @escaping (Result<OnChainConfirmedTransaction>) -> Void) throws {
+    private func receiveTransactionsUpdate(call: Lnrpc_LightningSubscribeTransactionsCall, completion: @escaping (Result<Transaction>) -> Void) throws {
         try call.receive { [weak self] in
             if let result = $0.result.flatMap({ $0 }) {
-                completion(.success(OnChainConfirmedTransaction(transaction: result)))
+                completion(.success(Transaction(transaction: result)))
             } else if let error = $0.error {
                 print(#function, error)
             }

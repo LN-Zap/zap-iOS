@@ -43,11 +43,13 @@ public final class LightningService: NSObject {
         
         api.subscribeInvoices { [weak self] in
             guard let invoice = $0.value else { return }
+            print("🛍 new invoice:\n\t\(invoice)")
             self?.historyService.addedInvoice(invoice)
         }
 
         api.subscribeTransactions { [weak self] in
             guard let transaction = $0.value else { return }
+            print("💵 new transaction:\n\t\(transaction)")
             self?.historyService.addedTransaction(transaction)
             self?.balanceService.update()
         }

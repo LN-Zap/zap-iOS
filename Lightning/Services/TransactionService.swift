@@ -63,10 +63,7 @@ public final class TransactionService {
     
     private func sendCoins(bitcoinURI: BitcoinURI, amount: Satoshi, completion: @escaping (Result<Success>) -> Void) {
         let destinationAddress = bitcoinURI.bitcoinAddress
-        api.sendCoins(address: destinationAddress, amount: amount) { [weak self] in
-            if let txid = $0.value {                
-                self?.historyService.addUnconfirmedTransaction(txId: txid, amount: amount, memo: bitcoinURI.memo, destinationAddress: destinationAddress)
-            }
+        api.sendCoins(address: destinationAddress, amount: amount) {
             completion($0.map { _ in Success() })
         }
     }

@@ -43,14 +43,13 @@ extension BitcoinAddress {
     }
 }
 
-extension OnChainConfirmedTransaction {
-    static var template: OnChainConfirmedTransaction {
-        return OnChainConfirmedTransaction(
+extension Transaction {
+    static var template: Transaction {
+        return Transaction(
             id: "100",
             amount: 21005000,
             date: Date(),
             fees: 12,
-            confirmations: 14,
             destinationAddresses: [BitcoinAddress.template],
             blockHeight: 400000
         )

@@ -22,8 +22,8 @@ public protocol LightningApiProtocol {
 
     // On-chain
     func sendCoins(address: BitcoinAddress, amount: Satoshi, completion: @escaping (Result<String>) -> Void)
-    func transactions(completion: @escaping (Result<[OnChainConfirmedTransaction]>) -> Void)
-    func subscribeTransactions(completion: @escaping (Result<OnChainConfirmedTransaction>) -> Void)
+    func transactions(completion: @escaping (Result<[Transaction]>) -> Void)
+    func subscribeTransactions(completion: @escaping (Result<Transaction>) -> Void)
 
     // Payments
     func decodePaymentRequest(_ paymentRequest: String, completion: @escaping (Result<PaymentRequest>) -> Void)

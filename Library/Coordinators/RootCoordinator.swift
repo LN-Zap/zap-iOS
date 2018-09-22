@@ -116,7 +116,7 @@ public final class RootCoordinator: NSObject, SetupCoordinatorDelegate, PinCoord
     }
     
     private func presentSync() {
-        guard let lightningService = rootViewModel.lightningService else { fatalError("viewModel not set") }
+        guard let lightningService = rootViewModel.lightningService else { return }
         let viewController = UIStoryboard.instantiateSyncViewController(with: lightningService, delegate: self)
         presentViewController(viewController)
     }
