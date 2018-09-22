@@ -17,7 +17,7 @@ extension UIStoryboard {
         navigationController.navigationBar.backgroundColor = UIColor.Zap.seaBlueGradient
         navigationController.navigationBar.shadowImage = UIImage()
         navigationController.navigationBar.setBackgroundImage(UIImage(), for: .default)
-
+        
         return navigationController
     }
 }
@@ -30,11 +30,13 @@ final class FilterViewController: UIViewController {
     
     let cells: [[FilterSetting]] = [
         [
-            .channelEvents,
             .transactionEvents,
-            .createInvoiceEvents,
-            .failedPaymentEvents,
             .lightningPaymentEvents
+        ],
+        [
+            .failedPaymentEvents,
+            .createInvoiceEvents,
+            .channelEvents
         ]
     ]
     
