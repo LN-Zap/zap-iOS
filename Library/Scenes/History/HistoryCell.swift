@@ -13,16 +13,13 @@ final class HistoryCell: BondTableViewCell {
     enum NotificationType {
         case error
         case new
-        case pending
         
         var style: (UIColor, String) {
             switch self {
             case .error:
-                return (UIColor.Zap.superRed, "error")
+                return (UIColor.Zap.superRed, "scene.history.cell.label.error".localized)
             case .new:
-                return (UIColor.Zap.purple, "new")
-            case .pending:
-                return (UIColor.Zap.purple, "pending")
+                return (UIColor.Zap.purple, "scene.history.cell.label.new".localized)
             }
         }
     }
@@ -137,9 +134,9 @@ final class HistoryCell: BondTableViewCell {
     
     func setTransactionEvent(_ transactionEvent: TransactionEvent) {
         if transactionEvent.amount < 0 {
-            titleLabel.text = "Payment sent"
+            titleLabel.text = "scene.history.cell.transaction_sent".localized
         } else {
-            titleLabel.text = "Payment received"
+            titleLabel.text = "scene.history.cell.transaction_received".localized
         }
         setDate(transactionEvent.date)
         descriptionLabel.text = transactionEvent.memo ?? transactionEvent.destinationAddresses.first?.string ?? "transaction.no_destination_address".localized
@@ -150,17 +147,17 @@ final class HistoryCell: BondTableViewCell {
     func setChannelEvent(_ wrapped: DateWrappedChannelEvent) {
         switch wrapped.channelEvent.type {
         case .open:
-            titleLabel.text = "Open Channel"
+            titleLabel.text = "scene.history.cell.channel_opened".localized
         case .cooperativeClose, .unknown:
-            titleLabel.text = "Close Channel"
+            titleLabel.text = "scene.history.cell.channel_closed".localized
         case .localForceClose:
-            titleLabel.text = "Force close Channel"
+            titleLabel.text = "scene.history.cell.force_close_channel".localized
         case .remoteForceClose:
-            titleLabel.text = "Remote force close Channel"
+            titleLabel.text = "scene.history.cell.remote_force_close_channel".localized
         case .breachClose:
-            titleLabel.text = "Breach close Channel"
+            titleLabel.text = "scene.history.cell.breach_close_channel".localized
         case .fundingCanceled:
-            titleLabel.text = "Close Channel (funding canceled)"
+            titleLabel.text = "scene.history.cell.close_channel_funding_canceled".localized
         }
         
         descriptionLabel.text = wrapped.channelEvent.node.alias ?? wrapped.channelEvent.node.pubKey
@@ -176,7 +173,7 @@ final class HistoryCell: BondTableViewCell {
     }
     
     func setCreateInvoiceEvent(_ createInvoiceEvent: CreateInvoiceEvent) {
-        titleLabel.text = "Payment Request created"
+        titleLabel.text = "scene.history.cell.invoice_created".localized
         setDate(createInvoiceEvent.date)
         descriptionLabel?.text = createInvoiceEvent.memo ?? createInvoiceEvent.paymentRequest
         descriptionLabel.textColor = UIColor.Zap.gray
@@ -184,21 +181,21 @@ final class HistoryCell: BondTableViewCell {
     }
     
     func setFailedPaymentEvent(_ failedPaymentEvent: FailedPaymentEvent) {
-        titleLabel.text = "Payment did not send"
+        titleLabel.text = "payment_failed".localized
         setDate(failedPaymentEvent.date)
         descriptionLabel?.text = failedPaymentEvent.memo ?? failedPaymentEvent.paymentRequest
         descriptionLabel.textColor = UIColor.Zap.gray
         setAmount(-failedPaymentEvent.amount, completed: false)
         addNotificationLabel(type: .error)
         buttonContainer.isHidden = false
-        actionButton.setTitle("Try Again", for: .normal)
+        actionButton.setTitle("scene.history.cell.action.try_again".localized, for: .normal)
     }
     
     func setLightningPaymentEvent(_ lightningPaymentEvent: LightningPaymentEvent) {
         if lightningPaymentEvent.amount < 0 {
-            titleLabel.text = "Lightning Payment sent"
+            titleLabel.text = "scene.history.cell.payment_sent".localized
         } else {
-            titleLabel.text = "Lightning Payment received"
+            titleLabel.text = "scene.history.cell.payment_received".localized
         }
         
         setDate(lightningPaymentEvent.date)
