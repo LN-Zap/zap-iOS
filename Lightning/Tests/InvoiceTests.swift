@@ -57,7 +57,7 @@ class InvoiceTests: XCTestCase {
             switch $0 {
             case .success(let invoice):
                 XCTAssertNotNil(invoice.bitcoinURI)
-                XCTAssertEqual(invoice.bitcoinURI?.address, paymentRequest.fallbackAddress)
+                XCTAssertEqual(invoice.bitcoinURI?.address, paymentRequest.fallbackAddress?.string)
                 XCTAssertEqual(invoice.lightningPaymentRequest, paymentRequest)
             case .failure:
                 XCTFail("Should Succeed")
