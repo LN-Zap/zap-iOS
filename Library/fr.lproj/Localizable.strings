@@ -79,8 +79,8 @@
 "scene.channels.close_success.toast" = "Le canal se ferme.";
 
 "scene.open_channel.title" = "Ouvrir un canal";
-"scene.open_channel.channel_uri_label" = "Channel:";
-"scene.open_channel.add_button" = "Open Channel";
+"scene.open_channel.channel_uri_label" = "Canal :";
+"scene.open_channel.add_button" = "Ouvrir un canal";
 
 "scene.pin.biometric.fallback.title" = "Utiliser un code d’accès";
 "scene.pin.biometric.reason" = "Pour accéder aux données sécurisées";
@@ -177,8 +177,8 @@
 "scene.channel_detail.remote_balance_label" = "Solde distant";
 "scene.channel_detail.closing_time.label" = "Fermeture dans";
 "scene.channel_detail.funding_transaction_label" = "Funding Transaction";
-"scene.channel_detail.close_button" = "Close Channel";
-"scene.channel_detail.force_close_button" = "Force Close Channel";
+"scene.channel_detail.close_button" = "Fermer le canal";
+"scene.channel_detail.force_close_button" = "Fermer de force le canal";
 
 "scene.filter.title" = "Filtre de transaction";
 "scene.filter.section_header.transaction_types" = "Types de transaction";
@@ -191,8 +191,8 @@
 
 "scene.wallet.title" = "Portefeuille";
 
-"scene.time_lock.headline" = "Wrong Passcode";
-"scene.time_lock.description" = "Your wallet is locked for:";
+"scene.time_lock.headline" = "Mot de passe erroné";
+"scene.time_lock.description" = "Votre portefeuille est verrouillé pour :";
 
 "scene.modal_pin.headline" = "Enter Passcode";
 "scene.modal_pin.description" = "Please enter your passcode to continue";
