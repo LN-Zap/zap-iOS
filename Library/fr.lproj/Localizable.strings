@@ -30,10 +30,10 @@
 
 "transaction.open_channel.memo" = "Open Channel: %@";
 "transaction.close_channel.memo" = "%@ Canal : %@";
-"transaction.no_destination_address" = "No destination address";
+"transaction.no_destination_address" = "Aucune adresse de destination";
 
 "close_type.cooperative_close" = "Fermer";
-"close_type.local_force_close" = "Force Close";
+"close_type.local_force_close" = "Fermeture forcée";
 "close_type.remote_force_close" = "Remote Force Close";
 "close_type.breach_close" = "Breach Close";
 "close_type.funding_canceled" = "Funding Canceled";
