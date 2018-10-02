@@ -172,12 +172,6 @@ fileprivate final class Lnrpc_LightningNewAddressCallBase: ClientCallUnaryBase<L
   override class var method: String { return "/lnrpc.Lightning/NewAddress" }
 }
 
-internal protocol Lnrpc_LightningNewWitnessAddressCall: ClientCallUnary {}
-
-fileprivate final class Lnrpc_LightningNewWitnessAddressCallBase: ClientCallUnaryBase<Lnrpc_NewWitnessAddressRequest, Lnrpc_NewAddressResponse>, Lnrpc_LightningNewWitnessAddressCall {
-  override class var method: String { return "/lnrpc.Lightning/NewWitnessAddress" }
-}
-
 internal protocol Lnrpc_LightningSignMessageCall: ClientCallUnary {}
 
 fileprivate final class Lnrpc_LightningSignMessageCallBase: ClientCallUnaryBase<Lnrpc_SignMessageRequest, Lnrpc_SignMessageResponse>, Lnrpc_LightningSignMessageCall {
@@ -268,6 +262,12 @@ internal extension Lnrpc_LightningCloseChannelCall {
 
 fileprivate final class Lnrpc_LightningCloseChannelCallBase: ClientCallServerStreamingBase<Lnrpc_CloseChannelRequest, Lnrpc_CloseStatusUpdate>, Lnrpc_LightningCloseChannelCall {
   override class var method: String { return "/lnrpc.Lightning/CloseChannel" }
+}
+
+internal protocol Lnrpc_LightningAbandonChannelCall: ClientCallUnary {}
+
+fileprivate final class Lnrpc_LightningAbandonChannelCallBase: ClientCallUnaryBase<Lnrpc_AbandonChannelRequest, Lnrpc_AbandonChannelResponse>, Lnrpc_LightningAbandonChannelCall {
+  override class var method: String { return "/lnrpc.Lightning/AbandonChannel" }
 }
 
 internal protocol Lnrpc_LightningSendPaymentCall: ClientCallBidirectionalStreaming {
@@ -511,11 +511,6 @@ internal protocol Lnrpc_LightningService: ServiceClient {
   func newAddress(_ request: Lnrpc_NewAddressRequest, completion: @escaping (Lnrpc_NewAddressResponse?, CallResult) -> Void) throws -> Lnrpc_LightningNewAddressCall
 
   /// Synchronous. Unary.
-  func newWitnessAddress(_ request: Lnrpc_NewWitnessAddressRequest) throws -> Lnrpc_NewAddressResponse
-  /// Asynchronous. Unary.
-  func newWitnessAddress(_ request: Lnrpc_NewWitnessAddressRequest, completion: @escaping (Lnrpc_NewAddressResponse?, CallResult) -> Void) throws -> Lnrpc_LightningNewWitnessAddressCall
-
-  /// Synchronous. Unary.
   func signMessage(_ request: Lnrpc_SignMessageRequest) throws -> Lnrpc_SignMessageResponse
   /// Asynchronous. Unary.
   func signMessage(_ request: Lnrpc_SignMessageRequest, completion: @escaping (Lnrpc_SignMessageResponse?, CallResult) -> Void) throws -> Lnrpc_LightningSignMessageCall
@@ -574,6 +569,11 @@ internal protocol Lnrpc_LightningService: ServiceClient {
   /// Send the initial message.
   /// Use methods on the returned object to get streamed responses.
   func closeChannel(_ request: Lnrpc_CloseChannelRequest, completion: ((CallResult) -> Void)?) throws -> Lnrpc_LightningCloseChannelCall
+
+  /// Synchronous. Unary.
+  func abandonChannel(_ request: Lnrpc_AbandonChannelRequest) throws -> Lnrpc_AbandonChannelResponse
+  /// Asynchronous. Unary.
+  func abandonChannel(_ request: Lnrpc_AbandonChannelRequest, completion: @escaping (Lnrpc_AbandonChannelResponse?, CallResult) -> Void) throws -> Lnrpc_LightningAbandonChannelCall
 
   /// Asynchronous. Bidirectional-streaming.
   /// Use methods on the returned object to stream messages,
@@ -763,17 +763,6 @@ internal final class Lnrpc_LightningServiceClient: ServiceClientBase, Lnrpc_Ligh
   }
 
   /// Synchronous. Unary.
-  internal func newWitnessAddress(_ request: Lnrpc_NewWitnessAddressRequest) throws -> Lnrpc_NewAddressResponse {
-    return try Lnrpc_LightningNewWitnessAddressCallBase(channel)
-      .run(request: request, metadata: metadata)
-  }
-  /// Asynchronous. Unary.
-  internal func newWitnessAddress(_ request: Lnrpc_NewWitnessAddressRequest, completion: @escaping (Lnrpc_NewAddressResponse?, CallResult) -> Void) throws -> Lnrpc_LightningNewWitnessAddressCall {
-    return try Lnrpc_LightningNewWitnessAddressCallBase(channel)
-      .start(request: request, metadata: metadata, completion: completion)
-  }
-
-  /// Synchronous. Unary.
   internal func signMessage(_ request: Lnrpc_SignMessageRequest) throws -> Lnrpc_SignMessageResponse {
     return try Lnrpc_LightningSignMessageCallBase(channel)
       .run(request: request, metadata: metadata)
@@ -896,6 +885,17 @@ internal final class Lnrpc_LightningServiceClient: ServiceClientBase, Lnrpc_Ligh
   /// Use methods on the returned object to get streamed responses.
   internal func closeChannel(_ request: Lnrpc_CloseChannelRequest, completion: ((CallResult) -> Void)?) throws -> Lnrpc_LightningCloseChannelCall {
     return try Lnrpc_LightningCloseChannelCallBase(channel)
+      .start(request: request, metadata: metadata, completion: completion)
+  }
+
+  /// Synchronous. Unary.
+  internal func abandonChannel(_ request: Lnrpc_AbandonChannelRequest) throws -> Lnrpc_AbandonChannelResponse {
+    return try Lnrpc_LightningAbandonChannelCallBase(channel)
+      .run(request: request, metadata: metadata)
+  }
+  /// Asynchronous. Unary.
+  internal func abandonChannel(_ request: Lnrpc_AbandonChannelRequest, completion: @escaping (Lnrpc_AbandonChannelResponse?, CallResult) -> Void) throws -> Lnrpc_LightningAbandonChannelCall {
+    return try Lnrpc_LightningAbandonChannelCallBase(channel)
       .start(request: request, metadata: metadata, completion: completion)
   }
 
@@ -1201,7 +1201,6 @@ internal protocol Lnrpc_LightningProvider: ServiceProvider {
   func subscribeTransactions(request: Lnrpc_GetTransactionsRequest, session: Lnrpc_LightningSubscribeTransactionsSession) throws -> ServerStatus?
   func sendMany(request: Lnrpc_SendManyRequest, session: Lnrpc_LightningSendManySession) throws -> Lnrpc_SendManyResponse
   func newAddress(request: Lnrpc_NewAddressRequest, session: Lnrpc_LightningNewAddressSession) throws -> Lnrpc_NewAddressResponse
-  func newWitnessAddress(request: Lnrpc_NewWitnessAddressRequest, session: Lnrpc_LightningNewWitnessAddressSession) throws -> Lnrpc_NewAddressResponse
   func signMessage(request: Lnrpc_SignMessageRequest, session: Lnrpc_LightningSignMessageSession) throws -> Lnrpc_SignMessageResponse
   func verifyMessage(request: Lnrpc_VerifyMessageRequest, session: Lnrpc_LightningVerifyMessageSession) throws -> Lnrpc_VerifyMessageResponse
   func connectPeer(request: Lnrpc_ConnectPeerRequest, session: Lnrpc_LightningConnectPeerSession) throws -> Lnrpc_ConnectPeerResponse
@@ -1214,6 +1213,7 @@ internal protocol Lnrpc_LightningProvider: ServiceProvider {
   func openChannelSync(request: Lnrpc_OpenChannelRequest, session: Lnrpc_LightningOpenChannelSyncSession) throws -> Lnrpc_ChannelPoint
   func openChannel(request: Lnrpc_OpenChannelRequest, session: Lnrpc_LightningOpenChannelSession) throws -> ServerStatus?
   func closeChannel(request: Lnrpc_CloseChannelRequest, session: Lnrpc_LightningCloseChannelSession) throws -> ServerStatus?
+  func abandonChannel(request: Lnrpc_AbandonChannelRequest, session: Lnrpc_LightningAbandonChannelSession) throws -> Lnrpc_AbandonChannelResponse
   func sendPayment(session: Lnrpc_LightningSendPaymentSession) throws -> ServerStatus?
   func sendPaymentSync(request: Lnrpc_SendRequest, session: Lnrpc_LightningSendPaymentSyncSession) throws -> Lnrpc_SendResponse
   func sendToRoute(session: Lnrpc_LightningSendToRouteSession) throws -> ServerStatus?
@@ -1280,11 +1280,6 @@ extension Lnrpc_LightningProvider {
         handler: handler,
         providerBlock: { try self.newAddress(request: $0, session: $1 as! Lnrpc_LightningNewAddressSessionBase) })
           .run()
-    case "/lnrpc.Lightning/NewWitnessAddress":
-      return try Lnrpc_LightningNewWitnessAddressSessionBase(
-        handler: handler,
-        providerBlock: { try self.newWitnessAddress(request: $0, session: $1 as! Lnrpc_LightningNewWitnessAddressSessionBase) })
-          .run()
     case "/lnrpc.Lightning/SignMessage":
       return try Lnrpc_LightningSignMessageSessionBase(
         handler: handler,
@@ -1344,6 +1339,11 @@ extension Lnrpc_LightningProvider {
       return try Lnrpc_LightningCloseChannelSessionBase(
         handler: handler,
         providerBlock: { try self.closeChannel(request: $0, session: $1 as! Lnrpc_LightningCloseChannelSessionBase) })
+          .run()
+    case "/lnrpc.Lightning/AbandonChannel":
+      return try Lnrpc_LightningAbandonChannelSessionBase(
+        handler: handler,
+        providerBlock: { try self.abandonChannel(request: $0, session: $1 as! Lnrpc_LightningAbandonChannelSessionBase) })
           .run()
     case "/lnrpc.Lightning/SendPayment":
       return try Lnrpc_LightningSendPaymentSessionBase(
@@ -1504,10 +1504,6 @@ internal protocol Lnrpc_LightningNewAddressSession: ServerSessionUnary {}
 
 fileprivate final class Lnrpc_LightningNewAddressSessionBase: ServerSessionUnaryBase<Lnrpc_NewAddressRequest, Lnrpc_NewAddressResponse>, Lnrpc_LightningNewAddressSession {}
 
-internal protocol Lnrpc_LightningNewWitnessAddressSession: ServerSessionUnary {}
-
-fileprivate final class Lnrpc_LightningNewWitnessAddressSessionBase: ServerSessionUnaryBase<Lnrpc_NewWitnessAddressRequest, Lnrpc_NewAddressResponse>, Lnrpc_LightningNewWitnessAddressSession {}
-
 internal protocol Lnrpc_LightningSignMessageSession: ServerSessionUnary {}
 
 fileprivate final class Lnrpc_LightningSignMessageSessionBase: ServerSessionUnaryBase<Lnrpc_SignMessageRequest, Lnrpc_SignMessageResponse>, Lnrpc_LightningSignMessageSession {}
@@ -1585,6 +1581,10 @@ internal extension Lnrpc_LightningCloseChannelSession {
 }
 
 fileprivate final class Lnrpc_LightningCloseChannelSessionBase: ServerSessionServerStreamingBase<Lnrpc_CloseChannelRequest, Lnrpc_CloseStatusUpdate>, Lnrpc_LightningCloseChannelSession {}
+
+internal protocol Lnrpc_LightningAbandonChannelSession: ServerSessionUnary {}
+
+fileprivate final class Lnrpc_LightningAbandonChannelSessionBase: ServerSessionUnaryBase<Lnrpc_AbandonChannelRequest, Lnrpc_AbandonChannelResponse>, Lnrpc_LightningAbandonChannelSession {}
 
 internal protocol Lnrpc_LightningSendPaymentSession: ServerSessionBidirectionalStreaming {
   /// Do not call this directly, call `receive()` in the protocol extension below instead.

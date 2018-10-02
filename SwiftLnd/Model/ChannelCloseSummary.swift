@@ -14,6 +14,7 @@ public enum CloseType: String, Codable {
     case breachClose
     case fundingCanceled
     case unknown
+    case abandoned
     
     init(closeType: Lnrpc_ChannelCloseSummary.ClosureType) {
         switch closeType {
@@ -27,6 +28,8 @@ public enum CloseType: String, Codable {
             self = .breachClose
         case .fundingCanceled:
             self = .fundingCanceled
+        case .abandoned:
+            self = .abandoned
         case .UNRECOGNIZED:
             self = .unknown
         }

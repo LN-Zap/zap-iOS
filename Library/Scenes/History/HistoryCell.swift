@@ -158,6 +158,8 @@ final class HistoryCell: BondTableViewCell {
             titleLabel.text = "scene.history.cell.breach_close_channel".localized
         case .fundingCanceled:
             titleLabel.text = "scene.history.cell.close_channel_funding_canceled".localized
+        case .abandoned:
+            titleLabel.text = "scene.history.cell.channel_abandoned".localized
         }
         
         descriptionLabel.text = wrapped.channelEvent.node.alias ?? wrapped.channelEvent.node.pubKey

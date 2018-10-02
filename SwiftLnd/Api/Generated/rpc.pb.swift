@@ -179,7 +179,7 @@ struct Lnrpc_Transaction {
   //// The transaction hash
   var txHash: String = String()
 
-  //// The transaction ammount, denominated in satoshis
+  //// The transaction amount, denominated in satoshis
   var amount: Int64 = 0
 
   //// The number of confirmations
@@ -532,7 +532,6 @@ struct Lnrpc_SendCoinsResponse {
 ///
 ///- `p2wkh`: Pay to witness key hash (`WITNESS_PUBKEY_HASH` = 0)
 ///- `np2wkh`: Pay to nested witness key hash (`NESTED_PUBKEY_HASH` = 1)
-///- `p2pkh`:  Pay to public key hash (`PUBKEY_HASH` = 2)
 struct Lnrpc_NewAddressRequest {
   // SwiftProtobuf.Message conformance is added in an extension below. See the
   // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
@@ -570,16 +569,6 @@ struct Lnrpc_NewAddressRequest {
     }
 
   }
-
-  init() {}
-}
-
-struct Lnrpc_NewWitnessAddressRequest {
-  // SwiftProtobuf.Message conformance is added in an extension below. See the
-  // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
-  // methods supported on all messages.
-
-  var unknownFields = SwiftProtobuf.UnknownStorage()
 
   init() {}
 }
@@ -944,6 +933,7 @@ struct Lnrpc_ChannelCloseSummary {
     case remoteForceClose // = 2
     case breachClose // = 3
     case fundingCanceled // = 4
+    case abandoned // = 5
     case UNRECOGNIZED(Int)
 
     init() {
@@ -957,6 +947,7 @@ struct Lnrpc_ChannelCloseSummary {
       case 2: self = .remoteForceClose
       case 3: self = .breachClose
       case 4: self = .fundingCanceled
+      case 5: self = .abandoned
       default: self = .UNRECOGNIZED(rawValue)
       }
     }
@@ -968,6 +959,7 @@ struct Lnrpc_ChannelCloseSummary {
       case .remoteForceClose: return 2
       case .breachClose: return 3
       case .fundingCanceled: return 4
+      case .abandoned: return 5
       case .UNRECOGNIZED(let i): return i
       }
     }
@@ -991,6 +983,8 @@ struct Lnrpc_ClosedChannelsRequest {
   var breach: Bool = false
 
   var fundingCanceled: Bool = false
+
+  var abandoned: Bool = false
 
   var unknownFields = SwiftProtobuf.UnknownStorage()
 
@@ -2586,7 +2580,7 @@ struct Lnrpc_Payment {
   //// The payment hash
   var paymentHash: String = String()
 
-  //// The value of the payment in satoshis
+  //// Deprecated, use value_sat or value_msat.
   var value: Int64 = 0
 
   //// The date of this payment
@@ -2600,6 +2594,12 @@ struct Lnrpc_Payment {
 
   //// The payment preimage
   var paymentPreimage: String = String()
+
+  //// The value of the payment in satoshis
+  var valueSat: Int64 = 0
+
+  //// The value of the payment in milli-satoshis
+  var valueMsat: Int64 = 0
 
   var unknownFields = SwiftProtobuf.UnknownStorage()
 
@@ -2640,6 +2640,37 @@ struct Lnrpc_DeleteAllPaymentsRequest {
 }
 
 struct Lnrpc_DeleteAllPaymentsResponse {
+  // SwiftProtobuf.Message conformance is added in an extension below. See the
+  // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
+  // methods supported on all messages.
+
+  var unknownFields = SwiftProtobuf.UnknownStorage()
+
+  init() {}
+}
+
+struct Lnrpc_AbandonChannelRequest {
+  // SwiftProtobuf.Message conformance is added in an extension below. See the
+  // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
+  // methods supported on all messages.
+
+  var channelPoint: Lnrpc_ChannelPoint {
+    get {return _storage._channelPoint ?? Lnrpc_ChannelPoint()}
+    set {_uniqueStorage()._channelPoint = newValue}
+  }
+  /// Returns true if `channelPoint` has been explicitly set.
+  var hasChannelPoint: Bool {return _storage._channelPoint != nil}
+  /// Clears the value of `channelPoint`. Subsequent reads from it will return its default value.
+  mutating func clearChannelPoint() {_storage._channelPoint = nil}
+
+  var unknownFields = SwiftProtobuf.UnknownStorage()
+
+  init() {}
+
+  fileprivate var _storage = _StorageClass.defaultInstance
+}
+
+struct Lnrpc_AbandonChannelResponse {
   // SwiftProtobuf.Message conformance is added in an extension below. See the
   // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
   // methods supported on all messages.
@@ -3827,25 +3858,6 @@ extension Lnrpc_NewAddressRequest.AddressType: SwiftProtobuf._ProtoNameProviding
   ]
 }
 
-extension Lnrpc_NewWitnessAddressRequest: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
-  static let protoMessageName: String = _protobuf_package + ".NewWitnessAddressRequest"
-  static let _protobuf_nameMap = SwiftProtobuf._NameMap()
-
-  mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
-    while let _ = try decoder.nextFieldNumber() {
-    }
-  }
-
-  func traverse<V: SwiftProtobuf.Visitor>(visitor: inout V) throws {
-    try unknownFields.traverse(visitor: &visitor)
-  }
-
-  func _protobuf_generated_isEqualTo(other: Lnrpc_NewWitnessAddressRequest) -> Bool {
-    if unknownFields != other.unknownFields {return false}
-    return true
-  }
-}
-
 extension Lnrpc_NewAddressResponse: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
   static let protoMessageName: String = _protobuf_package + ".NewAddressResponse"
   static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
@@ -4541,6 +4553,7 @@ extension Lnrpc_ChannelCloseSummary.ClosureType: SwiftProtobuf._ProtoNameProvidi
     2: .same(proto: "REMOTE_FORCE_CLOSE"),
     3: .same(proto: "BREACH_CLOSE"),
     4: .same(proto: "FUNDING_CANCELED"),
+    5: .same(proto: "ABANDONED"),
   ]
 }
 
@@ -4552,6 +4565,7 @@ extension Lnrpc_ClosedChannelsRequest: SwiftProtobuf.Message, SwiftProtobuf._Mes
     3: .standard(proto: "remote_force"),
     4: .same(proto: "breach"),
     5: .standard(proto: "funding_canceled"),
+    6: .same(proto: "abandoned"),
   ]
 
   mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
@@ -4562,6 +4576,7 @@ extension Lnrpc_ClosedChannelsRequest: SwiftProtobuf.Message, SwiftProtobuf._Mes
       case 3: try decoder.decodeSingularBoolField(value: &self.remoteForce)
       case 4: try decoder.decodeSingularBoolField(value: &self.breach)
       case 5: try decoder.decodeSingularBoolField(value: &self.fundingCanceled)
+      case 6: try decoder.decodeSingularBoolField(value: &self.abandoned)
       default: break
       }
     }
@@ -4583,6 +4598,9 @@ extension Lnrpc_ClosedChannelsRequest: SwiftProtobuf.Message, SwiftProtobuf._Mes
     if self.fundingCanceled != false {
       try visitor.visitSingularBoolField(value: self.fundingCanceled, fieldNumber: 5)
     }
+    if self.abandoned != false {
+      try visitor.visitSingularBoolField(value: self.abandoned, fieldNumber: 6)
+    }
     try unknownFields.traverse(visitor: &visitor)
   }
 
@@ -4592,6 +4610,7 @@ extension Lnrpc_ClosedChannelsRequest: SwiftProtobuf.Message, SwiftProtobuf._Mes
     if self.remoteForce != other.remoteForce {return false}
     if self.breach != other.breach {return false}
     if self.fundingCanceled != other.fundingCanceled {return false}
+    if self.abandoned != other.abandoned {return false}
     if unknownFields != other.unknownFields {return false}
     return true
   }
@@ -7650,6 +7669,8 @@ extension Lnrpc_Payment: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementa
     4: .same(proto: "path"),
     5: .same(proto: "fee"),
     6: .same(proto: "payment_preimage"),
+    7: .same(proto: "value_sat"),
+    8: .same(proto: "value_msat"),
   ]
 
   mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
@@ -7661,6 +7682,8 @@ extension Lnrpc_Payment: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementa
       case 4: try decoder.decodeRepeatedStringField(value: &self.path)
       case 5: try decoder.decodeSingularInt64Field(value: &self.fee)
       case 6: try decoder.decodeSingularStringField(value: &self.paymentPreimage)
+      case 7: try decoder.decodeSingularInt64Field(value: &self.valueSat)
+      case 8: try decoder.decodeSingularInt64Field(value: &self.valueMsat)
       default: break
       }
     }
@@ -7685,6 +7708,12 @@ extension Lnrpc_Payment: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementa
     if !self.paymentPreimage.isEmpty {
       try visitor.visitSingularStringField(value: self.paymentPreimage, fieldNumber: 6)
     }
+    if self.valueSat != 0 {
+      try visitor.visitSingularInt64Field(value: self.valueSat, fieldNumber: 7)
+    }
+    if self.valueMsat != 0 {
+      try visitor.visitSingularInt64Field(value: self.valueMsat, fieldNumber: 8)
+    }
     try unknownFields.traverse(visitor: &visitor)
   }
 
@@ -7695,6 +7724,8 @@ extension Lnrpc_Payment: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementa
     if self.path != other.path {return false}
     if self.fee != other.fee {return false}
     if self.paymentPreimage != other.paymentPreimage {return false}
+    if self.valueSat != other.valueSat {return false}
+    if self.valueMsat != other.valueMsat {return false}
     if unknownFields != other.unknownFields {return false}
     return true
   }
@@ -7781,6 +7812,86 @@ extension Lnrpc_DeleteAllPaymentsResponse: SwiftProtobuf.Message, SwiftProtobuf.
   }
 
   func _protobuf_generated_isEqualTo(other: Lnrpc_DeleteAllPaymentsResponse) -> Bool {
+    if unknownFields != other.unknownFields {return false}
+    return true
+  }
+}
+
+extension Lnrpc_AbandonChannelRequest: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+  static let protoMessageName: String = _protobuf_package + ".AbandonChannelRequest"
+  static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
+    1: .standard(proto: "channel_point"),
+  ]
+
+  fileprivate class _StorageClass {
+    var _channelPoint: Lnrpc_ChannelPoint? = nil
+
+    static let defaultInstance = _StorageClass()
+
+    private init() {}
+
+    init(copying source: _StorageClass) {
+      _channelPoint = source._channelPoint
+    }
+  }
+
+  fileprivate mutating func _uniqueStorage() -> _StorageClass {
+    if !isKnownUniquelyReferenced(&_storage) {
+      _storage = _StorageClass(copying: _storage)
+    }
+    return _storage
+  }
+
+  mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
+    _ = _uniqueStorage()
+    try withExtendedLifetime(_storage) { (_storage: _StorageClass) in
+      while let fieldNumber = try decoder.nextFieldNumber() {
+        switch fieldNumber {
+        case 1: try decoder.decodeSingularMessageField(value: &_storage._channelPoint)
+        default: break
+        }
+      }
+    }
+  }
+
+  func traverse<V: SwiftProtobuf.Visitor>(visitor: inout V) throws {
+    try withExtendedLifetime(_storage) { (_storage: _StorageClass) in
+      if let v = _storage._channelPoint {
+        try visitor.visitSingularMessageField(value: v, fieldNumber: 1)
+      }
+    }
+    try unknownFields.traverse(visitor: &visitor)
+  }
+
+  func _protobuf_generated_isEqualTo(other: Lnrpc_AbandonChannelRequest) -> Bool {
+    if _storage !== other._storage {
+      let storagesAreEqual: Bool = withExtendedLifetime((_storage, other._storage)) { (_args: (_StorageClass, _StorageClass)) in
+        let _storage = _args.0
+        let other_storage = _args.1
+        if _storage._channelPoint != other_storage._channelPoint {return false}
+        return true
+      }
+      if !storagesAreEqual {return false}
+    }
+    if unknownFields != other.unknownFields {return false}
+    return true
+  }
+}
+
+extension Lnrpc_AbandonChannelResponse: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+  static let protoMessageName: String = _protobuf_package + ".AbandonChannelResponse"
+  static let _protobuf_nameMap = SwiftProtobuf._NameMap()
+
+  mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
+    while let _ = try decoder.nextFieldNumber() {
+    }
+  }
+
+  func traverse<V: SwiftProtobuf.Visitor>(visitor: inout V) throws {
+    try unknownFields.traverse(visitor: &visitor)
+  }
+
+  func _protobuf_generated_isEqualTo(other: Lnrpc_AbandonChannelResponse) -> Bool {
     if unknownFields != other.unknownFields {return false}
     return true
   }

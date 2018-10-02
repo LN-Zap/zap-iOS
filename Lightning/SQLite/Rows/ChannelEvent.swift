@@ -19,6 +19,7 @@ public struct ChannelEvent: Equatable {
         case remoteForceClose
         case breachClose
         case fundingCanceled
+        case abandoned
         case unknown
         
         init(closeType: CloseType) {
@@ -35,6 +36,8 @@ public struct ChannelEvent: Equatable {
                 self = .fundingCanceled
             case .unknown:
                 self = .unknown
+            case .abandoned:
+                self = .abandoned
             }
         }
     }
