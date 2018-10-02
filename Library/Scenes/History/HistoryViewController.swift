@@ -42,13 +42,13 @@ final class HistoryViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        title = "scene.history.title".localized
-        
         guard
             let tableView = tableView,
             let historyViewModel = historyViewModel
             else { return }
         
+        title = "scene.history.title".localized
+        definesPresentationContext = true
         view.backgroundColor = UIColor.Zap.background
 
         let searchController = UISearchController(searchResultsController: nil)
