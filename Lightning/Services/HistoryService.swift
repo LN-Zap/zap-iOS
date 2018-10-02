@@ -92,8 +92,10 @@ public final class HistoryService {
     
     func addFailedPaymentEvent(paymentRequest: PaymentRequest, amount: Satoshi) {
         do {
+            let connection = try persistance.connection()
+            guard try !LightningPaymentEvent.contains(database: connection, paymentHash: paymentRequest.paymentHash) else { return }
             let failedEvent = FailedPaymentEvent(paymentRequest: paymentRequest, amount: amount)
-            try failedEvent.insert(database: persistance.connection())
+            try failedEvent.insert(database: connection)
             events.insert(.failedPaymentEvent(failedEvent), at: 0)
             sendChangeNotification()
         } catch {

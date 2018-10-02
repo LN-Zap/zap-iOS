@@ -90,4 +90,9 @@ extension LightningPaymentEvent {
         return try database.prepare(LightningPaymentEvent.table)
             .map(LightningPaymentEvent.init)
     }
+
+    public static func contains(database: Connection, paymentHash: String) throws -> Bool {
+        let query = table.filter(Column.paymentHash == paymentHash)
+        return try database.pluck(query) != nil
+    }
 }
