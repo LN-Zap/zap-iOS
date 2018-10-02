@@ -181,7 +181,7 @@ final class HistoryCell: BondTableViewCell {
     }
     
     func setFailedPaymentEvent(_ failedPaymentEvent: FailedPaymentEvent) {
-        titleLabel.text = "payment_failed".localized
+        titleLabel.text = "scene.history.cell.payment_failed".localized
         setDate(failedPaymentEvent.date)
         descriptionLabel?.text = failedPaymentEvent.memo ?? failedPaymentEvent.paymentRequest
         descriptionLabel.textColor = UIColor.Zap.gray
