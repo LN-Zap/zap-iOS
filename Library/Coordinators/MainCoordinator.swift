@@ -88,12 +88,21 @@ final class MainCoordinator: Routing {
     
     func presentSend(invoice: String?) {
         let strategy = SendQRCodeScannerStrategy(lightningService: lightningService, authenticationViewModel: authenticationViewModel)
-        let viewController = UIStoryboard.instantiateQRCodeScannerViewController(strategy: strategy)
-        rootViewController.present(viewController, animated: true) {
-            if let invoice = invoice,
-                let qrCodeScannerViewController = viewController.topViewController as? QRCodeScannerViewController {
-                _ = qrCodeScannerViewController.tryPresentingViewController(for: invoice)
+        
+        if let invoice = invoice {
+            DispatchQueue(label: "presentSend").async {
+                let group = DispatchGroup()
+                group.enter()
+                strategy.viewControllerForAddress(address: invoice) { [weak self] result in
+                    group.leave()
+                    guard let viewController = result.value else { return }
+                    self?.rootViewController.present(viewController, animated: true)
+                }
+                group.wait()
             }
+        } else {
+            let viewController = UIStoryboard.instantiateQRCodeScannerViewController(strategy: strategy)
+            rootViewController.present(viewController, animated: true)
         }
     }
     

@@ -79,8 +79,6 @@ final class HistoryViewModel: NSObject {
         }
     }
     
-    // MARK: - Private
-
     private func filterEvents(_ events: [HistoryEventType], searchString: String?, filterSettings: FilterSettings) -> [HistoryEventType] {
         return events
             .filter { $0.matchesFilterSettings(filterSettings) }
