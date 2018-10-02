@@ -6,16 +6,17 @@
 //
 
 import Bond
-import UIKit
 import Lightning
+import UIKit
 
 extension UIStoryboard {
-    static func instantiateHistoryViewController(historyViewModel: HistoryViewModel, presentFilter: @escaping () -> Void, presentDetail: @escaping (HistoryEventType) -> Void) -> UINavigationController {
+    static func instantiateHistoryViewController(historyViewModel: HistoryViewModel, presentFilter: @escaping () -> Void, presentDetail: @escaping (HistoryEventType) -> Void, presentSend: @escaping (String?) -> Void) -> UINavigationController {
         let viewController = Storyboard.history.instantiate(viewController: HistoryViewController.self)
         
         viewController.historyViewModel = historyViewModel
         viewController.presentFilter = presentFilter
         viewController.presentDetail = presentDetail
+        viewController.presentSend = presentSend
         
         let navigationController = ZapNavigationController(rootViewController: viewController)
         navigationController.tabBarItem.title = "scene.history.title".localized
@@ -32,7 +33,8 @@ final class HistoryViewController: UIViewController {
     fileprivate var historyViewModel: HistoryViewModel?
     fileprivate var presentFilter: (() -> Void)?
     fileprivate var presentDetail: ((HistoryEventType) -> Void)?
-    
+    fileprivate var presentSend: ((String?) -> Void)?
+
     deinit {    
         tableView?.isEditing = false // fixes Bond bug. Binding is not released in editing mode.
     }
@@ -95,7 +97,7 @@ final class HistoryViewController: UIViewController {
                 case .createInvoiceEvent(let createInvoiceEvent):
                     cell.setCreateInvoiceEvent(createInvoiceEvent)
                 case .failedPaymentEvent(let failedPayemntEvent):
-                    cell.setFailedPaymentEvent(failedPayemntEvent)
+                    cell.setFailedPaymentEvent(failedPayemntEvent, delegate: self)
                 case .lightningPaymentEvent(let lightningPaymentEvent):
                     cell.setLightningPaymentEvent(lightningPaymentEvent)
                 }
@@ -141,5 +143,11 @@ extension HistoryViewController: UISearchResultsUpdating {
         if let text = searchController.searchBar.text {
             historyViewModel?.searchString = text
         }
+    }
+}
+
+extension HistoryViewController: HistoryCellDelegate {
+    func resendFailedPayment(_ failedPaymentEvent: FailedPaymentEvent) {
+        presentSend?(failedPaymentEvent.paymentRequest)
     }
 }

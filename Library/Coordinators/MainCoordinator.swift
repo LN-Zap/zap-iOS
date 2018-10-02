@@ -63,7 +63,7 @@ final class MainCoordinator: Routing {
     }
     
     func historyViewController() -> UIViewController {
-        return UIStoryboard.instantiateHistoryViewController(historyViewModel: historyViewModel, presentFilter: presentFilter, presentDetail: presentDetail)
+        return UIStoryboard.instantiateHistoryViewController(historyViewModel: historyViewModel, presentFilter: presentFilter, presentDetail: presentDetail, presentSend: presentSend)
     }
     
     func channelListViewController() -> UIViewController {

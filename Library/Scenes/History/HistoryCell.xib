@@ -65,6 +65,9 @@
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="O20-vs-2Mx">
                                                 <rect key="frame" x="0.0" y="15" width="46" height="43"/>
                                                 <state key="normal" title="Button"/>
+                                                <connections>
+                                                    <action selector="actionButtonTapped:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="2qa-MA-RiV"/>
+                                                </connections>
                                             </button>
                                         </subviews>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>

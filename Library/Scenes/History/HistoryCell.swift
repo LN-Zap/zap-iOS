@@ -9,6 +9,10 @@ import BTCUtil
 import Lightning
 import UIKit
 
+protocol HistoryCellDelegate: class {
+    func resendFailedPayment(_ failedPaymentEvent: FailedPaymentEvent)
+}
+    
 final class HistoryCell: BondTableViewCell {
     enum NotificationType {
         case error
@@ -33,6 +37,9 @@ final class HistoryCell: BondTableViewCell {
     @IBOutlet private weak var actionButton: UIButton!
     @IBOutlet private weak var notificationLabel: PaddingLabel!
     @IBOutlet private var notificationTopConstraint: NSLayoutConstraint!
+    
+    private weak var delegate: HistoryCellDelegate?
+    private var failedPaymentEvent: FailedPaymentEvent?
     
     func addNotificationLabel(type: NotificationType) {
         let (color, text) = type.style
@@ -182,7 +189,10 @@ final class HistoryCell: BondTableViewCell {
         setAmount(createInvoiceEvent.amount, completed: false)
     }
     
-    func setFailedPaymentEvent(_ failedPaymentEvent: FailedPaymentEvent) {
+    func setFailedPaymentEvent(_ failedPaymentEvent: FailedPaymentEvent, delegate: HistoryCellDelegate) {
+        self.failedPaymentEvent = failedPaymentEvent
+        self.delegate = delegate
+        
         titleLabel.text = "scene.history.cell.payment_failed".localized
         setDate(failedPaymentEvent.date)
         descriptionLabel?.text = failedPaymentEvent.memo ?? failedPaymentEvent.paymentRequest
@@ -203,5 +213,11 @@ final class HistoryCell: BondTableViewCell {
         setDate(lightningPaymentEvent.date)
         setAmount(lightningPaymentEvent.amount, completed: true)
         descriptionLabel?.text = lightningPaymentEvent.memo ?? lightningPaymentEvent.paymentHash
+    }
+    
+    @IBAction private func actionButtonTapped(_ sender: Any) {
+        if let failedPaymentEvent = failedPaymentEvent {
+            delegate?.resendFailedPayment(failedPaymentEvent)
+        }
     }
 }
