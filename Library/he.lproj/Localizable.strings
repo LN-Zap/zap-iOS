@@ -28,23 +28,12 @@
 "unit.bitcoin.bit" = "ביטס";
 "unit.bitcoin.satoshi" = "סטושיס";
 
-"transaction.open_channel.memo" = "ערוץ פתוח: %@";
-"transaction.close_channel.memo" = "ערוץ %@ : %@";
 "transaction.no_destination_address" = "No destination address";
-
-"close_type.cooperative_close" = "סגור";
-"close_type.local_force_close" = "סגירה כפויה";
-"close_type.remote_force_close" = "סגירה כפויה מרחוק";
-"close_type.breach_close" = "Breach Close";
-"close_type.funding_canceled" = "מימון בוטל ";
-"close_type.unknown" = "נסגר מסיבה לא ידועה";
 
 "view.amount_input.placeholder" = "סכום";
 
-"scene.transactions.title" = "תנועות";
-"scene.transactions.empty_state_label" = "0 עיסקאות  🙁";
-"scene.transactions.row_action.archive" = "ארכיון";
-"scene.transactions.row_action.unarchive" = "חילוץ הארכיון";
+"scene.history.title" = "History";
+"scene.history.empty_state_label" = "0 transactions 🙁";
 
 "scene.settings.title" = "הגדרות";
 "scene.settings.section.wallet" = "ארנק";
@@ -153,24 +142,15 @@
 "scene.transaction_detail.title.lightning_invoice" = "פירוט חשבונית";
 "scene.transaction_detail.title.payment_detail" = "פירוט התשלום";
 "scene.transaction_detail.title.transaction_detail" = "פירוט תנועות";
-"scene.transaction_detail.archive_button" = "ארכיון";
-"scene.transaction_detail.unarchive_button" = "חילוץ הארכיון";
+"scene.transaction_detail.title.channel_event_detail" = "Channel Event";
+"scene.transaction_detail.title.failed_payment" = "Failed Payment";
 "scene.transaction_detail.memo_label" = "תזכיר";
-"scene.transaction_detail.qr_code.expired_label" = "פג";
-"scene.transaction_detail.amount.unspecified_label" = "לא מוגדר";
 "scene.transaction_detail.amount_label" = "סכום";
-"scene.transaction_detail.created_label" = "נוצר";
-"scene.transaction_detail.payment_request" = "בקשת תשלום";
-"scene.transaction_detail.expiry_label" = "פקיעה";
-"scene.transaction_detail.settled_label" = "ישב יישבו ישבתי ";
-"scene.transaction_detail.settled_date_label" = "תאריך ביצוע";
-"scene.transaction_detail.settled_state.settled" = "שולם";
-"scene.transaction_detail.settled_state.unsettled" = "לא שולם";
 "scene.transaction_detail.fee_label" = "עמלה";
 "scene.transaction_detail.date_label" = "תאריך";
-"scene.transaction_detail.confirmations_label" = "אישורים";
-"scene.transaction_detail.address_label" = "כתובת";
 "scene.transaction_detail.transaction_id_label" = "מזהה תנועה";
+"scene.transaction_detail.address_label" = "כתובת";
+"scene.transaction_detail.expiry_label" = "פקיעה";
 
 "scene.channel_detail.remote_pub_key_label" = "PubKey מרחוק";
 "scene.channel_detail.local_balance_label" = "יתרה מקומית";
@@ -180,12 +160,13 @@
 "scene.channel_detail.close_button" = "Close Channel";
 "scene.channel_detail.force_close_button" = "Force Close Channel";
 
-"scene.filter.title" = "מסנן פעולות";
+"scene.filter.title" = "Filter";
 "scene.filter.section_header.transaction_types" = "סוג פעולה";
-"scene.filter.displayOnChainTransactions" = "תשלום On Chain";
+"scene.filter.displayOnChainTransactions" = "On-chain Payments";
 "scene.filter.displayLightningPayments" = "תשלומי Lightning";
-"scene.filter.displayLightningInvoices" = "קבלות Lightning";
-"scene.filter.displayArchivedTransactions" = "תנועות בארכיון";
+"scene.filter.displayLightningInvoices" = "Created Invoices";
+"scene.filter.displayChannelEvents" = "Channel Events";
+"scene.filter.displayFailedPaymentEvents" = "Failed Payments";
 
 "scene.qrcode_scanner.top_label" = "לסרוק קוד QR";
 
@@ -196,3 +177,20 @@
 
 "scene.modal_pin.headline" = "Enter Passcode";
 "scene.modal_pin.description" = "Please enter your passcode to continue";
+
+"scene.history.cell.payment_sent" = "Lightning Payment sent";
+"scene.history.cell.payment_received" = "Lightning Payment received";
+"scene.history.cell.payment_failed" = "Payment did not send";
+"scene.history.cell.invoice_created" = "Payment Request created";
+"scene.history.cell.channel_opened" = "Open Channel";
+"scene.history.cell.channel_closed" = "Close Channel";
+"scene.history.cell.force_close_channel" = "Force close Channel";
+"scene.history.cell.remote_force_close_channel" = "Remote force close Channel";
+"scene.history.cell.breach_close_channel" = "Breach close Channel";
+"scene.history.cell.close_channel_funding_canceled" = "Close Channel (funding canceled)";
+"scene.history.cell.channel_abandoned" = "Channel abandoned";
+"scene.history.cell.transaction_sent" = "Payment sent";
+"scene.history.cell.transaction_received" = "Payment received";
+"scene.history.cell.label.new" = "new";
+"scene.history.cell.label.error" = "error";
+"scene.history.cell.action.try_again" = "Try Again";
