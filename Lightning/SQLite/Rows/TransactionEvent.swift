@@ -40,7 +40,7 @@ extension TransactionEvent {
     }
 }
 
-// MARK: - Persistance
+// MARK: - Persistence
 extension TransactionEvent {
     enum Column {
         static let txHash = Expression<String>("txHash")

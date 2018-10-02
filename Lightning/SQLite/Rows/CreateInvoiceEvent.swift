@@ -31,7 +31,7 @@ extension CreateInvoiceEvent {
     }
 }
 
-// MARK: - Persistance
+// MARK: - Persistence
 extension CreateInvoiceEvent {
     private enum Column {
         static let id = Expression<String>("id")

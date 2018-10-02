@@ -77,7 +77,7 @@ extension ChannelEvent {
 
 }
 
-// MARK: - Persistance
+// MARK: - Persistence
 extension ChannelEvent {
     private enum Column {
         static let txHash = Expression<String>("txHash")

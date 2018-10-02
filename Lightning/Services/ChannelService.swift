@@ -14,16 +14,16 @@ import SwiftLnd
 
 public final class ChannelService {
     private let api: LightningApiProtocol
-    private let persistance: Persistance
+    private let persistence: Persistence
     
     let all: Signal<[Channel], NoError>
     public let open = Observable<[Channel]>([])
     public let pending = Observable<[Channel]>([])
     public let closed = Observable<[ChannelCloseSummary]>([])
     
-    init(api: LightningApiProtocol, persistance: Persistance) {
+    init(api: LightningApiProtocol, persistence: Persistence) {
         self.api = api
-        self.persistance = persistance
+        self.persistence = persistence
         
         all = combineLatest(open, pending) {
             $0 as [Channel] + $1 as [Channel]
@@ -79,10 +79,10 @@ public final class ChannelService {
     }
     
     public func node(for remotePubkey: String, completion: @escaping (ConnectedNode?) -> Void) {
-        api.nodeInfo(pubKey: remotePubkey) { [persistance] result in
+        api.nodeInfo(pubKey: remotePubkey) { [persistence] result in
             if let lightningNode = result.value {
                 let connectedNode = ConnectedNode(lightningNode: lightningNode.node)
-                try? connectedNode.insert(database: persistance.connection())
+                try? connectedNode.insert(database: persistence.connection())
                 completion(connectedNode)
             } else {
                 completion(nil)
@@ -91,13 +91,13 @@ public final class ChannelService {
     }
 }
 
-// MARK: - Persistance
+// MARK: - Persistence
 extension ChannelService {
     private func channelsUpdated(_ channels: [Channel]) {
         do {
             for channel in channels {
                 guard let openEvent = ChannelEvent(channel: channel) else { continue }
-                try openEvent.insert(database: persistance.connection())
+                try openEvent.insert(database: persistence.connection())
                 try updateNodeIfNeeded(openEvent.node)
             }
         } catch {
@@ -107,7 +107,7 @@ extension ChannelService {
     
     private func closedChannelsUpdated(_ channelCloseSummaries: [ChannelCloseSummary]) {
         do {
-            let database = try persistance.connection()
+            let database = try persistence.connection()
             
             let closingTxIds = channelCloseSummaries.map { $0.closingTxHash }
             try markTxIdsAsChannelRelated(txIds: closingTxIds)
@@ -135,7 +135,7 @@ extension ChannelService {
         let query = TransactionEvent.table
             .filter(TransactionEvent.Column.channelRelated == nil)
             .filter(txIds.contains(TransactionEvent.Column.txHash))
-        try persistance.connection().run(query.update(TransactionEvent.Column.channelRelated <- true))
+        try persistence.connection().run(query.update(TransactionEvent.Column.channelRelated <- true))
     }
     
     private func updateNodeIfNeeded(_ node: ConnectedNode) throws {

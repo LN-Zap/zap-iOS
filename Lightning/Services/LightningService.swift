@@ -20,7 +20,7 @@ public final class LightningService: NSObject {
     public let transactionService: TransactionService
     public let historyService: HistoryService
     
-    var persistance = Persistance()
+    var persistence = Persistence()
     
     public convenience init?(connection: LndConnection) {
         guard let api = connection.api else { return nil }
@@ -31,11 +31,11 @@ public final class LightningService: NSObject {
         self.api = api
         
         balanceService = BalanceService(api: api)
-        channelService = ChannelService(api: api, persistance: persistance)
-        historyService = HistoryService(api: api, channelService: channelService, persistance: persistance)
+        channelService = ChannelService(api: api, persistence: persistence)
+        historyService = HistoryService(api: api, channelService: channelService, persistence: persistence)
         transactionService = TransactionService(api: api, balanceService: balanceService, channelService: channelService, historyService: historyService)
         
-        infoService = InfoService(api: api, persistance: persistance, channelService: channelService, balanceService: balanceService, historyService: historyService)
+        infoService = InfoService(api: api, persistence: persistence, channelService: channelService, balanceService: balanceService, historyService: historyService)
     }
     
     public func start() {

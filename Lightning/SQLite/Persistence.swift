@@ -8,17 +8,17 @@
 import Foundation
 import SQLite
 
-enum PersistanceError: Error {
+enum PersistenceError: Error {
     case noConnection
 }
 
-final class Persistance {
+final class Persistence {
     private var currentConnection: Connection?
     private var pubKey: String?
     
     func connection() throws -> Connection {
         guard let connection = currentConnection else {
-            throw PersistanceError.noConnection
+            throw PersistenceError.noConnection
         }
         return connection
     }

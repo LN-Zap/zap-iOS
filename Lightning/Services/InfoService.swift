@@ -18,7 +18,7 @@ public final class InfoService {
         case running
     }
     
-    private let persistance: Persistance
+    private let persistence: Persistence
     public let balanceService: BalanceService
     public let channelService: ChannelService
     public let historyService: HistoryService
@@ -34,8 +34,8 @@ public final class InfoService {
     private let heightJobTimer: Timer?
     private var updateInfoTimer: Timer?
     
-    init(api: LightningApiProtocol, persistance: Persistance, channelService: ChannelService, balanceService: BalanceService, historyService: HistoryService) {
-        self.persistance = persistance
+    init(api: LightningApiProtocol, persistence: Persistence, channelService: ChannelService, balanceService: BalanceService, historyService: HistoryService) {
+        self.persistence = persistence
         self.channelService = channelService
         self.balanceService = balanceService
         self.historyService = historyService
@@ -60,7 +60,7 @@ public final class InfoService {
             bestHeaderDate.value = info.bestHeaderDate
             network.value = info.network
             
-            persistance.setConnectedNode(pubKey: info.pubKey)
+            persistence.setConnectedNode(pubKey: info.pubKey)
         }
         
         let newState = walletState(for: result)

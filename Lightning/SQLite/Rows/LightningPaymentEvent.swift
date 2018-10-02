@@ -43,7 +43,7 @@ extension LightningPaymentEvent {
     }
 }
 
-// MARK: - Persistance
+// MARK: - Persistence
 extension LightningPaymentEvent {
     private enum Column {
         static let paymentHash = Expression<String>("paymentHash")

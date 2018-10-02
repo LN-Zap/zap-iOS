@@ -17,21 +17,21 @@ public extension Notification.Name {
 public final class HistoryService {
     private let api: LightningApiProtocol
     private let channelService: ChannelService
-    private let persistance: Persistance
+    private let persistence: Persistence
     
     public var events = [HistoryEventType]()
     public var userTransaction = [PlottableEvent]()
     
-    init(api: LightningApiProtocol, channelService: ChannelService, persistance: Persistance) {
+    init(api: LightningApiProtocol, channelService: ChannelService, persistence: Persistence) {
         self.api = api
         self.channelService = channelService
-        self.persistance = persistance
+        self.persistence = persistence
     }
     
     /// Load all transactions from db
     private func updateEvents() {
         do {
-            let database = try persistance.connection()
+            let database = try persistence.connection()
             
             var dateProvidingEvents = [DateProvidingEvent]()
             let payments = try TransactionEvent.payments(database: database)
@@ -92,7 +92,7 @@ public final class HistoryService {
     
     func addFailedPaymentEvent(paymentRequest: PaymentRequest, amount: Satoshi) {
         do {
-            let connection = try persistance.connection()
+            let connection = try persistence.connection()
             guard try !LightningPaymentEvent.contains(database: connection, paymentHash: paymentRequest.paymentHash) else { return }
             let failedEvent = FailedPaymentEvent(paymentRequest: paymentRequest, amount: amount)
             try failedEvent.insert(database: connection)
@@ -106,7 +106,7 @@ public final class HistoryService {
     func addPaymentEvent(payment: Payment, memo: String?) {
         do {
             let paymentEvent = LightningPaymentEvent(payment: payment, memo: memo)
-            try paymentEvent.insert(database: persistance.connection())
+            try paymentEvent.insert(database: persistence.connection())
             events.insert(.lightningPaymentEvent(paymentEvent), at: 0)
             sendChangeNotification()
         } catch {
@@ -133,7 +133,7 @@ public final class HistoryService {
     }
 }
 
-// MARK: - Persistance
+// MARK: - Persistence
 extension HistoryService {
     private func addTransactions(_ transactions: [Transaction]) {
         let transactions = transactions.compactMap { TransactionEvent(transaction: $0) }
@@ -141,11 +141,11 @@ extension HistoryService {
         // update unconfirmed transaction block height
         do {
             let txHashes = transactions.map { $0.txHash }
-            let unconfirmedTransactions = try TransactionEvent.unconfirmedEvents(for: txHashes, database: persistance.connection())
+            let unconfirmedTransactions = try TransactionEvent.unconfirmedEvents(for: txHashes, database: persistence.connection())
             
             for unconfirmedTransaction in unconfirmedTransactions {
                 guard let transaction = transactions.first(where: { $0.txHash == unconfirmedTransaction.txHash }) else { continue }
-                try transaction.updateBlockHeight(database: persistance.connection())
+                try transaction.updateBlockHeight(database: persistence.connection())
             }
         } catch {
             print("⚠️ `\(#function)`:", error)
@@ -154,7 +154,7 @@ extension HistoryService {
         // add unknown transactions, fail on first error
         do {
             for transaction in transactions {
-                try transaction.insert(database: persistance.connection())
+                try transaction.insert(database: persistence.connection())
             }
         } catch {
             print("⚠️ `\(#function)`:", error)
@@ -165,11 +165,11 @@ extension HistoryService {
         do {
             for invoice in invoices {
                 let createInvoiceEvent = CreateInvoiceEvent(invoice: invoice)
-                try createInvoiceEvent.insert(database: persistance.connection())
+                try createInvoiceEvent.insert(database: persistence.connection())
                 
                 if invoice.settled {
                     let paymentEvent = LightningPaymentEvent(invoice: invoice)
-                    try paymentEvent.insert(database: persistance.connection())
+                    try paymentEvent.insert(database: persistence.connection())
                 }
             }
         } catch {
@@ -181,7 +181,7 @@ extension HistoryService {
         do {
             for payment in payments {
                 let paymentEvent = LightningPaymentEvent(payment: payment, memo: nil)
-                try paymentEvent.insert(database: persistance.connection())
+                try paymentEvent.insert(database: persistence.connection())
             }
         } catch {
             print("⚠️ `\(#function)`:", error)

@@ -23,7 +23,7 @@ extension ConnectedNode {
     }
 }
 
-// MARK: - Persistance
+// MARK: - Persistence
 extension ConnectedNode {
     enum Column {
         static let pubKey = Expression<String>("pubKey")
