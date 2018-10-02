@@ -28,23 +28,12 @@
 "unit.bitcoin.bit" = "Bits";
 "unit.bitcoin.satoshi" = "聪";
 
-"transaction.open_channel.memo" = "打开通道: %@";
-"transaction.close_channel.memo" = "%@ 通道: %@";
 "transaction.no_destination_address" = "没有目标地址";
-
-"close_type.cooperative_close" = "关闭";
-"close_type.local_force_close" = "强制关闭";
-"close_type.remote_force_close" = "远程强制关闭";
-"close_type.breach_close" = "违规关闭";
-"close_type.funding_canceled" = "已取消资金";
-"close_type.unknown" = "未知关闭";
 
 "view.amount_input.placeholder" = "数量";
 
-"scene.transactions.title" = "交易";
-"scene.transactions.empty_state_label" = "0个交易🙁";
-"scene.transactions.row_action.archive" = "归档";
-"scene.transactions.row_action.unarchive" = "取消归档";
+"scene.history.title" = "History";
+"scene.history.empty_state_label" = "0 transactions 🙁";
 
 "scene.settings.title" = "设置";
 "scene.settings.section.wallet" = "钱包";
@@ -153,24 +142,15 @@
 "scene.transaction_detail.title.lightning_invoice" = "发票明细";
 "scene.transaction_detail.title.payment_detail" = "付款明细";
 "scene.transaction_detail.title.transaction_detail" = "交易记录详细信息";
-"scene.transaction_detail.archive_button" = "归档";
-"scene.transaction_detail.unarchive_button" = "取消归档";
+"scene.transaction_detail.title.channel_event_detail" = "Channel Event";
+"scene.transaction_detail.title.failed_payment" = "Failed Payment";
 "scene.transaction_detail.memo_label" = "备注";
-"scene.transaction_detail.qr_code.expired_label" = "过期";
-"scene.transaction_detail.amount.unspecified_label" = "未指定";
 "scene.transaction_detail.amount_label" = "数量";
-"scene.transaction_detail.created_label" = "已创建";
-"scene.transaction_detail.payment_request" = "付款请求";
-"scene.transaction_detail.expiry_label" = "到期";
-"scene.transaction_detail.settled_label" = "已结算";
-"scene.transaction_detail.settled_date_label" = "结算日期";
-"scene.transaction_detail.settled_state.settled" = "已结算";
-"scene.transaction_detail.settled_state.unsettled" = "未结算";
 "scene.transaction_detail.fee_label" = "费用";
 "scene.transaction_detail.date_label" = "日期";
-"scene.transaction_detail.confirmations_label" = "确认数";
-"scene.transaction_detail.address_label" = "地址";
 "scene.transaction_detail.transaction_id_label" = "交易 ID";
+"scene.transaction_detail.address_label" = "地址";
+"scene.transaction_detail.expiry_label" = "到期";
 
 "scene.channel_detail.remote_pub_key_label" = "远程公钥";
 "scene.channel_detail.local_balance_label" = "本地余额";
@@ -180,12 +160,13 @@
 "scene.channel_detail.close_button" = "关闭通道";
 "scene.channel_detail.force_close_button" = "强制关闭通道";
 
-"scene.filter.title" = "交易筛选器";
+"scene.filter.title" = "Filter";
 "scene.filter.section_header.transaction_types" = "交易类型";
-"scene.filter.displayOnChainTransactions" = "链上交易";
+"scene.filter.displayOnChainTransactions" = "On-chain Payments";
 "scene.filter.displayLightningPayments" = "闪电网络支付";
-"scene.filter.displayLightningInvoices" = "闪电账单";
-"scene.filter.displayArchivedTransactions" = "归档交易";
+"scene.filter.displayLightningInvoices" = "Created Invoices";
+"scene.filter.displayChannelEvents" = "Channel Events";
+"scene.filter.displayFailedPaymentEvents" = "Failed Payments";
 
 "scene.qrcode_scanner.top_label" = "扫描 QR 码";
 
@@ -196,3 +177,20 @@
 
 "scene.modal_pin.headline" = "输入密码";
 "scene.modal_pin.description" = "请输入您的密码以继续";
+
+"scene.history.cell.payment_sent" = "Lightning Payment sent";
+"scene.history.cell.payment_received" = "Lightning Payment received";
+"scene.history.cell.payment_failed" = "Payment did not send";
+"scene.history.cell.invoice_created" = "Payment Request created";
+"scene.history.cell.channel_opened" = "Open Channel";
+"scene.history.cell.channel_closed" = "Close Channel";
+"scene.history.cell.force_close_channel" = "Force close Channel";
+"scene.history.cell.remote_force_close_channel" = "Remote force close Channel";
+"scene.history.cell.breach_close_channel" = "Breach close Channel";
+"scene.history.cell.close_channel_funding_canceled" = "Close Channel (funding canceled)";
+"scene.history.cell.channel_abandoned" = "Channel abandoned";
+"scene.history.cell.transaction_sent" = "Payment sent";
+"scene.history.cell.transaction_received" = "Payment received";
+"scene.history.cell.label.new" = "new";
+"scene.history.cell.label.error" = "error";
+"scene.history.cell.action.try_again" = "Try Again";
