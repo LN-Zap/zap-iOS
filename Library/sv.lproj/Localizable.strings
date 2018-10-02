@@ -28,23 +28,12 @@
 "unit.bitcoin.bit" = "Bits";
 "unit.bitcoin.satoshi" = "Satoshi";
 
-"transaction.open_channel.memo" = "Öppna kanal: %@";
-"transaction.close_channel.memo" = "%@ Kanal: %@";
 "transaction.no_destination_address" = "No destination address";
-
-"close_type.cooperative_close" = "Stäng";
-"close_type.local_force_close" = "Tvingad stängning";
-"close_type.remote_force_close" = "Fjärrtvingad stängning";
-"close_type.breach_close" = "Brytande stängning";
-"close_type.funding_canceled" = "Påfyllning avbruten";
-"close_type.unknown" = "Okänd stängning";
 
 "view.amount_input.placeholder" = "Belopp";
 
-"scene.transactions.title" = "Överföringar";
-"scene.transactions.empty_state_label" = "0 överföringar 🙁";
-"scene.transactions.row_action.archive" = "Arkivera";
-"scene.transactions.row_action.unarchive" = "Uppackning";
+"scene.history.title" = "History";
+"scene.history.empty_state_label" = "0 transactions 🙁";
 
 "scene.settings.title" = "Inställningar";
 "scene.settings.section.wallet" = "Wallet";
@@ -153,24 +142,15 @@
 "scene.transaction_detail.title.lightning_invoice" = "Fakturainfo";
 "scene.transaction_detail.title.payment_detail" = "Betalningsinfo";
 "scene.transaction_detail.title.transaction_detail" = "Transaktionsinfo";
-"scene.transaction_detail.archive_button" = "Arkivet";
-"scene.transaction_detail.unarchive_button" = "Uppackning";
+"scene.transaction_detail.title.channel_event_detail" = "Channel Event";
+"scene.transaction_detail.title.failed_payment" = "Failed Payment";
 "scene.transaction_detail.memo_label" = "Memo";
-"scene.transaction_detail.qr_code.expired_label" = "Utgången";
-"scene.transaction_detail.amount.unspecified_label" = "Ospecificerad";
 "scene.transaction_detail.amount_label" = "Belopp";
-"scene.transaction_detail.created_label" = "Skapad";
-"scene.transaction_detail.payment_request" = "Betalningsbegäran";
-"scene.transaction_detail.expiry_label" = "Utgår";
-"scene.transaction_detail.settled_label" = "Fastställd";
-"scene.transaction_detail.settled_date_label" = "Fastställt datum";
-"scene.transaction_detail.settled_state.settled" = "Fastställd";
-"scene.transaction_detail.settled_state.unsettled" = "Ej fastställd";
 "scene.transaction_detail.fee_label" = "Avgift";
 "scene.transaction_detail.date_label" = "Datum";
-"scene.transaction_detail.confirmations_label" = "Bekräftelser";
-"scene.transaction_detail.address_label" = "Adress";
 "scene.transaction_detail.transaction_id_label" = "Transaktions-ID";
+"scene.transaction_detail.address_label" = "Adress";
+"scene.transaction_detail.expiry_label" = "Utgår";
 
 "scene.channel_detail.remote_pub_key_label" = "Fjärr-publiknyckel";
 "scene.channel_detail.local_balance_label" = "Lokal balans";
@@ -180,12 +160,13 @@
 "scene.channel_detail.close_button" = "Close Channel";
 "scene.channel_detail.force_close_button" = "Force Close Channel";
 
-"scene.filter.title" = "Transaktionsfilter";
+"scene.filter.title" = "Filter";
 "scene.filter.section_header.transaction_types" = "Transaktionstyper";
-"scene.filter.displayOnChainTransactions" = "On-chain transaktioner";
+"scene.filter.displayOnChainTransactions" = "On-chain Payments";
 "scene.filter.displayLightningPayments" = "Lightningbetalningar";
-"scene.filter.displayLightningInvoices" = "Lightningfakturor";
-"scene.filter.displayArchivedTransactions" = "Arkiverade transaktioner";
+"scene.filter.displayLightningInvoices" = "Created Invoices";
+"scene.filter.displayChannelEvents" = "Channel Events";
+"scene.filter.displayFailedPaymentEvents" = "Failed Payments";
 
 "scene.qrcode_scanner.top_label" = "Scan QR-Code";
 
@@ -196,3 +177,20 @@
 
 "scene.modal_pin.headline" = "Enter Passcode";
 "scene.modal_pin.description" = "Please enter your passcode to continue";
+
+"scene.history.cell.payment_sent" = "Lightning Payment sent";
+"scene.history.cell.payment_received" = "Lightning Payment received";
+"scene.history.cell.payment_failed" = "Payment did not send";
+"scene.history.cell.invoice_created" = "Payment Request created";
+"scene.history.cell.channel_opened" = "Open Channel";
+"scene.history.cell.channel_closed" = "Close Channel";
+"scene.history.cell.force_close_channel" = "Force close Channel";
+"scene.history.cell.remote_force_close_channel" = "Remote force close Channel";
+"scene.history.cell.breach_close_channel" = "Breach close Channel";
+"scene.history.cell.close_channel_funding_canceled" = "Close Channel (funding canceled)";
+"scene.history.cell.channel_abandoned" = "Channel abandoned";
+"scene.history.cell.transaction_sent" = "Payment sent";
+"scene.history.cell.transaction_received" = "Payment received";
+"scene.history.cell.label.new" = "new";
+"scene.history.cell.label.error" = "error";
+"scene.history.cell.action.try_again" = "Try Again";
