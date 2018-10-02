@@ -28,23 +28,12 @@
 "unit.bitcoin.bit" = "Bits";
 "unit.bitcoin.satoshi" = "Satoshis";
 
-"transaction.open_channel.memo" = "Άνοιγμα καναλιού: %@";
-"transaction.close_channel.memo" = "%@ Κανάλι: %@";
 "transaction.no_destination_address" = "Καμία διεύθυνση προορισμού";
-
-"close_type.cooperative_close" = "Κλείστε";
-"close_type.local_force_close" = "Κλείστε το με δύναμη";
-"close_type.remote_force_close" = "Απομακρυσμένη δύναμη κλείστε";
-"close_type.breach_close" = "Παραβίαση κλείσιμο";
-"close_type.funding_canceled" = "Χρηματοδότηση ακυρώθηκε";
-"close_type.unknown" = "Άγνωστο κλείσιμο";
 
 "view.amount_input.placeholder" = "Ποσό";
 
-"scene.transactions.title" = "Συναλλαγές";
-"scene.transactions.empty_state_label" = "0 συναλλαγές 🙁";
-"scene.transactions.row_action.archive" = "Αρχείο";
-"scene.transactions.row_action.unarchive" = "Ακατάλληλο";
+"scene.history.title" = "History";
+"scene.history.empty_state_label" = "0 transactions 🙁";
 
 "scene.settings.title" = "Ρυθμίσεις";
 "scene.settings.section.wallet" = "Πορτοφόλι";
@@ -153,24 +142,15 @@
 "scene.transaction_detail.title.lightning_invoice" = "Λεπτομέρειες τιμολογίου";
 "scene.transaction_detail.title.payment_detail" = "Λεπτομέρειες πληρωμής";
 "scene.transaction_detail.title.transaction_detail" = "Λεπτομέρειες συναλλαγής";
-"scene.transaction_detail.archive_button" = "Αρχείο";
-"scene.transaction_detail.unarchive_button" = "Ακατάλληλο";
+"scene.transaction_detail.title.channel_event_detail" = "Channel Event";
+"scene.transaction_detail.title.failed_payment" = "Failed Payment";
 "scene.transaction_detail.memo_label" = "Τιμολόγιο";
-"scene.transaction_detail.qr_code.expired_label" = "Έχει λήξει";
-"scene.transaction_detail.amount.unspecified_label" = "Απροσδιόριστος";
 "scene.transaction_detail.amount_label" = "Ποσό";
-"scene.transaction_detail.created_label" = "Δημιουργήθηκε";
-"scene.transaction_detail.payment_request" = "Αίτηση πληρωμής";
-"scene.transaction_detail.expiry_label" = "Λήξη";
-"scene.transaction_detail.settled_label" = "Τακτοποιημένο";
-"scene.transaction_detail.settled_date_label" = "Καθορισμένη ημερομηνία";
-"scene.transaction_detail.settled_state.settled" = "Τακτοποιημένο";
-"scene.transaction_detail.settled_state.unsettled" = "Αστατος";
 "scene.transaction_detail.fee_label" = "Αμοιβή";
 "scene.transaction_detail.date_label" = "Ημερομηνία";
-"scene.transaction_detail.confirmations_label" = "Επιβεβαιώσεις";
-"scene.transaction_detail.address_label" = "Διεύθυνση";
 "scene.transaction_detail.transaction_id_label" = "Ταυτότητα συναλλαγής";
+"scene.transaction_detail.address_label" = "Διεύθυνση";
+"scene.transaction_detail.expiry_label" = "Λήξη";
 
 "scene.channel_detail.remote_pub_key_label" = "Απομακρυσμένο δημόσιο κλειδί (Remote PubKey)";
 "scene.channel_detail.local_balance_label" = "Τοπική ισορροπία";
@@ -180,12 +160,13 @@
 "scene.channel_detail.close_button" = "Κλείσιμο καναλιού";
 "scene.channel_detail.force_close_button" = "Κλείστε το κανάλι με δύναμη";
 
-"scene.filter.title" = "Συναλλαγή φίλτρο";
+"scene.filter.title" = "Filter";
 "scene.filter.section_header.transaction_types" = "Τύποι συναλλαγών";
-"scene.filter.displayOnChainTransactions" = "Συναλλαγές στο blockchain";
+"scene.filter.displayOnChainTransactions" = "On-chain Payments";
 "scene.filter.displayLightningPayments" = "Πληρωμές Lightning";
-"scene.filter.displayLightningInvoices" = "Τιμολόγια Lightning";
-"scene.filter.displayArchivedTransactions" = "Αρχειοθετημένα συναλλαγές";
+"scene.filter.displayLightningInvoices" = "Created Invoices";
+"scene.filter.displayChannelEvents" = "Channel Events";
+"scene.filter.displayFailedPaymentEvents" = "Failed Payments";
 
 "scene.qrcode_scanner.top_label" = "Σάρωση κώδικα QR";
 
@@ -196,3 +177,20 @@
 
 "scene.modal_pin.headline" = "Enter Passcode";
 "scene.modal_pin.description" = "Please enter your passcode to continue";
+
+"scene.history.cell.payment_sent" = "Lightning Payment sent";
+"scene.history.cell.payment_received" = "Lightning Payment received";
+"scene.history.cell.payment_failed" = "Payment did not send";
+"scene.history.cell.invoice_created" = "Payment Request created";
+"scene.history.cell.channel_opened" = "Open Channel";
+"scene.history.cell.channel_closed" = "Close Channel";
+"scene.history.cell.force_close_channel" = "Force close Channel";
+"scene.history.cell.remote_force_close_channel" = "Remote force close Channel";
+"scene.history.cell.breach_close_channel" = "Breach close Channel";
+"scene.history.cell.close_channel_funding_canceled" = "Close Channel (funding canceled)";
+"scene.history.cell.channel_abandoned" = "Channel abandoned";
+"scene.history.cell.transaction_sent" = "Payment sent";
+"scene.history.cell.transaction_received" = "Payment received";
+"scene.history.cell.label.new" = "new";
+"scene.history.cell.label.error" = "error";
+"scene.history.cell.action.try_again" = "Try Again";
