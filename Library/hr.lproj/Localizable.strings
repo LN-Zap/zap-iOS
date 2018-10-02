@@ -28,23 +28,12 @@
 "unit.bitcoin.bit" = "Bit";
 "unit.bitcoin.satoshi" = "Satoši";
 
-"transaction.open_channel.memo" = "Otvori kanal: %@";
-"transaction.close_channel.memo" = "%@ Kanal: %@";
 "transaction.no_destination_address" = "No destination address";
-
-"close_type.cooperative_close" = "Zatvori";
-"close_type.local_force_close" = "Prisilno zatvori";
-"close_type.remote_force_close" = "Udaljeno prisilno zatvaranje";
-"close_type.breach_close" = "Probojno zatvaranje";
-"close_type.funding_canceled" = "Uplata poništena";
-"close_type.unknown" = "Nepoznato zatvaranje";
 
 "view.amount_input.placeholder" = "Iznos";
 
-"scene.transactions.title" = "Transakcije";
-"scene.transactions.empty_state_label" = "0 transakcija 🙁";
-"scene.transactions.row_action.archive" = "Arhiviraj";
-"scene.transactions.row_action.unarchive" = "Dearhiviraj";
+"scene.history.title" = "History";
+"scene.history.empty_state_label" = "0 transactions 🙁";
 
 "scene.settings.title" = "Postavke";
 "scene.settings.section.wallet" = "Novčanik";
@@ -153,24 +142,15 @@
 "scene.transaction_detail.title.lightning_invoice" = "Detalji fakture";
 "scene.transaction_detail.title.payment_detail" = "Detalji plaćanja";
 "scene.transaction_detail.title.transaction_detail" = "Detalji transakcije";
-"scene.transaction_detail.archive_button" = "Arhiviraj";
-"scene.transaction_detail.unarchive_button" = "Dearhiviraj";
+"scene.transaction_detail.title.channel_event_detail" = "Channel Event";
+"scene.transaction_detail.title.failed_payment" = "Failed Payment";
 "scene.transaction_detail.memo_label" = "Bilješka";
-"scene.transaction_detail.qr_code.expired_label" = "Rok je istekao";
-"scene.transaction_detail.amount.unspecified_label" = "Neodređeno";
 "scene.transaction_detail.amount_label" = "Iznos";
-"scene.transaction_detail.created_label" = "Stvoreno";
-"scene.transaction_detail.payment_request" = "Zahtjev za plaćanje";
-"scene.transaction_detail.expiry_label" = "Rok isteka";
-"scene.transaction_detail.settled_label" = "Podmireno";
-"scene.transaction_detail.settled_date_label" = "Datum podmirenja";
-"scene.transaction_detail.settled_state.settled" = "Podmireno";
-"scene.transaction_detail.settled_state.unsettled" = "Nije podmireno";
 "scene.transaction_detail.fee_label" = "Naknada";
 "scene.transaction_detail.date_label" = "Datum";
-"scene.transaction_detail.confirmations_label" = "Potvrde";
-"scene.transaction_detail.address_label" = "Adresa";
 "scene.transaction_detail.transaction_id_label" = "ID transakcije";
+"scene.transaction_detail.address_label" = "Adresa";
+"scene.transaction_detail.expiry_label" = "Rok isteka";
 
 "scene.channel_detail.remote_pub_key_label" = "Udaljeni PubKey";
 "scene.channel_detail.local_balance_label" = "Lokalni saldo";
@@ -180,12 +160,13 @@
 "scene.channel_detail.close_button" = "Close Channel";
 "scene.channel_detail.force_close_button" = "Force Close Channel";
 
-"scene.filter.title" = "Filter transakcija";
+"scene.filter.title" = "Filter";
 "scene.filter.section_header.transaction_types" = "Vrste transakcija";
-"scene.filter.displayOnChainTransactions" = "Na-lanac transakcije";
+"scene.filter.displayOnChainTransactions" = "On-chain Payments";
 "scene.filter.displayLightningPayments" = "Munja plaćanja";
-"scene.filter.displayLightningInvoices" = "Munja fakture";
-"scene.filter.displayArchivedTransactions" = "Arhivirane transakcije";
+"scene.filter.displayLightningInvoices" = "Created Invoices";
+"scene.filter.displayChannelEvents" = "Channel Events";
+"scene.filter.displayFailedPaymentEvents" = "Failed Payments";
 
 "scene.qrcode_scanner.top_label" = "Scan QR-Code";
 
@@ -196,3 +177,20 @@
 
 "scene.modal_pin.headline" = "Enter Passcode";
 "scene.modal_pin.description" = "Please enter your passcode to continue";
+
+"scene.history.cell.payment_sent" = "Lightning Payment sent";
+"scene.history.cell.payment_received" = "Lightning Payment received";
+"scene.history.cell.payment_failed" = "Payment did not send";
+"scene.history.cell.invoice_created" = "Payment Request created";
+"scene.history.cell.channel_opened" = "Open Channel";
+"scene.history.cell.channel_closed" = "Close Channel";
+"scene.history.cell.force_close_channel" = "Force close Channel";
+"scene.history.cell.remote_force_close_channel" = "Remote force close Channel";
+"scene.history.cell.breach_close_channel" = "Breach close Channel";
+"scene.history.cell.close_channel_funding_canceled" = "Close Channel (funding canceled)";
+"scene.history.cell.channel_abandoned" = "Channel abandoned";
+"scene.history.cell.transaction_sent" = "Payment sent";
+"scene.history.cell.transaction_received" = "Payment received";
+"scene.history.cell.label.new" = "new";
+"scene.history.cell.label.error" = "error";
+"scene.history.cell.action.try_again" = "Try Again";
