@@ -86,7 +86,7 @@
 "scene.send.send_button" = "Στείλετε";
 "scene.send.address_headline" = "Προς:";
 "scene.send.memo_headline" = "Σημείωμα:";
-
+"scene.send.sending" = "Sending...";
 "scene.send.lightning.title" = "Αποστολή πληρωμής Lightning";
 "scene.send.on_chain.title" = "Στείλτε στο blockchain";
 "scene.send.authentication_failed" = "Authentication failed";
