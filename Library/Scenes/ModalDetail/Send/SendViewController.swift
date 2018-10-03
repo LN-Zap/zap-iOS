@@ -88,11 +88,10 @@ final class SendViewController: ModalDetailViewController {
     
     private func sendButtonTapped() {
         sendButton?.isEnabled = false
-        
         authenticate { [weak self] result in
             switch result {
             case .success:
-                self?.viewModel.send { self?.handleSendResult($0) }
+                self?.send()
             case .failure:
                 self?.sendButton?.isEnabled = true
                 self?.presentErrorToast("scene.send.authentication_failed".localized)
@@ -100,17 +99,20 @@ final class SendViewController: ModalDetailViewController {
         }
     }
     
-    private func handleSendResult(_ result: Result<Success>) {
-        DispatchQueue.main.async {
-            self.sendButton?.isEnabled = true
-            switch result {
-            case .success:
-                self.dismissParent()
-            case .failure(let error):
-                self.presentErrorToast(error.localizedDescription)
+    private func send() {
+        let loadingView = presentLoadingView(text: "scene.send.sending".localized)
+        viewModel.send { [weak self] result in
+            DispatchQueue.main.async {
+                loadingView.removeFromSuperview()
+                switch result {
+                case .success:
+                    self?.dismissParent()
+                case .failure(let error):
+                    self?.sendButton?.isEnabled = true
+                    self?.presentErrorToast(error.localizedDescription)
+                }
             }
         }
-
     }
     
     override func presentErrorToast(_ message: String) {
