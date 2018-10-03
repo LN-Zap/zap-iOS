@@ -15,11 +15,11 @@ public struct FailedPaymentEvent: Equatable, DateProvidingEvent, AmountProviding
     public let paymentHash: String
     public let memo: String?
     public let amount: Satoshi
-    public let destination: String
     public let date: Date
     public let expiry: Date
     public let fallbackAddress: BitcoinAddress?
     public let paymentRequest: String
+    public let node: ConnectedNode
 }
 
 extension FailedPaymentEvent {
@@ -27,11 +27,11 @@ extension FailedPaymentEvent {
         paymentHash = paymentRequest.paymentHash
         memo = paymentRequest.memo
         self.amount = amount
-        destination = paymentRequest.destination
         date = paymentRequest.date
         expiry = paymentRequest.expiryDate
         fallbackAddress = paymentRequest.fallbackAddress
         self.paymentRequest = paymentRequest.raw
+        node = ConnectedNode(pubKey: paymentRequest.destination, alias: nil, color: nil)
     }
 }
 
@@ -54,7 +54,6 @@ extension FailedPaymentEvent {
         paymentHash = row[Column.paymentHash]
         memo = row[Column.memo]
         amount = row[Column.amount]
-        destination = row[Column.destination]
         date = row[Column.date]
         expiry = row[Column.expiry]
         
@@ -65,6 +64,12 @@ extension FailedPaymentEvent {
         }
         
         paymentRequest = row[Column.paymentRequest]
+        
+        if (try? row.get(ConnectedNode.Column.pubKey)) != nil {
+            node = ConnectedNode(row: row)
+        } else {
+            node = ConnectedNode(pubKey: row[Column.destination], alias: nil, color: nil)
+        }
     }
     
     static func createTable(database: Connection) throws {
@@ -85,7 +90,7 @@ extension FailedPaymentEvent {
             Column.paymentHash <- paymentHash,
             Column.memo <- memo,
             Column.amount <- amount,
-            Column.destination <- destination,
+            Column.destination <- node.pubKey,
             Column.date <- date,
             Column.expiry <- expiry,
             Column.fallbackAddress <- fallbackAddress?.string,
@@ -94,7 +99,9 @@ extension FailedPaymentEvent {
     }
     
     public static func events(database: Connection) throws -> [FailedPaymentEvent] {
-        return try database.prepare(FailedPaymentEvent.table)
+        let query = table
+            .join(.leftOuter, ConnectedNode.table, on: ConnectedNode.Column.pubKey == table[Column.destination])
+        return try database.prepare(query)
             .map(FailedPaymentEvent.init)
     }
 }

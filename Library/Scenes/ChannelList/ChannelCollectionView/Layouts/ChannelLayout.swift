@@ -19,7 +19,7 @@ class ChannelLayout: UICollectionViewLayout {
     let maxHeaderHeight: CGFloat = 100
     let minHeaderHeight: CGFloat = 40
     
-    let layoutMargin = UIEdgeInsets(top: 0, left: 20, bottom: 0, right: 20)
+    let layoutMargin = UIEdgeInsets(top: 0, left: 10, bottom: 0, right: 10)
     var layoutAttributes = [IndexPath: UICollectionViewLayoutAttributes]()
     
     var headerAttributes: UICollectionViewLayoutAttributes?
