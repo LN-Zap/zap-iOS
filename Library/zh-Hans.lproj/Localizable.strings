@@ -86,7 +86,7 @@
 "scene.send.send_button" = "转账";
 "scene.send.address_headline" = "目标:";
 "scene.send.memo_headline" = "备注:";
-
+"scene.send.sending" = "Sending...";
 "scene.send.lightning.title" = "通过闪电网络支付";
 "scene.send.on_chain.title" = "链上交易";
 "scene.send.authentication_failed" = "身份验证失败";
