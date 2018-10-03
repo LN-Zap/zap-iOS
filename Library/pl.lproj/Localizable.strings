@@ -86,7 +86,7 @@
 "scene.send.send_button" = "Wyślij";
 "scene.send.address_headline" = "Do:";
 "scene.send.memo_headline" = "Notatka:";
-
+"scene.send.sending" = "Sending...";
 "scene.send.lightning.title" = "Wyślij płatność LN";
 "scene.send.on_chain.title" = "Wyślij płatność blokchain";
 "scene.send.authentication_failed" = "Authentication failed";
