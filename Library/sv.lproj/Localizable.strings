@@ -86,7 +86,7 @@
 "scene.send.send_button" = "Skicka";
 "scene.send.address_headline" = "To:";
 "scene.send.memo_headline" = "Memo:";
-
+"scene.send.sending" = "Sending...";
 "scene.send.lightning.title" = "Send Lightning Payment";
 "scene.send.on_chain.title" = "Send On Chain";
 "scene.send.authentication_failed" = "Authentication failed";
