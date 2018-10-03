@@ -204,10 +204,20 @@ final class HistoryCell: BondTableViewCell {
     }
     
     func setLightningPaymentEvent(_ lightningPaymentEvent: LightningPaymentEvent) {
+        func setTitle(formatString: String, fallback: String) {
+            if let nodeAlias = lightningPaymentEvent.node?.alias {
+                titleLabel.text = String(format: formatString.localized, nodeAlias)
+            } else if let nodePubKey = lightningPaymentEvent.node?.pubKey {
+                titleLabel.text = String(format: formatString.localized, nodePubKey)
+            } else {
+                titleLabel.text = fallback.localized
+            }
+        }
+        
         if lightningPaymentEvent.amount < 0 {
-            titleLabel.text = "scene.history.cell.payment_sent".localized
+            setTitle(formatString: "scene.history.cell.payment_sent_to", fallback: "scene.history.cell.payment_sent")
         } else {
-            titleLabel.text = "scene.history.cell.payment_received".localized
+            setTitle(formatString: "scene.history.cell.payment_received_from", fallback: "scene.history.cell.payment_received")
         }
         
         setDate(lightningPaymentEvent.date)

@@ -20,17 +20,17 @@ public struct LightningPaymentEvent: Equatable, DateProvidingEvent, AmountProvid
     public let amount: Satoshi // amount + optional fees
     public let fee: Satoshi
     public let date: Date
-    public let destination: String?
+    public let node: ConnectedNode?
 }
 
 extension LightningPaymentEvent {
-    init(payment: Payment, memo: String?) {
+    init(payment: Payment, memo: String?, node: ConnectedNode?) {
         paymentHash = payment.paymentHash
         self.memo = memo
         amount = payment.amount
         fee = payment.fees
         date = payment.date
-        destination = payment.destination
+        self.node = node
     }
     
     init(invoice: Invoice) {
@@ -39,7 +39,7 @@ extension LightningPaymentEvent {
         amount = invoice.amount
         fee = 0
         date = invoice.date
-        destination = nil
+        node = nil
     }
 }
 
@@ -61,8 +61,15 @@ extension LightningPaymentEvent {
         memo = row[Column.memo]
         amount = row[Column.amount]
         fee = row[Column.fee]
-        destination = row[Column.destination]
         date = row[Column.date]
+        
+        if (try? row.get(ConnectedNode.Column.pubKey)) != nil {
+            node = ConnectedNode(row: row)
+        } else if let destination = row[Column.destination] {
+            node = ConnectedNode(pubKey: destination, alias: nil, color: nil)
+        } else {
+            node = nil
+        }
     }
     
     static func createTable(database: Connection) throws {
@@ -82,12 +89,15 @@ extension LightningPaymentEvent {
             Column.memo <- memo,
             Column.amount <- amount,
             Column.fee <- fee,
-            Column.date <- date)
+            Column.date <- date,
+            Column.destination <- node?.pubKey)
         )
     }
     
     public static func events(database: Connection) throws -> [LightningPaymentEvent] {
-        return try database.prepare(LightningPaymentEvent.table)
+        let query = table
+            .join(.leftOuter, ConnectedNode.table, on: ConnectedNode.Column.pubKey == table[Column.destination])
+        return try database.prepare(query)
             .map(LightningPaymentEvent.init)
     }
 

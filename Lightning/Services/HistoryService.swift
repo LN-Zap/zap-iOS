@@ -104,13 +104,16 @@ public final class HistoryService {
     }
     
     func addPaymentEvent(payment: Payment, memo: String?) {
-        do {
-            let paymentEvent = LightningPaymentEvent(payment: payment, memo: memo)
-            try paymentEvent.insert(database: persistence.connection())
-            events.insert(.lightningPaymentEvent(paymentEvent), at: 0)
-            sendChangeNotification()
-        } catch {
-            print(error)
+        channelService.node(for: payment.destination) { [weak self] node in
+            do {
+                guard let self = self else { return }
+                let paymentEvent = LightningPaymentEvent(payment: payment, memo: memo, node: node)
+                try paymentEvent.insert(database: self.persistence.connection())
+                self.events.insert(.lightningPaymentEvent(paymentEvent), at: 0)
+                self.sendChangeNotification()
+            } catch {
+                print(error)
+            }
         }
     }
     
@@ -180,7 +183,7 @@ extension HistoryService {
     private func addPayments(_ payments: [Payment]) {
         do {
             for payment in payments {
-                let paymentEvent = LightningPaymentEvent(payment: payment, memo: nil)
+                let paymentEvent = LightningPaymentEvent(payment: payment, memo: nil, node: nil)
                 try paymentEvent.insert(database: persistence.connection())
             }
         } catch {

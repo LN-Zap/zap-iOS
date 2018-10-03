@@ -119,8 +119,8 @@ extension ChannelEvent {
     }
     
     public static func events(database: Connection) throws -> [ChannelEvent] {
-        let query = ChannelEvent.table
-            .join(ConnectedNode.table, on: ConnectedNode.Column.pubKey == ChannelEvent.table[Column.node])
+        let query = table
+            .join(ConnectedNode.table, on: ConnectedNode.Column.pubKey == table[Column.node])
             .join(.leftOuter, TransactionEvent.table, on: TransactionEvent.table[TransactionEvent.Column.txHash] == ChannelEvent.table[Column.txHash])
             .order(Column.blockHeight.desc)
         return try database.prepare(query)
