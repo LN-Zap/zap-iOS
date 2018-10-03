@@ -86,7 +86,7 @@
 "scene.send.send_button" = "Enviar";
 "scene.send.address_headline" = "Para:";
 "scene.send.memo_headline" = "Memo:";
-
+"scene.send.sending" = "Sending...";
 "scene.send.lightning.title" = "Enviar pago \"Lightning\"";
 "scene.send.on_chain.title" = "Enviar en cadena";
 "scene.send.authentication_failed" = "Error de autenticación";
