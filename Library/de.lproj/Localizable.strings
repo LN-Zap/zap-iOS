@@ -178,9 +178,11 @@
 "scene.modal_pin.headline" = "PIN eingeben";
 "scene.modal_pin.description" = "Bitte geben Sie Ihren PIN ein, um fortzufahren";
 
-"scene.history.cell.payment_sent" = "Lightning Payment sent";
-"scene.history.cell.payment_received" = "Lightning Payment received";
-"scene.history.cell.payment_failed" = "Payment did not send";
+"scene.history.cell.payment_sent" = "Payment sent";
+"scene.history.cell.payment_sent_to" = "Payment sent to: %@";
+"scene.history.cell.payment_received" = "Payment received";
+"scene.history.cell.payment_received_from" = "Payment received from: %@";
+"scene.history.cell.payment_failed" = "Payment failed (%@)";
 "scene.history.cell.invoice_created" = "Payment Request created";
 "scene.history.cell.channel_opened" = "Open Channel";
 "scene.history.cell.channel_closed" = "Close Channel";
