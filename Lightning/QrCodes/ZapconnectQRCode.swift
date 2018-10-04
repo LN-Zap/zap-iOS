@@ -29,6 +29,7 @@ struct ZapconnectQRCode: Codable {
     }
     
     var rpcConfiguration: RemoteRPCConfiguration {
+        let certificate = Pem(key: self.certificate).string
         return RemoteRPCConfiguration(certificate: certificate, macaroon: macaroon, url: url)
     }
 }

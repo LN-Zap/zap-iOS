@@ -13,19 +13,16 @@ public struct RemoteRPCConfiguration: Codable {
     public let macaroon: Data
     public let url: URL
     
-    private static let keychain = Keychain(service: "com.jackmallers.zap")
-    
     public init(certificate: String?, macaroon: Data, url: URL) {
-        if let certificate = certificate {
-            self.certificate = Pem(key: certificate).string
-        } else {
-            self.certificate = nil
-        }
-        
+        self.certificate = certificate
         self.macaroon = macaroon
         self.url = url
     }
-    
+}
+
+extension RemoteRPCConfiguration {
+    private static let keychain = Keychain(service: "com.jackmallers.zap")
+
     public func save() {
         guard
             let data = try? JSONEncoder().encode(self)
