@@ -57,13 +57,19 @@
         }
     }
 
+    #if swift(>=4.2)
+    public typealias BNDTableViewRowAnimation = UITableView.RowAnimation
+    #else
+    public typealias BNDTableViewRowAnimation = UITableViewRowAnimation
+    #endif
+
     /// A type used by the table view bindings that provides binding options and actions.
     /// Subclass `TableViewBinder` to configure peculiarities of the bindings like animations.
     open class TableViewBinder<DataSource: DataSourceProtocol> {
 
-        open var rowAnimation: UITableViewRowAnimation = .automatic
+        open var rowAnimation: BNDTableViewRowAnimation = .automatic
 
-        open let createCell: ((DataSource, IndexPath, UITableView) -> UITableViewCell)?
+        public let createCell: ((DataSource, IndexPath, UITableView) -> UITableViewCell)?
 
         public init() {
             createCell = nil
@@ -138,7 +144,7 @@
         ///     - createCell: A closure that creates (dequeues) cell for the given table view and configures it with the given data source at the given index path.
         /// - returns: A disposable object that can terminate the binding. Safe to ignore - the binding will be automatically terminated when the table view is deallocated.
         @discardableResult
-        public func bind(to tableView: UITableView, animated: Bool = true, rowAnimation: UITableViewRowAnimation = .automatic, createCell: @escaping (DataSource, IndexPath, UITableView) -> UITableViewCell) -> Disposable {
+        public func bind(to tableView: UITableView, animated: Bool = true, rowAnimation: BNDTableViewRowAnimation = .automatic, createCell: @escaping (DataSource, IndexPath, UITableView) -> UITableViewCell) -> Disposable {
             if animated {
                 let binder = TableViewBinder<DataSource>(createCell)
                 binder.rowAnimation = rowAnimation
@@ -228,7 +234,7 @@
         ///     - configureCell: A closure that configures the cell with the data source item at the respective index path.
         /// - returns: A disposable object that can terminate the binding. Safe to ignore - the binding will be automatically terminated when the table view is deallocated.
         @discardableResult
-        public func bind<Cell: UITableViewCell>(to tableView: UITableView, cellType: Cell.Type, animated: Bool = true, rowAnimation: UITableViewRowAnimation = .automatic, configureCell: @escaping (Cell, DataSource.Item) -> Void) -> Disposable {
+        public func bind<Cell: UITableViewCell>(to tableView: UITableView, cellType: Cell.Type, animated: Bool = true, rowAnimation: BNDTableViewRowAnimation = .automatic, configureCell: @escaping (Cell, DataSource.Item) -> Void) -> Disposable {
             let identifier = String(describing: Cell.self)
             tableView.register(cellType as AnyClass, forCellReuseIdentifier: identifier)
             return bind(to: tableView, animated: animated, rowAnimation: rowAnimation, createCell: { (dataSource, indexPath, tableView) -> UITableViewCell in
@@ -252,7 +258,7 @@
         ///     - configureCell: A closure that configures the cell with the data source item at the respective index path row.
         /// - returns: A disposable object that can terminate the binding. Safe to ignore - the binding will be automatically terminated when the table view is deallocated.
         @discardableResult
-        public func bind<Cell: UITableViewCell>(to tableView: UITableView, cellType: Cell.Type, animated: Bool = true, rowAnimation: UITableViewRowAnimation = .automatic, configureCell: @escaping (Cell, DataSource.Item) -> Void) -> Disposable {
+        public func bind<Cell: UITableViewCell>(to tableView: UITableView, cellType: Cell.Type, animated: Bool = true, rowAnimation: BNDTableViewRowAnimation = .automatic, configureCell: @escaping (Cell, DataSource.Item) -> Void) -> Disposable {
             let identifier = String(describing: Cell.self)
             tableView.register(cellType as AnyClass, forCellReuseIdentifier: identifier)
             return bind(to: tableView, animated: animated, rowAnimation: rowAnimation, createCell: { (dataSource, indexPath, tableView) -> UITableViewCell in
@@ -266,14 +272,21 @@
 
     // MARK: Deprecated stuff
 
-    @available(*, deprecated, message: "Subclass TableViewBinder instead.")
+    //@available(*, deprecated, message: "Subclass TableViewBinder instead.")
     public protocol TableViewBond {
 
         associatedtype DataSource: DataSourceProtocol
 
+        @available(*, deprecated, message: "Subclass TableViewBinder instead.")
         func apply(event: DataSourceEvent<DataSource, BatchKindDiff>, to tableView: UITableView)
+
+        @available(*, deprecated, message: "Subclass TableViewBinder instead.")
         func cellForRow(at indexPath: IndexPath, tableView: UITableView, dataSource: DataSource) -> UITableViewCell
+
+        @available(*, deprecated, message: "Subclass TableViewBinder instead.")
         func titleForHeader(in section: Int, dataSource: DataSource) -> String?
+
+        @available(*, deprecated, message: "Subclass TableViewBinder instead.")
         func titleForFooter(in section: Int, dataSource: DataSource) -> String?
     }
 
