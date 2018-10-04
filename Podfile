@@ -9,11 +9,11 @@ end
 
 target 'SwiftLnd' do
     pod 'SwiftGRPC', :git => 'https://github.com/grpc/grpc-swift'
-    pod 'KeychainAccess'
 end
 
 target 'Lightning' do
     pod 'Bond'
+    pod 'KeychainAccess'
     pod 'SQLite.swift', '~> 0.11.5'
 end
 

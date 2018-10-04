@@ -6,15 +6,16 @@
 //
 
 import Foundation
+import SwiftLnd
 
-public enum LndConnection {
+public enum LightningConnection {
     case none
     #if !LOCALONLY
     case local
     #endif
     case remote(RemoteRPCConfiguration)
     
-    public var api: LightningApiProtocol? {
+    public func start() -> LightningApiProtocol? {
         if Environment.useMockApi {
             return ApiMockTemplate.selected.instance
         }
@@ -25,7 +26,7 @@ public enum LndConnection {
         #if !LOCALONLY
         case .local:
             if !LocalLnd.isRunning {
-                LocalLnd.start() // TODO: don't start local Lnd in the getter. bad api!
+                LocalLnd.start()
             }
             return LightningApiStream()
         #endif
@@ -34,7 +35,7 @@ public enum LndConnection {
         }
     }
     
-    public static var current: LndConnection {
+    public static var current: LightningConnection {
         if let remoteConfiguration = RemoteRPCConfiguration.load() {
             return .remote(remoteConfiguration)
         }

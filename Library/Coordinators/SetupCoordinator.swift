@@ -15,7 +15,7 @@ protocol SetupCoordinatorDelegate: class {
 
 final class SetupCoordinator {
     private let rootViewController: RootViewController
-    private let rootViewModel: RootViewModel
+    private let connectionService: ConnectionService
     private let authenticationViewModel: AuthenticationViewModel
     
     private weak var navigationController: UINavigationController?
@@ -23,9 +23,9 @@ final class SetupCoordinator {
     private weak var connectRemoteNodeViewModel: ConnectRemoteNodeViewModel?
     private weak var mnemonicViewModel: MnemonicViewModel?
     
-    init(rootViewController: RootViewController, rootViewModel: RootViewModel, authenticationViewModel: AuthenticationViewModel, delegate: SetupCoordinatorDelegate) {
+    init(rootViewController: RootViewController, connectionService: ConnectionService, authenticationViewModel: AuthenticationViewModel, delegate: SetupCoordinatorDelegate) {
         self.rootViewController = rootViewController
-        self.rootViewModel = rootViewModel
+        self.connectionService = connectionService
         self.authenticationViewModel = authenticationViewModel
         self.delegate = delegate
     }
@@ -45,7 +45,7 @@ final class SetupCoordinator {
             LocalLnd.start()
         }
         
-        let walletService = rootViewModel.walletService
+        let walletService = connectionService.walletService
         let mnemonicViewModel = MnemonicViewModel(walletService: walletService)
         self.mnemonicViewModel = mnemonicViewModel
         
@@ -74,7 +74,7 @@ final class SetupCoordinator {
             LocalLnd.start()
         }
         
-        let walletService = rootViewModel.walletService
+        let walletService = connectionService.walletService
         let viewModel = RecoverWalletViewModel(walletService: walletService)
         let viewController = UIStoryboard.instantiateRecoverWalletViewController(recoverWalletViewModel: viewModel, presentSetupPin: delegate.presentSetupPin)
         navigationController?.pushViewController(viewController, animated: true)

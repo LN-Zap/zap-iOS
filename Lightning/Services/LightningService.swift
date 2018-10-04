@@ -22,8 +22,8 @@ public final class LightningService: NSObject {
     
     var persistence = Persistence()
     
-    public convenience init?(connection: LndConnection) {
-        guard let api = connection.api else { return nil }
+    public convenience init?(connection: LightningConnection) {
+        guard let api = connection.start() else { return nil }
         self.init(api: api)
     }
     

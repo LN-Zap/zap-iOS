@@ -19,9 +19,9 @@ public enum Layer {
 // Only used by Messages Extension
 public enum RequestViewModelFactory {
     public static func create() -> RequestViewModel? {
-        let zapSerview = RootViewModel()
-        zapSerview.connect()
-        guard let lightningService = zapSerview.lightningService else { return nil }
+        let connectionService = ConnectionService()
+        connectionService.connect()
+        guard let lightningService = connectionService.lightningService else { return nil }
         return RequestViewModel(transactionService: lightningService.transactionService)
     }
 }

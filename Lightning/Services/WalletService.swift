@@ -14,7 +14,7 @@ public final class WalletService {
     private(set) var isUnlocked = false
     private let wallet: WalletApiProtocol
     
-    public init(connection: LndConnection) {
+    public init(connection: LightningConnection) {
         switch connection {
         #if !LOCALONLY
         case .local:

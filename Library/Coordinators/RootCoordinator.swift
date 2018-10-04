@@ -10,7 +10,7 @@ import UIKit
 
 public final class RootCoordinator: NSObject, SetupCoordinatorDelegate, PinCoordinatorDelegate, SettingsDelegate, SyncDelegate, Routing {
     private let rootViewController: RootViewController
-    private let rootViewModel: RootViewModel
+    private let connectionService: ConnectionService
     private let authenticationCoordinator: AuthenticationCoordinator
     private let backgroundCoordinator: BackgroundCoordinator
     
@@ -23,7 +23,7 @@ public final class RootCoordinator: NSObject, SetupCoordinatorDelegate, PinCoord
     
     public init(window: UIWindow) {
         rootViewController = Storyboard.root.initial(viewController: RootViewController.self)
-        rootViewModel = RootViewModel()
+        connectionService = ConnectionService()
         authenticationCoordinator = AuthenticationCoordinator(rootViewController: rootViewController)
         backgroundCoordinator = BackgroundCoordinator(rootViewController: rootViewController)
         
@@ -31,15 +31,15 @@ public final class RootCoordinator: NSObject, SetupCoordinatorDelegate, PinCoord
         window.tintColor = UIColor.Zap.lightningOrange
         Appearance.setup()
         
-        rootViewModel.start()
         super.init()
+        start()
         
-        updateFor(state: rootViewModel.state.value)
+        updateFor(state: connectionService.state.value)
         listenForStateChanges()
     }
     
     public func listenForStateChanges() {
-        rootViewModel.state
+        connectionService.state
             .skip(first: 1)
             .distinct()
             .observeOn(DispatchQueue.main)
@@ -48,7 +48,7 @@ public final class RootCoordinator: NSObject, SetupCoordinatorDelegate, PinCoord
             }.dispose(in: reactive.bag)
     }
     
-    private func updateFor(state: RootViewModel.State) {
+    private func updateFor(state: ConnectionService.State) {
         print("🗽 state:", state)
 
         switch state {
@@ -76,17 +76,23 @@ public final class RootCoordinator: NSObject, SetupCoordinatorDelegate, PinCoord
     
     public func applicationWillEnterForeground() {
         backgroundCoordinator.applicationWillEnterForeground()
-        rootViewModel.start()
+        start()
+    }
+    
+    private func start() {
+        connectionService.start()
+        ExchangeUpdaterJob.start()
     }
     
     public func applicationDidEnterBackground() {
         backgroundCoordinator.applicationDidEnterBackground()
         route = nil // reset route when app enters background
-        rootViewModel.stop()
+        connectionService.stop()
+        ExchangeUpdaterJob.stop()
     }
     
     private func presentMain() {
-        guard let lightningService = rootViewModel.lightningService else { return }
+        guard let lightningService = connectionService.lightningService else { return }
         
         let tabBarController = RootTabBarController()
         
@@ -110,13 +116,13 @@ public final class RootCoordinator: NSObject, SetupCoordinatorDelegate, PinCoord
     }
     
     private func presentSetup() {
-        let setupCoordinator = SetupCoordinator(rootViewController: rootViewController, rootViewModel: rootViewModel, authenticationViewModel: authenticationCoordinator.authenticationViewModel, delegate: self)
+        let setupCoordinator = SetupCoordinator(rootViewController: rootViewController, connectionService: connectionService, authenticationViewModel: authenticationCoordinator.authenticationViewModel, delegate: self)
         currentCoordinator = setupCoordinator
         setupCoordinator.start()
     }
     
     private func presentSync() {
-        guard let lightningService = rootViewModel.lightningService else { return }
+        guard let lightningService = connectionService.lightningService else { return }
         let viewController = UIStoryboard.instantiateSyncViewController(with: lightningService, delegate: self)
         presentViewController(viewController)
     }
@@ -137,10 +143,10 @@ public final class RootCoordinator: NSObject, SetupCoordinatorDelegate, PinCoord
     }
     
     func connect() {
-        rootViewModel.connect()
+        connectionService.connect()
     }
     
     func disconnect() {
-        rootViewModel.disconnect()
+        connectionService.disconnect()
     }
 }

@@ -173,7 +173,7 @@ final class LightningApiMock: LightningApiProtocol {
     }
 }
 
-enum ApiMockTemplate {
+public enum ApiMockTemplate {
     case syncedEmpty
     case oneChannel
     case manyChannels
@@ -182,9 +182,9 @@ enum ApiMockTemplate {
     case transactions
     case everything
     
-    static let selected: ApiMockTemplate = .mainnet
+    public static let selected: ApiMockTemplate = .mainnet
     
-    var instance: LightningApiMock {
+    public var instance: LightningApiProtocol {
         switch self {
         case .syncedEmpty:
             return LightningApiMock()

@@ -7,11 +7,10 @@
 
 import Bond
 import Foundation
-import Lightning
 import SwiftLnd
 
-final class RootViewModel: NSObject {
-    enum State {
+public final class ConnectionService: NSObject {
+    public enum State {
         case noWallet
         case connecting
         case noInternet
@@ -19,27 +18,26 @@ final class RootViewModel: NSObject {
         case running
     }
     
-    let state = Observable<State>(.connecting)
+    public let state = Observable<State>(.connecting)
     
     private var connectionTimeoutTimer: Timer?
     private var syncingStartTime: Date?
     
-    private(set) var lightningService: LightningService? {
+    public private(set) var lightningService: LightningService? {
         didSet {
             bindStateToLnd()
         }
     }
     var walletService: WalletService {
-        return WalletService(connection: LndConnection.current)
+        return WalletService(connection: LightningConnection.current)
     }
 
-    func start() {
-        ExchangeUpdaterJob.start()
+    public func start() {
         setInitialState()
     }
     
     private func setInitialState() {
-        switch LndConnection.current {
+        switch LightningConnection.current {
         case .none:
             state.value = .noWallet
         default:
@@ -48,17 +46,15 @@ final class RootViewModel: NSObject {
         }
     }
     
-    func stop() {
-        ExchangeUpdaterJob.stop()
+    public func stop() {
         lightningService?.stop()
         LocalLnd.stop()
     }
     
-    func connect() {
-        // TODO: move this shit to Lightning target
+    public func connect() {
         state.value = .connecting
         
-        let connection = LndConnection.current
+        let connection = LightningConnection.current
         
         #if !LOCALONLY
         if case .local = connection {
@@ -76,7 +72,7 @@ final class RootViewModel: NSObject {
         }
     }
     
-    func disconnect() {
+    public func disconnect() {
         self.lightningService = nil
         lightningService?.stop()
         setInitialState()
@@ -96,7 +92,7 @@ final class RootViewModel: NSObject {
             .dispose(in: reactive.bag)
     }
     
-    private func stateForInfoState(_ state: InfoService.State) -> RootViewModel.State {
+    private func stateForInfoState(_ state: InfoService.State) -> ConnectionService.State {
         switch state {
         case .connecting:
             return handleConnectingState()
@@ -110,7 +106,7 @@ final class RootViewModel: NSObject {
     }
     
     private func handleConnectingState() -> State {
-        if case .remote = LndConnection.current {
+        if case .remote = LightningConnection.current {
             lightningService?.stop()
             lightningService = nil
             return .noWallet
