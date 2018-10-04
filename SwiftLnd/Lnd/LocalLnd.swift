@@ -10,7 +10,6 @@
 import Foundation
 import Lndmobile
 
-// TODO: should be private
 public enum LocalLnd {
     public private(set) static var isRunning = false
     

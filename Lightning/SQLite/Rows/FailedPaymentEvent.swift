@@ -33,6 +33,10 @@ extension FailedPaymentEvent {
         self.paymentRequest = paymentRequest.raw
         node = ConnectedNode(pubKey: paymentRequest.destination, alias: nil, color: nil)
     }
+    
+    public var isExpired: Bool {
+        return expiry < Date()
+    }
 }
 
 // MARK: - Persistence

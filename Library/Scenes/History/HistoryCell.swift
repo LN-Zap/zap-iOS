@@ -199,8 +199,11 @@ final class HistoryCell: BondTableViewCell {
         descriptionLabel.textColor = UIColor.Zap.gray
         setAmount(-failedPaymentEvent.amount, completed: false)
         addNotificationLabel(type: .error)
-        buttonContainer.isHidden = false
-        actionButton.setTitle("scene.history.cell.action.try_again".localized, for: .normal)
+        
+        if !failedPaymentEvent.isExpired {
+            buttonContainer.isHidden = false
+            actionButton.setTitle("scene.history.cell.action.try_again".localized, for: .normal)
+        }
     }
     
     func setLightningPaymentEvent(_ lightningPaymentEvent: LightningPaymentEvent) {
