@@ -47,16 +47,16 @@ public final class ChannelService {
         }
     }
     
-    public func open(pubKey: String, host: String, amount: Satoshi, completion: @escaping (SwiftLnd.Result<ChannelPoint>) -> Void) {
+    public func open(lightningNodeURI: LightningNodeURI, amount: Satoshi, completion: @escaping (SwiftLnd.Result<ChannelPoint>) -> Void) {
         api.peers { [weak self, api] peers in
-            if peers.value?.contains(where: { $0.pubKey == pubKey }) == true {
-                self?.openConnectedChannel(pubKey: pubKey, amount: amount, completion: completion)
+            if peers.value?.contains(where: { $0.pubKey == lightningNodeURI.pubKey }) == true {
+                self?.openConnectedChannel(pubKey: lightningNodeURI.pubKey, amount: amount, completion: completion)
             } else {
-                api.connect(pubKey: pubKey, host: host) { result in
+                api.connect(pubKey: lightningNodeURI.pubKey, host: lightningNodeURI.host) { result in
                     if let error = result.error {
                         completion(.failure(error))
                     } else {
-                        self?.openConnectedChannel(pubKey: pubKey, amount: amount, completion: completion)
+                        self?.openConnectedChannel(pubKey: lightningNodeURI.pubKey, amount: amount, completion: completion)
                     }
                 }
             }

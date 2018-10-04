@@ -11,6 +11,11 @@ import Foundation
 import Lightning
 import SwiftLnd
 
+public enum Layer {
+    case onChain
+    case lightning
+}
+
 // Only used by Messages Extension
 public enum RequestViewModelFactory {
     public static func create() -> RequestViewModel? {

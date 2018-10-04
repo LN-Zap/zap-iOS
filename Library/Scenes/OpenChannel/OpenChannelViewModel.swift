@@ -23,6 +23,6 @@ final class OpenChannelViewModel {
     }
     
     func openChannel(completion: @escaping (Result<ChannelPoint>) -> Void) {
-        lightningService.channelService.open(pubKey: lightningNodeURI.pubKey, host: lightningNodeURI.host, amount: amount, completion: completion)
+        lightningService.channelService.open(lightningNodeURI: lightningNodeURI, amount: amount, completion: completion)
     }
 }

@@ -219,7 +219,6 @@
 		AD97A91420EFCFC3008344EA /* Bitcoin+Localizable.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD97A91320EFCFC3008344EA /* Bitcoin+Localizable.swift */; };
 		AD97A91820EFEEB8008344EA /* PaymentURI.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD97A91720EFEEB8008344EA /* PaymentURI.swift */; };
 		AD97A91A20F09699008344EA /* ReportIssueSettingsItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD97A91920F09699008344EA /* ReportIssueSettingsItem.swift */; };
-		AD9920232146E13B000F20AE /* Layer.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD9920222146E13B000F20AE /* Layer.swift */; };
 		ADA179BE21515095001401F3 /* SectionHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADA179BD21515095001401F3 /* SectionHeaderView.swift */; };
 		ADA179C02151509E001401F3 /* SectionHeaderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = ADA179BF2151509E001401F3 /* SectionHeaderView.xib */; };
 		ADA179C221526036001401F3 /* EventProtocols.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADA179C121526036001401F3 /* EventProtocols.swift */; };
@@ -723,7 +722,6 @@
 		AD97A91720EFEEB8008344EA /* PaymentURI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaymentURI.swift; sourceTree = "<group>"; };
 		AD97A91920F09699008344EA /* ReportIssueSettingsItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReportIssueSettingsItem.swift; sourceTree = "<group>"; };
 		AD97A91C20F0FA92008344EA /* ChannelCloseSummary.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChannelCloseSummary.swift; sourceTree = "<group>"; };
-		AD9920222146E13B000F20AE /* Layer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Layer.swift; sourceTree = "<group>"; };
 		AD99C9EC209072710061C565 /* QRCodeScanner.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = QRCodeScanner.storyboard; sourceTree = "<group>"; };
 		AD99C9EE209076650061C565 /* QRCodeScannerStrategy.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QRCodeScannerStrategy.swift; sourceTree = "<group>"; };
 		AD99C9F020907AB30061C565 /* OpenChannelQRCodeScannerStrategy.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OpenChannelQRCodeScannerStrategy.swift; sourceTree = "<group>"; };
@@ -1222,10 +1220,9 @@
 		A07C1034203DE3D0006C7FE8 /* Services */ = {
 			isa = PBXGroup;
 			children = (
+				AD3781C3216617CB0083CE77 /* Misc */,
 				ADA6D2C420AC1DDE009398A5 /* BalanceService.swift */,
-				A0D3C97F20629B9D0015C5D7 /* BlockChainHeightUpdater.swift */,
 				ADA6D2C620AC2406009398A5 /* ChannelService.swift */,
-				ADA179C321527AEA001401F3 /* HistoryEventType.swift */,
 				ADC48CA82150FBA200949CD9 /* HistoryService.swift */,
 				ADA6D2C220AC1BD2009398A5 /* InfoService.swift */,
 				A07C1035203DE3E6006C7FE8 /* LightningService.swift */,
@@ -1247,7 +1244,6 @@
 				79BED151A3179927B0FEA963 /* Pods */,
 				A0A05A002013CF960007D1C9 /* Products */,
 				ADADAD642143B2E700A48E1F /* SwiftLnd */,
-				ADADAD712143B2E700A48E1F /* SwiftLndTests */,
 				A0A05A012013CF960007D1C9 /* Zap */,
 				AD391D4220D17FA9007EE22A /* ZapMessages */,
 			);
@@ -1484,6 +1480,16 @@
 			path = "New Group";
 			sourceTree = "<group>";
 		};
+		AD3781C3216617CB0083CE77 /* Misc */ = {
+			isa = PBXGroup;
+			children = (
+				A0D3C97F20629B9D0015C5D7 /* BlockChainHeightUpdater.swift */,
+				ADA179C321527AEA001401F3 /* HistoryEventType.swift */,
+				AD97A90E20EFC1E6008344EA /* LightningNodeURI.swift */,
+			);
+			path = Misc;
+			sourceTree = "<group>";
+		};
 		AD391C1920D16ED4007EE22A /* Library */ = {
 			isa = PBXGroup;
 			children = (
@@ -1531,17 +1537,15 @@
 		AD536BE720E62763002279BC /* Lightning */ = {
 			isa = PBXGroup;
 			children = (
-				AD5EA1E1213D827B00AB8031 /* README.md */,
-				AD536BF420E62764002279BC /* Tests */,
 				AD536BE820E62763002279BC /* Lightning.h */,
+				AD5EA1E1213D827B00AB8031 /* README.md */,
 				AD536BE920E62763002279BC /* Info.plist */,
-				AD97A90E20EFC1E6008344EA /* LightningNodeURI.swift */,
 				ADEF96BB21078C31006AE1EC /* Certificates */,
-				ADFB36F121466AF200146FCC /* SQLite */,
 				AD28844221281F9E003C3D94 /* Invoice */,
 				AD967FE12105FD400048085B /* QrCodes */,
 				A07C1034203DE3D0006C7FE8 /* Services */,
-				AD9920222146E13B000F20AE /* Layer.swift */,
+				ADFB36F121466AF200146FCC /* SQLite */,
+				AD536BF420E62764002279BC /* Tests */,
 			);
 			path = Lightning;
 			sourceTree = "<group>";
@@ -1754,23 +1758,24 @@
 				AD2D912821554D61001015B6 /* Lndmobile.framework */,
 				ADADAD652143B2E700A48E1F /* SwiftLnd.h */,
 				ADADAD662143B2E700A48E1F /* Info.plist */,
-				ADFEFA7620E629AA00FE1557 /* String.swift */,
 				ADCD060020E67FA5009D9650 /* Environment.swift */,
+				ADFEFA7620E629AA00FE1557 /* String.swift */,
 				ADBB36282080B2AE005662B4 /* TestingTemplates.swift */,
+				A0D3C97B20616A9A0015C5D7 /* Api */,
 				A0376B70201CC16D00F1FBEF /* Lnd */,
 				A0A05A5A20149AF80007D1C9 /* Model */,
-				A0D3C97B20616A9A0015C5D7 /* Api */,
+				ADADAD712143B2E700A48E1F /* Tests */,
 			);
 			path = SwiftLnd;
 			sourceTree = "<group>";
 		};
-		ADADAD712143B2E700A48E1F /* SwiftLndTests */ = {
+		ADADAD712143B2E700A48E1F /* Tests */ = {
 			isa = PBXGroup;
 			children = (
 				ADADAD722143B2E700A48E1F /* SwiftLndTests.swift */,
 				ADADAD742143B2E700A48E1F /* Info.plist */,
 			);
-			path = SwiftLndTests;
+			path = Tests;
 			sourceTree = "<group>";
 		};
 		ADBA120720935871001F7700 /* AmountInput */ = {
@@ -2883,7 +2888,6 @@
 				ADFEFA6E20E627F100FE1557 /* TransactionService.swift in Sources */,
 				ADFEFA7920E62B1800FE1557 /* BlockChainHeightUpdater.swift in Sources */,
 				AD967FE32105FD770048085B /* BTCPayQRCode.swift in Sources */,
-				AD9920232146E13B000F20AE /* Layer.swift in Sources */,
 				ADF0930F2148FA7300B48853 /* CreateInvoiceEvent.swift in Sources */,
 				ADFEFA6C20E627F100FE1557 /* InfoService.swift in Sources */,
 				ADA179C82153997B001401F3 /* Persistence.swift in Sources */,
@@ -4089,7 +4093,7 @@
 				CLANG_ENABLE_OBJC_WEAK = YES;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = CS73H95RB8;
-				INFOPLIST_FILE = SwiftLndTests/Info.plist;
+				INFOPLIST_FILE = SwiftLnd/Tests/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 11.4;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.jackmallers.SwiftLndTests;
@@ -4107,7 +4111,7 @@
 				CLANG_ENABLE_OBJC_WEAK = YES;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = CS73H95RB8;
-				INFOPLIST_FILE = SwiftLndTests/Info.plist;
+				INFOPLIST_FILE = SwiftLnd/Tests/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 11.4;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.jackmallers.SwiftLndTests;
@@ -4125,7 +4129,7 @@
 				CLANG_ENABLE_OBJC_WEAK = YES;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = CS73H95RB8;
-				INFOPLIST_FILE = SwiftLndTests/Info.plist;
+				INFOPLIST_FILE = SwiftLnd/Tests/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 11.4;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.jackmallers.SwiftLndTests;
