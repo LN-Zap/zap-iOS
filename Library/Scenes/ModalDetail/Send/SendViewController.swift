@@ -37,7 +37,7 @@ final class SendViewController: ModalDetailViewController {
         
         contentStackView.addArrangedElement(.label(text: viewModel.method.headline, style: Style.Label.headline.with({ $0.textAlignment = .center })))
         contentStackView.addArrangedElement(.separator)
-        contentStackView.addArrangedElement(.horizontalStackView(content: [
+        contentStackView.addArrangedElement(.horizontalStackView(compressionResistant: .first, content: [
             .label(text: "scene.send.address_headline".localized, style: Style.Label.headline),
             .label(text: viewModel.receiver, style: Style.Label.body)
         ]))

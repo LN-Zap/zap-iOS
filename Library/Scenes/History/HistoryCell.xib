@@ -24,61 +24,6 @@
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="7" translatesAutoresizingMaskIntoConstraints="NO" id="Hec-HA-k8u">
                                 <rect key="frame" x="20" y="15" width="406" height="113"/>
-                                <subviews>
-                                    <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="bXJ-BV-jEp">
-                                        <rect key="frame" x="0.0" y="0.0" width="406" height="20.5"/>
-                                        <subviews>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="uhS-hA-LJt">
-                                                <rect key="frame" x="0.0" y="0.0" width="364" height="20.5"/>
-                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                <nil key="textColor"/>
-                                                <nil key="highlightedColor"/>
-                                            </label>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="252" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0kY-n3-LtJ">
-                                                <rect key="frame" x="364" y="0.0" width="42" height="20.5"/>
-                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                <nil key="textColor"/>
-                                                <nil key="highlightedColor"/>
-                                            </label>
-                                        </subviews>
-                                    </stackView>
-                                    <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="h5e-hS-tM9">
-                                        <rect key="frame" x="0.0" y="27.5" width="406" height="20.5"/>
-                                        <subviews>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Mio-3p-7AC">
-                                                <rect key="frame" x="0.0" y="0.0" width="364" height="20.5"/>
-                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                <nil key="textColor"/>
-                                                <nil key="highlightedColor"/>
-                                            </label>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="252" verticalHuggingPriority="251" horizontalCompressionResistancePriority="800" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wtZ-z6-ozl" customClass="PaddingLabel" customModule="Library" customModuleProvider="target">
-                                                <rect key="frame" x="364" y="0.0" width="42" height="20.5"/>
-                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                <nil key="textColor"/>
-                                                <nil key="highlightedColor"/>
-                                            </label>
-                                        </subviews>
-                                    </stackView>
-                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="wFH-g7-w7J">
-                                        <rect key="frame" x="0.0" y="55" width="406" height="58"/>
-                                        <subviews>
-                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="O20-vs-2Mx">
-                                                <rect key="frame" x="0.0" y="15" width="46" height="43"/>
-                                                <state key="normal" title="Button"/>
-                                                <connections>
-                                                    <action selector="actionButtonTapped:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="2qa-MA-RiV"/>
-                                                </connections>
-                                            </button>
-                                        </subviews>
-                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                        <constraints>
-                                            <constraint firstItem="O20-vs-2Mx" firstAttribute="leading" secondItem="wFH-g7-w7J" secondAttribute="leading" id="1q9-0i-D0r"/>
-                                            <constraint firstItem="O20-vs-2Mx" firstAttribute="top" secondItem="wFH-g7-w7J" secondAttribute="top" constant="15" id="940-qk-llS"/>
-                                            <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="O20-vs-2Mx" secondAttribute="trailing" id="spa-9w-kcF"/>
-                                            <constraint firstAttribute="bottom" secondItem="O20-vs-2Mx" secondAttribute="bottom" id="yxR-tP-4QI"/>
-                                        </constraints>
-                                    </view>
-                                </subviews>
                             </stackView>
                         </subviews>
                         <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -111,15 +56,10 @@
             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
             <connections>
-                <outlet property="actionButton" destination="O20-vs-2Mx" id="eov-aA-ScY"/>
-                <outlet property="amountLabel" destination="wtZ-z6-ozl" id="e9v-o5-P0f"/>
-                <outlet property="buttonContainer" destination="wFH-g7-w7J" id="y9R-1D-STP"/>
                 <outlet property="containerView" destination="wNP-Sw-iy2" id="4fY-n7-rCd"/>
-                <outlet property="dateLabel" destination="0kY-n3-LtJ" id="H6O-WV-FU4"/>
-                <outlet property="descriptionLabel" destination="Mio-3p-7AC" id="hc7-Vf-apZ"/>
                 <outlet property="notificationLabel" destination="GLd-kB-AES" id="dBq-LU-Ftj"/>
                 <outlet property="notificationTopConstraint" destination="6wL-rh-Qx4" id="qjh-J4-gLf"/>
-                <outlet property="titleLabel" destination="uhS-hA-LJt" id="TDn-9d-h8U"/>
+                <outlet property="stackView" destination="Hec-HA-k8u" id="qtI-aR-tpj"/>
             </connections>
             <point key="canvasLocation" x="-22" y="113"/>
         </tableViewCell>

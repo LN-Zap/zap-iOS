@@ -29,17 +29,11 @@ final class HistoryCell: BondTableViewCell {
     }
     
     @IBOutlet private weak var containerView: UIView!
-    @IBOutlet private weak var titleLabel: UILabel!
-    @IBOutlet private weak var dateLabel: UILabel!
-    @IBOutlet private weak var descriptionLabel: UILabel!
-    @IBOutlet private weak var amountLabel: PaddingLabel!
-    @IBOutlet private weak var buttonContainer: UIView!
-    @IBOutlet private weak var actionButton: UIButton!
+    @IBOutlet private weak var stackView: UIStackView!
     @IBOutlet private weak var notificationLabel: PaddingLabel!
     @IBOutlet private var notificationTopConstraint: NSLayoutConstraint!
     
     private weak var delegate: HistoryCellDelegate?
-    private var failedPaymentEvent: FailedPaymentEvent?
     
     func addNotificationLabel(type: NotificationType) {
         let (color, text) = type.style
@@ -57,12 +51,7 @@ final class HistoryCell: BondTableViewCell {
     override func prepareForReuse() {
         super.prepareForReuse()
         
-        amountLabel.backgroundColor = .clear
-        amountLabel.textColor = UIColor.Zap.white
-        amountLabel.edgeInsets = .zero
-        
-        buttonContainer.isHidden = true
-        
+        stackView.clear()
         setNotificationLabelHidden(true)
     }
     
@@ -73,11 +62,6 @@ final class HistoryCell: BondTableViewCell {
 
         containerView.backgroundColor = UIColor.Zap.seaBlue
         containerView.layer.cornerRadius = Appearance.Constants.modalCornerRadius
-        
-        Style.Label.headline.apply(to: titleLabel)
-        Style.Label.body.apply(to: descriptionLabel, amountLabel)
-        Style.Label.footnote.apply(to: dateLabel)
-        buttonContainer.isHidden = true
         
         Style.Label.footnote.apply(to: notificationLabel)
         notificationLabel.textColor = UIColor.Zap.white
@@ -111,20 +95,15 @@ final class HistoryCell: BondTableViewCell {
         }
     }
     
-    private func setDate(_ date: Date) {
-        let timeFormatter = DateFormatter()
-        timeFormatter.dateStyle = .none
-        timeFormatter.timeStyle = .short
-        timeFormatter.doesRelativeDateFormatting = true
-        dateLabel.text = timeFormatter.string(from: date)
-    }
-    
-    private func setAmount(_ amount: Satoshi?, completed: Bool = true) {
+    private func amountLabel(_ amount: Satoshi?, completed: Bool = true) -> UILabel {
+        let amountLabel = PaddingLabel(frame: CGRect(x: 0, y: 0, width: 10, height: 10))
+        Style.Label.body.apply(to: amountLabel)
+
         if let amount = amount {
             amount
                 .bind(to: amountLabel.reactive.text, currency: Settings.shared.primaryCurrency)
                 .dispose(in: onReuseBag)
-            
+
             if !completed {
                 amountLabel.textColor = UIColor.Zap.gray
             } else if amount > 0 {
@@ -137,100 +116,122 @@ final class HistoryCell: BondTableViewCell {
         } else {
             amountLabel.text = nil
         }
+        return amountLabel
     }
     
     func setTransactionEvent(_ transactionEvent: TransactionEvent) {
-        if transactionEvent.amount < 0 {
-            titleLabel.text = "scene.history.cell.transaction_sent".localized
-        } else {
-            titleLabel.text = "scene.history.cell.transaction_received".localized
-        }
-        setDate(transactionEvent.date)
-        descriptionLabel.text = transactionEvent.memo ?? transactionEvent.destinationAddresses.first?.string ?? "transaction.no_destination_address".localized
-        descriptionLabel.textColor = UIColor.Zap.white
-        setAmount(transactionEvent.amount)
+        let title = transactionEvent.amount < 0 ? "scene.history.cell.transaction_sent".localized : "scene.history.cell.transaction_received".localized
+        setTitle(title, date: transactionEvent.date)
+
+        let description = transactionEvent.memo ?? transactionEvent.destinationAddresses.first?.string ?? "transaction.no_destination_address".localized
+        
+        stackView.addArrangedElement(.horizontalStackView(compressionResistant: .last, content: [
+            .label(text: description, style: Style.Label.body),
+            .customView(amountLabel(transactionEvent.amount), height: 22)
+        ]))
     }
     
     func setChannelEvent(_ wrapped: DateWrappedChannelEvent) {
+        let title: String
         switch wrapped.channelEvent.type {
         case .open:
-            titleLabel.text = "scene.history.cell.channel_opened".localized
+            title = "scene.history.cell.channel_opened".localized
         case .cooperativeClose, .unknown:
-            titleLabel.text = "scene.history.cell.channel_closed".localized
+            title = "scene.history.cell.channel_closed".localized
         case .localForceClose:
-            titleLabel.text = "scene.history.cell.force_close_channel".localized
+            title = "scene.history.cell.force_close_channel".localized
         case .remoteForceClose:
-            titleLabel.text = "scene.history.cell.remote_force_close_channel".localized
+            title = "scene.history.cell.remote_force_close_channel".localized
         case .breachClose:
-            titleLabel.text = "scene.history.cell.breach_close_channel".localized
+            title = "scene.history.cell.breach_close_channel".localized
         case .fundingCanceled:
-            titleLabel.text = "scene.history.cell.close_channel_funding_canceled".localized
+            title = "scene.history.cell.close_channel_funding_canceled".localized
         case .abandoned:
-            titleLabel.text = "scene.history.cell.channel_abandoned".localized
+            title = "scene.history.cell.channel_abandoned".localized
         }
-        
-        descriptionLabel.text = wrapped.channelEvent.node.alias ?? wrapped.channelEvent.node.pubKey
-        descriptionLabel.textColor = UIColor.Zap.white
-        
-        setDate(wrapped.date)
-        
-        if let amount = wrapped.channelEvent.fee, amount > 0 {
-            setAmount(-amount)
+
+        setTitle(title, date: wrapped.date)
+
+        let amount: Satoshi?
+        if let newAmount = wrapped.channelEvent.fee, newAmount > 0 {
+            amount = -newAmount
         } else {
-            setAmount(nil)
+            amount = nil
         }
+        
+        stackView.addArrangedElement(.horizontalStackView(compressionResistant: .last, content: [
+            .label(text: wrapped.channelEvent.node.alias ?? wrapped.channelEvent.node.pubKey, style: Style.Label.body),
+            .customView(amountLabel(amount), height: 22)
+        ]))
+    }
+    
+    private func setTitle(_ title: String, date: Date) {
+        let timeFormatter = DateFormatter()
+        timeFormatter.dateStyle = .none
+        timeFormatter.timeStyle = .short
+        timeFormatter.doesRelativeDateFormatting = true
+        let dateString = timeFormatter.string(from: date)
+        
+        stackView.addArrangedElement(.horizontalStackView(compressionResistant: .last, content: [
+            .label(text: title, style: Style.Label.headline),
+            .label(text: dateString, style: Style.Label.footnote)
+        ]))
     }
     
     func setCreateInvoiceEvent(_ createInvoiceEvent: CreateInvoiceEvent) {
-        titleLabel.text = "scene.history.cell.invoice_created".localized
-        setDate(createInvoiceEvent.date)
-        descriptionLabel?.text = createInvoiceEvent.memo ?? createInvoiceEvent.paymentRequest
-        descriptionLabel.textColor = UIColor.Zap.gray
-        setAmount(createInvoiceEvent.amount, completed: false)
+        setTitle("scene.history.cell.invoice_created".localized, date: createInvoiceEvent.date)
+        
+        stackView.addArrangedElement(.horizontalStackView(compressionResistant: .last, content: [
+            .label(text: createInvoiceEvent.memo ?? createInvoiceEvent.paymentRequest, style: Style.Label.body),
+            .customView(amountLabel(createInvoiceEvent.amount), height: 22)
+        ]))
     }
     
     func setFailedPaymentEvent(_ failedPaymentEvent: FailedPaymentEvent, delegate: HistoryCellDelegate) {
-        self.failedPaymentEvent = failedPaymentEvent
         self.delegate = delegate
         
-        titleLabel.text = String(format: "scene.history.cell.payment_failed".localized, failedPaymentEvent.node.alias ?? failedPaymentEvent.node.pubKey)
-        setDate(failedPaymentEvent.date)
-        descriptionLabel?.text = failedPaymentEvent.memo ?? failedPaymentEvent.paymentRequest
-        descriptionLabel.textColor = UIColor.Zap.gray
-        setAmount(-failedPaymentEvent.amount, completed: false)
-        addNotificationLabel(type: .error)
+        let title = String(format: "scene.history.cell.payment_failed".localized, failedPaymentEvent.node.alias ?? failedPaymentEvent.node.pubKey)
+        setTitle(title, date: failedPaymentEvent.date)
         
+        let description = failedPaymentEvent.memo ?? failedPaymentEvent.paymentRequest
+        
+        stackView.addArrangedElement(.horizontalStackView(compressionResistant: .last, content: [
+            .label(text: description, style: Style.Label.body),
+            .customView(amountLabel(-failedPaymentEvent.amount), height: 22)
+        ]))
+        
+        addNotificationLabel(type: .error)
+
         if !failedPaymentEvent.isExpired {
-            buttonContainer.isHidden = false
-            actionButton.setTitle("scene.history.cell.action.try_again".localized, for: .normal)
+            stackView.addArrangedElement(.button(title: "scene.history.cell.action.try_again".localized, style: Style.Button.custom(), completion: { [weak self] _ in
+                self?.delegate?.resendFailedPayment(failedPaymentEvent)
+            }))
         }
     }
     
     func setLightningPaymentEvent(_ lightningPaymentEvent: LightningPaymentEvent) {
-        func setTitle(formatString: String, fallback: String) {
+        func titleFor(formatString: String, fallback: String) -> String {
             if let nodeAlias = lightningPaymentEvent.node?.alias {
-                titleLabel.text = String(format: formatString, nodeAlias)
+                return String(format: formatString, nodeAlias)
             } else if let nodePubKey = lightningPaymentEvent.node?.pubKey {
-                titleLabel.text = String(format: formatString, nodePubKey)
+                return String(format: formatString, nodePubKey)
             } else {
-                titleLabel.text = fallback
+                return fallback
             }
         }
-        
+
+        let title: String
         if lightningPaymentEvent.amount < 0 {
-            setTitle(formatString: "scene.history.cell.payment_sent_to".localized, fallback: "scene.history.cell.payment_sent".localized)
+            title = titleFor(formatString: "scene.history.cell.payment_sent_to".localized, fallback: "scene.history.cell.payment_sent".localized)
         } else {
-            setTitle(formatString: "scene.history.cell.payment_received_from".localized, fallback: "scene.history.cell.payment_received".localized)
+            title = titleFor(formatString: "scene.history.cell.payment_received_from".localized, fallback: "scene.history.cell.payment_received".localized)
         }
         
-        setDate(lightningPaymentEvent.date)
-        setAmount(lightningPaymentEvent.amount, completed: true)
-        descriptionLabel?.text = lightningPaymentEvent.memo ?? lightningPaymentEvent.paymentHash
-    }
-    
-    @IBAction private func actionButtonTapped(_ sender: Any) {
-        if let failedPaymentEvent = failedPaymentEvent {
-            delegate?.resendFailedPayment(failedPaymentEvent)
-        }
+        setTitle(title, date: lightningPaymentEvent.date)
+        
+        stackView.addArrangedElement(.horizontalStackView(compressionResistant: .last, content: [
+            .label(text: lightningPaymentEvent.memo ?? lightningPaymentEvent.paymentHash, style: Style.Label.body),
+            .customView(amountLabel(lightningPaymentEvent.amount), height: 22)
+        ]))
     }
 }

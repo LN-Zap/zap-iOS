@@ -12,11 +12,16 @@ indirect enum StackViewElement {
     case amountLabel(amount: Satoshi, style: UIViewStyle<UILabel>)
     case verticalStackView(content: [StackViewElement], spacing: CGFloat)
     case label(text: String, style: UIViewStyle<UILabel>)
-    case horizontalStackView(content: [StackViewElement])
+    case horizontalStackView(compressionResistant: HorizontalPriority, content: [StackViewElement])
     case button(title: String, style: UIViewStyle<UIButton>, completion: (UIButton) -> Void)
     case separator
     case customView(UIView, height: CGFloat)
     case customHeight(CGFloat, element: StackViewElement)
+    
+    enum HorizontalPriority {
+        case first
+        case last
+    }
     
     var height: CGFloat {
         switch self {
@@ -66,13 +71,13 @@ indirect enum StackViewElement {
             label.setContentCompressionResistancePriority(.required, for: .horizontal)
             result = label
             
-        case .horizontalStackView(let content):
+        case let .horizontalStackView(compressionResistant, content):
             let stackView = UIStackView(elements: content)
             stackView.axis = .horizontal
             stackView.spacing = 5
-            stackView.arrangedSubviews.first?.setContentCompressionResistancePriority(.required, for: .horizontal)
+            stackView.arrangedSubviews.first?.setContentCompressionResistancePriority(compressionResistant == .first ? .required : .defaultLow, for: .horizontal)
             stackView.arrangedSubviews.first?.setContentHuggingPriority(UILayoutPriority(rawValue: 0), for: .horizontal)
-            stackView.arrangedSubviews.last?.setContentCompressionResistancePriority(.defaultLow, for: .horizontal)
+            stackView.arrangedSubviews.last?.setContentCompressionResistancePriority(compressionResistant == .first ? .defaultLow : .required, for: .horizontal)
             stackView.arrangedSubviews.last?.setContentHuggingPriority(.defaultHigh, for: .horizontal)
             result = stackView
             

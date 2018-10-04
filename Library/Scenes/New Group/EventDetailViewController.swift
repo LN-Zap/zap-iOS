@@ -74,7 +74,7 @@ final class EventDetailViewController: ModalDetailViewController {
     }
     
     private func addLabel(title: String, element: StackViewElement) {
-        contentStackView.addArrangedElement(.horizontalStackView(content: [
+        contentStackView.addArrangedElement(.horizontalStackView(compressionResistant: .first, content: [
             .label(text: title, style: Style.Label.headline),
             element
         ]))
