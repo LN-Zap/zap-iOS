@@ -7,6 +7,7 @@
 
 import Lightning
 import UIKit
+import SwiftLnd
 
 protocol SetupCoordinatorDelegate: class {
     func connect()

@@ -28,7 +28,7 @@ public final class ConnectionService: NSObject {
             bindStateToLnd()
         }
     }
-    var walletService: WalletService {
+    public var walletService: WalletService {
         return WalletService(connection: LightningConnection.current)
     }
 
