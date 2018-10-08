@@ -178,14 +178,14 @@
 "scene.modal_pin.headline" = "Enter Passcode";
 "scene.modal_pin.description" = "Please enter your passcode to continue";
 
-"scene.history.cell.payment_sent" = "Payment sent";
+"scene.history.cell.payment_sent" = "Paiement envoyé";
 "scene.history.cell.payment_sent_to" = "Payment sent to: %@";
 "scene.history.cell.payment_received" = "Payment received";
 "scene.history.cell.payment_received_from" = "Payment received from: %@";
 "scene.history.cell.payment_failed" = "Payment failed (%@)";
 "scene.history.cell.invoice_created" = "Payment Request created";
-"scene.history.cell.channel_opened" = "Open Channel";
-"scene.history.cell.channel_closed" = "Close Channel";
+"scene.history.cell.channel_opened" = "Canaux ouverts";
+"scene.history.cell.channel_closed" = "Canaux fermés";
 "scene.history.cell.force_close_channel" = "Force close Channel";
 "scene.history.cell.remote_force_close_channel" = "Remote force close Channel";
 "scene.history.cell.breach_close_channel" = "Breach close Channel";
