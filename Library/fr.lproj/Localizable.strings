@@ -186,7 +186,7 @@
 "scene.history.cell.invoice_created" = "Payment Request created";
 "scene.history.cell.channel_opened" = "Canaux ouverts";
 "scene.history.cell.channel_closed" = "Canaux fermés";
-"scene.history.cell.force_close_channel" = "Force close Channel";
+"scene.history.cell.force_close_channel" = "Fermer de force le canal";
 "scene.history.cell.remote_force_close_channel" = "Remote force close Channel";
 "scene.history.cell.breach_close_channel" = "Breach close Channel";
 "scene.history.cell.close_channel_funding_canceled" = "Close Channel (funding canceled)";
