@@ -43,6 +43,7 @@
 "scene.settings.item.on_chain_request_address.title" = "Bitcoinadressen-Typ";
 "scene.settings.item.on_chain_request_address.bech32" = "Bech32";
 "scene.settings.item.on_chain_request_address.p2sh" = "P2SH";
+"scene.settings.item.manage_channels" = "Manage Channels";
 "scene.settings.item.remove_remote_node" = "Zurücksetzen der Remote-Node-Konfiguration";
 "scene.settings.item.change_pin" = "Pin ändern";
 "scene.settings.item.report_issue" = "Ein Problem melden";
