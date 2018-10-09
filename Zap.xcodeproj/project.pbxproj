@@ -494,19 +494,24 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		174991A27BDA7ED3F838C608 /* Pods-BTCUtil.debugremote.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BTCUtil.debugremote.xcconfig"; path = "Pods/Target Support Files/Pods-BTCUtil/Pods-BTCUtil.debugremote.xcconfig"; sourceTree = "<group>"; };
 		1A358AA2F4BA8374481F47D6 /* Pods-SwiftLnd.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SwiftLnd.debug.xcconfig"; path = "Pods/Target Support Files/Pods-SwiftLnd/Pods-SwiftLnd.debug.xcconfig"; sourceTree = "<group>"; };
 		1AE76001D3BA1FB7EC5FD10C /* Pods-ZapMessages.debuglocal.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ZapMessages.debuglocal.xcconfig"; path = "Pods/Target Support Files/Pods-ZapMessages/Pods-ZapMessages.debuglocal.xcconfig"; sourceTree = "<group>"; };
 		1F81C1A423D4B1E1F9360639 /* Pods-ZapMessages.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ZapMessages.release.xcconfig"; path = "Pods/Target Support Files/Pods-ZapMessages/Pods-ZapMessages.release.xcconfig"; sourceTree = "<group>"; };
 		3441446DFC7B1DCD11C0A9EA /* Pods-ZapTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ZapTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-ZapTests/Pods-ZapTests.release.xcconfig"; sourceTree = "<group>"; };
 		459E9F08A5E1CA4E35D40A9D /* Pods-btcutil.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-btcutil.debug.xcconfig"; path = "Pods/Target Support Files/Pods-btcutil/Pods-btcutil.debug.xcconfig"; sourceTree = "<group>"; };
+		47F37722955C52DD8ED46E9A /* Pods-ZapMessages.debugremote.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ZapMessages.debugremote.xcconfig"; path = "Pods/Target Support Files/Pods-ZapMessages/Pods-ZapMessages.debugremote.xcconfig"; sourceTree = "<group>"; };
 		4C3201DB6F9E61135DF52550 /* Pods-Lightning.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Lightning.release.xcconfig"; path = "Pods/Target Support Files/Pods-Lightning/Pods-Lightning.release.xcconfig"; sourceTree = "<group>"; };
+		55E4DAEC1E111F55B133FB63 /* Pods-Zap.debugremote.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Zap.debugremote.xcconfig"; path = "Pods/Target Support Files/Pods-Zap/Pods-Zap.debugremote.xcconfig"; sourceTree = "<group>"; };
 		56F9802CD861078A576345EB /* Pods_SwiftLnd.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_SwiftLnd.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		5BA7F4159E2F4430CC396CC9 /* Pods-ZapShared.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ZapShared.debug.xcconfig"; path = "Pods/Target Support Files/Pods-ZapShared/Pods-ZapShared.debug.xcconfig"; sourceTree = "<group>"; };
 		5D12676DE05D34DF53BFED4D /* Pods-Library.debuglocal.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Library.debuglocal.xcconfig"; path = "Pods/Target Support Files/Pods-Library/Pods-Library.debuglocal.xcconfig"; sourceTree = "<group>"; };
 		6A284164D7EB6F7A8649DC59 /* Pods-Library.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Library.release.xcconfig"; path = "Pods/Target Support Files/Pods-Library/Pods-Library.release.xcconfig"; sourceTree = "<group>"; };
 		6E4840991E5C8581D6D62A34 /* Pods_ZapMessages.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ZapMessages.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		77F58E5A3EF38A6D39C4A95E /* Pods-Lightning.debuglocal.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Lightning.debuglocal.xcconfig"; path = "Pods/Target Support Files/Pods-Lightning/Pods-Lightning.debuglocal.xcconfig"; sourceTree = "<group>"; };
+		7CDE05914FE5150C977488E9 /* Pods-SwiftLnd.debugremote.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SwiftLnd.debugremote.xcconfig"; path = "Pods/Target Support Files/Pods-SwiftLnd/Pods-SwiftLnd.debugremote.xcconfig"; sourceTree = "<group>"; };
 		7CE8A04FCACE10A7B0FACAE7 /* Pods-btcutil.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-btcutil.release.xcconfig"; path = "Pods/Target Support Files/Pods-btcutil/Pods-btcutil.release.xcconfig"; sourceTree = "<group>"; };
+		8516AF5591FBC5D9D27FA5F2 /* Pods-Lightning.debugremote.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Lightning.debugremote.xcconfig"; path = "Pods/Target Support Files/Pods-Lightning/Pods-Lightning.debugremote.xcconfig"; sourceTree = "<group>"; };
 		8523FC0BE0EA7D00977CBF93 /* Pods-ZapLightning.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ZapLightning.release.xcconfig"; path = "Pods/Target Support Files/Pods-ZapLightning/Pods-ZapLightning.release.xcconfig"; sourceTree = "<group>"; };
 		853E07500DD4084FD1B0C434 /* Pods-Library.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Library.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Library/Pods-Library.debug.xcconfig"; sourceTree = "<group>"; };
 		92F22D865D02B474D402AEFA /* Pods-ZapShared.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ZapShared.release.xcconfig"; path = "Pods/Target Support Files/Pods-ZapShared/Pods-ZapShared.release.xcconfig"; sourceTree = "<group>"; };
@@ -607,6 +612,7 @@
 		A0F9AEE2206E3E0300E93DCA /* InputNumberFormatterTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InputNumberFormatterTests.swift; sourceTree = "<group>"; };
 		A0FBCD90206BBBDF00800515 /* BitcoinUnit.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BitcoinUnit.swift; sourceTree = "<group>"; };
 		A0FBCD92206BBD9800800515 /* SatoshiTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SatoshiTests.swift; sourceTree = "<group>"; };
+		A11A24FE43F9B6412A85C0C8 /* Pods-Library.debugremote.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Library.debugremote.xcconfig"; path = "Pods/Target Support Files/Pods-Library/Pods-Library.debugremote.xcconfig"; sourceTree = "<group>"; };
 		A2EA9EBABE9A17490B3E282A /* Pods-BTCUtil.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BTCUtil.release.xcconfig"; path = "Pods/Target Support Files/Pods-BTCUtil/Pods-BTCUtil.release.xcconfig"; sourceTree = "<group>"; };
 		A8517E12ED19329B536B9504 /* Pods-Lightning.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Lightning.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Lightning/Pods-Lightning.debug.xcconfig"; sourceTree = "<group>"; };
 		AD0D0BC1212BE3C800E4F7F7 /* RequestViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RequestViewController.swift; sourceTree = "<group>"; };
@@ -1038,6 +1044,12 @@
 				1A358AA2F4BA8374481F47D6 /* Pods-SwiftLnd.debug.xcconfig */,
 				CCFC255EDBA08ADC6BE71105 /* Pods-SwiftLnd.debuglocal.xcconfig */,
 				CAD12A67577C1815DFBA2A40 /* Pods-SwiftLnd.release.xcconfig */,
+				174991A27BDA7ED3F838C608 /* Pods-BTCUtil.debugremote.xcconfig */,
+				A11A24FE43F9B6412A85C0C8 /* Pods-Library.debugremote.xcconfig */,
+				8516AF5591FBC5D9D27FA5F2 /* Pods-Lightning.debugremote.xcconfig */,
+				7CDE05914FE5150C977488E9 /* Pods-SwiftLnd.debugremote.xcconfig */,
+				55E4DAEC1E111F55B133FB63 /* Pods-Zap.debugremote.xcconfig */,
+				47F37722955C52DD8ED46E9A /* Pods-ZapMessages.debugremote.xcconfig */,
 			);
 			name = Pods;
 			sourceTree = "<group>";
@@ -3399,7 +3411,7 @@
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 11.2;
 				MTL_ENABLE_DEBUG_INFO = NO;
-				OTHER_SWIFT_FLAGS = "-D LOCALONLY";
+				OTHER_SWIFT_FLAGS = "-D REMOTEONLY";
 				SDKROOT = iphoneos;
 				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
 				VALIDATE_PRODUCT = YES;
@@ -3696,7 +3708,7 @@
 			};
 			name = Release;
 		};
-		AD967FD8210329A70048085B /* DebugLocal */ = {
+		AD967FD8210329A70048085B /* DebugRemote */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
@@ -3769,16 +3781,16 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 11.2;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
-				OTHER_SWIFT_FLAGS = "-D LOCALONLY";
+				OTHER_SWIFT_FLAGS = "-D REMOTEONLY";
 				SDKROOT = iphoneos;
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 			};
-			name = DebugLocal;
+			name = DebugRemote;
 		};
-		AD967FD9210329A70048085B /* DebugLocal */ = {
+		AD967FD9210329A70048085B /* DebugRemote */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = D5AFA4B63CC23943951C157C /* Pods-Zap.debuglocal.xcconfig */;
+			baseConfigurationReference = 55E4DAEC1E111F55B133FB63 /* Pods-Zap.debugremote.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
@@ -3809,11 +3821,11 @@
 				TARGETED_DEVICE_FAMILY = 1;
 				VERSIONING_SYSTEM = "apple-generic";
 			};
-			name = DebugLocal;
+			name = DebugRemote;
 		};
-		AD967FDA210329A70048085B /* DebugLocal */ = {
+		AD967FDA210329A70048085B /* DebugRemote */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 1AE76001D3BA1FB7EC5FD10C /* Pods-ZapMessages.debuglocal.xcconfig */;
+			baseConfigurationReference = 47F37722955C52DD8ED46E9A /* Pods-ZapMessages.debugremote.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = "iMessage App Icon";
 				CLANG_ENABLE_OBJC_WEAK = YES;
@@ -3830,11 +3842,11 @@
 				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = 1;
 			};
-			name = DebugLocal;
+			name = DebugRemote;
 		};
-		AD967FDB210329A70048085B /* DebugLocal */ = {
+		AD967FDB210329A70048085B /* DebugRemote */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = E66FF4DCFB880404F52431E9 /* Pods-BTCUtil.debuglocal.xcconfig */;
+			baseConfigurationReference = 174991A27BDA7ED3F838C608 /* Pods-BTCUtil.debugremote.xcconfig */;
 			buildSettings = {
 				APPLICATION_EXTENSION_API_ONLY = YES;
 				CODE_SIGN_IDENTITY = "";
@@ -3857,9 +3869,9 @@
 				VERSIONING_SYSTEM = "apple-generic";
 				VERSION_INFO_PREFIX = "";
 			};
-			name = DebugLocal;
+			name = DebugRemote;
 		};
-		AD967FDC210329A70048085B /* DebugLocal */ = {
+		AD967FDC210329A70048085B /* DebugRemote */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
@@ -3874,11 +3886,11 @@
 				TARGETED_DEVICE_FAMILY = "1,2";
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Zap.app/Zap";
 			};
-			name = DebugLocal;
+			name = DebugRemote;
 		};
-		AD967FDD210329A70048085B /* DebugLocal */ = {
+		AD967FDD210329A70048085B /* DebugRemote */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 77F58E5A3EF38A6D39C4A95E /* Pods-Lightning.debuglocal.xcconfig */;
+			baseConfigurationReference = 8516AF5591FBC5D9D27FA5F2 /* Pods-Lightning.debugremote.xcconfig */;
 			buildSettings = {
 				APPLICATION_EXTENSION_API_ONLY = YES;
 				CLANG_ENABLE_OBJC_WEAK = YES;
@@ -3909,9 +3921,9 @@
 				VERSIONING_SYSTEM = "apple-generic";
 				VERSION_INFO_PREFIX = "";
 			};
-			name = DebugLocal;
+			name = DebugRemote;
 		};
-		AD967FDE210329A70048085B /* DebugLocal */ = {
+		AD967FDE210329A70048085B /* DebugRemote */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
@@ -3928,11 +3940,11 @@
 				TARGETED_DEVICE_FAMILY = "1,2";
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Zap.app/Zap";
 			};
-			name = DebugLocal;
+			name = DebugRemote;
 		};
-		AD967FDF210329A70048085B /* DebugLocal */ = {
+		AD967FDF210329A70048085B /* DebugRemote */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 5D12676DE05D34DF53BFED4D /* Pods-Library.debuglocal.xcconfig */;
+			baseConfigurationReference = A11A24FE43F9B6412A85C0C8 /* Pods-Library.debugremote.xcconfig */;
 			buildSettings = {
 				CLANG_ENABLE_OBJC_WEAK = YES;
 				CODE_SIGN_IDENTITY = "";
@@ -3961,9 +3973,9 @@
 				VERSIONING_SYSTEM = "apple-generic";
 				VERSION_INFO_PREFIX = "";
 			};
-			name = DebugLocal;
+			name = DebugRemote;
 		};
-		AD967FE0210329A70048085B /* DebugLocal */ = {
+		AD967FE0210329A70048085B /* DebugRemote */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				CLANG_ENABLE_OBJC_WEAK = YES;
@@ -3979,7 +3991,7 @@
 				TARGETED_DEVICE_FAMILY = "1,2";
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Zap.app/Zap";
 			};
-			name = DebugLocal;
+			name = DebugRemote;
 		};
 		ADADAD7A2143B2E700A48E1F /* Debug */ = {
 			isa = XCBuildConfiguration;
@@ -4019,9 +4031,9 @@
 			};
 			name = Debug;
 		};
-		ADADAD7B2143B2E700A48E1F /* DebugLocal */ = {
+		ADADAD7B2143B2E700A48E1F /* DebugRemote */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = CCFC255EDBA08ADC6BE71105 /* Pods-SwiftLnd.debuglocal.xcconfig */;
+			baseConfigurationReference = 7CDE05914FE5150C977488E9 /* Pods-SwiftLnd.debugremote.xcconfig */;
 			buildSettings = {
 				APPLICATION_EXTENSION_API_ONLY = YES;
 				CLANG_ENABLE_OBJC_WEAK = YES;
@@ -4050,7 +4062,7 @@
 				VERSIONING_SYSTEM = "apple-generic";
 				VERSION_INFO_PREFIX = "";
 			};
-			name = DebugLocal;
+			name = DebugRemote;
 		};
 		ADADAD7C2143B2E700A48E1F /* Release */ = {
 			isa = XCBuildConfiguration;
@@ -4103,7 +4115,7 @@
 			};
 			name = Debug;
 		};
-		ADADAD7E2143B2E700A48E1F /* DebugLocal */ = {
+		ADADAD7E2143B2E700A48E1F /* DebugRemote */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
@@ -4119,7 +4131,7 @@
 				TARGETED_DEVICE_FAMILY = "1,2";
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Zap.app/Zap";
 			};
-			name = DebugLocal;
+			name = DebugRemote;
 		};
 		ADADAD7F2143B2E700A48E1F /* Release */ = {
 			isa = XCBuildConfiguration;
@@ -4182,7 +4194,7 @@
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				A000F6012047F65200480D8E /* Debug */,
-				AD967FDB210329A70048085B /* DebugLocal */,
+				AD967FDB210329A70048085B /* DebugRemote */,
 				A000F6022047F65200480D8E /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
@@ -4192,7 +4204,7 @@
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				A000F6032047F65200480D8E /* Debug */,
-				AD967FDC210329A70048085B /* DebugLocal */,
+				AD967FDC210329A70048085B /* DebugRemote */,
 				A000F6042047F65200480D8E /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
@@ -4202,7 +4214,7 @@
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				A0A05A1A2013CF960007D1C9 /* Debug */,
-				AD967FD8210329A70048085B /* DebugLocal */,
+				AD967FD8210329A70048085B /* DebugRemote */,
 				A0A05A1B2013CF960007D1C9 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
@@ -4212,7 +4224,7 @@
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				A0A05A1D2013CF960007D1C9 /* Debug */,
-				AD967FD9210329A70048085B /* DebugLocal */,
+				AD967FD9210329A70048085B /* DebugRemote */,
 				A0A05A1E2013CF960007D1C9 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
@@ -4222,7 +4234,7 @@
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				AD391C2120D16ED4007EE22A /* Debug */,
-				AD967FDF210329A70048085B /* DebugLocal */,
+				AD967FDF210329A70048085B /* DebugRemote */,
 				AD391C2220D16ED4007EE22A /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
@@ -4232,7 +4244,7 @@
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				AD391D4E20D17FA9007EE22A /* Debug */,
-				AD967FDA210329A70048085B /* DebugLocal */,
+				AD967FDA210329A70048085B /* DebugRemote */,
 				AD391D4F20D17FA9007EE22A /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
@@ -4242,7 +4254,7 @@
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				AD536BFD20E62764002279BC /* Debug */,
-				AD967FDD210329A70048085B /* DebugLocal */,
+				AD967FDD210329A70048085B /* DebugRemote */,
 				AD536BFE20E62764002279BC /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
@@ -4252,7 +4264,7 @@
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				AD536BFF20E62764002279BC /* Debug */,
-				AD967FDE210329A70048085B /* DebugLocal */,
+				AD967FDE210329A70048085B /* DebugRemote */,
 				AD536C0020E62764002279BC /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
@@ -4262,7 +4274,7 @@
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				ADADAD7A2143B2E700A48E1F /* Debug */,
-				ADADAD7B2143B2E700A48E1F /* DebugLocal */,
+				ADADAD7B2143B2E700A48E1F /* DebugRemote */,
 				ADADAD7C2143B2E700A48E1F /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
@@ -4272,7 +4284,7 @@
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				ADADAD7D2143B2E700A48E1F /* Debug */,
-				ADADAD7E2143B2E700A48E1F /* DebugLocal */,
+				ADADAD7E2143B2E700A48E1F /* DebugRemote */,
 				ADADAD7F2143B2E700A48E1F /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
@@ -4282,7 +4294,7 @@
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				ADFE538320D693F500B3BA2A /* Debug */,
-				AD967FE0210329A70048085B /* DebugLocal */,
+				AD967FE0210329A70048085B /* DebugRemote */,
 				ADFE538420D693F500B3BA2A /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;

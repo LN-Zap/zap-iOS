@@ -44,7 +44,7 @@ lane :internal_alpha do
 
   build_ios_app(
     workspace: "Zap.xcworkspace",
-    configuration: "DebugLocal",
+    configuration: "DebugRemote",
     scheme: "Zap",
     output_directory: "./builds/alpha",
     export_method: "ad-hoc"
@@ -138,7 +138,7 @@ lane :tests do
   
   run_tests(
     workspace: "Zap.xcworkspace",
-    configuration: "DebugLocal",
+    configuration: "DebugRemote",
     devices: ["iPhone 8"],
     scheme: "Zap",
     slack_only_on_failure: true,

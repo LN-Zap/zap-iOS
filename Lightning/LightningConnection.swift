@@ -10,7 +10,7 @@ import SwiftLnd
 
 public enum LightningConnection {
     case none
-    #if !LOCALONLY
+    #if !REMOTEONLY
     case local
     #endif
     case remote(RemoteRPCConfiguration)
@@ -23,7 +23,7 @@ public enum LightningConnection {
         switch self {
         case .none:
             return nil
-        #if !LOCALONLY
+        #if !REMOTEONLY
         case .local:
             if !LocalLnd.isRunning {
                 LocalLnd.start()
@@ -39,7 +39,7 @@ public enum LightningConnection {
         if let remoteConfiguration = RemoteRPCConfiguration.load() {
             return .remote(remoteConfiguration)
         }
-        #if !LOCALONLY
+        #if !REMOTEONLY
         if WalletService.didCreateWallet {
             return .local
         }

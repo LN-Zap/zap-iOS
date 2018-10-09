@@ -56,7 +56,7 @@ public final class ConnectionService: NSObject {
         
         let connection = LightningConnection.current
         
-        #if !LOCALONLY
+        #if !REMOTEONLY
         if case .local = connection {
             walletService.unlockWallet { _ in }
         }

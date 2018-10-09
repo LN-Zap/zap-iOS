@@ -16,7 +16,7 @@ public final class WalletService {
     
     public init(connection: LightningConnection) {
         switch connection {
-        #if !LOCALONLY
+        #if !REMOTEONLY
         case .local:
             self.wallet = WalletApiStream()
         case .none:

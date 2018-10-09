@@ -72,7 +72,7 @@ final class SyncViewController: UIViewController {
     }
     
     private func setIdleTimer(disabled: Bool) {
-        #if !LOCALONLY
+        #if !REMOTEONLY
         if case .local = LightningConnection.current {
             UIApplication.shared.isIdleTimerDisabled = disabled
         }

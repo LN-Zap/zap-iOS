@@ -5,7 +5,7 @@
 //  Copyright © 2018 Otto Suess. All rights reserved.
 //
 
-#if !LOCALONLY
+#if !REMOTEONLY
 
 import Foundation
 import Lndmobile

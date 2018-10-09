@@ -38,7 +38,7 @@ final class SetupCoordinator {
     }
     
     private func createNewWallet() {
-        #if LOCALONLY
+        #if REMOTEONLY
         presentDisabledAlert()
         #else
         // TODO: stop Lnd when navigating back to Root
@@ -66,7 +66,7 @@ final class SetupCoordinator {
     }
     
     private func recoverExistingWallet() {
-        #if LOCALONLY
+        #if REMOTEONLY
         presentDisabledAlert()
         #else
         guard let delegate = delegate else { return }
