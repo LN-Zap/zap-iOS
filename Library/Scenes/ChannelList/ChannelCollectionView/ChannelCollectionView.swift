@@ -27,10 +27,8 @@ final class ChannelCollectionView: UICollectionView {
             if oldValue == nil, let exposedItemIndexPath = exposedItemIndexPath,
                 let stackedLayout = collectionViewLayout as? StackedLayout {
                 oldContentOffset = contentOffset
-                let oldHeaderHeight = stackedLayout.headerHeight
                 let exposedLayout = ExposedLayout(exposedIndex: exposedItemIndexPath.item, visibleIndices: stackedLayout.visibleIndices)
                 exposedLayout.delegate = self
-                exposedLayout.overwriteHeaderHeight = oldHeaderHeight
                 setCollectionViewLayout(exposedLayout, animated: true)
                 alwaysBounceVertical = false
             } else if oldValue != nil && exposedItemIndexPath == nil {

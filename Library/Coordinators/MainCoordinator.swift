@@ -59,17 +59,13 @@ final class MainCoordinator: Routing {
     func settingsViewController() -> UIViewController {
         guard let settingsDelegate = settingsDelegate else { fatalError("Didn't set settings Delegate") }
         
-        return SettingsViewController.instantiate(settingsDelegate: settingsDelegate)
+        return SettingsViewController.instantiate(settingsDelegate: settingsDelegate, pushChannelList: pushChannelList)
     }
     
     func historyViewController() -> UIViewController {
         return UIStoryboard.instantiateHistoryViewController(historyViewModel: historyViewModel, presentFilter: presentFilter, presentDetail: presentDetail, presentSend: presentSend)
     }
-    
-    func channelListViewController() -> UIViewController {
-        return UIStoryboard.instantiateChannelListViewController(channelListViewModel: channelListViewModel, closeButtonTapped: presentCloseConfirmation, addChannelButtonTapped: presentAddChannel, blockExplorerButtonTapped: presentBlockExplorer)
-    }
-    
+
     func presentSend() {
         presentSend(invoice: nil)
     }
@@ -143,5 +139,10 @@ final class MainCoordinator: Routing {
     private func presentDetail(event: HistoryEventType) {
         let detailViewController = EventDetailViewController(event: event, presentBlockExplorer: presentBlockExplorer)
         rootViewController.present(detailViewController, animated: true)
+    }
+    
+    private func pushChannelList(on navigationController: UINavigationController) {
+        let channelList = UIStoryboard.instantiateChannelListViewController(channelListViewModel: channelListViewModel, closeButtonTapped: presentCloseConfirmation, addChannelButtonTapped: presentAddChannel, blockExplorerButtonTapped: presentBlockExplorer)
+        navigationController.pushViewController(channelList, animated: true)
     }
 }

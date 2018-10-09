@@ -14,8 +14,8 @@ protocol SettingsDelegate: class {
 }
 
 final class SettingsViewController: GroupedTableViewController {
-    static func instantiate(settingsDelegate: SettingsDelegate) -> UINavigationController {
-        let viewController = SettingsViewController(settingsDelegate: settingsDelegate)
+    static func instantiate(settingsDelegate: SettingsDelegate, pushChannelList: @escaping (UINavigationController) -> Void) -> UINavigationController {
+        let viewController = SettingsViewController(settingsDelegate: settingsDelegate, pushChannelList: pushChannelList)
         
         let navigationController = ZapNavigationController(rootViewController: viewController)
         
@@ -26,13 +26,16 @@ final class SettingsViewController: GroupedTableViewController {
         return navigationController
     }
     
-    init(settingsDelegate: SettingsDelegate) {
+    private init(settingsDelegate: SettingsDelegate, pushChannelList: @escaping (UINavigationController) -> Void) {
         let sections: [Section<SettingsItem>] = [
             Section(title: "scene.settings.title".localized, rows: [
                 CurrencySelectionSettingsItem(),
                 BitcoinUnitSelectionSettingsItem(),
                 OnChainRequestAddressTypeSelectionSettingsItem(),
                 BlockExplorerSelectionSettingsItem()
+            ]),
+            Section(title: "Lightning", rows: [
+                ManageChannelsSettingsItem(pushChannelList: pushChannelList)
             ]),
             Section(title: "scene.settings.section.wallet".localized, rows: [
                 RemoveRemoteNodeSettingsItem(settingsDelegate: settingsDelegate),

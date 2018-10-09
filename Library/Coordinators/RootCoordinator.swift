@@ -101,7 +101,6 @@ public final class RootCoordinator: NSObject, SetupCoordinatorDelegate, PinCoord
         tabBarController.viewControllers = [
             mainCoordinator.walletViewController(),
             mainCoordinator.historyViewController(),
-            mainCoordinator.channelListViewController(),
             mainCoordinator.settingsViewController()
         ]
         presentViewController(tabBarController)

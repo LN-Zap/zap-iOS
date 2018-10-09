@@ -23,7 +23,6 @@ extension UIStoryboard {
         viewController.blockExplorerButtonTapped = blockExplorerButtonTapped
         
         viewController.tabBarItem.title = "scene.channels.title".localized
-        viewController.tabBarItem.image = UIImage(named: "tabbar_channels", in: Bundle.library, compatibleWith: nil)
         
         return viewController
     }
@@ -45,11 +44,13 @@ final class ChannelListViewController: UIViewController {
         view.backgroundColor = UIColor.Zap.background
 
         collectionView.registerCell(ChannelCell.self)
-        collectionView.register(UINib(nibName: HeaderCollectionReusableView.kind, bundle: Bundle.library), forSupplementaryViewOfKind: HeaderCollectionReusableView.kind, withReuseIdentifier: HeaderCollectionReusableView.kind)
         
         channelListViewModel?.dataSource.observeNext { [weak self] _ in
             self?.collectionView.reloadData()
         }.dispose(in: reactive.bag)
+        
+        navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(presentAddChannel))
+        navigationItem.largeTitleDisplayMode = .never
         
         collectionView.dataSource = self
     }
@@ -59,7 +60,7 @@ final class ChannelListViewController: UIViewController {
         sender.endRefreshing()
     }
     
-    @IBAction private func presentAddChannel(_ sender: Any) {
+    @objc private func presentAddChannel() {
         addChannelButtonTapped?()
     }
     
@@ -73,12 +74,6 @@ final class ChannelListViewController: UIViewController {
                 }
             }
         }
-    }
-}
-
-extension ChannelListViewController: ChannelListHeaderDelegate {
-    func openChannelButtonTapped() {
-        addChannelButtonTapped?()
     }
 }
 
@@ -98,14 +93,6 @@ extension ChannelListViewController: ChannelListDataSource {
         channelCell.channelViewModel = channelListViewModel?.dataSource[indexPath.item]
         channelCell.delegate = self
         return channelCell
-    }
-    
-    func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
-        let view = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: HeaderCollectionReusableView.kind, for: indexPath)
-        if let view = view as? HeaderCollectionReusableView {
-            view.delegate = self
-        }
-        return view
     }
 }
 

@@ -234,8 +234,6 @@
 		ADA6BBBF211B3AEC00A1FF19 /* ScanRectView.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADA6BBBE211B3AEC00A1FF19 /* ScanRectView.swift */; };
 		ADA75DF2210F389100003068 /* ChannelState+Localizable.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADA75DF1210F389100003068 /* ChannelState+Localizable.swift */; };
 		ADA81E9E210DE14100B7C6F2 /* UIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADA81E9D210DE14100B7C6F2 /* UIView.swift */; };
-		ADA81EA2210E19F600B7C6F2 /* HeaderCollectionReusableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADA81EA0210E19F600B7C6F2 /* HeaderCollectionReusableView.swift */; };
-		ADA81EA3210E19F600B7C6F2 /* HeaderCollectionReusableView.xib in Resources */ = {isa = PBXBuildFile; fileRef = ADA81EA1210E19F600B7C6F2 /* HeaderCollectionReusableView.xib */; };
 		ADA865BC20ECB87B00B1B74B /* FilterSettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADA865BB20ECB87B00B1B74B /* FilterSettings.swift */; };
 		ADA865BE20ECB88500B1B74B /* FilterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADA865BD20ECB88500B1B74B /* FilterViewController.swift */; };
 		ADA865C020ECC89E00B1B74B /* FilterTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADA865BF20ECC89E00B1B74B /* FilterTableViewCell.swift */; };
@@ -317,6 +315,7 @@
 		ADFC816F20DA80EF00D26913 /* RecoverWalletViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADFC816E20DA80EF00D26913 /* RecoverWalletViewModel.swift */; };
 		ADFD8DC3212E92A7005CA8FD /* SegmentButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD38EB31207DFB59007DF14D /* SegmentButton.swift */; };
 		ADFD8DC4212E92F1005CA8FD /* UIButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD38EB2F207DF233007DF14D /* UIButton.swift */; };
+		ADFE2E4C216CF4A800988243 /* ManageChannelsSettingsItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADFE2E4B216CF4A800988243 /* ManageChannelsSettingsItem.swift */; };
 		ADFE538520D693FF00B3BA2A /* InputNumberFormatterTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0F9AEE2206E3E0300E93DCA /* InputNumberFormatterTests.swift */; };
 		ADFE538620D693FF00B3BA2A /* CurrencyTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0BD44D9206FB47300BF27A3 /* CurrencyTests.swift */; };
 		ADFEFA6A20E627F100FE1557 /* BalanceService.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADA6D2C420AC1DDE009398A5 /* BalanceService.swift */; };
@@ -746,8 +745,6 @@
 		ADA6D2C620AC2406009398A5 /* ChannelService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChannelService.swift; sourceTree = "<group>"; };
 		ADA75DF1210F389100003068 /* ChannelState+Localizable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ChannelState+Localizable.swift"; sourceTree = "<group>"; };
 		ADA81E9D210DE14100B7C6F2 /* UIView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIView.swift; sourceTree = "<group>"; };
-		ADA81EA0210E19F600B7C6F2 /* HeaderCollectionReusableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeaderCollectionReusableView.swift; sourceTree = "<group>"; };
-		ADA81EA1210E19F600B7C6F2 /* HeaderCollectionReusableView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = HeaderCollectionReusableView.xib; sourceTree = "<group>"; };
 		ADA865BB20ECB87B00B1B74B /* FilterSettings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilterSettings.swift; sourceTree = "<group>"; };
 		ADA865BD20ECB88500B1B74B /* FilterViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilterViewController.swift; sourceTree = "<group>"; };
 		ADA865BF20ECC89E00B1B74B /* FilterTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilterTableViewCell.swift; sourceTree = "<group>"; };
@@ -898,6 +895,7 @@
 		ADF7936B208E66FA0086B2CA /* UICollectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UICollectionView.swift; sourceTree = "<group>"; };
 		ADF79375208F88DE0086B2CA /* RecoverWalletViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecoverWalletViewController.swift; sourceTree = "<group>"; };
 		ADFC816E20DA80EF00D26913 /* RecoverWalletViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecoverWalletViewModel.swift; sourceTree = "<group>"; };
+		ADFE2E4B216CF4A800988243 /* ManageChannelsSettingsItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ManageChannelsSettingsItem.swift; sourceTree = "<group>"; };
 		ADFE537B20D693F500B3BA2A /* LibraryTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = LibraryTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		ADFE537F20D693F500B3BA2A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		ADFEFA7320E6294000FE1557 /* OnChainRequestAddressType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnChainRequestAddressType.swift; sourceTree = "<group>"; };
@@ -1198,10 +1196,11 @@
 			children = (
 				A091914C203B3BAC00FA525A /* BitcoinUnitSettingsItem.swift */,
 				AD28CB7A211DE93300A31004 /* BlockExplorerSettingsItem.swift */,
+				ADCD5B0E20D7E40C0037F156 /* ChangePinSettingsItem.swift */,
 				A091914A203B297D00FA525A /* CurrencySettingsItem.swift */,
 				AD967FD62100EFFA0048085B /* HelpSettingsItem.swift */,
+				ADFE2E4B216CF4A800988243 /* ManageChannelsSettingsItem.swift */,
 				AD6FFCA520AB0A3700B57330 /* OnChainRequestAddressTypeSettingsItem.swift */,
-				ADCD5B0E20D7E40C0037F156 /* ChangePinSettingsItem.swift */,
 				ADCD5B0C20D7E3F50037F156 /* RemoveRemoteNodeSettingsItem.swift */,
 				AD97A91920F09699008344EA /* ReportIssueSettingsItem.swift */,
 				A0DDC06B2018C07100AEFF94 /* SettingsItem.swift */,
@@ -1370,7 +1369,6 @@
 			children = (
 				ADE0C40B2108F6CE004597C3 /* Cell */,
 				AD0D5DE0210DCAC600D11D0B /* ChannelCollectionView */,
-				ADA81E9F210E19BA00B7C6F2 /* Header */,
 				A010094F2015F99F0001EF94 /* ChannelList.storyboard */,
 				A0731FE82014B27900C55E45 /* ChannelListViewController.swift */,
 				A0F57DBD201E440F003AFA66 /* ChannelListViewModel.swift */,
@@ -1738,15 +1736,6 @@
 				ADA865C120ED041F00B1B74B /* Storage.swift */,
 			);
 			path = Persistence;
-			sourceTree = "<group>";
-		};
-		ADA81E9F210E19BA00B7C6F2 /* Header */ = {
-			isa = PBXGroup;
-			children = (
-				ADA81EA0210E19F600B7C6F2 /* HeaderCollectionReusableView.swift */,
-				ADA81EA1210E19F600B7C6F2 /* HeaderCollectionReusableView.xib */,
-			);
-			path = Header;
 			sourceTree = "<group>";
 		};
 		ADA865BA20ECB86700B1B74B /* Filter */ = {
@@ -2437,7 +2426,6 @@
 				AD391C6320D16F89007EE22A /* Debug.storyboard in Resources */,
 				AD7EDAE32108C4150058CCCA /* Wallet.storyboard in Resources */,
 				AD391C5020D16F7A007EE22A /* CreateWallet.storyboard in Resources */,
-				ADA81EA3210E19F600B7C6F2 /* HeaderCollectionReusableView.xib in Resources */,
 				AD667E4D21367E3A007B9160 /* Background.storyboard in Resources */,
 				AD391C6620D16F89007EE22A /* Loading.storyboard in Resources */,
 				AD391C7320D16F89007EE22A /* QRCodeDetail.storyboard in Resources */,
@@ -2771,7 +2759,6 @@
 				AD391C2D20D16EFA007EE22A /* UIAlertController.swift in Sources */,
 				AD28843E21272B9A003C3D94 /* SendViewController.swift in Sources */,
 				AD391D1E20D174B4007EE22A /* SetupCoordinator.swift in Sources */,
-				ADA81EA2210E19F600B7C6F2 /* HeaderCollectionReusableView.swift in Sources */,
 				AD667E4B21367E1B007B9160 /* BackgroundViewController.swift in Sources */,
 				AD0D0BC2212BE3C800E4F7F7 /* RequestViewController.swift in Sources */,
 				AD391D1D20D174B4007EE22A /* Route.swift in Sources */,
@@ -2815,6 +2802,7 @@
 				AD391C3320D16EFA007EE22A /* UIImage.swift in Sources */,
 				ADCD5B0F20D7E40C0037F156 /* ChangePinSettingsItem.swift in Sources */,
 				ADDD13BB2119CF110035D2F9 /* CallbackButton.swift in Sources */,
+				ADFE2E4C216CF4A800988243 /* ManageChannelsSettingsItem.swift in Sources */,
 				AD391C4D20D16F68007EE22A /* ChannelListViewController.swift in Sources */,
 				AD391D2020D178C2007EE22A /* Bundle.swift in Sources */,
 				AD391D0920D16FF5007EE22A /* KeyPadView.swift in Sources */,
