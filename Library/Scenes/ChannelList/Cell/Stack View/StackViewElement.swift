@@ -46,10 +46,10 @@ indirect enum StackViewElement {
         case let .amountLabel(amount, style):
             let label = UILabel()
 
-            style.apply(to: label)
             label.lineBreakMode = .byTruncatingMiddle
             label.setContentCompressionResistancePriority(.required, for: .horizontal)
             label.setContentHuggingPriority(UILayoutPriority(rawValue: 1), for: .horizontal)
+            style.apply(to: label)
             amount
                 .bind(to: label.reactive.text, currency: Settings.shared.primaryCurrency)
                 .dispose(in: label.reactive.bag)
@@ -66,9 +66,9 @@ indirect enum StackViewElement {
         case let .label(text, style):
             let label = UILabel()
             label.text = text
-            style.apply(to: label)
             label.lineBreakMode = .byTruncatingMiddle
             label.setContentCompressionResistancePriority(.required, for: .horizontal)
+            style.apply(to: label)
             result = label
             
         case let .horizontalStackView(compressionResistant, content):

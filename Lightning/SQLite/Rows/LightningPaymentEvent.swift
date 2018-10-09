@@ -30,7 +30,7 @@ extension LightningPaymentEvent {
         amount = payment.amount
         fee = payment.fees
         date = payment.date
-        self.node = node
+        self.node = node ?? ConnectedNode(pubKey: payment.destination, alias: nil, color: nil)
     }
     
     init(invoice: Invoice) {

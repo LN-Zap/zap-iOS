@@ -34,12 +34,13 @@ final class HistoryCell: BondTableViewCell {
     @IBOutlet private var notificationTopConstraint: NSLayoutConstraint!
     
     private weak var delegate: HistoryCellDelegate?
+    private var containerBackgroundColor = UIColor.Zap.seaBlue
     
     func addNotificationLabel(type: NotificationType) {
         let (color, text) = type.style
         notificationLabel.backgroundColor = color
         notificationLabel.text = text
-        
+
         setNotificationLabelHidden(false)
     }
     
@@ -50,7 +51,7 @@ final class HistoryCell: BondTableViewCell {
     
     override func prepareForReuse() {
         super.prepareForReuse()
-        
+        containerBackgroundColor = UIColor.Zap.seaBlue
         stackView.clear()
         setNotificationLabelHidden(true)
     }
@@ -84,7 +85,7 @@ final class HistoryCell: BondTableViewCell {
             if selectedOrHighlighted {
                 self?.containerView.backgroundColor = UIColor.Zap.gray
             } else {
-                self?.containerView.backgroundColor = UIColor.Zap.seaBlue
+                self?.containerView.backgroundColor = self?.containerBackgroundColor
             }
         }
         
@@ -124,6 +125,10 @@ final class HistoryCell: BondTableViewCell {
         setTitle(title, date: transactionEvent.date)
 
         let description = transactionEvent.memo ?? transactionEvent.destinationAddresses.first?.string ?? "transaction.no_destination_address".localized
+        
+        if transactionEvent.channelRelated != true {
+            containerBackgroundColor = UIColor.Zap.invisibleGray
+        }
         
         stackView.addArrangedElement(.horizontalStackView(compressionResistant: .last, content: [
             .label(text: description, style: Style.Label.body),
@@ -210,28 +215,29 @@ final class HistoryCell: BondTableViewCell {
     }
     
     func setLightningPaymentEvent(_ lightningPaymentEvent: LightningPaymentEvent) {
-        func titleFor(formatString: String, fallback: String) -> String {
-            if let nodeAlias = lightningPaymentEvent.node?.alias {
-                return String(format: formatString, nodeAlias)
-            } else if let nodePubKey = lightningPaymentEvent.node?.pubKey {
-                return String(format: formatString, nodePubKey)
-            } else {
-                return fallback
-            }
-        }
-
         let title: String
         if lightningPaymentEvent.amount < 0 {
-            title = titleFor(formatString: "scene.history.cell.payment_sent_to".localized, fallback: "scene.history.cell.payment_sent".localized)
+            title = "scene.history.cell.payment_sent".localized
         } else {
-            title = titleFor(formatString: "scene.history.cell.payment_received_from".localized, fallback: "scene.history.cell.payment_received".localized)
+            title = "scene.history.cell.payment_received".localized
         }
-        
+
         setTitle(title, date: lightningPaymentEvent.date)
-        
+
+        let detailLabel = lightningPaymentEvent.node?.alias ?? lightningPaymentEvent.node?.pubKey ?? ""
         stackView.addArrangedElement(.horizontalStackView(compressionResistant: .last, content: [
-            .label(text: lightningPaymentEvent.memo ?? lightningPaymentEvent.paymentHash, style: Style.Label.body),
+            .label(text: detailLabel, style: Style.Label.body),
             .customView(amountLabel(lightningPaymentEvent.amount), height: 22)
         ]))
+
+        if let memo = lightningPaymentEvent.memo {
+            stackView.addArrangedElement(.horizontalStackView(compressionResistant: .first, content: [
+                .label(text: "memo:", style: Style.Label.body),
+                .label(text: memo, style: Style.Label.body.with({
+                    $0.lineBreakMode = .byTruncatingTail
+                    $0.textColor = UIColor.Zap.gray
+                }))
+            ]))
+        }
     }
 }

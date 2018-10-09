@@ -151,16 +151,16 @@ extension HistoryService {
                 try transaction.updateBlockHeight(database: persistence.connection())
             }
         } catch {
-            print("⚠️ `\(#function)`:", error)
+            print("⚠️ `\(#function)` (update unconfirmed):", error)
         }
         
         // add unknown transactions, fail on first error
-        do {
-            for transaction in transactions {
+        for transaction in transactions {
+            do {
                 try transaction.insert(database: persistence.connection())
+            } catch {
+                print("⚠️ `\(#function)` (add unknown):", error)
             }
-        } catch {
-            print("⚠️ `\(#function)`:", error)
         }
     }
     
