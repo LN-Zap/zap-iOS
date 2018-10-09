@@ -180,9 +180,7 @@
 "scene.modal_pin.description" = "请输入您的密码以继续";
 
 "scene.history.cell.payment_sent" = "Payment sent";
-"scene.history.cell.payment_sent_to" = "Payment sent to: %@";
 "scene.history.cell.payment_received" = "Payment received";
-"scene.history.cell.payment_received_from" = "Payment received from: %@";
 "scene.history.cell.payment_failed" = "Payment failed (%@)";
 "scene.history.cell.invoice_created" = "Payment Request created";
 "scene.history.cell.channel_opened" = "Open Channel";
