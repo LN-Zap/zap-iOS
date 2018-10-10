@@ -133,9 +133,9 @@ extension ChannelService {
     
     private func markTxIdsAsChannelRelated(txIds: [String]) throws {
         let query = TransactionEvent.table
-            .filter(TransactionEvent.Column.channelRelated == nil)
+            .filter(TransactionEvent.Column.type == TransactionEvent.TransactionEventType.unknown.rawValue)
             .filter(txIds.contains(TransactionEvent.Column.txHash))
-        try persistence.connection().run(query.update(TransactionEvent.Column.channelRelated <- true))
+        try persistence.connection().run(query.update(TransactionEvent.Column.type <- TransactionEvent.TransactionEventType.userInitiated.rawValue))
     }
     
     private func updateNodeIfNeeded(_ node: ConnectedNode) throws {

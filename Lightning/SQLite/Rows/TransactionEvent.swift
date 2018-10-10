@@ -15,6 +15,12 @@ import SwiftLnd
  Includes transactions, except those resulting from opening or closing channels.
  */
 public struct TransactionEvent: Equatable, DateProvidingEvent, AmountProvidingEvent {
+    public enum TransactionEventType: Int {
+        case userInitiated = 0
+        case channelRelated = 1
+        case unknown = 2
+    }
+
     public let txHash: String
     public let memo: String?
     public let amount: Satoshi
@@ -22,7 +28,7 @@ public struct TransactionEvent: Equatable, DateProvidingEvent, AmountProvidingEv
     public let date: Date
     public let destinationAddresses: [BitcoinAddress]
     public let blockHeight: Int? // nil if transaction is unconfirmed
-    public let channelRelated: Bool? // does it result from opening or closing a channel?
+    public let type: TransactionEventType
 }
 
 extension TransactionEvent {
@@ -36,7 +42,7 @@ extension TransactionEvent {
         date = transaction.date
         destinationAddresses = transaction.destinationAddresses
         blockHeight = transaction.blockHeight
-        channelRelated = nil
+        type = .unknown
     }
 }
 
@@ -50,7 +56,7 @@ extension TransactionEvent {
         static let date = Expression<Date>("date")
         static let destinationAddresses = Expression<String>("destinationAddresses")
         static let blockHeight = Expression<Int?>("blockHeight")
-        static let channelRelated = Expression<Bool?>("channelRelated")
+        static let type = Expression<Int>("transactionType")
     }
     
     static let table = Table("transactionEvent")
@@ -67,7 +73,7 @@ extension TransactionEvent {
         date = row[Column.date]
         destinationAddresses = bitcoinAddresses
         blockHeight = row[Column.blockHeight]
-        channelRelated = row[Column.channelRelated]
+        type = TransactionEventType(rawValue: row[Column.type]) ?? .unknown
     }
     
     static func createTable(database: Connection) throws {
@@ -79,7 +85,7 @@ extension TransactionEvent {
             t.column(Column.date)
             t.column(Column.destinationAddresses)
             t.column(Column.blockHeight)
-            t.column(Column.channelRelated)
+            t.column(Column.type, defaultValue: TransactionEventType.unknown.rawValue)
         })
     }
     
@@ -96,7 +102,7 @@ extension TransactionEvent {
             Column.date <- date,
             Column.destinationAddresses <- addressString,
             Column.blockHeight <- blockHeight,
-            Column.channelRelated <- channelRelated)
+            Column.type <- type.rawValue)
         )
     }
     
@@ -114,7 +120,7 @@ extension TransactionEvent {
     
     public static func payments(database: Connection) throws -> [TransactionEvent] {
         let query = TransactionEvent.table
-            .filter(Column.channelRelated == false || Column.channelRelated == nil) // nil or false
+            .filter(Column.type != TransactionEventType.channelRelated.rawValue)
         return try events(query: query, database: database)
     }
     

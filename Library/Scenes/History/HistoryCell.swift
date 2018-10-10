@@ -126,7 +126,7 @@ final class HistoryCell: BondTableViewCell {
 
         let description = transactionEvent.memo ?? transactionEvent.destinationAddresses.first?.string ?? "transaction.no_destination_address".localized
         
-        if transactionEvent.channelRelated != true {
+        if transactionEvent.type == .unknown {
             containerBackgroundColor = UIColor.Zap.invisibleGray
         }
         

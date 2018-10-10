@@ -15,7 +15,7 @@ extension Satoshi: Value {
     public static var declaredDatatype = String.declaredDatatype
     
     public static func fromDatatypeValue(_ datatypeValue: String) -> Satoshi {
-        guard let value = Satoshi(string: datatypeValue) else { fatalError("Error decoding decimal value") }
+        guard let value = Satoshi(string: datatypeValue) else { fatalError("Error decoding Satoshi") }
         return value
     }
     
