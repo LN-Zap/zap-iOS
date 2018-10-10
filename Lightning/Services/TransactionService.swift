@@ -15,12 +15,14 @@ public final class TransactionService {
     private let balanceService: BalanceService
     private let channelService: ChannelService
     private let historyService: HistoryService
-    
-    init(api: LightningApiProtocol, balanceService: BalanceService, channelService: ChannelService, historyService: HistoryService) {
+    private let persistence: Persistence
+
+    init(api: LightningApiProtocol, balanceService: BalanceService, channelService: ChannelService, historyService: HistoryService, persistence: Persistence) {
         self.api = api
         self.balanceService = balanceService
         self.channelService = channelService
         self.historyService = historyService
+        self.persistence = persistence
     }
     
     public func send(_ invoice: BitcoinInvoice, amount: Satoshi, completion: @escaping (Result<Success>) -> Void) {
@@ -38,7 +40,12 @@ public final class TransactionService {
     }
     
     public func newAddress(with type: OnChainRequestAddressType, completion: @escaping (Result<BitcoinAddress>) -> Void) {
-        api.newAddress(type: type, completion: completion)
+        api.newAddress(type: type) { [persistence] result in
+            if let address = result.value {
+                try? ReceivingAddress.insert(address: address, database: persistence.connection())
+            }
+            completion(result)
+        }
     }
     
     internal func decodePaymentRequest(_ paymentRequest: String, completion: @escaping (Result<PaymentRequest>) -> Void) {

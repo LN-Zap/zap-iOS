@@ -10,7 +10,7 @@ import XCTest
 
 class DateEstimatorTests: XCTestCase {
     private func transactionWith(date: Date, blockHeight: Int) -> TransactionEvent {
-        return TransactionEvent(txHash: "", memo: "", amount: 0, fee: 0, date: date, destinationAddresses: [], blockHeight: blockHeight, channelRelated: nil)
+        return TransactionEvent(txHash: "", memo: "", amount: 0, fee: 0, date: date, destinationAddresses: [], blockHeight: blockHeight, type: .unknown)
     }
     
     func testEstimation() {

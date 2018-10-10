@@ -12,7 +12,24 @@ enum PersistenceError: Error {
     case noConnection
 }
 
-final class Persistence {
+protocol Persistence {
+    func connection() throws -> Connection
+    func setConnectedNode(pubKey: String)
+}
+
+fileprivate extension Connection {
+    func createTables() throws {
+        try ConnectedNode.createTable(database: self)
+        try TransactionEvent.createTable(database: self)
+        try FailedPaymentEvent.createTable(database: self)
+        try CreateInvoiceEvent.createTable(database: self)
+        try LightningPaymentEvent.createTable(database: self)
+        try ChannelEvent.createTable(database: self)
+        try ReceivingAddress.createTable(database: self)
+    }
+}
+
+final class SQLitePersistence: Persistence {
     private var currentConnection: Connection?
     private var pubKey: String?
     
@@ -37,18 +54,28 @@ final class Persistence {
         self.currentConnection = connection
         
         do {
-            try createTables(in: connection)
+            try connection.createTables()
         } catch {
             fatalError(error.localizedDescription)
         }
     }
+}
+
+class MockPersistence: Persistence {
+    let inMemoryConnection: Connection
     
-    private func createTables(in database: Connection) throws {
-        try ConnectedNode.createTable(database: database)
-        try TransactionEvent.createTable(database: database)
-        try FailedPaymentEvent.createTable(database: database)
-        try CreateInvoiceEvent.createTable(database: database)
-        try LightningPaymentEvent.createTable(database: database)
-        try ChannelEvent.createTable(database: database)
+    init() {
+        do {
+            inMemoryConnection = try Connection(.inMemory)
+            try inMemoryConnection.createTables()
+        } catch {
+            fatalError("Could not setup in memory database.")
+        }
     }
+    
+    func connection() throws -> Connection {
+        return inMemoryConnection
+    }
+    
+    func setConnectedNode(pubKey: String) {}
 }

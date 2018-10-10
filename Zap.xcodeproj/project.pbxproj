@@ -302,6 +302,8 @@
 		ADF0930F2148FA7300B48853 /* CreateInvoiceEvent.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADF0930E2148FA7300B48853 /* CreateInvoiceEvent.swift */; };
 		ADF093112148FDC600B48853 /* LightningPaymentEvent.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADF093102148FDC600B48853 /* LightningPaymentEvent.swift */; };
 		ADF093132148FEB900B48853 /* ChannelEvent.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADF093122148FEB900B48853 /* ChannelEvent.swift */; };
+		ADFB0CC7216E09E00048B63C /* ReceivingAddress.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADFB0CC6216E09E00048B63C /* ReceivingAddress.swift */; };
+		ADFB0CCA216E34540048B63C /* ReceivingAddressTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADFB0CC8216E318B0048B63C /* ReceivingAddressTests.swift */; };
 		ADFB36D22143B63200146FCC /* BTCUtil.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A000F5EA2047F65100480D8E /* BTCUtil.framework */; };
 		ADFB36D32143B66300146FCC /* SwiftLnd.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = ADADAD632143B2E700A48E1F /* SwiftLnd.framework */; };
 		ADFB36D72143B73C00146FCC /* LndConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD71EA4A20E2321100256307 /* LndConstants.swift */; };
@@ -900,6 +902,8 @@
 		ADF79369208E5FEC0086B2CA /* ConfirmMnemonicCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConfirmMnemonicCollectionViewCell.swift; sourceTree = "<group>"; };
 		ADF7936B208E66FA0086B2CA /* UICollectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UICollectionView.swift; sourceTree = "<group>"; };
 		ADF79375208F88DE0086B2CA /* RecoverWalletViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecoverWalletViewController.swift; sourceTree = "<group>"; };
+		ADFB0CC6216E09E00048B63C /* ReceivingAddress.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReceivingAddress.swift; sourceTree = "<group>"; };
+		ADFB0CC8216E318B0048B63C /* ReceivingAddressTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReceivingAddressTests.swift; sourceTree = "<group>"; };
 		ADFC816E20DA80EF00D26913 /* RecoverWalletViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecoverWalletViewModel.swift; sourceTree = "<group>"; };
 		ADFE2E4B216CF4A800988243 /* ManageChannelsSettingsItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ManageChannelsSettingsItem.swift; sourceTree = "<group>"; };
 		ADFE537B20D693F500B3BA2A /* LibraryTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = LibraryTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -1577,6 +1581,7 @@
 				A0733CD920471F0A0005643A /* LightningInvoiceURITests.swift */,
 				AD28844821282139003C3D94 /* LightningNodeURITests.swift */,
 				ADC48CA6214AD8B800949CD9 /* DateEstimatorTests.swift */,
+				ADFB0CC8216E318B0048B63C /* ReceivingAddressTests.swift */,
 			);
 			path = Tests;
 			sourceTree = "<group>";
@@ -1951,6 +1956,7 @@
 				ADF0930C214832C700B48853 /* FailedPaymentEvent.swift */,
 				ADF093102148FDC600B48853 /* LightningPaymentEvent.swift */,
 				ADF093052147C72000B48853 /* TransactionEvent.swift */,
+				ADFB0CC6216E09E00048B63C /* ReceivingAddress.swift */,
 			);
 			path = Rows;
 			sourceTree = "<group>";
@@ -2919,6 +2925,7 @@
 				ADC0D2F02107953100B8C62F /* PinnedHost.swift in Sources */,
 				AD967FE9210610D90048085B /* RPCConnectQRCode.swift in Sources */,
 				ADFEFA6D20E627F100FE1557 /* LightningService.swift in Sources */,
+				ADFB0CC7216E09E00048B63C /* ReceivingAddress.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -2929,6 +2936,7 @@
 				AD28844921282139003C3D94 /* LightningNodeURITests.swift in Sources */,
 				AD536BF620E62764002279BC /* BTCPayQRCodeTests.swift in Sources */,
 				AD2884472128209B003C3D94 /* LightningInvoiceURITests.swift in Sources */,
+				ADFB0CCA216E34540048B63C /* ReceivingAddressTests.swift in Sources */,
 				AD28844621282073003C3D94 /* Bolt11Tests.swift in Sources */,
 				AD967FE7210603D50048085B /* BTCPayConfigurationTests.swift in Sources */,
 				AD28844D21284DAC003C3D94 /* InvoiceTests.swift in Sources */,

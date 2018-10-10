@@ -20,20 +20,21 @@ public final class LightningService: NSObject {
     public let transactionService: TransactionService
     public let historyService: HistoryService
     
-    var persistence = Persistence()
+    var persistence: Persistence
     
     public convenience init?(connection: LightningConnection) {
         guard let api = connection.start() else { return nil }
-        self.init(api: api)
+        self.init(api: api, persistence: SQLitePersistence())
     }
     
-    init(api: LightningApiProtocol) {
+    init(api: LightningApiProtocol, persistence: Persistence) {
         self.api = api
+        self.persistence = persistence
         
         balanceService = BalanceService(api: api)
         channelService = ChannelService(api: api, persistence: persistence)
         historyService = HistoryService(api: api, channelService: channelService, persistence: persistence)
-        transactionService = TransactionService(api: api, balanceService: balanceService, channelService: channelService, historyService: historyService)
+        transactionService = TransactionService(api: api, balanceService: balanceService, channelService: channelService, historyService: historyService, persistence: persistence)
         
         infoService = InfoService(api: api, persistence: persistence, channelService: channelService, balanceService: balanceService, historyService: historyService)
     }
