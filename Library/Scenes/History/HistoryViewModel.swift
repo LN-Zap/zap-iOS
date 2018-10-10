@@ -116,8 +116,8 @@ final class HistoryViewModel: NSObject {
 extension HistoryEventType {
     func matchesFilterSettings(_ filterSettings: FilterSettings) -> Bool {
         switch self {
-        case .transactionEvent:
-            return filterSettings.transactionEvents
+        case .transactionEvent(let event):
+            return filterSettings.transactionEvents && (event.type != .unknown || filterSettings.unknownTransactionType)
         case .channelEvent:
             return filterSettings.channelEvents
         case .createInvoiceEvent:

@@ -12,7 +12,7 @@ extension UIStoryboard {
         let viewController = Storyboard.history.instantiate(viewController: FilterViewController.self)
         viewController.historyViewModel = historyViewModel
         
-        let navigationController = ModalNavigationController(rootViewController: viewController, height: 365)
+        let navigationController = ModalNavigationController(rootViewController: viewController, height: 480)
         
         navigationController.navigationBar.backgroundColor = UIColor.Zap.seaBlueGradient
         navigationController.navigationBar.shadowImage = UIImage()
@@ -28,16 +28,19 @@ final class FilterViewController: UIViewController {
     
     fileprivate var historyViewModel: HistoryViewModel?
     
-    let cells: [[FilterSetting]] = [
-        [
+    let sections: [Section<FilterSetting>] = [
+        Section(title: "scene.filter.section_header.transaction_types".localized, rows: [
             .transactionEvents,
             .lightningPaymentEvents
-        ],
-        [
+        ]),
+        Section(title: nil, rows: [
             .failedPaymentEvents,
             .createInvoiceEvents,
             .channelEvents
-        ]
+        ]),
+        Section(title: "scene.filter.section_header.advanced".localized, rows: [
+            .unknownTransactionType
+        ])
     ]
     
     override func viewDidLoad() {
@@ -57,28 +60,25 @@ final class FilterViewController: UIViewController {
 
 extension FilterViewController: UITableViewDataSource {
     func numberOfSections(in tableView: UITableView) -> Int {
-        return cells.count
+        return sections.count
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return cells[section].count
+        return sections[section].count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let filterSettings = historyViewModel?.filterSettings else { fatalError("ViewModel not set") }
         
         let cell: FilterTableViewCell = tableView.dequeueCellForIndexPath(indexPath)
-        let filterSetting = cells[indexPath.section][indexPath.row]
+        let filterSetting = sections[indexPath.section][indexPath.row]
         cell.set(filterSetting: filterSetting, from: filterSettings)
         cell.delegate = self
         return cell
     }
     
     func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
-        if section == 0 {
-            return "scene.filter.section_header.transaction_types".localized
-        }
-        return nil
+        return sections[section].title
     }
 }
 

@@ -11,6 +11,7 @@ import Lightning
 struct FilterSettings: Equatable, Codable {
     var channelEvents: Bool
     var transactionEvents: Bool
+    var unknownTransactionType: Bool
     var createInvoiceEvents: Bool
     var failedPaymentEvents: Bool
     var lightningPaymentEvents: Bool
@@ -22,6 +23,7 @@ extension FilterSettings {
     init() {
         channelEvents = true
         transactionEvents = true
+        unknownTransactionType = false
         createInvoiceEvents = true
         failedPaymentEvents = true
         lightningPaymentEvents = true
@@ -39,6 +41,7 @@ extension FilterSettings {
 enum FilterSetting: Localizable {
     case channelEvents
     case transactionEvents
+    case unknownTransactionType
     case createInvoiceEvents
     case failedPaymentEvents
     case lightningPaymentEvents
@@ -47,6 +50,8 @@ enum FilterSetting: Localizable {
         switch self {
         case .transactionEvents:
             return "scene.filter.displayOnChainTransactions".localized
+        case .unknownTransactionType:
+            return "scene.filter.display_unknown_transaction_type".localized
         case .lightningPaymentEvents:
             return "scene.filter.displayLightningPayments".localized
         case .createInvoiceEvents:
@@ -70,6 +75,8 @@ enum FilterSetting: Localizable {
             return filterSettings.channelEvents
         case .failedPaymentEvents:
             return filterSettings.failedPaymentEvents
+        case .unknownTransactionType:
+            return filterSettings.unknownTransactionType
         }
     }
     
@@ -87,6 +94,8 @@ enum FilterSetting: Localizable {
             filterSettings.channelEvents = isActive
         case .failedPaymentEvents:
             filterSettings.failedPaymentEvents = isActive
+        case .unknownTransactionType:
+            filterSettings.unknownTransactionType = isActive
         }
         return filterSettings
     }
