@@ -29,8 +29,12 @@ enum ReceivingAddress {
         ))
     }
     
-    public static func all(database: Connection) throws -> [BitcoinAddress] {
-        return try database.prepare(table)
-            .compactMap { BitcoinAddress(string: $0[Column.address]) }
+    public static func all(database: Connection) throws -> Set<BitcoinAddress> {
+        var result = Set<BitcoinAddress>()
+        for row in try database.prepare(table) {
+            guard let address = BitcoinAddress(string: row[Column.address]) else { continue }
+            result.insert(address)
+        }
+        return result
     }
 }

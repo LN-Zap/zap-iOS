@@ -119,15 +119,17 @@ public final class HistoryService {
     
     func addedTransaction(_ transaction: Transaction) {
         addTransactions([transaction])
-        guard let transactionEvent = TransactionEvent(transaction: transaction) else { return }
-        events.insert(.transactionEvent(transactionEvent), at: 0)
+        
+//        guard let transactionEvent = TransactionEvent(transaction: transaction) else { return }
+//        events.insert(.transactionEvent(transactionEvent), at: 0)
         sendChangeNotification()
     }
     
     func addedInvoice(_ invoice: Invoice) {
         addInvoices([invoice])
-        let invoiceEvent = CreateInvoiceEvent(invoice: invoice)
-        events.insert(.createInvoiceEvent(invoiceEvent), at: 0)
+        
+//        let invoiceEvent = CreateInvoiceEvent(invoice: invoice)
+//        events.insert(.createInvoiceEvent(invoiceEvent), at: 0)
         sendChangeNotification()
     }
     
@@ -139,7 +141,14 @@ public final class HistoryService {
 // MARK: - Persistence
 extension HistoryService {
     private func addTransactions(_ transactions: [Transaction]) {
-        let transactions = transactions.compactMap { TransactionEvent(transaction: $0) }
+        let receiveAddresses = (try? ReceivingAddress.all(database: persistence.connection())) ?? Set()
+        
+        let transactions = transactions.compactMap { transaction -> TransactionEvent? in
+            for destination in transaction.destinationAddresses where receiveAddresses.contains(destination) {
+                return TransactionEvent(transaction: transaction, type: .userInitiated)
+            }
+            return TransactionEvent(transaction: transaction, type: .unknown)
+        }
         
         // update unconfirmed transaction block height
         do {

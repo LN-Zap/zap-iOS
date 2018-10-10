@@ -32,6 +32,8 @@ final class LightningApiMock: LightningApiProtocol {
     private let subscribeInvoices: Invoice?
     private let invoices: [Invoice]?
     
+    public var subscribeTransactionsCallback: ((Result<Transaction>) -> Void)?
+    
     init(
         info: Info? = Info.Template.testnet,
         nodeInfo: NodeInfo? = nil,
@@ -101,7 +103,7 @@ final class LightningApiMock: LightningApiProtocol {
     }
     
     func subscribeTransactions(completion: @escaping (Result<Transaction>) -> Void) {
-        completion(Result(value: subscribeTransactions, error: LndApiError.unknownError))
+        self.subscribeTransactionsCallback = completion
     }
     
     func payments(completion: @escaping (Result<[Payment]>) -> Void) {

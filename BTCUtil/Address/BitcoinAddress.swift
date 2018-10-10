@@ -28,7 +28,7 @@ private extension Network {
 }
 
 /// Represents p2pkh, p2sh & bech32 bitcoin addresses
-public struct BitcoinAddress: Codable, Equatable {
+public struct BitcoinAddress: Codable, Equatable, Hashable {
     public enum AddressType {
         case p2pkh
         case p2sh

@@ -32,7 +32,7 @@ public struct TransactionEvent: Equatable, DateProvidingEvent, AmountProvidingEv
 }
 
 extension TransactionEvent {
-    init?(transaction: Transaction) {
+    init?(transaction: Transaction, type: TransactionEventType = .unknown) {
         guard transaction.amount != 0 else { return nil }
         
         txHash = transaction.id
@@ -42,7 +42,7 @@ extension TransactionEvent {
         date = transaction.date
         destinationAddresses = transaction.destinationAddresses
         blockHeight = transaction.blockHeight
-        type = .unknown
+        self.type = type
     }
 }
 
