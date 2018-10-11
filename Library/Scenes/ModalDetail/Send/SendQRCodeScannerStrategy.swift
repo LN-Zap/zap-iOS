@@ -22,7 +22,7 @@ class SendQRCodeScannerStrategy: QRCodeScannerStrategy {
     }
     
     func viewControllerForAddress(address: String, completion: @escaping (Result<UIViewController>) -> Void) {
-        BitcoinInvoice.create(from: address, lightningService: lightningService) { [weak self] result in
+        BitcoinInvoiceFactory.create(from: address, lightningService: lightningService) { [weak self] result in
             guard let self = self else { return }
             completion(result.map {
                 let viewModel = SendViewModel(

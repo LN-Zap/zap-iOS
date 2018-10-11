@@ -70,7 +70,11 @@ public final class TransactionService {
     
     private func sendCoins(bitcoinURI: BitcoinURI, amount: Satoshi, completion: @escaping (Result<Success>) -> Void) {
         let destinationAddress = bitcoinURI.bitcoinAddress
-        api.sendCoins(address: destinationAddress, amount: amount) {
+        api.sendCoins(address: destinationAddress, amount: amount) { [historyService] in
+            if case .success(let txHash) = $0 {
+                let transactionEvent = TransactionEvent(txHash: txHash, bitcoinURI: bitcoinURI, amount: -amount)
+                historyService.updateTransactionEventMetadata(transactionEvent: transactionEvent)
+            }
             completion($0.map { _ in Success() })
         }
     }

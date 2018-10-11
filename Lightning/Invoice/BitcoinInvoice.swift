@@ -14,11 +14,16 @@ public enum InvoiceError: Error {
     case wrongNetworkError(linkNetwork: Network, expectedNetwork: Network)
 }
 
+public protocol BitcoinInvoice {
+    var lightningPaymentRequest: PaymentRequest? { get }
+    var bitcoinURI: BitcoinURI? { get }
+}
+
 /*
  Can be either a payment request or a bitcoinURI or both. (bitcoin uri with
  ln fallback or ln invoice with on-chain fallback.
 */
-public final class BitcoinInvoice {
+public final class BitcoinInvoiceFactory: BitcoinInvoice {
     public let lightningPaymentRequest: PaymentRequest?
     public let bitcoinURI: BitcoinURI?
 
@@ -33,7 +38,7 @@ public final class BitcoinInvoice {
                 let invoiceURI = LightningInvoiceURI(string: paymentRequest) {
                 decodeLightningPaymentRequest(invoiceURI: invoiceURI, bitcoinURI: bitcoinURI, lightningService: lightningService, completion: completion)
             } else {
-                validateInvoice(BitcoinInvoice(lightningPaymentRequest: nil, bitcoinURI: bitcoinURI), lightningService: lightningService, completion: completion)
+                validateInvoice(BitcoinInvoiceFactory(lightningPaymentRequest: nil, bitcoinURI: bitcoinURI), lightningService: lightningService, completion: completion)
             }
         } else if let invoiceURI = LightningInvoiceURI(string: address) {
             decodeLightningPaymentRequest(invoiceURI: invoiceURI, bitcoinURI: nil, lightningService: lightningService, completion: completion)
@@ -52,9 +57,9 @@ public final class BitcoinInvoice {
                     if bitcoinURI == nil,
                         let fallbackAddress = paymentRequest.fallbackAddress,
                         let fallbackBitcoinURI = BitcoinURI(address: fallbackAddress, amount: nil, memo: nil, lightningFallback: nil) {
-                        invoice = BitcoinInvoice(lightningPaymentRequest: paymentRequest, bitcoinURI: fallbackBitcoinURI)
+                        invoice = BitcoinInvoiceFactory(lightningPaymentRequest: paymentRequest, bitcoinURI: fallbackBitcoinURI)
                     } else {
-                        invoice = BitcoinInvoice(lightningPaymentRequest: paymentRequest, bitcoinURI: bitcoinURI)
+                        invoice = BitcoinInvoiceFactory(lightningPaymentRequest: paymentRequest, bitcoinURI: bitcoinURI)
                     }
                     
                     validateInvoice(invoice, lightningService: lightningService, completion: completion)

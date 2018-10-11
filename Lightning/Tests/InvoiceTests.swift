@@ -18,7 +18,7 @@ class InvoiceTests: XCTestCase {
         
         let expectation = self.expectation(description: "Decoding")
         
-        BitcoinInvoice.create(from: address, lightningService: mockService) {
+        BitcoinInvoiceFactory.create(from: address, lightningService: mockService) {
                 testAssertions($0)
                 expectation.fulfill()
         }

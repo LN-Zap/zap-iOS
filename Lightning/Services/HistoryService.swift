@@ -96,8 +96,7 @@ public final class HistoryService {
             guard try !LightningPaymentEvent.contains(database: connection, paymentHash: paymentRequest.paymentHash) else { return }
             let failedEvent = FailedPaymentEvent(paymentRequest: paymentRequest, amount: amount)
             try failedEvent.insert(database: connection)
-            events.insert(.failedPaymentEvent(failedEvent), at: 0)
-            sendChangeNotification()
+            updateEvents()
         } catch {
             print(error)
         }
@@ -109,8 +108,7 @@ public final class HistoryService {
                 guard let self = self else { return }
                 let paymentEvent = LightningPaymentEvent(payment: payment, memo: memo, node: node)
                 try paymentEvent.insert(database: self.persistence.connection())
-                self.events.insert(.lightningPaymentEvent(paymentEvent), at: 0)
-                self.sendChangeNotification()
+                self.updateEvents()
             } catch {
                 print(error)
             }
@@ -119,20 +117,24 @@ public final class HistoryService {
     
     func addedTransaction(_ transaction: Transaction) {
         addTransactions([transaction])
-        
-//        guard let transactionEvent = TransactionEvent(transaction: transaction) else { return }
-//        events.insert(.transactionEvent(transactionEvent), at: 0)
-        sendChangeNotification()
+        updateEvents()
     }
     
     func addedInvoice(_ invoice: Invoice) {
         addInvoices([invoice])
-        
-//        let invoiceEvent = CreateInvoiceEvent(invoice: invoice)
-//        events.insert(.createInvoiceEvent(invoiceEvent), at: 0)
-        sendChangeNotification()
+        updateEvents()
     }
     
+    /// called when a transaction is sent to mark it as userInitiated & set memo
+    func updateTransactionEventMetadata(transactionEvent: TransactionEvent) {
+        do {
+            try transactionEvent.insertOrUpdateMetaData(database: persistence.connection())
+            updateEvents()
+        } catch {
+            print(error)
+        }
+    }
+
     private func sendChangeNotification() {
         NotificationCenter.default.post(name: .historyDidChange, object: nil)
     }
@@ -150,23 +152,9 @@ extension HistoryService {
             return TransactionEvent(transaction: transaction, type: .unknown)
         }
         
-        // update unconfirmed transaction block height
-        do {
-            let txHashes = transactions.map { $0.txHash }
-            let unconfirmedTransactions = try TransactionEvent.unconfirmedEvents(for: txHashes, database: persistence.connection())
-            
-            for unconfirmedTransaction in unconfirmedTransactions {
-                guard let transaction = transactions.first(where: { $0.txHash == unconfirmedTransaction.txHash }) else { continue }
-                try transaction.updateBlockHeight(database: persistence.connection())
-            }
-        } catch {
-            print("⚠️ `\(#function)` (update unconfirmed):", error)
-        }
-        
-        // add unknown transactions, fail on first error
         for transaction in transactions {
             do {
-                try transaction.insert(database: persistence.connection())
+                try transaction.insertOrUpdateTransactionData(database: persistence.connection())
             } catch {
                 print("⚠️ `\(#function)` (add unknown):", error)
             }

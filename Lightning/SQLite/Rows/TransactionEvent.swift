@@ -24,7 +24,7 @@ public struct TransactionEvent: Equatable, DateProvidingEvent, AmountProvidingEv
     public let txHash: String
     public let memo: String?
     public let amount: Satoshi
-    public let fee: Satoshi
+    public let fee: Satoshi?
     public let date: Date
     public let destinationAddresses: [BitcoinAddress]
     public let blockHeight: Int? // nil if transaction is unconfirmed
@@ -44,6 +44,17 @@ extension TransactionEvent {
         blockHeight = transaction.blockHeight
         self.type = type
     }
+    
+    init(txHash: String, bitcoinURI: BitcoinURI, amount: Satoshi) {
+        self.txHash = txHash
+        memo = bitcoinURI.memo
+        self.amount = amount
+        fee = nil
+        date = Date()
+        destinationAddresses = [bitcoinURI.bitcoinAddress]
+        blockHeight = nil
+        type = .userInitiated
+    }
 }
 
 // MARK: - Persistence
@@ -51,7 +62,7 @@ extension TransactionEvent {
     enum Column {
         static let txHash = Expression<String>("txHash")
         static let amount = Expression<Satoshi>("amount")
-        static let fee = Expression<Satoshi>("fee")
+        static let fee = Expression<Satoshi?>("fee")
         static let memo = Expression<String?>("memo")
         static let date = Expression<Date>("date")
         static let destinationAddresses = Expression<String>("destinationAddresses")
@@ -89,21 +100,10 @@ extension TransactionEvent {
         })
     }
     
-    func insert(database: Connection) throws {
-        let addressString = destinationAddresses
+    private var addressString: String {
+        return destinationAddresses
             .map { $0.string }
             .joined(separator: ",")
-        
-        try database.run(TransactionEvent.table.insert(
-            Column.txHash <- txHash,
-            Column.amount <- amount,
-            Column.fee <- fee,
-            Column.memo <- memo,
-            Column.date <- date,
-            Column.destinationAddresses <- addressString,
-            Column.blockHeight <- blockHeight,
-            Column.type <- type.rawValue)
-        )
     }
     
     static func events(query: Table = TransactionEvent.table, database: Connection) throws -> [TransactionEvent] {
@@ -124,12 +124,42 @@ extension TransactionEvent {
         return try events(query: query, database: database)
     }
     
-    func updateBlockHeight(database: Connection) throws {
-        let query = TransactionEvent.table
-            .filter(Column.txHash == txHash)
-            .filter(Column.blockHeight == nil)
-            .limit(1)
-        
-        try database.run(query.update(Column.blockHeight <- blockHeight))
+    func insertOrUpdateTransactionData(database: Connection) throws {
+        do {
+            try insert(database: database)
+        } catch {
+            let transaction = TransactionEvent.table.filter(Column.txHash == txHash)
+            try database.run(transaction.update(
+                Column.amount <- amount,
+                Column.fee <- fee,
+                Column.destinationAddresses <- addressString,
+                Column.blockHeight <- blockHeight
+            ))
+        }
+    }
+    
+    func insertOrUpdateMetaData(database: Connection) throws {
+        do {
+            try insert(database: database)
+        } catch {
+            let transaction = TransactionEvent.table.filter(Column.txHash == txHash)
+            try database.run(transaction.update(
+                Column.memo <- memo,
+                Column.type <- type.rawValue
+            ))
+        }
+    }
+    
+    private func insert(database: Connection) throws {
+        try database.run(TransactionEvent.table.insert(
+            Column.txHash <- txHash,
+            Column.amount <- amount,
+            Column.fee <- fee,
+            Column.memo <- memo,
+            Column.date <- date,
+            Column.destinationAddresses <- addressString,
+            Column.blockHeight <- blockHeight,
+            Column.type <- type.rawValue)
+        )
     }
 }

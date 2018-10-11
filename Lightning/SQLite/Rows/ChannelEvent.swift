@@ -93,7 +93,7 @@ extension ChannelEvent {
         blockHeight = row[ChannelEvent.table[Column.blockHeight]]
         type = ChannelEvent.ChanneEventType(rawValue: row[Column.type]) ?? .unknown
         node = ConnectedNode(row: row)
-        fee = try? row.get(TransactionEvent.Column.fee)
+        fee = (try? row.get(TransactionEvent.Column.fee)) ?? nil // swiftlint:disable:this redundant_nil_coalescing
     }
     
     static func createTable(database: Connection) throws {
