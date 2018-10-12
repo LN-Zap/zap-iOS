@@ -34,10 +34,10 @@ public final class HistoryService {
             let database = try persistence.connection()
             
             var dateProvidingEvents = [DateProvidingEvent]()
-            let payments = try TransactionEvent.payments(database: database)
+            let transactions = try TransactionEvent.payments(database: database)
             let lightningPayments = try LightningPaymentEvent.events(database: database)
             
-            dateProvidingEvents.append(contentsOf: payments)
+            dateProvidingEvents.append(contentsOf: transactions)
             dateProvidingEvents.append(contentsOf: lightningPayments)
             dateProvidingEvents.append(contentsOf: try CreateInvoiceEvent.events(database: database))
             dateProvidingEvents.append(contentsOf: try FailedPaymentEvent.events(database: database))
@@ -50,7 +50,8 @@ public final class HistoryService {
             dateProvidingEvents.append(contentsOf: channelEvents)
             
             events = dateProvidingEvents.map(HistoryEventType.create)
-            userTransaction = payments as [PlottableEvent] + lightningPayments as [PlottableEvent]
+            let userTransactions = transactions.filter { $0.type == .userInitiated }
+            userTransaction = userTransactions as [PlottableEvent] + lightningPayments as [PlottableEvent]
             
             sendChangeNotification()
         } catch {

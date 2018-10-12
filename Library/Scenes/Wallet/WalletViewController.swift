@@ -115,7 +115,7 @@ final class WalletViewController: UIViewController {
         
         DispatchQueue.main.async {
             self.graphContainer.subviews.first?.removeFromSuperview()
-            let graphDataSource = GraphViewDataSource(plottableEvents: historyService.userTransaction)
+            let graphDataSource = GraphViewDataSource(currentValue: 88951208, plottableEvents: historyService.userTransaction, currency: Bitcoin(unit: .bitcoin))
             self.graphDataSource = graphDataSource
             let graphView = GraphView(frame: self.graphContainer.bounds, dataSource: graphDataSource)
             self.graphContainer.addSubview(graphView)

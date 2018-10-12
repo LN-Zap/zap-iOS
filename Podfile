@@ -21,6 +21,10 @@ target 'Library' do
     pod 'ScrollableGraphView'
     pod 'KeychainAccess'
     pod 'Bond'
+    
+    target 'LibraryTests' do
+        inherit! :search_paths
+    end
 end
 
 target 'ZapMessages' do

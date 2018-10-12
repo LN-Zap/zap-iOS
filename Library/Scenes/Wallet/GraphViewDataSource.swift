@@ -12,42 +12,61 @@ import ScrollableGraphView
 
 final class GraphViewDataSource: ScrollableGraphViewDataSource {
     let plotData: [(date: Date, amount: Satoshi)]
+    let currency: Currency
     
-    init(plottableEvents: [PlottableEvent]) {
-        var transactionsByDay = [Int: [PlottableEvent]]()
+    init(currentValue: Satoshi, plottableEvents: [PlottableEvent], currency: Currency) {
+        self.currency = currency
         let currentDate = Date()
         
-        for plottableEvent in plottableEvents {
-            let dayDistance = currentDate.daysTo(end: plottableEvent.date)
-            if transactionsByDay[dayDistance] == nil {
-                transactionsByDay[dayDistance] = [plottableEvent]
-            } else {
-                transactionsByDay[dayDistance]?.append(plottableEvent)
-            }
+        var result = [(date: Date, amount: Satoshi)]()
+        
+        let transactionsByDay = GraphViewDataSource.amountDeltaByDay(plottableEvents: plottableEvents, currentDate: currentDate)
+        
+        var sum: Satoshi = currentValue
+        if let longestDayDistance = transactionsByDay.keys.min() {
+            result = stride(from: 0, to: (longestDayDistance - 1), by: -1)
+                .map { day in
+                    let date = currentDate.add(day: day - 1)
+                    let delta = transactionsByDay[day] ?? 0
+                    sum -= delta
+                    if sum < 0 {
+                        sum = 0
+                    }
+                    return (date, sum)
+                }
+                .reversed()
+        } else {
+            result = []
         }
         
-        var sum: Satoshi = 0
-        if let longestDayDistance = transactionsByDay.keys.min() {
-            plotData = ((longestDayDistance - 1)...0).map { day in
-                let date = currentDate.add(day: day)
-                let delta = GraphViewDataSource.transactionSum(transactionsByDay[day] ?? [])
-                sum += delta
-                
-                return (date, sum)
-            }
-        } else {
-            plotData = []
+        if let first = result.first,
+            first.amount != 0 {
+            result.insert((date: first.date.add(day: -1), amount: 0), at: 0)
+        } else if result.isEmpty && currentValue > 0 {
+            result.insert((date: currentDate.add(day: -1), amount: 0), at: 0)
         }
+        
+        result.append((date: currentDate, amount: currentValue))
+        
+        plotData = result
     }
     
-    private static func transactionSum(_ events: [PlottableEvent]) -> Satoshi {
-        return events.reduce(0) { $0 + $1.amount }
+    private static func amountDeltaByDay(plottableEvents: [PlottableEvent], currentDate: Date) -> [Int: Satoshi] {
+        var transactionsByDay = [Int: Satoshi]()
+        for plottableEvent in plottableEvents {
+            let dayDistance = currentDate.daysTo(end: plottableEvent.date)
+            if let currentValue = transactionsByDay[dayDistance] {
+                transactionsByDay[dayDistance] = currentValue + plottableEvent.amount
+            } else {
+                transactionsByDay[dayDistance] = plottableEvent.amount
+            }
+        }
+        return transactionsByDay
     }
     
     // MARK: - ScrollableGraphViewDataSource
     
     func value(forPlot plot: Plot, atIndex pointIndex: Int) -> Double {
-        let currency = Settings.shared.cryptoCurrency.value
         guard let value = currency.value(satoshis: plotData[pointIndex].amount) else { return 0 }
         return Double(truncating: value as NSNumber)
     }
@@ -61,5 +80,13 @@ final class GraphViewDataSource: ScrollableGraphViewDataSource {
     
     func numberOfPoints() -> Int {
         return plotData.count
+    }
+}
+
+extension GraphViewDataSource: CustomDebugStringConvertible {
+    var debugDescription: String {
+        return plotData.reduce("Point count: \(plotData.count)") {
+            $0 + "\n\($1.date): \($1.amount)"
+        }
     }
 }

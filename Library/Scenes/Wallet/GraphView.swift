@@ -37,9 +37,14 @@ final class GraphView: ScrollableGraphView {
         referenceLines.referenceLineColor = UIColor.Zap.gray
         referenceLines.referenceLinePosition = .right
         referenceLines.referenceLineLabelColor = .white
-        referenceLines.referenceLineUnits = Settings.shared.cryptoCurrency.value.unit.symbol
+        referenceLines.referenceLineNumberOfDecimalPlaces = 3
+        if let dataSource = dataSource as? GraphViewDataSource {
+            referenceLines.referenceLineUnits = dataSource.currency.symbol
+        }
         referenceLines.dataPointLabelColor = .white
         referenceLines.dataPointLabelsSparsity = 2
+        referenceLines.referenceLineNumberStyle = .decimal
+        referenceLines.shouldAddUnitsToIntermediateReferenceLineLabels = true
         
         addPlot(plot: linePlot)
         addPlot(plot: dotPlot)
