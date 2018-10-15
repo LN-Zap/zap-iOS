@@ -56,17 +56,15 @@ final class ChannelDetailViewController: ModalDetailViewController {
         let balanceView = BalanceView()
         balanceView.set(localBalance: channelViewModel.channel.localBalance, remoteBalance: channelViewModel.channel.remoteBalance)
         
-        let horizontalStackViewHeight = StackViewElement.horizontalStackView(compressionResistant: .first, content: []).height
-        
         contentStackView.addArrangedElement(.verticalStackView(content: [
-            .customView(balanceView, height: 10),
+            .customHeight(10, element: .customView(balanceView)),
             .horizontalStackView(compressionResistant: .first, content: [
-                .customView(circleIndicatorView(gradient: [UIColor.Zap.lightningOrange, UIColor.Zap.lightningOrangeGradient]), height: horizontalStackViewHeight),
+                .customView(circleIndicatorView(gradient: [UIColor.Zap.lightningOrange, UIColor.Zap.lightningOrangeGradient])),
                 .label(text: "scene.channel_detail.local_balance_label".localized + ":", style: labelStyle),
                 .amountLabel(amount: channelViewModel.channel.localBalance, style: textStyle)
             ]),
             .horizontalStackView(compressionResistant: .first, content: [
-                .customView(circleIndicatorView(gradient: [UIColor.Zap.white, UIColor.Zap.white]), height: horizontalStackViewHeight),
+                .customView(circleIndicatorView(gradient: [UIColor.Zap.white, UIColor.Zap.white])),
                 .label(text: "scene.channel_detail.remote_balance_label".localized + ":", style: labelStyle),
                 .amountLabel(amount: channelViewModel.channel.remoteBalance, style: textStyle)
             ])

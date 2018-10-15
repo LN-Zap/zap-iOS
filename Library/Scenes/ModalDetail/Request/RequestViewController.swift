@@ -97,7 +97,7 @@ final class RequestViewController: ModalDetailViewController {
             string: "generic.memo.placeholder".localized,
             attributes: [.foregroundColor: UIColor.Zap.gray]
         )
-        contentStackView.addArrangedElement(.customView(memoTextField, height: 30))
+        contentStackView.addArrangedElement(.customHeight(30, element: .customView(memoTextField)))
         memoTextField.isHidden = true
         memoTextField.addTarget(self, action: #selector(updateMemo(sender:)), for: .editingChanged)
         self.memoTextField = memoTextField
@@ -129,7 +129,7 @@ final class RequestViewController: ModalDetailViewController {
         let rightSeparator = LineView()
         rightSeparator.backgroundColor = UIColor.Zap.background
         horizontalStackView.addArrangedSubview(rightSeparator)
-        contentStackView.addArrangedElement(.customView(horizontalStackView, height: 22))
+        contentStackView.addArrangedElement(.customView(horizontalStackView))
         leftSeparator.widthAnchor.constraint(equalTo: rightSeparator.widthAnchor, multiplier: 1, constant: 0).isActive = true
         self.orSeparator = horizontalStackView
         

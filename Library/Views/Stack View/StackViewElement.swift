@@ -15,7 +15,7 @@ indirect enum StackViewElement {
     case horizontalStackView(compressionResistant: HorizontalPriority, content: [StackViewElement])
     case button(title: String, style: UIViewStyle<UIButton>, completion: (UIButton) -> Void)
     case separator
-    case customView(UIView, height: CGFloat)
+    case customView(UIView)
     case customHeight(CGFloat, element: StackViewElement)
     
     enum HorizontalPriority {
@@ -23,23 +23,8 @@ indirect enum StackViewElement {
         case last
     }
     
-    var height: CGFloat {
-        switch self {
-        case .separator:
-            return 1
-        case let .verticalStackView(content, spacing):
-            return content.height(spacing: spacing)
-        case .customView(_, let height):
-            return height
-        case .customHeight(let height, _):
-            return height
-        default:
-            return 22
-        }
-    }
-    
     // swiftlint:disable:next function_body_length
-    func view(constainHeight: Bool = true) -> UIView {
+    func view() -> UIView {
         let result: UIView
         
         switch self {
@@ -84,6 +69,7 @@ indirect enum StackViewElement {
         case let .button(title, style, completion):
             let button = CallbackButton(title: title, onTap: completion)
             style.apply(to: button.button)
+
             result = button
             
         case .separator:
@@ -93,24 +79,16 @@ indirect enum StackViewElement {
             view.heightAnchor.constraint(equalToConstant: 1).isActive = true
             result = view
             
-        case let .customView(view, _):
+        case let .customView(view):
             result = view
             result.setContentHuggingPriority(UILayoutPriority(rawValue: 999), for: .horizontal)
             
-        case let .customHeight(_, element):
-            result = element.view(constainHeight: false)
+        case let .customHeight(height, element):
+            result = element.view()
+            result.heightAnchor.constraint(equalToConstant: height).isActive = true
             result.translatesAutoresizingMaskIntoConstraints = false
         }
         
-        if constainHeight {
-            result.heightAnchor.constraint(equalToConstant: height).isActive = true
-        }
         return result
-    }
-}
-
-extension Array where Element == StackViewElement {
-    func height(spacing: CGFloat) -> CGFloat {
-        return self.reduce(CGFloat(count - 1) * spacing) { $0 + $1.height }
     }
 }

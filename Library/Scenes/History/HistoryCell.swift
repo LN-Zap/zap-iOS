@@ -132,7 +132,7 @@ final class HistoryCell: BondTableViewCell {
         
         stackView.addArrangedElement(.horizontalStackView(compressionResistant: .last, content: [
             .label(text: description, style: Style.Label.body),
-            .customView(amountLabel(transactionEvent.amount), height: 22)
+            .customView(amountLabel(transactionEvent.amount))
         ]))
     }
     
@@ -166,7 +166,7 @@ final class HistoryCell: BondTableViewCell {
         
         stackView.addArrangedElement(.horizontalStackView(compressionResistant: .last, content: [
             .label(text: wrapped.channelEvent.node.alias ?? wrapped.channelEvent.node.pubKey, style: Style.Label.body),
-            .customView(amountLabel(amount), height: 22)
+            .customView(amountLabel(amount))
         ]))
     }
     
@@ -188,7 +188,7 @@ final class HistoryCell: BondTableViewCell {
         
         stackView.addArrangedElement(.horizontalStackView(compressionResistant: .last, content: [
             .label(text: createInvoiceEvent.memo ?? createInvoiceEvent.paymentRequest, style: Style.Label.body),
-            .customView(amountLabel(createInvoiceEvent.amount), height: 22)
+            .customView(amountLabel(createInvoiceEvent.amount))
         ]))
     }
     
@@ -202,7 +202,7 @@ final class HistoryCell: BondTableViewCell {
         
         stackView.addArrangedElement(.horizontalStackView(compressionResistant: .last, content: [
             .label(text: description, style: Style.Label.body),
-            .customView(amountLabel(-failedPaymentEvent.amount), height: 22)
+            .customView(amountLabel(-failedPaymentEvent.amount))
         ]))
         
         addNotificationLabel(type: .error)
@@ -227,7 +227,7 @@ final class HistoryCell: BondTableViewCell {
         let detailLabel = lightningPaymentEvent.node?.alias ?? lightningPaymentEvent.node?.pubKey ?? ""
         stackView.addArrangedElement(.horizontalStackView(compressionResistant: .last, content: [
             .label(text: detailLabel, style: Style.Label.body),
-            .customView(amountLabel(lightningPaymentEvent.amount), height: 22)
+            .customView(amountLabel(lightningPaymentEvent.amount))
         ]))
 
         if let memo = lightningPaymentEvent.memo {
