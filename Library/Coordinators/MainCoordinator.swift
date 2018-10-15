@@ -126,11 +126,6 @@ final class MainCoordinator: Routing {
         detailViewController = nil
     }
     
-    private func presentCloseConfirmation(for channelViewModel: ChannelViewModel, closeAction: @escaping () -> Void) {
-        let alertController = UIAlertController.closeChannelAlertController(channelViewModel: channelViewModel, closeAction: closeAction)
-        rootViewController.present(alertController, animated: true)
-    }
-    
     private func presentFilter() {
         let filterViewController = UIStoryboard.instantiateFilterViewController(historyViewModel: historyViewModel)
         rootViewController.present(filterViewController, animated: true)
@@ -147,7 +142,7 @@ final class MainCoordinator: Routing {
     }
     
     private func presentChannelDetail(on presentingViewController: UIViewController, channelViewModel: ChannelViewModel) {
-        let channelDetailViewController = ChannelDetailViewController(channelViewModel: channelViewModel, channelListViewModel: channelListViewModel, blockExplorerButtonTapped: presentBlockExplorer, presentCloseConfirmation: presentCloseConfirmation)
+        let channelDetailViewController = ChannelDetailViewController(channelViewModel: channelViewModel, channelListViewModel: channelListViewModel, blockExplorerButtonTapped: presentBlockExplorer)
         presentingViewController.present(channelDetailViewController, animated: true, completion: nil)
     }
 }

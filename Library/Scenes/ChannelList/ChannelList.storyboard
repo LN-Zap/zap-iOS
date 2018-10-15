@@ -32,13 +32,7 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="evo-uh-dCS"/>
                     </view>
-                    <navigationItem key="navigationItem" id="hPc-9d-Qbb">
-                        <barButtonItem key="rightBarButtonItem" title="Item" image="icon_transaction_open_channel" id="E33-pH-DHU">
-                            <connections>
-                                <action selector="presentAddChannel:" destination="qfZ-HA-Q7u" id="0xg-nm-agH"/>
-                            </connections>
-                        </barButtonItem>
-                    </navigationItem>
+                    <navigationItem key="navigationItem" id="hPc-9d-Qbb"/>
                     <connections>
                         <outlet property="tableView" destination="6N0-fR-49i" id="imZ-Dz-LDe"/>
                     </connections>
@@ -48,7 +42,4 @@
             <point key="canvasLocation" x="2404" y="470.01499250374815"/>
         </scene>
     </scenes>
-    <resources>
-        <image name="icon_transaction_open_channel" width="12" height="12"/>
-    </resources>
 </document>

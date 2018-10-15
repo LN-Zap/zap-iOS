@@ -6,19 +6,18 @@
 //
 
 import Foundation
+import SwiftLnd
 
 final class ChannelDetailViewController: ModalDetailViewController {
     let channelViewModel: ChannelViewModel
     let channelListViewModel: ChannelListViewModel
     
     var presentBlockExplorer: (String, BlockExplorer.CodeType) -> Void
-    var presentCloseConfirmation: (ChannelViewModel, @escaping () -> Void) -> Void
     
-    init(channelViewModel: ChannelViewModel, channelListViewModel: ChannelListViewModel, blockExplorerButtonTapped: @escaping (String, BlockExplorer.CodeType) -> Void, presentCloseConfirmation: @escaping (ChannelViewModel, @escaping () -> Void) -> Void) {
+    init(channelViewModel: ChannelViewModel, channelListViewModel: ChannelListViewModel, blockExplorerButtonTapped: @escaping (String, BlockExplorer.CodeType) -> Void) {
         self.channelViewModel = channelViewModel
         self.channelListViewModel = channelListViewModel
         self.presentBlockExplorer = blockExplorerButtonTapped
-        self.presentCloseConfirmation = presentCloseConfirmation
         
         super.init(nibName: nil, bundle: nil)
     }
@@ -108,20 +107,29 @@ final class ChannelDetailViewController: ModalDetailViewController {
     }
     
     private func closeChannel() {
-        dismiss(animated: true) { [channelViewModel, weak self] in
-            self?.presentCloseConfirmation(channelViewModel) {
-                let loadingView = self?.presentLoadingView(text: "scene.channels.close_loading_view".localized)
-                self?.view.isUserInteractionEnabled = false
-                self?.channelListViewModel.close(channelViewModel.channel) {
-                    loadingView?.removeFromSuperview()
-                    switch $0 {
-                    case .success:
-                        self?.parent?.presentSuccessToast("scene.channels.close_success.toast".localized)
-                    case .failure(let error):
-                        self?.parent?.presentErrorToast(error.localizedDescription)
-                    }
+        let alertController = UIAlertController.closeChannelAlertController(channelViewModel: channelViewModel) { [channelViewModel, weak self] in
+            let loadingView = self?.presentLoadingView(text: "scene.channels.close_loading_view".localized)
+            self?.channelListViewModel.close(channelViewModel.channel) { result in
+                DispatchQueue.main.async {
+                    self?.dismissAfterClose(result: result, loadingView: loadingView)
                 }
             }
+        }
+        self.present(alertController, animated: true)
+    }
+    
+    private func dismissAfterClose(result: Result<CloseStatusUpdate>, loadingView: LoadingView?) {
+        let parent = presentingViewController
+        loadingView?.removeFromSuperview()
+        
+        switch result {
+        case .success:
+            dismiss(animated: true) {
+                parent?.presentSuccessToast("scene.channels.close_success.toast".localized)
+            }
+        case .failure(let error):
+            parent?.presentErrorToast(error.localizedDescription)
+            
         }
     }
 }
