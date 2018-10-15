@@ -32,8 +32,8 @@
 
 "view.amount_input.placeholder" = "Suma";
 
-"scene.history.title" = "Tranzacţii";
-"scene.history.empty_state_label" = "0 tranzacţii 🙁";
+"scene.history.title" = "History";
+"scene.history.empty_state_label" = "0 transactions 🙁";
 
 "scene.settings.title" = "Setări";
 "scene.settings.section.wallet" = "Portofel";
@@ -66,6 +66,7 @@
 "scene.channels.alert.cancel" = "Revocare";
 "scene.channels.alert.close" = "Închide";
 "scene.channels.alert.force_close" = "Force Close";
+"scene.channels.close_loading_view" = "Closing Channel";
 "scene.channels.close_success.toast" = "Canalul se închide.";
 
 "scene.open_channel.title" = "Deschide un canal";
