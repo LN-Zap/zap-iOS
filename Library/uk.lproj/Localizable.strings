@@ -32,8 +32,8 @@
 
 "view.amount_input.placeholder" = "Сума";
 
-"scene.history.title" = "Операції";
-"scene.history.empty_state_label" = "0 операцій 🙁";
+"scene.history.title" = "History";
+"scene.history.empty_state_label" = "0 transactions 🙁";
 
 "scene.settings.title" = "Налаштування";
 "scene.settings.section.wallet" = "Гаманець";
@@ -66,6 +66,7 @@
 "scene.channels.alert.cancel" = "Скасувати";
 "scene.channels.alert.close" = "Закритий";
 "scene.channels.alert.force_close" = "Force Close";
+"scene.channels.close_loading_view" = "Closing Channel";
 "scene.channels.close_success.toast" = "Channel is closing.";
 
 "scene.open_channel.title" = "Відкрити канал";
