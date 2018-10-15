@@ -32,8 +32,8 @@
 
 "view.amount_input.placeholder" = "数量";
 
-"scene.history.title" = "交易";
-"scene.history.empty_state_label" = "0个交易🙁";
+"scene.history.title" = "History";
+"scene.history.empty_state_label" = "0 transactions 🙁";
 
 "scene.settings.title" = "设置";
 "scene.settings.section.wallet" = "钱包";
@@ -66,6 +66,7 @@
 "scene.channels.alert.cancel" = "取消";
 "scene.channels.alert.close" = "关闭";
 "scene.channels.alert.force_close" = "强制关闭";
+"scene.channels.close_loading_view" = "Closing Channel";
 "scene.channels.close_success.toast" = "通道正在关闭。";
 
 "scene.open_channel.title" = "打开通道";
