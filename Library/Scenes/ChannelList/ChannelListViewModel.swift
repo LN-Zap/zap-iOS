@@ -6,6 +6,7 @@
 //
 
 import Bond
+import BTCUtil
 import Foundation
 import Lightning
 import ReactiveKit
@@ -37,6 +38,7 @@ final class ChannelListViewModel: NSObject {
     
     let dataSource: MutableObservableArray<ChannelViewModel>
     let searchString = Observable<String?>(nil)
+    var maxChannelCapacity: Satoshi = 1
     
     init(channelService: ChannelService) {
         self.channelService = channelService
@@ -65,6 +67,10 @@ final class ChannelListViewModel: NSObject {
                 return $0.channel.remotePubKey < $1.channel.remotePubKey
             }
         }
+        
+        maxChannelCapacity = viewModels
+            .max(by: { $0.channel.capacity < $1.channel.capacity })?
+            .channel.capacity ?? 1
         
         dataSource.replace(with: sortedViewModels, performDiff: true)
     }

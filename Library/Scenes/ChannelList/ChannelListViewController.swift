@@ -45,16 +45,12 @@ final class ChannelListViewController: UIViewController {
         navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(presentAddChannel))
         navigationItem.largeTitleDisplayMode = .never
         
-        channelListViewModel?.dataSource.bind(to: tableView) { array, indexPath, tableView in
+        channelListViewModel?.dataSource.bind(to: tableView) { [weak self] array, indexPath, tableView in
             let cell: ChannelTableViewCell = tableView.dequeueCellForIndexPath(indexPath)
-            cell.channelViewModel = array[indexPath.row]
+            let channelViewModel = array[indexPath.row]
+            cell.update(channelViewModel: channelViewModel, maxChannelCapacity: self?.channelListViewModel?.maxChannelCapacity ?? 1)
             return cell
         }
-    }
-    
-    @objc func refresh(sender: UIRefreshControl) {
-        channelListViewModel?.refresh()
-        sender.endRefreshing()
     }
     
     @objc private func presentAddChannel() {
