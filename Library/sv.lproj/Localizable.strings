@@ -32,8 +32,8 @@
 
 "view.amount_input.placeholder" = "Belopp";
 
-"scene.history.title" = "Överföringar";
-"scene.history.empty_state_label" = "0 överföringar 🙁";
+"scene.history.title" = "History";
+"scene.history.empty_state_label" = "0 transactions 🙁";
 
 "scene.settings.title" = "Inställningar";
 "scene.settings.section.wallet" = "Wallet";
@@ -66,6 +66,7 @@
 "scene.channels.alert.cancel" = "Avbryt";
 "scene.channels.alert.close" = "Stäng";
 "scene.channels.alert.force_close" = "Force Close";
+"scene.channels.close_loading_view" = "Closing Channel";
 "scene.channels.close_success.toast" = "Kanalen stängs.";
 
 "scene.open_channel.title" = "Öppna kanal";
