@@ -30,6 +30,12 @@ extension BatchUpdate {
     }
 }
 
+#if swift(>=4.2)
+public typealias DiffRowAnimation = UITableView.RowAnimation
+#else
+public typealias DiffRowAnimation = UITableViewRowAnimation
+#endif
+
 public extension UITableView {
     /// Animates rows which changed between oldData and newData.
     ///
@@ -42,10 +48,10 @@ public extension UITableView {
     public func animateRowChanges<T: Collection>(
         oldData: T,
         newData: T,
-        deletionAnimation: UITableViewRowAnimation = .automatic,
-        insertionAnimation: UITableViewRowAnimation = .automatic,
+        deletionAnimation: DiffRowAnimation = .automatic,
+        insertionAnimation: DiffRowAnimation = .automatic,
         indexPathTransform: (IndexPath) -> IndexPath = { $0 }
-    ) where T.Iterator.Element: Equatable {
+    ) where T.Element: Equatable {
         self.apply(
             oldData.extendedDiff(newData),
             deletionAnimation: deletionAnimation,
@@ -67,8 +73,8 @@ public extension UITableView {
         oldData: T,
         newData: T,
         isEqual: EqualityChecker<T>,
-        deletionAnimation: UITableViewRowAnimation = .automatic,
-        insertionAnimation: UITableViewRowAnimation = .automatic,
+        deletionAnimation: DiffRowAnimation = .automatic,
+        insertionAnimation: DiffRowAnimation = .automatic,
         indexPathTransform: (IndexPath) -> IndexPath = { $0 }
     ) {
         self.apply(
@@ -81,8 +87,8 @@ public extension UITableView {
 
     public func apply(
         _ diff: ExtendedDiff,
-        deletionAnimation: UITableViewRowAnimation = .automatic,
-        insertionAnimation: UITableViewRowAnimation = .automatic,
+        deletionAnimation: DiffRowAnimation = .automatic,
+        insertionAnimation: DiffRowAnimation = .automatic,
         indexPathTransform: (IndexPath) -> IndexPath = { $0 }
     ) {
         let update = BatchUpdate(diff: diff, indexPathTransform: indexPathTransform)
@@ -108,16 +114,16 @@ public extension UITableView {
     public func animateRowAndSectionChanges<T: Collection>(
         oldData: T,
         newData: T,
-        rowDeletionAnimation: UITableViewRowAnimation = .automatic,
-        rowInsertionAnimation: UITableViewRowAnimation = .automatic,
-        sectionDeletionAnimation: UITableViewRowAnimation = .automatic,
-        sectionInsertionAnimation: UITableViewRowAnimation = .automatic,
+        rowDeletionAnimation: DiffRowAnimation = .automatic,
+        rowInsertionAnimation: DiffRowAnimation = .automatic,
+        sectionDeletionAnimation: DiffRowAnimation = .automatic,
+        sectionInsertionAnimation: DiffRowAnimation = .automatic,
         indexPathTransform: (IndexPath) -> IndexPath = { $0 },
         sectionTransform: (Int) -> Int = { $0 }
     )
-        where T.Iterator.Element: Collection,
-        T.Iterator.Element: Equatable,
-        T.Iterator.Element.Iterator.Element: Equatable {
+        where T.Element: Collection,
+        T.Element: Equatable,
+        T.Element.Element: Equatable {
         self.apply(
             oldData.nestedExtendedDiff(to: newData),
             rowDeletionAnimation: rowDeletionAnimation,
@@ -134,7 +140,7 @@ public extension UITableView {
     /// - Parameters:
     ///   - oldData:                   Data which reflects the previous state of `UITableView`
     ///   - newData:                   Data which reflects the current state of `UITableView`
-    ///   - isEqualElement:            A function comparing two items (elements of `T.Iterator.Element`)
+    ///   - isEqualElement:            A function comparing two items (elements of `T.Element`)
     ///   - rowDeletionAnimation:      Animation type for row deletions
     ///   - rowInsertionAnimation:     Animation type for row insertions
     ///   - sectionDeletionAnimation:  Animation type for section deletions
@@ -145,15 +151,15 @@ public extension UITableView {
         oldData: T,
         newData: T,
         isEqualElement: NestedElementEqualityChecker<T>,
-        rowDeletionAnimation: UITableViewRowAnimation = .automatic,
-        rowInsertionAnimation: UITableViewRowAnimation = .automatic,
-        sectionDeletionAnimation: UITableViewRowAnimation = .automatic,
-        sectionInsertionAnimation: UITableViewRowAnimation = .automatic,
+        rowDeletionAnimation: DiffRowAnimation = .automatic,
+        rowInsertionAnimation: DiffRowAnimation = .automatic,
+        sectionDeletionAnimation: DiffRowAnimation = .automatic,
+        sectionInsertionAnimation: DiffRowAnimation = .automatic,
         indexPathTransform: (IndexPath) -> IndexPath = { $0 },
         sectionTransform: (Int) -> Int = { $0 }
     )
-        where T.Iterator.Element: Collection,
-        T.Iterator.Element: Equatable {
+        where T.Element: Collection,
+        T.Element: Equatable {
         self.apply(
             oldData.nestedExtendedDiff(
                 to: newData,
@@ -184,15 +190,15 @@ public extension UITableView {
         oldData: T,
         newData: T,
         isEqualSection: EqualityChecker<T>,
-        rowDeletionAnimation: UITableViewRowAnimation = .automatic,
-        rowInsertionAnimation: UITableViewRowAnimation = .automatic,
-        sectionDeletionAnimation: UITableViewRowAnimation = .automatic,
-        sectionInsertionAnimation: UITableViewRowAnimation = .automatic,
+        rowDeletionAnimation: DiffRowAnimation = .automatic,
+        rowInsertionAnimation: DiffRowAnimation = .automatic,
+        sectionDeletionAnimation: DiffRowAnimation = .automatic,
+        sectionInsertionAnimation: DiffRowAnimation = .automatic,
         indexPathTransform: (IndexPath) -> IndexPath = { $0 },
         sectionTransform: (Int) -> Int = { $0 }
     )
-        where T.Iterator.Element: Collection,
-        T.Iterator.Element.Iterator.Element: Equatable {
+        where T.Element: Collection,
+        T.Element.Element: Equatable {
         self.apply(
             oldData.nestedExtendedDiff(
                 to: newData,
@@ -213,7 +219,7 @@ public extension UITableView {
     ///   - oldData:                   Data which reflects the previous state of `UITableView`
     ///   - newData:                   Data which reflects the current state of `UITableView`
     ///   - isEqualSection:            A function comparing two sections (elements of `T`)
-    ///   - isEqualElement:            A function comparing two items (elements of `T.Iterator.Element`)
+    ///   - isEqualElement:            A function comparing two items (elements of `T.Element`)
     ///   - rowDeletionAnimation:      Animation type for row deletions
     ///   - rowInsertionAnimation:     Animation type for row insertions
     ///   - sectionDeletionAnimation:  Animation type for section deletions
@@ -225,14 +231,14 @@ public extension UITableView {
         newData: T,
         isEqualSection: EqualityChecker<T>,
         isEqualElement: NestedElementEqualityChecker<T>,
-        rowDeletionAnimation: UITableViewRowAnimation = .automatic,
-        rowInsertionAnimation: UITableViewRowAnimation = .automatic,
-        sectionDeletionAnimation: UITableViewRowAnimation = .automatic,
-        sectionInsertionAnimation: UITableViewRowAnimation = .automatic,
+        rowDeletionAnimation: DiffRowAnimation = .automatic,
+        rowInsertionAnimation: DiffRowAnimation = .automatic,
+        sectionDeletionAnimation: DiffRowAnimation = .automatic,
+        sectionInsertionAnimation: DiffRowAnimation = .automatic,
         indexPathTransform: (IndexPath) -> IndexPath = { $0 },
         sectionTransform: (Int) -> Int = { $0 }
     )
-        where T.Iterator.Element: Collection {
+        where T.Element: Collection {
         self.apply(
             oldData.nestedExtendedDiff(
                 to: newData,
@@ -250,10 +256,10 @@ public extension UITableView {
 
     public func apply(
         _ diff: NestedExtendedDiff,
-        rowDeletionAnimation: UITableViewRowAnimation = .automatic,
-        rowInsertionAnimation: UITableViewRowAnimation = .automatic,
-        sectionDeletionAnimation: UITableViewRowAnimation = .automatic,
-        sectionInsertionAnimation: UITableViewRowAnimation = .automatic,
+        rowDeletionAnimation: DiffRowAnimation = .automatic,
+        rowInsertionAnimation: DiffRowAnimation = .automatic,
+        sectionDeletionAnimation: DiffRowAnimation = .automatic,
+        sectionInsertionAnimation: DiffRowAnimation = .automatic,
         indexPathTransform: (IndexPath) -> IndexPath,
         sectionTransform: (Int) -> Int
     ) {
@@ -282,7 +288,7 @@ public extension UICollectionView {
         newData: T,
         indexPathTransform: @escaping (IndexPath) -> IndexPath = { $0 },
         completion: ((Bool) -> Void)? = nil
-    ) where T.Iterator.Element: Equatable {
+    ) where T.Element: Equatable {
         let diff = oldData.extendedDiff(newData)
         apply(diff, completion: completion, indexPathTransform: indexPathTransform)
     }
@@ -334,9 +340,9 @@ public extension UICollectionView {
         sectionTransform: @escaping (Int) -> Int = { $0 },
         completion: ((Bool) -> Swift.Void)? = nil
     )
-        where T.Iterator.Element: Collection,
-        T.Iterator.Element: Equatable,
-        T.Iterator.Element.Iterator.Element: Equatable {
+        where T.Element: Collection,
+        T.Element: Equatable,
+        T.Element.Element: Equatable {
         self.apply(
             oldData.nestedExtendedDiff(to: newData),
             indexPathTransform: indexPathTransform,
@@ -350,7 +356,7 @@ public extension UICollectionView {
     /// - Parameters:
     ///   - oldData:            Data which reflects the previous state of `UICollectionView`
     ///   - newData:            Data which reflects the current state of `UICollectionView`
-    ///   - isEqualElement:     A function comparing two items (elements of `T.Iterator.Element`)
+    ///   - isEqualElement:     A function comparing two items (elements of `T.Element`)
     ///   - indexPathTransform: Closure which transforms zero-based `IndexPath` to desired  `IndexPath`
     ///   - sectionTransform:   Closure which transforms zero-based section(`Int`) into desired section(`Int`)
     ///   - completion:         Closure to be executed when the animation completes
@@ -362,8 +368,8 @@ public extension UICollectionView {
         sectionTransform: @escaping (Int) -> Int = { $0 },
         completion: ((Bool) -> Swift.Void)? = nil
     )
-        where T.Iterator.Element: Collection,
-        T.Iterator.Element: Equatable {
+        where T.Element: Collection,
+        T.Element: Equatable {
         self.apply(
             oldData.nestedExtendedDiff(
                 to: newData,
@@ -392,8 +398,8 @@ public extension UICollectionView {
         sectionTransform: @escaping (Int) -> Int = { $0 },
         completion: ((Bool) -> Swift.Void)? = nil
     )
-        where T.Iterator.Element: Collection,
-        T.Iterator.Element.Iterator.Element: Equatable {
+        where T.Element: Collection,
+        T.Element.Element: Equatable {
         self.apply(
             oldData.nestedExtendedDiff(
                 to: newData,
@@ -411,7 +417,7 @@ public extension UICollectionView {
     ///   - oldData:            Data which reflects the previous state of `UICollectionView`
     ///   - newData:            Data which reflects the current state of `UICollectionView`
     ///   - isEqualSection:     A function comparing two sections (elements of `T`)
-    ///   - isEqualElement:     A function comparing two items (elements of `T.Iterator.Element`)
+    ///   - isEqualElement:     A function comparing two items (elements of `T.Element`)
     ///   - indexPathTransform: Closure which transforms zero-based `IndexPath` to desired  `IndexPath`
     ///   - sectionTransform:   Closure which transforms zero-based section(`Int`) into desired section(`Int`)
     ///   - completion:         Closure to be executed when the animation completes
@@ -424,7 +430,7 @@ public extension UICollectionView {
         sectionTransform: @escaping (Int) -> Int = { $0 },
         completion: ((Bool) -> Swift.Void)? = nil
     )
-        where T.Iterator.Element: Collection {
+        where T.Element: Collection {
         self.apply(
             oldData.nestedExtendedDiff(
                 to: newData,

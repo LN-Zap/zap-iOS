@@ -26,7 +26,7 @@ final class ConnectCellBond: TableViewBinder<Observable2DArray<String?, ConnectR
         rowAnimation = .fade
     }
     
-    private func dequeueCell(for tableView: UITableView, style: UITableViewCellStyle) -> UITableViewCell {
+    private func dequeueCell(for tableView: UITableView, style: UITableViewCell.CellStyle) -> UITableViewCell {
         let reuseIdentifier = String(style.rawValue)
         
         if let cell = tableView.dequeueReusableCell(withIdentifier: reuseIdentifier) {
@@ -134,7 +134,7 @@ final class ConnectRemoteNodeViewController: UIViewController {
         guard !isConnecting else { return }
         isConnecting = true
         
-        let activityIndicator = UIActivityIndicatorView(activityIndicatorStyle: .white)
+        let activityIndicator = UIActivityIndicatorView(style: .white)
         activityIndicator.startAnimating()
         cell.addAutolayoutSubview(activityIndicator)
         

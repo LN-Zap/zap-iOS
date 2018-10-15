@@ -7,6 +7,7 @@
 
 import BTCUtil
 import Foundation
+import SwiftLnd
 
 public struct LightningInvoiceURI: PaymentURI {
     public let amount: Satoshi?
@@ -35,7 +36,7 @@ public struct LightningInvoiceURI: PaymentURI {
         network = invoice.network
     }
     
-    public init?(invoice: LightningInvoice) {
+    public init?(invoice: Invoice) {
         self.init(string: invoice.paymentRequest)
     }
 }

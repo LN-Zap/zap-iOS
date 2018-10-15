@@ -16,7 +16,7 @@ class GroupedTableViewController: UITableViewController {
 
         super.init(style: .grouped)
         
-        tableView.backgroundColor = UIColor.Zap.deepSeaBlue
+        tableView.backgroundColor = UIColor.Zap.background
         tableView.separatorColor = UIColor.Zap.gray
         tableView.rowHeight = 76
     }

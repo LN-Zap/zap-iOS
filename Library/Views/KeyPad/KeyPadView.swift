@@ -5,17 +5,18 @@
 //  Copyright © 2018 Zap. All rights reserved.
 //
 
+import AudioToolbox
 import UIKit
 
 enum KeyPadState {
-    case authenticate
-    case setupPin
-    case amountInput
+    case pin
+    case pinBiometric
+    case amount
 }
 
-final class KeyPadView: UIView {
+class KeyPadView: UIView {
     @IBOutlet private var contentView: UIView!
-
+    
     override init(frame: CGRect) {
         super.init(frame: frame)
         setup()
@@ -31,25 +32,26 @@ final class KeyPadView: UIView {
         addSubview(contentView)
         contentView.frame = self.bounds
         contentView.autoresizingMask = [.flexibleHeight, .flexibleWidth]
+        backgroundColor = UIColor.Zap.background
         
         updateButtonFont()
     }
 
     override var backgroundColor: UIColor? {
         didSet {
-            contentView.backgroundColor = backgroundColor
+            contentView?.backgroundColor = backgroundColor
         }
     }
     
     var handler: ((String) -> Bool)?
     var customPointButtonAction: (() -> Void)?
     
-    var state: KeyPadState = .amountInput {
+    var state: KeyPadState = .amount {
         didSet {
             updatePointButton()
         }
     }
-    var textColor = UIColor.Zap.black {
+    var textColor = UIColor.Zap.white {
         didSet {
             updateButtonFont()
         }
@@ -97,16 +99,16 @@ final class KeyPadView: UIView {
     
     private func updatePointButton() {
         switch state {
-        case .authenticate:
+        case .pinBiometric:
             pointButton.setImage(authenticationImage, for: .normal)
             pointButton.imageView?.tintColor = textColor
             pointButton.setTitle(nil, for: .normal)
             pointButton.isEnabled = true
-        case .setupPin:
+        case .pin:
             pointButton.setImage(nil, for: .normal)
             pointButton.setTitle(nil, for: .normal)
             pointButton.isEnabled = false
-        case .amountInput:
+        case .amount:
             pointButton.setImage(nil, for: .normal)
             pointButton.setTitle(pointCharacter, for: .normal)
             pointButton.isEnabled = true
@@ -114,7 +116,7 @@ final class KeyPadView: UIView {
     }
     
     private func numberTapped(_ number: Int) {
-        if numberString == "0" && state == .amountInput {
+        if numberString == "0" && state == .amount {
             proposeNumberString(String(describing: number))
         } else {
             proposeNumberString(numberString + String(describing: number))
@@ -134,6 +136,8 @@ final class KeyPadView: UIView {
     }
     
     @IBAction private func buttonTapped(_ sender: UIButton) {
+        AudioServicesPlaySystemSound(0x450)
+        
         if sender.tag < 10 {
             numberTapped(sender.tag)
         } else if sender.tag == 10 {

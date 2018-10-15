@@ -13,22 +13,6 @@ extension UIView {
         addSubview(view)
     }
     
-    func addBackgroundGradient() {
-        let backgroundGradientView = GradientView()
-        backgroundGradientView.direction = .vertical
-        backgroundGradientView.gradient = [UIColor.Zap.seaBlueGradient, UIColor.Zap.seaBlue]
-        
-        addAutolayoutSubview(backgroundGradientView)
-        sendSubview(toBack: backgroundGradientView)
-        
-        NSLayoutConstraint.activate([
-            backgroundGradientView.topAnchor.constraint(equalTo: topAnchor),
-            backgroundGradientView.bottomAnchor.constraint(equalTo: bottomAnchor),
-            backgroundGradientView.leadingAnchor.constraint(equalTo: leadingAnchor),
-            backgroundGradientView.trailingAnchor.constraint(equalTo: trailingAnchor)
-        ])
-    }
-    
     public func constrainEdges(to view: UIView) {
         NSLayoutConstraint.activate([
             self.topAnchor.constraint(equalTo: view.topAnchor),

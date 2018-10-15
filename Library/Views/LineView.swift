@@ -12,7 +12,7 @@ public final class LineView: UIView {
     
     override public func draw(_ rect: CGRect) {
         let context = UIGraphicsGetCurrentContext()
-        context?.setLineWidth(1)
+        context?.setLineWidth(0.5)
         context?.setStrokeColor(color.cgColor)
         
         let points: [CGPoint]

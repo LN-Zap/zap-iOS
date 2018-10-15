@@ -6,7 +6,7 @@
 //
 
 import Foundation
-import Lightning
+import SwiftLnd
 
 extension ChannelState: Localizable {
     public var localized: String {

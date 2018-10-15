@@ -40,15 +40,21 @@ opt_in_rules:
   - conditional_returns_on_newline
 excluded:
   - Pods
-  - Lightning/Lnd/Api/Generated
+  - SwiftLnd/Api/Generated
   - vendor
 identifier_name:
   excluded:
     - id
+    - t
 conditional_returns_on_newline:
   if_only: true
 
 custom_rules:
+  callback_naming:
+    name: "Callback naming"
+    regex: "callback:"
+    message: Prefer 'completion' over 'callback'"
+    severity: warning
   localized_string:
     name: "Avoid NSLocalizedString"
     regex: "NSLocalizedString"

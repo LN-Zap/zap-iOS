@@ -31,14 +31,14 @@ final class ChannelDetailConfiguration {
             headerElement = .label(text: channelViewModel.channel.state.localized, style: rightAlignedTextStyle)
         }
         
-        elements.append(.horizontalStackView(content: [
+        elements.append(.horizontalStackView(compressionResistant: .first, content: [
             .label(text: channelViewModel.name.value, style: textStyle),
             headerElement
         ]))
         
         if channelViewModel.channel.state.isClosing {
             elements.append(.separator)
-            elements.append(.horizontalStackView(content: [
+            elements.append(.horizontalStackView(compressionResistant: .first, content: [
                 .label(text: "scene.channel_detail.closing_time.label".localized + ":", style: labelStyle),
                 .label(text: channelViewModel.csvDelayTimeString, style: rightAlignedTextStyle)
             ]))
@@ -54,16 +54,16 @@ final class ChannelDetailConfiguration {
         let balanceView = BalanceView()
         balanceView.set(localBalance: channelViewModel.channel.localBalance, remoteBalance: channelViewModel.channel.remoteBalance)
 
-        let horizontalStackViewHeight = StackViewElement.horizontalStackView(content: []).height
+        let horizontalStackViewHeight = StackViewElement.horizontalStackView(compressionResistant: .first, content: []).height
         
         elements.append(.verticalStackView(content: [
             .customView(balanceView, height: 10),
-            .horizontalStackView(content: [
+            .horizontalStackView(compressionResistant: .first, content: [
                 .customView(circleIndicatorView(gradient: [UIColor.Zap.lightningOrange, UIColor.Zap.lightningOrangeGradient]), height: horizontalStackViewHeight),
                 .label(text: "scene.channel_detail.local_balance_label".localized + ":", style: labelStyle),
                 .amountLabel(amount: channelViewModel.channel.localBalance, style: rightAlignedTextStyle)
             ]),
-            .horizontalStackView(content: [
+            .horizontalStackView(compressionResistant: .first, content: [
                 .customView(circleIndicatorView(gradient: [UIColor.Zap.seaBlue, UIColor.Zap.seaBlueGradient]), height: horizontalStackViewHeight),
                 .label(text: "scene.channel_detail.remote_balance_label".localized + ":", style: labelStyle),
                 .amountLabel(amount: channelViewModel.channel.remoteBalance, style: rightAlignedTextStyle)
@@ -71,7 +71,7 @@ final class ChannelDetailConfiguration {
         ], spacing: 5))
         
         elements.append(.separator)
-        elements.append(.horizontalStackView(content: [
+        elements.append(.horizontalStackView(compressionResistant: .first, content: [
             .label(text: "scene.channel_detail.funding_transaction_label".localized + ":", style: labelStyle),
             .button(title: channelViewModel.channel.channelPoint.fundingTxid, style: Style.Button.custom(fontSize: 14)) { [weak self] _ in self?.presentBlockExplorer?() }
         ]))

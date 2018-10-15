@@ -6,6 +6,7 @@
 //
 
 import Lightning
+import SwiftLnd
 import UIKit
 
 protocol SetupCoordinatorDelegate: class {
@@ -15,15 +16,18 @@ protocol SetupCoordinatorDelegate: class {
 
 final class SetupCoordinator {
     private let rootViewController: RootViewController
-    private let rootViewModel: RootViewModel
+    private let connectionService: ConnectionService
+    private let authenticationViewModel: AuthenticationViewModel
+    
     private weak var navigationController: UINavigationController?
     private weak var delegate: SetupCoordinatorDelegate?
     private weak var connectRemoteNodeViewModel: ConnectRemoteNodeViewModel?
     private weak var mnemonicViewModel: MnemonicViewModel?
     
-    init(rootViewController: RootViewController, rootViewModel: RootViewModel, delegate: SetupCoordinatorDelegate) {
+    init(rootViewController: RootViewController, connectionService: ConnectionService, authenticationViewModel: AuthenticationViewModel, delegate: SetupCoordinatorDelegate) {
         self.rootViewController = rootViewController
-        self.rootViewModel = rootViewModel
+        self.connectionService = connectionService
+        self.authenticationViewModel = authenticationViewModel
         self.delegate = delegate
     }
 
@@ -34,7 +38,7 @@ final class SetupCoordinator {
     }
     
     private func createNewWallet() {
-        #if LOCALONLY
+        #if REMOTEONLY
         presentDisabledAlert()
         #else
         // TODO: stop Lnd when navigating back to Root
@@ -42,7 +46,7 @@ final class SetupCoordinator {
             LocalLnd.start()
         }
         
-        let walletService = rootViewModel.walletService
+        let walletService = connectionService.walletService
         let mnemonicViewModel = MnemonicViewModel(walletService: walletService)
         self.mnemonicViewModel = mnemonicViewModel
         
@@ -62,7 +66,7 @@ final class SetupCoordinator {
     }
     
     private func recoverExistingWallet() {
-        #if LOCALONLY
+        #if REMOTEONLY
         presentDisabledAlert()
         #else
         guard let delegate = delegate else { return }
@@ -71,7 +75,7 @@ final class SetupCoordinator {
             LocalLnd.start()
         }
         
-        let walletService = rootViewModel.walletService
+        let walletService = connectionService.walletService
         let viewModel = RecoverWalletViewModel(walletService: walletService)
         let viewController = UIStoryboard.instantiateRecoverWalletViewController(recoverWalletViewModel: viewModel, presentSetupPin: delegate.presentSetupPin)
         navigationController?.pushViewController(viewController, animated: true)
@@ -86,7 +90,7 @@ final class SetupCoordinator {
     }
 
     private func didSetupWallet() {
-        if Environment.skipPinFlow || rootViewModel.authenticationViewModel.didSetupPin {
+        if Environment.skipPinFlow || authenticationViewModel.didSetupPin {
             delegate?.connect()
         } else {
             delegate?.presentSetupPin()

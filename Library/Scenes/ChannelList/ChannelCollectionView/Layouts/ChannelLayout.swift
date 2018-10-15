@@ -16,13 +16,8 @@ class ChannelLayout: UICollectionViewLayout {
     var overwriteContentOffset: CGPoint?
     var overwriteHeaderHeight: CGFloat?
     
-    let maxHeaderHeight: CGFloat = 100
-    let minHeaderHeight: CGFloat = 40
-    
-    let layoutMargin = UIEdgeInsets(top: 0, left: 20, bottom: 0, right: 20)
+    let layoutMargin = UIEdgeInsets(top: 0, left: 10, bottom: 0, right: 10)
     var layoutAttributes = [IndexPath: UICollectionViewLayoutAttributes]()
-    
-    var headerAttributes: UICollectionViewLayoutAttributes?
     
     var contentOffset: CGPoint {
         return overwriteContentOffset ?? collectionView?.contentOffset ?? CGPoint.zero
@@ -42,8 +37,6 @@ class ChannelLayout: UICollectionViewLayout {
         }
         
         self.layoutAttributes = layoutAttributes
-        
-        prepareHeaderLayoutAttribute()
     }
     
     func configure(attributes: UICollectionViewLayoutAttributes, for index: Int, of count: Int, in collectionView: UICollectionView) {
@@ -51,11 +44,7 @@ class ChannelLayout: UICollectionViewLayout {
     }
     
     override func layoutAttributesForElements(in rect: CGRect) -> [UICollectionViewLayoutAttributes]? {
-        var attributes = layoutAttributes.values.filter({ rect.intersects($0.frame) })
-        if let headerAttributes = headerAttributes {
-            attributes.append(headerAttributes)
-        }
-        return attributes
+        return layoutAttributes.values.filter({ rect.intersects($0.frame) })
     }
     
     override func layoutAttributesForItem(at indexPath: IndexPath) -> UICollectionViewLayoutAttributes? {
@@ -67,31 +56,5 @@ class ChannelLayout: UICollectionViewLayout {
             return dataSource.heightForItem(at: index)
         }
         return 360
-    }
-    
-    // MARK: - Header
-    
-    var headerHeight: CGFloat {
-        return overwriteHeaderHeight ?? max(min(maxHeaderHeight, maxHeaderHeight - contentOffset.y), minHeaderHeight)
-    }
-    
-    private func prepareHeaderLayoutAttribute() {
-        guard let collectionView = collectionView else { return }
-        let attributes = UICollectionViewLayoutAttributes(forSupplementaryViewOfKind: HeaderCollectionReusableView.kind, with: IndexPath(item: 0, section: 0))
-        
-        attributes.frame = CGRect(x: 0, y: contentOffset.y, width: collectionView.bounds.width, height: headerHeight)
-        attributes.zIndex = -100
-        
-        if self is ExposedLayout {
-            attributes.alpha = 0
-            attributes.isHidden = true
-            attributes.frame.origin.y = 0
-        }
-        
-        headerAttributes = attributes
-    }
-    
-    override func layoutAttributesForSupplementaryView(ofKind elementKind: String, at indexPath: IndexPath) -> UICollectionViewLayoutAttributes? {
-        return headerAttributes
     }
 }

@@ -9,6 +9,7 @@ import Bond
 import BTCUtil
 import Foundation
 import ReactiveKit
+import SwiftLnd
 
 public final class LightningService: NSObject {
     private let api: LightningApiProtocol
@@ -17,41 +18,40 @@ public final class LightningService: NSObject {
     public let balanceService: BalanceService
     public let channelService: ChannelService
     public let transactionService: TransactionService
+    public let historyService: HistoryService
     
-    public convenience init?(connection: LndConnection) {
-        guard let api = connection.api else { return nil }
-        self.init(api: api)
+    var persistence: Persistence
+    
+    public convenience init?(connection: LightningConnection) {
+        guard let api = connection.start() else { return nil }
+        self.init(api: api, persistence: SQLitePersistence())
     }
     
-    init(api: LightningApiProtocol) {
+    init(api: LightningApiProtocol, persistence: Persistence) {
         self.api = api
+        self.persistence = persistence
         
-        infoService = InfoService(api: api)
         balanceService = BalanceService(api: api)
-        channelService = ChannelService(api: api)
-        transactionService = TransactionService(api: api, balanceService: balanceService, channelService: channelService)
+        channelService = ChannelService(api: api, persistence: persistence)
+        historyService = HistoryService(api: api, channelService: channelService, persistence: persistence)
+        transactionService = TransactionService(api: api, balanceService: balanceService, channelService: channelService, historyService: historyService, persistence: persistence)
+        
+        infoService = InfoService(api: api, persistence: persistence, channelService: channelService, balanceService: balanceService, historyService: historyService)
     }
     
     public func start() {
-        infoService.walletState
-            .filter { $0 != .connecting }
-            .distinct()
-            .observeNext { [weak self] _ in
-                self?.channelService.update()
-                self?.balanceService.update()
-                self?.transactionService.update()
-            }
-            .dispose(in: reactive.bag)
-        
         api.subscribeChannelGraph { _ in }
         
-        api.subscribeInvoices { [weak self] _ in
-            self?.transactionService.update()
+        api.subscribeInvoices { [weak self] in
+            guard let invoice = $0.value else { return }
+            print("🛍 new invoice:\n\t\(invoice)")
+            self?.historyService.addedInvoice(invoice)
         }
 
-        api.subscribeTransactions { [weak self] _ in
-            // unconfirmed transactions are not returned by GetTransactions
-            self?.transactionService.update()
+        api.subscribeTransactions { [weak self] in
+            guard let transaction = $0.value else { return }
+            print("💵 new transaction:\n\t\(transaction)")
+            self?.historyService.addedTransaction(transaction)
             self?.balanceService.update()
         }
     }

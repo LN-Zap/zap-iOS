@@ -33,7 +33,7 @@ final class OpenChannelViewController: ModalDetailViewController {
         contentStackView.addArrangedElement(.separator)
         
         let amountInputView = AmountInputView()
-        amountInputView.backgroundColor = UIColor.Zap.seaBlue
+        amountInputView.backgroundColor = UIColor.Zap.background
         amountInputView.textColor = UIColor.Zap.white
         amountInputView.addTarget(self, action: #selector(updateAmount(_:)), for: .valueChanged)
         amountInputView.satoshis = viewModel.amount
@@ -41,7 +41,7 @@ final class OpenChannelViewController: ModalDetailViewController {
         
         contentStackView.addArrangedSubview(amountInputView)
         
-        openButton = contentStackView.addArrangedElement(.customHeight(56, element: .button(title: "scene.open_channel.add_button".localized, style: Style.Button.background, callback: { [weak self] button in
+        openButton = contentStackView.addArrangedElement(.customHeight(56, element: .button(title: "scene.open_channel.add_button".localized, style: Style.Button.background, completion: { [weak self] button in
             button.isEnabled = false
             self?.openChannel()
         }))) as? CallbackButton

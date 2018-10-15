@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import SwiftLnd
 
 struct BTCPayConfiguration: Decodable {
     let configurations: [BTCPayConfigurationItem]
@@ -19,7 +20,7 @@ struct BTCPayConfiguration: Decodable {
         guard
             let item = configurations.first(where: { $0.type == "grpc" }),
             let url = URL(string: "\(item.host):\(item.port)"),
-            let data = item.macaroon.hexadecimal()
+            let data = item.macaroon.hexadecimal
             else { return nil }
         return RemoteRPCConfiguration(certificate: nil, macaroon: data, url: url)
     }

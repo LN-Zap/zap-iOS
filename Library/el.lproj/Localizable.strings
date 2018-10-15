@@ -28,17 +28,26 @@
 "unit.bitcoin.bit" = "Bits";
 "unit.bitcoin.satoshi" = "Satoshis";
 
-"transaction.no_destination_address" = "Καμία διεύθυνση προορισμού";
+"transaction.open_channel.memo" = "Open Channel: %@";
+"transaction.close_channel.memo" = "%@ Channel: %@";
+"transaction.no_destination_address" = "No destination address";
 
-"view.amount_input.placeholder" = "Ποσό";
+"close_type.cooperative_close" = "Close";
+"close_type.local_force_close" = "Force Close";
+"close_type.remote_force_close" = "Remote Force Close";
+"close_type.breach_close" = "Breach Close";
+"close_type.funding_canceled" = "Funding Canceled";
+"close_type.unknown" = "Unknown Close";
 
-"scene.history.title" = "History";
+"view.amount_input.placeholder" = "Amount";
+
+"scene.history.title" = "Transactions";
 "scene.history.empty_state_label" = "0 transactions 🙁";
 
-"scene.settings.title" = "Ρυθμίσεις";
-"scene.settings.section.wallet" = "Πορτοφόλι";
-"scene.settings.item.bitcoin_unit" = "Bitcoin μονάδα";
-"scene.settings.item.currency" = "Νόμισμα";
+"scene.settings.title" = "Settings";
+"scene.settings.section.wallet" = "Wallet";
+"scene.settings.item.bitcoin_unit" = "Bitcoin Unit";
+"scene.settings.item.currency" = "Currency";
 "scene.settings.item.block_explorer" = "Block Explorer";
 "scene.settings.item.on_chain_request_address.title" = "Τύπος διεύθυνσης Bitcoin";
 "scene.settings.item.on_chain_request_address.bech32" = "Bech32";

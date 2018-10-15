@@ -23,6 +23,7 @@ struct Bolt11 {
         var amount: Satoshi?
         var description: String?
         var expiry: TimeInterval?
+        var fallbackAddress: BitcoinAddress?
     }
     
     private enum Prefix: String {
@@ -61,14 +62,14 @@ struct Bolt11 {
     }
     
     private enum FieldTypes: UInt8 {
-        case fieldTypeP = 1     // fieldTypeP is the field containing the payment hash.
-        case fieldTypeD = 13    // fieldTypeD contains a short description of the payment.
-        case fieldTypeN = 19    // fieldTypeN contains the pubkey of the target node.
-        case fieldTypeH = 23    // fieldTypeH contains the hash of a description of the payment.
-        case fieldTypeX = 6     // fieldTypeX contains the expiry in seconds of the invoice.
-        case fieldTypeF = 9     // fieldTypeF contains a fallback on-chain address.
-        case fieldTypeR = 3     // fieldTypeR contains extra routing information.
-        case fieldTypeC = 24    // fieldTypeC contains an optional requested final CLTV delta.
+        case fieldTypeP = 1  // fieldTypeP is the field containing the payment hash.
+        case fieldTypeD = 13 // fieldTypeD contains a short description of the payment.
+        case fieldTypeN = 19 // fieldTypeN contains the pubkey of the target node.
+        case fieldTypeH = 23 // fieldTypeH contains the hash of a description of the payment.
+        case fieldTypeX = 6  // fieldTypeX contains the expiry in seconds of the invoice.
+        case fieldTypeF = 9  // fieldTypeF contains a fallback on-chain address.
+        case fieldTypeR = 3  // fieldTypeR contains extra routing information.
+        case fieldTypeC = 24 // fieldTypeC contains an optional requested final CLTV delta.
     }
     
     private let signatureBase32Len = 104
@@ -98,6 +99,7 @@ struct Bolt11 {
         return Date(timeIntervalSince1970: TimeInterval(base32ToUInt(data)))
     }
     
+    // swiftlint:disable:next cyclomatic_complexity
     private func parseTaggedFields(data: Data, invoice: Invoice) -> Invoice? {
         var invoice = invoice
         var index: Data.Index = data.startIndex
@@ -124,7 +126,10 @@ struct Bolt11 {
                 case .fieldTypeX:
                     guard invoice.expiry == nil else { break }
                     invoice.expiry = parseExpiry(data: base32Data)
-                case .fieldTypeF, .fieldTypeN, .fieldTypeH, .fieldTypeC, .fieldTypeR:
+                case .fieldTypeF:
+                    guard invoice.fallbackAddress == nil else { break }
+                    invoice.fallbackAddress = parseFallbackAddress(data: base32Data, network: invoice.network)
+                case .fieldTypeN, .fieldTypeH, .fieldTypeC, .fieldTypeR:
                     break
                 }
             }            
@@ -147,7 +152,7 @@ struct Bolt11 {
     }
     
     private func parseDescription(data: Data) -> String? {
-        guard let base256Data = SegwitAddress.convertBits(data: data, fromBits: 5, toBits: 8, pad: false) else { return nil }
+        guard let base256Data = data.convertBits(fromBits: 5, toBits: 8, pad: false) else { return nil }
         return String(data: base256Data, encoding: .utf8)
     }
     
@@ -155,9 +160,32 @@ struct Bolt11 {
         return TimeInterval(base32ToUInt(data))
     }
 
-    func parsePaymentHash(data: Data) -> Data? {
+    private func parsePaymentHash(data: Data) -> Data? {
         guard data.count == hashBase32Len else { return nil }
-        return SegwitAddress.convertBits(data: data, fromBits: 5, toBits: 8, pad: false)
+        return data.convertBits(fromBits: 5, toBits: 8, pad: false)
+    }
+    
+    private func parseFallbackAddress(data: Data, network: Network) -> BitcoinAddress? {
+        guard data.count >= 2 else { return nil }
+        let version = data[data.startIndex]
+        guard let data = data[(data.startIndex + 1)...].convertBits(fromBits: 5, toBits: 8, pad: false) else { return nil }
+        
+        switch version {
+        case 0:
+            if data.count == 20 {
+                return BitcoinAddress(witnessPubKeyHash: data, network: network)
+            } else if data.count == 32 {
+                return BitcoinAddress(witnessScriptHash: data, network: network)
+            } else {
+                return nil
+            }
+        case 17:
+            return BitcoinAddress(pubKeyHash: data, network: network)
+        case 18:
+            return BitcoinAddress(scriptHashFromHash: data, network: network)
+        default:
+            return nil
+        }
     }
     
     private func decodeAmount(for humanReadablePart: String, network: Network) -> Satoshi? {

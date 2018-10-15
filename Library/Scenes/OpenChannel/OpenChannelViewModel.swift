@@ -8,6 +8,7 @@
 import BTCUtil
 import Foundation
 import Lightning
+import SwiftLnd
 
 final class OpenChannelViewModel {
     private let lightningService: LightningService
@@ -21,7 +22,7 @@ final class OpenChannelViewModel {
         self.lightningNodeURI = lightningNodeURI
     }
     
-    func openChannel(callback: @escaping (Result<ChannelPoint>) -> Void) {
-        lightningService.channelService.open(pubKey: lightningNodeURI.pubKey, host: lightningNodeURI.host, amount: amount, callback: callback)
+    func openChannel(completion: @escaping (Result<ChannelPoint>) -> Void) {
+        lightningService.channelService.open(lightningNodeURI: lightningNodeURI, amount: amount, completion: completion)
     }
 }

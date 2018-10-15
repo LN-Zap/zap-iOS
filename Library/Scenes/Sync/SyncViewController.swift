@@ -7,6 +7,7 @@
 
 import Lightning
 import ReactiveKit
+import SwiftLnd
 import UIKit
 
 protocol SyncDelegate: class {
@@ -39,7 +40,7 @@ final class SyncViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        view.backgroundColor = UIColor.Zap.seaBlue
+        view.backgroundColor = UIColor.Zap.background
         
         gradientView.direction = .diagonal
         Style.Label.custom().apply(to: syncLabel, dateLabel, descriptionLabel)
@@ -71,8 +72,8 @@ final class SyncViewController: UIViewController {
     }
     
     private func setIdleTimer(disabled: Bool) {
-        #if !LOCALONLY
-        if case .local = LndConnection.current {
+        #if !REMOTEONLY
+        if case .local = LightningConnection.current {
             UIApplication.shared.isIdleTimerDisabled = disabled
         }
         #endif

@@ -23,7 +23,7 @@ final class CertificateDetailViewController: UITableViewController {
         
         title = "scene.connect_remote_node.certificate_detail.certificate_title".localized
         
-        tableView.rowHeight = UITableViewAutomaticDimension
+        tableView.rowHeight = UITableView.automaticDimension
         tableView.backgroundColor = UIColor.Zap.deepSeaBlue
         tableView.separatorColor = UIColor.Zap.gray
         tableView.estimatedRowHeight = 300

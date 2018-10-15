@@ -8,87 +8,74 @@
 import Bond
 import BTCUtil
 import Foundation
+import SwiftLnd
 
 public final class TransactionService {
     private let api: LightningApiProtocol
     private let balanceService: BalanceService
     private let channelService: ChannelService
-    
-    private let unconfirmedTransactionStore = UnconfirmedTransactionStore()
-    
-    public let transactions = Observable<[Transaction]>([])
-    
-    init(api: LightningApiProtocol, balanceService: BalanceService, channelService: ChannelService) {
+    private let historyService: HistoryService
+    private let persistence: Persistence
+
+    init(api: LightningApiProtocol, balanceService: BalanceService, channelService: ChannelService, historyService: HistoryService, persistence: Persistence) {
         self.api = api
         self.balanceService = balanceService
         self.channelService = channelService
+        self.historyService = historyService
+        self.persistence = persistence
     }
     
-    public func sendCoins(address: BitcoinAddress, amount: Satoshi, callback: @escaping (Result<OnChainUnconfirmedTransaction>) -> Void) {
-        api.sendCoins(address: address, amount: amount) { [weak self] in
-            if let newTransaction = $0.value {
-                self?.unconfirmedTransactionStore.add(newTransaction)
-                self?.transactions.value.append(newTransaction)
-            }
-            callback($0)
+    public func send(_ invoice: BitcoinInvoice, amount: Satoshi, completion: @escaping (Result<Success>) -> Void) {
+        if let paymentRequest = invoice.lightningPaymentRequest {
+            sendPayment(paymentRequest, amount: amount, completion: completion)
+        } else if let bitcoinURI = invoice.bitcoinURI {
+            sendCoins(bitcoinURI: bitcoinURI, amount: amount, completion: completion)
+        } else {
+            fatalError("There should not be an invoice without either a paymentRequest or bitcoinURI")
         }
     }
     
-    public func addInvoice(amount: Satoshi, memo: String?, callback: @escaping (Result<String>) -> Void) {
-        api.addInvoice(amount: amount, memo: memo) { [weak self] in
-            if $0.value != nil {
-                self?.update()
+    public func addInvoice(amount: Satoshi, memo: String?, completion: @escaping (Result<String>) -> Void) {
+        api.addInvoice(amount: amount, memo: memo, completion: completion)
+    }
+    
+    public func newAddress(with type: OnChainRequestAddressType, completion: @escaping (Result<BitcoinAddress>) -> Void) {
+        api.newAddress(type: type) { [persistence] result in
+            if let address = result.value {
+                try? ReceivingAddress.insert(address: address, database: persistence.connection())
             }
-            callback($0)
+            completion(result)
         }
     }
     
-    public func newAddress(with type: OnChainRequestAddressType, callback: @escaping (Result<BitcoinAddress>) -> Void) {
-        api.newAddress(type: type, callback: callback)
+    internal func decodePaymentRequest(_ paymentRequest: String, completion: @escaping (Result<PaymentRequest>) -> Void) {
+        api.decodePaymentRequest(paymentRequest, completion: completion)
     }
     
-    func decodePaymentRequest(_ paymentRequest: String, callback: @escaping (Result<PaymentRequest>) -> Void) {
-        api.decodePaymentRequest(paymentRequest, callback: callback)
-    }
-    
-    public func sendPayment(_ paymentRequest: PaymentRequest, amount: Satoshi, callback: @escaping (Result<Data>) -> Void) {
-        api.sendPayment(paymentRequest, amount: amount) { [weak self] result in
-            if result.value != nil {
-                self?.update()
+    private func sendPayment(_ paymentRequest: PaymentRequest, amount: Satoshi, completion: @escaping (Result<Success>) -> Void) {
+        api.sendPayment(paymentRequest, amount: amount) { [weak self] in
+            
+            switch $0 {
+            case .success(let payment):
                 self?.balanceService.update()
                 self?.channelService.update()
+                self?.historyService.addPaymentEvent(payment: payment, memo: paymentRequest.memo)
+            case .failure:
+                self?.historyService.addFailedPaymentEvent(paymentRequest: paymentRequest, amount: amount)
             }
-            callback(result)
+
+            completion($0.map { _ in Success() })
         }
     }
     
-    public func update() {
-        let taskGroup = DispatchGroup()
-
-        var allTransactions = [Transaction]()
-        
-        func apiCallback(result: Result<[Transaction]>) {
-            if let transactions = result.value {
-                allTransactions.append(contentsOf: transactions)
+    private func sendCoins(bitcoinURI: BitcoinURI, amount: Satoshi, completion: @escaping (Result<Success>) -> Void) {
+        let destinationAddress = bitcoinURI.bitcoinAddress
+        api.sendCoins(address: destinationAddress, amount: amount) { [historyService] in
+            if case .success(let txHash) = $0 {
+                let transactionEvent = TransactionEvent(txHash: txHash, bitcoinURI: bitcoinURI, amount: -amount)
+                historyService.updateTransactionEventMetadata(transactionEvent: transactionEvent)
             }
-            taskGroup.leave()
+            completion($0.map { _ in Success() })
         }
-        
-        taskGroup.enter()
-        api.transactions(callback: apiCallback)
-
-        taskGroup.enter()
-        api.payments(callback: apiCallback)
-        
-        taskGroup.enter()
-        api.invoices(callback: apiCallback)
-        
-        taskGroup.notify(queue: .main, work: DispatchWorkItem(block: { [weak self] in
-            self?.unconfirmedTransactionStore.remove(confirmed: allTransactions)
-            if let unconfirmed = self?.unconfirmedTransactionStore.all {
-                allTransactions.append(contentsOf: unconfirmed)
-            }
-            self?.transactions.value = allTransactions
-        }))
     }
 }

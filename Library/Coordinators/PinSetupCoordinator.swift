@@ -7,6 +7,10 @@
 
 import UIKit
 
+protocol PinCoordinatorDelegate: class {
+    func connect()
+}
+
 final class PinSetupCoordinator {
     private let rootViewController: RootViewController
     private let authenticationViewModel: AuthenticationViewModel

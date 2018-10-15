@@ -13,12 +13,12 @@ class ZapNavigationController: UINavigationController {
         super.viewDidLoad()
 
         navigationBar.prefersLargeTitles = true
-        navigationBar.barTintColor = UIColor.Zap.seaBlueGradient
+        navigationBar.barTintColor = UIColor.Zap.background
         navigationBar.isTranslucent = false
         navigationBar.shadowImage = UIImage()
     }
     
-    override var childViewControllerForStatusBarStyle: UIViewController? {
+    override var childForStatusBarStyle: UIViewController? {
         return viewControllers.first
     }
 }

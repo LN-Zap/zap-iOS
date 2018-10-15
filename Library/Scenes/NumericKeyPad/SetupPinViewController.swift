@@ -33,10 +33,10 @@ final class SetupPinViewController: UIViewController {
         
         guard let setupPinViewModel = setupPinViewModel else { return }
         
-        view.backgroundColor = UIColor.Zap.seaBlue
+        view.backgroundColor = UIColor.Zap.background
         
         Style.Label.body.apply(to: topLabel)
-        Style.Button.custom(color: .white).apply(to: doneButton)
+        Style.Button.background.apply(to: doneButton)
         
         setupKeyPad()
         
@@ -66,12 +66,12 @@ final class SetupPinViewController: UIViewController {
     private func setupKeyPad() {
         guard let setupPinViewModel = setupPinViewModel else { return }
         
-        keyPadView.backgroundColor = UIColor.Zap.seaBlue
+        keyPadView.backgroundColor = UIColor.Zap.background
         keyPadView.textColor = .white
-        keyPadView.state = .setupPin
+        keyPadView.state = .pin
         
         keyPadView.handler = { [setupPinViewModel] in
-            return setupPinViewModel.updateCurrentPin($0)
+            setupPinViewModel.updateCurrentPin($0)
         }
     }
     

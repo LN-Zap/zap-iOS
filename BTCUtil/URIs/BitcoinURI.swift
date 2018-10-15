@@ -13,6 +13,7 @@ private extension URLComponents {
     }
 }
 
+/// bip-0021 URI scheme for making Bitcoin payments
 public struct BitcoinURI: PaymentURI {
     enum Constants {
         static let amount = "amount"

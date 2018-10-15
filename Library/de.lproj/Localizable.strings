@@ -32,8 +32,8 @@
 
 "view.amount_input.placeholder" = "Betrag";
 
-"scene.history.title" = "History";
-"scene.history.empty_state_label" = "0 transactions 🙁";
+"scene.history.title" = "Transaktionen";
+"scene.history.empty_state_label" = "0 Transaktionen 🙁";
 
 "scene.settings.title" = "Einstellungen";
 "scene.settings.section.wallet" = "Wallet";

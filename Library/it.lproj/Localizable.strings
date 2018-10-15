@@ -32,8 +32,8 @@
 
 "view.amount_input.placeholder" = "Importo";
 
-"scene.history.title" = "History";
-"scene.history.empty_state_label" = "0 transactions 🙁";
+"scene.history.title" = "Transazioni";
+"scene.history.empty_state_label" = "🙁 0 transazioni";
 
 "scene.settings.title" = "Impostazioni";
 "scene.settings.section.wallet" = "Portafoglio";

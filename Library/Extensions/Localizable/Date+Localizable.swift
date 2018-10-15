@@ -11,7 +11,7 @@ extension Date: Localizable {
 
     public var localized: String {
         let dateFormatter = DateFormatter()
-        dateFormatter.locale = Locale.autoupdatingCurrent
+        dateFormatter.locale = .autoupdatingCurrent
         dateFormatter.dateStyle = .long
         dateFormatter.doesRelativeDateFormatting = true
         return dateFormatter.string(from: self)

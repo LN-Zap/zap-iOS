@@ -8,6 +8,7 @@
 import Bond
 import Foundation
 import Lightning
+import SwiftLnd
 
 final class ChannelViewModel {
     let channel: Channel
@@ -31,14 +32,14 @@ final class ChannelViewModel {
         ChannelDetailConfiguration(channelViewModel: self)
     }()
     
-    init(channel: Channel, nodeStore: LightningNodeStore) {
+    init(channel: Channel, channelService: ChannelService) {
         self.channel = channel
         
         name = Observable(channel.remotePubKey)
         state = Observable(channel.state)
         color = Observable(UIColor.Zap.lightningOrange)
         
-        nodeStore.node(for: channel.remotePubKey) { [name, color] in
+        channelService.node(for: channel.remotePubKey) { [name, color] in
             if let alias = $0?.alias {
                 name.value = alias
             }

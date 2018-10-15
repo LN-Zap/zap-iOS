@@ -19,7 +19,7 @@ final class StackedLayout: ChannelLayout {
     var visibleIndices: Range<Int> {
         guard let collectionView = collectionView else { return 0..<1 }
         
-        let start = max(0, Int((contentOffset.y - easingOffset - maxHeaderHeight - minHeaderHeight + headerMargin) / visibleCellHeaderHeight))
+        let start = max(0, Int((contentOffset.y - easingOffset) / visibleCellHeaderHeight))
         let end = min(start + Int(collectionView.bounds.height / visibleCellHeaderHeight) + 2, collectionView.numberOfItems(inSection: 0))
         
         return start..<end
@@ -34,7 +34,7 @@ final class StackedLayout: ChannelLayout {
             return CGSize.zero
         }
         
-        let height = CGFloat(itemCount - 1) * visibleCellHeaderHeight + heightForItem(at: itemCount - 1) + maxHeaderHeight + headerMargin + bottomMargin
+        let height = CGFloat(itemCount - 1) * visibleCellHeaderHeight + heightForItem(at: itemCount - 1) + bottomMargin
         return CGSize(width: collectionView.bounds.width, height: height)
     }
     
@@ -51,7 +51,7 @@ final class StackedLayout: ChannelLayout {
             width: collectionView.bounds.width - layoutMargin.left - layoutMargin.right,
             height: heightForItem(at: index))
         
-        let stickOffset = contentOffset.y - maxHeaderHeight - headerMargin
+        let stickOffset = contentOffset.y
         
         if contentOffset.y < 0 {
             // bouncing (dragging down)
@@ -67,9 +67,7 @@ final class StackedLayout: ChannelLayout {
             let normalized = (attributes.frame.minY - stickOffset + easingOffset) / (2 * easingOffset)
             attributes.frame.origin.y = stickOffset + (easingOffset * pow(normalized, 1.5))
         }
-        
-        attributes.frame.origin.y += maxHeaderHeight + headerMargin
-        
+                
         attributes.isHidden = !visibleIndices.contains(index)
     }
     

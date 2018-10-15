@@ -23,21 +23,13 @@ extension UIStoryboard {
         viewController.blockExplorerButtonTapped = blockExplorerButtonTapped
         
         viewController.tabBarItem.title = "scene.channels.title".localized
-        viewController.tabBarItem.image = UIImage(named: "tabbar_wallet", in: Bundle.library, compatibleWith: nil)
         
         return viewController
     }
 }
 
 final class ChannelListViewController: UIViewController {
-    @IBOutlet private weak var backgroundGradientView: GradientView! {
-        didSet {
-            backgroundGradientView.direction = .vertical
-            backgroundGradientView.gradient = [UIColor.Zap.seaBlueGradient, UIColor.Zap.seaBlue]
-        }
-    }
     @IBOutlet private weak var collectionView: ChannelCollectionView!
-    @IBOutlet private var headerView: UICollectionReusableView!
     
     fileprivate var channelListViewModel: ChannelListViewModel?
     
@@ -49,15 +41,16 @@ final class ChannelListViewController: UIViewController {
         super.viewDidLoad()
         
         title = "scene.channels.title".localized
-        
-        collectionView.registerCell(ChannelCell.self)
-        collectionView.register(UINib(nibName: HeaderCollectionReusableView.kind, bundle: Bundle.library), forSupplementaryViewOfKind: HeaderCollectionReusableView.kind, withReuseIdentifier: HeaderCollectionReusableView.kind)
+        view.backgroundColor = UIColor.Zap.background
 
-        view.addBackgroundGradient()
+        collectionView.registerCell(ChannelCell.self)
         
         channelListViewModel?.dataSource.observeNext { [weak self] _ in
             self?.collectionView.reloadData()
         }.dispose(in: reactive.bag)
+        
+        navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(presentAddChannel))
+        navigationItem.largeTitleDisplayMode = .never
         
         collectionView.dataSource = self
     }
@@ -67,7 +60,7 @@ final class ChannelListViewController: UIViewController {
         sender.endRefreshing()
     }
     
-    @IBAction private func presentAddChannel(_ sender: Any) {
+    @objc private func presentAddChannel() {
         addChannelButtonTapped?()
     }
     
@@ -81,12 +74,6 @@ final class ChannelListViewController: UIViewController {
                 }
             }
         }
-    }
-}
-
-extension ChannelListViewController: ChannelListHeaderDelegate {
-    func openChannelButtonTapped() {
-        addChannelButtonTapped?()
     }
 }
 
@@ -106,14 +93,6 @@ extension ChannelListViewController: ChannelListDataSource {
         channelCell.channelViewModel = channelListViewModel?.dataSource[indexPath.item]
         channelCell.delegate = self
         return channelCell
-    }
-    
-    func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
-        let view = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: HeaderCollectionReusableView.kind, for: indexPath)
-        if let view = view as? HeaderCollectionReusableView {
-            view.delegate = self
-        }
-        return view
     }
 }
 

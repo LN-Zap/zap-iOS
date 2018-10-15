@@ -32,8 +32,8 @@
 
 "view.amount_input.placeholder" = "المبلغ";
 
-"scene.history.title" = "History";
-"scene.history.empty_state_label" = "0 transactions 🙁";
+"scene.history.title" = "المعاملات";
+"scene.history.empty_state_label" = "المعاملات 0 🙁";
 
 "scene.settings.title" = "إعدادات";
 "scene.settings.section.wallet" = "محفظة";

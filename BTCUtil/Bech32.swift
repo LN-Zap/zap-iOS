@@ -13,9 +13,9 @@ public enum Bech32 {
     private static let alphabet = "qpzry9x8gf2tvdw0s3jn54khce6mua7l"
     private static let generator = [0x3b6a57b2, 0x26508e6d, 0x1ea119fa, 0x3d4233dd, 0x2a1462b3]
     
-    private static func expandHumanReadablePart(_ humanReadablePart: String) -> [UInt8] {
-        guard let stringBytes = humanReadablePart.data(using: .utf8) else { return [] }
-        var data = [UInt8]()
+    private static func expandHumanReadablePart(_ humanReadablePart: String) -> Data {
+        guard let stringBytes = humanReadablePart.data(using: .utf8) else { return Data() }
+        var data = Data()
         
         for character in stringBytes {
             data.append(UInt8(UInt32(character) >> 5))
@@ -27,7 +27,7 @@ public enum Bech32 {
         return data
     }
     
-    private static func polymod(values: [UInt8]) -> Int {
+    private static func polymod(values: Data) -> Int {
         var chk = 1
         // swiftlint:disable:next identifier_name
         for p in values {
@@ -43,6 +43,17 @@ public enum Bech32 {
 
     private static func verifyChecksum(humanReadablePart: String, data: Data) -> Bool {
         return polymod(values: expandHumanReadablePart(humanReadablePart) + data) == 1
+    }
+    
+    private static func createChecksum(humanReadablePart: String, data: Data) -> Data {
+        let values = expandHumanReadablePart(humanReadablePart) + data + Data(Array(repeating: UInt8(0), count: 6))
+        let mod: Int = polymod(values: values) ^ 1
+        
+        var result = Data()
+        for index in 0..<6 {
+            result.append(UInt8((mod >> UInt(5 * (5 - index))) & 31))
+        }
+        return result
     }
     
     private static func hasValidCharacters(_ bechString: String) -> Bool {
@@ -90,55 +101,18 @@ public enum Bech32 {
 
         return (humanReadablePart, Data(data[..<(data.count - 6)]))
     }
-}
-
-public enum SegwitAddress {
-    public static func convertBits(data: Data, fromBits: Int, toBits: Int, pad: Bool) -> Data? {
-        var acc: Int = 0
-        var bits: Int = 0
-        var ret = Data()
-        let maxv: Int = (1 << toBits) - 1
-
-        for value in data {
-            if value < 0 || (value >> fromBits) != 0 {
-                return nil
-            }
-
-            acc = (acc << fromBits) | Int(value)
-            bits += fromBits
-
-            while bits >= toBits {
-                bits -= toBits
-                ret.append(UInt8((acc >> bits) & maxv))
-            }
+    
+    private static func toChars(data: Data) -> String {
+        return data.reduce("") {
+            let index = Bech32.alphabet.index(Bech32.alphabet.startIndex, offsetBy: Int($1))
+            return $0 + String(Bech32.alphabet[index])
         }
-
-        if pad {
-            if bits > 0 {
-                ret.append(UInt8((acc << (toBits - bits)) & maxv))
-            }
-        } else if bits >= fromBits || ((acc << (toBits - bits)) & maxv) != 0 {
-            return nil
-        }
-
-        return ret
     }
     
-    static func decode(hrp: String, addr: String) -> (version: Int, program: Data)? {
-        guard let dec = Bech32.decode(addr) else { return nil }
+    public static func encode(humanReadablePart: String, data: Data) -> String {
+        let checksum = Bech32.createChecksum(humanReadablePart: humanReadablePart, data: data)
+        let combined = data + checksum
         
-        if dec.humanReadablePart != hrp || dec.data.count < 1 || dec.data[0] > 16 {
-            return nil
-        }
-        guard let res = convertBits(data: dec.data.advanced(by: 1), fromBits: 5, toBits: 8, pad: false) else {
-            return nil
-        }
-        if res.count < 2 || res.count > 40 {
-            return nil
-        }
-        if dec.data[0] == 0 && res.count != 20 && res.count != 32 {
-            return nil
-        }
-        return (version: Int(dec.data[0]), program: res)
+        return humanReadablePart + "1" + Bech32.toChars(data: combined)
     }
 }

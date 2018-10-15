@@ -8,14 +8,15 @@
 import BTCUtil
 import Foundation
 import Lightning
+import SwiftLnd
 
 extension InvoiceError: LocalizedError {
     public var errorDescription: String? {
         switch self {
         case .unknownFormat:
             return "error.wrong_uri_format".localized
-        case let .wrongNetworkError(linkNetwork, nodeNetwork):
-            return String(format: "error.wrong_uri_network".localized, linkNetwork.localized, nodeNetwork.localized)
+        case let .wrongNetworkError(linkNetwork, expectedNetwork):
+            return String(format: "error.wrong_uri_network".localized, linkNetwork.localized, expectedNetwork.localized)
         }
     }
 }
@@ -51,7 +52,7 @@ final class SendViewModel {
         }
     }
     
-    private let invoice: Invoice
+    private let invoice: BitcoinInvoice
     let method: SendMethod
     
     var amount: Satoshi?
@@ -60,14 +61,10 @@ final class SendViewModel {
     
     let validRange: ClosedRange<Satoshi>?
 
-    private let transactionAnnotationStore: TransactionAnnotationStore
-    private let nodeStore: LightningNodeStore
     private let lightningService: LightningService
     
-    init(invoice: Invoice, transactionAnnotationStore: TransactionAnnotationStore, nodeStore: LightningNodeStore, lightningService: LightningService) {
+    init(invoice: BitcoinInvoice, lightningService: LightningService) {
         self.invoice = invoice
-        self.transactionAnnotationStore = transactionAnnotationStore
-        self.nodeStore = nodeStore
         self.lightningService = lightningService
         
         if let paymentRequest = invoice.lightningPaymentRequest {
@@ -89,35 +86,8 @@ final class SendViewModel {
         }
     }
     
-    func send(callback: @escaping (Result<Success>) -> Void) {
+    func send(completion: @escaping (Result<Success>) -> Void) {
         guard let amount = amount else { return }
-        
-        switch method {
-        case .lightning(let paymentRequest):
-            sendLightning(paymentRequest: paymentRequest, amount: amount) { result in
-                callback(result.map { _ in Success() })
-            }
-        case .onChain(let bitcoinURI):
-            sendOnChain(bitcoinURI: bitcoinURI, amount: amount) { result in
-                callback(result.map { _ in Success() })
-            }
-        }
-    }
-    
-    private func sendOnChain(bitcoinURI: BitcoinURI, amount: Satoshi, callback: @escaping (Result<OnChainUnconfirmedTransaction>) -> Void) {
-        lightningService.transactionService.sendCoins(address: bitcoinURI.bitcoinAddress, amount: amount) { [weak self] in
-            if let unconfirmedTransaction = $0.value,
-                let memo = self?.memo {
-                self?.transactionAnnotationStore.udpateMemo(memo, forTransactionId: unconfirmedTransaction.id)
-            }
-            callback($0)
-        }
-    }
-
-    private func sendLightning(paymentRequest: PaymentRequest, amount: Satoshi, callback: @escaping (Result<Data>) -> Void) {
-        lightningService.transactionService.sendPayment(paymentRequest, amount: amount) { [weak self] in
-            self?.transactionAnnotationStore.udpateMemo(paymentRequest.memo, forTransactionId: paymentRequest.paymentHash)
-            callback($0)
-        }
+        lightningService.transactionService.send(invoice, amount: amount, completion: completion)
     }
 }

@@ -1,0 +1,25 @@
+//
+//  ZapLightning
+//
+//  Created by Otto Suess on 29.06.18.
+//  Copyright © 2018 Zap. All rights reserved.
+//
+
+import Foundation
+
+extension String {
+    private func hexBytes() -> [String] {
+        var result = [String]()
+        var currentIndex = startIndex
+        while currentIndex != endIndex {
+            let end = index(currentIndex, offsetBy: 2)
+            result.append(String(self[currentIndex..<end]))
+            currentIndex = end
+        }
+        return result
+    }
+    
+    func hexEndianSwap() -> String {
+        return hexBytes().reversed().joined()
+    }
+}

@@ -8,9 +8,10 @@
 import BTCUtil
 import Foundation
 import Lightning
+import SwiftLnd
 
 protocol QRCodeScannerStrategy {
     var title: String { get }
     
-    func viewControllerForAddress(address: String, callback: @escaping (Result<UIViewController>) -> Void)
+    func viewControllerForAddress(address: String, completion: @escaping (Result<UIViewController>) -> Void)
 }

@@ -32,7 +32,7 @@
 
 "view.amount_input.placeholder" = "Amount";
 
-"scene.history.title" = "History";
+"scene.history.title" = "Transactions";
 "scene.history.empty_state_label" = "0 transactions 🙁";
 
 "scene.settings.title" = "Nastavení";

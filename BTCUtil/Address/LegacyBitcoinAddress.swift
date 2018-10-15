@@ -29,7 +29,7 @@ struct LegacyBitcoinAddress {
     
     init?(string: String) {
         guard
-            let (version, _) = Base58Check.checkDecode(string),
+            let (version, _) = Base58.checkDecode(string),
             let typeVersion = AddressTypeVersion(rawValue: version)
             else { return nil }
         

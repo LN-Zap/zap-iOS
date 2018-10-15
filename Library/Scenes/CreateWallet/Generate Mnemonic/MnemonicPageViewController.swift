@@ -20,7 +20,7 @@ final class MnemonicPageViewController: UIPageViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        view.backgroundColor = UIColor.Zap.seaBlue
+        view.backgroundColor = UIColor.Zap.background
         
         mnemonicViewModel?.pageWords
             .ignoreNil()

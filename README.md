@@ -17,13 +17,28 @@ Zap is a free Lightning Network wallet focused on user experience and ease of us
 
 We have an active [slack][slack] channel where you can join the discussion on development, design and product.
 
-## Table of Contents
+## Features
 
-- [Security](#security)
-- [Get Help](#get-help)
-- [Maintainers](#maintainers)
-- [Contribute](#contribute)
-- [License](#license)
+**Wallet**
+- [x] Fiat currency prices
+- [x] Support for Bech32 and P2SH addresses
+- [x] BTC, mBTC, bit & Satoshi units
+- [x] Open `lightning:` & `bitcoin:` urls
+- [x] Available in many languages
+- [x] Resend failed lightning transactions
+- [x] Transaction filter
+- [x] BIP39 passphrase
+
+**Security**
+- [x] PIN protected access
+- [x] Certificate pinning
+
+**Lightning**
+- [x] Channel Management
+- [x] Connect to remote Lnd node
+- [x] Connect to BTCPay Server
+- [x] Connect to Zapconnect QR code
+- [ ] Run lnd on your iPhone
 
 ## Security
 
@@ -34,10 +49,6 @@ If you discover or learn about a potential error, weakness, or threat that can c
 If you are having problems with Zap, please report the issue in [GitHub][issues] or on [slack][slack] with screenshots and/or how to reproduce the bug/error.
 
 A good product not only has good software tests but also checks the quality of the UX/UI. Putting ourselves in the shoes of a user is a very important design principle of Zap.
-
-## Maintainers
-
-- [Otto Suess (@ottosuess)](https://github.com/ottosuess)
 
 ## Contribute
 
@@ -57,6 +68,10 @@ Open source isn't just writing code. Zap could use your help with any of the fol
 If any of that sounds cool to you, feel free to dive in! [Open an issue][issues] or submit a pull request.
 
 If you would like to help contribute to the project, please see the [Contributing Guide](docs/CONTRIBUTING.md)
+
+## Maintainers
+
+- [Otto Suess (@ottosuess)](https://github.com/ottosuess)
 
 ## License
 

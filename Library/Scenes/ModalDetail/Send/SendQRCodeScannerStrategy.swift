@@ -8,31 +8,28 @@
 import BTCUtil
 import Foundation
 import Lightning
+import SwiftLnd
 
 class SendQRCodeScannerStrategy: QRCodeScannerStrategy {
-    private let transactionAnnotationStore: TransactionAnnotationStore
-    private let nodeStore: LightningNodeStore
     private let lightningService: LightningService
+    private let authenticationViewModel: AuthenticationViewModel
     
     let title = "scene.send.title".localized
     
-    init(transactionAnnotationStore: TransactionAnnotationStore, nodeStore: LightningNodeStore, lightningService: LightningService) {
-        self.transactionAnnotationStore = transactionAnnotationStore
-        self.nodeStore = nodeStore
+    init(lightningService: LightningService, authenticationViewModel: AuthenticationViewModel) {
         self.lightningService = lightningService
+        self.authenticationViewModel = authenticationViewModel
     }
     
-    func viewControllerForAddress(address: String, callback: @escaping (Result<UIViewController>) -> Void) {
-        Invoice.create(from: address, lightningService: lightningService) { [weak self] result in
-            guard let strongSelf = self else { return }
-            callback(result.map {
+    func viewControllerForAddress(address: String, completion: @escaping (Result<UIViewController>) -> Void) {
+        BitcoinInvoiceFactory.create(from: address, lightningService: lightningService) { [weak self] result in
+            guard let self = self else { return }
+            completion(result.map {
                 let viewModel = SendViewModel(
                     invoice: $0,
-                    transactionAnnotationStore: strongSelf.transactionAnnotationStore,
-                    nodeStore: strongSelf.nodeStore,
-                    lightningService: strongSelf.lightningService
+                    lightningService: self.lightningService
                 )
-                return SendViewController(viewModel: viewModel)
+                return SendViewController(viewModel: viewModel, authenticationViewModel: self.authenticationViewModel)
             })
         }
     }

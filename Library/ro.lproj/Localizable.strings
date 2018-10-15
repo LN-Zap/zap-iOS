@@ -32,8 +32,8 @@
 
 "view.amount_input.placeholder" = "Suma";
 
-"scene.history.title" = "History";
-"scene.history.empty_state_label" = "0 transactions 🙁";
+"scene.history.title" = "Tranzacţii";
+"scene.history.empty_state_label" = "0 tranzacţii 🙁";
 
 "scene.settings.title" = "Setări";
 "scene.settings.section.wallet" = "Portofel";

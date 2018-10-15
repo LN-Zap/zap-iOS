@@ -8,10 +8,6 @@
 import Foundation
 
 enum Environment {
-    static var isRunningTests: Bool {
-        return ProcessInfo.processInfo.environment["IS_RUNNING_TESTS"] == "1"
-    }
-    
     static var useMockApi: Bool {
         return ProcessInfo.processInfo.environment["USE_MOCK_API"] == "1"
     }

@@ -44,7 +44,7 @@ lane :internal_alpha do
 
   build_ios_app(
     workspace: "Zap.xcworkspace",
-    configuration: "DebugLocal",
+    configuration: "DebugRemote",
     scheme: "Zap",
     output_directory: "./builds/alpha",
     export_method: "ad-hoc"
@@ -62,7 +62,6 @@ lane :internal_alpha do
   changelog = changelog_from_git_commits(tag_match_pattern: 'builds/internal_alpha/*', pretty: '- %s', merge_commit_filtering: "exclude_merges")
 
   add_git_tag
-  push_git_tags
 
   slack(
     message: "Just uploaded a new iOS alpha: " + ENV['ZAP_ALPHA_S3_URL'] + "\n" + changelog.to_s,
@@ -99,7 +98,6 @@ lane :alpha do
   )
 
   add_git_tag
-  push_git_tags
 
   slack_message = "Just uploaded a new iOS alpha to Testflight\n" + changelog.to_s
   slack(
@@ -138,7 +136,7 @@ lane :tests do
   
   run_tests(
     workspace: "Zap.xcworkspace",
-    configuration: "DebugLocal",
+    configuration: "DebugRemote",
     devices: ["iPhone 8"],
     scheme: "Zap",
     slack_only_on_failure: true,

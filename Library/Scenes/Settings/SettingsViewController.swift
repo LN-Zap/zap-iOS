@@ -8,23 +8,25 @@
 import UIKit
 
 protocol SettingsDelegate: class {
+    var authenticationViewModel: AuthenticationViewModel { get }
+    
     func disconnect()
 }
 
 final class SettingsViewController: GroupedTableViewController {
-    static func instantiate(settingsDelegate: SettingsDelegate) -> UINavigationController {
-        let viewController = SettingsViewController(settingsDelegate: settingsDelegate)
+    static func instantiate(settingsDelegate: SettingsDelegate, pushChannelList: @escaping (UINavigationController) -> Void) -> UINavigationController {
+        let viewController = SettingsViewController(settingsDelegate: settingsDelegate, pushChannelList: pushChannelList)
         
         let navigationController = ZapNavigationController(rootViewController: viewController)
         
         navigationController.tabBarItem.title = "scene.settings.title".localized
-        navigationController.tabBarItem.image = UIImage(named: "tabbar_wallet", in: Bundle.library, compatibleWith: nil)
-        navigationController.view.backgroundColor = UIColor.Zap.deepSeaBlue
+        navigationController.tabBarItem.image = UIImage(named: "tabbar_settings", in: Bundle.library, compatibleWith: nil)
+        navigationController.view.backgroundColor = UIColor.Zap.background
         
         return navigationController
     }
     
-    init(settingsDelegate: SettingsDelegate) {
+    private init(settingsDelegate: SettingsDelegate, pushChannelList: @escaping (UINavigationController) -> Void) {
         let sections: [Section<SettingsItem>] = [
             Section(title: "scene.settings.title".localized, rows: [
                 CurrencySelectionSettingsItem(),
@@ -32,9 +34,12 @@ final class SettingsViewController: GroupedTableViewController {
                 OnChainRequestAddressTypeSelectionSettingsItem(),
                 BlockExplorerSelectionSettingsItem()
             ]),
+            Section(title: "Lightning", rows: [
+                ManageChannelsSettingsItem(pushChannelList: pushChannelList)
+            ]),
             Section(title: "scene.settings.section.wallet".localized, rows: [
                 RemoveRemoteNodeSettingsItem(settingsDelegate: settingsDelegate),
-                RemovePinSettingsItem(settingsDelegate: settingsDelegate)
+                ChangePinSettingsItem(settingsDelegate: settingsDelegate)
             ]),
             Section(title: nil, rows: [
                 HelpSettingsItem(),

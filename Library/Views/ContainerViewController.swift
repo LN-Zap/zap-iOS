@@ -17,22 +17,20 @@ public protocol ContainerViewController: class {
 public extension ContainerViewController where Self: UIViewController {
     
     public func setContainerContent(_ viewController: UIViewController) {
-        DispatchQueue.main.async {            
-            if self.currentViewController == nil {
-                self.setInitialViewController(viewController)
-            } else {
-                self.switchToViewController(viewController)
-            }
+        if self.currentViewController == nil {
+            self.setInitialViewController(viewController)
+        } else {
+            self.switchToViewController(viewController)
         }
     }
     
     private func setInitialViewController(_ viewController: UIViewController) {
         guard let container = container else { return }
         
-        addChildViewController(viewController)
+        addChild(viewController)
         viewController.view.frame = container.bounds
         container.addSubview(viewController.view)
-        viewController.didMove(toParentViewController: self)
+        viewController.didMove(toParent: self)
         currentViewController = viewController
     }
     
@@ -42,8 +40,8 @@ public extension ContainerViewController where Self: UIViewController {
             let container = container
             else { return }
         
-        currentViewController.willMove(toParentViewController: nil)
-        addChildViewController(viewController)
+        currentViewController.willMove(toParent: nil)
+        addChild(viewController)
         currentViewController.view.layer.zPosition = 1
         viewController.view.frame = container.bounds
         viewController.view.isUserInteractionEnabled = false
@@ -55,11 +53,11 @@ public extension ContainerViewController where Self: UIViewController {
                    animations: { [currentViewController] in
                     currentViewController.view.alpha = 0
             }, completion: { [weak self] _ in
-                guard let strongSelf = self else { return }
+                guard let self = self else { return }
                 currentViewController.view.removeFromSuperview()
-                currentViewController.removeFromParentViewController()
-                viewController.didMove(toParentViewController: self)
-                strongSelf.currentViewController = viewController
+                currentViewController.removeFromParent()
+                viewController.didMove(toParent: self)
+                self.currentViewController = viewController
                 viewController.view.isUserInteractionEnabled = true
                 completion?()
         })

@@ -32,8 +32,8 @@
 
 "view.amount_input.placeholder" = "Montant";
 
-"scene.history.title" = "Historique";
-"scene.history.empty_state_label" = "Aucune transaction 🙁";
+"scene.history.title" = "Transactions";
+"scene.history.empty_state_label" = "0 transaction 🙁";
 
 "scene.settings.title" = "Paramètres";
 "scene.settings.section.wallet" = "Portefeuille";

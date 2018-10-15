@@ -8,6 +8,7 @@
 import Bond
 import Foundation
 import Lightning
+import SwiftLnd
 
 extension OnChainRequestAddressType: Localizable {
     public var localized: String {

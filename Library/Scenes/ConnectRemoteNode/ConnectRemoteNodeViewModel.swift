@@ -9,6 +9,7 @@ import Bond
 import Foundation
 import Lightning
 import ReactiveKit
+import SwiftLnd
 
 final class ConnectRemoteNodeViewModel: NSObject {
     enum CellType: Equatable {
@@ -82,7 +83,7 @@ final class ConnectRemoteNodeViewModel: NSObject {
         )
     }
     
-    func pasteCertificates(callback: @escaping (RPCConnectQRCodeError) -> Void) {
+    func pasteCertificates(completion: @escaping (RPCConnectQRCodeError) -> Void) {
         guard let string = UIPasteboard.general.string else { return }
        
         RPCConnectQRCode.configuration(for: string) { [weak self] result in
@@ -92,19 +93,19 @@ final class ConnectRemoteNodeViewModel: NSObject {
                     self?.remoteNodeConfiguration = configuration
                 case .failure(let error):
                     guard let error = error as? RPCConnectQRCodeError else { return }
-                    callback(error)
+                    completion(error)
                 }
             }
         }
     }
     
-    func connect(callback: @escaping (Bool) -> Void) {
+    func connect(completion: @escaping (Bool) -> Void) {
         guard let remoteNodeConfiguration = remoteNodeConfiguration else { return }
 
         remoteNodeConfiguration.save()
 
         testServer = LightningApiRPC(configuration: remoteNodeConfiguration)
-        testServer?.canConnect(callback: callback)
+        testServer?.canConnect(completion: completion)
     }
     
     func updateUrl(_ url: URL) {

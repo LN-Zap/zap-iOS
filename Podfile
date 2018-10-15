@@ -7,15 +7,24 @@ install! 'cocoapods'
 target 'Zap' do
 end
 
-target 'Lightning' do
-    pod 'Bond'
-    pod 'KeychainAccess'
+target 'SwiftLnd' do
     pod 'SwiftGRPC', :git => 'https://github.com/grpc/grpc-swift'
 end
 
+target 'Lightning' do
+    pod 'Bond'
+    pod 'KeychainAccess'
+    pod 'SQLite.swift', '~> 0.11.5'
+end
+
 target 'Library' do
+    pod 'ScrollableGraphView'
     pod 'KeychainAccess'
     pod 'Bond'
+    
+    target 'LibraryTests' do
+        inherit! :search_paths
+    end
 end
 
 target 'ZapMessages' do

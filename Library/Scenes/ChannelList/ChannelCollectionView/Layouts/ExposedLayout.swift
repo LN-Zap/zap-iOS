@@ -114,8 +114,8 @@ final class ExposedLayout: ChannelLayout {
         switch gestureRecognizer.state {
         case .began:
             animator = UIViewPropertyAnimator(duration: 0.3, curve: .easeOut) { [weak self] in
-                guard let strongSelf = self else { return }
-                strongSelf.exposedCell?.transform = strongSelf.transform(for: strongSelf.exposedIndex)
+                guard let self = self else { return }
+                self.exposedCell?.transform = self.transform(for: self.exposedIndex)
             }
             animator?.addCompletion { [weak self] position in
                 guard position == .end else { return }

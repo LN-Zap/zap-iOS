@@ -9,51 +9,60 @@ import Lightning
 import UIKit
 
 public final class RootCoordinator: NSObject, SetupCoordinatorDelegate, PinCoordinatorDelegate, SettingsDelegate, SyncDelegate, Routing {
-    
     private let rootViewController: RootViewController
-    private let rootViewModel: RootViewModel
-
+    private let connectionService: ConnectionService
+    private let authenticationCoordinator: AuthenticationCoordinator
+    private let backgroundCoordinator: BackgroundCoordinator
+    
     private var currentCoordinator: Any?
     private var route: Route?
     
+    var authenticationViewModel: AuthenticationViewModel { // SettingsDelegate
+        return authenticationCoordinator.authenticationViewModel
+    }
+    
     public init(window: UIWindow) {
         rootViewController = Storyboard.root.initial(viewController: RootViewController.self)
-        rootViewModel = RootViewModel()
+        connectionService = ConnectionService()
+        authenticationCoordinator = AuthenticationCoordinator(rootViewController: rootViewController)
+        backgroundCoordinator = BackgroundCoordinator(rootViewController: rootViewController)
         
         window.rootViewController = self.rootViewController
         window.tintColor = UIColor.Zap.lightningOrange
         Appearance.setup()
         
-        rootViewModel.start()
         super.init()
+        start()
+        
+        updateFor(state: connectionService.state.value)
         listenForStateChanges()
     }
     
     public func listenForStateChanges() {
-        rootViewModel.state
+        connectionService.state
+            .skip(first: 1)
             .distinct()
             .observeOn(DispatchQueue.main)
             .observeNext { [weak self] state in
-                print("🗽 state:", state)
-                switch state {
-                case .locked:
-                    if self?.rootViewModel.authenticationViewModel.didSetupPin == true {
-                        self?.presentPin()
-                    } else {
-                        self?.presentSetupPin()
-                    }
-                case .noWallet:
-                    self?.presentSetup()
-                case .connecting:
-                    self?.presentLoading(message: .none)
-                case .noInternet:
-                    self?.presentLoading(message: .noInternet)
-                case .syncing:
-                    self?.presentSync()
-                case .running:
-                    self?.presentMain()
-                }
+                self?.updateFor(state: state)
             }.dispose(in: reactive.bag)
+    }
+    
+    private func updateFor(state: ConnectionService.State) {
+        print("🗽 state:", state)
+
+        switch state {
+        case .noWallet:
+            presentSetup()
+        case .connecting:
+            presentLoading(message: .none)
+        case .noInternet:
+            presentLoading(message: .noInternet)
+        case .syncing:
+            presentSync()
+        case .running:
+            presentMain()
+        }
     }
     
     public func handle(_ route: Route) {
@@ -66,50 +75,53 @@ public final class RootCoordinator: NSObject, SetupCoordinatorDelegate, PinCoord
     }
     
     public func applicationWillEnterForeground() {
-        rootViewController.removeBlurEffect()
-        rootViewModel.start()
+        backgroundCoordinator.applicationWillEnterForeground()
+        start()
+    }
+    
+    private func start() {
+        connectionService.start()
+        ExchangeUpdaterJob.start()
     }
     
     public func applicationDidEnterBackground() {
-        rootViewController.addBlurEffect()
+        backgroundCoordinator.applicationDidEnterBackground()
         route = nil // reset route when app enters background
-        rootViewModel.stop()
+        connectionService.stop()
+        ExchangeUpdaterJob.stop()
     }
     
     private func presentMain() {
-        guard let lightningService = rootViewModel.lightningService else { return }
+        guard let lightningService = connectionService.lightningService else { return }
         
-        let tabBarController = UITabBarController()
-        tabBarController.tabBar.barTintColor = UIColor.Zap.deepSeaBlue
-        tabBarController.tabBar.isTranslucent = false
-        tabBarController.tabBar.shadowImage = UIImage()
-        tabBarController.tabBar.backgroundImage = UIImage()
+        let tabBarController = RootTabBarController()
         
-        let mainCoordinator = MainCoordinator(rootViewController: rootViewController, lightningService: lightningService, settingsDelegate: self)
+        let mainCoordinator = MainCoordinator(rootViewController: rootViewController, lightningService: lightningService, settingsDelegate: self, authenticationViewModel: authenticationCoordinator.authenticationViewModel)
 
         tabBarController.viewControllers = [
             mainCoordinator.walletViewController(),
-            mainCoordinator.transactionListViewController(),
-            mainCoordinator.channelListViewController(),
+            mainCoordinator.historyViewController(),
             mainCoordinator.settingsViewController()
         ]
         presentViewController(tabBarController)
     
         currentCoordinator = mainCoordinator
 
+        mainCoordinator.historyViewModel.setupTabBarBadge(delegate: tabBarController)
+        
         if let route = self.route {
             handle(route)
         }
     }
     
     private func presentSetup() {
-        let setupCoordinator = SetupCoordinator(rootViewController: rootViewController, rootViewModel: rootViewModel, delegate: self)
+        let setupCoordinator = SetupCoordinator(rootViewController: rootViewController, connectionService: connectionService, authenticationViewModel: authenticationCoordinator.authenticationViewModel, delegate: self)
         currentCoordinator = setupCoordinator
         setupCoordinator.start()
     }
     
     private func presentSync() {
-        guard let lightningService = rootViewModel.lightningService else { fatalError("viewModel not set") }
+        guard let lightningService = connectionService.lightningService else { return }
         let viewController = UIStoryboard.instantiateSyncViewController(with: lightningService, delegate: self)
         presentViewController(viewController)
     }
@@ -119,14 +131,8 @@ public final class RootCoordinator: NSObject, SetupCoordinatorDelegate, PinCoord
         presentViewController(viewController)
     }
     
-    private func presentPin() {
-        let pinCoordinator = PinCoordinator(rootViewController: rootViewController, authenticationViewModel: rootViewModel.authenticationViewModel, delegate: self)
-        currentCoordinator = pinCoordinator
-        pinCoordinator.start()
-    }
-    
     internal func presentSetupPin() {
-        let pinSetupCoordinator = PinSetupCoordinator(rootViewController: rootViewController, authenticationViewModel: rootViewModel.authenticationViewModel, delegate: self)
+        let pinSetupCoordinator = PinSetupCoordinator(rootViewController: rootViewController, authenticationViewModel: authenticationCoordinator.authenticationViewModel, delegate: self)
         currentCoordinator = pinSetupCoordinator
         pinSetupCoordinator.start()
     }
@@ -136,10 +142,10 @@ public final class RootCoordinator: NSObject, SetupCoordinatorDelegate, PinCoord
     }
     
     func connect() {
-        rootViewModel.connect()
+        connectionService.connect()
     }
     
     func disconnect() {
-        rootViewModel.disconnect()
+        connectionService.disconnect()
     }
 }

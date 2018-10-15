@@ -68,7 +68,7 @@ public final class GradientLoadingButtonView: UIControl {
     }
     
     private func addActivityIndicator() {
-        let activityIndicator = UIActivityIndicatorView(activityIndicatorStyle: .white)
+        let activityIndicator = UIActivityIndicatorView(style: .white)
         addAutolayoutSubview(activityIndicator)
         
         NSLayoutConstraint.activate([

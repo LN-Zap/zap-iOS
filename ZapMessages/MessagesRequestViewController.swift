@@ -9,6 +9,7 @@ import Bond
 import Library
 import Lightning
 import Messages
+import SwiftLnd
 import UIKit
 
 protocol MessagesRequestViewControllerDelegate: class {

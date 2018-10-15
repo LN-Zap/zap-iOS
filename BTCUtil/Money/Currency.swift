@@ -7,6 +7,7 @@
 
 import Foundation
 
+/// Represents currencies like Bitcoin or USD
 public protocol Currency {
     var symbol: String { get }
         

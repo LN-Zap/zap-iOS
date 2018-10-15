@@ -20,7 +20,6 @@ final class LndLogViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        navigationController?.navigationBar.titleTextStyle = .dark
         textView.font = UIFont(name: "Courier", size: 10)
         
         timer = Timer.scheduledTimer(withTimeInterval: 0.1, repeats: true) { [weak self] _ in

@@ -8,26 +8,21 @@
 import UIKit
 
 enum Storyboard: String {
+    case background
     case channelList
     case connectRemoteNode
     case createWallet
     case debug
-    case deposit
     case detail
-    case invoiceDetail
+    case history
     case loading
+    case modalPin
     case numericKeyPad
-    case openChannel
-    case paymentDetail
     case qrCodeDetail = "QRCodeDetail"
     case qrCodeScanner = "QRCodeScanner"
-    case request
     case root
-    case send
-    case sendOnChain
-    case settings
     case sync
-    case transactionList
+    case timeLocked
     case wallet
     
     var storyboard: UIStoryboard? {
