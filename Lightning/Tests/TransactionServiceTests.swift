@@ -15,7 +15,7 @@ struct MockBitcoinInvoice: BitcoinInvoice {
     let bitcoinURI: BitcoinURI?
 }
 
-// swiftlint:disable force_try force_unwrapping implicitly_unwrapped_optional
+// swiftlint:disable force_try force_unwrapping
 class TransactionServiceTests: XCTestCase {
     
     func testSendGetsSaved() {

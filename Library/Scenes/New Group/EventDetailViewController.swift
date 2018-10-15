@@ -68,11 +68,6 @@ final class EventDetailViewController: ModalDetailViewController {
         }
     }
     
-    private func addHeadline(_ headline: String) {
-        contentStackView.addArrangedElement(.label(text: headline, style: Style.Label.headline.with({ $0.textAlignment = .center })))
-        contentStackView.addArrangedElement(.separator)
-    }
-    
     private func addLabel(title: String, element: StackViewElement) {
         contentStackView.addArrangedElement(.horizontalStackView(compressionResistant: .first, content: [
             .label(text: title, style: Style.Label.headline),

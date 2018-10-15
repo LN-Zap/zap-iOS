@@ -12,47 +12,44 @@ import UIKit
 extension UIStoryboard {
     static func instantiateChannelListViewController(
         channelListViewModel: ChannelListViewModel,
-        closeButtonTapped: @escaping (ChannelViewModel, @escaping () -> Void) -> Void,
         addChannelButtonTapped: @escaping () -> Void,
-        blockExplorerButtonTapped: @escaping (String, BlockExplorer.CodeType) -> Void) -> UIViewController {
+        presentChannelDetail: @escaping (UIViewController, ChannelViewModel) -> Void) -> UIViewController {
         let viewController = Storyboard.channelList.initial(viewController: ChannelListViewController.self)
         
         viewController.channelListViewModel = channelListViewModel
-        viewController.closeButtonTapped = closeButtonTapped
         viewController.addChannelButtonTapped = addChannelButtonTapped
-        viewController.blockExplorerButtonTapped = blockExplorerButtonTapped
-        
-        viewController.tabBarItem.title = "scene.channels.title".localized
+        viewController.presentChannelDetail = presentChannelDetail
         
         return viewController
     }
 }
 
 final class ChannelListViewController: UIViewController {
-    @IBOutlet private weak var collectionView: ChannelCollectionView!
+    @IBOutlet private weak var tableView: UITableView!
     
     fileprivate var channelListViewModel: ChannelListViewModel?
-    
     fileprivate var addChannelButtonTapped: (() -> Void)?
-    fileprivate var closeButtonTapped: ((ChannelViewModel, @escaping () -> Void) -> Void)?
-    fileprivate var blockExplorerButtonTapped: ((String, BlockExplorer.CodeType) -> Void)?
-    
+    fileprivate var presentChannelDetail: ((UIViewController, ChannelViewModel) -> Void)?
+
     override func viewDidLoad() {
         super.viewDidLoad()
         
         title = "scene.channels.title".localized
         view.backgroundColor = UIColor.Zap.background
 
-        collectionView.registerCell(ChannelCell.self)
-        
-        channelListViewModel?.dataSource.observeNext { [weak self] _ in
-            self?.collectionView.reloadData()
-        }.dispose(in: reactive.bag)
+        tableView.registerCell(ChannelTableViewCell.self)
+        tableView.delegate = self
+        tableView.backgroundColor = UIColor.Zap.deepSeaBlue
+        tableView.rowHeight = 76
         
         navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(presentAddChannel))
         navigationItem.largeTitleDisplayMode = .never
         
-        collectionView.dataSource = self
+        channelListViewModel?.dataSource.bind(to: tableView) { array, indexPath, tableView in
+            let cell: ChannelTableViewCell = tableView.dequeueCellForIndexPath(indexPath)
+            cell.channelViewModel = array[indexPath.row]
+            return cell
+        }
     }
     
     @objc func refresh(sender: UIRefreshControl) {
@@ -63,55 +60,13 @@ final class ChannelListViewController: UIViewController {
     @objc private func presentAddChannel() {
         addChannelButtonTapped?()
     }
-    
-    func closeChannel(for channelViewModel: ChannelViewModel) {
-        closeButtonTapped?(channelViewModel) { [weak self] in
-            self?.channelListViewModel?.close(channelViewModel.channel) { result in
-                if let error = result.error {
-                    self?.parent?.presentErrorToast(error.localizedDescription)
-                } else {
-                    self?.parent?.presentSuccessToast("scene.channels.close_success.toast".localized)
-                }
-            }
-        }
-    }
 }
 
-extension ChannelListViewController: ChannelListDataSource {
-    func heightForItem(at index: Int) -> CGFloat {
-        guard let elements = channelListViewModel?.dataSource[index].detailViewModel.elements else { return 0 }
+extension ChannelListViewController: UITableViewDelegate {
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        tableView.deselectRow(at: indexPath, animated: true)
         
-        return elements.height(spacing: 14) + 2 * 14
-    }
-    
-    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return channelListViewModel?.dataSource.count ?? 0
-    }
-    
-    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let channelCell: ChannelCell = collectionView.dequeueCellForIndexPath(indexPath)
-        channelCell.channelViewModel = channelListViewModel?.dataSource[indexPath.item]
-        channelCell.delegate = self
-        return channelCell
-    }
-}
-
-extension ChannelListViewController: ChannelCellDelegate {
-    func closeChannelButtonTapped(channelViewModel: ChannelViewModel) {
-        closeButtonTapped?(channelViewModel) { [weak self] in
-            let loadingView = self?.presentLoadingView(text: "Closing Channel")
-            self?.view.isUserInteractionEnabled = false
-            self?.channelListViewModel?.close(channelViewModel.channel) { _ in
-                DispatchQueue.main.async {
-                    self?.view.isUserInteractionEnabled = true
-                    self?.collectionView.switchToStackView()
-                    loadingView?.dismiss()
-                }
-            }
-        }
-    }
-    
-    func fundingTransactionTxIdButtonTapped(channelViewModel: ChannelViewModel) {
-        blockExplorerButtonTapped?(channelViewModel.channel.channelPoint.fundingTxid, .transactionId)
+        guard let channelViewModel = channelListViewModel?.dataSource[indexPath.row] else { return }
+        presentChannelDetail?(self, channelViewModel)
     }
 }

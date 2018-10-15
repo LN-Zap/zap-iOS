@@ -36,7 +36,7 @@ class ModalDetailViewController: ModalViewController, QRCodeScannerChildViewCont
         return headerIconImageView
     }()
     
-    weak var delegate: QRCodeScannerChildDelegate?
+    weak var delegate: QRCodeScannerChildDelegate? // TODO: rename delegate
     
     private func setupLayout(for view: UIView) {
         view.addAutolayoutSubview(backgroundView)
@@ -100,6 +100,11 @@ class ModalDetailViewController: ModalViewController, QRCodeScannerChildViewCont
         } else {
             dismiss(animated: true, completion: nil)
         }
+    }
+        
+    func addHeadline(_ headline: String) {
+        contentStackView.addArrangedElement(.label(text: headline, style: Style.Label.headline.with({ $0.textAlignment = .center })))
+        contentStackView.addArrangedElement(.separator)
     }
 }
 

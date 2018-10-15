@@ -29,13 +29,11 @@
 		A0B91A84202628EF009AD2D3 /* Settings.bundle in Resources */ = {isa = PBXBuildFile; fileRef = A0B91A83202628EF009AD2D3 /* Settings.bundle */; };
 		A0F9AEDD206E155500E93DCA /* Satoshi.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0F9AEDC206E155500E93DCA /* Satoshi.swift */; };
 		A0FBCD91206BBBDF00800515 /* BitcoinUnit.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0FBCD90206BBBDF00800515 /* BitcoinUnit.swift */; };
+		AD035BFC2174A030005EA785 /* ChannelTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD035BFA2174A030005EA785 /* ChannelTableViewCell.swift */; };
+		AD035BFD2174A030005EA785 /* ChannelTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = AD035BFB2174A030005EA785 /* ChannelTableViewCell.xib */; };
+		AD035BFF2174A996005EA785 /* ChannelDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD035BFE2174A996005EA785 /* ChannelDetailViewController.swift */; };
 		AD0D0BC2212BE3C800E4F7F7 /* RequestViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD0D0BC1212BE3C800E4F7F7 /* RequestViewController.swift */; };
 		AD0D0BC4212D34E000E4F7F7 /* BitcoinAddress.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD0D0BC3212D34E000E4F7F7 /* BitcoinAddress.swift */; };
-		AD0D5DE9210DCC5F00D11D0B /* LabColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD0D5DE8210DCADC00D11D0B /* LabColor.swift */; };
-		AD0D5DEA210DCC6300D11D0B /* ChannelLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD0D5DE2210DCADC00D11D0B /* ChannelLayout.swift */; };
-		AD0D5DEB210DCC6300D11D0B /* StackedLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD0D5DE3210DCADC00D11D0B /* StackedLayout.swift */; };
-		AD0D5DEC210DCC6300D11D0B /* ExposedLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD0D5DE4210DCADC00D11D0B /* ExposedLayout.swift */; };
-		AD0D5DED210DCC6700D11D0B /* ChannelCollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD0D5DE5210DCADC00D11D0B /* ChannelCollectionView.swift */; };
 		AD10D04A21132A2F00A0F0D3 /* MainInterface.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AD10D04921132A2F00A0F0D3 /* MainInterface.storyboard */; };
 		AD10D04C21132A6000A0F0D3 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AD10D04B21132A6000A0F0D3 /* LaunchScreen.storyboard */; };
 		AD10D05721132EFB00A0F0D3 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = AD10D05921132EFB00A0F0D3 /* Localizable.strings */; };
@@ -292,9 +290,6 @@
 		ADDD13B62119CE740035D2F9 /* StackViewElement.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADDD13B52119CE740035D2F9 /* StackViewElement.swift */; };
 		ADDD13B92119CEB40035D2F9 /* UIStackView.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADDD13B82119CEB40035D2F9 /* UIStackView.swift */; };
 		ADDD13BB2119CF110035D2F9 /* CallbackButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADDD13BA2119CF110035D2F9 /* CallbackButton.swift */; };
-		ADDD13BD2119E3240035D2F9 /* ChannelDetailConfiguration.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADDD13BC2119E3240035D2F9 /* ChannelDetailConfiguration.swift */; };
-		ADE0C4092108F6C8004597C3 /* ChannelCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADE0C4062108F6C8004597C3 /* ChannelCell.swift */; };
-		ADE0C40A2108F6C8004597C3 /* ChannelCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = ADE0C4072108F6C8004597C3 /* ChannelCell.xib */; };
 		ADEEB5332134277400D2F992 /* KeyPadPinView.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADEEB5322134277400D2F992 /* KeyPadPinView.swift */; };
 		ADEEB5362134669B00D2F992 /* ModalPinViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADEEB5352134669B00D2F992 /* ModalPinViewController.swift */; };
 		ADEEB53821346DEA00D2F992 /* ModalPin.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = ADEEB53721346DEA00D2F992 /* ModalPin.storyboard */; };
@@ -621,13 +616,11 @@
 		A11A24FE43F9B6412A85C0C8 /* Pods-Library.debugremote.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Library.debugremote.xcconfig"; path = "Pods/Target Support Files/Pods-Library/Pods-Library.debugremote.xcconfig"; sourceTree = "<group>"; };
 		A2EA9EBABE9A17490B3E282A /* Pods-BTCUtil.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BTCUtil.release.xcconfig"; path = "Pods/Target Support Files/Pods-BTCUtil/Pods-BTCUtil.release.xcconfig"; sourceTree = "<group>"; };
 		A8517E12ED19329B536B9504 /* Pods-Lightning.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Lightning.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Lightning/Pods-Lightning.debug.xcconfig"; sourceTree = "<group>"; };
+		AD035BFA2174A030005EA785 /* ChannelTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChannelTableViewCell.swift; sourceTree = "<group>"; };
+		AD035BFB2174A030005EA785 /* ChannelTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ChannelTableViewCell.xib; sourceTree = "<group>"; };
+		AD035BFE2174A996005EA785 /* ChannelDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChannelDetailViewController.swift; sourceTree = "<group>"; };
 		AD0D0BC1212BE3C800E4F7F7 /* RequestViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RequestViewController.swift; sourceTree = "<group>"; };
 		AD0D0BC3212D34E000E4F7F7 /* BitcoinAddress.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BitcoinAddress.swift; sourceTree = "<group>"; };
-		AD0D5DE2210DCADC00D11D0B /* ChannelLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChannelLayout.swift; sourceTree = "<group>"; };
-		AD0D5DE3210DCADC00D11D0B /* StackedLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StackedLayout.swift; sourceTree = "<group>"; };
-		AD0D5DE4210DCADC00D11D0B /* ExposedLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExposedLayout.swift; sourceTree = "<group>"; };
-		AD0D5DE5210DCADC00D11D0B /* ChannelCollectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChannelCollectionView.swift; sourceTree = "<group>"; };
-		AD0D5DE8210DCADC00D11D0B /* LabColor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LabColor.swift; sourceTree = "<group>"; };
 		AD0D933220C822C300E30C51 /* rpc.pb.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = rpc.pb.swift; sourceTree = "<group>"; };
 		AD0D933320C822C300E30C51 /* rpc.grpc.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = rpc.grpc.swift; sourceTree = "<group>"; };
 		AD10D04921132A2F00A0F0D3 /* MainInterface.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = MainInterface.storyboard; sourceTree = "<group>"; };
@@ -880,9 +873,6 @@
 		ADDD13B52119CE740035D2F9 /* StackViewElement.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StackViewElement.swift; sourceTree = "<group>"; };
 		ADDD13B82119CEB40035D2F9 /* UIStackView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIStackView.swift; sourceTree = "<group>"; };
 		ADDD13BA2119CF110035D2F9 /* CallbackButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CallbackButton.swift; sourceTree = "<group>"; };
-		ADDD13BC2119E3240035D2F9 /* ChannelDetailConfiguration.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChannelDetailConfiguration.swift; sourceTree = "<group>"; };
-		ADE0C4062108F6C8004597C3 /* ChannelCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChannelCell.swift; sourceTree = "<group>"; };
-		ADE0C4072108F6C8004597C3 /* ChannelCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ChannelCell.xib; sourceTree = "<group>"; };
 		ADE19C3F20E7892000340E2E /* ChannelPoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChannelPoint.swift; sourceTree = "<group>"; };
 		ADE4CF1C20B5B2BE007C987A /* UIFont.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIFont.swift; sourceTree = "<group>"; };
 		ADE4CF1E20B5B6FC007C987A /* Environment.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Environment.swift; sourceTree = "<group>"; };
@@ -1168,10 +1158,12 @@
 				A0F353CF20692570005B3639 /* GradientView.swift */,
 				ADBA12082093587B001F7700 /* KeyPad */,
 				A0605F8C202C9D8200EA903C /* LineView.swift */,
+				AD615CF4211C82E600680790 /* LoadingView.swift */,
 				AD2884332126B458003C3D94 /* Modal */,
 				AD2884362126DDA2003C3D94 /* ModalDetailViewController.swift */,
 				AD615CF6211CAB0900680790 /* PaddingLabel.swift */,
 				ADF79363208DCB630086B2CA /* PinView.swift */,
+				ADDD13B72119CE980035D2F9 /* Stack View */,
 				A0605F8A202C9D2F00EA903C /* Toast */,
 				AD7EDAE62108D39D0058CCCA /* ZapNavigationController.swift */,
 			);
@@ -1397,12 +1389,11 @@
 			isa = PBXGroup;
 			children = (
 				ADE0C40B2108F6CE004597C3 /* Cell */,
-				AD0D5DE0210DCAC600D11D0B /* ChannelCollectionView */,
 				A010094F2015F99F0001EF94 /* ChannelList.storyboard */,
 				A0731FE82014B27900C55E45 /* ChannelListViewController.swift */,
 				A0F57DBD201E440F003AFA66 /* ChannelListViewModel.swift */,
 				AD77465620765E4D00EC596B /* ChannelViewModel.swift */,
-				AD615CF4211C82E600680790 /* LoadingView.swift */,
+				AD035BFE2174A996005EA785 /* ChannelDetailViewController.swift */,
 			);
 			path = ChannelList;
 			sourceTree = "<group>";
@@ -1440,34 +1431,6 @@
 			);
 			name = Request;
 			path = ModalDetail/Request;
-			sourceTree = "<group>";
-		};
-		AD0D5DE0210DCAC600D11D0B /* ChannelCollectionView */ = {
-			isa = PBXGroup;
-			children = (
-				AD0D5DE6210DCADC00D11D0B /* Color */,
-				AD0D5DE1210DCADC00D11D0B /* Layouts */,
-				AD0D5DE5210DCADC00D11D0B /* ChannelCollectionView.swift */,
-			);
-			path = ChannelCollectionView;
-			sourceTree = "<group>";
-		};
-		AD0D5DE1210DCADC00D11D0B /* Layouts */ = {
-			isa = PBXGroup;
-			children = (
-				AD0D5DE2210DCADC00D11D0B /* ChannelLayout.swift */,
-				AD0D5DE4210DCADC00D11D0B /* ExposedLayout.swift */,
-				AD0D5DE3210DCADC00D11D0B /* StackedLayout.swift */,
-			);
-			path = Layouts;
-			sourceTree = "<group>";
-		};
-		AD0D5DE6210DCADC00D11D0B /* Color */ = {
-			isa = PBXGroup;
-			children = (
-				AD0D5DE8210DCADC00D11D0B /* LabColor.swift */,
-			);
-			path = Color;
 			sourceTree = "<group>";
 		};
 		AD2884332126B458003C3D94 /* Modal */ = {
@@ -1915,10 +1878,8 @@
 		ADE0C40B2108F6CE004597C3 /* Cell */ = {
 			isa = PBXGroup;
 			children = (
-				ADDD13B72119CE980035D2F9 /* Stack View */,
-				ADE0C4062108F6C8004597C3 /* ChannelCell.swift */,
-				ADDD13BC2119E3240035D2F9 /* ChannelDetailConfiguration.swift */,
-				ADE0C4072108F6C8004597C3 /* ChannelCell.xib */,
+				AD035BFA2174A030005EA785 /* ChannelTableViewCell.swift */,
+				AD035BFB2174A030005EA785 /* ChannelTableViewCell.xib */,
 			);
 			path = Cell;
 			sourceTree = "<group>";
@@ -2453,6 +2414,7 @@
 				AD967FD42100D8E80048085B /* CertificateDetailCell.xib in Resources */,
 				ADA179C02151509E001401F3 /* SectionHeaderView.xib in Resources */,
 				AD391C6A20D16F89007EE22A /* NumericKeyPad.storyboard in Resources */,
+				AD035BFD2174A030005EA785 /* ChannelTableViewCell.xib in Resources */,
 				AD667E552136B074007B9160 /* TimeLocked.storyboard in Resources */,
 				AD391C4C20D16F68007EE22A /* ChannelList.storyboard in Resources */,
 				AD391C5420D16F7A007EE22A /* ConnectRemoteNode.storyboard in Resources */,
@@ -2471,7 +2433,6 @@
 				AD391D2220D1798A007EE22A /* Media.xcassets in Resources */,
 				ADEEB53821346DEA00D2F992 /* ModalPin.storyboard in Resources */,
 				AD391C9820D16FA8007EE22A /* QRCodeScanner.storyboard in Resources */,
-				ADE0C40A2108F6C8004597C3 /* ChannelCell.xib in Resources */,
 				AD391CDA20D16FE1007EE22A /* History.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -2815,7 +2776,6 @@
 				AD391C3120D16EFA007EE22A /* UIColor.swift in Sources */,
 				AD391C2820D16EFA007EE22A /* String+Localizable.swift in Sources */,
 				ADADAD5A214126BB00A48E1F /* Date.swift in Sources */,
-				AD0D5DE9210DCC5F00D11D0B /* LabColor.swift in Sources */,
 				AD391C2920D16EFA007EE22A /* Date+Localizable.swift in Sources */,
 				AD391C5820D16F7A007EE22A /* RemoteNodeCertificatesScannerViewController.swift in Sources */,
 				AD2884372126DDA2003C3D94 /* ModalDetailViewController.swift in Sources */,
@@ -2829,9 +2789,8 @@
 				AD391C7520D16F89007EE22A /* QRCodeDetailViewModel.swift in Sources */,
 				AD391C3820D16EFA007EE22A /* UserDefaults.swift in Sources */,
 				AD391C2E20D16EFA007EE22A /* UIApplication.swift in Sources */,
+				AD035BFF2174A996005EA785 /* ChannelDetailViewController.swift in Sources */,
 				AD3DDC03213EE4000008379C /* RootTabBarController.swift in Sources */,
-				AD0D5DED210DCC6700D11D0B /* ChannelCollectionView.swift in Sources */,
-				ADDD13BD2119E3240035D2F9 /* ChannelDetailConfiguration.swift in Sources */,
 				ADEEB5362134669B00D2F992 /* ModalPinViewController.swift in Sources */,
 				AD391C3520D16EFA007EE22A /* Storyboard.swift in Sources */,
 				AD391CDB20D16FE1007EE22A /* HistoryViewController.swift in Sources */,
@@ -2874,7 +2833,6 @@
 				ADA179BE21515095001401F3 /* SectionHeaderView.swift in Sources */,
 				AD391CAD20D16FA8007EE22A /* OnChainRequestAddressTypeSettingsItem.swift in Sources */,
 				AD97A91420EFCFC3008344EA /* Bitcoin+Localizable.swift in Sources */,
-				AD0D5DEA210DCC6300D11D0B /* ChannelLayout.swift in Sources */,
 				AD28CB7B211DE93300A31004 /* BlockExplorerSettingsItem.swift in Sources */,
 				AD391CB720D16FA8007EE22A /* SettingsViewController.swift in Sources */,
 				AD667E4721359D79007B9160 /* AuthenticationCoordinator.swift in Sources */,
@@ -2903,7 +2861,6 @@
 				AD667E5921384966007B9160 /* WindowLevel.swift in Sources */,
 				AD391CB420D16FA8007EE22A /* Section.swift in Sources */,
 				AD391D1B20D174B4007EE22A /* PinSetupCoordinator.swift in Sources */,
-				ADE0C4092108F6C8004597C3 /* ChannelCell.swift in Sources */,
 				ADA75DF2210F389100003068 /* ChannelState+Localizable.swift in Sources */,
 				AD391C6020D16F7A007EE22A /* SelectWalletCreationMethodTableViewCell.swift in Sources */,
 				AD391C9920D16FA8007EE22A /* QRCodeScannerStrategy.swift in Sources */,
@@ -2918,7 +2875,6 @@
 				AD391CB320D16FA8007EE22A /* GroupedTableViewController.swift in Sources */,
 				AD667E522136B062007B9160 /* TimeLockedViewController.swift in Sources */,
 				AD391CA920D16FA8007EE22A /* BitcoinUnitSettingsItem.swift in Sources */,
-				AD0D5DEC210DCC6300D11D0B /* ExposedLayout.swift in Sources */,
 				AD391CAF20D16FA8007EE22A /* SettingsItem.swift in Sources */,
 				ADADAD5821411F7200A48E1F /* GraphViewDataSource.swift in Sources */,
 				AD391C5620D16F7A007EE22A /* ConnectRemoteNodeViewModel.swift in Sources */,
@@ -2939,12 +2895,12 @@
 				AD391CA820D16FA8007EE22A /* SendQRCodeScannerStrategy.swift in Sources */,
 				AD391C5520D16F7A007EE22A /* ConnectRemoteNodeViewController.swift in Sources */,
 				ADA865BC20ECB87B00B1B74B /* FilterSettings.swift in Sources */,
+				AD035BFC2174A030005EA785 /* ChannelTableViewCell.swift in Sources */,
 				ADEEB5332134277400D2F992 /* KeyPadPinView.swift in Sources */,
 				AD391C2520D16EFA007EE22A /* BitcoinUnit+Localizable.swift in Sources */,
 				AD391C2720D16EFA007EE22A /* Network+Localizable.swift in Sources */,
 				AD391C9E20D16FA8007EE22A /* RequestViewModel.swift in Sources */,
 				AD391C2B20D16EFA007EE22A /* SignalProtocol.swift in Sources */,
-				AD0D5DEB210DCC6300D11D0B /* StackedLayout.swift in Sources */,
 				ADDD13B92119CEB40035D2F9 /* UIStackView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
