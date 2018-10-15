@@ -32,8 +32,8 @@
 
 "view.amount_input.placeholder" = "סכום";
 
-"scene.history.title" = "תנועות";
-"scene.history.empty_state_label" = "0 עיסקאות  🙁";
+"scene.history.title" = "History";
+"scene.history.empty_state_label" = "0 transactions 🙁";
 
 "scene.settings.title" = "הגדרות";
 "scene.settings.section.wallet" = "ארנק";
@@ -66,6 +66,7 @@
 "scene.channels.alert.cancel" = "בטל";
 "scene.channels.alert.close" = "סגור";
 "scene.channels.alert.force_close" = "כפה סגירה";
+"scene.channels.close_loading_view" = "Closing Channel";
 "scene.channels.close_success.toast" = "הערות נסגר.";
 
 "scene.open_channel.title" = "פתח ערוץ";
