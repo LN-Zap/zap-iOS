@@ -1,6 +1,7 @@
 "generic.memo.placeholder" = "What is this for?";
 "generic.qr_code.copy_button" = "Copy";
 "generic.qr_code.share_button" = "Share";
+"generic.cancel" = "Cancel";
 
 "link.help" = "https://ln-zap.github.io/zap-tutorials/";
 "link.help.zapconnect" = "https://ln-zap.github.io/zap-tutorials/iOS-remote-node-setup";
@@ -27,23 +28,12 @@
 "unit.bitcoin.bit" = "Bits";
 "unit.bitcoin.satoshi" = "Satoshis";
 
-"transaction.open_channel.memo" = "開くチャンネル: %@";
-"transaction.close_channel.memo" = "%@ チャンネル: %@";
 "transaction.no_destination_address" = "No destination address";
-
-"close_type.cooperative_close" = "閉鎖";
-"close_type.local_force_close" = "強制閉鎖";
-"close_type.remote_force_close" = "リモートで強制閉鎖";
-"close_type.breach_close" = "違反閉鎖";
-"close_type.funding_canceled" = "資金調達はキャンセルされました。";
-"close_type.unknown" = "不明な閉鎖";
 
 "view.amount_input.placeholder" = "数量";
 
 "scene.history.title" = "トランザクション";
 "scene.history.empty_state_label" = "0 トランザクション 🙁";
-"scene.history.row_action.archive" = "アーカイブ";
-"scene.history.row_action.unarchive" = "アーカイブしません";
 
 "scene.settings.title" = "設定";
 "scene.settings.section.wallet" = "ウォレット";
@@ -53,8 +43,9 @@
 "scene.settings.item.on_chain_request_address.title" = "Bitcoin アドレスタイプ";
 "scene.settings.item.on_chain_request_address.bech32" = "Bech32";
 "scene.settings.item.on_chain_request_address.p2sh" = "P2SH";
+"scene.settings.item.manage_channels" = "Manage Channels";
 "scene.settings.item.remove_remote_node" = "リモートノードの設定をリセットします。";
-"scene.settings.item.reset_pin" = "Pin をリセットします。";
+"scene.settings.item.change_pin" = "Change Pin";
 "scene.settings.item.report_issue" = "問題を報告します。";
 "scene.settings.item.help" = "ヘルプが必要ですか。";
 
@@ -96,9 +87,10 @@
 "scene.send.send_button" = "送る";
 "scene.send.address_headline" = "To:";
 "scene.send.memo_headline" = "Memo:";
-
+"scene.send.sending" = "Sending...";
 "scene.send.lightning.title" = "Send Lightning Payment";
 "scene.send.on_chain.title" = "Send On Chain";
+"scene.send.authentication_failed" = "Authentication failed";
 
 "scene.connect_remote_node.title" = "リモートノードに接続";
 "scene.connect_remote_node.empty_state" = "ノードに接続するためにzapconnectで生成したQRCodeをスキャンするか、接続コードを貼り付けて下さい。";
@@ -151,24 +143,15 @@
 "scene.transaction_detail.title.lightning_invoice" = "請求明細";
 "scene.transaction_detail.title.payment_detail" = "お支払い明細";
 "scene.transaction_detail.title.transaction_detail" = "トランザクションの詳細";
-"scene.transaction_detail.archive_button" = "アーカイブ";
-"scene.transaction_detail.unarchive_button" = "アーカイブしません";
+"scene.transaction_detail.title.channel_event_detail" = "Channel Event";
+"scene.transaction_detail.title.failed_payment" = "Failed Payment";
 "scene.transaction_detail.memo_label" = "メモ";
-"scene.transaction_detail.qr_code.expired_label" = "期限切れ";
-"scene.transaction_detail.amount.unspecified_label" = "詳細不明";
 "scene.transaction_detail.amount_label" = "数量";
-"scene.transaction_detail.created_label" = "作成します。";
-"scene.transaction_detail.payment_request" = "支払い要求";
-"scene.transaction_detail.expiry_label" = "有効期限";
-"scene.transaction_detail.settled_label" = "決済済み";
-"scene.transaction_detail.settled_date_label" = "決済日付";
-"scene.transaction_detail.settled_state.settled" = "決済済み";
-"scene.transaction_detail.settled_state.unsettled" = "未決済";
 "scene.transaction_detail.fee_label" = "フィー";
 "scene.transaction_detail.date_label" = "日";
-"scene.transaction_detail.confirmations_label" = "確認";
-"scene.transaction_detail.address_label" = "アドレス";
 "scene.transaction_detail.transaction_id_label" = "トランザクションＩＤ";
+"scene.transaction_detail.address_label" = "アドレス";
+"scene.transaction_detail.expiry_label" = "有効期限";
 
 "scene.channel_detail.remote_pub_key_label" = "リモートのパブリックキー";
 "scene.channel_detail.local_balance_label" = "ローカルの残高";
@@ -178,13 +161,39 @@
 "scene.channel_detail.close_button" = "Close Channel";
 "scene.channel_detail.force_close_button" = "Force Close Channel";
 
-"scene.filter.title" = "トランザクションフィルター";
+"scene.filter.title" = "Filter";
 "scene.filter.section_header.transaction_types" = "トランザクションタイプ";
-"scene.filter.displayOnChainTransactions" = "オンチェイントランザクション";
+"scene.filter.section_header.advanced" = "Advanced";
+"scene.filter.displayOnChainTransactions" = "On-chain Payments";
+"scene.filter.display_unknown_transaction_type" = "Internal Transations";
 "scene.filter.displayLightningPayments" = "ライトニングペイメンツ";
-"scene.filter.displayLightningInvoices" = "ライトニングインボイス";
-"scene.filter.displayArchivedTransactions" = "アーカイブされたトランザクション";
+"scene.filter.displayLightningInvoices" = "Created Invoices";
+"scene.filter.displayChannelEvents" = "Channel Events";
+"scene.filter.displayFailedPaymentEvents" = "Failed Payments";
 
 "scene.qrcode_scanner.top_label" = "QR-Codeをスキャンして下さい。";
 
 "scene.wallet.title" = "ウォレット";
+
+"scene.time_lock.headline" = "Wrong Passcode";
+"scene.time_lock.description" = "Your wallet is locked for:";
+
+"scene.modal_pin.headline" = "Enter Passcode";
+"scene.modal_pin.description" = "Please enter your passcode to continue";
+
+"scene.history.cell.payment_sent" = "Payment sent";
+"scene.history.cell.payment_received" = "Payment received";
+"scene.history.cell.payment_failed" = "Payment failed (%@)";
+"scene.history.cell.invoice_created" = "Payment Request created";
+"scene.history.cell.channel_opened" = "Open Channel";
+"scene.history.cell.channel_closed" = "Close Channel";
+"scene.history.cell.force_close_channel" = "Force close Channel";
+"scene.history.cell.remote_force_close_channel" = "Remote force close Channel";
+"scene.history.cell.breach_close_channel" = "Breach close Channel";
+"scene.history.cell.close_channel_funding_canceled" = "Close Channel (funding canceled)";
+"scene.history.cell.channel_abandoned" = "Channel abandoned";
+"scene.history.cell.transaction_sent" = "Payment sent";
+"scene.history.cell.transaction_received" = "Payment received";
+"scene.history.cell.label.new" = "new";
+"scene.history.cell.label.error" = "error";
+"scene.history.cell.action.try_again" = "Try Again";

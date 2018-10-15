@@ -1,6 +1,7 @@
-"generic.memo.placeholder" = "What is this for?";
-"generic.qr_code.copy_button" = "Copy";
-"generic.qr_code.share_button" = "Share";
+"generic.memo.placeholder" = "Wofür ist das?";
+"generic.qr_code.copy_button" = "Kopieren";
+"generic.qr_code.share_button" = "Teilen";
+"generic.cancel" = "Abbrechen";
 
 "link.help" = "https://ln-zap.github.io/zap-tutorials/";
 "link.help.zapconnect" = "https://ln-zap.github.io/zap-tutorials/iOS-remote-node-setup";
@@ -27,23 +28,12 @@
 "unit.bitcoin.bit" = "Bits";
 "unit.bitcoin.satoshi" = "Satoshis";
 
-"transaction.open_channel.memo" = "Öffne Channel: %@";
-"transaction.close_channel.memo" = "%@ Channel: %@";
-"transaction.no_destination_address" = "No destination address";
-
-"close_type.cooperative_close" = "Schließen";
-"close_type.local_force_close" = "Erzwungene Schließung";
-"close_type.remote_force_close" = "Erzwungener Remote Close";
-"close_type.breach_close" = "Schließung wegen Verstoßes";
-"close_type.funding_canceled" = "Finanzierung abgebrochen";
-"close_type.unknown" = "Unbekannte Schließung";
+"transaction.no_destination_address" = "Keine Ziel-Adresse";
 
 "view.amount_input.placeholder" = "Betrag";
 
 "scene.history.title" = "Transaktionen";
 "scene.history.empty_state_label" = "0 Transaktionen 🙁";
-"scene.history.row_action.archive" = "Archivieren";
-"scene.history.row_action.unarchive" = "Dearchivieren";
 
 "scene.settings.title" = "Einstellungen";
 "scene.settings.section.wallet" = "Wallet";
@@ -53,19 +43,20 @@
 "scene.settings.item.on_chain_request_address.title" = "Bitcoinadressen-Typ";
 "scene.settings.item.on_chain_request_address.bech32" = "Bech32";
 "scene.settings.item.on_chain_request_address.p2sh" = "P2SH";
+"scene.settings.item.manage_channels" = "Manage Channels";
 "scene.settings.item.remove_remote_node" = "Zurücksetzen der Remote-Node-Konfiguration";
-"scene.settings.item.reset_pin" = "PIN zurücksetzen";
+"scene.settings.item.change_pin" = "Pin ändern";
 "scene.settings.item.report_issue" = "Ein Problem melden";
 "scene.settings.item.help" = "Brauchst du Hilfe?";
 
 "scene.request.title" = "Empfangen";
 "scene.request.lightning_button" = "Lightning";
-"scene.request.or_separator_label" = "or";
+"scene.request.or_separator_label" = "oder";
 "scene.request.on_chain_button" = "On-Chain";
 "scene.request.generate_request_button" = "Anfrage generieren";
-"scene.request.lightning_header_title" = "Lightning Payment Request";
-"scene.request.on_chain_header_title" = "On Chain Payment Request";
-"scene.request.next_button_title" = "Next";
+"scene.request.lightning_header_title" = "Lightning-Zahlungsaufforderung";
+"scene.request.on_chain_header_title" = "On-Chain Zahlungsaufforderung";
+"scene.request.next_button_title" = "Weiter";
 
 "scene.channels.title" = "Channels";
 "scene.channels.close.title" = "Channel schließen";
@@ -74,12 +65,12 @@
 "scene.channels.force_close.message" = "%@ ist offline, bist du dir sicher die Schließung dieses Channels erzwingen zu wollen? Du musst dann ungefähr %@ auf dein Guthaben warten.";
 "scene.channels.alert.cancel" = "Abbrechen";
 "scene.channels.alert.close" = "Schließen";
-"scene.channels.alert.force_close" = "Force Close";
+"scene.channels.alert.force_close" = "Erzwinge Schließung";
 "scene.channels.close_success.toast" = "Channel wird geschlossen.";
 
 "scene.open_channel.title" = "Channel öffnen";
 "scene.open_channel.channel_uri_label" = "Channel:";
-"scene.open_channel.add_button" = "Open Channel";
+"scene.open_channel.add_button" = "Channel öffnen";
 
 "scene.pin.biometric.fallback.title" = "PIN eingeben";
 "scene.pin.biometric.reason" = "Um auf die Sicherheitsdaten zu zugreifen";
@@ -94,11 +85,12 @@
 
 "scene.send.title" = "Senden";
 "scene.send.send_button" = "Senden";
-"scene.send.address_headline" = "To:";
+"scene.send.address_headline" = "An:";
 "scene.send.memo_headline" = "Memo:";
-
-"scene.send.lightning.title" = "Send Lightning Payment";
-"scene.send.on_chain.title" = "Send On Chain";
+"scene.send.sending" = "Sending...";
+"scene.send.lightning.title" = "Sende Lightning-Zahlung";
+"scene.send.on_chain.title" = "Sende on-Chain";
+"scene.send.authentication_failed" = "Authentifizierung fehlgeschlagen";
 
 "scene.connect_remote_node.title" = "Remote-Node verbinden";
 "scene.connect_remote_node.empty_state" = "Scanne den QR-Code oder füge den Connection-Code deines Node ein.";
@@ -139,7 +131,7 @@
 "scene.main.receive_button" = "Empfangen";
 "scene.main.exchange_rate_label" = "%@ pro BTC";
 
-"scene.qr_code_detail.title" = "Receive";
+"scene.qr_code_detail.title" = "Empfangen";
 
 "scene.sync.description_label" = "Synchronisiere mit der Blockchain...";
 "scene.sync.disconnect_bar_button" = "Trennen";
@@ -151,40 +143,57 @@
 "scene.transaction_detail.title.lightning_invoice" = "Rechnungsdetail";
 "scene.transaction_detail.title.payment_detail" = "Zahlungsdetail";
 "scene.transaction_detail.title.transaction_detail" = "Transaktionsdetail";
-"scene.transaction_detail.archive_button" = "Archivieren";
-"scene.transaction_detail.unarchive_button" = "Dearchivieren";
+"scene.transaction_detail.title.channel_event_detail" = "Channel Event";
+"scene.transaction_detail.title.failed_payment" = "Failed Payment";
 "scene.transaction_detail.memo_label" = "Memo";
-"scene.transaction_detail.qr_code.expired_label" = "Abgelaufen";
-"scene.transaction_detail.amount.unspecified_label" = "Nicht spezifiziert";
 "scene.transaction_detail.amount_label" = "Betrag";
-"scene.transaction_detail.created_label" = "Erstellt";
-"scene.transaction_detail.payment_request" = "Zahlungsanfrage";
-"scene.transaction_detail.expiry_label" = "Ablauf";
-"scene.transaction_detail.settled_label" = "Bezahlt";
-"scene.transaction_detail.settled_date_label" = "Zahlungsdatum";
-"scene.transaction_detail.settled_state.settled" = "Bezahlt";
-"scene.transaction_detail.settled_state.unsettled" = "Nicht bezahlt";
 "scene.transaction_detail.fee_label" = "Gebühr";
 "scene.transaction_detail.date_label" = "Datum";
-"scene.transaction_detail.confirmations_label" = "Bestätigungen";
-"scene.transaction_detail.address_label" = "Adresse";
 "scene.transaction_detail.transaction_id_label" = "Transaktions-ID";
+"scene.transaction_detail.address_label" = "Adresse";
+"scene.transaction_detail.expiry_label" = "Ablauf";
 
 "scene.channel_detail.remote_pub_key_label" = "Remote PubKey";
 "scene.channel_detail.local_balance_label" = "Lokaler Kontostand";
 "scene.channel_detail.remote_balance_label" = "Remote Kontostand";
 "scene.channel_detail.closing_time.label" = "Schließt in";
 "scene.channel_detail.funding_transaction_label" = "Finanzierungstransaktion";
-"scene.channel_detail.close_button" = "Close Channel";
-"scene.channel_detail.force_close_button" = "Force Close Channel";
+"scene.channel_detail.close_button" = "Channel schließen";
+"scene.channel_detail.force_close_button" = "Erzwinge Channel-Schließung";
 
-"scene.filter.title" = "Transaktionsfilter";
+"scene.filter.title" = "Filter";
 "scene.filter.section_header.transaction_types" = "Transaktionstypen";
-"scene.filter.displayOnChainTransactions" = "On-chain Transaktion";
+"scene.filter.section_header.advanced" = "Advanced";
+"scene.filter.displayOnChainTransactions" = "On-chain Payments";
+"scene.filter.display_unknown_transaction_type" = "Internal Transations";
 "scene.filter.displayLightningPayments" = "Lightning Zahlung";
-"scene.filter.displayLightningInvoices" = "Lightning Rechnungen";
-"scene.filter.displayArchivedTransactions" = "Archivierte Transaktionen";
+"scene.filter.displayLightningInvoices" = "Created Invoices";
+"scene.filter.displayChannelEvents" = "Channel Events";
+"scene.filter.displayFailedPaymentEvents" = "Failed Payments";
 
 "scene.qrcode_scanner.top_label" = "QR-Code scannen";
 
 "scene.wallet.title" = "Wallet";
+
+"scene.time_lock.headline" = "Falscher PIN";
+"scene.time_lock.description" = "Ihre Geldbörse ist gesperrt für:";
+
+"scene.modal_pin.headline" = "PIN eingeben";
+"scene.modal_pin.description" = "Bitte geben Sie Ihren PIN ein, um fortzufahren";
+
+"scene.history.cell.payment_sent" = "Payment sent";
+"scene.history.cell.payment_received" = "Payment received";
+"scene.history.cell.payment_failed" = "Payment failed (%@)";
+"scene.history.cell.invoice_created" = "Payment Request created";
+"scene.history.cell.channel_opened" = "Open Channel";
+"scene.history.cell.channel_closed" = "Close Channel";
+"scene.history.cell.force_close_channel" = "Force close Channel";
+"scene.history.cell.remote_force_close_channel" = "Remote force close Channel";
+"scene.history.cell.breach_close_channel" = "Breach close Channel";
+"scene.history.cell.close_channel_funding_canceled" = "Close Channel (funding canceled)";
+"scene.history.cell.channel_abandoned" = "Channel abandoned";
+"scene.history.cell.transaction_sent" = "Payment sent";
+"scene.history.cell.transaction_received" = "Payment received";
+"scene.history.cell.label.new" = "new";
+"scene.history.cell.label.error" = "error";
+"scene.history.cell.action.try_again" = "Try Again";
