@@ -9,15 +9,12 @@ import SafariServices
 import UIKit
 
 extension UIStoryboard {
-    static func instantiateSetupViewController(createButtonTapped: @escaping () -> Void, recoverButtonTapped: @escaping () -> Void, connectButtonTapped: @escaping () -> Void) -> UINavigationController {
-        
-        let navigationController = Storyboard.createWallet.initial(viewController: UINavigationController.self)
-        if let setupWalletViewController = navigationController.topViewController as? SelectWalletCreationMethodViewController {
-            setupWalletViewController.createButtonTapped = createButtonTapped
-            setupWalletViewController.recoverButtonTapped = recoverButtonTapped
-            setupWalletViewController.connectButtonTapped = connectButtonTapped
-        }
-        return navigationController
+    static func instantiateSetupViewController(createButtonTapped: @escaping () -> Void, recoverButtonTapped: @escaping () -> Void, connectButtonTapped: @escaping () -> Void) -> SelectWalletCreationMethodViewController {
+        let setupWalletViewController = Storyboard.createWallet.instantiate(viewController: SelectWalletCreationMethodViewController.self)
+        setupWalletViewController.createButtonTapped = createButtonTapped
+        setupWalletViewController.recoverButtonTapped = recoverButtonTapped
+        setupWalletViewController.connectButtonTapped = connectButtonTapped
+        return setupWalletViewController
     }
 }
 

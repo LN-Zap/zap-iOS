@@ -32,9 +32,19 @@ final class SetupCoordinator {
     }
 
     func start() {
-        let viewController = UIStoryboard.instantiateSetupViewController(createButtonTapped: createNewWallet, recoverButtonTapped: recoverExistingWallet, connectButtonTapped: connectRemoteNode)
-        navigationController = viewController
-        self.rootViewController.setContainerContent(viewController)
+        let viewController: UIViewController
+        #if REMOTEONLY
+        let viewModel = ConnectRemoteNodeViewModel()
+        connectRemoteNodeViewModel = viewModel
+        viewController = UIStoryboard.instantiateConnectRemoteNodeViewController(didSetupWallet: didSetupWallet, connectRemoteNodeViewModel: viewModel, presentQRCodeScannerButtonTapped: presentNodeCertificatesScanner)
+        #else
+        viewController = UIStoryboard.instantiateSetupViewController(createButtonTapped: createNewWallet, recoverButtonTapped: recoverExistingWallet, connectButtonTapped: connectRemoteNode)
+        #endif
+        
+        let navigationController = ZapNavigationController(rootViewController: viewController)
+        navigationController.navigationBar.prefersLargeTitles = false
+        self.navigationController = navigationController
+        self.rootViewController.setContainerContent(navigationController)
     }
     
     private func createNewWallet() {
