@@ -91,17 +91,14 @@ lane :alpha do
     export_method: "app-store"
   )
 
-  changelog = changelog_from_git_commits(tag_match_pattern: 'builds/alpha/*', pretty: '- %s', merge_commit_filtering: "exclude_merges")
-
   upload_to_testflight(
     username: ENV['ITUNESCONNECT_USER']
   )
 
   add_git_tag
 
-  slack_message = "Just uploaded a new iOS alpha to Testflight\n" + changelog.to_s
   slack(
-    message: slack_message,
+    message: "Just uploaded a new iOS alpha to Testflight",
     use_webhook_configured_username_and_icon: true,
     default_payloads: []
   )
