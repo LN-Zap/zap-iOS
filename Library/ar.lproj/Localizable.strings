@@ -32,8 +32,8 @@
 
 "view.amount_input.placeholder" = "المبلغ";
 
-"scene.history.title" = "المعاملات";
-"scene.history.empty_state_label" = "المعاملات 0 🙁";
+"scene.history.title" = "History";
+"scene.history.empty_state_label" = "0 transactions 🙁";
 
 "scene.settings.title" = "إعدادات";
 "scene.settings.section.wallet" = "محفظة";
@@ -66,6 +66,7 @@
 "scene.channels.alert.cancel" = "Cancel";
 "scene.channels.alert.close" = "Close";
 "scene.channels.alert.force_close" = "Force Close";
+"scene.channels.close_loading_view" = "Closing Channel";
 "scene.channels.close_success.toast" = "Channel is closing.";
 
 "scene.open_channel.title" = "Open Channel";

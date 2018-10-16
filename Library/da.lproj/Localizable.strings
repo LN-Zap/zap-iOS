@@ -32,8 +32,8 @@
 
 "view.amount_input.placeholder" = "Beløb";
 
-"scene.history.title" = "Transaktioner";
-"scene.history.empty_state_label" = "0 transaktioner 🙁";
+"scene.history.title" = "History";
+"scene.history.empty_state_label" = "0 transactions 🙁";
 
 "scene.settings.title" = "Indstillinger";
 "scene.settings.section.wallet" = "Tegnebog";
@@ -66,6 +66,7 @@
 "scene.channels.alert.cancel" = "Annuller";
 "scene.channels.alert.close" = "Luk";
 "scene.channels.alert.force_close" = "Force Close";
+"scene.channels.close_loading_view" = "Closing Channel";
 "scene.channels.close_success.toast" = "Kanalen lukkes.";
 
 "scene.open_channel.title" = "Åben kanal";

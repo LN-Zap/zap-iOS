@@ -32,8 +32,8 @@
 
 "view.amount_input.placeholder" = "Kwota";
 
-"scene.history.title" = "Transakcje";
-"scene.history.empty_state_label" = "brak transakcji";
+"scene.history.title" = "History";
+"scene.history.empty_state_label" = "0 transactions 🙁";
 
 "scene.settings.title" = "Ustawienia";
 "scene.settings.section.wallet" = "Portfel";
@@ -66,6 +66,7 @@
 "scene.channels.alert.cancel" = "Anuluj";
 "scene.channels.alert.close" = "Zamknij";
 "scene.channels.alert.force_close" = "Force Close";
+"scene.channels.close_loading_view" = "Closing Channel";
 "scene.channels.close_success.toast" = "Kanał jest zamykany.";
 
 "scene.open_channel.title" = "Otwórz kanał";
