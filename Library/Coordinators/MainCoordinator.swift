@@ -137,7 +137,7 @@ final class MainCoordinator: Routing {
     }
     
     private func pushChannelList(on navigationController: UINavigationController) {
-        let channelList = UIStoryboard.instantiateChannelListViewController(channelListViewModel: channelListViewModel,  addChannelButtonTapped: presentAddChannel, presentChannelDetail: presentChannelDetail)
+        let channelList = UIStoryboard.instantiateChannelListViewController(channelListViewModel: channelListViewModel, addChannelButtonTapped: presentAddChannel, presentChannelDetail: presentChannelDetail)
         navigationController.pushViewController(channelList, animated: true)
     }
     

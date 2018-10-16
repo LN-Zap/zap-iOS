@@ -27,10 +27,6 @@ target 'Library' do
     end
 end
 
-target 'ZapMessages' do
-    pod 'Bond'
-end
-
 target 'BTCUtil' do
     pod 'BigInt', '~> 3.0'
 end

@@ -16,16 +16,6 @@ public enum Layer {
     case lightning
 }
 
-// Only used by Messages Extension
-public enum RequestViewModelFactory {
-    public static func create() -> RequestViewModel? {
-        let connectionService = ConnectionService()
-        connectionService.connect()
-        guard let lightningService = connectionService.lightningService else { return nil }
-        return RequestViewModel(transactionService: lightningService.transactionService)
-    }
-}
-
 public final class RequestViewModel {
     private let transactionService: TransactionService
     private var cachedOnChainAddress: BitcoinAddress?

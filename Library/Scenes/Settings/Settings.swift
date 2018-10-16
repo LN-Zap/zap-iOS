@@ -46,7 +46,7 @@ public final class Settings: NSObject, Persistable {
         }
         
         fiatCurrency = Observable(data?.fiatCurrency ?? FiatCurrency(currencyCode: "USD", symbol: "$", localized: "US Dollar", exchangeRate: 7076.3512))
-        cryptoCurrency = Observable(data?.cryptoCurrency ?? Bitcoin(unit: .bit))
+        cryptoCurrency = Observable(data?.cryptoCurrency ?? Bitcoin(unit: .satoshi))
         
         primaryCurrency = Observable(cryptoCurrency.value)
         secondaryCurrency = Observable(fiatCurrency.value)

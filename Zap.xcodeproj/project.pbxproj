@@ -12,7 +12,6 @@
 		5B653C24BD3BE413AD4B000B /* Pods_BTCUtil.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D8CE14830DF79132FBA7CD83 /* Pods_BTCUtil.framework */; };
 		5FC5D426F7846BE33B76F86B /* Pods_Lightning.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E9285C9D958086409E19ABBE /* Pods_Lightning.framework */; };
 		8EF96BCDD8DA8EA53847228A /* Pods_SwiftLnd.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 56F9802CD861078A576345EB /* Pods_SwiftLnd.framework */; };
-		97912DF726B2C4F12871FB1B /* Pods_ZapMessages.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6E4840991E5C8581D6D62A34 /* Pods_ZapMessages.framework */; };
 		A000F5F32047F65200480D8E /* BTCUtil.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A000F5EA2047F65100480D8E /* BTCUtil.framework */; };
 		A000F5FC2047F65200480D8E /* btcutil.h in Headers */ = {isa = PBXBuildFile; fileRef = A000F5EC2047F65100480D8E /* btcutil.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		A000F6002047F65200480D8E /* BTCUtil.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = A000F5EA2047F65100480D8E /* BTCUtil.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
@@ -34,7 +33,6 @@
 		AD035BFF2174A996005EA785 /* ChannelDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD035BFE2174A996005EA785 /* ChannelDetailViewController.swift */; };
 		AD0D0BC2212BE3C800E4F7F7 /* RequestViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD0D0BC1212BE3C800E4F7F7 /* RequestViewController.swift */; };
 		AD0D0BC4212D34E000E4F7F7 /* BitcoinAddress.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD0D0BC3212D34E000E4F7F7 /* BitcoinAddress.swift */; };
-		AD10D04A21132A2F00A0F0D3 /* MainInterface.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AD10D04921132A2F00A0F0D3 /* MainInterface.storyboard */; };
 		AD10D04C21132A6000A0F0D3 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AD10D04B21132A6000A0F0D3 /* LaunchScreen.storyboard */; };
 		AD10D05721132EFB00A0F0D3 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = AD10D05921132EFB00A0F0D3 /* Localizable.strings */; };
 		AD10D05C21132F3500A0F0D3 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = AD10D05E21132F3500A0F0D3 /* InfoPlist.strings */; };
@@ -173,13 +171,6 @@
 		AD391D1E20D174B4007EE22A /* SetupCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADEDBB8B20C2D6A700B71F17 /* SetupCoordinator.swift */; };
 		AD391D2020D178C2007EE22A /* Bundle.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD391D1F20D178C2007EE22A /* Bundle.swift */; };
 		AD391D2220D1798A007EE22A /* Media.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = AD391D2120D1798A007EE22A /* Media.xcassets */; };
-		AD391D4120D17FA9007EE22A /* Messages.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AD391D4020D17FA9007EE22A /* Messages.framework */; };
-		AD391D4420D17FA9007EE22A /* MessagesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD391D4320D17FA9007EE22A /* MessagesViewController.swift */; };
-		AD391D4920D17FA9007EE22A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = AD391D4820D17FA9007EE22A /* Assets.xcassets */; };
-		AD391D4D20D17FA9007EE22A /* ZapMessages.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = AD391D3F20D17FA9007EE22A /* ZapMessages.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
-		AD391D5420D2796F007EE22A /* BTCUtil.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A000F5EA2047F65100480D8E /* BTCUtil.framework */; };
-		AD391D5520D27DBD007EE22A /* Library.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AD391C1820D16ED4007EE22A /* Library.framework */; };
-		AD391D5720D28528007EE22A /* MessagesRequestViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD391D5620D28528007EE22A /* MessagesRequestViewController.swift */; };
 		AD3DDC03213EE4000008379C /* RootTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD3DDC02213EE4000008379C /* RootTabBarController.swift */; };
 		AD3DDC06213FDD1D0008379C /* Bech32Tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0733CDA20471F0A0005643A /* Bech32Tests.swift */; };
 		AD3DDC092140221F0008379C /* BitcoinURITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD5FA004207D0E70000E9493 /* BitcoinURITests.swift */; };
@@ -286,7 +277,6 @@
 		ADCD5B0D20D7E3F50037F156 /* RemoveRemoteNodeSettingsItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADCD5B0C20D7E3F50037F156 /* RemoveRemoteNodeSettingsItem.swift */; };
 		ADCD5B0F20D7E40C0037F156 /* ChangePinSettingsItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADCD5B0E20D7E40C0037F156 /* ChangePinSettingsItem.swift */; };
 		ADD5B015212D36DB00BEA24D /* Bech32Address.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADD5B014212D36DB00BEA24D /* Bech32Address.swift */; };
-		ADD5B016212E926B00BEA24D /* GradientLoadingButtonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADB6DEDA20AD8F80001324C8 /* GradientLoadingButtonView.swift */; };
 		ADDD13B62119CE740035D2F9 /* StackViewElement.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADDD13B52119CE740035D2F9 /* StackViewElement.swift */; };
 		ADDD13B92119CEB40035D2F9 /* UIStackView.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADDD13B82119CEB40035D2F9 /* UIStackView.swift */; };
 		ADDD13BB2119CF110035D2F9 /* CallbackButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADDD13BA2119CF110035D2F9 /* CallbackButton.swift */; };
@@ -313,8 +303,6 @@
 		ADFB36E72143BAC500146FCC /* Payment.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADECC36820F257AF00D00546 /* Payment.swift */; };
 		ADFB36E92143BB2200146FCC /* Transaction.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADECC36A20F257BE00D00546 /* Transaction.swift */; };
 		ADFC816F20DA80EF00D26913 /* RecoverWalletViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADFC816E20DA80EF00D26913 /* RecoverWalletViewModel.swift */; };
-		ADFD8DC3212E92A7005CA8FD /* SegmentButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD38EB31207DFB59007DF14D /* SegmentButton.swift */; };
-		ADFD8DC4212E92F1005CA8FD /* UIButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD38EB2F207DF233007DF14D /* UIButton.swift */; };
 		ADFE2E4C216CF4A800988243 /* ManageChannelsSettingsItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADFE2E4B216CF4A800988243 /* ManageChannelsSettingsItem.swift */; };
 		ADFE538520D693FF00B3BA2A /* InputNumberFormatterTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0F9AEE2206E3E0300E93DCA /* InputNumberFormatterTests.swift */; };
 		ADFE538620D693FF00B3BA2A /* CurrencyTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0BD44D9206FB47300BF27A3 /* CurrencyTests.swift */; };
@@ -364,27 +352,6 @@
 			proxyType = 1;
 			remoteGlobalIDString = AD391C1720D16ED4007EE22A;
 			remoteInfo = ZapShared;
-		};
-		AD391D4B20D17FA9007EE22A /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = A0A059F72013CF960007D1C9 /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = AD391D3E20D17FA9007EE22A;
-			remoteInfo = ZapMessages;
-		};
-		AD478B9120D7D4E3000E0475 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = A0A059F72013CF960007D1C9 /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = AD391C1720D16ED4007EE22A;
-			remoteInfo = ZapShared;
-		};
-		AD478B9520D7D509000E0475 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = A0A059F72013CF960007D1C9 /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = A000F5E92047F65100480D8E;
-			remoteInfo = BTCUtil;
 		};
 		AD478B9720D7D52E000E0475 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
@@ -486,7 +453,6 @@
 			dstPath = "";
 			dstSubfolderSpec = 13;
 			files = (
-				AD391D4D20D17FA9007EE22A /* ZapMessages.appex in Embed App Extensions */,
 			);
 			name = "Embed App Extensions";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -623,7 +589,6 @@
 		AD0D0BC3212D34E000E4F7F7 /* BitcoinAddress.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BitcoinAddress.swift; sourceTree = "<group>"; };
 		AD0D933220C822C300E30C51 /* rpc.pb.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = rpc.pb.swift; sourceTree = "<group>"; };
 		AD0D933320C822C300E30C51 /* rpc.grpc.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = rpc.grpc.swift; sourceTree = "<group>"; };
-		AD10D04921132A2F00A0F0D3 /* MainInterface.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = MainInterface.storyboard; sourceTree = "<group>"; };
 		AD10D04B21132A6000A0F0D3 /* LaunchScreen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = LaunchScreen.storyboard; sourceTree = "<group>"; };
 		AD10D05B21132F1800A0F0D3 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
 		AD10D05D21132F3500A0F0D3 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
@@ -652,22 +617,14 @@
 		AD308988216FA88D00B5489C /* GraphViewDataSourceTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GraphViewDataSourceTests.swift; sourceTree = "<group>"; };
 		AD3781CD21664EB90083CE77 /* RemoteRPCConfiguration.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RemoteRPCConfiguration.swift; sourceTree = "<group>"; };
 		AD3781CF2166522E0083CE77 /* Environment.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Environment.swift; sourceTree = "<group>"; };
-		AD38EB2F207DF233007DF14D /* UIButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIButton.swift; sourceTree = "<group>"; };
-		AD38EB31207DFB59007DF14D /* SegmentButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SegmentButton.swift; sourceTree = "<group>"; };
 		AD391C1820D16ED4007EE22A /* Library.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Library.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		AD391C1A20D16ED4007EE22A /* Library.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Library.h; sourceTree = "<group>"; };
 		AD391C1B20D16ED4007EE22A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		AD391C4520D16F53007EE22A /* Root.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Root.storyboard; sourceTree = "<group>"; };
 		AD391D1F20D178C2007EE22A /* Bundle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Bundle.swift; sourceTree = "<group>"; };
 		AD391D2120D1798A007EE22A /* Media.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Media.xcassets; sourceTree = "<group>"; };
-		AD391D3F20D17FA9007EE22A /* ZapMessages.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = ZapMessages.appex; sourceTree = BUILT_PRODUCTS_DIR; };
 		AD391D4020D17FA9007EE22A /* Messages.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Messages.framework; path = System/Library/Frameworks/Messages.framework; sourceTree = SDKROOT; };
-		AD391D4320D17FA9007EE22A /* MessagesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessagesViewController.swift; sourceTree = "<group>"; };
-		AD391D4820D17FA9007EE22A /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
-		AD391D4A20D17FA9007EE22A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		AD391D5620D28528007EE22A /* MessagesRequestViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessagesRequestViewController.swift; sourceTree = "<group>"; };
 		AD391D5820D2903C007EE22A /* Zap.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Zap.entitlements; sourceTree = "<group>"; };
-		AD391D5920D290EF007EE22A /* ZapMessages.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = ZapMessages.entitlements; sourceTree = "<group>"; };
 		AD3CF97520B4028400D78A54 /* SelectWalletCreationMethodTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectWalletCreationMethodTableViewCell.swift; sourceTree = "<group>"; };
 		AD3CF97620B4028400D78A54 /* SelectWalletCreationMethodTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SelectWalletCreationMethodTableViewCell.xib; sourceTree = "<group>"; };
 		AD3DDC02213EE4000008379C /* RootTabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RootTabBarController.swift; sourceTree = "<group>"; };
@@ -827,7 +784,6 @@
 		ADADAD6B2143B2E700A48E1F /* SwiftLndTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SwiftLndTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		ADADAD722143B2E700A48E1F /* SwiftLndTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwiftLndTests.swift; sourceTree = "<group>"; };
 		ADADAD742143B2E700A48E1F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		ADB6DEDA20AD8F80001324C8 /* GradientLoadingButtonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GradientLoadingButtonView.swift; sourceTree = "<group>"; };
 		ADBA12012090CD11001F7700 /* KeyPadView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = KeyPadView.xib; sourceTree = "<group>"; };
 		ADBA12032090CD22001F7700 /* KeyPadView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyPadView.swift; sourceTree = "<group>"; };
 		ADBA120520930C94001F7700 /* UIViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIViewController.swift; sourceTree = "<group>"; };
@@ -960,17 +916,6 @@
 				ADFEFA7120E628AC00FE1557 /* Lightning.framework in Frameworks */,
 				AD391D1220D170ED007EE22A /* BTCUtil.framework in Frameworks */,
 				D1443AA50FF452CE2F5EC248 /* Pods_Library.framework in Frameworks */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		AD391D3C20D17FA9007EE22A /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				AD391D5520D27DBD007EE22A /* Library.framework in Frameworks */,
-				AD391D5420D2796F007EE22A /* BTCUtil.framework in Frameworks */,
-				AD391D4120D17FA9007EE22A /* Messages.framework in Frameworks */,
-				97912DF726B2C4F12871FB1B /* Pods_ZapMessages.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1268,7 +1213,6 @@
 				A0A05A002013CF960007D1C9 /* Products */,
 				ADADAD642143B2E700A48E1F /* SwiftLnd */,
 				A0A05A012013CF960007D1C9 /* Zap */,
-				AD391D4220D17FA9007EE22A /* ZapMessages */,
 			);
 			sourceTree = "<group>";
 		};
@@ -1279,7 +1223,6 @@
 				A000F5EA2047F65100480D8E /* BTCUtil.framework */,
 				A000F5F22047F65100480D8E /* BTCUtilTests.xctest */,
 				AD391C1820D16ED4007EE22A /* Library.framework */,
-				AD391D3F20D17FA9007EE22A /* ZapMessages.appex */,
 				ADFE537B20D693F500B3BA2A /* LibraryTests.xctest */,
 				AD536BE620E62763002279BC /* Lightning.framework */,
 				AD536BEE20E62764002279BC /* LightningTests.xctest */,
@@ -1499,22 +1442,6 @@
 				A010093E2014D4720001EF94 /* Views */,
 			);
 			path = Library;
-			sourceTree = "<group>";
-		};
-		AD391D4220D17FA9007EE22A /* ZapMessages */ = {
-			isa = PBXGroup;
-			children = (
-				AD391D5920D290EF007EE22A /* ZapMessages.entitlements */,
-				AD391D4A20D17FA9007EE22A /* Info.plist */,
-				AD10D04921132A2F00A0F0D3 /* MainInterface.storyboard */,
-				ADB6DEDA20AD8F80001324C8 /* GradientLoadingButtonView.swift */,
-				AD391D5620D28528007EE22A /* MessagesRequestViewController.swift */,
-				AD391D4320D17FA9007EE22A /* MessagesViewController.swift */,
-				AD38EB31207DFB59007DF14D /* SegmentButton.swift */,
-				AD38EB2F207DF233007DF14D /* UIButton.swift */,
-				AD391D4820D17FA9007EE22A /* Assets.xcassets */,
-			);
-			path = ZapMessages;
 			sourceTree = "<group>";
 		};
 		AD3CF97920B4028D00D78A54 /* Select Wallet Creation Method */ = {
@@ -2097,7 +2024,6 @@
 				A000F5FE2047F65200480D8E /* PBXTargetDependency */,
 				AD536BFA20E62764002279BC /* PBXTargetDependency */,
 				AD391C1E20D16ED4007EE22A /* PBXTargetDependency */,
-				AD391D4C20D17FA9007EE22A /* PBXTargetDependency */,
 				ADADAD772143B2E700A48E1F /* PBXTargetDependency */,
 			);
 			name = Zap;
@@ -2124,26 +2050,6 @@
 			productName = ZapShared;
 			productReference = AD391C1820D16ED4007EE22A /* Library.framework */;
 			productType = "com.apple.product-type.framework";
-		};
-		AD391D3E20D17FA9007EE22A /* ZapMessages */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = AD391D5020D17FA9007EE22A /* Build configuration list for PBXNativeTarget "ZapMessages" */;
-			buildPhases = (
-				63AFDCEC2065AAA3D522048F /* [CP] Check Pods Manifest.lock */,
-				AD391D3B20D17FA9007EE22A /* Sources */,
-				AD391D3C20D17FA9007EE22A /* Frameworks */,
-				AD391D3D20D17FA9007EE22A /* Resources */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-				AD478B9620D7D509000E0475 /* PBXTargetDependency */,
-				AD478B9220D7D4E3000E0475 /* PBXTargetDependency */,
-			);
-			name = ZapMessages;
-			productName = ZapMessages;
-			productReference = AD391D3F20D17FA9007EE22A /* ZapMessages.appex */;
-			productType = "com.apple.product-type.app-extension.messages";
 		};
 		AD536BE520E62763002279BC /* Lightning */ = {
 			isa = PBXNativeTarget;
@@ -2281,16 +2187,6 @@
 						LastSwiftMigration = 1000;
 						ProvisioningStyle = Automatic;
 					};
-					AD391D3E20D17FA9007EE22A = {
-						CreatedOnToolsVersion = 9.4;
-						LastSwiftMigration = 1000;
-						ProvisioningStyle = Automatic;
-						SystemCapabilities = {
-							com.apple.Keychain = {
-								enabled = 1;
-							};
-						};
-					};
 					AD536BE520E62763002279BC = {
 						CreatedOnToolsVersion = 9.4.1;
 						LastSwiftMigration = 1000;
@@ -2366,7 +2262,6 @@
 			projectRoot = "";
 			targets = (
 				A0A059FE2013CF960007D1C9 /* Zap */,
-				AD391D3E20D17FA9007EE22A /* ZapMessages */,
 				A000F5E92047F65100480D8E /* BTCUtil */,
 				A000F5F12047F65100480D8E /* BTCUtilTests */,
 				AD536BE520E62763002279BC /* Lightning */,
@@ -2434,15 +2329,6 @@
 				ADEEB53821346DEA00D2F992 /* ModalPin.storyboard in Resources */,
 				AD391C9820D16FA8007EE22A /* QRCodeScanner.storyboard in Resources */,
 				AD391CDA20D16FE1007EE22A /* History.storyboard in Resources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		AD391D3D20D17FA9007EE22A /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				AD391D4920D17FA9007EE22A /* Assets.xcassets in Resources */,
-				AD10D04A21132A2F00A0F0D3 /* MainInterface.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -2640,24 +2526,6 @@
 			name = "[CP] Check Pods Manifest.lock";
 			outputPaths = (
 				"$(DERIVED_FILE_DIR)/Pods-Library-checkManifestLockResult.txt",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
-			showEnvVarsInLog = 0;
-		};
-		63AFDCEC2065AAA3D522048F /* [CP] Check Pods Manifest.lock */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
-				"${PODS_ROOT}/Manifest.lock",
-			);
-			name = "[CP] Check Pods Manifest.lock";
-			outputPaths = (
-				"$(DERIVED_FILE_DIR)/Pods-ZapMessages-checkManifestLockResult.txt",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -2905,18 +2773,6 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		AD391D3B20D17FA9007EE22A /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				ADFD8DC4212E92F1005CA8FD /* UIButton.swift in Sources */,
-				AD391D5720D28528007EE22A /* MessagesRequestViewController.swift in Sources */,
-				ADFD8DC3212E92A7005CA8FD /* SegmentButton.swift in Sources */,
-				AD391D4420D17FA9007EE22A /* MessagesViewController.swift in Sources */,
-				ADD5B016212E926B00BEA24D /* GradientLoadingButtonView.swift in Sources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 		AD536BE120E62763002279BC /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -3063,21 +2919,6 @@
 			isa = PBXTargetDependency;
 			target = AD391C1720D16ED4007EE22A /* Library */;
 			targetProxy = AD391C1D20D16ED4007EE22A /* PBXContainerItemProxy */;
-		};
-		AD391D4C20D17FA9007EE22A /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = AD391D3E20D17FA9007EE22A /* ZapMessages */;
-			targetProxy = AD391D4B20D17FA9007EE22A /* PBXContainerItemProxy */;
-		};
-		AD478B9220D7D4E3000E0475 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = AD391C1720D16ED4007EE22A /* Library */;
-			targetProxy = AD478B9120D7D4E3000E0475 /* PBXContainerItemProxy */;
-		};
-		AD478B9620D7D509000E0475 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = A000F5E92047F65100480D8E /* BTCUtil */;
-			targetProxy = AD478B9520D7D509000E0475 /* PBXContainerItemProxy */;
 		};
 		AD478B9820D7D52E000E0475 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
@@ -3593,48 +3434,6 @@
 			};
 			name = Release;
 		};
-		AD391D4E20D17FA9007EE22A /* Debug */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = FC5C7787B1879C9186703020 /* Pods-ZapMessages.debug.xcconfig */;
-			buildSettings = {
-				ASSETCATALOG_COMPILER_APPICON_NAME = "iMessage App Icon";
-				CLANG_ENABLE_OBJC_WEAK = YES;
-				CODE_SIGN_ENTITLEMENTS = ZapMessages/ZapMessages.entitlements;
-				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = CS73H95RB8;
-				ENABLE_BITCODE = NO;
-				INFOPLIST_FILE = ZapMessages/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 11.2;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.jackmallers.zap.messages;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SKIP_INSTALL = YES;
-				SWIFT_VERSION = 4.2;
-				TARGETED_DEVICE_FAMILY = 1;
-			};
-			name = Debug;
-		};
-		AD391D4F20D17FA9007EE22A /* Release */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = 1F81C1A423D4B1E1F9360639 /* Pods-ZapMessages.release.xcconfig */;
-			buildSettings = {
-				ASSETCATALOG_COMPILER_APPICON_NAME = "iMessage App Icon";
-				CLANG_ENABLE_OBJC_WEAK = YES;
-				CODE_SIGN_ENTITLEMENTS = ZapMessages/ZapMessages.entitlements;
-				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = CS73H95RB8;
-				ENABLE_BITCODE = NO;
-				INFOPLIST_FILE = ZapMessages/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 11.2;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.jackmallers.zap.messages;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SKIP_INSTALL = YES;
-				SWIFT_VERSION = 4.2;
-				TARGETED_DEVICE_FAMILY = 1;
-			};
-			name = Release;
-		};
 		AD536BFD20E62764002279BC /* Debug */ = {
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = A8517E12ED19329B536B9504 /* Pods-Lightning.debug.xcconfig */;
@@ -3860,27 +3659,6 @@
 				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = 1;
 				VERSIONING_SYSTEM = "apple-generic";
-			};
-			name = DebugRemote;
-		};
-		AD967FDA210329A70048085B /* DebugRemote */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = 47F37722955C52DD8ED46E9A /* Pods-ZapMessages.debugremote.xcconfig */;
-			buildSettings = {
-				ASSETCATALOG_COMPILER_APPICON_NAME = "iMessage App Icon";
-				CLANG_ENABLE_OBJC_WEAK = YES;
-				CODE_SIGN_ENTITLEMENTS = ZapMessages/ZapMessages.entitlements;
-				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = CS73H95RB8;
-				ENABLE_BITCODE = NO;
-				INFOPLIST_FILE = ZapMessages/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 11.2;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.jackmallers.zap.messages;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SKIP_INSTALL = YES;
-				SWIFT_VERSION = 4.2;
-				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = DebugRemote;
 		};
@@ -4279,16 +4057,6 @@
 				AD391C2120D16ED4007EE22A /* Debug */,
 				AD967FDF210329A70048085B /* DebugRemote */,
 				AD391C2220D16ED4007EE22A /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
-		AD391D5020D17FA9007EE22A /* Build configuration list for PBXNativeTarget "ZapMessages" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				AD391D4E20D17FA9007EE22A /* Debug */,
-				AD967FDA210329A70048085B /* DebugRemote */,
-				AD391D4F20D17FA9007EE22A /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
