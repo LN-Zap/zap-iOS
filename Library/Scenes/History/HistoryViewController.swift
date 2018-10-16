@@ -75,13 +75,7 @@ final class HistoryViewController: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
-        tabBarController?.tabBar.items?[1].badgeValue = nil
-    }
-    
-    override func viewDidDisappear(_ animated: Bool) {
-        super.viewDidDisappear(animated)
-        
-        historyViewModel?.lastSeenDate = Date()
+        historyViewModel?.historyWillAppear()
     }
     
     private func setupDataSourceBinding(_ tableView: UITableView, _ historyViewModel: HistoryViewModel) {
@@ -102,7 +96,7 @@ final class HistoryViewController: UIViewController {
                     cell.setLightningPaymentEvent(lightningPaymentEvent)
                 }
                 
-                if dataSource[indexPath].date > historyViewModel.lastSeenDate {
+                if historyViewModel.isEventNew(at: indexPath) {
                     cell.addNotificationLabel(type: .new)
                 }
                 

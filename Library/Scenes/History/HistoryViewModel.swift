@@ -12,7 +12,7 @@ import ReactiveKit
 import SwiftLnd
 
 protocol HistoryBadgeUpdaterDelegate: class {
-    func updateBadgeCount(_ value: Int)
+    func updateBadgeValue(_ value: Int)
 }
 
 final class HistoryViewModel: NSObject {
@@ -34,7 +34,8 @@ final class HistoryViewModel: NSObject {
         }
     }
     
-    var lastSeenDate: Date {
+    private var currentLastSeenDate: Date?
+    private var lastSeenDate: Date {
         get {
             return UserDefaults.Keys.lastSeenHistoryDate.get(defaultValue: Date(timeIntervalSince1970: 0))
         }
@@ -54,6 +55,17 @@ final class HistoryViewModel: NSObject {
         NotificationCenter.default.addObserver(self, selector: #selector(updateEvents), name: .historyDidChange, object: nil)
     }
     
+    func isEventNew(at indexPath: IndexPath) -> Bool {
+        guard let currentLastSeenDate = currentLastSeenDate else { return false }
+        return dataSource[indexPath].date > currentLastSeenDate
+    }
+    
+    func historyWillAppear() {
+        delegate?.updateBadgeValue(0)
+        currentLastSeenDate = lastSeenDate
+        lastSeenDate = Date()
+    }
+    
     @objc private func updateEvents() {
         let events = historyService.events
         let filteredEvents = filterEvents(events, searchString: searchString, filterSettings: filterSettings)
@@ -70,13 +82,18 @@ final class HistoryViewModel: NSObject {
     private func updateTabBarBadge() {
         guard let delegate = delegate else { return }
         
-        let sortedEvents = historyService.events.sorted(by: { $0.date > $1.date })
-        if let unseenEventCount = sortedEvents.firstIndex(where: { $0.date < lastSeenDate }),
-            unseenEventCount > 0 {
-            delegate.updateBadgeCount(unseenEventCount)
-        } else {
-            delegate.updateBadgeCount(0)
+        var unseenEventCount = 0
+        sectionLoop: for section in dataSource.sections {
+            for item in section {
+                if item.date > lastSeenDate {
+                    unseenEventCount += 1
+                } else {
+                    break sectionLoop
+                }
+            }
         }
+        
+        delegate.updateBadgeValue(unseenEventCount)
     }
     
     private func filterEvents(_ events: [HistoryEventType], searchString: String?, filterSettings: FilterSettings) -> [HistoryEventType] {

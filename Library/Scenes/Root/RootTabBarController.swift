@@ -24,7 +24,7 @@ class RootTabBarController: UITabBarController {
 }
 
 extension RootTabBarController: HistoryBadgeUpdaterDelegate {
-    func updateBadgeCount(_ value: Int) {
+    func updateBadgeValue(_ value: Int) {
         DispatchQueue.main.async {
             self.tabBar.items?[1].badgeValue = value <= 0 ? nil : String(value)
         }
