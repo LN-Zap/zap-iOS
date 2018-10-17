@@ -1,5 +1,6 @@
 "generic.memo.placeholder" = "这是什么？";
 "generic.qr_code.copy_button" = "复制";
+"generic.qr_code.copy_success_message" = "Address has been copied to clipboard.";
 "generic.qr_code.share_button" = "分享";
 "generic.cancel" = "取消";
 
