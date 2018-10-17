@@ -10,6 +10,10 @@ end
 target 'SwiftLnd' do
     pod 'SwiftBTC', :git => 'https://github.com/LN-Zap/SwiftBTC.git'
     pod 'SwiftGRPC', :git => 'https://github.com/grpc/grpc-swift'
+    
+    target 'SwiftLndTests' do
+        inherit! :search_paths
+    end
 end
 
 target 'Lightning' do
@@ -17,6 +21,10 @@ target 'Lightning' do
     pod 'Bond'
     pod 'KeychainAccess'
     pod 'SQLite.swift', '~> 0.11.5'
+    
+    target 'LightningTests' do
+        inherit! :search_paths
+    end
 end
 
 target 'Library' do
