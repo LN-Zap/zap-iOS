@@ -34,7 +34,8 @@ final class ChannelViewModel {
         state = Observable(channel.state)
         
         channelService.node(for: channel.remotePubKey) { [name] in
-            if let alias = $0?.alias {
+            if let alias = $0?.alias,
+                !alias.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty {
                 name.value = alias
             }
         }
