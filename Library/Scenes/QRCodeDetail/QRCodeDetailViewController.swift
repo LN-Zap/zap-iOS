@@ -44,7 +44,7 @@ final class QRCodeDetailViewController: UIViewController {
         let tableFontStyle = Style.Label.footnote
         let tableLabelSpacing: CGFloat = 0
         
-        if let amount = viewModel.paymentURI.amount {
+        if let amount = viewModel.paymentURI.amount, amount != 0 {
             contentStackView.addArrangedElement(.verticalStackView(content: [
                 .label(text: "scene.transaction_detail.amount_label".localized + ":", style: tableFontStyle),
                 .amountLabel(amount: amount, style: tableFontStyle)
@@ -52,7 +52,7 @@ final class QRCodeDetailViewController: UIViewController {
             contentStackView.addArrangedElement(.separator)
         }
         
-        if let memo = viewModel.paymentURI.memo {
+        if let memo = viewModel.paymentURI.memo, !memo.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty {
             contentStackView.addArrangedElement(.verticalStackView(content: [
                 .label(text: "scene.transaction_detail.memo_label".localized + ":", style: tableFontStyle),
                 .label(text: memo, style: tableFontStyle)
@@ -72,6 +72,9 @@ final class QRCodeDetailViewController: UIViewController {
     @IBAction private func qrCodeTapped(_ sender: Any) {
         guard let address = viewModel?.paymentURI.uriString else { return }
         print(address)
+        
+        let toast = Toast(message: "generic.qr_code.copy_success_message".localized, style: .success)
+        presentToast(toast, animated: true, completion: nil)
         UISelectionFeedbackGenerator().selectionChanged()
         UIPasteboard.general.string = address
     }
