@@ -20,7 +20,7 @@ final class QRCodeDetailViewController: UIViewController {
     @IBOutlet private weak var qrCodeImageView: UIImageView!
     @IBOutlet private weak var shareButton: UIButton!
     @IBOutlet private weak var copyButton: UIButton!
-    @IBOutlet private weak var addressLabel: UILabel!
+    @IBOutlet private weak var contentStackView: UIStackView!
     
     fileprivate var viewModel: QRCodeDetailViewModel?
     
@@ -37,11 +37,33 @@ final class QRCodeDetailViewController: UIViewController {
         navigationController?.navigationBar.shadowImage = UIImage()
         
         Style.Button.background.apply(to: shareButton, copyButton)
-        Style.Label.body.with({ $0.numberOfLines = 0 }).apply(to: addressLabel)
         
         qrCodeImageView?.image = UIImage.qrCode(from: viewModel.paymentURI)
         
-        addressLabel.text = viewModel.paymentURI.address
+        contentStackView.spacing = 10
+        let tableFontStyle = Style.Label.footnote
+        let tableLabelSpacing: CGFloat = 0
+        
+        if let amount = viewModel.paymentURI.amount {
+            contentStackView.addArrangedElement(.verticalStackView(content: [
+                .label(text: "scene.transaction_detail.amount_label".localized + ":", style: tableFontStyle),
+                .amountLabel(amount: amount, style: tableFontStyle)
+            ], spacing: tableLabelSpacing))
+            contentStackView.addArrangedElement(.separator)
+        }
+        
+        if let memo = viewModel.paymentURI.memo {
+            contentStackView.addArrangedElement(.verticalStackView(content: [
+                .label(text: "scene.transaction_detail.memo_label".localized + ":", style: tableFontStyle),
+                .label(text: memo, style: tableFontStyle)
+            ], spacing: tableLabelSpacing))
+            contentStackView.addArrangedElement(.separator)
+        }
+        
+        contentStackView.addArrangedElement(.verticalStackView(content: [
+            .label(text: "scene.transaction_detail.address_label".localized + ":", style: tableFontStyle),
+            .label(text: viewModel.paymentURI.address, style: tableFontStyle)
+        ], spacing: tableLabelSpacing))
         
         shareButton.setTitle("generic.qr_code.share_button".localized, for: .normal)
         copyButton.setTitle("generic.qr_code.copy_button".localized, for: .normal)

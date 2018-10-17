@@ -1,12 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14113" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="haF-cf-D4W">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14313.18" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="haF-cf-D4W">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
-        <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14283.14"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -19,25 +18,38 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalCompressionResistancePriority="250" verticalCompressionResistancePriority="250" translatesAutoresizingMaskIntoConstraints="NO" id="RnP-no-KLD">
-                                <rect key="frame" x="62.5" y="168.5" width="250" height="250"/>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="y4m-nP-Zly">
+                                <rect key="frame" x="0.0" y="20" width="375" height="446"/>
+                                <subviews>
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalCompressionResistancePriority="250" verticalCompressionResistancePriority="250" translatesAutoresizingMaskIntoConstraints="NO" id="RnP-no-KLD">
+                                        <rect key="frame" x="30" y="65.5" width="315" height="315"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" secondItem="RnP-no-KLD" secondAttribute="height" multiplier="1:1" id="g9Q-bK-r6t"/>
+                                        </constraints>
+                                    </imageView>
+                                </subviews>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" secondItem="RnP-no-KLD" secondAttribute="height" multiplier="1:1" id="g9Q-bK-r6t"/>
-                                    <constraint firstAttribute="width" relation="lessThanOrEqual" constant="250" id="oWV-lV-X4w"/>
+                                    <constraint firstItem="RnP-no-KLD" firstAttribute="width" secondItem="y4m-nP-Zly" secondAttribute="width" priority="750" id="rbg-Bm-Pg4"/>
+                                    <constraint firstItem="RnP-no-KLD" firstAttribute="centerX" secondItem="y4m-nP-Zly" secondAttribute="centerX" id="tsu-r8-LkD"/>
+                                    <constraint firstItem="RnP-no-KLD" firstAttribute="centerY" secondItem="y4m-nP-Zly" secondAttribute="centerY" id="yi9-5x-9aX"/>
                                 </constraints>
-                            </imageView>
+                            </view>
+                            <stackView opaque="NO" contentMode="scaleToFill" placeholderIntrinsicWidth="315" placeholderIntrinsicHeight="100" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="kPy-6m-bEC">
+                                <rect key="frame" x="30" y="466" width="315" height="100"/>
+                            </stackView>
                             <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="b1p-Ku-by0">
-                                <rect key="frame" x="62.5" y="591" width="250" height="56"/>
+                                <rect key="frame" x="30" y="591" width="315" height="56"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="zlC-ZU-j6p">
-                                        <rect key="frame" x="0.0" y="0.0" width="120" height="56"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="152.5" height="56"/>
                                         <state key="normal" title="_share"/>
                                         <connections>
                                             <action selector="shareButtonTapped:" destination="haF-cf-D4W" eventType="touchUpInside" id="zJ4-36-ilU"/>
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="200" verticalHuggingPriority="200" horizontalCompressionResistancePriority="250" verticalCompressionResistancePriority="250" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0fc-Du-0lz">
-                                        <rect key="frame" x="130" y="0.0" width="120" height="56"/>
+                                        <rect key="frame" x="162.5" y="0.0" width="152.5" height="56"/>
                                         <state key="normal" title="_copy link"/>
                                         <connections>
                                             <action selector="qrCodeTapped:" destination="haF-cf-D4W" eventType="touchUpInside" id="jrx-ze-H55"/>
@@ -48,25 +60,20 @@
                                     <constraint firstAttribute="height" constant="56" id="Tkh-QS-c47"/>
                                 </constraints>
                             </stackView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="249" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="middleTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Bdj-Rw-Rws">
-                                <rect key="frame" x="62" y="433.5" width="250" height="20.5"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
-                            <constraint firstItem="RnP-no-KLD" firstAttribute="width" secondItem="4ot-dn-Jh4" secondAttribute="width" priority="250" id="5Mb-x7-JAb"/>
-                            <constraint firstItem="RnP-no-KLD" firstAttribute="centerY" secondItem="8yo-Sv-04g" secondAttribute="centerY" constant="-50" id="5Qw-js-Jef"/>
-                            <constraint firstItem="b1p-Ku-by0" firstAttribute="width" secondItem="RnP-no-KLD" secondAttribute="width" id="7Di-0g-1jt"/>
-                            <constraint firstItem="Bdj-Rw-Rws" firstAttribute="top" secondItem="RnP-no-KLD" secondAttribute="bottom" constant="15" id="ATB-DY-eVH"/>
+                            <constraint firstItem="b1p-Ku-by0" firstAttribute="leading" secondItem="8yo-Sv-04g" secondAttribute="leading" constant="30" id="30K-qT-oX6"/>
+                            <constraint firstItem="8yo-Sv-04g" firstAttribute="trailing" secondItem="y4m-nP-Zly" secondAttribute="trailing" id="3PJ-ho-l6N"/>
+                            <constraint firstItem="b1p-Ku-by0" firstAttribute="top" secondItem="kPy-6m-bEC" secondAttribute="bottom" constant="25" id="BxI-8y-LnQ"/>
                             <constraint firstItem="b1p-Ku-by0" firstAttribute="centerX" secondItem="8yo-Sv-04g" secondAttribute="centerX" id="ISe-gc-oFr"/>
-                            <constraint firstItem="RnP-no-KLD" firstAttribute="centerX" secondItem="8yo-Sv-04g" secondAttribute="centerX" id="NPV-Sw-xey"/>
-                            <constraint firstItem="Bdj-Rw-Rws" firstAttribute="centerX" secondItem="8yo-Sv-04g" secondAttribute="centerX" id="UEm-go-PvN"/>
+                            <constraint firstItem="RnP-no-KLD" firstAttribute="width" secondItem="kPy-6m-bEC" secondAttribute="width" id="LfB-V1-aJw"/>
+                            <constraint firstItem="kPy-6m-bEC" firstAttribute="width" secondItem="b1p-Ku-by0" secondAttribute="width" id="ULu-aA-sCk"/>
+                            <constraint firstItem="kPy-6m-bEC" firstAttribute="centerX" secondItem="8yo-Sv-04g" secondAttribute="centerX" id="bTC-qf-6J1"/>
+                            <constraint firstItem="y4m-nP-Zly" firstAttribute="top" secondItem="8yo-Sv-04g" secondAttribute="top" id="c0V-dz-WuI"/>
                             <constraint firstItem="8yo-Sv-04g" firstAttribute="bottom" secondItem="b1p-Ku-by0" secondAttribute="bottom" constant="20" id="e9b-5N-cKx"/>
-                            <constraint firstItem="Bdj-Rw-Rws" firstAttribute="width" secondItem="RnP-no-KLD" secondAttribute="width" id="ewP-fR-vWj"/>
-                            <constraint firstItem="RnP-no-KLD" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="8yo-Sv-04g" secondAttribute="leading" constant="10" id="mc1-G5-4TK"/>
+                            <constraint firstItem="y4m-nP-Zly" firstAttribute="bottom" secondItem="kPy-6m-bEC" secondAttribute="top" id="s11-Xs-pXh"/>
+                            <constraint firstItem="y4m-nP-Zly" firstAttribute="leading" secondItem="8yo-Sv-04g" secondAttribute="leading" id="z8a-cP-eh4"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="8yo-Sv-04g"/>
                     </view>
@@ -78,7 +85,7 @@
                         </barButtonItem>
                     </navigationItem>
                     <connections>
-                        <outlet property="addressLabel" destination="Bdj-Rw-Rws" id="fSK-aK-Iuc"/>
+                        <outlet property="contentStackView" destination="kPy-6m-bEC" id="YFS-2S-bZq"/>
                         <outlet property="copyButton" destination="0fc-Du-0lz" id="PNh-GK-q16"/>
                         <outlet property="qrCodeImageView" destination="RnP-no-KLD" id="BHQ-GE-3ag"/>
                         <outlet property="shareButton" destination="zlC-ZU-j6p" id="Kil-FH-hbI"/>
