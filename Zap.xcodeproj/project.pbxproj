@@ -274,6 +274,8 @@
 		ADFB36E72143BAC500146FCC /* Payment.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADECC36820F257AF00D00546 /* Payment.swift */; };
 		ADFB36E92143BB2200146FCC /* Transaction.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADECC36A20F257BE00D00546 /* Transaction.swift */; };
 		ADFC816F20DA80EF00D26913 /* RecoverWalletViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADFC816E20DA80EF00D26913 /* RecoverWalletViewModel.swift */; };
+		ADFCEADF2177687F00370242 /* EventDetailViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADFCEADE2177687F00370242 /* EventDetailViewModel.swift */; };
+		ADFCEAE221776E2100370242 /* EventDetailViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADFCEAE021776E1C00370242 /* EventDetailViewModelTests.swift */; };
 		ADFE2E4C216CF4A800988243 /* ManageChannelsSettingsItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADFE2E4B216CF4A800988243 /* ManageChannelsSettingsItem.swift */; };
 		ADFE538520D693FF00B3BA2A /* InputNumberFormatterTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0F9AEE2206E3E0300E93DCA /* InputNumberFormatterTests.swift */; };
 		ADFE538620D693FF00B3BA2A /* CurrencyTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0BD44D9206FB47300BF27A3 /* CurrencyTests.swift */; };
@@ -767,6 +769,8 @@
 		ADFB0CC6216E09E00048B63C /* ReceivingAddress.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReceivingAddress.swift; sourceTree = "<group>"; };
 		ADFB0CC8216E318B0048B63C /* ReceivingAddressTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReceivingAddressTests.swift; sourceTree = "<group>"; };
 		ADFC816E20DA80EF00D26913 /* RecoverWalletViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecoverWalletViewModel.swift; sourceTree = "<group>"; };
+		ADFCEADE2177687F00370242 /* EventDetailViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventDetailViewModel.swift; sourceTree = "<group>"; };
+		ADFCEAE021776E1C00370242 /* EventDetailViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventDetailViewModelTests.swift; sourceTree = "<group>"; };
 		ADFE2E4B216CF4A800988243 /* ManageChannelsSettingsItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ManageChannelsSettingsItem.swift; sourceTree = "<group>"; };
 		ADFE537B20D693F500B3BA2A /* LibraryTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = LibraryTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		ADFE537F20D693F500B3BA2A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -1266,6 +1270,7 @@
 			isa = PBXGroup;
 			children = (
 				AD2D912B21567D4C001015B6 /* EventDetailViewController.swift */,
+				ADFCEADE2177687F00370242 /* EventDetailViewModel.swift */,
 			);
 			name = Detail;
 			path = "New Group";
@@ -1732,6 +1737,7 @@
 				A0BD44D9206FB47300BF27A3 /* CurrencyTests.swift */,
 				AD308988216FA88D00B5489C /* GraphViewDataSourceTests.swift */,
 				A0F9AEE2206E3E0300E93DCA /* InputNumberFormatterTests.swift */,
+				ADFCEAE021776E1C00370242 /* EventDetailViewModelTests.swift */,
 			);
 			path = Tests;
 			sourceTree = "<group>";
@@ -2542,6 +2548,7 @@
 				AD391D0920D16FF5007EE22A /* KeyPadView.swift in Sources */,
 				AD615CF5211C82E600680790 /* LoadingView.swift in Sources */,
 				ADA865C020ECC89E00B1B74B /* FilterTableViewCell.swift in Sources */,
+				ADFCEADF2177687F00370242 /* EventDetailViewModel.swift in Sources */,
 				AD667E5921384966007B9160 /* WindowLevel.swift in Sources */,
 				AD391CB420D16FA8007EE22A /* Section.swift in Sources */,
 				AD391D1B20D174B4007EE22A /* PinSetupCoordinator.swift in Sources */,
@@ -2704,6 +2711,7 @@
 				AD30898B216FA8C400B5489C /* GraphViewDataSourceTests.swift in Sources */,
 				AD97A90620EE7FD9008344EA /* BitcoinTests.swift in Sources */,
 				ADFE538520D693FF00B3BA2A /* InputNumberFormatterTests.swift in Sources */,
+				ADFCEAE221776E2100370242 /* EventDetailViewModelTests.swift in Sources */,
 				ADFE538620D693FF00B3BA2A /* CurrencyTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

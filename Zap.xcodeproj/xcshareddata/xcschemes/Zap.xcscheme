@@ -58,16 +58,6 @@
             skipped = "NO">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "A000F5F12047F65100480D8E"
-               BuildableName = "BTCUtilTests.xctest"
-               BlueprintName = "BTCUtilTests"
-               ReferencedContainer = "container:Zap.xcodeproj">
-            </BuildableReference>
-         </TestableReference>
-         <TestableReference
-            skipped = "NO">
-            <BuildableReference
-               BuildableIdentifier = "primary"
                BlueprintIdentifier = "ADFE537A20D693F500B3BA2A"
                BuildableName = "LibraryTests.xctest"
                BlueprintName = "LibraryTests"
