@@ -1,5 +1,5 @@
 ignore:
-  - BTCUtilTests
-  - LibraryTests
-  - LightningTests
+  - Library/Tests
+  - Lightning/Tests
+  - SwiftLnd/Tests
   - Pods

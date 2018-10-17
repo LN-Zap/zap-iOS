@@ -5,8 +5,8 @@
 //  Copyright © 2018 Zap. All rights reserved.
 //
 
-import BTCUtil
 import Foundation
+import SwiftBTC
 
 public protocol LightningApiProtocol {
     func info(completion: @escaping (Result<Info>) -> Void)

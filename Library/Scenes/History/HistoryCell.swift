@@ -5,8 +5,8 @@
 //  Copyright © 2018 Otto Suess. All rights reserved.
 //
 
-import BTCUtil
 import Lightning
+import SwiftBTC
 import UIKit
 
 protocol HistoryCellDelegate: class {

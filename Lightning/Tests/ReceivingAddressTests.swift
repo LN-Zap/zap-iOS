@@ -1,12 +1,12 @@
 //
-//  BTCUtilTests
+//  LightningTests
 //
 //  Created by Otto Suess on 10.10.18.
 //  Copyright © 2018 Zap. All rights reserved.
 //
 
-import BTCUtil
 @testable import Lightning
+import SwiftBTC
 @testable import SwiftLnd
 import XCTest
 

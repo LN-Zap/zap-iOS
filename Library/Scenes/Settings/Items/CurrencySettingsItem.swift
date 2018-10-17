@@ -6,9 +6,9 @@
 //
 
 import Bond
-import BTCUtil
 import Foundation
 import ReactiveKit
+import SwiftBTC
 
 final class CurrencySelectionSettingsItem: DetailDisclosureSettingsItem, SubtitleSettingsItem {
     let subtitle = Settings.shared.fiatCurrency.map { Optional($0.localized) }

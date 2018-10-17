@@ -5,9 +5,9 @@
 //  Copyright © 2018 Zap. All rights reserved.
 //
 
-import BTCUtil
 import Foundation
 import SQLite
+import SwiftBTC
 import SwiftLnd
 
 /// Does influence the balance of the user's wallet because a fee is payed.

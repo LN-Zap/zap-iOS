@@ -6,8 +6,8 @@
 //
 
 import Bond
-import BTCUtil
 import Foundation
+import SwiftBTC
 
 final class BitcoinUnitSelectionSettingsItem: DetailDisclosureSettingsItem, SubtitleSettingsItem {
     let subtitle = Settings.shared.cryptoCurrency.map { Optional($0.localized) }

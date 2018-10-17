@@ -5,8 +5,8 @@
 //  Copyright © 2018 Otto Suess. All rights reserved.
 //
 
-import BTCUtil
 @testable import Library
+import SwiftBTC
 import XCTest
 
 final class InputNumberFormatterTests: XCTestCase {

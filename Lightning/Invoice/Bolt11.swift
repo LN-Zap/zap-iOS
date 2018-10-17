@@ -1,12 +1,12 @@
 //
-//  BTCUtil
+//  Lightning
 //
 //  Created by Otto Suess on 09.07.18.
 //  Copyright © 2018 Zap. All rights reserved.
 //
 
-import BTCUtil
 import Foundation
+import SwiftBTC
 
 extension Bolt11.Invoice {
     init(network: Network, date: Date) {

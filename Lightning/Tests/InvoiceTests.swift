@@ -5,8 +5,8 @@
 //  Copyright © 2018 Zap. All rights reserved.
 //
 
-import BTCUtil
 @testable import Lightning
+import SwiftBTC
 @testable import SwiftLnd
 import XCTest
 

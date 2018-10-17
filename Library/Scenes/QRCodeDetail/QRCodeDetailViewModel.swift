@@ -6,8 +6,8 @@
 //
 
 import Bond
-import BTCUtil
 import Foundation
+import SwiftBTC
 
 public protocol QRCodeDetailViewModel {
     var title: String { get }

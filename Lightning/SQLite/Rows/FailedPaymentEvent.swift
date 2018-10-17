@@ -5,9 +5,9 @@
 //  Copyright © 2018 Zap. All rights reserved.
 //
 
-import BTCUtil
 import Foundation
 import SQLite
+import SwiftBTC
 import SwiftLnd
 
 /// Gets created when a payment request fails to complete.

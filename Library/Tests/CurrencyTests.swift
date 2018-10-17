@@ -5,9 +5,9 @@
 //  Copyright © 2018 Otto Suess. All rights reserved.
 //
 
-import BTCUtil
 import Foundation
 @testable import Library
+import SwiftBTC
 import XCTest
 
 final class CurrencyTests: XCTestCase {

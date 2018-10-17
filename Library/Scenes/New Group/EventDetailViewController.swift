@@ -5,9 +5,9 @@
 //  Copyright © 2018 Zap. All rights reserved.
 //
 
-import BTCUtil
 import Foundation
 import Lightning
+import SwiftBTC
 
 final class EventDetailViewController: ModalDetailViewController {
     let event: HistoryEventType

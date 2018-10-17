@@ -5,8 +5,8 @@
 //  Copyright © 2018 Zap. All rights reserved.
 //
 
-import BTCUtil
 import Foundation
+import SwiftBTC
 
 public enum LndConstants {
     public static let minChannelSize: Satoshi = 20000

@@ -7,9 +7,9 @@
 
 #if !REMOTEONLY
 
-import BTCUtil
 import Foundation
 import Lndmobile
+import SwiftBTC
 
 public final class LightningApiStream: LightningApiProtocol {
     public init() {}

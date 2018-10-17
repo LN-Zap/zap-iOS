@@ -5,8 +5,8 @@
 //  Copyright © 2018 Otto Suess. All rights reserved.
 //
 
-import BTCUtil
 import CoreImage
+import SwiftBTC
 import UIKit
 
 extension UIImage {

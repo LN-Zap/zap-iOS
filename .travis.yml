@@ -16,4 +16,4 @@ notifications:
 script:
   - bundle exec fastlane tests
 after_success:
-  - bash <(curl -s https://codecov.io/bash) -J 'BTCUtil' -J 'Library' -J 'Lightning'
+  - bash <(curl -s https://codecov.io/bash) -J 'Library' -J 'Lightning'

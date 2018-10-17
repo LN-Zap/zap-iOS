@@ -6,11 +6,11 @@
 //
 
 import Bond
-import BTCUtil
 import Foundation
 import Lightning
 import ReactiveKit
 import ScrollableGraphView
+import SwiftBTC
 import SwiftLnd
 
 extension UIStoryboard {

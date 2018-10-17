@@ -6,10 +6,10 @@
 //
 
 import Bond
-import BTCUtil
 import Foundation
 import ReactiveKit
 import SQLite
+import SwiftBTC
 import SwiftLnd
 
 public final class ChannelService {

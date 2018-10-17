@@ -6,8 +6,8 @@
 //
 
 import Bond
-import BTCUtil
 import Foundation
+import SwiftBTC
 
 protocol HeightJsonProtocol: Decodable {
     var height: Int { get }

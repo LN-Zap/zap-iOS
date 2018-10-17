@@ -6,9 +6,9 @@
 //
 
 import Bond
-import BTCUtil
 import Foundation
 import Lightning
+import SwiftBTC
 import SwiftLnd
 
 public enum Layer {

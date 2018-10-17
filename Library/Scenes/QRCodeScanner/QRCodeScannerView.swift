@@ -6,8 +6,8 @@
 //
 
 import AVFoundation
-import BTCUtil
 import Lightning
+import SwiftBTC
 import UIKit
 
 final class QRCodeScannerView: UIView {

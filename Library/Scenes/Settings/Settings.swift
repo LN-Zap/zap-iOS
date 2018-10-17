@@ -6,9 +6,9 @@
 //
 
 import Bond
-import BTCUtil
 import Foundation
 import Lightning
+import SwiftBTC
 import SwiftLnd
 
 // TODO: save in shared user defaults to share with Message Extension

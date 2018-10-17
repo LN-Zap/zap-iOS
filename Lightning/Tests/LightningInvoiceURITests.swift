@@ -1,12 +1,12 @@
 //
-//  BTCUtilTests
+//  LightningTests
 //
 //  Created by Otto Suess on 28.02.18.
 //  Copyright © 2018 Otto Suess. All rights reserved.
 //
 
-import BTCUtil
 @testable import Lightning
+import SwiftBTC
 import XCTest
 
 final class LightningInvoiceURITests: XCTestCase {

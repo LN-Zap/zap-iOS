@@ -5,8 +5,8 @@
 //  Copyright © 2018 Otto Suess. All rights reserved.
 //
 
-import BTCUtil
 import Foundation
+import SwiftBTC
 
 private extension Lnrpc_LightningServiceClient {
     convenience init(configuration: RemoteRPCConfiguration) {

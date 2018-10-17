@@ -5,10 +5,10 @@
 //  Copyright © 2018 Zap. All rights reserved.
 //
 
-import BTCUtil
 import Foundation
 import Lightning
 import ScrollableGraphView
+import SwiftBTC
 
 final class GraphViewDataSource: ScrollableGraphViewDataSource {
     let plotData: [(date: Date, amount: Satoshi)]

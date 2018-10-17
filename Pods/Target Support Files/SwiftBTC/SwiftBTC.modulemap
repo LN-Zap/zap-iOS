@@ -1,0 +1,6 @@
+framework module SwiftBTC {
+  umbrella header "SwiftBTC-umbrella.h"
+
+  export *
+  module * { export * }
+}

@@ -5,10 +5,10 @@
 //  Copyright © 2018 Zap. All rights reserved.
 //
 
-import BTCUtil
 @testable import Library
 @testable import Lightning
 import ScrollableGraphView
+import SwiftBTC
 import XCTest
 
 final class GraphViewDataSourceTests: XCTestCase {

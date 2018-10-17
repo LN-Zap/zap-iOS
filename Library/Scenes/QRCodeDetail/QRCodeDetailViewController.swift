@@ -5,7 +5,7 @@
 //  Copyright © 2018 Otto Suess. All rights reserved.
 //
 
-import BTCUtil
+import SwiftBTC
 import UIKit
 
 extension UIStoryboard {

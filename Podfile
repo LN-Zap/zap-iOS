@@ -8,16 +8,19 @@ target 'Zap' do
 end
 
 target 'SwiftLnd' do
+    pod 'SwiftBTC', :git => 'https://github.com/LN-Zap/SwiftBTC.git'
     pod 'SwiftGRPC', :git => 'https://github.com/grpc/grpc-swift'
 end
 
 target 'Lightning' do
+    pod 'SwiftBTC', :git => 'https://github.com/LN-Zap/SwiftBTC.git'
     pod 'Bond'
     pod 'KeychainAccess'
     pod 'SQLite.swift', '~> 0.11.5'
 end
 
 target 'Library' do
+    pod 'SwiftBTC', :git => 'https://github.com/LN-Zap/SwiftBTC.git'
     pod 'ScrollableGraphView'
     pod 'KeychainAccess'
     pod 'Bond'
@@ -25,10 +28,6 @@ target 'Library' do
     target 'LibraryTests' do
         inherit! :search_paths
     end
-end
-
-target 'BTCUtil' do
-    pod 'BigInt', '~> 3.0'
 end
 
 post_install do | installer |

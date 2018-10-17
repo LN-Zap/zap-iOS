@@ -6,10 +6,10 @@
 //
 
 import Bond
-import BTCUtil
 import Foundation
 import Lightning
 import ReactiveKit
+import SwiftBTC
 import SwiftLnd
 
 extension ChannelState: Comparable {

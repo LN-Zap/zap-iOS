@@ -5,8 +5,8 @@
 //  Copyright © 2018 Zap. All rights reserved.
 //
 
-import BTCUtil
 import Foundation
+import SwiftBTC
 
 public struct Transaction: Equatable {
     public let id: String

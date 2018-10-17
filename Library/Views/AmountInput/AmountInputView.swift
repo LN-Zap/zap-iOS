@@ -6,7 +6,7 @@
 //
 
 import Bond
-import BTCUtil
+import SwiftBTC
 import UIKit
 
 public protocol AmountInputViewDelegate: class {

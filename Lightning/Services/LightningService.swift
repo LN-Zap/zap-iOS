@@ -6,9 +6,9 @@
 //
 
 import Bond
-import BTCUtil
 import Foundation
 import ReactiveKit
+import SwiftBTC
 import SwiftLnd
 
 public final class LightningService: NSObject {

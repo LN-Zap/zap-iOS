@@ -5,9 +5,9 @@
 //  Copyright © 2018 Otto Suess. All rights reserved.
 //
 
-import BTCUtil
 import Foundation
 import Lightning
+import SwiftBTC
 
 final class ExchangeUpdaterJob {
     private static var timer: Timer?

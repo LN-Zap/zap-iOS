@@ -6,8 +6,8 @@
 //
 
 import Bond
-import BTCUtil
 import Foundation
+import SwiftBTC
 import SwiftLnd
 
 public final class TransactionService {

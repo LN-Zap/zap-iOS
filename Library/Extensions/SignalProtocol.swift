@@ -6,9 +6,9 @@
 //
 
 import Bond
-import BTCUtil
 import Foundation
 import ReactiveKit
+import SwiftBTC
 
 extension SignalProtocol where Element == Satoshi?, Error == NoError {
     // Bind Satoshi? signal with Currency to any bindable String?.

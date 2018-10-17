@@ -5,7 +5,7 @@
 //  Copyright © 2018 Zap. All rights reserved.
 //
 
-import BTCUtil
+import SwiftBTC
 import UIKit
 
 indirect enum StackViewElement {
