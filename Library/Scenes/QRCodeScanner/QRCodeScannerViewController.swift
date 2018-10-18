@@ -61,8 +61,10 @@ final class QRCodeScannerViewController: UIViewController {
                 case .success(let viewController):
                     self?.presentViewController(viewController)
                     self?.scannerView.stop()
+                    UINotificationFeedbackGenerator().notificationOccurred(.success)
                 case .failure(let error):
                     self?.presentError(message: error.localizedDescription)
+                    UINotificationFeedbackGenerator().notificationOccurred(.error)
                 }
             }
         }
@@ -75,8 +77,12 @@ final class QRCodeScannerViewController: UIViewController {
     }
     
     @IBAction private func pasteButtonTapped(_ sender: Any) {
-        guard let string = UIPasteboard.general.string else { return }
-        _ = tryPresentingViewController(for: string)
+        if let string = UIPasteboard.general.string {
+            tryPresentingViewController(for: string)
+        } else {
+            presentError(message: "generic.pasteboard.invalid_address".localized)
+            UINotificationFeedbackGenerator().notificationOccurred(.error)
+        }
     }
     
     @IBAction private func cancelButtonTapped(_ sender: Any) {
