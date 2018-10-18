@@ -45,6 +45,7 @@
 "scene.settings.item.on_chain_request_address.bech32" = "Bech32";
 "scene.settings.item.on_chain_request_address.p2sh" = "P2SH";
 "scene.settings.item.manage_channels" = "Kanäle verwalten";
+"scene.settings.item.node_uri" = "Node URI";
 "scene.settings.item.remove_remote_node" = "Zurücksetzen der Remote-Node-Konfiguration";
 "scene.settings.item.change_pin" = "Pin ändern";
 "scene.settings.item.report_issue" = "Ein Problem melden";
@@ -199,3 +200,7 @@
 "scene.history.cell.label.new" = "neu";
 "scene.history.cell.label.error" = "Fehler";
 "scene.history.cell.action.try_again" = "Erneut versuchen";
+
+"scene.node_uri.title" = "Connect to Node";
+"scene.node_uri.alias_label" = "Alias";
+"scene.node_uri.uri_label" = "URI";
