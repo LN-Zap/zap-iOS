@@ -15,6 +15,8 @@ protocol SettingsDelegate: class {
 }
 
 final class SettingsViewController: GroupedTableViewController {
+    var info: Info?
+    
     static func instantiate(info: Info?, settingsDelegate: SettingsDelegate, pushChannelList: @escaping (UINavigationController) -> Void, pushNodeURIViewController: @escaping (UINavigationController) -> Void) -> UINavigationController {
         let viewController = SettingsViewController(info: info, settingsDelegate: settingsDelegate, pushChannelList: pushChannelList, pushNodeURIViewController: pushNodeURIViewController)
         
@@ -28,6 +30,7 @@ final class SettingsViewController: GroupedTableViewController {
     }
     
     private init(info: Info?, settingsDelegate: SettingsDelegate, pushChannelList: @escaping (UINavigationController) -> Void, pushNodeURIViewController: @escaping (UINavigationController) -> Void) {
+        self.info = info
         
         var lightningRows: [SettingsItem] = [
             ManageChannelsSettingsItem(pushChannelList: pushChannelList)
@@ -56,7 +59,6 @@ final class SettingsViewController: GroupedTableViewController {
         ]
         
         super.init(sections: sections)
-        
     }
     
     required init?(coder aDecoder: NSCoder) {
@@ -76,6 +78,15 @@ final class SettingsViewController: GroupedTableViewController {
             let buildNumber = Bundle.main.object(forInfoDictionaryKey: "CFBundleVersion") as? String
             else { return nil }
 
-        return "version: \(versionNumber), build: \(buildNumber)"
+        var versionString = "zap version: \(versionNumber), build: \(buildNumber)"
+        
+        lndVersion: if let info = info {
+            let components = info.version.components(separatedBy: " ")
+            guard components.count == 2 else { break lndVersion }
+            let shortHash = components[1].replacingOccurrences(of: "commit=", with: "").prefix(7)
+            versionString += "\nlnd version: \(components[0]) \(shortHash)"
+        }
+        
+        return versionString
     }
 }
