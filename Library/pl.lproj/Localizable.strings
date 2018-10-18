@@ -1,6 +1,7 @@
 "generic.memo.placeholder" = "Do czego to służy?";
 "generic.qr_code.copy_button" = "Kopiuj";
 "generic.qr_code.copy_success_message" = "Address has been copied to clipboard.";
+"generic.pasteboard.invalid_address" = "Invalid Address";
 "generic.qr_code.share_button" = "Udostępnij";
 "generic.cancel" = "Cancel";
 
