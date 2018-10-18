@@ -59,7 +59,7 @@ final class MainCoordinator: Routing {
     func settingsViewController() -> UIViewController {
         guard let settingsDelegate = settingsDelegate else { fatalError("Didn't set settings Delegate") }
         
-        return SettingsViewController.instantiate(settingsDelegate: settingsDelegate, pushChannelList: pushChannelList)
+        return SettingsViewController.instantiate(info: lightningService.infoService.info, settingsDelegate: settingsDelegate, pushChannelList: pushChannelList, pushNodeURIViewController: pushNodeURIViewController)
     }
     
     func historyViewController() -> UIViewController {
@@ -144,5 +144,15 @@ final class MainCoordinator: Routing {
     private func presentChannelDetail(on presentingViewController: UIViewController, channelViewModel: ChannelViewModel) {
         let channelDetailViewController = ChannelDetailViewController(channelViewModel: channelViewModel, channelListViewModel: channelListViewModel, blockExplorerButtonTapped: presentBlockExplorer)
         presentingViewController.present(channelDetailViewController, animated: true, completion: nil)
+    }
+    
+    private func pushNodeURIViewController(on navigationController: UINavigationController) {
+        guard
+            let info = lightningService.infoService.info,
+            let qrCodeDetailViewModel = NodeURIQRCodeViewModel(info: info)
+            else { return }
+
+        let nodeURIViewController = UIStoryboard.instantiateQRCodeDetailViewController(with: qrCodeDetailViewModel)
+        navigationController.pushViewController(nodeURIViewController, animated: true)
     }
 }

@@ -16,6 +16,7 @@ public struct Info {
     public let pubKey: String
     public let activeChannelCount: Int
     public let bestHeaderDate: Date
+    public let uris: [URL]
 }
 
 extension Info {
@@ -27,5 +28,6 @@ extension Info {
         pubKey = getInfoResponse.identityPubkey
         activeChannelCount = Int(getInfoResponse.numActiveChannels)
         bestHeaderDate = Date(timeIntervalSince1970: TimeInterval(getInfoResponse.bestHeaderTimestamp))
+        uris = getInfoResponse.uris.compactMap { URL(string: $0) }
     }
 }

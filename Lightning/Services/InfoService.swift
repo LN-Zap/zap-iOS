@@ -28,6 +28,7 @@ public final class InfoService {
     public let blockHeight = Observable(0)
     public let walletState: Observable<InfoService.State>
     public let network = Observable<Network>(.testnet)
+    public var info: Info?
     
     let isSyncedToChain = Observable(false)
 
@@ -61,6 +62,8 @@ public final class InfoService {
             network.value = info.network
             
             persistence.setConnectedNode(pubKey: info.pubKey)
+            
+            self.info = info
         }
         
         let newState = walletState(for: result)

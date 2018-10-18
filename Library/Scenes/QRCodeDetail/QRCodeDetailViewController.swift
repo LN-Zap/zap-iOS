@@ -5,7 +5,6 @@
 //  Copyright © 2018 Otto Suess. All rights reserved.
 //
 
-import SwiftBTC
 import UIKit
 
 extension UIStoryboard {
@@ -29,48 +28,31 @@ final class QRCodeDetailViewController: UIViewController {
 
         guard let viewModel = viewModel else { fatalError("No ViewModel set.") }
         
+        if viewModel is NodeURIQRCodeViewModel {
+            navigationItem.rightBarButtonItem = nil
+        }
+        
         title = viewModel.title
         view.backgroundColor = UIColor.Zap.background
         
+        navigationItem.largeTitleDisplayMode = .never
         navigationController?.navigationBar.backgroundColor = .clear
         navigationController?.navigationBar.setBackgroundImage(UIImage(), for: .default)
         navigationController?.navigationBar.shadowImage = UIImage()
         
         Style.Button.background.apply(to: shareButton, copyButton)
         
-        qrCodeImageView?.image = UIImage.qrCode(from: viewModel.paymentURI)
+        qrCodeImageView?.image = UIImage.qrCode(from: viewModel.qrCodeString)
         
         contentStackView.spacing = 10
-        let tableFontStyle = Style.Label.footnote
-        let tableLabelSpacing: CGFloat = 0
-        
-        if let amount = viewModel.paymentURI.amount, amount != 0 {
-            contentStackView.addArrangedElement(.verticalStackView(content: [
-                .label(text: "scene.transaction_detail.amount_label".localized + ":", style: tableFontStyle),
-                .amountLabel(amount: amount, style: tableFontStyle)
-            ], spacing: tableLabelSpacing))
-            contentStackView.addArrangedElement(.separator)
-        }
-        
-        if let memo = viewModel.paymentURI.memo, !memo.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty {
-            contentStackView.addArrangedElement(.verticalStackView(content: [
-                .label(text: "scene.transaction_detail.memo_label".localized + ":", style: tableFontStyle),
-                .label(text: memo, style: tableFontStyle)
-            ], spacing: tableLabelSpacing))
-            contentStackView.addArrangedElement(.separator)
-        }
-        
-        contentStackView.addArrangedElement(.verticalStackView(content: [
-            .label(text: "scene.transaction_detail.address_label".localized + ":", style: tableFontStyle),
-            .label(text: viewModel.paymentURI.address, style: tableFontStyle)
-        ], spacing: tableLabelSpacing))
+        contentStackView.set(elements: viewModel.detailConfiguration)
         
         shareButton.setTitle("generic.qr_code.share_button".localized, for: .normal)
         copyButton.setTitle("generic.qr_code.copy_button".localized, for: .normal)
     }
     
     @IBAction private func qrCodeTapped(_ sender: Any) {
-        guard let address = viewModel?.paymentURI.uriString else { return }
+        guard let address = viewModel?.uriString else { return }
         print(address)
         
         let toast = Toast(message: "generic.qr_code.copy_success_message".localized, style: .success)
@@ -96,7 +78,7 @@ final class QRCodeDetailViewController: UIViewController {
     }
     
     @IBAction private func shareButtonTapped(_ sender: Any) {
-        guard let address = viewModel?.paymentURI.uriString else { return }
+        guard let address = viewModel?.uriString else { return }
 
         let items: [Any] = [address]
         

@@ -5,6 +5,7 @@
 //  Copyright © 2018 Otto Suess. All rights reserved.
 //
 
+import SwiftLnd
 import UIKit
 
 protocol SettingsDelegate: class {
@@ -14,8 +15,8 @@ protocol SettingsDelegate: class {
 }
 
 final class SettingsViewController: GroupedTableViewController {
-    static func instantiate(settingsDelegate: SettingsDelegate, pushChannelList: @escaping (UINavigationController) -> Void) -> UINavigationController {
-        let viewController = SettingsViewController(settingsDelegate: settingsDelegate, pushChannelList: pushChannelList)
+    static func instantiate(info: Info?, settingsDelegate: SettingsDelegate, pushChannelList: @escaping (UINavigationController) -> Void, pushNodeURIViewController: @escaping (UINavigationController) -> Void) -> UINavigationController {
+        let viewController = SettingsViewController(info: info, settingsDelegate: settingsDelegate, pushChannelList: pushChannelList, pushNodeURIViewController: pushNodeURIViewController)
         
         let navigationController = ZapNavigationController(rootViewController: viewController)
         
@@ -26,7 +27,16 @@ final class SettingsViewController: GroupedTableViewController {
         return navigationController
     }
     
-    private init(settingsDelegate: SettingsDelegate, pushChannelList: @escaping (UINavigationController) -> Void) {
+    private init(info: Info?, settingsDelegate: SettingsDelegate, pushChannelList: @escaping (UINavigationController) -> Void, pushNodeURIViewController: @escaping (UINavigationController) -> Void) {
+        
+        var lightningRows: [SettingsItem] = [
+            ManageChannelsSettingsItem(pushChannelList: pushChannelList)
+        ]
+        
+        if let info = info, !info.uris.isEmpty {
+            lightningRows.append(NodeURISettingsItem(pushNodeURIViewController: pushNodeURIViewController))
+        }
+        
         let sections: [Section<SettingsItem>] = [
             Section(title: "scene.settings.title".localized, rows: [
                 CurrencySelectionSettingsItem(),
@@ -34,9 +44,7 @@ final class SettingsViewController: GroupedTableViewController {
                 OnChainRequestAddressTypeSelectionSettingsItem(),
                 BlockExplorerSelectionSettingsItem()
             ]),
-            Section(title: "Lightning", rows: [
-                ManageChannelsSettingsItem(pushChannelList: pushChannelList)
-            ]),
+            Section(title: "Lightning", rows: lightningRows),
             Section(title: "scene.settings.section.wallet".localized, rows: [
                 RemoveRemoteNodeSettingsItem(settingsDelegate: settingsDelegate),
                 ChangePinSettingsItem(settingsDelegate: settingsDelegate)

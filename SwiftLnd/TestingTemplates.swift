@@ -18,7 +18,8 @@ extension Info {
                 network: .testnet,
                 pubKey: "",
                 activeChannelCount: 2,
-                bestHeaderDate: Date()
+                bestHeaderDate: Date(),
+                uris: []
             )
         }
         
@@ -30,7 +31,8 @@ extension Info {
                 network: .mainnet,
                 pubKey: "",
                 activeChannelCount: 2,
-                bestHeaderDate: Date()
+                bestHeaderDate: Date(),
+                uris: []
             )
         }
     }

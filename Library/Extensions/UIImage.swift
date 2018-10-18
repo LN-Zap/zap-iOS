@@ -10,15 +10,7 @@ import SwiftBTC
 import UIKit
 
 extension UIImage {
-    static func qrCode(from paymentURI: PaymentURI) -> UIImage? {
-        if paymentURI.isCaseSensitive {
-            return qrCode(from: paymentURI.uriString)
-        }
-        
-        return qrCode(from: paymentURI.uriString.uppercased())
-    }
-
-    private static func qrCode(from string: String) -> UIImage? {
+    static func qrCode(from string: String) -> UIImage? {
         let stringData = string.data(using: .isoLatin1)
         let filter = CIFilter(name: "CIQRCodeGenerator")
         filter?.setValue(stringData, forKey: "inputMessage")
