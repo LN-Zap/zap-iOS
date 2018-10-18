@@ -7,7 +7,12 @@
 
 import UIKit
 
-class ModalDetailViewController: ModalViewController, QRCodeScannerChildViewController {
+protocol ModalDetailViewControllerDelegate: class {
+    func presentError(message: String)
+    func childWillDisappear()
+}
+
+class ModalDetailViewController: ModalViewController {
     private let closeButton: UIButton = {
         let closeButton = UIButton(type: .custom)
         closeButton.setImage(UIImage(named: "icon_close", in: Bundle.library, compatibleWith: nil), for: .normal)
@@ -36,7 +41,7 @@ class ModalDetailViewController: ModalViewController, QRCodeScannerChildViewCont
         return headerIconImageView
     }()
     
-    weak var delegate: QRCodeScannerChildDelegate? // TODO: rename delegate
+    weak var delegate: ModalDetailViewControllerDelegate?
     
     private func setupLayout(for view: UIView) {
         view.addAutolayoutSubview(backgroundView)

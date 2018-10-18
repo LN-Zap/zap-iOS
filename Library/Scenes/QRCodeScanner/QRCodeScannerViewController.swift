@@ -19,15 +19,6 @@ extension UIStoryboard {
     }
 }
 
-protocol QRCodeScannerChildViewController: class {
-    var delegate: QRCodeScannerChildDelegate? { get set }
-}
-
-protocol QRCodeScannerChildDelegate: class {
-    func presentError(message: String)
-    func childWillDisappear()
-}
-
 final class QRCodeScannerViewController: UIViewController {
     @IBOutlet private weak var qrCodeSuccessImageView: UIImageView!
     @IBOutlet private weak var pasteButton: UIButton!
@@ -78,9 +69,9 @@ final class QRCodeScannerViewController: UIViewController {
     }
     
     private func presentViewController(_ viewController: UIViewController) {
-        guard let qrCodeScannerChildViewController = viewController as? QRCodeScannerChildViewController else { fatalError("presented view is not of type QRCodeScannerChildViewController") }
-        qrCodeScannerChildViewController.delegate = self
-        present(viewController, animated: true, completion: nil)
+        guard let modalDetailViewController = viewController as? ModalDetailViewController else { fatalError("presented view is not of type ModalDetailViewController") }
+        modalDetailViewController.delegate = self
+        present(modalDetailViewController, animated: true, completion: nil)
     }
     
     @IBAction private func pasteButtonTapped(_ sender: Any) {
@@ -93,7 +84,7 @@ final class QRCodeScannerViewController: UIViewController {
     }
 }
 
-extension QRCodeScannerViewController: QRCodeScannerChildDelegate {
+extension QRCodeScannerViewController: ModalDetailViewControllerDelegate {
     func childWillDisappear() {
         scannerView.start()
     }
