@@ -30,12 +30,12 @@
 "unit.bitcoin.bit" = "Bit";
 "unit.bitcoin.satoshi" = "Satoši";
 
-"transaction.no_destination_address" = "No destination address";
+"transaction.no_destination_address" = "Nema odredišnu adresu";
 
 "view.amount_input.placeholder" = "Iznos";
 
-"scene.history.title" = "History";
-"scene.history.empty_state_label" = "0 transactions 🙁";
+"scene.history.title" = "Povijest";
+"scene.history.empty_state_label" = "0 transakcija 🙁";
 
 "scene.settings.title" = "Postavke";
 "scene.settings.section.wallet" = "Novčanik";
@@ -45,21 +45,21 @@
 "scene.settings.item.on_chain_request_address.title" = "Tip bitkoin adrese";
 "scene.settings.item.on_chain_request_address.bech32" = "Bech32";
 "scene.settings.item.on_chain_request_address.p2sh" = "P2SH";
-"scene.settings.item.manage_channels" = "Manage Channels";
-"scene.settings.item.node_uri" = "Node URI";
+"scene.settings.item.manage_channels" = "Upravljanje kanalima";
+"scene.settings.item.node_uri" = "URI čvora";
 "scene.settings.item.remove_remote_node" = "Resetiraj konfiguraciju udaljenog čvora";
-"scene.settings.item.change_pin" = "Change Pin";
+"scene.settings.item.change_pin" = "Promijeni Pin";
 "scene.settings.item.report_issue" = "Prijavi problem";
 "scene.settings.item.help" = "Trebate li pomoć?";
 
 "scene.request.title" = "Primanje";
 "scene.request.lightning_button" = "Munja";
-"scene.request.or_separator_label" = "or";
+"scene.request.or_separator_label" = "ili";
 "scene.request.on_chain_button" = "Na-lanac";
 "scene.request.generate_request_button" = "Generiraj zahtjev";
-"scene.request.lightning_header_title" = "Lightning Payment Request";
-"scene.request.on_chain_header_title" = "On Chain Payment Request";
-"scene.request.next_button_title" = "Next";
+"scene.request.lightning_header_title" = "Zahtjev za LN plaćanjem";
+"scene.request.on_chain_header_title" = "Zahtjev za plaćanjem na lanac";
+"scene.request.next_button_title" = "Slijedeće";
 
 "scene.channels.title" = "Kanali";
 "scene.channels.close.title" = "Zatvori kanal";
@@ -68,13 +68,13 @@
 "scene.channels.force_close.message" = "%@ nije spojen, jeste li sigurni da želite prisilno zatvoriti ovaj kanal? Morat ćete pričekati otprilike %@ za svoje novce?";
 "scene.channels.alert.cancel" = "Odustani";
 "scene.channels.alert.close" = "Zatvori";
-"scene.channels.alert.force_close" = "Force Close";
-"scene.channels.close_loading_view" = "Closing Channel";
+"scene.channels.alert.force_close" = "Prisilno zatvori";
+"scene.channels.close_loading_view" = "Zatvaranje kanala";
 "scene.channels.close_success.toast" = "Kanal se zatvara.";
 
 "scene.open_channel.title" = "Otvori kanal";
-"scene.open_channel.channel_uri_label" = "Channel:";
-"scene.open_channel.add_button" = "Open Channel";
+"scene.open_channel.channel_uri_label" = "Kanal:";
+"scene.open_channel.add_button" = "Otvori kanal";
 
 "scene.pin.biometric.fallback.title" = "Koristiti zaporku";
 "scene.pin.biometric.reason" = "Za pristup zaštićenim podacima";
@@ -89,9 +89,9 @@
 
 "scene.send.title" = "Slanje";
 "scene.send.send_button" = "Slanje";
-"scene.send.address_headline" = "To:";
-"scene.send.memo_headline" = "Memo:";
-"scene.send.sending" = "Sending...";
+"scene.send.address_headline" = "Za:";
+"scene.send.memo_headline" = "Bilješka:";
+"scene.send.sending" = "Slanje...";
 "scene.send.lightning.title" = "Send Lightning Payment";
 "scene.send.on_chain.title" = "Send On Chain";
 "scene.send.authentication_failed" = "Authentication failed";
