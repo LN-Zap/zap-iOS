@@ -1,16 +1,16 @@
-"generic.memo.placeholder" = "What is this for?";
-"generic.qr_code.copy_button" = "Copy";
-"generic.qr_code.copy_success_message" = "Address has been copied to clipboard.";
-"generic.pasteboard.invalid_address" = "Invalid Address";
-"generic.qr_code.share_button" = "Share";
-"generic.cancel" = "Cancel";
+"generic.memo.placeholder" = "Za što je ovo?";
+"generic.qr_code.copy_button" = "Kopiraj";
+"generic.qr_code.copy_success_message" = "Adresa je kopirana u međuspremnik.";
+"generic.pasteboard.invalid_address" = "Adresa nije valjana";
+"generic.qr_code.share_button" = "Dijeli";
+"generic.cancel" = "Odustani";
 
 "link.help" = "https://ln-zap.github.io/zap-tutorials/";
 "link.help.zapconnect" = "https://ln-zap.github.io/zap-tutorials/iOS-remote-node-setup";
 
 "error.wrong_uri_format" = "Nepoznat format poveznice.";
 "error.wrong_uri_network" = "Pokušali ste otvoriti poveznicu za %@ ali vaš je čvor povezan sa %@.";
-"error.block_explorer.unsupported_network" = "%@ does not support %@.";
+"error.block_explorer.unsupported_network" = "%@ ne podržava %@.";
 
 "rpc_connect_qrcode_error.btc_pay_expired" = "Čini se da je kôd istekao.";
 "rpc_connect_qrcode_error.btc_pay_configuration_broken" = "Ne mogu pročitati BTCPay konfiguracijsku datoteku.";
