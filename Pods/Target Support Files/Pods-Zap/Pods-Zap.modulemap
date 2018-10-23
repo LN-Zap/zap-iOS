@@ -1,6 +1,0 @@
-framework module Pods_Zap {
-  umbrella header "Pods-Zap-umbrella.h"
-
-  export *
-  module * { export * }
-}

@@ -1,0 +1,6 @@
+framework module Pods_Apps_Zap {
+  umbrella header "Pods-Apps-Zap-umbrella.h"
+
+  export *
+  module * { export * }
+}

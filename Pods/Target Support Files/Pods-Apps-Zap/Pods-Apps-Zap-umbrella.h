@@ -11,6 +11,6 @@
 #endif
 
 
-FOUNDATION_EXPORT double Pods_ZapVersionNumber;
-FOUNDATION_EXPORT const unsigned char Pods_ZapVersionString[];
+FOUNDATION_EXPORT double Pods_Apps_ZapVersionNumber;
+FOUNDATION_EXPORT const unsigned char Pods_Apps_ZapVersionString[];
 
