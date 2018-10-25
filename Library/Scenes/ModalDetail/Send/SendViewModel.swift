@@ -76,7 +76,11 @@ final class SendViewModel {
         }
         
         receiver = invoice.lightningPaymentRequest?.destination ?? invoice.bitcoinURI?.address ?? "-"
-        amount = invoice.lightningPaymentRequest?.amount ?? invoice.bitcoinURI?.amount
+        if
+            let amount = invoice.lightningPaymentRequest?.amount ?? invoice.bitcoinURI?.amount,
+            amount > 0 {
+            self.amount = amount
+        }
         memo = invoice.lightningPaymentRequest?.memo ?? invoice.bitcoinURI?.memo
         
         if lightningService.balanceService.onChain.value == 0 {
