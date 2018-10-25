@@ -1004,6 +1004,7 @@
 		A01009322014BD960001EF94 /* Scenes */ = {
 			isa = PBXGroup;
 			children = (
+				AD9BB2D7217F6F23009DC878 /* Authentication */,
 				AD667E4E21367E41007B9160 /* Background */,
 				A0DDC0702018C6D800AEFF94 /* ChannelList */,
 				AD680A9D20B07AC60018986B /* ConnectRemoteNode */,
@@ -1013,7 +1014,6 @@
 				A0DDC0732018C74F00AEFF94 /* History */,
 				ADCE01CA207B966200CA72E8 /* Loading */,
 				ADEEB5342134668B00D2F992 /* ModalPin */,
-				A0376B73201CD60F00F1FBEF /* NumericKeyPad */,
 				A02C9FBB202EE995009821B1 /* OpenChannel */,
 				A070D963202A3CFC000A8274 /* QRCodeDetail */,
 				AD99C9EB209072530061C565 /* QRCodeScanner */,
@@ -1086,18 +1086,6 @@
 				AD71EA4820E2318000256307 /* RemoteRPCConfiguration.swift */,
 			);
 			path = Lnd;
-			sourceTree = "<group>";
-		};
-		A0376B73201CD60F00F1FBEF /* NumericKeyPad */ = {
-			isa = PBXGroup;
-			children = (
-				A0F9AEE0206E3D8200E93DCA /* InputNumberFormatter.swift */,
-				A0376B74201CD61B00F1FBEF /* NumericKeyPad.storyboard */,
-				A0376B76201CD67700F1FBEF /* PinViewController.swift */,
-				ADF79365208E000C0086B2CA /* SetupPinViewController.swift */,
-				ADF79367208E09D00086B2CA /* SetupPinViewModel.swift */,
-			);
-			path = NumericKeyPad;
 			sourceTree = "<group>";
 		};
 		A0605F8A202C9D2F00EA903C /* Toast */ = {
@@ -1557,6 +1545,28 @@
 			path = QRCodeScanner;
 			sourceTree = "<group>";
 		};
+		AD9BB2D7217F6F23009DC878 /* Authentication */ = {
+			isa = PBXGroup;
+			children = (
+				A0376B74201CD61B00F1FBEF /* NumericKeyPad.storyboard */,
+				A0376B76201CD67700F1FBEF /* PinViewController.swift */,
+				ADF79365208E000C0086B2CA /* SetupPinViewController.swift */,
+				AD9BB2D8217F6F89009DC878 /* View Models */,
+			);
+			path = Authentication;
+			sourceTree = "<group>";
+		};
+		AD9BB2D8217F6F89009DC878 /* View Models */ = {
+			isa = PBXGroup;
+			children = (
+				A0E2690C202CC4E30069E83C /* AuthenticationViewModel.swift */,
+				A0F9AEE0206E3D8200E93DCA /* InputNumberFormatter.swift */,
+				ADF79367208E09D00086B2CA /* SetupPinViewModel.swift */,
+				AD667E562136E622007B9160 /* TimeLockStore.swift */,
+			);
+			path = "View Models";
+			sourceTree = "<group>";
+		};
 		AD9E243C20A367E00014F9FA /* Debug */ = {
 			isa = PBXGroup;
 			children = (
@@ -1749,13 +1759,11 @@
 			isa = PBXGroup;
 			children = (
 				AD667E4621359D79007B9160 /* AuthenticationCoordinator.swift */,
-				A0E2690C202CC4E30069E83C /* AuthenticationViewModel.swift */,
 				AD667E4821367A35007B9160 /* BackgroundCoordinator.swift */,
 				ADEDBB8D20C2D70B00B71F17 /* MainCoordinator.swift */,
 				ADEDBB9120C2FC3200B71F17 /* PinSetupCoordinator.swift */,
 				AD8B13F020C0582D0091F9DA /* RootCoordinator.swift */,
 				ADEDBB8B20C2D6A700B71F17 /* SetupCoordinator.swift */,
-				AD667E562136E622007B9160 /* TimeLockStore.swift */,
 			);
 			path = Coordinators;
 			sourceTree = "<group>";
@@ -3904,7 +3912,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
-				PRODUCT_BUNDLE_IDENTIFIER = com.jackmallers.ZapPos;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.jackmallers.zap-pos";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = 2;
@@ -3924,7 +3932,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
-				PRODUCT_BUNDLE_IDENTIFIER = com.jackmallers.ZapPos;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.jackmallers.zap-pos";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = 2;
@@ -3943,7 +3951,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 11.2;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				MTL_FAST_MATH = YES;
-				PRODUCT_BUNDLE_IDENTIFIER = com.jackmallers.ZapPos;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.jackmallers.zap-pos";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = 2;

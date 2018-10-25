@@ -55,7 +55,7 @@ final class AuthenticationCoordinator {
         }
         
         viewController.modalTransitionStyle = .crossDissolve
-        authenticationWindow?.rootViewController = viewController //RootViewController()
+        authenticationWindow?.rootViewController = viewController
         
         self.viewController = viewController
     }
