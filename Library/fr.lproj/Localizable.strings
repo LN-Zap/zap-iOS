@@ -1,7 +1,7 @@
 "generic.memo.placeholder" = "À quoi ça sert?";
 "generic.qr_code.copy_button" = "Copier";
-"generic.qr_code.copy_success_message" = "Address has been copied to clipboard.";
-"generic.pasteboard.invalid_address" = "Invalid Address";
+"generic.qr_code.copy_success_message" = "L'adresse a été copiée dans le presse-papiers.";
+"generic.pasteboard.invalid_address" = "Adresse non valide";
 "generic.qr_code.share_button" = "Partager";
 "generic.cancel" = "Annuler";
 
@@ -186,7 +186,7 @@
 "scene.modal_pin.description" = "Please enter your passcode to continue";
 
 "scene.history.cell.payment_sent" = "Paiement envoyé";
-"scene.history.cell.payment_received" = "Payment received";
+"scene.history.cell.payment_received" = "Paiement reçu";
 "scene.history.cell.payment_failed" = "Payment failed (%@)";
 "scene.history.cell.invoice_created" = "Payment Request created";
 "scene.history.cell.channel_opened" = "Canaux ouverts";
@@ -195,11 +195,11 @@
 "scene.history.cell.remote_force_close_channel" = "Remote force close Channel";
 "scene.history.cell.breach_close_channel" = "Breach close Channel";
 "scene.history.cell.close_channel_funding_canceled" = "Close Channel (funding canceled)";
-"scene.history.cell.channel_abandoned" = "Channel abandoned";
-"scene.history.cell.transaction_sent" = "Payment sent";
-"scene.history.cell.transaction_received" = "Payment received";
+"scene.history.cell.channel_abandoned" = "Canal abandonné";
+"scene.history.cell.transaction_sent" = "Paiement envoyé";
+"scene.history.cell.transaction_received" = "Paiement reçu";
 "scene.history.cell.label.new" = "new";
-"scene.history.cell.label.error" = "error";
+"scene.history.cell.label.error" = "erreur";
 "scene.history.cell.action.try_again" = "Try Again";
 
 "scene.node_uri.title" = "Connect to Node";
