@@ -95,6 +95,7 @@
 "scene.send.lightning.title" = "Pošalji LN plaćanje";
 "scene.send.on_chain.title" = "Pošalji plaćanje na lanac";
 "scene.send.authentication_failed" = "Provjera autentičnosti nije uspjela";
+"scene.send.maximum_fee" = "Expected Fee:";
 
 "scene.connect_remote_node.title" = "Povezivanje udaljenog čvora";
 "scene.connect_remote_node.empty_state" = "Skenirajte QRCode generiran sa zapconnect ili zalijepite kôd veze za povezivanje na tvoj čvor.";
