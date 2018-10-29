@@ -59,6 +59,7 @@ final class SendViewModel {
     
     var amount: Satoshi? {
         didSet {
+            guard oldValue != amount else { return }
             needsFeeUpdate = true
             updateLightningFee()
             updateSendButtonEnabled()
