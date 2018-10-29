@@ -15,11 +15,6 @@ public protocol AmountInputViewDelegate: class {
 }
 
 public final class AmountInputView: UIControl {
-    public enum AmountInputViewContext {
-        case app
-        case messages
-    }
-    
     @IBOutlet private var contentView: UIView!
     @IBOutlet private weak var stackView: UIStackView!
     @IBOutlet private weak var topViewBackground: UIView!
@@ -41,17 +36,6 @@ public final class AmountInputView: UIControl {
             amountTextField.text = formattedAmount
             updateValidityIndicator()
             sendActions(for: .valueChanged)
-        }
-    }
-    
-    public var context: AmountInputViewContext = .app {
-        didSet {
-            switch context {
-            case .app:
-                amountTextField.becomeFirstResponder()
-            case .messages:
-                bottomViewBackground.isHidden = true
-            }
         }
     }
     
