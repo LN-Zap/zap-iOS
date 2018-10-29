@@ -95,6 +95,7 @@
 "scene.send.lightning.title" = "Send Lightning Payment";
 "scene.send.on_chain.title" = "Send On Chain";
 "scene.send.authentication_failed" = "Authentication failed";
+"scene.send.maximum_fee" = "Expected Fee:";
 
 "scene.connect_remote_node.title" = "התחבר לnode מרוחק";
 "scene.connect_remote_node.empty_state" = "סרוק את הQRCode שנוצר באמצעות zapconnect או הדבק את קוד החיבור כדי להתחבר אל הnode שלך.";
