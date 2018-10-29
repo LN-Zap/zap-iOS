@@ -95,6 +95,7 @@
 "scene.send.lightning.title" = "通过闪电网络支付";
 "scene.send.on_chain.title" = "链上交易";
 "scene.send.authentication_failed" = "身份验证失败";
+"scene.send.maximum_fee" = "Expected Fee:";
 
 "scene.connect_remote_node.title" = "连接远程节点";
 "scene.connect_remote_node.empty_state" = "使用 zapconnect 扫描 QRCode 生成或粘贴连接代码以连接到您的节点。";
