@@ -6,6 +6,7 @@
 //
 
 import Lightning
+import SwiftBTC
 import SwiftLnd
 import UIKit
 
@@ -14,7 +15,6 @@ final class SendViewController: ModalDetailViewController {
     private let authenticationViewModel: AuthenticationViewModel
 
     private var didViewAppear = false
-    private weak var sendButton: CallbackButton?
     
     init(viewModel: SendViewModel, authenticationViewModel: AuthenticationViewModel) {
         self.viewModel = viewModel
@@ -29,12 +29,6 @@ final class SendViewController: ModalDetailViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        let amountInputView = AmountInputView()
-        amountInputView.backgroundColor = UIColor.Zap.background
-        amountInputView.textColor = UIColor.Zap.white
-        amountInputView.delegate = self
-        amountInputView.addTarget(self, action: #selector(amountChanged(sender:)), for: .valueChanged)
-        
         contentStackView.addArrangedElement(.label(text: viewModel.method.headline, style: Style.Label.headline.with({ $0.textAlignment = .center })))
         contentStackView.addArrangedElement(.separator)
         contentStackView.addArrangedElement(.horizontalStackView(compressionResistant: .first, content: [
@@ -42,8 +36,8 @@ final class SendViewController: ModalDetailViewController {
             .label(text: viewModel.receiver, style: Style.Label.body)
         ]))
         contentStackView.addArrangedElement(.separator)
-        contentStackView.addArrangedSubview(amountInputView)
-        contentStackView.addArrangedElement(.separator)
+        
+        addAmountInputView()
         
         if let memo = viewModel.memo {
             contentStackView.addArrangedElement(.verticalStackView(content: [
@@ -53,9 +47,39 @@ final class SendViewController: ModalDetailViewController {
             contentStackView.addArrangedElement(.separator)
         }
         
-        sendButton = contentStackView.addArrangedElement(.customHeight(56, element: .button(title: "scene.send.send_button".localized, style: Style.Button.background, completion: { [weak self] _ in
+        let sendButton = contentStackView.addArrangedElement(.customHeight(56, element: .button(title: "scene.send.send_button".localized, style: Style.Button.background, completion: { [weak self] _ in
             self?.sendButtonTapped()
         }))) as? CallbackButton
+        
+        viewModel.sendButtonEnabled
+            .observeOn(DispatchQueue.main)
+            .observeNext {
+                sendButton?.isEnabled = $0
+            }
+            .dispose(in: reactive.bag)
+        
+        setHeaderImage(viewModel.method.headerImage)
+    }
+    
+    private func addAmountInputView() {
+        let amountInputView = AmountInputView()
+        amountInputView.backgroundColor = UIColor.Zap.background
+        amountInputView.textColor = UIColor.Zap.white
+        amountInputView.delegate = self
+        amountInputView.addTarget(self, action: #selector(amountChanged(sender:)), for: .valueChanged)
+
+        contentStackView.addArrangedSubview(amountInputView)
+        
+        if case .lightning = viewModel.method {
+            contentStackView.setCustomSpacing(0, after: amountInputView)
+            let stackView = contentStackView.addArrangedElement(.horizontalStackView(compressionResistant: .first, content: [
+                .label(text: "scene.send.maximum_fee".localized, style: Style.Label.footnote),
+                .customView(LoadingAmountView(loadable: viewModel.lightningFee))
+            ]))
+            stackView.subviews[0].setContentHuggingPriority(.required, for: .horizontal)
+        }
+        
+        contentStackView.addArrangedElement(.separator)
         
         if let amount = viewModel.amount {
             amountInputView.satoshis = amount
@@ -65,10 +89,7 @@ final class SendViewController: ModalDetailViewController {
             }
         } else {
             amountInputView.becomeFirstResponder()
-            sendButton?.isEnabled = false
         }
-
-        setHeaderImage(viewModel.method.headerImage)
     }
 
     private func authenticate(completion: @escaping (Result<Success>) -> Void) {
@@ -87,13 +108,11 @@ final class SendViewController: ModalDetailViewController {
     }
     
     private func sendButtonTapped() {
-        sendButton?.isEnabled = false
         authenticate { [weak self] result in
             switch result {
             case .success:
                 self?.send()
             case .failure:
-                self?.sendButton?.isEnabled = true
                 self?.presentErrorToast("scene.send.authentication_failed".localized)
             }
         }
@@ -108,7 +127,6 @@ final class SendViewController: ModalDetailViewController {
                 case .success:
                     self?.dismissParent()
                 case .failure(let error):
-                    self?.sendButton?.isEnabled = true
                     self?.presentErrorToast(error.localizedDescription)
                 }
             }
@@ -126,7 +144,6 @@ final class SendViewController: ModalDetailViewController {
     
     @objc private func amountChanged(sender: AmountInputView) {
         viewModel.amount = sender.satoshis
-        sendButton?.isEnabled = sender.satoshis > 0
     }
 }
 

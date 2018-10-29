@@ -25,16 +25,6 @@ public final class TransactionService {
         self.persistence = persistence
     }
     
-    public func send(_ invoice: BitcoinInvoice, amount: Satoshi, completion: @escaping (Result<Success>) -> Void) {
-        if let paymentRequest = invoice.lightningPaymentRequest {
-            sendPayment(paymentRequest, amount: amount, completion: completion)
-        } else if let bitcoinURI = invoice.bitcoinURI {
-            sendCoins(bitcoinURI: bitcoinURI, amount: amount, completion: completion)
-        } else {
-            fatalError("There should not be an invoice without either a paymentRequest or bitcoinURI")
-        }
-    }
-    
     public func addInvoice(amount: Satoshi, memo: String?, completion: @escaping (Result<String>) -> Void) {
         api.addInvoice(amount: amount, memo: memo, completion: completion)
     }
@@ -52,9 +42,17 @@ public final class TransactionService {
         api.decodePaymentRequest(paymentRequest, completion: completion)
     }
     
-    private func sendPayment(_ paymentRequest: PaymentRequest, amount: Satoshi, completion: @escaping (Result<Success>) -> Void) {
-        api.sendPayment(paymentRequest, amount: amount) { [weak self] in
-            
+    public func upperBoundLightningFees(for paymentRequest: PaymentRequest, amount: Satoshi, completion: @escaping (Result<(amount: Satoshi, fee: Satoshi?)>) -> Void) {
+        api.routes(destination: paymentRequest.destination, amount: amount) { result in
+            let totalFees = result.value?
+                .max(by: { $0.totalFees < $1.totalFees })?
+                .totalFees
+            completion(.success((amount: amount, fee: totalFees)))
+        }
+    }
+    
+    public func sendPayment(_ paymentRequest: PaymentRequest, amount: Satoshi, maxFee: Satoshi, completion: @escaping (Result<Success>) -> Void) {
+        api.sendPayment(paymentRequest, amount: amount, maxFee: maxFee) { [weak self] in
             switch $0 {
             case .success(let payment):
                 self?.balanceService.update()
@@ -68,7 +66,7 @@ public final class TransactionService {
         }
     }
     
-    private func sendCoins(bitcoinURI: BitcoinURI, amount: Satoshi, completion: @escaping (Result<Success>) -> Void) {
+    public func sendCoins(bitcoinURI: BitcoinURI, amount: Satoshi, completion: @escaping (Result<Success>) -> Void) {
         let destinationAddress = bitcoinURI.bitcoinAddress
         api.sendCoins(address: destinationAddress, amount: amount) { [historyService] in
             if case .success(let txHash) = $0 {
@@ -78,4 +76,9 @@ public final class TransactionService {
             completion($0.map { _ in Success() })
         }
     }
+}
+
+struct LightningPayment {
+    let paymentRequest: PaymentRequest
+    let routes: [Route]
 }

@@ -10,11 +10,6 @@ import SwiftBTC
 @testable import SwiftLnd
 import XCTest
 
-struct MockBitcoinInvoice: BitcoinInvoice {
-    let lightningPaymentRequest: PaymentRequest?
-    let bitcoinURI: BitcoinURI?
-}
-
 // swiftlint:disable force_try force_unwrapping
 class TransactionServiceTests: XCTestCase {
     
@@ -32,14 +27,11 @@ class TransactionServiceTests: XCTestCase {
         
         let testAddress = BitcoinAddress(string: "mwthp1qAAisrqMiKqZG7TMGAgMNJTg5hbD")!
 
-        let bitcoinURI = BitcoinURI(address: testAddress, amount: nil, memo: memo, lightningFallback: nil)
-        let invoice = MockBitcoinInvoice(lightningPaymentRequest: nil, bitcoinURI: bitcoinURI)
+        let bitcoinURI = BitcoinURI(address: testAddress, amount: nil, memo: memo, lightningFallback: nil)!
         
         let expectation = XCTestExpectation(description: "Send on chain transaction")
 
-        lightningService.transactionService.send(invoice, amount: amount) { result in
-            print(result)
-            
+        lightningService.transactionService.sendCoins(bitcoinURI: bitcoinURI, amount: amount) { _ in
             mockApi.subscribeTransactionsCallback?(.success(Transaction(id: txid, amount: amount + fee, date: Date(), fees: fee, destinationAddresses: [testAddress], blockHeight: nil)))
             
             let transactions = try! TransactionEvent.events(database: mockPersistence.connection())

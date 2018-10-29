@@ -5,6 +5,7 @@
 //  Copyright © 2018 Zap. All rights reserved.
 //
 
+import Bond
 import Foundation
 import Lightning
 import SwiftBTC
@@ -22,6 +23,7 @@ extension InvoiceError: LocalizedError {
 }
 
 final class SendViewModel {
+
     enum Constants {
         fileprivate static let minimumOnChainTransaction: Satoshi = 547
     }
@@ -52,25 +54,49 @@ final class SendViewModel {
         }
     }
     
-    private let invoice: BitcoinInvoice
+    let lightningFee = Observable<Loadable<Satoshi?>>(.loading)
     let method: SendMethod
     
-    var amount: Satoshi?
+    var amount: Satoshi? {
+        didSet {
+            needsFeeUpdate = true
+            updateLightningFee()
+            updateSendButtonEnabled()
+        }
+    }
+    var isSending = false {
+        didSet {
+            updateSendButtonEnabled()
+        }
+    }
+    
     let receiver: String
     let memo: String?
-    
+    let sendButtonEnabled = Observable(false)
     let validRange: ClosedRange<Satoshi>?
-
+    var needsFeeUpdate = true
+    
     private let lightningService: LightningService
     
+    lazy var debounceFetchFee = {
+        DispatchQueue.main.debounce(interval: 275, action: fetchLightningFee)
+    }()
+    
     init(invoice: BitcoinInvoice, lightningService: LightningService) {
-        self.invoice = invoice
         self.lightningService = lightningService
         
         if let paymentRequest = invoice.lightningPaymentRequest {
             method = .lightning(paymentRequest)
+            
+            validRange = 1...LndConstants.maxLightningPaymentAllowed
         } else if let bitcoinURI = invoice.bitcoinURI {
             method = .onChain(bitcoinURI)
+            
+            if lightningService.balanceService.onChain.value == 0 {
+                validRange = nil
+            } else {
+                validRange = Constants.minimumOnChainTransaction...lightningService.balanceService.onChain.value
+            }
         } else {
             fatalError("Invalid Invoice")
         }
@@ -83,15 +109,78 @@ final class SendViewModel {
         }
         memo = invoice.lightningPaymentRequest?.memo ?? invoice.bitcoinURI?.memo
         
-        if lightningService.balanceService.onChain.value == 0 {
-            validRange = nil
+        updateLightningFee()
+    }
+    
+    private func updateSendButtonEnabled() {
+        sendButtonEnabled.value = isSendButtonEnabled
+    }
+    
+    private var isAmountValid: Bool {
+        guard
+            let amount = amount,
+            let validRange = validRange
+            else { return false }
+        return validRange.contains(amount)
+    }
+    
+    private var isSendButtonEnabled: Bool {
+        guard isAmountValid && !isSending else { return false }
+        
+        switch method {
+        case .onChain:
+            return true
+        case .lightning:
+            return !needsFeeUpdate
+        }
+    }
+    
+    private func updateLightningFee() {
+        guard case .lightning = method else { return }
+        
+        if isAmountValid {
+            needsFeeUpdate = true
+            lightningFee.value = .loading
+            updateSendButtonEnabled()
+            debounceFetchFee()
         } else {
-            validRange = Constants.minimumOnChainTransaction...lightningService.balanceService.onChain.value
+            lightningFee.value = .element(nil)
+            needsFeeUpdate = false
+        }
+    }
+    
+    private func fetchLightningFee() {
+        guard
+            case .lightning(let paymentRequest) = method,
+            let amount = amount
+            else { return }
+
+        lightningService.transactionService.upperBoundLightningFees(for: paymentRequest, amount: amount) { [weak self] in
+            guard $0.value?.amount == self?.amount else { return }
+            
+            self?.needsFeeUpdate = false
+            self?.lightningFee.value = .element($0.value?.fee)
+            self?.updateSendButtonEnabled()
         }
     }
     
     func send(completion: @escaping (Result<Success>) -> Void) {
         guard let amount = amount else { return }
-        lightningService.transactionService.send(invoice, amount: amount, completion: completion)
+        
+        isSending = true
+        
+        switch method {
+        case .lightning(let paymentRequest):
+            guard
+                case .element(let optionalFee) = lightningFee.value,
+                let fee = optionalFee
+                else { return }
+            
+            let maxFee = min(fee * 2, 100)
+            
+            lightningService.transactionService.sendPayment(paymentRequest, amount: amount, maxFee: maxFee, completion: completion)
+        case .onChain(let bitcoinURI):
+            lightningService.transactionService.sendCoins(bitcoinURI: bitcoinURI, amount: amount, completion: completion)
+        }
     }
 }
