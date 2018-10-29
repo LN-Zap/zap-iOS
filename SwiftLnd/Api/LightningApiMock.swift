@@ -31,6 +31,7 @@ final class LightningApiMock: LightningApiProtocol {
     private let closedChannels: [ChannelCloseSummary]?
     private let subscribeInvoices: Invoice?
     private let invoices: [Invoice]?
+    private let routes: [Route]?
     
     public var subscribeTransactionsCallback: ((Result<Transaction>) -> Void)?
     
@@ -56,7 +57,8 @@ final class LightningApiMock: LightningApiProtocol {
         graphTopologyUpdate: GraphTopologyUpdate? = nil,
         closedChannels: [ChannelCloseSummary]? = nil,
         subscribeInvoices: Invoice? = nil,
-        invoices: [Invoice]? = nil
+        invoices: [Invoice]? = nil,
+        routes: [Route]? = nil
         ) {
         self.info = info
         self.nodeInfo = nodeInfo
@@ -80,6 +82,7 @@ final class LightningApiMock: LightningApiProtocol {
         self.closedChannels = closedChannels
         self.subscribeInvoices = subscribeInvoices
         self.invoices = invoices
+        self.routes = routes
     }
     
     func info(completion: @escaping (Result<Info>) -> Void) {
@@ -134,7 +137,7 @@ final class LightningApiMock: LightningApiProtocol {
         completion(Result(value: decodePaymentRequest, error: LndApiError.unknownError))
     }
     
-    func sendPayment(_ paymentRequest: PaymentRequest, amount: Satoshi?, completion: @escaping (Result<Payment>) -> Void) {
+    func sendPayment(_ paymentRequest: PaymentRequest, amount: Satoshi?, maxFee: Satoshi?, completion: @escaping (Result<Payment>) -> Void) {
         completion(Result(value: sendPayment, error: LndApiError.unknownError))
     }
     
@@ -172,6 +175,10 @@ final class LightningApiMock: LightningApiProtocol {
     
     func newAddress(type: OnChainRequestAddressType, completion: @escaping (Result<BitcoinAddress>) -> Void) {
         completion(Result(value: newAddress, error: LndApiError.unknownError))
+    }
+    
+    func routes(destination: String, amount: Satoshi, completion: @escaping (Result<[Route]>) -> Void) {
+        completion(Result(value: routes, error: LndApiError.unknownError))
     }
 }
 

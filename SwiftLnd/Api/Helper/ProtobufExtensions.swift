@@ -71,10 +71,14 @@ extension Lnrpc_SendCoinsRequest {
 }
 
 extension Lnrpc_SendRequest {
-    init(paymentRequest: String, amount: Satoshi?) {
+    init(paymentRequest: String, amount: Satoshi?, maxFee: Satoshi?) {
         self.paymentRequest = paymentRequest
         if let amount = amount {
             self.amt = Int64(truncating: amount as NSDecimalNumber)
+        }
+        if let maxFee = maxFee {
+            self.feeLimit = Lnrpc_FeeLimit()
+            self.feeLimit.fixed = Int64(truncating: maxFee as NSDecimalNumber)
         }
     }
 }
@@ -87,6 +91,14 @@ extension Lnrpc_CloseChannelRequest {
             self.channelPoint.fundingTxidBytes = fundingTxidBytes
         }
         self.force = force
+    }
+}
+
+extension Lnrpc_QueryRoutesRequest {
+    init(destination: String, amount: Satoshi) {
+        pubKey = destination
+        amt = Int64(truncating: amount as NSDecimalNumber)
+        numRoutes = 15
     }
 }
 

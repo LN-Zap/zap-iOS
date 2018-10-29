@@ -11,5 +11,5 @@ import SwiftBTC
 public enum LndConstants {
     public static let minChannelSize: Satoshi = 20000
     public static let maxChannelSize: Satoshi = 16777216
-    public static let maxPaymentAllowed: Satoshi = 4294967
+    public static let maxLightningPaymentAllowed: Satoshi = 4294967
 }

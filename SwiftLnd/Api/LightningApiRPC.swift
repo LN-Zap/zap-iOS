@@ -76,6 +76,13 @@ public final class LightningApiRPC: LightningApiProtocol {
         }))
     }
     
+    public func routes(destination: String, amount: Satoshi, completion: @escaping (Result<[Route]>) -> Void) {
+        let request = Lnrpc_QueryRoutesRequest(destination: destination, amount: amount)
+        _ = try? rpc.queryRoutes(request, completion: result(completion, map: {
+            $0.routes.map { Route(route: $0) }
+        }))
+    }
+    
     public func channels(completion: @escaping (Result<[Channel]>) -> Void) {
         _ = try? rpc.listChannels(Lnrpc_ListChannelsRequest(), completion: result(completion, map: {
             $0.channels.compactMap { $0.channelModel }
@@ -125,8 +132,8 @@ public final class LightningApiRPC: LightningApiProtocol {
         }))
     }
     
-    public func sendPayment(_ paymentRequest: PaymentRequest, amount: Satoshi?, completion: @escaping (Result<Payment>) -> Void) {
-        let request = Lnrpc_SendRequest(paymentRequest: paymentRequest.raw, amount: amount)
+    public func sendPayment(_ paymentRequest: PaymentRequest, amount: Satoshi?, maxFee: Satoshi?, completion: @escaping (Result<Payment>) -> Void) {
+        let request = Lnrpc_SendRequest(paymentRequest: paymentRequest.raw, amount: amount, maxFee: maxFee)
         _ = try? rpc.sendPaymentSync(request) { response, error in
             if !error.success {
                 completion(.failure(LndApiError.unknownError))
