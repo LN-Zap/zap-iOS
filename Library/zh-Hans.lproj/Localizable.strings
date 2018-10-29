@@ -1,5 +1,7 @@
 "generic.memo.placeholder" = "这是什么？";
 "generic.qr_code.copy_button" = "复制";
+"generic.qr_code.copy_success_message" = "Address has been copied to clipboard.";
+"generic.pasteboard.invalid_address" = "Invalid Address";
 "generic.qr_code.share_button" = "分享";
 "generic.cancel" = "取消";
 
@@ -44,6 +46,7 @@
 "scene.settings.item.on_chain_request_address.bech32" = "Bech32";
 "scene.settings.item.on_chain_request_address.p2sh" = "P2SH";
 "scene.settings.item.manage_channels" = "Manage Channels";
+"scene.settings.item.node_uri" = "Node URI";
 "scene.settings.item.remove_remote_node" = "重置节点";
 "scene.settings.item.change_pin" = "更改 Pin码";
 "scene.settings.item.report_issue" = "报告问题";
@@ -92,6 +95,7 @@
 "scene.send.lightning.title" = "通过闪电网络支付";
 "scene.send.on_chain.title" = "链上交易";
 "scene.send.authentication_failed" = "身份验证失败";
+"scene.send.maximum_fee" = "Expected Fee:";
 
 "scene.connect_remote_node.title" = "连接远程节点";
 "scene.connect_remote_node.empty_state" = "使用 zapconnect 扫描 QRCode 生成或粘贴连接代码以连接到您的节点。";
@@ -198,3 +202,7 @@
 "scene.history.cell.label.new" = "new";
 "scene.history.cell.label.error" = "error";
 "scene.history.cell.action.try_again" = "Try Again";
+
+"scene.node_uri.title" = "Connect to Node";
+"scene.node_uri.alias_label" = "Alias";
+"scene.node_uri.uri_label" = "URI";

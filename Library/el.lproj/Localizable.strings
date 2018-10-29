@@ -1,5 +1,7 @@
 "generic.memo.placeholder" = "Τι είναι αυτό για;";
 "generic.qr_code.copy_button" = "Αντίγραφο";
+"generic.qr_code.copy_success_message" = "Address has been copied to clipboard.";
+"generic.pasteboard.invalid_address" = "Invalid Address";
 "generic.qr_code.share_button" = "Μοιράζεσαι";
 "generic.cancel" = "Cancel";
 
@@ -44,6 +46,7 @@
 "scene.settings.item.on_chain_request_address.bech32" = "Bech32";
 "scene.settings.item.on_chain_request_address.p2sh" = "P2SH";
 "scene.settings.item.manage_channels" = "Manage Channels";
+"scene.settings.item.node_uri" = "Node URI";
 "scene.settings.item.remove_remote_node" = "Επαναφορά διαμόρφωσης απομακρυσμένου κόμβου";
 "scene.settings.item.change_pin" = "Change Pin";
 "scene.settings.item.report_issue" = "Αναφέρετε ένα πρόβλημα";
@@ -92,6 +95,7 @@
 "scene.send.lightning.title" = "Αποστολή πληρωμής Lightning";
 "scene.send.on_chain.title" = "Στείλτε στο blockchain";
 "scene.send.authentication_failed" = "Authentication failed";
+"scene.send.maximum_fee" = "Expected Fee:";
 
 "scene.connect_remote_node.title" = "Σύνδεση απομακρυσμένου κόμβου";
 "scene.connect_remote_node.empty_state" = "Σάρωση του Κώδικα QR δημιουργήστε με zapconnect ή επικολλήστε τον κωδικό σύνδεσης για να συνδεθείτε με τον κόμβο σας.";
@@ -198,3 +202,7 @@
 "scene.history.cell.label.new" = "new";
 "scene.history.cell.label.error" = "error";
 "scene.history.cell.action.try_again" = "Try Again";
+
+"scene.node_uri.title" = "Connect to Node";
+"scene.node_uri.alias_label" = "Alias";
+"scene.node_uri.uri_label" = "URI";

@@ -1,5 +1,7 @@
 "generic.memo.placeholder" = "Do czego to służy?";
 "generic.qr_code.copy_button" = "Kopiuj";
+"generic.qr_code.copy_success_message" = "Address has been copied to clipboard.";
+"generic.pasteboard.invalid_address" = "Invalid Address";
 "generic.qr_code.share_button" = "Udostępnij";
 "generic.cancel" = "Cancel";
 
@@ -44,6 +46,7 @@
 "scene.settings.item.on_chain_request_address.bech32" = "Bech32";
 "scene.settings.item.on_chain_request_address.p2sh" = "P2SH";
 "scene.settings.item.manage_channels" = "Manage Channels";
+"scene.settings.item.node_uri" = "Node URI";
 "scene.settings.item.remove_remote_node" = "Zresetuj ustawienia zdalnego node'a";
 "scene.settings.item.change_pin" = "Change Pin";
 "scene.settings.item.report_issue" = "Zgłoś problem";
@@ -92,6 +95,7 @@
 "scene.send.lightning.title" = "Wyślij płatność LN";
 "scene.send.on_chain.title" = "Wyślij płatność blokchain";
 "scene.send.authentication_failed" = "Authentication failed";
+"scene.send.maximum_fee" = "Expected Fee:";
 
 "scene.connect_remote_node.title" = "Połącz Ze Zdalnym Nodem";
 "scene.connect_remote_node.empty_state" = "Zeskanuj kode QR wygenerowany przez zapconnect lub wklej kod do połączenia ze swoim nodem.";
@@ -198,3 +202,7 @@
 "scene.history.cell.label.new" = "new";
 "scene.history.cell.label.error" = "error";
 "scene.history.cell.action.try_again" = "Try Again";
+
+"scene.node_uri.title" = "Connect to Node";
+"scene.node_uri.alias_label" = "Alias";
+"scene.node_uri.uri_label" = "URI";

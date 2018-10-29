@@ -1,5 +1,7 @@
 "generic.memo.placeholder" = "À quoi ça sert?";
 "generic.qr_code.copy_button" = "Copier";
+"generic.qr_code.copy_success_message" = "L'adresse a été copiée dans le presse-papiers.";
+"generic.pasteboard.invalid_address" = "Adresse non valide";
 "generic.qr_code.share_button" = "Partager";
 "generic.cancel" = "Annuler";
 
@@ -44,6 +46,7 @@
 "scene.settings.item.on_chain_request_address.bech32" = "Bech32";
 "scene.settings.item.on_chain_request_address.p2sh" = "P2SH";
 "scene.settings.item.manage_channels" = "Manage Channels";
+"scene.settings.item.node_uri" = "Node URI";
 "scene.settings.item.remove_remote_node" = "Reset Remote Node Configuration";
 "scene.settings.item.change_pin" = "Change Pin";
 "scene.settings.item.report_issue" = "Signaler un problème";
@@ -92,6 +95,7 @@
 "scene.send.lightning.title" = "Send Lightning Payment";
 "scene.send.on_chain.title" = "Send On Chain";
 "scene.send.authentication_failed" = "Authentication failed";
+"scene.send.maximum_fee" = "Expected Fee:";
 
 "scene.connect_remote_node.title" = "Connect Remote Node";
 "scene.connect_remote_node.empty_state" = "Numérisez le code QR généré avec zapconnect ou collez le code de connexion pour vous connecter à votre nœud.";
@@ -183,7 +187,7 @@
 "scene.modal_pin.description" = "Please enter your passcode to continue";
 
 "scene.history.cell.payment_sent" = "Paiement envoyé";
-"scene.history.cell.payment_received" = "Payment received";
+"scene.history.cell.payment_received" = "Paiement reçu";
 "scene.history.cell.payment_failed" = "Payment failed (%@)";
 "scene.history.cell.invoice_created" = "Payment Request created";
 "scene.history.cell.channel_opened" = "Canaux ouverts";
@@ -192,9 +196,13 @@
 "scene.history.cell.remote_force_close_channel" = "Remote force close Channel";
 "scene.history.cell.breach_close_channel" = "Breach close Channel";
 "scene.history.cell.close_channel_funding_canceled" = "Close Channel (funding canceled)";
-"scene.history.cell.channel_abandoned" = "Channel abandoned";
-"scene.history.cell.transaction_sent" = "Payment sent";
-"scene.history.cell.transaction_received" = "Payment received";
+"scene.history.cell.channel_abandoned" = "Canal abandonné";
+"scene.history.cell.transaction_sent" = "Paiement envoyé";
+"scene.history.cell.transaction_received" = "Paiement reçu";
 "scene.history.cell.label.new" = "new";
-"scene.history.cell.label.error" = "error";
+"scene.history.cell.label.error" = "erreur";
 "scene.history.cell.action.try_again" = "Try Again";
+
+"scene.node_uri.title" = "Connect to Node";
+"scene.node_uri.alias_label" = "Alias";
+"scene.node_uri.uri_label" = "URI";
