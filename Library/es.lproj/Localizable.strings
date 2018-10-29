@@ -95,6 +95,7 @@
 "scene.send.lightning.title" = "Enviar pago \"Lightning\"";
 "scene.send.on_chain.title" = "Enviar en cadena";
 "scene.send.authentication_failed" = "Error de autenticación";
+"scene.send.maximum_fee" = "Expected Fee:";
 
 "scene.connect_remote_node.title" = "Conecte el nodo remoto";
 "scene.connect_remote_node.empty_state" = "Escanee el código QR generado con zapconnect o pegue el código de conexión para conectarse a su nodo.";
