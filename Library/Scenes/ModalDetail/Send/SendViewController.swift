@@ -82,7 +82,7 @@ final class SendViewController: ModalDetailViewController {
         contentStackView.addArrangedElement(.separator)
         
         if let amount = viewModel.amount {
-            amountInputView.satoshis = amount
+            amountInputView.updateAmount(amount)
             amountInputView.setKeypad(hidden: true, animated: false)
             if case .lightning = viewModel.method {
                 amountInputView.isEditable = false

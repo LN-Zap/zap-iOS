@@ -31,26 +31,12 @@ public final class AmountInputView: UIControl {
     
     public weak var delegate: AmountInputViewDelegate?
     
-    private var formattedAmount: String? {
+    var validRange: ClosedRange<Satoshi>?
+    
+    private(set) var satoshis: Satoshi = 0 {
         didSet {
-            amountTextField.text = formattedAmount
             updateValidityIndicator()
             sendActions(for: .valueChanged)
-        }
-    }
-    
-    public var validRange: ClosedRange<Satoshi>?
-    public var satoshis: Satoshi {
-        get {
-            guard let formattedAmount = formattedAmount else { return 0 }
-            return Settings.shared.primaryCurrency.value.satoshis(from: formattedAmount) ?? 0
-        }
-        set {
-            guard let stringValue = Settings.shared.primaryCurrency.value.stringValue(satoshis: newValue) else { return }
-            
-            if updateKeyPadString(input: stringValue) {
-                keyPadView.numberString = stringValue
-            }
         }
     }
     
@@ -101,13 +87,22 @@ public final class AmountInputView: UIControl {
             .dispose(in: reactive.bag)        
     }
     
-    @IBAction private func swapCurrencies(_ sender: Any) {
-        let oldSatoshis = satoshis
-        Settings.shared.swapCurrencies()
+    func updateAmount(_ amount: Satoshi) {
+        self.satoshis = amount
+        updateTextFieldContent()
+    }
+    
+    private func updateTextFieldContent() {
+        guard let stringValue = Settings.shared.primaryCurrency.value.stringValue(satoshis: satoshis) else { return }
+        keyPadView.numberString = stringValue
         
-        if formattedAmount != nil && formattedAmount != "" {
-            satoshis = oldSatoshis
-        }
+        let numberFormatter = InputNumberFormatter(currency: Settings.shared.primaryCurrency.value)
+        amountTextField.text = numberFormatter.validate(stringValue)
+    }
+    
+    @IBAction private func swapCurrencies(_ sender: Any) {
+        Settings.shared.swapCurrencies()
+        updateTextFieldContent()
     }
     
     private func setupKeyPad() {
@@ -119,12 +114,14 @@ public final class AmountInputView: UIControl {
     private func updateKeyPadString(input: String) -> Bool {
         let numberFormatter = InputNumberFormatter(currency: Settings.shared.primaryCurrency.value)
         guard let output = numberFormatter.validate(input) else { return false }
-        formattedAmount = output
+        amountTextField.text = output
+        self.satoshis = Settings.shared.primaryCurrency.value.satoshis(from: output) ?? 0
+
         return true
     }
     
     private func updateValidityIndicator() {
-        if formattedAmount != nil,
+        if amountTextField.text != nil,
             let range = validRange {
             amountTextField.textColor = range.contains(satoshis) ? textColor : UIColor.Zap.superRed
         }
