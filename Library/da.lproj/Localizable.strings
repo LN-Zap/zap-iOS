@@ -95,6 +95,7 @@
 "scene.send.lightning.title" = "Send Lightning Payment";
 "scene.send.on_chain.title" = "Send On Chain";
 "scene.send.authentication_failed" = "Authentication failed";
+"scene.send.maximum_fee" = "Expected Fee:";
 
 "scene.connect_remote_node.title" = "Tilslut ekstern Node";
 "scene.connect_remote_node.empty_state" = "Scan QR-kode genereret med zapconnect eller indsæt forbindelseskode for at forbinde til din Node.";
