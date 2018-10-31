@@ -1,7 +1,7 @@
 "generic.memo.placeholder" = "这是什么？";
 "generic.qr_code.copy_button" = "复制";
-"generic.qr_code.copy_success_message" = "Address has been copied to clipboard.";
-"generic.pasteboard.invalid_address" = "Invalid Address";
+"generic.qr_code.copy_success_message" = "地址已复制到剪贴板。";
+"generic.pasteboard.invalid_address" = "无效地址";
 "generic.qr_code.share_button" = "分享";
 "generic.cancel" = "取消";
 
@@ -34,8 +34,8 @@
 
 "view.amount_input.placeholder" = "数量";
 
-"scene.history.title" = "History";
-"scene.history.empty_state_label" = "0 transactions 🙁";
+"scene.history.title" = "历史";
+"scene.history.empty_state_label" = "0个交易🙁";
 
 "scene.settings.title" = "设置";
 "scene.settings.section.wallet" = "钱包";
@@ -45,8 +45,8 @@
 "scene.settings.item.on_chain_request_address.title" = "比特币地址类型";
 "scene.settings.item.on_chain_request_address.bech32" = "Bech32";
 "scene.settings.item.on_chain_request_address.p2sh" = "P2SH";
-"scene.settings.item.manage_channels" = "Manage Channels";
-"scene.settings.item.node_uri" = "Node URI";
+"scene.settings.item.manage_channels" = "管理通道";
+"scene.settings.item.node_uri" = "节点 URI";
 "scene.settings.item.remove_remote_node" = "重置节点";
 "scene.settings.item.change_pin" = "更改 Pin码";
 "scene.settings.item.report_issue" = "报告问题";
@@ -69,7 +69,7 @@
 "scene.channels.alert.cancel" = "取消";
 "scene.channels.alert.close" = "关闭";
 "scene.channels.alert.force_close" = "强制关闭";
-"scene.channels.close_loading_view" = "Closing Channel";
+"scene.channels.close_loading_view" = "关闭通道";
 "scene.channels.close_success.toast" = "通道正在关闭。";
 
 "scene.open_channel.title" = "打开通道";
@@ -91,7 +91,7 @@
 "scene.send.send_button" = "转账";
 "scene.send.address_headline" = "目标:";
 "scene.send.memo_headline" = "备注:";
-"scene.send.sending" = "Sending...";
+"scene.send.sending" = "发送中。。。";
 "scene.send.lightning.title" = "通过闪电网络支付";
 "scene.send.on_chain.title" = "链上交易";
 "scene.send.authentication_failed" = "身份验证失败";
@@ -149,7 +149,7 @@
 "scene.transaction_detail.title.payment_detail" = "付款明细";
 "scene.transaction_detail.title.transaction_detail" = "交易记录详细信息";
 "scene.transaction_detail.title.channel_event_detail" = "Channel Event";
-"scene.transaction_detail.title.failed_payment" = "Failed Payment";
+"scene.transaction_detail.title.failed_payment" = "付款失败";
 "scene.transaction_detail.memo_label" = "备注";
 "scene.transaction_detail.amount_label" = "数量";
 "scene.transaction_detail.fee_label" = "费用";
@@ -166,10 +166,10 @@
 "scene.channel_detail.close_button" = "关闭通道";
 "scene.channel_detail.force_close_button" = "强制关闭通道";
 
-"scene.filter.title" = "Filter";
+"scene.filter.title" = "过滤";
 "scene.filter.section_header.transaction_types" = "交易类型";
-"scene.filter.section_header.advanced" = "Advanced";
-"scene.filter.displayOnChainTransactions" = "On-chain Payments";
+"scene.filter.section_header.advanced" = "高级";
+"scene.filter.displayOnChainTransactions" = "链上付款";
 "scene.filter.display_unknown_transaction_type" = "Internal Transations";
 "scene.filter.displayLightningPayments" = "闪电网络支付";
 "scene.filter.displayLightningInvoices" = "Created Invoices";
@@ -200,9 +200,9 @@
 "scene.history.cell.transaction_sent" = "Payment sent";
 "scene.history.cell.transaction_received" = "Payment received";
 "scene.history.cell.label.new" = "new";
-"scene.history.cell.label.error" = "error";
-"scene.history.cell.action.try_again" = "Try Again";
+"scene.history.cell.label.error" = "错误";
+"scene.history.cell.action.try_again" = "再试一次";
 
-"scene.node_uri.title" = "Connect to Node";
-"scene.node_uri.alias_label" = "Alias";
-"scene.node_uri.uri_label" = "URI";
+"scene.node_uri.title" = "连接到节点";
+"scene.node_uri.alias_label" = "别名";
+"scene.node_uri.uri_label" = "Uri";
