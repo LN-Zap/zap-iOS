@@ -37,7 +37,7 @@ extension UIAlertController {
         }
         
         let alertController = UIAlertController(title: title, message: message, preferredStyle: .actionSheet)
-        let cancelAlertAction = UIAlertAction(title: "scene.channels.alert.cancel".localized, style: .cancel, handler: nil)
+        let cancelAlertAction = UIAlertAction(title: "generic.cancel".localized, style: .cancel, handler: nil)
         
         let closeAlertAction = UIAlertAction(title: closeButtonTitle, style: .destructive) { _ in
             closeAction()

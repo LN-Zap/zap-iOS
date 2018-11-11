@@ -19,8 +19,17 @@ final class RemoveRemoteNodeSettingsItem: SettingsItem {
     }
     
     func didSelectItem(from fromViewController: UIViewController) {
-        RemoteRPCConfiguration.delete()
-        settingsDelegate?.disconnect()
-        fromViewController.dismiss(animated: true, completion: nil)
+        let alertController = UIAlertController(title: "scene.settings.item.remove_remote_node.confirmation.title".localized, message: "scene.settings.item.remove_remote_node.confirmation.message".localized, preferredStyle: .actionSheet)
+        
+        let cancelAlertAction = UIAlertAction(title: "generic.cancel".localized, style: .cancel, handler: nil)
+        let disconnectAlertAction = UIAlertAction(title: "scene.settings.item.remove_remote_node.confirmation.button".localized, style: .destructive) { [settingsDelegate] _ in
+            RemoteRPCConfiguration.delete()
+            settingsDelegate?.disconnect()
+        }
+        
+        alertController.addAction(cancelAlertAction)
+        alertController.addAction(disconnectAlertAction)
+        
+        fromViewController.present(alertController, animated: true)
     }
 }
