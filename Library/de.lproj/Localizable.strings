@@ -47,7 +47,12 @@
 "scene.settings.item.on_chain_request_address.p2sh" = "P2SH";
 "scene.settings.item.manage_channels" = "Kanäle verwalten";
 "scene.settings.item.node_uri" = "Node URI";
-"scene.settings.item.remove_remote_node" = "Zurücksetzen der Remote-Node-Konfiguration";
+"scene.settings.item.remove_remote_node" = "Reset Remote Node Connection";
+"scene.settings.item.remove_remote_node.confirmation.title" = "Disconnect Remote Node?";
+"scene.settings.item.remove_remote_node.confirmation.message" = "You will have to reconnect to your node afterwards.";
+"scene.settings.item.remove_remote_node.confirmation.button" = "Disconnect";
+
+
 "scene.settings.item.change_pin" = "Pin ändern";
 "scene.settings.item.report_issue" = "Ein Problem melden";
 "scene.settings.item.help" = "Brauchst du Hilfe?";
@@ -66,7 +71,6 @@
 "scene.channels.close.message" = "Willst du wirklich den Channel mit dem Node %@ schließen?";
 "scene.channels.force_close.title" = "Erzwungene Schließung des Channels";
 "scene.channels.force_close.message" = "%@ ist offline, bist du dir sicher die Schließung dieses Channels erzwingen zu wollen? Du musst dann ungefähr %@ auf dein Guthaben warten.";
-"scene.channels.alert.cancel" = "Abbrechen";
 "scene.channels.alert.close" = "Schließen";
 "scene.channels.alert.force_close" = "Erzwinge Schließung";
 "scene.channels.close_loading_view" = "Kanal schließen";
