@@ -47,7 +47,12 @@
 "scene.settings.item.on_chain_request_address.p2sh" = "P2SH";
 "scene.settings.item.manage_channels" = "Manage Channels";
 "scene.settings.item.node_uri" = "Node URI";
-"scene.settings.item.remove_remote_node" = "Återställ Fjärrnodskonfiguration";
+"scene.settings.item.remove_remote_node" = "Reset Remote Node Connection";
+"scene.settings.item.remove_remote_node.confirmation.title" = "Disconnect Remote Node?";
+"scene.settings.item.remove_remote_node.confirmation.message" = "You will have to reconnect to your node afterwards.";
+"scene.settings.item.remove_remote_node.confirmation.button" = "Disconnect";
+
+
 "scene.settings.item.change_pin" = "Change Pin";
 "scene.settings.item.report_issue" = "Rapportera ett problem";
 "scene.settings.item.help" = "Behöver du hjälp?";
@@ -66,7 +71,6 @@
 "scene.channels.close.message" = "Vill du verkligen stänga kanalen med nod %@?";
 "scene.channels.force_close.title" = "Tvinga stängning av kanal";
 "scene.channels.force_close.message" = "%@ är offline, är du säker på att du vill tvinga stängning av denna kanal? Du kommer att få vänta ungefär %@ för dina pengar?";
-"scene.channels.alert.cancel" = "Avbryt";
 "scene.channels.alert.close" = "Stäng";
 "scene.channels.alert.force_close" = "Force Close";
 "scene.channels.close_loading_view" = "Closing Channel";
