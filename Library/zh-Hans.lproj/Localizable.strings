@@ -47,7 +47,12 @@
 "scene.settings.item.on_chain_request_address.p2sh" = "P2SH";
 "scene.settings.item.manage_channels" = "管理通道";
 "scene.settings.item.node_uri" = "节点 URI";
-"scene.settings.item.remove_remote_node" = "重置节点";
+"scene.settings.item.remove_remote_node" = "Reset Remote Node Connection";
+"scene.settings.item.remove_remote_node.confirmation.title" = "Disconnect Remote Node?";
+"scene.settings.item.remove_remote_node.confirmation.message" = "You will have to reconnect to your node afterwards.";
+"scene.settings.item.remove_remote_node.confirmation.button" = "Disconnect";
+
+
 "scene.settings.item.change_pin" = "更改 Pin码";
 "scene.settings.item.report_issue" = "报告问题";
 "scene.settings.item.help" = "需要帮助吗？";
@@ -66,7 +71,6 @@
 "scene.channels.close.message" = "是否确实要关闭节点 %@ 的通道？";
 "scene.channels.force_close.title" = "强制关闭通道";
 "scene.channels.force_close.message" = "%@ 处于脱机状态, 是否确实要强制关闭此通道？您必须等待资金的 %@ 吗？";
-"scene.channels.alert.cancel" = "取消";
 "scene.channels.alert.close" = "关闭";
 "scene.channels.alert.force_close" = "强制关闭";
 "scene.channels.close_loading_view" = "关闭通道";
