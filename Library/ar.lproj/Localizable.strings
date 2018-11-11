@@ -47,7 +47,12 @@
 "scene.settings.item.on_chain_request_address.p2sh" = "P2SH";
 "scene.settings.item.manage_channels" = "Manage Channels";
 "scene.settings.item.node_uri" = "Node URI";
-"scene.settings.item.remove_remote_node" = "إعادة تعيين تكوين العقدة البعيدة";
+"scene.settings.item.remove_remote_node" = "Reset Remote Node Connection";
+"scene.settings.item.remove_remote_node.confirmation.title" = "Disconnect Remote Node?";
+"scene.settings.item.remove_remote_node.confirmation.message" = "You will have to reconnect to your node afterwards.";
+"scene.settings.item.remove_remote_node.confirmation.button" = "Disconnect";
+
+
 "scene.settings.item.change_pin" = "Change Pin";
 "scene.settings.item.report_issue" = "الإبلاغ عن مشكلة";
 "scene.settings.item.help" = "تحتاج مساعدة؟";
@@ -66,7 +71,6 @@
 "scene.channels.close.message" = "هل تريد حقاً إغلاق القناة مع العقدة %@؟";
 "scene.channels.force_close.title" = "Force Close Channel";
 "scene.channels.force_close.message" = "%@ is offline, are you sure you want to force close this channel? You’d have to wait about %@ for your funds?";
-"scene.channels.alert.cancel" = "Cancel";
 "scene.channels.alert.close" = "Close";
 "scene.channels.alert.force_close" = "Force Close";
 "scene.channels.close_loading_view" = "Closing Channel";
