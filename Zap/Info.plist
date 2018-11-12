@@ -38,6 +38,16 @@
 				<string>bitcoin</string>
 			</array>
 		</dict>
+		<dict>
+			<key>CFBundleTypeRole</key>
+			<string>Viewer</string>
+			<key>CFBundleURLName</key>
+			<string>com.jackmallers.zap</string>
+			<key>CFBundleURLSchemes</key>
+			<array>
+				<string>zap</string>
+			</array>
+		</dict>
 	</array>
 	<key>CFBundleVersion</key>
 	<string>1</string>

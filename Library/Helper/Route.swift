@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import Lightning
 import SwiftBTC
 
 protocol Routing {
@@ -16,10 +17,17 @@ protocol Routing {
 public enum Route {
     case send(String?)
     case request
+    case connect(RPCConnectURL)
     
     public init?(url: URL) {
         let urlString = url.absoluteString.replacingOccurrences(of: "//", with: "")
-        self = .send(urlString)
+        
+        if urlString.hasPrefix("zap:") {
+            guard let url = RPCConnectURL(string: urlString) else { return nil }
+            self = .connect(url)
+        } else {
+            self = .send(urlString)
+        }
     }
     
     public init?(shortcutItem: UIApplicationShortcutItem) {

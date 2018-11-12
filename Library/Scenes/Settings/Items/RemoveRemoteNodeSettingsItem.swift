@@ -7,7 +7,6 @@
 
 import Foundation
 import Lightning
-import SwiftLnd
 
 final class RemoveRemoteNodeSettingsItem: SettingsItem {
     let title = "scene.settings.item.remove_remote_node".localized
@@ -23,7 +22,6 @@ final class RemoveRemoteNodeSettingsItem: SettingsItem {
         
         let cancelAlertAction = UIAlertAction(title: "generic.cancel".localized, style: .cancel, handler: nil)
         let disconnectAlertAction = UIAlertAction(title: "scene.settings.item.remove_remote_node.confirmation.button".localized, style: .destructive) { [settingsDelegate] _ in
-            RemoteRPCConfiguration.delete()
             settingsDelegate?.disconnect()
         }
         

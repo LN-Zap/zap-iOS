@@ -49,6 +49,8 @@ final class MainCoordinator: Routing {
             }
         case .request:
             presentRequest()
+        case .connect:
+            break // is handled in root coordinator
         }
     }
     

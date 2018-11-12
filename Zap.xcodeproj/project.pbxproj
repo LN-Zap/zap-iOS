@@ -279,6 +279,7 @@
 		ADF0930F2148FA7300B48853 /* CreateInvoiceEvent.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADF0930E2148FA7300B48853 /* CreateInvoiceEvent.swift */; };
 		ADF093112148FDC600B48853 /* LightningPaymentEvent.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADF093102148FDC600B48853 /* LightningPaymentEvent.swift */; };
 		ADF093132148FEB900B48853 /* ChannelEvent.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADF093122148FEB900B48853 /* ChannelEvent.swift */; };
+		ADF1BB3021997A820078BCC4 /* RPCConnectURL.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADF1BB2F21997A820078BCC4 /* RPCConnectURL.swift */; };
 		ADFB0CC7216E09E00048B63C /* ReceivingAddress.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADFB0CC6216E09E00048B63C /* ReceivingAddress.swift */; };
 		ADFB0CCA216E34540048B63C /* ReceivingAddressTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADFB0CC8216E318B0048B63C /* ReceivingAddressTests.swift */; };
 		ADFB36D32143B66300146FCC /* SwiftLnd.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = ADADAD632143B2E700A48E1F /* SwiftLnd.framework */; };
@@ -832,6 +833,7 @@
 		ADF0930E2148FA7300B48853 /* CreateInvoiceEvent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateInvoiceEvent.swift; sourceTree = "<group>"; };
 		ADF093102148FDC600B48853 /* LightningPaymentEvent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LightningPaymentEvent.swift; sourceTree = "<group>"; };
 		ADF093122148FEB900B48853 /* ChannelEvent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChannelEvent.swift; sourceTree = "<group>"; };
+		ADF1BB2F21997A820078BCC4 /* RPCConnectURL.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RPCConnectURL.swift; sourceTree = "<group>"; };
 		ADF79363208DCB630086B2CA /* PinView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PinView.swift; sourceTree = "<group>"; };
 		ADF79365208E000C0086B2CA /* SetupPinViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetupPinViewController.swift; sourceTree = "<group>"; };
 		ADF79367208E09D00086B2CA /* SetupPinViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetupPinViewModel.swift; sourceTree = "<group>"; };
@@ -1533,10 +1535,11 @@
 		AD967FE12105FD400048085B /* QrCodes */ = {
 			isa = PBXGroup;
 			children = (
-				AD27B01520FC8BBF00F232A8 /* Pem.swift */,
 				AD967FE4210602C10048085B /* BTCPayConfiguration.swift */,
 				AD967FE22105FD770048085B /* BTCPayQRCode.swift */,
+				AD27B01520FC8BBF00F232A8 /* Pem.swift */,
 				AD967FE8210610D90048085B /* RPCConnectQRCode.swift */,
+				ADF1BB2F21997A820078BCC4 /* RPCConnectURL.swift */,
 				ADD6D80620B15603008BE461 /* ZapconnectQRCode.swift */,
 			);
 			path = QrCodes;
@@ -2852,6 +2855,7 @@
 				ADFEFA7920E62B1800FE1557 /* BlockChainHeightUpdater.swift in Sources */,
 				AD967FE32105FD770048085B /* BTCPayQRCode.swift in Sources */,
 				ADF0930F2148FA7300B48853 /* CreateInvoiceEvent.swift in Sources */,
+				ADF1BB3021997A820078BCC4 /* RPCConnectURL.swift in Sources */,
 				ADFEFA6C20E627F100FE1557 /* InfoService.swift in Sources */,
 				ADA179C82153997B001401F3 /* Persistence.swift in Sources */,
 				AD967FE5210602C10048085B /* BTCPayConfiguration.swift in Sources */,

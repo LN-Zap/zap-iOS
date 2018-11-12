@@ -75,9 +75,16 @@ public final class ConnectionService: NSObject {
     public func disconnect() {
         self.lightningService = nil
         lightningService?.stop()
-        setInitialState()
+        state.value = .noWallet
     }
     
+    public func reconnect(configuration: RemoteRPCConfiguration) {
+        configuration.save()
+        self.lightningService = nil
+        lightningService?.stop()
+        connect()
+    }
+        
     private func bindStateToLnd() {
         _ = lightningService?.infoService.walletState
             .skip(first: 1)

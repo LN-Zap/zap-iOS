@@ -66,11 +66,15 @@ public final class RootCoordinator: NSObject, SetupCoordinatorDelegate, PinCoord
     }
     
     public func handle(_ route: Route) {
-        self.route = route
-        
-        if let mainCoordinator = currentCoordinator as? MainCoordinator {
-            mainCoordinator.handle(route)
-            self.route = nil
+        if case .connect(let url) = route {
+            openRPCConnectURL(url)
+        } else {
+            self.route = route
+            
+            if let mainCoordinator = currentCoordinator as? MainCoordinator {
+                mainCoordinator.handle(route)
+                self.route = nil
+            }
         }
     }
     
@@ -82,6 +86,22 @@ public final class RootCoordinator: NSObject, SetupCoordinatorDelegate, PinCoord
     private func start() {
         connectionService.start()
         ExchangeUpdaterJob.start()
+    }
+    
+    private func openRPCConnectURL(_ url: RPCConnectURL) {
+        let message = String(format: "scene.connect_node_uri.action_sheet.message".localized, url.rpcConfiguration.url.absoluteString)
+        let alertController = UIAlertController(title: "scene.connect_node_uri.action_sheet.title".localized, message: message, preferredStyle: .actionSheet)
+        
+        let connectAlertAction = UIAlertAction(title: "scene.connect_node_uri.action_sheet.connect_button".localized, style: .default, handler: { [weak self] _ in
+            self?.connectionService.reconnect(configuration: url.rpcConfiguration)
+        })
+        
+        alertController.addAction(connectAlertAction)
+        let cancelAlertAction = UIAlertAction(title: "generic.cancel".localized, style: .cancel, handler: nil)
+        alertController.addAction(cancelAlertAction)
+        
+        rootViewController.dismiss(animated: false)
+        rootViewController.present(alertController, animated: true, completion: nil)
     }
     
     public func applicationDidEnterBackground() {
