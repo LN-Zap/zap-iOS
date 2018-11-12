@@ -15,7 +15,7 @@ final class BlockExplorerSelectionSettingsItem: DetailDisclosureSettingsItem, Su
     
     func didSelectItem(from fromViewController: UIViewController) {
         
-        let items: [SettingsItem] = BlockExplorer.all.map { BlockExplorerSettingsItem(blockExplorer: $0) }
+        let items: [SettingsItem] = BlockExplorer.allCases.map { BlockExplorerSettingsItem(blockExplorer: $0) }
         let section = Section(title: nil, rows: items)
     
         let viewController = GroupedTableViewController(sections: [section])
