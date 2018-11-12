@@ -52,7 +52,6 @@
 "scene.settings.item.remove_remote_node.confirmation.message" = "You will have to reconnect to your node afterwards.";
 "scene.settings.item.remove_remote_node.confirmation.button" = "Disconnect";
 
-
 "scene.settings.item.change_pin" = "Change Pin";
 "scene.settings.item.report_issue" = "Повідомте про проблему";
 "scene.settings.item.help" = "Потрібна допомога?";
@@ -210,3 +209,7 @@
 "scene.node_uri.title" = "Connect to Node";
 "scene.node_uri.alias_label" = "Alias";
 "scene.node_uri.uri_label" = "URI";
+
+"scene.connect_node_uri.action_sheet.title" = "Connect";
+"scene.connect_node_uri.action_sheet.connect_button" = "Connect";
+"scene.connect_node_uri.action_sheet.message" = "Do you really want to connect to node at %@?";
