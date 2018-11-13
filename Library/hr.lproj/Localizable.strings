@@ -14,7 +14,8 @@
 
 "rpc_connect_qrcode_error.btc_pay_expired" = "Čini se da je kôd istekao.";
 "rpc_connect_qrcode_error.btc_pay_configuration_broken" = "Ne mogu pročitati BTCPay konfiguracijsku datoteku.";
-"rpc_connect_qrcode_error.cant_read_qrcode" = "Ne mogu se spojiti sa ovim kôdom.";
+"rpc_connect_qrcode_error.cant_read_qrcode" = "Invalid code format.";
+"rpc_connect_qrcode_error.code_updated" = "Connection updated.";
 
 "channel.state.active" = "Spojeno";
 "channel.state.inactive" = "Nije spojeno";
