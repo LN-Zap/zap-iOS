@@ -14,7 +14,8 @@
 
 "rpc_connect_qrcode_error.btc_pay_expired" = "Схоже, термін дії QR-коду закінчився.";
 "rpc_connect_qrcode_error.btc_pay_configuration_broken" = "Не вдалося прочитати файл конфігурації BTCPay.";
-"rpc_connect_qrcode_error.cant_read_qrcode" = "Ви не можете підключитися, використовуючи наданий код.";
+"rpc_connect_qrcode_error.cant_read_qrcode" = "Invalid code format.";
+"rpc_connect_qrcode_error.code_updated" = "Connection updated.";
 
 "channel.state.active" = "В мережі";
 "channel.state.inactive" = "Не в мережі";
