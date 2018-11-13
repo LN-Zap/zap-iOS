@@ -48,7 +48,7 @@ final class ChannelDetailViewController: ModalDetailViewController {
         
         contentStackView.addArrangedElement(.verticalStackView(content: [
             .label(text: "scene.channel_detail.remote_pub_key_label".localized + ":", style: labelStyle),
-            .label(text: channelViewModel.channel.channelPoint.fundingTxid, style: textStyle)
+            .label(text: channelViewModel.channel.remotePubKey, style: textStyle)
         ], spacing: 0))
         
         contentStackView.addArrangedElement(.separator)
