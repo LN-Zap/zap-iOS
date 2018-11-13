@@ -14,7 +14,8 @@
 
 "rpc_connect_qrcode_error.btc_pay_expired" = "Μοιάζει με τον κώδικα που έχει λήξει.";
 "rpc_connect_qrcode_error.btc_pay_configuration_broken" = "Δεν ήταν η ανάγνωση του αρχείου BTCPay ρυθμίσεις παραμέτρων.";
-"rpc_connect_qrcode_error.cant_read_qrcode" = "Δεν μπορεί να συνδεθεί σε αυτόν τον κωδικό.";
+"rpc_connect_qrcode_error.cant_read_qrcode" = "Invalid code format.";
+"rpc_connect_qrcode_error.code_updated" = "Connection updated.";
 
 "channel.state.active" = "Σε απευθείας σύνδεση";
 "channel.state.inactive" = "Χωρίς σύνδεση";
