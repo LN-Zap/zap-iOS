@@ -14,7 +14,8 @@
 
 "rpc_connect_qrcode_error.btc_pay_expired" = "Looks like the code is expired.";
 "rpc_connect_qrcode_error.btc_pay_configuration_broken" = "Nebylo možné načíst konfigurační soubor BTCPay.";
-"rpc_connect_qrcode_error.cant_read_qrcode" = "Can't connect to this code.";
+"rpc_connect_qrcode_error.cant_read_qrcode" = "Invalid code format.";
+"rpc_connect_qrcode_error.code_updated" = "Connection updated.";
 
 "channel.state.active" = "Online";
 "channel.state.inactive" = "Offline";
