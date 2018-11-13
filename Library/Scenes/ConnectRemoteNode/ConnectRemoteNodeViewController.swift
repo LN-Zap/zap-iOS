@@ -173,8 +173,17 @@ final class ConnectRemoteNodeViewController: UIViewController {
     }
     
     private func paste() {
-        connectRemoteNodeViewModel?.pasteCertificates { [weak self] error in
-            self?.presentErrorToast(error.localizedDescription)
+        if let pasteboardContent = UIPasteboard.general.string {
+            connectRemoteNodeViewModel?.pasteCertificates(pasteboardContent) { [weak self] result in
+                switch result {
+                case .success:
+                    self?.presentSuccessToast("rpc_connect_qrcode_error.code_updated".localized)
+                case .failure(let error):
+                    self?.presentErrorToast(error.localizedDescription)
+                }
+            }
+        } else {
+            self.presentErrorToast("rpc_connect_qrcode_error.cant_read_qrcode".localized)
         }
     }
 }
