@@ -14,7 +14,8 @@
 
 "rpc_connect_qrcode_error.btc_pay_expired" = "נראה שתוקף הקוד פג.";
 "rpc_connect_qrcode_error.btc_pay_configuration_broken" = "לא היתה אפשרות לקרוא את קובץ ההגדרות BTCPay.";
-"rpc_connect_qrcode_error.cant_read_qrcode" = "אין אפשרות להתחבר לקוד.";
+"rpc_connect_qrcode_error.cant_read_qrcode" = "Invalid code format.";
+"rpc_connect_qrcode_error.code_updated" = "Connection updated.";
 
 "channel.state.active" = "מקוון";
 "channel.state.inactive" = "לא מקוון ";
