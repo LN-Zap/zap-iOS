@@ -71,8 +71,8 @@
 "scene.channels.close.message" = "Stvarno želite zatvoriti kanal sa čvorom %@?";
 "scene.channels.force_close.title" = "Prisilno zatvaranje kanala";
 "scene.channels.force_close.message" = "%@ nije spojen, jeste li sigurni da želite prisilno zatvoriti ovaj kanal? Morat ćete pričekati otprilike %@ za svoje novce?";
-"scene.channels.alert.close" = "Zatvori";
-"scene.channels.alert.force_close" = "Prisilno zatvori";
+"scene.channels.alert.close" = "Close Channel";
+"scene.channels.alert.force_close" = "Force Close Channel";
 "scene.channels.close_loading_view" = "Zatvaranje kanala";
 "scene.channels.close_success.toast" = "Kanal se zatvara.";
 
