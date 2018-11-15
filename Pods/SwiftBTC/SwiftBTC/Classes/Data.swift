@@ -9,7 +9,7 @@ import CommonCrypto
 import Foundation
 
 public extension Data {
-    func sha256() -> Data {
+    var sha256: Data {
         let digestLength = Int(CC_SHA256_DIGEST_LENGTH)
         var hash = [UInt8](repeating: 0, count: digestLength)
         
@@ -21,7 +21,7 @@ public extension Data {
         return Data(hash)
     }
     
-    public func hexString() -> String {
+    public var hexadecimalString: String {
         return reduce("") { $0 + String(format: "%02x", UInt8($1)) }
     }
     

@@ -33,6 +33,6 @@ public struct Macaroon: Codable, Equatable {
     }
     
     public var hexadecimalString: String {
-        return data.hexString()
+        return data.hexadecimalString
     }
 }

@@ -5,16 +5,19 @@
 [![License](https://img.shields.io/cocoapods/l/SwiftBTC.svg?style=flat)](https://cocoapods.org/pods/SwiftBTC)
 [![Platform](https://img.shields.io/cocoapods/p/SwiftBTC.svg?style=flat)](https://cocoapods.org/pods/SwiftBTC)
 
-BTCUtil provides bitcoin-specific convenience functions and types.
+SwiftBTC provides bitcoin-specific convenience functions and types.
 
-**Notable parts:**
+**Including**
 
-* Network
-* BitcoinAddress - Represents p2pkh, p2sh & bech32 bitcoin addresses
-* BitcoinURI - bip-0021 URI scheme for making Bitcoin payments
-* Satoshi type - Satoshi number type
-* Currency - Represents currencies like Bitcoin or USD
-* Bitcoin - Concrete implementation of Bitcoin currency 
+- [x] [Base58 encoding](https://github.com/LN-Zap/SwiftBTC/blob/master/SwiftBTC/Classes/Base58.swift)
+- [x] [Bech32 encoding](https://github.com/LN-Zap/SwiftBTC/blob/master/SwiftBTC/Classes/Bech32.swift)
+- [x] [Bech32 addresses](https://github.com/LN-Zap/SwiftBTC/blob/master/SwiftBTC/Classes/Bech32Address.swift)
+- [x] [Bip21 - URI Scheme](https://github.com/LN-Zap/SwiftBTC/blob/master/SwiftBTC/Classes/BitcoinURI.swift)
+- [x] [Bip39 - Mnemonic code](https://github.com/LN-Zap/SwiftBTC/blob/master/SwiftBTC/Classes/Bip39.swift)
+- [x] [Bitcoin unit data type](https://github.com/LN-Zap/SwiftBTC/blob/master/SwiftBTC/Classes/BitcoinUnit.swift)
+- [x] [Fiat currency type](https://github.com/LN-Zap/SwiftBTC/blob/master/SwiftBTC/Classes/FiatCurrency.swift)
+- [x] [p2pkh & p2sh addresses](https://github.com/LN-Zap/SwiftBTC/blob/master/SwiftBTC/Classes/BitcoinAddress.swift)
+- [x] [Satoshi data type](https://github.com/LN-Zap/SwiftBTC/blob/master/SwiftBTC/Classes/Satoshi.swift)
 
 ## Example
 

@@ -55,7 +55,7 @@ enum Base58 {
     // checksum
     
     private static func checksum(_ input: Data) -> Data {
-        let hashed = input.sha256().sha256()
+        let hashed = input.sha256.sha256
         return hashed[hashed.startIndex..<hashed.startIndex + 4]
     }
     

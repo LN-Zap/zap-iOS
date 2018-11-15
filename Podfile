@@ -5,7 +5,7 @@ inhibit_all_warnings!
 install! 'cocoapods'
 
 abstract_target 'Apps' do
-    pod 'SwiftBTC', :git => 'https://github.com/LN-Zap/SwiftBTC.git'
+    pod 'SwiftBTC'
     pod 'SwiftGRPC', :git => 'https://github.com/grpc/grpc-swift'
 
     target 'Zap' do
@@ -16,7 +16,7 @@ abstract_target 'Apps' do
 end
 
 target 'SwiftLnd' do
-    pod 'SwiftBTC', :git => 'https://github.com/LN-Zap/SwiftBTC.git'
+    pod 'SwiftBTC'
     pod 'SwiftGRPC', :git => 'https://github.com/grpc/grpc-swift'
     
     target 'SwiftLndTests' do
@@ -25,7 +25,7 @@ target 'SwiftLnd' do
 end
 
 target 'Lightning' do
-    pod 'SwiftBTC', :git => 'https://github.com/LN-Zap/SwiftBTC.git'
+    pod 'SwiftBTC'
     pod 'Bond'
     pod 'KeychainAccess'
     pod 'SQLite.swift', '~> 0.11.5'
@@ -36,7 +36,7 @@ target 'Lightning' do
 end
 
 target 'Library' do
-    pod 'SwiftBTC', :git => 'https://github.com/LN-Zap/SwiftBTC.git'
+    pod 'SwiftBTC'
     pod 'ScrollableGraphView'
     pod 'KeychainAccess'
     pod 'Bond'

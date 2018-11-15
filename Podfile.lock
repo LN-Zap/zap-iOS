@@ -31,7 +31,7 @@ PODS:
   - SQLite.swift (0.11.5):
     - SQLite.swift/standard (= 0.11.5)
   - SQLite.swift/standard (0.11.5)
-  - SwiftBTC (0.0.1):
+  - SwiftBTC (0.0.2):
     - BigInt (~> 3.1)
   - SwiftGRPC (0.6.0):
     - BoringSSL (~> 10.0)
@@ -44,7 +44,7 @@ DEPENDENCIES:
   - KeychainAccess
   - ScrollableGraphView
   - SQLite.swift (~> 0.11.5)
-  - SwiftBTC (from `https://github.com/LN-Zap/SwiftBTC.git`)
+  - SwiftBTC
   - SwiftGRPC (from `https://github.com/grpc/grpc-swift`)
 
 SPEC REPOS:
@@ -60,18 +60,14 @@ SPEC REPOS:
     - ScrollableGraphView
     - SipHash
     - SQLite.swift
+    - SwiftBTC
     - SwiftProtobuf
 
 EXTERNAL SOURCES:
-  SwiftBTC:
-    :git: https://github.com/LN-Zap/SwiftBTC.git
   SwiftGRPC:
     :git: https://github.com/grpc/grpc-swift
 
 CHECKOUT OPTIONS:
-  SwiftBTC:
-    :commit: 5e9599289967643f19d9f6ea35c085c9b7c2da23
-    :git: https://github.com/LN-Zap/SwiftBTC.git
   SwiftGRPC:
     :commit: 23a0ebdee9613f615f2f2469ed3e700df5856417
     :git: https://github.com/grpc/grpc-swift
@@ -88,10 +84,10 @@ SPEC CHECKSUMS:
   ScrollableGraphView: 4af35d4ea9ecdec665d34a74da51da161ddff8ac
   SipHash: fad90a4683e420c52ef28063063dbbce248ea6d4
   SQLite.swift: 6e5356850bb1791459f8c16d6ee9195b28714a2e
-  SwiftBTC: 4e8558d551169514df6858d128098ee4c5f8400f
+  SwiftBTC: 77438e2a3a35175875ade76b8cfc93a398bf6c54
   SwiftGRPC: 465792c0e09dcb083d19d97137cee71b4f4f8b6f
   SwiftProtobuf: 7147b8ec19c8c0694a45155d989ea9e6dedaf51f
 
-PODFILE CHECKSUM: 56fae3a78714509412e6e8f7ca94f81646862a6e
+PODFILE CHECKSUM: 170ffa0a822b37341fb99da6dfb38b37655517a7
 
 COCOAPODS: 1.5.3

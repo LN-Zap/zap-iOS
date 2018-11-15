@@ -21,7 +21,7 @@ public struct Invoice: Equatable {
 
 extension Invoice {
     init(invoice: Lnrpc_Invoice) {
-        id = invoice.rHash.hexString()
+        id = invoice.rHash.hexadecimalString
         memo = invoice.memo
         amount = Satoshi(invoice.value)
         settled = invoice.settled
