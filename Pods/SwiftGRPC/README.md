@@ -71,15 +71,17 @@ generate the necessary support code.
 Binary releases of `protoc`, the Protocol Buffer Compiler, are
 available on [GitHub](https://github.com/google/protobuf/releases).
 
-To build the plugins, run `make` in the main directory.
+To build the plugins, run `make plugin` in the main directory.
 This uses the Swift Package Manager to build both of the necessary
 plugins: `protoc-gen-swift`, which generates Protocol Buffer support code
 and `protoc-gen-swiftgrpc`, which generates gRPC interface code.
 
+To install these plugins, just copy the two executables (`protoc-gen-swift` and `protoc-gen-swiftgrpc`) that show up in the main directory into a directory that is part of your `PATH` environment variable.
+
 ### Using the plugins
 
 To use the plugins, `protoc` and both plugins should be in your
-search path. Invoke them with commands like the following:
+search path (see above). Invoke them with commands like the following:
 
     protoc <your proto files> \
         --swift_out=. \
@@ -97,6 +99,8 @@ separated from the output directory by a colon.
 | `Visibility` | `Internal`/`Public` | `Internal` | ACL of generated code |
 | `Server` |  `true`/`false` | `true` | Whether to generate server code |
 | `Client` |  `true`/`false` | `true` | Whether to generate client code |
+| `Async` |  `true`/`false` | `true` | Whether to generate asynchronous code |
+| `Sync` |  `true`/`false` | `true` | Whether to generate synchronous code |
 | `TestStubs` |  `true`/`false` | `false` | Whether to generate test stub code |
 
 Example:

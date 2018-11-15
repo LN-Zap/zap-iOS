@@ -6,7 +6,6 @@ install! 'cocoapods'
 
 abstract_target 'Apps' do
     pod 'SwiftBTC'
-    pod 'SwiftGRPC', :git => 'https://github.com/grpc/grpc-swift'
 
     target 'Zap' do
     end
