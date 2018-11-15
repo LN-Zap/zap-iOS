@@ -6,6 +6,7 @@
 //
 
 @testable import Lightning
+import SwiftLnd
 import XCTest
 
 class BTCPayConfigurationTests: XCTestCase {
@@ -48,6 +49,6 @@ class BTCPayConfigurationTests: XCTestCase {
         XCTAssertNotNil(configuration?.rpcConfiguration)
         XCTAssertNil(configuration?.rpcConfiguration?.certificate)
         XCTAssertEqual(configuration?.rpcConfiguration?.url.absoluteString, "test.test.com:443")
-        XCTAssertEqual(configuration?.rpcConfiguration?.macaroon, "02deadbeef0202deadbeef02".hexadecimal)
+        XCTAssertEqual(configuration?.rpcConfiguration?.macaroon, Macaroon(hexadecimalString: "02deadbeef0202deadbeef02"))
     }
 }

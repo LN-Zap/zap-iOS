@@ -18,7 +18,7 @@ private extension Lnrpc_LightningServiceClient {
             self.init(address: configuration.url.absoluteString)
         }
         
-        try? metadata.add(key: "macaroon", value: configuration.macaroon.hexString())
+        try? metadata.add(key: "macaroon", value: configuration.macaroon.hexadecimalString)
         timeout = Double(Int32.max) // otherwise streaming calls stop working after 10 minutes
     }
 }

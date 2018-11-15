@@ -54,7 +54,7 @@ extension Lnrpc_ConnectPeerRequest {
 
 extension Lnrpc_OpenChannelRequest {
     init(pubKey: String, amount: Satoshi) {
-        if let pubKey = pubKey.hexadecimal {
+        if let pubKey = Data(hexadecimalString: pubKey) {
             nodePubkey = pubKey
         }
         nodePubkeyString = pubKey
@@ -87,7 +87,7 @@ extension Lnrpc_CloseChannelRequest {
     init?(channelPoint: ChannelPoint, force: Bool) {
         self.channelPoint = Lnrpc_ChannelPoint()
         self.channelPoint.outputIndex = UInt32(channelPoint.outputIndex)
-        if let fundingTxidBytes = channelPoint.fundingTxid.hexEndianSwap().hexadecimal {
+        if let fundingTxidBytes = Data(hexadecimalString: channelPoint.fundingTxid.hexEndianSwap()) {
             self.channelPoint.fundingTxidBytes = fundingTxidBytes
         }
         self.force = force

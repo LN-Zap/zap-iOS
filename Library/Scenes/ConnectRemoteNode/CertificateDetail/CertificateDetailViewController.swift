@@ -51,7 +51,7 @@ final class CertificateDetailViewController: UITableViewController {
         if indexPath.section == 0 {
             cell.descriptionText = connectRemoteNodeViewModel?.remoteNodeConfiguration?.certificate
         } else {
-            cell.descriptionText = connectRemoteNodeViewModel?.remoteNodeConfiguration?.macaroon.hexString()
+            cell.descriptionText = connectRemoteNodeViewModel?.remoteNodeConfiguration?.macaroon.hexadecimalString
         }
         cell.contentView.backgroundColor = UIColor.Zap.seaBlue
         return cell

@@ -1,7 +1,7 @@
 //
-//  ZapLightning
+//  SwiftLnd
 //
-//  Created by Otto Suess on 29.06.18.
+//  Created by Otto Suess on 15.11.18.
 //  Copyright © 2018 Zap. All rights reserved.
 //
 

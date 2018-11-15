@@ -14,7 +14,7 @@ extension Lnrpc_WalletUnlockerServiceClient {
         } else {
             self.init(address: configuration.url.absoluteString)
         }
-        try? metadata.add(key: "macaroon", value: configuration.macaroon.hexString())
+        try? metadata.add(key: "macaroon", value: configuration.macaroon.hexadecimalString)
     }
 }
 

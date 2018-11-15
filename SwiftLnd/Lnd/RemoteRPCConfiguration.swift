@@ -9,10 +9,10 @@ import Foundation
 
 public struct RemoteRPCConfiguration: Codable {
     public let certificate: String?
-    public let macaroon: Data
+    public let macaroon: Macaroon
     public let url: URL
     
-    public init(certificate: String?, macaroon: Data, url: URL) {
+    public init(certificate: String?, macaroon: Macaroon, url: URL) {
         self.certificate = certificate
         self.macaroon = macaroon
         self.url = url

@@ -41,11 +41,11 @@ public final class RPCConnectURL {
             let queryParameters = url.queryParameters,
             let nodeUrlString = queryParameters["ip"]?.removingPercentEncoding,
             let nodeUrl = URL(string: nodeUrlString),
-            let macaroon = queryParameters["macaroon"]?.removingPercentEncoding,
-            let macaroonData = Data(base64Encoded: macaroon),
+            let macaroonString = queryParameters["macaroon"]?.removingPercentEncoding,
+            let macaroon = Macaroon(base64String: macaroonString),
             let certificate = url.path.removingPercentEncoding
             else { return nil }
         
-        rpcConfiguration = RemoteRPCConfiguration(certificate: Pem(key: certificate).string, macaroon: macaroonData, url: nodeUrl)
+        rpcConfiguration = RemoteRPCConfiguration(certificate: Pem(key: certificate).string, macaroon: macaroon, url: nodeUrl)
     }
 }

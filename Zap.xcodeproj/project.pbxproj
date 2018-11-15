@@ -174,6 +174,8 @@
 		AD667E552136B074007B9160 /* TimeLocked.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AD667E542136B074007B9160 /* TimeLocked.storyboard */; };
 		AD667E572136E622007B9160 /* TimeLockStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD667E562136E622007B9160 /* TimeLockStore.swift */; };
 		AD667E5921384966007B9160 /* WindowLevel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD667E5821384966007B9160 /* WindowLevel.swift */; };
+		AD79E422219D90E2002589CA /* Data+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD79E421219D90E2002589CA /* Data+Extensions.swift */; };
+		AD79E424219D90EF002589CA /* String+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD79E423219D90EF002589CA /* String+Extensions.swift */; };
 		AD7EDAE32108C4150058CCCA /* Wallet.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AD7EDAE22108C4150058CCCA /* Wallet.storyboard */; };
 		AD7EDAE52108C41D0058CCCA /* WalletViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD7EDAE42108C41D0058CCCA /* WalletViewController.swift */; };
 		AD7EDAE72108D39D0058CCCA /* ZapNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD7EDAE62108D39D0058CCCA /* ZapNavigationController.swift */; };
@@ -280,13 +282,13 @@
 		ADF093112148FDC600B48853 /* LightningPaymentEvent.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADF093102148FDC600B48853 /* LightningPaymentEvent.swift */; };
 		ADF093132148FEB900B48853 /* ChannelEvent.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADF093122148FEB900B48853 /* ChannelEvent.swift */; };
 		ADF1BB3021997A820078BCC4 /* RPCConnectURL.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADF1BB2F21997A820078BCC4 /* RPCConnectURL.swift */; };
+		ADF1BB33219D7F260078BCC4 /* Macaroon.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADF1BB32219D7F260078BCC4 /* Macaroon.swift */; };
 		ADFB0CC7216E09E00048B63C /* ReceivingAddress.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADFB0CC6216E09E00048B63C /* ReceivingAddress.swift */; };
 		ADFB0CCA216E34540048B63C /* ReceivingAddressTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADFB0CC8216E318B0048B63C /* ReceivingAddressTests.swift */; };
 		ADFB36D32143B66300146FCC /* SwiftLnd.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = ADADAD632143B2E700A48E1F /* SwiftLnd.framework */; };
 		ADFB36D72143B73C00146FCC /* LndConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD71EA4A20E2321100256307 /* LndConstants.swift */; };
 		ADFB36D82143B73C00146FCC /* LocalLnd.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0A05A342014047B0007D1C9 /* LocalLnd.swift */; };
 		ADFB36D92143B73C00146FCC /* LocalLndConfiguration.swift in Sources */ = {isa = PBXBuildFile; fileRef = A02C9FC520304395009821B1 /* LocalLndConfiguration.swift */; };
-		ADFB36DC2143B8C000146FCC /* String.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADFEFA7620E629AA00FE1557 /* String.swift */; };
 		ADFB36DF2143B93300146FCC /* Environment.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADCD060020E67FA5009D9650 /* Environment.swift */; };
 		ADFB36E62143BA6F00146FCC /* Invoice.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADC29C0B20A9B0A0008B2DC2 /* Invoice.swift */; };
 		ADFB36E72143BAC500146FCC /* Payment.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADECC36820F257AF00D00546 /* Payment.swift */; };
@@ -642,6 +644,8 @@
 		AD77464F2076165600EC596B /* String+Localizable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Localizable.swift"; sourceTree = "<group>"; };
 		AD77465620765E4D00EC596B /* ChannelViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChannelViewModel.swift; sourceTree = "<group>"; };
 		AD7746582076609400EC596B /* NodeInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NodeInfo.swift; sourceTree = "<group>"; };
+		AD79E421219D90E2002589CA /* Data+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Data+Extensions.swift"; sourceTree = "<group>"; };
+		AD79E423219D90EF002589CA /* String+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Extensions.swift"; sourceTree = "<group>"; };
 		AD7EDAE22108C4150058CCCA /* Wallet.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Wallet.storyboard; sourceTree = "<group>"; };
 		AD7EDAE42108C41D0058CCCA /* WalletViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WalletViewController.swift; sourceTree = "<group>"; };
 		AD7EDAE62108D39D0058CCCA /* ZapNavigationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ZapNavigationController.swift; sourceTree = "<group>"; };
@@ -835,6 +839,7 @@
 		ADF093122148FEB900B48853 /* ChannelEvent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChannelEvent.swift; sourceTree = "<group>"; };
 		ADF1BB2F21997A820078BCC4 /* RPCConnectURL.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RPCConnectURL.swift; sourceTree = "<group>"; };
 		ADF1BB31219D603A0078BCC4 /* docs */ = {isa = PBXFileReference; lastKnownFileType = folder; path = docs; sourceTree = "<group>"; };
+		ADF1BB32219D7F260078BCC4 /* Macaroon.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Macaroon.swift; sourceTree = "<group>"; };
 		ADF79363208DCB630086B2CA /* PinView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PinView.swift; sourceTree = "<group>"; };
 		ADF79365208E000C0086B2CA /* SetupPinViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetupPinViewController.swift; sourceTree = "<group>"; };
 		ADF79367208E09D00086B2CA /* SetupPinViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetupPinViewModel.swift; sourceTree = "<group>"; };
@@ -850,7 +855,6 @@
 		ADFE537B20D693F500B3BA2A /* LibraryTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = LibraryTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		ADFE537F20D693F500B3BA2A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		ADFEFA7320E6294000FE1557 /* OnChainRequestAddressType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnChainRequestAddressType.swift; sourceTree = "<group>"; };
-		ADFEFA7620E629AA00FE1557 /* String.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = String.swift; sourceTree = "<group>"; };
 		AE22E81B1B7AD6C27F3D49BD /* Pods-Zap.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Zap.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Zap/Pods-Zap.debug.xcconfig"; sourceTree = "<group>"; };
 		BC4EA10F2797F1F9E22BE4D6 /* Pods-ZapPos.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ZapPos.debug.xcconfig"; path = "Pods/Target Support Files/Pods-ZapPos/Pods-ZapPos.debug.xcconfig"; sourceTree = "<group>"; };
 		C1F7C2690D031E4764FB9055 /* Pods_LightningTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_LightningTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -1093,6 +1097,7 @@
 				A0A05A342014047B0007D1C9 /* LocalLnd.swift */,
 				A02C9FC520304395009821B1 /* LocalLndConfiguration.swift */,
 				AD71EA4820E2318000256307 /* RemoteRPCConfiguration.swift */,
+				ADF1BB32219D7F260078BCC4 /* Macaroon.swift */,
 			);
 			path = Lnd;
 			sourceTree = "<group>";
@@ -1504,6 +1509,15 @@
 			path = "Generate Mnemonic";
 			sourceTree = "<group>";
 		};
+		AD79E425219D90F3002589CA /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				AD79E421219D90E2002589CA /* Data+Extensions.swift */,
+				AD79E423219D90EF002589CA /* String+Extensions.swift */,
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
 		AD7EDAE12108C4050058CCCA /* Wallet */ = {
 			isa = PBXGroup;
 			children = (
@@ -1624,9 +1638,9 @@
 				ADADAD652143B2E700A48E1F /* SwiftLnd.h */,
 				ADADAD662143B2E700A48E1F /* Info.plist */,
 				ADCD060020E67FA5009D9650 /* Environment.swift */,
-				ADFEFA7620E629AA00FE1557 /* String.swift */,
 				ADBB36282080B2AE005662B4 /* TestingTemplates.swift */,
 				A0D3C97B20616A9A0015C5D7 /* Api */,
+				AD79E425219D90F3002589CA /* Extensions */,
 				A0376B70201CC16D00F1FBEF /* Lnd */,
 				A0A05A5A20149AF80007D1C9 /* Model */,
 				ADADAD712143B2E700A48E1F /* Tests */,
@@ -2903,6 +2917,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				AD79E422219D90E2002589CA /* Data+Extensions.swift in Sources */,
 				ADADAD982143B3C900A48E1F /* ProtobufExtensions.swift in Sources */,
 				ADADAD882143B3C900A48E1F /* Channel.swift in Sources */,
 				ADADAD932143B3C900A48E1F /* Success.swift in Sources */,
@@ -2915,6 +2930,7 @@
 				AD9BB2DA21819799009DC878 /* Route.swift in Sources */,
 				ADADAD892143B3C900A48E1F /* ChannelCloseSummary.swift in Sources */,
 				ADFB36DF2143B93300146FCC /* Environment.swift in Sources */,
+				ADF1BB33219D7F260078BCC4 /* Macaroon.swift in Sources */,
 				ADADAD9F2143B3C900A48E1F /* WalletApiProtocol.swift in Sources */,
 				ADADAD942143B3C900A48E1F /* TestingTemplates.swift in Sources */,
 				ADADADA02143B3C900A48E1F /* WalletApiRPC.swift in Sources */,
@@ -2929,11 +2945,11 @@
 				ADADAD8F2143B3C900A48E1F /* OnChainRequestAddressType.swift in Sources */,
 				ADADAD9D2143B3C900A48E1F /* LightningApiRPC.swift in Sources */,
 				ADADAD962143B3C900A48E1F /* rpc.pb.swift in Sources */,
-				ADFB36DC2143B8C000146FCC /* String.swift in Sources */,
 				ADADAD922143B3C900A48E1F /* Peer.swift in Sources */,
 				ADADAD9A2143B3C900A48E1F /* StreamCallback.swift in Sources */,
 				ADADAD8A2143B3C900A48E1F /* ChannelPoint.swift in Sources */,
 				ADADAD902143B3C900A48E1F /* OpenStatusUpdate.swift in Sources */,
+				AD79E424219D90EF002589CA /* String+Extensions.swift in Sources */,
 				ADADAD8D2143B3C900A48E1F /* Info.swift in Sources */,
 				ADFB36D72143B73C00146FCC /* LndConstants.swift in Sources */,
 				ADADAD8C2143B3C900A48E1F /* GraphTopologyUpdate.swift in Sources */,

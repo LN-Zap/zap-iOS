@@ -20,9 +20,9 @@ struct BTCPayConfiguration: Decodable {
         guard
             let item = configurations.first(where: { $0.type == "grpc" }),
             let url = URL(string: "\(item.host):\(item.port)"),
-            let data = item.macaroon.hexadecimal
+            let macaroon = Macaroon(hexadecimalString: item.macaroon)
             else { return nil }
-        return RemoteRPCConfiguration(certificate: nil, macaroon: data, url: url)
+        return RemoteRPCConfiguration(certificate: nil, macaroon: macaroon, url: url)
     }
 }
 
