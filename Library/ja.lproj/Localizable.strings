@@ -71,8 +71,8 @@
 "scene.channels.close.message" = "ノード %@ とチャネルを本当に終了しますか。";
 "scene.channels.force_close.title" = "チャンネルの強制終了";
 "scene.channels.force_close.message" = "%@ はオフラインですが、このチャネルを強制終了してもよろしいですか。あなたの資金の %@ に関して待たなければなりません。";
-"scene.channels.alert.close" = "閉鎖";
-"scene.channels.alert.force_close" = "強制閉鎖";
+"scene.channels.alert.close" = "Close Channel";
+"scene.channels.alert.force_close" = "Force Close Channel";
 "scene.channels.close_loading_view" = "Closing Channel";
 "scene.channels.close_success.toast" = "チャネルは閉じています。";
 
