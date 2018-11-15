@@ -12,16 +12,20 @@ zap:<URL encoded base64 DER certifcate>?macaroon=<URL encoded base64 macaroon>&i
 
 ```javascript
 // open tls.cert file
-var tlsFile = fs.readFileSync(os.homedir() + '/.lnd/tls.cert', 'utf8');
+var certFile = fs.readFileSync(os.homedir() + '/.lnd/tls.cert', 'utf8');
 
-// remove
-var tls = tlsFile.split(/\n/);
-tls = tls.filter(line => line != "");
-tls.pop();
-tls.shift();
-var cert = tls.join('');
+// remove '-----BEGIN CERTIFICATE-----', '-----END CERTIFICATE-----' and line breaks
+var lines = certFile.split(/\n/);
+lines = lines.filter(line => line != "");
+lines.pop();
+lines.shift();
+var cert = lines.join('');
 
-var macaroon = base64_encode(os.homedir() + '/.lnd/data/chain/bitcoin/testnet/admin.macaroon');
+// open macaroon file in base64 encoding
+var macaroonPath = os.homedir() + '/.lnd/data/chain/bitcoin/testnet/admin.macaroon'
+var macaroonData = fs.readFileSync(macaroonPath);
+var macaroon = new Buffer(macaroonData).toString('base64');
+
 var url = 'zap:' + encodeURIComponent(cert) + '?macaroon=' + encodeURIComponent(macaroon) + '&ip=' + ip.address() + ':10009'
 ```
 
