@@ -71,8 +71,8 @@
 "scene.channels.close.message" = "是否确实要关闭节点 %@ 的通道？";
 "scene.channels.force_close.title" = "强制关闭通道";
 "scene.channels.force_close.message" = "%@ 处于脱机状态, 是否确实要强制关闭此通道？您必须等待资金的 %@ 吗？";
-"scene.channels.alert.close" = "关闭";
-"scene.channels.alert.force_close" = "强制关闭";
+"scene.channels.alert.close" = "Close Channel";
+"scene.channels.alert.force_close" = "Force Close Channel";
 "scene.channels.close_loading_view" = "关闭通道";
 "scene.channels.close_success.toast" = "通道正在关闭。";
 
