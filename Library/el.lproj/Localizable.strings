@@ -71,8 +71,8 @@
 "scene.channels.close.message" = "Θέλετε πραγματικά να κλείσετε το κανάλι με τον κόμβο %@;";
 "scene.channels.force_close.title" = "Κλείστε το κανάλι με δύναμη";
 "scene.channels.force_close.message" = "Το %@ είναι εκτός σύνδεσης, είστε βέβαιοι ότι θέλετε να εξαναγκάσετε να κλείσετε αυτό το κανάλι; Θα πρέπει να περιμένετε περίπου %@ για τα χρήματά σας;";
-"scene.channels.alert.close" = "Κλείστε";
-"scene.channels.alert.force_close" = "Κλείστε το με δύναμη";
+"scene.channels.alert.close" = "Close Channel";
+"scene.channels.alert.force_close" = "Force Close Channel";
 "scene.channels.close_loading_view" = "Closing Channel";
 "scene.channels.close_success.toast" = "Το κανάλι κλείνει.";
 
