@@ -71,8 +71,8 @@
 "scene.channels.close.message" = "Czy naprawdę chcesz zamknąć kanał z nodem %@?";
 "scene.channels.force_close.title" = "Wymuś Zamknięcie Kanału";
 "scene.channels.force_close.message" = "%@ jest offline, czy na pewno chcesz wymusić zamknięcie tego kanału? Na środki z kanału będzie trzeba poczekać około %@ ?";
-"scene.channels.alert.close" = "Zamknij";
-"scene.channels.alert.force_close" = "Force Close";
+"scene.channels.alert.close" = "Close Channel";
+"scene.channels.alert.force_close" = "Force Close Channel";
 "scene.channels.close_loading_view" = "Closing Channel";
 "scene.channels.close_success.toast" = "Kanał jest zamykany.";
 
