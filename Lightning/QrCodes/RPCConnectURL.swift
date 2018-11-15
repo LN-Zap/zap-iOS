@@ -9,7 +9,7 @@ import Foundation
 import SwiftLnd
 
 extension URL {
-    public var queryParameters: [String: String]? {
+    var queryParameters: [String: String]? {
         guard
             let components = URLComponents(url: self, resolvingAgainstBaseURL: true),
             let queryItems = components.queryItems
@@ -28,6 +28,18 @@ extension String {
         guard hasPrefix(prefix) else { return self }
         return String(dropFirst(prefix.count))
     }
+    
+    func base64UrlToBase64() -> String {
+        var base64 = self
+            .replacingOccurrences(of: "-", with: "+")
+            .replacingOccurrences(of: "_", with: "/")
+        
+        if base64.count % 4 != 0 {
+            base64.append(String(repeating: "=", count: 4 - base64.count % 4))
+        }
+        
+        return base64
+    }
 }
 
 public final class RPCConnectURL {
@@ -39,13 +51,13 @@ public final class RPCConnectURL {
         guard
             let url = URL(string: urlString),
             let queryParameters = url.queryParameters,
-            let nodeUrlString = queryParameters["ip"]?.removingPercentEncoding,
+            let nodeUrlString = queryParameters["ip"],
             let nodeUrl = URL(string: nodeUrlString),
-            let macaroonString = queryParameters["macaroon"]?.removingPercentEncoding,
-            let macaroon = Macaroon(base64String: macaroonString),
-            let certificate = url.path.removingPercentEncoding
+            let macaroonString = queryParameters["macaroon"]?.base64UrlToBase64(),
+            let macaroon = Macaroon(base64String: macaroonString)
             else { return nil }
         
+        let certificate = url.path.base64UrlToBase64()
         rpcConfiguration = RemoteRPCConfiguration(certificate: Pem(key: certificate).string, macaroon: macaroon, url: nodeUrl)
     }
 }
