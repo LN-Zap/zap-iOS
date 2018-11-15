@@ -71,8 +71,8 @@
 "scene.channels.close.message" = "Willst du wirklich den Channel mit dem Node %@ schließen?";
 "scene.channels.force_close.title" = "Erzwungene Schließung des Channels";
 "scene.channels.force_close.message" = "%@ ist offline, bist du dir sicher die Schließung dieses Channels erzwingen zu wollen? Du musst dann ungefähr %@ auf dein Guthaben warten.";
-"scene.channels.alert.close" = "Schließen";
-"scene.channels.alert.force_close" = "Erzwinge Schließung";
+"scene.channels.alert.close" = "Close Channel";
+"scene.channels.alert.force_close" = "Force Close Channel";
 "scene.channels.close_loading_view" = "Kanal schließen";
 "scene.channels.close_success.toast" = "Channel wird geschlossen.";
 
