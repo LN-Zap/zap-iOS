@@ -71,8 +71,8 @@
 "scene.channels.close.message" = "Voulez-vous vraiment fermer le canal avec nœud %@ ?";
 "scene.channels.force_close.title" = "Fermer de force le canal";
 "scene.channels.force_close.message" = "%@ est déconnecté, êtes-vous sûr de vouloir fermer ce canal ? Vous devrez attendre environ %@ pour récupérer vos fonds.";
-"scene.channels.alert.close" = "Fermer";
-"scene.channels.alert.force_close" = "Force Close";
+"scene.channels.alert.close" = "Close Channel";
+"scene.channels.alert.force_close" = "Force Close Channel";
 "scene.channels.close_loading_view" = "Closing Channel";
 "scene.channels.close_success.toast" = "Le canal se ferme.";
 
