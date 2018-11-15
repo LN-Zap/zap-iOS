@@ -71,8 +71,8 @@
 "scene.channels.close.message" = "Vil du lukke kanalen med node %@?";
 "scene.channels.force_close.title" = "Force Close Channel";
 "scene.channels.force_close.message" = "%@ is offline, are you sure you want to force close this channel? You’d have to wait about %@ for your funds?";
-"scene.channels.alert.close" = "Luk";
-"scene.channels.alert.force_close" = "Force Close";
+"scene.channels.alert.close" = "Close Channel";
+"scene.channels.alert.force_close" = "Force Close Channel";
 "scene.channels.close_loading_view" = "Closing Channel";
 "scene.channels.close_success.toast" = "Kanalen lukkes.";
 
