@@ -71,8 +71,8 @@
 "scene.channels.close.message" = "אתה בטוח שברצונך לסגור את הערוץ עם node %@?";
 "scene.channels.force_close.title" = "כפה את סגירת הערוץ";
 "scene.channels.force_close.message" = "%@ מנותק, האם אתם בטוחים כי ברצונכם לכפות את סגירת הערוץ? אתם תצטרכו לחכות בערך %@ עבור הכספים שלכם?";
-"scene.channels.alert.close" = "סגור";
-"scene.channels.alert.force_close" = "כפה סגירה";
+"scene.channels.alert.close" = "Close Channel";
+"scene.channels.alert.force_close" = "Force Close Channel";
 "scene.channels.close_loading_view" = "Closing Channel";
 "scene.channels.close_success.toast" = "הערות נסגר.";
 
