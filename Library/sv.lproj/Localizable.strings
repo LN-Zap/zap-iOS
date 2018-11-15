@@ -71,8 +71,8 @@
 "scene.channels.close.message" = "Vill du verkligen stänga kanalen med nod %@?";
 "scene.channels.force_close.title" = "Tvinga stängning av kanal";
 "scene.channels.force_close.message" = "%@ är offline, är du säker på att du vill tvinga stängning av denna kanal? Du kommer att få vänta ungefär %@ för dina pengar?";
-"scene.channels.alert.close" = "Stäng";
-"scene.channels.alert.force_close" = "Force Close";
+"scene.channels.alert.close" = "Close Channel";
+"scene.channels.alert.force_close" = "Force Close Channel";
 "scene.channels.close_loading_view" = "Closing Channel";
 "scene.channels.close_success.toast" = "Kanalen stängs.";
 
