@@ -14,8 +14,8 @@
 
 "rpc_connect_qrcode_error.btc_pay_expired" = "Parece que el código ha caducado.";
 "rpc_connect_qrcode_error.btc_pay_configuration_broken" = "No se pudo leer el archivo de configuraciones de BTCPay.";
-"rpc_connect_qrcode_error.cant_read_qrcode" = "Invalid code format.";
-"rpc_connect_qrcode_error.code_updated" = "Connection updated.";
+"rpc_connect_qrcode_error.cant_read_qrcode" = "Formato de código no válido.";
+"rpc_connect_qrcode_error.code_updated" = "Conexión actualizada.";
 
 "channel.state.active" = "En línea";
 "channel.state.inactive" = "Desconectado";
@@ -48,10 +48,10 @@
 "scene.settings.item.on_chain_request_address.p2sh" = "P2SH";
 "scene.settings.item.manage_channels" = "Gestionar canales";
 "scene.settings.item.node_uri" = "Nodo de URI";
-"scene.settings.item.remove_remote_node" = "Reset Remote Node Connection";
-"scene.settings.item.remove_remote_node.confirmation.title" = "Disconnect Remote Node?";
-"scene.settings.item.remove_remote_node.confirmation.message" = "You will have to reconnect to your node afterwards.";
-"scene.settings.item.remove_remote_node.confirmation.button" = "Disconnect";
+"scene.settings.item.remove_remote_node" = "Restablecer conexión del nodo remotamente";
+"scene.settings.item.remove_remote_node.confirmation.title" = "¿Desconectar remotamente el nodo?";
+"scene.settings.item.remove_remote_node.confirmation.message" = "Usted tendrá que reconectarse a su nodo luego.";
+"scene.settings.item.remove_remote_node.confirmation.button" = "Desconectar";
 
 "scene.settings.item.change_pin" = "Cambiar Pin";
 "scene.settings.item.report_issue" = "Informar sobre un problema";
@@ -71,8 +71,8 @@
 "scene.channels.close.message" = "¿Realmente desea cerrar el canal con nodo %@?";
 "scene.channels.force_close.title" = "Forzar cierre de canal";
 "scene.channels.force_close.message" = "%@ está offline, ¿está seguro de que desea forzar el cierre de este canal? Tendrá que esperar alrededor de %@ para recuperar sus fondos.";
-"scene.channels.alert.close" = "Close Channel";
-"scene.channels.alert.force_close" = "Force Close Channel";
+"scene.channels.alert.close" = "Cerrar canal";
+"scene.channels.alert.force_close" = "Forzar cierre del canal";
 "scene.channels.close_loading_view" = "Cerrando canal";
 "scene.channels.close_success.toast" = "El canal está cerrándose.";
 
@@ -211,6 +211,6 @@
 "scene.node_uri.alias_label" = "Alias";
 "scene.node_uri.uri_label" = "URI";
 
-"scene.connect_node_uri.action_sheet.title" = "Connect";
-"scene.connect_node_uri.action_sheet.connect_button" = "Connect";
-"scene.connect_node_uri.action_sheet.message" = "Do you really want to connect to node at %@?";
+"scene.connect_node_uri.action_sheet.title" = "Conectar";
+"scene.connect_node_uri.action_sheet.connect_button" = "Conectar";
+"scene.connect_node_uri.action_sheet.message" = "¿Estás seguro que quieres conectarte al nodo %@?";
