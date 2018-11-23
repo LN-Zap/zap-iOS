@@ -1114,6 +1114,9 @@ struct Lnrpc_GetInfoResponse {
   //// The version of the LND software that the node is running.
   var version: String = String()
 
+  //// Number of inactive channels
+  var numInactiveChannels: UInt32 = 0
+
   var unknownFields = SwiftProtobuf.UnknownStorage()
 
   init() {}
@@ -1317,6 +1320,9 @@ struct Lnrpc_OpenChannelRequest {
 
   //// The minimum number of confirmations each one of your outputs used for the funding transaction must satisfy.
   var minConfs: Int32 = 0
+
+  //// Whether unconfirmed outputs should be used as inputs for the funding transaction.
+  var spendUnconfirmed: Bool = false
 
   var unknownFields = SwiftProtobuf.UnknownStorage()
 
@@ -1775,6 +1781,11 @@ struct Lnrpc_Hop {
 
   var feeMsat: Int64 = 0
 
+  ///*
+  ///An optional public key of the hop. If the public key is given, the payment
+  ///can be executed without relying on a copy of the channel graph.
+  var pubKey: String = String()
+
   var unknownFields = SwiftProtobuf.UnknownStorage()
 
   init() {}
@@ -2011,6 +2022,12 @@ struct Lnrpc_ChannelGraphRequest {
   // SwiftProtobuf.Message conformance is added in an extension below. See the
   // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
   // methods supported on all messages.
+
+  ///*
+  ///Whether unannounced channels are included in the response or not. If set,
+  ///unannounced channels are included. Unannounced channels are both private
+  ///channels, and public channels that are not yet announced to the network.
+  var includeUnannounced: Bool = false
 
   var unknownFields = SwiftProtobuf.UnknownStorage()
 
@@ -4799,6 +4816,7 @@ extension Lnrpc_GetInfoResponse: SwiftProtobuf.Message, SwiftProtobuf._MessageIm
     12: .same(proto: "uris"),
     13: .same(proto: "best_header_timestamp"),
     14: .same(proto: "version"),
+    15: .same(proto: "num_inactive_channels"),
   ]
 
   mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
@@ -4817,6 +4835,7 @@ extension Lnrpc_GetInfoResponse: SwiftProtobuf.Message, SwiftProtobuf._MessageIm
       case 12: try decoder.decodeRepeatedStringField(value: &self.uris)
       case 13: try decoder.decodeSingularInt64Field(value: &self.bestHeaderTimestamp)
       case 14: try decoder.decodeSingularStringField(value: &self.version)
+      case 15: try decoder.decodeSingularUInt32Field(value: &self.numInactiveChannels)
       default: break
       }
     }
@@ -4862,6 +4881,9 @@ extension Lnrpc_GetInfoResponse: SwiftProtobuf.Message, SwiftProtobuf._MessageIm
     if !self.version.isEmpty {
       try visitor.visitSingularStringField(value: self.version, fieldNumber: 14)
     }
+    if self.numInactiveChannels != 0 {
+      try visitor.visitSingularUInt32Field(value: self.numInactiveChannels, fieldNumber: 15)
+    }
     try unknownFields.traverse(visitor: &visitor)
   }
 
@@ -4879,6 +4901,7 @@ extension Lnrpc_GetInfoResponse: SwiftProtobuf.Message, SwiftProtobuf._MessageIm
     if self.uris != other.uris {return false}
     if self.bestHeaderTimestamp != other.bestHeaderTimestamp {return false}
     if self.version != other.version {return false}
+    if self.numInactiveChannels != other.numInactiveChannels {return false}
     if unknownFields != other.unknownFields {return false}
     return true
   }
@@ -5246,6 +5269,7 @@ extension Lnrpc_OpenChannelRequest: SwiftProtobuf.Message, SwiftProtobuf._Messag
     9: .same(proto: "min_htlc_msat"),
     10: .same(proto: "remote_csv_delay"),
     11: .same(proto: "min_confs"),
+    12: .same(proto: "spend_unconfirmed"),
   ]
 
   mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
@@ -5261,6 +5285,7 @@ extension Lnrpc_OpenChannelRequest: SwiftProtobuf.Message, SwiftProtobuf._Messag
       case 9: try decoder.decodeSingularInt64Field(value: &self.minHtlcMsat)
       case 10: try decoder.decodeSingularUInt32Field(value: &self.remoteCsvDelay)
       case 11: try decoder.decodeSingularInt32Field(value: &self.minConfs)
+      case 12: try decoder.decodeSingularBoolField(value: &self.spendUnconfirmed)
       default: break
       }
     }
@@ -5297,6 +5322,9 @@ extension Lnrpc_OpenChannelRequest: SwiftProtobuf.Message, SwiftProtobuf._Messag
     if self.minConfs != 0 {
       try visitor.visitSingularInt32Field(value: self.minConfs, fieldNumber: 11)
     }
+    if self.spendUnconfirmed != false {
+      try visitor.visitSingularBoolField(value: self.spendUnconfirmed, fieldNumber: 12)
+    }
     try unknownFields.traverse(visitor: &visitor)
   }
 
@@ -5311,6 +5339,7 @@ extension Lnrpc_OpenChannelRequest: SwiftProtobuf.Message, SwiftProtobuf._Messag
     if self.minHtlcMsat != other.minHtlcMsat {return false}
     if self.remoteCsvDelay != other.remoteCsvDelay {return false}
     if self.minConfs != other.minConfs {return false}
+    if self.spendUnconfirmed != other.spendUnconfirmed {return false}
     if unknownFields != other.unknownFields {return false}
     return true
   }
@@ -6178,6 +6207,7 @@ extension Lnrpc_Hop: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementation
     5: .same(proto: "expiry"),
     6: .same(proto: "amt_to_forward_msat"),
     7: .same(proto: "fee_msat"),
+    8: .same(proto: "pub_key"),
   ]
 
   mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
@@ -6190,6 +6220,7 @@ extension Lnrpc_Hop: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementation
       case 5: try decoder.decodeSingularUInt32Field(value: &self.expiry)
       case 6: try decoder.decodeSingularInt64Field(value: &self.amtToForwardMsat)
       case 7: try decoder.decodeSingularInt64Field(value: &self.feeMsat)
+      case 8: try decoder.decodeSingularStringField(value: &self.pubKey)
       default: break
       }
     }
@@ -6217,6 +6248,9 @@ extension Lnrpc_Hop: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementation
     if self.feeMsat != 0 {
       try visitor.visitSingularInt64Field(value: self.feeMsat, fieldNumber: 7)
     }
+    if !self.pubKey.isEmpty {
+      try visitor.visitSingularStringField(value: self.pubKey, fieldNumber: 8)
+    }
     try unknownFields.traverse(visitor: &visitor)
   }
 
@@ -6228,6 +6262,7 @@ extension Lnrpc_Hop: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementation
     if self.expiry != other.expiry {return false}
     if self.amtToForwardMsat != other.amtToForwardMsat {return false}
     if self.feeMsat != other.feeMsat {return false}
+    if self.pubKey != other.pubKey {return false}
     if unknownFields != other.unknownFields {return false}
     return true
   }
@@ -6658,18 +6693,28 @@ extension Lnrpc_ChannelEdge: SwiftProtobuf.Message, SwiftProtobuf._MessageImplem
 
 extension Lnrpc_ChannelGraphRequest: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
   static let protoMessageName: String = _protobuf_package + ".ChannelGraphRequest"
-  static let _protobuf_nameMap = SwiftProtobuf._NameMap()
+  static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
+    1: .same(proto: "include_unannounced"),
+  ]
 
   mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
-    while let _ = try decoder.nextFieldNumber() {
+    while let fieldNumber = try decoder.nextFieldNumber() {
+      switch fieldNumber {
+      case 1: try decoder.decodeSingularBoolField(value: &self.includeUnannounced)
+      default: break
+      }
     }
   }
 
   func traverse<V: SwiftProtobuf.Visitor>(visitor: inout V) throws {
+    if self.includeUnannounced != false {
+      try visitor.visitSingularBoolField(value: self.includeUnannounced, fieldNumber: 1)
+    }
     try unknownFields.traverse(visitor: &visitor)
   }
 
   func _protobuf_generated_isEqualTo(other: Lnrpc_ChannelGraphRequest) -> Bool {
+    if self.includeUnannounced != other.includeUnannounced {return false}
     if unknownFields != other.unknownFields {return false}
     return true
   }
