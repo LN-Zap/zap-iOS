@@ -203,6 +203,8 @@
 		ADA179C52152864E001401F3 /* Persistable.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD1EBA0020B2FD9D001FF67E /* Persistable.swift */; };
 		ADA179C62152864E001401F3 /* Storage.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADA865C120ED041F00B1B74B /* Storage.swift */; };
 		ADA179C82153997B001401F3 /* Persistence.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADA179C72153997B001401F3 /* Persistence.swift */; };
+		ADA3253421A701E700C5EAA2 /* MacaroonId.pb.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADA3253321A701E700C5EAA2 /* MacaroonId.pb.swift */; };
+		ADA3253621A81B5C00C5EAA2 /* MacaroonTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADA3253521A81B5C00C5EAA2 /* MacaroonTests.swift */; };
 		ADA6BBBF211B3AEC00A1FF19 /* ScanRectView.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADA6BBBE211B3AEC00A1FF19 /* ScanRectView.swift */; };
 		ADA75DF2210F389100003068 /* ChannelState+Localizable.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADA75DF1210F389100003068 /* ChannelState+Localizable.swift */; };
 		ADA81E9E210DE14100B7C6F2 /* UIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADA81E9D210DE14100B7C6F2 /* UIView.swift */; };
@@ -685,6 +687,8 @@
 		ADA179C121526036001401F3 /* EventProtocols.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventProtocols.swift; sourceTree = "<group>"; };
 		ADA179C321527AEA001401F3 /* HistoryEventType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistoryEventType.swift; sourceTree = "<group>"; };
 		ADA179C72153997B001401F3 /* Persistence.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Persistence.swift; sourceTree = "<group>"; };
+		ADA3253321A701E700C5EAA2 /* MacaroonId.pb.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MacaroonId.pb.swift; sourceTree = "<group>"; };
+		ADA3253521A81B5C00C5EAA2 /* MacaroonTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MacaroonTests.swift; sourceTree = "<group>"; };
 		ADA6BBBE211B3AEC00A1FF19 /* ScanRectView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScanRectView.swift; sourceTree = "<group>"; };
 		ADA6D2C220AC1BD2009398A5 /* InfoService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfoService.swift; sourceTree = "<group>"; };
 		ADA6D2C420AC1DDE009398A5 /* BalanceService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BalanceService.swift; sourceTree = "<group>"; };
@@ -1532,6 +1536,7 @@
 		AD86BCFC2099F4E900A7866A /* Generated */ = {
 			isa = PBXGroup;
 			children = (
+				ADA3253321A701E700C5EAA2 /* MacaroonId.pb.swift */,
 				AD0D933320C822C300E30C51 /* rpc.grpc.swift */,
 				AD0D933220C822C300E30C51 /* rpc.pb.swift */,
 			);
@@ -1651,8 +1656,9 @@
 		ADADAD712143B2E700A48E1F /* Tests */ = {
 			isa = PBXGroup;
 			children = (
-				ADADAD722143B2E700A48E1F /* SwiftLndTests.swift */,
 				ADADAD742143B2E700A48E1F /* Info.plist */,
+				ADA3253521A81B5C00C5EAA2 /* MacaroonTests.swift */,
+				ADADAD722143B2E700A48E1F /* SwiftLndTests.swift */,
 			);
 			path = Tests;
 			sourceTree = "<group>";
@@ -2935,6 +2941,7 @@
 				ADADAD942143B3C900A48E1F /* TestingTemplates.swift in Sources */,
 				ADADADA02143B3C900A48E1F /* WalletApiRPC.swift in Sources */,
 				ADADAD952143B3C900A48E1F /* rpc.grpc.swift in Sources */,
+				ADA3253421A701E700C5EAA2 /* MacaroonId.pb.swift in Sources */,
 				ADFB36D82143B73C00146FCC /* LocalLnd.swift in Sources */,
 				AD3781CC21664EB00083CE77 /* RemoteRPCConfiguration.swift in Sources */,
 				ADADAD912143B3C900A48E1F /* PaymentRequest.swift in Sources */,
@@ -2963,6 +2970,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				ADADAD732143B2E700A48E1F /* SwiftLndTests.swift in Sources */,
+				ADA3253621A81B5C00C5EAA2 /* MacaroonTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
