@@ -23,8 +23,8 @@
 "channel.state.closing" = "关闭中";
 "channel.state.force_closing" = "强制关闭";
 
-"network.type.testnet" = "测试网络";
-"network.type.mainnet" = "主网";
+"network_type.testnet" = "Testnet";
+"network_type.mainnet" = "Mainnet";
 
 "unit.bitcoin.btc" = "BTC";
 "unit.bitcoin.mbtc" = "mBTC";
