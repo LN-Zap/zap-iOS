@@ -1,0 +1,5 @@
+strings:
+  inputs: Library/en.lproj/Localizable.strings
+  outputs:
+    - templateName: structured-swift4
+      output: Library/Generated/strings.swift

@@ -80,7 +80,7 @@ final class QRCodeScannerViewController: UIViewController {
         if let string = UIPasteboard.general.string {
             tryPresentingViewController(for: string)
         } else {
-            presentError(message: "generic.pasteboard.invalid_address".localized)
+            presentError(message: L10n.Generic.Pasteboard.invalidAddress)
             UINotificationFeedbackGenerator().notificationOccurred(.error)
         }
     }

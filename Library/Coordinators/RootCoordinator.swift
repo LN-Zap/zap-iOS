@@ -89,15 +89,15 @@ public final class RootCoordinator: NSObject, SetupCoordinatorDelegate, PinCoord
     }
     
     private func openRPCConnectURL(_ url: RPCConnectURL) {
-        let message = String(format: "scene.connect_node_uri.action_sheet.message".localized, url.rpcConfiguration.url.absoluteString)
-        let alertController = UIAlertController(title: "scene.connect_node_uri.action_sheet.title".localized, message: message, preferredStyle: .actionSheet)
+        let message = L10n.Scene.ConnectNodeUri.ActionSheet.message(url.rpcConfiguration.url.absoluteString)
+        let alertController = UIAlertController(title: L10n.Scene.ConnectNodeUri.ActionSheet.title, message: message, preferredStyle: .actionSheet)
         
-        let connectAlertAction = UIAlertAction(title: "scene.connect_node_uri.action_sheet.connect_button".localized, style: .default, handler: { [weak self] _ in
+        let connectAlertAction = UIAlertAction(title: L10n.Scene.ConnectNodeUri.ActionSheet.connectButton, style: .default, handler: { [weak self] _ in
             self?.connectionService.reconnect(configuration: url.rpcConfiguration)
         })
         
         alertController.addAction(connectAlertAction)
-        let cancelAlertAction = UIAlertAction(title: "generic.cancel".localized, style: .cancel, handler: nil)
+        let cancelAlertAction = UIAlertAction(title: L10n.Generic.cancel, style: .cancel, handler: nil)
         alertController.addAction(cancelAlertAction)
         
         rootViewController.dismiss(animated: false)

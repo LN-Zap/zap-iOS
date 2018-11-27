@@ -12,15 +12,15 @@ extension ChannelState: Localizable {
     public var localized: String {
         switch self {
         case .active:
-            return "channel.state.active".localized
+            return L10n.Channel.State.active
         case .inactive:
-            return "channel.state.inactive".localized
+            return L10n.Channel.State.inactive
         case .opening:
-            return "channel.state.opening".localized
+            return L10n.Channel.State.opening
         case .closing:
-            return "channel.state.closing".localized
+            return L10n.Channel.State.closing
         case .forceClosing:
-            return "channel.state.force_closing".localized
+            return L10n.Channel.State.forceClosing
         }
     }
 }

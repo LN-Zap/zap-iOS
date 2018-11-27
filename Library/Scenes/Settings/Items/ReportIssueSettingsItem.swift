@@ -9,7 +9,7 @@ import Foundation
 import SafariServices
 
 final class ReportIssueSettingsItem: SettingsItem {
-    let title = "scene.settings.item.report_issue".localized
+    let title = L10n.Scene.Settings.Item.reportIssue
     
     func didSelectItem(from fromViewController: UIViewController) {
         guard let url = URL(string: "https://github.com/LN-Zap/zap-iOS/issues") else { return }

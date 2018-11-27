@@ -49,13 +49,13 @@ final class RequestViewController: ModalDetailViewController {
                 viewController.nextButton?.isHidden = false
                 viewController.memoTextField?.isHidden = true
                 viewController.memoSeparator?.isHidden = true
-                viewController.nextButton?.button.setTitle("scene.request.next_button_title".localized, for: .normal)
+                viewController.nextButton?.button.setTitle(L10n.Scene.Request.nextButtonTitle, for: .normal)
             case .memoInput:
                 viewController.amountInputView?.setKeypad(hidden: true, animated: true)
                 viewController.memoTextField?.becomeFirstResponder()
                 viewController.memoTextField?.isHidden = false
                 viewController.memoSeparator?.isHidden = false
-                viewController.nextButton?.button.setTitle("scene.request.generate_request_button".localized, for: .normal)
+                viewController.nextButton?.button.setTitle(L10n.Scene.Request.generateRequestButton, for: .normal)
             }
         }
     }
@@ -72,7 +72,7 @@ final class RequestViewController: ModalDetailViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        titleLabel = contentStackView.addArrangedElement(.label(text: "scene.request.title".localized, style: Style.Label.headline.with({ $0.textAlignment = .center }))) as? UILabel
+        titleLabel = contentStackView.addArrangedElement(.label(text: L10n.Scene.Request.title, style: Style.Label.headline.with({ $0.textAlignment = .center }))) as? UILabel
         
         topSeparator = contentStackView.addArrangedElement(.separator)
         topSeparator?.isHidden = true
@@ -94,7 +94,7 @@ final class RequestViewController: ModalDetailViewController {
         Style.textField(color: UIColor.Zap.white).apply(to: memoTextField)
         memoTextField.backgroundColor = UIColor.Zap.background
         memoTextField.attributedPlaceholder = NSAttributedString(
-            string: "generic.memo.placeholder".localized,
+            string: L10n.Generic.Memo.placeholder,
             attributes: [.foregroundColor: UIColor.Zap.gray]
         )
         contentStackView.addArrangedElement(.customHeight(30, element: .customView(memoTextField)))
@@ -102,19 +102,19 @@ final class RequestViewController: ModalDetailViewController {
         memoTextField.addTarget(self, action: #selector(updateMemo(sender:)), for: .editingChanged)
         self.memoTextField = memoTextField
         
-        nextButton = contentStackView.addArrangedElement(.customHeight(56, element: .button(title: "scene.request.next_button_title".localized, style: Style.Button.background, completion: { [weak self] _ in
+        nextButton = contentStackView.addArrangedElement(.customHeight(56, element: .button(title: L10n.Scene.Request.nextButtonTitle, style: Style.Button.background, completion: { [weak self] _ in
             self?.bottomButtonTapped()
         }))) as? CallbackButton
         nextButton?.isHidden = true
     }
     
     private func setupRequestMethodSelection() {
-        let lightningImage = UIImage(named: "icon_request_lightning_button", in: .library, compatibleWith: nil)
+        let lightningImage = UIImage(named: "icon_request_lightningButton", in: .library, compatibleWith: nil)
         let lightningButtonStyle = Style.Button.background.with({
             $0.setImage(lightningImage, for: .normal)
             $0.imageEdgeInsets = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 10)
         })
-        lightningButton = contentStackView.addArrangedElement(.customHeight(56, element: .button(title: "scene.request.lightning_button".localized, style: lightningButtonStyle, completion: { [weak self] _ in
+        lightningButton = contentStackView.addArrangedElement(.customHeight(56, element: .button(title: L10n.Scene.Request.lightningButton, style: lightningButtonStyle, completion: { [weak self] _ in
             self?.presentAmountInput(requestMethod: .lightning)
         }))) as? CallbackButton
         
@@ -125,7 +125,7 @@ final class RequestViewController: ModalDetailViewController {
         let leftSeparator = LineView()
         leftSeparator.backgroundColor = UIColor.Zap.background
         horizontalStackView.addArrangedSubview(leftSeparator)
-        horizontalStackView.addArrangedElement(.label(text: "scene.request.or_separator_label".localized, style: Style.Label.body))
+        horizontalStackView.addArrangedElement(.label(text: L10n.Scene.Request.orSeparatorLabel, style: Style.Label.body))
         let rightSeparator = LineView()
         rightSeparator.backgroundColor = UIColor.Zap.background
         horizontalStackView.addArrangedSubview(rightSeparator)
@@ -133,12 +133,12 @@ final class RequestViewController: ModalDetailViewController {
         leftSeparator.widthAnchor.constraint(equalTo: rightSeparator.widthAnchor, multiplier: 1, constant: 0).isActive = true
         self.orSeparator = horizontalStackView
         
-        let onChainImage = UIImage(named: "icon_request_on_chain_button", in: .library, compatibleWith: nil)
+        let onChainImage = UIImage(named: "icon_request_on_chainButton", in: .library, compatibleWith: nil)
         let onChainButtonStyle = Style.Button.background.with({
             $0.setImage(onChainImage, for: .normal)
             $0.imageEdgeInsets = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 10)
         })
-        onChainButton = contentStackView.addArrangedElement(.customHeight(56, element: .button(title: "scene.request.on_chain_button".localized, style: onChainButtonStyle, completion: { [weak self] _ in
+        onChainButton = contentStackView.addArrangedElement(.customHeight(56, element: .button(title: L10n.Scene.Request.onChainButton, style: onChainButtonStyle, completion: { [weak self] _ in
             self?.presentAmountInput(requestMethod: .onChain)
         }))) as? CallbackButton
     }
@@ -148,10 +148,10 @@ final class RequestViewController: ModalDetailViewController {
         switch requestMethod {
         case .lightning:
             name = "icon_header_lightning"
-            titleLabel?.text = "scene.request.lightning_header_title".localized
+            titleLabel?.text = L10n.Scene.Request.lightningHeaderTitle
         case .onChain:
             name = "icon_header_on_chain"
-            titleLabel?.text = "scene.request.on_chain_header_title".localized
+            titleLabel?.text = L10n.Scene.Request.onChainHeaderTitle
         }
         guard let image = UIImage(named: name, in: Bundle.library, compatibleWith: nil) else { fatalError("Image not found") }
         return image

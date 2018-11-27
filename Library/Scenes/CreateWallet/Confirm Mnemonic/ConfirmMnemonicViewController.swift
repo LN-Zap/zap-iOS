@@ -29,7 +29,7 @@ final class ConfirmMnemonicViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        title = "scene.confirm_mnemonic.title".localized
+        title = L10n.Scene.ConfirmMnemonic.title
 
         view.backgroundColor = UIColor.Zap.background
     
@@ -38,7 +38,7 @@ final class ConfirmMnemonicViewController: UIViewController {
         
         Style.Label.custom(color: .white).apply(to: descriptionLabel)
         
-        descriptionLabel.text = "scene.confirm_mnemonic.description".localized
+        descriptionLabel.text = L10n.Scene.ConfirmMnemonic.description
         
         if let flowLayout = collectionView.collectionViewLayout as? UICollectionViewFlowLayout {
             flowLayout.minimumInteritemSpacing = 0

@@ -21,9 +21,9 @@ final class HistoryCell: BondTableViewCell {
         var style: (UIColor, String) {
             switch self {
             case .error:
-                return (UIColor.Zap.superRed, "scene.history.cell.label.error".localized)
+                return (UIColor.Zap.superRed, L10n.Scene.History.Cell.Label.error)
             case .new:
-                return (UIColor.Zap.purple, "scene.history.cell.label.new".localized)
+                return (UIColor.Zap.purple, L10n.Scene.History.Cell.Label.new)
             }
         }
     }
@@ -121,10 +121,10 @@ final class HistoryCell: BondTableViewCell {
     }
     
     func setTransactionEvent(_ transactionEvent: TransactionEvent) {
-        let title = transactionEvent.amount < 0 ? "scene.history.cell.transaction_sent".localized : "scene.history.cell.transaction_received".localized
+        let title = transactionEvent.amount < 0 ? L10n.Scene.History.Cell.transactionSent : L10n.Scene.History.Cell.transactionReceived
         setTitle(title, date: transactionEvent.date)
 
-        let description = transactionEvent.memo ?? transactionEvent.destinationAddresses.first?.string ?? "transaction.no_destination_address".localized
+        let description = transactionEvent.memo ?? transactionEvent.destinationAddresses.first?.string ?? L10n.Transaction.noDestinationAddress
         
         if transactionEvent.type == .unknown {
             containerBackgroundColor = UIColor.Zap.invisibleGray
@@ -140,19 +140,19 @@ final class HistoryCell: BondTableViewCell {
         let title: String
         switch wrapped.channelEvent.type {
         case .open:
-            title = "scene.history.cell.channel_opened".localized
+            title = L10n.Scene.History.Cell.channelOpened
         case .cooperativeClose, .unknown:
-            title = "scene.history.cell.channel_closed".localized
+            title = L10n.Scene.History.Cell.channelClosed
         case .localForceClose:
-            title = "scene.history.cell.force_close_channel".localized
+            title = L10n.Scene.History.Cell.forceCloseChannel
         case .remoteForceClose:
-            title = "scene.history.cell.remote_force_close_channel".localized
+            title = L10n.Scene.History.Cell.remoteForceCloseChannel
         case .breachClose:
-            title = "scene.history.cell.breach_close_channel".localized
+            title = L10n.Scene.History.Cell.breachCloseChannel
         case .fundingCanceled:
-            title = "scene.history.cell.close_channel_funding_canceled".localized
+            title = L10n.Scene.History.Cell.closeChannelFundingCanceled
         case .abandoned:
-            title = "scene.history.cell.channel_abandoned".localized
+            title = L10n.Scene.History.Cell.channelAbandoned
         }
 
         setTitle(title, date: wrapped.date)
@@ -184,7 +184,7 @@ final class HistoryCell: BondTableViewCell {
     }
     
     func setCreateInvoiceEvent(_ createInvoiceEvent: CreateInvoiceEvent) {
-        setTitle("scene.history.cell.invoice_created".localized, date: createInvoiceEvent.date)
+        setTitle(L10n.Scene.History.Cell.invoiceCreated, date: createInvoiceEvent.date)
         
         stackView.addArrangedElement(.horizontalStackView(compressionResistant: .last, content: [
             .label(text: createInvoiceEvent.memo ?? createInvoiceEvent.paymentRequest, style: Style.Label.body),
@@ -195,7 +195,7 @@ final class HistoryCell: BondTableViewCell {
     func setFailedPaymentEvent(_ failedPaymentEvent: FailedPaymentEvent, delegate: HistoryCellDelegate) {
         self.delegate = delegate
         
-        let title = String(format: "scene.history.cell.payment_failed".localized, failedPaymentEvent.node.alias ?? failedPaymentEvent.node.pubKey)
+        let title = L10n.Scene.History.Cell.paymentFailed(failedPaymentEvent.node.alias ?? failedPaymentEvent.node.pubKey)
         setTitle(title, date: failedPaymentEvent.date)
         
         let description = failedPaymentEvent.memo ?? failedPaymentEvent.paymentRequest
@@ -208,7 +208,7 @@ final class HistoryCell: BondTableViewCell {
         addNotificationLabel(type: .error)
 
         if !failedPaymentEvent.isExpired {
-            stackView.addArrangedElement(.button(title: "scene.history.cell.action.try_again".localized, style: Style.Button.custom(), completion: { [weak self] _ in
+            stackView.addArrangedElement(.button(title: L10n.Scene.History.Cell.Action.tryAgain, style: Style.Button.custom(), completion: { [weak self] _ in
                 self?.delegate?.resendFailedPayment(failedPaymentEvent)
             }))
         }
@@ -217,9 +217,9 @@ final class HistoryCell: BondTableViewCell {
     func setLightningPaymentEvent(_ lightningPaymentEvent: LightningPaymentEvent) {
         let title: String
         if lightningPaymentEvent.amount < 0 {
-            title = "scene.history.cell.payment_sent".localized
+            title = L10n.Scene.History.Cell.paymentSent
         } else {
-            title = "scene.history.cell.payment_received".localized
+            title = L10n.Scene.History.Cell.paymentReceived
         }
 
         setTitle(title, date: lightningPaymentEvent.date)

@@ -29,7 +29,7 @@ final class FilterViewController: UIViewController {
     fileprivate var historyViewModel: HistoryViewModel?
     
     let sections: [Section<FilterSetting>] = [
-        Section(title: "scene.filter.section_header.transaction_types".localized, rows: [
+        Section(title: L10n.Scene.Filter.SectionHeader.transactionTypes, rows: [
             .transactionEvents,
             .lightningPaymentEvents
         ]),
@@ -38,7 +38,7 @@ final class FilterViewController: UIViewController {
             .createInvoiceEvents,
             .channelEvents
         ]),
-        Section(title: "scene.filter.section_header.advanced".localized, rows: [
+        Section(title: L10n.Scene.Filter.SectionHeader.advanced, rows: [
             .unknownTransactionType
         ])
     ]
@@ -46,7 +46,7 @@ final class FilterViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        title = "scene.filter.title".localized
+        title = L10n.Scene.Filter.title
         
         tableView.allowsSelection = false
         tableView.backgroundColor = UIColor.Zap.deepSeaBlue

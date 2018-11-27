@@ -55,36 +55,36 @@ final class ConnectCellBond: TableViewBinder<Observable2DArray<String?, ConnectR
         switch cellType {
         case .emptyState:
             cell = dequeueCell(for: tableView, style: .default)
-            cell.textLabel?.text = "scene.connect_remote_node.empty_state".localized
+            cell.textLabel?.text = L10n.Scene.ConnectRemoteNode.emptyState
             cell.textLabel?.textColor = .lightGray
             cell.textLabel?.numberOfLines = 0
             cell.selectionStyle = .none
         case .address(let urlString):
             cell = dequeueCell(for: tableView, style: .value1)
-            cell.textLabel?.text = "scene.connect_remote_node.url_label".localized
+            cell.textLabel?.text = L10n.Scene.ConnectRemoteNode.urlLabel
             cell.detailTextLabel?.text = urlString
             cell.accessoryType = .disclosureIndicator
         case .certificate(let certificateString):
             cell = dequeueCell(for: tableView, style: .value1)
-            cell.textLabel?.text = "scene.connect_remote_node.certificate_label".localized
+            cell.textLabel?.text = L10n.Scene.ConnectRemoteNode.certificateLabel
             cell.detailTextLabel?.text = certificateString
             cell.accessoryType = .disclosureIndicator
         case .connect:
             cell = dequeueCell(for: tableView, style: .default)
-            cell.textLabel?.text = "scene.connect_remote_node.connect_button".localized
+            cell.textLabel?.text = L10n.Scene.ConnectRemoteNode.connectButton
             cell.textLabel?.textAlignment = .center
             cell.textLabel?.textColor = UIColor.Zap.lightningOrange
         case .scan:
             cell = dequeueCell(for: tableView, style: .default)
-            cell.textLabel?.text = "scene.connect_remote_node.scan_button".localized
+            cell.textLabel?.text = L10n.Scene.ConnectRemoteNode.scanButton
             cell.imageView?.image = UIImage(named: "icon_qr_code", in: .library, compatibleWith: nil)
         case .paste:
             cell = dequeueCell(for: tableView, style: .default)
-            cell.textLabel?.text = "scene.connect_remote_node.paste_button".localized
+            cell.textLabel?.text = L10n.Scene.ConnectRemoteNode.pasteButton
             cell.imageView?.image = UIImage(named: "icon_copy", in: .library, compatibleWith: nil)
         case .help:
             cell = dequeueCell(for: tableView, style: .default)
-            cell.textLabel?.text = "scene.connect_remote_node.help_button".localized
+            cell.textLabel?.text = L10n.Scene.ConnectRemoteNode.helpButton
         }
         
         return cell
@@ -103,7 +103,7 @@ final class ConnectRemoteNodeViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        title = "scene.connect_remote_node.title".localized
+        title = L10n.Scene.ConnectRemoteNode.title
         
         tableView.delegate = self
         tableView.backgroundColor = UIColor.Zap.deepSeaBlue
@@ -117,12 +117,12 @@ final class ConnectRemoteNodeViewController: UIViewController {
     
     private func displayError() {
         DispatchQueue.main.async { [weak self] in
-            self?.presentErrorToast("scene.connect_remote_node.server_error".localized)
+            self?.presentErrorToast(L10n.Scene.ConnectRemoteNode.serverError)
         }
     }
     
     fileprivate func presentHelp() {
-        guard let url = URL(string: "link.help.zapconnect".localized) else { return }
+        guard let url = URL(string: L10n.Link.Help.zapconnect) else { return }
         
         let safariViewController = SFSafariViewController(url: url)
         safariViewController.preferredBarTintColor = UIColor.Zap.deepSeaBlue
@@ -177,13 +177,13 @@ final class ConnectRemoteNodeViewController: UIViewController {
             connectRemoteNodeViewModel?.pasteCertificates(pasteboardContent) { [weak self] result in
                 switch result {
                 case .success:
-                    self?.presentSuccessToast("rpc_connect_qrcode_error.code_updated".localized)
+                    self?.presentSuccessToast(L10n.RpcConnectQrcodeError.codeUpdated)
                 case .failure(let error):
                     self?.presentErrorToast(error.localizedDescription)
                 }
             }
         } else {
-            self.presentErrorToast("rpc_connect_qrcode_error.cant_read_qrcode".localized)
+            self.presentErrorToast(L10n.RpcConnectQrcodeError.cantReadQrcode)
         }
     }
 }

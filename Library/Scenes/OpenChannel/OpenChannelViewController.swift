@@ -23,11 +23,11 @@ final class OpenChannelViewController: ModalDetailViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        contentStackView.addArrangedElement(.label(text: "scene.open_channel.title".localized, style: Style.Label.headline.with({ $0.textAlignment = .center })))
+        contentStackView.addArrangedElement(.label(text: L10n.Scene.OpenChannel.title, style: Style.Label.headline.with({ $0.textAlignment = .center })))
         contentStackView.addArrangedElement(.separator)
 
         contentStackView.addArrangedElement(.verticalStackView(content: [
-            .label(text: "scene.open_channel.channel_uri_label".localized, style: Style.Label.headline),
+            .label(text: L10n.Scene.OpenChannel.channelUriLabel, style: Style.Label.headline),
             .label(text: viewModel.lightningNodeURI.stringValue, style: Style.Label.body)
         ], spacing: -5))
         contentStackView.addArrangedElement(.separator)
@@ -41,7 +41,7 @@ final class OpenChannelViewController: ModalDetailViewController {
         
         contentStackView.addArrangedSubview(amountInputView)
         
-        openButton = contentStackView.addArrangedElement(.customHeight(56, element: .button(title: "scene.open_channel.add_button".localized, style: Style.Button.background, completion: { [weak self] button in
+        openButton = contentStackView.addArrangedElement(.customHeight(56, element: .button(title: L10n.Scene.OpenChannel.addButton, style: Style.Button.background, completion: { [weak self] button in
             button.isEnabled = false
             self?.openChannel()
         }))) as? CallbackButton

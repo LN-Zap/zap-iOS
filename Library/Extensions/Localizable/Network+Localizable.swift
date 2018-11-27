@@ -12,9 +12,9 @@ extension Network: Localizable {
     public var localized: String {
         switch self {
         case .testnet:
-            return "network.type.testnet".localized
+            return L10n.NetworkType.testnet
         case .mainnet:
-            return "network.type.mainnet".localized
+            return L10n.NetworkType.mainnet
         }
     }
 }

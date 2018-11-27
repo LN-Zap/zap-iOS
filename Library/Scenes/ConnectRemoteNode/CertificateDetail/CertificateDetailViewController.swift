@@ -21,7 +21,7 @@ final class CertificateDetailViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        title = "scene.connect_remote_node.certificate_detail.certificate_title".localized
+        title = L10n.Scene.ConnectRemoteNode.CertificateDetail.certificateTitle
         
         tableView.rowHeight = UITableView.automaticDimension
         tableView.backgroundColor = UIColor.Zap.deepSeaBlue
@@ -40,9 +40,9 @@ final class CertificateDetailViewController: UITableViewController {
     
     override func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
         if section == 0 {
-            return "scene.connect_remote_node.certificate_detail.certificate_title".localized
+            return L10n.Scene.ConnectRemoteNode.CertificateDetail.certificateTitle
         } else {
-            return "scene.connect_remote_node.certificate_detail.macaroon_title".localized
+            return L10n.Scene.ConnectRemoteNode.CertificateDetail.macaroonTitle
         }
     }
     

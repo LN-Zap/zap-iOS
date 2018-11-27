@@ -49,17 +49,17 @@ enum FilterSetting: Localizable {
     var localized: String {
         switch self {
         case .transactionEvents:
-            return "scene.filter.displayOnChainTransactions".localized
+            return L10n.Scene.Filter.displayOnChainTransactions
         case .unknownTransactionType:
-            return "scene.filter.display_unknown_transaction_type".localized
+            return L10n.Scene.Filter.displayUnknownTransactionType
         case .lightningPaymentEvents:
-            return "scene.filter.displayLightningPayments".localized
+            return L10n.Scene.Filter.displayLightningPayments
         case .createInvoiceEvents:
-            return "scene.filter.displayLightningInvoices".localized
+            return L10n.Scene.Filter.displayLightningInvoices
         case .failedPaymentEvents:
-            return "scene.filter.displayFailedPaymentEvents".localized
+            return L10n.Scene.Filter.displayFailedPaymentEvents
         case .channelEvents:
-            return "scene.filter.displayChannelEvents".localized
+            return L10n.Scene.Filter.displayChannelEvents
         }
     }
     

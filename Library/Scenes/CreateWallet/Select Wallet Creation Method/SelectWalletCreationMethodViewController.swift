@@ -31,20 +31,20 @@ final class SelectWalletCreationMethodViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        title = "scene.select_wallet_connection.title".localized
+        title = L10n.Scene.SelectWalletConnection.title
         
         // swiftlint:disable opening_brace
         content = [
-            ("scene.select_wallet_connection.create.title".localized,
-             "scene.select_wallet_connection.create.message".localized,
+            (L10n.Scene.SelectWalletConnection.Create.title,
+             L10n.Scene.SelectWalletConnection.Create.message,
              { [weak self] in self?.createButtonTapped?() }
             ),
-            ("scene.select_wallet_connection.recover.title".localized,
-             "scene.select_wallet_connection.recover.message".localized,
+            (L10n.Scene.SelectWalletConnection.Recover.title,
+             L10n.Scene.SelectWalletConnection.Recover.message,
              { [weak self] in self?.recoverButtonTapped?() }
             ),
-            ("scene.select_wallet_connection.connect.title".localized,
-             "scene.select_wallet_connection.connect.message".localized,
+            (L10n.Scene.SelectWalletConnection.Connect.title,
+             L10n.Scene.SelectWalletConnection.Connect.message,
              { [weak self] in self?.connectButtonTapped?() }
             )
         ]
@@ -66,7 +66,7 @@ extension SelectWalletCreationMethodViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
         if indexPath.section == 1 {
-            guard let url = URL(string: "link.help".localized) else { return }
+            guard let url = URL(string: L10n.Link.help) else { return }
             let safariViewController = SFSafariViewController(url: url)
             safariViewController.preferredBarTintColor = UIColor.Zap.deepSeaBlue
             safariViewController.preferredControlTintColor = UIColor.Zap.lightningOrange
@@ -103,7 +103,7 @@ extension SelectWalletCreationMethodViewController: UITableViewDataSource {
             if let label = cell.textLabel {
                 Style.Label.custom().apply(to: label)
                 label.font = label.font.withSize(14)
-                label.text = "scene.select_wallet_connection.create.help".localized
+                label.text = L10n.Scene.SelectWalletConnection.Create.help
                 label.textColor = .white
             }
             return cell

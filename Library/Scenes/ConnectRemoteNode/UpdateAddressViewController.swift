@@ -27,7 +27,7 @@ final class UpdateAddressViewController: UITableViewController {
         view.backgroundColor = UIColor.Zap.deepSeaBlue
         addressCell.backgroundColor = UIColor.Zap.seaBlue
         
-        title = "scene.connect_remote_node.edit_url.title".localized
+        title = L10n.Scene.ConnectRemoteNode.EditUrl.title
         
         addressTextField.text = connectRemoteNodeViewModel?.remoteNodeConfiguration?.url.absoluteString
         addressTextField.becomeFirstResponder()

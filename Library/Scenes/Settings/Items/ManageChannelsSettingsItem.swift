@@ -10,7 +10,7 @@ import Foundation
 final class ManageChannelsSettingsItem: DetailDisclosureSettingsItem {
     private var pushChannelList: (UINavigationController) -> Void
 
-    var title = "scene.settings.item.manage_channels".localized
+    var title = L10n.Scene.Settings.Item.manageChannels
     
     init(pushChannelList: @escaping (UINavigationController) -> Void) {
         self.pushChannelList = pushChannelList

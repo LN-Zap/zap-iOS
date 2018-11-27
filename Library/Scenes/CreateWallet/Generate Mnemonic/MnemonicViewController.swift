@@ -30,15 +30,15 @@ final class MnemonicViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        title = "scene.create_wallet.title".localized
+        title = L10n.Scene.CreateWallet.title
         view.backgroundColor = UIColor.Zap.deepSeaBlue
         
         Style.Button.custom(color: UIColor.Zap.white).apply(to: doneButton)
         Style.Label.custom().apply(to: topLabel)
         topLabel.textColor = .white
-        topLabel.text = "scene.create_wallet.description_label".localized
+        topLabel.text = L10n.Scene.CreateWallet.descriptionLabel
         
-        doneButton.setTitle("scene.create_wallet.next_button".localized, for: .normal)
+        doneButton.setTitle(L10n.Scene.CreateWallet.nextButton, for: .normal)
         
         mnemonicViewModel?.pageWords
             .map { $0 != nil }

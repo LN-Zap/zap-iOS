@@ -53,8 +53,8 @@ final class SyncViewController: UIViewController {
         navigationBar.shadowImage = UIImage()
         navigationBar.setBackgroundImage(UIImage(), for: .default)
 
-        descriptionLabel.text = "scene.sync.description_label".localized
-        disconnectBarButton.title = "scene.sync.disconnect_bar_button".localized
+        descriptionLabel.text = L10n.Scene.Sync.descriptionLabel
+        disconnectBarButton.title = L10n.Scene.Sync.disconnectBarButton
         
         setupBindings()
     }
@@ -130,12 +130,12 @@ final class SyncViewController: UIViewController {
     }
     
     @IBAction private func disconnectNode(_ sender: Any) {
-        let alertController = UIAlertController(title: "scene.sync.disconnect_alert.title".localized, message: "scene.sync.disconnect_alert.message".localized, preferredStyle: .actionSheet)
-        alertController.addAction(UIAlertAction(title: "scene.sync.disconnect_alert.destructive_action".localized, style: .destructive, handler: { [weak self] _ in
+        let alertController = UIAlertController(title: L10n.Scene.Sync.DisconnectAlert.title, message: L10n.Scene.Sync.DisconnectAlert.message, preferredStyle: .actionSheet)
+        alertController.addAction(UIAlertAction(title: L10n.Scene.Sync.DisconnectAlert.destructiveAction, style: .destructive, handler: { [weak self] _ in
             RemoteRPCConfiguration.delete()
             self?.delegate?.disconnect()
         }))
-        alertController.addAction(UIAlertAction(title: "scene.sync.disconnect_alert.cancel_action".localized, style: .cancel, handler: nil))
+        alertController.addAction(UIAlertAction(title: L10n.Scene.Sync.DisconnectAlert.cancelAction, style: .cancel, handler: nil))
         
         present(alertController, animated: true, completion: nil)
     }

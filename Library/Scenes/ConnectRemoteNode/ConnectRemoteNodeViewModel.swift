@@ -48,7 +48,7 @@ final class ConnectRemoteNodeViewModel: NSObject {
             sections.appendSection(certificateSection(for: configuration))
         } else {
             sections.appendSection(Observable2DArraySection<String?, CellType>(
-                metadata: "scene.connect_remote_node.your_node_title".localized,
+                metadata: L10n.Scene.ConnectRemoteNode.yourNodeTitle,
                 items: [.emptyState]
             ))
         }
@@ -78,7 +78,7 @@ final class ConnectRemoteNodeViewModel: NSObject {
         }
         
         return Observable2DArraySection<String?, CellType>(
-            metadata: "scene.connect_remote_node.your_node_title".localized,
+            metadata: L10n.Scene.ConnectRemoteNode.yourNodeTitle,
             items: items
         )
     }

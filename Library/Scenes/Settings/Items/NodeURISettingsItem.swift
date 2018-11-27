@@ -10,7 +10,7 @@ import Foundation
 final class NodeURISettingsItem: DetailDisclosureSettingsItem {
     private var pushNodeURIViewController: (UINavigationController) -> Void
     
-    var title = "scene.settings.item.node_uri".localized
+    var title = L10n.Scene.Settings.Item.nodeUri
     
     init(pushNodeURIViewController: @escaping (UINavigationController) -> Void) {
         self.pushNodeURIViewController = pushNodeURIViewController

@@ -14,9 +14,9 @@ extension OnChainRequestAddressType: Localizable {
     public var localized: String {
         switch self {
         case .witnessPubkeyHash:
-            return "scene.settings.item.on_chain_request_address.bech32".localized
+            return L10n.Scene.Settings.Item.OnChainRequestAddress.bech32
         case .nestedPubkeyHash:
-            return "scene.settings.item.on_chain_request_address.p2sh".localized
+            return L10n.Scene.Settings.Item.OnChainRequestAddress.p2sh
         }
     }
 }
@@ -25,7 +25,7 @@ extension OnChainRequestAddressType: Localizable {
 final class OnChainRequestAddressTypeSelectionSettingsItem: DetailDisclosureSettingsItem, SubtitleSettingsItem {
     var subtitle = Settings.shared.onChainRequestAddressType.map { Optional($0.localized) }
     
-    let title = "scene.settings.item.on_chain_request_address.title".localized
+    let title = L10n.Scene.Settings.Item.OnChainRequestAddress.title
     
     func didSelectItem(from fromViewController: UIViewController) {
         let items: [SettingsItem] = [

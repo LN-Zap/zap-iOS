@@ -13,7 +13,7 @@ import SwiftLnd
 struct OpenChannelQRCodeScannerStrategy: QRCodeScannerStrategy {
     private let lightningService: LightningService
     
-    let title = "scene.open_channel.title".localized
+    let title = L10n.Scene.OpenChannel.title
     
     init(lightningService: LightningService) {
         self.lightningService = lightningService

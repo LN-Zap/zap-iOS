@@ -51,12 +51,12 @@ final class ModalPinViewController: ModalViewController, ContentHeightProviding 
         keyPadPinView.pinView = pinView
         
         Style.Label.headline.apply(to: headlineLabel)
-        headlineLabel.text = "scene.modal_pin.headline".localized
+        headlineLabel.text = L10n.Scene.ModalPin.headline
         Style.Label.body.apply(to: descriptionLabel)
-        descriptionLabel.text = "scene.modal_pin.description".localized
+        descriptionLabel.text = L10n.Scene.ModalPin.description
         
         Style.Button.custom().apply(to: cancelButton)
-        cancelButton.setTitle("generic.cancel".localized, for: .normal)
+        cancelButton.setTitle(L10n.Generic.cancel, for: .normal)
     }
     
     static func authenticate(authenticationViewModel: AuthenticationViewModel, completion: @escaping (Result<Success>) -> Void) {

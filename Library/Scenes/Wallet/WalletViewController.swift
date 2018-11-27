@@ -22,7 +22,7 @@ extension UIStoryboard {
         walletViewController.sendButtonTapped = sendButtonTapped
         walletViewController.requestButtonTapped = requestButtonTapped
         
-        walletViewController.tabBarItem.title = "scene.wallet.title".localized
+        walletViewController.tabBarItem.title = L10n.Scene.Wallet.title
         walletViewController.tabBarItem.image = UIImage(named: "tabbar_wallet", in: Bundle.library, compatibleWith: nil)
         
         return walletViewController
@@ -77,15 +77,15 @@ final class WalletViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        title = "scene.wallet.title".localized
+        title = L10n.Scene.Wallet.title
         view.backgroundColor = UIColor.Zap.background
         
         Style.Button.custom().apply(to: sendButton, requestButton)
 
         UIView.performWithoutAnimation {
-            sendButton.setTitle("scene.main.send_button".localized, for: .normal)
+            sendButton.setTitle(L10n.Scene.Main.sendButton, for: .normal)
             sendButton.layoutIfNeeded()
-            requestButton.setTitle("scene.main.receive_button".localized, for: .normal)
+            requestButton.setTitle(L10n.Scene.Main.receiveButton, for: .normal)
             requestButton.layoutIfNeeded()
         }
         
@@ -126,7 +126,7 @@ final class WalletViewController: UIViewController {
         Settings.shared.fiatCurrency
             .map { $0.format(satoshis: 100_000_000) }
             .ignoreNil()
-            .map { String(format: "scene.main.exchange_rate_label".localized, $0) }
+            .map(L10n.Scene.Main.exchangeRateLabel)
             .bind(to: exchangeRateLabel.reactive.text)
             .dispose(in: reactive.bag)
     }

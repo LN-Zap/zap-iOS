@@ -22,7 +22,7 @@ final class SettingsViewController: GroupedTableViewController {
         
         let navigationController = ZapNavigationController(rootViewController: viewController)
         
-        navigationController.tabBarItem.title = "scene.settings.title".localized
+        navigationController.tabBarItem.title = L10n.Scene.Settings.title
         navigationController.tabBarItem.image = UIImage(named: "tabbar_settings", in: Bundle.library, compatibleWith: nil)
         navigationController.view.backgroundColor = UIColor.Zap.background
         
@@ -41,14 +41,14 @@ final class SettingsViewController: GroupedTableViewController {
         }
         
         let sections: [Section<SettingsItem>] = [
-            Section(title: "scene.settings.title".localized, rows: [
+            Section(title: L10n.Scene.Settings.title, rows: [
                 CurrencySelectionSettingsItem(),
                 BitcoinUnitSelectionSettingsItem(),
                 OnChainRequestAddressTypeSelectionSettingsItem(),
                 BlockExplorerSelectionSettingsItem()
             ]),
             Section(title: "Lightning", rows: lightningRows),
-            Section(title: "scene.settings.section.wallet".localized, rows: [
+            Section(title: L10n.Scene.Settings.Section.wallet, rows: [
                 RemoveRemoteNodeSettingsItem(settingsDelegate: settingsDelegate),
                 ChangePinSettingsItem(settingsDelegate: settingsDelegate)
             ]),
@@ -68,7 +68,7 @@ final class SettingsViewController: GroupedTableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        title = "scene.settings.title".localized
+        title = L10n.Scene.Settings.title
     }
     
     override func tableView(_ tableView: UITableView, titleForFooterInSection section: Int) -> String? {

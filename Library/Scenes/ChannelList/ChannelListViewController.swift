@@ -34,7 +34,7 @@ final class ChannelListViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        title = "scene.channels.title".localized
+        title = L10n.Scene.Channels.title
         view.backgroundColor = UIColor.Zap.background
 
         tableView.registerCell(ChannelTableViewCell.self)

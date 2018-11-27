@@ -78,7 +78,7 @@ final class MainCoordinator: Routing {
             guard let url = try Settings.shared.blockExplorer.value.url(network: network, code: code, type: type) else { return }
             presentSafariViewController(for: url)
         } catch BlockExplorerError.unsupportedNetwork {
-            (detailViewController ?? rootViewController).presentErrorToast(String(format: "error.block_explorer.unsupported_network".localized, Settings.shared.blockExplorer.value.localized, lightningService.infoService.network.value.localized))
+            (detailViewController ?? rootViewController).presentErrorToast(L10n.Error.BlockExplorer.unsupportedNetwork(Settings.shared.blockExplorer.value.localized, lightningService.infoService.network.value.localized))
         } catch {
             print("Unexpected error: \(error).")
         }

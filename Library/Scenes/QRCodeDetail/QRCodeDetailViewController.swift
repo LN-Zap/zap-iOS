@@ -47,15 +47,15 @@ final class QRCodeDetailViewController: UIViewController {
         contentStackView.spacing = 10
         contentStackView.set(elements: viewModel.detailConfiguration)
         
-        shareButton.setTitle("generic.qr_code.share_button".localized, for: .normal)
-        copyButton.setTitle("generic.qr_code.copy_button".localized, for: .normal)
+        shareButton.setTitle(L10n.Generic.QrCode.shareButton, for: .normal)
+        copyButton.setTitle(L10n.Generic.QrCode.copyButton, for: .normal)
     }
     
     @IBAction private func qrCodeTapped(_ sender: Any) {
         guard let address = viewModel?.uriString else { return }
         print(address)
         
-        let toast = Toast(message: "generic.qr_code.copy_success_message".localized, style: .success)
+        let toast = Toast(message: L10n.Generic.QrCode.copySuccessMessage, style: .success)
         presentToast(toast, animated: true, completion: nil)
         UISelectionFeedbackGenerator().selectionChanged()
         UIPasteboard.general.string = address

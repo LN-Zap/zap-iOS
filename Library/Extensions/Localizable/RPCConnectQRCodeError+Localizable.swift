@@ -12,11 +12,11 @@ extension RPCConnectQRCodeError: LocalizedError {
     public var errorDescription: String? {
         switch self {
         case .btcPayExpired:
-            return "rpc_connect_qrcode_error.btc_pay_expired".localized
+            return L10n.RpcConnectQrcodeError.btcPayExpired
         case .btcPayConfigurationBroken:
-            return "rpc_connect_qrcode_error.btc_pay_configuration_broken".localized
+            return L10n.RpcConnectQrcodeError.btcPayConfigurationBroken
         case .cantReadQRCode:
-            return "rpc_connect_qrcode_error.cant_read_qrcode".localized
+            return L10n.RpcConnectQrcodeError.cantReadQrcode
         }
     }
 }

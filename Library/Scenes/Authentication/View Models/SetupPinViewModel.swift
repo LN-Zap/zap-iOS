@@ -27,7 +27,7 @@ final class SetupPinViewModel {
     
     init(authenticationViewModel: AuthenticationViewModel) {
         self.authenticationViewModel = authenticationViewModel
-        topLabelText = Observable("scene.setup_pin.top_label.initial".localized)
+        topLabelText = Observable(L10n.Scene.SetupPin.TopLabel.initial)
     }
     
     func updateCurrentPin(_ pin: String) -> Bool {
@@ -51,7 +51,7 @@ final class SetupPinViewModel {
                 currentPin = nil
                 pinCharacterCount.value = 0
                 pinAtiveCount.value = 0
-                topLabelText.value = "scene.setup_pin.top_label.non_matching".localized
+                topLabelText.value = L10n.Scene.SetupPin.TopLabel.nonMatching
                 state.value = .reset
                 return false
             }
@@ -63,6 +63,6 @@ final class SetupPinViewModel {
     func doneButtonTapped() {
         firstPin = currentPin
         doneButtonEnabled.value = false
-        topLabelText.value = "scene.setup_pin.top_label.validate".localized
+        topLabelText.value = L10n.Scene.SetupPin.TopLabel.validate
     }
 }

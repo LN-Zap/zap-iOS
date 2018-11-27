@@ -32,7 +32,7 @@ final class SendViewController: ModalDetailViewController {
         contentStackView.addArrangedElement(.label(text: viewModel.method.headline, style: Style.Label.headline.with({ $0.textAlignment = .center })))
         contentStackView.addArrangedElement(.separator)
         contentStackView.addArrangedElement(.horizontalStackView(compressionResistant: .first, content: [
-            .label(text: "scene.send.address_headline".localized, style: Style.Label.headline),
+            .label(text: L10n.Scene.Send.addressHeadline, style: Style.Label.headline),
             .label(text: viewModel.receiver, style: Style.Label.body)
         ]))
         contentStackView.addArrangedElement(.separator)
@@ -41,13 +41,13 @@ final class SendViewController: ModalDetailViewController {
         
         if let memo = viewModel.memo {
             contentStackView.addArrangedElement(.verticalStackView(content: [
-                .label(text: "scene.send.memo_headline".localized, style: Style.Label.headline),
+                .label(text: L10n.Scene.Send.memoHeadline, style: Style.Label.headline),
                 .label(text: memo, style: Style.Label.body)
             ], spacing: -5))
             contentStackView.addArrangedElement(.separator)
         }
         
-        let sendButton = contentStackView.addArrangedElement(.customHeight(56, element: .button(title: "scene.send.send_button".localized, style: Style.Button.background, completion: { [weak self] _ in
+        let sendButton = contentStackView.addArrangedElement(.customHeight(56, element: .button(title: L10n.Scene.Send.sendButton, style: Style.Button.background, completion: { [weak self] _ in
             self?.sendButtonTapped()
         }))) as? CallbackButton
         
@@ -73,7 +73,7 @@ final class SendViewController: ModalDetailViewController {
         if case .lightning = viewModel.method {
             contentStackView.setCustomSpacing(0, after: amountInputView)
             let stackView = contentStackView.addArrangedElement(.horizontalStackView(compressionResistant: .first, content: [
-                .label(text: "scene.send.maximum_fee".localized, style: Style.Label.footnote),
+                .label(text: L10n.Scene.Send.maximumFee, style: Style.Label.footnote),
                 .customView(LoadingAmountView(loadable: viewModel.lightningFee))
             ]))
             stackView.subviews[0].setContentHuggingPriority(.required, for: .horizontal)
@@ -113,13 +113,13 @@ final class SendViewController: ModalDetailViewController {
             case .success:
                 self?.send()
             case .failure:
-                self?.presentErrorToast("scene.send.authentication_failed".localized)
+                self?.presentErrorToast(L10n.Scene.Send.authenticationFailed)
             }
         }
     }
     
     private func send() {
-        let loadingView = presentLoadingView(text: "scene.send.sending".localized)
+        let loadingView = presentLoadingView(text: L10n.Scene.Send.sending)
         viewModel.send { [weak self] result in
             DispatchQueue.main.async {
                 loadingView.removeFromSuperview()

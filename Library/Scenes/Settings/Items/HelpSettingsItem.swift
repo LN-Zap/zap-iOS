@@ -9,10 +9,10 @@ import Foundation
 import SafariServices
 
 final class HelpSettingsItem: SettingsItem {
-    let title = "scene.settings.item.help".localized
+    let title = L10n.Scene.Settings.Item.help
     
     func didSelectItem(from fromViewController: UIViewController) {
-        guard let url = URL(string: "link.help".localized) else { return }
+        guard let url = URL(string: L10n.Link.help) else { return }
         
         let safariViewController = SFSafariViewController(url: url)
         safariViewController.preferredBarTintColor = UIColor.Zap.deepSeaBlue

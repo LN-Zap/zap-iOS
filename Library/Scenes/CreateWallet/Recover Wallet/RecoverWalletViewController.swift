@@ -29,16 +29,16 @@ final class RecoverWalletViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        title = "scene.recover_wallet.title".localized
+        title = L10n.Scene.RecoverWallet.title
         
         Style.Label.custom().apply(to: topLabel)
         Style.textView.apply(to: placeholderTextView, textView)
         Style.Button.custom().apply(to: doneButton)
         
-        doneButton.setTitle("scene.recover_wallet.done_button".localized, for: .normal)
-        topLabel.text = "scene.recover_wallet.description_label".localized
+        doneButton.setTitle(L10n.Scene.RecoverWallet.doneButton, for: .normal)
+        topLabel.text = L10n.Scene.RecoverWallet.descriptionLabel
         topLabel.textColor = .white
-        placeholderTextView.text = "scene.recover_wallet.placeholder".localized
+        placeholderTextView.text = L10n.Scene.RecoverWallet.placeholder
         placeholderTextView.textColor = .darkGray
         placeholderTextView.backgroundColor = .clear
         

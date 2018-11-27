@@ -9,7 +9,7 @@ import Foundation
 import Lightning
 
 final class RemoveRemoteNodeSettingsItem: SettingsItem {
-    let title = "scene.settings.item.remove_remote_node".localized
+    let title = L10n.Scene.Settings.Item.removeRemoteNode
     
     private weak var settingsDelegate: SettingsDelegate?
     
@@ -18,10 +18,10 @@ final class RemoveRemoteNodeSettingsItem: SettingsItem {
     }
     
     func didSelectItem(from fromViewController: UIViewController) {
-        let alertController = UIAlertController(title: "scene.settings.item.remove_remote_node.confirmation.title".localized, message: "scene.settings.item.remove_remote_node.confirmation.message".localized, preferredStyle: .actionSheet)
+        let alertController = UIAlertController(title: L10n.Scene.Settings.Item.RemoveRemoteNode.Confirmation.title, message: L10n.Scene.Settings.Item.RemoveRemoteNode.Confirmation.message, preferredStyle: .actionSheet)
         
-        let cancelAlertAction = UIAlertAction(title: "generic.cancel".localized, style: .cancel, handler: nil)
-        let disconnectAlertAction = UIAlertAction(title: "scene.settings.item.remove_remote_node.confirmation.button".localized, style: .destructive) { [settingsDelegate] _ in
+        let cancelAlertAction = UIAlertAction(title: L10n.Generic.cancel, style: .cancel, handler: nil)
+        let disconnectAlertAction = UIAlertAction(title: L10n.Scene.Settings.Item.RemoveRemoteNode.Confirmation.button, style: .destructive) { [settingsDelegate] _ in
             settingsDelegate?.disconnect()
         }
         

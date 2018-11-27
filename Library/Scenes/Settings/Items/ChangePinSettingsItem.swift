@@ -9,7 +9,7 @@ import Foundation
 import Lightning
 
 final class ChangePinSettingsItem: SettingsItem {
-    let title = "scene.settings.item.change_pin".localized
+    let title = L10n.Scene.Settings.Item.changePin
     
     private weak var settingsDelegate: SettingsDelegate?
     private weak var setupPinViewController: SetupPinViewController?

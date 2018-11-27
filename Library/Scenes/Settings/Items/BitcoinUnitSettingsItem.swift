@@ -12,7 +12,7 @@ import SwiftBTC
 final class BitcoinUnitSelectionSettingsItem: DetailDisclosureSettingsItem, SubtitleSettingsItem {
     let subtitle = Settings.shared.cryptoCurrency.map { Optional($0.localized) }
     
-    let title = "scene.settings.item.bitcoin_unit".localized
+    let title = L10n.Scene.Settings.Item.bitcoinUnit
 
     func didSelectItem(from fromViewController: UIViewController) {
         let items: [SettingsItem] = [

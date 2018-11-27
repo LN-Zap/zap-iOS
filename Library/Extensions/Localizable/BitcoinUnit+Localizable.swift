@@ -12,13 +12,13 @@ extension BitcoinUnit: Localizable {
     public var localized: String {
         switch self {
         case .bitcoin:
-            return "unit.bitcoin.btc".localized
+            return L10n.Unit.Bitcoin.btc
         case .milliBitcoin:
-            return "unit.bitcoin.mbtc".localized
+            return L10n.Unit.Bitcoin.mbtc
         case .bit:
-            return "unit.bitcoin.bit".localized
+            return L10n.Unit.Bitcoin.bit
         case .satoshi:
-            return "unit.bitcoin.satoshi".localized
+            return L10n.Unit.Bitcoin.satoshi
         }
     }
 }

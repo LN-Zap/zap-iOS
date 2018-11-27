@@ -13,7 +13,7 @@ import SwiftBTC
 final class CurrencySelectionSettingsItem: DetailDisclosureSettingsItem, SubtitleSettingsItem {
     let subtitle = Settings.shared.fiatCurrency.map { Optional($0.localized) }
     
-    let title = "scene.settings.item.currency".localized
+    let title = L10n.Scene.Settings.Item.currency
     
     func didSelectItem(from fromViewController: UIViewController) {
         let allCurrencies = ExchangeData.availableCurrencies?

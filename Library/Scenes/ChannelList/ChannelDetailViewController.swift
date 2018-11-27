@@ -40,14 +40,14 @@ final class ChannelDetailViewController: ModalDetailViewController {
         
         if channelViewModel.channel.state.isClosing {
             contentStackView.addArrangedElement(.horizontalStackView(compressionResistant: .first, content: [
-                .label(text: "scene.channel_detail.closing_time.label".localized + ":", style: labelStyle),
+                .label(text: L10n.Scene.ChannelDetail.ClosingTime.label + ":", style: labelStyle),
                 .label(text: channelViewModel.csvDelayTimeString, style: textStyle)
             ]))
             contentStackView.addArrangedElement(.separator)
         }
         
         contentStackView.addArrangedElement(.verticalStackView(content: [
-            .label(text: "scene.channel_detail.remote_pub_key_label".localized + ":", style: labelStyle),
+            .label(text: L10n.Scene.ChannelDetail.remotePubKeyLabel + ":", style: labelStyle),
             .label(text: channelViewModel.channel.remotePubKey, style: textStyle)
         ], spacing: 0))
         
@@ -59,12 +59,12 @@ final class ChannelDetailViewController: ModalDetailViewController {
             .customHeight(10, element: .customView(balanceView)),
             .horizontalStackView(compressionResistant: .first, content: [
                 .customView(circleIndicatorView(gradient: [UIColor.Zap.lightningOrange, UIColor.Zap.lightningOrangeGradient])),
-                .label(text: "scene.channel_detail.local_balance_label".localized + ":", style: labelStyle),
+                .label(text: L10n.Scene.ChannelDetail.localBalanceLabel + ":", style: labelStyle),
                 .amountLabel(amount: channelViewModel.channel.localBalance, style: textStyle)
             ]),
             .horizontalStackView(compressionResistant: .first, content: [
                 .customView(circleIndicatorView(gradient: [UIColor.Zap.white, UIColor.Zap.white])),
-                .label(text: "scene.channel_detail.remote_balance_label".localized + ":", style: labelStyle),
+                .label(text: L10n.Scene.ChannelDetail.remoteBalanceLabel + ":", style: labelStyle),
                 .amountLabel(amount: channelViewModel.channel.remoteBalance, style: textStyle)
             ])
         ], spacing: 5))
@@ -72,7 +72,7 @@ final class ChannelDetailViewController: ModalDetailViewController {
         contentStackView.addArrangedElement(.separator)
         let fundingTxId = channelViewModel.channel.channelPoint.fundingTxid
         contentStackView.addArrangedElement(.horizontalStackView(compressionResistant: .first, content: [
-            .label(text: "scene.channel_detail.funding_transaction_label".localized + ":", style: labelStyle),
+            .label(text: L10n.Scene.ChannelDetail.fundingTransactionLabel + ":", style: labelStyle),
             .button(title: fundingTxId, style: Style.Button.custom(fontSize: 14)) { [weak self] _ in
                 self?.dismiss(animated: true, completion: {
                     self?.presentBlockExplorer(fundingTxId, .transactionId)
@@ -81,7 +81,7 @@ final class ChannelDetailViewController: ModalDetailViewController {
         ]))
         
         if !channelViewModel.channel.state.isClosing {
-            let closeTitle = channelViewModel.channel.state == .active ? "scene.channel_detail.close_button".localized : "scene.channel_detail.force_close_button".localized
+            let closeTitle = channelViewModel.channel.state == .active ? L10n.Scene.ChannelDetail.closeButton : L10n.Scene.ChannelDetail.forceCloseButton
             
             contentStackView.addArrangedElement(.separator)
             contentStackView.addArrangedElement(.button(title: closeTitle, style: Style.Button.custom(fontSize: 20)) { [weak self] _ in self?.closeChannel() })
@@ -108,7 +108,7 @@ final class ChannelDetailViewController: ModalDetailViewController {
     
     private func closeChannel() {
         let alertController = UIAlertController.closeChannelAlertController(channelViewModel: channelViewModel) { [channelViewModel, weak self] in
-            let loadingView = self?.presentLoadingView(text: "scene.channels.close_loading_view".localized)
+            let loadingView = self?.presentLoadingView(text: L10n.Scene.Channels.closeLoadingView)
             self?.channelListViewModel.close(channelViewModel.channel) { result in
                 DispatchQueue.main.async {
                     self?.dismissAfterClose(result: result, loadingView: loadingView)
@@ -125,7 +125,7 @@ final class ChannelDetailViewController: ModalDetailViewController {
         switch result {
         case .success:
             dismiss(animated: true) {
-                parent?.presentSuccessToast("scene.channels.close_success.toast".localized)
+                parent?.presentSuccessToast(L10n.Scene.Channels.CloseSuccess.toast)
             }
         case .failure(let error):
             parent?.presentErrorToast(error.localizedDescription)

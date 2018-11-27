@@ -19,7 +19,7 @@ extension UIStoryboard {
         viewController.presentSend = presentSend
         
         let navigationController = ZapNavigationController(rootViewController: viewController)
-        navigationController.tabBarItem.title = "scene.history.title".localized
+        navigationController.tabBarItem.title = L10n.Scene.History.title
         navigationController.tabBarItem.image = UIImage(named: "tabbar_history", in: Bundle.library, compatibleWith: nil)
         
         return navigationController
@@ -47,7 +47,7 @@ final class HistoryViewController: UIViewController {
             let historyViewModel = historyViewModel
             else { return }
         
-        title = "scene.history.title".localized
+        title = L10n.Scene.History.title
         definesPresentationContext = true
         view.backgroundColor = UIColor.Zap.background
 
@@ -57,7 +57,7 @@ final class HistoryViewController: UIViewController {
         navigationItem.searchController = searchController
         
         Style.Label.body.apply(to: emptyStateLabel)
-        emptyStateLabel.text = "scene.history.empty_state_label".localized
+        emptyStateLabel.text = L10n.Scene.History.emptyStateLabel
         
         tableView.rowHeight = UITableView.automaticDimension
         tableView.estimatedRowHeight = 82

@@ -81,7 +81,7 @@ final class QRCodeScannerView: UIView {
         
         let topLabel = UILabel()
         Style.Label.custom(color: UIColor.white.withAlphaComponent(0.6)).apply(to: topLabel)
-        topLabel.text = "scene.qrcode_scanner.top_label".localized
+        topLabel.text = L10n.Scene.QrcodeScanner.topLabel
         
         topLabelContainer.addAutolayoutSubview(topLabel)
         

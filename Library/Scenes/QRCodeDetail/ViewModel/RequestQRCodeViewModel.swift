@@ -9,7 +9,7 @@ import Foundation
 import SwiftBTC
 
 final class RequestQRCodeViewModel: QRCodeDetailViewModel {
-    let title = "scene.qr_code_detail.title".localized
+    let title = L10n.Scene.QrCodeDetail.title
     let uriString: String
     let qrCodeString: String
     let detailConfiguration: [StackViewElement]
@@ -25,7 +25,7 @@ final class RequestQRCodeViewModel: QRCodeDetailViewModel {
         if let amount = paymentURI.amount, amount != 0 {
             detailConfiguration.append(contentsOf: [
                 .verticalStackView(content: [
-                    .label(text: "scene.transaction_detail.amount_label".localized + ":", style: tableFontStyle),
+                    .label(text: L10n.Scene.TransactionDetail.amountLabel + ":", style: tableFontStyle),
                     .amountLabel(amount: amount, style: tableFontStyle)
                 ], spacing: tableLabelSpacing),
                 .separator
@@ -35,7 +35,7 @@ final class RequestQRCodeViewModel: QRCodeDetailViewModel {
         if let memo = paymentURI.memo, !memo.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty {
             detailConfiguration.append(contentsOf: [
                 .verticalStackView(content: [
-                    .label(text: "scene.transaction_detail.memo_label".localized + ":", style: tableFontStyle),
+                    .label(text: L10n.Scene.TransactionDetail.memoLabel + ":", style: tableFontStyle),
                     .label(text: memo, style: tableFontStyle)
                 ], spacing: tableLabelSpacing),
                 .separator
@@ -43,7 +43,7 @@ final class RequestQRCodeViewModel: QRCodeDetailViewModel {
         }
         
         detailConfiguration.append(.verticalStackView(content: [
-            .label(text: "scene.transaction_detail.address_label".localized + ":", style: tableFontStyle),
+            .label(text: L10n.Scene.TransactionDetail.addressLabel + ":", style: tableFontStyle),
             .label(text: paymentURI.address, style: tableFontStyle)
         ], spacing: tableLabelSpacing))
         

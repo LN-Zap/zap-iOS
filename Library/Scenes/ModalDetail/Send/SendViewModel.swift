@@ -15,9 +15,9 @@ extension InvoiceError: LocalizedError {
     public var errorDescription: String? {
         switch self {
         case .unknownFormat:
-            return "error.wrong_uri_format".localized
+            return L10n.Error.wrongUriFormat
         case let .wrongNetworkError(linkNetwork, expectedNetwork):
-            return String(format: "error.wrong_uri_network".localized, linkNetwork.localized, expectedNetwork.localized)
+            return L10n.Error.wrongUriNetwork(linkNetwork.localized, expectedNetwork.localized)
         }
     }
 }
@@ -47,9 +47,9 @@ final class SendViewModel {
         var headline: String {
             switch self {
             case .lightning:
-                return "scene.send.lightning.title".localized
+                return L10n.Scene.Send.Lightning.title
             case .onChain:
-                return "scene.send.on_chain.title".localized
+                return L10n.Scene.Send.OnChain.title
             }
         }
     }

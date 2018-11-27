@@ -14,7 +14,7 @@ class SendQRCodeScannerStrategy: QRCodeScannerStrategy {
     private let lightningService: LightningService
     private let authenticationViewModel: AuthenticationViewModel
     
-    let title = "scene.send.title".localized
+    let title = L10n.Scene.Send.title
     
     init(lightningService: LightningService, authenticationViewModel: AuthenticationViewModel) {
         self.lightningService = lightningService

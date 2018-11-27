@@ -17,13 +17,13 @@ extension UIAlertController {
         let channel = channelViewModel.channel
         
         if channel.state == .active {
-            title = "scene.channels.close.title".localized
-            message = String(format: "scene.channels.close.message".localized, channelViewModel.name.value)
-            closeButtonTitle = "scene.channels.alert.close".localized
+            title = L10n.Scene.Channels.Close.title
+            message = L10n.Scene.Channels.Close.message(channelViewModel.name.value)
+            closeButtonTitle = L10n.Scene.Channels.Alert.close
 
         } else {
-            title = "scene.channels.force_close.title".localized
-            closeButtonTitle = "scene.channels.alert.force_close".localized
+            title = L10n.Scene.Channels.ForceClose.title
+            closeButtonTitle = L10n.Scene.Channels.Alert.forceClose
             
             let formatter = DateComponentsFormatter()
             formatter.allowedUnits =  [.year, .month, .day, .hour, .minute]
@@ -33,11 +33,11 @@ extension UIAlertController {
             let blockTime: TimeInterval = 10 * 60
             let timeUntilClose = formatter.string(from: TimeInterval(channel.csvDelay) * blockTime) ?? ""
             
-            message = String(format: "scene.channels.force_close.message".localized, channelViewModel.name.value, timeUntilClose)
+            message = L10n.Scene.Channels.ForceClose.message(channelViewModel.name.value, timeUntilClose)
         }
         
         let alertController = UIAlertController(title: title, message: message, preferredStyle: .actionSheet)
-        let cancelAlertAction = UIAlertAction(title: "generic.cancel".localized, style: .cancel, handler: nil)
+        let cancelAlertAction = UIAlertAction(title: L10n.Generic.cancel, style: .cancel, handler: nil)
         
         let closeAlertAction = UIAlertAction(title: closeButtonTitle, style: .destructive) { _ in
             closeAction()

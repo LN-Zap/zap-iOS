@@ -33,8 +33,8 @@ class TimeLockedViewController: UIViewController {
         Style.Label.body.apply(to: descriptionLabel)
         Style.Label.title.apply(to: countdownLabel)
         
-        headlineLabel.text = "scene.time_lock.headline".localized
-        descriptionLabel.text = "scene.time_lock.description".localized
+        headlineLabel.text = L10n.Scene.TimeLock.headline
+        descriptionLabel.text = L10n.Scene.TimeLock.description
         
         if let timeLockEnd = authenticationViewModel?.timeLockStore.timeLockEnd {
             let dateFormatter = DateFormatter()

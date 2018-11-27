@@ -114,8 +114,8 @@ final class SetupCoordinator {
     }
     
     private func presentDisabledAlert() {
-        let alert = UIAlertController(title: "scene.select_wallet_connection.disabled_alert.title".localized, message: "scene.select_wallet_connection.disabled_alert.message".localized, preferredStyle: .alert)
-        alert.addAction(UIAlertAction(title: "scene.select_wallet_connection.disabled_alert.ok_button".localized, style: .cancel, handler: nil))
+        let alert = UIAlertController(title: L10n.Scene.SelectWalletConnection.DisabledAlert.title, message: L10n.Scene.SelectWalletConnection.DisabledAlert.message, preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: L10n.Scene.SelectWalletConnection.DisabledAlert.okButton, style: .cancel, handler: nil))
         navigationController?.present(alert, animated: true, completion: nil)
     }
 }
