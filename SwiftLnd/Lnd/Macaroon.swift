@@ -31,8 +31,8 @@ enum Permission {
         case info
         case invoices
         case message
-        case offChain
-        case onChain
+        case offChain = "offchain"
+        case onChain = "onchain"
         case peers
     }
 }
