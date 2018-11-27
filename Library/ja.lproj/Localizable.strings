@@ -23,8 +23,8 @@
 "channel.state.closing" = "閉鎖中";
 "channel.state.force_closing" = "強制閉鎖";
 
-"network.type.testnet" = "テストネット";
-"network.type.mainnet" = "メインネット";
+"network_type.testnet" = "Testnet";
+"network_type.mainnet" = "Mainnet";
 
 "unit.bitcoin.btc" = "Bitcoin";
 "unit.bitcoin.mbtc" = "Milli Bitcoin";
