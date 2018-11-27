@@ -16,7 +16,7 @@ protocol SyncDelegate: class {
 
 extension UIStoryboard {
     static func instantiateSyncViewController(with lightningService: LightningService, delegate: SyncDelegate) -> SyncViewController {
-        let syncViewController = Storyboard.sync.initial(viewController: SyncViewController.self)
+        let syncViewController = StoryboardScene.Sync.syncViewController.instantiate()
         syncViewController.lightningService = lightningService
         syncViewController.delegate = delegate
         return syncViewController

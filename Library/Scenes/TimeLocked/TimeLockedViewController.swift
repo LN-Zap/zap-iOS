@@ -9,7 +9,7 @@ import UIKit
 
 extension UIStoryboard {
     static func instantiateTimeLockedViewController(authenticationViewModel: AuthenticationViewModel) -> TimeLockedViewController {
-        let viewController = Storyboard.timeLocked.instantiate(viewController: TimeLockedViewController.self)
+        let viewController = StoryboardScene.TimeLocked.timeLockedViewController.instantiate()
         viewController.authenticationViewModel = authenticationViewModel
         return viewController
     }

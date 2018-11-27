@@ -11,7 +11,7 @@ import UIKit
 
 extension UIStoryboard {
     static func instantiateModalPinViewController(authenticationViewModel: AuthenticationViewModel) -> ModalPinViewController {
-        let viewController = Storyboard.modalPin.instantiate(viewController: ModalPinViewController.self)
+        let viewController = StoryboardScene.ModalPin.modalPinViewController.instantiate()
         viewController.authenticationViewModel = authenticationViewModel
         return viewController
     }

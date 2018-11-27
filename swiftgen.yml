@@ -8,3 +8,8 @@ xcassets:
   outputs:
     templateName: swift4
     output: Library/Generated/Assets.swift
+ib:
+  inputs: Library
+  outputs:
+    templateName: scenes-swift4
+    output: Library/Generated/StoryboardScenes.swift

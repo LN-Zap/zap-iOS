@@ -9,7 +9,7 @@ import UIKit
 
 extension UIStoryboard {
     static func instantiateMnemonicWordListViewController(with mnemonicWords: [MnemonicWord]) -> MnemonicWordListViewController {
-        let viewController = Storyboard.createWallet.instantiate(viewController: MnemonicWordListViewController.self)
+        let viewController = StoryboardScene.CreateWallet.mnemonicWordListViewController.instantiate()
         viewController.mnemonicWords = mnemonicWords
         return viewController
     }

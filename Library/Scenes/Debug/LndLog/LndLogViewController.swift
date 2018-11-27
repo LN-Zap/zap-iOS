@@ -9,7 +9,7 @@ import UIKit
 
 extension UIStoryboard {
     static func instantiateDebugViewController() -> UINavigationController {
-        return Storyboard.debug.initial(viewController: UINavigationController.self)
+        return StoryboardScene.Debug.initialScene.instantiate()
     }
 }
 

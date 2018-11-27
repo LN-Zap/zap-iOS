@@ -11,7 +11,7 @@ import UIKit
 
 extension UIStoryboard {
     static func instantiateConnectRemoteNodeViewController(didSetupWallet: @escaping () -> Void, connectRemoteNodeViewModel: ConnectRemoteNodeViewModel, presentQRCodeScannerButtonTapped: @escaping (() -> Void)) -> ConnectRemoteNodeViewController {
-        let viewController = Storyboard.connectRemoteNode.initial(viewController: ConnectRemoteNodeViewController.self)
+        let viewController = StoryboardScene.ConnectRemoteNode.connectRemoteNodeViewController.instantiate()
         viewController.didSetupWallet = didSetupWallet
         viewController.connectRemoteNodeViewModel = connectRemoteNodeViewModel
         viewController.presentQRCodeScannerButtonTapped = presentQRCodeScannerButtonTapped

@@ -11,7 +11,7 @@ import UIKit
 
 extension UIStoryboard {
     static func instantiateLoadingViewController(message: LoadingViewController.Message) -> LoadingViewController {
-        let viewController = Storyboard.loading.initial(viewController: LoadingViewController.self)
+        let viewController = StoryboardScene.Loading.initialScene.instantiate()
         viewController.message = message
         return viewController
     }

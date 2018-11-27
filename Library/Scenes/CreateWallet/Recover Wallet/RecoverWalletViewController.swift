@@ -9,7 +9,7 @@ import UIKit
 
 extension UIStoryboard {
     static func instantiateRecoverWalletViewController(recoverWalletViewModel: RecoverWalletViewModel, presentSetupPin: @escaping () -> Void) -> RecoverWalletViewController {
-        let viewController = Storyboard.createWallet.instantiate(viewController: RecoverWalletViewController.self)
+        let viewController = StoryboardScene.CreateWallet.recoverWalletViewController.instantiate()
         viewController.recoverWalletViewModel = recoverWalletViewModel
         viewController.presentSetupPin = presentSetupPin
         return viewController

@@ -15,8 +15,7 @@ import SwiftLnd
 
 extension UIStoryboard {
     static func instantiateWalletViewController(lightningService: LightningService, sendButtonTapped: @escaping () -> Void, requestButtonTapped: @escaping () -> Void) -> WalletViewController {
-        
-        let walletViewController = Storyboard.wallet.instantiate(viewController: WalletViewController.self)
+        let walletViewController = StoryboardScene.Wallet.walletViewController.instantiate()
         walletViewController.lightningService = lightningService
         
         walletViewController.sendButtonTapped = sendButtonTapped

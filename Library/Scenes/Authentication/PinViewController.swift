@@ -10,7 +10,7 @@ import UIKit
 
 extension UIStoryboard {
     static func instantiatePinViewController(authenticationViewModel: AuthenticationViewModel) -> PinViewController {
-        let pinViewController = Storyboard.numericKeyPad.initial(viewController: PinViewController.self)
+        let pinViewController = StoryboardScene.NumericKeyPad.initialScene.instantiate()
         pinViewController.authenticationViewModel = authenticationViewModel
         return pinViewController
     }

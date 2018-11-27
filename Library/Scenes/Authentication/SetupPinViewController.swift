@@ -11,7 +11,7 @@ import UIKit
 
 extension UIStoryboard {
     static func instantiateSetupPinViewController(setupPinViewModel: SetupPinViewModel, didSetupPin: @escaping () -> Void) -> SetupPinViewController {
-        let setupPinViewController = Storyboard.numericKeyPad.instantiate(viewController: SetupPinViewController.self)
+        let setupPinViewController = StoryboardScene.NumericKeyPad.setupPinViewController.instantiate()
         setupPinViewController.setupPinViewModel = setupPinViewModel
         setupPinViewController.didSetupPin = didSetupPin
         return setupPinViewController

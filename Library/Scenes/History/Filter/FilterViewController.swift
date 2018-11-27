@@ -9,7 +9,7 @@ import UIKit
 
 extension UIStoryboard {
     static func instantiateFilterViewController(historyViewModel: HistoryViewModel) -> UINavigationController {
-        let viewController = Storyboard.history.instantiate(viewController: FilterViewController.self)
+        let viewController = StoryboardScene.History.filterViewController.instantiate()
         viewController.historyViewModel = historyViewModel
         
         let navigationController = ModalNavigationController(rootViewController: viewController, height: 480)

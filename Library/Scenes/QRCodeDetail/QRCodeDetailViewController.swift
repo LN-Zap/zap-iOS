@@ -9,7 +9,7 @@ import UIKit
 
 extension UIStoryboard {
     static func instantiateQRCodeDetailViewController(with qrCodeDetailViewModel: QRCodeDetailViewModel) -> QRCodeDetailViewController {
-        let viewController = Storyboard.qrCodeDetail.instantiate(viewController: QRCodeDetailViewController.self)
+        let viewController = StoryboardScene.QRCodeDetail.qrCodeDetailViewController.instantiate()
         viewController.viewModel = qrCodeDetailViewModel
         return viewController
     }

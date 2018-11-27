@@ -10,7 +10,7 @@ import Foundation
 
 extension UIStoryboard {
     static func instantiateMnemonicViewController(mnemonicViewModel: MnemonicViewModel, presentConfirmMnemonic: @escaping () -> Void) -> MnemonicViewController {
-        let viewController = Storyboard.createWallet.instantiate(viewController: MnemonicViewController.self)
+        let viewController = StoryboardScene.CreateWallet.mnemonicViewController.instantiate()
         viewController.mnemonicViewModel = mnemonicViewModel
         viewController.presentConfirmMnemonic = presentConfirmMnemonic
         return viewController

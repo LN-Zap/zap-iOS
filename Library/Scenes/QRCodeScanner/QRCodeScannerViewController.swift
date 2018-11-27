@@ -11,7 +11,7 @@ import UIKit
 
 extension UIStoryboard {
     static func instantiateQRCodeScannerViewController(strategy: QRCodeScannerStrategy) -> UINavigationController {
-        let navigationController = Storyboard.qrCodeScanner.initial(viewController: UINavigationController.self)
+        let navigationController = StoryboardScene.QRCodeScanner.initialScene.instantiate()
         if let viewController = navigationController.topViewController as? QRCodeScannerViewController {
             viewController.strategy = strategy
         }

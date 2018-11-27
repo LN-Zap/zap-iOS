@@ -9,7 +9,7 @@ import UIKit
 
 extension UIStoryboard {
     static func instantiateUpdateAddressViewController(connectRemoteNodeViewModel: ConnectRemoteNodeViewModel) -> UpdateAddressViewController {
-        let viewController = Storyboard.connectRemoteNode.instantiate(viewController: UpdateAddressViewController.self)
+        let viewController = StoryboardScene.ConnectRemoteNode.updateAddressViewController.instantiate()
         viewController.connectRemoteNodeViewModel = connectRemoteNodeViewModel
         return viewController
     }

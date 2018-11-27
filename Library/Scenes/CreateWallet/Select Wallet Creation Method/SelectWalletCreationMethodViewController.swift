@@ -10,7 +10,7 @@ import UIKit
 
 extension UIStoryboard {
     static func instantiateSetupViewController(createButtonTapped: @escaping () -> Void, recoverButtonTapped: @escaping () -> Void, connectButtonTapped: @escaping () -> Void) -> SelectWalletCreationMethodViewController {
-        let setupWalletViewController = Storyboard.createWallet.instantiate(viewController: SelectWalletCreationMethodViewController.self)
+        let setupWalletViewController = StoryboardScene.CreateWallet.selectWalletCreationMethodViewController.instantiate()
         setupWalletViewController.createButtonTapped = createButtonTapped
         setupWalletViewController.recoverButtonTapped = recoverButtonTapped
         setupWalletViewController.connectButtonTapped = connectButtonTapped

@@ -14,8 +14,7 @@ extension UIStoryboard {
         channelListViewModel: ChannelListViewModel,
         addChannelButtonTapped: @escaping () -> Void,
         presentChannelDetail: @escaping (UIViewController, ChannelViewModel) -> Void) -> UIViewController {
-        let viewController = Storyboard.channelList.initial(viewController: ChannelListViewController.self)
-        
+        let viewController = StoryboardScene.ChannelList.channelViewController.instantiate()
         viewController.channelListViewModel = channelListViewModel
         viewController.addChannelButtonTapped = addChannelButtonTapped
         viewController.presentChannelDetail = presentChannelDetail

@@ -11,7 +11,7 @@ import UIKit
 
 extension UIStoryboard {
     static func instantiateHistoryViewController(historyViewModel: HistoryViewModel, presentFilter: @escaping () -> Void, presentDetail: @escaping (HistoryEventType) -> Void, presentSend: @escaping (String?) -> Void) -> UINavigationController {
-        let viewController = Storyboard.history.instantiate(viewController: HistoryViewController.self)
+        let viewController = StoryboardScene.History.historyViewController.instantiate()
         
         viewController.historyViewModel = historyViewModel
         viewController.presentFilter = presentFilter

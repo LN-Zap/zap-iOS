@@ -9,7 +9,7 @@ import Foundation
 
 extension UIStoryboard {
     static func instantiateCertificateDetailViewController(connectRemoteNodeViewModel: ConnectRemoteNodeViewModel) -> CertificateDetailViewController {
-        let viewController = Storyboard.connectRemoteNode.instantiate(viewController: CertificateDetailViewController.self)
+        let viewController = StoryboardScene.ConnectRemoteNode.certificateDetailViewController.instantiate()
         viewController.connectRemoteNodeViewModel = connectRemoteNodeViewModel
         return viewController
     }

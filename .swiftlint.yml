@@ -41,6 +41,7 @@ opt_in_rules:
 excluded:
   - Pods
   - SwiftLnd/Api/Generated
+  - Library/Generated
   - vendor
 identifier_name:
   excluded:

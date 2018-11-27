@@ -10,7 +10,7 @@ import UIKit
 
 extension UIStoryboard {
     static func instantiateRemoteNodeCertificatesScannerViewController(connectRemoteNodeViewModel: ConnectRemoteNodeViewModel) -> RemoteNodeCertificatesScannerViewController {
-        let viewController = Storyboard.connectRemoteNode.instantiate(viewController: RemoteNodeCertificatesScannerViewController.self)
+        let viewController = StoryboardScene.ConnectRemoteNode.remoteNodeCertificatesScannerViewController.instantiate()
         viewController.connectRemoteNodeViewModel = connectRemoteNodeViewModel
         return viewController
     }

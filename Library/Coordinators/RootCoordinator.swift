@@ -22,7 +22,7 @@ public final class RootCoordinator: NSObject, SetupCoordinatorDelegate, PinCoord
     }
     
     public init(window: UIWindow) {
-        rootViewController = Storyboard.root.initial(viewController: RootViewController.self)
+        rootViewController = StoryboardScene.Root.initialScene.instantiate()
         connectionService = ConnectionService()
         authenticationCoordinator = AuthenticationCoordinator(rootViewController: rootViewController)
         backgroundCoordinator = BackgroundCoordinator(rootViewController: rootViewController)

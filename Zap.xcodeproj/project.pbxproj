@@ -67,7 +67,6 @@
 		AD391C3120D16EFA007EE22A /* UIColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0A05A222013D9BB0007D1C9 /* UIColor.swift */; };
 		AD391C3220D16EFA007EE22A /* UIFont.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADE4CF1C20B5B2BE007C987A /* UIFont.swift */; };
 		AD391C3320D16EFA007EE22A /* UIImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0A05A2F2013EFC00007D1C9 /* UIImage.swift */; };
-		AD391C3520D16EFA007EE22A /* Storyboard.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD2EDBF920C02616002E6EE5 /* Storyboard.swift */; };
 		AD391C3620D16EFA007EE22A /* UITableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0A05A5D2014A0DE0007D1C9 /* UITableView.swift */; };
 		AD391C3720D16EFA007EE22A /* UIViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADBA120520930C94001F7700 /* UIViewController.swift */; };
 		AD391C3820D16EFA007EE22A /* UserDefaults.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0919142203B152100FA525A /* UserDefaults.swift */; };
@@ -207,6 +206,7 @@
 		ADA3254021AD5B3400C5EAA2 /* Strings.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADA3253F21AD5B3300C5EAA2 /* Strings.swift */; };
 		ADA3254221AD8A6200C5EAA2 /* Assets.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADA3254121AD8A6200C5EAA2 /* Assets.swift */; };
 		ADA3254421AD8D7900C5EAA2 /* Colors.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = ADA3254321AD8D7900C5EAA2 /* Colors.xcassets */; };
+		ADA3254621AD8F6200C5EAA2 /* StoryboardScenes.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADA3254521AD8F6200C5EAA2 /* StoryboardScenes.swift */; };
 		ADA6BBBF211B3AEC00A1FF19 /* ScanRectView.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADA6BBBE211B3AEC00A1FF19 /* ScanRectView.swift */; };
 		ADA75DF2210F389100003068 /* ChannelState+Localizable.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADA75DF1210F389100003068 /* ChannelState+Localizable.swift */; };
 		ADA81E9E210DE14100B7C6F2 /* UIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADA81E9D210DE14100B7C6F2 /* UIView.swift */; };
@@ -600,7 +600,6 @@
 		AD28CB7A211DE93300A31004 /* BlockExplorerSettingsItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BlockExplorerSettingsItem.swift; sourceTree = "<group>"; };
 		AD2D912821554D61001015B6 /* Lndmobile.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Lndmobile.framework; path = Frameworks/Lndmobile.framework; sourceTree = SOURCE_ROOT; };
 		AD2D912B21567D4C001015B6 /* EventDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventDetailViewController.swift; sourceTree = "<group>"; };
-		AD2EDBF920C02616002E6EE5 /* Storyboard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Storyboard.swift; sourceTree = "<group>"; };
 		AD308985216F37E300B5489C /* TransactionServiceTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransactionServiceTests.swift; sourceTree = "<group>"; };
 		AD308988216FA88D00B5489C /* GraphViewDataSourceTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GraphViewDataSourceTests.swift; sourceTree = "<group>"; };
 		AD3781CD21664EB90083CE77 /* RemoteRPCConfiguration.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RemoteRPCConfiguration.swift; sourceTree = "<group>"; };
@@ -693,6 +692,7 @@
 		ADA3253F21AD5B3300C5EAA2 /* Strings.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Strings.swift; sourceTree = "<group>"; };
 		ADA3254121AD8A6200C5EAA2 /* Assets.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Assets.swift; sourceTree = "<group>"; };
 		ADA3254321AD8D7900C5EAA2 /* Colors.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Colors.xcassets; sourceTree = "<group>"; };
+		ADA3254521AD8F6200C5EAA2 /* StoryboardScenes.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StoryboardScenes.swift; sourceTree = "<group>"; };
 		ADA6BBBE211B3AEC00A1FF19 /* ScanRectView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScanRectView.swift; sourceTree = "<group>"; };
 		ADA6D2C220AC1BD2009398A5 /* InfoService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfoService.swift; sourceTree = "<group>"; };
 		ADA6D2C420AC1DDE009398A5 /* BalanceService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BalanceService.swift; sourceTree = "<group>"; };
@@ -1059,7 +1059,6 @@
 				ADE4CF1E20B5B6FC007C987A /* Environment.swift */,
 				A0C2EAC3206F9539003AE56E /* ExchangeUpdaterJob.swift */,
 				ADEDBC0920C31C5F00B71F17 /* Route.swift */,
-				AD2EDBF920C02616002E6EE5 /* Storyboard.swift */,
 				A0919155203C2CB600FA525A /* Style.swift */,
 				AD667E5821384966007B9160 /* WindowLevel.swift */,
 			);
@@ -1626,6 +1625,7 @@
 			isa = PBXGroup;
 			children = (
 				ADA3254121AD8A6200C5EAA2 /* Assets.swift */,
+				ADA3254521AD8F6200C5EAA2 /* StoryboardScenes.swift */,
 				ADA3253F21AD5B3300C5EAA2 /* Strings.swift */,
 			);
 			path = Generated;
@@ -2741,6 +2741,7 @@
 				ADEDA3CC21788CE50078FD91 /* NodeURISettingsItem.swift in Sources */,
 				ADADAD5A214126BB00A48E1F /* Date.swift in Sources */,
 				AD391C2920D16EFA007EE22A /* Date+Localizable.swift in Sources */,
+				ADA3254621AD8F6200C5EAA2 /* StoryboardScenes.swift in Sources */,
 				AD391C5820D16F7A007EE22A /* RemoteNodeCertificatesScannerViewController.swift in Sources */,
 				AD2884372126DDA2003C3D94 /* ModalDetailViewController.swift in Sources */,
 				AD391C5120D16F7A007EE22A /* ConfirmMnemonicCollectionViewCell.swift in Sources */,
@@ -2757,7 +2758,6 @@
 				AD035BFF2174A996005EA785 /* ChannelDetailViewController.swift in Sources */,
 				AD3DDC03213EE4000008379C /* RootTabBarController.swift in Sources */,
 				ADEEB5362134669B00D2F992 /* ModalPinViewController.swift in Sources */,
-				AD391C3520D16EFA007EE22A /* Storyboard.swift in Sources */,
 				AD391CDB20D16FE1007EE22A /* HistoryViewController.swift in Sources */,
 				AD667E572136E622007B9160 /* TimeLockStore.swift in Sources */,
 				AD391C5320D16F7A007EE22A /* ConfirmMnemonicViewModel.swift in Sources */,

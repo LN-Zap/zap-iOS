@@ -143,7 +143,7 @@ final class RequestViewController: ModalDetailViewController {
         }))) as? CallbackButton
     }
     
-    private func updateHeaderImage(for requestMethod: Layer)  {
+    private func updateHeaderImage(for requestMethod: Layer) {
         switch requestMethod {
         case .lightning:
             setHeaderImage(Asset.iconHeaderLightning.image)

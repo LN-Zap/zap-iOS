@@ -10,7 +10,7 @@ import UIKit
 
 extension UIStoryboard {
     static func instantiateConfirmMnemonicViewController(confirmMnemonicViewModel: ConfirmMnemonicViewModel, walletConfirmed: @escaping () -> Void) -> ConfirmMnemonicViewController {
-        let viewController = Storyboard.createWallet.instantiate(viewController: ConfirmMnemonicViewController.self)
+        let viewController = StoryboardScene.CreateWallet.confirmMnemonicViewController.instantiate()
         viewController.confirmViewModel = confirmMnemonicViewModel
         viewController.walletConfirmed = walletConfirmed
         return viewController
