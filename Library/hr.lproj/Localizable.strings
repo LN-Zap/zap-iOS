@@ -23,8 +23,8 @@
 "channel.state.closing" = "Zatvaranje";
 "channel.state.force_closing" = "Prisilno zatvaranje";
 
-"network.type.testnet" = "Probna mreža";
-"network.type.mainnet" = "Glavna mreža";
+"network_type.testnet" = "Testnet";
+"network_type.mainnet" = "Mainnet";
 
 "unit.bitcoin.btc" = "Bitkoin";
 "unit.bitcoin.mbtc" = "Mili Bitkoin";
