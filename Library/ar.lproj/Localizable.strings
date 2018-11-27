@@ -23,8 +23,8 @@
 "channel.state.closing" = "إغلاق";
 "channel.state.force_closing" = "إغلاق أجباري";
 
-"network.type.testnet" = "Testnet";
-"network.type.mainnet" = "Mainnet";
+"network_type.testnet" = "Testnet";
+"network_type.mainnet" = "Mainnet";
 
 "unit.bitcoin.btc" = "البت كوين";
 "unit.bitcoin.mbtc" = "Milli Bitcoin";
