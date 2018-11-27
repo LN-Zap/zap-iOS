@@ -33,15 +33,12 @@ final class SendViewModel {
         case onChain(BitcoinURI)
         
         var headerImage: UIImage {
-            let name: String
             switch self {
             case .lightning:
-                name = "icon_header_lightning"
+                return Asset.iconHeaderLightning.image
             case .onChain:
-                name = "icon_header_on_chain"
+                return Asset.iconHeaderOnChain.image
             }
-            guard let image = UIImage(named: name, in: Bundle.library, compatibleWith: nil) else { fatalError("Image not found") }
-            return image
         }
         
         var headline: String {

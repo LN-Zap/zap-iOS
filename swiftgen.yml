@@ -1,5 +1,10 @@
 strings:
   inputs: Library/en.lproj/Localizable.strings
   outputs:
-    - templateName: structured-swift4
-      output: Library/Generated/strings.swift
+    templateName: structured-swift4
+    output: Library/Generated/Strings.swift
+xcassets:
+  inputs: Library/Media.xcassets
+  outputs:
+    templateName: swift4
+    output: Library/Generated/Assets.swift

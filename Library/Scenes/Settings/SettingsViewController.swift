@@ -23,7 +23,7 @@ final class SettingsViewController: GroupedTableViewController {
         let navigationController = ZapNavigationController(rootViewController: viewController)
         
         navigationController.tabBarItem.title = L10n.Scene.Settings.title
-        navigationController.tabBarItem.image = UIImage(named: "tabbar_settings", in: Bundle.library, compatibleWith: nil)
+        navigationController.tabBarItem.image = Asset.tabbarSettings.image
         navigationController.view.backgroundColor = UIColor.Zap.background
         
         return navigationController

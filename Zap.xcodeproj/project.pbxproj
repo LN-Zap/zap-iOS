@@ -204,7 +204,9 @@
 		ADA179C82153997B001401F3 /* Persistence.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADA179C72153997B001401F3 /* Persistence.swift */; };
 		ADA3253421A701E700C5EAA2 /* MacaroonId.pb.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADA3253321A701E700C5EAA2 /* MacaroonId.pb.swift */; };
 		ADA3253621A81B5C00C5EAA2 /* MacaroonTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADA3253521A81B5C00C5EAA2 /* MacaroonTests.swift */; };
-		ADA3254021AD5B3400C5EAA2 /* strings.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADA3253F21AD5B3300C5EAA2 /* strings.swift */; };
+		ADA3254021AD5B3400C5EAA2 /* Strings.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADA3253F21AD5B3300C5EAA2 /* Strings.swift */; };
+		ADA3254221AD8A6200C5EAA2 /* Assets.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADA3254121AD8A6200C5EAA2 /* Assets.swift */; };
+		ADA3254421AD8D7900C5EAA2 /* Colors.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = ADA3254321AD8D7900C5EAA2 /* Colors.xcassets */; };
 		ADA6BBBF211B3AEC00A1FF19 /* ScanRectView.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADA6BBBE211B3AEC00A1FF19 /* ScanRectView.swift */; };
 		ADA75DF2210F389100003068 /* ChannelState+Localizable.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADA75DF1210F389100003068 /* ChannelState+Localizable.swift */; };
 		ADA81E9E210DE14100B7C6F2 /* UIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADA81E9D210DE14100B7C6F2 /* UIView.swift */; };
@@ -688,7 +690,9 @@
 		ADA179C72153997B001401F3 /* Persistence.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Persistence.swift; sourceTree = "<group>"; };
 		ADA3253321A701E700C5EAA2 /* MacaroonId.pb.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MacaroonId.pb.swift; sourceTree = "<group>"; };
 		ADA3253521A81B5C00C5EAA2 /* MacaroonTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MacaroonTests.swift; sourceTree = "<group>"; };
-		ADA3253F21AD5B3300C5EAA2 /* strings.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = strings.swift; sourceTree = "<group>"; };
+		ADA3253F21AD5B3300C5EAA2 /* Strings.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Strings.swift; sourceTree = "<group>"; };
+		ADA3254121AD8A6200C5EAA2 /* Assets.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Assets.swift; sourceTree = "<group>"; };
+		ADA3254321AD8D7900C5EAA2 /* Colors.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Colors.xcassets; sourceTree = "<group>"; };
 		ADA6BBBE211B3AEC00A1FF19 /* ScanRectView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScanRectView.swift; sourceTree = "<group>"; };
 		ADA6D2C220AC1BD2009398A5 /* InfoService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfoService.swift; sourceTree = "<group>"; };
 		ADA6D2C420AC1DDE009398A5 /* BalanceService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BalanceService.swift; sourceTree = "<group>"; };
@@ -1386,6 +1390,7 @@
 				AD391C1A20D16ED4007EE22A /* Library.h */,
 				AD5EA1DF213D826A00AB8031 /* README.md */,
 				AD391C1B20D16ED4007EE22A /* Info.plist */,
+				ADA3254321AD8D7900C5EAA2 /* Colors.xcassets */,
 				AD391D2120D1798A007EE22A /* Media.xcassets */,
 				ADEDBB8A20C2D48D00B71F17 /* Coordinators */,
 				A0A05A5F2014A10A0007D1C9 /* Extensions */,
@@ -1620,7 +1625,8 @@
 		ADA3253E21AD5B0E00C5EAA2 /* Generated */ = {
 			isa = PBXGroup;
 			children = (
-				ADA3253F21AD5B3300C5EAA2 /* strings.swift */,
+				ADA3254121AD8A6200C5EAA2 /* Assets.swift */,
+				ADA3253F21AD5B3300C5EAA2 /* Strings.swift */,
 			);
 			path = Generated;
 			sourceTree = "<group>";
@@ -2265,6 +2271,7 @@
 				AD391C6320D16F89007EE22A /* Debug.storyboard in Resources */,
 				AD7EDAE32108C4150058CCCA /* Wallet.storyboard in Resources */,
 				AD391C5020D16F7A007EE22A /* CreateWallet.storyboard in Resources */,
+				ADA3254421AD8D7900C5EAA2 /* Colors.xcassets in Resources */,
 				AD667E4D21367E3A007B9160 /* Background.storyboard in Resources */,
 				AD391C6620D16F89007EE22A /* Loading.storyboard in Resources */,
 				AD391C7320D16F89007EE22A /* QRCodeDetail.storyboard in Resources */,
@@ -2757,6 +2764,7 @@
 				ADEDA3D12178938E0078FD91 /* NodeURIQRCodeViewModel.swift in Sources */,
 				AD391C6F20D16F89007EE22A /* OpenChannelViewController.swift in Sources */,
 				AD391C9B20D16FA8007EE22A /* QRCodeScannerViewController.swift in Sources */,
+				ADA3254221AD8A6200C5EAA2 /* Assets.swift in Sources */,
 				AD391CB520D16FA8007EE22A /* Settings.swift in Sources */,
 				AD2884352126B51C003C3D94 /* ModalViewController.swift in Sources */,
 				AD391CAB20D16FA8007EE22A /* CurrencySettingsItem.swift in Sources */,
@@ -2797,7 +2805,7 @@
 				AD391CB720D16FA8007EE22A /* SettingsViewController.swift in Sources */,
 				AD667E4721359D79007B9160 /* AuthenticationCoordinator.swift in Sources */,
 				AD391C3620D16EFA007EE22A /* UITableView.swift in Sources */,
-				ADA3254021AD5B3400C5EAA2 /* strings.swift in Sources */,
+				ADA3254021AD5B3400C5EAA2 /* Strings.swift in Sources */,
 				AD391C6720D16F89007EE22A /* LoadingViewController.swift in Sources */,
 				AD391CB920D16FA8007EE22A /* SyncViewController.swift in Sources */,
 				AD391C5A20D16F7A007EE22A /* MnemonicPageViewController.swift in Sources */,

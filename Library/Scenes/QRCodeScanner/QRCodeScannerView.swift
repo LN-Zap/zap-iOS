@@ -129,7 +129,7 @@ final class QRCodeScannerView: UIView {
         guard let scanRectView = scanRectView else { return }
         
         let button = UIButton(type: .custom)
-        button.setImage(UIImage(named: "icon_flashlight", in: Bundle.library, compatibleWith: nil), for: .normal)
+        button.setImage(Asset.iconFlashlight.image, for: .normal)
         button.addTarget(self, action: #selector(toggleTorch), for: .touchUpInside)
         
         addAutolayoutSubview(button)

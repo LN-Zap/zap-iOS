@@ -109,7 +109,7 @@ final class RequestViewController: ModalDetailViewController {
     }
     
     private func setupRequestMethodSelection() {
-        let lightningImage = UIImage(named: "icon_request_lightningButton", in: .library, compatibleWith: nil)
+        let lightningImage = Asset.iconRequestLightningButton.image
         let lightningButtonStyle = Style.Button.background.with({
             $0.setImage(lightningImage, for: .normal)
             $0.imageEdgeInsets = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 10)
@@ -133,7 +133,7 @@ final class RequestViewController: ModalDetailViewController {
         leftSeparator.widthAnchor.constraint(equalTo: rightSeparator.widthAnchor, multiplier: 1, constant: 0).isActive = true
         self.orSeparator = horizontalStackView
         
-        let onChainImage = UIImage(named: "icon_request_on_chainButton", in: .library, compatibleWith: nil)
+        let onChainImage = Asset.iconRequestOnChainButton.image
         let onChainButtonStyle = Style.Button.background.with({
             $0.setImage(onChainImage, for: .normal)
             $0.imageEdgeInsets = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 10)
@@ -143,23 +143,20 @@ final class RequestViewController: ModalDetailViewController {
         }))) as? CallbackButton
     }
     
-    private func headerImage(for requestMethod: Layer) -> UIImage {
-        let name: String
+    private func updateHeaderImage(for requestMethod: Layer)  {
         switch requestMethod {
         case .lightning:
-            name = "icon_header_lightning"
+            setHeaderImage(Asset.iconHeaderLightning.image)
             titleLabel?.text = L10n.Scene.Request.lightningHeaderTitle
         case .onChain:
-            name = "icon_header_on_chain"
+            setHeaderImage(Asset.iconHeaderOnChain.image)
             titleLabel?.text = L10n.Scene.Request.onChainHeaderTitle
         }
-        guard let image = UIImage(named: name, in: Bundle.library, compatibleWith: nil) else { fatalError("Image not found") }
-        return image
     }
     
     private func presentAmountInput(requestMethod: Layer) {
         viewModel.requestMethod = requestMethod
-        setHeaderImage(headerImage(for: requestMethod))
+        updateHeaderImage(for: requestMethod)
         currentState = .amountInput
     }
     

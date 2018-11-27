@@ -76,16 +76,14 @@ class KeyPadView: UIView {
     }
     
     private var authenticationImage: UIImage? {
-        let imageName: String
         switch BiometricAuthentication.type {
         case .none:
             return nil
         case .touchID:
-            imageName = "icon_touch_id"
+            return Asset.iconTouchId.image
         case .faceID:
-            imageName = "icon_face_id"
+            return Asset.iconFaceId.image
         }
-        return UIImage(named: imageName, in: Bundle.library, compatibleWith: nil)
     }
     
     private func updateButtonFont() {

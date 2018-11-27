@@ -23,7 +23,7 @@ extension UIStoryboard {
         walletViewController.requestButtonTapped = requestButtonTapped
         
         walletViewController.tabBarItem.title = L10n.Scene.Wallet.title
-        walletViewController.tabBarItem.image = UIImage(named: "tabbar_wallet", in: Bundle.library, compatibleWith: nil)
+        walletViewController.tabBarItem.image = Asset.tabbarWallet.image
         
         return walletViewController
     }

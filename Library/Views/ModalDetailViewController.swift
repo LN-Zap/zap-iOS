@@ -15,7 +15,7 @@ protocol ModalDetailViewControllerDelegate: class {
 class ModalDetailViewController: ModalViewController {
     private let closeButton: UIButton = {
         let closeButton = UIButton(type: .custom)
-        closeButton.setImage(UIImage(named: "icon_close", in: Bundle.library, compatibleWith: nil), for: .normal)
+        closeButton.setImage(Asset.iconClose.image, for: .normal)
         closeButton.addTarget(self, action: #selector(dismissParent), for: .touchUpInside)
         return closeButton
     }()

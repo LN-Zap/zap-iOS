@@ -20,7 +20,7 @@ extension UIStoryboard {
         
         let navigationController = ZapNavigationController(rootViewController: viewController)
         navigationController.tabBarItem.title = L10n.Scene.History.title
-        navigationController.tabBarItem.image = UIImage(named: "tabbar_history", in: Bundle.library, compatibleWith: nil)
+        navigationController.tabBarItem.image = Asset.tabbarHistory.image
         
         return navigationController
     }
