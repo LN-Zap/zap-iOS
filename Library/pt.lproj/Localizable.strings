@@ -23,8 +23,8 @@
 "channel.state.closing" = "A encerrar...";
 "channel.state.force_closing" = "Forçar o Encerramento";
 
-"network.type.testnet" = "Testnet";
-"network.type.mainnet" = "Mainnet";
+"network_type.testnet" = "Testnet";
+"network_type.mainnet" = "Mainnet";
 
 "unit.bitcoin.btc" = "Bitcoin";
 "unit.bitcoin.mbtc" = "Milli Bitcoin";
