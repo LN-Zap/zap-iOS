@@ -23,8 +23,8 @@
 "channel.state.closing" = "Κλείσιμο";
 "channel.state.force_closing" = "Κλείστε το με δύναμη";
 
-"network.type.testnet" = "Testnet";
-"network.type.mainnet" = "Mainnet";
+"network_type.testnet" = "Testnet";
+"network_type.mainnet" = "Mainnet";
 
 "unit.bitcoin.btc" = "Bitcoin";
 "unit.bitcoin.mbtc" = "Milli Bitcoin";
