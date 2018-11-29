@@ -1,5 +1,5 @@
-"generic.memo.placeholder" = "What is this for?";
-"generic.qr_code.copy_button" = "Copy";
+"generic.memo.placeholder" = "Waar is dit voor?";
+"generic.qr_code.copy_button" = "Kopieer";
 "generic.qr_code.copy_success_message" = "Address has been copied to clipboard.";
 "generic.pasteboard.invalid_address" = "Invalid Address";
 "generic.qr_code.share_button" = "Deel";
@@ -104,56 +104,56 @@
 "scene.connect_remote_node.title" = "Verbinden Remote-Node";
 "scene.connect_remote_node.empty_state" = "Scan de QRCode of cut-n-paste de verbindingscode van je node.";
 "scene.connect_remote_node.url_label" = "Adres";
-"scene.connect_remote_node.certificate_label" = "Certificate";
-"scene.connect_remote_node.connect_button" = "Connect";
+"scene.connect_remote_node.certificate_label" = "Certificaat";
+"scene.connect_remote_node.connect_button" = "Verbinding maken";
 "scene.connect_remote_node.scan_button" = "Scan";
-"scene.connect_remote_node.paste_button" = "Paste";
-"scene.connect_remote_node.help_button" = "Need Help?";
-"scene.connect_remote_node.server_error" = "Could not connect to server.";
-"scene.connect_remote_node.your_node_title" = "Your Node";
-"scene.connect_remote_node.certificate_detail.certificate_title" = "Certificate";
+"scene.connect_remote_node.paste_button" = "Plakken";
+"scene.connect_remote_node.help_button" = "Hulp nodig?";
+"scene.connect_remote_node.server_error" = "Kan geen verbinding maken met de server.";
+"scene.connect_remote_node.your_node_title" = "Jouw node";
+"scene.connect_remote_node.certificate_detail.certificate_title" = "Certificaat";
 "scene.connect_remote_node.certificate_detail.macaroon_title" = "Macaroon";
-"scene.connect_remote_node.edit_url.title" = "Address";
+"scene.connect_remote_node.edit_url.title" = "Adres";
 
-"scene.create_wallet.title" = "Create Wallet";
-"scene.create_wallet.description_label" = "Make sure to store the mnemonic at a save location.";
-"scene.create_wallet.next_button" = "Next";
+"scene.create_wallet.title" = "Nieuwe Wallet aanmaken";
+"scene.create_wallet.description_label" = "Bewaar je mnemonic code op een veilige locatie.";
+"scene.create_wallet.next_button" = "Volgende";
 
-"scene.recover_wallet.title" = "Recover Wallet";
-"scene.recover_wallet.done_button" = "Done";
-"scene.recover_wallet.description_label" = "Enter your seed:";
+"scene.recover_wallet.title" = "Wallet herstellen";
+"scene.recover_wallet.done_button" = "Klaar";
+"scene.recover_wallet.description_label" = "Voer je mnemonic code in:";
 "scene.recover_wallet.placeholder" = "abandon ability able about above absent absorb abstract absurd abuse access accident account accuse achieve acid acoustic acquire across act action actor actress actual";
 
 "scene.select_wallet_connection.title" = "Setup Zap";
-"scene.select_wallet_connection.create.title" = "Create";
-"scene.select_wallet_connection.create.message" = "new wallet";
-"scene.select_wallet_connection.recover.title" = "Recover";
-"scene.select_wallet_connection.recover.message" = "existing wallet";
-"scene.select_wallet_connection.connect.title" = "Connect";
-"scene.select_wallet_connection.connect.message" = "remote node";
+"scene.select_wallet_connection.create.title" = "Aanmaken";
+"scene.select_wallet_connection.create.message" = "nieuwe wallet";
+"scene.select_wallet_connection.recover.title" = "Herstellen";
+"scene.select_wallet_connection.recover.message" = "bestaande wallet";
+"scene.select_wallet_connection.connect.title" = "Verbinden";
+"scene.select_wallet_connection.connect.message" = "externe node";
 "scene.select_wallet_connection.disabled_alert.title" = "Sorry!";
-"scene.select_wallet_connection.disabled_alert.message" = "Running Lnd on the phone is disabled in this beta. Connect to a remote node instead.";
+"scene.select_wallet_connection.disabled_alert.message" = "Lnd op de telefoon draaien is uitgeschakeld in deze bèta. Maak inplaats daarvan verbinding met een externe lndnode.";
 "scene.select_wallet_connection.disabled_alert.ok_button" = "Ok";
-"scene.select_wallet_connection.create.help" = "Need Help?";
+"scene.select_wallet_connection.create.help" = "Hulp nodig?";
 
-"scene.main.send_button" = "Send";
-"scene.main.receive_button" = "Receive";
+"scene.main.send_button" = "Verzenden";
+"scene.main.receive_button" = "Ontvangen";
 "scene.main.exchange_rate_label" = "%@ per BTC";
 
-"scene.qr_code_detail.title" = "Receive";
+"scene.qr_code_detail.title" = "Ontvangen";
 
-"scene.sync.description_label" = "Syncing to blockchain…";
-"scene.sync.disconnect_bar_button" = "Disconnect";
-"scene.sync.disconnect_alert.title" = "Disconnect";
-"scene.sync.disconnect_alert.message" = "Do you really want to cancel syncing? You will have to reconnect to your node afterwards.";
-"scene.sync.disconnect_alert.destructive_action" = "Disconnect Node";
-"scene.sync.disconnect_alert.cancel_action" = "Cancel";
+"scene.sync.description_label" = "Synchroniseren naar blockchain…";
+"scene.sync.disconnect_bar_button" = "Verbinding verbreken";
+"scene.sync.disconnect_alert.title" = "Verbinding verbreken";
+"scene.sync.disconnect_alert.message" = "Wilt u het synchroniseren annuleren? Je zal hierna opnieuw moeten verbinden met je lndnode.";
+"scene.sync.disconnect_alert.destructive_action" = "Ontkoppel node";
+"scene.sync.disconnect_alert.cancel_action" = "Afbreken";
 
-"scene.transaction_detail.title.lightning_invoice" = "Invoice Detail";
-"scene.transaction_detail.title.payment_detail" = "Payment Detail";
-"scene.transaction_detail.title.transaction_detail" = "Transaction Detail";
+"scene.transaction_detail.title.lightning_invoice" = "Rekening detail";
+"scene.transaction_detail.title.payment_detail" = "Betaling detail";
+"scene.transaction_detail.title.transaction_detail" = "Transactie detail";
 "scene.transaction_detail.title.channel_event_detail" = "Channel Event";
-"scene.transaction_detail.title.failed_payment" = "Failed Payment";
+"scene.transaction_detail.title.failed_payment" = "Mislukte betaling";
 "scene.transaction_detail.memo_label" = "Memo";
 "scene.transaction_detail.amount_label" = "Amount";
 "scene.transaction_detail.fee_label" = "Fee";
@@ -213,4 +213,4 @@
 
 "scene.connect_node_uri.action_sheet.title" = "Connect";
 "scene.connect_node_uri.action_sheet.connect_button" = "Connect";
-"scene.connect_node_uri.action_sheet.message" = "Do you really want to connect to node at %@?";
+"scene.connect_node_uri.action_sheet.message" = "Weet je zeker dat je wil verbinden met node %@?";
