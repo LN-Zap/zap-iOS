@@ -81,22 +81,22 @@
 "scene.open_channel.add_button" = "Open kanaal";
 
 "scene.pin.biometric.fallback.title" = "Gebruik pincode";
-"scene.pin.biometric.reason" = "To access the secure data";
+"scene.pin.biometric.reason" = "Voor toegang tot de beveiligde data";
 
-"scene.setup_pin.done_button" = "Done";
-"scene.setup_pin.top_label.initial" = "Choose a pin.";
-"scene.setup_pin.top_label.non_matching" = "The pins didn't match. Please try again.";
-"scene.setup_pin.top_label.validate" = "Enter the pin again to validate.";
+"scene.setup_pin.done_button" = "Klaar";
+"scene.setup_pin.top_label.initial" = "Kies een pin.";
+"scene.setup_pin.top_label.non_matching" = "De pincodes komen niet overeen. Probeer opnieuw.";
+"scene.setup_pin.top_label.validate" = "Voer de pin opnieuw in om te controleren.";
 
-"scene.confirm_mnemonic.title" = "Confirm Seed";
-"scene.confirm_mnemonic.description" = "Enter your key.";
+"scene.confirm_mnemonic.title" = "Bevestig seed";
+"scene.confirm_mnemonic.description" = "Voer je mnemonic code in.";
 
-"scene.send.title" = "Send";
-"scene.send.send_button" = "Send";
-"scene.send.address_headline" = "To:";
+"scene.send.title" = "Verzenden";
+"scene.send.send_button" = "Verzenden";
+"scene.send.address_headline" = "Aan:";
 "scene.send.memo_headline" = "Memo:";
-"scene.send.sending" = "Sending...";
-"scene.send.lightning.title" = "Send Lightning Payment";
+"scene.send.sending" = "Verzenden...";
+"scene.send.lightning.title" = "Verstuur Lightning betaling";
 "scene.send.on_chain.title" = "Verstuurd On Chain";
 "scene.send.authentication_failed" = "Verificatie mislukt";
 "scene.send.maximum_fee" = "Verwachte kosten:";
@@ -152,14 +152,14 @@
 "scene.transaction_detail.title.lightning_invoice" = "Rekening detail";
 "scene.transaction_detail.title.payment_detail" = "Betaling detail";
 "scene.transaction_detail.title.transaction_detail" = "Transactie detail";
-"scene.transaction_detail.title.channel_event_detail" = "Channel Event";
+"scene.transaction_detail.title.channel_event_detail" = "Kanaal event";
 "scene.transaction_detail.title.failed_payment" = "Mislukte betaling";
 "scene.transaction_detail.memo_label" = "Memo";
-"scene.transaction_detail.amount_label" = "Amount";
-"scene.transaction_detail.fee_label" = "Fee";
-"scene.transaction_detail.date_label" = "Date";
-"scene.transaction_detail.transaction_id_label" = "Transaction ID";
-"scene.transaction_detail.address_label" = "Address";
+"scene.transaction_detail.amount_label" = "Bedrag";
+"scene.transaction_detail.fee_label" = "Vergoeding";
+"scene.transaction_detail.date_label" = "Datum";
+"scene.transaction_detail.transaction_id_label" = "Transactie id";
+"scene.transaction_detail.address_label" = "Adres";
 "scene.transaction_detail.expiry_label" = "Expiry";
 
 "scene.channel_detail.remote_pub_key_label" = "Remote PubKey";
@@ -167,50 +167,50 @@
 "scene.channel_detail.remote_balance_label" = "Remote Balance";
 "scene.channel_detail.closing_time.label" = "Closing in";
 "scene.channel_detail.funding_transaction_label" = "Funding Transaction";
-"scene.channel_detail.close_button" = "Close Channel";
-"scene.channel_detail.force_close_button" = "Force Close Channel";
+"scene.channel_detail.close_button" = "Sluit kanaal";
+"scene.channel_detail.force_close_button" = "Geforceerd kanaal sluiten";
 
 "scene.filter.title" = "Filter";
-"scene.filter.section_header.transaction_types" = "Transaction Types";
-"scene.filter.section_header.advanced" = "Advanced";
-"scene.filter.displayOnChainTransactions" = "On-chain Payments";
-"scene.filter.display_unknown_transaction_type" = "Internal Transations";
-"scene.filter.displayLightningPayments" = "Lightning Payments";
-"scene.filter.displayLightningInvoices" = "Created Invoices";
-"scene.filter.displayChannelEvents" = "Channel Events";
-"scene.filter.displayFailedPaymentEvents" = "Failed Payments";
+"scene.filter.section_header.transaction_types" = "Transactie types";
+"scene.filter.section_header.advanced" = "Geadvanceerd";
+"scene.filter.displayOnChainTransactions" = "On-chain betalingen";
+"scene.filter.display_unknown_transaction_type" = "Interne betalingen";
+"scene.filter.displayLightningPayments" = "Lightning betalingen";
+"scene.filter.displayLightningInvoices" = "Aangemaakte fakturen";
+"scene.filter.displayChannelEvents" = "Kanaal events";
+"scene.filter.displayFailedPaymentEvents" = "Mislukte betalingen";
 
-"scene.qrcode_scanner.top_label" = "Scan QR-Code";
+"scene.qrcode_scanner.top_label" = "Scan QR-code";
 
 "scene.wallet.title" = "Wallet";
 
-"scene.time_lock.headline" = "Wrong Passcode";
-"scene.time_lock.description" = "Your wallet is locked for:";
+"scene.time_lock.headline" = "Verkeerde pincode";
+"scene.time_lock.description" = "Je wallet is geblokkeerd voor:";
 
-"scene.modal_pin.headline" = "Enter Passcode";
-"scene.modal_pin.description" = "Please enter your passcode to continue";
+"scene.modal_pin.headline" = "Voer pincode in";
+"scene.modal_pin.description" = "Voer je pincode in om verder te gaan";
 
-"scene.history.cell.payment_sent" = "Payment sent";
-"scene.history.cell.payment_received" = "Payment received";
-"scene.history.cell.payment_failed" = "Payment failed (%@)";
-"scene.history.cell.invoice_created" = "Payment Request created";
-"scene.history.cell.channel_opened" = "Open Channel";
-"scene.history.cell.channel_closed" = "Close Channel";
-"scene.history.cell.force_close_channel" = "Force close Channel";
+"scene.history.cell.payment_sent" = "Betaling verzonden";
+"scene.history.cell.payment_received" = "Betaling ontvangen";
+"scene.history.cell.payment_failed" = "Betaling mislukt (%@)";
+"scene.history.cell.invoice_created" = "Betalingsverzoek aangemaakt";
+"scene.history.cell.channel_opened" = "Open kanaal";
+"scene.history.cell.channel_closed" = "Gesloten kanaal";
+"scene.history.cell.force_close_channel" = "Geforceerd gesloten kanaal";
 "scene.history.cell.remote_force_close_channel" = "Remote force close Channel";
 "scene.history.cell.breach_close_channel" = "Breach close Channel";
 "scene.history.cell.close_channel_funding_canceled" = "Close Channel (funding canceled)";
-"scene.history.cell.channel_abandoned" = "Channel abandoned";
-"scene.history.cell.transaction_sent" = "Payment sent";
-"scene.history.cell.transaction_received" = "Payment received";
-"scene.history.cell.label.new" = "new";
-"scene.history.cell.label.error" = "error";
-"scene.history.cell.action.try_again" = "Try Again";
+"scene.history.cell.channel_abandoned" = "Kanaal verlaten";
+"scene.history.cell.transaction_sent" = "Betaling verstuurd";
+"scene.history.cell.transaction_received" = "Betaling ontvangen";
+"scene.history.cell.label.new" = "nieuw";
+"scene.history.cell.label.error" = "fout";
+"scene.history.cell.action.try_again" = "Probeer opnieuw";
 
 "scene.node_uri.title" = "Connect to Node";
 "scene.node_uri.alias_label" = "Alias";
 "scene.node_uri.uri_label" = "URI";
 
-"scene.connect_node_uri.action_sheet.title" = "Connect";
-"scene.connect_node_uri.action_sheet.connect_button" = "Connect";
+"scene.connect_node_uri.action_sheet.title" = "Verbinding maken";
+"scene.connect_node_uri.action_sheet.connect_button" = "Verbinden";
 "scene.connect_node_uri.action_sheet.message" = "Weet je zeker dat je wil verbinden met node %@?";
