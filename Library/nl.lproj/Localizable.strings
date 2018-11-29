@@ -2,7 +2,7 @@
 "generic.qr_code.copy_button" = "Copy";
 "generic.qr_code.copy_success_message" = "Address has been copied to clipboard.";
 "generic.pasteboard.invalid_address" = "Invalid Address";
-"generic.qr_code.share_button" = "Share";
+"generic.qr_code.share_button" = "Deel";
 "generic.cancel" = "Cancel";
 
 "link.help" = "https://ln-zap.github.io/zap-tutorials/";
@@ -12,13 +12,13 @@
 "error.wrong_uri_network" = "You tried opening a link for %@ but your node is connected to %@.";
 "error.block_explorer.unsupported_network" = "%@ does not support %@.";
 
-"rpc_connect_qrcode_error.btc_pay_expired" = "Looks like the code is expired.";
-"rpc_connect_qrcode_error.btc_pay_configuration_broken" = "Could not read BTCPay configurations file.";
-"rpc_connect_qrcode_error.cant_read_qrcode" = "Invalid code format.";
+"rpc_connect_qrcode_error.btc_pay_expired" = "Het lijkt erop dat de code is verlopen.";
+"rpc_connect_qrcode_error.btc_pay_configuration_broken" = "BTCPay configuratiebestand kon niet worden gelezen.";
+"rpc_connect_qrcode_error.cant_read_qrcode" = "Onleesbare code.";
 "rpc_connect_qrcode_error.code_updated" = "Connection updated.";
 
 "channel.state.active" = "Online";
-"channel.state.inactive" = "Offline";
+"channel.state.inactive" = "Off line";
 "channel.state.opening" = "Opening";
 "channel.state.closing" = "Closing";
 "channel.state.force_closing" = "Force Closing";
@@ -33,17 +33,17 @@
 
 "transaction.no_destination_address" = "No destination address";
 
-"view.amount_input.placeholder" = "Amount";
+"view.amount_input.placeholder" = "Bedrag";
 
-"scene.history.title" = "History";
-"scene.history.empty_state_label" = "0 transactions 🙁";
+"scene.history.title" = "Geschiedenis";
+"scene.history.empty_state_label" = "0 transacties 🙁";
 
-"scene.settings.title" = "Settings";
+"scene.settings.title" = "Instellingen";
 "scene.settings.section.wallet" = "Wallet";
-"scene.settings.item.bitcoin_unit" = "Bitcoin Unit";
-"scene.settings.item.currency" = "Currency";
+"scene.settings.item.bitcoin_unit" = "Bitcoin eenheid";
+"scene.settings.item.currency" = "Valuta";
 "scene.settings.item.block_explorer" = "Block Explorer";
-"scene.settings.item.on_chain_request_address.title" = "Bitcoin Address Type";
+"scene.settings.item.on_chain_request_address.title" = "Bitcoin adres type";
 "scene.settings.item.on_chain_request_address.bech32" = "Bech32";
 "scene.settings.item.on_chain_request_address.p2sh" = "P2SH";
 "scene.settings.item.manage_channels" = "Manage Channels";
@@ -51,15 +51,15 @@
 "scene.settings.item.remove_remote_node" = "Reset Remote Node Connection";
 "scene.settings.item.remove_remote_node.confirmation.title" = "Disconnect Remote Node?";
 "scene.settings.item.remove_remote_node.confirmation.message" = "You will have to reconnect to your node afterwards.";
-"scene.settings.item.remove_remote_node.confirmation.button" = "Disconnect";
+"scene.settings.item.remove_remote_node.confirmation.button" = "Verbinding verbreken";
 
-"scene.settings.item.change_pin" = "Change Pin";
-"scene.settings.item.report_issue" = "Report an Issue";
-"scene.settings.item.help" = "Need Help?";
+"scene.settings.item.change_pin" = "Verander pincode";
+"scene.settings.item.report_issue" = "Een probleem melden";
+"scene.settings.item.help" = "Hulp nodig?";
 
-"scene.request.title" = "Receive";
+"scene.request.title" = "Ontvangen";
 "scene.request.lightning_button" = "Lightning";
-"scene.request.or_separator_label" = "or";
+"scene.request.or_separator_label" = "of";
 "scene.request.on_chain_button" = "On-chain";
 "scene.request.generate_request_button" = "Generate Request";
 "scene.request.lightning_header_title" = "Lightning Payment Request";
@@ -97,13 +97,13 @@
 "scene.send.memo_headline" = "Memo:";
 "scene.send.sending" = "Sending...";
 "scene.send.lightning.title" = "Send Lightning Payment";
-"scene.send.on_chain.title" = "Send On Chain";
-"scene.send.authentication_failed" = "Authentication failed";
-"scene.send.maximum_fee" = "Expected Fee:";
+"scene.send.on_chain.title" = "Verstuurd On Chain";
+"scene.send.authentication_failed" = "Verificatie mislukt";
+"scene.send.maximum_fee" = "Verwachte kosten:";
 
-"scene.connect_remote_node.title" = "Connect Remote Node";
-"scene.connect_remote_node.empty_state" = "Scan the QRCode generate with zapconnect or paste the connection code to connect to your node.";
-"scene.connect_remote_node.url_label" = "Address";
+"scene.connect_remote_node.title" = "Verbinden Remote-Node";
+"scene.connect_remote_node.empty_state" = "Scan de QRCode of cut-n-paste de verbindingscode van je node.";
+"scene.connect_remote_node.url_label" = "Adres";
 "scene.connect_remote_node.certificate_label" = "Certificate";
 "scene.connect_remote_node.connect_button" = "Connect";
 "scene.connect_remote_node.scan_button" = "Scan";
