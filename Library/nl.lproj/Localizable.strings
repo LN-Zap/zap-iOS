@@ -49,8 +49,8 @@
 "scene.settings.item.manage_channels" = "Beheer kanalen";
 "scene.settings.item.node_uri" = "Node URI";
 "scene.settings.item.remove_remote_node" = "Reset externe node verbinding";
-"scene.settings.item.remove_remote_node.confirmation.title" = "Disconnect Remote Node?";
-"scene.settings.item.remove_remote_node.confirmation.message" = "You will have to reconnect to your node afterwards.";
+"scene.settings.item.remove_remote_node.confirmation.title" = "Verbinding verbreken met remote node?";
+"scene.settings.item.remove_remote_node.confirmation.message" = "Je zult achteraf opnieuw naar je node moeten verbinden.";
 "scene.settings.item.remove_remote_node.confirmation.button" = "Verbinding verbreken";
 
 "scene.settings.item.change_pin" = "Verander pincode";
@@ -160,13 +160,13 @@
 "scene.transaction_detail.date_label" = "Datum";
 "scene.transaction_detail.transaction_id_label" = "Transactie id";
 "scene.transaction_detail.address_label" = "Adres";
-"scene.transaction_detail.expiry_label" = "Expiry";
+"scene.transaction_detail.expiry_label" = "Vervaltijd";
 
 "scene.channel_detail.remote_pub_key_label" = "Remote PubKey";
-"scene.channel_detail.local_balance_label" = "Local Balance";
-"scene.channel_detail.remote_balance_label" = "Remote Balance";
-"scene.channel_detail.closing_time.label" = "Closing in";
-"scene.channel_detail.funding_transaction_label" = "Funding Transaction";
+"scene.channel_detail.local_balance_label" = "Lokaal saldo";
+"scene.channel_detail.remote_balance_label" = "Remote saldo";
+"scene.channel_detail.closing_time.label" = "Sluiten in";
+"scene.channel_detail.funding_transaction_label" = "Financieringstransactie";
 "scene.channel_detail.close_button" = "Sluit kanaal";
 "scene.channel_detail.force_close_button" = "Geforceerd kanaal sluiten";
 
@@ -197,9 +197,9 @@
 "scene.history.cell.channel_opened" = "Open kanaal";
 "scene.history.cell.channel_closed" = "Gesloten kanaal";
 "scene.history.cell.force_close_channel" = "Geforceerd gesloten kanaal";
-"scene.history.cell.remote_force_close_channel" = "Remote force close Channel";
-"scene.history.cell.breach_close_channel" = "Breach close Channel";
-"scene.history.cell.close_channel_funding_canceled" = "Close Channel (funding canceled)";
+"scene.history.cell.remote_force_close_channel" = "Remote geforceerd sluiten kanaal";
+"scene.history.cell.breach_close_channel" = "Geschonden gesloten kanaal";
+"scene.history.cell.close_channel_funding_canceled" = "Sluit kanaal (financiering afgebroken)";
 "scene.history.cell.channel_abandoned" = "Kanaal verlaten";
 "scene.history.cell.transaction_sent" = "Betaling verstuurd";
 "scene.history.cell.transaction_received" = "Betaling ontvangen";
@@ -207,7 +207,7 @@
 "scene.history.cell.label.error" = "fout";
 "scene.history.cell.action.try_again" = "Probeer opnieuw";
 
-"scene.node_uri.title" = "Connect to Node";
+"scene.node_uri.title" = "Verbinden met node";
 "scene.node_uri.alias_label" = "Alias";
 "scene.node_uri.uri_label" = "URI";
 
