@@ -1,27 +1,27 @@
 "generic.memo.placeholder" = "Waar is dit voor?";
 "generic.qr_code.copy_button" = "Kopieer";
-"generic.qr_code.copy_success_message" = "Address has been copied to clipboard.";
-"generic.pasteboard.invalid_address" = "Invalid Address";
+"generic.qr_code.copy_success_message" = "Adres is gekopieerd naar klembord.";
+"generic.pasteboard.invalid_address" = "Ongeldig adres";
 "generic.qr_code.share_button" = "Deel";
-"generic.cancel" = "Cancel";
+"generic.cancel" = "Afbreken";
 
 "link.help" = "https://ln-zap.github.io/zap-tutorials/";
 "link.help.zapconnect" = "https://ln-zap.github.io/zap-tutorials/iOS-remote-node-setup";
 
-"error.wrong_uri_format" = "Unknown link format.";
-"error.wrong_uri_network" = "You tried opening a link for %@ but your node is connected to %@.";
-"error.block_explorer.unsupported_network" = "%@ does not support %@.";
+"error.wrong_uri_format" = "Onbekend link formaat.";
+"error.wrong_uri_network" = "Je hebt geprobeerd een link te open voor %@, maar je node is verbonden met %@.";
+"error.block_explorer.unsupported_network" = "%@ ondersteunt geen %@.";
 
 "rpc_connect_qrcode_error.btc_pay_expired" = "Het lijkt erop dat de code is verlopen.";
 "rpc_connect_qrcode_error.btc_pay_configuration_broken" = "BTCPay configuratiebestand kon niet worden gelezen.";
 "rpc_connect_qrcode_error.cant_read_qrcode" = "Onleesbare code.";
-"rpc_connect_qrcode_error.code_updated" = "Connection updated.";
+"rpc_connect_qrcode_error.code_updated" = "Verbinding geüpdate.";
 
 "channel.state.active" = "Online";
 "channel.state.inactive" = "Off line";
-"channel.state.opening" = "Opening";
-"channel.state.closing" = "Closing";
-"channel.state.force_closing" = "Force Closing";
+"channel.state.opening" = "Openen";
+"channel.state.closing" = "Sluiten";
+"channel.state.force_closing" = "Geforceerd sluiten";
 
 "network_type.testnet" = "Testnet";
 "network_type.mainnet" = "Mainnet";
@@ -31,7 +31,7 @@
 "unit.bitcoin.bit" = "Bits";
 "unit.bitcoin.satoshi" = "Satoshis";
 
-"transaction.no_destination_address" = "No destination address";
+"transaction.no_destination_address" = "Geen bestemmingsadres";
 
 "view.amount_input.placeholder" = "Bedrag";
 
@@ -46,9 +46,9 @@
 "scene.settings.item.on_chain_request_address.title" = "Bitcoin adres type";
 "scene.settings.item.on_chain_request_address.bech32" = "Bech32";
 "scene.settings.item.on_chain_request_address.p2sh" = "P2SH";
-"scene.settings.item.manage_channels" = "Manage Channels";
+"scene.settings.item.manage_channels" = "Beheer kanalen";
 "scene.settings.item.node_uri" = "Node URI";
-"scene.settings.item.remove_remote_node" = "Reset Remote Node Connection";
+"scene.settings.item.remove_remote_node" = "Reset externe node verbinding";
 "scene.settings.item.remove_remote_node.confirmation.title" = "Disconnect Remote Node?";
 "scene.settings.item.remove_remote_node.confirmation.message" = "You will have to reconnect to your node afterwards.";
 "scene.settings.item.remove_remote_node.confirmation.button" = "Verbinding verbreken";
@@ -61,26 +61,26 @@
 "scene.request.lightning_button" = "Lightning";
 "scene.request.or_separator_label" = "of";
 "scene.request.on_chain_button" = "On-chain";
-"scene.request.generate_request_button" = "Generate Request";
-"scene.request.lightning_header_title" = "Lightning Payment Request";
-"scene.request.on_chain_header_title" = "On Chain Payment Request";
-"scene.request.next_button_title" = "Next";
+"scene.request.generate_request_button" = "Geneer verzoek";
+"scene.request.lightning_header_title" = "Lightning betaalverzoek";
+"scene.request.on_chain_header_title" = "On-chain betaalverzoek";
+"scene.request.next_button_title" = "Volgende";
 
-"scene.channels.title" = "Channels";
-"scene.channels.close.title" = "Close Channel";
-"scene.channels.close.message" = "Do you really want to close the channel with node %@?";
-"scene.channels.force_close.title" = "Force Close Channel";
-"scene.channels.force_close.message" = "%@ is offline, are you sure you want to force close this channel? You’d have to wait about %@ for your funds?";
-"scene.channels.alert.close" = "Close Channel";
-"scene.channels.alert.force_close" = "Force Close Channel";
-"scene.channels.close_loading_view" = "Closing Channel";
-"scene.channels.close_success.toast" = "Channel is closing.";
+"scene.channels.title" = "Kanalen";
+"scene.channels.close.title" = "Sluit kanaal";
+"scene.channels.close.message" = "Weet je zeker om het kanaal met node %@ te sluiten?";
+"scene.channels.force_close.title" = "Forceer kanaal sluiting";
+"scene.channels.force_close.message" = "%@ is offline, weet je zeker dat je dit kanaal geforceerd wil sluiten? Je zult ongeveer %@ moeten wachten op je tegoed.";
+"scene.channels.alert.close" = "Sluit kanaal";
+"scene.channels.alert.force_close" = "Geforceerd kanaal sluiten";
+"scene.channels.close_loading_view" = "Kanaal aan het sluiten";
+"scene.channels.close_success.toast" = "Kanaal is aan het sluiten.";
 
-"scene.open_channel.title" = "Open Channel";
-"scene.open_channel.channel_uri_label" = "Channel:";
-"scene.open_channel.add_button" = "Open Channel";
+"scene.open_channel.title" = "Open kanaal";
+"scene.open_channel.channel_uri_label" = "Kanaal:";
+"scene.open_channel.add_button" = "Open kanaal";
 
-"scene.pin.biometric.fallback.title" = "Use Passcode";
+"scene.pin.biometric.fallback.title" = "Gebruik pincode";
 "scene.pin.biometric.reason" = "To access the secure data";
 
 "scene.setup_pin.done_button" = "Done";
