@@ -98,7 +98,7 @@ extension Lnrpc_QueryRoutesRequest {
     init(destination: String, amount: Satoshi) {
         pubKey = destination
         amt = Int64(truncating: amount as NSDecimalNumber)
-        numRoutes = 15
+        numRoutes = 10
     }
 }
 
