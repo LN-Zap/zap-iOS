@@ -20,6 +20,15 @@ public final class ConnectionService: NSObject {
     
     public let state = Observable<State>(.connecting)
     
+    public var permissions: Permissions {
+        switch LightningConnection.current {
+        case .none:
+            return Permissions.none
+        case .remote(let connection):
+            return connection.macaroon.permissions
+        }
+    }
+    
     private var connectionTimeoutTimer: Timer?
     private var syncingStartTime: Date?
     

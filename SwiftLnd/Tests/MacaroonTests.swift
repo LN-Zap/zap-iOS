@@ -16,20 +16,20 @@ class MacaroonTests: XCTestCase {
     // swiftlint:disable force_unwrapping
     func testAdminMacaroon() {
         let macaroon = Macaroon(base64String: admin)!
-        XCTAssertTrue(macaroon.can(.write, domain: .address))
+        XCTAssertTrue(macaroon.permissions.can(.write, domain: .address))
     }
     
     func testReadonlyMacaroon() {
         let macaroon = Macaroon(base64String: readonly)!
-        XCTAssertFalse(macaroon.can(.write, domain: .address))
+        XCTAssertFalse(macaroon.permissions.can(.write, domain: .address))
     }
     
     func testInvoiceMacaroon() {
         let macaroon = Macaroon(base64String: invoice)!
-        XCTAssertTrue(macaroon.can(.write, domain: .invoices))
-        XCTAssertTrue(macaroon.can(.write, domain: .address))
-        XCTAssertFalse(macaroon.can(.write, domain: .onChain))
-        XCTAssertFalse(macaroon.can(.read, domain: .info))
+        XCTAssertTrue(macaroon.permissions.can(.write, domain: .invoices))
+        XCTAssertTrue(macaroon.permissions.can(.write, domain: .address))
+        XCTAssertFalse(macaroon.permissions.can(.write, domain: .onChain))
+        XCTAssertFalse(macaroon.permissions.can(.read, domain: .info))
         
     }
 }

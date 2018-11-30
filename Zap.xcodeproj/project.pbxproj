@@ -21,6 +21,7 @@
 		AD035BFC2174A030005EA785 /* ChannelTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD035BFA2174A030005EA785 /* ChannelTableViewCell.swift */; };
 		AD035BFD2174A030005EA785 /* ChannelTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = AD035BFB2174A030005EA785 /* ChannelTableViewCell.xib */; };
 		AD035BFF2174A996005EA785 /* ChannelDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD035BFE2174A996005EA785 /* ChannelDetailViewController.swift */; };
+		AD055DA721B14A4300BE511D /* Permissions.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD055DA621B14A4300BE511D /* Permissions.swift */; };
 		AD0D0BC2212BE3C800E4F7F7 /* RequestViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD0D0BC1212BE3C800E4F7F7 /* RequestViewController.swift */; };
 		AD10D04C21132A6000A0F0D3 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AD10D04B21132A6000A0F0D3 /* LaunchScreen.storyboard */; };
 		AD10D05721132EFB00A0F0D3 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = AD10D05921132EFB00A0F0D3 /* Localizable.strings */; };
@@ -575,6 +576,7 @@
 		AD035BFA2174A030005EA785 /* ChannelTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChannelTableViewCell.swift; sourceTree = "<group>"; };
 		AD035BFB2174A030005EA785 /* ChannelTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ChannelTableViewCell.xib; sourceTree = "<group>"; };
 		AD035BFE2174A996005EA785 /* ChannelDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChannelDetailViewController.swift; sourceTree = "<group>"; };
+		AD055DA621B14A4300BE511D /* Permissions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Permissions.swift; sourceTree = "<group>"; };
 		AD0D0BC1212BE3C800E4F7F7 /* RequestViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RequestViewController.swift; sourceTree = "<group>"; };
 		AD0D933220C822C300E30C51 /* rpc.pb.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = rpc.pb.swift; sourceTree = "<group>"; };
 		AD0D933320C822C300E30C51 /* rpc.grpc.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = rpc.grpc.swift; sourceTree = "<group>"; };
@@ -1103,8 +1105,9 @@
 				AD71EA4A20E2321100256307 /* LndConstants.swift */,
 				A0A05A342014047B0007D1C9 /* LocalLnd.swift */,
 				A02C9FC520304395009821B1 /* LocalLndConfiguration.swift */,
-				AD71EA4820E2318000256307 /* RemoteRPCConfiguration.swift */,
 				ADF1BB32219D7F260078BCC4 /* Macaroon.swift */,
+				AD055DA621B14A4300BE511D /* Permissions.swift */,
+				AD71EA4820E2318000256307 /* RemoteRPCConfiguration.swift */,
 			);
 			path = Lnd;
 			sourceTree = "<group>";
@@ -2939,6 +2942,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				AD055DA721B14A4300BE511D /* Permissions.swift in Sources */,
 				AD79E422219D90E2002589CA /* Data+Extensions.swift in Sources */,
 				ADADAD982143B3C900A48E1F /* ProtobufExtensions.swift in Sources */,
 				ADADAD882143B3C900A48E1F /* Channel.swift in Sources */,

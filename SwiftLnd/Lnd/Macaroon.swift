@@ -7,39 +7,9 @@
 
 import Foundation
 
-enum Permission {
-    struct AccessMode: OptionSet {
-        let rawValue: Int
-        
-        static let read = AccessMode(rawValue: 1 << 0)
-        static let write = AccessMode(rawValue: 1 << 1)
-        
-        static func fromString(_ string: String) -> AccessMode? {
-            switch string {
-            case "read":
-                return .read
-            case "write":
-                return .write
-            default:
-                return nil
-            }
-        }
-    }
-    
-    enum Domain: String {
-        case address
-        case info
-        case invoices
-        case message
-        case offChain = "offchain"
-        case onChain = "onchain"
-        case peers
-    }
-}
-
 public struct Macaroon: Equatable, Codable {
     private let data: Data
-    private let permissions: [Permission.Domain: Permission.AccessMode]
+    public let permissions: Permissions
     
     public init(from decoder: Decoder) throws {
         data = try Data(from: decoder)
@@ -84,9 +54,9 @@ public struct Macaroon: Equatable, Codable {
     // See also https://github.com/rescrv/libmacaroons/blob/master/doc/format.txt
     //
     // Proto file for the MacaroonId: https://github.com/go-macaroon-bakery/macaroon-bakery/blob/v2.1.0/bakery/internal/macaroonpb/id.proto
-    private static func decodePermissions(from data: Data) -> [Permission.Domain: Permission.AccessMode] {
+    private static func decodePermissions(from data: Data) -> Permissions {
         var data = data.dropFirst()
-        guard let (firstSection, remainingData) = Macaroon.parseSection(data: data) else { return [:] }
+        guard let (firstSection, remainingData) = Macaroon.parseSection(data: data) else { return Permissions(permissions: [:]) }
         var section = firstSection
         data = remainingData
         
@@ -99,25 +69,21 @@ public struct Macaroon: Equatable, Codable {
             section.count == 1 && section[0].type == .identifier, // valid macaroon header
             let id = section[0].data,
         let decoded = try? MacaroonId(serializedData: id.dropFirst())
-            else { return [:] }
+            else { return Permissions(permissions: [:]) }
         
-        var permissions = [Permission.Domain: Permission.AccessMode]()
+        var permissions = [Permissions.Domain: Permissions.AccessMode]()
         
         for op in decoded.ops { // swiftlint:disable:this identifier_name
-            guard let domain = Permission.Domain(rawValue: op.entity) else {
+            guard let domain = Permissions.Domain(rawValue: op.entity) else {
                 print("⚠️ unknown macaroon id entity: \(op.entity)")
                 continue
             }
             
-            let accessMode = Permission.AccessMode(op.actions.compactMap(Permission.AccessMode.fromString))
+            let accessMode = Permissions.AccessMode(op.actions.compactMap(Permissions.AccessMode.fromString))
             permissions[domain] = accessMode
         }
         
-        return permissions
-    }
-    
-    func can(_ accessMode: Permission.AccessMode, domain: Permission.Domain) -> Bool {
-        return permissions[domain]?.contains(accessMode) ?? false
+        return Permissions(permissions: permissions)
     }
     
     // parseSectionV2 parses a sequence of packets in data. The sequence is
