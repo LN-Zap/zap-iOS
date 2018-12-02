@@ -22,6 +22,8 @@
 		AD035BFD2174A030005EA785 /* ChannelTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = AD035BFB2174A030005EA785 /* ChannelTableViewCell.xib */; };
 		AD035BFF2174A996005EA785 /* ChannelDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD035BFE2174A996005EA785 /* ChannelDetailViewController.swift */; };
 		AD055DA721B14A4300BE511D /* Permissions.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD055DA621B14A4300BE511D /* Permissions.swift */; };
+		AD055DAA21B43C6700BE511D /* WalletInvoiceOnly.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AD055DA921B43C6700BE511D /* WalletInvoiceOnly.storyboard */; };
+		AD055DAC21B43C7600BE511D /* WalletInvoiceOnlyViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD055DAB21B43C7600BE511D /* WalletInvoiceOnlyViewController.swift */; };
 		AD0D0BC2212BE3C800E4F7F7 /* RequestViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD0D0BC1212BE3C800E4F7F7 /* RequestViewController.swift */; };
 		AD10D04C21132A6000A0F0D3 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AD10D04B21132A6000A0F0D3 /* LaunchScreen.storyboard */; };
 		AD10D05721132EFB00A0F0D3 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = AD10D05921132EFB00A0F0D3 /* Localizable.strings */; };
@@ -577,6 +579,8 @@
 		AD035BFB2174A030005EA785 /* ChannelTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ChannelTableViewCell.xib; sourceTree = "<group>"; };
 		AD035BFE2174A996005EA785 /* ChannelDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChannelDetailViewController.swift; sourceTree = "<group>"; };
 		AD055DA621B14A4300BE511D /* Permissions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Permissions.swift; sourceTree = "<group>"; };
+		AD055DA921B43C6700BE511D /* WalletInvoiceOnly.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = WalletInvoiceOnly.storyboard; sourceTree = "<group>"; };
+		AD055DAB21B43C7600BE511D /* WalletInvoiceOnlyViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WalletInvoiceOnlyViewController.swift; sourceTree = "<group>"; };
 		AD0D0BC1212BE3C800E4F7F7 /* RequestViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RequestViewController.swift; sourceTree = "<group>"; };
 		AD0D933220C822C300E30C51 /* rpc.pb.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = rpc.pb.swift; sourceTree = "<group>"; };
 		AD0D933320C822C300E30C51 /* rpc.grpc.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = rpc.grpc.swift; sourceTree = "<group>"; };
@@ -1047,6 +1051,7 @@
 				ADCE01C4207B714E00CA72E8 /* Sync */,
 				AD667E4F2136B042007B9160 /* TimeLocked */,
 				AD7EDAE12108C4050058CCCA /* Wallet */,
+				AD055DA821B43C3B00BE511D /* WalletInvoiceOnly */,
 			);
 			path = Scenes;
 			sourceTree = "<group>";
@@ -1322,6 +1327,15 @@
 				ADA179BF2151509E001401F3 /* SectionHeaderView.xib */,
 			);
 			path = History;
+			sourceTree = "<group>";
+		};
+		AD055DA821B43C3B00BE511D /* WalletInvoiceOnly */ = {
+			isa = PBXGroup;
+			children = (
+				AD055DA921B43C6700BE511D /* WalletInvoiceOnly.storyboard */,
+				AD055DAB21B43C7600BE511D /* WalletInvoiceOnlyViewController.swift */,
+			);
+			path = WalletInvoiceOnly;
 			sourceTree = "<group>";
 		};
 		AD0D0BC0212BE36A00E4F7F7 /* Request */ = {
@@ -2272,6 +2286,7 @@
 				AD391CD520D16FE1007EE22A /* HistoryCell.xib in Resources */,
 				AD391C6120D16F7A007EE22A /* SelectWalletCreationMethodTableViewCell.xib in Resources */,
 				AD391C6320D16F89007EE22A /* Debug.storyboard in Resources */,
+				AD055DAA21B43C6700BE511D /* WalletInvoiceOnly.storyboard in Resources */,
 				AD7EDAE32108C4150058CCCA /* Wallet.storyboard in Resources */,
 				AD391C5020D16F7A007EE22A /* CreateWallet.storyboard in Resources */,
 				ADA3254421AD8D7900C5EAA2 /* Colors.xcassets in Resources */,
@@ -2775,6 +2790,7 @@
 				AD391C2C20D16EFA007EE22A /* String.swift in Sources */,
 				AD292F9020E69F0E00211AE7 /* AuthenticationViewModel.swift in Sources */,
 				ADA6BBBF211B3AEC00A1FF19 /* ScanRectView.swift in Sources */,
+				AD055DAC21B43C7600BE511D /* WalletInvoiceOnlyViewController.swift in Sources */,
 				AD391D1C20D174B4007EE22A /* RootCoordinator.swift in Sources */,
 				AD391C7420D16F89007EE22A /* QRCodeDetailViewController.swift in Sources */,
 				AD391C2D20D16EFA007EE22A /* UIAlertController.swift in Sources */,

@@ -55,7 +55,11 @@ final class MainCoordinator: Routing {
     }
     
     func walletViewController() -> UIViewController {
-        return UIStoryboard.instantiateWalletViewController(lightningService: lightningService, sendButtonTapped: presentSend, requestButtonTapped: presentRequest)
+        if ConnectionService.permissions.can(.write, domain: .onChain) {
+            return UIStoryboard.instantiateWalletViewController(lightningService: lightningService, sendButtonTapped: presentSend, requestButtonTapped: presentRequest)
+        } else {
+            return UIStoryboard.instantiateWalletInvoiceOnlyViewController(lightningService: lightningService)
+        }
     }
 
     func settingsViewController() -> UIViewController {
