@@ -21,11 +21,26 @@ extension UIStoryboard {
 }
 
 final class WalletInvoiceOnlyViewController: UIViewController {
+    @IBOutlet private weak var amountInputView: AmountInputView!
+    @IBOutlet private weak var createInvoiceButton: UIButton!
+    
     fileprivate var lightningService: LightningService?
 
     override func viewDidLoad() {
         super.viewDidLoad()
         
         view.backgroundColor = UIColor.Zap.background
+        
+        amountInputView.backgroundColor = UIColor.Zap.background
+        amountInputView.textColor = UIColor.Zap.white
+        amountInputView.addTarget(self, action: #selector(amountChanged(sender:)), for: .valueChanged)
+        
+        Style.Button.background.apply(to: createInvoiceButton)
+        
+        createInvoiceButton.setTitle("Create Invoice", for: .normal)
+    }
+    
+    @objc private func amountChanged(sender: AmountInputView) {
+//        viewModel.amount = sender.satoshis
     }
 }
