@@ -13,10 +13,10 @@ extension Info {
         static var testnet: Info {
             return Info(
                 alias: "test",
-                blockHeight: 124,
+                blockHeight: 124123,
                 isSyncedToChain: true,
                 network: .testnet,
-                pubKey: "",
+                pubKey: "123123",
                 activeChannelCount: 2,
                 bestHeaderDate: Date(),
                 uris: [],

@@ -72,13 +72,14 @@ public final class ConnectionService: NSObject {
         #endif
         
         guard let lightningService = LightningService(connection: connection) else { return }
-        self.lightningService = lightningService
-        lightningService.start()
         
         connectionTimeoutTimer = Timer.scheduledTimer(withTimeInterval: 3, repeats: false) { [weak self] _ in
             self?.connectionTimeoutTimer = nil
             self?.state.value = .noWallet
         }
+        
+        self.lightningService = lightningService
+        lightningService.start()
     }
     
     public func disconnect() {
