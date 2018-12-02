@@ -193,7 +193,7 @@ public enum ApiMockTemplate {
     case transactions
     case everything
     
-    public static let selected: ApiMockTemplate = .transactions
+    public static let selected: ApiMockTemplate = .everything
     
     public var instance: LightningApiProtocol {
         switch self {
@@ -219,7 +219,8 @@ public enum ApiMockTemplate {
             )
         case .everything:
             return LightningApiMock(
-                walletBalance: 4_200_000,
+                newAddress: BitcoinAddress.template,
+                walletBalance: 100000,
                 transactions: [
                     Transaction.template
                 ],
@@ -230,7 +231,8 @@ public enum ApiMockTemplate {
                     Channel.template
                 ],
                 decodePaymentRequest: PaymentRequest.Template.testnetFallback,
-                sendPayment: Payment.template
+                sendPayment: Payment.template,
+                addInvoice: "lntb1500n1pdhdgqjpp5g3rx8txesv7z5pd6pfyp4zqql9lq4cfqvm4d6eve8mwte0d7uydsdpa2fjkzep6yp8hq6twd9hkugz9v35hgmmjd9skcw3qgde8jur5dus9wmmvwejhxcqzysqwez4c6m2070ltq2mfz3ffc5chvwwq6q7tec2pmauths5wpng8ny24aq8gqtuj4w9jmprqt4y50ux27222nkmqfmlkulfr2h6swuqrgpj3ekm4"
             )
         }
     }
