@@ -112,13 +112,19 @@ final class WalletViewController: UIViewController {
     @objc private func updateGraphEvents() {
         guard let historyService = lightningService?.historyService else { return }
         
-        DispatchQueue.main.async {
-            self.graphContainer.subviews.first?.removeFromSuperview()
-            let graphDataSource = GraphViewDataSource(currentValue: 88951208, plottableEvents: historyService.userTransaction, currency: Bitcoin(unit: .bitcoin))
-            self.graphDataSource = graphDataSource
-            let graphView = GraphView(frame: self.graphContainer.bounds, dataSource: graphDataSource)
-            self.graphContainer.addSubview(graphView)
-        }
+        lightningService?.balanceService.total
+            .observeNext { [weak self] amount in
+                DispatchQueue.main.async {
+                    guard let graphContainer = self?.graphContainer else { return }
+                    
+                    graphContainer.subviews.first?.removeFromSuperview()
+                    let graphDataSource = GraphViewDataSource(currentValue: amount, plottableEvents: historyService.userTransaction, currency: Bitcoin(unit: .bitcoin))
+                    self?.graphDataSource = graphDataSource
+                    let graphView = GraphView(frame: graphContainer.bounds, dataSource: graphDataSource)
+                    graphContainer.addSubview(graphView)
+                }
+            }
+            .dispose(in: reactive.bag)
     }
     
     private func setupExchangeRateLabel() {

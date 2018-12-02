@@ -209,6 +209,7 @@ public enum ApiMockTemplate {
             return LightningApiMock(info: Info.Template.mainnet)
         case .transactions:
             return LightningApiMock(
+                walletBalance: 100000,
                 transactions: [
                     Transaction.template
                 ],
