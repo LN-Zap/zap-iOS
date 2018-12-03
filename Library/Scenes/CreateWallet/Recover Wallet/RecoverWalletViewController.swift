@@ -54,8 +54,7 @@ final class RecoverWalletViewController: UIViewController {
         recoverWalletViewModel?.recoverWallet(with: mnemonic) { [weak self] result in
             if let errorDescription = result.error?.localizedDescription {
                 DispatchQueue.main.async {
-                    let toast = Toast(message: errorDescription, style: .error)
-                    self?.presentToast(toast, animated: true, completion: nil)
+                    Toast.presentError(errorDescription)
                 }
             } else {
                 DispatchQueue.main.async {

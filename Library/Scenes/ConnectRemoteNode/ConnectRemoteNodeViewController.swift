@@ -116,8 +116,8 @@ final class ConnectRemoteNodeViewController: UIViewController {
     }
     
     private func displayError() {
-        DispatchQueue.main.async { [weak self] in
-            self?.presentErrorToast(L10n.Scene.ConnectRemoteNode.serverError)
+        DispatchQueue.main.async {
+            Toast.presentError(L10n.Scene.ConnectRemoteNode.serverError)
         }
     }
     
@@ -174,16 +174,16 @@ final class ConnectRemoteNodeViewController: UIViewController {
     
     private func paste() {
         if let pasteboardContent = UIPasteboard.general.string {
-            connectRemoteNodeViewModel?.pasteCertificates(pasteboardContent) { [weak self] result in
+            connectRemoteNodeViewModel?.pasteCertificates(pasteboardContent) { result in
                 switch result {
                 case .success:
-                    self?.presentSuccessToast(L10n.RpcConnectQrcodeError.codeUpdated)
+                    Toast.presentSuccess(L10n.RpcConnectQrcodeError.codeUpdated)
                 case .failure(let error):
-                    self?.presentErrorToast(error.localizedDescription)
+                    Toast.presentError(error.localizedDescription)
                 }
             }
         } else {
-            self.presentErrorToast(L10n.RpcConnectQrcodeError.cantReadQrcode)
+            Toast.presentError(L10n.RpcConnectQrcodeError.cantReadQrcode)
         }
     }
 }

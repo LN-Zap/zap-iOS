@@ -113,7 +113,7 @@ final class SendViewController: ModalDetailViewController {
             case .success:
                 self?.send()
             case .failure:
-                self?.presentErrorToast(L10n.Scene.Send.authenticationFailed)
+                Toast.presentError(L10n.Scene.Send.authenticationFailed)
             }
         }
     }
@@ -127,14 +127,10 @@ final class SendViewController: ModalDetailViewController {
                 case .success:
                     self?.dismissParent()
                 case .failure(let error):
-                    self?.presentErrorToast(error.localizedDescription)
+                    Toast.presentError(error.localizedDescription)
                 }
             }
         }
-    }
-    
-    override func presentErrorToast(_ message: String) {
-        view.superview?.presentErrorToast(message)
     }
     
     override func viewDidAppear(_ animated: Bool) {

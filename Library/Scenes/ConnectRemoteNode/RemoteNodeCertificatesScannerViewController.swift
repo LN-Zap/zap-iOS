@@ -50,7 +50,7 @@ final class RemoteNodeCertificatesScannerViewController: UIViewController {
                     self?.connectRemoteNodeViewModel?.remoteNodeConfiguration = configuration
                     self?.dismiss(animated: true, completion: nil)
                 case .failure(let error):
-                    self?.presentErrorToast(error.localizedDescription)
+                    Toast.presentError(error.localizedDescription)
                 }
             }
         }

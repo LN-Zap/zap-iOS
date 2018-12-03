@@ -181,7 +181,7 @@ final class RequestViewController: ModalDetailViewController {
                         self?.setHeaderImage(nil)
                     }
                 case .failure(let error):
-                    self?.view.superview?.presentErrorToast(error.localizedDescription)
+                    Toast.presentError(error.localizedDescription)
                 }
             }
         }

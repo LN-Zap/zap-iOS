@@ -119,17 +119,15 @@ final class ChannelDetailViewController: ModalDetailViewController {
     }
     
     private func dismissAfterClose(result: Result<CloseStatusUpdate>, loadingView: LoadingView?) {
-        let parent = presentingViewController
         loadingView?.removeFromSuperview()
         
         switch result {
         case .success:
             dismiss(animated: true) {
-                parent?.presentSuccessToast(L10n.Scene.Channels.CloseSuccess.toast)
+                Toast.presentSuccess(L10n.Scene.Channels.CloseSuccess.toast)
             }
         case .failure(let error):
-            parent?.presentErrorToast(error.localizedDescription)
-            
+            Toast.presentError(error.localizedDescription)
         }
     }
 }

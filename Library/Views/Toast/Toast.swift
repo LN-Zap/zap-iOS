@@ -7,13 +7,13 @@
 
 import UIKit
 
-enum ToastStyle: Int {
+private enum ToastStyle: Int {
     case info
     case error
     case success
 }
 
-final class Toast: UIView {
+private final class ToastView: UIView {
     @IBOutlet private weak var messageLabel: UILabel?
     
     let style: ToastStyle
@@ -81,22 +81,22 @@ final class Toast: UIView {
     }
 }
 
-extension UIView {
+private extension UIView {
     func presentErrorToast(_ message: String) {
         DispatchQueue.main.async {
-            let toast = Toast(message: message, style: .error)
+            let toast = ToastView(message: message, style: .error)
             self.presentToast(toast, animated: true, completion: nil)
         }
     }
     
     func presentSuccessToast(_ message: String) {
         DispatchQueue.main.async {
-            let toast = Toast(message: message, style: .success)
+            let toast = ToastView(message: message, style: .success)
             self.presentToast(toast, animated: true, completion: nil)
         }
     }
     
-    func presentToast(_ toast: Toast, animated: Bool, completion: ((Bool) -> Void)?) {
+    func presentToast(_ toast: ToastView, animated: Bool, completion: ((Bool) -> Void)?) {
         addAutolayoutSubview(toast)
         
         setupAutolayoutConstraints(forToast: toast)
@@ -112,7 +112,7 @@ extension UIView {
         }
     }
     
-    private func setupAutolayoutConstraints(forToast toast: Toast) {
+    private func setupAutolayoutConstraints(forToast toast: ToastView) {
         toast.translatesAutoresizingMaskIntoConstraints = false
         let layoutGuide: UILayoutGuide
         if #available(iOS 11.0, *) {
@@ -129,16 +129,12 @@ extension UIView {
     }
 }
 
-extension UIViewController {
-    @objc func presentErrorToast(_ message: String) {
-        view.presentErrorToast(message)
+enum Toast {
+    static func presentError(_ message: String) {
+        UIApplication.shared.windows.first?.presentErrorToast(message)
     }
     
-    func presentSuccessToast(_ message: String) {
-        view.presentSuccessToast(message)
-    }
-    
-    func presentToast(_ toast: Toast, animated: Bool, completion: ((Bool) -> Void)?) {
-        view.presentToast(toast, animated: animated, completion: completion)
+    static func presentSuccess(_ message: String) {
+        UIApplication.shared.windows.first?.presentSuccessToast(message)
     }
 }
