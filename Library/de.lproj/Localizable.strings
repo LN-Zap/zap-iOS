@@ -31,6 +31,9 @@
 "unit.bitcoin.bit" = "Bits";
 "unit.bitcoin.satoshi" = "Satoshis";
 
+"toast.invoice" = "Did receive %@";
+"toast.invoice_memo" = "Did receive %@ \"%@\"";
+
 "transaction.no_destination_address" = "Keine Ziel-Adresse";
 
 "view.amount_input.placeholder" = "Betrag";
