@@ -515,6 +515,17 @@ internal enum L10n {
     }
   }
 
+  internal enum Toast {
+    /// Did receive %@
+    internal static func invoice(_ p1: String) -> String {
+      return L10n.tr("Localizable", "toast.invoice", p1)
+    }
+    /// Did receive %@ "%@"
+    internal static func invoiceMemo(_ p1: String, _ p2: String) -> String {
+      return L10n.tr("Localizable", "toast.invoice_memo", p1, p2)
+    }
+  }
+
   internal enum Transaction {
     /// No destination address
     internal static let noDestinationAddress = L10n.tr("Localizable", "transaction.no_destination_address")

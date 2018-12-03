@@ -13,6 +13,11 @@ public final class RootCoordinator: NSObject, SetupCoordinatorDelegate, PinCoord
     private let connectionService: ConnectionService
     private let authenticationCoordinator: AuthenticationCoordinator
     private let backgroundCoordinator: BackgroundCoordinator
+    private let toastCoordinator: ToastCoordinator = {
+        let coordinator = ToastCoordinator()
+        coordinator.start()
+        return coordinator
+    }()
     
     private var currentCoordinator: Any?
     private var route: Route?
