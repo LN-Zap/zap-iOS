@@ -31,6 +31,9 @@
 "unit.bitcoin.bit" = "Bits";
 "unit.bitcoin.satoshi" = "聪";
 
+"toast.invoice" = "Did receive %@";
+"toast.invoice_memo" = "Did receive %@ \"%@\"";
+
 "transaction.no_destination_address" = "没有目标地址";
 
 "view.amount_input.placeholder" = "数量";
