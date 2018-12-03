@@ -40,12 +40,7 @@ final class EventDetailViewModel {
             result.append(contentsOf: blockExplorerButton(title: L10n.Scene.TransactionDetail.transactionIdLabel, code: event.channelEvent.txHash, type: .transactionId, delegate: delegate))
             
         case .createInvoiceEvent(let event):
-            result.append(contentsOf: headline(L10n.Scene.TransactionDetail.Title.lightningInvoice))
-            result.append(contentsOf: amountLabel(title: L10n.Scene.TransactionDetail.amountLabel, amount: event.amount))
-            result.append(contentsOf: label(title: L10n.Scene.TransactionDetail.memoLabel, content: event.memo))
-            result.append(contentsOf: dateLabel(title: L10n.Scene.TransactionDetail.dateLabel, date: event.date))
-            result.append(contentsOf: dateLabel(title: L10n.Scene.TransactionDetail.expiryLabel, date: event.expiry))
-            
+            return createInvoiceEvent(event: event)
         case .failedPaymentEvent(let event):
             result.append(contentsOf: headline(L10n.Scene.TransactionDetail.Title.failedPayment))
             result.append(contentsOf: amountLabel(title: L10n.Scene.TransactionDetail.amountLabel, amount: event.amount))
@@ -53,12 +48,51 @@ final class EventDetailViewModel {
             result.append(contentsOf: dateLabel(title: L10n.Scene.TransactionDetail.dateLabel, date: event.date))
             
         case .lightningPaymentEvent(let event):
-            result.append(contentsOf: headline(L10n.Scene.TransactionDetail.Title.paymentDetail))
-            result.append(contentsOf: label(title: L10n.Scene.TransactionDetail.memoLabel, content: event.memo))
-            result.append(contentsOf: amountLabel(title: L10n.Scene.TransactionDetail.amountLabel, amount: event.amount))
-            result.append(contentsOf: amountLabel(title: L10n.Scene.TransactionDetail.feeLabel, amount: event.fee))
-            result.append(contentsOf: dateLabel(title: L10n.Scene.TransactionDetail.dateLabel, date: event.date))
+            return lightningPaymentEvent(event: event)
         }
+        
+        return result
+    }
+
+    private func createInvoiceEvent(event: CreateInvoiceEvent) -> [StackViewElement] {
+        var result = [StackViewElement]()
+
+        result.append(contentsOf: headline(L10n.Scene.TransactionDetail.Title.lightningInvoice))
+        
+        if !event.isExpired,
+            let qrCodeImage = UIImage.qrCode(from: event.paymentRequest) {
+            let imageContainerView = UIView()
+            let imageView = UIImageView(image: qrCodeImage)
+            
+            imageContainerView.addAutolayoutSubview(imageView)
+            
+            NSLayoutConstraint.activate([
+                imageContainerView.heightAnchor.constraint(equalToConstant: 230),
+                imageView.topAnchor.constraint(equalTo: imageContainerView.topAnchor),
+                imageView.bottomAnchor.constraint(equalTo: imageContainerView.bottomAnchor),
+                imageView.widthAnchor.constraint(equalTo: imageContainerView.heightAnchor),
+                imageView.centerXAnchor.constraint(equalTo: imageContainerView.centerXAnchor)
+            ])
+            
+            result.append(.customView(imageContainerView))
+        }
+        
+        result.append(contentsOf: amountLabel(title: L10n.Scene.TransactionDetail.amountLabel, amount: event.amount))
+        result.append(contentsOf: label(title: L10n.Scene.TransactionDetail.memoLabel, content: event.memo))
+        result.append(contentsOf: dateLabel(title: L10n.Scene.TransactionDetail.dateLabel, date: event.date))
+        result.append(contentsOf: dateLabel(title: L10n.Scene.TransactionDetail.expiryLabel, date: event.expiry))
+        
+        return result
+    }
+    
+    private func lightningPaymentEvent(event: LightningPaymentEvent) -> [StackViewElement] {
+        var result = [StackViewElement]()
+
+        result.append(contentsOf: headline(L10n.Scene.TransactionDetail.Title.paymentDetail))
+        result.append(contentsOf: label(title: L10n.Scene.TransactionDetail.memoLabel, content: event.memo))
+        result.append(contentsOf: amountLabel(title: L10n.Scene.TransactionDetail.amountLabel, amount: event.amount))
+        result.append(contentsOf: amountLabel(title: L10n.Scene.TransactionDetail.feeLabel, amount: event.fee))
+        result.append(contentsOf: dateLabel(title: L10n.Scene.TransactionDetail.dateLabel, date: event.date))
         
         return result
     }

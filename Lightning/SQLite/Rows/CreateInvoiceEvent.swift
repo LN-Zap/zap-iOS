@@ -18,6 +18,10 @@ public struct CreateInvoiceEvent: Equatable, DateProvidingEvent {
     public let date: Date
     public let expiry: Date
     public let paymentRequest: String
+    
+    public var isExpired: Bool {
+        return expiry < Date()
+    }
 }
 
 extension CreateInvoiceEvent {
