@@ -11,4 +11,8 @@ enum Environment {
     static var useMockApi: Bool {
         return ProcessInfo.processInfo.environment["USE_MOCK_API"] == "1"
     }
+    
+    static var traceDB: Bool {
+        return ProcessInfo.processInfo.environment["TRACE_DB"] == "1"
+    }
 }
