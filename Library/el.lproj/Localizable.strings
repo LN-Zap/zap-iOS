@@ -164,6 +164,7 @@
 "scene.transaction_detail.transaction_id_label" = "Ταυτότητα συναλλαγής";
 "scene.transaction_detail.address_label" = "Διεύθυνση";
 "scene.transaction_detail.expiry_label" = "Λήξη";
+"scene.transaction_detail.expiry_label.expired" = "Expired";
 
 "scene.channel_detail.remote_pub_key_label" = "Απομακρυσμένο δημόσιο κλειδί (Remote PubKey)";
 "scene.channel_detail.local_balance_label" = "Τοπική ισορροπία";
