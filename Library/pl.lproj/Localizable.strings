@@ -164,6 +164,7 @@
 "scene.transaction_detail.transaction_id_label" = "ID transakcji";
 "scene.transaction_detail.address_label" = "Adres";
 "scene.transaction_detail.expiry_label" = "Czas wygaśniecia";
+"scene.transaction_detail.expiry_label.expired" = "Expired";
 
 "scene.channel_detail.remote_pub_key_label" = "Zdalny klucz publiczny";
 "scene.channel_detail.local_balance_label" = "Lokalne saldo";
