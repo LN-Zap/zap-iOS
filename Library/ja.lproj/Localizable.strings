@@ -164,6 +164,7 @@
 "scene.transaction_detail.transaction_id_label" = "トランザクションＩＤ";
 "scene.transaction_detail.address_label" = "アドレス";
 "scene.transaction_detail.expiry_label" = "有効期限";
+"scene.transaction_detail.expiry_label.expired" = "Expired";
 
 "scene.channel_detail.remote_pub_key_label" = "リモートのパブリックキー";
 "scene.channel_detail.local_balance_label" = "ローカルの残高";
