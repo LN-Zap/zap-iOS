@@ -164,6 +164,7 @@
 "scene.transaction_detail.transaction_id_label" = "ID transakcije";
 "scene.transaction_detail.address_label" = "Adresa";
 "scene.transaction_detail.expiry_label" = "Rok isteka";
+"scene.transaction_detail.expiry_label.expired" = "Expired";
 
 "scene.channel_detail.remote_pub_key_label" = "Udaljeni PubKey";
 "scene.channel_detail.local_balance_label" = "Lokalni saldo";
