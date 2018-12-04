@@ -92,7 +92,8 @@ lane :alpha do
   )
 
   upload_to_testflight(
-    username: ENV['ITUNESCONNECT_USER']
+    username: ENV['ITUNESCONNECT_USER'],
+    skip_waiting_for_build_processing: true
   )
 
   add_git_tag
