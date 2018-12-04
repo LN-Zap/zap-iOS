@@ -8,6 +8,7 @@
 import Bond
 import Foundation
 import Lightning
+import SwiftBTC
 import SwiftLnd
 
 final class ToastCoordinator: NSObject {
@@ -22,28 +23,25 @@ final class ToastCoordinator: NSObject {
                     else { return }
                 
                 if let invoice = transaction as? Invoice {
-                    ToastCoordinator.presentToast(for: invoice)
+                    ToastCoordinator.presentToast(satoshis: invoice.amount, memo: invoice.memo)
                 } else if let onChainTransaction = transaction as? SwiftLnd.Transaction {
-                    ToastCoordinator.presentToast(for: onChainTransaction)
+                    ToastCoordinator.presentToast(satoshis: onChainTransaction.amount)
                 }
                 
             }
             .dispose(in: reactive.bag)
     }
     
-    private static func presentToast(for invoice: Invoice) {
-        guard let amount = Settings.shared.primaryCurrency.value.format(satoshis: invoice.amount) else { return }
+    private static func presentToast(satoshis: Satoshi, memo: String? = nil) {
+        guard
+            satoshis > 0,
+            let amount = Settings.shared.primaryCurrency.value.format(satoshis: satoshis)
+            else { return }
         
-        if invoice.memo.isEmpty {
-            Toast.presentSuccess(L10n.Toast.invoice(amount))
+        if let memo = memo, !memo.isEmpty {
+            Toast.presentSuccess(L10n.Toast.invoiceMemo(amount, memo))
         } else {
-            Toast.presentSuccess(L10n.Toast.invoiceMemo(amount, invoice.memo))
+            Toast.presentSuccess(L10n.Toast.invoice(amount))
         }
-    }
-    
-    private static func presentToast(for transaction: Transaction) {
-        guard let amount = Settings.shared.primaryCurrency.value.format(satoshis: transaction.amount) else { return }
-
-        Toast.presentSuccess(L10n.Toast.invoice(amount))
     }
 }
