@@ -80,9 +80,33 @@ final class EventDetailViewModel {
         result.append(contentsOf: amountLabel(title: L10n.Scene.TransactionDetail.amountLabel, amount: event.amount))
         result.append(contentsOf: label(title: L10n.Scene.TransactionDetail.memoLabel, content: event.memo))
         result.append(contentsOf: dateLabel(title: L10n.Scene.TransactionDetail.dateLabel, date: event.date))
-        result.append(contentsOf: dateLabel(title: L10n.Scene.TransactionDetail.expiryLabel, date: event.expiry))
+        
+        let expiryLabel = UILabel()
+        Style.Label.body.apply(to: expiryLabel)
+        expiryLabel.font = UIFont.monospacedDigitSystemFont(ofSize: 17, weight: .light)
+        updateExpiryLabel(expiryLabel, expiry: event.expiry)
+        result.append(contentsOf: label(title: L10n.Scene.TransactionDetail.expiryLabel, element: .customView(expiryLabel)))
         
         return result
+    }
+    
+    private func updateExpiryLabel(_ label: UILabel, expiry: Date) {
+        let formatter = DateComponentsFormatter()
+        formatter.unitsStyle = .short
+        formatter.includesTimeRemainingPhrase = true
+        formatter.zeroFormattingBehavior = .dropLeading
+        formatter.maximumUnitCount = 2
+        
+        let timer = Timer.scheduledTimer(withTimeInterval: 1, repeats: true) {
+            let timeRemaining = expiry.timeIntervalSinceNow
+            if timeRemaining < 0 {
+                $0.invalidate()
+                label.text = L10n.Scene.TransactionDetail.ExpiryLabel.expired
+            } else {
+                label.text = formatter.string(from: timeRemaining)
+            }
+        }
+        timer.fire()
     }
     
     private func lightningPaymentEvent(event: LightningPaymentEvent) -> [StackViewElement] {

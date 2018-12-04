@@ -496,6 +496,10 @@ internal enum L10n {
       internal static let memoLabel = L10n.tr("Localizable", "scene.transaction_detail.memo_label")
       /// Transaction ID
       internal static let transactionIdLabel = L10n.tr("Localizable", "scene.transaction_detail.transaction_id_label")
+      internal enum ExpiryLabel {
+        /// Expired
+        internal static let expired = L10n.tr("Localizable", "scene.transaction_detail.expiry_label.expired")
+      }
       internal enum Title {
         /// Channel Event
         internal static let channelEventDetail = L10n.tr("Localizable", "scene.transaction_detail.title.channel_event_detail")
