@@ -164,6 +164,7 @@
 "scene.transaction_detail.transaction_id_label" = "ID de la transacción";
 "scene.transaction_detail.address_label" = "Dirección";
 "scene.transaction_detail.expiry_label" = "Caducidad";
+"scene.transaction_detail.expiry_label.expired" = "Expired";
 
 "scene.channel_detail.remote_pub_key_label" = "Clave pública";
 "scene.channel_detail.local_balance_label" = "Balance local";
