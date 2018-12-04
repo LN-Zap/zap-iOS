@@ -14,7 +14,8 @@
 
 "rpc_connect_qrcode_error.btc_pay_expired" = "נראה שתוקף הקוד פג.";
 "rpc_connect_qrcode_error.btc_pay_configuration_broken" = "לא היתה אפשרות לקרוא את קובץ ההגדרות BTCPay.";
-"rpc_connect_qrcode_error.cant_read_qrcode" = "אין אפשרות להתחבר לקוד.";
+"rpc_connect_qrcode_error.cant_read_qrcode" = "Invalid code format.";
+"rpc_connect_qrcode_error.code_updated" = "Connection updated.";
 
 "channel.state.active" = "מקוון";
 "channel.state.inactive" = "לא מקוון ";
@@ -22,13 +23,16 @@
 "channel.state.closing" = "סוגר";
 "channel.state.force_closing" = "כפה סגירה";
 
-"network.type.testnet" = "Testnet";
-"network.type.mainnet" = "Mainnet";
+"network_type.testnet" = "Testnet";
+"network_type.mainnet" = "Mainnet";
 
 "unit.bitcoin.btc" = "ביטקוין";
 "unit.bitcoin.mbtc" = "מילי ביטקוין";
 "unit.bitcoin.bit" = "ביטס";
 "unit.bitcoin.satoshi" = "סטושיס";
+
+"toast.invoice" = "Did receive %@";
+"toast.invoice_memo" = "Did receive %@ \"%@\"";
 
 "transaction.no_destination_address" = "No destination address";
 
@@ -47,7 +51,11 @@
 "scene.settings.item.on_chain_request_address.p2sh" = "P2SH";
 "scene.settings.item.manage_channels" = "Manage Channels";
 "scene.settings.item.node_uri" = "Node URI";
-"scene.settings.item.remove_remote_node" = "איפוס תצורת node מרחוק";
+"scene.settings.item.remove_remote_node" = "Reset Remote Node Connection";
+"scene.settings.item.remove_remote_node.confirmation.title" = "Disconnect Remote Node?";
+"scene.settings.item.remove_remote_node.confirmation.message" = "You will have to reconnect to your node afterwards.";
+"scene.settings.item.remove_remote_node.confirmation.button" = "Disconnect";
+
 "scene.settings.item.change_pin" = "Change Pin";
 "scene.settings.item.report_issue" = "דווח על תקלה";
 "scene.settings.item.help" = "צריך עזרה?";
@@ -66,9 +74,8 @@
 "scene.channels.close.message" = "אתה בטוח שברצונך לסגור את הערוץ עם node %@?";
 "scene.channels.force_close.title" = "כפה את סגירת הערוץ";
 "scene.channels.force_close.message" = "%@ מנותק, האם אתם בטוחים כי ברצונכם לכפות את סגירת הערוץ? אתם תצטרכו לחכות בערך %@ עבור הכספים שלכם?";
-"scene.channels.alert.cancel" = "בטל";
-"scene.channels.alert.close" = "סגור";
-"scene.channels.alert.force_close" = "כפה סגירה";
+"scene.channels.alert.close" = "Close Channel";
+"scene.channels.alert.force_close" = "Force Close Channel";
 "scene.channels.close_loading_view" = "Closing Channel";
 "scene.channels.close_success.toast" = "הערות נסגר.";
 
@@ -206,3 +213,7 @@
 "scene.node_uri.title" = "Connect to Node";
 "scene.node_uri.alias_label" = "Alias";
 "scene.node_uri.uri_label" = "URI";
+
+"scene.connect_node_uri.action_sheet.title" = "Connect";
+"scene.connect_node_uri.action_sheet.connect_button" = "Connect";
+"scene.connect_node_uri.action_sheet.message" = "Do you really want to connect to node at %@?";

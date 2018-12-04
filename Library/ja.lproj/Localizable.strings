@@ -14,7 +14,8 @@
 
 "rpc_connect_qrcode_error.btc_pay_expired" = "コードは期限切れのようです。";
 "rpc_connect_qrcode_error.btc_pay_configuration_broken" = "BTCPayの設定ファイルを読み取ることができません。";
-"rpc_connect_qrcode_error.cant_read_qrcode" = "このコードには接続できません。";
+"rpc_connect_qrcode_error.cant_read_qrcode" = "Invalid code format.";
+"rpc_connect_qrcode_error.code_updated" = "Connection updated.";
 
 "channel.state.active" = "オンライン";
 "channel.state.inactive" = "オフライン";
@@ -22,13 +23,16 @@
 "channel.state.closing" = "閉鎖中";
 "channel.state.force_closing" = "強制閉鎖";
 
-"network.type.testnet" = "テストネット";
-"network.type.mainnet" = "メインネット";
+"network_type.testnet" = "Testnet";
+"network_type.mainnet" = "Mainnet";
 
 "unit.bitcoin.btc" = "Bitcoin";
 "unit.bitcoin.mbtc" = "Milli Bitcoin";
 "unit.bitcoin.bit" = "Bits";
 "unit.bitcoin.satoshi" = "Satoshis";
+
+"toast.invoice" = "Did receive %@";
+"toast.invoice_memo" = "Did receive %@ \"%@\"";
 
 "transaction.no_destination_address" = "No destination address";
 
@@ -47,7 +51,11 @@
 "scene.settings.item.on_chain_request_address.p2sh" = "P2SH";
 "scene.settings.item.manage_channels" = "Manage Channels";
 "scene.settings.item.node_uri" = "Node URI";
-"scene.settings.item.remove_remote_node" = "リモートノードの設定をリセットします。";
+"scene.settings.item.remove_remote_node" = "Reset Remote Node Connection";
+"scene.settings.item.remove_remote_node.confirmation.title" = "Disconnect Remote Node?";
+"scene.settings.item.remove_remote_node.confirmation.message" = "You will have to reconnect to your node afterwards.";
+"scene.settings.item.remove_remote_node.confirmation.button" = "Disconnect";
+
 "scene.settings.item.change_pin" = "Change Pin";
 "scene.settings.item.report_issue" = "問題を報告します。";
 "scene.settings.item.help" = "ヘルプが必要ですか。";
@@ -66,9 +74,8 @@
 "scene.channels.close.message" = "ノード %@ とチャネルを本当に終了しますか。";
 "scene.channels.force_close.title" = "チャンネルの強制終了";
 "scene.channels.force_close.message" = "%@ はオフラインですが、このチャネルを強制終了してもよろしいですか。あなたの資金の %@ に関して待たなければなりません。";
-"scene.channels.alert.cancel" = "キャンセル";
-"scene.channels.alert.close" = "閉鎖";
-"scene.channels.alert.force_close" = "強制閉鎖";
+"scene.channels.alert.close" = "Close Channel";
+"scene.channels.alert.force_close" = "Force Close Channel";
 "scene.channels.close_loading_view" = "Closing Channel";
 "scene.channels.close_success.toast" = "チャネルは閉じています。";
 
@@ -206,3 +213,7 @@
 "scene.node_uri.title" = "Connect to Node";
 "scene.node_uri.alias_label" = "Alias";
 "scene.node_uri.uri_label" = "URI";
+
+"scene.connect_node_uri.action_sheet.title" = "Connect";
+"scene.connect_node_uri.action_sheet.connect_button" = "Connect";
+"scene.connect_node_uri.action_sheet.message" = "Do you really want to connect to node at %@?";
