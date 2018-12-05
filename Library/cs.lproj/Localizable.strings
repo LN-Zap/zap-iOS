@@ -59,6 +59,7 @@
 "scene.settings.item.change_pin" = "Change Pin";
 "scene.settings.item.report_issue" = "Report an Issue";
 "scene.settings.item.help" = "Need Help?";
+"scene.settings.item.privacy_policy" = "Privacy Policy";
 
 "scene.request.title" = "Receive";
 "scene.request.lightning_button" = "Lightning";
