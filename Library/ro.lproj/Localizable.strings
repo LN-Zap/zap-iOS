@@ -59,6 +59,7 @@
 "scene.settings.item.change_pin" = "Change Pin";
 "scene.settings.item.report_issue" = "Raportaţi o problemă";
 "scene.settings.item.help" = "Ai nevoie de ajutor?";
+"scene.settings.item.privacy_policy" = "Privacy Policy";
 
 "scene.request.title" = "Primeste";
 "scene.request.lightning_button" = "Lightning\n";
