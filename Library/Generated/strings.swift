@@ -419,6 +419,8 @@ internal enum L10n {
         internal static let manageChannels = L10n.tr("Localizable", "scene.settings.item.manage_channels")
         /// Node URI
         internal static let nodeUri = L10n.tr("Localizable", "scene.settings.item.node_uri")
+        /// Privacy Policy
+        internal static let privacyPolicy = L10n.tr("Localizable", "scene.settings.item.privacy_policy")
         /// Reset Remote Node Connection
         internal static let removeRemoteNode = L10n.tr("Localizable", "scene.settings.item.remove_remote_node")
         /// Report an Issue
