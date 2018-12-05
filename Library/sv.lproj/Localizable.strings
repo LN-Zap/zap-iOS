@@ -59,6 +59,7 @@
 "scene.settings.item.change_pin" = "Change Pin";
 "scene.settings.item.report_issue" = "Rapportera ett problem";
 "scene.settings.item.help" = "Behöver du hjälp?";
+"scene.settings.item.privacy_policy" = "Privacy Policy";
 
 "scene.request.title" = "Ta emot";
 "scene.request.lightning_button" = "Lightning";
