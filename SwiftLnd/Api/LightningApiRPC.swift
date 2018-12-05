@@ -142,7 +142,7 @@ public final class LightningApiRPC: LightningApiProtocol {
                 let error = LndApiError.localizedError(errorMessage)
                 completion(.failure(error))
             } else if let sendResponse = response {
-                completion(.success(Payment(paymentRequest: paymentRequest, sendResponse: sendResponse)))
+                completion(.success(Payment(paymentRequest: paymentRequest, sendResponse: sendResponse, amount: amount)))
             } else if let statusMessage = error.statusMessage {
                 completion(.failure(LndApiError.localizedError(statusMessage)))
             } else {

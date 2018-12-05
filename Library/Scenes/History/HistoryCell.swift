@@ -216,7 +216,7 @@ final class HistoryCell: BondTableViewCell {
     
     func setLightningPaymentEvent(_ lightningPaymentEvent: LightningPaymentEvent) {
         let title: String
-        if lightningPaymentEvent.amount < 0 {
+        if lightningPaymentEvent.amount <= 0 {
             title = L10n.Scene.History.Cell.paymentSent
         } else {
             title = L10n.Scene.History.Cell.paymentReceived

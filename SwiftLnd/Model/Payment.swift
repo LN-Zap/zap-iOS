@@ -27,9 +27,13 @@ extension Payment {
         destination = payment.path.last ?? ""
     }
     
-    init(paymentRequest: PaymentRequest, sendResponse: Lnrpc_SendResponse) {
+    init(paymentRequest: PaymentRequest, sendResponse: Lnrpc_SendResponse, amount: Satoshi? = nil) {
         id = paymentRequest.paymentHash
-        amount = -paymentRequest.amount
+        if let amount = amount {
+            self.amount = -amount
+        } else {
+            self.amount = -paymentRequest.amount
+        }
         date = paymentRequest.date
         fees = Satoshi(sendResponse.paymentRoute.totalFees)
         paymentHash = paymentRequest.paymentHash
