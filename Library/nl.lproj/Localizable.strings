@@ -59,6 +59,7 @@
 "scene.settings.item.change_pin" = "Verander pincode";
 "scene.settings.item.report_issue" = "Een probleem melden";
 "scene.settings.item.help" = "Hulp nodig?";
+"scene.settings.item.privacy_policy" = "Privacy Policy";
 
 "scene.request.title" = "Ontvangen";
 "scene.request.lightning_button" = "Lightning";
