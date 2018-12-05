@@ -59,6 +59,7 @@
 "scene.settings.item.change_pin" = "Change Pin";
 "scene.settings.item.report_issue" = "Rapporter et problem";
 "scene.settings.item.help" = "Brug for hjælp?";
+"scene.settings.item.privacy_policy" = "Privacy Policy";
 
 "scene.request.title" = "Modtag";
 "scene.request.lightning_button" = "Lightning";
