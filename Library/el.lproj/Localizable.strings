@@ -59,6 +59,7 @@
 "scene.settings.item.change_pin" = "Change Pin";
 "scene.settings.item.report_issue" = "Αναφέρετε ένα πρόβλημα";
 "scene.settings.item.help" = "Χρειάζεστε βοήθεια;";
+"scene.settings.item.privacy_policy" = "Privacy Policy";
 
 "scene.request.title" = "Λάβετε";
 "scene.request.lightning_button" = "Lightning";
