@@ -59,6 +59,7 @@
 "scene.settings.item.change_pin" = "Change Pin";
 "scene.settings.item.report_issue" = "דווח על תקלה";
 "scene.settings.item.help" = "צריך עזרה?";
+"scene.settings.item.privacy_policy" = "Privacy Policy";
 
 "scene.request.title" = "קבל";
 "scene.request.lightning_button" = "Lightning";
