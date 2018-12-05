@@ -20,7 +20,7 @@ public struct Payment: Equatable {
 extension Payment {
     init(payment: Lnrpc_Payment) {
         id = payment.paymentHash
-        amount = Satoshi(-payment.value)
+        amount = Satoshi(-payment.valueSat)
         date = Date(timeIntervalSince1970: TimeInterval(payment.creationDate))
         fees = Satoshi(payment.fee)
         paymentHash = payment.paymentHash
