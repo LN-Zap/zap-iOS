@@ -59,6 +59,7 @@
 "scene.settings.item.change_pin" = "Promijeni Pin";
 "scene.settings.item.report_issue" = "Prijavi problem";
 "scene.settings.item.help" = "Trebate li pomoć?";
+"scene.settings.item.privacy_policy" = "Privacy Policy";
 
 "scene.request.title" = "Primanje";
 "scene.request.lightning_button" = "Munja";
