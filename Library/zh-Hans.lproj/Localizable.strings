@@ -59,6 +59,7 @@
 "scene.settings.item.change_pin" = "更改 Pin码";
 "scene.settings.item.report_issue" = "报告问题";
 "scene.settings.item.help" = "需要帮助吗？";
+"scene.settings.item.privacy_policy" = "Privacy Policy";
 
 "scene.request.title" = "收款";
 "scene.request.lightning_button" = "闪电";
