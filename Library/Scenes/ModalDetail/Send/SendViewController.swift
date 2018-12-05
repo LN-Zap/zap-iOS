@@ -39,7 +39,7 @@ final class SendViewController: ModalDetailViewController {
         
         addAmountInputView()
         
-        if let memo = viewModel.memo {
+        if let memo = viewModel.memo, !memo.isEmpty {
             contentStackView.addArrangedElement(.verticalStackView(content: [
                 .label(text: L10n.Scene.Send.memoHeadline, style: Style.Label.headline),
                 .label(text: memo, style: Style.Label.body)
