@@ -240,7 +240,7 @@
 		ADADAD952143B3C900A48E1F /* rpc.grpc.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD0D933320C822C300E30C51 /* rpc.grpc.swift */; };
 		ADADAD962143B3C900A48E1F /* rpc.pb.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD0D933220C822C300E30C51 /* rpc.pb.swift */; };
 		ADADAD972143B3C900A48E1F /* LndApiError.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0D3C97C20616AB80015C5D7 /* LndApiError.swift */; };
-		ADADAD982143B3C900A48E1F /* ProtobufExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADBA4424209B067400D18B71 /* ProtobufExtensions.swift */; };
+		ADADAD982143B3C900A48E1F /* Protobuf+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADBA4424209B067400D18B71 /* Protobuf+Extensions.swift */; };
 		ADADAD992143B3C900A48E1F /* Result.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0D3C96B205FCBF40015C5D7 /* Result.swift */; };
 		ADADAD9A2143B3C900A48E1F /* StreamCallback.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADBA4422209B00D300D18B71 /* StreamCallback.swift */; };
 		ADADAD9B2143B3C900A48E1F /* LightningApiMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADBB36232080A457005662B4 /* LightningApiMock.swift */; };
@@ -785,7 +785,7 @@
 		ADBA120520930C94001F7700 /* UIViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIViewController.swift; sourceTree = "<group>"; };
 		ADBA4420209AE75600D18B71 /* LightningApiStream.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LightningApiStream.swift; sourceTree = "<group>"; };
 		ADBA4422209B00D300D18B71 /* StreamCallback.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StreamCallback.swift; sourceTree = "<group>"; };
-		ADBA4424209B067400D18B71 /* ProtobufExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProtobufExtensions.swift; sourceTree = "<group>"; };
+		ADBA4424209B067400D18B71 /* Protobuf+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Protobuf+Extensions.swift"; sourceTree = "<group>"; };
 		ADBB361F207FA5D6005662B4 /* Date+Localizable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Date+Localizable.swift"; sourceTree = "<group>"; };
 		ADBB36212080A3B1005662B4 /* LightningApiProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LightningApiProtocol.swift; sourceTree = "<group>"; };
 		ADBB36232080A457005662B4 /* LightningApiMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LightningApiMock.swift; sourceTree = "<group>"; };
@@ -1490,7 +1490,6 @@
 			isa = PBXGroup;
 			children = (
 				A0D3C97C20616AB80015C5D7 /* LndApiError.swift */,
-				ADBA4424209B067400D18B71 /* ProtobufExtensions.swift */,
 				A0D3C96B205FCBF40015C5D7 /* Result.swift */,
 				ADBA4422209B00D300D18B71 /* StreamCallback.swift */,
 			);
@@ -1527,6 +1526,7 @@
 			isa = PBXGroup;
 			children = (
 				AD79E421219D90E2002589CA /* Data+Extensions.swift */,
+				ADBA4424209B067400D18B71 /* Protobuf+Extensions.swift */,
 				AD79E423219D90EF002589CA /* String+Extensions.swift */,
 			);
 			path = Extensions;
@@ -2951,7 +2951,7 @@
 			files = (
 				AD055DA721B14A4300BE511D /* Permissions.swift in Sources */,
 				AD79E422219D90E2002589CA /* Data+Extensions.swift in Sources */,
-				ADADAD982143B3C900A48E1F /* ProtobufExtensions.swift in Sources */,
+				ADADAD982143B3C900A48E1F /* Protobuf+Extensions.swift in Sources */,
 				ADADAD882143B3C900A48E1F /* Channel.swift in Sources */,
 				ADADAD932143B3C900A48E1F /* Success.swift in Sources */,
 				ADADAD8B2143B3C900A48E1F /* CloseStatusUpdate.swift in Sources */,
