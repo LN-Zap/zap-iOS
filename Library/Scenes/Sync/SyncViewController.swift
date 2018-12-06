@@ -35,7 +35,7 @@ final class SyncViewController: UIViewController {
     fileprivate var lightningService: LightningService?
     fileprivate weak var delegate: SyncDelegate?
 
-    private var initialHeight: Int?
+    private var syncPercentageEstimator: SyncPercentageEstimator?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -82,18 +82,17 @@ final class SyncViewController: UIViewController {
     private func setupBindings() {
         guard let lightningService = lightningService else { fatalError("viewModel not set.") }
 
-        let percentSignal = combineLatest(lightningService.infoService.blockHeight, lightningService.infoService.blockChainHeight) { [weak self] syncedBlockHeigh, maxBlockHeight -> Double in
-            if self?.initialHeight == nil {
-                self?.initialHeight = syncedBlockHeigh
-            }
-            
+        let percentSignal = combineLatest(lightningService.infoService.blockHeight, lightningService.infoService.bestHeaderDate, lightningService.infoService.blockChainHeight) { [weak self] lndBlockHeigh, lndHeaderDate, maxBlockHeight -> Double in
             guard
-                let maxBlockHeight = maxBlockHeight,
-                let initialHeight = self?.initialHeight,
-                maxBlockHeight - initialHeight > 0
+                let lndHeaderDate = lndHeaderDate,
+                let maxBlockHeight = maxBlockHeight
                 else { return 0 }
             
-            return Double(syncedBlockHeigh - initialHeight) / Double(maxBlockHeight - initialHeight)
+            if self?.syncPercentageEstimator == nil {
+                self?.syncPercentageEstimator = SyncPercentageEstimator(initialLndBlockHeight: lndBlockHeigh, initialHeaderDate: lndHeaderDate)
+            }
+            
+            return self?.syncPercentageEstimator?.percentage(lndBlockHeight: lndBlockHeigh, lndHeaderDate: lndHeaderDate, maxBlockHeight: maxBlockHeight) ?? 0
         }
         
         percentSignal
