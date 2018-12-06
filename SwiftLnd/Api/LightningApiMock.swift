@@ -139,7 +139,7 @@ final class LightningApiMock: LightningApiProtocol {
         completion(Result(value: decodePaymentRequest, error: LndApiError.unknownError))
     }
     
-    func sendPayment(_ paymentRequest: PaymentRequest, amount: Satoshi?, maxFee: Satoshi?, completion: @escaping (Result<Payment>) -> Void) {
+    func sendPayment(_ paymentRequest: PaymentRequest, amount: Satoshi?, completion: @escaping (Result<Payment>) -> Void) {
         completion(Result(value: sendPayment, error: LndApiError.unknownError))
     }
     

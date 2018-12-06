@@ -174,9 +174,7 @@ final class SendViewModel {
                 let fee = optionalFee
                 else { return }
             
-            let maxFee = min(fee * 2, 100)
-            
-            lightningService.transactionService.sendPayment(paymentRequest, amount: amount, maxFee: maxFee, completion: completion)
+            lightningService.transactionService.sendPayment(paymentRequest, amount: amount, completion: completion)
         case .onChain(let bitcoinURI):
             lightningService.transactionService.sendCoins(bitcoinURI: bitcoinURI, amount: amount, completion: completion)
         }

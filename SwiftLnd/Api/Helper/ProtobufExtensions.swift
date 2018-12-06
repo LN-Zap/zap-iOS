@@ -71,14 +71,10 @@ extension Lnrpc_SendCoinsRequest {
 }
 
 extension Lnrpc_SendRequest {
-    init(paymentRequest: String, amount: Satoshi?, maxFee: Satoshi?) {
+    init(paymentRequest: String, amount: Satoshi?) {
         self.paymentRequest = paymentRequest
         if let amount = amount {
             self.amt = Int64(truncating: amount as NSDecimalNumber)
-        }
-        if let maxFee = maxFee {
-            self.feeLimit = Lnrpc_FeeLimit()
-            self.feeLimit.fixed = Int64(truncating: maxFee as NSDecimalNumber)
         }
     }
 }
