@@ -86,9 +86,7 @@ final class LightningApiMock: LightningApiProtocol {
     }
     
     func info(completion: @escaping (Result<Info>) -> Void) {
-        DispatchQueue.main.asyncAfter(deadline: .now() + 1) { [info] in
-            completion(Result(value: info, error: LndApiError.unknownError))
-        }
+        completion(Result(value: info, error: LndApiError.unknownError))
     }
     
     func nodeInfo(pubKey: String, completion: @escaping (Result<NodeInfo>) -> Void) {
