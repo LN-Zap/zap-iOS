@@ -57,7 +57,6 @@ final class SendViewModel {
     var amount: Satoshi? {
         didSet {
             guard oldValue != amount else { return }
-            needsFeeUpdate = true
             updateLightningFee()
             updateSendButtonEnabled()
         }
@@ -72,7 +71,6 @@ final class SendViewModel {
     let memo: String?
     let sendButtonEnabled = Observable(false)
     let validRange: ClosedRange<Satoshi>?
-    var needsFeeUpdate = true
     
     private let lightningService: LightningService
     
@@ -123,27 +121,18 @@ final class SendViewModel {
     }
     
     private var isSendButtonEnabled: Bool {
-        guard isAmountValid && !isSending else { return false }
-        
-        switch method {
-        case .onChain:
-            return true
-        case .lightning:
-            return !needsFeeUpdate
-        }
+        return isAmountValid && !isSending
     }
     
     private func updateLightningFee() {
         guard case .lightning = method else { return }
         
         if isAmountValid {
-            needsFeeUpdate = true
             lightningFee.value = .loading
             updateSendButtonEnabled()
             debounceFetchFee()
         } else {
             lightningFee.value = .element(nil)
-            needsFeeUpdate = false
         }
     }
     
@@ -156,7 +145,6 @@ final class SendViewModel {
         lightningService.transactionService.upperBoundLightningFees(for: paymentRequest, amount: amount) { [weak self] in
             guard $0.value?.amount == self?.amount else { return }
             
-            self?.needsFeeUpdate = false
             self?.lightningFee.value = .element($0.value?.fee)
             self?.updateSendButtonEnabled()
         }
@@ -169,11 +157,6 @@ final class SendViewModel {
         
         switch method {
         case .lightning(let paymentRequest):
-            guard
-                case .element(let optionalFee) = lightningFee.value,
-                let fee = optionalFee
-                else { return }
-            
             lightningService.transactionService.sendPayment(paymentRequest, amount: amount, completion: completion)
         case .onChain(let bitcoinURI):
             lightningService.transactionService.sendCoins(bitcoinURI: bitcoinURI, amount: amount, completion: completion)
