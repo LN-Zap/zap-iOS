@@ -6,7 +6,6 @@
 //
 
 import Foundation
-import SwiftGRPC
 
 public enum Result<Value>: CustomStringConvertible, CustomDebugStringConvertible {
     case success(Value)
@@ -67,30 +66,35 @@ public enum Result<Value>: CustomStringConvertible, CustomDebugStringConvertible
 
 /// Helper methods to create `Result` objects from grpc results
 
-func result<T, U>(_ completion: @escaping (Result<U>) -> Void, map: @escaping (T) -> U?) -> (T?, CallResult) -> Void {
-    return { (response: T?, callResult: CallResult) in
+func result<T, U>(_ completion: @escaping (Result<U>) -> Void, map: @escaping (T) -> U?) -> (T?, Error?) -> Void {
+    return { (response: T?, error: Error?) in
         if let response = response,
             let value = map(response) {
             completion(.success(value))
-        } else if !callResult.success {
-            switch callResult.statusCode {
-            case .unavailable:
+        } else if let error = error as NSError? {
+            switch error.code {
+            case 12:
+                print(LndApiError.walletEncrypted)
+                completion(.failure(LndApiError.walletEncrypted))
+            case 13:
+                print(LndApiError.lndNotRunning)
+                completion(.failure(LndApiError.lndNotRunning))
+            case 14:
                 print(LndApiError.noInternet)
                 completion(.failure(LndApiError.noInternet))
             default:
-                if let statusMessage = callResult.statusMessage {
-                    print(statusMessage)
-                    completion(.failure(LndApiError.localizedError(statusMessage)))
-                } else {
-                    completion(.failure(LndApiError.unknownError))
-                }
+                print(error)
+                completion(.failure(error))
             }
-        } else if let statusMessage = callResult.statusMessage {
-            print(LndApiError.localizedError, callResult)
-            completion(.failure(LndApiError.localizedError(statusMessage)))
         } else {
-            print(LndApiError.unknownError, callResult)
+            print(LndApiError.unknownError)
             completion(.failure(LndApiError.unknownError))
         }
+    }
+}
+
+func eventResult<T, U>(_ completion: @escaping (Result<U>) -> Void, map: @escaping (T) -> U?) -> (Bool, T?, Error?) -> Void {
+    return { (_, response: T?, error: Error?) in
+        result(completion, map: map)(response, error)
     }
 }

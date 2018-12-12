@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import LndRpc
 import SwiftBTC
 
 public struct Info {
@@ -21,7 +22,7 @@ public struct Info {
 }
 
 extension Info {
-    init(getInfoResponse: Lnrpc_GetInfoResponse) {
+    init(getInfoResponse: LNDGetInfoResponse) {
         alias = getInfoResponse.alias
         blockHeight = Int(getInfoResponse.blockHeight)
         isSyncedToChain = getInfoResponse.syncedToChain
@@ -29,7 +30,10 @@ extension Info {
         pubKey = getInfoResponse.identityPubkey
         activeChannelCount = Int(getInfoResponse.numActiveChannels)
         bestHeaderDate = Date(timeIntervalSince1970: TimeInterval(getInfoResponse.bestHeaderTimestamp))
-        uris = getInfoResponse.uris.compactMap { URL(string: $0) }
+        uris = getInfoResponse.urisArray.compactMap {
+            guard let string = $0 as? String else { return nil }
+            return URL(string: string)
+        }
         version = getInfoResponse.version
     }
 }

@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import LndRpc
 
 public enum CloseType: String, Codable {
     case cooperativeClose
@@ -16,7 +17,7 @@ public enum CloseType: String, Codable {
     case unknown
     case abandoned
     
-    init(closeType: Lnrpc_ChannelCloseSummary.ClosureType) {
+    init(closeType: LNDChannelCloseSummary_ClosureType) {
         switch closeType {
         case .cooperativeClose:
             self = .cooperativeClose
@@ -30,7 +31,7 @@ public enum CloseType: String, Codable {
             self = .fundingCanceled
         case .abandoned:
             self = .abandoned
-        case .UNRECOGNIZED:
+        case .gpbUnrecognizedEnumeratorValue:
             self = .unknown
         }
     }
@@ -44,12 +45,12 @@ public struct ChannelCloseSummary {
     public let closeHeight: Int
     public let openHeight: Int
     
-    init(channelCloseSummary: Lnrpc_ChannelCloseSummary) {
+    init(channelCloseSummary: LNDChannelCloseSummary) {
         closingTxHash = channelCloseSummary.closingTxHash
         channelPoint = ChannelPoint(string: channelCloseSummary.channelPoint)
         remotePubKey = channelCloseSummary.remotePubkey
         closeType = CloseType(closeType: channelCloseSummary.closeType)
         closeHeight = Int(channelCloseSummary.closeHeight)
-        openHeight = Int(channelCloseSummary.chanID >> 40)
+        openHeight = Int(channelCloseSummary.chanId >> 40)
     }
 }

@@ -10,9 +10,11 @@
 		06964E41305B7D03EBE8FA90 /* Pods_Apps_Zap.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FD4B9DC86DF22C7E3A0D0D2A /* Pods_Apps_Zap.framework */; };
 		08E29D7A0F0BE1F8AAAD918A /* Pods_LibraryTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D7C97B83ED0A6BC3D1F41C90 /* Pods_LibraryTests.framework */; };
 		23EB3FE59E32D9FA64EAD578 /* Pods_LightningTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C1F7C2690D031E4764FB9055 /* Pods_LightningTests.framework */; };
+		2C25AE213993704350303083 /* Pods_RPC_SwiftLnd.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5AB6B9E1D7A62260EA3C4694 /* Pods_RPC_SwiftLnd.framework */; };
 		3C57543D314F7FC992894D0A /* Pods_SwiftLndTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 214E4841C1E4B8F74C2435F2 /* Pods_SwiftLndTests.framework */; };
 		5FC5D426F7846BE33B76F86B /* Pods_Lightning.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E9285C9D958086409E19ABBE /* Pods_Lightning.framework */; };
 		63898AC6745FFBCA15ADE9FB /* Pods_Apps_ZapPos.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 75C8A75D3CCBA0B09A875AD4 /* Pods_Apps_ZapPos.framework */; };
+		6951A9627419B934267A2C6E /* Pods_RPC_Lightning.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9D299DFFB8B79022CFE64798 /* Pods_RPC_Lightning.framework */; };
 		8EF96BCDD8DA8EA53847228A /* Pods_SwiftLnd.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 56F9802CD861078A576345EB /* Pods_SwiftLnd.framework */; };
 		A02C9FC2202F5BDC009821B1 /* LocalAuthentication.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A02C9FC1202F5BDC009821B1 /* LocalAuthentication.framework */; };
 		A0A05A032013CF960007D1C9 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0A05A022013CF960007D1C9 /* AppDelegate.swift */; };
@@ -237,8 +239,6 @@
 		ADADAD922143B3C900A48E1F /* Peer.swift in Sources */ = {isa = PBXBuildFile; fileRef = A024B84C201606B4002B8897 /* Peer.swift */; };
 		ADADAD932143B3C900A48E1F /* Success.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD967FF521072D2C0048085B /* Success.swift */; };
 		ADADAD942143B3C900A48E1F /* TestingTemplates.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADBB36282080B2AE005662B4 /* TestingTemplates.swift */; };
-		ADADAD952143B3C900A48E1F /* rpc.grpc.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD0D933320C822C300E30C51 /* rpc.grpc.swift */; };
-		ADADAD962143B3C900A48E1F /* rpc.pb.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD0D933220C822C300E30C51 /* rpc.pb.swift */; };
 		ADADAD972143B3C900A48E1F /* LndApiError.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0D3C97C20616AB80015C5D7 /* LndApiError.swift */; };
 		ADADAD982143B3C900A48E1F /* Protobuf+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADBA4424209B067400D18B71 /* Protobuf+Extensions.swift */; };
 		ADADAD992143B3C900A48E1F /* Result.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0D3C96B205FCBF40015C5D7 /* Result.swift */; };
@@ -315,6 +315,7 @@
 		ADFEFA7120E628AC00FE1557 /* Lightning.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AD536BE620E62763002279BC /* Lightning.framework */; };
 		ADFEFA7920E62B1800FE1557 /* BlockChainHeightUpdater.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0D3C97F20629B9D0015C5D7 /* BlockChainHeightUpdater.swift */; };
 		D1443AA50FF452CE2F5EC248 /* Pods_Library.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F61CE75D40EFF0419D27C1E7 /* Pods_Library.framework */; };
+		DE87E9BA6F267B3D9A105EFB /* Pods_RPC_Library.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F6E259D67512261AEBD33C66 /* Pods_RPC_Library.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -458,43 +459,30 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
-		174991A27BDA7ED3F838C608 /* Pods-BTCUtil.debugremote.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BTCUtil.debugremote.xcconfig"; path = "Pods/Target Support Files/Pods-BTCUtil/Pods-BTCUtil.debugremote.xcconfig"; sourceTree = "<group>"; };
-		1A358AA2F4BA8374481F47D6 /* Pods-SwiftLnd.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SwiftLnd.debug.xcconfig"; path = "Pods/Target Support Files/Pods-SwiftLnd/Pods-SwiftLnd.debug.xcconfig"; sourceTree = "<group>"; };
-		1AE76001D3BA1FB7EC5FD10C /* Pods-ZapMessages.debuglocal.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ZapMessages.debuglocal.xcconfig"; path = "Pods/Target Support Files/Pods-ZapMessages/Pods-ZapMessages.debuglocal.xcconfig"; sourceTree = "<group>"; };
-		1F81C1A423D4B1E1F9360639 /* Pods-ZapMessages.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ZapMessages.release.xcconfig"; path = "Pods/Target Support Files/Pods-ZapMessages/Pods-ZapMessages.release.xcconfig"; sourceTree = "<group>"; };
+		11E8813790C1675DD81B329D /* Pods-RPC-SwiftLnd.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RPC-SwiftLnd.debug.xcconfig"; path = "Pods/Target Support Files/Pods-RPC-SwiftLnd/Pods-RPC-SwiftLnd.debug.xcconfig"; sourceTree = "<group>"; };
 		214E4841C1E4B8F74C2435F2 /* Pods_SwiftLndTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_SwiftLndTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		288CF259342CAC95A0EAA817 /* Pods-LightningTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-LightningTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-LightningTests/Pods-LightningTests.debug.xcconfig"; sourceTree = "<group>"; };
 		28B09F5BBB5C815D4A339E2F /* Pods-Apps-Zap.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Apps-Zap.release.xcconfig"; path = "Pods/Target Support Files/Pods-Apps-Zap/Pods-Apps-Zap.release.xcconfig"; sourceTree = "<group>"; };
-		2A2A0ED75FE363C785C2EB84 /* Pods-ZapPos.debugremote.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ZapPos.debugremote.xcconfig"; path = "Pods/Target Support Files/Pods-ZapPos/Pods-ZapPos.debugremote.xcconfig"; sourceTree = "<group>"; };
 		2C134ADC780F681B19061C4A /* Pods-SwiftLndTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SwiftLndTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-SwiftLndTests/Pods-SwiftLndTests.debug.xcconfig"; sourceTree = "<group>"; };
-		3441446DFC7B1DCD11C0A9EA /* Pods-ZapTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ZapTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-ZapTests/Pods-ZapTests.release.xcconfig"; sourceTree = "<group>"; };
+		2EE5E96B589EFA6A3004772B /* Pods-RPC-Lightning.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RPC-Lightning.release.xcconfig"; path = "Pods/Target Support Files/Pods-RPC-Lightning/Pods-RPC-Lightning.release.xcconfig"; sourceTree = "<group>"; };
+		305EEE890017B0878DCC745C /* Pods-RPC-Lightning.debugremote.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RPC-Lightning.debugremote.xcconfig"; path = "Pods/Target Support Files/Pods-RPC-Lightning/Pods-RPC-Lightning.debugremote.xcconfig"; sourceTree = "<group>"; };
 		3A662AA2D8D33E9D5788572F /* Pods-Apps-Zap.debugremote.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Apps-Zap.debugremote.xcconfig"; path = "Pods/Target Support Files/Pods-Apps-Zap/Pods-Apps-Zap.debugremote.xcconfig"; sourceTree = "<group>"; };
 		3C4692A89D2AD955D504F0F4 /* Pods-LightningTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-LightningTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-LightningTests/Pods-LightningTests.release.xcconfig"; sourceTree = "<group>"; };
 		3C5866ED76D02ECD42F3BBE2 /* Pods-Apps-ZapPos.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Apps-ZapPos.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Apps-ZapPos/Pods-Apps-ZapPos.debug.xcconfig"; sourceTree = "<group>"; };
-		459E9F08A5E1CA4E35D40A9D /* Pods-btcutil.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-btcutil.debug.xcconfig"; path = "Pods/Target Support Files/Pods-btcutil/Pods-btcutil.debug.xcconfig"; sourceTree = "<group>"; };
-		47F37722955C52DD8ED46E9A /* Pods-ZapMessages.debugremote.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ZapMessages.debugremote.xcconfig"; path = "Pods/Target Support Files/Pods-ZapMessages/Pods-ZapMessages.debugremote.xcconfig"; sourceTree = "<group>"; };
 		4B478E59E8868815D21CBB06 /* Pods-Apps-ZapPos.debugremote.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Apps-ZapPos.debugremote.xcconfig"; path = "Pods/Target Support Files/Pods-Apps-ZapPos/Pods-Apps-ZapPos.debugremote.xcconfig"; sourceTree = "<group>"; };
-		4C3201DB6F9E61135DF52550 /* Pods-Lightning.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Lightning.release.xcconfig"; path = "Pods/Target Support Files/Pods-Lightning/Pods-Lightning.release.xcconfig"; sourceTree = "<group>"; };
-		55E4DAEC1E111F55B133FB63 /* Pods-Zap.debugremote.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Zap.debugremote.xcconfig"; path = "Pods/Target Support Files/Pods-Zap/Pods-Zap.debugremote.xcconfig"; sourceTree = "<group>"; };
 		56F9802CD861078A576345EB /* Pods_SwiftLnd.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_SwiftLnd.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		5BA7F4159E2F4430CC396CC9 /* Pods-ZapShared.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ZapShared.debug.xcconfig"; path = "Pods/Target Support Files/Pods-ZapShared/Pods-ZapShared.debug.xcconfig"; sourceTree = "<group>"; };
+		5AB6B9E1D7A62260EA3C4694 /* Pods_RPC_SwiftLnd.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_RPC_SwiftLnd.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		5C826A64BE73E1840B51D2FA /* Pods-LibraryTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-LibraryTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-LibraryTests/Pods-LibraryTests.debug.xcconfig"; sourceTree = "<group>"; };
 		5CF03FAC4BD4C35AC36271E9 /* Pods-Apps-Zap.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Apps-Zap.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Apps-Zap/Pods-Apps-Zap.debug.xcconfig"; sourceTree = "<group>"; };
-		5D12676DE05D34DF53BFED4D /* Pods-Library.debuglocal.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Library.debuglocal.xcconfig"; path = "Pods/Target Support Files/Pods-Library/Pods-Library.debuglocal.xcconfig"; sourceTree = "<group>"; };
 		5D5C5CE7761D71EF939E02A2 /* Pods-SwiftLndTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SwiftLndTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-SwiftLndTests/Pods-SwiftLndTests.release.xcconfig"; sourceTree = "<group>"; };
 		5F25AE24ABB1EE4C8BA3A9B1 /* Pods-LightningTests.debugremote.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-LightningTests.debugremote.xcconfig"; path = "Pods/Target Support Files/Pods-LightningTests/Pods-LightningTests.debugremote.xcconfig"; sourceTree = "<group>"; };
-		6A284164D7EB6F7A8649DC59 /* Pods-Library.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Library.release.xcconfig"; path = "Pods/Target Support Files/Pods-Library/Pods-Library.release.xcconfig"; sourceTree = "<group>"; };
+		6DA2D9173B4F24C37BDC826B /* Pods-RPC-SwiftLnd.debugremote.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RPC-SwiftLnd.debugremote.xcconfig"; path = "Pods/Target Support Files/Pods-RPC-SwiftLnd/Pods-RPC-SwiftLnd.debugremote.xcconfig"; sourceTree = "<group>"; };
 		6E4840991E5C8581D6D62A34 /* Pods_ZapMessages.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ZapMessages.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		75C8A75D3CCBA0B09A875AD4 /* Pods_Apps_ZapPos.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Apps_ZapPos.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		77F58E5A3EF38A6D39C4A95E /* Pods-Lightning.debuglocal.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Lightning.debuglocal.xcconfig"; path = "Pods/Target Support Files/Pods-Lightning/Pods-Lightning.debuglocal.xcconfig"; sourceTree = "<group>"; };
-		7CDE05914FE5150C977488E9 /* Pods-SwiftLnd.debugremote.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SwiftLnd.debugremote.xcconfig"; path = "Pods/Target Support Files/Pods-SwiftLnd/Pods-SwiftLnd.debugremote.xcconfig"; sourceTree = "<group>"; };
-		7CE8A04FCACE10A7B0FACAE7 /* Pods-btcutil.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-btcutil.release.xcconfig"; path = "Pods/Target Support Files/Pods-btcutil/Pods-btcutil.release.xcconfig"; sourceTree = "<group>"; };
-		8516AF5591FBC5D9D27FA5F2 /* Pods-Lightning.debugremote.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Lightning.debugremote.xcconfig"; path = "Pods/Target Support Files/Pods-Lightning/Pods-Lightning.debugremote.xcconfig"; sourceTree = "<group>"; };
-		8523FC0BE0EA7D00977CBF93 /* Pods-ZapLightning.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ZapLightning.release.xcconfig"; path = "Pods/Target Support Files/Pods-ZapLightning/Pods-ZapLightning.release.xcconfig"; sourceTree = "<group>"; };
-		853E07500DD4084FD1B0C434 /* Pods-Library.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Library.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Library/Pods-Library.debug.xcconfig"; sourceTree = "<group>"; };
+		7CECC9910DF52C68966AE47C /* Pods-RPC-Library.debugremote.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RPC-Library.debugremote.xcconfig"; path = "Pods/Target Support Files/Pods-RPC-Library/Pods-RPC-Library.debugremote.xcconfig"; sourceTree = "<group>"; };
+		7FDFCD8F7AE5251F12F847A7 /* Pods-RPC-Lightning.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RPC-Lightning.debug.xcconfig"; path = "Pods/Target Support Files/Pods-RPC-Lightning/Pods-RPC-Lightning.debug.xcconfig"; sourceTree = "<group>"; };
 		9146B1D669788162678A41A8 /* Pods-Apps-ZapPos.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Apps-ZapPos.release.xcconfig"; path = "Pods/Target Support Files/Pods-Apps-ZapPos/Pods-Apps-ZapPos.release.xcconfig"; sourceTree = "<group>"; };
-		92F22D865D02B474D402AEFA /* Pods-ZapShared.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ZapShared.release.xcconfig"; path = "Pods/Target Support Files/Pods-ZapShared/Pods-ZapShared.release.xcconfig"; sourceTree = "<group>"; };
-		9E40535BA6897B78691F297F /* Pods-ZapPos.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ZapPos.release.xcconfig"; path = "Pods/Target Support Files/Pods-ZapPos/Pods-ZapPos.release.xcconfig"; sourceTree = "<group>"; };
+		9D299DFFB8B79022CFE64798 /* Pods_RPC_Lightning.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_RPC_Lightning.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		9EC2E1672FBE02668AF94B5F /* Pods_Zap.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Zap.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		A01009382014BE460001EF94 /* Channel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Channel.swift; sourceTree = "<group>"; };
 		A010093B2014CEE40001EF94 /* OpenStatusUpdate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OpenStatusUpdate.swift; sourceTree = "<group>"; };
@@ -572,17 +560,12 @@
 		A0F57DC1201E700C003AFA66 /* HistoryViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistoryViewModel.swift; sourceTree = "<group>"; };
 		A0F9AEE0206E3D8200E93DCA /* InputNumberFormatter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InputNumberFormatter.swift; sourceTree = "<group>"; };
 		A0F9AEE2206E3E0300E93DCA /* InputNumberFormatterTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InputNumberFormatterTests.swift; sourceTree = "<group>"; };
-		A11A24FE43F9B6412A85C0C8 /* Pods-Library.debugremote.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Library.debugremote.xcconfig"; path = "Pods/Target Support Files/Pods-Library/Pods-Library.debugremote.xcconfig"; sourceTree = "<group>"; };
-		A2EA9EBABE9A17490B3E282A /* Pods-BTCUtil.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BTCUtil.release.xcconfig"; path = "Pods/Target Support Files/Pods-BTCUtil/Pods-BTCUtil.release.xcconfig"; sourceTree = "<group>"; };
-		A8517E12ED19329B536B9504 /* Pods-Lightning.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Lightning.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Lightning/Pods-Lightning.debug.xcconfig"; sourceTree = "<group>"; };
 		AD035BFA2174A030005EA785 /* ChannelTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChannelTableViewCell.swift; sourceTree = "<group>"; };
 		AD035BFB2174A030005EA785 /* ChannelTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ChannelTableViewCell.xib; sourceTree = "<group>"; };
 		AD035BFE2174A996005EA785 /* ChannelDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChannelDetailViewController.swift; sourceTree = "<group>"; };
 		AD055DA621B14A4300BE511D /* Permissions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Permissions.swift; sourceTree = "<group>"; };
 		AD055DAD21B5416D00BE511D /* ToastCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToastCoordinator.swift; sourceTree = "<group>"; };
 		AD0D0BC1212BE3C800E4F7F7 /* RequestViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RequestViewController.swift; sourceTree = "<group>"; };
-		AD0D933220C822C300E30C51 /* rpc.pb.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = rpc.pb.swift; sourceTree = "<group>"; };
-		AD0D933320C822C300E30C51 /* rpc.grpc.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = rpc.grpc.swift; sourceTree = "<group>"; };
 		AD10D04B21132A6000A0F0D3 /* LaunchScreen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = LaunchScreen.storyboard; sourceTree = "<group>"; };
 		AD10D05B21132F1800A0F0D3 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
 		AD10D05D21132F3500A0F0D3 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
@@ -869,26 +852,19 @@
 		ADFE537B20D693F500B3BA2A /* LibraryTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = LibraryTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		ADFE537F20D693F500B3BA2A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		ADFEFA7320E6294000FE1557 /* OnChainRequestAddressType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnChainRequestAddressType.swift; sourceTree = "<group>"; };
-		AE22E81B1B7AD6C27F3D49BD /* Pods-Zap.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Zap.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Zap/Pods-Zap.debug.xcconfig"; sourceTree = "<group>"; };
-		BC4EA10F2797F1F9E22BE4D6 /* Pods-ZapPos.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ZapPos.debug.xcconfig"; path = "Pods/Target Support Files/Pods-ZapPos/Pods-ZapPos.debug.xcconfig"; sourceTree = "<group>"; };
+		B6C7354B34602FE7103C8435 /* Pods-RPC-Library.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RPC-Library.release.xcconfig"; path = "Pods/Target Support Files/Pods-RPC-Library/Pods-RPC-Library.release.xcconfig"; sourceTree = "<group>"; };
 		C1F7C2690D031E4764FB9055 /* Pods_LightningTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_LightningTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		CAD12A67577C1815DFBA2A40 /* Pods-SwiftLnd.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SwiftLnd.release.xcconfig"; path = "Pods/Target Support Files/Pods-SwiftLnd/Pods-SwiftLnd.release.xcconfig"; sourceTree = "<group>"; };
+		C6A38DB0D23007E1ACC38654 /* Pods-RPC-Library.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RPC-Library.debug.xcconfig"; path = "Pods/Target Support Files/Pods-RPC-Library/Pods-RPC-Library.debug.xcconfig"; sourceTree = "<group>"; };
 		CB4F7AA4190DBCB391F4E3CD /* Pods-LibraryTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-LibraryTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-LibraryTests/Pods-LibraryTests.release.xcconfig"; sourceTree = "<group>"; };
-		CCFC255EDBA08ADC6BE71105 /* Pods-SwiftLnd.debuglocal.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SwiftLnd.debuglocal.xcconfig"; path = "Pods/Target Support Files/Pods-SwiftLnd/Pods-SwiftLnd.debuglocal.xcconfig"; sourceTree = "<group>"; };
 		D0CC5A2CEE212ABADB92F878 /* Pods-LibraryTests.debugremote.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-LibraryTests.debugremote.xcconfig"; path = "Pods/Target Support Files/Pods-LibraryTests/Pods-LibraryTests.debugremote.xcconfig"; sourceTree = "<group>"; };
-		D5AFA4B63CC23943951C157C /* Pods-Zap.debuglocal.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Zap.debuglocal.xcconfig"; path = "Pods/Target Support Files/Pods-Zap/Pods-Zap.debuglocal.xcconfig"; sourceTree = "<group>"; };
 		D7C97B83ED0A6BC3D1F41C90 /* Pods_LibraryTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_LibraryTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		D8CE14830DF79132FBA7CD83 /* Pods_BTCUtil.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_BTCUtil.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		DB877056D2A1225EA035E012 /* Pods-Zap.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Zap.release.xcconfig"; path = "Pods/Target Support Files/Pods-Zap/Pods-Zap.release.xcconfig"; sourceTree = "<group>"; };
-		DC890C8992F5662C3A5E9EA6 /* Pods-BTCUtil.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BTCUtil.debug.xcconfig"; path = "Pods/Target Support Files/Pods-BTCUtil/Pods-BTCUtil.debug.xcconfig"; sourceTree = "<group>"; };
+		DCB9AB32B383D377B581302A /* Pods-RPC-SwiftLnd.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RPC-SwiftLnd.release.xcconfig"; path = "Pods/Target Support Files/Pods-RPC-SwiftLnd/Pods-RPC-SwiftLnd.release.xcconfig"; sourceTree = "<group>"; };
 		DD0EC32C194019FB720CCB54 /* Pods_ZapPos.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ZapPos.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		E3BE6BB9493F613496AADE60 /* Pods-SwiftLndTests.debugremote.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SwiftLndTests.debugremote.xcconfig"; path = "Pods/Target Support Files/Pods-SwiftLndTests/Pods-SwiftLndTests.debugremote.xcconfig"; sourceTree = "<group>"; };
-		E66FF4DCFB880404F52431E9 /* Pods-BTCUtil.debuglocal.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BTCUtil.debuglocal.xcconfig"; path = "Pods/Target Support Files/Pods-BTCUtil/Pods-BTCUtil.debuglocal.xcconfig"; sourceTree = "<group>"; };
 		E9285C9D958086409E19ABBE /* Pods_Lightning.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Lightning.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		F3523D67A3D3207EEFAB691A /* Pods-ZapLightning.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ZapLightning.debug.xcconfig"; path = "Pods/Target Support Files/Pods-ZapLightning/Pods-ZapLightning.debug.xcconfig"; sourceTree = "<group>"; };
 		F61CE75D40EFF0419D27C1E7 /* Pods_Library.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Library.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		F628F8A8AB7C31776F8A8C90 /* Pods-ZapTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ZapTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-ZapTests/Pods-ZapTests.debug.xcconfig"; sourceTree = "<group>"; };
-		FC5C7787B1879C9186703020 /* Pods-ZapMessages.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ZapMessages.debug.xcconfig"; path = "Pods/Target Support Files/Pods-ZapMessages/Pods-ZapMessages.debug.xcconfig"; sourceTree = "<group>"; };
+		F6E259D67512261AEBD33C66 /* Pods_RPC_Library.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_RPC_Library.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		FD4B9DC86DF22C7E3A0D0D2A /* Pods_Apps_Zap.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Apps_Zap.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -911,6 +887,7 @@
 			files = (
 				ADFEFA7120E628AC00FE1557 /* Lightning.framework in Frameworks */,
 				D1443AA50FF452CE2F5EC248 /* Pods_Library.framework in Frameworks */,
+				DE87E9BA6F267B3D9A105EFB /* Pods_RPC_Library.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -920,6 +897,7 @@
 			files = (
 				ADFB36D32143B66300146FCC /* SwiftLnd.framework in Frameworks */,
 				5FC5D426F7846BE33B76F86B /* Pods_Lightning.framework in Frameworks */,
+				6951A9627419B934267A2C6E /* Pods_RPC_Lightning.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -937,6 +915,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				8EF96BCDD8DA8EA53847228A /* Pods_SwiftLnd.framework in Frameworks */,
+				2C25AE213993704350303083 /* Pods_RPC_SwiftLnd.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -974,38 +953,6 @@
 		79BED151A3179927B0FEA963 /* Pods */ = {
 			isa = PBXGroup;
 			children = (
-				AE22E81B1B7AD6C27F3D49BD /* Pods-Zap.debug.xcconfig */,
-				DB877056D2A1225EA035E012 /* Pods-Zap.release.xcconfig */,
-				F628F8A8AB7C31776F8A8C90 /* Pods-ZapTests.debug.xcconfig */,
-				3441446DFC7B1DCD11C0A9EA /* Pods-ZapTests.release.xcconfig */,
-				459E9F08A5E1CA4E35D40A9D /* Pods-btcutil.debug.xcconfig */,
-				7CE8A04FCACE10A7B0FACAE7 /* Pods-btcutil.release.xcconfig */,
-				DC890C8992F5662C3A5E9EA6 /* Pods-BTCUtil.debug.xcconfig */,
-				A2EA9EBABE9A17490B3E282A /* Pods-BTCUtil.release.xcconfig */,
-				5BA7F4159E2F4430CC396CC9 /* Pods-ZapShared.debug.xcconfig */,
-				92F22D865D02B474D402AEFA /* Pods-ZapShared.release.xcconfig */,
-				FC5C7787B1879C9186703020 /* Pods-ZapMessages.debug.xcconfig */,
-				1F81C1A423D4B1E1F9360639 /* Pods-ZapMessages.release.xcconfig */,
-				F3523D67A3D3207EEFAB691A /* Pods-ZapLightning.debug.xcconfig */,
-				8523FC0BE0EA7D00977CBF93 /* Pods-ZapLightning.release.xcconfig */,
-				A8517E12ED19329B536B9504 /* Pods-Lightning.debug.xcconfig */,
-				4C3201DB6F9E61135DF52550 /* Pods-Lightning.release.xcconfig */,
-				853E07500DD4084FD1B0C434 /* Pods-Library.debug.xcconfig */,
-				6A284164D7EB6F7A8649DC59 /* Pods-Library.release.xcconfig */,
-				E66FF4DCFB880404F52431E9 /* Pods-BTCUtil.debuglocal.xcconfig */,
-				5D12676DE05D34DF53BFED4D /* Pods-Library.debuglocal.xcconfig */,
-				77F58E5A3EF38A6D39C4A95E /* Pods-Lightning.debuglocal.xcconfig */,
-				D5AFA4B63CC23943951C157C /* Pods-Zap.debuglocal.xcconfig */,
-				1AE76001D3BA1FB7EC5FD10C /* Pods-ZapMessages.debuglocal.xcconfig */,
-				1A358AA2F4BA8374481F47D6 /* Pods-SwiftLnd.debug.xcconfig */,
-				CCFC255EDBA08ADC6BE71105 /* Pods-SwiftLnd.debuglocal.xcconfig */,
-				CAD12A67577C1815DFBA2A40 /* Pods-SwiftLnd.release.xcconfig */,
-				174991A27BDA7ED3F838C608 /* Pods-BTCUtil.debugremote.xcconfig */,
-				A11A24FE43F9B6412A85C0C8 /* Pods-Library.debugremote.xcconfig */,
-				8516AF5591FBC5D9D27FA5F2 /* Pods-Lightning.debugremote.xcconfig */,
-				7CDE05914FE5150C977488E9 /* Pods-SwiftLnd.debugremote.xcconfig */,
-				55E4DAEC1E111F55B133FB63 /* Pods-Zap.debugremote.xcconfig */,
-				47F37722955C52DD8ED46E9A /* Pods-ZapMessages.debugremote.xcconfig */,
 				5C826A64BE73E1840B51D2FA /* Pods-LibraryTests.debug.xcconfig */,
 				D0CC5A2CEE212ABADB92F878 /* Pods-LibraryTests.debugremote.xcconfig */,
 				CB4F7AA4190DBCB391F4E3CD /* Pods-LibraryTests.release.xcconfig */,
@@ -1015,15 +962,21 @@
 				2C134ADC780F681B19061C4A /* Pods-SwiftLndTests.debug.xcconfig */,
 				E3BE6BB9493F613496AADE60 /* Pods-SwiftLndTests.debugremote.xcconfig */,
 				5D5C5CE7761D71EF939E02A2 /* Pods-SwiftLndTests.release.xcconfig */,
-				BC4EA10F2797F1F9E22BE4D6 /* Pods-ZapPos.debug.xcconfig */,
-				2A2A0ED75FE363C785C2EB84 /* Pods-ZapPos.debugremote.xcconfig */,
-				9E40535BA6897B78691F297F /* Pods-ZapPos.release.xcconfig */,
 				5CF03FAC4BD4C35AC36271E9 /* Pods-Apps-Zap.debug.xcconfig */,
 				3A662AA2D8D33E9D5788572F /* Pods-Apps-Zap.debugremote.xcconfig */,
 				28B09F5BBB5C815D4A339E2F /* Pods-Apps-Zap.release.xcconfig */,
 				3C5866ED76D02ECD42F3BBE2 /* Pods-Apps-ZapPos.debug.xcconfig */,
 				4B478E59E8868815D21CBB06 /* Pods-Apps-ZapPos.debugremote.xcconfig */,
 				9146B1D669788162678A41A8 /* Pods-Apps-ZapPos.release.xcconfig */,
+				C6A38DB0D23007E1ACC38654 /* Pods-RPC-Library.debug.xcconfig */,
+				7CECC9910DF52C68966AE47C /* Pods-RPC-Library.debugremote.xcconfig */,
+				B6C7354B34602FE7103C8435 /* Pods-RPC-Library.release.xcconfig */,
+				7FDFCD8F7AE5251F12F847A7 /* Pods-RPC-Lightning.debug.xcconfig */,
+				305EEE890017B0878DCC745C /* Pods-RPC-Lightning.debugremote.xcconfig */,
+				2EE5E96B589EFA6A3004772B /* Pods-RPC-Lightning.release.xcconfig */,
+				11E8813790C1675DD81B329D /* Pods-RPC-SwiftLnd.debug.xcconfig */,
+				6DA2D9173B4F24C37BDC826B /* Pods-RPC-SwiftLnd.debugremote.xcconfig */,
+				DCB9AB32B383D377B581302A /* Pods-RPC-SwiftLnd.release.xcconfig */,
 			);
 			name = Pods;
 			sourceTree = "<group>";
@@ -1547,8 +1500,6 @@
 			isa = PBXGroup;
 			children = (
 				ADA3253321A701E700C5EAA2 /* MacaroonId.pb.swift */,
-				AD0D933320C822C300E30C51 /* rpc.grpc.swift */,
-				AD0D933220C822C300E30C51 /* rpc.pb.swift */,
 			);
 			path = Generated;
 			sourceTree = "<group>";
@@ -1930,6 +1881,9 @@
 				DD0EC32C194019FB720CCB54 /* Pods_ZapPos.framework */,
 				FD4B9DC86DF22C7E3A0D0D2A /* Pods_Apps_Zap.framework */,
 				75C8A75D3CCBA0B09A875AD4 /* Pods_Apps_ZapPos.framework */,
+				F6E259D67512261AEBD33C66 /* Pods_RPC_Library.framework */,
+				9D299DFFB8B79022CFE64798 /* Pods_RPC_Lightning.framework */,
+				5AB6B9E1D7A62260EA3C4694 /* Pods_RPC_SwiftLnd.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -2402,6 +2356,14 @@
 				"${BUILT_PRODUCTS_DIR}/BigInt/BigInt.framework",
 				"${BUILT_PRODUCTS_DIR}/SipHash/SipHash.framework",
 				"${BUILT_PRODUCTS_DIR}/SwiftBTC/SwiftBTC.framework",
+				"${BUILT_PRODUCTS_DIR}/BoringSSL-GRPC/openssl_grpc.framework",
+				"${BUILT_PRODUCTS_DIR}/LndRpc/LndRpc.framework",
+				"${BUILT_PRODUCTS_DIR}/Protobuf/Protobuf.framework",
+				"${BUILT_PRODUCTS_DIR}/gRPC/GRPCClient.framework",
+				"${BUILT_PRODUCTS_DIR}/gRPC-Core/grpc.framework",
+				"${BUILT_PRODUCTS_DIR}/gRPC-ProtoRPC/ProtoRPC.framework",
+				"${BUILT_PRODUCTS_DIR}/gRPC-RxLibrary/RxLibrary.framework",
+				"${BUILT_PRODUCTS_DIR}/nanopb/nanopb.framework",
 				"${BUILT_PRODUCTS_DIR}/Bond/Bond.framework",
 				"${BUILT_PRODUCTS_DIR}/Differ/Differ.framework",
 				"${BUILT_PRODUCTS_DIR}/KeychainAccess/KeychainAccess.framework",
@@ -2415,6 +2377,14 @@
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/BigInt.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SipHash.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SwiftBTC.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/openssl_grpc.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/LndRpc.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Protobuf.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GRPCClient.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/grpc.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/ProtoRPC.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RxLibrary.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/nanopb.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Bond.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Differ.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/KeychainAccess.framework",
@@ -2437,7 +2407,7 @@
 			);
 			name = "[CP] Check Pods Manifest.lock";
 			outputPaths = (
-				"$(DERIVED_FILE_DIR)/Pods-SwiftLnd-checkManifestLockResult.txt",
+				"$(DERIVED_FILE_DIR)/Pods-RPC-SwiftLnd-checkManifestLockResult.txt",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -2455,7 +2425,7 @@
 			);
 			name = "[CP] Check Pods Manifest.lock";
 			outputPaths = (
-				"$(DERIVED_FILE_DIR)/Pods-Lightning-checkManifestLockResult.txt",
+				"$(DERIVED_FILE_DIR)/Pods-RPC-Lightning-checkManifestLockResult.txt",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -2472,34 +2442,42 @@
 				"${BUILT_PRODUCTS_DIR}/BigInt/BigInt.framework",
 				"${BUILT_PRODUCTS_DIR}/SipHash/SipHash.framework",
 				"${BUILT_PRODUCTS_DIR}/SwiftBTC/SwiftBTC.framework",
-				"${BUILT_PRODUCTS_DIR}/BoringSSL/openssl.framework",
-				"${BUILT_PRODUCTS_DIR}/SwiftGRPC/SwiftGRPC.framework",
+				"${BUILT_PRODUCTS_DIR}/BoringSSL-GRPC/openssl_grpc.framework",
+				"${BUILT_PRODUCTS_DIR}/LndRpc/LndRpc.framework",
+				"${BUILT_PRODUCTS_DIR}/Protobuf/Protobuf.framework",
 				"${BUILT_PRODUCTS_DIR}/SwiftProtobuf/SwiftProtobuf.framework",
+				"${BUILT_PRODUCTS_DIR}/gRPC/GRPCClient.framework",
 				"${BUILT_PRODUCTS_DIR}/gRPC-Core/grpc.framework",
+				"${BUILT_PRODUCTS_DIR}/gRPC-ProtoRPC/ProtoRPC.framework",
+				"${BUILT_PRODUCTS_DIR}/gRPC-RxLibrary/RxLibrary.framework",
 				"${BUILT_PRODUCTS_DIR}/nanopb/nanopb.framework",
 				"${BUILT_PRODUCTS_DIR}/Bond/Bond.framework",
 				"${BUILT_PRODUCTS_DIR}/Differ/Differ.framework",
 				"${BUILT_PRODUCTS_DIR}/KeychainAccess/KeychainAccess.framework",
 				"${BUILT_PRODUCTS_DIR}/ReactiveKit/ReactiveKit.framework",
-				"${BUILT_PRODUCTS_DIR}/SQLite.swift/SQLite.framework",
 				"${BUILT_PRODUCTS_DIR}/ScrollableGraphView/ScrollableGraphView.framework",
+				"${BUILT_PRODUCTS_DIR}/SQLite.swift/SQLite.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/BigInt.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SipHash.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SwiftBTC.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/openssl.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SwiftGRPC.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/openssl_grpc.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/LndRpc.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Protobuf.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SwiftProtobuf.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GRPCClient.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/grpc.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/ProtoRPC.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RxLibrary.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/nanopb.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Bond.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Differ.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/KeychainAccess.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/ReactiveKit.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SQLite.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/ScrollableGraphView.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SQLite.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -2561,7 +2539,7 @@
 			);
 			name = "[CP] Check Pods Manifest.lock";
 			outputPaths = (
-				"$(DERIVED_FILE_DIR)/Pods-Library-checkManifestLockResult.txt",
+				"$(DERIVED_FILE_DIR)/Pods-RPC-Library-checkManifestLockResult.txt",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -2616,17 +2594,21 @@
 				"${BUILT_PRODUCTS_DIR}/BigInt/BigInt.framework",
 				"${BUILT_PRODUCTS_DIR}/SipHash/SipHash.framework",
 				"${BUILT_PRODUCTS_DIR}/SwiftBTC/SwiftBTC.framework",
-				"${BUILT_PRODUCTS_DIR}/BoringSSL/openssl.framework",
-				"${BUILT_PRODUCTS_DIR}/SwiftGRPC/SwiftGRPC.framework",
+				"${BUILT_PRODUCTS_DIR}/BoringSSL-GRPC/openssl_grpc.framework",
+				"${BUILT_PRODUCTS_DIR}/LndRpc/LndRpc.framework",
+				"${BUILT_PRODUCTS_DIR}/Protobuf/Protobuf.framework",
 				"${BUILT_PRODUCTS_DIR}/SwiftProtobuf/SwiftProtobuf.framework",
+				"${BUILT_PRODUCTS_DIR}/gRPC/GRPCClient.framework",
 				"${BUILT_PRODUCTS_DIR}/gRPC-Core/grpc.framework",
+				"${BUILT_PRODUCTS_DIR}/gRPC-ProtoRPC/ProtoRPC.framework",
+				"${BUILT_PRODUCTS_DIR}/gRPC-RxLibrary/RxLibrary.framework",
 				"${BUILT_PRODUCTS_DIR}/nanopb/nanopb.framework",
 				"${BUILT_PRODUCTS_DIR}/Bond/Bond.framework",
 				"${BUILT_PRODUCTS_DIR}/Differ/Differ.framework",
 				"${BUILT_PRODUCTS_DIR}/KeychainAccess/KeychainAccess.framework",
 				"${BUILT_PRODUCTS_DIR}/ReactiveKit/ReactiveKit.framework",
-				"${BUILT_PRODUCTS_DIR}/SQLite.swift/SQLite.framework",
 				"${BUILT_PRODUCTS_DIR}/ScrollableGraphView/ScrollableGraphView.framework",
+				"${BUILT_PRODUCTS_DIR}/SQLite.swift/SQLite.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputFileListPaths = (
@@ -2635,17 +2617,21 @@
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/BigInt.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SipHash.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SwiftBTC.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/openssl.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SwiftGRPC.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/openssl_grpc.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/LndRpc.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Protobuf.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SwiftProtobuf.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GRPCClient.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/grpc.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/ProtoRPC.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RxLibrary.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/nanopb.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Bond.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Differ.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/KeychainAccess.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/ReactiveKit.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SQLite.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/ScrollableGraphView.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SQLite.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -2664,6 +2650,14 @@
 				"${BUILT_PRODUCTS_DIR}/BigInt/BigInt.framework",
 				"${BUILT_PRODUCTS_DIR}/SipHash/SipHash.framework",
 				"${BUILT_PRODUCTS_DIR}/SwiftBTC/SwiftBTC.framework",
+				"${BUILT_PRODUCTS_DIR}/BoringSSL-GRPC/openssl_grpc.framework",
+				"${BUILT_PRODUCTS_DIR}/LndRpc/LndRpc.framework",
+				"${BUILT_PRODUCTS_DIR}/Protobuf/Protobuf.framework",
+				"${BUILT_PRODUCTS_DIR}/gRPC/GRPCClient.framework",
+				"${BUILT_PRODUCTS_DIR}/gRPC-Core/grpc.framework",
+				"${BUILT_PRODUCTS_DIR}/gRPC-ProtoRPC/ProtoRPC.framework",
+				"${BUILT_PRODUCTS_DIR}/gRPC-RxLibrary/RxLibrary.framework",
+				"${BUILT_PRODUCTS_DIR}/nanopb/nanopb.framework",
 				"${BUILT_PRODUCTS_DIR}/Bond/Bond.framework",
 				"${BUILT_PRODUCTS_DIR}/Differ/Differ.framework",
 				"${BUILT_PRODUCTS_DIR}/KeychainAccess/KeychainAccess.framework",
@@ -2677,6 +2671,14 @@
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/BigInt.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SipHash.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SwiftBTC.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/openssl_grpc.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/LndRpc.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Protobuf.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GRPCClient.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/grpc.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/ProtoRPC.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RxLibrary.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/nanopb.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Bond.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Differ.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/KeychainAccess.framework",
@@ -2698,12 +2700,16 @@
 			inputPaths = (
 				"${SRCROOT}/Pods/Target Support Files/Pods-SwiftLndTests/Pods-SwiftLndTests-frameworks.sh",
 				"${BUILT_PRODUCTS_DIR}/BigInt/BigInt.framework",
-				"${BUILT_PRODUCTS_DIR}/BoringSSL/openssl.framework",
 				"${BUILT_PRODUCTS_DIR}/SipHash/SipHash.framework",
 				"${BUILT_PRODUCTS_DIR}/SwiftBTC/SwiftBTC.framework",
-				"${BUILT_PRODUCTS_DIR}/SwiftGRPC/SwiftGRPC.framework",
+				"${BUILT_PRODUCTS_DIR}/BoringSSL-GRPC/openssl_grpc.framework",
+				"${BUILT_PRODUCTS_DIR}/LndRpc/LndRpc.framework",
+				"${BUILT_PRODUCTS_DIR}/Protobuf/Protobuf.framework",
 				"${BUILT_PRODUCTS_DIR}/SwiftProtobuf/SwiftProtobuf.framework",
+				"${BUILT_PRODUCTS_DIR}/gRPC/GRPCClient.framework",
 				"${BUILT_PRODUCTS_DIR}/gRPC-Core/grpc.framework",
+				"${BUILT_PRODUCTS_DIR}/gRPC-ProtoRPC/ProtoRPC.framework",
+				"${BUILT_PRODUCTS_DIR}/gRPC-RxLibrary/RxLibrary.framework",
 				"${BUILT_PRODUCTS_DIR}/nanopb/nanopb.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
@@ -2711,12 +2717,16 @@
 			);
 			outputPaths = (
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/BigInt.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/openssl.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SipHash.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SwiftBTC.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SwiftGRPC.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/openssl_grpc.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/LndRpc.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Protobuf.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SwiftProtobuf.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GRPCClient.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/grpc.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/ProtoRPC.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RxLibrary.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/nanopb.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -2967,7 +2977,6 @@
 				ADADAD9F2143B3C900A48E1F /* WalletApiProtocol.swift in Sources */,
 				ADADAD942143B3C900A48E1F /* TestingTemplates.swift in Sources */,
 				ADADADA02143B3C900A48E1F /* WalletApiRPC.swift in Sources */,
-				ADADAD952143B3C900A48E1F /* rpc.grpc.swift in Sources */,
 				ADA3253421A701E700C5EAA2 /* MacaroonId.pb.swift in Sources */,
 				ADFB36D82143B73C00146FCC /* LocalLnd.swift in Sources */,
 				AD3781CC21664EB00083CE77 /* RemoteRPCConfiguration.swift in Sources */,
@@ -2978,7 +2987,6 @@
 				ADFB36E92143BB2200146FCC /* Transaction.swift in Sources */,
 				ADADAD8F2143B3C900A48E1F /* OnChainRequestAddressType.swift in Sources */,
 				ADADAD9D2143B3C900A48E1F /* LightningApiRPC.swift in Sources */,
-				ADADAD962143B3C900A48E1F /* rpc.pb.swift in Sources */,
 				ADADAD922143B3C900A48E1F /* Peer.swift in Sources */,
 				ADADAD9A2143B3C900A48E1F /* StreamCallback.swift in Sources */,
 				ADADAD8A2143B3C900A48E1F /* ChannelPoint.swift in Sources */,
@@ -3412,7 +3420,7 @@
 		};
 		AD391C2120D16ED4007EE22A /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 853E07500DD4084FD1B0C434 /* Pods-Library.debug.xcconfig */;
+			baseConfigurationReference = C6A38DB0D23007E1ACC38654 /* Pods-RPC-Library.debug.xcconfig */;
 			buildSettings = {
 				CLANG_ENABLE_OBJC_WEAK = YES;
 				CODE_SIGN_IDENTITY = "";
@@ -3445,7 +3453,7 @@
 		};
 		AD391C2220D16ED4007EE22A /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 6A284164D7EB6F7A8649DC59 /* Pods-Library.release.xcconfig */;
+			baseConfigurationReference = B6C7354B34602FE7103C8435 /* Pods-RPC-Library.release.xcconfig */;
 			buildSettings = {
 				CLANG_ENABLE_OBJC_WEAK = YES;
 				CODE_SIGN_IDENTITY = "";
@@ -3478,7 +3486,7 @@
 		};
 		AD536BFD20E62764002279BC /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = A8517E12ED19329B536B9504 /* Pods-Lightning.debug.xcconfig */;
+			baseConfigurationReference = 7FDFCD8F7AE5251F12F847A7 /* Pods-RPC-Lightning.debug.xcconfig */;
 			buildSettings = {
 				APPLICATION_EXTENSION_API_ONLY = YES;
 				CLANG_ENABLE_OBJC_WEAK = YES;
@@ -3518,7 +3526,7 @@
 		};
 		AD536BFE20E62764002279BC /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 4C3201DB6F9E61135DF52550 /* Pods-Lightning.release.xcconfig */;
+			baseConfigurationReference = 2EE5E96B589EFA6A3004772B /* Pods-RPC-Lightning.release.xcconfig */;
 			buildSettings = {
 				APPLICATION_EXTENSION_API_ONLY = YES;
 				CLANG_ENABLE_OBJC_WEAK = YES;
@@ -3707,7 +3715,7 @@
 		};
 		AD967FDD210329A70048085B /* DebugRemote */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 8516AF5591FBC5D9D27FA5F2 /* Pods-Lightning.debugremote.xcconfig */;
+			baseConfigurationReference = 305EEE890017B0878DCC745C /* Pods-RPC-Lightning.debugremote.xcconfig */;
 			buildSettings = {
 				APPLICATION_EXTENSION_API_ONLY = YES;
 				CLANG_ENABLE_OBJC_WEAK = YES;
@@ -3761,7 +3769,7 @@
 		};
 		AD967FDF210329A70048085B /* DebugRemote */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = A11A24FE43F9B6412A85C0C8 /* Pods-Library.debugremote.xcconfig */;
+			baseConfigurationReference = 7CECC9910DF52C68966AE47C /* Pods-RPC-Library.debugremote.xcconfig */;
 			buildSettings = {
 				CLANG_ENABLE_OBJC_WEAK = YES;
 				CODE_SIGN_IDENTITY = "";
@@ -3813,7 +3821,7 @@
 		};
 		ADADAD7A2143B2E700A48E1F /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 1A358AA2F4BA8374481F47D6 /* Pods-SwiftLnd.debug.xcconfig */;
+			baseConfigurationReference = 11E8813790C1675DD81B329D /* Pods-RPC-SwiftLnd.debug.xcconfig */;
 			buildSettings = {
 				APPLICATION_EXTENSION_API_ONLY = YES;
 				CLANG_ENABLE_OBJC_WEAK = YES;
@@ -3851,7 +3859,7 @@
 		};
 		ADADAD7B2143B2E700A48E1F /* DebugRemote */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 7CDE05914FE5150C977488E9 /* Pods-SwiftLnd.debugremote.xcconfig */;
+			baseConfigurationReference = 6DA2D9173B4F24C37BDC826B /* Pods-RPC-SwiftLnd.debugremote.xcconfig */;
 			buildSettings = {
 				APPLICATION_EXTENSION_API_ONLY = YES;
 				CLANG_ENABLE_OBJC_WEAK = YES;
@@ -3884,7 +3892,7 @@
 		};
 		ADADAD7C2143B2E700A48E1F /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = CAD12A67577C1815DFBA2A40 /* Pods-SwiftLnd.release.xcconfig */;
+			baseConfigurationReference = DCB9AB32B383D377B581302A /* Pods-RPC-SwiftLnd.release.xcconfig */;
 			buildSettings = {
 				APPLICATION_EXTENSION_API_ONLY = YES;
 				CLANG_ENABLE_OBJC_WEAK = YES;

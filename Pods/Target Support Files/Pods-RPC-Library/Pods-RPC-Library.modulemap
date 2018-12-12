@@ -1,0 +1,6 @@
+framework module Pods_RPC_Library {
+  umbrella header "Pods-RPC-Library-umbrella.h"
+
+  export *
+  module * { export * }
+}

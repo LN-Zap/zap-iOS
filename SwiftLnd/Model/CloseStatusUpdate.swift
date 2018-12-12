@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import LndRpc
 import SwiftProtobuf
 
 public enum CloseStatusUpdate {
@@ -13,7 +14,7 @@ public enum CloseStatusUpdate {
     case confirmation
     case channelClose
     
-    init(closeStatusUpdate: Lnrpc_CloseStatusUpdate) {
+    init(closeStatusUpdate: LNDCloseStatusUpdate) {
         if closeStatusUpdate.closePending.txid != SwiftProtobuf.Internal.emptyData {
             self = .pending
         } else if closeStatusUpdate.confirmation.blockSha != SwiftProtobuf.Internal.emptyData {

@@ -6,10 +6,11 @@
 //
 
 import Foundation
+import LndRpc
 import SwiftBTC
 
-extension Lnrpc_Invoice {
-    init(amount: Satoshi?, memo: String?) {
+extension LNDInvoice {
+    convenience init(amount: Satoshi?, memo: String?) {
         self.init()
         if let memo = memo {
             self.memo = memo
@@ -17,24 +18,30 @@ extension Lnrpc_Invoice {
         if let amount = amount {
             value = Int64(truncating: amount as NSDecimalNumber)
         }
-        self.private = true
+        private_p = true
     }
 }
 
-extension Lnrpc_NodeInfoRequest {
-    init(pubKey: String) {
+extension LNDNodeInfoRequest {
+    convenience init(pubKey: String) {
+        self.init()
+        
         self.pubKey = pubKey
     }
 }
 
-extension Lnrpc_PayReqString {
-    init(payReq: String) {
+extension LNDPayReqString {
+    convenience init(payReq: String) {
+        self.init()
+        
         self.payReq = payReq
     }
 }
 
-extension Lnrpc_NewAddressRequest {
-    init(type: OnChainRequestAddressType) {
+extension LNDNewAddressRequest {
+    convenience init(type: OnChainRequestAddressType) {
+        self.init()
+        
         switch type {
         case .witnessPubkeyHash:
             self.type = .witnessPubkeyHash
@@ -44,34 +51,42 @@ extension Lnrpc_NewAddressRequest {
     }
 }
 
-extension Lnrpc_ConnectPeerRequest {
-    init(pubKey: String, host: String) {
-        addr = Lnrpc_LightningAddress()
+extension LNDConnectPeerRequest {
+    convenience init(pubKey: String, host: String) {
+        self.init()
+
+        addr = LNDLightningAddress()
         addr.pubkey = pubKey
         addr.host = host
     }
 }
 
-extension Lnrpc_OpenChannelRequest {
-    init(pubKey: String, amount: Satoshi) {
+extension LNDOpenChannelRequest {
+    convenience init(pubKey: String, amount: Satoshi) {
+        self.init()
+
         if let pubKey = Data(hexadecimalString: pubKey) {
             nodePubkey = pubKey
         }
         nodePubkeyString = pubKey
         localFundingAmount = Int64(truncating: amount as NSDecimalNumber)
-        `private` = true
+        private_p = true
     }
 }
 
-extension Lnrpc_SendCoinsRequest {
-    init(address: BitcoinAddress, amount: Satoshi) {
+extension LNDSendCoinsRequest {
+    convenience init(address: BitcoinAddress, amount: Satoshi) {
+        self.init()
+
         self.addr = address.string
         self.amount = Int64(truncating: amount as NSDecimalNumber)
     }
 }
 
-extension Lnrpc_SendRequest {
-    init(paymentRequest: String, amount: Satoshi?) {
+extension LNDSendRequest {
+    convenience init(paymentRequest: String, amount: Satoshi?) {
+        self.init()
+
         self.paymentRequest = paymentRequest
         if let amount = amount {
             self.amt = Int64(truncating: amount as NSDecimalNumber)
@@ -79,9 +94,11 @@ extension Lnrpc_SendRequest {
     }
 }
 
-extension Lnrpc_CloseChannelRequest {
-    init?(channelPoint: ChannelPoint, force: Bool) {
-        self.channelPoint = Lnrpc_ChannelPoint()
+extension LNDCloseChannelRequest {
+    convenience init?(channelPoint: ChannelPoint, force: Bool) {
+        self.init()
+
+        self.channelPoint = LNDChannelPoint()
         self.channelPoint.outputIndex = UInt32(channelPoint.outputIndex)
         if let fundingTxidBytes = Data(hexadecimalString: channelPoint.fundingTxid.hexEndianSwap()) {
             self.channelPoint.fundingTxidBytes = fundingTxidBytes
@@ -90,8 +107,10 @@ extension Lnrpc_CloseChannelRequest {
     }
 }
 
-extension Lnrpc_QueryRoutesRequest {
-    init(destination: String, amount: Satoshi) {
+extension LNDQueryRoutesRequest {
+    convenience init(destination: String, amount: Satoshi) {
+        self.init()
+
         pubKey = destination
         amt = Int64(truncating: amount as NSDecimalNumber)
         numRoutes = 10
@@ -100,25 +119,31 @@ extension Lnrpc_QueryRoutesRequest {
 
 // MARK: - Wallet
 
-extension Lnrpc_GenSeedRequest {
-    init(passphrase: String?) {
+extension LNDGenSeedRequest {
+    convenience init(passphrase: String?) {
+        self.init()
+
         if let passphrase = passphrase?.data(using: .utf8) {
             self.aezeedPassphrase = passphrase
         }
     }
 }
 
-extension Lnrpc_InitWalletRequest {
-    init(password: String, mnemonic: [String]) {
+extension LNDInitWalletRequest {
+    convenience init(password: String, mnemonic: [String]) {
+        self.init()
+
         if let passwordData = password.data(using: .utf8) {
             self.walletPassword = passwordData
         }
-        self.cipherSeedMnemonic = mnemonic
+        self.cipherSeedMnemonicArray = NSMutableArray(array: mnemonic)
     }
 }
 
-extension Lnrpc_UnlockWalletRequest {
-    init(password: String) {
+extension LNDUnlockWalletRequest {
+    convenience init(password: String) {
+        self.init()
+
         if let passwordData = password.data(using: .utf8) {
             self.walletPassword = passwordData
         }

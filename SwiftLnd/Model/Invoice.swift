@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import LndRpc
 import SwiftBTC
 
 public struct Invoice: Equatable {
@@ -20,7 +21,7 @@ public struct Invoice: Equatable {
 }
 
 extension Invoice {
-    init(invoice: Lnrpc_Invoice) {
+    init(invoice: LNDInvoice) {
         id = invoice.rHash.hexadecimalString
         memo = invoice.memo
         settled = invoice.settled

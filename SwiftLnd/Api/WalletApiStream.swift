@@ -14,18 +14,18 @@ public final class WalletApiStream: WalletApiProtocol {
     public init() {}
     
     public func generateSeed(passphrase: String? = nil, completion: @escaping (Result<[String]>) -> Void) {
-        let data = try? Lnrpc_GenSeedRequest(passphrase: passphrase).serializedData()
-        LndmobileGenSeed(data, StreamCallback<Lnrpc_GenSeedResponse, [String]>(completion) { $0.cipherSeedMnemonic })
+        let data = try? LNDGenSeedRequest(passphrase: passphrase).serializedData()
+        LndmobileGenSeed(data, StreamCallback<LNDGenSeedResponse, [String]>(completion) { $0.cipherSeedMnemonic })
     }
     
     public func initWallet(mnemonic: [String], password: String, completion: @escaping (Result<Success>) -> Void) {
-        let data = try? Lnrpc_InitWalletRequest(password: password, mnemonic: mnemonic).serializedData()
-        LndmobileInitWallet(data, StreamCallback<Lnrpc_InitWalletResponse, Success>(completion) { _ in Success() })
+        let data = try? LNDInitWalletRequest(password: password, mnemonic: mnemonic).serializedData()
+        LndmobileInitWallet(data, StreamCallback<LNDInitWalletResponse, Success>(completion) { _ in Success() })
     }
     
     public func unlockWallet(password: String, completion: @escaping (Result<Success>) -> Void) {
-        let data = try? Lnrpc_UnlockWalletRequest(password: password).serializedData()
-        LndmobileUnlockWallet(data, StreamCallback<Lnrpc_UnlockWalletResponse, Success>(completion) { _ in Success() })
+        let data = try? LNDUnlockWalletRequest(password: password).serializedData()
+        LndmobileUnlockWallet(data, StreamCallback<LNDUnlockWalletResponse, Success>(completion) { _ in Success() })
     }
 }
 

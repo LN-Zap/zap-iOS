@@ -47,4 +47,6 @@ googleapis/
 protoc-gen-swift
 protoc-gen-swiftgrpc
 
+Pods/!*
+
 Lndmobile.framework
