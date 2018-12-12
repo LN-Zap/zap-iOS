@@ -1,0 +1,6 @@
+framework module Pods_RPC_SwiftLnd {
+  umbrella header "Pods-RPC-SwiftLnd-umbrella.h"
+
+  export *
+  module * { export * }
+}

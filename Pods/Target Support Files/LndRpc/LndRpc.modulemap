@@ -1,0 +1,6 @@
+framework module LndRpc {
+  umbrella header "LndRpc-umbrella.h"
+
+  export *
+  module * { export * }
+}
