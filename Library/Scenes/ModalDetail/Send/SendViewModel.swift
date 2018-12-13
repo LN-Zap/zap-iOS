@@ -155,11 +155,18 @@ final class SendViewModel {
         
         isSending = true
         
+        let internalComplection: (Result<Success>) -> Void = { [weak self] in
+            if case .failure = $0 {
+                self?.isSending = false
+            }
+            completion($0)
+        }
+        
         switch method {
         case .lightning(let paymentRequest):
-            lightningService.transactionService.sendPayment(paymentRequest, amount: amount, completion: completion)
+            lightningService.transactionService.sendPayment(paymentRequest, amount: amount, completion: internalComplection)
         case .onChain(let bitcoinURI):
-            lightningService.transactionService.sendCoins(bitcoinURI: bitcoinURI, amount: amount, completion: completion)
+            lightningService.transactionService.sendCoins(bitcoinURI: bitcoinURI, amount: amount, completion: internalComplection)
         }
     }
 }
