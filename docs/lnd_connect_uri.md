@@ -26,7 +26,7 @@ var macaroonPath = os.homedir() + '/.lnd/data/chain/bitcoin/testnet/admin.macaro
 var macaroonData = fs.readFileSync(macaroonPath);
 var macaroon = base64url(new Buffer(macaroonData));
 
-var url = 'lndconnect:?' + cert + '&macaroon=' + macaroon + '&host=' + ip.address() + ':10009'
+var url = 'lndconnect:?cert=' + cert + '&macaroon=' + macaroon + '&host=' + ip.address() + ':10009'
 ```
 
 ## Example:
