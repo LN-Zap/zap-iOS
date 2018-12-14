@@ -179,7 +179,7 @@
 "scene.filter.section_header.transaction_types" = "交易类型";
 "scene.filter.section_header.advanced" = "高级";
 "scene.filter.displayOnChainTransactions" = "链上付款";
-"scene.filter.display_unknown_transaction_type" = "Internal Transations";
+"scene.filter.display_unknown_transaction_type" = "Internal Transactions";
 "scene.filter.displayLightningPayments" = "闪电网络支付";
 "scene.filter.displayLightningInvoices" = "Created Invoices";
 "scene.filter.displayChannelEvents" = "Channel Events";
