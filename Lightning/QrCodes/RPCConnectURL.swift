@@ -51,13 +51,13 @@ public final class RPCConnectURL {
         guard
             let url = URL(string: urlString),
             let queryParameters = url.queryParameters,
-            let nodeUrlString = queryParameters["ip"],
-            let nodeUrl = URL(string: nodeUrlString),
+            let certificate = queryParameters["cert"]?.base64UrlToBase64(),
+            let nodeHostString = queryParameters["host"],
+            let nodeHostUrl = URL(string: nodeHostString),
             let macaroonString = queryParameters["macaroon"]?.base64UrlToBase64(),
             let macaroon = Macaroon(base64String: macaroonString)
             else { return nil }
-        
-        let certificate = url.path.base64UrlToBase64()
-        rpcConfiguration = RemoteRPCConfiguration(certificate: Pem(key: certificate).string, macaroon: macaroon, url: nodeUrl)
+
+        rpcConfiguration = RemoteRPCConfiguration(certificate: Pem(key: certificate).string, macaroon: macaroon, url: nodeHostUrl)
     }
 }

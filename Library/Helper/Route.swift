@@ -22,7 +22,7 @@ public enum Route {
     public init?(url: URL) {
         let urlString = url.absoluteString.replacingOccurrences(of: "//", with: "")
         
-        if urlString.hasPrefix("zap:") {
+        if urlString.hasPrefix("lndconnect:") {
             guard let url = RPCConnectURL(string: urlString) else { return nil }
             self = .connect(url)
         } else {

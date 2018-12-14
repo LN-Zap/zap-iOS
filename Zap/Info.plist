@@ -45,7 +45,7 @@
 			<string>com.jackmallers.zap</string>
 			<key>CFBundleURLSchemes</key>
 			<array>
-				<string>zap</string>
+				<string>lndconnect</string>
 			</array>
 		</dict>
 	</array>
