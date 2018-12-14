@@ -200,7 +200,7 @@ internal enum L10n {
       internal static let title = L10n.tr("Localizable", "scene.create_wallet.title")
     }
     internal enum Filter {
-      /// Internal Transations
+      /// Internal Transactions
       internal static let displayUnknownTransactionType = L10n.tr("Localizable", "scene.filter.display_unknown_transaction_type")
       /// Channel Events
       internal static let displayChannelEvents = L10n.tr("Localizable", "scene.filter.displayChannelEvents")
