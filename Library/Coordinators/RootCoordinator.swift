@@ -140,6 +140,8 @@ public final class RootCoordinator: NSObject, SetupCoordinatorDelegate, PinCoord
     }
     
     private func presentSetup() {
+        connectionService.disconnect()
+        
         let setupCoordinator = SetupCoordinator(rootViewController: rootViewController, connectionService: connectionService, authenticationViewModel: authenticationCoordinator.authenticationViewModel, delegate: self)
         currentCoordinator = setupCoordinator
         setupCoordinator.start()
