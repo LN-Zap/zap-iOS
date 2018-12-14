@@ -179,7 +179,7 @@
 "scene.filter.section_header.transaction_types" = "Transaktionstypen";
 "scene.filter.section_header.advanced" = "Erweitert";
 "scene.filter.displayOnChainTransactions" = "On-chain Payments";
-"scene.filter.display_unknown_transaction_type" = "Intere Transaktionen";
+"scene.filter.display_unknown_transaction_type" = "Internal Transactions";
 "scene.filter.displayLightningPayments" = "Lightning Zahlung";
 "scene.filter.displayLightningInvoices" = "Erstellte Rechnungen";
 "scene.filter.displayChannelEvents" = "Channel Events";
