@@ -179,7 +179,7 @@
 "scene.filter.section_header.transaction_types" = "Vrste transakcija";
 "scene.filter.section_header.advanced" = "Napredno";
 "scene.filter.displayOnChainTransactions" = "Na lanac plaćanja";
-"scene.filter.display_unknown_transaction_type" = "Unutarnje transakcije";
+"scene.filter.display_unknown_transaction_type" = "Internal Transactions";
 "scene.filter.displayLightningPayments" = "Munja plaćanja";
 "scene.filter.displayLightningInvoices" = "Stvorene fakture";
 "scene.filter.displayChannelEvents" = "Događaji za kanal";
