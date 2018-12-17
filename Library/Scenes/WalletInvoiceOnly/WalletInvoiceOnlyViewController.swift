@@ -7,6 +7,7 @@
 
 import Foundation
 import Lightning
+import SwiftBTC
 
 extension UIStoryboard {
     static func instantiateWalletInvoiceOnlyViewController(lightningService: LightningService) -> WalletInvoiceOnlyViewController {
@@ -21,26 +22,57 @@ extension UIStoryboard {
 }
 
 final class WalletInvoiceOnlyViewController: UIViewController {
-    @IBOutlet private weak var amountInputView: AmountInputView!
     @IBOutlet private weak var createInvoiceButton: UIButton!
-    
-    fileprivate var lightningService: LightningService?
+    @IBOutlet private weak var keyPadView: KeyPadView! {
+        didSet {
+            setupKeyPad()
+        }
+    }
+    @IBOutlet private weak var primaryCurrencyLabel: UILabel!
+    @IBOutlet private weak var secondaryCurrencyLabel: UILabel!
 
+    fileprivate var lightningService: LightningService?
+    
+    private var satoshis: Satoshi = 0
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
         view.backgroundColor = UIColor.Zap.background
         
-        amountInputView.backgroundColor = UIColor.Zap.background
-        amountInputView.textColor = UIColor.Zap.white
-        amountInputView.addTarget(self, action: #selector(amountChanged(sender:)), for: .valueChanged)
+        Style.Label.headline.apply(to: primaryCurrencyLabel)
+        Style.Label.subHeadline.apply(to: secondaryCurrencyLabel)
         
         Style.Button.background.apply(to: createInvoiceButton)
         
         createInvoiceButton.setTitle("Create Invoice", for: .normal)
+        
+        _ = updateKeyPadString(input: "")
     }
     
-    @objc private func amountChanged(sender: AmountInputView) {
-//        viewModel.amount = sender.satoshis
+    private func setupKeyPad() {
+        keyPadView.handler = { [weak self] in
+            self?.updateKeyPadString(input: $0) ?? false
+        }
+    }
+    
+    private func updateKeyPadString(input: String) -> Bool {
+        guard input.count <= 16 else { return false }
+        
+        let numberFormatter = InputNumberFormatter(currency: Settings.shared.primaryCurrency.value)
+        guard var output = numberFormatter.validate(input) else { return false }
+        if output.isEmpty {
+            output = "0"
+        }
+        
+        let primaryString = NSMutableAttributedString(string: Settings.shared.primaryCurrency.value.symbol, attributes: [.font: UIFont.Zap.regular])
+        primaryString.append(NSAttributedString(string: output, attributes: [.font: UIFont.Zap.light.withSize(72)]))
+        primaryCurrencyLabel.attributedText = primaryString
+        
+        satoshis = Settings.shared.primaryCurrency.value.satoshis(from: output) ?? 0
+        
+        secondaryCurrencyLabel.text = Settings.shared.secondaryCurrency.value.format(satoshis: satoshis)
+        
+        return true
     }
 }
