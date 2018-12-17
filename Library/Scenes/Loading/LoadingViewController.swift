@@ -20,7 +20,6 @@ extension UIStoryboard {
 final class LoadingViewController: UIViewController {
     enum Message {
         case none
-        case noInternet
     }
     
     @IBOutlet private weak var infoLabel: UILabel!
@@ -38,8 +37,6 @@ final class LoadingViewController: UIViewController {
         switch message {
         case .none:
             infoLabel.text = nil
-        case .noInternet:
-            infoLabel.text = LndApiError.noInternet.localizedDescription
         }
     }
 }

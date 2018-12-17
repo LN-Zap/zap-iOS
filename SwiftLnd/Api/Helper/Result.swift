@@ -79,9 +79,6 @@ func result<T, U>(_ completion: @escaping (Result<U>) -> Void, map: @escaping (T
             case 13:
                 print(LndApiError.lndNotRunning)
                 completion(.failure(LndApiError.lndNotRunning))
-            case 14:
-                print(LndApiError.noInternet)
-                completion(.failure(LndApiError.noInternet))
             default:
                 print(error)
                 completion(.failure(error))

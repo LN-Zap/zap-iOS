@@ -61,8 +61,6 @@ public final class RootCoordinator: NSObject, SetupCoordinatorDelegate, PinCoord
             presentSetup()
         case .connecting:
             presentLoading(message: .none)
-        case .noInternet:
-            presentLoading(message: .noInternet)
         case .syncing:
             presentSync()
         case .running:

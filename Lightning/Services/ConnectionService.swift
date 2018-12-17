@@ -14,7 +14,6 @@ public final class ConnectionService: NSObject {
     public enum State {
         case noWallet
         case connecting
-        case noInternet
         case syncing
         case running
     }
@@ -118,8 +117,6 @@ public final class ConnectionService: NSObject {
         switch state {
         case .connecting:
             return handleConnectingState()
-        case .noInternet:
-            return .noInternet
         case .syncing:
             return .syncing
         case .running:

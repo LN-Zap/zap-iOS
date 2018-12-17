@@ -12,7 +12,6 @@ import SwiftLnd
 
 public final class InfoService {
     public enum State {
-        case noInternet
         case connecting
         case syncing
         case running
@@ -69,7 +68,7 @@ public final class InfoService {
         
         let newState = walletState(for: result)
         if walletState.value != newState {
-            if newState != .connecting && newState != .noInternet {
+            if newState != .connecting {
                 channelService.update()
                 balanceService.update()
                 historyService.update()
@@ -88,9 +87,6 @@ public final class InfoService {
             } else {
                 return .running
             }
-        } else if let error = result.error as? LndApiError,
-            error == LndApiError.noInternet {
-            return .noInternet
         }
         
         return .connecting
