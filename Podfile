@@ -14,34 +14,38 @@ abstract_target 'Apps' do
     end
 end
 
-target 'SwiftLnd' do
-    pod 'SwiftBTC'
-    pod 'SwiftGRPC', :git => 'https://github.com/grpc/grpc-swift'
+abstract_target 'RPC' do
+    pod 'LndRpc', :path => '.'
     
-    target 'SwiftLndTests' do
-        inherit! :search_paths
+    target 'SwiftLnd' do
+        pod 'SwiftBTC'
+        pod 'SwiftProtobuf'
+        
+        target 'SwiftLndTests' do
+            inherit! :search_paths
+        end
     end
-end
-
-target 'Lightning' do
-    pod 'SwiftBTC'
-    pod 'Bond'
-    pod 'KeychainAccess'
-    pod 'SQLite.swift', '~> 0.11.5'
     
-    target 'LightningTests' do
-        inherit! :search_paths
+    target 'Library' do
+        pod 'SwiftBTC'
+        pod 'ScrollableGraphView'
+        pod 'KeychainAccess'
+        pod 'Bond'
+        
+        target 'LibraryTests' do
+            inherit! :search_paths
+        end
     end
-end
 
-target 'Library' do
-    pod 'SwiftBTC'
-    pod 'ScrollableGraphView'
-    pod 'KeychainAccess'
-    pod 'Bond'
-    
-    target 'LibraryTests' do
-        inherit! :search_paths
+    target 'Lightning' do
+        pod 'SwiftBTC'
+        pod 'Bond'
+        pod 'KeychainAccess'
+        pod 'SQLite.swift', '~> 0.11.5'
+        
+        target 'LightningTests' do
+            inherit! :search_paths
+        end
     end
 end
 

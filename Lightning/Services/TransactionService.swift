@@ -51,8 +51,8 @@ public final class TransactionService {
         }
     }
     
-    public func sendPayment(_ paymentRequest: PaymentRequest, amount: Satoshi, maxFee: Satoshi, completion: @escaping (Result<Success>) -> Void) {
-        api.sendPayment(paymentRequest, amount: amount, maxFee: maxFee) { [weak self] in
+    public func sendPayment(_ paymentRequest: PaymentRequest, amount: Satoshi, completion: @escaping (Result<Success>) -> Void) {
+        api.sendPayment(paymentRequest, amount: amount) { [weak self] in
             switch $0 {
             case .success(let payment):
                 self?.balanceService.update()

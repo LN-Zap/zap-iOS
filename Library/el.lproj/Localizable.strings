@@ -14,7 +14,8 @@
 
 "rpc_connect_qrcode_error.btc_pay_expired" = "Μοιάζει με τον κώδικα που έχει λήξει.";
 "rpc_connect_qrcode_error.btc_pay_configuration_broken" = "Δεν ήταν η ανάγνωση του αρχείου BTCPay ρυθμίσεις παραμέτρων.";
-"rpc_connect_qrcode_error.cant_read_qrcode" = "Δεν μπορεί να συνδεθεί σε αυτόν τον κωδικό.";
+"rpc_connect_qrcode_error.cant_read_qrcode" = "Invalid code format.";
+"rpc_connect_qrcode_error.code_updated" = "Connection updated.";
 
 "channel.state.active" = "Σε απευθείας σύνδεση";
 "channel.state.inactive" = "Χωρίς σύνδεση";
@@ -22,13 +23,16 @@
 "channel.state.closing" = "Κλείσιμο";
 "channel.state.force_closing" = "Κλείστε το με δύναμη";
 
-"network.type.testnet" = "Testnet";
-"network.type.mainnet" = "Mainnet";
+"network_type.testnet" = "Testnet";
+"network_type.mainnet" = "Mainnet";
 
 "unit.bitcoin.btc" = "Bitcoin";
 "unit.bitcoin.mbtc" = "Milli Bitcoin";
 "unit.bitcoin.bit" = "Bits";
 "unit.bitcoin.satoshi" = "Satoshis";
+
+"toast.invoice" = "Did receive %@";
+"toast.invoice_memo" = "Did receive %@ \"%@\"";
 
 "transaction.no_destination_address" = "Καμία διεύθυνση προορισμού";
 
@@ -47,10 +51,15 @@
 "scene.settings.item.on_chain_request_address.p2sh" = "P2SH";
 "scene.settings.item.manage_channels" = "Manage Channels";
 "scene.settings.item.node_uri" = "Node URI";
-"scene.settings.item.remove_remote_node" = "Επαναφορά διαμόρφωσης απομακρυσμένου κόμβου";
+"scene.settings.item.remove_remote_node" = "Reset Remote Node Connection";
+"scene.settings.item.remove_remote_node.confirmation.title" = "Disconnect Remote Node?";
+"scene.settings.item.remove_remote_node.confirmation.message" = "You will have to reconnect to your node afterwards.";
+"scene.settings.item.remove_remote_node.confirmation.button" = "Disconnect";
+
 "scene.settings.item.change_pin" = "Change Pin";
 "scene.settings.item.report_issue" = "Αναφέρετε ένα πρόβλημα";
 "scene.settings.item.help" = "Χρειάζεστε βοήθεια;";
+"scene.settings.item.privacy_policy" = "Privacy Policy";
 
 "scene.request.title" = "Λάβετε";
 "scene.request.lightning_button" = "Lightning";
@@ -66,9 +75,8 @@
 "scene.channels.close.message" = "Θέλετε πραγματικά να κλείσετε το κανάλι με τον κόμβο %@;";
 "scene.channels.force_close.title" = "Κλείστε το κανάλι με δύναμη";
 "scene.channels.force_close.message" = "Το %@ είναι εκτός σύνδεσης, είστε βέβαιοι ότι θέλετε να εξαναγκάσετε να κλείσετε αυτό το κανάλι; Θα πρέπει να περιμένετε περίπου %@ για τα χρήματά σας;";
-"scene.channels.alert.cancel" = "Ματαίωση";
-"scene.channels.alert.close" = "Κλείστε";
-"scene.channels.alert.force_close" = "Κλείστε το με δύναμη";
+"scene.channels.alert.close" = "Close Channel";
+"scene.channels.alert.force_close" = "Force Close Channel";
 "scene.channels.close_loading_view" = "Closing Channel";
 "scene.channels.close_success.toast" = "Το κανάλι κλείνει.";
 
@@ -157,6 +165,7 @@
 "scene.transaction_detail.transaction_id_label" = "Ταυτότητα συναλλαγής";
 "scene.transaction_detail.address_label" = "Διεύθυνση";
 "scene.transaction_detail.expiry_label" = "Λήξη";
+"scene.transaction_detail.expiry_label.expired" = "Expired";
 
 "scene.channel_detail.remote_pub_key_label" = "Απομακρυσμένο δημόσιο κλειδί (Remote PubKey)";
 "scene.channel_detail.local_balance_label" = "Τοπική ισορροπία";
@@ -170,7 +179,7 @@
 "scene.filter.section_header.transaction_types" = "Τύποι συναλλαγών";
 "scene.filter.section_header.advanced" = "Advanced";
 "scene.filter.displayOnChainTransactions" = "On-chain Payments";
-"scene.filter.display_unknown_transaction_type" = "Internal Transations";
+"scene.filter.display_unknown_transaction_type" = "Internal Transactions";
 "scene.filter.displayLightningPayments" = "Πληρωμές Lightning";
 "scene.filter.displayLightningInvoices" = "Created Invoices";
 "scene.filter.displayChannelEvents" = "Channel Events";
@@ -206,3 +215,7 @@
 "scene.node_uri.title" = "Connect to Node";
 "scene.node_uri.alias_label" = "Alias";
 "scene.node_uri.uri_label" = "URI";
+
+"scene.connect_node_uri.action_sheet.title" = "Connect";
+"scene.connect_node_uri.action_sheet.connect_button" = "Connect";
+"scene.connect_node_uri.action_sheet.message" = "Do you really want to connect to node at %@?";

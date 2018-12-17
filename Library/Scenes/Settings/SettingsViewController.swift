@@ -53,8 +53,12 @@ final class SettingsViewController: GroupedTableViewController {
                 ChangePinSettingsItem(settingsDelegate: settingsDelegate)
             ]),
             Section(title: nil, rows: [
-                HelpSettingsItem(),
-                ReportIssueSettingsItem()
+                // swiftlint:disable:next force_unwrapping
+                SafariSettingsItem(title: L10n.Scene.Settings.Item.help, url: URL(string: L10n.Link.help)!),
+                // swiftlint:disable:next force_unwrapping
+                SafariSettingsItem(title: L10n.Scene.Settings.Item.reportIssue, url: URL(string: "https://github.com/LN-Zap/zap-iOS/issues")!),
+                // swiftlint:disable:next force_unwrapping
+                SafariSettingsItem(title: L10n.Scene.Settings.Item.privacyPolicy, url: URL(string: "http://zap.jackmallers.com/")!)
             ])
         ]
         
@@ -83,7 +87,12 @@ final class SettingsViewController: GroupedTableViewController {
         lndVersion: if let info = info {
             let components = info.version.components(separatedBy: " ")
             guard components.count == 2 else { break lndVersion }
-            let shortHash = components[1].replacingOccurrences(of: "commit=", with: "").prefix(7)
+            let shortHash = components[1]
+                .replacingOccurrences(of: "commit=", with: "")
+                .components(separatedBy: "-")
+                .last?
+                .replacingOccurrences(of: "g", with: "")
+                .prefix(7) ?? "-"
             versionString += "\nlnd version: \(components[0]) \(shortHash)"
         }
         

@@ -188,7 +188,7 @@ final class HistoryCell: BondTableViewCell {
         
         stackView.addArrangedElement(.horizontalStackView(compressionResistant: .last, content: [
             .label(text: createInvoiceEvent.memo ?? createInvoiceEvent.paymentRequest, style: Style.Label.body),
-            .customView(amountLabel(createInvoiceEvent.amount))
+            .customView(amountLabel(createInvoiceEvent.amount, completed: false))
         ]))
     }
     
@@ -216,7 +216,7 @@ final class HistoryCell: BondTableViewCell {
     
     func setLightningPaymentEvent(_ lightningPaymentEvent: LightningPaymentEvent) {
         let title: String
-        if lightningPaymentEvent.amount < 0 {
+        if lightningPaymentEvent.amount <= 0 {
             title = L10n.Scene.History.Cell.paymentSent
         } else {
             title = L10n.Scene.History.Cell.paymentReceived
@@ -224,13 +224,13 @@ final class HistoryCell: BondTableViewCell {
 
         setTitle(title, date: lightningPaymentEvent.date)
 
-        let detailLabel = lightningPaymentEvent.node?.alias ?? lightningPaymentEvent.node?.pubKey ?? ""
+        let detailLabel = lightningPaymentEvent.node?.alias ?? lightningPaymentEvent.node?.pubKey ?? L10n.Scene.TransactionDetail.amountLabel
         stackView.addArrangedElement(.horizontalStackView(compressionResistant: .last, content: [
             .label(text: detailLabel, style: Style.Label.body),
             .customView(amountLabel(lightningPaymentEvent.amount))
         ]))
 
-        if let memo = lightningPaymentEvent.memo {
+        if let memo = lightningPaymentEvent.memo, !memo.isEmpty {
             stackView.addArrangedElement(.horizontalStackView(compressionResistant: .first, content: [
                 .label(text: "memo:", style: Style.Label.body),
                 .label(text: memo, style: Style.Label.body.with({

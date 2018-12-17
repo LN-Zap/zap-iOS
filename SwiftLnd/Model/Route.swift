@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import LndRpc
 import SwiftBTC
 
 public struct Route {
@@ -14,8 +15,8 @@ public struct Route {
 }
 
 extension Route {
-    init(route: Lnrpc_Route) {
-        totalFees = Satoshi(route.totalFees)
-        totalAmount = Satoshi(route.totalAmt)
+    init(route: LNDRoute) {
+        totalFees = Satoshi(route.totalFeesMsat / 1000)
+        totalAmount = Satoshi(route.totalAmtMsat / 1000)
     }
 }

@@ -163,18 +163,22 @@ extension HistoryService {
     }
     
     private func addInvoices(_ invoices: [Invoice]) {
-        do {
-            for invoice in invoices {
+        for invoice in invoices {
+            do {
                 let createInvoiceEvent = CreateInvoiceEvent(invoice: invoice)
                 try createInvoiceEvent.insert(database: persistence.connection())
-                
-                if invoice.settled {
-                    let paymentEvent = LightningPaymentEvent(invoice: invoice)
+            } catch {
+                print("⚠️ `\(#function)`:", error)
+            }
+            
+            if invoice.settled {
+                let paymentEvent = LightningPaymentEvent(invoice: invoice)
+                do {
                     try paymentEvent.insert(database: persistence.connection())
+                } catch {
+                    print("⚠️ `\(#function)`:", error)
                 }
             }
-        } catch {
-            print("⚠️ `\(#function)`:", error)
         }
     }
     

@@ -61,10 +61,10 @@ enum BiometricAuthentication {
         alertWindow.rootViewController?.present(alertController, animated: true, completion: nil)
         #else
         let localAuthenticationContext = LAContext()
-        localAuthenticationContext.localizedFallbackTitle = L10n.Scene.pin.biometric.fallback.title
+        localAuthenticationContext.localizedFallbackTitle = L10n.Scene.Pin.Biometric.Fallback.title
         
         var authError: NSError?
-        let reasonString = L10n.Scene.pin.biometric.reason
+        let reasonString = L10n.Scene.Pin.Biometric.reason
         
         if localAuthenticationContext.canEvaluatePolicy(.deviceOwnerAuthenticationWithBiometrics, error: &authError) {
             localAuthenticationContext.evaluatePolicy(.deviceOwnerAuthenticationWithBiometrics, localizedReason: reasonString) { success, evaluateError in

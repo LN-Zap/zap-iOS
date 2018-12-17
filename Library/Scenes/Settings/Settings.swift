@@ -51,7 +51,7 @@ public final class Settings: NSObject, Persistable {
         primaryCurrency = Observable(cryptoCurrency.value)
         secondaryCurrency = Observable(fiatCurrency.value)
         
-        blockExplorer = Observable(data?.blockExplorer ?? .smartbit)
+        blockExplorer = Observable(data?.blockExplorer ?? .blockstream)
         onChainRequestAddressType = Observable(data?.onChainRequestAddressType ?? .nestedPubkeyHash)
         
         super.init()

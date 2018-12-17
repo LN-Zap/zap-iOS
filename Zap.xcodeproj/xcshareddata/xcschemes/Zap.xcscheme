@@ -124,6 +124,11 @@
             isEnabled = "YES">
          </EnvironmentVariable>
          <EnvironmentVariable
+            key = "TRACE_DB"
+            value = "1"
+            isEnabled = "NO">
+         </EnvironmentVariable>
+         <EnvironmentVariable
             key = "FAKE_BIOMETRIC_AUTHENTICATION"
             value = "1"
             isEnabled = "YES">

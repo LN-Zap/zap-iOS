@@ -92,7 +92,8 @@ lane :alpha do
   )
 
   upload_to_testflight(
-    username: ENV['ITUNESCONNECT_USER']
+    username: ENV['ITUNESCONNECT_USER'],
+    skip_waiting_for_build_processing: true
   )
 
   add_git_tag
@@ -134,7 +135,6 @@ end
 
 desc "Run all tests."
 lane :tests do
-  check_l10n
   swiftlint()
   
   run_tests(
@@ -145,12 +145,4 @@ lane :tests do
     slack_only_on_failure: true,
     code_coverage: true
   )
-end
-
-desc "Check for duplicate or missing localizations."
-lane :check_l10n do
-  warnings = sh("./l10n.sh")
-  unless warnings.nil? || warnings.empty?
-    UI.user_error!(warnings)
-  end
 end

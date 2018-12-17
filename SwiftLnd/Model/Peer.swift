@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import LndRpc
 
 public struct Peer {
     public let pubKey: String
@@ -13,7 +14,7 @@ public struct Peer {
 }
 
 extension Peer {
-    init(peer: Lnrpc_Peer) {
+    init(peer: LNDPeer) {
         pubKey = peer.pubKey
         host = peer.address
     }

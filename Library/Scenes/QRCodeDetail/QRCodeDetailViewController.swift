@@ -53,10 +53,9 @@ final class QRCodeDetailViewController: UIViewController {
     
     @IBAction private func qrCodeTapped(_ sender: Any) {
         guard let address = viewModel?.uriString else { return }
-        print(address)
         
-        let toast = Toast(message: L10n.Generic.QrCode.copySuccessMessage, style: .success)
-        presentToast(toast, animated: true, completion: nil)
+        print("copied address:", address)
+        Toast.presentSuccess(L10n.Generic.QrCode.copySuccessMessage)
         UISelectionFeedbackGenerator().selectionChanged()
         UIPasteboard.general.string = address
     }

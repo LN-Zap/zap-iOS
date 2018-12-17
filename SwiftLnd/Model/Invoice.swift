@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import LndRpc
 import SwiftBTC
 
 public struct Invoice: Equatable {
@@ -20,11 +21,15 @@ public struct Invoice: Equatable {
 }
 
 extension Invoice {
-    init(invoice: Lnrpc_Invoice) {
+    init(invoice: LNDInvoice) {
         id = invoice.rHash.hexadecimalString
         memo = invoice.memo
-        amount = Satoshi(invoice.value)
         settled = invoice.settled
+        if settled {
+            amount = Satoshi(invoice.amtPaidSat)
+        } else {
+            amount = Satoshi(invoice.value)
+        }
         date = Date(timeIntervalSince1970: TimeInterval(invoice.creationDate))
         if invoice.settled {
             settleDate = Date(timeIntervalSince1970: TimeInterval(invoice.settleDate))

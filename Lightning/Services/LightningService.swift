@@ -11,7 +11,13 @@ import ReactiveKit
 import SwiftBTC
 import SwiftLnd
 
+public extension Notification.Name {
+    public static let receivedTransaction = Notification.Name(rawValue: "receivedTransaction")
+}
+
 public final class LightningService: NSObject {
+    public static var transactionNotificationName = "transactionNotificationName"
+    
     private let api: LightningApiProtocol
     
     public let infoService: InfoService
@@ -46,6 +52,10 @@ public final class LightningService: NSObject {
             guard let invoice = $0.value else { return }
             print("🛍 new invoice:\n\t\(invoice)")
             self?.historyService.addedInvoice(invoice)
+            
+            if invoice.settled {
+                NotificationCenter.default.post(name: .receivedTransaction, object: nil, userInfo: [LightningService.transactionNotificationName: invoice])
+            }
         }
 
         api.subscribeTransactions { [weak self] in
@@ -53,6 +63,8 @@ public final class LightningService: NSObject {
             print("💵 new transaction:\n\t\(transaction)")
             self?.historyService.addedTransaction(transaction)
             self?.balanceService.update()
+            
+            NotificationCenter.default.post(name: .receivedTransaction, object: nil, userInfo: [LightningService.transactionNotificationName: transaction])
         }
     }
     

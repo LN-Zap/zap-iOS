@@ -86,9 +86,7 @@ final class LightningApiMock: LightningApiProtocol {
     }
     
     func info(completion: @escaping (Result<Info>) -> Void) {
-        DispatchQueue.main.asyncAfter(deadline: .now() + 1) { [info] in
-            completion(Result(value: info, error: LndApiError.unknownError))
-        }
+        completion(Result(value: info, error: LndApiError.unknownError))
     }
     
     func nodeInfo(pubKey: String, completion: @escaping (Result<NodeInfo>) -> Void) {
@@ -139,7 +137,7 @@ final class LightningApiMock: LightningApiProtocol {
         completion(Result(value: decodePaymentRequest, error: LndApiError.unknownError))
     }
     
-    func sendPayment(_ paymentRequest: PaymentRequest, amount: Satoshi?, maxFee: Satoshi?, completion: @escaping (Result<Payment>) -> Void) {
+    func sendPayment(_ paymentRequest: PaymentRequest, amount: Satoshi?, completion: @escaping (Result<Payment>) -> Void) {
         completion(Result(value: sendPayment, error: LndApiError.unknownError))
     }
     

@@ -96,6 +96,6 @@ extension QRCodeScannerViewController: ModalDetailViewControllerDelegate {
     }
     
     func presentError(message: String) {
-        navigationController?.presentErrorToast(message)
+        Toast.presentError(message)
     }
 }

@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import LndRpc
 import SwiftBTC
 
 public struct NodeInfo {
@@ -15,7 +16,7 @@ public struct NodeInfo {
 }
 
 extension NodeInfo {
-    init(nodeInfo: Lnrpc_NodeInfo) {
+    init(nodeInfo: LNDNodeInfo) {
         node = LightningNode(lightningNode: nodeInfo.node)
         numChannels = Int(nodeInfo.numChannels)
         totalCapacity = Int(nodeInfo.totalCapacity)
@@ -30,7 +31,7 @@ public struct LightningNode: Codable {
 }
 
 extension LightningNode {
-    init(lightningNode: Lnrpc_LightningNode) {
+    init(lightningNode: LNDLightningNode) {
         lastUpdate = Int(lightningNode.lastUpdate)
         pubKey = lightningNode.pubKey
         alias = lightningNode.alias

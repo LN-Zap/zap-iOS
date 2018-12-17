@@ -1,7 +1,7 @@
 "generic.memo.placeholder" = "¿Para qué es esto?";
 "generic.qr_code.copy_button" = "Copiar";
-"generic.qr_code.copy_success_message" = "Address has been copied to clipboard.";
-"generic.pasteboard.invalid_address" = "Invalid Address";
+"generic.qr_code.copy_success_message" = "Dirección ha sido copiada en el portapapeles.";
+"generic.pasteboard.invalid_address" = "Dirección inválida";
 "generic.qr_code.share_button" = "Compartir";
 "generic.cancel" = "Cancelar";
 
@@ -14,7 +14,8 @@
 
 "rpc_connect_qrcode_error.btc_pay_expired" = "Parece que el código ha caducado.";
 "rpc_connect_qrcode_error.btc_pay_configuration_broken" = "No se pudo leer el archivo de configuraciones de BTCPay.";
-"rpc_connect_qrcode_error.cant_read_qrcode" = "No se puede conectar a este código.";
+"rpc_connect_qrcode_error.cant_read_qrcode" = "Formato de código no válido.";
+"rpc_connect_qrcode_error.code_updated" = "Conexión actualizada.";
 
 "channel.state.active" = "En línea";
 "channel.state.inactive" = "Desconectado";
@@ -22,20 +23,23 @@
 "channel.state.closing" = "Cerrando";
 "channel.state.force_closing" = "Forzando cierre";
 
-"network.type.testnet" = "TestNet";
-"network.type.mainnet" = "Mainnet";
+"network_type.testnet" = "Testnet";
+"network_type.mainnet" = "Mainnet";
 
 "unit.bitcoin.btc" = "Bitcoin";
 "unit.bitcoin.mbtc" = "MiliBitcoin";
 "unit.bitcoin.bit" = "Bits";
 "unit.bitcoin.satoshi" = "Satoshis";
 
+"toast.invoice" = "Did receive %@";
+"toast.invoice_memo" = "Did receive %@ \"%@\"";
+
 "transaction.no_destination_address" = "Sin dirección de destino";
 
 "view.amount_input.placeholder" = "Cantidad";
 
-"scene.history.title" = "History";
-"scene.history.empty_state_label" = "0 transactions 🙁";
+"scene.history.title" = "Historia";
+"scene.history.empty_state_label" = "0 transacciones 🙁";
 
 "scene.settings.title" = "Configuración";
 "scene.settings.section.wallet" = "Cartera";
@@ -45,12 +49,17 @@
 "scene.settings.item.on_chain_request_address.title" = "Tipo de Dirección de Bitcoin";
 "scene.settings.item.on_chain_request_address.bech32" = "Bech32";
 "scene.settings.item.on_chain_request_address.p2sh" = "P2SH";
-"scene.settings.item.manage_channels" = "Manage Channels";
-"scene.settings.item.node_uri" = "Node URI";
-"scene.settings.item.remove_remote_node" = "Restablecer la configuración de nodos remotos";
+"scene.settings.item.manage_channels" = "Gestionar canales";
+"scene.settings.item.node_uri" = "Nodo de URI";
+"scene.settings.item.remove_remote_node" = "Restablecer conexión del nodo remotamente";
+"scene.settings.item.remove_remote_node.confirmation.title" = "¿Desconectar remotamente el nodo?";
+"scene.settings.item.remove_remote_node.confirmation.message" = "Usted tendrá que reconectarse a su nodo luego.";
+"scene.settings.item.remove_remote_node.confirmation.button" = "Desconectar";
+
 "scene.settings.item.change_pin" = "Cambiar Pin";
 "scene.settings.item.report_issue" = "Informar sobre un problema";
 "scene.settings.item.help" = "¿Necesita ayuda?";
+"scene.settings.item.privacy_policy" = "Privacy Policy";
 
 "scene.request.title" = "Recibir";
 "scene.request.lightning_button" = "Lightning";
@@ -66,10 +75,9 @@
 "scene.channels.close.message" = "¿Realmente desea cerrar el canal con nodo %@?";
 "scene.channels.force_close.title" = "Forzar cierre de canal";
 "scene.channels.force_close.message" = "%@ está offline, ¿está seguro de que desea forzar el cierre de este canal? Tendrá que esperar alrededor de %@ para recuperar sus fondos.";
-"scene.channels.alert.cancel" = "Cancelar";
-"scene.channels.alert.close" = "Cerrar";
-"scene.channels.alert.force_close" = "Forzar cierre";
-"scene.channels.close_loading_view" = "Closing Channel";
+"scene.channels.alert.close" = "Cerrar canal";
+"scene.channels.alert.force_close" = "Forzar cierre del canal";
+"scene.channels.close_loading_view" = "Cerrando canal";
 "scene.channels.close_success.toast" = "El canal está cerrándose.";
 
 "scene.open_channel.title" = "Abrir Canal";
@@ -91,11 +99,11 @@
 "scene.send.send_button" = "Enviar";
 "scene.send.address_headline" = "Para:";
 "scene.send.memo_headline" = "Memo:";
-"scene.send.sending" = "Sending...";
+"scene.send.sending" = "Enviando...";
 "scene.send.lightning.title" = "Enviar pago \"Lightning\"";
 "scene.send.on_chain.title" = "Enviar en cadena";
 "scene.send.authentication_failed" = "Error de autenticación";
-"scene.send.maximum_fee" = "Expected Fee:";
+"scene.send.maximum_fee" = "Costo previsto:";
 
 "scene.connect_remote_node.title" = "Conecte el nodo remoto";
 "scene.connect_remote_node.empty_state" = "Escanee el código QR generado con zapconnect o pegue el código de conexión para conectarse a su nodo.";
@@ -148,8 +156,8 @@
 "scene.transaction_detail.title.lightning_invoice" = "Detalle de la factura";
 "scene.transaction_detail.title.payment_detail" = "Detalle de pago";
 "scene.transaction_detail.title.transaction_detail" = "Detalle de la transacción";
-"scene.transaction_detail.title.channel_event_detail" = "Channel Event";
-"scene.transaction_detail.title.failed_payment" = "Failed Payment";
+"scene.transaction_detail.title.channel_event_detail" = "Evento en el canal";
+"scene.transaction_detail.title.failed_payment" = "Pago fallido";
 "scene.transaction_detail.memo_label" = "Nota";
 "scene.transaction_detail.amount_label" = "Cantidad";
 "scene.transaction_detail.fee_label" = "Tarifa";
@@ -157,6 +165,7 @@
 "scene.transaction_detail.transaction_id_label" = "ID de la transacción";
 "scene.transaction_detail.address_label" = "Dirección";
 "scene.transaction_detail.expiry_label" = "Caducidad";
+"scene.transaction_detail.expiry_label.expired" = "Expired";
 
 "scene.channel_detail.remote_pub_key_label" = "Clave pública";
 "scene.channel_detail.local_balance_label" = "Balance local";
@@ -166,15 +175,15 @@
 "scene.channel_detail.close_button" = "Cerrar canal";
 "scene.channel_detail.force_close_button" = "Forzar cierre de canal";
 
-"scene.filter.title" = "Filter";
+"scene.filter.title" = "Filtro";
 "scene.filter.section_header.transaction_types" = "Tipos de transacción";
-"scene.filter.section_header.advanced" = "Advanced";
-"scene.filter.displayOnChainTransactions" = "On-chain Payments";
-"scene.filter.display_unknown_transaction_type" = "Internal Transations";
+"scene.filter.section_header.advanced" = "Avanzado";
+"scene.filter.displayOnChainTransactions" = "Pagos en cadena";
+"scene.filter.display_unknown_transaction_type" = "Internal Transactions";
 "scene.filter.displayLightningPayments" = "Pagos \"Lightning\"";
-"scene.filter.displayLightningInvoices" = "Created Invoices";
-"scene.filter.displayChannelEvents" = "Channel Events";
-"scene.filter.displayFailedPaymentEvents" = "Failed Payments";
+"scene.filter.displayLightningInvoices" = "Facturas creadas";
+"scene.filter.displayChannelEvents" = "Eventos en el canal";
+"scene.filter.displayFailedPaymentEvents" = "Pagos fallidos";
 
 "scene.qrcode_scanner.top_label" = "Escanear código QR";
 
@@ -186,23 +195,27 @@
 "scene.modal_pin.headline" = "Use contraseña";
 "scene.modal_pin.description" = "Por favor, introduzca su contraseña para continuar";
 
-"scene.history.cell.payment_sent" = "Payment sent";
-"scene.history.cell.payment_received" = "Payment received";
-"scene.history.cell.payment_failed" = "Payment failed (%@)";
-"scene.history.cell.invoice_created" = "Payment Request created";
-"scene.history.cell.channel_opened" = "Open Channel";
-"scene.history.cell.channel_closed" = "Close Channel";
-"scene.history.cell.force_close_channel" = "Force close Channel";
-"scene.history.cell.remote_force_close_channel" = "Remote force close Channel";
-"scene.history.cell.breach_close_channel" = "Breach close Channel";
-"scene.history.cell.close_channel_funding_canceled" = "Close Channel (funding canceled)";
-"scene.history.cell.channel_abandoned" = "Channel abandoned";
-"scene.history.cell.transaction_sent" = "Payment sent";
-"scene.history.cell.transaction_received" = "Payment received";
-"scene.history.cell.label.new" = "new";
+"scene.history.cell.payment_sent" = "Pago enviado";
+"scene.history.cell.payment_received" = "Pago recibido";
+"scene.history.cell.payment_failed" = "Pago fallido (%@)";
+"scene.history.cell.invoice_created" = "Solicitud de pago creada";
+"scene.history.cell.channel_opened" = "Abrir Canal";
+"scene.history.cell.channel_closed" = "Cerrar canal";
+"scene.history.cell.force_close_channel" = "Forzar cierre de canal";
+"scene.history.cell.remote_force_close_channel" = "Cerrar canal remotamente";
+"scene.history.cell.breach_close_channel" = "Forzar cierre de canal";
+"scene.history.cell.close_channel_funding_canceled" = "Cerrar canal (financiamiento cancelado)";
+"scene.history.cell.channel_abandoned" = "Canal abandonado";
+"scene.history.cell.transaction_sent" = "Pago enviado";
+"scene.history.cell.transaction_received" = "Pago recibido";
+"scene.history.cell.label.new" = "nuevo";
 "scene.history.cell.label.error" = "error";
-"scene.history.cell.action.try_again" = "Try Again";
+"scene.history.cell.action.try_again" = "Vuelve a intentarlo";
 
-"scene.node_uri.title" = "Connect to Node";
+"scene.node_uri.title" = "Conectar al nodo";
 "scene.node_uri.alias_label" = "Alias";
 "scene.node_uri.uri_label" = "URI";
+
+"scene.connect_node_uri.action_sheet.title" = "Conectar";
+"scene.connect_node_uri.action_sheet.connect_button" = "Conectar";
+"scene.connect_node_uri.action_sheet.message" = "¿Estás seguro que quieres conectarte al nodo %@?";

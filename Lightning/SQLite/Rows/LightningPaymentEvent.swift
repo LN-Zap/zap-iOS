@@ -58,7 +58,12 @@ extension LightningPaymentEvent {
     
     init(row: Row) {
         paymentHash = row[Column.paymentHash]
-        memo = row[Column.memo]
+        if let memo = row[Column.memo],
+            !memo.isEmpty {
+            self.memo = memo
+        } else {
+            memo = nil
+        }
         amount = row[Column.amount]
         fee = row[Column.fee]
         date = row[Column.date]

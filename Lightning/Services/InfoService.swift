@@ -12,7 +12,6 @@ import SwiftLnd
 
 public final class InfoService {
     public enum State {
-        case noInternet
         case connecting
         case syncing
         case running
@@ -32,7 +31,7 @@ public final class InfoService {
     
     let isSyncedToChain = Observable(false)
 
-    private let heightJobTimer: Timer?
+    private var heightJobTimer: Timer?
     private var updateInfoTimer: Timer?
     
     init(api: LightningApiProtocol, persistence: Persistence, channelService: ChannelService, balanceService: BalanceService, historyService: HistoryService) {
@@ -43,13 +42,14 @@ public final class InfoService {
         
         walletState = Observable(.connecting)
         
-        heightJobTimer = Timer.scheduledTimer(withTimeInterval: 120, repeats: true) { [blockChainHeight, network] _ in
-            BlockchainHeight.get(for: network.value) { blockChainHeight.value = $0 }
+        heightJobTimer = Timer.scheduledTimer(withTimeInterval: 120, repeats: true) { [weak self] _ in
+            guard let self = self else { return }
+            BlockchainHeight.get(for: self.network.value) { self.blockChainHeight.value = $0 }
         }
         heightJobTimer?.fire()
         
-        updateInfoTimer = Timer.scheduledTimer(withTimeInterval: 1, repeats: true) { [api, updateInfo] _ in
-            api.info(completion: updateInfo)
+        updateInfoTimer = Timer.scheduledTimer(withTimeInterval: 1, repeats: true) { [weak self] _ in
+            api.info { self?.updateInfo(result: $0) }
         }
         updateInfoTimer?.fire()
     }
@@ -68,7 +68,7 @@ public final class InfoService {
         
         let newState = walletState(for: result)
         if walletState.value != newState {
-            if newState != .connecting && newState != .noInternet {
+            if newState != .connecting {
                 channelService.update()
                 balanceService.update()
                 historyService.update()
@@ -87,9 +87,6 @@ public final class InfoService {
             } else {
                 return .running
             }
-        } else if let error = result.error as? LndApiError,
-            error == LndApiError.noInternet {
-            return .noInternet
         }
         
         return .connecting

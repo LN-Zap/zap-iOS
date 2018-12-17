@@ -14,7 +14,8 @@
 
 "rpc_connect_qrcode_error.btc_pay_expired" = "Čini se da je kôd istekao.";
 "rpc_connect_qrcode_error.btc_pay_configuration_broken" = "Ne mogu pročitati BTCPay konfiguracijsku datoteku.";
-"rpc_connect_qrcode_error.cant_read_qrcode" = "Ne mogu se spojiti sa ovim kôdom.";
+"rpc_connect_qrcode_error.cant_read_qrcode" = "Invalid code format.";
+"rpc_connect_qrcode_error.code_updated" = "Connection updated.";
 
 "channel.state.active" = "Spojeno";
 "channel.state.inactive" = "Nije spojeno";
@@ -22,13 +23,16 @@
 "channel.state.closing" = "Zatvaranje";
 "channel.state.force_closing" = "Prisilno zatvaranje";
 
-"network.type.testnet" = "Probna mreža";
-"network.type.mainnet" = "Glavna mreža";
+"network_type.testnet" = "Testnet";
+"network_type.mainnet" = "Mainnet";
 
 "unit.bitcoin.btc" = "Bitkoin";
 "unit.bitcoin.mbtc" = "Mili Bitkoin";
 "unit.bitcoin.bit" = "Bit";
 "unit.bitcoin.satoshi" = "Satoši";
+
+"toast.invoice" = "Did receive %@";
+"toast.invoice_memo" = "Did receive %@ \"%@\"";
 
 "transaction.no_destination_address" = "Nema odredišnu adresu";
 
@@ -47,10 +51,15 @@
 "scene.settings.item.on_chain_request_address.p2sh" = "P2SH";
 "scene.settings.item.manage_channels" = "Upravljanje kanalima";
 "scene.settings.item.node_uri" = "URI čvora";
-"scene.settings.item.remove_remote_node" = "Resetiraj konfiguraciju udaljenog čvora";
+"scene.settings.item.remove_remote_node" = "Reset Remote Node Connection";
+"scene.settings.item.remove_remote_node.confirmation.title" = "Disconnect Remote Node?";
+"scene.settings.item.remove_remote_node.confirmation.message" = "You will have to reconnect to your node afterwards.";
+"scene.settings.item.remove_remote_node.confirmation.button" = "Disconnect";
+
 "scene.settings.item.change_pin" = "Promijeni Pin";
 "scene.settings.item.report_issue" = "Prijavi problem";
 "scene.settings.item.help" = "Trebate li pomoć?";
+"scene.settings.item.privacy_policy" = "Privacy Policy";
 
 "scene.request.title" = "Primanje";
 "scene.request.lightning_button" = "Munja";
@@ -66,9 +75,8 @@
 "scene.channels.close.message" = "Stvarno želite zatvoriti kanal sa čvorom %@?";
 "scene.channels.force_close.title" = "Prisilno zatvaranje kanala";
 "scene.channels.force_close.message" = "%@ nije spojen, jeste li sigurni da želite prisilno zatvoriti ovaj kanal? Morat ćete pričekati otprilike %@ za svoje novce?";
-"scene.channels.alert.cancel" = "Odustani";
-"scene.channels.alert.close" = "Zatvori";
-"scene.channels.alert.force_close" = "Prisilno zatvori";
+"scene.channels.alert.close" = "Close Channel";
+"scene.channels.alert.force_close" = "Force Close Channel";
 "scene.channels.close_loading_view" = "Zatvaranje kanala";
 "scene.channels.close_success.toast" = "Kanal se zatvara.";
 
@@ -157,6 +165,7 @@
 "scene.transaction_detail.transaction_id_label" = "ID transakcije";
 "scene.transaction_detail.address_label" = "Adresa";
 "scene.transaction_detail.expiry_label" = "Rok isteka";
+"scene.transaction_detail.expiry_label.expired" = "Expired";
 
 "scene.channel_detail.remote_pub_key_label" = "Udaljeni PubKey";
 "scene.channel_detail.local_balance_label" = "Lokalni saldo";
@@ -170,7 +179,7 @@
 "scene.filter.section_header.transaction_types" = "Vrste transakcija";
 "scene.filter.section_header.advanced" = "Napredno";
 "scene.filter.displayOnChainTransactions" = "Na lanac plaćanja";
-"scene.filter.display_unknown_transaction_type" = "Unutarnje transakcije";
+"scene.filter.display_unknown_transaction_type" = "Internal Transactions";
 "scene.filter.displayLightningPayments" = "Munja plaćanja";
 "scene.filter.displayLightningInvoices" = "Stvorene fakture";
 "scene.filter.displayChannelEvents" = "Događaji za kanal";
@@ -206,3 +215,7 @@
 "scene.node_uri.title" = "Povezivanje na čvor";
 "scene.node_uri.alias_label" = "Nadimak";
 "scene.node_uri.uri_label" = "URI";
+
+"scene.connect_node_uri.action_sheet.title" = "Connect";
+"scene.connect_node_uri.action_sheet.connect_button" = "Connect";
+"scene.connect_node_uri.action_sheet.message" = "Do you really want to connect to node at %@?";

@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import LndRpc
 import SwiftBTC
 
 public enum ChannelState {
@@ -37,10 +38,10 @@ public struct Channel: Equatable {
     public let csvDelay: Int
 }
 
-extension Lnrpc_Channel {
+extension LNDChannel {
     var channelModel: Channel {
         return Channel(
-            blockHeight: Int(chanID >> 40),
+            blockHeight: Int(chanId >> 40),
             state: active ? .active : .inactive,
             localBalance: Satoshi(localBalance),
             remoteBalance: Satoshi(remoteBalance),
@@ -52,7 +53,7 @@ extension Lnrpc_Channel {
     }
 }
 
-extension Lnrpc_PendingChannelsResponse.PendingOpenChannel {
+extension LNDPendingChannelsResponse_PendingOpenChannel {
     var channelModel: Channel {
         return Channel(
             blockHeight: nil,
@@ -67,7 +68,7 @@ extension Lnrpc_PendingChannelsResponse.PendingOpenChannel {
     }
 }
 
-extension Lnrpc_PendingChannelsResponse.ClosedChannel {
+extension LNDPendingChannelsResponse_ClosedChannel {
     var channelModel: Channel {
         return Channel(
             blockHeight: nil,
@@ -82,7 +83,7 @@ extension Lnrpc_PendingChannelsResponse.ClosedChannel {
     }
 }
 
-extension Lnrpc_PendingChannelsResponse.ForceClosedChannel {
+extension LNDPendingChannelsResponse_ForceClosedChannel {
     var channelModel: Channel {
         return Channel(
             blockHeight: nil,

@@ -7,13 +7,13 @@
 
 import Bond
 import Foundation
+import ReactiveKit
 import SwiftLnd
 
 public final class ConnectionService: NSObject {
     public enum State {
         case noWallet
         case connecting
-        case noInternet
         case syncing
         case running
     }
@@ -31,6 +31,7 @@ public final class ConnectionService: NSObject {
     
     private var connectionTimeoutTimer: Timer?
     private var syncingStartTime: Date?
+    private var walletStateDisposable: Disposable?
     
     public private(set) var lightningService: LightningService? {
         didSet {
@@ -83,8 +84,10 @@ public final class ConnectionService: NSObject {
     }
     
     public func disconnect() {
-        self.lightningService = nil
+        walletStateDisposable?.dispose()
+        
         lightningService?.stop()
+        self.lightningService = nil
         state.value = .noWallet
     }
     
@@ -96,7 +99,7 @@ public final class ConnectionService: NSObject {
     }
         
     private func bindStateToLnd() {
-        _ = lightningService?.infoService.walletState
+        walletStateDisposable = lightningService?.infoService.walletState
             .skip(first: 1)
             .filter(filterSyncing)
             .distinct()
@@ -106,15 +109,14 @@ public final class ConnectionService: NSObject {
                 self?.connectionTimeoutTimer?.invalidate()
                 self?.connectionTimeoutTimer = nil
             }
-            .dispose(in: reactive.bag)
+        
+        walletStateDisposable?.dispose(in: reactive.bag)
     }
     
     private func stateForInfoState(_ state: InfoService.State) -> ConnectionService.State {
         switch state {
         case .connecting:
             return handleConnectingState()
-        case .noInternet:
-            return .noInternet
         case .syncing:
             return .syncing
         case .running:

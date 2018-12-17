@@ -13,6 +13,11 @@ public final class RootCoordinator: NSObject, SetupCoordinatorDelegate, PinCoord
     private let connectionService: ConnectionService
     private let authenticationCoordinator: AuthenticationCoordinator
     private let backgroundCoordinator: BackgroundCoordinator
+    private let toastCoordinator: ToastCoordinator = {
+        let coordinator = ToastCoordinator()
+        coordinator.start()
+        return coordinator
+    }()
     
     private var currentCoordinator: Any?
     private var route: Route?
@@ -56,8 +61,6 @@ public final class RootCoordinator: NSObject, SetupCoordinatorDelegate, PinCoord
             presentSetup()
         case .connecting:
             presentLoading(message: .none)
-        case .noInternet:
-            presentLoading(message: .noInternet)
         case .syncing:
             presentSync()
         case .running:
@@ -135,6 +138,8 @@ public final class RootCoordinator: NSObject, SetupCoordinatorDelegate, PinCoord
     }
     
     private func presentSetup() {
+        connectionService.disconnect()
+        
         let setupCoordinator = SetupCoordinator(rootViewController: rootViewController, connectionService: connectionService, authenticationViewModel: authenticationCoordinator.authenticationViewModel, delegate: self)
         currentCoordinator = setupCoordinator
         setupCoordinator.start()

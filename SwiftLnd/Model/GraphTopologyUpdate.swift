@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import LndRpc
 
 public struct GraphTopologyUpdate {
     let nodeUpdates: [NodeUpdate]
@@ -14,10 +15,19 @@ public struct GraphTopologyUpdate {
 }
 
 extension GraphTopologyUpdate {
-    init(graphTopologyUpdate: Lnrpc_GraphTopologyUpdate) {
-        nodeUpdates = graphTopologyUpdate.nodeUpdates.map(NodeUpdate.init)
-        channelUpdates = graphTopologyUpdate.channelUpdates.map(ChannelEdgeUpdate.init)
-        closedChannelUpdates = graphTopologyUpdate.closedChans.map(ClosedChannelUpdate.init)
+    init(graphTopologyUpdate: LNDGraphTopologyUpdate) {
+        nodeUpdates = graphTopologyUpdate.nodeUpdatesArray.compactMap {
+            guard let nodeUpdate = $0 as? LNDNodeUpdate else { return nil }
+            return NodeUpdate(nodeUpdate: nodeUpdate)
+        }
+        channelUpdates = graphTopologyUpdate.channelUpdatesArray.compactMap {
+            guard let channelEdgeUpdate = $0 as? LNDChannelEdgeUpdate else { return nil }
+            return ChannelEdgeUpdate(channelEdgeUpdate: channelEdgeUpdate)
+        }
+        closedChannelUpdates = graphTopologyUpdate.closedChansArray.compactMap {
+            guard let closedChannelUpdate = $0 as? LNDClosedChannelUpdate else { return nil }
+            return ClosedChannelUpdate(closedChannelUpdate: closedChannelUpdate)
+        }
     }
 }
 
@@ -28,8 +38,8 @@ struct NodeUpdate {
 }
 
 extension NodeUpdate {
-    init(nodeUpdate: Lnrpc_NodeUpdate) {
-        addresses = nodeUpdate.addresses
+    init(nodeUpdate: LNDNodeUpdate) {
+        addresses = nodeUpdate.addressesArray.compactMap { $0 as? String }
         identityKey = nodeUpdate.identityKey
         alias = nodeUpdate.alias
     }
@@ -43,8 +53,8 @@ struct ChannelEdgeUpdate {
 }
 
 extension ChannelEdgeUpdate {
-    init(channelEdgeUpdate: Lnrpc_ChannelEdgeUpdate) {
-        chanId = Int(channelEdgeUpdate.chanID)
+    init(channelEdgeUpdate: LNDChannelEdgeUpdate) {
+        chanId = Int(channelEdgeUpdate.chanId)
         capacity = Int(channelEdgeUpdate.capacity)
         advertisingNode = channelEdgeUpdate.advertisingNode
         connectingNode = channelEdgeUpdate.connectingNode
@@ -58,8 +68,8 @@ struct ClosedChannelUpdate {
 }
 
 extension ClosedChannelUpdate {
-    init(closedChannelUpdate: Lnrpc_ClosedChannelUpdate) {
-        chanId = Int(closedChannelUpdate.chanID)
+    init(closedChannelUpdate: LNDClosedChannelUpdate) {
+        chanId = Int(closedChannelUpdate.chanId)
         capacity = Int(closedChannelUpdate.capacity)
         closedHeight = Int(closedChannelUpdate.closedHeight)
     }

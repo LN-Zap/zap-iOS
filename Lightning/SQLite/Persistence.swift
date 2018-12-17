@@ -49,7 +49,9 @@ final class SQLitePersistence: Persistence {
             let connection = try? Connection("\(path)/\(pubKey).sqlite3")
             else { fatalError("can not open database") }
         
-        connection.trace { print("💾", $0) }
+        if Environment.traceDB {
+            connection.trace { print("💾", $0) }
+        }
         
         self.currentConnection = connection
         

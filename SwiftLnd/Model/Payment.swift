@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import LndRpc
 import SwiftBTC
 
 public struct Payment: Equatable {
@@ -18,20 +19,24 @@ public struct Payment: Equatable {
 }
 
 extension Payment {
-    init(payment: Lnrpc_Payment) {
+    init(payment: LNDPayment) {
         id = payment.paymentHash
-        amount = Satoshi(-payment.value)
+        amount = Satoshi(-payment.valueSat)
         date = Date(timeIntervalSince1970: TimeInterval(payment.creationDate))
         fees = Satoshi(payment.fee)
         paymentHash = payment.paymentHash
-        destination = payment.path.last ?? ""
+        destination = payment.pathArray.compactMap { $0 as? String }.last ?? ""
     }
     
-    init(paymentRequest: PaymentRequest, sendResponse: Lnrpc_SendResponse) {
+    init(paymentRequest: PaymentRequest, sendResponse: LNDSendResponse, amount: Satoshi? = nil) {
         id = paymentRequest.paymentHash
-        amount = -paymentRequest.amount
+        if let amount = amount {
+            self.amount = -amount
+        } else {
+            self.amount = -paymentRequest.amount
+        }
         date = paymentRequest.date
-        fees = Satoshi(sendResponse.paymentRoute.totalFees)
+        fees = Satoshi(sendResponse.paymentRoute.totalFeesMsat / 1000)
         paymentHash = paymentRequest.paymentHash
         destination = paymentRequest.destination
     }

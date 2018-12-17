@@ -40,7 +40,7 @@ final class MainCoordinator: Routing {
                         case .success:
                             self?.presentSend(invoice: invoice)
                         case .failure(let error):
-                            self?.rootViewController.presentErrorToast(error.localizedDescription)
+                            Toast.presentError(error.localizedDescription)
                         }
                     }
                 })
@@ -82,7 +82,7 @@ final class MainCoordinator: Routing {
             guard let url = try Settings.shared.blockExplorer.value.url(network: network, code: code, type: type) else { return }
             presentSafariViewController(for: url)
         } catch BlockExplorerError.unsupportedNetwork {
-            (detailViewController ?? rootViewController).presentErrorToast(L10n.Error.BlockExplorer.unsupportedNetwork(Settings.shared.blockExplorer.value.localized, lightningService.infoService.network.value.localized))
+            Toast.presentError(L10n.Error.BlockExplorer.unsupportedNetwork(Settings.shared.blockExplorer.value.localized, lightningService.infoService.network.value.localized))
         } catch {
             print("Unexpected error: \(error).")
         }

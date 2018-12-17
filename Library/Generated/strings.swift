@@ -200,7 +200,7 @@ internal enum L10n {
       internal static let title = L10n.tr("Localizable", "scene.create_wallet.title")
     }
     internal enum Filter {
-      /// Internal Transations
+      /// Internal Transactions
       internal static let displayUnknownTransactionType = L10n.tr("Localizable", "scene.filter.display_unknown_transaction_type")
       /// Channel Events
       internal static let displayChannelEvents = L10n.tr("Localizable", "scene.filter.displayChannelEvents")
@@ -419,6 +419,8 @@ internal enum L10n {
         internal static let manageChannels = L10n.tr("Localizable", "scene.settings.item.manage_channels")
         /// Node URI
         internal static let nodeUri = L10n.tr("Localizable", "scene.settings.item.node_uri")
+        /// Privacy Policy
+        internal static let privacyPolicy = L10n.tr("Localizable", "scene.settings.item.privacy_policy")
         /// Reset Remote Node Connection
         internal static let removeRemoteNode = L10n.tr("Localizable", "scene.settings.item.remove_remote_node")
         /// Report an Issue
@@ -496,6 +498,10 @@ internal enum L10n {
       internal static let memoLabel = L10n.tr("Localizable", "scene.transaction_detail.memo_label")
       /// Transaction ID
       internal static let transactionIdLabel = L10n.tr("Localizable", "scene.transaction_detail.transaction_id_label")
+      internal enum ExpiryLabel {
+        /// Expired
+        internal static let expired = L10n.tr("Localizable", "scene.transaction_detail.expiry_label.expired")
+      }
       internal enum Title {
         /// Channel Event
         internal static let channelEventDetail = L10n.tr("Localizable", "scene.transaction_detail.title.channel_event_detail")
@@ -512,6 +518,17 @@ internal enum L10n {
     internal enum Wallet {
       /// Wallet
       internal static let title = L10n.tr("Localizable", "scene.wallet.title")
+    }
+  }
+
+  internal enum Toast {
+    /// Did receive %@
+    internal static func invoice(_ p1: String) -> String {
+      return L10n.tr("Localizable", "toast.invoice", p1)
+    }
+    /// Did receive %@ "%@"
+    internal static func invoiceMemo(_ p1: String, _ p2: String) -> String {
+      return L10n.tr("Localizable", "toast.invoice_memo", p1, p2)
     }
   }
 
