@@ -59,6 +59,7 @@
 "scene.settings.item.change_pin" = "Change Pin";
 "scene.settings.item.report_issue" = "Reportar um problema";
 "scene.settings.item.help" = "Precisa de Ajuda?";
+"scene.settings.item.privacy_policy" = "Privacy Policy";
 
 "scene.request.title" = "Receber";
 "scene.request.lightning_button" = "Lightning";
@@ -164,6 +165,7 @@
 "scene.transaction_detail.transaction_id_label" = "Transaction ID";
 "scene.transaction_detail.address_label" = "Address";
 "scene.transaction_detail.expiry_label" = "Expiry";
+"scene.transaction_detail.expiry_label.expired" = "Expired";
 
 "scene.channel_detail.remote_pub_key_label" = "Remote PubKey";
 "scene.channel_detail.local_balance_label" = "Local Balance";
@@ -177,7 +179,7 @@
 "scene.filter.section_header.transaction_types" = "Transaction Types";
 "scene.filter.section_header.advanced" = "Advanced";
 "scene.filter.displayOnChainTransactions" = "On-chain Payments";
-"scene.filter.display_unknown_transaction_type" = "Internal Transations";
+"scene.filter.display_unknown_transaction_type" = "Internal Transactions";
 "scene.filter.displayLightningPayments" = "Lightning Payments";
 "scene.filter.displayLightningInvoices" = "Created Invoices";
 "scene.filter.displayChannelEvents" = "Channel Events";

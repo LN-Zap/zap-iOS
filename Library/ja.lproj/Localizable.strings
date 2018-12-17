@@ -59,6 +59,7 @@
 "scene.settings.item.change_pin" = "Change Pin";
 "scene.settings.item.report_issue" = "問題を報告します。";
 "scene.settings.item.help" = "ヘルプが必要ですか。";
+"scene.settings.item.privacy_policy" = "Privacy Policy";
 
 "scene.request.title" = "受け取る";
 "scene.request.lightning_button" = "ライトニング";
@@ -164,6 +165,7 @@
 "scene.transaction_detail.transaction_id_label" = "トランザクションＩＤ";
 "scene.transaction_detail.address_label" = "アドレス";
 "scene.transaction_detail.expiry_label" = "有効期限";
+"scene.transaction_detail.expiry_label.expired" = "Expired";
 
 "scene.channel_detail.remote_pub_key_label" = "リモートのパブリックキー";
 "scene.channel_detail.local_balance_label" = "ローカルの残高";

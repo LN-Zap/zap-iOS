@@ -59,6 +59,7 @@
 "scene.settings.item.change_pin" = "Change Pin";
 "scene.settings.item.report_issue" = "דווח על תקלה";
 "scene.settings.item.help" = "צריך עזרה?";
+"scene.settings.item.privacy_policy" = "Privacy Policy";
 
 "scene.request.title" = "קבל";
 "scene.request.lightning_button" = "Lightning";
@@ -164,6 +165,7 @@
 "scene.transaction_detail.transaction_id_label" = "מזהה תנועה";
 "scene.transaction_detail.address_label" = "כתובת";
 "scene.transaction_detail.expiry_label" = "פקיעה";
+"scene.transaction_detail.expiry_label.expired" = "Expired";
 
 "scene.channel_detail.remote_pub_key_label" = "PubKey מרחוק";
 "scene.channel_detail.local_balance_label" = "יתרה מקומית";

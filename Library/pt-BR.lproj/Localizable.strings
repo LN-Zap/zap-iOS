@@ -59,6 +59,7 @@
 "scene.settings.item.change_pin" = "Change Pin";
 "scene.settings.item.report_issue" = "Reportar um problema";
 "scene.settings.item.help" = "Precisa de Ajuda?";
+"scene.settings.item.privacy_policy" = "Privacy Policy";
 
 "scene.request.title" = "Receber";
 "scene.request.lightning_button" = "Lightning";
@@ -164,6 +165,7 @@
 "scene.transaction_detail.transaction_id_label" = "ID da transação";
 "scene.transaction_detail.address_label" = "Endereço";
 "scene.transaction_detail.expiry_label" = "Expiry";
+"scene.transaction_detail.expiry_label.expired" = "Expired";
 
 "scene.channel_detail.remote_pub_key_label" = "PubKey remoto";
 "scene.channel_detail.local_balance_label" = "Saldo Local";

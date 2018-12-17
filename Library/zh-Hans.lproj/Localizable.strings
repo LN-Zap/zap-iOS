@@ -59,6 +59,7 @@
 "scene.settings.item.change_pin" = "更改 Pin码";
 "scene.settings.item.report_issue" = "报告问题";
 "scene.settings.item.help" = "需要帮助吗？";
+"scene.settings.item.privacy_policy" = "Privacy Policy";
 
 "scene.request.title" = "收款";
 "scene.request.lightning_button" = "闪电";
@@ -164,6 +165,7 @@
 "scene.transaction_detail.transaction_id_label" = "交易 ID";
 "scene.transaction_detail.address_label" = "地址";
 "scene.transaction_detail.expiry_label" = "到期";
+"scene.transaction_detail.expiry_label.expired" = "Expired";
 
 "scene.channel_detail.remote_pub_key_label" = "远程公钥";
 "scene.channel_detail.local_balance_label" = "本地余额";

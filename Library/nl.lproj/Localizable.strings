@@ -31,8 +31,8 @@
 "unit.bitcoin.bit" = "Bits";
 "unit.bitcoin.satoshi" = "Satoshis";
 
-"toast.invoice" = "Did receive %@";
-"toast.invoice_memo" = "Did receive %@ \"%@\"";
+"toast.invoice" = "Ontving %@";
+"toast.invoice_memo" = "Ontving %@ \"%@\"";
 
 "transaction.no_destination_address" = "Geen bestemmingsadres";
 
@@ -59,6 +59,7 @@
 "scene.settings.item.change_pin" = "Verander pincode";
 "scene.settings.item.report_issue" = "Een probleem melden";
 "scene.settings.item.help" = "Hulp nodig?";
+"scene.settings.item.privacy_policy" = "Privacybeleid";
 
 "scene.request.title" = "Ontvangen";
 "scene.request.lightning_button" = "Lightning";
@@ -164,6 +165,7 @@
 "scene.transaction_detail.transaction_id_label" = "Transactie id";
 "scene.transaction_detail.address_label" = "Adres";
 "scene.transaction_detail.expiry_label" = "Vervaltijd";
+"scene.transaction_detail.expiry_label.expired" = "Verlopen";
 
 "scene.channel_detail.remote_pub_key_label" = "Remote PubKey";
 "scene.channel_detail.local_balance_label" = "Lokaal saldo";
@@ -177,7 +179,7 @@
 "scene.filter.section_header.transaction_types" = "Transactie types";
 "scene.filter.section_header.advanced" = "Geadvanceerd";
 "scene.filter.displayOnChainTransactions" = "On-chain betalingen";
-"scene.filter.display_unknown_transaction_type" = "Interne betalingen";
+"scene.filter.display_unknown_transaction_type" = "Internal Transactions";
 "scene.filter.displayLightningPayments" = "Lightning betalingen";
 "scene.filter.displayLightningInvoices" = "Aangemaakte fakturen";
 "scene.filter.displayChannelEvents" = "Kanaal events";

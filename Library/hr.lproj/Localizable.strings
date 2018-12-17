@@ -59,6 +59,7 @@
 "scene.settings.item.change_pin" = "Promijeni Pin";
 "scene.settings.item.report_issue" = "Prijavi problem";
 "scene.settings.item.help" = "Trebate li pomoć?";
+"scene.settings.item.privacy_policy" = "Privacy Policy";
 
 "scene.request.title" = "Primanje";
 "scene.request.lightning_button" = "Munja";
@@ -164,6 +165,7 @@
 "scene.transaction_detail.transaction_id_label" = "ID transakcije";
 "scene.transaction_detail.address_label" = "Adresa";
 "scene.transaction_detail.expiry_label" = "Rok isteka";
+"scene.transaction_detail.expiry_label.expired" = "Expired";
 
 "scene.channel_detail.remote_pub_key_label" = "Udaljeni PubKey";
 "scene.channel_detail.local_balance_label" = "Lokalni saldo";
@@ -177,7 +179,7 @@
 "scene.filter.section_header.transaction_types" = "Vrste transakcija";
 "scene.filter.section_header.advanced" = "Napredno";
 "scene.filter.displayOnChainTransactions" = "Na lanac plaćanja";
-"scene.filter.display_unknown_transaction_type" = "Unutarnje transakcije";
+"scene.filter.display_unknown_transaction_type" = "Internal Transactions";
 "scene.filter.displayLightningPayments" = "Munja plaćanja";
 "scene.filter.displayLightningInvoices" = "Stvorene fakture";
 "scene.filter.displayChannelEvents" = "Događaji za kanal";

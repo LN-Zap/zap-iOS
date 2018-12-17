@@ -59,6 +59,7 @@
 "scene.settings.item.change_pin" = "Change Pin";
 "scene.settings.item.report_issue" = "Raportaţi o problemă";
 "scene.settings.item.help" = "Ai nevoie de ajutor?";
+"scene.settings.item.privacy_policy" = "Privacy Policy";
 
 "scene.request.title" = "Primeste";
 "scene.request.lightning_button" = "Lightning\n";
@@ -164,6 +165,7 @@
 "scene.transaction_detail.transaction_id_label" = "ID tranzacție";
 "scene.transaction_detail.address_label" = "Adresa";
 "scene.transaction_detail.expiry_label" = "Expirarea";
+"scene.transaction_detail.expiry_label.expired" = "Expired";
 
 "scene.channel_detail.remote_pub_key_label" = "PubKey la distanţă";
 "scene.channel_detail.local_balance_label" = "Balanta locala";
