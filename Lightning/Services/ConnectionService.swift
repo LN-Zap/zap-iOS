@@ -75,8 +75,10 @@ public final class ConnectionService: NSObject {
         guard let lightningService = LightningService(connection: connection) else { return }
         
         connectionTimeoutTimer = Timer.scheduledTimer(withTimeInterval: 3, repeats: false) { [weak self] _ in
-            self?.connectionTimeoutTimer = nil
-            self?.state.value = .noWallet
+            guard let strongSelf = self else { return }
+            
+            strongSelf.connectionTimeoutTimer = nil
+            strongSelf.state.value = .noWallet
         }
         
         self.lightningService = lightningService
@@ -106,8 +108,10 @@ public final class ConnectionService: NSObject {
             .map(stateForInfoState)
             .feedNext(into: state)
             .observeNext { [weak self] _ in
-                self?.connectionTimeoutTimer?.invalidate()
-                self?.connectionTimeoutTimer = nil
+                guard let strongSelf = self else { return }
+                
+                strongSelf.connectionTimeoutTimer?.invalidate()
+                strongSelf.connectionTimeoutTimer = nil
             }
         
         walletStateDisposable?.dispose(in: reactive.bag)

@@ -148,8 +148,10 @@ extension AmountInputView: UITextFieldDelegate {
         if animated {
             layoutIfNeeded()
             UIView.animate(withDuration: 0.3) { [weak self] in
-                self?.bottomViewBackground.isHidden = hidden
-                self?.layoutIfNeeded()
+                guard let strongSelf = self else { return }
+                
+                strongSelf.bottomViewBackground.isHidden = hidden
+                strongSelf.layoutIfNeeded()
             }
         } else {
             bottomViewBackground.isHidden = hidden

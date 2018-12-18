@@ -74,8 +74,10 @@ final class ChannelDetailViewController: ModalDetailViewController {
         contentStackView.addArrangedElement(.horizontalStackView(compressionResistant: .first, content: [
             .label(text: L10n.Scene.ChannelDetail.fundingTransactionLabel + ":", style: labelStyle),
             .button(title: fundingTxId, style: Style.Button.custom(fontSize: 14)) { [weak self] _ in
-                self?.dismiss(animated: true, completion: {
-                    self?.presentBlockExplorer(fundingTxId, .transactionId)
+                guard let strongSelf = self else { return }
+                
+                strongSelf.dismiss(animated: true, completion: {
+                    strongSelf.presentBlockExplorer(fundingTxId, .transactionId)
                 })
             }
         ]))
@@ -108,10 +110,12 @@ final class ChannelDetailViewController: ModalDetailViewController {
     
     private func closeChannel() {
         let alertController = UIAlertController.closeChannelAlertController(channelViewModel: channelViewModel) { [channelViewModel, weak self] in
-            let loadingView = self?.presentLoadingView(text: L10n.Scene.Channels.closeLoadingView)
-            self?.channelListViewModel.close(channelViewModel.channel) { result in
+            guard let strongSelf = self else { return }
+            
+            let loadingView = strongSelf.presentLoadingView(text: L10n.Scene.Channels.closeLoadingView)
+            strongSelf.channelListViewModel.close(channelViewModel.channel) { result in
                 DispatchQueue.main.async {
-                    self?.dismissAfterClose(result: result, loadingView: loadingView)
+                    strongSelf.dismissAfterClose(result: result, loadingView: loadingView)
                 }
             }
         }

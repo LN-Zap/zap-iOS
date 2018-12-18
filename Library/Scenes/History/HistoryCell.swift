@@ -82,10 +82,12 @@ final class HistoryCell: BondTableViewCell {
     
     func setSelectedOrHighlighted(_ selectedOrHighlighted: Bool, animated: Bool) {
         let action = { [weak self] in
+            guard let strongSelf = self else { return }
+            
             if selectedOrHighlighted {
-                self?.containerView.backgroundColor = UIColor.Zap.gray
+                strongSelf.containerView.backgroundColor = UIColor.Zap.gray
             } else {
-                self?.containerView.backgroundColor = self?.containerBackgroundColor
+                strongSelf.containerView.backgroundColor = strongSelf.containerBackgroundColor
             }
         }
         
