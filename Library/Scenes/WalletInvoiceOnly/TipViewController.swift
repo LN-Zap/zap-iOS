@@ -53,7 +53,7 @@ final class TipViewController: UIViewController {
         amountTitleLabel.text = "Total"
         tipTitleLabel.text = "Add Tip"
         memoTitleLabel.text = "Memo"
-        memoLabel.text = "🍑 Fette, fette Party"
+        memoLabel.text = waiterRequestViewModel.memo
         tipDetailLabel.isHidden = true
         
         waiterRequestViewModel.totalAmount
@@ -65,16 +65,20 @@ final class TipViewController: UIViewController {
             }
             .bind(to: primaryAmountLabel.reactive.attributedText)
             .dispose(in: reactive.bag)
+        
+        waiterRequestViewModel.totalAmount
+            .map { Settings.shared.secondaryCurrency.value.format(satoshis: $0) }
+            .bind(to: secondaryAmountLabel.reactive.text)
+            .dispose(in: reactive.bag)
     
         waiterRequestViewModel.tipAmount
-            .observeNext { [weak self] in
+            .map {
                 let amountString = Settings.shared.primaryCurrency.value.format(satoshis: waiterRequestViewModel.amount) ?? "0"
                 let tipAmountString = Settings.shared.primaryCurrency.value.format(satoshis: $0) ?? "0"
-                self?.tipDetailLabel.text = amountString + " + " + tipAmountString + " Tip"
+                return amountString + " + " + tipAmountString + " Tip"
             }
+            .bind(to: tipDetailLabel.reactive.text)
             .dispose(in: reactive.bag)
-        
-        secondaryAmountLabel.text = Settings.shared.secondaryCurrency.value.format(satoshis: waiterRequestViewModel.amount)
     }
     
     func setPercentTitle(to button: UIButton, value: Int) {
