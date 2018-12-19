@@ -45,7 +45,7 @@ final class WalletInvoiceOnlyViewController: UIViewController {
         
         Style.Button.background.apply(to: createInvoiceButton)
         
-        createInvoiceButton.setTitle("Create Invoice", for: .normal)
+        createInvoiceButton.setTitle("Next", for: .normal)
         
         _ = updateKeyPadString(input: "")
     }
@@ -74,5 +74,13 @@ final class WalletInvoiceOnlyViewController: UIViewController {
         secondaryCurrencyLabel.text = Settings.shared.secondaryCurrency.value.format(satoshis: satoshis)
         
         return true
+    }
+    
+    @IBAction private func presentWaiterRequest(_ sender: Any) {
+        guard let lightningService = lightningService else { return }
+        let waiterRequestViewModel = WaiterRequestViewModel(amount: satoshis, transactionService: lightningService.transactionService)
+        let tipViewController = UIStoryboard.instantiateTipViewController(waiterRequestViewModel: waiterRequestViewModel)
+        let navigationController = ZapNavigationController(rootViewController: tipViewController)
+        present(navigationController, animated: true, completion: nil)
     }
 }

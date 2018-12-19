@@ -120,6 +120,12 @@ internal enum StoryboardScene {
   internal enum WalletInvoiceOnly: StoryboardType {
     internal static let storyboardName = "WalletInvoiceOnly"
 
+    internal static let tipNavigationController = SceneType<UIKit.UINavigationController>(storyboard: WalletInvoiceOnly.self, identifier: "TipNavigationController")
+
+    internal static let tipViewController = SceneType<TipViewController>(storyboard: WalletInvoiceOnly.self, identifier: "TipViewController")
+
+    internal static let waiterRequestViewController = SceneType<WaiterRequestViewController>(storyboard: WalletInvoiceOnly.self, identifier: "WaiterRequestViewController")
+
     internal static let walletInvoiceOnlyViewController = SceneType<WalletInvoiceOnlyViewController>(storyboard: WalletInvoiceOnly.self, identifier: "WalletInvoiceOnlyViewController")
   }
 }
