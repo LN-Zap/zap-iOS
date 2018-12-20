@@ -33,7 +33,11 @@ final class WalletInvoiceOnlyViewController: UIViewController {
 
     fileprivate var lightningService: LightningService?
     
-    private var satoshis: Satoshi = 0
+    private var satoshis: Satoshi = 0 {
+        didSet {
+            createInvoiceButton.isEnabled = satoshis > 0
+        }
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -46,6 +50,7 @@ final class WalletInvoiceOnlyViewController: UIViewController {
         Style.Button.background.apply(to: createInvoiceButton)
         
         createInvoiceButton.setTitle("Next", for: .normal)
+        createInvoiceButton.isEnabled = false
         
         _ = updateKeyPadString(input: "")
     }
