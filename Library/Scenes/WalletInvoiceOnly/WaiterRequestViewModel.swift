@@ -27,6 +27,11 @@ final class WaiterRequestViewModel {
                 totalAmount.value = amount
                 tipAmount.value = 0
             }
+            
+            if oldValue != selectedTipIndex {
+                bitcoinURI = nil
+                lightningInvoiceURI = nil
+            }
         }
     }
     private var bitcoinURI: BitcoinURI?
