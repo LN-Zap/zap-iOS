@@ -48,4 +48,11 @@ class ProductCollectionViewCell: BondCollectionViewCell {
         Style.Label.subHeadline.apply(to: priceLabel)
         Style.Label.body.apply(to: countLabel)
     }
+    
+    func animateSelection() {        
+        backgroundColor = UIColor.Zap.lightningOrange
+        UIView.animate(withDuration: 0.3, delay: 0, options: [.allowUserInteraction], animations: {
+            self.backgroundColor = UIColor.Zap.background
+        }, completion: nil)
+    }
 }

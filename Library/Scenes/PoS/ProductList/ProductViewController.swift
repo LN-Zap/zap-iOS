@@ -95,11 +95,8 @@ extension ProductViewController: UICollectionViewDelegate {
         shoppingCartViewModel.addSingle(product: product)
         updatePayButtonText()
         
-        let cell = collectionView.cellForItem(at: indexPath)
-        
-        cell?.backgroundColor = UIColor.Zap.lightningOrange
-        UIView.animate(withDuration: 0.3) {
-            cell?.backgroundColor = UIColor.Zap.background
+        if let cell = collectionView.cellForItem(at: indexPath) as? ProductCollectionViewCell {
+            cell.animateSelection()
         }
     }
 }
