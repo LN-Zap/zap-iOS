@@ -81,6 +81,15 @@ internal enum StoryboardScene {
 
     internal static let setupPinViewController = SceneType<SetupPinViewController>(storyboard: NumericKeyPad.self, identifier: "SetupPinViewController")
   }
+  internal enum PoS: StoryboardType {
+    internal static let storyboardName = "PoS"
+
+    internal static let initialScene = InitialSceneType<ZapNavigationController>(storyboard: PoS.self)
+
+    internal static let productViewController = SceneType<ProductViewController>(storyboard: PoS.self, identifier: "ProductViewController")
+
+    internal static let shoppingCartViewController = SceneType<ShoppingCartViewController>(storyboard: PoS.self, identifier: "ShoppingCartViewController")
+  }
   internal enum QRCodeDetail: StoryboardType {
     internal static let storyboardName = "QRCodeDetail"
 
@@ -119,8 +128,6 @@ internal enum StoryboardScene {
   }
   internal enum WalletInvoiceOnly: StoryboardType {
     internal static let storyboardName = "WalletInvoiceOnly"
-
-    internal static let tipNavigationController = SceneType<UIKit.UINavigationController>(storyboard: WalletInvoiceOnly.self, identifier: "TipNavigationController")
 
     internal static let tipViewController = SceneType<TipViewController>(storyboard: WalletInvoiceOnly.self, identifier: "TipViewController")
 

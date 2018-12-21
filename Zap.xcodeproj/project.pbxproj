@@ -182,6 +182,15 @@
 		AD81C21721B80FCD00FA3FA9 /* SafariSettingsItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD81C21621B80FCD00FA3FA9 /* SafariSettingsItem.swift */; };
 		AD81C21921B865E100FA3FA9 /* SyncPercentageEstimator.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD81C21821B865E100FA3FA9 /* SyncPercentageEstimator.swift */; };
 		AD81C21B21B86A3100FA3FA9 /* SyncPercentageEstimatorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD81C21A21B86A3100FA3FA9 /* SyncPercentageEstimatorTests.swift */; };
+		AD8A3DAA21CBDF3E00D48B65 /* PoS.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AD8A3DA921CBDF3E00D48B65 /* PoS.storyboard */; };
+		AD8A3DAC21CBDF5000D48B65 /* ProductViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD8A3DAB21CBDF5000D48B65 /* ProductViewController.swift */; };
+		AD8A3DAF21CBDFCB00D48B65 /* Product.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD8A3DAE21CBDFCB00D48B65 /* Product.swift */; };
+		AD8A3DB121CBDFF400D48B65 /* ShoppingCartViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD8A3DB021CBDFF400D48B65 /* ShoppingCartViewModel.swift */; };
+		AD8A3DB421CBE12000D48B65 /* ProductCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD8A3DB221CBE12000D48B65 /* ProductCollectionViewCell.swift */; };
+		AD8A3DB521CBE12000D48B65 /* ProductCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = AD8A3DB321CBE12000D48B65 /* ProductCollectionViewCell.xib */; };
+		AD8A3DB921CBF5BA00D48B65 /* ShoppingCartViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD8A3DB821CBF5BA00D48B65 /* ShoppingCartViewController.swift */; };
+		AD8A3DBE21CBF9D600D48B65 /* ShoppingListTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD8A3DBC21CBF9D600D48B65 /* ShoppingListTableViewCell.swift */; };
+		AD8A3DBF21CBF9D600D48B65 /* ShoppingListTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = AD8A3DBD21CBF9D600D48B65 /* ShoppingListTableViewCell.xib */; };
 		AD8FE12B214AD42900C00DF2 /* DateEstimator.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD8FE129214AD3E900C00DF2 /* DateEstimator.swift */; };
 		AD8FF49A21C7E4A000C4F68D /* WalletInvoiceOnlyViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD8FF49821C7E4A000C4F68D /* WalletInvoiceOnlyViewController.swift */; };
 		AD8FF49B21C7E4A000C4F68D /* WalletInvoiceOnly.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AD8FF49921C7E4A000C4F68D /* WalletInvoiceOnly.storyboard */; };
@@ -640,6 +649,15 @@
 		AD81C21621B80FCD00FA3FA9 /* SafariSettingsItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SafariSettingsItem.swift; sourceTree = "<group>"; };
 		AD81C21821B865E100FA3FA9 /* SyncPercentageEstimator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SyncPercentageEstimator.swift; sourceTree = "<group>"; };
 		AD81C21A21B86A3100FA3FA9 /* SyncPercentageEstimatorTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SyncPercentageEstimatorTests.swift; sourceTree = "<group>"; };
+		AD8A3DA921CBDF3E00D48B65 /* PoS.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = PoS.storyboard; sourceTree = "<group>"; };
+		AD8A3DAB21CBDF5000D48B65 /* ProductViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductViewController.swift; sourceTree = "<group>"; };
+		AD8A3DAE21CBDFCB00D48B65 /* Product.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Product.swift; sourceTree = "<group>"; };
+		AD8A3DB021CBDFF400D48B65 /* ShoppingCartViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShoppingCartViewModel.swift; sourceTree = "<group>"; };
+		AD8A3DB221CBE12000D48B65 /* ProductCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductCollectionViewCell.swift; sourceTree = "<group>"; };
+		AD8A3DB321CBE12000D48B65 /* ProductCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ProductCollectionViewCell.xib; sourceTree = "<group>"; };
+		AD8A3DB821CBF5BA00D48B65 /* ShoppingCartViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShoppingCartViewController.swift; sourceTree = "<group>"; };
+		AD8A3DBC21CBF9D600D48B65 /* ShoppingListTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShoppingListTableViewCell.swift; sourceTree = "<group>"; };
+		AD8A3DBD21CBF9D600D48B65 /* ShoppingListTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ShoppingListTableViewCell.xib; sourceTree = "<group>"; };
 		AD8B13F020C0582D0091F9DA /* RootCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RootCoordinator.swift; sourceTree = "<group>"; };
 		AD8FE129214AD3E900C00DF2 /* DateEstimator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateEstimator.swift; sourceTree = "<group>"; };
 		AD8FF49821C7E4A000C4F68D /* WalletInvoiceOnlyViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WalletInvoiceOnlyViewController.swift; sourceTree = "<group>"; };
@@ -992,6 +1010,7 @@
 				ADCE01CA207B966200CA72E8 /* Loading */,
 				ADEEB5342134668B00D2F992 /* ModalPin */,
 				A02C9FBB202EE995009821B1 /* OpenChannel */,
+				AD8A3DA821CBDF2500D48B65 /* PoS */,
 				A070D963202A3CFC000A8274 /* QRCodeDetail */,
 				AD99C9EB209072530061C565 /* QRCodeScanner */,
 				AD0D0BC0212BE36A00E4F7F7 /* Request */,
@@ -1499,6 +1518,46 @@
 				ADA3253321A701E700C5EAA2 /* MacaroonId.pb.swift */,
 			);
 			path = Generated;
+			sourceTree = "<group>";
+		};
+		AD8A3DA821CBDF2500D48B65 /* PoS */ = {
+			isa = PBXGroup;
+			children = (
+				AD8A3DAD21CBDFB800D48B65 /* Model */,
+				AD8A3DA921CBDF3E00D48B65 /* PoS.storyboard */,
+				AD8A3DBB21CBF96800D48B65 /* ProductList */,
+				AD8A3DBA21CBF95E00D48B65 /* ShoppingCart */,
+			);
+			path = PoS;
+			sourceTree = "<group>";
+		};
+		AD8A3DAD21CBDFB800D48B65 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				AD8A3DAE21CBDFCB00D48B65 /* Product.swift */,
+				AD8A3DB021CBDFF400D48B65 /* ShoppingCartViewModel.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		AD8A3DBA21CBF95E00D48B65 /* ShoppingCart */ = {
+			isa = PBXGroup;
+			children = (
+				AD8A3DB821CBF5BA00D48B65 /* ShoppingCartViewController.swift */,
+				AD8A3DBC21CBF9D600D48B65 /* ShoppingListTableViewCell.swift */,
+				AD8A3DBD21CBF9D600D48B65 /* ShoppingListTableViewCell.xib */,
+			);
+			path = ShoppingCart;
+			sourceTree = "<group>";
+		};
+		AD8A3DBB21CBF96800D48B65 /* ProductList */ = {
+			isa = PBXGroup;
+			children = (
+				AD8A3DB221CBE12000D48B65 /* ProductCollectionViewCell.swift */,
+				AD8A3DB321CBE12000D48B65 /* ProductCollectionViewCell.xib */,
+				AD8A3DAB21CBDF5000D48B65 /* ProductViewController.swift */,
+			);
+			path = ProductList;
 			sourceTree = "<group>";
 		};
 		AD8FF49721C7E45600C4F68D /* WalletInvoiceOnly */ = {
@@ -2247,7 +2306,10 @@
 				AD391D2220D1798A007EE22A /* Media.xcassets in Resources */,
 				ADEEB53821346DEA00D2F992 /* ModalPin.storyboard in Resources */,
 				AD391C9820D16FA8007EE22A /* QRCodeScanner.storyboard in Resources */,
+				AD8A3DB521CBE12000D48B65 /* ProductCollectionViewCell.xib in Resources */,
 				AD391CDA20D16FE1007EE22A /* History.storyboard in Resources */,
+				AD8A3DAA21CBDF3E00D48B65 /* PoS.storyboard in Resources */,
+				AD8A3DBF21CBF9D600D48B65 /* ShoppingListTableViewCell.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -2790,6 +2852,7 @@
 				AD391C5120D16F7A007EE22A /* ConfirmMnemonicCollectionViewCell.swift in Sources */,
 				AD391C3920D16F0B007EE22A /* BockExplorer.swift in Sources */,
 				ADA81E9E210DE14100B7C6F2 /* UIView.swift in Sources */,
+				AD8A3DB421CBE12000D48B65 /* ProductCollectionViewCell.swift in Sources */,
 				ADDD13B62119CE740035D2F9 /* StackViewElement.swift in Sources */,
 				AD391C9A20D16FA8007EE22A /* QRCodeScannerView.swift in Sources */,
 				AD9BB2DC21830B4F009DC878 /* LoadingAmountView.swift in Sources */,
@@ -2816,6 +2879,7 @@
 				AD391C2C20D16EFA007EE22A /* String.swift in Sources */,
 				AD292F9020E69F0E00211AE7 /* AuthenticationViewModel.swift in Sources */,
 				ADA6BBBF211B3AEC00A1FF19 /* ScanRectView.swift in Sources */,
+				AD8A3DBE21CBF9D600D48B65 /* ShoppingListTableViewCell.swift in Sources */,
 				AD391D1C20D174B4007EE22A /* RootCoordinator.swift in Sources */,
 				AD391C7420D16F89007EE22A /* QRCodeDetailViewController.swift in Sources */,
 				AD391C2D20D16EFA007EE22A /* UIAlertController.swift in Sources */,
@@ -2847,6 +2911,7 @@
 				AD391CAD20D16FA8007EE22A /* OnChainRequestAddressTypeSettingsItem.swift in Sources */,
 				AD97A91420EFCFC3008344EA /* Bitcoin+Localizable.swift in Sources */,
 				AD28CB7B211DE93300A31004 /* BlockExplorerSettingsItem.swift in Sources */,
+				AD8A3DAC21CBDF5000D48B65 /* ProductViewController.swift in Sources */,
 				AD391CB720D16FA8007EE22A /* SettingsViewController.swift in Sources */,
 				AD667E4721359D79007B9160 /* AuthenticationCoordinator.swift in Sources */,
 				AD391C3620D16EFA007EE22A /* UITableView.swift in Sources */,
@@ -2869,6 +2934,7 @@
 				ADFE2E4C216CF4A800988243 /* ManageChannelsSettingsItem.swift in Sources */,
 				AD391C4D20D16F68007EE22A /* ChannelListViewController.swift in Sources */,
 				AD391D2020D178C2007EE22A /* Bundle.swift in Sources */,
+				AD8A3DB121CBDFF400D48B65 /* ShoppingCartViewModel.swift in Sources */,
 				AD391D0920D16FF5007EE22A /* KeyPadView.swift in Sources */,
 				AD615CF5211C82E600680790 /* LoadingView.swift in Sources */,
 				ADA865C020ECC89E00B1B74B /* FilterTableViewCell.swift in Sources */,
@@ -2878,6 +2944,7 @@
 				AD391D1B20D174B4007EE22A /* PinSetupCoordinator.swift in Sources */,
 				ADA75DF2210F389100003068 /* ChannelState+Localizable.swift in Sources */,
 				AD9BB2E021836A54009DC878 /* DispatchQueue+Debounce.swift in Sources */,
+				AD8A3DAF21CBDFCB00D48B65 /* Product.swift in Sources */,
 				AD391C6020D16F7A007EE22A /* SelectWalletCreationMethodTableViewCell.swift in Sources */,
 				AD391C9920D16FA8007EE22A /* QRCodeScannerStrategy.swift in Sources */,
 				AD391D0520D16FF5007EE22A /* BalanceView.swift in Sources */,
@@ -2905,6 +2972,7 @@
 				AD615CF7211CAB0900680790 /* PaddingLabel.swift in Sources */,
 				AD8FF49A21C7E4A000C4F68D /* WalletInvoiceOnlyViewController.swift in Sources */,
 				AD391C6E20D16F89007EE22A /* SetupPinViewModel.swift in Sources */,
+				AD8A3DB921CBF5BA00D48B65 /* ShoppingCartViewController.swift in Sources */,
 				ADA179C62152864E001401F3 /* Storage.swift in Sources */,
 				ADA865BE20ECB88500B1B74B /* FilterViewController.swift in Sources */,
 				AD391C5F20D16F7A007EE22A /* RecoverWalletViewController.swift in Sources */,
