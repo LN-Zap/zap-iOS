@@ -35,6 +35,12 @@ final class ShoppingCartViewController: UIViewController {
         tableView.backgroundColor = UIColor.Zap.background
         tableView.tableFooterView = UIView(frame: .zero)
     }
+    
+    @IBAction private func clearShoppingCart(_ sender: Any) {
+        shoppingCartViewModel?.removeAll()
+        tableView.reloadData()
+        navigationController?.popViewController(animated: true)
+    }
 }
 
 extension ShoppingCartViewController: UITableViewDelegate {
@@ -45,12 +51,12 @@ extension ShoppingCartViewController: UITableViewDelegate {
 
 extension ShoppingCartViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return shoppingCartViewModel?.items.count ?? 0
+        return shoppingCartViewModel?.selectedItems.count ?? 0
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell: ShoppingListTableViewCell = tableView.dequeueCellForIndexPath(indexPath)
-        cell.selectedItem = shoppingCartViewModel?.items[indexPath.row]
+        cell.selectedItem = shoppingCartViewModel?.selectedItems[indexPath.row]
         return cell
     }
     
@@ -59,8 +65,9 @@ extension ShoppingCartViewController: UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
-        if editingStyle == .delete {
-            shoppingCartViewModel?.remove(at: indexPath.row)
+        if editingStyle == .delete,
+            let product = shoppingCartViewModel?.selectedItems[indexPath.row].0 {
+            shoppingCartViewModel?.removeAll(product: product)
             tableView.deleteRows(at: [indexPath], with: .automatic)
         }
     }

@@ -5,28 +5,47 @@
 //  Copyright © 2018 Zap. All rights reserved.
 //
 
+import Bond
 import UIKit
 
-class ProductCollectionViewCell: UICollectionViewCell {
+class ProductCollectionViewCell: BondCollectionViewCell {
     @IBOutlet private weak var nameLabel: UILabel!
     @IBOutlet private weak var priceLabel: UILabel!
+    @IBOutlet private weak var countLabel: UILabel!
     
-    var product: Product? {
+    var item: (Product, Observable<Int>)? {
         didSet {
-            guard let product = product else { return }
-            self.nameLabel.text = product.name
-            self.priceLabel.text = "\(product.price)"
+            guard let (product, count) = item else { return }
+            
+            nameLabel.text = product.name
+            priceLabel.text = "\(product.price)"
+            
+            count
+                .map { $0 <= 0 }
+                .bind(to: countLabel.reactive.isHidden)
+                .dispose(in: onReuseBag)
+            
+            count
+                .map { String($0) }
+                .bind(to: countLabel.reactive.text)
+                .dispose(in: onReuseBag)
         }
     }
     
     override func awakeFromNib() {
         super.awakeFromNib()
 
+        countLabel.clipsToBounds = true
+        countLabel.layer.cornerRadius = 11
+        countLabel.backgroundColor = UIColor.Zap.lightningOrange
+        countLabel.textAlignment = .center
+        
         layer.cornerRadius = 10
         layer.borderWidth = 1
         layer.borderColor = UIColor.Zap.gray.cgColor
         
         Style.Label.headline.apply(to: nameLabel)
         Style.Label.subHeadline.apply(to: priceLabel)
+        Style.Label.body.apply(to: countLabel)
     }
 }

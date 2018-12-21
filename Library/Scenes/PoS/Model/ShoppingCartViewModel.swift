@@ -5,63 +5,53 @@
 //  Copyright © 2018 Zap. All rights reserved.
 //
 
+import Bond
 import Foundation
 
-final class SelectedItem {
-    var count: Int
-    let product: Product
-    
-    var sum: Decimal {
-        return Decimal(count) * product.price
-    }
-    
-    init(count: Int, product: Product) {
-        self.count = count
-        self.product = product
-    }
-}
-
 final class ShoppingCartViewModel {
-    var items = [SelectedItem]()
+    init(products: [Product]) {
+        items = [Product: Observable<Int>]()
+        for product in products {
+            items[product] = Observable(0)
+        }
+    }
+    
+    private var items = [Product: Observable<Int>]()
     
     var itemCount: Int {
-        return items.reduce(0) { $0 + $1.count }
+        return items.values.reduce(0) { $0 + $1.value }
     }
     
     var sum: Decimal {
-        return items.reduce(0) { $0 + $1.sum }
+        return items.reduce(0) { $0 + $1.key.price * Decimal($1.value.value) }
     }
     
-    func count(of product: Product) -> Int {
-        return item(of: product)?.count ?? 0
+    var selectedItems: [(Product, Observable<Int>)] {
+        return items
+            .filter { $0.1.value > 0 }
+            .map { ($0.key, $0.value) }
+    }
+    
+    func count(of product: Product) -> Observable<Int> {
+        return items[product] ?? Observable(0)
     }
     
     func addSingle(product: Product) {
-        if let item = item(of: product) {
-            item.count += 1
-        } else {
-            items.append(SelectedItem(count: 1, product: product))
-        }
+        items[product]?.value += 1
     }
     
     func removeSingle(product: Product) {
-        guard let item = item(of: product) else { return }
-        item.count -= 1
-        
-        if item.count == 0 { // swiftlint:disable:this empty_count
-            items.removeAll { $0.product == product }
-        }
+        guard count(of: product).value > 0 else { return }
+        items[product]?.value -= 1
     }
     
-    func remove(at index: Int) {
-        items.remove(at: index)
+    func removeAll(product: Product) {
+        items[product]?.value = 0
     }
     
     func removeAll() {
-        items.removeAll()
-    }
-    
-    private func item(of product: Product) -> SelectedItem? {
-        return items.first(where: { $0.product == product })
+        for product in items.keys {
+            items[product]?.value = 0
+        }
     }
 }

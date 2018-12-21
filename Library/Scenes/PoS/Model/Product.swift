@@ -14,7 +14,7 @@ struct Group: Groupable {
     let items: [Groupable]
 }
 
-struct Product: Groupable, Equatable {
+struct Product: Groupable, Equatable, Hashable {
     let name: String
     let price: Decimal
 }

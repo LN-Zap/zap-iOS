@@ -6,29 +6,45 @@
 //
 
 import Foundation
+import Lightning
 
-let items: [Groupable] = [
-    Product(name: "Bier", price: 3.50),
-    Product(name: "Bier 2", price: 2.75),
-    Product(name: "Pils", price: 1.30),
-    Product(name: "TS 1", price: 0.01),
-    Product(name: "TS 2", price: 5),
-    Product(name: "TS 3", price: 1),
-    Product(name: "TS 21", price: 2),
-    Product(name: "TS 22", price: 100),
-    Product(name: "TS 23", price: 15)
-]
+extension UIStoryboard {
+    static func instantiateProductViewController(transactionService: TransactionService) -> ZapNavigationController {
+        let productViewController = StoryboardScene.PoS.productViewController.instantiate()
+        productViewController.transactionService = transactionService
+
+        let navigationController = ZapNavigationController(rootViewController: productViewController)
+        
+        navigationController.tabBarItem.image = Asset.tabbarWallet.image
+        navigationController.tabBarItem.title = "Favourites"
+
+        return navigationController
+    }
+}
 
 final class ProductViewController: UIViewController {
     @IBOutlet private weak var collectionView: UICollectionView!
     @IBOutlet private weak var payButton: UIButton!
     @IBOutlet private weak var shoppingCartButton: UIBarButtonItem!
+
+    private let productsViewModel = ProductsViewModel()
+    private let shoppingCartViewModel: ShoppingCartViewModel
     
-    private let shoppingCartViewModel = ShoppingCartViewModel()
+    override init(nibName nibNameOrNil: String?, bundle nibBundleOrNil: Bundle?) {
+        shoppingCartViewModel = ShoppingCartViewModel(products: productsViewModel.items)
+        super.init(nibName: nibNameOrNil, bundle: nibBundleOrNil)
+    }
+    
+    required init?(coder aDecoder: NSCoder) {
+        shoppingCartViewModel = ShoppingCartViewModel(products: productsViewModel.items)
+        super.init(coder: aDecoder)
+    }
+    
+    fileprivate var transactionService: TransactionService?
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        title = "Chicago Bar"
+        navigationItem.title = "Chicago Bar"
         
         Style.Button.background.apply(to: payButton)
         
@@ -55,9 +71,11 @@ final class ProductViewController: UIViewController {
     }
     
     @IBAction private func presentTipViewController(_ sender: Any) {
-//        let waiterRequestViewModel = WaiterRequestViewModel(amount: 19, transactionService: nil)
-//        let tipViewController = UIStoryboard.instantiateTipViewController(waiterRequestViewModel: waiterRequestViewModel)
-//        present(tipViewController, animated: true, completion: nil)
+        guard let transactionService = transactionService else { return }
+        let waiterRequestViewModel = WaiterRequestViewModel(amount: 19, transactionService: transactionService)
+        let tipViewController = UIStoryboard.instantiateTipViewController(waiterRequestViewModel: waiterRequestViewModel)
+        let navigationController = ZapNavigationController(rootViewController: tipViewController)
+        present(navigationController, animated: true, completion: nil)
     }
     
     @IBAction private func presentShoppingCart(_ sender: Any) {
@@ -73,7 +91,7 @@ final class ProductViewController: UIViewController {
 
 extension ProductViewController: UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        guard let product = items[indexPath.row] as? Product else { return }
+        let product = productsViewModel.items[indexPath.row]
         shoppingCartViewModel.addSingle(product: product)
         updatePayButtonText()
         
@@ -88,12 +106,15 @@ extension ProductViewController: UICollectionViewDelegate {
 
 extension ProductViewController: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return items.count
+        return productsViewModel.items.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell: ProductCollectionViewCell = collectionView.dequeueCellForIndexPath(indexPath)
-        cell.product = items[indexPath.row] as? Product
+        
+        let product = productsViewModel.items[indexPath.row]
+        let count = shoppingCartViewModel.count(of: product)
+        cell.item = (product, count)
         return cell
     }
 }

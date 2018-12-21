@@ -5,6 +5,7 @@
 //  Copyright © 2018 Zap. All rights reserved.
 //
 
+import Bond
 import UIKit
 
 class ShoppingListTableViewCell: UITableViewCell {
@@ -12,12 +13,12 @@ class ShoppingListTableViewCell: UITableViewCell {
     @IBOutlet private weak var titleLabel: UILabel!
     @IBOutlet private weak var priceLabel: UILabel!
     
-    var selectedItem: SelectedItem? {
+    var selectedItem: (Product, Observable<Int>)? {
         didSet {
-            guard let selectedItem = selectedItem else { return }
-            titleLabel.text = selectedItem.product.name
-            amountLabel.text = String(selectedItem.count) + "x"
-            priceLabel.text = "\(selectedItem.sum)"
+            guard let (product, count) = selectedItem else { return }
+            titleLabel.text = product.name
+            amountLabel.text = String(count.value) + " x"
+            priceLabel.text = "\(product.price * Decimal(count.value))"
         }
     }
     
