@@ -111,7 +111,38 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="yqU-hC-gM0" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2404" y="108.39580209895054"/>
+            <point key="canvasLocation" x="1455" y="109"/>
+        </scene>
+        <!--Product Search View Controller-->
+        <scene sceneID="OBD-1k-BYk">
+            <objects>
+                <viewController storyboardIdentifier="ProductSearchViewController" id="sQ9-h4-WGC" customClass="ProductSearchViewController" customModule="Library" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="3fq-mS-gBq">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="OES-DI-1b4">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            </tableView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="OES-DI-1b4" firstAttribute="top" secondItem="3fq-mS-gBq" secondAttribute="top" id="AzN-tg-ANI"/>
+                            <constraint firstItem="OES-DI-1b4" firstAttribute="leading" secondItem="5Ee-IL-xER" secondAttribute="leading" id="HyD-Qo-kkS"/>
+                            <constraint firstItem="OES-DI-1b4" firstAttribute="trailing" secondItem="5Ee-IL-xER" secondAttribute="trailing" id="Pnb-6d-ONW"/>
+                            <constraint firstItem="OES-DI-1b4" firstAttribute="bottom" secondItem="5Ee-IL-xER" secondAttribute="bottom" id="oAk-de-zk8"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="5Ee-IL-xER"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="62f-R8-zwk"/>
+                    <connections>
+                        <outlet property="tableView" destination="OES-DI-1b4" id="b0P-uO-HZT"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="qvi-3L-a7d" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2286" y="108"/>
         </scene>
         <!--Zap Navigation Controller-->
         <scene sceneID="RNW-R7-2Ut">
@@ -119,6 +150,7 @@
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="4HD-lx-gwC" customClass="ZapNavigationController" customModule="Library" customModuleProvider="target" sceneMemberID="viewController">
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="CrR-Dh-BMg">
+                        <rect key="frame" x="0.0" y="20" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <nil name="viewControllers"/>
