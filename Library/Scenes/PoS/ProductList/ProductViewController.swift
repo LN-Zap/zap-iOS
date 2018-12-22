@@ -9,12 +9,13 @@ import Foundation
 import Lightning
 
 extension UIStoryboard {
-    static func instantiateProductViewController(transactionService: TransactionService) -> ZapNavigationController {
+    static func instantiateProductViewController(transactionService: TransactionService, productsViewModel: ProductsViewModel, shoppingCartViewModel: ShoppingCartViewModel) -> ZapNavigationController {
         let productViewController = StoryboardScene.PoS.productViewController.instantiate()
         productViewController.transactionService = transactionService
-
-        let navigationController = ZapNavigationController(rootViewController: productViewController)
+        productViewController.productsViewModel = productsViewModel
+        productViewController.shoppingCartViewModel = shoppingCartViewModel
         
+        let navigationController = ZapNavigationController(rootViewController: productViewController)
         navigationController.tabBarItem.image = Asset.tabbarWallet.image
         navigationController.tabBarItem.title = "Favourites"
 
@@ -27,20 +28,9 @@ final class ProductViewController: UIViewController {
     @IBOutlet private weak var payButton: UIButton!
     @IBOutlet private weak var shoppingCartButton: UIBarButtonItem!
 
-    private let productsViewModel = ProductsViewModel()
-    private let shoppingCartViewModel: ShoppingCartViewModel
-    
-    override init(nibName nibNameOrNil: String?, bundle nibBundleOrNil: Bundle?) {
-        shoppingCartViewModel = ShoppingCartViewModel(products: productsViewModel.items)
-        super.init(nibName: nibNameOrNil, bundle: nibBundleOrNil)
-    }
-    
-    required init?(coder aDecoder: NSCoder) {
-        shoppingCartViewModel = ShoppingCartViewModel(products: productsViewModel.items)
-        super.init(coder: aDecoder)
-    }
-    
-    fileprivate var transactionService: TransactionService?
+    fileprivate var productsViewModel = ProductsViewModel()
+    fileprivate var shoppingCartViewModel: ShoppingCartViewModel!
+    fileprivate var transactionService: TransactionService!
     
     override func viewDidLoad() {
         super.viewDidLoad()

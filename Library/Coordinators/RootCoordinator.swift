@@ -121,11 +121,14 @@ public final class RootCoordinator: NSObject, SetupCoordinatorDelegate, PinCoord
         
         let mainCoordinator = MainCoordinator(rootViewController: rootViewController, lightningService: lightningService, settingsDelegate: self, authenticationViewModel: authenticationCoordinator.authenticationViewModel)
 
-        tabBarController.viewControllers = [
-            mainCoordinator.walletViewController(),
+        var viewControllers = firstTabBarViewControllers(mainCoordinator: mainCoordinator)
+        viewControllers.append(contentsOf: [
             mainCoordinator.historyViewController(),
             mainCoordinator.settingsViewController()
-        ]
+        ])
+        
+        tabBarController.viewControllers = viewControllers
+        
         presentViewController(tabBarController)
     
         currentCoordinator = mainCoordinator
@@ -134,6 +137,14 @@ public final class RootCoordinator: NSObject, SetupCoordinatorDelegate, PinCoord
         
         if let route = self.route {
             handle(route)
+        }
+    }
+    
+    func firstTabBarViewControllers(mainCoordinator: MainCoordinator) -> [UIViewController] {
+        if ConnectionService.permissions.can(.write, domain: .onChain) && !Environment.forcePoS {
+            return [mainCoordinator.walletViewController()]
+        } else {
+            return mainCoordinator.posViewControllers()
         }
     }
     

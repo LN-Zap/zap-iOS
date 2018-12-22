@@ -55,11 +55,18 @@ final class MainCoordinator: Routing {
     }
     
     func walletViewController() -> UIViewController {
-        if ConnectionService.permissions.can(.write, domain: .onChain) {
-            return UIStoryboard.instantiateWalletViewController(lightningService: lightningService, sendButtonTapped: presentSend, requestButtonTapped: presentRequest)
-        } else {
-            return UIStoryboard.instantiateWalletInvoiceOnlyViewController(lightningService: lightningService)
-        }
+        return UIStoryboard.instantiateWalletViewController(lightningService: lightningService, sendButtonTapped: presentSend, requestButtonTapped: presentRequest)
+    }
+    
+    func posViewControllers() -> [UIViewController] {
+        
+        let productsViewModel = ProductsViewModel()
+        let shoppingCartViewModel = ShoppingCartViewModel(products: productsViewModel.items)
+        
+        return [
+            UIStoryboard.instantiateProductViewController(transactionService: lightningService.transactionService, productsViewModel: productsViewModel, shoppingCartViewModel: shoppingCartViewModel),
+            UIStoryboard.instantiateProductSearchViewController(shoppingCartViewModel: shoppingCartViewModel)
+        ]
     }
 
     func settingsViewController() -> UIViewController {
