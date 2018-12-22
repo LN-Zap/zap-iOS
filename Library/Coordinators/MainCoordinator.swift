@@ -59,12 +59,11 @@ final class MainCoordinator: Routing {
     }
     
     func posViewControllers() -> [UIViewController] {
-        
         let productsViewModel = ProductsViewModel()
-        let shoppingCartViewModel = ShoppingCartViewModel(products: productsViewModel.items)
+        let shoppingCartViewModel = ShoppingCartViewModel(products: productsViewModel.favourites)
         
         return [
-            UIStoryboard.instantiateProductViewController(transactionService: lightningService.transactionService, productsViewModel: productsViewModel, shoppingCartViewModel: shoppingCartViewModel),
+            UIStoryboard.instantiateFavouriteProductsViewController(transactionService: lightningService.transactionService, productsViewModel: productsViewModel, shoppingCartViewModel: shoppingCartViewModel),
             UIStoryboard.instantiateProductSearchViewController(shoppingCartViewModel: shoppingCartViewModel)
         ]
     }

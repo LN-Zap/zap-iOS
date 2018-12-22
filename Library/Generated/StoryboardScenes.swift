@@ -88,7 +88,7 @@ internal enum StoryboardScene {
 
     internal static let productSearchViewController = SceneType<ProductSearchViewController>(storyboard: PoS.self, identifier: "ProductSearchViewController")
 
-    internal static let productViewController = SceneType<ProductViewController>(storyboard: PoS.self, identifier: "ProductViewController")
+    internal static let productViewController = SceneType<FavouriteProductsViewController>(storyboard: PoS.self, identifier: "ProductViewController")
 
     internal static let shoppingCartViewController = SceneType<ShoppingCartViewController>(storyboard: PoS.self, identifier: "ShoppingCartViewController")
   }

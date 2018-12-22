@@ -9,7 +9,7 @@ import Foundation
 import Lightning
 
 extension UIStoryboard {
-    static func instantiateProductViewController(transactionService: TransactionService, productsViewModel: ProductsViewModel, shoppingCartViewModel: ShoppingCartViewModel) -> ZapNavigationController {
+    static func instantiateFavouriteProductsViewController(transactionService: TransactionService, productsViewModel: ProductsViewModel, shoppingCartViewModel: ShoppingCartViewModel) -> ZapNavigationController {
         let productViewController = StoryboardScene.PoS.productViewController.instantiate()
         productViewController.transactionService = transactionService
         productViewController.productsViewModel = productsViewModel
@@ -23,14 +23,14 @@ extension UIStoryboard {
     }
 }
 
-final class ProductViewController: UIViewController {
+final class FavouriteProductsViewController: UIViewController {
     @IBOutlet private weak var collectionView: UICollectionView!
     @IBOutlet private weak var payButton: UIButton!
     @IBOutlet private weak var shoppingCartButton: UIBarButtonItem!
 
     fileprivate var productsViewModel = ProductsViewModel()
-    fileprivate var shoppingCartViewModel: ShoppingCartViewModel!
-    fileprivate var transactionService: TransactionService!
+    fileprivate var shoppingCartViewModel: ShoppingCartViewModel! // swiftlint:disable:this implicitly_unwrapped_optional
+    fileprivate var transactionService: TransactionService! // swiftlint:disable:this implicitly_unwrapped_optional
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -40,7 +40,7 @@ final class ProductViewController: UIViewController {
         
         view.backgroundColor = UIColor.Zap.background
         collectionView.backgroundColor = UIColor.Zap.background
-        collectionView.registerCell(ProductCollectionViewCell.self)
+        collectionView.registerCell(FavouriteProductCollectionViewCell.self)
         
         collectionView.dataSource = self
         collectionView.delegate = self
@@ -79,27 +79,27 @@ final class ProductViewController: UIViewController {
     }
 }
 
-extension ProductViewController: UICollectionViewDelegate {
+extension FavouriteProductsViewController: UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        let product = productsViewModel.items[indexPath.row]
+        let product = productsViewModel.favourites[indexPath.row]
         shoppingCartViewModel.addSingle(product: product)
         updatePayButtonText()
         
-        if let cell = collectionView.cellForItem(at: indexPath) as? ProductCollectionViewCell {
+        if let cell = collectionView.cellForItem(at: indexPath) as? FavouriteProductCollectionViewCell {
             cell.animateSelection()
         }
     }
 }
 
-extension ProductViewController: UICollectionViewDataSource {
+extension FavouriteProductsViewController: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return productsViewModel.items.count
+        return productsViewModel.favourites.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell: ProductCollectionViewCell = collectionView.dequeueCellForIndexPath(indexPath)
+        let cell: FavouriteProductCollectionViewCell = collectionView.dequeueCellForIndexPath(indexPath)
         
-        let product = productsViewModel.items[indexPath.row]
+        let product = productsViewModel.favourites[indexPath.row]
         let count = shoppingCartViewModel.count(of: product)
         cell.item = (product, count)
         return cell

@@ -8,7 +8,7 @@
 import Bond
 import UIKit
 
-class ProductCollectionViewCell: BondCollectionViewCell {
+class FavouriteProductCollectionViewCell: BondCollectionViewCell {
     @IBOutlet private weak var nameLabel: UILabel!
     @IBOutlet private weak var priceLabel: UILabel!
     @IBOutlet private weak var countLabel: UILabel!
@@ -49,7 +49,7 @@ class ProductCollectionViewCell: BondCollectionViewCell {
         Style.Label.body.apply(to: countLabel)
     }
     
-    func animateSelection() {        
+    func animateSelection() {
         backgroundColor = UIColor.Zap.lightningOrange
         UIView.animate(withDuration: 0.3, delay: 0, options: [.allowUserInteraction], animations: {
             self.backgroundColor = UIColor.Zap.background
