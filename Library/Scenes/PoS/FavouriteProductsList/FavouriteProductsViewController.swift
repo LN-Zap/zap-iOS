@@ -28,7 +28,7 @@ final class FavouriteProductsViewController: UIViewController {
     @IBOutlet private weak var payButton: UIButton!
     @IBOutlet private weak var shoppingCartButton: UIBarButtonItem!
 
-    fileprivate var productsViewModel = ProductsViewModel()
+    fileprivate var productsViewModel: ProductsViewModel! // swiftlint:disable:this implicitly_unwrapped_optional
     fileprivate var shoppingCartViewModel: ShoppingCartViewModel! // swiftlint:disable:this implicitly_unwrapped_optional
     fileprivate var transactionService: TransactionService! // swiftlint:disable:this implicitly_unwrapped_optional
     

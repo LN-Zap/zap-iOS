@@ -7,55 +7,65 @@
 
 import Foundation
 
+typealias JSON = [String: Any]
+
 final class ProductsViewModel {
-    let favourites: [Product] = [
-        Product(name: "Bier", price: 3.50),
-        Product(name: "Bier 2", price: 2.75),
-        Product(name: "Pils", price: 1.30),
-        Product(name: "TS 1", price: 0.01),
-        Product(name: "TS 2", price: 5),
-        Product(name: "TS 3", price: 1),
-        Product(name: "TS 21", price: 2),
-        Product(name: "TS 22", price: 100),
-        Product(name: "TS 23", price: 15)
-    ]
+    let favourites: [Product]
+    let productGroup: Group
     
-    let productGroup: Group = Group(name: "All Items", items: [
-        Group(name: "N/A Bevs", items: [
-            Product(name: "TS 3", price: 1),
-            Product(name: "TS 21", price: 2),
-            Product(name: "TS 22", price: 100),
-            Product(name: "TS 23", price: 15)
-        ]),
-        Group(name: "Vodka", items: [
-            Product(name: "TS 3", price: 1),
-            Product(name: "TS 21", price: 2),
-            Product(name: "TS 22", price: 100),
-            Product(name: "TS 23", price: 15)
-        ]),
-        Group(name: "Gin", items: [
-            Product(name: "TS 3", price: 1),
-            Product(name: "TS 21", price: 2),
-            Product(name: "TS 22", price: 100),
-            Product(name: "TS 23", price: 15)
-        ]),
-        Group(name: "Rum", items: [
-            Product(name: "TS 3", price: 1),
-            Product(name: "TS 21", price: 2),
-            Product(name: "TS 22", price: 100),
-            Product(name: "TS 23", price: 15)
-        ]),
-        Group(name: "Bourbon", items: [
-            Product(name: "TS 3", price: 1),
-            Product(name: "TS 21", price: 2),
-            Product(name: "TS 22", price: 100),
-            Product(name: "TS 23", price: 15)
-        ]),
-        Group(name: "Whiskey", items: [
-            Product(name: "TS 3", price: 1),
-            Product(name: "TS 21", price: 2),
-            Product(name: "TS 22", price: 100),
-            Product(name: "TS 23", price: 15)
-        ])
-    ])
+    var allProducts: Set<Product> {
+        return Set(favourites + groupedProducts(group: productGroup))
+    }
+    
+    init() {
+        guard
+            let path = Bundle.library.path(forResource: "pos", ofType: "json"),
+            let data = try? Data(contentsOf: URL(fileURLWithPath: path)),
+            let json = try? JSONSerialization.jsonObject(with: data, options: []) as? JSON ?? [:],
+            let jsonFavourites = json["favourites"] as? [JSON],
+            let jsonProducts = json["products"] as? [JSON]
+            else { fatalError("invalid pos json") }
+        
+        favourites = jsonFavourites.compactMap(Product.init)
+        let products = jsonProducts.compactMap(decodeGroupable)
+        productGroup = Group(name: "All Items", items: products)
+    }
+    
+    private func groupedProducts(group: Group) -> [Product] {
+        var result = [Product]()
+        for item in group.items {
+            if let product = item as? Product {
+                result.append(product)
+            } else if let group = item as? Group {
+                result += groupedProducts(group: group)
+            }
+        }
+        return result
+    }
+}
+
+private func decodeGroupable(json: JSON) -> Groupable? {
+    return Product(json: json) ?? Group(json: json)
+}
+
+private extension Product {
+    init?(json: JSON) {
+        guard
+            let name = json["name"] as? String,
+            let price = json["price"] as? Double
+            else { return nil }
+        self.name = name
+        self.price = Decimal(price)
+    }
+}
+
+private extension Group {
+    init?(json: JSON) {
+        guard
+            let name = json["name"] as? String,
+            let items = json["items"] as? [JSON]
+            else { return nil }
+        self.name = name
+        self.items = items.compactMap(decodeGroupable)
+    }
 }

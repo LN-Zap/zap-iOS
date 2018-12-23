@@ -197,6 +197,7 @@
 		AD8A3DC921CE4EC800D48B65 /* SearchProductCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = AD8A3DC721CE4EC800D48B65 /* SearchProductCell.xib */; };
 		AD8A3DCB21CE4FC000D48B65 /* ProductCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD8A3DCA21CE4FC000D48B65 /* ProductCell.swift */; };
 		AD8A3DCD21CF9D9600D48B65 /* ProductSearchViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD8A3DCC21CF9D9600D48B65 /* ProductSearchViewModel.swift */; };
+		AD8A3DCF21CFFBAB00D48B65 /* pos.json in Resources */ = {isa = PBXBuildFile; fileRef = AD8A3DCE21CFFBAB00D48B65 /* pos.json */; };
 		AD8FE12B214AD42900C00DF2 /* DateEstimator.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD8FE129214AD3E900C00DF2 /* DateEstimator.swift */; };
 		AD8FF49A21C7E4A000C4F68D /* WalletInvoiceOnlyViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD8FF49821C7E4A000C4F68D /* WalletInvoiceOnlyViewController.swift */; };
 		AD8FF49B21C7E4A000C4F68D /* WalletInvoiceOnly.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AD8FF49921C7E4A000C4F68D /* WalletInvoiceOnly.storyboard */; };
@@ -670,6 +671,7 @@
 		AD8A3DC721CE4EC800D48B65 /* SearchProductCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SearchProductCell.xib; sourceTree = "<group>"; };
 		AD8A3DCA21CE4FC000D48B65 /* ProductCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductCell.swift; sourceTree = "<group>"; };
 		AD8A3DCC21CF9D9600D48B65 /* ProductSearchViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductSearchViewModel.swift; sourceTree = "<group>"; };
+		AD8A3DCE21CFFBAB00D48B65 /* pos.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = pos.json; sourceTree = "<group>"; };
 		AD8B13F020C0582D0091F9DA /* RootCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RootCoordinator.swift; sourceTree = "<group>"; };
 		AD8FE129214AD3E900C00DF2 /* DateEstimator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateEstimator.swift; sourceTree = "<group>"; };
 		AD8FF49821C7E4A000C4F68D /* WalletInvoiceOnlyViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WalletInvoiceOnlyViewController.swift; sourceTree = "<group>"; };
@@ -1541,6 +1543,7 @@
 				AD8A3DC221CD608200D48B65 /* ProductSearch */,
 				AD8A3DBA21CBF95E00D48B65 /* ShoppingCart */,
 				AD8A3DCA21CE4FC000D48B65 /* ProductCell.swift */,
+				AD8A3DCE21CFFBAB00D48B65 /* pos.json */,
 			);
 			path = PoS;
 			sourceTree = "<group>";
@@ -2308,6 +2311,7 @@
 			files = (
 				AD10D05721132EFB00A0F0D3 /* Localizable.strings in Resources */,
 				AD391CB820D16FA8007EE22A /* Sync.storyboard in Resources */,
+				AD8A3DCF21CFFBAB00D48B65 /* pos.json in Resources */,
 				AD967FD42100D8E80048085B /* CertificateDetailCell.xib in Resources */,
 				ADA179C02151509E001401F3 /* SectionHeaderView.xib in Resources */,
 				AD391C6A20D16F89007EE22A /* NumericKeyPad.storyboard in Resources */,

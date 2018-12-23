@@ -1,0 +1,60 @@
+{
+    "favourites":[
+        {
+            "name": "312",
+            "price": 3.50
+        },
+        {
+            "name": "Allagash",
+            "price": 3.40
+        },
+        {
+            "name": "KC Amstel",
+            "price": 4.00
+        },
+        {
+            "name": "KC Blue Moon",
+            "price": 5.20
+        },
+        {
+            "name": "Absolut",
+            "price": 1.40
+        }
+    ],
+    "products":[
+        {
+            "name": "Beers",
+            "items": [
+                {
+                    "name": "312",
+                    "price": 3.50
+                },
+                {
+                    "name": "Allagash",
+                    "price": 10.20
+                },
+                {
+                    "name": "KC Amstel",
+                    "price": 1.99
+                },
+                {
+                    "name": "KC Blue Moon",
+                    "price": 3.42
+                }
+            ]
+        },
+        {
+            "name": "Gin",
+            "items": [
+                {
+                    "name": "312",
+                    "price": 7.80
+                },
+                {
+                    "name": "Allagash",
+                    "price": 10.20
+                }
+            ]
+        }
+    ]
+}

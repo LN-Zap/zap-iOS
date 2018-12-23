@@ -9,9 +9,9 @@ import Bond
 import Foundation
 
 final class ShoppingCartViewModel {
-    init(products: [Product]) {
+    init(productsViewModel: ProductsViewModel) {
         items = [Product: Observable<Int>]()
-        for product in products {
+        for product in productsViewModel.allProducts {
             items[product] = Observable(0)
         }
     }
