@@ -8,12 +8,12 @@
 import Foundation
 
 extension UIStoryboard {
-    static func instantiateProductSearchViewController(shoppingCartViewModel: ShoppingCartViewModel, productsViewModel: ProductsViewModel, productGroup: Group) -> ProductSearchViewController {
+    static func instantiateProductSearchViewController(shoppingCartViewModel: ShoppingCartViewModel, productsViewModel: ProductsViewModel, productSearchViewModel: ProductSearchViewModel) -> ProductSearchViewController {
         let productSearchViewController = StoryboardScene.PoS.productSearchViewController.instantiate()
         
         productSearchViewController.shoppingCartViewModel = shoppingCartViewModel
         productSearchViewController.productsViewModel = productsViewModel
-        productSearchViewController.productGroup = productGroup
+        productSearchViewController.productSearchViewModel = productSearchViewModel
 
         return productSearchViewController
     }
@@ -25,7 +25,7 @@ final class ProductSearchViewController: UIViewController {
     // swiftlint:disable implicitly_unwrapped_optional
     fileprivate var shoppingCartViewModel: ShoppingCartViewModel!
     fileprivate var productsViewModel: ProductsViewModel!
-    fileprivate var productGroup: Group!
+    fileprivate var productSearchViewModel: ProductSearchViewModel!
     // swiftlint:enable implicitly_unwrapped_optional
     
     override func viewDidLoad() {
@@ -37,7 +37,7 @@ final class ProductSearchViewController: UIViewController {
         navigationItem.searchController = searchController
         navigationItem.hidesSearchBarWhenScrolling = false
         navigationItem.largeTitleDisplayMode = .never
-        navigationItem.title = productGroup.name
+        navigationItem.title = productSearchViewModel.title
         
         tableView.registerCell(SearchProductCell.self)
         tableView.tableFooterView = UIView(frame: .zero)
@@ -46,6 +46,31 @@ final class ProductSearchViewController: UIViewController {
         tableView.dataSource = self
         tableView.rowHeight = 76
         view.backgroundColor = UIColor.Zap.background
+        
+        productSearchViewModel.items.bind(to: tableView) { [shoppingCartViewModel] items, indexPath, tableView -> UITableViewCell in
+            if let product = items[indexPath.row] as? Product,
+                let shoppingCartViewModel = shoppingCartViewModel {
+                let cell: SearchProductCell = tableView.dequeueCellForIndexPath(indexPath)
+                let count = shoppingCartViewModel.count(of: product)
+                cell.setItem(product: product, count: count)
+                return cell
+            } else {
+                var cell = tableView.dequeueReusableCell(withIdentifier: "test")
+                
+                if cell == nil {
+                    cell = UITableViewCell(style: .default, reuseIdentifier: "test")
+                    cell?.backgroundColor = UIColor.Zap.background
+                    Style.Label.body.apply(to: cell!.textLabel!)
+                }
+                
+                cell?.textLabel?.text = items[indexPath.row].name
+                if items[indexPath.row] is Group {
+                    cell?.accessoryType = .disclosureIndicator
+                }
+                
+                return cell! // swiftlint:disable:this force_unwrapping
+            }
+        }
     }
 }
 
@@ -53,9 +78,10 @@ extension ProductSearchViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
         
-        let groupable = productGroup.items[indexPath.row]
+        let groupable = productSearchViewModel.items[indexPath.row]
         if let group = groupable as? Group {
-            let detailViewController = UIStoryboard.instantiateProductSearchViewController(shoppingCartViewModel: shoppingCartViewModel, productsViewModel: productsViewModel, productGroup: group)
+            let productSearchViewModel = ProductSearchViewModel(group: group)
+            let detailViewController = UIStoryboard.instantiateProductSearchViewController(shoppingCartViewModel: shoppingCartViewModel, productsViewModel: productsViewModel, productSearchViewModel: productSearchViewModel)
             navigationController?.pushViewController(detailViewController, animated: true)
         } else if let product = groupable as? Product {
             shoppingCartViewModel.addSingle(product: product)
@@ -65,31 +91,11 @@ extension ProductSearchViewController: UITableViewDelegate {
 
 extension ProductSearchViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return productGroup.items.count
+        fatalError("not implemented")
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        if let product = productGroup.items[indexPath.row] as? Product {
-            let cell: SearchProductCell = tableView.dequeueCellForIndexPath(indexPath)
-            let count = shoppingCartViewModel.count(of: product)
-            cell.setItem(product: product, count: count)
-            return cell
-        } else {
-            var cell = tableView.dequeueReusableCell(withIdentifier: "test")
-            
-            if cell == nil {
-                cell = UITableViewCell(style: .default, reuseIdentifier: "test")
-                cell?.backgroundColor = UIColor.Zap.background
-                Style.Label.body.apply(to: cell!.textLabel!)
-            }
-            
-            cell?.textLabel?.text = productGroup.items[indexPath.row].name
-            if productGroup.items[indexPath.row] is Group {
-                cell?.accessoryType = .disclosureIndicator
-            }
-            
-            return cell! // swiftlint:disable:this force_unwrapping
-        }
+        fatalError("not implemented")
     }
 }
 
@@ -101,6 +107,6 @@ extension ProductSearchViewController: UISearchBarDelegate {
 
 extension ProductSearchViewController: UISearchResultsUpdating {
     func updateSearchResults(for searchController: UISearchController) {
-        
+        productSearchViewModel.searchString = searchController.searchBar.text
     }
 }

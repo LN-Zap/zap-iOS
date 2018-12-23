@@ -61,8 +61,8 @@ final class MainCoordinator: Routing {
     func posViewControllers() -> [UIViewController] {
         let productsViewModel = ProductsViewModel()
         let shoppingCartViewModel = ShoppingCartViewModel(products: productsViewModel.favourites)
-        
-        let productSearchViewController = UIStoryboard.instantiateProductSearchViewController(shoppingCartViewModel: shoppingCartViewModel, productsViewModel: productsViewModel, productGroup: productsViewModel.productGroup)
+        let productSearchViewModel = ProductSearchViewModel(group: productsViewModel.productGroup)
+        let productSearchViewController = UIStoryboard.instantiateProductSearchViewController(shoppingCartViewModel: shoppingCartViewModel, productsViewModel: productsViewModel, productSearchViewModel: productSearchViewModel)
 
         let navigationController = ZapNavigationController(rootViewController: productSearchViewController)
         
