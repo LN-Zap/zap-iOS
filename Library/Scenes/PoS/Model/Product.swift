@@ -7,7 +7,9 @@
 
 import Foundation
 
-protocol Groupable {}
+protocol Groupable {
+    var name: String { get }
+}
 
 struct Group: Groupable {
     let name: String

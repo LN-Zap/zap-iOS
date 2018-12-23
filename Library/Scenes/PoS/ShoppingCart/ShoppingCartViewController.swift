@@ -30,7 +30,7 @@ final class ShoppingCartViewController: UIViewController {
         
         tableView.delegate = self
         tableView.dataSource = self
-        tableView.rowHeight = 54
+        tableView.rowHeight = 76
         tableView.allowsMultipleSelectionDuringEditing = false
         tableView.backgroundColor = UIColor.Zap.background
         tableView.tableFooterView = UIView(frame: .zero)

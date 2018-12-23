@@ -193,6 +193,9 @@
 		AD8A3DBF21CBF9D600D48B65 /* ShoppingListTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = AD8A3DBD21CBF9D600D48B65 /* ShoppingListTableViewCell.xib */; };
 		AD8A3DC121CD1B0500D48B65 /* ProductsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD8A3DC021CD1B0500D48B65 /* ProductsViewModel.swift */; };
 		AD8A3DC421CD609F00D48B65 /* ProductSearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD8A3DC321CD609F00D48B65 /* ProductSearchViewController.swift */; };
+		AD8A3DC821CE4EC800D48B65 /* SearchProductCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD8A3DC621CE4EC800D48B65 /* SearchProductCell.swift */; };
+		AD8A3DC921CE4EC800D48B65 /* SearchProductCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = AD8A3DC721CE4EC800D48B65 /* SearchProductCell.xib */; };
+		AD8A3DCB21CE4FC000D48B65 /* ProductCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD8A3DCA21CE4FC000D48B65 /* ProductCell.swift */; };
 		AD8FE12B214AD42900C00DF2 /* DateEstimator.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD8FE129214AD3E900C00DF2 /* DateEstimator.swift */; };
 		AD8FF49A21C7E4A000C4F68D /* WalletInvoiceOnlyViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD8FF49821C7E4A000C4F68D /* WalletInvoiceOnlyViewController.swift */; };
 		AD8FF49B21C7E4A000C4F68D /* WalletInvoiceOnly.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AD8FF49921C7E4A000C4F68D /* WalletInvoiceOnly.storyboard */; };
@@ -662,6 +665,9 @@
 		AD8A3DBD21CBF9D600D48B65 /* ShoppingListTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ShoppingListTableViewCell.xib; sourceTree = "<group>"; };
 		AD8A3DC021CD1B0500D48B65 /* ProductsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductsViewModel.swift; sourceTree = "<group>"; };
 		AD8A3DC321CD609F00D48B65 /* ProductSearchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductSearchViewController.swift; sourceTree = "<group>"; };
+		AD8A3DC621CE4EC800D48B65 /* SearchProductCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchProductCell.swift; sourceTree = "<group>"; };
+		AD8A3DC721CE4EC800D48B65 /* SearchProductCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SearchProductCell.xib; sourceTree = "<group>"; };
+		AD8A3DCA21CE4FC000D48B65 /* ProductCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductCell.swift; sourceTree = "<group>"; };
 		AD8B13F020C0582D0091F9DA /* RootCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RootCoordinator.swift; sourceTree = "<group>"; };
 		AD8FE129214AD3E900C00DF2 /* DateEstimator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateEstimator.swift; sourceTree = "<group>"; };
 		AD8FF49821C7E4A000C4F68D /* WalletInvoiceOnlyViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WalletInvoiceOnlyViewController.swift; sourceTree = "<group>"; };
@@ -1532,6 +1538,7 @@
 				AD8A3DBB21CBF96800D48B65 /* FavouriteProductsList */,
 				AD8A3DC221CD608200D48B65 /* ProductSearch */,
 				AD8A3DBA21CBF95E00D48B65 /* ShoppingCart */,
+				AD8A3DCA21CE4FC000D48B65 /* ProductCell.swift */,
 			);
 			path = PoS;
 			sourceTree = "<group>";
@@ -1570,6 +1577,8 @@
 			isa = PBXGroup;
 			children = (
 				AD8A3DC321CD609F00D48B65 /* ProductSearchViewController.swift */,
+				AD8A3DC621CE4EC800D48B65 /* SearchProductCell.swift */,
+				AD8A3DC721CE4EC800D48B65 /* SearchProductCell.xib */,
 			);
 			path = ProductSearch;
 			sourceTree = "<group>";
@@ -2299,6 +2308,7 @@
 				AD967FD42100D8E80048085B /* CertificateDetailCell.xib in Resources */,
 				ADA179C02151509E001401F3 /* SectionHeaderView.xib in Resources */,
 				AD391C6A20D16F89007EE22A /* NumericKeyPad.storyboard in Resources */,
+				AD8A3DC921CE4EC800D48B65 /* SearchProductCell.xib in Resources */,
 				AD035BFD2174A030005EA785 /* ChannelTableViewCell.xib in Resources */,
 				AD667E552136B074007B9160 /* TimeLocked.storyboard in Resources */,
 				AD391C4C20D16F68007EE22A /* ChannelList.storyboard in Resources */,
@@ -2893,6 +2903,7 @@
 				AD391C2C20D16EFA007EE22A /* String.swift in Sources */,
 				AD8A3DC121CD1B0500D48B65 /* ProductsViewModel.swift in Sources */,
 				AD292F9020E69F0E00211AE7 /* AuthenticationViewModel.swift in Sources */,
+				AD8A3DC821CE4EC800D48B65 /* SearchProductCell.swift in Sources */,
 				ADA6BBBF211B3AEC00A1FF19 /* ScanRectView.swift in Sources */,
 				AD8A3DBE21CBF9D600D48B65 /* ShoppingListTableViewCell.swift in Sources */,
 				AD391D1C20D174B4007EE22A /* RootCoordinator.swift in Sources */,
@@ -2902,6 +2913,7 @@
 				ADEDA3CE217892A10078FD91 /* RequestQRCodeViewModel.swift in Sources */,
 				AD391D1E20D174B4007EE22A /* SetupCoordinator.swift in Sources */,
 				AD667E4B21367E1B007B9160 /* BackgroundViewController.swift in Sources */,
+				AD8A3DCB21CE4FC000D48B65 /* ProductCell.swift in Sources */,
 				AD0D0BC2212BE3C800E4F7F7 /* RequestViewController.swift in Sources */,
 				AD391D1D20D174B4007EE22A /* Route.swift in Sources */,
 				AD391C6C20D16F89007EE22A /* PinViewController.swift in Sources */,

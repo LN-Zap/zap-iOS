@@ -8,29 +8,12 @@
 import Bond
 import UIKit
 
-class FavouriteProductCollectionViewCell: BondCollectionViewCell {
-    @IBOutlet private weak var nameLabel: UILabel!
-    @IBOutlet private weak var priceLabel: UILabel!
-    @IBOutlet private weak var countLabel: UILabel!
-    
-    var item: (Product, Observable<Int>)? {
-        didSet {
-            guard let (product, count) = item else { return }
-            
-            nameLabel.text = product.name
-            priceLabel.text = "\(product.price)"
-            
-            count
-                .map { $0 <= 0 }
-                .bind(to: countLabel.reactive.isHidden)
-                .dispose(in: onReuseBag)
-            
-            count
-                .map { String($0) }
-                .bind(to: countLabel.reactive.text)
-                .dispose(in: onReuseBag)
-        }
-    }
+class FavouriteProductCollectionViewCell: BondCollectionViewCell, ProductCell {
+    // swiftlint:disable private_outlet
+    @IBOutlet weak var countLabel: UILabel!
+    @IBOutlet weak var nameLabel: UILabel!
+    @IBOutlet weak var priceLabel: UILabel!
+    // swiftlint:enable private_outlet
     
     override func awakeFromNib() {
         super.awakeFromNib()

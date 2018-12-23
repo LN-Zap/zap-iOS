@@ -62,9 +62,16 @@ final class MainCoordinator: Routing {
         let productsViewModel = ProductsViewModel()
         let shoppingCartViewModel = ShoppingCartViewModel(products: productsViewModel.favourites)
         
+        let productSearchViewController = UIStoryboard.instantiateProductSearchViewController(shoppingCartViewModel: shoppingCartViewModel, productsViewModel: productsViewModel, productGroup: productsViewModel.productGroup)
+
+        let navigationController = ZapNavigationController(rootViewController: productSearchViewController)
+        
+        navigationController.tabBarItem.image = Asset.tabbarWallet.image
+        navigationController.tabBarItem.title = "Search"
+        
         return [
             UIStoryboard.instantiateFavouriteProductsViewController(transactionService: lightningService.transactionService, productsViewModel: productsViewModel, shoppingCartViewModel: shoppingCartViewModel),
-            UIStoryboard.instantiateProductSearchViewController(shoppingCartViewModel: shoppingCartViewModel)
+            navigationController
         ]
     }
 

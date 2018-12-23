@@ -20,7 +20,7 @@ final class ProductsViewModel {
         Product(name: "TS 23", price: 15)
     ]
     
-    let products: [Groupable] = [
+    let productGroup: Group = Group(name: "All Items", items: [
         Group(name: "N/A Bevs", items: [
             Product(name: "TS 3", price: 1),
             Product(name: "TS 21", price: 2),
@@ -57,5 +57,5 @@ final class ProductsViewModel {
             Product(name: "TS 22", price: 100),
             Product(name: "TS 23", price: 15)
         ])
-    ]
+    ])
 }

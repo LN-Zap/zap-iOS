@@ -101,7 +101,8 @@ extension FavouriteProductsViewController: UICollectionViewDataSource {
         
         let product = productsViewModel.favourites[indexPath.row]
         let count = shoppingCartViewModel.count(of: product)
-        cell.item = (product, count)
+        cell.setItem(product: product, count: count)
+        
         return cell
     }
 }
