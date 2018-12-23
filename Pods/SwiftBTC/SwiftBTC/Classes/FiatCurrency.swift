@@ -30,11 +30,11 @@ public struct FiatCurrency: Currency, Equatable, Codable {
         self.exchangeRate = exchangeRate
     }
     
-    private func format(value: NSDecimalNumber) -> String? {
-        if value == NSDecimalNumber.notANumber {
+    public func format(value: Decimal) -> String? {
+        if value == Decimal.nan {
             return currencyFormatter.string(from: 0)
         } else {
-            return currencyFormatter.string(from: value)
+            return currencyFormatter.string(from: value as NSDecimalNumber)
         }
     }
     
@@ -43,7 +43,7 @@ public struct FiatCurrency: Currency, Equatable, Codable {
             return format(value: 0)
         } else {
             let fiatValue = satoshis.convert(to: .bitcoin) * exchangeRate
-            return format(value: fiatValue as NSDecimalNumber)
+            return format(value: fiatValue)
         }
     }
     

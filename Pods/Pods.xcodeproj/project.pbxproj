@@ -4562,7 +4562,6 @@
 		0084DE291B8922B1D170E48FE5E94D93 /* ex_data.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = ex_data.h; path = include/openssl/ex_data.h; sourceTree = "<group>"; };
 		010D918F78E6684848B301B7B8403009 /* GPBBootstrap.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = GPBBootstrap.h; path = objectivec/GPBBootstrap.h; sourceTree = "<group>"; };
 		01126E1643A6F518722FC89DC7907DE9 /* print.c */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.c; name = print.c; path = crypto/evp/print.c; sourceTree = "<group>"; };
-		0141C9901D46594FE96492DB9ABA49E9 /* screenshot.png */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = image.png; name = screenshot.png; path = docs/screenshot.png; sourceTree = "<group>"; };
 		0147D5F749E99255E0BB58D923D945D6 /* JSONMapEncodingVisitor.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = JSONMapEncodingVisitor.swift; path = Sources/SwiftProtobuf/JSONMapEncodingVisitor.swift; sourceTree = "<group>"; };
 		014DD2995E71C47DC85E8FBB62648404 /* poly1305_arm.c */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.c; name = poly1305_arm.c; path = crypto/poly1305/poly1305_arm.c; sourceTree = "<group>"; };
 		015A24FC160FC590182F459466491E07 /* GRXImmediateSingleWriter.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = GRXImmediateSingleWriter.h; path = "src/objective-c/RxLibrary/GRXImmediateSingleWriter.h"; sourceTree = "<group>"; };
@@ -4572,7 +4571,6 @@
 		0204173F54C53645E2B17E73DF8DF84A /* dh_asn1.c */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.c; name = dh_asn1.c; path = crypto/dh/dh_asn1.c; sourceTree = "<group>"; };
 		0220CC65A8BB75A89BEFDE57211A6614 /* sync_windows.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = sync_windows.h; path = include/grpc/support/sync_windows.h; sourceTree = "<group>"; };
 		023D4CD65F66FCFA05FD8A2F636683BB /* parsing.cc */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.cpp.cpp; name = parsing.cc; path = src/core/ext/transport/chttp2/transport/parsing.cc; sourceTree = "<group>"; };
-		027C2E5D8EF847BE18C409FC1A58429B /* README.md */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		0292A3B88AF774CFB2D65E51919A2B85 /* ssl_aead_ctx.cc */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.cpp.cpp; name = ssl_aead_ctx.cc; path = ssl/ssl_aead_ctx.cc; sourceTree = "<group>"; };
 		02C61370DE9256296B2FA825F8E06D2A /* slice_weak_hash_table.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = slice_weak_hash_table.h; path = src/core/lib/slice/slice_weak_hash_table.h; sourceTree = "<group>"; };
 		02D92353AFCBC04221F2B186967DDA1F /* mutex_lock.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = mutex_lock.h; path = src/core/lib/gprpp/mutex_lock.h; sourceTree = "<group>"; };
@@ -4784,7 +4782,6 @@
 		1DAF758E1EECA094B67DC1B784C94330 /* time.cc */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.cpp.cpp; name = time.cc; path = src/core/lib/gpr/time.cc; sourceTree = "<group>"; };
 		1DB29DD8D24D6F5A15F1E2C4990EB1FA /* sockaddr_custom.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = sockaddr_custom.h; path = src/core/lib/iomgr/sockaddr_custom.h; sourceTree = "<group>"; };
 		1DC91116BED52C0FF685BA8E185B2552 /* tmpfile.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = tmpfile.h; path = src/core/lib/gpr/tmpfile.h; sourceTree = "<group>"; };
-		1DD9DF6F4A0DBB2E0FF14A9ED5789F7B /* CODE_OF_CONDUCT.md */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = net.daringfireball.markdown; name = CODE_OF_CONDUCT.md; path = docs/CODE_OF_CONDUCT.md; sourceTree = "<group>"; };
 		1DDC2C1F626DC631CB60FBBDB707AB20 /* ObservableSet.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ObservableSet.swift; path = Sources/Bond/Collections/ObservableSet.swift; sourceTree = "<group>"; };
 		1DF68A50F16A42B0DA65204091DAA184 /* tcp_server.cc */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.cpp.cpp; name = tcp_server.cc; path = src/core/lib/iomgr/tcp_server.cc; sourceTree = "<group>"; };
 		1E2CF0FBDDB5B2CDB2B6C6AAC1A372A5 /* pem_xaux.c */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.c; name = pem_xaux.c; path = crypto/pem/pem_xaux.c; sourceTree = "<group>"; };
@@ -4875,6 +4872,7 @@
 		2A805980CCFB8722DC6D593AAEEE6485 /* endpoint_pair_posix.cc */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.cpp.cpp; name = endpoint_pair_posix.cc; path = src/core/lib/iomgr/endpoint_pair_posix.cc; sourceTree = "<group>"; };
 		2A81055F05748644F641F1327A99F7B8 /* SignalProtocol.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = SignalProtocol.swift; path = Sources/Bond/Shared/SignalProtocol.swift; sourceTree = "<group>"; };
 		2A97F25839FECC62E8E42A1AF3412390 /* nanopb.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = nanopb.xcconfig; sourceTree = "<group>"; };
+		2ABA6BD2F23681CE0F772FE59D90EC7D /* CODE_OF_CONDUCT.md */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = net.daringfireball.markdown; name = CODE_OF_CONDUCT.md; path = docs/CODE_OF_CONDUCT.md; sourceTree = "<group>"; };
 		2AD7BAABA5B3681853928437E6A2C912 /* sign.c */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.c; name = sign.c; path = crypto/evp/sign.c; sourceTree = "<group>"; };
 		2AF559951BF5E3E1D0FA9D9CC1FE3446 /* Satoshi.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Satoshi.swift; path = SwiftBTC/Classes/Satoshi.swift; sourceTree = "<group>"; };
 		2B0FE04DDCC848FE6E5A6F2CF78D2C7C /* tcp_client_windows.cc */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.cpp.cpp; name = tcp_client_windows.cc; path = src/core/lib/iomgr/tcp_client_windows.cc; sourceTree = "<group>"; };
@@ -5046,7 +5044,6 @@
 		458987E351DCC6DEF0ACD286C2050B37 /* http_connect_handshaker.cc */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.cpp.cpp; name = http_connect_handshaker.cc; path = src/core/ext/filters/client_channel/http_connect_handshaker.cc; sourceTree = "<group>"; };
 		45B61F1F87B7565FD4C491BC4102E4D7 /* tls_msvc.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = tls_msvc.h; path = src/core/lib/gpr/tls_msvc.h; sourceTree = "<group>"; };
 		461DD52A8D70C1D507513436860E0B83 /* iomgr_posix.cc */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.cpp.cpp; name = iomgr_posix.cc; path = src/core/lib/iomgr/iomgr_posix.cc; sourceTree = "<group>"; };
-		462796B3F920632851C84C5CA3BC066C /* LndRpc.podspec */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; path = LndRpc.podspec; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
 		4632174716A6F469F94067DB8F166F30 /* sha1-altivec.c */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.c; name = "sha1-altivec.c"; path = "crypto/fipsmodule/sha/sha1-altivec.c"; sourceTree = "<group>"; };
 		464DC06DF448B3433CC391F4A7294895 /* resolve_address_custom.cc */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.cpp.cpp; name = resolve_address_custom.cc; path = src/core/lib/iomgr/resolve_address_custom.cc; sourceTree = "<group>"; };
 		465FE051C2388BBE90EB062B97D4F17E /* message_compress.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = message_compress.h; path = src/core/lib/compression/message_compress.h; sourceTree = "<group>"; };
@@ -5106,6 +5103,7 @@
 		4DA9864248751D534D5C1DFE467448DB /* padding.c */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.c; name = padding.c; path = crypto/fipsmodule/rsa/padding.c; sourceTree = "<group>"; };
 		4DDF62B738BBA66AA1AEBEA0AAF8A3EF /* Bond-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Bond-prefix.pch"; sourceTree = "<group>"; };
 		4E115FC75B7C51DF9450DE94BD92C841 /* Pods-RPC-Library-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pods-RPC-Library-umbrella.h"; sourceTree = "<group>"; };
+		4E1905DE5388A4AC3E43EA43A6654892 /* LICENSE */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = LICENSE; sourceTree = "<group>"; };
 		4E1D21127A7B7FF668EEDACF9481EB8A /* pkcs7.c */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.c; name = pkcs7.c; path = crypto/pkcs7/pkcs7.c; sourceTree = "<group>"; };
 		4E2180DF324A568A2A93CA47884A835D /* pb_encode.c */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.c; path = pb_encode.c; sourceTree = "<group>"; };
 		4E8A09386E8112B88A34E5A309FC05E2 /* pb_decode.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = pb_decode.h; sourceTree = "<group>"; };
@@ -5193,7 +5191,6 @@
 		5936C8795A05E1EAFB1DF7C86C1FF9F0 /* stream_lists.cc */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.cpp.cpp; name = stream_lists.cc; path = src/core/ext/transport/chttp2/transport/stream_lists.cc; sourceTree = "<group>"; };
 		5980FC54BA0741E9B85AD41CA275191D /* ssl_lib.cc */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.cpp.cpp; name = ssl_lib.cc; path = ssl/ssl_lib.cc; sourceTree = "<group>"; };
 		599F593C95C39A1BD81B526389F92C65 /* status_conversion.cc */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.cpp.cpp; name = status_conversion.cc; path = src/core/lib/transport/status_conversion.cc; sourceTree = "<group>"; };
-		59BFE36AB1A42296330DC2E4DCFCD4A1 /* INSTALL.md */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = net.daringfireball.markdown; name = INSTALL.md; path = docs/INSTALL.md; sourceTree = "<group>"; };
 		59CD62DFA247041A06CFC3CD06487687 /* Differ.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Differ.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		59F7F32AA186A67BC4F0AE270A92530C /* gcm.c */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.c; name = gcm.c; path = crypto/fipsmodule/modes/gcm.c; sourceTree = "<group>"; };
 		5A02EE73DD5BD2AAB899D7B38E991E16 /* alts_shared_resource.cc */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.cpp.cpp; name = alts_shared_resource.cc; path = src/core/tsi/alts/handshaker/alts_shared_resource.cc; sourceTree = "<group>"; };
@@ -5227,6 +5224,7 @@
 		5EEB83CC5448B86D4DF3C911565B2F18 /* tcp_windows.cc */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.cpp.cpp; name = tcp_windows.cc; path = src/core/lib/iomgr/tcp_windows.cc; sourceTree = "<group>"; };
 		5F30CA31B02ADE7ED7F6A8902C88AEBC /* x_x509a.c */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.c; name = x_x509a.c; path = crypto/x509/x_x509a.c; sourceTree = "<group>"; };
 		5F41E90BBAAA5107E25B3801EB8569D3 /* a_i2d_fp.c */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.c; name = a_i2d_fp.c; path = crypto/asn1/a_i2d_fp.c; sourceTree = "<group>"; };
+		5F691F5595A5D21C03949F8A1990E68A /* INSTALL.md */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = net.daringfireball.markdown; name = INSTALL.md; path = docs/INSTALL.md; sourceTree = "<group>"; };
 		5F69DB74899587A615D368858335225D /* GraphPointAnimation.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = GraphPointAnimation.swift; path = Classes/Plots/Animation/GraphPointAnimation.swift; sourceTree = "<group>"; };
 		5FA8A250CA53D07658906B923AD368F9 /* roots.pem */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; name = roots.pem; path = etc/roots.pem; sourceTree = "<group>"; };
 		5FAEC7A3BA3F8E0BCA068F2FBCE231D1 /* credentials.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = credentials.h; path = src/core/lib/security/credentials/credentials.h; sourceTree = "<group>"; };
@@ -5281,7 +5279,6 @@
 		67C26BB8DD44EA37D61C82F0D35E9DE5 /* ofb.c */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.c; name = ofb.c; path = crypto/fipsmodule/modes/ofb.c; sourceTree = "<group>"; };
 		67C5243776A7AFFAF6AAED6CEED53941 /* xds_client_stats.cc */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.cpp.cpp; name = xds_client_stats.cc; path = src/core/ext/filters/client_channel/lb_policy/xds/xds_client_stats.cc; sourceTree = "<group>"; };
 		67D56A8D66B6ADE92258DF940DE597D1 /* SipHash.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = SipHash.xcconfig; sourceTree = "<group>"; };
-		6813B6FFDB8A1EDEABE17963E1BA29A0 /* architecture.md */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = net.daringfireball.markdown; name = architecture.md; path = docs/architecture.md; sourceTree = "<group>"; };
 		6841A77001763659A385321022876F11 /* Pods-SwiftLndTests-acknowledgements.markdown */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = "Pods-SwiftLndTests-acknowledgements.markdown"; sourceTree = "<group>"; };
 		6881C903629117899C3A43139DCC73CF /* t1_enc.cc */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.cpp.cpp; name = t1_enc.cc; path = ssl/t1_enc.cc; sourceTree = "<group>"; };
 		689C418F30FD42EF2112465D9FDEFF08 /* Pods-RPC-Library.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = "Pods-RPC-Library.modulemap"; sourceTree = "<group>"; };
@@ -5319,7 +5316,6 @@
 		6C41AE302BFD1927D7E192366D2B2632 /* security_context.cc */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.cpp.cpp; name = security_context.cc; path = src/core/lib/security/context/security_context.cc; sourceTree = "<group>"; };
 		6C75264B797C2500E1F837D1B2B759E2 /* GRPCCall+InternalTests.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = "GRPCCall+InternalTests.m"; path = "src/objective-c/GRPCClient/internal_testing/GRPCCall+InternalTests.m"; sourceTree = "<group>"; };
 		6C7ED7EFE2CB1081F72812515704DBA2 /* tls_method.cc */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.cpp.cpp; name = tls_method.cc; path = ssl/tls_method.cc; sourceTree = "<group>"; };
-		6CC8CE00B6B8148AF80DB0618AF23630 /* LICENSE */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = LICENSE; sourceTree = "<group>"; };
 		6CDFBF62C27B25FF5D8189F2ADCB7AB1 /* SQLite-Bridging.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = "SQLite-Bridging.m"; path = "Sources/SQLiteObjc/SQLite-Bridging.m"; sourceTree = "<group>"; };
 		6D03F24E2F3DA16446A57D56AC96DF3A /* json_string.cc */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.cpp.cpp; name = json_string.cc; path = src/core/lib/json/json_string.cc; sourceTree = "<group>"; };
 		6D2253FBA29700FE0362A38221ECADDA /* ProtocolProxy.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ProtocolProxy.swift; path = Sources/Bond/ProtocolProxy.swift; sourceTree = "<group>"; };
@@ -5387,6 +5383,7 @@
 		758460159C805C5967CADFFC4580241A /* refcount_c11.c */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.c; name = refcount_c11.c; path = crypto/refcount_c11.c; sourceTree = "<group>"; };
 		7592D6C11020EECD2BCB83A9A7E4C885 /* oct.c */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.c; name = oct.c; path = crypto/fipsmodule/ec/oct.c; sourceTree = "<group>"; };
 		75AF2207123A86CC516D91A857EE5EA2 /* Pods-RPC-Library.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-RPC-Library.release.xcconfig"; sourceTree = "<group>"; };
+		75DF29EE6B152B7587B31D2B80F356AF /* lnd_connect_uri.md */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = net.daringfireball.markdown; name = lnd_connect_uri.md; path = docs/lnd_connect_uri.md; sourceTree = "<group>"; };
 		75E1934FF2AABDFDBE64A936F45AC961 /* Data Conversion.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = "Data Conversion.swift"; path = "sources/Data Conversion.swift"; sourceTree = "<group>"; };
 		75FAF401D0526974C1767D5261491597 /* pcy_tree.c */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.c; name = pcy_tree.c; path = crypto/x509v3/pcy_tree.c; sourceTree = "<group>"; };
 		762BD34D1BEC2A0A3CB1D325131BCB27 /* altscontext.pb.c */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.c; name = altscontext.pb.c; path = src/core/tsi/alts/handshaker/altscontext.pb.c; sourceTree = "<group>"; };
@@ -5423,7 +5420,6 @@
 		7C0957747EDD4FCC7012CE6D83F36B1E /* obj_xref.c */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.c; name = obj_xref.c; path = crypto/obj/obj_xref.c; sourceTree = "<group>"; };
 		7C1628DC40D746C8ADDA30142440218F /* resolver.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = resolver.h; path = src/core/ext/filters/client_channel/resolver.h; sourceTree = "<group>"; };
 		7C4A175F83743A4D3B1FE80191B6792A /* SipHasher.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = SipHasher.swift; path = SipHash/SipHasher.swift; sourceTree = "<group>"; };
-		7CA29FEEBE1667A1386151A2C8B47271 /* zap_connect_uri.md */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = net.daringfireball.markdown; name = zap_connect_uri.md; path = docs/zap_connect_uri.md; sourceTree = "<group>"; };
 		7CC3D933EF4F6A8E32536474832F0E51 /* umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = umbrella.h; path = include/openssl/umbrella.h; sourceTree = "<group>"; };
 		7CD4CAD1A50E331B29A3BCEE84CF3213 /* grpc_ares_wrapper.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = grpc_ares_wrapper.h; path = src/core/ext/filters/client_channel/resolver/dns/c_ares/grpc_ares_wrapper.h; sourceTree = "<group>"; };
 		7CFE782015330A8DB30D3ADE27D0BC68 /* Pods-Apps-Zap.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-Apps-Zap.debug.xcconfig"; sourceTree = "<group>"; };
@@ -5456,6 +5452,7 @@
 		80CE3B209771DC180A23762A48D15F3B /* error_utils.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = error_utils.h; path = src/core/lib/transport/error_utils.h; sourceTree = "<group>"; };
 		80D43FB35DBE69BA2DA33FADEB98921B /* deadline_filter.cc */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.cpp.cpp; name = deadline_filter.cc; path = src/core/ext/filters/deadline/deadline_filter.cc; sourceTree = "<group>"; };
 		80DAD3EDB0C997259280C34EE113F83A /* Pods-Apps-Zap-frameworks.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-Apps-Zap-frameworks.sh"; sourceTree = "<group>"; };
+		811BBE5F4845CF63DE34FF33F123A526 /* screenshot.png */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = image.png; name = screenshot.png; path = docs/screenshot.png; sourceTree = "<group>"; };
 		8122E39BF760D95CF8ADFC02B9EE68DD /* Setter.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Setter.swift; path = Sources/SQLite/Typed/Setter.swift; sourceTree = "<group>"; };
 		8139AE1AD31BF87A1CD5A1779DD1D7A9 /* SwiftBTC.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = SwiftBTC.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		81ACCF6ED39F7A5AFEC0E7A5F4CC02F8 /* compression_internal.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = compression_internal.h; path = src/core/lib/compression/compression_internal.h; sourceTree = "<group>"; };
@@ -5677,7 +5674,6 @@
 		A14A46DC995ED01A0186771EE3998635 /* internal.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = internal.h; path = crypto/evp/internal.h; sourceTree = "<group>"; };
 		A1565B2727CB3359FA137AA48D267A7F /* fd.c */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.c; name = fd.c; path = crypto/bio/fd.c; sourceTree = "<group>"; };
 		A15C505EFE920221137203DFCD8F8FD8 /* Wrappers.pbobjc.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = Wrappers.pbobjc.m; path = objectivec/google/protobuf/Wrappers.pbobjc.m; sourceTree = "<group>"; };
-		A17BDA2869C5FF87D8594B1523E6CEDA /* CONTRIBUTING.md */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = net.daringfireball.markdown; name = CONTRIBUTING.md; path = docs/CONTRIBUTING.md; sourceTree = "<group>"; };
 		A23F1C299CB701E5214BDD8D02FA8751 /* type_check.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = type_check.h; path = include/openssl/type_check.h; sourceTree = "<group>"; };
 		A24F8EDD3AAB992F41BC727A287B697A /* slice_internal.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = slice_internal.h; path = src/core/lib/slice/slice_internal.h; sourceTree = "<group>"; };
 		A25D3D5A3E9F1F84590B11E0BD264F7E /* env_windows.cc */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.cpp.cpp; name = env_windows.cc; path = src/core/lib/gpr/env_windows.cc; sourceTree = "<group>"; };
@@ -5810,6 +5806,7 @@
 		B3A16B16AAEEBA00B2C8B2F72B302F2C /* internal.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = internal.h; path = crypto/fipsmodule/bn/internal.h; sourceTree = "<group>"; };
 		B3C15DEFFBE4A955D9767D81B8248D47 /* NSEnumerator+GRXUtil.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = "NSEnumerator+GRXUtil.m"; path = "src/objective-c/RxLibrary/NSEnumerator+GRXUtil.m"; sourceTree = "<group>"; };
 		B3CEC308DEC9698EEB05914CDED1A362 /* alts_tsi_handshaker.cc */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.cpp.cpp; name = alts_tsi_handshaker.cc; path = src/core/tsi/alts/handshaker/alts_tsi_handshaker.cc; sourceTree = "<group>"; };
+		B3E1C7ED069C255FD94A0C77BBF58971 /* LndRpc.podspec */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; path = LndRpc.podspec; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
 		B40ED747CF1CAC99415FA37353FBB104 /* GRXMappingWriter.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = GRXMappingWriter.m; path = "src/objective-c/RxLibrary/GRXMappingWriter.m"; sourceTree = "<group>"; };
 		B41EEE4D59CCB0FA7AD7007DE53B0E4D /* channel_stack_type.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = channel_stack_type.h; path = src/core/lib/surface/channel_stack_type.h; sourceTree = "<group>"; };
 		B480D5C85919C4E060A0DB42E9E07F64 /* SipHash.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = SipHash.modulemap; sourceTree = "<group>"; };
@@ -5860,6 +5857,7 @@
 		BB56CC1CA8ACFEA0919E4007E688C04D /* BinaryDecoder.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = BinaryDecoder.swift; path = Sources/SwiftProtobuf/BinaryDecoder.swift; sourceTree = "<group>"; };
 		BB6CF3FC05FE42B88384C713EDE39A39 /* a_type.c */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.c; name = a_type.c; path = crypto/asn1/a_type.c; sourceTree = "<group>"; };
 		BB6E62E1AFDB04A42A0A68F3F2EE41E7 /* UICollectionView.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = UICollectionView.swift; path = Sources/Bond/UIKit/UICollectionView.swift; sourceTree = "<group>"; };
+		BB72088A48D2C71B339E20606E778F65 /* architecture.md */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = net.daringfireball.markdown; name = architecture.md; path = docs/architecture.md; sourceTree = "<group>"; };
 		BBCF749AF73CF9FA780B734B7F104516 /* GRXWriter+Transformations.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "GRXWriter+Transformations.h"; path = "src/objective-c/RxLibrary/GRXWriter+Transformations.h"; sourceTree = "<group>"; };
 		BC1F5D3AB1B27687E0E547152D86F9A3 /* channel_args.cc */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.cpp.cpp; name = channel_args.cc; path = src/core/lib/channel/channel_args.cc; sourceTree = "<group>"; };
 		BC513D2637B7FE98BAF141115CEE7882 /* health.pb.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = health.pb.h; path = src/core/ext/filters/client_channel/health/health.pb.h; sourceTree = "<group>"; };
@@ -6301,6 +6299,7 @@
 		FC2E07917A9B7939E6E0E9B301561179 /* ec.c */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.c; name = ec.c; path = crypto/fipsmodule/ec/ec.c; sourceTree = "<group>"; };
 		FC4D0E1BFFE3722778B7E31DA1809899 /* GRPCCompletionQueue.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = GRPCCompletionQueue.m; path = "src/objective-c/GRPCClient/private/GRPCCompletionQueue.m"; sourceTree = "<group>"; };
 		FC4DA6C1A374C164CF26FC439DDDBB05 /* grpc_ares_ev_driver.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = grpc_ares_ev_driver.h; path = src/core/ext/filters/client_channel/resolver/dns/c_ares/grpc_ares_ev_driver.h; sourceTree = "<group>"; };
+		FC9C30A27CBBA60C7A17E849EECE6181 /* CONTRIBUTING.md */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = net.daringfireball.markdown; name = CONTRIBUTING.md; path = docs/CONTRIBUTING.md; sourceTree = "<group>"; };
 		FCA53CA4545133D879A6F984F3A4B076 /* sockaddr_windows.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = sockaddr_windows.h; path = src/core/lib/iomgr/sockaddr_windows.h; sourceTree = "<group>"; };
 		FCAA20F3912153BAE633BAC4CEB091CB /* Protobuf.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = Protobuf.modulemap; sourceTree = "<group>"; };
 		FCB445D049368CF358A47711E5230F06 /* RTree.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = RTree.swift; path = Sources/SQLite/Extensions/RTree.swift; sourceTree = "<group>"; };
@@ -6316,6 +6315,7 @@
 		FE4EFAC014B450D4167095321ED06B59 /* BitcoinUnit.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = BitcoinUnit.swift; path = SwiftBTC/Classes/BitcoinUnit.swift; sourceTree = "<group>"; };
 		FE9208770B9E5DB2FD6B5B4F1FCFA352 /* load_system_roots.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = load_system_roots.h; path = src/core/lib/security/security_connector/load_system_roots.h; sourceTree = "<group>"; };
 		FE9F7067A9082E0F1DCD3A571DD776AB /* http_server_filter.cc */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.cpp.cpp; name = http_server_filter.cc; path = src/core/ext/filters/http/server/http_server_filter.cc; sourceTree = "<group>"; };
+		FEE665DCBE06FDD1F0DBCC74C4ECB56A /* README.md */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		FEF1ADEB53DBB018E9009E22FF275AF3 /* LineDrawingLayer.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = LineDrawingLayer.swift; path = Classes/Drawing/LineDrawingLayer.swift; sourceTree = "<group>"; };
 		FF2E41BCDBEF2016291A915A84CA2B3B /* ExecutionContext.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ExecutionContext.swift; path = Sources/ExecutionContext.swift; sourceTree = "<group>"; };
 		FF6426860426DFC21AFBBCECD1A8A853 /* gRPC-RxLibrary-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "gRPC-RxLibrary-umbrella.h"; sourceTree = "<group>"; };
@@ -8488,22 +8488,6 @@
 			path = "Target Support Files/Pods-Apps-Zap";
 			sourceTree = "<group>";
 		};
-		B271EE1E62B2DDA9887082FDE70540D6 /* Pod */ = {
-			isa = PBXGroup;
-			children = (
-				6813B6FFDB8A1EDEABE17963E1BA29A0 /* architecture.md */,
-				1DD9DF6F4A0DBB2E0FF14A9ED5789F7B /* CODE_OF_CONDUCT.md */,
-				A17BDA2869C5FF87D8594B1523E6CEDA /* CONTRIBUTING.md */,
-				59BFE36AB1A42296330DC2E4DCFCD4A1 /* INSTALL.md */,
-				6CC8CE00B6B8148AF80DB0618AF23630 /* LICENSE */,
-				462796B3F920632851C84C5CA3BC066C /* LndRpc.podspec */,
-				027C2E5D8EF847BE18C409FC1A58429B /* README.md */,
-				0141C9901D46594FE96492DB9ABA49E9 /* screenshot.png */,
-				7CA29FEEBE1667A1386151A2C8B47271 /* zap_connect_uri.md */,
-			);
-			name = Pod;
-			sourceTree = "<group>";
-		};
 		B3D3D239C7D483191BE6D9648C0F077A /* decode */ = {
 			isa = PBXGroup;
 			children = (
@@ -8638,6 +8622,22 @@
 			path = "../Target Support Files/BigInt";
 			sourceTree = "<group>";
 		};
+		C8A420E7B3D7ADC2A25A9591FCBBA582 /* Pod */ = {
+			isa = PBXGroup;
+			children = (
+				BB72088A48D2C71B339E20606E778F65 /* architecture.md */,
+				2ABA6BD2F23681CE0F772FE59D90EC7D /* CODE_OF_CONDUCT.md */,
+				FC9C30A27CBBA60C7A17E849EECE6181 /* CONTRIBUTING.md */,
+				5F691F5595A5D21C03949F8A1990E68A /* INSTALL.md */,
+				4E1905DE5388A4AC3E43EA43A6654892 /* LICENSE */,
+				75DF29EE6B152B7587B31D2B80F356AF /* lnd_connect_uri.md */,
+				B3E1C7ED069C255FD94A0C77BBF58971 /* LndRpc.podspec */,
+				FEE665DCBE06FDD1F0DBCC74C4ECB56A /* README.md */,
+				811BBE5F4845CF63DE34FF33F123A526 /* screenshot.png */,
+			);
+			name = Pod;
+			sourceTree = "<group>";
+		};
 		D50EAAE265BC36E71185D08AD3EB6285 /* Support Files */ = {
 			isa = PBXGroup;
 			children = (
@@ -8752,7 +8752,7 @@
 			isa = PBXGroup;
 			children = (
 				51F77EE18395C0CFD11AE09C8BFC9F03 /* Messages */,
-				B271EE1E62B2DDA9887082FDE70540D6 /* Pod */,
+				C8A420E7B3D7ADC2A25A9591FCBBA582 /* Pod */,
 				D73B0F09EF9754019E6D66FA79C9F7EF /* Services */,
 				75C04A24812A1ADECCB5B32F0F70145D /* Support Files */,
 			);

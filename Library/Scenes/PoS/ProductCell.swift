@@ -23,7 +23,8 @@ protocol ProductCell {
 extension ProductCell {
     func setItem(product: Product, count: Observable<Int>) {
         nameLabel.text = product.name
-        priceLabel.text = "\(product.price)"
+        
+        priceLabel.text = Settings.shared.fiatCurrency.value.format(value: product.price)
         
         count
             .map { $0 <= 0 }
