@@ -58,9 +58,10 @@ final class TipViewController: UIViewController {
         
         waiterRequestViewModel.totalAmount
             .map {
-                let primaryAmountString = Settings.shared.primaryCurrency.value.stringValue(satoshis: $0) ?? "0"
-                let primaryString = NSMutableAttributedString(string: Settings.shared.primaryCurrency.value.symbol, attributes: [.font: UIFont.Zap.regular])
-                primaryString.append(NSAttributedString(string: primaryAmountString, attributes: [.font: UIFont.monospacedDigitSystemFont(ofSize: 72, weight: .light)]))
+                let string = Settings.shared.primaryCurrency.value.format(satoshis: $0) ?? "0"
+                let primaryString = NSMutableAttributedString(string: string, attributes: [.font: UIFont.monospacedDigitSystemFont(ofSize: 72, weight: .light)])
+                let symbolRange = NSString(string: string).range(of: Settings.shared.primaryCurrency.value.symbol)
+                primaryString.addAttribute(.font, value: UIFont.Zap.regular, range: symbolRange)
                 return primaryString
             }
             .bind(to: primaryAmountLabel.reactive.attributedText)
