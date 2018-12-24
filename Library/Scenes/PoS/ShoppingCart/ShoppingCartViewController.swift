@@ -57,6 +57,7 @@ extension ShoppingCartViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell: ShoppingListTableViewCell = tableView.dequeueCellForIndexPath(indexPath)
         cell.selectedItem = shoppingCartViewModel?.selectedItems[indexPath.row]
+        cell.shoppingCartViewModel = shoppingCartViewModel
         return cell
     }
     

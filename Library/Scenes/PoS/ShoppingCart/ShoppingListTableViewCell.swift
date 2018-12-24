@@ -8,17 +8,26 @@
 import Bond
 import UIKit
 
-class ShoppingListTableViewCell: UITableViewCell {
+class ShoppingListTableViewCell: BondTableViewCell {
     @IBOutlet private weak var amountLabel: UILabel!
     @IBOutlet private weak var titleLabel: UILabel!
     @IBOutlet private weak var priceLabel: UILabel!
+    @IBOutlet private weak var stepper: UIStepper!
     
+    var shoppingCartViewModel: ShoppingCartViewModel?
     var selectedItem: (Product, Observable<Int>)? {
         didSet {
             guard let (product, count) = selectedItem else { return }
             titleLabel.text = product.name
-            amountLabel.text = String(count.value) + " x"
+            
+            count
+                .map { String($0) + " x" }
+                .bind(to: amountLabel.reactive.text)
+                .dispose(in: onReuseBag)
+            
             priceLabel.text = "\(product.price * Decimal(count.value))"
+            
+            stepper.value = Double(count.value)
         }
     }
     
@@ -27,5 +36,14 @@ class ShoppingListTableViewCell: UITableViewCell {
         
         backgroundColor = UIColor.Zap.background
         Style.Label.body.apply(to: [amountLabel, titleLabel, priceLabel])
+    }
+    
+    @IBAction private func stepperChanged(_ sender: UIStepper) {
+        guard
+            let shoppingCartViewModel = shoppingCartViewModel,
+            let (product, _) = selectedItem
+            else { return }
+        let newValue = Int(sender.value)
+        shoppingCartViewModel.setCount(of: product, to: newValue)
     }
 }
