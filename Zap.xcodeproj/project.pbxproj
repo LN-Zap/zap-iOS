@@ -1540,13 +1540,12 @@
 			isa = PBXGroup;
 			children = (
 				AD8A3DA921CBDF3E00D48B65 /* PoS.storyboard */,
-				AD8A3DAD21CBDFB800D48B65 /* Model */,
+				AD8A3DCA21CE4FC000D48B65 /* ProductCell.swift */,
+				AD8A3DD021D0E00600D48B65 /* ShoppingCartPresentable.swift */,
 				AD8A3DBB21CBF96800D48B65 /* FavouriteProductsList */,
+				AD8A3DAD21CBDFB800D48B65 /* Model */,
 				AD8A3DC221CD608200D48B65 /* ProductSearch */,
 				AD8A3DBA21CBF95E00D48B65 /* ShoppingCart */,
-				AD8A3DCA21CE4FC000D48B65 /* ProductCell.swift */,
-				AD8A3DCE21CFFBAB00D48B65 /* pos.json */,
-				AD8A3DD021D0E00600D48B65 /* ShoppingCartPresentable.swift */,
 			);
 			path = PoS;
 			sourceTree = "<group>";
@@ -1554,6 +1553,7 @@
 		AD8A3DAD21CBDFB800D48B65 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				AD8A3DCE21CFFBAB00D48B65 /* pos.json */,
 				AD8A3DAE21CBDFCB00D48B65 /* Product.swift */,
 				AD8A3DC021CD1B0500D48B65 /* ProductsViewModel.swift */,
 				AD8A3DB021CBDFF400D48B65 /* ShoppingCartViewModel.swift */,
