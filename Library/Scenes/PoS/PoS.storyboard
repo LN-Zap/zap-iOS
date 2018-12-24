@@ -122,27 +122,49 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="OES-DI-1b4">
-                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="561"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             </tableView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="tYf-g4-JZB">
+                                <rect key="frame" x="20" y="571" width="335" height="76"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="76" id="ogi-Po-fwh"/>
+                                </constraints>
+                                <state key="normal" title="Button"/>
+                                <connections>
+                                    <action selector="presentTipViewController:" destination="eX2-4Y-Pm5" eventType="touchUpInside" id="1Gg-If-QfR"/>
+                                    <action selector="presentTipViewController:" destination="sQ9-h4-WGC" eventType="touchUpInside" id="KIS-ow-5NZ"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="OES-DI-1b4" firstAttribute="top" secondItem="3fq-mS-gBq" secondAttribute="top" id="AzN-tg-ANI"/>
+                            <constraint firstItem="tYf-g4-JZB" firstAttribute="leading" secondItem="5Ee-IL-xER" secondAttribute="leading" constant="20" id="H7J-xH-sVs"/>
                             <constraint firstItem="OES-DI-1b4" firstAttribute="leading" secondItem="5Ee-IL-xER" secondAttribute="leading" id="HyD-Qo-kkS"/>
+                            <constraint firstItem="tYf-g4-JZB" firstAttribute="top" secondItem="OES-DI-1b4" secondAttribute="bottom" constant="10" id="PQn-LE-mos"/>
                             <constraint firstItem="OES-DI-1b4" firstAttribute="trailing" secondItem="5Ee-IL-xER" secondAttribute="trailing" id="Pnb-6d-ONW"/>
-                            <constraint firstItem="OES-DI-1b4" firstAttribute="bottom" secondItem="5Ee-IL-xER" secondAttribute="bottom" id="oAk-de-zk8"/>
+                            <constraint firstItem="5Ee-IL-xER" firstAttribute="bottom" secondItem="tYf-g4-JZB" secondAttribute="bottom" constant="20" id="eOo-lh-h78"/>
+                            <constraint firstItem="5Ee-IL-xER" firstAttribute="trailing" secondItem="tYf-g4-JZB" secondAttribute="trailing" constant="20" id="zmB-6B-hdl"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="5Ee-IL-xER"/>
                     </view>
-                    <navigationItem key="navigationItem" id="62f-R8-zwk"/>
+                    <navigationItem key="navigationItem" id="62f-R8-zwk">
+                        <barButtonItem key="rightBarButtonItem" title="Item" id="WJY-3l-Qp9">
+                            <connections>
+                                <action selector="presentShoppingCart:" destination="sQ9-h4-WGC" id="rr1-ql-I0s"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                    <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" prompted="NO"/>
                     <connections>
+                        <outlet property="payButton" destination="tYf-g4-JZB" id="xpj-cW-DTP"/>
                         <outlet property="tableView" destination="OES-DI-1b4" id="b0P-uO-HZT"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="qvi-3L-a7d" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="644" y="805"/>
+            <point key="canvasLocation" x="644" y="804.64767616191909"/>
         </scene>
         <!--Zap Navigation Controller-->
         <scene sceneID="RNW-R7-2Ut">

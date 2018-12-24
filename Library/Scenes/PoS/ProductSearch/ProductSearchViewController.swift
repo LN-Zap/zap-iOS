@@ -6,26 +6,28 @@
 //
 
 import Foundation
+import Lightning
 
 extension UIStoryboard {
-    static func instantiateProductSearchViewController(shoppingCartViewModel: ShoppingCartViewModel, productsViewModel: ProductsViewModel, productSearchViewModel: ProductSearchViewModel) -> ProductSearchViewController {
+    static func instantiateProductSearchViewController(transactionService: TransactionService, shoppingCartViewModel: ShoppingCartViewModel, productSearchViewModel: ProductSearchViewModel) -> ProductSearchViewController {
         let productSearchViewController = StoryboardScene.PoS.productSearchViewController.instantiate()
         
+        productSearchViewController.transactionService = transactionService
         productSearchViewController.shoppingCartViewModel = shoppingCartViewModel
-        productSearchViewController.productsViewModel = productsViewModel
         productSearchViewController.productSearchViewModel = productSearchViewModel
 
         return productSearchViewController
     }
 }
 
-final class ProductSearchViewController: UIViewController {
+final class ProductSearchViewController: UIViewController, ShoppingCartPresentable {
     @IBOutlet private weak var tableView: UITableView!
+    @IBOutlet private weak var payButton: UIButton!
     
     // swiftlint:disable implicitly_unwrapped_optional
     fileprivate var shoppingCartViewModel: ShoppingCartViewModel!
-    fileprivate var productsViewModel: ProductsViewModel!
     fileprivate var productSearchViewModel: ProductSearchViewModel!
+    fileprivate var transactionService: TransactionService!
     // swiftlint:enable implicitly_unwrapped_optional
     
     override func viewDidLoad() {
@@ -46,6 +48,10 @@ final class ProductSearchViewController: UIViewController {
         tableView.dataSource = self
         tableView.rowHeight = 76
         view.backgroundColor = UIColor.Zap.background
+        
+        Style.Button.background.apply(to: payButton)
+        
+        setupPayButton(button: payButton, amount: shoppingCartViewModel.totalAmount)
         
         productSearchViewModel.items.bind(to: tableView) { [shoppingCartViewModel] items, indexPath, tableView -> UITableViewCell in
             if let product = items[indexPath.row] as? Product,
@@ -72,6 +78,14 @@ final class ProductSearchViewController: UIViewController {
             }
         }
     }
+    
+    @IBAction private func presentTipViewController(_ sender: Any) {
+        presentTipViewController(transactionService: transactionService)
+    }
+    
+    @IBAction private func presentShoppingCart(_ sender: UIButton) {
+        presentShoppingCart(shoppingCartViewModel: shoppingCartViewModel)
+    }
 }
 
 extension ProductSearchViewController: UITableViewDelegate {
@@ -81,7 +95,7 @@ extension ProductSearchViewController: UITableViewDelegate {
         let groupable = productSearchViewModel.items[indexPath.row]
         if let group = groupable as? Group {
             let productSearchViewModel = ProductSearchViewModel(group: group)
-            let detailViewController = UIStoryboard.instantiateProductSearchViewController(shoppingCartViewModel: shoppingCartViewModel, productsViewModel: productsViewModel, productSearchViewModel: productSearchViewModel)
+            let detailViewController = UIStoryboard.instantiateProductSearchViewController(transactionService: transactionService, shoppingCartViewModel: shoppingCartViewModel, productSearchViewModel: productSearchViewModel)
             navigationController?.pushViewController(detailViewController, animated: true)
         } else if let product = groupable as? Product {
             shoppingCartViewModel.addSingle(product: product)

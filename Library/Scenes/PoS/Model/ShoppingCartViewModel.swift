@@ -9,11 +9,15 @@ import Bond
 import Foundation
 
 final class ShoppingCartViewModel {
+    var totalAmount: Observable<Decimal>
+    
     init(productsViewModel: ProductsViewModel) {
         items = [Product: Observable<Int>]()
         for product in productsViewModel.allProducts {
             items[product] = Observable(0)
         }
+        
+        totalAmount = Observable(0)
     }
     
     private var items = [Product: Observable<Int>]()
@@ -22,7 +26,7 @@ final class ShoppingCartViewModel {
         return items.values.reduce(0) { $0 + $1.value }
     }
     
-    var sum: Decimal {
+    private var sum: Decimal {
         return items.reduce(0) { $0 + $1.key.price * Decimal($1.value.value) }
     }
     
@@ -38,20 +42,28 @@ final class ShoppingCartViewModel {
     
     func addSingle(product: Product) {
         items[product]?.value += 1
+        updateAmount()
     }
     
     func removeSingle(product: Product) {
         guard count(of: product).value > 0 else { return }
         items[product]?.value -= 1
+        updateAmount()
     }
     
     func removeAll(product: Product) {
         items[product]?.value = 0
+        updateAmount()
     }
     
     func removeAll() {
         for product in items.keys {
             items[product]?.value = 0
         }
+        updateAmount()
+    }
+    
+    private func updateAmount() {
+        totalAmount.value = sum
     }
 }

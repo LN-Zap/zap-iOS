@@ -62,7 +62,7 @@ final class MainCoordinator: Routing {
         let productsViewModel = ProductsViewModel()
         let shoppingCartViewModel = ShoppingCartViewModel(productsViewModel: productsViewModel)
         let productSearchViewModel = ProductSearchViewModel(group: productsViewModel.productGroup)
-        let productSearchViewController = UIStoryboard.instantiateProductSearchViewController(shoppingCartViewModel: shoppingCartViewModel, productsViewModel: productsViewModel, productSearchViewModel: productSearchViewModel)
+        let productSearchViewController = UIStoryboard.instantiateProductSearchViewController(transactionService: lightningService.transactionService, shoppingCartViewModel: shoppingCartViewModel, productSearchViewModel: productSearchViewModel)
 
         let navigationController = ZapNavigationController(rootViewController: productSearchViewController)
         

@@ -5,6 +5,7 @@
 //  Copyright © 2018 Zap. All rights reserved.
 //
 
+import Bond
 import Foundation
 import Lightning
 
@@ -23,14 +24,16 @@ extension UIStoryboard {
     }
 }
 
-final class FavouriteProductsViewController: UIViewController {
+final class FavouriteProductsViewController: UIViewController, ShoppingCartPresentable {
     @IBOutlet private weak var collectionView: UICollectionView!
     @IBOutlet private weak var payButton: UIButton!
     @IBOutlet private weak var shoppingCartButton: UIBarButtonItem!
 
-    fileprivate var productsViewModel: ProductsViewModel! // swiftlint:disable:this implicitly_unwrapped_optional
-    fileprivate var shoppingCartViewModel: ShoppingCartViewModel! // swiftlint:disable:this implicitly_unwrapped_optional
-    fileprivate var transactionService: TransactionService! // swiftlint:disable:this implicitly_unwrapped_optional
+    // swiftlint:disable implicitly_unwrapped_optional
+    fileprivate var productsViewModel: ProductsViewModel!
+    fileprivate var shoppingCartViewModel: ShoppingCartViewModel!
+    fileprivate var transactionService: TransactionService!
+    // swiftlint:enable implicitly_unwrapped_optional
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -46,6 +49,8 @@ final class FavouriteProductsViewController: UIViewController {
         collectionView.delegate = self
         
         navigationItem.largeTitleDisplayMode = .never
+
+        setupPayButton(button: payButton, amount: shoppingCartViewModel.totalAmount)
         
         if let flowLayout = collectionView.collectionViewLayout as? UICollectionViewFlowLayout {
             flowLayout.minimumInteritemSpacing = 10
@@ -61,21 +66,11 @@ final class FavouriteProductsViewController: UIViewController {
     }
     
     @IBAction private func presentTipViewController(_ sender: Any) {
-        guard let transactionService = transactionService else { return }
-        let waiterRequestViewModel = WaiterRequestViewModel(amount: 19, transactionService: transactionService)
-        let tipViewController = UIStoryboard.instantiateTipViewController(waiterRequestViewModel: waiterRequestViewModel)
-        let navigationController = ZapNavigationController(rootViewController: tipViewController)
-        present(navigationController, animated: true, completion: nil)
+        presentTipViewController(transactionService: transactionService)
     }
     
-    @IBAction private func presentShoppingCart(_ sender: Any) {
-        let shoppingCartViewController = UIStoryboard.instantiateShoppingCartViewController(shoppingCartViewModel: shoppingCartViewModel)
-        navigationController?.pushViewController(shoppingCartViewController, animated: true)
-    }
-    
-    private func updatePayButtonText() {
-        let title = "Pay \(shoppingCartViewModel.sum)"
-        payButton.setTitle(title, for: .normal)
+    @IBAction private func presentShoppingCart(_ sender: UIButton) {
+        presentShoppingCart(shoppingCartViewModel: shoppingCartViewModel)
     }
 }
 
@@ -83,7 +78,6 @@ extension FavouriteProductsViewController: UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         let product = productsViewModel.favourites[indexPath.row]
         shoppingCartViewModel.addSingle(product: product)
-        updatePayButtonText()
         
         if let cell = collectionView.cellForItem(at: indexPath) as? FavouriteProductCollectionViewCell {
             cell.animateSelection()
