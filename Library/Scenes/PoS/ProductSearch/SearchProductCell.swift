@@ -19,5 +19,9 @@ class SearchProductCell: BondTableViewCell, ProductCell {
         
         Style.Label.body.apply(to: [countLabel, nameLabel, priceLabel])
         backgroundColor = UIColor.Zap.background
+        
+        countLabel.layer.cornerRadius = 11
+        countLabel.clipsToBounds = true
+        countLabel.backgroundColor = UIColor.Zap.lightningOrange
     }
 }
