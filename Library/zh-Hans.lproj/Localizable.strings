@@ -14,8 +14,8 @@
 
 "rpc_connect_qrcode_error.btc_pay_expired" = "代码已过期。";
 "rpc_connect_qrcode_error.btc_pay_configuration_broken" = "无法读取 BTCPay 配置文件。";
-"rpc_connect_qrcode_error.cant_read_qrcode" = "Invalid code format.";
-"rpc_connect_qrcode_error.code_updated" = "Connection updated.";
+"rpc_connect_qrcode_error.cant_read_qrcode" = "无效的二维码格式。";
+"rpc_connect_qrcode_error.code_updated" = "连接已更新。";
 
 "channel.state.active" = "在线";
 "channel.state.inactive" = "离线";
@@ -51,9 +51,9 @@
 "scene.settings.item.on_chain_request_address.p2sh" = "P2SH";
 "scene.settings.item.manage_channels" = "管理通道";
 "scene.settings.item.node_uri" = "节点 URI";
-"scene.settings.item.remove_remote_node" = "Reset Remote Node Connection";
+"scene.settings.item.remove_remote_node" = "重置远程节点连接";
 "scene.settings.item.remove_remote_node.confirmation.title" = "断开远程节点的连接？";
-"scene.settings.item.remove_remote_node.confirmation.message" = "You will have to reconnect to your node afterwards.";
+"scene.settings.item.remove_remote_node.confirmation.message" = "之后你必须重新连接到节点。";
 "scene.settings.item.remove_remote_node.confirmation.button" = "断开";
 
 "scene.settings.item.change_pin" = "更改 Pin码";
@@ -156,7 +156,7 @@
 "scene.transaction_detail.title.lightning_invoice" = "发票明细";
 "scene.transaction_detail.title.payment_detail" = "付款明细";
 "scene.transaction_detail.title.transaction_detail" = "交易记录详细信息";
-"scene.transaction_detail.title.channel_event_detail" = "Channel Event";
+"scene.transaction_detail.title.channel_event_detail" = "通道事件";
 "scene.transaction_detail.title.failed_payment" = "付款失败";
 "scene.transaction_detail.memo_label" = "备注";
 "scene.transaction_detail.amount_label" = "数量";
@@ -182,8 +182,8 @@
 "scene.filter.display_unknown_transaction_type" = "内部交易";
 "scene.filter.displayLightningPayments" = "闪电网络支付";
 "scene.filter.displayLightningInvoices" = "Created Invoices";
-"scene.filter.displayChannelEvents" = "Channel Events";
-"scene.filter.displayFailedPaymentEvents" = "Failed Payments";
+"scene.filter.displayChannelEvents" = "通道事件";
+"scene.filter.displayFailedPaymentEvents" = "失败的付款";
 
 "scene.qrcode_scanner.top_label" = "扫描 QR 码";
 
@@ -195,19 +195,19 @@
 "scene.modal_pin.headline" = "输入密码";
 "scene.modal_pin.description" = "请输入您的密码以继续";
 
-"scene.history.cell.payment_sent" = "Payment sent";
-"scene.history.cell.payment_received" = "Payment received";
-"scene.history.cell.payment_failed" = "Payment failed (%@)";
-"scene.history.cell.invoice_created" = "Payment Request created";
+"scene.history.cell.payment_sent" = "已发送付款";
+"scene.history.cell.payment_received" = "已收到付款";
+"scene.history.cell.payment_failed" = "付款失败 (%@)";
+"scene.history.cell.invoice_created" = "付款请求已创建";
 "scene.history.cell.channel_opened" = "打开通道";
 "scene.history.cell.channel_closed" = "关闭通道";
 "scene.history.cell.force_close_channel" = "强制关闭通道";
-"scene.history.cell.remote_force_close_channel" = "Remote force close Channel";
+"scene.history.cell.remote_force_close_channel" = "远端强制关闭通道";
 "scene.history.cell.breach_close_channel" = "Breach close Channel";
-"scene.history.cell.close_channel_funding_canceled" = "Close Channel (funding canceled)";
-"scene.history.cell.channel_abandoned" = "Channel abandoned";
-"scene.history.cell.transaction_sent" = "Payment sent";
-"scene.history.cell.transaction_received" = "Payment received";
+"scene.history.cell.close_channel_funding_canceled" = "关闭通道 (资金已取消)";
+"scene.history.cell.channel_abandoned" = "通道已废弃";
+"scene.history.cell.transaction_sent" = "已发送付款";
+"scene.history.cell.transaction_received" = "已收到付款";
 "scene.history.cell.label.new" = "新建";
 "scene.history.cell.label.error" = "错误";
 "scene.history.cell.action.try_again" = "再试一次";
@@ -218,4 +218,4 @@
 
 "scene.connect_node_uri.action_sheet.title" = "连接";
 "scene.connect_node_uri.action_sheet.connect_button" = "连接";
-"scene.connect_node_uri.action_sheet.message" = "Do you really want to connect to node at %@?";
+"scene.connect_node_uri.action_sheet.message" = "您真的想连接 %@ 节点吗？";
