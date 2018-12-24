@@ -55,7 +55,11 @@ public struct FiatCurrency: Currency, Equatable, Codable {
         numberFormatter.numberStyle = .decimal
         
         guard let fiatValue = (numberFormatter.number(from: string)) as? NSDecimalNumber else { return nil }
-        return Satoshi.from(value: fiatValue.decimalValue / exchangeRate, unit: .bitcoin)
+        return satoshis(from: fiatValue.decimalValue)
+    }
+    
+    public func satoshis(from fiatValue: Decimal) -> Satoshi {
+        return Satoshi.from(value: fiatValue / exchangeRate, unit: .bitcoin)
     }
     
     public func value(satoshis: Satoshi) -> Decimal? {

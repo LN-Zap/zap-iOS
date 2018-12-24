@@ -66,7 +66,7 @@ final class FavouriteProductsViewController: UIViewController, ShoppingCartPrese
     }
     
     @IBAction private func presentTipViewController(_ sender: Any) {
-        presentTipViewController(transactionService: transactionService)
+        presentTipViewController(transactionService: transactionService, fiatValue: shoppingCartViewModel.totalAmount.value)
     }
     
     @IBAction private func presentShoppingCart(_ sender: UIButton) {

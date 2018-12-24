@@ -11,7 +11,7 @@ import Lightning
 
 protocol ShoppingCartPresentable {
     func presentShoppingCart(shoppingCartViewModel: ShoppingCartViewModel)
-    func presentTipViewController(transactionService: TransactionService)
+    func presentTipViewController(transactionService: TransactionService, fiatValue: Decimal)
     func setupPayButton(button: UIButton, amount: Observable<Decimal>)
 }
 
@@ -21,8 +21,9 @@ extension ShoppingCartPresentable where Self: UIViewController {
         navigationController?.pushViewController(shoppingCartViewController, animated: true)
     }
     
-    func presentTipViewController(transactionService: TransactionService) {
-        let waiterRequestViewModel = WaiterRequestViewModel(amount: 19, transactionService: transactionService)
+    func presentTipViewController(transactionService: TransactionService, fiatValue: Decimal) {
+        let amount = Settings.shared.fiatCurrency.value.satoshis(from: fiatValue)
+        let waiterRequestViewModel = WaiterRequestViewModel(amount: amount, transactionService: transactionService)
         let tipViewController = UIStoryboard.instantiateTipViewController(waiterRequestViewModel: waiterRequestViewModel)
         let navigationController = ZapNavigationController(rootViewController: tipViewController)
         present(navigationController, animated: true, completion: nil)

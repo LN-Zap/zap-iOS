@@ -61,7 +61,7 @@ PODS:
   - SQLite.swift (0.11.5):
     - SQLite.swift/standard (= 0.11.5)
   - SQLite.swift/standard (0.11.5)
-  - SwiftBTC (0.0.3):
+  - SwiftBTC (0.0.4):
     - BigInt (~> 3.1)
   - SwiftProtobuf (1.2.0)
 
@@ -119,7 +119,7 @@ SPEC CHECKSUMS:
   ScrollableGraphView: 4af35d4ea9ecdec665d34a74da51da161ddff8ac
   SipHash: fad90a4683e420c52ef28063063dbbce248ea6d4
   SQLite.swift: 6e5356850bb1791459f8c16d6ee9195b28714a2e
-  SwiftBTC: 15706ca6433673789e149dc955c6cb418686ab69
+  SwiftBTC: 825200a8db9f203a50e59d03c4a30f8e32e6e3d5
   SwiftProtobuf: 91a9856079044ef4ec762b2344c763cd9e5a73c1
 
 PODFILE CHECKSUM: 8f5d165049a2067b52a662f5d6a8e6ee3e847e29
