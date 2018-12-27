@@ -28,7 +28,7 @@ final class ShoppingCartViewController: UIViewController {
 
         tableView.registerCell(ShoppingListTableViewCell.self)
         
-        tableView.delegate = self
+        tableView.allowsSelection = false
         tableView.dataSource = self
         tableView.rowHeight = 76
         tableView.allowsMultipleSelectionDuringEditing = false
@@ -40,12 +40,6 @@ final class ShoppingCartViewController: UIViewController {
         shoppingCartViewModel?.removeAll()
         tableView.reloadData()
         navigationController?.popViewController(animated: true)
-    }
-}
-
-extension ShoppingCartViewController: UITableViewDelegate {
-    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        tableView.deselectRow(at: indexPath, animated: true)
     }
 }
 
