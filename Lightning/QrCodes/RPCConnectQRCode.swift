@@ -14,10 +14,13 @@ public enum RPCConnectQRCodeError: Error {
     case cantReadQRCode
 }
 
-/// Decodes RPCConfiguration from both BTCPay & zapconnect QRCodes
+/// Decodes RPCConfiguration from lndconnect, zapconnect & BTCPay QRCodes
 public enum RPCConnectQRCode {
     public static func configuration(for string: String, completion: @escaping (Result<RemoteRPCConfiguration>) -> Void) {
-        if let qrCode = ZapconnectQRCode(json: string) {
+        if let url = URL(string: string),
+            let lndConnectURL = LndConnectURL(url: url) {
+            completion(.success(lndConnectURL.rpcConfiguration))
+        } else if let qrCode = ZapconnectQRCode(json: string) {
             completion(.success(qrCode.rpcConfiguration))
         } else if let btcPayQRCode = BTCPayQRCode(string: string) {
             btcPayQRCode.fetchConfiguration { result in
