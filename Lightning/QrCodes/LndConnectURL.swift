@@ -8,7 +8,7 @@
 import Foundation
 import SwiftLnd
 
-extension URL {
+private extension URL {
     var queryParameters: [String: String]? {
         guard
             let components = URLComponents(url: self, resolvingAgainstBaseURL: true),
@@ -23,12 +23,7 @@ extension URL {
     }
 }
 
-extension String {
-    func removingPrefix(_ prefix: String) -> String {
-        guard hasPrefix(prefix) else { return self }
-        return String(dropFirst(prefix.count))
-    }
-    
+private extension String {
     func base64UrlToBase64() -> String {
         var base64 = self
             .replacingOccurrences(of: "-", with: "+")
@@ -42,18 +37,16 @@ extension String {
     }
 }
 
-public final class RPCConnectURL {
+public final class LndConnectURL {
     public let rpcConfiguration: RemoteRPCConfiguration
     
-    public init?(string: String) {
-        let urlString = string.removingPrefix("zap:").removingPrefix("//")
-        
+    public init?(url: URL) {
         guard
-            let url = URL(string: urlString),
             let queryParameters = url.queryParameters,
             let certificate = queryParameters["cert"]?.base64UrlToBase64(),
-            let nodeHostString = queryParameters["host"],
-            let nodeHostUrl = URL(string: nodeHostString),
+            let nodeHostString = url.host,
+            let port = url.port,
+            let nodeHostUrl = URL(string: "\(nodeHostString):\(port)"),
             let macaroonString = queryParameters["macaroon"]?.base64UrlToBase64(),
             let macaroon = Macaroon(base64String: macaroonString)
             else { return nil }

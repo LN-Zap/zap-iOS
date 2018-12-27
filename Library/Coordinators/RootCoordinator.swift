@@ -91,7 +91,7 @@ public final class RootCoordinator: NSObject, SetupCoordinatorDelegate, PinCoord
         ExchangeUpdaterJob.start()
     }
     
-    private func openRPCConnectURL(_ url: RPCConnectURL) {
+    private func openRPCConnectURL(_ url: LndConnectURL) {
         let message = L10n.Scene.ConnectNodeUri.ActionSheet.message(url.rpcConfiguration.url.absoluteString)
         let alertController = UIAlertController(title: L10n.Scene.ConnectNodeUri.ActionSheet.title, message: message, preferredStyle: .actionSheet)
         
