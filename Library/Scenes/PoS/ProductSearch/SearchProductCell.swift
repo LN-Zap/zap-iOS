@@ -24,4 +24,14 @@ class SearchProductCell: BondTableViewCell, ProductCell {
         countLabel.clipsToBounds = true
         countLabel.backgroundColor = UIColor.Zap.lightningOrange
     }
+    
+    override func setSelected(_ selected: Bool, animated: Bool) {
+        super.setSelected(selected, animated: animated)
+        countLabel.backgroundColor = UIColor.Zap.lightningOrange
+    }
+    
+    override func setHighlighted(_ highlighted: Bool, animated: Bool) {
+        super.setHighlighted(highlighted, animated: animated)
+        countLabel.backgroundColor = UIColor.Zap.lightningOrange
+    }
 }
