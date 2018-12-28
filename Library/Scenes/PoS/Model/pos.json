@@ -48,6 +48,26 @@
             {
                 "name": "A7",
                 "price": 1.42
+            },
+            {
+                "name": "A7b",
+                "price": 1.42
+            },
+            {
+                "name": "A7bb",
+                "price": 1.42
+            },
+            {
+                "name": "A7bbb",
+                "price": 1.42
+            },
+            {
+                "name": "A7bbbb",
+                "price": 1.42
+            },
+            {
+                "name": "A7 bbbbb",
+                "price": 1.42
             }
         ],
         [
@@ -65,6 +85,26 @@
             },
             {
                 "name": "A11",
+                "price": 12.40
+            }
+        ],
+        [
+            {
+                "name": "ccc",
+                "price": 1900.23
+            },
+            {
+                "name": "Add11",
+                "price": 12.40
+            }
+        ],
+        [
+            {
+                "name": "dccc",
+                "price": 1900.23
+            },
+            {
+                "name": "dA11",
                 "price": 12.40
             }
         ]

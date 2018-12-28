@@ -23,10 +23,9 @@ final class FavouritePageViewController: UIPageViewController {
         
         dataSource = self
         
-        orderedViewControllers = [
-            UIStoryboard.instantiateFavouritePageContentViewController(productsViewModel: productsViewModel, shoppingCartViewModel: shoppingCartViewModel, pageIndex: 0),
-            UIStoryboard.instantiateFavouritePageContentViewController(productsViewModel: productsViewModel, shoppingCartViewModel: shoppingCartViewModel, pageIndex: 1)
-        ]
+        orderedViewControllers = productsViewModel.favourites.enumerated().map { index, _ in
+            UIStoryboard.instantiateFavouritePageContentViewController(productsViewModel: productsViewModel, shoppingCartViewModel: shoppingCartViewModel, pageIndex: index)
+        }
         
         if let firstViewController = orderedViewControllers?.first {
             setViewControllers([firstViewController], direction: .forward, animated: true, completion: nil)
