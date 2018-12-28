@@ -25,7 +25,6 @@ extension UIStoryboard {
 }
 
 final class FavouriteProductsViewController: UIViewController, ShoppingCartPresentable {
-    @IBOutlet private weak var collectionView: UICollectionView!
     @IBOutlet private weak var payButton: UIButton!
     @IBOutlet private weak var shoppingCartButton: UIBarButtonItem!
 
@@ -37,32 +36,15 @@ final class FavouriteProductsViewController: UIViewController, ShoppingCartPrese
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        navigationItem.title = "Chicago Bar"
+        navigationItem.title = "Favorites"
         
         Style.Button.background.apply(to: payButton)
         
         view.backgroundColor = UIColor.Zap.background
-        collectionView.backgroundColor = UIColor.Zap.background
-        collectionView.registerCell(FavouriteProductCollectionViewCell.self)
-        
-        collectionView.dataSource = self
-        collectionView.delegate = self
         
         navigationItem.largeTitleDisplayMode = .never
 
         setupPayButton(button: payButton, amount: shoppingCartViewModel.totalAmount)
-        
-        if let flowLayout = collectionView.collectionViewLayout as? UICollectionViewFlowLayout {
-            flowLayout.minimumInteritemSpacing = 10
-            flowLayout.minimumLineSpacing = 10
-            let border: CGFloat = 20
-            let itemWidth = (collectionView.bounds.width - 2 * flowLayout.minimumInteritemSpacing - 2 * border) / 3
-            flowLayout.itemSize = CGSize(
-                width: itemWidth,
-                height: itemWidth)
-            
-            collectionView.contentInset = UIEdgeInsets(top: border, left: border, bottom: border, right: border)
-        }
     }
     
     @IBAction private func presentTipViewController(_ sender: Any) {
@@ -72,31 +54,11 @@ final class FavouriteProductsViewController: UIViewController, ShoppingCartPrese
     @IBAction private func presentShoppingCart(_ sender: UIButton) {
         presentShoppingCart(shoppingCartViewModel: shoppingCartViewModel)
     }
-}
-
-extension FavouriteProductsViewController: UICollectionViewDelegate {
-    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        let product = productsViewModel.favourites[indexPath.row]
-        shoppingCartViewModel.addSingle(product: product)
-        
-        if let cell = collectionView.cellForItem(at: indexPath) as? FavouriteProductCollectionViewCell {
-            cell.animateSelection()
-        }
-    }
-}
-
-extension FavouriteProductsViewController: UICollectionViewDataSource {
-    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return productsViewModel.favourites.count
-    }
     
-    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell: FavouriteProductCollectionViewCell = collectionView.dequeueCellForIndexPath(indexPath)
-        
-        let product = productsViewModel.favourites[indexPath.row]
-        let count = shoppingCartViewModel.count(of: product)
-        cell.setItem(product: product, count: count)
-        
-        return cell
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if let pageViewController = segue.destination as? FavouritePageViewController {
+            pageViewController.productsViewModel = productsViewModel
+            pageViewController.shoppingCartViewModel = shoppingCartViewModel
+        }
     }
 }

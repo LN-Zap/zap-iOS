@@ -86,6 +86,8 @@ internal enum StoryboardScene {
 
     internal static let initialScene = InitialSceneType<ZapNavigationController>(storyboard: PoS.self)
 
+    internal static let favouritePageContentViewController = SceneType<FavouritePageContentViewController>(storyboard: PoS.self, identifier: "FavouritePageContentViewController")
+
     internal static let productSearchViewController = SceneType<ProductSearchViewController>(storyboard: PoS.self, identifier: "ProductSearchViewController")
 
     internal static let productViewController = SceneType<FavouriteProductsViewController>(storyboard: PoS.self, identifier: "ProductViewController")

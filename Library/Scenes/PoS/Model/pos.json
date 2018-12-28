@@ -1,25 +1,73 @@
 {
     "favourites":[
-        {
-            "name": "312",
-            "price": 3.50
-        },
-        {
-            "name": "Allagash",
-            "price": 3.40
-        },
-        {
-            "name": "KC Amstel",
-            "price": 4.00
-        },
-        {
-            "name": "KC Blue Moon",
-            "price": 5.20
-        },
-        {
-            "name": "Absolut",
-            "price": 1.40
-        }
+        [
+            {
+                "name": "312",
+                "price": 3.50
+            },
+            {
+                "name": "Allagash",
+                "price": 3.40
+            },
+            {
+                "name": "KC Amstel",
+                "price": 4.00
+            },
+            {
+                "name": "KC Blue Moon",
+                "price": 5.20
+            },
+            {
+                "name": "Absolut",
+                "price": 1.49
+            },
+            {
+                "name": "A1",
+                "price": 1.48
+            },
+            {
+                "name": "A2",
+                "price": 1.47
+            },
+            {
+                "name": "A3",
+                "price": 1.46
+            },
+            {
+                "name": "A4",
+                "price": 1.45
+            },
+            {
+                "name": "A5",
+                "price": 1.44
+            },
+            {
+                "name": "A6",
+                "price": 1.43
+            },
+            {
+                "name": "A7",
+                "price": 1.42
+            }
+        ],
+        [
+            {
+                "name": "A8",
+                "price": 1.41
+            },
+            {
+                "name": "A9",
+                "price": 10.40
+            },
+            {
+                "name": "A10",
+                "price": 11.40
+            },
+            {
+                "name": "A11",
+                "price": 12.40
+            }
+        ]
     ],
     "products":[
         {

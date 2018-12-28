@@ -10,16 +10,24 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--Favourite Products View Controller-->
-        <scene sceneID="vbC-T3-elW">
+        <!--Favourite Page View Controller-->
+        <scene sceneID="qmu-CU-ubV">
             <objects>
-                <viewController storyboardIdentifier="ProductViewController" id="eX2-4Y-Pm5" customClass="FavouriteProductsViewController" customModule="Library" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="Q5h-FP-QT0">
+                <pageViewController autoresizesArchivedViewToFullSize="NO" transitionStyle="scroll" navigationOrientation="horizontal" spineLocation="none" id="wgo-fd-OW5" customClass="FavouritePageViewController" customModule="Library" customModuleProvider="target" sceneMemberID="viewController"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="XhP-5R-vQ8" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1454" y="-582"/>
+        </scene>
+        <!--Favourite Page Content View Controller-->
+        <scene sceneID="JpR-0D-Wud">
+            <objects>
+                <viewController storyboardIdentifier="FavouritePageContentViewController" id="rCH-CC-dyV" customClass="FavouritePageContentViewController" customModule="Library" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="YBq-wS-vPs">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="Bpf-e8-CbF">
-                                <rect key="frame" x="0.0" y="0.0" width="375" height="534"/>
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="NtZ-FJ-W3d">
                                     <size key="itemSize" width="50" height="50"/>
@@ -29,9 +37,38 @@
                                 </collectionViewFlowLayout>
                                 <cells/>
                             </collectionView>
-                            <pageControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" numberOfPages="3" translatesAutoresizingMaskIntoConstraints="NO" id="5F3-ou-hcu">
-                                <rect key="frame" x="168" y="534" width="39" height="37"/>
-                            </pageControl>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="Bpf-e8-CbF" firstAttribute="top" secondItem="YBq-wS-vPs" secondAttribute="top" id="ONB-Nj-pWW"/>
+                            <constraint firstItem="Bpf-e8-CbF" firstAttribute="bottom" secondItem="EVj-5m-ccK" secondAttribute="bottom" id="Vcq-kM-ifv"/>
+                            <constraint firstItem="Bpf-e8-CbF" firstAttribute="leading" secondItem="EVj-5m-ccK" secondAttribute="leading" id="luo-lE-TYU"/>
+                            <constraint firstItem="Bpf-e8-CbF" firstAttribute="trailing" secondItem="EVj-5m-ccK" secondAttribute="trailing" id="t9K-vu-Xd2"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="EVj-5m-ccK"/>
+                    </view>
+                    <connections>
+                        <outlet property="collectionView" destination="Bpf-e8-CbF" id="kNN-E1-pRw"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="MUq-RS-pNZ" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2300" y="-536.58170914542734"/>
+        </scene>
+        <!--Favourite Products View Controller-->
+        <scene sceneID="vbC-T3-elW">
+            <objects>
+                <viewController storyboardIdentifier="ProductViewController" id="eX2-4Y-Pm5" customClass="FavouriteProductsViewController" customModule="Library" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="Q5h-FP-QT0">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="AHF-JP-sm9">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="561"/>
+                                <connections>
+                                    <segue destination="wgo-fd-OW5" kind="embed" id="jcF-bE-hfg"/>
+                                </connections>
+                            </containerView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1t6-eJ-qsR">
                                 <rect key="frame" x="20" y="571" width="335" height="76"/>
                                 <constraints>
@@ -45,15 +82,13 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
-                            <constraint firstItem="Bpf-e8-CbF" firstAttribute="leading" secondItem="t9u-Vh-nxV" secondAttribute="leading" id="6fi-4O-cFZ"/>
-                            <constraint firstItem="1t6-eJ-qsR" firstAttribute="top" secondItem="5F3-ou-hcu" secondAttribute="bottom" id="H8I-aH-E15"/>
                             <constraint firstItem="1t6-eJ-qsR" firstAttribute="leading" secondItem="t9u-Vh-nxV" secondAttribute="leading" constant="20" id="JQL-aQ-nLO"/>
                             <constraint firstItem="t9u-Vh-nxV" firstAttribute="trailing" secondItem="1t6-eJ-qsR" secondAttribute="trailing" constant="20" id="Yqj-dj-27z"/>
-                            <constraint firstItem="Bpf-e8-CbF" firstAttribute="trailing" secondItem="t9u-Vh-nxV" secondAttribute="trailing" id="bUM-JL-AH3"/>
+                            <constraint firstItem="1t6-eJ-qsR" firstAttribute="top" secondItem="AHF-JP-sm9" secondAttribute="bottom" constant="10" id="Z0A-Ya-cSa"/>
                             <constraint firstItem="t9u-Vh-nxV" firstAttribute="bottom" secondItem="1t6-eJ-qsR" secondAttribute="bottom" constant="20" id="g3W-7Q-Pfb"/>
-                            <constraint firstItem="Bpf-e8-CbF" firstAttribute="top" secondItem="Q5h-FP-QT0" secondAttribute="top" id="k0D-LI-NmD"/>
-                            <constraint firstItem="5F3-ou-hcu" firstAttribute="centerX" secondItem="t9u-Vh-nxV" secondAttribute="centerX" id="sgH-UP-gqI"/>
-                            <constraint firstItem="5F3-ou-hcu" firstAttribute="top" secondItem="Bpf-e8-CbF" secondAttribute="bottom" id="z4G-yi-D7n"/>
+                            <constraint firstItem="AHF-JP-sm9" firstAttribute="top" secondItem="Q5h-FP-QT0" secondAttribute="top" id="kQq-Oy-aqQ"/>
+                            <constraint firstItem="AHF-JP-sm9" firstAttribute="trailing" secondItem="t9u-Vh-nxV" secondAttribute="trailing" id="va6-sD-dTH"/>
+                            <constraint firstItem="AHF-JP-sm9" firstAttribute="leading" secondItem="t9u-Vh-nxV" secondAttribute="leading" id="yLn-Em-xn1"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="t9u-Vh-nxV"/>
                     </view>
@@ -65,7 +100,6 @@
                         </barButtonItem>
                     </navigationItem>
                     <connections>
-                        <outlet property="collectionView" destination="Bpf-e8-CbF" id="6IO-bj-Fmz"/>
                         <outlet property="payButton" destination="1t6-eJ-qsR" id="Rag-Kr-nYQ"/>
                         <outlet property="shoppingCartButton" destination="bK7-wz-XgS" id="dYk-gv-X8K"/>
                     </connections>

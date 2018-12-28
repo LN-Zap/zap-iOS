@@ -10,11 +10,11 @@ import Foundation
 typealias JSON = [String: Any]
 
 final class ProductsViewModel {
-    let favourites: [Product]
+    let favourites: [[Product]]
     let productGroup: Group
     
     var allProducts: Set<Product> {
-        return Set(favourites + groupedProducts(group: productGroup))
+        return Set(favourites.flatMap { $0 } + groupedProducts(group: productGroup))
     }
     
     init() {
@@ -22,11 +22,11 @@ final class ProductsViewModel {
             let path = Bundle.library.path(forResource: "pos", ofType: "json"),
             let data = try? Data(contentsOf: URL(fileURLWithPath: path)),
             let json = try? JSONSerialization.jsonObject(with: data, options: []) as? JSON ?? [:],
-            let jsonFavourites = json["favourites"] as? [JSON],
+            let jsonFavourites = json["favourites"] as? [[JSON]],
             let jsonProducts = json["products"] as? [JSON]
             else { fatalError("invalid pos json") }
         
-        favourites = jsonFavourites.compactMap(Product.init)
+        favourites = jsonFavourites.compactMap { $0.compactMap(Product.init) }
         let products = jsonProducts.compactMap(decodeGroupable)
         productGroup = Group(name: "All Items", items: products)
     }
