@@ -17,7 +17,7 @@ extension UIStoryboard {
         productViewController.shoppingCartViewModel = shoppingCartViewModel
         
         let navigationController = ZapNavigationController(rootViewController: productViewController)
-        navigationController.tabBarItem.image = Asset.tabbarWallet.image
+        navigationController.tabBarItem.image = Asset.tabbarFavourites.image
         navigationController.tabBarItem.title = "Favourites"
 
         return navigationController

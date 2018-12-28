@@ -35,6 +35,7 @@ internal enum Asset {
   internal static let iconRequestOnChainButton = ImageAsset(name: "icon_request_on_chain_button")
   internal static let iconArrowDownSmall = ImageAsset(name: "icon_arrow_down_small")
   internal static let iconSendArrow = ImageAsset(name: "icon_send_arrow")
+  internal static let tabbarFavourites = ImageAsset(name: "tabbar_favourites")
   internal static let tabbarHistory = ImageAsset(name: "tabbar_history")
   internal static let tabbarSettings = ImageAsset(name: "tabbar_settings")
   internal static let tabbarWallet = ImageAsset(name: "tabbar_wallet")
