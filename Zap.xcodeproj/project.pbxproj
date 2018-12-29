@@ -11,7 +11,6 @@
 		429230B451D7CAF7718C5EBB /* Pods_RPC_SwiftLnd.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D1D7DC8244C0E3E65FCB72FA /* Pods_RPC_SwiftLnd.framework */; };
 		508C114BE3C2C3584AB55069 /* Pods_LightningTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 64689AAAE184A2256E9C9DF3 /* Pods_LightningTests.framework */; };
 		5FCBBF37B467569C5BD2796A /* Pods_RPC_Library.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4629437540BC6CE36F3EE098 /* Pods_RPC_Library.framework */; };
-		6E1140740E9E4B76B462BEAB /* Pods_Apps_Zap.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 148266027255CA2F368037FC /* Pods_Apps_Zap.framework */; };
 		A02C9FC2202F5BDC009821B1 /* LocalAuthentication.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A02C9FC1202F5BDC009821B1 /* LocalAuthentication.framework */; };
 		A0A05A032013CF960007D1C9 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0A05A022013CF960007D1C9 /* AppDelegate.swift */; };
 		A0A05A0A2013CF960007D1C9 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A0A05A092013CF960007D1C9 /* Assets.xcassets */; };
@@ -160,6 +159,7 @@
 		AD3DDC03213EE4000008379C /* RootTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD3DDC02213EE4000008379C /* RootTabBarController.swift */; };
 		AD3FA15621D66C560024EA95 /* FavouritePageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD3FA15521D66C560024EA95 /* FavouritePageViewController.swift */; };
 		AD3FA15821D66C8A0024EA95 /* FavouritePageContentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD3FA15721D66C8A0024EA95 /* FavouritePageContentViewController.swift */; };
+		AD3FA16221D7970D0024EA95 /* Pods_Zap.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AD3FA16121D7970D0024EA95 /* Pods_Zap.framework */; };
 		AD536BEF20E62764002279BC /* Lightning.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AD536BE620E62763002279BC /* Lightning.framework */; };
 		AD536BF620E62764002279BC /* BTCPayQRCodeTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD536BF520E62764002279BC /* BTCPayQRCodeTests.swift */; };
 		AD536BF820E62764002279BC /* Lightning.h in Headers */ = {isa = PBXBuildFile; fileRef = AD536BE820E62763002279BC /* Lightning.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -324,7 +324,6 @@
 		ADFEFA6F20E627F100FE1557 /* WalletService.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0D3C9792060070D0015C5D7 /* WalletService.swift */; };
 		ADFEFA7120E628AC00FE1557 /* Lightning.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AD536BE620E62763002279BC /* Lightning.framework */; };
 		ADFEFA7920E62B1800FE1557 /* BlockChainHeightUpdater.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0D3C97F20629B9D0015C5D7 /* BlockChainHeightUpdater.swift */; };
-		CD963CC2D8EB58098D960D3B /* Pods_Zap.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BAABB03E07719395528272D4 /* Pods_Zap.framework */; };
 		D6989DE43FB4820F856510AB /* Pods_SwiftLndTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 81036DADA56AC2254782EE27 /* Pods_SwiftLndTests.framework */; };
 		DAB5EBC4696E2DCAEF57744D /* Pods_RPC_Lightning.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 92308447F0260B8536617365 /* Pods_RPC_Lightning.framework */; };
 /* End PBXBuildFile section */
@@ -439,8 +438,11 @@
 		03CF12AE4F9A3517628D1B2B /* Pods-Zap.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Zap.release.xcconfig"; path = "Pods/Target Support Files/Pods-Zap/Pods-Zap.release.xcconfig"; sourceTree = "<group>"; };
 		045A3F79F6BD76792A8F3DFC /* Pods-RPC-Library.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RPC-Library.release.xcconfig"; path = "Pods/Target Support Files/Pods-RPC-Library/Pods-RPC-Library.release.xcconfig"; sourceTree = "<group>"; };
 		0852E6B6485C260D1BF74548 /* Pods_Apps_ZapPos.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Apps_ZapPos.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		0B9B5C918A83648FA07D7F04 /* Pods-LightningTests.debugpos.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-LightningTests.debugpos.xcconfig"; path = "Pods/Target Support Files/Pods-LightningTests/Pods-LightningTests.debugpos.xcconfig"; sourceTree = "<group>"; };
 		148266027255CA2F368037FC /* Pods_Apps_Zap.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Apps_Zap.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		2572018E68B78F2E7B787934 /* Pods-Zap.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Zap.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Zap/Pods-Zap.debug.xcconfig"; sourceTree = "<group>"; };
+		2E90BFDBA3343E969D47BE52 /* Pods-RPC-Lightning.debugpos.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RPC-Lightning.debugpos.xcconfig"; path = "Pods/Target Support Files/Pods-RPC-Lightning/Pods-RPC-Lightning.debugpos.xcconfig"; sourceTree = "<group>"; };
+		33A34E6782D7EBCB22C6079E /* Pods-LibraryTests.debugpos.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-LibraryTests.debugpos.xcconfig"; path = "Pods/Target Support Files/Pods-LibraryTests/Pods-LibraryTests.debugpos.xcconfig"; sourceTree = "<group>"; };
 		4629437540BC6CE36F3EE098 /* Pods_RPC_Library.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_RPC_Library.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		4AE4B3957AC31DDABB89AF3B /* Pods-RPC-SwiftLnd.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RPC-SwiftLnd.release.xcconfig"; path = "Pods/Target Support Files/Pods-RPC-SwiftLnd/Pods-RPC-SwiftLnd.release.xcconfig"; sourceTree = "<group>"; };
 		4D814F1CFAAE16F5AF1B849C /* Pods-RPC-Library.debugremote.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RPC-Library.debugremote.xcconfig"; path = "Pods/Target Support Files/Pods-RPC-Library/Pods-RPC-Library.debugremote.xcconfig"; sourceTree = "<group>"; };
@@ -453,6 +455,7 @@
 		8CA6BEE1FC4461B357E8E8EB /* Pods-LibraryTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-LibraryTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-LibraryTests/Pods-LibraryTests.debug.xcconfig"; sourceTree = "<group>"; };
 		8E389AE484CADF367CD14B89 /* Pods-RPC-Lightning.debugremote.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RPC-Lightning.debugremote.xcconfig"; path = "Pods/Target Support Files/Pods-RPC-Lightning/Pods-RPC-Lightning.debugremote.xcconfig"; sourceTree = "<group>"; };
 		92308447F0260B8536617365 /* Pods_RPC_Lightning.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_RPC_Lightning.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		976004946B46AB1DB18FB368 /* Pods-RPC-SwiftLnd.debugpos.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RPC-SwiftLnd.debugpos.xcconfig"; path = "Pods/Target Support Files/Pods-RPC-SwiftLnd/Pods-RPC-SwiftLnd.debugpos.xcconfig"; sourceTree = "<group>"; };
 		9CAF616CC251A4D287804EC0 /* Pods-Zap.debugremote.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Zap.debugremote.xcconfig"; path = "Pods/Target Support Files/Pods-Zap/Pods-Zap.debugremote.xcconfig"; sourceTree = "<group>"; };
 		9FD2431F8173B1C7AA21C97C /* Pods-LightningTests.debugremote.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-LightningTests.debugremote.xcconfig"; path = "Pods/Target Support Files/Pods-LightningTests/Pods-LightningTests.debugremote.xcconfig"; sourceTree = "<group>"; };
 		9FDE7EF01EB52E6E06DA41E7 /* Pods-LibraryTests.debugremote.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-LibraryTests.debugremote.xcconfig"; path = "Pods/Target Support Files/Pods-LibraryTests/Pods-LibraryTests.debugremote.xcconfig"; sourceTree = "<group>"; };
@@ -578,6 +581,7 @@
 		AD3DDC02213EE4000008379C /* RootTabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RootTabBarController.swift; sourceTree = "<group>"; };
 		AD3FA15521D66C560024EA95 /* FavouritePageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavouritePageViewController.swift; sourceTree = "<group>"; };
 		AD3FA15721D66C8A0024EA95 /* FavouritePageContentViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavouritePageContentViewController.swift; sourceTree = "<group>"; };
+		AD3FA16121D7970D0024EA95 /* Pods_Zap.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = Pods_Zap.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		AD536BE620E62763002279BC /* Lightning.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Lightning.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		AD536BE820E62763002279BC /* Lightning.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Lightning.h; sourceTree = "<group>"; };
 		AD536BE920E62763002279BC /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -842,7 +846,9 @@
 		ADFE537B20D693F500B3BA2A /* LibraryTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = LibraryTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		ADFE537F20D693F500B3BA2A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		ADFEFA7320E6294000FE1557 /* OnChainRequestAddressType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnChainRequestAddressType.swift; sourceTree = "<group>"; };
+		B509D5ABD28B8E5262CD923C /* Pods-Zap.debugpos.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Zap.debugpos.xcconfig"; path = "Pods/Target Support Files/Pods-Zap/Pods-Zap.debugpos.xcconfig"; sourceTree = "<group>"; };
 		BAABB03E07719395528272D4 /* Pods_Zap.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Zap.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		BBD776F35617673FA0EDF1F7 /* Pods-SwiftLndTests.debugpos.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SwiftLndTests.debugpos.xcconfig"; path = "Pods/Target Support Files/Pods-SwiftLndTests/Pods-SwiftLndTests.debugpos.xcconfig"; sourceTree = "<group>"; };
 		BE74014E0B80605B55F867D4 /* Pods-RPC-Lightning.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RPC-Lightning.debug.xcconfig"; path = "Pods/Target Support Files/Pods-RPC-Lightning/Pods-RPC-Lightning.debug.xcconfig"; sourceTree = "<group>"; };
 		BF5185AA0DF1297907ABB0A5 /* Pods-LightningTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-LightningTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-LightningTests/Pods-LightningTests.debug.xcconfig"; sourceTree = "<group>"; };
 		C48BD0CEA66C550AA39DE33E /* Pods-SwiftLndTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SwiftLndTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-SwiftLndTests/Pods-SwiftLndTests.debug.xcconfig"; sourceTree = "<group>"; };
@@ -852,6 +858,7 @@
 		D1D7DC8244C0E3E65FCB72FA /* Pods_RPC_SwiftLnd.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_RPC_SwiftLnd.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		DC32D9E1C0DA9CDE996FB09B /* Pods-SwiftLndTests.debugremote.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SwiftLndTests.debugremote.xcconfig"; path = "Pods/Target Support Files/Pods-SwiftLndTests/Pods-SwiftLndTests.debugremote.xcconfig"; sourceTree = "<group>"; };
 		EE02ACBEA88DD5D98ADC12BC /* Pods-LightningTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-LightningTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-LightningTests/Pods-LightningTests.release.xcconfig"; sourceTree = "<group>"; };
+		FB3927E5E904CE2FD1FFA2CF /* Pods-RPC-Library.debugpos.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RPC-Library.debugpos.xcconfig"; path = "Pods/Target Support Files/Pods-RPC-Library/Pods-RPC-Library.debugpos.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -863,8 +870,7 @@
 				A02C9FC2202F5BDC009821B1 /* LocalAuthentication.framework in Frameworks */,
 				AD536BFB20E62764002279BC /* Lightning.framework in Frameworks */,
 				AD391C1F20D16ED4007EE22A /* Library.framework in Frameworks */,
-				6E1140740E9E4B76B462BEAB /* Pods_Apps_Zap.framework in Frameworks */,
-				CD963CC2D8EB58098D960D3B /* Pods_Zap.framework in Frameworks */,
+				AD3FA16221D7970D0024EA95 /* Pods_Zap.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -947,6 +953,13 @@
 				2572018E68B78F2E7B787934 /* Pods-Zap.debug.xcconfig */,
 				9CAF616CC251A4D287804EC0 /* Pods-Zap.debugremote.xcconfig */,
 				03CF12AE4F9A3517628D1B2B /* Pods-Zap.release.xcconfig */,
+				33A34E6782D7EBCB22C6079E /* Pods-LibraryTests.debugpos.xcconfig */,
+				0B9B5C918A83648FA07D7F04 /* Pods-LightningTests.debugpos.xcconfig */,
+				FB3927E5E904CE2FD1FFA2CF /* Pods-RPC-Library.debugpos.xcconfig */,
+				2E90BFDBA3343E969D47BE52 /* Pods-RPC-Lightning.debugpos.xcconfig */,
+				976004946B46AB1DB18FB368 /* Pods-RPC-SwiftLnd.debugpos.xcconfig */,
+				BBD776F35617673FA0EDF1F7 /* Pods-SwiftLndTests.debugpos.xcconfig */,
+				B509D5ABD28B8E5262CD923C /* Pods-Zap.debugpos.xcconfig */,
 			);
 			name = Pods;
 			sourceTree = "<group>";
@@ -1894,6 +1907,7 @@
 		CEF2960C33901153F2C1FFF4 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				AD3FA16121D7970D0024EA95 /* Pods_Zap.framework */,
 				A02C9FC1202F5BDC009821B1 /* LocalAuthentication.framework */,
 				AD391D4020D17FA9007EE22A /* Messages.framework */,
 				148266027255CA2F368037FC /* Pods_Apps_Zap.framework */,
@@ -3402,6 +3416,279 @@
 			};
 			name = Release;
 		};
+		AD3FA15921D794650024EA95 /* DebugPoS */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_LOCALIZABILITY_EMPTY_CONTEXT = YES;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_ANALYZER_SECURITY_FLOATLOOPCOUNTER = YES;
+				CLANG_ANALYZER_SECURITY_INSECUREAPI_RAND = YES;
+				CLANG_ANALYZER_SECURITY_INSECUREAPI_STRCPY = YES;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_ASSIGN_ENUM = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_FLOAT_CONVERSION = YES;
+				CLANG_WARN_IMPLICIT_SIGN_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_IMPLICIT_CONVERSION = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_TREAT_IMPLICIT_FUNCTION_DECLARATIONS_AS_ERRORS = YES;
+				GCC_TREAT_INCOMPATIBLE_POINTER_TYPE_WARNINGS_AS_ERRORS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_MISSING_FIELD_INITIALIZERS = YES;
+				GCC_WARN_ABOUT_MISSING_NEWLINE = YES;
+				GCC_WARN_ABOUT_MISSING_PROTOTYPES = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_INITIALIZER_NOT_FULLY_BRACKETED = YES;
+				GCC_WARN_SHADOW = YES;
+				GCC_WARN_SIGN_COMPARE = YES;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNKNOWN_PRAGMAS = YES;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_LABEL = YES;
+				GCC_WARN_UNUSED_PARAMETER = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.2;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				OTHER_SWIFT_FLAGS = "-D REMOTEONLY";
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = DebugPoS;
+		};
+		AD3FA15A21D794650024EA95 /* DebugPoS */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = B509D5ABD28B8E5262CD923C /* Pods-Zap.debugpos.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_ENTITLEMENTS = Zap/Zap.entitlements;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = CS73H95RB8;
+				ENABLE_BITCODE = NO;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Frameworks",
+				);
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"$(inherited)",
+					"COCOAPODS=1",
+					"GPB_USE_PROTOBUF_FRAMEWORK_IMPORTS=1",
+					"PB_FIELD_32BIT=1",
+					"PB_NO_PACKED_STRUCTS=1",
+				);
+				INFOPLIST_FILE = Zap/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.2;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.jackmallers.zap-pos";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 4.2;
+				TARGETED_DEVICE_FAMILY = 1;
+				VERSIONING_SYSTEM = "apple-generic";
+			};
+			name = DebugPoS;
+		};
+		AD3FA15B21D794650024EA95 /* DebugPoS */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 2E90BFDBA3343E969D47BE52 /* Pods-RPC-Lightning.debugpos.xcconfig */;
+			buildSettings = {
+				APPLICATION_EXTENSION_API_ONLY = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CODE_SIGN_IDENTITY = "";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				DEFINES_MODULE = YES;
+				DEVELOPMENT_TEAM = CS73H95RB8;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				ENABLE_BITCODE = NO;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Lightning",
+					"$(PROJECT_DIR)/Frameworks",
+				);
+				INFOPLIST_FILE = Lightning/Info.plist;
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 11.2;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.jackmallers.ZapLightning;
+				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
+				SKIP_INSTALL = YES;
+				SWIFT_VERSION = 4.2;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = DebugPoS;
+		};
+		AD3FA15C21D794650024EA95 /* DebugPoS */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 0B9B5C918A83648FA07D7F04 /* Pods-LightningTests.debugpos.xcconfig */;
+			buildSettings = {
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CODE_SIGN_STYLE = Automatic;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				DEVELOPMENT_TEAM = CS73H95RB8;
+				INFOPLIST_FILE = Lightning/Tests/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.4;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.jackmallers.ZapLightningTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 4.2;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Zap.app/Zap";
+			};
+			name = DebugPoS;
+		};
+		AD3FA15D21D794650024EA95 /* DebugPoS */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = FB3927E5E904CE2FD1FFA2CF /* Pods-RPC-Library.debugpos.xcconfig */;
+			buildSettings = {
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CODE_SIGN_IDENTITY = "";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				DEFINES_MODULE = YES;
+				DEVELOPMENT_TEAM = CS73H95RB8;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				ENABLE_BITCODE = NO;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Frameworks",
+				);
+				INFOPLIST_FILE = Library/Info.plist;
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 11.2;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.jackmallers.ZapShared;
+				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
+				SKIP_INSTALL = YES;
+				SWIFT_VERSION = 4.2;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = DebugPoS;
+		};
+		AD3FA15E21D794650024EA95 /* DebugPoS */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 33A34E6782D7EBCB22C6079E /* Pods-LibraryTests.debugpos.xcconfig */;
+			buildSettings = {
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CODE_SIGN_STYLE = Automatic;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				DEVELOPMENT_TEAM = CS73H95RB8;
+				INFOPLIST_FILE = Library/Tests/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.4;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.jackmallers.ZapSharedTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 4.2;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Zap.app/Zap";
+			};
+			name = DebugPoS;
+		};
+		AD3FA15F21D794650024EA95 /* DebugPoS */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 976004946B46AB1DB18FB368 /* Pods-RPC-SwiftLnd.debugpos.xcconfig */;
+			buildSettings = {
+				APPLICATION_EXTENSION_API_ONLY = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CODE_SIGN_IDENTITY = "";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DEVELOPMENT_TEAM = CS73H95RB8;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				ENABLE_BITCODE = NO;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Frameworks",
+				);
+				INFOPLIST_FILE = SwiftLnd/Info.plist;
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 11.2;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.jackmallers.SwiftLnd;
+				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
+				SKIP_INSTALL = YES;
+				SWIFT_VERSION = 4.2;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = DebugPoS;
+		};
+		AD3FA16021D794650024EA95 /* DebugPoS */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = BBD776F35617673FA0EDF1F7 /* Pods-SwiftLndTests.debugpos.xcconfig */;
+			buildSettings = {
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = CS73H95RB8;
+				INFOPLIST_FILE = SwiftLnd/Tests/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.4;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.jackmallers.SwiftLndTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 4.2;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Zap.app/Zap";
+			};
+			name = DebugPoS;
+		};
 		AD536BFD20E62764002279BC /* Debug */ = {
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = BE74014E0B80605B55F867D4 /* Pods-RPC-Lightning.debug.xcconfig */;
@@ -3941,6 +4228,7 @@
 			buildConfigurations = (
 				A0A05A1A2013CF960007D1C9 /* Debug */,
 				AD967FD8210329A70048085B /* DebugRemote */,
+				AD3FA15921D794650024EA95 /* DebugPoS */,
 				A0A05A1B2013CF960007D1C9 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
@@ -3951,6 +4239,7 @@
 			buildConfigurations = (
 				A0A05A1D2013CF960007D1C9 /* Debug */,
 				AD967FD9210329A70048085B /* DebugRemote */,
+				AD3FA15A21D794650024EA95 /* DebugPoS */,
 				A0A05A1E2013CF960007D1C9 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
@@ -3961,6 +4250,7 @@
 			buildConfigurations = (
 				AD391C2120D16ED4007EE22A /* Debug */,
 				AD967FDF210329A70048085B /* DebugRemote */,
+				AD3FA15D21D794650024EA95 /* DebugPoS */,
 				AD391C2220D16ED4007EE22A /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
@@ -3971,6 +4261,7 @@
 			buildConfigurations = (
 				AD536BFD20E62764002279BC /* Debug */,
 				AD967FDD210329A70048085B /* DebugRemote */,
+				AD3FA15B21D794650024EA95 /* DebugPoS */,
 				AD536BFE20E62764002279BC /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
@@ -3981,6 +4272,7 @@
 			buildConfigurations = (
 				AD536BFF20E62764002279BC /* Debug */,
 				AD967FDE210329A70048085B /* DebugRemote */,
+				AD3FA15C21D794650024EA95 /* DebugPoS */,
 				AD536C0020E62764002279BC /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
@@ -3991,6 +4283,7 @@
 			buildConfigurations = (
 				ADADAD7A2143B2E700A48E1F /* Debug */,
 				ADADAD7B2143B2E700A48E1F /* DebugRemote */,
+				AD3FA15F21D794650024EA95 /* DebugPoS */,
 				ADADAD7C2143B2E700A48E1F /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
@@ -4001,6 +4294,7 @@
 			buildConfigurations = (
 				ADADAD7D2143B2E700A48E1F /* Debug */,
 				ADADAD7E2143B2E700A48E1F /* DebugRemote */,
+				AD3FA16021D794650024EA95 /* DebugPoS */,
 				ADADAD7F2143B2E700A48E1F /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
@@ -4011,6 +4305,7 @@
 			buildConfigurations = (
 				ADFE538320D693F500B3BA2A /* Debug */,
 				AD967FE0210329A70048085B /* DebugRemote */,
+				AD3FA15E21D794650024EA95 /* DebugPoS */,
 				ADFE538420D693F500B3BA2A /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
