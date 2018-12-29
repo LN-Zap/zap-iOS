@@ -8,7 +8,7 @@
 
 default_platform(:ios)
 
-app_identifier = ["com.jackmallers.zap", "com.jackmallers.zap.messages"]
+app_identifier = ["com.jackmallers.zap"]
 
 desc "Update build number."
 lane :build_number do
@@ -77,7 +77,7 @@ lane :alpha do
   ensure_git_status_clean
 
   increment_build_number(build_number: latest_testflight_build_number(initial_build_number: 0) + 1)
-
+  
   sync_code_signing(
     username: ENV['ITUNESCONNECT_USER'],
     app_identifier: app_identifier,
@@ -98,11 +98,46 @@ lane :alpha do
 
   add_git_tag
 
-  slack(
-    message: "Just uploaded a new iOS alpha to Testflight",
-    use_webhook_configured_username_and_icon: true,
-    default_payloads: []
+  sh("git reset --hard")
+end
+
+desc "Builds new PoS Alpha and uploads it to Testflight."
+lane :pos_alpha do
+  ensure_git_status_clean
+
+  current_build_number = latest_testflight_build_number(
+    initial_build_number: 0,
+    app_identifier: "com.jackmallers.zap-pos"
   )
+  increment_build_number(build_number: current_build_number + 1)
+
+  sync_code_signing(
+    username: ENV['ITUNESCONNECT_USER'],
+    app_identifier: "com.jackmallers.zap-pos",
+    type: "appstore"
+  )
+
+  build_ios_app(
+    configuration: "ReleasePos",
+    workspace: "Zap.xcworkspace",
+    scheme: "Zap",
+    output_directory: "./builds/alpha",
+    export_method: "app-store"
+    # ,
+    # export_options: {
+    #   provisioningProfiles: { 
+    #     "com.jackmallers.zap-pos" => "match AppStore com.jackmallers.zap-pos"
+    #   }
+    # }
+  )
+
+  upload_to_testflight(
+    app_identifier: "com.jackmallers.zap-pos",
+    username: ENV['ITUNESCONNECT_USER'],
+    skip_waiting_for_build_processing: true
+  )
+
+  add_git_tag
 
   sh("git reset --hard")
 end

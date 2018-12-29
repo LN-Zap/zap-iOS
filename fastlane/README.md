@@ -35,6 +35,11 @@ Builds new Alpha Build and uploads it to S3.
 fastlane alpha
 ```
 Builds new Alpha Build and uploads it to Testflight.
+### pos_alpha
+```
+fastlane pos_alpha
+```
+Builds new PoS Alpha and uploads it to Testflight.
 ### udid
 ```
 fastlane udid
