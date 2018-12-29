@@ -17,13 +17,13 @@ protocol Routing {
 public enum Route {
     case send(String?)
     case request
-    case connect(RPCConnectURL)
+    case connect(LndConnectURL)
     
     public init?(url: URL) {
         let urlString = url.absoluteString.replacingOccurrences(of: "//", with: "")
         
         if urlString.hasPrefix("lndconnect:") {
-            guard let url = RPCConnectURL(string: urlString) else { return nil }
+            guard let url = LndConnectURL(url: url) else { return nil }
             self = .connect(url)
         } else {
             self = .send(urlString)
