@@ -74,8 +74,9 @@ final class ChannelDetailViewController: ModalDetailViewController {
         contentStackView.addArrangedElement(.horizontalStackView(compressionResistant: .first, content: [
             .label(text: L10n.Scene.ChannelDetail.fundingTransactionLabel + ":", style: labelStyle),
             .button(title: fundingTxId, style: Style.Button.custom(fontSize: 14)) { [weak self] _ in
-                self?.dismiss(animated: true, completion: {
-                    self?.presentBlockExplorer(fundingTxId, .transactionId)
+                guard let self = self else { return }
+                self.dismiss(animated: true, completion: {
+                    self.presentBlockExplorer(fundingTxId, .transactionId)
                 })
             }
         ]))
