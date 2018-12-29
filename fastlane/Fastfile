@@ -125,6 +125,12 @@ lane :update_app_icon do
     appicon_path: 'Zap/Assets.xcassets',
     appicon_devices: [:iphone, :ios_marketing]
   )
+  appicon(
+    appicon_image_file: 'logo-pos.png',
+    appicon_path: 'Zap/Assets.xcassets',
+    appicon_name: 'AppIconPos.appiconset',
+    appicon_devices: [:iphone, :ios_marketing]
+  )
 end
 
 desc "Run all tests."
