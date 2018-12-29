@@ -19,8 +19,4 @@ enum Environment {
     static var fakeBiometricAuthentication: Bool {
         return ProcessInfo.processInfo.environment["FAKE_BIOMETRIC_AUTHENTICATION"] == "1"
     }
-    
-    static var forcePoS: Bool {
-        return ProcessInfo.processInfo.environment["FORCE_POS"] == "1"
-    }
 }

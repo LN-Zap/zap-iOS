@@ -124,11 +124,6 @@
             isEnabled = "YES">
          </EnvironmentVariable>
          <EnvironmentVariable
-            key = "FORCE_POS"
-            value = "1"
-            isEnabled = "YES">
-         </EnvironmentVariable>
-         <EnvironmentVariable
             key = "TRACE_DB"
             value = "1"
             isEnabled = "NO">

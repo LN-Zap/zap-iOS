@@ -141,7 +141,13 @@ public final class RootCoordinator: NSObject, SetupCoordinatorDelegate, PinCoord
     }
     
     func firstTabBarViewControllers(mainCoordinator: MainCoordinator) -> [UIViewController] {
-        if ConnectionService.permissions.can(.write, domain: .onChain) && !Environment.forcePoS {
+        #if FORCEPOS
+        let forcePos = true
+        #else
+        let forcePos = false
+        #endif
+        
+        if ConnectionService.permissions.can(.write, domain: .onChain) && !forcePos {
             return [mainCoordinator.walletViewController()]
         } else {
             return mainCoordinator.posViewControllers()
