@@ -33,6 +33,8 @@ final class ProductSearchViewController: UIViewController, ShoppingCartPresentab
     override func viewDidLoad() {
         super.viewDidLoad()
     
+        navigationController?.view.backgroundColor = UIColor.Zap.background
+        
         let searchController = UISearchController(searchResultsController: nil)
         searchController.dimsBackgroundDuringPresentation = false
         searchController.searchResultsUpdater = self
