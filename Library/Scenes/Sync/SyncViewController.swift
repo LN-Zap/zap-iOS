@@ -123,8 +123,9 @@ final class SyncViewController: UIViewController {
     func updateGradientView(for height: CGFloat) {
         view.layoutIfNeeded()
         UIView.animate(withDuration: 0.99, animations: { [weak self] in
-            self?.gradientViewHeightConstraint.constant = height
-            self?.view.layoutIfNeeded()
+            guard let self = self else { return }
+            self.gradientViewHeightConstraint.constant = height
+            self.view.layoutIfNeeded()
         })
     }
     

@@ -143,10 +143,9 @@ final class SendViewModel {
             else { return }
 
         lightningService.transactionService.upperBoundLightningFees(for: paymentRequest, amount: amount) { [weak self] in
-            guard $0.value?.amount == self?.amount else { return }
-            
-            self?.lightningFee.value = .element($0.value?.fee)
-            self?.updateSendButtonEnabled()
+            guard let self = self, $0.value?.amount == self.amount else { return }
+            self.lightningFee.value = .element($0.value?.fee)
+            self.updateSendButtonEnabled()
         }
     }
     
