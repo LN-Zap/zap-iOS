@@ -35,7 +35,14 @@ extension ShoppingCartPresentable where Self: UIViewController {
             .bind(to: button.reactive.isEnabled)
             .dispose(in: reactive.bag)
         
+        UIView.performWithoutAnimation {
+            let amount = Settings.shared.fiatCurrency.value.format(value: amount.value) ?? ""
+            button.setTitle("Pay \(amount)", for: .normal)
+            button.layoutIfNeeded()
+        }
+        
         amount
+            .skip(first: 1)
             .map {
                 let amount = Settings.shared.fiatCurrency.value.format(value: $0) ?? ""
                 return "Pay \(amount)"
