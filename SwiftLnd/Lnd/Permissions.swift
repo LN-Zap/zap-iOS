@@ -13,6 +13,7 @@ public struct Permissions {
         
         public static let read = AccessMode(rawValue: 1 << 0)
         public static let write = AccessMode(rawValue: 1 << 1)
+        public static let generate = AccessMode(rawValue: 1 << 2)
         
         public init(rawValue: Int) {
             self.rawValue = rawValue
@@ -24,6 +25,8 @@ public struct Permissions {
                 return .read
             case "write":
                 return .write
+            case "generate":
+                return .generate
             default:
                 return nil
             }
@@ -38,6 +41,7 @@ public struct Permissions {
         case offChain = "offchain"
         case onChain = "onchain"
         case peers
+        case signer
     }
     
     private let permissions: [Permissions.Domain: Permissions.AccessMode]
@@ -49,7 +53,7 @@ public struct Permissions {
     public static var all: Permissions {
         var permissions = [Permissions.Domain: Permissions.AccessMode]()
         for domain in Domain.allCases {
-            permissions[domain] = [.read, .write]
+            permissions[domain] = [.read, .write, .generate]
         }
         return Permissions(permissions: permissions)
     }
