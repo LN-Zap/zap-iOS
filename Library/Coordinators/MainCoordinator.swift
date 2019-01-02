@@ -66,7 +66,7 @@ final class MainCoordinator: Routing {
 
         let navigationController = ZapNavigationController(rootViewController: productSearchViewController)
         
-        navigationController.tabBarItem.image = Asset.tabbarWallet.image
+        navigationController.tabBarItem.image = Asset.tabbarSearch.image
         navigationController.tabBarItem.title = "Search"
         
         return [
