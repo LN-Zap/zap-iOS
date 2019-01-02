@@ -53,6 +53,16 @@ extension LNDChannel {
     }
 }
 
+extension LNDPendingChannelsResponse {
+    var channels: [Channel] {
+        // swiftlint:disable force_cast
+        let pendingOpenChannels: [Channel] = pendingOpenChannelsArray.compactMap { ($0 as! LNDPendingChannelsResponse_PendingOpenChannel).channelModel }
+        let pendingClosingChannels: [Channel] = pendingClosingChannelsArray.compactMap { ($0 as! LNDPendingChannelsResponse_ClosedChannel).channelModel }
+        let pendingForceClosingChannels: [Channel] = pendingForceClosingChannelsArray.compactMap { ($0 as! LNDPendingChannelsResponse_ForceClosedChannel).channelModel }
+        return pendingOpenChannels + pendingClosingChannels + pendingForceClosingChannels
+    }
+}
+
 extension LNDPendingChannelsResponse_PendingOpenChannel {
     var channelModel: Channel {
         return Channel(

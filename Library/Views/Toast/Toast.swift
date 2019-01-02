@@ -73,8 +73,9 @@ private final class ToastView: UIView {
     
     func dismissToast() {
         UIView.animate(withDuration: 0.2, animations: { [weak self] in
-            self?.transform = CGAffineTransform(scaleX: 0.9, y: 0.9)
-            self?.alpha = 0
+            guard let self = self else { return }
+            self.transform = CGAffineTransform(scaleX: 0.9, y: 0.9)
+            self.alpha = 0
             }, completion: { [weak self] _ in
                 self?.removeFromSuperview()
         })

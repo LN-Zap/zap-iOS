@@ -108,10 +108,7 @@ public final class LightningApiRPC: LightningApiProtocol {
     
     public func pendingChannels(completion: @escaping (Result<[Channel]>) -> Void) {
         lnd.rpcToPendingChannels(with: LNDPendingChannelsRequest(), handler: result(completion, map: {
-            let pendingOpenChannels: [Channel] = $0.pendingOpenChannelsArray.compactMap { ($0 as? LNDChannel)?.channelModel }
-            let pendingClosingChannels: [Channel] = $0.pendingClosingChannelsArray.compactMap { ($0 as? LNDChannel)?.channelModel }
-            let pendingForceClosingChannels: [Channel] = $0.pendingForceClosingChannelsArray.compactMap { ($0 as? LNDChannel)?.channelModel }
-            return pendingOpenChannels + pendingClosingChannels + pendingForceClosingChannels
+            $0.channels
         })).runWithMacaroon(macaroon)
     }
     
