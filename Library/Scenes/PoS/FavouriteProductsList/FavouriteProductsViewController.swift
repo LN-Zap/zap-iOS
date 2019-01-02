@@ -26,7 +26,6 @@ extension UIStoryboard {
 
 final class FavouriteProductsViewController: UIViewController, ShoppingCartPresentable {
     @IBOutlet private weak var payButton: UIButton!
-    @IBOutlet private weak var shoppingCartButton: UIBarButtonItem!
 
     // swiftlint:disable implicitly_unwrapped_optional
     fileprivate var productsViewModel: ProductsViewModel!
@@ -44,6 +43,8 @@ final class FavouriteProductsViewController: UIViewController, ShoppingCartPrese
         
         navigationItem.largeTitleDisplayMode = .never
 
+        addShoppingCartBarButton(shoppingCartViewModel: shoppingCartViewModel, selector: #selector(presentShoppingCart))
+        
         setupPayButton(button: payButton, amount: shoppingCartViewModel.totalAmount)
     }
     
@@ -51,7 +52,7 @@ final class FavouriteProductsViewController: UIViewController, ShoppingCartPrese
         presentTipViewController(transactionService: transactionService, fiatValue: shoppingCartViewModel.totalAmount.value)
     }
     
-    @IBAction private func presentShoppingCart(_ sender: UIButton) {
+    @objc func presentShoppingCart() {
         presentShoppingCart(shoppingCartViewModel: shoppingCartViewModel)
     }
     

@@ -29,6 +29,25 @@ extension ShoppingCartPresentable where Self: UIViewController {
         present(navigationController, animated: true, completion: nil)
     }
     
+    func addShoppingCartBarButton(shoppingCartViewModel: ShoppingCartViewModel, selector: Selector) {
+        let shoppingCartButton = UIButton(type: .custom)
+        let circleImage = UIImage.circle(diameter: 14, color: UIColor.Zap.lightningOrange)
+        shoppingCartButton.setBackgroundImage(circleImage, for: .normal)
+        let buttonSize = 24
+        shoppingCartButton.frame = CGRect(x: 0, y: 0, width: buttonSize, height: buttonSize)
+        shoppingCartButton.titleLabel?.font = UIFont.monospacedDigitSystemFont(ofSize: 13, weight: .bold)
+        
+        let barButton = UIBarButtonItem(customView: shoppingCartButton)
+        navigationItem.rightBarButtonItem = barButton
+
+        shoppingCartButton.addTarget(self, action: selector, for: .touchUpInside)
+        
+        shoppingCartViewModel.totalCount
+            .map { String($0) }
+            .bind(to: shoppingCartButton.reactive.title)
+            .dispose(in: reactive.bag)
+    }
+    
     func setupPayButton(button: UIButton, amount: Observable<Decimal>) {
         amount
             .map { $0 > 0 }

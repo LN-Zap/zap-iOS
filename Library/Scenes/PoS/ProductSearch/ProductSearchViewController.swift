@@ -55,6 +55,8 @@ final class ProductSearchViewController: UIViewController, ShoppingCartPresentab
         
         setupPayButton(button: payButton, amount: shoppingCartViewModel.totalAmount)
         
+        addShoppingCartBarButton(shoppingCartViewModel: shoppingCartViewModel, selector: #selector(presentShoppingCart))
+        
         productSearchViewModel.items.bind(to: tableView) { [shoppingCartViewModel] items, indexPath, tableView -> UITableViewCell in
             if let product = items[indexPath.row] as? Product,
                 let shoppingCartViewModel = shoppingCartViewModel {
@@ -85,7 +87,7 @@ final class ProductSearchViewController: UIViewController, ShoppingCartPresentab
         presentTipViewController(transactionService: transactionService, fiatValue: shoppingCartViewModel.totalAmount.value)
     }
     
-    @IBAction private func presentShoppingCart(_ sender: UIButton) {
+    @objc func presentShoppingCart() {
         presentShoppingCart(shoppingCartViewModel: shoppingCartViewModel)
     }
 }

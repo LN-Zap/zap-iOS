@@ -92,16 +92,9 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="t9u-Vh-nxV"/>
                     </view>
-                    <navigationItem key="navigationItem" id="oXf-mI-fGX">
-                        <barButtonItem key="rightBarButtonItem" title="Item" id="bK7-wz-XgS">
-                            <connections>
-                                <action selector="presentShoppingCart:" destination="eX2-4Y-Pm5" id="COt-7F-pnL"/>
-                            </connections>
-                        </barButtonItem>
-                    </navigationItem>
+                    <navigationItem key="navigationItem" id="oXf-mI-fGX"/>
                     <connections>
                         <outlet property="payButton" destination="1t6-eJ-qsR" id="Rag-Kr-nYQ"/>
-                        <outlet property="shoppingCartButton" destination="bK7-wz-XgS" id="dYk-gv-X8K"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="exg-5q-0o8" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -183,13 +176,7 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="5Ee-IL-xER"/>
                     </view>
-                    <navigationItem key="navigationItem" id="62f-R8-zwk">
-                        <barButtonItem key="rightBarButtonItem" title="Item" id="WJY-3l-Qp9">
-                            <connections>
-                                <action selector="presentShoppingCart:" destination="sQ9-h4-WGC" id="rr1-ql-I0s"/>
-                            </connections>
-                        </barButtonItem>
-                    </navigationItem>
+                    <navigationItem key="navigationItem" id="62f-R8-zwk"/>
                     <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" prompted="NO"/>
                     <connections>
                         <outlet property="payButton" destination="tYf-g4-JZB" id="xpj-cW-DTP"/>

@@ -9,7 +9,8 @@ import Bond
 import Foundation
 
 final class ShoppingCartViewModel {
-    var totalAmount: Observable<Decimal>
+    let totalAmount: Observable<Decimal>
+    let totalCount: Observable<Int>
     
     init(productsViewModel: ProductsViewModel) {
         items = [Product: Observable<Int>]()
@@ -18,6 +19,7 @@ final class ShoppingCartViewModel {
         }
         
         totalAmount = Observable(0)
+        totalCount = Observable(0)
     }
     
     private var items = [Product: Observable<Int>]()
@@ -69,5 +71,6 @@ final class ShoppingCartViewModel {
     
     private func updateAmount() {
         totalAmount.value = sum
+        totalCount.value = itemCount
     }
 }
