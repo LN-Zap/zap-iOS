@@ -25,7 +25,7 @@ class ShoppingListTableViewCell: BondTableViewCell {
                 .bind(to: amountLabel.reactive.text)
                 .dispose(in: onReuseBag)
             
-            priceLabel.text = "\(product.price * Decimal(count.value))"
+            updatePrice()
             
             stepper.value = Double(count.value)
         }
@@ -38,6 +38,12 @@ class ShoppingListTableViewCell: BondTableViewCell {
         Style.Label.body.apply(to: [amountLabel, titleLabel, priceLabel])
     }
     
+    private func updatePrice() {
+        guard let (product, count) = selectedItem else { return }
+        let value = product.price * Decimal(count.value)
+        priceLabel.text = Settings.shared.fiatCurrency.value.format(value: value)
+    }
+    
     @IBAction private func stepperChanged(_ sender: UIStepper) {
         guard
             let shoppingCartViewModel = shoppingCartViewModel,
@@ -45,5 +51,6 @@ class ShoppingListTableViewCell: BondTableViewCell {
             else { return }
         let newValue = Int(sender.value)
         shoppingCartViewModel.setCount(of: product, to: newValue)
+        updatePrice()
     }
 }
