@@ -23,6 +23,7 @@ class SearchProductCell: BondTableViewCell, ProductCell {
         countLabel.layer.cornerRadius = 11
         countLabel.clipsToBounds = true
         countLabel.backgroundColor = UIColor.Zap.lightningOrange
+        countLabel.font = UIFont.Zap.posCountFont
     }
     
     override func setSelected(_ selected: Bool, animated: Bool) {

@@ -1543,8 +1543,8 @@
 				AD3FA15721D66C8A0024EA95 /* FavouritePageContentViewController.swift */,
 				AD3FA15521D66C560024EA95 /* FavouritePageViewController.swift */,
 				AD8A3DB221CBE12000D48B65 /* FavouriteProductCollectionViewCell.swift */,
-				AD8A3DAB21CBDF5000D48B65 /* FavouriteProductsViewController.swift */,
 				AD8A3DB321CBE12000D48B65 /* FavouriteProductCollectionViewCell.xib */,
+				AD8A3DAB21CBDF5000D48B65 /* FavouriteProductsViewController.swift */,
 			);
 			path = FavouriteProductsList;
 			sourceTree = "<group>";

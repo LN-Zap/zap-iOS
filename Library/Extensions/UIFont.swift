@@ -12,5 +12,7 @@ public extension UIFont {
         public static let light = UIFont.systemFont(ofSize: UIFont.labelFontSize, weight: .light)
         public static let regular = UIFont.systemFont(ofSize: UIFont.labelFontSize)
         public static let bold = UIFont.boldSystemFont(ofSize: UIFont.labelFontSize)
+        
+        public static let posCountFont = UIFont.monospacedDigitSystemFont(ofSize: 13, weight: .bold)
     }
 }

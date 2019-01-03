@@ -18,18 +18,19 @@ class FavouriteProductCollectionViewCell: BondCollectionViewCell, ProductCell {
     override func awakeFromNib() {
         super.awakeFromNib()
 
+        Style.Label.body.apply(to: countLabel)
+        Style.Label.headline.apply(to: nameLabel)
+        Style.Label.subHeadline.apply(to: priceLabel)
+
         countLabel.clipsToBounds = true
         countLabel.layer.cornerRadius = 11
         countLabel.backgroundColor = UIColor.Zap.lightningOrange
         countLabel.textAlignment = .center
+        countLabel.font = UIFont.Zap.posCountFont
         
         layer.cornerRadius = 10
         layer.borderWidth = 1
         layer.borderColor = UIColor.Zap.gray.cgColor
-        
-        Style.Label.headline.apply(to: nameLabel)
-        Style.Label.subHeadline.apply(to: priceLabel)
-        Style.Label.body.apply(to: countLabel)
     }
     
     func animateSelection() {

@@ -35,7 +35,7 @@ extension ShoppingCartPresentable where Self: UIViewController {
         shoppingCartButton.setBackgroundImage(circleImage, for: .normal)
         let buttonSize = 24
         shoppingCartButton.frame = CGRect(x: 0, y: 0, width: buttonSize, height: buttonSize)
-        shoppingCartButton.titleLabel?.font = UIFont.monospacedDigitSystemFont(ofSize: 13, weight: .bold)
+        shoppingCartButton.titleLabel?.font = UIFont.Zap.posCountFont
         
         let barButton = UIBarButtonItem(customView: shoppingCartButton)
         navigationItem.rightBarButtonItem = barButton
