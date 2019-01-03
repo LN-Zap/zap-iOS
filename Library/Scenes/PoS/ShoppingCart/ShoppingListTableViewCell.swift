@@ -9,7 +9,7 @@ import Bond
 import UIKit
 
 class ShoppingListTableViewCell: BondTableViewCell {
-    @IBOutlet private weak var amountLabel: UILabel!
+    @IBOutlet private weak var countLabel: UILabel!
     @IBOutlet private weak var titleLabel: UILabel!
     @IBOutlet private weak var priceLabel: UILabel!
     @IBOutlet private weak var stepper: UIStepper!
@@ -21,8 +21,8 @@ class ShoppingListTableViewCell: BondTableViewCell {
             titleLabel.text = product.name
             
             count
-                .map { String($0) + " x" }
-                .bind(to: amountLabel.reactive.text)
+                .map { String($0) }
+                .bind(to: countLabel.reactive.text)
                 .dispose(in: onReuseBag)
             
             updatePrice()
@@ -34,8 +34,19 @@ class ShoppingListTableViewCell: BondTableViewCell {
     override func awakeFromNib() {
         super.awakeFromNib()
         
+        Style.Label.body.apply(to: [countLabel, titleLabel, priceLabel])
+
         backgroundColor = UIColor.Zap.background
-        Style.Label.body.apply(to: [amountLabel, titleLabel, priceLabel])
+        
+        countLabel.font = UIFont.Zap.posCountFont
+        countLabel.layer.cornerRadius = 12
+        countLabel.backgroundColor = UIColor.Zap.lightningOrange
+        countLabel.textColor = .white
+        countLabel.clipsToBounds = true
+        
+        priceLabel.textColor = UIColor.Zap.gray
+        
+        titleLabel.font = UIFont.Zap.bold.withSize(17)
     }
     
     private func updatePrice() {

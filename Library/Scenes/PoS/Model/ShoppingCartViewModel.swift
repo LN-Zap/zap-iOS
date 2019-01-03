@@ -44,6 +44,7 @@ final class ShoppingCartViewModel {
     
     func setCount(of product: Product, to count: Int) {
         items[product]?.value = count
+        updateAmount()
     }
     
     func addSingle(product: Product) {

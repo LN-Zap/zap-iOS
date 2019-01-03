@@ -57,10 +57,10 @@
                         </constraints>
                     </view>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="10" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qq1-TO-B0f">
-                        <rect key="frame" x="129" y="-6" width="22" height="22"/>
+                        <rect key="frame" x="128" y="-7" width="24" height="24"/>
                         <constraints>
-                            <constraint firstAttribute="width" constant="22" id="grJ-QX-vJc"/>
-                            <constraint firstAttribute="height" constant="22" id="lK5-yG-DTB"/>
+                            <constraint firstAttribute="width" constant="24" id="grJ-QX-vJc"/>
+                            <constraint firstAttribute="height" constant="24" id="lK5-yG-DTB"/>
                         </constraints>
                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                         <nil key="textColor"/>

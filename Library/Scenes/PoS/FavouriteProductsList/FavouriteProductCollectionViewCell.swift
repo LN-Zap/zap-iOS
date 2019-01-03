@@ -40,7 +40,7 @@ class FavouriteProductCollectionViewCell: BondCollectionViewCell, ProductCell {
         Style.Label.subHeadline.apply(to: priceLabel)
 
         countLabel.clipsToBounds = true
-        countLabel.layer.cornerRadius = 11
+        countLabel.layer.cornerRadius = 12
         countLabel.backgroundColor = UIColor.Zap.lightningOrange
         countLabel.textAlignment = .center
         countLabel.font = UIFont.Zap.posCountFont

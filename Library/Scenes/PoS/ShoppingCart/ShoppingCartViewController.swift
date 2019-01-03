@@ -54,16 +54,4 @@ extension ShoppingCartViewController: UITableViewDataSource {
         cell.shoppingCartViewModel = shoppingCartViewModel
         return cell
     }
-    
-    func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
-        return true
-    }
-    
-    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
-        if editingStyle == .delete,
-            let product = shoppingCartViewModel?.selectedItems[indexPath.row].0 {
-            shoppingCartViewModel?.removeAll(product: product)
-            tableView.deleteRows(at: [indexPath], with: .automatic)
-        }
-    }
 }

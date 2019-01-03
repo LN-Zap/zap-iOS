@@ -9,8 +9,17 @@ import Bond
 import UIKit
 
 class SearchProductCell: BondTableViewCell, ProductCell {
-    var count: Observable<Int>?
+    var count: Observable<Int>? {
+        didSet {
+            guard let count = count else { return }
+            count
+                .map { $0 <= 0 }
+                .bind(to: countContainerView.reactive.isHidden)
+                .dispose(in: onReuseBag)
+        }
+    }
     
+    @IBOutlet private weak var countContainerView: UIView!
     // swiftlint:disable private_outlet
     @IBOutlet weak var countLabel: UILabel!
     @IBOutlet weak var nameLabel: UILabel!
