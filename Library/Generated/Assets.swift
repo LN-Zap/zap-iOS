@@ -18,6 +18,7 @@
 
 // swiftlint:disable identifier_name line_length nesting type_body_length type_name
 internal enum Asset {
+  internal static let posFavouritesLogo = ImageAsset(name: "pos_favourites_logo")
   internal static let iconCopy = ImageAsset(name: "icon_copy")
   internal static let iconQrCode = ImageAsset(name: "icon_qr_code")
   internal static let iconSwap = ImageAsset(name: "icon_swap")

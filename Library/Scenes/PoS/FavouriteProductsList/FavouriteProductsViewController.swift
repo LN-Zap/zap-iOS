@@ -35,7 +35,8 @@ final class FavouriteProductsViewController: UIViewController, ShoppingCartPrese
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        navigationItem.title = "Favorites"
+
+        navigationItem.titleView = UIImageView(image: Asset.posFavouritesLogo.image)
         
         Style.Button.background.apply(to: payButton)
         
