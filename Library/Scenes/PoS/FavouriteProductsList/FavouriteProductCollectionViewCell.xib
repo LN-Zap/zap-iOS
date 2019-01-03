@@ -36,8 +36,8 @@
                                     <constraint firstAttribute="height" constant="1" id="lHW-nm-JHB"/>
                                 </constraints>
                             </view>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ga0-ar-pOW">
-                                <rect key="frame" x="10" y="57.5" width="125" height="20.5"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ga0-ar-pOW">
+                                <rect key="frame" x="10" y="7" width="125" height="71"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
@@ -47,7 +47,7 @@
                         <constraints>
                             <constraint firstItem="6nP-GV-jzh" firstAttribute="top" secondItem="ga0-ar-pOW" secondAttribute="bottom" constant="7" id="AOF-6U-hDn"/>
                             <constraint firstAttribute="trailing" secondItem="ga0-ar-pOW" secondAttribute="trailing" constant="10" id="ATg-h1-CCf"/>
-                            <constraint firstItem="ga0-ar-pOW" firstAttribute="top" relation="greaterThanOrEqual" secondItem="XhE-Ti-yF6" secondAttribute="top" constant="7" id="O53-2M-JRd"/>
+                            <constraint firstItem="ga0-ar-pOW" firstAttribute="top" secondItem="XhE-Ti-yF6" secondAttribute="top" constant="7" id="O53-2M-JRd"/>
                             <constraint firstAttribute="bottom" secondItem="r7R-Nt-wxC" secondAttribute="bottom" constant="7" id="Qg8-2Z-k5L"/>
                             <constraint firstItem="ga0-ar-pOW" firstAttribute="leading" secondItem="XhE-Ti-yF6" secondAttribute="leading" constant="10" id="Xvc-yk-OCm"/>
                             <constraint firstItem="r7R-Nt-wxC" firstAttribute="top" secondItem="6nP-GV-jzh" secondAttribute="bottom" constant="7" id="euO-SA-BqL"/>
