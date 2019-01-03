@@ -18,6 +18,7 @@ public extension UIColor {
         public static let lightningOrangeGradient = color("lightningOrangeGradient")
         public static let seaBlue = color("seaBlue")
         public static let seaBlueGradient = color("seaBlueGradient")
+        public static let slateBlue = color("slateBlue")
         public static let superRed = color("superRed")
         public static let superGreen = color("superGreen")
         public static let purple = color("purple")

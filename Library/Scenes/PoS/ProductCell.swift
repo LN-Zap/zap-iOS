@@ -9,13 +9,15 @@ import Bond
 import Foundation
 import ReactiveKit
 
-protocol ProductCell {
+protocol ProductCell: class {
     // swiftlint:disable implicitly_unwrapped_optional
     var countLabel: UILabel! { get }
     var nameLabel: UILabel! { get }
     var priceLabel: UILabel! { get }
     // swiftlint:enable implicitly_unwrapped_optional
     var onReuseBag: DisposeBag { get }
+    
+    var count: Observable<Int>? { get set }
     
     func setItem(product: Product, count: Observable<Int>)
 }
@@ -35,5 +37,7 @@ extension ProductCell {
             .map { String($0) }
             .bind(to: countLabel.reactive.text)
             .dispose(in: onReuseBag)
+        
+        self.count = count
     }
 }

@@ -5,9 +5,12 @@
 //  Copyright © 2018 Zap. All rights reserved.
 //
 
+import Bond
 import UIKit
 
 class SearchProductCell: BondTableViewCell, ProductCell {
+    var count: Observable<Int>?
+    
     // swiftlint:disable private_outlet
     @IBOutlet weak var countLabel: UILabel!
     @IBOutlet weak var nameLabel: UILabel!
