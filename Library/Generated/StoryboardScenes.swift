@@ -135,6 +135,8 @@ internal enum StoryboardScene {
 
     internal static let tipViewController = SceneType<TipViewController>(storyboard: WalletInvoiceOnly.self, identifier: "TipViewController")
 
+    internal static let waiterConfirmationViewController = SceneType<WaiterConfirmationViewController>(storyboard: WalletInvoiceOnly.self, identifier: "WaiterConfirmationViewController")
+
     internal static let waiterRequestViewController = SceneType<WaiterRequestViewController>(storyboard: WalletInvoiceOnly.self, identifier: "WaiterRequestViewController")
 
     internal static let walletInvoiceOnlyViewController = SceneType<WalletInvoiceOnlyViewController>(storyboard: WalletInvoiceOnly.self, identifier: "WalletInvoiceOnlyViewController")

@@ -18,16 +18,13 @@ final class ToastCoordinator: NSObject {
             .notification(name: .receivedTransaction)
             .observeOn(DispatchQueue.main)
             .observeNext { notification in
-                guard
-                    let transaction = notification.userInfo?[LightningService.transactionNotificationName]
-                    else { return }
+                guard let transaction = notification.userInfo?[LightningService.transactionNotificationName] else { return }
                 
                 if let invoice = transaction as? Invoice {
                     ToastCoordinator.presentToast(satoshis: invoice.amount, memo: invoice.memo)
                 } else if let onChainTransaction = transaction as? SwiftLnd.Transaction {
                     ToastCoordinator.presentToast(satoshis: onChainTransaction.amount)
                 }
-                
             }
             .dispose(in: reactive.bag)
     }

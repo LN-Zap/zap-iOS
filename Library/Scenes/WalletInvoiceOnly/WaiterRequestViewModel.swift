@@ -34,8 +34,8 @@ final class WaiterRequestViewModel {
             }
         }
     }
-    private var bitcoinURI: BitcoinURI?
-    private var lightningInvoiceURI: LightningInvoiceURI?
+    var bitcoinURI: BitcoinURI?
+    var lightningInvoiceURI: LightningInvoiceURI?
     
     init(amount: Satoshi, transactionService: TransactionService) {
         self.amount = amount

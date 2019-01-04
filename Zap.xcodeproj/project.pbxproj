@@ -270,6 +270,7 @@
 		ADADADA02143B3C900A48E1F /* WalletApiRPC.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0D3C969205D55570015C5D7 /* WalletApiRPC.swift */; };
 		ADADADA12143B3C900A48E1F /* WalletApiStream.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD6F863120DA3C66008C371B /* WalletApiStream.swift */; };
 		ADC08D8B21DBBB16000E730E /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = ADC08D8A21DBBB16000E730E /* README.md */; };
+		ADC08D8D21DFAA2D000E730E /* WaiterConfirmationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADC08D8C21DFAA2D000E730E /* WaiterConfirmationViewController.swift */; };
 		ADC0D2F02107953100B8C62F /* PinnedHost.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADC0D2EF2107953100B8C62F /* PinnedHost.swift */; };
 		ADC0D2F321079FF700B8C62F /* www.blockchain.com.cer in Resources */ = {isa = PBXBuildFile; fileRef = ADC0D2F221079FF600B8C62F /* www.blockchain.com.cer */; };
 		ADC0D2F52107A13900B8C62F /* DigiCert SHA2 Extended Validation Server CA.cer in Resources */ = {isa = PBXBuildFile; fileRef = ADC0D2F42107A13800B8C62F /* DigiCert SHA2 Extended Validation Server CA.cer */; };
@@ -782,6 +783,7 @@
 		ADBB36322084EC4D005662B4 /* MnemonicWordTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MnemonicWordTableViewCell.swift; sourceTree = "<group>"; };
 		ADBCC07420CC04A4002B6E59 /* TransactionService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransactionService.swift; sourceTree = "<group>"; };
 		ADC08D8A21DBBB16000E730E /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
+		ADC08D8C21DFAA2D000E730E /* WaiterConfirmationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WaiterConfirmationViewController.swift; sourceTree = "<group>"; };
 		ADC0D2EF2107953100B8C62F /* PinnedHost.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PinnedHost.swift; sourceTree = "<group>"; };
 		ADC0D2F221079FF600B8C62F /* www.blockchain.com.cer */ = {isa = PBXFileReference; lastKnownFileType = file; path = www.blockchain.com.cer; sourceTree = "<group>"; };
 		ADC0D2F42107A13800B8C62F /* DigiCert SHA2 Extended Validation Server CA.cer */ = {isa = PBXFileReference; lastKnownFileType = file; path = "DigiCert SHA2 Extended Validation Server CA.cer"; sourceTree = "<group>"; };
@@ -1568,6 +1570,7 @@
 				AD2F95B621C95ED700FB35DF /* WaiterRequestViewController.swift */,
 				AD8FF49C21C7F9E700C4F68D /* WaiterRequestViewModel.swift */,
 				AD8FF49821C7E4A000C4F68D /* WalletInvoiceOnlyViewController.swift */,
+				ADC08D8C21DFAA2D000E730E /* WaiterConfirmationViewController.swift */,
 			);
 			path = WalletInvoiceOnly;
 			sourceTree = "<group>";
@@ -2810,6 +2813,7 @@
 				AD391C7120D16F89007EE22A /* OpenChannelQRCodeScannerStrategy.swift in Sources */,
 				AD391CD420D16FE1007EE22A /* HistoryCell.swift in Sources */,
 				AD391D1020D16FF5007EE22A /* Toast.swift in Sources */,
+				ADC08D8D21DFAA2D000E730E /* WaiterConfirmationViewController.swift in Sources */,
 				AD391C5D20D16F7A007EE22A /* MnemonicWordListViewController.swift in Sources */,
 				AD391C3320D16EFA007EE22A /* UIImage.swift in Sources */,
 				ADCD5B0F20D7E40C0037F156 /* ChangePinSettingsItem.swift in Sources */,

@@ -6,7 +6,9 @@
 //
 
 import Foundation
+import Lightning
 import SwiftBTC
+import SwiftLnd
 
 extension UIStoryboard {
     static func instantiateWaiterRequestViewController(waiterRequestViewModel: WaiterRequestViewModel) -> WaiterRequestViewController {
@@ -59,11 +61,37 @@ final class WaiterRequestViewController: UIViewController {
         
         let stackView = detailStackView.addArrangedElement(.horizontalStackView(compressionResistant: .first, content: [
             .label(text: "Address", style: Style.Label.headline),
-            .label(text: "Abclkaekllasdfl2345", style: Style.Label.body)
+            .label(text: "TODO", style: Style.Label.body)
         ]))
         addressLabel = stackView.subviews[1] as? UILabel
         
         changeProtocol(protocolSegmentedControl)
+        
+        NotificationCenter.default.reactive
+            .notification(name: .receivedTransaction)
+            .observeOn(DispatchQueue.main)
+            .observeNext { [weak self] notification in
+                guard let transaction = notification.userInfo?[LightningService.transactionNotificationName] else { return }
+                
+                if let payedInvoice = transaction as? Invoice,
+                    let invoice = waiterRequestViewModel.lightningInvoiceURI,
+                    payedInvoice.paymentRequest == invoice.address {
+                    
+                    let viewController = UIStoryboard.instantiateWaiterConfirmationViewController(invoice: payedInvoice)
+                    self?.navigationController?.pushViewController(viewController, animated: true)
+                } else if let payedOnChainTransaction = transaction as? SwiftLnd.Transaction
+//                    , let transaction = waiterRequestViewModel.bitcoinURI
+//                    , payedOnChainTransaction.destinationAddresses.contains(transaction.bitcoinAddress)
+//                    , let requiredAmount = transaction.amount
+//                    , requiredAmount <= payedOnChainTransaction.amount
+                {
+                    // TODO: this does not work, because lnd does not give me the `dest_addresses`.
+                    
+                    let viewController = UIStoryboard.instantiateWaiterConfirmationViewController(transaction: payedOnChainTransaction)
+                    self?.navigationController?.pushViewController(viewController, animated: true)
+                }
+            }
+            .dispose(in: reactive.bag)
     }
     
     @IBAction private func changeProtocol(_ sender: UISegmentedControl) {
