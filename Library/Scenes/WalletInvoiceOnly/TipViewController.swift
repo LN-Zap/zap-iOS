@@ -89,8 +89,10 @@ final class TipViewController: UIViewController {
         button.setAttributedTitle(percentString, for: .normal)
         button.titleLabel?.numberOfLines = 0
         button.titleLabel?.textAlignment = .center
-        
-        button.layer.borderColor = UIColor.Zap.lightningOrange.cgColor
+    
+        button.backgroundColor = UIColor.Zap.deepSeaBlue
+        button.layer.borderWidth = 1
+        button.layer.borderColor = UIColor.Zap.slateBlue.cgColor
     }
     
     @IBAction private func tipButtonTapped(_ sender: UIButton) {
@@ -101,9 +103,9 @@ final class TipViewController: UIViewController {
             newIndex = 2
         }
         
-        tip1Button.layer.borderWidth = 0
-        tip2Button.layer.borderWidth = 0
-        tip3Button.layer.borderWidth = 0
+        tip1Button.layer.borderColor = UIColor.Zap.slateBlue.cgColor
+        tip2Button.layer.borderColor = UIColor.Zap.slateBlue.cgColor
+        tip3Button.layer.borderColor = UIColor.Zap.slateBlue.cgColor
         
         UIView.animate(withDuration: 0.275) {
             self.tipDetailLabel.isHidden = self.waiterRequestViewModel?.selectedTipIndex == newIndex
@@ -113,7 +115,7 @@ final class TipViewController: UIViewController {
             waiterRequestViewModel?.selectedTipIndex = nil
         } else {
             waiterRequestViewModel?.selectedTipIndex = newIndex
-            sender.layer.borderWidth = 1
+            sender.layer.borderColor = UIColor.Zap.lightningOrange.cgColor
         }
     }
 
