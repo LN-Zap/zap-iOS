@@ -23,12 +23,15 @@ final class ProductsViewModel {
             let data = try? Data(contentsOf: URL(fileURLWithPath: path)),
             let json = try? JSONSerialization.jsonObject(with: data, options: []) as? JSON ?? [:],
             let jsonFavourites = json["favorites"] as? [[JSON]],
-            let jsonProducts = json["products"] as? [JSON]
+            let jsonProducts = json["products"] as? [JSON],
+            let memo = json["memo"] as? String
             else { fatalError("invalid pos json") }
         
         favourites = jsonFavourites.compactMap { $0.compactMap(Product.init) }
         let products = jsonProducts.compactMap(decodeGroupable)
         productGroup = Group(name: "All Items", items: products)
+        
+        UserDefaults.Keys.posMemo.set(memo)
     }
     
     private func groupedProducts(group: Group) -> [Product] {

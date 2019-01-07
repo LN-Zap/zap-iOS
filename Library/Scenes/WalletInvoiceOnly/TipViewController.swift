@@ -53,8 +53,11 @@ final class TipViewController: UIViewController {
         amountTitleLabel.text = "Total"
         tipTitleLabel.text = "Add Tip"
         memoTitleLabel.text = "Memo"
-        memoLabel.text = waiterRequestViewModel.memo
         tipDetailLabel.isHidden = true
+        
+        waiterRequestViewModel.memo
+            .bind(to: memoLabel.reactive.text)
+            .dispose(in: reactive.bag)
         
         waiterRequestViewModel.totalAmount
             .map {
