@@ -15,21 +15,11 @@ Install _fastlane_ using
 or alternatively using `brew cask install fastlane`
 
 # Available Actions
-### build_number
-```
-fastlane build_number
-```
-Update build number.
 ### change_version
 ```
 fastlane change_version
 ```
 Update app version.
-### internal_alpha
-```
-fastlane internal_alpha
-```
-Builds new Alpha Build and uploads it to S3.
 ### alpha
 ```
 fastlane alpha
@@ -40,6 +30,10 @@ Builds new Alpha Build and uploads it to Testflight.
 fastlane pos_alpha
 ```
 Builds new PoS Alpha and uploads it to Testflight.
+
+####Example:
+
+bundle exec fastlane pos_alpha build_number:3
 ### udid
 ```
 fastlane udid
