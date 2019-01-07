@@ -7,6 +7,10 @@
 
 import Foundation
 
+public protocol RemoteRPCConfigurationType {
+    var rpcConfiguration: RemoteRPCConfiguration { get }
+}
+
 public struct RemoteRPCConfiguration: Codable {
     public let certificate: String?
     public let macaroon: Macaroon

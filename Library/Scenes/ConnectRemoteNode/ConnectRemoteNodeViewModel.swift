@@ -22,7 +22,7 @@ final class ConnectRemoteNodeViewModel: NSObject {
         case help
     }
     
-    var remoteNodeConfiguration: RemoteRPCConfiguration? {
+    private(set) var remoteNodeConfiguration: RemoteRPCConfiguration? {
         didSet {
             updateTableView()
         }
@@ -88,7 +88,7 @@ final class ConnectRemoteNodeViewModel: NSObject {
             DispatchQueue.main.async {
                 switch result {
                 case .success(let configuration):
-                    self?.remoteNodeConfiguration = configuration
+                    self?.updateConfiguration(configuration)
                     completion(.success(Success()))
                 case .failure(let error):
                     guard let error = error as? RPCConnectQRCodeError else { return }
@@ -116,5 +116,12 @@ final class ConnectRemoteNodeViewModel: NSObject {
             url: url)
         
         self.remoteNodeConfiguration = newConfiguration
+    }
+    
+    func updateConfiguration(_ configuration: RemoteRPCConfigurationType) {
+        remoteNodeConfiguration = configuration.rpcConfiguration
+        
+        let user = (configuration as? LndConnectURL)?.user
+        UserDefaults.Keys.posUserName.set(user)
     }
 }

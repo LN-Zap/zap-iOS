@@ -37,8 +37,9 @@ private extension String {
     }
 }
 
-public final class LndConnectURL {
+public final class LndConnectURL: RemoteRPCConfigurationType {
     public let rpcConfiguration: RemoteRPCConfiguration
+    public let user: String?
     
     public init?(url: URL) {
         guard
@@ -51,6 +52,7 @@ public final class LndConnectURL {
             let macaroon = Macaroon(base64String: macaroonString)
             else { return nil }
 
+        user = queryParameters["user"]
         rpcConfiguration = RemoteRPCConfiguration(certificate: Pem(key: certificate).string, macaroon: macaroon, url: nodeHostUrl)
     }
 }
