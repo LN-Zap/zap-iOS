@@ -22,7 +22,7 @@ final class ProductsViewModel {
             let path = Bundle.library.path(forResource: "pos", ofType: "json"),
             let data = try? Data(contentsOf: URL(fileURLWithPath: path)),
             let json = try? JSONSerialization.jsonObject(with: data, options: []) as? JSON ?? [:],
-            let jsonFavourites = json["favourites"] as? [[JSON]],
+            let jsonFavourites = json["favorites"] as? [[JSON]],
             let jsonProducts = json["products"] as? [JSON]
             else { fatalError("invalid pos json") }
         
