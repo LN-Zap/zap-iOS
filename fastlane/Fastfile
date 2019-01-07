@@ -10,12 +10,6 @@ default_platform(:ios)
 
 app_identifier = ["com.jackmallers.zap"]
 
-desc "Update build number."
-lane :build_number do
-  new_build_number = Time.now.strftime("%Y.%m.%d.%H.%M")
-  increment_build_number(build_number: new_build_number)
-end
-
 desc "Update app version."
 lane :change_version do |options|
   if version = options[:version] 
@@ -24,52 +18,6 @@ lane :change_version do |options|
     version = prompt(text: "Please enter the version number: ")
   end
   increment_version_number(version_number: version)
-end
-
-desc "Builds new Alpha Build and uploads it to S3."
-lane :internal_alpha do
-  unless ENV.key?('ZAP_ALPHA_S3_ACCESS_KEY')
-    UI.user_error!("ZAP_ALPHA_S3_ACCESS_KEY not set.")
-  end
-
-  ensure_git_status_clean
-  build_number
-
-  sync_code_signing(
-    username: ENV['ITUNESCONNECT_USER'],
-    app_identifier: app_identifier,
-    type: "adhoc",
-    force_for_new_devices: true
-  )
-
-  build_ios_app(
-    workspace: "Zap.xcworkspace",
-    configuration: "DebugRemote",
-    scheme: "Zap",
-    output_directory: "./builds/alpha",
-    export_method: "ad-hoc"
-  )
-  aws_s3(
-    access_key: ENV['ZAP_ALPHA_S3_ACCESS_KEY'],
-    secret_access_key: ENV['ZAP_ALPHA_S3_SECRET_ACCESS_KEY'],
-    bucket: ENV['ZAP_ALPHA_S3_BUCKET'],
-    region: ENV['ZAP_ALPHA_S3_REGION'],
-    ipa: './builds/alpha/Zap.ipa',
-    app_directory: 'ios-beta',
-    upload_metadata: true
-  )
-
-  changelog = changelog_from_git_commits(tag_match_pattern: 'builds/internal_alpha/*', pretty: '- %s', merge_commit_filtering: "exclude_merges")
-
-  add_git_tag
-
-  slack(
-    message: "Just uploaded a new iOS alpha: " + ENV['ZAP_ALPHA_S3_URL'] + "\n" + changelog.to_s,
-    use_webhook_configured_username_and_icon: true,
-    default_payloads: []
-  )
-
-  sh("git reset --hard")
 end
 
 desc "Builds new Alpha Build and uploads it to Testflight."
@@ -102,14 +50,22 @@ lane :alpha do
 end
 
 desc "Builds new PoS Alpha and uploads it to Testflight."
-lane :pos_alpha do
+desc "####Example:"
+desc "bundle exec fastlane pos_alpha build_number:3"
+lane :pos_alpha do |options|
   ensure_git_status_clean
 
-  current_build_number = latest_testflight_build_number(
-    initial_build_number: 0,
-    app_identifier: "com.jackmallers.zap-pos"
-  )
-  increment_build_number(build_number: current_build_number + 1)
+  if !options[:build_number]
+    build_number = latest_testflight_build_number(
+      initial_build_number: 0,
+      app_identifier: "com.jackmallers.zap-pos"
+    )
+    build_number += 1
+  else
+    build_number = options[:build_number]
+  end
+
+  increment_build_number(build_number: build_number)
 
   sync_code_signing(
     username: ENV['ITUNESCONNECT_USER'],
@@ -123,12 +79,6 @@ lane :pos_alpha do
     scheme: "Zap",
     output_directory: "./builds/alpha",
     export_method: "app-store"
-    # ,
-    # export_options: {
-    #   provisioningProfiles: { 
-    #     "com.jackmallers.zap-pos" => "match AppStore com.jackmallers.zap-pos"
-    #   }
-    # }
   )
 
   upload_to_testflight(
