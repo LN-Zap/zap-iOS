@@ -129,15 +129,28 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="cuq-iw-Ccy">
-                                <rect key="frame" x="0.0" y="0.0" width="375" height="603"/>
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="497"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             </tableView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="K4I-I0-tv0">
+                                <rect key="frame" x="20" y="507" width="335" height="76"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="76" id="kgy-eh-idK"/>
+                                </constraints>
+                                <state key="normal" title="Button"/>
+                                <connections>
+                                    <action selector="presentChargeViewController:" destination="KrK-fp-a3Y" eventType="touchUpInside" id="v8e-34-39v"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="cuq-iw-Ccy" firstAttribute="trailing" secondItem="1f0-lL-LM1" secondAttribute="trailing" id="6XB-BX-7z1"/>
-                            <constraint firstItem="cuq-iw-Ccy" firstAttribute="bottom" secondItem="1f0-lL-LM1" secondAttribute="bottom" id="8bh-Gc-L0v"/>
+                            <constraint firstItem="1f0-lL-LM1" firstAttribute="trailing" secondItem="K4I-I0-tv0" secondAttribute="trailing" constant="20" id="DH9-iY-LMQ"/>
                             <constraint firstItem="cuq-iw-Ccy" firstAttribute="top" secondItem="92X-CN-NZg" secondAttribute="top" id="LMW-2B-flq"/>
+                            <constraint firstItem="K4I-I0-tv0" firstAttribute="leading" secondItem="1f0-lL-LM1" secondAttribute="leading" constant="20" id="at5-JI-h5S"/>
+                            <constraint firstItem="1f0-lL-LM1" firstAttribute="bottom" secondItem="K4I-I0-tv0" secondAttribute="bottom" constant="20" id="mf8-Kn-oYn"/>
+                            <constraint firstItem="K4I-I0-tv0" firstAttribute="top" secondItem="cuq-iw-Ccy" secondAttribute="bottom" constant="10" id="viB-bw-Y04"/>
                             <constraint firstItem="cuq-iw-Ccy" firstAttribute="leading" secondItem="1f0-lL-LM1" secondAttribute="leading" id="xCg-Pd-mCF"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="1f0-lL-LM1"/>
@@ -152,12 +165,13 @@
                     </navigationItem>
                     <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" translucent="NO" prompted="NO"/>
                     <connections>
+                        <outlet property="payButton" destination="K4I-I0-tv0" id="sdx-Rp-w2K"/>
                         <outlet property="tableView" destination="cuq-iw-Ccy" id="RU8-8L-bRZ"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="yqU-hC-gM0" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1455" y="109"/>
+            <point key="canvasLocation" x="1453.5999999999999" y="108.39580209895054"/>
         </scene>
         <!--Product Search View Controller-->
         <scene sceneID="OBD-1k-BYk">

@@ -6,19 +6,25 @@
 //
 
 import Foundation
+import Lightning
 
 extension UIStoryboard {
-    static func instantiateShoppingCartViewController(shoppingCartViewModel: ShoppingCartViewModel) -> ShoppingCartViewController {
+    static func instantiateShoppingCartViewController(shoppingCartViewModel: ShoppingCartViewModel, transactionService: TransactionService) -> ShoppingCartViewController {
         let shoppingCartViewController = StoryboardScene.PoS.shoppingCartViewController.instantiate()
         shoppingCartViewController.shoppingCartViewModel = shoppingCartViewModel
+        shoppingCartViewController.transactionService = transactionService
         return shoppingCartViewController
     }
 }
 
-final class ShoppingCartViewController: UIViewController {
-    var shoppingCartViewModel: ShoppingCartViewModel?
+final class ShoppingCartViewController: UIViewController, ChargePresentable {
+    // swiftlint:disable implicitly_unwrapped_optional
+    fileprivate var shoppingCartViewModel: ShoppingCartViewModel!
+    fileprivate var transactionService: TransactionService!
+    // swiftlint:enable implicitly_unwrapped_optional
     
     @IBOutlet private weak var tableView: UITableView!
+    @IBOutlet private weak var payButton: UIButton!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -34,12 +40,18 @@ final class ShoppingCartViewController: UIViewController {
         tableView.allowsMultipleSelectionDuringEditing = false
         tableView.backgroundColor = UIColor.Zap.background
         tableView.tableFooterView = UIView(frame: .zero)
+        
+        setupChargeButton(button: payButton, amount: shoppingCartViewModel.totalAmount)
     }
     
     @IBAction private func clearShoppingCart(_ sender: Any) {
         shoppingCartViewModel?.removeAll()
         tableView.reloadData()
         navigationController?.popViewController(animated: true)
+    }
+    
+    @IBAction private func presentChargeViewController(_ sender: Any) {
+        presentChargeViewController(transactionService: transactionService, fiatValue: shoppingCartViewModel.totalAmount.value)
     }
 }
 

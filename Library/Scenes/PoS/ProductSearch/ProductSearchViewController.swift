@@ -20,7 +20,7 @@ extension UIStoryboard {
     }
 }
 
-final class ProductSearchViewController: UIViewController, ShoppingCartPresentable {
+final class ProductSearchViewController: UIViewController, ShoppingCartPresentable, ChargePresentable {
     @IBOutlet private weak var tableView: UITableView!
     @IBOutlet private weak var payButton: UIButton!
     
@@ -51,11 +51,9 @@ final class ProductSearchViewController: UIViewController, ShoppingCartPresentab
         tableView.rowHeight = 76
         view.backgroundColor = UIColor.Zap.background
         
-        Style.Button.background.apply(to: payButton)
+        setupChargeButton(button: payButton, amount: shoppingCartViewModel.totalAmount)
         
-        setupPayButton(button: payButton, amount: shoppingCartViewModel.totalAmount)
-        
-        addShoppingCartBarButton(shoppingCartViewModel: shoppingCartViewModel, selector: #selector(presentShoppingCart))
+        setupShoppingCartBarButton(shoppingCartViewModel: shoppingCartViewModel, selector: #selector(presentShoppingCart))
         
         productSearchViewModel.items.bind(to: tableView) { [shoppingCartViewModel] items, indexPath, tableView -> UITableViewCell in
             if let product = items[indexPath.row] as? Product,
@@ -84,11 +82,11 @@ final class ProductSearchViewController: UIViewController, ShoppingCartPresentab
     }
     
     @IBAction private func presentTipViewController(_ sender: Any) {
-        presentTipViewController(transactionService: transactionService, fiatValue: shoppingCartViewModel.totalAmount.value)
+        presentChargeViewController(transactionService: transactionService, fiatValue: shoppingCartViewModel.totalAmount.value)
     }
     
     @objc func presentShoppingCart() {
-        presentShoppingCart(shoppingCartViewModel: shoppingCartViewModel)
+        presentShoppingCart(shoppingCartViewModel: shoppingCartViewModel, transactionService: transactionService)
     }
 }
 

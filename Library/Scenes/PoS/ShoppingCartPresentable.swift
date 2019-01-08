@@ -10,26 +10,17 @@ import Foundation
 import Lightning
 
 protocol ShoppingCartPresentable {
-    func presentShoppingCart(shoppingCartViewModel: ShoppingCartViewModel)
-    func presentTipViewController(transactionService: TransactionService, fiatValue: Decimal)
-    func setupPayButton(button: UIButton, amount: Observable<Decimal>)
+    func setupShoppingCartBarButton(shoppingCartViewModel: ShoppingCartViewModel, selector: Selector)
+    func presentShoppingCart(shoppingCartViewModel: ShoppingCartViewModel, transactionService: TransactionService)
 }
 
 extension ShoppingCartPresentable where Self: UIViewController {
-    func presentShoppingCart(shoppingCartViewModel: ShoppingCartViewModel) {
-        let shoppingCartViewController = UIStoryboard.instantiateShoppingCartViewController(shoppingCartViewModel: shoppingCartViewModel)
+    func presentShoppingCart(shoppingCartViewModel: ShoppingCartViewModel, transactionService: TransactionService) {
+        let shoppingCartViewController = UIStoryboard.instantiateShoppingCartViewController(shoppingCartViewModel: shoppingCartViewModel, transactionService: transactionService)
         navigationController?.pushViewController(shoppingCartViewController, animated: true)
     }
     
-    func presentTipViewController(transactionService: TransactionService, fiatValue: Decimal) {
-        let amount = Settings.shared.fiatCurrency.value.satoshis(from: fiatValue)
-        let waiterRequestViewModel = WaiterRequestViewModel(amount: amount, transactionService: transactionService)
-        let tipViewController = UIStoryboard.instantiateTipViewController(waiterRequestViewModel: waiterRequestViewModel)
-        let navigationController = ZapNavigationController(rootViewController: tipViewController)
-        present(navigationController, animated: true, completion: nil)
-    }
-    
-    func addShoppingCartBarButton(shoppingCartViewModel: ShoppingCartViewModel, selector: Selector) {
+    func setupShoppingCartBarButton(shoppingCartViewModel: ShoppingCartViewModel, selector: Selector) {
         let shoppingCartButton = UIButton(type: .custom)
         let circleImage = UIImage.circle(diameter: 14, color: UIColor.Zap.lightningOrange)
         shoppingCartButton.setBackgroundImage(circleImage, for: .normal)
@@ -47,8 +38,17 @@ extension ShoppingCartPresentable where Self: UIViewController {
             .bind(to: shoppingCartButton.reactive.title)
             .dispose(in: reactive.bag)
     }
-    
-    func setupPayButton(button: UIButton, amount: Observable<Decimal>) {
+}
+
+protocol ChargePresentable {
+    func setupChargeButton(button: UIButton, amount: Observable<Decimal>)
+    func presentChargeViewController(transactionService: TransactionService, fiatValue: Decimal)
+}
+
+extension ChargePresentable where Self: UIViewController {
+    func setupChargeButton(button: UIButton, amount: Observable<Decimal>) {
+        Style.Button.background.apply(to: button)
+
         amount
             .map { $0 > 0 }
             .bind(to: button.reactive.isEnabled)
@@ -56,7 +56,7 @@ extension ShoppingCartPresentable where Self: UIViewController {
         
         UIView.performWithoutAnimation {
             let amount = Settings.shared.fiatCurrency.value.format(value: amount.value) ?? ""
-            button.setTitle("Pay \(amount)", for: .normal)
+            button.setTitle("Charge \(amount)", for: .normal)
             button.layoutIfNeeded()
         }
         
@@ -68,5 +68,13 @@ extension ShoppingCartPresentable where Self: UIViewController {
             }
             .bind(to: button.reactive.title)
             .dispose(in: reactive.bag)
+    }
+    
+    func presentChargeViewController(transactionService: TransactionService, fiatValue: Decimal) {
+        let amount = Settings.shared.fiatCurrency.value.satoshis(from: fiatValue)
+        let waiterRequestViewModel = WaiterRequestViewModel(amount: amount, transactionService: transactionService)
+        let tipViewController = UIStoryboard.instantiateTipViewController(waiterRequestViewModel: waiterRequestViewModel)
+        let navigationController = ZapNavigationController(rootViewController: tipViewController)
+        present(navigationController, animated: true, completion: nil)
     }
 }

@@ -24,7 +24,7 @@ extension UIStoryboard {
     }
 }
 
-final class FavouriteProductsViewController: UIViewController, ShoppingCartPresentable {
+final class FavouriteProductsViewController: UIViewController, ShoppingCartPresentable, ChargePresentable {
     @IBOutlet private weak var payButton: UIButton!
 
     // swiftlint:disable implicitly_unwrapped_optional
@@ -38,23 +38,21 @@ final class FavouriteProductsViewController: UIViewController, ShoppingCartPrese
 
         navigationItem.titleView = UIImageView(image: Asset.posFavouritesLogo.image)
         
-        Style.Button.background.apply(to: payButton)
-        
         view.backgroundColor = UIColor.Zap.background
         
         navigationItem.largeTitleDisplayMode = .never
 
-        addShoppingCartBarButton(shoppingCartViewModel: shoppingCartViewModel, selector: #selector(presentShoppingCart))
+        setupShoppingCartBarButton(shoppingCartViewModel: shoppingCartViewModel, selector: #selector(presentShoppingCart))
         
-        setupPayButton(button: payButton, amount: shoppingCartViewModel.totalAmount)
+        setupChargeButton(button: payButton, amount: shoppingCartViewModel.totalAmount)
     }
     
     @IBAction private func presentTipViewController(_ sender: Any) {
-        presentTipViewController(transactionService: transactionService, fiatValue: shoppingCartViewModel.totalAmount.value)
+        presentChargeViewController(transactionService: transactionService, fiatValue: shoppingCartViewModel.totalAmount.value)
     }
     
     @objc func presentShoppingCart() {
-        presentShoppingCart(shoppingCartViewModel: shoppingCartViewModel)
+        presentShoppingCart(shoppingCartViewModel: shoppingCartViewModel, transactionService: transactionService)
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
