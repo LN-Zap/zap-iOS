@@ -20,9 +20,15 @@ final class ShoppingCartViewModel {
         
         totalAmount = Observable(0)
         totalCount = Observable(0)
+        
+        load()
     }
     
     private var items = [Product: Observable<Int>]()
+    
+    var persistable: [Product: Int] {
+        return items.mapValues { $0.value }
+    }
     
     var itemCount: Int {
         return items.values.reduce(0) { $0 + $1.value }
@@ -46,36 +52,55 @@ final class ShoppingCartViewModel {
         UISelectionFeedbackGenerator().selectionChanged()
 
         items[product]?.value = count
-        updateAmount()
+        update()
     }
     
     func addSingle(product: Product) {
         UISelectionFeedbackGenerator().selectionChanged()
         
         items[product]?.value += 1
-        updateAmount()
+        update()
     }
     
     func removeSingle(product: Product) {
         guard count(of: product).value > 0 else { return }
         items[product]?.value -= 1
-        updateAmount()
+        update()
     }
     
     func removeAll(product: Product) {
         items[product]?.value = 0
-        updateAmount()
+        update()
     }
     
     func removeAll() {
         for product in items.keys {
             items[product]?.value = 0
         }
-        updateAmount()
+        update()
     }
     
     private func updateAmount() {
         totalAmount.value = sum
         totalCount.value = itemCount
+    }
+    
+    private func update() {
+        updateAmount()
+        save()
+    }
+    
+    private func save() {
+        Storage.store(persistable, to: "ShoppingCart")
+    }
+    
+    private func load() {
+        guard let persistable: [Product: Int] = Storage.restore("ShoppingCart") else { return }
+        
+        for (key, value) in persistable {
+            items[key]?.value = value
+        }
+        
+        updateAmount()
     }
 }
