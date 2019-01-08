@@ -30,6 +30,8 @@ final class TipViewController: UIViewController {
     @IBOutlet private weak var tip2Button: UIButton!
     @IBOutlet private weak var tip3Button: UIButton!
     
+    override var preferredStatusBarStyle: UIStatusBarStyle { return .lightContent }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
