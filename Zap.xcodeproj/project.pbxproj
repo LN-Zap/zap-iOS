@@ -326,6 +326,7 @@
 		ADFEFA6F20E627F100FE1557 /* WalletService.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0D3C9792060070D0015C5D7 /* WalletService.swift */; };
 		ADFEFA7120E628AC00FE1557 /* Lightning.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AD536BE620E62763002279BC /* Lightning.framework */; };
 		ADFEFA7920E62B1800FE1557 /* BlockChainHeightUpdater.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0D3C97F20629B9D0015C5D7 /* BlockChainHeightUpdater.swift */; };
+		ADFF1F9D21E4E9AF00DAD688 /* FavouriteSectionHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADFF1F9C21E4E9AF00DAD688 /* FavouriteSectionHeader.swift */; };
 		D6989DE43FB4820F856510AB /* Pods_SwiftLndTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 81036DADA56AC2254782EE27 /* Pods_SwiftLndTests.framework */; };
 		DAB5EBC4696E2DCAEF57744D /* Pods_RPC_Lightning.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 92308447F0260B8536617365 /* Pods_RPC_Lightning.framework */; };
 /* End PBXBuildFile section */
@@ -853,6 +854,7 @@
 		ADFE537B20D693F500B3BA2A /* LibraryTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = LibraryTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		ADFE537F20D693F500B3BA2A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		ADFEFA7320E6294000FE1557 /* OnChainRequestAddressType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnChainRequestAddressType.swift; sourceTree = "<group>"; };
+		ADFF1F9C21E4E9AF00DAD688 /* FavouriteSectionHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavouriteSectionHeader.swift; sourceTree = "<group>"; };
 		B0763E83C2C4AB69289A9C55 /* Pods-RPC-SwiftLnd.releasepos.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RPC-SwiftLnd.releasepos.xcconfig"; path = "Pods/Target Support Files/Pods-RPC-SwiftLnd/Pods-RPC-SwiftLnd.releasepos.xcconfig"; sourceTree = "<group>"; };
 		B509D5ABD28B8E5262CD923C /* Pods-Zap.debugpos.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Zap.debugpos.xcconfig"; path = "Pods/Target Support Files/Pods-Zap/Pods-Zap.debugpos.xcconfig"; sourceTree = "<group>"; };
 		BAABB03E07719395528272D4 /* Pods_Zap.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Zap.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -1547,6 +1549,7 @@
 				AD8A3DB221CBE12000D48B65 /* FavouriteProductCollectionViewCell.swift */,
 				AD8A3DB321CBE12000D48B65 /* FavouriteProductCollectionViewCell.xib */,
 				AD8A3DAB21CBDF5000D48B65 /* FavouriteProductsViewController.swift */,
+				ADFF1F9C21E4E9AF00DAD688 /* FavouriteSectionHeader.swift */,
 			);
 			path = FavouriteProductsList;
 			sourceTree = "<group>";
@@ -2733,6 +2736,7 @@
 				AD391C5120D16F7A007EE22A /* ConfirmMnemonicCollectionViewCell.swift in Sources */,
 				AD391C3920D16F0B007EE22A /* BockExplorer.swift in Sources */,
 				ADA81E9E210DE14100B7C6F2 /* UIView.swift in Sources */,
+				ADFF1F9D21E4E9AF00DAD688 /* FavouriteSectionHeader.swift in Sources */,
 				AD8A3DB421CBE12000D48B65 /* FavouriteProductCollectionViewCell.swift in Sources */,
 				ADDD13B62119CE740035D2F9 /* StackViewElement.swift in Sources */,
 				AD391C9A20D16FA8007EE22A /* QRCodeScannerView.swift in Sources */,

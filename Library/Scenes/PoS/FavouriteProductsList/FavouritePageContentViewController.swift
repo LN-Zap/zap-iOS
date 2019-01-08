@@ -48,14 +48,14 @@ final class FavouritePageContentViewController: UIViewController {
                 width: itemWidth,
                 height: itemWidth)
             
-            collectionView.contentInset = UIEdgeInsets(top: border, left: border, bottom: border, right: border)
+            collectionView.contentInset = UIEdgeInsets(top: 0, left: border, bottom: border, right: border)
         }
     }
 }
 
 extension FavouritePageContentViewController: UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        let product = productsViewModel.favourites[pageIndex][indexPath.row]
+        guard let product = productsViewModel.favourites[pageIndex].items[indexPath.row] as? Product else { return }
         shoppingCartViewModel.addSingle(product: product)
         
         if let cell = collectionView.cellForItem(at: indexPath) as? FavouriteProductCollectionViewCell {
@@ -66,16 +66,23 @@ extension FavouritePageContentViewController: UICollectionViewDelegate {
 
 extension FavouritePageContentViewController: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return productsViewModel.favourites[pageIndex].count
+        return productsViewModel.favourites[pageIndex].items.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell: FavouriteProductCollectionViewCell = collectionView.dequeueCellForIndexPath(indexPath)
         
-        let product = productsViewModel.favourites[pageIndex][indexPath.row]
-        let count = shoppingCartViewModel.count(of: product)
-        cell.setItem(product: product, count: count)
+        if let product = productsViewModel.favourites[pageIndex].items[indexPath.row] as? Product {
+            let count = shoppingCartViewModel.count(of: product)
+            cell.setItem(product: product, count: count)
+        }
         
         return cell
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
+        guard let sectionHeader = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: "FavouriteSectionHeader", for: indexPath) as? FavouriteSectionHeader else { fatalError("could not deque FavouriteSectionHeader") }
+        sectionHeader.setTitle(productsViewModel.favourites[pageIndex].name)
+        return sectionHeader
     }
 }

@@ -1,154 +1,166 @@
 {
     "memo": "Hubbard Inn",
     "favorites": [
-        [
-            {
-                "name": "312",
-                "price": 3.50
-            },
-            {
-                "name": "Allagash",
-                "price": 3.40
-            },
-            {
-                "name": "KC Amstel",
-                "price": 4.00
-            },
-            {
-                "name": "KC Blue Moon",
-                "price": 5.20
-            },
-            {
-                "name": "Bud BTL",
-                "price": 3.50
-            },
-            {
-                "name": "COORS LIGHT",
-                "price": 3.50
-            },
-            {
-                "name": "HEINEKEN",
-                "price": 3.50
-            },
-            {
-                "name": "LAG IPA",
-                "price": 3.50
-            },
-            {
-                "name": "MILLER LITE",
-                "price": 3.50
-            },
-            {
-                "name": "STELLA ARTOIS",
-                "price": 3.50
-            },
-            {
-                "name": "LIL SUMP",
-                "price": 3.50
-            }
-        ],
-        [
-            {
-                "name": "Absolut",
-                "price": 3.50
-            },
-            {
-                "name": "Bacardi",
-                "price": 3.50
-            },
-            {
-                "name": "Beefeater",
-                "price": 3.50
-            },
-            {
-                "name": "Casa Blanco",
-                "price": 3.50
-            },
-            {
-                "name": "Capt Morgan",
-                "price": 3.50
-            },
-            {
-                "name": "AVION",
-                "price": 3.50
-            },
-            {
-                "name": "JAMO",
-                "price": 3.50
-            },
-            {
-                "name": "JACK DANIELS",
-                "price": 3.50
-            },
-            {
-                "name": "JIM BEAM",
-                "price": 3.50
-            },
-            {
-                "name": "MAKERS MARK",
-                "price": 3.50
-            },
-            {
-                "name": "SAPPHRE",
-                "price": 3.50
-            },
-            {
-                "name": "TITOS",
-                "price": 3.50
-            }
-        ],
-        [
-            {
-                "name": "MOSCOW MULE",
-                "price": 3.50
-            },
-            {
-                "name": "OLD FASHION",
-                "price": 3.50
-            },
-            {
-                "name": "MANHATTAN",
-                "price": 3.50
-            },
-            {
-                "name": "HEPBURN",
-                "price": 3.50
-            },
-            {
-                "name": "SIDECAR",
-                "price": 3.50
-            },
-            {
-                "name": "FRIENDS",
-                "price": 3.50
-            },
-            {
-                "name": "STEEP ESCAPE",
-                "price": 3.50
-            }
-        ],
-        [
-            {
-                "name": "DON SILVER",
-                "price": 3.50
-            },
-            {
-                "name": "VEGAS BOMB",
-                "price": 3.50
-            },
-            {
-                "name": "PATRON",
-                "price": 3.50
-            },
-            {
-                "name": "LEMON DROP",
-                "price": 3.50
-            },
-            {
-                "name": "BEAM FIRE",
-                "price": 1.40
-            }
-        ]
+        {
+            "name": "Beers",
+            "items": [
+                {
+                    "name": "312",
+                    "price": 3.50
+                },
+                {
+                    "name": "Allagash",
+                    "price": 3.40
+                },
+                {
+                    "name": "KC Amstel",
+                    "price": 4.00
+                },
+                {
+                    "name": "KC Blue Moon",
+                    "price": 5.20
+                },
+                {
+                    "name": "Bud BTL",
+                    "price": 3.50
+                },
+                {
+                    "name": "COORS LIGHT",
+                    "price": 3.50
+                },
+                {
+                    "name": "HEINEKEN",
+                    "price": 3.50
+                },
+                {
+                    "name": "LAG IPA",
+                    "price": 3.50
+                },
+                {
+                    "name": "MILLER LITE",
+                    "price": 3.50
+                },
+                {
+                    "name": "STELLA ARTOIS",
+                    "price": 3.50
+                },
+                {
+                    "name": "LIL SUMP",
+                    "price": 3.50
+                }
+            ]
+        },
+        {
+            "name": "Shots",
+            "items": [
+                {
+                    "name": "Absolut",
+                    "price": 3.50
+                },
+                {
+                    "name": "Bacardi",
+                    "price": 3.50
+                },
+                {
+                    "name": "Beefeater",
+                    "price": 3.50
+                },
+                {
+                    "name": "Casa Blanco",
+                    "price": 3.50
+                },
+                {
+                    "name": "Capt Morgan",
+                    "price": 3.50
+                },
+                {
+                    "name": "AVION",
+                    "price": 3.50
+                },
+                {
+                    "name": "JAMO",
+                    "price": 3.50
+                },
+                {
+                    "name": "JACK DANIELS",
+                    "price": 3.50
+                },
+                {
+                    "name": "JIM BEAM",
+                    "price": 3.50
+                },
+                {
+                    "name": "MAKERS MARK",
+                    "price": 3.50
+                },
+                {
+                    "name": "SAPPHRE",
+                    "price": 3.50
+                },
+                {
+                    "name": "TITOS",
+                    "price": 3.50
+                }
+            ]
+        },
+        {
+            "name": "Cocktails",
+            "items": [
+                {
+                    "name": "MOSCOW MULE",
+                    "price": 3.50
+                },
+                {
+                    "name": "OLD FASHION",
+                    "price": 3.50
+                },
+                {
+                    "name": "MANHATTAN",
+                    "price": 3.50
+                },
+                {
+                    "name": "HEPBURN",
+                    "price": 3.50
+                },
+                {
+                    "name": "SIDECAR",
+                    "price": 3.50
+                },
+                {
+                    "name": "FRIENDS",
+                    "price": 3.50
+                },
+                {
+                    "name": "STEEP ESCAPE",
+                    "price": 3.50
+                }
+            ]
+        },
+        {
+            "name": "Specials",
+            "items": [
+                {
+                    "name": "DON SILVER",
+                    "price": 3.50
+                },
+                {
+                    "name": "VEGAS BOMB",
+                    "price": 3.50
+                },
+                {
+                    "name": "PATRON",
+                    "price": 3.50
+                },
+                {
+                    "name": "LEMON DROP",
+                    "price": 3.50
+                },
+                {
+                    "name": "BEAM FIRE",
+                    "price": 1.40
+                }
+            ]
+        }
     ],
     "products": [
         {

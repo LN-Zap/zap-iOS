@@ -31,11 +31,30 @@
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="NtZ-FJ-W3d">
                                     <size key="itemSize" width="50" height="50"/>
-                                    <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                                    <size key="headerReferenceSize" width="50" height="50"/>
                                     <size key="footerReferenceSize" width="0.0" height="0.0"/>
                                     <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                                 </collectionViewFlowLayout>
                                 <cells/>
+                                <collectionReusableView key="sectionHeaderView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" reuseIdentifier="FavouriteSectionHeader" id="ELv-9i-7ye" customClass="FavouriteSectionHeader" customModule="Library" customModuleProvider="target">
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="50"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="a7h-fH-bZ9">
+                                            <rect key="frame" x="166.5" y="0.0" width="42" height="21"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                            <nil key="textColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                    </subviews>
+                                    <constraints>
+                                        <constraint firstItem="a7h-fH-bZ9" firstAttribute="centerX" secondItem="ELv-9i-7ye" secondAttribute="centerX" id="5nr-mb-KJS"/>
+                                        <constraint firstItem="a7h-fH-bZ9" firstAttribute="top" secondItem="ELv-9i-7ye" secondAttribute="top" id="Gjp-pc-Esi"/>
+                                    </constraints>
+                                    <connections>
+                                        <outlet property="headerLabel" destination="a7h-fH-bZ9" id="BCb-Ku-vtY"/>
+                                    </connections>
+                                </collectionReusableView>
                             </collectionView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
