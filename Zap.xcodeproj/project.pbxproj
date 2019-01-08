@@ -327,6 +327,7 @@
 		ADFEFA7120E628AC00FE1557 /* Lightning.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AD536BE620E62763002279BC /* Lightning.framework */; };
 		ADFEFA7920E62B1800FE1557 /* BlockChainHeightUpdater.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0D3C97F20629B9D0015C5D7 /* BlockChainHeightUpdater.swift */; };
 		ADFF1F9D21E4E9AF00DAD688 /* FavouriteSectionHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADFF1F9C21E4E9AF00DAD688 /* FavouriteSectionHeader.swift */; };
+		ADFF1F9F21E4FAE900DAD688 /* ChargePresentable.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADFF1F9E21E4FAE900DAD688 /* ChargePresentable.swift */; };
 		D6989DE43FB4820F856510AB /* Pods_SwiftLndTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 81036DADA56AC2254782EE27 /* Pods_SwiftLndTests.framework */; };
 		DAB5EBC4696E2DCAEF57744D /* Pods_RPC_Lightning.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 92308447F0260B8536617365 /* Pods_RPC_Lightning.framework */; };
 /* End PBXBuildFile section */
@@ -855,6 +856,7 @@
 		ADFE537F20D693F500B3BA2A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		ADFEFA7320E6294000FE1557 /* OnChainRequestAddressType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnChainRequestAddressType.swift; sourceTree = "<group>"; };
 		ADFF1F9C21E4E9AF00DAD688 /* FavouriteSectionHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavouriteSectionHeader.swift; sourceTree = "<group>"; };
+		ADFF1F9E21E4FAE900DAD688 /* ChargePresentable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChargePresentable.swift; sourceTree = "<group>"; };
 		B0763E83C2C4AB69289A9C55 /* Pods-RPC-SwiftLnd.releasepos.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RPC-SwiftLnd.releasepos.xcconfig"; path = "Pods/Target Support Files/Pods-RPC-SwiftLnd/Pods-RPC-SwiftLnd.releasepos.xcconfig"; sourceTree = "<group>"; };
 		B509D5ABD28B8E5262CD923C /* Pods-Zap.debugpos.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Zap.debugpos.xcconfig"; path = "Pods/Target Support Files/Pods-Zap/Pods-Zap.debugpos.xcconfig"; sourceTree = "<group>"; };
 		BAABB03E07719395528272D4 /* Pods_Zap.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Zap.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -1509,9 +1511,8 @@
 			isa = PBXGroup;
 			children = (
 				AD8A3DA921CBDF3E00D48B65 /* PoS.storyboard */,
-				AD8A3DCA21CE4FC000D48B65 /* ProductCell.swift */,
-				AD8A3DD021D0E00600D48B65 /* ShoppingCartPresentable.swift */,
 				AD8FF49721C7E45600C4F68D /* Charge */,
+				ADFF1FA021E4FB2300DAD688 /* Extensions */,
 				AD8A3DBB21CBF96800D48B65 /* FavouriteProductsList */,
 				AD8A3DAD21CBDFB800D48B65 /* Model */,
 				AD8A3DC221CD608200D48B65 /* ProductSearch */,
@@ -1925,6 +1926,16 @@
 				AD81C21A21B86A3100FA3FA9 /* SyncPercentageEstimatorTests.swift */,
 			);
 			path = Tests;
+			sourceTree = "<group>";
+		};
+		ADFF1FA021E4FB2300DAD688 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				ADFF1F9E21E4FAE900DAD688 /* ChargePresentable.swift */,
+				AD8A3DCA21CE4FC000D48B65 /* ProductCell.swift */,
+				AD8A3DD021D0E00600D48B65 /* ShoppingCartPresentable.swift */,
+			);
+			path = Extensions;
 			sourceTree = "<group>";
 		};
 		CEF2960C33901153F2C1FFF4 /* Frameworks */ = {
@@ -2833,6 +2844,7 @@
 				ADFCEADF2177687F00370242 /* EventDetailViewModel.swift in Sources */,
 				AD667E5921384966007B9160 /* WindowLevel.swift in Sources */,
 				AD391CB420D16FA8007EE22A /* Section.swift in Sources */,
+				ADFF1F9F21E4FAE900DAD688 /* ChargePresentable.swift in Sources */,
 				AD391D1B20D174B4007EE22A /* PinSetupCoordinator.swift in Sources */,
 				ADA75DF2210F389100003068 /* ChannelState+Localizable.swift in Sources */,
 				AD9BB2E021836A54009DC878 /* DispatchQueue+Debounce.swift in Sources */,

@@ -22,21 +22,4 @@ extension UIImage {
         }
         return nil
     }
-    
-    static func circle(diameter: CGFloat, color: UIColor) -> UIImage? {
-        defer {
-            UIGraphicsEndImageContext()
-        }
-        
-        UIGraphicsBeginImageContextWithOptions(CGSize(width: diameter, height: diameter), false, 0)
-        guard let context = UIGraphicsGetCurrentContext() else { return nil }
-        context.saveGState()
-        
-        let rect = CGRect(x: 0, y: 0, width: diameter, height: diameter)
-        context.setFillColor(color.cgColor)
-        context.fillEllipse(in: rect)
-        
-        context.restoreGState()
-        return UIGraphicsGetImageFromCurrentImageContext()
-    }
 }
