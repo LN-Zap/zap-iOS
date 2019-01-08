@@ -106,6 +106,7 @@ final class SendViewModel {
         memo = invoice.lightningPaymentRequest?.memo ?? invoice.bitcoinURI?.memo
         
         updateLightningFee()
+        updateSendButtonEnabled()
     }
     
     private func updateSendButtonEnabled() {
