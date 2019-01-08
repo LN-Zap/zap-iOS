@@ -1008,7 +1008,6 @@
 				ADCE01C4207B714E00CA72E8 /* Sync */,
 				AD667E4F2136B042007B9160 /* TimeLocked */,
 				AD7EDAE12108C4050058CCCA /* Wallet */,
-				AD8FF49721C7E45600C4F68D /* WalletInvoiceOnly */,
 			);
 			path = Scenes;
 			sourceTree = "<group>";
@@ -1512,6 +1511,7 @@
 				AD8A3DA921CBDF3E00D48B65 /* PoS.storyboard */,
 				AD8A3DCA21CE4FC000D48B65 /* ProductCell.swift */,
 				AD8A3DD021D0E00600D48B65 /* ShoppingCartPresentable.swift */,
+				AD8FF49721C7E45600C4F68D /* Charge */,
 				AD8A3DBB21CBF96800D48B65 /* FavouriteProductsList */,
 				AD8A3DAD21CBDFB800D48B65 /* Model */,
 				AD8A3DC221CD608200D48B65 /* ProductSearch */,
@@ -1565,7 +1565,7 @@
 			path = ProductSearch;
 			sourceTree = "<group>";
 		};
-		AD8FF49721C7E45600C4F68D /* WalletInvoiceOnly */ = {
+		AD8FF49721C7E45600C4F68D /* Charge */ = {
 			isa = PBXGroup;
 			children = (
 				AD8FF49921C7E4A000C4F68D /* WalletInvoiceOnly.storyboard */,
@@ -1575,7 +1575,7 @@
 				AD8FF49821C7E4A000C4F68D /* WalletInvoiceOnlyViewController.swift */,
 				ADC08D8C21DFAA2D000E730E /* WaiterConfirmationViewController.swift */,
 			);
-			path = WalletInvoiceOnly;
+			path = Charge;
 			sourceTree = "<group>";
 		};
 		AD967FD52100E0B40048085B /* CertificateDetail */ = {
