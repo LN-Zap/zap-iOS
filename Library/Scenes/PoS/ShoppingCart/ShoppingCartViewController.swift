@@ -5,6 +5,7 @@
 //  Copyright © 2018 Zap. All rights reserved.
 //
 
+import Bond
 import Foundation
 import Lightning
 
@@ -19,9 +20,15 @@ extension UIStoryboard {
 
 final class ShoppingCartViewController: UIViewController, ChargePresentable {
     // swiftlint:disable implicitly_unwrapped_optional
-    fileprivate var shoppingCartViewModel: ShoppingCartViewModel!
+    fileprivate var shoppingCartViewModel: ShoppingCartViewModel! {
+        didSet {
+            selectedItems = shoppingCartViewModel.selectedItems
+        }
+    }
     fileprivate var transactionService: TransactionService!
     // swiftlint:enable implicitly_unwrapped_optional
+    
+    var selectedItems: [(Product, Observable<Int>)] = []
     
     @IBOutlet private weak var tableView: UITableView!
     @IBOutlet private weak var payButton: UIButton!
@@ -62,13 +69,26 @@ final class ShoppingCartViewController: UIViewController, ChargePresentable {
 
 extension ShoppingCartViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return shoppingCartViewModel?.selectedItems.count ?? 0
+        return selectedItems.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell: ShoppingListTableViewCell = tableView.dequeueCellForIndexPath(indexPath)
-        cell.selectedItem = shoppingCartViewModel?.selectedItems[indexPath.row]
+        cell.selectedItem = selectedItems[indexPath.row]
         cell.shoppingCartViewModel = shoppingCartViewModel
         return cell
+    }
+    
+    func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
+        return true
+    }
+    
+    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
+        if editingStyle == .delete {
+            let product = selectedItems[indexPath.row].0
+            shoppingCartViewModel?.removeAll(product: product)
+            selectedItems.removeAll { $0.0 == product }
+            tableView.deleteRows(at: [indexPath], with: .automatic)
+        }
     }
 }
