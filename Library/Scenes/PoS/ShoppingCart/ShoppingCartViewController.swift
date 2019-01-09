@@ -45,9 +45,14 @@ final class ShoppingCartViewController: UIViewController, ChargePresentable {
     }
     
     @IBAction private func clearShoppingCart(_ sender: Any) {
-        shoppingCartViewModel?.removeAll()
-        tableView.reloadData()
-        navigationController?.popViewController(animated: true)
+        let alertController = UIAlertController(title: "Clear Shopping List", message: "Do you really want to remove all items from your shopping list?", preferredStyle: .actionSheet)
+        alertController.addAction(UIAlertAction(title: L10n.Generic.cancel, style: .cancel, handler: { _ in }))
+        alertController.addAction(UIAlertAction(title: "Clear", style: .destructive, handler: { [weak self] _ in
+            self?.shoppingCartViewModel?.removeAll()
+            self?.tableView.reloadData()
+            self?.navigationController?.popViewController(animated: true)
+        }))
+        present(alertController, animated: true, completion: nil)
     }
     
     @IBAction private func presentChargeViewController(_ sender: Any) {
