@@ -11,7 +11,7 @@ import Lightning
 
 protocol ChargePresentable {
     func setupChargeButton(button: UIButton, amount: Observable<Decimal>)
-    func presentChargeViewController(transactionService: TransactionService, fiatValue: Decimal)
+    func presentChargeViewController(transactionService: TransactionService, fiatValue: Decimal, shoppingCartViewModel: ShoppingCartViewModel)
 }
 
 extension ChargePresentable where Self: UIViewController {
@@ -39,9 +39,9 @@ extension ChargePresentable where Self: UIViewController {
             .dispose(in: reactive.bag)
     }
     
-    func presentChargeViewController(transactionService: TransactionService, fiatValue: Decimal) {
+    func presentChargeViewController(transactionService: TransactionService, fiatValue: Decimal, shoppingCartViewModel: ShoppingCartViewModel) {
         let amount = Settings.shared.fiatCurrency.value.satoshis(from: fiatValue)
-        let waiterRequestViewModel = WaiterRequestViewModel(amount: amount, transactionService: transactionService)
+        let waiterRequestViewModel = WaiterRequestViewModel(amount: amount, transactionService: transactionService, shoppingCartViewModel: shoppingCartViewModel)
         let tipViewController = UIStoryboard.instantiateTipViewController(waiterRequestViewModel: waiterRequestViewModel)
         let navigationController = ZapNavigationController(rootViewController: tipViewController)
         present(navigationController, animated: true, completion: nil)

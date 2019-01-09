@@ -63,7 +63,7 @@ final class ShoppingCartViewController: UIViewController, ChargePresentable {
     }
     
     @IBAction private func presentChargeViewController(_ sender: Any) {
-        presentChargeViewController(transactionService: transactionService, fiatValue: shoppingCartViewModel.totalAmount.value)
+        presentChargeViewController(transactionService: transactionService, fiatValue: shoppingCartViewModel.totalAmount.value, shoppingCartViewModel: shoppingCartViewModel)
     }
 }
 

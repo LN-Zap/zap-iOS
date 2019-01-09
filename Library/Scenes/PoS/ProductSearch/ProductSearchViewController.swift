@@ -82,7 +82,7 @@ final class ProductSearchViewController: UIViewController, ShoppingCartPresentab
     }
     
     @IBAction private func presentTipViewController(_ sender: Any) {
-        presentChargeViewController(transactionService: transactionService, fiatValue: shoppingCartViewModel.totalAmount.value)
+        presentChargeViewController(transactionService: transactionService, fiatValue: shoppingCartViewModel.totalAmount.value, shoppingCartViewModel: shoppingCartViewModel)
     }
     
     @objc func presentShoppingCart() {

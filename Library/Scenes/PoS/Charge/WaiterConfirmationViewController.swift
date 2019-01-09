@@ -9,11 +9,11 @@ import Foundation
 import SwiftLnd
 
 extension UIStoryboard {
-    static func instantiateWaiterConfirmationViewController(invoice: Invoice? = nil, transaction: SwiftLnd.Transaction? = nil) -> WaiterConfirmationViewController {
+    static func instantiateWaiterConfirmationViewController(transaction: Xor<Invoice, Transaction>) -> WaiterConfirmationViewController {
         let viewController = StoryboardScene.WalletInvoiceOnly.waiterConfirmationViewController.instantiate()
         
-        viewController.invoice = invoice
-        viewController.transaction = transaction
+        viewController.invoice = transaction.first
+        viewController.transaction = transaction.second
         
         return viewController
     }

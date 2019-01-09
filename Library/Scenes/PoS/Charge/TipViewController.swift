@@ -16,7 +16,7 @@ extension UIStoryboard {
 }
 
 final class TipViewController: UIViewController {
-    var waiterRequestViewModel: WaiterRequestViewModel?
+    fileprivate var waiterRequestViewModel: WaiterRequestViewModel! // swiftlint:disable:this implicitly_unwrapped_optional
     
     @IBOutlet private weak var confirmButton: UIButton!
     @IBOutlet private weak var amountTitleLabel: UILabel!

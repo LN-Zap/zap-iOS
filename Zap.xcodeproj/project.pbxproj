@@ -24,6 +24,7 @@
 		AD10D04C21132A6000A0F0D3 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AD10D04B21132A6000A0F0D3 /* LaunchScreen.storyboard */; };
 		AD10D05721132EFB00A0F0D3 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = AD10D05921132EFB00A0F0D3 /* Localizable.strings */; };
 		AD10D05C21132F3500A0F0D3 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = AD10D05E21132F3500A0F0D3 /* InfoPlist.strings */; };
+		AD24AF1C21E65B340040DA68 /* Xor.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD24AF1B21E65B340040DA68 /* Xor.swift */; };
 		AD27B0182100C59500F232A8 /* UpdateAddressViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD27B0172100C59500F232A8 /* UpdateAddressViewController.swift */; };
 		AD27B01A2100D5CC00F232A8 /* CertificateDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD27B0192100D5CC00F232A8 /* CertificateDetailViewController.swift */; };
 		AD27B01C2100D7CF00F232A8 /* CertificateDetailCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD27B01B2100D7CF00F232A8 /* CertificateDetailCell.swift */; };
@@ -556,6 +557,7 @@
 		AD1EBA0020B2FD9D001FF67E /* Persistable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Persistable.swift; sourceTree = "<group>"; };
 		AD21768820C3DFDB007779DE /* BalanceView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BalanceView.swift; sourceTree = "<group>"; };
 		AD21768A20C3F29C007779DE /* ConnectRemoteNodeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConnectRemoteNodeViewModel.swift; sourceTree = "<group>"; };
+		AD24AF1B21E65B340040DA68 /* Xor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Xor.swift; sourceTree = "<group>"; };
 		AD27B01520FC8BBF00F232A8 /* Pem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Pem.swift; sourceTree = "<group>"; };
 		AD27B0172100C59500F232A8 /* UpdateAddressViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpdateAddressViewController.swift; sourceTree = "<group>"; };
 		AD27B0192100D5CC00F232A8 /* CertificateDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CertificateDetailViewController.swift; sourceTree = "<group>"; };
@@ -1026,6 +1028,7 @@
 				ADEDBC0920C31C5F00B71F17 /* Route.swift */,
 				A0919155203C2CB600FA525A /* Style.swift */,
 				AD667E5821384966007B9160 /* WindowLevel.swift */,
+				AD24AF1B21E65B340040DA68 /* Xor.swift */,
 			);
 			path = Helper;
 			sourceTree = "<group>";
@@ -2740,6 +2743,7 @@
 				ADEDA3CC21788CE50078FD91 /* NodeURISettingsItem.swift in Sources */,
 				ADADAD5A214126BB00A48E1F /* Date.swift in Sources */,
 				AD8FF4A021C7FA7D00C4F68D /* TipViewController.swift in Sources */,
+				AD24AF1C21E65B340040DA68 /* Xor.swift in Sources */,
 				AD391C2920D16EFA007EE22A /* Date+Localizable.swift in Sources */,
 				ADA3254621AD8F6200C5EAA2 /* StoryboardScenes.swift in Sources */,
 				AD391C5820D16F7A007EE22A /* RemoteNodeCertificatesScannerViewController.swift in Sources */,

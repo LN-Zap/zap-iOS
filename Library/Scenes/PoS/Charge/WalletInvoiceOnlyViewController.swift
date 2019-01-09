@@ -83,7 +83,7 @@ final class WalletInvoiceOnlyViewController: UIViewController {
     
     @IBAction private func presentWaiterRequest(_ sender: Any) {
         guard let lightningService = lightningService else { return }
-        let waiterRequestViewModel = WaiterRequestViewModel(amount: satoshis, transactionService: lightningService.transactionService)
+        let waiterRequestViewModel = WaiterRequestViewModel(amount: satoshis, transactionService: lightningService.transactionService, shoppingCartViewModel: nil)
         let tipViewController = UIStoryboard.instantiateTipViewController(waiterRequestViewModel: waiterRequestViewModel)
         let navigationController = ZapNavigationController(rootViewController: tipViewController)
         present(navigationController, animated: true, completion: nil)

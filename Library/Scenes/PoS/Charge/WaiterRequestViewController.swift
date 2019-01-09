@@ -19,7 +19,7 @@ extension UIStoryboard {
 }
 
 final class WaiterRequestViewController: UIViewController {
-    var waiterRequestViewModel: WaiterRequestViewModel?
+    fileprivate var waiterRequestViewModel: WaiterRequestViewModel! // swiftlint:disable:this implicitly_unwrapped_optional
 
     @IBOutlet private weak var protocolSegmentedControl: UISegmentedControl!
     @IBOutlet private weak var qrCodeImageView: UIImageView!
@@ -76,9 +76,7 @@ final class WaiterRequestViewController: UIViewController {
                 if let payedInvoice = transaction as? Invoice,
                     let invoice = waiterRequestViewModel.lightningInvoiceURI,
                     payedInvoice.paymentRequest == invoice.address {
-                    
-                    let viewController = UIStoryboard.instantiateWaiterConfirmationViewController(invoice: payedInvoice)
-                    self?.navigationController?.pushViewController(viewController, animated: true)
+                    self?.paymentReceived(transaction: Xor(payedInvoice))
                 } else if let payedOnChainTransaction = transaction as? SwiftLnd.Transaction
 //                    , let transaction = waiterRequestViewModel.bitcoinURI
 //                    , payedOnChainTransaction.destinationAddresses.contains(transaction.bitcoinAddress)
@@ -86,12 +84,17 @@ final class WaiterRequestViewController: UIViewController {
 //                    , requiredAmount <= payedOnChainTransaction.amount
                 {
                     // TODO: this does not work, because lnd does not give me the `dest_addresses`.
-                    
-                    let viewController = UIStoryboard.instantiateWaiterConfirmationViewController(transaction: payedOnChainTransaction)
-                    self?.navigationController?.pushViewController(viewController, animated: true)
+                    self?.paymentReceived(transaction: Xor(payedOnChainTransaction))
                 }
             }
             .dispose(in: reactive.bag)
+    }
+    
+    private func paymentReceived(transaction: Xor<Invoice, Transaction>) {
+        waiterRequestViewModel.shoppingCartViewModel?.removeAll()
+        
+        let viewController = UIStoryboard.instantiateWaiterConfirmationViewController(transaction: transaction)
+        navigationController?.pushViewController(viewController, animated: true)
     }
     
     @IBAction private func changeProtocol(_ sender: UISegmentedControl) {

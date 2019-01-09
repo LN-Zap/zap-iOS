@@ -12,6 +12,7 @@ import SwiftBTC
 
 final class WaiterRequestViewModel {
     let transactionService: TransactionService
+    let shoppingCartViewModel: ShoppingCartViewModel?
     
     let totalAmount: Observable<Satoshi>
     let tipAmount: Observable<Satoshi>
@@ -39,9 +40,11 @@ final class WaiterRequestViewModel {
     var bitcoinURI: BitcoinURI?
     var lightningInvoiceURI: LightningInvoiceURI?
     
-    init(amount: Satoshi, transactionService: TransactionService) {
+    init(amount: Satoshi, transactionService: TransactionService, shoppingCartViewModel: ShoppingCartViewModel?) {
         self.amount = amount
         self.transactionService = transactionService
+        self.shoppingCartViewModel = shoppingCartViewModel
+        
         totalAmount = Observable(amount)
         tipAmount = Observable(0)
         memo = Observable("")
