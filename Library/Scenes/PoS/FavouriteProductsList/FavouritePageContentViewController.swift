@@ -40,10 +40,14 @@ final class FavouritePageContentViewController: UIViewController {
         collectionView.delegate = self
 
         if let flowLayout = collectionView.collectionViewLayout as? UICollectionViewFlowLayout {
-            flowLayout.minimumInteritemSpacing = 20
-            flowLayout.minimumLineSpacing = 20
+            let spacing: CGFloat = UIScreen.main.bounds.width <= 320 ? 5 : 20
             let border: CGFloat = 20
-            let itemWidth = (collectionView.bounds.width - 2 * flowLayout.minimumInteritemSpacing - 2 * border) / 3
+            let itemsPerLine: CGFloat = 3
+            
+            flowLayout.minimumInteritemSpacing = spacing
+            flowLayout.minimumLineSpacing = spacing
+            
+            let itemWidth = (UIScreen.main.bounds.width - (itemsPerLine - 1) * spacing - 2 * border) / itemsPerLine
             flowLayout.itemSize = CGSize(
                 width: itemWidth,
                 height: itemWidth)
