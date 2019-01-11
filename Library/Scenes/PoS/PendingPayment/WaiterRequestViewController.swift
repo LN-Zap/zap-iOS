@@ -77,14 +77,13 @@ final class WaiterRequestViewController: UIViewController {
                     let invoice = waiterRequestViewModel.lightningInvoiceURI,
                     payedInvoice.paymentRequest == invoice.address {
                     self?.paymentReceived(transaction: Xor(payedInvoice))
-                } else if let payedOnChainTransaction = transaction as? SwiftLnd.Transaction
-//                    , let transaction = waiterRequestViewModel.bitcoinURI
-//                    , payedOnChainTransaction.destinationAddresses.contains(transaction.bitcoinAddress)
-//                    , let requiredAmount = transaction.amount
-//                    , requiredAmount <= payedOnChainTransaction.amount
-                {
-                    // TODO: this does not work, because lnd does not give me the `dest_addresses`.
-                    self?.paymentReceived(transaction: Xor(payedOnChainTransaction))
+                } else if let payedOnChainTransaction = transaction as? SwiftLnd.Transaction,
+                    let bitcoinURI = waiterRequestViewModel.bitcoinURI {
+                    OnChainAddressCheck(bitcoinURI: bitcoinURI).checkTransaction(transaction: payedOnChainTransaction) {
+                        DispatchQueue.main.async {
+                            self?.paymentReceived(transaction: Xor(payedOnChainTransaction))
+                        }
+                    }
                 }
             }
             .dispose(in: reactive.bag)

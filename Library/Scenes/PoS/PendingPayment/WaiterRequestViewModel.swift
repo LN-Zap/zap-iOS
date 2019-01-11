@@ -61,6 +61,7 @@ final class WaiterRequestViewModel {
                     let bitcoinURI = BitcoinURI(address: address, amount: totalAmount.value, memo: memo.value, lightningFallback: nil)
                     else { return }
                 
+                print(bitcoinURI)
                 self?.bitcoinURI = bitcoinURI
                 DispatchQueue.main.async {
                     completion(bitcoinURI)
@@ -89,7 +90,7 @@ final class WaiterRequestViewModel {
     
     private func updateMemo() {
         var result = UserDefaults.Keys.posMemo.get(defaultValue: "")
-        let separator = " \\ "
+        let separator = " | "
         
         if let userName: String = UserDefaults.Keys.posUserName.get() {
             result += "\(separator)\(userName)"
