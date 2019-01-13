@@ -13,14 +13,13 @@ protocol HeightJsonProtocol: Decodable {
     var height: Int { get }
 }
 
-enum BlockchainHeight {
+enum BlockchainHeight: CaseIterable {
     case blockexplorer
     case btcDotCom
     case blockcypher
+    case blockstream
     
     static func get(for network: Network, completion: @escaping (Int) -> Void) {
-        let explorers: [BlockchainHeight] = [.btcDotCom, .blockexplorer, .blockcypher]
-        
         var isFirstResponse = true
         
         let firstCompletion = { (explorer: BlockchainHeight, height: Int) in
@@ -31,7 +30,7 @@ enum BlockchainHeight {
             } 
         }
         
-        explorers.forEach { explorer in
+        BlockchainHeight.allCases.forEach { explorer in
             explorer.getBlockHeight(network: network) {
                 firstCompletion(explorer, $0)
             }
@@ -52,6 +51,9 @@ enum BlockchainHeight {
         case .blockcypher:
             let prefix = network == .mainnet ? "main" : "test3"
             return URL(string: "https://api.blockcypher.com/v1/btc/\(prefix)")!
+        case .blockstream:
+            let prefix = network == .mainnet ? "api" : "testnet/api"
+            return URL(string: "https://blockstream.info/\(prefix)/blocks/tip/height")!
         }
         // swiftlint:enable force_unwrapping
     }
@@ -70,7 +72,24 @@ enum BlockchainHeight {
             fetch(url: url(for: network), completion: completion) {
                 $0["height"] as? Int
             }
+        case .blockstream:
+            fetch(url: url(for: network), completion: completion) {
+                Int($0)
+            }
         }
+    }
+    
+    private func fetch(url: URL, completion: @escaping (Int) -> Void, map: @escaping (String) -> Int?) {
+        let task = URLSession.pinned.dataTask(with: url) { data, _, error in
+            if error != nil {
+                print(String(describing: error))
+            } else if let data = data,
+                let dictionary = String(data: data, encoding: .utf8),
+                let height = map(dictionary) {
+                completion(height)
+            }
+        }
+        task.resume()
     }
     
     private func fetch(url: URL, completion: @escaping (Int) -> Void, map: @escaping ([String: Any]) -> Int?) {
