@@ -115,6 +115,9 @@ public final class LightningApiStream: LightningApiProtocol {
     }
     
     public func invoices(completion: @escaping (Result<[Invoice]>) -> Void) {
+        let request = LNDListInvoiceRequest()
+        request.reversed = true
+        let data = try? request.serializedData()
         LndmobileListInvoices(nil, StreamCallback<LNDListInvoiceResponse, [Invoice]>(completion) {
             $0.invoices.compactMap(Invoice.init)
         })
