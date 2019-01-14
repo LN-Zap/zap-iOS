@@ -43,8 +43,8 @@ final class WaiterRequestViewController: UIViewController {
         title = "Pay"
         
         guard
-            let primaryAmountString = Settings.shared.primaryCurrency.value.format(satoshis: waiterRequestViewModel.amount),
-            let secondaryAmountString = Settings.shared.secondaryCurrency.value.format(satoshis: waiterRequestViewModel.amount)
+            let primaryAmountString = Settings.shared.primaryCurrency.value.format(satoshis: waiterRequestViewModel.totalAmount.value),
+            let secondaryAmountString = Settings.shared.secondaryCurrency.value.format(satoshis: waiterRequestViewModel.totalAmount.value)
             else { return }
         
         detailStackView.spacing = 15
