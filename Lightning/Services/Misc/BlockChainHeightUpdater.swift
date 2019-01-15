@@ -73,19 +73,17 @@ enum BlockchainHeight: CaseIterable {
                 $0["height"] as? Int
             }
         case .blockstream:
-            fetch(url: url(for: network), completion: completion) {
-                Int($0)
-            }
+            fetch(url: url(for: network), completion: completion)
         }
     }
     
-    private func fetch(url: URL, completion: @escaping (Int) -> Void, map: @escaping (String) -> Int?) {
+    private func fetch(url: URL, completion: @escaping (Int) -> Void) {
         let task = URLSession.pinned.dataTask(with: url) { data, _, error in
             if error != nil {
                 print(String(describing: error))
             } else if let data = data,
-                let dictionary = String(data: data, encoding: .utf8),
-                let height = map(dictionary) {
+                let string = String(data: data, encoding: .utf8),
+                let height = Int(string) {
                 completion(height)
             }
         }
