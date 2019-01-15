@@ -23,7 +23,8 @@ final class PinnedURLSessionDelegate: NSObject {
             PinnedHost(named: "blockchain.info", certificates: ["www.blockchain.com", "DigiCert SHA2 Extended Validation Server CA"]),
             PinnedHost(named: "blockcypher.com", certificates: ["*.blockcypher.com", "COMODO RSA Domain Validation Secure Server CA"]),
             PinnedHost(named: "btc.com", certificates: ["*.api.btc.com", "GlobalSign Organization Validation CA - SHA256 - G2"]),
-            PinnedHost(named: "blockexplorer.com", certificates: ["blockexplorer.com", "CloudFlare Inc ECC CA-2"])
+            PinnedHost(named: "blockexplorer.com", certificates: ["blockexplorer.com", "CloudFlare Inc ECC CA-2"]),
+            PinnedHost(named: "blockstream.info", certificates: ["blockstream.info", "Let's Encrypt Authority X3"])
         ]
     }
     
