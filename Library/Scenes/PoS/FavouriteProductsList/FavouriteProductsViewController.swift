@@ -18,7 +18,7 @@ extension UIStoryboard {
         
         let navigationController = ZapNavigationController(rootViewController: productViewController)
         navigationController.tabBarItem.image = Asset.tabbarFavourites.image
-        navigationController.tabBarItem.title = "Favourites"
+        navigationController.tabBarItem.title = "Favorites"
 
         return navigationController
     }
