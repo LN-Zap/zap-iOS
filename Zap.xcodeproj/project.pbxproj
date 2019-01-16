@@ -331,6 +331,8 @@
 		ADFEFA7920E62B1800FE1557 /* BlockChainHeightUpdater.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0D3C97F20629B9D0015C5D7 /* BlockChainHeightUpdater.swift */; };
 		ADFF1F9D21E4E9AF00DAD688 /* FavouriteSectionHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADFF1F9C21E4E9AF00DAD688 /* FavouriteSectionHeader.swift */; };
 		ADFF1F9F21E4FAE900DAD688 /* ChargePresentable.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADFF1F9E21E4FAE900DAD688 /* ChargePresentable.swift */; };
+		AEAF270921EAD05B004E022F /* Let's Encrypt Authority X3.cer in Resources */ = {isa = PBXBuildFile; fileRef = AEAF270721EAD05B004E022F /* Let's Encrypt Authority X3.cer */; };
+		AEAF270A21EAD05B004E022F /* blockstream.info.cer in Resources */ = {isa = PBXBuildFile; fileRef = AEAF270821EAD05B004E022F /* blockstream.info.cer */; };
 		D6989DE43FB4820F856510AB /* Pods_SwiftLndTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 81036DADA56AC2254782EE27 /* Pods_SwiftLndTests.framework */; };
 		DAB5EBC4696E2DCAEF57744D /* Pods_RPC_Lightning.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 92308447F0260B8536617365 /* Pods_RPC_Lightning.framework */; };
 /* End PBXBuildFile section */
@@ -868,6 +870,8 @@
 		BAABB03E07719395528272D4 /* Pods_Zap.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Zap.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		BBD776F35617673FA0EDF1F7 /* Pods-SwiftLndTests.debugpos.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SwiftLndTests.debugpos.xcconfig"; path = "Pods/Target Support Files/Pods-SwiftLndTests/Pods-SwiftLndTests.debugpos.xcconfig"; sourceTree = "<group>"; };
 		BD32BEF39E5F865A141A08E1 /* Pods-RPC-Library.releasepos.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RPC-Library.releasepos.xcconfig"; path = "Pods/Target Support Files/Pods-RPC-Library/Pods-RPC-Library.releasepos.xcconfig"; sourceTree = "<group>"; };
+		AEAF270721EAD05B004E022F /* Let's Encrypt Authority X3.cer */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Let's Encrypt Authority X3.cer"; sourceTree = "<group>"; };
+		AEAF270821EAD05B004E022F /* blockstream.info.cer */ = {isa = PBXFileReference; lastKnownFileType = file; path = blockstream.info.cer; sourceTree = "<group>"; };
 		BE74014E0B80605B55F867D4 /* Pods-RPC-Lightning.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RPC-Lightning.debug.xcconfig"; path = "Pods/Target Support Files/Pods-RPC-Lightning/Pods-RPC-Lightning.debug.xcconfig"; sourceTree = "<group>"; };
 		BF5185AA0DF1297907ABB0A5 /* Pods-LightningTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-LightningTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-LightningTests/Pods-LightningTests.debug.xcconfig"; sourceTree = "<group>"; };
 		C48BD0CEA66C550AA39DE33E /* Pods-SwiftLndTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SwiftLndTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-SwiftLndTests/Pods-SwiftLndTests.debug.xcconfig"; sourceTree = "<group>"; };
@@ -1894,6 +1898,7 @@
 			children = (
 				ADC0D3002107A30900B8C62F /* api.btc.com */,
 				ADC0D2F92107A1AE00B8C62F /* blockchain.info */,
+				AEAF270621EAD028004E022F /* blockstream.info */,
 				ADC0D2F82107A19F00B8C62F /* blockcypher.com */,
 				ADC0D3012107A3C500B8C62F /* blockexplorer.com */,
 				ADC0D2EF2107953100B8C62F /* PinnedHost.swift */,
@@ -1977,6 +1982,15 @@
 				AD8A3DD021D0E00600D48B65 /* ShoppingCartPresentable.swift */,
 			);
 			path = Extensions;
+			sourceTree = "<group>";
+		};
+		AEAF270621EAD028004E022F /* blockstream.info */ = {
+			isa = PBXGroup;
+			children = (
+				AEAF270821EAD05B004E022F /* blockstream.info.cer */,
+				AEAF270721EAD05B004E022F /* Let's Encrypt Authority X3.cer */,
+			);
+			path = blockstream.info;
 			sourceTree = "<group>";
 		};
 		CEF2960C33901153F2C1FFF4 /* Frameworks */ = {
@@ -2341,6 +2355,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				ADC0D2F321079FF700B8C62F /* www.blockchain.com.cer in Resources */,
+				AEAF270A21EAD05B004E022F /* blockstream.info.cer in Resources */,
+				AEAF270921EAD05B004E022F /* Let's Encrypt Authority X3.cer in Resources */,
 				ADC0D2FE2107A30200B8C62F /* GlobalSign Organization Validation CA - SHA256 - G2.cer in Resources */,
 				ADC0D2FB2107A23400B8C62F /* COMODO RSA Domain Validation Secure Server CA.cer in Resources */,
 				ADC0D3042107A3D700B8C62F /* blockexplorer.com.cer in Resources */,

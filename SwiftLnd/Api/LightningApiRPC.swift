@@ -170,7 +170,10 @@ public final class LightningApiRPC: LightningApiProtocol {
     }
     
     public func invoices(completion: @escaping (Result<[Invoice]>) -> Void) {
-        lnd.rpcToListInvoices(with: LNDListInvoiceRequest(), handler: result(completion, map: {
+        let request = LNDListInvoiceRequest()
+        request.reversed = true
+        
+        lnd.rpcToListInvoices(with: request, handler: result(completion, map: {
             $0.invoicesArray.compactMap {
                 guard let invoice = $0 as? LNDInvoice else { return nil }
                 return Invoice(invoice: invoice)
