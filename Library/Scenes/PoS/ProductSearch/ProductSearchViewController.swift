@@ -49,6 +49,7 @@ final class ProductSearchViewController: UIViewController, ShoppingCartPresentab
         tableView.delegate = self
         tableView.dataSource = self
         tableView.rowHeight = 76
+        tableView.separatorColor = UIColor.Zap.slateBlue
         view.backgroundColor = UIColor.Zap.background
         
         setupChargeButton(button: payButton, amount: shoppingCartViewModel.totalAmount)
