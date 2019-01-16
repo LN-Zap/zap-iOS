@@ -61,12 +61,16 @@ final class WaiterRequestViewController: UIViewController {
         
         let stackView = detailStackView.addArrangedElement(.horizontalStackView(compressionResistant: .first, content: [
             .label(text: "Address", style: Style.Label.headline),
-            .label(text: "TODO", style: Style.Label.body)
+            .label(text: "", style: Style.Label.body)
         ]))
         addressLabel = stackView.subviews[1] as? UILabel
         
         changeProtocol(protocolSegmentedControl)
         
+        setupTransactionNotificationListner(waiterRequestViewModel)
+    }
+    
+    private func setupTransactionNotificationListner(_ viewModel: WaiterRequestViewModel) {
         NotificationCenter.default.reactive
             .notification(name: .receivedTransaction)
             .observeOn(DispatchQueue.main)
@@ -74,11 +78,11 @@ final class WaiterRequestViewController: UIViewController {
                 guard let transaction = notification.userInfo?[LightningService.transactionNotificationName] else { return }
                 
                 if let payedInvoice = transaction as? Invoice,
-                    let invoice = waiterRequestViewModel.lightningInvoiceURI,
+                    let invoice = viewModel.lightningInvoiceURI,
                     payedInvoice.paymentRequest == invoice.address {
                     self?.paymentReceived(transaction: Xor(payedInvoice))
                 } else if let payedOnChainTransaction = transaction as? SwiftLnd.Transaction,
-                    let bitcoinURI = waiterRequestViewModel.bitcoinURI {
+                    let bitcoinURI = viewModel.bitcoinURI {
                     OnChainAddressCheck(bitcoinURI: bitcoinURI).checkTransaction(transaction: payedOnChainTransaction) {
                         DispatchQueue.main.async {
                             self?.paymentReceived(transaction: Xor(payedOnChainTransaction))

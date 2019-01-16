@@ -9,8 +9,10 @@
 import SwiftLnd
 import XCTest
 
+// swiftlint:disable force_unwrapping
 class BTCPayConfigurationTests: XCTestCase {
     func testGRPCAccessor() {
+        
         let data = "{\"configurations\":[{\"type\":\"rest\",\"cryptoCode\":\"BTC\",\"host\":\"test.test.com\",\"port\":443,\"ssl\":true,\"certificateThumbprint\":null,\"macaroon\":\"02deadbeef0202deadbeef02\"},{\"type\":\"grpc\",\"cryptoCode\":\"BTC\",\"host\":\"test.test.com\",\"port\":443,\"ssl\":true,\"certificateThumbprint\":null,\"macaroon\":\"02deadbeef0202deadbeef02\"},{\"type\":\"rest\",\"cryptoCode\":\"BTC\",\"host\":\"test.test.com\",\"port\":443,\"ssl\":true,\"certificateThumbprint\":null,\"macaroon\":\"02deadbeef0202deadbeef02\"}]}".data(using: .utf8)!
         let configuration = BTCPayRPCConfiguration(data: data)
         

@@ -63,22 +63,25 @@ final class ProductSearchViewController: UIViewController, ShoppingCartPresentab
                 cell.setItem(product: product, count: count)
                 return cell
             } else {
-                var cell = tableView.dequeueReusableCell(withIdentifier: "test")
+                let cell = tableView.dequeueReusableCell(withIdentifier: "DefaultCell") ?? ProductSearchViewController.createNewCell()
                 
-                if cell == nil {
-                    cell = UITableViewCell(style: .default, reuseIdentifier: "test")
-                    cell?.backgroundColor = UIColor.Zap.background
-                    Style.Label.body.apply(to: cell!.textLabel!)
-                }
-                
-                cell?.textLabel?.text = items[indexPath.row].name
+                cell.textLabel?.text = items[indexPath.row].name
                 if items[indexPath.row] is Group {
-                    cell?.accessoryType = .disclosureIndicator
+                    cell.accessoryType = .disclosureIndicator
                 }
                 
-                return cell! // swiftlint:disable:this force_unwrapping
+                return cell
             }
         }
+    }
+    
+    private static func createNewCell() -> UITableViewCell {
+        let cell = UITableViewCell(style: .default, reuseIdentifier: "DefaultCell")
+        cell.backgroundColor = UIColor.Zap.background
+        if let cellLabel = cell.textLabel {
+            Style.Label.body.apply(to: cellLabel)
+        }
+        return cell
     }
     
     @IBAction private func presentTipViewController(_ sender: Any) {
