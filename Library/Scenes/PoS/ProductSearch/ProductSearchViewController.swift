@@ -23,6 +23,7 @@ extension UIStoryboard {
 final class ProductSearchViewController: UIViewController, ShoppingCartPresentable, ChargePresentable {
     @IBOutlet private weak var tableView: UITableView!
     @IBOutlet private weak var payButton: UIButton!
+    private weak var searchBar: UISearchBar?
     
     // swiftlint:disable implicitly_unwrapped_optional
     fileprivate var shoppingCartViewModel: ShoppingCartViewModel!
@@ -38,6 +39,7 @@ final class ProductSearchViewController: UIViewController, ShoppingCartPresentab
         let searchController = UISearchController(searchResultsController: nil)
         searchController.dimsBackgroundDuringPresentation = false
         searchController.searchResultsUpdater = self
+        searchBar = searchController.searchBar
         navigationItem.searchController = searchController
         navigationItem.hidesSearchBarWhenScrolling = false
         navigationItem.largeTitleDisplayMode = .never
@@ -97,7 +99,7 @@ final class ProductSearchViewController: UIViewController, ShoppingCartPresentab
 extension ProductSearchViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
-        
+        searchBar?.endEditing(true)
         let groupable = productSearchViewModel.items[indexPath.row]
         if let group = groupable as? Group {
             let productSearchViewModel = ProductSearchViewModel(group: group)
@@ -106,6 +108,10 @@ extension ProductSearchViewController: UITableViewDelegate {
         } else if let product = groupable as? Product {
             shoppingCartViewModel.addSingle(product: product)
         }
+    }
+    
+    func scrollViewDidScroll(_ scrollView: UIScrollView) {
+        searchBar?.endEditing(true)
     }
 }
 
