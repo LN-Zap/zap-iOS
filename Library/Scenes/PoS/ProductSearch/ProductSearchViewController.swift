@@ -33,7 +33,9 @@ final class ProductSearchViewController: UIViewController, ShoppingCartPresentab
     
     override func viewDidLoad() {
         super.viewDidLoad()
-    
+        
+        definesPresentationContext = true
+
         navigationController?.view.backgroundColor = UIColor.Zap.background
         
         let searchController = UISearchController(searchResultsController: nil)
@@ -110,8 +112,8 @@ extension ProductSearchViewController: UITableViewDelegate {
         }
     }
     
-    func scrollViewDidScroll(_ scrollView: UIScrollView) {
-        searchBar?.endEditing(true)
+    func scrollViewWillBeginDragging(_ scrollView: UIScrollView) {
+        searchBar?.resignFirstResponder()
     }
 }
 
