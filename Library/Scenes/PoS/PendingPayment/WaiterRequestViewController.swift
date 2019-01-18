@@ -65,6 +65,11 @@ final class WaiterRequestViewController: UIViewController {
         ]))
         addressLabel = stackView.subviews[1] as? UILabel
         
+        if waiterRequestViewModel.totalAmount.value > LndConstants.maxLightningPaymentAllowed {
+            protocolSegmentedControl.selectedSegmentIndex = 1
+            protocolSegmentedControl.setEnabled(false, forSegmentAt: 0)
+        }
+        
         changeProtocol(protocolSegmentedControl)
         
         setupTransactionNotificationListner(waiterRequestViewModel)
