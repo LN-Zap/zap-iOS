@@ -30,9 +30,6 @@ final class ProductSearchViewModel {
         
         for item in group.items {
             if let group = item as? Group {
-                if matches(groupable: group, string: string) {
-                    result.append(group)
-                }
                 result += searchProducts(in: group, string: string)
             } else if let item = item as? Product,
                 matches(groupable: item, string: string) {
