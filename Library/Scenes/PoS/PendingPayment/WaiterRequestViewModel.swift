@@ -56,9 +56,14 @@ final class WaiterRequestViewModel {
             completion(bitcoinURI)
         } else {
             transactionService.newAddress(with: .nestedPubkeyHash) { [totalAmount, memo, weak self] in
+                
+                var totalAmount = totalAmount.value
+                var roundedAmount: Decimal = 0
+                NSDecimalRound(&roundedAmount, &totalAmount, 0, .bankers)
+                
                 guard
                     let address = $0.value,
-                    let bitcoinURI = BitcoinURI(address: address, amount: totalAmount.value, memo: memo.value, lightningFallback: nil)
+                    let bitcoinURI = BitcoinURI(address: address, amount: roundedAmount, memo: memo.value, lightningFallback: nil)
                     else { return }
                 
                 print(bitcoinURI)

@@ -26,7 +26,7 @@
 		AD10D05C21132F3500A0F0D3 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = AD10D05E21132F3500A0F0D3 /* InfoPlist.strings */; };
 		AD24AF1C21E65B340040DA68 /* Xor.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD24AF1B21E65B340040DA68 /* Xor.swift */; };
 		AD24AF1E21E8ABE90040DA68 /* JSONDownloader.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD24AF1D21E8ABE90040DA68 /* JSONDownloader.swift */; };
-		AD24AF2521E8AF460040DA68 /* DestAddressHack.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD24AF2421E8AF460040DA68 /* DestAddressHack.swift */; };
+		AD24AF2521E8AF460040DA68 /* OnChainAddressCheck.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD24AF2421E8AF460040DA68 /* OnChainAddressCheck.swift */; };
 		AD27B0182100C59500F232A8 /* UpdateAddressViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD27B0172100C59500F232A8 /* UpdateAddressViewController.swift */; };
 		AD27B01A2100D5CC00F232A8 /* CertificateDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD27B0192100D5CC00F232A8 /* CertificateDetailViewController.swift */; };
 		AD27B01C2100D7CF00F232A8 /* CertificateDetailCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD27B01B2100D7CF00F232A8 /* CertificateDetailCell.swift */; };
@@ -563,7 +563,7 @@
 		AD21768A20C3F29C007779DE /* ConnectRemoteNodeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConnectRemoteNodeViewModel.swift; sourceTree = "<group>"; };
 		AD24AF1B21E65B340040DA68 /* Xor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Xor.swift; sourceTree = "<group>"; };
 		AD24AF1D21E8ABE90040DA68 /* JSONDownloader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JSONDownloader.swift; sourceTree = "<group>"; };
-		AD24AF2421E8AF460040DA68 /* DestAddressHack.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DestAddressHack.swift; sourceTree = "<group>"; };
+		AD24AF2421E8AF460040DA68 /* OnChainAddressCheck.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnChainAddressCheck.swift; sourceTree = "<group>"; };
 		AD27B01520FC8BBF00F232A8 /* Pem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Pem.swift; sourceTree = "<group>"; };
 		AD27B0172100C59500F232A8 /* UpdateAddressViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpdateAddressViewController.swift; sourceTree = "<group>"; };
 		AD27B0192100D5CC00F232A8 /* CertificateDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CertificateDetailViewController.swift; sourceTree = "<group>"; };
@@ -865,13 +865,13 @@
 		ADFEFA7320E6294000FE1557 /* OnChainRequestAddressType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnChainRequestAddressType.swift; sourceTree = "<group>"; };
 		ADFF1F9C21E4E9AF00DAD688 /* FavouriteSectionHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavouriteSectionHeader.swift; sourceTree = "<group>"; };
 		ADFF1F9E21E4FAE900DAD688 /* ChargePresentable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChargePresentable.swift; sourceTree = "<group>"; };
+		AEAF270721EAD05B004E022F /* Let's Encrypt Authority X3.cer */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Let's Encrypt Authority X3.cer"; sourceTree = "<group>"; };
+		AEAF270821EAD05B004E022F /* blockstream.info.cer */ = {isa = PBXFileReference; lastKnownFileType = file; path = blockstream.info.cer; sourceTree = "<group>"; };
 		B0763E83C2C4AB69289A9C55 /* Pods-RPC-SwiftLnd.releasepos.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RPC-SwiftLnd.releasepos.xcconfig"; path = "Pods/Target Support Files/Pods-RPC-SwiftLnd/Pods-RPC-SwiftLnd.releasepos.xcconfig"; sourceTree = "<group>"; };
 		B509D5ABD28B8E5262CD923C /* Pods-Zap.debugpos.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Zap.debugpos.xcconfig"; path = "Pods/Target Support Files/Pods-Zap/Pods-Zap.debugpos.xcconfig"; sourceTree = "<group>"; };
 		BAABB03E07719395528272D4 /* Pods_Zap.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Zap.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		BBD776F35617673FA0EDF1F7 /* Pods-SwiftLndTests.debugpos.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SwiftLndTests.debugpos.xcconfig"; path = "Pods/Target Support Files/Pods-SwiftLndTests/Pods-SwiftLndTests.debugpos.xcconfig"; sourceTree = "<group>"; };
 		BD32BEF39E5F865A141A08E1 /* Pods-RPC-Library.releasepos.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RPC-Library.releasepos.xcconfig"; path = "Pods/Target Support Files/Pods-RPC-Library/Pods-RPC-Library.releasepos.xcconfig"; sourceTree = "<group>"; };
-		AEAF270721EAD05B004E022F /* Let's Encrypt Authority X3.cer */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Let's Encrypt Authority X3.cer"; sourceTree = "<group>"; };
-		AEAF270821EAD05B004E022F /* blockstream.info.cer */ = {isa = PBXFileReference; lastKnownFileType = file; path = blockstream.info.cer; sourceTree = "<group>"; };
 		BE74014E0B80605B55F867D4 /* Pods-RPC-Lightning.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RPC-Lightning.debug.xcconfig"; path = "Pods/Target Support Files/Pods-RPC-Lightning/Pods-RPC-Lightning.debug.xcconfig"; sourceTree = "<group>"; };
 		BF5185AA0DF1297907ABB0A5 /* Pods-LightningTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-LightningTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-LightningTests/Pods-LightningTests.debug.xcconfig"; sourceTree = "<group>"; };
 		C48BD0CEA66C550AA39DE33E /* Pods-SwiftLndTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SwiftLndTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-SwiftLndTests/Pods-SwiftLndTests.debug.xcconfig"; sourceTree = "<group>"; };
@@ -1617,7 +1617,7 @@
 		AD8FF49721C7E45600C4F68D /* PendingPayment */ = {
 			isa = PBXGroup;
 			children = (
-				AD24AF2421E8AF460040DA68 /* DestAddressHack.swift */,
+				AD24AF2421E8AF460040DA68 /* OnChainAddressCheck.swift */,
 				AD2F95B621C95ED700FB35DF /* WaiterRequestViewController.swift */,
 				AD8FF49C21C7F9E700C4F68D /* WaiterRequestViewModel.swift */,
 			);
@@ -2887,7 +2887,7 @@
 				AD391C7120D16F89007EE22A /* OpenChannelQRCodeScannerStrategy.swift in Sources */,
 				AD391CD420D16FE1007EE22A /* HistoryCell.swift in Sources */,
 				AD391D1020D16FF5007EE22A /* Toast.swift in Sources */,
-				AD24AF2521E8AF460040DA68 /* DestAddressHack.swift in Sources */,
+				AD24AF2521E8AF460040DA68 /* OnChainAddressCheck.swift in Sources */,
 				ADC08D8D21DFAA2D000E730E /* WaiterConfirmationViewController.swift in Sources */,
 				AD391C5D20D16F7A007EE22A /* MnemonicWordListViewController.swift in Sources */,
 				AD391C3320D16EFA007EE22A /* UIImage.swift in Sources */,
