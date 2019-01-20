@@ -165,7 +165,7 @@
 "scene.transaction_detail.transaction_id_label" = "ID transakcije";
 "scene.transaction_detail.address_label" = "Adresa";
 "scene.transaction_detail.expiry_label" = "Rok isteka";
-"scene.transaction_detail.expiry_label.expired" = "Expired";
+"scene.transaction_detail.expiry_label.expired" = "Rok je istekao";
 
 "scene.channel_detail.remote_pub_key_label" = "Udaljeni PubKey";
 "scene.channel_detail.local_balance_label" = "Lokalni saldo";
@@ -179,7 +179,7 @@
 "scene.filter.section_header.transaction_types" = "Vrste transakcija";
 "scene.filter.section_header.advanced" = "Napredno";
 "scene.filter.displayOnChainTransactions" = "Na lanac plaćanja";
-"scene.filter.display_unknown_transaction_type" = "Internal Transactions";
+"scene.filter.display_unknown_transaction_type" = "Interne transakcije";
 "scene.filter.displayLightningPayments" = "Munja plaćanja";
 "scene.filter.displayLightningInvoices" = "Stvorene fakture";
 "scene.filter.displayChannelEvents" = "Događaji za kanal";
@@ -216,6 +216,6 @@
 "scene.node_uri.alias_label" = "Nadimak";
 "scene.node_uri.uri_label" = "URI";
 
-"scene.connect_node_uri.action_sheet.title" = "Connect";
-"scene.connect_node_uri.action_sheet.connect_button" = "Connect";
-"scene.connect_node_uri.action_sheet.message" = "Do you really want to connect to node at %@?";
+"scene.connect_node_uri.action_sheet.title" = "Povezivanje";
+"scene.connect_node_uri.action_sheet.connect_button" = "Povezivanje";
+"scene.connect_node_uri.action_sheet.message" = "Stvarno se želiš povezati čvor %@?";
