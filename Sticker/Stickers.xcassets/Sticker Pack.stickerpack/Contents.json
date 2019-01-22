@@ -1,16 +1,22 @@
 {
   "stickers" : [
     {
-      "filename" : "spin.dbd75454.sticker"
+      "filename" : "flash.sticker"
     },
     {
-      "filename" : "bitcoin.250cc312.sticker"
+      "filename" : "bitcoin.sticker"
     },
     {
-      "filename" : "reckless.7b419c8c-1.sticker"
+      "filename" : "reckless.sticker"
     },
     {
       "filename" : "sticker.sticker"
+    },
+    {
+      "filename" : "honey_badger.sticker"
+    },
+    {
+      "filename" : "honey_badger_2.sticker"
     }
   ],
   "info" : {
