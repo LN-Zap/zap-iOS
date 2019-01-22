@@ -8,7 +8,7 @@
 
 default_platform(:ios)
 
-app_identifier = ["com.jackmallers.zap", "com.jackmallers.zap.messages"]
+app_identifier = ["com.jackmallers.zap", "com.jackmallers.zap.Sticker"]
 
 desc "Update build number."
 lane :build_number do
