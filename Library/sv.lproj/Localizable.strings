@@ -23,6 +23,7 @@
 "channel.state.closing" = "Stänger";
 "channel.state.force_closing" = "Tvinga stängning";
 
+"network_type.regtest" = "Regtest";
 "network_type.testnet" = "Testnet";
 "network_type.mainnet" = "Mainnet";
 
