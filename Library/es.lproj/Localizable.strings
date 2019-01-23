@@ -23,6 +23,7 @@
 "channel.state.closing" = "Cerrando";
 "channel.state.force_closing" = "Forzando cierre";
 
+"network_type.regtest" = "Regtest";
 "network_type.testnet" = "Testnet";
 "network_type.mainnet" = "Mainnet";
 
