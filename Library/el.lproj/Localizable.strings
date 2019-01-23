@@ -23,6 +23,7 @@
 "channel.state.closing" = "Κλείσιμο";
 "channel.state.force_closing" = "Κλείστε το με δύναμη";
 
+"network_type.regtest" = "Regtest";
 "network_type.testnet" = "Testnet";
 "network_type.mainnet" = "Mainnet";
 
