@@ -8,6 +8,7 @@
 import Foundation
 
 public enum Network {
+    case regtest
     case testnet
     case mainnet
 }

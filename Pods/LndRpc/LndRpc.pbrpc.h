@@ -56,6 +56,8 @@
 @class LNDListPaymentsResponse;
 @class LNDListPeersRequest;
 @class LNDListPeersResponse;
+@class LNDListUnspentRequest;
+@class LNDListUnspentResponse;
 @class LNDNetworkInfo;
 @class LNDNetworkInfoRequest;
 @class LNDNewAddressRequest;
@@ -282,6 +284,23 @@ NS_ASSUME_NONNULL_BEGIN
  * target.
  */
 - (GRPCProtoCall *)RPCToSendCoinsWithRequest:(LNDSendCoinsRequest *)request handler:(void(^)(LNDSendCoinsResponse *_Nullable response, NSError *_Nullable error))handler;
+
+
+#pragma mark ListUnspent(ListUnspentRequest) returns (ListUnspentResponse)
+
+/**
+ * * lncli: `listunspent`
+ * ListUnspent returns a list of all utxos spendable by the wallet with a
+ * number of confirmations between the specified minimum and maximum.
+ */
+- (void)listUnspentWithRequest:(LNDListUnspentRequest *)request handler:(void(^)(LNDListUnspentResponse *_Nullable response, NSError *_Nullable error))handler;
+
+/**
+ * * lncli: `listunspent`
+ * ListUnspent returns a list of all utxos spendable by the wallet with a
+ * number of confirmations between the specified minimum and maximum.
+ */
+- (GRPCProtoCall *)RPCToListUnspentWithRequest:(LNDListUnspentRequest *)request handler:(void(^)(LNDListUnspentResponse *_Nullable response, NSError *_Nullable error))handler;
 
 
 #pragma mark SubscribeTransactions(GetTransactionsRequest) returns (stream Transaction)

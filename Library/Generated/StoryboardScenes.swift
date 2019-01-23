@@ -58,8 +58,6 @@ internal enum StoryboardScene {
   internal enum History: StoryboardType {
     internal static let storyboardName = "History"
 
-    internal static let initialScene = InitialSceneType<UIKit.UINavigationController>(storyboard: History.self)
-
     internal static let filterViewController = SceneType<FilterViewController>(storyboard: History.self, identifier: "FilterViewController")
 
     internal static let historyViewController = SceneType<HistoryViewController>(storyboard: History.self, identifier: "HistoryViewController")
@@ -90,8 +88,6 @@ internal enum StoryboardScene {
   }
   internal enum QRCodeScanner: StoryboardType {
     internal static let storyboardName = "QRCodeScanner"
-
-    internal static let initialScene = InitialSceneType<UIKit.UINavigationController>(storyboard: QRCodeScanner.self)
 
     internal static let qrCodeScannerViewController = SceneType<QRCodeScannerViewController>(storyboard: QRCodeScanner.self, identifier: "QRCodeScannerViewController")
   }

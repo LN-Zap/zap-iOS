@@ -53,7 +53,7 @@ public final class LightningService: NSObject {
             print("🛍 new invoice:\n\t\(invoice)")
             self?.historyService.addedInvoice(invoice)
             
-            if invoice.settled {
+            if invoice.state == .settled {
                 NotificationCenter.default.post(name: .receivedTransaction, object: nil, userInfo: [LightningService.transactionNotificationName: invoice])
             }
         }

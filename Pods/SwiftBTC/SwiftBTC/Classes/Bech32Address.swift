@@ -10,6 +10,8 @@ import Foundation
 private extension Network {
     var bech32Prefix: String {
         switch self {
+        case .regtest:
+            return "bcrt"
         case .testnet:
             return "tb"
         case .mainnet:

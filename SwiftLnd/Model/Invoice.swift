@@ -10,10 +10,26 @@ import LndRpc
 import SwiftBTC
 
 public struct Invoice: Equatable {
+    public enum State {
+        case settled
+        case open
+        
+        init?(state: LNDInvoice_InvoiceState) {
+            switch state {
+            case .gpbUnrecognizedEnumeratorValue:
+                return nil
+            case .open:
+                self = .open
+            case .settled:
+                self = .settled
+            }
+        }
+    }
+    
     public let id: String
     public let memo: String
     public let amount: Satoshi
-    public let settled: Bool
+    public let state: State
     public let date: Date
     public let settleDate: Date?
     public let expiry: Date
@@ -24,20 +40,19 @@ extension Invoice {
     init(invoice: LNDInvoice) {
         id = invoice.rHash.hexadecimalString
         memo = invoice.memo
-        settled = invoice.settled
-        if settled {
+        
+        state = State(state: invoice.state) ?? (invoice.settled ? .settled : .open)
+        switch state {
+        case .settled:
             amount = Satoshi(invoice.amtPaidSat)
-        } else {
-            amount = Satoshi(invoice.value)
-        }
-        date = Date(timeIntervalSince1970: TimeInterval(invoice.creationDate))
-        if invoice.settled {
             settleDate = Date(timeIntervalSince1970: TimeInterval(invoice.settleDate))
-        } else {
+        case .open:
+            amount = Satoshi(invoice.value)
             settleDate = nil
         }
-        expiry = Date(timeIntervalSince1970: TimeInterval(invoice.creationDate + invoice.expiry))
         
+        date = Date(timeIntervalSince1970: TimeInterval(invoice.creationDate))
+        expiry = Date(timeIntervalSince1970: TimeInterval(invoice.creationDate + invoice.expiry))
         paymentRequest = invoice.paymentRequest
     }
 }

@@ -21,12 +21,36 @@ public struct Info {
     public let version: String
 }
 
+extension Network {
+    init?(string: String) {
+        switch string {
+        case "testnet":
+            self = .testnet
+        case "mainnet":
+            self = .mainnet
+        case "regtest":
+            self = .regtest
+        default:
+            return nil
+        }
+    }
+}
+
 extension Info {
     init(getInfoResponse: LNDGetInfoResponse) {
         alias = getInfoResponse.alias
         blockHeight = Int(getInfoResponse.blockHeight)
         isSyncedToChain = getInfoResponse.syncedToChain
-        network = getInfoResponse.testnet ? .testnet : .mainnet
+        
+        if
+            let chains = getInfoResponse.chainsArray as? [LNDChain],
+            let networkString = chains.first?.network,
+            let network = Network(string: networkString) {
+            self.network = network
+        } else {
+            self.network = getInfoResponse.testnet ? .testnet : .mainnet
+        }
+        
         pubKey = getInfoResponse.identityPubkey
         activeChannelCount = Int(getInfoResponse.numActiveChannels)
         bestHeaderDate = Date(timeIntervalSince1970: TimeInterval(getInfoResponse.bestHeaderTimestamp))
