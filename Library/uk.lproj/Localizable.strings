@@ -23,6 +23,7 @@
 "channel.state.closing" = "Закриття";
 "channel.state.force_closing" = "Примусове закриття";
 
+"network_type.regtest" = "Regtest";
 "network_type.testnet" = "Testnet";
 "network_type.mainnet" = "Mainnet";
 
