@@ -23,6 +23,7 @@
 "channel.state.closing" = "关闭中";
 "channel.state.force_closing" = "强制关闭";
 
+"network_type.regtest" = "Regtest";
 "network_type.testnet" = "测试网络";
 "network_type.mainnet" = "主网";
 
