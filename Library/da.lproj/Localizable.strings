@@ -23,6 +23,7 @@
 "channel.state.closing" = "Lukker";
 "channel.state.force_closing" = "Force Closing";
 
+"network_type.regtest" = "Regtest";
 "network_type.testnet" = "Testnet";
 "network_type.mainnet" = "Mainnet";
 
