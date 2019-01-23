@@ -8,15 +8,6 @@
 import Bond
 import UIKit
 
-extension UIStoryboard {
-    static func instantiateConfirmMnemonicViewController(confirmMnemonicViewModel: ConfirmMnemonicViewModel, walletConfirmed: @escaping () -> Void) -> ConfirmMnemonicViewController {
-        let viewController = StoryboardScene.CreateWallet.confirmMnemonicViewController.instantiate()
-        viewController.confirmViewModel = confirmMnemonicViewModel
-        viewController.walletConfirmed = walletConfirmed
-        return viewController
-    }
-}
-
 private let itemWitdh: CGFloat = 140
 
 final class ConfirmMnemonicViewController: UIViewController {
@@ -25,6 +16,13 @@ final class ConfirmMnemonicViewController: UIViewController {
     @IBOutlet private weak var collectionView: UICollectionView!
     fileprivate var confirmViewModel: ConfirmMnemonicViewModel?
     fileprivate var walletConfirmed: (() -> Void)?
+    
+    static func instantiate(confirmMnemonicViewModel: ConfirmMnemonicViewModel, walletConfirmed: @escaping () -> Void) -> ConfirmMnemonicViewController {
+        let viewController = StoryboardScene.CreateWallet.confirmMnemonicViewController.instantiate()
+        viewController.confirmViewModel = confirmMnemonicViewModel
+        viewController.walletConfirmed = walletConfirmed
+        return viewController
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()

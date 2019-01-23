@@ -24,7 +24,7 @@ final class PinSetupCoordinator {
     
     func start() {
         let viewModel = SetupPinViewModel(authenticationViewModel: authenticationViewModel)
-        let viewController = UIStoryboard.instantiateSetupPinViewController(setupPinViewModel: viewModel, didSetupPin: didSetupPin)
+        let viewController = SetupPinViewController.instantiate(setupPinViewModel: viewModel, didSetupPin: didSetupPin)
         self.rootViewController.setContainerContent(viewController)
     }
     

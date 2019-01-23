@@ -9,23 +9,6 @@ import Bond
 import Lightning
 import UIKit
 
-extension UIStoryboard {
-    static func instantiateHistoryViewController(historyViewModel: HistoryViewModel, presentFilter: @escaping () -> Void, presentDetail: @escaping (HistoryEventType) -> Void, presentSend: @escaping (String?) -> Void) -> UINavigationController {
-        let viewController = StoryboardScene.History.historyViewController.instantiate()
-        
-        viewController.historyViewModel = historyViewModel
-        viewController.presentFilter = presentFilter
-        viewController.presentDetail = presentDetail
-        viewController.presentSend = presentSend
-        
-        let navigationController = ZapNavigationController(rootViewController: viewController)
-        navigationController.tabBarItem.title = L10n.Scene.History.title
-        navigationController.tabBarItem.image = Asset.tabbarHistory.image
-        
-        return navigationController
-    }
-}
-
 final class HistoryViewController: UIViewController {
     @IBOutlet private weak var tableView: UITableView?
     @IBOutlet private weak var emptyStateLabel: UILabel!
@@ -37,6 +20,17 @@ final class HistoryViewController: UIViewController {
 
     deinit {    
         tableView?.isEditing = false // fixes Bond bug. Binding is not released in editing mode.
+    }
+    
+    static func instantiate(historyViewModel: HistoryViewModel, presentFilter: @escaping () -> Void, presentDetail: @escaping (HistoryEventType) -> Void, presentSend: @escaping (String?) -> Void) -> HistoryViewController {
+        let viewController = StoryboardScene.History.historyViewController.instantiate()
+        
+        viewController.historyViewModel = historyViewModel
+        viewController.presentFilter = presentFilter
+        viewController.presentDetail = presentDetail
+        viewController.presentSend = presentSend
+
+        return viewController
     }
     
     override func viewDidLoad() {

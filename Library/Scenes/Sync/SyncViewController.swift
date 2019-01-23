@@ -14,15 +14,6 @@ protocol SyncDelegate: class {
     func disconnect()
 }
 
-extension UIStoryboard {
-    static func instantiateSyncViewController(with lightningService: LightningService, delegate: SyncDelegate) -> SyncViewController {
-        let syncViewController = StoryboardScene.Sync.syncViewController.instantiate()
-        syncViewController.lightningService = lightningService
-        syncViewController.delegate = delegate
-        return syncViewController
-    }
-}
-
 final class SyncViewController: UIViewController {
     @IBOutlet private weak var gradientView: GradientView!
     @IBOutlet private weak var gradientViewHeightConstraint: NSLayoutConstraint!
@@ -36,6 +27,13 @@ final class SyncViewController: UIViewController {
     fileprivate weak var delegate: SyncDelegate?
 
     private var syncPercentageEstimator: SyncPercentageEstimator?
+    
+    static func instantiate(with lightningService: LightningService, delegate: SyncDelegate) -> SyncViewController {
+        let syncViewController = StoryboardScene.Sync.syncViewController.instantiate()
+        syncViewController.lightningService = lightningService
+        syncViewController.delegate = delegate
+        return syncViewController
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()

@@ -7,14 +7,6 @@
 
 import UIKit
 
-extension UIStoryboard {
-    static func instantiateTimeLockedViewController(authenticationViewModel: AuthenticationViewModel) -> TimeLockedViewController {
-        let viewController = StoryboardScene.TimeLocked.timeLockedViewController.instantiate()
-        viewController.authenticationViewModel = authenticationViewModel
-        return viewController
-    }
-}
-
 class TimeLockedViewController: UIViewController {
     fileprivate var authenticationViewModel: AuthenticationViewModel?
 
@@ -23,6 +15,12 @@ class TimeLockedViewController: UIViewController {
     @IBOutlet private weak var countdownLabel: UILabel!
     
     override var preferredStatusBarStyle: UIStatusBarStyle { return .lightContent }
+    
+    static func instantiate(authenticationViewModel: AuthenticationViewModel) -> TimeLockedViewController {
+        let viewController = StoryboardScene.TimeLocked.timeLockedViewController.instantiate()
+        viewController.authenticationViewModel = authenticationViewModel
+        return viewController
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()

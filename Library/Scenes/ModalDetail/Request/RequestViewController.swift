@@ -176,7 +176,7 @@ final class RequestViewController: ModalDetailViewController {
             DispatchQueue.main.async {
                 switch result {
                 case .success(let qrCodeDetailViewModel):
-                    let viewController = UIStoryboard.instantiateQRCodeDetailViewController(with: qrCodeDetailViewModel)
+                    let viewController = QRCodeDetailViewController.instantiate(with: qrCodeDetailViewModel)
                     self?.present(UINavigationController(rootViewController: viewController), animated: true) { [weak self] in
                         self?.setHeaderImage(nil)
                     }

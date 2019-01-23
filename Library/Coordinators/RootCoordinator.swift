@@ -147,12 +147,12 @@ public final class RootCoordinator: NSObject, SetupCoordinatorDelegate, PinCoord
     
     private func presentSync() {
         guard let lightningService = connectionService.lightningService else { return }
-        let viewController = UIStoryboard.instantiateSyncViewController(with: lightningService, delegate: self)
+        let viewController = SyncViewController.instantiate(with: lightningService, delegate: self)
         presentViewController(viewController)
     }
     
     private func presentLoading(message: LoadingViewController.Message) {
-        let viewController = UIStoryboard.instantiateLoadingViewController(message: message)
+        let viewController = LoadingViewController.instantiate(message: message)
         presentViewController(viewController)
     }
     

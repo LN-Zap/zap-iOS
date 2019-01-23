@@ -24,7 +24,7 @@ final class ChangePinSettingsItem: SettingsItem {
             switch result {
             case .success:
                 let viewModel = SetupPinViewModel(authenticationViewModel: authenticationViewModel)
-                let setupPinViewController = UIStoryboard.instantiateSetupPinViewController(setupPinViewModel: viewModel) { [weak self] in
+                let setupPinViewController = SetupPinViewController.instantiate(setupPinViewModel: viewModel) { [weak self] in
                     self?.setupPinViewController?.dismiss(animated: true, completion: nil)
                 }
                 self?.setupPinViewController = setupPinViewController

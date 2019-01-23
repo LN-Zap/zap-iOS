@@ -61,12 +61,12 @@ final class AuthenticationCoordinator {
     }
     
     private func presentPin() {
-        let pinViewController = UIStoryboard.instantiatePinViewController(authenticationViewModel: authenticationViewModel)
+        let pinViewController = PinViewController.instantiate(authenticationViewModel: authenticationViewModel)
         presentWindow(with: pinViewController)
     }
     
     private func presentTimeLock() {
-        let timeLockedViewController = UIStoryboard.instantiateTimeLockedViewController(authenticationViewModel: authenticationViewModel)
+        let timeLockedViewController = TimeLockedViewController.instantiate(authenticationViewModel: authenticationViewModel)
         presentWindow(with: timeLockedViewController)
     }
     

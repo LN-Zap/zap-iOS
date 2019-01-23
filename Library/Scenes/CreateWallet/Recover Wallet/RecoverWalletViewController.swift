@@ -7,15 +7,6 @@
 
 import UIKit
 
-extension UIStoryboard {
-    static func instantiateRecoverWalletViewController(recoverWalletViewModel: RecoverWalletViewModel, presentSetupPin: @escaping () -> Void) -> RecoverWalletViewController {
-        let viewController = StoryboardScene.CreateWallet.recoverWalletViewController.instantiate()
-        viewController.recoverWalletViewModel = recoverWalletViewModel
-        viewController.presentSetupPin = presentSetupPin
-        return viewController
-    }
-}
-
 final class RecoverWalletViewController: UIViewController {
 
     @IBOutlet private weak var topLabel: UILabel!
@@ -25,6 +16,13 @@ final class RecoverWalletViewController: UIViewController {
     
     fileprivate var recoverWalletViewModel: RecoverWalletViewModel?
     fileprivate var presentSetupPin: (() -> Void)?
+    
+    static func instantiate(recoverWalletViewModel: RecoverWalletViewModel, presentSetupPin: @escaping () -> Void) -> RecoverWalletViewController {
+        let viewController = StoryboardScene.CreateWallet.recoverWalletViewController.instantiate()
+        viewController.recoverWalletViewModel = recoverWalletViewModel
+        viewController.presentSetupPin = presentSetupPin
+        return viewController
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()

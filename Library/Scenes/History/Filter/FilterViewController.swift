@@ -7,23 +7,7 @@
 
 import UIKit
 
-extension UIStoryboard {
-    static func instantiateFilterViewController(historyViewModel: HistoryViewModel) -> UINavigationController {
-        let viewController = StoryboardScene.History.filterViewController.instantiate()
-        viewController.historyViewModel = historyViewModel
-        
-        let navigationController = ModalNavigationController(rootViewController: viewController, height: 480)
-        
-        navigationController.navigationBar.backgroundColor = UIColor.Zap.seaBlueGradient
-        navigationController.navigationBar.shadowImage = UIImage()
-        navigationController.navigationBar.setBackgroundImage(UIImage(), for: .default)
-        
-        return navigationController
-    }
-}
-
 final class FilterViewController: UIViewController {
-    
     @IBOutlet private weak var tableView: UITableView!
     
     fileprivate var historyViewModel: HistoryViewModel?
@@ -42,6 +26,12 @@ final class FilterViewController: UIViewController {
             .unknownTransactionType
         ])
     ]
+    
+    static func instantiate(historyViewModel: HistoryViewModel) -> FilterViewController {
+        let viewController = StoryboardScene.History.filterViewController.instantiate()
+        viewController.historyViewModel = historyViewModel
+        return viewController
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()

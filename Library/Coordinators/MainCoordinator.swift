@@ -54,18 +54,30 @@ final class MainCoordinator: Routing {
         }
     }
     
-    func walletViewController() -> UIViewController {
-        return UIStoryboard.instantiateWalletViewController(lightningService: lightningService, sendButtonTapped: presentSend, requestButtonTapped: presentRequest)
+    func walletViewController() -> WalletViewController {
+        return WalletViewController.instantiate(lightningService: lightningService, sendButtonTapped: presentSend, requestButtonTapped: presentRequest)
     }
 
-    func settingsViewController() -> UIViewController {
+    func settingsViewController() -> ZapNavigationController {
         guard let settingsDelegate = settingsDelegate else { fatalError("Didn't set settings Delegate") }
+        let settingsViewController = SettingsViewController.instantiate(info: lightningService.infoService.info, settingsDelegate: settingsDelegate, pushChannelList: pushChannelList, pushNodeURIViewController: pushNodeURIViewController)
         
-        return SettingsViewController.instantiate(info: lightningService.infoService.info, settingsDelegate: settingsDelegate, pushChannelList: pushChannelList, pushNodeURIViewController: pushNodeURIViewController)
+        let navigationController = ZapNavigationController(rootViewController: settingsViewController)
+        
+        navigationController.tabBarItem.title = L10n.Scene.Settings.title
+        navigationController.tabBarItem.image = Asset.tabbarSettings.image
+        navigationController.view.backgroundColor = UIColor.Zap.background
+
+        return navigationController
     }
     
-    func historyViewController() -> UIViewController {
-        return UIStoryboard.instantiateHistoryViewController(historyViewModel: historyViewModel, presentFilter: presentFilter, presentDetail: presentDetail, presentSend: presentSend)
+    func historyViewController() -> UINavigationController {
+        let viewController = HistoryViewController.instantiate(historyViewModel: historyViewModel, presentFilter: presentFilter, presentDetail: presentDetail, presentSend: presentSend)
+        let navigationController = ZapNavigationController(rootViewController: viewController)
+        navigationController.tabBarItem.title = L10n.Scene.History.title
+        navigationController.tabBarItem.image = Asset.tabbarHistory.image
+        
+        return navigationController
     }
 
     func presentSend() {
@@ -99,7 +111,7 @@ final class MainCoordinator: Routing {
                 group.wait()
             }
         } else {
-            let viewController = UIStoryboard.instantiateQRCodeScannerViewController(strategy: strategy)
+            let viewController = UINavigationController(rootViewController: QRCodeScannerViewController.instantiate(strategy: strategy))
             rootViewController.present(viewController, animated: true)
         }
     }
@@ -112,7 +124,7 @@ final class MainCoordinator: Routing {
     
     private func presentAddChannel() {
         let strategy = OpenChannelQRCodeScannerStrategy(lightningService: lightningService)
-        let viewController = UIStoryboard.instantiateQRCodeScannerViewController(strategy: strategy)
+        let viewController = UINavigationController(rootViewController: QRCodeScannerViewController.instantiate(strategy: strategy))
         rootViewController.present(viewController, animated: true)
     }
     
@@ -129,8 +141,14 @@ final class MainCoordinator: Routing {
     }
     
     private func presentFilter() {
-        let filterViewController = UIStoryboard.instantiateFilterViewController(historyViewModel: historyViewModel)
-        rootViewController.present(filterViewController, animated: true)
+        let filterViewController = FilterViewController.instantiate(historyViewModel: historyViewModel)
+        let navigationController = ModalNavigationController(rootViewController: filterViewController, height: 480)
+        
+        navigationController.navigationBar.backgroundColor = UIColor.Zap.seaBlueGradient
+        navigationController.navigationBar.shadowImage = UIImage()
+        navigationController.navigationBar.setBackgroundImage(UIImage(), for: .default)
+        
+        rootViewController.present(navigationController, animated: true)
     }
     
     private func presentDetail(event: HistoryEventType) {
@@ -139,7 +157,7 @@ final class MainCoordinator: Routing {
     }
     
     private func pushChannelList(on navigationController: UINavigationController) {
-        let channelList = UIStoryboard.instantiateChannelListViewController(channelListViewModel: channelListViewModel, addChannelButtonTapped: presentAddChannel, presentChannelDetail: presentChannelDetail)
+        let channelList = ChannelListViewController.instantiate(channelListViewModel: channelListViewModel, addChannelButtonTapped: presentAddChannel, presentChannelDetail: presentChannelDetail)
         navigationController.pushViewController(channelList, animated: true)
     }
     
@@ -154,7 +172,7 @@ final class MainCoordinator: Routing {
             let qrCodeDetailViewModel = NodeURIQRCodeViewModel(info: info)
             else { return }
 
-        let nodeURIViewController = UIStoryboard.instantiateQRCodeDetailViewController(with: qrCodeDetailViewModel)
+        let nodeURIViewController = QRCodeDetailViewController.instantiate(with: qrCodeDetailViewModel)
         navigationController.pushViewController(nodeURIViewController, animated: true)
     }
 }

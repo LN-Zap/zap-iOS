@@ -36,9 +36,9 @@ final class SetupCoordinator {
         #if REMOTEONLY
         let viewModel = ConnectRemoteNodeViewModel()
         connectRemoteNodeViewModel = viewModel
-        viewController = UIStoryboard.instantiateConnectRemoteNodeViewController(didSetupWallet: didSetupWallet, connectRemoteNodeViewModel: viewModel, presentQRCodeScannerButtonTapped: presentNodeCertificatesScanner)
+        viewController = ConnectRemoteNodeViewController.instantiate(didSetupWallet: didSetupWallet, connectRemoteNodeViewModel: viewModel, presentQRCodeScannerButtonTapped: presentNodeCertificatesScanner)
         #else
-        viewController = UIStoryboard.instantiateSetupViewController(createButtonTapped: createNewWallet, recoverButtonTapped: recoverExistingWallet, connectButtonTapped: connectRemoteNode)
+        viewController = SetupViewController.instantiate(createButtonTapped: createNewWallet, recoverButtonTapped: recoverExistingWallet, connectButtonTapped: connectRemoteNode)
         #endif
         
         let navigationController = ZapNavigationController(rootViewController: viewController)
@@ -60,7 +60,7 @@ final class SetupCoordinator {
         let mnemonicViewModel = MnemonicViewModel(walletService: walletService)
         self.mnemonicViewModel = mnemonicViewModel
         
-        let viewController = UIStoryboard.instantiateMnemonicViewController(mnemonicViewModel: mnemonicViewModel, presentConfirmMnemonic: confirmMnemonic)
+        let viewController = MnemonicViewController.instantiate(mnemonicViewModel: mnemonicViewModel, presentConfirmMnemonic: confirmMnemonic)
         navigationController?.pushViewController(viewController, animated: true)
         #endif
     }
@@ -71,7 +71,7 @@ final class SetupCoordinator {
             let delegate = delegate
             else { return }
         
-        let viewController = UIStoryboard.instantiateConfirmMnemonicViewController(confirmMnemonicViewModel: confirmMnemonicViewModel, walletConfirmed: delegate.presentSetupPin)
+        let viewController = ConfirmMnemonicViewController.instantiate(confirmMnemonicViewModel: confirmMnemonicViewModel, walletConfirmed: delegate.presentSetupPin)
         navigationController?.pushViewController(viewController, animated: true)
     }
     
@@ -87,7 +87,7 @@ final class SetupCoordinator {
         
         let walletService = connectionService.walletService
         let viewModel = RecoverWalletViewModel(walletService: walletService)
-        let viewController = UIStoryboard.instantiateRecoverWalletViewController(recoverWalletViewModel: viewModel, presentSetupPin: delegate.presentSetupPin)
+        let viewController = RecoverWalletViewController.instantiate(recoverWalletViewModel: viewModel, presentSetupPin: delegate.presentSetupPin)
         navigationController?.pushViewController(viewController, animated: true)
         #endif
     }
@@ -95,7 +95,7 @@ final class SetupCoordinator {
     private func connectRemoteNode() {
         let viewModel = ConnectRemoteNodeViewModel()
         connectRemoteNodeViewModel = viewModel
-        let viewController = UIStoryboard.instantiateConnectRemoteNodeViewController(didSetupWallet: didSetupWallet, connectRemoteNodeViewModel: viewModel, presentQRCodeScannerButtonTapped: presentNodeCertificatesScanner)
+        let viewController = ConnectRemoteNodeViewController.instantiate(didSetupWallet: didSetupWallet, connectRemoteNodeViewModel: viewModel, presentQRCodeScannerButtonTapped: presentNodeCertificatesScanner)
         navigationController?.pushViewController(viewController, animated: true)
     }
 
@@ -109,7 +109,7 @@ final class SetupCoordinator {
     
     private func presentNodeCertificatesScanner() {
         guard let connectRemoteNodeViewModel = connectRemoteNodeViewModel else { return }
-        let viewController = UIStoryboard.instantiateRemoteNodeCertificatesScannerViewController(connectRemoteNodeViewModel: connectRemoteNodeViewModel)
+        let viewController = RemoteNodeCertificatesScannerViewController.instantiate(connectRemoteNodeViewModel: connectRemoteNodeViewModel)
         navigationController?.present(viewController, animated: true, completion: nil)
     }
     

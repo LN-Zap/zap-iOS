@@ -9,19 +9,7 @@ import Lightning
 import SwiftLnd
 import UIKit
 
-extension UIStoryboard {
-    static func instantiateModalPinViewController(authenticationViewModel: AuthenticationViewModel) -> ModalPinViewController {
-        let viewController = StoryboardScene.ModalPin.modalPinViewController.instantiate()
-        viewController.authenticationViewModel = authenticationViewModel
-        return viewController
-    }
-}
-
 final class ModalPinViewController: ModalViewController, ContentHeightProviding {
-    var authenticationViewModel: AuthenticationViewModel?
-
-    var window: UIWindow?
-    
     @IBOutlet private weak var keyPadPinView: KeyPadPinView!
     @IBOutlet private weak var keyPadContainer: UIView!
     @IBOutlet private weak var pinView: PinView!
@@ -30,10 +18,21 @@ final class ModalPinViewController: ModalViewController, ContentHeightProviding 
     @IBOutlet private weak var headlineLabel: UILabel!
     @IBOutlet private weak var descriptionLabel: UILabel!
     
-    var completion: ((Result<Success>) -> Void)?
+    fileprivate var authenticationViewModel: AuthenticationViewModel?
+    fileprivate var window: UIWindow?
+    fileprivate var completion: ((Result<Success>) -> Void)?
+    
     var contentHeight: CGFloat? { return window?.bounds.height } // ContentHeightProviding
     
     override var preferredStatusBarStyle: UIStatusBarStyle { return .lightContent }
+    
+    private static func instantiate(authenticationViewModel: AuthenticationViewModel, window: UIWindow, completion: @escaping ((Result<Success>) -> Void)) -> ModalPinViewController {
+        let viewController = StoryboardScene.ModalPin.modalPinViewController.instantiate()
+        viewController.authenticationViewModel = authenticationViewModel
+        viewController.window = window
+        viewController.completion = completion
+        return viewController
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -65,9 +64,7 @@ final class ModalPinViewController: ModalViewController, ContentHeightProviding 
         pinWindow.windowLevel = WindowLevel.modalPin
         pinWindow.makeKeyAndVisible()
         
-        let modalPinViewController = UIStoryboard.instantiateModalPinViewController(authenticationViewModel: authenticationViewModel)
-        modalPinViewController.window = pinWindow
-        modalPinViewController.completion = completion
+        let modalPinViewController = ModalPinViewController.instantiate(authenticationViewModel: authenticationViewModel, window: pinWindow, completion: completion)
         
         pinWindow.rootViewController?.present(modalPinViewController, animated: true, completion: nil)
     }

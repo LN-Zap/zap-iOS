@@ -9,14 +9,6 @@ import Lightning
 import SwiftLnd
 import UIKit
 
-extension UIStoryboard {
-    static func instantiateLoadingViewController(message: LoadingViewController.Message) -> LoadingViewController {
-        let viewController = StoryboardScene.Loading.initialScene.instantiate()
-        viewController.message = message
-        return viewController
-    }
-}
-
 final class LoadingViewController: UIViewController {
     enum Message {
         case none
@@ -25,6 +17,12 @@ final class LoadingViewController: UIViewController {
     @IBOutlet private weak var infoLabel: UILabel!
     
     fileprivate var message = Message.none
+    
+    static func instantiate(message: LoadingViewController.Message) -> LoadingViewController {
+        let viewController = StoryboardScene.Loading.initialScene.instantiate()
+        viewController.message = message
+        return viewController
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()

@@ -9,16 +9,6 @@ import Bond
 import SafariServices
 import UIKit
 
-extension UIStoryboard {
-    static func instantiateConnectRemoteNodeViewController(didSetupWallet: @escaping () -> Void, connectRemoteNodeViewModel: ConnectRemoteNodeViewModel, presentQRCodeScannerButtonTapped: @escaping (() -> Void)) -> ConnectRemoteNodeViewController {
-        let viewController = StoryboardScene.ConnectRemoteNode.connectRemoteNodeViewController.instantiate()
-        viewController.didSetupWallet = didSetupWallet
-        viewController.connectRemoteNodeViewModel = connectRemoteNodeViewModel
-        viewController.presentQRCodeScannerButtonTapped = presentQRCodeScannerButtonTapped
-        return viewController
-    }
-}
-
 final class ConnectCellBond: TableViewBinder<Observable2DArray<String?, ConnectRemoteNodeViewModel.CellType>> {
     
     override init() {
@@ -100,6 +90,14 @@ final class ConnectRemoteNodeViewController: UIViewController {
     
     private var isConnecting = false
     
+    static func instantiate(didSetupWallet: @escaping () -> Void, connectRemoteNodeViewModel: ConnectRemoteNodeViewModel, presentQRCodeScannerButtonTapped: @escaping (() -> Void)) -> ConnectRemoteNodeViewController {
+        let viewController = StoryboardScene.ConnectRemoteNode.connectRemoteNodeViewController.instantiate()
+        viewController.didSetupWallet = didSetupWallet
+        viewController.connectRemoteNodeViewModel = connectRemoteNodeViewModel
+        viewController.presentQRCodeScannerButtonTapped = presentQRCodeScannerButtonTapped
+        return viewController
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -162,13 +160,13 @@ final class ConnectRemoteNodeViewController: UIViewController {
     
     private func presentAddressDetail() {
         guard let viewModel = connectRemoteNodeViewModel else { return }
-        let viewController = UIStoryboard.instantiateUpdateAddressViewController(connectRemoteNodeViewModel: viewModel)
+        let viewController = UpdateAddressViewController.instantiate(connectRemoteNodeViewModel: viewModel)
         navigationController?.pushViewController(viewController, animated: true)
     }
     
     private func presentCertificateDetail() {
         guard let viewModel = connectRemoteNodeViewModel else { return }
-        let viewController = UIStoryboard.instantiateCertificateDetailViewController(connectRemoteNodeViewModel: viewModel)
+        let viewController = CertificateDetailViewController.instantiate(connectRemoteNodeViewModel: viewModel)
         navigationController?.pushViewController(viewController, animated: true)
     }
     

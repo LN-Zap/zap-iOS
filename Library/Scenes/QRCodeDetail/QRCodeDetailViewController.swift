@@ -7,14 +7,6 @@
 
 import UIKit
 
-extension UIStoryboard {
-    static func instantiateQRCodeDetailViewController(with qrCodeDetailViewModel: QRCodeDetailViewModel) -> QRCodeDetailViewController {
-        let viewController = StoryboardScene.QRCodeDetail.qrCodeDetailViewController.instantiate()
-        viewController.viewModel = qrCodeDetailViewModel
-        return viewController
-    }
-}
-
 final class QRCodeDetailViewController: UIViewController {
     @IBOutlet private weak var qrCodeImageView: UIImageView!
     @IBOutlet private weak var shareButton: UIButton!
@@ -23,6 +15,12 @@ final class QRCodeDetailViewController: UIViewController {
     
     fileprivate var viewModel: QRCodeDetailViewModel?
     
+    static func instantiate(with qrCodeDetailViewModel: QRCodeDetailViewModel) -> QRCodeDetailViewController {
+        let viewController = StoryboardScene.QRCodeDetail.qrCodeDetailViewController.instantiate()
+        viewController.viewModel = qrCodeDetailViewModel
+        return viewController
+    }
+
     override func viewDidLoad() {
         super.viewDidLoad()
 

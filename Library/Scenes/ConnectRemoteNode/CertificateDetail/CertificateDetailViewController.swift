@@ -7,16 +7,14 @@
 
 import Foundation
 
-extension UIStoryboard {
-    static func instantiateCertificateDetailViewController(connectRemoteNodeViewModel: ConnectRemoteNodeViewModel) -> CertificateDetailViewController {
+final class CertificateDetailViewController: UITableViewController {
+    fileprivate var connectRemoteNodeViewModel: ConnectRemoteNodeViewModel?
+    
+    static func instantiate(connectRemoteNodeViewModel: ConnectRemoteNodeViewModel) -> CertificateDetailViewController {
         let viewController = StoryboardScene.ConnectRemoteNode.certificateDetailViewController.instantiate()
         viewController.connectRemoteNodeViewModel = connectRemoteNodeViewModel
         return viewController
     }
-}
-
-final class CertificateDetailViewController: UITableViewController {
-    fileprivate var connectRemoteNodeViewModel: ConnectRemoteNodeViewModel?
     
     override func viewDidLoad() {
         super.viewDidLoad()

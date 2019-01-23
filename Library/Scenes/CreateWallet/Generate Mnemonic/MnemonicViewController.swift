@@ -8,15 +8,6 @@
 import Bond
 import Foundation
 
-extension UIStoryboard {
-    static func instantiateMnemonicViewController(mnemonicViewModel: MnemonicViewModel, presentConfirmMnemonic: @escaping () -> Void) -> MnemonicViewController {
-        let viewController = StoryboardScene.CreateWallet.mnemonicViewController.instantiate()
-        viewController.mnemonicViewModel = mnemonicViewModel
-        viewController.presentConfirmMnemonic = presentConfirmMnemonic
-        return viewController
-    }
-}
-
 final class MnemonicViewController: UIViewController {
     @IBOutlet private weak var doneButton: UIButton!
     @IBOutlet private weak var topLabel: UILabel!
@@ -26,6 +17,13 @@ final class MnemonicViewController: UIViewController {
     
     fileprivate var mnemonicViewModel: MnemonicViewModel?
     fileprivate var presentConfirmMnemonic: (() -> Void)?
+    
+    static func instantiate(mnemonicViewModel: MnemonicViewModel, presentConfirmMnemonic: @escaping () -> Void) -> MnemonicViewController {
+        let viewController = StoryboardScene.CreateWallet.mnemonicViewController.instantiate()
+        viewController.mnemonicViewModel = mnemonicViewModel
+        viewController.presentConfirmMnemonic = presentConfirmMnemonic
+        return viewController
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()

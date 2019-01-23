@@ -17,16 +17,8 @@ protocol SettingsDelegate: class {
 final class SettingsViewController: GroupedTableViewController {
     var info: Info?
     
-    static func instantiate(info: Info?, settingsDelegate: SettingsDelegate, pushChannelList: @escaping (UINavigationController) -> Void, pushNodeURIViewController: @escaping (UINavigationController) -> Void) -> UINavigationController {
-        let viewController = SettingsViewController(info: info, settingsDelegate: settingsDelegate, pushChannelList: pushChannelList, pushNodeURIViewController: pushNodeURIViewController)
-        
-        let navigationController = ZapNavigationController(rootViewController: viewController)
-        
-        navigationController.tabBarItem.title = L10n.Scene.Settings.title
-        navigationController.tabBarItem.image = Asset.tabbarSettings.image
-        navigationController.view.backgroundColor = UIColor.Zap.background
-        
-        return navigationController
+    static func instantiate(info: Info?, settingsDelegate: SettingsDelegate, pushChannelList: @escaping (UINavigationController) -> Void, pushNodeURIViewController: @escaping (UINavigationController) -> Void) -> SettingsViewController {
+        return SettingsViewController(info: info, settingsDelegate: settingsDelegate, pushChannelList: pushChannelList, pushNodeURIViewController: pushNodeURIViewController)
     }
     
     private init(info: Info?, settingsDelegate: SettingsDelegate, pushChannelList: @escaping (UINavigationController) -> Void, pushNodeURIViewController: @escaping (UINavigationController) -> Void) {
