@@ -18,11 +18,7 @@
 
 private func ProtoToJSON(name: String) -> String? {
   var jsonPath = String()
-#if swift(>=3.2)
   var chars = name.makeIterator()
-#else
-  var chars = name.characters.makeIterator()
-#endif
   while let c = chars.next() {
     switch c {
     case "_":
@@ -47,12 +43,7 @@ private func ProtoToJSON(name: String) -> String? {
 
 private func JSONToProto(name: String) -> String? {
   var path = String()
-#if swift(>=3.2)
-  let chars = name
-#else
-  let chars = name.characters
-#endif
-  for c in chars {
+  for c in name {
     switch c {
     case "_":
       return nil
@@ -70,12 +61,7 @@ private func parseJSONFieldNames(names: String) -> [String]? {
   var fieldNameCount = 0
   var fieldName = String()
   var split = [String]()
-#if swift(>=3.2)
-  let namesChars = names
-#else
-  let namesChars = names.characters
-#endif
-  for c: Character in namesChars {
+  for c in names {
     switch c {
     case ",":
       if fieldNameCount == 0 {
@@ -104,7 +90,7 @@ private func parseJSONFieldNames(names: String) -> [String]? {
   return split
 }
 
-public extension Google_Protobuf_FieldMask {
+extension Google_Protobuf_FieldMask {
   /// Creates a new `Google_Protobuf_FieldMask` from the given array of paths.
   ///
   /// The paths should match the names used in the .proto file, which may be
