@@ -4,14 +4,8 @@ inhibit_all_warnings!
 
 install! 'cocoapods'
 
-abstract_target 'Apps' do
+target 'Zap' do
     pod 'SwiftBTC'
-
-    target 'Zap' do
-    end
-    
-    target 'ZapPos' do
-    end
 end
 
 abstract_target 'RPC' do
@@ -51,6 +45,5 @@ end
 post_install do | installer |
     # Copy Acknowledgements to Settings.bundle
     require 'fileutils'
-    FileUtils.cp_r('Pods/Target Support Files/Pods-Apps-Zap/Pods-Apps-Zap-acknowledgements.plist', 'Zap/Settings.bundle/Acknowledgements.plist', :remove_destination => true)
-    FileUtils.cp_r('Pods/Target Support Files/Pods-Apps-ZapPos/Pods-Apps-ZapPos-acknowledgements.plist', 'ZapPos/Settings.bundle/Acknowledgements.plist', :remove_destination => true)
+    FileUtils.cp_r('Pods/Target Support Files/Pods-Zap/Pods-Zap-acknowledgements.plist', 'Zap/Settings.bundle/Acknowledgements.plist', :remove_destination => true)
 end

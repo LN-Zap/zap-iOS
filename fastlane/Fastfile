@@ -79,12 +79,6 @@ lane :update_app_icon do
     appicon_path: 'Zap/Assets.xcassets',
     appicon_devices: [:iphone, :ios_marketing]
   )
-
-  appicon(
-    appicon_image_file: 'logo.png',
-    appicon_path: 'ZapPos/Assets.xcassets',
-    appicon_devices: [:ipad, :ios_marketing]
-  )
 end
 
 desc "Run all tests."
