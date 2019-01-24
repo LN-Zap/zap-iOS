@@ -1,6 +1,6 @@
 Pod::Spec.new do |s|
   s.name     = "LndRpc"
-  s.version  = "0.0.2"
+  s.version  = "0.0.3"
   s.license  = "Apache License, Version 2.0"
   s.authors  = { 'gRPC contributors' => 'grpc-io@googlegroups.com' }
   s.homepage = "https://grpc.io/"
@@ -11,7 +11,7 @@ Pod::Spec.new do |s|
   s.osx.deployment_target = "10.9"
 
   # Base directory where the .proto files are.
-  src = "."
+  src = "Proto"
 
   # Run protoc with the Objective-C and gRPC plugins to generate protocol messages and gRPC clients.
   s.dependency "!ProtoCompiler-gRPCPlugin", "~> 1.0"
