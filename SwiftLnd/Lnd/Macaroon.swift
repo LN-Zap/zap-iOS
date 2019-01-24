@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import LndRpc
 
 public struct Macaroon: Equatable, Codable {
     private let data: Data
@@ -68,18 +69,22 @@ public struct Macaroon: Equatable, Codable {
         guard
             section.count == 1 && section[0].type == .identifier, // valid macaroon header
             let id = section[0].data,
-        let decoded = try? MacaroonId(serializedData: id.dropFirst())
+            let decoded = try? MacaroonId(data: id.dropFirst())
             else { return Permissions(permissions: [:]) }
         
         var permissions = [Permissions.Domain: Permissions.AccessMode]()
         
-        for op in decoded.ops { // swiftlint:disable:this identifier_name
-            guard let domain = Permissions.Domain(rawValue: op.entity) else {
-                print("⚠️ unknown macaroon id entity: \(op.entity)")
+        for operation in decoded.opsArray {
+            guard let operation = operation as? Op else { continue }
+            guard let domain = Permissions.Domain(rawValue: operation.entity) else {
+                print("⚠️ unknown macaroon id entity: \(operation)")
                 continue
             }
             
-            let accessMode = Permissions.AccessMode(op.actions.compactMap(Permissions.AccessMode.fromString))
+            let accessMode = Permissions.AccessMode(operation.actionsArray.compactMap {
+                guard let action = $0 as? String else { return nil }
+                return Permissions.AccessMode.fromString(action)
+            })
             permissions[domain] = accessMode
         }
         

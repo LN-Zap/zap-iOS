@@ -38,14 +38,14 @@ PODS:
     - gRPC-Core (= 1.18.0)
     - gRPC-RxLibrary (= 1.18.0)
   - KeychainAccess (3.1.2)
-  - LndRpc (0.0.1):
+  - LndRpc (0.0.2):
     - "!ProtoCompiler-gRPCPlugin (~> 1.0)"
-    - LndRpc/Messages (= 0.0.1)
-    - LndRpc/Services (= 0.0.1)
-  - LndRpc/Messages (0.0.1):
+    - LndRpc/Messages (= 0.0.2)
+    - LndRpc/Services (= 0.0.2)
+  - LndRpc/Messages (0.0.2):
     - "!ProtoCompiler-gRPCPlugin (~> 1.0)"
     - Protobuf
-  - LndRpc/Services (0.0.1):
+  - LndRpc/Services (0.0.2):
     - "!ProtoCompiler-gRPCPlugin (~> 1.0)"
     - gRPC-ProtoRPC
     - LndRpc/Messages
@@ -63,7 +63,6 @@ PODS:
   - SQLite.swift/standard (0.11.5)
   - SwiftBTC (0.0.5):
     - BigInt (~> 3.1)
-  - SwiftProtobuf (1.3.1)
 
 DEPENDENCIES:
   - Bond
@@ -72,7 +71,6 @@ DEPENDENCIES:
   - ScrollableGraphView
   - SQLite.swift (~> 0.11.5)
   - SwiftBTC
-  - SwiftProtobuf
 
 SPEC REPOS:
   https://github.com/cocoapods/specs.git:
@@ -94,7 +92,6 @@ SPEC REPOS:
     - SipHash
     - SQLite.swift
     - SwiftBTC
-    - SwiftProtobuf
 
 EXTERNAL SOURCES:
   LndRpc:
@@ -112,7 +109,7 @@ SPEC CHECKSUMS:
   gRPC-ProtoRPC: 8e49c501c166d221cf9e44076b20580171f8ecd0
   gRPC-RxLibrary: bf23bc3bfde06674a794bb63f458f8d67d4038bb
   KeychainAccess: b3816fddcf28aa29d94b10ec305cd52be14c472b
-  LndRpc: 9c07f81ca7fa27f043cf517a04fb5405731df0d9
+  LndRpc: dc57d16983b114520cf6340ac0d5e582efe84bec
   nanopb: 2901f78ea1b7b4015c860c2fdd1ea2fee1a18d48
   Protobuf: 1eb9700044745f00181c136ef21b8ff3ad5a0fd5
   ReactiveKit: 5f4c440715d671901c382ae6b42ed3337ce4699b
@@ -120,8 +117,7 @@ SPEC CHECKSUMS:
   SipHash: fad90a4683e420c52ef28063063dbbce248ea6d4
   SQLite.swift: 6e5356850bb1791459f8c16d6ee9195b28714a2e
   SwiftBTC: d16f342fbed0148a5d0fe99a4507c0ccb529456f
-  SwiftProtobuf: 84cd6b8f4fd2fc3d9fbd80a0aaf2e957d52824ec
 
-PODFILE CHECKSUM: 8f5d165049a2067b52a662f5d6a8e6ee3e847e29
+PODFILE CHECKSUM: c15bfcbe88f7cf6b1a03a7fd198033b545a1f0b4
 
 COCOAPODS: 1.5.3

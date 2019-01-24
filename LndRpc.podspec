@@ -1,6 +1,6 @@
 Pod::Spec.new do |s|
   s.name     = "LndRpc"
-  s.version  = "0.0.1"
+  s.version  = "0.0.2"
   s.license  = "Apache License, Version 2.0"
   s.authors  = { 'gRPC contributors' => 'grpc-io@googlegroups.com' }
   s.homepage = "https://grpc.io/"

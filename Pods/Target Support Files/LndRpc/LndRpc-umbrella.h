@@ -11,6 +11,7 @@
 #endif
 
 #import "LndRpc.pbobjc.h"
+#import "Macaroon.pbobjc.h"
 #import "LndRpc.pbrpc.h"
 
 FOUNDATION_EXPORT double LndRpcVersionNumber;

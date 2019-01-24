@@ -19,7 +19,6 @@ abstract_target 'RPC' do
     
     target 'SwiftLnd' do
         pod 'SwiftBTC'
-        pod 'SwiftProtobuf'
         
         target 'SwiftLndTests' do
             inherit! :search_paths

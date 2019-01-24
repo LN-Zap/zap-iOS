@@ -7,14 +7,13 @@
 
 import Foundation
 import LndRpc
-import SwiftProtobuf
 
 public enum CloseStatusUpdate {
     case pending
     case channelClose
     
     init(closeStatusUpdate: LNDCloseStatusUpdate) {
-        if closeStatusUpdate.closePending.txid != SwiftProtobuf.Internal.emptyData {
+        if closeStatusUpdate.closePending.txid != nil {
             self = .pending
         } else {
             self = .channelClose
