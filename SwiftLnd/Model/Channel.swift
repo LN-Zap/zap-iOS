@@ -15,10 +15,11 @@ public enum ChannelState {
     case opening
     case closing
     case forceClosing
+    case waitingClose
     
     public var isClosing: Bool {
         switch self {
-        case .closing, .forceClosing:
+        case .closing, .forceClosing, .waitingClose:
             return true
         default:
            return false
@@ -59,7 +60,8 @@ extension LNDPendingChannelsResponse {
         let pendingOpenChannels: [Channel] = pendingOpenChannelsArray.compactMap { ($0 as! LNDPendingChannelsResponse_PendingOpenChannel).channelModel }
         let pendingClosingChannels: [Channel] = pendingClosingChannelsArray.compactMap { ($0 as! LNDPendingChannelsResponse_ClosedChannel).channelModel }
         let pendingForceClosingChannels: [Channel] = pendingForceClosingChannelsArray.compactMap { ($0 as! LNDPendingChannelsResponse_ForceClosedChannel).channelModel }
-        return pendingOpenChannels + pendingClosingChannels + pendingForceClosingChannels
+        let waitingCloseChannels: [Channel] = waitingCloseChannelsArray.compactMap { ($0 as! LNDPendingChannelsResponse_WaitingCloseChannel).channelModel }
+        return pendingOpenChannels + pendingClosingChannels + pendingForceClosingChannels + waitingCloseChannels
     }
 }
 
@@ -105,5 +107,20 @@ extension LNDPendingChannelsResponse_ForceClosedChannel {
             updateCount: 0,
             channelPoint: ChannelPoint(string: channel.channelPoint),
             csvDelay: Int(blocksTilMaturity))
+    }
+}
+
+extension LNDPendingChannelsResponse_WaitingCloseChannel {
+    var channelModel: Channel {
+        return Channel(
+                blockHeight: nil,
+                state: .waitingClose,
+                localBalance: Satoshi(channel.localBalance),
+                remoteBalance: Satoshi(channel.remoteBalance),
+                remotePubKey: channel.remoteNodePub,
+                capacity: Satoshi(channel.capacity),
+                updateCount: 0,
+                channelPoint: ChannelPoint(string: channel.channelPoint),
+                csvDelay: 144)
     }
 }

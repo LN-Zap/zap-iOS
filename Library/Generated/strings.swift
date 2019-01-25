@@ -24,6 +24,8 @@ internal enum L10n {
       internal static let inactive = L10n.tr("Localizable", "channel.state.inactive")
       /// Opening
       internal static let opening = L10n.tr("Localizable", "channel.state.opening")
+      /// Waiting Close
+      internal static let waitingClose = L10n.tr("Localizable", "channel.state.waiting_close")
     }
   }
 

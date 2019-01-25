@@ -25,6 +25,8 @@ extension ChannelState: Comparable {
             return 3
         case .inactive:
             return 4
+        case .waitingClose:
+            return 5
         }
     }
     
