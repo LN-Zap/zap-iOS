@@ -38,7 +38,7 @@ final class ChannelDetailViewController: ModalDetailViewController {
         let labelStyle = Style.Label.headline
         let textStyle = Style.Label.body
 
-        if channelViewModel.channel.state.isClosing {
+        if channelViewModel.channel.state == .closing || channelViewModel.channel.state == .forceClosing {
             contentStackView.addArrangedElement(.horizontalStackView(compressionResistant: .first, content: [
                 .label(text: L10n.Scene.ChannelDetail.ClosingTime.label + ":", style: labelStyle),
                 .label(text: channelViewModel.csvDelayTimeString, style: textStyle)
