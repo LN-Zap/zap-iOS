@@ -21,6 +21,8 @@ extension ChannelState: Localizable {
             return L10n.Channel.State.closing
         case .forceClosing:
             return L10n.Channel.State.forceClosing
+        case .waitingClose:
+            return L10n.Channel.State.waitingClose
         }
     }
 }
