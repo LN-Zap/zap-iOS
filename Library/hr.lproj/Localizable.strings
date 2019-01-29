@@ -22,6 +22,7 @@
 "channel.state.opening" = "Otvaranje";
 "channel.state.closing" = "Zatvaranje";
 "channel.state.force_closing" = "Prisilno zatvaranje";
+"channel.state.waiting_close" = "Waiting Close";
 
 "network_type.regtest" = "Regtest";
 "network_type.testnet" = "Testnet";
