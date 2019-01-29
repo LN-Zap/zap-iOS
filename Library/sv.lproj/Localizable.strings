@@ -22,6 +22,7 @@
 "channel.state.opening" = "Öppnar";
 "channel.state.closing" = "Stänger";
 "channel.state.force_closing" = "Tvinga stängning";
+"channel.state.waiting_close" = "Waiting Close";
 
 "network_type.regtest" = "Regtest";
 "network_type.testnet" = "Testnet";
