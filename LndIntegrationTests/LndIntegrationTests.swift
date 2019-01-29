@@ -13,11 +13,11 @@ class LndIntegrationTests: XCTestCase {
     override func setUp() {
         super.setUp()
         
-//        TestServer.start.run()
+        TestServer.start.run()
     }
     
     override func tearDown() {
-//        TestServer.stop.run()
+        TestServer.stop.run()
         
         super.tearDown()
     }
