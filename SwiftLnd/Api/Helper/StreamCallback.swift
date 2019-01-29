@@ -9,7 +9,6 @@
 
 import Foundation
 import Lndmobile
-import SwiftProtobuf
 
 final class EmptyStreamCallback: NSObject, LndmobileCallbackProtocol {
     func onError(_ error: Error) {

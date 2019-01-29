@@ -39,6 +39,10 @@ abstract_target 'RPC' do
         target 'LightningTests' do
             inherit! :search_paths
         end
+
+        target 'LndIntegrationTests' do
+            inherit! :search_paths
+        end
     end
 end
 

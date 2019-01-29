@@ -33,13 +33,6 @@
       <CodeCoverageTargets>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "A000F5E92047F65100480D8E"
-            BuildableName = "BTCUtil.framework"
-            BlueprintName = "BTCUtil"
-            ReferencedContainer = "container:Zap.xcodeproj">
-         </BuildableReference>
-         <BuildableReference
-            BuildableIdentifier = "primary"
             BlueprintIdentifier = "AD391C1720D16ED4007EE22A"
             BuildableName = "Library.framework"
             BlueprintName = "Library"
