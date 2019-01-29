@@ -22,6 +22,7 @@
 "channel.state.opening" = "打开中";
 "channel.state.closing" = "关闭中";
 "channel.state.force_closing" = "强制关闭";
+"channel.state.waiting_close" = "Waiting Close";
 
 "network_type.regtest" = "Regtest";
 "network_type.testnet" = "测试网络";
