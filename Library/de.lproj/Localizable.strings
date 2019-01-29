@@ -22,6 +22,7 @@
 "channel.state.opening" = "Öffne";
 "channel.state.closing" = "Schließe";
 "channel.state.force_closing" = "Erzwungenes Schließen";
+"channel.state.waiting_close" = "Waiting Close";
 
 "network_type.regtest" = "Regtest";
 "network_type.testnet" = "Testnet";
