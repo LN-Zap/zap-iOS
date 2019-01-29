@@ -22,6 +22,7 @@
 "channel.state.opening" = "פותח";
 "channel.state.closing" = "סוגר";
 "channel.state.force_closing" = "כפה סגירה";
+"channel.state.waiting_close" = "Waiting Close";
 
 "network_type.regtest" = "Regtest";
 "network_type.testnet" = "Testnet";
