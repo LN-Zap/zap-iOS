@@ -36,107 +36,73 @@ public final class LightningApiRPC: LightningApiProtocol {
     }
     
     public func info(completion: @escaping (Result<Info>) -> Void) {
-        lnd.rpcToGetInfo(with: LNDGetInfoRequest(), handler: result(completion, map: { Info(getInfoResponse: $0) }))
+        lnd.rpcToGetInfo(with: LNDGetInfoRequest(), handler: result(completion, map: ApiResultMapping.info))
             .runWithMacaroon(macaroon)
     }
     
     public func nodeInfo(pubKey: String, completion: @escaping (Result<NodeInfo>) -> Void) {
         let request = LNDNodeInfoRequest(pubKey: pubKey)
-        lnd.rpcToGetNodeInfo(with: request, handler: result(completion, map: { NodeInfo(nodeInfo: $0) }))
+        lnd.rpcToGetNodeInfo(with: request, handler: result(completion, map: ApiResultMapping.nodeInfo))
             .runWithMacaroon(macaroon)
     }
     
     public func newAddress(type: OnChainRequestAddressType, completion: @escaping (Result<BitcoinAddress>) -> Void) {
         let request = LNDNewAddressRequest(type: type)
-        lnd.rpcToNewAddress(with: request, handler: result(completion, map: {
-            BitcoinAddress(string: $0.address)
-        })).runWithMacaroon(macaroon)
+        lnd.rpcToNewAddress(with: request, handler: result(completion, map: ApiResultMapping.newAddress)).runWithMacaroon(macaroon)
     }
     
     public func walletBalance(completion: @escaping (Result<Satoshi>) -> Void) {
-        lnd.rpcToWalletBalance(with: LNDWalletBalanceRequest(), handler: result(completion, map: { Satoshi($0.totalBalance) }))
+        lnd.rpcToWalletBalance(with: LNDWalletBalanceRequest(), handler: result(completion, map: ApiResultMapping.walletBalance))
             .runWithMacaroon(macaroon)
     }
     
     public func channelBalance(completion: @escaping (Result<Satoshi>) -> Void) {
-        lnd.rpcToChannelBalance(with: LNDChannelBalanceRequest(), handler: result(completion, map: { Satoshi($0.balance) }))
+        lnd.rpcToChannelBalance(with: LNDChannelBalanceRequest(), handler: result(completion, map: ApiResultMapping.channelBalance))
             .runWithMacaroon(macaroon)
     }
     
     public func transactions(completion: @escaping (Result<[Transaction]>) -> Void) {
-        lnd.rpcToGetTransactions(with: LNDGetTransactionsRequest(), handler: result(completion, map: {
-            $0.transactionsArray.compactMap {
-                guard let transaction = $0 as? LNDTransaction else { return nil }
-                return Transaction(transaction: transaction)
-            }
-        })).runWithMacaroon(macaroon)
+        lnd.rpcToGetTransactions(with: LNDGetTransactionsRequest(), handler: result(completion, map: ApiResultMapping.transactions)).runWithMacaroon(macaroon)
     }
     
     public func payments(completion: @escaping (Result<[Payment]>) -> Void) {
-        lnd.rpcToListPayments(with: LNDListPaymentsRequest(), handler: result(completion, map: {
-            $0.paymentsArray.compactMap {
-                guard let payment = $0 as? LNDPayment else { return nil }
-                return Payment(payment: payment)
-            }
-        })).runWithMacaroon(macaroon)
+        lnd.rpcToListPayments(with: LNDListPaymentsRequest(), handler: result(completion, map: ApiResultMapping.payments)).runWithMacaroon(macaroon)
     }
     
     public func routes(destination: String, amount: Satoshi, completion: @escaping (Result<[Route]>) -> Void) {
         let request = LNDQueryRoutesRequest(destination: destination, amount: amount)
-        lnd.rpcToQueryRoutes(with: request, handler: result(completion, map: {
-            $0.routesArray.compactMap {
-                guard let route = $0 as? LNDRoute else { return nil }
-                return Route(route: route)
-            }
-        })).runWithMacaroon(macaroon)
+        lnd.rpcToQueryRoutes(with: request, handler: result(completion, map: ApiResultMapping.routes)).runWithMacaroon(macaroon)
     }
     
     public func channels(completion: @escaping (Result<[Channel]>) -> Void) {
-        lnd.rpcToListChannels(with: LNDListChannelsRequest(), handler: result(completion, map: {
-            $0.channelsArray.compactMap { ($0 as? LNDChannel)?.channelModel }
-        })).runWithMacaroon(macaroon)
+        lnd.rpcToListChannels(with: LNDListChannelsRequest(), handler: result(completion, map: ApiResultMapping.channels)).runWithMacaroon(macaroon)
     }
     
     public func closedChannels(completion: @escaping (Result<[ChannelCloseSummary]>) -> Void) {
-        lnd.rpcToClosedChannels(with: LNDClosedChannelsRequest(), handler: result(completion, map: {
-            $0.channelsArray.compactMap {
-                guard let channelCloseSummary = $0 as? LNDChannelCloseSummary else { return nil }
-                return ChannelCloseSummary(channelCloseSummary: channelCloseSummary)
-            }
-        })).runWithMacaroon(macaroon)
+        lnd.rpcToClosedChannels(with: LNDClosedChannelsRequest(), handler: result(completion, map: ApiResultMapping.closedChannels)).runWithMacaroon(macaroon)
     }
     
     public func pendingChannels(completion: @escaping (Result<[Channel]>) -> Void) {
-        lnd.rpcToPendingChannels(with: LNDPendingChannelsRequest(), handler: result(completion, map: {
-            $0.channels
-        })).runWithMacaroon(macaroon)
+        lnd.rpcToPendingChannels(with: LNDPendingChannelsRequest(), handler: result(completion, map: ApiResultMapping.pendingChannels)).runWithMacaroon(macaroon)
     }
     
     public func connect(pubKey: String, host: String, completion: @escaping (Result<Success>) -> Void) {
         let request = LNDConnectPeerRequest(pubKey: pubKey, host: host)        
-        lnd.rpcToConnectPeer(with: request, handler: result(completion, map: { _ in Success() }))
-            .runWithMacaroon(macaroon)
+        lnd.rpcToConnectPeer(with: request, handler: result(completion, map: ApiResultMapping.connect)).runWithMacaroon(macaroon)
     }
     
     public func openChannel(pubKey: String, amount: Satoshi, completion: @escaping (Result<ChannelPoint>) -> Void) {
         let request = LNDOpenChannelRequest(pubKey: pubKey, amount: amount)
-        lnd.rpcToOpenChannelSync(with: request, handler: result(completion, map: { ChannelPoint(channelPoint: $0) }))
-            .runWithMacaroon(macaroon)
+        lnd.rpcToOpenChannelSync(with: request, handler: result(completion, map: ApiResultMapping.openChannel)).runWithMacaroon(macaroon)
     }
     
     public func sendCoins(address: BitcoinAddress, amount: Satoshi, completion: @escaping (Result<String>) -> Void) {
         let request = LNDSendCoinsRequest(address: address, amount: amount)
-        lnd.rpcToSendCoins(with: request, handler: result(completion, map: { $0.txid }))
-            .runWithMacaroon(macaroon)
+        lnd.rpcToSendCoins(with: request, handler: result(completion, map: ApiResultMapping.sendCoins)).runWithMacaroon(macaroon)
     }
     
     public func peers(completion: @escaping (Result<[Peer]>) -> Void) {
-        lnd.rpcToListPeers(with: LNDListPeersRequest(), handler: result(completion, map: {
-            $0.peersArray.compactMap {
-                guard let peer = $0 as? LNDPeer else { return nil }
-                return Peer(peer: peer)
-            }
-        })).runWithMacaroon(macaroon)
+        lnd.rpcToListPeers(with: LNDListPeersRequest(), handler: result(completion, map: ApiResultMapping.peers)).runWithMacaroon(macaroon)
     }
     
     public func decodePaymentRequest(_ paymentRequest: String, completion: @escaping (Result<PaymentRequest>) -> Void) {
@@ -165,47 +131,31 @@ public final class LightningApiRPC: LightningApiProtocol {
     
     public func addInvoice(amount: Satoshi?, memo: String?, completion: @escaping (Result<String>) -> Void) {
         let request = LNDInvoice(amount: amount, memo: memo)
-        lnd.rpcToAddInvoice(withRequest: request, handler: result(completion, map: { $0.paymentRequest }))
-            .runWithMacaroon(macaroon)
+        lnd.rpcToAddInvoice(withRequest: request, handler: result(completion, map: ApiResultMapping.addInvoice)).runWithMacaroon(macaroon)
     }
     
     public func invoices(completion: @escaping (Result<[Invoice]>) -> Void) {
-        let request = LNDListInvoiceRequest()
-        request.reversed = true
-        
-        lnd.rpcToListInvoices(with: request, handler: result(completion, map: {
-            $0.invoicesArray.compactMap {
-                guard let invoice = $0 as? LNDInvoice else { return nil }
-                return Invoice(invoice: invoice)
-            }
-        })).runWithMacaroon(macaroon)
+        let request = LNDListInvoiceRequest(reversed: true)
+        lnd.rpcToListInvoices(with: request, handler: result(completion, map: ApiResultMapping.invoices)).runWithMacaroon(macaroon)
     }
     
     public func subscribeChannelGraph(completion: @escaping (Result<GraphTopologyUpdate>) -> Void) {
-        lnd.rpcToSubscribeChannelGraph(withRequest: LNDGraphTopologySubscription(), eventHandler: eventResult(completion, map: {
-            GraphTopologyUpdate(graphTopologyUpdate: $0)
-        })).runWithMacaroon(macaroon)
+        lnd.rpcToSubscribeChannelGraph(withRequest: LNDGraphTopologySubscription(), eventHandler: eventResult(completion, map: ApiResultMapping.subscribeChannelGraph)).runWithMacaroon(macaroon)
     }
     
     public func subscribeInvoices(completion: @escaping (Result<Invoice>) -> Void) {
-        lnd.rpcToSubscribeInvoices(withRequest: LNDInvoiceSubscription(), eventHandler: eventResult(completion, map: {
-            Invoice(invoice: $0)
-        })).runWithMacaroon(macaroon)
+        lnd.rpcToSubscribeInvoices(withRequest: LNDInvoiceSubscription(), eventHandler: eventResult(completion, map: ApiResultMapping.subscribeInvoices)).runWithMacaroon(macaroon)
     }
     
     public func subscribeTransactions(completion: @escaping (Result<Transaction>) -> Void) {
-        lnd.rpcToSubscribeTransactions(with: LNDGetTransactionsRequest(), eventHandler: eventResult(completion, map: {
-            Transaction(transaction: $0)
-        })).runWithMacaroon(macaroon)
+        lnd.rpcToSubscribeTransactions(with: LNDGetTransactionsRequest(), eventHandler: eventResult(completion, map: ApiResultMapping.subscribeTransactions)).runWithMacaroon(macaroon)
     }
     
     public func closeChannel(channelPoint: ChannelPoint, force: Bool, completion: @escaping (Result<CloseStatusUpdate>) -> Void) {
-        guard let request = LNDCloseChannelRequest(channelPoint: channelPoint, force: force) else {
+        if let request = LNDCloseChannelRequest(channelPoint: channelPoint, force: force) {
+            lnd.rpcToCloseChannel(with: request, eventHandler: eventResult(completion, map: ApiResultMapping.closeChannel)).runWithMacaroon(macaroon)
+        } else {
             completion(.failure(LndApiError.invalidInput))
-            return
         }
-        lnd.rpcToCloseChannel(with: request, eventHandler: eventResult(completion, map: {
-            CloseStatusUpdate(closeStatusUpdate: $0)
-        })).runWithMacaroon(macaroon)
     }
 }

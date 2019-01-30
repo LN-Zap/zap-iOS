@@ -22,6 +22,10 @@ public final class ConnectionService: NSObject {
     
     public var permissions: Permissions {
         switch LightningConnection.current {
+        #if !REMOTEONLY
+        case .local:
+            return Permissions.all
+        #endif
         case .none:
             return Permissions.none
         case .remote(let connection):

@@ -105,8 +105,7 @@
       debugDocumentVersioning = "YES"
       stopOnEveryMainThreadCheckerIssue = "YES"
       debugServiceExtension = "internal"
-      allowLocationSimulation = "NO"
-      showNonLocalizedStrings = "YES">
+      allowLocationSimulation = "NO">
       <BuildableProductRunnable
          runnableDebuggingMode = "0">
          <BuildableReference
@@ -141,7 +140,7 @@
          <EnvironmentVariable
             key = "-NSShowNonLocalizedStrings"
             value = "YES"
-            isEnabled = "YES">
+            isEnabled = "NO">
          </EnvironmentVariable>
          <EnvironmentVariable
             key = "SKIP_PIN_FLOW"

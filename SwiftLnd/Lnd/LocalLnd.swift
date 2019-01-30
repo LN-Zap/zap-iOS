@@ -24,9 +24,7 @@ public enum LocalLnd {
         LocalLndConfiguration.standard.save(at: path)
 
         guard !Environment.isRunningTests else { return }
-        DispatchQueue.global(qos: .userInteractive).async {
-            LndmobileStart(LocalLnd.path.path, EmptyStreamCallback())
-        }
+        LndmobileStart(LocalLnd.path.path, EmptyStreamCallback())
     }
     
     public static func stop() {

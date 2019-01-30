@@ -149,3 +149,10 @@ extension LNDUnlockWalletRequest {
         }
     }
 }
+
+extension LNDListInvoiceRequest {
+    convenience init(reversed: Bool) {
+        self.init()
+        self.reversed = reversed
+    }
+}

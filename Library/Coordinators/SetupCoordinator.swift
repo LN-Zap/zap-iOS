@@ -38,7 +38,7 @@ final class SetupCoordinator {
         connectRemoteNodeViewModel = viewModel
         viewController = ConnectRemoteNodeViewController.instantiate(didSetupWallet: didSetupWallet, connectRemoteNodeViewModel: viewModel, presentQRCodeScannerButtonTapped: presentNodeCertificatesScanner)
         #else
-        viewController = SetupViewController.instantiate(createButtonTapped: createNewWallet, recoverButtonTapped: recoverExistingWallet, connectButtonTapped: connectRemoteNode)
+        viewController = SelectWalletCreationMethodViewController.instantiate(createButtonTapped: createNewWallet, recoverButtonTapped: recoverExistingWallet, connectButtonTapped: connectRemoteNode)
         #endif
         
         let navigationController = ZapNavigationController(rootViewController: viewController)

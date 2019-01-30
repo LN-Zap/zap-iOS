@@ -9,7 +9,7 @@
 
 import Foundation
 import Lndmobile
-import SwiftProtobuf
+import LndRpc
 
 final class EmptyStreamCallback: NSObject, LndmobileCallbackProtocol {
     func onError(_ error: Error) {
@@ -21,7 +21,7 @@ final class EmptyStreamCallback: NSObject, LndmobileCallbackProtocol {
     }
 }
 
-final class StreamCallback<T: SwiftProtobuf.Message, U>: NSObject, LndmobileCallbackProtocol {
+final class StreamCallback<T: GPBMessage, U>: NSObject, LndmobileCallbackProtocol {
     private let completion: (Result<U>) -> Void
     private let mapping: (T) -> U?
     
@@ -36,7 +36,7 @@ final class StreamCallback<T: SwiftProtobuf.Message, U>: NSObject, LndmobileCall
     }
     
     func onResponse(_ data: Data) {
-        if let message = try? T(serializedData: data),
+        if let message = try? T.parse(from: data),
             let value = mapping(message) {
             
             if !(value is Info) && !(value is GraphTopologyUpdate) {
