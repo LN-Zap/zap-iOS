@@ -9,7 +9,7 @@ import Foundation
 import LndRpc
 import SwiftBTC
 
-enum ApiResultMapping {
+enum LightningApiTransformations {
     static func transactions(input: LNDTransactionDetails) -> [Transaction] {
         return input.transactionsArray.compactMap {
             guard let transaction = $0 as? LNDTransaction else { return nil }
@@ -88,13 +88,19 @@ enum ApiResultMapping {
         return input.paymentRequest
     }
     
-//    static func sendPayment(input: LNDSendResponse) -> Payment {
-//        return Payment(paymentRequest: paymentRequest, sendResponse: input) }
-//    }
-    
-//    static func decodePaymentRequest(input: LNDPayReq) -> PaymentRequest {
-//
-//    }
+    static func sendPayment(paymentRequest: PaymentRequest, amount: Satoshi?) -> (LNDSendResponse) -> Result<Payment> {
+        return {
+            if let errorMessage = $0.paymentError, !errorMessage.isEmpty {
+                return .failure(LndApiError.localizedError(errorMessage))
+            } else {
+                return .success(Payment(paymentRequest: paymentRequest, sendResponse: $0, amount: amount))
+            }
+        }
+    }
+
+    static func decodePaymentRequest(paymentRequest: String) -> (LNDPayReq) -> PaymentRequest {
+        return { PaymentRequest(payReq: $0, raw: paymentRequest) }
+    }
     
     static func closeChannel(input: LNDCloseStatusUpdate) -> CloseStatusUpdate {
         return CloseStatusUpdate(closeStatusUpdate: input)

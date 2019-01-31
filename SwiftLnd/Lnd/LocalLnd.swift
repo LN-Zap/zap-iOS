@@ -33,13 +33,4 @@ public enum LocalLnd {
     }
 }
 
-#else
-
-public enum LocalLnd {
-    public static let isRunning = false
-    
-    public static func start() {}
-    public static func stop() {}
-}
-
 #endif

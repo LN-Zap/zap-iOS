@@ -11,7 +11,6 @@ import Lightning
 import SwiftBTC
 import SwiftLnd
 
-// TODO: save in shared user defaults to share with Message Extension
 public final class Settings: NSObject, Persistable {
     // Persistable
     public typealias Value = SettingsData

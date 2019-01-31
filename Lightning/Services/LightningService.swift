@@ -69,7 +69,9 @@ public final class LightningService: NSObject {
     }
     
     public func stop() {
+        #if !REMOTEONLY
         LocalLnd.stop()
+        #endif
         infoService.stop()
     }
 }

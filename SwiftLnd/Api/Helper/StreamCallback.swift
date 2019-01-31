@@ -23,10 +23,18 @@ final class EmptyStreamCallback: NSObject, LndmobileCallbackProtocol {
 
 final class StreamCallback<T: GPBMessage, U>: NSObject, LndmobileCallbackProtocol {
     private let completion: (Result<U>) -> Void
-    private let mapping: (T) -> U?
+    private let compactMapping: ((T) -> U?)?
+    private let mapping: ((T) -> Result<U>)?
     
     init(_ completion: @escaping (Result<U>) -> Void, map: @escaping (T) -> U?) {
         self.completion = completion
+        self.compactMapping = map
+        self.mapping = nil
+    }
+    
+    init(_ completion: @escaping (Result<U>) -> Void, map: @escaping (T) -> Result<U>) {
+        self.completion = completion
+        self.compactMapping = nil
         self.mapping = map
     }
     
@@ -36,13 +44,14 @@ final class StreamCallback<T: GPBMessage, U>: NSObject, LndmobileCallbackProtoco
     }
     
     func onResponse(_ data: Data) {
-        if let message = try? T.parse(from: data),
-            let value = mapping(message) {
-            
-            if !(value is Info) && !(value is GraphTopologyUpdate) {
-                print("✅ Callback:", value)
+        if let message = try? T.parse(from: data) {
+            if let value = compactMapping?(message) {
+                completion(.success(value))
+            } else if let value = mapping?(message) {
+                completion(value)
+            } else {
+                onError(LndApiError.unknownError)
             }
-            completion(.success(value))
         } else {
             onError(LndApiError.unknownError)
         }

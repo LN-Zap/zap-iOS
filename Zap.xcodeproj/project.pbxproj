@@ -205,7 +205,8 @@
 		ADA3254221AD8A6200C5EAA2 /* Assets.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADA3254121AD8A6200C5EAA2 /* Assets.swift */; };
 		ADA3254421AD8D7900C5EAA2 /* Colors.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = ADA3254321AD8D7900C5EAA2 /* Colors.xcassets */; };
 		ADA3254621AD8F6200C5EAA2 /* StoryboardScenes.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADA3254521AD8F6200C5EAA2 /* StoryboardScenes.swift */; };
-		ADA58F8C2200B08A009A5494 /* ApiResultMapping.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADA58F8B2200B08A009A5494 /* ApiResultMapping.swift */; };
+		ADA58F8C2200B08A009A5494 /* LightningApiTransformations.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADA58F8B2200B08A009A5494 /* LightningApiTransformations.swift */; };
+		ADA58F9122031E56009A5494 /* RpcCallback.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADA58F9022031E56009A5494 /* RpcCallback.swift */; };
 		ADA6BBBF211B3AEC00A1FF19 /* ScanRectView.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADA6BBBE211B3AEC00A1FF19 /* ScanRectView.swift */; };
 		ADA75DF2210F389100003068 /* ChannelState+Localizable.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADA75DF1210F389100003068 /* ChannelState+Localizable.swift */; };
 		ADA81E9E210DE14100B7C6F2 /* UIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADA81E9D210DE14100B7C6F2 /* UIView.swift */; };
@@ -216,7 +217,6 @@
 		ADADAD5821411F7200A48E1F /* GraphViewDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADADAD5721411F7200A48E1F /* GraphViewDataSource.swift */; };
 		ADADAD5A214126BB00A48E1F /* Date.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADADAD59214126BB00A48E1F /* Date.swift */; };
 		ADADAD6C2143B2E700A48E1F /* SwiftLnd.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = ADADAD632143B2E700A48E1F /* SwiftLnd.framework */; };
-		ADADAD732143B2E700A48E1F /* SwiftLndTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADADAD722143B2E700A48E1F /* SwiftLndTests.swift */; };
 		ADADAD752143B2E700A48E1F /* SwiftLnd.h in Headers */ = {isa = PBXBuildFile; fileRef = ADADAD652143B2E700A48E1F /* SwiftLnd.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		ADADAD782143B2E700A48E1F /* SwiftLnd.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = ADADAD632143B2E700A48E1F /* SwiftLnd.framework */; };
 		ADADAD792143B2E700A48E1F /* SwiftLnd.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = ADADAD632143B2E700A48E1F /* SwiftLnd.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
@@ -638,7 +638,8 @@
 		ADA3254121AD8A6200C5EAA2 /* Assets.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Assets.swift; sourceTree = "<group>"; };
 		ADA3254321AD8D7900C5EAA2 /* Colors.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Colors.xcassets; sourceTree = "<group>"; };
 		ADA3254521AD8F6200C5EAA2 /* StoryboardScenes.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StoryboardScenes.swift; sourceTree = "<group>"; };
-		ADA58F8B2200B08A009A5494 /* ApiResultMapping.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApiResultMapping.swift; sourceTree = "<group>"; };
+		ADA58F8B2200B08A009A5494 /* LightningApiTransformations.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LightningApiTransformations.swift; sourceTree = "<group>"; };
+		ADA58F9022031E56009A5494 /* RpcCallback.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RpcCallback.swift; sourceTree = "<group>"; };
 		ADA6BBBE211B3AEC00A1FF19 /* ScanRectView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScanRectView.swift; sourceTree = "<group>"; };
 		ADA6D2C220AC1BD2009398A5 /* InfoService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfoService.swift; sourceTree = "<group>"; };
 		ADA6D2C420AC1DDE009398A5 /* BalanceService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BalanceService.swift; sourceTree = "<group>"; };
@@ -718,7 +719,6 @@
 		ADADAD652143B2E700A48E1F /* SwiftLnd.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SwiftLnd.h; sourceTree = "<group>"; };
 		ADADAD662143B2E700A48E1F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		ADADAD6B2143B2E700A48E1F /* SwiftLndTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SwiftLndTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		ADADAD722143B2E700A48E1F /* SwiftLndTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwiftLndTests.swift; sourceTree = "<group>"; };
 		ADADAD742143B2E700A48E1F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		ADBA12012090CD11001F7700 /* KeyPadView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = KeyPadView.xib; sourceTree = "<group>"; };
 		ADBA12032090CD22001F7700 /* KeyPadView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyPadView.swift; sourceTree = "<group>"; };
@@ -1006,8 +1006,6 @@
 				AD71EA4A20E2321100256307 /* LndConstants.swift */,
 				A0A05A342014047B0007D1C9 /* LocalLnd.swift */,
 				A02C9FC520304395009821B1 /* LocalLndConfiguration.swift */,
-				ADF1BB32219D7F260078BCC4 /* Macaroon.swift */,
-				AD055DA621B14A4300BE511D /* Permissions.swift */,
 				AD71EA4820E2318000256307 /* RemoteRPCConfiguration.swift */,
 			);
 			path = Lnd;
@@ -1162,14 +1160,8 @@
 			isa = PBXGroup;
 			children = (
 				AD71EA4C20E2335B00256307 /* Helper */,
-				ADBB36232080A457005662B4 /* LightningApiMock.swift */,
-				ADBB36212080A3B1005662B4 /* LightningApiProtocol.swift */,
-				A0A33EF32028743200BB76F4 /* LightningApiRPC.swift */,
-				ADBA4420209AE75600D18B71 /* LightningApiStream.swift */,
-				AD6F863320DA3C99008C371B /* WalletApiProtocol.swift */,
-				A0D3C969205D55570015C5D7 /* WalletApiRPC.swift */,
-				AD6F863120DA3C66008C371B /* WalletApiStream.swift */,
-				ADA58F8B2200B08A009A5494 /* ApiResultMapping.swift */,
+				ADA58F8E2201F565009A5494 /* Lightning */,
+				ADA58F8F22031D36009A5494 /* Wallet */,
 			);
 			path = Api;
 			sourceTree = "<group>";
@@ -1388,6 +1380,7 @@
 			children = (
 				A0D3C97C20616AB80015C5D7 /* LndApiError.swift */,
 				A0D3C96B205FCBF40015C5D7 /* Result.swift */,
+				ADA58F9022031E56009A5494 /* RpcCallback.swift */,
 				ADBA4422209B00D300D18B71 /* StreamCallback.swift */,
 			);
 			path = Helper;
@@ -1524,6 +1517,37 @@
 			path = Generated;
 			sourceTree = "<group>";
 		};
+		ADA58F8D2201ED23009A5494 /* Macaroon */ = {
+			isa = PBXGroup;
+			children = (
+				ADF1BB32219D7F260078BCC4 /* Macaroon.swift */,
+				AD055DA621B14A4300BE511D /* Permissions.swift */,
+			);
+			path = Macaroon;
+			sourceTree = "<group>";
+		};
+		ADA58F8E2201F565009A5494 /* Lightning */ = {
+			isa = PBXGroup;
+			children = (
+				ADBB36232080A457005662B4 /* LightningApiMock.swift */,
+				ADBB36212080A3B1005662B4 /* LightningApiProtocol.swift */,
+				A0A33EF32028743200BB76F4 /* LightningApiRPC.swift */,
+				ADBA4420209AE75600D18B71 /* LightningApiStream.swift */,
+				ADA58F8B2200B08A009A5494 /* LightningApiTransformations.swift */,
+			);
+			path = Lightning;
+			sourceTree = "<group>";
+		};
+		ADA58F8F22031D36009A5494 /* Wallet */ = {
+			isa = PBXGroup;
+			children = (
+				AD6F863320DA3C99008C371B /* WalletApiProtocol.swift */,
+				A0D3C969205D55570015C5D7 /* WalletApiRPC.swift */,
+				AD6F863120DA3C66008C371B /* WalletApiStream.swift */,
+			);
+			path = Wallet;
+			sourceTree = "<group>";
+		};
 		ADA6D2BE20AB215D009398A5 /* Persistence */ = {
 			isa = PBXGroup;
 			children = (
@@ -1555,6 +1579,7 @@
 				A0D3C97B20616A9A0015C5D7 /* Api */,
 				AD79E425219D90F3002589CA /* Extensions */,
 				A0376B70201CC16D00F1FBEF /* Lnd */,
+				ADA58F8D2201ED23009A5494 /* Macaroon */,
 				A0A05A5A20149AF80007D1C9 /* Model */,
 				ADADAD712143B2E700A48E1F /* Tests */,
 			);
@@ -1566,7 +1591,6 @@
 			children = (
 				ADADAD742143B2E700A48E1F /* Info.plist */,
 				ADA3253521A81B5C00C5EAA2 /* MacaroonTests.swift */,
-				ADADAD722143B2E700A48E1F /* SwiftLndTests.swift */,
 			);
 			path = Tests;
 			sourceTree = "<group>";
@@ -2834,7 +2858,7 @@
 				ADADAD882143B3C900A48E1F /* Channel.swift in Sources */,
 				ADADAD932143B3C900A48E1F /* Success.swift in Sources */,
 				ADADAD8B2143B3C900A48E1F /* CloseStatusUpdate.swift in Sources */,
-				ADA58F8C2200B08A009A5494 /* ApiResultMapping.swift in Sources */,
+				ADA58F8C2200B08A009A5494 /* LightningApiTransformations.swift in Sources */,
 				ADADAD9E2143B3C900A48E1F /* LightningApiStream.swift in Sources */,
 				ADADAD8E2143B3C900A48E1F /* NodeInfo.swift in Sources */,
 				ADADAD972143B3C900A48E1F /* LndApiError.swift in Sources */,
@@ -2845,6 +2869,7 @@
 				ADFB36DF2143B93300146FCC /* Environment.swift in Sources */,
 				ADF1BB33219D7F260078BCC4 /* Macaroon.swift in Sources */,
 				ADADAD9F2143B3C900A48E1F /* WalletApiProtocol.swift in Sources */,
+				ADA58F9122031E56009A5494 /* RpcCallback.swift in Sources */,
 				ADADAD942143B3C900A48E1F /* TestingTemplates.swift in Sources */,
 				ADADADA02143B3C900A48E1F /* WalletApiRPC.swift in Sources */,
 				ADFB36D82143B73C00146FCC /* LocalLnd.swift in Sources */,
@@ -2873,7 +2898,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				ADADAD732143B2E700A48E1F /* SwiftLndTests.swift in Sources */,
 				ADA3253621A81B5C00C5EAA2 /* MacaroonTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

@@ -7,6 +7,7 @@
 
 import Foundation
 
+// Permissions are encoded by the macaroon
 public struct Permissions {
     public struct AccessMode: OptionSet {
         public let rawValue: Int

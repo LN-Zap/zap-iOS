@@ -36,124 +36,110 @@ public final class LightningApiRPC: LightningApiProtocol {
     }
     
     public func info(completion: @escaping (Result<Info>) -> Void) {
-        lnd.rpcToGetInfo(with: LNDGetInfoRequest(), handler: result(completion, map: ApiResultMapping.info))
+        lnd.rpcToGetInfo(with: LNDGetInfoRequest(), handler: createHandler(completion, map: LightningApiTransformations.info))
             .runWithMacaroon(macaroon)
     }
     
     public func nodeInfo(pubKey: String, completion: @escaping (Result<NodeInfo>) -> Void) {
         let request = LNDNodeInfoRequest(pubKey: pubKey)
-        lnd.rpcToGetNodeInfo(with: request, handler: result(completion, map: ApiResultMapping.nodeInfo))
+        lnd.rpcToGetNodeInfo(with: request, handler: createHandler(completion, map: LightningApiTransformations.nodeInfo))
             .runWithMacaroon(macaroon)
     }
     
     public func newAddress(type: OnChainRequestAddressType, completion: @escaping (Result<BitcoinAddress>) -> Void) {
         let request = LNDNewAddressRequest(type: type)
-        lnd.rpcToNewAddress(with: request, handler: result(completion, map: ApiResultMapping.newAddress)).runWithMacaroon(macaroon)
+        lnd.rpcToNewAddress(with: request, handler: createHandler(completion, map: LightningApiTransformations.newAddress)).runWithMacaroon(macaroon)
     }
     
     public func walletBalance(completion: @escaping (Result<Satoshi>) -> Void) {
-        lnd.rpcToWalletBalance(with: LNDWalletBalanceRequest(), handler: result(completion, map: ApiResultMapping.walletBalance))
+        lnd.rpcToWalletBalance(with: LNDWalletBalanceRequest(), handler: createHandler(completion, map: LightningApiTransformations.walletBalance))
             .runWithMacaroon(macaroon)
     }
     
     public func channelBalance(completion: @escaping (Result<Satoshi>) -> Void) {
-        lnd.rpcToChannelBalance(with: LNDChannelBalanceRequest(), handler: result(completion, map: ApiResultMapping.channelBalance))
+        lnd.rpcToChannelBalance(with: LNDChannelBalanceRequest(), handler: createHandler(completion, map: LightningApiTransformations.channelBalance))
             .runWithMacaroon(macaroon)
     }
     
     public func transactions(completion: @escaping (Result<[Transaction]>) -> Void) {
-        lnd.rpcToGetTransactions(with: LNDGetTransactionsRequest(), handler: result(completion, map: ApiResultMapping.transactions)).runWithMacaroon(macaroon)
+        lnd.rpcToGetTransactions(with: LNDGetTransactionsRequest(), handler: createHandler(completion, map: LightningApiTransformations.transactions)).runWithMacaroon(macaroon)
     }
     
     public func payments(completion: @escaping (Result<[Payment]>) -> Void) {
-        lnd.rpcToListPayments(with: LNDListPaymentsRequest(), handler: result(completion, map: ApiResultMapping.payments)).runWithMacaroon(macaroon)
+        lnd.rpcToListPayments(with: LNDListPaymentsRequest(), handler: createHandler(completion, map: LightningApiTransformations.payments)).runWithMacaroon(macaroon)
     }
     
     public func routes(destination: String, amount: Satoshi, completion: @escaping (Result<[Route]>) -> Void) {
         let request = LNDQueryRoutesRequest(destination: destination, amount: amount)
-        lnd.rpcToQueryRoutes(with: request, handler: result(completion, map: ApiResultMapping.routes)).runWithMacaroon(macaroon)
+        lnd.rpcToQueryRoutes(with: request, handler: createHandler(completion, map: LightningApiTransformations.routes)).runWithMacaroon(macaroon)
     }
     
     public func channels(completion: @escaping (Result<[Channel]>) -> Void) {
-        lnd.rpcToListChannels(with: LNDListChannelsRequest(), handler: result(completion, map: ApiResultMapping.channels)).runWithMacaroon(macaroon)
+        lnd.rpcToListChannels(with: LNDListChannelsRequest(), handler: createHandler(completion, map: LightningApiTransformations.channels)).runWithMacaroon(macaroon)
     }
     
     public func closedChannels(completion: @escaping (Result<[ChannelCloseSummary]>) -> Void) {
-        lnd.rpcToClosedChannels(with: LNDClosedChannelsRequest(), handler: result(completion, map: ApiResultMapping.closedChannels)).runWithMacaroon(macaroon)
+        lnd.rpcToClosedChannels(with: LNDClosedChannelsRequest(), handler: createHandler(completion, map: LightningApiTransformations.closedChannels)).runWithMacaroon(macaroon)
     }
     
     public func pendingChannels(completion: @escaping (Result<[Channel]>) -> Void) {
-        lnd.rpcToPendingChannels(with: LNDPendingChannelsRequest(), handler: result(completion, map: ApiResultMapping.pendingChannels)).runWithMacaroon(macaroon)
+        lnd.rpcToPendingChannels(with: LNDPendingChannelsRequest(), handler: createHandler(completion, map: LightningApiTransformations.pendingChannels)).runWithMacaroon(macaroon)
     }
     
     public func connect(pubKey: String, host: String, completion: @escaping (Result<Success>) -> Void) {
         let request = LNDConnectPeerRequest(pubKey: pubKey, host: host)        
-        lnd.rpcToConnectPeer(with: request, handler: result(completion, map: ApiResultMapping.connect)).runWithMacaroon(macaroon)
+        lnd.rpcToConnectPeer(with: request, handler: createHandler(completion, map: LightningApiTransformations.connect)).runWithMacaroon(macaroon)
     }
     
     public func openChannel(pubKey: String, amount: Satoshi, completion: @escaping (Result<ChannelPoint>) -> Void) {
         let request = LNDOpenChannelRequest(pubKey: pubKey, amount: amount)
-        lnd.rpcToOpenChannelSync(with: request, handler: result(completion, map: ApiResultMapping.openChannel)).runWithMacaroon(macaroon)
+        lnd.rpcToOpenChannelSync(with: request, handler: createHandler(completion, map: LightningApiTransformations.openChannel)).runWithMacaroon(macaroon)
     }
     
     public func sendCoins(address: BitcoinAddress, amount: Satoshi, completion: @escaping (Result<String>) -> Void) {
         let request = LNDSendCoinsRequest(address: address, amount: amount)
-        lnd.rpcToSendCoins(with: request, handler: result(completion, map: ApiResultMapping.sendCoins)).runWithMacaroon(macaroon)
+        lnd.rpcToSendCoins(with: request, handler: createHandler(completion, map: LightningApiTransformations.sendCoins)).runWithMacaroon(macaroon)
     }
     
     public func peers(completion: @escaping (Result<[Peer]>) -> Void) {
-        lnd.rpcToListPeers(with: LNDListPeersRequest(), handler: result(completion, map: ApiResultMapping.peers)).runWithMacaroon(macaroon)
+        lnd.rpcToListPeers(with: LNDListPeersRequest(), handler: createHandler(completion, map: LightningApiTransformations.peers)).runWithMacaroon(macaroon)
     }
     
     public func decodePaymentRequest(_ paymentRequest: String, completion: @escaping (Result<PaymentRequest>) -> Void) {
         let request = LNDPayReqString(payReq: paymentRequest)
-        lnd.rpcToDecodePayReq(withRequest: request, handler: result(completion, map: {
-            PaymentRequest(payReq: $0, raw: paymentRequest)
-        })).runWithMacaroon(macaroon)
+        lnd.rpcToDecodePayReq(withRequest: request, handler: createHandler(completion, map: LightningApiTransformations.decodePaymentRequest(paymentRequest: paymentRequest))).runWithMacaroon(macaroon)
     }
     
     public func sendPayment(_ paymentRequest: PaymentRequest, amount: Satoshi?, completion: @escaping (Result<Payment>) -> Void) {
         let request = LNDSendRequest(paymentRequest: paymentRequest.raw, amount: amount)
-        lnd.rpcToSendPaymentSync(with: request) { response, error in
-            if let errorMessage = response?.paymentError,
-                !errorMessage.isEmpty {
-                let error = LndApiError.localizedError(errorMessage)
-                completion(.failure(error))
-            } else if let sendResponse = response {
-                completion(.success(Payment(paymentRequest: paymentRequest, sendResponse: sendResponse, amount: amount)))
-            } else if let statusMessage = error?.localizedDescription {
-                completion(.failure(LndApiError.localizedError(statusMessage)))
-            } else {
-                completion(.failure(LndApiError.unknownError))
-            }
-        }.runWithMacaroon(macaroon)
+        lnd.rpcToSendPaymentSync(with: request, handler: createHandler(completion, map: LightningApiTransformations.sendPayment(paymentRequest: paymentRequest, amount: amount))).runWithMacaroon(macaroon)
     }
     
     public func addInvoice(amount: Satoshi?, memo: String?, completion: @escaping (Result<String>) -> Void) {
         let request = LNDInvoice(amount: amount, memo: memo)
-        lnd.rpcToAddInvoice(withRequest: request, handler: result(completion, map: ApiResultMapping.addInvoice)).runWithMacaroon(macaroon)
+        lnd.rpcToAddInvoice(withRequest: request, handler: createHandler(completion, map: LightningApiTransformations.addInvoice)).runWithMacaroon(macaroon)
     }
     
     public func invoices(completion: @escaping (Result<[Invoice]>) -> Void) {
         let request = LNDListInvoiceRequest(reversed: true)
-        lnd.rpcToListInvoices(with: request, handler: result(completion, map: ApiResultMapping.invoices)).runWithMacaroon(macaroon)
+        lnd.rpcToListInvoices(with: request, handler: createHandler(completion, map: LightningApiTransformations.invoices)).runWithMacaroon(macaroon)
     }
     
     public func subscribeChannelGraph(completion: @escaping (Result<GraphTopologyUpdate>) -> Void) {
-        lnd.rpcToSubscribeChannelGraph(withRequest: LNDGraphTopologySubscription(), eventHandler: eventResult(completion, map: ApiResultMapping.subscribeChannelGraph)).runWithMacaroon(macaroon)
+        lnd.rpcToSubscribeChannelGraph(withRequest: LNDGraphTopologySubscription(), eventHandler: createHandler(completion, map: LightningApiTransformations.subscribeChannelGraph)).runWithMacaroon(macaroon)
     }
     
     public func subscribeInvoices(completion: @escaping (Result<Invoice>) -> Void) {
-        lnd.rpcToSubscribeInvoices(withRequest: LNDInvoiceSubscription(), eventHandler: eventResult(completion, map: ApiResultMapping.subscribeInvoices)).runWithMacaroon(macaroon)
+        lnd.rpcToSubscribeInvoices(withRequest: LNDInvoiceSubscription(), eventHandler: createHandler(completion, map: LightningApiTransformations.subscribeInvoices)).runWithMacaroon(macaroon)
     }
     
     public func subscribeTransactions(completion: @escaping (Result<Transaction>) -> Void) {
-        lnd.rpcToSubscribeTransactions(with: LNDGetTransactionsRequest(), eventHandler: eventResult(completion, map: ApiResultMapping.subscribeTransactions)).runWithMacaroon(macaroon)
+        lnd.rpcToSubscribeTransactions(with: LNDGetTransactionsRequest(), eventHandler: createHandler(completion, map: LightningApiTransformations.subscribeTransactions)).runWithMacaroon(macaroon)
     }
     
     public func closeChannel(channelPoint: ChannelPoint, force: Bool, completion: @escaping (Result<CloseStatusUpdate>) -> Void) {
         if let request = LNDCloseChannelRequest(channelPoint: channelPoint, force: force) {
-            lnd.rpcToCloseChannel(with: request, eventHandler: eventResult(completion, map: ApiResultMapping.closeChannel)).runWithMacaroon(macaroon)
+            lnd.rpcToCloseChannel(with: request, eventHandler: createHandler(completion, map: LightningApiTransformations.closeChannel)).runWithMacaroon(macaroon)
         } else {
             completion(.failure(LndApiError.invalidInput))
         }

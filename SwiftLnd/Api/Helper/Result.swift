@@ -63,35 +63,3 @@ public enum Result<Value>: CustomStringConvertible, CustomDebugStringConvertible
         return description
     }
 }
-
-/// Helper methods to create `Result` objects from grpc results
-
-func result<T, U>(_ completion: @escaping (Result<U>) -> Void, map: @escaping (T) -> U?) -> (T?, Error?) -> Void {
-    return { (response: T?, error: Error?) in
-        if let response = response,
-            let value = map(response) {
-            completion(.success(value))
-        } else if let error = error as NSError? {
-            switch error.code {
-            case 12:
-                print(LndApiError.walletEncrypted)
-                completion(.failure(LndApiError.walletEncrypted))
-            case 13:
-                print(LndApiError.lndNotRunning)
-                completion(.failure(LndApiError.lndNotRunning))
-            default:
-                print(error)
-                completion(.failure(error))
-            }
-        } else {
-            print(LndApiError.unknownError)
-            completion(.failure(LndApiError.unknownError))
-        }
-    }
-}
-
-func eventResult<T, U>(_ completion: @escaping (Result<U>) -> Void, map: @escaping (T) -> U?) -> (Bool, T?, Error?) -> Void {
-    return { (_, response: T?, error: Error?) in
-        result(completion, map: map)(response, error)
-    }
-}

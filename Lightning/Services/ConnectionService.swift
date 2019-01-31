@@ -62,7 +62,9 @@ public final class ConnectionService: NSObject {
     
     public func stop() {
         lightningService?.stop()
+        #if !REMOTEONLY
         LocalLnd.stop()
+        #endif
     }
     
     public func connect() {
