@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14313.18" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14283.14"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14460.20"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -50,7 +50,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="2hw-GH-ZzO">
-                                <rect key="frame" x="0.0" y="120" width="375" height="450"/>
+                                <rect key="frame" x="0.0" y="120" width="375" height="431"/>
                                 <connections>
                                     <segue destination="U1K-Gb-FhV" kind="embed" id="5Qa-yR-UJd"/>
                                 </connections>
@@ -61,28 +61,18 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="wfp-6A-yeJ" customClass="GradientView" customModule="Library" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="570" width="375" height="97"/>
-                                <subviews>
-                                    <button opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="b1R-ha-hZK">
-                                        <rect key="frame" x="0.0" y="0.0" width="375" height="97"/>
-                                        <state key="normal" title="Button"/>
-                                        <connections>
-                                            <action selector="nextButtonTapped:" destination="TXY-Ty-gHy" eventType="touchUpInside" id="NGZ-Hl-MJz"/>
-                                        </connections>
-                                    </button>
-                                </subviews>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            <button opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="b1R-ha-hZK">
+                                <rect key="frame" x="20" y="571" width="335" height="76"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="97" id="6OZ-bk-0N9"/>
-                                    <constraint firstAttribute="bottom" secondItem="b1R-ha-hZK" secondAttribute="bottom" id="K05-2z-kIR"/>
-                                    <constraint firstAttribute="trailing" secondItem="b1R-ha-hZK" secondAttribute="trailing" id="VuW-hv-VoH"/>
-                                    <constraint firstItem="b1R-ha-hZK" firstAttribute="top" secondItem="wfp-6A-yeJ" secondAttribute="top" id="hG1-wO-y1d"/>
-                                    <constraint firstItem="b1R-ha-hZK" firstAttribute="leading" secondItem="wfp-6A-yeJ" secondAttribute="leading" id="q30-t8-f9R"/>
+                                    <constraint firstAttribute="height" constant="76" id="7xm-jA-4Wo"/>
                                 </constraints>
-                            </view>
+                                <state key="normal" title="Button"/>
+                                <connections>
+                                    <action selector="nextButtonTapped:" destination="TXY-Ty-gHy" eventType="touchUpInside" id="NGZ-Hl-MJz"/>
+                                </connections>
+                            </button>
                             <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" style="white" translatesAutoresizingMaskIntoConstraints="NO" id="raL-Iy-fWQ">
-                                <rect key="frame" x="177.5" y="335" width="20" height="20"/>
+                                <rect key="frame" x="177.5" y="325.5" width="20" height="20"/>
                             </activityIndicatorView>
                         </subviews>
                         <color key="backgroundColor" white="0.55909358129999998" alpha="1" colorSpace="calibratedWhite"/>
@@ -91,14 +81,14 @@
                             <constraint firstItem="raL-Iy-fWQ" firstAttribute="centerX" secondItem="2hw-GH-ZzO" secondAttribute="centerX" id="3bX-iT-xZU"/>
                             <constraint firstItem="8Ah-Gl-chL" firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="0Eh-4P-us5" secondAttribute="trailing" constant="20" id="8B7-HH-U5X"/>
                             <constraint firstItem="2hw-GH-ZzO" firstAttribute="leading" secondItem="8Ah-Gl-chL" secondAttribute="leading" id="CQa-7x-ELh"/>
-                            <constraint firstItem="wfp-6A-yeJ" firstAttribute="trailing" secondItem="8Ah-Gl-chL" secondAttribute="trailing" id="HlV-uJ-A80"/>
-                            <constraint firstItem="wfp-6A-yeJ" firstAttribute="bottom" secondItem="djB-vy-Fcp" secondAttribute="bottom" id="Igs-vw-1Se"/>
+                            <constraint firstItem="8Ah-Gl-chL" firstAttribute="bottom" secondItem="b1R-ha-hZK" secondAttribute="bottom" constant="20" id="IB3-7I-nnm"/>
+                            <constraint firstItem="8Ah-Gl-chL" firstAttribute="trailing" secondItem="b1R-ha-hZK" secondAttribute="trailing" constant="20" id="NxD-6w-cGE"/>
                             <constraint firstItem="raL-Iy-fWQ" firstAttribute="centerY" secondItem="2hw-GH-ZzO" secondAttribute="centerY" id="RGK-5e-SOU"/>
                             <constraint firstItem="2hw-GH-ZzO" firstAttribute="top" secondItem="0Eh-4P-us5" secondAttribute="bottom" constant="20" id="Vqq-td-x3J"/>
-                            <constraint firstItem="wfp-6A-yeJ" firstAttribute="leading" secondItem="8Ah-Gl-chL" secondAttribute="leading" id="c6E-wY-xK8"/>
+                            <constraint firstItem="b1R-ha-hZK" firstAttribute="top" secondItem="2hw-GH-ZzO" secondAttribute="bottom" constant="20" id="ezj-Fr-qQa"/>
+                            <constraint firstItem="b1R-ha-hZK" firstAttribute="leading" secondItem="8Ah-Gl-chL" secondAttribute="leading" constant="20" id="oDE-kJ-ShX"/>
                             <constraint firstItem="0Eh-4P-us5" firstAttribute="leading" secondItem="8Ah-Gl-chL" secondAttribute="leading" constant="20" id="oHD-b1-MFR"/>
                             <constraint firstItem="2hw-GH-ZzO" firstAttribute="top" secondItem="8Ah-Gl-chL" secondAttribute="top" constant="100" id="sIF-56-Dc8"/>
-                            <constraint firstItem="wfp-6A-yeJ" firstAttribute="top" secondItem="2hw-GH-ZzO" secondAttribute="bottom" id="y1I-B8-Oqf"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="8Ah-Gl-chL"/>
                     </view>

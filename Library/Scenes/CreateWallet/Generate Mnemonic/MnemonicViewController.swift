@@ -31,7 +31,7 @@ final class MnemonicViewController: UIViewController {
         title = L10n.Scene.CreateWallet.title
         view.backgroundColor = UIColor.Zap.deepSeaBlue
         
-        Style.Button.custom(color: UIColor.Zap.white).apply(to: doneButton)
+        Style.Button.background.apply(to: doneButton)
         Style.Label.custom().apply(to: topLabel)
         topLabel.textColor = .white
         topLabel.text = L10n.Scene.CreateWallet.descriptionLabel
