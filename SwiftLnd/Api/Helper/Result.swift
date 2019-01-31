@@ -7,19 +7,14 @@
 
 import Foundation
 
-public enum Result<Value>: CustomStringConvertible, CustomDebugStringConvertible {
-    case success(Value)
-    case failure(Error)
+public enum Result<Success, Failure: Error> {
+    /// A success, storing a `Success` value.
+    case success(Success)
     
-    init(value: Value?, error: Error) {
-        if let value = value {
-            self = .success(value)
-        } else {
-            self = .failure(error)
-        }
-    }
+    /// A failure, storing a `Failure` value.
+    case failure(Failure)
     
-    public var value: Value? {
+    public var value: Success? {
         switch self {
         case let .success(value):
             return value
@@ -37,11 +32,11 @@ public enum Result<Value>: CustomStringConvertible, CustomDebugStringConvertible
         }
     }
     
-    public func map<U>(_ transform: (Value) -> U) -> Result<U> {
+    public func map<NewSuccess>(_ transform: (Success) -> NewSuccess) -> Result<NewSuccess, Failure> {
         return flatMap { .success(transform($0)) }
     }
     
-    public func flatMap<U>(_ transform: (Value) -> Result<U>) -> Result<U> {
+    public func flatMap<NewSuccess>(_ transform: (Success) -> Result<NewSuccess, Failure>) -> Result<NewSuccess, Failure> {
         switch self {
         case let .success(value):
             return transform(value)
@@ -49,7 +44,9 @@ public enum Result<Value>: CustomStringConvertible, CustomDebugStringConvertible
             return .failure(error)
         }
     }
+}
 
+extension Result: CustomStringConvertible, CustomDebugStringConvertible {
     public var description: String {
         switch self {
         case let .success(value):

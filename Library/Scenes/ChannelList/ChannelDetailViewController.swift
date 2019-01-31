@@ -121,7 +121,7 @@ final class ChannelDetailViewController: ModalDetailViewController {
         self.present(alertController, animated: true)
     }
 
-    private func dismissAfterClose(result: Result<CloseStatusUpdate>, loadingView: LoadingView?) {
+    private func dismissAfterClose(result: Result<CloseStatusUpdate, LndApiError>, loadingView: LoadingView?) {
         loadingView?.removeFromSuperview()
 
         switch result {

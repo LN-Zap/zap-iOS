@@ -8,7 +8,7 @@
 import Foundation
 
 public protocol WalletApiProtocol {
-    func generateSeed(passphrase: String?, completion: @escaping (Result<[String]>) -> Void)
-    func initWallet(mnemonic: [String], password: String, completion: @escaping (Result<Success>) -> Void)
-    func unlockWallet(password: String, completion: @escaping (Result<Success>) -> Void)
+    func generateSeed(passphrase: String?, completion: @escaping (Result<[String], LndApiError>) -> Void)
+    func initWallet(mnemonic: [String], password: String, completion: @escaping (Result<Success, LndApiError>) -> Void)
+    func unlockWallet(password: String, completion: @escaping (Result<Success, LndApiError>) -> Void)
 }

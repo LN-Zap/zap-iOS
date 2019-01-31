@@ -22,17 +22,17 @@ final class EmptyStreamCallback: NSObject, LndmobileCallbackProtocol {
 }
 
 final class StreamCallback<T: GPBMessage, U>: NSObject, LndmobileCallbackProtocol {
-    private let completion: (Result<U>) -> Void
+    private let completion: (Result<U, LndApiError>) -> Void
     private let compactMapping: ((T) -> U?)?
-    private let mapping: ((T) -> Result<U>)?
+    private let mapping: ((T) -> Result<U, LndApiError>)?
     
-    init(_ completion: @escaping (Result<U>) -> Void, map: @escaping (T) -> U?) {
+    init(_ completion: @escaping (Result<U, LndApiError>) -> Void, map: @escaping (T) -> U?) {
         self.completion = completion
         self.compactMapping = map
         self.mapping = nil
     }
     
-    init(_ completion: @escaping (Result<U>) -> Void, map: @escaping (T) -> Result<U>) {
+    init(_ completion: @escaping (Result<U, LndApiError>) -> Void, map: @escaping (T) -> Result<U, LndApiError>) {
         self.completion = completion
         self.compactMapping = nil
         self.mapping = map
@@ -40,7 +40,7 @@ final class StreamCallback<T: GPBMessage, U>: NSObject, LndmobileCallbackProtoco
     
     func onError(_ error: Error) {
         print("🅾️ Callback Error:", error)
-        completion(.failure(error))
+        completion(.failure(LndApiError.localizedError(error.localizedDescription)))
     }
     
     func onResponse(_ data: Data) {

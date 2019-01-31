@@ -18,6 +18,8 @@ extension InvoiceError: LocalizedError {
             return L10n.Error.wrongUriFormat
         case let .wrongNetworkError(linkNetwork, expectedNetwork):
             return L10n.Error.wrongUriNetwork(linkNetwork.localized, expectedNetwork.localized)
+        case .apiError(let localizedDescription):
+            return localizedDescription
         }
     }
 }
@@ -150,12 +152,12 @@ final class SendViewModel {
         }
     }
     
-    func send(completion: @escaping (Result<Success>) -> Void) {
+    func send(completion: @escaping (Result<Success, LndApiError>) -> Void) {
         guard let amount = amount else { return }
         
         isSending = true
         
-        let internalComplection: (Result<Success>) -> Void = { [weak self] in
+        let internalComplection: (Result<Success, LndApiError>) -> Void = { [weak self] in
             if case .failure = $0 {
                 self?.isSending = false
             }

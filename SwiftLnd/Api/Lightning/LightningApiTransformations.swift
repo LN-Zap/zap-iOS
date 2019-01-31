@@ -88,7 +88,7 @@ enum LightningApiTransformations {
         return input.paymentRequest
     }
     
-    static func sendPayment(paymentRequest: PaymentRequest, amount: Satoshi?) -> (LNDSendResponse) -> Result<Payment> {
+    static func sendPayment(paymentRequest: PaymentRequest, amount: Satoshi?) -> (LNDSendResponse) -> Result<Payment, LndApiError> {
         return {
             if let errorMessage = $0.paymentError, !errorMessage.isEmpty {
                 return .failure(LndApiError.localizedError(errorMessage))

@@ -42,7 +42,7 @@ enum BiometricAuthentication {
         #endif
     }
     
-    static func authenticate(completion: @escaping (Result<Success>) -> Void) {
+    static func authenticate(completion: @escaping (Result<Success, AuthenticationError>) -> Void) {
         #if targetEnvironment(simulator)
         guard Environment.fakeBiometricAuthentication else {
             completion(.failure(AuthenticationError.notAvailable))
@@ -80,7 +80,7 @@ enum BiometricAuthentication {
         #endif
     }
     
-    private static func execute(_ completion: @escaping (Result<Success>) -> Void, with result: Result<Success>) {
+    private static func execute(_ completion: @escaping (Result<Success, AuthenticationError>) -> Void, with result: Result<Success, AuthenticationError>) {
         DispatchQueue.main.async {
             completion(result)
         }

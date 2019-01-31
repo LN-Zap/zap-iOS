@@ -11,8 +11,8 @@ import Foundation
 
 // Most of the time when the grpc call returns a type T the map function
 // succeeds so we can just return U without wrapping it in a result.
-func createHandler<T, U>(_ completion: @escaping (Result<U>) -> Void, map: @escaping (T) -> U?) -> (T?, Error?) -> Void {
-    let map = { (response: T) -> Result<U> in
+func createHandler<T, U>(_ completion: @escaping (Result<U, LndApiError>) -> Void, map: @escaping (T) -> U?) -> (T?, Error?) -> Void {
+    let map = { (response: T) -> Result<U, LndApiError> in
         if let value = map(response) {
             return .success(value)
         } else {
@@ -25,7 +25,7 @@ func createHandler<T, U>(_ completion: @escaping (Result<U>) -> Void, map: @esca
 
 // In special cases the mapping fails even when the grpc call returns a type T.
 // (e.g. `SendResponse` contains a `payment_error` property)
-func createHandler<T, U>(_ completion: @escaping (Result<U>) -> Void, map: @escaping (T) -> Result<U>) -> (T?, Error?) -> Void {
+func createHandler<T, U>(_ completion: @escaping (Result<U, LndApiError>) -> Void, map: @escaping (T) -> Result<U, LndApiError>) -> (T?, Error?) -> Void {
     return { (response: T?, error: Error?) in
         if let response = response {
             completion(map(response))
@@ -39,14 +39,14 @@ func createHandler<T, U>(_ completion: @escaping (Result<U>) -> Void, map: @esca
                 completion(.failure(LndApiError.lndNotRunning))
             default:
                 print(error)
-                completion(.failure(error))
+                completion(.failure(LndApiError.localizedError(error.localizedDescription)))
             }
         }
     }
 }
 
 // event results have an extra `Bool` argument that we just ignore.
-func createHandler<T, U>(_ completion: @escaping (Result<U>) -> Void, map: @escaping (T) -> U?) -> (Bool, T?, Error?) -> Void {
+func createHandler<T, U>(_ completion: @escaping (Result<U, LndApiError>) -> Void, map: @escaping (T) -> U?) -> (Bool, T?, Error?) -> Void {
     return { (_, response: T?, error: Error?) in
         createHandler(completion, map: map)(response, error)
     }

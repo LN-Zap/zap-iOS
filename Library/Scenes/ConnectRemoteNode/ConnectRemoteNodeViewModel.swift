@@ -83,7 +83,7 @@ final class ConnectRemoteNodeViewModel: NSObject {
         )
     }
     
-    func pasteCertificates(_ string: String, completion: @escaping (SwiftLnd.Result<Success>) -> Void) {
+    func pasteCertificates(_ string: String, completion: @escaping (SwiftLnd.Result<Success, RPCConnectQRCodeError>) -> Void) {
         RPCConnectQRCode.configuration(for: string) { [weak self] result in
             DispatchQueue.main.async {
                 switch result {
@@ -91,7 +91,6 @@ final class ConnectRemoteNodeViewModel: NSObject {
                     self?.remoteNodeConfiguration = configuration
                     completion(.success(Success()))
                 case .failure(let error):
-                    guard let error = error as? RPCConnectQRCodeError else { return }
                     completion(.failure(error))
                 }
             }

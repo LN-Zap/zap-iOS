@@ -81,7 +81,7 @@ final class ChannelListViewModel: NSObject {
         channelService.update()
     }
     
-    func close(_ channel: Channel, completion: @escaping (SwiftLnd.Result<CloseStatusUpdate>) -> Void) {
+    func close(_ channel: Channel, completion: @escaping (SwiftLnd.Result<CloseStatusUpdate, LndApiError>) -> Void) {
         channelService.close(channel, completion: completion)
     }
 }

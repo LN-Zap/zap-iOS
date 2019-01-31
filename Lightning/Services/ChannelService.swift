@@ -47,14 +47,14 @@ public final class ChannelService {
         }
     }
     
-    public func open(lightningNodeURI: LightningNodeURI, amount: Satoshi, completion: @escaping (SwiftLnd.Result<ChannelPoint>) -> Void) {
+    public func open(lightningNodeURI: LightningNodeURI, amount: Satoshi, completion: @escaping (SwiftLnd.Result<ChannelPoint, LndApiError>) -> Void) {
         api.peers { [weak self, api] peers in
             if peers.value?.contains(where: { $0.pubKey == lightningNodeURI.pubKey }) == true {
                 self?.openConnectedChannel(pubKey: lightningNodeURI.pubKey, amount: amount, completion: completion)
             } else {
                 api.connect(pubKey: lightningNodeURI.pubKey, host: lightningNodeURI.host) { result in
                     if let error = result.error {
-                        completion(.failure(error))
+                        completion(.failure(LndApiError.localizedError(error.localizedDescription)))
                     } else {
                         self?.openConnectedChannel(pubKey: lightningNodeURI.pubKey, amount: amount, completion: completion)
                     }
@@ -63,14 +63,14 @@ public final class ChannelService {
         }
     }
     
-    private func openConnectedChannel(pubKey: String, amount: Satoshi, completion: @escaping (SwiftLnd.Result<ChannelPoint>) -> Void) {
+    private func openConnectedChannel(pubKey: String, amount: Satoshi, completion: @escaping (SwiftLnd.Result<ChannelPoint, LndApiError>) -> Void) {
         api.openChannel(pubKey: pubKey, amount: amount) { [weak self] in
             self?.update()
             completion($0)
         }
     }
     
-    public func close(_ channel: Channel, completion: @escaping (SwiftLnd.Result<CloseStatusUpdate>) -> Void) {
+    public func close(_ channel: Channel, completion: @escaping (SwiftLnd.Result<CloseStatusUpdate, LndApiError>) -> Void) {
         let force = channel.state != .active
         api.closeChannel(channelPoint: channel.channelPoint, force: force) { [weak self] in
             self?.update()

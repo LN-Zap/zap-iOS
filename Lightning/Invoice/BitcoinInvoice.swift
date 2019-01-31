@@ -13,6 +13,7 @@ import SwiftLnd
 public enum InvoiceError: Error {
     case unknownFormat
     case wrongNetworkError(linkNetwork: Network, expectedNetwork: Network)
+    case apiError(String)
 }
 
 /*
@@ -30,7 +31,7 @@ public final class BitcoinInvoice {
 }
 
 public enum BitcoinInvoiceFactory {
-    public static func create(from address: String, lightningService: LightningService, completion: @escaping (Result<BitcoinInvoice>) -> Void) {
+    public static func create(from address: String, lightningService: LightningService, completion: @escaping (Result<BitcoinInvoice, InvoiceError>) -> Void) {
         if let bitcoinURI = BitcoinURI(string: address) {
             if let paymentRequest = bitcoinURI.lightningFallback,
                 let invoiceURI = LightningInvoiceURI(string: paymentRequest) {
@@ -45,7 +46,7 @@ public enum BitcoinInvoiceFactory {
         }
     }
     
-    private static func decodeLightningPaymentRequest(invoiceURI: LightningInvoiceURI, bitcoinURI: BitcoinURI?, lightningService: LightningService, completion: @escaping (Result<BitcoinInvoice>) -> Void) {
+    private static func decodeLightningPaymentRequest(invoiceURI: LightningInvoiceURI, bitcoinURI: BitcoinURI?, lightningService: LightningService, completion: @escaping (Result<BitcoinInvoice, InvoiceError>) -> Void) {
         lightningService.transactionService.decodePaymentRequest(invoiceURI.address) { result in
             DispatchQueue.main.async {
                 switch result {
@@ -62,13 +63,13 @@ public enum BitcoinInvoiceFactory {
                     
                     validateInvoice(invoice, lightningService: lightningService, completion: completion)
                 case .failure(let error):
-                    completion(.failure(error))
+                    completion(.failure(.apiError(error.localizedDescription)))
                 }
             }
         }
     }
     
-    private static func validateInvoice(_ invoice: BitcoinInvoice, lightningService: LightningService, completion: (Result<BitcoinInvoice>) -> Void) {
+    private static func validateInvoice(_ invoice: BitcoinInvoice, lightningService: LightningService, completion: (Result<BitcoinInvoice, InvoiceError>) -> Void) {
         let currentNetwork = lightningService.infoService.network.value
         
         if let bitcoinURI = invoice.bitcoinURI,

@@ -14,17 +14,17 @@ import LndRpc
 public final class WalletApiStream: WalletApiProtocol {
     public init() {}
     
-    public func generateSeed(passphrase: String? = nil, completion: @escaping (Result<[String]>) -> Void) {
+    public func generateSeed(passphrase: String? = nil, completion: @escaping (Result<[String], LndApiError>) -> Void) {
         let data = LNDGenSeedRequest(passphrase: passphrase).data()
         LndmobileGenSeed(data, StreamCallback<LNDGenSeedResponse, [String]>(completion) { $0.cipherSeedMnemonicArray.compactMap { $0 as? String } })
     }
     
-    public func initWallet(mnemonic: [String], password: String, completion: @escaping (Result<Success>) -> Void) {
+    public func initWallet(mnemonic: [String], password: String, completion: @escaping (Result<Success, LndApiError>) -> Void) {
         let data = LNDInitWalletRequest(password: password, mnemonic: mnemonic).data()
         LndmobileInitWallet(data, StreamCallback<LNDInitWalletResponse, Success>(completion) { _ in Success() })
     }
     
-    public func unlockWallet(password: String, completion: @escaping (Result<Success>) -> Void) {
+    public func unlockWallet(password: String, completion: @escaping (Result<Success, LndApiError>) -> Void) {
         let data = LNDUnlockWalletRequest(password: password).data()
         LndmobileUnlockWallet(data, StreamCallback<LNDUnlockWalletResponse, Success>(completion) { _ in Success() })
     }

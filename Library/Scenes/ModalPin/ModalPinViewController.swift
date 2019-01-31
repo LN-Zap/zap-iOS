@@ -20,13 +20,13 @@ final class ModalPinViewController: ModalViewController, ContentHeightProviding 
     
     fileprivate var authenticationViewModel: AuthenticationViewModel?
     fileprivate var window: UIWindow?
-    fileprivate var completion: ((Result<Success>) -> Void)?
+    fileprivate var completion: ((Result<Success, AuthenticationError>) -> Void)?
     
     var contentHeight: CGFloat? { return window?.bounds.height } // ContentHeightProviding
     
     override var preferredStatusBarStyle: UIStatusBarStyle { return .lightContent }
     
-    private static func instantiate(authenticationViewModel: AuthenticationViewModel, window: UIWindow, completion: @escaping ((Result<Success>) -> Void)) -> ModalPinViewController {
+    private static func instantiate(authenticationViewModel: AuthenticationViewModel, window: UIWindow, completion: @escaping ((Result<Success, AuthenticationError>) -> Void)) -> ModalPinViewController {
         let viewController = StoryboardScene.ModalPin.modalPinViewController.instantiate()
         viewController.authenticationViewModel = authenticationViewModel
         viewController.window = window
@@ -58,7 +58,7 @@ final class ModalPinViewController: ModalViewController, ContentHeightProviding 
         cancelButton.setTitle(L10n.Generic.cancel, for: .normal)
     }
     
-    static func authenticate(authenticationViewModel: AuthenticationViewModel, completion: @escaping (Result<Success>) -> Void) {
+    static func authenticate(authenticationViewModel: AuthenticationViewModel, completion: @escaping (Result<Success, AuthenticationError>) -> Void) {
         let pinWindow = UIWindow(frame: UIScreen.main.bounds)
         pinWindow.rootViewController = RootViewController()
         pinWindow.windowLevel = WindowLevel.modalPin

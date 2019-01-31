@@ -32,7 +32,7 @@ public final class RequestViewModel {
         self.transactionService = transactionService
     }
     
-    func create(completion: @escaping (Result<QRCodeDetailViewModel>) -> Void) {
+    func create(completion: @escaping (Result<QRCodeDetailViewModel, LndApiError>) -> Void) {
         switch requestMethod {
         case .lightning:
             createLightning(completion: completion)
@@ -41,7 +41,7 @@ public final class RequestViewModel {
         }
     }
     
-    private func createLightning(completion: @escaping (Result<QRCodeDetailViewModel>) -> Void) {
+    private func createLightning(completion: @escaping (Result<QRCodeDetailViewModel, LndApiError>) -> Void) {
         transactionService.addInvoice(amount: amount, memo: trimmedMemo) { result in
             completion(result.flatMap {
                 guard let invoiceURI = LightningInvoiceURI(string: $0) else { return .failure(LndApiError.unknownError) }
@@ -50,7 +50,7 @@ public final class RequestViewModel {
         }
     }
     
-    private func createOnChain(completion: @escaping (Result<QRCodeDetailViewModel>) -> Void) {
+    private func createOnChain(completion: @escaping (Result<QRCodeDetailViewModel, LndApiError>) -> Void) {
         if let address = cachedOnChainAddress,
             let viewModel = onChainRequestViewModel(for: address) {
             completion(.success(viewModel))

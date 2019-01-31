@@ -54,7 +54,7 @@ public final class InfoService {
         updateInfoTimer?.fire()
     }
     
-    private func updateInfo(result: Result<Info>) {
+    private func updateInfo(result: Result<Info, LndApiError>) {
         if let info = result.value {
             blockHeight.value = info.blockHeight
             isSyncedToChain.value = info.isSyncedToChain
@@ -78,7 +78,7 @@ public final class InfoService {
         }
     }
     
-    private func walletState(for result: Result<Info>?) -> State {
+    private func walletState(for result: Result<Info, LndApiError>?) -> State {
         guard let result = result else { return .connecting }
         
         if let info = result.value {
