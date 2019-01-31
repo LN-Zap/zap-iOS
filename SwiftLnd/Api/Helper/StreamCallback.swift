@@ -26,16 +26,16 @@ final class StreamCallback<T: GPBMessage, U>: NSObject, LndmobileCallbackProtoco
     private let compactMapping: ((T) -> U?)?
     private let mapping: ((T) -> Result<U, LndApiError>)?
     
-    init(_ completion: @escaping (Result<U, LndApiError>) -> Void, map: @escaping (T) -> U?) {
+    init(_ completion: @escaping (Result<U, LndApiError>) -> Void, transform: @escaping (T) -> U?) {
         self.completion = completion
-        self.compactMapping = map
+        self.compactMapping = transform
         self.mapping = nil
     }
     
-    init(_ completion: @escaping (Result<U, LndApiError>) -> Void, map: @escaping (T) -> Result<U, LndApiError>) {
+    init(_ completion: @escaping (Result<U, LndApiError>) -> Void, transform: @escaping (T) -> Result<U, LndApiError>) {
         self.completion = completion
         self.compactMapping = nil
-        self.mapping = map
+        self.mapping = transform
     }
     
     func onError(_ error: Error) {

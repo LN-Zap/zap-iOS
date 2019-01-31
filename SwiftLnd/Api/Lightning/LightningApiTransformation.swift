@@ -9,7 +9,7 @@ import Foundation
 import LndRpc
 import SwiftBTC
 
-enum LightningApiTransformations {
+enum LightningApiTransformation {
     static func transactions(input: LNDTransactionDetails) -> [Transaction] {
         return input.transactionsArray.compactMap {
             guard let transaction = $0 as? LNDTransaction else { return nil }

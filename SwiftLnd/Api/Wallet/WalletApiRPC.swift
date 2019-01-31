@@ -23,16 +23,16 @@ public final class WalletApiRPC: WalletApiProtocol {
     
     public func generateSeed(passphrase: String? = nil, completion: @escaping (Result<[String], LndApiError>) -> Void) {
         let request = LNDGenSeedRequest(passphrase: passphrase)
-        lnd.rpcToGenSeed(with: request, handler: createHandler(completion, map: WalletApiTransformations.generateSeed)).runWithMacaroon(macaroon)
+        lnd.rpcToGenSeed(with: request, handler: createHandler(completion, transform: WalletApiTransformation.generateSeed)).runWithMacaroon(macaroon)
     }
     
     public func initWallet(mnemonic: [String], password: String, completion: @escaping (Result<Success, LndApiError>) -> Void) {
         let request = LNDInitWalletRequest(password: password, mnemonic: mnemonic)
-        lnd.rpcToInitWallet(with: request, handler: createHandler(completion, map: WalletApiTransformations.initWallet)).runWithMacaroon(macaroon)
+        lnd.rpcToInitWallet(with: request, handler: createHandler(completion, transform: WalletApiTransformation.initWallet)).runWithMacaroon(macaroon)
     }
     
     public func unlockWallet(password: String, completion: @escaping (Result<Success, LndApiError>) -> Void) {
         let request = LNDUnlockWalletRequest(password: password)
-        lnd.rpcToUnlockWallet(with: request, handler: createHandler(completion, map: WalletApiTransformations.unlockWallet)).runWithMacaroon(macaroon)
+        lnd.rpcToUnlockWallet(with: request, handler: createHandler(completion, transform: WalletApiTransformation.unlockWallet)).runWithMacaroon(macaroon)
     }
 }

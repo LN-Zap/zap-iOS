@@ -8,7 +8,7 @@
 import Foundation
 import LndRpc
 
-enum WalletApiTransformations {
+enum WalletApiTransformation {
     static func generateSeed(input: LNDGenSeedResponse) -> [String] {
         return input.cipherSeedMnemonicArray.compactMap { $0 as? String }
     }

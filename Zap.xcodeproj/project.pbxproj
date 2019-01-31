@@ -205,9 +205,10 @@
 		ADA3254221AD8A6200C5EAA2 /* Assets.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADA3254121AD8A6200C5EAA2 /* Assets.swift */; };
 		ADA3254421AD8D7900C5EAA2 /* Colors.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = ADA3254321AD8D7900C5EAA2 /* Colors.xcassets */; };
 		ADA3254621AD8F6200C5EAA2 /* StoryboardScenes.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADA3254521AD8F6200C5EAA2 /* StoryboardScenes.swift */; };
-		ADA58F8C2200B08A009A5494 /* LightningApiTransformations.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADA58F8B2200B08A009A5494 /* LightningApiTransformations.swift */; };
+		ADA58F8C2200B08A009A5494 /* LightningApiTransformation.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADA58F8B2200B08A009A5494 /* LightningApiTransformation.swift */; };
 		ADA58F9122031E56009A5494 /* RpcCallback.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADA58F9022031E56009A5494 /* RpcCallback.swift */; };
-		ADA58F9322033FC7009A5494 /* WalletApiTransformations.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADA58F9222033FC7009A5494 /* WalletApiTransformations.swift */; };
+		ADA58F9322033FC7009A5494 /* WalletApiTransformation.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADA58F9222033FC7009A5494 /* WalletApiTransformation.swift */; };
+		ADA58F9522034A25009A5494 /* GRPCProtoCall+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADA58F9422034A25009A5494 /* GRPCProtoCall+Extensions.swift */; };
 		ADA6BBBF211B3AEC00A1FF19 /* ScanRectView.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADA6BBBE211B3AEC00A1FF19 /* ScanRectView.swift */; };
 		ADA75DF2210F389100003068 /* ChannelState+Localizable.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADA75DF1210F389100003068 /* ChannelState+Localizable.swift */; };
 		ADA81E9E210DE14100B7C6F2 /* UIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADA81E9D210DE14100B7C6F2 /* UIView.swift */; };
@@ -639,9 +640,10 @@
 		ADA3254121AD8A6200C5EAA2 /* Assets.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Assets.swift; sourceTree = "<group>"; };
 		ADA3254321AD8D7900C5EAA2 /* Colors.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Colors.xcassets; sourceTree = "<group>"; };
 		ADA3254521AD8F6200C5EAA2 /* StoryboardScenes.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StoryboardScenes.swift; sourceTree = "<group>"; };
-		ADA58F8B2200B08A009A5494 /* LightningApiTransformations.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LightningApiTransformations.swift; sourceTree = "<group>"; };
+		ADA58F8B2200B08A009A5494 /* LightningApiTransformation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LightningApiTransformation.swift; sourceTree = "<group>"; };
 		ADA58F9022031E56009A5494 /* RpcCallback.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RpcCallback.swift; sourceTree = "<group>"; };
-		ADA58F9222033FC7009A5494 /* WalletApiTransformations.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WalletApiTransformations.swift; sourceTree = "<group>"; };
+		ADA58F9222033FC7009A5494 /* WalletApiTransformation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WalletApiTransformation.swift; sourceTree = "<group>"; };
+		ADA58F9422034A25009A5494 /* GRPCProtoCall+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "GRPCProtoCall+Extensions.swift"; sourceTree = "<group>"; };
 		ADA6BBBE211B3AEC00A1FF19 /* ScanRectView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScanRectView.swift; sourceTree = "<group>"; };
 		ADA6D2C220AC1BD2009398A5 /* InfoService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfoService.swift; sourceTree = "<group>"; };
 		ADA6D2C420AC1DDE009398A5 /* BalanceService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BalanceService.swift; sourceTree = "<group>"; };
@@ -1418,6 +1420,7 @@
 			isa = PBXGroup;
 			children = (
 				AD79E421219D90E2002589CA /* Data+Extensions.swift */,
+				ADA58F9422034A25009A5494 /* GRPCProtoCall+Extensions.swift */,
 				ADBA4424209B067400D18B71 /* Protobuf+Extensions.swift */,
 				AD79E423219D90EF002589CA /* String+Extensions.swift */,
 			);
@@ -1535,7 +1538,7 @@
 				ADBB36212080A3B1005662B4 /* LightningApiProtocol.swift */,
 				A0A33EF32028743200BB76F4 /* LightningApiRPC.swift */,
 				ADBA4420209AE75600D18B71 /* LightningApiStream.swift */,
-				ADA58F8B2200B08A009A5494 /* LightningApiTransformations.swift */,
+				ADA58F8B2200B08A009A5494 /* LightningApiTransformation.swift */,
 			);
 			path = Lightning;
 			sourceTree = "<group>";
@@ -1546,7 +1549,7 @@
 				AD6F863320DA3C99008C371B /* WalletApiProtocol.swift */,
 				A0D3C969205D55570015C5D7 /* WalletApiRPC.swift */,
 				AD6F863120DA3C66008C371B /* WalletApiStream.swift */,
-				ADA58F9222033FC7009A5494 /* WalletApiTransformations.swift */,
+				ADA58F9222033FC7009A5494 /* WalletApiTransformation.swift */,
 			);
 			path = Wallet;
 			sourceTree = "<group>";
@@ -2861,7 +2864,7 @@
 				ADADAD882143B3C900A48E1F /* Channel.swift in Sources */,
 				ADADAD932143B3C900A48E1F /* Success.swift in Sources */,
 				ADADAD8B2143B3C900A48E1F /* CloseStatusUpdate.swift in Sources */,
-				ADA58F8C2200B08A009A5494 /* LightningApiTransformations.swift in Sources */,
+				ADA58F8C2200B08A009A5494 /* LightningApiTransformation.swift in Sources */,
 				ADADAD9E2143B3C900A48E1F /* LightningApiStream.swift in Sources */,
 				ADADAD8E2143B3C900A48E1F /* NodeInfo.swift in Sources */,
 				ADADAD972143B3C900A48E1F /* LndApiError.swift in Sources */,
@@ -2878,6 +2881,7 @@
 				ADFB36D82143B73C00146FCC /* LocalLnd.swift in Sources */,
 				AD3781CC21664EB00083CE77 /* RemoteRPCConfiguration.swift in Sources */,
 				ADADAD912143B3C900A48E1F /* PaymentRequest.swift in Sources */,
+				ADA58F9522034A25009A5494 /* GRPCProtoCall+Extensions.swift in Sources */,
 				ADADAD9B2143B3C900A48E1F /* LightningApiMock.swift in Sources */,
 				ADFB36D92143B73C00146FCC /* LocalLndConfiguration.swift in Sources */,
 				ADADAD9C2143B3C900A48E1F /* LightningApiProtocol.swift in Sources */,
@@ -2885,7 +2889,7 @@
 				ADADAD8F2143B3C900A48E1F /* OnChainRequestAddressType.swift in Sources */,
 				ADADAD9D2143B3C900A48E1F /* LightningApiRPC.swift in Sources */,
 				ADADAD922143B3C900A48E1F /* Peer.swift in Sources */,
-				ADA58F9322033FC7009A5494 /* WalletApiTransformations.swift in Sources */,
+				ADA58F9322033FC7009A5494 /* WalletApiTransformation.swift in Sources */,
 				ADADAD9A2143B3C900A48E1F /* StreamCallback.swift in Sources */,
 				ADADAD8A2143B3C900A48E1F /* ChannelPoint.swift in Sources */,
 				ADADAD902143B3C900A48E1F /* OpenStatusUpdate.swift in Sources */,

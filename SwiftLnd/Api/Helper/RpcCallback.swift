@@ -11,24 +11,24 @@ import Foundation
 
 // Most of the time when the grpc call returns a type T the map function
 // succeeds so we can just return U without wrapping it in a result.
-func createHandler<T, U>(_ completion: @escaping (Result<U, LndApiError>) -> Void, map: @escaping (T) -> U?) -> (T?, Error?) -> Void {
+func createHandler<T, U>(_ completion: @escaping (Result<U, LndApiError>) -> Void, transform: @escaping (T) -> U?) -> (T?, Error?) -> Void {
     let map = { (response: T) -> Result<U, LndApiError> in
-        if let value = map(response) {
+        if let value = transform(response) {
             return .success(value)
         } else {
             print(LndApiError.unknownError)
             return .failure(LndApiError.unknownError)
         }
     }
-    return createHandler(completion, map: map)
+    return createHandler(completion, transform: map)
 }
 
 // In special cases the mapping fails even when the grpc call returns a type T.
 // (e.g. `SendResponse` contains a `payment_error` property)
-func createHandler<T, U>(_ completion: @escaping (Result<U, LndApiError>) -> Void, map: @escaping (T) -> Result<U, LndApiError>) -> (T?, Error?) -> Void {
+func createHandler<T, U>(_ completion: @escaping (Result<U, LndApiError>) -> Void, transform: @escaping (T) -> Result<U, LndApiError>) -> (T?, Error?) -> Void {
     return { (response: T?, error: Error?) in
         if let response = response {
-            completion(map(response))
+            completion(transform(response))
         } else if let error = error as NSError? {
             switch error.code {
             case 12:
@@ -46,8 +46,8 @@ func createHandler<T, U>(_ completion: @escaping (Result<U, LndApiError>) -> Voi
 }
 
 // event results have an extra `Bool` argument that we just ignore.
-func createHandler<T, U>(_ completion: @escaping (Result<U, LndApiError>) -> Void, map: @escaping (T) -> U?) -> (Bool, T?, Error?) -> Void {
+func createHandler<T, U>(_ completion: @escaping (Result<U, LndApiError>) -> Void, transform: @escaping (T) -> U?) -> (Bool, T?, Error?) -> Void {
     return { (_, response: T?, error: Error?) in
-        createHandler(completion, map: map)(response, error)
+        createHandler(completion, transform: transform)(response, error)
     }
 }
