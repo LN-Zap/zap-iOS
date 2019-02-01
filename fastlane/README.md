@@ -25,11 +25,6 @@ Update build number.
 fastlane change_version
 ```
 Update app version.
-### internal_alpha
-```
-fastlane internal_alpha
-```
-Builds new Alpha Build and uploads it to S3.
 ### alpha
 ```
 fastlane alpha
