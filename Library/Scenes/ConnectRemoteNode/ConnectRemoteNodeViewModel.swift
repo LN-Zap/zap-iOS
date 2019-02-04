@@ -32,12 +32,16 @@ final class ConnectRemoteNodeViewModel: NSObject {
     
     private var testServer: LightningApiRPC?
     
-    override init() {
+    override private init() {
+        fatalError("not implemented")
+    }
+    
+    init(remoteRPCConfiguration: RemoteRPCConfiguration?) {
         dataSource = MutableObservable2DArray([])
         
         super.init()
         
-        remoteNodeConfiguration = RemoteRPCConfiguration.load()
+        self.remoteNodeConfiguration = remoteRPCConfiguration
         updateTableView()
     }
     
@@ -97,13 +101,14 @@ final class ConnectRemoteNodeViewModel: NSObject {
         }
     }
     
-    func connect(completion: @escaping (Bool) -> Void) {
+    func connect(completion: @escaping (WalletConfiguration, Bool) -> Void) {
         guard let remoteNodeConfiguration = remoteNodeConfiguration else { return }
 
-        remoteNodeConfiguration.save()
-
         testServer = LightningApiRPC(configuration: remoteNodeConfiguration)
-        testServer?.canConnect(completion: completion)
+        testServer?.canConnect {
+            let configuration = WalletConfiguration(alias: nil, network: nil, connection: .remote(remoteNodeConfiguration), walletId: UUID().uuidString)
+            completion(configuration, $0)
+        }
     }
     
     func updateUrl(_ url: URL) {

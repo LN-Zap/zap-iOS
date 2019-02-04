@@ -11,18 +11,18 @@ import Lightning
 final class RemoveRemoteNodeSettingsItem: SettingsItem {
     let title = L10n.Scene.Settings.Item.removeRemoteNode
     
-    private weak var settingsDelegate: SettingsDelegate?
+    private weak var disconnectWalletDelegate: DisconnectWalletDelegate?
     
-    init(settingsDelegate: SettingsDelegate) {
-        self.settingsDelegate = settingsDelegate
+    init(disconnectWalletDelegate: DisconnectWalletDelegate) {
+        self.disconnectWalletDelegate = disconnectWalletDelegate
     }
     
     func didSelectItem(from fromViewController: UIViewController) {
         let alertController = UIAlertController(title: L10n.Scene.Settings.Item.RemoveRemoteNode.Confirmation.title, message: L10n.Scene.Settings.Item.RemoveRemoteNode.Confirmation.message, preferredStyle: .actionSheet)
         
         let cancelAlertAction = UIAlertAction(title: L10n.Generic.cancel, style: .cancel, handler: nil)
-        let disconnectAlertAction = UIAlertAction(title: L10n.Scene.Settings.Item.RemoveRemoteNode.Confirmation.button, style: .destructive) { [settingsDelegate] _ in
-            settingsDelegate?.disconnect()
+        let disconnectAlertAction = UIAlertAction(title: L10n.Scene.Settings.Item.RemoveRemoteNode.Confirmation.button, style: .destructive) { [disconnectWalletDelegate] _ in
+            disconnectWalletDelegate?.disconnect()
         }
         
         alertController.addAction(cancelAlertAction)

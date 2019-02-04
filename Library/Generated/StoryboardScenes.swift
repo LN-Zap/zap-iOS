@@ -67,6 +67,11 @@ internal enum StoryboardScene {
 
     internal static let initialScene = InitialSceneType<LoadingViewController>(storyboard: Loading.self)
   }
+  internal enum ManageWallets: StoryboardType {
+    internal static let storyboardName = "ManageWallets"
+
+    internal static let manageWalletsViewController = SceneType<ManageWalletsViewController>(storyboard: ManageWallets.self, identifier: "ManageWalletsViewController")
+  }
   internal enum ModalPin: StoryboardType {
     internal static let storyboardName = "ModalPin"
 

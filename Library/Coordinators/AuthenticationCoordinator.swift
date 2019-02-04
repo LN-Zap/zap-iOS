@@ -26,7 +26,9 @@ final class AuthenticationCoordinator {
     public init(rootViewController: RootViewController) {
         self.rootViewController = rootViewController
         authenticationViewModel = AuthenticationViewModel()
-        
+    }
+    
+    func start() {
         observation = authenticationViewModel.observe(\.state, options: [.initial]) { _, _ in
             self.updateState()
         }

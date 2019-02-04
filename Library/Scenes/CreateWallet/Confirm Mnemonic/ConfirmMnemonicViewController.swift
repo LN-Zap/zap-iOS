@@ -6,21 +6,24 @@
 //
 
 import Bond
+import Lightning
 import UIKit
 
 private let itemWitdh: CGFloat = 140
 
 final class ConfirmMnemonicViewController: UIViewController {
-    
     @IBOutlet private weak var descriptionLabel: UILabel!
     @IBOutlet private weak var collectionView: UICollectionView!
-    fileprivate var confirmViewModel: ConfirmMnemonicViewModel?
-    fileprivate var walletConfirmed: (() -> Void)?
     
-    static func instantiate(confirmMnemonicViewModel: ConfirmMnemonicViewModel, walletConfirmed: @escaping () -> Void) -> ConfirmMnemonicViewController {
+    // swiftlint:disable implicitly_unwrapped_optional
+    fileprivate var confirmViewModel: ConfirmMnemonicViewModel!
+    fileprivate var connectWallet: ((WalletConfiguration) -> Void)!
+    // swiftlint:enable implicitly_unwrapped_optional
+
+    static func instantiate(confirmMnemonicViewModel: ConfirmMnemonicViewModel, connectWallet: @escaping (WalletConfiguration) -> Void) -> ConfirmMnemonicViewController {
         let viewController = StoryboardScene.CreateWallet.confirmMnemonicViewController.instantiate()
         viewController.confirmViewModel = confirmMnemonicViewModel
-        viewController.walletConfirmed = walletConfirmed
+        viewController.connectWallet = connectWallet
         return viewController
     }
     
@@ -53,7 +56,7 @@ final class ConfirmMnemonicViewController: UIViewController {
         guard let confirmViewModel = confirmViewModel else { return }
         
         if currentCell >= confirmViewModel.wordList.count - 1 {
-            walletConfirmed?()
+            connectWallet?(confirmViewModel.configuration)
             confirmViewModel.didVerifyMnemonic()
             return
         }

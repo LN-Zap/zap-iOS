@@ -46,8 +46,12 @@ final class StreamCallback<T: GPBMessage, U>: NSObject, LndmobileCallbackProtoco
     func onResponse(_ data: Data) {
         if let message = try? T.parse(from: data) {
             if let value = compactMapping?(message) {
+                if !(value is Info) && !(value is GraphTopologyUpdate) {
+                    print("[🍕]", value)
+                }
                 completion(.success(value))
             } else if let value = mapping?(message) {
+                print("[🍕]", value)
                 completion(value)
             } else {
                 onError(LndApiError.unknownError)

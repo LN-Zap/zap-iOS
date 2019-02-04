@@ -6,6 +6,7 @@
 //
 
 import Bond
+import Lightning
 import SafariServices
 import UIKit
 
@@ -85,12 +86,12 @@ final class ConnectRemoteNodeViewController: UIViewController {
     @IBOutlet private weak var tableView: UITableView!
     
     fileprivate var presentQRCodeScannerButtonTapped: (() -> Void)?
-    fileprivate var didSetupWallet: (() -> Void)?
+    fileprivate var didSetupWallet: ((WalletConfiguration) -> Void)?
     fileprivate var connectRemoteNodeViewModel: ConnectRemoteNodeViewModel?
     
     private var isConnecting = false
     
-    static func instantiate(didSetupWallet: @escaping () -> Void, connectRemoteNodeViewModel: ConnectRemoteNodeViewModel, presentQRCodeScannerButtonTapped: @escaping (() -> Void)) -> ConnectRemoteNodeViewController {
+    static func instantiate(didSetupWallet: @escaping (WalletConfiguration) -> Void, connectRemoteNodeViewModel: ConnectRemoteNodeViewModel, presentQRCodeScannerButtonTapped: @escaping (() -> Void)) -> ConnectRemoteNodeViewController {
         let viewController = StoryboardScene.ConnectRemoteNode.connectRemoteNodeViewController.instantiate()
         viewController.didSetupWallet = didSetupWallet
         viewController.connectRemoteNodeViewModel = connectRemoteNodeViewModel
@@ -143,10 +144,10 @@ final class ConnectRemoteNodeViewController: UIViewController {
         
         cell.textLabel?.isHidden = true
         
-        connectRemoteNodeViewModel?.connect { [weak self] success in
+        connectRemoteNodeViewModel?.connect { [weak self] configuration, success in
             DispatchQueue.main.async {
                 if success {
-                    self?.didSetupWallet?()
+                    self?.didSetupWallet?(configuration)
                 } else {
                     self?.displayError()
                 }

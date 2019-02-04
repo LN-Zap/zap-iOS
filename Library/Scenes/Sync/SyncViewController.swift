@@ -10,7 +10,7 @@ import ReactiveKit
 import SwiftLnd
 import UIKit
 
-protocol SyncDelegate: class {
+protocol DisconnectWalletDelegate: class {
     func disconnect()
 }
 
@@ -24,11 +24,11 @@ final class SyncViewController: UIViewController {
     @IBOutlet private weak var disconnectBarButton: UIBarButtonItem!
     
     fileprivate var lightningService: LightningService?
-    fileprivate weak var delegate: SyncDelegate?
+    fileprivate weak var delegate: DisconnectWalletDelegate?
 
     private var syncPercentageEstimator: SyncPercentageEstimator?
     
-    static func instantiate(with lightningService: LightningService, delegate: SyncDelegate) -> SyncViewController {
+    static func instantiate(with lightningService: LightningService, delegate: DisconnectWalletDelegate) -> SyncViewController {
         let syncViewController = StoryboardScene.Sync.syncViewController.instantiate()
         syncViewController.lightningService = lightningService
         syncViewController.delegate = delegate
@@ -71,7 +71,8 @@ final class SyncViewController: UIViewController {
     
     private func setIdleTimer(disabled: Bool) {
         #if !REMOTEONLY
-        if case .local = LightningConnection.current {
+        if let connection = lightningService?.connection,
+            case .local = connection {
             UIApplication.shared.isIdleTimerDisabled = disabled
         }
         #endif
@@ -130,7 +131,6 @@ final class SyncViewController: UIViewController {
     @IBAction private func disconnectNode(_ sender: Any) {
         let alertController = UIAlertController(title: L10n.Scene.Sync.DisconnectAlert.title, message: L10n.Scene.Sync.DisconnectAlert.message, preferredStyle: .actionSheet)
         alertController.addAction(UIAlertAction(title: L10n.Scene.Sync.DisconnectAlert.destructiveAction, style: .destructive, handler: { [weak self] _ in
-            RemoteRPCConfiguration.delete()
             self?.delegate?.disconnect()
         }))
         alertController.addAction(UIAlertAction(title: L10n.Scene.Sync.DisconnectAlert.cancelAction, style: .cancel, handler: nil))

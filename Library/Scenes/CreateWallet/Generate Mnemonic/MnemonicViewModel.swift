@@ -10,6 +10,7 @@ import Foundation
 import Lightning
 
 final class MnemonicViewModel {
+    private let configuration: WalletConfiguration
     private let walletService: WalletService
     private var mnemonic: [String]? {
         didSet {
@@ -22,7 +23,17 @@ final class MnemonicViewModel {
     
     var confirmMnemonicViewModel: ConfirmMnemonicViewModel? {
         guard let mnemonic = mnemonic else { return  nil }
-        return ConfirmMnemonicViewModel(walletService: walletService, mnemonic: mnemonic)
+        return ConfirmMnemonicViewModel(walletService: walletService, mnemonic: mnemonic, configuration: configuration)
+    }
+    
+    init(configuration: WalletConfiguration) {
+        self.configuration = configuration
+        walletService = WalletService(connection: configuration.connection)
+        
+        walletService.generateSeed { [weak self] result in
+            guard let mnemonic = result.value else { return }
+            self?.mnemonic = mnemonic
+        }
     }
     
     func updatePageWords(with mnemonic: [String]) {
@@ -43,15 +54,6 @@ final class MnemonicViewModel {
                 defer { index += 1 }
                 return MnemonicWord(index: index, word: $0)
             }
-        }
-    }
-    
-    init(walletService: WalletService) {
-        self.walletService = walletService
-        
-        walletService.generateSeed { [weak self] result in
-            guard let mnemonic = result.value else { return }
-            self?.mnemonic = mnemonic
         }
     }
 }

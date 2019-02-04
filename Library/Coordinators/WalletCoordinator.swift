@@ -9,7 +9,7 @@ import Lightning
 import SafariServices
 import UIKit
 
-final class MainCoordinator: Routing {
+final class WalletCoordinator: NSObject {
     private let rootViewController: RootViewController
     
     private let lightningService: LightningService
@@ -18,40 +18,86 @@ final class MainCoordinator: Routing {
     private let authenticationViewModel: AuthenticationViewModel
     
     private weak var detailViewController: UINavigationController?
-    private weak var settingsDelegate: SettingsDelegate?
+    private weak var disconnectWalletDelegate: DisconnectWalletDelegate?
     
-    init(rootViewController: RootViewController, lightningService: LightningService, settingsDelegate: SettingsDelegate, authenticationViewModel: AuthenticationViewModel) {
+    var route: Route?
+    
+    init(rootViewController: RootViewController, lightningService: LightningService, disconnectWalletDelegate: DisconnectWalletDelegate, authenticationViewModel: AuthenticationViewModel) {
         self.rootViewController = rootViewController
         self.lightningService = lightningService
-        self.settingsDelegate = settingsDelegate
+        self.disconnectWalletDelegate = disconnectWalletDelegate
         self.authenticationViewModel = authenticationViewModel
         
         channelListViewModel = ChannelListViewModel(channelService: lightningService.channelService)
         historyViewModel = HistoryViewModel(historyService: lightningService.historyService)
     }
     
-    public func handle(_ route: Route) {
-        switch route {
-        case .send(let invoice):
-            if let invoice = invoice {
-                BitcoinInvoiceFactory.create(from: invoice, lightningService: lightningService, completion: { [weak self] result in
-                    DispatchQueue.main.async {
-                        switch result {
-                        case .success:
-                            self?.presentSend(invoice: invoice)
-                        case .failure(let error):
-                            Toast.presentError(error.localizedDescription)
-                        }
-                    }
-                })
-            } else {
-                presentSend(invoice: invoice)
-            }
-        case .request:
-            presentRequest()
-        case .connect:
-            break // is handled in root coordinator
+    func start() {
+        lightningService.start()
+        ExchangeUpdaterJob.start()
+        
+        updateFor(state: lightningService.connectionService.state.value)
+        listenForStateChanges()
+    }
+    
+    func stop() {
+        lightningService.stop()
+        ExchangeUpdaterJob.stop()
+    }
+    
+    public func listenForStateChanges() {
+        lightningService.connectionService.state
+            .skip(first: 1)
+            .distinct()
+            .observeOn(DispatchQueue.main)
+            .observeNext { [weak self] state in
+                self?.updateFor(state: state)
+            }.dispose(in: reactive.bag)
+    }
+    
+    private func updateFor(state: ConnectionStateService.State) {
+        print("🗽 state:", state)
+        
+        switch state {
+        case .connecting:
+            presentLoading(message: .none)
+        case .syncing:
+            presentSync()
+        case .running:
+            presentMain()
         }
+    }
+    
+    private func presentSync() {
+        guard let disconnectWalletDelegate = disconnectWalletDelegate else { return }
+        let viewController = SyncViewController.instantiate(with: lightningService, delegate: disconnectWalletDelegate)
+        presentViewController(viewController)
+    }
+    
+    private func presentLoading(message: LoadingViewController.Message) {
+        let viewController = LoadingViewController.instantiate(message: message)
+        presentViewController(viewController)
+    }
+    
+    private func presentMain() {
+        let tabBarController = RootTabBarController()
+        
+        tabBarController.viewControllers = [
+            walletViewController(),
+            historyViewController(),
+            settingsViewController()
+        ]
+        presentViewController(tabBarController)
+    
+        historyViewModel.setupTabBarBadge(delegate: tabBarController)
+        
+        if let route = self.route {
+            handle(route)
+        }
+    }
+    
+    private func presentViewController(_ viewController: UIViewController) {
+        rootViewController.setContainerContent(viewController)
     }
     
     func walletViewController() -> WalletViewController {
@@ -59,8 +105,8 @@ final class MainCoordinator: Routing {
     }
 
     func settingsViewController() -> ZapNavigationController {
-        guard let settingsDelegate = settingsDelegate else { fatalError("Didn't set settings Delegate") }
-        let settingsViewController = SettingsViewController.instantiate(info: lightningService.infoService.info, settingsDelegate: settingsDelegate, pushChannelList: pushChannelList, pushNodeURIViewController: pushNodeURIViewController)
+        guard let disconnectWalletDelegate = disconnectWalletDelegate else { fatalError("Didn't set disconnectWalletDelegate") }
+        let settingsViewController = SettingsViewController.instantiate(info: lightningService.infoService.info.value, disconnectWalletDelegate: disconnectWalletDelegate, authenticationViewModel: authenticationViewModel, pushChannelList: pushChannelList, pushNodeURIViewController: pushNodeURIViewController)
         
         let navigationController = ZapNavigationController(rootViewController: settingsViewController)
         
@@ -168,11 +214,42 @@ final class MainCoordinator: Routing {
     
     private func pushNodeURIViewController(on navigationController: UINavigationController) {
         guard
-            let info = lightningService.infoService.info,
+            let info = lightningService.infoService.info.value,
             let qrCodeDetailViewModel = NodeURIQRCodeViewModel(info: info)
             else { return }
 
         let nodeURIViewController = QRCodeDetailViewController.instantiate(with: qrCodeDetailViewModel)
         navigationController.pushViewController(nodeURIViewController, animated: true)
+    }
+}
+
+extension WalletCoordinator: Routing {
+    public func handle(_ route: Route) {
+        if lightningService.connectionService.state.value != .running {
+            self.route = route
+            return
+        }
+        
+        switch route {
+        case .send(let invoice):
+            if let invoice = invoice {
+                BitcoinInvoiceFactory.create(from: invoice, lightningService: lightningService, completion: { [weak self] result in
+                    DispatchQueue.main.async {
+                        switch result {
+                        case .success:
+                            self?.presentSend(invoice: invoice)
+                        case .failure(let error):
+                            Toast.presentError(error.localizedDescription)
+                        }
+                    }
+                })
+            } else {
+                presentSend(invoice: invoice)
+            }
+        case .request:
+            presentRequest()
+        case .connect:
+            break // is handled in root coordinator
+        }
     }
 }

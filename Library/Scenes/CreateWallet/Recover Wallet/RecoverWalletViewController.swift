@@ -5,22 +5,24 @@
 //  Copyright © 2018 Zap. All rights reserved.
 //
 
+import Lightning
 import UIKit
 
 final class RecoverWalletViewController: UIViewController {
-
     @IBOutlet private weak var topLabel: UILabel!
     @IBOutlet private weak var placeholderTextView: UITextView!
     @IBOutlet private weak var textView: UITextView!
     @IBOutlet private weak var doneButton: UIButton!
     
-    fileprivate var recoverWalletViewModel: RecoverWalletViewModel?
-    fileprivate var presentSetupPin: (() -> Void)?
-    
-    static func instantiate(recoverWalletViewModel: RecoverWalletViewModel, presentSetupPin: @escaping () -> Void) -> RecoverWalletViewController {
+    // swiftlint:disable implicitly_unwrapped_optional
+    fileprivate var recoverWalletViewModel: RecoverWalletViewModel!
+    fileprivate var connectWallet: ((WalletConfiguration) -> Void)!
+    // swiftlint:enable implicitly_unwrapped_optional
+
+    static func instantiate(recoverWalletViewModel: RecoverWalletViewModel, connectWallet: @escaping (WalletConfiguration) -> Void) -> RecoverWalletViewController {
         let viewController = StoryboardScene.CreateWallet.recoverWalletViewController.instantiate()
         viewController.recoverWalletViewModel = recoverWalletViewModel
-        viewController.presentSetupPin = presentSetupPin
+        viewController.connectWallet = connectWallet
         return viewController
     }
     
@@ -49,14 +51,15 @@ final class RecoverWalletViewController: UIViewController {
     
     @IBAction private func recoverWallet(_ sender: Any) {
         guard let mnemonic = textView.text else { return }
-        recoverWalletViewModel?.recoverWallet(with: mnemonic) { [weak self] result in
+        recoverWalletViewModel.recoverWallet(with: mnemonic) { [weak self] result in
             if let errorDescription = result.error?.localizedDescription {
                 DispatchQueue.main.async {
                     Toast.presentError(errorDescription)
                 }
             } else {
                 DispatchQueue.main.async {
-                    self?.presentSetupPin?()
+                    guard let configuration = self?.recoverWalletViewModel.configuration else { return }
+                    self?.connectWallet?(configuration)
                 }
             }
         }

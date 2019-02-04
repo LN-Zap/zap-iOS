@@ -46,6 +46,10 @@ final class LocalLndConfiguration: NSObject {
     
     func save(at path: URL) {
         let configurationDestination = path.appendingPathComponent("lnd.conf")
-        try? string.write(to: configurationDestination, atomically: false, encoding: .utf8)
+        do {
+            try string.write(to: configurationDestination, atomically: false, encoding: .utf8)
+        } catch {
+            print("🤮 \(error)")
+        }
     }
 }
