@@ -14,7 +14,9 @@ class InvoiceTests: XCTestCase {
     
     func createInvoice(address: String, network: Network, decodedPaymentRequest: PaymentRequest, testAssertions: @escaping (Result<BitcoinInvoice, InvoiceError>) -> Void) {
         let api = LightningApiMock(info: network == .mainnet ? Info.Template.mainnet : Info.Template.testnet, decodePaymentRequest: decodedPaymentRequest)
-        let mockService = LightningService(api: api, persistence: MockPersistence())
+        
+        let testConnection = LightningConnection.remote(RemoteRPCConfiguration.mock)
+        let mockService = LightningService(api: api, walletId: "1", persistence: MockPersistence(), connection: testConnection)
         
         let expectation = self.expectation(description: "Decoding")
         

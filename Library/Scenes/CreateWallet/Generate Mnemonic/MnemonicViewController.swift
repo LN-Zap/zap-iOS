@@ -30,6 +30,7 @@ final class MnemonicViewController: UIViewController {
         
         title = L10n.Scene.CreateWallet.title
         view.backgroundColor = UIColor.Zap.deepSeaBlue
+        activityIndicator.startAnimating()
         
         Style.Button.background.apply(to: doneButton)
         Style.Label.custom().apply(to: topLabel)

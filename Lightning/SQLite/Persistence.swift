@@ -7,6 +7,7 @@
 
 import Foundation
 import SQLite
+import SwiftLnd
 
 enum PersistenceError: Error {
     case noConnection
@@ -14,7 +15,7 @@ enum PersistenceError: Error {
 
 protocol Persistence {
     func connection() throws -> Connection
-    func setConnectedNode(pubKey: String)
+    func setConnectedNode(connection: LightningConnection, pubKey: String)
 }
 
 fileprivate extension Connection {
@@ -31,24 +32,13 @@ fileprivate extension Connection {
 
 final class SQLitePersistence: Persistence {
     private var currentConnection: Connection?
-    private var pubKey: String?
     
-    func connection() throws -> Connection {
-        guard let connection = currentConnection else {
-            throw PersistenceError.noConnection
-        }
-        return connection
-    }
-    
-    func setConnectedNode(pubKey: String) {
-        guard pubKey != self.pubKey else { return }
-        self.pubKey = pubKey
-        
+    init(walletId: WalletId) {
         guard
-            let path = NSSearchPathForDirectoriesInDomains(.documentDirectory, .userDomainMask, true).first,
-            let connection = try? Connection("\(path)/\(pubKey).sqlite3")
-            else { fatalError("can not open database") }
-        
+            let url = FileManager.default.walletDirectory(for: walletId)?.appendingPathComponent("data.sqlite3"),
+            let connection = try? Connection(url.path)
+            else { fatalError("can not connect to db.") }
+    
         if Environment.traceDB {
             connection.trace { print("💾", $0) }
         }
@@ -58,8 +48,19 @@ final class SQLitePersistence: Persistence {
         do {
             try connection.createTables()
         } catch {
-            fatalError(error.localizedDescription)
+            print("🤮 \(error.localizedDescription)")
         }
+    }
+    
+    func connection() throws -> Connection {
+        guard let connection = currentConnection else {
+            throw PersistenceError.noConnection
+        }
+        return connection
+    }
+    
+    func setConnectedNode(connection: LightningConnection, pubKey: String) {
+        
     }
 }
 
@@ -79,5 +80,5 @@ class MockPersistence: Persistence {
         return inMemoryConnection
     }
     
-    func setConnectedNode(pubKey: String) {}
+    func setConnectedNode(connection: LightningConnection, pubKey: String) {}
 }

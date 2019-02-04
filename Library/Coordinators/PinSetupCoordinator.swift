@@ -7,16 +7,16 @@
 
 import UIKit
 
-protocol PinCoordinatorDelegate: class {
-    func connect()
+protocol PinSetupCoordinatorDelegate: class {
+    func didSetupPin()
 }
 
 final class PinSetupCoordinator {
     private let rootViewController: RootViewController
     private let authenticationViewModel: AuthenticationViewModel
-    private weak var delegate: PinCoordinatorDelegate?
+    private weak var delegate: PinSetupCoordinatorDelegate?
 
-    init(rootViewController: RootViewController, authenticationViewModel: AuthenticationViewModel, delegate: PinCoordinatorDelegate) {
+    init(rootViewController: RootViewController, authenticationViewModel: AuthenticationViewModel, delegate: PinSetupCoordinatorDelegate) {
         self.rootViewController = rootViewController
         self.authenticationViewModel = authenticationViewModel
         self.delegate = delegate
@@ -29,6 +29,6 @@ final class PinSetupCoordinator {
     }
     
     func didSetupPin() {
-        delegate?.connect()
+        delegate?.didSetupPin()
     }
 }

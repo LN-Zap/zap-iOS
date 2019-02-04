@@ -7,7 +7,7 @@
 
 import Foundation
 
-public struct RemoteRPCConfiguration: Codable {
+public struct RemoteRPCConfiguration: Codable, Equatable {
     public let certificate: String?
     public let macaroon: Macaroon
     public let url: URL

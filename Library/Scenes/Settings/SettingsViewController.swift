@@ -8,20 +8,14 @@
 import SwiftLnd
 import UIKit
 
-protocol SettingsDelegate: class {
-    var authenticationViewModel: AuthenticationViewModel { get }
-    
-    func disconnect()
-}
-
 final class SettingsViewController: GroupedTableViewController {
     var info: Info?
     
-    static func instantiate(info: Info?, settingsDelegate: SettingsDelegate, pushChannelList: @escaping (UINavigationController) -> Void, pushNodeURIViewController: @escaping (UINavigationController) -> Void) -> SettingsViewController {
-        return SettingsViewController(info: info, settingsDelegate: settingsDelegate, pushChannelList: pushChannelList, pushNodeURIViewController: pushNodeURIViewController)
+    static func instantiate(info: Info?, disconnectWalletDelegate: DisconnectWalletDelegate, authenticationViewModel: AuthenticationViewModel, pushChannelList: @escaping (UINavigationController) -> Void, pushNodeURIViewController: @escaping (UINavigationController) -> Void) -> SettingsViewController {
+        return SettingsViewController(info: info, disconnectWalletDelegate: disconnectWalletDelegate, authenticationViewModel: authenticationViewModel, pushChannelList: pushChannelList, pushNodeURIViewController: pushNodeURIViewController)
     }
     
-    private init(info: Info?, settingsDelegate: SettingsDelegate, pushChannelList: @escaping (UINavigationController) -> Void, pushNodeURIViewController: @escaping (UINavigationController) -> Void) {
+    private init(info: Info?, disconnectWalletDelegate: DisconnectWalletDelegate, authenticationViewModel: AuthenticationViewModel, pushChannelList: @escaping (UINavigationController) -> Void, pushNodeURIViewController: @escaping (UINavigationController) -> Void) {
         self.info = info
         
         var lightningRows: [SettingsItem] = [
@@ -41,8 +35,8 @@ final class SettingsViewController: GroupedTableViewController {
             ]),
             Section(title: "Lightning", rows: lightningRows),
             Section(title: L10n.Scene.Settings.Section.wallet, rows: [
-                RemoveRemoteNodeSettingsItem(settingsDelegate: settingsDelegate),
-                ChangePinSettingsItem(settingsDelegate: settingsDelegate)
+                RemoveRemoteNodeSettingsItem(disconnectWalletDelegate: disconnectWalletDelegate),
+                ChangePinSettingsItem(authenticationViewModel: authenticationViewModel)
             ]),
             Section(title: nil, rows: [
                 // swiftlint:disable:next force_unwrapping

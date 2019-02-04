@@ -33,7 +33,6 @@ abstract_target 'RPC' do
     target 'Lightning' do
         pod 'SwiftBTC'
         pod 'Bond'
-        pod 'KeychainAccess'
         pod 'SQLite.swift', '~> 0.11.5'
         
         target 'LightningTests' do
