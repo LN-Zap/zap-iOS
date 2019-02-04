@@ -23,7 +23,6 @@ public enum LocalLnd {
         isRunning = true
         LocalLndConfiguration.standard.save(at: path)
 
-        guard !Environment.isRunningTests else { return }
         LndmobileStart(LocalLnd.path.path, EmptyStreamCallback())
     }
     
