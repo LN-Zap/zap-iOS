@@ -39,6 +39,7 @@ public struct Permissions {
         case offChain = "offchain"
         case onChain = "onchain"
         case peers
+        case signer
     }
     
     private let permissions: [Permissions.Domain: Permissions.AccessMode]
