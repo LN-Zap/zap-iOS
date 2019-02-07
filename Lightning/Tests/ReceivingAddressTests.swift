@@ -11,6 +11,7 @@ import SwiftBTC
 import XCTest
 
 extension RemoteRPCConfiguration {
+    // swiftlint:disable:next force_unwrapping
     static var mock: RemoteRPCConfiguration = RemoteRPCConfiguration(certificate: nil, macaroon: Macaroon(hexadecimalString: "deadbeef")!, url: URL(string: "127.0.0.1")!)
 }
 

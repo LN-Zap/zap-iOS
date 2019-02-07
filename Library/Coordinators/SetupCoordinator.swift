@@ -92,7 +92,11 @@ final class SetupCoordinator {
         #endif
     }
     
-    private func connectRemoteNode(_ remoteRPCConfiguration: RemoteRPCConfiguration) {
+    private func connectRemoteNode() {
+        connectRemoteNode(nil)
+    }
+
+    private func connectRemoteNode(_ remoteRPCConfiguration: RemoteRPCConfiguration?) {
         let viewModel = ConnectRemoteNodeViewModel(remoteRPCConfiguration: remoteRPCConfiguration)
         connectRemoteNodeViewModel = viewModel
         let viewController = ConnectRemoteNodeViewController.instantiate(didSetupWallet: didSetupWallet, connectRemoteNodeViewModel: viewModel, presentQRCodeScannerButtonTapped: presentNodeCertificatesScanner)

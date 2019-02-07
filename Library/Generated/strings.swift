@@ -350,7 +350,7 @@ internal enum L10n {
       internal static let title = L10n.tr("Localizable", "scene.request.title")
     }
     internal enum SelectWalletConnection {
-      /// Setup Zap
+      /// Add Wallet
       internal static let title = L10n.tr("Localizable", "scene.select_wallet_connection.title")
       internal enum Connect {
         /// remote node
@@ -425,7 +425,7 @@ internal enum L10n {
         internal static let nodeUri = L10n.tr("Localizable", "scene.settings.item.node_uri")
         /// Privacy Policy
         internal static let privacyPolicy = L10n.tr("Localizable", "scene.settings.item.privacy_policy")
-        /// Reset Remote Node Connection
+        /// Logout
         internal static let removeRemoteNode = L10n.tr("Localizable", "scene.settings.item.remove_remote_node")
         /// Report an Issue
         internal static let reportIssue = L10n.tr("Localizable", "scene.settings.item.report_issue")
