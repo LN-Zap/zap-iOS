@@ -53,7 +53,7 @@
 "scene.settings.item.on_chain_request_address.p2sh" = "P2SH";
 "scene.settings.item.manage_channels" = "Manage Channels";
 "scene.settings.item.node_uri" = "Node URI";
-"scene.settings.item.remove_remote_node" = "Reset Remote Node Connection";
+"scene.settings.item.remove_remote_node" = "Logout";
 "scene.settings.item.remove_remote_node.confirmation.title" = "Disconnect Remote Node?";
 "scene.settings.item.remove_remote_node.confirmation.message" = "You will have to reconnect to your node afterwards.";
 "scene.settings.item.remove_remote_node.confirmation.button" = "Disconnect";
@@ -130,7 +130,7 @@
 "scene.recover_wallet.description_label" = "הזן את הSeed שלך:";
 "scene.recover_wallet.placeholder" = "לנטוש יכולת מסוגל אודות מעל נעדר לספוג מופשט(לא מוחשי) לא הגיוני(מגוחך) ניצול גישה תקלה(תאונה) חשבון האשים השיג חומצה אקוסטי(קולי) השיג(רכש) מעבר(לעבר) מעשה(פעולה) מעשה(פעולה) שחקן שחקנית ממשי(ראלי)";
 
-"scene.select_wallet_connection.title" = "הגדרת Zap";
+"scene.select_wallet_connection.title" = "Add Wallet";
 "scene.select_wallet_connection.create.title" = "צור";
 "scene.select_wallet_connection.create.message" = "ארנק חדש";
 "scene.select_wallet_connection.recover.title" = "שיחזור";
