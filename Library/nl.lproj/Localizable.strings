@@ -53,7 +53,7 @@
 "scene.settings.item.on_chain_request_address.p2sh" = "P2SH";
 "scene.settings.item.manage_channels" = "Beheer kanalen";
 "scene.settings.item.node_uri" = "Node URI";
-"scene.settings.item.remove_remote_node" = "Reset externe node verbinding";
+"scene.settings.item.remove_remote_node" = "Logout";
 "scene.settings.item.remove_remote_node.confirmation.title" = "Verbinding verbreken met remote node?";
 "scene.settings.item.remove_remote_node.confirmation.message" = "Je zult achteraf opnieuw naar je node moeten verbinden.";
 "scene.settings.item.remove_remote_node.confirmation.button" = "Verbinding verbreken";
@@ -130,7 +130,7 @@
 "scene.recover_wallet.description_label" = "Voer je mnemonic code in:";
 "scene.recover_wallet.placeholder" = "abandon ability able about above absent absorb abstract absurd abuse access accident account accuse achieve acid acoustic acquire across act action actor actress actual";
 
-"scene.select_wallet_connection.title" = "Setup Zap";
+"scene.select_wallet_connection.title" = "Add Wallet";
 "scene.select_wallet_connection.create.title" = "Aanmaken";
 "scene.select_wallet_connection.create.message" = "nieuwe wallet";
 "scene.select_wallet_connection.recover.title" = "Herstellen";
