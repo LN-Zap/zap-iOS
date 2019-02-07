@@ -53,7 +53,7 @@
 "scene.settings.item.on_chain_request_address.p2sh" = "P2SH";
 "scene.settings.item.manage_channels" = "Upravljanje kanalima";
 "scene.settings.item.node_uri" = "URI čvora";
-"scene.settings.item.remove_remote_node" = "Resetiraj vezu udaljenog čvora";
+"scene.settings.item.remove_remote_node" = "Logout";
 "scene.settings.item.remove_remote_node.confirmation.title" = "Odspoji udaljeni čvor?";
 "scene.settings.item.remove_remote_node.confirmation.message" = "Morat ćete se ponovno povezati na svoj čvor nakon toga.";
 "scene.settings.item.remove_remote_node.confirmation.button" = "Odspoji";
@@ -130,7 +130,7 @@
 "scene.recover_wallet.description_label" = "Upišite svoj niz:";
 "scene.recover_wallet.placeholder" = "napustiti sposobnosti mogućnosti iznad odsutna apsorbirati apstraktni apsurd zlostavljanja pristup nesreći račun optužuju postići kiselina akustične nabaviti preko zakona akcijski glumac glumica stvarni";
 
-"scene.select_wallet_connection.title" = "Postavke za Zap";
+"scene.select_wallet_connection.title" = "Add Wallet";
 "scene.select_wallet_connection.create.title" = "Stvaranje";
 "scene.select_wallet_connection.create.message" = "novi novčanik";
 "scene.select_wallet_connection.recover.title" = "Obnova";
