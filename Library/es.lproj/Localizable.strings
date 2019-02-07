@@ -53,7 +53,7 @@
 "scene.settings.item.on_chain_request_address.p2sh" = "P2SH";
 "scene.settings.item.manage_channels" = "Gestionar canales";
 "scene.settings.item.node_uri" = "Nodo de URI";
-"scene.settings.item.remove_remote_node" = "Restablecer conexión del nodo remotamente";
+"scene.settings.item.remove_remote_node" = "Logout";
 "scene.settings.item.remove_remote_node.confirmation.title" = "¿Desconectar remotamente el nodo?";
 "scene.settings.item.remove_remote_node.confirmation.message" = "Usted tendrá que reconectarse a su nodo luego.";
 "scene.settings.item.remove_remote_node.confirmation.button" = "Desconectar";
@@ -130,7 +130,7 @@
 "scene.recover_wallet.description_label" = "Introduzca su semilla:";
 "scene.recover_wallet.placeholder" = "abandonar capacidad capaz sobre encima ausente absorber abstracto absurdo abuso accidente cuenta acusar lograr ácido acústico adquirir tras acto acción actor actriz real";
 
-"scene.select_wallet_connection.title" = "Configurar Zap";
+"scene.select_wallet_connection.title" = "Add Wallet";
 "scene.select_wallet_connection.create.title" = "Crear";
 "scene.select_wallet_connection.create.message" = "nueva cartera";
 "scene.select_wallet_connection.recover.title" = "Recuperar";
