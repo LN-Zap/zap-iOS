@@ -23,8 +23,8 @@ public enum Route {
         let urlString = url.absoluteString.replacingOccurrences(of: "//", with: "")
         
         if urlString.hasPrefix("lndconnect:") {
-            guard let url = LndConnectURL(url: url) else { return nil }
-            self = .connect(url)
+            guard let lndConnectUrl = LndConnectURL(url: url) else { return nil }
+            self = .connect(lndConnectUrl)
         } else {
             self = .send(urlString)
         }

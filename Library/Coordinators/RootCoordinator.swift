@@ -6,6 +6,7 @@
 //
 
 import Lightning
+import SwiftLnd
 import UIKit
 
 protocol RootCoordinatorDelegate: class {
@@ -48,16 +49,11 @@ public final class RootCoordinator {
     
     public func applicationWillEnterForeground() {
         backgroundCoordinator.applicationWillEnterForeground()
-        // TODO:
-//        start()
     }
     
     public func applicationDidEnterBackground() {
         backgroundCoordinator.applicationDidEnterBackground()
         route = nil // reset route when app enters background
-        // TODO:
-        //        connectionService.stop()
-        //        ExchangeUpdaterJob.stop()
     }
     
     // MARK: Coordinator Methods
@@ -68,7 +64,7 @@ public final class RootCoordinator {
         } else if let selectedWallet = walletConfigurationStore.selectedWallet {
             presentSelectedWallet(selectedWallet)
         } else {
-            presentSetup(walletConfigurationStore: walletConfigurationStore)
+            presentSetup(walletConfigurationStore: walletConfigurationStore, remoteRPCConfiguration: nil)
         }
     }
     
@@ -84,10 +80,10 @@ public final class RootCoordinator {
         walletCoordinator.start()
     }
     
-    private func presentSetup(walletConfigurationStore: WalletConfigurationStore) {
+    private func presentSetup(walletConfigurationStore: WalletConfigurationStore, remoteRPCConfiguration: RemoteRPCConfiguration?) {
         let setupCoordinator = SetupCoordinator(rootViewController: rootViewController, authenticationViewModel: authenticationCoordinator.authenticationViewModel, delegate: self, walletConfigurationStore: walletConfigurationStore)
         currentCoordinator = setupCoordinator
-        setupCoordinator.start()
+        setupCoordinator.start(remoteRPCConfiguration: remoteRPCConfiguration)
     }
     
     private func presentPinSetup() {
@@ -116,7 +112,9 @@ extension RootCoordinator: Routing {
         let alertController = UIAlertController(title: L10n.Scene.ConnectNodeUri.ActionSheet.title, message: message, preferredStyle: .actionSheet)
         
         let connectAlertAction = UIAlertAction(title: L10n.Scene.ConnectNodeUri.ActionSheet.connectButton, style: .default, handler: { [weak self] _ in
-            //            self?.connectionService.reconnect(configuration: url.rpcConfiguration)
+            guard let self = self else { return }
+            self.disconnect()
+            self.presentSetup(walletConfigurationStore: self.walletConfigurationStore, remoteRPCConfiguration: url.rpcConfiguration)
         })
         
         alertController.addAction(connectAlertAction)
@@ -125,12 +123,6 @@ extension RootCoordinator: Routing {
         
         rootViewController.dismiss(animated: false)
         rootViewController.present(alertController, animated: true, completion: nil)
-    }
-    
-    func presentSetupPin() {
-        let pinSetupCoordinator = PinSetupCoordinator(rootViewController: rootViewController, authenticationViewModel: authenticationCoordinator.authenticationViewModel, delegate: self)
-        currentCoordinator = pinSetupCoordinator
-        pinSetupCoordinator.start()
     }
 }
     
