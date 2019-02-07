@@ -73,12 +73,18 @@ final class WalletConfigurationStore {
         save()
     }
     
-    func contains(walletId: WalletId) -> Bool {
-        return configurations.contains { $0.walletId == walletId }
-    }
-    
     func addWallet(walletConfiguration: WalletConfiguration) {
-        guard !contains(walletId: walletConfiguration.walletId) else { return }
+        guard !configurations.contains(where: {
+            guard $0.walletId != walletConfiguration.walletId else { return true }
+            
+            // it's possible to have multiple wallets with configuration
+            // `.local`, but we don't want multiple `.remote` wallets with same
+            // `RemoteRPCConfiguration`
+            switch ($0.connection, walletConfiguration.connection) {
+            case let (.remote(oldConnection), .remote(newConnection)):
+                return oldConnection == newConnection
+            }
+        }) else { return }
         configurations.append(walletConfiguration)
         selectedWallet = walletConfiguration
         
