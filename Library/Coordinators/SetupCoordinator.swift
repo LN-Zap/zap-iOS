@@ -30,7 +30,7 @@ final class SetupCoordinator {
         self.walletConfigurationStore = walletConfigurationStore
     }
 
-    func start() {
+    func start(remoteRPCConfiguration: RemoteRPCConfiguration?) {
         let viewController = walletConfigurationStore.isEmpty ? setupWalletViewController() : walletListViewController()
         
         let navigationController = ZapNavigationController(rootViewController: viewController)
@@ -38,6 +38,10 @@ final class SetupCoordinator {
         
         self.navigationController = navigationController
         self.rootViewController.setContainerContent(navigationController)
+        
+        if let remoteRPCConfiguration = remoteRPCConfiguration {
+            connectRemoteNode(remoteRPCConfiguration)
+        }
     }
     
     #if !REMOTEONLY
@@ -88,8 +92,8 @@ final class SetupCoordinator {
         #endif
     }
     
-    private func connectRemoteNode() {
-        let viewModel = ConnectRemoteNodeViewModel(remoteRPCConfiguration: nil)
+    private func connectRemoteNode(_ remoteRPCConfiguration: RemoteRPCConfiguration) {
+        let viewModel = ConnectRemoteNodeViewModel(remoteRPCConfiguration: remoteRPCConfiguration)
         connectRemoteNodeViewModel = viewModel
         let viewController = ConnectRemoteNodeViewController.instantiate(didSetupWallet: didSetupWallet, connectRemoteNodeViewModel: viewModel, presentQRCodeScannerButtonTapped: presentNodeCertificatesScanner)
         navigationController?.pushViewController(viewController, animated: true)
