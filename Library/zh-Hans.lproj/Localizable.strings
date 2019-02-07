@@ -53,7 +53,7 @@
 "scene.settings.item.on_chain_request_address.p2sh" = "P2SH";
 "scene.settings.item.manage_channels" = "管理通道";
 "scene.settings.item.node_uri" = "节点 URI";
-"scene.settings.item.remove_remote_node" = "重置远程节点连接";
+"scene.settings.item.remove_remote_node" = "Logout";
 "scene.settings.item.remove_remote_node.confirmation.title" = "断开远程节点的连接？";
 "scene.settings.item.remove_remote_node.confirmation.message" = "之后你必须重新连接到节点。";
 "scene.settings.item.remove_remote_node.confirmation.button" = "断开";
@@ -130,7 +130,7 @@
 "scene.recover_wallet.description_label" = "输入您的助记词种子:";
 "scene.recover_wallet.placeholder" = "abandon ability able about above absent absorb abstract absurd abuse access accident account accuse achieve acid acoustic acquire across act action actor actress actual";
 
-"scene.select_wallet_connection.title" = "配置Zap";
+"scene.select_wallet_connection.title" = "Add Wallet";
 "scene.select_wallet_connection.create.title" = "创建";
 "scene.select_wallet_connection.create.message" = "创建钱包";
 "scene.select_wallet_connection.recover.title" = "恢复";
