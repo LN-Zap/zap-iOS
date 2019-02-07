@@ -53,7 +53,7 @@
 "scene.settings.item.on_chain_request_address.p2sh" = "P2SH";
 "scene.settings.item.manage_channels" = "Manage Channels";
 "scene.settings.item.node_uri" = "Node URI";
-"scene.settings.item.remove_remote_node" = "Reset Remote Node Connection";
+"scene.settings.item.remove_remote_node" = "Logout";
 "scene.settings.item.remove_remote_node.confirmation.title" = "Disconnect Remote Node?";
 "scene.settings.item.remove_remote_node.confirmation.message" = "You will have to reconnect to your node afterwards.";
 "scene.settings.item.remove_remote_node.confirmation.button" = "Disconnect";
@@ -130,7 +130,7 @@
 "scene.recover_wallet.description_label" = "Enter your seed:";
 "scene.recover_wallet.placeholder" = "abandon ability able about above absent absorb abstract absurd abuse access accident account accuse achieve acid acoustic acquire across act action actor actress actual";
 
-"scene.select_wallet_connection.title" = "Configurar Zap";
+"scene.select_wallet_connection.title" = "Add Wallet";
 "scene.select_wallet_connection.create.title" = "Create";
 "scene.select_wallet_connection.create.message" = "new wallet";
 "scene.select_wallet_connection.recover.title" = "Recover";
