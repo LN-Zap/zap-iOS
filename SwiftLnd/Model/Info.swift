@@ -21,21 +21,6 @@ public struct Info {
     public let version: String
 }
 
-extension Network {
-    init?(string: String) {
-        switch string {
-        case "testnet":
-            self = .testnet
-        case "mainnet":
-            self = .mainnet
-        case "regtest":
-            self = .regtest
-        default:
-            return nil
-        }
-    }
-}
-
 extension Info {
     init(getInfoResponse: LNDGetInfoResponse) {
         alias = getInfoResponse.alias
@@ -45,7 +30,7 @@ extension Info {
         if
             let chains = getInfoResponse.chainsArray as? [LNDChain],
             let networkString = chains.first?.network,
-            let network = Network(string: networkString) {
+            let network = Network(rawValue: networkString) {
             self.network = network
         } else {
             self.network = getInfoResponse.testnet ? .testnet : .mainnet
