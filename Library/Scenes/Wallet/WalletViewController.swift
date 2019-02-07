@@ -13,21 +13,6 @@ import ScrollableGraphView
 import SwiftBTC
 import SwiftLnd
 
-extension UIStoryboard {
-    static func instantiateWalletViewController(lightningService: LightningService, sendButtonTapped: @escaping () -> Void, requestButtonTapped: @escaping () -> Void) -> WalletViewController {
-        let walletViewController = StoryboardScene.Wallet.walletViewController.instantiate()
-        walletViewController.lightningService = lightningService
-        
-        walletViewController.sendButtonTapped = sendButtonTapped
-        walletViewController.requestButtonTapped = requestButtonTapped
-        
-        walletViewController.tabBarItem.title = L10n.Scene.Wallet.title
-        walletViewController.tabBarItem.image = Asset.tabbarWallet.image
-        
-        return walletViewController
-    }
-}
-
 final class WalletViewController: UIViewController {
     @IBOutlet private weak var graphContainer: UIView!
     @IBOutlet private weak var networkLabel: PaddingLabel! {
@@ -72,6 +57,19 @@ final class WalletViewController: UIViewController {
     fileprivate var requestButtonTapped: (() -> Void)?
 
     private var graphDataSource: GraphViewDataSource?
+    
+    static func instantiate(lightningService: LightningService, sendButtonTapped: @escaping () -> Void, requestButtonTapped: @escaping () -> Void) -> WalletViewController {
+        let walletViewController = StoryboardScene.Wallet.walletViewController.instantiate()
+        walletViewController.lightningService = lightningService
+        
+        walletViewController.sendButtonTapped = sendButtonTapped
+        walletViewController.requestButtonTapped = requestButtonTapped
+        
+        walletViewController.tabBarItem.title = L10n.Scene.Wallet.title
+        walletViewController.tabBarItem.image = Asset.tabbarWallet.image
+        
+        return walletViewController
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()

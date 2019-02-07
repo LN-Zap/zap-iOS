@@ -7,19 +7,17 @@
 
 import UIKit
 
-extension UIStoryboard {
-    static func instantiateMnemonicWordListViewController(with mnemonicWords: [MnemonicWord]) -> MnemonicWordListViewController {
-        let viewController = StoryboardScene.CreateWallet.mnemonicWordListViewController.instantiate()
-        viewController.mnemonicWords = mnemonicWords
-        return viewController
-    }
-}
-
 final class MnemonicWordListViewController: UIViewController {
 
     @IBOutlet private weak var tableView: UITableView!
     
     fileprivate var mnemonicWords: [MnemonicWord]?
+    
+    static func instantiate(with mnemonicWords: [MnemonicWord]) -> MnemonicWordListViewController {
+        let viewController = StoryboardScene.CreateWallet.mnemonicWordListViewController.instantiate()
+        viewController.mnemonicWords = mnemonicWords
+        return viewController
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()

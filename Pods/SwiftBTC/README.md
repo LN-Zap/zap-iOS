@@ -1,6 +1,6 @@
 # SwiftBTC
 
-[![CI Status](https://img.shields.io/travis/LN-Zap/SwiftBTC.svg?style=flat)](https://travis-ci.org/LN-Zap/SwiftBTC)
+[![Build Status](https://travis-ci.com/LN-Zap/SwiftBTC.svg?branch=master)](https://travis-ci.com/LN-Zap/SwiftBTC)
 [![Version](https://img.shields.io/cocoapods/v/SwiftBTC.svg?style=flat)](https://cocoapods.org/pods/SwiftBTC)
 [![License](https://img.shields.io/cocoapods/l/SwiftBTC.svg?style=flat)](https://cocoapods.org/pods/SwiftBTC)
 [![Platform](https://img.shields.io/cocoapods/p/SwiftBTC.svg?style=flat)](https://cocoapods.org/pods/SwiftBTC)

@@ -9,20 +9,6 @@ import Bond
 import Lightning
 import UIKit
 
-extension UIStoryboard {
-    static func instantiateChannelListViewController(
-        channelListViewModel: ChannelListViewModel,
-        addChannelButtonTapped: @escaping () -> Void,
-        presentChannelDetail: @escaping (UIViewController, ChannelViewModel) -> Void) -> UIViewController {
-        let viewController = StoryboardScene.ChannelList.channelViewController.instantiate()
-        viewController.channelListViewModel = channelListViewModel
-        viewController.addChannelButtonTapped = addChannelButtonTapped
-        viewController.presentChannelDetail = presentChannelDetail
-        
-        return viewController
-    }
-}
-
 final class ChannelListViewController: UIViewController {
     @IBOutlet private weak var tableView: UITableView!
     
@@ -30,6 +16,15 @@ final class ChannelListViewController: UIViewController {
     fileprivate var addChannelButtonTapped: (() -> Void)?
     fileprivate var presentChannelDetail: ((UIViewController, ChannelViewModel) -> Void)?
 
+    static func instantiate(channelListViewModel: ChannelListViewModel, addChannelButtonTapped: @escaping () -> Void, presentChannelDetail: @escaping (UIViewController, ChannelViewModel) -> Void) -> UIViewController {
+        let viewController = StoryboardScene.ChannelList.channelViewController.instantiate()
+        viewController.channelListViewModel = channelListViewModel
+        viewController.addChannelButtonTapped = addChannelButtonTapped
+        viewController.presentChannelDetail = presentChannelDetail
+        
+        return viewController
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         

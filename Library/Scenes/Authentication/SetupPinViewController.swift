@@ -9,15 +9,6 @@ import Bond
 import ReactiveKit
 import UIKit
 
-extension UIStoryboard {
-    static func instantiateSetupPinViewController(setupPinViewModel: SetupPinViewModel, didSetupPin: @escaping () -> Void) -> SetupPinViewController {
-        let setupPinViewController = StoryboardScene.NumericKeyPad.setupPinViewController.instantiate()
-        setupPinViewController.setupPinViewModel = setupPinViewModel
-        setupPinViewController.didSetupPin = didSetupPin
-        return setupPinViewController
-    }
-}
-
 final class SetupPinViewController: UIViewController {
 
     @IBOutlet private weak var doneButton: UIButton!
@@ -27,6 +18,13 @@ final class SetupPinViewController: UIViewController {
     
     fileprivate var setupPinViewModel: SetupPinViewModel?
     fileprivate var didSetupPin: (() -> Void)?
+    
+    static func instantiate(setupPinViewModel: SetupPinViewModel, didSetupPin: @escaping () -> Void) -> SetupPinViewController {
+        let setupPinViewController = StoryboardScene.NumericKeyPad.setupPinViewController.instantiate()
+        setupPinViewController.setupPinViewModel = setupPinViewModel
+        setupPinViewController.didSetupPin = didSetupPin
+        return setupPinViewController
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()

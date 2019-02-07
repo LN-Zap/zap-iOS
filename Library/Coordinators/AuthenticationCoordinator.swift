@@ -26,7 +26,9 @@ final class AuthenticationCoordinator {
     public init(rootViewController: RootViewController) {
         self.rootViewController = rootViewController
         authenticationViewModel = AuthenticationViewModel()
-        
+    }
+    
+    func start() {
         observation = authenticationViewModel.observe(\.state, options: [.initial]) { _, _ in
             self.updateState()
         }
@@ -61,12 +63,12 @@ final class AuthenticationCoordinator {
     }
     
     private func presentPin() {
-        let pinViewController = UIStoryboard.instantiatePinViewController(authenticationViewModel: authenticationViewModel)
+        let pinViewController = PinViewController.instantiate(authenticationViewModel: authenticationViewModel)
         presentWindow(with: pinViewController)
     }
     
     private func presentTimeLock() {
-        let timeLockedViewController = UIStoryboard.instantiateTimeLockedViewController(authenticationViewModel: authenticationViewModel)
+        let timeLockedViewController = TimeLockedViewController.instantiate(authenticationViewModel: authenticationViewModel)
         presentWindow(with: timeLockedViewController)
     }
     

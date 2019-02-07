@@ -25,11 +25,11 @@ public final class TransactionService {
         self.persistence = persistence
     }
     
-    public func addInvoice(amount: Satoshi, memo: String?, completion: @escaping (Result<String>) -> Void) {
+    public func addInvoice(amount: Satoshi, memo: String?, completion: @escaping (Result<String, LndApiError>) -> Void) {
         api.addInvoice(amount: amount, memo: memo, completion: completion)
     }
     
-    public func newAddress(with type: OnChainRequestAddressType, completion: @escaping (Result<BitcoinAddress>) -> Void) {
+    public func newAddress(with type: OnChainRequestAddressType, completion: @escaping (Result<BitcoinAddress, LndApiError>) -> Void) {
         api.newAddress(type: type) { [persistence] result in
             if let address = result.value {
                 try? ReceivingAddress.insert(address: address, database: persistence.connection())
@@ -38,11 +38,11 @@ public final class TransactionService {
         }
     }
     
-    internal func decodePaymentRequest(_ paymentRequest: String, completion: @escaping (Result<PaymentRequest>) -> Void) {
+    internal func decodePaymentRequest(_ paymentRequest: String, completion: @escaping (Result<PaymentRequest, LndApiError>) -> Void) {
         api.decodePaymentRequest(paymentRequest, completion: completion)
     }
     
-    public func upperBoundLightningFees(for paymentRequest: PaymentRequest, amount: Satoshi, completion: @escaping (Result<(amount: Satoshi, fee: Satoshi?)>) -> Void) {
+    public func upperBoundLightningFees(for paymentRequest: PaymentRequest, amount: Satoshi, completion: @escaping (Result<(amount: Satoshi, fee: Satoshi?), LndApiError>) -> Void) {
         api.routes(destination: paymentRequest.destination, amount: amount) { result in
             let totalFees = result.value?
                 .max(by: { $0.totalFees < $1.totalFees })?
@@ -51,7 +51,7 @@ public final class TransactionService {
         }
     }
     
-    public func sendPayment(_ paymentRequest: PaymentRequest, amount: Satoshi, completion: @escaping (Result<Success>) -> Void) {
+    public func sendPayment(_ paymentRequest: PaymentRequest, amount: Satoshi, completion: @escaping (Result<Success, LndApiError>) -> Void) {
         api.sendPayment(paymentRequest, amount: amount) { [weak self] in
             switch $0 {
             case .success(let payment):
@@ -66,7 +66,7 @@ public final class TransactionService {
         }
     }
     
-    public func sendCoins(bitcoinURI: BitcoinURI, amount: Satoshi, completion: @escaping (Result<Success>) -> Void) {
+    public func sendCoins(bitcoinURI: BitcoinURI, amount: Satoshi, completion: @escaping (Result<Success, LndApiError>) -> Void) {
         let destinationAddress = bitcoinURI.bitcoinAddress
         api.sendCoins(address: destinationAddress, amount: amount) { [historyService] in
             if case .success(let txHash) = $0 {

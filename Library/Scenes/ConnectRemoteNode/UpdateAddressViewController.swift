@@ -7,19 +7,17 @@
 
 import UIKit
 
-extension UIStoryboard {
-    static func instantiateUpdateAddressViewController(connectRemoteNodeViewModel: ConnectRemoteNodeViewModel) -> UpdateAddressViewController {
-        let viewController = StoryboardScene.ConnectRemoteNode.updateAddressViewController.instantiate()
-        viewController.connectRemoteNodeViewModel = connectRemoteNodeViewModel
-        return viewController
-    }
-}
-
 final class UpdateAddressViewController: UITableViewController {
     @IBOutlet private weak var addressCell: UITableViewCell!
     @IBOutlet private weak var addressTextField: UITextField!
     
     fileprivate var connectRemoteNodeViewModel: ConnectRemoteNodeViewModel?
+    
+    static func instantiate(connectRemoteNodeViewModel: ConnectRemoteNodeViewModel) -> UpdateAddressViewController {
+        let viewController = StoryboardScene.ConnectRemoteNode.updateAddressViewController.instantiate()
+        viewController.connectRemoteNodeViewModel = connectRemoteNodeViewModel
+        return viewController
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()

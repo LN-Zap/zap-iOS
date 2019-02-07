@@ -27,6 +27,7 @@
 
 CF_EXTERN_C_BEGIN
 
+@class LNDChain;
 @class LNDChannel;
 @class LNDChannelCloseSummary;
 @class LNDChannelCloseUpdate;
@@ -36,7 +37,6 @@ CF_EXTERN_C_BEGIN
 @class LNDChannelOpenUpdate;
 @class LNDChannelPoint;
 @class LNDClosedChannelUpdate;
-@class LNDConfirmationUpdate;
 @class LNDFeeLimit;
 @class LNDForwardingEvent;
 @class LNDHTLC;
@@ -60,29 +60,37 @@ CF_EXTERN_C_BEGIN
 @class LNDRouteHint;
 @class LNDRoutingPolicy;
 @class LNDTransaction;
+@class LNDUtxo;
 
 NS_ASSUME_NONNULL_BEGIN
 
-#pragma mark - Enum LNDNewAddressRequest_AddressType
+#pragma mark - Enum LNDAddressType
 
-typedef GPB_ENUM(LNDNewAddressRequest_AddressType) {
+/**
+ * *
+ * `AddressType` has to be one of:
+ *
+ * - `p2wkh`: Pay to witness key hash (`WITNESS_PUBKEY_HASH` = 0)
+ * - `np2wkh`: Pay to nested witness key hash (`NESTED_PUBKEY_HASH` = 1)
+ **/
+typedef GPB_ENUM(LNDAddressType) {
   /**
    * Value used if any message's field encounters a value that is not defined
    * by this enum. The message will also have C functions to get/set the rawValue
    * of the field.
    **/
-  LNDNewAddressRequest_AddressType_GPBUnrecognizedEnumeratorValue = kGPBUnrecognizedEnumeratorValue,
-  LNDNewAddressRequest_AddressType_WitnessPubkeyHash = 0,
-  LNDNewAddressRequest_AddressType_NestedPubkeyHash = 1,
+  LNDAddressType_GPBUnrecognizedEnumeratorValue = kGPBUnrecognizedEnumeratorValue,
+  LNDAddressType_WitnessPubkeyHash = 0,
+  LNDAddressType_NestedPubkeyHash = 1,
 };
 
-GPBEnumDescriptor *LNDNewAddressRequest_AddressType_EnumDescriptor(void);
+GPBEnumDescriptor *LNDAddressType_EnumDescriptor(void);
 
 /**
  * Checks to see if the given value is defined by the enum or was not known at
  * the time this source was generated.
  **/
-BOOL LNDNewAddressRequest_AddressType_IsValidValue(int32_t value);
+BOOL LNDAddressType_IsValidValue(int32_t value);
 
 #pragma mark - Enum LNDChannelCloseSummary_ClosureType
 
@@ -108,6 +116,27 @@ GPBEnumDescriptor *LNDChannelCloseSummary_ClosureType_EnumDescriptor(void);
  * the time this source was generated.
  **/
 BOOL LNDChannelCloseSummary_ClosureType_IsValidValue(int32_t value);
+
+#pragma mark - Enum LNDInvoice_InvoiceState
+
+typedef GPB_ENUM(LNDInvoice_InvoiceState) {
+  /**
+   * Value used if any message's field encounters a value that is not defined
+   * by this enum. The message will also have C functions to get/set the rawValue
+   * of the field.
+   **/
+  LNDInvoice_InvoiceState_GPBUnrecognizedEnumeratorValue = kGPBUnrecognizedEnumeratorValue,
+  LNDInvoice_InvoiceState_Open = 0,
+  LNDInvoice_InvoiceState_Settled = 1,
+};
+
+GPBEnumDescriptor *LNDInvoice_InvoiceState_EnumDescriptor(void);
+
+/**
+ * Checks to see if the given value is defined by the enum or was not known at
+ * the time this source was generated.
+ **/
+BOOL LNDInvoice_InvoiceState_IsValidValue(int32_t value);
 
 #pragma mark - LNDLndRpcRoot
 
@@ -299,6 +328,57 @@ typedef GPB_ENUM(LNDChangePasswordRequest_FieldNumber) {
 
 @end
 
+#pragma mark - LNDUtxo
+
+typedef GPB_ENUM(LNDUtxo_FieldNumber) {
+  LNDUtxo_FieldNumber_Type = 1,
+  LNDUtxo_FieldNumber_Address = 2,
+  LNDUtxo_FieldNumber_AmountSat = 3,
+  LNDUtxo_FieldNumber_ScriptPubkey = 4,
+  LNDUtxo_FieldNumber_Outpoint = 5,
+  LNDUtxo_FieldNumber_Confirmations = 6,
+};
+
+@interface LNDUtxo : GPBMessage
+
+/** / The type of address */
+@property(nonatomic, readwrite) LNDAddressType type;
+
+/** / The address */
+@property(nonatomic, readwrite, copy, null_resettable) NSString *address;
+
+/** / The value of the unspent coin in satoshis */
+@property(nonatomic, readwrite) int64_t amountSat;
+
+/** / The scriptpubkey in hex */
+@property(nonatomic, readwrite, copy, null_resettable) NSString *scriptPubkey;
+
+/**
+ * / The outpoint in format txid:n
+ * / Note that this reuses the `ChannelPoint` message but
+ * / is not actually a channel related outpoint, of course
+ **/
+@property(nonatomic, readwrite, strong, null_resettable) LNDChannelPoint *outpoint;
+/** Test to see if @c outpoint has been set. */
+@property(nonatomic, readwrite) BOOL hasOutpoint;
+
+/** / The number of confirmations for the Utxo */
+@property(nonatomic, readwrite) int64_t confirmations;
+
+@end
+
+/**
+ * Fetches the raw value of a @c LNDUtxo's @c type property, even
+ * if the value was not defined by the enum at the time the code was generated.
+ **/
+int32_t LNDUtxo_Type_RawValue(LNDUtxo *message);
+/**
+ * Sets the raw value of an @c LNDUtxo's @c type property, allowing
+ * it to be set to a value that was not defined by the enum at the time the code
+ * was generated.
+ **/
+void SetLNDUtxo_Type_RawValue(LNDUtxo *message, int32_t value);
+
 #pragma mark - LNDTransaction
 
 typedef GPB_ENUM(LNDTransaction_FieldNumber) {
@@ -457,6 +537,7 @@ typedef GPB_ENUM(LNDSendResponse_FieldNumber) {
   LNDSendResponse_FieldNumber_PaymentError = 1,
   LNDSendResponse_FieldNumber_PaymentPreimage = 2,
   LNDSendResponse_FieldNumber_PaymentRoute = 3,
+  LNDSendResponse_FieldNumber_PaymentHash = 4,
 };
 
 @interface LNDSendResponse : GPBMessage
@@ -468,6 +549,8 @@ typedef GPB_ENUM(LNDSendResponse_FieldNumber) {
 @property(nonatomic, readwrite, strong, null_resettable) LNDRoute *paymentRoute;
 /** Test to see if @c paymentRoute has been set. */
 @property(nonatomic, readwrite) BOOL hasPaymentRoute;
+
+@property(nonatomic, readwrite, copy, null_resettable) NSData *paymentHash;
 
 @end
 
@@ -588,6 +671,7 @@ typedef GPB_ENUM(LNDSendCoinsRequest_FieldNumber) {
   LNDSendCoinsRequest_FieldNumber_Amount = 2,
   LNDSendCoinsRequest_FieldNumber_TargetConf = 3,
   LNDSendCoinsRequest_FieldNumber_SatPerByte = 5,
+  LNDSendCoinsRequest_FieldNumber_SendAll = 6,
 };
 
 @interface LNDSendCoinsRequest : GPBMessage
@@ -604,6 +688,14 @@ typedef GPB_ENUM(LNDSendCoinsRequest_FieldNumber) {
 /** / A manual fee rate set in sat/byte that should be used when crafting the transaction. */
 @property(nonatomic, readwrite) int64_t satPerByte;
 
+/**
+ * *
+ * If set, then the amount field will be ignored, and lnd will attempt to
+ * send all the coins under control of the internal wallet to the specified
+ * address.
+ **/
+@property(nonatomic, readwrite) BOOL sendAll;
+
 @end
 
 #pragma mark - LNDSendCoinsResponse
@@ -619,23 +711,48 @@ typedef GPB_ENUM(LNDSendCoinsResponse_FieldNumber) {
 
 @end
 
+#pragma mark - LNDListUnspentRequest
+
+typedef GPB_ENUM(LNDListUnspentRequest_FieldNumber) {
+  LNDListUnspentRequest_FieldNumber_MinConfs = 1,
+  LNDListUnspentRequest_FieldNumber_MaxConfs = 2,
+};
+
+@interface LNDListUnspentRequest : GPBMessage
+
+/** / The minimum number of confirmations to be included. */
+@property(nonatomic, readwrite) int32_t minConfs;
+
+/** / The maximum number of confirmations to be included. */
+@property(nonatomic, readwrite) int32_t maxConfs;
+
+@end
+
+#pragma mark - LNDListUnspentResponse
+
+typedef GPB_ENUM(LNDListUnspentResponse_FieldNumber) {
+  LNDListUnspentResponse_FieldNumber_UtxosArray = 1,
+};
+
+@interface LNDListUnspentResponse : GPBMessage
+
+/** / A list of utxos */
+@property(nonatomic, readwrite, strong, null_resettable) NSMutableArray<LNDUtxo*> *utxosArray;
+/** The number of items in @c utxosArray without causing the array to be created. */
+@property(nonatomic, readonly) NSUInteger utxosArray_Count;
+
+@end
+
 #pragma mark - LNDNewAddressRequest
 
 typedef GPB_ENUM(LNDNewAddressRequest_FieldNumber) {
   LNDNewAddressRequest_FieldNumber_Type = 1,
 };
 
-/**
- * *
- * `AddressType` has to be one of:
- *
- * - `p2wkh`: Pay to witness key hash (`WITNESS_PUBKEY_HASH` = 0)
- * - `np2wkh`: Pay to nested witness key hash (`NESTED_PUBKEY_HASH` = 1)
- **/
 @interface LNDNewAddressRequest : GPBMessage
 
 /** / The address type */
-@property(nonatomic, readwrite) LNDNewAddressRequest_AddressType type;
+@property(nonatomic, readwrite) LNDAddressType type;
 
 @end
 
@@ -812,6 +929,7 @@ typedef GPB_ENUM(LNDChannel_FieldNumber) {
   LNDChannel_FieldNumber_PendingHtlcsArray = 15,
   LNDChannel_FieldNumber_CsvDelay = 16,
   LNDChannel_FieldNumber_Private_p = 17,
+  LNDChannel_FieldNumber_Initiator = 18,
 };
 
 @interface LNDChannel : GPBMessage
@@ -904,8 +1022,11 @@ typedef GPB_ENUM(LNDChannel_FieldNumber) {
  **/
 @property(nonatomic, readwrite) uint32_t csvDelay;
 
-/** / Whether this channel is advertised to the network or not */
+/** / Whether this channel is advertised to the network or not. */
 @property(nonatomic, readwrite) BOOL private_p;
+
+/** / True if we were the ones that creted the channel. */
+@property(nonatomic, readwrite) BOOL initiator;
 
 @end
 
@@ -1127,11 +1248,11 @@ typedef GPB_ENUM(LNDGetInfoResponse_FieldNumber) {
   LNDGetInfoResponse_FieldNumber_BlockHash = 8,
   LNDGetInfoResponse_FieldNumber_SyncedToChain = 9,
   LNDGetInfoResponse_FieldNumber_Testnet = 10,
-  LNDGetInfoResponse_FieldNumber_ChainsArray = 11,
   LNDGetInfoResponse_FieldNumber_UrisArray = 12,
   LNDGetInfoResponse_FieldNumber_BestHeaderTimestamp = 13,
   LNDGetInfoResponse_FieldNumber_Version = 14,
   LNDGetInfoResponse_FieldNumber_NumInactiveChannels = 15,
+  LNDGetInfoResponse_FieldNumber_ChainsArray = 16,
 };
 
 @interface LNDGetInfoResponse : GPBMessage
@@ -1160,13 +1281,12 @@ typedef GPB_ENUM(LNDGetInfoResponse_FieldNumber) {
 /** / Whether the wallet's view is synced to the main chain */
 @property(nonatomic, readwrite) BOOL syncedToChain;
 
-/** / Whether the current node is connected to testnet */
-@property(nonatomic, readwrite) BOOL testnet;
-
-/** / A list of active chains the node is connected to */
-@property(nonatomic, readwrite, strong, null_resettable) NSMutableArray<NSString*> *chainsArray;
-/** The number of items in @c chainsArray without causing the array to be created. */
-@property(nonatomic, readonly) NSUInteger chainsArray_Count;
+/**
+ * *
+ * Whether the current node is connected to testnet. This field is
+ * deprecated and the network field should be used instead
+ **/
+@property(nonatomic, readwrite) BOOL testnet DEPRECATED_ATTRIBUTE;
 
 /** / The URIs of the current node. */
 @property(nonatomic, readwrite, strong, null_resettable) NSMutableArray<NSString*> *urisArray;
@@ -1181,6 +1301,28 @@ typedef GPB_ENUM(LNDGetInfoResponse_FieldNumber) {
 
 /** / Number of inactive channels */
 @property(nonatomic, readwrite) uint32_t numInactiveChannels;
+
+/** / A list of active chains the node is connected to */
+@property(nonatomic, readwrite, strong, null_resettable) NSMutableArray<LNDChain*> *chainsArray;
+/** The number of items in @c chainsArray without causing the array to be created. */
+@property(nonatomic, readonly) NSUInteger chainsArray_Count;
+
+@end
+
+#pragma mark - LNDChain
+
+typedef GPB_ENUM(LNDChain_FieldNumber) {
+  LNDChain_FieldNumber_Chain = 1,
+  LNDChain_FieldNumber_Network = 2,
+};
+
+@interface LNDChain : GPBMessage
+
+/** / The blockchain the node is on (eg bitcoin, litecoin) */
+@property(nonatomic, readwrite, copy, null_resettable) NSString *chain;
+
+/** / The network the node is on (eg regtest, testnet, mainnet) */
+@property(nonatomic, readwrite, copy, null_resettable) NSString *network;
 
 @end
 
@@ -1267,14 +1409,12 @@ typedef GPB_ENUM(LNDCloseChannelRequest_FieldNumber) {
 
 typedef GPB_ENUM(LNDCloseStatusUpdate_FieldNumber) {
   LNDCloseStatusUpdate_FieldNumber_ClosePending = 1,
-  LNDCloseStatusUpdate_FieldNumber_Confirmation = 2,
   LNDCloseStatusUpdate_FieldNumber_ChanClose = 3,
 };
 
 typedef GPB_ENUM(LNDCloseStatusUpdate_Update_OneOfCase) {
   LNDCloseStatusUpdate_Update_OneOfCase_GPBUnsetOneOfCase = 0,
   LNDCloseStatusUpdate_Update_OneOfCase_ClosePending = 1,
-  LNDCloseStatusUpdate_Update_OneOfCase_Confirmation = 2,
   LNDCloseStatusUpdate_Update_OneOfCase_ChanClose = 3,
 };
 
@@ -1283,8 +1423,6 @@ typedef GPB_ENUM(LNDCloseStatusUpdate_Update_OneOfCase) {
 @property(nonatomic, readonly) LNDCloseStatusUpdate_Update_OneOfCase updateOneOfCase;
 
 @property(nonatomic, readwrite, strong, null_resettable) LNDPendingUpdate *closePending;
-
-@property(nonatomic, readwrite, strong, null_resettable) LNDConfirmationUpdate *confirmation;
 
 @property(nonatomic, readwrite, strong, null_resettable) LNDChannelCloseUpdate *chanClose;
 
@@ -1367,14 +1505,12 @@ typedef GPB_ENUM(LNDOpenChannelRequest_FieldNumber) {
 
 typedef GPB_ENUM(LNDOpenStatusUpdate_FieldNumber) {
   LNDOpenStatusUpdate_FieldNumber_ChanPending = 1,
-  LNDOpenStatusUpdate_FieldNumber_Confirmation = 2,
   LNDOpenStatusUpdate_FieldNumber_ChanOpen = 3,
 };
 
 typedef GPB_ENUM(LNDOpenStatusUpdate_Update_OneOfCase) {
   LNDOpenStatusUpdate_Update_OneOfCase_GPBUnsetOneOfCase = 0,
   LNDOpenStatusUpdate_Update_OneOfCase_ChanPending = 1,
-  LNDOpenStatusUpdate_Update_OneOfCase_Confirmation = 2,
   LNDOpenStatusUpdate_Update_OneOfCase_ChanOpen = 3,
 };
 
@@ -1383,8 +1519,6 @@ typedef GPB_ENUM(LNDOpenStatusUpdate_Update_OneOfCase) {
 @property(nonatomic, readonly) LNDOpenStatusUpdate_Update_OneOfCase updateOneOfCase;
 
 @property(nonatomic, readwrite, strong, null_resettable) LNDPendingUpdate *chanPending;
-
-@property(nonatomic, readwrite, strong, null_resettable) LNDConfirmationUpdate *confirmation;
 
 @property(nonatomic, readwrite, strong, null_resettable) LNDChannelOpenUpdate *chanOpen;
 
@@ -2312,6 +2446,7 @@ typedef GPB_ENUM(LNDInvoice_FieldNumber) {
   LNDInvoice_FieldNumber_AmtPaid = 18,
   LNDInvoice_FieldNumber_AmtPaidSat = 19,
   LNDInvoice_FieldNumber_AmtPaidMsat = 20,
+  LNDInvoice_FieldNumber_State = 21,
 };
 
 @interface LNDInvoice : GPBMessage
@@ -2325,8 +2460,11 @@ typedef GPB_ENUM(LNDInvoice_FieldNumber) {
  **/
 @property(nonatomic, readwrite, copy, null_resettable) NSString *memo;
 
-/** / An optional cryptographic receipt of payment */
-@property(nonatomic, readwrite, copy, null_resettable) NSData *receipt;
+/**
+ * * Deprecated. An optional cryptographic receipt of payment which is not
+ * implemented.
+ **/
+@property(nonatomic, readwrite, copy, null_resettable) NSData *receipt DEPRECATED_ATTRIBUTE;
 
 /**
  * *
@@ -2342,7 +2480,7 @@ typedef GPB_ENUM(LNDInvoice_FieldNumber) {
 @property(nonatomic, readwrite) int64_t value;
 
 /** / Whether this invoice has been fulfilled */
-@property(nonatomic, readwrite) BOOL settled;
+@property(nonatomic, readwrite) BOOL settled DEPRECATED_ATTRIBUTE;
 
 /** / When this invoice was created */
 @property(nonatomic, readwrite) int64_t creationDate;
@@ -2430,7 +2568,25 @@ typedef GPB_ENUM(LNDInvoice_FieldNumber) {
  **/
 @property(nonatomic, readwrite) int64_t amtPaidMsat;
 
+/**
+ * *
+ * The state the invoice is in.
+ **/
+@property(nonatomic, readwrite) LNDInvoice_InvoiceState state;
+
 @end
+
+/**
+ * Fetches the raw value of a @c LNDInvoice's @c state property, even
+ * if the value was not defined by the enum at the time the code was generated.
+ **/
+int32_t LNDInvoice_State_RawValue(LNDInvoice *message);
+/**
+ * Sets the raw value of an @c LNDInvoice's @c state property, allowing
+ * it to be set to a value that was not defined by the enum at the time the code
+ * was generated.
+ **/
+void SetLNDInvoice_State_RawValue(LNDInvoice *message, int32_t value);
 
 #pragma mark - LNDAddInvoiceResponse
 
@@ -2898,6 +3054,7 @@ typedef GPB_ENUM(LNDForwardingEvent_FieldNumber) {
   LNDForwardingEvent_FieldNumber_AmtIn = 5,
   LNDForwardingEvent_FieldNumber_AmtOut = 6,
   LNDForwardingEvent_FieldNumber_Fee = 7,
+  LNDForwardingEvent_FieldNumber_FeeMsat = 8,
 };
 
 @interface LNDForwardingEvent : GPBMessage
@@ -2911,14 +3068,17 @@ typedef GPB_ENUM(LNDForwardingEvent_FieldNumber) {
 /** / The outgoing channel ID that carried the preimage that completed the circuit. */
 @property(nonatomic, readwrite) uint64_t chanIdOut;
 
-/** / The total amount of the incoming HTLC that created half the circuit. */
+/** / The total amount (in satoshis) of the incoming HTLC that created half the circuit. */
 @property(nonatomic, readwrite) uint64_t amtIn;
 
-/** / The total amount of the outgoign HTLC that created the second half of the circuit. */
+/** / The total amount (in satoshis) of the outgoing HTLC that created the second half of the circuit. */
 @property(nonatomic, readwrite) uint64_t amtOut;
 
-/** / The total fee that this payment circuit carried. */
+/** / The total fee (in satoshis) that this payment circuit carried. */
 @property(nonatomic, readwrite) uint64_t fee;
+
+/** / The total fee (in milli-satoshis) that this payment circuit carried. */
+@property(nonatomic, readwrite) uint64_t feeMsat;
 
 @end
 

@@ -12,9 +12,11 @@ import XCTest
 
 class InvoiceTests: XCTestCase {
     
-    func createInvoice(address: String, network: Network, decodedPaymentRequest: PaymentRequest, testAssertions: @escaping (Result<BitcoinInvoice>) -> Void) {
+    func createInvoice(address: String, network: Network, decodedPaymentRequest: PaymentRequest, testAssertions: @escaping (Result<BitcoinInvoice, InvoiceError>) -> Void) {
         let api = LightningApiMock(info: network == .mainnet ? Info.Template.mainnet : Info.Template.testnet, decodePaymentRequest: decodedPaymentRequest)
-        let mockService = LightningService(api: api, persistence: MockPersistence())
+        
+        let testConnection = LightningConnection.remote(RemoteRPCConfiguration.mock)
+        let mockService = LightningService(api: api, walletId: "1", persistence: MockPersistence(), connection: testConnection)
         
         let expectation = self.expectation(description: "Decoding")
         
@@ -29,8 +31,7 @@ class InvoiceTests: XCTestCase {
     func testUnsupportedAddressType() {
         createInvoice(address: "abc", network: .mainnet, decodedPaymentRequest: PaymentRequest.Template.testnet) {
             if case let .failure(error) = $0,
-                let paymentURIError = error as? InvoiceError,
-                case .unknownFormat = paymentURIError {
+                case .unknownFormat = error {
                 // pass
             } else {
                 XCTFail("Should be an error")
@@ -72,8 +73,7 @@ class InvoiceTests: XCTestCase {
             case .success:
                 XCTFail("Should Fail")
             case .failure(let error):
-                if let error = error as? InvoiceError,
-                    case let .wrongNetworkError(linkNetwork, expectedNetwork) = error,
+                if case let .wrongNetworkError(linkNetwork, expectedNetwork) = error,
                     linkNetwork == .testnet,
                     expectedNetwork == .mainnet {
                     // pass
@@ -123,8 +123,7 @@ class InvoiceTests: XCTestCase {
             case .success:
                 XCTFail("Should Fail")
             case .failure(let error):
-                if let error = error as? InvoiceError,
-                    case let .wrongNetworkError(linkNetwork, expectedNetwork) = error,
+                if case let .wrongNetworkError(linkNetwork, expectedNetwork) = error,
                     linkNetwork == .testnet,
                     expectedNetwork == .mainnet {
                     // pass

@@ -35,7 +35,7 @@ final class MnemonicPageViewController: UIPageViewController {
     
     func updateViewControllers(pageWords: [[MnemonicWord]]) {
         orderedViewControllers = pageWords.map {
-            UIStoryboard.instantiateMnemonicWordListViewController(with: $0)
+            MnemonicWordListViewController.instantiate(with: $0)
         }
         if let firstViewController = orderedViewControllers?.first {
             setViewControllers([firstViewController], direction: .forward, animated: false, completion: nil)

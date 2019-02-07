@@ -92,13 +92,13 @@ final class SendViewController: ModalDetailViewController {
         }
     }
 
-    private func authenticate(completion: @escaping (Result<Success>) -> Void) {
+    private func authenticate(completion: @escaping (Result<Success, AuthenticationError>) -> Void) {
         if BiometricAuthentication.type == .none {
             ModalPinViewController.authenticate(authenticationViewModel: authenticationViewModel) { completion($0) }
         } else {
             BiometricAuthentication.authenticate { [authenticationViewModel] result in
                 if case .failure(let error) = result,
-                    (error as? AuthenticationError) == AuthenticationError.useFallback {
+                    error == AuthenticationError.useFallback {
                     ModalPinViewController.authenticate(authenticationViewModel: authenticationViewModel) { completion($0) }
                 } else {
                     completion(result)

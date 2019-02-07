@@ -8,18 +8,18 @@
 import Foundation
 
 private extension Network {
-    var pubKeyHashAddrID: Int {
+    var pubKeyHashAddressID: Int {
         switch self {
-        case .testnet:
+        case .testnet, .regtest:
             return 0x6f // starts with m or n
         case .mainnet:
             return 0x00 // starts with 1
         }
     }
     
-    var scriptHashAddrID: Int {
+    var scriptHashAddressID: Int {
         switch self {
-        case .testnet:
+        case .testnet, .regtest:
             return 0xc4 // starts with 2
         case .mainnet:
             return 0x05 // starts with 3
@@ -65,13 +65,13 @@ public struct BitcoinAddress: Codable, Equatable, Hashable {
         guard pubKeyHash.count == 20 else { return nil }
         self.network = network
         self.type = .p2pkh
-        self.string = Base58.checkEncode(pubKeyHash, version: network.pubKeyHashAddrID)
+        self.string = Base58.checkEncode(pubKeyHash, version: network.pubKeyHashAddressID)
     }
     
     public init?(scriptHashFromHash: Data, network: Network) {
         self.network = network
         self.type = .p2sh
-        self.string = Base58.checkEncode(scriptHashFromHash, version: network.scriptHashAddrID)
+        self.string = Base58.checkEncode(scriptHashFromHash, version: network.scriptHashAddressID)
     }
     
     public init?(string: String) {

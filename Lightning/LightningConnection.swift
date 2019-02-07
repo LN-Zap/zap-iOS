@@ -8,43 +8,67 @@
 import Foundation
 import SwiftLnd
 
-public enum LightningConnection {
-    case none
+public enum LightningConnection: Equatable, Codable {
     #if !REMOTEONLY
     case local
     #endif
     case remote(RemoteRPCConfiguration)
     
-    public func start() -> LightningApiProtocol? {
+    public var api: LightningApiProtocol {
         if Environment.useMockApi {
             return ApiMockTemplate.selected.instance
         }
         
         switch self {
-        case .none:
-            return nil
         #if !REMOTEONLY
         case .local:
-            if !LocalLnd.isRunning {
-                LocalLnd.start()
-            }
             return LightningApiStream()
         #endif
         case .remote(let configuration):
             return LightningApiRPC(configuration: configuration)
         }
     }
+}
+
+// MARK: Codable
+extension LightningConnection {
+    private enum CodingKeys: String, CodingKey {
+        case base, remoteRpcConfiguration
+    }
     
-    public static var current: LightningConnection {
-        if let remoteConfiguration = RemoteRPCConfiguration.load() {
-            return .remote(remoteConfiguration)
-        }
+    private enum Base: String, Codable {
         #if !REMOTEONLY
-        if WalletService.didCreateWallet {
-            return .local
-        }
+        case local
         #endif
+        case remote
+    }
+    
+    public init(from decoder: Decoder) throws {
+        let container = try decoder.container(keyedBy: CodingKeys.self)
+        let base = try container.decode(Base.self, forKey: .base)
+
+        switch base {
+        #if !REMOTEONLY
+        case .local:
+            self = .local
+        #endif
+        case .remote:
+            let remoteRpcConfiguration = try container.decode(RemoteRPCConfiguration.self, forKey: .remoteRpcConfiguration)
+            self = .remote(remoteRpcConfiguration)
+        }
+    }
+    
+    public func encode(to encoder: Encoder) throws {
+        var container = encoder.container(keyedBy: CodingKeys.self)
         
-        return .none
+        switch self {
+        #if !REMOTEONLY
+        case .local:
+            try container.encode(Base.local, forKey: .base)
+        #endif
+        case .remote(let remoteRPCConfiguration):
+            try container.encode(Base.remote, forKey: .base)
+            try container.encode(remoteRPCConfiguration, forKey: .remoteRpcConfiguration)
+        }
     }
 }

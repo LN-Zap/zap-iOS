@@ -8,7 +8,7 @@
 
 default_platform(:ios)
 
-app_identifier = ["com.jackmallers.zap", "com.jackmallers.zap.messages"]
+app_identifier = ["com.jackmallers.zap", "com.jackmallers.zap.Sticker"]
 
 desc "Update build number."
 lane :build_number do
@@ -24,52 +24,6 @@ lane :change_version do |options|
     version = prompt(text: "Please enter the version number: ")
   end
   increment_version_number(version_number: version)
-end
-
-desc "Builds new Alpha Build and uploads it to S3."
-lane :internal_alpha do
-  unless ENV.key?('ZAP_ALPHA_S3_ACCESS_KEY')
-    UI.user_error!("ZAP_ALPHA_S3_ACCESS_KEY not set.")
-  end
-
-  ensure_git_status_clean
-  build_number
-
-  sync_code_signing(
-    username: ENV['ITUNESCONNECT_USER'],
-    app_identifier: app_identifier,
-    type: "adhoc",
-    force_for_new_devices: true
-  )
-
-  build_ios_app(
-    workspace: "Zap.xcworkspace",
-    configuration: "DebugRemote",
-    scheme: "Zap",
-    output_directory: "./builds/alpha",
-    export_method: "ad-hoc"
-  )
-  aws_s3(
-    access_key: ENV['ZAP_ALPHA_S3_ACCESS_KEY'],
-    secret_access_key: ENV['ZAP_ALPHA_S3_SECRET_ACCESS_KEY'],
-    bucket: ENV['ZAP_ALPHA_S3_BUCKET'],
-    region: ENV['ZAP_ALPHA_S3_REGION'],
-    ipa: './builds/alpha/Zap.ipa',
-    app_directory: 'ios-beta',
-    upload_metadata: true
-  )
-
-  changelog = changelog_from_git_commits(tag_match_pattern: 'builds/internal_alpha/*', pretty: '- %s', merge_commit_filtering: "exclude_merges")
-
-  add_git_tag
-
-  slack(
-    message: "Just uploaded a new iOS alpha: " + ENV['ZAP_ALPHA_S3_URL'] + "\n" + changelog.to_s,
-    use_webhook_configured_username_and_icon: true,
-    default_payloads: []
-  )
-
-  sh("git reset --hard")
 end
 
 desc "Builds new Alpha Build and uploads it to Testflight."
@@ -124,12 +78,6 @@ lane :update_app_icon do
     appicon_image_file: 'logo.png',
     appicon_path: 'Zap/Assets.xcassets',
     appicon_devices: [:iphone, :ios_marketing]
-  )
-
-  appicon(
-    appicon_image_file: 'logo.png',
-    appicon_path: 'ZapPos/Assets.xcassets',
-    appicon_devices: [:ipad, :ios_marketing]
   )
 end
 

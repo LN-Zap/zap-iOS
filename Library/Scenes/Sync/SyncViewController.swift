@@ -10,17 +10,8 @@ import ReactiveKit
 import SwiftLnd
 import UIKit
 
-protocol SyncDelegate: class {
+protocol DisconnectWalletDelegate: class {
     func disconnect()
-}
-
-extension UIStoryboard {
-    static func instantiateSyncViewController(with lightningService: LightningService, delegate: SyncDelegate) -> SyncViewController {
-        let syncViewController = StoryboardScene.Sync.syncViewController.instantiate()
-        syncViewController.lightningService = lightningService
-        syncViewController.delegate = delegate
-        return syncViewController
-    }
 }
 
 final class SyncViewController: UIViewController {
@@ -33,9 +24,16 @@ final class SyncViewController: UIViewController {
     @IBOutlet private weak var disconnectBarButton: UIBarButtonItem!
     
     fileprivate var lightningService: LightningService?
-    fileprivate weak var delegate: SyncDelegate?
+    fileprivate weak var delegate: DisconnectWalletDelegate?
 
     private var syncPercentageEstimator: SyncPercentageEstimator?
+    
+    static func instantiate(with lightningService: LightningService, delegate: DisconnectWalletDelegate) -> SyncViewController {
+        let syncViewController = StoryboardScene.Sync.syncViewController.instantiate()
+        syncViewController.lightningService = lightningService
+        syncViewController.delegate = delegate
+        return syncViewController
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -73,7 +71,8 @@ final class SyncViewController: UIViewController {
     
     private func setIdleTimer(disabled: Bool) {
         #if !REMOTEONLY
-        if case .local = LightningConnection.current {
+        if let connection = lightningService?.connection,
+            case .local = connection {
             UIApplication.shared.isIdleTimerDisabled = disabled
         }
         #endif
@@ -123,15 +122,15 @@ final class SyncViewController: UIViewController {
     func updateGradientView(for height: CGFloat) {
         view.layoutIfNeeded()
         UIView.animate(withDuration: 0.99, animations: { [weak self] in
-            self?.gradientViewHeightConstraint.constant = height
-            self?.view.layoutIfNeeded()
+            guard let self = self else { return }
+            self.gradientViewHeightConstraint.constant = height
+            self.view.layoutIfNeeded()
         })
     }
     
     @IBAction private func disconnectNode(_ sender: Any) {
         let alertController = UIAlertController(title: L10n.Scene.Sync.DisconnectAlert.title, message: L10n.Scene.Sync.DisconnectAlert.message, preferredStyle: .actionSheet)
         alertController.addAction(UIAlertAction(title: L10n.Scene.Sync.DisconnectAlert.destructiveAction, style: .destructive, handler: { [weak self] _ in
-            RemoteRPCConfiguration.delete()
             self?.delegate?.disconnect()
         }))
         alertController.addAction(UIAlertAction(title: L10n.Scene.Sync.DisconnectAlert.cancelAction, style: .cancel, handler: nil))

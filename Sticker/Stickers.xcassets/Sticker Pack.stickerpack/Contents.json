@@ -1,0 +1,29 @@
+{
+  "stickers" : [
+    {
+      "filename" : "flash.sticker"
+    },
+    {
+      "filename" : "bitcoin.sticker"
+    },
+    {
+      "filename" : "reckless.sticker"
+    },
+    {
+      "filename" : "sticker.sticker"
+    },
+    {
+      "filename" : "honey_badger.sticker"
+    },
+    {
+      "filename" : "honey_badger_2.sticker"
+    }
+  ],
+  "info" : {
+    "version" : 1,
+    "author" : "xcode"
+  },
+  "properties" : {
+    "grid-size" : "regular"
+  }
+}

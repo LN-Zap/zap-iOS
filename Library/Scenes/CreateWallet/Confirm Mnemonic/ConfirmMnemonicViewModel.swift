@@ -20,11 +20,14 @@ final class ConfirmMnemonicViewModel {
     private let walletService: WalletService
     private let mnemonic: [String]
     
+    let configuration: WalletConfiguration
+    
     let wordList: [ConfirmWordViewModel]
     
-    init(walletService: WalletService, mnemonic: [String]) {
+    init(walletService: WalletService, mnemonic: [String], configuration: WalletConfiguration) {
         self.walletService = walletService
         self.mnemonic = mnemonic
+        self.configuration = configuration
         
         var randomIndices = [Int]()
         while randomIndices.count < requiredWordCount {

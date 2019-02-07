@@ -15,7 +15,7 @@ final class RequestQRCodeViewModel: QRCodeDetailViewModel {
     let detailConfiguration: [StackViewElement]
     
     init(paymentURI: PaymentURI) {
-        uriString = paymentURI.uriString
+        uriString = paymentURI.address
         qrCodeString = paymentURI.isCaseSensitive ? paymentURI.uriString : paymentURI.uriString.uppercased()
         
         let tableFontStyle = Style.Label.footnote

@@ -171,7 +171,7 @@ extension HistoryService {
                 print("⚠️ `\(#function)`:", error)
             }
             
-            if invoice.settled {
+            if invoice.state == .settled {
                 let paymentEvent = LightningPaymentEvent(invoice: invoice)
                 do {
                     try paymentEvent.insert(database: persistence.connection())

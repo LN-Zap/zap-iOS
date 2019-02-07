@@ -57,6 +57,41 @@ static GPBFileDescriptor *LNDLndRpcRoot_FileDescriptor(void) {
   return descriptor;
 }
 
+#pragma mark - Enum LNDAddressType
+
+GPBEnumDescriptor *LNDAddressType_EnumDescriptor(void) {
+  static _Atomic(GPBEnumDescriptor*) descriptor = nil;
+  if (!descriptor) {
+    static const char *valueNames =
+        "WitnessPubkeyHash\000NestedPubkeyHash\000";
+    static const int32_t values[] = {
+        LNDAddressType_WitnessPubkeyHash,
+        LNDAddressType_NestedPubkeyHash,
+    };
+    GPBEnumDescriptor *worker =
+        [GPBEnumDescriptor allocDescriptorForName:GPBNSStringifySymbol(LNDAddressType)
+                                       valueNames:valueNames
+                                           values:values
+                                            count:(uint32_t)(sizeof(values) / sizeof(int32_t))
+                                     enumVerifier:LNDAddressType_IsValidValue];
+    GPBEnumDescriptor *expected = nil;
+    if (!atomic_compare_exchange_strong(&descriptor, &expected, worker)) {
+      [worker release];
+    }
+  }
+  return descriptor;
+}
+
+BOOL LNDAddressType_IsValidValue(int32_t value__) {
+  switch (value__) {
+    case LNDAddressType_WitnessPubkeyHash:
+    case LNDAddressType_NestedPubkeyHash:
+      return YES;
+    default:
+      return NO;
+  }
+}
+
 #pragma mark - LNDGenSeedRequest
 
 @implementation LNDGenSeedRequest
@@ -438,6 +473,116 @@ typedef struct LNDChangePasswordResponse__storage_ {
 }
 
 @end
+
+#pragma mark - LNDUtxo
+
+@implementation LNDUtxo
+
+@dynamic type;
+@dynamic address;
+@dynamic amountSat;
+@dynamic scriptPubkey;
+@dynamic hasOutpoint, outpoint;
+@dynamic confirmations;
+
+typedef struct LNDUtxo__storage_ {
+  uint32_t _has_storage_[1];
+  LNDAddressType type;
+  NSString *address;
+  NSString *scriptPubkey;
+  LNDChannelPoint *outpoint;
+  int64_t amountSat;
+  int64_t confirmations;
+} LNDUtxo__storage_;
+
+// This method is threadsafe because it is initially called
+// in +initialize for each subclass.
++ (GPBDescriptor *)descriptor {
+  static GPBDescriptor *descriptor = nil;
+  if (!descriptor) {
+    static GPBMessageFieldDescription fields[] = {
+      {
+        .name = "type",
+        .dataTypeSpecific.enumDescFunc = LNDAddressType_EnumDescriptor,
+        .number = LNDUtxo_FieldNumber_Type,
+        .hasIndex = 0,
+        .offset = (uint32_t)offsetof(LNDUtxo__storage_, type),
+        .flags = (GPBFieldFlags)(GPBFieldOptional | GPBFieldHasEnumDescriptor),
+        .dataType = GPBDataTypeEnum,
+      },
+      {
+        .name = "address",
+        .dataTypeSpecific.className = NULL,
+        .number = LNDUtxo_FieldNumber_Address,
+        .hasIndex = 1,
+        .offset = (uint32_t)offsetof(LNDUtxo__storage_, address),
+        .flags = GPBFieldOptional,
+        .dataType = GPBDataTypeString,
+      },
+      {
+        .name = "amountSat",
+        .dataTypeSpecific.className = NULL,
+        .number = LNDUtxo_FieldNumber_AmountSat,
+        .hasIndex = 2,
+        .offset = (uint32_t)offsetof(LNDUtxo__storage_, amountSat),
+        .flags = GPBFieldOptional,
+        .dataType = GPBDataTypeInt64,
+      },
+      {
+        .name = "scriptPubkey",
+        .dataTypeSpecific.className = NULL,
+        .number = LNDUtxo_FieldNumber_ScriptPubkey,
+        .hasIndex = 3,
+        .offset = (uint32_t)offsetof(LNDUtxo__storage_, scriptPubkey),
+        .flags = GPBFieldOptional,
+        .dataType = GPBDataTypeString,
+      },
+      {
+        .name = "outpoint",
+        .dataTypeSpecific.className = GPBStringifySymbol(LNDChannelPoint),
+        .number = LNDUtxo_FieldNumber_Outpoint,
+        .hasIndex = 4,
+        .offset = (uint32_t)offsetof(LNDUtxo__storage_, outpoint),
+        .flags = GPBFieldOptional,
+        .dataType = GPBDataTypeMessage,
+      },
+      {
+        .name = "confirmations",
+        .dataTypeSpecific.className = NULL,
+        .number = LNDUtxo_FieldNumber_Confirmations,
+        .hasIndex = 5,
+        .offset = (uint32_t)offsetof(LNDUtxo__storage_, confirmations),
+        .flags = GPBFieldOptional,
+        .dataType = GPBDataTypeInt64,
+      },
+    };
+    GPBDescriptor *localDescriptor =
+        [GPBDescriptor allocDescriptorForClass:[LNDUtxo class]
+                                     rootClass:[LNDLndRpcRoot class]
+                                          file:LNDLndRpcRoot_FileDescriptor()
+                                        fields:fields
+                                    fieldCount:(uint32_t)(sizeof(fields) / sizeof(GPBMessageFieldDescription))
+                                   storageSize:sizeof(LNDUtxo__storage_)
+                                         flags:GPBDescriptorInitializationFlag_None];
+    NSAssert(descriptor == nil, @"Startup recursed!");
+    descriptor = localDescriptor;
+  }
+  return descriptor;
+}
+
+@end
+
+int32_t LNDUtxo_Type_RawValue(LNDUtxo *message) {
+  GPBDescriptor *descriptor = [LNDUtxo descriptor];
+  GPBFieldDescriptor *field = [descriptor fieldWithNumber:LNDUtxo_FieldNumber_Type];
+  return GPBGetMessageInt32Field(message, field);
+}
+
+void SetLNDUtxo_Type_RawValue(LNDUtxo *message, int32_t value) {
+  GPBDescriptor *descriptor = [LNDUtxo descriptor];
+  GPBFieldDescriptor *field = [descriptor fieldWithNumber:LNDUtxo_FieldNumber_Type];
+  GPBSetInt32IvarWithFieldInternal(message, field, value, descriptor.file.syntax);
+}
 
 #pragma mark - LNDTransaction
 
@@ -825,12 +970,14 @@ typedef struct LNDSendRequest__storage_ {
 @dynamic paymentError;
 @dynamic paymentPreimage;
 @dynamic hasPaymentRoute, paymentRoute;
+@dynamic paymentHash;
 
 typedef struct LNDSendResponse__storage_ {
   uint32_t _has_storage_[1];
   NSString *paymentError;
   NSData *paymentPreimage;
   LNDRoute *paymentRoute;
+  NSData *paymentHash;
 } LNDSendResponse__storage_;
 
 // This method is threadsafe because it is initially called
@@ -865,6 +1012,15 @@ typedef struct LNDSendResponse__storage_ {
         .offset = (uint32_t)offsetof(LNDSendResponse__storage_, paymentRoute),
         .flags = GPBFieldOptional,
         .dataType = GPBDataTypeMessage,
+      },
+      {
+        .name = "paymentHash",
+        .dataTypeSpecific.className = NULL,
+        .number = LNDSendResponse_FieldNumber_PaymentHash,
+        .hasIndex = 3,
+        .offset = (uint32_t)offsetof(LNDSendResponse__storage_, paymentHash),
+        .flags = GPBFieldOptional,
+        .dataType = GPBDataTypeBytes,
       },
     };
     GPBDescriptor *localDescriptor =
@@ -1200,6 +1356,7 @@ typedef struct LNDSendManyResponse__storage_ {
 @dynamic amount;
 @dynamic targetConf;
 @dynamic satPerByte;
+@dynamic sendAll;
 
 typedef struct LNDSendCoinsRequest__storage_ {
   uint32_t _has_storage_[1];
@@ -1250,6 +1407,15 @@ typedef struct LNDSendCoinsRequest__storage_ {
         .offset = (uint32_t)offsetof(LNDSendCoinsRequest__storage_, satPerByte),
         .flags = GPBFieldOptional,
         .dataType = GPBDataTypeInt64,
+      },
+      {
+        .name = "sendAll",
+        .dataTypeSpecific.className = NULL,
+        .number = LNDSendCoinsRequest_FieldNumber_SendAll,
+        .hasIndex = 4,
+        .offset = 5,  // Stored in _has_storage_ to save space.
+        .flags = GPBFieldOptional,
+        .dataType = GPBDataTypeBool,
       },
     };
     GPBDescriptor *localDescriptor =
@@ -1311,6 +1477,103 @@ typedef struct LNDSendCoinsResponse__storage_ {
 
 @end
 
+#pragma mark - LNDListUnspentRequest
+
+@implementation LNDListUnspentRequest
+
+@dynamic minConfs;
+@dynamic maxConfs;
+
+typedef struct LNDListUnspentRequest__storage_ {
+  uint32_t _has_storage_[1];
+  int32_t minConfs;
+  int32_t maxConfs;
+} LNDListUnspentRequest__storage_;
+
+// This method is threadsafe because it is initially called
+// in +initialize for each subclass.
++ (GPBDescriptor *)descriptor {
+  static GPBDescriptor *descriptor = nil;
+  if (!descriptor) {
+    static GPBMessageFieldDescription fields[] = {
+      {
+        .name = "minConfs",
+        .dataTypeSpecific.className = NULL,
+        .number = LNDListUnspentRequest_FieldNumber_MinConfs,
+        .hasIndex = 0,
+        .offset = (uint32_t)offsetof(LNDListUnspentRequest__storage_, minConfs),
+        .flags = GPBFieldOptional,
+        .dataType = GPBDataTypeInt32,
+      },
+      {
+        .name = "maxConfs",
+        .dataTypeSpecific.className = NULL,
+        .number = LNDListUnspentRequest_FieldNumber_MaxConfs,
+        .hasIndex = 1,
+        .offset = (uint32_t)offsetof(LNDListUnspentRequest__storage_, maxConfs),
+        .flags = GPBFieldOptional,
+        .dataType = GPBDataTypeInt32,
+      },
+    };
+    GPBDescriptor *localDescriptor =
+        [GPBDescriptor allocDescriptorForClass:[LNDListUnspentRequest class]
+                                     rootClass:[LNDLndRpcRoot class]
+                                          file:LNDLndRpcRoot_FileDescriptor()
+                                        fields:fields
+                                    fieldCount:(uint32_t)(sizeof(fields) / sizeof(GPBMessageFieldDescription))
+                                   storageSize:sizeof(LNDListUnspentRequest__storage_)
+                                         flags:GPBDescriptorInitializationFlag_None];
+    NSAssert(descriptor == nil, @"Startup recursed!");
+    descriptor = localDescriptor;
+  }
+  return descriptor;
+}
+
+@end
+
+#pragma mark - LNDListUnspentResponse
+
+@implementation LNDListUnspentResponse
+
+@dynamic utxosArray, utxosArray_Count;
+
+typedef struct LNDListUnspentResponse__storage_ {
+  uint32_t _has_storage_[1];
+  NSMutableArray *utxosArray;
+} LNDListUnspentResponse__storage_;
+
+// This method is threadsafe because it is initially called
+// in +initialize for each subclass.
++ (GPBDescriptor *)descriptor {
+  static GPBDescriptor *descriptor = nil;
+  if (!descriptor) {
+    static GPBMessageFieldDescription fields[] = {
+      {
+        .name = "utxosArray",
+        .dataTypeSpecific.className = GPBStringifySymbol(LNDUtxo),
+        .number = LNDListUnspentResponse_FieldNumber_UtxosArray,
+        .hasIndex = GPBNoHasBit,
+        .offset = (uint32_t)offsetof(LNDListUnspentResponse__storage_, utxosArray),
+        .flags = GPBFieldRepeated,
+        .dataType = GPBDataTypeMessage,
+      },
+    };
+    GPBDescriptor *localDescriptor =
+        [GPBDescriptor allocDescriptorForClass:[LNDListUnspentResponse class]
+                                     rootClass:[LNDLndRpcRoot class]
+                                          file:LNDLndRpcRoot_FileDescriptor()
+                                        fields:fields
+                                    fieldCount:(uint32_t)(sizeof(fields) / sizeof(GPBMessageFieldDescription))
+                                   storageSize:sizeof(LNDListUnspentResponse__storage_)
+                                         flags:GPBDescriptorInitializationFlag_None];
+    NSAssert(descriptor == nil, @"Startup recursed!");
+    descriptor = localDescriptor;
+  }
+  return descriptor;
+}
+
+@end
+
 #pragma mark - LNDNewAddressRequest
 
 @implementation LNDNewAddressRequest
@@ -1319,7 +1582,7 @@ typedef struct LNDSendCoinsResponse__storage_ {
 
 typedef struct LNDNewAddressRequest__storage_ {
   uint32_t _has_storage_[1];
-  LNDNewAddressRequest_AddressType type;
+  LNDAddressType type;
 } LNDNewAddressRequest__storage_;
 
 // This method is threadsafe because it is initially called
@@ -1330,7 +1593,7 @@ typedef struct LNDNewAddressRequest__storage_ {
     static GPBMessageFieldDescription fields[] = {
       {
         .name = "type",
-        .dataTypeSpecific.enumDescFunc = LNDNewAddressRequest_AddressType_EnumDescriptor,
+        .dataTypeSpecific.enumDescFunc = LNDAddressType_EnumDescriptor,
         .number = LNDNewAddressRequest_FieldNumber_Type,
         .hasIndex = 0,
         .offset = (uint32_t)offsetof(LNDNewAddressRequest__storage_, type),
@@ -1364,41 +1627,6 @@ void SetLNDNewAddressRequest_Type_RawValue(LNDNewAddressRequest *message, int32_
   GPBDescriptor *descriptor = [LNDNewAddressRequest descriptor];
   GPBFieldDescriptor *field = [descriptor fieldWithNumber:LNDNewAddressRequest_FieldNumber_Type];
   GPBSetInt32IvarWithFieldInternal(message, field, value, descriptor.file.syntax);
-}
-
-#pragma mark - Enum LNDNewAddressRequest_AddressType
-
-GPBEnumDescriptor *LNDNewAddressRequest_AddressType_EnumDescriptor(void) {
-  static _Atomic(GPBEnumDescriptor*) descriptor = nil;
-  if (!descriptor) {
-    static const char *valueNames =
-        "WitnessPubkeyHash\000NestedPubkeyHash\000";
-    static const int32_t values[] = {
-        LNDNewAddressRequest_AddressType_WitnessPubkeyHash,
-        LNDNewAddressRequest_AddressType_NestedPubkeyHash,
-    };
-    GPBEnumDescriptor *worker =
-        [GPBEnumDescriptor allocDescriptorForName:GPBNSStringifySymbol(LNDNewAddressRequest_AddressType)
-                                       valueNames:valueNames
-                                           values:values
-                                            count:(uint32_t)(sizeof(values) / sizeof(int32_t))
-                                     enumVerifier:LNDNewAddressRequest_AddressType_IsValidValue];
-    GPBEnumDescriptor *expected = nil;
-    if (!atomic_compare_exchange_strong(&descriptor, &expected, worker)) {
-      [worker release];
-    }
-  }
-  return descriptor;
-}
-
-BOOL LNDNewAddressRequest_AddressType_IsValidValue(int32_t value__) {
-  switch (value__) {
-    case LNDNewAddressRequest_AddressType_WitnessPubkeyHash:
-    case LNDNewAddressRequest_AddressType_NestedPubkeyHash:
-      return YES;
-    default:
-      return NO;
-  }
 }
 
 #pragma mark - LNDNewAddressResponse
@@ -1889,6 +2117,7 @@ typedef struct LNDHTLC__storage_ {
 @dynamic pendingHtlcsArray, pendingHtlcsArray_Count;
 @dynamic csvDelay;
 @dynamic private_p;
+@dynamic initiator;
 
 typedef struct LNDChannel__storage_ {
   uint32_t _has_storage_[1];
@@ -2065,6 +2294,15 @@ typedef struct LNDChannel__storage_ {
         .number = LNDChannel_FieldNumber_Private_p,
         .hasIndex = 16,
         .offset = 17,  // Stored in _has_storage_ to save space.
+        .flags = GPBFieldOptional,
+        .dataType = GPBDataTypeBool,
+      },
+      {
+        .name = "initiator",
+        .dataTypeSpecific.className = NULL,
+        .number = LNDChannel_FieldNumber_Initiator,
+        .hasIndex = 18,
+        .offset = 19,  // Stored in _has_storage_ to save space.
         .flags = GPBFieldOptional,
         .dataType = GPBDataTypeBool,
       },
@@ -2769,11 +3007,11 @@ typedef struct LNDGetInfoRequest__storage_ {
 @dynamic blockHash;
 @dynamic syncedToChain;
 @dynamic testnet;
-@dynamic chainsArray, chainsArray_Count;
 @dynamic urisArray, urisArray_Count;
 @dynamic bestHeaderTimestamp;
 @dynamic version;
 @dynamic numInactiveChannels;
+@dynamic chainsArray, chainsArray_Count;
 
 typedef struct LNDGetInfoResponse__storage_ {
   uint32_t _has_storage_[1];
@@ -2785,9 +3023,9 @@ typedef struct LNDGetInfoResponse__storage_ {
   NSString *identityPubkey;
   NSString *alias;
   NSString *blockHash;
-  NSMutableArray *chainsArray;
   NSMutableArray *urisArray;
   NSString *version;
+  NSMutableArray *chainsArray;
   int64_t bestHeaderTimestamp;
 } LNDGetInfoResponse__storage_;
 
@@ -2879,15 +3117,6 @@ typedef struct LNDGetInfoResponse__storage_ {
         .dataType = GPBDataTypeBool,
       },
       {
-        .name = "chainsArray",
-        .dataTypeSpecific.className = NULL,
-        .number = LNDGetInfoResponse_FieldNumber_ChainsArray,
-        .hasIndex = GPBNoHasBit,
-        .offset = (uint32_t)offsetof(LNDGetInfoResponse__storage_, chainsArray),
-        .flags = GPBFieldRepeated,
-        .dataType = GPBDataTypeString,
-      },
-      {
         .name = "urisArray",
         .dataTypeSpecific.className = NULL,
         .number = LNDGetInfoResponse_FieldNumber_UrisArray,
@@ -2923,6 +3152,15 @@ typedef struct LNDGetInfoResponse__storage_ {
         .flags = GPBFieldOptional,
         .dataType = GPBDataTypeUInt32,
       },
+      {
+        .name = "chainsArray",
+        .dataTypeSpecific.className = GPBStringifySymbol(LNDChain),
+        .number = LNDGetInfoResponse_FieldNumber_ChainsArray,
+        .hasIndex = GPBNoHasBit,
+        .offset = (uint32_t)offsetof(LNDGetInfoResponse__storage_, chainsArray),
+        .flags = GPBFieldRepeated,
+        .dataType = GPBDataTypeMessage,
+      },
     };
     GPBDescriptor *localDescriptor =
         [GPBDescriptor allocDescriptorForClass:[LNDGetInfoResponse class]
@@ -2931,6 +3169,60 @@ typedef struct LNDGetInfoResponse__storage_ {
                                         fields:fields
                                     fieldCount:(uint32_t)(sizeof(fields) / sizeof(GPBMessageFieldDescription))
                                    storageSize:sizeof(LNDGetInfoResponse__storage_)
+                                         flags:GPBDescriptorInitializationFlag_None];
+    NSAssert(descriptor == nil, @"Startup recursed!");
+    descriptor = localDescriptor;
+  }
+  return descriptor;
+}
+
+@end
+
+#pragma mark - LNDChain
+
+@implementation LNDChain
+
+@dynamic chain;
+@dynamic network;
+
+typedef struct LNDChain__storage_ {
+  uint32_t _has_storage_[1];
+  NSString *chain;
+  NSString *network;
+} LNDChain__storage_;
+
+// This method is threadsafe because it is initially called
+// in +initialize for each subclass.
++ (GPBDescriptor *)descriptor {
+  static GPBDescriptor *descriptor = nil;
+  if (!descriptor) {
+    static GPBMessageFieldDescription fields[] = {
+      {
+        .name = "chain",
+        .dataTypeSpecific.className = NULL,
+        .number = LNDChain_FieldNumber_Chain,
+        .hasIndex = 0,
+        .offset = (uint32_t)offsetof(LNDChain__storage_, chain),
+        .flags = GPBFieldOptional,
+        .dataType = GPBDataTypeString,
+      },
+      {
+        .name = "network",
+        .dataTypeSpecific.className = NULL,
+        .number = LNDChain_FieldNumber_Network,
+        .hasIndex = 1,
+        .offset = (uint32_t)offsetof(LNDChain__storage_, network),
+        .flags = GPBFieldOptional,
+        .dataType = GPBDataTypeString,
+      },
+    };
+    GPBDescriptor *localDescriptor =
+        [GPBDescriptor allocDescriptorForClass:[LNDChain class]
+                                     rootClass:[LNDLndRpcRoot class]
+                                          file:LNDLndRpcRoot_FileDescriptor()
+                                        fields:fields
+                                    fieldCount:(uint32_t)(sizeof(fields) / sizeof(GPBMessageFieldDescription))
+                                   storageSize:sizeof(LNDChain__storage_)
                                          flags:GPBDescriptorInitializationFlag_None];
     NSAssert(descriptor == nil, @"Startup recursed!");
     descriptor = localDescriptor;
@@ -3182,13 +3474,11 @@ typedef struct LNDCloseChannelRequest__storage_ {
 
 @dynamic updateOneOfCase;
 @dynamic closePending;
-@dynamic confirmation;
 @dynamic chanClose;
 
 typedef struct LNDCloseStatusUpdate__storage_ {
   uint32_t _has_storage_[2];
   LNDPendingUpdate *closePending;
-  LNDConfirmationUpdate *confirmation;
   LNDChannelCloseUpdate *chanClose;
 } LNDCloseStatusUpdate__storage_;
 
@@ -3204,15 +3494,6 @@ typedef struct LNDCloseStatusUpdate__storage_ {
         .number = LNDCloseStatusUpdate_FieldNumber_ClosePending,
         .hasIndex = -1,
         .offset = (uint32_t)offsetof(LNDCloseStatusUpdate__storage_, closePending),
-        .flags = GPBFieldOptional,
-        .dataType = GPBDataTypeMessage,
-      },
-      {
-        .name = "confirmation",
-        .dataTypeSpecific.className = GPBStringifySymbol(LNDConfirmationUpdate),
-        .number = LNDCloseStatusUpdate_FieldNumber_Confirmation,
-        .hasIndex = -1,
-        .offset = (uint32_t)offsetof(LNDCloseStatusUpdate__storage_, confirmation),
         .flags = GPBFieldOptional,
         .dataType = GPBDataTypeMessage,
       },
@@ -3464,13 +3745,11 @@ typedef struct LNDOpenChannelRequest__storage_ {
 
 @dynamic updateOneOfCase;
 @dynamic chanPending;
-@dynamic confirmation;
 @dynamic chanOpen;
 
 typedef struct LNDOpenStatusUpdate__storage_ {
   uint32_t _has_storage_[2];
   LNDPendingUpdate *chanPending;
-  LNDConfirmationUpdate *confirmation;
   LNDChannelOpenUpdate *chanOpen;
 } LNDOpenStatusUpdate__storage_;
 
@@ -3486,15 +3765,6 @@ typedef struct LNDOpenStatusUpdate__storage_ {
         .number = LNDOpenStatusUpdate_FieldNumber_ChanPending,
         .hasIndex = -1,
         .offset = (uint32_t)offsetof(LNDOpenStatusUpdate__storage_, chanPending),
-        .flags = GPBFieldOptional,
-        .dataType = GPBDataTypeMessage,
-      },
-      {
-        .name = "confirmation",
-        .dataTypeSpecific.className = GPBStringifySymbol(LNDConfirmationUpdate),
-        .number = LNDOpenStatusUpdate_FieldNumber_Confirmation,
-        .hasIndex = -1,
-        .offset = (uint32_t)offsetof(LNDOpenStatusUpdate__storage_, confirmation),
         .flags = GPBFieldOptional,
         .dataType = GPBDataTypeMessage,
       },
@@ -5986,9 +6256,11 @@ typedef struct LNDRouteHint__storage_ {
 @dynamic amtPaid;
 @dynamic amtPaidSat;
 @dynamic amtPaidMsat;
+@dynamic state;
 
 typedef struct LNDInvoice__storage_ {
   uint32_t _has_storage_[1];
+  LNDInvoice_InvoiceState state;
   NSString *memo;
   NSData *receipt;
   NSData *rPreimage;
@@ -6195,6 +6467,15 @@ typedef struct LNDInvoice__storage_ {
         .flags = GPBFieldOptional,
         .dataType = GPBDataTypeInt64,
       },
+      {
+        .name = "state",
+        .dataTypeSpecific.enumDescFunc = LNDInvoice_InvoiceState_EnumDescriptor,
+        .number = LNDInvoice_FieldNumber_State,
+        .hasIndex = 21,
+        .offset = (uint32_t)offsetof(LNDInvoice__storage_, state),
+        .flags = (GPBFieldFlags)(GPBFieldOptional | GPBFieldHasEnumDescriptor),
+        .dataType = GPBDataTypeEnum,
+      },
     };
     GPBDescriptor *localDescriptor =
         [GPBDescriptor allocDescriptorForClass:[LNDInvoice class]
@@ -6211,6 +6492,53 @@ typedef struct LNDInvoice__storage_ {
 }
 
 @end
+
+int32_t LNDInvoice_State_RawValue(LNDInvoice *message) {
+  GPBDescriptor *descriptor = [LNDInvoice descriptor];
+  GPBFieldDescriptor *field = [descriptor fieldWithNumber:LNDInvoice_FieldNumber_State];
+  return GPBGetMessageInt32Field(message, field);
+}
+
+void SetLNDInvoice_State_RawValue(LNDInvoice *message, int32_t value) {
+  GPBDescriptor *descriptor = [LNDInvoice descriptor];
+  GPBFieldDescriptor *field = [descriptor fieldWithNumber:LNDInvoice_FieldNumber_State];
+  GPBSetInt32IvarWithFieldInternal(message, field, value, descriptor.file.syntax);
+}
+
+#pragma mark - Enum LNDInvoice_InvoiceState
+
+GPBEnumDescriptor *LNDInvoice_InvoiceState_EnumDescriptor(void) {
+  static _Atomic(GPBEnumDescriptor*) descriptor = nil;
+  if (!descriptor) {
+    static const char *valueNames =
+        "Open\000Settled\000";
+    static const int32_t values[] = {
+        LNDInvoice_InvoiceState_Open,
+        LNDInvoice_InvoiceState_Settled,
+    };
+    GPBEnumDescriptor *worker =
+        [GPBEnumDescriptor allocDescriptorForName:GPBNSStringifySymbol(LNDInvoice_InvoiceState)
+                                       valueNames:valueNames
+                                           values:values
+                                            count:(uint32_t)(sizeof(values) / sizeof(int32_t))
+                                     enumVerifier:LNDInvoice_InvoiceState_IsValidValue];
+    GPBEnumDescriptor *expected = nil;
+    if (!atomic_compare_exchange_strong(&descriptor, &expected, worker)) {
+      [worker release];
+    }
+  }
+  return descriptor;
+}
+
+BOOL LNDInvoice_InvoiceState_IsValidValue(int32_t value__) {
+  switch (value__) {
+    case LNDInvoice_InvoiceState_Open:
+    case LNDInvoice_InvoiceState_Settled:
+      return YES;
+    default:
+      return NO;
+  }
+}
 
 #pragma mark - LNDAddInvoiceResponse
 
@@ -7527,6 +7855,7 @@ typedef struct LNDForwardingHistoryRequest__storage_ {
 @dynamic amtIn;
 @dynamic amtOut;
 @dynamic fee;
+@dynamic feeMsat;
 
 typedef struct LNDForwardingEvent__storage_ {
   uint32_t _has_storage_[1];
@@ -7536,6 +7865,7 @@ typedef struct LNDForwardingEvent__storage_ {
   uint64_t amtIn;
   uint64_t amtOut;
   uint64_t fee;
+  uint64_t feeMsat;
 } LNDForwardingEvent__storage_;
 
 // This method is threadsafe because it is initially called
@@ -7595,6 +7925,15 @@ typedef struct LNDForwardingEvent__storage_ {
         .number = LNDForwardingEvent_FieldNumber_Fee,
         .hasIndex = 5,
         .offset = (uint32_t)offsetof(LNDForwardingEvent__storage_, fee),
+        .flags = GPBFieldOptional,
+        .dataType = GPBDataTypeUInt64,
+      },
+      {
+        .name = "feeMsat",
+        .dataTypeSpecific.className = NULL,
+        .number = LNDForwardingEvent_FieldNumber_FeeMsat,
+        .hasIndex = 6,
+        .offset = (uint32_t)offsetof(LNDForwardingEvent__storage_, feeMsat),
         .flags = GPBFieldOptional,
         .dataType = GPBDataTypeUInt64,
       },

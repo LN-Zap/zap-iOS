@@ -8,14 +8,6 @@
 import Lightning
 import UIKit
 
-extension UIStoryboard {
-    static func instantiateRemoteNodeCertificatesScannerViewController(connectRemoteNodeViewModel: ConnectRemoteNodeViewModel) -> RemoteNodeCertificatesScannerViewController {
-        let viewController = StoryboardScene.ConnectRemoteNode.remoteNodeCertificatesScannerViewController.instantiate()
-        viewController.connectRemoteNodeViewModel = connectRemoteNodeViewModel
-        return viewController
-    }
-}
-
 // swiftlint:disable:next type_name
 final class RemoteNodeCertificatesScannerViewController: UIViewController {
     @IBOutlet private weak var navigationBar: UINavigationBar!
@@ -28,6 +20,12 @@ final class RemoteNodeCertificatesScannerViewController: UIViewController {
                 self?.getConfigurationFrom(code: $0)
             }
         }
+    }
+    
+    static func instantiate(connectRemoteNodeViewModel: ConnectRemoteNodeViewModel) -> RemoteNodeCertificatesScannerViewController {
+        let viewController = StoryboardScene.ConnectRemoteNode.remoteNodeCertificatesScannerViewController.instantiate()
+        viewController.connectRemoteNodeViewModel = connectRemoteNodeViewModel
+        return viewController
     }
     
     override func viewDidLoad() {

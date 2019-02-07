@@ -18,6 +18,8 @@ extension InvoiceError: LocalizedError {
             return L10n.Error.wrongUriFormat
         case let .wrongNetworkError(linkNetwork, expectedNetwork):
             return L10n.Error.wrongUriNetwork(linkNetwork.localized, expectedNetwork.localized)
+        case .apiError(let localizedDescription):
+            return localizedDescription
         }
     }
 }
@@ -106,6 +108,7 @@ final class SendViewModel {
         memo = invoice.lightningPaymentRequest?.memo ?? invoice.bitcoinURI?.memo
         
         updateLightningFee()
+        updateSendButtonEnabled()
     }
     
     private func updateSendButtonEnabled() {
@@ -143,19 +146,18 @@ final class SendViewModel {
             else { return }
 
         lightningService.transactionService.upperBoundLightningFees(for: paymentRequest, amount: amount) { [weak self] in
-            guard $0.value?.amount == self?.amount else { return }
-            
-            self?.lightningFee.value = .element($0.value?.fee)
-            self?.updateSendButtonEnabled()
+            guard let self = self, $0.value?.amount == self.amount else { return }
+            self.lightningFee.value = .element($0.value?.fee)
+            self.updateSendButtonEnabled()
         }
     }
     
-    func send(completion: @escaping (Result<Success>) -> Void) {
+    func send(completion: @escaping (Result<Success, LndApiError>) -> Void) {
         guard let amount = amount else { return }
         
         isSending = true
         
-        let internalComplection: (Result<Success>) -> Void = { [weak self] in
+        let internalComplection: (Result<Success, LndApiError>) -> Void = { [weak self] in
             if case .failure = $0 {
                 self?.isSending = false
             }

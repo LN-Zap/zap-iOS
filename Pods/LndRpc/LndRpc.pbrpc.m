@@ -273,6 +273,28 @@
              responseClass:[LNDSendCoinsResponse class]
         responsesWriteable:[GRXWriteable writeableWithSingleHandler:handler]];
 }
+#pragma mark ListUnspent(ListUnspentRequest) returns (ListUnspentResponse)
+
+/**
+ * * lncli: `listunspent`
+ * ListUnspent returns a list of all utxos spendable by the wallet with a
+ * number of confirmations between the specified minimum and maximum.
+ */
+- (void)listUnspentWithRequest:(LNDListUnspentRequest *)request handler:(void(^)(LNDListUnspentResponse *_Nullable response, NSError *_Nullable error))handler{
+  [[self RPCToListUnspentWithRequest:request handler:handler] start];
+}
+// Returns a not-yet-started RPC object.
+/**
+ * * lncli: `listunspent`
+ * ListUnspent returns a list of all utxos spendable by the wallet with a
+ * number of confirmations between the specified minimum and maximum.
+ */
+- (GRPCProtoCall *)RPCToListUnspentWithRequest:(LNDListUnspentRequest *)request handler:(void(^)(LNDListUnspentResponse *_Nullable response, NSError *_Nullable error))handler{
+  return [self RPCToMethod:@"ListUnspent"
+            requestsWriter:[GRXWriter writerWithValue:request]
+             responseClass:[LNDListUnspentResponse class]
+        responsesWriteable:[GRXWriteable writeableWithSingleHandler:handler]];
+}
 #pragma mark SubscribeTransactions(GetTransactionsRequest) returns (stream Transaction)
 
 /**

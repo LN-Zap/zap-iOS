@@ -17,7 +17,6 @@ public final class InfoService {
         case running
     }
     
-    private let persistence: Persistence
     public let balanceService: BalanceService
     public let channelService: ChannelService
     public let historyService: HistoryService
@@ -27,15 +26,14 @@ public final class InfoService {
     public let blockHeight = Observable(0)
     public let walletState: Observable<InfoService.State>
     public let network = Observable<Network>(.testnet)
-    public var info: Info?
+    public var info = Observable<Info?>(nil)
     
     let isSyncedToChain = Observable(false)
 
     private var heightJobTimer: Timer?
     private var updateInfoTimer: Timer?
     
-    init(api: LightningApiProtocol, persistence: Persistence, channelService: ChannelService, balanceService: BalanceService, historyService: HistoryService) {
-        self.persistence = persistence
+    init(api: LightningApiProtocol, channelService: ChannelService, balanceService: BalanceService, historyService: HistoryService) {
         self.channelService = channelService
         self.balanceService = balanceService
         self.historyService = historyService
@@ -54,16 +52,22 @@ public final class InfoService {
         updateInfoTimer?.fire()
     }
     
-    private func updateInfo(result: Result<Info>) {
+    private func updateInfo(result: Result<Info, LndApiError>) {
         if let info = result.value {
-            blockHeight.value = info.blockHeight
-            isSyncedToChain.value = info.isSyncedToChain
-            bestHeaderDate.value = info.bestHeaderDate
-            network.value = info.network
-            
-            persistence.setConnectedNode(pubKey: info.pubKey)
-            
-            self.info = info
+            if blockHeight.value != info.blockHeight {
+                blockHeight.value = info.blockHeight
+            }
+            if isSyncedToChain.value != info.isSyncedToChain {
+                isSyncedToChain.value = info.isSyncedToChain
+            }
+            if bestHeaderDate.value != info.bestHeaderDate {
+                bestHeaderDate.value = info.bestHeaderDate
+            }
+            if network.value != info.network {
+                network.value = info.network
+            }
+
+            self.info.value = info
         }
         
         let newState = walletState(for: result)
@@ -78,7 +82,7 @@ public final class InfoService {
         }
     }
     
-    private func walletState(for result: Result<Info>?) -> State {
+    private func walletState(for result: Result<Info, LndApiError>?) -> State {
         guard let result = result else { return .connecting }
         
         if let info = result.value {

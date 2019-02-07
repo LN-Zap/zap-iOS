@@ -1,4 +1,4 @@
-[![Build Status](https://travis-ci.org/LN-Zap/zap-iOS.svg?branch=master)](https://travis-ci.org/LN-Zap/zap-iOS)
+[![Build Status](https://travis-ci.com/LN-Zap/zap-iOS.svg?branch=master)](https://travis-ci.com/LN-Zap/zap-iOS)
 [![GitHub license](https://img.shields.io/github/license/LN-Zap/zap-iOS.svg)](LICENSE)
 [![Crowdin](https://d322cqt584bo4o.cloudfront.net/zap-ios/localized.svg)](https://crowdin.com/project/zap-ios)
 [![codecov](https://codecov.io/gh/LN-Zap/zap-iOS/branch/master/graph/badge.svg)](https://codecov.io/gh/LN-Zap/zap-iOS)

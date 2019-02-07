@@ -8,14 +8,13 @@
 import Foundation
 
 final class LocalLndConfiguration: NSObject {
-    var sections = [String: [String: String]]()
+    var sections = [String: [(String, String)]]()
     
     static let standard: LocalLndConfiguration = {
         let configuration = LocalLndConfiguration()
         configuration.set("Application Options", key: "debuglevel", value: "ATPL=debug,BRAR=debug,BTCN=info,CHDB=debug,CMGR=debug,CNCT=debug,CRTR=warn,DISC=debug,FNDG=debug,HSWC=debug,LNWL=debug,LTND=debug,NTFN=debug,PEER=info,RPCS=debug,SPHX=debug,SRVR=debug,UTXN=debug")
         configuration.set("Application Options", key: "maxpendingchannels", value: "10")
         configuration.set("Application Options", key: "nobootstrap", value: "1")
-//        configuration.set("Application Options", key: "noencryptwallet", value: "1")
         configuration.set("Application Options", key: "alias", value: "Zap iOS")
         configuration.set("Application Options", key: "color", value: "#3399FF")
         
@@ -23,17 +22,18 @@ final class LocalLndConfiguration: NSObject {
         configuration.set("Bitcoin", key: "bitcoin.testnet", value: "1")
         configuration.set("Bitcoin", key: "bitcoin.node", value: "neutrino")
         
-        configuration.set("neutrino", key: "neutrino.connect", value: "btcd.jackmallers.com")
-        
+        configuration.set("neutrino", key: "neutrino.connect", value: "testnet1-btcd.zaphq.io")
+        configuration.set("neutrino", key: "neutrino.connect", value: "testnet2-btcd.zaphq.io")
+
         configuration.set("autopilot", key: "autopilot.active", value: "0")
         return configuration
     }()
     
     func set(_ section: String, key: String, value: String) {
         if sections[section] == nil {
-            sections[section] = [key: value]
+            sections[section] = [(key, value)]
         } else {
-            sections[section]?[key] = value
+            sections[section]?.append((key, value))
         }
     }
     
@@ -46,6 +46,10 @@ final class LocalLndConfiguration: NSObject {
     
     func save(at path: URL) {
         let configurationDestination = path.appendingPathComponent("lnd.conf")
-        try? string.write(to: configurationDestination, atomically: false, encoding: .utf8)
+        do {
+            try string.write(to: configurationDestination, atomically: false, encoding: .utf8)
+        } catch {
+            print("🤮 \(error)")
+        }
     }
 }

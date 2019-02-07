@@ -22,7 +22,8 @@ class TransactionServiceTests: XCTestCase {
         
         let mockPersistence = MockPersistence()
         let mockApi = LightningApiMock(sendCoins: txid)
-        let lightningService = LightningService(api: mockApi, persistence: mockPersistence)
+        let testConnection = LightningConnection.remote(RemoteRPCConfiguration.mock)
+        let lightningService = LightningService(api: mockApi, walletId: "1", persistence: mockPersistence, connection: testConnection)
         lightningService.start()
         
         let testAddress = BitcoinAddress(string: "mwthp1qAAisrqMiKqZG7TMGAgMNJTg5hbD")!

@@ -33,6 +33,8 @@ struct Bolt11 {
         
         static func forNetwork(_ network: Network) -> Prefix {
             switch network {
+            case .regtest:
+                return .lnbcrt
             case .testnet:
                 return .lntb
             case .mainnet:

@@ -9,16 +9,6 @@ import Lightning
 import SwiftBTC
 import UIKit
 
-extension UIStoryboard {
-    static func instantiateQRCodeScannerViewController(strategy: QRCodeScannerStrategy) -> UINavigationController {
-        let navigationController = StoryboardScene.QRCodeScanner.initialScene.instantiate()
-        if let viewController = navigationController.topViewController as? QRCodeScannerViewController {
-            viewController.strategy = strategy
-        }
-        return navigationController
-    }
-}
-
 final class QRCodeScannerViewController: UIViewController {
     @IBOutlet private weak var qrCodeSuccessImageView: UIImageView!
     @IBOutlet private weak var pasteButton: UIButton!
@@ -39,6 +29,12 @@ final class QRCodeScannerViewController: UIViewController {
     
     override var preferredStatusBarStyle: UIStatusBarStyle {
         return .lightContent
+    }
+    
+    static func instantiate(strategy: QRCodeScannerStrategy) -> QRCodeScannerViewController {
+        let viewController = StoryboardScene.QRCodeScanner.qrCodeScannerViewController.instantiate()
+        viewController.strategy = strategy
+        return viewController
     }
     
     override func viewDidLoad() {

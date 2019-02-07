@@ -11,10 +11,10 @@ import SwiftBTC
 import SwiftLnd
 
 final class RecoverWalletViewModel {
-    let walletService: WalletService
+    let configuration: WalletConfiguration
     
-    init(walletService: WalletService) {
-        self.walletService = walletService
+    init(configuration: WalletConfiguration) {
+        self.configuration = configuration
     }
     
     private func mnemonic(from text: String) -> [String] {
@@ -22,8 +22,10 @@ final class RecoverWalletViewModel {
         return text.components(separatedBy: characters).filter { $0 != "" }
     }
     
-    func recoverWallet(with text: String, completion: @escaping (Result<Success>) -> Void) {
+    func recoverWallet(with text: String, completion: @escaping (Result<Success, LndApiError>) -> Void) {
         let mnemonic = self.mnemonic(from: text.lowercased())
+        
+        let walletService = WalletService(connection: configuration.connection)
         walletService.initWallet(mnemonic: mnemonic, completion: completion)
     }
     

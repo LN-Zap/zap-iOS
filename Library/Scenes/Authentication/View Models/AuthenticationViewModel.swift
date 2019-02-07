@@ -92,7 +92,7 @@ final class AuthenticationViewModel: NSObject {
         pinLength = pin.count
     }
     
-    func authenticate(_ pin: String) -> Result<Success> {
+    func authenticate(_ pin: String) -> Result<Success, AuthenticationError> {
         if hashPin(pin) == hashedPin {
             didAuthenticate()
             return .success(Success())

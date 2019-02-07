@@ -1,9 +1,9 @@
 PODS:
   - "!ProtoCompiler (3.6.0)":
     - Protobuf (~> 3.0)
-  - "!ProtoCompiler-gRPCPlugin (1.17.0)":
+  - "!ProtoCompiler-gRPCPlugin (1.18.0)":
     - "!ProtoCompiler (= 3.6.0)"
-    - gRPC-ProtoRPC (= 1.17.0)
+    - gRPC-ProtoRPC (= 1.18.0)
   - BigInt (3.1.0):
     - SipHash (~> 1.2)
   - Bond (6.10.2):
@@ -16,36 +16,36 @@ PODS:
     - BoringSSL-GRPC/Interface (= 0.0.2)
   - BoringSSL-GRPC/Interface (0.0.2)
   - Differ (1.3.0)
-  - gRPC (1.17.0):
-    - gRPC-RxLibrary (= 1.17.0)
-    - gRPC/Main (= 1.17.0)
-  - gRPC-Core (1.17.0):
-    - gRPC-Core/Implementation (= 1.17.0)
-    - gRPC-Core/Interface (= 1.17.0)
-  - gRPC-Core/Implementation (1.17.0):
+  - gRPC (1.18.0):
+    - gRPC-RxLibrary (= 1.18.0)
+    - gRPC/Main (= 1.18.0)
+  - gRPC-Core (1.18.0):
+    - gRPC-Core/Implementation (= 1.18.0)
+    - gRPC-Core/Interface (= 1.18.0)
+  - gRPC-Core/Implementation (1.18.0):
     - BoringSSL-GRPC (= 0.0.2)
-    - gRPC-Core/Interface (= 1.17.0)
+    - gRPC-Core/Interface (= 1.18.0)
     - nanopb (~> 0.3)
-  - gRPC-Core/Interface (1.17.0)
-  - gRPC-ProtoRPC (1.17.0):
-    - gRPC-ProtoRPC/Main (= 1.17.0)
-  - gRPC-ProtoRPC/Main (1.17.0):
-    - gRPC (= 1.17.0)
-    - gRPC-RxLibrary (= 1.17.0)
+  - gRPC-Core/Interface (1.18.0)
+  - gRPC-ProtoRPC (1.18.0):
+    - gRPC-ProtoRPC/Main (= 1.18.0)
+  - gRPC-ProtoRPC/Main (1.18.0):
+    - gRPC (= 1.18.0)
+    - gRPC-RxLibrary (= 1.18.0)
     - Protobuf (~> 3.0)
-  - gRPC-RxLibrary (1.17.0)
-  - gRPC/Main (1.17.0):
-    - gRPC-Core (= 1.17.0)
-    - gRPC-RxLibrary (= 1.17.0)
+  - gRPC-RxLibrary (1.18.0)
+  - gRPC/Main (1.18.0):
+    - gRPC-Core (= 1.18.0)
+    - gRPC-RxLibrary (= 1.18.0)
   - KeychainAccess (3.1.2)
-  - LndRpc (0.0.1):
+  - LndRpc (0.0.3):
     - "!ProtoCompiler-gRPCPlugin (~> 1.0)"
-    - LndRpc/Messages (= 0.0.1)
-    - LndRpc/Services (= 0.0.1)
-  - LndRpc/Messages (0.0.1):
+    - LndRpc/Messages (= 0.0.3)
+    - LndRpc/Services (= 0.0.3)
+  - LndRpc/Messages (0.0.3):
     - "!ProtoCompiler-gRPCPlugin (~> 1.0)"
     - Protobuf
-  - LndRpc/Services (0.0.1):
+  - LndRpc/Services (0.0.3):
     - "!ProtoCompiler-gRPCPlugin (~> 1.0)"
     - gRPC-ProtoRPC
     - LndRpc/Messages
@@ -61,9 +61,8 @@ PODS:
   - SQLite.swift (0.11.5):
     - SQLite.swift/standard (= 0.11.5)
   - SQLite.swift/standard (0.11.5)
-  - SwiftBTC (0.0.2):
+  - SwiftBTC (0.0.6):
     - BigInt (~> 3.1)
-  - SwiftProtobuf (1.2.0)
 
 DEPENDENCIES:
   - Bond
@@ -72,7 +71,6 @@ DEPENDENCIES:
   - ScrollableGraphView
   - SQLite.swift (~> 0.11.5)
   - SwiftBTC
-  - SwiftProtobuf
 
 SPEC REPOS:
   https://github.com/cocoapods/specs.git:
@@ -94,7 +92,6 @@ SPEC REPOS:
     - SipHash
     - SQLite.swift
     - SwiftBTC
-    - SwiftProtobuf
 
 EXTERNAL SOURCES:
   LndRpc:
@@ -102,26 +99,25 @@ EXTERNAL SOURCES:
 
 SPEC CHECKSUMS:
   "!ProtoCompiler": c9526df99fafd398a393def617ae18d3774b7232
-  "!ProtoCompiler-gRPCPlugin": ab86fdc8d28652a5f19d775674c9b7a0900071f4
+  "!ProtoCompiler-gRPCPlugin": 93f91aef21d112abda50a5c592d8716254ec44dc
   BigInt: 76b5dfdfa3e2e478d4ffdf161aeede5502e2742f
   Bond: 5c9d854fb14d3268496ccaf9b7ccd8428ec1609c
   BoringSSL-GRPC: 2a230d9cd93e7ce39916044f645cebb31f37dde6
   Differ: 9fcee7602542d7c6484ce05a0faec1c11258ed63
-  gRPC: 72b71666056dcb12235b5238f0ff5948fd60321a
-  gRPC-Core: 4028031ed2c5267cca0d846c876d8046b1ecb9b6
-  gRPC-ProtoRPC: 94e90774dd0dc089dece93ec22384d8383988f3f
-  gRPC-RxLibrary: f2873a17e8133f66d8ce972f8805aa7a518ae974
+  gRPC: f0d45d7bfd5f220e405df5a9f672315ab963440c
+  gRPC-Core: 901572a0099a453a79eb58bdb29e381ede0787bd
+  gRPC-ProtoRPC: 8e49c501c166d221cf9e44076b20580171f8ecd0
+  gRPC-RxLibrary: bf23bc3bfde06674a794bb63f458f8d67d4038bb
   KeychainAccess: b3816fddcf28aa29d94b10ec305cd52be14c472b
-  LndRpc: 9c07f81ca7fa27f043cf517a04fb5405731df0d9
+  LndRpc: 99b02ff159e117b9794f9109af3136a3f4252179
   nanopb: 2901f78ea1b7b4015c860c2fdd1ea2fee1a18d48
   Protobuf: 1eb9700044745f00181c136ef21b8ff3ad5a0fd5
   ReactiveKit: 5f4c440715d671901c382ae6b42ed3337ce4699b
   ScrollableGraphView: 4af35d4ea9ecdec665d34a74da51da161ddff8ac
   SipHash: fad90a4683e420c52ef28063063dbbce248ea6d4
   SQLite.swift: 6e5356850bb1791459f8c16d6ee9195b28714a2e
-  SwiftBTC: 77438e2a3a35175875ade76b8cfc93a398bf6c54
-  SwiftProtobuf: 91a9856079044ef4ec762b2344c763cd9e5a73c1
+  SwiftBTC: 488f7a8d17d9df4e11d684b8f74b46884c9b7081
 
-PODFILE CHECKSUM: 8f5d165049a2067b52a662f5d6a8e6ee3e847e29
+PODFILE CHECKSUM: c08c26c770c707242e612b0eaede8002d0bbdb1f
 
 COCOAPODS: 1.5.3

@@ -8,14 +8,6 @@
 import Lightning
 import UIKit
 
-extension UIStoryboard {
-    static func instantiatePinViewController(authenticationViewModel: AuthenticationViewModel) -> PinViewController {
-        let pinViewController = StoryboardScene.NumericKeyPad.initialScene.instantiate()
-        pinViewController.authenticationViewModel = authenticationViewModel
-        return pinViewController
-    }
-}
-
 final class PinViewController: UIViewController {
     @IBOutlet private weak var pinView: PinView!
     @IBOutlet private weak var keyPadView: KeyPadPinView!
@@ -24,6 +16,12 @@ final class PinViewController: UIViewController {
     fileprivate var authenticationViewModel: AuthenticationViewModel?
     
     override var preferredStatusBarStyle: UIStatusBarStyle { return .lightContent }
+    
+    static func instantiate(authenticationViewModel: AuthenticationViewModel) -> PinViewController {
+        let pinViewController = StoryboardScene.NumericKeyPad.initialScene.instantiate()
+        pinViewController.authenticationViewModel = authenticationViewModel
+        return pinViewController
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()

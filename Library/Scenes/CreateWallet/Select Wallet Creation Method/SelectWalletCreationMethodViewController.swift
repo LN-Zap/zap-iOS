@@ -8,16 +8,6 @@
 import SafariServices
 import UIKit
 
-extension UIStoryboard {
-    static func instantiateSetupViewController(createButtonTapped: @escaping () -> Void, recoverButtonTapped: @escaping () -> Void, connectButtonTapped: @escaping () -> Void) -> SelectWalletCreationMethodViewController {
-        let setupWalletViewController = StoryboardScene.CreateWallet.selectWalletCreationMethodViewController.instantiate()
-        setupWalletViewController.createButtonTapped = createButtonTapped
-        setupWalletViewController.recoverButtonTapped = recoverButtonTapped
-        setupWalletViewController.connectButtonTapped = connectButtonTapped
-        return setupWalletViewController
-    }
-}
-
 final class SelectWalletCreationMethodViewController: UIViewController {
     fileprivate var createButtonTapped: (() -> Void)?
     fileprivate var recoverButtonTapped: (() -> Void)?
@@ -27,6 +17,14 @@ final class SelectWalletCreationMethodViewController: UIViewController {
     
     // swiftlint:disable:next large_tuple
     var content: [(String, String, (() -> Void))]?
+    
+    static func instantiate(createButtonTapped: @escaping () -> Void, recoverButtonTapped: @escaping () -> Void, connectButtonTapped: @escaping () -> Void) -> SelectWalletCreationMethodViewController {
+        let setupWalletViewController = StoryboardScene.CreateWallet.selectWalletCreationMethodViewController.instantiate()
+        setupWalletViewController.createButtonTapped = createButtonTapped
+        setupWalletViewController.recoverButtonTapped = recoverButtonTapped
+        setupWalletViewController.connectButtonTapped = connectButtonTapped
+        return setupWalletViewController
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()

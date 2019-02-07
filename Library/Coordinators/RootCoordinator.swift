@@ -6,11 +6,15 @@
 //
 
 import Lightning
+import SwiftLnd
 import UIKit
 
-public final class RootCoordinator: NSObject, SetupCoordinatorDelegate, PinCoordinatorDelegate, SettingsDelegate, SyncDelegate, Routing {
+protocol RootCoordinatorDelegate: class {
+    func embedInRootContainer(viewController: UIViewController)
+}
+
+public final class RootCoordinator {
     private let rootViewController: RootViewController
-    private let connectionService: ConnectionService
     private let authenticationCoordinator: AuthenticationCoordinator
     private let backgroundCoordinator: BackgroundCoordinator
     private let toastCoordinator: ToastCoordinator = {
@@ -18,6 +22,8 @@ public final class RootCoordinator: NSObject, SetupCoordinatorDelegate, PinCoord
         coordinator.start()
         return coordinator
     }()
+    
+    private let walletConfigurationStore = WalletConfigurationStore.load()
     
     private var currentCoordinator: Any?
     private var route: Route?
@@ -28,7 +34,6 @@ public final class RootCoordinator: NSObject, SetupCoordinatorDelegate, PinCoord
     
     public init(window: UIWindow) {
         rootViewController = StoryboardScene.Root.initialScene.instantiate()
-        connectionService = ConnectionService()
         authenticationCoordinator = AuthenticationCoordinator(rootViewController: rootViewController)
         backgroundCoordinator = BackgroundCoordinator(rootViewController: rootViewController)
         
@@ -36,67 +41,80 @@ public final class RootCoordinator: NSObject, SetupCoordinatorDelegate, PinCoord
         window.tintColor = UIColor.Zap.lightningOrange
         Appearance.setup()
         
-        super.init()
-        start()
-        
-        updateFor(state: connectionService.state.value)
-        listenForStateChanges()
+        authenticationCoordinator.start()
+        update()
     }
     
-    public func listenForStateChanges() {
-        connectionService.state
-            .skip(first: 1)
-            .distinct()
-            .observeOn(DispatchQueue.main)
-            .observeNext { [weak self] state in
-                self?.updateFor(state: state)
-            }.dispose(in: reactive.bag)
+    // MARK: foreground / background state handling
+    
+    public func applicationWillEnterForeground() {
+        backgroundCoordinator.applicationWillEnterForeground()
     }
     
-    private func updateFor(state: ConnectionService.State) {
-        print("🗽 state:", state)
-
-        switch state {
-        case .noWallet:
-            presentSetup()
-        case .connecting:
-            presentLoading(message: .none)
-        case .syncing:
-            presentSync()
-        case .running:
-            presentMain()
+    public func applicationDidEnterBackground() {
+        backgroundCoordinator.applicationDidEnterBackground()
+        route = nil // reset route when app enters background
+    }
+    
+    // MARK: Coordinator Methods
+    
+    private func update() {
+        if !authenticationViewModel.didSetupPin {
+            presentPinSetup()
+        } else if let selectedWallet = walletConfigurationStore.selectedWallet {
+            presentSelectedWallet(selectedWallet)
+        } else {
+            presentSetup(walletConfigurationStore: walletConfigurationStore, remoteRPCConfiguration: nil)
         }
     }
     
+    private func presentSelectedWallet(_ configuration: WalletConfiguration) {
+        guard let lightningService = LightningService(connection: configuration.connection, walletId: configuration.walletId) else { return }
+
+        walletConfigurationStore.selectedWallet = configuration
+
+        walletConfigurationStore.updateInfo(for: configuration, infoService: lightningService.infoService)
+        
+        let walletCoordinator = WalletCoordinator(rootViewController: rootViewController, lightningService: lightningService, disconnectWalletDelegate: self, authenticationViewModel: authenticationViewModel)
+        self.currentCoordinator = walletCoordinator
+        walletCoordinator.start()
+    }
+    
+    private func presentSetup(walletConfigurationStore: WalletConfigurationStore, remoteRPCConfiguration: RemoteRPCConfiguration?) {
+        let setupCoordinator = SetupCoordinator(rootViewController: rootViewController, authenticationViewModel: authenticationCoordinator.authenticationViewModel, delegate: self, walletConfigurationStore: walletConfigurationStore)
+        currentCoordinator = setupCoordinator
+        setupCoordinator.start(remoteRPCConfiguration: remoteRPCConfiguration)
+    }
+    
+    private func presentPinSetup() {
+        let pinSetupCoordinator = PinSetupCoordinator(rootViewController: rootViewController, authenticationViewModel: authenticationViewModel, delegate: self)
+        self.currentCoordinator = pinSetupCoordinator
+        pinSetupCoordinator.start()
+    }
+}
+
+extension RootCoordinator: Routing {
     public func handle(_ route: Route) {
         if case .connect(let url) = route {
             openRPCConnectURL(url)
         } else {
             self.route = route
             
-            if let mainCoordinator = currentCoordinator as? MainCoordinator {
+            if let mainCoordinator = currentCoordinator as? WalletCoordinator {
                 mainCoordinator.handle(route)
                 self.route = nil
             }
         }
     }
     
-    public func applicationWillEnterForeground() {
-        backgroundCoordinator.applicationWillEnterForeground()
-        start()
-    }
-    
-    private func start() {
-        connectionService.start()
-        ExchangeUpdaterJob.start()
-    }
-    
-    private func openRPCConnectURL(_ url: RPCConnectURL) {
+    private func openRPCConnectURL(_ url: LndConnectURL) {
         let message = L10n.Scene.ConnectNodeUri.ActionSheet.message(url.rpcConfiguration.url.absoluteString)
         let alertController = UIAlertController(title: L10n.Scene.ConnectNodeUri.ActionSheet.title, message: message, preferredStyle: .actionSheet)
         
         let connectAlertAction = UIAlertAction(title: L10n.Scene.ConnectNodeUri.ActionSheet.connectButton, style: .default, handler: { [weak self] _ in
-            self?.connectionService.reconnect(configuration: url.rpcConfiguration)
+            guard let self = self else { return }
+            self.disconnect()
+            self.presentSetup(walletConfigurationStore: self.walletConfigurationStore, remoteRPCConfiguration: url.rpcConfiguration)
         })
         
         alertController.addAction(connectAlertAction)
@@ -106,71 +124,34 @@ public final class RootCoordinator: NSObject, SetupCoordinatorDelegate, PinCoord
         rootViewController.dismiss(animated: false)
         rootViewController.present(alertController, animated: true, completion: nil)
     }
+}
     
-    public func applicationDidEnterBackground() {
-        backgroundCoordinator.applicationDidEnterBackground()
-        route = nil // reset route when app enters background
-        connectionService.stop()
-        ExchangeUpdaterJob.stop()
+extension RootCoordinator: PinSetupCoordinatorDelegate {
+    func didSetupPin() {
+        update()
     }
-    
-    private func presentMain() {
-        guard let lightningService = connectionService.lightningService else { return }
-        
-        let tabBarController = RootTabBarController()
-        
-        let mainCoordinator = MainCoordinator(rootViewController: rootViewController, lightningService: lightningService, settingsDelegate: self, authenticationViewModel: authenticationCoordinator.authenticationViewModel)
+}
 
-        tabBarController.viewControllers = [
-            mainCoordinator.walletViewController(),
-            mainCoordinator.historyViewController(),
-            mainCoordinator.settingsViewController()
-        ]
-        presentViewController(tabBarController)
-    
-        currentCoordinator = mainCoordinator
+extension RootCoordinator: RootCoordinatorDelegate {
+    func embedInRootContainer(viewController: UIViewController) {
+        rootViewController.setContainerContent(viewController)
+    }
+}
 
-        mainCoordinator.historyViewModel.setupTabBarBadge(delegate: tabBarController)
-        
-        if let route = self.route {
-            handle(route)
-        }
+extension RootCoordinator: SetupCoordinatorDelegate {
+    func connectWallet(configuration: WalletConfiguration) {
+        presentSelectedWallet(configuration)
     }
-    
-    private func presentSetup() {
-        connectionService.disconnect()
-        
-        let setupCoordinator = SetupCoordinator(rootViewController: rootViewController, connectionService: connectionService, authenticationViewModel: authenticationCoordinator.authenticationViewModel, delegate: self)
-        currentCoordinator = setupCoordinator
-        setupCoordinator.start()
-    }
-    
-    private func presentSync() {
-        guard let lightningService = connectionService.lightningService else { return }
-        let viewController = UIStoryboard.instantiateSyncViewController(with: lightningService, delegate: self)
-        presentViewController(viewController)
-    }
-    
-    private func presentLoading(message: LoadingViewController.Message) {
-        let viewController = UIStoryboard.instantiateLoadingViewController(message: message)
-        presentViewController(viewController)
-    }
-    
-    internal func presentSetupPin() {
-        let pinSetupCoordinator = PinSetupCoordinator(rootViewController: rootViewController, authenticationViewModel: authenticationCoordinator.authenticationViewModel, delegate: self)
-        currentCoordinator = pinSetupCoordinator
-        pinSetupCoordinator.start()
-    }
-    
-    private func presentViewController(_ viewController: UIViewController) {
-        self.rootViewController.setContainerContent(viewController)
-    }
-    
-    func connect() {
-        connectionService.connect()
-    }
-    
+}
+
+extension RootCoordinator: DisconnectWalletDelegate {
     func disconnect() {
-        connectionService.disconnect()
+        if let walletCoordinator = currentCoordinator as? WalletCoordinator {
+            walletCoordinator.stop()
+            currentCoordinator = nil
+            walletConfigurationStore.selectedWallet = nil
+            
+            update()
+        }
     }
 }

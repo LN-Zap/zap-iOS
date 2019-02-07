@@ -11,20 +11,19 @@ import Lightning
 final class ChangePinSettingsItem: SettingsItem {
     let title = L10n.Scene.Settings.Item.changePin
     
-    private weak var settingsDelegate: SettingsDelegate?
+    private let authenticationViewModel: AuthenticationViewModel
     private weak var setupPinViewController: SetupPinViewController?
     
-    init(settingsDelegate: SettingsDelegate) {
-        self.settingsDelegate = settingsDelegate
+    init(authenticationViewModel: AuthenticationViewModel) {
+        self.authenticationViewModel = authenticationViewModel
     }
     
     func didSelectItem(from fromViewController: UIViewController) {
-        guard let authenticationViewModel = settingsDelegate?.authenticationViewModel else { return }
-        ModalPinViewController.authenticate(authenticationViewModel: authenticationViewModel) { [weak self] result in
+        ModalPinViewController.authenticate(authenticationViewModel: authenticationViewModel) { [weak self, authenticationViewModel] result in
             switch result {
             case .success:
                 let viewModel = SetupPinViewModel(authenticationViewModel: authenticationViewModel)
-                let setupPinViewController = UIStoryboard.instantiateSetupPinViewController(setupPinViewModel: viewModel) { [weak self] in
+                let setupPinViewController = SetupPinViewController.instantiate(setupPinViewModel: viewModel) { [weak self] in
                     self?.setupPinViewController?.dismiss(animated: true, completion: nil)
                 }
                 self?.setupPinViewController = setupPinViewController

@@ -32,12 +32,16 @@ final class ConnectRemoteNodeViewModel: NSObject {
     
     private var testServer: LightningApiRPC?
     
-    override init() {
+    override private init() {
+        fatalError("not implemented")
+    }
+    
+    init(remoteRPCConfiguration: RemoteRPCConfiguration?) {
         dataSource = MutableObservable2DArray([])
         
         super.init()
         
-        remoteNodeConfiguration = RemoteRPCConfiguration.load()
+        self.remoteNodeConfiguration = remoteRPCConfiguration
         updateTableView()
     }
     
@@ -83,7 +87,7 @@ final class ConnectRemoteNodeViewModel: NSObject {
         )
     }
     
-    func pasteCertificates(_ string: String, completion: @escaping (SwiftLnd.Result<Success>) -> Void) {
+    func pasteCertificates(_ string: String, completion: @escaping (SwiftLnd.Result<Success, RPCConnectQRCodeError>) -> Void) {
         RPCConnectQRCode.configuration(for: string) { [weak self] result in
             DispatchQueue.main.async {
                 switch result {
@@ -91,20 +95,20 @@ final class ConnectRemoteNodeViewModel: NSObject {
                     self?.remoteNodeConfiguration = configuration
                     completion(.success(Success()))
                 case .failure(let error):
-                    guard let error = error as? RPCConnectQRCodeError else { return }
                     completion(.failure(error))
                 }
             }
         }
     }
     
-    func connect(completion: @escaping (Bool) -> Void) {
+    func connect(completion: @escaping (WalletConfiguration, Bool) -> Void) {
         guard let remoteNodeConfiguration = remoteNodeConfiguration else { return }
 
-        remoteNodeConfiguration.save()
-
         testServer = LightningApiRPC(configuration: remoteNodeConfiguration)
-        testServer?.canConnect(completion: completion)
+        testServer?.canConnect {
+            let configuration = WalletConfiguration(alias: nil, network: nil, connection: .remote(remoteNodeConfiguration), walletId: UUID().uuidString)
+            completion(configuration, $0)
+        }
     }
     
     func updateUrl(_ url: URL) {

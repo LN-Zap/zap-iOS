@@ -30,6 +30,5 @@ class MacaroonTests: XCTestCase {
         XCTAssertTrue(macaroon.permissions.can(.write, domain: .address))
         XCTAssertFalse(macaroon.permissions.can(.write, domain: .onChain))
         XCTAssertFalse(macaroon.permissions.can(.read, domain: .info))
-        
     }
 }

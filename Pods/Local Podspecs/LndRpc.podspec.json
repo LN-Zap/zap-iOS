@@ -1,6 +1,6 @@
 {
   "name": "LndRpc",
-  "version": "0.0.1",
+  "version": "0.0.3",
   "license": "Apache License, Version 2.0",
   "authors": {
     "gRPC contributors": "grpc-io@googlegroups.com"
@@ -19,7 +19,7 @@
       "~> 1.0"
     ]
   },
-  "prepare_command": "mkdir -p Pods/LndRpc\nPods/!ProtoCompiler/protoc         --plugin=protoc-gen-grpc=Pods/!ProtoCompiler-gRPCPlugin/grpc_objective_c_plugin         --objc_out=Pods/LndRpc         --grpc_out=Pods/LndRpc         -I .         --proto_path=googleapis         -I Pods/!ProtoCompiler         ./*.proto",
+  "prepare_command": "mkdir -p Pods/LndRpc\nPods/!ProtoCompiler/protoc         --plugin=protoc-gen-grpc=Pods/!ProtoCompiler-gRPCPlugin/grpc_objective_c_plugin         --objc_out=Pods/LndRpc         --grpc_out=Pods/LndRpc         -I Proto         --proto_path=googleapis         -I Pods/!ProtoCompiler         Proto/*.proto",
   "pod_target_xcconfig": {
     "GCC_PREPROCESSOR_DEFINITIONS": "$(inherited) GPB_USE_PROTOBUF_FRAMEWORK_IMPORTS=1",
     "CLANG_ALLOW_NON_MODULAR_INCLUDES_IN_FRAMEWORK_MODULES": "YES"

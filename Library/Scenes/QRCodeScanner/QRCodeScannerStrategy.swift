@@ -13,5 +13,5 @@ import SwiftLnd
 protocol QRCodeScannerStrategy {
     var title: String { get }
     
-    func viewControllerForAddress(address: String, completion: @escaping (Result<UIViewController>) -> Void)
+    func viewControllerForAddress(address: String, completion: @escaping (Result<UIViewController, InvoiceError>) -> Void)
 }

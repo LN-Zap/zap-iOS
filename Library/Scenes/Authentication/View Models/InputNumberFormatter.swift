@@ -44,7 +44,6 @@ final class InputNumberFormatter {
         return numberFormatter
     }
     
-    // TODO: remove duplicate code
     private func validateFiat(_ input: String) -> String? {
         guard
             let numberFormatter = numberFormatter(for: input, exponent: 2),

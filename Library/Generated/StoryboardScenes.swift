@@ -58,8 +58,6 @@ internal enum StoryboardScene {
   internal enum History: StoryboardType {
     internal static let storyboardName = "History"
 
-    internal static let initialScene = InitialSceneType<UIKit.UINavigationController>(storyboard: History.self)
-
     internal static let filterViewController = SceneType<FilterViewController>(storyboard: History.self, identifier: "FilterViewController")
 
     internal static let historyViewController = SceneType<HistoryViewController>(storyboard: History.self, identifier: "HistoryViewController")
@@ -68,6 +66,11 @@ internal enum StoryboardScene {
     internal static let storyboardName = "Loading"
 
     internal static let initialScene = InitialSceneType<LoadingViewController>(storyboard: Loading.self)
+  }
+  internal enum ManageWallets: StoryboardType {
+    internal static let storyboardName = "ManageWallets"
+
+    internal static let manageWalletsViewController = SceneType<ManageWalletsViewController>(storyboard: ManageWallets.self, identifier: "ManageWalletsViewController")
   }
   internal enum ModalPin: StoryboardType {
     internal static let storyboardName = "ModalPin"
@@ -90,8 +93,6 @@ internal enum StoryboardScene {
   }
   internal enum QRCodeScanner: StoryboardType {
     internal static let storyboardName = "QRCodeScanner"
-
-    internal static let initialScene = InitialSceneType<UIKit.UINavigationController>(storyboard: QRCodeScanner.self)
 
     internal static let qrCodeScannerViewController = SceneType<QRCodeScannerViewController>(storyboard: QRCodeScanner.self, identifier: "QRCodeScannerViewController")
   }

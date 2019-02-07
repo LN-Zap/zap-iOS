@@ -22,7 +22,7 @@ struct BTCPayQRCode {
         configURL = url
     }
     
-    func fetchConfiguration(completion: @escaping (Result<Data>) -> Void) {
+    func fetchConfiguration(completion: @escaping (Result<Data, RPCConnectQRCodeError>) -> Void) {
         DispatchQueue.global().async {
             do {
                 let data = try Data(contentsOf: self.configURL)                

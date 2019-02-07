@@ -6,18 +6,9 @@
 //
 
 import Bond
+import Lightning
 import SafariServices
 import UIKit
-
-extension UIStoryboard {
-    static func instantiateConnectRemoteNodeViewController(didSetupWallet: @escaping () -> Void, connectRemoteNodeViewModel: ConnectRemoteNodeViewModel, presentQRCodeScannerButtonTapped: @escaping (() -> Void)) -> ConnectRemoteNodeViewController {
-        let viewController = StoryboardScene.ConnectRemoteNode.connectRemoteNodeViewController.instantiate()
-        viewController.didSetupWallet = didSetupWallet
-        viewController.connectRemoteNodeViewModel = connectRemoteNodeViewModel
-        viewController.presentQRCodeScannerButtonTapped = presentQRCodeScannerButtonTapped
-        return viewController
-    }
-}
 
 final class ConnectCellBond: TableViewBinder<Observable2DArray<String?, ConnectRemoteNodeViewModel.CellType>> {
     
@@ -95,10 +86,18 @@ final class ConnectRemoteNodeViewController: UIViewController {
     @IBOutlet private weak var tableView: UITableView!
     
     fileprivate var presentQRCodeScannerButtonTapped: (() -> Void)?
-    fileprivate var didSetupWallet: (() -> Void)?
+    fileprivate var didSetupWallet: ((WalletConfiguration) -> Void)?
     fileprivate var connectRemoteNodeViewModel: ConnectRemoteNodeViewModel?
     
     private var isConnecting = false
+    
+    static func instantiate(didSetupWallet: @escaping (WalletConfiguration) -> Void, connectRemoteNodeViewModel: ConnectRemoteNodeViewModel, presentQRCodeScannerButtonTapped: @escaping (() -> Void)) -> ConnectRemoteNodeViewController {
+        let viewController = StoryboardScene.ConnectRemoteNode.connectRemoteNodeViewController.instantiate()
+        viewController.didSetupWallet = didSetupWallet
+        viewController.connectRemoteNodeViewModel = connectRemoteNodeViewModel
+        viewController.presentQRCodeScannerButtonTapped = presentQRCodeScannerButtonTapped
+        return viewController
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -145,10 +144,10 @@ final class ConnectRemoteNodeViewController: UIViewController {
         
         cell.textLabel?.isHidden = true
         
-        connectRemoteNodeViewModel?.connect { [weak self] success in
+        connectRemoteNodeViewModel?.connect { [weak self] configuration, success in
             DispatchQueue.main.async {
                 if success {
-                    self?.didSetupWallet?()
+                    self?.didSetupWallet?(configuration)
                 } else {
                     self?.displayError()
                 }
@@ -162,13 +161,13 @@ final class ConnectRemoteNodeViewController: UIViewController {
     
     private func presentAddressDetail() {
         guard let viewModel = connectRemoteNodeViewModel else { return }
-        let viewController = UIStoryboard.instantiateUpdateAddressViewController(connectRemoteNodeViewModel: viewModel)
+        let viewController = UpdateAddressViewController.instantiate(connectRemoteNodeViewModel: viewModel)
         navigationController?.pushViewController(viewController, animated: true)
     }
     
     private func presentCertificateDetail() {
         guard let viewModel = connectRemoteNodeViewModel else { return }
-        let viewController = UIStoryboard.instantiateCertificateDetailViewController(connectRemoteNodeViewModel: viewModel)
+        let viewController = CertificateDetailViewController.instantiate(connectRemoteNodeViewModel: viewModel)
         navigationController?.pushViewController(viewController, animated: true)
     }
     

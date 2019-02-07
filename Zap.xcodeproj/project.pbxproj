@@ -7,12 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		3219EEFE4A0DB2135AE1699B /* Pods_Apps_ZapPos.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0852E6B6485C260D1BF74548 /* Pods_Apps_ZapPos.framework */; };
 		391FC6E65BB7824B7A174682 /* Pods_LibraryTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C9FDBEC0089BCC09D314B328 /* Pods_LibraryTests.framework */; };
 		429230B451D7CAF7718C5EBB /* Pods_RPC_SwiftLnd.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D1D7DC8244C0E3E65FCB72FA /* Pods_RPC_SwiftLnd.framework */; };
 		508C114BE3C2C3584AB55069 /* Pods_LightningTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 64689AAAE184A2256E9C9DF3 /* Pods_LightningTests.framework */; };
 		5FCBBF37B467569C5BD2796A /* Pods_RPC_Library.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4629437540BC6CE36F3EE098 /* Pods_RPC_Library.framework */; };
-		6E1140740E9E4B76B462BEAB /* Pods_Apps_Zap.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 148266027255CA2F368037FC /* Pods_Apps_Zap.framework */; };
 		A02C9FC2202F5BDC009821B1 /* LocalAuthentication.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A02C9FC1202F5BDC009821B1 /* LocalAuthentication.framework */; };
 		A0A05A032013CF960007D1C9 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0A05A022013CF960007D1C9 /* AppDelegate.swift */; };
 		A0A05A0A2013CF960007D1C9 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A0A05A092013CF960007D1C9 /* Assets.xcassets */; };
@@ -49,9 +47,7 @@
 		AD3781C421661A070083CE77 /* Pem.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD27B01520FC8BBF00F232A8 /* Pem.swift */; };
 		AD3781CA21664E9E0083CE77 /* LightningConnection.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADD9DCDC20B453D000AEFC5C /* LightningConnection.swift */; };
 		AD3781CC21664EB00083CE77 /* RemoteRPCConfiguration.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD71EA4820E2318000256307 /* RemoteRPCConfiguration.swift */; };
-		AD3781CE21664EB90083CE77 /* RemoteRPCConfiguration.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD3781CD21664EB90083CE77 /* RemoteRPCConfiguration.swift */; };
 		AD3781D02166522E0083CE77 /* Environment.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD3781CF2166522E0083CE77 /* Environment.swift */; };
-		AD3781D1216659C90083CE77 /* ConnectionService.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD71EA4620E228D800256307 /* ConnectionService.swift */; };
 		AD391C1C20D16ED4007EE22A /* Library.h in Headers */ = {isa = PBXBuildFile; fileRef = AD391C1A20D16ED4007EE22A /* Library.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		AD391C1F20D16ED4007EE22A /* Library.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AD391C1820D16ED4007EE22A /* Library.framework */; };
 		AD391C2020D16ED4007EE22A /* Library.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = AD391C1820D16ED4007EE22A /* Library.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
@@ -150,7 +146,7 @@
 		AD391D0C20D16FF5007EE22A /* PinView.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADF79363208DCB630086B2CA /* PinView.swift */; };
 		AD391D1020D16FF5007EE22A /* Toast.swift in Sources */ = {isa = PBXBuildFile; fileRef = A01009402014D4810001EF94 /* Toast.swift */; };
 		AD391D1120D16FF5007EE22A /* Toast.xib in Resources */ = {isa = PBXBuildFile; fileRef = A010093F2014D4810001EF94 /* Toast.xib */; };
-		AD391D1920D174B4007EE22A /* MainCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADEDBB8D20C2D70B00B71F17 /* MainCoordinator.swift */; };
+		AD391D1920D174B4007EE22A /* WalletCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADEDBB8D20C2D70B00B71F17 /* WalletCoordinator.swift */; };
 		AD391D1B20D174B4007EE22A /* PinSetupCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADEDBB9120C2FC3200B71F17 /* PinSetupCoordinator.swift */; };
 		AD391D1C20D174B4007EE22A /* RootCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD8B13F020C0582D0091F9DA /* RootCoordinator.swift */; };
 		AD391D1D20D174B4007EE22A /* Route.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADEDBC0920C31C5F00B71F17 /* Route.swift */; };
@@ -175,6 +171,11 @@
 		AD667E5921384966007B9160 /* WindowLevel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD667E5821384966007B9160 /* WindowLevel.swift */; };
 		AD79E422219D90E2002589CA /* Data+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD79E421219D90E2002589CA /* Data+Extensions.swift */; };
 		AD79E424219D90EF002589CA /* String+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD79E423219D90EF002589CA /* String+Extensions.swift */; };
+		AD7ED61A22085B22007C5F2C /* Environment.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADCD060020E67FA5009D9650 /* Environment.swift */; };
+		AD7ED61D22087812007C5F2C /* ManageWalletTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD7ED61B22087812007C5F2C /* ManageWalletTableViewCell.swift */; };
+		AD7ED61E22087812007C5F2C /* ManageWalletTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = AD7ED61C22087812007C5F2C /* ManageWalletTableViewCell.xib */; };
+		AD7ED6202209D09F007C5F2C /* ConnectionStateService.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD7ED61F2209D09F007C5F2C /* ConnectionStateService.swift */; };
+		AD7ED622220B4FE9007C5F2C /* FileManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD7ED621220B4FE9007C5F2C /* FileManager.swift */; };
 		AD7EDAE32108C4150058CCCA /* Wallet.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AD7EDAE22108C4150058CCCA /* Wallet.storyboard */; };
 		AD7EDAE52108C41D0058CCCA /* WalletViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD7EDAE42108C41D0058CCCA /* WalletViewController.swift */; };
 		AD7EDAE72108D39D0058CCCA /* ZapNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD7EDAE62108D39D0058CCCA /* ZapNavigationController.swift */; };
@@ -192,7 +193,6 @@
 		AD967FF8210731110048085B /* PinnedURLSessionDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD967FF7210731110048085B /* PinnedURLSessionDelegate.swift */; };
 		AD97A90620EE7FD9008344EA /* BitcoinTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD97A90520EE7FD9008344EA /* BitcoinTests.swift */; };
 		AD97A91420EFCFC3008344EA /* Bitcoin+Localizable.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD97A91320EFCFC3008344EA /* Bitcoin+Localizable.swift */; };
-		AD9BB2CD217E361D009DC878 /* Settings.bundle in Resources */ = {isa = PBXBuildFile; fileRef = AD9BB2CC217E361D009DC878 /* Settings.bundle */; };
 		AD9BB2DA21819799009DC878 /* Route.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD9BB2D921819799009DC878 /* Route.swift */; };
 		AD9BB2DC21830B4F009DC878 /* LoadingAmountView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD9BB2DB21830B4F009DC878 /* LoadingAmountView.swift */; };
 		AD9BB2E021836A54009DC878 /* DispatchQueue+Debounce.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD9BB2DF21836A54009DC878 /* DispatchQueue+Debounce.swift */; };
@@ -203,12 +203,18 @@
 		ADA179C52152864E001401F3 /* Persistable.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD1EBA0020B2FD9D001FF67E /* Persistable.swift */; };
 		ADA179C62152864E001401F3 /* Storage.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADA865C120ED041F00B1B74B /* Storage.swift */; };
 		ADA179C82153997B001401F3 /* Persistence.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADA179C72153997B001401F3 /* Persistence.swift */; };
-		ADA3253421A701E700C5EAA2 /* MacaroonId.pb.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADA3253321A701E700C5EAA2 /* MacaroonId.pb.swift */; };
 		ADA3253621A81B5C00C5EAA2 /* MacaroonTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADA3253521A81B5C00C5EAA2 /* MacaroonTests.swift */; };
 		ADA3254021AD5B3400C5EAA2 /* Strings.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADA3253F21AD5B3300C5EAA2 /* Strings.swift */; };
 		ADA3254221AD8A6200C5EAA2 /* Assets.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADA3254121AD8A6200C5EAA2 /* Assets.swift */; };
 		ADA3254421AD8D7900C5EAA2 /* Colors.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = ADA3254321AD8D7900C5EAA2 /* Colors.xcassets */; };
 		ADA3254621AD8F6200C5EAA2 /* StoryboardScenes.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADA3254521AD8F6200C5EAA2 /* StoryboardScenes.swift */; };
+		ADA58F8C2200B08A009A5494 /* LightningApiTransformation.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADA58F8B2200B08A009A5494 /* LightningApiTransformation.swift */; };
+		ADA58F9122031E56009A5494 /* RpcCallback.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADA58F9022031E56009A5494 /* RpcCallback.swift */; };
+		ADA58F9322033FC7009A5494 /* WalletApiTransformation.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADA58F9222033FC7009A5494 /* WalletApiTransformation.swift */; };
+		ADA58F9522034A25009A5494 /* GRPCProtoCall+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADA58F9422034A25009A5494 /* GRPCProtoCall+Extensions.swift */; };
+		ADA58F9822049022009A5494 /* ManageWalletsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADA58F9722049022009A5494 /* ManageWalletsViewController.swift */; };
+		ADA58F9A22049047009A5494 /* ManageWallets.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = ADA58F9922049047009A5494 /* ManageWallets.storyboard */; };
+		ADA58F9C22049470009A5494 /* WalletConfigurationStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADA58F9B22049470009A5494 /* WalletConfigurationStore.swift */; };
 		ADA6BBBF211B3AEC00A1FF19 /* ScanRectView.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADA6BBBE211B3AEC00A1FF19 /* ScanRectView.swift */; };
 		ADA75DF2210F389100003068 /* ChannelState+Localizable.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADA75DF1210F389100003068 /* ChannelState+Localizable.swift */; };
 		ADA81E9E210DE14100B7C6F2 /* UIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADA81E9D210DE14100B7C6F2 /* UIView.swift */; };
@@ -219,7 +225,6 @@
 		ADADAD5821411F7200A48E1F /* GraphViewDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADADAD5721411F7200A48E1F /* GraphViewDataSource.swift */; };
 		ADADAD5A214126BB00A48E1F /* Date.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADADAD59214126BB00A48E1F /* Date.swift */; };
 		ADADAD6C2143B2E700A48E1F /* SwiftLnd.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = ADADAD632143B2E700A48E1F /* SwiftLnd.framework */; };
-		ADADAD732143B2E700A48E1F /* SwiftLndTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADADAD722143B2E700A48E1F /* SwiftLndTests.swift */; };
 		ADADAD752143B2E700A48E1F /* SwiftLnd.h in Headers */ = {isa = PBXBuildFile; fileRef = ADADAD652143B2E700A48E1F /* SwiftLnd.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		ADADAD782143B2E700A48E1F /* SwiftLnd.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = ADADAD632143B2E700A48E1F /* SwiftLnd.framework */; };
 		ADADAD792143B2E700A48E1F /* SwiftLnd.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = ADADAD632143B2E700A48E1F /* SwiftLnd.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
@@ -247,6 +252,7 @@
 		ADADAD9F2143B3C900A48E1F /* WalletApiProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD6F863320DA3C99008C371B /* WalletApiProtocol.swift */; };
 		ADADADA02143B3C900A48E1F /* WalletApiRPC.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0D3C969205D55570015C5D7 /* WalletApiRPC.swift */; };
 		ADADADA12143B3C900A48E1F /* WalletApiStream.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD6F863120DA3C66008C371B /* WalletApiStream.swift */; };
+		ADC08D8B21DBBB16000E730E /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = ADC08D8A21DBBB16000E730E /* README.md */; };
 		ADC0D2F02107953100B8C62F /* PinnedHost.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADC0D2EF2107953100B8C62F /* PinnedHost.swift */; };
 		ADC0D2F321079FF700B8C62F /* www.blockchain.com.cer in Resources */ = {isa = PBXBuildFile; fileRef = ADC0D2F221079FF600B8C62F /* www.blockchain.com.cer */; };
 		ADC0D2F52107A13900B8C62F /* DigiCert SHA2 Extended Validation Server CA.cer in Resources */ = {isa = PBXBuildFile; fileRef = ADC0D2F42107A13800B8C62F /* DigiCert SHA2 Extended Validation Server CA.cer */; };
@@ -266,15 +272,6 @@
 		ADEDA3CC21788CE50078FD91 /* NodeURISettingsItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADEDA3CB21788CE50078FD91 /* NodeURISettingsItem.swift */; };
 		ADEDA3CE217892A10078FD91 /* RequestQRCodeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADEDA3CD217892A10078FD91 /* RequestQRCodeViewModel.swift */; };
 		ADEDA3D12178938E0078FD91 /* NodeURIQRCodeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADEDA3D02178938E0078FD91 /* NodeURIQRCodeViewModel.swift */; };
-		ADEDA3D9217E2C1D0078FD91 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADEDA3D8217E2C1D0078FD91 /* AppDelegate.swift */; };
-		ADEDA3E0217E2C1F0078FD91 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = ADEDA3DF217E2C1F0078FD91 /* Assets.xcassets */; };
-		ADEDA3E3217E2C1F0078FD91 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = ADEDA3E1217E2C1F0078FD91 /* LaunchScreen.storyboard */; };
-		ADEDA3F8217E2F850078FD91 /* Library.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AD391C1820D16ED4007EE22A /* Library.framework */; };
-		ADEDA3F9217E2F850078FD91 /* Library.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = AD391C1820D16ED4007EE22A /* Library.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		ADEDA3FC217E2F850078FD91 /* Lightning.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AD536BE620E62763002279BC /* Lightning.framework */; };
-		ADEDA3FD217E2F850078FD91 /* Lightning.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = AD536BE620E62763002279BC /* Lightning.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		ADEDA400217E2F860078FD91 /* SwiftLnd.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = ADADAD632143B2E700A48E1F /* SwiftLnd.framework */; };
-		ADEDA401217E2F860078FD91 /* SwiftLnd.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = ADADAD632143B2E700A48E1F /* SwiftLnd.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		ADEEB5332134277400D2F992 /* KeyPadPinView.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADEEB5322134277400D2F992 /* KeyPadPinView.swift */; };
 		ADEEB5362134669B00D2F992 /* ModalPinViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADEEB5352134669B00D2F992 /* ModalPinViewController.swift */; };
 		ADEEB53821346DEA00D2F992 /* ModalPin.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = ADEEB53721346DEA00D2F992 /* ModalPin.storyboard */; };
@@ -285,7 +282,7 @@
 		ADF0930F2148FA7300B48853 /* CreateInvoiceEvent.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADF0930E2148FA7300B48853 /* CreateInvoiceEvent.swift */; };
 		ADF093112148FDC600B48853 /* LightningPaymentEvent.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADF093102148FDC600B48853 /* LightningPaymentEvent.swift */; };
 		ADF093132148FEB900B48853 /* ChannelEvent.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADF093122148FEB900B48853 /* ChannelEvent.swift */; };
-		ADF1BB3021997A820078BCC4 /* RPCConnectURL.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADF1BB2F21997A820078BCC4 /* RPCConnectURL.swift */; };
+		ADF1BB3021997A820078BCC4 /* LndConnectURL.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADF1BB2F21997A820078BCC4 /* LndConnectURL.swift */; };
 		ADF1BB33219D7F260078BCC4 /* Macaroon.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADF1BB32219D7F260078BCC4 /* Macaroon.swift */; };
 		ADFB0CC7216E09E00048B63C /* ReceivingAddress.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADFB0CC6216E09E00048B63C /* ReceivingAddress.swift */; };
 		ADFB0CCA216E34540048B63C /* ReceivingAddressTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADFB0CC8216E318B0048B63C /* ReceivingAddressTests.swift */; };
@@ -293,10 +290,11 @@
 		ADFB36D72143B73C00146FCC /* LndConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD71EA4A20E2321100256307 /* LndConstants.swift */; };
 		ADFB36D82143B73C00146FCC /* LocalLnd.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0A05A342014047B0007D1C9 /* LocalLnd.swift */; };
 		ADFB36D92143B73C00146FCC /* LocalLndConfiguration.swift in Sources */ = {isa = PBXBuildFile; fileRef = A02C9FC520304395009821B1 /* LocalLndConfiguration.swift */; };
-		ADFB36DF2143B93300146FCC /* Environment.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADCD060020E67FA5009D9650 /* Environment.swift */; };
 		ADFB36E62143BA6F00146FCC /* Invoice.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADC29C0B20A9B0A0008B2DC2 /* Invoice.swift */; };
 		ADFB36E72143BAC500146FCC /* Payment.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADECC36820F257AF00D00546 /* Payment.swift */; };
 		ADFB36E92143BB2200146FCC /* Transaction.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADECC36A20F257BE00D00546 /* Transaction.swift */; };
+		ADFBE0C121F6268500A76E06 /* Stickers.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = ADFBE0C021F6268500A76E06 /* Stickers.xcassets */; };
+		ADFBE0C521F6268500A76E06 /* Sticker.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = ADFBE0BE21F6268400A76E06 /* Sticker.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		ADFC816F20DA80EF00D26913 /* RecoverWalletViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADFC816E20DA80EF00D26913 /* RecoverWalletViewModel.swift */; };
 		ADFCEADF2177687F00370242 /* EventDetailViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADFCEADE2177687F00370242 /* EventDetailViewModel.swift */; };
 		ADFCEAE221776E2100370242 /* EventDetailViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADFCEAE021776E1C00370242 /* EventDetailViewModelTests.swift */; };
@@ -311,6 +309,9 @@
 		ADFEFA6F20E627F100FE1557 /* WalletService.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0D3C9792060070D0015C5D7 /* WalletService.swift */; };
 		ADFEFA7120E628AC00FE1557 /* Lightning.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AD536BE620E62763002279BC /* Lightning.framework */; };
 		ADFEFA7920E62B1800FE1557 /* BlockChainHeightUpdater.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0D3C97F20629B9D0015C5D7 /* BlockChainHeightUpdater.swift */; };
+		AEAF270921EAD05B004E022F /* Let's Encrypt Authority X3.cer in Resources */ = {isa = PBXBuildFile; fileRef = AEAF270721EAD05B004E022F /* Let's Encrypt Authority X3.cer */; };
+		AEAF270A21EAD05B004E022F /* blockstream.info.cer in Resources */ = {isa = PBXBuildFile; fileRef = AEAF270821EAD05B004E022F /* blockstream.info.cer */; };
+		B0E9D90B345B96C563581FE1 /* Pods_Zap.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4A29C2D527BF19A41F251C3F /* Pods_Zap.framework */; };
 		D6989DE43FB4820F856510AB /* Pods_SwiftLndTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 81036DADA56AC2254782EE27 /* Pods_SwiftLndTests.framework */; };
 		DAB5EBC4696E2DCAEF57744D /* Pods_RPC_Lightning.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 92308447F0260B8536617365 /* Pods_RPC_Lightning.framework */; };
 /* End PBXBuildFile section */
@@ -372,33 +373,19 @@
 			remoteGlobalIDString = ADADAD622143B2E700A48E1F;
 			remoteInfo = SwiftLnd;
 		};
-		ADEDA3FA217E2F850078FD91 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = A0A059F72013CF960007D1C9 /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = AD391C1720D16ED4007EE22A;
-			remoteInfo = Library;
-		};
-		ADEDA3FE217E2F850078FD91 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = A0A059F72013CF960007D1C9 /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = AD536BE520E62763002279BC;
-			remoteInfo = Lightning;
-		};
-		ADEDA402217E2F860078FD91 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = A0A059F72013CF960007D1C9 /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = ADADAD622143B2E700A48E1F;
-			remoteInfo = SwiftLnd;
-		};
 		ADFB36D42143B67A00146FCC /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = A0A059F72013CF960007D1C9 /* Project object */;
 			proxyType = 1;
 			remoteGlobalIDString = ADADAD622143B2E700A48E1F;
 			remoteInfo = SwiftLnd;
+		};
+		ADFBE0C321F6268500A76E06 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = A0A059F72013CF960007D1C9 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = ADFBE0BD21F6268400A76E06;
+			remoteInfo = Sticker;
 		};
 		ADFE538020D693F500B3BA2A /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
@@ -436,38 +423,24 @@
 			dstPath = "";
 			dstSubfolderSpec = 13;
 			files = (
+				ADFBE0C521F6268500A76E06 /* Sticker.appex in Embed App Extensions */,
 			);
 			name = "Embed App Extensions";
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		ADEDA404217E2F860078FD91 /* Embed Frameworks */ = {
-			isa = PBXCopyFilesBuildPhase;
-			buildActionMask = 2147483647;
-			dstPath = "";
-			dstSubfolderSpec = 10;
-			files = (
-				ADEDA401217E2F860078FD91 /* SwiftLnd.framework in Embed Frameworks */,
-				ADEDA3F9217E2F850078FD91 /* Library.framework in Embed Frameworks */,
-				ADEDA3FD217E2F850078FD91 /* Lightning.framework in Embed Frameworks */,
-			);
-			name = "Embed Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
 		045A3F79F6BD76792A8F3DFC /* Pods-RPC-Library.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RPC-Library.release.xcconfig"; path = "Pods/Target Support Files/Pods-RPC-Library/Pods-RPC-Library.release.xcconfig"; sourceTree = "<group>"; };
-		0852E6B6485C260D1BF74548 /* Pods_Apps_ZapPos.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Apps_ZapPos.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		0C0921AE2504374B286BE025 /* Pods-Apps-ZapPos.debugremote.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Apps-ZapPos.debugremote.xcconfig"; path = "Pods/Target Support Files/Pods-Apps-ZapPos/Pods-Apps-ZapPos.debugremote.xcconfig"; sourceTree = "<group>"; };
-		148266027255CA2F368037FC /* Pods_Apps_Zap.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Apps_Zap.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		4629437540BC6CE36F3EE098 /* Pods_RPC_Library.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_RPC_Library.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		4A29C2D527BF19A41F251C3F /* Pods_Zap.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Zap.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		4AE4B3957AC31DDABB89AF3B /* Pods-RPC-SwiftLnd.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RPC-SwiftLnd.release.xcconfig"; path = "Pods/Target Support Files/Pods-RPC-SwiftLnd/Pods-RPC-SwiftLnd.release.xcconfig"; sourceTree = "<group>"; };
-		4D01823B5E51BB332B8D545E /* Pods-Apps-Zap.debugremote.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Apps-Zap.debugremote.xcconfig"; path = "Pods/Target Support Files/Pods-Apps-Zap/Pods-Apps-Zap.debugremote.xcconfig"; sourceTree = "<group>"; };
 		4D814F1CFAAE16F5AF1B849C /* Pods-RPC-Library.debugremote.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RPC-Library.debugremote.xcconfig"; path = "Pods/Target Support Files/Pods-RPC-Library/Pods-RPC-Library.debugremote.xcconfig"; sourceTree = "<group>"; };
+		5E35400BBA08A4A87916AF7B /* Pods-Zap.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Zap.release.xcconfig"; path = "Pods/Target Support Files/Pods-Zap/Pods-Zap.release.xcconfig"; sourceTree = "<group>"; };
 		6360F43C49A912B87754D099 /* Pods-RPC-SwiftLnd.debugremote.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RPC-SwiftLnd.debugremote.xcconfig"; path = "Pods/Target Support Files/Pods-RPC-SwiftLnd/Pods-RPC-SwiftLnd.debugremote.xcconfig"; sourceTree = "<group>"; };
 		64689AAAE184A2256E9C9DF3 /* Pods_LightningTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_LightningTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		675E3550D7FE082603B36574 /* Pods-Apps-Zap.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Apps-Zap.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Apps-Zap/Pods-Apps-Zap.debug.xcconfig"; sourceTree = "<group>"; };
 		6EBC100D11F16C32A4A35FE0 /* Pods-RPC-Library.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RPC-Library.debug.xcconfig"; path = "Pods/Target Support Files/Pods-RPC-Library/Pods-RPC-Library.debug.xcconfig"; sourceTree = "<group>"; };
+		75C93228A5FCF2CBD287946A /* Pods-Zap.debugremote.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Zap.debugremote.xcconfig"; path = "Pods/Target Support Files/Pods-Zap/Pods-Zap.debugremote.xcconfig"; sourceTree = "<group>"; };
 		7B0A5F2DD04568862A768B38 /* Pods-RPC-Lightning.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RPC-Lightning.release.xcconfig"; path = "Pods/Target Support Files/Pods-RPC-Lightning/Pods-RPC-Lightning.release.xcconfig"; sourceTree = "<group>"; };
 		81036DADA56AC2254782EE27 /* Pods_SwiftLndTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_SwiftLndTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		8BBDA0096476551D268EA826 /* Pods-RPC-SwiftLnd.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RPC-SwiftLnd.debug.xcconfig"; path = "Pods/Target Support Files/Pods-RPC-SwiftLnd/Pods-RPC-SwiftLnd.debug.xcconfig"; sourceTree = "<group>"; };
@@ -582,7 +555,6 @@
 		AD2D912B21567D4C001015B6 /* EventDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventDetailViewController.swift; sourceTree = "<group>"; };
 		AD308985216F37E300B5489C /* TransactionServiceTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransactionServiceTests.swift; sourceTree = "<group>"; };
 		AD308988216FA88D00B5489C /* GraphViewDataSourceTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GraphViewDataSourceTests.swift; sourceTree = "<group>"; };
-		AD3781CD21664EB90083CE77 /* RemoteRPCConfiguration.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RemoteRPCConfiguration.swift; sourceTree = "<group>"; };
 		AD3781CF2166522E0083CE77 /* Environment.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Environment.swift; sourceTree = "<group>"; };
 		AD391C1820D16ED4007EE22A /* Library.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Library.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		AD391C1A20D16ED4007EE22A /* Library.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Library.h; sourceTree = "<group>"; };
@@ -620,7 +592,6 @@
 		AD6F863120DA3C66008C371B /* WalletApiStream.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WalletApiStream.swift; sourceTree = "<group>"; };
 		AD6F863320DA3C99008C371B /* WalletApiProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WalletApiProtocol.swift; sourceTree = "<group>"; };
 		AD6FFCA520AB0A3700B57330 /* OnChainRequestAddressTypeSettingsItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnChainRequestAddressTypeSettingsItem.swift; sourceTree = "<group>"; };
-		AD71EA4620E228D800256307 /* ConnectionService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConnectionService.swift; sourceTree = "<group>"; };
 		AD71EA4820E2318000256307 /* RemoteRPCConfiguration.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RemoteRPCConfiguration.swift; sourceTree = "<group>"; };
 		AD71EA4A20E2321100256307 /* LndConstants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LndConstants.swift; sourceTree = "<group>"; };
 		AD77464D2076162300EC596B /* Network+Localizable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Network+Localizable.swift"; sourceTree = "<group>"; };
@@ -628,6 +599,10 @@
 		AD7746582076609400EC596B /* NodeInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NodeInfo.swift; sourceTree = "<group>"; };
 		AD79E421219D90E2002589CA /* Data+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Data+Extensions.swift"; sourceTree = "<group>"; };
 		AD79E423219D90EF002589CA /* String+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Extensions.swift"; sourceTree = "<group>"; };
+		AD7ED61B22087812007C5F2C /* ManageWalletTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ManageWalletTableViewCell.swift; sourceTree = "<group>"; };
+		AD7ED61C22087812007C5F2C /* ManageWalletTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ManageWalletTableViewCell.xib; sourceTree = "<group>"; };
+		AD7ED61F2209D09F007C5F2C /* ConnectionStateService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConnectionStateService.swift; sourceTree = "<group>"; };
+		AD7ED621220B4FE9007C5F2C /* FileManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FileManager.swift; sourceTree = "<group>"; };
 		AD7EDAE22108C4150058CCCA /* Wallet.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Wallet.storyboard; sourceTree = "<group>"; };
 		AD7EDAE42108C41D0058CCCA /* WalletViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WalletViewController.swift; sourceTree = "<group>"; };
 		AD7EDAE62108D39D0058CCCA /* ZapNavigationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ZapNavigationController.swift; sourceTree = "<group>"; };
@@ -656,7 +631,6 @@
 		AD99C9F220907AD10061C565 /* SendQRCodeScannerStrategy.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SendQRCodeScannerStrategy.swift; sourceTree = "<group>"; };
 		AD99C9F62090C2560061C565 /* AmountInputView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AmountInputView.swift; sourceTree = "<group>"; };
 		AD99C9F82090C2600061C565 /* AmountInputView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AmountInputView.xib; sourceTree = "<group>"; };
-		AD9BB2CC217E361D009DC878 /* Settings.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = Settings.bundle; sourceTree = "<group>"; };
 		AD9BB2D921819799009DC878 /* Route.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Route.swift; sourceTree = "<group>"; };
 		AD9BB2DB21830B4F009DC878 /* LoadingAmountView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingAmountView.swift; sourceTree = "<group>"; };
 		AD9BB2DF21836A54009DC878 /* DispatchQueue+Debounce.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "DispatchQueue+Debounce.swift"; sourceTree = "<group>"; };
@@ -668,12 +642,18 @@
 		ADA179C121526036001401F3 /* EventProtocols.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventProtocols.swift; sourceTree = "<group>"; };
 		ADA179C321527AEA001401F3 /* HistoryEventType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistoryEventType.swift; sourceTree = "<group>"; };
 		ADA179C72153997B001401F3 /* Persistence.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Persistence.swift; sourceTree = "<group>"; };
-		ADA3253321A701E700C5EAA2 /* MacaroonId.pb.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MacaroonId.pb.swift; sourceTree = "<group>"; };
 		ADA3253521A81B5C00C5EAA2 /* MacaroonTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MacaroonTests.swift; sourceTree = "<group>"; };
 		ADA3253F21AD5B3300C5EAA2 /* Strings.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Strings.swift; sourceTree = "<group>"; };
 		ADA3254121AD8A6200C5EAA2 /* Assets.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Assets.swift; sourceTree = "<group>"; };
 		ADA3254321AD8D7900C5EAA2 /* Colors.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Colors.xcassets; sourceTree = "<group>"; };
 		ADA3254521AD8F6200C5EAA2 /* StoryboardScenes.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StoryboardScenes.swift; sourceTree = "<group>"; };
+		ADA58F8B2200B08A009A5494 /* LightningApiTransformation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LightningApiTransformation.swift; sourceTree = "<group>"; };
+		ADA58F9022031E56009A5494 /* RpcCallback.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RpcCallback.swift; sourceTree = "<group>"; };
+		ADA58F9222033FC7009A5494 /* WalletApiTransformation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WalletApiTransformation.swift; sourceTree = "<group>"; };
+		ADA58F9422034A25009A5494 /* GRPCProtoCall+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "GRPCProtoCall+Extensions.swift"; sourceTree = "<group>"; };
+		ADA58F9722049022009A5494 /* ManageWalletsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ManageWalletsViewController.swift; sourceTree = "<group>"; };
+		ADA58F9922049047009A5494 /* ManageWallets.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = ManageWallets.storyboard; sourceTree = "<group>"; };
+		ADA58F9B22049470009A5494 /* WalletConfigurationStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WalletConfigurationStore.swift; sourceTree = "<group>"; };
 		ADA6BBBE211B3AEC00A1FF19 /* ScanRectView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScanRectView.swift; sourceTree = "<group>"; };
 		ADA6D2C220AC1BD2009398A5 /* InfoService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfoService.swift; sourceTree = "<group>"; };
 		ADA6D2C420AC1DDE009398A5 /* BalanceService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BalanceService.swift; sourceTree = "<group>"; };
@@ -753,7 +733,6 @@
 		ADADAD652143B2E700A48E1F /* SwiftLnd.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SwiftLnd.h; sourceTree = "<group>"; };
 		ADADAD662143B2E700A48E1F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		ADADAD6B2143B2E700A48E1F /* SwiftLndTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SwiftLndTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		ADADAD722143B2E700A48E1F /* SwiftLndTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwiftLndTests.swift; sourceTree = "<group>"; };
 		ADADAD742143B2E700A48E1F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		ADBA12012090CD11001F7700 /* KeyPadView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = KeyPadView.xib; sourceTree = "<group>"; };
 		ADBA12032090CD22001F7700 /* KeyPadView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyPadView.swift; sourceTree = "<group>"; };
@@ -770,6 +749,7 @@
 		ADBB36302084CA3B005662B4 /* MnemonicWordListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MnemonicWordListViewController.swift; sourceTree = "<group>"; };
 		ADBB36322084EC4D005662B4 /* MnemonicWordTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MnemonicWordTableViewCell.swift; sourceTree = "<group>"; };
 		ADBCC07420CC04A4002B6E59 /* TransactionService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransactionService.swift; sourceTree = "<group>"; };
+		ADC08D8A21DBBB16000E730E /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		ADC0D2EF2107953100B8C62F /* PinnedHost.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PinnedHost.swift; sourceTree = "<group>"; };
 		ADC0D2F221079FF600B8C62F /* www.blockchain.com.cer */ = {isa = PBXFileReference; lastKnownFileType = file; path = www.blockchain.com.cer; sourceTree = "<group>"; };
 		ADC0D2F42107A13800B8C62F /* DigiCert SHA2 Extended Validation Server CA.cer */ = {isa = PBXFileReference; lastKnownFileType = file; path = "DigiCert SHA2 Extended Validation Server CA.cer"; sourceTree = "<group>"; };
@@ -807,13 +787,8 @@
 		ADEDA3CB21788CE50078FD91 /* NodeURISettingsItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NodeURISettingsItem.swift; sourceTree = "<group>"; };
 		ADEDA3CD217892A10078FD91 /* RequestQRCodeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RequestQRCodeViewModel.swift; sourceTree = "<group>"; };
 		ADEDA3D02178938E0078FD91 /* NodeURIQRCodeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NodeURIQRCodeViewModel.swift; sourceTree = "<group>"; };
-		ADEDA3D6217E2C1D0078FD91 /* ZapPos.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ZapPos.app; sourceTree = BUILT_PRODUCTS_DIR; };
-		ADEDA3D8217E2C1D0078FD91 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		ADEDA3DF217E2C1F0078FD91 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
-		ADEDA3E2217E2C1F0078FD91 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
-		ADEDA3E4217E2C1F0078FD91 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		ADEDBB8B20C2D6A700B71F17 /* SetupCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetupCoordinator.swift; sourceTree = "<group>"; };
-		ADEDBB8D20C2D70B00B71F17 /* MainCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainCoordinator.swift; sourceTree = "<group>"; };
+		ADEDBB8D20C2D70B00B71F17 /* WalletCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WalletCoordinator.swift; sourceTree = "<group>"; };
 		ADEDBB9120C2FC3200B71F17 /* PinSetupCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PinSetupCoordinator.swift; sourceTree = "<group>"; };
 		ADEDBC0920C31C5F00B71F17 /* Route.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Route.swift; sourceTree = "<group>"; };
 		ADEEB5322134277400D2F992 /* KeyPadPinView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyPadPinView.swift; sourceTree = "<group>"; };
@@ -826,7 +801,7 @@
 		ADF0930E2148FA7300B48853 /* CreateInvoiceEvent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateInvoiceEvent.swift; sourceTree = "<group>"; };
 		ADF093102148FDC600B48853 /* LightningPaymentEvent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LightningPaymentEvent.swift; sourceTree = "<group>"; };
 		ADF093122148FEB900B48853 /* ChannelEvent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChannelEvent.swift; sourceTree = "<group>"; };
-		ADF1BB2F21997A820078BCC4 /* RPCConnectURL.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RPCConnectURL.swift; sourceTree = "<group>"; };
+		ADF1BB2F21997A820078BCC4 /* LndConnectURL.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LndConnectURL.swift; sourceTree = "<group>"; };
 		ADF1BB31219D603A0078BCC4 /* docs */ = {isa = PBXFileReference; lastKnownFileType = folder; path = docs; sourceTree = "<group>"; };
 		ADF1BB32219D7F260078BCC4 /* Macaroon.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Macaroon.swift; sourceTree = "<group>"; };
 		ADF79363208DCB630086B2CA /* PinView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PinView.swift; sourceTree = "<group>"; };
@@ -837,6 +812,9 @@
 		ADF79375208F88DE0086B2CA /* RecoverWalletViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecoverWalletViewController.swift; sourceTree = "<group>"; };
 		ADFB0CC6216E09E00048B63C /* ReceivingAddress.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReceivingAddress.swift; sourceTree = "<group>"; };
 		ADFB0CC8216E318B0048B63C /* ReceivingAddressTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReceivingAddressTests.swift; sourceTree = "<group>"; };
+		ADFBE0BE21F6268400A76E06 /* Sticker.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = Sticker.appex; sourceTree = BUILT_PRODUCTS_DIR; };
+		ADFBE0C021F6268500A76E06 /* Stickers.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Stickers.xcassets; sourceTree = "<group>"; };
+		ADFBE0C221F6268500A76E06 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		ADFC816E20DA80EF00D26913 /* RecoverWalletViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecoverWalletViewModel.swift; sourceTree = "<group>"; };
 		ADFCEADE2177687F00370242 /* EventDetailViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventDetailViewModel.swift; sourceTree = "<group>"; };
 		ADFCEAE021776E1C00370242 /* EventDetailViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventDetailViewModelTests.swift; sourceTree = "<group>"; };
@@ -844,21 +822,28 @@
 		ADFE537B20D693F500B3BA2A /* LibraryTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = LibraryTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		ADFE537F20D693F500B3BA2A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		ADFEFA7320E6294000FE1557 /* OnChainRequestAddressType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnChainRequestAddressType.swift; sourceTree = "<group>"; };
-		B5AFB42FBBB02367839B0226 /* Pods-Apps-ZapPos.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Apps-ZapPos.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Apps-ZapPos/Pods-Apps-ZapPos.debug.xcconfig"; sourceTree = "<group>"; };
+		AEAF270721EAD05B004E022F /* Let's Encrypt Authority X3.cer */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Let's Encrypt Authority X3.cer"; sourceTree = "<group>"; };
+		AEAF270821EAD05B004E022F /* blockstream.info.cer */ = {isa = PBXFileReference; lastKnownFileType = file; path = blockstream.info.cer; sourceTree = "<group>"; };
 		BE74014E0B80605B55F867D4 /* Pods-RPC-Lightning.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RPC-Lightning.debug.xcconfig"; path = "Pods/Target Support Files/Pods-RPC-Lightning/Pods-RPC-Lightning.debug.xcconfig"; sourceTree = "<group>"; };
 		BF5185AA0DF1297907ABB0A5 /* Pods-LightningTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-LightningTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-LightningTests/Pods-LightningTests.debug.xcconfig"; sourceTree = "<group>"; };
 		C48BD0CEA66C550AA39DE33E /* Pods-SwiftLndTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SwiftLndTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-SwiftLndTests/Pods-SwiftLndTests.debug.xcconfig"; sourceTree = "<group>"; };
 		C9FDBEC0089BCC09D314B328 /* Pods_LibraryTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_LibraryTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		CA1CA6164A8221DB7F42912F /* Pods-Apps-Zap.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Apps-Zap.release.xcconfig"; path = "Pods/Target Support Files/Pods-Apps-Zap/Pods-Apps-Zap.release.xcconfig"; sourceTree = "<group>"; };
 		CC310159B3B5FD23E87D9BF9 /* Pods-SwiftLndTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SwiftLndTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-SwiftLndTests/Pods-SwiftLndTests.release.xcconfig"; sourceTree = "<group>"; };
-		CFBAC7765616841DE2247174 /* Pods-Apps-ZapPos.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Apps-ZapPos.release.xcconfig"; path = "Pods/Target Support Files/Pods-Apps-ZapPos/Pods-Apps-ZapPos.release.xcconfig"; sourceTree = "<group>"; };
 		D14CFB88E266C7F03A137A98 /* Pods-LibraryTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-LibraryTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-LibraryTests/Pods-LibraryTests.release.xcconfig"; sourceTree = "<group>"; };
 		D1D7DC8244C0E3E65FCB72FA /* Pods_RPC_SwiftLnd.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_RPC_SwiftLnd.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		D989AC91D5501875BA1C4E18 /* Pods-Zap.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Zap.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Zap/Pods-Zap.debug.xcconfig"; sourceTree = "<group>"; };
 		DC32D9E1C0DA9CDE996FB09B /* Pods-SwiftLndTests.debugremote.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SwiftLndTests.debugremote.xcconfig"; path = "Pods/Target Support Files/Pods-SwiftLndTests/Pods-SwiftLndTests.debugremote.xcconfig"; sourceTree = "<group>"; };
 		EE02ACBEA88DD5D98ADC12BC /* Pods-LightningTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-LightningTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-LightningTests/Pods-LightningTests.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
+		321765EED759F1CA94A730C2 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		A0A059FC2013CF960007D1C9 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -867,7 +852,7 @@
 				A02C9FC2202F5BDC009821B1 /* LocalAuthentication.framework in Frameworks */,
 				AD536BFB20E62764002279BC /* Lightning.framework in Frameworks */,
 				AD391C1F20D16ED4007EE22A /* Library.framework in Frameworks */,
-				6E1140740E9E4B76B462BEAB /* Pods_Apps_Zap.framework in Frameworks */,
+				B0E9D90B345B96C563581FE1 /* Pods_Zap.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -915,17 +900,6 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		ADEDA3D3217E2C1D0078FD91 /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				ADEDA400217E2F860078FD91 /* SwiftLnd.framework in Frameworks */,
-				ADEDA3F8217E2F850078FD91 /* Library.framework in Frameworks */,
-				ADEDA3FC217E2F850078FD91 /* Lightning.framework in Frameworks */,
-				3219EEFE4A0DB2135AE1699B /* Pods_Apps_ZapPos.framework in Frameworks */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 		ADFE537820D693F500B3BA2A /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -940,12 +914,6 @@
 		1084CFF47F1CDB628A05D07A /* Pods */ = {
 			isa = PBXGroup;
 			children = (
-				675E3550D7FE082603B36574 /* Pods-Apps-Zap.debug.xcconfig */,
-				4D01823B5E51BB332B8D545E /* Pods-Apps-Zap.debugremote.xcconfig */,
-				CA1CA6164A8221DB7F42912F /* Pods-Apps-Zap.release.xcconfig */,
-				B5AFB42FBBB02367839B0226 /* Pods-Apps-ZapPos.debug.xcconfig */,
-				0C0921AE2504374B286BE025 /* Pods-Apps-ZapPos.debugremote.xcconfig */,
-				CFBAC7765616841DE2247174 /* Pods-Apps-ZapPos.release.xcconfig */,
 				8CA6BEE1FC4461B357E8E8EB /* Pods-LibraryTests.debug.xcconfig */,
 				9FDE7EF01EB52E6E06DA41E7 /* Pods-LibraryTests.debugremote.xcconfig */,
 				D14CFB88E266C7F03A137A98 /* Pods-LibraryTests.release.xcconfig */,
@@ -964,6 +932,9 @@
 				C48BD0CEA66C550AA39DE33E /* Pods-SwiftLndTests.debug.xcconfig */,
 				DC32D9E1C0DA9CDE996FB09B /* Pods-SwiftLndTests.debugremote.xcconfig */,
 				CC310159B3B5FD23E87D9BF9 /* Pods-SwiftLndTests.release.xcconfig */,
+				D989AC91D5501875BA1C4E18 /* Pods-Zap.debug.xcconfig */,
+				75C93228A5FCF2CBD287946A /* Pods-Zap.debugremote.xcconfig */,
+				5E35400BBA08A4A87916AF7B /* Pods-Zap.release.xcconfig */,
 			);
 			name = Pods;
 			sourceTree = "<group>";
@@ -980,6 +951,7 @@
 				AD2D912A21567D35001015B6 /* Detail */,
 				A0DDC0732018C74F00AEFF94 /* History */,
 				ADCE01CA207B966200CA72E8 /* Loading */,
+				ADA58F9622049007009A5494 /* ManageWallets */,
 				ADEEB5342134668B00D2F992 /* ModalPin */,
 				A02C9FBB202EE995009821B1 /* OpenChannel */,
 				A070D963202A3CFC000A8274 /* QRCodeDetail */,
@@ -1049,8 +1021,6 @@
 				AD71EA4A20E2321100256307 /* LndConstants.swift */,
 				A0A05A342014047B0007D1C9 /* LocalLnd.swift */,
 				A02C9FC520304395009821B1 /* LocalLndConfiguration.swift */,
-				ADF1BB32219D7F260078BCC4 /* Macaroon.swift */,
-				AD055DA621B14A4300BE511D /* Permissions.swift */,
 				AD71EA4820E2318000256307 /* RemoteRPCConfiguration.swift */,
 			);
 			path = Lnd;
@@ -1098,12 +1068,12 @@
 				AD3781C3216617CB0083CE77 /* Misc */,
 				ADA6D2C420AC1DDE009398A5 /* BalanceService.swift */,
 				ADA6D2C620AC2406009398A5 /* ChannelService.swift */,
-				AD71EA4620E228D800256307 /* ConnectionService.swift */,
 				ADC48CA82150FBA200949CD9 /* HistoryService.swift */,
 				ADA6D2C220AC1BD2009398A5 /* InfoService.swift */,
 				A07C1035203DE3E6006C7FE8 /* LightningService.swift */,
 				ADBCC07420CC04A4002B6E59 /* TransactionService.swift */,
 				A0D3C9792060070D0015C5D7 /* WalletService.swift */,
+				AD7ED61F2209D09F007C5F2C /* ConnectionStateService.swift */,
 			);
 			path = Services;
 			sourceTree = "<group>";
@@ -1111,17 +1081,17 @@
 		A0A059F62013CF960007D1C9 = {
 			isa = PBXGroup;
 			children = (
+				ADF1BB31219D603A0078BCC4 /* docs */,
 				A02C52F62024A98F00780D5A /* Podfile */,
 				A0A96B932017965100788808 /* README.md */,
-				ADF1BB31219D603A0078BCC4 /* docs */,
 				CEF2960C33901153F2C1FFF4 /* Frameworks */,
 				AD391C1920D16ED4007EE22A /* Library */,
 				AD536BE720E62763002279BC /* Lightning */,
+				1084CFF47F1CDB628A05D07A /* Pods */,
 				A0A05A002013CF960007D1C9 /* Products */,
+				ADFBE0BF21F6268400A76E06 /* Sticker */,
 				ADADAD642143B2E700A48E1F /* SwiftLnd */,
 				A0A05A012013CF960007D1C9 /* Zap */,
-				ADEDA3D7217E2C1D0078FD91 /* ZapPos */,
-				1084CFF47F1CDB628A05D07A /* Pods */,
 			);
 			sourceTree = "<group>";
 		};
@@ -1135,7 +1105,7 @@
 				AD536BEE20E62764002279BC /* LightningTests.xctest */,
 				ADADAD632143B2E700A48E1F /* SwiftLnd.framework */,
 				ADADAD6B2143B2E700A48E1F /* SwiftLndTests.xctest */,
-				ADEDA3D6217E2C1D0078FD91 /* ZapPos.app */,
+				ADFBE0BE21F6268400A76E06 /* Sticker.appex */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -1148,6 +1118,7 @@
 				AD10D05F2113307E00A0F0D3 /* Info.plist */,
 				AD10D04B21132A6000A0F0D3 /* LaunchScreen.storyboard */,
 				A0A05A022013CF960007D1C9 /* AppDelegate.swift */,
+				ADCD060020E67FA5009D9650 /* Environment.swift */,
 				A0A05A092013CF960007D1C9 /* Assets.xcassets */,
 				AD10D05E21132F3500A0F0D3 /* InfoPlist.strings */,
 			);
@@ -1204,15 +1175,9 @@
 		A0D3C97B20616A9A0015C5D7 /* Api */ = {
 			isa = PBXGroup;
 			children = (
-				AD86BCFC2099F4E900A7866A /* Generated */,
 				AD71EA4C20E2335B00256307 /* Helper */,
-				ADBB36232080A457005662B4 /* LightningApiMock.swift */,
-				ADBB36212080A3B1005662B4 /* LightningApiProtocol.swift */,
-				A0A33EF32028743200BB76F4 /* LightningApiRPC.swift */,
-				ADBA4420209AE75600D18B71 /* LightningApiStream.swift */,
-				AD6F863320DA3C99008C371B /* WalletApiProtocol.swift */,
-				A0D3C969205D55570015C5D7 /* WalletApiRPC.swift */,
-				AD6F863120DA3C66008C371B /* WalletApiStream.swift */,
+				ADA58F8E2201F565009A5494 /* Lightning */,
+				ADA58F8F22031D36009A5494 /* Wallet */,
 			);
 			path = Api;
 			sourceTree = "<group>";
@@ -1367,7 +1332,6 @@
 				AD536BE920E62763002279BC /* Info.plist */,
 				AD3781CF2166522E0083CE77 /* Environment.swift */,
 				ADD9DCDC20B453D000AEFC5C /* LightningConnection.swift */,
-				AD3781CD21664EB90083CE77 /* RemoteRPCConfiguration.swift */,
 				ADEF96BB21078C31006AE1EC /* Certificates */,
 				AD28844221281F9E003C3D94 /* Invoice */,
 				AD967FE12105FD400048085B /* QrCodes */,
@@ -1431,6 +1395,7 @@
 			children = (
 				A0D3C97C20616AB80015C5D7 /* LndApiError.swift */,
 				A0D3C96B205FCBF40015C5D7 /* Result.swift */,
+				ADA58F9022031E56009A5494 /* RpcCallback.swift */,
 				ADBA4422209B00D300D18B71 /* StreamCallback.swift */,
 			);
 			path = Helper;
@@ -1466,6 +1431,8 @@
 			isa = PBXGroup;
 			children = (
 				AD79E421219D90E2002589CA /* Data+Extensions.swift */,
+				AD7ED621220B4FE9007C5F2C /* FileManager.swift */,
+				ADA58F9422034A25009A5494 /* GRPCProtoCall+Extensions.swift */,
 				ADBA4424209B067400D18B71 /* Protobuf+Extensions.swift */,
 				AD79E423219D90EF002589CA /* String+Extensions.swift */,
 			);
@@ -1483,14 +1450,6 @@
 			path = Wallet;
 			sourceTree = "<group>";
 		};
-		AD86BCFC2099F4E900A7866A /* Generated */ = {
-			isa = PBXGroup;
-			children = (
-				ADA3253321A701E700C5EAA2 /* MacaroonId.pb.swift */,
-			);
-			path = Generated;
-			sourceTree = "<group>";
-		};
 		AD967FD52100E0B40048085B /* CertificateDetail */ = {
 			isa = PBXGroup;
 			children = (
@@ -1506,9 +1465,9 @@
 			children = (
 				AD967FE4210602C10048085B /* BTCPayConfiguration.swift */,
 				AD967FE22105FD770048085B /* BTCPayQRCode.swift */,
+				ADF1BB2F21997A820078BCC4 /* LndConnectURL.swift */,
 				AD27B01520FC8BBF00F232A8 /* Pem.swift */,
 				AD967FE8210610D90048085B /* RPCConnectQRCode.swift */,
-				ADF1BB2F21997A820078BCC4 /* RPCConnectURL.swift */,
 				ADD6D80620B15603008BE461 /* ZapconnectQRCode.swift */,
 			);
 			path = QrCodes;
@@ -1575,6 +1534,50 @@
 			path = Generated;
 			sourceTree = "<group>";
 		};
+		ADA58F8D2201ED23009A5494 /* Macaroon */ = {
+			isa = PBXGroup;
+			children = (
+				ADF1BB32219D7F260078BCC4 /* Macaroon.swift */,
+				AD055DA621B14A4300BE511D /* Permissions.swift */,
+			);
+			path = Macaroon;
+			sourceTree = "<group>";
+		};
+		ADA58F8E2201F565009A5494 /* Lightning */ = {
+			isa = PBXGroup;
+			children = (
+				ADBB36232080A457005662B4 /* LightningApiMock.swift */,
+				ADBB36212080A3B1005662B4 /* LightningApiProtocol.swift */,
+				A0A33EF32028743200BB76F4 /* LightningApiRPC.swift */,
+				ADBA4420209AE75600D18B71 /* LightningApiStream.swift */,
+				ADA58F8B2200B08A009A5494 /* LightningApiTransformation.swift */,
+			);
+			path = Lightning;
+			sourceTree = "<group>";
+		};
+		ADA58F8F22031D36009A5494 /* Wallet */ = {
+			isa = PBXGroup;
+			children = (
+				AD6F863320DA3C99008C371B /* WalletApiProtocol.swift */,
+				A0D3C969205D55570015C5D7 /* WalletApiRPC.swift */,
+				AD6F863120DA3C66008C371B /* WalletApiStream.swift */,
+				ADA58F9222033FC7009A5494 /* WalletApiTransformation.swift */,
+			);
+			path = Wallet;
+			sourceTree = "<group>";
+		};
+		ADA58F9622049007009A5494 /* ManageWallets */ = {
+			isa = PBXGroup;
+			children = (
+				ADA58F9922049047009A5494 /* ManageWallets.storyboard */,
+				ADA58F9722049022009A5494 /* ManageWalletsViewController.swift */,
+				ADA58F9B22049470009A5494 /* WalletConfigurationStore.swift */,
+				AD7ED61B22087812007C5F2C /* ManageWalletTableViewCell.swift */,
+				AD7ED61C22087812007C5F2C /* ManageWalletTableViewCell.xib */,
+			);
+			path = ManageWallets;
+			sourceTree = "<group>";
+		};
 		ADA6D2BE20AB215D009398A5 /* Persistence */ = {
 			isa = PBXGroup;
 			children = (
@@ -1599,12 +1602,13 @@
 			children = (
 				AD2D912821554D61001015B6 /* Lndmobile.framework */,
 				ADADAD652143B2E700A48E1F /* SwiftLnd.h */,
+				ADC08D8A21DBBB16000E730E /* README.md */,
 				ADADAD662143B2E700A48E1F /* Info.plist */,
-				ADCD060020E67FA5009D9650 /* Environment.swift */,
 				ADBB36282080B2AE005662B4 /* TestingTemplates.swift */,
 				A0D3C97B20616A9A0015C5D7 /* Api */,
 				AD79E425219D90F3002589CA /* Extensions */,
 				A0376B70201CC16D00F1FBEF /* Lnd */,
+				ADA58F8D2201ED23009A5494 /* Macaroon */,
 				A0A05A5A20149AF80007D1C9 /* Model */,
 				ADADAD712143B2E700A48E1F /* Tests */,
 			);
@@ -1616,7 +1620,6 @@
 			children = (
 				ADADAD742143B2E700A48E1F /* Info.plist */,
 				ADA3253521A81B5C00C5EAA2 /* MacaroonTests.swift */,
-				ADADAD722143B2E700A48E1F /* SwiftLndTests.swift */,
 			);
 			path = Tests;
 			sourceTree = "<group>";
@@ -1736,28 +1739,16 @@
 			path = ViewModel;
 			sourceTree = "<group>";
 		};
-		ADEDA3D7217E2C1D0078FD91 /* ZapPos */ = {
-			isa = PBXGroup;
-			children = (
-				AD9BB2CC217E361D009DC878 /* Settings.bundle */,
-				ADEDA3E4217E2C1F0078FD91 /* Info.plist */,
-				ADEDA3D8217E2C1D0078FD91 /* AppDelegate.swift */,
-				ADEDA3DF217E2C1F0078FD91 /* Assets.xcassets */,
-				ADEDA3E1217E2C1F0078FD91 /* LaunchScreen.storyboard */,
-			);
-			path = ZapPos;
-			sourceTree = "<group>";
-		};
 		ADEDBB8A20C2D48D00B71F17 /* Coordinators */ = {
 			isa = PBXGroup;
 			children = (
 				AD667E4621359D79007B9160 /* AuthenticationCoordinator.swift */,
 				AD667E4821367A35007B9160 /* BackgroundCoordinator.swift */,
-				ADEDBB8D20C2D70B00B71F17 /* MainCoordinator.swift */,
 				ADEDBB9120C2FC3200B71F17 /* PinSetupCoordinator.swift */,
 				AD8B13F020C0582D0091F9DA /* RootCoordinator.swift */,
 				ADEDBB8B20C2D6A700B71F17 /* SetupCoordinator.swift */,
 				AD055DAD21B5416D00BE511D /* ToastCoordinator.swift */,
+				ADEDBB8D20C2D70B00B71F17 /* WalletCoordinator.swift */,
 			);
 			path = Coordinators;
 			sourceTree = "<group>";
@@ -1776,6 +1767,7 @@
 			children = (
 				ADC0D3002107A30900B8C62F /* api.btc.com */,
 				ADC0D2F92107A1AE00B8C62F /* blockchain.info */,
+				AEAF270621EAD028004E022F /* blockstream.info */,
 				ADC0D2F82107A19F00B8C62F /* blockcypher.com */,
 				ADC0D3012107A3C500B8C62F /* blockexplorer.com */,
 				ADC0D2EF2107953100B8C62F /* PinnedHost.swift */,
@@ -1837,6 +1829,15 @@
 			path = SQLite;
 			sourceTree = "<group>";
 		};
+		ADFBE0BF21F6268400A76E06 /* Sticker */ = {
+			isa = PBXGroup;
+			children = (
+				ADFBE0C021F6268500A76E06 /* Stickers.xcassets */,
+				ADFBE0C221F6268500A76E06 /* Info.plist */,
+			);
+			path = Sticker;
+			sourceTree = "<group>";
+		};
 		ADFE537C20D693F500B3BA2A /* Tests */ = {
 			isa = PBXGroup;
 			children = (
@@ -1851,19 +1852,27 @@
 			path = Tests;
 			sourceTree = "<group>";
 		};
+		AEAF270621EAD028004E022F /* blockstream.info */ = {
+			isa = PBXGroup;
+			children = (
+				AEAF270821EAD05B004E022F /* blockstream.info.cer */,
+				AEAF270721EAD05B004E022F /* Let's Encrypt Authority X3.cer */,
+			);
+			path = blockstream.info;
+			sourceTree = "<group>";
+		};
 		CEF2960C33901153F2C1FFF4 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
 				A02C9FC1202F5BDC009821B1 /* LocalAuthentication.framework */,
 				AD391D4020D17FA9007EE22A /* Messages.framework */,
-				148266027255CA2F368037FC /* Pods_Apps_Zap.framework */,
-				0852E6B6485C260D1BF74548 /* Pods_Apps_ZapPos.framework */,
 				C9FDBEC0089BCC09D314B328 /* Pods_LibraryTests.framework */,
 				64689AAAE184A2256E9C9DF3 /* Pods_LightningTests.framework */,
 				4629437540BC6CE36F3EE098 /* Pods_RPC_Library.framework */,
 				92308447F0260B8536617365 /* Pods_RPC_Lightning.framework */,
 				D1D7DC8244C0E3E65FCB72FA /* Pods_RPC_SwiftLnd.framework */,
 				81036DADA56AC2254782EE27 /* Pods_SwiftLndTests.framework */,
+				4A29C2D527BF19A41F251C3F /* Pods_Zap.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -1917,6 +1926,7 @@
 				AD536BFA20E62764002279BC /* PBXTargetDependency */,
 				AD391C1E20D16ED4007EE22A /* PBXTargetDependency */,
 				ADADAD772143B2E700A48E1F /* PBXTargetDependency */,
+				ADFBE0C421F6268500A76E06 /* PBXTargetDependency */,
 			);
 			name = Zap;
 			productName = ThunderWallet;
@@ -2024,28 +2034,21 @@
 			productReference = ADADAD6B2143B2E700A48E1F /* SwiftLndTests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
-		ADEDA3D5217E2C1D0078FD91 /* ZapPos */ = {
+		ADFBE0BD21F6268400A76E06 /* Sticker */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = ADEDA3F6217E2C1F0078FD91 /* Build configuration list for PBXNativeTarget "ZapPos" */;
+			buildConfigurationList = ADFBE0C921F6268500A76E06 /* Build configuration list for PBXNativeTarget "Sticker" */;
 			buildPhases = (
-				BA72525032341F137E2C8997 /* [CP] Check Pods Manifest.lock */,
-				ADEDA3D2217E2C1D0078FD91 /* Sources */,
-				ADEDA3D3217E2C1D0078FD91 /* Frameworks */,
-				ADEDA3D4217E2C1D0078FD91 /* Resources */,
-				ADEDA404217E2F860078FD91 /* Embed Frameworks */,
-				5F74471B932611CCD1B55A0E /* [CP] Embed Pods Frameworks */,
+				ADFBE0BC21F6268400A76E06 /* Resources */,
+				321765EED759F1CA94A730C2 /* Frameworks */,
 			);
 			buildRules = (
 			);
 			dependencies = (
-				ADEDA3FB217E2F850078FD91 /* PBXTargetDependency */,
-				ADEDA3FF217E2F850078FD91 /* PBXTargetDependency */,
-				ADEDA403217E2F860078FD91 /* PBXTargetDependency */,
 			);
-			name = ZapPos;
-			productName = ZapPos;
-			productReference = ADEDA3D6217E2C1D0078FD91 /* ZapPos.app */;
-			productType = "com.apple.product-type.application";
+			name = Sticker;
+			productName = Sticker;
+			productReference = ADFBE0BE21F6268400A76E06 /* Sticker.appex */;
+			productType = "com.apple.product-type.app-extension.messages-sticker-pack";
 		};
 		ADFE537A20D693F500B3BA2A /* LibraryTests */ = {
 			isa = PBXNativeTarget;
@@ -2115,8 +2118,8 @@
 						ProvisioningStyle = Automatic;
 						TestTargetID = A0A059FE2013CF960007D1C9;
 					};
-					ADEDA3D5217E2C1D0078FD91 = {
-						CreatedOnToolsVersion = 10.0;
+					ADFBE0BD21F6268400A76E06 = {
+						CreatedOnToolsVersion = 10.1;
 						ProvisioningStyle = Automatic;
 					};
 					ADFE537A20D693F500B3BA2A = {
@@ -2172,13 +2175,13 @@
 			projectRoot = "";
 			targets = (
 				A0A059FE2013CF960007D1C9 /* Zap */,
-				ADEDA3D5217E2C1D0078FD91 /* ZapPos */,
 				AD536BE520E62763002279BC /* Lightning */,
 				AD536BED20E62764002279BC /* LightningTests */,
 				AD391C1720D16ED4007EE22A /* Library */,
 				ADFE537A20D693F500B3BA2A /* LibraryTests */,
 				ADADAD622143B2E700A48E1F /* SwiftLnd */,
 				ADADAD6A2143B2E700A48E1F /* SwiftLndTests */,
+				ADFBE0BD21F6268400A76E06 /* Sticker */,
 			);
 		};
 /* End PBXProject section */
@@ -2221,6 +2224,8 @@
 				AD391D0A20D16FF5007EE22A /* KeyPadView.xib in Resources */,
 				AD391D1120D16FF5007EE22A /* Toast.xib in Resources */,
 				AD391D0420D16FF5007EE22A /* AmountInputView.xib in Resources */,
+				ADA58F9A22049047009A5494 /* ManageWallets.storyboard in Resources */,
+				AD7ED61E22087812007C5F2C /* ManageWalletTableViewCell.xib in Resources */,
 				AD391D2220D1798A007EE22A /* Media.xcassets in Resources */,
 				ADEEB53821346DEA00D2F992 /* ModalPin.storyboard in Resources */,
 				AD391C9820D16FA8007EE22A /* QRCodeScanner.storyboard in Resources */,
@@ -2233,6 +2238,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				ADC0D2F321079FF700B8C62F /* www.blockchain.com.cer in Resources */,
+				AEAF270A21EAD05B004E022F /* blockstream.info.cer in Resources */,
+				AEAF270921EAD05B004E022F /* Let's Encrypt Authority X3.cer in Resources */,
 				ADC0D2FE2107A30200B8C62F /* GlobalSign Organization Validation CA - SHA256 - G2.cer in Resources */,
 				ADC0D2FB2107A23400B8C62F /* COMODO RSA Domain Validation Secure Server CA.cer in Resources */,
 				ADC0D3042107A3D700B8C62F /* blockexplorer.com.cer in Resources */,
@@ -2254,6 +2261,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				ADC08D8B21DBBB16000E730E /* README.md in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -2264,13 +2272,11 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		ADEDA3D4217E2C1D0078FD91 /* Resources */ = {
+		ADFBE0BC21F6268400A76E06 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				AD9BB2CD217E361D009DC878 /* Settings.bundle in Resources */,
-				ADEDA3E3217E2C1F0078FD91 /* LaunchScreen.storyboard in Resources */,
-				ADEDA3E0217E2C1F0078FD91 /* Assets.xcassets in Resources */,
+				ADFBE0C121F6268500A76E06 /* Stickers.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -2328,62 +2334,6 @@
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
-		5F74471B932611CCD1B55A0E /* [CP] Embed Pods Frameworks */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-			);
-			inputPaths = (
-				"${SRCROOT}/Pods/Target Support Files/Pods-Apps-ZapPos/Pods-Apps-ZapPos-frameworks.sh",
-				"${BUILT_PRODUCTS_DIR}/BigInt/BigInt.framework",
-				"${BUILT_PRODUCTS_DIR}/SipHash/SipHash.framework",
-				"${BUILT_PRODUCTS_DIR}/SwiftBTC/SwiftBTC.framework",
-				"${BUILT_PRODUCTS_DIR}/BoringSSL-GRPC/openssl_grpc.framework",
-				"${BUILT_PRODUCTS_DIR}/LndRpc/LndRpc.framework",
-				"${BUILT_PRODUCTS_DIR}/Protobuf/Protobuf.framework",
-				"${BUILT_PRODUCTS_DIR}/SwiftProtobuf/SwiftProtobuf.framework",
-				"${BUILT_PRODUCTS_DIR}/gRPC/GRPCClient.framework",
-				"${BUILT_PRODUCTS_DIR}/gRPC-Core/grpc.framework",
-				"${BUILT_PRODUCTS_DIR}/gRPC-ProtoRPC/ProtoRPC.framework",
-				"${BUILT_PRODUCTS_DIR}/gRPC-RxLibrary/RxLibrary.framework",
-				"${BUILT_PRODUCTS_DIR}/nanopb/nanopb.framework",
-				"${BUILT_PRODUCTS_DIR}/Bond/Bond.framework",
-				"${BUILT_PRODUCTS_DIR}/Differ/Differ.framework",
-				"${BUILT_PRODUCTS_DIR}/KeychainAccess/KeychainAccess.framework",
-				"${BUILT_PRODUCTS_DIR}/ReactiveKit/ReactiveKit.framework",
-				"${BUILT_PRODUCTS_DIR}/ScrollableGraphView/ScrollableGraphView.framework",
-				"${BUILT_PRODUCTS_DIR}/SQLite.swift/SQLite.framework",
-			);
-			name = "[CP] Embed Pods Frameworks";
-			outputFileListPaths = (
-			);
-			outputPaths = (
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/BigInt.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SipHash.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SwiftBTC.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/openssl_grpc.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/LndRpc.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Protobuf.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SwiftProtobuf.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GRPCClient.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/grpc.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/ProtoRPC.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RxLibrary.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/nanopb.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Bond.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Differ.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/KeychainAccess.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/ReactiveKit.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/ScrollableGraphView.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SQLite.framework",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Apps-ZapPos/Pods-Apps-ZapPos-frameworks.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
 		8DF2C39D29C7FDDBB30AB37E /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -2428,14 +2378,13 @@
 			inputFileListPaths = (
 			);
 			inputPaths = (
-				"${SRCROOT}/Pods/Target Support Files/Pods-Apps-Zap/Pods-Apps-Zap-frameworks.sh",
+				"${SRCROOT}/Pods/Target Support Files/Pods-Zap/Pods-Zap-frameworks.sh",
 				"${BUILT_PRODUCTS_DIR}/BigInt/BigInt.framework",
 				"${BUILT_PRODUCTS_DIR}/SipHash/SipHash.framework",
 				"${BUILT_PRODUCTS_DIR}/SwiftBTC/SwiftBTC.framework",
 				"${BUILT_PRODUCTS_DIR}/BoringSSL-GRPC/openssl_grpc.framework",
 				"${BUILT_PRODUCTS_DIR}/LndRpc/LndRpc.framework",
 				"${BUILT_PRODUCTS_DIR}/Protobuf/Protobuf.framework",
-				"${BUILT_PRODUCTS_DIR}/SwiftProtobuf/SwiftProtobuf.framework",
 				"${BUILT_PRODUCTS_DIR}/gRPC/GRPCClient.framework",
 				"${BUILT_PRODUCTS_DIR}/gRPC-Core/grpc.framework",
 				"${BUILT_PRODUCTS_DIR}/gRPC-ProtoRPC/ProtoRPC.framework",
@@ -2458,7 +2407,6 @@
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/openssl_grpc.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/LndRpc.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Protobuf.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SwiftProtobuf.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GRPCClient.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/grpc.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/ProtoRPC.framework",
@@ -2473,29 +2421,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Apps-Zap/Pods-Apps-Zap-frameworks.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-		BA72525032341F137E2C8997 /* [CP] Check Pods Manifest.lock */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-			);
-			inputPaths = (
-				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
-				"${PODS_ROOT}/Manifest.lock",
-			);
-			name = "[CP] Check Pods Manifest.lock";
-			outputFileListPaths = (
-			);
-			outputPaths = (
-				"$(DERIVED_FILE_DIR)/Pods-Apps-ZapPos-checkManifestLockResult.txt",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Zap/Pods-Zap-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		BB01D2D007785EFEBDF3EDFF /* [CP] Check Pods Manifest.lock */ = {
@@ -2616,7 +2542,6 @@
 				"${BUILT_PRODUCTS_DIR}/nanopb/nanopb.framework",
 				"${BUILT_PRODUCTS_DIR}/Bond/Bond.framework",
 				"${BUILT_PRODUCTS_DIR}/Differ/Differ.framework",
-				"${BUILT_PRODUCTS_DIR}/KeychainAccess/KeychainAccess.framework",
 				"${BUILT_PRODUCTS_DIR}/ReactiveKit/ReactiveKit.framework",
 				"${BUILT_PRODUCTS_DIR}/SQLite.swift/SQLite.framework",
 			);
@@ -2637,7 +2562,6 @@
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/nanopb.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Bond.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Differ.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/KeychainAccess.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/ReactiveKit.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SQLite.framework",
 			);
@@ -2661,7 +2585,6 @@
 				"${BUILT_PRODUCTS_DIR}/BoringSSL-GRPC/openssl_grpc.framework",
 				"${BUILT_PRODUCTS_DIR}/LndRpc/LndRpc.framework",
 				"${BUILT_PRODUCTS_DIR}/Protobuf/Protobuf.framework",
-				"${BUILT_PRODUCTS_DIR}/SwiftProtobuf/SwiftProtobuf.framework",
 				"${BUILT_PRODUCTS_DIR}/gRPC/GRPCClient.framework",
 				"${BUILT_PRODUCTS_DIR}/gRPC-Core/grpc.framework",
 				"${BUILT_PRODUCTS_DIR}/gRPC-ProtoRPC/ProtoRPC.framework",
@@ -2678,7 +2601,6 @@
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/openssl_grpc.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/LndRpc.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Protobuf.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SwiftProtobuf.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GRPCClient.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/grpc.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/ProtoRPC.framework",
@@ -2727,7 +2649,7 @@
 			outputFileListPaths = (
 			);
 			outputPaths = (
-				"$(DERIVED_FILE_DIR)/Pods-Apps-Zap-checkManifestLockResult.txt",
+				"$(DERIVED_FILE_DIR)/Pods-Zap-checkManifestLockResult.txt",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -2742,6 +2664,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				A0A05A032013CF960007D1C9 /* AppDelegate.swift in Sources */,
+				AD7ED61A22085B22007C5F2C /* Environment.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -2767,6 +2690,7 @@
 				AD391C3920D16F0B007EE22A /* BockExplorer.swift in Sources */,
 				ADA81E9E210DE14100B7C6F2 /* UIView.swift in Sources */,
 				ADDD13B62119CE740035D2F9 /* StackViewElement.swift in Sources */,
+				ADA58F9C22049470009A5494 /* WalletConfigurationStore.swift in Sources */,
 				AD391C9A20D16FA8007EE22A /* QRCodeScannerView.swift in Sources */,
 				AD9BB2DC21830B4F009DC878 /* LoadingAmountView.swift in Sources */,
 				AD7EDAE72108D39D0058CCCA /* ZapNavigationController.swift in Sources */,
@@ -2779,6 +2703,7 @@
 				ADEEB5362134669B00D2F992 /* ModalPinViewController.swift in Sources */,
 				AD391CDB20D16FE1007EE22A /* HistoryViewController.swift in Sources */,
 				AD667E572136E622007B9160 /* TimeLockStore.swift in Sources */,
+				AD7ED61D22087812007C5F2C /* ManageWalletTableViewCell.swift in Sources */,
 				AD391C5320D16F7A007EE22A /* ConfirmMnemonicViewModel.swift in Sources */,
 				ADEDA3D12178938E0078FD91 /* NodeURIQRCodeViewModel.swift in Sources */,
 				AD055DAE21B5416D00BE511D /* ToastCoordinator.swift in Sources */,
@@ -2808,7 +2733,7 @@
 				AD391D0320D16FF5007EE22A /* AmountInputView.swift in Sources */,
 				AD391D0620D16FF5007EE22A /* BondCell.swift in Sources */,
 				AD391C6D20D16F89007EE22A /* SetupPinViewController.swift in Sources */,
-				AD391D1920D174B4007EE22A /* MainCoordinator.swift in Sources */,
+				AD391D1920D174B4007EE22A /* WalletCoordinator.swift in Sources */,
 				AD391C4120D16F0B007EE22A /* ExchangeUpdaterJob.swift in Sources */,
 				AD27B0182100C59500F232A8 /* UpdateAddressViewController.swift in Sources */,
 				AD27B01A2100D5CC00F232A8 /* CertificateDetailViewController.swift in Sources */,
@@ -2820,6 +2745,7 @@
 				ADADAD56214118E500A48E1F /* GraphView.swift in Sources */,
 				ADA179BE21515095001401F3 /* SectionHeaderView.swift in Sources */,
 				AD391CAD20D16FA8007EE22A /* OnChainRequestAddressTypeSettingsItem.swift in Sources */,
+				ADA58F9822049022009A5494 /* ManageWalletsViewController.swift in Sources */,
 				AD97A91420EFCFC3008344EA /* Bitcoin+Localizable.swift in Sources */,
 				AD28CB7B211DE93300A31004 /* BlockExplorerSettingsItem.swift in Sources */,
 				AD391CB720D16FA8007EE22A /* SettingsViewController.swift in Sources */,
@@ -2900,8 +2826,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				AD3781D1216659C90083CE77 /* ConnectionService.swift in Sources */,
-				AD3781CE21664EB90083CE77 /* RemoteRPCConfiguration.swift in Sources */,
 				AD3781C421661A070083CE77 /* Pem.swift in Sources */,
 				AD967FF8210731110048085B /* PinnedURLSessionDelegate.swift in Sources */,
 				ADC48CA92150FBA200949CD9 /* HistoryService.swift in Sources */,
@@ -2913,7 +2837,7 @@
 				ADFEFA7920E62B1800FE1557 /* BlockChainHeightUpdater.swift in Sources */,
 				AD967FE32105FD770048085B /* BTCPayQRCode.swift in Sources */,
 				ADF0930F2148FA7300B48853 /* CreateInvoiceEvent.swift in Sources */,
-				ADF1BB3021997A820078BCC4 /* RPCConnectURL.swift in Sources */,
+				ADF1BB3021997A820078BCC4 /* LndConnectURL.swift in Sources */,
 				ADFEFA6C20E627F100FE1557 /* InfoService.swift in Sources */,
 				ADA179C82153997B001401F3 /* Persistence.swift in Sources */,
 				AD967FE5210602C10048085B /* BTCPayConfiguration.swift in Sources */,
@@ -2930,6 +2854,7 @@
 				AD8FE12B214AD42900C00DF2 /* DateEstimator.swift in Sources */,
 				AD28844B212824DC003C3D94 /* BitcoinInvoice.swift in Sources */,
 				ADA179C221526036001401F3 /* EventProtocols.swift in Sources */,
+				AD7ED6202209D09F007C5F2C /* ConnectionStateService.swift in Sources */,
 				ADFEFA6B20E627F100FE1557 /* ChannelService.swift in Sources */,
 				AD3781CA21664E9E0083CE77 /* LightningConnection.swift in Sources */,
 				ADC0D2F02107953100B8C62F /* PinnedHost.swift in Sources */,
@@ -2965,6 +2890,7 @@
 				ADADAD882143B3C900A48E1F /* Channel.swift in Sources */,
 				ADADAD932143B3C900A48E1F /* Success.swift in Sources */,
 				ADADAD8B2143B3C900A48E1F /* CloseStatusUpdate.swift in Sources */,
+				ADA58F8C2200B08A009A5494 /* LightningApiTransformation.swift in Sources */,
 				ADADAD9E2143B3C900A48E1F /* LightningApiStream.swift in Sources */,
 				ADADAD8E2143B3C900A48E1F /* NodeInfo.swift in Sources */,
 				ADADAD972143B3C900A48E1F /* LndApiError.swift in Sources */,
@@ -2972,15 +2898,15 @@
 				ADADAD992143B3C900A48E1F /* Result.swift in Sources */,
 				AD9BB2DA21819799009DC878 /* Route.swift in Sources */,
 				ADADAD892143B3C900A48E1F /* ChannelCloseSummary.swift in Sources */,
-				ADFB36DF2143B93300146FCC /* Environment.swift in Sources */,
 				ADF1BB33219D7F260078BCC4 /* Macaroon.swift in Sources */,
 				ADADAD9F2143B3C900A48E1F /* WalletApiProtocol.swift in Sources */,
+				ADA58F9122031E56009A5494 /* RpcCallback.swift in Sources */,
 				ADADAD942143B3C900A48E1F /* TestingTemplates.swift in Sources */,
 				ADADADA02143B3C900A48E1F /* WalletApiRPC.swift in Sources */,
-				ADA3253421A701E700C5EAA2 /* MacaroonId.pb.swift in Sources */,
 				ADFB36D82143B73C00146FCC /* LocalLnd.swift in Sources */,
 				AD3781CC21664EB00083CE77 /* RemoteRPCConfiguration.swift in Sources */,
 				ADADAD912143B3C900A48E1F /* PaymentRequest.swift in Sources */,
+				ADA58F9522034A25009A5494 /* GRPCProtoCall+Extensions.swift in Sources */,
 				ADADAD9B2143B3C900A48E1F /* LightningApiMock.swift in Sources */,
 				ADFB36D92143B73C00146FCC /* LocalLndConfiguration.swift in Sources */,
 				ADADAD9C2143B3C900A48E1F /* LightningApiProtocol.swift in Sources */,
@@ -2988,6 +2914,8 @@
 				ADADAD8F2143B3C900A48E1F /* OnChainRequestAddressType.swift in Sources */,
 				ADADAD9D2143B3C900A48E1F /* LightningApiRPC.swift in Sources */,
 				ADADAD922143B3C900A48E1F /* Peer.swift in Sources */,
+				ADA58F9322033FC7009A5494 /* WalletApiTransformation.swift in Sources */,
+				AD7ED622220B4FE9007C5F2C /* FileManager.swift in Sources */,
 				ADADAD9A2143B3C900A48E1F /* StreamCallback.swift in Sources */,
 				ADADAD8A2143B3C900A48E1F /* ChannelPoint.swift in Sources */,
 				ADADAD902143B3C900A48E1F /* OpenStatusUpdate.swift in Sources */,
@@ -3004,16 +2932,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				ADADAD732143B2E700A48E1F /* SwiftLndTests.swift in Sources */,
 				ADA3253621A81B5C00C5EAA2 /* MacaroonTests.swift in Sources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		ADEDA3D2217E2C1D0078FD91 /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				ADEDA3D9217E2C1D0078FD91 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -3073,25 +2992,15 @@
 			target = ADADAD622143B2E700A48E1F /* SwiftLnd */;
 			targetProxy = ADADAD762143B2E700A48E1F /* PBXContainerItemProxy */;
 		};
-		ADEDA3FB217E2F850078FD91 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = AD391C1720D16ED4007EE22A /* Library */;
-			targetProxy = ADEDA3FA217E2F850078FD91 /* PBXContainerItemProxy */;
-		};
-		ADEDA3FF217E2F850078FD91 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = AD536BE520E62763002279BC /* Lightning */;
-			targetProxy = ADEDA3FE217E2F850078FD91 /* PBXContainerItemProxy */;
-		};
-		ADEDA403217E2F860078FD91 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = ADADAD622143B2E700A48E1F /* SwiftLnd */;
-			targetProxy = ADEDA402217E2F860078FD91 /* PBXContainerItemProxy */;
-		};
 		ADFB36D52143B67A00146FCC /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = ADADAD622143B2E700A48E1F /* SwiftLnd */;
 			targetProxy = ADFB36D42143B67A00146FCC /* PBXContainerItemProxy */;
+		};
+		ADFBE0C421F6268500A76E06 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = ADFBE0BD21F6268400A76E06 /* Sticker */;
+			targetProxy = ADFBE0C321F6268500A76E06 /* PBXContainerItemProxy */;
 		};
 		ADFE538120D693F500B3BA2A /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
@@ -3182,14 +3091,6 @@
 				ADAB0B97212487D000914974 /* vi */,
 			);
 			name = InfoPlist.strings;
-			sourceTree = "<group>";
-		};
-		ADEDA3E1217E2C1F0078FD91 /* LaunchScreen.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				ADEDA3E2217E2C1F0078FD91 /* Base */,
-			);
-			name = LaunchScreen.storyboard;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */
@@ -3349,7 +3250,7 @@
 		};
 		A0A05A1D2013CF960007D1C9 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 675E3550D7FE082603B36574 /* Pods-Apps-Zap.debug.xcconfig */;
+			baseConfigurationReference = D989AC91D5501875BA1C4E18 /* Pods-Zap.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
@@ -3385,7 +3286,7 @@
 		};
 		A0A05A1E2013CF960007D1C9 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = CA1CA6164A8221DB7F42912F /* Pods-Apps-Zap.release.xcconfig */;
+			baseConfigurationReference = 5E35400BBA08A4A87916AF7B /* Pods-Zap.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
@@ -3679,7 +3580,7 @@
 		};
 		AD967FD9210329A70048085B /* DebugRemote */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 4D01823B5E51BB332B8D545E /* Pods-Apps-Zap.debugremote.xcconfig */;
+			baseConfigurationReference = 75C93228A5FCF2CBD287946A /* Pods-Zap.debugremote.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
@@ -3977,62 +3878,56 @@
 			};
 			name = Release;
 		};
-		ADEDA3F0217E2C1F0078FD91 /* Debug */ = {
+		ADFBE0C621F6268500A76E06 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = B5AFB42FBBB02367839B0226 /* Pods-Apps-ZapPos.debug.xcconfig */;
 			buildSettings = {
-				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_APPICON_NAME = "iMessage App Icon";
 				CLANG_ENABLE_OBJC_WEAK = YES;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = CS73H95RB8;
-				INFOPLIST_FILE = ZapPos/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 11.2;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				INFOPLIST_FILE = Sticker/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.1;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
-				PRODUCT_BUNDLE_IDENTIFIER = "com.jackmallers.zap-pos";
+				PRODUCT_BUNDLE_IDENTIFIER = com.jackmallers.zap.Sticker;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 4.2;
-				TARGETED_DEVICE_FAMILY = 2;
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Debug;
 		};
-		ADEDA3F1217E2C1F0078FD91 /* DebugRemote */ = {
+		ADFBE0C721F6268500A76E06 /* DebugRemote */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 0C0921AE2504374B286BE025 /* Pods-Apps-ZapPos.debugremote.xcconfig */;
 			buildSettings = {
-				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_APPICON_NAME = "iMessage App Icon";
 				CLANG_ENABLE_OBJC_WEAK = YES;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = CS73H95RB8;
-				INFOPLIST_FILE = ZapPos/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 11.2;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				INFOPLIST_FILE = Sticker/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.1;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
-				PRODUCT_BUNDLE_IDENTIFIER = "com.jackmallers.zap-pos";
+				PRODUCT_BUNDLE_IDENTIFIER = com.jackmallers.zap.Sticker;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 4.2;
-				TARGETED_DEVICE_FAMILY = 2;
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = DebugRemote;
 		};
-		ADEDA3F2217E2C1F0078FD91 /* Release */ = {
+		ADFBE0C821F6268500A76E06 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = CFBAC7765616841DE2247174 /* Pods-Apps-ZapPos.release.xcconfig */;
 			buildSettings = {
-				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_APPICON_NAME = "iMessage App Icon";
 				CLANG_ENABLE_OBJC_WEAK = YES;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = CS73H95RB8;
-				INFOPLIST_FILE = ZapPos/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 11.2;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				INFOPLIST_FILE = Sticker/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.1;
 				MTL_FAST_MATH = YES;
-				PRODUCT_BUNDLE_IDENTIFIER = "com.jackmallers.zap-pos";
+				PRODUCT_BUNDLE_IDENTIFIER = com.jackmallers.zap.Sticker;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 4.2;
-				TARGETED_DEVICE_FAMILY = 2;
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Release;
 		};
@@ -4147,12 +4042,12 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		ADEDA3F6217E2C1F0078FD91 /* Build configuration list for PBXNativeTarget "ZapPos" */ = {
+		ADFBE0C921F6268500A76E06 /* Build configuration list for PBXNativeTarget "Sticker" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				ADEDA3F0217E2C1F0078FD91 /* Debug */,
-				ADEDA3F1217E2C1F0078FD91 /* DebugRemote */,
-				ADEDA3F2217E2C1F0078FD91 /* Release */,
+				ADFBE0C621F6268500A76E06 /* Debug */,
+				ADFBE0C721F6268500A76E06 /* DebugRemote */,
+				ADFBE0C821F6268500A76E06 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
