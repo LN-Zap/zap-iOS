@@ -9,37 +9,37 @@ import Foundation
 import SwiftBTC
 
 public protocol LightningApiProtocol {
-    func info(completion: @escaping (Result<Info, LndApiError>) -> Void)
+    func info(completion: @escaping Handler<Info>)
     
     // Channels
-    func openChannel(pubKey: String, amount: Satoshi, completion: @escaping (Result<ChannelPoint, LndApiError>) -> Void)
-    func closeChannel(channelPoint: ChannelPoint, force: Bool, completion: @escaping (Result<CloseStatusUpdate, LndApiError>) -> Void)
-    func channelBalance(completion: @escaping (Result<Satoshi, LndApiError>) -> Void)
-    func pendingChannels(completion: @escaping (Result<[Channel], LndApiError>) -> Void)
-    func channels(completion: @escaping (Result<[Channel], LndApiError>) -> Void)
-    func closedChannels(completion: @escaping (Result<[ChannelCloseSummary], LndApiError>) -> Void)
-    func subscribeChannelGraph(completion: @escaping (Result<GraphTopologyUpdate, LndApiError>) -> Void)
+    func openChannel(pubKey: String, amount: Satoshi, completion: @escaping Handler<ChannelPoint>)
+    func closeChannel(channelPoint: ChannelPoint, force: Bool, completion: @escaping Handler<CloseStatusUpdate>)
+    func channelBalance(completion: @escaping Handler<Satoshi>)
+    func pendingChannels(completion: @escaping Handler<[Channel]>)
+    func channels(completion: @escaping Handler<[Channel]>)
+    func closedChannels(completion: @escaping Handler<[ChannelCloseSummary]>)
+    func subscribeChannelGraph(completion: @escaping Handler<GraphTopologyUpdate>)
 
     // On-chain
-    func sendCoins(address: BitcoinAddress, amount: Satoshi, completion: @escaping (Result<String, LndApiError>) -> Void)
-    func transactions(completion: @escaping (Result<[Transaction], LndApiError>) -> Void)
-    func subscribeTransactions(completion: @escaping (Result<Transaction, LndApiError>) -> Void)
+    func sendCoins(address: BitcoinAddress, amount: Satoshi, completion: @escaping Handler<String>)
+    func transactions(completion: @escaping Handler<[Transaction]>)
+    func subscribeTransactions(completion: @escaping Handler<Transaction>)
 
     // Payments
-    func decodePaymentRequest(_ paymentRequest: String, completion: @escaping (Result<PaymentRequest, LndApiError>) -> Void)
-    func payments(completion: @escaping (Result<[Payment], LndApiError>) -> Void)
-    func sendPayment(_ paymentRequest: PaymentRequest, amount: Satoshi?, completion: @escaping (Result<Payment, LndApiError>) -> Void)
-    func addInvoice(amount: Satoshi?, memo: String?, completion: @escaping (Result<String, LndApiError>) -> Void)
-    func invoices(completion: @escaping (Result<[Invoice], LndApiError>) -> Void)
-    func subscribeInvoices(completion: @escaping (Result<Invoice, LndApiError>) -> Void)
-    func routes(destination: String, amount: Satoshi, completion: @escaping (Result<[Route], LndApiError>) -> Void)
+    func decodePaymentRequest(_ paymentRequest: String, completion: @escaping Handler<PaymentRequest>)
+    func payments(completion: @escaping Handler<[Payment]>)
+    func sendPayment(_ paymentRequest: PaymentRequest, amount: Satoshi?, completion: @escaping Handler<Payment>)
+    func addInvoice(amount: Satoshi?, memo: String?, completion: @escaping Handler<String>)
+    func invoices(completion: @escaping Handler<[Invoice]>)
+    func subscribeInvoices(completion: @escaping Handler<Invoice>)
+    func routes(destination: String, amount: Satoshi, completion: @escaping Handler<[Route]>)
     
     // Peers
-    func connect(pubKey: String, host: String, completion: @escaping (Result<Success, LndApiError>) -> Void)
-    func nodeInfo(pubKey: String, completion: @escaping (Result<NodeInfo, LndApiError>) -> Void)
-    func peers(completion: @escaping (Result<[Peer], LndApiError>) -> Void)
+    func connect(pubKey: String, host: String, completion: @escaping Handler<Success>)
+    func nodeInfo(pubKey: String, completion: @escaping Handler<NodeInfo>)
+    func peers(completion: @escaping Handler<[Peer]>)
     
     // Wallet
-    func newAddress(type: OnChainRequestAddressType, completion: @escaping (Result<BitcoinAddress, LndApiError>) -> Void)
-    func walletBalance(completion: @escaping (Result<Satoshi, LndApiError>) -> Void)
+    func newAddress(type: OnChainRequestAddressType, completion: @escaping Handler<BitcoinAddress>)
+    func walletBalance(completion: @escaping Handler<Satoshi>)
 }

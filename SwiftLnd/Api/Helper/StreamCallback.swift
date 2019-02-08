@@ -22,17 +22,17 @@ final class EmptyStreamCallback: NSObject, LndmobileCallbackProtocol {
 }
 
 final class StreamCallback<T: GPBMessage, U>: NSObject, LndmobileCallbackProtocol {
-    private let completion: (Result<U, LndApiError>) -> Void
+    private let completion: Handler<U>
     private let compactMapping: ((T) -> U?)?
     private let mapping: ((T) -> Result<U, LndApiError>)?
     
-    init(_ completion: @escaping (Result<U, LndApiError>) -> Void, transform: @escaping (T) -> U?) {
+    init(_ completion: @escaping Handler<U>, transform: @escaping (T) -> U?) {
         self.completion = completion
         self.compactMapping = transform
         self.mapping = nil
     }
     
-    init(_ completion: @escaping (Result<U, LndApiError>) -> Void, transform: @escaping (T) -> Result<U, LndApiError>) {
+    init(_ completion: @escaping Handler<U>, transform: @escaping (T) -> Result<U, LndApiError>) {
         self.completion = completion
         self.compactMapping = nil
         self.mapping = transform

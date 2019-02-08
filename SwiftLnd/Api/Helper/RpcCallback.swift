@@ -7,11 +7,13 @@
 
 import Foundation
 
+public typealias Handler<T> = (Result<T, LndApiError>) -> Void
+
 /// Helper methods to execute callbacks with `Result` objects from grpc results.
 
 // Most of the time when the grpc call returns a type T the map function
 // succeeds so we can just return U without wrapping it in a result.
-func createHandler<T, U>(_ completion: @escaping (Result<U, LndApiError>) -> Void, transform: @escaping (T) -> U?) -> (T?, Error?) -> Void {
+func createHandler<T, U>(_ completion: @escaping Handler<U>, transform: @escaping (T) -> U?) -> (T?, Error?) -> Void {
     let map = { (response: T) -> Result<U, LndApiError> in
         if let value = transform(response) {
             return .success(value)
@@ -25,7 +27,7 @@ func createHandler<T, U>(_ completion: @escaping (Result<U, LndApiError>) -> Voi
 
 // In special cases the mapping fails even when the grpc call returns a type T.
 // (e.g. `SendResponse` contains a `payment_error` property)
-func createHandler<T, U>(_ completion: @escaping (Result<U, LndApiError>) -> Void, transform: @escaping (T) -> Result<U, LndApiError>) -> (T?, Error?) -> Void {
+func createHandler<T, U>(_ completion: @escaping Handler<U>, transform: @escaping (T) -> Result<U, LndApiError>) -> (T?, Error?) -> Void {
     return { (response: T?, error: Error?) in
         if let response = response {
             completion(transform(response))
@@ -46,7 +48,7 @@ func createHandler<T, U>(_ completion: @escaping (Result<U, LndApiError>) -> Voi
 }
 
 // event results have an extra `Bool` argument that we just ignore.
-func createHandler<T, U>(_ completion: @escaping (Result<U, LndApiError>) -> Void, transform: @escaping (T) -> U?) -> (Bool, T?, Error?) -> Void {
+func createHandler<T, U>(_ completion: @escaping Handler<U>, transform: @escaping (T) -> U?) -> (Bool, T?, Error?) -> Void {
     return { (_, response: T?, error: Error?) in
         createHandler(completion, transform: transform)(response, error)
     }

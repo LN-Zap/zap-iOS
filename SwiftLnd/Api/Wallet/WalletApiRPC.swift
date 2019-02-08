@@ -21,17 +21,17 @@ public final class WalletApiRPC: WalletApiProtocol {
         macaroon = configuration.macaroon.hexadecimalString
     }
     
-    public func generateSeed(passphrase: String? = nil, completion: @escaping (Result<[String], LndApiError>) -> Void) {
+    public func generateSeed(passphrase: String? = nil, completion: @escaping Handler<[String]>) {
         let request = LNDGenSeedRequest(passphrase: passphrase)
         lnd.rpcToGenSeed(with: request, handler: createHandler(completion, transform: WalletApiTransformation.generateSeed)).runWithMacaroon(macaroon)
     }
     
-    public func initWallet(mnemonic: [String], password: String, completion: @escaping (Result<Success, LndApiError>) -> Void) {
+    public func initWallet(mnemonic: [String], password: String, completion: @escaping Handler<Success>) {
         let request = LNDInitWalletRequest(password: password, mnemonic: mnemonic)
         lnd.rpcToInitWallet(with: request, handler: createHandler(completion, transform: WalletApiTransformation.initWallet)).runWithMacaroon(macaroon)
     }
     
-    public func unlockWallet(password: String, completion: @escaping (Result<Success, LndApiError>) -> Void) {
+    public func unlockWallet(password: String, completion: @escaping Handler<Success>) {
         let request = LNDUnlockWalletRequest(password: password)
         lnd.rpcToUnlockWallet(with: request, handler: createHandler(completion, transform: WalletApiTransformation.unlockWallet)).runWithMacaroon(macaroon)
     }
