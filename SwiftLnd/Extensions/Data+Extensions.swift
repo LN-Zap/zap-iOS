@@ -12,8 +12,7 @@ extension Data {
         guard let regex = try? NSRegularExpression(pattern: "[0-9a-f]{1,2}", options: .caseInsensitive) else { return nil }
         
         var data = Data(capacity: hexadecimalString.count / 2)
-        // swiftlint:disable:next legacy_constructor
-        regex.enumerateMatches(in: hexadecimalString, range: NSMakeRange(0, hexadecimalString.utf16.count)) { match, _, _ in
+        regex.enumerateMatches(in: hexadecimalString, range: NSRange(location: 0, length: hexadecimalString.utf16.count)) { match, _, _ in
             guard let match = match else { return }
             let byteString = (hexadecimalString as NSString).substring(with: match.range)
             if var num = UInt8(byteString, radix: 16) {
