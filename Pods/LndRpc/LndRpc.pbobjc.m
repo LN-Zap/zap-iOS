@@ -490,7 +490,7 @@ typedef struct LNDUtxo__storage_ {
   LNDAddressType type;
   NSString *address;
   NSString *scriptPubkey;
-  LNDChannelPoint *outpoint;
+  LNDOutPoint *outpoint;
   int64_t amountSat;
   int64_t confirmations;
 } LNDUtxo__storage_;
@@ -539,7 +539,7 @@ typedef struct LNDUtxo__storage_ {
       },
       {
         .name = "outpoint",
-        .dataTypeSpecific.className = GPBStringifySymbol(LNDChannelPoint),
+        .dataTypeSpecific.className = GPBStringifySymbol(LNDOutPoint),
         .number = LNDUtxo_FieldNumber_Outpoint,
         .hasIndex = 4,
         .offset = (uint32_t)offsetof(LNDUtxo__storage_, outpoint),
@@ -855,6 +855,7 @@ void LNDFeeLimit_ClearLimitOneOfCase(LNDFeeLimit *message) {
 @dynamic paymentRequest;
 @dynamic finalCltvDelta;
 @dynamic hasFeeLimit, feeLimit;
+@dynamic outgoingChanId;
 
 typedef struct LNDSendRequest__storage_ {
   uint32_t _has_storage_[1];
@@ -866,6 +867,7 @@ typedef struct LNDSendRequest__storage_ {
   NSString *paymentRequest;
   LNDFeeLimit *feeLimit;
   int64_t amt;
+  uint64_t outgoingChanId;
 } LNDSendRequest__storage_;
 
 // This method is threadsafe because it is initially called
@@ -945,6 +947,15 @@ typedef struct LNDSendRequest__storage_ {
         .offset = (uint32_t)offsetof(LNDSendRequest__storage_, feeLimit),
         .flags = GPBFieldOptional,
         .dataType = GPBDataTypeMessage,
+      },
+      {
+        .name = "outgoingChanId",
+        .dataTypeSpecific.className = NULL,
+        .number = LNDSendRequest_FieldNumber_OutgoingChanId,
+        .hasIndex = 8,
+        .offset = (uint32_t)offsetof(LNDSendRequest__storage_, outgoingChanId),
+        .flags = GPBFieldOptional,
+        .dataType = GPBDataTypeUInt64,
       },
     };
     GPBDescriptor *localDescriptor =
@@ -1046,12 +1057,14 @@ typedef struct LNDSendResponse__storage_ {
 @dynamic paymentHash;
 @dynamic paymentHashString;
 @dynamic routesArray, routesArray_Count;
+@dynamic hasRoute, route;
 
 typedef struct LNDSendToRouteRequest__storage_ {
   uint32_t _has_storage_[1];
   NSData *paymentHash;
   NSString *paymentHashString;
   NSMutableArray *routesArray;
+  LNDRoute *route;
 } LNDSendToRouteRequest__storage_;
 
 // This method is threadsafe because it is initially called
@@ -1085,6 +1098,15 @@ typedef struct LNDSendToRouteRequest__storage_ {
         .hasIndex = GPBNoHasBit,
         .offset = (uint32_t)offsetof(LNDSendToRouteRequest__storage_, routesArray),
         .flags = GPBFieldRepeated,
+        .dataType = GPBDataTypeMessage,
+      },
+      {
+        .name = "route",
+        .dataTypeSpecific.className = GPBStringifySymbol(LNDRoute),
+        .number = LNDSendToRouteRequest_FieldNumber_Route,
+        .hasIndex = 2,
+        .offset = (uint32_t)offsetof(LNDSendToRouteRequest__storage_, route),
+        .flags = GPBFieldOptional,
         .dataType = GPBDataTypeMessage,
       },
     };
@@ -1181,6 +1203,71 @@ void LNDChannelPoint_ClearFundingTxidOneOfCase(LNDChannelPoint *message) {
   GPBOneofDescriptor *oneof = [descriptor.oneofs objectAtIndex:0];
   GPBMaybeClearOneof(message, oneof, -1, 0);
 }
+#pragma mark - LNDOutPoint
+
+@implementation LNDOutPoint
+
+@dynamic txidBytes;
+@dynamic txidStr;
+@dynamic outputIndex;
+
+typedef struct LNDOutPoint__storage_ {
+  uint32_t _has_storage_[1];
+  uint32_t outputIndex;
+  NSData *txidBytes;
+  NSString *txidStr;
+} LNDOutPoint__storage_;
+
+// This method is threadsafe because it is initially called
+// in +initialize for each subclass.
++ (GPBDescriptor *)descriptor {
+  static GPBDescriptor *descriptor = nil;
+  if (!descriptor) {
+    static GPBMessageFieldDescription fields[] = {
+      {
+        .name = "txidBytes",
+        .dataTypeSpecific.className = NULL,
+        .number = LNDOutPoint_FieldNumber_TxidBytes,
+        .hasIndex = 0,
+        .offset = (uint32_t)offsetof(LNDOutPoint__storage_, txidBytes),
+        .flags = GPBFieldOptional,
+        .dataType = GPBDataTypeBytes,
+      },
+      {
+        .name = "txidStr",
+        .dataTypeSpecific.className = NULL,
+        .number = LNDOutPoint_FieldNumber_TxidStr,
+        .hasIndex = 1,
+        .offset = (uint32_t)offsetof(LNDOutPoint__storage_, txidStr),
+        .flags = GPBFieldOptional,
+        .dataType = GPBDataTypeString,
+      },
+      {
+        .name = "outputIndex",
+        .dataTypeSpecific.className = NULL,
+        .number = LNDOutPoint_FieldNumber_OutputIndex,
+        .hasIndex = 2,
+        .offset = (uint32_t)offsetof(LNDOutPoint__storage_, outputIndex),
+        .flags = GPBFieldOptional,
+        .dataType = GPBDataTypeUInt32,
+      },
+    };
+    GPBDescriptor *localDescriptor =
+        [GPBDescriptor allocDescriptorForClass:[LNDOutPoint class]
+                                     rootClass:[LNDLndRpcRoot class]
+                                          file:LNDLndRpcRoot_FileDescriptor()
+                                        fields:fields
+                                    fieldCount:(uint32_t)(sizeof(fields) / sizeof(GPBMessageFieldDescription))
+                                   storageSize:sizeof(LNDOutPoint__storage_)
+                                         flags:GPBDescriptorInitializationFlag_None];
+    NSAssert(descriptor == nil, @"Startup recursed!");
+    descriptor = localDescriptor;
+  }
+  return descriptor;
+}
+
+@end
+
 #pragma mark - LNDLightningAddress
 
 @implementation LNDLightningAddress
@@ -4415,6 +4502,187 @@ typedef struct LNDPendingChannelsResponse_ForceClosedChannel__storage_ {
 
 @end
 
+#pragma mark - LNDChannelEventSubscription
+
+@implementation LNDChannelEventSubscription
+
+
+typedef struct LNDChannelEventSubscription__storage_ {
+  uint32_t _has_storage_[1];
+} LNDChannelEventSubscription__storage_;
+
+// This method is threadsafe because it is initially called
+// in +initialize for each subclass.
++ (GPBDescriptor *)descriptor {
+  static GPBDescriptor *descriptor = nil;
+  if (!descriptor) {
+    GPBDescriptor *localDescriptor =
+        [GPBDescriptor allocDescriptorForClass:[LNDChannelEventSubscription class]
+                                     rootClass:[LNDLndRpcRoot class]
+                                          file:LNDLndRpcRoot_FileDescriptor()
+                                        fields:NULL
+                                    fieldCount:0
+                                   storageSize:sizeof(LNDChannelEventSubscription__storage_)
+                                         flags:GPBDescriptorInitializationFlag_None];
+    NSAssert(descriptor == nil, @"Startup recursed!");
+    descriptor = localDescriptor;
+  }
+  return descriptor;
+}
+
+@end
+
+#pragma mark - LNDChannelEventUpdate
+
+@implementation LNDChannelEventUpdate
+
+@dynamic channelOneOfCase;
+@dynamic openChannel;
+@dynamic closedChannel;
+@dynamic activeChannel;
+@dynamic inactiveChannel;
+@dynamic type;
+
+typedef struct LNDChannelEventUpdate__storage_ {
+  uint32_t _has_storage_[2];
+  LNDChannelEventUpdate_UpdateType type;
+  LNDChannel *openChannel;
+  LNDChannelCloseSummary *closedChannel;
+  LNDChannelPoint *activeChannel;
+  LNDChannelPoint *inactiveChannel;
+} LNDChannelEventUpdate__storage_;
+
+// This method is threadsafe because it is initially called
+// in +initialize for each subclass.
++ (GPBDescriptor *)descriptor {
+  static GPBDescriptor *descriptor = nil;
+  if (!descriptor) {
+    static GPBMessageFieldDescription fields[] = {
+      {
+        .name = "openChannel",
+        .dataTypeSpecific.className = GPBStringifySymbol(LNDChannel),
+        .number = LNDChannelEventUpdate_FieldNumber_OpenChannel,
+        .hasIndex = -1,
+        .offset = (uint32_t)offsetof(LNDChannelEventUpdate__storage_, openChannel),
+        .flags = GPBFieldOptional,
+        .dataType = GPBDataTypeMessage,
+      },
+      {
+        .name = "closedChannel",
+        .dataTypeSpecific.className = GPBStringifySymbol(LNDChannelCloseSummary),
+        .number = LNDChannelEventUpdate_FieldNumber_ClosedChannel,
+        .hasIndex = -1,
+        .offset = (uint32_t)offsetof(LNDChannelEventUpdate__storage_, closedChannel),
+        .flags = GPBFieldOptional,
+        .dataType = GPBDataTypeMessage,
+      },
+      {
+        .name = "activeChannel",
+        .dataTypeSpecific.className = GPBStringifySymbol(LNDChannelPoint),
+        .number = LNDChannelEventUpdate_FieldNumber_ActiveChannel,
+        .hasIndex = -1,
+        .offset = (uint32_t)offsetof(LNDChannelEventUpdate__storage_, activeChannel),
+        .flags = GPBFieldOptional,
+        .dataType = GPBDataTypeMessage,
+      },
+      {
+        .name = "inactiveChannel",
+        .dataTypeSpecific.className = GPBStringifySymbol(LNDChannelPoint),
+        .number = LNDChannelEventUpdate_FieldNumber_InactiveChannel,
+        .hasIndex = -1,
+        .offset = (uint32_t)offsetof(LNDChannelEventUpdate__storage_, inactiveChannel),
+        .flags = GPBFieldOptional,
+        .dataType = GPBDataTypeMessage,
+      },
+      {
+        .name = "type",
+        .dataTypeSpecific.enumDescFunc = LNDChannelEventUpdate_UpdateType_EnumDescriptor,
+        .number = LNDChannelEventUpdate_FieldNumber_Type,
+        .hasIndex = 0,
+        .offset = (uint32_t)offsetof(LNDChannelEventUpdate__storage_, type),
+        .flags = (GPBFieldFlags)(GPBFieldOptional | GPBFieldHasEnumDescriptor),
+        .dataType = GPBDataTypeEnum,
+      },
+    };
+    GPBDescriptor *localDescriptor =
+        [GPBDescriptor allocDescriptorForClass:[LNDChannelEventUpdate class]
+                                     rootClass:[LNDLndRpcRoot class]
+                                          file:LNDLndRpcRoot_FileDescriptor()
+                                        fields:fields
+                                    fieldCount:(uint32_t)(sizeof(fields) / sizeof(GPBMessageFieldDescription))
+                                   storageSize:sizeof(LNDChannelEventUpdate__storage_)
+                                         flags:GPBDescriptorInitializationFlag_None];
+    static const char *oneofs[] = {
+      "channel",
+    };
+    [localDescriptor setupOneofs:oneofs
+                           count:(uint32_t)(sizeof(oneofs) / sizeof(char*))
+                   firstHasIndex:-1];
+    NSAssert(descriptor == nil, @"Startup recursed!");
+    descriptor = localDescriptor;
+  }
+  return descriptor;
+}
+
+@end
+
+int32_t LNDChannelEventUpdate_Type_RawValue(LNDChannelEventUpdate *message) {
+  GPBDescriptor *descriptor = [LNDChannelEventUpdate descriptor];
+  GPBFieldDescriptor *field = [descriptor fieldWithNumber:LNDChannelEventUpdate_FieldNumber_Type];
+  return GPBGetMessageInt32Field(message, field);
+}
+
+void SetLNDChannelEventUpdate_Type_RawValue(LNDChannelEventUpdate *message, int32_t value) {
+  GPBDescriptor *descriptor = [LNDChannelEventUpdate descriptor];
+  GPBFieldDescriptor *field = [descriptor fieldWithNumber:LNDChannelEventUpdate_FieldNumber_Type];
+  GPBSetInt32IvarWithFieldInternal(message, field, value, descriptor.file.syntax);
+}
+
+void LNDChannelEventUpdate_ClearChannelOneOfCase(LNDChannelEventUpdate *message) {
+  GPBDescriptor *descriptor = [message descriptor];
+  GPBOneofDescriptor *oneof = [descriptor.oneofs objectAtIndex:0];
+  GPBMaybeClearOneof(message, oneof, -1, 0);
+}
+#pragma mark - Enum LNDChannelEventUpdate_UpdateType
+
+GPBEnumDescriptor *LNDChannelEventUpdate_UpdateType_EnumDescriptor(void) {
+  static _Atomic(GPBEnumDescriptor*) descriptor = nil;
+  if (!descriptor) {
+    static const char *valueNames =
+        "OpenChannel\000ClosedChannel\000ActiveChannel\000"
+        "InactiveChannel\000";
+    static const int32_t values[] = {
+        LNDChannelEventUpdate_UpdateType_OpenChannel,
+        LNDChannelEventUpdate_UpdateType_ClosedChannel,
+        LNDChannelEventUpdate_UpdateType_ActiveChannel,
+        LNDChannelEventUpdate_UpdateType_InactiveChannel,
+    };
+    GPBEnumDescriptor *worker =
+        [GPBEnumDescriptor allocDescriptorForName:GPBNSStringifySymbol(LNDChannelEventUpdate_UpdateType)
+                                       valueNames:valueNames
+                                           values:values
+                                            count:(uint32_t)(sizeof(values) / sizeof(int32_t))
+                                     enumVerifier:LNDChannelEventUpdate_UpdateType_IsValidValue];
+    GPBEnumDescriptor *expected = nil;
+    if (!atomic_compare_exchange_strong(&descriptor, &expected, worker)) {
+      [worker release];
+    }
+  }
+  return descriptor;
+}
+
+BOOL LNDChannelEventUpdate_UpdateType_IsValidValue(int32_t value__) {
+  switch (value__) {
+    case LNDChannelEventUpdate_UpdateType_OpenChannel:
+    case LNDChannelEventUpdate_UpdateType_ClosedChannel:
+    case LNDChannelEventUpdate_UpdateType_ActiveChannel:
+    case LNDChannelEventUpdate_UpdateType_InactiveChannel:
+      return YES;
+    default:
+      return NO;
+  }
+}
+
 #pragma mark - LNDWalletBalanceRequest
 
 @implementation LNDWalletBalanceRequest
@@ -6511,10 +6779,11 @@ GPBEnumDescriptor *LNDInvoice_InvoiceState_EnumDescriptor(void) {
   static _Atomic(GPBEnumDescriptor*) descriptor = nil;
   if (!descriptor) {
     static const char *valueNames =
-        "Open\000Settled\000";
+        "Open\000Settled\000Canceled\000";
     static const int32_t values[] = {
         LNDInvoice_InvoiceState_Open,
         LNDInvoice_InvoiceState_Settled,
+        LNDInvoice_InvoiceState_Canceled,
     };
     GPBEnumDescriptor *worker =
         [GPBEnumDescriptor allocDescriptorForName:GPBNSStringifySymbol(LNDInvoice_InvoiceState)
@@ -6534,6 +6803,7 @@ BOOL LNDInvoice_InvoiceState_IsValidValue(int32_t value__) {
   switch (value__) {
     case LNDInvoice_InvoiceState_Open:
     case LNDInvoice_InvoiceState_Settled:
+    case LNDInvoice_InvoiceState_Canceled:
       return YES;
     default:
       return NO;

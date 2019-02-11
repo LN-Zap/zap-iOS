@@ -18,6 +18,8 @@
 @class LNDChannelBalanceRequest;
 @class LNDChannelBalanceResponse;
 @class LNDChannelEdge;
+@class LNDChannelEventSubscription;
+@class LNDChannelEventUpdate;
 @class LNDChannelGraph;
 @class LNDChannelGraphRequest;
 @class LNDChannelPoint;
@@ -512,6 +514,27 @@ NS_ASSUME_NONNULL_BEGIN
 - (GRPCProtoCall *)RPCToListChannelsWithRequest:(LNDListChannelsRequest *)request handler:(void(^)(LNDListChannelsResponse *_Nullable response, NSError *_Nullable error))handler;
 
 
+#pragma mark SubscribeChannelEvents(ChannelEventSubscription) returns (stream ChannelEventUpdate)
+
+/**
+ * * lncli: `subscribechannelevents`
+ * SubscribeChannelEvents creates a uni-directional stream from the server to
+ * the client in which any updates relevant to the state of the channels are
+ * sent over. Events include new active channels, inactive channels, and closed
+ * channels.
+ */
+- (void)subscribeChannelEventsWithRequest:(LNDChannelEventSubscription *)request eventHandler:(void(^)(BOOL done, LNDChannelEventUpdate *_Nullable response, NSError *_Nullable error))eventHandler;
+
+/**
+ * * lncli: `subscribechannelevents`
+ * SubscribeChannelEvents creates a uni-directional stream from the server to
+ * the client in which any updates relevant to the state of the channels are
+ * sent over. Events include new active channels, inactive channels, and closed
+ * channels.
+ */
+- (GRPCProtoCall *)RPCToSubscribeChannelEventsWithRequest:(LNDChannelEventSubscription *)request eventHandler:(void(^)(BOOL done, LNDChannelEventUpdate *_Nullable response, NSError *_Nullable error))eventHandler;
+
+
 #pragma mark ClosedChannels(ClosedChannelsRequest) returns (ClosedChannelsResponse)
 
 /**
@@ -729,10 +752,8 @@ NS_ASSUME_NONNULL_BEGIN
  * paginated responses, allowing users to query for specific invoices through
  * their add_index. This can be done by using either the first_index_offset or
  * last_index_offset fields included in the response as the index_offset of the
- * next request. The reversed flag is set by default in order to paginate
- * backwards. If you wish to paginate forwards, you must explicitly set the
- * flag to false. If none of the parameters are specified, then the last 100
- * invoices will be returned.
+ * next request. By default, the first 100 invoices created will be returned.
+ * Backwards pagination is also supported through the Reversed flag.
  */
 - (void)listInvoicesWithRequest:(LNDListInvoiceRequest *)request handler:(void(^)(LNDListInvoiceResponse *_Nullable response, NSError *_Nullable error))handler;
 
@@ -743,10 +764,8 @@ NS_ASSUME_NONNULL_BEGIN
  * paginated responses, allowing users to query for specific invoices through
  * their add_index. This can be done by using either the first_index_offset or
  * last_index_offset fields included in the response as the index_offset of the
- * next request. The reversed flag is set by default in order to paginate
- * backwards. If you wish to paginate forwards, you must explicitly set the
- * flag to false. If none of the parameters are specified, then the last 100
- * invoices will be returned.
+ * next request. By default, the first 100 invoices created will be returned.
+ * Backwards pagination is also supported through the Reversed flag.
  */
 - (GRPCProtoCall *)RPCToListInvoicesWithRequest:(LNDListInvoiceRequest *)request handler:(void(^)(LNDListInvoiceResponse *_Nullable response, NSError *_Nullable error))handler;
 

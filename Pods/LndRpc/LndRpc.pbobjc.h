@@ -47,6 +47,7 @@ CF_EXTERN_C_BEGIN
 @class LNDLightningNode;
 @class LNDNodeAddress;
 @class LNDNodeUpdate;
+@class LNDOutPoint;
 @class LNDPayment;
 @class LNDPeer;
 @class LNDPendingChannelsResponse_ClosedChannel;
@@ -117,6 +118,29 @@ GPBEnumDescriptor *LNDChannelCloseSummary_ClosureType_EnumDescriptor(void);
  **/
 BOOL LNDChannelCloseSummary_ClosureType_IsValidValue(int32_t value);
 
+#pragma mark - Enum LNDChannelEventUpdate_UpdateType
+
+typedef GPB_ENUM(LNDChannelEventUpdate_UpdateType) {
+  /**
+   * Value used if any message's field encounters a value that is not defined
+   * by this enum. The message will also have C functions to get/set the rawValue
+   * of the field.
+   **/
+  LNDChannelEventUpdate_UpdateType_GPBUnrecognizedEnumeratorValue = kGPBUnrecognizedEnumeratorValue,
+  LNDChannelEventUpdate_UpdateType_OpenChannel = 0,
+  LNDChannelEventUpdate_UpdateType_ClosedChannel = 1,
+  LNDChannelEventUpdate_UpdateType_ActiveChannel = 2,
+  LNDChannelEventUpdate_UpdateType_InactiveChannel = 3,
+};
+
+GPBEnumDescriptor *LNDChannelEventUpdate_UpdateType_EnumDescriptor(void);
+
+/**
+ * Checks to see if the given value is defined by the enum or was not known at
+ * the time this source was generated.
+ **/
+BOOL LNDChannelEventUpdate_UpdateType_IsValidValue(int32_t value);
+
 #pragma mark - Enum LNDInvoice_InvoiceState
 
 typedef GPB_ENUM(LNDInvoice_InvoiceState) {
@@ -128,6 +152,7 @@ typedef GPB_ENUM(LNDInvoice_InvoiceState) {
   LNDInvoice_InvoiceState_GPBUnrecognizedEnumeratorValue = kGPBUnrecognizedEnumeratorValue,
   LNDInvoice_InvoiceState_Open = 0,
   LNDInvoice_InvoiceState_Settled = 1,
+  LNDInvoice_InvoiceState_Canceled = 2,
 };
 
 GPBEnumDescriptor *LNDInvoice_InvoiceState_EnumDescriptor(void);
@@ -353,12 +378,8 @@ typedef GPB_ENUM(LNDUtxo_FieldNumber) {
 /** / The scriptpubkey in hex */
 @property(nonatomic, readwrite, copy, null_resettable) NSString *scriptPubkey;
 
-/**
- * / The outpoint in format txid:n
- * / Note that this reuses the `ChannelPoint` message but
- * / is not actually a channel related outpoint, of course
- **/
-@property(nonatomic, readwrite, strong, null_resettable) LNDChannelPoint *outpoint;
+/** / The outpoint in format txid:n */
+@property(nonatomic, readwrite, strong, null_resettable) LNDOutPoint *outpoint;
 /** Test to see if @c outpoint has been set. */
 @property(nonatomic, readwrite) BOOL hasOutpoint;
 
@@ -484,6 +505,7 @@ typedef GPB_ENUM(LNDSendRequest_FieldNumber) {
   LNDSendRequest_FieldNumber_PaymentRequest = 6,
   LNDSendRequest_FieldNumber_FinalCltvDelta = 7,
   LNDSendRequest_FieldNumber_FeeLimit = 8,
+  LNDSendRequest_FieldNumber_OutgoingChanId = 9,
 };
 
 @interface LNDSendRequest : GPBMessage
@@ -529,6 +551,13 @@ typedef GPB_ENUM(LNDSendRequest_FieldNumber) {
 /** Test to see if @c feeLimit has been set. */
 @property(nonatomic, readwrite) BOOL hasFeeLimit;
 
+/**
+ * *
+ * The channel id of the channel that must be taken to the first hop. If zero,
+ * any channel may be used.
+ **/
+@property(nonatomic, readwrite) uint64_t outgoingChanId;
+
 @end
 
 #pragma mark - LNDSendResponse
@@ -560,6 +589,7 @@ typedef GPB_ENUM(LNDSendToRouteRequest_FieldNumber) {
   LNDSendToRouteRequest_FieldNumber_PaymentHash = 1,
   LNDSendToRouteRequest_FieldNumber_PaymentHashString = 2,
   LNDSendToRouteRequest_FieldNumber_RoutesArray = 3,
+  LNDSendToRouteRequest_FieldNumber_Route = 4,
 };
 
 @interface LNDSendToRouteRequest : GPBMessage
@@ -570,10 +600,21 @@ typedef GPB_ENUM(LNDSendToRouteRequest_FieldNumber) {
 /** / An optional hex-encoded payment hash to be used for the HTLC. */
 @property(nonatomic, readwrite, copy, null_resettable) NSString *paymentHashString;
 
-/** / The set of routes that should be used to attempt to complete the payment. */
-@property(nonatomic, readwrite, strong, null_resettable) NSMutableArray<LNDRoute*> *routesArray;
+/**
+ * *
+ * Deprecated. The set of routes that should be used to attempt to complete the
+ * payment. The possibility to pass in multiple routes is deprecated and
+ * instead the single route field below should be used in combination with the
+ * streaming variant of SendToRoute.
+ **/
+@property(nonatomic, readwrite, strong, null_resettable) NSMutableArray<LNDRoute*> *routesArray DEPRECATED_ATTRIBUTE;
 /** The number of items in @c routesArray without causing the array to be created. */
-@property(nonatomic, readonly) NSUInteger routesArray_Count;
+@property(nonatomic, readonly) NSUInteger routesArray_Count DEPRECATED_ATTRIBUTE;
+
+/** / Route that should be used to attempt to complete the payment. */
+@property(nonatomic, readwrite, strong, null_resettable) LNDRoute *route;
+/** Test to see if @c route has been set. */
+@property(nonatomic, readwrite) BOOL hasRoute;
 
 @end
 
@@ -610,6 +651,27 @@ typedef GPB_ENUM(LNDChannelPoint_FundingTxid_OneOfCase) {
  * Clears whatever value was set for the oneof 'fundingTxid'.
  **/
 void LNDChannelPoint_ClearFundingTxidOneOfCase(LNDChannelPoint *message);
+
+#pragma mark - LNDOutPoint
+
+typedef GPB_ENUM(LNDOutPoint_FieldNumber) {
+  LNDOutPoint_FieldNumber_TxidBytes = 1,
+  LNDOutPoint_FieldNumber_TxidStr = 2,
+  LNDOutPoint_FieldNumber_OutputIndex = 3,
+};
+
+@interface LNDOutPoint : GPBMessage
+
+/** / Raw bytes representing the transaction id. */
+@property(nonatomic, readwrite, copy, null_resettable) NSData *txidBytes;
+
+/** / Reversed, hex-encoded string representing the transaction id. */
+@property(nonatomic, readwrite, copy, null_resettable) NSString *txidStr;
+
+/** / The index of the output on the transaction. */
+@property(nonatomic, readwrite) uint32_t outputIndex;
+
+@end
 
 #pragma mark - LNDLightningAddress
 
@@ -1759,6 +1821,63 @@ typedef GPB_ENUM(LNDPendingChannelsResponse_ForceClosedChannel_FieldNumber) {
 @property(nonatomic, readonly) NSUInteger pendingHtlcsArray_Count;
 
 @end
+
+#pragma mark - LNDChannelEventSubscription
+
+@interface LNDChannelEventSubscription : GPBMessage
+
+@end
+
+#pragma mark - LNDChannelEventUpdate
+
+typedef GPB_ENUM(LNDChannelEventUpdate_FieldNumber) {
+  LNDChannelEventUpdate_FieldNumber_OpenChannel = 1,
+  LNDChannelEventUpdate_FieldNumber_ClosedChannel = 2,
+  LNDChannelEventUpdate_FieldNumber_ActiveChannel = 3,
+  LNDChannelEventUpdate_FieldNumber_InactiveChannel = 4,
+  LNDChannelEventUpdate_FieldNumber_Type = 5,
+};
+
+typedef GPB_ENUM(LNDChannelEventUpdate_Channel_OneOfCase) {
+  LNDChannelEventUpdate_Channel_OneOfCase_GPBUnsetOneOfCase = 0,
+  LNDChannelEventUpdate_Channel_OneOfCase_OpenChannel = 1,
+  LNDChannelEventUpdate_Channel_OneOfCase_ClosedChannel = 2,
+  LNDChannelEventUpdate_Channel_OneOfCase_ActiveChannel = 3,
+  LNDChannelEventUpdate_Channel_OneOfCase_InactiveChannel = 4,
+};
+
+@interface LNDChannelEventUpdate : GPBMessage
+
+@property(nonatomic, readonly) LNDChannelEventUpdate_Channel_OneOfCase channelOneOfCase;
+
+@property(nonatomic, readwrite, strong, null_resettable) LNDChannel *openChannel;
+
+@property(nonatomic, readwrite, strong, null_resettable) LNDChannelCloseSummary *closedChannel;
+
+@property(nonatomic, readwrite, strong, null_resettable) LNDChannelPoint *activeChannel;
+
+@property(nonatomic, readwrite, strong, null_resettable) LNDChannelPoint *inactiveChannel;
+
+@property(nonatomic, readwrite) LNDChannelEventUpdate_UpdateType type;
+
+@end
+
+/**
+ * Fetches the raw value of a @c LNDChannelEventUpdate's @c type property, even
+ * if the value was not defined by the enum at the time the code was generated.
+ **/
+int32_t LNDChannelEventUpdate_Type_RawValue(LNDChannelEventUpdate *message);
+/**
+ * Sets the raw value of an @c LNDChannelEventUpdate's @c type property, allowing
+ * it to be set to a value that was not defined by the enum at the time the code
+ * was generated.
+ **/
+void SetLNDChannelEventUpdate_Type_RawValue(LNDChannelEventUpdate *message, int32_t value);
+
+/**
+ * Clears whatever value was set for the oneof 'channel'.
+ **/
+void LNDChannelEventUpdate_ClearChannelOneOfCase(LNDChannelEventUpdate *message);
 
 #pragma mark - LNDWalletBalanceRequest
 

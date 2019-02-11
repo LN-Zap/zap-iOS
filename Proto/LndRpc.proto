@@ -359,6 +359,14 @@ service Lightning {
         };
     }
 
+    /** lncli: `subscribechannelevents`
+    SubscribeChannelEvents creates a uni-directional stream from the server to
+    the client in which any updates relevant to the state of the channels are
+    sent over. Events include new active channels, inactive channels, and closed
+    channels.
+    */
+    rpc SubscribeChannelEvents (ChannelEventSubscription) returns (stream ChannelEventUpdate);
+
     /** lncli: `closedchannels`
     ClosedChannels returns a description of all the closed channels that 
     this node was a participant in.
@@ -478,10 +486,8 @@ service Lightning {
     paginated responses, allowing users to query for specific invoices through
     their add_index. This can be done by using either the first_index_offset or
     last_index_offset fields included in the response as the index_offset of the
-    next request. The reversed flag is set by default in order to paginate
-    backwards. If you wish to paginate forwards, you must explicitly set the
-    flag to false. If none of the parameters are specified, then the last 100
-    invoices will be returned.
+    next request. By default, the first 100 invoices created will be returned.
+    Backwards pagination is also supported through the Reversed flag.
     */
     rpc ListInvoices (ListInvoiceRequest) returns (ListInvoiceResponse) {
         option (google.api.http) = {
@@ -671,25 +677,23 @@ service Lightning {
 }
 
 message Utxo {
-	/// The type of address
-	AddressType type = 1 [json_name = "address_type"];
+    /// The type of address
+    AddressType type = 1 [json_name = "address_type"];
 
-	/// The address
-	string address = 2 [json_name = "address"];
+    /// The address
+    string address = 2 [json_name = "address"];
 
-	/// The value of the unspent coin in satoshis
-	int64 amount_sat = 3 [json_name = "amount_sat"];
+    /// The value of the unspent coin in satoshis
+    int64 amount_sat = 3 [json_name = "amount_sat"];
 
-	/// The scriptpubkey in hex
-	string script_pubkey = 4 [json_name = "script_pubkey"];
+    /// The scriptpubkey in hex
+    string script_pubkey = 4 [json_name = "script_pubkey"];
 
-	/// The outpoint in format txid:n
-	/// Note that this reuses the `ChannelPoint` message but
-	/// is not actually a channel related outpoint, of course
-	ChannelPoint outpoint = 5 [json_name = "outpoint"];
+    /// The outpoint in format txid:n
+    OutPoint outpoint = 5 [json_name = "outpoint"];
 
-	/// The number of confirmations for the Utxo
-	int64 confirmations = 6 [json_name = "confirmations"];
+    /// The number of confirmations for the Utxo
+    int64 confirmations = 6 [json_name = "confirmations"];
 }
 
 message Transaction {
@@ -770,6 +774,12 @@ message SendRequest {
     send the payment.
     */
     FeeLimit fee_limit = 8;
+
+    /**
+    The channel id of the channel that must be taken to the first hop. If zero,
+    any channel may be used.
+    */
+    uint64 outgoing_chan_id = 9;
 }
 message SendResponse {
     string payment_error = 1 [json_name = "payment_error"];
@@ -785,8 +795,16 @@ message SendToRouteRequest {
     /// An optional hex-encoded payment hash to be used for the HTLC.
     string payment_hash_string = 2;
 
-    /// The set of routes that should be used to attempt to complete the payment.
-    repeated Route routes = 3;
+    /**
+    Deprecated. The set of routes that should be used to attempt to complete the
+    payment. The possibility to pass in multiple routes is deprecated and 
+    instead the single route field below should be used in combination with the 
+    streaming variant of SendToRoute.
+    */
+    repeated Route routes = 3 [deprecated = true];
+
+    /// Route that should be used to attempt to complete the payment.
+    Route route = 4;
 }
 
 message ChannelPoint {
@@ -799,6 +817,17 @@ message ChannelPoint {
     }
 
     /// The index of the output of the funding transaction
+    uint32 output_index = 3 [json_name = "output_index"];
+}
+
+message OutPoint {
+    /// Raw bytes representing the transaction id.
+    bytes txid_bytes = 1 [json_name = "txid_bytes"];
+
+    /// Reversed, hex-encoded string representing the transaction id.
+    string txid_str = 2 [json_name = "txid_str"];
+
+    /// The index of the output on the transaction.
     uint32 output_index = 3 [json_name = "output_index"];
 }
 
@@ -1386,6 +1415,27 @@ message PendingChannelsResponse {
     repeated WaitingCloseChannel waiting_close_channels = 5 [ json_name = "waiting_close_channels" ];
 }
 
+message ChannelEventSubscription {
+}
+
+message ChannelEventUpdate {
+    oneof channel {
+        Channel open_channel = 1 [ json_name = "open_channel" ];
+        ChannelCloseSummary closed_channel = 2 [ json_name = "closed_channel" ];
+        ChannelPoint active_channel = 3 [ json_name = "active_channel" ];
+        ChannelPoint inactive_channel = 4 [ json_name = "inactive_channel" ];
+    }
+
+    enum UpdateType {
+         OPEN_CHANNEL = 0;
+         CLOSED_CHANNEL = 1;
+         ACTIVE_CHANNEL = 2;
+         INACTIVE_CHANNEL = 3;
+    }
+
+    UpdateType type = 5 [ json_name = "type" ];
+}
+
 message WalletBalanceRequest {
 }
 message WalletBalanceResponse {
@@ -1806,6 +1856,7 @@ message Invoice {
     enum InvoiceState {
         OPEN = 0;
         SETTLED = 1;
+        CANCELED = 2;
     }
 
     /**

@@ -13,6 +13,7 @@ public struct Invoice: Equatable {
     public enum State {
         case settled
         case open
+        case canceled
         
         init?(state: LNDInvoice_InvoiceState) {
             switch state {
@@ -22,6 +23,8 @@ public struct Invoice: Equatable {
                 self = .open
             case .settled:
                 self = .settled
+            case .canceled:
+                self = .canceled
             }
         }
     }
@@ -46,7 +49,7 @@ extension Invoice {
         case .settled:
             amount = Satoshi(invoice.amtPaidSat)
             settleDate = Date(timeIntervalSince1970: TimeInterval(invoice.settleDate))
-        case .open:
+        case .open, .canceled:
             amount = Satoshi(invoice.value)
             settleDate = nil
         }
