@@ -53,10 +53,7 @@
 "scene.settings.item.on_chain_request_address.p2sh" = "P2SH";
 "scene.settings.item.manage_channels" = "Beheer kanalen";
 "scene.settings.item.node_uri" = "Node URI";
-"scene.settings.item.remove_remote_node" = "Logout";
-"scene.settings.item.remove_remote_node.confirmation.title" = "Verbinding verbreken met remote node?";
-"scene.settings.item.remove_remote_node.confirmation.message" = "Je zult achteraf opnieuw naar je node moeten verbinden.";
-"scene.settings.item.remove_remote_node.confirmation.button" = "Verbinding verbreken";
+"scene.settings.item.remove_remote_node" = "Manage Wallets";
 
 "scene.settings.item.change_pin" = "Verander pincode";
 "scene.settings.item.report_issue" = "Een probleem melden";
@@ -221,3 +218,5 @@
 "scene.connect_node_uri.action_sheet.title" = "Verbinding maken";
 "scene.connect_node_uri.action_sheet.connect_button" = "Verbinden";
 "scene.connect_node_uri.action_sheet.message" = "Weet je zeker dat je wil verbinden met node %@?";
+
+"scene.wallet_list.title" = "Wallets";
