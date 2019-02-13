@@ -55,6 +55,7 @@ final class WalletConfigurationStore {
     
     private init(data: CodableData?) {
         configurations = data?.configurations ?? []
+        sortConfigurations()
         selectedWallet = data?.selectedWallet
     }
     
@@ -90,6 +91,7 @@ final class WalletConfigurationStore {
             }
         }) else { return }
         configurations.append(walletConfiguration)
+        sortConfigurations()
         selectedWallet = walletConfiguration
         
         save()
@@ -110,6 +112,7 @@ final class WalletConfigurationStore {
         configurations.removeAll { $0.walletId == configuration.walletId }
         
         configurations.append(oldConfiguration.updatingInfo(info: info))
+        sortConfigurations()
         infoBag?.dispose()
         save()
     }
@@ -120,5 +123,9 @@ final class WalletConfigurationStore {
             let data = try? JSONEncoder().encode(codableData)
             else { return }
         keychain[data: WalletConfigurationStore.keychainWalletConfigurationKey] = data
+    }
+    
+    private func sortConfigurations() {
+        configurations.sort(by: { $0.alias ?? "" < $1.alias ?? "" })
     }
 }

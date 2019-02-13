@@ -267,6 +267,7 @@
 		ADDD13B62119CE740035D2F9 /* StackViewElement.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADDD13B52119CE740035D2F9 /* StackViewElement.swift */; };
 		ADDD13B92119CEB40035D2F9 /* UIStackView.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADDD13B82119CEB40035D2F9 /* UIStackView.swift */; };
 		ADDD13BB2119CF110035D2F9 /* CallbackButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADDD13BA2119CF110035D2F9 /* CallbackButton.swift */; };
+		ADEB619C2214588A009D5707 /* WalletListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADEB619B2214588A009D5707 /* WalletListViewController.swift */; };
 		ADEDA3CC21788CE50078FD91 /* NodeURISettingsItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADEDA3CB21788CE50078FD91 /* NodeURISettingsItem.swift */; };
 		ADEDA3CE217892A10078FD91 /* RequestQRCodeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADEDA3CD217892A10078FD91 /* RequestQRCodeViewModel.swift */; };
 		ADEDA3D12178938E0078FD91 /* NodeURIQRCodeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADEDA3D02178938E0078FD91 /* NodeURIQRCodeViewModel.swift */; };
@@ -776,6 +777,7 @@
 		ADE19C3F20E7892000340E2E /* ChannelPoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChannelPoint.swift; sourceTree = "<group>"; };
 		ADE4CF1C20B5B2BE007C987A /* UIFont.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIFont.swift; sourceTree = "<group>"; };
 		ADE4CF1E20B5B6FC007C987A /* Environment.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Environment.swift; sourceTree = "<group>"; };
+		ADEB619B2214588A009D5707 /* WalletListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WalletListViewController.swift; sourceTree = "<group>"; };
 		ADECC36820F257AF00D00546 /* Payment.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Payment.swift; sourceTree = "<group>"; };
 		ADECC36A20F257BE00D00546 /* Transaction.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Transaction.swift; sourceTree = "<group>"; };
 		ADEDA3CB21788CE50078FD91 /* NodeURISettingsItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NodeURISettingsItem.swift; sourceTree = "<group>"; };
@@ -957,6 +959,7 @@
 				ADCE01C4207B714E00CA72E8 /* Sync */,
 				AD667E4F2136B042007B9160 /* TimeLocked */,
 				AD7EDAE12108C4050058CCCA /* Wallet */,
+				ADEB619D22145892009D5707 /* WalletList */,
 			);
 			path = Scenes;
 			sourceTree = "<group>";
@@ -1720,6 +1723,14 @@
 				AD035BFB2174A030005EA785 /* ChannelTableViewCell.xib */,
 			);
 			path = Cell;
+			sourceTree = "<group>";
+		};
+		ADEB619D22145892009D5707 /* WalletList */ = {
+			isa = PBXGroup;
+			children = (
+				ADEB619B2214588A009D5707 /* WalletListViewController.swift */,
+			);
+			path = WalletList;
 			sourceTree = "<group>";
 		};
 		ADEDA3CF217893600078FD91 /* ViewModel */ = {
@@ -2745,6 +2756,7 @@
 				AD391C6720D16F89007EE22A /* LoadingViewController.swift in Sources */,
 				AD391CB920D16FA8007EE22A /* SyncViewController.swift in Sources */,
 				AD391C5A20D16F7A007EE22A /* MnemonicPageViewController.swift in Sources */,
+				ADEB619C2214588A009D5707 /* WalletListViewController.swift in Sources */,
 				AD667E4921367A35007B9160 /* BackgroundCoordinator.swift in Sources */,
 				AD27B01C2100D7CF00F232A8 /* CertificateDetailCell.swift in Sources */,
 				AD391C3A20D16F0B007EE22A /* Environment.swift in Sources */,

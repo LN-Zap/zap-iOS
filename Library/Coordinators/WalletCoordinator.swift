@@ -16,18 +16,20 @@ final class WalletCoordinator: NSObject {
     private let channelListViewModel: ChannelListViewModel
     let historyViewModel: HistoryViewModel
     private let authenticationViewModel: AuthenticationViewModel
+    private let walletConfigurationStore: WalletConfigurationStore
     
     private weak var detailViewController: UINavigationController?
     private weak var disconnectWalletDelegate: DisconnectWalletDelegate?
     
     var route: Route?
     
-    init(rootViewController: RootViewController, lightningService: LightningService, disconnectWalletDelegate: DisconnectWalletDelegate, authenticationViewModel: AuthenticationViewModel) {
+    init(rootViewController: RootViewController, lightningService: LightningService, disconnectWalletDelegate: DisconnectWalletDelegate, authenticationViewModel: AuthenticationViewModel, walletConfigurationStore: WalletConfigurationStore) {
         self.rootViewController = rootViewController
         self.lightningService = lightningService
         self.disconnectWalletDelegate = disconnectWalletDelegate
         self.authenticationViewModel = authenticationViewModel
-        
+        self.walletConfigurationStore = walletConfigurationStore
+
         channelListViewModel = ChannelListViewModel(channelService: lightningService.channelService)
         historyViewModel = HistoryViewModel(historyService: lightningService.historyService)
     }
@@ -80,7 +82,7 @@ final class WalletCoordinator: NSObject {
     }
     
     private func presentMain() {
-        let tabBarController = RootTabBarController()
+        let tabBarController = RootTabBarController(presentWalletList: presentWalletList)
         
         tabBarController.viewControllers = [
             walletViewController(),
@@ -165,6 +167,12 @@ final class WalletCoordinator: NSObject {
     func presentRequest() {
         let viewModel = RequestViewModel(transactionService: lightningService.transactionService)
         let viewController = RequestViewController(viewModel: viewModel)
+        rootViewController.present(viewController, animated: true)
+    }
+    
+    private func presentWalletList() {
+        guard let disconnectWalletDelegate = disconnectWalletDelegate else { return }
+        let viewController = WalletListViewController(walletConfigurationStore: walletConfigurationStore, disconnectWalletDelegate: disconnectWalletDelegate)
         rootViewController.present(viewController, animated: true)
     }
     

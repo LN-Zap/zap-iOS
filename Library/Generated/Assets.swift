@@ -39,6 +39,7 @@ internal enum Asset {
   internal static let tabbarSettings = ImageAsset(name: "tabbar_settings")
   internal static let tabbarWallet = ImageAsset(name: "tabbar_wallet")
   internal static let iconSliders = ImageAsset(name: "icon-sliders")
+  internal static let iconCheckGreen = ImageAsset(name: "iconCheckGreen")
 }
 // swiftlint:enable identifier_name line_length nesting type_body_length type_name
 

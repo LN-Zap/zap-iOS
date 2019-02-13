@@ -18,16 +18,6 @@ final class RemoveRemoteNodeSettingsItem: SettingsItem {
     }
     
     func didSelectItem(from fromViewController: UIViewController) {
-        let alertController = UIAlertController(title: L10n.Scene.Settings.Item.RemoveRemoteNode.Confirmation.title, message: L10n.Scene.Settings.Item.RemoveRemoteNode.Confirmation.message, preferredStyle: .actionSheet)
-        
-        let cancelAlertAction = UIAlertAction(title: L10n.Generic.cancel, style: .cancel, handler: nil)
-        let disconnectAlertAction = UIAlertAction(title: L10n.Scene.Settings.Item.RemoveRemoteNode.Confirmation.button, style: .destructive) { [disconnectWalletDelegate] _ in
-            disconnectWalletDelegate?.disconnect()
-        }
-        
-        alertController.addAction(cancelAlertAction)
-        alertController.addAction(disconnectAlertAction)
-        
-        fromViewController.present(alertController, animated: true)
+        disconnectWalletDelegate?.disconnect()
     }
 }

@@ -75,7 +75,7 @@ public final class RootCoordinator {
 
         walletConfigurationStore.updateInfo(for: configuration, infoService: lightningService.infoService)
         
-        let walletCoordinator = WalletCoordinator(rootViewController: rootViewController, lightningService: lightningService, disconnectWalletDelegate: self, authenticationViewModel: authenticationViewModel)
+        let walletCoordinator = WalletCoordinator(rootViewController: rootViewController, lightningService: lightningService, disconnectWalletDelegate: self, authenticationViewModel: authenticationViewModel, walletConfigurationStore: walletConfigurationStore)
         self.currentCoordinator = walletCoordinator
         walletCoordinator.start()
     }
@@ -145,13 +145,17 @@ extension RootCoordinator: SetupCoordinatorDelegate {
 }
 
 extension RootCoordinator: DisconnectWalletDelegate {
-    func disconnect() {
+    func reconnect(walletConfiguration: WalletConfiguration?) {
         if let walletCoordinator = currentCoordinator as? WalletCoordinator {
             walletCoordinator.stop()
             currentCoordinator = nil
-            walletConfigurationStore.selectedWallet = nil
+            walletConfigurationStore.selectedWallet = walletConfiguration
             
             update()
         }
+    }
+    
+    func disconnect() {
+        reconnect(walletConfiguration: nil)
     }
 }

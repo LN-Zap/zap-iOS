@@ -8,8 +8,18 @@
 import UIKit
 
 class RootTabBarController: UITabBarController {
-
-    init() {
+    private let presentWalletList: (() -> Void)?
+    
+    override var viewControllers: [UIViewController]? {
+        didSet {
+            let gestureRecognizer = UILongPressGestureRecognizer(target: self, action: #selector(handleLongPress))
+            tabBar.addGestureRecognizer(gestureRecognizer)
+        }
+    }
+    
+    init(presentWalletList: @escaping () -> Void) {
+        self.presentWalletList = presentWalletList
+        
         super.init(nibName: nil, bundle: nil)
         
         tabBar.barTintColor = UIColor.Zap.seaBlue
@@ -20,6 +30,15 @@ class RootTabBarController: UITabBarController {
     
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
+    }
+    
+    @objc func handleLongPress(_ recognizer: UILongPressGestureRecognizer) {
+        if (recognizer.state == .began),
+            let item = tabBar.items?.first,
+            let view = item.value(forKey: "view") as? UIView,
+            view.frame.contains(recognizer.location(in: tabBar)) {
+            presentWalletList?()
+        }
     }
 }
 

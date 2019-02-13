@@ -425,7 +425,7 @@ internal enum L10n {
         internal static let nodeUri = L10n.tr("Localizable", "scene.settings.item.node_uri")
         /// Privacy Policy
         internal static let privacyPolicy = L10n.tr("Localizable", "scene.settings.item.privacy_policy")
-        /// Logout
+        /// Manage Wallets
         internal static let removeRemoteNode = L10n.tr("Localizable", "scene.settings.item.remove_remote_node")
         /// Report an Issue
         internal static let reportIssue = L10n.tr("Localizable", "scene.settings.item.report_issue")
@@ -436,16 +436,6 @@ internal enum L10n {
           internal static let p2sh = L10n.tr("Localizable", "scene.settings.item.on_chain_request_address.p2sh")
           /// Bitcoin Address Type
           internal static let title = L10n.tr("Localizable", "scene.settings.item.on_chain_request_address.title")
-        }
-        internal enum RemoveRemoteNode {
-          internal enum Confirmation {
-            /// Disconnect
-            internal static let button = L10n.tr("Localizable", "scene.settings.item.remove_remote_node.confirmation.button")
-            /// You will have to reconnect to your node afterwards.
-            internal static let message = L10n.tr("Localizable", "scene.settings.item.remove_remote_node.confirmation.message")
-            /// Disconnect Remote Node?
-            internal static let title = L10n.tr("Localizable", "scene.settings.item.remove_remote_node.confirmation.title")
-          }
         }
       }
       internal enum Section {
@@ -522,6 +512,10 @@ internal enum L10n {
     internal enum Wallet {
       /// Wallet
       internal static let title = L10n.tr("Localizable", "scene.wallet.title")
+    }
+    internal enum WalletList {
+      /// Wallets
+      internal static let title = L10n.tr("Localizable", "scene.wallet_list.title")
     }
   }
 

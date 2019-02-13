@@ -12,6 +12,7 @@ import UIKit
 
 protocol DisconnectWalletDelegate: class {
     func disconnect()
+    func reconnect(walletConfiguration: WalletConfiguration?)
 }
 
 final class SyncViewController: UIViewController {
