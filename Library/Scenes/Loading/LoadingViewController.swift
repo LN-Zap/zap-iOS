@@ -16,7 +16,7 @@ final class LoadingViewController: UIViewController {
     
     @IBOutlet private weak var infoLabel: UILabel!
     
-    fileprivate var message = Message.none
+    private var message = Message.none
     
     static func instantiate(message: LoadingViewController.Message) -> LoadingViewController {
         let viewController = StoryboardScene.Loading.initialScene.instantiate()

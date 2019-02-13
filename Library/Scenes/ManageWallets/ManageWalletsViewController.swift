@@ -12,9 +12,9 @@ final class ManageWalletsViewController: UIViewController {
     @IBOutlet private weak var tableView: UITableView!
     
     // swiftlint:disable implicitly_unwrapped_optional
-    fileprivate var addWalletButtonTapped: (() -> Void)!
-    fileprivate var walletConfigurationStore: WalletConfigurationStore!
-    fileprivate var connectWallet: ((WalletConfiguration) -> Void)!
+    private var addWalletButtonTapped: (() -> Void)!
+    private var walletConfigurationStore: WalletConfigurationStore!
+    private var connectWallet: ((WalletConfiguration) -> Void)!
     // swiftlint:enable implicitly_unwrapped_optional
 
     static func instantiate(addWalletButtonTapped: @escaping () -> Void, walletConfigurationStore: WalletConfigurationStore, connectWallet: @escaping (WalletConfiguration) -> Void) -> ManageWalletsViewController {

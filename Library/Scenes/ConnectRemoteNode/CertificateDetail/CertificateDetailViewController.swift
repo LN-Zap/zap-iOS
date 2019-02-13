@@ -8,7 +8,7 @@
 import Foundation
 
 final class CertificateDetailViewController: UITableViewController {
-    fileprivate var connectRemoteNodeViewModel: ConnectRemoteNodeViewModel?
+    private var connectRemoteNodeViewModel: ConnectRemoteNodeViewModel?
     
     static func instantiate(connectRemoteNodeViewModel: ConnectRemoteNodeViewModel) -> CertificateDetailViewController {
         let viewController = StoryboardScene.ConnectRemoteNode.certificateDetailViewController.instantiate()

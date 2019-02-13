@@ -24,8 +24,8 @@ final class SyncViewController: UIViewController {
     @IBOutlet private weak var navigationBar: UINavigationBar!
     @IBOutlet private weak var disconnectBarButton: UIBarButtonItem!
     
-    fileprivate var lightningService: LightningService?
-    fileprivate weak var delegate: DisconnectWalletDelegate?
+    private var lightningService: LightningService?
+    private weak var delegate: DisconnectWalletDelegate?
 
     private var syncPercentageEstimator: SyncPercentageEstimator?
     

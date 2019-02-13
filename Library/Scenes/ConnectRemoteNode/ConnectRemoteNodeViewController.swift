@@ -85,9 +85,9 @@ final class ConnectCellBond: TableViewBinder<Observable2DArray<String?, ConnectR
 final class ConnectRemoteNodeViewController: UIViewController {
     @IBOutlet private weak var tableView: UITableView!
     
-    fileprivate var presentQRCodeScannerButtonTapped: (() -> Void)?
-    fileprivate var didSetupWallet: ((WalletConfiguration) -> Void)?
-    fileprivate var connectRemoteNodeViewModel: ConnectRemoteNodeViewModel?
+    private var presentQRCodeScannerButtonTapped: (() -> Void)?
+    private var didSetupWallet: ((WalletConfiguration) -> Void)?
+    private var connectRemoteNodeViewModel: ConnectRemoteNodeViewModel?
     
     private var isConnecting = false
     
@@ -120,7 +120,7 @@ final class ConnectRemoteNodeViewController: UIViewController {
         }
     }
     
-    fileprivate func presentHelp() {
+    private func presentHelp() {
         guard let url = URL(string: L10n.Link.Help.zapconnect) else { return }
         
         let safariViewController = SFSafariViewController(url: url)
@@ -129,7 +129,7 @@ final class ConnectRemoteNodeViewController: UIViewController {
         present(safariViewController, animated: true, completion: nil)
     }
     
-    fileprivate func connect(cell: UITableViewCell) {
+    private func connect(cell: UITableViewCell) {
         guard !isConnecting else { return }
         isConnecting = true
         

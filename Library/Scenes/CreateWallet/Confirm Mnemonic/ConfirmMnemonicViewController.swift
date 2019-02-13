@@ -16,8 +16,8 @@ final class ConfirmMnemonicViewController: UIViewController {
     @IBOutlet private weak var collectionView: UICollectionView!
     
     // swiftlint:disable implicitly_unwrapped_optional
-    fileprivate var confirmViewModel: ConfirmMnemonicViewModel!
-    fileprivate var connectWallet: ((WalletConfiguration) -> Void)!
+    private var confirmViewModel: ConfirmMnemonicViewModel!
+    private var connectWallet: ((WalletConfiguration) -> Void)!
     // swiftlint:enable implicitly_unwrapped_optional
 
     static func instantiate(confirmMnemonicViewModel: ConfirmMnemonicViewModel, connectWallet: @escaping (WalletConfiguration) -> Void) -> ConfirmMnemonicViewController {

@@ -10,7 +10,7 @@ import LndRpc
 import SwiftBTC
 
 public struct PaymentRequest: Equatable {
-    fileprivate struct PaymentDescription: Decodable {
+    private struct PaymentDescription: Decodable {
         let description: String
         
         private enum CodingKeys: String, CodingKey {

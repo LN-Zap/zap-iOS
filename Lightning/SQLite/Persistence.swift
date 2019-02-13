@@ -18,7 +18,7 @@ protocol Persistence {
     func setConnectedNode(connection: LightningConnection, pubKey: String)
 }
 
-fileprivate extension Connection {
+private extension Connection {
     func createTables() throws {
         try ConnectedNode.createTable(database: self)
         try TransactionEvent.createTable(database: self)

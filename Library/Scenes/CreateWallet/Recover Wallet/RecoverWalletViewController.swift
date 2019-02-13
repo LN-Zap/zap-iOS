@@ -15,8 +15,8 @@ final class RecoverWalletViewController: UIViewController {
     @IBOutlet private weak var doneButton: UIButton!
     
     // swiftlint:disable implicitly_unwrapped_optional
-    fileprivate var recoverWalletViewModel: RecoverWalletViewModel!
-    fileprivate var connectWallet: ((WalletConfiguration) -> Void)!
+    private var recoverWalletViewModel: RecoverWalletViewModel!
+    private var connectWallet: ((WalletConfiguration) -> Void)!
     // swiftlint:enable implicitly_unwrapped_optional
 
     static func instantiate(recoverWalletViewModel: RecoverWalletViewModel, connectWallet: @escaping (WalletConfiguration) -> Void) -> RecoverWalletViewController {

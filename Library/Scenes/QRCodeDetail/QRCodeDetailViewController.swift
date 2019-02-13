@@ -13,7 +13,7 @@ final class QRCodeDetailViewController: UIViewController {
     @IBOutlet private weak var copyButton: UIButton!
     @IBOutlet private weak var contentStackView: UIStackView!
     
-    fileprivate var viewModel: QRCodeDetailViewModel?
+    private var viewModel: QRCodeDetailViewModel?
     
     static func instantiate(with qrCodeDetailViewModel: QRCodeDetailViewModel) -> QRCodeDetailViewController {
         let viewController = StoryboardScene.QRCodeDetail.qrCodeDetailViewController.instantiate()

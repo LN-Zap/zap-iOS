@@ -15,8 +15,8 @@ final class MnemonicViewController: UIViewController {
     
     private weak var pageViewController: MnemonicPageViewController?
     
-    fileprivate var mnemonicViewModel: MnemonicViewModel?
-    fileprivate var presentConfirmMnemonic: (() -> Void)?
+    private var mnemonicViewModel: MnemonicViewModel?
+    private var presentConfirmMnemonic: (() -> Void)?
     
     static func instantiate(mnemonicViewModel: MnemonicViewModel, presentConfirmMnemonic: @escaping () -> Void) -> MnemonicViewController {
         let viewController = StoryboardScene.CreateWallet.mnemonicViewController.instantiate()

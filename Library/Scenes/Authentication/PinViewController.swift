@@ -13,7 +13,7 @@ final class PinViewController: UIViewController {
     @IBOutlet private weak var keyPadView: KeyPadPinView!
     @IBOutlet private weak var imageBottomConstraint: NSLayoutConstraint!
     
-    fileprivate var authenticationViewModel: AuthenticationViewModel?
+    private var authenticationViewModel: AuthenticationViewModel?
     
     override var preferredStatusBarStyle: UIStatusBarStyle { return .lightContent }
     

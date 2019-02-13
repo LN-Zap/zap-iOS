@@ -21,7 +21,7 @@ final class QRCodeScannerViewController: UIViewController {
     }
     @IBOutlet private weak var scannerViewOverlay: UIView!
 
-    fileprivate var strategy: QRCodeScannerStrategy? {
+    private var strategy: QRCodeScannerStrategy? {
         didSet {
             title = strategy?.title
         }

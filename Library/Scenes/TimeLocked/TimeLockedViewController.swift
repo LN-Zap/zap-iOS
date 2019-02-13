@@ -8,7 +8,7 @@
 import UIKit
 
 class TimeLockedViewController: UIViewController {
-    fileprivate var authenticationViewModel: AuthenticationViewModel?
+    private var authenticationViewModel: AuthenticationViewModel?
 
     @IBOutlet private weak var headlineLabel: UILabel!
     @IBOutlet private weak var descriptionLabel: UILabel!

@@ -10,7 +10,7 @@ import UIKit
 final class FilterViewController: UIViewController {
     @IBOutlet private weak var tableView: UITableView!
     
-    fileprivate var historyViewModel: HistoryViewModel?
+    private var historyViewModel: HistoryViewModel?
     
     let sections: [Section<FilterSetting>] = [
         Section(title: L10n.Scene.Filter.SectionHeader.transactionTypes, rows: [

@@ -12,7 +12,7 @@ import UIKit
 final class RemoteNodeCertificatesScannerViewController: UIViewController {
     @IBOutlet private weak var navigationBar: UINavigationBar!
     
-    fileprivate var connectRemoteNodeViewModel: ConnectRemoteNodeViewModel?
+    private var connectRemoteNodeViewModel: ConnectRemoteNodeViewModel?
     
     @IBOutlet private weak var scannerView: QRCodeScannerView! {
         didSet {

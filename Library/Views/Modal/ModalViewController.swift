@@ -20,7 +20,7 @@ class ModalViewController: UIViewController {
         setup()
     }
     
-    fileprivate func setup() {
+    private func setup() {
         modalPresentationManager = ModalPresentationManager()
         transitioningDelegate = modalPresentationManager
         modalPresentationStyle = .custom

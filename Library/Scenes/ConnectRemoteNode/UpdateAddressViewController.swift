@@ -11,7 +11,7 @@ final class UpdateAddressViewController: UITableViewController {
     @IBOutlet private weak var addressCell: UITableViewCell!
     @IBOutlet private weak var addressTextField: UITextField!
     
-    fileprivate var connectRemoteNodeViewModel: ConnectRemoteNodeViewModel?
+    private var connectRemoteNodeViewModel: ConnectRemoteNodeViewModel?
     
     static func instantiate(connectRemoteNodeViewModel: ConnectRemoteNodeViewModel) -> UpdateAddressViewController {
         let viewController = StoryboardScene.ConnectRemoteNode.updateAddressViewController.instantiate()

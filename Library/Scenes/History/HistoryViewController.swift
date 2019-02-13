@@ -13,10 +13,10 @@ final class HistoryViewController: UIViewController {
     @IBOutlet private weak var tableView: UITableView?
     @IBOutlet private weak var emptyStateLabel: UILabel!
     
-    fileprivate var historyViewModel: HistoryViewModel?
-    fileprivate var presentFilter: (() -> Void)?
-    fileprivate var presentDetail: ((HistoryEventType) -> Void)?
-    fileprivate var presentSend: ((String?) -> Void)?
+    private var historyViewModel: HistoryViewModel?
+    private var presentFilter: (() -> Void)?
+    private var presentDetail: ((HistoryEventType) -> Void)?
+    private var presentSend: ((String?) -> Void)?
 
     deinit {    
         tableView?.isEditing = false // fixes Bond bug. Binding is not released in editing mode.

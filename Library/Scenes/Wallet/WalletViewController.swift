@@ -52,9 +52,9 @@ final class WalletViewController: UIViewController {
     @IBOutlet private weak var requestButton: UIButton!
     @IBOutlet private weak var exchangeRateLabel: UILabel!
     
-    fileprivate var lightningService: LightningService?
-    fileprivate var sendButtonTapped: (() -> Void)?
-    fileprivate var requestButtonTapped: (() -> Void)?
+    private var lightningService: LightningService?
+    private var sendButtonTapped: (() -> Void)?
+    private var requestButtonTapped: (() -> Void)?
 
     private var graphDataSource: GraphViewDataSource?
     
@@ -169,7 +169,7 @@ final class WalletViewController: UIViewController {
     }
 }
 
-fileprivate extension Bitcoin {
+private extension Bitcoin {
     func attributedFormat(satoshis: Satoshi) -> NSAttributedString? {
         let formatter = SatoshiFormatter(unit: self)
         formatter.includeCurrencySymbol = false

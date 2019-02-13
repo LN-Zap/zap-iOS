@@ -12,9 +12,9 @@ import UIKit
 final class ChannelListViewController: UIViewController {
     @IBOutlet private weak var tableView: UITableView!
     
-    fileprivate var channelListViewModel: ChannelListViewModel?
-    fileprivate var addChannelButtonTapped: (() -> Void)?
-    fileprivate var presentChannelDetail: ((UIViewController, ChannelViewModel) -> Void)?
+    private var channelListViewModel: ChannelListViewModel?
+    private var addChannelButtonTapped: (() -> Void)?
+    private var presentChannelDetail: ((UIViewController, ChannelViewModel) -> Void)?
 
     static func instantiate(channelListViewModel: ChannelListViewModel, addChannelButtonTapped: @escaping () -> Void, presentChannelDetail: @escaping (UIViewController, ChannelViewModel) -> Void) -> UIViewController {
         let viewController = StoryboardScene.ChannelList.channelViewController.instantiate()

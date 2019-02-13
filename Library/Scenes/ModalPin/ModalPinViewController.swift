@@ -18,9 +18,9 @@ final class ModalPinViewController: ModalViewController, ContentHeightProviding 
     @IBOutlet private weak var headlineLabel: UILabel!
     @IBOutlet private weak var descriptionLabel: UILabel!
     
-    fileprivate var authenticationViewModel: AuthenticationViewModel?
-    fileprivate var window: UIWindow?
-    fileprivate var completion: ((Result<Success, AuthenticationError>) -> Void)?
+    private var authenticationViewModel: AuthenticationViewModel?
+    private var window: UIWindow?
+    private var completion: ((Result<Success, AuthenticationError>) -> Void)?
     
     var contentHeight: CGFloat? { return window?.bounds.height } // ContentHeightProviding
     

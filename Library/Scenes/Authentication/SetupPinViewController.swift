@@ -16,8 +16,8 @@ final class SetupPinViewController: UIViewController {
     @IBOutlet private weak var pinStackView: PinView!
     @IBOutlet private weak var keyPadView: KeyPadView!
     
-    fileprivate var setupPinViewModel: SetupPinViewModel?
-    fileprivate var didSetupPin: (() -> Void)?
+    private var setupPinViewModel: SetupPinViewModel?
+    private var didSetupPin: (() -> Void)?
     
     static func instantiate(setupPinViewModel: SetupPinViewModel, didSetupPin: @escaping () -> Void) -> SetupPinViewController {
         let setupPinViewController = StoryboardScene.NumericKeyPad.setupPinViewController.instantiate()

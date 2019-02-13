@@ -9,9 +9,9 @@ import SafariServices
 import UIKit
 
 final class SelectWalletCreationMethodViewController: UIViewController {
-    fileprivate var createButtonTapped: (() -> Void)?
-    fileprivate var recoverButtonTapped: (() -> Void)?
-    fileprivate var connectButtonTapped: (() -> Void)?
+    private var createButtonTapped: (() -> Void)?
+    private var recoverButtonTapped: (() -> Void)?
+    private var connectButtonTapped: (() -> Void)?
     
     @IBOutlet private weak var tableView: UITableView!
     
