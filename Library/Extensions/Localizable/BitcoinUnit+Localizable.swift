@@ -8,7 +8,7 @@
 import Foundation
 import SwiftBTC
 
-extension BitcoinUnit: Localizable {
+extension Bitcoin: Localizable {
     public var localized: String {
         switch self {
         case .bitcoin:

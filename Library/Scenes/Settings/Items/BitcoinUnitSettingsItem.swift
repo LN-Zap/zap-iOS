@@ -15,12 +15,7 @@ final class BitcoinUnitSelectionSettingsItem: DetailDisclosureSettingsItem, Subt
     let title = L10n.Scene.Settings.Item.bitcoinUnit
 
     func didSelectItem(from fromViewController: UIViewController) {
-        let items: [SettingsItem] = [
-            BitcoinUnitSettingsItem(currency: Bitcoin(unit: .bitcoin)),
-            BitcoinUnitSettingsItem(currency: Bitcoin(unit: .milliBitcoin)),
-            BitcoinUnitSettingsItem(currency: Bitcoin(unit: .bit)),
-            BitcoinUnitSettingsItem(currency: Bitcoin(unit: .satoshi))
-        ]
+        let items: [SettingsItem] = Bitcoin.allCases.map { BitcoinUnitSettingsItem(currency: $0) }
         let section = Section(title: nil, rows: items)
         
         let viewController = GroupedTableViewController(sections: [section])

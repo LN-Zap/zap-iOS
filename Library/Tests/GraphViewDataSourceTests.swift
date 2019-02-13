@@ -13,7 +13,7 @@ import XCTest
 
 final class GraphViewDataSourceTests: XCTestCase {
     let plot = DotPlot(identifier: "dots")
-    let currency = Bitcoin(unit: .satoshi)
+    let currency = Bitcoin.satoshi
     
     struct MockPlottableEvent: PlottableEvent {
         let amount: Satoshi

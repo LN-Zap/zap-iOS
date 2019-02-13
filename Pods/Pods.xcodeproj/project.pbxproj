@@ -34,7 +34,6 @@
 		02ECAD75B349A7CDC0114C558CFB3683 /* socket_utils_posix.h in Headers */ = {isa = PBXBuildFile; fileRef = DE8E226C3FFA20E775528E55AEAA4530 /* socket_utils_posix.h */; };
 		02FFC690C080675AEDCCB8B6C2FBEC0B /* p224-64.c in Sources */ = {isa = PBXBuildFile; fileRef = F6174880415BC92838BCCCEF9A026BBF /* p224-64.c */; settings = {COMPILER_FLAGS = "-DOPENSSL_NO_ASM -GCC_WARN_INHIBIT_ALL_WARNINGS -w -fno-objc-arc -w -Xanalyzer -analyzer-disable-all-checks"; }; };
 		0359953CBA63EF2C8DFEFE63545A67A4 /* ProtoRPC.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 551ABD413DCB69827516A18B94BE90C3 /* ProtoRPC.framework */; };
-		03C72767388432115FD98C30F017B099 /* Network.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B5BE58D8B23FEEABEBF9AD4D79BFCB0 /* Network.swift */; settings = {COMPILER_FLAGS = "-w -Xanalyzer -analyzer-disable-all-checks"; }; };
 		03D4C8F7E3896D7587BB66F18F9C1DE7 /* handshake.cc in Sources */ = {isa = PBXBuildFile; fileRef = 48C6E2D426D08E5015A9EF2C9642C30D /* handshake.cc */; settings = {COMPILER_FLAGS = "-DOPENSSL_NO_ASM -GCC_WARN_INHIBIT_ALL_WARNINGS -w -fno-objc-arc -w -Xanalyzer -analyzer-disable-all-checks"; }; };
 		03FB185B99CF603A00E07A7169599913 /* e_rc4.c in Sources */ = {isa = PBXBuildFile; fileRef = D1D2E986FF662399B417DAC86EA872B5 /* e_rc4.c */; settings = {COMPILER_FLAGS = "-DOPENSSL_NO_ASM -GCC_WARN_INHIBIT_ALL_WARNINGS -w -fno-objc-arc -w -Xanalyzer -analyzer-disable-all-checks"; }; };
 		041B77929E36A9AF020DB4F852B8BE34 /* thread.c in Sources */ = {isa = PBXBuildFile; fileRef = 5945534B099FB695769EB1C7EC136FB3 /* thread.c */; settings = {COMPILER_FLAGS = "-DOPENSSL_NO_ASM -GCC_WARN_INHIBIT_ALL_WARNINGS -w -fno-objc-arc -w -Xanalyzer -analyzer-disable-all-checks"; }; };
@@ -52,13 +51,11 @@
 		06BFE8ED8C8852A6E1E6849FC84EABB7 /* byte_buffer_reader.h in Copy . Public Headers */ = {isa = PBXBuildFile; fileRef = C7D5AF119BCE53B461C167E998717DB8 /* byte_buffer_reader.h */; };
 		06D8C405A04715FAF5CB760B0F9E886D /* openssl_grpc.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 55E1C27A0099FA832242934483AF4D75 /* openssl_grpc.framework */; };
 		06F4F1B0FC4F466D9F60903B5C1581A5 /* xds_load_balancer_api.h in Headers */ = {isa = PBXBuildFile; fileRef = 09650E5E6084E404C397E8A3AAFFA9D6 /* xds_load_balancer_api.h */; };
-		0720601DD7445E7A832B271FB18C4886 /* Bip39.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03E54EE6D46E20C54E5C7C16B1A7C324 /* Bip39.swift */; settings = {COMPILER_FLAGS = "-w -Xanalyzer -analyzer-disable-all-checks"; }; };
 		073A248E151E2B55D8A2A069BFBCEE80 /* metadata.cc in Sources */ = {isa = PBXBuildFile; fileRef = CBFF62DB7A2524820B30CEBCF381518E /* metadata.cc */; settings = {COMPILER_FLAGS = "-DGRPC_ARES=0 -DPB_FIELD_32BIT -DGRPC_SHADOW_BORINGSSL_SYMBOLS -fno-objc-arc -w -Xanalyzer -analyzer-disable-all-checks"; }; };
 		075D8E0403D2B6D2CEAB6456D9C776C3 /* log_posix.cc in Sources */ = {isa = PBXBuildFile; fileRef = 599337865FC2F638E8A192FE44264346 /* log_posix.cc */; settings = {COMPILER_FLAGS = "-DGRPC_ARES=0 -DPB_FIELD_32BIT -DGRPC_SHADOW_BORINGSSL_SYMBOLS -fno-objc-arc -w -Xanalyzer -analyzer-disable-all-checks"; }; };
 		078177D7022385F32C2CE514B4E5FA03 /* ssl_utils.h in Copy ../../src/core/lib/security/security_connector Private Headers */ = {isa = PBXBuildFile; fileRef = 1D0506FFB836F2BB19BC4C35C2908A0E /* ssl_utils.h */; };
 		078B91A6283F77E1B60D3B84BBD7ACE4 /* GRXConcurrentWriteable.m in Sources */ = {isa = PBXBuildFile; fileRef = A41E4CD25C2D433B2715E365F9D66023 /* GRXConcurrentWriteable.m */; settings = {COMPILER_FLAGS = "-w -Xanalyzer -analyzer-disable-all-checks"; }; };
 		07A503B9991EF349588B3A0CB446DD3D /* tls_gcc.h in Copy ../../src/core/lib/gpr Private Headers */ = {isa = PBXBuildFile; fileRef = 6174AB6F9CD701FA19F315C885870045 /* tls_gcc.h */; };
-		07C5C2C21A5467B3C2AF671F584AC0DC /* Currency.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8559ED1AB29B942FB63AC36753A021A /* Currency.swift */; settings = {COMPILER_FLAGS = "-w -Xanalyzer -analyzer-disable-all-checks"; }; };
 		08058EE7562093EB2887D0A8DF5797AD /* init.h in Headers */ = {isa = PBXBuildFile; fileRef = 5225E3AD5EBD177FB50ED23FC60C7B76 /* init.h */; };
 		08989BFEF60ABC825351837DEA23ECA1 /* internal.h in Copy ../../crypto/bytestring Private Headers */ = {isa = PBXBuildFile; fileRef = FEFF18F99B50FFC733C076FB856C29F4 /* internal.h */; };
 		08F3D50E9596B1308A8CD4D44B1BE2DC /* hpack_encoder.h in Headers */ = {isa = PBXBuildFile; fileRef = 99B58522A9A2A60C70BBBA9220172ECB /* hpack_encoder.h */; };
@@ -91,7 +88,6 @@
 		0C9AC3D2AF451BA25DAF3459337448D5 /* GPBRootObject.h in Headers */ = {isa = PBXBuildFile; fileRef = 5CDF74465C3680628FCCDC63A52ADD3B /* GPBRootObject.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		0CAE2C425D15133256893C5BCA095562 /* asn1_locl.h in Copy ../../crypto/asn1 Private Headers */ = {isa = PBXBuildFile; fileRef = 0FA7B681E8C8F33C3E473153542A53E7 /* asn1_locl.h */; };
 		0CB06D50B2899D23EC9C91CB66FAA1FB /* time_averaged_stats.cc in Sources */ = {isa = PBXBuildFile; fileRef = 9BA330134C578D069BC5A9573458AA2F /* time_averaged_stats.cc */; settings = {COMPILER_FLAGS = "-DGRPC_ARES=0 -DPB_FIELD_32BIT -DGRPC_SHADOW_BORINGSSL_SYMBOLS -fno-objc-arc -w -Xanalyzer -analyzer-disable-all-checks"; }; };
-		0CC94E08712189F9932363CF98224783 /* String.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76BCCE57EFDE34C19044F8742C80AB73 /* String.swift */; settings = {COMPILER_FLAGS = "-w -Xanalyzer -analyzer-disable-all-checks"; }; };
 		0CCD50E3FD849A8F6A96B56CA7820708 /* fake_security_connector.h in Headers */ = {isa = PBXBuildFile; fileRef = 07C91EC72E5CB86CA85B2E798940D70C /* fake_security_connector.h */; };
 		0CD6FCCFD9F40DED0BF2FAEE104A5265 /* GRPCClient.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BF317364AB05D55E188C5F5835C1557B /* GRPCClient.framework */; };
 		0D4FDCEE9DD9341FBF400B98883AD9A5 /* socket_utils.h in Headers */ = {isa = PBXBuildFile; fileRef = 1CB8324C7271E08FD81BC4EB26660459 /* socket_utils.h */; };
@@ -112,7 +108,6 @@
 		0EAA72EF1AF0630AF26AA34D66DFA9F8 /* pollset.h in Headers */ = {isa = PBXBuildFile; fileRef = 7E161ECD7A31E7C4D579A30FB194D2A7 /* pollset.h */; };
 		0EBE7F0E1F2928BDED132012E1F0E5B8 /* byte_buffer.h in Copy impl/codegen Public Headers */ = {isa = PBXBuildFile; fileRef = 8034A54689820B899440100B72376AE7 /* byte_buffer.h */; };
 		0ED6839059AB040C56F14101FD9B7293 /* x509_lu.c in Sources */ = {isa = PBXBuildFile; fileRef = 2DA02970AC5CCF0233931FE540C57A5D /* x509_lu.c */; settings = {COMPILER_FLAGS = "-DOPENSSL_NO_ASM -GCC_WARN_INHIBIT_ALL_WARNINGS -w -fno-objc-arc -w -Xanalyzer -analyzer-disable-all-checks"; }; };
-		0EECB31C04EC4236DEE40649BD7F9677 /* Satoshi.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F7B69DBA5FDCEFC888A58C4F6470367 /* Satoshi.swift */; settings = {COMPILER_FLAGS = "-w -Xanalyzer -analyzer-disable-all-checks"; }; };
 		0F274716B5ABAA6409EAC507DA541BD3 /* tasn_utl.c in Sources */ = {isa = PBXBuildFile; fileRef = 19B1895F96A13B6B2A4E88CB4500EE2A /* tasn_utl.c */; settings = {COMPILER_FLAGS = "-DOPENSSL_NO_ASM -GCC_WARN_INHIBIT_ALL_WARNINGS -w -fno-objc-arc -w -Xanalyzer -analyzer-disable-all-checks"; }; };
 		0F2BEDA84D35AA144F9FAE51E06A7AC9 /* check_gcp_environment_linux.cc in Sources */ = {isa = PBXBuildFile; fileRef = D1E97BD3E2D8F58BD20BF4D9821D726D /* check_gcp_environment_linux.cc */; settings = {COMPILER_FLAGS = "-DGRPC_ARES=0 -DPB_FIELD_32BIT -DGRPC_SHADOW_BORINGSSL_SYMBOLS -fno-objc-arc -w -Xanalyzer -analyzer-disable-all-checks"; }; };
 		0F618F46877C897F8D50BF922AA5AFC9 /* api_trace.h in Copy ../../src/core/lib/surface Private Headers */ = {isa = PBXBuildFile; fileRef = 0A0AA0E6D90DF2AD1184A591FB352920 /* api_trace.h */; };
@@ -177,7 +172,6 @@
 		16E4397F10E12899FD9DB9F1157F15EC /* ProtoRPC.m in Sources */ = {isa = PBXBuildFile; fileRef = 376576E2C3C04AE30195863F68E2293D /* ProtoRPC.m */; settings = {COMPILER_FLAGS = "-w -Xanalyzer -analyzer-disable-all-checks"; }; };
 		16F2EC805F36614D15B2AA5F572B95FA /* pem_oth.c in Sources */ = {isa = PBXBuildFile; fileRef = B962E5E4A45DC0488B4F784F4CD25294 /* pem_oth.c */; settings = {COMPILER_FLAGS = "-DOPENSSL_NO_ASM -GCC_WARN_INHIBIT_ALL_WARNINGS -w -fno-objc-arc -w -Xanalyzer -analyzer-disable-all-checks"; }; };
 		17304BB22345C0B68743B2975AB02EFF /* slice_hash_table.h in Headers */ = {isa = PBXBuildFile; fileRef = 59BE22E319AB211E354D80C5737936F2 /* slice_hash_table.h */; };
-		17974F7C5917173BFD4E076953029B2B /* LegacyBitcoinAddress.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65C800FED0BBE5FBDF7E52E8A119DA3F /* LegacyBitcoinAddress.swift */; settings = {COMPILER_FLAGS = "-w -Xanalyzer -analyzer-disable-all-checks"; }; };
 		17AF30D7027C302B0EBC4209B1DC2D9A /* gcd.c in Sources */ = {isa = PBXBuildFile; fileRef = 73F5DDD69CAF77015EDADF7DE5504122 /* gcd.c */; settings = {COMPILER_FLAGS = "-DOPENSSL_NO_ASM -GCC_WARN_INHIBIT_ALL_WARNINGS -w -fno-objc-arc -w -Xanalyzer -analyzer-disable-all-checks"; }; };
 		17BAAC7343B3C757C3CBA6E7A23C7104 /* x_pubkey.c in Sources */ = {isa = PBXBuildFile; fileRef = 8B8785CA6C3BCE10625CB4B9A1F1062B /* x_pubkey.c */; settings = {COMPILER_FLAGS = "-DOPENSSL_NO_ASM -GCC_WARN_INHIBIT_ALL_WARNINGS -w -fno-objc-arc -w -Xanalyzer -analyzer-disable-all-checks"; }; };
 		17C8D8EEA56255F8E424BA102381694B /* memory.h in Headers */ = {isa = PBXBuildFile; fileRef = 30AD6831E1E36DC2A39C54C1D7563788 /* memory.h */; };
@@ -259,7 +253,6 @@
 		1F538BDBAD0B33B7B20C9829DF8640FA /* t_req.c in Sources */ = {isa = PBXBuildFile; fileRef = 7463F0D932C98B2B4517B96695AE5216 /* t_req.c */; settings = {COMPILER_FLAGS = "-DOPENSSL_NO_ASM -GCC_WARN_INHIBIT_ALL_WARNINGS -w -fno-objc-arc -w -Xanalyzer -analyzer-disable-all-checks"; }; };
 		1F67EE5050B037321323EDFBBFB72189 /* error_utils.h in Headers */ = {isa = PBXBuildFile; fileRef = 9C5332D49C71D753A80F821BA14284FF /* error_utils.h */; };
 		1F71A32115D142F438813A64B47FB39A /* resolver.h in Copy ../../src/core/ext/filters/client_channel Private Headers */ = {isa = PBXBuildFile; fileRef = C9330CF0B132025C267AAF7338DEC300 /* resolver.h */; };
-		1FA2592767355C92B378A149A2BBC12F /* Bech32Address.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9BD14A82074C444E514F4CC889D27ED /* Bech32Address.swift */; settings = {COMPILER_FLAGS = "-w -Xanalyzer -analyzer-disable-all-checks"; }; };
 		1FAD4257A300AB6474DB5A06E35CC9F7 /* pkcs7.h in Headers */ = {isa = PBXBuildFile; fileRef = 8AB554505F2BFA79F0271F02113E511A /* pkcs7.h */; };
 		1FF3ED8691EF6CE6B304BD7F4141D472 /* aes.h in Copy . Public Headers */ = {isa = PBXBuildFile; fileRef = B2B55809B01297DCDC2BEB5941A7F6B5 /* aes.h */; };
 		1FFBA7A7B18D35C7C03F9206338DB7B5 /* stream_compression_identity.h in Copy ../../src/core/lib/compression Private Headers */ = {isa = PBXBuildFile; fileRef = 5B68689CD796D89A765465F120CF8AFC /* stream_compression_identity.h */; };
@@ -365,6 +358,7 @@
 		2CB8BBA6C694543347A0A8D60C551099 /* sync_posix.h in Headers */ = {isa = PBXBuildFile; fileRef = 05DBBD6917C155FAB9870B92D7482900 /* sync_posix.h */; };
 		2CBE45F3D733000E5A3FE8B40E1D8282 /* charmap.h in Copy ../../crypto/x509 Private Headers */ = {isa = PBXBuildFile; fileRef = 1737BF670920188A0F4FFE8F6760F6C1 /* charmap.h */; };
 		2CF24BD242B8DB169F23C9AFE27124A8 /* internal.h in Headers */ = {isa = PBXBuildFile; fileRef = 8573CDCA762751CB4F0AA4C9965276E3 /* internal.h */; };
+		2CF3B7D4EEC515E799F968BECE70DE94 /* BitcoinURI.swift in Sources */ = {isa = PBXBuildFile; fileRef = F67F30AD8FAD26D8CADF583D2D4B6395 /* BitcoinURI.swift */; settings = {COMPILER_FLAGS = "-w -Xanalyzer -analyzer-disable-all-checks"; }; };
 		2D22315E39992FA2F64CC72DA2AF82CF /* a_mbstr.c in Sources */ = {isa = PBXBuildFile; fileRef = 311CFA582BE8ADAEDB4139F930F4C4BB /* a_mbstr.c */; settings = {COMPILER_FLAGS = "-DOPENSSL_NO_ASM -GCC_WARN_INHIBIT_ALL_WARNINGS -w -fno-objc-arc -w -Xanalyzer -analyzer-disable-all-checks"; }; };
 		2D6641AA61B168F8BE4104E53A8D8337 /* iomgr_windows.cc in Sources */ = {isa = PBXBuildFile; fileRef = 06A9E3C9A855FE82F539DD5102E4642C /* iomgr_windows.cc */; settings = {COMPILER_FLAGS = "-DGRPC_ARES=0 -DPB_FIELD_32BIT -DGRPC_SHADOW_BORINGSSL_SYMBOLS -fno-objc-arc -w -Xanalyzer -analyzer-disable-all-checks"; }; };
 		2D767CB88190F93B99FCF7ADF6F0CAFF /* udp_server.h in Headers */ = {isa = PBXBuildFile; fileRef = E3DEE58D828768F76C2DE9EDE0E71997 /* udp_server.h */; };
@@ -432,7 +426,6 @@
 		360E97A277212A9BEA06BD852D2EF58B /* metadata.h in Headers */ = {isa = PBXBuildFile; fileRef = 5622B29E8FD492272E2BFCD8900E5C5D /* metadata.h */; };
 		3675C9783BBF0F3CF47B6CA947C1596A /* string_windows.h in Headers */ = {isa = PBXBuildFile; fileRef = B50BE760CC7158AE0414EA70F931012A /* string_windows.h */; };
 		36AA0EC30FFF1C06F9FC380A1B94C421 /* workaround_list.h in Headers */ = {isa = PBXBuildFile; fileRef = 9330505DC767AB24AB491531E5925D15 /* workaround_list.h */; };
-		36CCAB22063F3CE80E121D23BA738D99 /* PaymentURI.swift in Sources */ = {isa = PBXBuildFile; fileRef = C96421D085BC765054C1C0C8199DD181 /* PaymentURI.swift */; settings = {COMPILER_FLAGS = "-w -Xanalyzer -analyzer-disable-all-checks"; }; };
 		3707EAD4B995842EC740D045920E7A6E /* backup_poller.h in Headers */ = {isa = PBXBuildFile; fileRef = 7A03094DEB792679F5420E0471C57C14 /* backup_poller.h */; };
 		376E39239E0E824F1A1AC885A2237BAA /* resolve_address_posix.cc in Sources */ = {isa = PBXBuildFile; fileRef = 2ADBD1171C61ABD131B17C4BE95D743B /* resolve_address_posix.cc */; settings = {COMPILER_FLAGS = "-DGRPC_ARES=0 -DPB_FIELD_32BIT -DGRPC_SHADOW_BORINGSSL_SYMBOLS -fno-objc-arc -w -Xanalyzer -analyzer-disable-all-checks"; }; };
 		37792572B3DE57E9D1FE5CB1C10D484D /* deterministic.c in Sources */ = {isa = PBXBuildFile; fileRef = C3B0B50A7A7E8761743B6FD020CD52FF /* deterministic.c */; settings = {COMPILER_FLAGS = "-DOPENSSL_NO_ASM -GCC_WARN_INHIBIT_ALL_WARNINGS -w -fno-objc-arc -w -Xanalyzer -analyzer-disable-all-checks"; }; };
@@ -558,6 +551,7 @@
 		45B2CF44C2F3FE7DC02C69DD4723A3CD /* grpc_alts_credentials_server_options.cc in Sources */ = {isa = PBXBuildFile; fileRef = C22ADA3EDCF240F4E5E20F72DF1A98BC /* grpc_alts_credentials_server_options.cc */; settings = {COMPILER_FLAGS = "-DGRPC_ARES=0 -DPB_FIELD_32BIT -DGRPC_SHADOW_BORINGSSL_SYMBOLS -fno-objc-arc -w -Xanalyzer -analyzer-disable-all-checks"; }; };
 		45B60454A783FC742E996F8BD4E81F13 /* fork.h in Copy ../../src/core/lib/gprpp Private Headers */ = {isa = PBXBuildFile; fileRef = 760573371A9673774B38D807E90252C2 /* fork.h */; };
 		45D911001015287A52BD176CFA4B4747 /* env.h in Copy ../../src/core/lib/gpr Private Headers */ = {isa = PBXBuildFile; fileRef = DE334788DAD4BC827F225048091173D8 /* env.h */; };
+		4637209DC2C13490D0171E84D4487A92 /* Bech32.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4979F8A044E119022422EAC970BF2D9 /* Bech32.swift */; settings = {COMPILER_FLAGS = "-w -Xanalyzer -analyzer-disable-all-checks"; }; };
 		4658C8DE35C04F92769459848E488276 /* b64.h in Copy ../../src/core/lib/slice Private Headers */ = {isa = PBXBuildFile; fileRef = 6C591E3073668C73FB010A5986387C9A /* b64.h */; };
 		466553C341BD3D576969AD2F1F474E80 /* NSObject+KVO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C8B421FD520D352533446D260A2672D /* NSObject+KVO.swift */; settings = {COMPILER_FLAGS = "-w -Xanalyzer -analyzer-disable-all-checks"; }; };
 		46AA25CF0F98BF214E88821CED2886C3 /* alpn.h in Copy ../../src/core/ext/transport/chttp2/alpn Private Headers */ = {isa = PBXBuildFile; fileRef = 4F81FDE06EE8FD3094E38B055740C0A8 /* alpn.h */; };
@@ -570,7 +564,6 @@
 		473B68D7E4C2D6E7B39D2691A388B87B /* GPBDescriptor_PackagePrivate.h in Headers */ = {isa = PBXBuildFile; fileRef = C292DE6A43B3F8C3E16F359651288C7C /* GPBDescriptor_PackagePrivate.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		47575EBB3303FBF563D213483C0B7C24 /* slice_buffer.h in Copy . Public Headers */ = {isa = PBXBuildFile; fileRef = 747939AA8F43D2F2522A579679E03522 /* slice_buffer.h */; };
 		47713CAFF7C684A5747FE90D4F778BD4 /* format_request.h in Headers */ = {isa = PBXBuildFile; fileRef = BE9B6318357DB251E06CE9214008FC4B /* format_request.h */; };
-		479F23F5204C513E88FDD6203076815E /* BitcoinURI.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABF1D5E7943C828BA52F1CE8308C5CA0 /* BitcoinURI.swift */; settings = {COMPILER_FLAGS = "-w -Xanalyzer -analyzer-disable-all-checks"; }; };
 		47A26ED9C54A619856F3865DFDE47BBF /* gethostname.h in Copy ../../src/core/lib/iomgr Private Headers */ = {isa = PBXBuildFile; fileRef = DB23C8FB0DC2946354C240A4DBAE5583 /* gethostname.h */; };
 		47B5699C4B3B8B196533C105875C6E50 /* credentials_metadata.cc in Sources */ = {isa = PBXBuildFile; fileRef = 9BC91E8AD21B5E38CEC7284956804A24 /* credentials_metadata.cc */; settings = {COMPILER_FLAGS = "-DGRPC_ARES=0 -DPB_FIELD_32BIT -DGRPC_SHADOW_BORINGSSL_SYMBOLS -fno-objc-arc -w -Xanalyzer -analyzer-disable-all-checks"; }; };
 		47DABDB37B900311829BEDBF39DDA5C7 /* health_check_client.h in Headers */ = {isa = PBXBuildFile; fileRef = 6B6FBCBB8BB49EEE362966D6DB5A1E92 /* health_check_client.h */; };
@@ -591,7 +584,6 @@
 		4982FB56CAB76259E581BB586B37523C /* sync_windows.h in Copy impl/codegen Public Headers */ = {isa = PBXBuildFile; fileRef = 7A8D0C3169FA1FC3040C2B7760E7B0B4 /* sync_windows.h */; };
 		49931667CE25AE514D0A78B54AF0343F /* buf.c in Sources */ = {isa = PBXBuildFile; fileRef = 940460BDADBCF1A81C97F42A0F128DE2 /* buf.c */; settings = {COMPILER_FLAGS = "-DOPENSSL_NO_ASM -GCC_WARN_INHIBIT_ALL_WARNINGS -w -fno-objc-arc -w -Xanalyzer -analyzer-disable-all-checks"; }; };
 		49CBEAB9DD628458C553CDFA5143F009 /* internal.h in Copy ../../crypto/x509 Private Headers */ = {isa = PBXBuildFile; fileRef = F2239D8777389EDFAC46C021A2A10914 /* internal.h */; };
-		49DEC53DF85F12875F1F990DE8728579 /* Data.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3449FF20C4FC9B06736971E9353F704F /* Data.swift */; settings = {COMPILER_FLAGS = "-w -Xanalyzer -analyzer-disable-all-checks"; }; };
 		4A0176E4B289C64B040F9A0663C14458 /* resource_quota.h in Copy ../../src/core/lib/iomgr Private Headers */ = {isa = PBXBuildFile; fileRef = 3DDCA5FFA4F80688B4706AAD1DB29D65 /* resource_quota.h */; };
 		4A5CD09A319E960AC655873A06D3AB2C /* context_list.cc in Sources */ = {isa = PBXBuildFile; fileRef = 8D8F542D6E0E862621C655DF54B68C8C /* context_list.cc */; settings = {COMPILER_FLAGS = "-DGRPC_ARES=0 -DPB_FIELD_32BIT -DGRPC_SHADOW_BORINGSSL_SYMBOLS -fno-objc-arc -w -Xanalyzer -analyzer-disable-all-checks"; }; };
 		4A83C23A9C255DB2552CEC58D5B3C56A /* ssl_cipher.cc in Sources */ = {isa = PBXBuildFile; fileRef = 96801ED186B83C0890785937A98DCF29 /* ssl_cipher.cc */; settings = {COMPILER_FLAGS = "-DOPENSSL_NO_ASM -GCC_WARN_INHIBIT_ALL_WARNINGS -w -fno-objc-arc -w -Xanalyzer -analyzer-disable-all-checks"; }; };
@@ -724,7 +716,6 @@
 		5848A5CD3A2DEBCDBE2E7465FF82A389 /* alts_credentials.h in Headers */ = {isa = PBXBuildFile; fileRef = 5B147E8CB83AC0E1A3B24F6684F50ED8 /* alts_credentials.h */; };
 		5859A1BD381BF0E885DDDBD9FEDABF44 /* resolve_address.h in Headers */ = {isa = PBXBuildFile; fileRef = 378C6D5A352512B25FEB269104147228 /* resolve_address.h */; };
 		5867A9B8953744386A581EC4A7898D38 /* grpc.h in Headers */ = {isa = PBXBuildFile; fileRef = 2FDC5C16287E5FA8414F7986A0F9EBCF /* grpc.h */; };
-		5870A40BEE33CCDEE7A1A40E0C4DEF43 /* Bitcoin.swift in Sources */ = {isa = PBXBuildFile; fileRef = E041508950B238663FC3B0C3D9F8C941 /* Bitcoin.swift */; settings = {COMPILER_FLAGS = "-w -Xanalyzer -analyzer-disable-all-checks"; }; };
 		587B6345980FDB3CD7F78EED1C44467E /* cpu_posix.cc in Sources */ = {isa = PBXBuildFile; fileRef = 7C15750DFA1C77A59B0A591BE4652FAE /* cpu_posix.cc */; settings = {COMPILER_FLAGS = "-DGRPC_ARES=0 -DPB_FIELD_32BIT -DGRPC_SHADOW_BORINGSSL_SYMBOLS -fno-objc-arc -w -Xanalyzer -analyzer-disable-all-checks"; }; };
 		587CF38F1E40A1A012852BCDB90F2883 /* p_rsa_asn1.c in Sources */ = {isa = PBXBuildFile; fileRef = 160DDAB300746F9A3BF57F65D0C88AE1 /* p_rsa_asn1.c */; settings = {COMPILER_FLAGS = "-DOPENSSL_NO_ASM -GCC_WARN_INHIBIT_ALL_WARNINGS -w -fno-objc-arc -w -Xanalyzer -analyzer-disable-all-checks"; }; };
 		58EB5208448DA3C210A2673EB4482E68 /* transport_security.h in Headers */ = {isa = PBXBuildFile; fileRef = 178D792E5489ACC7E2C339AEAFA31739 /* transport_security.h */; };
@@ -778,7 +769,6 @@
 		5E9FACECB85DB743ABDCAA424C3697D3 /* load_balancer.pb.h in Copy ../../src/core/ext/filters/client_channel/lb_policy/grpclb/proto/grpc/lb/v1 Private Headers */ = {isa = PBXBuildFile; fileRef = 8B05B9C0D34237CC8F052747CF94570F /* load_balancer.pb.h */; };
 		5ED5757067034F3C516384BDB84EF88A /* sync.h in Copy impl/codegen Public Headers */ = {isa = PBXBuildFile; fileRef = 748D8FB38A228EAF0D45A338278BE5C3 /* sync.h */; };
 		5EDF2DAD0F76D36311DB169A7AC62A8F /* GRPCWrappedCall.h in Headers */ = {isa = PBXBuildFile; fileRef = 1F8C97DC9DFABAECE6C7F03A71F8E8E4 /* GRPCWrappedCall.h */; settings = {ATTRIBUTES = (Private, ); }; };
-		5EDFD93A2B8B36B33A9CCA0B3F067ACB /* FiatCurrency.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C77A8BE4F94F94760F16CA9A5735075 /* FiatCurrency.swift */; settings = {COMPILER_FLAGS = "-w -Xanalyzer -analyzer-disable-all-checks"; }; };
 		5EE7164173944113BE8A8557EAEFED69 /* Struct.pbobjc.m in Sources */ = {isa = PBXBuildFile; fileRef = CFCCD9BCBF83D123EE205DE5B6941CD6 /* Struct.pbobjc.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc -w -Xanalyzer -analyzer-disable-all-checks"; }; };
 		5F0081349B9AC309C602C6A52689BEDB /* lhash.c in Sources */ = {isa = PBXBuildFile; fileRef = 66F7ABBCD34475B9436332EB8B70EE4D /* lhash.c */; settings = {COMPILER_FLAGS = "-DOPENSSL_NO_ASM -GCC_WARN_INHIBIT_ALL_WARNINGS -w -fno-objc-arc -w -Xanalyzer -analyzer-disable-all-checks"; }; };
 		5F1F101295DA890C9A7F92F88C462106 /* alts_crypter.h in Copy ../../src/core/tsi/alts/frame_protector Private Headers */ = {isa = PBXBuildFile; fileRef = 9B9AAE4633E9516D3562666314C9214B /* alts_crypter.h */; };
@@ -791,7 +781,6 @@
 		5F84CF779295927EA310077256C72314 /* GPBBootstrap.h in Headers */ = {isa = PBXBuildFile; fileRef = CEEEF157A5F900443CC01F63F863876C /* GPBBootstrap.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		5F90E3AACE2D907271418C9F5A5D1402 /* xds_channel.h in Headers */ = {isa = PBXBuildFile; fileRef = F6107583E08FCADCD6CD70821F405640 /* xds_channel.h */; };
 		5F98ECECB9C07FBA81675AA9EABE628C /* GRPCChannel.h in Headers */ = {isa = PBXBuildFile; fileRef = 1F3BE5BCA0EA2EF1D05B46C31605D74D /* GRPCChannel.h */; settings = {ATTRIBUTES = (Private, ); }; };
-		5FA11A43DA0ABB2039CE7ED5EAA5C949 /* BitcoinAddress.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC5BC114ECCE99576F3CCD4F808986D6 /* BitcoinAddress.swift */; settings = {COMPILER_FLAGS = "-w -Xanalyzer -analyzer-disable-all-checks"; }; };
 		5FDC0A7FCE5CE5323C76F69C06C1860E /* e_ssl3.c in Sources */ = {isa = PBXBuildFile; fileRef = BADC225A6D7EDEEAAEF6FB5D7043CC52 /* e_ssl3.c */; settings = {COMPILER_FLAGS = "-DOPENSSL_NO_ASM -GCC_WARN_INHIBIT_ALL_WARNINGS -w -fno-objc-arc -w -Xanalyzer -analyzer-disable-all-checks"; }; };
 		6002891E57A11AE934AD4C669F859BA6 /* GRXNSFastEnumerator.m in Sources */ = {isa = PBXBuildFile; fileRef = 4DC137BEA8BCE137DD29AE57B84888C0 /* GRXNSFastEnumerator.m */; settings = {COMPILER_FLAGS = "-w -Xanalyzer -analyzer-disable-all-checks"; }; };
 		603EC85D41201A24864522F54EADE965 /* gpr_slice.h in Copy impl/codegen Public Headers */ = {isa = PBXBuildFile; fileRef = 6B45DEACAE83F49CC2CE87D31218A023 /* gpr_slice.h */; };
@@ -810,6 +799,7 @@
 		626E6C69B25321504F462CCBD92FF4CF /* FTS4.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9BC4C7341727DC4610DBCDDD841A42A /* FTS4.swift */; settings = {COMPILER_FLAGS = "-w -Xanalyzer -analyzer-disable-all-checks"; }; };
 		6289DBF8CDCAA47789BC94D00E74FCB2 /* slice.h in Headers */ = {isa = PBXBuildFile; fileRef = 5027C9A6A2182506D0FFE31D2CB3E840 /* slice.h */; };
 		628A62FD8F80D51E495A482DC70D2AB3 /* GRXConcurrentWriteable.h in Headers */ = {isa = PBXBuildFile; fileRef = 8161722D37297CA1E22F0359C8998369 /* GRXConcurrentWriteable.h */; };
+		62DD08D28211594326B07CFD5B892AC2 /* SatoshiFormatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D8CEC6E49EF1613EF33DF727DC388C5 /* SatoshiFormatter.swift */; settings = {COMPILER_FLAGS = "-w -Xanalyzer -analyzer-disable-all-checks"; }; };
 		6309C209CB29FA9C71CC8A1A1BEC2635 /* algorithm.c in Sources */ = {isa = PBXBuildFile; fileRef = 9A9E73C942CDE4FDF43CAD19DFCEAEC1 /* algorithm.c */; settings = {COMPILER_FLAGS = "-DOPENSSL_NO_ASM -GCC_WARN_INHIBIT_ALL_WARNINGS -w -fno-objc-arc -w -Xanalyzer -analyzer-disable-all-checks"; }; };
 		636AEB240C49F0175FD9D7AC91FE79F8 /* pcy_map.c in Sources */ = {isa = PBXBuildFile; fileRef = 5F4EC8CAC68E750134A03EAF5536B458 /* pcy_map.c */; settings = {COMPILER_FLAGS = "-DOPENSSL_NO_ASM -GCC_WARN_INHIBIT_ALL_WARNINGS -w -fno-objc-arc -w -Xanalyzer -analyzer-disable-all-checks"; }; };
 		6386453A98AEED8AD8A80773188555CD /* montgomery_inv.c in Sources */ = {isa = PBXBuildFile; fileRef = 12452E1E99480626BCF2760B0DA4BA91 /* montgomery_inv.c */; settings = {COMPILER_FLAGS = "-DOPENSSL_NO_ASM -GCC_WARN_INHIBIT_ALL_WARNINGS -w -fno-objc-arc -w -Xanalyzer -analyzer-disable-all-checks"; }; };
@@ -838,6 +828,7 @@
 		665AC46B4298C8FF10F2DDAB7DB2C2B6 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EAF11E63D74F7F1465F2932CCD4246EC /* Foundation.framework */; };
 		6666E7E0F961C46BA9C8799B31B3A8D7 /* UIProgressView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B9690949CF45C5FCAF8A3C598B4DB7A /* UIProgressView.swift */; settings = {COMPILER_FLAGS = "-w -Xanalyzer -analyzer-disable-all-checks"; }; };
 		66705AAE300233F8CBFB9D12C169075E /* div.c in Sources */ = {isa = PBXBuildFile; fileRef = F10A825F5F95911D11EEF00E57E59057 /* div.c */; settings = {COMPILER_FLAGS = "-DOPENSSL_NO_ASM -GCC_WARN_INHIBIT_ALL_WARNINGS -w -fno-objc-arc -w -Xanalyzer -analyzer-disable-all-checks"; }; };
+		669E8D91795556C533FE6B5E06D59431 /* SwiftBTC-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = A5E936EEA4BB77A594780406C0FA9EA1 /* SwiftBTC-dummy.m */; };
 		66E96323589CE2D46F2AF22CFEC0B7CD /* debug_location.h in Headers */ = {isa = PBXBuildFile; fileRef = 776307692EC52215129A0AE7BB230BB3 /* debug_location.h */; };
 		66EBCA3F0FE80F62B205F6C75BD31221 /* tls.h in Headers */ = {isa = PBXBuildFile; fileRef = 3B80C6F965FCC366110E334CA6200BB7 /* tls.h */; };
 		67AE8B2D6E23C5F24D9EB69F553DAE00 /* dtls_method.cc in Sources */ = {isa = PBXBuildFile; fileRef = 4DE39F24D50426A78B62300360B8749D /* dtls_method.cc */; settings = {COMPILER_FLAGS = "-DOPENSSL_NO_ASM -GCC_WARN_INHIBIT_ALL_WARNINGS -w -fno-objc-arc -w -Xanalyzer -analyzer-disable-all-checks"; }; };
@@ -914,6 +905,7 @@
 		702AA7512725CD73925C2B588F650426 /* parser.h in Headers */ = {isa = PBXBuildFile; fileRef = 33D1F1AD512809914B1485EEA35A1950 /* parser.h */; };
 		702E3C6A7ACD126B93858AB4E5CEA7C3 /* spake25519.c in Sources */ = {isa = PBXBuildFile; fileRef = 4E360C56440287731C177ACFB56BAC4D /* spake25519.c */; settings = {COMPILER_FLAGS = "-DOPENSSL_NO_ASM -GCC_WARN_INHIBIT_ALL_WARNINGS -w -fno-objc-arc -w -Xanalyzer -analyzer-disable-all-checks"; }; };
 		7095AC9331C4DB19D123CBA7A1C6E28E /* GCD.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CF3CF62099509F6F5ABB59E4A31A0AD /* GCD.swift */; settings = {COMPILER_FLAGS = "-w -Xanalyzer -analyzer-disable-all-checks"; }; };
+		711E071350D49405032B91BB09A04421 /* Bitcoin.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B614F87D2E022808D159A1A8680FD61 /* Bitcoin.swift */; settings = {COMPILER_FLAGS = "-w -Xanalyzer -analyzer-disable-all-checks"; }; };
 		711E3639BBBEA90F46DEC5D52BA72A80 /* chttp2_server.h in Copy ../../src/core/ext/transport/chttp2/server Private Headers */ = {isa = PBXBuildFile; fileRef = 5F33B395460E30CFFD650E7D68803935 /* chttp2_server.h */; };
 		715483D0BB5FE6DC0BC46318CADA761A /* iocp_windows.cc in Sources */ = {isa = PBXBuildFile; fileRef = 920FB54AC48595AE725702BF2034FC6E /* iocp_windows.cc */; settings = {COMPILER_FLAGS = "-DGRPC_ARES=0 -DPB_FIELD_32BIT -DGRPC_SHADOW_BORINGSSL_SYMBOLS -fno-objc-arc -w -Xanalyzer -analyzer-disable-all-checks"; }; };
 		715A9745DF5748763167EA371B1E9D56 /* timer_manager.cc in Sources */ = {isa = PBXBuildFile; fileRef = EFEC4038C8B4FAA789DC723263D079C8 /* timer_manager.cc */; settings = {COMPILER_FLAGS = "-DGRPC_ARES=0 -DPB_FIELD_32BIT -DGRPC_SHADOW_BORINGSSL_SYMBOLS -fno-objc-arc -w -Xanalyzer -analyzer-disable-all-checks"; }; };
@@ -960,7 +952,6 @@
 		76CA4ECD84BE69BDE42AC735CE36B71E /* Pods-RPC-Library-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 7AAF0AB7B05FEB0E4FC51398B44EF143 /* Pods-RPC-Library-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		775D41224B7E80E045250E1D84591AAF /* tcp_server.h in Headers */ = {isa = PBXBuildFile; fileRef = A9F9E3B0F20FE161295E874EDB23EFA8 /* tcp_server.h */; };
 		775EE257ADFF9783F71C2C259F9E9D69 /* unix_sockets_posix_noop.cc in Sources */ = {isa = PBXBuildFile; fileRef = 01BE40A2B0862AC9D57BDC950CB09A02 /* unix_sockets_posix_noop.cc */; settings = {COMPILER_FLAGS = "-DGRPC_ARES=0 -DPB_FIELD_32BIT -DGRPC_SHADOW_BORINGSSL_SYMBOLS -fno-objc-arc -w -Xanalyzer -analyzer-disable-all-checks"; }; };
-		77610CBD6A2571D975BA6E8F15E67BE3 /* Base58.swift in Sources */ = {isa = PBXBuildFile; fileRef = 665ED14FFF254E55122A5AD29D0AA606 /* Base58.swift */; settings = {COMPILER_FLAGS = "-w -Xanalyzer -analyzer-disable-all-checks"; }; };
 		77723EB74DF0D9ACF4D7CBE4288806DC /* cpu-arm-linux.c in Sources */ = {isa = PBXBuildFile; fileRef = FE9D66BB08690F9E53489F85333782EB /* cpu-arm-linux.c */; settings = {COMPILER_FLAGS = "-DOPENSSL_NO_ASM -GCC_WARN_INHIBIT_ALL_WARNINGS -w -fno-objc-arc -w -Xanalyzer -analyzer-disable-all-checks"; }; };
 		778C37FAD4921B23DBE20C267DB71382 /* tcp_server_utils_posix_noifaddrs.cc in Sources */ = {isa = PBXBuildFile; fileRef = 32068C929A8F9C88F3D4C2E9B0FBACF1 /* tcp_server_utils_posix_noifaddrs.cc */; settings = {COMPILER_FLAGS = "-DGRPC_ARES=0 -DPB_FIELD_32BIT -DGRPC_SHADOW_BORINGSSL_SYMBOLS -fno-objc-arc -w -Xanalyzer -analyzer-disable-all-checks"; }; };
 		779AA62768F1654E9C6702D128E72B81 /* network_status_tracker.cc in Sources */ = {isa = PBXBuildFile; fileRef = 539627E1D020063F64B748FAE8324A1A /* network_status_tracker.cc */; settings = {COMPILER_FLAGS = "-DGRPC_ARES=0 -DPB_FIELD_32BIT -DGRPC_SHADOW_BORINGSSL_SYMBOLS -fno-objc-arc -w -Xanalyzer -analyzer-disable-all-checks"; }; };
@@ -977,6 +968,7 @@
 		78FA78D7416A99B7C4C7D846A69045FF /* e_aesccm.c in Sources */ = {isa = PBXBuildFile; fileRef = B328B44DED7AFB9E2F7AF33081691F83 /* e_aesccm.c */; settings = {COMPILER_FLAGS = "-DOPENSSL_NO_ASM -GCC_WARN_INHIBIT_ALL_WARNINGS -w -fno-objc-arc -w -Xanalyzer -analyzer-disable-all-checks"; }; };
 		7901CBBDE406D09659F646EAEF21013E /* Collation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C3C2228FDBBAB843F1BC531F1FC1F65 /* Collation.swift */; settings = {COMPILER_FLAGS = "-w -Xanalyzer -analyzer-disable-all-checks"; }; };
 		79073B1E9CC93F530DC8814976756AF9 /* pkcs7.h in Copy . Public Headers */ = {isa = PBXBuildFile; fileRef = 8AB554505F2BFA79F0271F02113E511A /* pkcs7.h */; };
+		7909CB1B4B15C09CD90B79DE9D2612AF /* CurrencyConverter.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1ED43EE177092ECC29971BD7EFF2F9C /* CurrencyConverter.swift */; settings = {COMPILER_FLAGS = "-w -Xanalyzer -analyzer-disable-all-checks"; }; };
 		79361B98CEDCAC5C97D8B87281FBDD6E /* x509v3.h in Copy . Public Headers */ = {isa = PBXBuildFile; fileRef = 14ED112DB5358881B199F508C4655109 /* x509v3.h */; };
 		794A5EE42D52253623EF2FAF09A4F2CB /* mem.h in Copy . Public Headers */ = {isa = PBXBuildFile; fileRef = F37D1374132755B8F4F5BBDE9109952D /* mem.h */; };
 		794AB329037A40B472FB877E0C9A843C /* Shifts.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8DF23FB2154BFAB1AC7175D3E85549A /* Shifts.swift */; settings = {COMPILER_FLAGS = "-w -Xanalyzer -analyzer-disable-all-checks"; }; };
@@ -1050,6 +1042,7 @@
 		80B9A26B9E973814460D01BA9F157061 /* resolve_address_custom.cc in Sources */ = {isa = PBXBuildFile; fileRef = C06AD87B232BD4C0E0F805142052C9CA /* resolve_address_custom.cc */; settings = {COMPILER_FLAGS = "-DGRPC_ARES=0 -DPB_FIELD_32BIT -DGRPC_SHADOW_BORINGSSL_SYMBOLS -fno-objc-arc -w -Xanalyzer -analyzer-disable-all-checks"; }; };
 		80E35A4910B86BE9C1E14EC9DE0BC545 /* log_windows.cc in Sources */ = {isa = PBXBuildFile; fileRef = 5D9CABF4A68B6335BD128F639EBEAED3 /* log_windows.cc */; settings = {COMPILER_FLAGS = "-DGRPC_ARES=0 -DPB_FIELD_32BIT -DGRPC_SHADOW_BORINGSSL_SYMBOLS -fno-objc-arc -w -Xanalyzer -analyzer-disable-all-checks"; }; };
 		80FDDFDB2B54D3654CB5F6B79A966AA0 /* aead.h in Copy . Public Headers */ = {isa = PBXBuildFile; fileRef = EF90132466248101AC9421A54E265886 /* aead.h */; };
+		81485010B1AEA22272E2488413B5DA4D /* FiatCurrency.swift in Sources */ = {isa = PBXBuildFile; fileRef = 880C5D484C55560E41D1B74D96CC4C6C /* FiatCurrency.swift */; settings = {COMPILER_FLAGS = "-w -Xanalyzer -analyzer-disable-all-checks"; }; };
 		816C194B8EDE95AE1F8AE2251DCD48B6 /* grpc_ares_ev_driver.cc in Sources */ = {isa = PBXBuildFile; fileRef = 9B0565BAE554BD4C35E6952C80A4F263 /* grpc_ares_ev_driver.cc */; settings = {COMPILER_FLAGS = "-DGRPC_ARES=0 -DPB_FIELD_32BIT -DGRPC_SHADOW_BORINGSSL_SYMBOLS -fno-objc-arc -w -Xanalyzer -analyzer-disable-all-checks"; }; };
 		8171E6D7AF66AAD4C20AFC1AD0806839 /* QueryableDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60D8C4AEF1D7D4050C1F1E85B1F2EFA3 /* QueryableDataSource.swift */; settings = {COMPILER_FLAGS = "-w -Xanalyzer -analyzer-disable-all-checks"; }; };
 		817F62FC038E3D29A171282A101D4FC6 /* gpr_slice.h in Headers */ = {isa = PBXBuildFile; fileRef = 6B45DEACAE83F49CC2CE87D31218A023 /* gpr_slice.h */; };
@@ -1073,7 +1066,7 @@
 		83CF5050D643D4A1782B3DA1D0720685 /* internal.h in Headers */ = {isa = PBXBuildFile; fileRef = 15705A094E7BE51829BB82976485E0CE /* internal.h */; };
 		83E862FD522ECE76D71CBBEF79CB52CB /* Event.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45213859A218D2B24DFF5009DFF77298 /* Event.swift */; settings = {COMPILER_FLAGS = "-w -Xanalyzer -analyzer-disable-all-checks"; }; };
 		83FB9AA76C508EE10D0852E4D48F50C4 /* cpu.h in Copy . Public Headers */ = {isa = PBXBuildFile; fileRef = 681440D115EC1D6D05B1F60D58A3D04F /* cpu.h */; };
-		84238BDD82AA4923E0CA36CD1E21AFEC /* SwiftBTC-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 0AE5775A3FF1D008B4529F7F8AEFE816 /* SwiftBTC-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		84238BDD82AA4923E0CA36CD1E21AFEC /* SwiftBTC-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = FB2100EC3DD6B6ED3CFFC0336DAC7829 /* SwiftBTC-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		842B769594787875611828F8EA123680 /* UICollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C0656A5EDB4C1AB0FCE1B8E2CD9D38B /* UICollectionView.swift */; settings = {COMPILER_FLAGS = "-w -Xanalyzer -analyzer-disable-all-checks"; }; };
 		8492196AF1A7A8ACE87DC20E64B24410 /* workaround_utils.cc in Sources */ = {isa = PBXBuildFile; fileRef = E3CFEB7B5099C2AB43ADBFEA1CCC33EB /* workaround_utils.cc */; settings = {COMPILER_FLAGS = "-DGRPC_ARES=0 -DPB_FIELD_32BIT -DGRPC_SHADOW_BORINGSSL_SYMBOLS -fno-objc-arc -w -Xanalyzer -analyzer-disable-all-checks"; }; };
 		84B074F06CBDBBC90311ECBDE34B1787 /* base64.h in Copy . Public Headers */ = {isa = PBXBuildFile; fileRef = 4E603821CAA0492A45A6F7D3E9AF900A /* base64.h */; };
@@ -1099,6 +1092,7 @@
 		878E3EC51C8C67B36A3FF553C76118DF /* chttp2_transport.h in Headers */ = {isa = PBXBuildFile; fileRef = 832447155D89F89DA23BD96ED4B66F74 /* chttp2_transport.h */; };
 		87B4D95D2F6CDAFD8152F2564FD1EAB3 /* ecdsa.c in Sources */ = {isa = PBXBuildFile; fileRef = 46E82DF13D694164D97757B85D693FE2 /* ecdsa.c */; settings = {COMPILER_FLAGS = "-DOPENSSL_NO_ASM -GCC_WARN_INHIBIT_ALL_WARNINGS -w -fno-objc-arc -w -Xanalyzer -analyzer-disable-all-checks"; }; };
 		87B901612D23C10BF1FF574705F3EDD6 /* custom_extensions.cc in Sources */ = {isa = PBXBuildFile; fileRef = E045B075D4CA299710D5ACA59633E34B /* custom_extensions.cc */; settings = {COMPILER_FLAGS = "-DOPENSSL_NO_ASM -GCC_WARN_INHIBIT_ALL_WARNINGS -w -fno-objc-arc -w -Xanalyzer -analyzer-disable-all-checks"; }; };
+		87C60BAE09ED3462E5ED0F54429E3659 /* String.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4D200D733A1230EAF54565DD6A98B85 /* String.swift */; settings = {COMPILER_FLAGS = "-w -Xanalyzer -analyzer-disable-all-checks"; }; };
 		87C673502805B1E6D21703B5BD6D2DE9 /* e_aesgcmsiv.c in Sources */ = {isa = PBXBuildFile; fileRef = 83BC4973FBBBC085D2078DA5887415AA /* e_aesgcmsiv.c */; settings = {COMPILER_FLAGS = "-DOPENSSL_NO_ASM -GCC_WARN_INHIBIT_ALL_WARNINGS -w -fno-objc-arc -w -Xanalyzer -analyzer-disable-all-checks"; }; };
 		8814924AA69E6FA7A07AC9F1CC3124A6 /* dsa.h in Copy . Public Headers */ = {isa = PBXBuildFile; fileRef = 5F3920538FE2EF039F8EACF00C7DF71F /* dsa.h */; };
 		88177D48B05A087E1B76255BABCF51B1 /* wakeup_fd_cv.h in Copy ../../src/core/lib/iomgr Private Headers */ = {isa = PBXBuildFile; fileRef = 966AA63977EF0768CBB5343ED2F97794 /* wakeup_fd_cv.h */; };
@@ -1132,6 +1126,7 @@
 		8AE56C61AE64ABCCA70627B1D9410920 /* refcount_lock.c in Sources */ = {isa = PBXBuildFile; fileRef = CC3657644DD584D08CCDEFBFEE7FD41E /* refcount_lock.c */; settings = {COMPILER_FLAGS = "-DOPENSSL_NO_ASM -GCC_WARN_INHIBIT_ALL_WARNINGS -w -fno-objc-arc -w -Xanalyzer -analyzer-disable-all-checks"; }; };
 		8AF15BEAF2B6777860139DB17123A240 /* objects.h in Copy . Public Headers */ = {isa = PBXBuildFile; fileRef = 26CB6873393B7336B6B40860CE4A7078 /* objects.h */; };
 		8B01F75448566BDEF33624F98619B13B /* client_channel_factory.cc in Sources */ = {isa = PBXBuildFile; fileRef = A2EF6B33F523526498A83436C9E78127 /* client_channel_factory.cc */; settings = {COMPILER_FLAGS = "-DGRPC_ARES=0 -DPB_FIELD_32BIT -DGRPC_SHADOW_BORINGSSL_SYMBOLS -fno-objc-arc -w -Xanalyzer -analyzer-disable-all-checks"; }; };
+		8B2E886AF851019B099EB8D4FDAB068E /* PaymentURI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 431636277DC6043C4D1495AA89EAB87E /* PaymentURI.swift */; settings = {COMPILER_FLAGS = "-w -Xanalyzer -analyzer-disable-all-checks"; }; };
 		8B7DF03320008414C820A0CE64C73583 /* kdf.c in Sources */ = {isa = PBXBuildFile; fileRef = 91465A7AF42914F950095E88A03DEAD5 /* kdf.c */; settings = {COMPILER_FLAGS = "-DOPENSSL_NO_ASM -GCC_WARN_INHIBIT_ALL_WARNINGS -w -fno-objc-arc -w -Xanalyzer -analyzer-disable-all-checks"; }; };
 		8BA831C638DF7AE0BDE76C09A43C5FAE /* workaround_list.h in Copy support Public Headers */ = {isa = PBXBuildFile; fileRef = 9330505DC767AB24AB491531E5925D15 /* workaround_list.h */; };
 		8BB17062153696824BD7D587815A78C6 /* stats.cc in Sources */ = {isa = PBXBuildFile; fileRef = CF2BB3132DC4D5A75091E795A158FDA1 /* stats.cc */; settings = {COMPILER_FLAGS = "-DGRPC_ARES=0 -DPB_FIELD_32BIT -DGRPC_SHADOW_BORINGSSL_SYMBOLS -fno-objc-arc -w -Xanalyzer -analyzer-disable-all-checks"; }; };
@@ -1295,7 +1290,6 @@
 		A0A8FD0DD4A0F28E5CF5035300E30466 /* validate_metadata.h in Headers */ = {isa = PBXBuildFile; fileRef = 55992C94F4C79602457765330326D7AB /* validate_metadata.h */; };
 		A0DBAFE4E6F76D56C2D3F149966F7C49 /* curve25519_tables.h in Copy ../../third_party/fiat Public Headers */ = {isa = PBXBuildFile; fileRef = B65B9995F82B03D950C2F4401EDDB514 /* curve25519_tables.h */; };
 		A0F4148FCAA273C3D94D05B5F672C2DD /* err.h in Headers */ = {isa = PBXBuildFile; fileRef = 4AC5B1DC1C2A5C0A485A8D660A38A530 /* err.h */; };
-		A12226A32D89BEAB2441E90BF3F816F0 /* Decimal.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9AAF3C6028D8F9B0A72345225954DAC6 /* Decimal.swift */; settings = {COMPILER_FLAGS = "-w -Xanalyzer -analyzer-disable-all-checks"; }; };
 		A170032AC0F96F7095DA13ACA3C66D43 /* compression_types.h in Headers */ = {isa = PBXBuildFile; fileRef = 06046471C960B1114EA4E22E305B0AFC /* compression_types.h */; };
 		A198539E88D2D0129DF6CF203BB111C7 /* bytestring.h in Headers */ = {isa = PBXBuildFile; fileRef = 003D78210303D59C5ADA727882CECF19 /* bytestring.h */; };
 		A1AFE3D55AF330EA81F6219800213BF2 /* hpack_table.h in Headers */ = {isa = PBXBuildFile; fileRef = 37F6906947F509BA4112584C1F9A2848 /* hpack_table.h */; };
@@ -1426,7 +1420,6 @@
 		B39C955668B551795EE3955CB776D14B /* a_gentm.c in Sources */ = {isa = PBXBuildFile; fileRef = 9555C26A32D8A3B03CD9BD28CDBED28C /* a_gentm.c */; settings = {COMPILER_FLAGS = "-DOPENSSL_NO_ASM -GCC_WARN_INHIBIT_ALL_WARNINGS -w -fno-objc-arc -w -Xanalyzer -analyzer-disable-all-checks"; }; };
 		B3A4F8ACB0EA725DC375AD52BB2D9B3D /* v3_prn.c in Sources */ = {isa = PBXBuildFile; fileRef = 35C8CE93AE581680732D6A5DE9AC617F /* v3_prn.c */; settings = {COMPILER_FLAGS = "-DOPENSSL_NO_ASM -GCC_WARN_INHIBIT_ALL_WARNINGS -w -fno-objc-arc -w -Xanalyzer -analyzer-disable-all-checks"; }; };
 		B3CDE235B7D5F0B29F18AEAD8A46D08A /* deadline_filter.h in Copy ../../src/core/ext/filters/deadline Private Headers */ = {isa = PBXBuildFile; fileRef = E3158D99539EA937FE6D0F22E02939C0 /* deadline_filter.h */; };
-		B3D90EE5A05C9F1B70383101E2401F02 /* BitcoinUnit.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9444D7B091A7500C82908CDC259E0519 /* BitcoinUnit.swift */; settings = {COMPILER_FLAGS = "-w -Xanalyzer -analyzer-disable-all-checks"; }; };
 		B3ECC1492CD762E77B8CCA3148A46AE2 /* ExecutionContext.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCE10E5AD5B82B05C53C99A1A63F0C69 /* ExecutionContext.swift */; settings = {COMPILER_FLAGS = "-w -Xanalyzer -analyzer-disable-all-checks"; }; };
 		B3F9E3693534A6BFFA5A1B3CC0FF4F5B /* buffer_list.h in Headers */ = {isa = PBXBuildFile; fileRef = D604F8CB62BB4616B08FFBDBEA429F75 /* buffer_list.h */; };
 		B40BBD2523612DA3F3462FE5D073A4AF /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EAF11E63D74F7F1465F2932CCD4246EC /* Foundation.framework */; };
@@ -1544,6 +1537,7 @@
 		C37AD8E858DC8E8976AF852D6FE8C9B4 /* GRPCCall+OAuth2.h in Headers */ = {isa = PBXBuildFile; fileRef = 6602D9644D3CADE33F8300111F22B6A6 /* GRPCCall+OAuth2.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		C39FC9425530417D93E0B37A618E85A3 /* pollset_set.h in Copy ../../src/core/lib/iomgr Private Headers */ = {isa = PBXBuildFile; fileRef = DE5D3B44724920CEDADECEC9F10C5824 /* pollset_set.h */; };
 		C3D0D8569C4546F510CA5F9F12AAA40A /* thread_win.c in Sources */ = {isa = PBXBuildFile; fileRef = 3B8D47ABED979095C9D492110DA4C800 /* thread_win.c */; settings = {COMPILER_FLAGS = "-DOPENSSL_NO_ASM -GCC_WARN_INHIBIT_ALL_WARNINGS -w -fno-objc-arc -w -Xanalyzer -analyzer-disable-all-checks"; }; };
+		C3DAED4549045BBCBAA04EE158842FC0 /* Base58.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEA1177799C13235A1733145713707E2 /* Base58.swift */; settings = {COMPILER_FLAGS = "-w -Xanalyzer -analyzer-disable-all-checks"; }; };
 		C41B550DE18412E4AF0D027CBD755A47 /* tls1.h in Copy . Public Headers */ = {isa = PBXBuildFile; fileRef = 057F259193EF17D2B3661257B491B912 /* tls1.h */; };
 		C45C3EA762661B8F4CA479F0DF5961EC /* GPBRuntimeTypes.h in Headers */ = {isa = PBXBuildFile; fileRef = 0A72D3AF412E3DB7441F1BED4AB2E85B /* GPBRuntimeTypes.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		C467DAB386509AE1BC20E77F470F63A5 /* status.h in Headers */ = {isa = PBXBuildFile; fileRef = 9223E210CD7507847C9733C60E8DB00D /* status.h */; };
@@ -1645,6 +1639,7 @@
 		D046412CEEF53A4A1E4407557FAFE8B9 /* memory.h in Copy ../../src/core/lib/gprpp Private Headers */ = {isa = PBXBuildFile; fileRef = 30AD6831E1E36DC2A39C54C1D7563788 /* memory.h */; };
 		D053F5E42916F54EDCB76CB176E54BAD /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EAF11E63D74F7F1465F2932CCD4246EC /* Foundation.framework */; };
 		D06FE1417679F384BEB5D016D02903B7 /* ext_dat.h in Copy ../../crypto/x509v3 Private Headers */ = {isa = PBXBuildFile; fileRef = 7BC510C6937DC95D2F0D3D9144BE9D35 /* ext_dat.h */; };
+		D07663523A2C1F557BB16FF635099EBE /* Bip39.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4F086659FC14659CD63248116A4B0BA /* Bip39.swift */; settings = {COMPILER_FLAGS = "-w -Xanalyzer -analyzer-disable-all-checks"; }; };
 		D0982B7877772AAD20F9821E601EAEA0 /* v3_pmaps.c in Sources */ = {isa = PBXBuildFile; fileRef = 329EA236B6474B705FB307D0F8E3CA27 /* v3_pmaps.c */; settings = {COMPILER_FLAGS = "-DOPENSSL_NO_ASM -GCC_WARN_INHIBIT_ALL_WARNINGS -w -fno-objc-arc -w -Xanalyzer -analyzer-disable-all-checks"; }; };
 		D0DC51C6DD547E066584CD9C8FD969A2 /* mode_wrappers.c in Sources */ = {isa = PBXBuildFile; fileRef = CA9DD51C532C897C063703A958DEE391 /* mode_wrappers.c */; settings = {COMPILER_FLAGS = "-DOPENSSL_NO_ASM -GCC_WARN_INHIBIT_ALL_WARNINGS -w -fno-objc-arc -w -Xanalyzer -analyzer-disable-all-checks"; }; };
 		D0EEF598242C76672EAF8E6534B12F70 /* t1_enc.cc in Sources */ = {isa = PBXBuildFile; fileRef = 922188856416CAEFC7B82487E5B2F84D /* t1_enc.cc */; settings = {COMPILER_FLAGS = "-DOPENSSL_NO_ASM -GCC_WARN_INHIBIT_ALL_WARNINGS -w -fno-objc-arc -w -Xanalyzer -analyzer-disable-all-checks"; }; };
@@ -1678,6 +1673,7 @@
 		D41782F3A23B654F595885EBACAE1F02 /* GRPCCall+Tests.h in Headers */ = {isa = PBXBuildFile; fileRef = 2AADEF2440266978D58EB7FB9E86D6CE /* GRPCCall+Tests.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		D421C0D05F5544733CAE6A5CBC726F77 /* v3_pcons.c in Sources */ = {isa = PBXBuildFile; fileRef = 17D94E4A1FE1A4CB780E5DCCE6D6956F /* v3_pcons.c */; settings = {COMPILER_FLAGS = "-DOPENSSL_NO_ASM -GCC_WARN_INHIBIT_ALL_WARNINGS -w -fno-objc-arc -w -Xanalyzer -analyzer-disable-all-checks"; }; };
 		D42EF87CD7A669FA8253EBF0A0DEDF26 /* timers.h in Headers */ = {isa = PBXBuildFile; fileRef = 515339812C21AC1CA93EF8E969DE3261 /* timers.h */; };
+		D4459ABC8B1014DE520FF620BA8B6516 /* Currency.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E51D9F510949ED63D71B87B03FB0DBE /* Currency.swift */; settings = {COMPILER_FLAGS = "-w -Xanalyzer -analyzer-disable-all-checks"; }; };
 		D4497304AEDB3BBA9A4C449047B635C2 /* cbs.c in Sources */ = {isa = PBXBuildFile; fileRef = 926B0680811561BA6F52A17A550CA173 /* cbs.c */; settings = {COMPILER_FLAGS = "-DOPENSSL_NO_ASM -GCC_WARN_INHIBIT_ALL_WARNINGS -w -fno-objc-arc -w -Xanalyzer -analyzer-disable-all-checks"; }; };
 		D469675FBCB28A8A9052DFEF60BDC32E /* v3_bcons.c in Sources */ = {isa = PBXBuildFile; fileRef = 7E3A402F40E4DA54D9E346F67CDB49DC /* v3_bcons.c */; settings = {COMPILER_FLAGS = "-DOPENSSL_NO_ASM -GCC_WARN_INHIBIT_ALL_WARNINGS -w -fno-objc-arc -w -Xanalyzer -analyzer-disable-all-checks"; }; };
 		D4ECE54827394EB2E5A042C75E09BD24 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EAF11E63D74F7F1465F2932CCD4246EC /* Foundation.framework */; };
@@ -1730,6 +1726,7 @@
 		D994150004BE28B7E6D5744AAAAAA40C /* Pods-Zap-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 4735FF0E5B60B7216AE3524C230BAF48 /* Pods-Zap-dummy.m */; };
 		D9AF89A7CBFA0245FEED267B0EF7969E /* stream_map.h in Headers */ = {isa = PBXBuildFile; fileRef = 482C50F85015D48FD77A9F0608BD1AD0 /* stream_map.h */; };
 		D9AFE718667683EF8E504F05C381C2E8 /* security_handshaker.cc in Sources */ = {isa = PBXBuildFile; fileRef = BE75DDC057F7D9CCBEE003519B720F19 /* security_handshaker.cc */; settings = {COMPILER_FLAGS = "-DGRPC_ARES=0 -DPB_FIELD_32BIT -DGRPC_SHADOW_BORINGSSL_SYMBOLS -fno-objc-arc -w -Xanalyzer -analyzer-disable-all-checks"; }; };
+		D9B288D9A028A7D3E8F45D250675FC5D /* BitcoinAddress.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB1CACD52A88839851CF36D7835C96C8 /* BitcoinAddress.swift */; settings = {COMPILER_FLAGS = "-w -Xanalyzer -analyzer-disable-all-checks"; }; };
 		D9E85C7ED31E70ADB6BC4635DDDDDC54 /* ssl_types.h in Headers */ = {isa = PBXBuildFile; fileRef = FC446BB86915000BAB10EBBB2BC2051F /* ssl_types.h */; };
 		D9FCC77428F4F8BD0815BFD8C3A29CEE /* x_spki.c in Sources */ = {isa = PBXBuildFile; fileRef = 0DDFD8923228D11F777FE105233626CB /* x_spki.c */; settings = {COMPILER_FLAGS = "-DOPENSSL_NO_ASM -GCC_WARN_INHIBIT_ALL_WARNINGS -w -fno-objc-arc -w -Xanalyzer -analyzer-disable-all-checks"; }; };
 		D9FF16965EA2FF8783BC3BD9245B3804 /* Pods-LightningTests-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = DE108624E578BE73BB0B513C057C7FD8 /* Pods-LightningTests-dummy.m */; };
@@ -1749,6 +1746,7 @@
 		DB8EDC8F4E0F3B49EE70F0F2DAFDF058 /* thd_windows.cc in Sources */ = {isa = PBXBuildFile; fileRef = 0F2AAC352F93B1C7142A11FA53684BC6 /* thd_windows.cc */; settings = {COMPILER_FLAGS = "-DGRPC_ARES=0 -DPB_FIELD_32BIT -DGRPC_SHADOW_BORINGSSL_SYMBOLS -fno-objc-arc -w -Xanalyzer -analyzer-disable-all-checks"; }; };
 		DBA68EFD0A0312AB1222BFC21B2659F2 /* asn1t.h in Copy . Public Headers */ = {isa = PBXBuildFile; fileRef = E9590E57ACCB1E86218C0C372B12CDED /* asn1t.h */; };
 		DBB50B2437FFD61EBCC78FCBCA961C7C /* compression.cc in Sources */ = {isa = PBXBuildFile; fileRef = 87D508A00EF17B2A7B49B8749B317703 /* compression.cc */; settings = {COMPILER_FLAGS = "-DGRPC_ARES=0 -DPB_FIELD_32BIT -DGRPC_SHADOW_BORINGSSL_SYMBOLS -fno-objc-arc -w -Xanalyzer -analyzer-disable-all-checks"; }; };
+		DBCFDC685061A417A37DE062F3C67BFC /* Network.swift in Sources */ = {isa = PBXBuildFile; fileRef = 770F2A759FEFDED8D7C45C0379607DBF /* Network.swift */; settings = {COMPILER_FLAGS = "-w -Xanalyzer -analyzer-disable-all-checks"; }; };
 		DBD3BD4307D2D1C045767F5069936529 /* rand.c in Sources */ = {isa = PBXBuildFile; fileRef = DEB5AECB7612B05676228784C20C6A38 /* rand.c */; settings = {COMPILER_FLAGS = "-DOPENSSL_NO_ASM -GCC_WARN_INHIBIT_ALL_WARNINGS -w -fno-objc-arc -w -Xanalyzer -analyzer-disable-all-checks"; }; };
 		DC08720D2B7ECE870A355FCB519BEF27 /* cpu-intel.c in Sources */ = {isa = PBXBuildFile; fileRef = 7736B1E1716326A2CD91E99F4917C089 /* cpu-intel.c */; settings = {COMPILER_FLAGS = "-DOPENSSL_NO_ASM -GCC_WARN_INHIBIT_ALL_WARNINGS -w -fno-objc-arc -w -Xanalyzer -analyzer-disable-all-checks"; }; };
 		DC626864B7FFCEDABB97D00730FC57F0 /* umbrella.h in Copy . Public Headers */ = {isa = PBXBuildFile; fileRef = 8E48A4C7C7029058C7019E17B839F890 /* umbrella.h */; };
@@ -1821,7 +1819,6 @@
 		E5B1C0B32D2626CE15DF9B052CEECC7A /* internal.h in Copy ../../crypto/cipher_extra Private Headers */ = {isa = PBXBuildFile; fileRef = 5F3811FCEE0E6E0A1A2C76B438DEB60E /* internal.h */; };
 		E5D79547A5F8CB8FF3B14CEC3D161225 /* t_x509.c in Sources */ = {isa = PBXBuildFile; fileRef = 8391512064D071141E8FA9A6BD6E2EE8 /* t_x509.c */; settings = {COMPILER_FLAGS = "-DOPENSSL_NO_ASM -GCC_WARN_INHIBIT_ALL_WARNINGS -w -fno-objc-arc -w -Xanalyzer -analyzer-disable-all-checks"; }; };
 		E6057BD2ADDA5772DB32C36948B666DC /* endpoint.cc in Sources */ = {isa = PBXBuildFile; fileRef = 410729165D68743B4BC926E7AC584946 /* endpoint.cc */; settings = {COMPILER_FLAGS = "-DGRPC_ARES=0 -DPB_FIELD_32BIT -DGRPC_SHADOW_BORINGSSL_SYMBOLS -fno-objc-arc -w -Xanalyzer -analyzer-disable-all-checks"; }; };
-		E63C4125875350BB37A43360292D2857 /* SwiftBTC-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 5FF827A1B3DD05AE7818A7E02E1338AD /* SwiftBTC-dummy.m */; };
 		E676F347380B595E42CDDF8E25470491 /* tcp_client.cc in Sources */ = {isa = PBXBuildFile; fileRef = 6F8DCF1B6223E3E5802323983AB7903C /* tcp_client.cc */; settings = {COMPILER_FLAGS = "-DGRPC_ARES=0 -DPB_FIELD_32BIT -DGRPC_SHADOW_BORINGSSL_SYMBOLS -fno-objc-arc -w -Xanalyzer -analyzer-disable-all-checks"; }; };
 		E6A27FE18E48F10517BEC3E3FDD22CAC /* sync_custom.h in Copy support Public Headers */ = {isa = PBXBuildFile; fileRef = 744E217065403F7D022BB6A65EDAAC0B /* sync_custom.h */; };
 		E6B26EEBD11A4AC7D8E85C1D72E2B04C /* obj_xref.c in Sources */ = {isa = PBXBuildFile; fileRef = 5FF083E6C945E679C53C5BDF1515C431 /* obj_xref.c */; settings = {COMPILER_FLAGS = "-DOPENSSL_NO_ASM -GCC_WARN_INHIBIT_ALL_WARNINGS -w -fno-objc-arc -w -Xanalyzer -analyzer-disable-all-checks"; }; };
@@ -1882,6 +1879,7 @@
 		ECD5827054365F18B19E0E97AF7F4A77 /* secure_endpoint.h in Headers */ = {isa = PBXBuildFile; fileRef = 392458CBCC05C04510EDD6E4BCEBD1A4 /* secure_endpoint.h */; };
 		ECE4FB3B6715C52C72920B319D9825F0 /* grpc_ares_ev_driver.h in Headers */ = {isa = PBXBuildFile; fileRef = AFA642284D09D5701195FE3F47AE5B43 /* grpc_ares_ev_driver.h */; };
 		ED2AEE8BD11443991C1015A3E1C6EB1D /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EAF11E63D74F7F1465F2932CCD4246EC /* Foundation.framework */; };
+		ED2D8533DB869F193A7798ADEE08B5AA /* Decimal.swift in Sources */ = {isa = PBXBuildFile; fileRef = D67CE5D4DFF75B27638A35964C4DD553 /* Decimal.swift */; settings = {COMPILER_FLAGS = "-w -Xanalyzer -analyzer-disable-all-checks"; }; };
 		ED6C4D434B17473BC13C1D9AD1CED131 /* d1_lib.cc in Sources */ = {isa = PBXBuildFile; fileRef = AA8385FF7B2B5F83F7B5A6B509C4EDBA /* d1_lib.cc */; settings = {COMPILER_FLAGS = "-DOPENSSL_NO_ASM -GCC_WARN_INHIBIT_ALL_WARNINGS -w -fno-objc-arc -w -Xanalyzer -analyzer-disable-all-checks"; }; };
 		ED7661010123BAC272C8036F3DFD5343 /* tls_msvc.h in Copy ../../src/core/lib/gpr Private Headers */ = {isa = PBXBuildFile; fileRef = 2269D1704F40A7A4D22F6B28AB849E08 /* tls_msvc.h */; };
 		ED8BDA1095FFDC342B65D79A1F7CC7C4 /* local_transport_security.cc in Sources */ = {isa = PBXBuildFile; fileRef = 11DC5B7DB27CAEF544D32E5CD4D61EB3 /* local_transport_security.cc */; settings = {COMPILER_FLAGS = "-DGRPC_ARES=0 -DPB_FIELD_32BIT -DGRPC_SHADOW_BORINGSSL_SYMBOLS -fno-objc-arc -w -Xanalyzer -analyzer-disable-all-checks"; }; };
@@ -1932,6 +1930,7 @@
 		F376615ECDE2F283B98CFB8DAC30D5AB /* flow_control.h in Headers */ = {isa = PBXBuildFile; fileRef = 4CCC30E38E6D4FF0DD09F42ACB8EEA80 /* flow_control.h */; };
 		F37933D02EF29E462FE76BF3DF4A2C17 /* ex_data.h in Headers */ = {isa = PBXBuildFile; fileRef = 4EB98DF972782016D91FFCF26D79E37A /* ex_data.h */; };
 		F3883DBE7CFFFACE918B243D99DFEEA7 /* NSDictionary+GRPC.m in Sources */ = {isa = PBXBuildFile; fileRef = 5D47766FDB2BE735A6592EC3354994A7 /* NSDictionary+GRPC.m */; settings = {COMPILER_FLAGS = "-w -Xanalyzer -analyzer-disable-all-checks"; }; };
+		F38FC424195D9B834D02FFFA00C89DB5 /* Data.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AB1DAB524E31A0B249A338B2D3F7843 /* Data.swift */; settings = {COMPILER_FLAGS = "-w -Xanalyzer -analyzer-disable-all-checks"; }; };
 		F394A9E3E3F7A1D0DC247389FD3B3B4F /* GPBDescriptor.h in Headers */ = {isa = PBXBuildFile; fileRef = F09071FC4BD374B202B57676A95E966D /* GPBDescriptor.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		F3BE36A9DDDC27640AD7178DACF81E12 /* security_connector.cc in Sources */ = {isa = PBXBuildFile; fileRef = 848982C929D998DE607D9A3436F07C54 /* security_connector.cc */; settings = {COMPILER_FLAGS = "-DGRPC_ARES=0 -DPB_FIELD_32BIT -DGRPC_SHADOW_BORINGSSL_SYMBOLS -fno-objc-arc -w -Xanalyzer -analyzer-disable-all-checks"; }; };
 		F3CBDE9DA767EE82E967AF7CDE325B93 /* iomgr.h in Headers */ = {isa = PBXBuildFile; fileRef = 8793C9EB218BFBE4FE9A04611639CC79 /* iomgr.h */; };
@@ -1944,7 +1943,7 @@
 		F4EDC159E610A0A18A074CBE9E025B47 /* byte_stream.h in Copy ../../src/core/lib/transport Private Headers */ = {isa = PBXBuildFile; fileRef = A86522173304AF89C001B1108B04B2BF /* byte_stream.h */; };
 		F4EE7B2D495E3E03EBDF675092782C36 /* gRPC-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 687E9E7D5361257A3D48960D96C9640C /* gRPC-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		F4FFB0575BD891EA653E3E6FA11A0723 /* ev_posix.h in Copy ../../src/core/lib/iomgr Private Headers */ = {isa = PBXBuildFile; fileRef = 9A492AB5471493559A183505337BF679 /* ev_posix.h */; };
-		F520904957E0380400A8E3F1FD39260B /* Bech32.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E60A1E19B9B2673CF68BD35443FEAD3 /* Bech32.swift */; settings = {COMPILER_FLAGS = "-w -Xanalyzer -analyzer-disable-all-checks"; }; };
+		F52C6E6C0A6484E257A8F075DAD61A84 /* LegacyBitcoinAddress.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE2B823195065CAFB5FDB36D79F8A9DA /* LegacyBitcoinAddress.swift */; settings = {COMPILER_FLAGS = "-w -Xanalyzer -analyzer-disable-all-checks"; }; };
 		F52F7FF1FA02340D3BAE5A0621ECAB89 /* a_bool.c in Sources */ = {isa = PBXBuildFile; fileRef = F1493B12AEC46C36F45A1F760CDF6224 /* a_bool.c */; settings = {COMPILER_FLAGS = "-DOPENSSL_NO_ASM -GCC_WARN_INHIBIT_ALL_WARNINGS -w -fno-objc-arc -w -Xanalyzer -analyzer-disable-all-checks"; }; };
 		F5304C35EC4EF4B27A2A75131753803E /* subchannel_index.h in Copy ../../src/core/ext/filters/client_channel Private Headers */ = {isa = PBXBuildFile; fileRef = ADE9361A5EB181149FC81822A70305CE /* subchannel_index.h */; };
 		F534831FCB148F26328D5341E2E3B1AB /* ripemd.h in Copy . Public Headers */ = {isa = PBXBuildFile; fileRef = D55E9663F1FAFF95E05A51E278E4DCD3 /* ripemd.h */; };
@@ -1956,6 +1955,7 @@
 		F5FFA406EACB4790A86CA5B5941DBED8 /* trace.h in Copy ../../src/core/lib/debug Private Headers */ = {isa = PBXBuildFile; fileRef = D8EFB47AF8FC196574879A5E6DF9997C /* trace.h */; };
 		F605E55EA716562F7D16BDB88DB4B0BB /* alts_record_protocol_crypter_common.h in Headers */ = {isa = PBXBuildFile; fileRef = 8235BCC1AFB565C27B0FC1CACDADA7F5 /* alts_record_protocol_crypter_common.h */; };
 		F61953FA25FE6E57042E284B92F4EBE2 /* pkcs8.h in Headers */ = {isa = PBXBuildFile; fileRef = 31ECA332C6160C0BA06A742F39E21D64 /* pkcs8.h */; };
+		F63C773C1021B978EAF55DE5B3D80671 /* Bech32Address.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9221042C55E0A81A779DB5478C54F137 /* Bech32Address.swift */; settings = {COMPILER_FLAGS = "-w -Xanalyzer -analyzer-disable-all-checks"; }; };
 		F64561CF0E12C792465504086E62CBC7 /* ev_epoll1_linux.h in Copy ../../src/core/lib/iomgr Private Headers */ = {isa = PBXBuildFile; fileRef = 9F35EB4AB33F33E83B65708C3693D13B /* ev_epoll1_linux.h */; };
 		F6587EF4F16E5CB0B4A863B07DC08150 /* sync_windows.h in Headers */ = {isa = PBXBuildFile; fileRef = 7A8D0C3169FA1FC3040C2B7760E7B0B4 /* sync_windows.h */; };
 		F66327ECD8270D205C10F402A8E5A17E /* timer.cc in Sources */ = {isa = PBXBuildFile; fileRef = F1478F8CBC54EBE723D0BBBA0BF24774 /* timer.cc */; settings = {COMPILER_FLAGS = "-DGRPC_ARES=0 -DPB_FIELD_32BIT -DGRPC_SHADOW_BORINGSSL_SYMBOLS -fno-objc-arc -w -Xanalyzer -analyzer-disable-all-checks"; }; };
@@ -4344,7 +4344,6 @@
 		036E9043E10516CC8C633A5552969874 /* grpc_plugin_registry.cc */ = {isa = PBXFileReference; includeInIndex = 1; name = grpc_plugin_registry.cc; path = src/core/plugin_registry/grpc_plugin_registry.cc; sourceTree = "<group>"; };
 		038C415F21B23521B77774505D9DA74D /* x_x509.c */ = {isa = PBXFileReference; includeInIndex = 1; name = x_x509.c; path = crypto/x509/x_x509.c; sourceTree = "<group>"; };
 		03BE5976BA25A087230D1B5EAA5C0287 /* p_ec_asn1.c */ = {isa = PBXFileReference; includeInIndex = 1; name = p_ec_asn1.c; path = crypto/evp/p_ec_asn1.c; sourceTree = "<group>"; };
-		03E54EE6D46E20C54E5C7C16B1A7C324 /* Bip39.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Bip39.swift; path = SwiftBTC/Classes/Bip39.swift; sourceTree = "<group>"; };
 		03FEFC8027B2BD15144EE9D747A7B64F /* alts_tsi_handshaker.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = alts_tsi_handshaker.h; path = src/core/tsi/alts/handshaker/alts_tsi_handshaker.h; sourceTree = "<group>"; };
 		040544B42D271DE6CD474BF12D232DC1 /* secure_channel_create.cc */ = {isa = PBXFileReference; includeInIndex = 1; name = secure_channel_create.cc; path = src/core/ext/transport/chttp2/client/secure/secure_channel_create.cc; sourceTree = "<group>"; };
 		04E0F736CAFA10E2F4D30B710C4F9DA0 /* thd_posix.cc */ = {isa = PBXFileReference; includeInIndex = 1; name = thd_posix.cc; path = src/core/lib/gprpp/thd_posix.cc; sourceTree = "<group>"; };
@@ -4386,8 +4385,8 @@
 		0A72D3AF412E3DB7441F1BED4AB2E85B /* GPBRuntimeTypes.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = GPBRuntimeTypes.h; path = objectivec/GPBRuntimeTypes.h; sourceTree = "<group>"; };
 		0A753C176A45953D221F4CDCCDE76BCB /* chttp2_transport.cc */ = {isa = PBXFileReference; includeInIndex = 1; name = chttp2_transport.cc; path = src/core/ext/transport/chttp2/transport/chttp2_transport.cc; sourceTree = "<group>"; };
 		0AAE9C9AECD497034DCD65A56282BFE5 /* avl.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = avl.h; path = src/core/lib/avl/avl.h; sourceTree = "<group>"; };
+		0AB1DAB524E31A0B249A338B2D3F7843 /* Data.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Data.swift; path = SwiftBTC/Classes/Data.swift; sourceTree = "<group>"; };
 		0AD40BB1B8286696F298B3DC5606A280 /* stream_compression_identity.cc */ = {isa = PBXFileReference; includeInIndex = 1; name = stream_compression_identity.cc; path = src/core/lib/compression/stream_compression_identity.cc; sourceTree = "<group>"; };
-		0AE5775A3FF1D008B4529F7F8AEFE816 /* SwiftBTC-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "SwiftBTC-umbrella.h"; sourceTree = "<group>"; };
 		0AE9044FDFB50EA79736D7FC6AC446D2 /* cpu_linux.cc */ = {isa = PBXFileReference; includeInIndex = 1; name = cpu_linux.cc; path = src/core/lib/gpr/cpu_linux.cc; sourceTree = "<group>"; };
 		0AF6E9AD3C44DB3EC3A61FB06CBAC7A8 /* v3_cpols.c */ = {isa = PBXFileReference; includeInIndex = 1; name = v3_cpols.c; path = crypto/x509v3/v3_cpols.c; sourceTree = "<group>"; };
 		0B12589959E056CA759B3E6FBAF4C708 /* iomgr_internal.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = iomgr_internal.h; path = src/core/lib/iomgr/iomgr_internal.h; sourceTree = "<group>"; };
@@ -4608,6 +4607,7 @@
 		2E29B1FD6EFBC88C4D01F974D622F339 /* RandomUInt64.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = RandomUInt64.swift; path = SipHash/RandomUInt64.swift; sourceTree = "<group>"; };
 		2E41F6DAB160D5E4FE406AB5B738DDE0 /* channel_args.cc */ = {isa = PBXFileReference; includeInIndex = 1; name = channel_args.cc; path = src/core/lib/channel/channel_args.cc; sourceTree = "<group>"; };
 		2E4AC4F654DC05DFDE326602001FC0CD /* subchannel.cc */ = {isa = PBXFileReference; includeInIndex = 1; name = subchannel.cc; path = src/core/ext/filters/client_channel/subchannel.cc; sourceTree = "<group>"; };
+		2E51D9F510949ED63D71B87B03FB0DBE /* Currency.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Currency.swift; path = SwiftBTC/Classes/Currency.swift; sourceTree = "<group>"; };
 		2F0BF75ADC5D7E5062099B40600F5C6C /* version.cc */ = {isa = PBXFileReference; includeInIndex = 1; name = version.cc; path = src/core/lib/surface/version.cc; sourceTree = "<group>"; };
 		2F24FE1315F7B0683C4247C781833310 /* alts_tsi_utils.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = alts_tsi_utils.h; path = src/core/tsi/alts/handshaker/alts_tsi_utils.h; sourceTree = "<group>"; };
 		2F2B0DB332320991722EF1B190EB6EDF /* Property.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Property.swift; path = Sources/Property.swift; sourceTree = "<group>"; };
@@ -4647,7 +4647,6 @@
 		33F893B051AE62E8FA598559FC26ECF5 /* duration.pb.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = duration.pb.h; path = src/core/ext/filters/client_channel/lb_policy/grpclb/proto/grpc/lb/v1/google/protobuf/duration.pb.h; sourceTree = "<group>"; };
 		341668B10822716F782DDECBBFDEE27C /* server.cc */ = {isa = PBXFileReference; includeInIndex = 1; name = server.cc; path = src/core/lib/surface/server.cc; sourceTree = "<group>"; };
 		341B380EF8B6DF3E3A06E84D91954335 /* tcp_custom.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = tcp_custom.h; path = src/core/lib/iomgr/tcp_custom.h; sourceTree = "<group>"; };
-		3449FF20C4FC9B06736971E9353F704F /* Data.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Data.swift; path = SwiftBTC/Classes/Data.swift; sourceTree = "<group>"; };
 		34699004EFA8C6A43F0E21BFD8CA0788 /* f_string.c */ = {isa = PBXFileReference; includeInIndex = 1; name = f_string.c; path = crypto/asn1/f_string.c; sourceTree = "<group>"; };
 		3498034EF2C987D4C49D0549448BC867 /* asn1_gen.c */ = {isa = PBXFileReference; includeInIndex = 1; name = asn1_gen.c; path = crypto/x509/asn1_gen.c; sourceTree = "<group>"; };
 		34C07BC8F064B48790426EC6DB752050 /* Pods-Zap.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = "Pods-Zap.modulemap"; sourceTree = "<group>"; };
@@ -4700,9 +4699,11 @@
 		3BCEB91C4AD4F477D35B0ECB9162B06E /* SipHashable.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = SipHashable.swift; path = SipHash/SipHashable.swift; sourceTree = "<group>"; };
 		3C1BF3BDCE9BA356CB5E822201BD3DB8 /* compression_internal.cc */ = {isa = PBXFileReference; includeInIndex = 1; name = compression_internal.cc; path = src/core/lib/compression/compression_internal.cc; sourceTree = "<group>"; };
 		3CA7BDE2B260EB8C9820DAC76363A4C4 /* Plot.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Plot.swift; path = Classes/Plots/Plot.swift; sourceTree = "<group>"; };
+		3CDA2E11ACAFF81E92619FFDA7A64F0D /* SwiftBTC-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "SwiftBTC-prefix.pch"; sourceTree = "<group>"; };
 		3D4CF8DB5C119B035A1635402FD7CA3C /* x509_att.c */ = {isa = PBXFileReference; includeInIndex = 1; name = x509_att.c; path = crypto/x509/x509_att.c; sourceTree = "<group>"; };
 		3D52D5440E9FD1B5002B860BD46FDE60 /* nanopb-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "nanopb-dummy.m"; sourceTree = "<group>"; };
 		3D561FE72320CB748345DEF797EA1689 /* GPBUtilities_PackagePrivate.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = GPBUtilities_PackagePrivate.h; path = objectivec/GPBUtilities_PackagePrivate.h; sourceTree = "<group>"; };
+		3D8CEC6E49EF1613EF33DF727DC388C5 /* SatoshiFormatter.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = SatoshiFormatter.swift; path = SwiftBTC/Classes/SatoshiFormatter.swift; sourceTree = "<group>"; };
 		3DDCA5FFA4F80688B4706AAD1DB29D65 /* resource_quota.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = resource_quota.h; path = src/core/lib/iomgr/resource_quota.h; sourceTree = "<group>"; };
 		3E0066642B9B7AA2A288F53BE36A6833 /* hpack_encoder.cc */ = {isa = PBXFileReference; includeInIndex = 1; name = hpack_encoder.cc; path = src/core/ext/transport/chttp2/transport/hpack_encoder.cc; sourceTree = "<group>"; };
 		3E750D53281E2706A55B803394571D30 /* BigInt-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "BigInt-umbrella.h"; sourceTree = "<group>"; };
@@ -4737,6 +4738,7 @@
 		42912D9044138882E7A626E8245A9AB6 /* refcount_c11.c */ = {isa = PBXFileReference; includeInIndex = 1; name = refcount_c11.c; path = crypto/refcount_c11.c; sourceTree = "<group>"; };
 		42ACA0E648A588D217C84685685E5DD8 /* nanopb.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = nanopb.framework; path = nanopb.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		430E732AAF1643B34B540BE8692040A3 /* api_trace.cc */ = {isa = PBXFileReference; includeInIndex = 1; name = api_trace.cc; path = src/core/lib/surface/api_trace.cc; sourceTree = "<group>"; };
+		431636277DC6043C4D1495AA89EAB87E /* PaymentURI.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = PaymentURI.swift; path = SwiftBTC/Classes/PaymentURI.swift; sourceTree = "<group>"; };
 		43CF0DFD5AF61ED7659781FDB077E4C0 /* wakeup_fd_eventfd.cc */ = {isa = PBXFileReference; includeInIndex = 1; name = wakeup_fd_eventfd.cc; path = src/core/lib/iomgr/wakeup_fd_eventfd.cc; sourceTree = "<group>"; };
 		443B813F4F58BA43D67AE718023334C0 /* request_routing.cc */ = {isa = PBXFileReference; includeInIndex = 1; name = request_routing.cc; path = src/core/ext/filters/client_channel/request_routing.cc; sourceTree = "<group>"; };
 		4480EFEE95E66C8CD14657158DB843B9 /* transport_security.cc */ = {isa = PBXFileReference; includeInIndex = 1; name = transport_security.cc; path = src/core/tsi/transport_security.cc; sourceTree = "<group>"; };
@@ -4773,6 +4775,7 @@
 		4AED9AAC33A7B3AEC8C9D6C04503B6C9 /* http_client_filter.cc */ = {isa = PBXFileReference; includeInIndex = 1; name = http_client_filter.cc; path = src/core/ext/filters/http/client/http_client_filter.cc; sourceTree = "<group>"; };
 		4B112A2C8893CC8688CF0360ADE7DCA4 /* obj_mac.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = obj_mac.h; path = include/openssl/obj_mac.h; sourceTree = "<group>"; };
 		4B331E4E54370AFF2BB6497C5CFEAD4E /* UIActivityIndicatorView.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = UIActivityIndicatorView.swift; path = Sources/Bond/UIKit/UIActivityIndicatorView.swift; sourceTree = "<group>"; };
+		4B614F87D2E022808D159A1A8680FD61 /* Bitcoin.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Bitcoin.swift; path = SwiftBTC/Classes/Bitcoin.swift; sourceTree = "<group>"; };
 		4BB37EE177D6FE4D2D8C011BC8FE98FA /* md5.c */ = {isa = PBXFileReference; includeInIndex = 1; name = md5.c; path = crypto/fipsmodule/md5/md5.c; sourceTree = "<group>"; };
 		4BD0C5B2DC9230595735E1899FD456BE /* pem.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = pem.h; path = include/openssl/pem.h; sourceTree = "<group>"; };
 		4BE6F367B0EE8A594021F80D74BF3265 /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -4794,7 +4797,6 @@
 		4E04766F7B92F4205364F79FEF7391D2 /* channel_stack.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = channel_stack.h; path = src/core/lib/channel/channel_stack.h; sourceTree = "<group>"; };
 		4E360C56440287731C177ACFB56BAC4D /* spake25519.c */ = {isa = PBXFileReference; includeInIndex = 1; name = spake25519.c; path = crypto/curve25519/spake25519.c; sourceTree = "<group>"; };
 		4E603821CAA0492A45A6F7D3E9AF900A /* base64.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = base64.h; path = include/openssl/base64.h; sourceTree = "<group>"; };
-		4E60A1E19B9B2673CF68BD35443FEAD3 /* Bech32.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Bech32.swift; path = SwiftBTC/Classes/Bech32.swift; sourceTree = "<group>"; };
 		4E63AE035D739CEA8F3DA65C89940B59 /* load_balancer.pb.c */ = {isa = PBXFileReference; includeInIndex = 1; name = load_balancer.pb.c; path = src/core/ext/filters/client_channel/lb_policy/grpclb/proto/grpc/lb/v1/load_balancer.pb.c; sourceTree = "<group>"; };
 		4EB98DF972782016D91FFCF26D79E37A /* ex_data.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = ex_data.h; path = include/openssl/ex_data.h; sourceTree = "<group>"; };
 		4EC25E98DDF6198B0CE0BEAD228ECEAF /* CALayer.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = CALayer.swift; path = Sources/Bond/Shared/CALayer.swift; sourceTree = "<group>"; };
@@ -4802,7 +4804,6 @@
 		4EE9FBF62EA56B11858469C62957AABE /* pollset_custom.cc */ = {isa = PBXFileReference; includeInIndex = 1; name = pollset_custom.cc; path = src/core/lib/iomgr/pollset_custom.cc; sourceTree = "<group>"; };
 		4F4A845774076F8C5CCAB1E1CB1732E9 /* health_check_client.cc */ = {isa = PBXFileReference; includeInIndex = 1; name = health_check_client.cc; path = src/core/ext/filters/client_channel/health/health_check_client.cc; sourceTree = "<group>"; };
 		4F6A475104D41C46CCE35C683C41E451 /* Protobuf-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Protobuf-umbrella.h"; sourceTree = "<group>"; };
-		4F7B69DBA5FDCEFC888A58C4F6470367 /* Satoshi.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Satoshi.swift; path = SwiftBTC/Classes/Satoshi.swift; sourceTree = "<group>"; };
 		4F7C73009A93F750670B42E4EA0A0B1D /* tcp_client_posix.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = tcp_client_posix.h; path = src/core/lib/iomgr/tcp_client_posix.h; sourceTree = "<group>"; };
 		4F81FDE06EE8FD3094E38B055740C0A8 /* alpn.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = alpn.h; path = src/core/ext/transport/chttp2/alpn/alpn.h; sourceTree = "<group>"; };
 		4FD5B089DD8042B1890D2903D22126F4 /* gethostname_host_name_max.cc */ = {isa = PBXFileReference; includeInIndex = 1; name = gethostname_host_name_max.cc; path = src/core/lib/iomgr/gethostname_host_name_max.cc; sourceTree = "<group>"; };
@@ -4936,7 +4937,6 @@
 		5F751A9DD679AA1AE37CCD6540B2A6B6 /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		5F8649089DFCABFA2FB5901EC1D5AE51 /* call.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = call.h; path = src/core/lib/surface/call.h; sourceTree = "<group>"; };
 		5FF083E6C945E679C53C5BDF1515C431 /* obj_xref.c */ = {isa = PBXFileReference; includeInIndex = 1; name = obj_xref.c; path = crypto/obj/obj_xref.c; sourceTree = "<group>"; };
-		5FF827A1B3DD05AE7818A7E02E1338AD /* SwiftBTC-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "SwiftBTC-dummy.m"; sourceTree = "<group>"; };
 		6007FC143061C7625908DD7394EB9B14 /* LndRpc-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "LndRpc-dummy.m"; sourceTree = "<group>"; };
 		603A199CC0D001AB60BC663BE1B0A815 /* internal.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = internal.h; path = crypto/fipsmodule/bn/internal.h; sourceTree = "<group>"; };
 		60564ED839786A8F9CC6E4A1648F29A1 /* SipHash.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = SipHash.modulemap; sourceTree = "<group>"; };
@@ -4980,11 +4980,9 @@
 		6518CC82B9A47A11786734333039FAB3 /* v3_conf.c */ = {isa = PBXFileReference; includeInIndex = 1; name = v3_conf.c; path = crypto/x509v3/v3_conf.c; sourceTree = "<group>"; };
 		6545634386C90BC807B1AA975D1F9989 /* UISearchBar.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = UISearchBar.swift; path = Sources/Bond/UIKit/UISearchBar.swift; sourceTree = "<group>"; };
 		65C1D8CDC9D6BCAD12B892D6C26078FA /* x509_vpm.c */ = {isa = PBXFileReference; includeInIndex = 1; name = x509_vpm.c; path = crypto/x509/x509_vpm.c; sourceTree = "<group>"; };
-		65C800FED0BBE5FBDF7E52E8A119DA3F /* LegacyBitcoinAddress.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = LegacyBitcoinAddress.swift; path = SwiftBTC/Classes/LegacyBitcoinAddress.swift; sourceTree = "<group>"; };
 		6602D9644D3CADE33F8300111F22B6A6 /* GRPCCall+OAuth2.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "GRPCCall+OAuth2.h"; path = "src/objective-c/GRPCClient/GRPCCall+OAuth2.h"; sourceTree = "<group>"; };
 		66048248436581CFC1B81785AEADAD57 /* subchannel_list.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = subchannel_list.h; path = src/core/ext/filters/client_channel/lb_policy/subchannel_list.h; sourceTree = "<group>"; };
 		662E2ADD3DFD14DC253C50A90DB6F51A /* Duration.pbobjc.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = Duration.pbobjc.m; path = objectivec/google/protobuf/Duration.pbobjc.m; sourceTree = "<group>"; };
-		665ED14FFF254E55122A5AD29D0AA606 /* Base58.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Base58.swift; path = SwiftBTC/Classes/Base58.swift; sourceTree = "<group>"; };
 		66810C40C07EFFA2FBFC75AE89E9B59A /* GRXMappingWriter.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = GRXMappingWriter.m; path = "src/objective-c/RxLibrary/GRXMappingWriter.m"; sourceTree = "<group>"; };
 		668FF3C84E2F53513F30DFDE155B31DC /* internal.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = internal.h; path = crypto/pkcs8/internal.h; sourceTree = "<group>"; };
 		66A9385437D0917B71F4C5E1A97F3021 /* pollset_windows.cc */ = {isa = PBXFileReference; includeInIndex = 1; name = pollset_windows.cc; path = src/core/lib/iomgr/pollset_windows.cc; sourceTree = "<group>"; };
@@ -5101,8 +5099,8 @@
 		760573371A9673774B38D807E90252C2 /* fork.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = fork.h; path = src/core/lib/gprpp/fork.h; sourceTree = "<group>"; };
 		760AAB2E5F9D285A3C4793CDA0F55CC8 /* static_metadata.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = static_metadata.h; path = src/core/lib/transport/static_metadata.h; sourceTree = "<group>"; };
 		76340BDEA77AA2D888680A7D78ACF7A1 /* GRXWriter+Immediate.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = "GRXWriter+Immediate.m"; path = "src/objective-c/RxLibrary/GRXWriter+Immediate.m"; sourceTree = "<group>"; };
-		76BCCE57EFDE34C19044F8742C80AB73 /* String.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = String.swift; path = SwiftBTC/Classes/String.swift; sourceTree = "<group>"; };
 		76D3C1A27B68BCB5F12CE93F3ADEFB52 /* digests.c */ = {isa = PBXFileReference; includeInIndex = 1; name = digests.c; path = crypto/fipsmodule/digest/digests.c; sourceTree = "<group>"; };
+		770F2A759FEFDED8D7C45C0379607DBF /* Network.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Network.swift; path = SwiftBTC/Classes/Network.swift; sourceTree = "<group>"; };
 		7736B1E1716326A2CD91E99F4917C089 /* cpu-intel.c */ = {isa = PBXFileReference; includeInIndex = 1; name = "cpu-intel.c"; path = "crypto/cpu-intel.c"; sourceTree = "<group>"; };
 		7745EE4B67D11F7781FA63405E5EE79A /* fork.cc */ = {isa = PBXFileReference; includeInIndex = 1; name = fork.cc; path = src/core/lib/gprpp/fork.cc; sourceTree = "<group>"; };
 		776307692EC52215129A0AE7BB230BB3 /* debug_location.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = debug_location.h; path = src/core/lib/gprpp/debug_location.h; sourceTree = "<group>"; };
@@ -5123,8 +5121,6 @@
 		7AAF0AB7B05FEB0E4FC51398B44EF143 /* Pods-RPC-Library-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pods-RPC-Library-umbrella.h"; sourceTree = "<group>"; };
 		7AAFB2CDC6811CDE79FD103B5C9FAB68 /* a_bitstr.c */ = {isa = PBXFileReference; includeInIndex = 1; name = a_bitstr.c; path = crypto/asn1/a_bitstr.c; sourceTree = "<group>"; };
 		7AEAB04257070D19F5586C20B13C62D8 /* handshaker.pb.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = handshaker.pb.h; path = src/core/tsi/alts/handshaker/handshaker.pb.h; sourceTree = "<group>"; };
-		7B5BE58D8B23FEEABEBF9AD4D79BFCB0 /* Network.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Network.swift; path = SwiftBTC/Classes/Network.swift; sourceTree = "<group>"; };
-		7B5F2126DDE8B728B0FBD88119A92ECB /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		7B8798E073C9AFA0EBFD584A9E3EE653 /* Subtraction.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Subtraction.swift; path = sources/Subtraction.swift; sourceTree = "<group>"; };
 		7BC510C6937DC95D2F0D3D9144BE9D35 /* ext_dat.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = ext_dat.h; path = crypto/x509v3/ext_dat.h; sourceTree = "<group>"; };
 		7BDE995D0836D3054E245F2B7DB71AF0 /* handshaker_factory.cc */ = {isa = PBXFileReference; includeInIndex = 1; name = handshaker_factory.cc; path = src/core/lib/channel/handshaker_factory.cc; sourceTree = "<group>"; };
@@ -5192,7 +5188,6 @@
 		85C93057802E2957691FA42696D91528 /* p256.c */ = {isa = PBXFileReference; includeInIndex = 1; name = p256.c; path = third_party/fiat/p256.c; sourceTree = "<group>"; };
 		85F112E98AD1BD3C77F0FF7AB38CB642 /* b64.cc */ = {isa = PBXFileReference; includeInIndex = 1; name = b64.cc; path = src/core/lib/slice/b64.cc; sourceTree = "<group>"; };
 		8618B634249FD08F411BC38A688EB50F /* safestack.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = safestack.h; path = include/openssl/safestack.h; sourceTree = "<group>"; };
-		86563129F57C1E431761819F5E6116F2 /* SwiftBTC.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = SwiftBTC.modulemap; sourceTree = "<group>"; };
 		865E6530F9FD0C01F49FCEA4275D5985 /* log_linux.cc */ = {isa = PBXFileReference; includeInIndex = 1; name = log_linux.cc; path = src/core/lib/gpr/log_linux.cc; sourceTree = "<group>"; };
 		8663D628471BEE12C4D8C8FD5793AB47 /* server_auth_filter.cc */ = {isa = PBXFileReference; includeInIndex = 1; name = server_auth_filter.cc; path = src/core/lib/security/transport/server_auth_filter.cc; sourceTree = "<group>"; };
 		86669D113756255BC4AFFEAAF5434043 /* backoff.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = backoff.h; path = src/core/lib/backoff/backoff.h; sourceTree = "<group>"; };
@@ -5207,6 +5202,7 @@
 		87ED655FC9DE3A78B3C95C1B6AE9A9C9 /* tasn_dec.c */ = {isa = PBXFileReference; includeInIndex = 1; name = tasn_dec.c; path = crypto/asn1/tasn_dec.c; sourceTree = "<group>"; };
 		87F792FFB68278F5579E38F035FB5F72 /* Disposable.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Disposable.swift; path = Sources/Disposable.swift; sourceTree = "<group>"; };
 		87FFD90D4149AC640FDE540C12B73F28 /* grpc_alts_credentials_client_options.cc */ = {isa = PBXFileReference; includeInIndex = 1; name = grpc_alts_credentials_client_options.cc; path = src/core/lib/security/credentials/alts/grpc_alts_credentials_client_options.cc; sourceTree = "<group>"; };
+		880C5D484C55560E41D1B74D96CC4C6C /* FiatCurrency.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = FiatCurrency.swift; path = SwiftBTC/Classes/FiatCurrency.swift; sourceTree = "<group>"; };
 		885FB49CE24CEF838CE3F4A5FD35EFB1 /* digestsign.c */ = {isa = PBXFileReference; includeInIndex = 1; name = digestsign.c; path = crypto/evp/digestsign.c; sourceTree = "<group>"; };
 		886473B83C6F4F046CD5536C22AEAC77 /* GRXWriteable.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = GRXWriteable.h; path = "src/objective-c/RxLibrary/GRXWriteable.h"; sourceTree = "<group>"; };
 		88D5F37F5FC08F42E16B10704712DC8C /* Type.pbobjc.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = Type.pbobjc.m; path = objectivec/google/protobuf/Type.pbobjc.m; sourceTree = "<group>"; };
@@ -5241,7 +5237,6 @@
 		8C381434D608F0EBD2D57E3EC4824B5F /* channelz_registry.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = channelz_registry.h; path = src/core/lib/channel/channelz_registry.h; sourceTree = "<group>"; };
 		8C3EC4DBDF6E7F8F8B503200713BC843 /* t1_lib.cc */ = {isa = PBXFileReference; includeInIndex = 1; name = t1_lib.cc; path = ssl/t1_lib.cc; sourceTree = "<group>"; };
 		8C5AB7FF866FBDA12FD9AF636141DE53 /* GRXWriteable.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = GRXWriteable.m; path = "src/objective-c/RxLibrary/GRXWriteable.m"; sourceTree = "<group>"; };
-		8C77A8BE4F94F94760F16CA9A5735075 /* FiatCurrency.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = FiatCurrency.swift; path = SwiftBTC/Classes/FiatCurrency.swift; sourceTree = "<group>"; };
 		8C8684CFC684517735C2929EA64194A1 /* alts_unseal_privacy_integrity_crypter.cc */ = {isa = PBXFileReference; includeInIndex = 1; name = alts_unseal_privacy_integrity_crypter.cc; path = src/core/tsi/alts/frame_protector/alts_unseal_privacy_integrity_crypter.cc; sourceTree = "<group>"; };
 		8CD4F0533E3E90F1F02504005395D5EE /* grpc_ares_wrapper_windows.cc */ = {isa = PBXFileReference; includeInIndex = 1; name = grpc_ares_wrapper_windows.cc; path = src/core/ext/filters/client_channel/resolver/dns/c_ares/grpc_ares_wrapper_windows.cc; sourceTree = "<group>"; };
 		8D69B4831B2950AE67312EE5E375E597 /* BNDProtocolProxyBase.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = BNDProtocolProxyBase.h; path = Sources/BNDProtocolProxyBase/include/BNDProtocolProxyBase.h; sourceTree = "<group>"; };
@@ -5269,12 +5264,13 @@
 		90AA10C320A86C785FA8255F526CF074 /* Multiplication.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Multiplication.swift; path = sources/Multiplication.swift; sourceTree = "<group>"; };
 		90DC923474FCD2E01B662C3FE671C2F1 /* dh_asn1.c */ = {isa = PBXFileReference; includeInIndex = 1; name = dh_asn1.c; path = crypto/dh/dh_asn1.c; sourceTree = "<group>"; };
 		911C883DE99E7EB5B43465BD745BDCCA /* gRPC-ProtoRPC-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "gRPC-ProtoRPC-umbrella.h"; sourceTree = "<group>"; };
-		912EEE9E2F50A52F8C6291EF3C402D07 /* SwiftBTC.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = SwiftBTC.xcconfig; sourceTree = "<group>"; };
 		912FB305487407E33D03BF20FED695A9 /* connected_channel.cc */ = {isa = PBXFileReference; includeInIndex = 1; name = connected_channel.cc; path = src/core/lib/channel/connected_channel.cc; sourceTree = "<group>"; };
 		91465A7AF42914F950095E88A03DEAD5 /* kdf.c */ = {isa = PBXFileReference; includeInIndex = 1; name = kdf.c; path = crypto/fipsmodule/tls/kdf.c; sourceTree = "<group>"; };
+		91A37D1596BE90226B31B04E458C3974 /* SwiftBTC.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = SwiftBTC.xcconfig; sourceTree = "<group>"; };
 		91E016584C844CDD52A8B77CF674060D /* GRPCHost.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = GRPCHost.m; path = "src/objective-c/GRPCClient/private/GRPCHost.m"; sourceTree = "<group>"; };
 		91F505E4DCED49DF95F841B60F8516AD /* hpack_parser.cc */ = {isa = PBXFileReference; includeInIndex = 1; name = hpack_parser.cc; path = src/core/ext/transport/chttp2/transport/hpack_parser.cc; sourceTree = "<group>"; };
 		920FB54AC48595AE725702BF2034FC6E /* iocp_windows.cc */ = {isa = PBXFileReference; includeInIndex = 1; name = iocp_windows.cc; path = src/core/lib/iomgr/iocp_windows.cc; sourceTree = "<group>"; };
+		9221042C55E0A81A779DB5478C54F137 /* Bech32Address.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Bech32Address.swift; path = SwiftBTC/Classes/Bech32Address.swift; sourceTree = "<group>"; };
 		92211C0A9E022D3D0F2DB8F3B43B4F6E /* frame_rst_stream.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = frame_rst_stream.h; path = src/core/ext/transport/chttp2/transport/frame_rst_stream.h; sourceTree = "<group>"; };
 		922188856416CAEFC7B82487E5B2F84D /* t1_enc.cc */ = {isa = PBXFileReference; includeInIndex = 1; name = t1_enc.cc; path = ssl/t1_enc.cc; sourceTree = "<group>"; };
 		9223E210CD7507847C9733C60E8DB00D /* status.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = status.h; path = include/grpc/impl/codegen/status.h; sourceTree = "<group>"; };
@@ -5300,7 +5296,6 @@
 		93E151FEBCE67CAEEE5F721E3F3561BE /* Wrappers.pbobjc.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = Wrappers.pbobjc.h; path = objectivec/google/protobuf/Wrappers.pbobjc.h; sourceTree = "<group>"; };
 		940460BDADBCF1A81C97F42A0F128DE2 /* buf.c */ = {isa = PBXFileReference; includeInIndex = 1; name = buf.c; path = crypto/buf/buf.c; sourceTree = "<group>"; };
 		940F38D4C5E3EF15358F0F7364BA31FB /* Pods-Zap.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-Zap.debug.xcconfig"; sourceTree = "<group>"; };
-		9444D7B091A7500C82908CDC259E0519 /* BitcoinUnit.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = BitcoinUnit.swift; path = SwiftBTC/Classes/BitcoinUnit.swift; sourceTree = "<group>"; };
 		945FDEB7DF2C8738CCCB58BE23774BD6 /* AggregateFunctions.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = AggregateFunctions.swift; path = Sources/SQLite/Typed/AggregateFunctions.swift; sourceTree = "<group>"; };
 		9540A8EE10AA72F8516B662CA8BB939D /* resolver_registry.cc */ = {isa = PBXFileReference; includeInIndex = 1; name = resolver_registry.cc; path = src/core/ext/filters/client_channel/resolver_registry.cc; sourceTree = "<group>"; };
 		954BA488840F78DFAF4E7758907B01B5 /* stats_data.cc */ = {isa = PBXFileReference; includeInIndex = 1; name = stats_data.cc; path = src/core/lib/debug/stats_data.cc; sourceTree = "<group>"; };
@@ -5337,7 +5332,6 @@
 		9A492AB5471493559A183505337BF679 /* ev_posix.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = ev_posix.h; path = src/core/lib/iomgr/ev_posix.h; sourceTree = "<group>"; };
 		9A8425D4F5E6DAE01E14BA330FE09D4A /* atm_gcc_atomic.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = atm_gcc_atomic.h; path = include/grpc/impl/codegen/atm_gcc_atomic.h; sourceTree = "<group>"; };
 		9A9E73C942CDE4FDF43CAD19DFCEAEC1 /* algorithm.c */ = {isa = PBXFileReference; includeInIndex = 1; name = algorithm.c; path = crypto/x509/algorithm.c; sourceTree = "<group>"; };
-		9AAF3C6028D8F9B0A72345225954DAC6 /* Decimal.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Decimal.swift; path = SwiftBTC/Classes/Decimal.swift; sourceTree = "<group>"; };
 		9AAF74FCFDF9945C0A04173703CF3570 /* error_utils.cc */ = {isa = PBXFileReference; includeInIndex = 1; name = error_utils.cc; path = src/core/lib/transport/error_utils.cc; sourceTree = "<group>"; };
 		9AEEBB66F34A737F7E678863C630E1C7 /* by_file.c */ = {isa = PBXFileReference; includeInIndex = 1; name = by_file.c; path = crypto/x509/by_file.c; sourceTree = "<group>"; };
 		9B0565BAE554BD4C35E6952C80A4F263 /* grpc_ares_ev_driver.cc */ = {isa = PBXFileReference; includeInIndex = 1; name = grpc_ares_ev_driver.cc; path = src/core/ext/filters/client_channel/resolver/dns/c_ares/grpc_ares_ev_driver.cc; sourceTree = "<group>"; };
@@ -5385,6 +5379,7 @@
 		A0F5D678D689C1969C0EA00E2CA4FF4F /* event_string.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = event_string.h; path = src/core/lib/surface/event_string.h; sourceTree = "<group>"; };
 		A10F69D897AFD3FB420E147B5D95128E /* BarPlot.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = BarPlot.swift; path = Classes/Plots/BarPlot.swift; sourceTree = "<group>"; };
 		A136CCC8F222F1414EBC3355E5976FAC /* blinding.c */ = {isa = PBXFileReference; includeInIndex = 1; name = blinding.c; path = crypto/fipsmodule/rsa/blinding.c; sourceTree = "<group>"; };
+		A1ED43EE177092ECC29971BD7EFF2F9C /* CurrencyConverter.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = CurrencyConverter.swift; path = SwiftBTC/Classes/CurrencyConverter.swift; sourceTree = "<group>"; };
 		A1FB09F902A1638F8114341117C96129 /* wrap_memcpy.cc */ = {isa = PBXFileReference; includeInIndex = 1; name = wrap_memcpy.cc; path = src/core/lib/gpr/wrap_memcpy.cc; sourceTree = "<group>"; };
 		A211BDF7499AB07EDEC90B787B4F68FC /* resolve_address.cc */ = {isa = PBXFileReference; includeInIndex = 1; name = resolve_address.cc; path = src/core/lib/iomgr/resolve_address.cc; sourceTree = "<group>"; };
 		A22D744D9241F4DBBF6DF277D8AD7C32 /* DataSource.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = DataSource.swift; path = Sources/Bond/DataSource.swift; sourceTree = "<group>"; };
@@ -5402,12 +5397,14 @@
 		A41E4CD25C2D433B2715E365F9D66023 /* GRXConcurrentWriteable.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = GRXConcurrentWriteable.m; path = "src/objective-c/RxLibrary/GRXConcurrentWriteable.m"; sourceTree = "<group>"; };
 		A43039C48D73F4725E39ED974D6ACB3F /* ExtendedPatch.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ExtendedPatch.swift; path = Sources/Differ/ExtendedPatch.swift; sourceTree = "<group>"; };
 		A4573D4230395EB3F0E17C71247F3105 /* json_writer.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = json_writer.h; path = src/core/lib/json/json_writer.h; sourceTree = "<group>"; };
+		A4979F8A044E119022422EAC970BF2D9 /* Bech32.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Bech32.swift; path = SwiftBTC/Classes/Bech32.swift; sourceTree = "<group>"; };
 		A49F34999EDC42FC1FFD659D3DF9EDE2 /* s3_pkt.cc */ = {isa = PBXFileReference; includeInIndex = 1; name = s3_pkt.cc; path = ssl/s3_pkt.cc; sourceTree = "<group>"; };
 		A4AD07D35BE88CD8E2F06FA36C86A800 /* opensslv.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = opensslv.h; path = include/openssl/opensslv.h; sourceTree = "<group>"; };
 		A531C7152912C8CBF904798079AE50B6 /* is_epollexclusive_available.cc */ = {isa = PBXFileReference; includeInIndex = 1; name = is_epollexclusive_available.cc; path = src/core/lib/iomgr/is_epollexclusive_available.cc; sourceTree = "<group>"; };
 		A53676781FD2B2F951FB13B8F6C89FA2 /* alts_grpc_integrity_only_record_protocol.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = alts_grpc_integrity_only_record_protocol.h; path = src/core/tsi/alts/zero_copy_frame_protector/alts_grpc_integrity_only_record_protocol.h; sourceTree = "<group>"; };
 		A56A542D9901E4B8B1F9442F58984E6E /* local_credentials.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = local_credentials.h; path = src/core/lib/security/credentials/local/local_credentials.h; sourceTree = "<group>"; };
 		A574C6F4FFE0A2F632C0FC71A89A0DB5 /* socket_utils_posix.cc */ = {isa = PBXFileReference; includeInIndex = 1; name = socket_utils_posix.cc; path = src/core/lib/iomgr/socket_utils_posix.cc; sourceTree = "<group>"; };
+		A5E936EEA4BB77A594780406C0FA9EA1 /* SwiftBTC-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "SwiftBTC-dummy.m"; sourceTree = "<group>"; };
 		A604A5D8044FDFFBB2E655C5BE96C595 /* shift.c */ = {isa = PBXFileReference; includeInIndex = 1; name = shift.c; path = crypto/fipsmodule/bn/shift.c; sourceTree = "<group>"; };
 		A65216BAF94CD5627EBB46D7542575EF /* grpclb.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = grpclb.h; path = src/core/ext/filters/client_channel/lb_policy/grpclb/grpclb.h; sourceTree = "<group>"; };
 		A6575D123BAF46DC7FEEDE5E62F4298D /* buf.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = buf.h; path = include/openssl/buf.h; sourceTree = "<group>"; };
@@ -5446,9 +5443,7 @@
 		AB89935D9D22AB17F14FD3C99147D7C2 /* stream_map.cc */ = {isa = PBXFileReference; includeInIndex = 1; name = stream_map.cc; path = src/core/ext/transport/chttp2/transport/stream_map.cc; sourceTree = "<group>"; };
 		AB9100ADB8E2102C2229A32A01F72B14 /* x509_set.c */ = {isa = PBXFileReference; includeInIndex = 1; name = x509_set.c; path = crypto/x509/x509_set.c; sourceTree = "<group>"; };
 		ABC318A09A6FA1D19A5B049532560D43 /* grpc_ares_wrapper_posix.cc */ = {isa = PBXFileReference; includeInIndex = 1; name = grpc_ares_wrapper_posix.cc; path = src/core/ext/filters/client_channel/resolver/dns/c_ares/grpc_ares_wrapper_posix.cc; sourceTree = "<group>"; };
-		ABF1D5E7943C828BA52F1CE8308C5CA0 /* BitcoinURI.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = BitcoinURI.swift; path = SwiftBTC/Classes/BitcoinURI.swift; sourceTree = "<group>"; };
 		AC43263C4B38128A61C02E99A35B3FAC /* SQLite.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = SQLite.framework; path = SQLite.swift.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		AC5BC114ECCE99576F3CCD4F808986D6 /* BitcoinAddress.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = BitcoinAddress.swift; path = SwiftBTC/Classes/BitcoinAddress.swift; sourceTree = "<group>"; };
 		ACDE9710D09974A5211126D5A2242788 /* alts_credentials.cc */ = {isa = PBXFileReference; includeInIndex = 1; name = alts_credentials.cc; path = src/core/lib/security/credentials/alts/alts_credentials.cc; sourceTree = "<group>"; };
 		AD07B95CE891EF88350DF32D23942862 /* load_system_roots_linux.cc */ = {isa = PBXFileReference; includeInIndex = 1; name = load_system_roots_linux.cc; path = src/core/lib/security/security_connector/load_system_roots_linux.cc; sourceTree = "<group>"; };
 		AD4662431296DA62C40D3D7960EA5914 /* KeychainAccess.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = KeychainAccess.modulemap; sourceTree = "<group>"; };
@@ -5508,6 +5503,7 @@
 		B70A71B31C0C2B149ACBA2C9DA702716 /* UINavigationBar.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = UINavigationBar.swift; path = Sources/Bond/UIKit/UINavigationBar.swift; sourceTree = "<group>"; };
 		B7332838F9B9D9D3B5114AE2A077B7CB /* e_des.c */ = {isa = PBXFileReference; includeInIndex = 1; name = e_des.c; path = crypto/fipsmodule/cipher/e_des.c; sourceTree = "<group>"; };
 		B7A5977EBC190051675A6BEFCF2ACCBF /* Pods-LightningTests.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = "Pods-LightningTests.modulemap"; sourceTree = "<group>"; };
+		B80A86D5848922CF8632B16E0DC3BE58 /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		B8208EB7EA5F634CFFED1E048E8A4B55 /* rand_extra.c */ = {isa = PBXFileReference; includeInIndex = 1; name = rand_extra.c; path = crypto/rand_extra/rand_extra.c; sourceTree = "<group>"; };
 		B859B319A11042FDDCA360E0A7109984 /* connector.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = connector.h; path = src/core/ext/filters/client_channel/connector.h; sourceTree = "<group>"; };
 		B869177C7D7286E0A74E999B6DE06EA1 /* proxy_mapper.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = proxy_mapper.h; path = src/core/ext/filters/client_channel/proxy_mapper.h; sourceTree = "<group>"; };
@@ -5544,6 +5540,7 @@
 		BD27F572B22A6AD65C20082BA54B991F /* Property.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Property.swift; path = Sources/Bond/Property.swift; sourceTree = "<group>"; };
 		BD29A69FD9029F290D69213C2B15443A /* exec_ctx.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = exec_ctx.h; path = src/core/lib/iomgr/exec_ctx.h; sourceTree = "<group>"; };
 		BD4170675A84A43771F0DAE4CCD63D97 /* timer_custom.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = timer_custom.h; path = src/core/lib/iomgr/timer_custom.h; sourceTree = "<group>"; };
+		BE2B823195065CAFB5FDB36D79F8A9DA /* LegacyBitcoinAddress.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = LegacyBitcoinAddress.swift; path = SwiftBTC/Classes/LegacyBitcoinAddress.swift; sourceTree = "<group>"; };
 		BE4266F6F995AE3AD364319B695B28F6 /* GPBCodedInputStream.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = GPBCodedInputStream.h; path = objectivec/GPBCodedInputStream.h; sourceTree = "<group>"; };
 		BE75DDC057F7D9CCBEE003519B720F19 /* security_handshaker.cc */ = {isa = PBXFileReference; includeInIndex = 1; name = security_handshaker.cc; path = src/core/lib/security/transport/security_handshaker.cc; sourceTree = "<group>"; };
 		BE9B6318357DB251E06CE9214008FC4B /* format_request.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = format_request.h; path = src/core/lib/http/format_request.h; sourceTree = "<group>"; };
@@ -5593,6 +5590,7 @@
 		C42D1138CF0626A901CC931A8416A82A /* LineDrawingLayer.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = LineDrawingLayer.swift; path = Classes/Drawing/LineDrawingLayer.swift; sourceTree = "<group>"; };
 		C432C8A3B048DD017E6E61D41893AA91 /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		C4868380E315EA1573C90F88448EEFFD /* Pods-RPC-Library.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-RPC-Library.debug.xcconfig"; sourceTree = "<group>"; };
+		C4F086659FC14659CD63248116A4B0BA /* Bip39.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Bip39.swift; path = SwiftBTC/Classes/Bip39.swift; sourceTree = "<group>"; };
 		C54D790ABEA6D1D43232DC3C9DBE092D /* gRPC-RxLibrary.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = "gRPC-RxLibrary.modulemap"; sourceTree = "<group>"; };
 		C54F0428EAAE4447D544CA6F9B4AA99E /* sha.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = sha.h; path = include/openssl/sha.h; sourceTree = "<group>"; };
 		C55B358474B08238A9B86800409E42F7 /* alts_handshaker_client.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = alts_handshaker_client.h; path = src/core/tsi/alts/handshaker/alts_handshaker_client.h; sourceTree = "<group>"; };
@@ -5623,11 +5621,9 @@
 		C88CD880A0A2EC3438418008E5C8BB04 /* tls_pthread.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = tls_pthread.h; path = src/core/lib/gpr/tls_pthread.h; sourceTree = "<group>"; };
 		C8AA3BBFB67251DB01E3F592914986FE /* stream_compression_gzip.cc */ = {isa = PBXFileReference; includeInIndex = 1; name = stream_compression_gzip.cc; path = src/core/lib/compression/stream_compression_gzip.cc; sourceTree = "<group>"; };
 		C9330CF0B132025C267AAF7338DEC300 /* resolver.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = resolver.h; path = src/core/ext/filters/client_channel/resolver.h; sourceTree = "<group>"; };
-		C96421D085BC765054C1C0C8199DD181 /* PaymentURI.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = PaymentURI.swift; path = SwiftBTC/Classes/PaymentURI.swift; sourceTree = "<group>"; };
 		C9945F4FB2524854A18D36B8ED355FB9 /* alts_tsi_handshaker_private.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = alts_tsi_handshaker_private.h; path = src/core/tsi/alts/handshaker/alts_tsi_handshaker_private.h; sourceTree = "<group>"; };
 		C996F3DD4E96799737163F9BA9003E21 /* call_log_batch.cc */ = {isa = PBXFileReference; includeInIndex = 1; name = call_log_batch.cc; path = src/core/lib/surface/call_log_batch.cc; sourceTree = "<group>"; };
 		C9B62BFCA85C88735595E82229351E99 /* pool.c */ = {isa = PBXFileReference; includeInIndex = 1; name = pool.c; path = crypto/pool/pool.c; sourceTree = "<group>"; };
-		C9BD14A82074C444E514F4CC889D27ED /* Bech32Address.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Bech32Address.swift; path = SwiftBTC/Classes/Bech32Address.swift; sourceTree = "<group>"; };
 		C9E35354B88FBF5E21C350EC13344CFC /* p_ed25519_asn1.c */ = {isa = PBXFileReference; includeInIndex = 1; name = p_ed25519_asn1.c; path = crypto/evp/p_ed25519_asn1.c; sourceTree = "<group>"; };
 		C9F9F8678DBEE957C8EB0991E29A26DD /* time_posix.cc */ = {isa = PBXFileReference; includeInIndex = 1; name = time_posix.cc; path = src/core/lib/gpr/time_posix.cc; sourceTree = "<group>"; };
 		CA6EB34A208F97D949616D00877C365B /* time_precise.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = time_precise.h; path = src/core/lib/gpr/time_precise.h; sourceTree = "<group>"; };
@@ -5690,7 +5686,6 @@
 		D1D6567049F4EF8BD32FED29A2CA90B2 /* Api.pbobjc.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = Api.pbobjc.h; path = objectivec/google/protobuf/Api.pbobjc.h; sourceTree = "<group>"; };
 		D1D8EC8E4D5F5850FFDF628F8836E188 /* proxy_mapper.cc */ = {isa = PBXFileReference; includeInIndex = 1; name = proxy_mapper.cc; path = src/core/ext/filters/client_channel/proxy_mapper.cc; sourceTree = "<group>"; };
 		D1E97BD3E2D8F58BD20BF4D9821D726D /* check_gcp_environment_linux.cc */ = {isa = PBXFileReference; includeInIndex = 1; name = check_gcp_environment_linux.cc; path = src/core/lib/security/credentials/alts/check_gcp_environment_linux.cc; sourceTree = "<group>"; };
-		D1F2B26A497638C281C6BE68F6138CDE /* SwiftBTC-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "SwiftBTC-prefix.pch"; sourceTree = "<group>"; };
 		D2228B1594B4B6B15429508114C6B444 /* md4.c */ = {isa = PBXFileReference; includeInIndex = 1; name = md4.c; path = crypto/fipsmodule/md4/md4.c; sourceTree = "<group>"; };
 		D2B9AE7BF1A91240A773C38E89BD7E20 /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		D2F3D89A57A9B3392613ACAA40B75361 /* socket_factory_posix.cc */ = {isa = PBXFileReference; includeInIndex = 1; name = socket_factory_posix.cc; path = src/core/lib/iomgr/socket_factory_posix.cc; sourceTree = "<group>"; };
@@ -5707,6 +5702,7 @@
 		D430176611F50A5730B2F01158DAE367 /* aes.c */ = {isa = PBXFileReference; includeInIndex = 1; name = aes.c; path = crypto/fipsmodule/aes/aes.c; sourceTree = "<group>"; };
 		D44BFC9D30214051D0B4EDADCD2A1890 /* GRXNSScalarEnumerator.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = GRXNSScalarEnumerator.m; path = "src/objective-c/RxLibrary/private/GRXNSScalarEnumerator.m"; sourceTree = "<group>"; };
 		D496072C33D9AAEB335CE6BB66D5ED35 /* GPBCodedOutputStream_PackagePrivate.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = GPBCodedOutputStream_PackagePrivate.h; path = objectivec/GPBCodedOutputStream_PackagePrivate.h; sourceTree = "<group>"; };
+		D4D200D733A1230EAF54565DD6A98B85 /* String.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = String.swift; path = SwiftBTC/Classes/String.swift; sourceTree = "<group>"; };
 		D50883D188EFFFBC12FFEFB0C0095812 /* ctr.c */ = {isa = PBXFileReference; includeInIndex = 1; name = ctr.c; path = crypto/fipsmodule/modes/ctr.c; sourceTree = "<group>"; };
 		D51B59F8599937F8F44D2D52192D2119 /* flow_control.cc */ = {isa = PBXFileReference; includeInIndex = 1; name = flow_control.cc; path = src/core/ext/transport/chttp2/transport/flow_control.cc; sourceTree = "<group>"; };
 		D51C99C9F60B494DDDDC896426E2D7F9 /* iomgr_internal.cc */ = {isa = PBXFileReference; includeInIndex = 1; name = iomgr_internal.cc; path = src/core/lib/iomgr/iomgr_internal.cc; sourceTree = "<group>"; };
@@ -5717,6 +5713,7 @@
 		D580EA660529DCA925934D2F0319BD42 /* FillDrawingLayer.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = FillDrawingLayer.swift; path = Classes/Drawing/FillDrawingLayer.swift; sourceTree = "<group>"; };
 		D604F8CB62BB4616B08FFBDBEA429F75 /* buffer_list.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = buffer_list.h; path = src/core/lib/iomgr/buffer_list.h; sourceTree = "<group>"; };
 		D66E5BFF7549F0D8B2ACC70668E17ECB /* ssl_file.cc */ = {isa = PBXFileReference; includeInIndex = 1; name = ssl_file.cc; path = ssl/ssl_file.cc; sourceTree = "<group>"; };
+		D67CE5D4DFF75B27638A35964C4DD553 /* Decimal.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Decimal.swift; path = SwiftBTC/Classes/Decimal.swift; sourceTree = "<group>"; };
 		D699B9DBB28527AF5446AE7C689698E8 /* Prime Test.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = "Prime Test.swift"; path = "sources/Prime Test.swift"; sourceTree = "<group>"; };
 		D6BAE7EB2EB57981125DD2ACB330EAC9 /* fork.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = fork.h; path = include/grpc/fork.h; sourceTree = "<group>"; };
 		D6DA6C5E49B9C59C2E26FB8537BAA333 /* alts_grpc_record_protocol_common.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = alts_grpc_record_protocol_common.h; path = src/core/tsi/alts/zero_copy_frame_protector/alts_grpc_record_protocol_common.h; sourceTree = "<group>"; };
@@ -5777,7 +5774,6 @@
 		DFEE793DDDFF1F648C549F396F090B6A /* printf.c */ = {isa = PBXFileReference; includeInIndex = 1; name = printf.c; path = crypto/bio/printf.c; sourceTree = "<group>"; };
 		E0016E925696A14F0E2EBA095C493AC2 /* SourceContext.pbobjc.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = SourceContext.pbobjc.m; path = objectivec/google/protobuf/SourceContext.pbobjc.m; sourceTree = "<group>"; };
 		E03E583B0E9E10668375A7060417CE2A /* x509.c */ = {isa = PBXFileReference; includeInIndex = 1; name = x509.c; path = crypto/x509/x509.c; sourceTree = "<group>"; };
-		E041508950B238663FC3B0C3D9F8C941 /* Bitcoin.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Bitcoin.swift; path = SwiftBTC/Classes/Bitcoin.swift; sourceTree = "<group>"; };
 		E04354A7FF1B1763AF89136EF4F25628 /* a_type.c */ = {isa = PBXFileReference; includeInIndex = 1; name = a_type.c; path = crypto/asn1/a_type.c; sourceTree = "<group>"; };
 		E045B075D4CA299710D5ACA59633E34B /* custom_extensions.cc */ = {isa = PBXFileReference; includeInIndex = 1; name = custom_extensions.cc; path = ssl/custom_extensions.cc; sourceTree = "<group>"; };
 		E05B5BB7AF03CE86830BF836CC20BEBA /* x509spki.c */ = {isa = PBXFileReference; includeInIndex = 1; name = x509spki.c; path = crypto/x509/x509spki.c; sourceTree = "<group>"; };
@@ -5798,6 +5794,7 @@
 		E1FEF4639534344A9E3F48BC0310C711 /* NotificationCenter.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = NotificationCenter.swift; path = Sources/Bond/Shared/NotificationCenter.swift; sourceTree = "<group>"; };
 		E2047DD49ADCB07D2FCCAAE92BC2AD09 /* FTS5.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = FTS5.swift; path = Sources/SQLite/Extensions/FTS5.swift; sourceTree = "<group>"; };
 		E2090F3A04D666187A735F0D98DF7CB6 /* String Conversion.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = "String Conversion.swift"; path = "sources/String Conversion.swift"; sourceTree = "<group>"; };
+		E2CD46209EFAE3BDE44BC747CACD3DFA /* SwiftBTC.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = SwiftBTC.modulemap; sourceTree = "<group>"; };
 		E2E1714C6333D7B24F089E05A5E53736 /* timeout_encoding.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = timeout_encoding.h; path = src/core/lib/transport/timeout_encoding.h; sourceTree = "<group>"; };
 		E2E5AE9CFF64257A58C73F1E54BC3007 /* channelz.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = channelz.h; path = src/core/lib/channel/channelz.h; sourceTree = "<group>"; };
 		E3158D99539EA937FE6D0F22E02939C0 /* deadline_filter.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = deadline_filter.h; path = src/core/ext/filters/deadline/deadline_filter.h; sourceTree = "<group>"; };
@@ -5846,7 +5843,6 @@
 		E79A8A78030565256EED2B06A5A009B6 /* sync_custom.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = sync_custom.h; path = include/grpc/impl/codegen/sync_custom.h; sourceTree = "<group>"; };
 		E81E4A568F1AF7A1C6BD267E5497C09C /* srtp.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = srtp.h; path = include/openssl/srtp.h; sourceTree = "<group>"; };
 		E8426170437F5024639281A0C79AEAED /* dns_resolver_ares.cc */ = {isa = PBXFileReference; includeInIndex = 1; name = dns_resolver_ares.cc; path = src/core/ext/filters/client_channel/resolver/dns/c_ares/dns_resolver_ares.cc; sourceTree = "<group>"; };
-		E8559ED1AB29B942FB63AC36753A021A /* Currency.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Currency.swift; path = SwiftBTC/Classes/Currency.swift; sourceTree = "<group>"; };
 		E85B79931952D0660FBE887343C75F12 /* ecdh.c */ = {isa = PBXFileReference; includeInIndex = 1; name = ecdh.c; path = crypto/ecdh/ecdh.c; sourceTree = "<group>"; };
 		E863CF4057A987FDC70D4BE1F089F08D /* aead.c */ = {isa = PBXFileReference; includeInIndex = 1; name = aead.c; path = crypto/fipsmodule/cipher/aead.c; sourceTree = "<group>"; };
 		E8B2EB79C945A5ECA987E80E1A8E7928 /* socket_mutator.cc */ = {isa = PBXFileReference; includeInIndex = 1; name = socket_mutator.cc; path = src/core/lib/iomgr/socket_mutator.cc; sourceTree = "<group>"; };
@@ -5887,6 +5883,7 @@
 		EE66D7A55398B49F03968ADE54E4FC13 /* http_server_filter.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = http_server_filter.h; path = src/core/ext/filters/http/server/http_server_filter.h; sourceTree = "<group>"; };
 		EE6E5B023CB00CA5F7775289F1F64292 /* dh.c */ = {isa = PBXFileReference; includeInIndex = 1; name = dh.c; path = crypto/dh/dh.c; sourceTree = "<group>"; };
 		EE7EF4F1247979957D580025B0CEB500 /* service_config.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = service_config.h; path = src/core/lib/transport/service_config.h; sourceTree = "<group>"; };
+		EEA1177799C13235A1733145713707E2 /* Base58.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Base58.swift; path = SwiftBTC/Classes/Base58.swift; sourceTree = "<group>"; };
 		EEE5033398322F733A4C7A40F8066456 /* Pods_RPC_Lightning.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = Pods_RPC_Lightning.framework; path = "Pods-RPC-Lightning.framework"; sourceTree = BUILT_PRODUCTS_DIR; };
 		EEF0A9D30314C41F7173D8C48DBE198C /* Pods-RPC-SwiftLnd.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-RPC-SwiftLnd.release.xcconfig"; sourceTree = "<group>"; };
 		EF30E65767D163386CC70C39A071448A /* GPBUtilities.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = GPBUtilities.h; path = objectivec/GPBUtilities.h; sourceTree = "<group>"; };
@@ -5949,6 +5946,7 @@
 		F62CEB88F2D3A49B9F56A86EB5E2DD33 /* convert.c */ = {isa = PBXFileReference; includeInIndex = 1; name = convert.c; path = crypto/bn_extra/convert.c; sourceTree = "<group>"; };
 		F64757AD332EAB930F14BF10E0ACFC5B /* channel_stack_builder.cc */ = {isa = PBXFileReference; includeInIndex = 1; name = channel_stack_builder.cc; path = src/core/lib/channel/channel_stack_builder.cc; sourceTree = "<group>"; };
 		F64A806E419339B81DF55047B788D1BF /* time_windows.cc */ = {isa = PBXFileReference; includeInIndex = 1; name = time_windows.cc; path = src/core/lib/gpr/time_windows.cc; sourceTree = "<group>"; };
+		F67F30AD8FAD26D8CADF583D2D4B6395 /* BitcoinURI.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = BitcoinURI.swift; path = SwiftBTC/Classes/BitcoinURI.swift; sourceTree = "<group>"; };
 		F6CDAB71028E21402BE90ED4CDD5F545 /* LabelPool.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = LabelPool.swift; path = Classes/Reference/LabelPool.swift; sourceTree = "<group>"; };
 		F71070383D62CE0FC9E021E57B82D39F /* host_port.cc */ = {isa = PBXFileReference; includeInIndex = 1; name = host_port.cc; path = src/core/lib/gpr/host_port.cc; sourceTree = "<group>"; };
 		F7112291EBB3A74BEF6B49CEEE3CA8B6 /* LndRpc.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = LndRpc.xcconfig; sourceTree = "<group>"; };
@@ -5976,6 +5974,8 @@
 		FAA10CC9E932D1164F01DD705B4F67E7 /* gRPC-RxLibrary-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "gRPC-RxLibrary-dummy.m"; sourceTree = "<group>"; };
 		FAE290198ED2D16EC07C21DAA306A28A /* lame_client.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = lame_client.h; path = src/core/lib/surface/lame_client.h; sourceTree = "<group>"; };
 		FAF71BE39361432B75B3BB78B827E369 /* internal.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = internal.h; path = crypto/fipsmodule/tls/internal.h; sourceTree = "<group>"; };
+		FB1CACD52A88839851CF36D7835C96C8 /* BitcoinAddress.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = BitcoinAddress.swift; path = SwiftBTC/Classes/BitcoinAddress.swift; sourceTree = "<group>"; };
+		FB2100EC3DD6B6ED3CFFC0336DAC7829 /* SwiftBTC-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "SwiftBTC-umbrella.h"; sourceTree = "<group>"; };
 		FB32107C01EF2BD00E9B48CDF33E92B3 /* transport_impl.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = transport_impl.h; path = src/core/lib/transport/transport_impl.h; sourceTree = "<group>"; };
 		FB3A72E944BB3D35FF302AF3BD3EC792 /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		FBD201F70CA7610DCA51DA33B9C7582A /* slice_buffer.cc */ = {isa = PBXFileReference; includeInIndex = 1; name = slice_buffer.cc; path = src/core/lib/slice/slice_buffer.cc; sourceTree = "<group>"; };
@@ -6521,6 +6521,32 @@
 			name = Services;
 			sourceTree = "<group>";
 		};
+		57C0D5B1715AD17AAE2A107DB2C8D1A9 /* SwiftBTC */ = {
+			isa = PBXGroup;
+			children = (
+				EEA1177799C13235A1733145713707E2 /* Base58.swift */,
+				A4979F8A044E119022422EAC970BF2D9 /* Bech32.swift */,
+				9221042C55E0A81A779DB5478C54F137 /* Bech32Address.swift */,
+				C4F086659FC14659CD63248116A4B0BA /* Bip39.swift */,
+				4B614F87D2E022808D159A1A8680FD61 /* Bitcoin.swift */,
+				FB1CACD52A88839851CF36D7835C96C8 /* BitcoinAddress.swift */,
+				F67F30AD8FAD26D8CADF583D2D4B6395 /* BitcoinURI.swift */,
+				2E51D9F510949ED63D71B87B03FB0DBE /* Currency.swift */,
+				A1ED43EE177092ECC29971BD7EFF2F9C /* CurrencyConverter.swift */,
+				0AB1DAB524E31A0B249A338B2D3F7843 /* Data.swift */,
+				D67CE5D4DFF75B27638A35964C4DD553 /* Decimal.swift */,
+				880C5D484C55560E41D1B74D96CC4C6C /* FiatCurrency.swift */,
+				BE2B823195065CAFB5FDB36D79F8A9DA /* LegacyBitcoinAddress.swift */,
+				770F2A759FEFDED8D7C45C0379607DBF /* Network.swift */,
+				431636277DC6043C4D1495AA89EAB87E /* PaymentURI.swift */,
+				3D8CEC6E49EF1613EF33DF727DC388C5 /* SatoshiFormatter.swift */,
+				D4D200D733A1230EAF54565DD6A98B85 /* String.swift */,
+				77B6D27744E97369F70FADB0CCE2954A /* Support Files */,
+			);
+			name = SwiftBTC;
+			path = SwiftBTC;
+			sourceTree = "<group>";
+		};
 		5D975F52D87F43A896827D4F5D1B3E36 /* gRPC */ = {
 			isa = PBXGroup;
 			children = (
@@ -6530,20 +6556,6 @@
 			);
 			name = gRPC;
 			path = gRPC;
-			sourceTree = "<group>";
-		};
-		5EB335F1EBD7134B6052C373BBB6129C /* Support Files */ = {
-			isa = PBXGroup;
-			children = (
-				7B5F2126DDE8B728B0FBD88119A92ECB /* Info.plist */,
-				86563129F57C1E431761819F5E6116F2 /* SwiftBTC.modulemap */,
-				912EEE9E2F50A52F8C6291EF3C402D07 /* SwiftBTC.xcconfig */,
-				5FF827A1B3DD05AE7818A7E02E1338AD /* SwiftBTC-dummy.m */,
-				D1F2B26A497638C281C6BE68F6138CDE /* SwiftBTC-prefix.pch */,
-				0AE5775A3FF1D008B4529F7F8AEFE816 /* SwiftBTC-umbrella.h */,
-			);
-			name = "Support Files";
-			path = "../Target Support Files/SwiftBTC";
 			sourceTree = "<group>";
 		};
 		5FA78F132EC21671CD5C1AF4F4A26F25 /* nanopb */ = {
@@ -6817,6 +6829,20 @@
 			path = KeychainAccess;
 			sourceTree = "<group>";
 		};
+		77B6D27744E97369F70FADB0CCE2954A /* Support Files */ = {
+			isa = PBXGroup;
+			children = (
+				B80A86D5848922CF8632B16E0DC3BE58 /* Info.plist */,
+				E2CD46209EFAE3BDE44BC747CACD3DFA /* SwiftBTC.modulemap */,
+				91A37D1596BE90226B31B04E458C3974 /* SwiftBTC.xcconfig */,
+				A5E936EEA4BB77A594780406C0FA9EA1 /* SwiftBTC-dummy.m */,
+				3CDA2E11ACAFF81E92619FFDA7A64F0D /* SwiftBTC-prefix.pch */,
+				FB2100EC3DD6B6ED3CFFC0336DAC7829 /* SwiftBTC-umbrella.h */,
+			);
+			name = "Support Files";
+			path = "../Target Support Files/SwiftBTC";
+			sourceTree = "<group>";
+		};
 		7BE8A1DCBA53B2165E74A34EC338BB6D /* LndRpc */ = {
 			isa = PBXGroup;
 			children = (
@@ -6857,7 +6883,7 @@
 				1053554B6321D6CB4536EB329735B04E /* ScrollableGraphView */,
 				63623C048FA9E669D2FDB78AFB0251F6 /* SipHash */,
 				A2617C557A47300A00F53107B12A4C29 /* SQLite.swift */,
-				DEF9DB93C7469EC53708BAEADC6AE8CB /* SwiftBTC */,
+				57C0D5B1715AD17AAE2A107DB2C8D1A9 /* SwiftBTC */,
 			);
 			name = Pods;
 			sourceTree = "<group>";
@@ -7560,32 +7586,6 @@
 				32A1CF2C439DEF0EBA55AEF98B5F3FA0 /* x_x509a.c */,
 			);
 			name = Implementation;
-			sourceTree = "<group>";
-		};
-		DEF9DB93C7469EC53708BAEADC6AE8CB /* SwiftBTC */ = {
-			isa = PBXGroup;
-			children = (
-				665ED14FFF254E55122A5AD29D0AA606 /* Base58.swift */,
-				4E60A1E19B9B2673CF68BD35443FEAD3 /* Bech32.swift */,
-				C9BD14A82074C444E514F4CC889D27ED /* Bech32Address.swift */,
-				03E54EE6D46E20C54E5C7C16B1A7C324 /* Bip39.swift */,
-				E041508950B238663FC3B0C3D9F8C941 /* Bitcoin.swift */,
-				AC5BC114ECCE99576F3CCD4F808986D6 /* BitcoinAddress.swift */,
-				9444D7B091A7500C82908CDC259E0519 /* BitcoinUnit.swift */,
-				ABF1D5E7943C828BA52F1CE8308C5CA0 /* BitcoinURI.swift */,
-				E8559ED1AB29B942FB63AC36753A021A /* Currency.swift */,
-				3449FF20C4FC9B06736971E9353F704F /* Data.swift */,
-				9AAF3C6028D8F9B0A72345225954DAC6 /* Decimal.swift */,
-				8C77A8BE4F94F94760F16CA9A5735075 /* FiatCurrency.swift */,
-				65C800FED0BBE5FBDF7E52E8A119DA3F /* LegacyBitcoinAddress.swift */,
-				7B5BE58D8B23FEEABEBF9AD4D79BFCB0 /* Network.swift */,
-				C96421D085BC765054C1C0C8199DD181 /* PaymentURI.swift */,
-				4F7B69DBA5FDCEFC888A58C4F6470367 /* Satoshi.swift */,
-				76BCCE57EFDE34C19044F8742C80AB73 /* String.swift */,
-				5EB335F1EBD7134B6052C373BBB6129C /* Support Files */,
-			);
-			name = SwiftBTC;
-			path = SwiftBTC;
 			sourceTree = "<group>";
 		};
 		E3B0B40CC652B6D2A0943327D464E51B /* Support Files */ = {
@@ -9748,7 +9748,7 @@
 			buildConfigurationList = 9938D3EF301E10147F0995BB2A1B3469 /* Build configuration list for PBXNativeTarget "SwiftBTC" */;
 			buildPhases = (
 				7802BA34E82752A822C76C93E90A97F2 /* Headers */,
-				67666B34291B1769027634641C0D3141 /* Sources */,
+				4ABA19183569669BB12094F47086BE0B /* Sources */,
 				EED556BC5AF14BD2BA6CBAD465D6594A /* Frameworks */,
 				362BEDCFF97BCC903ABDC3C6549F21FE /* Resources */,
 			);
@@ -10144,6 +10144,31 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		4ABA19183569669BB12094F47086BE0B /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				C3DAED4549045BBCBAA04EE158842FC0 /* Base58.swift in Sources */,
+				4637209DC2C13490D0171E84D4487A92 /* Bech32.swift in Sources */,
+				F63C773C1021B978EAF55DE5B3D80671 /* Bech32Address.swift in Sources */,
+				D07663523A2C1F557BB16FF635099EBE /* Bip39.swift in Sources */,
+				711E071350D49405032B91BB09A04421 /* Bitcoin.swift in Sources */,
+				D9B288D9A028A7D3E8F45D250675FC5D /* BitcoinAddress.swift in Sources */,
+				2CF3B7D4EEC515E799F968BECE70DE94 /* BitcoinURI.swift in Sources */,
+				D4459ABC8B1014DE520FF620BA8B6516 /* Currency.swift in Sources */,
+				7909CB1B4B15C09CD90B79DE9D2612AF /* CurrencyConverter.swift in Sources */,
+				F38FC424195D9B834D02FFFA00C89DB5 /* Data.swift in Sources */,
+				ED2D8533DB869F193A7798ADEE08B5AA /* Decimal.swift in Sources */,
+				81485010B1AEA22272E2488413B5DA4D /* FiatCurrency.swift in Sources */,
+				F52C6E6C0A6484E257A8F075DAD61A84 /* LegacyBitcoinAddress.swift in Sources */,
+				DBCFDC685061A417A37DE062F3C67BFC /* Network.swift in Sources */,
+				8B2E886AF851019B099EB8D4FDAB068E /* PaymentURI.swift in Sources */,
+				62DD08D28211594326B07CFD5B892AC2 /* SatoshiFormatter.swift in Sources */,
+				87C60BAE09ED3462E5ED0F54429E3659 /* String.swift in Sources */,
+				669E8D91795556C533FE6B5E06D59431 /* SwiftBTC-dummy.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		5FA37F195FEEECE01DEE2ACD6FECFCE6 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -10160,31 +10185,6 @@
 				C5D1808DFB7458E3426FF6875F90AA38 /* pb_common.c in Sources */,
 				97976528F47A56F2C2D275B92ECD2B36 /* pb_decode.c in Sources */,
 				3CD68EE9BBA7E9E4583815B1FDBD7A70 /* pb_encode.c in Sources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		67666B34291B1769027634641C0D3141 /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				77610CBD6A2571D975BA6E8F15E67BE3 /* Base58.swift in Sources */,
-				F520904957E0380400A8E3F1FD39260B /* Bech32.swift in Sources */,
-				1FA2592767355C92B378A149A2BBC12F /* Bech32Address.swift in Sources */,
-				0720601DD7445E7A832B271FB18C4886 /* Bip39.swift in Sources */,
-				5870A40BEE33CCDEE7A1A40E0C4DEF43 /* Bitcoin.swift in Sources */,
-				5FA11A43DA0ABB2039CE7ED5EAA5C949 /* BitcoinAddress.swift in Sources */,
-				B3D90EE5A05C9F1B70383101E2401F02 /* BitcoinUnit.swift in Sources */,
-				479F23F5204C513E88FDD6203076815E /* BitcoinURI.swift in Sources */,
-				07C5C2C21A5467B3C2AF671F584AC0DC /* Currency.swift in Sources */,
-				49DEC53DF85F12875F1F990DE8728579 /* Data.swift in Sources */,
-				A12226A32D89BEAB2441E90BF3F816F0 /* Decimal.swift in Sources */,
-				5EDFD93A2B8B36B33A9CCA0B3F067ACB /* FiatCurrency.swift in Sources */,
-				17974F7C5917173BFD4E076953029B2B /* LegacyBitcoinAddress.swift in Sources */,
-				03C72767388432115FD98C30F017B099 /* Network.swift in Sources */,
-				36CCAB22063F3CE80E121D23BA738D99 /* PaymentURI.swift in Sources */,
-				0EECB31C04EC4236DEE40649BD7F9677 /* Satoshi.swift in Sources */,
-				0CC94E08712189F9932363CF98224783 /* String.swift in Sources */,
-				E63C4125875350BB37A43360292D2857 /* SwiftBTC-dummy.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -12943,7 +12943,7 @@
 		};
 		5FDF281A8271423C830B8608DDB1CF93 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 912EEE9E2F50A52F8C6291EF3C402D07 /* SwiftBTC.xcconfig */;
+			baseConfigurationReference = 91A37D1596BE90226B31B04E458C3974 /* SwiftBTC.xcconfig */;
 			buildSettings = {
 				APPLICATION_EXTENSION_API_ONLY = YES;
 				CODE_SIGN_IDENTITY = "";
@@ -13326,7 +13326,7 @@
 		};
 		88817DC9279AE8AD416E6BCBC2ADE493 /* DebugRemote */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 912EEE9E2F50A52F8C6291EF3C402D07 /* SwiftBTC.xcconfig */;
+			baseConfigurationReference = 91A37D1596BE90226B31B04E458C3974 /* SwiftBTC.xcconfig */;
 			buildSettings = {
 				APPLICATION_EXTENSION_API_ONLY = YES;
 				CODE_SIGN_IDENTITY = "";
@@ -14241,7 +14241,7 @@
 		};
 		DAF57C5201F0EC6A28917B136A167470 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 912EEE9E2F50A52F8C6291EF3C402D07 /* SwiftBTC.xcconfig */;
+			baseConfigurationReference = 91A37D1596BE90226B31B04E458C3974 /* SwiftBTC.xcconfig */;
 			buildSettings = {
 				APPLICATION_EXTENSION_API_ONLY = YES;
 				CODE_SIGN_IDENTITY = "";

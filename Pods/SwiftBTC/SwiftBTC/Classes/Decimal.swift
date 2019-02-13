@@ -15,11 +15,4 @@ public extension Decimal {
             return self
         }
     }
-    
-    func multiplying(byPowerOf10 power: Int) -> Decimal {
-        var result = Decimal()
-        var mutableSelf = self
-        NSDecimalMultiplyByPowerOf10(&result, &mutableSelf, Int16(power), .bankers)
-        return result
-    }
 }

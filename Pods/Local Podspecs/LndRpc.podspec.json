@@ -19,7 +19,7 @@
       "~> 1.0"
     ]
   },
-  "prepare_command": "mkdir -p Pods/LndRpc\nPods/!ProtoCompiler/protoc         --plugin=protoc-gen-grpc=Pods/!ProtoCompiler-gRPCPlugin/grpc_objective_c_plugin         --objc_out=Pods/LndRpc         --grpc_out=Pods/LndRpc         -I Proto         --proto_path=googleapis         -I Pods/!ProtoCompiler         Proto/*.proto",
+  "prepare_command": "mkdir -p Pods/LndRpc\nPods/!ProtoCompiler/protoc         --plugin=protoc-gen-grpc=Pods/!ProtoCompiler-gRPCPlugin/grpc_objective_c_plugin         --objc_out=Pods/LndRpc         --grpc_out=Pods/LndRpc         -I Proto         --proto_path=googleapis         -I Pods/!ProtoCompiler         Proto/*.proto\nsed -i '' '/.*google\\/api.*/s/^/\\/\\//g' Pods/LndRpc/LndRpc.*\nsed -i '' '/.*GAPIAnnotationsRoot.*/s/^/\\/\\//g' Pods/LndRpc/LndRpc.pbobjc.m",
   "pod_target_xcconfig": {
     "GCC_PREPROCESSOR_DEFINITIONS": "$(inherited) GPB_USE_PROTOBUF_FRAMEWORK_IMPORTS=1",
     "CLANG_ALLOW_NON_MODULAR_INCLUDES_IN_FRAMEWORK_MODULES": "YES"

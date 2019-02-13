@@ -7,7 +7,7 @@
 
 import Foundation
 
-public enum Network: String, Codable {
+public enum Network: String, Codable, CaseIterable {
     case regtest
     case testnet
     case mainnet

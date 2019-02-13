@@ -61,7 +61,7 @@ PODS:
   - SQLite.swift (0.11.5):
     - SQLite.swift/standard (= 0.11.5)
   - SQLite.swift/standard (0.11.5)
-  - SwiftBTC (0.0.6):
+  - SwiftBTC (0.0.8):
     - BigInt (~> 3.1)
 
 DEPENDENCIES:
@@ -109,14 +109,14 @@ SPEC CHECKSUMS:
   gRPC-ProtoRPC: 8e49c501c166d221cf9e44076b20580171f8ecd0
   gRPC-RxLibrary: bf23bc3bfde06674a794bb63f458f8d67d4038bb
   KeychainAccess: b3816fddcf28aa29d94b10ec305cd52be14c472b
-  LndRpc: 99b02ff159e117b9794f9109af3136a3f4252179
+  LndRpc: b213448ec3228601061d0ab43d29e77cb40f8cb1
   nanopb: 2901f78ea1b7b4015c860c2fdd1ea2fee1a18d48
   Protobuf: 1eb9700044745f00181c136ef21b8ff3ad5a0fd5
   ReactiveKit: 5f4c440715d671901c382ae6b42ed3337ce4699b
   ScrollableGraphView: 4af35d4ea9ecdec665d34a74da51da161ddff8ac
   SipHash: fad90a4683e420c52ef28063063dbbce248ea6d4
   SQLite.swift: 6e5356850bb1791459f8c16d6ee9195b28714a2e
-  SwiftBTC: 488f7a8d17d9df4e11d684b8f74b46884c9b7081
+  SwiftBTC: b1e0d98b17cfebacb288d73f33afea64f850e6c4
 
 PODFILE CHECKSUM: c08c26c770c707242e612b0eaede8002d0bbdb1f
 

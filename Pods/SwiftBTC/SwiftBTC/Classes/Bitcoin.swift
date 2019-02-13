@@ -7,36 +7,67 @@
 
 import Foundation
 
-public struct Bitcoin: Currency, Equatable, Codable {
-    public let unit: BitcoinUnit
-    
-    public init(unit: BitcoinUnit) {
-        self.unit = unit
-    }
-    
+public typealias Satoshi = Decimal
+
+public enum Bitcoin: String, Equatable, Codable, CaseIterable {
+    case bitcoin
+    case milliBitcoin
+    case bit
+    case satoshi
+}
+
+extension Bitcoin: Currency {
     public var symbol: String {
-        return unit.symbol
+        switch self {
+        case .bitcoin:
+            return "BTC"
+        case .milliBitcoin:
+            return "mBTC"
+        case .bit:
+            return "bit"
+        case .satoshi:
+            return "sat"
+        }
     }
+    
+    public var exchangeRate: Decimal {
+        switch self {
+        case .bitcoin:
+            return 1
+        case .milliBitcoin:
+            return 1000
+        case .bit:
+            return 1000000
+        case .satoshi:
+            return 100000000
+        }
+    }
+    
+    // MARK: Unit Conversion
+    
+    public func value(satoshis: Satoshi) -> Decimal? {
+        return CurrencyConverter.convert(amount: satoshis, from: Bitcoin.satoshi, to: self)
+    }
+    
+    // MARK: String formatting
     
     public func format(satoshis: Satoshi) -> String? {
-        return "\(satoshis.format(unit: unit)) \(symbol)"
+        let formatter = SatoshiFormatter(unit: self)
+        formatter.includeCurrencySymbol = true
+        return formatter.string(from: satoshis)
     }
     
     public func satoshis(from string: String) -> Satoshi? {
-        return Satoshi.from(string: string, unit: unit)
-    }
-    
-    public func value(satoshis: Satoshi) -> Decimal? {
-        return satoshis.multiplying(byPowerOf10: -unit.exponent)
+        let formatter = SatoshiFormatter(unit: self)
+        formatter.includeCurrencySymbol = true
+        return formatter.satoshis(from: string)
     }
     
     public func stringValue(satoshis: Satoshi) -> String? {
-        guard let value = self.value(satoshis: satoshis) else { return nil }
-        
-        let numberFormatter = unit.numberFormatter
-        numberFormatter.minimumFractionDigits = 0
-        numberFormatter.usesGroupingSeparator = false
-        
-        return numberFormatter.string(from: value as NSDecimalNumber)
+        let formatter = SatoshiFormatter(unit: self)
+        formatter.includeCurrencySymbol = false
+        formatter.minimumFractionDigits = 0
+        formatter.usesGroupingSeparator = false
+        return formatter.string(from: satoshis)
     }
 }

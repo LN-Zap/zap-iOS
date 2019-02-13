@@ -34,7 +34,7 @@ public struct BitcoinURI: PaymentURI {
         var queryItems = [URLQueryItem]()
         
         if let amount = amount, amount > 0 {
-            let amountInBitcoin = amount.convert(to: .bitcoin)
+            let amountInBitcoin = CurrencyConverter.convert(amount: amount, from: Bitcoin.satoshi, to: Bitcoin.bitcoin)
             let usLocale = Locale(identifier: "en_US")
             let amountString = (amountInBitcoin as NSDecimalNumber).description(withLocale: usLocale)
             queryItems.append(URLQueryItem(name: Constants.amount, value: amountString))
@@ -64,7 +64,7 @@ public struct BitcoinURI: PaymentURI {
             if let decimalSeparator = Locale.current.decimalSeparator, decimalSeparator != "." {
                 amountString = amountString.replacingOccurrences(of: ".", with: decimalSeparator)
             }
-            amount = Bitcoin(unit: .bitcoin).satoshis(from: amountString)
+            amount = SatoshiFormatter(unit: .bitcoin).satoshis(from: amountString)
         } else {
             amount = nil
         }

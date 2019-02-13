@@ -16,8 +16,8 @@ final class InputNumberFormatter {
     }
     
     func validate(_ input: String) -> String? {
-        if let bitcoin = currency as? Bitcoin {
-            return validate(input, for: bitcoin.unit)
+        if let cryptoCurrency = currency as? Bitcoin {
+            return validate(input, for: cryptoCurrency)
         } else {
             return validateFiat(input)
         }
@@ -71,9 +71,9 @@ final class InputNumberFormatter {
         }
     }
     
-    private func validate(_ input: String, for unit: BitcoinUnit) -> String? {
+    private func validate(_ input: String, for unit: Bitcoin) -> String? {
         guard
-            let numberFormatter = numberFormatter(for: input, exponent: unit.exponent),
+            let numberFormatter = numberFormatter(for: input, exponent: unit.maximumFractionDigits),
             let decimalSeparator = numberFormatter.decimalSeparator
             else { return nil }
 
@@ -87,8 +87,9 @@ final class InputNumberFormatter {
             return nil
         }
         
-        if let satoshis = Satoshi.from(string: input, unit: unit),
-            let result = numberFormatter.string(from: satoshis.convert(to: unit) as NSDecimalNumber) {
+        let formatter = SatoshiFormatter(unit: unit)
+        if let satoshis = formatter.satoshis(from: input),
+            let result = numberFormatter.string(from: CurrencyConverter.convert(amount: satoshis, from: Bitcoin.satoshi, to: unit) as NSDecimalNumber) {
             
             if input.hasSuffix(decimalSeparator) {
                 return result + decimalSeparator

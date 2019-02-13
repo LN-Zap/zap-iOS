@@ -42,7 +42,7 @@ public struct FiatCurrency: Currency, Equatable, Codable {
         if !satoshis.isNormal {
             return format(value: 0)
         } else {
-            let fiatValue = satoshis.convert(to: .bitcoin) * exchangeRate
+            let fiatValue = CurrencyConverter.convert(amount: satoshis, from: Bitcoin.satoshi, to: Bitcoin.bitcoin) * exchangeRate
             return format(value: fiatValue)
         }
     }
@@ -59,11 +59,11 @@ public struct FiatCurrency: Currency, Equatable, Codable {
     }
     
     public func satoshis(from fiatValue: Decimal) -> Satoshi {
-        return Satoshi.from(value: fiatValue / exchangeRate, unit: .bitcoin)
+        return CurrencyConverter.convert(amount: fiatValue, from: self, to: Bitcoin.satoshi)
     }
     
     public func value(satoshis: Satoshi) -> Decimal? {
-        return satoshis.multiplying(byPowerOf10: -BitcoinUnit.bitcoin.exponent) * exchangeRate
+        return CurrencyConverter.convert(amount: satoshis, from: Bitcoin.satoshi, to: self)
     }
     
     public func stringValue(satoshis: Satoshi) -> String? {

@@ -116,7 +116,7 @@ final class WalletViewController: UIViewController {
                     guard let graphContainer = self?.graphContainer else { return }
                     
                     graphContainer.subviews.first?.removeFromSuperview()
-                    let graphDataSource = GraphViewDataSource(currentValue: amount, plottableEvents: historyService.userTransaction, currency: Bitcoin(unit: .bitcoin))
+                    let graphDataSource = GraphViewDataSource(currentValue: amount, plottableEvents: historyService.userTransaction, currency: Bitcoin.bitcoin)
                     self?.graphDataSource = graphDataSource
                     let graphView = GraphView(frame: graphContainer.bounds, dataSource: graphDataSource)
                     graphContainer.addSubview(graphView)
@@ -169,10 +169,12 @@ final class WalletViewController: UIViewController {
     }
 }
 
-extension Bitcoin {
-    public func attributedFormat(satoshis: Satoshi) -> NSAttributedString? {
-        let string = satoshis.format(unit: unit)
-        let attributedString = NSMutableAttributedString(string: string)
+fileprivate extension Bitcoin {
+    func attributedFormat(satoshis: Satoshi) -> NSAttributedString? {
+        let formatter = SatoshiFormatter(unit: self)
+        formatter.includeCurrencySymbol = false
+        let amountString = formatter.string(from: satoshis) ?? "0"
+        let attributedString = NSMutableAttributedString(string: amountString)
         attributedString.append(NSAttributedString(string: " " + symbol, attributes: [.font: UIFont.Zap.light]))
         return attributedString
     }
