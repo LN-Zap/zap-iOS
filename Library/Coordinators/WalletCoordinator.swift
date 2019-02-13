@@ -171,7 +171,12 @@ final class WalletCoordinator: NSObject {
     }
     
     private func presentWalletList() {
-        guard let disconnectWalletDelegate = disconnectWalletDelegate else { return }
+        guard
+            walletConfigurationStore.configurations.count >= 2,
+            let disconnectWalletDelegate = disconnectWalletDelegate
+            else { return }
+        
+        UISelectionFeedbackGenerator().selectionChanged()
         let viewController = WalletListViewController(walletConfigurationStore: walletConfigurationStore, disconnectWalletDelegate: disconnectWalletDelegate)
         rootViewController.present(viewController, animated: true)
     }
