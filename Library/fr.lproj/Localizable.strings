@@ -53,10 +53,7 @@
 "scene.settings.item.on_chain_request_address.p2sh" = "P2SH";
 "scene.settings.item.manage_channels" = "Manage Channels";
 "scene.settings.item.node_uri" = "Node URI";
-"scene.settings.item.remove_remote_node" = "Logout";
-"scene.settings.item.remove_remote_node.confirmation.title" = "Disconnect Remote Node?";
-"scene.settings.item.remove_remote_node.confirmation.message" = "You will have to reconnect to your node afterwards.";
-"scene.settings.item.remove_remote_node.confirmation.button" = "Disconnect";
+"scene.settings.item.remove_remote_node" = "Manage Wallets";
 
 "scene.settings.item.change_pin" = "Change Pin";
 "scene.settings.item.report_issue" = "Signaler un problème";
@@ -221,3 +218,5 @@
 "scene.connect_node_uri.action_sheet.title" = "Connect";
 "scene.connect_node_uri.action_sheet.connect_button" = "Connect";
 "scene.connect_node_uri.action_sheet.message" = "Do you really want to connect to node at %@?";
+
+"scene.wallet_list.title" = "Wallets";
