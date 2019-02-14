@@ -43,7 +43,6 @@ public final class LndConnectURL {
     public init?(url: URL) {
         guard
             let queryParameters = url.queryParameters,
-            let certificate = queryParameters["cert"]?.base64UrlToBase64(),
             let nodeHostString = url.host,
             let port = url.port,
             let nodeHostUrl = URL(string: "\(nodeHostString):\(port)"),
@@ -51,6 +50,13 @@ public final class LndConnectURL {
             let macaroon = Macaroon(base64String: macaroonString)
             else { return nil }
 
-        rpcConfiguration = RemoteRPCConfiguration(certificate: Pem(key: certificate).string, macaroon: macaroon, url: nodeHostUrl)
+        let certString: String?
+        if let certificate = queryParameters["cert"]?.base64UrlToBase64() {
+            certString = Pem(key: certificate).string
+        } else {
+            certString = nil
+        }
+
+        rpcConfiguration = RemoteRPCConfiguration(certificate: certString, macaroon: macaroon, url: nodeHostUrl)
     }
 }

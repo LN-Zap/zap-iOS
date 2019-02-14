@@ -79,6 +79,8 @@ final class ConnectRemoteNodeViewModel: NSObject {
             .replacingOccurrences(of: "-----BEGIN CERTIFICATE-----", with: "")
             .trimmingCharacters(in: .whitespacesAndNewlines) {
             items.insert(.certificate(certificateDescription), at: 0)
+        } else {
+            items.insert(.certificate(qrCode.macaroon.hexadecimalString), at: 0)
         }
         
         return Observable2DArraySection<String?, CellType>(

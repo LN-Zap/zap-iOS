@@ -16,6 +16,10 @@ final class CertificateDetailViewController: UITableViewController {
         return viewController
     }
     
+    var hasCertificate: Bool {
+        return connectRemoteNodeViewModel?.remoteNodeConfiguration?.certificate != nil
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -29,7 +33,7 @@ final class CertificateDetailViewController: UITableViewController {
     }
     
     override func numberOfSections(in tableView: UITableView) -> Int {
-        return 2
+        return hasCertificate ? 2 : 1
     }
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -37,7 +41,7 @@ final class CertificateDetailViewController: UITableViewController {
     }
     
     override func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
-        if section == 0 {
+        if hasCertificate && section == 0 {
             return L10n.Scene.ConnectRemoteNode.CertificateDetail.certificateTitle
         } else {
             return L10n.Scene.ConnectRemoteNode.CertificateDetail.macaroonTitle
@@ -46,7 +50,7 @@ final class CertificateDetailViewController: UITableViewController {
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell: CertificateDetailCell = tableView.dequeueCellForIndexPath(indexPath)
-        if indexPath.section == 0 {
+        if hasCertificate && indexPath.section == 0 {
             cell.descriptionText = connectRemoteNodeViewModel?.remoteNodeConfiguration?.certificate
         } else {
             cell.descriptionText = connectRemoteNodeViewModel?.remoteNodeConfiguration?.macaroon.hexadecimalString
