@@ -1970,11 +1970,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = A0A05A1C2013CF960007D1C9 /* Build configuration list for PBXNativeTarget "Zap" */;
 			buildPhases = (
+				ADEB61BB22170C2F009D5707 /* Sourcery */,
+				A0A05A312013F7880007D1C9 /* Swift Lint */,
 				FBAC984A8CB01D906272F3C9 /* [CP] Check Pods Manifest.lock */,
 				A0A059FB2013CF960007D1C9 /* Sources */,
 				A0A059FC2013CF960007D1C9 /* Frameworks */,
 				A0A059FD2013CF960007D1C9 /* Resources */,
-				A0A05A312013F7880007D1C9 /* Swift Lint */,
 				A000F6062047F65200480D8E /* Embed Frameworks */,
 				AD391D5120D17FA9007EE22A /* Embed App Extensions */,
 				AE2DAF4D48A31C61FB3C2BFE /* [CP] Embed Pods Frameworks */,
@@ -2458,7 +2459,25 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "if [ -z \"$CI\" ]; then\n    if which swiftlint >/dev/null; then\n        swiftlint\n    else\n        echo \"warning: SwiftLint not installed, download from https://github.com/realm/SwiftLint\"\n    fi\nfi";
+			shellScript = "if [ -z \"$CI\" ]; then\n    if which swiftlint >/dev/null; then\n        swiftlint\n    else\n        echo \"warning: SwiftLint not installed, download from https://github.com/realm/SwiftLint\"\n    fi\nfi\n";
+		};
+		ADEB61BB22170C2F009D5707 /* Sourcery */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+			);
+			name = Sourcery;
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "sourcery\n";
 		};
 		AE2DAF4D48A31C61FB3C2BFE /* [CP] Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
