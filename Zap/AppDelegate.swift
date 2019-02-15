@@ -6,6 +6,7 @@
 //
 
 import Library
+import Logger
 import UIKit
 
 @UIApplicationMain
@@ -17,7 +18,7 @@ final class AppDelegate: UIResponder, UIApplicationDelegate {
         guard !Environment.isRunningTests else { return true }
         
         if let documentsDir = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first?.absoluteString {
-            print(documentsDir.replacingOccurrences(of: "file://", with: ""))
+            Logger.info(documentsDir.replacingOccurrences(of: "file://", with: ""))
         }
         
         window = UIWindow(frame: UIScreen.main.bounds)

@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import Logger
 import SQLite
 import SwiftLnd
 
@@ -40,7 +41,7 @@ final class SQLitePersistence: Persistence {
             else { fatalError("can not connect to db.") }
     
         if Environment.traceDB {
-            connection.trace { print("💾", $0) }
+            connection.trace { Logger.verbose($0, customPrefix: "💾") }
         }
         
         self.currentConnection = connection
@@ -48,7 +49,7 @@ final class SQLitePersistence: Persistence {
         do {
             try connection.createTables()
         } catch {
-            print("🤮 \(error.localizedDescription)")
+            Logger.error(error)
         }
     }
     

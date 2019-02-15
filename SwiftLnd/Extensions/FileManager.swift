@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import Logger
 
 public typealias WalletId = String
 
@@ -19,7 +20,7 @@ public extension FileManager {
         do {
             try createDirectory(at: url, withIntermediateDirectories: true, attributes: nil)
         } catch {
-            print("🤮 \(error)")
+            Logger.error(error)
             return nil
         }
         

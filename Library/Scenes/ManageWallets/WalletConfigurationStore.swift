@@ -8,6 +8,7 @@
 import Foundation
 import KeychainAccess
 import Lightning
+import Logger
 import ReactiveKit
 import SwiftBTC
 import SwiftLnd
@@ -66,7 +67,7 @@ final class WalletConfigurationStore {
         do {
             try FileManager.default.removeItem(at: url)
         } catch {
-            print("🤮 removeWallet: \(error.localizedDescription)")
+            Logger.error(error.localizedDescription)
         }
         
         configurations.remove(at: indexPath.row)

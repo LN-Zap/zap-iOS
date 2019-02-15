@@ -7,6 +7,7 @@
 
 import Foundation
 import Lightning
+import Logger
 import SwiftBTC
 
 final class ExchangeUpdaterJob {
@@ -29,7 +30,7 @@ final class ExchangeUpdaterJob {
         guard let url = URL(string: "https://blockchain.info/ticker") else { fatalError("Invalid ticker url.") }
         let task = URLSession.pinned.dataTask(with: url) { [weak self] data, _, error in
             if error != nil {
-                print(String(describing: error))
+                Logger.error(String(describing: error))
             } else if let data = data,
                 let jsonData = try? JSONSerialization.jsonObject(with: data, options: []),
                 let json = jsonData as? [String: Any] {
@@ -62,7 +63,7 @@ enum ExchangeData {
                 Settings.shared.updateCurrency(updatedCurrency)
             }
             
-            print("✅ did update exchange rates")
+            Logger.info("did update exchange rates")
         }
     }
 }

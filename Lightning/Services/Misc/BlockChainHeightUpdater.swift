@@ -7,6 +7,7 @@
 
 import Bond
 import Foundation
+import Logger
 import SwiftBTC
 
 protocol HeightJsonProtocol: Decodable {
@@ -25,7 +26,7 @@ enum BlockchainHeight: CaseIterable {
         let firstCompletion = { (explorer: BlockchainHeight, height: Int) in
             if isFirstResponse {
                 isFirstResponse = false
-                print("📦 \(explorer)", height)
+                Logger.info("\(explorer) \(height)")
                 completion(height)
             } 
         }
@@ -79,8 +80,8 @@ enum BlockchainHeight: CaseIterable {
     
     private func fetch(url: URL, completion: @escaping (Int) -> Void) {
         let task = URLSession.pinned.dataTask(with: url) { data, _, error in
-            if error != nil {
-                print(String(describing: error))
+            if let error = error {
+                Logger.error(error)
             } else if let data = data,
                 let string = String(data: data, encoding: .utf8),
                 let height = Int(string) {
@@ -92,8 +93,8 @@ enum BlockchainHeight: CaseIterable {
     
     private func fetch(url: URL, completion: @escaping (Int) -> Void, map: @escaping ([String: Any]) -> Int?) {
         let task = URLSession.pinned.dataTask(with: url) { data, _, error in
-            if error != nil {
-                print(String(describing: error))
+            if let error = error {
+                Logger.error(error)
             } else if let data = data,
                 let json = try? JSONSerialization.jsonObject(with: data, options: []),
                 let dictionary = json as? [String: Any],

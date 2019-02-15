@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import Logger
 import SQLite
 import SwiftBTC
 import SwiftLnd
@@ -55,7 +56,7 @@ public final class HistoryService {
             
             sendChangeNotification()
         } catch {
-            print("⚠️ `\(#function)`:", error)
+            Logger.error(error)
         }
     }
     
@@ -99,7 +100,7 @@ public final class HistoryService {
             try failedEvent.insert(database: connection)
             updateEvents()
         } catch {
-            print(error)
+            Logger.error(error)
         }
     }
     
@@ -111,7 +112,7 @@ public final class HistoryService {
                 try paymentEvent.insert(database: self.persistence.connection())
                 self.updateEvents()
             } catch {
-                print(error)
+                Logger.error(error)
             }
         }
     }
@@ -132,7 +133,7 @@ public final class HistoryService {
             try transactionEvent.insertOrUpdateMetaData(database: persistence.connection())
             updateEvents()
         } catch {
-            print(error)
+            Logger.error(error)
         }
     }
 
@@ -157,7 +158,7 @@ extension HistoryService {
             do {
                 try transaction.insertOrUpdateTransactionData(database: persistence.connection())
             } catch {
-                print("⚠️ `\(#function)` (add unknown):", error)
+                Logger.error(error)
             }
         }
     }
@@ -168,7 +169,7 @@ extension HistoryService {
                 let createInvoiceEvent = CreateInvoiceEvent(invoice: invoice)
                 try createInvoiceEvent.insert(database: persistence.connection())
             } catch {
-                print("⚠️ `\(#function)`:", error)
+                Logger.error(error)
             }
             
             if invoice.state == .settled {
@@ -176,7 +177,7 @@ extension HistoryService {
                 do {
                     try paymentEvent.insert(database: persistence.connection())
                 } catch {
-                    print("⚠️ `\(#function)`:", error)
+                    Logger.error(error)
                 }
             }
         }
@@ -189,7 +190,7 @@ extension HistoryService {
                 try paymentEvent.insert(database: persistence.connection())
             }
         } catch {
-            print("⚠️ `\(#function)`:", error)
+            Logger.error(error)
         }
     }
 }

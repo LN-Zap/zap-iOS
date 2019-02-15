@@ -268,6 +268,10 @@
 		ADDD13B92119CEB40035D2F9 /* UIStackView.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADDD13B82119CEB40035D2F9 /* UIStackView.swift */; };
 		ADDD13BB2119CF110035D2F9 /* CallbackButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADDD13BA2119CF110035D2F9 /* CallbackButton.swift */; };
 		ADEB619C2214588A009D5707 /* WalletListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADEB619B2214588A009D5707 /* WalletListViewController.swift */; };
+		ADEB61AC2216CD7D009D5707 /* Logger.h in Headers */ = {isa = PBXBuildFile; fileRef = ADEB61AA2216CD7D009D5707 /* Logger.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		ADEB61AF2216CD7D009D5707 /* Logger.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = ADEB61A82216CD7D009D5707 /* Logger.framework */; };
+		ADEB61B02216CD7D009D5707 /* Logger.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = ADEB61A82216CD7D009D5707 /* Logger.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		ADEB61B52216CD86009D5707 /* Logger.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADEB61A02216C3BC009D5707 /* Logger.swift */; };
 		ADEDA3CC21788CE50078FD91 /* NodeURISettingsItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADEDA3CB21788CE50078FD91 /* NodeURISettingsItem.swift */; };
 		ADEDA3CE217892A10078FD91 /* RequestQRCodeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADEDA3CD217892A10078FD91 /* RequestQRCodeViewModel.swift */; };
 		ADEDA3D12178938E0078FD91 /* NodeURIQRCodeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADEDA3D02178938E0078FD91 /* NodeURIQRCodeViewModel.swift */; };
@@ -371,6 +375,13 @@
 			remoteGlobalIDString = ADADAD622143B2E700A48E1F;
 			remoteInfo = SwiftLnd;
 		};
+		ADEB61AD2216CD7D009D5707 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = A0A059F72013CF960007D1C9 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = ADEB61A72216CD7D009D5707;
+			remoteInfo = Logger;
+		};
 		ADFB36D42143B67A00146FCC /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = A0A059F72013CF960007D1C9 /* Project object */;
@@ -408,6 +419,7 @@
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
+				ADEB61B02216CD7D009D5707 /* Logger.framework in Embed Frameworks */,
 				ADADAD792143B2E700A48E1F /* SwiftLnd.framework in Embed Frameworks */,
 				AD536BFC20E62764002279BC /* Lightning.framework in Embed Frameworks */,
 				AD391C2020D16ED4007EE22A /* Library.framework in Embed Frameworks */,
@@ -778,6 +790,10 @@
 		ADE4CF1C20B5B2BE007C987A /* UIFont.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIFont.swift; sourceTree = "<group>"; };
 		ADE4CF1E20B5B6FC007C987A /* Environment.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Environment.swift; sourceTree = "<group>"; };
 		ADEB619B2214588A009D5707 /* WalletListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WalletListViewController.swift; sourceTree = "<group>"; };
+		ADEB61A02216C3BC009D5707 /* Logger.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Logger.swift; sourceTree = "<group>"; };
+		ADEB61A82216CD7D009D5707 /* Logger.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Logger.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		ADEB61AA2216CD7D009D5707 /* Logger.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Logger.h; sourceTree = "<group>"; };
+		ADEB61AB2216CD7D009D5707 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		ADECC36820F257AF00D00546 /* Payment.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Payment.swift; sourceTree = "<group>"; };
 		ADECC36A20F257BE00D00546 /* Transaction.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Transaction.swift; sourceTree = "<group>"; };
 		ADEDA3CB21788CE50078FD91 /* NodeURISettingsItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NodeURISettingsItem.swift; sourceTree = "<group>"; };
@@ -844,6 +860,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				ADEB61AF2216CD7D009D5707 /* Logger.framework in Frameworks */,
 				ADADAD782143B2E700A48E1F /* SwiftLnd.framework in Frameworks */,
 				A02C9FC2202F5BDC009821B1 /* LocalAuthentication.framework in Frameworks */,
 				AD536BFB20E62764002279BC /* Lightning.framework in Frameworks */,
@@ -893,6 +910,13 @@
 			files = (
 				ADADAD6C2143B2E700A48E1F /* SwiftLnd.framework in Frameworks */,
 				D6989DE43FB4820F856510AB /* Pods_SwiftLndTests.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		ADEB61A52216CD7D009D5707 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1084,6 +1108,7 @@
 				CEF2960C33901153F2C1FFF4 /* Frameworks */,
 				AD391C1920D16ED4007EE22A /* Library */,
 				AD536BE720E62763002279BC /* Lightning */,
+				ADEB61A92216CD7D009D5707 /* Logger */,
 				1084CFF47F1CDB628A05D07A /* Pods */,
 				A0A05A002013CF960007D1C9 /* Products */,
 				ADFBE0BF21F6268400A76E06 /* Sticker */,
@@ -1103,6 +1128,7 @@
 				ADADAD632143B2E700A48E1F /* SwiftLnd.framework */,
 				ADADAD6B2143B2E700A48E1F /* SwiftLndTests.xctest */,
 				ADFBE0BE21F6268400A76E06 /* Sticker.appex */,
+				ADEB61A82216CD7D009D5707 /* Logger.framework */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -1733,6 +1759,16 @@
 			path = WalletList;
 			sourceTree = "<group>";
 		};
+		ADEB61A92216CD7D009D5707 /* Logger */ = {
+			isa = PBXGroup;
+			children = (
+				ADEB61A02216C3BC009D5707 /* Logger.swift */,
+				ADEB61AA2216CD7D009D5707 /* Logger.h */,
+				ADEB61AB2216CD7D009D5707 /* Info.plist */,
+			);
+			path = Logger;
+			sourceTree = "<group>";
+		};
 		ADEDA3CF217893600078FD91 /* ViewModel */ = {
 			isa = PBXGroup;
 			children = (
@@ -1906,6 +1942,14 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		ADEB61A32216CD7D009D5707 /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				ADEB61AC2216CD7D009D5707 /* Logger.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXHeadersBuildPhase section */
 
 /* Begin PBXNativeTarget section */
@@ -1929,6 +1973,7 @@
 				AD391C1E20D16ED4007EE22A /* PBXTargetDependency */,
 				ADADAD772143B2E700A48E1F /* PBXTargetDependency */,
 				ADFBE0C421F6268500A76E06 /* PBXTargetDependency */,
+				ADEB61AE2216CD7D009D5707 /* PBXTargetDependency */,
 			);
 			name = Zap;
 			productName = ThunderWallet;
@@ -2036,6 +2081,24 @@
 			productReference = ADADAD6B2143B2E700A48E1F /* SwiftLndTests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
+		ADEB61A72216CD7D009D5707 /* Logger */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = ADEB61B12216CD7D009D5707 /* Build configuration list for PBXNativeTarget "Logger" */;
+			buildPhases = (
+				ADEB61A32216CD7D009D5707 /* Headers */,
+				ADEB61A42216CD7D009D5707 /* Sources */,
+				ADEB61A52216CD7D009D5707 /* Frameworks */,
+				ADEB61A62216CD7D009D5707 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = Logger;
+			productName = Logger;
+			productReference = ADEB61A82216CD7D009D5707 /* Logger.framework */;
+			productType = "com.apple.product-type.framework";
+		};
 		ADFBE0BD21F6268400A76E06 /* Sticker */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = ADFBE0C921F6268500A76E06 /* Build configuration list for PBXNativeTarget "Sticker" */;
@@ -2120,6 +2183,10 @@
 						ProvisioningStyle = Automatic;
 						TestTargetID = A0A059FE2013CF960007D1C9;
 					};
+					ADEB61A72216CD7D009D5707 = {
+						CreatedOnToolsVersion = 10.1;
+						ProvisioningStyle = Automatic;
+					};
 					ADFBE0BD21F6268400A76E06 = {
 						CreatedOnToolsVersion = 10.1;
 						ProvisioningStyle = Automatic;
@@ -2181,6 +2248,7 @@
 				AD536BED20E62764002279BC /* LightningTests */,
 				AD391C1720D16ED4007EE22A /* Library */,
 				ADFE537A20D693F500B3BA2A /* LibraryTests */,
+				ADEB61A72216CD7D009D5707 /* Logger */,
 				ADADAD622143B2E700A48E1F /* SwiftLnd */,
 				ADADAD6A2143B2E700A48E1F /* SwiftLndTests */,
 				ADFBE0BD21F6268400A76E06 /* Sticker */,
@@ -2268,6 +2336,13 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 		ADADAD692143B2E700A48E1F /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		ADEB61A62216CD7D009D5707 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -2938,6 +3013,14 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		ADEB61A42216CD7D009D5707 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				ADEB61B52216CD86009D5707 /* Logger.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		ADFE537720D693F500B3BA2A /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -2991,6 +3074,11 @@
 			isa = PBXTargetDependency;
 			target = ADADAD622143B2E700A48E1F /* SwiftLnd */;
 			targetProxy = ADADAD762143B2E700A48E1F /* PBXContainerItemProxy */;
+		};
+		ADEB61AE2216CD7D009D5707 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = ADEB61A72216CD7D009D5707 /* Logger */;
+			targetProxy = ADEB61AD2216CD7D009D5707 /* PBXContainerItemProxy */;
 		};
 		ADFB36D52143B67A00146FCC /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
@@ -3252,6 +3340,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = D989AC91D5501875BA1C4E18 /* Pods-Zap.debug.xcconfig */;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_ENTITLEMENTS = Zap/Zap.entitlements;
@@ -3288,6 +3377,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 5E35400BBA08A4A87916AF7B /* Pods-Zap.release.xcconfig */;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_ENTITLEMENTS = Zap/Zap.entitlements;
@@ -3582,6 +3672,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 75C93228A5FCF2CBD287946A /* Pods-Zap.debugremote.xcconfig */;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_ENTITLEMENTS = Zap/Zap.entitlements;
@@ -3878,6 +3969,92 @@
 			};
 			name = Release;
 		};
+		ADEB61B22216CD7D009D5707 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				APPLICATION_EXTENSION_API_ONLY = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CODE_SIGN_IDENTITY = "";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DEVELOPMENT_TEAM = CS73H95RB8;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				INFOPLIST_FILE = Logger/Info.plist;
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 11.2;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				PRODUCT_BUNDLE_IDENTIFIER = com.jackmallers.Logger;
+				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
+				SKIP_INSTALL = YES;
+				SWIFT_VERSION = 4.2;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Debug;
+		};
+		ADEB61B32216CD7D009D5707 /* DebugRemote */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				APPLICATION_EXTENSION_API_ONLY = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CODE_SIGN_IDENTITY = "";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DEVELOPMENT_TEAM = CS73H95RB8;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				INFOPLIST_FILE = Logger/Info.plist;
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 11.2;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				PRODUCT_BUNDLE_IDENTIFIER = com.jackmallers.Logger;
+				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
+				SKIP_INSTALL = YES;
+				SWIFT_VERSION = 4.2;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = DebugRemote;
+		};
+		ADEB61B42216CD7D009D5707 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				APPLICATION_EXTENSION_API_ONLY = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CODE_SIGN_IDENTITY = "";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DEVELOPMENT_TEAM = CS73H95RB8;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				INFOPLIST_FILE = Logger/Info.plist;
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 11.2;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				MTL_FAST_MATH = YES;
+				PRODUCT_BUNDLE_IDENTIFIER = com.jackmallers.Logger;
+				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
+				SKIP_INSTALL = YES;
+				SWIFT_VERSION = 4.2;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Release;
+		};
 		ADFBE0C621F6268500A76E06 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -4038,6 +4215,16 @@
 				ADADAD7D2143B2E700A48E1F /* Debug */,
 				ADADAD7E2143B2E700A48E1F /* DebugRemote */,
 				ADADAD7F2143B2E700A48E1F /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		ADEB61B12216CD7D009D5707 /* Build configuration list for PBXNativeTarget "Logger" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				ADEB61B22216CD7D009D5707 /* Debug */,
+				ADEB61B32216CD7D009D5707 /* DebugRemote */,
+				ADEB61B42216CD7D009D5707 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

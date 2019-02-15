@@ -39,7 +39,6 @@ public final class WalletService {
     
     public func generateSeed(completion: @escaping (Result<[String], LndApiError>) -> Void) {
         wallet.generateSeed(passphrase: nil) {
-            $0.value?.enumerated().forEach { print($0 + 1, $1) }
             completion($0)
         }
     }

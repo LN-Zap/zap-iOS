@@ -5,6 +5,7 @@
 //  Copyright © 2018 Otto Suess. All rights reserved.
 //
 
+import Logger
 import UIKit
 
 final class QRCodeDetailViewController: UIViewController {
@@ -51,8 +52,8 @@ final class QRCodeDetailViewController: UIViewController {
     
     @IBAction private func qrCodeTapped(_ sender: Any) {
         guard let address = viewModel?.uriString else { return }
-        
-        print("copied address:", address)
+    
+        Logger.info("copied address: \(address)")
         Toast.presentSuccess(L10n.Generic.QrCode.copySuccessMessage)
         UISelectionFeedbackGenerator().selectionChanged()
         UIPasteboard.general.string = address

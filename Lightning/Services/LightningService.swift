@@ -7,6 +7,7 @@
 
 import Bond
 import Foundation
+import Logger
 import ReactiveKit
 import SwiftBTC
 import SwiftLnd
@@ -77,7 +78,8 @@ public final class LightningService: NSObject {
         
         api.subscribeInvoices { [weak self] in
             guard let invoice = $0.value else { return }
-            print("🛍 new invoice:\n\t\(invoice)")
+            Logger.info("new invoice:\n\t\(invoice)")
+
             self?.historyService.addedInvoice(invoice)
             
             if invoice.state == .settled {
@@ -87,7 +89,7 @@ public final class LightningService: NSObject {
 
         api.subscribeTransactions { [weak self] in
             guard let transaction = $0.value else { return }
-            print("💵 new transaction:\n\t\(transaction)")
+            Logger.info("new transaction:\n\t\(transaction)")
             self?.historyService.addedTransaction(transaction)
             self?.balanceService.update()
             

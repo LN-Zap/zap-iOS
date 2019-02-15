@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import Logger
 
 final class LocalLndConfiguration: NSObject {
     var sections = [String: [(String, String)]]()
@@ -50,7 +51,7 @@ final class LocalLndConfiguration: NSObject {
         do {
             try string.write(to: configurationDestination, atomically: false, encoding: .utf8)
         } catch {
-            print("🤮 \(error)")
+            Logger.error(error)
         }
     }
 }

@@ -67,7 +67,12 @@ custom_rules:
     message: "don't cast to LocalizedError. Use .localizedDescription"
     severity: error
   localizable_error:
-    name: Localizable Error"
+    name: "Localizable Error"
     regex: "Error.*:.*Localizable"
     message: "Errors should be LocalizedError"
     severity: error
+  print:
+    name: "Logging Error"
+    regex: "print\\("
+    message: "Use Logger.info() instead"
+    severity: warning

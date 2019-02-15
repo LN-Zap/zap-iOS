@@ -67,7 +67,6 @@ class KeyPadView: UIView {
     var numberString = "" {
         didSet {
             guard oldValue != numberString else { return }
-            print(numberString)
         }
     }
     

@@ -7,6 +7,7 @@
 
 import Foundation
 import LndRpc
+import Logger
 
 public struct Macaroon: Equatable, Codable {
     private let data: Data
@@ -77,7 +78,7 @@ public struct Macaroon: Equatable, Codable {
         for operation in decoded.opsArray {
             guard let operation = operation as? Op else { continue }
             guard let domain = Permissions.Domain(rawValue: operation.entity) else {
-                print("⚠️ unknown macaroon id entity: \(operation)")
+                Logger.warn("⚠️ unknown macaroon id entity: \(operation)")
                 continue
             }
             

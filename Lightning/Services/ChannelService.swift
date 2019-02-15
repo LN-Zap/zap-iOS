@@ -7,6 +7,7 @@
 
 import Bond
 import Foundation
+import Logger
 import ReactiveKit
 import SQLite
 import SwiftBTC
@@ -101,7 +102,7 @@ extension ChannelService {
                 try updateNodeIfNeeded(openEvent.node)
             }
         } catch {
-            print("⚠️ `\(#function)`:", error)
+            Logger.error(error)
         }
     }
     
@@ -127,7 +128,7 @@ extension ChannelService {
                 }
             }
         } catch {
-            print("⚠️ `\(#function)`:", error)
+            Logger.error(error)
         }
     }
     

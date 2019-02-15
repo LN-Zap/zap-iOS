@@ -6,6 +6,7 @@
 //
 
 import Lightning
+import Logger
 import SafariServices
 import UIKit
 
@@ -58,7 +59,7 @@ final class WalletCoordinator: NSObject {
     }
     
     private func updateFor(state: ConnectionStateService.State) {
-        print("🗽 state:", state)
+        Logger.info("state: \(state)", customPrefix: "🗽")
         
         switch state {
         case .connecting:
@@ -140,7 +141,7 @@ final class WalletCoordinator: NSObject {
         } catch BlockExplorerError.unsupportedNetwork {
             Toast.presentError(L10n.Error.BlockExplorer.unsupportedNetwork(Settings.shared.blockExplorer.value.localized, lightningService.infoService.network.value.localized))
         } catch {
-            print("Unexpected error: \(error).")
+            Logger.error("Unexpected error: \(error).")
         }
     }
     

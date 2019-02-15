@@ -10,14 +10,15 @@
 import Foundation
 import Lndmobile
 import LndRpc
+import Logger
 
 final class EmptyStreamCallback: NSObject, LndmobileCallbackProtocol {
     func onError(_ error: Error) {
-        print("🅾️ EmptyCallback Error:", error)
+        Logger.error("EmptyCallback Error: \(error.localizedDescription)")
     }
     
     func onResponse(_ data: Data) {
-        print("✅ EmptyCallback:", data)
+        Logger.info("EmptyCallback: \(data)")
     }
 }
 
@@ -39,19 +40,17 @@ final class StreamCallback<T: GPBMessage, U>: NSObject, LndmobileCallbackProtoco
     }
     
     func onError(_ error: Error) {
-        print("🅾️ Callback Error:", error)
+        Logger.error(error)
         completion(.failure(LndApiError.localizedError(error.localizedDescription)))
     }
     
     func onResponse(_ data: Data) {
         if let message = try? T.parse(from: data) {
             if let value = compactMapping?(message) {
-                if !(value is Info) && !(value is GraphTopologyUpdate) {
-                    print("[🍕]", value)
-                }
+                Logger.verbose(value, customPrefix: "🍕")
                 completion(.success(value))
             } else if let value = mapping?(message) {
-                print("[🍕]", value)
+                Logger.verbose(value, customPrefix: "🍕")
                 completion(value)
             } else {
                 onError(LndApiError.unknownError)

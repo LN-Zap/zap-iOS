@@ -7,6 +7,7 @@
 
 import AVFoundation
 import Lightning
+import Logger
 import SwiftBTC
 import UIKit
 
@@ -156,7 +157,7 @@ final class QRCodeScannerView: UIView {
             }
             captureDevice?.unlockForConfiguration()
         } catch {
-            print(error)
+            Logger.error(error.localizedDescription)
         }
     }
     

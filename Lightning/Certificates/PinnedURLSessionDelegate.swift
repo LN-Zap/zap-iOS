@@ -5,8 +5,8 @@
 //  Copyright © 2018 Zap. All rights reserved.
 //
 
-//import CommonCrypto
 import Foundation
+import Logger
 
 public extension URLSession {
     public static var pinned: URLSession {
@@ -52,7 +52,7 @@ final class PinnedURLSessionDelegate: NSObject {
                 if serverPublicKey.isEqual(pinnedPublicKey) {
                     return true
                 } else {
-                    print("🔐 expired key for host: \(host)")
+                    Logger.warn("expired key for host: \(host)")
                 }
             }
         }
@@ -96,7 +96,7 @@ extension PinnedURLSessionDelegate: URLSessionDelegate {
             evaluate(trust, forHost: challenge.protectionSpace.host) {
             completionHandler(.useCredential, URLCredential(trust: trust))
         } else {
-            print("🔓 certificate error.")
+            Logger.error("certificate error")
             completionHandler(.cancelAuthenticationChallenge, nil)
         }
     }

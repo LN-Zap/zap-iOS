@@ -45,7 +45,6 @@ final class SetupPinViewController: UIViewController {
                 case .reset:
                     self?.keyPadView?.numberString = ""
                 case .completed:
-                    print("completed")
                     UINotificationFeedbackGenerator().notificationOccurred(.success)
                     self?.didSetupPin?()
                 }
