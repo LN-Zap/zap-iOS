@@ -16,7 +16,6 @@ protocol HeightJsonProtocol: Decodable {
 
 enum BlockchainHeight: CaseIterable {
     case blockexplorer
-    case btcDotCom
     case blockcypher
     case blockstream
     
@@ -46,9 +45,6 @@ enum BlockchainHeight: CaseIterable {
         case .blockexplorer:
             let prefix = network == .mainnet ? "" : "testnet."
             return URL(string: "https://\(prefix)blockexplorer.com/api/status?q=getBlockCount")!
-        case .btcDotCom:
-            let prefix = network == .mainnet ? "" : "tchain."
-            return URL(string: "https://\(prefix)api.btc.com/v3/block/latest")!
         case .blockcypher:
             let prefix = network == .mainnet ? "main" : "test3"
             return URL(string: "https://api.blockcypher.com/v1/btc/\(prefix)")!
@@ -64,10 +60,6 @@ enum BlockchainHeight: CaseIterable {
         case .blockexplorer:
             fetch(url: url(for: network), completion: completion) {
                 $0["blockcount"] as? Int
-            }
-        case .btcDotCom:
-            fetch(url: url(for: network), completion: completion) {
-                ($0["data"] as? [String: Any])?["height"] as? Int
             }
         case .blockcypher:
             fetch(url: url(for: network), completion: completion) {

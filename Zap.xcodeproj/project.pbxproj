@@ -256,8 +256,6 @@
 		ADC0D2F52107A13900B8C62F /* DigiCert SHA2 Extended Validation Server CA.cer in Resources */ = {isa = PBXBuildFile; fileRef = ADC0D2F42107A13800B8C62F /* DigiCert SHA2 Extended Validation Server CA.cer */; };
 		ADC0D2FA2107A23400B8C62F /* *.blockcypher.com.cer in Resources */ = {isa = PBXBuildFile; fileRef = ADC0D2F62107A19A00B8C62F /* *.blockcypher.com.cer */; };
 		ADC0D2FB2107A23400B8C62F /* COMODO RSA Domain Validation Secure Server CA.cer in Resources */ = {isa = PBXBuildFile; fileRef = ADC0D2F72107A19A00B8C62F /* COMODO RSA Domain Validation Secure Server CA.cer */; };
-		ADC0D2FE2107A30200B8C62F /* GlobalSign Organization Validation CA - SHA256 - G2.cer in Resources */ = {isa = PBXBuildFile; fileRef = ADC0D2FC2107A30100B8C62F /* GlobalSign Organization Validation CA - SHA256 - G2.cer */; };
-		ADC0D2FF2107A30200B8C62F /* *.api.btc.com.cer in Resources */ = {isa = PBXBuildFile; fileRef = ADC0D2FD2107A30200B8C62F /* *.api.btc.com.cer */; };
 		ADC0D3042107A3D700B8C62F /* blockexplorer.com.cer in Resources */ = {isa = PBXBuildFile; fileRef = ADC0D3022107A3D600B8C62F /* blockexplorer.com.cer */; };
 		ADC0D3052107A3D700B8C62F /* CloudFlare Inc ECC CA-2.cer in Resources */ = {isa = PBXBuildFile; fileRef = ADC0D3032107A3D700B8C62F /* CloudFlare Inc ECC CA-2.cer */; };
 		ADC48CA7214AD8B800949CD9 /* DateEstimatorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADC48CA6214AD8B800949CD9 /* DateEstimatorTests.swift */; };
@@ -763,8 +761,6 @@
 		ADC0D2F42107A13800B8C62F /* DigiCert SHA2 Extended Validation Server CA.cer */ = {isa = PBXFileReference; lastKnownFileType = file; path = "DigiCert SHA2 Extended Validation Server CA.cer"; sourceTree = "<group>"; };
 		ADC0D2F62107A19A00B8C62F /* *.blockcypher.com.cer */ = {isa = PBXFileReference; lastKnownFileType = file; path = "*.blockcypher.com.cer"; sourceTree = "<group>"; };
 		ADC0D2F72107A19A00B8C62F /* COMODO RSA Domain Validation Secure Server CA.cer */ = {isa = PBXFileReference; lastKnownFileType = file; path = "COMODO RSA Domain Validation Secure Server CA.cer"; sourceTree = "<group>"; };
-		ADC0D2FC2107A30100B8C62F /* GlobalSign Organization Validation CA - SHA256 - G2.cer */ = {isa = PBXFileReference; lastKnownFileType = file; path = "GlobalSign Organization Validation CA - SHA256 - G2.cer"; sourceTree = "<group>"; };
-		ADC0D2FD2107A30200B8C62F /* *.api.btc.com.cer */ = {isa = PBXFileReference; lastKnownFileType = file; path = "*.api.btc.com.cer"; sourceTree = "<group>"; };
 		ADC0D3022107A3D600B8C62F /* blockexplorer.com.cer */ = {isa = PBXFileReference; lastKnownFileType = file; path = blockexplorer.com.cer; sourceTree = "<group>"; };
 		ADC0D3032107A3D700B8C62F /* CloudFlare Inc ECC CA-2.cer */ = {isa = PBXFileReference; lastKnownFileType = file; path = "CloudFlare Inc ECC CA-2.cer"; sourceTree = "<group>"; };
 		ADC29C0B20A9B0A0008B2DC2 /* Invoice.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Invoice.swift; sourceTree = "<group>"; };
@@ -1688,15 +1684,6 @@
 			path = blockchain.info;
 			sourceTree = "<group>";
 		};
-		ADC0D3002107A30900B8C62F /* api.btc.com */ = {
-			isa = PBXGroup;
-			children = (
-				ADC0D2FD2107A30200B8C62F /* *.api.btc.com.cer */,
-				ADC0D2FC2107A30100B8C62F /* GlobalSign Organization Validation CA - SHA256 - G2.cer */,
-			);
-			path = api.btc.com;
-			sourceTree = "<group>";
-		};
 		ADC0D3012107A3C500B8C62F /* blockexplorer.com */ = {
 			isa = PBXGroup;
 			children = (
@@ -1818,7 +1805,6 @@
 		ADEF96BB21078C31006AE1EC /* Certificates */ = {
 			isa = PBXGroup;
 			children = (
-				ADC0D3002107A30900B8C62F /* api.btc.com */,
 				ADC0D2F92107A1AE00B8C62F /* blockchain.info */,
 				AEAF270621EAD028004E022F /* blockstream.info */,
 				ADC0D2F82107A19F00B8C62F /* blockcypher.com */,
@@ -2324,13 +2310,11 @@
 				ADC0D2F321079FF700B8C62F /* www.blockchain.com.cer in Resources */,
 				AEAF270A21EAD05B004E022F /* blockstream.info.cer in Resources */,
 				AEAF270921EAD05B004E022F /* Let's Encrypt Authority X3.cer in Resources */,
-				ADC0D2FE2107A30200B8C62F /* GlobalSign Organization Validation CA - SHA256 - G2.cer in Resources */,
 				ADC0D2FB2107A23400B8C62F /* COMODO RSA Domain Validation Secure Server CA.cer in Resources */,
 				ADC0D3042107A3D700B8C62F /* blockexplorer.com.cer in Resources */,
 				ADC0D3052107A3D700B8C62F /* CloudFlare Inc ECC CA-2.cer in Resources */,
 				ADC0D2FA2107A23400B8C62F /* *.blockcypher.com.cer in Resources */,
 				ADC0D2F52107A13900B8C62F /* DigiCert SHA2 Extended Validation Server CA.cer in Resources */,
-				ADC0D2FF2107A30200B8C62F /* *.api.btc.com.cer in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
