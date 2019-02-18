@@ -94,12 +94,9 @@ final class SyncViewController: UIViewController {
             }
             
             let percentage = self?.syncPercentageEstimator?.percentage(lndBlockHeight: lndBlockHeigh, lndHeaderDate: lndHeaderDate, maxBlockHeight: maxBlockHeight) ?? 0
+            guard percentage.isNormal else { return 1 }
             
-            guard percentage != Double.nan && percentage != Double.infinity else {
-                return 1
-            }
-            
-            return percentage
+            return min(percentage, 1)
         }
         
         percentSignal
