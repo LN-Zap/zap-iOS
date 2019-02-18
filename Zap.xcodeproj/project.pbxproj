@@ -41,6 +41,7 @@
 		AD28844F21287B56003C3D94 /* SendViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD28844E21287B56003C3D94 /* SendViewModel.swift */; };
 		AD28CB7B211DE93300A31004 /* BlockExplorerSettingsItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD28CB7A211DE93300A31004 /* BlockExplorerSettingsItem.swift */; };
 		AD292F9020E69F0E00211AE7 /* AuthenticationViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0E2690C202CC4E30069E83C /* AuthenticationViewModel.swift */; };
+		AD2B8776221B216800308C1B /* ConnectionStateUpdater.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD7ED61F2209D09F007C5F2C /* ConnectionStateUpdater.swift */; };
 		AD2D912C21567D4C001015B6 /* EventDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD2D912B21567D4C001015B6 /* EventDetailViewController.swift */; };
 		AD308987216F37E700B5489C /* TransactionServiceTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD308985216F37E300B5489C /* TransactionServiceTests.swift */; };
 		AD30898B216FA8C400B5489C /* GraphViewDataSourceTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD308988216FA88D00B5489C /* GraphViewDataSourceTests.swift */; };
@@ -174,7 +175,6 @@
 		AD7ED61A22085B22007C5F2C /* Environment.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADCD060020E67FA5009D9650 /* Environment.swift */; };
 		AD7ED61D22087812007C5F2C /* ManageWalletTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD7ED61B22087812007C5F2C /* ManageWalletTableViewCell.swift */; };
 		AD7ED61E22087812007C5F2C /* ManageWalletTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = AD7ED61C22087812007C5F2C /* ManageWalletTableViewCell.xib */; };
-		AD7ED6202209D09F007C5F2C /* ConnectionStateService.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD7ED61F2209D09F007C5F2C /* ConnectionStateService.swift */; };
 		AD7ED622220B4FE9007C5F2C /* FileManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD7ED621220B4FE9007C5F2C /* FileManager.swift */; };
 		AD7EDAE32108C4150058CCCA /* Wallet.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AD7EDAE22108C4150058CCCA /* Wallet.storyboard */; };
 		AD7EDAE52108C41D0058CCCA /* WalletViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD7EDAE42108C41D0058CCCA /* WalletViewController.swift */; };
@@ -609,7 +609,7 @@
 		AD79E423219D90EF002589CA /* String+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Extensions.swift"; sourceTree = "<group>"; };
 		AD7ED61B22087812007C5F2C /* ManageWalletTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ManageWalletTableViewCell.swift; sourceTree = "<group>"; };
 		AD7ED61C22087812007C5F2C /* ManageWalletTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ManageWalletTableViewCell.xib; sourceTree = "<group>"; };
-		AD7ED61F2209D09F007C5F2C /* ConnectionStateService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConnectionStateService.swift; sourceTree = "<group>"; };
+		AD7ED61F2209D09F007C5F2C /* ConnectionStateUpdater.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConnectionStateUpdater.swift; sourceTree = "<group>"; };
 		AD7ED621220B4FE9007C5F2C /* FileManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FileManager.swift; sourceTree = "<group>"; };
 		AD7EDAE22108C4150058CCCA /* Wallet.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Wallet.storyboard; sourceTree = "<group>"; };
 		AD7EDAE42108C41D0058CCCA /* WalletViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WalletViewController.swift; sourceTree = "<group>"; };
@@ -1093,7 +1093,6 @@
 				A07C1035203DE3E6006C7FE8 /* LightningService.swift */,
 				ADBCC07420CC04A4002B6E59 /* TransactionService.swift */,
 				A0D3C9792060070D0015C5D7 /* WalletService.swift */,
-				AD7ED61F2209D09F007C5F2C /* ConnectionStateService.swift */,
 			);
 			path = Services;
 			sourceTree = "<group>";
@@ -1782,6 +1781,7 @@
 		ADEDBB8A20C2D48D00B71F17 /* Coordinators */ = {
 			isa = PBXGroup;
 			children = (
+				AD7ED61F2209D09F007C5F2C /* ConnectionStateUpdater.swift */,
 				AD667E4621359D79007B9160 /* AuthenticationCoordinator.swift */,
 				AD667E4821367A35007B9160 /* BackgroundCoordinator.swift */,
 				ADEDBB9120C2FC3200B71F17 /* PinSetupCoordinator.swift */,
@@ -2898,6 +2898,7 @@
 				AD615CF7211CAB0900680790 /* PaddingLabel.swift in Sources */,
 				AD391C6E20D16F89007EE22A /* SetupPinViewModel.swift in Sources */,
 				ADA179C62152864E001401F3 /* Storage.swift in Sources */,
+				AD2B8776221B216800308C1B /* ConnectionStateUpdater.swift in Sources */,
 				ADA865BE20ECB88500B1B74B /* FilterViewController.swift in Sources */,
 				AD391C5F20D16F7A007EE22A /* RecoverWalletViewController.swift in Sources */,
 				AD391C6B20D16F89007EE22A /* InputNumberFormatter.swift in Sources */,
@@ -2947,7 +2948,6 @@
 				AD8FE12B214AD42900C00DF2 /* DateEstimator.swift in Sources */,
 				AD28844B212824DC003C3D94 /* BitcoinInvoice.swift in Sources */,
 				ADA179C221526036001401F3 /* EventProtocols.swift in Sources */,
-				AD7ED6202209D09F007C5F2C /* ConnectionStateService.swift in Sources */,
 				ADFEFA6B20E627F100FE1557 /* ChannelService.swift in Sources */,
 				AD3781CA21664E9E0083CE77 /* LightningConnection.swift in Sources */,
 				ADC0D2F02107953100B8C62F /* PinnedHost.swift in Sources */,

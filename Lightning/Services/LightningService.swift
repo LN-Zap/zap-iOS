@@ -28,7 +28,6 @@ public final class LightningService: NSObject {
     public let channelService: ChannelService
     public let transactionService: TransactionService
     public let historyService: HistoryService
-    public let connectionService: ConnectionStateService
     
     var persistence: Persistence
     
@@ -60,8 +59,6 @@ public final class LightningService: NSObject {
         transactionService = TransactionService(api: api, balanceService: balanceService, channelService: channelService, historyService: historyService, persistence: persistence)
         
         infoService = InfoService(api: api, channelService: channelService, balanceService: balanceService, historyService: historyService)
-        
-        connectionService = ConnectionStateService(infoService: infoService)
     }
     
     public func start() {
@@ -71,8 +68,6 @@ public final class LightningService: NSObject {
             WalletService(connection: connection).unlockWallet { _ in }
         }
         #endif
-        
-        connectionService.start()
         
         api.subscribeChannelGraph { _ in }
         
@@ -102,6 +97,5 @@ public final class LightningService: NSObject {
         LocalLnd.stop()
         #endif
         infoService.stop()
-        connectionService.stop()
     }
 }

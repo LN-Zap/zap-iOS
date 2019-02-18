@@ -7,33 +7,37 @@
 
 import Bond
 import Foundation
+import Lightning
 import ReactiveKit
+import SwiftLnd
 
-public final class ConnectionStateService: NSObject {
-    public enum State {
+final class ConnectionStateUpdater: NSObject {
+    enum State {
         case connecting
         case syncing
         case running
     }
     
-    public let state = Observable<State>(.connecting)
+    let state = Observable<ConnectionStateUpdater.State>(.connecting)
     private var connectionTimeoutTimer: Timer?
     private var syncingStartTime: Date?
     private var walletStateDisposable: Disposable?
     private let infoService: InfoService
-
-    init(infoService: InfoService) {
+    private weak var disconnectWalletDelegate: DisconnectWalletDelegate?
+    
+    init(infoService: InfoService, disconnectWalletDelegate: DisconnectWalletDelegate) {
         self.infoService = infoService
+        self.disconnectWalletDelegate = disconnectWalletDelegate
         
         super.init()
-        
-        bindLndState()
     }
     
     func start() {
-        connectionTimeoutTimer = Timer.scheduledTimer(withTimeInterval: 3, repeats: false) { [weak self] _ in
-            guard let self = self else { return }
-            self.connectionTimeoutTimer = nil
+        bindLndState()
+        
+        connectionTimeoutTimer = Timer.scheduledTimer(withTimeInterval: 2.5, repeats: false) { [weak self] _ in
+            self?.connectionTimeoutTimer = nil
+            self?.disconnectWalletDelegate?.disconnect()
         }
     }
     
@@ -42,11 +46,11 @@ public final class ConnectionStateService: NSObject {
     }
     
     private func bindLndState() {
-        walletStateDisposable = infoService.walletState
+        walletStateDisposable = infoService.info
             .skip(first: 1)
+            .map(stateForInfo)
             .filter(filterSyncing)
             .distinct()
-            .map(stateForInfoState)
             .feedNext(into: state)
             .observeNext { [weak self] _ in
                 guard let self = self else { return }
@@ -57,19 +61,15 @@ public final class ConnectionStateService: NSObject {
         walletStateDisposable?.dispose(in: reactive.bag)
     }
     
-    private func stateForInfoState(_ state: InfoService.State) -> State {
-        switch state {
-        case .connecting:
-            return .connecting
-        case .syncing:
-            return .syncing
-        case .running:
-            return .running
+    private func stateForInfo(_ info: Info?) -> State {
+        if let info = info {
+            return info.isSyncedToChain ? .running : .syncing
         }
+        return .connecting
     }
     
     // add 3 second debounce to syncing, so we don't switch to sync screen when the app is running and a new block is found.
-    private func filterSyncing(newState: InfoService.State) -> Bool {
+    private func filterSyncing(newState: State) -> Bool {
         if state.value == .running && newState == .syncing {
             if let syncingStartTime = syncingStartTime {
                 if syncingStartTime.addingTimeInterval(3) < Date() {

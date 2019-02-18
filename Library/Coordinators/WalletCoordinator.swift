@@ -22,6 +22,8 @@ final class WalletCoordinator: NSObject {
     private weak var detailViewController: UINavigationController?
     private weak var disconnectWalletDelegate: DisconnectWalletDelegate?
     
+    private var connectionStateUpdater: ConnectionStateUpdater
+    
     var route: Route?
     
     init(rootViewController: RootViewController, lightningService: LightningService, disconnectWalletDelegate: DisconnectWalletDelegate, authenticationViewModel: AuthenticationViewModel, walletConfigurationStore: WalletConfigurationStore) {
@@ -33,23 +35,26 @@ final class WalletCoordinator: NSObject {
 
         channelListViewModel = ChannelListViewModel(channelService: lightningService.channelService)
         historyViewModel = HistoryViewModel(historyService: lightningService.historyService)
+        
+        connectionStateUpdater = ConnectionStateUpdater(infoService: lightningService.infoService, disconnectWalletDelegate: disconnectWalletDelegate)
     }
     
     func start() {
         lightningService.start()
         ExchangeUpdaterJob.start()
-        
-        updateFor(state: lightningService.connectionService.state.value)
+        connectionStateUpdater.start()
+        updateFor(state: connectionStateUpdater.state.value)
         listenForStateChanges()
     }
     
     func stop() {
         lightningService.stop()
         ExchangeUpdaterJob.stop()
+        connectionStateUpdater.stop()
     }
     
     public func listenForStateChanges() {
-        lightningService.connectionService.state
+        connectionStateUpdater.state
             .skip(first: 1)
             .distinct()
             .observeOn(DispatchQueue.main)
@@ -58,7 +63,7 @@ final class WalletCoordinator: NSObject {
             }.dispose(in: reactive.bag)
     }
     
-    private func updateFor(state: ConnectionStateService.State) {
+    private func updateFor(state: ConnectionStateUpdater.State) {
         Logger.info("state: \(state)", customPrefix: "🗽")
         
         switch state {
@@ -134,12 +139,12 @@ final class WalletCoordinator: NSObject {
     }
     
     func presentBlockExplorer(code: String, type: BlockExplorer.CodeType) {
-        let network = lightningService.infoService.network.value
+        guard let network = lightningService.infoService.network.value else { return }
         do {
             guard let url = try Settings.shared.blockExplorer.value.url(network: network, code: code, type: type) else { return }
             presentSafariViewController(for: url)
         } catch BlockExplorerError.unsupportedNetwork {
-            Toast.presentError(L10n.Error.BlockExplorer.unsupportedNetwork(Settings.shared.blockExplorer.value.localized, lightningService.infoService.network.value.localized))
+            Toast.presentError(L10n.Error.BlockExplorer.unsupportedNetwork(Settings.shared.blockExplorer.value.localized, network.localized))
         } catch {
             Logger.error("Unexpected error: \(error).")
         }
@@ -239,7 +244,7 @@ final class WalletCoordinator: NSObject {
 
 extension WalletCoordinator: Routing {
     public func handle(_ route: Route) {
-        if lightningService.connectionService.state.value != .running {
+        if connectionStateUpdater.state.value != .running {
             self.route = route
             return
         }

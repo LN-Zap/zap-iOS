@@ -70,7 +70,7 @@ public enum BitcoinInvoiceFactory {
     }
     
     private static func validateInvoice(_ invoice: BitcoinInvoice, lightningService: LightningService, completion: (Result<BitcoinInvoice, InvoiceError>) -> Void) {
-        let currentNetwork = lightningService.infoService.network.value
+        guard let currentNetwork = lightningService.infoService.network.value else { return }
         
         if let bitcoinURI = invoice.bitcoinURI,
             bitcoinURI.network != currentNetwork {

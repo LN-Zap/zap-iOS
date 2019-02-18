@@ -84,6 +84,7 @@ final class SyncViewController: UIViewController {
 
         let percentSignal = combineLatest(lightningService.infoService.blockHeight, lightningService.infoService.bestHeaderDate, lightningService.infoService.blockChainHeight) { [weak self] lndBlockHeigh, lndHeaderDate, maxBlockHeight -> Double in
             guard
+                let lndBlockHeigh = lndBlockHeigh,
                 let lndHeaderDate = lndHeaderDate,
                 let maxBlockHeight = maxBlockHeight
                 else { return 0 }
