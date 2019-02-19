@@ -47,15 +47,15 @@ final class ConnectionStateUpdater: NSObject {
     
     private func bindLndState() {
         walletStateDisposable = infoService.info
-            .skip(first: 1)
             .map(stateForInfo)
             .filter(filterSyncing)
             .distinct()
             .feedNext(into: state)
-            .observeNext { [weak self] _ in
-                guard let self = self else { return }
-                self.connectionTimeoutTimer?.invalidate()
-                self.connectionTimeoutTimer = nil
+            .observeNext { [weak self] state in
+                if state != .connecting {
+                    self?.connectionTimeoutTimer?.invalidate()
+                    self?.connectionTimeoutTimer = nil
+                }
             }
         
         walletStateDisposable?.dispose(in: reactive.bag)
