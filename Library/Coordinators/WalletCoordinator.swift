@@ -22,8 +22,6 @@ final class WalletCoordinator: NSObject, Coordinator {
     private weak var detailViewController: UINavigationController?
     private weak var disconnectWalletDelegate: DisconnectWalletDelegate?
     
-    private var connectionStateUpdater: ConnectionStateUpdater
-    
     var route: Route?
     
     init(rootViewController: RootViewController, lightningService: LightningService, disconnectWalletDelegate: DisconnectWalletDelegate, authenticationViewModel: AuthenticationViewModel, walletConfigurationStore: WalletConfigurationStore) {
@@ -35,26 +33,22 @@ final class WalletCoordinator: NSObject, Coordinator {
 
         channelListViewModel = ChannelListViewModel(channelService: lightningService.channelService)
         historyViewModel = HistoryViewModel(historyService: lightningService.historyService)
-        
-        connectionStateUpdater = ConnectionStateUpdater(infoService: lightningService.infoService, disconnectWalletDelegate: disconnectWalletDelegate)
     }
     
     func start() {
         lightningService.start()
         ExchangeUpdaterJob.start()
-        connectionStateUpdater.start()
-        updateFor(state: connectionStateUpdater.state.value)
+        updateFor(state: lightningService.infoService.walletState.value)
         listenForStateChanges()
     }
     
     func stop() {
         lightningService.stop()
         ExchangeUpdaterJob.stop()
-        connectionStateUpdater.stop()
     }
     
     public func listenForStateChanges() {
-        connectionStateUpdater.state
+        lightningService.infoService.walletState
             .skip(first: 1)
             .distinct()
             .observeOn(DispatchQueue.main)
@@ -63,7 +57,7 @@ final class WalletCoordinator: NSObject, Coordinator {
             }.dispose(in: reactive.bag)
     }
     
-    private func updateFor(state: ConnectionStateUpdater.State) {
+    private func updateFor(state: InfoService.WalletState) {
         Logger.info("state: \(state)", customPrefix: "🗽")
         
         switch state {
@@ -73,6 +67,10 @@ final class WalletCoordinator: NSObject, Coordinator {
             presentSync()
         case .running:
             presentMain()
+        case .locked:
+            disconnectWalletDelegate?.disconnect()
+        case .error:
+            disconnectWalletDelegate?.disconnect()
         }
     }
     
@@ -244,7 +242,7 @@ final class WalletCoordinator: NSObject, Coordinator {
 
 extension WalletCoordinator: Routing {
     public func handle(_ route: Route) {
-        if connectionStateUpdater.state.value != .running {
+        if lightningService.infoService.walletState.value != .running {
             self.route = route
             return
         }

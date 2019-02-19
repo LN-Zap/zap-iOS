@@ -41,7 +41,6 @@
 		AD28844F21287B56003C3D94 /* SendViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD28844E21287B56003C3D94 /* SendViewModel.swift */; };
 		AD28CB7B211DE93300A31004 /* BlockExplorerSettingsItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD28CB7A211DE93300A31004 /* BlockExplorerSettingsItem.swift */; };
 		AD292F9020E69F0E00211AE7 /* AuthenticationViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0E2690C202CC4E30069E83C /* AuthenticationViewModel.swift */; };
-		AD2B8776221B216800308C1B /* ConnectionStateUpdater.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD7ED61F2209D09F007C5F2C /* ConnectionStateUpdater.swift */; };
 		AD2B8778221C413500308C1B /* Coordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD2B8777221C413500308C1B /* Coordinator.swift */; };
 		AD2D912C21567D4C001015B6 /* EventDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD2D912B21567D4C001015B6 /* EventDetailViewController.swift */; };
 		AD308987216F37E700B5489C /* TransactionServiceTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD308985216F37E300B5489C /* TransactionServiceTests.swift */; };
@@ -611,7 +610,6 @@
 		AD79E423219D90EF002589CA /* String+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Extensions.swift"; sourceTree = "<group>"; };
 		AD7ED61B22087812007C5F2C /* ManageWalletTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ManageWalletTableViewCell.swift; sourceTree = "<group>"; };
 		AD7ED61C22087812007C5F2C /* ManageWalletTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ManageWalletTableViewCell.xib; sourceTree = "<group>"; };
-		AD7ED61F2209D09F007C5F2C /* ConnectionStateUpdater.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConnectionStateUpdater.swift; sourceTree = "<group>"; };
 		AD7ED621220B4FE9007C5F2C /* FileManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FileManager.swift; sourceTree = "<group>"; };
 		AD7EDAE22108C4150058CCCA /* Wallet.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Wallet.storyboard; sourceTree = "<group>"; };
 		AD7EDAE42108C41D0058CCCA /* WalletViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WalletViewController.swift; sourceTree = "<group>"; };
@@ -995,7 +993,6 @@
 				A07C1032203DD5AF006C7FE8 /* Appearance.swift */,
 				A02C9FC3202F617D009821B1 /* BiometricAuthentication.swift */,
 				A0DDC077201B42EA00AEFF94 /* BockExplorer.swift */,
-				AD7ED61F2209D09F007C5F2C /* ConnectionStateUpdater.swift */,
 				ADE4CF1E20B5B6FC007C987A /* Environment.swift */,
 				A0C2EAC3206F9539003AE56E /* ExchangeUpdaterJob.swift */,
 				ADEDBC0920C31C5F00B71F17 /* Route.swift */,
@@ -2902,7 +2899,6 @@
 				AD615CF7211CAB0900680790 /* PaddingLabel.swift in Sources */,
 				AD391C6E20D16F89007EE22A /* SetupPinViewModel.swift in Sources */,
 				ADA179C62152864E001401F3 /* Storage.swift in Sources */,
-				AD2B8776221B216800308C1B /* ConnectionStateUpdater.swift in Sources */,
 				ADA865BE20ECB88500B1B74B /* FilterViewController.swift in Sources */,
 				AD391C5F20D16F7A007EE22A /* RecoverWalletViewController.swift in Sources */,
 				AD391C6B20D16F89007EE22A /* InputNumberFormatter.swift in Sources */,

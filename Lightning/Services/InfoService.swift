@@ -11,6 +11,14 @@ import SwiftBTC
 import SwiftLnd
 
 public final class InfoService {
+    public enum WalletState {
+        case connecting
+        case locked
+        case syncing
+        case running
+        case error
+    }
+    
     public let balanceService: BalanceService
     public let channelService: ChannelService
     public let historyService: HistoryService
@@ -20,6 +28,7 @@ public final class InfoService {
     public let blockHeight = Observable<Int?>(nil)
     public let network = Observable<Network?>(nil)
     public var info = Observable<Info?>(nil)
+    public var walletState = Observable<WalletState>(.connecting)
     
     private var heightJobTimer: Timer?
     private var updateInfoTimer: Timer?
@@ -41,7 +50,27 @@ public final class InfoService {
         updateInfoTimer?.fire()
     }
     
+    private func stateFor(_ result: Result<Info, LndApiError>) -> WalletState {
+        switch result {
+        case .success(let info):
+            if info.isSyncedToChain {
+                return .running
+            } else {
+                return .syncing
+            }
+        case .failure(let error):
+            switch error {
+            case .walletEncrypted:
+                return .locked
+            default:
+                return .error
+            }
+        }
+    }
+    
     private func updateInfo(result: Result<Info, LndApiError>) {
+        walletState.value = stateFor(result)
+        
         if let info = result.value {
             if blockHeight.value != info.blockHeight {
                 blockHeight.value = info.blockHeight
