@@ -11,8 +11,8 @@ import Foundation
  Displays the app's launch screen in a new window on top of everything else when
  the app is sent to the background.
  */
-final class BackgroundCoordinator {
-    private let rootViewController: RootViewController
+final class BackgroundCoordinator: Coordinator {
+    let rootViewController: RootViewController
     
     private var backgroundWindow: UIWindow?
     private weak var viewController: UIViewController?
@@ -20,6 +20,8 @@ final class BackgroundCoordinator {
     public init(rootViewController: RootViewController) {
         self.rootViewController = rootViewController
     }
+    
+    func start() {}
     
     func applicationWillEnterForeground() {
         viewController?.dismiss(animated: true) { [weak self] in

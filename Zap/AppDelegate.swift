@@ -28,6 +28,8 @@ final class AppDelegate: UIResponder, UIApplicationDelegate {
             rootCoordinator = RootCoordinator(window: window)
         }
         
+        rootCoordinator?.start()
+        
         if let url = launchOptions?[.url] as? URL {
             _ = handle(url: url)
             return false

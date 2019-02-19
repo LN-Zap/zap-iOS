@@ -11,7 +11,7 @@ import Lightning
 import SwiftBTC
 import SwiftLnd
 
-final class ToastCoordinator: NSObject {
+final class ToastNotificationObserver: NSObject {
     
     func start() {
         NotificationCenter.default.reactive
@@ -23,9 +23,9 @@ final class ToastCoordinator: NSObject {
                     else { return }
                 
                 if let invoice = transaction as? Invoice {
-                    ToastCoordinator.presentToast(satoshis: invoice.amount, memo: invoice.memo)
+                    ToastNotificationObserver.presentToast(satoshis: invoice.amount, memo: invoice.memo)
                 } else if let onChainTransaction = transaction as? SwiftLnd.Transaction {
-                    ToastCoordinator.presentToast(satoshis: onChainTransaction.amount)
+                    ToastNotificationObserver.presentToast(satoshis: onChainTransaction.amount)
                 }
                 
             }

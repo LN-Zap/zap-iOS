@@ -10,8 +10,8 @@ import Logger
 import SafariServices
 import UIKit
 
-final class WalletCoordinator: NSObject {
-    private let rootViewController: RootViewController
+final class WalletCoordinator: NSObject, Coordinator {
+    let rootViewController: RootViewController
     
     private let lightningService: LightningService
     private let channelListViewModel: ChannelListViewModel

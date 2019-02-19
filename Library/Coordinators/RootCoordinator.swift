@@ -13,19 +13,19 @@ protocol RootCoordinatorDelegate: class {
     func embedInRootContainer(viewController: UIViewController)
 }
 
-public final class RootCoordinator {
-    private let rootViewController: RootViewController
+public final class RootCoordinator: Coordinator {
+    let rootViewController: RootViewController
     private let authenticationCoordinator: AuthenticationCoordinator
     private let backgroundCoordinator: BackgroundCoordinator
-    private let toastCoordinator: ToastCoordinator = {
-        let coordinator = ToastCoordinator()
-        coordinator.start()
-        return coordinator
+    private let toastNotificationObserver: ToastNotificationObserver = {
+        let observer = ToastNotificationObserver()
+        observer.start()
+        return observer
     }()
     
     private let walletConfigurationStore = WalletConfigurationStore.load()
     
-    private var currentCoordinator: Any?
+    private var currentCoordinator: Coordinator?
     private var route: Route?
     
     var authenticationViewModel: AuthenticationViewModel { // SettingsDelegate
@@ -40,7 +40,9 @@ public final class RootCoordinator {
         window.rootViewController = self.rootViewController
         window.tintColor = UIColor.Zap.lightningOrange
         Appearance.setup()
-        
+    }
+    
+    public func start() {
         authenticationCoordinator.start()
         update()
     }
@@ -81,9 +83,9 @@ public final class RootCoordinator {
     }
     
     private func presentSetup(walletConfigurationStore: WalletConfigurationStore, remoteRPCConfiguration: RemoteRPCConfiguration?) {
-        let setupCoordinator = SetupCoordinator(rootViewController: rootViewController, authenticationViewModel: authenticationCoordinator.authenticationViewModel, delegate: self, walletConfigurationStore: walletConfigurationStore)
+        let setupCoordinator = SetupCoordinator(rootViewController: rootViewController, authenticationViewModel: authenticationCoordinator.authenticationViewModel, delegate: self, walletConfigurationStore: walletConfigurationStore, remoteRPCConfiguration: remoteRPCConfiguration)
         currentCoordinator = setupCoordinator
-        setupCoordinator.start(remoteRPCConfiguration: remoteRPCConfiguration)
+        setupCoordinator.start()
     }
     
     private func presentPinSetup() {

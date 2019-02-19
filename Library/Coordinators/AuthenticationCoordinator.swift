@@ -14,9 +14,9 @@ import Foundation
  It Adds those ViewControllers to a new `UIWindow` above the
  `RootViewController`.
  */
-final class AuthenticationCoordinator {
+final class AuthenticationCoordinator: Coordinator {
     let authenticationViewModel: AuthenticationViewModel
-    private let rootViewController: RootViewController
+    let rootViewController: RootViewController
 
     private var authenticationWindow: UIWindow?
     private weak var viewController: UIViewController?

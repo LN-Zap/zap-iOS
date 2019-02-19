@@ -11,8 +11,8 @@ protocol PinSetupCoordinatorDelegate: class {
     func didSetupPin()
 }
 
-final class PinSetupCoordinator {
-    private let rootViewController: RootViewController
+final class PinSetupCoordinator: Coordinator {
+    let rootViewController: RootViewController
     private let authenticationViewModel: AuthenticationViewModel
     private weak var delegate: PinSetupCoordinatorDelegate?
 

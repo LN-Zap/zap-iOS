@@ -13,24 +13,26 @@ protocol SetupCoordinatorDelegate: class {
     func connectWallet(configuration: WalletConfiguration)
 }
 
-final class SetupCoordinator {
-    private let rootViewController: RootViewController
+final class SetupCoordinator: Coordinator {
+    let rootViewController: RootViewController
     private let authenticationViewModel: AuthenticationViewModel
     private let walletConfigurationStore: WalletConfigurationStore
+    private let remoteRPCConfiguration: RemoteRPCConfiguration?
     
     private weak var navigationController: UINavigationController?
     private weak var delegate: SetupCoordinatorDelegate?
     private weak var connectRemoteNodeViewModel: ConnectRemoteNodeViewModel?
     private weak var mnemonicViewModel: MnemonicViewModel?
     
-    init(rootViewController: RootViewController, authenticationViewModel: AuthenticationViewModel, delegate: SetupCoordinatorDelegate, walletConfigurationStore: WalletConfigurationStore) {
+    init(rootViewController: RootViewController, authenticationViewModel: AuthenticationViewModel, delegate: SetupCoordinatorDelegate, walletConfigurationStore: WalletConfigurationStore, remoteRPCConfiguration: RemoteRPCConfiguration?) {
         self.rootViewController = rootViewController
         self.authenticationViewModel = authenticationViewModel
         self.delegate = delegate
         self.walletConfigurationStore = walletConfigurationStore
+        self.remoteRPCConfiguration = remoteRPCConfiguration
     }
 
-    func start(remoteRPCConfiguration: RemoteRPCConfiguration?) {
+    func start() {
         let viewController = walletConfigurationStore.isEmpty ? setupWalletViewController() : walletListViewController()
         
         let navigationController = ZapNavigationController(rootViewController: viewController)
