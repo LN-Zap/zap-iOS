@@ -2461,7 +2461,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "sourcery\n";
+			shellScript = "if [ -z \"$CI\" ]; then\n    if which sourcery >/dev/null; then\n        sourcery\n    else\n        echo \"warning: sourcery not installed, download from https://github.com/krzysztofzablocki/Sourcery\"\n    fi\nfi\n";
 		};
 		AE2DAF4D48A31C61FB3C2BFE /* [CP] Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
