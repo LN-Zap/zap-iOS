@@ -24,7 +24,7 @@ public final class WalletService {
             self.wallet = WalletApiStream()
         #endif
         case .remote(let configuration):
-            self.wallet = WalletApiRPC(configuration: configuration)
+            self.wallet = WalletApiRpc(configuration: configuration)
         }
     }
     
@@ -52,7 +52,7 @@ public final class WalletService {
         }
     }
     
-    public func unlockWallet(completion: @escaping (Result<Success, LndApiError>) -> Void) {
+    public func unlockWallet(password: String, completion: @escaping (Result<Success, LndApiError>) -> Void) {
         wallet.unlockWallet(password: password, completion: completion)
     }
 }

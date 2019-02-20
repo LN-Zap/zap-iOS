@@ -68,10 +68,21 @@ final class WalletCoordinator: NSObject, Coordinator {
         case .running:
             presentMain()
         case .locked:
-            disconnectWalletDelegate?.disconnect()
+            presentUnlockWallet()
         case .error:
             disconnectWalletDelegate?.disconnect()
         }
+    }
+    
+    private func presentUnlockWallet() {
+        guard
+            let configuration = walletConfigurationStore.selectedWallet,
+            let disconnectWalletDelegate = disconnectWalletDelegate
+            else { return }
+        let unlockWalletViewModel = UnlockWalletViewModel(lightningService: lightningService, configuration: configuration)
+        let viewController = UnlockWalletViewController.instantiate(unlockWalletViewModel: unlockWalletViewModel, disconnectWalletDelegate: disconnectWalletDelegate)
+        let navigationController = ZapNavigationController(rootViewController: viewController)
+        presentViewController(navigationController)
     }
     
     private func presentSync() {

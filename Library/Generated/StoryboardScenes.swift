@@ -113,6 +113,11 @@ internal enum StoryboardScene {
 
     internal static let timeLockedViewController = SceneType<TimeLockedViewController>(storyboard: TimeLocked.self, identifier: "TimeLockedViewController")
   }
+  internal enum UnlockWallet: StoryboardType {
+    internal static let storyboardName = "UnlockWallet"
+
+    internal static let unlockWalletViewController = SceneType<UnlockWalletViewController>(storyboard: UnlockWallet.self, identifier: "UnlockWalletViewController")
+  }
   internal enum Wallet: StoryboardType {
     internal static let storyboardName = "Wallet"
 

@@ -98,4 +98,9 @@ public final class LightningService: NSObject {
         #endif
         infoService.stop()
     }
+    
+    public func resetRpcConnection() {
+        guard let api = api as? RpcApi else { return }
+        api.resetConnection()
+    }
 }

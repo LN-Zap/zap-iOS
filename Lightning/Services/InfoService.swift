@@ -19,6 +19,8 @@ public final class InfoService {
         case error
     }
     
+    private let api: LightningApiProtocol
+    
     public let balanceService: BalanceService
     public let channelService: ChannelService
     public let historyService: HistoryService
@@ -34,10 +36,16 @@ public final class InfoService {
     private var updateInfoTimer: Timer?
     
     init(api: LightningApiProtocol, channelService: ChannelService, balanceService: BalanceService, historyService: HistoryService) {
+        self.api = api
+        
         self.channelService = channelService
         self.balanceService = balanceService
         self.historyService = historyService
         
+        start()
+    }
+    
+    public func start() {
         heightJobTimer = Timer.scheduledTimer(withTimeInterval: 120, repeats: true) { [weak self] _ in
             guard let network = self?.network.value else { return }
             BlockchainHeight.get(for: network) { self?.blockChainHeight.value = $0 }
@@ -45,9 +53,13 @@ public final class InfoService {
         heightJobTimer?.fire()
         
         updateInfoTimer = Timer.scheduledTimer(withTimeInterval: 1, repeats: true) { [weak self] _ in
-            api.info { self?.updateInfo(result: $0) }
+            self?.info { self?.updateInfo(result: $0) }
         }
         updateInfoTimer?.fire()
+    }
+    
+    public func info(completion: @escaping (Result<Info, LndApiError>) -> Void) {
+        api.info(completion: completion)
     }
     
     private func stateFor(_ result: Result<Info, LndApiError>) -> WalletState {
@@ -93,7 +105,7 @@ public final class InfoService {
         self.info.value = result.value
     }
     
-    func stop() {
+    public func stop() {
         heightJobTimer?.invalidate()
         updateInfoTimer?.invalidate()
     }

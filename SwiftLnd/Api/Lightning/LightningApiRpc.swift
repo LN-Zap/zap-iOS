@@ -9,17 +9,12 @@ import Foundation
 import LndRpc
 import SwiftBTC
 
-public final class LightningApiRPC: LightningApiProtocol {
+public final class LightningApiRpc: RpcApi, LightningApiProtocol {
     private let lnd: LNDLightning
-    private let macaroon: String
     
-    public init(configuration: RemoteRPCConfiguration) {
-        let host = configuration.url.absoluteString
-        lnd = LNDLightning(host: host)
-        if let certificate = configuration.certificate {
-            try? GRPCCall.setTLSPEMRootCerts(certificate, forHost: host)
-        }
-        macaroon = configuration.macaroon.hexadecimalString
+    override public init(configuration: RemoteRPCConfiguration) {
+        lnd = LNDLightning(host: configuration.url.absoluteString)
+        super.init(configuration: configuration)
     }
     
     public func canConnect(completion: @escaping (Bool) -> Void) {

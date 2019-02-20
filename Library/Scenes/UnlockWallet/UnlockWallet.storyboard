@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14460.20"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--Unlock Wallet View Controller-->
+        <scene sceneID="Fsq-Jd-r77">
+            <objects>
+                <viewController storyboardIdentifier="UnlockWalletViewController" id="hG6-QA-RDW" customClass="UnlockWalletViewController" customModule="Library" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="cE2-nz-h0Q">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="wdb-0R-08H">
+                                <rect key="frame" x="20" y="40" width="335" height="176.5"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gBY-2O-Qel">
+                                        <rect key="frame" x="0.0" y="0.0" width="335" height="20.5"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="E6a-DN-pQa">
+                                        <rect key="frame" x="0.0" y="30.5" width="335" height="30"/>
+                                        <nil key="textColor"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                        <textInputTraits key="textInputTraits" returnKeyType="done" secureTextEntry="YES" textContentType="password"/>
+                                    </textField>
+                                    <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" animating="YES" style="white" translatesAutoresizingMaskIntoConstraints="NO" id="crA-E8-KVB">
+                                        <rect key="frame" x="0.0" y="70.5" width="335" height="20"/>
+                                    </activityIndicatorView>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="g9Z-QG-zA0">
+                                        <rect key="frame" x="0.0" y="100.5" width="335" height="76"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="76" id="87R-U1-J1B"/>
+                                        </constraints>
+                                        <state key="normal" title="Button"/>
+                                        <connections>
+                                            <action selector="submitButtonTapped:" destination="hG6-QA-RDW" eventType="touchUpInside" id="W9W-AE-lOw"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                            </stackView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="wdb-0R-08H" firstAttribute="leading" secondItem="TsM-Ya-Ie2" secondAttribute="leading" constant="20" id="L0l-M2-7FS"/>
+                            <constraint firstItem="wdb-0R-08H" firstAttribute="top" secondItem="TsM-Ya-Ie2" secondAttribute="top" constant="20" id="Wye-r4-eBN"/>
+                            <constraint firstItem="TsM-Ya-Ie2" firstAttribute="trailing" secondItem="wdb-0R-08H" secondAttribute="trailing" constant="20" id="xp9-FC-z0C"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="TsM-Ya-Ie2"/>
+                    </view>
+                    <connections>
+                        <outlet property="activityIndicator" destination="crA-E8-KVB" id="AI0-5q-e7U"/>
+                        <outlet property="submitButton" destination="g9Z-QG-zA0" id="uH7-pe-NAN"/>
+                        <outlet property="textField" destination="E6a-DN-pQa" id="1Kf-Lb-3Cn"/>
+                        <outlet property="titleLabel" destination="gBY-2O-Qel" id="3Ta-dp-40U"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="noo-8A-0Pq" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="276" y="186.65667166416793"/>
+        </scene>
+    </scenes>
+</document>
