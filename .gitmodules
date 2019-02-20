@@ -1,0 +1,6 @@
+[submodule "googleapis"]
+	path = googleapis
+	url = https://github.com/googleapis/googleapis.git
+[submodule "SwiftBTC"]
+	path = SwiftBTC
+	url = https://github.com/LN-Zap/SwiftBTC.git

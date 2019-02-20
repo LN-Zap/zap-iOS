@@ -103,7 +103,7 @@ final class ConnectRemoteNodeViewModel: NSObject {
         }
     }
     
-    func connect(completion: @escaping (WalletConfiguration, Bool) -> Void) {
+    func connect(completion: @escaping (WalletConfiguration, SwiftLnd.Result<Success, LndApiError>) -> Void) {
         guard let remoteNodeConfiguration = remoteNodeConfiguration else { return }
 
         testServer = LightningApiRpc(configuration: remoteNodeConfiguration)
