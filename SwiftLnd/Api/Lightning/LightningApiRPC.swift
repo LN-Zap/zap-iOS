@@ -22,10 +22,8 @@ public final class LightningApiRPC: LightningApiProtocol {
         macaroon = configuration.macaroon.hexadecimalString
     }
     
-    public func canConnect(completion: @escaping (Bool) -> Void) {
-        lnd.rpcToGetInfo(with: LNDGetInfoRequest()) { response, _ in
-            completion(response != nil)
-        }.runWithMacaroon(macaroon)
+    public func canConnect(completion: @escaping Handler<Success>) {
+        lnd.rpcToGetInfo(with: LNDGetInfoRequest(), handler: createHandler(completion, transform: { _ in Success() })).runWithMacaroon(macaroon)
     }
     
     public func info(completion: @escaping Handler<Info>) {

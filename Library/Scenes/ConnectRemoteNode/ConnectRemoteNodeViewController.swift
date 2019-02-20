@@ -114,9 +114,9 @@ final class ConnectRemoteNodeViewController: UIViewController {
             .dispose(in: reactive.bag)
     }
     
-    private func displayError() {
+    private func displayError(_ error: Error) {
         DispatchQueue.main.async {
-            Toast.presentError(L10n.Scene.ConnectRemoteNode.serverError)
+            Toast.presentError("\(L10n.Scene.ConnectRemoteNode.serverError) (\(error.localizedDescription))")
         }
     }
     
@@ -144,12 +144,13 @@ final class ConnectRemoteNodeViewController: UIViewController {
         
         cell.textLabel?.isHidden = true
         
-        connectRemoteNodeViewModel?.connect { [weak self] configuration, success in
+        connectRemoteNodeViewModel?.connect { [weak self] configuration, result in
             DispatchQueue.main.async {
-                if success {
+                switch result {
+                case .success:
                     self?.didSetupWallet?(configuration)
-                } else {
-                    self?.displayError()
+                case .failure(let error):
+                    self?.displayError(error)
                 }
                 
                 activityIndicator.removeFromSuperview()
