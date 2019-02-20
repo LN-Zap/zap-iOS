@@ -1956,9 +1956,9 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = A0A05A1C2013CF960007D1C9 /* Build configuration list for PBXNativeTarget "Zap" */;
 			buildPhases = (
+				FBAC984A8CB01D906272F3C9 /* [CP] Check Pods Manifest.lock */,
 				ADEB61BB22170C2F009D5707 /* Sourcery */,
 				A0A05A312013F7880007D1C9 /* Swift Lint */,
-				FBAC984A8CB01D906272F3C9 /* [CP] Check Pods Manifest.lock */,
 				A0A059FB2013CF960007D1C9 /* Sources */,
 				A0A059FC2013CF960007D1C9 /* Frameworks */,
 				A0A059FD2013CF960007D1C9 /* Resources */,
