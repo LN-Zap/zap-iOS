@@ -70,7 +70,6 @@ fastlane/report.xml
 fastlane/Preview.html
 fastlane/test_output
 
-googleapis/
 .env.default
 protoc-gen-swift
 protoc-gen-swiftgrpc
