@@ -11,11 +11,12 @@ import Lightning
 import Logger
 import ReactiveKit
 
-final class UnlockWalletViewController: UIViewController {
+final class UnlockWalletViewController: UIViewController, KeyboardAdjustable {
     @IBOutlet private weak var titleLabel: UILabel!
     @IBOutlet private weak var textField: UITextField!
     @IBOutlet private weak var submitButton: UIButton!
     @IBOutlet private weak var activityIndicator: UIActivityIndicatorView!
+    @IBOutlet private weak var bottomConstraint: NSLayoutConstraint!
     
     // swiftlint:disable implicitly_unwrapped_optional
     private var unlockWalletViewModel: UnlockWalletViewModel!
@@ -35,7 +36,8 @@ final class UnlockWalletViewController: UIViewController {
         view.backgroundColor = UIColor.Zap.background
         
         title = L10n.Scene.Unlock.title
-        titleLabel.text = L10n.Scene.Unlock.titleLabel
+        titleLabel.text = L10n.Scene.Unlock.titleLabel(unlockWalletViewModel.nodeAlias)
+        
         textField.attributedPlaceholder = NSAttributedString(
             string: L10n.Scene.Unlock.passwordPlaceholder,
             attributes: [.foregroundColor: UIColor.Zap.gray]
@@ -61,6 +63,8 @@ final class UnlockWalletViewController: UIViewController {
             .map { ($0?.count ?? 0) > 7 && !$1 }
             .bind(to: submitButton.reactive.isEnabled)
             .dispose(in: reactive.bag)
+        
+        setupKeyboardNotifications(constraint: bottomConstraint)
     }
     
     override func viewWillDisappear(_ animated: Bool) {
@@ -70,7 +74,6 @@ final class UnlockWalletViewController: UIViewController {
     
     @IBAction private func submitButtonTapped(_ sender: Any) {
         guard let password = textField.text else { return }
-        textField.resignFirstResponder()
         unlockWalletViewModel.unlock(password: password)
     }
     

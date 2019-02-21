@@ -225,4 +225,4 @@
 "scene.unlock.title" = "Unlock Node";
 "scene.unlock.unlock_button" = "Unlock";
 "scene.unlock.password_placeholder" = "Password";
-"scene.unlock.title_label" = "Unlock your node:";
+"scene.unlock.title_label" = "Unlock %@";

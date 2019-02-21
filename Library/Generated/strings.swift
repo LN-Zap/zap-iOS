@@ -516,8 +516,10 @@ internal enum L10n {
       internal static let passwordPlaceholder = L10n.tr("Localizable", "scene.unlock.password_placeholder")
       /// Unlock Node
       internal static let title = L10n.tr("Localizable", "scene.unlock.title")
-      /// Unlock your node:
-      internal static let titleLabel = L10n.tr("Localizable", "scene.unlock.title_label")
+      /// Unlock %@
+      internal static func titleLabel(_ p1: String) -> String {
+        return L10n.tr("Localizable", "scene.unlock.title_label", p1)
+      }
       /// Unlock
       internal static let unlockButton = L10n.tr("Localizable", "scene.unlock.unlock_button")
     }
