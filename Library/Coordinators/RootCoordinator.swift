@@ -72,7 +72,11 @@ public final class RootCoordinator: Coordinator {
     
     private func presentSelectedWallet(_ configuration: WalletConfiguration) {
         #if REMOTEONLY
-        guard configuration.connection != .local else { return }
+        if configuration.connection == .local {
+            walletConfigurationStore.selectedWallet = nil
+            update()
+            return
+        }
         #endif
         
         guard let lightningService = LightningService(connection: configuration.connection, walletId: configuration.walletId) else { return }
