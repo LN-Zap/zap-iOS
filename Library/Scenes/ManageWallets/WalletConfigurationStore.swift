@@ -85,10 +85,8 @@ final class WalletConfigurationStore {
             switch ($0.connection, walletConfiguration.connection) {
             case let (.remote(oldConnection), .remote(newConnection)):
                 return oldConnection == newConnection
-            #if !REMOTEONLY
             default:
                 return false
-            #endif
             }
         }) else { return }
         configurations.append(walletConfiguration)

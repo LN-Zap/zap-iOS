@@ -419,6 +419,8 @@ internal enum L10n {
         internal static let currency = L10n.tr("Localizable", "scene.settings.item.currency")
         /// Need Help?
         internal static let help = L10n.tr("Localizable", "scene.settings.item.help")
+        /// Show lnd Log
+        internal static let lndLog = L10n.tr("Localizable", "scene.settings.item.lnd_log")
         /// Manage Channels
         internal static let manageChannels = L10n.tr("Localizable", "scene.settings.item.manage_channels")
         /// Node URI

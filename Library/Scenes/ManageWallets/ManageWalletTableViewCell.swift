@@ -26,10 +26,8 @@ class ManageWalletTableViewCell: UITableViewCell {
         networkLabel.text = walletConfiguration.network?.localized ?? "?"
         
         switch walletConfiguration.connection {
-        #if !REMOTEONLY
         case .local:
             remoteIndicatorLabel.text = "local"
-        #endif
         case .remote:
             remoteIndicatorLabel.text = "remote"
         }
