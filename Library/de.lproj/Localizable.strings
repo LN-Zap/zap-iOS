@@ -59,6 +59,7 @@
 "scene.settings.item.report_issue" = "Ein Problem melden";
 "scene.settings.item.help" = "Brauchst du Hilfe?";
 "scene.settings.item.privacy_policy" = "Datenschutz";
+"scene.settings.item.lnd_log" = "Show lnd Log";
 
 "scene.request.title" = "Empfangen";
 "scene.request.lightning_button" = "Lightning";
