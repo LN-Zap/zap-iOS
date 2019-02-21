@@ -19,9 +19,11 @@ public final class WalletService {
         self.connection = connection
         
         switch connection {
-        #if !REMOTEONLY
         case .local:
+        #if !REMOTEONLY
             self.wallet = WalletApiStream()
+        #else
+            fatalError(".local not supported")
         #endif
         case .remote(let configuration):
             self.wallet = WalletApiRPC(configuration: configuration)

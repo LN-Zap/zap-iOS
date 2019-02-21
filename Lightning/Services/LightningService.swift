@@ -33,10 +33,8 @@ public final class LightningService: NSObject {
     
     public var permissions: Permissions {
         switch connection {
-        #if !REMOTEONLY
         case .local:
             return Permissions.all
-        #endif
         case .remote(let connection):
             return connection.macaroon.permissions
         }

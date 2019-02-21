@@ -9,9 +9,7 @@ import Foundation
 import SwiftLnd
 
 public enum LightningConnection: Equatable, Codable {
-    #if !REMOTEONLY
     case local
-    #endif
     case remote(RemoteRPCConfiguration)
     
     public var api: LightningApiProtocol {
@@ -20,9 +18,11 @@ public enum LightningConnection: Equatable, Codable {
         }
         
         switch self {
-        #if !REMOTEONLY
         case .local:
+        #if !REMOTEONLY
             return LightningApiStream()
+        #else
+            fatalError(".local not supported")
         #endif
         case .remote(let configuration):
             return LightningApiRPC(configuration: configuration)
@@ -37,9 +37,7 @@ extension LightningConnection {
     }
     
     private enum Base: String, Codable {
-        #if !REMOTEONLY
         case local
-        #endif
         case remote
     }
     
@@ -48,10 +46,8 @@ extension LightningConnection {
         let base = try container.decode(Base.self, forKey: .base)
 
         switch base {
-        #if !REMOTEONLY
         case .local:
             self = .local
-        #endif
         case .remote:
             let remoteRpcConfiguration = try container.decode(RemoteRPCConfiguration.self, forKey: .remoteRpcConfiguration)
             self = .remote(remoteRpcConfiguration)
@@ -62,10 +58,8 @@ extension LightningConnection {
         var container = encoder.container(keyedBy: CodingKeys.self)
         
         switch self {
-        #if !REMOTEONLY
         case .local:
             try container.encode(Base.local, forKey: .base)
-        #endif
         case .remote(let remoteRPCConfiguration):
             try container.encode(Base.remote, forKey: .base)
             try container.encode(remoteRPCConfiguration, forKey: .remoteRpcConfiguration)
