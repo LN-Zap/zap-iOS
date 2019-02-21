@@ -221,3 +221,8 @@
 "scene.connect_node_uri.action_sheet.message" = "您真的想连接 %@ 节点吗？";
 
 "scene.wallet_list.title" = "Wallets";
+
+"scene.unlock.title" = "Unlock Node";
+"scene.unlock.unlock_button" = "Unlock";
+"scene.unlock.password_placeholder" = "Password";
+"scene.unlock.title_label" = "Unlock %@";
