@@ -59,6 +59,7 @@
 "scene.settings.item.report_issue" = "Prijavi problem";
 "scene.settings.item.help" = "Trebate li pomoć?";
 "scene.settings.item.privacy_policy" = "Politika privatnosti";
+"scene.settings.item.lnd_log" = "Show lnd Log";
 
 "scene.request.title" = "Primanje";
 "scene.request.lightning_button" = "Munja";
