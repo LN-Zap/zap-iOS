@@ -59,6 +59,7 @@
 "scene.settings.item.report_issue" = "الإبلاغ عن مشكلة";
 "scene.settings.item.help" = "تحتاج مساعدة؟";
 "scene.settings.item.privacy_policy" = "Privacy Policy";
+"scene.settings.item.lnd_log" = "Show lnd Log";
 
 "scene.request.title" = "تلقى";
 "scene.request.lightning_button" = "Lightning";
