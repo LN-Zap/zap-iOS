@@ -9,21 +9,33 @@ import SwiftLnd
 import UIKit
 
 final class SettingsViewController: GroupedTableViewController {
-    var info: Info?
+    private var info: Info?
     
-    static func instantiate(info: Info?, disconnectWalletDelegate: DisconnectWalletDelegate, authenticationViewModel: AuthenticationViewModel, pushChannelList: @escaping (UINavigationController) -> Void, pushNodeURIViewController: @escaping (UINavigationController) -> Void) -> SettingsViewController {
-        return SettingsViewController(info: info, disconnectWalletDelegate: disconnectWalletDelegate, authenticationViewModel: authenticationViewModel, pushChannelList: pushChannelList, pushNodeURIViewController: pushNodeURIViewController)
-    }
-    
-    private init(info: Info?, disconnectWalletDelegate: DisconnectWalletDelegate, authenticationViewModel: AuthenticationViewModel, pushChannelList: @escaping (UINavigationController) -> Void, pushNodeURIViewController: @escaping (UINavigationController) -> Void) {
+    init(info: Info?,
+         configuration: WalletConfiguration,
+         disconnectWalletDelegate: DisconnectWalletDelegate,
+         authenticationViewModel: AuthenticationViewModel,
+         pushChannelList: @escaping (UINavigationController) -> Void,
+         pushNodeURIViewController: @escaping (UINavigationController) -> Void,
+         pushLndLogViewController: @escaping (UINavigationController) -> Void) {
         self.info = info
         
         var lightningRows: [SettingsItem] = [
-            ManageChannelsSettingsItem(pushChannelList: pushChannelList)
+            PushViewControllerSettingsItem(title: L10n.Scene.Settings.Item.manageChannels, pushViewController: pushChannelList)
         ]
         
         if let info = info, !info.uris.isEmpty {
-            lightningRows.append(NodeURISettingsItem(pushNodeURIViewController: pushNodeURIViewController))
+            lightningRows.append(PushViewControllerSettingsItem(title: L10n.Scene.Settings.Item.nodeUri, pushViewController: pushNodeURIViewController))
+        }
+        
+        var walletRows: [SettingsItem] = [
+            RemoveRemoteNodeSettingsItem(disconnectWalletDelegate: disconnectWalletDelegate),
+            ChangePinSettingsItem(authenticationViewModel: authenticationViewModel)
+        ]
+        
+        if configuration.connection == .local {
+            walletRows.append(PushViewControllerSettingsItem(title: L10n.Scene.Settings.Item.lndLog, pushViewController: pushLndLogViewController)
+)
         }
         
         let sections: [Section<SettingsItem>] = [
@@ -34,10 +46,7 @@ final class SettingsViewController: GroupedTableViewController {
                 BlockExplorerSelectionSettingsItem()
             ]),
             Section(title: "Lightning", rows: lightningRows),
-            Section(title: L10n.Scene.Settings.Section.wallet, rows: [
-                RemoveRemoteNodeSettingsItem(disconnectWalletDelegate: disconnectWalletDelegate),
-                ChangePinSettingsItem(authenticationViewModel: authenticationViewModel)
-            ]),
+            Section(title: L10n.Scene.Settings.Section.wallet, rows: walletRows),
             Section(title: nil, rows: [
                 // swiftlint:disable:next force_unwrapping
                 SafariSettingsItem(title: L10n.Scene.Settings.Item.help, url: URL(string: L10n.Link.help)!),

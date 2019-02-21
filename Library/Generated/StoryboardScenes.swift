@@ -50,17 +50,17 @@ internal enum StoryboardScene {
 
     internal static let selectWalletCreationMethodViewController = SceneType<SelectWalletCreationMethodViewController>(storyboard: CreateWallet.self, identifier: "SelectWalletCreationMethodViewController")
   }
-  internal enum Debug: StoryboardType {
-    internal static let storyboardName = "Debug"
-
-    internal static let initialScene = InitialSceneType<UIKit.UINavigationController>(storyboard: Debug.self)
-  }
   internal enum History: StoryboardType {
     internal static let storyboardName = "History"
 
     internal static let filterViewController = SceneType<FilterViewController>(storyboard: History.self, identifier: "FilterViewController")
 
     internal static let historyViewController = SceneType<HistoryViewController>(storyboard: History.self, identifier: "HistoryViewController")
+  }
+  internal enum LndLog: StoryboardType {
+    internal static let storyboardName = "LndLog"
+
+    internal static let lndLogViewController = SceneType<LndLogViewController>(storyboard: LndLog.self, identifier: "LndLogViewController")
   }
   internal enum Loading: StoryboardType {
     internal static let storyboardName = "Loading"

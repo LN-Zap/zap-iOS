@@ -111,8 +111,19 @@ final class WalletCoordinator: NSObject, Coordinator {
     }
 
     func settingsViewController() -> ZapNavigationController {
-        guard let disconnectWalletDelegate = disconnectWalletDelegate else { fatalError("Didn't set disconnectWalletDelegate") }
-        let settingsViewController = SettingsViewController.instantiate(info: lightningService.infoService.info.value, disconnectWalletDelegate: disconnectWalletDelegate, authenticationViewModel: authenticationViewModel, pushChannelList: pushChannelList, pushNodeURIViewController: pushNodeURIViewController)
+        guard
+            let disconnectWalletDelegate = disconnectWalletDelegate,
+            let configuration = walletConfigurationStore.selectedWallet
+            else { fatalError("Didn't set disconnectWalletDelegate") }
+        
+        let settingsViewController = SettingsViewController(
+            info: lightningService.infoService.info.value,
+            configuration: configuration,
+            disconnectWalletDelegate: disconnectWalletDelegate,
+            authenticationViewModel: authenticationViewModel,
+            pushChannelList: pushChannelList,
+            pushNodeURIViewController: pushNodeURIViewController,
+            pushLndLogViewController: pushLndLogViewController)
         
         let navigationController = ZapNavigationController(rootViewController: settingsViewController)
         
@@ -237,6 +248,12 @@ final class WalletCoordinator: NSObject, Coordinator {
 
         let nodeURIViewController = QRCodeDetailViewController.instantiate(with: qrCodeDetailViewModel)
         navigationController.pushViewController(nodeURIViewController, animated: true)
+    }
+    
+    private func pushLndLogViewController(on navigationController: UINavigationController) {
+        guard let configuration = walletConfigurationStore.selectedWallet else { return }
+        let viewController = LndLogViewController.instantiate(walletConfiguration: configuration)
+        navigationController.pushViewController(viewController, animated: true)
     }
 }
 
