@@ -9,7 +9,7 @@ import Foundation
 import SwiftLnd
 
 public final class WalletService {
-    private let password = "12345678" // TODO: save random pw in secure enclave
+    public static let password = "12345678" // TODO: save random pw in secure enclave
     
     private(set) var isUnlocked = false
     private let wallet: WalletApiProtocol
@@ -46,7 +46,7 @@ public final class WalletService {
     }
     
     public func initWallet(mnemonic: [String], completion: @escaping (Result<Success, LndApiError>) -> Void) {
-        wallet.initWallet(mnemonic: mnemonic, password: password) {
+        wallet.initWallet(mnemonic: mnemonic, password: WalletService.password) {
             if $0.value != nil {
                 WalletService.didCreateWallet = true
             }

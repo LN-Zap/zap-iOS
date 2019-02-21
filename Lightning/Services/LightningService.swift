@@ -63,7 +63,7 @@ public final class LightningService: NSObject {
         #if !REMOTEONLY
         if connection == .local {
             LocalLnd.start(walletId: walletId)
-            WalletService(connection: connection).unlockWallet { _ in }
+            WalletService(connection: connection).unlockWallet(password: WalletService.password) { _ in }
         }
         #endif
         
