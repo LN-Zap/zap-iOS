@@ -59,6 +59,7 @@
 "scene.settings.item.report_issue" = "报告问题";
 "scene.settings.item.help" = "需要帮助吗？";
 "scene.settings.item.privacy_policy" = "隐私政策";
+"scene.settings.item.lnd_log" = "Show lnd Log";
 
 "scene.request.title" = "收款";
 "scene.request.lightning_button" = "闪电";
