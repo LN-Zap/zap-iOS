@@ -511,6 +511,18 @@ internal enum L10n {
         internal static let transactionDetail = L10n.tr("Localizable", "scene.transaction_detail.title.transaction_detail")
       }
     }
+    internal enum Unlock {
+      /// Password
+      internal static let passwordPlaceholder = L10n.tr("Localizable", "scene.unlock.password_placeholder")
+      /// Unlock Node
+      internal static let title = L10n.tr("Localizable", "scene.unlock.title")
+      /// Unlock %@
+      internal static func titleLabel(_ p1: String) -> String {
+        return L10n.tr("Localizable", "scene.unlock.title_label", p1)
+      }
+      /// Unlock
+      internal static let unlockButton = L10n.tr("Localizable", "scene.unlock.unlock_button")
+    }
     internal enum Wallet {
       /// Wallet
       internal static let title = L10n.tr("Localizable", "scene.wallet.title")

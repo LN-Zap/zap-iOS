@@ -63,7 +63,7 @@ public final class LightningService: NSObject {
         #if !REMOTEONLY
         if connection == .local {
             LocalLnd.start(walletId: walletId)
-            WalletService(connection: connection).unlockWallet { _ in }
+            WalletService(connection: connection).unlockWallet(password: WalletService.password) { _ in }
         }
         #endif
         
@@ -95,5 +95,10 @@ public final class LightningService: NSObject {
         LocalLnd.stop()
         #endif
         infoService.stop()
+    }
+    
+    public func resetRpcConnection() {
+        guard let api = api as? RpcApi else { return }
+        api.resetConnection()
     }
 }

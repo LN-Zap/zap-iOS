@@ -25,7 +25,7 @@ public enum LightningConnection: Equatable, Codable {
             fatalError(".local not supported")
         #endif
         case .remote(let configuration):
-            return LightningApiRPC(configuration: configuration)
+            return LightningApiRpc(configuration: configuration)
         }
     }
 }

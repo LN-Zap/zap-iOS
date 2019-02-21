@@ -9,7 +9,7 @@ import Foundation
 import SwiftLnd
 
 public final class WalletService {
-    private let password = "12345678" // TODO: save random pw in secure enclave
+    public static let password = "12345678" // TODO: save random pw in secure enclave
     
     private(set) var isUnlocked = false
     private let wallet: WalletApiProtocol
@@ -26,7 +26,7 @@ public final class WalletService {
             fatalError(".local not supported")
         #endif
         case .remote(let configuration):
-            self.wallet = WalletApiRPC(configuration: configuration)
+            self.wallet = WalletApiRpc(configuration: configuration)
         }
     }
     
@@ -46,7 +46,7 @@ public final class WalletService {
     }
     
     public func initWallet(mnemonic: [String], completion: @escaping (Result<Success, LndApiError>) -> Void) {
-        wallet.initWallet(mnemonic: mnemonic, password: password) {
+        wallet.initWallet(mnemonic: mnemonic, password: WalletService.password) {
             if $0.value != nil {
                 WalletService.didCreateWallet = true
             }
@@ -54,7 +54,7 @@ public final class WalletService {
         }
     }
     
-    public func unlockWallet(completion: @escaping (Result<Success, LndApiError>) -> Void) {
+    public func unlockWallet(password: String, completion: @escaping (Result<Success, LndApiError>) -> Void) {
         wallet.unlockWallet(password: password, completion: completion)
     }
 }
