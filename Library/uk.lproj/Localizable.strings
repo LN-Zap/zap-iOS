@@ -59,6 +59,7 @@
 "scene.settings.item.report_issue" = "Повідомте про проблему";
 "scene.settings.item.help" = "Потрібна допомога?";
 "scene.settings.item.privacy_policy" = "Privacy Policy";
+"scene.settings.item.lnd_log" = "Show lnd Log";
 
 "scene.request.title" = "Отримати";
 "scene.request.lightning_button" = "Блискавичні";
