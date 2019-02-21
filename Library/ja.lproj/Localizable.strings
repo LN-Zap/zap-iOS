@@ -59,6 +59,7 @@
 "scene.settings.item.report_issue" = "問題を報告します。";
 "scene.settings.item.help" = "ヘルプが必要ですか。";
 "scene.settings.item.privacy_policy" = "Privacy Policy";
+"scene.settings.item.lnd_log" = "Show lnd Log";
 
 "scene.request.title" = "受け取る";
 "scene.request.lightning_button" = "ライトニング";
