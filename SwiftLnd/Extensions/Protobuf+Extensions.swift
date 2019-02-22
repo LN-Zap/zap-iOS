@@ -16,7 +16,7 @@ extension LNDInvoice {
             self.memo = memo
         }
         if let amount = amount {
-            value = Int64(truncating: amount as NSDecimalNumber)
+            value = amount.int64
         }
         private_p = true
     }
@@ -69,7 +69,7 @@ extension LNDOpenChannelRequest {
             nodePubkey = pubKey
         }
         nodePubkeyString = pubKey
-        localFundingAmount = Int64(truncating: amount as NSDecimalNumber)
+        localFundingAmount = amount.int64
         private_p = true
     }
 }
@@ -79,7 +79,7 @@ extension LNDSendCoinsRequest {
         self.init()
 
         self.addr = address.string
-        self.amount = Int64(truncating: amount as NSDecimalNumber)
+        self.amount = amount.int64
     }
 }
 
@@ -89,7 +89,7 @@ extension LNDSendRequest {
 
         self.paymentRequest = paymentRequest
         if let amount = amount {
-            self.amt = Int64(truncating: amount as NSDecimalNumber)
+            self.amt = amount.int64
         }
     }
 }
@@ -112,7 +112,7 @@ extension LNDQueryRoutesRequest {
         self.init()
 
         pubKey = destination
-        amt = Int64(truncating: amount as NSDecimalNumber)
+        amt = amount.int64
         numRoutes = 10
     }
 }
