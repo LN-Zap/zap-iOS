@@ -49,6 +49,7 @@ final class UnlockWalletViewController: UIViewController, KeyboardAdjustable {
         Style.textField(color: .white).apply(to: textField)
         
         textField.becomeFirstResponder()
+        textField.delegate = self
         
         navigationItem.leftBarButtonItem = UIBarButtonItem(barButtonSystemItem: .cancel, target: self, action: #selector(cancel))
         
@@ -73,11 +74,24 @@ final class UnlockWalletViewController: UIViewController, KeyboardAdjustable {
     }
     
     @IBAction private func submitButtonTapped(_ sender: Any) {
+        unlock()
+    }
+    
+    private func unlock() {
         guard let password = textField.text else { return }
         unlockWalletViewModel.unlock(password: password)
     }
     
     @objc private func cancel() {
         disconnectWalletDelegate.disconnect()
+    }
+}
+
+extension UnlockWalletViewController: UITextFieldDelegate {
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        if (textField.text?.count ?? 0) > 7 && !unlockWalletViewModel.isUnlocking.value {
+            unlock()
+        }
+        return false
     }
 }
