@@ -14,6 +14,17 @@ public enum LndApiError: Error, LocalizedError, Equatable {
     case localizedError(String)
     case unknownError
     
+    public init(error: NSError) {
+        switch error.code {
+        case 12:
+            self = .walletEncrypted
+        case 13:
+            self = .lndNotRunning
+        default:
+            self = .localizedError(error.localizedDescription)
+        }
+    }
+    
     public var errorDescription: String? {
         switch self {
         case .localizedError(let description):

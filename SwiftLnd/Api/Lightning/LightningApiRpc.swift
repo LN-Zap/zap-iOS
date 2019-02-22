@@ -18,7 +18,18 @@ public final class LightningApiRpc: RpcApi, LightningApiProtocol {
     }
     
     public func canConnect(completion: @escaping Handler<Success>) {
-        lnd.rpcToGetInfo(with: LNDGetInfoRequest(), handler: createHandler(completion, transform: { _ in Success() })).runWithMacaroon(macaroon)
+        lnd.rpcToGetInfo(with: LNDGetInfoRequest(), handler: { _, error in
+            if let error = error as NSError? {
+                let lndError = LndApiError(error: error)
+                
+                if lndError != .walletEncrypted {
+                    completion(.failure(lndError))
+                    return
+                }
+            }
+            
+            completion(.success(Success()))
+        }).runWithMacaroon(macaroon)
     }
     
     public func info(completion: @escaping Handler<Info>) {

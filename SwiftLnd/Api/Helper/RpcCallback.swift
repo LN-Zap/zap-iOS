@@ -33,17 +33,9 @@ func createHandler<T, U>(_ completion: @escaping Handler<U>, transform: @escapin
         if let response = response {
             completion(transform(response))
         } else if let error = error as NSError? {
-            switch error.code {
-            case 12:
-                Logger.error(LndApiError.walletEncrypted)
-                completion(.failure(LndApiError.walletEncrypted))
-            case 13:
-                Logger.error(LndApiError.lndNotRunning)
-                completion(.failure(LndApiError.lndNotRunning))
-            default:
-                Logger.error(error)
-                completion(.failure(LndApiError.localizedError(error.localizedDescription)))
-            }
+            let error = LndApiError(error: error)
+            Logger.error(error)
+            completion(.failure(error))
         }
     }
 }
