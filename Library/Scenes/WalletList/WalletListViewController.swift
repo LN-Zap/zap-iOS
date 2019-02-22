@@ -33,6 +33,10 @@ final class WalletListViewController: ModalDetailViewController {
 
     }
     
+    private func isSelectedConfiguration(_ configuration: WalletConfiguration) -> Bool {
+        return configuration == walletConfigurationStore.selectedWallet
+    }
+    
     func addWalletConfiguration(_ configuration: WalletConfiguration) {
         contentStackView.addArrangedElement(.separator)
         var horizontalStackViewContent: [StackViewElement] = [
@@ -42,7 +46,7 @@ final class WalletListViewController: ModalDetailViewController {
             ], spacing: 4)
         ]
         
-        if configuration == walletConfigurationStore.selectedWallet {
+        if isSelectedConfiguration(configuration) {
             let imageView = UIImageView(image: Asset.iconCheckGreen.image)
             imageView.contentMode = .scaleAspectFit
             horizontalStackViewContent.append(.customView(imageView))
@@ -57,7 +61,11 @@ final class WalletListViewController: ModalDetailViewController {
     }
     
     @objc func handleTap(sender: UITapGestureRecognizer) {
-        guard let configuration = configurations[sender] else { return }
+        guard
+            let configuration = configurations[sender],
+            !isSelectedConfiguration(configuration)
+            else { return }
+        
         disconnectWalletDelegate?.reconnect(walletConfiguration: configuration)
         dismiss(animated: true, completion: nil)
     }
