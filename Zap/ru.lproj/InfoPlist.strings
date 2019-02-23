@@ -6,7 +6,7 @@
   Copyright © 2018 Zap. All rights reserved.
 */
 
-"applicationShortcutItem.send" = "Send";
-"applicationShortcutItem.request" = "Receive";
-"NSCameraUsageDescription" = "Zap requires access to your phone’s camera.";
-"NSFaceIDUsageDescription" = "Zap requires access to Face ID.";
+"applicationShortcutItem.send" = "Отправить";
+"applicationShortcutItem.request" = "Получить";
+"NSCameraUsageDescription" = "Zap требуется доступ к камере телефона.";
+"NSFaceIDUsageDescription" = "Zap требуется доступ к Face ID.";
