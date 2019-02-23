@@ -113,38 +113,38 @@
 "scene.connect_remote_node.scan_button" = "Отсканировать";
 "scene.connect_remote_node.paste_button" = "Вставить";
 "scene.connect_remote_node.help_button" = "Нужна Помощь?";
-"scene.connect_remote_node.server_error" = "Could not connect to server.";
-"scene.connect_remote_node.your_node_title" = "Your Node";
-"scene.connect_remote_node.certificate_detail.certificate_title" = "Certificate";
+"scene.connect_remote_node.server_error" = "Не удалось подключиться к серверу.";
+"scene.connect_remote_node.your_node_title" = "Ваш Узел";
+"scene.connect_remote_node.certificate_detail.certificate_title" = "Сертификат";
 "scene.connect_remote_node.certificate_detail.macaroon_title" = "Macaroon";
-"scene.connect_remote_node.edit_url.title" = "Address";
+"scene.connect_remote_node.edit_url.title" = "Адрес";
 
-"scene.create_wallet.title" = "Create Wallet";
-"scene.create_wallet.description_label" = "Make sure to store the mnemonic at a save location.";
-"scene.create_wallet.next_button" = "Next";
+"scene.create_wallet.title" = "Создать Кошелёк";
+"scene.create_wallet.description_label" = "Не забудьте сохранить парольную фразу в надежном месте.";
+"scene.create_wallet.next_button" = "Следуюший";
 
-"scene.recover_wallet.title" = "Recover Wallet";
-"scene.recover_wallet.done_button" = "Done";
-"scene.recover_wallet.description_label" = "Enter your seed:";
+"scene.recover_wallet.title" = "Восстановление Кошелька";
+"scene.recover_wallet.done_button" = "Готово";
+"scene.recover_wallet.description_label" = "Введите парольную фразу:";
 "scene.recover_wallet.placeholder" = "abandon ability able about above absent absorb abstract absurd abuse access accident account accuse achieve acid acoustic acquire across act action actor actress actual";
 
-"scene.select_wallet_connection.title" = "Add Wallet";
-"scene.select_wallet_connection.create.title" = "Create";
-"scene.select_wallet_connection.create.message" = "new wallet";
-"scene.select_wallet_connection.recover.title" = "Recover";
-"scene.select_wallet_connection.recover.message" = "existing wallet";
-"scene.select_wallet_connection.connect.title" = "Connect";
-"scene.select_wallet_connection.connect.message" = "remote node";
-"scene.select_wallet_connection.disabled_alert.title" = "Sorry!";
-"scene.select_wallet_connection.disabled_alert.message" = "Running Lnd on the phone is disabled in this beta. Connect to a remote node instead.";
-"scene.select_wallet_connection.disabled_alert.ok_button" = "Ok";
-"scene.select_wallet_connection.create.help" = "Need Help?";
+"scene.select_wallet_connection.title" = "Добавть Кошелек";
+"scene.select_wallet_connection.create.title" = "Создать";
+"scene.select_wallet_connection.create.message" = "новый кошелек";
+"scene.select_wallet_connection.recover.title" = "Восстановить";
+"scene.select_wallet_connection.recover.message" = "существующий кошелек";
+"scene.select_wallet_connection.connect.title" = "Подключиться";
+"scene.select_wallet_connection.connect.message" = "удаленный узел";
+"scene.select_wallet_connection.disabled_alert.title" = "Извените!";
+"scene.select_wallet_connection.disabled_alert.message" = "Запуск Lnd на телефоне отключен в этой бета-версии. Подключиться к удаленному узлу.";
+"scene.select_wallet_connection.disabled_alert.ok_button" = "Подтвердить";
+"scene.select_wallet_connection.create.help" = "Нужна помощь?";
 
-"scene.main.send_button" = "Send";
-"scene.main.receive_button" = "Receive";
+"scene.main.send_button" = "Отправить";
+"scene.main.receive_button" = "Получить";
 "scene.main.exchange_rate_label" = "%@ per BTC";
 
-"scene.qr_code_detail.title" = "Receive";
+"scene.qr_code_detail.title" = "Получить";
 
 "scene.sync.description_label" = "Синхронизация с блокчейном…";
 "scene.sync.disconnect_bar_button" = "Отключить";
