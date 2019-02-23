@@ -5,12 +5,14 @@
 [![Twitter](https://img.shields.io/badge/twitter-@srdanrasic-red.svg?style=flat)](https://twitter.com/srdanrasic)
 
 <br>
+
+**Update: Bond 7 has been released!** Check out [the migration guide](Documentation/Migration.md) to learn more about the update.
+
 Bond is a Swift binding framework that takes binding concepts to a whole new level. It's simple, powerful, type-safe and multi-paradigm - just like Swift.
 
 Bond is built on top of ReactiveKit and bridges the gap between the reactive and imperative paradigms. You can use it as a standalone framework to simplify your state changes with bindings and reactive data sources, but you can also use it with ReactiveKit to complement your reactive data flows with bindings, reactive delegates and reactive data sources.
 
 Bond is a backbone of the [Binder Architecture](https://github.com/DeclarativeHub/TheBinderArchitecture) - a preferred architecture to be used with the framework.
-
 
 ## Why use Bond?
 
@@ -36,7 +38,7 @@ textField.reactive.text.bind(to: label)
 
 That one line establishes a binding between the text field's text property and label's text property. In effect, whenever user makes a change to the text field, that change will automatically be propagated to the label.
 
-More often than not, direct binding is not enough. Usually you need to transform input is some way, like prepending a greeting to a name. As Bond is backed by ReactiveKit it has full confidence in functional paradigm.
+More often than not, direct binding is not enough. Usually you need to transform input is some way, like prepending a greeting to a name. As Bond is backed by [ReactiveKit](https://github.com/DeclarativeHub/ReactiveKit) it has full confidence in functional paradigm.
 
 ```swift
 textField.reactive.text
@@ -145,23 +147,23 @@ let names = MutableObservableArray(["Steve", "Tim"])
 ...
 
 names.observeNext { e in
-  print("array: \(e.source), change: \(e.change)")
+  print("array: \(e.collection), diff: \(e.diff), patch: \(e.patch)")
 }
 ```
 
 You work with the observable array like you would work with the array it encapsulates.
 
 ```swift
-names.append("John") // prints: array ["Steve", "Tim", "John"], change: .inserts([2])
-names.removeLast()   // prints: array ["Steve", "Tim"], change: .deletes([2])
-names[1] = "Mark"    // prints: array ["Steve", "Mark"], change: .updates([1])
+names.append("John") // prints: array: ["Steve", "Tim", "John"], diff: Inserts: [2], patch: [I(John, at: 2)]
+names.removeLast()   // prints: array: ["Steve", "Tim"], diff: Deletes: [2], patch: [D(at: 2)]
+names[1] = "Mark"    // prints: array: ["Steve", "Mark"], diff: Updates: [1], patch: [U(at: 1, newElement: Mark)]
 ```
 
 Peek into [observable collections documentation](Documentation/ObservableCollections.md) to learn more about observable collections.
 
 ## Data Source Signals
 
-Observable collections and other data source signals enable us to build powerful UI bindings. For example, an observable array could be bound to a collection view just like this:
+Observable collections and other data source signals enable us to build powerful UI bindings. For example, an observable array can be bound to a collection view just like this:
 
 ```swift
 names.bind(to: collectionView, cellType: UserCell.self) { (cell, name) in
@@ -177,11 +179,16 @@ Bond provides `NSObject` extensions that make it easy to convert delegate method
 
 Bond uses protocol proxies to implement table and collection view bindings and to provide signals like `tableView.reactive.selectedRowIndexPath`. Check out [the protocol proxies documentation](Documentation/ProtocolProxies.md) to learn more.
 
+## Community Extensions
+
+Make sure to check out [Extensions directory](Extensions). It contains extensions that make Bond easy to use with other frameworks and libraries, like Realm. 
+
+If you have an extensions that makes your favourite framework work with Bond and you'd like to share it with everyone, we'd be more than happy to accept your PR. 
 
 ## Requirements
 
-* iOS 8.0+ / macOS 10.9+ / tvOS 9.0+
-* Xcode 9
+* iOS 8.0+ / macOS 10.11+ / tvOS 9.0+
+* Swift 4.2
 
 ## Communication
 
@@ -209,7 +216,7 @@ Bond uses protocol proxies to implement table and collection view bindings and t
 
 The MIT License (MIT)
 
-Copyright (c) 2015-2018 Srdan Rasic (@srdanrasic)
+Copyright (c) 2015-2019 Srdan Rasic (@srdanrasic)
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal

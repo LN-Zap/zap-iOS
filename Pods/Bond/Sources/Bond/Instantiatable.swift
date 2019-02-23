@@ -1,7 +1,7 @@
 //
 //  The MIT License (MIT)
 //
-//  Copyright (c) 2017 Tony Arnold (@tonyarnold)
+//  Copyright (c) 2018 DeclarativeHub/Bond
 //
 //  Permission is hereby granted, free of charge, to any person obtaining a copy
 //  of this software and associated documentation files (the "Software"), to deal
@@ -22,15 +22,9 @@
 //  THE SOFTWARE.
 //
 
-public protocol QueryableDataSourceProtocol: DataSourceProtocol {
-    associatedtype Item
-    associatedtype Index
-    func item(at index: Index) -> Item
-}
+import Foundation
 
-extension Array: QueryableDataSourceProtocol {
-    
-    public func item(at index: Int) -> Element {
-        return self[index]
-    }
+public protocol Instantiatable {
+
+    init()
 }
