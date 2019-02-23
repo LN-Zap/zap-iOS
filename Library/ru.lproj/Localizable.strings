@@ -1,52 +1,52 @@
-"generic.memo.placeholder" = "What is this for?";
-"generic.qr_code.copy_button" = "Copy";
-"generic.qr_code.copy_success_message" = "Address has been copied to clipboard.";
-"generic.pasteboard.invalid_address" = "Invalid Address";
-"generic.qr_code.share_button" = "Share";
-"generic.cancel" = "Cancel";
+"generic.memo.placeholder" = "Что это?";
+"generic.qr_code.copy_button" = "Скопировать";
+"generic.qr_code.copy_success_message" = "Адрес скопирован в буфер обмена.";
+"generic.pasteboard.invalid_address" = "Не правильный адрес";
+"generic.qr_code.share_button" = "Поделиться";
+"generic.cancel" = "Отменить";
 
 "link.help" = "https://ln-zap.github.io/zap-tutorials/";
 "link.help.zapconnect" = "https://ln-zap.github.io/zap-tutorials/iOS-remote-node-setup";
 
-"error.wrong_uri_format" = "Unknown link format.";
-"error.wrong_uri_network" = "You tried opening a link for %@ but your node is connected to %@.";
-"error.block_explorer.unsupported_network" = "%@ does not support %@.";
+"error.wrong_uri_format" = "Неизвестный формат ссылки.";
+"error.wrong_uri_network" = "Вы пытались открыть ссылку для %@, но ваш узел подключен к %@.";
+"error.block_explorer.unsupported_network" = "%@ не поддерживает %@.";
 
-"rpc_connect_qrcode_error.btc_pay_expired" = "Looks like the code is expired.";
-"rpc_connect_qrcode_error.btc_pay_configuration_broken" = "Could not read BTCPay configurations file.";
-"rpc_connect_qrcode_error.cant_read_qrcode" = "Invalid code format.";
-"rpc_connect_qrcode_error.code_updated" = "Connection updated.";
+"rpc_connect_qrcode_error.btc_pay_expired" = "Похоже, код просрочен.";
+"rpc_connect_qrcode_error.btc_pay_configuration_broken" = "Не удалось прочитать файл конфигурации BTCPay.";
+"rpc_connect_qrcode_error.cant_read_qrcode" = "Неверный формат кода.";
+"rpc_connect_qrcode_error.code_updated" = "Соединение обновлено.";
 
-"channel.state.active" = "Online";
-"channel.state.inactive" = "Offline";
-"channel.state.opening" = "Opening";
-"channel.state.closing" = "Closing";
-"channel.state.force_closing" = "Force Closing";
-"channel.state.waiting_close" = "Waiting Close";
+"channel.state.active" = "Онлайн";
+"channel.state.inactive" = "Оффлайн";
+"channel.state.opening" = "Открытие";
+"channel.state.closing" = "Закрытие";
+"channel.state.force_closing" = "Принудительное Закрытие";
+"channel.state.waiting_close" = "Ожидание Закрытия";
 
 "network_type.regtest" = "Regtest";
-"network_type.testnet" = "Testnet";
-"network_type.mainnet" = "Mainnet";
+"network_type.testnet" = "Тестовая сеть";
+"network_type.mainnet" = "Главная сеть";
 
-"unit.bitcoin.btc" = "Bitcoin";
-"unit.bitcoin.mbtc" = "Milli Bitcoin";
-"unit.bitcoin.bit" = "Bits";
-"unit.bitcoin.satoshi" = "Satoshis";
+"unit.bitcoin.btc" = "Биткоин";
+"unit.bitcoin.mbtc" = "Милли Биткоин";
+"unit.bitcoin.bit" = "Биты";
+"unit.bitcoin.satoshi" = "Сатоши";
 
-"toast.invoice" = "Did receive %@";
-"toast.invoice_memo" = "Did receive %@ \"%@\"";
+"toast.invoice" = "Получил %@";
+"toast.invoice_memo" = "Получил %@ \"%@\"";
 
-"transaction.no_destination_address" = "No destination address";
+"transaction.no_destination_address" = "Нет адреса назначения";
 
-"view.amount_input.placeholder" = "Amount";
+"view.amount_input.placeholder" = "Количество";
 
-"scene.history.title" = "History";
-"scene.history.empty_state_label" = "0 transactions 🙁";
+"scene.history.title" = "История";
+"scene.history.empty_state_label" = "0 транзакций 🙁";
 
-"scene.settings.title" = "Settings";
-"scene.settings.section.wallet" = "Wallet";
+"scene.settings.title" = "Настройки";
+"scene.settings.section.wallet" = "Кошелек";
 "scene.settings.item.bitcoin_unit" = "Bitcoin Unit";
-"scene.settings.item.currency" = "Currency";
+"scene.settings.item.currency" = "Валюта";
 "scene.settings.item.block_explorer" = "Block Explorer";
 "scene.settings.item.on_chain_request_address.title" = "Bitcoin Address Type";
 "scene.settings.item.on_chain_request_address.bech32" = "Bech32";
@@ -57,7 +57,7 @@
 
 "scene.settings.item.change_pin" = "Change Pin";
 "scene.settings.item.report_issue" = "Report an Issue";
-"scene.settings.item.help" = "Need Help?";
+"scene.settings.item.help" = "Нужна помощь?";
 "scene.settings.item.privacy_policy" = "Privacy Policy";
 "scene.settings.item.lnd_log" = "Show lnd Log";
 
@@ -68,10 +68,10 @@
 "scene.request.generate_request_button" = "Generate Request";
 "scene.request.lightning_header_title" = "Lightning Payment Request";
 "scene.request.on_chain_header_title" = "On Chain Payment Request";
-"scene.request.next_button_title" = "Next";
+"scene.request.next_button_title" = "Следуюший";
 
-"scene.channels.title" = "Channels";
-"scene.channels.close.title" = "Close Channel";
+"scene.channels.title" = "Каналы";
+"scene.channels.close.title" = "Закрыть Канал";
 "scene.channels.close.message" = "Do you really want to close the channel with node %@?";
 "scene.channels.force_close.title" = "Force Close Channel";
 "scene.channels.force_close.message" = "%@ is offline, are you sure you want to force close this channel? You’d have to wait about %@ for your funds?";
@@ -81,8 +81,8 @@
 "scene.channels.close_success.toast" = "Channel is closing.";
 
 "scene.open_channel.title" = "Open Channel";
-"scene.open_channel.channel_uri_label" = "Channel:";
-"scene.open_channel.add_button" = "Open Channel";
+"scene.open_channel.channel_uri_label" = "Канал:";
+"scene.open_channel.add_button" = "Открыть Канал";
 
 "scene.pin.biometric.fallback.title" = "Use Passcode";
 "scene.pin.biometric.reason" = "To access the secure data";
