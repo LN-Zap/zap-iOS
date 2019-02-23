@@ -61,7 +61,7 @@ final class HistoryViewController: UIViewController {
         setupDataSourceBinding(tableView, historyViewModel)
 
         historyViewModel.dataSource
-            .map { !$0.dataSource.isEmpty }
+            .map { !$0.collection.isEmpty }
             .bind(to: emptyStateLabel.reactive.isHidden)
             .dispose(in: reactive.bag)
     }
@@ -74,29 +74,29 @@ final class HistoryViewController: UIViewController {
 
     private func setupDataSourceBinding(_ tableView: UITableView, _ historyViewModel: HistoryViewModel) {
         historyViewModel.dataSource
-            .bind(to: tableView) { dataSource, indexPath, tableView in
-                let cell: HistoryCell = tableView.dequeueCellForIndexPath(indexPath)
+                .bind(to: tableView) { dataSource, indexPath, tableView in
+                    let cell: HistoryCell = tableView.dequeueCellForIndexPath(indexPath)
 
-                switch dataSource[indexPath] {
-                case .transactionEvent(let transactionEvent):
-                    cell.setTransactionEvent(transactionEvent)
-                case .channelEvent(let channelEvent):
-                    cell.setChannelEvent(channelEvent)
-                case .createInvoiceEvent(let createInvoiceEvent):
-                    cell.setCreateInvoiceEvent(createInvoiceEvent)
-                case .failedPaymentEvent(let failedPayemntEvent):
-                    cell.setFailedPaymentEvent(failedPayemntEvent, delegate: self)
-                case .lightningPaymentEvent(let lightningPaymentEvent):
-                    cell.setLightningPaymentEvent(lightningPaymentEvent)
+                    switch dataSource.item(at: indexPath) {
+                    case .transactionEvent(let transactionEvent):
+                        cell.setTransactionEvent(transactionEvent)
+                    case .channelEvent(let channelEvent):
+                        cell.setChannelEvent(channelEvent)
+                    case .createInvoiceEvent(let createInvoiceEvent):
+                        cell.setCreateInvoiceEvent(createInvoiceEvent)
+                    case .failedPaymentEvent(let failedPayemntEvent):
+                        cell.setFailedPaymentEvent(failedPayemntEvent, delegate: self)
+                    case .lightningPaymentEvent(let lightningPaymentEvent):
+                        cell.setLightningPaymentEvent(lightningPaymentEvent)
+                    }
+
+                    if historyViewModel.isEventNew(at: indexPath) {
+                        cell.addNotificationLabel(type: .new)
+                    }
+
+                    return cell
                 }
-
-                if historyViewModel.isEventNew(at: indexPath) {
-                    cell.addNotificationLabel(type: .new)
-                }
-
-                return cell
-            }
-            .dispose(in: reactive.bag)
+                .dispose(in: reactive.bag)
     }
 
     @IBAction private func presentFilter(_ sender: Any) {
@@ -108,13 +108,13 @@ extension HistoryViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
 
-        guard let event = historyViewModel?.dataSource[indexPath] else { return }
+        guard let event = historyViewModel?.dataSource.collection.item(at: indexPath) else { return }
         presentDetail?(event)
     }
 
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
         let sectionHeaderView = SectionHeaderView.instanceFromNib
-        sectionHeaderView.title = historyViewModel?.dataSource[section].metadata
+        sectionHeaderView.title = historyViewModel?.dataSource.collection[sectionAt: section]
         sectionHeaderView.backgroundColor = .white
         return sectionHeaderView
     }

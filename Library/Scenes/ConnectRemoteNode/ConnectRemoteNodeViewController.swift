@@ -10,11 +10,11 @@ import Lightning
 import SafariServices
 import UIKit
 
-final class ConnectCellBond: TableViewBinder<Observable2DArray<String?, ConnectRemoteNodeViewModel.CellType>> {
+final class ConnectCellBond<Changeset: SectionedDataSourceChangeset>: TableViewBinderDataSource<Changeset> where Changeset.Collection == Array2D<String?, ConnectRemoteNodeViewModel.CellType>{
 
     override init() {
         super.init()
-        rowAnimation = .fade
+        self.rowDeletionAnimation = .fade
     }
 
     private func dequeueCell(for tableView: UITableView, style: UITableViewCell.CellStyle) -> UITableViewCell {
@@ -38,9 +38,8 @@ final class ConnectCellBond: TableViewBinder<Observable2DArray<String?, ConnectR
         }
     }
 
-    override func cellForRow(at indexPath: IndexPath, tableView: UITableView, dataSource: Observable2DArray<String?, ConnectRemoteNodeViewModel.CellType>) -> UITableViewCell {
-
-        let cellType = dataSource.item(at: indexPath)
+    @objc override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cellType = changeset!.collection.item(at: indexPath)
         let cell: UITableViewCell
 
         switch cellType {

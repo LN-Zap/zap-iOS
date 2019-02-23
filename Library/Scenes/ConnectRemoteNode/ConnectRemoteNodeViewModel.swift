@@ -28,7 +28,7 @@ final class ConnectRemoteNodeViewModel: NSObject {
         }
     }
 
-    let dataSource: MutableObservable2DArray<String?, CellType>
+    let dataSource: MutableObservableArray2D<String?, CellType>
 
     private var testServer: LightningApiRpc?
 
@@ -37,7 +37,7 @@ final class ConnectRemoteNodeViewModel: NSObject {
     }
 
     init(remoteRPCConfiguration: RemoteRPCConfiguration?) {
-        dataSource = MutableObservable2DArray([])
+        dataSource = MutableObservableArray2D()
 
         super.init()
 
@@ -46,47 +46,39 @@ final class ConnectRemoteNodeViewModel: NSObject {
     }
 
     private func updateTableView() {
-        let sections = MutableObservable2DArray<String?, ConnectRemoteNodeViewModel.CellType>()
+        var sections = Array2D<String?, ConnectRemoteNodeViewModel.CellType>()
 
         if let configuration = remoteNodeConfiguration {
-            sections.appendSection(certificateSection(for: configuration))
+            sections.append(certificateSection(for: configuration))
         } else {
-            sections.appendSection(Observable2DArraySection<String?, CellType>(
-                metadata: L10n.Scene.ConnectRemoteNode.yourNodeTitle,
-                items: [.emptyState]
-            ))
+            sections.append(to2DArraySection(section: L10n.Scene.ConnectRemoteNode.yourNodeTitle, items: [.emptyState]))
         }
 
-        sections.appendSection(Observable2DArraySection<String?, CellType>(
-            metadata: nil,
-            items: [.scan, .paste]
-        ))
-        sections.appendSection(Observable2DArraySection<String?, CellType>(
-            metadata: nil,
-            items: [.help]
-        ))
+        sections.append(to2DArraySection(section: nil, items: [.scan, .paste]))
+        sections.append(to2DArraySection(section: nil, items: [.help]))
 
-        dataSource.replace(with: sections, performDiff: true)
+        dataSource.replace(with: sections, performDiff: true, areValuesEqual: evaluateEqual)
     }
 
-    private func certificateSection(for qrCode: RemoteRPCConfiguration) -> Observable2DArraySection<String?, CellType> {
-        var items: [CellType] = [
+    private func evaluateEqual(one: Array2DElement<String?, CellType>, two: Array2DElement<String?, CellType>) -> Bool {
+        return one.section == two.section && one.item == two.item
+    }
+
+    private func certificateSection(for qrCode: RemoteRPCConfiguration) -> TreeNode<Array2DElement<String?, CellType>> {
+        var items: [ConnectRemoteNodeViewModel.CellType] = [
             .address(qrCode.url.absoluteString),
             .connect
         ]
 
         if let certificateDescription = qrCode.certificate?
-            .replacingOccurrences(of: "-----BEGIN CERTIFICATE-----", with: "")
-            .trimmingCharacters(in: .whitespacesAndNewlines) {
+			.replacingOccurrences(of: "-----BEGIN CERTIFICATE-----", with: "")
+			.trimmingCharacters(in: .whitespacesAndNewlines) {
             items.insert(.certificate(certificateDescription), at: 0)
         } else {
             items.insert(.certificate(qrCode.macaroon.hexadecimalString), at: 0)
         }
 
-        return Observable2DArraySection<String?, CellType>(
-            metadata: L10n.Scene.ConnectRemoteNode.yourNodeTitle,
-            items: items
-        )
+        return to2DArraySection(section: L10n.Scene.ConnectRemoteNode.yourNodeTitle, items: items)
     }
 
     func pasteCertificates(_ string: String, completion: @escaping (SwiftLnd.Result<Success, RPCConnectQRCodeError>) -> Void) {
@@ -117,10 +109,17 @@ final class ConnectRemoteNodeViewModel: NSObject {
         guard let remoteNodeConfiguration = remoteNodeConfiguration else { return }
 
         let newConfiguration = RemoteRPCConfiguration(
-            certificate: remoteNodeConfiguration.certificate,
-            macaroon: remoteNodeConfiguration.macaroon,
-            url: url)
+			certificate: remoteNodeConfiguration.certificate,
+			macaroon: remoteNodeConfiguration.macaroon,
+			url: url)
 
         self.remoteNodeConfiguration = newConfiguration
     }
+}
+
+public func to2DArraySection<T, U>(section: T, items: [U]) -> TreeNode<Array2DElement<T, U>> {
+    let section = Array2DElement<T, U>.section(section)
+    return TreeNode(section, items.map {
+        TreeNode(Array2DElement<T, U>.item($0))
+    })
 }
