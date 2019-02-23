@@ -87,19 +87,19 @@
 "scene.pin.biometric.fallback.title" = "Используйте Пароль";
 "scene.pin.biometric.reason" = "Доступ к защищенным данным";
 
-"scene.setup_pin.done_button" = "Done";
-"scene.setup_pin.top_label.initial" = "Choose a pin.";
-"scene.setup_pin.top_label.non_matching" = "The pins didn't match. Please try again.";
-"scene.setup_pin.top_label.validate" = "Enter the pin again to validate.";
+"scene.setup_pin.done_button" = "Готово";
+"scene.setup_pin.top_label.initial" = "Выберите пин-код.";
+"scene.setup_pin.top_label.non_matching" = "Пин-коды не одинаковы. Пожалуйста, попробуйте еще раз.";
+"scene.setup_pin.top_label.validate" = "Введите пин-код еще раз что бы проверить.";
 
-"scene.confirm_mnemonic.title" = "Confirm Seed";
-"scene.confirm_mnemonic.description" = "Enter your key.";
+"scene.confirm_mnemonic.title" = "Подтвердить Фразу";
+"scene.confirm_mnemonic.description" = "Введите свой Ключ.";
 
-"scene.send.title" = "Send";
-"scene.send.send_button" = "Send";
-"scene.send.address_headline" = "To:";
+"scene.send.title" = "Отправить";
+"scene.send.send_button" = "Отправить";
+"scene.send.address_headline" = "Получатель:";
 "scene.send.memo_headline" = "Memo:";
-"scene.send.sending" = "Sending...";
+"scene.send.sending" = "Отпарвка...";
 "scene.send.lightning.title" = "Send Lightning Payment";
 "scene.send.on_chain.title" = "Send On Chain";
 "scene.send.authentication_failed" = "Authentication failed";
@@ -171,7 +171,7 @@
 "scene.channel_detail.local_balance_label" = "Локальный Баланс";
 "scene.channel_detail.remote_balance_label" = "Удаленный Баланс";
 "scene.channel_detail.closing_time.label" = "Закрывается в";
-"scene.channel_detail.funding_transaction_label" = "Funding Transaction";
+"scene.channel_detail.funding_transaction_label" = "Пополнить Транзакцию";
 "scene.channel_detail.close_button" = "Закрыть Канал";
 "scene.channel_detail.force_close_button" = "Принудительное Закрытие Канала";
 
@@ -181,48 +181,48 @@
 "scene.filter.displayOnChainTransactions" = "On-chain Платежи";
 "scene.filter.display_unknown_transaction_type" = "Внутренние Транзакции";
 "scene.filter.displayLightningPayments" = "Lightning Переводы";
-"scene.filter.displayLightningInvoices" = "Created Invoices";
-"scene.filter.displayChannelEvents" = "Channel Events";
-"scene.filter.displayFailedPaymentEvents" = "Failed Payments";
+"scene.filter.displayLightningInvoices" = "Создать Платежное Поручение";
+"scene.filter.displayChannelEvents" = "События Канала";
+"scene.filter.displayFailedPaymentEvents" = "Неудачных Платежи";
 
-"scene.qrcode_scanner.top_label" = "Scan QR-Code";
+"scene.qrcode_scanner.top_label" = "Сканиирование QR-Code";
 
-"scene.wallet.title" = "Wallet";
+"scene.wallet.title" = "Кошелек";
 
-"scene.time_lock.headline" = "Wrong Passcode";
-"scene.time_lock.description" = "Your wallet is locked for:";
+"scene.time_lock.headline" = "Не правильный Пароль";
+"scene.time_lock.description" = "Ваш кошелек заблокирован для:";
 
-"scene.modal_pin.headline" = "Enter Passcode";
-"scene.modal_pin.description" = "Please enter your passcode to continue";
+"scene.modal_pin.headline" = "Введите Пароль";
+"scene.modal_pin.description" = "Пожалуйста, введите пароль, чтобы продолжить";
 
-"scene.history.cell.payment_sent" = "Payment sent";
-"scene.history.cell.payment_received" = "Payment received";
-"scene.history.cell.payment_failed" = "Payment failed (%@)";
-"scene.history.cell.invoice_created" = "Payment Request created";
-"scene.history.cell.channel_opened" = "Open Channel";
-"scene.history.cell.channel_closed" = "Close Channel";
-"scene.history.cell.force_close_channel" = "Force close Channel";
-"scene.history.cell.remote_force_close_channel" = "Remote force close Channel";
-"scene.history.cell.breach_close_channel" = "Breach close Channel";
-"scene.history.cell.close_channel_funding_canceled" = "Close Channel (funding canceled)";
-"scene.history.cell.channel_abandoned" = "Channel abandoned";
-"scene.history.cell.transaction_sent" = "Payment sent";
-"scene.history.cell.transaction_received" = "Payment received";
-"scene.history.cell.label.new" = "new";
-"scene.history.cell.label.error" = "error";
-"scene.history.cell.action.try_again" = "Try Again";
+"scene.history.cell.payment_sent" = "Перевод отправлен";
+"scene.history.cell.payment_received" = "Перевод получен";
+"scene.history.cell.payment_failed" = "Перевод не прошел (%@)";
+"scene.history.cell.invoice_created" = "Создан запрос на оплату";
+"scene.history.cell.channel_opened" = "Открыть Канал";
+"scene.history.cell.channel_closed" = "Закрыть Канал";
+"scene.history.cell.force_close_channel" = "Принудительное закрытие Канала";
+"scene.history.cell.remote_force_close_channel" = "Удаленное принудительноу закрытие Канала";
+"scene.history.cell.breach_close_channel" = "Принудительное Закрытие Канала";
+"scene.history.cell.close_channel_funding_canceled" = "Закрыть канал (пополнение отменено)";
+"scene.history.cell.channel_abandoned" = "Канал заброшен";
+"scene.history.cell.transaction_sent" = "Перевод отправлен";
+"scene.history.cell.transaction_received" = "Перевод получен";
+"scene.history.cell.label.new" = "создать";
+"scene.history.cell.label.error" = "ошибка";
+"scene.history.cell.action.try_again" = "Попробуйте Снова";
 
-"scene.node_uri.title" = "Connect to Node";
-"scene.node_uri.alias_label" = "Alias";
+"scene.node_uri.title" = "Подключениие к Узлу";
+"scene.node_uri.alias_label" = "Метка";
 "scene.node_uri.uri_label" = "URI";
 
-"scene.connect_node_uri.action_sheet.title" = "Connect";
-"scene.connect_node_uri.action_sheet.connect_button" = "Connect";
-"scene.connect_node_uri.action_sheet.message" = "Do you really want to connect to node at %@?";
+"scene.connect_node_uri.action_sheet.title" = "Подключение";
+"scene.connect_node_uri.action_sheet.connect_button" = "Подключится";
+"scene.connect_node_uri.action_sheet.message" = "Вы действительно хотите подключиться к узлу на %@?";
 
-"scene.wallet_list.title" = "Wallets";
+"scene.wallet_list.title" = "Кошельки";
 
-"scene.unlock.title" = "Unlock Node";
-"scene.unlock.unlock_button" = "Unlock";
-"scene.unlock.password_placeholder" = "Password";
-"scene.unlock.title_label" = "Unlock %@";
+"scene.unlock.title" = "Разблокировать Узел";
+"scene.unlock.unlock_button" = "Разблокировать";
+"scene.unlock.password_placeholder" = "Пароль";
+"scene.unlock.title_label" = "Разблокировать %@";
