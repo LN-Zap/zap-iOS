@@ -24,7 +24,7 @@
 "channel.state.force_closing" = "Принудительное Закрытие";
 "channel.state.waiting_close" = "Ожидание Закрытия";
 
-"network_type.regtest" = "Regtest";
+"network_type.regtest" = "Регрессивный тест";
 "network_type.testnet" = "Тестовая сеть";
 "network_type.mainnet" = "Главная сеть";
 
@@ -45,47 +45,47 @@
 
 "scene.settings.title" = "Настройки";
 "scene.settings.section.wallet" = "Кошелек";
-"scene.settings.item.bitcoin_unit" = "Bitcoin Unit";
+"scene.settings.item.bitcoin_unit" = "Биткоин часть";
 "scene.settings.item.currency" = "Валюта";
-"scene.settings.item.block_explorer" = "Block Explorer";
-"scene.settings.item.on_chain_request_address.title" = "Bitcoin Address Type";
+"scene.settings.item.block_explorer" = "Обзор Блоков";
+"scene.settings.item.on_chain_request_address.title" = "Тип Биткоин Адреса";
 "scene.settings.item.on_chain_request_address.bech32" = "Bech32";
 "scene.settings.item.on_chain_request_address.p2sh" = "P2SH";
-"scene.settings.item.manage_channels" = "Manage Channels";
-"scene.settings.item.node_uri" = "Node URI";
-"scene.settings.item.remove_remote_node" = "Manage Wallets";
+"scene.settings.item.manage_channels" = "Управление Каналами";
+"scene.settings.item.node_uri" = "URI узла";
+"scene.settings.item.remove_remote_node" = "Управление Кошельками";
 
-"scene.settings.item.change_pin" = "Change Pin";
-"scene.settings.item.report_issue" = "Report an Issue";
+"scene.settings.item.change_pin" = "Изменить Pin-Код";
+"scene.settings.item.report_issue" = "Сообщить о проблеме";
 "scene.settings.item.help" = "Нужна помощь?";
-"scene.settings.item.privacy_policy" = "Privacy Policy";
-"scene.settings.item.lnd_log" = "Show lnd Log";
+"scene.settings.item.privacy_policy" = "Политика Конфиденциальности";
+"scene.settings.item.lnd_log" = "Показать журнал lnd";
 
-"scene.request.title" = "Receive";
+"scene.request.title" = "Получить";
 "scene.request.lightning_button" = "Lightning";
-"scene.request.or_separator_label" = "or";
+"scene.request.or_separator_label" = "или";
 "scene.request.on_chain_button" = "On-chain";
-"scene.request.generate_request_button" = "Generate Request";
-"scene.request.lightning_header_title" = "Lightning Payment Request";
-"scene.request.on_chain_header_title" = "On Chain Payment Request";
+"scene.request.generate_request_button" = "Создать Запрос";
+"scene.request.lightning_header_title" = "Запрос На Оплату Lightning";
+"scene.request.on_chain_header_title" = "Запрос на оплату On Chain";
 "scene.request.next_button_title" = "Следуюший";
 
 "scene.channels.title" = "Каналы";
 "scene.channels.close.title" = "Закрыть Канал";
-"scene.channels.close.message" = "Do you really want to close the channel with node %@?";
-"scene.channels.force_close.title" = "Force Close Channel";
-"scene.channels.force_close.message" = "%@ is offline, are you sure you want to force close this channel? You’d have to wait about %@ for your funds?";
-"scene.channels.alert.close" = "Close Channel";
-"scene.channels.alert.force_close" = "Force Close Channel";
-"scene.channels.close_loading_view" = "Closing Channel";
-"scene.channels.close_success.toast" = "Channel is closing.";
+"scene.channels.close.message" = "Вы действительно хотите закрыть канал узлом %@?";
+"scene.channels.force_close.title" = "Вынуждено Закрыть Канал";
+"scene.channels.force_close.message" = "%@ отключен, вы уверены, что хотите принудительно закрыть этот канал? Вам придется подождать около %@ Для ваших средств?";
+"scene.channels.alert.close" = "Закрыть Канал";
+"scene.channels.alert.force_close" = "Принудительно Закрыть Канал";
+"scene.channels.close_loading_view" = "Закрыть Канал";
+"scene.channels.close_success.toast" = "Канал закрывается.";
 
-"scene.open_channel.title" = "Open Channel";
+"scene.open_channel.title" = "Открыть Канал";
 "scene.open_channel.channel_uri_label" = "Канал:";
 "scene.open_channel.add_button" = "Открыть Канал";
 
-"scene.pin.biometric.fallback.title" = "Use Passcode";
-"scene.pin.biometric.reason" = "To access the secure data";
+"scene.pin.biometric.fallback.title" = "Используйте Пароль";
+"scene.pin.biometric.reason" = "Доступ к защищенным данным";
 
 "scene.setup_pin.done_button" = "Done";
 "scene.setup_pin.top_label.initial" = "Choose a pin.";
@@ -146,15 +146,15 @@
 
 "scene.qr_code_detail.title" = "Receive";
 
-"scene.sync.description_label" = "Syncing to blockchain…";
-"scene.sync.disconnect_bar_button" = "Disconnect";
-"scene.sync.disconnect_alert.title" = "Disconnect";
-"scene.sync.disconnect_alert.message" = "Do you really want to cancel syncing? You will have to reconnect to your node afterwards.";
-"scene.sync.disconnect_alert.destructive_action" = "Disconnect Node";
-"scene.sync.disconnect_alert.cancel_action" = "Cancel";
+"scene.sync.description_label" = "Синхронизация с блокчейном…";
+"scene.sync.disconnect_bar_button" = "Отключить";
+"scene.sync.disconnect_alert.title" = "Отключить";
+"scene.sync.disconnect_alert.message" = "Вы действительно хотите отменить синхронизацию? После этого вам придется снова подключиться к узлу.";
+"scene.sync.disconnect_alert.destructive_action" = "Разъединить Узел";
+"scene.sync.disconnect_alert.cancel_action" = "Отменить";
 
-"scene.transaction_detail.title.lightning_invoice" = "Invoice Detail";
-"scene.transaction_detail.title.payment_detail" = "Payment Detail";
+"scene.transaction_detail.title.lightning_invoice" = "Детали Счета";
+"scene.transaction_detail.title.payment_detail" = "Платежная Информация";
 "scene.transaction_detail.title.transaction_detail" = "Transaction Detail";
 "scene.transaction_detail.title.channel_event_detail" = "Channel Event";
 "scene.transaction_detail.title.failed_payment" = "Failed Payment";
