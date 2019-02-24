@@ -13,7 +13,7 @@ public enum LndApiError: Error, LocalizedError, Equatable {
     case lndNotRunning
     case localizedError(String)
     case unknownError
-    
+
     public init(error: NSError) {
         switch error.code {
         case 12:
@@ -24,7 +24,7 @@ public enum LndApiError: Error, LocalizedError, Equatable {
             self = .localizedError(error.localizedDescription)
         }
     }
-    
+
     public var errorDescription: String? {
         switch self {
         case .localizedError(let description):

@@ -29,11 +29,11 @@ final class SendViewModel {
     enum Constants {
         fileprivate static let minimumOnChainTransaction: Satoshi = 547
     }
-    
+
     enum SendMethod {
         case lightning(PaymentRequest)
         case onChain(BitcoinURI)
-        
+
         var headerImage: UIImage {
             switch self {
             case .lightning:
@@ -42,7 +42,7 @@ final class SendViewModel {
                 return Asset.iconHeaderOnChain.image
             }
         }
-        
+
         var headline: String {
             switch self {
             case .lightning:
@@ -52,10 +52,10 @@ final class SendViewModel {
             }
         }
     }
-    
+
     let lightningFee = Observable<Loadable<Satoshi?>>(.loading)
     let method: SendMethod
-    
+
     var amount: Satoshi? {
         didSet {
             guard oldValue != amount else { return }
@@ -68,28 +68,28 @@ final class SendViewModel {
             updateSendButtonEnabled()
         }
     }
-    
+
     let receiver: String
     let memo: String?
     let sendButtonEnabled = Observable(false)
     let validRange: ClosedRange<Satoshi>?
-    
+
     private let lightningService: LightningService
-    
+
     lazy var debounceFetchFee = {
         DispatchQueue.main.debounce(interval: 275, action: fetchLightningFee)
     }()
-    
+
     init(invoice: BitcoinInvoice, lightningService: LightningService) {
         self.lightningService = lightningService
-        
+
         if let paymentRequest = invoice.lightningPaymentRequest {
             method = .lightning(paymentRequest)
-            
+
             validRange = 1...LndConstants.maxLightningPaymentAllowed
         } else if let bitcoinURI = invoice.bitcoinURI {
             method = .onChain(bitcoinURI)
-            
+
             if lightningService.balanceService.onChain.value == 0 {
                 validRange = nil
             } else {
@@ -98,7 +98,7 @@ final class SendViewModel {
         } else {
             fatalError("Invalid Invoice")
         }
-        
+
         receiver = invoice.lightningPaymentRequest?.destination ?? invoice.bitcoinURI?.address ?? "-"
         if
             let amount = invoice.lightningPaymentRequest?.amount ?? invoice.bitcoinURI?.amount,
@@ -106,15 +106,15 @@ final class SendViewModel {
             self.amount = amount
         }
         memo = invoice.lightningPaymentRequest?.memo ?? invoice.bitcoinURI?.memo
-        
+
         updateLightningFee()
         updateSendButtonEnabled()
     }
-    
+
     private func updateSendButtonEnabled() {
         sendButtonEnabled.value = isSendButtonEnabled
     }
-    
+
     private var isAmountValid: Bool {
         guard
             let amount = amount,
@@ -122,14 +122,14 @@ final class SendViewModel {
             else { return false }
         return validRange.contains(amount)
     }
-    
+
     private var isSendButtonEnabled: Bool {
         return isAmountValid && !isSending
     }
-    
+
     private func updateLightningFee() {
         guard case .lightning = method else { return }
-        
+
         if isAmountValid {
             lightningFee.value = .loading
             updateSendButtonEnabled()
@@ -138,7 +138,7 @@ final class SendViewModel {
             lightningFee.value = .element(nil)
         }
     }
-    
+
     private func fetchLightningFee() {
         guard
             case .lightning(let paymentRequest) = method,
@@ -151,19 +151,19 @@ final class SendViewModel {
             self.updateSendButtonEnabled()
         }
     }
-    
+
     func send(completion: @escaping (Result<Success, LndApiError>) -> Void) {
         guard let amount = amount else { return }
-        
+
         isSending = true
-        
+
         let internalComplection: (Result<Success, LndApiError>) -> Void = { [weak self] in
             if case .failure = $0 {
                 self?.isSending = false
             }
             completion($0)
         }
-        
+
         switch method {
         case .lightning(let paymentRequest):
             lightningService.transactionService.sendPayment(paymentRequest, amount: amount, completion: internalComplection)

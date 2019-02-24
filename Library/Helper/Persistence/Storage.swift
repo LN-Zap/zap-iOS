@@ -15,7 +15,7 @@ public enum Storage {
             else { return }
         try? encoded.write(to: url)
     }
-    
+
     public static func restore<T: Decodable>(_ filename: String) -> T? {
         guard
             let url = url(for: filename),
@@ -23,16 +23,16 @@ public enum Storage {
             let decoded = try? PropertyListDecoder().decode(T.self, from: data) else { return nil }
         return decoded
     }
-    
+
     public static func remove(_ filename: String) {
         guard
             let url = url(for: filename),
             FileManager.default.fileExists(atPath: filename)
             else { return }
-        
+
         try? FileManager.default.removeItem(at: url)
     }
-    
+
     private static func url(for filename: String) -> URL? {
         return FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first?.appendingPathComponent("\(filename).plist")
     }

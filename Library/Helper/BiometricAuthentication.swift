@@ -16,7 +16,7 @@ enum BiometricAuthentication {
         case touchID
         case faceID
     }
-    
+
     static var type: BiometricType {
         #if targetEnvironment(simulator)
         return Environment.fakeBiometricAuthentication
@@ -24,9 +24,9 @@ enum BiometricAuthentication {
             : .none
         #else
         let context = LAContext()
-        
+
         guard context.canEvaluatePolicy(.deviceOwnerAuthenticationWithBiometrics, error: nil) else { return .none }
-        
+
         if #available(iOS 11.0, *) {
             switch context.biometryType {
             case .none:
@@ -41,7 +41,7 @@ enum BiometricAuthentication {
         }
         #endif
     }
-    
+
     static func authenticate(completion: @escaping (Result<Success, AuthenticationError>) -> Void) {
         #if targetEnvironment(simulator)
         guard Environment.fakeBiometricAuthentication else {
@@ -52,7 +52,7 @@ enum BiometricAuthentication {
         let alertController = UIAlertController(title: "Authenticate", message: "Fake Biometric Authenticatyion", preferredStyle: .alert)
         alertController.addAction(UIAlertAction(title: "cancel", style: .cancel) { _ in completion(.failure(AuthenticationError.canceled)) })
         alertController.addAction(UIAlertAction(title: "authenticate", style: .default) { _ in completion(.success(Success())) })
-        
+
         let alertWindow = UIWindow(frame: UIScreen.main.bounds)
         alertWindow.rootViewController = RootViewController()
         alertWindow.windowLevel = WindowLevel.fakeBiometricAuthentication
@@ -62,10 +62,10 @@ enum BiometricAuthentication {
         #else
         let localAuthenticationContext = LAContext()
         localAuthenticationContext.localizedFallbackTitle = L10n.Scene.Pin.Biometric.Fallback.title
-        
+
         var authError: NSError?
         let reasonString = L10n.Scene.Pin.Biometric.reason
-        
+
         if localAuthenticationContext.canEvaluatePolicy(.deviceOwnerAuthenticationWithBiometrics, error: &authError) {
             localAuthenticationContext.evaluatePolicy(.deviceOwnerAuthenticationWithBiometrics, localizedReason: reasonString) { success, evaluateError in
                 if success {
@@ -79,7 +79,7 @@ enum BiometricAuthentication {
         }
         #endif
     }
-    
+
     private static func execute(_ completion: @escaping (Result<Success, AuthenticationError>) -> Void, with result: Result<Success, AuthenticationError>) {
         DispatchQueue.main.async {
             completion(result)

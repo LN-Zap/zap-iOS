@@ -29,7 +29,7 @@ extension ChannelState: Comparable {
             return 5
         }
     }
-    
+
     public static func < (lhs: ChannelState, rhs: ChannelState) -> Bool {
         return lhs.sortRank < rhs.sortRank
     }
@@ -37,18 +37,18 @@ extension ChannelState: Comparable {
 
 final class ChannelListViewModel: NSObject {
     private let channelService: ChannelService
-    
+
     let dataSource: MutableObservableArray<ChannelViewModel>
     let searchString = Observable<String?>(nil)
     var maxChannelCapacity: Satoshi = 1
-    
+
     init(channelService: ChannelService) {
         self.channelService = channelService
-        
+
         dataSource = MutableObservableArray()
-        
+
         super.init()
-        
+
         combineLatest(channelService.open, channelService.pending, searchString)
             .observeOn(DispatchQueue.main)
             .observeNext { [weak self] in
@@ -56,12 +56,12 @@ final class ChannelListViewModel: NSObject {
             }
             .dispose(in: reactive.bag)
     }
-    
+
     private func updateChannels(open: [Channel], pending: [Channel], searchString: String?) {
         let viewModels = (open + pending)
             .map { ChannelViewModel(channel: $0, channelService: channelService) }
             .filter { $0.matchesSearchString(searchString) }
-        
+
         let sortedViewModels = viewModels.sorted {
             if $0.channel.state != $1.channel.state {
                 return $0.channel.state < $1.channel.state
@@ -69,18 +69,18 @@ final class ChannelListViewModel: NSObject {
                 return $0.channel.remotePubKey < $1.channel.remotePubKey
             }
         }
-        
+
         maxChannelCapacity = viewModels
             .max(by: { $0.channel.capacity < $1.channel.capacity })?
             .channel.capacity ?? 1
-        
+
         dataSource.replace(with: sortedViewModels, performDiff: true)
     }
-    
+
     func refresh() {
         channelService.update()
     }
-    
+
     func close(_ channel: Channel, completion: @escaping (SwiftLnd.Result<CloseStatusUpdate, LndApiError>) -> Void) {
         channelService.close(channel, completion: completion)
     }

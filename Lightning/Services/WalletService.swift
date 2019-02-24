@@ -10,14 +10,14 @@ import SwiftLnd
 
 public final class WalletService {
     public static let password = "12345678" // TODO: save random pw in secure enclave
-    
+
     private(set) var isUnlocked = false
     private let wallet: WalletApiProtocol
     public let connection: LightningConnection
-    
+
     public init(connection: LightningConnection) {
         self.connection = connection
-        
+
         switch connection {
         case .local:
         #if !REMOTEONLY
@@ -29,7 +29,7 @@ public final class WalletService {
             self.wallet = WalletApiRpc(configuration: configuration)
         }
     }
-    
+
     private(set) static var didCreateWallet: Bool {
         get {
             return UserDefaults.standard.bool(forKey: "didCreateWallet")
@@ -38,13 +38,13 @@ public final class WalletService {
             UserDefaults.standard.set(newValue, forKey: "didCreateWallet")
         }
     }
-    
+
     public func generateSeed(completion: @escaping (Result<[String], LndApiError>) -> Void) {
         wallet.generateSeed(passphrase: nil) {
             completion($0)
         }
     }
-    
+
     public func initWallet(mnemonic: [String], completion: @escaping (Result<Success, LndApiError>) -> Void) {
         wallet.initWallet(mnemonic: mnemonic, password: WalletService.password) {
             if $0.value != nil {
@@ -53,7 +53,7 @@ public final class WalletService {
             completion($0)
         }
     }
-    
+
     public func unlockWallet(password: String, completion: @escaping (Result<Success, LndApiError>) -> Void) {
         wallet.unlockWallet(password: password, completion: completion)
     }

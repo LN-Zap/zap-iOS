@@ -27,7 +27,7 @@ extension Payment {
         paymentHash = payment.paymentHash
         destination = payment.pathArray.compactMap { $0 as? String }.last ?? ""
     }
-    
+
     init(paymentRequest: PaymentRequest, sendResponse: LNDSendResponse, amount: Satoshi? = nil) {
         id = paymentRequest.paymentHash
         if let amount = amount {

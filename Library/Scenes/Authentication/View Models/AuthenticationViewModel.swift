@@ -31,21 +31,21 @@ final class AuthenticationViewModel: NSObject {
         case timeLocked // user entered wrong pin to often and has to wait until unlock
         case unlocked   // wallet is unlocked
     }
-    
+
     @objc public dynamic var state = State.locked
-    
+
     private let unlockTime: TimeInterval = 60
-    
+
     private let keychain = Keychain(service: "com.jackmallers.zap.password").accessibility(.whenUnlocked)
     private var lastAuthenticationDate: Date?
 
     let timeLockStore = TimeLockStore()
-    
+
     private var hashedPin: String? {
         get { return keychain[keychainPinKey] }
         set { keychain[keychainPinKey] = newValue }
     }
-    
+
     private(set) var pinLength: Int? {
         get {
             guard let string = keychain[keychainPinLengthKey] else { return nil }
@@ -59,7 +59,7 @@ final class AuthenticationViewModel: NSObject {
             }
         }
     }
-    
+
     var isLocked: Bool {
         if !didSetupPin {
             return true
@@ -68,11 +68,11 @@ final class AuthenticationViewModel: NSObject {
         }
         return true
     }
-    
+
     var didSetupPin: Bool {
         return keychain[keychainPinKey] != nil
     }
-    
+
     override init() {
         super.init()
 
@@ -82,23 +82,23 @@ final class AuthenticationViewModel: NSObject {
             state = .unlocked
         }
     }
-    
+
     private func hashPin(_ pin: String) -> String {
         return "\(salt)\(pin)".sha256()
     }
-    
+
     func setPin(_ pin: String) {
         hashedPin = hashPin(pin)
         pinLength = pin.count
     }
-    
+
     func authenticate(_ pin: String) -> Result<Success, AuthenticationError> {
         if hashPin(pin) == hashedPin {
             didAuthenticate()
             return .success(Success())
         } else {
             timeLockStore.increase()
-            
+
             if timeLockStore.isLocked {
                 state = .timeLocked
                 return .failure(AuthenticationError.lockout)
@@ -107,7 +107,7 @@ final class AuthenticationViewModel: NSObject {
             }
         }
     }
-    
+
     func didAuthenticate() {
         timeLockStore.reset()
         lastAuthenticationDate = Date()

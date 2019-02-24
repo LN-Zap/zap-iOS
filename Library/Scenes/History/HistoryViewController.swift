@@ -12,19 +12,19 @@ import UIKit
 final class HistoryViewController: UIViewController {
     @IBOutlet private weak var tableView: UITableView?
     @IBOutlet private weak var emptyStateLabel: UILabel!
-    
+
     private var historyViewModel: HistoryViewModel?
     private var presentFilter: (() -> Void)?
     private var presentDetail: ((HistoryEventType) -> Void)?
     private var presentSend: ((String?) -> Void)?
 
-    deinit {    
+    deinit {
         tableView?.isEditing = false // fixes Bond bug. Binding is not released in editing mode.
     }
-    
+
     static func instantiate(historyViewModel: HistoryViewModel, presentFilter: @escaping () -> Void, presentDetail: @escaping (HistoryEventType) -> Void, presentSend: @escaping (String?) -> Void) -> HistoryViewController {
         let viewController = StoryboardScene.History.historyViewController.instantiate()
-        
+
         viewController.historyViewModel = historyViewModel
         viewController.presentFilter = presentFilter
         viewController.presentDetail = presentDetail
@@ -32,15 +32,15 @@ final class HistoryViewController: UIViewController {
 
         return viewController
     }
-    
+
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+
         guard
             let tableView = tableView,
             let historyViewModel = historyViewModel
             else { return }
-        
+
         title = L10n.Scene.History.title
         definesPresentationContext = true
         view.backgroundColor = UIColor.Zap.background
@@ -49,34 +49,34 @@ final class HistoryViewController: UIViewController {
         searchController.dimsBackgroundDuringPresentation = false
         searchController.searchResultsUpdater = self
         navigationItem.searchController = searchController
-        
+
         Style.Label.body.apply(to: emptyStateLabel)
         emptyStateLabel.text = L10n.Scene.History.emptyStateLabel
-        
+
         tableView.rowHeight = UITableView.automaticDimension
         tableView.estimatedRowHeight = 82
         tableView.registerCell(HistoryCell.self)
         tableView.contentInset = UIEdgeInsets(top: 0, left: 0, bottom: 10, right: 0)
-        
+
         setupDataSourceBinding(tableView, historyViewModel)
-        
+
         historyViewModel.dataSource
             .map { !$0.dataSource.isEmpty }
             .bind(to: emptyStateLabel.reactive.isHidden)
             .dispose(in: reactive.bag)
     }
-    
+
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        
+
         historyViewModel?.historyWillAppear()
     }
-    
+
     private func setupDataSourceBinding(_ tableView: UITableView, _ historyViewModel: HistoryViewModel) {
         historyViewModel.dataSource
             .bind(to: tableView) { dataSource, indexPath, tableView in
                 let cell: HistoryCell = tableView.dequeueCellForIndexPath(indexPath)
-                
+
                 switch dataSource[indexPath] {
                 case .transactionEvent(let transactionEvent):
                     cell.setTransactionEvent(transactionEvent)
@@ -89,16 +89,16 @@ final class HistoryViewController: UIViewController {
                 case .lightningPaymentEvent(let lightningPaymentEvent):
                     cell.setLightningPaymentEvent(lightningPaymentEvent)
                 }
-                
+
                 if historyViewModel.isEventNew(at: indexPath) {
                     cell.addNotificationLabel(type: .new)
                 }
-                
+
                 return cell
             }
             .dispose(in: reactive.bag)
     }
-    
+
     @IBAction private func presentFilter(_ sender: Any) {
         presentFilter?()
     }
@@ -107,11 +107,11 @@ final class HistoryViewController: UIViewController {
 extension HistoryViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
-        
+
         guard let event = historyViewModel?.dataSource[indexPath] else { return }
         presentDetail?(event)
     }
-    
+
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
         let sectionHeaderView = SectionHeaderView.instanceFromNib
         sectionHeaderView.title = historyViewModel?.dataSource[section].metadata

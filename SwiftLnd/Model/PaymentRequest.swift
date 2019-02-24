@@ -12,12 +12,12 @@ import SwiftBTC
 public struct PaymentRequest: Equatable {
     private struct PaymentDescription: Decodable {
         let description: String
-        
+
         private enum CodingKeys: String, CodingKey {
             case description = "d"
         }
     }
-    
+
     public let paymentHash: String
     public let destination: String
     public let amount: Satoshi
@@ -32,7 +32,7 @@ public struct PaymentRequest: Equatable {
 extension PaymentRequest {
     init(payReq: LNDPayReq, raw: String) {
         self.amount = Satoshi(payReq.numSatoshis)
-        
+
         if let data = payReq.description_p.data(using: .utf8, allowLossyConversion: false) {
             if let json = try? JSONDecoder().decode(PaymentDescription.self, from: data) {
                 memo = json.description
@@ -44,7 +44,7 @@ extension PaymentRequest {
         } else {
             memo = nil
         }
-        
+
         paymentHash = payReq.paymentHash
         destination = payReq.destination
         date = Date(timeIntervalSince1970: TimeInterval(payReq.timestamp))
@@ -54,7 +54,7 @@ extension PaymentRequest {
         } else {
             fallbackAddress = nil
         }
-    
+
         network = raw.hasPrefix("lnbc") ? .mainnet : .testnet
         self.raw = raw
     }

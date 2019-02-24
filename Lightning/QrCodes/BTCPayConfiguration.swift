@@ -10,12 +10,12 @@ import SwiftLnd
 
 struct BTCPayConfiguration: Decodable {
     let configurations: [BTCPayConfigurationItem]
-    
+
     init?(data: Data) {
         guard let configuration = try? JSONDecoder().decode(BTCPayConfiguration.self, from: data) else { return nil }
         self = configuration
     }
-    
+
     var rpcConfiguration: RemoteRPCConfiguration? {
         guard
             let item = configurations.first(where: { $0.type == "grpc" }),

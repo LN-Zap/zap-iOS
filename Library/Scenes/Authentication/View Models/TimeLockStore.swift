@@ -28,7 +28,7 @@ class TimeLockStore: Persistable {
         fileprivate var wrongPinCounter: Int
         fileprivate var timeLockEnd: Date?
     }
-    
+
     // Persistable
     typealias Value = StoredData
     static var fileName = "timeLockStore"
@@ -37,20 +37,20 @@ class TimeLockStore: Persistable {
             savePersistable()
         }
     }
-    
+
     var timeLockEnd: Date? {
         return data.timeLockEnd
     }
-    
+
     init() {
         loadPersistable()
     }
-    
+
     var isLocked: Bool {
         guard let timeLockEnd = data.timeLockEnd else { return false }
         return timeLockEnd > Date()
     }
-    
+
     func increase() {
         data.wrongPinCounter += 1
         if data.wrongPinCounter >= Constants.numberOfTriesAllowed {
@@ -59,21 +59,21 @@ class TimeLockStore: Persistable {
             data.wrongPinCounter = 0
         }
     }
-    
+
     func reset() {
         data.wrongPinCounter = 0
         data.currentLockDuration = Constants.firstLockDuration
     }
-    
+
     private var timer: Timer?
-    
+
     func whenUnlocked(completion: @escaping () -> Void) {
         guard let waitInterval = data.timeLockEnd?.timeIntervalSince(Date()),
             waitInterval > 0 else {
                 completion()
                 return
         }
-        
+
         timer = Timer.scheduledTimer(withTimeInterval: waitInterval, repeats: false) { _ in
             completion()
         }

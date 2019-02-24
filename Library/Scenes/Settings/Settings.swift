@@ -20,7 +20,7 @@ public final class Settings: NSObject, Persistable {
         }
     }
     public static var fileName = "settings"
-    
+
     public struct SettingsData: Codable {
         var isFiatCurrencyPrimary: Bool?
         var fiatCurrency: FiatCurrency?
@@ -28,45 +28,45 @@ public final class Settings: NSObject, Persistable {
         var blockExplorer: BlockExplorer?
         var onChainRequestAddressType: OnChainRequestAddressType?
     }
-    
+
     public let primaryCurrency: Observable<Currency>
     let secondaryCurrency: Observable<Currency>
-    
+
     let fiatCurrency: Observable<FiatCurrency>
     let cryptoCurrency: Observable<Bitcoin>
     let blockExplorer: Observable<BlockExplorer>
     let onChainRequestAddressType: Observable<OnChainRequestAddressType>
-    
+
     public static let shared = Settings()
-    
+
     private init(data: SettingsData?) {
         if let data = data {
             self.data = data
         }
-        
+
         fiatCurrency = Observable(data?.fiatCurrency ?? FiatCurrency(currencyCode: "USD", symbol: "$", localized: "US Dollar", exchangeRate: 7076.3512))
         cryptoCurrency = Observable(data?.cryptoCurrency ?? .satoshi)
-        
+
         primaryCurrency = Observable(cryptoCurrency.value)
         secondaryCurrency = Observable(fiatCurrency.value)
-        
+
         blockExplorer = Observable(data?.blockExplorer ?? .blockstream)
         onChainRequestAddressType = Observable(data?.onChainRequestAddressType ?? .nestedPubkeyHash)
-        
+
         super.init()
-        
+
         if data?.isFiatCurrencyPrimary == true {
             self.swapCurrencies()
         }
     }
-    
+
     override convenience init() {
         let data = Settings.decoded
         self.init(data: data)
-        
+
         setupSavingOnChange()
     }
-    
+
     private func setupSavingOnChange() {
         [fiatCurrency
             .skip(first: 1)
@@ -90,26 +90,26 @@ public final class Settings: NSObject, Persistable {
             }
         ].dispose(in: reactive.bag)
     }
-    
+
     func updateCurrency(_ currency: Currency) {
         if let currency = currency as? Bitcoin {
             cryptoCurrency.value = currency
         } else if let currency = currency as? FiatCurrency {
             fiatCurrency.value = currency
         }
-        
+
         if type(of: primaryCurrency.value) == type(of: currency) {
             primaryCurrency.value = currency
         } else {
             secondaryCurrency.value = currency
         }
     }
-    
+
     func swapCurrencies() {
         let primary = primaryCurrency.value
         primaryCurrency.value = secondaryCurrency.value
         secondaryCurrency.value = primary
-        
+
         data.isFiatCurrencyPrimary = primaryCurrency.value is FiatCurrency
     }
 }

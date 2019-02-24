@@ -20,7 +20,7 @@ extension KeyboardAdjustable where Self: UIViewController {
                 self?.updateKeyboardConstraint(to: 0, constraint: constraint)
             }
             .dispose(in: reactive.bag)
-        
+
         NotificationCenter.default.reactive.notification(name: UIResponder.keyboardWillShowNotification)
             .observeNext { [weak self] notification in
                 guard
@@ -30,7 +30,7 @@ extension KeyboardAdjustable where Self: UIViewController {
             }
             .dispose(in: reactive.bag)
     }
-    
+
     private func updateKeyboardConstraint(to height: CGFloat, constraint: NSLayoutConstraint) {
         UIView.animate(withDuration: 0.25) { [constraint, view] in
             constraint.constant = height

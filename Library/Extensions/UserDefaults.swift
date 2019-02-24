@@ -17,7 +17,7 @@ extension UserDefaults {
 
 final class DefaultKey<T> {
     private let name: String
-    
+
     init(_ name: String) {
         self.name = name
     }
@@ -25,11 +25,11 @@ final class DefaultKey<T> {
     func get<T>() -> T? {
         return UserDefaults.standard.value(forKey: name) as? T
     }
-    
+
     func get<T>(defaultValue: T) -> T {
         return (UserDefaults.standard.value(forKey: name) as? T) ?? defaultValue
     }
-    
+
     func set<T>(_ value: T?) {
         if let value = value {
             UserDefaults.standard.setValue(value, forKey: name)
@@ -38,7 +38,7 @@ final class DefaultKey<T> {
             removeValue()
         }
     }
-    
+
     func removeValue() {
         UserDefaults.standard.removeObject(forKey: name)
         UserDefaults.standard.synchronize()

@@ -15,20 +15,20 @@ final class SendViewController: ModalDetailViewController {
     private let authenticationViewModel: AuthenticationViewModel
 
     private var didViewAppear = false
-    
+
     init(viewModel: SendViewModel, authenticationViewModel: AuthenticationViewModel) {
         self.viewModel = viewModel
         self.authenticationViewModel = authenticationViewModel
         super.init(nibName: nil, bundle: nil)
     }
-    
+
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
-    
+
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+
         contentStackView.addArrangedElement(.label(text: viewModel.method.headline, style: Style.Label.headline.with({ $0.textAlignment = .center })))
         contentStackView.addArrangedElement(.separator)
         contentStackView.addArrangedElement(.horizontalStackView(compressionResistant: .first, content: [
@@ -36,9 +36,9 @@ final class SendViewController: ModalDetailViewController {
             .label(text: viewModel.receiver, style: Style.Label.body)
         ]))
         contentStackView.addArrangedElement(.separator)
-        
+
         addAmountInputView()
-        
+
         if let memo = viewModel.memo, !memo.isEmpty {
             contentStackView.addArrangedElement(.verticalStackView(content: [
                 .label(text: L10n.Scene.Send.memoHeadline, style: Style.Label.headline),
@@ -46,21 +46,21 @@ final class SendViewController: ModalDetailViewController {
             ], spacing: -5))
             contentStackView.addArrangedElement(.separator)
         }
-        
+
         let sendButton = contentStackView.addArrangedElement(.customHeight(56, element: .button(title: L10n.Scene.Send.sendButton, style: Style.Button.background, completion: { [weak self] _ in
             self?.sendButtonTapped()
         }))) as? CallbackButton
-        
+
         viewModel.sendButtonEnabled
             .observeOn(DispatchQueue.main)
             .observeNext {
                 sendButton?.isEnabled = $0
             }
             .dispose(in: reactive.bag)
-        
+
         setHeaderImage(viewModel.method.headerImage)
     }
-    
+
     private func addAmountInputView() {
         let amountInputView = AmountInputView()
         amountInputView.backgroundColor = UIColor.Zap.background
@@ -69,7 +69,7 @@ final class SendViewController: ModalDetailViewController {
         amountInputView.addTarget(self, action: #selector(amountChanged(sender:)), for: .valueChanged)
 
         contentStackView.addArrangedSubview(amountInputView)
-        
+
         if case .lightning = viewModel.method {
             contentStackView.setCustomSpacing(0, after: amountInputView)
             let stackView = contentStackView.addArrangedElement(.horizontalStackView(compressionResistant: .first, content: [
@@ -78,9 +78,9 @@ final class SendViewController: ModalDetailViewController {
             ]))
             stackView.subviews[0].setContentHuggingPriority(.required, for: .horizontal)
         }
-        
+
         contentStackView.addArrangedElement(.separator)
-        
+
         if let amount = viewModel.amount {
             amountInputView.updateAmount(amount)
             amountInputView.setKeypad(hidden: true, animated: false)
@@ -106,7 +106,7 @@ final class SendViewController: ModalDetailViewController {
             }
         }
     }
-    
+
     private func sendButtonTapped() {
         authenticate { [weak self] result in
             switch result {
@@ -117,7 +117,7 @@ final class SendViewController: ModalDetailViewController {
             }
         }
     }
-    
+
     private func send() {
         let loadingView = presentLoadingView(text: L10n.Scene.Send.sending)
         viewModel.send { [weak self] result in
@@ -132,12 +132,12 @@ final class SendViewController: ModalDetailViewController {
             }
         }
     }
-    
+
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         didViewAppear = true
     }
-    
+
     @objc private func amountChanged(sender: AmountInputView) {
         viewModel.amount = sender.satoshis
     }
@@ -149,7 +149,7 @@ extension SendViewController: AmountInputViewDelegate {
         amountInputView.setKeypad(hidden: false, animated: true)
         updateHeight()
     }
-    
+
     func amountInputViewDidEndEditing(_ amountInputView: AmountInputView) {
         guard didViewAppear else { return }
         amountInputView.setKeypad(hidden: true, animated: true)

@@ -19,27 +19,27 @@ final class LoadingAmountView: UIView {
     let amountLabel: UILabel
     let activityIndicator: UIActivityIndicatorView
     var disposable: Disposable?
-    
+
     init(loadable: Observable<Loadable<Satoshi?>>) {
         amountLabel = UILabel(frame: CGRect.zero)
         activityIndicator = UIActivityIndicatorView(style: .white)
-        
+
         super.init(frame: CGRect.zero)
-        
+
         addAutolayoutSubview(amountLabel)
         addAutolayoutSubview(activityIndicator)
         activityIndicator.startAnimating()
         Style.Label.footnote.apply(to: amountLabel)
-        
+
         NSLayoutConstraint.activate([
             amountLabel.leadingAnchor.constraint(equalTo: leadingAnchor),
             amountLabel.centerYAnchor.constraint(equalTo: centerYAnchor),
             activityIndicator.leadingAnchor.constraint(equalTo: leadingAnchor),
             activityIndicator.centerYAnchor.constraint(equalTo: centerYAnchor)
         ])
-        
+
         updateLoadable(loadable.value)
-        
+
         loadable
             .observeOn(DispatchQueue.main)
             .observeNext { [weak self] loadable in
@@ -47,11 +47,11 @@ final class LoadingAmountView: UIView {
             }
             .dispose(in: reactive.bag)
     }
-    
+
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
-    
+
     private func updateLoadable(_ loadable: Loadable<Satoshi?>) {
         switch loadable {
         case .loading:
@@ -61,7 +61,7 @@ final class LoadingAmountView: UIView {
             disposable?.dispose()
             amountLabel.isHidden = false
             activityIndicator.isHidden = true
-            
+
             if let amount = amount {
                 disposable = amount
                     .bind(to: amountLabel, currency: Settings.shared.primaryCurrency)
@@ -69,8 +69,8 @@ final class LoadingAmountView: UIView {
             } else {
                 amountLabel.text = "-"
             }
-            
+
         }
-        
+
     }
 }

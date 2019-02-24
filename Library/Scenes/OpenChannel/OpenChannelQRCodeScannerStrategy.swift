@@ -12,13 +12,13 @@ import SwiftLnd
 
 struct OpenChannelQRCodeScannerStrategy: QRCodeScannerStrategy {
     private let lightningService: LightningService
-    
+
     let title = L10n.Scene.OpenChannel.title
-    
+
     init(lightningService: LightningService) {
         self.lightningService = lightningService
     }
-    
+
     func viewControllerForAddress(address: String, completion: @escaping (Result<UIViewController, InvoiceError>) -> Void) {
         if let nodeURI = LightningNodeURI(string: address) {
             let openChannelViewModel = OpenChannelViewModel(lightningService: lightningService, lightningNodeURI: nodeURI)

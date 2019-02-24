@@ -12,24 +12,24 @@ import SwiftBTC
 final class EventDetailViewController: ModalDetailViewController {
     let viewModel: EventDetailViewModel
     let presentBlockExplorer: (String, BlockExplorer.CodeType) -> Void
-    
+
     init(event: HistoryEventType, presentBlockExplorer: @escaping (String, BlockExplorer.CodeType) -> Void) {
         viewModel = EventDetailViewModel(event: event)
-        
+
         self.presentBlockExplorer = presentBlockExplorer
         super.init(nibName: nil, bundle: nil)
     }
-    
+
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
-    
+
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+
         setupEvent()
     }
-    
+
     private func setupEvent() {
         let configuration = viewModel.detailConfiguration(delegate: self)
         contentStackView.set(elements: configuration)

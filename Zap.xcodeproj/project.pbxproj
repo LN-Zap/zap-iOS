@@ -1969,13 +1969,14 @@
 			buildPhases = (
 				FBAC984A8CB01D906272F3C9 /* [CP] Check Pods Manifest.lock */,
 				ADEB61BB22170C2F009D5707 /* Sourcery */,
-				A0A05A312013F7880007D1C9 /* Swift Lint */,
+				A0A05A312013F7880007D1C9 /* SwiftLint */,
 				A0A059FB2013CF960007D1C9 /* Sources */,
 				A0A059FC2013CF960007D1C9 /* Frameworks */,
 				A0A059FD2013CF960007D1C9 /* Resources */,
 				A000F6062047F65200480D8E /* Embed Frameworks */,
 				AD391D5120D17FA9007EE22A /* Embed App Extensions */,
 				AE2DAF4D48A31C61FB3C2BFE /* [CP] Embed Pods Frameworks */,
+				ADE688392222B92F004761B9 /* SwiftLint autocorrect */,
 			);
 			buildRules = (
 			);
@@ -2443,19 +2444,37 @@
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
-		A0A05A312013F7880007D1C9 /* Swift Lint */ = {
+		A0A05A312013F7880007D1C9 /* SwiftLint */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			inputPaths = (
 			);
-			name = "Swift Lint";
+			name = SwiftLint;
 			outputPaths = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "if [ -z \"$CI\" ]; then\n    if which swiftlint >/dev/null; then\n        swiftlint\n    else\n        echo \"warning: SwiftLint not installed, download from https://github.com/realm/SwiftLint\"\n    fi\nfi\n";
+		};
+		ADE688392222B92F004761B9 /* SwiftLint autocorrect */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+			);
+			name = "SwiftLint autocorrect";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "# Type a script or drag a script file from your workspace to insert its path.\n\nif [ -z \"$CI\" ]; then\n    if which swiftlint >/dev/null; then\n        swiftlint autocorrect\n    else\n        echo \"warning: SwiftLint not installed, download from https://github.com/realm/SwiftLint\"\n    fi\nfi\n";
 		};
 		ADEB61BB22170C2F009D5707 /* Sourcery */ = {
 			isa = PBXShellScriptBuildPhase;

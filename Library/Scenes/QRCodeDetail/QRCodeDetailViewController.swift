@@ -13,9 +13,9 @@ final class QRCodeDetailViewController: UIViewController {
     @IBOutlet private weak var shareButton: UIButton!
     @IBOutlet private weak var copyButton: UIButton!
     @IBOutlet private weak var contentStackView: UIStackView!
-    
+
     private var viewModel: QRCodeDetailViewModel?
-    
+
     static func instantiate(with qrCodeDetailViewModel: QRCodeDetailViewModel) -> QRCodeDetailViewController {
         let viewController = StoryboardScene.QRCodeDetail.qrCodeDetailViewController.instantiate()
         viewController.viewModel = qrCodeDetailViewModel
@@ -26,39 +26,39 @@ final class QRCodeDetailViewController: UIViewController {
         super.viewDidLoad()
 
         guard let viewModel = viewModel else { fatalError("No ViewModel set.") }
-        
+
         if viewModel is NodeURIQRCodeViewModel {
             navigationItem.rightBarButtonItem = nil
         }
-        
+
         title = viewModel.title
         view.backgroundColor = UIColor.Zap.background
-        
+
         navigationItem.largeTitleDisplayMode = .never
         navigationController?.navigationBar.backgroundColor = .clear
         navigationController?.navigationBar.setBackgroundImage(UIImage(), for: .default)
         navigationController?.navigationBar.shadowImage = UIImage()
-        
+
         Style.Button.background.apply(to: shareButton, copyButton)
-        
+
         qrCodeImageView?.image = UIImage.qrCode(from: viewModel.qrCodeString)
-        
+
         contentStackView.spacing = 10
         contentStackView.set(elements: viewModel.detailConfiguration)
-        
+
         shareButton.setTitle(L10n.Generic.QrCode.shareButton, for: .normal)
         copyButton.setTitle(L10n.Generic.QrCode.copyButton, for: .normal)
     }
-    
+
     @IBAction private func qrCodeTapped(_ sender: Any) {
         guard let address = viewModel?.uriString else { return }
-    
+
         Logger.info("copied address: \(address)")
         Toast.presentSuccess(L10n.Generic.QrCode.copySuccessMessage)
         UISelectionFeedbackGenerator().selectionChanged()
         UIPasteboard.general.string = address
     }
-    
+
     private func dismissParent() {
         if presentingViewController?.presentingViewController == nil {
             dismiss(animated: true, completion: nil)
@@ -70,16 +70,16 @@ final class QRCodeDetailViewController: UIViewController {
             view.window?.rootViewController?.dismiss(animated: true, completion: nil)
         }
     }
-    
+
     @IBAction private func doneButtonTapped(_ sender: Any) {
         dismissParent()
     }
-    
+
     @IBAction private func shareButtonTapped(_ sender: Any) {
         guard let address = viewModel?.uriString else { return }
 
         let items: [Any] = [address]
-        
+
         let activityViewController = UIActivityViewController(activityItems: items, applicationActivities: nil)
         present(activityViewController, animated: true, completion: nil)
     }

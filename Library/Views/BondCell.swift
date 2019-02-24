@@ -10,20 +10,20 @@ import ReactiveKit
 
 class BondTableViewCell: UITableViewCell {
     let onReuseBag = DisposeBag()
-    
+
     override func prepareForReuse() {
         super.prepareForReuse()
-        
+
         onReuseBag.dispose()
     }
 }
 
 class BondCollectionViewCell: UICollectionViewCell {
     let onReuseBag = DisposeBag()
-    
+
     override func prepareForReuse() {
         super.prepareForReuse()
-        
+
         onReuseBag.dispose()
     }
 }

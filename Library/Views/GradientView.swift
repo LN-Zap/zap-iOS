@@ -13,46 +13,46 @@ public final class GradientView: UIView {
         case diagonal
         case vertical
     }
-    
+
     var direction: Direction = .horizontal {
         didSet {
             updateDirection()
         }
     }
-    
+
     var gradient: [UIColor] = [UIColor.Zap.lightningOrangeGradient, UIColor.Zap.lightningOrange] {
         didSet {
             updateColors()
         }
     }
-    
+
     var gradientLayer: CAGradientLayer?
-    
+
     override public class var layerClass: AnyClass {
         return CAGradientLayer.classForCoder()
     }
-    
+
     override public init(frame: CGRect) {
         super.init(frame: frame)
         setup()
     }
-    
+
     public required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
         setup()
     }
-    
+
     private func setup() {
         let gradientLayer = layer as? CAGradientLayer
         self.gradientLayer = gradientLayer
         updateColors()
         updateDirection()
     }
-    
+
     private func updateColors() {
         gradientLayer?.colors = gradient.map { $0.cgColor }
     }
-    
+
     private func updateDirection() {
         switch direction {
         case .horizontal:

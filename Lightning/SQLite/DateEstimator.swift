@@ -15,12 +15,12 @@ public struct DateWrappedChannelEvent: Equatable, DateProvidingEvent {
 
 public final class DateEstimator {
     private let transactions: [(date: Date, blockHeight: Int)]
-    
+
     public convenience init(database: Connection) {
         let transactions = (try? TransactionEvent.events(database: database)) ?? []
         self.init(transactions: transactions)
     }
-    
+
     public init(transactions: [TransactionEvent]) {
         self.transactions = transactions
             .compactMap {
@@ -29,15 +29,15 @@ public final class DateEstimator {
             }
             .sorted(by: { $0.1 < $1.1 })
     }
-    
+
     public func wrapChannelEvent(_ channelEvent: ChannelEvent) -> DateWrappedChannelEvent {
         let date = estimatedDate(forBlockHeight: channelEvent.blockHeight) ?? Date(timeIntervalSince1970: 0)
         return DateWrappedChannelEvent(date: date, channelEvent: channelEvent)
     }
-    
+
     func estimatedDate(forBlockHeight blockHeight: Int) -> Date? {
         let index = transactions.binarySearch { blockHeight >= $0.blockHeight }
-        
+
         if index == 0 {
             return nil
         } else if transactions[index - 1].blockHeight == blockHeight {

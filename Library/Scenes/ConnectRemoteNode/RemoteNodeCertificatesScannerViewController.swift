@@ -11,9 +11,9 @@ import UIKit
 // swiftlint:disable:next type_name
 final class RemoteNodeCertificatesScannerViewController: UIViewController {
     @IBOutlet private weak var navigationBar: UINavigationBar!
-    
+
     private var connectRemoteNodeViewModel: ConnectRemoteNodeViewModel?
-    
+
     @IBOutlet private weak var scannerView: QRCodeScannerView! {
         didSet {
             scannerView.handler = { [weak self] in
@@ -21,24 +21,24 @@ final class RemoteNodeCertificatesScannerViewController: UIViewController {
             }
         }
     }
-    
+
     static func instantiate(connectRemoteNodeViewModel: ConnectRemoteNodeViewModel) -> RemoteNodeCertificatesScannerViewController {
         let viewController = StoryboardScene.ConnectRemoteNode.remoteNodeCertificatesScannerViewController.instantiate()
         viewController.connectRemoteNodeViewModel = connectRemoteNodeViewModel
         return viewController
     }
-    
+
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+
         navigationBar.shadowImage = UIImage()
         navigationBar.setBackgroundImage(UIImage(), for: .default)
     }
-    
+
     @IBAction private func cancel(_ sender: Any) {
         dismiss(animated: true, completion: nil)
     }
-    
+
     private func getConfigurationFrom(code: String) {
         RPCConnectQRCode.configuration(for: code) { [weak self] result in
             DispatchQueue.main.async {

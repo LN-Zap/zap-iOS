@@ -11,7 +11,7 @@ public struct RemoteRPCConfiguration: Codable, Equatable {
     public let certificate: String?
     public let macaroon: Macaroon
     public let url: URL
-    
+
     public init(certificate: String?, macaroon: Macaroon, url: URL) {
         self.certificate = certificate
         self.macaroon = macaroon

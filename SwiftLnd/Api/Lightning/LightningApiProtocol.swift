@@ -10,7 +10,7 @@ import SwiftBTC
 
 public protocol LightningApiProtocol {
     func info(completion: @escaping Handler<Info>)
-    
+
     // Channels
     func openChannel(pubKey: String, amount: Satoshi, completion: @escaping Handler<ChannelPoint>)
     func closeChannel(channelPoint: ChannelPoint, force: Bool, completion: @escaping Handler<CloseStatusUpdate>)
@@ -33,12 +33,12 @@ public protocol LightningApiProtocol {
     func invoices(completion: @escaping Handler<[Invoice]>)
     func subscribeInvoices(completion: @escaping Handler<Invoice>)
     func routes(destination: String, amount: Satoshi, completion: @escaping Handler<[Route]>)
-    
+
     // Peers
     func connect(pubKey: String, host: String, completion: @escaping Handler<Success>)
     func nodeInfo(pubKey: String, completion: @escaping Handler<NodeInfo>)
     func peers(completion: @escaping Handler<[Peer]>)
-    
+
     // Wallet
     func newAddress(type: OnChainRequestAddressType, completion: @escaping Handler<BitcoinAddress>)
     func walletBalance(completion: @escaping Handler<Satoshi>)

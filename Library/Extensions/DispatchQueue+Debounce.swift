@@ -11,11 +11,11 @@ extension DispatchQueue {
     func debounce(interval: Int, action: @escaping (() -> Void)) -> () -> Void {
         var lastFireTime = DispatchTime.now()
         let dispatchDelay = DispatchTimeInterval.milliseconds(interval)
-        
+
         return {
             lastFireTime = DispatchTime.now()
             let dispatchTime: DispatchTime = DispatchTime.now() + dispatchDelay
-            
+
             self.asyncAfter(deadline: dispatchTime) {
                 let when: DispatchTime = lastFireTime + dispatchDelay
                 let now = DispatchTime.now()

@@ -25,7 +25,7 @@ extension LNDInvoice {
 extension LNDNodeInfoRequest {
     convenience init(pubKey: String) {
         self.init()
-        
+
         self.pubKey = pubKey
     }
 }
@@ -33,7 +33,7 @@ extension LNDNodeInfoRequest {
 extension LNDPayReqString {
     convenience init(payReq: String) {
         self.init()
-        
+
         self.payReq = payReq
     }
 }
@@ -41,7 +41,7 @@ extension LNDPayReqString {
 extension LNDNewAddressRequest {
     convenience init(type: OnChainRequestAddressType) {
         self.init()
-        
+
         switch type {
         case .witnessPubkeyHash:
             self.type = .witnessPubkeyHash

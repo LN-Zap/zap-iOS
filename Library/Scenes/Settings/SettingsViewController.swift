@@ -10,7 +10,7 @@ import UIKit
 
 final class SettingsViewController: GroupedTableViewController {
     private var info: Info?
-    
+
     init(info: Info?,
          configuration: WalletConfiguration,
          disconnectWalletDelegate: DisconnectWalletDelegate,
@@ -19,25 +19,25 @@ final class SettingsViewController: GroupedTableViewController {
          pushNodeURIViewController: @escaping (UINavigationController) -> Void,
          pushLndLogViewController: @escaping (UINavigationController) -> Void) {
         self.info = info
-        
+
         var lightningRows: [SettingsItem] = [
             PushViewControllerSettingsItem(title: L10n.Scene.Settings.Item.manageChannels, pushViewController: pushChannelList)
         ]
-        
+
         if let info = info, !info.uris.isEmpty {
             lightningRows.append(PushViewControllerSettingsItem(title: L10n.Scene.Settings.Item.nodeUri, pushViewController: pushNodeURIViewController))
         }
-        
+
         var walletRows: [SettingsItem] = [
             RemoveRemoteNodeSettingsItem(disconnectWalletDelegate: disconnectWalletDelegate),
             ChangePinSettingsItem(authenticationViewModel: authenticationViewModel)
         ]
-        
+
         if configuration.connection == .local {
             walletRows.append(PushViewControllerSettingsItem(title: L10n.Scene.Settings.Item.lndLog, pushViewController: pushLndLogViewController)
 )
         }
-        
+
         let sections: [Section<SettingsItem>] = [
             Section(title: L10n.Scene.Settings.title, rows: [
                 CurrencySelectionSettingsItem(),
@@ -56,20 +56,20 @@ final class SettingsViewController: GroupedTableViewController {
                 SafariSettingsItem(title: L10n.Scene.Settings.Item.privacyPolicy, url: URL(string: "http://zap.jackmallers.com/")!)
             ])
         ]
-        
+
         super.init(sections: sections)
     }
-    
+
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
-    
+
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+
         title = L10n.Scene.Settings.title
     }
-    
+
     override func tableView(_ tableView: UITableView, titleForFooterInSection section: Int) -> String? {
         guard
             section == sections.count - 1,
@@ -78,7 +78,7 @@ final class SettingsViewController: GroupedTableViewController {
             else { return nil }
 
         var versionString = "zap version: \(versionNumber), build: \(buildNumber)"
-        
+
         lndVersion: if let info = info {
             let components = info.version.components(separatedBy: " ")
             guard components.count == 2 else { break lndVersion }
@@ -90,7 +90,7 @@ final class SettingsViewController: GroupedTableViewController {
                 .prefix(7) ?? "-"
             versionString += "\nlnd version: \(components[0]) \(shortHash)"
         }
-        
+
         return versionString
     }
 }

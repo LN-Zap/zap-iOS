@@ -16,7 +16,7 @@ final class EmptyStreamCallback: NSObject, LndmobileCallbackProtocol {
     func onError(_ error: Error) {
         Logger.error("EmptyCallback Error: \(error.localizedDescription)")
     }
-    
+
     func onResponse(_ data: Data) {
         Logger.info("EmptyCallback: \(data)")
     }
@@ -26,24 +26,24 @@ final class StreamCallback<T: GPBMessage, U>: NSObject, LndmobileCallbackProtoco
     private let completion: Handler<U>
     private let compactMapping: ((T) -> U?)?
     private let mapping: ((T) -> Result<U, LndApiError>)?
-    
+
     init(_ completion: @escaping Handler<U>, transform: @escaping (T) -> U?) {
         self.completion = completion
         self.compactMapping = transform
         self.mapping = nil
     }
-    
+
     init(_ completion: @escaping Handler<U>, transform: @escaping (T) -> Result<U, LndApiError>) {
         self.completion = completion
         self.compactMapping = nil
         self.mapping = transform
     }
-    
+
     func onError(_ error: Error) {
         Logger.error(error)
         completion(.failure(LndApiError.localizedError(error.localizedDescription)))
     }
-    
+
     func onResponse(_ data: Data) {
         if let message = try? T.parse(from: data) {
             if let value = compactMapping?(message) {

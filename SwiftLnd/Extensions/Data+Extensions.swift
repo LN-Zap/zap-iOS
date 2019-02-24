@@ -10,7 +10,7 @@ import Foundation
 extension Data {
     public init?(hexadecimalString: String) {
         guard let regex = try? NSRegularExpression(pattern: "[0-9a-f]{1,2}", options: .caseInsensitive) else { return nil }
-        
+
         var data = Data(capacity: hexadecimalString.count / 2)
         regex.enumerateMatches(in: hexadecimalString, range: NSRange(location: 0, length: hexadecimalString.utf16.count)) { match, _, _ in
             guard let match = match else { return }
@@ -19,11 +19,11 @@ extension Data {
                 data.append(&num, count: 1)
             }
         }
-        
+
         if data.isEmpty {
             return nil
         }
-        
+
         self = data
     }
 }

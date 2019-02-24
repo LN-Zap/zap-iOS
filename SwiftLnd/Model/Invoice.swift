@@ -14,7 +14,7 @@ public struct Invoice: Equatable {
         case settled
         case open
         case canceled
-        
+
         init?(state: LNDInvoice_InvoiceState) {
             switch state {
             case .gpbUnrecognizedEnumeratorValue:
@@ -28,7 +28,7 @@ public struct Invoice: Equatable {
             }
         }
     }
-    
+
     public let id: String
     public let memo: String
     public let amount: Satoshi
@@ -43,7 +43,7 @@ extension Invoice {
     init(invoice: LNDInvoice) {
         id = invoice.rHash.hexadecimalString
         memo = invoice.memo
-        
+
         state = State(state: invoice.state) ?? (invoice.settled ? .settled : .open)
         switch state {
         case .settled:
@@ -53,7 +53,7 @@ extension Invoice {
             amount = Satoshi(invoice.value)
             settleDate = nil
         }
-        
+
         date = Date(timeIntervalSince1970: TimeInterval(invoice.creationDate))
         expiry = Date(timeIntervalSince1970: TimeInterval(invoice.creationDate + invoice.expiry))
         paymentRequest = invoice.paymentRequest

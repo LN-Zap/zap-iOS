@@ -14,53 +14,53 @@ import XCTest
 final class GraphViewDataSourceTests: XCTestCase {
     let plot = DotPlot(identifier: "dots")
     let currency = Bitcoin.satoshi
-    
+
     struct MockPlottableEvent: PlottableEvent {
         let amount: Satoshi
         let date: Date
     }
-    
+
     func testZeroBalance() {
         let dataSource = GraphViewDataSource(currentValue: 0, plottableEvents: [], currency: currency)
-        
+
         XCTAssertEqual(dataSource.numberOfPoints(), 1)
         XCTAssertEqual(dataSource.value(forPlot: plot, atIndex: 0), 0)
     }
-    
+
     func testSingleEvent() {
         let plottableEvents: [MockPlottableEvent] = []
         let dataSource = GraphViewDataSource(currentValue: 1000, plottableEvents: plottableEvents, currency: currency)
-        
+
         XCTAssertEqual(dataSource.numberOfPoints(), 2)
         XCTAssertEqual(dataSource.value(forPlot: plot, atIndex: 0), 0)
         XCTAssertEqual(dataSource.value(forPlot: plot, atIndex: 1), 1000)
     }
-    
+
     func testOneEventToday() {
         let plottableEvents: [MockPlottableEvent] = [
             MockPlottableEvent(amount: -500, date: Date())
         ]
         let dataSource = GraphViewDataSource(currentValue: 1000, plottableEvents: plottableEvents, currency: currency)
-        
+
         XCTAssertEqual(dataSource.numberOfPoints(), 3)
         XCTAssertEqual(dataSource.value(forPlot: plot, atIndex: 0), 0)
         XCTAssertEqual(dataSource.value(forPlot: plot, atIndex: 1), 1500)
         XCTAssertEqual(dataSource.value(forPlot: plot, atIndex: 2), 1000)
     }
-    
+
     func testOneEventYesterday() {
         let plottableEvents: [MockPlottableEvent] = [
             MockPlottableEvent(amount: -500, date: Date().add(day: -1))
         ]
         let dataSource = GraphViewDataSource(currentValue: 1000, plottableEvents: plottableEvents, currency: currency)
-        
+
         XCTAssertEqual(dataSource.numberOfPoints(), 4)
         XCTAssertEqual(dataSource.value(forPlot: plot, atIndex: 0), 0)
         XCTAssertEqual(dataSource.value(forPlot: plot, atIndex: 1), 1500)
         XCTAssertEqual(dataSource.value(forPlot: plot, atIndex: 2), 1000)
         XCTAssertEqual(dataSource.value(forPlot: plot, atIndex: 3), 1000)
     }
-    
+
     func testMultipleEvents() {
         let plottableEvents: [MockPlottableEvent] = [
             MockPlottableEvent(amount: -10, date: Date().add(day: -4)),
@@ -69,7 +69,7 @@ final class GraphViewDataSourceTests: XCTestCase {
             MockPlottableEvent(amount: -500, date: Date())
         ]
         let dataSource = GraphViewDataSource(currentValue: 1000, plottableEvents: plottableEvents, currency: currency)
-        
+
         XCTAssertEqual(dataSource.numberOfPoints(), 7)
         XCTAssertEqual(dataSource.value(forPlot: plot, atIndex: 0), 0)
         XCTAssertEqual(dataSource.value(forPlot: plot, atIndex: 1), 1460)
@@ -79,7 +79,7 @@ final class GraphViewDataSourceTests: XCTestCase {
         XCTAssertEqual(dataSource.value(forPlot: plot, atIndex: 5), 1500)
         XCTAssertEqual(dataSource.value(forPlot: plot, atIndex: 6), 1000)
     }
-    
+
     func testNegativeEvent() {
         let plottableEvents: [MockPlottableEvent] = [
             MockPlottableEvent(amount: 70, date: Date().add(day: -2)),
@@ -87,7 +87,7 @@ final class GraphViewDataSourceTests: XCTestCase {
             MockPlottableEvent(amount: 50, date: Date())
         ]
         let dataSource = GraphViewDataSource(currentValue: 100, plottableEvents: plottableEvents, currency: currency)
-            
+
         XCTAssertEqual(dataSource.numberOfPoints(), 4)
         XCTAssertEqual(dataSource.value(forPlot: plot, atIndex: 0), 0)
         XCTAssertEqual(dataSource.value(forPlot: plot, atIndex: 1), 0)

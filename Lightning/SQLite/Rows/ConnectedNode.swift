@@ -30,15 +30,15 @@ extension ConnectedNode {
         static let alias = Expression<String?>("alias")
         static let color = Expression<String?>("color")
     }
-    
+
     static let table = Table("connectedNodes")
-    
+
     init(row: Row) {
         pubKey = row[Column.pubKey]
         alias = row[Column.alias]
         color = row[Column.color]
     }
-    
+
     static func createTable(database: Connection) throws {
         try database.run(ConnectedNode.table.create(ifNotExists: true) { t in
             t.column(Column.pubKey, primaryKey: true)
@@ -46,7 +46,7 @@ extension ConnectedNode {
             t.column(Column.color)
         })
     }
-    
+
     func insert(database: Connection) throws {
         try database.run(ConnectedNode.table.insert(
             or: .replace,
@@ -55,7 +55,7 @@ extension ConnectedNode {
             Column.color <- color)
         )
     }
-    
+
     func insertPubKey(database: Connection) throws {
         try database.run(ConnectedNode.table.insert(or: .replace, Column.pubKey <- pubKey))
     }

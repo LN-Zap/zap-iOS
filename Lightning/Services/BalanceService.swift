@@ -13,7 +13,7 @@ import SwiftLnd
 
 public final class BalanceService {
     private let api: LightningApiProtocol
-    
+
     public let onChain = Observable<Satoshi>(0)
     let lightning = Observable<Satoshi>(0)
     public let total: Signal<Satoshi, NoError>
@@ -22,12 +22,12 @@ public final class BalanceService {
         self.api = api
         total = combineLatest(onChain, lightning) { $0 + $1 }
     }
-    
+
     func update() {
         api.walletBalance { [onChain] result in
             onChain.value = result.value ?? 0
         }
-    
+
         api.channelBalance { [lightning] result in
             lightning.value = result.value ?? 0
         }

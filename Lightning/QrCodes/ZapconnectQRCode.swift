@@ -13,13 +13,13 @@ struct ZapconnectQRCode: Codable {
     let certificate: String
     let macaroon: Data
     let url: URL
-    
+
     enum CodingKeys: String, CodingKey {
         case certificate = "c"
         case macaroon = "m"
         case url = "ip"
     }
-    
+
     init?(json: String) {
         guard
             let data = json.data(using: .utf8),
@@ -27,11 +27,11 @@ struct ZapconnectQRCode: Codable {
             else { return nil }
         self = remoteNodeConfiguration
     }
-    
+
     var rpcConfiguration: RemoteRPCConfiguration {
         let certificate = Pem(key: self.certificate).string
         let macaroon = Macaroon(data: self.macaroon)
-        
+
         return RemoteRPCConfiguration(certificate: certificate, macaroon: macaroon, url: url)
     }
 }

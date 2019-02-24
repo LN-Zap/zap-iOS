@@ -19,51 +19,51 @@ public final class HistoryService {
     private let api: LightningApiProtocol
     private let channelService: ChannelService
     private let persistence: Persistence
-    
+
     public var events = [HistoryEventType]()
     public var userTransaction = [PlottableEvent]()
-    
+
     init(api: LightningApiProtocol, channelService: ChannelService, persistence: Persistence) {
         self.api = api
         self.channelService = channelService
         self.persistence = persistence
     }
-    
+
     /// Load all transactions from db
     private func updateEvents() {
         do {
             let database = try persistence.connection()
-            
+
             var dateProvidingEvents = [DateProvidingEvent]()
             let transactions = try TransactionEvent.payments(database: database)
             let lightningPayments = try LightningPaymentEvent.events(database: database)
-            
+
             dateProvidingEvents.append(contentsOf: transactions)
             dateProvidingEvents.append(contentsOf: lightningPayments)
             dateProvidingEvents.append(contentsOf: try CreateInvoiceEvent.events(database: database))
             dateProvidingEvents.append(contentsOf: try FailedPaymentEvent.events(database: database))
-            
+
             let dateEstimator = DateEstimator(database: database)
             let channelEvents = try ChannelEvent.events(database: database).map { (channelEvent: ChannelEvent) -> DateWrappedChannelEvent in
                 dateEstimator.wrapChannelEvent(channelEvent)
             }
-            
+
             dateProvidingEvents.append(contentsOf: channelEvents)
-            
+
             events = dateProvidingEvents.map(HistoryEventType.create)
             let userTransactions = transactions.filter { $0.type == .userInitiated }
             userTransaction = userTransactions as [PlottableEvent] + lightningPayments as [PlottableEvent]
-            
+
             sendChangeNotification()
         } catch {
             Logger.error(error)
         }
     }
-    
+
     /// Write new transactions in db
     public func update() {
         updateEvents()
-        
+
         let taskGroup = DispatchGroup()
 
         taskGroup.enter()
@@ -72,26 +72,26 @@ public final class HistoryService {
             addTransactions(transactions)
             taskGroup.leave()
         }
-        
+
         taskGroup.enter()
         api.payments { [addPayments] in
             guard let payments = $0.value else { return }
             addPayments(payments)
             taskGroup.leave()
         }
-        
+
         taskGroup.enter()
         api.invoices { [addInvoices] in
             guard let invoices = $0.value else { return }
             addInvoices(invoices)
             taskGroup.leave()
         }
-        
+
         taskGroup.notify(queue: .main, work: DispatchWorkItem(block: { [weak self] in
             self?.updateEvents()
         }))
     }
-    
+
     func addFailedPaymentEvent(paymentRequest: PaymentRequest, amount: Satoshi) {
         do {
             let connection = try persistence.connection()
@@ -103,7 +103,7 @@ public final class HistoryService {
             Logger.error(error)
         }
     }
-    
+
     func addPaymentEvent(payment: Payment, memo: String?) {
         channelService.node(for: payment.destination) { [weak self] node in
             do {
@@ -116,17 +116,17 @@ public final class HistoryService {
             }
         }
     }
-    
+
     func addedTransaction(_ transaction: Transaction) {
         addTransactions([transaction])
         updateEvents()
     }
-    
+
     func addedInvoice(_ invoice: Invoice) {
         addInvoices([invoice])
         updateEvents()
     }
-    
+
     /// called when a transaction is sent to mark it as userInitiated & set memo
     func updateTransactionEventMetadata(transactionEvent: TransactionEvent) {
         do {
@@ -146,14 +146,14 @@ public final class HistoryService {
 extension HistoryService {
     private func addTransactions(_ transactions: [Transaction]) {
         let receiveAddresses = (try? ReceivingAddress.all(database: persistence.connection())) ?? Set()
-        
+
         let transactions = transactions.compactMap { transaction -> TransactionEvent? in
             for destination in transaction.destinationAddresses where receiveAddresses.contains(destination) {
                 return TransactionEvent(transaction: transaction, type: .userInitiated)
             }
             return TransactionEvent(transaction: transaction, type: .unknown)
         }
-        
+
         for transaction in transactions {
             do {
                 try transaction.insertOrUpdateTransactionData(database: persistence.connection())
@@ -162,7 +162,7 @@ extension HistoryService {
             }
         }
     }
-    
+
     private func addInvoices(_ invoices: [Invoice]) {
         for invoice in invoices {
             do {
@@ -171,7 +171,7 @@ extension HistoryService {
             } catch {
                 Logger.error(error)
             }
-            
+
             if invoice.state == .settled {
                 let paymentEvent = LightningPaymentEvent(invoice: invoice)
                 do {
@@ -182,7 +182,7 @@ extension HistoryService {
             }
         }
     }
-    
+
     private func addPayments(_ payments: [Payment]) {
         do {
             for payment in payments {

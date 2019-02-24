@@ -20,7 +20,7 @@ class Pem {
     private let prefix = "-----BEGIN CERTIFICATE-----"
     private let suffix = "-----END CERTIFICATE-----"
     let string: String
-    
+
     init(key: String) {
         if key.hasPrefix(prefix) {
             string = key

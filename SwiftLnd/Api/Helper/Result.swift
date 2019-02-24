@@ -10,10 +10,10 @@ import Foundation
 public enum Result<Success, Failure: Error> {
     /// A success, storing a `Success` value.
     case success(Success)
-    
+
     /// A failure, storing a `Failure` value.
     case failure(Failure)
-    
+
     public var value: Success? {
         switch self {
         case let .success(value):
@@ -22,7 +22,7 @@ public enum Result<Success, Failure: Error> {
             return nil
         }
     }
-    
+
     public var error: Error? {
         switch self {
         case .success:
@@ -31,11 +31,11 @@ public enum Result<Success, Failure: Error> {
             return error
         }
     }
-    
+
     public func map<NewSuccess>(_ transform: (Success) -> NewSuccess) -> Result<NewSuccess, Failure> {
         return flatMap { .success(transform($0)) }
     }
-    
+
     public func flatMap<NewSuccess>(_ transform: (Success) -> Result<NewSuccess, Failure>) -> Result<NewSuccess, Failure> {
         switch self {
         case let .success(value):
@@ -55,7 +55,7 @@ extension Result: CustomStringConvertible, CustomDebugStringConvertible {
             return ".failure(\(error))"
         }
     }
-    
+
     public var debugDescription: String {
         return description
     }

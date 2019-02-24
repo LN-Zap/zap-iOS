@@ -17,24 +17,24 @@ final class UnlockWalletViewModel {
     private let configuration: WalletConfiguration
 
     private var timer: Timer?
-    
+
     let isUnlocking = Observable(false)
     let nodeAlias: String
-    
+
     init(lightningService: LightningService, configuration: WalletConfiguration) {
         self.lightningService = lightningService
         self.walletService = WalletService(connection: configuration.connection)
         self.configuration = configuration
         self.nodeAlias = configuration.alias ?? "your Node"
     }
-    
+
     func unlock(password: String) {
         // Stop updating the wallet state, because lnd needs time to start.
         // During that period the wallet state would be `.error` which would
         // result in a disconnect.
         isUnlocking.value = true
         lightningService.infoService.stop()
-        
+
         walletService.unlockWallet(password: password) { [weak self] result in
             switch result {
             case .success:
@@ -46,17 +46,17 @@ final class UnlockWalletViewModel {
             }
         }
     }
-    
+
     func waitWalletReady() {
         timer = Timer.scheduledTimer(withTimeInterval: 1, repeats: true) { [weak self] _ in
             self?.checkInfo()
         }
     }
-    
+
     private func checkInfo() {
         lightningService.infoService.info { [weak self] in
             self?.lightningService.resetRpcConnection()
-            
+
             if $0.value != nil {
                 Logger.info("wallet started")
                 self?.timer?.invalidate()

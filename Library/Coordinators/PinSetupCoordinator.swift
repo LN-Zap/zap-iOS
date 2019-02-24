@@ -21,13 +21,13 @@ final class PinSetupCoordinator: Coordinator {
         self.authenticationViewModel = authenticationViewModel
         self.delegate = delegate
     }
-    
+
     func start() {
         let viewModel = SetupPinViewModel(authenticationViewModel: authenticationViewModel)
         let viewController = SetupPinViewController.instantiate(setupPinViewModel: viewModel, didSetupPin: didSetupPin)
         self.rootViewController.setContainerContent(viewController)
     }
-    
+
     func didSetupPin() {
         delegate?.didSetupPin()
     }

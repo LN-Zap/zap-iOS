@@ -12,7 +12,7 @@ import SwiftBTC
 
 final class ExchangeUpdaterJob {
     private static var timer: Timer?
-    
+
     static func start() {
         let job = ExchangeUpdaterJob()
         timer = Timer.scheduledTimer(withTimeInterval: 60 * 10, repeats: true) { _ in
@@ -20,12 +20,12 @@ final class ExchangeUpdaterJob {
         }
         timer?.fire()
     }
-    
+
     static func stop() {
         timer?.invalidate()
         timer = nil
     }
-    
+
     func run() {
         guard let url = URL(string: "https://blockchain.info/ticker") else { fatalError("Invalid ticker url.") }
         let task = URLSession.pinned.dataTask(with: url) { [weak self] data, _, error in
@@ -39,7 +39,7 @@ final class ExchangeUpdaterJob {
         }
         task.resume()
     }
-    
+
     func parseFiatCurrency(for currencyCode: String, data: Any) -> FiatCurrency? {
         guard
             let localized = Locale.autoupdatingCurrent.localizedString(forCurrencyCode: currencyCode),
@@ -48,7 +48,7 @@ final class ExchangeUpdaterJob {
             let valueNumber = data["15m"] as? NSNumber
             else { return nil }
         let exchangeRate = valueNumber.decimalValue
-        
+
         return FiatCurrency(currencyCode: currencyCode, symbol: symbol, localized: localized, exchangeRate: exchangeRate)
     }
 }
@@ -57,12 +57,12 @@ enum ExchangeData {
     static var availableCurrencies: [FiatCurrency]? {
         didSet {
             guard let availableCurrencies = availableCurrencies else { return }
-            
+
             let currentFiatCurrencyCode = Settings.shared.fiatCurrency.value.currencyCode
             if let updatedCurrency = availableCurrencies.first(where: { $0.currencyCode == currentFiatCurrencyCode }) {
                 Settings.shared.updateCurrency(updatedCurrency)
             }
-            
+
             Logger.info("did update exchange rates")
         }
     }

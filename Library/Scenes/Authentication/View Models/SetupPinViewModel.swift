@@ -15,7 +15,7 @@ enum SetupPinState {
 }
 
 final class SetupPinViewModel {
-    
+
     let pinAtiveCount = Observable(0)
     let pinCharacterCount = Observable(0)
     let doneButtonEnabled = Observable(false)
@@ -24,28 +24,28 @@ final class SetupPinViewModel {
     private var firstPin: String?
     private var currentPin: String?
     private let authenticationViewModel: AuthenticationViewModel
-    
+
     init(authenticationViewModel: AuthenticationViewModel) {
         self.authenticationViewModel = authenticationViewModel
         topLabelText = Observable(L10n.Scene.SetupPin.TopLabel.initial)
     }
-    
+
     func updateCurrentPin(_ pin: String) -> Bool {
         guard pin.count <= firstPin?.count ?? 12 else { return false }
-        
+
         doneButtonEnabled.value = pin.count >= 4 && firstPin == nil
-        
+
         currentPin = pin
         if firstPin == nil {
             pinCharacterCount.value = pin.count
         } else {
             pinAtiveCount.value = pin.count
         }
-        
+
         if pin.count == firstPin?.count {
             if pin == firstPin {
                 authenticationViewModel.setPin(pin)
-                state.value = .completed                
+                state.value = .completed
             } else {
                 firstPin = nil
                 currentPin = nil
@@ -56,10 +56,10 @@ final class SetupPinViewModel {
                 return false
             }
         }
-        
+
         return true
     }
-    
+
     func doneButtonTapped() {
         firstPin = currentPin
         doneButtonEnabled.value = false

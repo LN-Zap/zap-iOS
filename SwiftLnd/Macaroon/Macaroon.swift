@@ -12,12 +12,12 @@ import Logger
 public struct Macaroon: Equatable, Codable {
     private let data: Data
     public let permissions: Permissions
-    
+
     public init(from decoder: Decoder) throws {
         data = try Data(from: decoder)
         permissions = Macaroon.decodePermissions(from: data)
     }
-    
+
     public func encode(to encoder: Encoder) throws {
         try data.encode(to: encoder)
     }
@@ -26,7 +26,7 @@ public struct Macaroon: Equatable, Codable {
         guard let data = Data(base64Encoded: base64String) else { return nil }
         self.init(data: data)
     }
-    
+
     public init?(hexadecimalString: String) {
         guard let data = Data(hexadecimalString: hexadecimalString) else { return nil }
         self.init(data: data)
@@ -36,7 +36,7 @@ public struct Macaroon: Equatable, Codable {
         self.data = data
         permissions = Macaroon.decodePermissions(from: data)
     }
-    
+
     // The v2 binary format of a macaroon is as follows. All entries other than the
     // version are packets as parsed by parsePacketV2.
     //
@@ -61,67 +61,67 @@ public struct Macaroon: Equatable, Codable {
         guard let (firstSection, remainingData) = Macaroon.parseSection(data: data) else { return Permissions(permissions: [:]) }
         var section = firstSection
         data = remainingData
-        
+
         if !section.isEmpty && section[0].type == .location,
             section[0].data != nil {
             section = Array(section.dropFirst())
         }
-        
+
         guard
             section.count == 1 && section[0].type == .identifier, // valid macaroon header
             let id = section[0].data,
             let decoded = try? MacaroonId(data: id.dropFirst())
             else { return Permissions(permissions: [:]) }
-        
+
         var permissions = [Permissions.Domain: Permissions.AccessMode]()
-        
+
         for operation in decoded.opsArray {
             guard let operation = operation as? Op else { continue }
             guard let domain = Permissions.Domain(rawValue: operation.entity) else {
                 Logger.warn("⚠️ unknown macaroon id entity: \(operation)")
                 continue
             }
-            
+
             let accessMode = Permissions.AccessMode(operation.actionsArray.compactMap {
                 guard let action = $0 as? String else { return nil }
                 return Permissions.AccessMode.fromString(action)
             })
             permissions[domain] = accessMode
         }
-        
+
         return Permissions(permissions: permissions)
     }
-    
+
     // parseSectionV2 parses a sequence of packets in data. The sequence is
     // terminated by a packet with a field type of fieldEOS.
     private static func parseSection(data: Data) -> ([Packet], Data)? {
         var prevFieldType = -1
         var data = data
         var packets = [Packet]()
-        
+
         while true {
             guard
                 !data.isEmpty, // section extends past end of buffer
                 let (packet, rest) = Packet.parse(data: data)
                 else { return nil }
-            
+
             if packet.type == .eos {
                 return (packets, rest)
             }
-            
+
             guard packet.type.rawValue > prevFieldType else { return nil } // fields out of order
-            
+
             packets.append(packet)
-            
+
             prevFieldType = packet.type.rawValue
             data = rest
         }
     }
-    
+
     public static func == (lhs: Macaroon, rhs: Macaroon) -> Bool {
         return lhs.data == rhs.data
     }
-    
+
     public var hexadecimalString: String {
         return data.hexadecimalString
     }
@@ -136,10 +136,10 @@ private struct Packet {
         case verificationId = 4
         case signature = 6
     }
-    
+
     var type: FieldType
     var data: Data?
-    
+
     // parsePacketV2 parses a V2 data package at the start of the given data.
     // The format of a packet is as follows:
     //    fieldType(varint) payloadLen(varint) data[payloadLen bytes]
@@ -150,20 +150,20 @@ private struct Packet {
             let (data, rawType) = parseVarInt(data: data),
             let type = Packet.FieldType(rawValue: Int(rawType))
             else { return nil }
-        
+
         if type == .eos {
             let packet = Packet(type: type, data: nil)
             return (packet, data)
         }
-        
+
         guard let (remainingData, payloadLen) = parseVarInt(data: data) else { return nil }
-        
+
         guard payloadLen <= remainingData.count else { return nil } // field data extends past end of buffer
-        
+
         let packetEndIndex = remainingData.startIndex.advanced(by: Int(payloadLen))
         let packetData = remainingData[remainingData.startIndex..<packetEndIndex]
         let packet = Packet(type: type, data: packetData)
-        
+
         return (packet, remainingData[packetEndIndex...])
     }
 }
@@ -173,7 +173,7 @@ private struct Packet {
 private func parseVarInt(data: Data) -> (Data, UInt)? {
     let (value, count) = uVarInt(data: data)
     guard count > 0, value < 0x7fffffff else { return nil } // swiftlint:disable:this empty_count
-    
+
     let dataSlice = data[data.startIndex.advanced(by: count)...]
     return (dataSlice, value)
 }
@@ -189,7 +189,7 @@ private func parseVarInt(data: Data) -> (Data, UInt)? {
 private func uVarInt(data: Data) -> (UInt, Int) {
     var result = UInt(0)
     var bitCount = 0
-    
+
     for (index, byte) in data.enumerated() {
         if byte < 0x80 {
             if index > 9 || index == 9 && byte > 1 {

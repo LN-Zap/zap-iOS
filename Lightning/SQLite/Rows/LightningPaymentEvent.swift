@@ -32,7 +32,7 @@ extension LightningPaymentEvent {
         date = payment.date
         self.node = node ?? ConnectedNode(pubKey: payment.destination, alias: nil, color: nil)
     }
-    
+
     init(invoice: Invoice) {
         paymentHash = invoice.id
         memo = invoice.memo
@@ -53,9 +53,9 @@ extension LightningPaymentEvent {
         static let date = Expression<Date>("date")
         static let destination = Expression<String?>("destination")
     }
-    
+
     private static let table = Table("lightningPaymentEvent")
-    
+
     init(row: Row) {
         paymentHash = row[Column.paymentHash]
         if let memo = row[Column.memo],
@@ -67,7 +67,7 @@ extension LightningPaymentEvent {
         amount = row[Column.amount]
         fee = row[Column.fee]
         date = row[Column.date]
-        
+
         if (try? row.get(ConnectedNode.Column.pubKey)) != nil {
             node = ConnectedNode(row: row)
         } else if let destination = row[Column.destination] {
@@ -76,7 +76,7 @@ extension LightningPaymentEvent {
             node = nil
         }
     }
-    
+
     static func createTable(database: Connection) throws {
         try database.run(table.create(ifNotExists: true) { t in
             t.column(Column.paymentHash, primaryKey: true)
@@ -87,7 +87,7 @@ extension LightningPaymentEvent {
             t.column(Column.destination)
         })
     }
-    
+
     func insert(database: Connection) throws {
         try database.run(LightningPaymentEvent.table.insert(
             Column.paymentHash <- paymentHash,
@@ -98,7 +98,7 @@ extension LightningPaymentEvent {
             Column.destination <- node?.pubKey)
         )
     }
-    
+
     public static func events(database: Connection) throws -> [LightningPaymentEvent] {
         let query = table
             .join(.leftOuter, ConnectedNode.table, on: ConnectedNode.Column.pubKey == table[Column.destination])

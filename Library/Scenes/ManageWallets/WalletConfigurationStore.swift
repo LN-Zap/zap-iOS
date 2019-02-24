@@ -18,7 +18,7 @@ struct WalletConfiguration: Equatable, Codable {
     let network: Network?
     let connection: LightningConnection
     let walletId: WalletId
-    
+
     func updatingInfo(info: Info) -> WalletConfiguration {
         return WalletConfiguration(alias: info.alias, network: info.network, connection: connection, walletId: walletId)
     }
@@ -29,10 +29,10 @@ final class WalletConfigurationStore {
         let configurations: [WalletConfiguration]
         let selectedWallet: WalletConfiguration?
     }
-    
+
     private static let keychain = Keychain(service: "com.jackmallers.zap.wallets").accessibility(.whenUnlocked)
     private static let keychainWalletConfigurationKey = "WalletConfiguration"
-    
+
     private var infoBag: Disposable?
     private var codableData: CodableData {
         return CodableData(configurations: configurations, selectedWallet: selectedWallet)
@@ -46,39 +46,39 @@ final class WalletConfigurationStore {
             save()
         }
     }
-    
+
     static func load() -> WalletConfigurationStore {
         guard let data = WalletConfigurationStore.keychain[data: keychainWalletConfigurationKey] else { return WalletConfigurationStore(data: nil) }
         let result = try? JSONDecoder().decode(CodableData.self, from: data)
 
         return WalletConfigurationStore(data: result)
     }
-    
+
     private init(data: CodableData?) {
         configurations = data?.configurations ?? []
         sortConfigurations()
         selectedWallet = data?.selectedWallet
     }
-    
+
     func removeWallet(at indexPath: IndexPath) {
         let walletId = configurations[indexPath.row].walletId
         guard let url = FileManager.default.walletDirectory(for: walletId) else { return }
-        
+
         do {
             try FileManager.default.removeItem(at: url)
         } catch {
             Logger.error(error.localizedDescription)
         }
-        
+
         configurations.remove(at: indexPath.row)
-        
+
         save()
     }
-    
+
     func addWallet(walletConfiguration: WalletConfiguration) {
         guard !configurations.contains(where: {
             guard $0.walletId != walletConfiguration.walletId else { return true }
-            
+
             // it's possible to have multiple wallets with configuration
             // `.local`, but we don't want multiple `.remote` wallets with same
             // `RemoteRPCConfiguration`
@@ -92,10 +92,10 @@ final class WalletConfigurationStore {
         configurations.append(walletConfiguration)
         sortConfigurations()
         selectedWallet = walletConfiguration
-        
+
         save()
     }
-    
+
     func updateInfo(for configuration: WalletConfiguration, infoService: InfoService) {
         infoBag?.dispose()
         self.infoBag = infoService.info
@@ -107,15 +107,15 @@ final class WalletConfigurationStore {
 
     private func update(info: Info, for configuration: WalletConfiguration) {
         guard let oldConfiguration = configurations.first(where: { $0.walletId == configuration.walletId }) else { return }
-        
+
         configurations.removeAll { $0.walletId == configuration.walletId }
-        
+
         configurations.append(oldConfiguration.updatingInfo(info: info))
         sortConfigurations()
         infoBag?.dispose()
         save()
     }
-    
+
     private func save() {
         let keychain = WalletConfigurationStore.keychain
         guard
@@ -123,7 +123,7 @@ final class WalletConfigurationStore {
             else { return }
         keychain[data: WalletConfigurationStore.keychainWalletConfigurationKey] = data
     }
-    
+
     private func sortConfigurations() {
         configurations.sort(by: { $0.alias ?? "" < $1.alias ?? "" })
     }

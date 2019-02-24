@@ -13,7 +13,7 @@ final class RecoverWalletViewController: UIViewController {
     @IBOutlet private weak var placeholderTextView: UITextView!
     @IBOutlet private weak var textView: UITextView!
     @IBOutlet private weak var doneButton: UIButton!
-    
+
     // swiftlint:disable implicitly_unwrapped_optional
     private var recoverWalletViewModel: RecoverWalletViewModel!
     private var connectWallet: ((WalletConfiguration) -> Void)!
@@ -25,30 +25,30 @@ final class RecoverWalletViewController: UIViewController {
         viewController.connectWallet = connectWallet
         return viewController
     }
-    
+
     override func viewDidLoad() {
         super.viewDidLoad()
 
         title = L10n.Scene.RecoverWallet.title
-        
+
         Style.Label.custom().apply(to: topLabel)
         Style.textView.apply(to: placeholderTextView, textView)
         Style.Button.custom().apply(to: doneButton)
-        
+
         doneButton.setTitle(L10n.Scene.RecoverWallet.doneButton, for: .normal)
         topLabel.text = L10n.Scene.RecoverWallet.descriptionLabel
         topLabel.textColor = .white
         placeholderTextView.text = L10n.Scene.RecoverWallet.placeholder
         placeholderTextView.textColor = .darkGray
         placeholderTextView.backgroundColor = .clear
-        
+
         textView.backgroundColor = .clear
         textView.text = nil
         textView.textColor = .white
         textView.delegate = self
         textView.becomeFirstResponder()
     }
-    
+
     @IBAction private func recoverWallet(_ sender: Any) {
         guard let mnemonic = textView.text else { return }
         recoverWalletViewModel.recoverWallet(with: mnemonic) { [weak self] result in
@@ -72,7 +72,7 @@ extension RecoverWalletViewController: UITextViewDelegate {
         textView.attributedText = recoverWalletViewModel?.attributedString(from: textView.text)
         textView.selectedRange = cursorPosition
     }
-    
+
     func textViewDidChange(_ textView: UITextView) {
         let isTextViewEmpty = textView.text == "" || textView.text == nil
         placeholderTextView.isHidden = !isTextViewEmpty

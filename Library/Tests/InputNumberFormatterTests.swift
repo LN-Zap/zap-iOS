@@ -13,7 +13,7 @@ final class InputNumberFormatterTests: XCTestCase {
     // swiftlint:disable:next function_body_length
     func testInputs() {
         let fiat = FiatCurrency(currencyCode: "USD", symbol: "$", localized: "$", exchangeRate: 1)
-        
+
         let data: [(String, Currency, String?)] = [
             ("1", Bitcoin.satoshi, "1"),
             ("1.", Bitcoin.satoshi, nil),
@@ -74,7 +74,7 @@ final class InputNumberFormatterTests: XCTestCase {
             (".0000", fiat, nil),
             (".00001", fiat, nil)
         ]
-        
+
         for (input, currency, output) in data {
             let formatter = InputNumberFormatter(currency: currency)
             XCTAssertEqual(formatter.validate(input), output, "(\(input), \(currency) = \(String(describing: output)))")

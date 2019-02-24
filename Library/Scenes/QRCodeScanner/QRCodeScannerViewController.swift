@@ -26,22 +26,22 @@ final class QRCodeScannerViewController: UIViewController {
             title = strategy?.title
         }
     }
-    
+
     override var preferredStatusBarStyle: UIStatusBarStyle {
         return .lightContent
     }
-    
+
     static func instantiate(strategy: QRCodeScannerStrategy) -> QRCodeScannerViewController {
         let viewController = StoryboardScene.QRCodeScanner.qrCodeScannerViewController.instantiate()
         viewController.strategy = strategy
         return viewController
     }
-    
+
     override func viewDidLoad() {
         super.viewDidLoad()
-                
+
         Style.Button.background.apply(to: pasteButton)
-        
+
         navigationController?.navigationBar.backgroundColor = .clear
         navigationController?.navigationBar.shadowImage = UIImage()
         navigationController?.navigationBar.setBackgroundImage(UIImage(), for: .default)
@@ -49,7 +49,7 @@ final class QRCodeScannerViewController: UIViewController {
         scannerViewOverlay.alpha = 0
         qrCodeSuccessImageView.tintColor = UIColor.Zap.superGreen
     }
-    
+
     func tryPresentingViewController(for address: String) {
         strategy?.viewControllerForAddress(address: address) { [weak self] result in
             DispatchQueue.main.async {
@@ -65,13 +65,13 @@ final class QRCodeScannerViewController: UIViewController {
             }
         }
     }
-    
+
     private func presentViewController(_ viewController: UIViewController) {
         guard let modalDetailViewController = viewController as? ModalDetailViewController else { fatalError("presented view is not of type ModalDetailViewController") }
         modalDetailViewController.delegate = self
         present(modalDetailViewController, animated: true, completion: nil)
     }
-    
+
     @IBAction private func pasteButtonTapped(_ sender: Any) {
         if let string = UIPasteboard.general.string {
             tryPresentingViewController(for: string)
@@ -80,7 +80,7 @@ final class QRCodeScannerViewController: UIViewController {
             UINotificationFeedbackGenerator().notificationOccurred(.error)
         }
     }
-    
+
     @IBAction private func cancelButtonTapped(_ sender: Any) {
         dismiss(animated: true, completion: nil)
     }
@@ -90,7 +90,7 @@ extension QRCodeScannerViewController: ModalDetailViewControllerDelegate {
     func childWillDisappear() {
         scannerView.start()
     }
-    
+
     func presentError(message: String) {
         Toast.presentError(message)
     }

@@ -11,14 +11,14 @@ import LndRpc
 public class RpcApi {
     let macaroon: String
     let configuration: RemoteRPCConfiguration
-    
+
     public init(configuration: RemoteRPCConfiguration) {
         self.configuration = configuration
         macaroon = configuration.macaroon.hexadecimalString
-        
+
         GRPCCall.setup(configuration)
     }
-    
+
     public func resetConnection() {
         GRPCCall.setup(configuration)
     }

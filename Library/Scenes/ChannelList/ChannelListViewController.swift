@@ -11,7 +11,7 @@ import UIKit
 
 final class ChannelListViewController: UIViewController {
     @IBOutlet private weak var tableView: UITableView!
-    
+
     private var channelListViewModel: ChannelListViewModel?
     private var addChannelButtonTapped: (() -> Void)?
     private var presentChannelDetail: ((UIViewController, ChannelViewModel) -> Void)?
@@ -21,13 +21,13 @@ final class ChannelListViewController: UIViewController {
         viewController.channelListViewModel = channelListViewModel
         viewController.addChannelButtonTapped = addChannelButtonTapped
         viewController.presentChannelDetail = presentChannelDetail
-        
+
         return viewController
     }
-    
+
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+
         title = L10n.Scene.Channels.title
         view.backgroundColor = UIColor.Zap.background
 
@@ -35,10 +35,10 @@ final class ChannelListViewController: UIViewController {
         tableView.delegate = self
         tableView.backgroundColor = UIColor.Zap.deepSeaBlue
         tableView.rowHeight = 76
-        
+
         navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(presentAddChannel))
         navigationItem.largeTitleDisplayMode = .never
-        
+
         channelListViewModel?.dataSource.bind(to: tableView) { [weak self] array, indexPath, tableView in
             let cell: ChannelTableViewCell = tableView.dequeueCellForIndexPath(indexPath)
             let channelViewModel = array[indexPath.row]
@@ -46,7 +46,7 @@ final class ChannelListViewController: UIViewController {
             return cell
         }
     }
-    
+
     @objc private func presentAddChannel() {
         addChannelButtonTapped?()
     }
@@ -55,7 +55,7 @@ final class ChannelListViewController: UIViewController {
 extension ChannelListViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
-        
+
         guard let channelViewModel = channelListViewModel?.dataSource[indexPath.row] else { return }
         presentChannelDetail?(self, channelViewModel)
     }

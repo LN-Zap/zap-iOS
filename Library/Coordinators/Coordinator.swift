@@ -9,6 +9,6 @@ import Foundation
 
 protocol Coordinator {
     var rootViewController: RootViewController { get }
-    
+
     func start()
 }

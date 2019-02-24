@@ -20,10 +20,10 @@ public enum InvoiceError: Error {
  Can be either a payment request or a bitcoinURI or both. (bitcoin uri with
  ln fallback or ln invoice with on-chain fallback.
  */
-public final class BitcoinInvoice {    
+public final class BitcoinInvoice {
     public let lightningPaymentRequest: PaymentRequest?
     public let bitcoinURI: BitcoinURI?
-    
+
     init(lightningPaymentRequest: PaymentRequest?, bitcoinURI: BitcoinURI?) {
         self.lightningPaymentRequest = lightningPaymentRequest
         self.bitcoinURI = bitcoinURI
@@ -45,14 +45,14 @@ public enum BitcoinInvoiceFactory {
             completion(.failure(InvoiceError.unknownFormat))
         }
     }
-    
+
     private static func decodeLightningPaymentRequest(invoiceURI: LightningInvoiceURI, bitcoinURI: BitcoinURI?, lightningService: LightningService, completion: @escaping (Result<BitcoinInvoice, InvoiceError>) -> Void) {
         lightningService.transactionService.decodePaymentRequest(invoiceURI.address) { result in
             DispatchQueue.main.async {
                 switch result {
                 case .success(let paymentRequest):
                     let invoice: BitcoinInvoice
-                    
+
                     if bitcoinURI == nil,
                         let fallbackAddress = paymentRequest.fallbackAddress,
                         let fallbackBitcoinURI = BitcoinURI(address: fallbackAddress, amount: nil, memo: nil, lightningFallback: nil) {
@@ -60,7 +60,7 @@ public enum BitcoinInvoiceFactory {
                     } else {
                         invoice = BitcoinInvoice(lightningPaymentRequest: paymentRequest, bitcoinURI: bitcoinURI)
                     }
-                    
+
                     validateInvoice(invoice, lightningService: lightningService, completion: completion)
                 case .failure(let error):
                     completion(.failure(.apiError(error.localizedDescription)))
@@ -68,10 +68,10 @@ public enum BitcoinInvoiceFactory {
             }
         }
     }
-    
+
     private static func validateInvoice(_ invoice: BitcoinInvoice, lightningService: LightningService, completion: (Result<BitcoinInvoice, InvoiceError>) -> Void) {
         guard let currentNetwork = lightningService.infoService.network.value else { return }
-        
+
         if let bitcoinURI = invoice.bitcoinURI,
             bitcoinURI.network != currentNetwork {
             completion(.failure(InvoiceError.wrongNetworkError(linkNetwork: bitcoinURI.network, expectedNetwork: currentNetwork)))

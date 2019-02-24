@@ -24,11 +24,11 @@ public final class TransactionService {
         self.historyService = historyService
         self.persistence = persistence
     }
-    
+
     public func addInvoice(amount: Satoshi, memo: String?, completion: @escaping (Result<String, LndApiError>) -> Void) {
         api.addInvoice(amount: amount, memo: memo, completion: completion)
     }
-    
+
     public func newAddress(with type: OnChainRequestAddressType, completion: @escaping (Result<BitcoinAddress, LndApiError>) -> Void) {
         api.newAddress(type: type) { [persistence] result in
             if let address = result.value {
@@ -37,11 +37,11 @@ public final class TransactionService {
             completion(result)
         }
     }
-    
+
     internal func decodePaymentRequest(_ paymentRequest: String, completion: @escaping (Result<PaymentRequest, LndApiError>) -> Void) {
         api.decodePaymentRequest(paymentRequest, completion: completion)
     }
-    
+
     public func upperBoundLightningFees(for paymentRequest: PaymentRequest, amount: Satoshi, completion: @escaping (Result<(amount: Satoshi, fee: Satoshi?), LndApiError>) -> Void) {
         api.routes(destination: paymentRequest.destination, amount: amount) { result in
             let totalFees = result.value?
@@ -50,7 +50,7 @@ public final class TransactionService {
             completion(.success((amount: amount, fee: totalFees)))
         }
     }
-    
+
     public func sendPayment(_ paymentRequest: PaymentRequest, amount: Satoshi, completion: @escaping (Result<Success, LndApiError>) -> Void) {
         api.sendPayment(paymentRequest, amount: amount) { [weak self] in
             switch $0 {
@@ -65,7 +65,7 @@ public final class TransactionService {
             completion($0.map { _ in Success() })
         }
     }
-    
+
     public func sendCoins(bitcoinURI: BitcoinURI, amount: Satoshi, completion: @escaping (Result<Success, LndApiError>) -> Void) {
         let destinationAddress = bitcoinURI.bitcoinAddress
         api.sendCoins(address: destinationAddress, amount: amount) { [historyService] in

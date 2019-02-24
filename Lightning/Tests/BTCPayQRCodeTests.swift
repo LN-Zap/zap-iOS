@@ -13,7 +13,7 @@ class BTCPayQRCodeTests: XCTestCase {
         let qrCode = BTCPayQRCode(string: "config=https://testlnd1.btcpayserver.com/lnd-config/4210935981/lnd.config")
         XCTAssertEqual(qrCode?.configURL.absoluteString, "https://testlnd1.btcpayserver.com/lnd-config/4210935981/lnd.config")
     }
-    
+
     func testParsingInvalidQRCode() {
         let qrCode = BTCPayQRCode(string: "https://testlnd1.btcpayserver.com/lnd-config/4210935981/lnd.config")
         XCTAssertNil(qrCode)

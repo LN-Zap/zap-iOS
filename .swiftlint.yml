@@ -1,8 +1,8 @@
 disabled_rules:
-  - trailing_whitespace
   - line_length
   - nesting
 opt_in_rules:
+  - trailing_whitespace
   - no_fallthrough_only
   - closure_end_indentation
   - closure_spacing

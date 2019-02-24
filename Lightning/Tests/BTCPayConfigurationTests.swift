@@ -14,12 +14,12 @@ class BTCPayConfigurationTests: XCTestCase {
     func testDecodeBTCPayConfiguration() {
         // swiftlint:disable force_unwrapping
         let data = "{\"configurations\":[{\"type\":\"grpc\",\"cryptoCode\":\"BTC\",\"host\":\"test.test.com\",\"port\":443,\"ssl\":true,\"certificateThumbprint\":null,\"macaroon\":\"02deadbeef0202deadbeef02\"}]}".data(using: .utf8)!
-        
+
         let configuration = BTCPayConfiguration(data: data)
-        
+
         XCTAssertNotNil(configuration)
         XCTAssertEqual(configuration?.configurations.count, 1)
-        
+
         let item = configuration!.configurations.first!
         XCTAssertEqual(item.type, "grpc")
         XCTAssertEqual(item.cryptoCode, "BTC")
@@ -29,23 +29,23 @@ class BTCPayConfigurationTests: XCTestCase {
         XCTAssertEqual(item.certificateThumbprint, nil)
         XCTAssertEqual(item.macaroon, "02deadbeef0202deadbeef02")
     }
-    
+
     func testMultipleItems() {
         let data = "{\"configurations\":[{\"type\":\"grpc\",\"cryptoCode\":\"BTC\",\"host\":\"test.test.com\",\"port\":443,\"ssl\":true,\"certificateThumbprint\":null,\"macaroon\":\"02deadbeef0202deadbeef02\"},{\"type\":\"rest\",\"cryptoCode\":\"BTC\",\"host\":\"test.test.com\",\"port\":443,\"ssl\":true,\"certificateThumbprint\":null,\"macaroon\":\"02deadbeef0202deadbeef02\"}]}".data(using: .utf8)!
-        
+
         let configuration = BTCPayConfiguration(data: data)
-        
+
         XCTAssertNotNil(configuration)
         XCTAssertEqual(configuration?.configurations.count, 2)
-        
+
         let item = configuration!.configurations.first!
         XCTAssertEqual(item.type, "grpc")
     }
-    
+
     func testGRPCAccessor() {
         let data = "{\"configurations\":[{\"type\":\"rest\",\"cryptoCode\":\"BTC\",\"host\":\"test.test.com\",\"port\":443,\"ssl\":true,\"certificateThumbprint\":null,\"macaroon\":\"02deadbeef0202deadbeef02\"},{\"type\":\"grpc\",\"cryptoCode\":\"BTC\",\"host\":\"test.test.com\",\"port\":443,\"ssl\":true,\"certificateThumbprint\":null,\"macaroon\":\"02deadbeef0202deadbeef02\"},{\"type\":\"rest\",\"cryptoCode\":\"BTC\",\"host\":\"test.test.com\",\"port\":443,\"ssl\":true,\"certificateThumbprint\":null,\"macaroon\":\"02deadbeef0202deadbeef02\"}]}".data(using: .utf8)!
         let configuration = BTCPayConfiguration(data: data)
-        
+
         XCTAssertNotNil(configuration?.rpcConfiguration)
         XCTAssertNil(configuration?.rpcConfiguration?.certificate)
         XCTAssertEqual(configuration?.rpcConfiguration?.url.absoluteString, "test.test.com:443")

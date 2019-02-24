@@ -12,7 +12,7 @@ import SwiftBTC
 import SwiftLnd
 
 final class ToastNotificationObserver: NSObject {
-    
+
     func start() {
         NotificationCenter.default.reactive
             .notification(name: .receivedTransaction)
@@ -21,23 +21,23 @@ final class ToastNotificationObserver: NSObject {
                 guard
                     let transaction = notification.userInfo?[LightningService.transactionNotificationName]
                     else { return }
-                
+
                 if let invoice = transaction as? Invoice {
                     ToastNotificationObserver.presentToast(satoshis: invoice.amount, memo: invoice.memo)
                 } else if let onChainTransaction = transaction as? SwiftLnd.Transaction {
                     ToastNotificationObserver.presentToast(satoshis: onChainTransaction.amount)
                 }
-                
+
             }
             .dispose(in: reactive.bag)
     }
-    
+
     private static func presentToast(satoshis: Satoshi, memo: String? = nil) {
         guard
             satoshis > 0,
             let amount = Settings.shared.primaryCurrency.value.format(satoshis: satoshis)
             else { return }
-        
+
         if let memo = memo, !memo.isEmpty {
             Toast.presentSuccess(L10n.Toast.invoiceMemo(amount, memo))
         } else {

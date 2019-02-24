@@ -12,12 +12,12 @@ final class SelectWalletCreationMethodViewController: UIViewController {
     private var createButtonTapped: (() -> Void)?
     private var recoverButtonTapped: (() -> Void)?
     private var connectButtonTapped: (() -> Void)?
-    
+
     @IBOutlet private weak var tableView: UITableView!
-    
+
     // swiftlint:disable:next large_tuple
     var content: [(String, String, (() -> Void))]?
-    
+
     static func instantiate(createButtonTapped: @escaping () -> Void, recoverButtonTapped: @escaping () -> Void, connectButtonTapped: @escaping () -> Void) -> SelectWalletCreationMethodViewController {
         let setupWalletViewController = StoryboardScene.CreateWallet.selectWalletCreationMethodViewController.instantiate()
         setupWalletViewController.createButtonTapped = createButtonTapped
@@ -25,12 +25,12 @@ final class SelectWalletCreationMethodViewController: UIViewController {
         setupWalletViewController.connectButtonTapped = connectButtonTapped
         return setupWalletViewController
     }
-    
+
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+
         title = L10n.Scene.SelectWalletConnection.title
-        
+
         // swiftlint:disable opening_brace
         content = [
             (L10n.Scene.SelectWalletConnection.Create.title,
@@ -47,7 +47,7 @@ final class SelectWalletCreationMethodViewController: UIViewController {
             )
         ]
         // swiftlint:enable opening_brace
-        
+
         tableView.delegate = self
         tableView.dataSource = self
         tableView.tableFooterView = UIView()
@@ -55,7 +55,7 @@ final class SelectWalletCreationMethodViewController: UIViewController {
         tableView.registerCell(SelectWalletCreationMethodTableViewCell.self)
         tableView.backgroundColor = UIColor.Zap.deepSeaBlue
         tableView.separatorColor = UIColor.Zap.gray
-        
+
         navigationController?.navigationBar.barTintColor = UIColor.Zap.deepSeaBlue
     }
 }
@@ -73,7 +73,7 @@ extension SelectWalletCreationMethodViewController: UITableViewDelegate {
             cellContent.2()
         }
     }
-    
+
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return indexPath.section == 0 ? 114 : 76
     }
@@ -83,11 +83,11 @@ extension SelectWalletCreationMethodViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return section == 0 ? content?.count ?? 0 : 1
     }
-    
+
     func numberOfSections(in tableView: UITableView) -> Int {
         return 2
     }
-    
+
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         if indexPath.section == 0 {
             let cell: SelectWalletCreationMethodTableViewCell = tableView.dequeueCellForIndexPath(indexPath)

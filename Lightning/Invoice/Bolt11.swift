@@ -25,12 +25,12 @@ struct Bolt11 {
         var expiry: TimeInterval?
         var fallbackAddress: BitcoinAddress?
     }
-    
+
     private enum Prefix: String {
         case lnbc
         case lntb
         case lnbcrt
-        
+
         static func forNetwork(_ network: Network) -> Prefix {
             switch network {
             case .regtest:
@@ -42,13 +42,13 @@ struct Bolt11 {
             }
         }
     }
-    
+
     private enum Multiplier: Character {
         case milli = "m"
         case micro = "u"
         case nano = "n"
         case pico = "p"
-        
+
         var value: Decimal {
             switch self {
             case .milli:
@@ -62,7 +62,7 @@ struct Bolt11 {
             }
         }
     }
-    
+
     private enum FieldTypes: UInt8 {
         case fieldTypeP = 1  // fieldTypeP is the field containing the payment hash.
         case fieldTypeD = 13 // fieldTypeD contains a short description of the payment.
@@ -73,21 +73,21 @@ struct Bolt11 {
         case fieldTypeR = 3  // fieldTypeR contains extra routing information.
         case fieldTypeC = 24 // fieldTypeC contains an optional requested final CLTV delta.
     }
-    
+
     private let signatureBase32Len = 104
     private let timestampBase32Len = 7
     private let hashBase32Len = 52
-    
+
     func decode(string: String) -> Invoice? {
         guard
             let (humanReadablePart, data) = Bech32.decode(string, limit: false),
             humanReadablePart.count > 3,
             let network = decodeNetwork(humanReadablePart: humanReadablePart) else { return nil }
-    
+
         let invoiceData = data.dropLast(signatureBase32Len)
-        
+
         guard invoiceData.count >= timestampBase32Len else { return nil }
-        
+
         let date = parseTimestamp(data: invoiceData[invoiceData.startIndex..<invoiceData.startIndex + timestampBase32Len])
         var invoice = Invoice(network: network, date: date)
 
@@ -96,11 +96,11 @@ struct Bolt11 {
         let tagData = invoiceData[invoiceData.startIndex + timestampBase32Len..<invoiceData.endIndex]
         return parseTaggedFields(data: tagData, invoice: invoice)
     }
-    
+
     private func parseTimestamp(data: Data) -> Date {
         return Date(timeIntervalSince1970: TimeInterval(base32ToUInt(data)))
     }
-    
+
     // swiftlint:disable:next cyclomatic_complexity
     private func parseTaggedFields(data: Data, invoice: Invoice) -> Invoice? {
         var invoice = invoice
@@ -112,11 +112,11 @@ struct Bolt11 {
                 let dataLength = parseFieldDataLength(data[index + 1..<index + 3]),
                 data.endIndex >= index + 3 + dataLength
                 else { return nil }
-            
+
             let base32Data = data[index + 3..<index + 3 + dataLength]
-            
+
             index += 3 + dataLength
-            
+
             if let type = type {
                 switch type {
                 case .fieldTypeP:
@@ -134,12 +134,12 @@ struct Bolt11 {
                 case .fieldTypeN, .fieldTypeH, .fieldTypeC, .fieldTypeR:
                     break
                 }
-            }            
+            }
         }
-        
+
         return invoice
     }
-    
+
     private func base32ToUInt(_ data: Data) -> UInt {
         var result: UInt = 0
         for byte in data {
@@ -147,17 +147,17 @@ struct Bolt11 {
         }
         return result
     }
-    
+
     private func parseFieldDataLength(_ data: Data) -> Int? {
         guard data.count == 2 else { return nil }
         return Int(data[data.startIndex]) << 5 | Int(data[data.startIndex + 1])
     }
-    
+
     private func parseDescription(data: Data) -> String? {
         guard let base256Data = data.convertBits(fromBits: 5, toBits: 8, pad: false) else { return nil }
         return String(data: base256Data, encoding: .utf8)
     }
-    
+
     private func parseExpiry(data: Data) -> TimeInterval {
         return TimeInterval(base32ToUInt(data))
     }
@@ -166,12 +166,12 @@ struct Bolt11 {
         guard data.count == hashBase32Len else { return nil }
         return data.convertBits(fromBits: 5, toBits: 8, pad: false)
     }
-    
+
     private func parseFallbackAddress(data: Data, network: Network) -> BitcoinAddress? {
         guard data.count >= 2 else { return nil }
         let version = data[data.startIndex]
         guard let data = data[(data.startIndex + 1)...].convertBits(fromBits: 5, toBits: 8, pad: false) else { return nil }
-        
+
         switch version {
         case 0:
             if data.count == 20 {
@@ -189,11 +189,11 @@ struct Bolt11 {
             return nil
         }
     }
-    
+
     private func decodeAmount(for humanReadablePart: String, network: Network) -> Satoshi? {
         let netPrefixLength = Prefix.forNetwork(network).rawValue.count
         var amountString = humanReadablePart[humanReadablePart.index(humanReadablePart.startIndex, offsetBy: netPrefixLength)..<humanReadablePart.endIndex]
-        
+
         guard amountString.count >= 2 else { return nil }
 
         let lastCharacter = amountString.removeLast()
@@ -202,10 +202,10 @@ struct Bolt11 {
             let multiplier = Multiplier(rawValue: lastCharacter),
             let amount = Int(amountString)
             else { return nil }
-        
+
         return Decimal(amount) * multiplier.value
     }
-    
+
     private func decodeNetwork(humanReadablePart: String) -> Network? {
         if humanReadablePart.starts(with: Prefix.forNetwork(.mainnet).rawValue) {
             return .mainnet
