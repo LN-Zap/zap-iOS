@@ -92,6 +92,7 @@ public final class InfoService {
             }
             if network.value != info.network {
                 network.value = info.network
+                heightJobTimer?.fire()
             }
         }
         
