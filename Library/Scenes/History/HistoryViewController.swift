@@ -74,29 +74,29 @@ final class HistoryViewController: UIViewController {
 
     private func setupDataSourceBinding(_ tableView: UITableView, _ historyViewModel: HistoryViewModel) {
         historyViewModel.dataSource
-                .bind(to: tableView) { dataSource, indexPath, tableView in
-                    let cell: HistoryCell = tableView.dequeueCellForIndexPath(indexPath)
+            .bind(to: tableView) { dataSource, indexPath, tableView in
+                let cell: HistoryCell = tableView.dequeueCellForIndexPath(indexPath)
 
-                    switch dataSource.item(at: indexPath) {
-                    case .transactionEvent(let transactionEvent):
-                        cell.setTransactionEvent(transactionEvent)
-                    case .channelEvent(let channelEvent):
-                        cell.setChannelEvent(channelEvent)
-                    case .createInvoiceEvent(let createInvoiceEvent):
-                        cell.setCreateInvoiceEvent(createInvoiceEvent)
-                    case .failedPaymentEvent(let failedPayemntEvent):
-                        cell.setFailedPaymentEvent(failedPayemntEvent, delegate: self)
-                    case .lightningPaymentEvent(let lightningPaymentEvent):
-                        cell.setLightningPaymentEvent(lightningPaymentEvent)
-                    }
-
-                    if historyViewModel.isEventNew(at: indexPath) {
-                        cell.addNotificationLabel(type: .new)
-                    }
-
-                    return cell
+                switch dataSource.item(at: indexPath) {
+                case .transactionEvent(let transactionEvent):
+                    cell.setTransactionEvent(transactionEvent)
+                case .channelEvent(let channelEvent):
+                    cell.setChannelEvent(channelEvent)
+                case .createInvoiceEvent(let createInvoiceEvent):
+                    cell.setCreateInvoiceEvent(createInvoiceEvent)
+                case .failedPaymentEvent(let failedPayemntEvent):
+                    cell.setFailedPaymentEvent(failedPayemntEvent, delegate: self)
+                case .lightningPaymentEvent(let lightningPaymentEvent):
+                    cell.setLightningPaymentEvent(lightningPaymentEvent)
                 }
-                .dispose(in: reactive.bag)
+
+                if historyViewModel.isEventNew(at: indexPath) {
+                    cell.addNotificationLabel(type: .new)
+                }
+
+                return cell
+            }
+            .dispose(in: reactive.bag)
     }
 
     @IBAction private func presentFilter(_ sender: Any) {
