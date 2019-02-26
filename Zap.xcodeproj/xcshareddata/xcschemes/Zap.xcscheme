@@ -145,7 +145,7 @@
          <EnvironmentVariable
             key = "SKIP_PIN_FLOW"
             value = "1"
-            isEnabled = "YES">
+            isEnabled = "NO">
          </EnvironmentVariable>
          <EnvironmentVariable
             key = "USE_MOCK_API"

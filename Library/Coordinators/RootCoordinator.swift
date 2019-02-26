@@ -51,6 +51,7 @@ public final class RootCoordinator: Coordinator {
 
     public func applicationWillEnterForeground() {
         backgroundCoordinator.applicationWillEnterForeground()
+        authenticationCoordinator.applicationWillEnterForeground()
     }
 
     public func applicationDidEnterBackground() {

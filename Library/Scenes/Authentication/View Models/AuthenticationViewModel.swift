@@ -34,7 +34,7 @@ final class AuthenticationViewModel: NSObject {
 
     @objc public dynamic var state = State.locked
 
-    private let unlockTime: TimeInterval = 60
+    private let unlockTime: TimeInterval = 30
 
     private let keychain = Keychain(service: "com.jackmallers.zap.password").accessibility(.whenUnlocked)
     private var lastAuthenticationDate: Date?
@@ -58,15 +58,6 @@ final class AuthenticationViewModel: NSObject {
                 keychain[keychainPinLengthKey] = nil
             }
         }
-    }
-
-    var isLocked: Bool {
-        if !didSetupPin {
-            return true
-        } else if let lastAuthenticationDate = lastAuthenticationDate {
-            return lastAuthenticationDate.addingTimeInterval(unlockTime) < Date()
-        }
-        return true
     }
 
     var didSetupPin: Bool {
@@ -112,5 +103,20 @@ final class AuthenticationViewModel: NSObject {
         timeLockStore.reset()
         lastAuthenticationDate = Date()
         state = .unlocked
+    }
+
+    private func stateAfterAppRestart() -> State {
+        if timeLockStore.isLocked {
+            return .timeLocked
+        } else if didSetupPin,
+            let lastAuthenticationDate = lastAuthenticationDate,
+            lastAuthenticationDate.addingTimeInterval(unlockTime) < Date() {
+            return .locked
+        }
+        return .unlocked
+    }
+
+    func updateStateAfterAppRestart() {
+        state = stateAfterAppRestart()
     }
 }

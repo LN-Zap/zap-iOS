@@ -80,4 +80,8 @@ final class AuthenticationCoordinator: Coordinator {
             self.authenticationWindow = nil
         })
     }
+
+    func applicationWillEnterForeground() {
+        authenticationViewModel.updateStateAfterAppRestart()
+    }
 }
