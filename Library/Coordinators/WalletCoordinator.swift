@@ -33,13 +33,15 @@ final class WalletCoordinator: NSObject, Coordinator {
 
         channelListViewModel = ChannelListViewModel(channelService: lightningService.channelService)
         historyViewModel = HistoryViewModel(historyService: lightningService.historyService)
+
+        super.init()
+        listenForStateChanges()
     }
 
     func start() {
         lightningService.start()
         ExchangeUpdaterJob.start()
         updateFor(state: lightningService.infoService.walletState.value)
-        listenForStateChanges()
     }
 
     func stop() {

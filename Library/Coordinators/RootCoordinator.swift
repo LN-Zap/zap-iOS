@@ -52,11 +52,19 @@ public final class RootCoordinator: Coordinator {
     public func applicationWillEnterForeground() {
         backgroundCoordinator.applicationWillEnterForeground()
         authenticationCoordinator.applicationWillEnterForeground()
+
+        if let walletCoordinator = currentCoordinator as? WalletCoordinator {
+            walletCoordinator.start()
+        }
     }
 
     public func applicationDidEnterBackground() {
         backgroundCoordinator.applicationDidEnterBackground()
         route = nil // reset route when app enters background
+
+        if let walletCoordinator = currentCoordinator as? WalletCoordinator {
+            walletCoordinator.stop()
+        }
     }
 
     // MARK: Coordinator Methods
