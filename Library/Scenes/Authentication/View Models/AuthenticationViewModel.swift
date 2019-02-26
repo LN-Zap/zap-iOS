@@ -69,7 +69,7 @@ final class AuthenticationViewModel: NSObject {
 
         if timeLockStore.isLocked {
             state = .timeLocked
-        } else if !didSetupPin || Environment.skipPinFlow {
+        } else if !didSetupPin {
             state = .unlocked
         }
     }
