@@ -1968,6 +1968,7 @@
 			buildConfigurationList = A0A05A1C2013CF960007D1C9 /* Build configuration list for PBXNativeTarget "Zap" */;
 			buildPhases = (
 				FBAC984A8CB01D906272F3C9 /* [CP] Check Pods Manifest.lock */,
+				ADE688392222B92F004761B9 /* SwiftLint autocorrect */,
 				ADEB61BB22170C2F009D5707 /* Sourcery */,
 				A0A05A312013F7880007D1C9 /* SwiftLint */,
 				A0A059FB2013CF960007D1C9 /* Sources */,
@@ -1976,7 +1977,6 @@
 				A000F6062047F65200480D8E /* Embed Frameworks */,
 				AD391D5120D17FA9007EE22A /* Embed App Extensions */,
 				AE2DAF4D48A31C61FB3C2BFE /* [CP] Embed Pods Frameworks */,
-				ADE688392222B92F004761B9 /* SwiftLint autocorrect */,
 			);
 			buildRules = (
 			);
