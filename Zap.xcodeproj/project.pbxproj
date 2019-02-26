@@ -175,6 +175,7 @@
 		AD667E552136B074007B9160 /* TimeLocked.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AD667E542136B074007B9160 /* TimeLocked.storyboard */; };
 		AD667E572136E622007B9160 /* TimeLockStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD667E562136E622007B9160 /* TimeLockStore.swift */; };
 		AD667E5921384966007B9160 /* WindowLevel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD667E5821384966007B9160 /* WindowLevel.swift */; };
+		AD7123CE2225A51800AA8E7B /* PinStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD7123CD2225A51800AA8E7B /* PinStore.swift */; };
 		AD79E422219D90E2002589CA /* Data+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD79E421219D90E2002589CA /* Data+Extensions.swift */; };
 		AD79E424219D90EF002589CA /* String+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD79E423219D90EF002589CA /* String+Extensions.swift */; };
 		AD7ED61A22085B22007C5F2C /* Environment.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADCD060020E67FA5009D9650 /* Environment.swift */; };
@@ -211,6 +212,7 @@
 		ADA3254221AD8A6200C5EAA2 /* Assets.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADA3254121AD8A6200C5EAA2 /* Assets.swift */; };
 		ADA3254421AD8D7900C5EAA2 /* Colors.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = ADA3254321AD8D7900C5EAA2 /* Colors.xcassets */; };
 		ADA3254621AD8F6200C5EAA2 /* StoryboardScenes.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADA3254521AD8F6200C5EAA2 /* StoryboardScenes.swift */; };
+		ADA3A86B2225842200B058FB /* PBKDF2.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADA3A86A2225842200B058FB /* PBKDF2.swift */; };
 		ADA58F8C2200B08A009A5494 /* LightningApiTransformation.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADA58F8B2200B08A009A5494 /* LightningApiTransformation.swift */; };
 		ADA58F9122031E56009A5494 /* RpcCallback.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADA58F9022031E56009A5494 /* RpcCallback.swift */; };
 		ADA58F9322033FC7009A5494 /* WalletApiTransformation.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADA58F9222033FC7009A5494 /* WalletApiTransformation.swift */; };
@@ -610,6 +612,7 @@
 		AD6F863120DA3C66008C371B /* WalletApiStream.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WalletApiStream.swift; sourceTree = "<group>"; };
 		AD6F863320DA3C99008C371B /* WalletApiProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WalletApiProtocol.swift; sourceTree = "<group>"; };
 		AD6FFCA520AB0A3700B57330 /* OnChainRequestAddressTypeSettingsItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnChainRequestAddressTypeSettingsItem.swift; sourceTree = "<group>"; };
+		AD7123CD2225A51800AA8E7B /* PinStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PinStore.swift; sourceTree = "<group>"; };
 		AD71EA4820E2318000256307 /* RemoteRPCConfiguration.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RemoteRPCConfiguration.swift; sourceTree = "<group>"; };
 		AD71EA4A20E2321100256307 /* LndConstants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LndConstants.swift; sourceTree = "<group>"; };
 		AD77464D2076162300EC596B /* Network+Localizable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Network+Localizable.swift"; sourceTree = "<group>"; };
@@ -662,6 +665,7 @@
 		ADA3254121AD8A6200C5EAA2 /* Assets.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Assets.swift; sourceTree = "<group>"; };
 		ADA3254321AD8D7900C5EAA2 /* Colors.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Colors.xcassets; sourceTree = "<group>"; };
 		ADA3254521AD8F6200C5EAA2 /* StoryboardScenes.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StoryboardScenes.swift; sourceTree = "<group>"; };
+		ADA3A86A2225842200B058FB /* PBKDF2.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PBKDF2.swift; sourceTree = "<group>"; };
 		ADA58F8B2200B08A009A5494 /* LightningApiTransformation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LightningApiTransformation.swift; sourceTree = "<group>"; };
 		ADA58F9022031E56009A5494 /* RpcCallback.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RpcCallback.swift; sourceTree = "<group>"; };
 		ADA58F9222033FC7009A5494 /* WalletApiTransformation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WalletApiTransformation.swift; sourceTree = "<group>"; };
@@ -1544,6 +1548,8 @@
 				A0F9AEE0206E3D8200E93DCA /* InputNumberFormatter.swift */,
 				ADF79367208E09D00086B2CA /* SetupPinViewModel.swift */,
 				AD667E562136E622007B9160 /* TimeLockStore.swift */,
+				ADA3A86A2225842200B058FB /* PBKDF2.swift */,
+				AD7123CD2225A51800AA8E7B /* PinStore.swift */,
 			);
 			path = "View Models";
 			sourceTree = "<group>";
@@ -2839,6 +2845,7 @@
 				AD391C4420D16F0B007EE22A /* Style.swift in Sources */,
 				AD391C2C20D16EFA007EE22A /* String.swift in Sources */,
 				AD292F9020E69F0E00211AE7 /* AuthenticationViewModel.swift in Sources */,
+				AD7123CE2225A51800AA8E7B /* PinStore.swift in Sources */,
 				ADA6BBBF211B3AEC00A1FF19 /* ScanRectView.swift in Sources */,
 				AD391D1C20D174B4007EE22A /* RootCoordinator.swift in Sources */,
 				AD391C7420D16F89007EE22A /* QRCodeDetailViewController.swift in Sources */,
@@ -2880,6 +2887,7 @@
 				AD391C5A20D16F7A007EE22A /* MnemonicPageViewController.swift in Sources */,
 				ADEB619C2214588A009D5707 /* WalletListViewController.swift in Sources */,
 				AD667E4921367A35007B9160 /* BackgroundCoordinator.swift in Sources */,
+				ADA3A86B2225842200B058FB /* PBKDF2.swift in Sources */,
 				AD27B01C2100D7CF00F232A8 /* CertificateDetailCell.swift in Sources */,
 				AD391C3A20D16F0B007EE22A /* Environment.swift in Sources */,
 				AD391CDC20D16FE1007EE22A /* HistoryViewModel.swift in Sources */,

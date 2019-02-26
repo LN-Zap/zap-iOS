@@ -7,13 +7,8 @@
 
 import Bond
 import Foundation
-import KeychainAccess
 import Lightning
 import SwiftLnd
-
-private let keychainPinKey = "hashedSaltPin"
-private let keychainPinLengthKey = "pinLength"
-private let salt = "kZF86kneOPAm09Wpl6XOLixuyctCM/lK"
 
 enum AuthenticationError: Error {
     case lockout
@@ -36,55 +31,22 @@ final class AuthenticationViewModel: NSObject {
 
     private let unlockTime: TimeInterval = 30
 
-    private let keychain = Keychain(service: "com.jackmallers.zap.password").accessibility(.whenUnlocked)
     private var lastAuthenticationDate: Date?
 
     let timeLockStore = TimeLockStore()
-
-    private var hashedPin: String? {
-        get { return keychain[keychainPinKey] }
-        set { keychain[keychainPinKey] = newValue }
-    }
-
-    private(set) var pinLength: Int? {
-        get {
-            guard let string = keychain[keychainPinLengthKey] else { return nil }
-            return Int(string)
-        }
-        set {
-            if let newValue = newValue {
-                keychain[keychainPinLengthKey] = String(newValue)
-            } else {
-                keychain[keychainPinLengthKey] = nil
-            }
-        }
-    }
-
-    var didSetupPin: Bool {
-        return keychain[keychainPinKey] != nil
-    }
 
     override init() {
         super.init()
 
         if timeLockStore.isLocked {
             state = .timeLocked
-        } else if !didSetupPin {
+        } else if !PinStore.didSetupPin {
             state = .unlocked
         }
     }
 
-    private func hashPin(_ pin: String) -> String {
-        return "\(salt)\(pin)".sha256()
-    }
-
-    func setPin(_ pin: String) {
-        hashedPin = hashPin(pin)
-        pinLength = pin.count
-    }
-
     func authenticate(_ pin: String) -> Result<Success, AuthenticationError> {
-        if hashPin(pin) == hashedPin {
+        if PinStore.isCorrect(pin: pin) {
             didAuthenticate()
             return .success(Success())
         } else {
@@ -108,7 +70,7 @@ final class AuthenticationViewModel: NSObject {
     private func stateAfterAppRestart() -> State {
         if timeLockStore.isLocked {
             return .timeLocked
-        } else if didSetupPin,
+        } else if PinStore.didSetupPin,
             let lastAuthenticationDate = lastAuthenticationDate,
             lastAuthenticationDate.addingTimeInterval(unlockTime) < Date() {
             return .locked

@@ -34,7 +34,7 @@ final class KeyPadPinView: KeyPadView {
     }
 
     private func updatePinView() {
-        pinView?.characterCount = authenticationViewModel?.pinLength ?? 0
+        pinView?.characterCount = PinStore.pinCount ?? 0
     }
 
     private func setup() {
@@ -48,7 +48,7 @@ final class KeyPadPinView: KeyPadView {
             self?.updatePinView(for: number)
             self?.checkPin(string: number)
 
-            return (self?.authenticationViewModel?.pinLength ?? Int.max) > number.count
+            return (PinStore.pinCount ?? Int.max) > number.count
         }
     }
 
@@ -59,7 +59,7 @@ final class KeyPadPinView: KeyPadView {
     private func checkPin(string: String) {
         guard
             let authenticationViewModel = authenticationViewModel,
-            string.count == authenticationViewModel.pinLength
+            string.count == PinStore.pinCount
             else { return }
 
         switch authenticationViewModel.authenticate(string) {

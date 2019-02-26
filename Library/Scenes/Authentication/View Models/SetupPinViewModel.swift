@@ -44,7 +44,7 @@ final class SetupPinViewModel {
 
         if pin.count == firstPin?.count {
             if pin == firstPin {
-                authenticationViewModel.setPin(pin)
+                PinStore.update(pin: pin)
                 state.value = .completed
             } else {
                 firstPin = nil

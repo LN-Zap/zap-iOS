@@ -70,7 +70,7 @@ public final class RootCoordinator: Coordinator {
     // MARK: Coordinator Methods
 
     private func update() {
-        if !authenticationViewModel.didSetupPin {
+        if !PinStore.didSetupPin {
             presentPinSetup()
         } else if let selectedWallet = walletConfigurationStore.selectedWallet {
             presentSelectedWallet(selectedWallet)
