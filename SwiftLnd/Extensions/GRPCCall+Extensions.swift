@@ -9,10 +9,10 @@ import Foundation
 import LndRpc
 
 extension GRPCCall {
-    static func setup(_ configuration: RemoteRPCConfiguration) {
+    static func setup(_ configuration: RPCCredentials) {
         GRPCCall.resetHostSettings()
 
-        let host = configuration.url.absoluteString
+        let host = configuration.host.absoluteString
         if let certificate = configuration.certificate {
             try? GRPCCall.setTLSPEMRootCerts(certificate, forHost: host)
         }

@@ -27,7 +27,7 @@ final class UpdateAddressViewController: UITableViewController {
 
         title = L10n.Scene.ConnectRemoteNode.EditUrl.title
 
-        addressTextField.text = connectRemoteNodeViewModel?.remoteNodeConfiguration?.url.absoluteString
+        addressTextField.text = connectRemoteNodeViewModel?.remoteNodeConfiguration?.host.absoluteString
         addressTextField.becomeFirstResponder()
 
         tableView.separatorColor = UIColor.Zap.gray

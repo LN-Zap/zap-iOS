@@ -16,16 +16,16 @@ public enum RPCConnectQRCodeError: Error {
 
 /// Decodes RPCConfiguration from lndconnect, zapconnect & BTCPay QRCodes
 public enum RPCConnectQRCode {
-    public static func configuration(for string: String, completion: @escaping (Result<RemoteRPCConfiguration, RPCConnectQRCodeError>) -> Void) {
+    public static func configuration(for string: String, completion: @escaping (Result<RPCCredentials, RPCConnectQRCodeError>) -> Void) {
         if let url = URL(string: string),
             let lndConnectURL = LndConnectURL(url: url) {
-            completion(.success(lndConnectURL.rpcConfiguration))
+            completion(.success(lndConnectURL.rpcCredentials))
         } else if let qrCode = ZapconnectQRCode(json: string) {
-            completion(.success(qrCode.rpcConfiguration))
+            completion(.success(qrCode.rpcCredentials))
         } else if let btcPayQRCode = BTCPayQRCode(string: string) {
             btcPayQRCode.fetchConfiguration { result in
-                let mappedResult = result.flatMap { configData -> Result<RemoteRPCConfiguration, RPCConnectQRCodeError> in
-                    if let configuration = BTCPayConfiguration(data: configData)?.rpcConfiguration {
+                let mappedResult = result.flatMap { configData -> Result<RPCCredentials, RPCConnectQRCodeError> in
+                    if let configuration = BTCPayConfiguration(data: configData)?.rpcCredentials {
                         return .success(configuration)
                     } else {
                         return .failure(RPCConnectQRCodeError.btcPayConfigurationBroken)

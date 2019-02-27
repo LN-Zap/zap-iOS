@@ -75,7 +75,7 @@ public final class RootCoordinator: Coordinator {
         } else if let selectedWallet = walletConfigurationStore.selectedWallet {
             presentSelectedWallet(selectedWallet)
         } else {
-            presentSetup(walletConfigurationStore: walletConfigurationStore, remoteRPCConfiguration: nil)
+            presentSetup(walletConfigurationStore: walletConfigurationStore, rpcCredentials: nil)
         }
     }
 
@@ -99,8 +99,8 @@ public final class RootCoordinator: Coordinator {
         walletCoordinator.start()
     }
 
-    private func presentSetup(walletConfigurationStore: WalletConfigurationStore, remoteRPCConfiguration: RemoteRPCConfiguration?) {
-        let setupCoordinator = SetupCoordinator(rootViewController: rootViewController, authenticationViewModel: authenticationCoordinator.authenticationViewModel, delegate: self, walletConfigurationStore: walletConfigurationStore, remoteRPCConfiguration: remoteRPCConfiguration)
+    private func presentSetup(walletConfigurationStore: WalletConfigurationStore, rpcCredentials: RPCCredentials?) {
+        let setupCoordinator = SetupCoordinator(rootViewController: rootViewController, authenticationViewModel: authenticationCoordinator.authenticationViewModel, delegate: self, walletConfigurationStore: walletConfigurationStore, rpcCredentials: rpcCredentials)
         currentCoordinator = setupCoordinator
         setupCoordinator.start()
     }
@@ -127,13 +127,13 @@ extension RootCoordinator: Routing {
     }
 
     private func openRPCConnectURL(_ url: LndConnectURL) {
-        let message = L10n.Scene.ConnectNodeUri.ActionSheet.message(url.rpcConfiguration.url.absoluteString)
+        let message = L10n.Scene.ConnectNodeUri.ActionSheet.message(url.rpcCredentials.host.absoluteString)
         let alertController = UIAlertController(title: L10n.Scene.ConnectNodeUri.ActionSheet.title, message: message, preferredStyle: .actionSheet)
 
         let connectAlertAction = UIAlertAction(title: L10n.Scene.ConnectNodeUri.ActionSheet.connectButton, style: .default, handler: { [weak self] _ in
             guard let self = self else { return }
             self.disconnect()
-            self.presentSetup(walletConfigurationStore: self.walletConfigurationStore, remoteRPCConfiguration: url.rpcConfiguration)
+            self.presentSetup(walletConfigurationStore: self.walletConfigurationStore, rpcCredentials: url.rpcCredentials)
         })
 
         alertController.addAction(connectAlertAction)

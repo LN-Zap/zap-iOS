@@ -81,7 +81,7 @@ final class WalletConfigurationStore {
 
             // it's possible to have multiple wallets with configuration
             // `.local`, but we don't want multiple `.remote` wallets with same
-            // `RemoteRPCConfiguration`
+            // `RPCCredentials`
             switch ($0.connection, walletConfiguration.connection) {
             case let (.remote(oldConnection), .remote(newConnection)):
                 return oldConnection == newConnection

@@ -10,9 +10,9 @@ import SwiftBTC
 @testable import SwiftLnd
 import XCTest
 
-extension RemoteRPCConfiguration {
+extension RPCCredentials {
     // swiftlint:disable:next force_unwrapping
-    static var mock: RemoteRPCConfiguration = RemoteRPCConfiguration(certificate: nil, macaroon: Macaroon(hexadecimalString: "deadbeef")!, url: URL(string: "127.0.0.1")!)
+    static var mock: RPCCredentials = RPCCredentials(certificate: nil, macaroon: Macaroon(hexadecimalString: "deadbeef")!, host: URL(string: "127.0.0.1")!)
 }
 
 // swiftlint:disable force_try force_unwrapping implicitly_unwrapped_optional
@@ -32,7 +32,7 @@ class ReceivingAddressTests: XCTestCase {
 
     var mockPersistence: MockPersistence!
     let testAddress = BitcoinAddress(string: "mwthp1qAAisrqMiKqZG7TMGAgMNJTg5hbD")!
-    let testConnection = LightningConnection.remote(RemoteRPCConfiguration.mock)
+    let testConnection = LightningConnection.remote(RPCCredentials.mock)
 
     func testNewAddressGetsSaved() {
         let expectation = XCTestExpectation(description: "Create Receiving Address")

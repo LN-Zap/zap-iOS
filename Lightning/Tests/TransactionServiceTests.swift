@@ -22,7 +22,7 @@ class TransactionServiceTests: XCTestCase {
 
         let mockPersistence = MockPersistence()
         let mockApi = LightningApiMock(sendCoins: txid)
-        let testConnection = LightningConnection.remote(RemoteRPCConfiguration.mock)
+        let testConnection = LightningConnection.remote(RPCCredentials.mock)
         let lightningService = LightningService(api: mockApi, walletId: "1", persistence: mockPersistence, connection: testConnection)
         lightningService.start()
 

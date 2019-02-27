@@ -38,7 +38,7 @@ private extension String {
 }
 
 public final class LndConnectURL {
-    public let rpcConfiguration: RemoteRPCConfiguration
+    public let rpcCredentials: RPCCredentials
 
     public init?(url: URL) {
         guard
@@ -57,6 +57,6 @@ public final class LndConnectURL {
             certString = nil
         }
 
-        rpcConfiguration = RemoteRPCConfiguration(certificate: certString, macaroon: macaroon, url: nodeHostUrl)
+        rpcCredentials = RPCCredentials(certificate: certString, macaroon: macaroon, host: nodeHostUrl)
     }
 }

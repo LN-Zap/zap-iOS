@@ -22,7 +22,7 @@ final class ConnectRemoteNodeViewModel: NSObject {
         case help
     }
 
-    var remoteNodeConfiguration: RemoteRPCConfiguration? {
+    var remoteNodeConfiguration: RPCCredentials? {
         didSet {
             updateTableView()
         }
@@ -36,12 +36,12 @@ final class ConnectRemoteNodeViewModel: NSObject {
         fatalError("not implemented")
     }
 
-    init(remoteRPCConfiguration: RemoteRPCConfiguration?) {
+    init(rpcCredentials: RPCCredentials?) {
         dataSource = MutableObservable2DArray([])
 
         super.init()
 
-        self.remoteNodeConfiguration = remoteRPCConfiguration
+        self.remoteNodeConfiguration = rpcCredentials
         updateTableView()
     }
 
@@ -69,9 +69,9 @@ final class ConnectRemoteNodeViewModel: NSObject {
         dataSource.replace(with: sections, performDiff: true)
     }
 
-    private func certificateSection(for qrCode: RemoteRPCConfiguration) -> Observable2DArraySection<String?, CellType> {
+    private func certificateSection(for qrCode: RPCCredentials) -> Observable2DArraySection<String?, CellType> {
         var items: [CellType] = [
-            .address(qrCode.url.absoluteString),
+            .address(qrCode.host.absoluteString),
             .connect
         ]
 
@@ -116,10 +116,10 @@ final class ConnectRemoteNodeViewModel: NSObject {
     func updateUrl(_ url: URL) {
         guard let remoteNodeConfiguration = remoteNodeConfiguration else { return }
 
-        let newConfiguration = RemoteRPCConfiguration(
+        let newConfiguration = RPCCredentials(
             certificate: remoteNodeConfiguration.certificate,
             macaroon: remoteNodeConfiguration.macaroon,
-            url: url)
+            host: url)
 
         self.remoteNodeConfiguration = newConfiguration
     }

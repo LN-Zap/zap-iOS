@@ -49,7 +49,7 @@
 		AD30898B216FA8C400B5489C /* GraphViewDataSourceTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD308988216FA88D00B5489C /* GraphViewDataSourceTests.swift */; };
 		AD3781C421661A070083CE77 /* Pem.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD27B01520FC8BBF00F232A8 /* Pem.swift */; };
 		AD3781CA21664E9E0083CE77 /* LightningConnection.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADD9DCDC20B453D000AEFC5C /* LightningConnection.swift */; };
-		AD3781CC21664EB00083CE77 /* RemoteRPCConfiguration.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD71EA4820E2318000256307 /* RemoteRPCConfiguration.swift */; };
+		AD3781CC21664EB00083CE77 /* RPCCredentials.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD71EA4820E2318000256307 /* RPCCredentials.swift */; };
 		AD3781D02166522E0083CE77 /* Environment.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD3781CF2166522E0083CE77 /* Environment.swift */; };
 		AD391C1C20D16ED4007EE22A /* Library.h in Headers */ = {isa = PBXBuildFile; fileRef = AD391C1A20D16ED4007EE22A /* Library.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		AD391C1F20D16ED4007EE22A /* Library.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AD391C1820D16ED4007EE22A /* Library.framework */; };
@@ -292,6 +292,7 @@
 		ADF093132148FEB900B48853 /* ChannelEvent.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADF093122148FEB900B48853 /* ChannelEvent.swift */; };
 		ADF1BB3021997A820078BCC4 /* LndConnectURL.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADF1BB2F21997A820078BCC4 /* LndConnectURL.swift */; };
 		ADF1BB33219D7F260078BCC4 /* Macaroon.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADF1BB32219D7F260078BCC4 /* Macaroon.swift */; };
+		ADFA46982226947A007A4C49 /* LndConnectTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADFA46972226947A007A4C49 /* LndConnectTests.swift */; };
 		ADFB0CC7216E09E00048B63C /* ReceivingAddress.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADFB0CC6216E09E00048B63C /* ReceivingAddress.swift */; };
 		ADFB0CCA216E34540048B63C /* ReceivingAddressTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADFB0CC8216E318B0048B63C /* ReceivingAddressTests.swift */; };
 		ADFB36D32143B66300146FCC /* SwiftLnd.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = ADADAD632143B2E700A48E1F /* SwiftLnd.framework */; };
@@ -613,7 +614,7 @@
 		AD6F863320DA3C99008C371B /* WalletApiProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WalletApiProtocol.swift; sourceTree = "<group>"; };
 		AD6FFCA520AB0A3700B57330 /* OnChainRequestAddressTypeSettingsItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnChainRequestAddressTypeSettingsItem.swift; sourceTree = "<group>"; };
 		AD7123CD2225A51800AA8E7B /* PinStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PinStore.swift; sourceTree = "<group>"; };
-		AD71EA4820E2318000256307 /* RemoteRPCConfiguration.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RemoteRPCConfiguration.swift; sourceTree = "<group>"; };
+		AD71EA4820E2318000256307 /* RPCCredentials.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RPCCredentials.swift; sourceTree = "<group>"; };
 		AD71EA4A20E2321100256307 /* LndConstants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LndConstants.swift; sourceTree = "<group>"; };
 		AD77464D2076162300EC596B /* Network+Localizable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Network+Localizable.swift"; sourceTree = "<group>"; };
 		AD77465620765E4D00EC596B /* ChannelViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChannelViewModel.swift; sourceTree = "<group>"; };
@@ -833,6 +834,7 @@
 		ADF79369208E5FEC0086B2CA /* ConfirmMnemonicCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConfirmMnemonicCollectionViewCell.swift; sourceTree = "<group>"; };
 		ADF7936B208E66FA0086B2CA /* UICollectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UICollectionView.swift; sourceTree = "<group>"; };
 		ADF79375208F88DE0086B2CA /* RecoverWalletViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecoverWalletViewController.swift; sourceTree = "<group>"; };
+		ADFA46972226947A007A4C49 /* LndConnectTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LndConnectTests.swift; sourceTree = "<group>"; };
 		ADFB0CC6216E09E00048B63C /* ReceivingAddress.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReceivingAddress.swift; sourceTree = "<group>"; };
 		ADFB0CC8216E318B0048B63C /* ReceivingAddressTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReceivingAddressTests.swift; sourceTree = "<group>"; };
 		ADFBE0BE21F6268400A76E06 /* Sticker.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = Sticker.appex; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -1055,7 +1057,7 @@
 				AD71EA4A20E2321100256307 /* LndConstants.swift */,
 				A0A05A342014047B0007D1C9 /* LocalLnd.swift */,
 				A02C9FC520304395009821B1 /* LocalLndConfiguration.swift */,
-				AD71EA4820E2318000256307 /* RemoteRPCConfiguration.swift */,
+				AD71EA4820E2318000256307 /* RPCCredentials.swift */,
 			);
 			path = Lnd;
 			sourceTree = "<group>";
@@ -1397,6 +1399,7 @@
 				AD28844C21284DAC003C3D94 /* InvoiceTests.swift */,
 				A0733CD920471F0A0005643A /* LightningInvoiceURITests.swift */,
 				AD28844821282139003C3D94 /* LightningNodeURITests.swift */,
+				ADFA46972226947A007A4C49 /* LndConnectTests.swift */,
 				ADFB0CC8216E318B0048B63C /* ReceivingAddressTests.swift */,
 				AD308985216F37E300B5489C /* TransactionServiceTests.swift */,
 			);
@@ -3008,6 +3011,7 @@
 				ADFB0CCA216E34540048B63C /* ReceivingAddressTests.swift in Sources */,
 				AD28844621282073003C3D94 /* Bolt11Tests.swift in Sources */,
 				AD967FE7210603D50048085B /* BTCPayConfigurationTests.swift in Sources */,
+				ADFA46982226947A007A4C49 /* LndConnectTests.swift in Sources */,
 				AD28844D21284DAC003C3D94 /* InvoiceTests.swift in Sources */,
 				ADC48CA7214AD8B800949CD9 /* DateEstimatorTests.swift in Sources */,
 			);
@@ -3038,7 +3042,7 @@
 				ADADAD942143B3C900A48E1F /* TestingTemplates.swift in Sources */,
 				ADADADA02143B3C900A48E1F /* WalletApiRpc.swift in Sources */,
 				ADFB36D82143B73C00146FCC /* LocalLnd.swift in Sources */,
-				AD3781CC21664EB00083CE77 /* RemoteRPCConfiguration.swift in Sources */,
+				AD3781CC21664EB00083CE77 /* RPCCredentials.swift in Sources */,
 				ADADAD912143B3C900A48E1F /* PaymentRequest.swift in Sources */,
 				ADA58F9522034A25009A5494 /* GRPCProtoCall+Extensions.swift in Sources */,
 				ADADAD9B2143B3C900A48E1F /* LightningApiMock.swift in Sources */,

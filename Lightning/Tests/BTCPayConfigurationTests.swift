@@ -46,9 +46,9 @@ class BTCPayConfigurationTests: XCTestCase {
         let data = "{\"configurations\":[{\"type\":\"rest\",\"cryptoCode\":\"BTC\",\"host\":\"test.test.com\",\"port\":443,\"ssl\":true,\"certificateThumbprint\":null,\"macaroon\":\"02deadbeef0202deadbeef02\"},{\"type\":\"grpc\",\"cryptoCode\":\"BTC\",\"host\":\"test.test.com\",\"port\":443,\"ssl\":true,\"certificateThumbprint\":null,\"macaroon\":\"02deadbeef0202deadbeef02\"},{\"type\":\"rest\",\"cryptoCode\":\"BTC\",\"host\":\"test.test.com\",\"port\":443,\"ssl\":true,\"certificateThumbprint\":null,\"macaroon\":\"02deadbeef0202deadbeef02\"}]}".data(using: .utf8)!
         let configuration = BTCPayConfiguration(data: data)
 
-        XCTAssertNotNil(configuration?.rpcConfiguration)
-        XCTAssertNil(configuration?.rpcConfiguration?.certificate)
-        XCTAssertEqual(configuration?.rpcConfiguration?.url.absoluteString, "test.test.com:443")
-        XCTAssertEqual(configuration?.rpcConfiguration?.macaroon, Macaroon(hexadecimalString: "02deadbeef0202deadbeef02"))
+        XCTAssertNotNil(configuration?.rpcCredentials)
+        XCTAssertNil(configuration?.rpcCredentials?.certificate)
+        XCTAssertEqual(configuration?.rpcCredentials?.host.absoluteString, "test.test.com:443")
+        XCTAssertEqual(configuration?.rpcCredentials?.macaroon, Macaroon(hexadecimalString: "02deadbeef0202deadbeef02"))
     }
 }

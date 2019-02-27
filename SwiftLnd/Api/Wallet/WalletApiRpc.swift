@@ -11,8 +11,8 @@ import LndRpc
 public final class WalletApiRpc: RpcApi, WalletApiProtocol {
     private let lnd: LNDWalletUnlocker
 
-    override public init(configuration: RemoteRPCConfiguration) {
-        lnd = LNDWalletUnlocker(host: configuration.url.absoluteString)
+    override public init(configuration: RPCCredentials) {
+        lnd = LNDWalletUnlocker(host: configuration.host.absoluteString)
         super.init(configuration: configuration)
     }
 

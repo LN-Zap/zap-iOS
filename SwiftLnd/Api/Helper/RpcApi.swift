@@ -10,9 +10,9 @@ import LndRpc
 
 public class RpcApi {
     let macaroon: String
-    let configuration: RemoteRPCConfiguration
+    let configuration: RPCCredentials
 
-    public init(configuration: RemoteRPCConfiguration) {
+    public init(configuration: RPCCredentials) {
         self.configuration = configuration
         macaroon = configuration.macaroon.hexadecimalString
 

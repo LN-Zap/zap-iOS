@@ -12,8 +12,8 @@ import SwiftBTC
 public final class LightningApiRpc: RpcApi, LightningApiProtocol {
     private let lnd: LNDLightning
 
-    override public init(configuration: RemoteRPCConfiguration) {
-        lnd = LNDLightning(host: configuration.url.absoluteString)
+    override public init(configuration: RPCCredentials) {
+        lnd = LNDLightning(host: configuration.host.absoluteString)
         super.init(configuration: configuration)
     }
 

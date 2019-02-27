@@ -17,19 +17,19 @@ final class SetupCoordinator: Coordinator {
     let rootViewController: RootViewController
     private let authenticationViewModel: AuthenticationViewModel
     private let walletConfigurationStore: WalletConfigurationStore
-    private let remoteRPCConfiguration: RemoteRPCConfiguration?
+    private let rpcCredentials: RPCCredentials?
 
     private weak var navigationController: UINavigationController?
     private weak var delegate: SetupCoordinatorDelegate?
     private weak var connectRemoteNodeViewModel: ConnectRemoteNodeViewModel?
     private weak var mnemonicViewModel: MnemonicViewModel?
 
-    init(rootViewController: RootViewController, authenticationViewModel: AuthenticationViewModel, delegate: SetupCoordinatorDelegate, walletConfigurationStore: WalletConfigurationStore, remoteRPCConfiguration: RemoteRPCConfiguration?) {
+    init(rootViewController: RootViewController, authenticationViewModel: AuthenticationViewModel, delegate: SetupCoordinatorDelegate, walletConfigurationStore: WalletConfigurationStore, rpcCredentials: RPCCredentials?) {
         self.rootViewController = rootViewController
         self.authenticationViewModel = authenticationViewModel
         self.delegate = delegate
         self.walletConfigurationStore = walletConfigurationStore
-        self.remoteRPCConfiguration = remoteRPCConfiguration
+        self.rpcCredentials = rpcCredentials
     }
 
     func start() {
@@ -41,8 +41,8 @@ final class SetupCoordinator: Coordinator {
         self.navigationController = navigationController
         self.rootViewController.setContainerContent(navigationController)
 
-        if let remoteRPCConfiguration = remoteRPCConfiguration {
-            connectRemoteNode(remoteRPCConfiguration)
+        if let rpcCredentials = rpcCredentials {
+            connectRemoteNode(rpcCredentials)
         }
     }
 
@@ -98,8 +98,8 @@ final class SetupCoordinator: Coordinator {
         connectRemoteNode(nil)
     }
 
-    private func connectRemoteNode(_ remoteRPCConfiguration: RemoteRPCConfiguration?) {
-        let viewModel = ConnectRemoteNodeViewModel(remoteRPCConfiguration: remoteRPCConfiguration)
+    private func connectRemoteNode(_ rpcCredentials: RPCCredentials?) {
+        let viewModel = ConnectRemoteNodeViewModel(rpcCredentials: rpcCredentials)
         connectRemoteNodeViewModel = viewModel
         let viewController = ConnectRemoteNodeViewController.instantiate(didSetupWallet: didSetupWallet, connectRemoteNodeViewModel: viewModel, presentQRCodeScannerButtonTapped: presentNodeCertificatesScanner)
         navigationController?.pushViewController(viewController, animated: true)
@@ -131,7 +131,7 @@ final class SetupCoordinator: Coordinator {
 
     private func setupWalletViewController() -> UIViewController {
         #if REMOTEONLY
-        let viewModel = ConnectRemoteNodeViewModel(remoteRPCConfiguration: nil)
+        let viewModel = ConnectRemoteNodeViewModel(rpcCredentials: nil)
         connectRemoteNodeViewModel = viewModel
         return ConnectRemoteNodeViewController.instantiate(didSetupWallet: didSetupWallet, connectRemoteNodeViewModel: viewModel, presentQRCodeScannerButtonTapped: presentNodeCertificatesScanner)
         #else

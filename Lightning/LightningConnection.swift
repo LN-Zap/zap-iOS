@@ -10,7 +10,7 @@ import SwiftLnd
 
 public enum LightningConnection: Equatable, Codable {
     case local
-    case remote(RemoteRPCConfiguration)
+    case remote(RPCCredentials)
 
     public var api: LightningApiProtocol {
         if Environment.useMockApi {
@@ -49,8 +49,8 @@ extension LightningConnection {
         case .local:
             self = .local
         case .remote:
-            let remoteRpcConfiguration = try container.decode(RemoteRPCConfiguration.self, forKey: .remoteRpcConfiguration)
-            self = .remote(remoteRpcConfiguration)
+            let rpcCredentials = try container.decode(RPCCredentials.self, forKey: .remoteRpcConfiguration)
+            self = .remote(rpcCredentials)
         }
     }
 
@@ -60,9 +60,9 @@ extension LightningConnection {
         switch self {
         case .local:
             try container.encode(Base.local, forKey: .base)
-        case .remote(let remoteRPCConfiguration):
+        case .remote(let rpcCredentials):
             try container.encode(Base.remote, forKey: .base)
-            try container.encode(remoteRPCConfiguration, forKey: .remoteRpcConfiguration)
+            try container.encode(rpcCredentials, forKey: .remoteRpcConfiguration)
         }
     }
 }
