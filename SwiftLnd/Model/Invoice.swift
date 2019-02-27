@@ -44,7 +44,13 @@ extension Invoice {
         id = invoice.rHash.hexadecimalString
         memo = invoice.memo
 
-        state = State(state: invoice.state) ?? (invoice.settled ? .settled : .open)
+        // older lnd version that do not have the settled property return
+        // `state = .open` and `settled = true` at the same time. that's why we
+        // stick to the `settled` flag for now.
+        //
+        // state = State(state: invoice.state) ?? (invoice.settled ? .settled : .open)
+        state = invoice.settled ? .settled : .open
+
         switch state {
         case .settled:
             amount = Satoshi(invoice.amtPaidSat)
