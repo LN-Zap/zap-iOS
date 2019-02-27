@@ -40,6 +40,12 @@ private extension String {
 public final class LndConnectURL {
     public let rpcCredentials: RPCCredentials
 
+    public convenience init?(string: String) {
+        let string = string.trimmingCharacters(in: .whitespacesAndNewlines)
+        guard let url = URL(string: string) else { return nil }
+        self.init(url: url)
+    }
+
     public init?(url: URL) {
         guard
             let queryParameters = url.queryParameters,

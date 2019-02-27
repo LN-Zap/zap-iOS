@@ -292,7 +292,7 @@
 		ADF093132148FEB900B48853 /* ChannelEvent.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADF093122148FEB900B48853 /* ChannelEvent.swift */; };
 		ADF1BB3021997A820078BCC4 /* LndConnectURL.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADF1BB2F21997A820078BCC4 /* LndConnectURL.swift */; };
 		ADF1BB33219D7F260078BCC4 /* Macaroon.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADF1BB32219D7F260078BCC4 /* Macaroon.swift */; };
-		ADFA46982226947A007A4C49 /* LndConnectTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADFA46972226947A007A4C49 /* LndConnectTests.swift */; };
+		ADFA46982226947A007A4C49 /* LndConnectURLTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADFA46972226947A007A4C49 /* LndConnectURLTests.swift */; };
 		ADFB0CC7216E09E00048B63C /* ReceivingAddress.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADFB0CC6216E09E00048B63C /* ReceivingAddress.swift */; };
 		ADFB0CCA216E34540048B63C /* ReceivingAddressTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADFB0CC8216E318B0048B63C /* ReceivingAddressTests.swift */; };
 		ADFB36D32143B66300146FCC /* SwiftLnd.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = ADADAD632143B2E700A48E1F /* SwiftLnd.framework */; };
@@ -834,7 +834,7 @@
 		ADF79369208E5FEC0086B2CA /* ConfirmMnemonicCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConfirmMnemonicCollectionViewCell.swift; sourceTree = "<group>"; };
 		ADF7936B208E66FA0086B2CA /* UICollectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UICollectionView.swift; sourceTree = "<group>"; };
 		ADF79375208F88DE0086B2CA /* RecoverWalletViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecoverWalletViewController.swift; sourceTree = "<group>"; };
-		ADFA46972226947A007A4C49 /* LndConnectTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LndConnectTests.swift; sourceTree = "<group>"; };
+		ADFA46972226947A007A4C49 /* LndConnectURLTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LndConnectURLTests.swift; sourceTree = "<group>"; };
 		ADFB0CC6216E09E00048B63C /* ReceivingAddress.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReceivingAddress.swift; sourceTree = "<group>"; };
 		ADFB0CC8216E318B0048B63C /* ReceivingAddressTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReceivingAddressTests.swift; sourceTree = "<group>"; };
 		ADFBE0BE21F6268400A76E06 /* Sticker.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = Sticker.appex; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -1399,7 +1399,7 @@
 				AD28844C21284DAC003C3D94 /* InvoiceTests.swift */,
 				A0733CD920471F0A0005643A /* LightningInvoiceURITests.swift */,
 				AD28844821282139003C3D94 /* LightningNodeURITests.swift */,
-				ADFA46972226947A007A4C49 /* LndConnectTests.swift */,
+				ADFA46972226947A007A4C49 /* LndConnectURLTests.swift */,
 				ADFB0CC8216E318B0048B63C /* ReceivingAddressTests.swift */,
 				AD308985216F37E300B5489C /* TransactionServiceTests.swift */,
 			);
@@ -3011,7 +3011,7 @@
 				ADFB0CCA216E34540048B63C /* ReceivingAddressTests.swift in Sources */,
 				AD28844621282073003C3D94 /* Bolt11Tests.swift in Sources */,
 				AD967FE7210603D50048085B /* BTCPayConfigurationTests.swift in Sources */,
-				ADFA46982226947A007A4C49 /* LndConnectTests.swift in Sources */,
+				ADFA46982226947A007A4C49 /* LndConnectURLTests.swift in Sources */,
 				AD28844D21284DAC003C3D94 /* InvoiceTests.swift in Sources */,
 				ADC48CA7214AD8B800949CD9 /* DateEstimatorTests.swift in Sources */,
 			);

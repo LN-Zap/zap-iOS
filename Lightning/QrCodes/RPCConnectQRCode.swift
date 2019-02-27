@@ -17,8 +17,9 @@ public enum RPCConnectQRCodeError: Error {
 /// Decodes RPCConfiguration from lndconnect, zapconnect & BTCPay QRCodes
 public enum RPCConnectQRCode {
     public static func configuration(for string: String, completion: @escaping (Result<RPCCredentials, RPCConnectQRCodeError>) -> Void) {
-        if let url = URL(string: string),
-            let lndConnectURL = LndConnectURL(url: url) {
+        let string = string.trimmingCharacters(in: .whitespacesAndNewlines)
+
+        if let lndConnectURL = LndConnectURL(string: string) {
             completion(.success(lndConnectURL.rpcCredentials))
         } else if let qrCode = ZapconnectQRCode(json: string) {
             completion(.success(qrCode.rpcCredentials))
