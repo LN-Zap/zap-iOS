@@ -57,6 +57,8 @@
 	<string>$(PRODUCT_NAME) requires access to your phone’s camera.</string>
 	<key>NSFaceIDUsageDescription</key>
 	<string>$(PRODUCT_NAME) requires access to Face ID.</string>
+	<key>NSPhotoLibraryAddUsageDescription</key>
+	<string>$(PRODUCT_NAME) requires access to your photos.</string>
 	<key>UIApplicationShortcutItems</key>
 	<array>
 		<dict>

@@ -42,6 +42,10 @@ final class WalletCoordinator: NSObject, Coordinator {
         lightningService.start()
         ExchangeUpdaterJob.start()
         updateFor(state: lightningService.infoService.walletState.value)
+
+        ScreenshotChecker().lastScreenshot { [weak self] in
+            self?.presentScreenshotView(screenshot: $0)
+        }
     }
 
     func stop() {
@@ -267,6 +271,31 @@ final class WalletCoordinator: NSObject, Coordinator {
         guard let configuration = walletConfigurationStore.selectedWallet else { return }
         let viewController = LndLogViewController.instantiate(walletConfiguration: configuration)
         navigationController.pushViewController(viewController, animated: true)
+    }
+
+    func presentScreenshotView(screenshot: Screenshot) {
+        let screenshotAlert = UIAlertController(title: "QR Code Screenshot", message: "", preferredStyle: .alert)
+        let imageView = UIImageView(image: screenshot.image)
+        imageView.contentMode = .scaleAspectFit
+
+        screenshotAlert.view.addAutolayoutSubview(imageView)
+
+        NSLayoutConstraint.activate([
+            imageView.heightAnchor.constraint(equalToConstant: 100),
+            imageView.widthAnchor.constraint(equalToConstant: 100),
+            imageView.centerXAnchor.constraint(equalTo: screenshotAlert.view.centerXAnchor),
+            imageView.topAnchor.constraint(equalTo: screenshotAlert.view.topAnchor, constant: 75),
+            imageView.bottomAnchor.constraint(equalTo: screenshotAlert.view.bottomAnchor, constant: -65)
+        ])
+
+        let cancelAction = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
+        let openAction = UIAlertAction(title: "Open", style: .default) { [weak self] _ in
+            self?.presentSend(invoice: screenshot.message)
+        }
+        screenshotAlert.addAction(cancelAction)
+        screenshotAlert.addAction(openAction)
+
+        rootViewController.present(screenshotAlert, animated: true)
     }
 }
 
