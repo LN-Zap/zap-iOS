@@ -175,30 +175,30 @@
 "scene.channel_detail.close_button" = "Luk kanal";
 "scene.channel_detail.force_close_button" = "Tvangsluk kanal";
 
-"scene.filter.title" = "Filter";
+"scene.filter.title" = "Filtrer";
 "scene.filter.section_header.transaction_types" = "Transaktionstyper";
-"scene.filter.section_header.advanced" = "Advanced";
-"scene.filter.displayOnChainTransactions" = "On-chain Payments";
-"scene.filter.display_unknown_transaction_type" = "Internal Transactions";
+"scene.filter.section_header.advanced" = "Avanceret";
+"scene.filter.displayOnChainTransactions" = "On-chain betaling";
+"scene.filter.display_unknown_transaction_type" = "Intern transaktioner";
 "scene.filter.displayLightningPayments" = "Lightning betalinger";
-"scene.filter.displayLightningInvoices" = "Created Invoices";
-"scene.filter.displayChannelEvents" = "Channel Events";
-"scene.filter.displayFailedPaymentEvents" = "Failed Payments";
+"scene.filter.displayLightningInvoices" = "Skabte fakturaer";
+"scene.filter.displayChannelEvents" = "Kanal begivenheder";
+"scene.filter.displayFailedPaymentEvents" = "Mislykket betalinger";
 
 "scene.qrcode_scanner.top_label" = "Skan QR-kode";
 
 "scene.wallet.title" = "Wallet";
 
-"scene.time_lock.headline" = "Wrong Passcode";
-"scene.time_lock.description" = "Your wallet is locked for:";
+"scene.time_lock.headline" = "Forkert Passcode";
+"scene.time_lock.description" = "Din wallet er låst i:";
 
-"scene.modal_pin.headline" = "Enter Passcode";
-"scene.modal_pin.description" = "Please enter your passcode to continue";
+"scene.modal_pin.headline" = "Indtast passcode";
+"scene.modal_pin.description" = "Indtast venligst din passcode for at flrsætte";
 
-"scene.history.cell.payment_sent" = "Payment sent";
-"scene.history.cell.payment_received" = "Payment received";
-"scene.history.cell.payment_failed" = "Payment failed (%@)";
-"scene.history.cell.invoice_created" = "Payment Request created";
+"scene.history.cell.payment_sent" = "Betaling sendt";
+"scene.history.cell.payment_received" = "Betaling modtaget";
+"scene.history.cell.payment_failed" = "Betaling fejlede (%@)";
+"scene.history.cell.invoice_created" = "Betaling anmodning skabt";
 "scene.history.cell.channel_opened" = "Open Channel";
 "scene.history.cell.channel_closed" = "Close Channel";
 "scene.history.cell.force_close_channel" = "Force close Channel";
