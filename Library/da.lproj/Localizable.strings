@@ -1,11 +1,11 @@
-"generic.memo.placeholder" = "What is this for?";
-"generic.qr_code.copy_button" = "Copy";
-"generic.qr_code.copy_success_message" = "Address has been copied to clipboard.";
-"generic.pasteboard.invalid_address" = "Invalid Address";
-"generic.qr_code.share_button" = "Share";
-"generic.cancel" = "Cancel";
+"generic.memo.placeholder" = "Hvad er dette for?";
+"generic.qr_code.copy_button" = "Kopier";
+"generic.qr_code.copy_success_message" = "Adresse er blevet kopieret til clipboard.";
+"generic.pasteboard.invalid_address" = "Ugyldig adresse";
+"generic.qr_code.share_button" = "Del";
+"generic.cancel" = "Aflys";
 
-"link.help" = "https://ln-zap.github.io/zap-tutorials/";
+"link.help" = "https://ln-zap.github.io/zap-tutorials";
 "link.help.zapconnect" = "https://ln-zap.github.io/zap-tutorials/iOS-remote-node-setup";
 
 "error.wrong_uri_format" = "Ukendt link format.";
@@ -14,8 +14,8 @@
 
 "rpc_connect_qrcode_error.btc_pay_expired" = "Det ser ud til at koden er udløbet.";
 "rpc_connect_qrcode_error.btc_pay_configuration_broken" = "Kunne ikke læse BTCPay konfiguration fil.";
-"rpc_connect_qrcode_error.cant_read_qrcode" = "Invalid code format.";
-"rpc_connect_qrcode_error.code_updated" = "Connection updated.";
+"rpc_connect_qrcode_error.cant_read_qrcode" = "Ugyldig kode format.";
+"rpc_connect_qrcode_error.code_updated" = "Forbindelse opdateret.";
 
 "channel.state.active" = "Online";
 "channel.state.inactive" = "Offline";
