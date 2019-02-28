@@ -185,7 +185,7 @@ extension HistoryService {
 
     private func addPayments(_ payments: [Payment]) {
         do {
-            for payment in payments {
+            for payment in payments.reversed() {
                 let paymentEvent = LightningPaymentEvent(payment: payment, memo: nil, node: nil)
                 try paymentEvent.insert(database: persistence.connection())
             }
