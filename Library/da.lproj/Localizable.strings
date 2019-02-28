@@ -21,8 +21,8 @@
 "channel.state.inactive" = "Offline";
 "channel.state.opening" = "Åbner";
 "channel.state.closing" = "Lukker";
-"channel.state.force_closing" = "Force Closing";
-"channel.state.waiting_close" = "Waiting Close";
+"channel.state.force_closing" = "Tvangslukning";
+"channel.state.waiting_close" = "Vente luk";
 
 "network_type.regtest" = "Regtest";
 "network_type.testnet" = "Testnet";
@@ -33,15 +33,15 @@
 "unit.bitcoin.bit" = "Bits";
 "unit.bitcoin.satoshi" = "Satoshis";
 
-"toast.invoice" = "Did receive %@";
-"toast.invoice_memo" = "Did receive %@ \"%@\"";
+"toast.invoice" = "Har modtaget %@";
+"toast.invoice_memo" = "Har modtaget %@ \"%@\"";
 
-"transaction.no_destination_address" = "No destination address";
+"transaction.no_destination_address" = "Ingen destinations adresse";
 
 "view.amount_input.placeholder" = "Beløb";
 
-"scene.history.title" = "History";
-"scene.history.empty_state_label" = "0 transactions 🙁";
+"scene.history.title" = "Historie";
+"scene.history.empty_state_label" = "0 transaktioner 🙁";
 
 "scene.settings.title" = "Indstillinger";
 "scene.settings.section.wallet" = "Tegnebog";
@@ -51,29 +51,29 @@
 "scene.settings.item.on_chain_request_address.title" = "Bitcoin adresse Type";
 "scene.settings.item.on_chain_request_address.bech32" = "Bech32";
 "scene.settings.item.on_chain_request_address.p2sh" = "P2SH";
-"scene.settings.item.manage_channels" = "Manage Channels";
+"scene.settings.item.manage_channels" = "Administrer kanaler";
 "scene.settings.item.node_uri" = "Node URI";
-"scene.settings.item.remove_remote_node" = "Manage Wallets";
+"scene.settings.item.remove_remote_node" = "Administrer Wallets";
 
-"scene.settings.item.change_pin" = "Change Pin";
+"scene.settings.item.change_pin" = "Ændre Pin";
 "scene.settings.item.report_issue" = "Rapporter et problem";
 "scene.settings.item.help" = "Brug for hjælp?";
-"scene.settings.item.privacy_policy" = "Privacy Policy";
-"scene.settings.item.lnd_log" = "Show lnd Log";
+"scene.settings.item.privacy_policy" = "Privatlivspolitik";
+"scene.settings.item.lnd_log" = "Vis lnd Log";
 
 "scene.request.title" = "Modtag";
 "scene.request.lightning_button" = "Lightning";
-"scene.request.or_separator_label" = "or";
+"scene.request.or_separator_label" = "eller";
 "scene.request.on_chain_button" = "På-kæde";
 "scene.request.generate_request_button" = "Generer anmodning";
-"scene.request.lightning_header_title" = "Lightning Payment Request";
-"scene.request.on_chain_header_title" = "On Chain Payment Request";
-"scene.request.next_button_title" = "Next";
+"scene.request.lightning_header_title" = "Lightning betalings anmodning";
+"scene.request.on_chain_header_title" = "On Chain betalings anmodning";
+"scene.request.next_button_title" = "Næste";
 
 "scene.channels.title" = "Kanaler";
 "scene.channels.close.title" = "Luk kanal";
 "scene.channels.close.message" = "Vil du lukke kanalen med node %@?";
-"scene.channels.force_close.title" = "Force Close Channel";
+"scene.channels.force_close.title" = "Tvangsluk kanal";
 "scene.channels.force_close.message" = "%@ is offline, are you sure you want to force close this channel? You’d have to wait about %@ for your funds?";
 "scene.channels.alert.close" = "Close Channel";
 "scene.channels.alert.force_close" = "Force Close Channel";
@@ -208,21 +208,21 @@
 "scene.history.cell.channel_abandoned" = "Channel abandoned";
 "scene.history.cell.transaction_sent" = "Payment sent";
 "scene.history.cell.transaction_received" = "Payment received";
-"scene.history.cell.label.new" = "new";
-"scene.history.cell.label.error" = "error";
-"scene.history.cell.action.try_again" = "Try Again";
+"scene.history.cell.label.new" = "ny";
+"scene.history.cell.label.error" = "fejl";
+"scene.history.cell.action.try_again" = "Prøv igen";
 
-"scene.node_uri.title" = "Connect to Node";
+"scene.node_uri.title" = "Opret forbindelse til Node";
 "scene.node_uri.alias_label" = "Alias";
 "scene.node_uri.uri_label" = "URI";
 
-"scene.connect_node_uri.action_sheet.title" = "Connect";
-"scene.connect_node_uri.action_sheet.connect_button" = "Connect";
-"scene.connect_node_uri.action_sheet.message" = "Do you really want to connect to node at %@?";
+"scene.connect_node_uri.action_sheet.title" = "Opret forbindelse";
+"scene.connect_node_uri.action_sheet.connect_button" = "Opret forbindelse";
+"scene.connect_node_uri.action_sheet.message" = "Er du sikker på at du vil oprette forbindelse til node ved %@?";
 
 "scene.wallet_list.title" = "Wallets";
 
-"scene.unlock.title" = "Unlock Node";
-"scene.unlock.unlock_button" = "Unlock";
+"scene.unlock.title" = "Lås Node op";
+"scene.unlock.unlock_button" = "Lås op";
 "scene.unlock.password_placeholder" = "Password";
 "scene.unlock.title_label" = "Unlock %@";
