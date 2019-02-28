@@ -11,6 +11,7 @@
 		429230B451D7CAF7718C5EBB /* Pods_RPC_SwiftLnd.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D1D7DC8244C0E3E65FCB72FA /* Pods_RPC_SwiftLnd.framework */; };
 		508C114BE3C2C3584AB55069 /* Pods_LightningTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 64689AAAE184A2256E9C9DF3 /* Pods_LightningTests.framework */; };
 		5FCBBF37B467569C5BD2796A /* Pods_RPC_Library.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4629437540BC6CE36F3EE098 /* Pods_RPC_Library.framework */; };
+		78992D3BEFF5C95F1E41B78C /* Pods_RPC_WebLnBrowser.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FF70F991A16E6B800BD3809D /* Pods_RPC_WebLnBrowser.framework */; };
 		A02C9FC2202F5BDC009821B1 /* LocalAuthentication.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A02C9FC1202F5BDC009821B1 /* LocalAuthentication.framework */; };
 		A0A05A032013CF960007D1C9 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0A05A022013CF960007D1C9 /* AppDelegate.swift */; };
 		A0A05A0A2013CF960007D1C9 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A0A05A092013CF960007D1C9 /* Assets.xcassets */; };
@@ -165,6 +166,10 @@
 		AD536BF820E62764002279BC /* Lightning.h in Headers */ = {isa = PBXBuildFile; fileRef = AD536BE820E62763002279BC /* Lightning.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		AD536BFB20E62764002279BC /* Lightning.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AD536BE620E62763002279BC /* Lightning.framework */; };
 		AD536BFC20E62764002279BC /* Lightning.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = AD536BE620E62763002279BC /* Lightning.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		AD59C2032227E1E100BE07A3 /* Colors.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = AD59C2022227E1E100BE07A3 /* Colors.xcassets */; };
+		AD59C2052227E1E100BE07A3 /* ActionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD59C2042227E1E100BE07A3 /* ActionViewController.swift */; };
+		AD59C2082227E1E100BE07A3 /* MainInterface.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AD59C2062227E1E100BE07A3 /* MainInterface.storyboard */; };
+		AD59C20C2227E1E100BE07A3 /* WebLnBrowser.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = AD59C2002227E1E100BE07A3 /* WebLnBrowser.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		AD615CF5211C82E600680790 /* LoadingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD615CF4211C82E600680790 /* LoadingView.swift */; };
 		AD615CF7211CAB0900680790 /* PaddingLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD615CF6211CAB0900680790 /* PaddingLabel.swift */; };
 		AD667E4721359D79007B9160 /* AuthenticationCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD667E4621359D79007B9160 /* AuthenticationCoordinator.swift */; };
@@ -272,6 +277,13 @@
 		ADDD13B62119CE740035D2F9 /* StackViewElement.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADDD13B52119CE740035D2F9 /* StackViewElement.swift */; };
 		ADDD13B92119CEB40035D2F9 /* UIStackView.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADDD13B82119CEB40035D2F9 /* UIStackView.swift */; };
 		ADDD13BB2119CF110035D2F9 /* CallbackButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADDD13BA2119CF110035D2F9 /* CallbackButton.swift */; };
+		ADE64DBC22282067004C0BC8 /* Lightning.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AD536BE620E62763002279BC /* Lightning.framework */; };
+		ADE64DBE222831DE004C0BC8 /* LoadingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADE64DBD222831DE004C0BC8 /* LoadingView.swift */; };
+		ADE64DC022283227004C0BC8 /* Style.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADE64DBF22283227004C0BC8 /* Style.swift */; };
+		ADE64DC222283239004C0BC8 /* UIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADE64DC122283239004C0BC8 /* UIView.swift */; };
+		ADE64DC42228325D004C0BC8 /* UIFont.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADE64DC32228325D004C0BC8 /* UIFont.swift */; };
+		ADE64DC62228326F004C0BC8 /* UIColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADE64DC52228326E004C0BC8 /* UIColor.swift */; };
+		ADE64DC82228327D004C0BC8 /* Bundle.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADE64DC72228327D004C0BC8 /* Bundle.swift */; };
 		ADEB619C2214588A009D5707 /* WalletListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADEB619B2214588A009D5707 /* WalletListViewController.swift */; };
 		ADEB61AC2216CD7D009D5707 /* Logger.h in Headers */ = {isa = PBXBuildFile; fileRef = ADEB61AA2216CD7D009D5707 /* Logger.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		ADEB61AF2216CD7D009D5707 /* Logger.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = ADEB61A82216CD7D009D5707 /* Logger.framework */; };
@@ -360,6 +372,13 @@
 			remoteGlobalIDString = AD536BE520E62763002279BC;
 			remoteInfo = ZapLightning;
 		};
+		AD59C20A2227E1E100BE07A3 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = A0A059F72013CF960007D1C9 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = AD59C1FF2227E1E100BE07A3;
+			remoteInfo = WebLnBrowser;
+		};
 		ADADAD6D2143B2E700A48E1F /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = A0A059F72013CF960007D1C9 /* Project object */;
@@ -439,6 +458,7 @@
 			dstPath = "";
 			dstSubfolderSpec = 13;
 			files = (
+				AD59C20C2227E1E100BE07A3 /* WebLnBrowser.appex in Embed App Extensions */,
 				ADFBE0C521F6268500A76E06 /* Sticker.appex in Embed App Extensions */,
 			);
 			name = "Embed App Extensions";
@@ -448,6 +468,7 @@
 
 /* Begin PBXFileReference section */
 		045A3F79F6BD76792A8F3DFC /* Pods-RPC-Library.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RPC-Library.release.xcconfig"; path = "Pods/Target Support Files/Pods-RPC-Library/Pods-RPC-Library.release.xcconfig"; sourceTree = "<group>"; };
+		2AA54CFA3CB1849F5D42F679 /* Pods-RPC-WebLnBrowser.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RPC-WebLnBrowser.debug.xcconfig"; path = "Pods/Target Support Files/Pods-RPC-WebLnBrowser/Pods-RPC-WebLnBrowser.debug.xcconfig"; sourceTree = "<group>"; };
 		4629437540BC6CE36F3EE098 /* Pods_RPC_Library.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_RPC_Library.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		4A29C2D527BF19A41F251C3F /* Pods_Zap.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Zap.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		4AE4B3957AC31DDABB89AF3B /* Pods-RPC-SwiftLnd.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RPC-SwiftLnd.release.xcconfig"; path = "Pods/Target Support Files/Pods-RPC-SwiftLnd/Pods-RPC-SwiftLnd.release.xcconfig"; sourceTree = "<group>"; };
@@ -458,6 +479,7 @@
 		6EBC100D11F16C32A4A35FE0 /* Pods-RPC-Library.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RPC-Library.debug.xcconfig"; path = "Pods/Target Support Files/Pods-RPC-Library/Pods-RPC-Library.debug.xcconfig"; sourceTree = "<group>"; };
 		75C93228A5FCF2CBD287946A /* Pods-Zap.debugremote.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Zap.debugremote.xcconfig"; path = "Pods/Target Support Files/Pods-Zap/Pods-Zap.debugremote.xcconfig"; sourceTree = "<group>"; };
 		7B0A5F2DD04568862A768B38 /* Pods-RPC-Lightning.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RPC-Lightning.release.xcconfig"; path = "Pods/Target Support Files/Pods-RPC-Lightning/Pods-RPC-Lightning.release.xcconfig"; sourceTree = "<group>"; };
+		7C26DD5F370BD03887B38F8B /* Pods-RPC-WebLnBrowser.debugremote.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RPC-WebLnBrowser.debugremote.xcconfig"; path = "Pods/Target Support Files/Pods-RPC-WebLnBrowser/Pods-RPC-WebLnBrowser.debugremote.xcconfig"; sourceTree = "<group>"; };
 		81036DADA56AC2254782EE27 /* Pods_SwiftLndTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_SwiftLndTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		8BBDA0096476551D268EA826 /* Pods-RPC-SwiftLnd.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RPC-SwiftLnd.debug.xcconfig"; path = "Pods/Target Support Files/Pods-RPC-SwiftLnd/Pods-RPC-SwiftLnd.debug.xcconfig"; sourceTree = "<group>"; };
 		8CA6BEE1FC4461B357E8E8EB /* Pods-LibraryTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-LibraryTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-LibraryTests/Pods-LibraryTests.debug.xcconfig"; sourceTree = "<group>"; };
@@ -594,6 +616,11 @@
 		AD536BEE20E62764002279BC /* LightningTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = LightningTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		AD536BF520E62764002279BC /* BTCPayQRCodeTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BTCPayQRCodeTests.swift; sourceTree = "<group>"; };
 		AD536BF720E62764002279BC /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		AD59C2002227E1E100BE07A3 /* WebLnBrowser.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = WebLnBrowser.appex; sourceTree = BUILT_PRODUCTS_DIR; };
+		AD59C2022227E1E100BE07A3 /* Colors.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Colors.xcassets; sourceTree = "<group>"; };
+		AD59C2042227E1E100BE07A3 /* ActionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActionViewController.swift; sourceTree = "<group>"; };
+		AD59C2072227E1E100BE07A3 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/MainInterface.storyboard; sourceTree = "<group>"; };
+		AD59C2092227E1E100BE07A3 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		AD5EA1DF213D826A00AB8031 /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		AD5EA1E1213D827B00AB8031 /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		AD615CF4211C82E600680790 /* LoadingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingView.swift; sourceTree = "<group>"; };
@@ -800,6 +827,12 @@
 		ADE19C3F20E7892000340E2E /* ChannelPoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChannelPoint.swift; sourceTree = "<group>"; };
 		ADE4CF1C20B5B2BE007C987A /* UIFont.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIFont.swift; sourceTree = "<group>"; };
 		ADE4CF1E20B5B6FC007C987A /* Environment.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Environment.swift; sourceTree = "<group>"; };
+		ADE64DBD222831DE004C0BC8 /* LoadingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingView.swift; sourceTree = "<group>"; };
+		ADE64DBF22283227004C0BC8 /* Style.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Style.swift; sourceTree = "<group>"; };
+		ADE64DC122283239004C0BC8 /* UIView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIView.swift; sourceTree = "<group>"; };
+		ADE64DC32228325D004C0BC8 /* UIFont.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIFont.swift; sourceTree = "<group>"; };
+		ADE64DC52228326E004C0BC8 /* UIColor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIColor.swift; sourceTree = "<group>"; };
+		ADE64DC72228327D004C0BC8 /* Bundle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Bundle.swift; sourceTree = "<group>"; };
 		ADEB619B2214588A009D5707 /* WalletListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WalletListViewController.swift; sourceTree = "<group>"; };
 		ADEB61A02216C3BC009D5707 /* Logger.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Logger.swift; sourceTree = "<group>"; };
 		ADEB61A82216CD7D009D5707 /* Logger.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Logger.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -859,6 +892,8 @@
 		D989AC91D5501875BA1C4E18 /* Pods-Zap.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Zap.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Zap/Pods-Zap.debug.xcconfig"; sourceTree = "<group>"; };
 		DC32D9E1C0DA9CDE996FB09B /* Pods-SwiftLndTests.debugremote.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SwiftLndTests.debugremote.xcconfig"; path = "Pods/Target Support Files/Pods-SwiftLndTests/Pods-SwiftLndTests.debugremote.xcconfig"; sourceTree = "<group>"; };
 		EE02ACBEA88DD5D98ADC12BC /* Pods-LightningTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-LightningTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-LightningTests/Pods-LightningTests.release.xcconfig"; sourceTree = "<group>"; };
+		EE8343993C8730DEF5A21749 /* Pods-RPC-WebLnBrowser.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RPC-WebLnBrowser.release.xcconfig"; path = "Pods/Target Support Files/Pods-RPC-WebLnBrowser/Pods-RPC-WebLnBrowser.release.xcconfig"; sourceTree = "<group>"; };
+		FF70F991A16E6B800BD3809D /* Pods_RPC_WebLnBrowser.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_RPC_WebLnBrowser.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -906,6 +941,15 @@
 			files = (
 				AD536BEF20E62764002279BC /* Lightning.framework in Frameworks */,
 				508C114BE3C2C3584AB55069 /* Pods_LightningTests.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		AD59C1FD2227E1E100BE07A3 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				ADE64DBC22282067004C0BC8 /* Lightning.framework in Frameworks */,
+				78992D3BEFF5C95F1E41B78C /* Pods_RPC_WebLnBrowser.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -968,6 +1012,9 @@
 				D989AC91D5501875BA1C4E18 /* Pods-Zap.debug.xcconfig */,
 				75C93228A5FCF2CBD287946A /* Pods-Zap.debugremote.xcconfig */,
 				5E35400BBA08A4A87916AF7B /* Pods-Zap.release.xcconfig */,
+				2AA54CFA3CB1849F5D42F679 /* Pods-RPC-WebLnBrowser.debug.xcconfig */,
+				7C26DD5F370BD03887B38F8B /* Pods-RPC-WebLnBrowser.debugremote.xcconfig */,
+				EE8343993C8730DEF5A21749 /* Pods-RPC-WebLnBrowser.release.xcconfig */,
 			);
 			name = Pods;
 			sourceTree = "<group>";
@@ -1119,6 +1166,7 @@
 				ADEB61B82217082A009D5707 /* Sourcery */,
 				A02C52F62024A98F00780D5A /* Podfile */,
 				A0A96B932017965100788808 /* README.md */,
+				AD59C2012227E1E100BE07A3 /* WebLnBrowser */,
 				CEF2960C33901153F2C1FFF4 /* Frameworks */,
 				AD391C1920D16ED4007EE22A /* Library */,
 				AD536BE720E62763002279BC /* Lightning */,
@@ -1143,6 +1191,7 @@
 				ADADAD6B2143B2E700A48E1F /* SwiftLndTests.xctest */,
 				ADFBE0BE21F6268400A76E06 /* Sticker.appex */,
 				ADEB61A82216CD7D009D5707 /* Logger.framework */,
+				AD59C2002227E1E100BE07A3 /* WebLnBrowser.appex */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -1404,6 +1453,23 @@
 				AD308985216F37E300B5489C /* TransactionServiceTests.swift */,
 			);
 			path = Tests;
+			sourceTree = "<group>";
+		};
+		AD59C2012227E1E100BE07A3 /* WebLnBrowser */ = {
+			isa = PBXGroup;
+			children = (
+				AD59C2022227E1E100BE07A3 /* Colors.xcassets */,
+				ADE64DBD222831DE004C0BC8 /* LoadingView.swift */,
+				ADE64DC32228325D004C0BC8 /* UIFont.swift */,
+				ADE64DC52228326E004C0BC8 /* UIColor.swift */,
+				ADE64DC72228327D004C0BC8 /* Bundle.swift */,
+				ADE64DC122283239004C0BC8 /* UIView.swift */,
+				ADE64DBF22283227004C0BC8 /* Style.swift */,
+				AD59C2042227E1E100BE07A3 /* ActionViewController.swift */,
+				AD59C2062227E1E100BE07A3 /* MainInterface.storyboard */,
+				AD59C2092227E1E100BE07A3 /* Info.plist */,
+			);
+			path = WebLnBrowser;
 			sourceTree = "<group>";
 		};
 		AD667E4E21367E41007B9160 /* Background */ = {
@@ -1930,6 +1996,7 @@
 				D1D7DC8244C0E3E65FCB72FA /* Pods_RPC_SwiftLnd.framework */,
 				81036DADA56AC2254782EE27 /* Pods_SwiftLndTests.framework */,
 				4A29C2D527BF19A41F251C3F /* Pods_Zap.framework */,
+				FF70F991A16E6B800BD3809D /* Pods_RPC_WebLnBrowser.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -1995,6 +2062,7 @@
 				ADADAD772143B2E700A48E1F /* PBXTargetDependency */,
 				ADFBE0C421F6268500A76E06 /* PBXTargetDependency */,
 				ADEB61AE2216CD7D009D5707 /* PBXTargetDependency */,
+				AD59C20B2227E1E100BE07A3 /* PBXTargetDependency */,
 			);
 			name = Zap;
 			productName = ThunderWallet;
@@ -2061,6 +2129,24 @@
 			productName = ZapLightningTests;
 			productReference = AD536BEE20E62764002279BC /* LightningTests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
+		};
+		AD59C1FF2227E1E100BE07A3 /* WebLnBrowser */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = AD59C2102227E1E100BE07A3 /* Build configuration list for PBXNativeTarget "WebLnBrowser" */;
+			buildPhases = (
+				32079AC15BE121A8E0D9D0C2 /* [CP] Check Pods Manifest.lock */,
+				AD59C1FC2227E1E100BE07A3 /* Sources */,
+				AD59C1FD2227E1E100BE07A3 /* Frameworks */,
+				AD59C1FE2227E1E100BE07A3 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = WebLnBrowser;
+			productName = WebLnBrowser;
+			productReference = AD59C2002227E1E100BE07A3 /* WebLnBrowser.appex */;
+			productType = "com.apple.product-type.app-extension";
 		};
 		ADADAD622143B2E700A48E1F /* SwiftLnd */ = {
 			isa = PBXNativeTarget;
@@ -2163,7 +2249,7 @@
 		A0A059F72013CF960007D1C9 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastSwiftUpdateCheck = 1000;
+				LastSwiftUpdateCheck = 1010;
 				LastUpgradeCheck = 0930;
 				ORGANIZATIONNAME = Zap;
 				TargetAttributes = {
@@ -2192,6 +2278,10 @@
 						LastSwiftMigration = 1000;
 						ProvisioningStyle = Automatic;
 						TestTargetID = A0A059FE2013CF960007D1C9;
+					};
+					AD59C1FF2227E1E100BE07A3 = {
+						CreatedOnToolsVersion = 10.1;
+						ProvisioningStyle = Automatic;
 					};
 					ADADAD622143B2E700A48E1F = {
 						CreatedOnToolsVersion = 9.4.1;
@@ -2273,6 +2363,7 @@
 				ADADAD622143B2E700A48E1F /* SwiftLnd */,
 				ADADAD6A2143B2E700A48E1F /* SwiftLndTests */,
 				ADFBE0BD21F6268400A76E06 /* Sticker */,
+				AD59C1FF2227E1E100BE07A3 /* WebLnBrowser */,
 			);
 		};
 /* End PBXProject section */
@@ -2347,6 +2438,15 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		AD59C1FE2227E1E100BE07A3 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				AD59C2032227E1E100BE07A3 /* Colors.xcassets in Resources */,
+				AD59C2082227E1E100BE07A3 /* MainInterface.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		ADADAD612143B2E700A48E1F /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -2403,6 +2503,28 @@
 			);
 			outputPaths = (
 				"$(DERIVED_FILE_DIR)/Pods-RPC-Lightning-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		32079AC15BE121A8E0D9D0C2 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-RPC-WebLnBrowser-checkManifestLockResult.txt",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -3017,6 +3139,20 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		AD59C1FC2227E1E100BE07A3 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				ADE64DC222283239004C0BC8 /* UIView.swift in Sources */,
+				ADE64DC82228327D004C0BC8 /* Bundle.swift in Sources */,
+				ADE64DC62228326F004C0BC8 /* UIColor.swift in Sources */,
+				AD59C2052227E1E100BE07A3 /* ActionViewController.swift in Sources */,
+				ADE64DC022283227004C0BC8 /* Style.swift in Sources */,
+				ADE64DC42228325D004C0BC8 /* UIFont.swift in Sources */,
+				ADE64DBE222831DE004C0BC8 /* LoadingView.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		ADADAD5E2143B2E700A48E1F /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -3122,6 +3258,11 @@
 			isa = PBXTargetDependency;
 			target = AD536BE520E62763002279BC /* Lightning */;
 			targetProxy = AD536BF920E62764002279BC /* PBXContainerItemProxy */;
+		};
+		AD59C20B2227E1E100BE07A3 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = AD59C1FF2227E1E100BE07A3 /* WebLnBrowser */;
+			targetProxy = AD59C20A2227E1E100BE07A3 /* PBXContainerItemProxy */;
 		};
 		ADADAD6E2143B2E700A48E1F /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
@@ -3242,6 +3383,14 @@
 				ADAB0B97212487D000914974 /* vi */,
 			);
 			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+		AD59C2062227E1E100BE07A3 /* MainInterface.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				AD59C2072227E1E100BE07A3 /* Base */,
+			);
+			name = MainInterface.storyboard;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */
@@ -3648,6 +3797,71 @@
 				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Zap.app/Zap";
+			};
+			name = Release;
+		};
+		AD59C20D2227E1E100BE07A3 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 2AA54CFA3CB1849F5D42F679 /* Pods-RPC-WebLnBrowser.debug.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = CS73H95RB8;
+				ENABLE_BITCODE = NO;
+				INFOPLIST_FILE = WebLnBrowser/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.1;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				PRODUCT_BUNDLE_IDENTIFIER = com.jackmallers.zap.WebLnBrowser;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				SWIFT_VERSION = 4.2;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		AD59C20E2227E1E100BE07A3 /* DebugRemote */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 7C26DD5F370BD03887B38F8B /* Pods-RPC-WebLnBrowser.debugremote.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = CS73H95RB8;
+				ENABLE_BITCODE = NO;
+				INFOPLIST_FILE = WebLnBrowser/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.1;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				PRODUCT_BUNDLE_IDENTIFIER = com.jackmallers.zap.WebLnBrowser;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				SWIFT_VERSION = 4.2;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = DebugRemote;
+		};
+		AD59C20F2227E1E100BE07A3 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = EE8343993C8730DEF5A21749 /* Pods-RPC-WebLnBrowser.release.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = CS73H95RB8;
+				ENABLE_BITCODE = NO;
+				INFOPLIST_FILE = WebLnBrowser/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.1;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
+				MTL_FAST_MATH = YES;
+				PRODUCT_BUNDLE_IDENTIFIER = com.jackmallers.zap.WebLnBrowser;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				SWIFT_VERSION = 4.2;
+				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Release;
 		};
@@ -4258,6 +4472,16 @@
 				AD536BFF20E62764002279BC /* Debug */,
 				AD967FDE210329A70048085B /* DebugRemote */,
 				AD536C0020E62764002279BC /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		AD59C2102227E1E100BE07A3 /* Build configuration list for PBXNativeTarget "WebLnBrowser" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				AD59C20D2227E1E100BE07A3 /* Debug */,
+				AD59C20E2227E1E100BE07A3 /* DebugRemote */,
+				AD59C20F2227E1E100BE07A3 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

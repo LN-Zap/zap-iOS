@@ -39,6 +39,9 @@ abstract_target 'RPC' do
             inherit! :search_paths
         end
     end
+    
+    target 'WebLnBrowser' do
+    end
 end
 
 post_install do | installer |
