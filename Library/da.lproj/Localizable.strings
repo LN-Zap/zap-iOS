@@ -203,11 +203,11 @@
 "scene.history.cell.channel_closed" = "Luk Kanal";
 "scene.history.cell.force_close_channel" = "Tvangsluk Kanal";
 "scene.history.cell.remote_force_close_channel" = "Fjern tvangsluk Kanal";
-"scene.history.cell.breach_close_channel" = "Breach close Channel";
-"scene.history.cell.close_channel_funding_canceled" = "Close Channel (funding canceled)";
-"scene.history.cell.channel_abandoned" = "Channel abandoned";
-"scene.history.cell.transaction_sent" = "Payment sent";
-"scene.history.cell.transaction_received" = "Payment received";
+"scene.history.cell.breach_close_channel" = "Bryd luk kanal";
+"scene.history.cell.close_channel_funding_canceled" = "Luk kanal (finansieringen annulleret)";
+"scene.history.cell.channel_abandoned" = "Kanal forladt";
+"scene.history.cell.transaction_sent" = "Betaling sendt";
+"scene.history.cell.transaction_received" = "Betaling modtaget";
 "scene.history.cell.label.new" = "ny";
 "scene.history.cell.label.error" = "fejl";
 "scene.history.cell.action.try_again" = "Prøv igen";
