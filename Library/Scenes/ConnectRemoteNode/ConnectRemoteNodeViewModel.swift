@@ -49,7 +49,7 @@ final class ConnectRemoteNodeViewModel: NSObject {
         var sections = Array2D<String?, ConnectRemoteNodeViewModel.CellType>()
 
         if let configuration = remoteNodeConfiguration {
-              sections.append(certificateSection(for: configuration))
+            sections.append(certificateSection(for: configuration))
         } else {
             sections.append(to2DArraySection(section: L10n.Scene.ConnectRemoteNode.yourNodeTitle, items: [.emptyState]))
         }
