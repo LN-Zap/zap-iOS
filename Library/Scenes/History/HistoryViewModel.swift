@@ -20,7 +20,7 @@ final class HistoryViewModel: NSObject {
 
     weak var delegate: HistoryBadgeUpdaterDelegate?
 
-    let dataSource: MutableObservable2DArray<String, HistoryEventType>
+    let dataSource: MutableObservableArray2D<String, HistoryEventType>
 
     var searchString: String? {
         didSet {
@@ -46,7 +46,7 @@ final class HistoryViewModel: NSObject {
 
     init(historyService: HistoryService) {
         self.historyService = historyService
-        dataSource = MutableObservable2DArray()
+        dataSource = MutableObservableArray2D()
 
         super.init()
 
@@ -57,7 +57,7 @@ final class HistoryViewModel: NSObject {
 
     func isEventNew(at indexPath: IndexPath) -> Bool {
         guard let currentLastSeenDate = currentLastSeenDate else { return false }
-        return dataSource[indexPath].date > currentLastSeenDate
+        return dataSource.collection.item(at: indexPath).date > currentLastSeenDate
     }
 
     func historyWillAppear() {
@@ -70,8 +70,12 @@ final class HistoryViewModel: NSObject {
         let events = historyService.events
         let filteredEvents = filterEvents(events, searchString: searchString, filterSettings: filterSettings)
         let sectionedCellTypes = bondSections(transactionViewModels: filteredEvents)
-        dataSource.replace(with: Observable2DArray(sectionedCellTypes), performDiff: true)
+        dataSource.replace(with: Array2D<String, HistoryEventType>(sectionedCellTypes), performDiff: true, areValuesEqual: evaluateEqual)
         updateTabBarBadge()
+    }
+
+    private func evaluateEqual(one: Array2DElement<String, HistoryEventType>, two: Array2DElement<String, HistoryEventType>) -> Bool {
+        return one.section == two.section && one.item == two.item
     }
 
     func setupTabBarBadge(delegate: HistoryBadgeUpdaterDelegate) {
@@ -83,8 +87,11 @@ final class HistoryViewModel: NSObject {
         guard let delegate = delegate else { return }
 
         var unseenEventCount = 0
-        sectionLoop: for section in dataSource.sections {
-            for item in section {
+        sectionLoop: for dayNode in dataSource.collection.children {
+            for historyEventNode in dayNode.children {
+                guard let item = historyEventNode.value.item else {
+                    continue
+                }
                 if item.date > lastSeenDate {
                     unseenEventCount += 1
                 } else {
@@ -112,7 +119,7 @@ final class HistoryViewModel: NSObject {
             .sorted { $0.0 > $1.0 }
     }
 
-    private func bondSections(transactionViewModels: [HistoryEventType]) -> [Observable2DArraySection<String, HistoryEventType>] {
+    private func bondSections(transactionViewModels: [HistoryEventType]) -> [TreeNode<Array2DElement<String, HistoryEventType>>] {
         let sortedSections = self.sortedSections(transactionViewModels: transactionViewModels)
 
         return sortedSections.compactMap {
@@ -122,10 +129,7 @@ final class HistoryViewModel: NSObject {
 
             let dateString = date.localized
 
-            return Observable2DArraySection<String, HistoryEventType>(
-                metadata: dateString,
-                items: sortedItems
-            )
+            return to2DArraySection(section: dateString, items: sortedItems)
         }
     }
 }

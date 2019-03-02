@@ -10,11 +10,11 @@ import Lightning
 import SafariServices
 import UIKit
 
-final class ConnectCellBond: TableViewBinder<Observable2DArray<String?, ConnectRemoteNodeViewModel.CellType>> {
+final class ConnectCellBond<Changeset: SectionedDataSourceChangeset>: TableViewBinderDataSource<Changeset> where Changeset.Collection == Array2D<String?, ConnectRemoteNodeViewModel.CellType> {
 
     override init() {
         super.init()
-        rowAnimation = .fade
+        self.rowDeletionAnimation = .fade
     }
 
     private func dequeueCell(for tableView: UITableView, style: UITableViewCell.CellStyle) -> UITableViewCell {
@@ -38,9 +38,12 @@ final class ConnectCellBond: TableViewBinder<Observable2DArray<String?, ConnectR
         }
     }
 
-    override func cellForRow(at indexPath: IndexPath, tableView: UITableView, dataSource: Observable2DArray<String?, ConnectRemoteNodeViewModel.CellType>) -> UITableViewCell {
+    @objc override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
 
-        let cellType = dataSource.item(at: indexPath)
+        guard let cellType = changeset?.collection.item(at: indexPath) else {
+            return dequeueCell(for: tableView, style: .default)
+        }
+
         let cell: UITableViewCell
 
         switch cellType {
@@ -193,7 +196,7 @@ extension ConnectRemoteNodeViewController: UITableViewDelegate {
         tableView.deselectRow(at: indexPath, animated: true)
 
         guard let connectRemoteNodeViewModel = connectRemoteNodeViewModel else { return }
-        let cellType = connectRemoteNodeViewModel.dataSource[indexPath]
+        let cellType = connectRemoteNodeViewModel.dataSource.collection.item(at: indexPath)
 
         switch cellType {
         case .address:
@@ -218,7 +221,7 @@ extension ConnectRemoteNodeViewController: UITableViewDelegate {
         let cellHeight: CGFloat = 76
 
         guard let connectRemoteNodeViewModel = connectRemoteNodeViewModel else { return cellHeight }
-        if case .emptyState = connectRemoteNodeViewModel.dataSource[indexPath] {
+        if case .emptyState = connectRemoteNodeViewModel.dataSource.collection.item(at: indexPath) {
             return cellHeight * 3
         } else {
             return cellHeight
@@ -227,7 +230,7 @@ extension ConnectRemoteNodeViewController: UITableViewDelegate {
 
     func tableView(_ tableView: UITableView, willDisplayHeaderView view: UIView, forSection section: Int) {
         guard let view = view as? UITableViewHeaderFooterView else { return }
-        view.textLabel?.text = connectRemoteNodeViewModel?.dataSource[section].metadata
+        view.textLabel?.text = connectRemoteNodeViewModel?.dataSource.collection[sectionAt: section]
     }
 }
 
@@ -241,6 +244,6 @@ extension ConnectRemoteNodeViewController: UITableViewDataSource {
     }
 
     func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
-        return connectRemoteNodeViewModel?.dataSource[section].metadata
+        return connectRemoteNodeViewModel?.dataSource.collection[sectionAt: section]
     }
 }

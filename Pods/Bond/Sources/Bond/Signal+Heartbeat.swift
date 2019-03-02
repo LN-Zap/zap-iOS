@@ -1,7 +1,7 @@
 //
 //  The MIT License (MIT)
 //
-//  Copyright (c) 2016 Srdan Rasic (@srdanrasic)
+//  Copyright (c) 2018 DeclarativeHub/Bond
 //
 //  Permission is hereby granted, free of charge, to any person obtaining a copy
 //  of this software and associated documentation files (the "Software"), to deal
@@ -24,31 +24,19 @@
 
 #if os(iOS) || os(tvOS)
 
-import UIKit
 import ReactiveKit
+import UIKit
 
-public extension ReactiveExtensions where Base: UISearchBar {
+extension SignalProtocol {
 
-    public var delegate: ProtocolProxy {
-        return protocolProxy(for: UISearchBarDelegate.self, keyPath: \.delegate)
-    }
-
-    public var text: DynamicSubject<String?> {
-        let selector = #selector(UISearchBarDelegate.searchBar(_:textDidChange:))
-        let signal = delegate.signal(for: selector) { (subject: SafePublishSubject<Void>, _: UISearchBar, _: NSString) in
-            subject.next()
+    /// Fires an event on start and every `interval` seconds as long as the app is in foreground.
+    /// Pauses when the app goes to background. Restarts when the app is back in foreground.
+    public static func heartbeat(interval seconds: Double) -> Signal<Void, NoError> {
+        let willEnterForeground = NotificationCenter.default.reactive.notification(name: UIApplication.willEnterForegroundNotification)
+        let didEnterBackgorund = NotificationCenter.default.reactive.notification(name: UIApplication.didEnterBackgroundNotification)
+        return willEnterForeground.replace(with: ()).start(with: ()).flatMapLatest { () -> Signal<Void, NoError> in
+            return Signal<Int, NoError>.interval(seconds, queue: .global()).replace(with: ()).start(with: ()).take(until: didEnterBackgorund)
         }
-
-        return dynamicSubject(signal: signal, get: { $0.text }, set: { $0.text = $1 })
     }
 }
-
-extension UISearchBar: BindableProtocol {
-
-    public func bind(signal: Signal<String?, NoError>) -> Disposable {
-        return reactive.text.bind(signal: signal)
-    }
-}
-
 #endif
-
