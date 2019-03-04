@@ -7,6 +7,7 @@
 
 import Bond
 import Foundation
+import Logger
 import SwiftBTC
 import SwiftLnd
 
@@ -34,6 +35,8 @@ public final class InfoService {
 
     private var heightJobTimer: Timer?
     private var updateInfoTimer: Timer?
+
+    private var syncDebounceCount = 0 // used so wallet does not switch sync state each time a block is mined
 
     init(api: LightningApiProtocol, channelService: ChannelService, balanceService: BalanceService, historyService: HistoryService) {
         self.api = api
@@ -81,7 +84,19 @@ public final class InfoService {
     }
 
     private func updateInfo(result: Result<Info, LndApiError>) {
-        walletState.value = stateFor(result)
+        let newState = stateFor(result)
+
+        if walletState.value != newState {
+            // only switch from .running to .syncing after several info updates with .syncing state
+            if walletState.value == .running && newState == .syncing && syncDebounceCount < 10 {
+                syncDebounceCount += 1
+                Logger.info("debounce sync: \(syncDebounceCount)", customPrefix: "🧯")
+            } else {
+                syncDebounceCount = 0
+                walletState.value = newState
+            }
+
+        }
 
         if let info = result.value {
             if blockHeight.value != info.blockHeight {
@@ -97,7 +112,7 @@ public final class InfoService {
         }
 
         let newIsSyncedToChain = result.value?.isSyncedToChain
-        if info.value?.isSyncedToChain != newIsSyncedToChain && newIsSyncedToChain != nil {
+        if info.value?.isSyncedToChain != newIsSyncedToChain && newIsSyncedToChain == true {
             channelService.update()
             balanceService.update()
             historyService.update()
