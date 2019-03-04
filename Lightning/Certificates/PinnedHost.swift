@@ -10,10 +10,10 @@ import Foundation
 struct PinnedHost {
     let host: String
     let publicKeys: [SecKey]
-    
+
     init(named host: String, certificates: [String]) {
         self.host = host
-        
+
         publicKeys = certificates.map {
             guard
                 let path = Bundle(for: PinnedURLSessionDelegate.self).path(forResource: $0, ofType: ".cer"),

@@ -19,16 +19,16 @@ class LightningNodeURITests: XCTestCase {
             "02f6725f9c1c40333b67faea92fd211c183050f28df32cac3f9d69685fe9665432@104.198.32.198",
             "02f6725f9c1c40333b67faea92fd211c183050f28df32cac3f9d69685fe9665432   104.198.32.198"
         ]
-        
+
         for uri in valid {
             XCTAssertNotNil(LightningNodeURI(string: uri))
         }
-        
+
         let invalid: [String] = [
             "abcd123",
             "02f6725f9c1c40333b67faea92fd211c183050f28df32cac3f9d69685fe9665432"
         ]
-        
+
         for uri in invalid {
             XCTAssertNil(LightningNodeURI(string: uri))
         }

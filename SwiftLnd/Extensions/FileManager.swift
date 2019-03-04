@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import Logger
 
 public typealias WalletId = String
 
@@ -13,16 +14,16 @@ public extension FileManager {
     func walletDirectory(for walletId: WalletId) -> URL? {
         guard let documentDirectory = urls(for: .documentDirectory, in: .userDomainMask).first else { return nil }
         let walletIdFolder = "lnd-" + walletId
-        
+
         let url = documentDirectory.appendingPathComponent(walletIdFolder, isDirectory: true)
-        
+
         do {
             try createDirectory(at: url, withIntermediateDirectories: true, attributes: nil)
         } catch {
-            print("🤮 \(error)")
+            Logger.error(error)
             return nil
         }
-        
+
         return url
     }
 }

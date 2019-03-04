@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import Logger
 import SQLite
 import SwiftLnd
 
@@ -32,41 +33,41 @@ private extension Connection {
 
 final class SQLitePersistence: Persistence {
     private var currentConnection: Connection?
-    
+
     init(walletId: WalletId) {
         guard
             let url = FileManager.default.walletDirectory(for: walletId)?.appendingPathComponent("data.sqlite3"),
             let connection = try? Connection(url.path)
             else { fatalError("can not connect to db.") }
-    
+
         if Environment.traceDB {
-            connection.trace { print("💾", $0) }
+            connection.trace { Logger.verbose($0, customPrefix: "💾") }
         }
-        
+
         self.currentConnection = connection
-        
+
         do {
             try connection.createTables()
         } catch {
-            print("🤮 \(error.localizedDescription)")
+            Logger.error(error)
         }
     }
-    
+
     func connection() throws -> Connection {
         guard let connection = currentConnection else {
             throw PersistenceError.noConnection
         }
         return connection
     }
-    
+
     func setConnectedNode(connection: LightningConnection, pubKey: String) {
-        
+
     }
 }
 
 class MockPersistence: Persistence {
     let inMemoryConnection: Connection
-    
+
     init() {
         do {
             inMemoryConnection = try Connection(.inMemory)
@@ -75,10 +76,10 @@ class MockPersistence: Persistence {
             fatalError("Could not setup in memory database.")
         }
     }
-    
+
     func connection() throws -> Connection {
         return inMemoryConnection
     }
-    
+
     func setConnectedNode(connection: LightningConnection, pubKey: String) {}
 }

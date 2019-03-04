@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import Logger
 
 public typealias Handler<T> = (Result<T, LndApiError>) -> Void
 
@@ -18,7 +19,7 @@ func createHandler<T, U>(_ completion: @escaping Handler<U>, transform: @escapin
         if let value = transform(response) {
             return .success(value)
         } else {
-            print(LndApiError.unknownError)
+            Logger.error(LndApiError.unknownError)
             return .failure(LndApiError.unknownError)
         }
     }
@@ -32,17 +33,9 @@ func createHandler<T, U>(_ completion: @escaping Handler<U>, transform: @escapin
         if let response = response {
             completion(transform(response))
         } else if let error = error as NSError? {
-            switch error.code {
-            case 12:
-                print(LndApiError.walletEncrypted)
-                completion(.failure(LndApiError.walletEncrypted))
-            case 13:
-                print(LndApiError.lndNotRunning)
-                completion(.failure(LndApiError.lndNotRunning))
-            default:
-                print(error)
-                completion(.failure(LndApiError.localizedError(error.localizedDescription)))
-            }
+            let error = LndApiError(error: error)
+            Logger.error(error)
+            completion(.failure(error))
         }
     }
 }

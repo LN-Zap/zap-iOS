@@ -21,33 +21,33 @@ final class ConnectRemoteNodeViewModel: NSObject {
         case paste
         case help
     }
-    
-    var remoteNodeConfiguration: RemoteRPCConfiguration? {
+
+    var remoteNodeConfiguration: RPCCredentials? {
         didSet {
             updateTableView()
         }
     }
-    
+
     let dataSource: MutableObservable2DArray<String?, CellType>
-    
-    private var testServer: LightningApiRPC?
-    
+
+    private var testServer: LightningApiRpc?
+
     override private init() {
         fatalError("not implemented")
     }
-    
-    init(remoteRPCConfiguration: RemoteRPCConfiguration?) {
+
+    init(rpcCredentials: RPCCredentials?) {
         dataSource = MutableObservable2DArray([])
-        
+
         super.init()
-        
-        self.remoteNodeConfiguration = remoteRPCConfiguration
+
+        self.remoteNodeConfiguration = rpcCredentials
         updateTableView()
     }
-    
+
     private func updateTableView() {
         let sections = MutableObservable2DArray<String?, ConnectRemoteNodeViewModel.CellType>()
-        
+
         if let configuration = remoteNodeConfiguration {
             sections.appendSection(certificateSection(for: configuration))
         } else {
@@ -56,7 +56,7 @@ final class ConnectRemoteNodeViewModel: NSObject {
                 items: [.emptyState]
             ))
         }
-        
+
         sections.appendSection(Observable2DArraySection<String?, CellType>(
             metadata: nil,
             items: [.scan, .paste]
@@ -65,28 +65,30 @@ final class ConnectRemoteNodeViewModel: NSObject {
             metadata: nil,
             items: [.help]
         ))
-        
+
         dataSource.replace(with: sections, performDiff: true)
     }
-    
-    private func certificateSection(for qrCode: RemoteRPCConfiguration) -> Observable2DArraySection<String?, CellType> {
+
+    private func certificateSection(for qrCode: RPCCredentials) -> Observable2DArraySection<String?, CellType> {
         var items: [CellType] = [
-            .address(qrCode.url.absoluteString),
+            .address(qrCode.host.absoluteString),
             .connect
         ]
-        
+
         if let certificateDescription = qrCode.certificate?
             .replacingOccurrences(of: "-----BEGIN CERTIFICATE-----", with: "")
             .trimmingCharacters(in: .whitespacesAndNewlines) {
             items.insert(.certificate(certificateDescription), at: 0)
+        } else {
+            items.insert(.certificate(qrCode.macaroon.hexadecimalString), at: 0)
         }
-        
+
         return Observable2DArraySection<String?, CellType>(
             metadata: L10n.Scene.ConnectRemoteNode.yourNodeTitle,
             items: items
         )
     }
-    
+
     func pasteCertificates(_ string: String, completion: @escaping (SwiftLnd.Result<Success, RPCConnectQRCodeError>) -> Void) {
         RPCConnectQRCode.configuration(for: string) { [weak self] result in
             DispatchQueue.main.async {
@@ -100,25 +102,25 @@ final class ConnectRemoteNodeViewModel: NSObject {
             }
         }
     }
-    
-    func connect(completion: @escaping (WalletConfiguration, Bool) -> Void) {
+
+    func connect(completion: @escaping (WalletConfiguration, SwiftLnd.Result<Success, LndApiError>) -> Void) {
         guard let remoteNodeConfiguration = remoteNodeConfiguration else { return }
 
-        testServer = LightningApiRPC(configuration: remoteNodeConfiguration)
+        testServer = LightningApiRpc(configuration: remoteNodeConfiguration)
         testServer?.canConnect {
             let configuration = WalletConfiguration(alias: nil, network: nil, connection: .remote(remoteNodeConfiguration), walletId: UUID().uuidString)
             completion(configuration, $0)
         }
     }
-    
+
     func updateUrl(_ url: URL) {
         guard let remoteNodeConfiguration = remoteNodeConfiguration else { return }
-        
-        let newConfiguration = RemoteRPCConfiguration(
+
+        let newConfiguration = RPCCredentials(
             certificate: remoteNodeConfiguration.certificate,
             macaroon: remoteNodeConfiguration.macaroon,
-            url: url)
-        
+            host: url)
+
         self.remoteNodeConfiguration = newConfiguration
     }
 }

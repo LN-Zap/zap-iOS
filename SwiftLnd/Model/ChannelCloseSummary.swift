@@ -16,7 +16,7 @@ public enum CloseType: String, Codable {
     case fundingCanceled
     case unknown
     case abandoned
-    
+
     init(closeType: LNDChannelCloseSummary_ClosureType) {
         switch closeType {
         case .cooperativeClose:
@@ -44,7 +44,7 @@ public struct ChannelCloseSummary {
     public let closeType: CloseType
     public let closeHeight: Int
     public let openHeight: Int
-    
+
     init(channelCloseSummary: LNDChannelCloseSummary) {
         closingTxHash = channelCloseSummary.closingTxHash
         channelPoint = ChannelPoint(string: channelCloseSummary.channelPoint)

@@ -11,7 +11,7 @@ import LndRpc
 enum OpenStatusUpdate {
     case pending
     case channelOpen
-    
+
     init(_ openStatusUpdate: LNDOpenStatusUpdate) {
         if openStatusUpdate.chanPending.txid != nil {
             self = .pending

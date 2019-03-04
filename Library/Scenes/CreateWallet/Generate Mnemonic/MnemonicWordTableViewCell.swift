@@ -17,18 +17,18 @@ final class MnemonicWordTableViewCell: UITableViewCell {
             indexLabel.text = String(index + 1)
         }
     }
-    
+
     var word: String? {
         didSet {
             wordLabel.text = word
         }
     }
-    
+
     override func awakeFromNib() {
         super.awakeFromNib()
-        
+
         Style.Label.custom(fontSize: 24).apply(to: indexLabel, wordLabel)
-        
+
         indexLabel.textColor = UIColor.Zap.gray
         wordLabel.textColor = .white
     }

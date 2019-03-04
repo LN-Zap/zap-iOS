@@ -26,7 +26,7 @@ extension Info {
         alias = getInfoResponse.alias
         blockHeight = Int(getInfoResponse.blockHeight)
         isSyncedToChain = getInfoResponse.syncedToChain
-        
+
         if
             let chains = getInfoResponse.chainsArray as? [LNDChain],
             let networkString = chains.first?.network,
@@ -35,7 +35,7 @@ extension Info {
         } else {
             self.network = getInfoResponse.testnet ? .testnet : .mainnet
         }
-        
+
         pubKey = getInfoResponse.identityPubkey
         activeChannelCount = Int(getInfoResponse.numActiveChannels)
         bestHeaderDate = Date(timeIntervalSince1970: TimeInterval(getInfoResponse.bestHeaderTimestamp))

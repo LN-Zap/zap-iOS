@@ -18,7 +18,7 @@ extension String {
         }
         return result
     }
-    
+
     func hexEndianSwap() -> String {
         return hexBytes().reversed().joined()
     }

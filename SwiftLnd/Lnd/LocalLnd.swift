@@ -16,14 +16,14 @@ import Lndmobile
 
 public enum LocalLnd {
     public private(set) static var isRunning = false
-    
+
     public static func start(walletId: WalletId) {
         guard let lndUrl = FileManager.default.walletDirectory(for: walletId) else { return }
         isRunning = true
         LocalLndConfiguration.standard.save(at: lndUrl)
         LndmobileStart(lndUrl.path, EmptyStreamCallback())
     }
-    
+
     public static func stop() {
         isRunning = false
         LndmobileStopDaemon(nil, EmptyStreamCallback())

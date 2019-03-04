@@ -5,22 +5,20 @@ inhibit_all_warnings!
 install! 'cocoapods'
 
 target 'Zap' do
-    pod 'SwiftBTC'
+    pod 'SwiftBTC', :path => './SwiftBTC'
 end
 
 abstract_target 'RPC' do
     pod 'LndRpc', :path => '.'
-    
+    pod 'SwiftBTC', :path => './SwiftBTC'
+
     target 'SwiftLnd' do
-        pod 'SwiftBTC'
-        
         target 'SwiftLndTests' do
             inherit! :search_paths
         end
     end
     
     target 'Library' do
-        pod 'SwiftBTC'
         pod 'ScrollableGraphView'
         pod 'KeychainAccess'
         pod 'Bond'
@@ -31,13 +29,15 @@ abstract_target 'RPC' do
     end
 
     target 'Lightning' do
-        pod 'SwiftBTC'
         pod 'Bond'
         pod 'SQLite.swift', '~> 0.11.5'
         
         target 'LightningTests' do
             inherit! :search_paths
         end
+    end
+    
+    target 'Widget' do
     end
 end
 

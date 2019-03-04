@@ -12,9 +12,9 @@ class DateEstimatorTests: XCTestCase {
     private func transactionWith(date: Date, blockHeight: Int) -> TransactionEvent {
         return TransactionEvent(txHash: "", memo: "", amount: 0, fee: 0, date: date, destinationAddresses: [], blockHeight: blockHeight, type: .unknown)
     }
-    
+
     func testEstimation() {
-        
+
         let transactions = [
             transactionWith(date: Date(timeIntervalSince1970: 10), blockHeight: 10),
             transactionWith(date: Date(timeIntervalSince1970: 20), blockHeight: 20),
@@ -22,7 +22,7 @@ class DateEstimatorTests: XCTestCase {
             transactionWith(date: Date(timeIntervalSince1970: 50), blockHeight: 40),
             transactionWith(date: Date(timeIntervalSince1970: 60), blockHeight: 50)
         ]
-        
+
         let dateEstimator = DateEstimator(transactions: transactions)
 
         XCTAssertEqual(dateEstimator.estimatedDate(forBlockHeight: 1), nil)
@@ -35,21 +35,21 @@ class DateEstimatorTests: XCTestCase {
         XCTAssertEqual(dateEstimator.estimatedDate(forBlockHeight: 50), Date(timeIntervalSince1970: 60))
         XCTAssertEqual(dateEstimator.estimatedDate(forBlockHeight: 100), nil)
     }
-    
+
     func testEmptyTransactions() {
         let transactions = [TransactionEvent]()
         let dateEstimator = DateEstimator(transactions: transactions)
-        
+
         XCTAssertEqual(dateEstimator.estimatedDate(forBlockHeight: 1), nil)
         XCTAssertEqual(dateEstimator.estimatedDate(forBlockHeight: 100), nil)
     }
-    
+
     func testOneTransaction() {
         let transactions = [
             transactionWith(date: Date(timeIntervalSince1970: 10), blockHeight: 10)
         ]
         let dateEstimator = DateEstimator(transactions: transactions)
-        
+
         XCTAssertEqual(dateEstimator.estimatedDate(forBlockHeight: 1), nil)
         XCTAssertEqual(dateEstimator.estimatedDate(forBlockHeight: 10), Date(timeIntervalSince1970: 10))
         XCTAssertEqual(dateEstimator.estimatedDate(forBlockHeight: 100), nil)

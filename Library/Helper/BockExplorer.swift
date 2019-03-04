@@ -17,13 +17,13 @@ enum BlockExplorer: String, Codable, CaseIterable {
         case address
         case transactionId
     }
-    
+
     case blockcypher
     case blockstream
     case smartbit
     case yogh
     case OXT
-    
+
     var localized: String {
         switch self {
         case .blockcypher:
@@ -38,7 +38,7 @@ enum BlockExplorer: String, Codable, CaseIterable {
             return "OXT"
         }
     }
-    
+
     func url(network: Network, code: String, type: CodeType) throws -> URL? {
         switch type {
         case .address:
@@ -47,7 +47,7 @@ enum BlockExplorer: String, Codable, CaseIterable {
             return try url(network: network, transactionId: code)
         }
     }
-    
+
     private func url(network: Network, transactionId: String) throws -> URL? {
         switch self {
         case .blockcypher:
@@ -67,7 +67,7 @@ enum BlockExplorer: String, Codable, CaseIterable {
             return URL(string: "https://m.oxt.me/transaction/\(transactionId)")
         }
     }
-    
+
     private func url(network: Network, address: String) throws -> URL? {
         switch self {
         case .blockcypher:

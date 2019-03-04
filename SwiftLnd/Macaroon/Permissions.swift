@@ -11,14 +11,14 @@ import Foundation
 public struct Permissions {
     public struct AccessMode: OptionSet {
         public let rawValue: Int
-        
+
         public static let read = AccessMode(rawValue: 1 << 0)
         public static let write = AccessMode(rawValue: 1 << 1)
-        
+
         public init(rawValue: Int) {
             self.rawValue = rawValue
         }
-        
+
         static func fromString(_ string: String) -> AccessMode? {
             switch string {
             case "read":
@@ -30,7 +30,7 @@ public struct Permissions {
             }
         }
     }
-    
+
     public enum Domain: String, CaseIterable {
         case address
         case info
@@ -41,13 +41,13 @@ public struct Permissions {
         case peers
         case signer
     }
-    
+
     private let permissions: [Permissions.Domain: Permissions.AccessMode]
-    
+
     public static var none: Permissions {
         return Permissions(permissions: [:])
     }
-    
+
     public static var all: Permissions {
         var permissions = [Permissions.Domain: Permissions.AccessMode]()
         for domain in Domain.allCases {
@@ -55,11 +55,11 @@ public struct Permissions {
         }
         return Permissions(permissions: permissions)
     }
-    
+
     init(permissions: [Permissions.Domain: Permissions.AccessMode]) {
         self.permissions = permissions
     }
-    
+
     public func can(_ accessMode: Permissions.AccessMode, domain: Permissions.Domain) -> Bool {
         return permissions[domain]?.contains(accessMode) ?? false
     }

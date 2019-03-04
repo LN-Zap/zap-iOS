@@ -11,7 +11,7 @@ import ReactiveKit
 
 protocol SettingsItem {
     var title: String { get }
-    
+
     func didSelectItem(from fromViewController: UIViewController)
 }
 

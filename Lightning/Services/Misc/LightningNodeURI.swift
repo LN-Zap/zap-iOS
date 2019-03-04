@@ -14,18 +14,18 @@ public struct LightningNodeURI {
     public var stringValue: String {
         return "\(pubKey):\(host)"
     }
-    
+
     public init?(string: String) {
         let parts = string
             .split { [":", "@", " "].contains(String($0)) }
             .map { $0.trimmingCharacters(in: .whitespaces) }
-        
+
         guard parts.count >= 2
             && parts.count <= 3
             && parts[0].count == 66
             && parts[0].starts(with: "0")
             else { return nil }
-        
+
         pubKey = String(parts[0])
         host = String(parts[1])
     }

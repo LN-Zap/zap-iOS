@@ -16,7 +16,7 @@ public enum ChannelState {
     case closing
     case forceClosing
     case waitingClose
-    
+
     public var isClosing: Bool {
         switch self {
         case .closing, .forceClosing, .waitingClose:

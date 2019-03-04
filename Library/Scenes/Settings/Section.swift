@@ -10,16 +10,16 @@ import Foundation
 struct Section<T> {
     let title: String?
     private let rows: [T]
-    
+
     init(title: String?, rows: [T]) {
         self.title = title
         self.rows = rows
     }
-    
+
     var count: Int {
         return rows.count
     }
-    
+
     subscript(index: Int) -> T {
         return rows[index]
     }

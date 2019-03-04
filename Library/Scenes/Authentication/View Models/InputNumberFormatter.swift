@@ -10,11 +10,11 @@ import SwiftBTC
 
 final class InputNumberFormatter {
     let currency: Currency
-    
+
     init(currency: Currency) {
         self.currency = currency
     }
-    
+
     func validate(_ input: String) -> String? {
         if let cryptoCurrency = currency as? Bitcoin {
             return validate(input, for: cryptoCurrency)
@@ -22,12 +22,12 @@ final class InputNumberFormatter {
             return validateFiat(input)
         }
     }
-    
+
     private func numberFormatter(for input: String, exponent: Int) -> NumberFormatter? {
         let numberFormatter = NumberFormatter()
         numberFormatter.numberStyle = .decimal
         numberFormatter.usesGroupingSeparator = true
-        
+
         let parts = input.components(separatedBy: numberFormatter.decimalSeparator)
         if parts.count > 2 {
             return nil
@@ -43,7 +43,7 @@ final class InputNumberFormatter {
 
         return numberFormatter
     }
-    
+
     private func validateFiat(_ input: String) -> String? {
         guard
             let numberFormatter = numberFormatter(for: input, exponent: 2),
@@ -57,10 +57,10 @@ final class InputNumberFormatter {
         } else if input == "00" {
             return nil
         }
-        
+
         if let number = numberFormatter.number(from: input),
             let result = numberFormatter.string(from: number) {
-            
+
             if input.hasSuffix(decimalSeparator) {
                 return result + decimalSeparator
             } else {
@@ -70,7 +70,7 @@ final class InputNumberFormatter {
             return nil
         }
     }
-    
+
     private func validate(_ input: String, for unit: Bitcoin) -> String? {
         guard
             let numberFormatter = numberFormatter(for: input, exponent: unit.maximumFractionDigits),
@@ -86,11 +86,11 @@ final class InputNumberFormatter {
         } else if input == "00" {
             return nil
         }
-        
+
         let formatter = SatoshiFormatter(unit: unit)
         if let satoshis = formatter.satoshis(from: input),
             let result = numberFormatter.string(from: CurrencyConverter.convert(amount: satoshis, from: Bitcoin.satoshi, to: unit) as NSDecimalNumber) {
-            
+
             if input.hasSuffix(decimalSeparator) {
                 return result + decimalSeparator
             } else {

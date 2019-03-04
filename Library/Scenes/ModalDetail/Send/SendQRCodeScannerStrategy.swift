@@ -13,14 +13,14 @@ import SwiftLnd
 class SendQRCodeScannerStrategy: QRCodeScannerStrategy {
     private let lightningService: LightningService
     private let authenticationViewModel: AuthenticationViewModel
-    
+
     let title = L10n.Scene.Send.title
-    
+
     init(lightningService: LightningService, authenticationViewModel: AuthenticationViewModel) {
         self.lightningService = lightningService
         self.authenticationViewModel = authenticationViewModel
     }
-    
+
     func viewControllerForAddress(address: String, completion: @escaping (Result<UIViewController, InvoiceError>) -> Void) {
         BitcoinInvoiceFactory.create(from: address, lightningService: lightningService) { [weak self] result in
             guard let self = self else { return }

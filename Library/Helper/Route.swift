@@ -18,18 +18,17 @@ public enum Route {
     case send(String?)
     case request
     case connect(LndConnectURL)
-    
+
     public init?(url: URL) {
-        let urlString = url.absoluteString.replacingOccurrences(of: "//", with: "")
-        
-        if urlString.hasPrefix("lndconnect:") {
+        if url.scheme == "lndconnect" {
             guard let lndConnectUrl = LndConnectURL(url: url) else { return nil }
             self = .connect(lndConnectUrl)
         } else {
+            let urlString = url.absoluteString.replacingOccurrences(of: "//", with: "")
             self = .send(urlString)
         }
     }
-    
+
     public init?(shortcutItem: UIApplicationShortcutItem) {
         switch shortcutItem.type {
         case "com.jackmallers.zap.send":

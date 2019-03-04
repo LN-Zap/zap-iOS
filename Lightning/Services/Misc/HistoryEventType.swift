@@ -13,7 +13,7 @@ public enum HistoryEventType: Equatable {
     case createInvoiceEvent(CreateInvoiceEvent)
     case failedPaymentEvent(FailedPaymentEvent)
     case lightningPaymentEvent(LightningPaymentEvent)
-    
+
     static func create(event: DateProvidingEvent) -> HistoryEventType {
         if let channelEvent = event as? DateWrappedChannelEvent {
             return HistoryEventType.channelEvent(channelEvent)
@@ -29,7 +29,7 @@ public enum HistoryEventType: Equatable {
             fatalError("missing cell implementation")
         }
     }
-    
+
     public var date: Date {
         switch self {
         case .transactionEvent(let event):

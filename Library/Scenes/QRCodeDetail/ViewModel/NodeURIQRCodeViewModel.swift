@@ -13,18 +13,18 @@ final class NodeURIQRCodeViewModel: QRCodeDetailViewModel {
     let uriString: String
     let qrCodeString: String
     let detailConfiguration: [StackViewElement]
-    
+
     init?(info: Info) {
         guard let uri = info.uris.first else { return nil }
-        
+
         self.title = L10n.Scene.NodeUri.title
         self.uriString = uri.absoluteString
         self.qrCodeString = uri.absoluteString
-        
+
         let tableFontStyle = Style.Label.footnote
         let tableLabelSpacing: CGFloat = 0
         var detailConfiguration = [StackViewElement]()
-        
+
         if !info.alias.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty {
             detailConfiguration.append(contentsOf: [
                 .verticalStackView(content: [
@@ -34,12 +34,12 @@ final class NodeURIQRCodeViewModel: QRCodeDetailViewModel {
                 .separator
             ])
         }
-        
+
         detailConfiguration.append(.verticalStackView(content: [
             .label(text: L10n.Scene.NodeUri.uriLabel + ":", style: tableFontStyle),
             .label(text: uri.absoluteString, style: tableFontStyle)
         ], spacing: tableLabelSpacing))
-        
+
         self.detailConfiguration = detailConfiguration
 
     }

@@ -14,7 +14,7 @@ private extension URL {
             let components = URLComponents(url: self, resolvingAgainstBaseURL: true),
             let queryItems = components.queryItems
             else { return nil }
-        
+
         var parameters = [String: String]()
         for item in queryItems {
             parameters[item.name] = item.value
@@ -28,22 +28,27 @@ private extension String {
         var base64 = self
             .replacingOccurrences(of: "-", with: "+")
             .replacingOccurrences(of: "_", with: "/")
-        
+
         if base64.count % 4 != 0 {
             base64.append(String(repeating: "=", count: 4 - base64.count % 4))
         }
-        
+
         return base64
     }
 }
 
 public final class LndConnectURL {
-    public let rpcConfiguration: RemoteRPCConfiguration
-    
+    public let rpcCredentials: RPCCredentials
+
+    public convenience init?(string: String) {
+        let string = string.trimmingCharacters(in: .whitespacesAndNewlines)
+        guard let url = URL(string: string) else { return nil }
+        self.init(url: url)
+    }
+
     public init?(url: URL) {
         guard
             let queryParameters = url.queryParameters,
-            let certificate = queryParameters["cert"]?.base64UrlToBase64(),
             let nodeHostString = url.host,
             let port = url.port,
             let nodeHostUrl = URL(string: "\(nodeHostString):\(port)"),
@@ -51,6 +56,13 @@ public final class LndConnectURL {
             let macaroon = Macaroon(base64String: macaroonString)
             else { return nil }
 
-        rpcConfiguration = RemoteRPCConfiguration(certificate: Pem(key: certificate).string, macaroon: macaroon, url: nodeHostUrl)
+        let certString: String?
+        if let certificate = queryParameters["cert"]?.base64UrlToBase64() {
+            certString = Pem(key: certificate).string
+        } else {
+            certString = nil
+        }
+
+        rpcCredentials = RPCCredentials(certificate: certString, macaroon: macaroon, host: nodeHostUrl)
     }
 }

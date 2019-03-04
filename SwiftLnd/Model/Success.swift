@@ -9,7 +9,7 @@ import Foundation
 
 public struct Success: Equatable {
     public init() {}
-    
+
     public static func == (lhs: Success, rhs: Success) -> Bool {
         return true
     }

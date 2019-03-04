@@ -12,7 +12,7 @@ import SwiftLnd
 
 final class ChannelViewModel {
     let channel: Channel
-    
+
     let state: Observable<ChannelState>
     let name: Observable<String>
 
@@ -21,18 +21,18 @@ final class ChannelViewModel {
         formatter.allowedUnits =  [.year, .month, .day, .hour, .minute]
         formatter.unitsStyle = .full
         formatter.maximumUnitCount = 2
-        
+
         let blockTime: TimeInterval = 10 * 60
 
         return formatter.string(from: TimeInterval(channel.csvDelay) * blockTime) ?? ""
     }
-    
+
     init(channel: Channel, channelService: ChannelService) {
         self.channel = channel
-        
+
         name = Observable(channel.remotePubKey)
         state = Observable(channel.state)
-        
+
         channelService.node(for: channel.remotePubKey) { [name] in
             if let alias = $0?.alias,
                 !alias.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty {
@@ -40,13 +40,13 @@ final class ChannelViewModel {
             }
         }
     }
-    
+
     func matchesSearchString(_ string: String?) -> Bool {
         guard
             let string = string?.trimmingCharacters(in: .whitespacesAndNewlines).localizedLowercase,
             !string.isEmpty
             else { return true }
-        
+
         return name.value.localizedLowercase.contains(string)
             || channel.remotePubKey.lowercased().contains(string)
     }

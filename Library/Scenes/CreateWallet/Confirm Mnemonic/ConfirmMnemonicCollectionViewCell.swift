@@ -8,12 +8,12 @@
 import UIKit
 
 final class ConfirmMnemonicCollectionViewCell: UICollectionViewCell {
-    
+
     @IBOutlet private weak var textField: UITextField!
     @IBOutlet private weak var bottomLineView: UIView!
-    
+
     var wordConfirmedCallback: (() -> Void)?
-    
+
     var confirmWordViewModel: ConfirmWordViewModel? {
         didSet {
             guard let confirmWordViewModel = confirmWordViewModel else { return }
@@ -23,7 +23,7 @@ final class ConfirmMnemonicCollectionViewCell: UICollectionViewCell {
             )
         }
     }
-    
+
     var isActiveCell: Bool = false {
         didSet {
             if isActiveCell {
@@ -35,26 +35,26 @@ final class ConfirmMnemonicCollectionViewCell: UICollectionViewCell {
             }
         }
     }
-    
+
     override func awakeFromNib() {
         super.awakeFromNib()
         backgroundColor = .clear
-        
+
         bottomLineView.backgroundColor = .gray
-        
+
         textField?.delegate = self
-        
+
         if let textField = textField {
             Style.textField(color: .white).apply(to: textField)
         }
     }
-    
+
     override func prepareForReuse() {
         super.prepareForReuse()
-        
+
         bottomLineView.backgroundColor = .gray
     }
-    
+
     @IBAction private func textFieldEdidtingChanged(_ sender: UITextField) {
         if sender.text == confirmWordViewModel?.word ||
             (Environment.allowFakeMnemonicConfirmation && sender.text == "xx") {

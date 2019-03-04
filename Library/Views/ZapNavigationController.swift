@@ -17,7 +17,7 @@ class ZapNavigationController: UINavigationController {
         navigationBar.isTranslucent = false
         navigationBar.shadowImage = UIImage()
     }
-    
+
     override var childForStatusBarStyle: UIViewController? {
         return viewControllers.first
     }

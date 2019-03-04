@@ -7,7 +7,7 @@
 
 import Foundation
 
-extension String {    
+extension String {
     func starts(with prefixes: [String]) -> Bool {
         for prefix in prefixes where starts(with: prefix) {
             return true

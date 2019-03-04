@@ -10,7 +10,7 @@ import UIKit
 
 final class ManageWalletsViewController: UIViewController {
     @IBOutlet private weak var tableView: UITableView!
-    
+
     // swiftlint:disable implicitly_unwrapped_optional
     private var addWalletButtonTapped: (() -> Void)!
     private var walletConfigurationStore: WalletConfigurationStore!
@@ -24,10 +24,10 @@ final class ManageWalletsViewController: UIViewController {
         viewController.connectWallet = connectWallet
         return viewController
     }
-    
+
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+
         navigationItem.largeTitleDisplayMode = .never
         title = "Manage Wallets"
         tableView.registerCell(ManageWalletTableViewCell.self)
@@ -39,7 +39,7 @@ final class ManageWalletsViewController: UIViewController {
         tableView.dataSource = self
         tableView.allowsMultipleSelectionDuringEditing = false
     }
-    
+
     @IBAction private func addWallet(_ sender: Any) {
         addWalletButtonTapped()
     }
@@ -48,7 +48,7 @@ final class ManageWalletsViewController: UIViewController {
 extension ManageWalletsViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
-        
+
         let walletConfiguration = walletConfigurationStore.configurations[indexPath.row]
         connectWallet(walletConfiguration)
     }
@@ -58,17 +58,17 @@ extension ManageWalletsViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return walletConfigurationStore.configurations.count
     }
-    
+
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell: ManageWalletTableViewCell = tableView.dequeueCellForIndexPath(indexPath)
         cell.configure(walletConfigurationStore.configurations[indexPath.row])
         return cell
     }
-    
+
     func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
         return true
     }
-    
+
     func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
         guard editingStyle == .delete else { return }
         walletConfigurationStore.removeWallet(at: indexPath)

@@ -23,15 +23,15 @@ public final class RequestViewModel {
     public var requestMethod = Layer.lightning
     public var memo: String?
     public var amount: Satoshi = 0
-    
+
     public var trimmedMemo: String? {
         return memo?.trimmingCharacters(in: .whitespacesAndNewlines)
     }
-    
+
     init(transactionService: TransactionService) {
         self.transactionService = transactionService
     }
-    
+
     func create(completion: @escaping (Result<QRCodeDetailViewModel, LndApiError>) -> Void) {
         switch requestMethod {
         case .lightning:
@@ -40,7 +40,7 @@ public final class RequestViewModel {
             createOnChain(completion: completion)
         }
     }
-    
+
     private func createLightning(completion: @escaping (Result<QRCodeDetailViewModel, LndApiError>) -> Void) {
         transactionService.addInvoice(amount: amount, memo: trimmedMemo) { result in
             completion(result.flatMap {
@@ -49,7 +49,7 @@ public final class RequestViewModel {
             })
         }
     }
-    
+
     private func createOnChain(completion: @escaping (Result<QRCodeDetailViewModel, LndApiError>) -> Void) {
         if let address = cachedOnChainAddress,
             let viewModel = onChainRequestViewModel(for: address) {
@@ -65,7 +65,7 @@ public final class RequestViewModel {
             }
         }
     }
-    
+
     private func onChainRequestViewModel(for address: BitcoinAddress) -> RequestQRCodeViewModel? {
         guard let uri = BitcoinURI(address: address, amount: amount, memo: trimmedMemo, lightningFallback: nil) else { return nil }
         return RequestQRCodeViewModel(paymentURI: uri)

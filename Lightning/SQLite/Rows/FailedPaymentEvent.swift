@@ -33,7 +33,7 @@ extension FailedPaymentEvent {
         self.paymentRequest = paymentRequest.raw
         node = ConnectedNode(pubKey: paymentRequest.destination, alias: nil, color: nil)
     }
-    
+
     public var isExpired: Bool {
         return expiry < Date()
     }
@@ -51,7 +51,7 @@ extension FailedPaymentEvent {
         static let fallbackAddress = Expression<String?>("fallbackAddress")
         static let paymentRequest = Expression<String>("paymentRequest")
     }
-    
+
     private static let table = Table("failedPaymentEvent")
 
     init(row: Row) {
@@ -60,22 +60,22 @@ extension FailedPaymentEvent {
         amount = row[Column.amount]
         date = row[Column.date]
         expiry = row[Column.expiry]
-        
+
         if let addressString = row[Column.fallbackAddress] {
             fallbackAddress = BitcoinAddress(string: addressString)
         } else {
             fallbackAddress = nil
         }
-        
+
         paymentRequest = row[Column.paymentRequest]
-        
+
         if (try? row.get(ConnectedNode.Column.pubKey)) != nil {
             node = ConnectedNode(row: row)
         } else {
             node = ConnectedNode(pubKey: row[Column.destination], alias: nil, color: nil)
         }
     }
-    
+
     static func createTable(database: Connection) throws {
         try database.run(table.create(ifNotExists: true) { t in
             t.column(Column.paymentHash, primaryKey: true)
@@ -88,7 +88,7 @@ extension FailedPaymentEvent {
             t.column(Column.paymentRequest)
         })
     }
-    
+
     func insert(database: Connection) throws {
         try database.run(FailedPaymentEvent.table.insert(
             Column.paymentHash <- paymentHash,
@@ -101,7 +101,7 @@ extension FailedPaymentEvent {
             Column.paymentRequest <- paymentRequest)
         )
     }
-    
+
     public static func events(database: Connection) throws -> [FailedPaymentEvent] {
         let query = table
             .join(.leftOuter, ConnectedNode.table, on: ConnectedNode.Column.pubKey == table[Column.destination])

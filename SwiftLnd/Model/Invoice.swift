@@ -14,7 +14,7 @@ public struct Invoice: Equatable {
         case settled
         case open
         case canceled
-        
+
         init?(state: LNDInvoice_InvoiceState) {
             switch state {
             case .gpbUnrecognizedEnumeratorValue:
@@ -28,7 +28,7 @@ public struct Invoice: Equatable {
             }
         }
     }
-    
+
     public let id: String
     public let memo: String
     public let amount: Satoshi
@@ -43,8 +43,14 @@ extension Invoice {
     init(invoice: LNDInvoice) {
         id = invoice.rHash.hexadecimalString
         memo = invoice.memo
-        
-        state = State(state: invoice.state) ?? (invoice.settled ? .settled : .open)
+
+        // older lnd version that do not have the settled property return
+        // `state = .open` and `settled = true` at the same time. that's why we
+        // stick to the `settled` flag for now.
+        //
+        // state = State(state: invoice.state) ?? (invoice.settled ? .settled : .open)
+        state = invoice.settled ? .settled : .open
+
         switch state {
         case .settled:
             amount = Satoshi(invoice.amtPaidSat)
@@ -53,7 +59,7 @@ extension Invoice {
             amount = Satoshi(invoice.value)
             settleDate = nil
         }
-        
+
         date = Date(timeIntervalSince1970: TimeInterval(invoice.creationDate))
         expiry = Date(timeIntervalSince1970: TimeInterval(invoice.creationDate + invoice.expiry))
         paymentRequest = invoice.paymentRequest

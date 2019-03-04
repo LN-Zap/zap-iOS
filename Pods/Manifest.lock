@@ -70,7 +70,7 @@ DEPENDENCIES:
   - LndRpc (from `.`)
   - ScrollableGraphView
   - SQLite.swift (~> 0.11.5)
-  - SwiftBTC
+  - SwiftBTC (from `./SwiftBTC`)
 
 SPEC REPOS:
   https://github.com/cocoapods/specs.git:
@@ -91,11 +91,12 @@ SPEC REPOS:
     - ScrollableGraphView
     - SipHash
     - SQLite.swift
-    - SwiftBTC
 
 EXTERNAL SOURCES:
   LndRpc:
     :path: "."
+  SwiftBTC:
+    :path: "./SwiftBTC"
 
 SPEC CHECKSUMS:
   "!ProtoCompiler": c9526df99fafd398a393def617ae18d3774b7232
@@ -116,8 +117,8 @@ SPEC CHECKSUMS:
   ScrollableGraphView: 4af35d4ea9ecdec665d34a74da51da161ddff8ac
   SipHash: fad90a4683e420c52ef28063063dbbce248ea6d4
   SQLite.swift: 6e5356850bb1791459f8c16d6ee9195b28714a2e
-  SwiftBTC: b1e0d98b17cfebacb288d73f33afea64f850e6c4
+  SwiftBTC: 57a1352d5131d4bf27c54ff9b0a602b46ab049ef
 
-PODFILE CHECKSUM: c08c26c770c707242e612b0eaede8002d0bbdb1f
+PODFILE CHECKSUM: aeabd7523996d3be20a72b2e2df2d1eb8a131093
 
 COCOAPODS: 1.5.3

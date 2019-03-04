@@ -18,7 +18,7 @@ public struct CreateInvoiceEvent: Equatable, DateProvidingEvent {
     public let date: Date
     public let expiry: Date
     public let paymentRequest: String
-    
+
     public var isExpired: Bool {
         return expiry < Date()
     }
@@ -45,9 +45,9 @@ extension CreateInvoiceEvent {
         static let expiry = Expression<Date>("expiry")
         static let paymentRequest = Expression<String>("paymentRequest")
     }
-    
+
     private static let table = Table("createInvoiceEvent")
-    
+
     init(row: Row) {
         id = row[Column.id]
         memo = row[Column.memo]
@@ -56,7 +56,7 @@ extension CreateInvoiceEvent {
         expiry = row[Column.expiry]
         paymentRequest = row[Column.paymentRequest]
     }
-    
+
     static func createTable(database: Connection) throws {
         try database.run(table.create(ifNotExists: true) { t in
             t.column(Column.id, primaryKey: true)
@@ -67,13 +67,13 @@ extension CreateInvoiceEvent {
             t.column(Column.paymentRequest)
         })
     }
-    
+
     func insert(database: Connection) throws {
         var memo = self.memo
         if memo == "" {
             memo = nil
         }
-        
+
         try database.run(CreateInvoiceEvent.table.insert(
             Column.id <- id,
             Column.memo <- memo,
@@ -83,7 +83,7 @@ extension CreateInvoiceEvent {
             Column.paymentRequest <- paymentRequest)
         )
     }
-    
+
     public static func events(database: Connection) throws -> [CreateInvoiceEvent] {
         return try database.prepare(CreateInvoiceEvent.table)
             .map(CreateInvoiceEvent.init)

@@ -1,8 +1,8 @@
 disabled_rules:
-  - trailing_whitespace
   - line_length
   - nesting
 opt_in_rules:
+  - trailing_whitespace
   - no_fallthrough_only
   - closure_end_indentation
   - closure_spacing
@@ -67,7 +67,12 @@ custom_rules:
     message: "don't cast to LocalizedError. Use .localizedDescription"
     severity: error
   localizable_error:
-    name: Localizable Error"
+    name: "Localizable Error"
     regex: "Error.*:.*Localizable"
     message: "Errors should be LocalizedError"
     severity: error
+  print:
+    name: "Logging Error"
+    regex: "print\\("
+    message: "Use Logger.info() instead"
+    severity: warning

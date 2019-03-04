@@ -11,12 +11,12 @@ import SafariServices
 final class SafariSettingsItem: SettingsItem {
     let title: String
     let url: URL
-    
+
     init(title: String, url: URL) {
         self.title = title
         self.url = url
     }
-    
+
     func didSelectItem(from fromViewController: UIViewController) {
         let safariViewController = SFSafariViewController(url: url)
         safariViewController.preferredBarTintColor = UIColor.Zap.deepSeaBlue

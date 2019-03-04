@@ -10,19 +10,19 @@ import SwiftLnd
 
 struct BTCPayConfiguration: Decodable {
     let configurations: [BTCPayConfigurationItem]
-    
+
     init?(data: Data) {
         guard let configuration = try? JSONDecoder().decode(BTCPayConfiguration.self, from: data) else { return nil }
         self = configuration
     }
-    
-    var rpcConfiguration: RemoteRPCConfiguration? {
+
+    var rpcCredentials: RPCCredentials? {
         guard
             let item = configurations.first(where: { $0.type == "grpc" }),
             let url = URL(string: "\(item.host):\(item.port)"),
             let macaroon = Macaroon(hexadecimalString: item.macaroon)
             else { return nil }
-        return RemoteRPCConfiguration(certificate: nil, macaroon: macaroon, url: url)
+        return RPCCredentials(certificate: nil, macaroon: macaroon, host: url)
     }
 }
 

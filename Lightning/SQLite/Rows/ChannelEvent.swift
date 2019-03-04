@@ -21,7 +21,7 @@ public struct ChannelEvent: Equatable {
         case fundingCanceled
         case abandoned
         case unknown
-        
+
         init(closeType: CloseType) {
             switch closeType {
             case .cooperativeClose:
@@ -41,7 +41,7 @@ public struct ChannelEvent: Equatable {
             }
         }
     }
-    
+
     public let txHash: String
     public let node: ConnectedNode
     public let blockHeight: Int
@@ -58,7 +58,7 @@ extension ChannelEvent {
         type = .open
         fee = nil
     }
-    
+
     init(closing channelCloseSummary: ChannelCloseSummary) {
         txHash = channelCloseSummary.closingTxHash
         node = ConnectedNode(pubKey: channelCloseSummary.remotePubKey, alias: nil, color: nil)
@@ -66,7 +66,7 @@ extension ChannelEvent {
         type = ChannelEvent.ChanneEventType(closeType: channelCloseSummary.closeType)
         fee = nil
     }
-    
+
     init(opening channelCloseSummary: ChannelCloseSummary) {
         txHash = channelCloseSummary.channelPoint.fundingTxid
         node = ConnectedNode(pubKey: channelCloseSummary.remotePubKey, alias: nil, color: nil)
@@ -85,9 +85,9 @@ extension ChannelEvent {
         static let blockHeight = Expression<Int>("blockHeight")
         static let type = Expression<Int>("type")
     }
-    
+
     private static let table = Table("channelEvent")
-    
+
     init(row: Row) {
         txHash = row[ChannelEvent.table[Column.txHash]]
         blockHeight = row[ChannelEvent.table[Column.blockHeight]]
@@ -95,7 +95,7 @@ extension ChannelEvent {
         node = ConnectedNode(row: row)
         fee = (try? row.get(TransactionEvent.Column.fee)) ?? nil // swiftlint:disable:this redundant_nil_coalescing
     }
-    
+
     static func createTable(database: Connection) throws {
         try database.run(table.create(ifNotExists: true) { t in
             t.column(Column.txHash, primaryKey: true)
@@ -106,7 +106,7 @@ extension ChannelEvent {
             t.foreignKey(Column.node, references: ConnectedNode.table, ConnectedNode.Column.pubKey)
         })
     }
-    
+
     func insert(database: Connection) throws {
         try database.run(ChannelEvent.table.insert(
             Column.txHash <- txHash,
@@ -114,10 +114,10 @@ extension ChannelEvent {
             Column.blockHeight <- blockHeight,
             Column.type <- type.rawValue)
         )
-        
+
         try node.insertPubKey(database: database)
     }
-    
+
     public static func events(database: Connection) throws -> [ChannelEvent] {
         let query = table
             .join(ConnectedNode.table, on: ConnectedNode.Column.pubKey == table[Column.node])

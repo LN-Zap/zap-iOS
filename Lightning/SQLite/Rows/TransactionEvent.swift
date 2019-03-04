@@ -34,7 +34,7 @@ public struct TransactionEvent: Equatable, DateProvidingEvent, AmountProvidingEv
 extension TransactionEvent {
     init?(transaction: Transaction, type: TransactionEventType = .unknown) {
         guard transaction.amount != 0 else { return nil }
-        
+
         txHash = transaction.id
         amount = transaction.amount
         fee = transaction.fees ?? 0
@@ -44,7 +44,7 @@ extension TransactionEvent {
         blockHeight = transaction.blockHeight
         self.type = type
     }
-    
+
     init(txHash: String, bitcoinURI: BitcoinURI, amount: Satoshi) {
         self.txHash = txHash
         memo = bitcoinURI.memo
@@ -69,14 +69,14 @@ extension TransactionEvent {
         static let blockHeight = Expression<Int?>("blockHeight")
         static let type = Expression<Int>("transactionType")
     }
-    
+
     static let table = Table("transactionEvent")
-    
+
     init(row: Row) {
         let bitcoinAddresses = row[Column.destinationAddresses]
             .split(separator: ",")
             .compactMap { BitcoinAddress(string: String($0)) }
-        
+
         txHash = row[Column.txHash]
         amount = row[Column.amount]
         fee = row[Column.fee]
@@ -86,7 +86,7 @@ extension TransactionEvent {
         blockHeight = row[Column.blockHeight]
         type = TransactionEventType(rawValue: row[Column.type]) ?? .unknown
     }
-    
+
     static func createTable(database: Connection) throws {
         try database.run(table.create(ifNotExists: true) { t in
             t.column(Column.txHash, primaryKey: true)
@@ -99,31 +99,31 @@ extension TransactionEvent {
             t.column(Column.type, defaultValue: TransactionEventType.unknown.rawValue)
         })
     }
-    
+
     private var addressString: String {
         return destinationAddresses
             .map { $0.string }
             .joined(separator: ",")
     }
-    
+
     static func events(query: Table = TransactionEvent.table, database: Connection) throws -> [TransactionEvent] {
         return try database.prepare(query)
             .map(TransactionEvent.init)
     }
-    
+
     static func unconfirmedEvents(for txHashes: [String], database: Connection) throws -> [TransactionEvent] {
         let query = TransactionEvent.table
             .filter(Column.blockHeight == nil)
             .filter(txHashes.contains(Column.txHash))
         return try events(query: query, database: database)
     }
-    
+
     public static func payments(database: Connection) throws -> [TransactionEvent] {
         let query = TransactionEvent.table
             .filter(Column.type != TransactionEventType.channelRelated.rawValue)
         return try events(query: query, database: database)
     }
-    
+
     func insertOrUpdateTransactionData(database: Connection) throws {
         do {
             try insert(database: database)
@@ -137,7 +137,7 @@ extension TransactionEvent {
             ))
         }
     }
-    
+
     func insertOrUpdateMetaData(database: Connection) throws {
         do {
             try insert(database: database)
@@ -149,7 +149,7 @@ extension TransactionEvent {
             ))
         }
     }
-    
+
     private func insert(database: Connection) throws {
         try database.run(TransactionEvent.table.insert(
             Column.txHash <- txHash,

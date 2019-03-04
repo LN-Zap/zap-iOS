@@ -10,14 +10,14 @@ import Lightning
 
 final class ChangePinSettingsItem: SettingsItem {
     let title = L10n.Scene.Settings.Item.changePin
-    
+
     private let authenticationViewModel: AuthenticationViewModel
     private weak var setupPinViewController: SetupPinViewController?
-    
+
     init(authenticationViewModel: AuthenticationViewModel) {
         self.authenticationViewModel = authenticationViewModel
     }
-    
+
     func didSelectItem(from fromViewController: UIViewController) {
         ModalPinViewController.authenticate(authenticationViewModel: authenticationViewModel) { [weak self, authenticationViewModel] result in
             switch result {

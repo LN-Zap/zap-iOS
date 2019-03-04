@@ -16,12 +16,12 @@ enum KeyPadState {
 
 class KeyPadView: UIView {
     @IBOutlet private var contentView: UIView!
-    
+
     override init(frame: CGRect) {
         super.init(frame: frame)
         setup()
     }
-    
+
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
         setup()
@@ -33,7 +33,7 @@ class KeyPadView: UIView {
         contentView.frame = self.bounds
         contentView.autoresizingMask = [.flexibleHeight, .flexibleWidth]
         backgroundColor = UIColor.Zap.background
-        
+
         updateButtonFont()
     }
 
@@ -42,10 +42,10 @@ class KeyPadView: UIView {
             contentView?.backgroundColor = backgroundColor
         }
     }
-    
+
     var handler: ((String) -> Bool)?
     var customPointButtonAction: (() -> Void)?
-    
+
     var state: KeyPadState = .amount {
         didSet {
             updatePointButton()
@@ -56,25 +56,24 @@ class KeyPadView: UIView {
             updateButtonFont()
         }
     }
-    
+
     @IBOutlet private var buttons: [UIButton]?
     @IBOutlet private weak var pointButton: UIButton! {
         didSet {
             updatePointButton()
         }
     }
-    
+
     var numberString = "" {
         didSet {
             guard oldValue != numberString else { return }
-            print(numberString)
         }
     }
-    
+
     private var pointCharacter: String {
         return Locale.autoupdatingCurrent.decimalSeparator ?? "."
     }
-    
+
     private var authenticationImage: UIImage? {
         switch BiometricAuthentication.type {
         case .none:
@@ -85,7 +84,7 @@ class KeyPadView: UIView {
             return Asset.iconFaceId.image
         }
     }
-    
+
     private func updateButtonFont() {
         buttons?.forEach {
             Style.Button.custom().apply(to: $0)
@@ -94,7 +93,7 @@ class KeyPadView: UIView {
             $0.titleLabel?.font = $0.titleLabel?.font.withSize(24)
         }
     }
-    
+
     private func updatePointButton() {
         switch state {
         case .pinBiometric:
@@ -112,7 +111,7 @@ class KeyPadView: UIView {
             pointButton.isEnabled = true
         }
     }
-    
+
     private func numberTapped(_ number: Int) {
         if numberString == "0" && state == .amount {
             proposeNumberString(String(describing: number))
@@ -120,7 +119,7 @@ class KeyPadView: UIView {
             proposeNumberString(numberString + String(describing: number))
         }
     }
-    
+
     private func pointTapped() {
         if let customPointButtonAction = customPointButtonAction {
             customPointButtonAction()
@@ -128,14 +127,14 @@ class KeyPadView: UIView {
             proposeNumberString(numberString + pointCharacter)
         }
     }
-    
+
     private func backspaceTapped() {
         proposeNumberString(String(numberString.dropLast()))
     }
-    
+
     @IBAction private func buttonTapped(_ sender: UIButton) {
         AudioServicesPlaySystemSound(0x450)
-        
+
         if sender.tag < 10 {
             numberTapped(sender.tag)
         } else if sender.tag == 10 {
@@ -144,9 +143,9 @@ class KeyPadView: UIView {
             backspaceTapped()
         }
     }
-    
+
     private var deleteTimer: Timer?
-    
+
     @IBAction private func longPressChanged(_ sender: UILongPressGestureRecognizer) {
         switch sender.state {
         case .began:
@@ -160,10 +159,10 @@ class KeyPadView: UIView {
             break
         }
     }
-    
+
     private func proposeNumberString(_ string: String) {
         guard string != numberString else { return }
-        
+
         if let handler = handler {
             if handler(string) {
                 numberString = string

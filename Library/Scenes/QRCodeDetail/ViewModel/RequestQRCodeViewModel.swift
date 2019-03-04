@@ -13,15 +13,15 @@ final class RequestQRCodeViewModel: QRCodeDetailViewModel {
     let uriString: String
     let qrCodeString: String
     let detailConfiguration: [StackViewElement]
-    
+
     init(paymentURI: PaymentURI) {
         uriString = paymentURI.address
         qrCodeString = paymentURI.isCaseSensitive ? paymentURI.uriString : paymentURI.uriString.uppercased()
-        
+
         let tableFontStyle = Style.Label.footnote
         let tableLabelSpacing: CGFloat = 0
         var detailConfiguration = [StackViewElement]()
-        
+
         if let amount = paymentURI.amount, amount != 0 {
             detailConfiguration.append(contentsOf: [
                 .verticalStackView(content: [
@@ -31,7 +31,7 @@ final class RequestQRCodeViewModel: QRCodeDetailViewModel {
                 .separator
             ])
         }
-        
+
         if let memo = paymentURI.memo, !memo.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty {
             detailConfiguration.append(contentsOf: [
                 .verticalStackView(content: [
@@ -41,12 +41,12 @@ final class RequestQRCodeViewModel: QRCodeDetailViewModel {
                 .separator
             ])
         }
-        
+
         detailConfiguration.append(.verticalStackView(content: [
             .label(text: L10n.Scene.TransactionDetail.addressLabel + ":", style: tableFontStyle),
             .label(text: paymentURI.address, style: tableFontStyle)
         ], spacing: tableLabelSpacing))
-        
+
         self.detailConfiguration = detailConfiguration
     }
 }

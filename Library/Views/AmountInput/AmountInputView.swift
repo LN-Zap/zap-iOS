@@ -26,20 +26,20 @@ public final class AmountInputView: UIControl {
             setupKeyPad()
         }
     }
-    
+
     var isEditable: Bool = true
-    
+
     public weak var delegate: AmountInputViewDelegate?
-    
+
     var validRange: ClosedRange<Satoshi>?
-    
+
     private(set) var satoshis: Satoshi = 0 {
         didSet {
             updateValidityIndicator()
             sendActions(for: .valueChanged)
         }
     }
-    
+
     override public var backgroundColor: UIColor? {
         didSet {
             contentView?.backgroundColor = backgroundColor
@@ -49,30 +49,30 @@ public final class AmountInputView: UIControl {
             bottomViewBackground?.backgroundColor = backgroundColor
         }
     }
-    
+
     var textColor: UIColor = UIColor.Zap.black {
         didSet {
             amountTextField.textColor = textColor
             keyPadView.textColor = textColor
         }
     }
-    
+
     override public init(frame: CGRect) {
         super.init(frame: frame)
         setup()
     }
-    
+
     public required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
         setup()
     }
-    
+
     private func setup() {
         Bundle.library.loadNibNamed("AmountInputView", owner: self, options: nil)
         addSubview(contentView)
         contentView.frame = self.bounds
         contentView.autoresizingMask = [.flexibleHeight, .flexibleWidth]
-        
+
         amountTextField.textColor = UIColor.Zap.black
         amountTextField.font = UIFont.Zap.light.withSize(36)
         amountTextField.placeholder = L10n.View.AmountInput.placeholder
@@ -80,37 +80,37 @@ public final class AmountInputView: UIControl {
         amountTextField.delegate = self
 
         Style.Button.custom(color: UIColor.Zap.white, fontSize: 36).apply(to: swapCurrencyButton)
-        
+
         Settings.shared.primaryCurrency
             .map { $0.symbol }
             .bind(to: swapCurrencyButton.reactive.title )
-            .dispose(in: reactive.bag)        
+            .dispose(in: reactive.bag)
     }
-    
+
     func updateAmount(_ amount: Satoshi) {
         self.satoshis = amount
         updateTextFieldContent()
     }
-    
+
     private func updateTextFieldContent() {
         guard let stringValue = Settings.shared.primaryCurrency.value.stringValue(satoshis: satoshis) else { return }
         keyPadView.numberString = stringValue
-        
+
         let numberFormatter = InputNumberFormatter(currency: Settings.shared.primaryCurrency.value)
         amountTextField.text = numberFormatter.validate(stringValue)
     }
-    
+
     @IBAction private func swapCurrencies(_ sender: Any) {
         Settings.shared.swapCurrencies()
         updateTextFieldContent()
     }
-    
+
     private func setupKeyPad() {
         keyPadView.handler = { [weak self] in
             self?.updateKeyPadString(input: $0) ?? false
         }
     }
-    
+
     private func updateKeyPadString(input: String) -> Bool {
         let numberFormatter = InputNumberFormatter(currency: Settings.shared.primaryCurrency.value)
         guard let output = numberFormatter.validate(input) else { return false }
@@ -119,24 +119,24 @@ public final class AmountInputView: UIControl {
 
         return true
     }
-    
+
     private func updateValidityIndicator() {
         if amountTextField.text != nil,
             let range = validRange {
             amountTextField.textColor = range.contains(satoshis) ? textColor : UIColor.Zap.superRed
         }
     }
-    
+
     @IBAction private func didSelectTextField(_ sender: Any) {
         guard !amountTextField.isFirstResponder else { return }
         becomeFirstResponder()
     }
-    
+
     @discardableResult
     override public func becomeFirstResponder() -> Bool {
         return amountTextField.becomeFirstResponder()
     }
-    
+
     @discardableResult
     override public func resignFirstResponder() -> Bool {
         return amountTextField.resignFirstResponder()
@@ -156,15 +156,15 @@ extension AmountInputView: UITextFieldDelegate {
             bottomViewBackground.isHidden = hidden
         }
     }
-    
+
     public func textFieldShouldBeginEditing(_ textField: UITextField) -> Bool {
         return isEditable
     }
-    
+
     public func textFieldDidBeginEditing(_ textField: UITextField) {
         delegate?.amountInputViewDidBeginEditing(self)
     }
-    
+
     public func textFieldDidEndEditing(_ textField: UITextField) {
         delegate?.amountInputViewDidEndEditing(self)
     }
