@@ -61,8 +61,8 @@ final class ConnectRemoteNodeViewModel: NSObject {
     }
 
     private func evaluateEqual(one: Array2DElement<String?, CellType>, two: Array2DElement<String?, CellType>) -> Bool {
-            return one.section == two.section && one.item == two.item
-        }
+        return one.section == two.section && one.item == two.item
+    }
 
     private func certificateSection(for qrCode: RPCCredentials) -> TreeNode<Array2DElement<String?, CellType>> {
         var items: [ConnectRemoteNodeViewModel.CellType] = [
