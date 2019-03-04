@@ -18,7 +18,7 @@ extension UIColor {
 struct WidgetData: Codable, Equatable {
     let satoshi: Decimal
     let fiat: Decimal
-    let symbol: String
+    let currencyCode: String
 
     private static let key = "widget_data_key"
 
@@ -31,6 +31,11 @@ struct WidgetData: Codable, Equatable {
         guard let coded = UserDefaults.standard.data(forKey: key) else { return nil }
         return try? JSONDecoder().decode(WidgetData.self, from: coded)
     }
+}
+
+extension UIFont {
+    static let numberFont = UIFont.systemFont(ofSize: UIFont.labelFontSize, weight: .bold)
+    static let labelFont = UIFont.systemFont(ofSize: UIFont.labelFontSize, weight: .light)
 }
 
 class TodayViewController: UIViewController, NCWidgetProviding {
@@ -62,7 +67,7 @@ class TodayViewController: UIViewController, NCWidgetProviding {
         if let data = WidgetData.load() {
             updateUI(for: data)
         } else {
-            updateUI(for: WidgetData(satoshi: 0, fiat: 0, symbol: Locale.current.currencySymbol ?? "?"))
+            updateUI(for: WidgetData(satoshi: 0, fiat: 0, currencyCode: Locale.current.currencyCode ?? "USD"))
         }
 
         preferredContentSize = CGSize(width: view.bounds.width, height: 110)
@@ -100,9 +105,8 @@ class TodayViewController: UIViewController, NCWidgetProviding {
 
         let satoshis = CurrencyConverter.convert(amount: 0.01, from: currency, to: Bitcoin.satoshi).rounded()
         let fiat = CurrencyConverter.convert(amount: 10000, from: Bitcoin.satoshi, to: currency)
-        let symbol = currency.symbol
 
-        let newData = WidgetData(satoshi: satoshis, fiat: fiat, symbol: symbol)
+        let newData = WidgetData(satoshi: satoshis, fiat: fiat, currencyCode: currency.currencyCode)
 
         if WidgetData.load() != newData {
             newData.save()
@@ -117,28 +121,40 @@ class TodayViewController: UIViewController, NCWidgetProviding {
     }
 
     private func updateUI(for data: WidgetData) {
-        topLeftLabel.attributedText = attributedLabel(number: 0.01, label: data.symbol)
-        topRightLabel.attributedText = attributedLabel(number: data.satoshi, label: "Satoshis")
+        topLeftLabel.attributedText = attributedFiatLabel(number: 0.01, currencyCode: data.currencyCode)
+        topRightLabel.attributedText = attributedSatoshisLabel(number: data.satoshi)
 
-        bottomLeftLabel.attributedText = attributedLabel(number: 10000, label: "Satoshis")
-        bottomRightLabel.attributedText = attributedLabel(number: data.fiat, label: data.symbol)
+        bottomLeftLabel.attributedText = attributedSatoshisLabel(number: 10000)
+        bottomRightLabel.attributedText = attributedFiatLabel(number: data.fiat, currencyCode: data.currencyCode)
     }
 
-    func attributedLabel(number: Decimal, label: String) -> NSAttributedString? {
+    func attributedFiatLabel(number: Decimal, currencyCode: String) -> NSAttributedString? {
+        let numberFormatter = NumberFormatter()
+        numberFormatter.numberStyle = .currency
+        numberFormatter.currencyCode = currencyCode
+        numberFormatter.locale = Locale.current
+
+        guard let numberString = numberFormatter.string(from: number as NSDecimalNumber) else { return nil }
+
+        let attributedString = NSMutableAttributedString(string: numberString, attributes: [.font: UIFont.numberFont])
+
+        let range = (numberString as NSString).range(of: numberFormatter.currencySymbol)
+        attributedString.addAttributes([.font: UIFont.labelFont], range: range)
+
+        return attributedString
+    }
+
+    func attributedSatoshisLabel(number: Decimal) -> NSAttributedString? {
         let numberFormatter = NumberFormatter()
         numberFormatter.numberStyle = .decimal
-        numberFormatter.locale = Locale.current
-        numberFormatter.maximumFractionDigits = 2
+        numberFormatter.maximumFractionDigits = 0
         numberFormatter.minimumIntegerDigits = 1
         numberFormatter.usesGroupingSeparator = true
 
         guard let numberString = numberFormatter.string(from: number as NSDecimalNumber) else { return nil }
 
-        let numberFont = UIFont.systemFont(ofSize: UIFont.labelFontSize, weight: .bold)
-        let labelFont = UIFont.systemFont(ofSize: UIFont.labelFontSize, weight: .light)
-
-        let attributedString = NSMutableAttributedString(string: numberString, attributes: [.font: numberFont])
-        attributedString.append(NSAttributedString(string: " \(label)", attributes: [.font: labelFont]))
+        let attributedString = NSMutableAttributedString(string: numberString, attributes: [.font: UIFont.numberFont])
+        attributedString.append(NSAttributedString(string: " Satoshis", attributes: [.font: UIFont.labelFont]))
 
         return attributedString
     }
