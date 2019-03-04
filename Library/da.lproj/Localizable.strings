@@ -1,11 +1,11 @@
-"generic.memo.placeholder" = "What is this for?";
-"generic.qr_code.copy_button" = "Copy";
-"generic.qr_code.copy_success_message" = "Address has been copied to clipboard.";
-"generic.pasteboard.invalid_address" = "Invalid Address";
-"generic.qr_code.share_button" = "Share";
-"generic.cancel" = "Cancel";
+"generic.memo.placeholder" = "Hvad er dette for?";
+"generic.qr_code.copy_button" = "Kopier";
+"generic.qr_code.copy_success_message" = "Adresse er blevet kopieret til clipboard.";
+"generic.pasteboard.invalid_address" = "Ugyldig adresse";
+"generic.qr_code.share_button" = "Del";
+"generic.cancel" = "Aflys";
 
-"link.help" = "https://ln-zap.github.io/zap-tutorials/";
+"link.help" = "https://ln-zap.github.io/zap-tutorials";
 "link.help.zapconnect" = "https://ln-zap.github.io/zap-tutorials/iOS-remote-node-setup";
 
 "error.wrong_uri_format" = "Ukendt link format.";
@@ -14,15 +14,15 @@
 
 "rpc_connect_qrcode_error.btc_pay_expired" = "Det ser ud til at koden er udløbet.";
 "rpc_connect_qrcode_error.btc_pay_configuration_broken" = "Kunne ikke læse BTCPay konfiguration fil.";
-"rpc_connect_qrcode_error.cant_read_qrcode" = "Invalid code format.";
-"rpc_connect_qrcode_error.code_updated" = "Connection updated.";
+"rpc_connect_qrcode_error.cant_read_qrcode" = "Ugyldig kode format.";
+"rpc_connect_qrcode_error.code_updated" = "Forbindelse opdateret.";
 
 "channel.state.active" = "Online";
 "channel.state.inactive" = "Offline";
 "channel.state.opening" = "Åbner";
 "channel.state.closing" = "Lukker";
-"channel.state.force_closing" = "Force Closing";
-"channel.state.waiting_close" = "Waiting Close";
+"channel.state.force_closing" = "Tvangslukker";
+"channel.state.waiting_close" = "Vente luk";
 
 "network_type.regtest" = "Regtest";
 "network_type.testnet" = "Testnet";
@@ -33,15 +33,15 @@
 "unit.bitcoin.bit" = "Bits";
 "unit.bitcoin.satoshi" = "Satoshis";
 
-"toast.invoice" = "Did receive %@";
-"toast.invoice_memo" = "Did receive %@ \"%@\"";
+"toast.invoice" = "Har modtaget %@";
+"toast.invoice_memo" = "Har modtaget %@ \"%@\"";
 
-"transaction.no_destination_address" = "No destination address";
+"transaction.no_destination_address" = "Ingen destinations adresse";
 
 "view.amount_input.placeholder" = "Beløb";
 
-"scene.history.title" = "History";
-"scene.history.empty_state_label" = "0 transactions 🙁";
+"scene.history.title" = "Historie";
+"scene.history.empty_state_label" = "0 transaktioner 🙁";
 
 "scene.settings.title" = "Indstillinger";
 "scene.settings.section.wallet" = "Tegnebog";
@@ -51,38 +51,38 @@
 "scene.settings.item.on_chain_request_address.title" = "Bitcoin adresse Type";
 "scene.settings.item.on_chain_request_address.bech32" = "Bech32";
 "scene.settings.item.on_chain_request_address.p2sh" = "P2SH";
-"scene.settings.item.manage_channels" = "Manage Channels";
+"scene.settings.item.manage_channels" = "Administrer kanaler";
 "scene.settings.item.node_uri" = "Node URI";
-"scene.settings.item.remove_remote_node" = "Manage Wallets";
+"scene.settings.item.remove_remote_node" = "Administrer Wallets";
 
-"scene.settings.item.change_pin" = "Change Pin";
+"scene.settings.item.change_pin" = "Ændre Pin";
 "scene.settings.item.report_issue" = "Rapporter et problem";
 "scene.settings.item.help" = "Brug for hjælp?";
-"scene.settings.item.privacy_policy" = "Privacy Policy";
-"scene.settings.item.lnd_log" = "Show lnd Log";
+"scene.settings.item.privacy_policy" = "Privatlivspolitik";
+"scene.settings.item.lnd_log" = "Vis lnd Log";
 
 "scene.request.title" = "Modtag";
 "scene.request.lightning_button" = "Lightning";
-"scene.request.or_separator_label" = "or";
+"scene.request.or_separator_label" = "eller";
 "scene.request.on_chain_button" = "På-kæde";
 "scene.request.generate_request_button" = "Generer anmodning";
-"scene.request.lightning_header_title" = "Lightning Payment Request";
-"scene.request.on_chain_header_title" = "On Chain Payment Request";
-"scene.request.next_button_title" = "Next";
+"scene.request.lightning_header_title" = "Lightning betalings anmodning";
+"scene.request.on_chain_header_title" = "On Chain betalings anmodning";
+"scene.request.next_button_title" = "Næste";
 
 "scene.channels.title" = "Kanaler";
 "scene.channels.close.title" = "Luk kanal";
 "scene.channels.close.message" = "Vil du lukke kanalen med node %@?";
-"scene.channels.force_close.title" = "Force Close Channel";
-"scene.channels.force_close.message" = "%@ is offline, are you sure you want to force close this channel? You’d have to wait about %@ for your funds?";
-"scene.channels.alert.close" = "Close Channel";
-"scene.channels.alert.force_close" = "Force Close Channel";
-"scene.channels.close_loading_view" = "Closing Channel";
+"scene.channels.force_close.title" = "Tvangsluk kanal";
+"scene.channels.force_close.message" = "%@ er offline, er du sikker på, at du vil tvangsluk denne kanal? Du vil skulle vente omkring %@ for dine midler?";
+"scene.channels.alert.close" = "Luk kanal";
+"scene.channels.alert.force_close" = "Tvangsluk kanal";
+"scene.channels.close_loading_view" = "Lukker kanal";
 "scene.channels.close_success.toast" = "Kanalen lukkes.";
 
 "scene.open_channel.title" = "Åben kanal";
-"scene.open_channel.channel_uri_label" = "Channel:";
-"scene.open_channel.add_button" = "Open Channel";
+"scene.open_channel.channel_uri_label" = "Kanal:";
+"scene.open_channel.add_button" = "Åben kanal";
 
 "scene.pin.biometric.fallback.title" = "Brug adgangskode";
 "scene.pin.biometric.reason" = "For at få adgang til sikre data";
@@ -92,23 +92,23 @@
 "scene.setup_pin.top_label.non_matching" = "Pin koderne er ikke de samme. Prøv venligst igen.";
 "scene.setup_pin.top_label.validate" = "Indtast Pin-koden igen for at validere.";
 
-"scene.confirm_mnemonic.title" = "Confirm Seed";
+"scene.confirm_mnemonic.title" = "Bekræft Seed";
 "scene.confirm_mnemonic.description" = "Indtast din nøgle.";
 
 "scene.send.title" = "Send";
 "scene.send.send_button" = "Send";
-"scene.send.address_headline" = "To:";
+"scene.send.address_headline" = "Til:";
 "scene.send.memo_headline" = "Memo:";
-"scene.send.sending" = "Sending...";
-"scene.send.lightning.title" = "Send Lightning Payment";
+"scene.send.sending" = "Sender...";
+"scene.send.lightning.title" = "Send Lightning betaling";
 "scene.send.on_chain.title" = "Send On Chain";
-"scene.send.authentication_failed" = "Authentication failed";
-"scene.send.maximum_fee" = "Expected Fee:";
+"scene.send.authentication_failed" = "Godkendelse mislykkedes";
+"scene.send.maximum_fee" = "Forventet gebyr:";
 
 "scene.connect_remote_node.title" = "Tilslut ekstern Node";
-"scene.connect_remote_node.empty_state" = "Scan the QRCode generated by lndconnect, BTCPay Server, or paste the link you get from running 'lndconnect -j' to connect to your node.";
+"scene.connect_remote_node.empty_state" = "Skan QR koden genereret af lndconnect, BTCPay Server, eller indsæt linket du får når du kører 'lndconnect -j' for at tilslutte til dit node.";
 "scene.connect_remote_node.url_label" = "Adresse";
-"scene.connect_remote_node.certificate_label" = "Credentials";
+"scene.connect_remote_node.certificate_label" = "Anbefalinger";
 "scene.connect_remote_node.connect_button" = "Tilslut";
 "scene.connect_remote_node.scan_button" = "Scan";
 "scene.connect_remote_node.paste_button" = "Indsæt";
@@ -126,9 +126,9 @@
 "scene.recover_wallet.title" = "Genskab tegnebog";
 "scene.recover_wallet.done_button" = "Udført";
 "scene.recover_wallet.description_label" = "Indtast dit seed:";
-"scene.recover_wallet.placeholder" = "abandon ability able about above absent absorb abstract absurd abuse access accident account accuse achieve acid acoustic acquire across act action actor actress actual";
+"scene.recover_wallet.placeholder" = "efterlade evne i_stand om over fraværende absorbere abstrakt absurd misbrug opnå syre akustisk erhverve henover handling aktion skuespiller skuespillerinde faktisk";
 
-"scene.select_wallet_connection.title" = "Add Wallet";
+"scene.select_wallet_connection.title" = "Tilføj Wallet";
 "scene.select_wallet_connection.create.title" = "Opret";
 "scene.select_wallet_connection.create.message" = "ny tegnebog";
 "scene.select_wallet_connection.recover.title" = "Genskab";
@@ -144,7 +144,7 @@
 "scene.main.receive_button" = "Modtag";
 "scene.main.exchange_rate_label" = "%@ per BTC";
 
-"scene.qr_code_detail.title" = "Receive";
+"scene.qr_code_detail.title" = "Modtag";
 
 "scene.sync.description_label" = "Synkronisering til blockkæde…";
 "scene.sync.disconnect_bar_button" = "Afbryd";
@@ -156,8 +156,8 @@
 "scene.transaction_detail.title.lightning_invoice" = "Faktura detaljer";
 "scene.transaction_detail.title.payment_detail" = "Betalings detaljer";
 "scene.transaction_detail.title.transaction_detail" = "Posterings detaljer";
-"scene.transaction_detail.title.channel_event_detail" = "Channel Event";
-"scene.transaction_detail.title.failed_payment" = "Failed Payment";
+"scene.transaction_detail.title.channel_event_detail" = "Kanal begivenhed";
+"scene.transaction_detail.title.failed_payment" = "Mislykket betaling";
 "scene.transaction_detail.memo_label" = "Memo";
 "scene.transaction_detail.amount_label" = "Beløb";
 "scene.transaction_detail.fee_label" = "Gebyr";
@@ -165,64 +165,64 @@
 "scene.transaction_detail.transaction_id_label" = "Transaktions-ID";
 "scene.transaction_detail.address_label" = "Adresse";
 "scene.transaction_detail.expiry_label" = "Udløber";
-"scene.transaction_detail.expiry_label.expired" = "Expired";
+"scene.transaction_detail.expiry_label.expired" = "Udløbet";
 
 "scene.channel_detail.remote_pub_key_label" = "Remote PubKey";
 "scene.channel_detail.local_balance_label" = "Lokal Balance";
 "scene.channel_detail.remote_balance_label" = "Remore Balance";
 "scene.channel_detail.closing_time.label" = "Lukning i";
 "scene.channel_detail.funding_transaction_label" = "Finansier transaktion";
-"scene.channel_detail.close_button" = "Close Channel";
-"scene.channel_detail.force_close_button" = "Force Close Channel";
+"scene.channel_detail.close_button" = "Luk kanal";
+"scene.channel_detail.force_close_button" = "Tvangsluk kanal";
 
-"scene.filter.title" = "Filter";
+"scene.filter.title" = "Filtrer";
 "scene.filter.section_header.transaction_types" = "Transaktionstyper";
-"scene.filter.section_header.advanced" = "Advanced";
-"scene.filter.displayOnChainTransactions" = "On-chain Payments";
-"scene.filter.display_unknown_transaction_type" = "Internal Transactions";
+"scene.filter.section_header.advanced" = "Avanceret";
+"scene.filter.displayOnChainTransactions" = "On-chain betaling";
+"scene.filter.display_unknown_transaction_type" = "Intern transaktioner";
 "scene.filter.displayLightningPayments" = "Lightning betalinger";
-"scene.filter.displayLightningInvoices" = "Created Invoices";
-"scene.filter.displayChannelEvents" = "Channel Events";
-"scene.filter.displayFailedPaymentEvents" = "Failed Payments";
+"scene.filter.displayLightningInvoices" = "Skabte fakturaer";
+"scene.filter.displayChannelEvents" = "Kanal begivenheder";
+"scene.filter.displayFailedPaymentEvents" = "Mislykket betalinger";
 
 "scene.qrcode_scanner.top_label" = "Skan QR-kode";
 
 "scene.wallet.title" = "Wallet";
 
-"scene.time_lock.headline" = "Wrong Passcode";
-"scene.time_lock.description" = "Your wallet is locked for:";
+"scene.time_lock.headline" = "Forkert Passcode";
+"scene.time_lock.description" = "Din wallet er låst i:";
 
-"scene.modal_pin.headline" = "Enter Passcode";
-"scene.modal_pin.description" = "Please enter your passcode to continue";
+"scene.modal_pin.headline" = "Indtast passcode";
+"scene.modal_pin.description" = "Indtast venligst din passcode for at flrsætte";
 
-"scene.history.cell.payment_sent" = "Payment sent";
-"scene.history.cell.payment_received" = "Payment received";
-"scene.history.cell.payment_failed" = "Payment failed (%@)";
-"scene.history.cell.invoice_created" = "Payment Request created";
-"scene.history.cell.channel_opened" = "Open Channel";
-"scene.history.cell.channel_closed" = "Close Channel";
-"scene.history.cell.force_close_channel" = "Force close Channel";
-"scene.history.cell.remote_force_close_channel" = "Remote force close Channel";
-"scene.history.cell.breach_close_channel" = "Breach close Channel";
-"scene.history.cell.close_channel_funding_canceled" = "Close Channel (funding canceled)";
-"scene.history.cell.channel_abandoned" = "Channel abandoned";
-"scene.history.cell.transaction_sent" = "Payment sent";
-"scene.history.cell.transaction_received" = "Payment received";
-"scene.history.cell.label.new" = "new";
-"scene.history.cell.label.error" = "error";
-"scene.history.cell.action.try_again" = "Try Again";
+"scene.history.cell.payment_sent" = "Betaling sendt";
+"scene.history.cell.payment_received" = "Betaling modtaget";
+"scene.history.cell.payment_failed" = "Betaling fejlede (%@)";
+"scene.history.cell.invoice_created" = "Betaling anmodning skabt";
+"scene.history.cell.channel_opened" = "Åben Kanal";
+"scene.history.cell.channel_closed" = "Luk Kanal";
+"scene.history.cell.force_close_channel" = "Tvangsluk Kanal";
+"scene.history.cell.remote_force_close_channel" = "Fjern tvangsluk Kanal";
+"scene.history.cell.breach_close_channel" = "Bryd luk kanal";
+"scene.history.cell.close_channel_funding_canceled" = "Luk kanal (finansieringen annulleret)";
+"scene.history.cell.channel_abandoned" = "Kanal forladt";
+"scene.history.cell.transaction_sent" = "Betaling sendt";
+"scene.history.cell.transaction_received" = "Betaling modtaget";
+"scene.history.cell.label.new" = "ny";
+"scene.history.cell.label.error" = "fejl";
+"scene.history.cell.action.try_again" = "Prøv igen";
 
-"scene.node_uri.title" = "Connect to Node";
+"scene.node_uri.title" = "Opret forbindelse til Node";
 "scene.node_uri.alias_label" = "Alias";
 "scene.node_uri.uri_label" = "URI";
 
-"scene.connect_node_uri.action_sheet.title" = "Connect";
-"scene.connect_node_uri.action_sheet.connect_button" = "Connect";
-"scene.connect_node_uri.action_sheet.message" = "Do you really want to connect to node at %@?";
+"scene.connect_node_uri.action_sheet.title" = "Opret forbindelse";
+"scene.connect_node_uri.action_sheet.connect_button" = "Opret forbindelse";
+"scene.connect_node_uri.action_sheet.message" = "Er du sikker på at du vil oprette forbindelse til node ved %@?";
 
 "scene.wallet_list.title" = "Wallets";
 
-"scene.unlock.title" = "Unlock Node";
-"scene.unlock.unlock_button" = "Unlock";
+"scene.unlock.title" = "Lås Node op";
+"scene.unlock.unlock_button" = "Lås op";
 "scene.unlock.password_placeholder" = "Password";
-"scene.unlock.title_label" = "Unlock %@";
+"scene.unlock.title_label" = "Oplås %@";
