@@ -267,7 +267,7 @@
 		ADC0D3052107A3D700B8C62F /* CloudFlare Inc ECC CA-2.cer in Resources */ = {isa = PBXBuildFile; fileRef = ADC0D3032107A3D700B8C62F /* CloudFlare Inc ECC CA-2.cer */; };
 		ADC48CA7214AD8B800949CD9 /* DateEstimatorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADC48CA6214AD8B800949CD9 /* DateEstimatorTests.swift */; };
 		ADC48CA92150FBA200949CD9 /* HistoryService.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADC48CA82150FBA200949CD9 /* HistoryService.swift */; };
-		ADCD5B0D20D7E3F50037F156 /* RemoveRemoteNodeSettingsItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADCD5B0C20D7E3F50037F156 /* RemoveRemoteNodeSettingsItem.swift */; };
+		ADCD5B0D20D7E3F50037F156 /* ManageWalletsSettingsItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADCD5B0C20D7E3F50037F156 /* ManageWalletsSettingsItem.swift */; };
 		ADCD5B0F20D7E40C0037F156 /* ChangePinSettingsItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADCD5B0E20D7E40C0037F156 /* ChangePinSettingsItem.swift */; };
 		ADDD13B62119CE740035D2F9 /* StackViewElement.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADDD13B52119CE740035D2F9 /* StackViewElement.swift */; };
 		ADDD13B92119CEB40035D2F9 /* UIStackView.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADDD13B82119CEB40035D2F9 /* UIStackView.swift */; };
@@ -799,7 +799,7 @@
 		ADC48CA6214AD8B800949CD9 /* DateEstimatorTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateEstimatorTests.swift; sourceTree = "<group>"; };
 		ADC48CA82150FBA200949CD9 /* HistoryService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistoryService.swift; sourceTree = "<group>"; };
 		ADCD060020E67FA5009D9650 /* Environment.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Environment.swift; sourceTree = "<group>"; };
-		ADCD5B0C20D7E3F50037F156 /* RemoveRemoteNodeSettingsItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RemoveRemoteNodeSettingsItem.swift; sourceTree = "<group>"; };
+		ADCD5B0C20D7E3F50037F156 /* ManageWalletsSettingsItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ManageWalletsSettingsItem.swift; sourceTree = "<group>"; };
 		ADCD5B0E20D7E40C0037F156 /* ChangePinSettingsItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChangePinSettingsItem.swift; sourceTree = "<group>"; };
 		ADCE01BA207B57ED00CA72E8 /* CreateWallet.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = CreateWallet.storyboard; sourceTree = "<group>"; };
 		ADCE01BC207B598C00CA72E8 /* SelectWalletCreationMethodViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectWalletCreationMethodViewController.swift; sourceTree = "<group>"; };
@@ -1118,7 +1118,7 @@
 				A091914A203B297D00FA525A /* CurrencySettingsItem.swift */,
 				AD6FFCA520AB0A3700B57330 /* OnChainRequestAddressTypeSettingsItem.swift */,
 				ADFE2E4B216CF4A800988243 /* PushViewControllerSettingsItem.swift */,
-				ADCD5B0C20D7E3F50037F156 /* RemoveRemoteNodeSettingsItem.swift */,
+				ADCD5B0C20D7E3F50037F156 /* ManageWalletsSettingsItem.swift */,
 				AD81C21621B80FCD00FA3FA9 /* SafariSettingsItem.swift */,
 				A0DDC06B2018C07100AEFF94 /* SettingsItem.swift */,
 			);
@@ -3041,7 +3041,7 @@
 				AD391C5620D16F7A007EE22A /* ConnectRemoteNodeViewModel.swift in Sources */,
 				AD391C5E20D16F7A007EE22A /* MnemonicWordTableViewCell.swift in Sources */,
 				AD391D0C20D16FF5007EE22A /* PinView.swift in Sources */,
-				ADCD5B0D20D7E3F50037F156 /* RemoveRemoteNodeSettingsItem.swift in Sources */,
+				ADCD5B0D20D7E3F50037F156 /* ManageWalletsSettingsItem.swift in Sources */,
 				AD28844F21287B56003C3D94 /* SendViewModel.swift in Sources */,
 				AD391C4320D16F0B007EE22A /* Appearance.swift in Sources */,
 				AD967FF021062AB20048085B /* RPCConnectQRCodeError+Localizable.swift in Sources */,

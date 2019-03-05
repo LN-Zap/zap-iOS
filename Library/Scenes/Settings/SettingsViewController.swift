@@ -29,13 +29,12 @@ final class SettingsViewController: GroupedTableViewController {
         }
 
         var walletRows: [SettingsItem] = [
-            RemoveRemoteNodeSettingsItem(disconnectWalletDelegate: disconnectWalletDelegate),
+            ManageWalletsSettingsItem(disconnectWalletDelegate: disconnectWalletDelegate),
             ChangePinSettingsItem(authenticationViewModel: authenticationViewModel)
         ]
 
         if configuration.connection == .local {
-            walletRows.append(PushViewControllerSettingsItem(title: L10n.Scene.Settings.Item.lndLog, pushViewController: pushLndLogViewController)
-)
+            walletRows.append(PushViewControllerSettingsItem(title: L10n.Scene.Settings.Item.lndLog, pushViewController: pushLndLogViewController))
         }
 
         let sections: [Section<SettingsItem>] = [

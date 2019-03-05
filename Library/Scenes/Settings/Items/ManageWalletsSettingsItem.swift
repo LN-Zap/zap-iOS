@@ -5,16 +5,23 @@
 //  Copyright © 2018 Zap. All rights reserved.
 //
 
+import Bond
 import Foundation
 import Lightning
+import ReactiveKit
 
-final class RemoveRemoteNodeSettingsItem: SettingsItem {
+final class ManageWalletsSettingsItem: SettingsItem, SubtitleSettingsItem {
+    let subtitle: Signal<String?, NoError>
+
     let title = L10n.Scene.Settings.Item.removeRemoteNode
 
     private weak var disconnectWalletDelegate: DisconnectWalletDelegate?
 
     init(disconnectWalletDelegate: DisconnectWalletDelegate) {
         self.disconnectWalletDelegate = disconnectWalletDelegate
+
+        let alias = WalletConfigurationStore.load().selectedWallet?.alias
+        subtitle = Observable(alias).toSignal()
     }
 
     func didSelectItem(from fromViewController: UIViewController) {
