@@ -51,19 +51,22 @@ final class WalletViewController: UIViewController {
     @IBOutlet private weak var sendButton: UIButton!
     @IBOutlet private weak var requestButton: UIButton!
     @IBOutlet private weak var exchangeRateLabel: UILabel!
+    @IBOutlet private weak var nodeAliasButton: UIButton!
 
-    private var lightningService: LightningService?
-    private var sendButtonTapped: (() -> Void)?
-    private var requestButtonTapped: (() -> Void)?
+    private var lightningService: LightningService!
+    private var sendButtonTapped: (() -> Void)!
+    private var requestButtonTapped: (() -> Void)!
+    private var nodeAliasButtonTapped: (() -> Void)!
 
     private var graphDataSource: GraphViewDataSource?
 
-    static func instantiate(lightningService: LightningService, sendButtonTapped: @escaping () -> Void, requestButtonTapped: @escaping () -> Void) -> WalletViewController {
+    static func instantiate(lightningService: LightningService, sendButtonTapped: @escaping () -> Void, requestButtonTapped: @escaping () -> Void, nodeAliasButtonTapped: @escaping () -> Void) -> WalletViewController {
         let walletViewController = StoryboardScene.Wallet.walletViewController.instantiate()
         walletViewController.lightningService = lightningService
 
         walletViewController.sendButtonTapped = sendButtonTapped
         walletViewController.requestButtonTapped = requestButtonTapped
+        walletViewController.nodeAliasButtonTapped = nodeAliasButtonTapped
 
         walletViewController.tabBarItem.title = L10n.Scene.Wallet.title
         walletViewController.tabBarItem.image = Asset.tabbarWallet.image
@@ -152,20 +155,25 @@ final class WalletViewController: UIViewController {
 
     private func setupBindings() {
         [lightningService?.balanceService.total.bind(to: secondaryBalanceLabel.reactive.text, currency: Settings.shared.secondaryCurrency),
-         lightningService?.infoService.network.map({ $0 == .mainnet }).bind(to: networkLabel.reactive.isHidden)]
-            .dispose(in: reactive.bag)
+         lightningService?.infoService.network.map({ $0 == .mainnet }).bind(to: networkLabel.reactive.isHidden),
+         lightningService?.infoService.info.map({ $0?.alias }).bind(to: nodeAliasButton.reactive.title)
+        ].dispose(in: reactive.bag)
     }
 
     @IBAction private func presentSend(_ sender: Any) {
-        sendButtonTapped?()
+        sendButtonTapped()
     }
 
     @IBAction private func presentRequest(_ sender: Any) {
-        requestButtonTapped?()
+        requestButtonTapped()
     }
 
     @IBAction private func swapCurrencyButtonTapped(_ sender: Any) {
         Settings.shared.swapCurrencies()
+    }
+
+    @IBAction func presentNodeList(_ sender: Any) {
+        nodeAliasButtonTapped()
     }
 }
 
