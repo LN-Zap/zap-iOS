@@ -95,7 +95,10 @@ public final class InfoService {
                 syncDebounceCount = 0
                 walletState.value = newState
             }
-
+        }
+        if walletState.value == .running {
+            // if the state does not switch to syncing because of debouncing syncDebounceCount needs to be reset anyway
+            syncDebounceCount = 0
         }
 
         if let info = result.value {
