@@ -11,6 +11,8 @@ import SwiftLnd
 import UIKit
 
 final class SendViewController: ModalDetailViewController {
+    private weak var amountInputView: AmountInputView?
+
     private let viewModel: SendViewModel
     private let authenticationViewModel: AuthenticationViewModel
 
@@ -90,6 +92,8 @@ final class SendViewController: ModalDetailViewController {
         } else {
             amountInputView.becomeFirstResponder()
         }
+
+        self.amountInputView = amountInputView
     }
 
     private func authenticate(completion: @escaping (Result<Success, AuthenticationError>) -> Void) {
@@ -108,12 +112,15 @@ final class SendViewController: ModalDetailViewController {
     }
 
     private func sendButtonTapped() {
+        amountInputView?.isEnabled = false
+
         authenticate { [weak self] result in
             switch result {
             case .success:
                 self?.send()
             case .failure:
                 Toast.presentError(L10n.Scene.Send.authenticationFailed)
+                self?.amountInputView?.isEnabled = true
             }
         }
     }
@@ -128,6 +135,7 @@ final class SendViewController: ModalDetailViewController {
                     self?.dismissParent()
                 case .failure(let error):
                     Toast.presentError(error.localizedDescription)
+                    self?.amountInputView?.isEnabled = true
                 }
             }
         }
