@@ -19,7 +19,7 @@ public struct FailedPaymentEvent: Equatable, DateProvidingEvent, AmountProviding
     public let expiry: Date
     public let fallbackAddress: BitcoinAddress?
     public let paymentRequest: String
-    public let node: ConnectedNodeTable
+    public let node: LightningNode
 }
 
 extension FailedPaymentEvent {
@@ -31,7 +31,7 @@ extension FailedPaymentEvent {
         expiry = paymentRequest.expiryDate
         fallbackAddress = paymentRequest.fallbackAddress
         self.paymentRequest = paymentRequest.raw
-        node = ConnectedNodeTable(pubKey: paymentRequest.destination, alias: nil, color: nil)
+        node = LightningNode(pubKey: paymentRequest.destination, alias: nil, color: nil)
     }
 
     public var isExpired: Bool {
@@ -50,7 +50,12 @@ extension FailedPaymentEvent {
         expiry = failedPaymentTable.expiry
         fallbackAddress = failedPaymentTable.fallbackAddress
         paymentRequest = failedPaymentTable.paymentRequest
-        node = ConnectedNodeTable(row: row) ?? ConnectedNodeTable(pubKey: failedPaymentTable.destination, alias: nil, color: nil)
+
+        if let nodeTable = ConnectedNodeTable(row: row) {
+            node = LightningNode(pubKey: nodeTable.pubKey, alias: nodeTable.alias, color: nodeTable.color)
+        } else {
+            node = LightningNode(pubKey: failedPaymentTable.destination, alias: nil, color: nil)
+        }
     }
 
     func insert(database: Connection) throws {

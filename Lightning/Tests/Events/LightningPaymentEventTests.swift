@@ -8,6 +8,7 @@
 @testable import Lightning
 import SQLite
 import SwiftBTC
+import SwiftLnd
 import XCTest
 
 // swiftlint:disable force_try force_unwrapping implicitly_unwrapped_optional
@@ -28,7 +29,7 @@ class LightningPaymentEventTests: XCTestCase {
 
     func testSaveLoad() {
         let date = Date()
-        let node = ConnectedNodeTable(pubKey: "PK", alias: "alias", color: "#ff00ff")
+        let node = LightningNode(pubKey: "PK", alias: "alias", color: "#ff00ff")
 
         let event = LightningPaymentEvent(paymentHash: "hash", memo: "mem12", amount: 95, fee: 21, date: date, node: node)
         try! event.insert(database: mockConnection)
@@ -44,6 +45,6 @@ class LightningPaymentEventTests: XCTestCase {
         XCTAssertEqual(events.first!.date.timeIntervalSinceReferenceDate, date.timeIntervalSinceReferenceDate, accuracy: 0.001)
 
         // alias and color are not saved
-        XCTAssertEqual(events.first?.node, ConnectedNodeTable(pubKey: "PK", alias: nil, color: nil))
+        XCTAssertEqual(events.first?.node, LightningNode(pubKey: "PK", alias: nil, color: nil))
     }
 }

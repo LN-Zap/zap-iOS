@@ -23,7 +23,7 @@ extension NodeInfo {
     }
 }
 
-public struct LightningNode: Codable {
+public struct LightningNode: Codable, Equatable {
     public let lastUpdate: Int?
     public let pubKey: String
     public let alias: String?
@@ -31,6 +31,13 @@ public struct LightningNode: Codable {
 }
 
 extension LightningNode {
+    public init(pubKey: String, alias: String?, color: String?) {
+        lastUpdate = nil
+        self.pubKey = pubKey
+        self.alias = alias
+        self.color = color
+    }
+
     init(lightningNode: LNDLightningNode) {
         lastUpdate = Int(lightningNode.lastUpdate)
         pubKey = lightningNode.pubKey

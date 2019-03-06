@@ -20,17 +20,17 @@ public struct LightningPaymentEvent: Equatable, DateProvidingEvent, AmountProvid
     public let amount: Satoshi // amount + optional fees
     public let fee: Satoshi
     public let date: Date
-    public let node: ConnectedNodeTable?
+    public let node: LightningNode?
 }
 
 extension LightningPaymentEvent {
-    init(payment: Payment, memo: String?, node: ConnectedNodeTable?) {
+    init(payment: Payment, memo: String?, node: LightningNode?) {
         paymentHash = payment.paymentHash
         self.memo = memo
         amount = payment.amount
         fee = payment.fees
         date = payment.date
-        self.node = node ?? ConnectedNodeTable(pubKey: payment.destination, alias: nil, color: nil)
+        self.node = node ?? LightningNode(pubKey: payment.destination, alias: nil, color: nil)
     }
 
     init(invoice: Invoice) {
@@ -59,9 +59,9 @@ extension LightningPaymentEvent {
         date = lightningPayment.date
 
         if let node = ConnectedNodeTable(row: row) {
-            self.node = node
+            self.node = LightningNode(pubKey: node.pubKey, alias: node.alias, color: node.color)
         } else if let destination = lightningPayment.destination {
-            node = ConnectedNodeTable(pubKey: destination, alias: nil, color: nil)
+            node = LightningNode(pubKey: destination, alias: nil, color: nil)
         } else {
             node = nil
         }

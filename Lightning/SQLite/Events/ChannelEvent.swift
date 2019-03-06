@@ -43,7 +43,7 @@ public struct ChannelEvent: Equatable {
     }
 
     public let txHash: String
-    public let node: ConnectedNodeTable
+    public let node: LightningNode
     public let blockHeight: Int
     public let type: ChanneEventType
     public let fee: Satoshi?
@@ -53,7 +53,7 @@ extension ChannelEvent {
     init?(channel: Channel) {
         guard let blockHeight = channel.blockHeight else { return nil }
         txHash = channel.channelPoint.fundingTxid
-        node = ConnectedNodeTable(pubKey: channel.remotePubKey, alias: nil, color: nil)
+        node = LightningNode(pubKey: channel.remotePubKey, alias: nil, color: nil)
         self.blockHeight = blockHeight
         type = .open
         fee = nil
@@ -61,7 +61,7 @@ extension ChannelEvent {
 
     init(closing channelCloseSummary: ChannelCloseSummary) {
         txHash = channelCloseSummary.closingTxHash
-        node = ConnectedNodeTable(pubKey: channelCloseSummary.remotePubKey, alias: nil, color: nil)
+        node = LightningNode(pubKey: channelCloseSummary.remotePubKey, alias: nil, color: nil)
         blockHeight = channelCloseSummary.closeHeight
         type = ChannelEvent.ChanneEventType(closeType: channelCloseSummary.closeType)
         fee = nil
@@ -69,7 +69,7 @@ extension ChannelEvent {
 
     init(opening channelCloseSummary: ChannelCloseSummary) {
         txHash = channelCloseSummary.channelPoint.fundingTxid
-        node = ConnectedNodeTable(pubKey: channelCloseSummary.remotePubKey, alias: nil, color: nil)
+        node = LightningNode(pubKey: channelCloseSummary.remotePubKey, alias: nil, color: nil)
         blockHeight = channelCloseSummary.openHeight
         type = .open
         fee = nil
@@ -83,7 +83,12 @@ extension ChannelEvent {
         txHash = channelEventTable.txHash
         blockHeight = channelEventTable.blockHeight
         type = channelEventTable.type
-        node = ConnectedNodeTable(row: row) ?? ConnectedNodeTable(pubKey: channelEventTable.nodePubKey, alias: nil, color: nil)
+
+        if let nodeTable = ConnectedNodeTable(row: row) {
+            node = LightningNode(pubKey: nodeTable.pubKey, alias: nodeTable.alias, color: nodeTable.color)
+        } else {
+            node = LightningNode(pubKey: channelEventTable.nodePubKey, alias: nil, color: nil)
+        }
 
         fee = (try? row.get(TransactionTable.Column.fee)) ?? nil // swiftlint:disable:this redundant_nil_coalescing
     }
@@ -99,6 +104,6 @@ extension ChannelEvent {
 
     func insert(database: Connection) throws {
         try ChannelEventTable(txHash: txHash, nodePubKey: node.pubKey, blockHeight: blockHeight, type: type).insert(database: database)
-        try node.insertPubKey(database: database)
+        try ConnectedNodeTable(lightningNode: node).insertPubKey(database: database)
     }
 }

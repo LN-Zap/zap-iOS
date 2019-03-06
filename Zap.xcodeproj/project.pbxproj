@@ -1663,7 +1663,7 @@
 				AD3FF6E9222053C40017E376 /* MemoTable.swift */,
 				AD9E7E2E222EFD6A0057E149 /* ReceivingAddressTable.swift */,
 				AD9E7E2C222EF6670057E149 /* TransactionsTable.swift */,
-				AD9E7E23222EDECE0057E149 /* ZapTable.swift */,
+				ADE11D8522301AC4000D67C1 /* Protocols */,
 			);
 			path = Tables;
 			sourceTree = "<group>";
@@ -1863,6 +1863,14 @@
 				AD035BFB2174A030005EA785 /* ChannelTableViewCell.xib */,
 			);
 			path = Cell;
+			sourceTree = "<group>";
+		};
+		ADE11D8522301AC4000D67C1 /* Protocols */ = {
+			isa = PBXGroup;
+			children = (
+				AD9E7E23222EDECE0057E149 /* ZapTable.swift */,
+			);
+			path = Protocols;
 			sourceTree = "<group>";
 		};
 		ADE64DFC22293FF9004C0BC8 /* Widget */ = {

@@ -79,11 +79,11 @@ public final class ChannelService {
         }
     }
 
-    public func node(for remotePubkey: String, completion: @escaping (ConnectedNodeTable?) -> Void) {
+    public func node(for remotePubkey: String, completion: @escaping (LightningNode?) -> Void) {
         api.nodeInfo(pubKey: remotePubkey) { [persistence] result in
-            if let lightningNode = result.value {
-                let connectedNode = ConnectedNodeTable(lightningNode: lightningNode.node)
-                try? connectedNode.insert(database: persistence.connection())
+            if let nodeInfo = result.value {
+                let connectedNode = nodeInfo.node
+                try? ConnectedNodeTable(lightningNode: connectedNode).insert(database: persistence.connection())
                 completion(connectedNode)
             } else {
                 completion(nil)
@@ -139,7 +139,7 @@ extension ChannelService {
         try persistence.connection().run(query.update(TransactionTable.Column.type <- TransactionEvent.TransactionEventType.userInitiated.rawValue))
     }
 
-    private func updateNodeIfNeeded(_ node: ConnectedNodeTable) throws {
+    private func updateNodeIfNeeded(_ node: LightningNode) throws {
         self.node(for: node.pubKey) { _ in }
     }
 }

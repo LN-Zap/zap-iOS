@@ -8,6 +8,7 @@
 @testable import Lightning
 import SQLite
 import SwiftBTC
+import SwiftLnd
 import XCTest
 
 // swiftlint:disable force_try implicitly_unwrapped_optional
@@ -27,7 +28,7 @@ class ChannelEventTests: XCTestCase {
     var mockConnection: Connection!
 
     func testSaveLoad() {
-        let node = ConnectedNodeTable(pubKey: "PK", alias: "alias", color: "#ff00ff")
+        let node = LightningNode(pubKey: "PK", alias: "alias", color: "#ff00ff")
         let event = ChannelEvent(txHash: "hash", node: node, blockHeight: 1, type: .abandoned, fee: 22)
 
         try! event.insert(database: mockConnection)
@@ -41,7 +42,7 @@ class ChannelEventTests: XCTestCase {
         XCTAssertEqual(events.first?.type, .abandoned)
 
         // alias and color are not saved
-        XCTAssertEqual(events.first?.node, ConnectedNodeTable(pubKey: "PK", alias: nil, color: nil))
+        XCTAssertEqual(events.first?.node, LightningNode(pubKey: "PK", alias: nil, color: nil))
         // fee is not saved
         XCTAssertNil(events.first?.fee)
     }
