@@ -15,7 +15,7 @@ import SwiftLnd
  Includes transactions, except those resulting from opening or closing channels.
  */
 public struct TransactionEvent: Equatable, DateProvidingEvent, AmountProvidingEvent {
-    public enum TransactionEventType: Int { // TODO: rename to type?
+    public enum Kind: Int {
         case userInitiated = 0
         case channelRelated = 1
         case unknown = 2
@@ -28,11 +28,11 @@ public struct TransactionEvent: Equatable, DateProvidingEvent, AmountProvidingEv
     public let date: Date
     public let destinationAddresses: [BitcoinAddress]
     public let blockHeight: Int? // nil if transaction is unconfirmed
-    public let type: TransactionEventType
+    public let type: Kind
 }
 
 extension TransactionEvent {
-    init?(transaction: Transaction, type: TransactionEventType = .unknown) {
+    init?(transaction: Transaction, type: Kind = .unknown) {
         guard transaction.amount != 0 else { return nil }
 
         txHash = transaction.id
@@ -87,7 +87,7 @@ extension TransactionEvent {
 
     public static func payments(database: Connection) throws -> [TransactionEvent] {
         let query = TransactionTable.table
-            .filter(TransactionTable.Column.type != TransactionEventType.channelRelated.rawValue)
+            .filter(TransactionTable.Column.type != Kind.channelRelated.rawValue)
         return try events(query: query, database: database)
     }
 

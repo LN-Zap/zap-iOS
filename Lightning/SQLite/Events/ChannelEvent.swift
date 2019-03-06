@@ -12,7 +12,7 @@ import SwiftLnd
 
 /// Does influence the balance of the user's wallet because a fee is payed.
 public struct ChannelEvent: Equatable {
-    public enum ChanneEventType: Int { // TODO: rename
+    public enum Kind: Int {
         case open
         case cooperativeClose
         case localForceClose
@@ -45,7 +45,7 @@ public struct ChannelEvent: Equatable {
     public let txHash: String
     public let node: LightningNode
     public let blockHeight: Int
-    public let type: ChanneEventType
+    public let type: Kind
     public let fee: Satoshi?
 }
 
@@ -63,7 +63,7 @@ extension ChannelEvent {
         txHash = channelCloseSummary.closingTxHash
         node = LightningNode(pubKey: channelCloseSummary.remotePubKey, alias: nil, color: nil)
         blockHeight = channelCloseSummary.closeHeight
-        type = ChannelEvent.ChanneEventType(closeType: channelCloseSummary.closeType)
+        type = ChannelEvent.Kind(closeType: channelCloseSummary.closeType)
         fee = nil
     }
 

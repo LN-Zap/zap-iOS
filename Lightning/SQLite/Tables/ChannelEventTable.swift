@@ -13,7 +13,7 @@ struct ChannelEventTable {
     let txHash: String
     let nodePubKey: String
     let blockHeight: Int
-    let type: ChannelEvent.ChanneEventType
+    let type: ChannelEvent.Kind
 }
 
 extension ChannelEventTable: ZapTable {
@@ -29,7 +29,7 @@ extension ChannelEventTable: ZapTable {
     init(row: Row) {
         txHash = row[ChannelEventTable.table[Column.txHash]]
         blockHeight = row[ChannelEventTable.table[Column.blockHeight]]
-        type = ChannelEvent.ChanneEventType(rawValue: row[Column.type]) ?? .unknown
+        type = ChannelEvent.Kind(rawValue: row[Column.type]) ?? .unknown
         nodePubKey = row[ChannelEventTable.table[Column.nodePubKey]]
     }
 

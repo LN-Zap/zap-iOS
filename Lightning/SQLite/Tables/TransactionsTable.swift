@@ -16,7 +16,7 @@ struct TransactionTable {
     let date: Date
     let destinationAddresses: [BitcoinAddress]
     let blockHeight: Int? // nil if transaction is unconfirmed
-    let type: TransactionEvent.TransactionEventType
+    let type: TransactionEvent.Kind
 }
 
 extension TransactionTable: ZapTable {
@@ -43,7 +43,7 @@ extension TransactionTable: ZapTable {
         date = row[Column.date]
         destinationAddresses = bitcoinAddresses
         blockHeight = row[Column.blockHeight]
-        type = TransactionEvent.TransactionEventType(rawValue: row[Column.type]) ?? .unknown
+        type = TransactionEvent.Kind(rawValue: row[Column.type]) ?? .unknown
     }
 
     static func createTable(database: Connection) throws {
@@ -54,7 +54,7 @@ extension TransactionTable: ZapTable {
             t.column(Column.date)
             t.column(Column.destinationAddresses)
             t.column(Column.blockHeight)
-            t.column(Column.type, defaultValue: TransactionEvent.TransactionEventType.unknown.rawValue)
+            t.column(Column.type, defaultValue: TransactionEvent.Kind.unknown.rawValue)
         })
     }
 
