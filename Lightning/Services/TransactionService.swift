@@ -32,7 +32,7 @@ public final class TransactionService {
     public func newAddress(with type: OnChainRequestAddressType, completion: @escaping (Result<BitcoinAddress, LndApiError>) -> Void) {
         api.newAddress(type: type) { [persistence] result in
             if let address = result.value {
-                try? ReceivingAddress.insert(address: address, database: persistence.connection())
+                try? ReceivingAddressTable(address: address).insert(database: persistence.connection())
             }
             completion(result)
         }

@@ -53,10 +53,12 @@ final class WalletViewController: UIViewController {
     @IBOutlet private weak var exchangeRateLabel: UILabel!
     @IBOutlet private weak var nodeAliasButton: UIButton!
 
+    // swiftlint:disable implicitly_unwrapped_optional
     private var lightningService: LightningService!
     private var sendButtonTapped: (() -> Void)!
     private var requestButtonTapped: (() -> Void)!
     private var nodeAliasButtonTapped: (() -> Void)!
+    // swiftlint:enable implicitly_unwrapped_optional
 
     private var graphDataSource: GraphViewDataSource?
 
@@ -172,7 +174,7 @@ final class WalletViewController: UIViewController {
         Settings.shared.swapCurrencies()
     }
 
-    @IBAction func presentNodeList(_ sender: Any) {
+    @IBAction private func presentNodeList(_ sender: Any) {
         nodeAliasButtonTapped()
     }
 }

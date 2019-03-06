@@ -79,10 +79,10 @@ public final class ChannelService {
         }
     }
 
-    public func node(for remotePubkey: String, completion: @escaping (ConnectedNode?) -> Void) {
+    public func node(for remotePubkey: String, completion: @escaping (ConnectedNodeTable?) -> Void) {
         api.nodeInfo(pubKey: remotePubkey) { [persistence] result in
             if let lightningNode = result.value {
-                let connectedNode = ConnectedNode(lightningNode: lightningNode.node)
+                let connectedNode = ConnectedNodeTable(lightningNode: lightningNode.node)
                 try? connectedNode.insert(database: persistence.connection())
                 completion(connectedNode)
             } else {
@@ -133,13 +133,13 @@ extension ChannelService {
     }
 
     private func markTxIdsAsChannelRelated(txIds: [String]) throws {
-        let query = TransactionEvent.table
-            .filter(TransactionEvent.Column.type == TransactionEvent.TransactionEventType.unknown.rawValue)
-            .filter(txIds.contains(TransactionEvent.Column.txHash))
-        try persistence.connection().run(query.update(TransactionEvent.Column.type <- TransactionEvent.TransactionEventType.userInitiated.rawValue))
+        let query = TransactionTable.table
+            .filter(TransactionTable.Column.type == TransactionEvent.TransactionEventType.unknown.rawValue)
+            .filter(txIds.contains(TransactionTable.Column.txHash))
+        try persistence.connection().run(query.update(TransactionTable.Column.type <- TransactionEvent.TransactionEventType.userInitiated.rawValue))
     }
 
-    private func updateNodeIfNeeded(_ node: ConnectedNode) throws {
+    private func updateNodeIfNeeded(_ node: ConnectedNodeTable) throws {
         self.node(for: node.pubKey) { _ in }
     }
 }

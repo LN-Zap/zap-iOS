@@ -31,17 +31,17 @@ class ReceivingAddressTests: XCTestCase {
     }
 
     var mockPersistence: MockPersistence!
-    let testAddress = BitcoinAddress(string: "mwthp1qAAisrqMiKqZG7TMGAgMNJTg5hbD")!
+    let testAddress = ReceivingAddressTable(address: BitcoinAddress(string: "mwthp1qAAisrqMiKqZG7TMGAgMNJTg5hbD")!)
     let testConnection = LightningConnection.remote(RPCCredentials.mock)
 
     func testNewAddressGetsSaved() {
         let expectation = XCTestExpectation(description: "Create Receiving Address")
 
-        let mockApi = LightningApiMock(newAddress: testAddress)
+        let mockApi = LightningApiMock(newAddress: testAddress.address)
         let lightningService = LightningService(api: mockApi, walletId: "1", persistence: mockPersistence, connection: testConnection)
 
         lightningService.transactionService.newAddress(with: .witnessPubkeyHash) { [testAddress, mockPersistence] _ in
-            XCTAssertEqual(try! ReceivingAddress.all(database: mockPersistence!.connection()), [testAddress])
+            XCTAssertEqual(try! ReceivingAddressTable.all(database: mockPersistence!.connection()), [testAddress])
             expectation.fulfill()
         }
 
@@ -53,9 +53,9 @@ class ReceivingAddressTests: XCTestCase {
         let lightningService = LightningService(api: mockApi, walletId: "1", persistence: mockPersistence, connection: testConnection)
         lightningService.start()
 
-        try! ReceivingAddress.insert(address: testAddress, database: try! mockPersistence.connection())
+        try! testAddress.insert(database: try! mockPersistence.connection())
 
-        let transaction = Transaction(id: "id", amount: 1, date: Date(timeIntervalSince1970: 123), fees: 1, destinationAddresses: [testAddress], blockHeight: nil)
+        let transaction = Transaction(id: "id", amount: 1, date: Date(timeIntervalSince1970: 123), fees: 1, destinationAddresses: [testAddress.address], blockHeight: nil)
         mockApi.subscribeTransactionsCallback?(.success(transaction))
 
         let events = try! TransactionEvent.events(database: mockPersistence.connection())
@@ -67,7 +67,7 @@ class ReceivingAddressTests: XCTestCase {
         let lightningService = LightningService(api: mockApi, walletId: "1", persistence: mockPersistence, connection: testConnection)
         lightningService.start()
 
-        let transaction = Transaction(id: "id", amount: 1, date: Date(), fees: 1, destinationAddresses: [testAddress], blockHeight: nil)
+        let transaction = Transaction(id: "id", amount: 1, date: Date(), fees: 1, destinationAddresses: [testAddress.address], blockHeight: nil)
         mockApi.subscribeTransactionsCallback?(.success(transaction))
 
         let events = try! TransactionEvent.events(database: mockPersistence.connection())
@@ -75,9 +75,9 @@ class ReceivingAddressTests: XCTestCase {
     }
 
     func testInitialTransactionWithReceivingAddress() {
-        try! ReceivingAddress.insert(address: testAddress, database: try! mockPersistence.connection())
+        try! testAddress.insert(database: try! mockPersistence.connection())
 
-        let transaction = Transaction(id: "id", amount: 1, date: Date(timeIntervalSince1970: 123), fees: 1, destinationAddresses: [testAddress], blockHeight: nil)
+        let transaction = Transaction(id: "id", amount: 1, date: Date(timeIntervalSince1970: 123), fees: 1, destinationAddresses: [testAddress.address], blockHeight: nil)
         let mockApi = LightningApiMock(transactions: [transaction])
         let lightningService = LightningService(api: mockApi, walletId: "1", persistence: mockPersistence, connection: testConnection)
 
@@ -88,7 +88,7 @@ class ReceivingAddressTests: XCTestCase {
     }
 
     func testInitialTransactionWithoutReceivingAddress() {
-        let transaction = Transaction(id: "id", amount: 1, date: Date(timeIntervalSince1970: 123), fees: 1, destinationAddresses: [testAddress], blockHeight: nil)
+        let transaction = Transaction(id: "id", amount: 1, date: Date(timeIntervalSince1970: 123), fees: 1, destinationAddresses: [testAddress.address], blockHeight: nil)
         let mockApi = LightningApiMock(transactions: [transaction])
         let lightningService = LightningService(api: mockApi, walletId: "1", persistence: mockPersistence, connection: testConnection)
 

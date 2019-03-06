@@ -8,6 +8,7 @@
 import Foundation
 import Logger
 import SQLite
+import SwiftBTC
 import SwiftLnd
 
 enum PersistenceError: Error {
@@ -21,13 +22,18 @@ protocol Persistence {
 
 private extension Connection {
     func createTables() throws {
-        try ConnectedNode.createTable(database: self)
-        try TransactionEvent.createTable(database: self)
-        try FailedPaymentEvent.createTable(database: self)
-        try CreateInvoiceEvent.createTable(database: self)
-        try LightningPaymentEvent.createTable(database: self)
-        try ChannelEvent.createTable(database: self)
-        try ReceivingAddress.createTable(database: self)
+        let tables: [ZapTable.Type] = [
+            ConnectedNodeTable.self,
+            TransactionTable.self,
+            FailedPaymentTable.self,
+            CreateInvoiceTable.self,
+            LightningPaymentTable.self,
+            ChannelEventTable.self,
+            ReceivingAddressTable.self,
+            MemoTable.self
+        ]
+
+        try tables.forEach { try $0.createTable(database: self) }
     }
 }
 

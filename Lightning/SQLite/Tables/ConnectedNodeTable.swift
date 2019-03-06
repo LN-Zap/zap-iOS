@@ -9,13 +9,13 @@ import Foundation
 import SQLite
 import SwiftLnd
 
-public struct ConnectedNode: Equatable {
+public struct ConnectedNodeTable: Equatable {
     public let pubKey: String
     public let alias: String?
     public let color: String?
 }
 
-extension ConnectedNode {
+extension ConnectedNodeTable {
     init(lightningNode: LightningNode) {
         self.pubKey = lightningNode.pubKey
         self.alias = lightningNode.alias
@@ -24,7 +24,7 @@ extension ConnectedNode {
 }
 
 // MARK: - Persistence
-extension ConnectedNode {
+extension ConnectedNodeTable: ZapTable {
     enum Column {
         static let pubKey = Expression<String>("pubKey")
         static let alias = Expression<String?>("alias")
@@ -33,14 +33,26 @@ extension ConnectedNode {
 
     static let table = Table("connectedNodes")
 
-    init(row: Row) {
-        pubKey = row[Column.pubKey]
-        alias = row[Column.alias]
-        color = row[Column.color]
+    init?(row: Row) {
+        guard let pubKey = try? row.get(Column.pubKey) else { return nil }
+
+        self.pubKey = pubKey
+
+        if let alias = try? row.get(Column.alias) {
+            self.alias = alias
+        } else {
+            alias = nil
+        }
+
+        if let color = try? row.get(Column.color) {
+            self.color = color
+        } else {
+            color = nil
+        }
     }
 
     static func createTable(database: Connection) throws {
-        try database.run(ConnectedNode.table.create(ifNotExists: true) { t in
+        try database.run(ConnectedNodeTable.table.create(ifNotExists: true) { t in
             t.column(Column.pubKey, primaryKey: true)
             t.column(Column.alias)
             t.column(Column.color)
@@ -48,7 +60,7 @@ extension ConnectedNode {
     }
 
     func insert(database: Connection) throws {
-        try database.run(ConnectedNode.table.insert(
+        try database.run(ConnectedNodeTable.table.insert(
             or: .replace,
             Column.pubKey <- pubKey,
             Column.alias <- alias,
@@ -57,6 +69,6 @@ extension ConnectedNode {
     }
 
     func insertPubKey(database: Connection) throws {
-        try database.run(ConnectedNode.table.insert(or: .replace, Column.pubKey <- pubKey))
+        try database.run(ConnectedNodeTable.table.insert(or: .replace, Column.pubKey <- pubKey))
     }
 }

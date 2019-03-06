@@ -145,10 +145,11 @@ public final class HistoryService {
 // MARK: - Persistence
 extension HistoryService {
     private func addTransactions(_ transactions: [Transaction]) {
-        let receiveAddresses = (try? ReceivingAddress.all(database: persistence.connection())) ?? Set()
+        let receiveAddresses = (try? ReceivingAddressTable.all(database: persistence.connection())) ?? Set()
+        let bitcoinAddresses = receiveAddresses.map { $0.address }
 
         let transactions = transactions.compactMap { transaction -> TransactionEvent? in
-            for destination in transaction.destinationAddresses where receiveAddresses.contains(destination) {
+            for destination in transaction.destinationAddresses where bitcoinAddresses.contains(destination) {
                 return TransactionEvent(transaction: transaction, type: .userInitiated)
             }
             return TransactionEvent(transaction: transaction, type: .unknown)
@@ -185,7 +186,7 @@ extension HistoryService {
 
     private func addPayments(_ payments: [Payment]) {
         do {
-            for payment in payments.reversed() {
+            for payment in payments {
                 let paymentEvent = LightningPaymentEvent(payment: payment, memo: nil, node: nil)
                 try paymentEvent.insert(database: persistence.connection())
             }
