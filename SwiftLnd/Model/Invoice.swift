@@ -10,7 +10,7 @@ import LndRpc
 import SwiftBTC
 
 public struct Invoice: Equatable {
-    public enum State {
+    public enum State: Int {
         case settled
         case open
         case canceled

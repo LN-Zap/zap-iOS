@@ -34,7 +34,7 @@ extension ChannelEventTable: ZapTable {
     }
 
     static func createTable(database: Connection) throws {
-        try database.run(table.create(ifNotExists: true) { t in
+        try database.run(table.create { t in
             t.column(Column.txHash, primaryKey: true)
             t.column(Column.nodePubKey)
             t.column(Column.blockHeight)

@@ -37,7 +37,7 @@ extension LightningPaymentTable: ZapTable {
     }
 
     static func createTable(database: Connection) throws {
-        try database.run(table.create(ifNotExists: true) { t in
+        try database.run(table.create { t in
             t.column(Column.paymentHash, primaryKey: true)
             t.column(Column.amount)
             t.column(Column.fee)
@@ -48,6 +48,7 @@ extension LightningPaymentTable: ZapTable {
 
     func insert(database: Connection) throws {
         try database.run(LightningPaymentTable.table.insert(
+            or: .ignore,
             Column.paymentHash <- paymentHash,
             Column.amount <- amount,
             Column.fee <- fee,

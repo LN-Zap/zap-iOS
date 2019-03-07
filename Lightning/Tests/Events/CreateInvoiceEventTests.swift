@@ -28,7 +28,7 @@ class CreateInvoiceEventTests: XCTestCase {
 
     func testSaveLoad() {
         let date = Date()
-        let event = CreateInvoiceEvent(id: "idid", memo: "mem", amount: 393, date: date, expiry: date, paymentRequest: "pxcp")
+        let event = CreateInvoiceEvent(id: "idid", memo: "mem", amount: 393, date: date, expiry: date, paymentRequest: "pxcp", state: .settled)
 
         try! event.insert(database: mockConnection)
 
@@ -42,5 +42,6 @@ class CreateInvoiceEventTests: XCTestCase {
         XCTAssertEqual(events.first!.date.timeIntervalSinceReferenceDate, date.timeIntervalSinceReferenceDate, accuracy: 0.001)
         XCTAssertEqual(events.first!.expiry.timeIntervalSinceReferenceDate, date.timeIntervalSinceReferenceDate, accuracy: 0.001)
         XCTAssertEqual(events.first?.paymentRequest, "pxcp")
+        XCTAssertEqual(events.first?.state, .settled)
     }
 }

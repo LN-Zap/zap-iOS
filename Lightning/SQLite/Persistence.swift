@@ -21,19 +21,57 @@ protocol Persistence {
 }
 
 private extension Connection {
-    func createTables() throws {
-        let tables: [ZapTable.Type] = [
-            ConnectedNodeTable.self,
-            TransactionTable.self,
-            FailedPaymentTable.self,
-            CreateInvoiceTable.self,
-            LightningPaymentTable.self,
-            ChannelEventTable.self,
-            ReceivingAddressTable.self,
-            MemoTable.self
-        ]
+    private static let tables: [ZapTable.Type] = [
+        ConnectedNodeTable.self,
+        TransactionTable.self,
+        FailedPaymentTable.self,
+        CreateInvoiceTable.self,
+        LightningPaymentTable.self,
+        ChannelEventTable.self,
+        ReceivingAddressTable.self,
+        MemoTable.self
+    ]
 
-        try tables.forEach { try $0.createTable(database: self) }
+    private static let currentUserVersion = 1
+
+    func createTables() {
+        if userVersion != Connection.currentUserVersion {
+            do {
+                try dropTables()
+            } catch {
+                Logger.error(error.localizedDescription)
+            }
+        }
+
+        do {
+            try Connection.tables.forEach {
+                try $0.createTable(database: self)
+                Logger.info("created db table '\($0)'")
+            }
+            userVersion = Connection.currentUserVersion
+        } catch {
+            Logger.info("Tables already exist.")
+        }
+    }
+
+    func dropTables() throws {
+        try Connection.tables.forEach {
+            try run($0.table.drop(ifExists: true))
+            Logger.info("dropped db table '\($0)'")
+        }
+    }
+
+    var userVersion: Int {
+        get {
+            guard
+                let scalar = try? scalar("PRAGMA user_version"),
+                let int64 = scalar as? Int64
+                else { return 0 }
+            return Int(int64)
+        }
+        set {
+            _ = try? run("PRAGMA user_version = \(Int32(newValue))")
+        }
     }
 }
 
@@ -52,11 +90,7 @@ final class SQLitePersistence: Persistence {
 
         self.currentConnection = connection
 
-        do {
-            try connection.createTables()
-        } catch {
-            Logger.error(error)
-        }
+        connection.createTables()
     }
 
     func connection() throws -> Connection {
@@ -77,7 +111,7 @@ class MockPersistence: Persistence {
     init() {
         do {
             inMemoryConnection = try Connection(.inMemory)
-            try inMemoryConnection.createTables()
+            inMemoryConnection.createTables()
         } catch {
             fatalError("Could not setup in memory database.")
         }

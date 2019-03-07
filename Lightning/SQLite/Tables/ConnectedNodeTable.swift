@@ -52,7 +52,7 @@ extension ConnectedNodeTable: ZapTable {
     }
 
     static func createTable(database: Connection) throws {
-        try database.run(ConnectedNodeTable.table.create(ifNotExists: true) { t in
+        try database.run(ConnectedNodeTable.table.create { t in
             t.column(Column.pubKey, primaryKey: true)
             t.column(Column.alias)
             t.column(Column.color)

@@ -11,8 +11,8 @@ import SwiftBTC
 import SwiftLnd
 
 /*
- Includes all Payments (outgoing lightning transactions).
- Inlcudes invoices that have been settled (incoming lightning transactions).
+ Includes all Payments (sent lightning transactions).
+ Inlcudes invoices that have been settled (received lightning transactions).
  */
 public struct LightningPaymentEvent: Equatable, DateProvidingEvent, AmountProvidingEvent {
     public let paymentHash: String
@@ -24,6 +24,7 @@ public struct LightningPaymentEvent: Equatable, DateProvidingEvent, AmountProvid
 }
 
 extension LightningPaymentEvent {
+    // initializer for transactions I **sent**
     init(payment: Payment, memo: String?, node: LightningNode?) {
         paymentHash = payment.paymentHash
         self.memo = memo
@@ -33,7 +34,9 @@ extension LightningPaymentEvent {
         self.node = node ?? LightningNode(pubKey: payment.destination, alias: nil, color: nil)
     }
 
-    init(invoice: Invoice) {
+    // initializer for transactions I **received**
+    init?(invoice: Invoice) {
+        guard invoice.state == .settled else { return nil }
         paymentHash = invoice.id
         memo = invoice.memo
         amount = invoice.amount
@@ -45,6 +48,7 @@ extension LightningPaymentEvent {
 
 // MARK: - Persistence
 extension LightningPaymentEvent {
+    // payments should never change. does not have to be updated
     func insert(database: Connection) throws {
         try LightningPaymentTable(paymentHash: paymentHash, amount: amount, fee: fee, date: date, destination: node?.pubKey).insert(database: database)
         try MemoTable(id: paymentHash, text: memo)?.insert(database: database)

@@ -42,7 +42,7 @@ extension MemoTable: ZapTable {
     }
 
     static func createTable(database: Connection) throws {
-        try database.run(table.create(ifNotExists: true) { t in
+        try database.run(table.create { t in
             t.column(Column.id, primaryKey: true)
             t.column(Column.text)
         })
@@ -50,6 +50,7 @@ extension MemoTable: ZapTable {
 
     func insert(database: Connection) throws {
         try database.run(MemoTable.table.insert(
+            or: .ignore,
             Column.id <- id,
             Column.text <- text
         ))
