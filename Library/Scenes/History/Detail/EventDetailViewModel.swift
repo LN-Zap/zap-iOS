@@ -81,11 +81,15 @@ final class EventDetailViewModel {
         result.append(contentsOf: label(title: L10n.Scene.TransactionDetail.memoLabel, content: event.memo))
         result.append(contentsOf: dateLabel(title: L10n.Scene.TransactionDetail.dateLabel, date: event.date))
 
-        let expiryLabel = UILabel()
-        Style.Label.body.apply(to: expiryLabel)
-        expiryLabel.font = UIFont.monospacedDigitSystemFont(ofSize: 17, weight: .light)
-        updateExpiryLabel(expiryLabel, expiry: event.expiry)
-        result.append(contentsOf: label(title: L10n.Scene.TransactionDetail.expiryLabel, element: .customView(expiryLabel)))
+        if event.state != .settled {
+            let expiryLabel = UILabel()
+            Style.Label.body.apply(to: expiryLabel)
+            expiryLabel.font = UIFont.monospacedDigitSystemFont(ofSize: 17, weight: .light)
+            updateExpiryLabel(expiryLabel, expiry: event.expiry)
+            result.append(contentsOf: label(title: L10n.Scene.TransactionDetail.expiryLabel, element: .customView(expiryLabel)))
+        } else {
+            result.append(contentsOf: label(title: L10n.Scene.TransactionDetail.invoiceStateLabel, content: L10n.Scene.TransactionDetail.InvoiceStateLabel.settled))
+        }
 
         return result
     }
