@@ -270,7 +270,6 @@
 		ADC0D2F321079FF700B8C62F /* www.blockchain.com.cer in Resources */ = {isa = PBXBuildFile; fileRef = ADC0D2F221079FF600B8C62F /* www.blockchain.com.cer */; };
 		ADC0D2F52107A13900B8C62F /* DigiCert SHA2 Extended Validation Server CA.cer in Resources */ = {isa = PBXBuildFile; fileRef = ADC0D2F42107A13800B8C62F /* DigiCert SHA2 Extended Validation Server CA.cer */; };
 		ADC0D2FA2107A23400B8C62F /* *.blockcypher.com.cer in Resources */ = {isa = PBXBuildFile; fileRef = ADC0D2F62107A19A00B8C62F /* *.blockcypher.com.cer */; };
-		ADC0D2FB2107A23400B8C62F /* COMODO RSA Domain Validation Secure Server CA.cer in Resources */ = {isa = PBXBuildFile; fileRef = ADC0D2F72107A19A00B8C62F /* COMODO RSA Domain Validation Secure Server CA.cer */; };
 		ADC0D3042107A3D700B8C62F /* blockexplorer.com.cer in Resources */ = {isa = PBXBuildFile; fileRef = ADC0D3022107A3D600B8C62F /* blockexplorer.com.cer */; };
 		ADC0D3052107A3D700B8C62F /* CloudFlare Inc ECC CA-2.cer in Resources */ = {isa = PBXBuildFile; fileRef = ADC0D3032107A3D700B8C62F /* CloudFlare Inc ECC CA-2.cer */; };
 		ADC48CA7214AD8B800949CD9 /* DateEstimatorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADC48CA6214AD8B800949CD9 /* DateEstimatorTests.swift */; };
@@ -285,6 +284,7 @@
 		ADE11D80223012EB000D67C1 /* CreateInvoiceTable.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADE11D7F223012EB000D67C1 /* CreateInvoiceTable.swift */; };
 		ADE11D822230138D000D67C1 /* CreateInvoiceEventTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADE11D812230138D000D67C1 /* CreateInvoiceEventTests.swift */; };
 		ADE11D842230165D000D67C1 /* ChannelEventTable.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADE11D832230165D000D67C1 /* ChannelEventTable.swift */; };
+		ADE11D8F22315779000D67C1 /* Sectigo RSA Domain Validation Secure Server CA.cer in Resources */ = {isa = PBXBuildFile; fileRef = ADE11D8E22315779000D67C1 /* Sectigo RSA Domain Validation Secure Server CA.cer */; };
 		ADE64DFB22293FF9004C0BC8 /* NotificationCenter.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = ADE64DFA22293FF9004C0BC8 /* NotificationCenter.framework */; };
 		ADE64DFE22293FF9004C0BC8 /* TodayViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADE64DFD22293FF9004C0BC8 /* TodayViewController.swift */; };
 		ADE64E0122293FF9004C0BC8 /* MainInterface.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = ADE64DFF22293FF9004C0BC8 /* MainInterface.storyboard */; };
@@ -812,7 +812,6 @@
 		ADC0D2F221079FF600B8C62F /* www.blockchain.com.cer */ = {isa = PBXFileReference; lastKnownFileType = file; path = www.blockchain.com.cer; sourceTree = "<group>"; };
 		ADC0D2F42107A13800B8C62F /* DigiCert SHA2 Extended Validation Server CA.cer */ = {isa = PBXFileReference; lastKnownFileType = file; path = "DigiCert SHA2 Extended Validation Server CA.cer"; sourceTree = "<group>"; };
 		ADC0D2F62107A19A00B8C62F /* *.blockcypher.com.cer */ = {isa = PBXFileReference; lastKnownFileType = file; path = "*.blockcypher.com.cer"; sourceTree = "<group>"; };
-		ADC0D2F72107A19A00B8C62F /* COMODO RSA Domain Validation Secure Server CA.cer */ = {isa = PBXFileReference; lastKnownFileType = file; path = "COMODO RSA Domain Validation Secure Server CA.cer"; sourceTree = "<group>"; };
 		ADC0D3022107A3D600B8C62F /* blockexplorer.com.cer */ = {isa = PBXFileReference; lastKnownFileType = file; path = blockexplorer.com.cer; sourceTree = "<group>"; };
 		ADC0D3032107A3D700B8C62F /* CloudFlare Inc ECC CA-2.cer */ = {isa = PBXFileReference; lastKnownFileType = file; path = "CloudFlare Inc ECC CA-2.cer"; sourceTree = "<group>"; };
 		ADC29C0B20A9B0A0008B2DC2 /* Invoice.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Invoice.swift; sourceTree = "<group>"; };
@@ -840,6 +839,7 @@
 		ADE11D7F223012EB000D67C1 /* CreateInvoiceTable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateInvoiceTable.swift; sourceTree = "<group>"; };
 		ADE11D812230138D000D67C1 /* CreateInvoiceEventTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateInvoiceEventTests.swift; sourceTree = "<group>"; };
 		ADE11D832230165D000D67C1 /* ChannelEventTable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChannelEventTable.swift; sourceTree = "<group>"; };
+		ADE11D8E22315779000D67C1 /* Sectigo RSA Domain Validation Secure Server CA.cer */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Sectigo RSA Domain Validation Secure Server CA.cer"; sourceTree = "<group>"; };
 		ADE19C3F20E7892000340E2E /* ChannelPoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChannelPoint.swift; sourceTree = "<group>"; };
 		ADE4CF1C20B5B2BE007C987A /* UIFont.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIFont.swift; sourceTree = "<group>"; };
 		ADE4CF1E20B5B6FC007C987A /* Environment.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Environment.swift; sourceTree = "<group>"; };
@@ -1792,7 +1792,7 @@
 			isa = PBXGroup;
 			children = (
 				ADC0D2F62107A19A00B8C62F /* *.blockcypher.com.cer */,
-				ADC0D2F72107A19A00B8C62F /* COMODO RSA Domain Validation Secure Server CA.cer */,
+				ADE11D8E22315779000D67C1 /* Sectigo RSA Domain Validation Secure Server CA.cer */,
 			);
 			path = blockcypher.com;
 			sourceTree = "<group>";
@@ -2477,7 +2477,7 @@
 				ADC0D2F321079FF700B8C62F /* www.blockchain.com.cer in Resources */,
 				AEAF270A21EAD05B004E022F /* blockstream.info.cer in Resources */,
 				AEAF270921EAD05B004E022F /* Let's Encrypt Authority X3.cer in Resources */,
-				ADC0D2FB2107A23400B8C62F /* COMODO RSA Domain Validation Secure Server CA.cer in Resources */,
+				ADE11D8F22315779000D67C1 /* Sectigo RSA Domain Validation Secure Server CA.cer in Resources */,
 				ADC0D3042107A3D700B8C62F /* blockexplorer.com.cer in Resources */,
 				ADC0D3052107A3D700B8C62F /* CloudFlare Inc ECC CA-2.cer in Resources */,
 				ADC0D2FA2107A23400B8C62F /* *.blockcypher.com.cer in Resources */,
