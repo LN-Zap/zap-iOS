@@ -131,7 +131,7 @@ final class EventDetailViewModel {
     private func label(title: String, element: StackViewElement) -> [StackViewElement] {
         return [
             .horizontalStackView(compressionResistant: .first, content: [
-                .label(text: title, style: Style.Label.headline),
+                .label(text: "\(title):", style: Style.Label.headline.with { $0.textColor = UIColor.Zap.gray }),
                 element
             ])
         ]
