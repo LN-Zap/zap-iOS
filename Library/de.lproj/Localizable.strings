@@ -166,6 +166,8 @@
 "scene.transaction_detail.address_label" = "Adresse";
 "scene.transaction_detail.expiry_label" = "Ablauf";
 "scene.transaction_detail.expiry_label.expired" = "Abgelaufen";
+"scene.transaction_detail.invoice_state_label" = "State";
+"scene.transaction_detail.invoice_state_label.settled" = "settled";
 
 "scene.channel_detail.remote_pub_key_label" = "Remote PubKey";
 "scene.channel_detail.local_balance_label" = "Lokaler Kontostand";
