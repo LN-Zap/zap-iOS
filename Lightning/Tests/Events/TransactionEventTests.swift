@@ -31,7 +31,7 @@ class TransactionEventTests: XCTestCase {
         let address = BitcoinAddress(string: "mwthp1qAAisrqMiKqZG7TMGAgMNJTg5hbD")!
 
         let event = TransactionEvent(txHash: "hash", memo: "test memo", amount: 123, fee: 12, date: date, destinationAddresses: [address], blockHeight: 321, type: .unknown)
-        try! event.insert(database: mockConnection)
+        try! event.insertOrUpdateTransactionData(database: mockConnection)
 
         let events = try! TransactionEvent.events(database: mockConnection)
 

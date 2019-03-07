@@ -59,6 +59,15 @@ extension TransactionEvent {
 
 // MARK: - Persistence
 extension TransactionEvent {
+    private var transactionTable: TransactionTable {
+        return TransactionTable(txHash: txHash,
+                                amount: amount,
+                                fee: fee,
+                                date: date,
+                                destinationAddresses: destinationAddresses,
+                                blockHeight: blockHeight,
+                                type: type)
+    }
 
     init(row: Row) {
         let transaction = TransactionTable(row: row)
@@ -95,44 +104,25 @@ extension TransactionEvent {
         do {
             try insert(database: database)
         } catch {
-            let transaction = TransactionTable.table.filter(TransactionTable.Column.txHash == txHash)
-            try database.run(transaction.update(
-                TransactionTable.Column.amount <- amount,
-                TransactionTable.Column.fee <- fee,
-                TransactionTable.Column.destinationAddresses <- addressString,
-                TransactionTable.Column.blockHeight <- blockHeight
-            ))
+            try transactionTable.updateTransactionData(database: database)
         }
-    }
-
-    // TODO: remove
-    private var addressString: String {
-        return destinationAddresses
-            .map { $0.string }
-            .joined(separator: ",")
     }
 
     func insertOrUpdateMetaData(database: Connection) throws {
-        do {
-            try insert(database: database)
-        } catch {
-            let transaction = TransactionTable.table.filter(TransactionTable.Column.txHash == txHash)
-            try database.run(transaction.update(
-                TransactionTable.Column.type <- type.rawValue
-            ))
-        }
+        try insertOrUpdateType(database: database)
         try MemoTable(id: txHash, text: memo)?.insert(database: database)
     }
 
-    func insert(database: Connection) throws {
-        try TransactionTable(txHash: txHash,
-                             amount: amount,
-                             fee: fee,
-                             date: date,
-                             destinationAddresses: destinationAddresses,
-                             blockHeight: blockHeight,
-                             type: type)
-            .insert(database: database)
+    private func insertOrUpdateType(database: Connection) throws {
+        do {
+            try insert(database: database)
+        } catch {
+            try transactionTable.updateType(database: database)
+        }
+    }
+
+    private func insert(database: Connection) throws {
+        try transactionTable.insert(database: database)
         try MemoTable(id: txHash, text: memo)?.insert(database: database)
     }
 }

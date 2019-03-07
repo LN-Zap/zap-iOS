@@ -70,6 +70,23 @@ extension TransactionTable: ZapTable {
         ))
     }
 
+    func updateType(database: Connection) throws {
+        let transaction = TransactionTable.table.filter(TransactionTable.Column.txHash == txHash)
+        try database.run(transaction.update(
+            TransactionTable.Column.type <- type.rawValue
+        ))
+    }
+
+    func updateTransactionData(database: Connection) throws {
+        let transaction = TransactionTable.table.filter(TransactionTable.Column.txHash == txHash)
+        try database.run(transaction.update(
+            TransactionTable.Column.amount <- amount,
+            TransactionTable.Column.fee <- fee,
+            TransactionTable.Column.destinationAddresses <- addressString,
+            TransactionTable.Column.blockHeight <- blockHeight
+        ))
+    }
+
     private var addressString: String {
         return destinationAddresses
             .map { $0.string }
