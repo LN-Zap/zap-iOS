@@ -57,11 +57,7 @@ final class ConnectRemoteNodeViewModel: NSObject {
         sections.append(to2DArraySection(section: nil, items: [.scan, .paste]))
         sections.append(to2DArraySection(section: nil, items: [.help]))
 
-        dataSource.replace(with: sections, performDiff: true, areValuesEqual: evaluateEqual)
-    }
-
-    private func evaluateEqual(one: Array2DElement<String?, CellType>, two: Array2DElement<String?, CellType>) -> Bool {
-        return one.section == two.section && one.item == two.item
+        dataSource.replace(with: sections, performDiff: true, areValuesEqual: Array2DElement.areElementsEqual)
     }
 
     private func certificateSection(for qrCode: RPCCredentials) -> TreeNode<Array2DElement<String?, CellType>> {

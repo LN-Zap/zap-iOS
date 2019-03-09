@@ -70,12 +70,8 @@ final class HistoryViewModel: NSObject {
         let events = historyService.events
         let filteredEvents = filterEvents(events, searchString: searchString, filterSettings: filterSettings)
         let sectionedCellTypes = bondSections(transactionViewModels: filteredEvents)
-        dataSource.replace(with: Array2D<String, HistoryEventType>(sectionedCellTypes), performDiff: true, areValuesEqual: evaluateEqual)
+        dataSource.replace(with: Array2D<String, HistoryEventType>(sectionedCellTypes), performDiff: true, areValuesEqual: Array2DElement.areElementsEqual)
         updateTabBarBadge()
-    }
-
-    private func evaluateEqual(one: Array2DElement<String, HistoryEventType>, two: Array2DElement<String, HistoryEventType>) -> Bool {
-        return one.section == two.section && one.item == two.item
     }
 
     func setupTabBarBadge(delegate: HistoryBadgeUpdaterDelegate) {
