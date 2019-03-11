@@ -34,7 +34,7 @@ final class ChannelListViewController: UIViewController {
         tableView.registerCell(ChannelTableViewCell.self)
         tableView.delegate = self
         tableView.backgroundColor = UIColor.Zap.deepSeaBlue
-        tableView.rowHeight = 76
+        tableView.rowHeight = 100
 
         navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(presentAddChannel))
         navigationItem.largeTitleDisplayMode = .never
@@ -42,7 +42,7 @@ final class ChannelListViewController: UIViewController {
         channelListViewModel?.dataSource.bind(to: tableView) { [weak self] array, indexPath, tableView in
             let cell: ChannelTableViewCell = tableView.dequeueCellForIndexPath(indexPath)
             let channelViewModel = array[indexPath.row]
-            cell.update(channelViewModel: channelViewModel, maxChannelCapacity: self?.channelListViewModel?.maxChannelCapacity ?? 1)
+            cell.update(channelViewModel: channelViewModel, maxBalance: self?.channelListViewModel?.maxBalance ?? 0)
             return cell
         }
     }

@@ -40,7 +40,7 @@ final class ChannelListViewModel: NSObject {
 
     let dataSource: MutableObservableArray<ChannelViewModel>
     let searchString = Observable<String?>(nil)
-    var maxChannelCapacity: Satoshi = 1
+    var maxBalance: Satoshi = 1
 
     init(channelService: ChannelService) {
         self.channelService = channelService
@@ -70,9 +70,9 @@ final class ChannelListViewModel: NSObject {
             }
         }
 
-        maxChannelCapacity = viewModels
-            .max(by: { $0.channel.capacity < $1.channel.capacity })?
-            .channel.capacity ?? 1
+        maxBalance = viewModels
+            .flatMap { [$0.channel.localBalance, $0.channel.remoteBalance] }
+            .max() ?? 0
 
         dataSource.replace(with: sortedViewModels, performDiff: true)
     }

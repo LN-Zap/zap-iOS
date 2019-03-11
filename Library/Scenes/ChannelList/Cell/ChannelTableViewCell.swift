@@ -9,49 +9,72 @@ import SwiftBTC
 import UIKit
 
 class ChannelTableViewCell: BondTableViewCell {
-
     @IBOutlet private weak var nameLabel: UILabel!
-    @IBOutlet private weak var amountLabel: UILabel!
-    @IBOutlet private weak var balanceBackgroundView: UIView!
+    @IBOutlet private weak var localAmountLabel: UILabel!
+    @IBOutlet private weak var remoteAmountLabel: UILabel!
+    @IBOutlet private weak var localBalanceBackgroundView: UIView!
+    @IBOutlet private weak var remoteBalanceBackgroundView: UIView!
     @IBOutlet private weak var localAmountView: GradientView!
     @IBOutlet private weak var remoteAmountView: UIView!
     @IBOutlet private weak var localAmountViewWitdthConstraint: NSLayoutConstraint?
     @IBOutlet private weak var remoteAmountViewWidthConstraint: NSLayoutConstraint?
+    @IBOutlet private weak var stateLabel: UILabel!
 
-    func update(channelViewModel: ChannelViewModel, maxChannelCapacity: Satoshi) {
+    func update(channelViewModel: ChannelViewModel, maxBalance: Satoshi) {
         nameLabel.text = channelViewModel.name.value
 
+        channelViewModel.channel.localBalance
+            .bind(to: localAmountLabel.reactive.text, currency: Settings.shared.primaryCurrency)
+            .dispose(in: onReuseBag)
+        channelViewModel.channel.remoteBalance
+            .bind(to: remoteAmountLabel.reactive.text, currency: Settings.shared.primaryCurrency)
+            .dispose(in: onReuseBag)
+
         if channelViewModel.channel.state == .active {
-            channelViewModel.channel.localBalance
-                .bind(to: amountLabel.reactive.text, currency: Settings.shared.primaryCurrency)
-                .dispose(in: onReuseBag)
+            stateLabel.text = nil
         } else {
-            amountLabel.text = channelViewModel.channel.state.localized
+            stateLabel.text = channelViewModel.channel.state.localized
         }
 
         localAmountViewWitdthConstraint?.isActive = false
-        let localWidthMultiplier = CGFloat(truncating: channelViewModel.channel.localBalance / maxChannelCapacity as NSNumber)
-        localAmountViewWitdthConstraint = localAmountView.widthAnchor.constraint(equalTo: balanceBackgroundView.widthAnchor, multiplier: localWidthMultiplier, constant: 0)
+        let localWidthMultiplier = multiplierFor(balance: channelViewModel.channel.localBalance, maxBalance: maxBalance)
+        localAmountViewWitdthConstraint = localAmountView.widthAnchor.constraint(equalTo: localBalanceBackgroundView.widthAnchor, multiplier: localWidthMultiplier, constant: 0)
         localAmountViewWitdthConstraint?.isActive = true
 
         remoteAmountViewWidthConstraint?.isActive = false
-        let remoteWidthMultiplier = CGFloat(truncating: channelViewModel.channel.remoteBalance / maxChannelCapacity as NSNumber)
-        remoteAmountViewWidthConstraint = remoteAmountView.widthAnchor.constraint(equalTo: balanceBackgroundView.widthAnchor, multiplier: remoteWidthMultiplier, constant: 0)
+        let remoteWidthMultiplier = multiplierFor(balance: channelViewModel.channel.remoteBalance, maxBalance: maxBalance)
+        remoteAmountViewWidthConstraint = remoteAmountView.widthAnchor.constraint(equalTo: remoteBalanceBackgroundView.widthAnchor, multiplier: remoteWidthMultiplier, constant: 0)
         remoteAmountViewWidthConstraint?.isActive = true
+    }
+
+    func multiplierFor(balance: Satoshi, maxBalance: Satoshi) -> CGFloat {
+        guard balance > 0 else { return 0 }
+        let value = CGFloat(truncating: balance / maxBalance as NSNumber)
+        let normalized = pow(value, (1 / 3))
+        assert(normalized >= 0 && normalized <= 1)
+        return normalized
     }
 
     override func awakeFromNib() {
         super.awakeFromNib()
 
         backgroundColor = UIColor.Zap.deepSeaBlue
-        balanceBackgroundView.backgroundColor = UIColor.Zap.seaBlue
-        balanceBackgroundView.layer.cornerRadius = 2
-        balanceBackgroundView.clipsToBounds = true
+
+        styleBackgroundView(localBalanceBackgroundView)
+        styleBackgroundView(remoteBalanceBackgroundView)
 
         Style.Label.headline.apply(to: nameLabel)
-        Style.Label.body.apply(to: amountLabel)
+        Style.Label.body.apply(to: stateLabel)
+
+        Style.Label.subHeadline.apply(to: [localAmountLabel, remoteAmountLabel])
 
         localAmountView.direction = .horizontal
         remoteAmountView.backgroundColor = .white
+    }
+
+    private func styleBackgroundView(_ view: UIView) {
+        view.backgroundColor = UIColor.Zap.seaBlue
+        view.layer.cornerRadius = 3
+        view.clipsToBounds = true
     }
 }
