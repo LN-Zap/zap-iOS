@@ -27,7 +27,7 @@ import ObjectiveC
 import ReactiveKit
 
 #if !BUILDING_WITH_XCODE
-    import BNDProtocolProxyBase
+import BNDProtocolProxyBase
 #endif
 
 public class ProtocolProxy: BNDProtocolProxyBase {
@@ -353,16 +353,6 @@ extension NSObject {
             objc_setAssociatedObject(self, &AssociatedKeys.ProtocolProxies, newValue as NSDictionary, .OBJC_ASSOCIATION_RETAIN_NONATOMIC)
         }
     }
-
-    /// Creates a proxy object that conforms to a given protocol and injects itself as a delegate for a given selector.
-    /// The object can then be used to intercept various delegate callbacks as signals.
-    ///
-    /// - warning: If the protocol has any required methods, you have to handle them by providing a signal, a feed or implement
-    /// them in a class whose instance you set to `forwardTo` property of the returned proxy object.
-    @available(*, deprecated, message: "User object.reactive.protocolProxy(for:keyPath:) instead.")
-    public func protocolProxy(for `protocol`: Protocol, setter: Selector) -> ProtocolProxy {
-        return self.reactive.protocolProxy(for: `protocol`, selector: setter)
-    }
 }
 
 extension ReactiveExtensions where Base: NSObject {
@@ -401,6 +391,10 @@ extension ReactiveExtensions where Base: NSObject {
     public func protocolProxy<P>(for `protocol`: Protocol, keyPath: ReferenceWritableKeyPath<Base, P?>) -> ProtocolProxy {
         let controller = OptionalKeyPathProtocolProxyPropertyController(object: base, keyPath: keyPath)
         return protocolProxy(protocol: `protocol`, controller: controller)
+    }
+
+    public func hasProtocolProxy(for protocol: Protocol) -> Bool {
+        return base.protocolProxies.values.first(where: { $0.protocol === `protocol` }) != nil
     }
 
     private func protocolProxy(protocol: Protocol, controller: ProtocolProxyPropertyController) -> ProtocolProxy {

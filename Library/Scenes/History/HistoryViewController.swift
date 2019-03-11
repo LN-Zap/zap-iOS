@@ -61,7 +61,7 @@ final class HistoryViewController: UIViewController {
         setupDataSourceBinding(tableView, historyViewModel)
 
         historyViewModel.dataSource
-            .map { !$0.dataSource.isEmpty }
+            .map { !$0.collection.isEmpty }
             .bind(to: emptyStateLabel.reactive.isHidden)
             .dispose(in: reactive.bag)
     }
@@ -77,7 +77,7 @@ final class HistoryViewController: UIViewController {
             .bind(to: tableView) { dataSource, indexPath, tableView in
                 let cell: HistoryCell = tableView.dequeueCellForIndexPath(indexPath)
 
-                switch dataSource[indexPath] {
+                switch dataSource.item(at: indexPath) {
                 case .transactionEvent(let transactionEvent):
                     cell.setTransactionEvent(transactionEvent)
                 case .channelEvent(let channelEvent):
@@ -108,13 +108,13 @@ extension HistoryViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
 
-        guard let event = historyViewModel?.dataSource[indexPath] else { return }
+        guard let event = historyViewModel?.dataSource.collection.item(at: indexPath) else { return }
         presentDetail?(event)
     }
 
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
         let sectionHeaderView = SectionHeaderView.instanceFromNib
-        sectionHeaderView.title = historyViewModel?.dataSource[section].metadata
+        sectionHeaderView.title = historyViewModel?.dataSource.collection[sectionAt: section]
         sectionHeaderView.backgroundColor = .white
         return sectionHeaderView
     }

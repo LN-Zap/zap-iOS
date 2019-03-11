@@ -77,3 +77,4 @@ protoc-gen-swiftgrpc
 Pods/!*
 
 Lndmobile.framework
+.idea

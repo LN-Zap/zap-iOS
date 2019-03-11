@@ -66,10 +66,20 @@ public extension ReactiveExtensions where Base: NSObject {
             }
 
             let disposable = base._willDeallocate.observeCompleted {
+                if #available(iOS 11, *) {} else {
+                    let keyPathString = NSExpression(forKeyPath: keyPath).keyPath
+                    base.removeObserver(base, forKeyPath: keyPathString)
+                }
+                
                 subscription.invalidate()
             }
 
             return DeinitDisposable(disposable: BlockDisposable {
+                if #available(iOS 11, *) {} else {
+                    let keyPathString = NSExpression(forKeyPath: keyPath).keyPath
+                    base.removeObserver(base, forKeyPath: keyPathString)
+                }
+                
                 subscription.invalidate()
                 disposable.dispose()
             })
@@ -155,8 +165,8 @@ public extension ReactiveExtensions where Base: NSObject {
     ///   - keyPath: Key path of the property to wrap.
     ///   - ofExpectedType: Type of the property to wrap, e.g. `Int.self`.
     ///   - context: Execution context in which to update the property. Use `.immediateOnMain` to update the object from main queue.
-    public func keyPath<T>(_ keyPath: String, ofExpectedType: T.Type, context: ExecutionContext) -> DynamicSubject2<T, NSObject.KVOError> {
-        return DynamicSubject2(
+    public func keyPath<T>(_ keyPath: String, ofExpectedType: T.Type, context: ExecutionContext) -> FailableDynamicSubject<T, NSObject.KVOError> {
+        return FailableDynamicSubject(
             target: base,
             signal: RKKeyValueSignal(keyPath: keyPath, for: base).castError(),
             context: context,
@@ -185,8 +195,8 @@ public extension ReactiveExtensions where Base: NSObject {
     ///   - keyPath: Key path of the property to wrap.
     ///   - ofExpectedType: Type of the property to wrap, e.g. `Optional<Int>.self`.
     ///   - context: Execution context in which to update the property. Use `.immediateOnMain` to update the object from main queue.
-    public func keyPath<T>(_ keyPath: String, ofExpectedType: T.Type, context: ExecutionContext) -> DynamicSubject2<T, NSObject.KVOError> where T: OptionalProtocol {
-        return DynamicSubject2(
+    public func keyPath<T>(_ keyPath: String, ofExpectedType: T.Type, context: ExecutionContext) -> FailableDynamicSubject<T, NSObject.KVOError> where T: OptionalProtocol {
+        return FailableDynamicSubject(
             target: base,
             signal: RKKeyValueSignal(keyPath: keyPath, for: base).castError(),
             context: context,
@@ -245,7 +255,7 @@ public extension ReactiveExtensions where Base: NSObject, Base: BindingExecution
     /// - Parameters:
     ///   - keyPath: Key path of the property to wrap.
     ///   - ofExpectedType: Type of the property to wrap, e.g. `Int.self`.
-    public func keyPath<T>(_ keyPath: String, ofExpectedType: T.Type) -> DynamicSubject2<T, NSObject.KVOError> {
+    public func keyPath<T>(_ keyPath: String, ofExpectedType: T.Type) -> FailableDynamicSubject<T, NSObject.KVOError> {
         return self.keyPath(keyPath, ofExpectedType: ofExpectedType, context: base.bindingExecutionContext)
     }
 
@@ -258,7 +268,7 @@ public extension ReactiveExtensions where Base: NSObject, Base: BindingExecution
     /// - Parameters:
     ///   - keyPath: Key path of the property to wrap.
     ///   - ofExpectedType: Type of the property to wrap, e.g. `Optional<Int>.self`.
-    public func keyPath<T>(_ keyPath: String, ofExpectedType: T.Type) -> DynamicSubject2<T, NSObject.KVOError> where T: OptionalProtocol {
+    public func keyPath<T>(_ keyPath: String, ofExpectedType: T.Type) -> FailableDynamicSubject<T, NSObject.KVOError> where T: OptionalProtocol {
         return self.keyPath(keyPath, ofExpectedType: ofExpectedType, context: base.bindingExecutionContext)
     }
 }
