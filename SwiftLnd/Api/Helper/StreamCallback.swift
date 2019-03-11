@@ -18,7 +18,7 @@ final class EmptyStreamCallback: NSObject, LndmobileCallbackProtocol {
     }
 
     func onResponse(_ data: Data) {
-        Logger.info("EmptyCallback: \(data)")
+        Logger.info("EmptyCallback: \(data), '\(String(data: data, encoding: .utf8) ?? "-")'", customPrefix: "🍕")
     }
 }
 

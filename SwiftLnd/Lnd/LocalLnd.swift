@@ -9,6 +9,7 @@
 
 import Foundation
 import Lndmobile
+import Logger
 
 // `WalletId` is used as a parameter for local lnd wallets. It is used as the
 // folder containing all lnd data, so we can run multiple wallets on the same
@@ -19,6 +20,8 @@ public enum LocalLnd {
 
     public static func start(walletId: WalletId) {
         guard let lndUrl = FileManager.default.walletDirectory(for: walletId) else { return }
+
+        Logger.info("start lnd", customPrefix: "🥕")
         isRunning = true
         LocalLndConfiguration.standard.save(at: lndUrl)
         LndmobileStart(lndUrl.path, EmptyStreamCallback())
@@ -26,6 +29,8 @@ public enum LocalLnd {
 
     public static func stop() {
         isRunning = false
+
+        Logger.info("stop lnd", customPrefix: "🥕")
         LndmobileStopDaemon(nil, EmptyStreamCallback())
     }
 }
