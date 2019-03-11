@@ -30,6 +30,11 @@ Update app version.
 fastlane alpha
 ```
 Builds new Alpha Build and uploads it to Testflight.
+### local_lnd_alpha
+```
+fastlane local_lnd_alpha
+```
+Builds new Alpha Build with local lnd enabled and uploads it to Testflight.
 ### udid
 ```
 fastlane udid

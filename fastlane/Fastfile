@@ -29,6 +29,17 @@ end
 desc "Builds new Alpha Build and uploads it to Testflight."
 lane :alpha do
   ensure_git_status_clean
+  upload_alpha(configuration: "DebugRemote")
+end
+
+desc "Builds new Alpha Build with local lnd enabled and uploads it to Testflight."
+lane :local_lnd_alpha do
+  ensure_git_status_clean
+  change_version(version: "0.2.0")
+  upload_alpha(configuration: "Debug")
+end
+
+private_lane :upload_alpha do |options|
 
   increment_build_number(build_number: latest_testflight_build_number(initial_build_number: 0) + 1)
 
@@ -41,6 +52,7 @@ lane :alpha do
   build_ios_app(
     workspace: "Zap.xcworkspace",
     scheme: "Zap",
+    configuration: options[:configuration],
     output_directory: "./builds/alpha",
     export_method: "app-store"
   )
