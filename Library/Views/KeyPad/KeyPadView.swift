@@ -43,6 +43,12 @@ class KeyPadView: UIView {
         }
     }
 
+    var isEnabled: Bool = true {
+        didSet {
+            updateButtonState()
+        }
+    }
+
     var handler: ((String) -> Bool)?
     var customPointButtonAction: (() -> Void)?
 
@@ -52,6 +58,11 @@ class KeyPadView: UIView {
         }
     }
     var textColor = UIColor.Zap.white {
+        didSet {
+            updateButtonFont()
+        }
+    }
+    var disabledColor = UIColor.Zap.gray {
         didSet {
             updateButtonFont()
         }
@@ -88,9 +99,16 @@ class KeyPadView: UIView {
     private func updateButtonFont() {
         buttons?.forEach {
             Style.Button.custom().apply(to: $0)
+            $0.setTitleColor(disabledColor, for: .disabled)
             $0.setTitleColor(textColor, for: .normal)
             $0.imageView?.tintColor = textColor
             $0.titleLabel?.font = $0.titleLabel?.font.withSize(24)
+        }
+    }
+
+    private func updateButtonState() {
+        buttons?.forEach { [isEnabled] in
+            $0.isEnabled = isEnabled
         }
     }
 

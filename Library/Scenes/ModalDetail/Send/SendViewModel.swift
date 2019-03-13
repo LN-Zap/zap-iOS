@@ -60,18 +60,20 @@ final class SendViewModel {
         didSet {
             guard oldValue != amount else { return }
             updateLightningFee()
-            updateSendButtonEnabled()
+            updateIsUIEnabled()
         }
     }
     var isSending = false {
         didSet {
-            updateSendButtonEnabled()
+            updateIsUIEnabled()
         }
     }
 
     let receiver: String
     let memo: String?
-    let sendButtonEnabled = Observable(false)
+    let isSendButtonEnabled = Observable(false)
+    let isInputViewEnabled = Observable(true)
+
     let validRange: ClosedRange<Satoshi>?
 
     private let lightningService: LightningService
@@ -108,11 +110,12 @@ final class SendViewModel {
         memo = invoice.lightningPaymentRequest?.memo ?? invoice.bitcoinURI?.memo
 
         updateLightningFee()
-        updateSendButtonEnabled()
+        updateIsUIEnabled()
     }
 
-    private func updateSendButtonEnabled() {
-        sendButtonEnabled.value = isSendButtonEnabled
+    private func updateIsUIEnabled() {
+        isSendButtonEnabled.value = isAmountValid && !isSending
+        isInputViewEnabled.value = !isSending
     }
 
     private var isAmountValid: Bool {
@@ -123,16 +126,12 @@ final class SendViewModel {
         return validRange.contains(amount)
     }
 
-    private var isSendButtonEnabled: Bool {
-        return isAmountValid && !isSending
-    }
-
     private func updateLightningFee() {
         guard case .lightning = method else { return }
 
         if isAmountValid {
             lightningFee.value = .loading
-            updateSendButtonEnabled()
+            updateIsUIEnabled()
             debounceFetchFee()
         } else {
             lightningFee.value = .element(nil)
@@ -148,7 +147,7 @@ final class SendViewModel {
         lightningService.transactionService.upperBoundLightningFees(for: paymentRequest, amount: amount) { [weak self] in
             guard let self = self, $0.value?.amount == self.amount else { return }
             self.lightningFee.value = .element($0.value?.fee)
-            self.updateSendButtonEnabled()
+            self.updateIsUIEnabled()
         }
     }
 

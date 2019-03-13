@@ -53,10 +53,15 @@ final class SendViewController: ModalDetailViewController {
             self?.sendButtonTapped()
         }))) as? CallbackButton
 
-        viewModel.sendButtonEnabled
+        viewModel.isSendButtonEnabled
             .observeOn(DispatchQueue.main)
-            .observeNext {
-                sendButton?.isEnabled = $0
+            .observeNext { sendButton?.isEnabled = $0 }
+            .dispose(in: reactive.bag)
+        
+        viewModel.isInputViewEnabled
+            .observeOn(DispatchQueue.main)
+            .observeNext { [weak self] in
+                self?.amountInputView?.isEnabled = $0
             }
             .dispose(in: reactive.bag)
 
@@ -112,7 +117,6 @@ final class SendViewController: ModalDetailViewController {
     }
 
     private func sendButtonTapped() {
-        amountInputView?.isEnabled = false
 
         authenticate { [weak self] result in
             switch result {
@@ -120,7 +124,6 @@ final class SendViewController: ModalDetailViewController {
                 self?.send()
             case .failure:
                 Toast.presentError(L10n.Scene.Send.authenticationFailed)
-                self?.amountInputView?.isEnabled = true
             }
         }
     }

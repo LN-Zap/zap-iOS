@@ -50,6 +50,12 @@ public final class AmountInputView: UIControl {
         }
     }
 
+    override public var isEnabled: Bool {
+        didSet {
+            keyPadView.isEnabled = isEnabled
+        }
+    }
+
     var textColor: UIColor = UIColor.Zap.black {
         didSet {
             amountTextField.textColor = textColor
