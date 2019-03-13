@@ -92,7 +92,7 @@
 "scene.setup_pin.top_label.non_matching" = "Les PIN ne correspond pas. Veuillez essayer de nouveau.";
 "scene.setup_pin.top_label.validate" = "Entrez le code PIN à nouveau pour valider.";
 
-"scene.confirm_mnemonic.title" = "Confirmer la Seed";
+"scene.confirm_mnemonic.title" = "Confirmez votre clé";
 "scene.confirm_mnemonic.description" = "Entrez votre clé.";
 
 "scene.send.title" = "Envoyer";
@@ -108,8 +108,8 @@
 "scene.connect_remote_node.title" = "Connection d'un noeud distant";
 "scene.connect_remote_node.empty_state" = "Scannez le QRCode généré par lndconnect, BTCPay Server, ou collez le lien que vous obtenez en exécutant 'lndconnect -j' pour vous connecter à votre nœud.";
 "scene.connect_remote_node.url_label" = "Adresse";
-"scene.connect_remote_node.certificate_label" = "Credentials";
-"scene.connect_remote_node.connect_button" = "Connect";
+"scene.connect_remote_node.certificate_label" = "Informations d’identification";
+"scene.connect_remote_node.connect_button" = "Se connecter";
 "scene.connect_remote_node.scan_button" = "Numériser";
 "scene.connect_remote_node.paste_button" = "Coller";
 "scene.connect_remote_node.help_button" = "Besoin d'aide ?";
@@ -125,18 +125,18 @@
 
 "scene.recover_wallet.title" = "Récupérer un portefeuille";
 "scene.recover_wallet.done_button" = "Terminé";
-"scene.recover_wallet.description_label" = "Enter your seed:";
+"scene.recover_wallet.description_label" = "Entrez votre clé:";
 "scene.recover_wallet.placeholder" = "abandon ability able about above absent absorb abstract absurd abuse access accident account accuse achieve acid acoustic acquire across act action actor actress actual";
 
-"scene.select_wallet_connection.title" = "Add Wallet";
+"scene.select_wallet_connection.title" = "Ajouter un Portefeuille";
 "scene.select_wallet_connection.create.title" = "Créer";
 "scene.select_wallet_connection.create.message" = "nouveau portefeuille";
 "scene.select_wallet_connection.recover.title" = "Récupérer";
 "scene.select_wallet_connection.recover.message" = "portefeuille existant";
-"scene.select_wallet_connection.connect.title" = "Connect";
+"scene.select_wallet_connection.connect.title" = "Se connecter";
 "scene.select_wallet_connection.connect.message" = "nœud distant";
 "scene.select_wallet_connection.disabled_alert.title" = "Désolé !";
-"scene.select_wallet_connection.disabled_alert.message" = "Running Lnd on the phone is disabled in this beta. Connect to a remote node instead.";
+"scene.select_wallet_connection.disabled_alert.message" = "La fonctionnalité permettant de faire tourner lnd sur mobile est désactivée dans cette version beta. Connectez vous à un node distant à la place.";
 "scene.select_wallet_connection.disabled_alert.ok_button" = "Ok";
 "scene.select_wallet_connection.create.help" = "Besoin d'aide ?";
 
@@ -156,8 +156,8 @@
 "scene.transaction_detail.title.lightning_invoice" = "Détail de la facture";
 "scene.transaction_detail.title.payment_detail" = "Détail du paiement";
 "scene.transaction_detail.title.transaction_detail" = "Détail de la transaction";
-"scene.transaction_detail.title.channel_event_detail" = "Channel Event";
-"scene.transaction_detail.title.failed_payment" = "Failed Payment";
+"scene.transaction_detail.title.channel_event_detail" = "Evènements sur les Channels";
+"scene.transaction_detail.title.failed_payment" = "Paiement échoué";
 "scene.transaction_detail.memo_label" = "Note";
 "scene.transaction_detail.amount_label" = "Montant";
 "scene.transaction_detail.fee_label" = "Frais";
@@ -165,7 +165,7 @@
 "scene.transaction_detail.transaction_id_label" = "Transaction ID";
 "scene.transaction_detail.address_label" = "Adresse";
 "scene.transaction_detail.expiry_label" = "Expiration";
-"scene.transaction_detail.expiry_label.expired" = "Expired";
+"scene.transaction_detail.expiry_label.expired" = "Expiré";
 "scene.transaction_detail.invoice_state_label" = "State";
 "scene.transaction_detail.invoice_state_label.settled" = "settled";
 
