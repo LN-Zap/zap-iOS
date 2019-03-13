@@ -205,7 +205,7 @@
 "scene.history.cell.channel_closed" = "Canaux fermés";
 "scene.history.cell.force_close_channel" = "Fermer de force le canal";
 "scene.history.cell.remote_force_close_channel" = "Forcer la fermeture de Channel à distance";
-"scene.history.cell.breach_close_channel" = "Breach close Channel";
+"scene.history.cell.breach_close_channel" = "Fermer de force le canal";
 "scene.history.cell.close_channel_funding_canceled" = "Fermeture de Channel (financement annulé)";
 "scene.history.cell.channel_abandoned" = "Canal abandonné";
 "scene.history.cell.transaction_sent" = "Paiement envoyé";
