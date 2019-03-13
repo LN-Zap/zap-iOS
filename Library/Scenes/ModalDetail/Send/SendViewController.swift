@@ -57,7 +57,7 @@ final class SendViewController: ModalDetailViewController {
             .observeOn(DispatchQueue.main)
             .observeNext { sendButton?.isEnabled = $0 }
             .dispose(in: reactive.bag)
-        
+
         viewModel.isInputViewEnabled
             .observeOn(DispatchQueue.main)
             .observeNext { [weak self] in

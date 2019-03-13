@@ -36,6 +36,9 @@ class ChannelTableViewCell: BondTableViewCell {
             stateLabel.text = channelViewModel.channel.state.localized
         }
 
+        localAmountView.layer.cornerRadius = 3
+        remoteAmountView.layer.cornerRadius = 3
+
         localAmountViewWitdthConstraint?.isActive = false
         let localWidthMultiplier = multiplierFor(balance: channelViewModel.channel.localBalance, maxBalance: maxBalance)
         localAmountViewWitdthConstraint = localAmountView.widthAnchor.constraint(equalTo: localBalanceBackgroundView.widthAnchor, multiplier: localWidthMultiplier, constant: 0)
@@ -47,12 +50,14 @@ class ChannelTableViewCell: BondTableViewCell {
         remoteAmountViewWidthConstraint?.isActive = true
     }
 
+    private let minBalanceMultiplier = 6 / ((UIScreen.main.bounds.width - 30 - 6) / 2)
+
     func multiplierFor(balance: Satoshi, maxBalance: Satoshi) -> CGFloat {
         guard balance > 0 else { return 0 }
         let value = CGFloat(truncating: balance / maxBalance as NSNumber)
-        let normalized = pow(value, (1 / 3))
+        let normalized = pow(value, (1 / 1.5))
         assert(normalized >= 0 && normalized <= 1)
-        return normalized
+        return max(normalized, minBalanceMultiplier)
     }
 
     override func awakeFromNib() {
