@@ -23,7 +23,7 @@ final class BackgroundCoordinator: Coordinator {
 
     func start() {}
 
-    func applicationWillEnterForeground() {
+    func applicationDidBecomeActive() {
         viewController?.dismiss(animated: true) { [weak self] in
             self?.backgroundWindow = nil
         }

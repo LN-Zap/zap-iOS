@@ -6,6 +6,7 @@
 //
 
 import Lightning
+import Logger
 import SwiftLnd
 import UIKit
 
@@ -49,9 +50,10 @@ public final class RootCoordinator: Coordinator {
 
     // MARK: foreground / background state handling
 
-    public func applicationWillEnterForeground() {
-        backgroundCoordinator.applicationWillEnterForeground()
-        authenticationCoordinator.applicationWillEnterForeground()
+    public func applicationDidBecomeActive() {
+        Logger.info("applicationDidBecomeActive", customPrefix: "🎬")
+        backgroundCoordinator.applicationDidBecomeActive()
+        authenticationCoordinator.applicationDidBecomeActive()
 
         if let walletCoordinator = currentCoordinator as? WalletCoordinator {
             walletCoordinator.start()

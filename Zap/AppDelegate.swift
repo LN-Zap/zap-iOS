@@ -13,8 +13,11 @@ import UIKit
 final class AppDelegate: UIResponder, UIApplicationDelegate {
     var rootCoordinator: RootCoordinator?
     var window: UIWindow?
+    var didStartFromBackground = false
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
+        didStartFromBackground = false
+
         guard !Environment.isRunningTests else { return true }
 
         if let documentsDir = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first?.absoluteString {
@@ -63,10 +66,16 @@ final class AppDelegate: UIResponder, UIApplicationDelegate {
     }
 
     func applicationWillEnterForeground(_ application: UIApplication) {
-        rootCoordinator?.applicationWillEnterForeground()
+        didStartFromBackground = true
     }
 
     func applicationDidEnterBackground(_ application: UIApplication) {
         rootCoordinator?.applicationDidEnterBackground()
+    }
+
+    func applicationDidBecomeActive(_ application: UIApplication) {
+        guard didStartFromBackground else { return }
+        rootCoordinator?.applicationDidBecomeActive()
+        didStartFromBackground = false
     }
 }

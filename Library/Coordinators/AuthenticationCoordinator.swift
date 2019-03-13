@@ -81,7 +81,7 @@ final class AuthenticationCoordinator: Coordinator {
         })
     }
 
-    func applicationWillEnterForeground() {
+    func applicationDidBecomeActive() {
         authenticationViewModel.updateStateAfterAppRestart()
     }
 }
