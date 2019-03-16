@@ -34,7 +34,7 @@ public final class ExchangeRateLoader {
         task.resume()
     }
 
-    public func loadTicker(ticker: String, symbol: String, completion: @escaping (Result<[FiatCurrency], ExchangeRateLoaderError>) -> Void) {
+    public func loadTicker(ticker: String, symbol: String, completion: @escaping (Result<FiatCurrency, ExchangeRateLoaderError>) -> Void) {
         guard let url = URL(string: "https://apiv2.bitcoinaverage.com/indices/global/ticker/BTC\(ticker)") else { fatalError("Invalid ticker url.") }
 
         let task = URLSession.pinned.dataTask(with: url) { data, _, error in
@@ -44,8 +44,9 @@ public final class ExchangeRateLoader {
             } else if let data = data,
                 let jsonData = try? JSONSerialization.jsonObject(with: data, options: []),
                 let json = jsonData as? [String: Any] {
-                let currencies = [ExchangeRateLoader.parseTicker(for: ticker, symbol: symbol, data: json)].compactMap { $0 }
-                completion(.success(currencies))
+                if let currencies = ExchangeRateLoader.parseTicker(for: ticker, symbol: symbol, data: json) {
+                    completion(.success(currencies))
+                }
             }
         }
         task.resume()

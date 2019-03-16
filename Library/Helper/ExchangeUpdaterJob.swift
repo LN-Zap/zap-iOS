@@ -28,21 +28,21 @@ final class ExchangeUpdaterJob {
 
     func run() {
         ExchangeRateLoader().load { ExchangeData.blockchainInfoCurrencies = $0.value }
-        ExchangeRateLoader().loadTicker(ticker: "NOK", symbol: "kr", completion: { ExchangeData.bitcoinaverageCurrencies = $0.value })
+        ExchangeRateLoader().loadTicker(ticker: "NOK", symbol: "kr", completion: { ExchangeData.currencies["NOK"] = $0.value })
+        ExchangeRateLoader().loadTicker(ticker: "USD", symbol: "$", completion: { ExchangeData.currencies["USD"] = $0.value })
     }
 }
 
 enum ExchangeData {
-    static var blockchainInfoCurrencies: [FiatCurrency]? {
+    static var currencies: [String: FiatCurrency] = [:] {
         didSet {
-            guard let blockchainInfoCurrencies = blockchainInfoCurrencies else { return }
-            availableCurrencies = blockchainInfoCurrencies + (bitcoinaverageCurrencies ?? [])
+            availableCurrencies = Array(currencies.values)
         }
     }
-    static var bitcoinaverageCurrencies: [FiatCurrency]? {
+
+    static var blockchainInfoCurrencies: [FiatCurrency]? = [] {
         didSet {
-            guard let bitcoinaverageCurrencies = bitcoinaverageCurrencies else { return }
-            availableCurrencies = bitcoinaverageCurrencies + (blockchainInfoCurrencies ?? [])
+            blockchainInfoCurrencies?.forEach{ currencies[$0.currencyCode] = $0}
         }
     }
 
