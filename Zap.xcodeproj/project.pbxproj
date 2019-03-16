@@ -8,6 +8,10 @@
 
 /* Begin PBXBuildFile section */
 		391FC6E65BB7824B7A174682 /* Pods_LibraryTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C9FDBEC0089BCC09D314B328 /* Pods_LibraryTests.framework */; };
+		3FCED0B19FBC34F09C56472C /* COMODO RSA Domain Validation Secure Server CA.cer in Resources */ = {isa = PBXBuildFile; fileRef = 3FCED2107574D6F7B9FE7397 /* COMODO RSA Domain Validation Secure Server CA.cer */; };
+		3FCED2A4A45859697A4FB4CE /* *.bitcoinaverage.com.cer in Resources */ = {isa = PBXBuildFile; fileRef = 3FCED45A10ACE912173010E1 /* *.bitcoinaverage.com.cer */; };
+		3FCED3EA112663089C273764 /* *.bitcoinaverage.com.cer in Resources */ = {isa = PBXBuildFile; fileRef = 3FCED45A10ACE912173010E1 /* *.bitcoinaverage.com.cer */; };
+		3FCEDA95398C0B006A3310D7 /* COMODO RSA Domain Validation Secure Server CA.cer in Resources */ = {isa = PBXBuildFile; fileRef = 3FCED2107574D6F7B9FE7397 /* COMODO RSA Domain Validation Secure Server CA.cer */; };
 		40421D49C6A596EC2CB5C295 /* Pods_RPC_Widget.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2726BC721E26EB865EC5F682 /* Pods_RPC_Widget.framework */; };
 		429230B451D7CAF7718C5EBB /* Pods_RPC_SwiftLnd.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D1D7DC8244C0E3E65FCB72FA /* Pods_RPC_SwiftLnd.framework */; };
 		508C114BE3C2C3584AB55069 /* Pods_LightningTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 64689AAAE184A2256E9C9DF3 /* Pods_LightningTests.framework */; };
@@ -480,6 +484,8 @@
 		2726BC721E26EB865EC5F682 /* Pods_RPC_Widget.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_RPC_Widget.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		33E251D96B1C9CCCBC786874 /* Pods-RPC-Widget.debugremote.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RPC-Widget.debugremote.xcconfig"; path = "Pods/Target Support Files/Pods-RPC-Widget/Pods-RPC-Widget.debugremote.xcconfig"; sourceTree = "<group>"; };
 		39F0AC8A86ACCF0C7BBB6779 /* Pods-RPC-Widget.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RPC-Widget.release.xcconfig"; path = "Pods/Target Support Files/Pods-RPC-Widget/Pods-RPC-Widget.release.xcconfig"; sourceTree = "<group>"; };
+		3FCED2107574D6F7B9FE7397 /* COMODO RSA Domain Validation Secure Server CA.cer */ = {isa = PBXFileReference; lastKnownFileType = file.cer; path = "COMODO RSA Domain Validation Secure Server CA.cer"; sourceTree = "<group>"; };
+		3FCED45A10ACE912173010E1 /* *.bitcoinaverage.com.cer */ = {isa = PBXFileReference; lastKnownFileType = file.cer; path = "*.bitcoinaverage.com.cer"; sourceTree = "<group>"; };
 		4629437540BC6CE36F3EE098 /* Pods_RPC_Library.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_RPC_Library.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		4A29C2D527BF19A41F251C3F /* Pods_Zap.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Zap.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		4AE4B3957AC31DDABB89AF3B /* Pods-RPC-SwiftLnd.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RPC-SwiftLnd.release.xcconfig"; path = "Pods/Target Support Files/Pods-RPC-SwiftLnd/Pods-RPC-SwiftLnd.release.xcconfig"; sourceTree = "<group>"; };
@@ -1036,6 +1042,15 @@
 				39F0AC8A86ACCF0C7BBB6779 /* Pods-RPC-Widget.release.xcconfig */,
 			);
 			name = Pods;
+			sourceTree = "<group>";
+		};
+		3FCED287DE05B6C9EC5F50E4 /* bitcoinaverage.com */ = {
+			isa = PBXGroup;
+			children = (
+				3FCED2107574D6F7B9FE7397 /* COMODO RSA Domain Validation Secure Server CA.cer */,
+				3FCED45A10ACE912173010E1 /* *.bitcoinaverage.com.cer */,
+			);
+			path = bitcoinaverage.com;
 			sourceTree = "<group>";
 		};
 		A01009322014BD960001EF94 /* Scenes */ = {
@@ -1957,6 +1972,7 @@
 				ADC0D3012107A3C500B8C62F /* blockexplorer.com */,
 				ADC0D2EF2107953100B8C62F /* PinnedHost.swift */,
 				AD967FF7210731110048085B /* PinnedURLSessionDelegate.swift */,
+				3FCED287DE05B6C9EC5F50E4 /* bitcoinaverage.com */,
 			);
 			path = Certificates;
 			sourceTree = "<group>";
@@ -2437,6 +2453,8 @@
 				A0A05A0A2013CF960007D1C9 /* Assets.xcassets in Resources */,
 				AD10D04C21132A6000A0F0D3 /* LaunchScreen.storyboard in Resources */,
 				AD10D05C21132F3500A0F0D3 /* InfoPlist.strings in Resources */,
+				3FCEDA95398C0B006A3310D7 /* COMODO RSA Domain Validation Secure Server CA.cer in Resources */,
+				3FCED2A4A45859697A4FB4CE /* *.bitcoinaverage.com.cer in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -2488,6 +2506,8 @@
 				ADC0D3052107A3D700B8C62F /* CloudFlare Inc ECC CA-2.cer in Resources */,
 				ADC0D2FA2107A23400B8C62F /* *.blockcypher.com.cer in Resources */,
 				ADC0D2F52107A13900B8C62F /* DigiCert SHA2 Extended Validation Server CA.cer in Resources */,
+				3FCED3EA112663089C273764 /* *.bitcoinaverage.com.cer in Resources */,
+				3FCED0B19FBC34F09C56472C /* COMODO RSA Domain Validation Secure Server CA.cer in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
