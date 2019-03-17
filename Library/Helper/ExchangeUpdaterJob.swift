@@ -29,7 +29,6 @@ final class ExchangeUpdaterJob {
     func run() {
         ExchangeRateLoader().load { ExchangeData.blockchainInfoCurrencies = $0.value }
         ExchangeRateLoader().loadTicker(ticker: "NOK", symbol: "kr", completion: { ExchangeData.currencies["NOK"] = $0.value })
-        ExchangeRateLoader().loadTicker(ticker: "USD", symbol: "$", completion: { ExchangeData.currencies["USD"] = $0.value })
     }
 }
 
