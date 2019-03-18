@@ -35,7 +35,7 @@ public final class ExchangeRateLoader {
         return map
     }
 
-    public func load(completion: @escaping (Result<[FiatCurrency], ExchangeRateLoaderError>) -> Void) {
+    public func loadFromBlockchainInfo(completion: @escaping (Result<[FiatCurrency], ExchangeRateLoaderError>) -> Void) {
         guard let url = URL(string: "https://blockchain.info/ticker") else { fatalError("Invalid ticker url.") }
         let task = URLSession.pinned.dataTask(with: url) { data, _, error in
             if let error = error {
@@ -51,7 +51,7 @@ public final class ExchangeRateLoader {
         task.resume()
     }
 
-    public func loadTicker(completion: @escaping (Result<[FiatCurrency], ExchangeRateLoaderError>) -> Void) {
+    public func loadFromBitcoinaverage(completion: @escaping (Result<[FiatCurrency], ExchangeRateLoaderError>) -> Void) {
         guard let url = URL(string: "https://apiv2.bitcoinaverage.com/indices/global/ticker/short?crypto=BTC") else { fatalError("Invalid ticker url.") }
 
         let task = URLSession.pinned.dataTask(with: url) { data, _, error in

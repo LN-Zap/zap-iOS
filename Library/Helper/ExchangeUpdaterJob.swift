@@ -33,7 +33,7 @@ final class ExchangeUpdaterJob {
             var bitcoinaverage: [FiatCurrency] = []
 
             apiCallGroup.enter()
-            ExchangeRateLoader().load {
+            ExchangeRateLoader().loadFromBlockchainInfo {
                 if let blockchaininfoResponse = $0.value {
                     blockchaininfo = blockchaininfoResponse
                 }
@@ -41,7 +41,7 @@ final class ExchangeUpdaterJob {
             }
 
             apiCallGroup.enter()
-            ExchangeRateLoader().loadTicker {
+            ExchangeRateLoader().loadFromBitcoinaverage {
                 if let bitcoinaverageResponse = $0.value {
                     bitcoinaverage = bitcoinaverageResponse
                 }
