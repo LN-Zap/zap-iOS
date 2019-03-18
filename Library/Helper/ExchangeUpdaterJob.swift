@@ -27,24 +27,38 @@ final class ExchangeUpdaterJob {
     }
 
     func run() {
-        ExchangeRateLoader().load { ExchangeData.blockchainInfoCurrencies = $0.value }
-        ExchangeRateLoader().loadTicker(ticker: "NOK", symbol: "kr", completion: { ExchangeData.currencies["NOK"] = $0.value })
+        DispatchQueue.global(qos: .background).async {
+            let apiCallGroup = DispatchGroup()
+            var blockchaininfo: [FiatCurrency] = []
+            var bitcoinaverage: [FiatCurrency] = []
+
+            apiCallGroup.enter()
+            ExchangeRateLoader().load {
+                if let blockchaininfoResponse = $0.value {
+                    blockchaininfo = blockchaininfoResponse
+                }
+                apiCallGroup.leave()
+            }
+
+            apiCallGroup.enter()
+            ExchangeRateLoader().loadTicker {
+                if let bitcoinaverageResponse = $0.value {
+                    bitcoinaverage = bitcoinaverageResponse
+                }
+                apiCallGroup.leave()
+            }
+
+            apiCallGroup.notify(queue: DispatchQueue.main, work: DispatchWorkItem {
+                var result: [String: FiatCurrency] = [:]
+                blockchaininfo.forEach { result[$0.currencyCode] = $0 }
+                bitcoinaverage.forEach { result[$0.currencyCode] = $0 }
+                ExchangeData.availableCurrencies = Array(result.values)
+            })
+        }
     }
 }
 
 enum ExchangeData {
-    static var currencies: [String: FiatCurrency] = [:] {
-        didSet {
-            availableCurrencies = Array(currencies.values)
-        }
-    }
-
-    static var blockchainInfoCurrencies: [FiatCurrency]? = [] {
-        didSet {
-            blockchainInfoCurrencies?.forEach{ currencies[$0.currencyCode] = $0}
-        }
-    }
-
     static var availableCurrencies: [FiatCurrency]? {
         didSet {
             guard let availableCurrencies = availableCurrencies else { return }
