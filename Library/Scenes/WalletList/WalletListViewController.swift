@@ -49,10 +49,6 @@ final class WalletListViewController: UIViewController {
         tableView.registerCell(WalletListActionCell.self)
     }
 
-    private func isSelectedConfiguration(_ configuration: WalletConfiguration) -> Bool {
-        return configuration == walletConfigurationStore.selectedWallet
-    }
-
     override func setEditing(_ editing: Bool, animated: Bool) {
         super.setEditing(editing, animated: animated)
         tableView.setEditing(editing, animated: true)
@@ -69,7 +65,7 @@ extension WalletListViewController: UITableViewDelegate {
 
         if indexPath.row < walletConfigurationStore.configurations.count {
             let configuration = walletConfigurationStore.configurations[indexPath.row]
-            guard !isSelectedConfiguration(configuration) else { return }
+            guard !walletConfigurationStore.isSelected(walletConfiguration: configuration) else { return }
 
             disconnectWalletDelegate?.reconnect(walletConfiguration: configuration)
             dismiss(animated: true, completion: nil)
@@ -115,7 +111,7 @@ extension WalletListViewController: UITableViewDataSource {
 
             let cell: WalletListCell = tableView.dequeueCellForIndexPath(indexPath)
             cell.walletConfiguration = configuration
-            cell.isSelectedConfiguration = isSelectedConfiguration(configuration)
+            cell.isSelectedConfiguration = walletConfigurationStore.isSelected(walletConfiguration: configuration)
             return cell
         } else {
             let cell: WalletListActionCell = tableView.dequeueCellForIndexPath(indexPath)
