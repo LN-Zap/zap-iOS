@@ -47,6 +47,11 @@ final class WalletListViewController: UIViewController {
         tableView.tableFooterView = UIView()
         tableView.registerCell(WalletListCell.self)
         tableView.registerCell(WalletListActionCell.self)
+
+        navigationController?.navigationBar.backgroundColor = UIColor.Zap.seaBlue
+        navigationController?.navigationBar.shadowImage = UIImage()
+        navigationController?.navigationBar.setBackgroundImage(UIImage(), for: .default)
+
     }
 
     override func setEditing(_ editing: Bool, animated: Bool) {
