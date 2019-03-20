@@ -123,6 +123,11 @@ internal enum StoryboardScene {
 
     internal static let walletViewController = SceneType<WalletViewController>(storyboard: Wallet.self, identifier: "WalletViewController")
   }
+  internal enum WalletList: StoryboardType {
+    internal static let storyboardName = "WalletList"
+
+    internal static let walletListViewController = SceneType<WalletListViewController>(storyboard: WalletList.self, identifier: "WalletListViewController")
+  }
 }
 // swiftlint:enable explicit_type_interface identifier_name line_length type_body_length type_name
 

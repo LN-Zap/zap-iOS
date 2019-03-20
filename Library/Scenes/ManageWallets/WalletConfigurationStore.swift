@@ -60,8 +60,9 @@ final class WalletConfigurationStore {
         selectedWallet = data?.selectedWallet
     }
 
-    func removeWallet(at indexPath: IndexPath) {
-        let walletId = configurations[indexPath.row].walletId
+    func removeWallet(at index: Int) {
+        let configuration = configurations[index]
+        let walletId = configuration.walletId
         guard let url = FileManager.default.walletDirectory(for: walletId) else { return }
 
         do {
@@ -70,7 +71,10 @@ final class WalletConfigurationStore {
             Logger.error(error.localizedDescription)
         }
 
-        configurations.remove(at: indexPath.row)
+        configurations.remove(at: index)
+        if selectedWallet == configuration {
+            selectedWallet = nil
+        }
 
         save()
     }

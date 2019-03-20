@@ -181,6 +181,11 @@
 		AD7123CE2225A51800AA8E7B /* PinStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD7123CD2225A51800AA8E7B /* PinStore.swift */; };
 		AD79E422219D90E2002589CA /* Data+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD79E421219D90E2002589CA /* Data+Extensions.swift */; };
 		AD79E424219D90EF002589CA /* String+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD79E423219D90EF002589CA /* String+Extensions.swift */; };
+		AD7B1EF8224241DC007D4171 /* WalletList.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AD7B1EF7224241DC007D4171 /* WalletList.storyboard */; };
+		AD7B1EFB22424753007D4171 /* WalletListCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD7B1EF922424753007D4171 /* WalletListCell.swift */; };
+		AD7B1EFC22424753007D4171 /* WalletListCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = AD7B1EFA22424753007D4171 /* WalletListCell.xib */; };
+		AD7B1EFF224253E8007D4171 /* WalletListActionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD7B1EFD224253E8007D4171 /* WalletListActionCell.swift */; };
+		AD7B1F00224253E8007D4171 /* WalletListActionCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = AD7B1EFE224253E8007D4171 /* WalletListActionCell.xib */; };
 		AD7ED61A22085B22007C5F2C /* Environment.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADCD060020E67FA5009D9650 /* Environment.swift */; };
 		AD7ED61D22087812007C5F2C /* ManageWalletTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD7ED61B22087812007C5F2C /* ManageWalletTableViewCell.swift */; };
 		AD7ED61E22087812007C5F2C /* ManageWalletTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = AD7ED61C22087812007C5F2C /* ManageWalletTableViewCell.xib */; };
@@ -656,6 +661,11 @@
 		AD7746582076609400EC596B /* NodeInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NodeInfo.swift; sourceTree = "<group>"; };
 		AD79E421219D90E2002589CA /* Data+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Data+Extensions.swift"; sourceTree = "<group>"; };
 		AD79E423219D90EF002589CA /* String+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Extensions.swift"; sourceTree = "<group>"; };
+		AD7B1EF7224241DC007D4171 /* WalletList.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = WalletList.storyboard; sourceTree = "<group>"; };
+		AD7B1EF922424753007D4171 /* WalletListCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WalletListCell.swift; sourceTree = "<group>"; };
+		AD7B1EFA22424753007D4171 /* WalletListCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = WalletListCell.xib; sourceTree = "<group>"; };
+		AD7B1EFD224253E8007D4171 /* WalletListActionCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WalletListActionCell.swift; sourceTree = "<group>"; };
+		AD7B1EFE224253E8007D4171 /* WalletListActionCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = WalletListActionCell.xib; sourceTree = "<group>"; };
 		AD7ED61B22087812007C5F2C /* ManageWalletTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ManageWalletTableViewCell.swift; sourceTree = "<group>"; };
 		AD7ED61C22087812007C5F2C /* ManageWalletTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ManageWalletTableViewCell.xib; sourceTree = "<group>"; };
 		AD7ED621220B4FE9007C5F2C /* FileManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FileManager.swift; sourceTree = "<group>"; };
@@ -1892,6 +1902,11 @@
 		ADEB619D22145892009D5707 /* WalletList */ = {
 			isa = PBXGroup;
 			children = (
+				AD7B1EF7224241DC007D4171 /* WalletList.storyboard */,
+				AD7B1EFD224253E8007D4171 /* WalletListActionCell.swift */,
+				AD7B1EFE224253E8007D4171 /* WalletListActionCell.xib */,
+				AD7B1EF922424753007D4171 /* WalletListCell.swift */,
+				AD7B1EFA22424753007D4171 /* WalletListCell.xib */,
 				ADEB619B2214588A009D5707 /* WalletListViewController.swift */,
 			);
 			path = WalletList;
@@ -2455,6 +2470,7 @@
 				AD2B877F221C6F8400308C1B /* UnlockWallet.storyboard in Resources */,
 				AD391C5420D16F7A007EE22A /* ConnectRemoteNode.storyboard in Resources */,
 				AD391CA020D16FA8007EE22A /* Root.storyboard in Resources */,
+				AD7B1EF8224241DC007D4171 /* WalletList.storyboard in Resources */,
 				AD391CD520D16FE1007EE22A /* HistoryCell.xib in Resources */,
 				AD391C6120D16F7A007EE22A /* SelectWalletCreationMethodTableViewCell.xib in Resources */,
 				AD391C6320D16F89007EE22A /* LndLog.storyboard in Resources */,
@@ -2462,9 +2478,11 @@
 				AD391C5020D16F7A007EE22A /* CreateWallet.storyboard in Resources */,
 				ADA3254421AD8D7900C5EAA2 /* Colors.xcassets in Resources */,
 				AD667E4D21367E3A007B9160 /* Background.storyboard in Resources */,
+				AD7B1EFC22424753007D4171 /* WalletListCell.xib in Resources */,
 				AD391C6620D16F89007EE22A /* Loading.storyboard in Resources */,
 				AD391C7320D16F89007EE22A /* QRCodeDetail.storyboard in Resources */,
 				AD391D0A20D16FF5007EE22A /* KeyPadView.xib in Resources */,
+				AD7B1F00224253E8007D4171 /* WalletListActionCell.xib in Resources */,
 				AD391D1120D16FF5007EE22A /* Toast.xib in Resources */,
 				AD391D0420D16FF5007EE22A /* AmountInputView.xib in Resources */,
 				ADA58F9A22049047009A5494 /* ManageWallets.storyboard in Resources */,
@@ -3042,6 +3060,7 @@
 				AD667E4B21367E1B007B9160 /* BackgroundViewController.swift in Sources */,
 				AD0D0BC2212BE3C800E4F7F7 /* RequestViewController.swift in Sources */,
 				AD391D1D20D174B4007EE22A /* Route.swift in Sources */,
+				AD7B1EFF224253E8007D4171 /* WalletListActionCell.swift in Sources */,
 				AD391C6C20D16F89007EE22A /* PinViewController.swift in Sources */,
 				AD391C7020D16F89007EE22A /* OpenChannelViewModel.swift in Sources */,
 				AD391C4F20D16F68007EE22A /* ChannelViewModel.swift in Sources */,
@@ -3078,6 +3097,7 @@
 				AD391C3220D16EFA007EE22A /* UIFont.swift in Sources */,
 				AD391C7120D16F89007EE22A /* OpenChannelQRCodeScannerStrategy.swift in Sources */,
 				AD391CD420D16FE1007EE22A /* HistoryCell.swift in Sources */,
+				AD7B1EFB22424753007D4171 /* WalletListCell.swift in Sources */,
 				AD391D1020D16FF5007EE22A /* Toast.swift in Sources */,
 				AD391C5D20D16F7A007EE22A /* MnemonicWordListViewController.swift in Sources */,
 				AD391C3320D16EFA007EE22A /* UIImage.swift in Sources */,
