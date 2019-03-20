@@ -205,8 +205,9 @@ final class WalletCoordinator: NSObject, Coordinator {
             else { return }
 
         UISelectionFeedbackGenerator().selectionChanged()
-        let viewController = WalletListViewController(walletConfigurationStore: walletConfigurationStore, disconnectWalletDelegate: disconnectWalletDelegate)
-        rootViewController.present(viewController, animated: true)
+        let viewController = WalletListViewController.instantiate(walletConfigurationStore: walletConfigurationStore, disconnectWalletDelegate: disconnectWalletDelegate)
+        let navigationController = ModalNavigationController(rootViewController: viewController, height: viewController.preferredHeight)
+        rootViewController.present(navigationController, animated: true)
     }
 
     private func presentAddChannel() {
