@@ -127,10 +127,6 @@ final class HistoryCell: BondTableViewCell {
 
         let description = transactionEvent.memo ?? transactionEvent.destinationAddresses.first?.string ?? L10n.Transaction.noDestinationAddress
 
-        if transactionEvent.type == .unknown {
-            containerBackgroundColor = UIColor.Zap.invisibleGray
-        }
-
         stackView.addArrangedElement(.horizontalStackView(compressionResistant: .last, content: [
             .label(text: description, style: Style.Label.body),
             .customView(amountLabel(transactionEvent.amount))

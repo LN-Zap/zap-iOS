@@ -23,7 +23,7 @@ extension FilterSettings {
     init() {
         channelEvents = true
         transactionEvents = true
-        unknownTransactionType = false
+        unknownTransactionType = true
         createInvoiceEvents = true
         failedPaymentEvents = true
         lightningPaymentEvents = true
