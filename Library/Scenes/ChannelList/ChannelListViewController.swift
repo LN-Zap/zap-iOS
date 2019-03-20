@@ -28,7 +28,6 @@ final class ChannelListViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        title = L10n.Scene.Channels.title
         view.backgroundColor = UIColor.Zap.background
 
         tableView.registerCell(ChannelTableViewCell.self)
@@ -38,6 +37,11 @@ final class ChannelListViewController: UIViewController {
 
         navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(presentAddChannel))
         navigationItem.largeTitleDisplayMode = .never
+
+        channelListViewModel?.dataSource
+            .map { "\(L10n.Scene.Channels.title) (\($0.collection.count))" }
+            .bind(to: navigationItem.reactive.title)
+            .dispose(in: reactive.bag)
 
         channelListViewModel?.dataSource.bind(to: tableView) { [weak self] array, indexPath, tableView in
             let cell: ChannelTableViewCell = tableView.dequeueCellForIndexPath(indexPath)
