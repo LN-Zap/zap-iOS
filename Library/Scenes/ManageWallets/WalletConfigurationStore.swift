@@ -60,6 +60,10 @@ final class WalletConfigurationStore {
         selectedWallet = data?.selectedWallet
     }
 
+    func isSelected(walletConfiguration: WalletConfiguration) -> Bool {
+        return walletConfiguration.walletId == selectedWallet?.walletId
+    }
+
     func removeWallet(at index: Int) {
         let configuration = configurations[index]
         let walletId = configuration.walletId
@@ -72,7 +76,7 @@ final class WalletConfigurationStore {
         }
 
         configurations.remove(at: index)
-        if selectedWallet == configuration {
+        if isSelected(walletConfiguration: configuration) {
             selectedWallet = nil
         }
 
