@@ -1,0 +1,9 @@
+Zap Wallet makes Bitcoin usable for everyone. Trustlessly send and receive Bitcoin instantly with minimal fees via the Lightning Network. Manage your private keys, multiple wallets, and open channels, to get connected with peers on the Lightning Network and start transacting today. Zap is available on all platforms, so you can stay connected and transact whether you are at home or on the move. 
+
+Use Zap to: 
+• Create a wallet and deposit funds into a lightning connected wallet. 
+• Open channels and start transacting with thousands.
+• Make payments over the Lightning Network.
+• Connect to a remote node or have Zap spin one up for you – choice is yours.
+
+The simplest most effective way to interact with the lightning network starts with Zap. Here at Zap we are comfortably available in response. Feel free to reach us on slack and follow our progress at https://github.com/LN-Zap/
