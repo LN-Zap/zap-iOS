@@ -92,7 +92,7 @@
 "scene.setup_pin.top_label.non_matching" = "I PIN non corrispondono. Si prega di riprovare.";
 "scene.setup_pin.top_label.validate" = "Immettere il pin nuovamente per convalidare.";
 
-"scene.confirm_mnemonic.title" = "Confermare il seme";
+"scene.confirm_mnemonic.title" = "Confermare Mnemonica (seed)";
 "scene.confirm_mnemonic.description" = "Immettere la chiave.";
 
 "scene.send.title" = "Invia";
@@ -125,15 +125,15 @@
 
 "scene.recover_wallet.title" = "Recupera Portafoglio";
 "scene.recover_wallet.done_button" = "Fatto";
-"scene.recover_wallet.description_label" = "Enter your seed:";
+"scene.recover_wallet.description_label" = "Immettere la Mnemonica (seed):";
 "scene.recover_wallet.placeholder" = "abandon ability able about above absent absorb abstract absurd abuse access accident account accuse achieve acid acoustic acquire across act action actor actress actual";
 
-"scene.select_wallet_connection.title" = "Add Wallet";
-"scene.select_wallet_connection.create.title" = "Create";
+"scene.select_wallet_connection.title" = "Aggiungi Portafoglio";
+"scene.select_wallet_connection.create.title" = "Crea";
 "scene.select_wallet_connection.create.message" = "nuovo portafoglio";
 "scene.select_wallet_connection.recover.title" = "Recupera";
 "scene.select_wallet_connection.recover.message" = "portafoglio esistente";
-"scene.select_wallet_connection.connect.title" = "Connect";
+"scene.select_wallet_connection.connect.title" = "Connetti";
 "scene.select_wallet_connection.connect.message" = "nodo remoto";
 "scene.select_wallet_connection.disabled_alert.title" = "Ci dispiace!";
 "scene.select_wallet_connection.disabled_alert.message" = "L'esecuzione diretta di Lnd nel telefono è disabilitata in questa beta. Puoi invece connetterti ad un nodo remoto.";
