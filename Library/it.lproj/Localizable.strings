@@ -1,9 +1,9 @@
 "generic.memo.placeholder" = "What is this for?";
-"generic.qr_code.copy_button" = "Copy";
-"generic.qr_code.copy_success_message" = "Address has been copied to clipboard.";
-"generic.pasteboard.invalid_address" = "Invalid Address";
-"generic.qr_code.share_button" = "Share";
-"generic.cancel" = "Cancel";
+"generic.qr_code.copy_button" = "Copia";
+"generic.qr_code.copy_success_message" = "L'indirizzo è stato copiato negli appunti.";
+"generic.pasteboard.invalid_address" = "Indirizzo non valido";
+"generic.qr_code.share_button" = "Condividi";
+"generic.cancel" = "Annulla";
 
 "link.help" = "https://ln-zap.github.io/zap-tutorials/";
 "link.help.zapconnect" = "https://ln-zap.github.io/zap-tutorials/iOS-remote-node-setup";
@@ -14,14 +14,14 @@
 
 "rpc_connect_qrcode_error.btc_pay_expired" = "Sembra che il codice sia scaduto.";
 "rpc_connect_qrcode_error.btc_pay_configuration_broken" = "Impossibile leggere il file di configurazione BTCPay.";
-"rpc_connect_qrcode_error.cant_read_qrcode" = "Invalid code format.";
-"rpc_connect_qrcode_error.code_updated" = "Connection updated.";
+"rpc_connect_qrcode_error.cant_read_qrcode" = "Formato non valido.";
+"rpc_connect_qrcode_error.code_updated" = "Collegamento aggiornato.";
 
 "channel.state.active" = "Online";
 "channel.state.inactive" = "Offline";
-"channel.state.opening" = "Opening";
-"channel.state.closing" = "Closing";
-"channel.state.force_closing" = "Force Closing";
+"channel.state.opening" = "Apertura";
+"channel.state.closing" = "Chiusura";
+"channel.state.force_closing" = "Chiusura forzata";
 "channel.state.waiting_close" = "Waiting Close";
 
 "network_type.regtest" = "Regtest";
