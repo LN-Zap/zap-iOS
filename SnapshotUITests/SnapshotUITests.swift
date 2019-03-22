@@ -5,6 +5,7 @@
 //  Copyright © 2019 Zap. All rights reserved.
 //
 
+import SimulatorStatusMagic
 import XCTest
 
 class SnapshotUITests: XCTestCase {
@@ -21,6 +22,8 @@ class SnapshotUITests: XCTestCase {
             "SKIP_PIN_FLOW": "1"
         ]
         setupSnapshot(app)
+
+        SDStatusBarManager.sharedInstance()?.enableOverrides()
 
         app.launch()
     }

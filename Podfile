@@ -8,6 +8,10 @@ target 'Zap' do
     pod 'SwiftBTC', :path => './SwiftBTC'
 end
 
+target 'SnapshotUITests' do
+    pod 'SimulatorStatusMagic', :configurations => ['Debug', 'DebugRemote']
+end
+
 abstract_target 'RPC' do
     pod 'LndRpc', :path => '.'
     pod 'SwiftBTC', :path => './SwiftBTC'
