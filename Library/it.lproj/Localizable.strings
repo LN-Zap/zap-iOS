@@ -53,27 +53,27 @@
 "scene.settings.item.on_chain_request_address.p2sh" = "P2SH";
 "scene.settings.item.manage_channels" = "Gestione canali";
 "scene.settings.item.node_uri" = "URI del nodo";
-"scene.settings.item.remove_remote_node" = "Gestore Portafogli";
+"scene.settings.item.remove_remote_node" = "Gestione Portafogli";
 
 "scene.settings.item.change_pin" = "Modifica Pin";
 "scene.settings.item.report_issue" = "Segnala un problema";
 "scene.settings.item.help" = "Hai bisogno di aiuto?";
 "scene.settings.item.privacy_policy" = "Informativa sulla privacy";
-"scene.settings.item.lnd_log" = "Visualizza i log di Lnd";
+"scene.settings.item.lnd_log" = "Visualizza il log di Lnd";
 
 "scene.request.title" = "Ricevi";
 "scene.request.lightning_button" = "Lightning";
 "scene.request.or_separator_label" = "oppure";
 "scene.request.on_chain_button" = "On-chain";
-"scene.request.generate_request_button" = "Genera richiesta pagamento";
-"scene.request.lightning_header_title" = "Lightning Payment Request";
-"scene.request.on_chain_header_title" = "On Chain Payment Request";
-"scene.request.next_button_title" = "Next";
+"scene.request.generate_request_button" = "Genera richiesta";
+"scene.request.lightning_header_title" = "Richiesta Pagamento Lightning";
+"scene.request.on_chain_header_title" = "Richiesta Pagamento On-Chain";
+"scene.request.next_button_title" = "Avanti";
 
-"scene.channels.title" = "Channels";
-"scene.channels.close.title" = "Close Channel";
-"scene.channels.close.message" = "Do you really want to close the channel with node %@?";
-"scene.channels.force_close.title" = "Force Close Channel";
+"scene.channels.title" = "Canali";
+"scene.channels.close.title" = "Chiudi Canale";
+"scene.channels.close.message" = "Vuoi davvero chiudere il canale con il nodo %@?";
+"scene.channels.force_close.title" = "Forza Chiusura Canale";
 "scene.channels.force_close.message" = "%@ is offline, are you sure you want to force close this channel? You’d have to wait about %@ for your funds?";
 "scene.channels.alert.close" = "Close Channel";
 "scene.channels.alert.force_close" = "Force Close Channel";
