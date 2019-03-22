@@ -120,11 +120,11 @@
 "scene.connect_remote_node.edit_url.title" = "Indirizzo";
 
 "scene.create_wallet.title" = "Crea Portafoglio";
-"scene.create_wallet.description_label" = "Make sure to store the mnemonic at a save location.";
-"scene.create_wallet.next_button" = "Next";
+"scene.create_wallet.description_label" = "Assicurarsi di memorizzare la Mnemonica in una posizione sicura.";
+"scene.create_wallet.next_button" = "Avanti";
 
-"scene.recover_wallet.title" = "Recover Wallet";
-"scene.recover_wallet.done_button" = "Done";
+"scene.recover_wallet.title" = "Recupera Portafoglio";
+"scene.recover_wallet.done_button" = "Fatto";
 "scene.recover_wallet.description_label" = "Enter your seed:";
 "scene.recover_wallet.placeholder" = "abandon ability able about above absent absorb abstract absurd abuse access accident account accuse achieve acid acoustic acquire across act action actor actress actual";
 
