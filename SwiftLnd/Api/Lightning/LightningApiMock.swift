@@ -200,6 +200,7 @@ public enum ApiMockTemplate {
     case mainnet
     case transactions
     case everything
+    case screenshots
 
     public static let selected: ApiMockTemplate = .transactions
 
@@ -208,9 +209,9 @@ public enum ApiMockTemplate {
         case .syncedEmpty:
             return LightningApiMock()
         case .oneChannel:
-            return LightningApiMock(channels: [Channel.template])
+            return LightningApiMock(channels: [Channel.Template.defalut])
         case .manyChannels:
-            return LightningApiMock(channels: Array(repeating: Channel.template, count: 200))
+            return LightningApiMock(channels: Array(repeating: Channel.Template.defalut, count: 200))
         case .balance:
             return LightningApiMock(walletBalance: 4_200_000)
         case .mainnet:
@@ -219,27 +220,59 @@ public enum ApiMockTemplate {
             return LightningApiMock(
                 walletBalance: 100000,
                 transactions: [
-                    Transaction.template
+                    Transaction.Template.default
                 ],
                 payments: [
-                    Payment.template
+                    Payment.Template.default
                 ]
             )
         case .everything:
             return LightningApiMock(
                 walletBalance: 4_200_000,
                 transactions: [
-                    Transaction.template
+                    Transaction.Template.default
                 ],
                 payments: [
-                    Payment.template
+                    Payment.Template.default
                 ],
                 channels: [
-                    Channel.template
+                    Channel.Template.defalut
                 ],
                 decodePaymentRequest: PaymentRequest.Template.testnetFallback,
-                sendPayment: Payment.template
+                sendPayment: Payment.Template.default
+            )
+        case .screenshots:
+            return LightningApiMock(
+                info: Info.Template.mainnet,
+                walletBalance: 420_000,
+                transactions: [
+                    Transaction.Template.create(id: "t1", amount: 100000, date: .ago(minutes: 1)),
+                    Transaction.Template.create(id: "t2", amount: -2005000, date: .ago(minutes: 3))
+                ],
+                payments: [
+                    Payment.Template.create(id: "l5", amount: -1920, date: .ago(hours: 1), destination: "yalls.org"),
+                    Payment.Template.create(id: "l6", amount: -1, date: .ago(hours: 2), destination: "tippin.me"),
+                    Payment.Template.create(id: "l7", amount: -400, date: .ago(hours: 3), destination: "tippin.me")
+                ],
+                channels: [
+                    Channel.Template.create(state: .active, localBalance: 90950, remoteBalance: 0, remotePubKey: "LightningPowerUsers"),
+                    Channel.Template.create(state: .active, localBalance: 30026, remoteBalance: 69788, remotePubKey: "ACINQ"),
+                    Channel.Template.create(state: .opening, localBalance: 0, remoteBalance: 167545, remotePubKey: "ln1.satoshilabs.com"),
+                    Channel.Template.create(state: .active, localBalance: 90950, remoteBalance: 10305, remotePubKey: "tippin.me"),
+                    Channel.Template.create(state: .active, localBalance: 157555, remoteBalance: 3450, remotePubKey: "yalls.org"),
+                    Channel.Template.create(state: .active, localBalance: 166862, remoteBalance: 20120, remotePubKey: "Bitrefill.com"),
+                    Channel.Template.create(state: .closing, localBalance: 184824, remoteBalance: 4839, remotePubKey: "03a2fc4acb9691cab0d85")
+                ],
+                invoices: [
+                    Invoice.Template.create(memo: "Beers at Room77", amount: 1250277, date: .ago(minutes: 10))
+                ]
             )
         }
+    }
+}
+
+extension Date {
+    static func ago(seconds: Double = 0, minutes: Double = 0, hours: Double = 0, days: Double = 0) -> Date {
+        return Date().addingTimeInterval(-(seconds + minutes * 60 + hours * 60 * 60 + days * 60 * 60 * 24))
     }
 }

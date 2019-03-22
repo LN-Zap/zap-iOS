@@ -186,6 +186,8 @@
 		AD7B1EFC22424753007D4171 /* WalletListCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = AD7B1EFA22424753007D4171 /* WalletListCell.xib */; };
 		AD7B1EFF224253E8007D4171 /* WalletListActionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD7B1EFD224253E8007D4171 /* WalletListActionCell.swift */; };
 		AD7B1F00224253E8007D4171 /* WalletListActionCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = AD7B1EFE224253E8007D4171 /* WalletListActionCell.xib */; };
+		AD7B1F172243B6B4007D4171 /* SnapshotUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD7B1F162243B6B4007D4171 /* SnapshotUITests.swift */; };
+		AD7B1F202243B6F1007D4171 /* SnapshotHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD7B1F1F2243B6F1007D4171 /* SnapshotHelper.swift */; };
 		AD7ED61A22085B22007C5F2C /* Environment.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADCD060020E67FA5009D9650 /* Environment.swift */; };
 		AD7ED61D22087812007C5F2C /* ManageWalletTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD7ED61B22087812007C5F2C /* ManageWalletTableViewCell.swift */; };
 		AD7ED61E22087812007C5F2C /* ManageWalletTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = AD7ED61C22087812007C5F2C /* ManageWalletTableViewCell.xib */; };
@@ -385,6 +387,13 @@
 			proxyType = 1;
 			remoteGlobalIDString = AD536BE520E62763002279BC;
 			remoteInfo = ZapLightning;
+		};
+		AD7B1F192243B6B4007D4171 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = A0A059F72013CF960007D1C9 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = A0A059FE2013CF960007D1C9;
+			remoteInfo = Zap;
 		};
 		ADADAD6D2143B2E700A48E1F /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
@@ -666,6 +675,10 @@
 		AD7B1EFA22424753007D4171 /* WalletListCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = WalletListCell.xib; sourceTree = "<group>"; };
 		AD7B1EFD224253E8007D4171 /* WalletListActionCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WalletListActionCell.swift; sourceTree = "<group>"; };
 		AD7B1EFE224253E8007D4171 /* WalletListActionCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = WalletListActionCell.xib; sourceTree = "<group>"; };
+		AD7B1F142243B6B4007D4171 /* SnapshotUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SnapshotUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		AD7B1F162243B6B4007D4171 /* SnapshotUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SnapshotUITests.swift; sourceTree = "<group>"; };
+		AD7B1F182243B6B4007D4171 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		AD7B1F1F2243B6F1007D4171 /* SnapshotHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SnapshotHelper.swift; path = fastlane/SnapshotHelper.swift; sourceTree = SOURCE_ROOT; };
 		AD7ED61B22087812007C5F2C /* ManageWalletTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ManageWalletTableViewCell.swift; sourceTree = "<group>"; };
 		AD7ED61C22087812007C5F2C /* ManageWalletTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ManageWalletTableViewCell.xib; sourceTree = "<group>"; };
 		AD7ED621220B4FE9007C5F2C /* FileManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FileManager.swift; sourceTree = "<group>"; };
@@ -972,6 +985,13 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		AD7B1F112243B6B4007D4171 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		ADADAD5F2143B2E700A48E1F /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -1202,6 +1222,7 @@
 				ADEB61A92216CD7D009D5707 /* Logger */,
 				1084CFF47F1CDB628A05D07A /* Pods */,
 				A0A05A002013CF960007D1C9 /* Products */,
+				AD7B1F152243B6B4007D4171 /* SnapshotUITests */,
 				ADFBE0BF21F6268400A76E06 /* Sticker */,
 				ADADAD642143B2E700A48E1F /* SwiftLnd */,
 				ADE64DFC22293FF9004C0BC8 /* Widget */,
@@ -1222,6 +1243,7 @@
 				ADFBE0BE21F6268400A76E06 /* Sticker.appex */,
 				ADEB61A82216CD7D009D5707 /* Logger.framework */,
 				ADE64DF922293FF8004C0BC8 /* Widget.appex */,
+				AD7B1F142243B6B4007D4171 /* SnapshotUITests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -1567,6 +1589,16 @@
 				AD79E423219D90EF002589CA /* String+Extensions.swift */,
 			);
 			path = Extensions;
+			sourceTree = "<group>";
+		};
+		AD7B1F152243B6B4007D4171 /* SnapshotUITests */ = {
+			isa = PBXGroup;
+			children = (
+				AD7B1F1F2243B6F1007D4171 /* SnapshotHelper.swift */,
+				AD7B1F162243B6B4007D4171 /* SnapshotUITests.swift */,
+				AD7B1F182243B6B4007D4171 /* Info.plist */,
+			);
+			path = SnapshotUITests;
 			sourceTree = "<group>";
 		};
 		AD7EDAE12108C4050058CCCA /* Wallet */ = {
@@ -2205,6 +2237,24 @@
 			productReference = AD536BEE20E62764002279BC /* LightningTests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
+		AD7B1F132243B6B4007D4171 /* SnapshotUITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = AD7B1F1E2243B6B4007D4171 /* Build configuration list for PBXNativeTarget "SnapshotUITests" */;
+			buildPhases = (
+				AD7B1F102243B6B4007D4171 /* Sources */,
+				AD7B1F112243B6B4007D4171 /* Frameworks */,
+				AD7B1F122243B6B4007D4171 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				AD7B1F1A2243B6B4007D4171 /* PBXTargetDependency */,
+			);
+			name = SnapshotUITests;
+			productName = SnapshotUITests;
+			productReference = AD7B1F142243B6B4007D4171 /* SnapshotUITests.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
+		};
 		ADADAD622143B2E700A48E1F /* SwiftLnd */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = ADADAD802143B2E700A48E1F /* Build configuration list for PBXNativeTarget "SwiftLnd" */;
@@ -2354,6 +2404,11 @@
 						ProvisioningStyle = Automatic;
 						TestTargetID = A0A059FE2013CF960007D1C9;
 					};
+					AD7B1F132243B6B4007D4171 = {
+						CreatedOnToolsVersion = 10.1;
+						ProvisioningStyle = Automatic;
+						TestTargetID = A0A059FE2013CF960007D1C9;
+					};
 					ADADAD622143B2E700A48E1F = {
 						CreatedOnToolsVersion = 9.4.1;
 						LastSwiftMigration = 1000;
@@ -2439,6 +2494,7 @@
 				ADADAD6A2143B2E700A48E1F /* SwiftLndTests */,
 				ADFBE0BD21F6268400A76E06 /* Sticker */,
 				ADE64DF822293FF8004C0BC8 /* Widget */,
+				AD7B1F132243B6B4007D4171 /* SnapshotUITests */,
 			);
 		};
 /* End PBXProject section */
@@ -2510,6 +2566,13 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 		AD536BEC20E62764002279BC /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		AD7B1F122243B6B4007D4171 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -3233,6 +3296,15 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		AD7B1F102243B6B4007D4171 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				AD7B1F172243B6B4007D4171 /* SnapshotUITests.swift in Sources */,
+				AD7B1F202243B6F1007D4171 /* SnapshotHelper.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		ADADAD5E2143B2E700A48E1F /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -3346,6 +3418,11 @@
 			isa = PBXTargetDependency;
 			target = AD536BE520E62763002279BC /* Lightning */;
 			targetProxy = AD536BF920E62764002279BC /* PBXContainerItemProxy */;
+		};
+		AD7B1F1A2243B6B4007D4171 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = A0A059FE2013CF960007D1C9 /* Zap */;
+			targetProxy = AD7B1F192243B6B4007D4171 /* PBXContainerItemProxy */;
 		};
 		ADADAD6E2143B2E700A48E1F /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
@@ -3885,6 +3962,62 @@
 				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Zap.app/Zap";
+			};
+			name = Release;
+		};
+		AD7B1F1B2243B6B4007D4171 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = CS73H95RB8;
+				INFOPLIST_FILE = SnapshotUITests/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.1;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				PRODUCT_BUNDLE_IDENTIFIER = com.jackmallers.SnapshotUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 4.2;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = Zap;
+			};
+			name = Debug;
+		};
+		AD7B1F1C2243B6B4007D4171 /* DebugRemote */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = CS73H95RB8;
+				INFOPLIST_FILE = SnapshotUITests/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.1;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				PRODUCT_BUNDLE_IDENTIFIER = com.jackmallers.SnapshotUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 4.2;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = Zap;
+			};
+			name = DebugRemote;
+		};
+		AD7B1F1D2243B6B4007D4171 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = CS73H95RB8;
+				INFOPLIST_FILE = SnapshotUITests/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.1;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				MTL_FAST_MATH = YES;
+				PRODUCT_BUNDLE_IDENTIFIER = com.jackmallers.SnapshotUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 4.2;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = Zap;
 			};
 			name = Release;
 		};
@@ -4557,6 +4690,16 @@
 				AD536BFF20E62764002279BC /* Debug */,
 				AD967FDE210329A70048085B /* DebugRemote */,
 				AD536C0020E62764002279BC /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		AD7B1F1E2243B6B4007D4171 /* Build configuration list for PBXNativeTarget "SnapshotUITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				AD7B1F1B2243B6B4007D4171 /* Debug */,
+				AD7B1F1C2243B6B4007D4171 /* DebugRemote */,
+				AD7B1F1D2243B6B4007D4171 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

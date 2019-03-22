@@ -50,6 +50,11 @@ Generate new app icon assets.
 fastlane tests
 ```
 Run all tests.
+### screenshots
+```
+fastlane screenshots
+```
+
 
 ----
 

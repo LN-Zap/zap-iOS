@@ -84,6 +84,16 @@
                ReferencedContainer = "container:Zap.xcodeproj">
             </BuildableReference>
          </TestableReference>
+         <TestableReference
+            skipped = "NO">
+            <BuildableReference
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "AD7B1F132243B6B4007D4171"
+               BuildableName = "SnapshotUITests.xctest"
+               BlueprintName = "SnapshotUITests"
+               ReferencedContainer = "container:Zap.xcodeproj">
+            </BuildableReference>
+         </TestableReference>
       </Testables>
       <EnvironmentVariables>
          <EnvironmentVariable
@@ -123,6 +133,11 @@
             isEnabled = "YES">
          </EnvironmentVariable>
          <EnvironmentVariable
+            key = "SKIP_PIN_FLOW"
+            value = "1"
+            isEnabled = "NO">
+         </EnvironmentVariable>
+         <EnvironmentVariable
             key = "TRACE_DB"
             value = "1"
             isEnabled = "NO">
@@ -144,6 +159,11 @@
          </EnvironmentVariable>
          <EnvironmentVariable
             key = "USE_MOCK_API"
+            value = "1"
+            isEnabled = "NO">
+         </EnvironmentVariable>
+         <EnvironmentVariable
+            key = "USE_UITEST_MOCK_API"
             value = "1"
             isEnabled = "NO">
          </EnvironmentVariable>

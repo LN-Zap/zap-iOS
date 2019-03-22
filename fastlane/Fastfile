@@ -116,3 +116,8 @@ lane :tests do
     code_coverage: true
   )
 end
+
+lane :screenshots do
+  capture_ios_screenshots
+end
+

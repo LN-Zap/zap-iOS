@@ -20,6 +20,7 @@ enum PinStore {
     private static let keychain = Keychain(service: "com.jackmallers.zap.password").accessibility(.whenUnlocked)
 
     static var didSetupPin: Bool {
+        guard !Environment.skipPinFlow else { return true }
         return hashedPin != nil
     }
 

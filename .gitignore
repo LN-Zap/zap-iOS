@@ -63,9 +63,8 @@ playground.xcworkspace
 
 Carthage/Build
 
-# fastlane
-#
-# fastlane/screenshots
+## Fastlane
+fastlane/screenshots
 fastlane/report.xml
 fastlane/Preview.html
 fastlane/test_output

@@ -47,7 +47,26 @@ final class WalletConfigurationStore {
         }
     }
 
+    static var mock: WalletConfigurationStore {
+        guard
+            let macaroon = Macaroon(hexadecimalString: "01"),
+            let url = URL(string: "127.0.0.1:10009")
+            else { fatalError("Invalid mock data") }
+        let rpcCredentials = RPCCredentials(certificate: "01", macaroon: macaroon, host: url)
+        let wallet = WalletConfiguration(alias: nil, network: .mainnet, connection: .remote(rpcCredentials), walletId: UUID().uuidString)
+        return WalletConfigurationStore(configurations: [wallet], selectedWallet: wallet)
+    }
+
+    private init(configurations: [WalletConfiguration], selectedWallet: WalletConfiguration?) {
+        self.configurations = configurations
+        self.selectedWallet = selectedWallet
+    }
+
     static func load() -> WalletConfigurationStore {
+        if Environment.useUITestMockApi {
+            return mock
+        }
+
         guard let data = WalletConfigurationStore.keychain[data: keychainWalletConfigurationKey] else { return WalletConfigurationStore(data: nil) }
         let result = try? JSONDecoder().decode(CodableData.self, from: data)
 
