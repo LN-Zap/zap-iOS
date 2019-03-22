@@ -74,9 +74,9 @@
 "scene.channels.close.title" = "Chiudi Canale";
 "scene.channels.close.message" = "Vuoi davvero chiudere il canale con il nodo %@?";
 "scene.channels.force_close.title" = "Forza Chiusura Canale";
-"scene.channels.force_close.message" = "%@ is offline, are you sure you want to force close this channel? You’d have to wait about %@ for your funds?";
-"scene.channels.alert.close" = "Close Channel";
-"scene.channels.alert.force_close" = "Force Close Channel";
+"scene.channels.force_close.message" = "%@ non è in linea, sei sicuro di voler forzare la chiusura questo canale? Si dovrà attendere circa %@ per riavere i fondi";
+"scene.channels.alert.close" = "Canale Chiuso";
+"scene.channels.alert.force_close" = "Canale in chiusura forzata";
 "scene.channels.close_loading_view" = "Closing Channel";
 "scene.channels.close_success.toast" = "Channel is closing.";
 
@@ -131,31 +131,31 @@
 "scene.select_wallet_connection.title" = "Add Wallet";
 "scene.select_wallet_connection.create.title" = "Create";
 "scene.select_wallet_connection.create.message" = "new wallet";
-"scene.select_wallet_connection.recover.title" = "Recover";
-"scene.select_wallet_connection.recover.message" = "existing wallet";
+"scene.select_wallet_connection.recover.title" = "Recupera";
+"scene.select_wallet_connection.recover.message" = "portafoglio esistente";
 "scene.select_wallet_connection.connect.title" = "Connect";
-"scene.select_wallet_connection.connect.message" = "remote node";
-"scene.select_wallet_connection.disabled_alert.title" = "Sorry!";
-"scene.select_wallet_connection.disabled_alert.message" = "Running Lnd on the phone is disabled in this beta. Connect to a remote node instead.";
+"scene.select_wallet_connection.connect.message" = "nodo remoto";
+"scene.select_wallet_connection.disabled_alert.title" = "Ci dispiace!";
+"scene.select_wallet_connection.disabled_alert.message" = "L'esecuzione diretta di Lnd nel telefono è disabilitata in questa beta. Puoi invece connetterti ad un nodo remoto.";
 "scene.select_wallet_connection.disabled_alert.ok_button" = "Ok";
-"scene.select_wallet_connection.create.help" = "Need Help?";
+"scene.select_wallet_connection.create.help" = "Hai bisogno di aiuto?";
 
-"scene.main.send_button" = "Send";
-"scene.main.receive_button" = "Receive";
+"scene.main.send_button" = "Invia";
+"scene.main.receive_button" = "Ricevi";
 "scene.main.exchange_rate_label" = "%@ per BTC";
 
-"scene.qr_code_detail.title" = "Receive";
+"scene.qr_code_detail.title" = "Ricevi";
 
-"scene.sync.description_label" = "Syncing to blockchain…";
-"scene.sync.disconnect_bar_button" = "Disconnect";
-"scene.sync.disconnect_alert.title" = "Disconnect";
-"scene.sync.disconnect_alert.message" = "Do you really want to cancel syncing? You will have to reconnect to your node afterwards.";
-"scene.sync.disconnect_alert.destructive_action" = "Disconnect Node";
-"scene.sync.disconnect_alert.cancel_action" = "Cancel";
+"scene.sync.description_label" = "Sto sincronizzando la blockchain…";
+"scene.sync.disconnect_bar_button" = "Disconnessione";
+"scene.sync.disconnect_alert.title" = "Disconnessione";
+"scene.sync.disconnect_alert.message" = "Vuoi davvero cancellare la sincronizzazione? Sarà necessario ricollegare il tuo nodo in seguito.";
+"scene.sync.disconnect_alert.destructive_action" = "Scollega Nodo";
+"scene.sync.disconnect_alert.cancel_action" = "Annulla";
 
-"scene.transaction_detail.title.lightning_invoice" = "Invoice Detail";
-"scene.transaction_detail.title.payment_detail" = "Payment Detail";
-"scene.transaction_detail.title.transaction_detail" = "Transaction Detail";
+"scene.transaction_detail.title.lightning_invoice" = "Dettagli fattura";
+"scene.transaction_detail.title.payment_detail" = "Dettagli pagamento";
+"scene.transaction_detail.title.transaction_detail" = "Dettagli transazione";
 "scene.transaction_detail.title.channel_event_detail" = "Channel Event";
 "scene.transaction_detail.title.failed_payment" = "Failed Payment";
 "scene.transaction_detail.memo_label" = "Memo";
