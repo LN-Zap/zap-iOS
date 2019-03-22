@@ -1,4 +1,4 @@
-"generic.memo.placeholder" = "What is this for?";
+"generic.memo.placeholder" = "Causale?";
 "generic.qr_code.copy_button" = "Copia";
 "generic.qr_code.copy_success_message" = "L'indirizzo è stato copiato negli appunti.";
 "generic.pasteboard.invalid_address" = "Indirizzo non valido";
@@ -21,12 +21,12 @@
 "channel.state.inactive" = "Offline";
 "channel.state.opening" = "Apertura";
 "channel.state.closing" = "Chiusura";
-"channel.state.force_closing" = "Chiusura forzata";
+"channel.state.force_closing" = "Forza chiusura";
 "channel.state.waiting_close" = "Waiting Close";
 
 "network_type.regtest" = "Regtest";
-"network_type.testnet" = "Testnet";
-"network_type.mainnet" = "Mainnet";
+"network_type.testnet" = "Rete di Test (testnet)";
+"network_type.mainnet" = "Rete principale (mainnet)";
 
 "unit.bitcoin.btc" = "Bitcoin";
 "unit.bitcoin.mbtc" = "Milli Bitcoin";
@@ -36,17 +36,17 @@
 "toast.invoice" = "Did receive %@";
 "toast.invoice_memo" = "Did receive %@ \"%@\"";
 
-"transaction.no_destination_address" = "No destination address";
+"transaction.no_destination_address" = "Nessun indirizzo di destinazione";
 
 "view.amount_input.placeholder" = "Importo";
 
-"scene.history.title" = "History";
-"scene.history.empty_state_label" = "0 transactions 🙁";
+"scene.history.title" = "Movimenti";
+"scene.history.empty_state_label" = "0 transazioni 🙁";
 
 "scene.settings.title" = "Impostazioni";
 "scene.settings.section.wallet" = "Portafoglio";
 "scene.settings.item.bitcoin_unit" = "Unità di Bitcoin";
-"scene.settings.item.currency" = "Currency";
+"scene.settings.item.currency" = "Valuta";
 "scene.settings.item.block_explorer" = "Block Explorer";
 "scene.settings.item.on_chain_request_address.title" = "Bitcoin Address Type";
 "scene.settings.item.on_chain_request_address.bech32" = "Bech32";
