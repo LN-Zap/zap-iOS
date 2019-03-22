@@ -130,7 +130,7 @@
 
 "scene.select_wallet_connection.title" = "Add Wallet";
 "scene.select_wallet_connection.create.title" = "Create";
-"scene.select_wallet_connection.create.message" = "new wallet";
+"scene.select_wallet_connection.create.message" = "nuovo portafoglio";
 "scene.select_wallet_connection.recover.title" = "Recupera";
 "scene.select_wallet_connection.recover.message" = "portafoglio esistente";
 "scene.select_wallet_connection.connect.title" = "Connect";
@@ -182,25 +182,25 @@
 "scene.filter.section_header.advanced" = "Avanzate";
 "scene.filter.displayOnChainTransactions" = "Pagamenti On-chain";
 "scene.filter.display_unknown_transaction_type" = "Transazioni interne";
-"scene.filter.displayLightningPayments" = "Pagamento Lightning";
-"scene.filter.displayLightningInvoices" = "Created Invoices";
+"scene.filter.displayLightningPayments" = "Pagamenti Lightning";
+"scene.filter.displayLightningInvoices" = "Richieste di pagamento";
 "scene.filter.displayChannelEvents" = "Channel Events";
 "scene.filter.displayFailedPaymentEvents" = "Failed Payments";
 
 "scene.qrcode_scanner.top_label" = "Scan QR-Code";
 
-"scene.wallet.title" = "Wallet";
+"scene.wallet.title" = "Portafoglio";
 
-"scene.time_lock.headline" = "Wrong Passcode";
-"scene.time_lock.description" = "Your wallet is locked for:";
+"scene.time_lock.headline" = "Codice di accesso errato";
+"scene.time_lock.description" = "Il portafoglio è bloccato per:";
 
-"scene.modal_pin.headline" = "Enter Passcode";
-"scene.modal_pin.description" = "Please enter your passcode to continue";
+"scene.modal_pin.headline" = "Digitare il PIN";
+"scene.modal_pin.description" = "Insere PIN per continuare";
 
-"scene.history.cell.payment_sent" = "Payment sent";
-"scene.history.cell.payment_received" = "Payment received";
-"scene.history.cell.payment_failed" = "Payment failed (%@)";
-"scene.history.cell.invoice_created" = "Payment Request created";
+"scene.history.cell.payment_sent" = "Pagamento inviato";
+"scene.history.cell.payment_received" = "Pagamento ricevuto";
+"scene.history.cell.payment_failed" = "Pagamento non riuscito (%@)";
+"scene.history.cell.invoice_created" = "Richiesta di pagamento creata";
 "scene.history.cell.channel_opened" = "Open Channel";
 "scene.history.cell.channel_closed" = "Close Channel";
 "scene.history.cell.force_close_channel" = "Force close Channel";
@@ -208,23 +208,23 @@
 "scene.history.cell.breach_close_channel" = "Breach close Channel";
 "scene.history.cell.close_channel_funding_canceled" = "Close Channel (funding canceled)";
 "scene.history.cell.channel_abandoned" = "Channel abandoned";
-"scene.history.cell.transaction_sent" = "Payment sent";
-"scene.history.cell.transaction_received" = "Payment received";
-"scene.history.cell.label.new" = "new";
-"scene.history.cell.label.error" = "error";
-"scene.history.cell.action.try_again" = "Try Again";
+"scene.history.cell.transaction_sent" = "Pagamento inviato";
+"scene.history.cell.transaction_received" = "Pagamento ricevuto";
+"scene.history.cell.label.new" = "nuovo";
+"scene.history.cell.label.error" = "errore";
+"scene.history.cell.action.try_again" = "Prova di nuovo";
 
-"scene.node_uri.title" = "Connect to Node";
+"scene.node_uri.title" = "Connetti al nodo";
 "scene.node_uri.alias_label" = "Alias";
 "scene.node_uri.uri_label" = "URI";
 
 "scene.connect_node_uri.action_sheet.title" = "Connect";
 "scene.connect_node_uri.action_sheet.connect_button" = "Connect";
-"scene.connect_node_uri.action_sheet.message" = "Do you really want to connect to node at %@?";
+"scene.connect_node_uri.action_sheet.message" = "Vuoi davvero connetterti al nodo %@?";
 
-"scene.wallet_list.title" = "Wallets";
+"scene.wallet_list.title" = "Portafogli";
 
-"scene.unlock.title" = "Unlock Node";
-"scene.unlock.unlock_button" = "Unlock";
+"scene.unlock.title" = "Sblocca Nodo";
+"scene.unlock.unlock_button" = "Sblocca";
 "scene.unlock.password_placeholder" = "Password";
-"scene.unlock.title_label" = "Unlock %@";
+"scene.unlock.title_label" = "Sbloccare %@";
