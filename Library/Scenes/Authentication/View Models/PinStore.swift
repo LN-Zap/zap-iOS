@@ -18,10 +18,23 @@ enum PinStore {
     private static let salt = "kZF86kneOPAm09Wpl6XOLixuyctCM/lK"
 
     private static let keychain = Keychain(service: "com.jackmallers.zap.password").accessibility(.whenUnlocked)
+    private static let didSetupPinKey = DefaultKey<Bool>("didSetupPin")
 
-    static var didSetupPin: Bool {
-        guard !Environment.skipPinFlow else { return true }
-        return hashedPin != nil
+    private(set) static var didSetupPin: Bool {
+        get {
+            guard !Environment.skipPinFlow else { return true }
+            if let didSetupPin: Bool = didSetupPinKey.get() {
+                return didSetupPin
+            } else {
+                // migration from old keychain based check to user defaults.
+                let didSetupPin = hashedPin != nil
+                didSetupPinKey.set(didSetupPin)
+                return didSetupPin
+            }
+        }
+        set {
+            didSetupPinKey.set(newValue)
+        }
     }
 
     static func update(pin: String) {
@@ -29,6 +42,7 @@ enum PinStore {
         PinStore.rounds = rounds
         PinStore.hashedPin = hashPin(pin, rounds: rounds)
         PinStore.pinCount = pin.count
+        didSetupPin = true
     }
 
     static func isCorrect(pin: String) -> Bool {
