@@ -45,7 +45,7 @@ class SnapshotUITests: XCTestCase {
 
     func testReceive() {
         app.buttons.element(boundBy: 6).tap()
-        app.buttons.element(boundBy: 4).tap()
+        app.buttons["Lightning"].tap()
         app.buttons["1"].tap()
         app.buttons["0"].tap()
         app.buttons["0"].tap()

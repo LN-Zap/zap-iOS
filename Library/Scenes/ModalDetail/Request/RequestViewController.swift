@@ -117,6 +117,7 @@ final class RequestViewController: ModalDetailViewController {
         lightningButton = contentStackView.addArrangedElement(.customHeight(56, element: .button(title: L10n.Scene.Request.lightningButton, style: lightningButtonStyle, completion: { [weak self] _ in
             self?.presentAmountInput(requestMethod: .lightning)
         }))) as? CallbackButton
+        lightningButton?.accessibilityIdentifier = "Lightning"
 
         let horizontalStackView = UIStackView()
         horizontalStackView.spacing = 15

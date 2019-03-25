@@ -55,6 +55,11 @@ Run all tests.
 fastlane screenshots
 ```
 
+### upload_screenshots
+```
+fastlane upload_screenshots
+```
+
 
 ----
 

@@ -121,3 +121,10 @@ lane :screenshots do
   capture_ios_screenshots
 end
 
+lane :upload_screenshots do
+  upload_to_app_store(
+    username: ENV['ITUNESCONNECT_USER'],
+    skip_binary_upload: true,
+    skip_metadata: true
+  )
+end

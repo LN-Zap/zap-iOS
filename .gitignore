@@ -2,6 +2,7 @@
 .DS_Store
 .AppleDouble
 .LSOverride
+*.swp
 
 # Icon must end with two \r
 Icon
@@ -64,7 +65,8 @@ playground.xcworkspace
 Carthage/Build
 
 ## Fastlane
-fastlane/screenshots
+fastlane/screenshots/*/*.png
+fastlane/screenshots/screenshots.html
 fastlane/report.xml
 fastlane/Preview.html
 fastlane/test_output

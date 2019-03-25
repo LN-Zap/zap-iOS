@@ -1,0 +1,52 @@
+{
+  "device_frame_version": "latest",
+  "default": {
+    "keyword": {
+      "color": "#fd9800"
+    },
+    "title": {
+      "color": "#ffffff"
+    },
+    "background": "./background.jpg",
+    "padding": 50,
+    "frame": "BLACK"
+  },
+  "data": [
+    {
+      "filter": "Wallet",
+      "keyword": {
+        "text": "Easily"
+      },
+      "title": {
+        "text": "send and receive Bitcoin"
+      }
+    },
+    {
+      "filter": "Channel",
+      "keyword": {
+        "text": "Open channels"
+      },
+      "title": {
+        "text": "and connect with peers over lightning"
+      }
+    },
+    {
+      "filter": "History",
+      "keyword": {
+        "text": "View"
+      },
+      "title": {
+        "text": "entire transaction history"
+      }
+    },
+    {
+      "filter": "Receive",
+      "keyword": {
+        "text": "Create payment requests"
+      },
+      "title": {
+        "text": "and receive Bitcoin instantly"
+      }
+    }
+  ]
+}
