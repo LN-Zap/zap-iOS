@@ -84,6 +84,7 @@ final class WalletViewController: UIViewController {
 
         Style.Button.custom().apply(to: sendButton, requestButton)
 
+        requestButton.accessibilityIdentifier = "Request"
         UIView.performWithoutAnimation {
             sendButton.setTitle(L10n.Scene.Main.sendButton, for: .normal)
             sendButton.layoutIfNeeded()

@@ -118,7 +118,10 @@ lane :tests do
 end
 
 lane :screenshots do
-  capture_ios_screenshots
+  capture_ios_screenshots(
+    number_of_retries: 0,
+    stop_after_first_error: true
+  )
 end
 
 lane :upload_screenshots do

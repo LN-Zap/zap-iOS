@@ -9,7 +9,34 @@ devices([
   "iPhone X"
 ])
 
-languages(['ca', 'cs', 'da', 'de-DE', 'el', 'en-US', 'es-ES', 'fi', 'fr-FR', 'hr', 'hu', 'it', 'ja', 'ko', 'nl-NL', 'pl', 'pt-BR', 'pt-PT', 'ro', 'ru', 'sv', 'tr', 'uk', 'vi', 'zh-Hans', 'zh-Hant'])
+languages([
+  'ca',
+  'cs',
+  'da',
+  'de-DE',
+  'el',
+  'en-US',
+  'es-ES',
+  'fi',
+  'fr-FR',
+  'hr',
+  'hu',
+  'it',
+  'ja',
+  'ko',
+  'nl-NL',
+  'pl',
+  'pt-BR',
+  'pt-PT',
+  'ro',
+  'ru',
+  'sv',
+  'tr',
+  'uk',
+  'vi',
+  'zh-Hans',
+  'zh-Hant'
+])
 
 # The name of the scheme which contains the UI Tests
 scheme("SnapshotUITests")
@@ -18,5 +45,5 @@ scheme("SnapshotUITests")
 # output_directory("./screenshots")
 
 # clear all previously generated screenshots before creating new ones
-clear_previous_screenshots(true)
+# clear_previous_screenshots(true)
 

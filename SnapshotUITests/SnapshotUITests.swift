@@ -44,8 +44,14 @@ class SnapshotUITests: XCTestCase {
     }
 
     func testReceive() {
-        app.buttons.element(boundBy: 6).tap()
-        app.buttons["Lightning"].tap()
+        app.buttons["Request"].tap()
+        if app.buttons["Lightning"].waitForExistence(timeout: 3) {
+            app.buttons["Lightning"].tap()
+        } else {
+            app.buttons.element(boundBy: 4).tap()
+        }
+
+        _ = app.buttons["1"].waitForExistence(timeout: 3)
         app.buttons["1"].tap()
         app.buttons["0"].tap()
         app.buttons["0"].tap()
