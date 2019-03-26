@@ -90,7 +90,7 @@ extension ChannelEvent {
             node = LightningNode(pubKey: channelEventTable.nodePubKey, alias: nil, color: nil)
         }
 
-        fee = (try? row.get(TransactionTable.Column.fee)) ?? nil // swiftlint:disable:this redundant_nil_coalescing
+        fee = try? row.get(TransactionTable.Column.fee)
     }
 
     public static func events(database: Connection) throws -> [ChannelEvent] {

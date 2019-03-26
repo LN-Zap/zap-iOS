@@ -12,7 +12,7 @@ import SwiftBTC
 import SwiftLnd
 
 public extension Notification.Name {
-    public static let historyDidChange = Notification.Name(rawValue: "historyDidChange")
+    static let historyDidChange = Notification.Name(rawValue: "historyDidChange")
 }
 
 public final class HistoryService {
@@ -68,21 +68,21 @@ public final class HistoryService {
 
         taskGroup.enter()
         api.transactions { [addTransactions] in
-            guard let transactions = $0.value else { return }
+            guard let transactions = (try? $0.get()) else { return }
             addTransactions(transactions)
             taskGroup.leave()
         }
 
         taskGroup.enter()
         api.payments { [addPayments] in
-            guard let payments = $0.value else { return }
+            guard let payments = (try? $0.get()) else { return }
             addPayments(payments)
             taskGroup.leave()
         }
 
         taskGroup.enter()
         api.invoices { [addInvoices] in
-            guard let invoices = $0.value else { return }
+            guard let invoices = (try? $0.get()) else { return }
             addInvoices(invoices)
             taskGroup.leave()
         }

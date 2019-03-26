@@ -38,17 +38,8 @@ extension ConnectedNodeTable: ZapTable {
 
         self.pubKey = pubKey
 
-        if let alias = try? row.get(Column.alias) {
-            self.alias = alias
-        } else {
-            alias = nil
-        }
-
-        if let color = try? row.get(Column.color) {
-            self.color = color
-        } else {
-            color = nil
-        }
+        alias = try? row.get(Column.alias)
+        color = try? row.get(Column.color)
     }
 
     static func createTable(database: Connection) throws {

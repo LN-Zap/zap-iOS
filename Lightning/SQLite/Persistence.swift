@@ -63,10 +63,7 @@ private extension Connection {
 
     var userVersion: Int {
         get {
-            guard
-                let scalar = try? scalar("PRAGMA user_version"),
-                let int64 = scalar as? Int64
-                else { return 0 }
+            guard let int64 = try? scalar("PRAGMA user_version") as? Int64 else { return 0 }
             return Int(int64)
         }
         set {

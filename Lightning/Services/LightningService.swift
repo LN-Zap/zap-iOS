@@ -13,7 +13,7 @@ import SwiftBTC
 import SwiftLnd
 
 public extension Notification.Name {
-    public static let receivedTransaction = Notification.Name(rawValue: "receivedTransaction")
+    static let receivedTransaction = Notification.Name(rawValue: "receivedTransaction")
 }
 
 public final class LightningService: NSObject {
@@ -70,7 +70,7 @@ public final class LightningService: NSObject {
         api.subscribeChannelGraph { _ in }
 
         api.subscribeInvoices { [weak self] in
-            guard let invoice = $0.value else { return }
+            guard let invoice = (try? $0.get()) else { return }
             Logger.info("new invoice: \(invoice)")
 
             self?.historyService.addedInvoice(invoice)
@@ -81,7 +81,7 @@ public final class LightningService: NSObject {
         }
 
         api.subscribeTransactions { [weak self] in
-            guard let transaction = $0.value else { return }
+            guard let transaction = (try? $0.get()) else { return }
             Logger.info("new transaction: \(transaction)")
             self?.historyService.addedTransaction(transaction)
             self?.balanceService.update()

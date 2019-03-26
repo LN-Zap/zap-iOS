@@ -101,7 +101,7 @@ public final class InfoService {
             syncDebounceCount = 0
         }
 
-        if let info = result.value {
+        if case .success(let info) = result {
             if blockHeight.value != info.blockHeight {
                 blockHeight.value = info.blockHeight
             }
@@ -114,14 +114,14 @@ public final class InfoService {
             }
         }
 
-        let newIsSyncedToChain = result.value?.isSyncedToChain
+        let newIsSyncedToChain = (try? result.get())?.isSyncedToChain
         if info.value?.isSyncedToChain != newIsSyncedToChain && newIsSyncedToChain == true {
             channelService.update()
             balanceService.update()
             historyService.update()
         }
 
-        self.info.value = result.value
+        self.info.value = try? result.get()
     }
 
     public func stop() {

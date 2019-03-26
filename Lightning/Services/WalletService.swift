@@ -47,7 +47,7 @@ public final class WalletService {
 
     public func initWallet(mnemonic: [String], completion: @escaping (Result<Success, LndApiError>) -> Void) {
         wallet.initWallet(mnemonic: mnemonic, password: WalletService.password) {
-            if $0.value != nil {
+            if case .success = $0 {
                 WalletService.didCreateWallet = true
             }
             completion($0)

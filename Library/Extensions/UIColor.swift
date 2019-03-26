@@ -8,7 +8,7 @@
 import UIKit
 
 public extension UIColor {
-    public enum Zap {
+    enum Zap {
         public static let black = color("black")
         public static let white = color("white")
         public static let gray = color("gray")

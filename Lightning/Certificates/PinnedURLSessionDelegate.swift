@@ -9,7 +9,7 @@ import Foundation
 import Logger
 
 public extension URLSession {
-    public static var pinned: URLSession {
+    static var pinned: URLSession {
         return URLSession(configuration: .default, delegate: PinnedURLSessionDelegate.shared, delegateQueue: nil)
     }
 }

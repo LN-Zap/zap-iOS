@@ -52,9 +52,9 @@ final class RecoverWalletViewController: UIViewController {
     @IBAction private func recoverWallet(_ sender: Any) {
         guard let mnemonic = textView.text else { return }
         recoverWalletViewModel.recoverWallet(with: mnemonic) { [weak self] result in
-            if let errorDescription = result.error?.localizedDescription {
+            if case .failure(let error) = result {
                 DispatchQueue.main.async {
-                    Toast.presentError(errorDescription)
+                    Toast.presentError(error.localizedDescription)
                 }
             } else {
                 DispatchQueue.main.async {

@@ -33,28 +33,28 @@ public final class ChannelService {
 
     public func update() {
         api.channels { [open, channelsUpdated] result in
-            open.value = result.value ?? []
+            open.value = (try? result.get()) ?? []
             channelsUpdated(open.value)
         }
 
         api.pendingChannels { [pending, channelsUpdated] result in
-            pending.value = result.value ?? []
+            pending.value = (try? result.get()) ?? []
             channelsUpdated(pending.value)
         }
 
         api.closedChannels { [closed, closedChannelsUpdated] result in
-            closed.value = result.value ?? []
+            closed.value = (try? result.get()) ?? []
             closedChannelsUpdated(closed.value)
         }
     }
 
-    public func open(lightningNodeURI: LightningNodeURI, amount: Satoshi, completion: @escaping (SwiftLnd.Result<ChannelPoint, LndApiError>) -> Void) {
-        api.peers { [weak self, api] peers in
-            if peers.value?.contains(where: { $0.pubKey == lightningNodeURI.pubKey }) == true {
+    public func open(lightningNodeURI: LightningNodeURI, amount: Satoshi, completion: @escaping (Swift.Result<ChannelPoint, LndApiError>) -> Void) {
+        api.peers { [weak self, api] result in
+            if (try? result.get())?.contains(where: { $0.pubKey == lightningNodeURI.pubKey }) == true {
                 self?.openConnectedChannel(pubKey: lightningNodeURI.pubKey, amount: amount, completion: completion)
             } else {
                 api.connect(pubKey: lightningNodeURI.pubKey, host: lightningNodeURI.host) { result in
-                    if let error = result.error {
+                    if case .failure(let error) = result {
                         completion(.failure(LndApiError.localizedError(error.localizedDescription)))
                     } else {
                         self?.openConnectedChannel(pubKey: lightningNodeURI.pubKey, amount: amount, completion: completion)
@@ -64,14 +64,14 @@ public final class ChannelService {
         }
     }
 
-    private func openConnectedChannel(pubKey: String, amount: Satoshi, completion: @escaping (SwiftLnd.Result<ChannelPoint, LndApiError>) -> Void) {
+    private func openConnectedChannel(pubKey: String, amount: Satoshi, completion: @escaping (Swift.Result<ChannelPoint, LndApiError>) -> Void) {
         api.openChannel(pubKey: pubKey, amount: amount) { [weak self] in
             self?.update()
             completion($0)
         }
     }
 
-    public func close(_ channel: Channel, completion: @escaping (SwiftLnd.Result<CloseStatusUpdate, LndApiError>) -> Void) {
+    public func close(_ channel: Channel, completion: @escaping (Swift.Result<CloseStatusUpdate, LndApiError>) -> Void) {
         let force = channel.state != .active
         api.closeChannel(channelPoint: channel.channelPoint, force: force) { [weak self] in
             self?.update()
@@ -81,7 +81,7 @@ public final class ChannelService {
 
     public func node(for remotePubkey: String, completion: @escaping (LightningNode?) -> Void) {
         api.nodeInfo(pubKey: remotePubkey) { [persistence] result in
-            if let nodeInfo = result.value {
+            if let nodeInfo = try? result.get() {
                 let connectedNode = nodeInfo.node
                 try? ConnectedNodeTable(lightningNode: connectedNode).insert(database: persistence.connection())
                 completion(connectedNode)

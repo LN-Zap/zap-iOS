@@ -17,14 +17,16 @@ public struct Invoice: Equatable {
 
         init?(state: LNDInvoice_InvoiceState) {
             switch state {
-            case .gpbUnrecognizedEnumeratorValue:
-                return nil
             case .open:
                 self = .open
             case .settled:
                 self = .settled
             case .canceled:
                 self = .canceled
+            case .gpbUnrecognizedEnumeratorValue:
+                return nil
+            @unknown default:
+                return nil
             }
         }
     }

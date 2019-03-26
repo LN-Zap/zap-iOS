@@ -77,7 +77,7 @@ final class ConnectRemoteNodeViewModel: NSObject {
         return Array2D.Section(metadata: L10n.Scene.ConnectRemoteNode.yourNodeTitle, items: items)
     }
 
-    func pasteCertificates(_ string: String, completion: @escaping (SwiftLnd.Result<Success, RPCConnectQRCodeError>) -> Void) {
+    func pasteCertificates(_ string: String, completion: @escaping (Swift.Result<Success, RPCConnectQRCodeError>) -> Void) {
         RPCConnectQRCode.configuration(for: string) { [weak self] result in
             DispatchQueue.main.async {
                 switch result {
@@ -91,7 +91,7 @@ final class ConnectRemoteNodeViewModel: NSObject {
         }
     }
 
-    func connect(completion: @escaping (WalletConfiguration, SwiftLnd.Result<Success, LndApiError>) -> Void) {
+    func connect(completion: @escaping (WalletConfiguration, Swift.Result<Success, LndApiError>) -> Void) {
         guard let remoteNodeConfiguration = remoteNodeConfiguration else { return }
 
         testServer = LightningApiRpc(configuration: remoteNodeConfiguration)

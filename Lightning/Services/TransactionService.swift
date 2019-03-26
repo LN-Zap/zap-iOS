@@ -31,7 +31,7 @@ public final class TransactionService {
 
     public func newAddress(with type: OnChainRequestAddressType, completion: @escaping (Result<BitcoinAddress, LndApiError>) -> Void) {
         api.newAddress(type: type) { [persistence] result in
-            if let address = result.value {
+            if let address = try? result.get() {
                 try? ReceivingAddressTable(address: address).insert(database: persistence.connection())
             }
             completion(result)
@@ -44,7 +44,7 @@ public final class TransactionService {
 
     public func upperBoundLightningFees(for paymentRequest: PaymentRequest, amount: Satoshi, completion: @escaping (Result<(amount: Satoshi, fee: Satoshi?), LndApiError>) -> Void) {
         api.routes(destination: paymentRequest.destination, amount: amount) { result in
-            let totalFees = result.value?
+            let totalFees = (try? result.get())?
                 .max(by: { $0.totalFees < $1.totalFees })?
                 .totalFees
             completion(.success((amount: amount, fee: totalFees)))

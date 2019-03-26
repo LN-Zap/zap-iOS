@@ -27,7 +27,7 @@ final class ExchangeUpdaterJob {
     }
 
     func run() {
-        ExchangeRateLoader().load { ExchangeData.availableCurrencies = $0.value }
+        ExchangeRateLoader().load { ExchangeData.availableCurrencies = try? $0.get() }
     }
 }
 

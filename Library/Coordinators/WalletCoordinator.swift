@@ -181,7 +181,7 @@ final class WalletCoordinator: NSObject, Coordinator {
                 group.enter()
                 strategy.viewControllerForAddress(address: invoice) { [weak self] result in
                     group.leave()
-                    guard let viewController = result.value else { return }
+                    guard let viewController = try? result.get() else { return }
                     self?.rootViewController.present(viewController, animated: true)
                 }
                 group.wait()
