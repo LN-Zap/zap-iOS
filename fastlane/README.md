@@ -60,6 +60,11 @@ fastlane screenshots
 fastlane upload_screenshots
 ```
 
+### upload_metadata
+```
+fastlane upload_metadata
+```
+
 
 ----
 

@@ -166,3 +166,11 @@ lane :upload_screenshots do
     skip_metadata: true
   )
 end
+
+lane :upload_metadata do
+  upload_to_app_store(
+    username: ENV['ITUNESCONNECT_USER'],
+    skip_binary_upload: true,
+    skip_screenshots: true
+  )
+end
