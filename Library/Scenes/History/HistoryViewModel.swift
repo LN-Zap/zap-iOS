@@ -46,7 +46,7 @@ final class HistoryViewModel: NSObject {
 
     init(historyService: HistoryService) {
         self.historyService = historyService
-        dataSource = MutableObservableArray2D()
+        dataSource = MutableObservableArray2D(Array2D())
 
         super.init()
 
@@ -70,7 +70,7 @@ final class HistoryViewModel: NSObject {
         let events = historyService.events
         let filteredEvents = filterEvents(events, searchString: searchString, filterSettings: filterSettings)
         let sectionedCellTypes = bondSections(transactionViewModels: filteredEvents)
-        dataSource.replace(with: Array2D<String, HistoryEventType>(sectionedCellTypes), performDiff: true, areValuesEqual: Array2DElement.areElementsEqual)
+        dataSource.replace(with: Array2D<String, HistoryEventType>(sections: sectionedCellTypes), performDiff: true, areEqual: Array2D.areEqual)
         updateTabBarBadge()
     }
 
@@ -85,7 +85,7 @@ final class HistoryViewModel: NSObject {
         var unseenEventCount = 0
         sectionLoop: for dayNode in dataSource.collection.children {
             for historyEventNode in dayNode.children {
-                guard let item = historyEventNode.value.item else {
+                guard let item = historyEventNode.item else {
                     continue
                 }
                 if item.date > lastSeenDate {
@@ -115,7 +115,7 @@ final class HistoryViewModel: NSObject {
             .sorted { $0.0 > $1.0 }
     }
 
-    private func bondSections(transactionViewModels: [HistoryEventType]) -> [TreeNode<Array2DElement<String, HistoryEventType>>] {
+    private func bondSections(transactionViewModels: [HistoryEventType]) -> [Array2D<String, HistoryEventType>.Section] {
         let sortedSections = self.sortedSections(transactionViewModels: transactionViewModels)
 
         return sortedSections.compactMap {
@@ -125,7 +125,7 @@ final class HistoryViewModel: NSObject {
 
             let dateString = date.localized
 
-            return to2DArraySection(section: dateString, items: sortedItems)
+            return Array2D<String, HistoryEventType>.Section(metadata: dateString, items: sortedItems)
         }
     }
 }

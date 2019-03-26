@@ -61,7 +61,7 @@ final class HistoryViewController: UIViewController {
         setupDataSourceBinding(tableView, historyViewModel)
 
         historyViewModel.dataSource
-            .map { !$0.collection.isEmpty }
+            .map { !$0.collection.children.isEmpty }
             .bind(to: emptyStateLabel.reactive.isHidden)
             .dispose(in: reactive.bag)
     }
@@ -114,7 +114,7 @@ extension HistoryViewController: UITableViewDelegate {
 
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
         let sectionHeaderView = SectionHeaderView.instanceFromNib
-        sectionHeaderView.title = historyViewModel?.dataSource.collection[sectionAt: section]
+        sectionHeaderView.title = historyViewModel?.dataSource.collection[sectionAt: section].metadata
         sectionHeaderView.backgroundColor = .white
         return sectionHeaderView
     }

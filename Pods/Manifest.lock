@@ -6,7 +6,7 @@ PODS:
     - gRPC-ProtoRPC (= 1.18.0)
   - BigInt (3.1.0):
     - SipHash (~> 1.2)
-  - Bond (7.2.0):
+  - Bond (7.3.2):
     - Differ (~> 1.3)
     - ReactiveKit (~> 3.9)
   - BoringSSL-GRPC (0.0.2):
@@ -71,7 +71,7 @@ DEPENDENCIES:
   - LndRpc (from `.`)
   - ScrollableGraphView
   - SimulatorStatusMagic
-  - SQLite.swift (~> 0.11.5)
+  - SQLite.swift (from `https://github.com/ottosuess/SQLite.swift.git`, commit `c96a5da4ef8c9ccec7bfac254b56ae17199097f3`)
   - SwiftBTC (from `./SwiftBTC`)
 
 SPEC REPOS:
@@ -93,19 +93,26 @@ SPEC REPOS:
     - ScrollableGraphView
     - SimulatorStatusMagic
     - SipHash
-    - SQLite.swift
 
 EXTERNAL SOURCES:
   LndRpc:
     :path: "."
+  SQLite.swift:
+    :commit: c96a5da4ef8c9ccec7bfac254b56ae17199097f3
+    :git: https://github.com/ottosuess/SQLite.swift.git
   SwiftBTC:
     :path: "./SwiftBTC"
+
+CHECKOUT OPTIONS:
+  SQLite.swift:
+    :commit: c96a5da4ef8c9ccec7bfac254b56ae17199097f3
+    :git: https://github.com/ottosuess/SQLite.swift.git
 
 SPEC CHECKSUMS:
   "!ProtoCompiler": c9526df99fafd398a393def617ae18d3774b7232
   "!ProtoCompiler-gRPCPlugin": 93f91aef21d112abda50a5c592d8716254ec44dc
   BigInt: 76b5dfdfa3e2e478d4ffdf161aeede5502e2742f
-  Bond: c05ebe6d2f2a3845a19f304faec4a295253f49a8
+  Bond: ffbd3a05927e89c838b5176ab1d8cf21954d40c2
   BoringSSL-GRPC: 2a230d9cd93e7ce39916044f645cebb31f37dde6
   Differ: 9fcee7602542d7c6484ce05a0faec1c11258ed63
   gRPC: f0d45d7bfd5f220e405df5a9f672315ab963440c
@@ -120,9 +127,9 @@ SPEC CHECKSUMS:
   ScrollableGraphView: 4af35d4ea9ecdec665d34a74da51da161ddff8ac
   SimulatorStatusMagic: 28d4a9d1a500ac7cea0b2b5a43c1c6ddb40ba56c
   SipHash: fad90a4683e420c52ef28063063dbbce248ea6d4
-  SQLite.swift: 6e5356850bb1791459f8c16d6ee9195b28714a2e
+  SQLite.swift: 7e42c4b88dc7a5d764fbd431001e6d8dc8c1cfce
   SwiftBTC: 57a1352d5131d4bf27c54ff9b0a602b46ab049ef
 
-PODFILE CHECKSUM: 60720ecbc54ff3e1537891fdacdb2ea35b20d5a6
+PODFILE CHECKSUM: 9ca08f2d1fb38c6540726383d093da4458c370f5
 
 COCOAPODS: 1.5.3

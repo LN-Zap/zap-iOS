@@ -38,6 +38,11 @@ final class ConnectCellBond<Changeset: SectionedDataSourceChangeset>: TableViewB
         }
     }
 
+    // Important: Annotate UITableViewDataSource methods with `@objc` in the subclass, otherwise UIKit will not see your method!
+    @objc func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
+        return changeset?.collection[sectionAt: section].metadata
+    }
+
     @objc override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
 
         guard let cellType = changeset?.collection.item(at: indexPath) else {
@@ -229,8 +234,9 @@ extension ConnectRemoteNodeViewController: UITableViewDelegate {
     }
 
     func tableView(_ tableView: UITableView, willDisplayHeaderView view: UIView, forSection section: Int) {
+        // this method is needed to **not** make the title capitalized
         guard let view = view as? UITableViewHeaderFooterView else { return }
-        view.textLabel?.text = connectRemoteNodeViewModel?.dataSource.collection[sectionAt: section]
+        view.textLabel?.text = connectRemoteNodeViewModel?.dataSource.collection[sectionAt: section].metadata
     }
 }
 
@@ -241,9 +247,5 @@ extension ConnectRemoteNodeViewController: UITableViewDataSource {
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         fatalError("not implemented")
-    }
-
-    func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
-        return connectRemoteNodeViewModel?.dataSource.collection[sectionAt: section]
     }
 }
