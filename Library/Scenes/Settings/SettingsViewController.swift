@@ -52,7 +52,7 @@ final class SettingsViewController: GroupedTableViewController {
                 // swiftlint:disable:next force_unwrapping
                 SafariSettingsItem(title: L10n.Scene.Settings.Item.reportIssue, url: URL(string: "https://github.com/LN-Zap/zap-iOS/issues")!),
                 // swiftlint:disable:next force_unwrapping
-                SafariSettingsItem(title: L10n.Scene.Settings.Item.privacyPolicy, url: URL(string: "http://zap.jackmallers.com/")!)
+                SafariSettingsItem(title: L10n.Scene.Settings.Item.privacyPolicy, url: URL(string: "http://zap.jackmallers.com/privacy")!)
             ])
         ]
 
