@@ -83,15 +83,50 @@ private_lane :upload_alpha do |options|
   sh("git reset --hard")
 end
 
-desc "Add a new UDID to developer portal and update adhoc provisioning profile."
-lane :udid do
-  device_name = prompt(text: "Device name: ")
-  udid = prompt(text: "UDID: ")
-  
-  register_device(
-    name: device_name,
-    udid: udid
+desc "Release"
+lane :release do
+  version = get_version_number(
+    xcodeproj: "Zap.xcodeproj",
+    target: "Zap"
   )
+
+  increment_build_number(build_number:
+    app_store_build_number(
+      live: false,
+      initial_build_number: 0,
+      version: version
+    ) + 1
+  )
+
+  sync_code_signing(
+    username: ENV['ITUNESCONNECT_USER'],
+    app_identifier: app_identifier,
+    type: "appstore"
+  )
+
+  build_ios_app(
+    workspace: "Zap.xcworkspace",
+    scheme: "Zap",
+    configuration: "Release",
+    output_directory: "./builds/appstore",
+    export_method: "app-store"
+  )
+
+  upload_to_app_store(
+    username: ENV['ITUNESCONNECT_USER'],
+    skip_metadata: true,
+    skip_screenshots: true
+  )
+
+  add_git_tag
+
+  slack(
+    message: "Just uploaded a new iOS verstion to the app store",
+    use_webhook_configured_username_and_icon: true,
+    default_payloads: []
+  )
+
+  sh("git reset --hard")
 end
 
 desc "Generate new app icon assets."
