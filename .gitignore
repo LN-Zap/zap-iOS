@@ -67,6 +67,7 @@ Carthage/Build
 ## Fastlane
 fastlane/screenshots/*/*.png
 fastlane/screenshots/screenshots.html
+fastlane/screenshots/SF-Pro-Display-Regular.otf
 fastlane/report.xml
 fastlane/Preview.html
 fastlane/test_output
