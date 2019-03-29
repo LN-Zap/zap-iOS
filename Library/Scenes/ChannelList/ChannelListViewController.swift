@@ -11,8 +11,9 @@ import UIKit
 
 final class ChannelListViewController: UIViewController {
     @IBOutlet private weak var tableView: UITableView!
+    @IBOutlet private var headerView: ChannelListHeaderView!
 
-    private var channelListViewModel: ChannelListViewModel?
+    private var channelListViewModel: ChannelListViewModel! // swiftlint:disable:this implicitly_unwrapped_optional
     private var addChannelButtonTapped: (() -> Void)?
     private var presentChannelDetail: ((UIViewController, ChannelViewModel) -> Void)?
 
@@ -38,17 +39,19 @@ final class ChannelListViewController: UIViewController {
         navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(presentAddChannel))
         navigationItem.largeTitleDisplayMode = .never
 
-        channelListViewModel?.dataSource
+        channelListViewModel.dataSource
             .map { "\(L10n.Scene.Channels.title) (\($0.collection.count))" }
             .bind(to: navigationItem.reactive.title)
             .dispose(in: reactive.bag)
 
-        channelListViewModel?.dataSource.bind(to: tableView) { [weak self] array, indexPath, tableView in
+        channelListViewModel.dataSource.bind(to: tableView) { [weak self] array, indexPath, tableView in
             let cell: ChannelTableViewCell = tableView.dequeueCellForIndexPath(indexPath)
             let channelViewModel = array[indexPath.row]
             cell.update(channelViewModel: channelViewModel, maxBalance: self?.channelListViewModel?.maxBalance ?? 0)
             return cell
         }
+
+        headerView.setup(for: channelListViewModel)
     }
 
     @objc private func presentAddChannel() {
@@ -62,5 +65,13 @@ extension ChannelListViewController: UITableViewDelegate {
 
         guard let channelViewModel = channelListViewModel?.dataSource[indexPath.row] else { return }
         presentChannelDetail?(self, channelViewModel)
+    }
+
+    func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+        return 76
+    }
+
+    func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+        return headerView
     }
 }

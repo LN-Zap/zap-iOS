@@ -144,6 +144,14 @@ internal enum L10n {
         /// Force Close Channel
         internal static let title = L10n.tr("Localizable", "scene.channels.force_close.title")
       }
+      internal enum Header {
+        /// Total can receive:
+        internal static let totalCanReceive = L10n.tr("Localizable", "scene.channels.header.total_can_receive")
+        /// Total can send:
+        internal static let totalCanSend = L10n.tr("Localizable", "scene.channels.header.total_can_send")
+        /// Total pending:
+        internal static let totalPending = L10n.tr("Localizable", "scene.channels.header.total_pending")
+      }
     }
     internal enum ConfirmMnemonic {
       /// Enter your key.

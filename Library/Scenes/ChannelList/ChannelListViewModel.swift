@@ -42,6 +42,10 @@ final class ChannelListViewModel: NSObject {
     let searchString = Observable<String?>(nil)
     var maxBalance: Satoshi = 1
 
+    let totalLocal = Observable<Satoshi>(0)
+    let totalRemote = Observable<Satoshi>(0)
+    let totalPending = Observable<Satoshi>(0)
+
     init(channelService: ChannelService) {
         self.channelService = channelService
 
@@ -75,6 +79,10 @@ final class ChannelListViewModel: NSObject {
             .max() ?? 0
 
         dataSource.replace(with: sortedViewModels, performDiff: true)
+
+        totalLocal.value = open.reduce(0) { $0 + $1.localBalance }
+        totalRemote.value = open.reduce(0) { $0 + $1.remoteBalance }
+        totalPending.value = pending.reduce(0) { $0 + $1.localBalance }
     }
 
     func refresh() {
