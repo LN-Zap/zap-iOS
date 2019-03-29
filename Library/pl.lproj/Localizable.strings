@@ -71,6 +71,9 @@
 "scene.request.next_button_title" = "Dalej";
 
 "scene.channels.title" = "Kanały";
+"scene.channels.header.total_can_send" = "Total can send:";
+"scene.channels.header.total_can_receive" = "Total can receive:";
+"scene.channels.header.total_pending" = "Total pending:";
 "scene.channels.close.title" = "Zamknij kanał";
 "scene.channels.close.message" = "Czy naprawdę chcesz zamknąć kanał z nodem %@?";
 "scene.channels.force_close.title" = "Wymuś Zamknięcie Kanału";
