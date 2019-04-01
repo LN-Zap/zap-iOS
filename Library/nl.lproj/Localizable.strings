@@ -86,6 +86,9 @@
 "scene.open_channel.title" = "Open kanaal";
 "scene.open_channel.channel_uri_label" = "Kanaal:";
 "scene.open_channel.add_button" = "Open kanaal";
+"scene.open_channel.subtitle.minimum_size" = "Minimum channel size: %@";
+"scene.open_channel.subtitle.maximum_size" = "Maximum channel size: %@";
+"scene.open_channel.subtitle.balance" = "On chain balance: %@";
 
 "scene.pin.biometric.fallback.title" = "Gebruik pincode";
 "scene.pin.biometric.reason" = "Voor toegang tot de beveiligde data";
