@@ -29,13 +29,13 @@ end
 desc "Builds new Alpha Build and uploads it to Testflight."
 lane :alpha do
   pre_alpha
-  upload_alpha(configuration: "DebugRemote", version: "0.1.0")
+  upload_alpha(configuration: "DebugRemote")
 end
 
 desc "Builds new Alpha Build with local lnd enabled and uploads it to Testflight."
 lane :local_lnd_alpha do
   pre_alpha
-  upload_alpha(configuration: "Debug", version: "0.2.0")
+  upload_alpha(configuration: "Debug")
 end
 
 private_lane :pre_alpha do
@@ -44,11 +44,8 @@ private_lane :pre_alpha do
 end
 
 private_lane :upload_alpha do |options|
-  change_version(version: options[:version])
-
   increment_build_number(build_number:
     latest_testflight_build_number(
-      version: options[:version],
       initial_build_number: 0
     ) + 1
   )
