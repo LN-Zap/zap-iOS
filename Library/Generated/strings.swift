@@ -306,7 +306,7 @@ internal enum L10n {
     internal enum OpenChannel {
       /// Open Channel
       internal static let addButton = L10n.tr("Localizable", "scene.open_channel.add_button")
-      /// Channel:
+      /// Node:
       internal static let channelUriLabel = L10n.tr("Localizable", "scene.open_channel.channel_uri_label")
       /// Open Channel
       internal static let title = L10n.tr("Localizable", "scene.open_channel.title")
@@ -370,6 +370,12 @@ internal enum L10n {
       internal static let orSeparatorLabel = L10n.tr("Localizable", "scene.request.or_separator_label")
       /// Receive
       internal static let title = L10n.tr("Localizable", "scene.request.title")
+      internal enum Subtitle {
+        /// Can receive: %@
+        internal static func lightning(_ p1: String) -> String {
+          return L10n.tr("Localizable", "scene.request.subtitle.lightning", p1)
+        }
+      }
     }
     internal enum SelectWalletConnection {
       /// Add Wallet

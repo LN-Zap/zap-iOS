@@ -159,6 +159,18 @@ final class RequestViewController: ModalDetailViewController {
         viewModel.requestMethod = requestMethod
         updateHeaderImage(for: requestMethod)
         currentState = .amountInput
+
+        if requestMethod == .lightning {
+            Settings.shared.primaryCurrency
+                .compactMap { [viewModel] in
+                    $0.format(satoshis: viewModel.maxRemoteBalance)
+                }
+                .observeNext { [amountInputView] in
+                    amountInputView?.subtitleText = L10n.Scene.Request.Subtitle.lightning($0)
+                }
+                .dispose(in: reactive.bag)
+            amountInputView?.subtitleTextColor = UIColor.Zap.gray
+        }
     }
 
     private func bottomButtonTapped() {

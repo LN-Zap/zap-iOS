@@ -193,7 +193,7 @@ final class WalletCoordinator: NSObject, Coordinator {
     }
 
     func presentRequest() {
-        let viewModel = RequestViewModel(transactionService: lightningService.transactionService)
+        let viewModel = RequestViewModel(lightningService: lightningService)
         let viewController = RequestViewController(viewModel: viewModel)
         rootViewController.present(viewController, animated: true)
     }
