@@ -310,6 +310,20 @@ internal enum L10n {
       internal static let channelUriLabel = L10n.tr("Localizable", "scene.open_channel.channel_uri_label")
       /// Open Channel
       internal static let title = L10n.tr("Localizable", "scene.open_channel.title")
+      internal enum Subtitle {
+        /// On chain balance: %@
+        internal static func balance(_ p1: String) -> String {
+          return L10n.tr("Localizable", "scene.open_channel.subtitle.balance", p1)
+        }
+        /// Maximum channel size: %@
+        internal static func maximumSize(_ p1: String) -> String {
+          return L10n.tr("Localizable", "scene.open_channel.subtitle.maximum_size", p1)
+        }
+        /// Minimum channel size: %@
+        internal static func minimumSize(_ p1: String) -> String {
+          return L10n.tr("Localizable", "scene.open_channel.subtitle.minimum_size", p1)
+        }
+      }
     }
     internal enum Pin {
       internal enum Biometric {

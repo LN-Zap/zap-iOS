@@ -40,7 +40,6 @@ final class OpenChannelViewController: ModalDetailViewController {
         amountInputView.textColor = UIColor.Zap.white
         amountInputView.addTarget(self, action: #selector(updateAmount(_:)), for: .valueChanged)
         amountInputView.updateAmount(viewModel.amount)
-        amountInputView.validRange = viewModel.validRange
         self.amountInputView = amountInputView
 
         contentStackView.addArrangedSubview(amountInputView)
@@ -48,6 +47,17 @@ final class OpenChannelViewController: ModalDetailViewController {
         openButton = contentStackView.addArrangedElement(.customHeight(56, element: .button(title: L10n.Scene.OpenChannel.addButton, style: Style.Button.background, completion: { [weak self] button in
             self?.openChannel()
         }))) as? CallbackButton
+
+        viewModel.isAmountValid
+            .observeNext { [weak self] in
+                amountInputView.subtitleTextColor = $0 ? UIColor.Zap.gray : UIColor.Zap.superRed
+                self?.openButton?.isEnabled = $0
+            }
+            .dispose(in: reactive.bag)
+
+        viewModel.subtitle
+            .observeNext { amountInputView.subtitleText = $0 }
+            .dispose(in: reactive.bag)
     }
 
     @objc private func openChannel() {
