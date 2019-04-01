@@ -69,6 +69,7 @@
 "scene.request.lightning_header_title" = "Żądanie płatności LN";
 "scene.request.on_chain_header_title" = "Żądanie płatności blokchain";
 "scene.request.next_button_title" = "Dalej";
+"scene.request.subtitle.lightning" = "Can receive: %@";
 
 "scene.channels.title" = "Kanały";
 "scene.channels.header.total_can_send" = "Total can send:";
