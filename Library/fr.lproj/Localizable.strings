@@ -86,6 +86,9 @@
 "scene.open_channel.title" = "Ouvrir un canal";
 "scene.open_channel.channel_uri_label" = "Canal :";
 "scene.open_channel.add_button" = "Ouvrir un canal";
+"scene.open_channel.subtitle.minimum_size" = "Minimum channel size: %@";
+"scene.open_channel.subtitle.maximum_size" = "Maximum channel size: %@";
+"scene.open_channel.subtitle.balance" = "On chain balance: %@";
 
 "scene.pin.biometric.fallback.title" = "Utiliser un code d’accès";
 "scene.pin.biometric.reason" = "Pour accéder aux données sécurisées";
