@@ -84,7 +84,7 @@
 "scene.channels.close_success.toast" = "Il canale è chiuso.";
 
 "scene.open_channel.title" = "Apri Canale";
-"scene.open_channel.channel_uri_label" = "Canale:";
+"scene.open_channel.channel_uri_label" = "Node:";
 "scene.open_channel.add_button" = "Apri Canale";
 "scene.open_channel.subtitle.minimum_size" = "Minimum channel size: %@";
 "scene.open_channel.subtitle.maximum_size" = "Maximum channel size: %@";
