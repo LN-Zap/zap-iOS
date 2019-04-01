@@ -69,8 +69,12 @@
 "scene.request.lightning_header_title" = "Demande de Paiement Lightning";
 "scene.request.on_chain_header_title" = "Demande de Paiement On Chain";
 "scene.request.next_button_title" = "Suivant";
+"scene.request.subtitle.lightning" = "Can receive: %@";
 
 "scene.channels.title" = "Canaux";
+"scene.channels.header.total_can_send" = "Total peut envoyer :";
+"scene.channels.header.total_can_receive" = "Total peut recevoir :";
+"scene.channels.header.total_pending" = "Total en attente :";
 "scene.channels.close.title" = "Fermer le canal";
 "scene.channels.close.message" = "Voulez-vous vraiment fermer le canal avec nœud %@ ?";
 "scene.channels.force_close.title" = "Fermer de force le canal";
@@ -81,8 +85,11 @@
 "scene.channels.close_success.toast" = "Le canal se ferme.";
 
 "scene.open_channel.title" = "Ouvrir un canal";
-"scene.open_channel.channel_uri_label" = "Canal :";
+"scene.open_channel.channel_uri_label" = "Node:";
 "scene.open_channel.add_button" = "Ouvrir un canal";
+"scene.open_channel.subtitle.minimum_size" = "Minimum channel size: %@";
+"scene.open_channel.subtitle.maximum_size" = "Maximum channel size: %@";
+"scene.open_channel.subtitle.balance" = "On chain balance: %@";
 
 "scene.pin.biometric.fallback.title" = "Utiliser un code d’accès";
 "scene.pin.biometric.reason" = "Pour accéder aux données sécurisées";

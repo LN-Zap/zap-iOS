@@ -69,8 +69,12 @@
 "scene.request.lightning_header_title" = "Lightning betaalverzoek";
 "scene.request.on_chain_header_title" = "On-chain betaalverzoek";
 "scene.request.next_button_title" = "Volgende";
+"scene.request.subtitle.lightning" = "Can receive: %@";
 
 "scene.channels.title" = "Kanalen";
+"scene.channels.header.total_can_send" = "Total can send:";
+"scene.channels.header.total_can_receive" = "Total can receive:";
+"scene.channels.header.total_pending" = "Total pending:";
 "scene.channels.close.title" = "Sluit kanaal";
 "scene.channels.close.message" = "Weet je zeker om het kanaal met node %@ te sluiten?";
 "scene.channels.force_close.title" = "Forceer kanaal sluiting";
@@ -81,8 +85,11 @@
 "scene.channels.close_success.toast" = "Kanaal is aan het sluiten.";
 
 "scene.open_channel.title" = "Open kanaal";
-"scene.open_channel.channel_uri_label" = "Kanaal:";
+"scene.open_channel.channel_uri_label" = "Node:";
 "scene.open_channel.add_button" = "Open kanaal";
+"scene.open_channel.subtitle.minimum_size" = "Minimum channel size: %@";
+"scene.open_channel.subtitle.maximum_size" = "Maximum channel size: %@";
+"scene.open_channel.subtitle.balance" = "On chain balance: %@";
 
 "scene.pin.biometric.fallback.title" = "Gebruik pincode";
 "scene.pin.biometric.reason" = "Voor toegang tot de beveiligde data";
