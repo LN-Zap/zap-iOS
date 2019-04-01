@@ -86,6 +86,9 @@
 "scene.open_channel.title" = "Ανοίξει ένα κανάλι";
 "scene.open_channel.channel_uri_label" = "Κανάλι:";
 "scene.open_channel.add_button" = "Ανοίξει ένα κανάλι";
+"scene.open_channel.subtitle.minimum_size" = "Minimum channel size: %@";
+"scene.open_channel.subtitle.maximum_size" = "Maximum channel size: %@";
+"scene.open_channel.subtitle.balance" = "On chain balance: %@";
 
 "scene.pin.biometric.fallback.title" = "Χρησιμοποιήστε τον κωδικό πρόσβασης";
 "scene.pin.biometric.reason" = "Για πρόσβαση στα ασφαλή δεδομένα";
