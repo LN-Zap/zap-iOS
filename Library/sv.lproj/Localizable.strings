@@ -86,6 +86,9 @@
 "scene.open_channel.title" = "Öppna kanal";
 "scene.open_channel.channel_uri_label" = "Channel:";
 "scene.open_channel.add_button" = "Open Channel";
+"scene.open_channel.subtitle.minimum_size" = "Minimum channel size: %@";
+"scene.open_channel.subtitle.maximum_size" = "Maximum channel size: %@";
+"scene.open_channel.subtitle.balance" = "On chain balance: %@";
 
 "scene.pin.biometric.fallback.title" = "Använd PIN-kod";
 "scene.pin.biometric.reason" = "Få åtkomst till den säkra datan";
