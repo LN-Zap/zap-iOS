@@ -69,6 +69,7 @@
 "scene.request.lightning_header_title" = "Запрос На Оплату Lightning";
 "scene.request.on_chain_header_title" = "Запрос на оплату On Chain";
 "scene.request.next_button_title" = "Следуюший";
+"scene.request.subtitle.lightning" = "Can receive: %@";
 
 "scene.channels.title" = "Каналы";
 "scene.channels.header.total_can_send" = "Total can send:";
