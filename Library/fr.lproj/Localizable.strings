@@ -69,6 +69,7 @@
 "scene.request.lightning_header_title" = "Demande de Paiement Lightning";
 "scene.request.on_chain_header_title" = "Demande de Paiement On Chain";
 "scene.request.next_button_title" = "Suivant";
+"scene.request.subtitle.lightning" = "Can receive: %@";
 
 "scene.channels.title" = "Canaux";
 "scene.channels.header.total_can_send" = "Total peut envoyer :";
