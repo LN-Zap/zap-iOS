@@ -30,9 +30,12 @@ final class OpenChannelViewController: ModalDetailViewController {
         contentStackView.addArrangedElement(.separator)
 
         contentStackView.addArrangedElement(.verticalStackView(content: [
-            .label(text: L10n.Scene.OpenChannel.channelUriLabel, style: Style.Label.headline),
-            .label(text: viewModel.lightningNodeURI.stringValue, style: Style.Label.body)
-        ], spacing: -5))
+            .label(text: L10n.Scene.OpenChannel.channelUriLabel, style: Style.Label.body),
+            .horizontalStackView(compressionResistant: .first, content: [
+                .label(text: viewModel.lightningNodeURI.host, style: Style.Label.body),
+                .label(text: "(\(viewModel.lightningNodeURI.pubKey))", style: Style.Label.body.with { $0.textColor = UIColor.Zap.gray })
+            ])
+        ], spacing: 0))
         contentStackView.addArrangedElement(.separator)
 
         let amountInputView = AmountInputView()
