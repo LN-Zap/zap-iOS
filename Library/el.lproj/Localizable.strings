@@ -84,7 +84,7 @@
 "scene.channels.close_success.toast" = "Το κανάλι κλείνει.";
 
 "scene.open_channel.title" = "Ανοίξει ένα κανάλι";
-"scene.open_channel.channel_uri_label" = "Κανάλι:";
+"scene.open_channel.channel_uri_label" = "Node:";
 "scene.open_channel.add_button" = "Ανοίξει ένα κανάλι";
 "scene.open_channel.subtitle.minimum_size" = "Minimum channel size: %@";
 "scene.open_channel.subtitle.maximum_size" = "Maximum channel size: %@";
