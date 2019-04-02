@@ -197,6 +197,7 @@
 "scene.qrcode_scanner.top_label" = "Scannez le Code QR";
 
 "scene.wallet.title" = "Portefeuille";
+"scene.wallet.warning.lnd_outdated" = "outdated lnd";
 
 "scene.time_lock.headline" = "Mot de passe erroné";
 "scene.time_lock.description" = "Votre portefeuille est verrouillé pour :";
