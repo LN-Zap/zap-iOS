@@ -560,6 +560,10 @@ internal enum L10n {
     internal enum Wallet {
       /// Wallet
       internal static let title = L10n.tr("Localizable", "scene.wallet.title")
+      internal enum Warning {
+        /// outdated lnd
+        internal static let lndOutdated = L10n.tr("Localizable", "scene.wallet.warning.lnd_outdated")
+      }
     }
     internal enum WalletList {
       /// Wallets

@@ -165,6 +165,8 @@
 		AD3FF6E2221D750F0017E376 /* UnlockWalletViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD3FF6E1221D750F0017E376 /* UnlockWalletViewModel.swift */; };
 		AD3FF6E4221D9C5C0017E376 /* GRPCCall+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD3FF6E3221D9C5C0017E376 /* GRPCCall+Extensions.swift */; };
 		AD3FF6EA222053C40017E376 /* MemoTable.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD3FF6E9222053C40017E376 /* MemoTable.swift */; };
+		AD511B282253744800EDFC7C /* Version.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD511B272253744800EDFC7C /* Version.swift */; };
+		AD511B2A2253748F00EDFC7C /* VersionTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD511B292253748F00EDFC7C /* VersionTests.swift */; };
 		AD536BEF20E62764002279BC /* Lightning.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AD536BE620E62763002279BC /* Lightning.framework */; };
 		AD536BF620E62764002279BC /* BTCPayQRCodeTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD536BF520E62764002279BC /* BTCPayQRCodeTests.swift */; };
 		AD536BF820E62764002279BC /* Lightning.h in Headers */ = {isa = PBXBuildFile; fileRef = AD536BE820E62763002279BC /* Lightning.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -641,6 +643,8 @@
 		AD3FF6E1221D750F0017E376 /* UnlockWalletViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UnlockWalletViewModel.swift; sourceTree = "<group>"; };
 		AD3FF6E3221D9C5C0017E376 /* GRPCCall+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "GRPCCall+Extensions.swift"; sourceTree = "<group>"; };
 		AD3FF6E9222053C40017E376 /* MemoTable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MemoTable.swift; sourceTree = "<group>"; };
+		AD511B272253744800EDFC7C /* Version.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Version.swift; sourceTree = "<group>"; };
+		AD511B292253748F00EDFC7C /* VersionTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VersionTests.swift; sourceTree = "<group>"; };
 		AD536BE620E62763002279BC /* Lightning.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Lightning.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		AD536BE820E62763002279BC /* Lightning.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Lightning.h; sourceTree = "<group>"; };
 		AD536BE920E62763002279BC /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -1290,9 +1294,10 @@
 				ADECC36820F257AF00D00546 /* Payment.swift */,
 				A024B85A20161AAE002B8897 /* PaymentRequest.swift */,
 				A024B84C201606B4002B8897 /* Peer.swift */,
+				AD9BB2D921819799009DC878 /* Route.swift */,
 				AD967FF521072D2C0048085B /* Success.swift */,
 				ADECC36A20F257BE00D00546 /* Transaction.swift */,
-				AD9BB2D921819799009DC878 /* Route.swift */,
+				AD511B272253744800EDFC7C /* Version.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -1825,6 +1830,7 @@
 			children = (
 				ADADAD742143B2E700A48E1F /* Info.plist */,
 				ADA3253521A81B5C00C5EAA2 /* MacaroonTests.swift */,
+				AD511B292253748F00EDFC7C /* VersionTests.swift */,
 			);
 			path = Tests;
 			sourceTree = "<group>";
@@ -3348,6 +3354,7 @@
 				AD28844921282139003C3D94 /* LightningNodeURITests.swift in Sources */,
 				AD536BF620E62764002279BC /* BTCPayQRCodeTests.swift in Sources */,
 				AD9E7E2A222EE7C40057E149 /* ChannelEventTests.swift in Sources */,
+				AD511B2A2253748F00EDFC7C /* VersionTests.swift in Sources */,
 				AD2884472128209B003C3D94 /* LightningInvoiceURITests.swift in Sources */,
 				ADFB0CCA216E34540048B63C /* ReceivingAddressTests.swift in Sources */,
 				AD28844621282073003C3D94 /* Bolt11Tests.swift in Sources */,
@@ -3382,6 +3389,7 @@
 				ADADAD8B2143B3C900A48E1F /* CloseStatusUpdate.swift in Sources */,
 				ADA58F8C2200B08A009A5494 /* LightningApiTransformation.swift in Sources */,
 				ADADAD9E2143B3C900A48E1F /* LightningApiStream.swift in Sources */,
+				AD511B282253744800EDFC7C /* Version.swift in Sources */,
 				ADADAD8E2143B3C900A48E1F /* NodeInfo.swift in Sources */,
 				ADADAD972143B3C900A48E1F /* LndApiError.swift in Sources */,
 				ADFB36E72143BAC500146FCC /* Payment.swift in Sources */,

@@ -27,10 +27,8 @@ public final class RequestViewModel {
 
     var maxRemoteBalance: Satoshi {
         var maxRemoteBalance: Satoshi = 0
-        for channel in channelService.open.value {
-            if channel.remoteBalance > maxRemoteBalance {
-                maxRemoteBalance = channel.remoteBalance
-            }
+        for channel in channelService.open.value where channel.remoteBalance > maxRemoteBalance {
+            maxRemoteBalance = channel.remoteBalance
         }
         return maxRemoteBalance
     }
