@@ -78,16 +78,8 @@ final class SettingsViewController: GroupedTableViewController {
 
         var versionString = "zap version: \(versionNumber), build: \(buildNumber)"
 
-        lndVersion: if let info = info {
-            let components = info.version.components(separatedBy: " ")
-            guard components.count == 2 else { break lndVersion }
-            let shortHash = components[1]
-                .replacingOccurrences(of: "commit=", with: "")
-                .components(separatedBy: "-")
-                .last?
-                .replacingOccurrences(of: "g", with: "")
-                .prefix(7) ?? "-"
-            versionString += "\nlnd version: \(components[0]) \(shortHash)"
+        if let version = info?.version {
+            versionString += "\nlnd version: \(version.number.string) \(version.commit?.prefix(7) ?? "-")"
         }
 
         return versionString
