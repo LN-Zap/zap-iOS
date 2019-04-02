@@ -197,6 +197,7 @@
 "scene.qrcode_scanner.top_label" = "Сканиирование QR-Code";
 
 "scene.wallet.title" = "Кошелек";
+"scene.wallet.warning.lnd_outdated" = "outdated lnd";
 
 "scene.time_lock.headline" = "Не правильный Пароль";
 "scene.time_lock.description" = "Ваш кошелек заблокирован для:";
