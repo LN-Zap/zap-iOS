@@ -197,6 +197,7 @@
 "scene.qrcode_scanner.top_label" = "扫描 QR 码";
 
 "scene.wallet.title" = "钱包";
+"scene.wallet.warning.lnd_outdated" = "outdated lnd";
 
 "scene.time_lock.headline" = "密码错误";
 "scene.time_lock.description" = "你的钱包被锁住:";
