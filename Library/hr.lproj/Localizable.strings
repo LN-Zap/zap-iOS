@@ -197,6 +197,7 @@
 "scene.qrcode_scanner.top_label" = "Skeniranje QR-koda";
 
 "scene.wallet.title" = "Novčanik";
+"scene.wallet.warning.lnd_outdated" = "outdated lnd";
 
 "scene.time_lock.headline" = "Pogrešna lozinka";
 "scene.time_lock.description" = "Tvoj novčanik je zaključan za:";
