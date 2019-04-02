@@ -197,6 +197,7 @@
 "scene.qrcode_scanner.top_label" = "Skan QR-kode";
 
 "scene.wallet.title" = "Wallet";
+"scene.wallet.warning.lnd_outdated" = "outdated lnd";
 
 "scene.time_lock.headline" = "Forkert Passcode";
 "scene.time_lock.description" = "Din wallet er låst i:";
