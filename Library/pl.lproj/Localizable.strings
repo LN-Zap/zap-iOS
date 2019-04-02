@@ -197,6 +197,7 @@
 "scene.qrcode_scanner.top_label" = "Zeskanuj kod QR";
 
 "scene.wallet.title" = "Portfel";
+"scene.wallet.warning.lnd_outdated" = "outdated lnd";
 
 "scene.time_lock.headline" = "Wrong Passcode";
 "scene.time_lock.description" = "Your wallet is locked for:";
