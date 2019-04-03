@@ -36,7 +36,6 @@ extension FilterSettings {
     }
 }
 
-// TODO: use keypaths to refactor
 enum FilterSetting: Localizable {
     case channelEvents
     case transactionEvents
@@ -59,36 +58,28 @@ enum FilterSetting: Localizable {
         }
     }
 
-    func isActive(in filterSettings: FilterSettings) -> Bool {
+    private var keyPath: WritableKeyPath<FilterSettings, Bool> {
         switch self {
-        case .transactionEvents:
-            return filterSettings.transactionEvents
-        case .lightningPaymentEvents:
-            return filterSettings.lightningPaymentEvents
-        case .createInvoiceEvents:
-            return filterSettings.createInvoiceEvents
         case .channelEvents:
-            return filterSettings.channelEvents
+            return \.channelEvents
+        case .transactionEvents:
+            return \.transactionEvents
+        case .createInvoiceEvents:
+            return \.createInvoiceEvents
         case .expiredInvoiceEvents:
-            return filterSettings.expiredInvoiceEvents
+            return \.expiredInvoiceEvents
+        case .lightningPaymentEvents:
+            return \.lightningPaymentEvents
         }
+    }
+
+    func isActive(in filterSettings: FilterSettings) -> Bool {
+        return filterSettings[keyPath: keyPath]
     }
 
     func setActive(_ isActive: Bool, in filterSettings: FilterSettings) -> FilterSettings {
         var filterSettings = filterSettings
-
-        switch self {
-        case .transactionEvents:
-            filterSettings.transactionEvents = isActive
-        case .lightningPaymentEvents:
-            filterSettings.lightningPaymentEvents = isActive
-        case .createInvoiceEvents:
-            filterSettings.createInvoiceEvents = isActive
-        case .channelEvents:
-            filterSettings.channelEvents = isActive
-        case .expiredInvoiceEvents:
-            filterSettings.expiredInvoiceEvents = isActive
-        }
+        filterSettings[keyPath: keyPath] = isActive
         return filterSettings
     }
 }
