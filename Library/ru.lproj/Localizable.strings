@@ -111,6 +111,8 @@
 "scene.send.on_chain.title" = "Отправить On Chain";
 "scene.send.authentication_failed" = "Ошибка проверки подлинности";
 "scene.send.maximum_fee" = "Ожидаемая Комиссия:";
+"scene.send.subtitle.on_chain_balance" = "On chain balance: %@";
+"scene.send.subtitle.lightning_can_send_balance" = "Can send: %@";
 
 "scene.connect_remote_node.title" = "Подключение к Удаленному Узлу";
 "scene.connect_remote_node.empty_state" = "Сканируйте QR-код, сгенерированный сервером lendconnect, BTCPay, или вставьте ссылку, полученную при запуске 'lndconnect -j' для подключения к вашему узлу.";
@@ -186,13 +188,11 @@
 
 "scene.filter.title" = "Фиильтр";
 "scene.filter.section_header.transaction_types" = "Тип транзакции";
-"scene.filter.section_header.advanced" = "Расширенный";
 "scene.filter.displayOnChainTransactions" = "On-chain Платежи";
-"scene.filter.display_unknown_transaction_type" = "Внутренние Транзакции";
+"scene.filter.display_expired_invoices" = "Expired Invoices";
 "scene.filter.displayLightningPayments" = "Lightning Переводы";
 "scene.filter.displayLightningInvoices" = "Создать Платежное Поручение";
 "scene.filter.displayChannelEvents" = "События Канала";
-"scene.filter.displayFailedPaymentEvents" = "Неудачных Платежи";
 
 "scene.qrcode_scanner.top_label" = "Сканиирование QR-Code";
 
