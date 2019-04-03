@@ -59,9 +59,6 @@ PODS:
   - ScrollableGraphView (4.0.6)
   - SimulatorStatusMagic (2.4.1)
   - SipHash (1.2.2)
-  - SQLite.swift (0.11.5):
-    - SQLite.swift/standard (= 0.11.5)
-  - SQLite.swift/standard (0.11.5)
   - SwiftBTC (0.0.8):
     - BigInt (~> 3.1)
 
@@ -71,7 +68,6 @@ DEPENDENCIES:
   - LndRpc (from `.`)
   - ScrollableGraphView
   - SimulatorStatusMagic
-  - SQLite.swift (from `https://github.com/ottosuess/SQLite.swift.git`, commit `c96a5da4ef8c9ccec7bfac254b56ae17199097f3`)
   - SwiftBTC (from `./SwiftBTC`)
 
 SPEC REPOS:
@@ -97,16 +93,8 @@ SPEC REPOS:
 EXTERNAL SOURCES:
   LndRpc:
     :path: "."
-  SQLite.swift:
-    :commit: c96a5da4ef8c9ccec7bfac254b56ae17199097f3
-    :git: https://github.com/ottosuess/SQLite.swift.git
   SwiftBTC:
     :path: "./SwiftBTC"
-
-CHECKOUT OPTIONS:
-  SQLite.swift:
-    :commit: c96a5da4ef8c9ccec7bfac254b56ae17199097f3
-    :git: https://github.com/ottosuess/SQLite.swift.git
 
 SPEC CHECKSUMS:
   "!ProtoCompiler": c9526df99fafd398a393def617ae18d3774b7232
@@ -127,9 +115,8 @@ SPEC CHECKSUMS:
   ScrollableGraphView: 4af35d4ea9ecdec665d34a74da51da161ddff8ac
   SimulatorStatusMagic: 28d4a9d1a500ac7cea0b2b5a43c1c6ddb40ba56c
   SipHash: fad90a4683e420c52ef28063063dbbce248ea6d4
-  SQLite.swift: 7e42c4b88dc7a5d764fbd431001e6d8dc8c1cfce
   SwiftBTC: 57a1352d5131d4bf27c54ff9b0a602b46ab049ef
 
-PODFILE CHECKSUM: 9ca08f2d1fb38c6540726383d093da4458c370f5
+PODFILE CHECKSUM: 479ad9a801dcf2711407752b3dd10c5f30b64378
 
 COCOAPODS: 1.5.3

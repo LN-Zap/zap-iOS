@@ -34,7 +34,6 @@ abstract_target 'RPC' do
 
     target 'Lightning' do
         pod 'Bond'
-        pod 'SQLite.swift', :git => 'https://github.com/ottosuess/SQLite.swift.git', :commit => 'c96a5da4ef8c9ccec7bfac254b56ae17199097f3'
         
         target 'LightningTests' do
             inherit! :search_paths

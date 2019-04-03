@@ -6,12 +6,11 @@
 //
 
 import Foundation
-import SQLite
 import SwiftBTC
 import SwiftLnd
 
 /// Does influence the balance of the user's wallet because a fee is payed.
-public struct ChannelEvent: Equatable {
+public struct ChannelEvent: Equatable, DateProvidingEvent {
     public enum Kind: Int {
         case open
         case cooperativeClose
@@ -47,63 +46,43 @@ public struct ChannelEvent: Equatable {
     public let blockHeight: Int
     public let type: Kind
     public let fee: Satoshi?
+    public let date: Date
 }
 
 extension ChannelEvent {
-    init?(channel: Channel) {
-        guard let blockHeight = channel.blockHeight else { return nil }
+    init?(channel: Channel, dateEstimator: DateEstimator) {
+        guard
+            let blockHeight = channel.blockHeight,
+            let date = dateEstimator.estimatedDate(forBlockHeight: blockHeight)
+            else { return nil }
+
         txHash = channel.channelPoint.fundingTxid
         node = LightningNode(pubKey: channel.remotePubKey, alias: nil, color: nil)
         self.blockHeight = blockHeight
         type = .open
         fee = nil
+        self.date = date
     }
 
-    init(closing channelCloseSummary: ChannelCloseSummary) {
+    init?(closing channelCloseSummary: ChannelCloseSummary, dateEstimator: DateEstimator) {
+        guard let date = dateEstimator.estimatedDate(forBlockHeight: channelCloseSummary.closeHeight) else { return nil }
+
         txHash = channelCloseSummary.closingTxHash
         node = LightningNode(pubKey: channelCloseSummary.remotePubKey, alias: nil, color: nil)
         blockHeight = channelCloseSummary.closeHeight
         type = ChannelEvent.Kind(closeType: channelCloseSummary.closeType)
         fee = nil
+        self.date = date
     }
 
-    init(opening channelCloseSummary: ChannelCloseSummary) {
+    init?(opening channelCloseSummary: ChannelCloseSummary, dateEstimator: DateEstimator) {
+        guard let date = dateEstimator.estimatedDate(forBlockHeight: channelCloseSummary.openHeight) else { return nil }
+
         txHash = channelCloseSummary.channelPoint.fundingTxid
         node = LightningNode(pubKey: channelCloseSummary.remotePubKey, alias: nil, color: nil)
         blockHeight = channelCloseSummary.openHeight
         type = .open
         fee = nil
-    }
-}
-
-// MARK: - Persistence
-extension ChannelEvent {
-    init(row: Row) {
-        let channelEventTable = ChannelEventTable(row: row)
-        txHash = channelEventTable.txHash
-        blockHeight = channelEventTable.blockHeight
-        type = channelEventTable.type
-
-        if let nodeTable = ConnectedNodeTable(row: row) {
-            node = LightningNode(pubKey: nodeTable.pubKey, alias: nodeTable.alias, color: nodeTable.color)
-        } else {
-            node = LightningNode(pubKey: channelEventTable.nodePubKey, alias: nil, color: nil)
-        }
-
-        fee = try? row.get(TransactionTable.Column.fee)
-    }
-
-    public static func events(database: Connection) throws -> [ChannelEvent] {
-        let query = ChannelEventTable.table
-            .join(ConnectedNodeTable.table, on: ConnectedNodeTable.Column.pubKey == ChannelEventTable.table[ChannelEventTable.Column.nodePubKey])
-            .join(.leftOuter, TransactionTable.table, on: TransactionTable.table[TransactionTable.Column.txHash] == ChannelEventTable.table[ChannelEventTable.Column.txHash])
-            .order(ChannelEventTable.Column.blockHeight.desc)
-        return try database.prepare(query)
-            .map(ChannelEvent.init)
-    }
-
-    func insert(database: Connection) throws {
-        try ChannelEventTable(txHash: txHash, nodePubKey: node.pubKey, blockHeight: blockHeight, type: type).insert(database: database)
-        try ConnectedNodeTable(lightningNode: node).insertPubKey(database: database)
+        self.date = date
     }
 }

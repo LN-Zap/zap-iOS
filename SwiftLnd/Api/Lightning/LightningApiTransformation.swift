@@ -125,4 +125,8 @@ enum LightningApiTransformation {
     static func connect(input: LNDConnectPeerResponse) -> Success {
         return Success()
     }
+
+    static func subscribeChannelEvents(input: LNDChannelEventUpdate) -> ChannelEventUpdate? {
+        return ChannelEventUpdate(channelEventUpdate: input)
+    }
 }

@@ -103,7 +103,7 @@ extension Channel {
     enum Template {
         static let `defalut` = create(state: .active, localBalance: 100, remoteBalance: 100, remotePubKey: "abc")
 
-        static func create(state: ChannelState, localBalance: Satoshi, remoteBalance: Satoshi, remotePubKey: String) -> Channel {
+        static func create(state: Channel.State, localBalance: Satoshi, remoteBalance: Satoshi, remotePubKey: String) -> Channel {
             return Channel(blockHeight: 50, state: state, localBalance: localBalance, remoteBalance: remoteBalance, remotePubKey: remotePubKey, capacity: localBalance + remoteBalance, updateCount: 1, channelPoint: ChannelPoint.template, csvDelay: 10)
         }
     }

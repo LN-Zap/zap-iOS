@@ -6,7 +6,7 @@
 //
 
 import Foundation
-import SQLite
+import SwiftLnd
 
 public struct DateWrappedChannelEvent: Equatable, DateProvidingEvent {
     public let date: Date
@@ -16,12 +16,7 @@ public struct DateWrappedChannelEvent: Equatable, DateProvidingEvent {
 public final class DateEstimator {
     private let transactions: [(date: Date, blockHeight: Int)]
 
-    public convenience init(database: Connection) {
-        let transactions = (try? TransactionEvent.events(database: database)) ?? []
-        self.init(transactions: transactions)
-    }
-
-    public init(transactions: [TransactionEvent]) {
+    public init(transactions: [Transaction]) {
         self.transactions = transactions
             .compactMap {
                 guard let blockHeight = $0.blockHeight else { return nil }

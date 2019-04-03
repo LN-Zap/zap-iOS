@@ -120,6 +120,10 @@ public final class LightningApiStream: LightningApiProtocol {
     public func subscribeInvoices(completion: @escaping Handler<Invoice>) {
         LndmobileSubscribeInvoices(nil, StreamCallback(completion, transform: LightningApiTransformation.subscribeInvoices))
     }
+
+    public func subscribeChannelEvents(completion: @escaping Handler<ChannelEventUpdate>) {
+        LndmobileSubscribeChannelEvents(nil, StreamCallback(completion, transform: LightningApiTransformation.subscribeChannelEvents))
+    }
 }
 
 #endif

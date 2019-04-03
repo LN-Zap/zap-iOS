@@ -12,7 +12,7 @@ import ReactiveKit
 import SwiftBTC
 import SwiftLnd
 
-extension ChannelState: Comparable {
+extension Channel.State: Comparable {
     var sortRank: Int {
         switch self {
         case .active:
@@ -30,7 +30,7 @@ extension ChannelState: Comparable {
         }
     }
 
-    public static func < (lhs: ChannelState, rhs: ChannelState) -> Bool {
+    public static func < (lhs: Channel.State, rhs: Channel.State) -> Bool {
         return lhs.sortRank < rhs.sortRank
     }
 }
@@ -56,7 +56,8 @@ final class ChannelListViewModel: NSObject {
         combineLatest(channelService.open, channelService.pending, searchString)
             .observeOn(DispatchQueue.main)
             .observeNext { [weak self] in
-                self?.updateChannels(open: $0, pending: $1, searchString: $2)
+                let (open, pending, searchString) = $0
+                self?.updateChannels(open: open.collection, pending: pending.collection, searchString: searchString)
             }
             .dispose(in: reactive.bag)
     }
@@ -85,9 +86,9 @@ final class ChannelListViewModel: NSObject {
         totalPending.value = pending.reduce(0) { $0 + $1.localBalance }
     }
 
-    func refresh() {
-        channelService.update()
-    }
+//    func refresh() {
+//        channelService.update()
+//    }
 
     func close(_ channel: Channel, completion: @escaping (Swift.Result<CloseStatusUpdate, LndApiError>) -> Void) {
         channelService.close(channel, completion: completion)

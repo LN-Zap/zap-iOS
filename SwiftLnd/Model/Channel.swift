@@ -9,27 +9,27 @@ import Foundation
 import LndRpc
 import SwiftBTC
 
-public enum ChannelState {
-    case active
-    case inactive
-    case opening
-    case closing
-    case forceClosing
-    case waitingClose
+public struct Channel: Equatable {
+    public enum State {
+        case active
+        case inactive
+        case opening
+        case closing
+        case forceClosing
+        case waitingClose
 
-    public var isClosing: Bool {
-        switch self {
-        case .closing, .forceClosing, .waitingClose:
-            return true
-        default:
-           return false
+        public var isClosing: Bool {
+            switch self {
+            case .closing, .forceClosing, .waitingClose:
+                return true
+            default:
+                return false
+            }
         }
     }
-}
 
-public struct Channel: Equatable {
     public let blockHeight: Int?
-    public let state: ChannelState
+    public let state: State
     public let localBalance: Satoshi
     public let remoteBalance: Satoshi
     public let remotePubKey: String

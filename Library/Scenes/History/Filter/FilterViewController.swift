@@ -18,12 +18,9 @@ final class FilterViewController: UIViewController {
             .lightningPaymentEvents
         ]),
         Section(title: nil, rows: [
-            .failedPaymentEvents,
             .createInvoiceEvents,
+            .expiredInvoiceEvents,
             .channelEvents
-        ]),
-        Section(title: L10n.Scene.Filter.SectionHeader.advanced, rows: [
-            .unknownTransactionType
         ])
     ]
 

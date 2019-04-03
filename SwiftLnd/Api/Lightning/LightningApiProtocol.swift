@@ -19,6 +19,7 @@ public protocol LightningApiProtocol {
     func channels(completion: @escaping Handler<[Channel]>)
     func closedChannels(completion: @escaping Handler<[ChannelCloseSummary]>)
     func subscribeChannelGraph(completion: @escaping Handler<GraphTopologyUpdate>)
+    func subscribeChannelEvents(completion: @escaping Handler<ChannelEventUpdate>)
 
     // On-chain
     func sendCoins(address: BitcoinAddress, amount: Satoshi, completion: @escaping Handler<String>)

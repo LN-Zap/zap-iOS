@@ -28,25 +28,16 @@ final class EventDetailViewModel {
             result.append(contentsOf: headline(L10n.Scene.TransactionDetail.Title.transactionDetail))
             result.append(contentsOf: amountLabel(title: L10n.Scene.TransactionDetail.amountLabel, amount: event.amount))
             result.append(contentsOf: amountLabel(title: L10n.Scene.TransactionDetail.feeLabel, amount: event.fee, skipZero: true))
-            result.append(contentsOf: label(title: L10n.Scene.TransactionDetail.memoLabel, content: event.memo))
             result.append(contentsOf: dateLabel(title: L10n.Scene.TransactionDetail.dateLabel, date: event.date))
             result.append(contentsOf: blockExplorerButton(title: L10n.Scene.TransactionDetail.transactionIdLabel, code: event.txHash, type: .transactionId, delegate: delegate))
             result.append(contentsOf: blockExplorerButton(title: L10n.Scene.TransactionDetail.addressLabel, code: event.destinationAddresses.first?.string, type: .address, delegate: delegate))
-
         case .channelEvent(let event):
             result.append(contentsOf: headline(L10n.Scene.TransactionDetail.Title.channelEventDetail))
-            result.append(contentsOf: amountLabel(title: L10n.Scene.TransactionDetail.feeLabel, amount: event.channelEvent.fee, skipZero: true))
+            result.append(contentsOf: amountLabel(title: L10n.Scene.TransactionDetail.feeLabel, amount: event.fee, skipZero: true))
             result.append(contentsOf: dateLabel(title: L10n.Scene.TransactionDetail.dateLabel, date: event.date))
-            result.append(contentsOf: blockExplorerButton(title: L10n.Scene.TransactionDetail.transactionIdLabel, code: event.channelEvent.txHash, type: .transactionId, delegate: delegate))
-
+            result.append(contentsOf: blockExplorerButton(title: L10n.Scene.TransactionDetail.transactionIdLabel, code: event.txHash, type: .transactionId, delegate: delegate))
         case .createInvoiceEvent(let event):
             return createInvoiceEvent(event: event)
-        case .failedPaymentEvent(let event):
-            result.append(contentsOf: headline(L10n.Scene.TransactionDetail.Title.failedPayment))
-            result.append(contentsOf: amountLabel(title: L10n.Scene.TransactionDetail.amountLabel, amount: event.amount))
-            result.append(contentsOf: label(title: L10n.Scene.TransactionDetail.memoLabel, content: event.memo))
-            result.append(contentsOf: dateLabel(title: L10n.Scene.TransactionDetail.dateLabel, date: event.date))
-
         case .lightningPaymentEvent(let event):
             return lightningPaymentEvent(event: event)
         }
@@ -54,7 +45,7 @@ final class EventDetailViewModel {
         return result
     }
 
-    private func createInvoiceEvent(event: CreateInvoiceEvent) -> [StackViewElement] {
+    private func createInvoiceEvent(event: InvoiceEvent) -> [StackViewElement] {
         var result = [StackViewElement]()
 
         result.append(contentsOf: headline(L10n.Scene.TransactionDetail.Title.lightningInvoice))
@@ -117,7 +108,7 @@ final class EventDetailViewModel {
         var result = [StackViewElement]()
 
         result.append(contentsOf: headline(L10n.Scene.TransactionDetail.Title.paymentDetail))
-        result.append(contentsOf: label(title: L10n.Scene.TransactionDetail.memoLabel, content: event.memo))
+//        result.append(contentsOf: label(title: L10n.Scene.TransactionDetail.memoLabel, content: event.memo))
         result.append(contentsOf: amountLabel(title: L10n.Scene.TransactionDetail.amountLabel, amount: event.amount))
         result.append(contentsOf: amountLabel(title: L10n.Scene.TransactionDetail.feeLabel, amount: event.fee))
         result.append(contentsOf: dateLabel(title: L10n.Scene.TransactionDetail.dateLabel, date: event.date))

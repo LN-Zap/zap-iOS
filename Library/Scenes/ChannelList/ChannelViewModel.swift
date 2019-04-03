@@ -13,7 +13,7 @@ import SwiftLnd
 final class ChannelViewModel {
     let channel: Channel
 
-    let state: Observable<ChannelState>
+    let state: Observable<Channel.State>
     let name: Observable<String>
 
     var csvDelayTimeString: String {

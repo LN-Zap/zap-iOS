@@ -141,4 +141,8 @@ public final class LightningApiRpc: RpcApi, LightningApiProtocol {
             completion(.failure(LndApiError.invalidInput))
         }
     }
+
+    public func subscribeChannelEvents(completion: @escaping Handler<ChannelEventUpdate>) {
+        lnd.rpcToSubscribeChannelEvents(withRequest: LNDChannelEventSubscription(), eventHandler: createHandler(completion, transform: LightningApiTransformation.subscribeChannelEvents)).runWithMacaroon(macaroon)
+    }
 }

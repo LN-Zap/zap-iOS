@@ -26,11 +26,11 @@ public final class RequestViewModel {
     public var amount: Satoshi = 0
 
     var maxRemoteBalance: Satoshi {
-        var maxRemoteBalance: Satoshi = 0
-        for channel in channelService.open.value where channel.remoteBalance > maxRemoteBalance {
-            maxRemoteBalance = channel.remoteBalance
-        }
-        return maxRemoteBalance
+//        var maxRemoteBalance: Satoshi = 0
+//        for channel in channelService.open.value where channel.remoteBalance > maxRemoteBalance {
+//            maxRemoteBalance = channel.remoteBalance
+//        }
+        return channelService.maxRemoteBalance
     }
 
     public var trimmedMemo: String? {

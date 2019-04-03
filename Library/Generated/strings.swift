@@ -212,12 +212,10 @@ internal enum L10n {
       internal static let title = L10n.tr("Localizable", "scene.create_wallet.title")
     }
     internal enum Filter {
-      /// Internal Transactions
-      internal static let displayUnknownTransactionType = L10n.tr("Localizable", "scene.filter.display_unknown_transaction_type")
+      /// Expired Invoices
+      internal static let displayExpiredInvoices = L10n.tr("Localizable", "scene.filter.display_expired_invoices")
       /// Channel Events
       internal static let displayChannelEvents = L10n.tr("Localizable", "scene.filter.displayChannelEvents")
-      /// Failed Payments
-      internal static let displayFailedPaymentEvents = L10n.tr("Localizable", "scene.filter.displayFailedPaymentEvents")
       /// Created Invoices
       internal static let displayLightningInvoices = L10n.tr("Localizable", "scene.filter.displayLightningInvoices")
       /// Lightning Payments
@@ -227,8 +225,6 @@ internal enum L10n {
       /// Filter
       internal static let title = L10n.tr("Localizable", "scene.filter.title")
       internal enum SectionHeader {
-        /// Advanced
-        internal static let advanced = L10n.tr("Localizable", "scene.filter.section_header.advanced")
         /// Transaction Types
         internal static let transactionTypes = L10n.tr("Localizable", "scene.filter.section_header.transaction_types")
       }

@@ -50,9 +50,11 @@ final class HistoryViewModel: NSObject {
 
         super.init()
 
-        updateEvents()
-
-        NotificationCenter.default.addObserver(self, selector: #selector(updateEvents), name: .historyDidChange, object: nil)
+        historyService.events
+            .observeNext { [weak self] _ in
+                self?.updateEvents()
+            }
+            .dispose(in: reactive.bag)
     }
 
     func isEventNew(at indexPath: IndexPath) -> Bool {
@@ -66,8 +68,8 @@ final class HistoryViewModel: NSObject {
         lastSeenDate = Date()
     }
 
-    @objc private func updateEvents() {
-        let events = historyService.events
+    private func updateEvents() {
+        let events = historyService.events.array
         let filteredEvents = filterEvents(events, searchString: searchString, filterSettings: filterSettings)
         let sectionedCellTypes = bondSections(transactionViewModels: filteredEvents)
         dataSource.replace(with: Array2D<String, HistoryEventType>(sections: sectionedCellTypes), performDiff: true, areEqual: Array2D.areEqual)
@@ -133,14 +135,12 @@ final class HistoryViewModel: NSObject {
 extension HistoryEventType {
     func matchesFilterSettings(_ filterSettings: FilterSettings) -> Bool {
         switch self {
-        case .transactionEvent(let event):
-            return filterSettings.transactionEvents && (event.type != .unknown || filterSettings.unknownTransactionType)
+        case .transactionEvent:
+            return filterSettings.transactionEvents
         case .channelEvent:
             return filterSettings.channelEvents
-        case .createInvoiceEvent:
-            return filterSettings.createInvoiceEvents
-        case .failedPaymentEvent:
-            return filterSettings.failedPaymentEvents
+        case .createInvoiceEvent(let event):
+            return filterSettings.createInvoiceEvents && (filterSettings.expiredInvoiceEvents || !event.isExpired || event.state == .settled)
         case .lightningPaymentEvent:
             return filterSettings.lightningPaymentEvents
         }
@@ -154,15 +154,13 @@ extension HistoryEventType {
 
         switch self {
         case .transactionEvent(let event):
-            return matches(content: [event.memo, event.txHash], searchString: searchString)
+            return matches(content: [event.txHash], searchString: searchString)
         case .channelEvent(let event):
-            return matches(content: [event.channelEvent.node.pubKey, event.channelEvent.node.alias], searchString: searchString)
+            return matches(content: [event.node.pubKey, event.node.alias], searchString: searchString)
         case .createInvoiceEvent(let event):
             return matches(content: [event.memo], searchString: searchString)
-        case .failedPaymentEvent(let event):
-            return matches(content: [event.memo], searchString: searchString)
         case .lightningPaymentEvent(let event):
-            return matches(content: [event.memo], searchString: searchString)
+            return matches(content: [event.node.pubKey, event.node.alias], searchString: searchString)
         }
     }
 

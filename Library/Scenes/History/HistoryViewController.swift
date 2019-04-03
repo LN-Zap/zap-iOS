@@ -83,9 +83,7 @@ final class HistoryViewController: UIViewController {
                 case .channelEvent(let channelEvent):
                     cell.setChannelEvent(channelEvent)
                 case .createInvoiceEvent(let createInvoiceEvent):
-                    cell.setCreateInvoiceEvent(createInvoiceEvent)
-                case .failedPaymentEvent(let failedPayemntEvent):
-                    cell.setFailedPaymentEvent(failedPayemntEvent, delegate: self)
+                    cell.setInvoiceEvent(createInvoiceEvent)
                 case .lightningPaymentEvent(let lightningPaymentEvent):
                     cell.setLightningPaymentEvent(lightningPaymentEvent)
                 }
@@ -131,11 +129,5 @@ extension HistoryViewController: UISearchResultsUpdating {
         if let text = searchController.searchBar.text {
             historyViewModel?.searchString = text
         }
-    }
-}
-
-extension HistoryViewController: HistoryCellDelegate {
-    func resendFailedPayment(_ failedPaymentEvent: FailedPaymentEvent) {
-        presentSend?(failedPaymentEvent.paymentRequest)
     }
 }

@@ -42,6 +42,7 @@ final class LightningApiMock: LightningApiProtocol {
     private let subscribeInvoices: Invoice?
     private let invoices: [Invoice]?
     private let routes: [Route]?
+    private let channelEventUpdate: ChannelEventUpdate?
 
     public var subscribeTransactionsCallback: (Handler<Transaction>)?
 
@@ -68,7 +69,8 @@ final class LightningApiMock: LightningApiProtocol {
         closedChannels: [ChannelCloseSummary]? = nil,
         subscribeInvoices: Invoice? = nil,
         invoices: [Invoice]? = nil,
-        routes: [Route]? = nil
+        routes: [Route]? = nil,
+        channelEventUpdate: ChannelEventUpdate? = nil
         ) {
         self.info = info
         self.nodeInfo = nodeInfo
@@ -93,6 +95,7 @@ final class LightningApiMock: LightningApiProtocol {
         self.subscribeInvoices = subscribeInvoices
         self.invoices = invoices
         self.routes = routes
+        self.channelEventUpdate = channelEventUpdate
     }
 
     func info(completion: @escaping Handler<Info>) {
@@ -189,6 +192,10 @@ final class LightningApiMock: LightningApiProtocol {
 
     func routes(destination: String, amount: Satoshi, completion: @escaping Handler<[Route]>) {
         completion(Result(value: routes, error: LndApiError.unknownError))
+    }
+
+    func subscribeChannelEvents(completion: @escaping Handler<ChannelEventUpdate>) {
+        completion(Result(value: channelEventUpdate, error: LndApiError.unknownError))
     }
 }
 

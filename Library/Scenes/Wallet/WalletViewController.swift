@@ -109,7 +109,7 @@ final class WalletViewController: UIViewController {
         setupPrimaryBalanceLabel()
         setupBindings()
 
-        NotificationCenter.default.addObserver(self, selector: #selector(updateGraphEvents), name: .historyDidChange, object: nil)
+//        NotificationCenter.default.addObserver(self, selector: #selector(updateGraphEvents), name: .historyDidChange, object: nil)
     }
 
     private func setupGraphView() {

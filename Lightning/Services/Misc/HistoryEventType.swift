@@ -9,20 +9,17 @@ import Foundation
 
 public enum HistoryEventType: Equatable {
     case transactionEvent(TransactionEvent)
-    case channelEvent(DateWrappedChannelEvent)
-    case createInvoiceEvent(CreateInvoiceEvent)
-    case failedPaymentEvent(FailedPaymentEvent)
+    case channelEvent(ChannelEvent)
+    case createInvoiceEvent(InvoiceEvent)
     case lightningPaymentEvent(LightningPaymentEvent)
 
     static func create(event: DateProvidingEvent) -> HistoryEventType {
-        if let channelEvent = event as? DateWrappedChannelEvent {
+        if let channelEvent = event as? ChannelEvent {
             return HistoryEventType.channelEvent(channelEvent)
         } else if let transactionEvent = event as? TransactionEvent {
             return HistoryEventType.transactionEvent(transactionEvent)
-        } else if let createInvoiceEvent = event as? CreateInvoiceEvent {
+        } else if let createInvoiceEvent = event as? InvoiceEvent {
             return HistoryEventType.createInvoiceEvent(createInvoiceEvent)
-        } else if let failedPaymentEvent = event as? FailedPaymentEvent {
-            return HistoryEventType.failedPaymentEvent(failedPaymentEvent)
         } else if let lightningPaymentEvent = event as? LightningPaymentEvent {
             return HistoryEventType.lightningPaymentEvent(lightningPaymentEvent)
         } else {
@@ -37,8 +34,6 @@ public enum HistoryEventType: Equatable {
         case .channelEvent(let event):
             return event.date
         case .createInvoiceEvent(let event):
-            return event.date
-        case .failedPaymentEvent(let event):
             return event.date
         case .lightningPaymentEvent(let event):
             return event.date

@@ -23,8 +23,6 @@ public final class InfoService {
     private let api: LightningApiProtocol
 
     public let balanceService: BalanceService
-    public let channelService: ChannelService
-    public let historyService: HistoryService
 
     public let bestHeaderDate = Observable<Date?>(nil)
     public let blockChainHeight = Observable<Int?>(nil)
@@ -38,12 +36,9 @@ public final class InfoService {
 
     private var syncDebounceCount = 0 // used so wallet does not switch sync state each time a block is mined
 
-    init(api: LightningApiProtocol, channelService: ChannelService, balanceService: BalanceService, historyService: HistoryService) {
+    init(api: LightningApiProtocol, balanceService: BalanceService) {
         self.api = api
-
-        self.channelService = channelService
         self.balanceService = balanceService
-        self.historyService = historyService
 
         start()
     }
@@ -116,9 +111,7 @@ public final class InfoService {
 
         let newIsSyncedToChain = (try? result.get())?.isSyncedToChain
         if info.value?.isSyncedToChain != newIsSyncedToChain && newIsSyncedToChain == true {
-            channelService.update()
             balanceService.update()
-            historyService.update()
         }
 
         self.info.value = try? result.get()
