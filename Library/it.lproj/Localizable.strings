@@ -111,6 +111,8 @@
 "scene.send.on_chain.title" = "Invia On-chain";
 "scene.send.authentication_failed" = "Autenticazione non riuscita";
 "scene.send.maximum_fee" = "Commissione Prevista:";
+"scene.send.subtitle.on_chain_balance" = "On chain balance: %@";
+"scene.send.subtitle.lightning_can_send_balance" = "Can send: %@";
 
 "scene.connect_remote_node.title" = "Connetti al Nodo Remoto";
 "scene.connect_remote_node.empty_state" = "Scansiona il QRCode generato da lndconnect, BTCPay Server, o incolla il link ottenuto dall'esecuzione di 'lndconnect -j' per connettersi al nodo.";
@@ -186,13 +188,11 @@
 
 "scene.filter.title" = "Filtra";
 "scene.filter.section_header.transaction_types" = "Tipi di transazione";
-"scene.filter.section_header.advanced" = "Avanzate";
 "scene.filter.displayOnChainTransactions" = "Pagamenti On-chain";
-"scene.filter.display_unknown_transaction_type" = "Transazioni interne";
+"scene.filter.display_expired_invoices" = "Expired Invoices";
 "scene.filter.displayLightningPayments" = "Pagamenti Lightning";
 "scene.filter.displayLightningInvoices" = "Richieste di pagamento";
 "scene.filter.displayChannelEvents" = "Eventi canale";
-"scene.filter.displayFailedPaymentEvents" = "Pagamenti non riusciti";
 
 "scene.qrcode_scanner.top_label" = "Scansiona il codice QR";
 
