@@ -11,13 +11,15 @@ class WalletListCell: UITableViewCell {
 
     @IBOutlet private weak var titleLabel: UILabel!
     @IBOutlet private weak var subtitleLabel: UILabel!
+    @IBOutlet private weak var hostLabel: UILabel!
     @IBOutlet private weak var checkIcon: UIImageView!
 
     override func awakeFromNib() {
         super.awakeFromNib()
 
         Style.Label.body.apply(to: titleLabel)
-        Style.Label.subHeadline.apply(to: subtitleLabel)
+        Style.Label.subHeadline.apply(to: subtitleLabel, hostLabel)
+        hostLabel.textColor = UIColor.Zap.invisibleGray
         checkIcon.isHidden = true
 
         backgroundColor = UIColor.Zap.background
@@ -31,8 +33,17 @@ class WalletListCell: UITableViewCell {
 
     var walletConfiguration: WalletConfiguration? {
         didSet {
-            titleLabel.text = walletConfiguration?.alias
-            subtitleLabel.text = walletConfiguration?.network?.localized
+            guard let walletConfiguration = walletConfiguration else { return }
+            titleLabel.text = walletConfiguration.alias
+            subtitleLabel.text = walletConfiguration.network?.localized
+
+            if case .remote(let credentials) = walletConfiguration.connection {
+                let host = credentials.host.absoluteString.prefix { $0 != ":" }
+                hostLabel.isHidden = false
+                hostLabel.text = "(\(host))"
+            } else {
+                hostLabel.isHidden = true
+            }
         }
     }
 }
