@@ -428,6 +428,16 @@ internal enum L10n {
         /// Send On Chain
         internal static let title = L10n.tr("Localizable", "scene.send.on_chain.title")
       }
+      internal enum Subtitle {
+        /// Can send: %@
+        internal static func lightningCanSendBalance(_ p1: String) -> String {
+          return L10n.tr("Localizable", "scene.send.subtitle.lightning_can_send_balance", p1)
+        }
+        /// On chain balance: %@
+        internal static func onChainBalance(_ p1: String) -> String {
+          return L10n.tr("Localizable", "scene.send.subtitle.on_chain_balance", p1)
+        }
+      }
     }
     internal enum Settings {
       /// Settings

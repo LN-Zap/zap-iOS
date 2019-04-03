@@ -24,6 +24,14 @@ public final class ChannelService {
         return channelListUpdater.pending
     }
 
+    public var maxLocalBalance: Satoshi {
+        var maxLocalBalance: Satoshi = 0
+        for channel in channelListUpdater.open.array where channel.localBalance > maxLocalBalance {
+            maxLocalBalance = channel.localBalance
+        }
+        return maxLocalBalance
+    }
+
     public var maxRemoteBalance: Satoshi {
         var maxRemoteBalance: Satoshi = 0
         for channel in channelListUpdater.open.array where channel.remoteBalance > maxRemoteBalance {

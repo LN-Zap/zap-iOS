@@ -32,11 +32,8 @@ public final class AmountInputView: UIControl {
 
     public weak var delegate: AmountInputViewDelegate?
 
-    var validRange: ClosedRange<Satoshi>?
-
     private(set) var satoshis: Satoshi = 0 {
         didSet {
-            updateValidityIndicator()
             sendActions(for: .valueChanged)
         }
     }
@@ -138,13 +135,6 @@ public final class AmountInputView: UIControl {
         self.satoshis = Settings.shared.primaryCurrency.value.satoshis(from: output) ?? 0
 
         return true
-    }
-
-    private func updateValidityIndicator() {
-        if amountTextField.text != nil,
-            let range = validRange {
-            amountTextField.textColor = range.contains(satoshis) ? textColor : UIColor.Zap.superRed
-        }
     }
 
     @IBAction private func didSelectTextField(_ sender: Any) {

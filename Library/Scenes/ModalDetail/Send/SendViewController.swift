@@ -66,6 +66,19 @@ final class SendViewController: ModalDetailViewController {
             .dispose(in: reactive.bag)
 
         setHeaderImage(viewModel.method.headerImage)
+
+        viewModel.subtitleText
+            .observeNext { [weak self] in
+                self?.amountInputView?.subtitleText = $0
+            }
+            .dispose(in: reactive.bag)
+
+        viewModel.isSubtitleTextWarning
+            .map { $0 ? UIColor.Zap.superRed : UIColor.Zap.gray }
+            .observeNext { [weak self] in
+                self?.amountInputView?.subtitleTextColor = $0
+            }
+            .dispose(in: reactive.bag)
     }
 
     private func addAmountInputView() {
@@ -117,7 +130,6 @@ final class SendViewController: ModalDetailViewController {
     }
 
     private func sendButtonTapped() {
-
         authenticate { [weak self] result in
             switch result {
             case .success:

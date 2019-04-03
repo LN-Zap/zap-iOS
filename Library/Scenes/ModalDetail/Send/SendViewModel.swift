@@ -24,12 +24,7 @@ extension InvoiceError: LocalizedError {
     }
 }
 
-final class SendViewModel {
-
-    enum Constants {
-        fileprivate static let minimumOnChainTransaction: Satoshi = 547
-    }
-
+final class SendViewModel: NSObject {
     enum SendMethod {
         case lightning(PaymentRequest)
         case onChain(BitcoinURI)
@@ -56,6 +51,9 @@ final class SendViewModel {
     let lightningFee = Observable<Loadable<Satoshi?>>(.loading)
     let method: SendMethod
 
+    let subtitleText = Observable<String?>(nil)
+    let isSubtitleTextWarning = Observable(false)
+
     var amount: Satoshi? {
         didSet {
             guard oldValue != amount else { return }
@@ -69,12 +67,19 @@ final class SendViewModel {
         }
     }
 
+    lazy var maxPaymentAmount: Satoshi = {
+        switch method {
+        case .lightning:
+            return min(LndConstants.maxLightningPaymentAllowed, lightningService.channelService.maxLocalBalance)
+        case .onChain:
+            return lightningService.balanceService.onChain.value
+        }
+    }()
+
     let receiver: String
     let memo: String?
     let isSendButtonEnabled = Observable(false)
     let isInputViewEnabled = Observable(true)
-
-    let validRange: ClosedRange<Satoshi>?
 
     private let lightningService: LightningService
 
@@ -87,16 +92,8 @@ final class SendViewModel {
 
         if let paymentRequest = invoice.lightningPaymentRequest {
             method = .lightning(paymentRequest)
-
-            validRange = 1...LndConstants.maxLightningPaymentAllowed
         } else if let bitcoinURI = invoice.bitcoinURI {
             method = .onChain(bitcoinURI)
-
-            if lightningService.balanceService.onChain.value == 0 {
-                validRange = nil
-            } else {
-                validRange = Constants.minimumOnChainTransaction...lightningService.balanceService.onChain.value
-            }
         } else {
             fatalError("Invalid Invoice")
         }
@@ -109,21 +106,39 @@ final class SendViewModel {
         }
         memo = invoice.lightningPaymentRequest?.memo ?? invoice.bitcoinURI?.memo
 
+        super.init()
+
         updateLightningFee()
         updateIsUIEnabled()
+        updateSubtitle()
+    }
+
+    private func updateSubtitle() {
+        Settings.shared.primaryCurrency
+            .compactMap { [method, maxPaymentAmount] in
+                guard let amount = $0.format(satoshis: maxPaymentAmount) else { return nil }
+                switch method {
+                case .lightning:
+                    return L10n.Scene.Send.Subtitle.lightningCanSendBalance(amount)
+                case .onChain:
+                    return L10n.Scene.Send.Subtitle.onChainBalance(amount)
+                }
+            }
+            .observeNext { [subtitleText] in
+                subtitleText.value = $0
+            }
+            .dispose(in: reactive.bag)
     }
 
     private func updateIsUIEnabled() {
         isSendButtonEnabled.value = isAmountValid && !isSending
         isInputViewEnabled.value = !isSending
+        isSubtitleTextWarning.value = amount ?? 0 > maxPaymentAmount
     }
 
     private var isAmountValid: Bool {
-        guard
-            let amount = amount,
-            let validRange = validRange
-            else { return false }
-        return validRange.contains(amount)
+        guard let amount = amount else { return false }
+        return amount > 0 && amount < maxPaymentAmount
     }
 
     private func updateLightningFee() {
