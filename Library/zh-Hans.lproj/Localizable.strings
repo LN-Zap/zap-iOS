@@ -111,6 +111,8 @@
 "scene.send.on_chain.title" = "链上交易";
 "scene.send.authentication_failed" = "身份验证失败";
 "scene.send.maximum_fee" = "预计费用:";
+"scene.send.subtitle.on_chain_balance" = "On chain balance: %@";
+"scene.send.subtitle.lightning_can_send_balance" = "Can send: %@";
 
 "scene.connect_remote_node.title" = "连接远程节点";
 "scene.connect_remote_node.empty_state" = "扫描lndconnect，BTCPay生成的QRCode，或者运行'lndconnect -j'然后粘贴链接来连接到你的节点。";
@@ -186,13 +188,11 @@
 
 "scene.filter.title" = "过滤";
 "scene.filter.section_header.transaction_types" = "交易类型";
-"scene.filter.section_header.advanced" = "高级";
 "scene.filter.displayOnChainTransactions" = "链上付款";
-"scene.filter.display_unknown_transaction_type" = "内部交易";
+"scene.filter.display_expired_invoices" = "Expired Invoices";
 "scene.filter.displayLightningPayments" = "闪电网络支付";
 "scene.filter.displayLightningInvoices" = "已创建的单据";
 "scene.filter.displayChannelEvents" = "通道事件";
-"scene.filter.displayFailedPaymentEvents" = "失败的付款";
 
 "scene.qrcode_scanner.top_label" = "扫描 QR 码";
 
