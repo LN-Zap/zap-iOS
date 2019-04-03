@@ -111,6 +111,8 @@
 "scene.send.on_chain.title" = "Send On Chain";
 "scene.send.authentication_failed" = "Godkendelse mislykkedes";
 "scene.send.maximum_fee" = "Forventet gebyr:";
+"scene.send.subtitle.on_chain_balance" = "On chain balance: %@";
+"scene.send.subtitle.lightning_can_send_balance" = "Can send: %@";
 
 "scene.connect_remote_node.title" = "Tilslut ekstern Node";
 "scene.connect_remote_node.empty_state" = "Skan QR koden genereret af lndconnect, BTCPay Server, eller indsæt linket du får når du kører 'lndconnect -j' for at tilslutte til dit node.";
@@ -186,13 +188,11 @@
 
 "scene.filter.title" = "Filtrer";
 "scene.filter.section_header.transaction_types" = "Transaktionstyper";
-"scene.filter.section_header.advanced" = "Avanceret";
 "scene.filter.displayOnChainTransactions" = "On-chain betaling";
-"scene.filter.display_unknown_transaction_type" = "Intern transaktioner";
+"scene.filter.display_expired_invoices" = "Expired Invoices";
 "scene.filter.displayLightningPayments" = "Lightning betalinger";
 "scene.filter.displayLightningInvoices" = "Skabte fakturaer";
 "scene.filter.displayChannelEvents" = "Kanal begivenheder";
-"scene.filter.displayFailedPaymentEvents" = "Mislykket betalinger";
 
 "scene.qrcode_scanner.top_label" = "Skan QR-kode";
 
