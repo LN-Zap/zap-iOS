@@ -20,12 +20,6 @@ public struct UIViewStyle<T: UIView> {
         }
     }
 
-    func apply(to views: [T]) {
-        for view in views {
-            styling(view)
-        }
-    }
-
     func with(_ adjustment: @escaping (T) -> Void) -> UIViewStyle<T> {
         let styling = self.styling
         return UIViewStyle<T> {

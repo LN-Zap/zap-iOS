@@ -71,7 +71,7 @@ class ChannelTableViewCell: BondTableViewCell {
         Style.Label.headline.apply(to: nameLabel)
         Style.Label.body.apply(to: stateLabel)
 
-        Style.Label.subHeadline.apply(to: [localAmountLabel, remoteAmountLabel])
+        Style.Label.subHeadline.apply(to: localAmountLabel, remoteAmountLabel)
 
         localAmountView.direction = .horizontal
         remoteAmountView.backgroundColor = .white

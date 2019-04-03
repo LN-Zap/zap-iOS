@@ -28,8 +28,8 @@ final class ChannelListHeaderView: UIView {
     override func awakeFromNib() {
         super.awakeFromNib()
 
-        Style.Label.subHeadline.apply(to: [canSendTitleLabel, canReceiveTitleLabel, pendingTitleLabel])
-        Style.Label.headline.apply(to: [canSendAmountLabel, canReceiveAmountLabel, pendingAmountLabel])
+        Style.Label.subHeadline.apply(to: canSendTitleLabel, canReceiveTitleLabel, pendingTitleLabel)
+        Style.Label.headline.apply(to: canSendAmountLabel, canReceiveAmountLabel, pendingAmountLabel)
 
         canSendTitleLabel.text = L10n.Scene.Channels.Header.totalCanSend
         canReceiveTitleLabel.text = L10n.Scene.Channels.Header.totalCanReceive
