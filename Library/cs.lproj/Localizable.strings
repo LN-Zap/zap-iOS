@@ -7,6 +7,9 @@
 
 "link.help" = "https://ln-zap.github.io/zap-tutorials/";
 "link.help.zapconnect" = "https://ln-zap.github.io/zap-tutorials/iOS-remote-node-setup";
+"link.privacy" = "http://zap.jackmallers.com/privacy";
+"link.bug_report" = "https://github.com/LN-Zap/zap-iOS/issues";
+"link.lnd_releases" = "https://github.com/lightningnetwork/lnd/releases";
 
 "error.wrong_uri_format" = "Neznámý formát odkazu.";
 "error.wrong_uri_network" = "Pokusili jste se otevřít odkaz pro %@, ale Váš uzel je připojen k %@.";
@@ -44,7 +47,9 @@
 "scene.history.empty_state_label" = "0 transactions 🙁";
 
 "scene.settings.title" = "Nastavení";
+"scene.settings.section.warning" = "Warning";
 "scene.settings.section.wallet" = "Peněženka";
+"scene.settings.item.version_warning" = "Your lnd is outdated (%@). Zap iOS works best with lnd version %@ or above.";
 "scene.settings.item.bitcoin_unit" = "Bitcoin Unit";
 "scene.settings.item.currency" = "Měna";
 "scene.settings.item.block_explorer" = "Block Explorer";
