@@ -65,6 +65,9 @@ class GroupedTableViewController: UITableViewController {
                 .dispose(in: reactive.bag)
         } else if item is DetailDisclosureSettingsItem {
             cell.accessoryType = .disclosureIndicator
+        } else if item is WarningSettingsItem {
+            cell.backgroundColor = UIColor.Zap.superRed
+            cell.textLabel?.numberOfLines = 0
         } else {
             cell.accessoryType = .none
         }

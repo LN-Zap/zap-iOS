@@ -66,8 +66,14 @@ internal enum L10n {
   }
 
   internal enum Link {
+    /// https://github.com/LN-Zap/zap-iOS/issues
+    internal static let bugReport = L10n.tr("Localizable", "link.bug_report")
     /// https://ln-zap.github.io/zap-tutorials/
     internal static let help = L10n.tr("Localizable", "link.help")
+    /// https://github.com/lightningnetwork/lnd/releases
+    internal static let lndReleases = L10n.tr("Localizable", "link.lnd_releases")
+    /// http://zap.jackmallers.com/privacy
+    internal static let privacy = L10n.tr("Localizable", "link.privacy")
     internal enum Help {
       /// https://ln-zap.github.io/zap-tutorials/iOS-remote-node-setup
       internal static let zapconnect = L10n.tr("Localizable", "link.help.zapconnect")
@@ -465,6 +471,10 @@ internal enum L10n {
         internal static let removeRemoteNode = L10n.tr("Localizable", "scene.settings.item.remove_remote_node")
         /// Report an Issue
         internal static let reportIssue = L10n.tr("Localizable", "scene.settings.item.report_issue")
+        /// Your lnd is outdated (%@). Zap iOS works best with lnd version %@ or above.
+        internal static func versionWarning(_ p1: String, _ p2: String) -> String {
+          return L10n.tr("Localizable", "scene.settings.item.version_warning", p1, p2)
+        }
         internal enum OnChainRequestAddress {
           /// Bech32
           internal static let bech32 = L10n.tr("Localizable", "scene.settings.item.on_chain_request_address.bech32")
@@ -477,6 +487,8 @@ internal enum L10n {
       internal enum Section {
         /// Wallet
         internal static let wallet = L10n.tr("Localizable", "scene.settings.section.wallet")
+        /// Warning
+        internal static let warning = L10n.tr("Localizable", "scene.settings.section.warning")
       }
     }
     internal enum SetupPin {

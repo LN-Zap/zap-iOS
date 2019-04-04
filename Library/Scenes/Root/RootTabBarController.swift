@@ -7,6 +7,10 @@
 
 import UIKit
 
+protocol BadgeUpdaterDelegate: class {
+    func setBadge(_ value: Int, for tab: Tab)
+}
+
 class RootTabBarController: UITabBarController {
     private let presentWalletList: (() -> Void)?
 
@@ -28,6 +32,12 @@ class RootTabBarController: UITabBarController {
         tabBar.backgroundImage = UIImage()
     }
 
+    var tabs: [(Tab, UIViewController)]? {
+        didSet {
+            viewControllers = tabs?.map { $0.1 }
+        }
+    }
+
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
@@ -42,10 +52,11 @@ class RootTabBarController: UITabBarController {
     }
 }
 
-extension RootTabBarController: HistoryBadgeUpdaterDelegate {
-    func updateBadgeValue(_ value: Int) {
+extension RootTabBarController: BadgeUpdaterDelegate {
+    func setBadge(_ value: Int, for tab: Tab) {
+        guard let index = tabs?.firstIndex(where: { $0.0 == tab }) else { return }
         DispatchQueue.main.async {
-            self.tabBar.items?[1].badgeValue = value <= 0 ? nil : String(value)
+            self.tabBar.items?[index].badgeValue = value <= 0 ? nil : String(value)
         }
     }
 }

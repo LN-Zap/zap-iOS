@@ -11,14 +11,10 @@ import Lightning
 import ReactiveKit
 import SwiftLnd
 
-protocol HistoryBadgeUpdaterDelegate: class {
-    func updateBadgeValue(_ value: Int)
-}
-
 final class HistoryViewModel: NSObject {
     private let historyService: HistoryService
 
-    weak var delegate: HistoryBadgeUpdaterDelegate?
+    weak var delegate: BadgeUpdaterDelegate?
 
     let dataSource: MutableObservableArray2D<String, HistoryEventType>
 
@@ -63,7 +59,7 @@ final class HistoryViewModel: NSObject {
     }
 
     func historyWillAppear() {
-        delegate?.updateBadgeValue(0)
+        delegate?.setBadge(0, for: .history)
         currentLastSeenDate = lastSeenDate
         lastSeenDate = Date()
     }
@@ -76,7 +72,7 @@ final class HistoryViewModel: NSObject {
         updateTabBarBadge()
     }
 
-    func setupTabBarBadge(delegate: HistoryBadgeUpdaterDelegate) {
+    func setupTabBarBadge(delegate: BadgeUpdaterDelegate) {
         self.delegate = delegate
         updateTabBarBadge()
     }
@@ -98,7 +94,7 @@ final class HistoryViewModel: NSObject {
             }
         }
 
-        delegate.updateBadgeValue(unseenEventCount)
+        delegate.setBadge(unseenEventCount, for: .history)
     }
 
     private func filterEvents(_ events: [HistoryEventType], searchString: String?, filterSettings: FilterSettings) -> [HistoryEventType] {

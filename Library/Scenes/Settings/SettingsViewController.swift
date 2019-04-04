@@ -8,6 +8,13 @@
 import SwiftLnd
 import UIKit
 
+private extension Info {
+    var isLndVersionOutdated: Bool {
+        guard let currentVersion = version else { return false }
+        return currentVersion.number < LndConstants.currentVersionNumber
+    }
+}
+
 final class SettingsViewController: GroupedTableViewController {
     private var info: Info?
 
@@ -37,7 +44,7 @@ final class SettingsViewController: GroupedTableViewController {
             walletRows.append(PushViewControllerSettingsItem(title: L10n.Scene.Settings.Item.lndLog, pushViewController: pushLndLogViewController))
         }
 
-        let sections: [Section<SettingsItem>] = [
+        var sections: [Section<SettingsItem>] = [
             Section(title: L10n.Scene.Settings.title, rows: [
                 CurrencySelectionSettingsItem(),
                 BitcoinUnitSelectionSettingsItem(),
@@ -47,16 +54,26 @@ final class SettingsViewController: GroupedTableViewController {
             Section(title: "Lightning", rows: lightningRows),
             Section(title: L10n.Scene.Settings.Section.wallet, rows: walletRows),
             Section(title: nil, rows: [
-                // swiftlint:disable:next force_unwrapping
+                // swiftlint:disable force_unwrapping
                 SafariSettingsItem(title: L10n.Scene.Settings.Item.help, url: URL(string: L10n.Link.help)!),
-                // swiftlint:disable:next force_unwrapping
-                SafariSettingsItem(title: L10n.Scene.Settings.Item.reportIssue, url: URL(string: "https://github.com/LN-Zap/zap-iOS/issues")!),
-                // swiftlint:disable:next force_unwrapping
-                SafariSettingsItem(title: L10n.Scene.Settings.Item.privacyPolicy, url: URL(string: "http://zap.jackmallers.com/privacy")!)
+                SafariSettingsItem(title: L10n.Scene.Settings.Item.reportIssue, url: URL(string: L10n.Link.bugReport)!),
+                SafariSettingsItem(title: L10n.Scene.Settings.Item.privacyPolicy, url: URL(string: L10n.Link.privacy)!)
+                // swiftlint:enable force_unwrapping
             ])
         ]
 
+        // display outdated lnd version warning
+        if info?.isLndVersionOutdated == true, let currentVersion = info?.version {
+            sections.insert(Section(title: L10n.Scene.Settings.Section.warning, rows: [
+                // swiftlint:disable:next force_unwrapping
+                WarningSettingsItem(title: L10n.Scene.Settings.Item.versionWarning(currentVersion.number.description, LndConstants.currentVersionNumber.description), url: URL(string: L10n.Link.lndReleases)!)
+            ]), at: 0)
+        }
         super.init(sections: sections)
+    }
+
+    func updateBadgeIfNeeded(badgeUpdaterDelegate: BadgeUpdaterDelegate) {
+        badgeUpdaterDelegate.setBadge(info?.isLndVersionOutdated == true ? 1 : 0, for: .settings)
     }
 
     required init?(coder aDecoder: NSCoder) {
@@ -79,7 +96,7 @@ final class SettingsViewController: GroupedTableViewController {
         var versionString = "zap version: \(versionNumber), build: \(buildNumber)"
 
         if let version = info?.version {
-            versionString += "\nlnd version: \(version.number.string) \(version.commit?.prefix(7) ?? "-")"
+            versionString += "\nlnd version: \(version.number) \(version.commit?.prefix(7) ?? "-")"
         }
 
         return versionString

@@ -15,13 +15,6 @@ import SwiftLnd
 
 final class WalletViewController: UIViewController {
     @IBOutlet private weak var graphContainer: UIView!
-    @IBOutlet private weak var warningLabel: PaddingLabel! {
-        didSet {
-            setupPaddingLabel(warningLabel)
-            warningLabel.backgroundColor = UIColor.Zap.superRed
-            warningLabel.text = L10n.Scene.Wallet.Warning.lndOutdated
-        }
-    }
     @IBOutlet private weak var networkLabel: PaddingLabel! {
         didSet {
             setupPaddingLabel(networkLabel)
@@ -161,14 +154,6 @@ final class WalletViewController: UIViewController {
     }
 
     private func setupBindings() {
-        lightningService.infoService.info
-            .map {
-                guard let version = $0?.version else { return true }
-                return version.number >= LndConstants.currentVersionNumber
-            }
-            .bind(to: warningLabel.reactive.isHidden)
-            .dispose(in: reactive.bag)
-
         [
             lightningService?.balanceService.total
                 .bind(to: secondaryBalanceLabel.reactive.text, currency: Settings.shared.secondaryCurrency),

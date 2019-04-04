@@ -10,6 +10,12 @@ import Logger
 import SafariServices
 import UIKit
 
+enum Tab {
+    case wallet
+    case history
+    case settings
+}
+
 final class WalletCoordinator: NSObject, Coordinator {
     let rootViewController: RootViewController
 
@@ -100,15 +106,17 @@ final class WalletCoordinator: NSObject, Coordinator {
 
     private func presentMain() {
         let tabBarController = RootTabBarController(presentWalletList: presentWalletList)
+        let settingsViewController = self.settingsViewController()
 
-        tabBarController.viewControllers = [
-            walletViewController(),
-            historyViewController(),
-            settingsViewController()
+        tabBarController.tabs = [
+            (.wallet, walletViewController()),
+            (.history, historyViewController()),
+            (.settings, settingsViewController)
         ]
         presentViewController(tabBarController)
 
         historyViewModel.setupTabBarBadge(delegate: tabBarController)
+        (settingsViewController.viewControllers.first as? SettingsViewController)?.updateBadgeIfNeeded(badgeUpdaterDelegate: tabBarController)
 
         if let route = self.route {
             handle(route)

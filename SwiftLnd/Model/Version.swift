@@ -20,7 +20,7 @@ private func paddedZip(_ left: [Int], _ right: [Int]) -> [(Int, Int)] {
 }
 
 public struct Version {
-    public struct Number: Comparable, Equatable {
+    public struct Number: CustomStringConvertible, Comparable, Equatable {
         public static func == (lhs: Number, rhs: Number) -> Bool {
             for (lhs, rhs) in paddedZip(lhs.components, rhs.components) where lhs != rhs {
                 return false
@@ -37,7 +37,7 @@ public struct Version {
 
         let components: [Int]
 
-        public var string: String {
+        public var description: String {
             return components
                 .map { String($0) }
                 .joined(separator: ".")

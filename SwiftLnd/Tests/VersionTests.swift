@@ -14,7 +14,7 @@ class VersionTests: XCTestCase {
     func testVersionNumber() {
         let versionNumber = Version.Number(string: "0.5.1-beta")
         XCTAssertNotNil(versionNumber)
-        XCTAssertEqual(versionNumber?.string, "0.5.1")
+        XCTAssertEqual(versionNumber?.description, "0.5.1")
     }
 
     func testEqualVersionNumber() {
@@ -44,7 +44,7 @@ class VersionTests: XCTestCase {
 
     func testVersion() {
         let version = Version(string: "0.5.1-beta commit=v0.5.1-beta-161-g8de7564645217c84c44d77106d56cdb126653bf8")
-        XCTAssertEqual(version?.number.string, "0.5.1")
+        XCTAssertEqual(version?.number.description, "0.5.1")
         XCTAssertEqual(version?.commit, "g8de7564645217c84c44d77106d56cdb126653bf8")
     }
 }

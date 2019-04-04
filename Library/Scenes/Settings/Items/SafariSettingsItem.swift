@@ -8,7 +8,7 @@
 import Foundation
 import SafariServices
 
-final class SafariSettingsItem: SettingsItem {
+class SafariSettingsItem: SettingsItem {
     let title: String
     let url: URL
 
