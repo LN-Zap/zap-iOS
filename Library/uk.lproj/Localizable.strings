@@ -7,6 +7,9 @@
 
 "link.help" = "https://ln-zap.github.io/zap-tutorials/";
 "link.help.zapconnect" = "https://ln-zap.github.io/zap-tutorials/iOS-remote-node-setup";
+"link.privacy" = "http://zap.jackmallers.com/privacy";
+"link.bug_report" = "https://github.com/LN-Zap/zap-iOS/issues";
+"link.lnd_releases" = "https://github.com/lightningnetwork/lnd/releases";
 
 "error.wrong_uri_format" = "Невідомий формат посилання.";
 "error.wrong_uri_network" = "You tried opening a link for %@ but your node is connected to %@.";
@@ -44,7 +47,9 @@
 "scene.history.empty_state_label" = "0 transactions 🙁";
 
 "scene.settings.title" = "Налаштування";
+"scene.settings.section.warning" = "Warning";
 "scene.settings.section.wallet" = "Гаманець";
+"scene.settings.item.version_warning" = "Your lnd is outdated (%@). Zap iOS works best with lnd version %@ or above.";
 "scene.settings.item.bitcoin_unit" = "Біткоїнова одиниця";
 "scene.settings.item.currency" = "Валюта";
 "scene.settings.item.block_explorer" = "Заблокувати браузер";
