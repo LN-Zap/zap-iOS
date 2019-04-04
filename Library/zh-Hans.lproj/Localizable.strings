@@ -7,6 +7,9 @@
 
 "link.help" = "https://ln-zap.github.io/zap-tutorials/";
 "link.help.zapconnect" = "https://ln-zap.github.io/zap-tutorials/iOS-remote-node-setup";
+"link.privacy" = "http://zap.jackmallers.com/privacy";
+"link.bug_report" = "https://github.com/LN-Zap/zap-iOS/issues";
+"link.lnd_releases" = "https://github.com/lightningnetwork/lnd/releases";
 
 "error.wrong_uri_format" = "未知的链接格式。";
 "error.wrong_uri_network" = "尝试链接到 %@, 但目前您的节点已连接到 %@。";
@@ -44,7 +47,9 @@
 "scene.history.empty_state_label" = "0个交易🙁";
 
 "scene.settings.title" = "设置";
+"scene.settings.section.warning" = "Warning";
 "scene.settings.section.wallet" = "钱包";
+"scene.settings.item.version_warning" = "Your lnd is outdated (%@). Zap iOS works best with lnd version %@ or above.";
 "scene.settings.item.bitcoin_unit" = "比特币单位";
 "scene.settings.item.currency" = "货币";
 "scene.settings.item.block_explorer" = "区块浏览器";
