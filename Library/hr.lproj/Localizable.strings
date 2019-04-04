@@ -7,6 +7,9 @@
 
 "link.help" = "https://ln-zap.github.io/zap-tutorials/";
 "link.help.zapconnect" = "https://ln-zap.github.io/zap-tutorials/iOS-remote-node-setup";
+"link.privacy" = "http://zap.jackmallers.com/privacy";
+"link.bug_report" = "https://github.com/LN-Zap/zap-iOS/issues";
+"link.lnd_releases" = "https://github.com/lightningnetwork/lnd/releases";
 
 "error.wrong_uri_format" = "Nepoznat format poveznice.";
 "error.wrong_uri_network" = "Pokušali ste otvoriti poveznicu za %@ ali vaš je čvor povezan sa %@.";
@@ -44,7 +47,9 @@
 "scene.history.empty_state_label" = "0 transakcija 🙁";
 
 "scene.settings.title" = "Postavke";
+"scene.settings.section.warning" = "Warning";
 "scene.settings.section.wallet" = "Novčanik";
+"scene.settings.item.version_warning" = "Your lnd is outdated (%@). Zap iOS works best with lnd version %@ or above.";
 "scene.settings.item.bitcoin_unit" = "Bitkoin jedinica";
 "scene.settings.item.currency" = "Valuta";
 "scene.settings.item.block_explorer" = "Blok preglednik";
