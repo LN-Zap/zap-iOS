@@ -118,6 +118,7 @@
 "scene.send.maximum_fee" = "Forventet gebyr:";
 "scene.send.subtitle.on_chain_balance" = "On chain balance: %@";
 "scene.send.subtitle.lightning_can_send_balance" = "Can send: %@";
+"scene.send.success_label" = "Payment Successful";
 
 "scene.connect_remote_node.title" = "Tilslut ekstern Node";
 "scene.connect_remote_node.empty_state" = "Skan QR koden genereret af lndconnect, BTCPay Server, eller indsæt linket du får når du kører 'lndconnect -j' for at tilslutte til dit node.";
