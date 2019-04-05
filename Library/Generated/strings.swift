@@ -424,6 +424,8 @@ internal enum L10n {
       internal static let sendButton = L10n.tr("Localizable", "scene.send.send_button")
       /// Sending...
       internal static let sending = L10n.tr("Localizable", "scene.send.sending")
+      /// Payment Successful
+      internal static let successLabel = L10n.tr("Localizable", "scene.send.success_label")
       /// Send
       internal static let title = L10n.tr("Localizable", "scene.send.title")
       internal enum Lightning {

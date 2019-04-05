@@ -35,7 +35,7 @@ class ModalDetailViewController: ModalViewController {
         return contentStackView
     }()
 
-    private let headerIconImageView: UIImageView = {
+    let headerIconImageView: UIImageView = {
         let headerIconImageView = UIImageView(image: nil)
         headerIconImageView.alpha = 0
         return headerIconImageView

@@ -13,26 +13,29 @@ extension UIView {
         addSubview(view)
     }
 
-    public func constrainEdges(to view: UIView) {
+    @discardableResult public func constrainEdges(to view: UIView) -> UIView {
         NSLayoutConstraint.activate([
             self.topAnchor.constraint(equalTo: view.topAnchor),
             self.bottomAnchor.constraint(equalTo: view.bottomAnchor),
             self.leftAnchor.constraint(equalTo: view.leftAnchor),
             self.rightAnchor.constraint(equalTo: view.rightAnchor)
         ])
+        return self
     }
 
-    func constrainCenter(to view: UIView) {
+    @discardableResult func constrainCenter(to view: UIView) -> UIView {
         NSLayoutConstraint.activate([
             self.centerXAnchor.constraint(equalTo: view.centerXAnchor),
             self.centerYAnchor.constraint(equalTo: view.centerYAnchor)
         ])
+        return self
     }
 
-    func constrainSize(to size: CGSize) {
+    @discardableResult func constrainSize(to size: CGSize) -> UIView {
         NSLayoutConstraint.activate([
             self.widthAnchor.constraint(equalToConstant: size.width),
             self.heightAnchor.constraint(equalToConstant: size.height)
         ])
+        return self
     }
 }
