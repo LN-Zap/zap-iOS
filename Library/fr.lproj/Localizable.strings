@@ -118,6 +118,7 @@
 "scene.send.maximum_fee" = "Frais Estimés:";
 "scene.send.subtitle.on_chain_balance" = "On chain balance: %@";
 "scene.send.subtitle.lightning_can_send_balance" = "Can send: %@";
+"scene.send.success_label" = "Payment Successful";
 
 "scene.connect_remote_node.title" = "Connection d'un noeud distant";
 "scene.connect_remote_node.empty_state" = "Scannez le QRCode généré par lndconnect, BTCPay Server, ou collez le lien que vous obtenez en exécutant 'lndconnect -j' pour vous connecter à votre nœud.";
