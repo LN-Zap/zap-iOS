@@ -91,7 +91,7 @@ final class SendViewController: ModalDetailViewController {
         contentStackView.addArrangedSubview(amountInputView)
 
         if case .lightning = viewModel.method {
-            contentStackView.setCustomSpacing(0, after: amountInputView)
+            contentStackView.addArrangedElement(.separator)
             let stackView = contentStackView.addArrangedElement(.horizontalStackView(compressionResistant: .first, content: [
                 .label(text: L10n.Scene.Send.maximumFee, style: Style.Label.footnote),
                 .customView(LoadingAmountView(loadable: viewModel.lightningFee))
