@@ -118,6 +118,7 @@
 "scene.send.maximum_fee" = "Ожидаемая Комиссия:";
 "scene.send.subtitle.on_chain_balance" = "On chain balance: %@";
 "scene.send.subtitle.lightning_can_send_balance" = "Can send: %@";
+"scene.send.success_label" = "Payment Successful";
 
 "scene.connect_remote_node.title" = "Подключение к Удаленному Узлу";
 "scene.connect_remote_node.empty_state" = "Сканируйте QR-код, сгенерированный сервером lendconnect, BTCPay, или вставьте ссылку, полученную при запуске 'lndconnect -j' для подключения к вашему узлу.";
