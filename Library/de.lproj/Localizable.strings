@@ -12,7 +12,7 @@
 "link.lnd_releases" = "https://github.com/lightningnetwork/lnd/releases";
 
 "error.wrong_uri_format" = "Unbekanntes Linkformat.";
-"error.wrong_uri_network" = "Du hast versucht den Link %@ zu öffnen, aber dein Node ist mit %@ verbunden.";
+"error.wrong_uri_network" = "Du hast versucht den Link %@ zu öffnen, aber dein Knoten ist mit %@ verbunden.";
 "error.block_explorer.unsupported_network" = "%@ unterstützt kein %@.";
 
 "rpc_connect_qrcode_error.btc_pay_expired" = "Sieht so aus als wäre der QR-Code abgelaufen.";
@@ -47,9 +47,9 @@
 "scene.history.empty_state_label" = "0 Transaktionen 🙁";
 
 "scene.settings.title" = "Einstellungen";
-"scene.settings.section.warning" = "Warning";
+"scene.settings.section.warning" = "Warnung";
 "scene.settings.section.wallet" = "Wallet";
-"scene.settings.item.version_warning" = "Your lnd is outdated (%@). Zap iOS works best with lnd version %@ or above.";
+"scene.settings.item.version_warning" = "Dein LND ist veraltet (%@). Zap iOS funktioniert am besten mit LND Version %@ oder höher.";
 "scene.settings.item.bitcoin_unit" = "Bitcoin Einheit";
 "scene.settings.item.currency" = "Währung";
 "scene.settings.item.block_explorer" = "Block Explorer";
@@ -57,14 +57,14 @@
 "scene.settings.item.on_chain_request_address.bech32" = "Bech32";
 "scene.settings.item.on_chain_request_address.p2sh" = "P2SH";
 "scene.settings.item.manage_channels" = "Kanäle verwalten";
-"scene.settings.item.node_uri" = "Node-Adresse";
+"scene.settings.item.node_uri" = "Knoten-Adresse";
 "scene.settings.item.remove_remote_node" = "Verwalten von Wallets";
 
 "scene.settings.item.change_pin" = "Pin ändern";
 "scene.settings.item.report_issue" = "Ein Problem melden";
 "scene.settings.item.help" = "Brauchst du Hilfe?";
 "scene.settings.item.privacy_policy" = "Datenschutz";
-"scene.settings.item.lnd_log" = "Zeige lnd Protokoll";
+"scene.settings.item.lnd_log" = "Zeige LND Protokoll";
 
 "scene.request.title" = "Empfangen";
 "scene.request.lightning_button" = "Lightning";
@@ -74,14 +74,14 @@
 "scene.request.lightning_header_title" = "Lightning-Zahlungsaufforderung";
 "scene.request.on_chain_header_title" = "On-Chain Zahlungsaufforderung";
 "scene.request.next_button_title" = "Weiter";
-"scene.request.subtitle.lightning" = "Can receive: %@";
+"scene.request.subtitle.lightning" = "Kann erhalten: %@";
 
 "scene.channels.title" = "Channels";
 "scene.channels.header.total_can_send" = "Kann insgesamt senden:";
 "scene.channels.header.total_can_receive" = "Kann insgesamt erhalten:";
 "scene.channels.header.total_pending" = "Insgesamt hängig:";
 "scene.channels.close.title" = "Channel schließen";
-"scene.channels.close.message" = "Willst du wirklich den Channel mit dem Node %@ schließen?";
+"scene.channels.close.message" = "Willst du wirklich den Kanal mit dem Knoten %@ schließen?";
 "scene.channels.force_close.title" = "Erzwungene Schließung des Channels";
 "scene.channels.force_close.message" = "%@ ist offline, bist du dir sicher die Schließung dieses Channels erzwingen zu wollen? Du musst dann ungefähr %@ auf dein Guthaben warten.";
 "scene.channels.alert.close" = "Channel schließen";
@@ -90,10 +90,10 @@
 "scene.channels.close_success.toast" = "Channel wird geschlossen.";
 
 "scene.open_channel.title" = "Channel öffnen";
-"scene.open_channel.channel_uri_label" = "Node:";
+"scene.open_channel.channel_uri_label" = "Knoten:";
 "scene.open_channel.add_button" = "Channel öffnen";
-"scene.open_channel.subtitle.minimum_size" = "Minimum channel size: %@";
-"scene.open_channel.subtitle.maximum_size" = "Maximum channel size: %@";
+"scene.open_channel.subtitle.minimum_size" = "Minimale Kanalgrösse: %@";
+"scene.open_channel.subtitle.maximum_size" = "Maximale Kanalgrösse: %@";
 "scene.open_channel.subtitle.balance" = "On chain balance: %@";
 
 "scene.pin.biometric.fallback.title" = "PIN eingeben";
@@ -117,11 +117,11 @@
 "scene.send.authentication_failed" = "Authentifizierung fehlgeschlagen";
 "scene.send.maximum_fee" = "Voraussichtliche Gebühr:";
 "scene.send.subtitle.on_chain_balance" = "On chain balance: %@";
-"scene.send.subtitle.lightning_can_send_balance" = "Can send: %@";
-"scene.send.success_label" = "Payment Successful";
+"scene.send.subtitle.lightning_can_send_balance" = "Kann senden: %@";
+"scene.send.success_label" = "Zahlung erfolgreich";
 
-"scene.connect_remote_node.title" = "Remote-Node verbinden";
-"scene.connect_remote_node.empty_state" = "Scannen Sie den QR-Code, welcher von lndconnect, BTCPay Server generiert wurde, oder fügen Sie den Link ein vom laufenden 'lndconnect -j', um eine Verbindung zu Ihrem Node aufzubauen.";
+"scene.connect_remote_node.title" = "Remote-Knoten verbinden";
+"scene.connect_remote_node.empty_state" = "Scannen Sie den QR-Code, welcher von lndconnect, BTCPay Server generiert wurde, oder fügen Sie den Link ein vom laufenden 'lndconnect -j', um eine Verbindung zu Ihrem Knoten aufzubauen.";
 "scene.connect_remote_node.url_label" = "Adresse";
 "scene.connect_remote_node.certificate_label" = "Anmeldeinformationen";
 "scene.connect_remote_node.connect_button" = "Verbinden";
@@ -129,7 +129,7 @@
 "scene.connect_remote_node.paste_button" = "Einfügen";
 "scene.connect_remote_node.help_button" = "Brauchst du Hilfe?";
 "scene.connect_remote_node.server_error" = "Verbindung zum Server gescheitert.";
-"scene.connect_remote_node.your_node_title" = "Dein Node";
+"scene.connect_remote_node.your_node_title" = "Dein Knoten";
 "scene.connect_remote_node.certificate_detail.certificate_title" = "Zertifikat";
 "scene.connect_remote_node.certificate_detail.macaroon_title" = "Macaroon";
 "scene.connect_remote_node.edit_url.title" = "Adresse";
@@ -149,9 +149,9 @@
 "scene.select_wallet_connection.recover.title" = "Wiederherstellen";
 "scene.select_wallet_connection.recover.message" = "bestehendes Wallet";
 "scene.select_wallet_connection.connect.title" = "Verbinden";
-"scene.select_wallet_connection.connect.message" = "Remote-Node";
+"scene.select_wallet_connection.connect.message" = "Remote-Knoten";
 "scene.select_wallet_connection.disabled_alert.title" = "Sorry!";
-"scene.select_wallet_connection.disabled_alert.message" = "Lnd ist in dieser mobilen Beta-Version deaktiviert. Verbinde dich stattdessen mit einem Remote-Node.";
+"scene.select_wallet_connection.disabled_alert.message" = "LND ist in dieser mobilen Beta-Version deaktiviert. Verbinde dich stattdessen mit einem Remote-Knoten.";
 "scene.select_wallet_connection.disabled_alert.ok_button" = "Ok";
 "scene.select_wallet_connection.create.help" = "Brauchst du Hilfe?";
 
@@ -164,8 +164,8 @@
 "scene.sync.description_label" = "Synchronisiere mit der Blockchain...";
 "scene.sync.disconnect_bar_button" = "Trennen";
 "scene.sync.disconnect_alert.title" = "Trennen";
-"scene.sync.disconnect_alert.message" = "Möchtest du wirklich die Synchronisierung abbrechen? Du musst dich mit deinem Node später wiederverbinden.";
-"scene.sync.disconnect_alert.destructive_action" = "Vom Node trennen";
+"scene.sync.disconnect_alert.message" = "Möchtest du wirklich die Synchronisierung abbrechen? Du musst dich mit deinem Knoten später wiederverbinden.";
+"scene.sync.disconnect_alert.destructive_action" = "Vom Knoten trennen";
 "scene.sync.disconnect_alert.cancel_action" = "Abbrechen";
 
 "scene.transaction_detail.title.lightning_invoice" = "Rechnungsdetail";
@@ -195,7 +195,7 @@
 "scene.filter.title" = "Filter";
 "scene.filter.section_header.transaction_types" = "Transaktionstypen";
 "scene.filter.displayOnChainTransactions" = "On-Chain Zahlungen";
-"scene.filter.display_expired_invoices" = "Expired Invoices";
+"scene.filter.display_expired_invoices" = "Abgelaufene Rechnungen";
 "scene.filter.displayLightningPayments" = "Lightning Zahlung";
 "scene.filter.displayLightningInvoices" = "Erstellte Rechnungen";
 "scene.filter.displayChannelEvents" = "Channel-Events";
@@ -203,7 +203,7 @@
 "scene.qrcode_scanner.top_label" = "QR-Code scannen";
 
 "scene.wallet.title" = "Wallet";
-"scene.wallet.warning.lnd_outdated" = "outdated lnd";
+"scene.wallet.warning.lnd_outdated" = "veraltete LND";
 
 "scene.time_lock.headline" = "Falscher PIN";
 "scene.time_lock.description" = "Ihre Geldbörse ist gesperrt für:";
@@ -228,7 +228,7 @@
 "scene.history.cell.label.error" = "Fehler";
 "scene.history.cell.action.try_again" = "Erneut versuchen";
 
-"scene.node_uri.title" = "Remote-Node verbinden";
+"scene.node_uri.title" = "Remote-Knoten verbinden";
 "scene.node_uri.alias_label" = "Alias";
 "scene.node_uri.uri_label" = "URI";
 
@@ -238,7 +238,7 @@
 
 "scene.wallet_list.title" = "Wallets";
 
-"scene.unlock.title" = "Entsperre Node";
+"scene.unlock.title" = "Entsperre Knoten";
 "scene.unlock.unlock_button" = "Entsperren";
 "scene.unlock.password_placeholder" = "Passwort";
 "scene.unlock.title_label" = "Entsperre %@";
