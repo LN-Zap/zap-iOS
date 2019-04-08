@@ -72,7 +72,7 @@
 "scene.request.on_chain_button" = "On-chain";
 "scene.request.generate_request_button" = "Genera richiesta";
 "scene.request.lightning_header_title" = "Richiesta Pagamento Lightning";
-"scene.request.on_chain_header_title" = "Richiesta Pagamento On-Chain";
+"scene.request.on_chain_header_title" = "On-Chain Payment Request";
 "scene.request.next_button_title" = "Avanti";
 "scene.request.subtitle.lightning" = "Ricezione massima: %@";
 
@@ -94,7 +94,7 @@
 "scene.open_channel.add_button" = "Apri Canale";
 "scene.open_channel.subtitle.minimum_size" = "Dimensione minima canale: %@";
 "scene.open_channel.subtitle.maximum_size" = "Dimensione massima canale: %@";
-"scene.open_channel.subtitle.balance" = "Saldo on-chain: %@";
+"scene.open_channel.subtitle.balance" = "On-chain balance: %@";
 
 "scene.pin.biometric.fallback.title" = "Digitare il Pin";
 "scene.pin.biometric.reason" = "Per accedere ai dati protetti";
@@ -113,10 +113,10 @@
 "scene.send.memo_headline" = "Causale:";
 "scene.send.sending" = "In Invio...";
 "scene.send.lightning.title" = "Invia Pagamento Lightning";
-"scene.send.on_chain.title" = "Invia On-chain";
+"scene.send.on_chain.title" = "Send On-Chain";
 "scene.send.authentication_failed" = "Autenticazione non riuscita";
 "scene.send.maximum_fee" = "Commissione prevista:";
-"scene.send.subtitle.on_chain_balance" = "Saldo on-chain: %@";
+"scene.send.subtitle.on_chain_balance" = "On-chain balance: %@";
 "scene.send.subtitle.lightning_can_send_balance" = "E ' possibile inviare: %@";
 "scene.send.success_label" = "Pagamento completato con successo";
 
@@ -135,7 +135,7 @@
 "scene.connect_remote_node.edit_url.title" = "Indirizzo";
 
 "scene.create_wallet.title" = "Crea Portafoglio";
-"scene.create_wallet.description_label" = "Assicurarsi di memorizzare la Mnemonica in una posizione sicura.";
+"scene.create_wallet.description_label" = "Make sure to store the mnemonic at a safe location.";
 "scene.create_wallet.next_button" = "Avanti";
 
 "scene.recover_wallet.title" = "Recupera Portafoglio";
