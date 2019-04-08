@@ -94,7 +94,7 @@
 "scene.open_channel.add_button" = "Channel öffnen";
 "scene.open_channel.subtitle.minimum_size" = "Minimale Kanalgrösse: %@";
 "scene.open_channel.subtitle.maximum_size" = "Maximale Kanalgrösse: %@";
-"scene.open_channel.subtitle.balance" = "On chain balance: %@";
+"scene.open_channel.subtitle.balance" = "On chain Saldo: %@";
 
 "scene.pin.biometric.fallback.title" = "PIN eingeben";
 "scene.pin.biometric.reason" = "Um auf die Sicherheitsdaten zu zugreifen";
@@ -116,7 +116,7 @@
 "scene.send.on_chain.title" = "Sende on-Chain";
 "scene.send.authentication_failed" = "Authentifizierung fehlgeschlagen";
 "scene.send.maximum_fee" = "Voraussichtliche Gebühr:";
-"scene.send.subtitle.on_chain_balance" = "On chain balance: %@";
+"scene.send.subtitle.on_chain_balance" = "On chain Saldo: %@";
 "scene.send.subtitle.lightning_can_send_balance" = "Kann senden: %@";
 "scene.send.success_label" = "Zahlung erfolgreich";
 
