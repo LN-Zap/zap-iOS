@@ -72,7 +72,7 @@
 "scene.request.on_chain_button" = "Στο blockchain";
 "scene.request.generate_request_button" = "Δημιουργία αίτησης";
 "scene.request.lightning_header_title" = "Αίτημα πληρωμής Lightning";
-"scene.request.on_chain_header_title" = "Αίτημα πληρωμής στο blockchain";
+"scene.request.on_chain_header_title" = "On-Chain Payment Request";
 "scene.request.next_button_title" = "Επόμενη";
 "scene.request.subtitle.lightning" = "Can receive: %@";
 
@@ -94,7 +94,7 @@
 "scene.open_channel.add_button" = "Ανοίξει ένα κανάλι";
 "scene.open_channel.subtitle.minimum_size" = "Minimum channel size: %@";
 "scene.open_channel.subtitle.maximum_size" = "Maximum channel size: %@";
-"scene.open_channel.subtitle.balance" = "On chain balance: %@";
+"scene.open_channel.subtitle.balance" = "On-chain balance: %@";
 
 "scene.pin.biometric.fallback.title" = "Χρησιμοποιήστε τον κωδικό πρόσβασης";
 "scene.pin.biometric.reason" = "Για πρόσβαση στα ασφαλή δεδομένα";
@@ -113,10 +113,10 @@
 "scene.send.memo_headline" = "Σημείωμα:";
 "scene.send.sending" = "Sending...";
 "scene.send.lightning.title" = "Αποστολή πληρωμής Lightning";
-"scene.send.on_chain.title" = "Στείλτε στο blockchain";
+"scene.send.on_chain.title" = "Send On-Chain";
 "scene.send.authentication_failed" = "Authentication failed";
 "scene.send.maximum_fee" = "Expected Fee:";
-"scene.send.subtitle.on_chain_balance" = "On chain balance: %@";
+"scene.send.subtitle.on_chain_balance" = "On-chain balance: %@";
 "scene.send.subtitle.lightning_can_send_balance" = "Can send: %@";
 "scene.send.success_label" = "Payment Successful";
 
@@ -135,7 +135,7 @@
 "scene.connect_remote_node.edit_url.title" = "Διεύθυνση";
 
 "scene.create_wallet.title" = "Δημιουργήστε πορτοφόλι";
-"scene.create_wallet.description_label" = "Βεβαιωθείτε ότι έχετε αποθηκεύσει το μνημονικό (τον σπόρο σας) σε μια θέση αποθήκευσης.";
+"scene.create_wallet.description_label" = "Make sure to store the mnemonic at a safe location.";
 "scene.create_wallet.next_button" = "Επόμενη";
 
 "scene.recover_wallet.title" = "Ανακτήστε το Πορτοφόλι";
