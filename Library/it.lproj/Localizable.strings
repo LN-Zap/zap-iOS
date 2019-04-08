@@ -22,8 +22,8 @@
 
 "channel.state.active" = "Online";
 "channel.state.inactive" = "Offline";
-"channel.state.opening" = "In apertura";
-"channel.state.closing" = "Chiusura";
+"channel.state.opening" = "Apertura in corso";
+"channel.state.closing" = "Chiusura in corso";
 "channel.state.force_closing" = "Forza chiusura";
 "channel.state.waiting_close" = "In attesa di chiusura";
 
