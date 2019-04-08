@@ -85,7 +85,7 @@
 "scene.channels.force_close.title" = "Forza Chiusura Canale";
 "scene.channels.force_close.message" = "%@ non è in linea, sei sicuro di voler forzare la chiusura questo canale? Si dovrà attendere circa %@ per riavere i fondi";
 "scene.channels.alert.close" = "Chiudi Canale";
-"scene.channels.alert.force_close" = "Canale chiuso forzatamente";
+"scene.channels.alert.force_close" = "Forza Chiusura Canale";
 "scene.channels.close_loading_view" = "Chiusura Canale";
 "scene.channels.close_success.toast" = "Il canale è chiuso.";
 
@@ -94,41 +94,41 @@
 "scene.open_channel.add_button" = "Apri Canale";
 "scene.open_channel.subtitle.minimum_size" = "Dimensione minima canale: %@";
 "scene.open_channel.subtitle.maximum_size" = "Dimensione massima canale: %@";
-"scene.open_channel.subtitle.balance" = "Saldo portafoglio on-chain: %@";
+"scene.open_channel.subtitle.balance" = "Saldo on-chain: %@";
 
 "scene.pin.biometric.fallback.title" = "Digitare il Pin";
 "scene.pin.biometric.reason" = "Per accedere ai dati protetti";
 
-"scene.setup_pin.done_button" = "Fatto";
-"scene.setup_pin.top_label.initial" = "Scegliere un pin.";
+"scene.setup_pin.done_button" = "Eseguito";
+"scene.setup_pin.top_label.initial" = "Scegliere un PIN.";
 "scene.setup_pin.top_label.non_matching" = "I PIN non corrispondono. Si prega di riprovare.";
-"scene.setup_pin.top_label.validate" = "Immettere il pin nuovamente per convalidare.";
+"scene.setup_pin.top_label.validate" = "Immettere il PIN nuovamente per convalidare.";
 
 "scene.confirm_mnemonic.title" = "Confermare Mnemonica (seed)";
-"scene.confirm_mnemonic.description" = "Immettere la chiave.";
+"scene.confirm_mnemonic.description" = "Immettere la Mnemonica (seed).";
 
 "scene.send.title" = "Invia";
 "scene.send.send_button" = "Invia";
 "scene.send.address_headline" = "A:";
-"scene.send.memo_headline" = "Memo:";
+"scene.send.memo_headline" = "Causale:";
 "scene.send.sending" = "In Invio...";
 "scene.send.lightning.title" = "Invia Pagamento Lightning";
 "scene.send.on_chain.title" = "Invia On-chain";
 "scene.send.authentication_failed" = "Autenticazione non riuscita";
-"scene.send.maximum_fee" = "Commissione Prevista:";
-"scene.send.subtitle.on_chain_balance" = "Saldo portafoglio on-chain: %@";
+"scene.send.maximum_fee" = "Commissione prevista:";
+"scene.send.subtitle.on_chain_balance" = "Saldo on-chain: %@";
 "scene.send.subtitle.lightning_can_send_balance" = "E ' possibile inviare: %@";
 "scene.send.success_label" = "Pagamento completato con successo";
 
 "scene.connect_remote_node.title" = "Connetti al Nodo Remoto";
-"scene.connect_remote_node.empty_state" = "Scansiona il QRCode generato da lndconnect, BTCPay Server, o incolla il link ottenuto dall'esecuzione di 'lndconnect -j' per connettersi al nodo.";
+"scene.connect_remote_node.empty_state" = "Scansiona il QRCode generato da lndconnect, BTCPay Server, o incolla il link ottenuto dall'esecuzione di 'lndconnect -j' per connettere al nodo.";
 "scene.connect_remote_node.url_label" = "Indirizzo";
 "scene.connect_remote_node.certificate_label" = "Credenziali";
 "scene.connect_remote_node.connect_button" = "Connetti";
 "scene.connect_remote_node.scan_button" = "Scansione";
 "scene.connect_remote_node.paste_button" = "Incolla";
 "scene.connect_remote_node.help_button" = "Hai bisogno di aiuto?";
-"scene.connect_remote_node.server_error" = "Impossibile connettersi al server.";
+"scene.connect_remote_node.server_error" = "Impossibile connette al server.";
 "scene.connect_remote_node.your_node_title" = "Il tuo nodo";
 "scene.connect_remote_node.certificate_detail.certificate_title" = "Certificato";
 "scene.connect_remote_node.certificate_detail.macaroon_title" = "Macaroon";
