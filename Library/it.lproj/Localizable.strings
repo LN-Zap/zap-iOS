@@ -47,7 +47,7 @@
 "scene.history.empty_state_label" = "0 transazioni 🙁";
 
 "scene.settings.title" = "Impostazioni";
-"scene.settings.section.warning" = "Warning";
+"scene.settings.section.warning" = "Attenzione";
 "scene.settings.section.wallet" = "Portafoglio";
 "scene.settings.item.version_warning" = "Your lnd is outdated (%@). Zap iOS works best with lnd version %@ or above.";
 "scene.settings.item.bitcoin_unit" = "Unità di Bitcoin";
@@ -195,7 +195,7 @@
 "scene.filter.title" = "Filtra";
 "scene.filter.section_header.transaction_types" = "Tipi di transazione";
 "scene.filter.displayOnChainTransactions" = "Pagamenti On-chain";
-"scene.filter.display_expired_invoices" = "Expired Invoices";
+"scene.filter.display_expired_invoices" = "Richiesta di pagamento scaduta";
 "scene.filter.displayLightningPayments" = "Pagamenti Lightning";
 "scene.filter.displayLightningInvoices" = "Richieste di pagamento";
 "scene.filter.displayChannelEvents" = "Eventi canale";
@@ -203,7 +203,7 @@
 "scene.qrcode_scanner.top_label" = "Scansiona il codice QR";
 
 "scene.wallet.title" = "Portafoglio";
-"scene.wallet.warning.lnd_outdated" = "outdated lnd";
+"scene.wallet.warning.lnd_outdated" = "lnd obsoleto";
 
 "scene.time_lock.headline" = "Codice di accesso errato";
 "scene.time_lock.description" = "Il portafoglio è bloccato per:";
