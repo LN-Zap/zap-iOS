@@ -72,7 +72,7 @@
 "scene.request.on_chain_button" = "On-chain";
 "scene.request.generate_request_button" = "Создать Запрос";
 "scene.request.lightning_header_title" = "Запрос На Оплату Lightning";
-"scene.request.on_chain_header_title" = "Запрос на оплату On Chain";
+"scene.request.on_chain_header_title" = "On-Chain Payment Request";
 "scene.request.next_button_title" = "Следуюший";
 "scene.request.subtitle.lightning" = "Can receive: %@";
 
@@ -94,7 +94,7 @@
 "scene.open_channel.add_button" = "Открыть Канал";
 "scene.open_channel.subtitle.minimum_size" = "Minimum channel size: %@";
 "scene.open_channel.subtitle.maximum_size" = "Maximum channel size: %@";
-"scene.open_channel.subtitle.balance" = "On chain balance: %@";
+"scene.open_channel.subtitle.balance" = "On-chain balance: %@";
 
 "scene.pin.biometric.fallback.title" = "Используйте Пароль";
 "scene.pin.biometric.reason" = "Доступ к защищенным данным";
@@ -113,10 +113,10 @@
 "scene.send.memo_headline" = "Memo:";
 "scene.send.sending" = "Отпарвка...";
 "scene.send.lightning.title" = "Отправить Lightning перевод";
-"scene.send.on_chain.title" = "Отправить On Chain";
+"scene.send.on_chain.title" = "Send On-Chain";
 "scene.send.authentication_failed" = "Ошибка проверки подлинности";
 "scene.send.maximum_fee" = "Ожидаемая Комиссия:";
-"scene.send.subtitle.on_chain_balance" = "On chain balance: %@";
+"scene.send.subtitle.on_chain_balance" = "On-chain balance: %@";
 "scene.send.subtitle.lightning_can_send_balance" = "Can send: %@";
 "scene.send.success_label" = "Payment Successful";
 
@@ -135,7 +135,7 @@
 "scene.connect_remote_node.edit_url.title" = "Адрес";
 
 "scene.create_wallet.title" = "Создать Кошелёк";
-"scene.create_wallet.description_label" = "Не забудьте сохранить парольную фразу в надежном месте.";
+"scene.create_wallet.description_label" = "Make sure to store the mnemonic at a safe location.";
 "scene.create_wallet.next_button" = "Следуюший";
 
 "scene.recover_wallet.title" = "Восстановление Кошелька";
