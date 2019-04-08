@@ -49,7 +49,7 @@
 "scene.settings.title" = "Impostazioni";
 "scene.settings.section.warning" = "Attenzione";
 "scene.settings.section.wallet" = "Portafoglio";
-"scene.settings.item.version_warning" = "Your lnd is outdated (%@). Zap iOS works best with lnd version %@ or above.";
+"scene.settings.item.version_warning" = "La tua verione di Lnd è obsoleta (%@). Zap iOS è compatibile con Lnd versione %@ o superiore";
 "scene.settings.item.bitcoin_unit" = "Unità di Bitcoin";
 "scene.settings.item.currency" = "Valuta";
 "scene.settings.item.block_explorer" = "Block Explorer";
@@ -74,12 +74,12 @@
 "scene.request.lightning_header_title" = "Richiesta Pagamento Lightning";
 "scene.request.on_chain_header_title" = "Richiesta Pagamento On-Chain";
 "scene.request.next_button_title" = "Avanti";
-"scene.request.subtitle.lightning" = "Can receive: %@";
+"scene.request.subtitle.lightning" = "Ricezione massima: %@";
 
 "scene.channels.title" = "Canali";
-"scene.channels.header.total_can_send" = "Total can send:";
-"scene.channels.header.total_can_receive" = "Total can receive:";
-"scene.channels.header.total_pending" = "Total pending:";
+"scene.channels.header.total_can_send" = "Capacità tot d'invio:";
+"scene.channels.header.total_can_receive" = "Capacità tot di ricezione:";
+"scene.channels.header.total_pending" = "Capacità in sospeso";
 "scene.channels.close.title" = "Chiudi Canale";
 "scene.channels.close.message" = "Vuoi davvero chiudere il canale con il nodo %@?";
 "scene.channels.force_close.title" = "Forza Chiusura Canale";
@@ -90,11 +90,11 @@
 "scene.channels.close_success.toast" = "Il canale è chiuso.";
 
 "scene.open_channel.title" = "Apri Canale";
-"scene.open_channel.channel_uri_label" = "Node:";
+"scene.open_channel.channel_uri_label" = "Nodo:";
 "scene.open_channel.add_button" = "Apri Canale";
-"scene.open_channel.subtitle.minimum_size" = "Minimum channel size: %@";
-"scene.open_channel.subtitle.maximum_size" = "Maximum channel size: %@";
-"scene.open_channel.subtitle.balance" = "On chain balance: %@";
+"scene.open_channel.subtitle.minimum_size" = "Dimensione minima canale: %@";
+"scene.open_channel.subtitle.maximum_size" = "Dimensione massima canale: %@";
+"scene.open_channel.subtitle.balance" = "Saldo portafoglio on-chain: %@";
 
 "scene.pin.biometric.fallback.title" = "Digitare il Pin";
 "scene.pin.biometric.reason" = "Per accedere ai dati protetti";
@@ -116,7 +116,7 @@
 "scene.send.on_chain.title" = "Invia On-chain";
 "scene.send.authentication_failed" = "Autenticazione non riuscita";
 "scene.send.maximum_fee" = "Commissione Prevista:";
-"scene.send.subtitle.on_chain_balance" = "On chain balance: %@";
+"scene.send.subtitle.on_chain_balance" = "Saldo portafoglio on-chain: %@";
 "scene.send.subtitle.lightning_can_send_balance" = "Can send: %@";
 "scene.send.success_label" = "Payment Successful";
 
