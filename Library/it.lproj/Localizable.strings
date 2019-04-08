@@ -151,7 +151,7 @@
 "scene.select_wallet_connection.connect.title" = "Connetti";
 "scene.select_wallet_connection.connect.message" = "nodo remoto";
 "scene.select_wallet_connection.disabled_alert.title" = "Ci dispiace!";
-"scene.select_wallet_connection.disabled_alert.message" = "L'esecuzione diretta di Lnd nel telefono è disabilitata in questa beta. Puoi invece connetterti ad un nodo remoto.";
+"scene.select_wallet_connection.disabled_alert.message" = "L'esecuzione locale di Lnd nel telefono è disabilitata in questa beta. Puoi invece connetterti ad un nodo remoto.";
 "scene.select_wallet_connection.disabled_alert.ok_button" = "Ok";
 "scene.select_wallet_connection.create.help" = "Hai bisogno di aiuto?";
 
