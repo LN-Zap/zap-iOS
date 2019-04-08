@@ -72,7 +72,7 @@
 "scene.request.on_chain_button" = "On-chain";
 "scene.request.generate_request_button" = "Geneer verzoek";
 "scene.request.lightning_header_title" = "Lightning betaalverzoek";
-"scene.request.on_chain_header_title" = "On-chain betaalverzoek";
+"scene.request.on_chain_header_title" = "On-Chain Payment Request";
 "scene.request.next_button_title" = "Volgende";
 "scene.request.subtitle.lightning" = "Can receive: %@";
 
@@ -94,7 +94,7 @@
 "scene.open_channel.add_button" = "Open kanaal";
 "scene.open_channel.subtitle.minimum_size" = "Minimum channel size: %@";
 "scene.open_channel.subtitle.maximum_size" = "Maximum channel size: %@";
-"scene.open_channel.subtitle.balance" = "On chain balance: %@";
+"scene.open_channel.subtitle.balance" = "On-chain balance: %@";
 
 "scene.pin.biometric.fallback.title" = "Gebruik pincode";
 "scene.pin.biometric.reason" = "Voor toegang tot de beveiligde data";
@@ -113,10 +113,10 @@
 "scene.send.memo_headline" = "Memo:";
 "scene.send.sending" = "Verzenden...";
 "scene.send.lightning.title" = "Verstuur Lightning betaling";
-"scene.send.on_chain.title" = "Verstuurd On Chain";
+"scene.send.on_chain.title" = "Send On-Chain";
 "scene.send.authentication_failed" = "Verificatie mislukt";
 "scene.send.maximum_fee" = "Verwachte kosten:";
-"scene.send.subtitle.on_chain_balance" = "On chain balance: %@";
+"scene.send.subtitle.on_chain_balance" = "On-chain balance: %@";
 "scene.send.subtitle.lightning_can_send_balance" = "Can send: %@";
 "scene.send.success_label" = "Payment Successful";
 
@@ -135,7 +135,7 @@
 "scene.connect_remote_node.edit_url.title" = "Adres";
 
 "scene.create_wallet.title" = "Nieuwe Wallet aanmaken";
-"scene.create_wallet.description_label" = "Bewaar je mnemonic code op een veilige locatie.";
+"scene.create_wallet.description_label" = "Make sure to store the mnemonic at a safe location.";
 "scene.create_wallet.next_button" = "Volgende";
 
 "scene.recover_wallet.title" = "Wallet herstellen";
