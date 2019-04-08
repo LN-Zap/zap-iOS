@@ -84,8 +84,8 @@
 "scene.channels.close.message" = "Vuoi davvero chiudere il canale con il nodo %@?";
 "scene.channels.force_close.title" = "Forza Chiusura Canale";
 "scene.channels.force_close.message" = "%@ non è in linea, sei sicuro di voler forzare la chiusura questo canale? Si dovrà attendere circa %@ per riavere i fondi";
-"scene.channels.alert.close" = "Canale Chiuso";
-"scene.channels.alert.force_close" = "Canale in chiusura forzata";
+"scene.channels.alert.close" = "Chiudi Canale";
+"scene.channels.alert.force_close" = "Canale chiuso forzatamente";
 "scene.channels.close_loading_view" = "Chiusura Canale";
 "scene.channels.close_success.toast" = "Il canale è chiuso.";
 
