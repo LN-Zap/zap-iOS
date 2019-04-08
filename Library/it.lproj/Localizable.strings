@@ -12,7 +12,7 @@
 "link.lnd_releases" = "https://github.com/lightningnetwork/lnd/releases";
 
 "error.wrong_uri_format" = "Formato link sconosciuto.";
-"error.wrong_uri_network" = "Hai tentato di aprire un collegamento a %@ ma il tuo nodo è connesso a %@.";
+"error.wrong_uri_network" = "Si è tentato di aprire un collegamento a %@, ma il nodo è connesso a %@.";
 "error.block_explorer.unsupported_network" = "%@ non supporta %@.";
 
 "rpc_connect_qrcode_error.btc_pay_expired" = "Sembra che il codice sia scaduto.";
@@ -117,8 +117,8 @@
 "scene.send.authentication_failed" = "Autenticazione non riuscita";
 "scene.send.maximum_fee" = "Commissione Prevista:";
 "scene.send.subtitle.on_chain_balance" = "Saldo portafoglio on-chain: %@";
-"scene.send.subtitle.lightning_can_send_balance" = "Can send: %@";
-"scene.send.success_label" = "Payment Successful";
+"scene.send.subtitle.lightning_can_send_balance" = "E ' possibile inviare: %@";
+"scene.send.success_label" = "Pagamento completato con successo";
 
 "scene.connect_remote_node.title" = "Connetti al Nodo Remoto";
 "scene.connect_remote_node.empty_state" = "Scansiona il QRCode generato da lndconnect, BTCPay Server, o incolla il link ottenuto dall'esecuzione di 'lndconnect -j' per connettersi al nodo.";
@@ -203,7 +203,7 @@
 "scene.qrcode_scanner.top_label" = "Scansiona il codice QR";
 
 "scene.wallet.title" = "Portafoglio";
-"scene.wallet.warning.lnd_outdated" = "lnd obsoleto";
+"scene.wallet.warning.lnd_outdated" = "Versione Lnd obsoleta";
 
 "scene.time_lock.headline" = "Codice di accesso errato";
 "scene.time_lock.description" = "Il portafoglio è bloccato per:";
