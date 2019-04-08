@@ -168,12 +168,12 @@
 "scene.sync.disconnect_alert.destructive_action" = "Scollega Nodo";
 "scene.sync.disconnect_alert.cancel_action" = "Annulla";
 
-"scene.transaction_detail.title.lightning_invoice" = "Dettagli fattura";
+"scene.transaction_detail.title.lightning_invoice" = "Dettagli Fattura";
 "scene.transaction_detail.title.payment_detail" = "Dettagli pagamento";
 "scene.transaction_detail.title.transaction_detail" = "Dettagli transazione";
 "scene.transaction_detail.title.channel_event_detail" = "Evento del canale";
 "scene.transaction_detail.title.failed_payment" = "Pagamento Fallito";
-"scene.transaction_detail.memo_label" = "Memo";
+"scene.transaction_detail.memo_label" = "Causale";
 "scene.transaction_detail.amount_label" = "Importo";
 "scene.transaction_detail.fee_label" = "Commissione";
 "scene.transaction_detail.date_label" = "Data";
