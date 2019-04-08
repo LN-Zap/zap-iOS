@@ -216,10 +216,10 @@
 "scene.history.cell.payment_failed" = "Pagamento non riuscito (%@)";
 "scene.history.cell.invoice_created" = "Richiesta di pagamento";
 "scene.history.cell.channel_opened" = "Canale aperto";
-"scene.history.cell.channel_closed" = "Canale Chiuso";
-"scene.history.cell.force_close_channel" = "Chiusura canale forzata";
-"scene.history.cell.remote_force_close_channel" = "Chiusura canale forzata da remoto";
-"scene.history.cell.breach_close_channel" = "Violazione chiusura canale";
+"scene.history.cell.channel_closed" = "Canale chiuso";
+"scene.history.cell.force_close_channel" = "Canale chiuso forzatamente";
+"scene.history.cell.remote_force_close_channel" = "Canale chiuso forzatamente dalla controparte";
+"scene.history.cell.breach_close_channel" = "Canale chiuso per violazione";
 "scene.history.cell.close_channel_funding_canceled" = "Canale Chiuso (Finanziamento annullato)";
 "scene.history.cell.channel_abandoned" = "Canale abbandonato";
 "scene.history.cell.transaction_sent" = "Pagamento inviato";
