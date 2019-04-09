@@ -61,7 +61,7 @@ final class HistoryViewController: UIViewController {
         setupDataSourceBinding(tableView, historyViewModel)
 
         historyViewModel.dataSource
-            .map { !$0.collection.isEmpty }
+            .map { !$0.collection.children.isEmpty }
             .bind(to: emptyStateLabel.reactive.isHidden)
             .dispose(in: reactive.bag)
     }
@@ -83,9 +83,7 @@ final class HistoryViewController: UIViewController {
                 case .channelEvent(let channelEvent):
                     cell.setChannelEvent(channelEvent)
                 case .createInvoiceEvent(let createInvoiceEvent):
-                    cell.setCreateInvoiceEvent(createInvoiceEvent)
-                case .failedPaymentEvent(let failedPayemntEvent):
-                    cell.setFailedPaymentEvent(failedPayemntEvent, delegate: self)
+                    cell.setInvoiceEvent(createInvoiceEvent)
                 case .lightningPaymentEvent(let lightningPaymentEvent):
                     cell.setLightningPaymentEvent(lightningPaymentEvent)
                 }
@@ -114,7 +112,7 @@ extension HistoryViewController: UITableViewDelegate {
 
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
         let sectionHeaderView = SectionHeaderView.instanceFromNib
-        sectionHeaderView.title = historyViewModel?.dataSource.collection[sectionAt: section]
+        sectionHeaderView.title = historyViewModel?.dataSource.collection[sectionAt: section].metadata
         sectionHeaderView.backgroundColor = .white
         return sectionHeaderView
     }
@@ -131,11 +129,5 @@ extension HistoryViewController: UISearchResultsUpdating {
         if let text = searchController.searchBar.text {
             historyViewModel?.searchString = text
         }
-    }
-}
-
-extension HistoryViewController: HistoryCellDelegate {
-    func resendFailedPayment(_ failedPaymentEvent: FailedPaymentEvent) {
-        presentSend?(failedPaymentEvent.paymentRequest)
     }
 }

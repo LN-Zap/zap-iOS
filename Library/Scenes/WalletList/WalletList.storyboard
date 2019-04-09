@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14460.20"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--Wallet List View Controller-->
+        <scene sceneID="POZ-DE-jjr">
+            <objects>
+                <viewController storyboardIdentifier="WalletListViewController" id="jwS-UI-ht3" customClass="WalletListViewController" customModule="Library" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="JXq-VE-d1j">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="uZq-xu-v54">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            </tableView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="uZq-xu-v54" firstAttribute="trailing" secondItem="anv-go-0ti" secondAttribute="trailing" id="3DF-wB-Maq"/>
+                            <constraint firstItem="uZq-xu-v54" firstAttribute="bottom" secondItem="JXq-VE-d1j" secondAttribute="bottom" id="jlM-3g-iL1"/>
+                            <constraint firstItem="uZq-xu-v54" firstAttribute="leading" secondItem="anv-go-0ti" secondAttribute="leading" id="oal-W9-fkJ"/>
+                            <constraint firstItem="uZq-xu-v54" firstAttribute="top" secondItem="JXq-VE-d1j" secondAttribute="top" id="un3-Iy-D02"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="anv-go-0ti"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="URH-9d-u1l">
+                        <barButtonItem key="rightBarButtonItem" systemItem="cancel" id="N4L-dn-d9c">
+                            <connections>
+                                <action selector="cancelButtonTapped:" destination="jwS-UI-ht3" id="AZp-3C-3Un"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                    <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" prompted="NO"/>
+                    <connections>
+                        <outlet property="tableView" destination="uZq-xu-v54" id="mrE-ZD-Sj8"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Ezm-2T-1zR" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="904.79999999999995" y="227.13643178410797"/>
+        </scene>
+    </scenes>
+</document>

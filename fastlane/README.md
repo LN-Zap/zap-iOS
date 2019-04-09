@@ -35,11 +35,11 @@ Builds new Alpha Build and uploads it to Testflight.
 fastlane local_lnd_alpha
 ```
 Builds new Alpha Build with local lnd enabled and uploads it to Testflight.
-### udid
+### release
 ```
-fastlane udid
+fastlane release
 ```
-Add a new UDID to developer portal and update adhoc provisioning profile.
+Release
 ### update_app_icon
 ```
 fastlane update_app_icon
@@ -50,6 +50,21 @@ Generate new app icon assets.
 fastlane tests
 ```
 Run all tests.
+### screenshots
+```
+fastlane screenshots
+```
+
+### upload_screenshots
+```
+fastlane upload_screenshots
+```
+
+### upload_metadata
+```
+fastlane upload_metadata
+```
+
 
 ----
 

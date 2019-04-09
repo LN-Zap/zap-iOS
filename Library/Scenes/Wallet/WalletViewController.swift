@@ -17,10 +17,7 @@ final class WalletViewController: UIViewController {
     @IBOutlet private weak var graphContainer: UIView!
     @IBOutlet private weak var networkLabel: PaddingLabel! {
         didSet {
-            networkLabel.edgeInsets = UIEdgeInsets(top: 5, left: 10, bottom: 5, right: 10)
-            Style.Label.body.apply(to: networkLabel)
-            networkLabel.layer.cornerRadius = 10
-            networkLabel.clipsToBounds = true
+            setupPaddingLabel(networkLabel)
             networkLabel.backgroundColor = UIColor.Zap.invisibleGray
             networkLabel.text = Network.testnet.localized
         }
@@ -84,6 +81,7 @@ final class WalletViewController: UIViewController {
 
         Style.Button.custom().apply(to: sendButton, requestButton)
 
+        requestButton.accessibilityIdentifier = "Request"
         UIView.performWithoutAnimation {
             sendButton.setTitle(L10n.Scene.Main.sendButton, for: .normal)
             sendButton.layoutIfNeeded()
@@ -104,7 +102,7 @@ final class WalletViewController: UIViewController {
         setupPrimaryBalanceLabel()
         setupBindings()
 
-        NotificationCenter.default.addObserver(self, selector: #selector(updateGraphEvents), name: .historyDidChange, object: nil)
+//        NotificationCenter.default.addObserver(self, selector: #selector(updateGraphEvents), name: .historyDidChange, object: nil)
     }
 
     private func setupGraphView() {
@@ -156,10 +154,21 @@ final class WalletViewController: UIViewController {
     }
 
     private func setupBindings() {
-        [lightningService?.balanceService.total.bind(to: secondaryBalanceLabel.reactive.text, currency: Settings.shared.secondaryCurrency),
-         lightningService?.infoService.network.map({ $0 == .mainnet }).bind(to: networkLabel.reactive.isHidden),
-         lightningService?.infoService.info.map({ $0?.alias }).bind(to: nodeAliasButton.reactive.title)
+        [
+            lightningService?.balanceService.total
+                .bind(to: secondaryBalanceLabel.reactive.text, currency: Settings.shared.secondaryCurrency),
+            lightningService?.infoService.network
+                .map({ $0 == .mainnet }).bind(to: networkLabel.reactive.isHidden),
+            lightningService?.infoService.info
+                .map({ $0?.alias }).bind(to: nodeAliasButton.reactive.title)
         ].dispose(in: reactive.bag)
+    }
+
+    private func setupPaddingLabel(_ paddingLabel: PaddingLabel) {
+        paddingLabel.edgeInsets = UIEdgeInsets(top: 5, left: 10, bottom: 5, right: 10)
+        Style.Label.body.apply(to: paddingLabel)
+        paddingLabel.layer.cornerRadius = 10
+        paddingLabel.clipsToBounds = true
     }
 
     @IBAction private func presentSend(_ sender: Any) {

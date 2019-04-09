@@ -8,6 +8,23 @@
 import Foundation
 import SwiftBTC
 
+extension Invoice {
+    enum Template {
+        static func create(memo: String, amount: Satoshi, date: Date) -> Invoice {
+            return Invoice(
+                id: "l1",
+                memo: memo,
+                amount: amount,
+                state: .settled,
+                date: date,
+                settleDate: Date(),
+                expiry: Date(),
+                paymentRequest: "abc"
+            )
+        }
+    }
+}
+
 extension Info {
     enum Template {
         static var testnet: Info {
@@ -20,13 +37,13 @@ extension Info {
                 activeChannelCount: 2,
                 bestHeaderDate: Date(),
                 uris: [],
-                version: "0.4.2-beta commit=625b210f441ece841c76b81377dd96e8d09aba8e"
+                version: Version(string: "0.4.2-beta commit=625b210f441ece841c76b81377dd96e8d09aba8e")
             )
         }
 
         static var mainnet: Info {
             return Info(
-                alias: "test",
+                alias: "Zap Node",
                 blockHeight: 124,
                 isSyncedToChain: true,
                 network: .mainnet,
@@ -34,7 +51,7 @@ extension Info {
                 activeChannelCount: 2,
                 bestHeaderDate: Date(),
                 uris: [],
-                version: "0.4.2-beta commit=625b210f441ece841c76b81377dd96e8d09aba8e"
+                version: Version(string: "0.4.2-beta commit=625b210f441ece841c76b81377dd96e8d09aba8e")
             )
         }
     }
@@ -48,49 +65,53 @@ extension BitcoinAddress {
 }
 
 extension Transaction {
-    static var template: Transaction {
-        return Transaction(
-            id: "100",
-            amount: 21005000,
-            date: Date(),
-            fees: 12,
-            destinationAddresses: [BitcoinAddress.template],
-            blockHeight: 400000
-        )
+    enum Template {
+        static var `default` = create(id: "1", amount: 1000000, date: Date())
+
+        static func create(id: String, amount: Satoshi, date: Date) -> Transaction {
+            return Transaction(
+                id: id,
+                amount: amount,
+                date: date,
+                fees: 12400,
+                destinationAddresses: [BitcoinAddress.template],
+                blockHeight: 10
+            )
+        }
     }
+
 }
 
 extension Payment {
-    static var template: Payment {
-        return Payment(
-            id: "id31234567896543",
-            amount: 1645,
-            date: Date(),
-            fees: 12,
-            paymentHash: "paymentHash",
-            destination: "abc"
-        )
+    enum Template {
+        static var `default` = create(id: "l1", amount: 1645, date: Date(), destination: "abc")
+
+        static func create(id: String, amount: Satoshi, date: Date, destination: String) -> Payment {
+            return Payment(
+                id: id,
+                amount: amount,
+                date: date,
+                fees: 12,
+                paymentHash: id,
+                destination: destination
+            )
+        }
     }
 }
 
 extension Channel {
-    static var template: Channel {
-        return Channel(
-            blockHeight: 1,
-            state: .active,
-            localBalance: 100,
-            remoteBalance: 100,
-            remotePubKey: "abc",
-            capacity: 200,
-            updateCount: 0,
-            channelPoint: ChannelPoint.template,
-            csvDelay: 10)
+    enum Template {
+        static let `defalut` = create(state: .active, localBalance: 100, remoteBalance: 100, remotePubKey: "abc")
+
+        static func create(state: Channel.State, localBalance: Satoshi, remoteBalance: Satoshi, remotePubKey: String) -> Channel {
+            return Channel(blockHeight: 50, state: state, localBalance: localBalance, remoteBalance: remoteBalance, remotePubKey: remotePubKey, capacity: localBalance + remoteBalance, updateCount: 1, channelPoint: ChannelPoint.template, csvDelay: 10)
+        }
     }
 }
 
 extension ChannelPoint {
     static var template: ChannelPoint {
-        return ChannelPoint(string: "abc:123")
+        return ChannelPoint(string: "t1:123")
     }
 }
 

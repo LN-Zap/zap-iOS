@@ -27,7 +27,7 @@ final class EventDetailViewModelTests: XCTestCase {
             blockHeight: 400000
         )
 
-        let event = TransactionEvent(transaction: transaction, type: .userInitiated)!
+        let event = TransactionEvent(transaction: transaction)!
         let eventType = HistoryEventType.transactionEvent(event)
         let viewModel = EventDetailViewModel(event: eventType)
         let configuration = viewModel.detailConfiguration(delegate: MockDelegate())
@@ -45,7 +45,7 @@ final class EventDetailViewModelTests: XCTestCase {
             blockHeight: 400000
         )
 
-        let event = TransactionEvent(transaction: transaction, type: .userInitiated)!
+        let event = TransactionEvent(transaction: transaction)!
         let eventType = HistoryEventType.transactionEvent(event)
         let viewModel = EventDetailViewModel(event: eventType)
         let configuration = viewModel.detailConfiguration(delegate: MockDelegate())

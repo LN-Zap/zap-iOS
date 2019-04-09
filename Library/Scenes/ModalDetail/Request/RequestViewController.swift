@@ -117,6 +117,7 @@ final class RequestViewController: ModalDetailViewController {
         lightningButton = contentStackView.addArrangedElement(.customHeight(56, element: .button(title: L10n.Scene.Request.lightningButton, style: lightningButtonStyle, completion: { [weak self] _ in
             self?.presentAmountInput(requestMethod: .lightning)
         }))) as? CallbackButton
+        lightningButton?.accessibilityIdentifier = "Lightning"
 
         let horizontalStackView = UIStackView()
         horizontalStackView.spacing = 15
@@ -158,6 +159,18 @@ final class RequestViewController: ModalDetailViewController {
         viewModel.requestMethod = requestMethod
         updateHeaderImage(for: requestMethod)
         currentState = .amountInput
+
+        if requestMethod == .lightning {
+            Settings.shared.primaryCurrency
+                .compactMap { [viewModel] in
+                    $0.format(satoshis: viewModel.maxRemoteBalance)
+                }
+                .observeNext { [amountInputView] in
+                    amountInputView?.subtitleText = L10n.Scene.Request.Subtitle.lightning($0)
+                }
+                .dispose(in: reactive.bag)
+            amountInputView?.subtitleTextColor = UIColor.Zap.gray
+        }
     }
 
     private func bottomButtonTapped() {

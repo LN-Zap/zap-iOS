@@ -13,7 +13,7 @@ import SwiftBTC
 import SwiftLnd
 
 public extension Notification.Name {
-    public static let receivedTransaction = Notification.Name(rawValue: "receivedTransaction")
+    static let receivedTransaction = Notification.Name(rawValue: "receivedTransaction")
 }
 
 public final class LightningService: NSObject {
@@ -29,7 +29,7 @@ public final class LightningService: NSObject {
     public let transactionService: TransactionService
     public let historyService: HistoryService
 
-    var persistence: Persistence
+    let listUpdater: [ListUpdater]
 
     public var permissions: Permissions {
         switch connection {
@@ -41,22 +41,26 @@ public final class LightningService: NSObject {
     }
 
     public convenience init?(connection: LightningConnection, walletId: WalletId) {
-        let persistance = SQLitePersistence(walletId: walletId)
-        self.init(api: connection.api, walletId: walletId, persistence: persistance, connection: connection)
+        self.init(api: connection.api, walletId: walletId, connection: connection)
     }
 
-    init(api: LightningApiProtocol, walletId: WalletId, persistence: Persistence, connection: LightningConnection) {
+    init(api: LightningApiProtocol, walletId: WalletId, connection: LightningConnection) {
         self.api = api
         self.walletId = walletId
-        self.persistence = persistence
         self.connection = connection
 
-        balanceService = BalanceService(api: api)
-        channelService = ChannelService(api: api, persistence: persistence)
-        historyService = HistoryService(api: api, channelService: channelService, persistence: persistence)
-        transactionService = TransactionService(api: api, balanceService: balanceService, channelService: channelService, historyService: historyService, persistence: persistence)
+        let invoiceListUpdater = InvoiceListUpdater(api: api)
+        let transactionListUpdater = TransactionListUpdater(api: api)
+        let paymentListUpdater = PaymentListUpdater(api: api)
+        let channelListUpdater = ChannelListUpdater(api: api)
+        listUpdater = [invoiceListUpdater, transactionListUpdater, paymentListUpdater, channelListUpdater]
 
-        infoService = InfoService(api: api, channelService: channelService, balanceService: balanceService, historyService: historyService)
+        balanceService = BalanceService(api: api)
+        channelService = ChannelService(api: api, channelListUpdater: channelListUpdater)
+        historyService = HistoryService(invoiceListUpdater: invoiceListUpdater, transactionListUpdater: transactionListUpdater, paymentListUpdater: paymentListUpdater, channelListUpdater: channelListUpdater)
+        transactionService = TransactionService(api: api, balanceService: balanceService, paymentListUpdater: paymentListUpdater)
+
+        infoService = InfoService(api: api, balanceService: balanceService)
     }
 
     public func start() {
@@ -67,27 +71,7 @@ public final class LightningService: NSObject {
         }
         #endif
 
-        api.subscribeChannelGraph { _ in }
-
-        api.subscribeInvoices { [weak self] in
-            guard let invoice = $0.value else { return }
-            Logger.info("new invoice: \(invoice)")
-
-            self?.historyService.addedInvoice(invoice)
-
-            if invoice.state == .settled {
-                NotificationCenter.default.post(name: .receivedTransaction, object: nil, userInfo: [LightningService.transactionNotificationName: invoice])
-            }
-        }
-
-        api.subscribeTransactions { [weak self] in
-            guard let transaction = $0.value else { return }
-            Logger.info("new transaction: \(transaction)")
-            self?.historyService.addedTransaction(transaction)
-            self?.balanceService.update()
-
-            NotificationCenter.default.post(name: .receivedTransaction, object: nil, userInfo: [LightningService.transactionNotificationName: transaction])
-        }
+        listUpdater.forEach { $0.update() }
     }
 
     public func stop() {

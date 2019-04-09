@@ -66,8 +66,14 @@ internal enum L10n {
   }
 
   internal enum Link {
+    /// https://github.com/LN-Zap/zap-iOS/issues
+    internal static let bugReport = L10n.tr("Localizable", "link.bug_report")
     /// https://ln-zap.github.io/zap-tutorials/
     internal static let help = L10n.tr("Localizable", "link.help")
+    /// https://github.com/lightningnetwork/lnd/releases
+    internal static let lndReleases = L10n.tr("Localizable", "link.lnd_releases")
+    /// http://zap.jackmallers.com/privacy
+    internal static let privacy = L10n.tr("Localizable", "link.privacy")
     internal enum Help {
       /// https://ln-zap.github.io/zap-tutorials/iOS-remote-node-setup
       internal static let zapconnect = L10n.tr("Localizable", "link.help.zapconnect")
@@ -144,6 +150,14 @@ internal enum L10n {
         /// Force Close Channel
         internal static let title = L10n.tr("Localizable", "scene.channels.force_close.title")
       }
+      internal enum Header {
+        /// Total can receive:
+        internal static let totalCanReceive = L10n.tr("Localizable", "scene.channels.header.total_can_receive")
+        /// Total can send:
+        internal static let totalCanSend = L10n.tr("Localizable", "scene.channels.header.total_can_send")
+        /// Total pending:
+        internal static let totalPending = L10n.tr("Localizable", "scene.channels.header.total_pending")
+      }
     }
     internal enum ConfirmMnemonic {
       /// Enter your key.
@@ -204,12 +218,10 @@ internal enum L10n {
       internal static let title = L10n.tr("Localizable", "scene.create_wallet.title")
     }
     internal enum Filter {
-      /// Internal Transactions
-      internal static let displayUnknownTransactionType = L10n.tr("Localizable", "scene.filter.display_unknown_transaction_type")
+      /// Expired Invoices
+      internal static let displayExpiredInvoices = L10n.tr("Localizable", "scene.filter.display_expired_invoices")
       /// Channel Events
       internal static let displayChannelEvents = L10n.tr("Localizable", "scene.filter.displayChannelEvents")
-      /// Failed Payments
-      internal static let displayFailedPaymentEvents = L10n.tr("Localizable", "scene.filter.displayFailedPaymentEvents")
       /// Created Invoices
       internal static let displayLightningInvoices = L10n.tr("Localizable", "scene.filter.displayLightningInvoices")
       /// Lightning Payments
@@ -219,8 +231,6 @@ internal enum L10n {
       /// Filter
       internal static let title = L10n.tr("Localizable", "scene.filter.title")
       internal enum SectionHeader {
-        /// Advanced
-        internal static let advanced = L10n.tr("Localizable", "scene.filter.section_header.advanced")
         /// Transaction Types
         internal static let transactionTypes = L10n.tr("Localizable", "scene.filter.section_header.transaction_types")
       }
@@ -298,10 +308,24 @@ internal enum L10n {
     internal enum OpenChannel {
       /// Open Channel
       internal static let addButton = L10n.tr("Localizable", "scene.open_channel.add_button")
-      /// Channel:
+      /// Node:
       internal static let channelUriLabel = L10n.tr("Localizable", "scene.open_channel.channel_uri_label")
       /// Open Channel
       internal static let title = L10n.tr("Localizable", "scene.open_channel.title")
+      internal enum Subtitle {
+        /// On chain balance: %@
+        internal static func balance(_ p1: String) -> String {
+          return L10n.tr("Localizable", "scene.open_channel.subtitle.balance", p1)
+        }
+        /// Maximum channel size: %@
+        internal static func maximumSize(_ p1: String) -> String {
+          return L10n.tr("Localizable", "scene.open_channel.subtitle.maximum_size", p1)
+        }
+        /// Minimum channel size: %@
+        internal static func minimumSize(_ p1: String) -> String {
+          return L10n.tr("Localizable", "scene.open_channel.subtitle.minimum_size", p1)
+        }
+      }
     }
     internal enum Pin {
       internal enum Biometric {
@@ -348,6 +372,12 @@ internal enum L10n {
       internal static let orSeparatorLabel = L10n.tr("Localizable", "scene.request.or_separator_label")
       /// Receive
       internal static let title = L10n.tr("Localizable", "scene.request.title")
+      internal enum Subtitle {
+        /// Can receive: %@
+        internal static func lightning(_ p1: String) -> String {
+          return L10n.tr("Localizable", "scene.request.subtitle.lightning", p1)
+        }
+      }
     }
     internal enum SelectWalletConnection {
       /// Add Wallet
@@ -394,6 +424,8 @@ internal enum L10n {
       internal static let sendButton = L10n.tr("Localizable", "scene.send.send_button")
       /// Sending...
       internal static let sending = L10n.tr("Localizable", "scene.send.sending")
+      /// Payment Successful
+      internal static let successLabel = L10n.tr("Localizable", "scene.send.success_label")
       /// Send
       internal static let title = L10n.tr("Localizable", "scene.send.title")
       internal enum Lightning {
@@ -403,6 +435,16 @@ internal enum L10n {
       internal enum OnChain {
         /// Send On Chain
         internal static let title = L10n.tr("Localizable", "scene.send.on_chain.title")
+      }
+      internal enum Subtitle {
+        /// Can send: %@
+        internal static func lightningCanSendBalance(_ p1: String) -> String {
+          return L10n.tr("Localizable", "scene.send.subtitle.lightning_can_send_balance", p1)
+        }
+        /// On chain balance: %@
+        internal static func onChainBalance(_ p1: String) -> String {
+          return L10n.tr("Localizable", "scene.send.subtitle.on_chain_balance", p1)
+        }
       }
     }
     internal enum Settings {
@@ -431,6 +473,10 @@ internal enum L10n {
         internal static let removeRemoteNode = L10n.tr("Localizable", "scene.settings.item.remove_remote_node")
         /// Report an Issue
         internal static let reportIssue = L10n.tr("Localizable", "scene.settings.item.report_issue")
+        /// Your lnd is outdated (%@). Zap iOS works best with lnd version %@ or above.
+        internal static func versionWarning(_ p1: String, _ p2: String) -> String {
+          return L10n.tr("Localizable", "scene.settings.item.version_warning", p1, p2)
+        }
         internal enum OnChainRequestAddress {
           /// Bech32
           internal static let bech32 = L10n.tr("Localizable", "scene.settings.item.on_chain_request_address.bech32")
@@ -443,6 +489,8 @@ internal enum L10n {
       internal enum Section {
         /// Wallet
         internal static let wallet = L10n.tr("Localizable", "scene.settings.section.wallet")
+        /// Warning
+        internal static let warning = L10n.tr("Localizable", "scene.settings.section.warning")
       }
     }
     internal enum SetupPin {
@@ -532,6 +580,10 @@ internal enum L10n {
     internal enum Wallet {
       /// Wallet
       internal static let title = L10n.tr("Localizable", "scene.wallet.title")
+      internal enum Warning {
+        /// outdated lnd
+        internal static let lndOutdated = L10n.tr("Localizable", "scene.wallet.warning.lnd_outdated")
+      }
     }
     internal enum WalletList {
       /// Wallets

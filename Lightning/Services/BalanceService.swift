@@ -25,11 +25,11 @@ public final class BalanceService {
 
     func update() {
         api.walletBalance { [onChain] result in
-            onChain.value = result.value ?? 0
+            onChain.value = (try? result.get()) ?? 0
         }
 
         api.channelBalance { [lightning] result in
-            lightning.value = result.value ?? 0
+            lightning.value = (try? result.get()) ?? 0
         }
     }
 }

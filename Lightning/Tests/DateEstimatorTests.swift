@@ -6,11 +6,12 @@
 //
 
 @testable import Lightning
+@testable import SwiftLnd
 import XCTest
 
 class DateEstimatorTests: XCTestCase {
-    private func transactionWith(date: Date, blockHeight: Int) -> TransactionEvent {
-        return TransactionEvent(txHash: "", memo: "", amount: 0, fee: 0, date: date, destinationAddresses: [], blockHeight: blockHeight, type: .unknown)
+    private func transactionWith(date: Date, blockHeight: Int) -> Transaction {
+        return Transaction(id: "", amount: 0, date: date, fees: 0, destinationAddresses: [], blockHeight: blockHeight)
     }
 
     func testEstimation() {
@@ -37,7 +38,7 @@ class DateEstimatorTests: XCTestCase {
     }
 
     func testEmptyTransactions() {
-        let transactions = [TransactionEvent]()
+        let transactions = [Transaction]()
         let dateEstimator = DateEstimator(transactions: transactions)
 
         XCTAssertEqual(dateEstimator.estimatedDate(forBlockHeight: 1), nil)

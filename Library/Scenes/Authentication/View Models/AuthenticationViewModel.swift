@@ -38,7 +38,9 @@ final class AuthenticationViewModel: NSObject {
     override init() {
         super.init()
 
-        if timeLockStore.isLocked {
+        if Environment.skipPinFlow {
+            state = .unlocked
+        } else if timeLockStore.isLocked {
             state = .timeLocked
         } else if !PinStore.didSetupPin {
             state = .unlocked

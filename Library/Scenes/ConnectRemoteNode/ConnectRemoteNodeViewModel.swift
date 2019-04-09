@@ -37,7 +37,7 @@ final class ConnectRemoteNodeViewModel: NSObject {
     }
 
     init(rpcCredentials: RPCCredentials?) {
-        dataSource = MutableObservableArray2D()
+        dataSource = MutableObservableArray2D(Array2D())
 
         super.init()
 
@@ -49,18 +49,18 @@ final class ConnectRemoteNodeViewModel: NSObject {
         var sections = Array2D<String?, ConnectRemoteNodeViewModel.CellType>()
 
         if let configuration = remoteNodeConfiguration {
-            sections.append(certificateSection(for: configuration))
+            sections.appendSection(certificateSection(for: configuration))
         } else {
-            sections.append(to2DArraySection(section: L10n.Scene.ConnectRemoteNode.yourNodeTitle, items: [.emptyState]))
+            sections.appendSection(Array2D.Section(metadata: L10n.Scene.ConnectRemoteNode.yourNodeTitle, items: [.emptyState]))
         }
 
-        sections.append(to2DArraySection(section: nil, items: [.scan, .paste]))
-        sections.append(to2DArraySection(section: nil, items: [.help]))
+        sections.appendSection(Array2D<String?, ConnectRemoteNodeViewModel.CellType>.Section(metadata: nil, items: [.scan, .paste]))
+        sections.appendSection(Array2D<String?, ConnectRemoteNodeViewModel.CellType>.Section(metadata: nil, items: [.help]))
 
-        dataSource.replace(with: sections, performDiff: true, areValuesEqual: Array2DElement.areElementsEqual)
+        dataSource.replace(with: sections, performDiff: true, areEqual: Array2D.areEqual)
     }
 
-    private func certificateSection(for qrCode: RPCCredentials) -> TreeNode<Array2DElement<String?, CellType>> {
+    private func certificateSection(for qrCode: RPCCredentials) -> Array2D<String?, CellType>.Section {
         var items: [ConnectRemoteNodeViewModel.CellType] = [
             .address(qrCode.host.absoluteString),
             .connect
@@ -74,10 +74,10 @@ final class ConnectRemoteNodeViewModel: NSObject {
             items.insert(.certificate(qrCode.macaroon.hexadecimalString), at: 0)
         }
 
-        return to2DArraySection(section: L10n.Scene.ConnectRemoteNode.yourNodeTitle, items: items)
+        return Array2D.Section(metadata: L10n.Scene.ConnectRemoteNode.yourNodeTitle, items: items)
     }
 
-    func pasteCertificates(_ string: String, completion: @escaping (SwiftLnd.Result<Success, RPCConnectQRCodeError>) -> Void) {
+    func pasteCertificates(_ string: String, completion: @escaping (Swift.Result<Success, RPCConnectQRCodeError>) -> Void) {
         RPCConnectQRCode.configuration(for: string) { [weak self] result in
             DispatchQueue.main.async {
                 switch result {
@@ -91,7 +91,7 @@ final class ConnectRemoteNodeViewModel: NSObject {
         }
     }
 
-    func connect(completion: @escaping (WalletConfiguration, SwiftLnd.Result<Success, LndApiError>) -> Void) {
+    func connect(completion: @escaping (WalletConfiguration, Swift.Result<Success, LndApiError>) -> Void) {
         guard let remoteNodeConfiguration = remoteNodeConfiguration else { return }
 
         testServer = LightningApiRpc(configuration: remoteNodeConfiguration)

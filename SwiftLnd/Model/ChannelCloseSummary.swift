@@ -33,6 +33,8 @@ public enum CloseType: String, Codable {
             self = .abandoned
         case .gpbUnrecognizedEnumeratorValue:
             self = .unknown
+        @unknown default:
+            self = .unknown
         }
     }
 }

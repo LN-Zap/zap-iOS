@@ -8,8 +8,10 @@
 import Foundation
 import Logger
 
-final class LocalLndConfiguration: NSObject {
+final class LocalLndConfiguration {
     var sections = [String: [(String, String)]]()
+
+    private init() {}
 
     static let standard: LocalLndConfiguration = {
         let configuration = LocalLndConfiguration()
@@ -31,7 +33,7 @@ final class LocalLndConfiguration: NSObject {
         return configuration
     }()
 
-    func set(_ section: String, key: String, value: String) {
+    private func set(_ section: String, key: String, value: String) {
         if sections[section] == nil {
             sections[section] = [(key, value)]
         } else {
@@ -39,7 +41,7 @@ final class LocalLndConfiguration: NSObject {
         }
     }
 
-    var string: String {
+    private var string: String {
         return sections.reduce("") {
             let lines = $1.1.reduce("") { $0 + "\($1.0)=\($1.1)\n" }
             return $0 + "[\($1.0)]\n\(lines)\n"

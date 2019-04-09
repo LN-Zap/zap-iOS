@@ -11,14 +11,10 @@ import Lightning
 import ReactiveKit
 import SwiftLnd
 
-protocol HistoryBadgeUpdaterDelegate: class {
-    func updateBadgeValue(_ value: Int)
-}
-
 final class HistoryViewModel: NSObject {
     private let historyService: HistoryService
 
-    weak var delegate: HistoryBadgeUpdaterDelegate?
+    weak var delegate: BadgeUpdaterDelegate?
 
     let dataSource: MutableObservableArray2D<String, HistoryEventType>
 
@@ -46,13 +42,15 @@ final class HistoryViewModel: NSObject {
 
     init(historyService: HistoryService) {
         self.historyService = historyService
-        dataSource = MutableObservableArray2D()
+        dataSource = MutableObservableArray2D(Array2D())
 
         super.init()
 
-        updateEvents()
-
-        NotificationCenter.default.addObserver(self, selector: #selector(updateEvents), name: .historyDidChange, object: nil)
+        historyService.events
+            .observeNext { [weak self] _ in
+                self?.updateEvents()
+            }
+            .dispose(in: reactive.bag)
     }
 
     func isEventNew(at indexPath: IndexPath) -> Bool {
@@ -61,20 +59,20 @@ final class HistoryViewModel: NSObject {
     }
 
     func historyWillAppear() {
-        delegate?.updateBadgeValue(0)
+        delegate?.setBadge(0, for: .history)
         currentLastSeenDate = lastSeenDate
         lastSeenDate = Date()
     }
 
-    @objc private func updateEvents() {
-        let events = historyService.events
+    private func updateEvents() {
+        let events = historyService.events.array
         let filteredEvents = filterEvents(events, searchString: searchString, filterSettings: filterSettings)
         let sectionedCellTypes = bondSections(transactionViewModels: filteredEvents)
-        dataSource.replace(with: Array2D<String, HistoryEventType>(sectionedCellTypes), performDiff: true, areValuesEqual: Array2DElement.areElementsEqual)
+        dataSource.replace(with: Array2D<String, HistoryEventType>(sections: sectionedCellTypes), performDiff: true, areEqual: Array2D.areEqual)
         updateTabBarBadge()
     }
 
-    func setupTabBarBadge(delegate: HistoryBadgeUpdaterDelegate) {
+    func setupTabBarBadge(delegate: BadgeUpdaterDelegate) {
         self.delegate = delegate
         updateTabBarBadge()
     }
@@ -85,7 +83,7 @@ final class HistoryViewModel: NSObject {
         var unseenEventCount = 0
         sectionLoop: for dayNode in dataSource.collection.children {
             for historyEventNode in dayNode.children {
-                guard let item = historyEventNode.value.item else {
+                guard let item = historyEventNode.item else {
                     continue
                 }
                 if item.date > lastSeenDate {
@@ -96,7 +94,7 @@ final class HistoryViewModel: NSObject {
             }
         }
 
-        delegate.updateBadgeValue(unseenEventCount)
+        delegate.setBadge(unseenEventCount, for: .history)
     }
 
     private func filterEvents(_ events: [HistoryEventType], searchString: String?, filterSettings: FilterSettings) -> [HistoryEventType] {
@@ -115,7 +113,7 @@ final class HistoryViewModel: NSObject {
             .sorted { $0.0 > $1.0 }
     }
 
-    private func bondSections(transactionViewModels: [HistoryEventType]) -> [TreeNode<Array2DElement<String, HistoryEventType>>] {
+    private func bondSections(transactionViewModels: [HistoryEventType]) -> [Array2D<String, HistoryEventType>.Section] {
         let sortedSections = self.sortedSections(transactionViewModels: transactionViewModels)
 
         return sortedSections.compactMap {
@@ -125,7 +123,7 @@ final class HistoryViewModel: NSObject {
 
             let dateString = date.localized
 
-            return to2DArraySection(section: dateString, items: sortedItems)
+            return Array2D<String, HistoryEventType>.Section(metadata: dateString, items: sortedItems)
         }
     }
 }
@@ -133,14 +131,12 @@ final class HistoryViewModel: NSObject {
 extension HistoryEventType {
     func matchesFilterSettings(_ filterSettings: FilterSettings) -> Bool {
         switch self {
-        case .transactionEvent(let event):
-            return filterSettings.transactionEvents && (event.type != .unknown || filterSettings.unknownTransactionType)
+        case .transactionEvent:
+            return filterSettings.transactionEvents
         case .channelEvent:
             return filterSettings.channelEvents
-        case .createInvoiceEvent:
-            return filterSettings.createInvoiceEvents
-        case .failedPaymentEvent:
-            return filterSettings.failedPaymentEvents
+        case .createInvoiceEvent(let event):
+            return filterSettings.createInvoiceEvents && (filterSettings.expiredInvoiceEvents || !event.isExpired || event.state == .settled)
         case .lightningPaymentEvent:
             return filterSettings.lightningPaymentEvents
         }
@@ -154,15 +150,13 @@ extension HistoryEventType {
 
         switch self {
         case .transactionEvent(let event):
-            return matches(content: [event.memo, event.txHash], searchString: searchString)
+            return matches(content: [event.txHash], searchString: searchString)
         case .channelEvent(let event):
-            return matches(content: [event.channelEvent.node.pubKey, event.channelEvent.node.alias], searchString: searchString)
+            return matches(content: [event.node.pubKey, event.node.alias], searchString: searchString)
         case .createInvoiceEvent(let event):
             return matches(content: [event.memo], searchString: searchString)
-        case .failedPaymentEvent(let event):
-            return matches(content: [event.memo], searchString: searchString)
         case .lightningPaymentEvent(let event):
-            return matches(content: [event.memo], searchString: searchString)
+            return matches(content: [event.node.pubKey, event.node.alias], searchString: searchString)
         }
     }
 

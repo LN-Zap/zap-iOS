@@ -13,16 +13,12 @@ import SwiftLnd
 public final class TransactionService {
     private let api: LightningApiProtocol
     private let balanceService: BalanceService
-    private let channelService: ChannelService
-    private let historyService: HistoryService
-    private let persistence: Persistence
+    private let paymentListUpdater: PaymentListUpdater
 
-    init(api: LightningApiProtocol, balanceService: BalanceService, channelService: ChannelService, historyService: HistoryService, persistence: Persistence) {
+    init(api: LightningApiProtocol, balanceService: BalanceService, paymentListUpdater: PaymentListUpdater) {
         self.api = api
         self.balanceService = balanceService
-        self.channelService = channelService
-        self.historyService = historyService
-        self.persistence = persistence
+        self.paymentListUpdater = paymentListUpdater
     }
 
     public func addInvoice(amount: Satoshi, memo: String?, completion: @escaping (Result<String, LndApiError>) -> Void) {
@@ -30,10 +26,7 @@ public final class TransactionService {
     }
 
     public func newAddress(with type: OnChainRequestAddressType, completion: @escaping (Result<BitcoinAddress, LndApiError>) -> Void) {
-        api.newAddress(type: type) { [persistence] result in
-            if let address = result.value {
-                try? ReceivingAddressTable(address: address).insert(database: persistence.connection())
-            }
+        api.newAddress(type: type) { result in
             completion(result)
         }
     }
@@ -44,7 +37,7 @@ public final class TransactionService {
 
     public func upperBoundLightningFees(for paymentRequest: PaymentRequest, amount: Satoshi, completion: @escaping (Result<(amount: Satoshi, fee: Satoshi?), LndApiError>) -> Void) {
         api.routes(destination: paymentRequest.destination, amount: amount) { result in
-            let totalFees = result.value?
+            let totalFees = (try? result.get())?
                 .max(by: { $0.totalFees < $1.totalFees })?
                 .totalFees
             completion(.success((amount: amount, fee: totalFees)))
@@ -52,33 +45,19 @@ public final class TransactionService {
     }
 
     public func sendPayment(_ paymentRequest: PaymentRequest, amount: Satoshi, completion: @escaping (Result<Success, LndApiError>) -> Void) {
-        api.sendPayment(paymentRequest, amount: amount) { [weak self] in
-            switch $0 {
-            case .success(let payment):
-                self?.balanceService.update()
-                self?.channelService.update()
-                self?.historyService.addPaymentEvent(payment: payment, memo: paymentRequest.memo)
-            case .failure:
-                self?.historyService.addFailedPaymentEvent(paymentRequest: paymentRequest, amount: amount)
+        api.sendPayment(paymentRequest, amount: amount) { [balanceService, paymentListUpdater] in
+            if case .success(let payment) = $0 {
+                balanceService.update()
+                paymentListUpdater.add(payment: payment)
             }
-
             completion($0.map { _ in Success() })
         }
     }
 
     public func sendCoins(bitcoinURI: BitcoinURI, amount: Satoshi, completion: @escaping (Result<Success, LndApiError>) -> Void) {
         let destinationAddress = bitcoinURI.bitcoinAddress
-        api.sendCoins(address: destinationAddress, amount: amount) { [historyService] in
-            if case .success(let txHash) = $0 {
-                let transactionEvent = TransactionEvent(txHash: txHash, bitcoinURI: bitcoinURI, amount: -amount)
-                historyService.updateTransactionEventMetadata(transactionEvent: transactionEvent)
-            }
+        api.sendCoins(address: destinationAddress, amount: amount) { //[historyService] in
             completion($0.map { _ in Success() })
         }
     }
-}
-
-struct LightningPayment {
-    let paymentRequest: PaymentRequest
-    let routes: [Route]
 }

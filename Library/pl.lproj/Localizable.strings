@@ -69,8 +69,12 @@
 "scene.request.lightning_header_title" = "Żądanie płatności LN";
 "scene.request.on_chain_header_title" = "Żądanie płatności blokchain";
 "scene.request.next_button_title" = "Dalej";
+"scene.request.subtitle.lightning" = "Can receive: %@";
 
 "scene.channels.title" = "Kanały";
+"scene.channels.header.total_can_send" = "Total can send:";
+"scene.channels.header.total_can_receive" = "Total can receive:";
+"scene.channels.header.total_pending" = "Total pending:";
 "scene.channels.close.title" = "Zamknij kanał";
 "scene.channels.close.message" = "Czy naprawdę chcesz zamknąć kanał z nodem %@?";
 "scene.channels.force_close.title" = "Wymuś Zamknięcie Kanału";
@@ -81,8 +85,11 @@
 "scene.channels.close_success.toast" = "Kanał jest zamykany.";
 
 "scene.open_channel.title" = "Otwórz kanał";
-"scene.open_channel.channel_uri_label" = "Kanał:";
+"scene.open_channel.channel_uri_label" = "Node:";
 "scene.open_channel.add_button" = "Otwórz Kanał";
+"scene.open_channel.subtitle.minimum_size" = "Minimum channel size: %@";
+"scene.open_channel.subtitle.maximum_size" = "Maximum channel size: %@";
+"scene.open_channel.subtitle.balance" = "On chain balance: %@";
 
 "scene.pin.biometric.fallback.title" = "Użyj kod dostępu";
 "scene.pin.biometric.reason" = "To access the secure data";

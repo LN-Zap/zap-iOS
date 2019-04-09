@@ -8,6 +8,10 @@ target 'Zap' do
     pod 'SwiftBTC', :path => './SwiftBTC'
 end
 
+target 'SnapshotUITests' do
+    pod 'SimulatorStatusMagic', :configurations => ['Debug', 'DebugRemote']
+end
+
 abstract_target 'RPC' do
     pod 'LndRpc', :path => '.'
     pod 'SwiftBTC', :path => './SwiftBTC'
@@ -30,7 +34,6 @@ abstract_target 'RPC' do
 
     target 'Lightning' do
         pod 'Bond'
-        pod 'SQLite.swift', '~> 0.11.5'
         
         target 'LightningTests' do
             inherit! :search_paths

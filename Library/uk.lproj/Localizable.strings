@@ -69,8 +69,12 @@
 "scene.request.lightning_header_title" = "Lightning Payment Request";
 "scene.request.on_chain_header_title" = "On Chain Payment Request";
 "scene.request.next_button_title" = "Next";
+"scene.request.subtitle.lightning" = "Can receive: %@";
 
 "scene.channels.title" = "Канали";
+"scene.channels.header.total_can_send" = "Total can send:";
+"scene.channels.header.total_can_receive" = "Total can receive:";
+"scene.channels.header.total_pending" = "Total pending:";
 "scene.channels.close.title" = "Канал закритий";
 "scene.channels.close.message" = "Do you really want to close the channel with node %@?";
 "scene.channels.force_close.title" = "Примусове закриття каналу";
@@ -81,8 +85,11 @@
 "scene.channels.close_success.toast" = "Channel is closing.";
 
 "scene.open_channel.title" = "Відкрити канал";
-"scene.open_channel.channel_uri_label" = "Channel:";
+"scene.open_channel.channel_uri_label" = "Node:";
 "scene.open_channel.add_button" = "Open Channel";
+"scene.open_channel.subtitle.minimum_size" = "Minimum channel size: %@";
+"scene.open_channel.subtitle.maximum_size" = "Maximum channel size: %@";
+"scene.open_channel.subtitle.balance" = "On chain balance: %@";
 
 "scene.pin.biometric.fallback.title" = "Use Passcode";
 "scene.pin.biometric.reason" = "To access the secure data";

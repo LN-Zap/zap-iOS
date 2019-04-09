@@ -31,7 +31,7 @@ final class MnemonicViewModel {
         walletService = WalletService(connection: configuration.connection)
 
         walletService.generateSeed { [weak self] result in
-            guard let mnemonic = result.value else { return }
+            guard let mnemonic = try? result.get() else { return }
             self?.mnemonic = mnemonic
         }
     }

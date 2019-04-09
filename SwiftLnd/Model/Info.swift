@@ -18,7 +18,7 @@ public struct Info {
     public let activeChannelCount: Int
     public let bestHeaderDate: Date
     public let uris: [URL]
-    public let version: String
+    public let version: Version?
 }
 
 extension Info {
@@ -43,6 +43,6 @@ extension Info {
             guard let string = $0 as? String else { return nil }
             return URL(string: string)
         }
-        version = getInfoResponse.version
+        version = Version(string: getInfoResponse.version)
     }
 }

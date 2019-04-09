@@ -27,7 +27,7 @@ final class ExchangeUpdaterJob {
     }
 
     func run() {
-        DispatchQueue.global(qos: .background).async {
+            DispatchQueue.global(qos: .background).async {
             let apiCallGroup = DispatchGroup()
             var blockchaininfo: [FiatCurrency] = []
             var bitcoinaverage: [FiatCurrency] = []

@@ -9,10 +9,6 @@ import Lightning
 import SwiftBTC
 import UIKit
 
-protocol HistoryCellDelegate: class {
-    func resendFailedPayment(_ failedPaymentEvent: FailedPaymentEvent)
-}
-
 final class HistoryCell: BondTableViewCell {
     enum NotificationType {
         case error
@@ -33,7 +29,6 @@ final class HistoryCell: BondTableViewCell {
     @IBOutlet private weak var notificationLabel: PaddingLabel!
     @IBOutlet private var notificationTopConstraint: NSLayoutConstraint!
 
-    private weak var delegate: HistoryCellDelegate?
     private var containerBackgroundColor = UIColor.Zap.seaBlue
 
     func addNotificationLabel(type: NotificationType) {
@@ -125,11 +120,7 @@ final class HistoryCell: BondTableViewCell {
         let title = transactionEvent.amount < 0 ? L10n.Scene.History.Cell.transactionSent : L10n.Scene.History.Cell.transactionReceived
         setTitle(title, date: transactionEvent.date)
 
-        let description = transactionEvent.memo ?? transactionEvent.destinationAddresses.first?.string ?? L10n.Transaction.noDestinationAddress
-
-        if transactionEvent.type == .unknown {
-            containerBackgroundColor = UIColor.Zap.invisibleGray
-        }
+        let description = transactionEvent.destinationAddresses.first?.string ?? L10n.Transaction.noDestinationAddress
 
         stackView.addArrangedElement(.horizontalStackView(compressionResistant: .last, content: [
             .label(text: description, style: Style.Label.body),
@@ -137,9 +128,9 @@ final class HistoryCell: BondTableViewCell {
         ]))
     }
 
-    func setChannelEvent(_ wrapped: DateWrappedChannelEvent) {
+    func setChannelEvent(_ channelEvent: ChannelEvent) {
         let title: String
-        switch wrapped.channelEvent.type {
+        switch channelEvent.type {
         case .open:
             title = L10n.Scene.History.Cell.channelOpened
         case .cooperativeClose, .unknown:
@@ -156,17 +147,17 @@ final class HistoryCell: BondTableViewCell {
             title = L10n.Scene.History.Cell.channelAbandoned
         }
 
-        setTitle(title, date: wrapped.date)
+        setTitle(title, date: channelEvent.date)
 
         let amount: Satoshi?
-        if let newAmount = wrapped.channelEvent.fee, newAmount > 0 {
+        if let newAmount = channelEvent.fee, newAmount > 0 {
             amount = -newAmount
         } else {
             amount = nil
         }
 
         stackView.addArrangedElement(.horizontalStackView(compressionResistant: .last, content: [
-            .label(text: wrapped.channelEvent.node.alias ?? wrapped.channelEvent.node.pubKey, style: Style.Label.body),
+            .label(text: channelEvent.node.alias ?? channelEvent.node.pubKey, style: Style.Label.body),
             .customView(amountLabel(amount))
         ]))
     }
@@ -184,35 +175,17 @@ final class HistoryCell: BondTableViewCell {
         ]))
     }
 
-    func setCreateInvoiceEvent(_ createInvoiceEvent: CreateInvoiceEvent) {
-        setTitle(L10n.Scene.History.Cell.invoiceCreated, date: createInvoiceEvent.date)
-
-        stackView.addArrangedElement(.horizontalStackView(compressionResistant: .last, content: [
-            .label(text: createInvoiceEvent.memo ?? createInvoiceEvent.paymentRequest, style: Style.Label.body),
-            .customView(amountLabel(createInvoiceEvent.amount, completed: false))
-        ]))
-    }
-
-    func setFailedPaymentEvent(_ failedPaymentEvent: FailedPaymentEvent, delegate: HistoryCellDelegate) {
-        self.delegate = delegate
-
-        let title = L10n.Scene.History.Cell.paymentFailed(failedPaymentEvent.node.alias ?? failedPaymentEvent.node.pubKey)
-        setTitle(title, date: failedPaymentEvent.date)
-
-        let description = failedPaymentEvent.memo ?? failedPaymentEvent.paymentRequest
-
-        stackView.addArrangedElement(.horizontalStackView(compressionResistant: .last, content: [
-            .label(text: description, style: Style.Label.body),
-            .customView(amountLabel(-failedPaymentEvent.amount))
-        ]))
-
-        addNotificationLabel(type: .error)
-
-        if !failedPaymentEvent.isExpired {
-            stackView.addArrangedElement(.button(title: L10n.Scene.History.Cell.Action.tryAgain, style: Style.Button.custom(), completion: { [weak self] _ in
-                self?.delegate?.resendFailedPayment(failedPaymentEvent)
-            }))
+    func setInvoiceEvent(_ invoiceEvent: InvoiceEvent) {
+        if invoiceEvent.state == .settled {
+            setTitle(L10n.Scene.History.Cell.paymentReceived, date: invoiceEvent.date)
+        } else {
+            setTitle(L10n.Scene.History.Cell.invoiceCreated, date: invoiceEvent.date)
         }
+
+        stackView.addArrangedElement(.horizontalStackView(compressionResistant: .last, content: [
+            .label(text: invoiceEvent.memo ?? invoiceEvent.paymentRequest, style: Style.Label.body),
+            .customView(amountLabel(invoiceEvent.amount, completed: invoiceEvent.state == .settled))
+        ]))
     }
 
     func setLightningPaymentEvent(_ lightningPaymentEvent: LightningPaymentEvent) {
@@ -225,20 +198,21 @@ final class HistoryCell: BondTableViewCell {
 
         setTitle(title, date: lightningPaymentEvent.date)
 
-        let detailLabel = lightningPaymentEvent.node?.alias ?? lightningPaymentEvent.node?.pubKey ?? L10n.Scene.TransactionDetail.amountLabel
+        let detailLabel = lightningPaymentEvent.node.alias ?? lightningPaymentEvent.node.pubKey
         stackView.addArrangedElement(.horizontalStackView(compressionResistant: .last, content: [
             .label(text: detailLabel, style: Style.Label.body),
             .customView(amountLabel(lightningPaymentEvent.amount))
         ]))
 
-        if let memo = lightningPaymentEvent.memo, !memo.isEmpty {
-            stackView.addArrangedElement(.horizontalStackView(compressionResistant: .first, content: [
-                .label(text: "memo:", style: Style.Label.body),
-                .label(text: memo, style: Style.Label.body.with({
-                    $0.lineBreakMode = .byTruncatingTail
-                    $0.textColor = UIColor.Zap.gray
-                }))
-            ]))
-        }
+        // can be reused once the paymentReqest is included in the Payment
+//        if let memo = lightningPaymentEvent.memo, !memo.isEmpty {
+//            stackView.addArrangedElement(.horizontalStackView(compressionResistant: .first, content: [
+//                .label(text: "memo:", style: Style.Label.body),
+//                .label(text: memo, style: Style.Label.body.with({
+//                    $0.lineBreakMode = .byTruncatingTail
+//                    $0.textColor = UIColor.Zap.gray
+//                }))
+//            ]))
+//        }
     }
 }

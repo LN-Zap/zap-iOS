@@ -43,6 +43,7 @@ excluded:
   - SwiftLnd/Api/Generated
   - Library/Generated
   - vendor
+  - fastlane/SnapshotHelper.swift
 identifier_name:
   excluded:
     - id

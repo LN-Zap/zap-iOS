@@ -10,6 +10,12 @@ import Logger
 import SafariServices
 import UIKit
 
+enum Tab {
+    case wallet
+    case history
+    case settings
+}
+
 final class WalletCoordinator: NSObject, Coordinator {
     let rootViewController: RootViewController
 
@@ -100,15 +106,17 @@ final class WalletCoordinator: NSObject, Coordinator {
 
     private func presentMain() {
         let tabBarController = RootTabBarController(presentWalletList: presentWalletList)
+        let settingsViewController = self.settingsViewController()
 
-        tabBarController.viewControllers = [
-            walletViewController(),
-            historyViewController(),
-            settingsViewController()
+        tabBarController.tabs = [
+            (.wallet, walletViewController()),
+            (.history, historyViewController()),
+            (.settings, settingsViewController)
         ]
         presentViewController(tabBarController)
 
         historyViewModel.setupTabBarBadge(delegate: tabBarController)
+        (settingsViewController.viewControllers.first as? SettingsViewController)?.updateBadgeIfNeeded(badgeUpdaterDelegate: tabBarController)
 
         if let route = self.route {
             handle(route)
@@ -181,7 +189,7 @@ final class WalletCoordinator: NSObject, Coordinator {
                 group.enter()
                 strategy.viewControllerForAddress(address: invoice) { [weak self] result in
                     group.leave()
-                    guard let viewController = result.value else { return }
+                    guard let viewController = try? result.get() else { return }
                     self?.rootViewController.present(viewController, animated: true)
                 }
                 group.wait()
@@ -193,7 +201,7 @@ final class WalletCoordinator: NSObject, Coordinator {
     }
 
     func presentRequest() {
-        let viewModel = RequestViewModel(transactionService: lightningService.transactionService)
+        let viewModel = RequestViewModel(lightningService: lightningService)
         let viewController = RequestViewController(viewModel: viewModel)
         rootViewController.present(viewController, animated: true)
     }
@@ -205,8 +213,9 @@ final class WalletCoordinator: NSObject, Coordinator {
             else { return }
 
         UISelectionFeedbackGenerator().selectionChanged()
-        let viewController = WalletListViewController(walletConfigurationStore: walletConfigurationStore, disconnectWalletDelegate: disconnectWalletDelegate)
-        rootViewController.present(viewController, animated: true)
+        let viewController = WalletListViewController.instantiate(walletConfigurationStore: walletConfigurationStore, disconnectWalletDelegate: disconnectWalletDelegate)
+        let navigationController = ModalNavigationController(rootViewController: viewController, height: viewController.preferredHeight)
+        rootViewController.present(navigationController, animated: true)
     }
 
     private func presentAddChannel() {

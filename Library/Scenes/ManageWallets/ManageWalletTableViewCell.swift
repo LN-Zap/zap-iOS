@@ -10,6 +10,7 @@ import UIKit
 class ManageWalletTableViewCell: UITableViewCell {
     @IBOutlet private weak var aliasLabel: UILabel!
     @IBOutlet private weak var networkLabel: UILabel!
+    @IBOutlet private weak var hostLabel: UILabel!
     @IBOutlet private weak var remoteIndicatorLabel: UILabel!
 
     override func awakeFromNib() {
@@ -17,8 +18,9 @@ class ManageWalletTableViewCell: UITableViewCell {
 
         backgroundColor = UIColor.Zap.background
 
-        Style.Label.body.apply(to: [aliasLabel, remoteIndicatorLabel])
-        Style.Label.subHeadline.apply(to: networkLabel)
+        Style.Label.body.apply(to: aliasLabel, remoteIndicatorLabel)
+        Style.Label.subHeadline.apply(to: networkLabel, hostLabel)
+        hostLabel.textColor = UIColor.Zap.invisibleGray
     }
 
     func configure(_ walletConfiguration: WalletConfiguration) {
@@ -28,8 +30,13 @@ class ManageWalletTableViewCell: UITableViewCell {
         switch walletConfiguration.connection {
         case .local:
             remoteIndicatorLabel.text = "local"
-        case .remote:
+            hostLabel.isHidden = true
+        case .remote(let credentials):
             remoteIndicatorLabel.text = "remote"
+
+            let host = credentials.host.absoluteString.prefix { $0 != ":" }
+            hostLabel.isHidden = false
+            hostLabel.text = "(\(host))"
         }
     }
 }

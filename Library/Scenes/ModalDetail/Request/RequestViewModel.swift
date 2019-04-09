@@ -18,18 +18,28 @@ public enum Layer {
 
 public final class RequestViewModel {
     private let transactionService: TransactionService
+    private let channelService: ChannelService
     private var cachedOnChainAddress: BitcoinAddress?
 
     public var requestMethod = Layer.lightning
     public var memo: String?
     public var amount: Satoshi = 0
 
+    var maxRemoteBalance: Satoshi {
+//        var maxRemoteBalance: Satoshi = 0
+//        for channel in channelService.open.value where channel.remoteBalance > maxRemoteBalance {
+//            maxRemoteBalance = channel.remoteBalance
+//        }
+        return channelService.maxRemoteBalance
+    }
+
     public var trimmedMemo: String? {
         return memo?.trimmingCharacters(in: .whitespacesAndNewlines)
     }
 
-    init(transactionService: TransactionService) {
-        self.transactionService = transactionService
+    init(lightningService: LightningService) {
+        transactionService = lightningService.transactionService
+        channelService = lightningService.channelService
     }
 
     func create(completion: @escaping (Result<QRCodeDetailViewModel, LndApiError>) -> Void) {

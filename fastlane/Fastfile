@@ -35,7 +35,6 @@ end
 desc "Builds new Alpha Build with local lnd enabled and uploads it to Testflight."
 lane :local_lnd_alpha do
   pre_alpha
-  change_version(version: "0.2.0")
   upload_alpha(configuration: "Debug")
 end
 
@@ -45,7 +44,11 @@ private_lane :pre_alpha do
 end
 
 private_lane :upload_alpha do |options|
-  increment_build_number(build_number: latest_testflight_build_number(initial_build_number: 0) + 1)
+  increment_build_number(build_number:
+    latest_testflight_build_number(
+      initial_build_number: 0
+    ) + 1
+  )
 
   sync_code_signing(
     username: ENV['ITUNESCONNECT_USER'],
@@ -77,15 +80,50 @@ private_lane :upload_alpha do |options|
   sh("git reset --hard")
 end
 
-desc "Add a new UDID to developer portal and update adhoc provisioning profile."
-lane :udid do
-  device_name = prompt(text: "Device name: ")
-  udid = prompt(text: "UDID: ")
-  
-  register_device(
-    name: device_name,
-    udid: udid
+desc "Release"
+lane :release do
+  version = get_version_number(
+    xcodeproj: "Zap.xcodeproj",
+    target: "Zap"
   )
+
+  increment_build_number(build_number:
+    app_store_build_number(
+      live: false,
+      initial_build_number: 0,
+      version: version
+    ) + 1
+  )
+
+  sync_code_signing(
+    username: ENV['ITUNESCONNECT_USER'],
+    app_identifier: app_identifier,
+    type: "appstore"
+  )
+
+  build_ios_app(
+    workspace: "Zap.xcworkspace",
+    scheme: "Zap",
+    configuration: "Release",
+    output_directory: "./builds/appstore",
+    export_method: "app-store"
+  )
+
+  upload_to_app_store(
+    username: ENV['ITUNESCONNECT_USER'],
+    skip_metadata: true,
+    skip_screenshots: true
+  )
+
+  add_git_tag
+
+  slack(
+    message: "Just uploaded a new iOS verstion to the app store",
+    use_webhook_configured_username_and_icon: true,
+    default_payloads: []
+  )
+
+  sh("git reset --hard")
 end
 
 desc "Generate new app icon assets."
@@ -108,5 +146,28 @@ lane :tests do
     scheme: "Zap",
     slack_only_on_failure: true,
     code_coverage: true
+  )
+end
+
+lane :screenshots do
+  capture_ios_screenshots(
+    number_of_retries: 0,
+    stop_after_first_error: true
+  )
+end
+
+lane :upload_screenshots do
+  upload_to_app_store(
+    username: ENV['ITUNESCONNECT_USER'],
+    skip_binary_upload: true,
+    skip_metadata: true
+  )
+end
+
+lane :upload_metadata do
+  upload_to_app_store(
+    username: ENV['ITUNESCONNECT_USER'],
+    skip_binary_upload: true,
+    skip_screenshots: true
   )
 end

@@ -11,9 +11,8 @@ import Lightning
 struct FilterSettings: Equatable, Codable {
     var channelEvents: Bool
     var transactionEvents: Bool
-    var unknownTransactionType: Bool
     var createInvoiceEvents: Bool
-    var failedPaymentEvents: Bool
+    var expiredInvoiceEvents: Bool
     var lightningPaymentEvents: Bool
 }
 
@@ -23,9 +22,8 @@ extension FilterSettings {
     init() {
         channelEvents = true
         transactionEvents = true
-        unknownTransactionType = false
         createInvoiceEvents = true
-        failedPaymentEvents = true
+        expiredInvoiceEvents = false
         lightningPaymentEvents = true
     }
 
@@ -41,62 +39,47 @@ extension FilterSettings {
 enum FilterSetting: Localizable {
     case channelEvents
     case transactionEvents
-    case unknownTransactionType
     case createInvoiceEvents
-    case failedPaymentEvents
+    case expiredInvoiceEvents
     case lightningPaymentEvents
 
     var localized: String {
         switch self {
         case .transactionEvents:
             return L10n.Scene.Filter.displayOnChainTransactions
-        case .unknownTransactionType:
-            return L10n.Scene.Filter.displayUnknownTransactionType
         case .lightningPaymentEvents:
             return L10n.Scene.Filter.displayLightningPayments
         case .createInvoiceEvents:
             return L10n.Scene.Filter.displayLightningInvoices
-        case .failedPaymentEvents:
-            return L10n.Scene.Filter.displayFailedPaymentEvents
         case .channelEvents:
             return L10n.Scene.Filter.displayChannelEvents
+        case .expiredInvoiceEvents:
+            return L10n.Scene.Filter.displayExpiredInvoices
+        }
+    }
+
+    private var keyPath: WritableKeyPath<FilterSettings, Bool> {
+        switch self {
+        case .channelEvents:
+            return \.channelEvents
+        case .transactionEvents:
+            return \.transactionEvents
+        case .createInvoiceEvents:
+            return \.createInvoiceEvents
+        case .expiredInvoiceEvents:
+            return \.expiredInvoiceEvents
+        case .lightningPaymentEvents:
+            return \.lightningPaymentEvents
         }
     }
 
     func isActive(in filterSettings: FilterSettings) -> Bool {
-        switch self {
-        case .transactionEvents:
-            return filterSettings.transactionEvents
-        case .lightningPaymentEvents:
-            return filterSettings.lightningPaymentEvents
-        case .createInvoiceEvents:
-            return filterSettings.createInvoiceEvents
-        case .channelEvents:
-            return filterSettings.channelEvents
-        case .failedPaymentEvents:
-            return filterSettings.failedPaymentEvents
-        case .unknownTransactionType:
-            return filterSettings.unknownTransactionType
-        }
+        return filterSettings[keyPath: keyPath]
     }
 
     func setActive(_ isActive: Bool, in filterSettings: FilterSettings) -> FilterSettings {
         var filterSettings = filterSettings
-
-        switch self {
-        case .transactionEvents:
-            filterSettings.transactionEvents = isActive
-        case .lightningPaymentEvents:
-            filterSettings.lightningPaymentEvents = isActive
-        case .createInvoiceEvents:
-            filterSettings.createInvoiceEvents = isActive
-        case .channelEvents:
-            filterSettings.channelEvents = isActive
-        case .failedPaymentEvents:
-            filterSettings.failedPaymentEvents = isActive
-        case .unknownTransactionType:
-            filterSettings.unknownTransactionType = isActive
-        }
+        filterSettings[keyPath: keyPath] = isActive
         return filterSettings
     }
 }

@@ -15,8 +15,7 @@ public protocol ContainerViewController: class {
 }
 
 public extension ContainerViewController where Self: UIViewController {
-
-    public func setContainerContent(_ viewController: UIViewController) {
+    func setContainerContent(_ viewController: UIViewController) {
         if self.currentViewController == nil {
             self.setInitialViewController(viewController)
         } else {

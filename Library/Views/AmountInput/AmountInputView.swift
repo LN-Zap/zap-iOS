@@ -20,6 +20,7 @@ public final class AmountInputView: UIControl {
     @IBOutlet private weak var topViewBackground: UIView!
     @IBOutlet private weak var bottomViewBackground: UIView!
     @IBOutlet private weak var amountTextField: UITextField!
+    @IBOutlet private weak var amountSubtitleLabel: UILabel!
     @IBOutlet private weak var swapCurrencyButton: UIButton!
     @IBOutlet private weak var keyPadView: KeyPadView! {
         didSet {
@@ -31,11 +32,8 @@ public final class AmountInputView: UIControl {
 
     public weak var delegate: AmountInputViewDelegate?
 
-    var validRange: ClosedRange<Satoshi>?
-
     private(set) var satoshis: Satoshi = 0 {
         didSet {
-            updateValidityIndicator()
             sendActions(for: .valueChanged)
         }
     }
@@ -63,6 +61,17 @@ public final class AmountInputView: UIControl {
         }
     }
 
+    var subtitleText: String? {
+        didSet {
+            amountSubtitleLabel.text = subtitleText
+        }
+    }
+    var subtitleTextColor: UIColor = UIColor.white {
+        didSet {
+            amountSubtitleLabel.textColor = subtitleTextColor
+        }
+    }
+
     override public init(frame: CGRect) {
         super.init(frame: frame)
         setup()
@@ -84,6 +93,8 @@ public final class AmountInputView: UIControl {
         amountTextField.placeholder = L10n.View.AmountInput.placeholder
         amountTextField.inputView = UIView()
         amountTextField.delegate = self
+
+        amountSubtitleLabel.text = nil
 
         Style.Button.custom(color: UIColor.Zap.white, fontSize: 36).apply(to: swapCurrencyButton)
 
@@ -124,13 +135,6 @@ public final class AmountInputView: UIControl {
         self.satoshis = Settings.shared.primaryCurrency.value.satoshis(from: output) ?? 0
 
         return true
-    }
-
-    private func updateValidityIndicator() {
-        if amountTextField.text != nil,
-            let range = validRange {
-            amountTextField.textColor = range.contains(satoshis) ? textColor : UIColor.Zap.superRed
-        }
     }
 
     @IBAction private func didSelectTextField(_ sender: Any) {

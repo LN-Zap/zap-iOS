@@ -69,8 +69,12 @@
 "scene.request.lightning_header_title" = "Lightning betalings anmodning";
 "scene.request.on_chain_header_title" = "On Chain betalings anmodning";
 "scene.request.next_button_title" = "Næste";
+"scene.request.subtitle.lightning" = "Can receive: %@";
 
 "scene.channels.title" = "Kanaler";
+"scene.channels.header.total_can_send" = "Total can send:";
+"scene.channels.header.total_can_receive" = "Total can receive:";
+"scene.channels.header.total_pending" = "Total pending:";
 "scene.channels.close.title" = "Luk kanal";
 "scene.channels.close.message" = "Vil du lukke kanalen med node %@?";
 "scene.channels.force_close.title" = "Tvangsluk kanal";
@@ -81,8 +85,11 @@
 "scene.channels.close_success.toast" = "Kanalen lukkes.";
 
 "scene.open_channel.title" = "Åben kanal";
-"scene.open_channel.channel_uri_label" = "Kanal:";
+"scene.open_channel.channel_uri_label" = "Node:";
 "scene.open_channel.add_button" = "Åben kanal";
+"scene.open_channel.subtitle.minimum_size" = "Minimum channel size: %@";
+"scene.open_channel.subtitle.maximum_size" = "Maximum channel size: %@";
+"scene.open_channel.subtitle.balance" = "On chain balance: %@";
 
 "scene.pin.biometric.fallback.title" = "Brug adgangskode";
 "scene.pin.biometric.reason" = "For at få adgang til sikre data";

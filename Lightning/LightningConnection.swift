@@ -13,7 +13,9 @@ public enum LightningConnection: Equatable, Codable {
     case remote(RPCCredentials)
 
     public var api: LightningApiProtocol {
-        if Environment.useMockApi {
+        if Environment.useUITestMockApi {
+            return ApiMockTemplate.screenshots.instance
+        } else if Environment.useMockApi {
             return ApiMockTemplate.selected.instance
         }
 

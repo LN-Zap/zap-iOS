@@ -72,7 +72,7 @@ extension Info: CustomDebugStringConvertible {
 		\tactiveChannelCount: \(activeChannelCount)
 		\tbestHeaderDate: \(bestHeaderDate)
 		\turis: \(uris)
-		\tversion: \(version)\n
+		\tversion: \(String(describing: version))\n
 		"""
 	}
 }
@@ -195,6 +195,27 @@ extension Transaction: CustomDebugStringConvertible {
 		\tfees: \(String(describing: fees))
 		\tdestinationAddresses: \(destinationAddresses)
 		\tblockHeight: \(String(describing: blockHeight))\n
+		"""
+	}
+}
+
+// MARK: Version CustomDebugStringConvertible
+extension Version: CustomDebugStringConvertible {
+	public var debugDescription: String {
+		return """
+		Version:
+		\tnumber: \(number)
+		\tcommit: \(String(describing: commit))\n
+		"""
+	}
+}
+
+// MARK: Version.Number CustomDebugStringConvertible
+extension Version.Number: CustomDebugStringConvertible {
+	public var debugDescription: String {
+		return """
+		Version.Number:
+		\tcomponents: \(components)\n
 		"""
 	}
 }

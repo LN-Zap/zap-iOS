@@ -66,6 +66,19 @@ final class SendViewController: ModalDetailViewController {
             .dispose(in: reactive.bag)
 
         setHeaderImage(viewModel.method.headerImage)
+
+        viewModel.subtitleText
+            .observeNext { [weak self] in
+                self?.amountInputView?.subtitleText = $0
+            }
+            .dispose(in: reactive.bag)
+
+        viewModel.isSubtitleTextWarning
+            .map { $0 ? UIColor.Zap.superRed : UIColor.Zap.gray }
+            .observeNext { [weak self] in
+                self?.amountInputView?.subtitleTextColor = $0
+            }
+            .dispose(in: reactive.bag)
     }
 
     private func addAmountInputView() {
@@ -78,7 +91,7 @@ final class SendViewController: ModalDetailViewController {
         contentStackView.addArrangedSubview(amountInputView)
 
         if case .lightning = viewModel.method {
-            contentStackView.setCustomSpacing(0, after: amountInputView)
+            contentStackView.addArrangedElement(.separator)
             let stackView = contentStackView.addArrangedElement(.horizontalStackView(compressionResistant: .first, content: [
                 .label(text: L10n.Scene.Send.maximumFee, style: Style.Label.footnote),
                 .customView(LoadingAmountView(loadable: viewModel.lightningFee))
@@ -117,7 +130,6 @@ final class SendViewController: ModalDetailViewController {
     }
 
     private func sendButtonTapped() {
-
         authenticate { [weak self] result in
             switch result {
             case .success:
@@ -128,17 +140,113 @@ final class SendViewController: ModalDetailViewController {
         }
     }
 
+    private weak var loadingView: LoadingAnimationView?
+    private weak var loadingViewCenterYConstraint: NSLayoutConstraint?
+
+    private func presentLoading() {
+        UIView.animate(withDuration: 0.2, animations: { [weak self] in
+            self?.contentStackView.alpha = 0
+            self?.headerIconImageView.alpha = 0
+        }, completion: { [weak self] _ in
+            self?.contentStackView.isHidden = true
+            self?.headerIconImageView.isHidden = true
+        })
+
+        let loadingImage: ImageAsset
+        switch viewModel.method {
+        case .lightning:
+            loadingImage = Asset.loadingLightning
+        case .onChain:
+            loadingImage = Asset.loadingOnChain
+        }
+
+        let size = CGSize(width: 50, height: 50)
+        let loadingView = LoadingAnimationView(frame: CGRect(origin: .zero, size: size), loadingImage: loadingImage)
+        loadingView.startAnimating()
+        view.addAutolayoutSubview(loadingView)
+
+        loadingView.constrainSize(to: size)
+
+        let centerYConstraint = loadingView.centerYAnchor.constraint(equalTo: view.centerYAnchor)
+        self.loadingViewCenterYConstraint = centerYConstraint
+
+        NSLayoutConstraint.activate([
+            loadingView.centerXAnchor.constraint(equalTo: view.centerXAnchor),
+            centerYConstraint
+        ])
+
+        self.loadingView = loadingView
+    }
+
+    private func recoverFromLoadingState() {
+        contentStackView.isHidden = false
+        headerIconImageView.isHidden = false
+
+        UIView.animate(withDuration: 0.2) { [weak self] in
+            self?.contentStackView.alpha = 1
+            self?.headerIconImageView.alpha = 1
+        }
+
+        loadingView?.removeFromSuperview()
+    }
+
+    private func presentSuccess() {
+        loadingView?.stopAnimation(afterCompletion: afterSuccessAnimationCompleted)
+    }
+
+    private func afterSuccessAnimationCompleted() {
+        guard let loadingView = loadingView else { return }
+
+        UINotificationFeedbackGenerator().notificationOccurred(.success)
+
+        let successLabel = UILabel(frame: .zero)
+        Style.Label.body.apply(to: successLabel)
+        successLabel.text = L10n.Scene.Send.successLabel
+        successLabel.numberOfLines = 0
+        successLabel.textColor = UIColor.Zap.superGreen
+        successLabel.alpha = 0
+        successLabel.textAlignment = .center
+        view.addAutolayoutSubview(successLabel)
+
+        NSLayoutConstraint.activate([
+            view.centerXAnchor.constraint(equalTo: successLabel.centerXAnchor),
+            loadingView.bottomAnchor.constraint(equalTo: successLabel.topAnchor, constant: -15),
+            successLabel.leadingAnchor.constraint(greaterThanOrEqualTo: view.leadingAnchor, constant: 15)
+        ])
+
+        view.layoutIfNeeded()
+        UIView.animate(withDuration: 0.5) { [weak self] in
+            successLabel.alpha = 1
+            self?.loadingViewCenterYConstraint?.constant = -40
+            self?.view.layoutIfNeeded()
+        }
+
+        DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 1.6) { [weak self] in
+            self?.dismissParent()
+        }
+    }
+
     private func send() {
-        let loadingView = presentLoadingView(text: L10n.Scene.Send.sending)
+        let sendStartTime = Date()
+
+        presentLoading()
+
         viewModel.send { [weak self] result in
-            DispatchQueue.main.async {
-                loadingView.removeFromSuperview()
+            let minimumLoadingTime: TimeInterval = 1
+            let sendingTime = Date().timeIntervalSince(sendStartTime)
+            let delay = max(0, minimumLoadingTime - sendingTime)
+
+            DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + delay) {
                 switch result {
                 case .success:
-                    self?.dismissParent()
+
+                    self?.presentSuccess()
                 case .failure(let error):
+                    UINotificationFeedbackGenerator().notificationOccurred(.error)
+
                     Toast.presentError(error.localizedDescription)
                     self?.amountInputView?.isEnabled = true
+                    self?.recoverFromLoadingState()
                 }
             }
         }
