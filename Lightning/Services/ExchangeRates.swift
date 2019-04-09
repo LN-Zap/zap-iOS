@@ -25,20 +25,26 @@ public final class ExchangeRateLoader {
             var bitcoinaverage: [FiatCurrency] = []
 
             apiCallGroup.enter()
-            self.loadFromBlockchainInfo {
-                if let blockchaininfoResponse = try? $0.get() {
-                    blockchaininfo = blockchaininfoResponse
-                }
-                apiCallGroup.leave()
-            }
+            self.fetchCurrencyData(
+                    url: "https://apiv2.bitcoinaverage.com/indices/global/ticker/short?crypto=BTC",
+                    parse: ExchangeRateLoader.parseBitcoinAverageData,
+                    completion: {
+                        if let bitcoinaverageResponse = try? $0.get() {
+                            bitcoinaverage = bitcoinaverageResponse
+                        }
+                        apiCallGroup.leave()
+                    })
 
             apiCallGroup.enter()
-            self.loadFromBitcoinaverage {
-                if let bitcoinaverageResponse = try? $0.get() {
-                    bitcoinaverage = bitcoinaverageResponse
-                }
-                apiCallGroup.leave()
-            }
+            self.fetchCurrencyData(
+                    url: "https://blockchain.info/ticker",
+                    parse: ExchangeRateLoader.parseBlockchainInfoData,
+                    completion: {
+                        if let blockchaininfoResponse = try? $0.get() {
+                            blockchaininfo = blockchaininfoResponse
+                        }
+                        apiCallGroup.leave()
+                    })
 
             apiCallGroup.notify(queue: DispatchQueue.main, work: DispatchWorkItem {
                 var result: [String: FiatCurrency] = [:]
@@ -48,58 +54,24 @@ public final class ExchangeRateLoader {
             })
         }}
 
-    private static var currencySymbols = buildCurrencySymbols()
+    func fetchCurrencyData(url: String, parse: @escaping (String, Any) -> FiatCurrency?, completion: @escaping (Result<[FiatCurrency], ExchangeRateLoaderError>) -> Void) {
+        guard let url = URL(string: url) else { fatalError("Invalid ticker url.") }
 
-    private static func buildCurrencySymbols() -> [String: String] {
-        let identifiers = Locale.availableIdentifiers
-        let formatter = NumberFormatter()
-        var map: [String: String] = [:]
-        for identifier in identifiers {
-            formatter.locale = Locale(identifier: identifier)
-            guard
-                    let code = formatter.currencyCode,
-                    let symbol = formatter.currencySymbol
-                    else { continue }
-            map[code] = symbol
-        }
-        return map
-    }
-
-    func loadFromBlockchainInfo(completion: @escaping (Result<[FiatCurrency], ExchangeRateLoaderError>) -> Void) {
-        guard let url = URL(string: "https://blockchain.info/ticker") else { fatalError("Invalid ticker url.") }
         let task = URLSession.pinned.dataTask(with: url) { data, _, error in
             if let error = error {
                 Logger.error(error.localizedDescription)
                 completion(.failure(.loadingError))
             } else if let data = data,
-                let jsonData = try? JSONSerialization.jsonObject(with: data, options: []),
-                let json = jsonData as? [String: Any] {
-                let currencies = json.compactMap { ExchangeRateLoader.parseFiatCurrency(for: $0, data: $1) }
+                      let jsonData = try? JSONSerialization.jsonObject(with: data, options: []),
+                      let json = jsonData as? [String: Any] {
+                let currencies = json.compactMap { parse($0, $1) }
                 completion(.success(currencies))
             }
         }
         task.resume()
     }
 
-    func loadFromBitcoinaverage(completion: @escaping (Result<[FiatCurrency], ExchangeRateLoaderError>) -> Void) {
-        guard let url = URL(string: "https://apiv2.bitcoinaverage.com/indices/global/ticker/short?crypto=BTC") else { fatalError("Invalid ticker url.") }
-
-        let task = URLSession.pinned.dataTask(with: url) { data, _, error in
-            if let error = error {
-                Logger.error(error.localizedDescription)
-                completion(.failure(.loadingError))
-            } else if let data = data,
-                let jsonData = try? JSONSerialization.jsonObject(with: data, options: []),
-                let json = jsonData as? [String: Any] {
-                let currencies = json
-						.compactMap { ExchangeRateLoader.parseTicker(for: $0, data: $1) }
-				completion(.success(currencies))
-            }
-        }
-        task.resume()
-    }
-
-    private static func parseTicker(for ticker: String, data: Any) -> FiatCurrency? {
+    private static func parseBitcoinAverageData(for ticker: String, data: Any) -> FiatCurrency? {
         let index = ticker.index(ticker.startIndex, offsetBy: 3)
         let currencyCode: String = ticker.substring(from: index)
         guard
@@ -112,7 +84,7 @@ public final class ExchangeRateLoader {
         return FiatCurrency(currencyCode: currencyCode, symbol: ExchangeRateLoader.currencySymbols[currencyCode] ?? currencyCode, localized: localized, exchangeRate: exchangeRate)
     }
 
-    private static func parseFiatCurrency(for currencyCode: String, data: Any) -> FiatCurrency? {
+    private static func parseBlockchainInfoData(for currencyCode: String, data: Any) -> FiatCurrency? {
         guard
             let localized = Locale.autoupdatingCurrent.localizedString(forCurrencyCode: currencyCode),
             let data = data as? [String: Any],
@@ -123,4 +95,6 @@ public final class ExchangeRateLoader {
 
         return FiatCurrency(currencyCode: currencyCode, symbol: symbol, localized: localized, exchangeRate: exchangeRate)
     }
+
+    private static let currencySymbols = ["TND": "د.ت.‏", "JPY": "¥", "MNT": "₮", "CHF": "CHF", "TWD": "$", "GMD": "D", "VND": "₫", "FKP": "£", "CNY": "¥", "CZK": "Kč", "BGN": "лв.", "IRR": "IRR", "ILS": "₪", "SBD": "$", "MYR": "RM", "CAD": "$", "KES": "Ksh", "ISK": "ISK", "PKR": "Rs", "ERN": "Nfk", "OMR": "ر.ع.‏", "NPR": "नेरू", "MOP": "MOP$", "MUR": "Rs", "CUP": "$", "MKD": "den", "SLL": "Le", "AOA": "Kz", "DOP": "RD$", "EUR": "€", "XOF": "CFA", "BTN": "Nu.", "AFN": "؋", "GNF": "FG", "BOB": "Bs", "MRU": "UM", "AMD": "֏", "PAB": "B/.", "HKD": "HK$", "HRK": "HRK", "BYN": "Br", "BIF": "FBu", "PYG": "Gs.", "LKR": "Rs.", "BDT": "৳", "KRW": "₩", "YER": "ر.ي.‏", "HNL": "L", "BND": "$", "SDG": "SDG", "BHD": "د.ب.‏", "ARS": "$", "TMT": "TMT", "MVR": "MVR", "ZMW": "K", "SEK": "kr", "GTQ": "Q", "GBP": "£", "ALL": "Lekë", "GYD": "$", "MDL": "L", "COP": "$", "KYD": "$", "AUD": "$", "TRY": "₺", "UZS": "soʻm", "BAM": "KM", "ANG": "NAf.", "BWP": "P", "JOD": "د.أ.‏", "DZD": "د.ج.‏", "LAK": "₭", "LYD": "د.ل.‏", "JMD": "$", "KGS": "сом", "KHR": "៛", "SOS": "S", "PLN": "PLN", "UYU": "$", "TJS": "сом.", "CVE": "​", "UGX": "USh", "KWD": "د.ك.‏", "TZS": "TSh", "NZD": "$", "SAR": "SAR", "BSD": "BSD", "IDR": "Rp", "SRD": "$", "NAD": "$", "KMF": "CF", "MWK": "MK", "IQD": "د.ع.‏", "XAF": "FCFA", "TTD": "$", "GHS": "GH₵", "STN": "Db", "LBP": "ل.ل.‏", "SCR": "SR", "THB": "THB", "ETB": "Br", "CDF": "FC", "BRL": "R$", "PEN": "S/", "RWF": "RF", "DJF": "Fdj", "KPW": "KPW", "BBD": "$", "PGK": "K", "HUF": "HUF", "VEF": "Bs.", "KZT": "₸", "AED": "د.إ.‏", "MXN": "$", "HTG": "G", "BZD": "$", "WST": "WS$", "SSP": "£", "PHP": "₱", "INR": "₹", "RSD": "RSD", "SGD": "$", "GEL": "₾", "LRD": "$", "USD": "$", "NGN": "₦", "XPF": "FCFP", "CLP": "$", "BMD": "BMD", "RON": "RON", "VUV": "VT", "DKK": "kr.", "MAD": "MAD", "AWG": "Afl.", "GIP": "£", "NOK": "kr", "FJD": "$", "EGP": "ج.م.‏", "ZAR": "R", "UAH": "₴", "QAR": "ر.ق.‏", "NIO": "C$", "SZL": "E", "TOP": "T$", "RUB": "RUB", "XCD": "XCD", "AZN": "₼", "MZN": "MTn", "MMK": "K", "MGA": "Ar", "CRC": "₡", "SHP": "£", "SYP": "ل.س.‏"]
 }
