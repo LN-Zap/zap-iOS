@@ -27,34 +27,7 @@ final class ExchangeUpdaterJob {
     }
 
     func run() {
-            DispatchQueue.global(qos: .background).async {
-            let apiCallGroup = DispatchGroup()
-            var blockchaininfo: [FiatCurrency] = []
-            var bitcoinaverage: [FiatCurrency] = []
-
-            apiCallGroup.enter()
-            ExchangeRateLoader().loadFromBlockchainInfo {
-                if let blockchaininfoResponse = $0.value {
-                    blockchaininfo = blockchaininfoResponse
-                }
-                apiCallGroup.leave()
-            }
-
-            apiCallGroup.enter()
-            ExchangeRateLoader().loadFromBitcoinaverage {
-                if let bitcoinaverageResponse = $0.value {
-                    bitcoinaverage = bitcoinaverageResponse
-                }
-                apiCallGroup.leave()
-            }
-
-            apiCallGroup.notify(queue: DispatchQueue.main, work: DispatchWorkItem {
-                var result: [String: FiatCurrency] = [:]
-                blockchaininfo.forEach { result[$0.currencyCode] = $0 }
-                bitcoinaverage.forEach { result[$0.currencyCode] = $0 }
-                ExchangeData.availableCurrencies = Array(result.values)
-            })
-        }
+        ExchangeRateLoader().load { ExchangeData.availableCurrencies = try? $0.get() }
     }
 }
 
