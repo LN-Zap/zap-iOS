@@ -47,7 +47,7 @@
 "scene.history.empty_state_label" = "Aucune transaction 🙁";
 
 "scene.settings.title" = "Paramètres";
-"scene.settings.section.warning" = "Warning";
+"scene.settings.section.warning" = "Mise en garde";
 "scene.settings.section.wallet" = "Portefeuille";
 "scene.settings.item.version_warning" = "Your lnd is outdated (%@). Zap iOS works best with lnd version %@ or above.";
 "scene.settings.item.bitcoin_unit" = "Unité Bitcoin";
@@ -203,7 +203,7 @@
 "scene.qrcode_scanner.top_label" = "Scannez le Code QR";
 
 "scene.wallet.title" = "Portefeuille";
-"scene.wallet.warning.lnd_outdated" = "outdated lnd";
+"scene.wallet.warning.lnd_outdated" = "lnd obsolète";
 
 "scene.time_lock.headline" = "Mot de passe erroné";
 "scene.time_lock.description" = "Votre portefeuille est verrouillé pour :";
