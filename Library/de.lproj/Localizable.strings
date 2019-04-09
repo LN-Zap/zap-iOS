@@ -72,7 +72,7 @@
 "scene.request.on_chain_button" = "On-Chain";
 "scene.request.generate_request_button" = "Anfrage generieren";
 "scene.request.lightning_header_title" = "Lightning-Zahlungsaufforderung";
-"scene.request.on_chain_header_title" = "On-Chain Payment Request";
+"scene.request.on_chain_header_title" = "On-Chain Zahlungsaufforderung";
 "scene.request.next_button_title" = "Weiter";
 "scene.request.subtitle.lightning" = "Kann erhalten: %@";
 
@@ -94,7 +94,7 @@
 "scene.open_channel.add_button" = "Channel öffnen";
 "scene.open_channel.subtitle.minimum_size" = "Minimale Kanalgrösse: %@";
 "scene.open_channel.subtitle.maximum_size" = "Maximale Kanalgrösse: %@";
-"scene.open_channel.subtitle.balance" = "On-chain balance: %@";
+"scene.open_channel.subtitle.balance" = "On chain Saldo: %@";
 
 "scene.pin.biometric.fallback.title" = "PIN eingeben";
 "scene.pin.biometric.reason" = "Um auf die Sicherheitsdaten zu zugreifen";
@@ -113,10 +113,10 @@
 "scene.send.memo_headline" = "Memo:";
 "scene.send.sending" = "Wird gesendet...";
 "scene.send.lightning.title" = "Sende Lightning-Zahlung";
-"scene.send.on_chain.title" = "Send On-Chain";
+"scene.send.on_chain.title" = "Sende on-Chain";
 "scene.send.authentication_failed" = "Authentifizierung fehlgeschlagen";
 "scene.send.maximum_fee" = "Voraussichtliche Gebühr:";
-"scene.send.subtitle.on_chain_balance" = "On-chain balance: %@";
+"scene.send.subtitle.on_chain_balance" = "On chain Saldo: %@";
 "scene.send.subtitle.lightning_can_send_balance" = "Kann senden: %@";
 "scene.send.success_label" = "Zahlung erfolgreich";
 
@@ -135,7 +135,7 @@
 "scene.connect_remote_node.edit_url.title" = "Adresse";
 
 "scene.create_wallet.title" = "Neues Wallet erstellen";
-"scene.create_wallet.description_label" = "Make sure to store the mnemonic at a safe location.";
+"scene.create_wallet.description_label" = "Bewahre deinen Mnemonic-Code an einem sicheren Ort auf.";
 "scene.create_wallet.next_button" = "Weiter";
 
 "scene.recover_wallet.title" = "Wallet wiederherstellen";
