@@ -120,7 +120,6 @@
 		AD391C7320D16F89007EE22A /* QRCodeDetail.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A0A05A2C2013EDFB0007D1C9 /* QRCodeDetail.storyboard */; };
 		AD391C7420D16F89007EE22A /* QRCodeDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0A05A2A2013ED920007D1C9 /* QRCodeDetailViewController.swift */; };
 		AD391C7520D16F89007EE22A /* QRCodeDetailViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A070D965202B39A3000A8274 /* QRCodeDetailViewModel.swift */; };
-		AD391C9820D16FA8007EE22A /* QRCodeScanner.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AD99C9EC209072710061C565 /* QRCodeScanner.storyboard */; };
 		AD391C9920D16FA8007EE22A /* QRCodeScannerStrategy.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD99C9EE209076650061C565 /* QRCodeScannerStrategy.swift */; };
 		AD391C9A20D16FA8007EE22A /* QRCodeScannerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A06660F4202D97A300EE32FA /* QRCodeScannerView.swift */; };
 		AD391C9B20D16FA8007EE22A /* QRCodeScannerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A024B85220161560002B8897 /* QRCodeScannerViewController.swift */; };
@@ -221,6 +220,7 @@
 		ADA179C421527AEA001401F3 /* HistoryEventType.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADA179C321527AEA001401F3 /* HistoryEventType.swift */; };
 		ADA179C52152864E001401F3 /* Persistable.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD1EBA0020B2FD9D001FF67E /* Persistable.swift */; };
 		ADA179C62152864E001401F3 /* Storage.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADA865C120ED041F00B1B74B /* Storage.swift */; };
+		ADA2DCFF225CC817007482D9 /* SuggestedPeers.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADA2DCFE225CC817007482D9 /* SuggestedPeers.swift */; };
 		ADA3253621A81B5C00C5EAA2 /* MacaroonTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADA3253521A81B5C00C5EAA2 /* MacaroonTests.swift */; };
 		ADA3254021AD5B3400C5EAA2 /* Strings.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADA3253F21AD5B3300C5EAA2 /* Strings.swift */; };
 		ADA3254221AD8A6200C5EAA2 /* Assets.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADA3254121AD8A6200C5EAA2 /* Assets.swift */; };
@@ -700,7 +700,6 @@
 		AD97A90B20EFC127008344EA /* LightningInvoiceURI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LightningInvoiceURI.swift; sourceTree = "<group>"; };
 		AD97A90E20EFC1E6008344EA /* LightningNodeURI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LightningNodeURI.swift; sourceTree = "<group>"; };
 		AD97A91C20F0FA92008344EA /* ChannelCloseSummary.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChannelCloseSummary.swift; sourceTree = "<group>"; };
-		AD99C9EC209072710061C565 /* QRCodeScanner.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = QRCodeScanner.storyboard; sourceTree = "<group>"; };
 		AD99C9EE209076650061C565 /* QRCodeScannerStrategy.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QRCodeScannerStrategy.swift; sourceTree = "<group>"; };
 		AD99C9F020907AB30061C565 /* OpenChannelQRCodeScannerStrategy.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OpenChannelQRCodeScannerStrategy.swift; sourceTree = "<group>"; };
 		AD99C9F220907AD10061C565 /* SendQRCodeScannerStrategy.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SendQRCodeScannerStrategy.swift; sourceTree = "<group>"; };
@@ -716,6 +715,7 @@
 		ADA179BF2151509E001401F3 /* SectionHeaderView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SectionHeaderView.xib; sourceTree = "<group>"; };
 		ADA179C121526036001401F3 /* EventProtocols.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventProtocols.swift; sourceTree = "<group>"; };
 		ADA179C321527AEA001401F3 /* HistoryEventType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistoryEventType.swift; sourceTree = "<group>"; };
+		ADA2DCFE225CC817007482D9 /* SuggestedPeers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SuggestedPeers.swift; sourceTree = "<group>"; };
 		ADA3253521A81B5C00C5EAA2 /* MacaroonTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MacaroonTests.swift; sourceTree = "<group>"; };
 		ADA3253F21AD5B3300C5EAA2 /* Strings.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Strings.swift; sourceTree = "<group>"; };
 		ADA3254121AD8A6200C5EAA2 /* Assets.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Assets.swift; sourceTree = "<group>"; };
@@ -1136,6 +1136,7 @@
 				A010094D2015F97F0001EF94 /* OpenChannelViewController.swift */,
 				A02C9FBC202EE9BE009821B1 /* OpenChannelViewModel.swift */,
 				AD99C9F020907AB30061C565 /* OpenChannelQRCodeScannerStrategy.swift */,
+				ADA2DCFE225CC817007482D9 /* SuggestedPeers.swift */,
 			);
 			path = OpenChannel;
 			sourceTree = "<group>";
@@ -1646,7 +1647,6 @@
 		AD99C9EB209072530061C565 /* QRCodeScanner */ = {
 			isa = PBXGroup;
 			children = (
-				AD99C9EC209072710061C565 /* QRCodeScanner.storyboard */,
 				AD99C9EE209076650061C565 /* QRCodeScannerStrategy.swift */,
 				A06660F4202D97A300EE32FA /* QRCodeScannerView.swift */,
 				A024B85220161560002B8897 /* QRCodeScannerViewController.swift */,
@@ -2504,7 +2504,6 @@
 				AD7ED61E22087812007C5F2C /* ManageWalletTableViewCell.xib in Resources */,
 				AD391D2220D1798A007EE22A /* Media.xcassets in Resources */,
 				ADEEB53821346DEA00D2F992 /* ModalPin.storyboard in Resources */,
-				AD391C9820D16FA8007EE22A /* QRCodeScanner.storyboard in Resources */,
 				AD391CDA20D16FE1007EE22A /* History.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -3071,6 +3070,7 @@
 				AD7EDAE52108C41D0058CCCA /* WalletViewController.swift in Sources */,
 				AD391C5B20D16F7A007EE22A /* MnemonicViewController.swift in Sources */,
 				AD391CA120D16FA8007EE22A /* RootViewController.swift in Sources */,
+				ADA2DCFF225CC817007482D9 /* SuggestedPeers.swift in Sources */,
 				AD391C2420D16EFA007EE22A /* Array.swift in Sources */,
 				AD391D0820D16FF5007EE22A /* GradientView.swift in Sources */,
 				AD391C3120D16EFA007EE22A /* UIColor.swift in Sources */,

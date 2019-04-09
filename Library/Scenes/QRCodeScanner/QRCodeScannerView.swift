@@ -22,12 +22,31 @@ final class QRCodeScannerView: UIView {
 
     var handler: ((String) -> Void)?
 
-    required init?(coder aDecoder: NSCoder) {
-        super.init(coder: aDecoder)
+    override init(frame: CGRect) {
+        super.init(frame: frame)
 
+        setupStaticLayout()
         DispatchQueue.main.async {
             self.setup()
         }
+    }
+
+    required init?(coder aDecoder: NSCoder) {
+        super.init(coder: aDecoder)
+
+        setupStaticLayout()
+        DispatchQueue.main.async {
+            self.setup()
+        }
+    }
+
+    private func setupStaticLayout() {
+        let scanRectView = ScanRectView(frame: frame)
+        addSubview(scanRectView)
+        self.scanRectView = scanRectView
+
+        setupTopLabel()
+        setupOverlay()
     }
 
     private func setup() {
@@ -39,6 +58,10 @@ final class QRCodeScannerView: UIView {
             else { return }
         self.captureDevice = captureDevice
 
+        if captureDevice.hasTorch {
+            setupFlashlightButton()
+        }
+
         captureSession.addInput(input)
         let captureMetadataOutput = AVCaptureMetadataOutput()
         captureSession.addOutput(captureMetadataOutput)
@@ -48,22 +71,10 @@ final class QRCodeScannerView: UIView {
         let videoPreviewLayer = AVCaptureVideoPreviewLayer(session: captureSession)
         videoPreviewLayer.videoGravity = AVLayerVideoGravity.resizeAspectFill
         videoPreviewLayer.frame = layer.bounds
-        layer.addSublayer(videoPreviewLayer)
+        layer.insertSublayer(videoPreviewLayer, at: 0)
         self.videoPreviewLayer = videoPreviewLayer
 
         self.start()
-
-        let scanRectView = ScanRectView(frame: frame)
-        addSubview(scanRectView)
-        self.scanRectView = scanRectView
-
-        setupOverlay()
-
-        if captureDevice.hasTorch {
-            setupFlashlightButton()
-        }
-
-        setupTopLabel()
     }
 
     private func setupTopLabel() {

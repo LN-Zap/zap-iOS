@@ -9,49 +9,76 @@ import Lightning
 import SwiftBTC
 import UIKit
 
-final class QRCodeScannerViewController: UIViewController {
-    @IBOutlet private weak var qrCodeSuccessImageView: UIImageView!
-    @IBOutlet private weak var pasteButton: UIButton!
-    @IBOutlet private weak var scannerView: QRCodeScannerView! {
-        didSet {
-            scannerView.handler = { [weak self] address in
-                self?.tryPresentingViewController(for: address)
-            }
-        }
-    }
-    @IBOutlet private weak var scannerViewOverlay: UIView!
-
-    private var strategy: QRCodeScannerStrategy? {
-        didSet {
-            title = strategy?.title
-        }
-    }
+class QRCodeScannerViewController: UIViewController {
+    // swiftlint:disable implicitly_unwrapped_optional
+    private weak var scannerView: QRCodeScannerView!
+    private weak var pasteButton: UIButton!
+    // swiftlint:enable implicitly_unwrapped_optional
+    
+    private let strategy: QRCodeScannerStrategy
 
     override var preferredStatusBarStyle: UIStatusBarStyle {
         return .lightContent
     }
 
-    static func instantiate(strategy: QRCodeScannerStrategy) -> QRCodeScannerViewController {
-        let viewController = StoryboardScene.QRCodeScanner.qrCodeScannerViewController.instantiate()
-        viewController.strategy = strategy
-        return viewController
+    init(strategy: QRCodeScannerStrategy) {
+        self.strategy = strategy
+        super.init(nibName: nil, bundle: nil)
+    }
+
+    required init?(coder aDecoder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
     }
 
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        Style.Button.background.apply(to: pasteButton)
+        view.backgroundColor = .black
+        title = strategy.title
 
         navigationController?.navigationBar.backgroundColor = .clear
         navigationController?.navigationBar.shadowImage = UIImage()
         navigationController?.navigationBar.setBackgroundImage(UIImage(), for: .default)
 
-        scannerViewOverlay.alpha = 0
-        qrCodeSuccessImageView.tintColor = UIColor.Zap.superGreen
+        navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .cancel, target: self, action: #selector(cancelButtonTapped(_:)))
+
+        setupScannerView()
+        setupPasteButton()
+    }
+
+    private func setupScannerView() {
+        let scannerView = QRCodeScannerView(frame: .zero)
+        view.addAutolayoutSubview(scannerView)
+        scannerView.constrainEdges(to: view)
+
+        scannerView.handler = { [weak self] address in
+            self?.tryPresentingViewController(for: address)
+        }
+
+        self.scannerView = scannerView
+    }
+
+    private func setupPasteButton() {
+        let pasteButton = UIButton(type: .system)
+        pasteButton.setTitle("Paste", for: .normal)
+        Style.Button.background.apply(to: pasteButton)
+
+        view.addAutolayoutSubview(pasteButton)
+
+        NSLayoutConstraint.activate([
+            pasteButton.heightAnchor.constraint(equalToConstant: 56),
+            pasteButton.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 28),
+            view.trailingAnchor.constraint(equalTo: pasteButton.trailingAnchor, constant: 28),
+            view.safeAreaLayoutGuide.bottomAnchor.constraint(equalTo: pasteButton.bottomAnchor, constant: 20)
+        ])
+
+        pasteButton.addTarget(self, action: #selector(pasteButtonTapped(_:)), for: .touchUpInside)
+
+        self.pasteButton = pasteButton
     }
 
     func tryPresentingViewController(for address: String) {
-        strategy?.viewControllerForAddress(address: address) { [weak self] result in
+        strategy.viewControllerForAddress(address: address) { [weak self] result in
             DispatchQueue.main.async {
                 switch result {
                 case .success(let viewController):
@@ -72,7 +99,7 @@ final class QRCodeScannerViewController: UIViewController {
         present(modalDetailViewController, animated: true, completion: nil)
     }
 
-    @IBAction private func pasteButtonTapped(_ sender: Any) {
+    @objc private func pasteButtonTapped(_ sender: Any) {
         if let string = UIPasteboard.general.string {
             tryPresentingViewController(for: string)
         } else {
@@ -81,7 +108,7 @@ final class QRCodeScannerViewController: UIViewController {
         }
     }
 
-    @IBAction private func cancelButtonTapped(_ sender: Any) {
+    @objc private func cancelButtonTapped(_ sender: Any) {
         dismiss(animated: true, completion: nil)
     }
 }

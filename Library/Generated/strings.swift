@@ -210,7 +210,7 @@ internal enum L10n {
       }
     }
     internal enum CreateWallet {
-      /// Make sure to store the mnemonic at a save location.
+      /// Make sure to store the mnemonic at a safe location.
       internal static let descriptionLabel = L10n.tr("Localizable", "scene.create_wallet.description_label")
       /// Next
       internal static let nextButton = L10n.tr("Localizable", "scene.create_wallet.next_button")
@@ -313,7 +313,7 @@ internal enum L10n {
       /// Open Channel
       internal static let title = L10n.tr("Localizable", "scene.open_channel.title")
       internal enum Subtitle {
-        /// On chain balance: %@
+        /// On-chain balance: %@
         internal static func balance(_ p1: String) -> String {
           return L10n.tr("Localizable", "scene.open_channel.subtitle.balance", p1)
         }
@@ -366,7 +366,7 @@ internal enum L10n {
       internal static let nextButtonTitle = L10n.tr("Localizable", "scene.request.next_button_title")
       /// On-chain
       internal static let onChainButton = L10n.tr("Localizable", "scene.request.on_chain_button")
-      /// On Chain Payment Request
+      /// On-Chain Payment Request
       internal static let onChainHeaderTitle = L10n.tr("Localizable", "scene.request.on_chain_header_title")
       /// or
       internal static let orSeparatorLabel = L10n.tr("Localizable", "scene.request.or_separator_label")
@@ -433,7 +433,7 @@ internal enum L10n {
         internal static let title = L10n.tr("Localizable", "scene.send.lightning.title")
       }
       internal enum OnChain {
-        /// Send On Chain
+        /// Send On-Chain
         internal static let title = L10n.tr("Localizable", "scene.send.on_chain.title")
       }
       internal enum Subtitle {
@@ -441,7 +441,7 @@ internal enum L10n {
         internal static func lightningCanSendBalance(_ p1: String) -> String {
           return L10n.tr("Localizable", "scene.send.subtitle.lightning_can_send_balance", p1)
         }
-        /// On chain balance: %@
+        /// On-chain balance: %@
         internal static func onChainBalance(_ p1: String) -> String {
           return L10n.tr("Localizable", "scene.send.subtitle.on_chain_balance", p1)
         }
