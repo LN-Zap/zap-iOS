@@ -312,6 +312,10 @@ internal enum L10n {
       internal static let channelUriLabel = L10n.tr("Localizable", "scene.open_channel.channel_uri_label")
       /// Open Channel
       internal static let title = L10n.tr("Localizable", "scene.open_channel.title")
+      internal enum PasteButton {
+        /// Paste channel uri
+        internal static let title = L10n.tr("Localizable", "scene.open_channel.paste_button.title")
+      }
       internal enum Subtitle {
         /// On-chain balance: %@
         internal static func balance(_ p1: String) -> String {
@@ -325,6 +329,10 @@ internal enum L10n {
         internal static func minimumSize(_ p1: String) -> String {
           return L10n.tr("Localizable", "scene.open_channel.subtitle.minimum_size", p1)
         }
+      }
+      internal enum SuggestedPeers {
+        /// Suggested Peers
+        internal static let title = L10n.tr("Localizable", "scene.open_channel.suggested_peers.title")
       }
     }
     internal enum Pin {
@@ -435,6 +443,10 @@ internal enum L10n {
       internal enum OnChain {
         /// Send On-Chain
         internal static let title = L10n.tr("Localizable", "scene.send.on_chain.title")
+      }
+      internal enum PasteButton {
+        /// Paste Address
+        internal static let title = L10n.tr("Localizable", "scene.send.paste_button.title")
       }
       internal enum Subtitle {
         /// Can send: %@

@@ -14,6 +14,7 @@ struct OpenChannelQRCodeScannerStrategy: QRCodeScannerStrategy {
     private let lightningService: LightningService
 
     let title = L10n.Scene.OpenChannel.title
+    let pasteButtonTitle = L10n.Scene.OpenChannel.PasteButton.title
 
     init(lightningService: LightningService) {
         self.lightningService = lightningService

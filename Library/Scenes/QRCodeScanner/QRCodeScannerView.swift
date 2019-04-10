@@ -58,10 +58,6 @@ final class QRCodeScannerView: UIView {
             else { return }
         self.captureDevice = captureDevice
 
-        if captureDevice.hasTorch {
-            setupFlashlightButton()
-        }
-
         captureSession.addInput(input)
         let captureMetadataOutput = AVCaptureMetadataOutput()
         captureSession.addOutput(captureMetadataOutput)
@@ -123,7 +119,7 @@ final class QRCodeScannerView: UIView {
 
         let margin: CGFloat = 30
         let rectSize = bounds.width - margin * 2
-        let yPosition = (bounds.height - rectSize) / 2 * 0.85
+        let yPosition = (bounds.height - rectSize) / 2 * 0.85 - 20
 
         let framePath = UIBezierPath(rect: bounds)
 
@@ -135,41 +131,6 @@ final class QRCodeScannerView: UIView {
         overlayView?.layer.mask = maskLayer
 
         scanRectView?.frame = frame
-    }
-
-    private func setupFlashlightButton() {
-        guard let scanRectView = scanRectView else { return }
-
-        let button = UIButton(type: .custom)
-        button.setImage(Asset.iconFlashlight.image, for: .normal)
-        button.addTarget(self, action: #selector(toggleTorch), for: .touchUpInside)
-
-        addAutolayoutSubview(button)
-
-        bringSubviewToFront(button)
-        NSLayoutConstraint.activate([
-            button.centerXAnchor.constraint(equalTo: centerXAnchor),
-            button.topAnchor.constraint(equalTo: scanRectView.bottomAnchor, constant: 30)
-        ])
-    }
-
-    @objc private func toggleTorch() {
-        setTorchOn(captureDevice?.torchMode == .off)
-        UISelectionFeedbackGenerator().selectionChanged()
-    }
-
-    private func setTorchOn(_ isOn: Bool) {
-        do {
-            try captureDevice?.lockForConfiguration()
-            if isOn {
-                try captureDevice?.setTorchModeOn(level: AVCaptureDevice.maxAvailableTorchLevel)
-            } else {
-                captureDevice?.torchMode = .off
-            }
-            captureDevice?.unlockForConfiguration()
-        } catch {
-            Logger.error(error.localizedDescription)
-        }
     }
 
     override func layoutSubviews() {
@@ -188,6 +149,25 @@ final class QRCodeScannerView: UIView {
 
         captureSession.stopRunning()
         oldCode = nil
+    }
+
+    func toggleTorch() {
+        setTorchOn(captureDevice?.torchMode == .off)
+        UISelectionFeedbackGenerator().selectionChanged()
+    }
+
+    private func setTorchOn(_ isOn: Bool) {
+        do {
+            try captureDevice?.lockForConfiguration()
+            if isOn {
+                try captureDevice?.setTorchModeOn(level: AVCaptureDevice.maxAvailableTorchLevel)
+            } else {
+                captureDevice?.torchMode = .off
+            }
+            captureDevice?.unlockForConfiguration()
+        } catch {
+            Logger.error(error.localizedDescription)
+        }
     }
 }
 

@@ -12,9 +12,9 @@ import UIKit
 class QRCodeScannerViewController: UIViewController {
     // swiftlint:disable implicitly_unwrapped_optional
     private weak var scannerView: QRCodeScannerView!
-    private weak var pasteButton: UIButton!
+    weak var pasteButton: UIButton!
     // swiftlint:enable implicitly_unwrapped_optional
-    
+
     private let strategy: QRCodeScannerStrategy
 
     override var preferredStatusBarStyle: UIStatusBarStyle {
@@ -42,6 +42,8 @@ class QRCodeScannerViewController: UIViewController {
 
         navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .cancel, target: self, action: #selector(cancelButtonTapped(_:)))
 
+        navigationItem.leftBarButtonItem = UIBarButtonItem(image: Asset.iconFlashlight.image, style: .plain, target: self, action: #selector(toggleTorch))
+
         setupScannerView()
         setupPasteButton()
     }
@@ -60,15 +62,15 @@ class QRCodeScannerViewController: UIViewController {
 
     private func setupPasteButton() {
         let pasteButton = UIButton(type: .system)
-        pasteButton.setTitle("Paste", for: .normal)
+        pasteButton.setTitle(strategy.pasteButtonTitle, for: .normal)
         Style.Button.background.apply(to: pasteButton)
 
         view.addAutolayoutSubview(pasteButton)
 
         NSLayoutConstraint.activate([
             pasteButton.heightAnchor.constraint(equalToConstant: 56),
-            pasteButton.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 28),
-            view.trailingAnchor.constraint(equalTo: pasteButton.trailingAnchor, constant: 28),
+            pasteButton.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 20),
+            view.trailingAnchor.constraint(equalTo: pasteButton.trailingAnchor, constant: 20),
             view.safeAreaLayoutGuide.bottomAnchor.constraint(equalTo: pasteButton.bottomAnchor, constant: 20)
         ])
 
@@ -110,6 +112,10 @@ class QRCodeScannerViewController: UIViewController {
 
     @objc private func cancelButtonTapped(_ sender: Any) {
         dismiss(animated: true, completion: nil)
+    }
+
+    @objc private func toggleTorch() {
+        scannerView.toggleTorch()
     }
 }
 

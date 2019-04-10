@@ -199,6 +199,7 @@
 		AD7EDAE32108C4150058CCCA /* Wallet.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AD7EDAE22108C4150058CCCA /* Wallet.storyboard */; };
 		AD7EDAE52108C41D0058CCCA /* WalletViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD7EDAE42108C41D0058CCCA /* WalletViewController.swift */; };
 		AD7EDAE72108D39D0058CCCA /* ZapNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD7EDAE62108D39D0058CCCA /* ZapNavigationController.swift */; };
+		AD7FB3FA225E1BBF00C98A00 /* UIImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD7FB3F9225E1BBF00C98A00 /* UIImageView.swift */; };
 		AD8049B6224E896B00DA99F4 /* CircleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD8049B5224E896B00DA99F4 /* CircleView.swift */; };
 		AD81C21721B80FCD00FA3FA9 /* SafariSettingsItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD81C21621B80FCD00FA3FA9 /* SafariSettingsItem.swift */; };
 		AD81C21921B865E100FA3FA9 /* SyncPercentageEstimator.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD81C21821B865E100FA3FA9 /* SyncPercentageEstimator.swift */; };
@@ -221,6 +222,9 @@
 		ADA179C52152864E001401F3 /* Persistable.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD1EBA0020B2FD9D001FF67E /* Persistable.swift */; };
 		ADA179C62152864E001401F3 /* Storage.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADA865C120ED041F00B1B74B /* Storage.swift */; };
 		ADA2DCFF225CC817007482D9 /* SuggestedPeers.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADA2DCFE225CC817007482D9 /* SuggestedPeers.swift */; };
+		ADA2DD03225CDAED007482D9 /* ChannelQRCodeScannerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADA2DD02225CDAED007482D9 /* ChannelQRCodeScannerViewController.swift */; };
+		ADA2DD06225CDD03007482D9 /* SuggestedPeerCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADA2DD04225CDD03007482D9 /* SuggestedPeerCell.swift */; };
+		ADA2DD07225CDD03007482D9 /* SuggestedPeerCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = ADA2DD05225CDD03007482D9 /* SuggestedPeerCell.xib */; };
 		ADA3253621A81B5C00C5EAA2 /* MacaroonTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADA3253521A81B5C00C5EAA2 /* MacaroonTests.swift */; };
 		ADA3254021AD5B3400C5EAA2 /* Strings.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADA3253F21AD5B3300C5EAA2 /* Strings.swift */; };
 		ADA3254221AD8A6200C5EAA2 /* Assets.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADA3254121AD8A6200C5EAA2 /* Assets.swift */; };
@@ -683,6 +687,7 @@
 		AD7EDAE22108C4150058CCCA /* Wallet.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Wallet.storyboard; sourceTree = "<group>"; };
 		AD7EDAE42108C41D0058CCCA /* WalletViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WalletViewController.swift; sourceTree = "<group>"; };
 		AD7EDAE62108D39D0058CCCA /* ZapNavigationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ZapNavigationController.swift; sourceTree = "<group>"; };
+		AD7FB3F9225E1BBF00C98A00 /* UIImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIImageView.swift; sourceTree = "<group>"; };
 		AD8049B5224E896B00DA99F4 /* CircleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CircleView.swift; sourceTree = "<group>"; };
 		AD81C21621B80FCD00FA3FA9 /* SafariSettingsItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SafariSettingsItem.swift; sourceTree = "<group>"; };
 		AD81C21821B865E100FA3FA9 /* SyncPercentageEstimator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SyncPercentageEstimator.swift; sourceTree = "<group>"; };
@@ -716,6 +721,9 @@
 		ADA179C121526036001401F3 /* EventProtocols.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventProtocols.swift; sourceTree = "<group>"; };
 		ADA179C321527AEA001401F3 /* HistoryEventType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistoryEventType.swift; sourceTree = "<group>"; };
 		ADA2DCFE225CC817007482D9 /* SuggestedPeers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SuggestedPeers.swift; sourceTree = "<group>"; };
+		ADA2DD02225CDAED007482D9 /* ChannelQRCodeScannerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChannelQRCodeScannerViewController.swift; sourceTree = "<group>"; };
+		ADA2DD04225CDD03007482D9 /* SuggestedPeerCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SuggestedPeerCell.swift; sourceTree = "<group>"; };
+		ADA2DD05225CDD03007482D9 /* SuggestedPeerCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SuggestedPeerCell.xib; sourceTree = "<group>"; };
 		ADA3253521A81B5C00C5EAA2 /* MacaroonTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MacaroonTests.swift; sourceTree = "<group>"; };
 		ADA3253F21AD5B3300C5EAA2 /* Strings.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Strings.swift; sourceTree = "<group>"; };
 		ADA3254121AD8A6200C5EAA2 /* Assets.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Assets.swift; sourceTree = "<group>"; };
@@ -1133,9 +1141,12 @@
 		A02C9FBB202EE995009821B1 /* OpenChannel */ = {
 			isa = PBXGroup;
 			children = (
+				ADA2DD02225CDAED007482D9 /* ChannelQRCodeScannerViewController.swift */,
+				AD99C9F020907AB30061C565 /* OpenChannelQRCodeScannerStrategy.swift */,
 				A010094D2015F97F0001EF94 /* OpenChannelViewController.swift */,
 				A02C9FBC202EE9BE009821B1 /* OpenChannelViewModel.swift */,
-				AD99C9F020907AB30061C565 /* OpenChannelQRCodeScannerStrategy.swift */,
+				ADA2DD04225CDD03007482D9 /* SuggestedPeerCell.swift */,
+				ADA2DD05225CDD03007482D9 /* SuggestedPeerCell.xib */,
 				ADA2DCFE225CC817007482D9 /* SuggestedPeers.swift */,
 			);
 			path = OpenChannel;
@@ -1288,6 +1299,7 @@
 			isa = PBXGroup;
 			children = (
 				A08CF033201F5FCC000D5855 /* Array.swift */,
+				6A9518D9222DCFCA0008FE4F /* Array2DElement.swift */,
 				AD391D1F20D178C2007EE22A /* Bundle.swift */,
 				ADADAD59214126BB00A48E1F /* Date.swift */,
 				AD9BB2DF21836A54009DC878 /* DispatchQueue+Debounce.swift */,
@@ -1300,11 +1312,11 @@
 				A0A05A222013D9BB0007D1C9 /* UIColor.swift */,
 				ADE4CF1C20B5B2BE007C987A /* UIFont.swift */,
 				A0A05A2F2013EFC00007D1C9 /* UIImage.swift */,
+				AD7FB3F9225E1BBF00C98A00 /* UIImageView.swift */,
 				A0A05A5D2014A0DE0007D1C9 /* UITableView.swift */,
 				ADA81E9D210DE14100B7C6F2 /* UIView.swift */,
 				ADBA120520930C94001F7700 /* UIViewController.swift */,
 				A0919142203B152100FA525A /* UserDefaults.swift */,
-				6A9518D9222DCFCA0008FE4F /* Array2DElement.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -2503,6 +2515,7 @@
 				ADA58F9A22049047009A5494 /* ManageWallets.storyboard in Resources */,
 				AD7ED61E22087812007C5F2C /* ManageWalletTableViewCell.xib in Resources */,
 				AD391D2220D1798A007EE22A /* Media.xcassets in Resources */,
+				ADA2DD07225CDD03007482D9 /* SuggestedPeerCell.xib in Resources */,
 				ADEEB53821346DEA00D2F992 /* ModalPin.storyboard in Resources */,
 				AD391CDA20D16FE1007EE22A /* History.storyboard in Resources */,
 			);
@@ -3092,6 +3105,7 @@
 				AD391C3820D16EFA007EE22A /* UserDefaults.swift in Sources */,
 				AD391C2E20D16EFA007EE22A /* UIApplication.swift in Sources */,
 				AD035BFF2174A996005EA785 /* ChannelDetailViewController.swift in Sources */,
+				ADA2DD03225CDAED007482D9 /* ChannelQRCodeScannerViewController.swift in Sources */,
 				AD3DDC03213EE4000008379C /* RootTabBarController.swift in Sources */,
 				ADEEB5362134669B00D2F992 /* ModalPinViewController.swift in Sources */,
 				AD391CDB20D16FE1007EE22A /* HistoryViewController.swift in Sources */,
@@ -3107,6 +3121,7 @@
 				AD2884352126B51C003C3D94 /* ModalViewController.swift in Sources */,
 				AD391CAB20D16FA8007EE22A /* CurrencySettingsItem.swift in Sources */,
 				AD391C4420D16F0B007EE22A /* Style.swift in Sources */,
+				ADA2DD06225CDD03007482D9 /* SuggestedPeerCell.swift in Sources */,
 				AD391C2C20D16EFA007EE22A /* String.swift in Sources */,
 				AD292F9020E69F0E00211AE7 /* AuthenticationViewModel.swift in Sources */,
 				AD8049B6224E896B00DA99F4 /* CircleView.swift in Sources */,
@@ -3152,6 +3167,7 @@
 				ADA3254021AD5B3400C5EAA2 /* Strings.swift in Sources */,
 				AD391C6720D16F89007EE22A /* LoadingViewController.swift in Sources */,
 				AD3553E5224E32EA00B99ABC /* ChannelListHeaderView.swift in Sources */,
+				AD7FB3FA225E1BBF00C98A00 /* UIImageView.swift in Sources */,
 				AD391CB920D16FA8007EE22A /* SyncViewController.swift in Sources */,
 				AD391C5A20D16F7A007EE22A /* MnemonicPageViewController.swift in Sources */,
 				ADEB619C2214588A009D5707 /* WalletListViewController.swift in Sources */,

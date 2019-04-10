@@ -220,7 +220,7 @@ final class WalletCoordinator: NSObject, Coordinator {
 
     private func presentAddChannel() {
         let strategy = OpenChannelQRCodeScannerStrategy(lightningService: lightningService)
-        let viewController = UINavigationController(rootViewController: QRCodeScannerViewController(strategy: strategy))
+        let viewController = UINavigationController(rootViewController: ChannelQRCodeScannerViewController(strategy: strategy, network: lightningService.infoService.network.value))
         rootViewController.present(viewController, animated: true)
     }
 
