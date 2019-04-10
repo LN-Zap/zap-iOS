@@ -95,6 +95,8 @@
 "scene.open_channel.subtitle.minimum_size" = "Minimum channel size: %@";
 "scene.open_channel.subtitle.maximum_size" = "Maximum channel size: %@";
 "scene.open_channel.subtitle.balance" = "On-chain balance: %@";
+"scene.open_channel.suggested_peers.title" = "Suggested Peers";
+"scene.open_channel.paste_button.title" = "Paste Peer Address";
 
 "scene.pin.biometric.fallback.title" = "使用密码";
 "scene.pin.biometric.reason" = "访问安全数据";
@@ -119,6 +121,7 @@
 "scene.send.subtitle.on_chain_balance" = "On-chain balance: %@";
 "scene.send.subtitle.lightning_can_send_balance" = "Can send: %@";
 "scene.send.success_label" = "Payment Successful";
+"scene.send.paste_button.title" = "Paste Address";
 
 "scene.connect_remote_node.title" = "连接远程节点";
 "scene.connect_remote_node.empty_state" = "扫描lndconnect，BTCPay生成的QRCode，或者运行'lndconnect -j'然后粘贴链接来连接到你的节点。";
