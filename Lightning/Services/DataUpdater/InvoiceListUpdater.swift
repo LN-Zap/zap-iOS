@@ -22,7 +22,7 @@ final class InvoiceListUpdater: ListUpdater {
             if case .success(let invoice) = $0 {
                 Logger.info("new invoice: \(invoice)")
 
-                self?.invoices.append(invoice)
+                self?.appendOrReplace(invoice)
 
                 if invoice.state == .settled {
                     NotificationCenter.default.post(name: .receivedTransaction, object: nil, userInfo: [LightningService.transactionNotificationName: invoice])
@@ -36,6 +36,16 @@ final class InvoiceListUpdater: ListUpdater {
             if case .success(let invoices) = $0 {
                 self?.invoices.replace(with: invoices)
             }
+        }
+    }
+
+    private func appendOrReplace(_ invoice: Invoice) {
+        invoices.batchUpdate {
+            for (index, item) in $0.array.enumerated() where item.id == invoice.id {
+                $0.remove(at: index)
+                break
+            }
+            $0.append(invoice)
         }
     }
 }

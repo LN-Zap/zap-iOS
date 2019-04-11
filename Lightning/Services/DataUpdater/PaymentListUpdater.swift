@@ -27,6 +27,16 @@ final class PaymentListUpdater: ListUpdater {
     }
 
     func add(payment: Payment) {
-        payments.append(payment)
+        appendOrReplace(payment)
+    }
+
+    private func appendOrReplace(_ payment: Payment) {
+        payments.batchUpdate {
+            for (index, item) in $0.array.enumerated() where item.id == payment.id {
+                $0.remove(at: index)
+                break
+            }
+            $0.append(payment)
+        }
     }
 }

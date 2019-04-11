@@ -22,7 +22,7 @@ final class TransactionListUpdater: ListUpdater {
             if case .success(let transaction) = $0 {
                 Logger.info("new transaction: \(transaction)")
 
-                self?.transactions.append(transaction)
+                self?.appendOrReplace(transaction)
                 NotificationCenter.default.post(name: .receivedTransaction, object: nil, userInfo: [LightningService.transactionNotificationName: transaction])
             }
         }
@@ -33,6 +33,16 @@ final class TransactionListUpdater: ListUpdater {
             if case .success(let transactions) = $0 {
                 self?.transactions.replace(with: transactions)
             }
+        }
+    }
+
+    private func appendOrReplace(_ transaction: Transaction) {
+        transactions.batchUpdate {
+            for (index, item) in $0.array.enumerated() where item.id == transaction.id {
+                $0.remove(at: index)
+                break
+            }
+            $0.append(transaction)
         }
     }
 }
