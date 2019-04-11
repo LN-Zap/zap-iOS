@@ -95,8 +95,8 @@
 "scene.open_channel.subtitle.minimum_size" = "Minimale Kanalgrösse: %@";
 "scene.open_channel.subtitle.maximum_size" = "Maximale Kanalgrösse: %@";
 "scene.open_channel.subtitle.balance" = "On chain Saldo: %@";
-"scene.open_channel.suggested_peers.title" = "Suggested Peers";
-"scene.open_channel.paste_button.title" = "Paste Peer Address";
+"scene.open_channel.suggested_peers.title" = "Vorgeschlagene Peers";
+"scene.open_channel.paste_button.title" = "Peer-Adresse einfügen";
 
 "scene.pin.biometric.fallback.title" = "PIN eingeben";
 "scene.pin.biometric.reason" = "Um auf die Sicherheitsdaten zu zugreifen";
