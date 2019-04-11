@@ -62,7 +62,8 @@ public final class ChannelService {
     }
 
     private func openConnectedChannel(pubKey: String, amount: Satoshi, completion: @escaping (Swift.Result<ChannelPoint, LndApiError>) -> Void) {
-        api.openChannel(pubKey: pubKey, amount: amount) {
+        api.openChannel(pubKey: pubKey, amount: amount) { [channelListUpdater] in
+            channelListUpdater.update()
             completion($0)
         }
     }
