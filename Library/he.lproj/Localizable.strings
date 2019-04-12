@@ -80,6 +80,7 @@
 "scene.channels.header.total_can_send" = "Total can send:";
 "scene.channels.header.total_can_receive" = "Total can receive:";
 "scene.channels.header.total_pending" = "Total pending:";
+"scene.channels.header.offline" = "Total offline:";
 "scene.channels.close.title" = "סגור ערוץ";
 "scene.channels.close.message" = "אתה בטוח שברצונך לסגור את הערוץ עם node %@?";
 "scene.channels.force_close.title" = "כפה את סגירת הערוץ";
