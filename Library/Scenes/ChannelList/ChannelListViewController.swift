@@ -42,6 +42,7 @@ final class ChannelListViewController: UIViewController {
         tableView.delegate = self
         tableView.backgroundColor = UIColor.Zap.deepSeaBlue
         tableView.rowHeight = 100
+        tableView.tableFooterView = UIView(frame: CGRect(x: 0, y: 0, width: tableView.bounds.width, height: 1))
 
         navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(presentAddChannel))
         navigationItem.largeTitleDisplayMode = .never
