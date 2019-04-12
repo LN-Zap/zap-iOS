@@ -80,6 +80,7 @@
 "scene.channels.header.total_can_send" = "Total can send:";
 "scene.channels.header.total_can_receive" = "Total can receive:";
 "scene.channels.header.total_pending" = "Total pending:";
+"scene.channels.header.offline" = "Total offline:";
 "scene.channels.close.title" = "Inchide canal";
 "scene.channels.close.message" = "Chiar vrei sa inchidezi acest canal cu nod %@?";
 "scene.channels.force_close.title" = "Inchidere fortata canal";
