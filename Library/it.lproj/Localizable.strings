@@ -80,6 +80,7 @@
 "scene.channels.header.total_can_send" = "∑ Capacità d'invio:";
 "scene.channels.header.total_can_receive" = "∑ Capacità ricezione:";
 "scene.channels.header.total_pending" = "∑ Capacità in sospeso";
+"scene.channels.header.offline" = "Total offline:";
 "scene.channels.close.title" = "Chiudi Canale";
 "scene.channels.close.message" = "Vuoi davvero chiudere il canale con il nodo %@?";
 "scene.channels.force_close.title" = "Forza Chiusura Canale";
