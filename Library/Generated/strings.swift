@@ -151,6 +151,8 @@ internal enum L10n {
         internal static let title = L10n.tr("Localizable", "scene.channels.force_close.title")
       }
       internal enum Header {
+        /// Total offline:
+        internal static let offline = L10n.tr("Localizable", "scene.channels.header.offline")
         /// Total can receive:
         internal static let totalCanReceive = L10n.tr("Localizable", "scene.channels.header.total_can_receive")
         /// Total can send:
@@ -313,7 +315,7 @@ internal enum L10n {
       /// Open Channel
       internal static let title = L10n.tr("Localizable", "scene.open_channel.title")
       internal enum PasteButton {
-        /// Paste channel uri
+        /// Paste Peer Address
         internal static let title = L10n.tr("Localizable", "scene.open_channel.paste_button.title")
       }
       internal enum Subtitle {

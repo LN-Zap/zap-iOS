@@ -45,6 +45,7 @@ final class ChannelListViewModel: NSObject {
     let totalLocal = Observable<Satoshi>(0)
     let totalRemote = Observable<Satoshi>(0)
     let totalPending = Observable<Satoshi>(0)
+    let totalOffline = Observable<Satoshi>(0)
 
     init(channelService: ChannelService) {
         self.channelService = channelService
@@ -81,14 +82,12 @@ final class ChannelListViewModel: NSObject {
 
         dataSource.replace(with: sortedViewModels, performDiff: true)
 
-        totalLocal.value = open.reduce(0) { $0 + $1.localBalance }
+        totalLocal.value = open.reduce(0) { $0 + ($1.state == .active ? $1.localBalance : 0) }
+        totalOffline.value = open.reduce(0) { $0 + ($1.state == .inactive ? $1.localBalance : 0) }
         totalRemote.value = open.reduce(0) { $0 + $1.remoteBalance }
+
         totalPending.value = pending.reduce(0) { $0 + $1.localBalance }
     }
-
-//    func refresh() {
-//        channelService.update()
-//    }
 
     func close(_ channel: Channel, completion: @escaping (Swift.Result<CloseStatusUpdate, LndApiError>) -> Void) {
         channelService.close(channel, completion: completion)

@@ -9,6 +9,13 @@ import Bond
 import Lightning
 import UIKit
 
+enum ChannelBalanceColor {
+    static var local = UIColor.Zap.lightningOrange
+    static var remote = UIColor.Zap.white
+    static let pending = UIColor.Zap.gray
+    static let offline = UIColor.Zap.superRed
+}
+
 final class ChannelListViewController: UIViewController {
     @IBOutlet private weak var tableView: UITableView!
     @IBOutlet private var headerView: ChannelListHeaderView!
@@ -68,7 +75,7 @@ extension ChannelListViewController: UITableViewDelegate {
     }
 
     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
-        return 76
+        return headerView.preferredHeight(for: channelListViewModel)
     }
 
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
