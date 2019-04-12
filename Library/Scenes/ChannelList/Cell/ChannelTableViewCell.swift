@@ -48,6 +48,14 @@ class ChannelTableViewCell: BondTableViewCell {
         let remoteWidthMultiplier = multiplierFor(balance: channelViewModel.channel.remoteBalance, maxBalance: maxBalance)
         remoteAmountViewWidthConstraint = remoteAmountView.widthAnchor.constraint(equalTo: remoteBalanceBackgroundView.widthAnchor, multiplier: remoteWidthMultiplier, constant: 0)
         remoteAmountViewWidthConstraint?.isActive = true
+
+        if channelViewModel.channel.state == .inactive {
+            localAmountView.gradient = [ChannelBalanceColor.offline]
+        } else if channelViewModel.channel.state == .active {
+            localAmountView.gradient = [UIColor.Zap.lightningOrangeGradient, UIColor.Zap.lightningOrange]
+        } else {
+            localAmountView.gradient = [ChannelBalanceColor.pending]
+        }
     }
 
     private let minBalanceMultiplier = 6 / ((UIScreen.main.bounds.width - 30 - 6) / 2)
