@@ -80,6 +80,7 @@
 "scene.channels.header.total_can_send" = "Total peut envoyer :";
 "scene.channels.header.total_can_receive" = "Total peut recevoir :";
 "scene.channels.header.total_pending" = "Total en attente :";
+"scene.channels.header.offline" = "Total offline:";
 "scene.channels.close.title" = "Fermer le canal";
 "scene.channels.close.message" = "Voulez-vous vraiment fermer le canal avec nœud %@ ?";
 "scene.channels.force_close.title" = "Fermer de force le canal";
