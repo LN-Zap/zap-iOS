@@ -80,6 +80,7 @@
 "scene.channels.header.total_can_send" = "Kann insgesamt senden:";
 "scene.channels.header.total_can_receive" = "Kann insgesamt erhalten:";
 "scene.channels.header.total_pending" = "Insgesamt hängig:";
+"scene.channels.header.offline" = "Total offline:";
 "scene.channels.close.title" = "Channel schließen";
 "scene.channels.close.message" = "Willst du wirklich den Kanal mit dem Knoten %@ schließen?";
 "scene.channels.force_close.title" = "Erzwungene Schließung des Channels";
