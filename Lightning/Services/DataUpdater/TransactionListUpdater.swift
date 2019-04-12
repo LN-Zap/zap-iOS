@@ -10,10 +10,12 @@ import Foundation
 import Logger
 import SwiftLnd
 
-final class TransactionListUpdater: ListUpdater {
+final class TransactionListUpdater: GenericListUpdater {
+    typealias Item = Transaction
+
     private let api: LightningApiProtocol
 
-    let transactions = MutableObservableArray<Transaction>()
+    let items = MutableObservableArray<Transaction>()
 
     init(api: LightningApiProtocol) {
         self.api = api
@@ -22,8 +24,9 @@ final class TransactionListUpdater: ListUpdater {
             if case .success(let transaction) = $0 {
                 Logger.info("new transaction: \(transaction)")
 
-                self?.appendOrReplace(transaction)
-                NotificationCenter.default.post(name: .receivedTransaction, object: nil, userInfo: [LightningService.transactionNotificationName: transaction])
+                if self?.appendOrReplace(transaction) == true {
+                    NotificationCenter.default.post(name: .receivedTransaction, object: nil, userInfo: [LightningService.transactionNotificationName: transaction])
+                }
             }
         }
     }
@@ -31,18 +34,8 @@ final class TransactionListUpdater: ListUpdater {
     func update() {
         api.transactions { [weak self] in
             if case .success(let transactions) = $0 {
-                self?.transactions.replace(with: transactions)
+                self?.items.replace(with: transactions)
             }
-        }
-    }
-
-    private func appendOrReplace(_ transaction: Transaction) {
-        transactions.batchUpdate {
-            for (index, item) in $0.array.enumerated() where item.id == transaction.id {
-                $0.remove(at: index)
-                break
-            }
-            $0.append(transaction)
         }
     }
 }

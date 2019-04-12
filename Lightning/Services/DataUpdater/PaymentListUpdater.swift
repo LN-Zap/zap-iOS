@@ -9,10 +9,12 @@ import Bond
 import Foundation
 import SwiftLnd
 
-final class PaymentListUpdater: ListUpdater {
+final class PaymentListUpdater: GenericListUpdater {
+    typealias Item = Payment
+
     private let api: LightningApiProtocol
 
-    let payments = MutableObservableArray<Payment>()
+    let items = MutableObservableArray<Payment>()
 
     init(api: LightningApiProtocol) {
         self.api = api
@@ -21,22 +23,12 @@ final class PaymentListUpdater: ListUpdater {
     func update() {
         api.payments { [weak self] in
             if case .success(let payments) = $0 {
-                self?.payments.replace(with: payments)
+                self?.items.replace(with: payments)
             }
         }
     }
 
     func add(payment: Payment) {
         appendOrReplace(payment)
-    }
-
-    private func appendOrReplace(_ payment: Payment) {
-        payments.batchUpdate {
-            for (index, item) in $0.array.enumerated() where item.id == payment.id {
-                $0.remove(at: index)
-                break
-            }
-            $0.append(payment)
-        }
     }
 }
