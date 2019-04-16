@@ -7,6 +7,9 @@
 
 "link.help" = "https://ln-zap.github.io/zap-tutorials/";
 "link.help.zapconnect" = "https://ln-zap.github.io/zap-tutorials/iOS-remote-node-setup";
+"link.privacy" = "http://zap.jackmallers.com/privacy";
+"link.bug_report" = "https://github.com/LN-Zap/zap-iOS/issues";
+"link.lnd_releases" = "https://github.com/lightningnetwork/lnd/releases";
 
 "error.wrong_uri_format" = "Format de lien inconnu.";
 "error.wrong_uri_network" = "Vous avez essayé d'ouvrir un lien pour %@ mais votre node est connecté à %@.";
@@ -44,7 +47,9 @@
 "scene.history.empty_state_label" = "Aucune transaction 🙁";
 
 "scene.settings.title" = "Paramètres";
+"scene.settings.section.warning" = "Mise en garde";
 "scene.settings.section.wallet" = "Portefeuille";
+"scene.settings.item.version_warning" = "Your lnd is outdated (%@). Zap iOS works best with lnd version %@ or above.";
 "scene.settings.item.bitcoin_unit" = "Unité Bitcoin";
 "scene.settings.item.currency" = "Devise";
 "scene.settings.item.block_explorer" = "Explorateur de bloc";
@@ -67,7 +72,7 @@
 "scene.request.on_chain_button" = "On-chain";
 "scene.request.generate_request_button" = "Générer une demande";
 "scene.request.lightning_header_title" = "Demande de Paiement Lightning";
-"scene.request.on_chain_header_title" = "Demande de Paiement On Chain";
+"scene.request.on_chain_header_title" = "On-Chain Payment Request";
 "scene.request.next_button_title" = "Suivant";
 "scene.request.subtitle.lightning" = "Can receive: %@";
 
@@ -75,6 +80,7 @@
 "scene.channels.header.total_can_send" = "Total peut envoyer :";
 "scene.channels.header.total_can_receive" = "Total peut recevoir :";
 "scene.channels.header.total_pending" = "Total en attente :";
+"scene.channels.header.offline" = "Total offline:";
 "scene.channels.close.title" = "Fermer le canal";
 "scene.channels.close.message" = "Voulez-vous vraiment fermer le canal avec nœud %@ ?";
 "scene.channels.force_close.title" = "Fermer de force le canal";
@@ -89,7 +95,9 @@
 "scene.open_channel.add_button" = "Ouvrir un canal";
 "scene.open_channel.subtitle.minimum_size" = "Minimum channel size: %@";
 "scene.open_channel.subtitle.maximum_size" = "Maximum channel size: %@";
-"scene.open_channel.subtitle.balance" = "On chain balance: %@";
+"scene.open_channel.subtitle.balance" = "On-chain balance: %@";
+"scene.open_channel.suggested_peers.title" = "Suggested Peers";
+"scene.open_channel.paste_button.title" = "Paste Peer Address";
 
 "scene.pin.biometric.fallback.title" = "Utiliser un code d’accès";
 "scene.pin.biometric.reason" = "Pour accéder aux données sécurisées";
@@ -108,9 +116,13 @@
 "scene.send.memo_headline" = "Note :";
 "scene.send.sending" = "Envoi en cours...";
 "scene.send.lightning.title" = "Envoyer un Paiement Lightning";
-"scene.send.on_chain.title" = "Envoyer On Chain";
+"scene.send.on_chain.title" = "Send On-Chain";
 "scene.send.authentication_failed" = "Echec de l'authentification";
 "scene.send.maximum_fee" = "Frais Estimés:";
+"scene.send.subtitle.on_chain_balance" = "On-chain balance: %@";
+"scene.send.subtitle.lightning_can_send_balance" = "Can send: %@";
+"scene.send.success_label" = "Payment Successful";
+"scene.send.paste_button.title" = "Paste Address";
 
 "scene.connect_remote_node.title" = "Connection d'un noeud distant";
 "scene.connect_remote_node.empty_state" = "Scannez le QRCode généré par lndconnect, BTCPay Server, ou collez le lien que vous obtenez en exécutant 'lndconnect -j' pour vous connecter à votre nœud.";
@@ -127,7 +139,7 @@
 "scene.connect_remote_node.edit_url.title" = "Adresse";
 
 "scene.create_wallet.title" = "Créer un portefeuille";
-"scene.create_wallet.description_label" = "Assurez-vous de conserver le mnémonique dans un endroit sûr.";
+"scene.create_wallet.description_label" = "Make sure to store the mnemonic at a safe location.";
 "scene.create_wallet.next_button" = "Suivant";
 
 "scene.recover_wallet.title" = "Récupérer un portefeuille";
@@ -186,17 +198,18 @@
 
 "scene.filter.title" = "Filtre";
 "scene.filter.section_header.transaction_types" = "Types de transaction";
-"scene.filter.section_header.advanced" = "Avancé";
 "scene.filter.displayOnChainTransactions" = "Paiements on chain";
-"scene.filter.display_unknown_transaction_type" = "Transactions internes";
+"scene.filter.display_expired_invoices" = "Expired Invoices";
 "scene.filter.displayLightningPayments" = "Paiements Lightning";
 "scene.filter.displayLightningInvoices" = "Factures Créées";
 "scene.filter.displayChannelEvents" = "Evènements sur les Channels";
-"scene.filter.displayFailedPaymentEvents" = "Paiements échoués";
 
 "scene.qrcode_scanner.top_label" = "Scannez le Code QR";
 
 "scene.wallet.title" = "Portefeuille";
+"scene.wallet.detail.on_chain" = "On-chain:";
+"scene.wallet.detail.lightning" = "Lightning:";
+"scene.wallet.detail.pending" = "Pending:";
 
 "scene.time_lock.headline" = "Mot de passe erroné";
 "scene.time_lock.description" = "Votre portefeuille est verrouillé pour :";
