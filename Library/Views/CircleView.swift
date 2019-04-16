@@ -8,7 +8,11 @@
 import Foundation
 
 final class CircleView: UIView {
-    var color = UIColor.Zap.superGreen
+    var color = UIColor.Zap.superGreen {
+        didSet {
+            setNeedsDisplay()
+        }
+    }
 
     override func draw(_ rect: CGRect) {
         guard let context = UIGraphicsGetCurrentContext() else { return }

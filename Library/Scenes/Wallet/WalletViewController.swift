@@ -175,7 +175,7 @@ final class WalletViewController: UIViewController {
     private func setupDetailView() {
         segmentStackView.clear()
         for segment in walletViewModel.balanceSegments {
-            segmentStackView.addSegment(color: segment.segment.color, title: segment.segment.localized, amount: segment.amount)
+            segmentStackView.addSegment(segment.segment, color: segment.segment.color, title: segment.segment.localized, amount: segment.amount)
         }
 
         segmentBackground.layer.cornerRadius = buttonCornerRadius
@@ -261,7 +261,7 @@ private extension Bitcoin {
 }
 
 extension UIStackView {
-    func addSegment(color: UIColor, title: String, amount: Signal<Decimal, NoError>) {
+    func addSegment(_ segment: Segment, color: UIColor, title: String, amount: Observable<Satoshi>) {
         let circleView = CircleView(frame: .zero)
         circleView.backgroundColor = .clear
         circleView.color = color
@@ -286,5 +286,14 @@ extension UIStackView {
         ])
 
         addArrangedSubview(horizontalStackView)
+
+        if segment == .pending {
+            amount
+                .map { $0 <= 0 }
+                .observeOn(DispatchQueue.main)
+                .bind(to: horizontalStackView.reactive.isHidden)
+                .dispose(in: reactive.bag)
+        }
+
     }
 }

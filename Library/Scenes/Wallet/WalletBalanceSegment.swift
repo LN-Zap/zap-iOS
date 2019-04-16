@@ -5,8 +5,8 @@
 //  Copyright © 2019 Zap. All rights reserved.
 //
 
+import Bond
 import Foundation
-import ReactiveKit
 import SwiftBTC
 
 enum Segment: Localizable {
@@ -39,5 +39,5 @@ enum Segment: Localizable {
 
 struct WalletBalanceSegment {
     let segment: Segment
-    let amount: Signal<Satoshi, NoError>
+    let amount: Observable<Satoshi>
 }

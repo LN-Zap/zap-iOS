@@ -31,9 +31,9 @@ final class WalletViewModel: NSObject {
 
         let balanceService = lightningService.balanceService
         balanceSegments = [
-            WalletBalanceSegment(segment: .onChain, amount: balanceService.onChain.toSignal()),
-            WalletBalanceSegment(segment: .lightning, amount: balanceService.lightning.toSignal()),
-            WalletBalanceSegment(segment: .pending, amount: balanceService.pending.toSignal())
+            WalletBalanceSegment(segment: .onChain, amount: balanceService.onChain),
+            WalletBalanceSegment(segment: .lightning, amount: balanceService.lightning),
+            WalletBalanceSegment(segment: .pending, amount: balanceService.pending)
         ]
 
         super.init()
