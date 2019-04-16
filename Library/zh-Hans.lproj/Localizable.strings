@@ -7,6 +7,9 @@
 
 "link.help" = "https://ln-zap.github.io/zap-tutorials/";
 "link.help.zapconnect" = "https://ln-zap.github.io/zap-tutorials/iOS-remote-node-setup";
+"link.privacy" = "http://zap.jackmallers.com/privacy";
+"link.bug_report" = "https://github.com/LN-Zap/zap-iOS/issues";
+"link.lnd_releases" = "https://github.com/lightningnetwork/lnd/releases";
 
 "error.wrong_uri_format" = "未知的链接格式。";
 "error.wrong_uri_network" = "尝试链接到 %@, 但目前您的节点已连接到 %@。";
@@ -44,7 +47,9 @@
 "scene.history.empty_state_label" = "0个交易🙁";
 
 "scene.settings.title" = "设置";
+"scene.settings.section.warning" = "Warning";
 "scene.settings.section.wallet" = "钱包";
+"scene.settings.item.version_warning" = "Your lnd is outdated (%@). Zap iOS works best with lnd version %@ or above.";
 "scene.settings.item.bitcoin_unit" = "比特币单位";
 "scene.settings.item.currency" = "货币";
 "scene.settings.item.block_explorer" = "区块浏览器";
@@ -67,7 +72,7 @@
 "scene.request.on_chain_button" = "链上";
 "scene.request.generate_request_button" = "生成请求";
 "scene.request.lightning_header_title" = "闪电网络支付请求";
-"scene.request.on_chain_header_title" = "链上支付请求";
+"scene.request.on_chain_header_title" = "On-Chain Payment Request";
 "scene.request.next_button_title" = "下一个";
 "scene.request.subtitle.lightning" = "Can receive: %@";
 
@@ -75,6 +80,7 @@
 "scene.channels.header.total_can_send" = "Total can send:";
 "scene.channels.header.total_can_receive" = "Total can receive:";
 "scene.channels.header.total_pending" = "Total pending:";
+"scene.channels.header.offline" = "Total offline:";
 "scene.channels.close.title" = "关闭通道";
 "scene.channels.close.message" = "是否确实要关闭节点 %@ 的通道？";
 "scene.channels.force_close.title" = "强制关闭通道";
@@ -89,7 +95,9 @@
 "scene.open_channel.add_button" = "打开通道";
 "scene.open_channel.subtitle.minimum_size" = "Minimum channel size: %@";
 "scene.open_channel.subtitle.maximum_size" = "Maximum channel size: %@";
-"scene.open_channel.subtitle.balance" = "On chain balance: %@";
+"scene.open_channel.subtitle.balance" = "On-chain balance: %@";
+"scene.open_channel.suggested_peers.title" = "Suggested Peers";
+"scene.open_channel.paste_button.title" = "Paste Peer Address";
 
 "scene.pin.biometric.fallback.title" = "使用密码";
 "scene.pin.biometric.reason" = "访问安全数据";
@@ -108,9 +116,13 @@
 "scene.send.memo_headline" = "备注:";
 "scene.send.sending" = "发送中。。。";
 "scene.send.lightning.title" = "通过闪电网络支付";
-"scene.send.on_chain.title" = "链上交易";
+"scene.send.on_chain.title" = "Send On-Chain";
 "scene.send.authentication_failed" = "身份验证失败";
 "scene.send.maximum_fee" = "预计费用:";
+"scene.send.subtitle.on_chain_balance" = "On-chain balance: %@";
+"scene.send.subtitle.lightning_can_send_balance" = "Can send: %@";
+"scene.send.success_label" = "Payment Successful";
+"scene.send.paste_button.title" = "Paste Address";
 
 "scene.connect_remote_node.title" = "连接远程节点";
 "scene.connect_remote_node.empty_state" = "扫描lndconnect，BTCPay生成的QRCode，或者运行'lndconnect -j'然后粘贴链接来连接到你的节点。";
@@ -127,7 +139,7 @@
 "scene.connect_remote_node.edit_url.title" = "地址";
 
 "scene.create_wallet.title" = "创建钱包";
-"scene.create_wallet.description_label" = "请确保将助记词存储在安全的地方。";
+"scene.create_wallet.description_label" = "Make sure to store the mnemonic at a safe location.";
 "scene.create_wallet.next_button" = "下一个";
 
 "scene.recover_wallet.title" = "恢复钱包";
@@ -186,17 +198,18 @@
 
 "scene.filter.title" = "过滤";
 "scene.filter.section_header.transaction_types" = "交易类型";
-"scene.filter.section_header.advanced" = "高级";
 "scene.filter.displayOnChainTransactions" = "链上付款";
-"scene.filter.display_unknown_transaction_type" = "内部交易";
+"scene.filter.display_expired_invoices" = "Expired Invoices";
 "scene.filter.displayLightningPayments" = "闪电网络支付";
 "scene.filter.displayLightningInvoices" = "已创建的单据";
 "scene.filter.displayChannelEvents" = "通道事件";
-"scene.filter.displayFailedPaymentEvents" = "失败的付款";
 
 "scene.qrcode_scanner.top_label" = "扫描 QR 码";
 
 "scene.wallet.title" = "钱包";
+"scene.wallet.detail.on_chain" = "On-chain:";
+"scene.wallet.detail.lightning" = "Lightning:";
+"scene.wallet.detail.pending" = "Pending:";
 
 "scene.time_lock.headline" = "密码错误";
 "scene.time_lock.description" = "你的钱包被锁住:";
