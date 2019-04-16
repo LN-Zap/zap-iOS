@@ -7,6 +7,9 @@
 
 "link.help" = "https://ln-zap.github.io/zap-tutorials";
 "link.help.zapconnect" = "https://ln-zap.github.io/zap-tutorials/iOS-remote-node-setup";
+"link.privacy" = "http://zap.jackmallers.com/privacy";
+"link.bug_report" = "https://github.com/LN-Zap/zap-iOS/issues";
+"link.lnd_releases" = "https://github.com/lightningnetwork/lnd/releases";
 
 "error.wrong_uri_format" = "Ukendt link format.";
 "error.wrong_uri_network" = "Du prøvede at åbne et link til %@, men din node er forbundet til %@.";
@@ -44,7 +47,9 @@
 "scene.history.empty_state_label" = "0 transaktioner 🙁";
 
 "scene.settings.title" = "Indstillinger";
+"scene.settings.section.warning" = "Warning";
 "scene.settings.section.wallet" = "Tegnebog";
+"scene.settings.item.version_warning" = "Your lnd is outdated (%@). Zap iOS works best with lnd version %@ or above.";
 "scene.settings.item.bitcoin_unit" = "Bitcoin enhed";
 "scene.settings.item.currency" = "Valuta";
 "scene.settings.item.block_explorer" = "Blok Explorer";
@@ -67,7 +72,7 @@
 "scene.request.on_chain_button" = "På-kæde";
 "scene.request.generate_request_button" = "Generer anmodning";
 "scene.request.lightning_header_title" = "Lightning betalings anmodning";
-"scene.request.on_chain_header_title" = "On Chain betalings anmodning";
+"scene.request.on_chain_header_title" = "On-Chain Payment Request";
 "scene.request.next_button_title" = "Næste";
 "scene.request.subtitle.lightning" = "Can receive: %@";
 
@@ -75,6 +80,7 @@
 "scene.channels.header.total_can_send" = "Total can send:";
 "scene.channels.header.total_can_receive" = "Total can receive:";
 "scene.channels.header.total_pending" = "Total pending:";
+"scene.channels.header.offline" = "Total offline:";
 "scene.channels.close.title" = "Luk kanal";
 "scene.channels.close.message" = "Vil du lukke kanalen med node %@?";
 "scene.channels.force_close.title" = "Tvangsluk kanal";
@@ -89,7 +95,9 @@
 "scene.open_channel.add_button" = "Åben kanal";
 "scene.open_channel.subtitle.minimum_size" = "Minimum channel size: %@";
 "scene.open_channel.subtitle.maximum_size" = "Maximum channel size: %@";
-"scene.open_channel.subtitle.balance" = "On chain balance: %@";
+"scene.open_channel.subtitle.balance" = "On-chain balance: %@";
+"scene.open_channel.suggested_peers.title" = "Suggested Peers";
+"scene.open_channel.paste_button.title" = "Paste Peer Address";
 
 "scene.pin.biometric.fallback.title" = "Brug adgangskode";
 "scene.pin.biometric.reason" = "For at få adgang til sikre data";
@@ -108,9 +116,13 @@
 "scene.send.memo_headline" = "Memo:";
 "scene.send.sending" = "Sender...";
 "scene.send.lightning.title" = "Send Lightning betaling";
-"scene.send.on_chain.title" = "Send On Chain";
+"scene.send.on_chain.title" = "Send On-Chain";
 "scene.send.authentication_failed" = "Godkendelse mislykkedes";
 "scene.send.maximum_fee" = "Forventet gebyr:";
+"scene.send.subtitle.on_chain_balance" = "On-chain balance: %@";
+"scene.send.subtitle.lightning_can_send_balance" = "Can send: %@";
+"scene.send.success_label" = "Payment Successful";
+"scene.send.paste_button.title" = "Paste Address";
 
 "scene.connect_remote_node.title" = "Tilslut ekstern Node";
 "scene.connect_remote_node.empty_state" = "Skan QR koden genereret af lndconnect, BTCPay Server, eller indsæt linket du får når du kører 'lndconnect -j' for at tilslutte til dit node.";
@@ -127,7 +139,7 @@
 "scene.connect_remote_node.edit_url.title" = "Adresse";
 
 "scene.create_wallet.title" = "Opret tegnebog";
-"scene.create_wallet.description_label" = "Sørg for at gemme huskeregel på et sikkert sted.";
+"scene.create_wallet.description_label" = "Make sure to store the mnemonic at a safe location.";
 "scene.create_wallet.next_button" = "Næste";
 
 "scene.recover_wallet.title" = "Genskab tegnebog";
@@ -186,17 +198,18 @@
 
 "scene.filter.title" = "Filtrer";
 "scene.filter.section_header.transaction_types" = "Transaktionstyper";
-"scene.filter.section_header.advanced" = "Avanceret";
 "scene.filter.displayOnChainTransactions" = "On-chain betaling";
-"scene.filter.display_unknown_transaction_type" = "Intern transaktioner";
+"scene.filter.display_expired_invoices" = "Expired Invoices";
 "scene.filter.displayLightningPayments" = "Lightning betalinger";
 "scene.filter.displayLightningInvoices" = "Skabte fakturaer";
 "scene.filter.displayChannelEvents" = "Kanal begivenheder";
-"scene.filter.displayFailedPaymentEvents" = "Mislykket betalinger";
 
 "scene.qrcode_scanner.top_label" = "Skan QR-kode";
 
 "scene.wallet.title" = "Wallet";
+"scene.wallet.detail.on_chain" = "On-chain:";
+"scene.wallet.detail.lightning" = "Lightning:";
+"scene.wallet.detail.pending" = "Pending:";
 
 "scene.time_lock.headline" = "Forkert Passcode";
 "scene.time_lock.description" = "Din wallet er låst i:";

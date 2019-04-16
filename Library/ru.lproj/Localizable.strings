@@ -7,6 +7,9 @@
 
 "link.help" = "https://ln-zap.github.io/zap-tutorials/";
 "link.help.zapconnect" = "https://ln-zap.github.io/zap-tutorials/iOS-remote-node-setup";
+"link.privacy" = "http://zap.jackmallers.com/privacy";
+"link.bug_report" = "https://github.com/LN-Zap/zap-iOS/issues";
+"link.lnd_releases" = "https://github.com/lightningnetwork/lnd/releases";
 
 "error.wrong_uri_format" = "Неизвестный формат ссылки.";
 "error.wrong_uri_network" = "Вы пытались открыть ссылку для %@, но ваш узел подключен к %@.";
@@ -44,7 +47,9 @@
 "scene.history.empty_state_label" = "0 транзакций 🙁";
 
 "scene.settings.title" = "Настройки";
+"scene.settings.section.warning" = "Warning";
 "scene.settings.section.wallet" = "Кошелек";
+"scene.settings.item.version_warning" = "Your lnd is outdated (%@). Zap iOS works best with lnd version %@ or above.";
 "scene.settings.item.bitcoin_unit" = "Биткоин часть";
 "scene.settings.item.currency" = "Валюта";
 "scene.settings.item.block_explorer" = "Обзор Блоков";
@@ -67,7 +72,7 @@
 "scene.request.on_chain_button" = "On-chain";
 "scene.request.generate_request_button" = "Создать Запрос";
 "scene.request.lightning_header_title" = "Запрос На Оплату Lightning";
-"scene.request.on_chain_header_title" = "Запрос на оплату On Chain";
+"scene.request.on_chain_header_title" = "On-Chain Payment Request";
 "scene.request.next_button_title" = "Следуюший";
 "scene.request.subtitle.lightning" = "Can receive: %@";
 
@@ -75,6 +80,7 @@
 "scene.channels.header.total_can_send" = "Total can send:";
 "scene.channels.header.total_can_receive" = "Total can receive:";
 "scene.channels.header.total_pending" = "Total pending:";
+"scene.channels.header.offline" = "Total offline:";
 "scene.channels.close.title" = "Закрыть Канал";
 "scene.channels.close.message" = "Вы действительно хотите закрыть канал узлом %@?";
 "scene.channels.force_close.title" = "Вынуждено Закрыть Канал";
@@ -89,7 +95,9 @@
 "scene.open_channel.add_button" = "Открыть Канал";
 "scene.open_channel.subtitle.minimum_size" = "Minimum channel size: %@";
 "scene.open_channel.subtitle.maximum_size" = "Maximum channel size: %@";
-"scene.open_channel.subtitle.balance" = "On chain balance: %@";
+"scene.open_channel.subtitle.balance" = "On-chain balance: %@";
+"scene.open_channel.suggested_peers.title" = "Suggested Peers";
+"scene.open_channel.paste_button.title" = "Paste Peer Address";
 
 "scene.pin.biometric.fallback.title" = "Используйте Пароль";
 "scene.pin.biometric.reason" = "Доступ к защищенным данным";
@@ -108,9 +116,13 @@
 "scene.send.memo_headline" = "Memo:";
 "scene.send.sending" = "Отпарвка...";
 "scene.send.lightning.title" = "Отправить Lightning перевод";
-"scene.send.on_chain.title" = "Отправить On Chain";
+"scene.send.on_chain.title" = "Send On-Chain";
 "scene.send.authentication_failed" = "Ошибка проверки подлинности";
 "scene.send.maximum_fee" = "Ожидаемая Комиссия:";
+"scene.send.subtitle.on_chain_balance" = "On-chain balance: %@";
+"scene.send.subtitle.lightning_can_send_balance" = "Can send: %@";
+"scene.send.success_label" = "Payment Successful";
+"scene.send.paste_button.title" = "Paste Address";
 
 "scene.connect_remote_node.title" = "Подключение к Удаленному Узлу";
 "scene.connect_remote_node.empty_state" = "Сканируйте QR-код, сгенерированный сервером lendconnect, BTCPay, или вставьте ссылку, полученную при запуске 'lndconnect -j' для подключения к вашему узлу.";
@@ -127,7 +139,7 @@
 "scene.connect_remote_node.edit_url.title" = "Адрес";
 
 "scene.create_wallet.title" = "Создать Кошелёк";
-"scene.create_wallet.description_label" = "Не забудьте сохранить парольную фразу в надежном месте.";
+"scene.create_wallet.description_label" = "Make sure to store the mnemonic at a safe location.";
 "scene.create_wallet.next_button" = "Следуюший";
 
 "scene.recover_wallet.title" = "Восстановление Кошелька";
@@ -186,17 +198,18 @@
 
 "scene.filter.title" = "Фиильтр";
 "scene.filter.section_header.transaction_types" = "Тип транзакции";
-"scene.filter.section_header.advanced" = "Расширенный";
 "scene.filter.displayOnChainTransactions" = "On-chain Платежи";
-"scene.filter.display_unknown_transaction_type" = "Внутренние Транзакции";
+"scene.filter.display_expired_invoices" = "Expired Invoices";
 "scene.filter.displayLightningPayments" = "Lightning Переводы";
 "scene.filter.displayLightningInvoices" = "Создать Платежное Поручение";
 "scene.filter.displayChannelEvents" = "События Канала";
-"scene.filter.displayFailedPaymentEvents" = "Неудачных Платежи";
 
 "scene.qrcode_scanner.top_label" = "Сканиирование QR-Code";
 
 "scene.wallet.title" = "Кошелек";
+"scene.wallet.detail.on_chain" = "On-chain:";
+"scene.wallet.detail.lightning" = "Lightning:";
+"scene.wallet.detail.pending" = "Pending:";
 
 "scene.time_lock.headline" = "Не правильный Пароль";
 "scene.time_lock.description" = "Ваш кошелек заблокирован для:";
