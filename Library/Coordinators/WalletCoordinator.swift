@@ -128,7 +128,8 @@ final class WalletCoordinator: NSObject, Coordinator {
     }
 
     func walletViewController() -> WalletViewController {
-        return WalletViewController.instantiate(lightningService: lightningService, sendButtonTapped: presentSend, requestButtonTapped: presentRequest, nodeAliasButtonTapped: presentWalletList)
+        let walletViewModel = WalletViewModel(lightningService: lightningService)
+        return WalletViewController.instantiate(walletViewModel: walletViewModel, sendButtonTapped: presentSend, requestButtonTapped: presentRequest, nodeAliasButtonTapped: presentWalletList)
     }
 
     func settingsViewController() -> ZapNavigationController {

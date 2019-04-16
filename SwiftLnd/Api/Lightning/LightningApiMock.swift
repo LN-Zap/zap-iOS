@@ -22,8 +22,8 @@ final class LightningApiMock: LightningApiProtocol {
     private let info: Info?
     private let nodeInfo: NodeInfo?
     private let newAddress: BitcoinAddress?
-    private let walletBalance: Satoshi?
-    private let channelBalance: Satoshi?
+    private let walletBalance: WalletBalance?
+    private let channelBalance: ChannelBalance?
     private let transactions: [Transaction]?
     private let subscribeTransactions: Transaction?
     private let payments: [Payment]?
@@ -50,8 +50,8 @@ final class LightningApiMock: LightningApiProtocol {
         info: Info? = Info.Template.testnet,
         nodeInfo: NodeInfo? = nil,
         newAddress: BitcoinAddress? = nil,
-        walletBalance: Satoshi? = nil,
-        channelBalance: Satoshi? = nil,
+        walletBalance: WalletBalance? = nil,
+        channelBalance: ChannelBalance? = nil,
         transactions: [Transaction]? = nil,
         subscribeTransactions: Transaction? = nil,
         payments: [Payment]? = nil,
@@ -106,11 +106,11 @@ final class LightningApiMock: LightningApiProtocol {
         completion(Result(value: nodeInfo, error: LndApiError.unknownError))
     }
 
-    func walletBalance(completion: @escaping Handler<Satoshi>) {
+    func walletBalance(completion: @escaping Handler<WalletBalance>) {
         completion(Result(value: walletBalance, error: LndApiError.unknownError))
     }
 
-    func channelBalance(completion: @escaping Handler<Satoshi>) {
+    func channelBalance(completion: @escaping Handler<ChannelBalance>) {
         completion(Result(value: channelBalance, error: LndApiError.unknownError))
     }
 
@@ -220,12 +220,12 @@ public enum ApiMockTemplate {
         case .manyChannels:
             return LightningApiMock(channels: Array(repeating: Channel.Template.defalut, count: 200))
         case .balance:
-            return LightningApiMock(walletBalance: 4_200_000)
+            return LightningApiMock(walletBalance: WalletBalance(confirmedBalance: 4_200_000, unconfirmedBalance: 0))
         case .mainnet:
             return LightningApiMock(info: Info.Template.mainnet)
         case .transactions:
             return LightningApiMock(
-                walletBalance: 100000,
+                walletBalance: WalletBalance(confirmedBalance: 10000, unconfirmedBalance: 0),
                 transactions: [
                     Transaction.Template.default
                 ],
@@ -235,7 +235,7 @@ public enum ApiMockTemplate {
             )
         case .everything:
             return LightningApiMock(
-                walletBalance: 4_200_000,
+                walletBalance: WalletBalance(confirmedBalance: 4_200_000, unconfirmedBalance: 0),
                 transactions: [
                     Transaction.Template.default
                 ],
@@ -251,7 +251,7 @@ public enum ApiMockTemplate {
         case .screenshots:
             return LightningApiMock(
                 info: Info.Template.mainnet,
-                walletBalance: 420_000,
+                walletBalance: WalletBalance(confirmedBalance: 420_000, unconfirmedBalance: 0),
                 transactions: [
                     Transaction.Template.create(id: "t1", amount: 100000, date: .ago(minutes: 1)),
                     Transaction.Template.create(id: "t2", amount: -2005000, date: .ago(minutes: 3))

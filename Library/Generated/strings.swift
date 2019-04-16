@@ -594,9 +594,13 @@ internal enum L10n {
     internal enum Wallet {
       /// Wallet
       internal static let title = L10n.tr("Localizable", "scene.wallet.title")
-      internal enum Warning {
-        /// outdated lnd
-        internal static let lndOutdated = L10n.tr("Localizable", "scene.wallet.warning.lnd_outdated")
+      internal enum Detail {
+        /// Lightning:
+        internal static let lightning = L10n.tr("Localizable", "scene.wallet.detail.lightning")
+        /// On-chain:
+        internal static let onChain = L10n.tr("Localizable", "scene.wallet.detail.on_chain")
+        /// Pending:
+        internal static let pending = L10n.tr("Localizable", "scene.wallet.detail.pending")
       }
     }
     internal enum WalletList {

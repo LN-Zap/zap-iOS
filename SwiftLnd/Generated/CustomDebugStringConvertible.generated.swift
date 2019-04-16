@@ -21,6 +21,17 @@ extension Channel: CustomDebugStringConvertible {
 	}
 }
 
+// MARK: ChannelBalance CustomDebugStringConvertible
+extension ChannelBalance: CustomDebugStringConvertible {
+	public var debugDescription: String {
+		return """
+		ChannelBalance:
+		\tbalance: \(balance)
+		\tpendingOpenBalance: \(pendingOpenBalance)\n
+		"""
+	}
+}
+
 // MARK: ChannelCloseSummary CustomDebugStringConvertible
 extension ChannelCloseSummary: CustomDebugStringConvertible {
 	public var debugDescription: String {
@@ -216,6 +227,17 @@ extension Version.Number: CustomDebugStringConvertible {
 		return """
 		Version.Number:
 		\tcomponents: \(components)\n
+		"""
+	}
+}
+
+// MARK: WalletBalance CustomDebugStringConvertible
+extension WalletBalance: CustomDebugStringConvertible {
+	public var debugDescription: String {
+		return """
+		WalletBalance:
+		\tconfirmedBalance: \(confirmedBalance)
+		\tunconfirmedBalance: \(unconfirmedBalance)\n
 		"""
 	}
 }

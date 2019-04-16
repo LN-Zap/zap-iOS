@@ -14,7 +14,6 @@ import SwiftLnd
 
 public final class HistoryService: NSObject {
     public var events = MutableObservableArray<HistoryEventType>()
-    public var userTransaction = [PlottableEvent]()
 
     init(invoiceListUpdater: InvoiceListUpdater, transactionListUpdater: TransactionListUpdater, paymentListUpdater: PaymentListUpdater, channelListUpdater: ChannelListUpdater) {
         super.init()

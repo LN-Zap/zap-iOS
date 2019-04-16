@@ -48,12 +48,12 @@ public final class LightningApiRpc: RpcApi, LightningApiProtocol {
         lnd.rpcToNewAddress(with: request, handler: createHandler(completion, transform: LightningApiTransformation.newAddress)).runWithMacaroon(macaroon)
     }
 
-    public func walletBalance(completion: @escaping Handler<Satoshi>) {
+    public func walletBalance(completion: @escaping Handler<WalletBalance>) {
         lnd.rpcToWalletBalance(with: LNDWalletBalanceRequest(), handler: createHandler(completion, transform: LightningApiTransformation.walletBalance))
             .runWithMacaroon(macaroon)
     }
 
-    public func channelBalance(completion: @escaping Handler<Satoshi>) {
+    public func channelBalance(completion: @escaping Handler<ChannelBalance>) {
         lnd.rpcToChannelBalance(with: LNDChannelBalanceRequest(), handler: createHandler(completion, transform: LightningApiTransformation.channelBalance))
             .runWithMacaroon(macaroon)
     }

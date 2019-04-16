@@ -12,6 +12,7 @@ extension UserDefaults {
         static let mnemonic = DefaultKey<[String]>("mnemonic")
         static let didCreateWallet = DefaultKey<Bool>("didCreateWallet")
         static let lastSeenHistoryDate = DefaultKey<Date>("lastSeenHistoryDate")
+        static let walletDetailExpanded = DefaultKey<Bool>("homeScreenTileExpanded")
     }
 }
 
