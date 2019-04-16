@@ -11,7 +11,7 @@ import UIKit
 
 enum ChannelBalanceColor {
     static var local = UIColor.Zap.lightningOrange
-    static var remote = UIColor.Zap.white
+    static var remote = UIColor.Zap.lightningBlue
     static let pending = UIColor.Zap.gray
     static let offline = UIColor.Zap.superRed
 }

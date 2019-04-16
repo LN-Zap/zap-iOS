@@ -15,7 +15,7 @@ class ChannelTableViewCell: BondTableViewCell {
     @IBOutlet private weak var localBalanceBackgroundView: UIView!
     @IBOutlet private weak var remoteBalanceBackgroundView: UIView!
     @IBOutlet private weak var localAmountView: GradientView!
-    @IBOutlet private weak var remoteAmountView: UIView!
+    @IBOutlet private weak var remoteAmountView: GradientView!
     @IBOutlet private weak var localAmountViewWitdthConstraint: NSLayoutConstraint?
     @IBOutlet private weak var remoteAmountViewWidthConstraint: NSLayoutConstraint?
     @IBOutlet private weak var stateLabel: UILabel!
@@ -49,10 +49,12 @@ class ChannelTableViewCell: BondTableViewCell {
         remoteAmountViewWidthConstraint = remoteAmountView.widthAnchor.constraint(equalTo: remoteBalanceBackgroundView.widthAnchor, multiplier: remoteWidthMultiplier, constant: 0)
         remoteAmountViewWidthConstraint?.isActive = true
 
+        remoteAmountView.gradient = UIColor.Zap.lightningBlueGradient
+
         if channelViewModel.channel.state == .inactive {
             localAmountView.gradient = [ChannelBalanceColor.offline]
         } else if channelViewModel.channel.state == .active {
-            localAmountView.gradient = [UIColor.Zap.lightningOrangeGradient, UIColor.Zap.lightningOrange]
+            localAmountView.gradient = UIColor.Zap.lightningOrangeGradient
         } else {
             localAmountView.gradient = [ChannelBalanceColor.pending]
         }

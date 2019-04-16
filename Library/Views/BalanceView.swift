@@ -13,14 +13,15 @@ final class BalanceView: UIView {
     private weak var localBalanceView: UIView?
 
     func set(localBalance: Satoshi, remoteBalance: Satoshi) {
-        backgroundColor = UIColor.Zap.white
-
         layer.cornerRadius = 5
         clipsToBounds = true
 
         let localBalanceView = GradientView(frame: CGRect.zero)
-
         addAutolayoutSubview(localBalanceView)
+
+        let remoteBalanceView = GradientView(frame: CGRect.zero)
+        remoteBalanceView.gradient = UIColor.Zap.lightningBlueGradient
+        addAutolayoutSubview(remoteBalanceView)
 
         let multiplier = CGFloat(truncating: localBalance / (localBalance + remoteBalance) as NSDecimalNumber)
 
@@ -28,7 +29,12 @@ final class BalanceView: UIView {
             localBalanceView.leadingAnchor.constraint(equalTo: leadingAnchor),
             localBalanceView.bottomAnchor.constraint(equalTo: bottomAnchor),
             localBalanceView.topAnchor.constraint(equalTo: topAnchor),
-            localBalanceView.widthAnchor.constraint(equalTo: widthAnchor, multiplier: multiplier)
+            localBalanceView.widthAnchor.constraint(equalTo: widthAnchor, multiplier: multiplier),
+
+            remoteBalanceView.leadingAnchor.constraint(equalTo: localBalanceView.trailingAnchor),
+            remoteBalanceView.bottomAnchor.constraint(equalTo: bottomAnchor),
+            remoteBalanceView.topAnchor.constraint(equalTo: topAnchor),
+            remoteBalanceView.trailingAnchor.constraint(equalTo: trailingAnchor)
         ])
 
         self.localBalanceView = localBalanceView
