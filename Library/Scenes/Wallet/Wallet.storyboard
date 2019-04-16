@@ -38,7 +38,7 @@
                                                             <stackView opaque="NO" contentMode="scaleToFill" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="40H-QF-ElD">
                                                                 <rect key="frame" x="107" y="0.0" width="57" height="30"/>
                                                                 <subviews>
-                                                                    <button opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="242" verticalHuggingPriority="888" horizontalCompressionResistancePriority="760" verticalCompressionResistancePriority="747" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="OvW-dI-y78">
+                                                                    <button opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="666" verticalHuggingPriority="888" horizontalCompressionResistancePriority="500" verticalCompressionResistancePriority="747" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="OvW-dI-y78">
                                                                         <rect key="frame" x="0.0" y="0.0" width="46" height="30"/>
                                                                         <state key="normal" title="Button"/>
                                                                         <connections>
@@ -62,7 +62,7 @@
                                                             <constraint firstItem="40H-QF-ElD" firstAttribute="centerX" secondItem="06I-eg-dh3" secondAttribute="centerX" id="inT-AY-FFD"/>
                                                         </constraints>
                                                     </view>
-                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="888" verticalHuggingPriority="258" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="oHO-DG-N6I" customClass="PaddingLabel" customModule="Library" customModuleProvider="target">
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" verticalHuggingPriority="258" horizontalCompressionResistancePriority="900" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="oHO-DG-N6I" customClass="PaddingLabel" customModule="Library" customModuleProvider="target">
                                                         <rect key="frame" x="313" y="0.0" width="42" height="30"/>
                                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                         <nil key="textColor"/>
@@ -71,6 +71,7 @@
                                                 </subviews>
                                                 <constraints>
                                                     <constraint firstItem="gg1-AH-BV7" firstAttribute="width" secondItem="oHO-DG-N6I" secondAttribute="width" id="95R-Ak-690"/>
+                                                    <constraint firstItem="oHO-DG-N6I" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="40H-QF-ElD" secondAttribute="trailing" constant="10" id="vk4-PJ-9Vd"/>
                                                 </constraints>
                                             </stackView>
                                         </subviews>
