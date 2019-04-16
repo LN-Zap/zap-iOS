@@ -23,7 +23,6 @@ abstract_target 'RPC' do
     end
     
     target 'Library' do
-        pod 'ScrollableGraphView'
         pod 'KeychainAccess'
         pod 'Bond'
         
