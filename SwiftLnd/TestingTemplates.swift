@@ -51,7 +51,7 @@ extension Info {
                 activeChannelCount: 2,
                 bestHeaderDate: Date(),
                 uris: [],
-                version: Version(string: "0.4.2-beta commit=625b210f441ece841c76b81377dd96e8d09aba8e")
+                version: Version(string: "0.99.9-beta commit=625b210f441ece841c76b81377dd96e8d09aba8e")
             )
         }
     }
