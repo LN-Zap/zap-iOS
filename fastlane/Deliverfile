@@ -2,4 +2,29 @@
 # For more information, check out the docs
 # https://docs.fastlane.tools/actions/deliver/
 
-languages(['ca', 'cs', 'da', 'de-DE', 'el', 'en-US', 'es-ES', 'fi', 'fr-FR', 'hr', 'hu', 'it', 'ja', 'ko', 'nl-NL', 'pl', 'pt-BR', 'pt-PT', 'ro', 'ru', 'sv', 'tr', 'uk', 'vi', 'zh-Hans', 'zh-Hant'])
+languages([
+  'ca',
+  'cs',
+  'da',
+  'de-DE',
+  'el',
+  'en-US',
+  'es-ES',
+  'fi',
+  'fr-FR',
+  'hr',
+  'hu',
+  'it',
+  'ja',
+  'ko',
+  'nl-NL',
+  'pl',
+  'pt-BR',
+  'pt-PT',
+  'ro',
+  'ru',
+  'sv',
+  'tr',
+  'uk',
+  'vi'
+])
