@@ -207,9 +207,9 @@
 "scene.qrcode_scanner.top_label" = "QR-Code scannen";
 
 "scene.wallet.title" = "Wallet";
-"scene.wallet.detail.on_chain" = "On-chain:";
+"scene.wallet.detail.on_chain" = "On-Chain:";
 "scene.wallet.detail.lightning" = "Lightning:";
-"scene.wallet.detail.pending" = "Pending:";
+"scene.wallet.detail.pending" = "Ausstehend:";
 
 "scene.time_lock.headline" = "Falscher PIN";
 "scene.time_lock.description" = "Ihre Geldbörse ist gesperrt für:";
