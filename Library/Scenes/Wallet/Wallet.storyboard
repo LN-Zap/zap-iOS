@@ -164,10 +164,14 @@
                                             <constraint firstAttribute="bottom" secondItem="PUI-ce-SkF" secondAttribute="bottom" constant="15" id="dch-HG-2I1"/>
                                             <constraint firstItem="PUI-ce-SkF" firstAttribute="centerX" secondItem="zMY-oZ-yJu" secondAttribute="centerX" id="n5n-N0-dgD"/>
                                         </constraints>
-                                        <connections>
-                                            <outletCollection property="gestureRecognizers" destination="aAZ-2C-BwZ" appends="YES" id="qC6-zu-D2S"/>
-                                        </connections>
                                     </view>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="QZ9-Le-F10">
+                                        <rect key="frame" x="107.5" y="0.0" width="120" height="50"/>
+                                        <connections>
+                                            <action selector="toggleDetailState" destination="KOM-Jt-Qkh" eventType="touchUpInside" id="vEZ-jn-Cj4"/>
+                                            <outletCollection property="gestureRecognizers" destination="aAZ-2C-BwZ" appends="YES" id="mCx-lt-BQV"/>
+                                        </connections>
+                                    </button>
                                     <view contentMode="scaleToFill" verticalHuggingPriority="900" translatesAutoresizingMaskIntoConstraints="NO" id="EBs-OP-1wt">
                                         <rect key="frame" x="0.0" y="50" width="335" height="200"/>
                                         <subviews>
@@ -224,10 +228,14 @@
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
                                     <constraint firstItem="zMY-oZ-yJu" firstAttribute="centerX" secondItem="uId-iH-hCo" secondAttribute="centerX" id="1S3-Rq-y0M"/>
+                                    <constraint firstItem="QZ9-Le-F10" firstAttribute="trailing" secondItem="zMY-oZ-yJu" secondAttribute="trailing" id="2Lm-rv-oG9"/>
                                     <constraint firstItem="EBs-OP-1wt" firstAttribute="leading" secondItem="uId-iH-hCo" secondAttribute="leading" id="8gc-so-fdQ"/>
                                     <constraint firstAttribute="trailing" secondItem="EBs-OP-1wt" secondAttribute="trailing" id="BLY-Ra-qxK"/>
                                     <constraint firstAttribute="bottom" secondItem="EBs-OP-1wt" secondAttribute="bottom" id="EVD-R2-tx1"/>
+                                    <constraint firstItem="QZ9-Le-F10" firstAttribute="top" secondItem="zMY-oZ-yJu" secondAttribute="top" id="Ic9-gi-Yf3"/>
                                     <constraint firstItem="EBs-OP-1wt" firstAttribute="top" secondItem="zMY-oZ-yJu" secondAttribute="bottom" id="PbY-20-gcX"/>
+                                    <constraint firstItem="QZ9-Le-F10" firstAttribute="bottom" secondItem="zMY-oZ-yJu" secondAttribute="bottom" id="l5j-U8-KjF"/>
+                                    <constraint firstItem="QZ9-Le-F10" firstAttribute="leading" secondItem="zMY-oZ-yJu" secondAttribute="leading" id="pBt-NZ-4Up"/>
                                     <constraint firstItem="zMY-oZ-yJu" firstAttribute="top" secondItem="uId-iH-hCo" secondAttribute="top" id="sx1-ut-3aq"/>
                                 </constraints>
                             </view>

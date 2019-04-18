@@ -194,6 +194,14 @@ final class WalletViewController: UIViewController {
         }
     }
 
+    @IBAction private func toggleDetailState() {
+        if detailView.transform == .identity {
+            animateDetail(expanded: true)
+        } else if detailView.transform.ty == detailMaxOffset {
+            animateDetail(expanded: false)
+        }
+    }
+
     @IBAction private func didPan(_ sender: UIPanGestureRecognizer) {
         let translation = sender.translation(in: view)
         let maxOffset = detailMaxOffset
@@ -221,31 +229,38 @@ final class WalletViewController: UIViewController {
             let velocity = sender.velocity(in: view).y
             let triggerVelocity: CGFloat = 600
 
-            let transform: CGAffineTransform
-            let detailHandleViewProgress: CGFloat
             if (yTranslation < maxOffset / 2 || velocity < -triggerVelocity) && velocity < triggerVelocity {
-                // bounce to max offset
-                transform = CGAffineTransform(translationX: 0, y: maxOffset)
-                detailHandleViewProgress = 1
-
-                UserDefaults.Keys.walletDetailExpanded.set(true)
+                animateDetail(expanded: true)
             } else {
-                // bounce back
-                transform = .identity
-                detailHandleViewProgress = 0
-
-                UserDefaults.Keys.walletDetailExpanded.set(false)
+                animateDetail(expanded: false)
             }
-            UIImpactFeedbackGenerator(style: .light).impactOccurred()
-
-            UIView.animate(withDuration: 0.3, delay: 0, usingSpringWithDamping: 0.6, initialSpringVelocity: 0.25, options: [], animations: { [detailView, detailHandleView] in
-                detailView?.transform = transform
-                detailHandleView?.progress = detailHandleViewProgress
-            }, completion: nil)
-
         @unknown default:
             break
         }
+    }
+
+    private func animateDetail(expanded: Bool) {
+        let transform: CGAffineTransform
+        let detailHandleViewProgress: CGFloat
+
+        if expanded {
+            transform = CGAffineTransform(translationX: 0, y: detailMaxOffset)
+            detailHandleViewProgress = 1
+
+            UserDefaults.Keys.walletDetailExpanded.set(true)
+        } else {
+            // bounce back
+            transform = .identity
+            detailHandleViewProgress = 0
+
+            UserDefaults.Keys.walletDetailExpanded.set(false)
+        }
+        UIImpactFeedbackGenerator(style: .light).impactOccurred()
+
+        UIView.animate(withDuration: 0.3, delay: 0, usingSpringWithDamping: 0.6, initialSpringVelocity: 0.25, options: [], animations: { [detailView, detailHandleView] in
+            detailView?.transform = transform
+            detailHandleView?.progress = detailHandleViewProgress
+        }, completion: nil)
     }
 }
 
