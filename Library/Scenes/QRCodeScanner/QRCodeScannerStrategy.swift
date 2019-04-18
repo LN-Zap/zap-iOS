@@ -10,9 +10,13 @@ import Lightning
 import SwiftBTC
 import SwiftLnd
 
+enum QRCodeScannerStrategyError: Error {
+    case unknownFormat
+}
+
 protocol QRCodeScannerStrategy {
     var title: String { get }
     var pasteButtonTitle: String { get }
 
-    func viewControllerForAddress(address: String, completion: @escaping (Result<UIViewController, InvoiceError>) -> Void)
+    func viewControllerForAddress(address: String, completion: @escaping (Result<UIViewController, QRCodeScannerStrategyError>) -> Void)
 }
