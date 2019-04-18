@@ -172,7 +172,7 @@
 "scene.sync.disconnect_alert.destructive_action" = "Scollega Nodo";
 "scene.sync.disconnect_alert.cancel_action" = "Annulla";
 
-"scene.transaction_detail.title.lightning_invoice" = "Dettagli richiesta pagamento";
+"scene.transaction_detail.title.lightning_invoice" = "Dettagli pagamento";
 "scene.transaction_detail.title.payment_detail" = "Dettagli pagamento";
 "scene.transaction_detail.title.transaction_detail" = "Dettagli transazione";
 "scene.transaction_detail.title.channel_event_detail" = "Evento canale";
@@ -199,7 +199,7 @@
 "scene.filter.title" = "Filtra";
 "scene.filter.section_header.transaction_types" = "Tipi di transazione";
 "scene.filter.displayOnChainTransactions" = "Pagamenti On-chain";
-"scene.filter.display_expired_invoices" = "Richiesta di pagamento scaduta";
+"scene.filter.display_expired_invoices" = "Richieste di pagamento scadute";
 "scene.filter.displayLightningPayments" = "Pagamenti Lightning";
 "scene.filter.displayLightningInvoices" = "Richieste di pagamento";
 "scene.filter.displayChannelEvents" = "Eventi canale";
