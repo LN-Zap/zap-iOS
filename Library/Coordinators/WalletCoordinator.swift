@@ -128,7 +128,8 @@ final class WalletCoordinator: NSObject, Coordinator {
     }
 
     func walletViewController() -> WalletViewController {
-        return WalletViewController.instantiate(lightningService: lightningService, sendButtonTapped: presentSend, requestButtonTapped: presentRequest, nodeAliasButtonTapped: presentWalletList)
+        let walletViewModel = WalletViewModel(lightningService: lightningService)
+        return WalletViewController.instantiate(walletViewModel: walletViewModel, sendButtonTapped: presentSend, requestButtonTapped: presentRequest, nodeAliasButtonTapped: presentWalletList)
     }
 
     func settingsViewController() -> ZapNavigationController {
@@ -195,7 +196,7 @@ final class WalletCoordinator: NSObject, Coordinator {
                 group.wait()
             }
         } else {
-            let viewController = UINavigationController(rootViewController: QRCodeScannerViewController.instantiate(strategy: strategy))
+            let viewController = UINavigationController(rootViewController: QRCodeScannerViewController(strategy: strategy))
             rootViewController.present(viewController, animated: true)
         }
     }
@@ -220,7 +221,7 @@ final class WalletCoordinator: NSObject, Coordinator {
 
     private func presentAddChannel() {
         let strategy = OpenChannelQRCodeScannerStrategy(lightningService: lightningService)
-        let viewController = UINavigationController(rootViewController: QRCodeScannerViewController.instantiate(strategy: strategy))
+        let viewController = UINavigationController(rootViewController: ChannelQRCodeScannerViewController(strategy: strategy, network: lightningService.infoService.network.value))
         rootViewController.present(viewController, animated: true)
     }
 

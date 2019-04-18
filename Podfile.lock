@@ -56,7 +56,6 @@ PODS:
   - nanopb/encode (0.3.901)
   - Protobuf (3.6.1)
   - ReactiveKit (3.9.7)
-  - ScrollableGraphView (4.0.6)
   - SimulatorStatusMagic (2.4.1)
   - SipHash (1.2.2)
   - SwiftBTC (0.0.8):
@@ -66,7 +65,6 @@ DEPENDENCIES:
   - Bond
   - KeychainAccess
   - LndRpc (from `.`)
-  - ScrollableGraphView
   - SimulatorStatusMagic
   - SwiftBTC (from `./SwiftBTC`)
 
@@ -86,7 +84,6 @@ SPEC REPOS:
     - nanopb
     - Protobuf
     - ReactiveKit
-    - ScrollableGraphView
     - SimulatorStatusMagic
     - SipHash
 
@@ -112,11 +109,10 @@ SPEC CHECKSUMS:
   nanopb: 2901f78ea1b7b4015c860c2fdd1ea2fee1a18d48
   Protobuf: 1eb9700044745f00181c136ef21b8ff3ad5a0fd5
   ReactiveKit: 5f4c440715d671901c382ae6b42ed3337ce4699b
-  ScrollableGraphView: 4af35d4ea9ecdec665d34a74da51da161ddff8ac
   SimulatorStatusMagic: 28d4a9d1a500ac7cea0b2b5a43c1c6ddb40ba56c
   SipHash: fad90a4683e420c52ef28063063dbbce248ea6d4
   SwiftBTC: 57a1352d5131d4bf27c54ff9b0a602b46ab049ef
 
-PODFILE CHECKSUM: 479ad9a801dcf2711407752b3dd10c5f30b64378
+PODFILE CHECKSUM: 8886dfb042c38d4aa1160abf510e391462681312
 
 COCOAPODS: 1.5.3

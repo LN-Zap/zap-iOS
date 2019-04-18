@@ -14,12 +14,11 @@ import SwiftLnd
 
 public final class HistoryService: NSObject {
     public var events = MutableObservableArray<HistoryEventType>()
-    public var userTransaction = [PlottableEvent]()
 
     init(invoiceListUpdater: InvoiceListUpdater, transactionListUpdater: TransactionListUpdater, paymentListUpdater: PaymentListUpdater, channelListUpdater: ChannelListUpdater) {
         super.init()
 
-        combineLatest(invoiceListUpdater.invoices, transactionListUpdater.transactions, paymentListUpdater.payments, channelListUpdater.open, channelListUpdater.closed)
+        combineLatest(invoiceListUpdater.items, transactionListUpdater.items, paymentListUpdater.items, channelListUpdater.open, channelListUpdater.closed)
             .observeNext { [weak self] in
                 let (invoiceChangeset, transactionChangeset, paymentChangeset, openChannels, closedChannels) = $0
                 let dateEstimator = DateEstimator(transactions: transactionChangeset.collection)

@@ -91,11 +91,6 @@ internal enum StoryboardScene {
 
     internal static let qrCodeDetailViewController = SceneType<QRCodeDetailViewController>(storyboard: QRCodeDetail.self, identifier: "QRCodeDetailViewController")
   }
-  internal enum QRCodeScanner: StoryboardType {
-    internal static let storyboardName = "QRCodeScanner"
-
-    internal static let qrCodeScannerViewController = SceneType<QRCodeScannerViewController>(storyboard: QRCodeScanner.self, identifier: "QRCodeScannerViewController")
-  }
   internal enum Root: StoryboardType {
     internal static let storyboardName = "Root"
 

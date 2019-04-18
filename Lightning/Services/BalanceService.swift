@@ -15,7 +15,9 @@ public final class BalanceService {
     private let api: LightningApiProtocol
 
     public let onChain = Observable<Satoshi>(0)
-    let lightning = Observable<Satoshi>(0)
+    public let lightning = Observable<Satoshi>(0)
+    public let pending = Observable<Satoshi>(0)
+
     public let total: Signal<Satoshi, NoError>
 
     init(api: LightningApiProtocol) {
@@ -24,12 +26,31 @@ public final class BalanceService {
     }
 
     func update() {
-        api.walletBalance { [onChain] result in
-            onChain.value = (try? result.get()) ?? 0
-        }
+        DispatchQueue(label: "updateBalance").async { [weak self] in
+            let group = DispatchGroup()
+            var pending: Satoshi = 0
 
-        api.channelBalance { [lightning] result in
-            lightning.value = (try? result.get()) ?? 0
+            group.enter()
+            self?.api.walletBalance { result in
+                if case .success(let walletBalance) = result {
+                    self?.onChain.value = walletBalance.confirmedBalance
+                    pending += walletBalance.unconfirmedBalance
+                }
+                group.leave()
+            }
+
+            group.enter()
+            self?.api.channelBalance { result in
+                if case .success(let channelBalance) = result {
+                    self?.lightning.value = channelBalance.balance
+                    pending += channelBalance.pendingOpenBalance
+                }
+                group.leave()
+            }
+
+            group.wait()
+
+            self?.pending.value = pending
         }
     }
 }

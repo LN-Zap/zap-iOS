@@ -58,82 +58,8 @@
                                 <constraint firstAttribute="height" constant="1" id="9yF-jc-vk8"/>
                             </constraints>
                         </view>
-                        <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="RFb-u5-x8s">
-                            <rect key="frame" x="70" y="8" width="295" height="61.5"/>
-                            <subviews>
-                                <stackView opaque="NO" contentMode="scaleToFill" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="ose-k7-U9R">
-                                    <rect key="frame" x="0.0" y="0.0" width="295" height="20.5"/>
-                                    <subviews>
-                                        <view contentMode="scaleToFill" horizontalHuggingPriority="256" verticalHuggingPriority="256" horizontalCompressionResistancePriority="250" verticalCompressionResistancePriority="250" translatesAutoresizingMaskIntoConstraints="NO" id="nWD-Zc-RM7" customClass="CircleView" customModule="Library" customModuleProvider="target">
-                                            <rect key="frame" x="0.0" y="0.0" width="6" height="20.5"/>
-                                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                            <constraints>
-                                                <constraint firstAttribute="width" constant="6" id="Mdp-xQ-WjO"/>
-                                            </constraints>
-                                        </view>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="248" verticalHuggingPriority="251" horizontalCompressionResistancePriority="744" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="G1N-1q-mEj">
-                                            <rect key="frame" x="11" y="0.0" width="237" height="20.5"/>
-                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                            <nil key="textColor"/>
-                                            <nil key="highlightedColor"/>
-                                        </label>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="254" verticalHuggingPriority="253" horizontalCompressionResistancePriority="751" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="B38-17-yZQ">
-                                            <rect key="frame" x="253" y="0.0" width="42" height="20.5"/>
-                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                            <nil key="textColor"/>
-                                            <nil key="highlightedColor"/>
-                                        </label>
-                                    </subviews>
-                                </stackView>
-                                <stackView opaque="NO" contentMode="scaleToFill" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="xhC-FA-oxm">
-                                    <rect key="frame" x="0.0" y="20.5" width="295" height="20.5"/>
-                                    <subviews>
-                                        <view contentMode="scaleToFill" horizontalHuggingPriority="256" verticalHuggingPriority="256" horizontalCompressionResistancePriority="250" verticalCompressionResistancePriority="250" translatesAutoresizingMaskIntoConstraints="NO" id="vda-bs-KNS" customClass="CircleView" customModule="Library" customModuleProvider="target">
-                                            <rect key="frame" x="0.0" y="0.0" width="6" height="20.5"/>
-                                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                            <constraints>
-                                                <constraint firstAttribute="width" constant="6" id="hZG-EN-1Wn"/>
-                                            </constraints>
-                                        </view>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="248" verticalHuggingPriority="251" horizontalCompressionResistancePriority="747" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Rtx-do-Wd0">
-                                            <rect key="frame" x="11" y="0.0" width="237" height="20.5"/>
-                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                            <nil key="textColor"/>
-                                            <nil key="highlightedColor"/>
-                                        </label>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="253" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="DIt-oS-k96">
-                                            <rect key="frame" x="253" y="0.0" width="42" height="20.5"/>
-                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                            <nil key="textColor"/>
-                                            <nil key="highlightedColor"/>
-                                        </label>
-                                    </subviews>
-                                </stackView>
-                                <stackView opaque="NO" contentMode="scaleToFill" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="dJE-NO-N35">
-                                    <rect key="frame" x="0.0" y="41" width="295" height="20.5"/>
-                                    <subviews>
-                                        <view contentMode="scaleToFill" horizontalHuggingPriority="256" verticalHuggingPriority="256" horizontalCompressionResistancePriority="250" verticalCompressionResistancePriority="250" translatesAutoresizingMaskIntoConstraints="NO" id="0mB-PU-jsQ" customClass="CircleView" customModule="Library" customModuleProvider="target">
-                                            <rect key="frame" x="0.0" y="0.0" width="6" height="20.5"/>
-                                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                            <constraints>
-                                                <constraint firstAttribute="width" constant="6" id="SzS-gk-vIx"/>
-                                            </constraints>
-                                        </view>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="248" verticalHuggingPriority="251" horizontalCompressionResistancePriority="747" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="POx-Af-wOg">
-                                            <rect key="frame" x="11" y="0.0" width="237" height="20.5"/>
-                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                            <nil key="textColor"/>
-                                            <nil key="highlightedColor"/>
-                                        </label>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="253" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="F0F-tu-9YZ">
-                                            <rect key="frame" x="253" y="0.0" width="42" height="20.5"/>
-                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                            <nil key="textColor"/>
-                                            <nil key="highlightedColor"/>
-                                        </label>
-                                    </subviews>
-                                </stackView>
-                            </subviews>
+                        <stackView opaque="NO" contentMode="scaleToFill" placeholderIntrinsicWidth="295" placeholderIntrinsicHeight="82" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="RFb-u5-x8s">
+                            <rect key="frame" x="70" y="-2.5" width="295" height="82"/>
                         </stackView>
                     </subviews>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -149,16 +75,8 @@
                     </constraints>
                     <viewLayoutGuide key="safeArea" id="Bz3-9q-hdx"/>
                     <connections>
-                        <outlet property="canReceiveAmountLabel" destination="DIt-oS-k96" id="GBB-CJ-dE7"/>
-                        <outlet property="canReceiveCircleView" destination="vda-bs-KNS" id="jkI-ht-NsP"/>
-                        <outlet property="canReceiveTitleLabel" destination="Rtx-do-Wd0" id="eME-Ha-dUi"/>
-                        <outlet property="canSendAmountLabel" destination="B38-17-yZQ" id="n0m-9B-Zqp"/>
-                        <outlet property="canSendCircleView" destination="nWD-Zc-RM7" id="Jos-MZ-EWX"/>
-                        <outlet property="canSendTitleLabel" destination="G1N-1q-mEj" id="JZA-4g-DGx"/>
                         <outlet property="circleGraphView" destination="vIk-3e-r6A" id="Yjd-2J-lAT"/>
-                        <outlet property="pendingAmountLabel" destination="F0F-tu-9YZ" id="mQj-ws-7it"/>
-                        <outlet property="pendingCircleView" destination="0mB-PU-jsQ" id="rGF-mX-3oh"/>
-                        <outlet property="pendingTitleLabel" destination="POx-Af-wOg" id="fxI-rm-Yhd"/>
+                        <outlet property="stackView" destination="RFb-u5-x8s" id="CZs-19-nwl"/>
                     </connections>
                 </view>
             </objects>

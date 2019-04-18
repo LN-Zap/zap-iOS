@@ -14,8 +14,10 @@ public extension UIColor {
         public static let gray = color("gray")
         public static let invisibleGray = color("invisibleGray")
         public static let deepSeaBlue = color("deepSeaBlue")
+        public static let lightningBlue = color("lightningBlue")
+        public static let lightningBlueGradient = [color("lightningBlue"), color("lightningBlueGradient")]
         public static let lightningOrange = color("lightningOrange")
-        public static let lightningOrangeGradient = color("lightningOrangeGradient")
+        public static let lightningOrangeGradient = [color("lightningOrange"), color("lightningOrangeGradient")]
         public static let seaBlue = color("seaBlue")
         public static let seaBlueGradient = color("seaBlueGradient")
         public static let superRed = color("superRed")

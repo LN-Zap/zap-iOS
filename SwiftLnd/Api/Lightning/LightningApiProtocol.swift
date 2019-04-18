@@ -14,7 +14,7 @@ public protocol LightningApiProtocol {
     // Channels
     func openChannel(pubKey: String, amount: Satoshi, completion: @escaping Handler<ChannelPoint>)
     func closeChannel(channelPoint: ChannelPoint, force: Bool, completion: @escaping Handler<CloseStatusUpdate>)
-    func channelBalance(completion: @escaping Handler<Satoshi>)
+    func channelBalance(completion: @escaping Handler<ChannelBalance>)
     func pendingChannels(completion: @escaping Handler<[Channel]>)
     func channels(completion: @escaping Handler<[Channel]>)
     func closedChannels(completion: @escaping Handler<[ChannelCloseSummary]>)
@@ -42,5 +42,5 @@ public protocol LightningApiProtocol {
 
     // Wallet
     func newAddress(type: OnChainRequestAddressType, completion: @escaping Handler<BitcoinAddress>)
-    func walletBalance(completion: @escaping Handler<Satoshi>)
+    func walletBalance(completion: @escaping Handler<WalletBalance>)
 }

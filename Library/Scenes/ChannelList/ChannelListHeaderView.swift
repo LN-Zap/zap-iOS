@@ -5,63 +5,92 @@
 //  Copyright © 2019 Zap. All rights reserved.
 //
 
+import Bond
 import ReactiveKit
+import SwiftBTC
 import UIKit
 
 final class ChannelListHeaderView: UIView {
-    @IBOutlet private weak var canSendCircleView: CircleView!
-    @IBOutlet private weak var canSendTitleLabel: UILabel!
-    @IBOutlet private weak var canSendAmountLabel: UILabel!
+    struct Segment {
+        let title: String
+        let color: UIColor
+        let source: KeyPath<ChannelListViewModel, Observable<Satoshi>>
+        let required: Bool // should this be displayed in the list even though the value is 0
+    }
 
-    @IBOutlet private weak var canReceiveCircleView: CircleView!
-    @IBOutlet private weak var canReceiveTitleLabel: UILabel!
-    @IBOutlet private weak var canReceiveAmountLabel: UILabel!
-
-    @IBOutlet private weak var pendingCircleView: CircleView!
-    @IBOutlet private weak var pendingTitleLabel: UILabel!
-    @IBOutlet private weak var pendingAmountLabel: UILabel!
-
+    @IBOutlet private weak var stackView: UIStackView!
     @IBOutlet private weak var circleGraphView: CircleGraphView!
 
-    private static let pendingColor = UIColor.Zap.gray
+    let segments: [Segment] = [
+        Segment(title: L10n.Scene.Channels.Header.totalCanSend, color: ChannelBalanceColor.local, source: \.totalLocal, required: true),
+        Segment(title: L10n.Scene.Channels.Header.totalCanReceive, color: ChannelBalanceColor.remote, source: \.totalRemote, required: true),
+        Segment(title: L10n.Scene.Channels.Header.totalPending, color: ChannelBalanceColor.pending, source: \.totalPending, required: false),
+        Segment(title: L10n.Scene.Channels.Header.offline, color: ChannelBalanceColor.offline, source: \.totalOffline, required: false)
+    ]
 
     override func awakeFromNib() {
         super.awakeFromNib()
 
-        Style.Label.subHeadline.apply(to: canSendTitleLabel, canReceiveTitleLabel, pendingTitleLabel)
-        Style.Label.headline.apply(to: canSendAmountLabel, canReceiveAmountLabel, pendingAmountLabel)
-
-        canSendTitleLabel.text = L10n.Scene.Channels.Header.totalCanSend
-        canReceiveTitleLabel.text = L10n.Scene.Channels.Header.totalCanReceive
-        pendingTitleLabel.text = L10n.Scene.Channels.Header.totalPending
-
         backgroundColor = UIColor.Zap.background
         circleGraphView.backgroundColor = UIColor.Zap.background
         circleGraphView.emptyColor = UIColor.Zap.seaBlue
-
-        canSendCircleView.color = UIColor.Zap.lightningOrange
-        canReceiveCircleView.color = UIColor.Zap.white
-        pendingCircleView.color = ChannelListHeaderView.pendingColor
     }
 
     func setup(for channelListViewModel: ChannelListViewModel) {
-        channelListViewModel.totalLocal
-            .bind(to: canSendAmountLabel.reactive.text, currency: Settings.shared.primaryCurrency)
-            .dispose(in: reactive.bag)
-        channelListViewModel.totalRemote
-            .bind(to: canReceiveAmountLabel.reactive.text, currency: Settings.shared.primaryCurrency)
-            .dispose(in: reactive.bag)
-        channelListViewModel.totalPending
-            .bind(to: pendingAmountLabel.reactive.text, currency: Settings.shared.primaryCurrency)
-            .dispose(in: reactive.bag)
+        setupStackView(for: channelListViewModel)
+        setupCircleView(for: channelListViewModel)
+    }
 
-        combineLatest(channelListViewModel.totalLocal, channelListViewModel.totalRemote, channelListViewModel.totalPending)
-            .observeNext { [weak self] in
-                self?.circleGraphView.segments = [
-                    CircleGraphView.Segment(amount: $0.0, color: UIColor.Zap.lightningOrange),
-                    CircleGraphView.Segment(amount: $0.1, color: UIColor.Zap.white),
-                    CircleGraphView.Segment(amount: $0.2, color: ChannelListHeaderView.pendingColor)
-                ]
+    func preferredHeight(for channelListViewModel: ChannelListViewModel) -> CGFloat {
+        var stackViewHeight: CGFloat = 0
+        for segment in segments where segment.required || channelListViewModel[keyPath: segment.source].value > 0 {
+            stackViewHeight += 20
+        }
+        return max(40, stackViewHeight) + 20
+    }
+
+    private func setupStackView(for channelListViewModel: ChannelListViewModel) {
+        stackView.clear()
+
+        for segment in segments {
+            guard segment.required || channelListViewModel[keyPath: segment.source].value > 0 else { continue }
+
+            let circleView = CircleView(frame: .zero)
+            circleView.backgroundColor = .clear
+            circleView.color = segment.color
+
+            let titleLabel = UILabel(frame: .zero)
+            Style.Label.subHeadline.apply(to: titleLabel)
+            titleLabel.text = segment.title
+
+            let amountLabel = UILabel(frame: .zero)
+            Style.Label.headline.apply(to: amountLabel)
+            amountLabel.textAlignment = .right
+            channelListViewModel[keyPath: segment.source]
+                .bind(to: amountLabel.reactive.text, currency: Settings.shared.primaryCurrency)
+                .dispose(in: reactive.bag)
+
+            let horizontalStackView = UIStackView(arrangedSubviews: [circleView, titleLabel, amountLabel])
+            horizontalStackView.axis = .horizontal
+            horizontalStackView.spacing = 5
+
+            NSLayoutConstraint.activate([
+                circleView.widthAnchor.constraint(equalToConstant: 6)
+            ])
+
+            stackView.addArrangedSubview(horizontalStackView)
+        }
+    }
+
+    private func setupCircleView(for channelListViewModel: ChannelListViewModel) {
+        let signals: [Signal<Satoshi, NoError>] = segments.map { channelListViewModel[keyPath: $0.source].toSignal() }
+        combineLatest(signals, combine: { _ in 0 })
+            .observeNext { [weak self] _ in
+                guard let segments = self?.segments else { return }
+                self?.circleGraphView.segments = segments.map {
+                    let amount = channelListViewModel[keyPath: $0.source].value
+                    return CircleGraphView.Segment(amount: amount, color: $0.color)
+                }
             }
             .dispose(in: reactive.bag)
     }

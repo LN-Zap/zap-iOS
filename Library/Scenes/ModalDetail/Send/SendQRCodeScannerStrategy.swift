@@ -15,6 +15,7 @@ class SendQRCodeScannerStrategy: QRCodeScannerStrategy {
     private let authenticationViewModel: AuthenticationViewModel
 
     let title = L10n.Scene.Send.title
+    let pasteButtonTitle = L10n.Scene.Send.PasteButton.title
 
     init(lightningService: LightningService, authenticationViewModel: AuthenticationViewModel) {
         self.lightningService = lightningService

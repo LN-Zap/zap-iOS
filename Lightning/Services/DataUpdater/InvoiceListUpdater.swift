@@ -10,10 +10,12 @@ import Foundation
 import Logger
 import SwiftLnd
 
-final class InvoiceListUpdater: ListUpdater {
+final class InvoiceListUpdater: GenericListUpdater {
+    typealias Item = Invoice
+
     private let api: LightningApiProtocol
 
-    let invoices = MutableObservableArray<Invoice>()
+    let items = MutableObservableArray<Invoice>()
 
     init(api: LightningApiProtocol) {
         self.api = api
@@ -22,9 +24,7 @@ final class InvoiceListUpdater: ListUpdater {
             if case .success(let invoice) = $0 {
                 Logger.info("new invoice: \(invoice)")
 
-                self?.invoices.append(invoice)
-
-                if invoice.state == .settled {
+                if self?.appendOrReplace(invoice) == true && invoice.state == .settled {
                     NotificationCenter.default.post(name: .receivedTransaction, object: nil, userInfo: [LightningService.transactionNotificationName: invoice])
                 }
             }
@@ -34,7 +34,7 @@ final class InvoiceListUpdater: ListUpdater {
     func update() {
         api.invoices { [weak self] in
             if case .success(let invoices) = $0 {
-                self?.invoices.replace(with: invoices)
+                self?.items.replace(with: invoices)
             }
         }
     }

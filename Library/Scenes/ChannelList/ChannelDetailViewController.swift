@@ -59,7 +59,7 @@ final class ChannelDetailViewController: ModalDetailViewController {
             contentStackView.addArrangedElement(.verticalStackView(content: [
                 .customHeight(10, element: .customView(balanceView)),
                 .horizontalStackView(compressionResistant: .first, content: [
-                    .customView(circleIndicatorView(gradient: [UIColor.Zap.lightningOrange, UIColor.Zap.lightningOrangeGradient])),
+                    .customView(circleIndicatorView(gradient: UIColor.Zap.lightningOrangeGradient)),
                     .label(text: L10n.Scene.ChannelDetail.localBalanceLabel + ":", style: labelStyle),
                     .amountLabel(amount: channelViewModel.channel.localBalance, style: textStyle)
                 ]),

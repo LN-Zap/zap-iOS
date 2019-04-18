@@ -76,8 +76,8 @@ enum LightningApiTransformation {
         return Invoice(invoice: input)
     }
 
-    static func walletBalance(input: LNDWalletBalanceResponse) -> Satoshi {
-        return Satoshi(input.totalBalance)
+    static func walletBalance(input: LNDWalletBalanceResponse) -> WalletBalance {
+        return WalletBalance(walletBalance: input)
     }
 
     static func subscribeChannelGraph(input: LNDGraphTopologyUpdate) -> GraphTopologyUpdate {
@@ -114,8 +114,8 @@ enum LightningApiTransformation {
         return input.channels
     }
 
-    static func channelBalance(input: LNDChannelBalanceResponse) -> Satoshi {
-        return Satoshi(input.balance)
+    static func channelBalance(input: LNDChannelBalanceResponse) -> ChannelBalance {
+        return ChannelBalance(channelBalance: input)
     }
 
     static func subscribeTransactions(input: LNDTransaction) -> Transaction {

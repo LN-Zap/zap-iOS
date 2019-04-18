@@ -20,7 +20,7 @@ public final class GradientView: UIView {
         }
     }
 
-    var gradient: [UIColor] = [UIColor.Zap.lightningOrangeGradient, UIColor.Zap.lightningOrange] {
+    var gradient: [UIColor] = UIColor.Zap.lightningOrangeGradient {
         didSet {
             updateColors()
         }
@@ -50,7 +50,12 @@ public final class GradientView: UIView {
     }
 
     private func updateColors() {
-        gradientLayer?.colors = gradient.map { $0.cgColor }
+        if gradient.count == 1 {
+            gradientLayer?.colors = nil
+            backgroundColor = gradient.first
+        } else {
+            gradientLayer?.colors = gradient.map { $0.cgColor }
+        }
     }
 
     private func updateDirection() {
