@@ -80,7 +80,7 @@
 "scene.channels.header.total_can_send" = "∑ Capacità d'invio:";
 "scene.channels.header.total_can_receive" = "∑ Capacità ricezione:";
 "scene.channels.header.total_pending" = "∑ Capacità in sospeso";
-"scene.channels.header.offline" = "Total offline:";
+"scene.channels.header.offline" = "Totale offline:";
 "scene.channels.close.title" = "Chiudi Canale";
 "scene.channels.close.message" = "Vuoi davvero chiudere il canale con il nodo %@?";
 "scene.channels.force_close.title" = "Forza Chiusura Canale";
@@ -96,8 +96,8 @@
 "scene.open_channel.subtitle.minimum_size" = "Dimensione minima canale: %@";
 "scene.open_channel.subtitle.maximum_size" = "Dimensione massima canale: %@";
 "scene.open_channel.subtitle.balance" = "Saldo on-chain: %@";
-"scene.open_channel.suggested_peers.title" = "Suggested Peers";
-"scene.open_channel.paste_button.title" = "Paste Peer Address";
+"scene.open_channel.suggested_peers.title" = "Nodi suggeriti";
+"scene.open_channel.paste_button.title" = "Incolla indirizzo nodo";
 
 "scene.pin.biometric.fallback.title" = "Digitare il Pin";
 "scene.pin.biometric.reason" = "Per accedere ai dati protetti";
@@ -122,7 +122,7 @@
 "scene.send.subtitle.on_chain_balance" = "Saldo on-chain: %@";
 "scene.send.subtitle.lightning_can_send_balance" = "E ' possibile inviare: %@";
 "scene.send.success_label" = "Pagamento completato con successo";
-"scene.send.paste_button.title" = "Paste Address";
+"scene.send.paste_button.title" = "Incolla indirizzo";
 
 "scene.connect_remote_node.title" = "Connetti al Nodo Remoto";
 "scene.connect_remote_node.empty_state" = "Scansiona il QRCode generato da lndconnect, BTCPay Server, o incolla il link ottenuto dall'esecuzione di 'lndconnect -j' per connettere al nodo.";
