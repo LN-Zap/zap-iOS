@@ -117,7 +117,7 @@
 "scene.send.sending" = "In Invio...";
 "scene.send.lightning.title" = "Invia Pagamento Lightning";
 "scene.send.on_chain.title" = "Invia On-chain";
-"scene.send.authentication_failed" = "Autenticazione non riuscita";
+"scene.send.authentication_failed" = "Autenticazione fallita";
 "scene.send.maximum_fee" = "Commissione prevista:";
 "scene.send.subtitle.on_chain_balance" = "Saldo on-chain: %@";
 "scene.send.subtitle.lightning_can_send_balance" = "E ' possibile inviare: %@";
@@ -209,7 +209,7 @@
 "scene.wallet.title" = "Portafoglio";
 "scene.wallet.detail.on_chain" = "On-chain:";
 "scene.wallet.detail.lightning" = "Lightning:";
-"scene.wallet.detail.pending" = "Pending:";
+"scene.wallet.detail.pending" = "In sospeso:";
 
 "scene.time_lock.headline" = "Codice di accesso errato (PIN)";
 "scene.time_lock.description" = "Il portafoglio è bloccato per:";
