@@ -61,10 +61,11 @@ public final class ExchangeRateLoader {
             if let error = error {
                 Logger.error(error.localizedDescription)
                 completion(.failure(.loadingError))
-            } else if let data = data,
-                      let jsonData = try? JSONSerialization.jsonObject(with: data, options: []),
-                      let json = jsonData as? [String: Any] {
-                let currencies = json.compactMap { parse($0, $1) }
+            } else if
+                    let data = data,
+                    let jsonData = try? JSONSerialization.jsonObject(with: data, options: []),
+                    let json = jsonData as? [String: Any] {
+                    let currencies = json.compactMap { parse($0, $1) }
                 completion(.success(currencies))
             }
         }
