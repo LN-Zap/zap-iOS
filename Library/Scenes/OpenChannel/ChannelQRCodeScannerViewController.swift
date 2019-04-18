@@ -38,6 +38,27 @@ final class ChannelQRCodeScannerViewController: QRCodeScannerViewController {
         }
     }
 
+    private func alias(forKey key: String) -> String? {
+        for cell in suggestedPeers.array {
+            switch cell {
+            case .loading:
+                continue
+            case .peer(let peer):
+                if peer.pubkey == key {
+                    return peer.nickname
+                }
+            }
+        }
+        return nil
+    }
+
+    override func presentViewController(_ viewController: UIViewController) {
+        if let viewController = viewController as? OpenChannelViewController {
+            viewController.nodeAlias = alias(forKey: viewController.viewModel.lightningNodeURI.pubKey)
+        }
+        super.presentViewController(viewController)
+    }
+
     private func setupLayout() {
         let collectionViewHeith: CGFloat = 95
 

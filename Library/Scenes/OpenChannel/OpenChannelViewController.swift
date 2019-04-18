@@ -9,10 +9,12 @@ import Logger
 import UIKit
 
 final class OpenChannelViewController: ModalDetailViewController {
-    private let viewModel: OpenChannelViewModel
+    let viewModel: OpenChannelViewModel
 
     private weak var amountInputView: AmountInputView?
     private weak var openButton: CallbackButton?
+
+    var nodeAlias: String?
 
     init(viewModel: OpenChannelViewModel) {
         self.viewModel = viewModel
@@ -29,10 +31,12 @@ final class OpenChannelViewController: ModalDetailViewController {
         contentStackView.addArrangedElement(.label(text: L10n.Scene.OpenChannel.title, style: Style.Label.headline.with({ $0.textAlignment = .center })))
         contentStackView.addArrangedElement(.separator)
 
+        let alias = self.nodeAlias ?? viewModel.lightningNodeURI.host
+
         contentStackView.addArrangedElement(.verticalStackView(content: [
             .label(text: L10n.Scene.OpenChannel.channelUriLabel, style: Style.Label.body),
             .horizontalStackView(compressionResistant: .first, content: [
-                .label(text: viewModel.lightningNodeURI.host, style: Style.Label.body),
+                .label(text: alias, style: Style.Label.body),
                 .label(text: "(\(viewModel.lightningNodeURI.pubKey))", style: Style.Label.body.with { $0.textColor = UIColor.Zap.gray })
             ])
         ], spacing: 0))
