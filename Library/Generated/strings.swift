@@ -491,6 +491,10 @@ internal enum L10n {
         internal static func versionWarning(_ p1: String, _ p2: String) -> String {
           return L10n.tr("Localizable", "scene.settings.item.version_warning", p1, p2)
         }
+        internal enum Currency {
+          /// Popular
+          internal static let popular = L10n.tr("Localizable", "scene.settings.item.currency.popular")
+        }
         internal enum OnChainRequestAddress {
           /// Bech32
           internal static let bech32 = L10n.tr("Localizable", "scene.settings.item.on_chain_request_address.bech32")
