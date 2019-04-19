@@ -74,7 +74,7 @@ public final class ExchangeRateLoader {
 
     private static func parseBitcoinAverageData(for ticker: String, data: Any) -> FiatCurrency? {
         let index = ticker.index(ticker.startIndex, offsetBy: 3)
-        let currencyCode: String = ticker.substring(from: index)
+        let currencyCode = String(ticker[index...])
         guard
                 let localized = Locale.autoupdatingCurrent.localizedString(forCurrencyCode: currencyCode),
                 let data = data as? [String: Any],
