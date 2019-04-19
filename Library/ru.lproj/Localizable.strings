@@ -52,6 +52,7 @@
 "scene.settings.item.version_warning" = "Your lnd is outdated (%@). Zap iOS works best with lnd version %@ or above.";
 "scene.settings.item.bitcoin_unit" = "Биткоин часть";
 "scene.settings.item.currency" = "Валюта";
+"scene.settings.item.currency.popular" = "Popular Currencies";
 "scene.settings.item.block_explorer" = "Обзор Блоков";
 "scene.settings.item.on_chain_request_address.title" = "Тип Биткоин Адреса";
 "scene.settings.item.on_chain_request_address.bech32" = "Bech32";
