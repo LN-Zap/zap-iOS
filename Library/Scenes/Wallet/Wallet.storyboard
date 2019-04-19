@@ -112,7 +112,7 @@
                                                             </label>
                                                         </subviews>
                                                     </stackView>
-                                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="260" verticalHuggingPriority="251" image="icon_swap" translatesAutoresizingMaskIntoConstraints="NO" id="3Mb-Jl-C6P">
+                                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="260" verticalHuggingPriority="251" horizontalCompressionResistancePriority="1000" image="icon_swap" translatesAutoresizingMaskIntoConstraints="NO" id="3Mb-Jl-C6P">
                                                         <rect key="frame" x="112.5" y="0.0" width="13" height="61.5"/>
                                                     </imageView>
                                                 </subviews>
@@ -130,6 +130,7 @@
                                             <constraint firstItem="IUt-w1-jg5" firstAttribute="centerX" secondItem="N9R-Wb-2RE" secondAttribute="centerX" id="6xg-zL-sUU"/>
                                             <constraint firstItem="MBN-7j-D0P" firstAttribute="leading" secondItem="ETB-V0-5he" secondAttribute="leading" id="R7e-oK-qDg"/>
                                             <constraint firstItem="MBN-7j-D0P" firstAttribute="bottom" secondItem="ETB-V0-5he" secondAttribute="bottom" id="SQY-NG-VTq"/>
+                                            <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="ETB-V0-5he" secondAttribute="trailing" constant="20" id="cZe-wL-Nie"/>
                                             <constraint firstItem="MBN-7j-D0P" firstAttribute="top" secondItem="ETB-V0-5he" secondAttribute="top" id="jZS-6B-7Yg"/>
                                             <constraint firstItem="ETB-V0-5he" firstAttribute="centerY" secondItem="N9R-Wb-2RE" secondAttribute="centerY" multiplier="0.618" id="sdK-xi-gsL"/>
                                             <constraint firstItem="MBN-7j-D0P" firstAttribute="trailing" secondItem="ETB-V0-5he" secondAttribute="trailing" id="zh2-iL-Ji8"/>
