@@ -109,12 +109,13 @@ public final class InfoService {
             }
         }
 
-        let newIsSyncedToChain = (try? result.get())?.isSyncedToChain
+        let newInfo = try? result.get()
+        let newIsSyncedToChain = newInfo?.isSyncedToChain
         if info.value?.isSyncedToChain != newIsSyncedToChain && newIsSyncedToChain == true {
             balanceService.update()
         }
 
-        self.info.value = try? result.get()
+        self.info.value = newInfo
     }
 
     public func stop() {
