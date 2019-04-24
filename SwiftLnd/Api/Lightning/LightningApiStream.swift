@@ -34,11 +34,11 @@ public final class LightningApiStream: LightningApiProtocol {
         LndmobileNewAddress(data, StreamCallback(completion, transform: LightningApiTransformation.newAddress))
     }
 
-    public func walletBalance(completion: @escaping Handler<Satoshi>) {
+    public func walletBalance(completion: @escaping Handler<WalletBalance>) {
         LndmobileWalletBalance(nil, StreamCallback(completion, transform: LightningApiTransformation.walletBalance))
     }
 
-    public func channelBalance(completion: @escaping Handler<Satoshi>) {
+    public func channelBalance(completion: @escaping Handler<ChannelBalance>) {
         LndmobileChannelBalance(nil, StreamCallback(completion, transform: LightningApiTransformation.channelBalance))
     }
 

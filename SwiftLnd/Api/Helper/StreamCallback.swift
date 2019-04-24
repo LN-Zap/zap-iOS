@@ -22,7 +22,7 @@ final class EmptyStreamCallback: NSObject, LndmobileCallbackProtocol {
     }
 }
 
-final class StreamCallback<T: GPBMessage, U>: NSObject, LndmobileCallbackProtocol {
+final class StreamCallback<T: GPBMessage, U>: NSObject, LndmobileCallbackProtocol, LndmobileRecvStreamProtocol {
     private let completion: Handler<U>
     private let compactMapping: ((T) -> U?)?
     private let mapping: ((T) -> Result<U, LndApiError>)?

@@ -24,7 +24,12 @@ public enum LocalLnd {
         Logger.info("start lnd", customPrefix: "🥕")
         isRunning = true
         LocalLndConfiguration.standard.save(at: lndUrl)
-        LndmobileStart(lndUrl.path, EmptyStreamCallback())
+
+        signal(SIGPIPE, SIG_IGN) // Avoid crash on socket close.
+
+        DispatchQueue.global(qos: .default).async {
+            LndmobileStart(lndUrl.path, EmptyStreamCallback())
+        }
     }
 
     public static func stop() {
