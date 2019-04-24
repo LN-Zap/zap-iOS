@@ -14,6 +14,7 @@ final class LndLogViewController: UIViewController {
 
     // swiftlint:disable:next implicitly_unwrapped_optional
     private var walletConfiguration: WalletConfiguration!
+    private var fileObserver: FileObserver?
 
     static func instantiate(walletConfiguration: WalletConfiguration) -> LndLogViewController {
         let viewController = StoryboardScene.LndLog.lndLogViewController.instantiate()
@@ -26,28 +27,41 @@ final class LndLogViewController: UIViewController {
 
         navigationItem.largeTitleDisplayMode = .never
         textView.font = UIFont(name: "Courier", size: 10)
+        textView.isEditable = false
+        textView.autocorrectionType = .no
 
-        timer = Timer.scheduledTimer(withTimeInterval: 0.1, repeats: true) { [weak self] _ in
-            self?.updateTextView()
+        updateLog()
+
+        guard let path = url?.path else { return }
+        fileObserver = FileObserver(path: path) { [weak self] _ in
+            self?.updateLog()
         }
+    }
 
-        textView.textColor = .white
-        textView.backgroundColor = UIColor.Zap.background
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        scrollToBottom()
+    }
+
+    private func updateLog() {
+        guard let log = self.log else { return }
+        self.textView.attributedText = LogFormatter.format(string: log)
+        scrollToBottom()
+    }
+
+    private func scrollToBottom() {
+        let bottom = NSRange(location: self.textView.text.count - 1, length: 1)
+        self.textView.scrollRangeToVisible(bottom)
+    }
+
+    private var url: URL? {
+        guard let folder = FileManager.default.walletDirectory(for: walletConfiguration.walletId) else { return nil }
+        return folder.appendingPathComponent("logs/bitcoin/testnet/lnd.log")
     }
 
     private var log: String? {
-        guard let folder = FileManager.default.walletDirectory(for: walletConfiguration.walletId) else { return nil }
-        let url = folder.appendingPathComponent("logs/bitcoin/testnet/lnd.log")
+        guard let url = url else { return nil }
         return try? String(contentsOf: url)
-    }
-
-    @objc private func updateTextView() {
-        if let suffix = log?.suffix(10000) {
-            textView.text = String(suffix)
-        }
-
-        let bottom = textView.contentSize.height - textView.bounds.size.height
-        textView.setContentOffset(CGPoint(x: 0, y: bottom), animated: false)
     }
 
     @IBAction private func shareLog(_ sender: Any) {

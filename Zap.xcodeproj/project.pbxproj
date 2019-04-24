@@ -180,6 +180,8 @@
 		AD536BFB20E62764002279BC /* Lightning.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AD536BE620E62763002279BC /* Lightning.framework */; };
 		AD536BFC20E62764002279BC /* Lightning.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = AD536BE620E62763002279BC /* Lightning.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		AD5901CB2265E73F00DB9B00 /* ArrowHandleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD5901CA2265E73F00DB9B00 /* ArrowHandleView.swift */; };
+		AD5AA2E32270C9F000AEDDD7 /* LogFormatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD5AA2E22270C9EF00AEDDD7 /* LogFormatter.swift */; };
+		AD5AA2E52270CC9F00AEDDD7 /* FileObserver.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD5AA2E42270CC9F00AEDDD7 /* FileObserver.swift */; };
 		AD615CF5211C82E600680790 /* LoadingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD615CF4211C82E600680790 /* LoadingView.swift */; };
 		AD615CF7211CAB0900680790 /* PaddingLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD615CF6211CAB0900680790 /* PaddingLabel.swift */; };
 		AD667E4721359D79007B9160 /* AuthenticationCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD667E4621359D79007B9160 /* AuthenticationCoordinator.swift */; };
@@ -657,6 +659,8 @@
 		AD536BF520E62764002279BC /* BTCPayQRCodeTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BTCPayQRCodeTests.swift; sourceTree = "<group>"; };
 		AD536BF720E62764002279BC /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		AD5901CA2265E73F00DB9B00 /* ArrowHandleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArrowHandleView.swift; sourceTree = "<group>"; };
+		AD5AA2E22270C9EF00AEDDD7 /* LogFormatter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogFormatter.swift; sourceTree = "<group>"; };
+		AD5AA2E42270CC9F00AEDDD7 /* FileObserver.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FileObserver.swift; sourceTree = "<group>"; };
 		AD5EA1DF213D826A00AB8031 /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		AD5EA1E1213D827B00AB8031 /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		AD615CF4211C82E600680790 /* LoadingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingView.swift; sourceTree = "<group>"; };
@@ -1716,8 +1720,10 @@
 		AD9E243C20A367E00014F9FA /* LndLog */ = {
 			isa = PBXGroup;
 			children = (
+				AD5AA2E42270CC9F00AEDDD7 /* FileObserver.swift */,
 				AD9E244020A3680C0014F9FA /* LndLog.storyboard */,
 				AD9E243E20A368020014F9FA /* LndLogViewController.swift */,
+				AD5AA2E22270C9EF00AEDDD7 /* LogFormatter.swift */,
 			);
 			path = LndLog;
 			sourceTree = "<group>";
@@ -3145,6 +3151,7 @@
 				AD391C4420D16F0B007EE22A /* Style.swift in Sources */,
 				ADA2DD06225CDD03007482D9 /* SuggestedPeerCell.swift in Sources */,
 				AD391C2C20D16EFA007EE22A /* String.swift in Sources */,
+				AD5AA2E52270CC9F00AEDDD7 /* FileObserver.swift in Sources */,
 				AD292F9020E69F0E00211AE7 /* AuthenticationViewModel.swift in Sources */,
 				AD8049B6224E896B00DA99F4 /* CircleView.swift in Sources */,
 				AD7123CE2225A51800AA8E7B /* PinStore.swift in Sources */,
@@ -3156,6 +3163,7 @@
 				AD391C2D20D16EFA007EE22A /* UIAlertController.swift in Sources */,
 				AD28843E21272B9A003C3D94 /* SendViewController.swift in Sources */,
 				ADEDA3CE217892A10078FD91 /* RequestQRCodeViewModel.swift in Sources */,
+				AD5AA2E32270C9F000AEDDD7 /* LogFormatter.swift in Sources */,
 				AD391D1E20D174B4007EE22A /* SetupCoordinator.swift in Sources */,
 				AD667E4B21367E1B007B9160 /* BackgroundViewController.swift in Sources */,
 				AD5901CB2265E73F00DB9B00 /* ArrowHandleView.swift in Sources */,
