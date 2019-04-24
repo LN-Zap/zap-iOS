@@ -47,13 +47,9 @@ final class SetupCoordinator: Coordinator {
     }
 
     #if !REMOTEONLY
-    private func startNewLnd() -> WalletConfiguration {
+    private func startLnd() -> WalletConfiguration {
         let configuration = WalletConfiguration(alias: nil, network: nil, connection: .local, walletId: UUID().uuidString)
-
-        if !LocalLnd.isRunning {
-            LocalLnd.start(walletId: configuration.walletId)
-        }
-
+        LocalLnd.start(walletId: configuration.walletId)
         return configuration
     }
     #endif
@@ -63,7 +59,7 @@ final class SetupCoordinator: Coordinator {
         presentDisabledAlert()
         #else
 
-        let configuration = startNewLnd()
+        let configuration = startLnd()
 
         let mnemonicViewModel = MnemonicViewModel(configuration: configuration)
         self.mnemonicViewModel = mnemonicViewModel
@@ -86,7 +82,7 @@ final class SetupCoordinator: Coordinator {
         #else
         guard let delegate = delegate else { return }
 
-        let configuration = startNewLnd()
+        let configuration = startLnd()
 
         let viewModel = RecoverWalletViewModel(configuration: configuration)
         let viewController = RecoverWalletViewController.instantiate(recoverWalletViewModel: viewModel, connectWallet: delegate.connectWallet)

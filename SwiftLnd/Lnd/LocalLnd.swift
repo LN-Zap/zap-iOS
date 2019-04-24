@@ -16,27 +16,32 @@ import Logger
 // device.
 
 public enum LocalLnd {
-    public private(set) static var isRunning = false
-
     public static func start(walletId: WalletId) {
-        guard let lndUrl = FileManager.default.walletDirectory(for: walletId) else { return }
+        DispatchQueue.once(token: "start_lnd") {
+            guard let lndUrl = FileManager.default.walletDirectory(for: walletId) else { return }
 
-        Logger.info("start lnd", customPrefix: "🥕")
-        isRunning = true
-        LocalLndConfiguration.standard.save(at: lndUrl)
+            Logger.info("start lnd", customPrefix: "🏁")
+            LocalLndConfiguration.standard.save(at: lndUrl)
 
-        signal(SIGPIPE, SIG_IGN) // Avoid crash on socket close.
+            signal(SIGPIPE, SIG_IGN) // Avoid crash on socket close.
 
-        DispatchQueue.global(qos: .default).async {
-            LndmobileStart(lndUrl.path, EmptyStreamCallback())
+            DispatchQueue.global(qos: .default).async {
+                LndmobileStart(lndUrl.path, EmptyStreamCallback())
+            }
         }
     }
+}
 
-    public static func stop() {
-        isRunning = false
+private extension DispatchQueue {
+    private static var onceTracker = [String]()
 
-        Logger.info("stop lnd", customPrefix: "🥕")
-        LndmobileStopDaemon(nil, EmptyStreamCallback())
+    static func once(token: String, block: () -> Void) {
+        objc_sync_enter(self)
+        defer { objc_sync_exit(self) }
+
+        guard !onceTracker.contains(token) else { return }
+        onceTracker.append(token)
+        block()
     }
 }
 
