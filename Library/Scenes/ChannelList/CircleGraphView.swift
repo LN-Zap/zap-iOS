@@ -29,6 +29,7 @@ final class CircleGraphView: UIView {
     }
 
     override func draw(_ rect: CGRect) {
+        let segments = self.segments.filter { $0.amount > 0 }
         let fullCircle = 2 * CGFloat.pi
         let totalAmount = CGFloat(truncating: segments.reduce(0) { $0 + $1.amount } as NSDecimalNumber)
 
