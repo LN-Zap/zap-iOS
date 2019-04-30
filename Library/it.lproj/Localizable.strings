@@ -52,7 +52,7 @@
 "scene.settings.item.version_warning" = "La tua verione di Lnd è obsoleta (%@). Zap iOS è compatibile con Lnd versione %@ o superiore";
 "scene.settings.item.bitcoin_unit" = "Unità di Bitcoin";
 "scene.settings.item.currency" = "Valuta";
-"scene.settings.item.currency.popular" = "Popular Currencies";
+"scene.settings.item.currency.popular" = "Principali valute";
 "scene.settings.item.block_explorer" = "Block Explorer";
 "scene.settings.item.on_chain_request_address.title" = "Tipo di indirizzo Bitcoin";
 "scene.settings.item.on_chain_request_address.bech32" = "Bech32";
