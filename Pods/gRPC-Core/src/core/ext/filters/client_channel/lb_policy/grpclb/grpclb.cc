@@ -85,7 +85,6 @@
 #include "src/core/ext/filters/client_channel/parse_address.h"
 #include "src/core/ext/filters/client_channel/resolver/fake/fake_resolver.h"
 #include "src/core/ext/filters/client_channel/server_address.h"
-#include "src/core/ext/filters/client_channel/subchannel_index.h"
 #include "src/core/lib/backoff/backoff.h"
 #include "src/core/lib/channel/channel_args.h"
 #include "src/core/lib/channel/channel_stack.h"
@@ -126,7 +125,7 @@ constexpr char kGrpclb[] = "grpclb";
 
 class GrpcLb : public LoadBalancingPolicy {
  public:
-  explicit GrpcLb(const Args& args);
+  explicit GrpcLb(Args args);
 
   const char* name() const override { return kGrpclb; }
 
@@ -274,7 +273,7 @@ class GrpcLb : public LoadBalancingPolicy {
   // Methods for dealing with the RR policy.
   void CreateOrUpdateRoundRobinPolicyLocked();
   grpc_channel_args* CreateRoundRobinPolicyArgsLocked();
-  void CreateRoundRobinPolicyLocked(const Args& args);
+  void CreateRoundRobinPolicyLocked(Args args);
   bool PickFromRoundRobinPolicyLocked(bool force_async, PendingPick* pp,
                                       grpc_error** error);
   void UpdateConnectivityStateFromRoundRobinPolicyLocked(
@@ -297,9 +296,8 @@ class GrpcLb : public LoadBalancingPolicy {
 
   // The channel for communicating with the LB server.
   grpc_channel* lb_channel_ = nullptr;
-  // Mutex to protect the channel to the LB server. This is used when
-  // processing a channelz request.
-  gpr_mu lb_channel_mu_;
+  // Uuid of the lb channel. Used for channelz.
+  gpr_atm lb_channel_uuid_ = 0;
   grpc_connectivity_state lb_channel_connectivity_;
   grpc_closure lb_channel_on_connectivity_changed_;
   // Are we already watching the LB channel's connectivity?
@@ -919,6 +917,9 @@ grpc_channel_args* BuildBalancerChannelArgs(
       // LB policy name, since we want to use the default (pick_first) in
       // the LB channel.
       GRPC_ARG_LB_POLICY_NAME,
+      // Strip out the service config, since we don't want the LB policy
+      // config specified for the parent channel to affect the LB channel.
+      GRPC_ARG_SERVICE_CONFIG,
       // The channel arg for the server URI, since that will be different for
       // the LB channel than for the parent channel.  The client channel
       // factory will re-add this arg with the right value.
@@ -930,7 +931,7 @@ grpc_channel_args* BuildBalancerChannelArgs(
       // resolver will have is_balancer=false, whereas our own addresses have
       // is_balancer=true.  We need the LB channel to return addresses with
       // is_balancer=false so that it does not wind up recursively using the
-      // grpclb LB policy, as per the special case logic in client_channel.c.
+      // grpclb LB policy.
       GRPC_ARG_SERVER_ADDRESS_LIST,
       // The fake resolver response generator, because we are replacing it
       // with the one from the grpclb policy, used to propagate updates to
@@ -975,8 +976,8 @@ grpc_channel_args* BuildBalancerChannelArgs(
 // ctor and dtor
 //
 
-GrpcLb::GrpcLb(const LoadBalancingPolicy::Args& args)
-    : LoadBalancingPolicy(args),
+GrpcLb::GrpcLb(LoadBalancingPolicy::Args args)
+    : LoadBalancingPolicy(std::move(args)),
       response_generator_(MakeRefCounted<FakeResolverResponseGenerator>()),
       lb_call_backoff_(
           BackOff::Options()
@@ -987,8 +988,6 @@ GrpcLb::GrpcLb(const LoadBalancingPolicy::Args& args)
               .set_max_backoff(GRPC_GRPCLB_RECONNECT_MAX_BACKOFF_SECONDS *
                                1000)) {
   // Initialization.
-  gpr_mu_init(&lb_channel_mu_);
-  grpc_subchannel_index_ref();
   GRPC_CLOSURE_INIT(&lb_channel_on_connectivity_changed_,
                     &GrpcLb::OnBalancerChannelConnectivityChangedLocked, this,
                     grpc_combiner_scheduler(args.combiner));
@@ -1025,14 +1024,12 @@ GrpcLb::GrpcLb(const LoadBalancingPolicy::Args& args)
 
 GrpcLb::~GrpcLb() {
   GPR_ASSERT(pending_picks_ == nullptr);
-  gpr_mu_destroy(&lb_channel_mu_);
   gpr_free((void*)server_name_);
   grpc_channel_args_destroy(args_);
   grpc_connectivity_state_destroy(&state_tracker_);
   if (serverlist_ != nullptr) {
     grpc_grpclb_destroy_serverlist(serverlist_);
   }
-  grpc_subchannel_index_unref();
 }
 
 void GrpcLb::ShutdownLocked() {
@@ -1052,10 +1049,9 @@ void GrpcLb::ShutdownLocked() {
   // OnBalancerChannelConnectivityChangedLocked(), and we need to be
   // alive when that callback is invoked.
   if (lb_channel_ != nullptr) {
-    gpr_mu_lock(&lb_channel_mu_);
     grpc_channel_destroy(lb_channel_);
     lb_channel_ = nullptr;
-    gpr_mu_unlock(&lb_channel_mu_);
+    gpr_atm_no_barrier_store(&lb_channel_uuid_, 0);
   }
   grpc_connectivity_state_set(&state_tracker_, GRPC_CHANNEL_SHUTDOWN,
                               GRPC_ERROR_REF(error), "grpclb_shutdown");
@@ -1210,14 +1206,12 @@ void GrpcLb::FillChildRefsForChannelz(
     channelz::ChildRefsList* child_subchannels,
     channelz::ChildRefsList* child_channels) {
   // delegate to the RoundRobin to fill the children subchannels.
-  rr_policy_->FillChildRefsForChannelz(child_subchannels, child_channels);
-  MutexLock lock(&lb_channel_mu_);
-  if (lb_channel_ != nullptr) {
-    grpc_core::channelz::ChannelNode* channel_node =
-        grpc_channel_get_channelz_node(lb_channel_);
-    if (channel_node != nullptr) {
-      child_channels->push_back(channel_node->uuid());
-    }
+  if (rr_policy_ != nullptr) {
+    rr_policy_->FillChildRefsForChannelz(child_subchannels, child_channels);
+  }
+  gpr_atm uuid = gpr_atm_no_barrier_load(&lb_channel_uuid_);
+  if (uuid != 0) {
+    child_channels->push_back(uuid);
   }
 }
 
@@ -1277,12 +1271,15 @@ void GrpcLb::ProcessChannelArgsLocked(const grpc_channel_args& args) {
   if (lb_channel_ == nullptr) {
     char* uri_str;
     gpr_asprintf(&uri_str, "fake:///%s", server_name_);
-    gpr_mu_lock(&lb_channel_mu_);
     lb_channel_ = grpc_client_channel_factory_create_channel(
         client_channel_factory(), uri_str,
         GRPC_CLIENT_CHANNEL_TYPE_LOAD_BALANCING, lb_channel_args);
-    gpr_mu_unlock(&lb_channel_mu_);
     GPR_ASSERT(lb_channel_ != nullptr);
+    grpc_core::channelz::ChannelNode* channel_node =
+        grpc_channel_get_channelz_node(lb_channel_);
+    if (channel_node != nullptr) {
+      gpr_atm_no_barrier_store(&lb_channel_uuid_, channel_node->uuid());
+    }
     gpr_free(uri_str);
   }
   // Propagate updates to the LB channel (pick_first) through the fake
@@ -1594,10 +1591,10 @@ bool GrpcLb::PickFromRoundRobinPolicyLocked(bool force_async, PendingPick* pp,
   return pick_done;
 }
 
-void GrpcLb::CreateRoundRobinPolicyLocked(const Args& args) {
+void GrpcLb::CreateRoundRobinPolicyLocked(Args args) {
   GPR_ASSERT(rr_policy_ == nullptr);
   rr_policy_ = LoadBalancingPolicyRegistry::CreateLoadBalancingPolicy(
-      "round_robin", args);
+      "round_robin", std::move(args));
   if (GPR_UNLIKELY(rr_policy_ == nullptr)) {
     gpr_log(GPR_ERROR, "[grpclb %p] Failure creating a RoundRobin policy",
             this);
@@ -1699,7 +1696,8 @@ void GrpcLb::CreateOrUpdateRoundRobinPolicyLocked() {
     lb_policy_args.combiner = combiner();
     lb_policy_args.client_channel_factory = client_channel_factory();
     lb_policy_args.args = args;
-    CreateRoundRobinPolicyLocked(lb_policy_args);
+    lb_policy_args.subchannel_pool = subchannel_pool()->Ref();
+    CreateRoundRobinPolicyLocked(std::move(lb_policy_args));
   }
   grpc_channel_args_destroy(args);
 }
@@ -1807,7 +1805,7 @@ void GrpcLb::OnRoundRobinConnectivityChangedLocked(void* arg,
 class GrpcLbFactory : public LoadBalancingPolicyFactory {
  public:
   OrphanablePtr<LoadBalancingPolicy> CreateLoadBalancingPolicy(
-      const LoadBalancingPolicy::Args& args) const override {
+      LoadBalancingPolicy::Args args) const override {
     /* Count the number of gRPC-LB addresses. There must be at least one. */
     const ServerAddressList* addresses =
         FindServerAddressListChannelArg(args.args);
@@ -1820,7 +1818,7 @@ class GrpcLbFactory : public LoadBalancingPolicyFactory {
       }
     }
     if (!found_balancer) return nullptr;
-    return OrphanablePtr<LoadBalancingPolicy>(New<GrpcLb>(args));
+    return OrphanablePtr<LoadBalancingPolicy>(New<GrpcLb>(std::move(args)));
   }
 
   const char* name() const override { return kGrpclb; }
