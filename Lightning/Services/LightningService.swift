@@ -19,7 +19,7 @@ public extension Notification.Name {
 public final class LightningService: NSObject {
     public static var transactionNotificationName = "transactionNotificationName"
 
-    private let api: LightningApiProtocol
+    private let api: LightningApi
     private let walletId: WalletId
     public let connection: LightningConnection
 
@@ -44,7 +44,7 @@ public final class LightningService: NSObject {
         self.init(api: connection.api, walletId: walletId, connection: connection)
     }
 
-    init(api: LightningApiProtocol, walletId: WalletId, connection: LightningConnection) {
+    init(api: LightningApi, walletId: WalletId, connection: LightningConnection) {
         self.api = api
         self.walletId = walletId
         self.connection = connection
@@ -76,10 +76,5 @@ public final class LightningService: NSObject {
 
     public func stop() {
         infoService.stop()
-    }
-
-    public func resetRpcConnection() {
-        guard let api = api as? RpcApi else { return }
-        api.resetConnection()
     }
 }

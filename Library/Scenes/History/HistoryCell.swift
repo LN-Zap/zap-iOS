@@ -133,7 +133,7 @@ final class HistoryCell: BondTableViewCell {
         switch channelEvent.type {
         case .open:
             title = L10n.Scene.History.Cell.channelOpened
-        case .cooperativeClose, .unknown:
+        case .cooperativeClose:
             title = L10n.Scene.History.Cell.channelClosed
         case .localForceClose:
             title = L10n.Scene.History.Cell.forceCloseChannel

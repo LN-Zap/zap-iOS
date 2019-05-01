@@ -30,7 +30,7 @@ final class ConnectRemoteNodeViewModel: NSObject {
 
     let dataSource: MutableObservableArray2D<String?, CellType>
 
-    private var testServer: LightningApiRpc?
+    private var testServer: LightningApi?
 
     override private init() {
         fatalError("not implemented")
@@ -94,7 +94,7 @@ final class ConnectRemoteNodeViewModel: NSObject {
     func connect(completion: @escaping (WalletConfiguration, Swift.Result<Success, LndApiError>) -> Void) {
         guard let remoteNodeConfiguration = remoteNodeConfiguration else { return }
 
-        testServer = LightningApiRpc(configuration: remoteNodeConfiguration)
+        testServer = LightningApi(connection: .remote(remoteNodeConfiguration))
         testServer?.canConnect {
             let configuration = WalletConfiguration(alias: nil, network: nil, connection: .remote(remoteNodeConfiguration), walletId: UUID().uuidString)
             completion(configuration, $0)

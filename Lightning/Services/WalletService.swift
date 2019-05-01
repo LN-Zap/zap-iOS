@@ -12,7 +12,7 @@ public final class WalletService {
     public static let password = "12345678" // TODO: save random pw in secure enclave
 
     private(set) var isUnlocked = false
-    private let wallet: WalletApiProtocol
+    private let wallet: WalletApi
     public let connection: LightningConnection
 
     public init(connection: LightningConnection) {
@@ -21,12 +21,12 @@ public final class WalletService {
         switch connection {
         case .local:
         #if !REMOTEONLY
-            self.wallet = WalletApiStream()
+            self.wallet = WalletApi(connection: .local)
         #else
             fatalError(".local not supported")
         #endif
         case .remote(let configuration):
-            self.wallet = WalletApiRpc(configuration: configuration)
+            self.wallet = WalletApi(connection: .remote(configuration))
         }
     }
 

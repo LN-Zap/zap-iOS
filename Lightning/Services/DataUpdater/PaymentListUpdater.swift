@@ -12,11 +12,11 @@ import SwiftLnd
 final class PaymentListUpdater: GenericListUpdater {
     typealias Item = Payment
 
-    private let api: LightningApiProtocol
+    private let api: LightningApi
 
     let items = MutableObservableArray<Payment>()
 
-    init(api: LightningApiProtocol) {
+    init(api: LightningApi) {
         self.api = api
     }
 

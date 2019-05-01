@@ -11,11 +11,11 @@ import SwiftBTC
 import SwiftLnd
 
 public final class TransactionService {
-    private let api: LightningApiProtocol
+    private let api: LightningApi
     private let balanceService: BalanceService
     private let paymentListUpdater: PaymentListUpdater
 
-    init(api: LightningApiProtocol, balanceService: BalanceService, paymentListUpdater: PaymentListUpdater) {
+    init(api: LightningApi, balanceService: BalanceService, paymentListUpdater: PaymentListUpdater) {
         self.api = api
         self.balanceService = balanceService
         self.paymentListUpdater = paymentListUpdater

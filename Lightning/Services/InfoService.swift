@@ -20,7 +20,7 @@ public final class InfoService {
         case error
     }
 
-    private let api: LightningApiProtocol
+    private let api: LightningApi
 
     public let balanceService: BalanceService
 
@@ -36,7 +36,7 @@ public final class InfoService {
 
     private var syncDebounceCount = 0 // used so wallet does not switch sync state each time a block is mined
 
-    init(api: LightningApiProtocol, balanceService: BalanceService) {
+    init(api: LightningApi, balanceService: BalanceService) {
         self.api = api
         self.balanceService = balanceService
 

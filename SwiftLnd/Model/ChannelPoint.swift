@@ -6,13 +6,12 @@
 //
 
 import Foundation
-import LndRpc
 
 public struct ChannelPoint: Equatable {
     public let fundingTxid: String
     let outputIndex: Int
 
-    init(channelPoint: LNDChannelPoint) {
+    init(channelPoint: Lnrpc_ChannelPoint) {
         outputIndex = Int(channelPoint.outputIndex)
         fundingTxid = channelPoint.fundingTxidStr
     }

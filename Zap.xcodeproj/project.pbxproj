@@ -168,9 +168,8 @@
 		AD391D2020D178C2007EE22A /* Bundle.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD391D1F20D178C2007EE22A /* Bundle.swift */; };
 		AD391D2220D1798A007EE22A /* Media.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = AD391D2120D1798A007EE22A /* Media.xcassets */; };
 		AD3DDC03213EE4000008379C /* RootTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD3DDC02213EE4000008379C /* RootTabBarController.swift */; };
-		AD3FF6E0221D68890017E376 /* RpcApi.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD3FF6DF221D68890017E376 /* RpcApi.swift */; };
+		AD3FF6E0221D68890017E376 /* ServiceClientBase+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD3FF6DF221D68890017E376 /* ServiceClientBase+Extension.swift */; };
 		AD3FF6E2221D750F0017E376 /* UnlockWalletViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD3FF6E1221D750F0017E376 /* UnlockWalletViewModel.swift */; };
-		AD3FF6E4221D9C5C0017E376 /* GRPCCall+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD3FF6E3221D9C5C0017E376 /* GRPCCall+Extensions.swift */; };
 		AD511B282253744800EDFC7C /* Version.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD511B272253744800EDFC7C /* Version.swift */; };
 		AD511B2A2253748F00EDFC7C /* VersionTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD511B292253748F00EDFC7C /* VersionTests.swift */; };
 		AD511B2C2253C14800EDFC7C /* InvoiceListUpdater.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD511B2B2253C14800EDFC7C /* InvoiceListUpdater.swift */; };
@@ -182,6 +181,7 @@
 		AD5901CB2265E73F00DB9B00 /* ArrowHandleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD5901CA2265E73F00DB9B00 /* ArrowHandleView.swift */; };
 		AD5AA2E32270C9F000AEDDD7 /* LogFormatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD5AA2E22270C9EF00AEDDD7 /* LogFormatter.swift */; };
 		AD5AA2E52270CC9F00AEDDD7 /* FileObserver.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD5AA2E42270CC9F00AEDDD7 /* FileObserver.swift */; };
+		AD5AA2E72271B64500AEDDD7 /* rpc.pb.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD5AA2E62271B64500AEDDD7 /* rpc.pb.swift */; };
 		AD615CF5211C82E600680790 /* LoadingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD615CF4211C82E600680790 /* LoadingView.swift */; };
 		AD615CF7211CAB0900680790 /* PaddingLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD615CF6211CAB0900680790 /* PaddingLabel.swift */; };
 		AD667E4721359D79007B9160 /* AuthenticationCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD667E4621359D79007B9160 /* AuthenticationCoordinator.swift */; };
@@ -225,6 +225,8 @@
 		AD9BB2DA21819799009DC878 /* Route.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD9BB2D921819799009DC878 /* Route.swift */; };
 		AD9BB2DC21830B4F009DC878 /* LoadingAmountView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD9BB2DB21830B4F009DC878 /* LoadingAmountView.swift */; };
 		AD9BB2E021836A54009DC878 /* DispatchQueue+Debounce.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD9BB2DF21836A54009DC878 /* DispatchQueue+Debounce.swift */; };
+		AD9F3ADF2271C2550044E5EB /* MacaroonId.pb.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD9F3ADE2271C2550044E5EB /* MacaroonId.pb.swift */; };
+		AD9F3AE12271DE2D0044E5EB /* rpc.grpc.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD9F3AE02271DE2D0044E5EB /* rpc.grpc.swift */; };
 		ADA179BE21515095001401F3 /* SectionHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADA179BD21515095001401F3 /* SectionHeaderView.swift */; };
 		ADA179C02151509E001401F3 /* SectionHeaderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = ADA179BF2151509E001401F3 /* SectionHeaderView.xib */; };
 		ADA179C221526036001401F3 /* DateProvidingEvent.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADA179C121526036001401F3 /* DateProvidingEvent.swift */; };
@@ -241,10 +243,7 @@
 		ADA3254421AD8D7900C5EAA2 /* Colors.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = ADA3254321AD8D7900C5EAA2 /* Colors.xcassets */; };
 		ADA3254621AD8F6200C5EAA2 /* StoryboardScenes.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADA3254521AD8F6200C5EAA2 /* StoryboardScenes.swift */; };
 		ADA3A86B2225842200B058FB /* PBKDF2.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADA3A86A2225842200B058FB /* PBKDF2.swift */; };
-		ADA58F8C2200B08A009A5494 /* LightningApiTransformation.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADA58F8B2200B08A009A5494 /* LightningApiTransformation.swift */; };
 		ADA58F9122031E56009A5494 /* RpcCallback.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADA58F9022031E56009A5494 /* RpcCallback.swift */; };
-		ADA58F9322033FC7009A5494 /* WalletApiTransformation.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADA58F9222033FC7009A5494 /* WalletApiTransformation.swift */; };
-		ADA58F9522034A25009A5494 /* GRPCProtoCall+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADA58F9422034A25009A5494 /* GRPCProtoCall+Extensions.swift */; };
 		ADA58F9822049022009A5494 /* ManageWalletsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADA58F9722049022009A5494 /* ManageWalletsViewController.swift */; };
 		ADA58F9A22049047009A5494 /* ManageWallets.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = ADA58F9922049047009A5494 /* ManageWallets.storyboard */; };
 		ADA58F9C22049470009A5494 /* WalletConfigurationStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADA58F9B22049470009A5494 /* WalletConfigurationStore.swift */; };
@@ -275,13 +274,7 @@
 		ADADAD972143B3C900A48E1F /* LndApiError.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0D3C97C20616AB80015C5D7 /* LndApiError.swift */; };
 		ADADAD982143B3C900A48E1F /* Protobuf+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADBA4424209B067400D18B71 /* Protobuf+Extensions.swift */; };
 		ADADAD9A2143B3C900A48E1F /* StreamCallback.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADBA4422209B00D300D18B71 /* StreamCallback.swift */; };
-		ADADAD9B2143B3C900A48E1F /* LightningApiMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADBB36232080A457005662B4 /* LightningApiMock.swift */; };
-		ADADAD9C2143B3C900A48E1F /* LightningApiProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADBB36212080A3B1005662B4 /* LightningApiProtocol.swift */; };
-		ADADAD9D2143B3C900A48E1F /* LightningApiRpc.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0A33EF32028743200BB76F4 /* LightningApiRpc.swift */; };
-		ADADAD9E2143B3C900A48E1F /* LightningApiStream.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADBA4420209AE75600D18B71 /* LightningApiStream.swift */; };
-		ADADAD9F2143B3C900A48E1F /* WalletApiProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD6F863320DA3C99008C371B /* WalletApiProtocol.swift */; };
-		ADADADA02143B3C900A48E1F /* WalletApiRpc.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0D3C969205D55570015C5D7 /* WalletApiRpc.swift */; };
-		ADADADA12143B3C900A48E1F /* WalletApiStream.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD6F863120DA3C66008C371B /* WalletApiStream.swift */; };
+		ADADAD9B2143B3C900A48E1F /* ApiMockTemplate.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADBB36232080A457005662B4 /* ApiMockTemplate.swift */; };
 		ADB4CBA22254905100D186BC /* ChannelListUpdater.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADB4CBA12254905100D186BC /* ChannelListUpdater.swift */; };
 		ADB4CBA4225493A300D186BC /* ChannelEventUpdate.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADB4CBA3225493A300D186BC /* ChannelEventUpdate.swift */; };
 		ADB4CBA62254AEEC00D186BC /* ListUpdater.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADB4CBA52254AEEC00D186BC /* ListUpdater.swift */; };
@@ -299,6 +292,9 @@
 		ADCD5B0F20D7E40C0037F156 /* ChangePinSettingsItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADCD5B0E20D7E40C0037F156 /* ChangePinSettingsItem.swift */; };
 		ADCEAFD32255F2C2004F605B /* WarningSettingsItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADCEAFD22255F2C2004F605B /* WarningSettingsItem.swift */; };
 		ADCEAFD522579C2A004F605B /* LoadingAnimationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADCEAFD422579C2A004F605B /* LoadingAnimationView.swift */; };
+		ADD089F922773EE400480073 /* LightningApi.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADD089F822773EE400480073 /* LightningApi.swift */; };
+		ADD08A0322787B8300480073 /* rpc.zap.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADD08A0222787B8300480073 /* rpc.zap.swift */; };
+		ADD08A062278BBCE00480073 /* WalletApi.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADD08A052278BBCE00480073 /* WalletApi.swift */; };
 		ADDD13B62119CE740035D2F9 /* StackViewElement.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADDD13B52119CE740035D2F9 /* StackViewElement.swift */; };
 		ADDD13B92119CEB40035D2F9 /* UIStackView.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADDD13B82119CEB40035D2F9 /* UIStackView.swift */; };
 		ADDD13BB2119CF110035D2F9 /* CallbackButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADDD13BA2119CF110035D2F9 /* CallbackButton.swift */; };
@@ -570,7 +566,6 @@
 		A0A05A5620149A0D0007D1C9 /* Settings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Settings.swift; sourceTree = "<group>"; };
 		A0A05A5B20149F720007D1C9 /* HistoryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistoryViewController.swift; sourceTree = "<group>"; };
 		A0A05A5D2014A0DE0007D1C9 /* UITableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UITableView.swift; sourceTree = "<group>"; };
-		A0A33EF32028743200BB76F4 /* LightningApiRpc.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LightningApiRpc.swift; sourceTree = "<group>"; };
 		A0A96B8520174BAC00788808 /* CloseStatusUpdate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CloseStatusUpdate.swift; sourceTree = "<group>"; };
 		A0A96B87201769F100788808 /* String.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = String.swift; sourceTree = "<group>"; };
 		A0A96B932017965100788808 /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
@@ -579,7 +574,6 @@
 		A0BD44DE206FED1400BF27A3 /* BondCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BondCell.swift; sourceTree = "<group>"; };
 		A0C2EABD206F8B5B003AE56E /* Localizable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Localizable.swift; sourceTree = "<group>"; };
 		A0C2EAC3206F9539003AE56E /* ExchangeUpdaterJob.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExchangeUpdaterJob.swift; sourceTree = "<group>"; };
-		A0D3C969205D55570015C5D7 /* WalletApiRpc.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WalletApiRpc.swift; sourceTree = "<group>"; };
 		A0D3C970205FF0E10015C5D7 /* MnemonicViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MnemonicViewController.swift; sourceTree = "<group>"; };
 		A0D3C9792060070D0015C5D7 /* WalletService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WalletService.swift; sourceTree = "<group>"; };
 		A0D3C97C20616AB80015C5D7 /* LndApiError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LndApiError.swift; sourceTree = "<group>"; };
@@ -646,9 +640,8 @@
 		AD3CF97520B4028400D78A54 /* SelectWalletCreationMethodTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectWalletCreationMethodTableViewCell.swift; sourceTree = "<group>"; };
 		AD3CF97620B4028400D78A54 /* SelectWalletCreationMethodTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SelectWalletCreationMethodTableViewCell.xib; sourceTree = "<group>"; };
 		AD3DDC02213EE4000008379C /* RootTabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RootTabBarController.swift; sourceTree = "<group>"; };
-		AD3FF6DF221D68890017E376 /* RpcApi.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RpcApi.swift; sourceTree = "<group>"; };
+		AD3FF6DF221D68890017E376 /* ServiceClientBase+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ServiceClientBase+Extension.swift"; sourceTree = "<group>"; };
 		AD3FF6E1221D750F0017E376 /* UnlockWalletViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UnlockWalletViewModel.swift; sourceTree = "<group>"; };
-		AD3FF6E3221D9C5C0017E376 /* GRPCCall+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "GRPCCall+Extensions.swift"; sourceTree = "<group>"; };
 		AD511B272253744800EDFC7C /* Version.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Version.swift; sourceTree = "<group>"; };
 		AD511B292253748F00EDFC7C /* VersionTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VersionTests.swift; sourceTree = "<group>"; };
 		AD511B2B2253C14800EDFC7C /* InvoiceListUpdater.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InvoiceListUpdater.swift; sourceTree = "<group>"; };
@@ -661,6 +654,7 @@
 		AD5901CA2265E73F00DB9B00 /* ArrowHandleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArrowHandleView.swift; sourceTree = "<group>"; };
 		AD5AA2E22270C9EF00AEDDD7 /* LogFormatter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogFormatter.swift; sourceTree = "<group>"; };
 		AD5AA2E42270CC9F00AEDDD7 /* FileObserver.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FileObserver.swift; sourceTree = "<group>"; };
+		AD5AA2E62271B64500AEDDD7 /* rpc.pb.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = rpc.pb.swift; sourceTree = "<group>"; };
 		AD5EA1DF213D826A00AB8031 /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		AD5EA1E1213D827B00AB8031 /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		AD615CF4211C82E600680790 /* LoadingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingView.swift; sourceTree = "<group>"; };
@@ -677,8 +671,6 @@
 		AD667E5821384966007B9160 /* WindowLevel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WindowLevel.swift; sourceTree = "<group>"; };
 		AD680A9E20B07AD90018986B /* ConnectRemoteNode.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = ConnectRemoteNode.storyboard; sourceTree = "<group>"; };
 		AD680AA020B07AE90018986B /* ConnectRemoteNodeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConnectRemoteNodeViewController.swift; sourceTree = "<group>"; };
-		AD6F863120DA3C66008C371B /* WalletApiStream.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WalletApiStream.swift; sourceTree = "<group>"; };
-		AD6F863320DA3C99008C371B /* WalletApiProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WalletApiProtocol.swift; sourceTree = "<group>"; };
 		AD6FFCA520AB0A3700B57330 /* OnChainRequestAddressTypeSettingsItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnChainRequestAddressTypeSettingsItem.swift; sourceTree = "<group>"; };
 		AD7123CD2225A51800AA8E7B /* PinStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PinStore.swift; sourceTree = "<group>"; };
 		AD71EA4820E2318000256307 /* RPCCredentials.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RPCCredentials.swift; sourceTree = "<group>"; };
@@ -732,6 +724,8 @@
 		AD9E243E20A368020014F9FA /* LndLogViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LndLogViewController.swift; sourceTree = "<group>"; };
 		AD9E244020A3680C0014F9FA /* LndLog.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = LndLog.storyboard; sourceTree = "<group>"; };
 		AD9E244420A377190014F9FA /* UIApplication.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIApplication.swift; sourceTree = "<group>"; };
+		AD9F3ADE2271C2550044E5EB /* MacaroonId.pb.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MacaroonId.pb.swift; sourceTree = "<group>"; };
+		AD9F3AE02271DE2D0044E5EB /* rpc.grpc.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = rpc.grpc.swift; sourceTree = "<group>"; };
 		ADA179BD21515095001401F3 /* SectionHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SectionHeaderView.swift; sourceTree = "<group>"; };
 		ADA179BF2151509E001401F3 /* SectionHeaderView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SectionHeaderView.xib; sourceTree = "<group>"; };
 		ADA179C121526036001401F3 /* DateProvidingEvent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateProvidingEvent.swift; sourceTree = "<group>"; };
@@ -746,10 +740,7 @@
 		ADA3254321AD8D7900C5EAA2 /* Colors.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Colors.xcassets; sourceTree = "<group>"; };
 		ADA3254521AD8F6200C5EAA2 /* StoryboardScenes.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StoryboardScenes.swift; sourceTree = "<group>"; };
 		ADA3A86A2225842200B058FB /* PBKDF2.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PBKDF2.swift; sourceTree = "<group>"; };
-		ADA58F8B2200B08A009A5494 /* LightningApiTransformation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LightningApiTransformation.swift; sourceTree = "<group>"; };
 		ADA58F9022031E56009A5494 /* RpcCallback.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RpcCallback.swift; sourceTree = "<group>"; };
-		ADA58F9222033FC7009A5494 /* WalletApiTransformation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WalletApiTransformation.swift; sourceTree = "<group>"; };
-		ADA58F9422034A25009A5494 /* GRPCProtoCall+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "GRPCProtoCall+Extensions.swift"; sourceTree = "<group>"; };
 		ADA58F9722049022009A5494 /* ManageWalletsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ManageWalletsViewController.swift; sourceTree = "<group>"; };
 		ADA58F9922049047009A5494 /* ManageWallets.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = ManageWallets.storyboard; sourceTree = "<group>"; };
 		ADA58F9B22049470009A5494 /* WalletConfigurationStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WalletConfigurationStore.swift; sourceTree = "<group>"; };
@@ -838,12 +829,10 @@
 		ADBA12012090CD11001F7700 /* KeyPadView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = KeyPadView.xib; sourceTree = "<group>"; };
 		ADBA12032090CD22001F7700 /* KeyPadView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyPadView.swift; sourceTree = "<group>"; };
 		ADBA120520930C94001F7700 /* UIViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIViewController.swift; sourceTree = "<group>"; };
-		ADBA4420209AE75600D18B71 /* LightningApiStream.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LightningApiStream.swift; sourceTree = "<group>"; };
 		ADBA4422209B00D300D18B71 /* StreamCallback.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StreamCallback.swift; sourceTree = "<group>"; };
 		ADBA4424209B067400D18B71 /* Protobuf+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Protobuf+Extensions.swift"; sourceTree = "<group>"; };
 		ADBB361F207FA5D6005662B4 /* Date+Localizable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Date+Localizable.swift"; sourceTree = "<group>"; };
-		ADBB36212080A3B1005662B4 /* LightningApiProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LightningApiProtocol.swift; sourceTree = "<group>"; };
-		ADBB36232080A457005662B4 /* LightningApiMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LightningApiMock.swift; sourceTree = "<group>"; };
+		ADBB36232080A457005662B4 /* ApiMockTemplate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApiMockTemplate.swift; sourceTree = "<group>"; };
 		ADBB36252080AD70005662B4 /* LoadingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingViewController.swift; sourceTree = "<group>"; };
 		ADBB36282080B2AE005662B4 /* TestingTemplates.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestingTemplates.swift; sourceTree = "<group>"; };
 		ADBB362E2084CA16005662B4 /* MnemonicPageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MnemonicPageViewController.swift; sourceTree = "<group>"; };
@@ -873,6 +862,9 @@
 		ADCE01CB207B967200CA72E8 /* Loading.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Loading.storyboard; sourceTree = "<group>"; };
 		ADCEAFD22255F2C2004F605B /* WarningSettingsItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WarningSettingsItem.swift; sourceTree = "<group>"; };
 		ADCEAFD422579C2A004F605B /* LoadingAnimationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingAnimationView.swift; sourceTree = "<group>"; };
+		ADD089F822773EE400480073 /* LightningApi.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LightningApi.swift; sourceTree = "<group>"; };
+		ADD08A0222787B8300480073 /* rpc.zap.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = rpc.zap.swift; sourceTree = "<group>"; };
+		ADD08A052278BBCE00480073 /* WalletApi.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WalletApi.swift; sourceTree = "<group>"; };
 		ADD6D80220B09260008BE461 /* RemoteNodeCertificatesScannerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RemoteNodeCertificatesScannerViewController.swift; sourceTree = "<group>"; };
 		ADD6D80620B15603008BE461 /* ZapconnectQRCode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ZapconnectQRCode.swift; sourceTree = "<group>"; };
 		ADD9DCDC20B453D000AEFC5C /* LightningConnection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LightningConnection.swift; sourceTree = "<group>"; };
@@ -1349,9 +1341,9 @@
 		A0D3C97B20616A9A0015C5D7 /* Api */ = {
 			isa = PBXGroup;
 			children = (
+				ADD089F822773EE400480073 /* LightningApi.swift */,
+				ADD08A052278BBCE00480073 /* WalletApi.swift */,
 				AD71EA4C20E2335B00256307 /* Helper */,
-				ADA58F8E2201F565009A5494 /* Lightning */,
-				ADA58F8F22031D36009A5494 /* Wallet */,
 			);
 			path = Api;
 			sourceTree = "<group>";
@@ -1594,7 +1586,6 @@
 				A0D3C97C20616AB80015C5D7 /* LndApiError.swift */,
 				ADA58F9022031E56009A5494 /* RpcCallback.swift */,
 				ADBA4422209B00D300D18B71 /* StreamCallback.swift */,
-				AD3FF6DF221D68890017E376 /* RpcApi.swift */,
 			);
 			path = Helper;
 			sourceTree = "<group>";
@@ -1629,9 +1620,8 @@
 			children = (
 				AD79E421219D90E2002589CA /* Data+Extensions.swift */,
 				AD7ED621220B4FE9007C5F2C /* FileManager.swift */,
-				AD3FF6E3221D9C5C0017E376 /* GRPCCall+Extensions.swift */,
-				ADA58F9422034A25009A5494 /* GRPCProtoCall+Extensions.swift */,
 				ADBA4424209B067400D18B71 /* Protobuf+Extensions.swift */,
+				AD3FF6DF221D68890017E376 /* ServiceClientBase+Extension.swift */,
 				AD79E423219D90EF002589CA /* String+Extensions.swift */,
 			);
 			path = Extensions;
@@ -1755,29 +1745,6 @@
 			path = Macaroon;
 			sourceTree = "<group>";
 		};
-		ADA58F8E2201F565009A5494 /* Lightning */ = {
-			isa = PBXGroup;
-			children = (
-				ADBB36232080A457005662B4 /* LightningApiMock.swift */,
-				ADBB36212080A3B1005662B4 /* LightningApiProtocol.swift */,
-				A0A33EF32028743200BB76F4 /* LightningApiRpc.swift */,
-				ADBA4420209AE75600D18B71 /* LightningApiStream.swift */,
-				ADA58F8B2200B08A009A5494 /* LightningApiTransformation.swift */,
-			);
-			path = Lightning;
-			sourceTree = "<group>";
-		};
-		ADA58F8F22031D36009A5494 /* Wallet */ = {
-			isa = PBXGroup;
-			children = (
-				AD6F863320DA3C99008C371B /* WalletApiProtocol.swift */,
-				A0D3C969205D55570015C5D7 /* WalletApiRpc.swift */,
-				AD6F863120DA3C66008C371B /* WalletApiStream.swift */,
-				ADA58F9222033FC7009A5494 /* WalletApiTransformation.swift */,
-			);
-			path = Wallet;
-			sourceTree = "<group>";
-		};
 		ADA58F9622049007009A5494 /* ManageWallets */ = {
 			isa = PBXGroup;
 			children = (
@@ -1816,12 +1783,12 @@
 				ADADAD652143B2E700A48E1F /* SwiftLnd.h */,
 				ADC08D8A21DBBB16000E730E /* README.md */,
 				ADADAD662143B2E700A48E1F /* Info.plist */,
-				ADBB36282080B2AE005662B4 /* TestingTemplates.swift */,
 				A0D3C97B20616A9A0015C5D7 /* Api */,
 				AD79E425219D90F3002589CA /* Extensions */,
 				ADEB61B62217078B009D5707 /* Generated */,
 				A0376B70201CC16D00F1FBEF /* Lnd */,
 				ADA58F8D2201ED23009A5494 /* Macaroon */,
+				ADD08A042278BACC00480073 /* Mocks */,
 				A0A05A5A20149AF80007D1C9 /* Model */,
 				ADADAD712143B2E700A48E1F /* Tests */,
 			);
@@ -1915,6 +1882,15 @@
 			path = Loading;
 			sourceTree = "<group>";
 		};
+		ADD08A042278BACC00480073 /* Mocks */ = {
+			isa = PBXGroup;
+			children = (
+				ADBB36282080B2AE005662B4 /* TestingTemplates.swift */,
+				ADBB36232080A457005662B4 /* ApiMockTemplate.swift */,
+			);
+			path = Mocks;
+			sourceTree = "<group>";
+		};
 		ADDD13B72119CE980035D2F9 /* Stack View */ = {
 			isa = PBXGroup;
 			children = (
@@ -1971,6 +1947,10 @@
 			isa = PBXGroup;
 			children = (
 				ADEB61B92217088E009D5707 /* CustomDebugStringConvertible.generated.swift */,
+				AD9F3ADE2271C2550044E5EB /* MacaroonId.pb.swift */,
+				AD9F3AE02271DE2D0044E5EB /* rpc.grpc.swift */,
+				AD5AA2E62271B64500AEDDD7 /* rpc.pb.swift */,
+				ADD08A0222787B8300480073 /* rpc.zap.swift */,
 			);
 			path = Generated;
 			sourceTree = "<group>";
@@ -2640,15 +2620,13 @@
 			inputPaths = (
 				"${SRCROOT}/Pods/Target Support Files/Pods-SwiftLndTests/Pods-SwiftLndTests-frameworks.sh",
 				"${BUILT_PRODUCTS_DIR}/BigInt/BigInt.framework",
+				"${BUILT_PRODUCTS_DIR}/BoringSSL/openssl.framework",
+				"${BUILT_PRODUCTS_DIR}/BoringSSL-GRPC/openssl_grpc.framework",
 				"${BUILT_PRODUCTS_DIR}/SipHash/SipHash.framework",
 				"${BUILT_PRODUCTS_DIR}/SwiftBTC/SwiftBTC.framework",
-				"${BUILT_PRODUCTS_DIR}/BoringSSL-GRPC/openssl_grpc.framework",
-				"${BUILT_PRODUCTS_DIR}/LndRpc/LndRpc.framework",
-				"${BUILT_PRODUCTS_DIR}/Protobuf/Protobuf.framework",
-				"${BUILT_PRODUCTS_DIR}/gRPC/GRPCClient.framework",
+				"${BUILT_PRODUCTS_DIR}/SwiftGRPC/SwiftGRPC.framework",
+				"${BUILT_PRODUCTS_DIR}/SwiftProtobuf/SwiftProtobuf.framework",
 				"${BUILT_PRODUCTS_DIR}/gRPC-Core/grpc.framework",
-				"${BUILT_PRODUCTS_DIR}/gRPC-ProtoRPC/ProtoRPC.framework",
-				"${BUILT_PRODUCTS_DIR}/gRPC-RxLibrary/RxLibrary.framework",
 				"${BUILT_PRODUCTS_DIR}/nanopb/nanopb.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
@@ -2656,15 +2634,13 @@
 			);
 			outputPaths = (
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/BigInt.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/openssl.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/openssl_grpc.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SipHash.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SwiftBTC.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/openssl_grpc.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/LndRpc.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Protobuf.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GRPCClient.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SwiftGRPC.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SwiftProtobuf.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/grpc.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/ProtoRPC.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RxLibrary.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/nanopb.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -2750,14 +2726,6 @@
 				"${BUILT_PRODUCTS_DIR}/BigInt/BigInt.framework",
 				"${BUILT_PRODUCTS_DIR}/SipHash/SipHash.framework",
 				"${BUILT_PRODUCTS_DIR}/SwiftBTC/SwiftBTC.framework",
-				"${BUILT_PRODUCTS_DIR}/BoringSSL-GRPC/openssl_grpc.framework",
-				"${BUILT_PRODUCTS_DIR}/LndRpc/LndRpc.framework",
-				"${BUILT_PRODUCTS_DIR}/Protobuf/Protobuf.framework",
-				"${BUILT_PRODUCTS_DIR}/gRPC/GRPCClient.framework",
-				"${BUILT_PRODUCTS_DIR}/gRPC-Core/grpc.framework",
-				"${BUILT_PRODUCTS_DIR}/gRPC-ProtoRPC/ProtoRPC.framework",
-				"${BUILT_PRODUCTS_DIR}/gRPC-RxLibrary/RxLibrary.framework",
-				"${BUILT_PRODUCTS_DIR}/nanopb/nanopb.framework",
 				"${BUILT_PRODUCTS_DIR}/Bond/Bond.framework",
 				"${BUILT_PRODUCTS_DIR}/Differ/Differ.framework",
 				"${BUILT_PRODUCTS_DIR}/KeychainAccess/KeychainAccess.framework",
@@ -2770,14 +2738,6 @@
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/BigInt.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SipHash.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SwiftBTC.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/openssl_grpc.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/LndRpc.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Protobuf.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GRPCClient.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/grpc.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/ProtoRPC.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RxLibrary.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/nanopb.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Bond.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Differ.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/KeychainAccess.framework",
@@ -2858,14 +2818,6 @@
 				"${BUILT_PRODUCTS_DIR}/BigInt/BigInt.framework",
 				"${BUILT_PRODUCTS_DIR}/SipHash/SipHash.framework",
 				"${BUILT_PRODUCTS_DIR}/SwiftBTC/SwiftBTC.framework",
-				"${BUILT_PRODUCTS_DIR}/BoringSSL-GRPC/openssl_grpc.framework",
-				"${BUILT_PRODUCTS_DIR}/LndRpc/LndRpc.framework",
-				"${BUILT_PRODUCTS_DIR}/Protobuf/Protobuf.framework",
-				"${BUILT_PRODUCTS_DIR}/gRPC/GRPCClient.framework",
-				"${BUILT_PRODUCTS_DIR}/gRPC-Core/grpc.framework",
-				"${BUILT_PRODUCTS_DIR}/gRPC-ProtoRPC/ProtoRPC.framework",
-				"${BUILT_PRODUCTS_DIR}/gRPC-RxLibrary/RxLibrary.framework",
-				"${BUILT_PRODUCTS_DIR}/nanopb/nanopb.framework",
 				"${BUILT_PRODUCTS_DIR}/Bond/Bond.framework",
 				"${BUILT_PRODUCTS_DIR}/Differ/Differ.framework",
 				"${BUILT_PRODUCTS_DIR}/ReactiveKit/ReactiveKit.framework",
@@ -2877,14 +2829,6 @@
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/BigInt.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SipHash.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SwiftBTC.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/openssl_grpc.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/LndRpc.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Protobuf.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GRPCClient.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/grpc.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/ProtoRPC.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RxLibrary.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/nanopb.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Bond.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Differ.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/ReactiveKit.framework",
@@ -2940,15 +2884,13 @@
 			inputPaths = (
 				"${SRCROOT}/Pods/Target Support Files/Pods-Zap/Pods-Zap-frameworks.sh",
 				"${BUILT_PRODUCTS_DIR}/BigInt/BigInt.framework",
+				"${BUILT_PRODUCTS_DIR}/BoringSSL/openssl.framework",
+				"${BUILT_PRODUCTS_DIR}/BoringSSL-GRPC/openssl_grpc.framework",
 				"${BUILT_PRODUCTS_DIR}/SipHash/SipHash.framework",
 				"${BUILT_PRODUCTS_DIR}/SwiftBTC/SwiftBTC.framework",
-				"${BUILT_PRODUCTS_DIR}/BoringSSL-GRPC/openssl_grpc.framework",
-				"${BUILT_PRODUCTS_DIR}/LndRpc/LndRpc.framework",
-				"${BUILT_PRODUCTS_DIR}/Protobuf/Protobuf.framework",
-				"${BUILT_PRODUCTS_DIR}/gRPC/GRPCClient.framework",
+				"${BUILT_PRODUCTS_DIR}/SwiftGRPC/SwiftGRPC.framework",
+				"${BUILT_PRODUCTS_DIR}/SwiftProtobuf/SwiftProtobuf.framework",
 				"${BUILT_PRODUCTS_DIR}/gRPC-Core/grpc.framework",
-				"${BUILT_PRODUCTS_DIR}/gRPC-ProtoRPC/ProtoRPC.framework",
-				"${BUILT_PRODUCTS_DIR}/gRPC-RxLibrary/RxLibrary.framework",
 				"${BUILT_PRODUCTS_DIR}/nanopb/nanopb.framework",
 				"${BUILT_PRODUCTS_DIR}/Bond/Bond.framework",
 				"${BUILT_PRODUCTS_DIR}/Differ/Differ.framework",
@@ -2960,15 +2902,13 @@
 			);
 			outputPaths = (
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/BigInt.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/openssl.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/openssl_grpc.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SipHash.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SwiftBTC.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/openssl_grpc.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/LndRpc.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Protobuf.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GRPCClient.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SwiftGRPC.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SwiftProtobuf.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/grpc.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/ProtoRPC.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RxLibrary.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/nanopb.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Bond.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Differ.framework",
@@ -3347,14 +3287,13 @@
 			buildActionMask = 2147483647;
 			files = (
 				AD055DA721B14A4300BE511D /* Permissions.swift in Sources */,
+				ADD089F922773EE400480073 /* LightningApi.swift in Sources */,
 				AD79E422219D90E2002589CA /* Data+Extensions.swift in Sources */,
 				ADADAD982143B3C900A48E1F /* Protobuf+Extensions.swift in Sources */,
 				ADADAD882143B3C900A48E1F /* Channel.swift in Sources */,
-				AD3FF6E0221D68890017E376 /* RpcApi.swift in Sources */,
+				AD3FF6E0221D68890017E376 /* ServiceClientBase+Extension.swift in Sources */,
 				ADADAD932143B3C900A48E1F /* Success.swift in Sources */,
 				ADADAD8B2143B3C900A48E1F /* CloseStatusUpdate.swift in Sources */,
-				ADA58F8C2200B08A009A5494 /* LightningApiTransformation.swift in Sources */,
-				ADADAD9E2143B3C900A48E1F /* LightningApiStream.swift in Sources */,
 				AD511B282253744800EDFC7C /* Version.swift in Sources */,
 				ADADAD8E2143B3C900A48E1F /* NodeInfo.swift in Sources */,
 				ADADAD972143B3C900A48E1F /* LndApiError.swift in Sources */,
@@ -3362,37 +3301,34 @@
 				AD9BB2DA21819799009DC878 /* Route.swift in Sources */,
 				ADADAD892143B3C900A48E1F /* ChannelCloseSummary.swift in Sources */,
 				ADF1BB33219D7F260078BCC4 /* Macaroon.swift in Sources */,
-				ADADAD9F2143B3C900A48E1F /* WalletApiProtocol.swift in Sources */,
 				ADA58F9122031E56009A5494 /* RpcCallback.swift in Sources */,
 				ADADAD942143B3C900A48E1F /* TestingTemplates.swift in Sources */,
-				ADADADA02143B3C900A48E1F /* WalletApiRpc.swift in Sources */,
 				ADFB36D82143B73C00146FCC /* LocalLnd.swift in Sources */,
 				AD248628225B7E130049532C /* WalletBalance.swift in Sources */,
 				AD3781CC21664EB00083CE77 /* RPCCredentials.swift in Sources */,
 				ADADAD912143B3C900A48E1F /* PaymentRequest.swift in Sources */,
-				ADA58F9522034A25009A5494 /* GRPCProtoCall+Extensions.swift in Sources */,
-				ADADAD9B2143B3C900A48E1F /* LightningApiMock.swift in Sources */,
+				ADADAD9B2143B3C900A48E1F /* ApiMockTemplate.swift in Sources */,
+				ADD08A062278BBCE00480073 /* WalletApi.swift in Sources */,
 				ADFB36D92143B73C00146FCC /* LocalLndConfiguration.swift in Sources */,
-				ADADAD9C2143B3C900A48E1F /* LightningApiProtocol.swift in Sources */,
 				ADFB36E92143BB2200146FCC /* Transaction.swift in Sources */,
 				ADADAD8F2143B3C900A48E1F /* OnChainRequestAddressType.swift in Sources */,
-				ADADAD9D2143B3C900A48E1F /* LightningApiRpc.swift in Sources */,
 				ADADAD922143B3C900A48E1F /* Peer.swift in Sources */,
-				AD3FF6E4221D9C5C0017E376 /* GRPCCall+Extensions.swift in Sources */,
-				ADA58F9322033FC7009A5494 /* WalletApiTransformation.swift in Sources */,
 				AD7ED622220B4FE9007C5F2C /* FileManager.swift in Sources */,
 				ADADAD9A2143B3C900A48E1F /* StreamCallback.swift in Sources */,
+				AD9F3ADF2271C2550044E5EB /* MacaroonId.pb.swift in Sources */,
 				ADADAD8A2143B3C900A48E1F /* ChannelPoint.swift in Sources */,
+				AD9F3AE12271DE2D0044E5EB /* rpc.grpc.swift in Sources */,
 				ADADAD902143B3C900A48E1F /* OpenStatusUpdate.swift in Sources */,
 				AD79E424219D90EF002589CA /* String+Extensions.swift in Sources */,
 				ADADAD8D2143B3C900A48E1F /* Info.swift in Sources */,
 				ADFB36D72143B73C00146FCC /* LndConstants.swift in Sources */,
 				ADADAD8C2143B3C900A48E1F /* GraphTopologyUpdate.swift in Sources */,
 				AD24862A225B7F210049532C /* ChannelBalance.swift in Sources */,
-				ADADADA12143B3C900A48E1F /* WalletApiStream.swift in Sources */,
+				AD5AA2E72271B64500AEDDD7 /* rpc.pb.swift in Sources */,
 				ADB4CBA4225493A300D186BC /* ChannelEventUpdate.swift in Sources */,
 				ADEB61BA2217088E009D5707 /* CustomDebugStringConvertible.generated.swift in Sources */,
 				ADFB36E62143BA6F00146FCC /* Invoice.swift in Sources */,
+				ADD08A0322787B8300480073 /* rpc.zap.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -3756,7 +3692,6 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = D989AC91D5501875BA1C4E18 /* Pods-Zap.debug.xcconfig */;
 			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_ENTITLEMENTS = Zap/Zap.entitlements;
@@ -3793,7 +3728,6 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 5E35400BBA08A4A87916AF7B /* Pods-Zap.release.xcconfig */;
 			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_ENTITLEMENTS = Zap/Zap.entitlements;
@@ -4147,7 +4081,6 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 75C93228A5FCF2CBD287946A /* Pods-Zap.debugremote.xcconfig */;
 			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_ENTITLEMENTS = Zap/Zap.entitlements;
