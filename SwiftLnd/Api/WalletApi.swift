@@ -18,7 +18,11 @@ public final class WalletApi {
     public init(connection: Kind) {
         switch connection {
         case .local:
+            #if !REMOTEONLY
             self.connection = StreamingWalletUnlockerConnection()
+            #else
+            fatalError("local connection not available")
+            #endif
         case .remote(let configuration):
             self.connection = RPCWalletUnlockerConnection(configuration: configuration)
         }

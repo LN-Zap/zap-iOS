@@ -5,11 +5,15 @@
 // Source: rpc.proto
 //
 
+#if !REMOTEONLY
 import Lndmobile
+#endif
 import Logger
 import SwiftGRPC
 import SwiftProtobuf
 
+// MARK: - Helper Methods
+#if !REMOTEONLY
 private final class LndCallback<T: SwiftProtobuf.Message>: NSObject, LndmobileCallbackProtocol, LndmobileRecvStreamProtocol {
     private let completion: (Result<T, LndApiError>) -> Void
     
@@ -30,6 +34,7 @@ private final class LndCallback<T: SwiftProtobuf.Message>: NSObject, LndmobileCa
         }
     }
 }
+#endif
 
 private func handleStreamResult<T>(_ result: ResultOrRPCError<T?>, completion: @escaping ApiCompletion<T>) throws {
     switch result {
@@ -63,6 +68,7 @@ private extension Result {
     }
 }
 
+// MARK: - WalletUnlocker
 protocol WalletUnlockerConnection {
     func genSeed(_ request: Lnrpc_GenSeedRequest, completion: @escaping ApiCompletion<Lnrpc_GenSeedResponse>)
     func initWallet(_ request: Lnrpc_InitWalletRequest, completion: @escaping ApiCompletion<Lnrpc_InitWalletResponse>)
@@ -70,6 +76,7 @@ protocol WalletUnlockerConnection {
     func changePassword(_ request: Lnrpc_ChangePasswordRequest, completion: @escaping ApiCompletion<Lnrpc_ChangePasswordResponse>)
 }
 
+#if !REMOTEONLY
 class StreamingWalletUnlockerConnection: WalletUnlockerConnection {
     func genSeed(_ request: Lnrpc_GenSeedRequest, completion: @escaping ApiCompletion<Lnrpc_GenSeedResponse>) {
         LndmobileGenSeed(try? request.serializedData(), LndCallback(completion))
@@ -84,6 +91,7 @@ class StreamingWalletUnlockerConnection: WalletUnlockerConnection {
         LndmobileChangePassword(try? request.serializedData(), LndCallback(completion))
     }
 }
+#endif
 
 final class RPCWalletUnlockerConnection: WalletUnlockerConnection {
     let service: Lnrpc_WalletUnlockerService
@@ -141,6 +149,7 @@ class MockWalletUnlockerConnection: WalletUnlockerConnection {
     }
 }
 
+// MARK: - Lightning
 protocol LightningConnection {
     func walletBalance(_ request: Lnrpc_WalletBalanceRequest, completion: @escaping ApiCompletion<Lnrpc_WalletBalanceResponse>)
     func channelBalance(_ request: Lnrpc_ChannelBalanceRequest, completion: @escaping ApiCompletion<Lnrpc_ChannelBalanceResponse>)
@@ -194,6 +203,7 @@ protocol LightningConnection {
     func subscribeChannelBackups(_ request: Lnrpc_ChannelBackupSubscription, completion: @escaping ApiCompletion<Lnrpc_ChanBackupSnapshot>)
 }
 
+#if !REMOTEONLY
 class StreamingLightningConnection: LightningConnection {
     func walletBalance(_ request: Lnrpc_WalletBalanceRequest, completion: @escaping ApiCompletion<Lnrpc_WalletBalanceResponse>) {
         LndmobileWalletBalance(try? request.serializedData(), LndCallback(completion))
@@ -342,6 +352,7 @@ class StreamingLightningConnection: LightningConnection {
         LndmobileSubscribeChannelBackups(try? request.serializedData(), LndCallback(completion))
     }
 }
+#endif
 
 final class RPCLightningConnection: LightningConnection {
     let service: Lnrpc_LightningService

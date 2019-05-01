@@ -20,7 +20,11 @@ public final class LightningApi {
     public init(connection: Kind) {
         switch connection {
         case .local:
+            #if !REMOTEONLY
             self.connection = StreamingLightningConnection()
+            #else
+            fatalError("local connection not available")
+            #endif
         case .remote(let configuration):
             self.connection = RPCLightningConnection(configuration: configuration)
         case .mock(let template):
