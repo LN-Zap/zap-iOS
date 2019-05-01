@@ -40,7 +40,7 @@ opt_in_rules:
   - conditional_returns_on_newline
 excluded:
   - Pods
-  - SwiftLnd/Api/Generated
+  - SwiftLnd/Generated
   - Library/Generated
   - vendor
   - fastlane/SnapshotHelper.swift

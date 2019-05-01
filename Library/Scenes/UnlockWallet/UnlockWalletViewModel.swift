@@ -8,7 +8,6 @@
 import Bond
 import Foundation
 import Lightning
-import LndRpc
 import Logger
 
 final class UnlockWalletViewModel {
@@ -36,13 +35,15 @@ final class UnlockWalletViewModel {
         lightningService.infoService.stop()
 
         walletService.unlockWallet(password: password) { [weak self] result in
-            switch result {
-            case .success:
-                Toast.presentSuccess("Wallet Unlocked")
-                self?.waitWalletReady()
-            case .failure(let error):
-                Toast.presentError(error.localizedDescription)
-                self?.isUnlocking.value = false
+            DispatchQueue.main.async {
+                switch result {
+                case .success:
+                    Toast.presentSuccess("Wallet Unlocked")
+                    self?.waitWalletReady()
+                case .failure(let error):
+                    Toast.presentError(error.localizedDescription)
+                    self?.isUnlocking.value = false
+                }
             }
         }
     }
@@ -55,8 +56,6 @@ final class UnlockWalletViewModel {
 
     private func checkInfo() {
         lightningService.infoService.info { [weak self] in
-            self?.lightningService.resetRpcConnection()
-
             if case .success = $0 {
                 Logger.info("wallet started")
                 self?.timer?.invalidate()

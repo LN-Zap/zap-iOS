@@ -6,7 +6,6 @@
 //
 
 import Foundation
-import LndRpc
 import SwiftBTC
 
 public struct Channel: Equatable {
@@ -39,10 +38,10 @@ public struct Channel: Equatable {
     public let csvDelay: Int
 }
 
-extension LNDChannel {
+extension Lnrpc_Channel {
     var channelModel: Channel {
         return Channel(
-            blockHeight: Int(chanId >> 40),
+            blockHeight: Int(chanID >> 40),
             state: active ? .active : .inactive,
             localBalance: Satoshi(localBalance),
             remoteBalance: Satoshi(remoteBalance),
@@ -54,18 +53,17 @@ extension LNDChannel {
     }
 }
 
-extension LNDPendingChannelsResponse {
+extension Lnrpc_PendingChannelsResponse {
     var channels: [Channel] {
-        // swiftlint:disable force_cast
-        let pendingOpenChannels: [Channel] = pendingOpenChannelsArray.compactMap { ($0 as! LNDPendingChannelsResponse_PendingOpenChannel).channelModel }
-        let pendingClosingChannels: [Channel] = pendingClosingChannelsArray.compactMap { ($0 as! LNDPendingChannelsResponse_ClosedChannel).channelModel }
-        let pendingForceClosingChannels: [Channel] = pendingForceClosingChannelsArray.compactMap { ($0 as! LNDPendingChannelsResponse_ForceClosedChannel).channelModel }
-        let waitingCloseChannels: [Channel] = waitingCloseChannelsArray.compactMap { ($0 as! LNDPendingChannelsResponse_WaitingCloseChannel).channelModel }
+        let pendingOpenChannels: [Channel] = self.pendingOpenChannels.compactMap { $0.channelModel }
+        let pendingClosingChannels: [Channel] = self.pendingClosingChannels.compactMap { $0.channelModel }
+        let pendingForceClosingChannels: [Channel] = self.pendingForceClosingChannels.compactMap { $0.channelModel }
+        let waitingCloseChannels: [Channel] = self.waitingCloseChannels.compactMap { $0.channelModel }
         return pendingOpenChannels + pendingClosingChannels + pendingForceClosingChannels + waitingCloseChannels
     }
 }
 
-extension LNDPendingChannelsResponse_PendingOpenChannel {
+extension Lnrpc_PendingChannelsResponse.PendingOpenChannel {
     var channelModel: Channel {
         return Channel(
             blockHeight: nil,
@@ -80,7 +78,7 @@ extension LNDPendingChannelsResponse_PendingOpenChannel {
     }
 }
 
-extension LNDPendingChannelsResponse_ClosedChannel {
+extension Lnrpc_PendingChannelsResponse.ClosedChannel {
     var channelModel: Channel {
         return Channel(
             blockHeight: nil,
@@ -95,7 +93,7 @@ extension LNDPendingChannelsResponse_ClosedChannel {
     }
 }
 
-extension LNDPendingChannelsResponse_ForceClosedChannel {
+extension Lnrpc_PendingChannelsResponse.ForceClosedChannel {
     var channelModel: Channel {
         return Channel(
             blockHeight: nil,
@@ -110,7 +108,7 @@ extension LNDPendingChannelsResponse_ForceClosedChannel {
     }
 }
 
-extension LNDPendingChannelsResponse_WaitingCloseChannel {
+extension Lnrpc_PendingChannelsResponse.WaitingCloseChannel {
     var channelModel: Channel {
         return Channel(
                 blockHeight: nil,

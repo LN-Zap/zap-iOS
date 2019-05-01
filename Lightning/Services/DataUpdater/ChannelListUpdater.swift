@@ -11,7 +11,7 @@ import Logger
 import SwiftLnd
 
 final class ChannelListUpdater: ListUpdater {
-    private let api: LightningApiProtocol
+    private let api: LightningApi
 
     let transactions = MutableObservableArray<Transaction>()
 
@@ -19,7 +19,7 @@ final class ChannelListUpdater: ListUpdater {
     let pending = MutableObservableArray<Channel>()
     let closed = MutableObservableArray<ChannelCloseSummary>()
 
-    init(api: LightningApiProtocol) {
+    init(api: LightningApi) {
         self.api = api
 
         api.subscribeChannelEvents { [weak self] _ in

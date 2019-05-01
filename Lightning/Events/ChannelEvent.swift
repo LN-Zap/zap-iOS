@@ -19,7 +19,6 @@ public struct ChannelEvent: Equatable, DateProvidingEvent {
         case breachClose
         case fundingCanceled
         case abandoned
-        case unknown
 
         init(closeType: CloseType) {
             switch closeType {
@@ -33,8 +32,6 @@ public struct ChannelEvent: Equatable, DateProvidingEvent {
                 self = .breachClose
             case .fundingCanceled:
                 self = .fundingCanceled
-            case .unknown:
-                self = .unknown
             case .abandoned:
                 self = .abandoned
             }

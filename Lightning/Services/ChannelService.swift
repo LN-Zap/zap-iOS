@@ -13,7 +13,7 @@ import SwiftBTC
 import SwiftLnd
 
 public final class ChannelService {
-    private let api: LightningApiProtocol
+    private let api: LightningApi
     private let channelListUpdater: ChannelListUpdater
 
     public var open: MutableObservableArray<Channel> {
@@ -40,7 +40,7 @@ public final class ChannelService {
         return maxRemoteBalance
     }
 
-    init(api: LightningApiProtocol, channelListUpdater: ChannelListUpdater) {
+    init(api: LightningApi, channelListUpdater: ChannelListUpdater) {
         self.api = api
         self.channelListUpdater = channelListUpdater
     }

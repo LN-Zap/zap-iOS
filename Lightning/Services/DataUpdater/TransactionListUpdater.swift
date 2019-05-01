@@ -13,11 +13,11 @@ import SwiftLnd
 final class TransactionListUpdater: GenericListUpdater {
     typealias Item = Transaction
 
-    private let api: LightningApiProtocol
+    private let api: LightningApi
 
     let items = MutableObservableArray<Transaction>()
 
-    init(api: LightningApiProtocol) {
+    init(api: LightningApi) {
         self.api = api
 
         api.subscribeTransactions { [weak self] in

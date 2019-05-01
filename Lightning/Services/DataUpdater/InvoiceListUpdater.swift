@@ -13,11 +13,11 @@ import SwiftLnd
 final class InvoiceListUpdater: GenericListUpdater {
     typealias Item = Invoice
 
-    private let api: LightningApiProtocol
+    private let api: LightningApi
 
     let items = MutableObservableArray<Invoice>()
 
-    init(api: LightningApiProtocol) {
+    init(api: LightningApi) {
         self.api = api
 
         api.subscribeInvoices { [weak self] in

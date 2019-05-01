@@ -6,7 +6,7 @@
 //
 
 import Foundation
-import LndRpc
+import Logger
 
 public enum ChannelEventUpdate {
     case open(Channel)
@@ -14,19 +14,19 @@ public enum ChannelEventUpdate {
     case active(ChannelPoint)
     case inactive(ChannelPoint)
 
-    init?(channelEventUpdate: LNDChannelEventUpdate) {
+    init?(channelEventUpdate: Lnrpc_ChannelEventUpdate) {
         switch channelEventUpdate.type {
         case .openChannel:
             self = .open(channelEventUpdate.openChannel.channelModel)
         case .closedChannel:
-            self = .closed(ChannelCloseSummary(channelCloseSummary: channelEventUpdate.closedChannel))
+            guard let summary = ChannelCloseSummary(channelCloseSummary: channelEventUpdate.closedChannel) else { return nil }
+            self = .closed(summary)
         case .activeChannel:
             self = .active(ChannelPoint(channelPoint: channelEventUpdate.activeChannel))
         case .inactiveChannel:
             self = .inactive(ChannelPoint(channelPoint: channelEventUpdate.inactiveChannel))
-        case .gpbUnrecognizedEnumeratorValue:
-            return nil
-        @unknown default:
+        case .UNRECOGNIZED:
+            Logger.warn(".UNRECOGNIZED")
             return nil
         }
     }

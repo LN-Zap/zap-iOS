@@ -6,7 +6,6 @@
 //
 
 import Foundation
-import LndRpc
 import SwiftBTC
 
 public struct ChannelBalance {
@@ -15,7 +14,7 @@ public struct ChannelBalance {
 }
 
 extension ChannelBalance {
-    init(channelBalance: LNDChannelBalanceResponse) {
+    init(channelBalance: Lnrpc_ChannelBalanceResponse) {
         balance = Satoshi(channelBalance.balance)
         pendingOpenBalance = Satoshi(channelBalance.pendingOpenBalance)
     }

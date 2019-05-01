@@ -6,7 +6,6 @@
 //
 
 import Foundation
-import LndRpc
 import SwiftBTC
 
 public struct PaymentRequest: Equatable {
@@ -30,7 +29,7 @@ public struct PaymentRequest: Equatable {
 }
 
 extension PaymentRequest {
-    init(payReq: LNDPayReq, raw: String) {
+    init(payReq: Lnrpc_PayReq, raw: String) {
         self.amount = Satoshi(payReq.numSatoshis)
 
         if let data = payReq.description_p.data(using: .utf8, allowLossyConversion: false) {

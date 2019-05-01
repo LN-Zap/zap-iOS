@@ -6,16 +6,18 @@
 //
 
 import Foundation
-import LndRpc
 
 enum OpenStatusUpdate {
     case pending
     case channelOpen
 
-    init(_ openStatusUpdate: LNDOpenStatusUpdate) {
-        if openStatusUpdate.chanPending.txid != nil {
+    init?(_ openStatusUpdate: Lnrpc_OpenStatusUpdate) {
+        guard let update = openStatusUpdate.update else { return nil }
+
+        switch update {
+        case .chanPending:
             self = .pending
-        } else {
+        case .chanOpen:
             self = .channelOpen
         }
     }

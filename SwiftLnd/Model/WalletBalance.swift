@@ -6,7 +6,6 @@
 //
 
 import Foundation
-import LndRpc
 import SwiftBTC
 
 public struct WalletBalance {
@@ -15,7 +14,7 @@ public struct WalletBalance {
 }
 
 extension WalletBalance {
-    init(walletBalance: LNDWalletBalanceResponse) {
+    init(walletBalance: Lnrpc_WalletBalanceResponse) {
         confirmedBalance = Satoshi(walletBalance.confirmedBalance)
         unconfirmedBalance = Satoshi(walletBalance.unconfirmedBalance)
     }

@@ -6,7 +6,6 @@
 //
 
 import Foundation
-import LndRpc
 import SwiftBTC
 
 public struct Transaction: Equatable {
@@ -19,15 +18,12 @@ public struct Transaction: Equatable {
 }
 
 extension Transaction {
-    init(transaction: LNDTransaction) {
+    init(transaction: Lnrpc_Transaction) {
         id = transaction.txHash
         amount = Satoshi(transaction.amount)
         date = Date(timeIntervalSince1970: TimeInterval(transaction.timeStamp))
         fees = Satoshi(transaction.totalFees)
-        destinationAddresses = transaction.destAddressesArray.compactMap {
-            guard let string = $0 as? String else { return nil }
-            return BitcoinAddress(string: string)
-        }
+        destinationAddresses = transaction.destAddresses.compactMap { BitcoinAddress(string: $0) }
         blockHeight = transaction.blockHeight == 0 ? nil : Int(transaction.blockHeight)
     }
 }
