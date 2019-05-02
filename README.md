@@ -7,7 +7,7 @@
 
 <p align='center'>
   <a href='https://zap.jackmallers.com'>
-    <img src='https://raw.githubusercontent.com/LN-Zap/zap-iOS/master/docs/screenshot.png' height='450' alt='screenshot' />
+    <img src='https://raw.githubusercontent.com/LN-Zap/zap-iOS/master/docs/screenshot.jpg' height='450' alt='screenshot' />
   </a>
 </p>
 
