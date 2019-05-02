@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14460.20"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14490.49"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -212,14 +212,14 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" userInteractionEnabled="NO" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="AUC-sA-DFo">
-                                <rect key="frame" x="20" y="66" width="335" height="128"/>
+                                <rect key="frame" x="20" y="65.5" width="335" height="128"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <string key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</string>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                             </textView>
                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="8JC-0g-WEx">
-                                <rect key="frame" x="20" y="66" width="335" height="128"/>
+                                <rect key="frame" x="20" y="65.5" width="335" height="128"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="128" id="kmR-oh-9wL"/>
@@ -228,18 +228,29 @@
                                 <textInputTraits key="textInputTraits"/>
                             </textView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Enter your seed:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zpR-ha-Dwd">
-                                <rect key="frame" x="20" y="40" width="125" height="21"/>
+                                <rect key="frame" x="20" y="40" width="125" height="20.5"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="i4d-nm-Imb">
-                                <rect key="frame" x="309" y="204" width="46" height="30"/>
-                                <state key="normal" title="Button"/>
-                                <connections>
-                                    <action selector="recoverWallet:" destination="qsX-RZ-eEH" eventType="touchUpInside" id="gkw-al-2Q0"/>
-                                </connections>
-                            </button>
+                            <stackView opaque="NO" contentMode="scaleToFill" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="mg5-LE-Ldi">
+                                <rect key="frame" x="260.5" y="204" width="94.5" height="30"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="(0/0)" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="UDv-1l-8h1">
+                                        <rect key="frame" x="0.0" y="0.0" width="38.5" height="30"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="i4d-nm-Imb">
+                                        <rect key="frame" x="48.5" y="0.0" width="46" height="30"/>
+                                        <state key="normal" title="Button"/>
+                                        <connections>
+                                            <action selector="recoverWallet:" destination="qsX-RZ-eEH" eventType="touchUpInside" id="gkw-al-2Q0"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                            </stackView>
                         </subviews>
                         <color key="backgroundColor" white="0.55909358129999998" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
@@ -247,13 +258,13 @@
                             <constraint firstItem="Zmq-HS-Ejy" firstAttribute="trailing" secondItem="8JC-0g-WEx" secondAttribute="trailing" constant="20" id="5ZF-CE-ohf"/>
                             <constraint firstItem="8JC-0g-WEx" firstAttribute="leading" secondItem="Zmq-HS-Ejy" secondAttribute="leading" constant="20" id="9CZ-sZ-Mzb"/>
                             <constraint firstItem="AUC-sA-DFo" firstAttribute="bottom" secondItem="8JC-0g-WEx" secondAttribute="bottom" id="ClT-ic-mbK"/>
-                            <constraint firstItem="i4d-nm-Imb" firstAttribute="trailing" secondItem="8JC-0g-WEx" secondAttribute="trailing" id="Gtd-Dl-ilh"/>
                             <constraint firstItem="zpR-ha-Dwd" firstAttribute="top" secondItem="Zmq-HS-Ejy" secondAttribute="top" constant="20" id="K4I-5O-gyN"/>
+                            <constraint firstItem="mg5-LE-Ldi" firstAttribute="top" secondItem="8JC-0g-WEx" secondAttribute="bottom" constant="10.5" id="P0A-hc-pgF"/>
                             <constraint firstItem="zpR-ha-Dwd" firstAttribute="leading" secondItem="Zmq-HS-Ejy" secondAttribute="leading" constant="20" id="Q3K-J6-2A2"/>
                             <constraint firstItem="Zmq-HS-Ejy" firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="zpR-ha-Dwd" secondAttribute="trailing" constant="20" id="TAa-Vp-tOe"/>
                             <constraint firstItem="AUC-sA-DFo" firstAttribute="top" secondItem="8JC-0g-WEx" secondAttribute="top" id="Tsp-p4-MCI"/>
+                            <constraint firstItem="mg5-LE-Ldi" firstAttribute="trailing" secondItem="8JC-0g-WEx" secondAttribute="trailing" id="UZE-85-551"/>
                             <constraint firstItem="8JC-0g-WEx" firstAttribute="top" secondItem="zpR-ha-Dwd" secondAttribute="bottom" constant="5" id="pOp-N9-Thk"/>
-                            <constraint firstItem="i4d-nm-Imb" firstAttribute="top" secondItem="8JC-0g-WEx" secondAttribute="bottom" constant="10" id="qVb-fT-drC"/>
                             <constraint firstItem="AUC-sA-DFo" firstAttribute="leading" secondItem="8JC-0g-WEx" secondAttribute="leading" id="z72-ve-QIZ"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="Zmq-HS-Ejy"/>
@@ -263,6 +274,7 @@
                         <outlet property="placeholderTextView" destination="AUC-sA-DFo" id="84t-GN-CM8"/>
                         <outlet property="textView" destination="8JC-0g-WEx" id="4sr-L9-htC"/>
                         <outlet property="topLabel" destination="zpR-ha-Dwd" id="DT5-BY-W1K"/>
+                        <outlet property="wordCountLabel" destination="UDv-1l-8h1" id="4Gw-E0-w6u"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Gxn-IF-Ltb" userLabel="First Responder" sceneMemberID="firstResponder"/>

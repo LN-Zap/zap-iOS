@@ -13,6 +13,7 @@ final class RecoverWalletViewController: UIViewController {
     @IBOutlet private weak var placeholderTextView: UITextView!
     @IBOutlet private weak var textView: UITextView!
     @IBOutlet private weak var doneButton: UIButton!
+    @IBOutlet private weak var wordCountLabel: UILabel!
 
     // swiftlint:disable implicitly_unwrapped_optional
     private var recoverWalletViewModel: RecoverWalletViewModel!
@@ -30,12 +31,14 @@ final class RecoverWalletViewController: UIViewController {
         super.viewDidLoad()
 
         title = L10n.Scene.RecoverWallet.title
-
+        view.backgroundColor = UIColor.Zap.background
         Style.Label.custom().apply(to: topLabel)
         Style.textView.apply(to: placeholderTextView, textView)
         Style.Button.custom().apply(to: doneButton)
 
         doneButton.setTitle(L10n.Scene.RecoverWallet.doneButton, for: .normal)
+        doneButton.setTitleColor(UIColor.Zap.invisibleGray, for: .disabled)
+
         topLabel.text = L10n.Scene.RecoverWallet.descriptionLabel
         topLabel.textColor = .white
         placeholderTextView.text = L10n.Scene.RecoverWallet.placeholder
@@ -47,6 +50,19 @@ final class RecoverWalletViewController: UIViewController {
         textView.textColor = .white
         textView.delegate = self
         textView.becomeFirstResponder()
+
+        Style.Label.footnote.apply(to: wordCountLabel)
+        wordCountLabel.font = UIFont.monospacedDigitSystemFont(ofSize: 13, weight: .regular)
+
+        recoverWalletViewModel.mnemonic
+            .map { "(\($0.count)/24)" }
+            .bind(to: wordCountLabel.reactive.text)
+            .dispose(in: reactive.bag)
+
+        recoverWalletViewModel.mnemonic
+            .map { $0.count == 24 }
+            .bind(to: doneButton.reactive.isEnabled)
+            .dispose(in: reactive.bag)
     }
 
     @IBAction private func recoverWallet(_ sender: Any) {

@@ -5,6 +5,7 @@
 //  Copyright © 2018 Zap. All rights reserved.
 //
 
+import Bond
 import Foundation
 import Lightning
 import SwiftBTC
@@ -17,9 +18,11 @@ final class RecoverWalletViewModel {
         self.configuration = configuration
     }
 
+    let mnemonic = Observable([String]())
+    static let separatorCharacterSet = CharacterSet.whitespacesAndNewlines.union(CharacterSet(charactersIn: ".,"))
+
     private func mnemonic(from text: String) -> [String] {
-        let characters = CharacterSet.whitespacesAndNewlines.union(CharacterSet(charactersIn: ","))
-        return text.components(separatedBy: characters).filter { $0 != "" }
+        return text.components(separatedBy: RecoverWalletViewModel.separatorCharacterSet).filter { $0 != "" }
     }
 
     func recoverWallet(with text: String, completion: @escaping (Result<Success, LndApiError>) -> Void) {
@@ -31,19 +34,23 @@ final class RecoverWalletViewModel {
 
     func attributedString(from text: String) -> NSAttributedString {
         let mnemonic = self.mnemonic(from: text)
+        self.mnemonic.value = mnemonic
 
-        let attributestText = NSMutableAttributedString(string: text, attributes: [
+        var newText = mnemonic.joined(separator: " ")
+        if text.suffix(1).trimmingCharacters(in: RecoverWalletViewModel.separatorCharacterSet).isEmpty {
+            newText += " "
+        }
+
+        let attributestText = NSMutableAttributedString(string: newText, attributes: [
             .foregroundColor: UIColor.white,
             .font: UIFont.Zap.light
         ])
 
-        // TODO: highlight correct range
-        for word in mnemonic {
-            guard
-                !Bip39.contains(word.lowercased()),
-                let wordRange = text.range(of: word)
-                else { continue }
-            let range = NSRange(wordRange, in: text)
+        for (index, word) in mnemonic.enumerated() {
+            guard !Bip39.contains(word.lowercased()) else { continue }
+
+            let location = mnemonic[0..<index].reduce(0) { $0 + $1.count } + index
+            let range = NSRange(location: location, length: word.count)
             attributestText.addAttributes([.foregroundColor: UIColor.Zap.superRed], range: range)
         }
 
