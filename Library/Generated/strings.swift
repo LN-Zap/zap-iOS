@@ -296,6 +296,10 @@ internal enum L10n {
     internal enum ManageWallets {
       /// Manage Wallets
       internal static let title = L10n.tr("Localizable", "scene.manage_wallets.title")
+      internal enum Cell {
+        /// remote
+        internal static let remote = L10n.tr("Localizable", "scene.manage_wallets.cell.remote")
+      }
     }
     internal enum ModalPin {
       /// Please enter your passcode to continue
