@@ -252,3 +252,4 @@
 "scene.unlock.title_label" = "解锁 %@";
 
 "scene.manage_wallets.title" = "Manage Wallets";
+"scene.manage_wallets.cell.remote" = "remote";
