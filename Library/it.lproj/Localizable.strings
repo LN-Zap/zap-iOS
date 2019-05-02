@@ -208,6 +208,7 @@
 "scene.qrcode_scanner.top_label" = "Scansiona il codice QR";
 
 "scene.wallet.title" = "Portafoglio";
+"scene.wallet.total_balance" = "Total Balance";
 "scene.wallet.detail.on_chain" = "On-chain:";
 "scene.wallet.detail.lightning" = "Lightning:";
 "scene.wallet.detail.pending" = "In sospeso:";
@@ -249,3 +250,5 @@
 "scene.unlock.unlock_button" = "Sblocca";
 "scene.unlock.password_placeholder" = "Password";
 "scene.unlock.title_label" = "Sbloccare %@";
+
+"scene.manage_wallets.title" = "Manage Wallets";
