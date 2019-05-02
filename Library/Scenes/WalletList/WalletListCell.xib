@@ -50,7 +50,7 @@
                                     </stackView>
                                 </subviews>
                             </stackView>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="252" verticalHuggingPriority="251" image="iconCheckGreen" translatesAutoresizingMaskIntoConstraints="NO" id="9Lm-D9-lUP">
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="900" verticalHuggingPriority="251" image="iconCheckGreen" translatesAutoresizingMaskIntoConstraints="NO" id="9Lm-D9-lUP">
                                 <rect key="frame" x="263" y="0.0" width="17" height="45.5"/>
                             </imageView>
                         </subviews>
