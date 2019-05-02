@@ -52,6 +52,7 @@
 "scene.settings.item.version_warning" = "Dein LND ist veraltet (%@). Zap iOS funktioniert am besten mit LND Version %@ oder höher.";
 "scene.settings.item.bitcoin_unit" = "Bitcoin Einheit";
 "scene.settings.item.currency" = "Währung";
+"scene.settings.item.currency.popular" = "Beliebte Währungen";
 "scene.settings.item.block_explorer" = "Block Explorer";
 "scene.settings.item.on_chain_request_address.title" = "Bitcoinadressen-Typ";
 "scene.settings.item.on_chain_request_address.bech32" = "Bech32";
@@ -207,9 +208,10 @@
 "scene.qrcode_scanner.top_label" = "QR-Code scannen";
 
 "scene.wallet.title" = "Wallet";
-"scene.wallet.detail.on_chain" = "On-chain:";
+"scene.wallet.total_balance" = "Total Balance";
+"scene.wallet.detail.on_chain" = "On-Chain:";
 "scene.wallet.detail.lightning" = "Lightning:";
-"scene.wallet.detail.pending" = "Pending:";
+"scene.wallet.detail.pending" = "Ausstehend:";
 
 "scene.time_lock.headline" = "Falscher PIN";
 "scene.time_lock.description" = "Ihre Geldbörse ist gesperrt für:";
@@ -248,3 +250,6 @@
 "scene.unlock.unlock_button" = "Entsperren";
 "scene.unlock.password_placeholder" = "Passwort";
 "scene.unlock.title_label" = "Entsperre %@";
+
+"scene.manage_wallets.title" = "Manage Wallets";
+"scene.manage_wallets.cell.remote" = "remote";
