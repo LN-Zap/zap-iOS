@@ -51,7 +51,7 @@ enum BiometricAuthentication {
             return
         }
         // display a fake local authentication view when run on simulator.
-        let alertController = UIAlertController(title: "Authenticate", message: "Fake Biometric Authenticatyion", preferredStyle: .alert)
+        let alertController = UIAlertController(title: "Authenticate", message: "Fake Biometric Authentication", preferredStyle: .alert)
         alertController.addAction(UIAlertAction(title: "cancel", style: .cancel) { _ in completion(.failure(AuthenticationError.canceled)) })
         alertController.addAction(UIAlertAction(title: "authenticate", style: .default) { _ in completion(.success(Success())) })
 
