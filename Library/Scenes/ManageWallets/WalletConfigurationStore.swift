@@ -47,6 +47,12 @@ final class WalletConfigurationStore {
         }
     }
 
+    var hasLocalWallet: Bool {
+        return configurations.contains {
+            $0.connection == .local
+        }
+    }
+
     static var mock: WalletConfigurationStore {
         guard
             let macaroon = Macaroon(hexadecimalString: "01"),

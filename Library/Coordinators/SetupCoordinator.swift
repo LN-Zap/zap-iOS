@@ -47,7 +47,7 @@ final class SetupCoordinator: Coordinator {
     }
 
     #if !REMOTEONLY
-    private func startLnd() -> WalletConfiguration {
+    private func createLocalWallet() -> WalletConfiguration {
         let configuration = WalletConfiguration(alias: nil, network: nil, connection: .local, walletId: UUID().uuidString)
         LocalLnd.start(walletId: configuration.walletId)
         return configuration
@@ -59,7 +59,7 @@ final class SetupCoordinator: Coordinator {
         presentDisabledAlert()
         #else
 
-        let configuration = startLnd()
+        let configuration = createLocalWallet()
 
         let mnemonicViewModel = MnemonicViewModel(configuration: configuration)
         self.mnemonicViewModel = mnemonicViewModel
@@ -82,7 +82,7 @@ final class SetupCoordinator: Coordinator {
         #else
         guard let delegate = delegate else { return }
 
-        let configuration = startLnd()
+        let configuration = createLocalWallet()
 
         let viewModel = RecoverWalletViewModel(configuration: configuration)
         let viewController = RecoverWalletViewController.instantiate(recoverWalletViewModel: viewModel, connectWallet: delegate.connectWallet)
@@ -95,9 +95,7 @@ final class SetupCoordinator: Coordinator {
     }
 
     private func connectRemoteNode(_ rpcCredentials: RPCCredentials?) {
-        let viewModel = ConnectRemoteNodeViewModel(rpcCredentials: rpcCredentials)
-        connectRemoteNodeViewModel = viewModel
-        let viewController = ConnectRemoteNodeViewController.instantiate(didSetupWallet: didSetupWallet, connectRemoteNodeViewModel: viewModel, presentQRCodeScannerButtonTapped: presentNodeCertificatesScanner)
+        let viewController = connectRemoteNodeViewController()
         navigationController?.pushViewController(viewController, animated: true)
     }
 
@@ -127,12 +125,20 @@ final class SetupCoordinator: Coordinator {
 
     private func setupWalletViewController() -> UIViewController {
         #if REMOTEONLY
+        return connectRemoteNodeViewController()
+        #else
+        if walletConfigurationStore.hasLocalWallet {
+            return connectRemoteNodeViewController()
+        } else {
+            return SelectWalletCreationMethodViewController.instantiate(createButtonTapped: createNewWallet, recoverButtonTapped: recoverExistingWallet, connectButtonTapped: connectRemoteNode)
+        }
+        #endif
+    }
+
+    private func connectRemoteNodeViewController() -> ConnectRemoteNodeViewController {
         let viewModel = ConnectRemoteNodeViewModel(rpcCredentials: nil)
         connectRemoteNodeViewModel = viewModel
         return ConnectRemoteNodeViewController.instantiate(didSetupWallet: didSetupWallet, connectRemoteNodeViewModel: viewModel, presentQRCodeScannerButtonTapped: presentNodeCertificatesScanner)
-        #else
-        return SelectWalletCreationMethodViewController.instantiate(createButtonTapped: createNewWallet, recoverButtonTapped: recoverExistingWallet, connectButtonTapped: connectRemoteNode)
-        #endif
     }
 
     private func connectWallet(_ walletConfiguration: WalletConfiguration) {
