@@ -52,6 +52,7 @@
 "scene.settings.item.version_warning" = "Your lnd is outdated (%@). Zap iOS works best with lnd version %@ or above.";
 "scene.settings.item.bitcoin_unit" = "יחידת ביטקוין";
 "scene.settings.item.currency" = "מטבע";
+"scene.settings.item.currency.popular" = "Popular Currencies";
 "scene.settings.item.block_explorer" = "סייר הבלוקצ׳יין";
 "scene.settings.item.on_chain_request_address.title" = "סוג כתובת ביטקוין";
 "scene.settings.item.on_chain_request_address.bech32" = "Bech32";
@@ -207,6 +208,7 @@
 "scene.qrcode_scanner.top_label" = "לסרוק קוד QR";
 
 "scene.wallet.title" = "Wallet";
+"scene.wallet.total_balance" = "Total Balance";
 "scene.wallet.detail.on_chain" = "On-chain:";
 "scene.wallet.detail.lightning" = "Lightning:";
 "scene.wallet.detail.pending" = "Pending:";
@@ -248,3 +250,6 @@
 "scene.unlock.unlock_button" = "Unlock";
 "scene.unlock.password_placeholder" = "Password";
 "scene.unlock.title_label" = "Unlock %@";
+
+"scene.manage_wallets.title" = "Manage Wallets";
+"scene.manage_wallets.cell.remote" = "remote";
