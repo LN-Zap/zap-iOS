@@ -61,6 +61,23 @@ public final class LightningService: NSObject {
         transactionService = TransactionService(api: api, balanceService: balanceService, paymentListUpdater: paymentListUpdater)
 
         infoService = InfoService(api: api, balanceService: balanceService)
+
+        super.init()
+
+        updateBalanceOnChange(of: invoiceListUpdater.items)
+        updateBalanceOnChange(of: transactionListUpdater.items)
+        updateBalanceOnChange(of: paymentListUpdater.items)
+        updateBalanceOnChange(of: channelListUpdater.open)
+        updateBalanceOnChange(of: channelListUpdater.closed)
+        updateBalanceOnChange(of: channelListUpdater.pending)
+    }
+
+    private func updateBalanceOnChange<T>(of items: MutableObservableArray<T>) {
+        items
+            .observeNext { [weak self] _ in
+                self?.balanceService.update()
+            }
+            .dispose(in: reactive.bag)
     }
 
     public func start() {
