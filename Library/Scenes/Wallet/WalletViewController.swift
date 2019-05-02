@@ -119,10 +119,8 @@ final class WalletViewController: UIViewController {
     }
 
     private func setupPrimaryBalanceLabel() {
-        let lightningService = walletViewModel.lightningService
-
         ReactiveKit
-            .combineLatest(lightningService.balanceService.total, Settings.shared.primaryCurrency) { satoshis, currency -> NSAttributedString? in
+            .combineLatest(walletViewModel.totalBalance, Settings.shared.primaryCurrency) { satoshis, currency -> NSAttributedString? in
                 if let bitcoin = currency as? Bitcoin {
                     return bitcoin.attributedFormat(satoshis: satoshis)
                 } else {
@@ -136,7 +134,7 @@ final class WalletViewController: UIViewController {
 
     private func setupBindings() {
         [
-            walletViewModel.lightningService.balanceService.total
+            walletViewModel.totalBalance
                 .bind(to: secondaryBalanceLabel.reactive.text, currency: Settings.shared.secondaryCurrency),
             walletViewModel.circleGraphSegments
                 .observeOn(DispatchQueue.main)
@@ -308,9 +306,10 @@ extension UIStackView {
             amount
                 .map { $0 <= 0 }
                 .observeOn(DispatchQueue.main)
-                .bind(to: horizontalStackView.reactive.isHidden)
+                .observeNext {
+                    horizontalStackView.isHidden = $0
+                }
                 .dispose(in: reactive.bag)
         }
-
     }
 }

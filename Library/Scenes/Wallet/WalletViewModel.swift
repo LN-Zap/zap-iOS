@@ -12,7 +12,7 @@ import ReactiveKit
 import SwiftBTC
 
 final class WalletViewModel: NSObject {
-    let lightningService: LightningService
+    private let lightningService: LightningService
 
     var network: Observable<Network?> {
         return lightningService.infoService.network
@@ -25,6 +25,8 @@ final class WalletViewModel: NSObject {
 
     let balanceSegments: [WalletBalanceSegment]
     let circleGraphSegments = Observable<[CircleGraphView.Segment]>([])
+
+    let totalBalance = Observable<Satoshi>(0)
 
     init(lightningService: LightningService) {
         self.lightningService = lightningService
@@ -41,6 +43,8 @@ final class WalletViewModel: NSObject {
         combineLatest(balanceService.lightning, balanceService.onChain, balanceService.pending)
             .observeNext { [weak self] in
                 let (lightningBalance, onChainBalance, pendingBalance) = $0
+
+                self?.totalBalance.value = lightningBalance + onChainBalance + pendingBalance
 
                 self?.circleGraphSegments.value = [
                     CircleGraphView.Segment(amount: onChainBalance, color: Segment.onChain.color),
