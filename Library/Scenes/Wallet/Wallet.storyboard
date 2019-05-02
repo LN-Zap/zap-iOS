@@ -87,25 +87,25 @@
                                         <rect key="frame" x="0.0" y="30" width="375" height="517"/>
                                         <subviews>
                                             <stackView opaque="NO" contentMode="scaleToFill" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="ETB-V0-5he">
-                                                <rect key="frame" x="136.5" y="129" width="125.5" height="61.5"/>
+                                                <rect key="frame" x="133.5" y="129" width="131.5" height="61.5"/>
                                                 <subviews>
                                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="zto-m2-yBD">
-                                                        <rect key="frame" x="0.0" y="0.0" width="102.5" height="61.5"/>
+                                                        <rect key="frame" x="0.0" y="0.0" width="108.5" height="61.5"/>
                                                         <subviews>
-                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Total Balance" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="IIW-Yv-qLS">
-                                                                <rect key="frame" x="0.0" y="0.0" width="102.5" height="20.5"/>
+                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="_Total Balance" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="IIW-Yv-qLS">
+                                                                <rect key="frame" x="0.0" y="0.0" width="108.5" height="20.5"/>
                                                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                                 <nil key="highlightedColor"/>
                                                             </label>
                                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.10000000000000001" translatesAutoresizingMaskIntoConstraints="NO" id="IUt-w1-jg5">
-                                                                <rect key="frame" x="0.0" y="20.5" width="102.5" height="20.5"/>
+                                                                <rect key="frame" x="0.0" y="20.5" width="108.5" height="20.5"/>
                                                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                                 <nil key="textColor"/>
                                                                 <nil key="highlightedColor"/>
                                                             </label>
                                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="TPG-42-pNt">
-                                                                <rect key="frame" x="0.0" y="41" width="102.5" height="20.5"/>
+                                                                <rect key="frame" x="0.0" y="41" width="108.5" height="20.5"/>
                                                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                                 <nil key="textColor"/>
                                                                 <nil key="highlightedColor"/>
@@ -113,12 +113,12 @@
                                                         </subviews>
                                                     </stackView>
                                                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="260" verticalHuggingPriority="251" horizontalCompressionResistancePriority="1000" image="icon_swap" translatesAutoresizingMaskIntoConstraints="NO" id="3Mb-Jl-C6P">
-                                                        <rect key="frame" x="112.5" y="0.0" width="13" height="61.5"/>
+                                                        <rect key="frame" x="118.5" y="0.0" width="13" height="61.5"/>
                                                     </imageView>
                                                 </subviews>
                                             </stackView>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="MBN-7j-D0P">
-                                                <rect key="frame" x="136.5" y="129" width="125.5" height="61.5"/>
+                                                <rect key="frame" x="133.5" y="129" width="131.5" height="61.5"/>
                                                 <fontDescription key="fontDescription" name=".AppleSystemUIFont" family=".AppleSystemUIFont" pointSize="15"/>
                                                 <connections>
                                                     <action selector="swapCurrencyButtonTapped:" destination="KOM-Jt-Qkh" eventType="touchUpInside" id="aF3-6J-Rn1"/>
@@ -352,6 +352,7 @@
                         <outlet property="sendButton" destination="GgB-G7-lfE" id="2v8-32-YCu"/>
                         <outlet property="sendButtonBackground" destination="EBp-3s-E1M" id="nrY-9P-zYq"/>
                         <outlet property="swapIconImageView" destination="3Mb-Jl-C6P" id="cNN-YP-fMR"/>
+                        <outlet property="totalBalanceLabel" destination="IIW-Yv-qLS" id="5uk-He-Jur"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Y9w-si-BR4" userLabel="First Responder" sceneMemberID="firstResponder"/>

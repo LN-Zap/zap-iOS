@@ -33,6 +33,7 @@ final class WalletViewController: UIViewController {
     @IBOutlet private weak var requestButton: UIButton!
 
     // balance view
+    @IBOutlet private weak var totalBalanceLabel: UILabel!
     @IBOutlet private weak var swapIconImageView: UIImageView!
     @IBOutlet private weak var primaryBalanceLabel: UILabel!
     @IBOutlet private weak var secondaryBalanceLabel: UILabel!
@@ -80,7 +81,8 @@ final class WalletViewController: UIViewController {
             requestButton.layoutIfNeeded()
         }
 
-        Style.Label.body.apply(to: secondaryBalanceLabel)
+        Style.Label.body.apply(to: secondaryBalanceLabel, totalBalanceLabel)
+        totalBalanceLabel.text = L10n.Scene.Wallet.totalBalance
         secondaryBalanceLabel.textColor = UIColor.Zap.gray
         secondaryBalanceLabel.textAlignment = .center
         Style.Label.boldTitle.apply(to: primaryBalanceLabel)

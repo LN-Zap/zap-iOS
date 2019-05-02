@@ -29,7 +29,7 @@ final class ManageWalletsViewController: UIViewController {
         super.viewDidLoad()
 
         navigationItem.largeTitleDisplayMode = .never
-        title = "Manage Wallets"
+        title = L10n.Scene.ManageWallets.title
         tableView.registerCell(ManageWalletTableViewCell.self)
         tableView.rowHeight = 76
         tableView.backgroundColor = UIColor.Zap.background

@@ -293,6 +293,10 @@ internal enum L10n {
       /// Send
       internal static let sendButton = L10n.tr("Localizable", "scene.main.send_button")
     }
+    internal enum ManageWallets {
+      /// Manage Wallets
+      internal static let title = L10n.tr("Localizable", "scene.manage_wallets.title")
+    }
     internal enum ModalPin {
       /// Please enter your passcode to continue
       internal static let description = L10n.tr("Localizable", "scene.modal_pin.description")
@@ -492,7 +496,7 @@ internal enum L10n {
           return L10n.tr("Localizable", "scene.settings.item.version_warning", p1, p2)
         }
         internal enum Currency {
-          /// Popular
+          /// Popular Currencies
           internal static let popular = L10n.tr("Localizable", "scene.settings.item.currency.popular")
         }
         internal enum OnChainRequestAddress {
@@ -598,6 +602,8 @@ internal enum L10n {
     internal enum Wallet {
       /// Wallet
       internal static let title = L10n.tr("Localizable", "scene.wallet.title")
+      /// Total Balance
+      internal static let totalBalance = L10n.tr("Localizable", "scene.wallet.total_balance")
       internal enum Detail {
         /// Lightning:
         internal static let lightning = L10n.tr("Localizable", "scene.wallet.detail.lightning")
