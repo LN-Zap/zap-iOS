@@ -52,6 +52,7 @@
 "scene.settings.item.version_warning" = "Your lnd is outdated (%@). Zap iOS works best with lnd version %@ or above.";
 "scene.settings.item.bitcoin_unit" = "比特币单位";
 "scene.settings.item.currency" = "货币";
+"scene.settings.item.currency.popular" = "Popular Currencies";
 "scene.settings.item.block_explorer" = "区块浏览器";
 "scene.settings.item.on_chain_request_address.title" = "比特币地址类型";
 "scene.settings.item.on_chain_request_address.bech32" = "Bech32";
@@ -207,6 +208,7 @@
 "scene.qrcode_scanner.top_label" = "扫描 QR 码";
 
 "scene.wallet.title" = "钱包";
+"scene.wallet.total_balance" = "Total Balance";
 "scene.wallet.detail.on_chain" = "On-chain:";
 "scene.wallet.detail.lightning" = "Lightning:";
 "scene.wallet.detail.pending" = "Pending:";
@@ -248,3 +250,6 @@
 "scene.unlock.unlock_button" = "解锁";
 "scene.unlock.password_placeholder" = "密码";
 "scene.unlock.title_label" = "解锁 %@";
+
+"scene.manage_wallets.title" = "Manage Wallets";
+"scene.manage_wallets.cell.remote" = "remote";
