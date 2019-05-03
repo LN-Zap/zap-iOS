@@ -12,20 +12,20 @@
 "link.lnd_releases" = "https://github.com/lightningnetwork/lnd/releases";
 
 "error.wrong_uri_format" = "Ukjent lenkeformat.";
-"error.wrong_uri_network" = "You tried opening a link for %@ but your node is connected to %@.";
-"error.block_explorer.unsupported_network" = "%@ does not support %@.";
+"error.wrong_uri_network" = "Du forsøkte å åpne en lenke til %@, men noden din er koblet til %@.";
+"error.block_explorer.unsupported_network" = "%@ støtter ikke %@.";
 
-"rpc_connect_qrcode_error.btc_pay_expired" = "Looks like the code is expired.";
-"rpc_connect_qrcode_error.btc_pay_configuration_broken" = "Could not read BTCPay configurations file.";
-"rpc_connect_qrcode_error.cant_read_qrcode" = "Invalid code format.";
-"rpc_connect_qrcode_error.code_updated" = "Connection updated.";
+"rpc_connect_qrcode_error.btc_pay_expired" = "Det ser ut til at koden er ikke er gyldig lenger.";
+"rpc_connect_qrcode_error.btc_pay_configuration_broken" = "Kunne ikke avlese BTCPay konfigurasjonsfil.";
+"rpc_connect_qrcode_error.cant_read_qrcode" = "Ugyldig kodeformat.";
+"rpc_connect_qrcode_error.code_updated" = "Tilkobling oppdatert.";
 
-"channel.state.active" = "Online";
-"channel.state.inactive" = "Offline";
-"channel.state.opening" = "Opening";
-"channel.state.closing" = "Closing";
-"channel.state.force_closing" = "Force Closing";
-"channel.state.waiting_close" = "Waiting Close";
+"channel.state.active" = "Tilkoblet";
+"channel.state.inactive" = "Frakoblet";
+"channel.state.opening" = "Åpnes";
+"channel.state.closing" = "Lukkes";
+"channel.state.force_closing" = "Tvungen lukking";
+"channel.state.waiting_close" = "Avventer lukking";
 
 "network_type.regtest" = "Regtest";
 "network_type.testnet" = "Testnet";
@@ -36,15 +36,15 @@
 "unit.bitcoin.bit" = "Bits";
 "unit.bitcoin.satoshi" = "Satoshis";
 
-"toast.invoice" = "Did receive %@";
-"toast.invoice_memo" = "Did receive %@ \"%@\"";
+"toast.invoice" = "Mottok %@";
+"toast.invoice_memo" = "Mottok %@ \"%@\"";
 
-"transaction.no_destination_address" = "No destination address";
+"transaction.no_destination_address" = "Ingen destinasjonsadresse";
 
-"view.amount_input.placeholder" = "Amount";
+"view.amount_input.placeholder" = "Beløp";
 
-"scene.history.title" = "History";
-"scene.history.empty_state_label" = "0 transactions 🙁";
+"scene.history.title" = "Historikk";
+"scene.history.empty_state_label" = "0 transaksjoner 🙁";
 
 "scene.settings.title" = "Settings";
 "scene.settings.section.warning" = "Warning";
