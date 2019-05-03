@@ -1,9 +1,9 @@
 "generic.memo.placeholder" = "What is this for?";
-"generic.qr_code.copy_button" = "Copy";
-"generic.qr_code.copy_success_message" = "Address has been copied to clipboard.";
-"generic.pasteboard.invalid_address" = "Invalid Address";
-"generic.qr_code.share_button" = "Share";
-"generic.cancel" = "Cancel";
+"generic.qr_code.copy_button" = "Kopiér";
+"generic.qr_code.copy_success_message" = "Adressen ble kopiert til utklippstavlen.";
+"generic.pasteboard.invalid_address" = "Ugyldig adresse";
+"generic.qr_code.share_button" = "Del";
+"generic.cancel" = "Avbryt";
 
 "link.help" = "https://ln-zap.github.io/zap-tutorials/";
 "link.help.zapconnect" = "https://ln-zap.github.io/zap-tutorials/iOS-remote-node-setup";
@@ -11,7 +11,7 @@
 "link.bug_report" = "https://github.com/LN-Zap/zap-iOS/issues";
 "link.lnd_releases" = "https://github.com/lightningnetwork/lnd/releases";
 
-"error.wrong_uri_format" = "Unknown link format.";
+"error.wrong_uri_format" = "Ukjent lenkeformat.";
 "error.wrong_uri_network" = "You tried opening a link for %@ but your node is connected to %@.";
 "error.block_explorer.unsupported_network" = "%@ does not support %@.";
 
