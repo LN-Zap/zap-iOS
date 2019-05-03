@@ -1,4 +1,4 @@
-"generic.memo.placeholder" = "What is this for?";
+"generic.memo.placeholder" = "Hva er det her til?";
 "generic.qr_code.copy_button" = "Kopiér";
 "generic.qr_code.copy_success_message" = "Adressen ble kopiert til utklippstavlen.";
 "generic.pasteboard.invalid_address" = "Ugyldig adresse";
@@ -12,10 +12,10 @@
 "link.lnd_releases" = "https://github.com/lightningnetwork/lnd/releases";
 
 "error.wrong_uri_format" = "Ukjent lenkeformat.";
-"error.wrong_uri_network" = "Du forsøkte å åpne en lenke til %@, men noden din er koblet til %@.";
+"error.wrong_uri_network" = "Du forsøkte å åpne en lenke for %@, men noden din er koblet til %@.";
 "error.block_explorer.unsupported_network" = "%@ støtter ikke %@.";
 
-"rpc_connect_qrcode_error.btc_pay_expired" = "Det ser ut til at koden er ikke er gyldig lenger.";
+"rpc_connect_qrcode_error.btc_pay_expired" = "Det ser ut til at koden ikke er gyldig lenger.";
 "rpc_connect_qrcode_error.btc_pay_configuration_broken" = "Kunne ikke avlese BTCPay konfigurasjonsfil.";
 "rpc_connect_qrcode_error.cant_read_qrcode" = "Ugyldig kodeformat.";
 "rpc_connect_qrcode_error.code_updated" = "Tilkobling oppdatert.";
@@ -46,18 +46,18 @@
 "scene.history.title" = "Historikk";
 "scene.history.empty_state_label" = "0 transaksjoner 🙁";
 
-"scene.settings.title" = "Settings";
-"scene.settings.section.warning" = "Warning";
-"scene.settings.section.wallet" = "Wallet";
+"scene.settings.title" = "Innstillinger";
+"scene.settings.section.warning" = "Advarsel";
+"scene.settings.section.wallet" = "Lommebok";
 "scene.settings.item.version_warning" = "Your lnd is outdated (%@). Zap iOS works best with lnd version %@ or above.";
-"scene.settings.item.bitcoin_unit" = "Bitcoin Unit";
-"scene.settings.item.currency" = "Currency";
-"scene.settings.item.currency.popular" = "Popular Currencies";
-"scene.settings.item.block_explorer" = "Block Explorer";
-"scene.settings.item.on_chain_request_address.title" = "Bitcoin Address Type";
+"scene.settings.item.bitcoin_unit" = "Bitcoin enhet";
+"scene.settings.item.currency" = "Valuta";
+"scene.settings.item.currency.popular" = "Populære valutaer";
+"scene.settings.item.block_explorer" = "Blokkutforsker";
+"scene.settings.item.on_chain_request_address.title" = "Bitcoin adressetype";
 "scene.settings.item.on_chain_request_address.bech32" = "Bech32";
 "scene.settings.item.on_chain_request_address.p2sh" = "P2SH";
-"scene.settings.item.manage_channels" = "Manage Channels";
+"scene.settings.item.manage_channels" = "Behandle betalingskanaler";
 "scene.settings.item.node_uri" = "Node URI";
 "scene.settings.item.remove_remote_node" = "Manage Wallets";
 
