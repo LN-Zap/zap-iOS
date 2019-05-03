@@ -208,7 +208,7 @@
 "scene.qrcode_scanner.top_label" = "QR-Code scannen";
 
 "scene.wallet.title" = "Wallet";
-"scene.wallet.total_balance" = "Total Balance";
+"scene.wallet.total_balance" = "Totaler Kontostand";
 "scene.wallet.detail.on_chain" = "On-Chain:";
 "scene.wallet.detail.lightning" = "Lightning:";
 "scene.wallet.detail.pending" = "Ausstehend:";
@@ -251,5 +251,5 @@
 "scene.unlock.password_placeholder" = "Passwort";
 "scene.unlock.title_label" = "Entsperre %@";
 
-"scene.manage_wallets.title" = "Manage Wallets";
+"scene.manage_wallets.title" = "Verwalten von Wallets";
 "scene.manage_wallets.cell.remote" = "remote";
