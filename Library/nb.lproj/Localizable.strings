@@ -195,39 +195,39 @@
 "scene.channel_detail.closing_time.label" = "Lukkes om";
 "scene.channel_detail.funding_transaction_label" = "Finansieringstransaksjon";
 "scene.channel_detail.close_button" = "Lukk kanal";
-"scene.channel_detail.force_close_button" = "Force Close Channel";
+"scene.channel_detail.force_close_button" = "Tvangslukk kanal";
 
 "scene.filter.title" = "Filter";
-"scene.filter.section_header.transaction_types" = "Transaction Types";
-"scene.filter.displayOnChainTransactions" = "On-chain Payments";
-"scene.filter.display_expired_invoices" = "Expired Invoices";
-"scene.filter.displayLightningPayments" = "Lightning Payments";
-"scene.filter.displayLightningInvoices" = "Created Invoices";
-"scene.filter.displayChannelEvents" = "Channel Events";
+"scene.filter.section_header.transaction_types" = "Transaksjonstyper";
+"scene.filter.displayOnChainTransactions" = "On-chain betalinger";
+"scene.filter.display_expired_invoices" = "Utløpte fakturaer";
+"scene.filter.displayLightningPayments" = "Lightning-betalinger";
+"scene.filter.displayLightningInvoices" = "Opprettede fakturaer";
+"scene.filter.displayChannelEvents" = "Kanaloppdateringer";
 
-"scene.qrcode_scanner.top_label" = "Scan QR-Code";
+"scene.qrcode_scanner.top_label" = "Skann QR-kode";
 
-"scene.wallet.title" = "Wallet";
-"scene.wallet.total_balance" = "Total Balance";
+"scene.wallet.title" = "Lommebok";
+"scene.wallet.total_balance" = "Total saldo";
 "scene.wallet.detail.on_chain" = "On-chain:";
 "scene.wallet.detail.lightning" = "Lightning:";
-"scene.wallet.detail.pending" = "Pending:";
+"scene.wallet.detail.pending" = "Overhengende:";
 
-"scene.time_lock.headline" = "Wrong Passcode";
-"scene.time_lock.description" = "Your wallet is locked for:";
+"scene.time_lock.headline" = "Ugyldig passkode";
+"scene.time_lock.description" = "Lommeboken din er lukket i:";
 
-"scene.modal_pin.headline" = "Enter Passcode";
-"scene.modal_pin.description" = "Please enter your passcode to continue";
+"scene.modal_pin.headline" = "Oppgi passkode";
+"scene.modal_pin.description" = "Oppgi passkoden din for å fortsette";
 
-"scene.history.cell.payment_sent" = "Payment sent";
-"scene.history.cell.payment_received" = "Payment received";
-"scene.history.cell.payment_failed" = "Payment failed (%@)";
-"scene.history.cell.invoice_created" = "Payment Request created";
-"scene.history.cell.channel_opened" = "Open Channel";
-"scene.history.cell.channel_closed" = "Close Channel";
-"scene.history.cell.force_close_channel" = "Force close Channel";
+"scene.history.cell.payment_sent" = "Betaling gjennomført";
+"scene.history.cell.payment_received" = "Innbetaling mottatt";
+"scene.history.cell.payment_failed" = "Betaling feilet (%@)";
+"scene.history.cell.invoice_created" = "Betalingsanmodning opprettet";
+"scene.history.cell.channel_opened" = "Åpnet kanal";
+"scene.history.cell.channel_closed" = "Lukket kanal";
+"scene.history.cell.force_close_channel" = "Tvangslukket kanal";
 "scene.history.cell.remote_force_close_channel" = "Remote force close Channel";
-"scene.history.cell.breach_close_channel" = "Breach close Channel";
+"scene.history.cell.breach_close_channel" = "Lukket kanal for å avverge misbruk";
 "scene.history.cell.close_channel_funding_canceled" = "Close Channel (funding canceled)";
 "scene.history.cell.channel_abandoned" = "Channel abandoned";
 "scene.history.cell.transaction_sent" = "Payment sent";
