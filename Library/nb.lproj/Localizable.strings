@@ -115,13 +115,13 @@
 "scene.send.send_button" = "Send";
 "scene.send.address_headline" = "Til:";
 "scene.send.memo_headline" = "Notat:";
-"scene.send.sending" = "Betaler...";
-"scene.send.lightning.title" = "Betal med Lightning";
-"scene.send.on_chain.title" = "Betal On-Chain";
+"scene.send.sending" = "Sender...";
+"scene.send.lightning.title" = "Send Lightning-betaling";
+"scene.send.on_chain.title" = "Sende On-Chain";
 "scene.send.authentication_failed" = "Autentisering feilet";
 "scene.send.maximum_fee" = "Forventet gebyr:";
 "scene.send.subtitle.on_chain_balance" = "On-chain saldo: %@";
-"scene.send.subtitle.lightning_can_send_balance" = "Kan betale: %@";
+"scene.send.subtitle.lightning_can_send_balance" = "Kan sende: %@";
 "scene.send.success_label" = "Betaling vellykket";
 "scene.send.paste_button.title" = "Lim inn adresse";
 
@@ -150,9 +150,9 @@
 
 "scene.select_wallet_connection.title" = "Legg til lommebok";
 "scene.select_wallet_connection.create.title" = "Opprett";
-"scene.select_wallet_connection.create.message" = "Ny lommebok";
+"scene.select_wallet_connection.create.message" = "ny lommebok";
 "scene.select_wallet_connection.recover.title" = "Gjenoppretting";
-"scene.select_wallet_connection.recover.message" = "Eksisterende lommebok";
+"scene.select_wallet_connection.recover.message" = "eksisterende lommebok";
 "scene.select_wallet_connection.connect.title" = "Koble til";
 "scene.select_wallet_connection.connect.message" = "ekstern node";
 "scene.select_wallet_connection.disabled_alert.title" = "Beklager!";
@@ -166,17 +166,17 @@
 
 "scene.qr_code_detail.title" = "Mottak";
 
-"scene.sync.description_label" = "Synkroniserer med blokkjeden…";
+"scene.sync.description_label" = "Synkroniserer til blokkjeden…";
 "scene.sync.disconnect_bar_button" = "Koble fra";
 "scene.sync.disconnect_alert.title" = "Frakobling";
 "scene.sync.disconnect_alert.message" = "Er du sikker på at du vil avbryte synkroniseringen? Da må du koble til noden din på nytt igjen etterpå.";
 "scene.sync.disconnect_alert.destructive_action" = "Koble fra node";
 "scene.sync.disconnect_alert.cancel_action" = "Avbryt";
 
-"scene.transaction_detail.title.lightning_invoice" = "Ubetalt faktura";
-"scene.transaction_detail.title.payment_detail" = "Betaling";
-"scene.transaction_detail.title.transaction_detail" = "Transaksjon";
-"scene.transaction_detail.title.channel_event_detail" = "Kanaloppdatering";
+"scene.transaction_detail.title.lightning_invoice" = "Fakturadetaljer";
+"scene.transaction_detail.title.payment_detail" = "Betalingsdetaljer";
+"scene.transaction_detail.title.transaction_detail" = "Transaksjonsdetaljer";
+"scene.transaction_detail.title.channel_event_detail" = "Kanalbegivenhet";
 "scene.transaction_detail.title.failed_payment" = "Betaling mislykket";
 "scene.transaction_detail.memo_label" = "Notat";
 "scene.transaction_detail.amount_label" = "Beløp";
@@ -184,7 +184,7 @@
 "scene.transaction_detail.date_label" = "Dato";
 "scene.transaction_detail.transaction_id_label" = "Transaksjons-ID";
 "scene.transaction_detail.address_label" = "Adresse";
-"scene.transaction_detail.expiry_label" = "Utløper om";
+"scene.transaction_detail.expiry_label" = "Utløper";
 "scene.transaction_detail.expiry_label.expired" = "Utløpt";
 "scene.transaction_detail.invoice_state_label" = "Status";
 "scene.transaction_detail.invoice_state_label.settled" = "betalt";
@@ -203,7 +203,7 @@
 "scene.filter.display_expired_invoices" = "Utløpte fakturaer";
 "scene.filter.displayLightningPayments" = "Lightning-betalinger";
 "scene.filter.displayLightningInvoices" = "Opprettede fakturaer";
-"scene.filter.displayChannelEvents" = "Kanaloppdateringer";
+"scene.filter.displayChannelEvents" = "Kanalbegivenheter";
 
 "scene.qrcode_scanner.top_label" = "Skann QR-kode";
 
