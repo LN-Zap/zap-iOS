@@ -74,7 +74,7 @@
 "scene.request.generate_request_button" = "生成请求";
 "scene.request.lightning_header_title" = "闪电网络支付请求";
 "scene.request.on_chain_header_title" = "链上支付请求";
-"scene.request.next_button_title" = "下一个";
+"scene.request.next_button_title" = "下一步";
 "scene.request.subtitle.lightning" = "可以接收： %@";
 
 "scene.channels.title" = "通道";
@@ -141,7 +141,7 @@
 
 "scene.create_wallet.title" = "创建钱包";
 "scene.create_wallet.description_label" = "请确保将助记词存储在安全的地方。";
-"scene.create_wallet.next_button" = "下一个";
+"scene.create_wallet.next_button" = "下一步";
 
 "scene.recover_wallet.title" = "恢复钱包";
 "scene.recover_wallet.done_button" = "完成";
