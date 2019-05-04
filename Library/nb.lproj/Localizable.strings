@@ -226,17 +226,17 @@
 "scene.history.cell.channel_opened" = "Åpnet kanal";
 "scene.history.cell.channel_closed" = "Lukket kanal";
 "scene.history.cell.force_close_channel" = "Tvangslukket kanal";
-"scene.history.cell.remote_force_close_channel" = "Remote force close Channel";
+"scene.history.cell.remote_force_close_channel" = "Tvangslukk ekstern kanal";
 "scene.history.cell.breach_close_channel" = "Lukket kanal for å avverge misbruk";
-"scene.history.cell.close_channel_funding_canceled" = "Close Channel (funding canceled)";
-"scene.history.cell.channel_abandoned" = "Channel abandoned";
-"scene.history.cell.transaction_sent" = "Payment sent";
-"scene.history.cell.transaction_received" = "Payment received";
-"scene.history.cell.label.new" = "new";
-"scene.history.cell.label.error" = "error";
-"scene.history.cell.action.try_again" = "Try Again";
+"scene.history.cell.close_channel_funding_canceled" = "Lukk kanal (finansiering avbrutt)";
+"scene.history.cell.channel_abandoned" = "Kanal forlatt";
+"scene.history.cell.transaction_sent" = "Betaling sendt";
+"scene.history.cell.transaction_received" = "Betaling mottatt";
+"scene.history.cell.label.new" = "ny";
+"scene.history.cell.label.error" = "feil";
+"scene.history.cell.action.try_again" = "Prøv igjen";
 
-"scene.node_uri.title" = "Connect to Node";
+"scene.node_uri.title" = "Koble til node";
 "scene.node_uri.alias_label" = "Alias";
 "scene.node_uri.uri_label" = "URI";
 
