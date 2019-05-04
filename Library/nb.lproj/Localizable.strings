@@ -111,7 +111,7 @@
 "scene.confirm_mnemonic.title" = "Bekreft huskeord";
 "scene.confirm_mnemonic.description" = "Oppgi huskeordene dine.";
 
-"scene.send.title" = "Send";
+"scene.send.title" = "Sending";
 "scene.send.send_button" = "Send";
 "scene.send.address_headline" = "Til:";
 "scene.send.memo_headline" = "Notat:";
@@ -160,7 +160,7 @@
 "scene.select_wallet_connection.disabled_alert.ok_button" = "Ok";
 "scene.select_wallet_connection.create.help" = "Trenger du hjelp?";
 
-"scene.main.send_button" = "Betal";
+"scene.main.send_button" = "Send";
 "scene.main.receive_button" = "Motta";
 "scene.main.exchange_rate_label" = "%@ per BTC";
 
@@ -251,5 +251,5 @@
 "scene.unlock.password_placeholder" = "Passord";
 "scene.unlock.title_label" = "Lås opp %@";
 
-"scene.manage_wallets.title" = "Manage Wallets";
+"scene.manage_wallets.title" = "Administrere lommebøker";
 "scene.manage_wallets.cell.remote" = "ekstern";
