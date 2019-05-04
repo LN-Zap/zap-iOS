@@ -49,10 +49,10 @@
 "scene.settings.title" = "设置";
 "scene.settings.section.warning" = "警告";
 "scene.settings.section.wallet" = "钱包";
-"scene.settings.item.version_warning" = "Your lnd is outdated (%@). Zap iOS works best with lnd version %@ or above.";
+"scene.settings.item.version_warning" = "你的LND版本太久(%@)。Zap iOS工作于LND版本 %@ 或以上。";
 "scene.settings.item.bitcoin_unit" = "比特币单位";
 "scene.settings.item.currency" = "货币";
-"scene.settings.item.currency.popular" = "Popular Currencies";
+"scene.settings.item.currency.popular" = "热门货币";
 "scene.settings.item.block_explorer" = "区块浏览器";
 "scene.settings.item.on_chain_request_address.title" = "比特币地址类型";
 "scene.settings.item.on_chain_request_address.bech32" = "Bech32";
@@ -73,15 +73,15 @@
 "scene.request.on_chain_button" = "链上";
 "scene.request.generate_request_button" = "生成请求";
 "scene.request.lightning_header_title" = "闪电网络支付请求";
-"scene.request.on_chain_header_title" = "On-Chain Payment Request";
+"scene.request.on_chain_header_title" = "链上支付请求";
 "scene.request.next_button_title" = "下一个";
-"scene.request.subtitle.lightning" = "Can receive: %@";
+"scene.request.subtitle.lightning" = "可以接收： %@";
 
 "scene.channels.title" = "通道";
-"scene.channels.header.total_can_send" = "Total can send:";
-"scene.channels.header.total_can_receive" = "Total can receive:";
-"scene.channels.header.total_pending" = "Total pending:";
-"scene.channels.header.offline" = "Total offline:";
+"scene.channels.header.total_can_send" = "总共可以发送：";
+"scene.channels.header.total_can_receive" = "总共可以接收：";
+"scene.channels.header.total_pending" = "总共等待中：";
+"scene.channels.header.offline" = "总共离线：";
 "scene.channels.close.title" = "关闭通道";
 "scene.channels.close.message" = "是否确实要关闭节点 %@ 的通道？";
 "scene.channels.force_close.title" = "强制关闭通道";
@@ -92,13 +92,13 @@
 "scene.channels.close_success.toast" = "通道正在关闭。";
 
 "scene.open_channel.title" = "打开通道";
-"scene.open_channel.channel_uri_label" = "Node:";
+"scene.open_channel.channel_uri_label" = "节点：";
 "scene.open_channel.add_button" = "打开通道";
-"scene.open_channel.subtitle.minimum_size" = "Minimum channel size: %@";
-"scene.open_channel.subtitle.maximum_size" = "Maximum channel size: %@";
-"scene.open_channel.subtitle.balance" = "On-chain balance: %@";
-"scene.open_channel.suggested_peers.title" = "Suggested Peers";
-"scene.open_channel.paste_button.title" = "Paste Peer Address";
+"scene.open_channel.subtitle.minimum_size" = "最小通道大小：%@";
+"scene.open_channel.subtitle.maximum_size" = "最大通道大小：%@";
+"scene.open_channel.subtitle.balance" = "链上余额：%@";
+"scene.open_channel.suggested_peers.title" = "建议的Peers";
+"scene.open_channel.paste_button.title" = "粘贴Peer地址";
 
 "scene.pin.biometric.fallback.title" = "使用密码";
 "scene.pin.biometric.reason" = "访问安全数据";
@@ -117,13 +117,13 @@
 "scene.send.memo_headline" = "备注:";
 "scene.send.sending" = "发送中。。。";
 "scene.send.lightning.title" = "通过闪电网络支付";
-"scene.send.on_chain.title" = "Send On-Chain";
+"scene.send.on_chain.title" = "链上交易";
 "scene.send.authentication_failed" = "身份验证失败";
 "scene.send.maximum_fee" = "预计费用:";
-"scene.send.subtitle.on_chain_balance" = "On-chain balance: %@";
-"scene.send.subtitle.lightning_can_send_balance" = "Can send: %@";
-"scene.send.success_label" = "Payment Successful";
-"scene.send.paste_button.title" = "Paste Address";
+"scene.send.subtitle.on_chain_balance" = "链上余额：%@";
+"scene.send.subtitle.lightning_can_send_balance" = "可以发送：%@";
+"scene.send.success_label" = "支付成功";
+"scene.send.paste_button.title" = "粘贴地址";
 
 "scene.connect_remote_node.title" = "连接远程节点";
 "scene.connect_remote_node.empty_state" = "扫描lndconnect，BTCPay生成的QRCode，或者运行'lndconnect -j'然后粘贴链接来连接到你的节点。";
@@ -140,7 +140,7 @@
 "scene.connect_remote_node.edit_url.title" = "地址";
 
 "scene.create_wallet.title" = "创建钱包";
-"scene.create_wallet.description_label" = "Make sure to store the mnemonic at a safe location.";
+"scene.create_wallet.description_label" = "请确保将助记词存储在安全的地方。";
 "scene.create_wallet.next_button" = "下一个";
 
 "scene.recover_wallet.title" = "恢复钱包";
@@ -166,7 +166,7 @@
 
 "scene.qr_code_detail.title" = "接收";
 
-"scene.sync.description_label" = "同步到 blockchain...";
+"scene.sync.description_label" = "从blockchain同步...";
 "scene.sync.disconnect_bar_button" = "断开";
 "scene.sync.disconnect_alert.title" = "断开";
 "scene.sync.disconnect_alert.message" = "确实要取消同步？您将需要重新连接到您的节点。";
@@ -208,10 +208,10 @@
 "scene.qrcode_scanner.top_label" = "扫描 QR 码";
 
 "scene.wallet.title" = "钱包";
-"scene.wallet.total_balance" = "Total Balance";
-"scene.wallet.detail.on_chain" = "On-chain:";
-"scene.wallet.detail.lightning" = "Lightning:";
-"scene.wallet.detail.pending" = "Pending:";
+"scene.wallet.total_balance" = "总计余额";
+"scene.wallet.detail.on_chain" = "链上:";
+"scene.wallet.detail.lightning" = "闪电:";
+"scene.wallet.detail.pending" = "等待:";
 
 "scene.time_lock.headline" = "密码错误";
 "scene.time_lock.description" = "你的钱包被锁住:";
@@ -251,5 +251,5 @@
 "scene.unlock.password_placeholder" = "密码";
 "scene.unlock.title_label" = "解锁 %@";
 
-"scene.manage_wallets.title" = "Manage Wallets";
-"scene.manage_wallets.cell.remote" = "remote";
+"scene.manage_wallets.title" = "管理钱包";
+"scene.manage_wallets.cell.remote" = "远端";
