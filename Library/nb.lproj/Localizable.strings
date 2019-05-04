@@ -211,7 +211,7 @@
 "scene.wallet.total_balance" = "Total saldo";
 "scene.wallet.detail.on_chain" = "On-chain:";
 "scene.wallet.detail.lightning" = "Lightning:";
-"scene.wallet.detail.pending" = "Overhengende:";
+"scene.wallet.detail.pending" = "Ikke ferdigstilt:";
 
 "scene.time_lock.headline" = "Ugyldig passkode";
 "scene.time_lock.description" = "Lommeboken din er lukket i:";
