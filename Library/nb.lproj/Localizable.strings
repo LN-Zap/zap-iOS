@@ -57,9 +57,9 @@
 "scene.settings.item.on_chain_request_address.title" = "Bitcoin adressetype";
 "scene.settings.item.on_chain_request_address.bech32" = "Bech32";
 "scene.settings.item.on_chain_request_address.p2sh" = "P2SH";
-"scene.settings.item.manage_channels" = "Behandle betalingskanaler";
+"scene.settings.item.manage_channels" = "Administrere kanaler";
 "scene.settings.item.node_uri" = "Node URI";
-"scene.settings.item.remove_remote_node" = "Behandle lommebøker";
+"scene.settings.item.remove_remote_node" = "Administrere lommebøker";
 
 "scene.settings.item.change_pin" = "Endre PIN-kode";
 "scene.settings.item.report_issue" = "Rapportér et problem";
@@ -72,8 +72,8 @@
 "scene.request.or_separator_label" = "or";
 "scene.request.on_chain_button" = "On-chain";
 "scene.request.generate_request_button" = "Opprett betalingsanmodning";
-"scene.request.lightning_header_title" = "Lightning betalingsanmodning";
-"scene.request.on_chain_header_title" = "On-Chain betalingsanmodning";
+"scene.request.lightning_header_title" = "Lightning-betalingsanmodning";
+"scene.request.on_chain_header_title" = "On-Chain-betalingsanmodning";
 "scene.request.next_button_title" = "Neste";
 "scene.request.subtitle.lightning" = "Kan motta: %@";
 
@@ -111,8 +111,8 @@
 "scene.confirm_mnemonic.title" = "Bekreft huskeord";
 "scene.confirm_mnemonic.description" = "Oppgi huskeordene dine.";
 
-"scene.send.title" = "Betaling";
-"scene.send.send_button" = "Betal";
+"scene.send.title" = "Send";
+"scene.send.send_button" = "Send";
 "scene.send.address_headline" = "Til:";
 "scene.send.memo_headline" = "Notat:";
 "scene.send.sending" = "Betaler...";
@@ -240,9 +240,9 @@
 "scene.node_uri.alias_label" = "Alias";
 "scene.node_uri.uri_label" = "URI";
 
-"scene.connect_node_uri.action_sheet.title" = "Connect";
-"scene.connect_node_uri.action_sheet.connect_button" = "Connect";
-"scene.connect_node_uri.action_sheet.message" = "Do you really want to connect to node at %@?";
+"scene.connect_node_uri.action_sheet.title" = "Koble til";
+"scene.connect_node_uri.action_sheet.connect_button" = "Koble til";
+"scene.connect_node_uri.action_sheet.message" = "Er du sikker på at du vil koble til noden på %@?";
 
 "scene.wallet_list.title" = "Wallets";
 
