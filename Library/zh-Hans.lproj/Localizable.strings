@@ -200,7 +200,7 @@
 "scene.filter.title" = "过滤";
 "scene.filter.section_header.transaction_types" = "交易类型";
 "scene.filter.displayOnChainTransactions" = "链上付款";
-"scene.filter.display_expired_invoices" = "Expired Invoices";
+"scene.filter.display_expired_invoices" = "已过期的单据";
 "scene.filter.displayLightningPayments" = "闪电网络支付";
 "scene.filter.displayLightningInvoices" = "已创建的单据";
 "scene.filter.displayChannelEvents" = "通道事件";
