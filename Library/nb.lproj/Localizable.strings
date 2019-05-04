@@ -32,9 +32,9 @@
 "network_type.mainnet" = "Mainnet";
 
 "unit.bitcoin.btc" = "Bitcoin";
-"unit.bitcoin.mbtc" = "Milli Bitcoin";
+"unit.bitcoin.mbtc" = "Millibitcoin";
 "unit.bitcoin.bit" = "Bits";
-"unit.bitcoin.satoshi" = "Satoshis";
+"unit.bitcoin.satoshi" = "Satoshier";
 
 "toast.invoice" = "Mottok %@";
 "toast.invoice_memo" = "Mottok %@ \"%@\"";
@@ -49,7 +49,7 @@
 "scene.settings.title" = "Innstillinger";
 "scene.settings.section.warning" = "Advarsel";
 "scene.settings.section.wallet" = "Lommebok";
-"scene.settings.item.version_warning" = "Your lnd is outdated (%@). Zap iOS works best with lnd version %@ or above.";
+"scene.settings.item.version_warning" = "Din lnd er utdatert (%@). Zap iOS fungerer best med lnd versjon %@ eller nyere.";
 "scene.settings.item.bitcoin_unit" = "Bitcoin enhet";
 "scene.settings.item.currency" = "Valuta";
 "scene.settings.item.currency.popular" = "Populære valutaer";
@@ -69,7 +69,7 @@
 
 "scene.request.title" = "Mottak";
 "scene.request.lightning_button" = "Lightning";
-"scene.request.or_separator_label" = "or";
+"scene.request.or_separator_label" = "eller";
 "scene.request.on_chain_button" = "On-chain";
 "scene.request.generate_request_button" = "Opprett betalingsanmodning";
 "scene.request.lightning_header_title" = "Lightning-betalingsanmodning";
@@ -80,7 +80,7 @@
 "scene.channels.title" = "Kanaler";
 "scene.channels.header.total_can_send" = "Kan sende totalt:";
 "scene.channels.header.total_can_receive" = "Kan motta totalt:";
-"scene.channels.header.total_pending" = "Totalt uoppgjort:";
+"scene.channels.header.total_pending" = "Totalt utestående:";
 "scene.channels.header.offline" = "Totalt offline:";
 "scene.channels.close.title" = "Lukk kanal";
 "scene.channels.close.message" = "Er du sikker på at du vil lukke kanalen med node %@?";
@@ -211,23 +211,23 @@
 "scene.wallet.total_balance" = "Total saldo";
 "scene.wallet.detail.on_chain" = "On-chain:";
 "scene.wallet.detail.lightning" = "Lightning:";
-"scene.wallet.detail.pending" = "Uoppgjort:";
+"scene.wallet.detail.pending" = "Utestående:";
 
-"scene.time_lock.headline" = "Ugyldig passkode";
+"scene.time_lock.headline" = "Ugyldig PIN-kode";
 "scene.time_lock.description" = "Lommeboken din er lukket i:";
 
-"scene.modal_pin.headline" = "Oppgi passkode";
-"scene.modal_pin.description" = "Oppgi passkoden din for å fortsette";
+"scene.modal_pin.headline" = "Oppgi PIN-kode";
+"scene.modal_pin.description" = "Oppgi PIN-koden din for å fortsette";
 
-"scene.history.cell.payment_sent" = "Betaling gjennomført";
+"scene.history.cell.payment_sent" = "Betaling sendt";
 "scene.history.cell.payment_received" = "Innbetaling mottatt";
 "scene.history.cell.payment_failed" = "Betaling feilet (%@)";
 "scene.history.cell.invoice_created" = "Betalingsanmodning opprettet";
-"scene.history.cell.channel_opened" = "Åpnet kanal";
+"scene.history.cell.channel_opened" = "Åpen kanal";
 "scene.history.cell.channel_closed" = "Lukket kanal";
 "scene.history.cell.force_close_channel" = "Tvangslukket kanal";
-"scene.history.cell.remote_force_close_channel" = "Tvangslukk ekstern kanal";
-"scene.history.cell.breach_close_channel" = "Lukket kanal for å avverge misbruk";
+"scene.history.cell.remote_force_close_channel" = "Fjerntvangslukk kanal";
+"scene.history.cell.breach_close_channel" = "Lukk skadet kanal";
 "scene.history.cell.close_channel_funding_canceled" = "Lukk kanal (finansiering avbrutt)";
 "scene.history.cell.channel_abandoned" = "Kanal forlatt";
 "scene.history.cell.transaction_sent" = "Betaling sendt";
@@ -244,12 +244,12 @@
 "scene.connect_node_uri.action_sheet.connect_button" = "Koble til";
 "scene.connect_node_uri.action_sheet.message" = "Er du sikker på at du vil koble til noden på %@?";
 
-"scene.wallet_list.title" = "Wallets";
+"scene.wallet_list.title" = "Lommebøker";
 
-"scene.unlock.title" = "Unlock Node";
-"scene.unlock.unlock_button" = "Unlock";
-"scene.unlock.password_placeholder" = "Password";
-"scene.unlock.title_label" = "Unlock %@";
+"scene.unlock.title" = "Lås opp node";
+"scene.unlock.unlock_button" = "Lås opp";
+"scene.unlock.password_placeholder" = "Passord";
+"scene.unlock.title_label" = "Lås opp %@";
 
 "scene.manage_wallets.title" = "Manage Wallets";
 "scene.manage_wallets.cell.remote" = "ekstern";
