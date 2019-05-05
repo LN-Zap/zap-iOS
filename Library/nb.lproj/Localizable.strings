@@ -96,12 +96,12 @@
 "scene.open_channel.add_button" = "Åpne kanal";
 "scene.open_channel.subtitle.minimum_size" = "Minimal kanalstørrelse: %@";
 "scene.open_channel.subtitle.maximum_size" = "Maksimal kanalstørrelse: %@";
-"scene.open_channel.subtitle.balance" = "On-chan saldo: %@";
+"scene.open_channel.subtitle.balance" = "On-chain saldo: %@";
 "scene.open_channel.suggested_peers.title" = "Anbefalte likemenn";
 "scene.open_channel.paste_button.title" = "Lim inn adresse til likemann";
 
 "scene.pin.biometric.fallback.title" = "Bruk passord";
-"scene.pin.biometric.reason" = "For å få tilgang til sikrede opplysninger";
+"scene.pin.biometric.reason" = "For å få tilgang til sikrede data";
 
 "scene.setup_pin.done_button" = "Ferdig";
 "scene.setup_pin.top_label.initial" = "Velg en PIN-kode.";
