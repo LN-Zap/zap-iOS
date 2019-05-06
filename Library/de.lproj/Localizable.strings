@@ -188,6 +188,9 @@
 "scene.transaction_detail.expiry_label.expired" = "Abgelaufen";
 "scene.transaction_detail.invoice_state_label" = "Status";
 "scene.transaction_detail.invoice_state_label.settled" = "bezahlt";
+"scene.transaction_detail.preimage_label" = "Preimage";
+"scene.transaction_detail.preimage_copy_message" = "Preimage copied.";
+"scene.transaction_detail.invoice_copy_message" = "Invoice copied.";
 
 "scene.channel_detail.remote_pub_key_label" = "Remote PubKey";
 "scene.channel_detail.local_balance_label" = "Lokaler Kontostand";
@@ -208,7 +211,7 @@
 "scene.qrcode_scanner.top_label" = "QR-Code scannen";
 
 "scene.wallet.title" = "Wallet";
-"scene.wallet.total_balance" = "Total Balance";
+"scene.wallet.total_balance" = "Totaler Kontostand";
 "scene.wallet.detail.on_chain" = "On-Chain:";
 "scene.wallet.detail.lightning" = "Lightning:";
 "scene.wallet.detail.pending" = "Ausstehend:";
@@ -251,5 +254,5 @@
 "scene.unlock.password_placeholder" = "Passwort";
 "scene.unlock.title_label" = "Entsperre %@";
 
-"scene.manage_wallets.title" = "Manage Wallets";
+"scene.manage_wallets.title" = "Verwalten von Wallets";
 "scene.manage_wallets.cell.remote" = "remote";
