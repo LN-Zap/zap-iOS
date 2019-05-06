@@ -91,14 +91,14 @@
 "scene.channels.close_loading_view" = "Lukker kanal";
 "scene.channels.close_success.toast" = "Kanalen lukkes.";
 
-"scene.open_channel.title" = "Åpen kanal";
+"scene.open_channel.title" = "Åpne kanal";
 "scene.open_channel.channel_uri_label" = "Node:";
 "scene.open_channel.add_button" = "Åpne kanal";
 "scene.open_channel.subtitle.minimum_size" = "Minimal kanalstørrelse: %@";
 "scene.open_channel.subtitle.maximum_size" = "Maksimal kanalstørrelse: %@";
 "scene.open_channel.subtitle.balance" = "On-chain saldo: %@";
-"scene.open_channel.suggested_peers.title" = "Anbefalte likemenn";
-"scene.open_channel.paste_button.title" = "Lim inn adresse til likemann";
+"scene.open_channel.suggested_peers.title" = "Anbefalte noder";
+"scene.open_channel.paste_button.title" = "Lim inn adresse til node";
 
 "scene.pin.biometric.fallback.title" = "Bruk passord";
 "scene.pin.biometric.reason" = "For å få tilgang til sikrede data";
@@ -190,7 +190,7 @@
 "scene.transaction_detail.invoice_state_label.settled" = "betalt";
 "scene.transaction_detail.preimage_label" = "Preimage";
 "scene.transaction_detail.preimage_copy_message" = "Preimage copied.";
-"scene.transaction_detail.invoice_copy_message" = "Invoice copied.";
+"scene.transaction_detail.invoice_copy_message" = "Faktura kopiert.";
 
 "scene.channel_detail.remote_pub_key_label" = "Ekstern PubKey";
 "scene.channel_detail.local_balance_label" = "Lokal saldo";
@@ -226,7 +226,7 @@
 "scene.history.cell.payment_received" = "Innbetaling mottatt";
 "scene.history.cell.payment_failed" = "Betaling feilet (%@)";
 "scene.history.cell.invoice_created" = "Betalingsanmodning opprettet";
-"scene.history.cell.channel_opened" = "Åpen kanal";
+"scene.history.cell.channel_opened" = "Åpnet kanal";
 "scene.history.cell.channel_closed" = "Lukket kanal";
 "scene.history.cell.force_close_channel" = "Tvangslukket kanal";
 "scene.history.cell.remote_force_close_channel" = "Fjerntvangslukk kanal";
