@@ -23,4 +23,5 @@ make IOS_BUILD_DIR=$FRAMEWORKDIR ios
 
 cp lnrpc/rpc.pb.swift $DIR/SwiftLnd/Generated
 cp lnrpc/rpc.grpc.swift $DIR/SwiftLnd/Generated
+cp lnrpc/rpc.zap.swift $DIR/SwiftLnd/Generated
 
