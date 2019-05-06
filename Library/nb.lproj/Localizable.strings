@@ -1,4 +1,4 @@
-"generic.memo.placeholder" = "Hva er det her til?";
+"generic.memo.placeholder" = "Hva er dette for?";
 "generic.qr_code.copy_button" = "Kopiér";
 "generic.qr_code.copy_success_message" = "Adressen ble kopiert til utklippstavlen.";
 "generic.pasteboard.invalid_address" = "Ugyldig adresse";
@@ -57,23 +57,23 @@
 "scene.settings.item.on_chain_request_address.title" = "Bitcoin adressetype";
 "scene.settings.item.on_chain_request_address.bech32" = "Bech32";
 "scene.settings.item.on_chain_request_address.p2sh" = "P2SH";
-"scene.settings.item.manage_channels" = "Administrere kanaler";
+"scene.settings.item.manage_channels" = "Administrer kanaler";
 "scene.settings.item.node_uri" = "Node URI";
-"scene.settings.item.remove_remote_node" = "Administrere lommebøker";
+"scene.settings.item.remove_remote_node" = "Administrer lommebøker";
 
 "scene.settings.item.change_pin" = "Endre PIN-kode";
 "scene.settings.item.report_issue" = "Rapportér et problem";
 "scene.settings.item.help" = "Trenger du hjelp?";
-"scene.settings.item.privacy_policy" = "Personvernregler";
-"scene.settings.item.lnd_log" = "Vis lnd log";
+"scene.settings.item.privacy_policy" = "Personvernserklæring";
+"scene.settings.item.lnd_log" = "Vis LND-log";
 
 "scene.request.title" = "Mottak";
 "scene.request.lightning_button" = "Lightning";
 "scene.request.or_separator_label" = "eller";
 "scene.request.on_chain_button" = "On-chain";
 "scene.request.generate_request_button" = "Opprett betalingsanmodning";
-"scene.request.lightning_header_title" = "Lightning-betalingsanmodning";
-"scene.request.on_chain_header_title" = "On-Chain-betalingsanmodning";
+"scene.request.lightning_header_title" = "Lightning Betalingsanmodning";
+"scene.request.on_chain_header_title" = "On-Chain Betalingsanmodning";
 "scene.request.next_button_title" = "Neste";
 "scene.request.subtitle.lightning" = "Kan motta: %@";
 
@@ -117,7 +117,7 @@
 "scene.send.memo_headline" = "Notat:";
 "scene.send.sending" = "Sender...";
 "scene.send.lightning.title" = "Send Lightning-betaling";
-"scene.send.on_chain.title" = "Sende On-Chain";
+"scene.send.on_chain.title" = "Send On-Chain";
 "scene.send.authentication_failed" = "Autentisering feilet";
 "scene.send.maximum_fee" = "Forventet gebyr:";
 "scene.send.subtitle.on_chain_balance" = "On-chain saldo: %@";
@@ -189,7 +189,7 @@
 "scene.transaction_detail.invoice_state_label" = "Status";
 "scene.transaction_detail.invoice_state_label.settled" = "betalt";
 "scene.transaction_detail.preimage_label" = "Preimage";
-"scene.transaction_detail.preimage_copy_message" = "Preimage copied.";
+"scene.transaction_detail.preimage_copy_message" = "Preimage kopiert.";
 "scene.transaction_detail.invoice_copy_message" = "Faktura kopiert.";
 
 "scene.channel_detail.remote_pub_key_label" = "Ekstern PubKey";
@@ -202,7 +202,7 @@
 
 "scene.filter.title" = "Filter";
 "scene.filter.section_header.transaction_types" = "Transaksjonstyper";
-"scene.filter.displayOnChainTransactions" = "On-chain betalinger";
+"scene.filter.displayOnChainTransactions" = "On-chain Betalinger";
 "scene.filter.display_expired_invoices" = "Utløpte fakturaer";
 "scene.filter.displayLightningPayments" = "Lightning-betalinger";
 "scene.filter.displayLightningInvoices" = "Opprettede fakturaer";
@@ -254,5 +254,5 @@
 "scene.unlock.password_placeholder" = "Passord";
 "scene.unlock.title_label" = "Lås opp %@";
 
-"scene.manage_wallets.title" = "Administrere lommebøker";
+"scene.manage_wallets.title" = "Administrer lommebøker";
 "scene.manage_wallets.cell.remote" = "ekstern";
