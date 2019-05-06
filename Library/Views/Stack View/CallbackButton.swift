@@ -20,9 +20,9 @@ final class CallbackButton: UIView {
         }
     }
 
-    init(title: String, onTap: @escaping (UIButton) -> Void) {
+    init(title: String?, type: UIButton.ButtonType = .system, onTap: @escaping (UIButton) -> Void) {
         self.onTap = onTap
-        self.button = UIButton(type: .system)
+        self.button = UIButton(type: type)
         super.init(frame: .zero)
         addAutolayoutSubview(button)
         button.constrainEdges(to: self)

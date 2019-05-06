@@ -564,6 +564,8 @@ internal enum L10n {
       internal static let expiryLabel = L10n.tr("Localizable", "scene.transaction_detail.expiry_label")
       /// Fee
       internal static let feeLabel = L10n.tr("Localizable", "scene.transaction_detail.fee_label")
+      /// Invoice copied.
+      internal static let invoiceCopyMessage = L10n.tr("Localizable", "scene.transaction_detail.invoice_copy_message")
       /// State
       internal static let invoiceStateLabel = L10n.tr("Localizable", "scene.transaction_detail.invoice_state_label")
       /// Memo
