@@ -188,6 +188,8 @@
 "scene.transaction_detail.expiry_label.expired" = "Expired";
 "scene.transaction_detail.invoice_state_label" = "State";
 "scene.transaction_detail.invoice_state_label.settled" = "settled";
+"scene.transaction_detail.preimage_label" = "Preimage";
+"scene.transaction_detail.preimage_copy_message" = "Preimage copied.";
 
 "scene.channel_detail.remote_pub_key_label" = "Clave pública";
 "scene.channel_detail.local_balance_label" = "Balance local";
