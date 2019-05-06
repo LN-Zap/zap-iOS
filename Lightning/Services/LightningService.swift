@@ -70,12 +70,23 @@ public final class LightningService: NSObject {
         updateBalanceOnChange(of: channelListUpdater.open)
         updateBalanceOnChange(of: channelListUpdater.closed)
         updateBalanceOnChange(of: channelListUpdater.pending)
+
+        updateChannelsOnChange(of: invoiceListUpdater.items)
+        updateChannelsOnChange(of: paymentListUpdater.items)
     }
 
     private func updateBalanceOnChange<T>(of items: MutableObservableArray<T>) {
         items
             .observeNext { [weak self] _ in
                 self?.balanceService.update()
+            }
+            .dispose(in: reactive.bag)
+    }
+
+    private func updateChannelsOnChange<T>(of items: MutableObservableArray<T>) {
+        items
+            .observeNext { [weak self] _ in
+                self?.channelService.update()
             }
             .dispose(in: reactive.bag)
     }

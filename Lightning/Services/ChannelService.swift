@@ -87,4 +87,8 @@ public final class ChannelService {
             }
         }
     }
+
+    func update() {
+        channelListUpdater.update()
+    }
 }
