@@ -15,6 +15,7 @@ public struct Payment: Equatable {
     public let fees: Satoshi
     public let paymentHash: String
     public let destination: String
+    public let preimage: String
 }
 
 extension Payment {
@@ -25,6 +26,7 @@ extension Payment {
         fees = Satoshi(payment.fee)
         paymentHash = payment.paymentHash
         destination = payment.path.last ?? ""
+        preimage = payment.paymentPreimage
     }
 
     init(paymentRequest: PaymentRequest, sendResponse: Lnrpc_SendResponse, amount: Satoshi? = nil) {
@@ -38,5 +40,6 @@ extension Payment {
         fees = Satoshi(sendResponse.paymentRoute.totalFeesMsat / 1000)
         paymentHash = paymentRequest.paymentHash
         destination = paymentRequest.destination
+        preimage = sendResponse.paymentPreimage.hexadecimalString
     }
 }

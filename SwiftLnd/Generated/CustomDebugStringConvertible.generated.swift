@@ -140,7 +140,8 @@ extension Payment: CustomDebugStringConvertible {
 		\tdate: \(date)
 		\tfees: \(fees)
 		\tpaymentHash: \(paymentHash)
-		\tdestination: \(destination)\n
+		\tdestination: \(destination)
+		\tpreimage: \(preimage)\n
 		"""
 	}
 }

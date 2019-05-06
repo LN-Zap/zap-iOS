@@ -111,6 +111,7 @@ final class EventDetailViewModel {
 //        result.append(contentsOf: label(title: L10n.Scene.TransactionDetail.memoLabel, content: event.memo))
         result.append(contentsOf: amountLabel(title: L10n.Scene.TransactionDetail.amountLabel, amount: event.amount))
         result.append(contentsOf: amountLabel(title: L10n.Scene.TransactionDetail.feeLabel, amount: event.fee))
+        result.append(contentsOf: copyButton(title: L10n.Scene.TransactionDetail.preimageLabel, content: event.preimage))
         result.append(contentsOf: dateLabel(title: L10n.Scene.TransactionDetail.dateLabel, date: event.date))
 
         return result
@@ -154,6 +155,13 @@ final class EventDetailViewModel {
         guard let code = code else { return [] }
         return label(title: title, element: .button(title: code, style: Style.Button.custom(), completion: { _ in
             delegate?.openBlockExplorer(code: code, type: type)
+        }))
+    }
+
+    private func copyButton(title: String, content: String) -> [StackViewElement] {
+        return label(title: title, element: .button(title: content, style: Style.Button.custom(), completion: { _ in
+            Toast.presentSuccess(L10n.Scene.TransactionDetail.preimageCopyMessage)
+            UIPasteboard.general.string = content
         }))
     }
 }

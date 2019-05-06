@@ -19,6 +19,7 @@ public struct LightningPaymentEvent: Equatable, DateProvidingEvent {
     public let fee: Satoshi
     public let date: Date
     public let node: LightningNode
+    public let preimage: String
 }
 
 extension LightningPaymentEvent {
@@ -28,5 +29,6 @@ extension LightningPaymentEvent {
         fee = payment.fees
         date = payment.date
         node = LightningNode(pubKey: payment.destination, alias: nil, color: nil)
+        preimage = payment.preimage
     }
 }

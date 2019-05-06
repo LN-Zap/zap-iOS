@@ -69,7 +69,7 @@ indirect enum StackViewElement {
         case let .button(title, style, completion):
             let button = CallbackButton(title: title, onTap: completion)
             style.apply(to: button.button)
-
+            button.button.titleLabel?.textAlignment = .right
             result = button
 
         case .separator:
