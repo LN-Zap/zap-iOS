@@ -49,12 +49,12 @@
 "scene.settings.title" = "Innstillinger";
 "scene.settings.section.warning" = "Advarsel";
 "scene.settings.section.wallet" = "Lommebok";
-"scene.settings.item.version_warning" = "Din lnd er utdatert (%@). Zap iOS fungerer best med lnd versjon %@ eller nyere.";
-"scene.settings.item.bitcoin_unit" = "Bitcoin enhet";
+"scene.settings.item.version_warning" = "Din LND er utdatert (%@). Zap iOS fungerer best med LND versjon %@ eller nyere.";
+"scene.settings.item.bitcoin_unit" = "Bitcoin-enhet";
 "scene.settings.item.currency" = "Valuta";
 "scene.settings.item.currency.popular" = "Populære valutaer";
 "scene.settings.item.block_explorer" = "Blokkutforsker";
-"scene.settings.item.on_chain_request_address.title" = "Bitcoin adressetype";
+"scene.settings.item.on_chain_request_address.title" = "Bitcoin-adressetype";
 "scene.settings.item.on_chain_request_address.bech32" = "Bech32";
 "scene.settings.item.on_chain_request_address.p2sh" = "P2SH";
 "scene.settings.item.manage_channels" = "Administrer kanaler";
@@ -156,7 +156,7 @@
 "scene.select_wallet_connection.connect.title" = "Koble til";
 "scene.select_wallet_connection.connect.message" = "ekstern node";
 "scene.select_wallet_connection.disabled_alert.title" = "Beklager!";
-"scene.select_wallet_connection.disabled_alert.message" = "Kjøring av Lnd på mobilen er deaktivert i denne betaen. Koble til en ekstern node i stedet.";
+"scene.select_wallet_connection.disabled_alert.message" = "Kjøring av LND på mobilen er deaktivert i denne betaen. Koble til en ekstern node i stedet.";
 "scene.select_wallet_connection.disabled_alert.ok_button" = "Ok";
 "scene.select_wallet_connection.create.help" = "Trenger du hjelp?";
 
@@ -166,7 +166,7 @@
 
 "scene.qr_code_detail.title" = "Mottak";
 
-"scene.sync.description_label" = "Synkroniserer til blokkjeden…";
+"scene.sync.description_label" = "Synkroniserer med blokkjeden…";
 "scene.sync.disconnect_bar_button" = "Koble fra";
 "scene.sync.disconnect_alert.title" = "Frakobling";
 "scene.sync.disconnect_alert.message" = "Er du sikker på at du vil avbryte synkroniseringen? Da må du koble til noden din på nytt igjen etterpå.";
