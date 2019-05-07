@@ -58,7 +58,7 @@ public final class InfoService {
         updateInfoTimer?.fire()
     }
 
-    public func info(completion: @escaping (Result<Info, LndApiError>) -> Void) {
+    public func info(completion: @escaping ApiCompletion<Info>) {
         api.info(completion: completion)
     }
 

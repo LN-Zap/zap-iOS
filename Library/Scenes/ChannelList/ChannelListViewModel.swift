@@ -89,7 +89,7 @@ final class ChannelListViewModel: NSObject {
         totalPending.value = pending.reduce(0) { $0 + $1.localBalance }
     }
 
-    func close(_ channel: Channel, completion: @escaping (Swift.Result<CloseStatusUpdate, LndApiError>) -> Void) {
+    func close(_ channel: Channel, completion: @escaping ApiCompletion<CloseStatusUpdate>) {
         channelService.close(channel, completion: completion)
     }
 }

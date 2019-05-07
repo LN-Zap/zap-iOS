@@ -166,12 +166,12 @@ final class SendViewModel: NSObject {
         }
     }
 
-    func send(completion: @escaping (Result<Success, LndApiError>) -> Void) {
+    func send(completion: @escaping ApiCompletion<Success>) {
         guard let amount = amount else { return }
 
         isSending = true
 
-        let internalComplection: (Result<Success, LndApiError>) -> Void = { [weak self] in
+        let internalComplection: ApiCompletion<Success> = { [weak self] in
             if case .failure = $0 {
                 self?.isSending = false
             }

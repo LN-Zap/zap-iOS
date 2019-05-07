@@ -55,7 +55,7 @@ final class OpenChannelViewModel: NSObject {
         }
     }
 
-    func openChannel(completion: @escaping (Result<ChannelPoint, LndApiError>) -> Void) {
+    func openChannel(completion: @escaping ApiCompletion<ChannelPoint>) {
         lightningService.channelService.open(lightningNodeURI: lightningNodeURI, amount: amount, completion: completion)
     }
 }

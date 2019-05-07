@@ -42,7 +42,7 @@ final class ConfirmMnemonicViewModel {
         wordList = randomIndices.map { ConfirmWordViewModel(word: mnemonic[$0], index: $0) }
     }
 
-    func createWallet(completion: @escaping (Result<Success, LndApiError>) -> Void) {
+    func createWallet(completion: @escaping ApiCompletion<Success>) {
         walletService.initWallet(mnemonic: mnemonic, completion: completion)
     }
 }

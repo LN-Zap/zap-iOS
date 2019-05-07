@@ -39,13 +39,13 @@ public final class WalletService {
         }
     }
 
-    public func generateSeed(completion: @escaping (Result<[String], LndApiError>) -> Void) {
+    public func generateSeed(completion: @escaping ApiCompletion<[String]>) {
         wallet.generateSeed(passphrase: nil) {
             completion($0)
         }
     }
 
-    public func initWallet(mnemonic: [String], completion: @escaping (Result<Success, LndApiError>) -> Void) {
+    public func initWallet(mnemonic: [String], completion: @escaping ApiCompletion<Success>) {
         wallet.initWallet(mnemonic: mnemonic, password: WalletService.password) {
             if case .success = $0 {
                 WalletService.didCreateWallet = true

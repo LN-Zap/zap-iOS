@@ -25,7 +25,7 @@ final class RecoverWalletViewModel {
         return text.components(separatedBy: RecoverWalletViewModel.separatorCharacterSet).filter { $0 != "" }
     }
 
-    func recoverWallet(with text: String, completion: @escaping (Result<Success, LndApiError>) -> Void) {
+    func recoverWallet(with text: String, completion: @escaping ApiCompletion<Success>) {
         let mnemonic = self.mnemonic(from: text.lowercased())
 
         let walletService = WalletService(connection: configuration.connection)
