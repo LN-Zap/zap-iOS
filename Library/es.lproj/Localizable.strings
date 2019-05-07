@@ -52,7 +52,7 @@
 "scene.settings.item.version_warning" = "Your lnd is outdated (%@). Zap iOS works best with lnd version %@ or above.";
 "scene.settings.item.bitcoin_unit" = "Unidad de Bitcoin";
 "scene.settings.item.currency" = "Moneda";
-"scene.settings.item.currency.popular" = "Popular Currencies";
+"scene.settings.item.currency.popular" = "Monedas populares";
 "scene.settings.item.block_explorer" = "Explorador de bloques";
 "scene.settings.item.on_chain_request_address.title" = "Tipo de Dirección de Bitcoin";
 "scene.settings.item.on_chain_request_address.bech32" = "Bech32";
@@ -92,7 +92,7 @@
 "scene.channels.close_success.toast" = "El canal está cerrándose.";
 
 "scene.open_channel.title" = "Abrir Canal";
-"scene.open_channel.channel_uri_label" = "Node:";
+"scene.open_channel.channel_uri_label" = "Nodo:";
 "scene.open_channel.add_button" = "Abrir Canal";
 "scene.open_channel.subtitle.minimum_size" = "Minimum channel size: %@";
 "scene.open_channel.subtitle.maximum_size" = "Maximum channel size: %@";
@@ -148,7 +148,7 @@
 "scene.recover_wallet.description_label" = "Introduzca su semilla:";
 "scene.recover_wallet.placeholder" = "abandonar capacidad capaz sobre encima ausente absorber abstracto absurdo abuso accidente cuenta acusar lograr ácido acústico adquirir tras acto acción actor actriz real";
 
-"scene.select_wallet_connection.title" = "Add Wallet";
+"scene.select_wallet_connection.title" = "Agregar cartera";
 "scene.select_wallet_connection.create.title" = "Crear";
 "scene.select_wallet_connection.create.message" = "nueva cartera";
 "scene.select_wallet_connection.recover.title" = "Recuperar";
@@ -211,7 +211,7 @@
 "scene.qrcode_scanner.top_label" = "Escanear código QR";
 
 "scene.wallet.title" = "Cartera";
-"scene.wallet.total_balance" = "Total Balance";
+"scene.wallet.total_balance" = "Balance Total";
 "scene.wallet.detail.on_chain" = "On-chain:";
 "scene.wallet.detail.lightning" = "Lightning:";
 "scene.wallet.detail.pending" = "Pending:";
@@ -247,7 +247,7 @@
 "scene.connect_node_uri.action_sheet.connect_button" = "Conectar";
 "scene.connect_node_uri.action_sheet.message" = "¿Estás seguro que quieres conectarte al nodo %@?";
 
-"scene.wallet_list.title" = "Wallets";
+"scene.wallet_list.title" = "Carteras";
 
 "scene.unlock.title" = "Unlock Node";
 "scene.unlock.unlock_button" = "Unlock";
