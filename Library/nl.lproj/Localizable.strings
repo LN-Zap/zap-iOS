@@ -25,7 +25,7 @@
 "channel.state.opening" = "Openen";
 "channel.state.closing" = "Sluiten";
 "channel.state.force_closing" = "Geforceerd sluiten";
-"channel.state.waiting_close" = "Waiting Close";
+"channel.state.waiting_close" = "Wachten op sluiten";
 
 "network_type.regtest" = "Regtest";
 "network_type.testnet" = "Testnet";
@@ -49,7 +49,7 @@
 "scene.settings.title" = "Instellingen";
 "scene.settings.section.warning" = "Waarschuwing";
 "scene.settings.section.wallet" = "Wallet";
-"scene.settings.item.version_warning" = "Your lnd is outdated (%@). Zap iOS works best with lnd version %@ or above.";
+"scene.settings.item.version_warning" = "Je lnd is verouderd (%@). Zap iOS werkt het beste lnd versie %@ of nieuwer.";
 "scene.settings.item.bitcoin_unit" = "Bitcoin eenheid";
 "scene.settings.item.currency" = "Valuta";
 "scene.settings.item.currency.popular" = "Populaire munten";
@@ -80,7 +80,7 @@
 "scene.channels.title" = "Channels";
 "scene.channels.header.total_can_send" = "Totaal kan versturen:";
 "scene.channels.header.total_can_receive" = "Totaal kan ontvangen:";
-"scene.channels.header.total_pending" = "Total pending:";
+"scene.channels.header.total_pending" = "Total onafgedaan:";
 "scene.channels.header.offline" = "Totaal offline:";
 "scene.channels.close.title" = "Sluit Channel";
 "scene.channels.close.message" = "Weet je zeker om channel met node %@ te sluiten?";
@@ -128,7 +128,7 @@
 "scene.connect_remote_node.title" = "Verbinden Remote-Node";
 "scene.connect_remote_node.empty_state" = "Scan de qr-code genereerd door lndconnect, BTCPay Server or plak de link van de output van 'lndconnect -j' om te verbinden met je eigen node.";
 "scene.connect_remote_node.url_label" = "Adres";
-"scene.connect_remote_node.certificate_label" = "Credentials";
+"scene.connect_remote_node.certificate_label" = "Identiteit";
 "scene.connect_remote_node.connect_button" = "Verbinding maken";
 "scene.connect_remote_node.scan_button" = "Scan";
 "scene.connect_remote_node.paste_button" = "Plakken";
