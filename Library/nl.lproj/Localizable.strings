@@ -47,7 +47,7 @@
 "scene.history.empty_state_label" = "0 transacties 🙁";
 
 "scene.settings.title" = "Instellingen";
-"scene.settings.section.warning" = "Warning";
+"scene.settings.section.warning" = "Waarschuwing";
 "scene.settings.section.wallet" = "Wallet";
 "scene.settings.item.version_warning" = "Your lnd is outdated (%@). Zap iOS works best with lnd version %@ or above.";
 "scene.settings.item.bitcoin_unit" = "Bitcoin eenheid";
@@ -57,7 +57,7 @@
 "scene.settings.item.on_chain_request_address.title" = "Bitcoin adres type";
 "scene.settings.item.on_chain_request_address.bech32" = "Bech32";
 "scene.settings.item.on_chain_request_address.p2sh" = "P2SH";
-"scene.settings.item.manage_channels" = "Beheer kanalen";
+"scene.settings.item.manage_channels" = "Beheer Channels";
 "scene.settings.item.node_uri" = "Node URI";
 "scene.settings.item.remove_remote_node" = "Beheer Wallets";
 
@@ -82,18 +82,18 @@
 "scene.channels.header.total_can_receive" = "Totaal kan ontvangen:";
 "scene.channels.header.total_pending" = "Total pending:";
 "scene.channels.header.offline" = "Totaal offline:";
-"scene.channels.close.title" = "Sluit kanaal";
-"scene.channels.close.message" = "Weet je zeker om het kanaal met node %@ te sluiten?";
-"scene.channels.force_close.title" = "Forceer kanaal sluiting";
+"scene.channels.close.title" = "Sluit Channel";
+"scene.channels.close.message" = "Weet je zeker om channel met node %@ te sluiten?";
+"scene.channels.force_close.title" = "Forceer Channel sluiting";
 "scene.channels.force_close.message" = "%@ is offline, weet je zeker dat je dit kanaal geforceerd wil sluiten? Je zult ongeveer %@ moeten wachten op je tegoed.";
-"scene.channels.alert.close" = "Sluit kanaal";
+"scene.channels.alert.close" = "Sluit Channel";
 "scene.channels.alert.force_close" = "Geforceerd kanaal sluiten";
-"scene.channels.close_loading_view" = "Kanaal aan het sluiten";
-"scene.channels.close_success.toast" = "Kanaal is aan het sluiten.";
+"scene.channels.close_loading_view" = "Channel aan het sluiten";
+"scene.channels.close_success.toast" = "Channel is aan het sluiten.";
 
-"scene.open_channel.title" = "Open kanaal";
+"scene.open_channel.title" = "Open Channel";
 "scene.open_channel.channel_uri_label" = "Node:";
-"scene.open_channel.add_button" = "Open kanaal";
+"scene.open_channel.add_button" = "Open Channel";
 "scene.open_channel.subtitle.minimum_size" = "Minimum channel grootte: %@";
 "scene.open_channel.subtitle.maximum_size" = "Maximum channel grootte: %@";
 "scene.open_channel.subtitle.balance" = "On-chain saldo: %@";
@@ -176,7 +176,7 @@
 "scene.transaction_detail.title.lightning_invoice" = "Rekening detail";
 "scene.transaction_detail.title.payment_detail" = "Betaling detail";
 "scene.transaction_detail.title.transaction_detail" = "Transactie detail";
-"scene.transaction_detail.title.channel_event_detail" = "Kanaal event";
+"scene.transaction_detail.title.channel_event_detail" = "Channel event";
 "scene.transaction_detail.title.failed_payment" = "Mislukte betaling";
 "scene.transaction_detail.memo_label" = "Memo";
 "scene.transaction_detail.amount_label" = "Bedrag";
@@ -198,7 +198,7 @@
 "scene.channel_detail.closing_time.label" = "Sluiten in";
 "scene.channel_detail.funding_transaction_label" = "Financieringstransactie";
 "scene.channel_detail.close_button" = "Sluit kanaal";
-"scene.channel_detail.force_close_button" = "Geforceerd kanaal sluiten";
+"scene.channel_detail.force_close_button" = "Geforceerd Channel sluiten";
 
 "scene.filter.title" = "Filter";
 "scene.filter.section_header.transaction_types" = "Transactie types";
@@ -206,7 +206,7 @@
 "scene.filter.display_expired_invoices" = "Verlopen facturen";
 "scene.filter.displayLightningPayments" = "Lightning betalingen";
 "scene.filter.displayLightningInvoices" = "Aangemaakte fakturen";
-"scene.filter.displayChannelEvents" = "Kanaal events";
+"scene.filter.displayChannelEvents" = "Channel Events";
 
 "scene.qrcode_scanner.top_label" = "Scan QR-code";
 
@@ -226,13 +226,13 @@
 "scene.history.cell.payment_received" = "Betaling ontvangen";
 "scene.history.cell.payment_failed" = "Betaling mislukt (%@)";
 "scene.history.cell.invoice_created" = "Betalingsverzoek aangemaakt";
-"scene.history.cell.channel_opened" = "Open kanaal";
-"scene.history.cell.channel_closed" = "Gesloten kanaal";
-"scene.history.cell.force_close_channel" = "Geforceerd gesloten kanaal";
-"scene.history.cell.remote_force_close_channel" = "Remote geforceerd sluiten kanaal";
-"scene.history.cell.breach_close_channel" = "Geschonden gesloten kanaal";
-"scene.history.cell.close_channel_funding_canceled" = "Sluit kanaal (financiering afgebroken)";
-"scene.history.cell.channel_abandoned" = "Kanaal verlaten";
+"scene.history.cell.channel_opened" = "Open Channel";
+"scene.history.cell.channel_closed" = "Gesloten Channel";
+"scene.history.cell.force_close_channel" = "Geforceerd gesloten Channel";
+"scene.history.cell.remote_force_close_channel" = "Remote geforceerd sluiten Channel";
+"scene.history.cell.breach_close_channel" = "Geschonden gesloten channel";
+"scene.history.cell.close_channel_funding_canceled" = "Sluit Channel (financiering afgebroken)";
+"scene.history.cell.channel_abandoned" = "Channel verlaten";
 "scene.history.cell.transaction_sent" = "Betaling verstuurd";
 "scene.history.cell.transaction_received" = "Betaling ontvangen";
 "scene.history.cell.label.new" = "nieuw";
