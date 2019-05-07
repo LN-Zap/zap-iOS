@@ -45,7 +45,11 @@ final class WalletCoordinator: NSObject, Coordinator {
     }
 
     func start() {
-        lightningService.start()
+        lightningService.start {
+            if case .failure(let error) = $0 {
+                Toast.presentError(error.localizedDescription)
+            }
+        }
         ExchangeUpdaterJob.start()
         updateFor(state: lightningService.infoService.walletState.value)
     }

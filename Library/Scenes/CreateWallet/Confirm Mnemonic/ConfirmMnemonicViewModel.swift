@@ -8,6 +8,7 @@
 import Bond
 import Foundation
 import Lightning
+import SwiftLnd
 
 private let requiredWordCount = 6
 
@@ -41,7 +42,7 @@ final class ConfirmMnemonicViewModel {
         wordList = randomIndices.map { ConfirmWordViewModel(word: mnemonic[$0], index: $0) }
     }
 
-    func didVerifyMnemonic() {
-        walletService.initWallet(mnemonic: mnemonic) { _ in }
+    func createWallet(completion: @escaping (Result<Success, LndApiError>) -> Void) {
+        walletService.initWallet(mnemonic: mnemonic, completion: completion)
     }
 }

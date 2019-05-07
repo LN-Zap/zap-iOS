@@ -19,6 +19,12 @@ struct WalletConfiguration: Equatable, Codable {
     let connection: LightningConnection
     let walletId: WalletId
 
+    static func local(network: Network) -> WalletConfiguration {
+        let alias = "Zap iOS" // TODO: sync with config file
+
+        return WalletConfiguration(alias: alias, network: network, connection: .local, walletId: "bitcoin-\(network.localized.lowercased())")
+    }
+
     func updatingInfo(info: Info) -> WalletConfiguration {
         return WalletConfiguration(alias: info.alias, network: info.network, connection: connection, walletId: walletId)
     }

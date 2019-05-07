@@ -9,64 +9,6 @@
 import Lndmobile
 #endif
 import Logger
-import SwiftGRPC
-import SwiftProtobuf
-
-// MARK: - Helper Methods
-#if !REMOTEONLY
-private final class LndCallback<T: SwiftProtobuf.Message>: NSObject, LndmobileCallbackProtocol, LndmobileRecvStreamProtocol {
-    private let completion: (Result<T, LndApiError>) -> Void
-    
-    init(_ completion: @escaping (Result<T, LndApiError>) -> Void) {
-        self.completion = completion
-    }
-    
-    func onError(_ error: Error) {
-        Logger.error(error)
-        completion(.failure(LndApiError.localizedError(error.localizedDescription)))
-    }
-    
-    func onResponse(_ data: Data) {
-        if let result = try? T(serializedData: data) {
-            completion(.success(result))
-        } else {
-            onError(LndApiError.unknownError)
-        }
-    }
-}
-#endif
-
-private func handleStreamResult<T>(_ result: ResultOrRPCError<T?>, completion: @escaping ApiCompletion<T>) throws {
-    switch result {
-    case .result(let value):
-        guard let value = value else { return }
-        completion(.success(value))
-    case .error(let error):
-        throw error
-    }
-}
-
-private func createHandler<T>(_ completion: @escaping ApiCompletion<T>) -> (T?, CallResult) -> Void {
-    return { (response: T?, callResult: CallResult) in
-        if let response = response {
-            completion(.success(response))
-        } else {
-            let error = LndApiError(callResult: callResult)
-            Logger.error(error)
-            completion(.failure(error))
-        }
-    }
-}
-
-private extension Result {
-    init(value: Success?, error: Failure) {
-        if let value = value {
-            self = .success(value)
-        } else {
-            self = .failure(error)
-        }
-    }
-}
 
 // MARK: - WalletUnlocker
 protocol WalletUnlockerConnection {

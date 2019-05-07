@@ -16,7 +16,10 @@ import Logger
 // device.
 
 public enum LocalLnd {
+    public private(set) static var isRunning = false
+
     public static func start(walletId: WalletId) {
+        guard !isRunning else { return }
         DispatchQueue.once(token: "start_lnd") {
             guard let lndUrl = FileManager.default.walletDirectory(for: walletId) else { return }
 
@@ -27,6 +30,7 @@ public enum LocalLnd {
 
             DispatchQueue.global(qos: .default).async {
                 LndmobileStart(lndUrl.path, EmptyStreamCallback())
+                isRunning = true
             }
         }
     }

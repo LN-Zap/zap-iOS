@@ -44,12 +44,14 @@ public final class InfoService {
     }
 
     public func start() {
+        heightJobTimer?.invalidate()
         heightJobTimer = Timer.scheduledTimer(withTimeInterval: 120, repeats: true) { [weak self] _ in
             guard let network = self?.network.value else { return }
             BlockchainHeight.get(for: network) { self?.blockChainHeight.value = $0 }
         }
         heightJobTimer?.fire()
 
+        updateInfoTimer?.invalidate()
         updateInfoTimer = Timer.scheduledTimer(withTimeInterval: 1, repeats: true) { [weak self] _ in
             self?.info { self?.updateInfo(result: $0) }
         }

@@ -253,6 +253,7 @@
 		ADA865BC20ECB87B00B1B74B /* FilterSettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADA865BB20ECB87B00B1B74B /* FilterSettings.swift */; };
 		ADA865BE20ECB88500B1B74B /* FilterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADA865BD20ECB88500B1B74B /* FilterViewController.swift */; };
 		ADA865C020ECC89E00B1B74B /* FilterTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADA865BF20ECC89E00B1B74B /* FilterTableViewCell.swift */; };
+		ADADA9522281C16E0036639F /* RpcZapHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADADA9512281C16E0036639F /* RpcZapHelper.swift */; };
 		ADADAD5A214126BB00A48E1F /* Date.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADADAD59214126BB00A48E1F /* Date.swift */; };
 		ADADAD6C2143B2E700A48E1F /* SwiftLnd.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = ADADAD632143B2E700A48E1F /* SwiftLnd.framework */; };
 		ADADAD752143B2E700A48E1F /* SwiftLnd.h in Headers */ = {isa = PBXBuildFile; fileRef = ADADAD652143B2E700A48E1F /* SwiftLnd.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -816,6 +817,7 @@
 		ADAB0B96212487CB00914974 /* uk */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = uk; path = uk.lproj/Localizable.strings; sourceTree = "<group>"; };
 		ADAB0B97212487D000914974 /* vi */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = vi; path = vi.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		ADAB0B98212487D000914974 /* vi */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = vi; path = vi.lproj/Localizable.strings; sourceTree = "<group>"; };
+		ADADA9512281C16E0036639F /* RpcZapHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RpcZapHelper.swift; sourceTree = "<group>"; };
 		ADADAD59214126BB00A48E1F /* Date.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Date.swift; sourceTree = "<group>"; };
 		ADADAD632143B2E700A48E1F /* SwiftLnd.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = SwiftLnd.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		ADADAD652143B2E700A48E1F /* SwiftLnd.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SwiftLnd.h; sourceTree = "<group>"; };
@@ -1585,6 +1587,7 @@
 			children = (
 				A0D3C97C20616AB80015C5D7 /* LndApiError.swift */,
 				ADA58F9022031E56009A5494 /* RpcCallback.swift */,
+				ADADA9512281C16E0036639F /* RpcZapHelper.swift */,
 				ADBA4422209B00D300D18B71 /* StreamCallback.swift */,
 			);
 			path = Helper;
@@ -3319,6 +3322,7 @@
 				ADADAD8A2143B3C900A48E1F /* ChannelPoint.swift in Sources */,
 				AD9F3AE12271DE2D0044E5EB /* rpc.grpc.swift in Sources */,
 				ADADAD902143B3C900A48E1F /* OpenStatusUpdate.swift in Sources */,
+				ADADA9522281C16E0036639F /* RpcZapHelper.swift in Sources */,
 				AD79E424219D90EF002589CA /* String+Extensions.swift in Sources */,
 				ADADAD8D2143B3C900A48E1F /* Info.swift in Sources */,
 				ADFB36D72143B73C00146FCC /* LndConstants.swift in Sources */,

@@ -48,7 +48,7 @@ final class SetupCoordinator: Coordinator {
 
     #if !REMOTEONLY
     private func createLocalWallet() -> WalletConfiguration {
-        let configuration = WalletConfiguration(alias: nil, network: nil, connection: .local, walletId: UUID().uuidString)
+        let configuration = WalletConfiguration.local(network: .testnet)
         LocalLnd.start(walletId: configuration.walletId)
         return configuration
     }

@@ -56,8 +56,17 @@ final class ConfirmMnemonicViewController: UIViewController {
         guard let confirmViewModel = confirmViewModel else { return }
 
         if currentCell >= confirmViewModel.wordList.count - 1 {
-            connectWallet?(confirmViewModel.configuration)
-            confirmViewModel.didVerifyMnemonic()
+            confirmViewModel.createWallet { [weak self] in
+                switch $0 {
+                case .success:
+                    DispatchQueue.main.async {
+                        self?.connectWallet?(confirmViewModel.configuration)
+                    }
+                case .failure(let error):
+                    Toast.presentError(error.localizedDescription)
+                }
+            }
+
             return
         }
 
