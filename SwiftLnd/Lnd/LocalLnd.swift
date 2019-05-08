@@ -30,6 +30,7 @@ public enum LocalLnd {
 
             DispatchQueue.global(qos: .default).async {
                 LndmobileStart(lndUrl.path, EmptyStreamCallback())
+                BackupDisabler.disableNeutrinoBackup(walletId: walletId, network: .testnet)
                 isRunning = true
             }
         }

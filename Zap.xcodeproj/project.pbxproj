@@ -254,6 +254,7 @@
 		ADA865BE20ECB88500B1B74B /* FilterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADA865BD20ECB88500B1B74B /* FilterViewController.swift */; };
 		ADA865C020ECC89E00B1B74B /* FilterTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADA865BF20ECC89E00B1B74B /* FilterTableViewCell.swift */; };
 		ADADA9522281C16E0036639F /* RpcZapHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADADA9512281C16E0036639F /* RpcZapHelper.swift */; };
+		ADADA9542282D32A0036639F /* BackupDisabler.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADADA9532282D32A0036639F /* BackupDisabler.swift */; };
 		ADADAD5A214126BB00A48E1F /* Date.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADADAD59214126BB00A48E1F /* Date.swift */; };
 		ADADAD6C2143B2E700A48E1F /* SwiftLnd.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = ADADAD632143B2E700A48E1F /* SwiftLnd.framework */; };
 		ADADAD752143B2E700A48E1F /* SwiftLnd.h in Headers */ = {isa = PBXBuildFile; fileRef = ADADAD652143B2E700A48E1F /* SwiftLnd.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -818,6 +819,7 @@
 		ADAB0B97212487D000914974 /* vi */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = vi; path = vi.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		ADAB0B98212487D000914974 /* vi */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = vi; path = vi.lproj/Localizable.strings; sourceTree = "<group>"; };
 		ADADA9512281C16E0036639F /* RpcZapHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RpcZapHelper.swift; sourceTree = "<group>"; };
+		ADADA9532282D32A0036639F /* BackupDisabler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BackupDisabler.swift; sourceTree = "<group>"; };
 		ADADAD59214126BB00A48E1F /* Date.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Date.swift; sourceTree = "<group>"; };
 		ADADAD632143B2E700A48E1F /* SwiftLnd.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = SwiftLnd.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		ADADAD652143B2E700A48E1F /* SwiftLnd.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SwiftLnd.h; sourceTree = "<group>"; };
@@ -1172,6 +1174,7 @@
 		A0376B70201CC16D00F1FBEF /* Lnd */ = {
 			isa = PBXGroup;
 			children = (
+				ADADA9532282D32A0036639F /* BackupDisabler.swift */,
 				AD71EA4A20E2321100256307 /* LndConstants.swift */,
 				A0A05A342014047B0007D1C9 /* LocalLnd.swift */,
 				A02C9FC520304395009821B1 /* LocalLndConfiguration.swift */,
@@ -3320,6 +3323,7 @@
 				ADADAD9A2143B3C900A48E1F /* StreamCallback.swift in Sources */,
 				AD9F3ADF2271C2550044E5EB /* MacaroonId.pb.swift in Sources */,
 				ADADAD8A2143B3C900A48E1F /* ChannelPoint.swift in Sources */,
+				ADADA9542282D32A0036639F /* BackupDisabler.swift in Sources */,
 				AD9F3AE12271DE2D0044E5EB /* rpc.grpc.swift in Sources */,
 				ADADAD902143B3C900A48E1F /* OpenStatusUpdate.swift in Sources */,
 				ADADA9522281C16E0036639F /* RpcZapHelper.swift in Sources */,
