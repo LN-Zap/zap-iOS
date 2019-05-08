@@ -22,7 +22,7 @@ struct WalletConfiguration: Equatable, Codable {
     static func local(network: Network) -> WalletConfiguration {
         let alias = "Zap iOS" // TODO: sync with config file
 
-        return WalletConfiguration(alias: alias, network: network, connection: .local, walletId: "bitcoin-\(network.localized.lowercased())")
+        return WalletConfiguration(alias: alias, network: network, connection: .local, walletId: "bitcoin-\(network.rawValue)")
     }
 
     func updatingInfo(info: Info) -> WalletConfiguration {
