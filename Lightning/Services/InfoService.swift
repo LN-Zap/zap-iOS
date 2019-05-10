@@ -34,11 +34,14 @@ public final class InfoService {
     private var heightJobTimer: Timer?
     private var updateInfoTimer: Timer?
 
+    private let staticChannelBackupper: StaticChannelBackupper
+
     private var syncDebounceCount = 0 // used so wallet does not switch sync state each time a block is mined
 
-    init(api: LightningApi, balanceService: BalanceService) {
+    init(api: LightningApi, balanceService: BalanceService, staticChannelBackupper: StaticChannelBackupper) {
         self.api = api
         self.balanceService = balanceService
+        self.staticChannelBackupper = staticChannelBackupper
 
         start()
     }
@@ -99,6 +102,8 @@ public final class InfoService {
         }
 
         if case .success(let info) = result {
+            staticChannelBackupper.nodePubKey = info.pubKey
+
             if blockHeight.value != info.blockHeight {
                 blockHeight.value = info.blockHeight
             }

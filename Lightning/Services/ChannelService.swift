@@ -8,7 +8,6 @@
 import Bond
 import Foundation
 import Logger
-import ReactiveKit
 import SwiftBTC
 import SwiftLnd
 
@@ -40,9 +39,29 @@ public final class ChannelService {
         return maxRemoteBalance
     }
 
-    init(api: LightningApi, channelListUpdater: ChannelListUpdater) {
+    let staticChannelBackupper: StaticChannelBackupper
+
+    init(api: LightningApi, channelListUpdater: ChannelListUpdater, staticChannelBackupper: StaticChannelBackupper) {
         self.api = api
         self.channelListUpdater = channelListUpdater
+        self.staticChannelBackupper = staticChannelBackupper
+
+        api.exportAllChannelsBackup { [weak self] in
+            self?.handleChannelBackup($0)
+        }
+
+        api.subscribeChannelBackups { [weak self] in
+            self?.handleChannelBackup($0)
+        }
+    }
+
+    private func handleChannelBackup(_ result: Result<ChannelBackup, LndApiError>) {
+        switch result {
+        case .success(let backup):
+            staticChannelBackupper.data = backup.data
+        case .failure(let error):
+            Logger.error(error)
+        }
     }
 
     public func open(lightningNodeURI: LightningNodeURI, amount: Satoshi, completion: @escaping ApiCompletion<ChannelPoint>) {
@@ -82,6 +101,7 @@ public final class ChannelService {
             case .success(let nodeInfo):
                 let connectedNode = nodeInfo.node
                 completion(connectedNode)
+
             case .failure:
                 completion(nil)
             }

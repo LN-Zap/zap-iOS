@@ -21,6 +21,16 @@ extension Channel: CustomDebugStringConvertible {
 	}
 }
 
+// MARK: ChannelBackup CustomDebugStringConvertible
+extension ChannelBackup: CustomDebugStringConvertible {
+	public var debugDescription: String {
+		return """
+		ChannelBackup:
+		\tdata: \(data)\n
+		"""
+	}
+}
+
 // MARK: ChannelBalance CustomDebugStringConvertible
 extension ChannelBalance: CustomDebugStringConvertible {
 	public var debugDescription: String {

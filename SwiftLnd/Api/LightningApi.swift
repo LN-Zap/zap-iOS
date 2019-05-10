@@ -158,4 +158,12 @@ public final class LightningApi {
     public func walletBalance(completion: @escaping ApiCompletion<WalletBalance>) {
         connection.walletBalance(Lnrpc_WalletBalanceRequest(), completion: run(completion, map: WalletBalance.init))
     }
+
+    public func exportAllChannelsBackup(completion: @escaping ApiCompletion<ChannelBackup>) {
+        connection.exportAllChannelBackups(Lnrpc_ChanBackupExportRequest(), completion: run(completion, map: ChannelBackup.init))
+    }
+
+    public func subscribeChannelBackups(completion: @escaping ApiCompletion<ChannelBackup>) {
+        connection.subscribeChannelBackups(Lnrpc_ChannelBackupSubscription(), completion: run(completion, map: ChannelBackup.init))
+    }
 }
