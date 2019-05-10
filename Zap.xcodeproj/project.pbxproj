@@ -255,6 +255,9 @@
 		ADA865C020ECC89E00B1B74B /* FilterTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADA865BF20ECC89E00B1B74B /* FilterTableViewCell.swift */; };
 		ADADA9522281C16E0036639F /* RpcZapHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADADA9512281C16E0036639F /* RpcZapHelper.swift */; };
 		ADADA9542282D32A0036639F /* BackupDisabler.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADADA9532282D32A0036639F /* BackupDisabler.swift */; };
+		ADADA95622830DD40036639F /* ICloudDrive.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADADA95522830DD40036639F /* ICloudDrive.swift */; };
+		ADADA95822844B910036639F /* ChannelBackup.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADADA95722844B910036639F /* ChannelBackup.swift */; };
+		ADADA95D2285A0680036639F /* StaticChannelBackuper.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADADA95B22859F0F0036639F /* StaticChannelBackuper.swift */; };
 		ADADAD5A214126BB00A48E1F /* Date.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADADAD59214126BB00A48E1F /* Date.swift */; };
 		ADADAD6C2143B2E700A48E1F /* SwiftLnd.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = ADADAD632143B2E700A48E1F /* SwiftLnd.framework */; };
 		ADADAD752143B2E700A48E1F /* SwiftLnd.h in Headers */ = {isa = PBXBuildFile; fileRef = ADADAD652143B2E700A48E1F /* SwiftLnd.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -820,6 +823,9 @@
 		ADAB0B98212487D000914974 /* vi */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = vi; path = vi.lproj/Localizable.strings; sourceTree = "<group>"; };
 		ADADA9512281C16E0036639F /* RpcZapHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RpcZapHelper.swift; sourceTree = "<group>"; };
 		ADADA9532282D32A0036639F /* BackupDisabler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BackupDisabler.swift; sourceTree = "<group>"; };
+		ADADA95522830DD40036639F /* ICloudDrive.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ICloudDrive.swift; sourceTree = "<group>"; };
+		ADADA95722844B910036639F /* ChannelBackup.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChannelBackup.swift; sourceTree = "<group>"; };
+		ADADA95B22859F0F0036639F /* StaticChannelBackuper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StaticChannelBackuper.swift; sourceTree = "<group>"; };
 		ADADAD59214126BB00A48E1F /* Date.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Date.swift; sourceTree = "<group>"; };
 		ADADAD632143B2E700A48E1F /* SwiftLnd.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = SwiftLnd.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		ADADAD652143B2E700A48E1F /* SwiftLnd.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SwiftLnd.h; sourceTree = "<group>"; };
@@ -1224,14 +1230,15 @@
 			children = (
 				ADA6D2C420AC1DDE009398A5 /* BalanceService.swift */,
 				ADA6D2C620AC2406009398A5 /* ChannelService.swift */,
+				ADE64E0E22297311004C0BC8 /* ExchangeRates.swift */,
 				ADC48CA82150FBA200949CD9 /* HistoryService.swift */,
 				ADA6D2C220AC1BD2009398A5 /* InfoService.swift */,
 				A07C1035203DE3E6006C7FE8 /* LightningService.swift */,
-				AD1D37872253C9B000F32BE1 /* DataUpdater */,
-				AD3781C3216617CB0083CE77 /* Misc */,
+				ADADA95B22859F0F0036639F /* StaticChannelBackuper.swift */,
 				ADBCC07420CC04A4002B6E59 /* TransactionService.swift */,
 				A0D3C9792060070D0015C5D7 /* WalletService.swift */,
-				ADE64E0E22297311004C0BC8 /* ExchangeRates.swift */,
+				AD1D37872253C9B000F32BE1 /* DataUpdater */,
+				AD3781C3216617CB0083CE77 /* Misc */,
 			);
 			path = Services;
 			sourceTree = "<group>";
@@ -1294,6 +1301,7 @@
 			isa = PBXGroup;
 			children = (
 				A01009382014BE460001EF94 /* Channel.swift */,
+				ADADA95722844B910036639F /* ChannelBackup.swift */,
 				AD248629225B7F210049532C /* ChannelBalance.swift */,
 				AD97A91C20F0FA92008344EA /* ChannelCloseSummary.swift */,
 				ADB4CBA3225493A300D186BC /* ChannelEventUpdate.swift */,
@@ -1498,6 +1506,7 @@
 				AD391C1B20D16ED4007EE22A /* Info.plist */,
 				ADA3254321AD8D7900C5EAA2 /* Colors.xcassets */,
 				AD391D2120D1798A007EE22A /* Media.xcassets */,
+				ADADA95A22859EE90036639F /* Backup */,
 				ADEDBB8A20C2D48D00B71F17 /* Coordinators */,
 				A0A05A5F2014A10A0007D1C9 /* Extensions */,
 				ADA3253E21AD5B0E00C5EAA2 /* Generated */,
@@ -1780,6 +1789,14 @@
 				ADA865BD20ECB88500B1B74B /* FilterViewController.swift */,
 			);
 			path = Filter;
+			sourceTree = "<group>";
+		};
+		ADADA95A22859EE90036639F /* Backup */ = {
+			isa = PBXGroup;
+			children = (
+				ADADA95522830DD40036639F /* ICloudDrive.swift */,
+			);
+			path = Backup;
 			sourceTree = "<group>";
 		};
 		ADADAD642143B2E700A48E1F /* SwiftLnd */ = {
@@ -2366,6 +2383,9 @@
 						ProvisioningStyle = Automatic;
 						SystemCapabilities = {
 							com.apple.Keychain = {
+								enabled = 1;
+							};
+							com.apple.iCloud = {
 								enabled = 1;
 							};
 						};
@@ -3132,6 +3152,7 @@
 				AD391C3D20D16F0B007EE22A /* BiometricAuthentication.swift in Sources */,
 				ADCEAFD32255F2C2004F605B /* WarningSettingsItem.swift in Sources */,
 				AD391C3020D16EFA007EE22A /* UICollectionView.swift in Sources */,
+				ADADA95622830DD40036639F /* ICloudDrive.swift in Sources */,
 				AD391C6520D16F89007EE22A /* LndLogViewController.swift in Sources */,
 				ADA179BE21515095001401F3 /* SectionHeaderView.swift in Sources */,
 				AD391CAD20D16FA8007EE22A /* OnChainRequestAddressTypeSettingsItem.swift in Sources */,
@@ -3249,6 +3270,7 @@
 				ADE64E0F22297311004C0BC8 /* ExchangeRates.swift in Sources */,
 				ADFEFA6A20E627F100FE1557 /* BalanceService.swift in Sources */,
 				ADF093062147C72000B48853 /* TransactionEvent.swift in Sources */,
+				ADADA95D2285A0680036639F /* StaticChannelBackuper.swift in Sources */,
 				ADA179C421527AEA001401F3 /* HistoryEventType.swift in Sources */,
 				AD967FEA2106122E0048085B /* ZapconnectQRCode.swift in Sources */,
 				ADB4CBA82254BE3400D186BC /* DateEstimator.swift in Sources */,
@@ -3333,6 +3355,7 @@
 				ADADAD8C2143B3C900A48E1F /* GraphTopologyUpdate.swift in Sources */,
 				AD24862A225B7F210049532C /* ChannelBalance.swift in Sources */,
 				AD5AA2E72271B64500AEDDD7 /* rpc.pb.swift in Sources */,
+				ADADA95822844B910036639F /* ChannelBackup.swift in Sources */,
 				ADB4CBA4225493A300D186BC /* ChannelEventUpdate.swift in Sources */,
 				ADEB61BA2217088E009D5707 /* CustomDebugStringConvertible.generated.swift in Sources */,
 				ADFB36E62143BA6F00146FCC /* Invoice.swift in Sources */,

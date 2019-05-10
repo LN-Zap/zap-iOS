@@ -35,19 +35,22 @@ public final class LightningService: NSObject {
         switch connection {
         case .local:
             return Permissions.all
+
         case .remote(let connection):
             return connection.macaroon.permissions
         }
     }
 
-    public convenience init?(connection: LightningConnection, walletId: WalletId) {
-        self.init(api: connection.api, walletId: walletId, connection: connection)
+    public convenience init?(connection: LightningConnection, walletId: WalletId, backupService: BackupService) {
+        self.init(api: connection.api, walletId: walletId, connection: connection, backupService: backupService)
     }
 
-    init(api: LightningApi, walletId: WalletId, connection: LightningConnection) {
+    init(api: LightningApi, walletId: WalletId, connection: LightningConnection, backupService: BackupService) {
         self.api = api
         self.walletId = walletId
         self.connection = connection
+
+        let staticChannelBackupper = StaticChannelBackupper(backupService: backupService)
 
         let invoiceListUpdater = InvoiceListUpdater(api: api)
         let transactionListUpdater = TransactionListUpdater(api: api)
@@ -56,11 +59,11 @@ public final class LightningService: NSObject {
         listUpdater = [invoiceListUpdater, transactionListUpdater, paymentListUpdater, channelListUpdater]
 
         balanceService = BalanceService(api: api)
-        channelService = ChannelService(api: api, channelListUpdater: channelListUpdater)
+        channelService = ChannelService(api: api, channelListUpdater: channelListUpdater, staticChannelBackupper: staticChannelBackupper)
         historyService = HistoryService(invoiceListUpdater: invoiceListUpdater, transactionListUpdater: transactionListUpdater, paymentListUpdater: paymentListUpdater, channelListUpdater: channelListUpdater)
         transactionService = TransactionService(api: api, balanceService: balanceService, paymentListUpdater: paymentListUpdater)
 
-        infoService = InfoService(api: api, balanceService: balanceService)
+        infoService = InfoService(api: api, balanceService: balanceService, staticChannelBackupper: staticChannelBackupper)
 
         super.init()
 
