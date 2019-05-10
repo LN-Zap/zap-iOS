@@ -2,6 +2,14 @@ disabled_rules:
   - line_length
   - nesting
 opt_in_rules:
+  - toggle_bool
+  - static_operator
+  - redundant_objc_attribute
+  - legacy_hashing
+  - unused_control_flow_label
+  - duplicate_imports
+  - unused_setter_value
+  - nsobject_prefer_isequal
   - trailing_whitespace
   - no_fallthrough_only
   - closure_end_indentation
