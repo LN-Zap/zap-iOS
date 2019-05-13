@@ -9,7 +9,7 @@ import Foundation
 import Logger
 
 public protocol BackupService {
-    func save(data: Data, fileName: String)
+    func save(data: Data, fileId: String)
 }
 
 public final class StaticChannelBackupper {
@@ -42,6 +42,6 @@ public final class StaticChannelBackupper {
             else { return }
 
         let fileName = "\(nodeId)/channel.backup"
-        backupService.save(data: data, fileName: fileName)
+        backupService.save(data: data, fileId: fileName)
     }
 }

@@ -10,6 +10,10 @@ import SwiftBTC
 @testable import SwiftLnd
 import XCTest
 
+final class MockBackupService: BackupService {
+    func save(data: Data, fileId: String) {}
+}
+
 extension RPCCredentials {
     // swiftlint:disable:next force_unwrapping
     static var mock: RPCCredentials = RPCCredentials(certificate: nil, macaroon: Macaroon(hexadecimalString: "deadbeef")!, host: URL(string: "127.0.0.1")!)
@@ -24,7 +28,7 @@ class InvoiceTests: XCTestCase {
         ))
 
         let testConnection = LightningConnection.remote(RPCCredentials.mock)
-        let mockService = LightningService(api: api, walletId: "1", connection: testConnection)
+        let mockService = LightningService(api: api, walletId: "1", connection: testConnection, backupService: MockBackupService())
 
         let expectation = self.expectation(description: "Decoding")
 

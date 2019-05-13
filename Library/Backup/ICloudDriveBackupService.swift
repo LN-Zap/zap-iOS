@@ -9,7 +9,7 @@ import Foundation
 import Lightning
 import Logger
 
-final class ICloudDrive: BackupService {
+final class ICloudDriveBackupService: BackupService {
     private var containerUrl: URL? {
         return FileManager.default.url(forUbiquityContainerIdentifier: nil)?.appendingPathComponent("Documents")
     }
@@ -34,9 +34,9 @@ final class ICloudDrive: BackupService {
         }
     }
 
-    func save(data: Data, fileName: String) {
+    func save(data: Data, fileId: String) {
         DispatchQueue.global().async { [weak self] in
-            guard let url = self?.containerUrl?.appendingPathComponent(fileName) else { return }
+            guard let url = self?.containerUrl?.appendingPathComponent(fileId) else { return }
 
             do {
                 let directory = url.deletingLastPathComponent().path
@@ -45,7 +45,7 @@ final class ICloudDrive: BackupService {
                 }
 
                 try data.write(to: url, options: [.atomic])
-                Logger.info("Did backup file at \(url.path)", customPrefix: "📀")
+                Logger.info("Did backup file to iCloud at \(url.path)", customPrefix: "📀")
             } catch {
                 Logger.error(error.localizedDescription)
             }

@@ -152,10 +152,10 @@ final class ConnectRemoteNodeViewController: UIViewController {
 
         cell.textLabel?.isHidden = true
 
-        connectRemoteNodeViewModel?.connect { [weak self] configuration, result in
+        connectRemoteNodeViewModel?.connect { [weak self] result in
             DispatchQueue.main.async {
                 switch result {
-                case .success:
+                case .success(let configuration):
                     self?.didSetupWallet?(configuration)
                 case .failure(let error):
                     self?.displayError(error)

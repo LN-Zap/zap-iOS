@@ -7,36 +7,46 @@
 
 import UIKit
 
+protocol ManageWalletTableViewCellDelegate: class {
+    func presentBackupViewController(for walletConfiguration: WalletConfiguration)
+}
+
 class ManageWalletTableViewCell: UITableViewCell {
     @IBOutlet private weak var aliasLabel: UILabel!
     @IBOutlet private weak var networkLabel: UILabel!
     @IBOutlet private weak var hostLabel: UILabel!
-    @IBOutlet private weak var remoteIndicatorLabel: UILabel!
+
+    private var walletConfiguration: WalletConfiguration?
+    weak var delegate: ManageWalletTableViewCellDelegate?
 
     override func awakeFromNib() {
         super.awakeFromNib()
 
         backgroundColor = UIColor.Zap.background
 
-        Style.Label.body.apply(to: aliasLabel, remoteIndicatorLabel)
+        Style.Label.body.apply(to: aliasLabel)
         Style.Label.subHeadline.apply(to: networkLabel, hostLabel)
         hostLabel.textColor = UIColor.Zap.invisibleGray
     }
 
     func configure(_ walletConfiguration: WalletConfiguration) {
+        self.walletConfiguration = walletConfiguration
+
         aliasLabel.text = walletConfiguration.alias ?? "?"
         networkLabel.text = walletConfiguration.network?.localized ?? "?"
 
         switch walletConfiguration.connection {
         case .local:
-            remoteIndicatorLabel.text = nil
-            hostLabel.isHidden = true
+            hostLabel.text = "local"
         case .remote(let credentials):
-            remoteIndicatorLabel.text = L10n.Scene.ManageWallets.Cell.remote
-
             let host = credentials.host.absoluteString.prefix { $0 != ":" }
             hostLabel.isHidden = false
             hostLabel.text = "(\(host))"
         }
+    }
+
+    @IBAction private func backupButtonTapped(_ sender: Any) {
+        guard let walletConfiguration = walletConfiguration else { return }
+        delegate?.presentBackupViewController(for: walletConfiguration)
     }
 }

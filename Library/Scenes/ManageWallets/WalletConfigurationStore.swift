@@ -18,15 +18,16 @@ struct WalletConfiguration: Equatable, Codable {
     let network: Network?
     let connection: LightningConnection
     let walletId: WalletId
+    let nodePubKey: String?
 
     static func local(network: Network) -> WalletConfiguration {
         let alias = "Zap iOS" // TODO: sync with config file
 
-        return WalletConfiguration(alias: alias, network: network, connection: .local, walletId: "bitcoin-\(network.rawValue)")
+        return WalletConfiguration(alias: alias, network: network, connection: .local, walletId: "bitcoin-\(network.rawValue)", nodePubKey: nil)
     }
 
     func updatingInfo(info: Info) -> WalletConfiguration {
-        return WalletConfiguration(alias: info.alias, network: info.network, connection: connection, walletId: walletId)
+        return WalletConfiguration(alias: info.alias, network: info.network, connection: connection, walletId: walletId, nodePubKey: info.pubKey)
     }
 }
 
@@ -65,7 +66,7 @@ final class WalletConfigurationStore {
             let url = URL(string: "127.0.0.1:10009")
             else { fatalError("Invalid mock data") }
         let rpcCredentials = RPCCredentials(certificate: "01", macaroon: macaroon, host: url)
-        let wallet = WalletConfiguration(alias: nil, network: .mainnet, connection: .remote(rpcCredentials), walletId: UUID().uuidString)
+        let wallet = WalletConfiguration(alias: nil, network: .mainnet, connection: .remote(rpcCredentials), walletId: UUID().uuidString, nodePubKey: "123")
         return WalletConfigurationStore(configurations: [wallet], selectedWallet: wallet)
     }
 

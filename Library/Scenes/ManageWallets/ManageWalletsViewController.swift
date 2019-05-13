@@ -62,6 +62,7 @@ extension ManageWalletsViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell: ManageWalletTableViewCell = tableView.dequeueCellForIndexPath(indexPath)
         cell.configure(walletConfigurationStore.configurations[indexPath.row])
+        cell.delegate = self
         return cell
     }
 
@@ -73,5 +74,12 @@ extension ManageWalletsViewController: UITableViewDataSource {
         guard editingStyle == .delete else { return }
         walletConfigurationStore.removeWallet(at: indexPath.row)
         tableView.deleteRows(at: [indexPath], with: .fade)
+    }
+}
+
+extension ManageWalletsViewController: ManageWalletTableViewCellDelegate {
+    func presentBackupViewController(for walletConfiguration: WalletConfiguration) {
+        let viewController = ChannelBackupViewController(walletConfiguration: walletConfiguration)
+        navigationController?.pushViewController(viewController, animated: true)
     }
 }

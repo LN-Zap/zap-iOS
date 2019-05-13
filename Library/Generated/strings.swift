@@ -101,6 +101,16 @@ internal enum L10n {
   }
 
   internal enum Scene {
+    internal enum ChannelBackup {
+      /// %@ channel.backup
+      internal static func cellTitle(_ p1: String) -> String {
+        return L10n.tr("Localizable", "scene.channel_backup.cell_title", p1)
+      }
+      /// file not found
+      internal static let notFound = L10n.tr("Localizable", "scene.channel_backup.not_found")
+      /// Channel Backup
+      internal static let title = L10n.tr("Localizable", "scene.channel_backup.title")
+    }
     internal enum ChannelDetail {
       /// Close Channel
       internal static let closeButton = L10n.tr("Localizable", "scene.channel_detail.close_button")

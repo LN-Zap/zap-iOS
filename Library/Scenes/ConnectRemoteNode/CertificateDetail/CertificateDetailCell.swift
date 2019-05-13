@@ -15,6 +15,12 @@ final class CertificateDetailCell: UITableViewCell {
         descriptionLabel.font = UIFont(name: "Courier", size: 13)
     }
 
+    var numberOfLines: Int = 0 {
+        didSet {
+            descriptionLabel.numberOfLines = numberOfLines
+        }
+    }
+
     var descriptionText: String? {
         didSet {
             descriptionLabel.text = descriptionText

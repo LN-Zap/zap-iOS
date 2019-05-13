@@ -91,13 +91,14 @@ final class ConnectRemoteNodeViewModel: NSObject {
         }
     }
 
-    func connect(completion: @escaping (WalletConfiguration, Swift.Result<Success, LndApiError>) -> Void) {
+    func connect(completion: @escaping (ApiCompletion<WalletConfiguration>)) {
         guard let remoteNodeConfiguration = remoteNodeConfiguration else { return }
 
         testServer = LightningApi(connection: .remote(remoteNodeConfiguration))
-        testServer?.canConnect {
-            let configuration = WalletConfiguration(alias: nil, network: nil, connection: .remote(remoteNodeConfiguration), walletId: UUID().uuidString)
-            completion(configuration, $0)
+        testServer?.info { result in
+            completion(result.map {
+                WalletConfiguration(alias: nil, network: nil, connection: .remote(remoteNodeConfiguration), walletId: UUID().uuidString, nodePubKey: $0.pubKey)
+            })
         }
     }
 

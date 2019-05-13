@@ -36,11 +36,6 @@ public final class LightningApi {
         self.connection = connection
     }
 
-    // TODO: replace by something better like grpc channel connection state
-    public func canConnect(completion: @escaping ApiCompletion<Success>) {
-        connection.getInfo(Lnrpc_GetInfoRequest(), completion: run(completion) { _ in Success() })
-    }
-
     public func info(completion: @escaping ApiCompletion<Info>) {
         connection.getInfo(Lnrpc_GetInfoRequest(), completion: run(completion, map: Info.init))
     }

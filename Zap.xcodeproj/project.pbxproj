@@ -255,9 +255,12 @@
 		ADA865C020ECC89E00B1B74B /* FilterTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADA865BF20ECC89E00B1B74B /* FilterTableViewCell.swift */; };
 		ADADA9522281C16E0036639F /* RpcZapHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADADA9512281C16E0036639F /* RpcZapHelper.swift */; };
 		ADADA9542282D32A0036639F /* BackupDisabler.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADADA9532282D32A0036639F /* BackupDisabler.swift */; };
-		ADADA95622830DD40036639F /* ICloudDrive.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADADA95522830DD40036639F /* ICloudDrive.swift */; };
+		ADADA95622830DD40036639F /* ICloudDriveBackupService.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADADA95522830DD40036639F /* ICloudDriveBackupService.swift */; };
 		ADADA95822844B910036639F /* ChannelBackup.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADADA95722844B910036639F /* ChannelBackup.swift */; };
 		ADADA95D2285A0680036639F /* StaticChannelBackuper.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADADA95B22859F0F0036639F /* StaticChannelBackuper.swift */; };
+		ADADA966228964E50036639F /* ChannelBackupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADADA965228964E50036639F /* ChannelBackupViewController.swift */; };
+		ADADA96822896D950036639F /* LocalDocumentBackupService.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADADA96722896D950036639F /* LocalDocumentBackupService.swift */; };
+		ADADA96A22896EB50036639F /* BackupServiceGroup.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADADA96922896EB50036639F /* BackupServiceGroup.swift */; };
 		ADADAD5A214126BB00A48E1F /* Date.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADADAD59214126BB00A48E1F /* Date.swift */; };
 		ADADAD6C2143B2E700A48E1F /* SwiftLnd.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = ADADAD632143B2E700A48E1F /* SwiftLnd.framework */; };
 		ADADAD752143B2E700A48E1F /* SwiftLnd.h in Headers */ = {isa = PBXBuildFile; fileRef = ADADAD652143B2E700A48E1F /* SwiftLnd.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -823,9 +826,12 @@
 		ADAB0B98212487D000914974 /* vi */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = vi; path = vi.lproj/Localizable.strings; sourceTree = "<group>"; };
 		ADADA9512281C16E0036639F /* RpcZapHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RpcZapHelper.swift; sourceTree = "<group>"; };
 		ADADA9532282D32A0036639F /* BackupDisabler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BackupDisabler.swift; sourceTree = "<group>"; };
-		ADADA95522830DD40036639F /* ICloudDrive.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ICloudDrive.swift; sourceTree = "<group>"; };
+		ADADA95522830DD40036639F /* ICloudDriveBackupService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ICloudDriveBackupService.swift; sourceTree = "<group>"; };
 		ADADA95722844B910036639F /* ChannelBackup.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChannelBackup.swift; sourceTree = "<group>"; };
 		ADADA95B22859F0F0036639F /* StaticChannelBackuper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StaticChannelBackuper.swift; sourceTree = "<group>"; };
+		ADADA965228964E50036639F /* ChannelBackupViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChannelBackupViewController.swift; sourceTree = "<group>"; };
+		ADADA96722896D950036639F /* LocalDocumentBackupService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalDocumentBackupService.swift; sourceTree = "<group>"; };
+		ADADA96922896EB50036639F /* BackupServiceGroup.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BackupServiceGroup.swift; sourceTree = "<group>"; };
 		ADADAD59214126BB00A48E1F /* Date.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Date.swift; sourceTree = "<group>"; };
 		ADADAD632143B2E700A48E1F /* SwiftLnd.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = SwiftLnd.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		ADADAD652143B2E700A48E1F /* SwiftLnd.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SwiftLnd.h; sourceTree = "<group>"; };
@@ -1099,6 +1105,7 @@
 			children = (
 				AD9BB2D7217F6F23009DC878 /* Authentication */,
 				AD667E4E21367E41007B9160 /* Background */,
+				ADADA962228964B50036639F /* ChannelBackup */,
 				A0DDC0702018C6D800AEFF94 /* ChannelList */,
 				AD680A9D20B07AC60018986B /* ConnectRemoteNode */,
 				ADCE01B9207B57DA00CA72E8 /* CreateWallet */,
@@ -1794,9 +1801,19 @@
 		ADADA95A22859EE90036639F /* Backup */ = {
 			isa = PBXGroup;
 			children = (
-				ADADA95522830DD40036639F /* ICloudDrive.swift */,
+				ADADA96922896EB50036639F /* BackupServiceGroup.swift */,
+				ADADA95522830DD40036639F /* ICloudDriveBackupService.swift */,
+				ADADA96722896D950036639F /* LocalDocumentBackupService.swift */,
 			);
 			path = Backup;
+			sourceTree = "<group>";
+		};
+		ADADA962228964B50036639F /* ChannelBackup */ = {
+			isa = PBXGroup;
+			children = (
+				ADADA965228964E50036639F /* ChannelBackupViewController.swift */,
+			);
+			path = ChannelBackup;
 			sourceTree = "<group>";
 		};
 		ADADAD642143B2E700A48E1F /* SwiftLnd */ = {
@@ -3072,6 +3089,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				ADADA96822896D950036639F /* LocalDocumentBackupService.swift in Sources */,
 				AD2D912C21567D4C001015B6 /* EventDetailViewController.swift in Sources */,
 				AD81C21921B865E100FA3FA9 /* SyncPercentageEstimator.swift in Sources */,
 				AD7EDAE52108C41D0058CCCA /* WalletViewController.swift in Sources */,
@@ -3152,7 +3170,8 @@
 				AD391C3D20D16F0B007EE22A /* BiometricAuthentication.swift in Sources */,
 				ADCEAFD32255F2C2004F605B /* WarningSettingsItem.swift in Sources */,
 				AD391C3020D16EFA007EE22A /* UICollectionView.swift in Sources */,
-				ADADA95622830DD40036639F /* ICloudDrive.swift in Sources */,
+				ADADA95622830DD40036639F /* ICloudDriveBackupService.swift in Sources */,
+				ADADA966228964E50036639F /* ChannelBackupViewController.swift in Sources */,
 				AD391C6520D16F89007EE22A /* LndLogViewController.swift in Sources */,
 				ADA179BE21515095001401F3 /* SectionHeaderView.swift in Sources */,
 				AD391CAD20D16FA8007EE22A /* OnChainRequestAddressTypeSettingsItem.swift in Sources */,
@@ -3163,6 +3182,7 @@
 				AD391C3620D16EFA007EE22A /* UITableView.swift in Sources */,
 				ADA3254021AD5B3400C5EAA2 /* Strings.swift in Sources */,
 				AD391C6720D16F89007EE22A /* LoadingViewController.swift in Sources */,
+				ADADA96A22896EB50036639F /* BackupServiceGroup.swift in Sources */,
 				AD3553E5224E32EA00B99ABC /* ChannelListHeaderView.swift in Sources */,
 				AD248626225B78300049532C /* WalletViewModel.swift in Sources */,
 				AD7FB3FA225E1BBF00C98A00 /* UIImageView.swift in Sources */,
