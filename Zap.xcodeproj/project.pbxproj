@@ -253,6 +253,7 @@
 		ADA865BC20ECB87B00B1B74B /* FilterSettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADA865BB20ECB87B00B1B74B /* FilterSettings.swift */; };
 		ADA865BE20ECB88500B1B74B /* FilterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADA865BD20ECB88500B1B74B /* FilterViewController.swift */; };
 		ADA865C020ECC89E00B1B74B /* FilterTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADA865BF20ECC89E00B1B74B /* FilterTableViewCell.swift */; };
+		ADAA2D2C2289A75600819EAC /* RootFolderMigration.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADAA2D2B2289A75600819EAC /* RootFolderMigration.swift */; };
 		ADADA9522281C16E0036639F /* RpcZapHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADADA9512281C16E0036639F /* RpcZapHelper.swift */; };
 		ADADA9542282D32A0036639F /* BackupDisabler.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADADA9532282D32A0036639F /* BackupDisabler.swift */; };
 		ADADA95622830DD40036639F /* ICloudDriveBackupService.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADADA95522830DD40036639F /* ICloudDriveBackupService.swift */; };
@@ -331,6 +332,7 @@
 		ADF093132148FEB900B48853 /* ChannelEvent.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADF093122148FEB900B48853 /* ChannelEvent.swift */; };
 		ADF1BB3021997A820078BCC4 /* LndConnectURL.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADF1BB2F21997A820078BCC4 /* LndConnectURL.swift */; };
 		ADF1BB33219D7F260078BCC4 /* Macaroon.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADF1BB32219D7F260078BCC4 /* Macaroon.swift */; };
+		ADF232D42289A08100CB5053 /* Migrations.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADF232D32289A08100CB5053 /* Migrations.swift */; };
 		ADFA46982226947A007A4C49 /* LndConnectURLTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADFA46972226947A007A4C49 /* LndConnectURLTests.swift */; };
 		ADFB36D32143B66300146FCC /* SwiftLnd.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = ADADAD632143B2E700A48E1F /* SwiftLnd.framework */; };
 		ADFB36D72143B73C00146FCC /* LndConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD71EA4A20E2321100256307 /* LndConstants.swift */; };
@@ -762,6 +764,7 @@
 		ADA865BD20ECB88500B1B74B /* FilterViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilterViewController.swift; sourceTree = "<group>"; };
 		ADA865BF20ECC89E00B1B74B /* FilterTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilterTableViewCell.swift; sourceTree = "<group>"; };
 		ADA865C120ED041F00B1B74B /* Storage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Storage.swift; sourceTree = "<group>"; };
+		ADAA2D2B2289A75600819EAC /* RootFolderMigration.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RootFolderMigration.swift; sourceTree = "<group>"; };
 		ADAB0B5B2124860900914974 /* de */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = de; path = de.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		ADAB0B5C2124860900914974 /* de */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = de; path = de.lproj/Localizable.strings; sourceTree = "<group>"; };
 		ADAB0B5D2124860F00914974 /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/InfoPlist.strings"; sourceTree = "<group>"; };
@@ -922,6 +925,7 @@
 		ADF1BB2F21997A820078BCC4 /* LndConnectURL.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LndConnectURL.swift; sourceTree = "<group>"; };
 		ADF1BB31219D603A0078BCC4 /* docs */ = {isa = PBXFileReference; lastKnownFileType = folder; path = docs; sourceTree = "<group>"; };
 		ADF1BB32219D7F260078BCC4 /* Macaroon.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Macaroon.swift; sourceTree = "<group>"; };
+		ADF232D32289A08100CB5053 /* Migrations.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Migrations.swift; sourceTree = "<group>"; };
 		ADF79363208DCB630086B2CA /* PinView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PinView.swift; sourceTree = "<group>"; };
 		ADF79365208E000C0086B2CA /* SetupPinViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetupPinViewController.swift; sourceTree = "<group>"; };
 		ADF79367208E09D00086B2CA /* SetupPinViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetupPinViewModel.swift; sourceTree = "<group>"; };
@@ -1519,6 +1523,7 @@
 				ADA3253E21AD5B0E00C5EAA2 /* Generated */,
 				A01009352014BE070001EF94 /* Helper */,
 				AD10D05921132EFB00A0F0D3 /* Localizable.strings */,
+				ADF232D22289A05E00CB5053 /* Migration */,
 				A01009322014BD960001EF94 /* Scenes */,
 				ADFE537C20D693F500B3BA2A /* Tests */,
 				A010093E2014D4720001EF94 /* Views */,
@@ -2053,6 +2058,15 @@
 				AD9E7E25222EDEE10057E149 /* Protocols */,
 			);
 			path = Events;
+			sourceTree = "<group>";
+		};
+		ADF232D22289A05E00CB5053 /* Migration */ = {
+			isa = PBXGroup;
+			children = (
+				ADF232D32289A08100CB5053 /* Migrations.swift */,
+				ADAA2D2B2289A75600819EAC /* RootFolderMigration.swift */,
+			);
+			path = Migration;
 			sourceTree = "<group>";
 		};
 		ADF79373208F87E60086B2CA /* Confirm Mnemonic */ = {
@@ -3115,6 +3129,7 @@
 				AD391C4820D16F68007EE22A /* ModalNavigationController.swift in Sources */,
 				AD391C7520D16F89007EE22A /* QRCodeDetailViewModel.swift in Sources */,
 				AD391C3820D16EFA007EE22A /* UserDefaults.swift in Sources */,
+				ADAA2D2C2289A75600819EAC /* RootFolderMigration.swift in Sources */,
 				AD391C2E20D16EFA007EE22A /* UIApplication.swift in Sources */,
 				AD035BFF2174A996005EA785 /* ChannelDetailViewController.swift in Sources */,
 				ADA2DD03225CDAED007482D9 /* ChannelQRCodeScannerViewController.swift in Sources */,
@@ -3258,6 +3273,7 @@
 				AD391C2720D16EFA007EE22A /* Network+Localizable.swift in Sources */,
 				AD391C9E20D16FA8007EE22A /* RequestViewModel.swift in Sources */,
 				AD391C2B20D16EFA007EE22A /* SignalProtocol.swift in Sources */,
+				ADF232D42289A08100CB5053 /* Migrations.swift in Sources */,
 				ADDD13B92119CEB40035D2F9 /* UIStackView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

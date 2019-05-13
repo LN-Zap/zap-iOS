@@ -18,9 +18,9 @@ public extension FileManager {
     }
 
     func walletDirectory(for walletId: WalletId) -> URL? {
-        guard let documentDirectory = urls(for: .documentDirectory, in: .userDomainMask).first else { return nil }
+        guard let applicationSupportDirectory = urls(for: .applicationSupportDirectory, in: .userDomainMask).first else { return nil }
         let walletIdFolder = "lnd-" + walletId
-        let url = documentDirectory.appendingPathComponent(walletIdFolder, isDirectory: true)
+        let url = applicationSupportDirectory.appendingPathComponent(walletIdFolder, isDirectory: true)
         return createAndReturn(url: url)
     }
 

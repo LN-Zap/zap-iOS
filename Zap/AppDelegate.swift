@@ -16,13 +16,13 @@ final class AppDelegate: UIResponder, UIApplicationDelegate {
     var didStartFromBackground = false
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
+        guard !Environment.isRunningTests else { return true }
         didStartFromBackground = false
 
-        guard !Environment.isRunningTests else { return true }
+        printSearchPath(.documentDirectory)
+        printSearchPath(.applicationSupportDirectory)
 
-        if let documentsDir = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first?.absoluteString {
-            Logger.info(documentsDir.replacingOccurrences(of: "file://", with: ""))
-        }
+        Migrations.run()
 
         window = UIWindow(frame: UIScreen.main.bounds)
         window?.makeKeyAndVisible()
@@ -42,6 +42,12 @@ final class AppDelegate: UIResponder, UIApplicationDelegate {
         }
 
         return true
+    }
+
+    func printSearchPath(_ path: FileManager.SearchPathDirectory) {
+        if let directory = FileManager.default.urls(for: path, in: .userDomainMask).first?.path {
+            print(directory.replacingOccurrences(of: " ", with: "\\ ")) // swiftlint:disable:this print
+        }
     }
 
     func application(_ app: UIApplication, open url: URL, options: [UIApplication.OpenURLOptionsKey: Any] = [:]) -> Bool {
