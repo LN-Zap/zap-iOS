@@ -33,6 +33,7 @@ public final class InfoService {
 
     private var heightJobTimer: Timer?
     private var updateInfoTimer: Timer?
+    private var timeoutTimer: Timer?
 
     private let staticChannelBackupper: StaticChannelBackupper
 
@@ -59,6 +60,14 @@ public final class InfoService {
             self?.info { self?.updateInfo(result: $0) }
         }
         updateInfoTimer?.fire()
+
+        timeoutTimer?.invalidate()
+        timeoutTimer = Timer.scheduledTimer(withTimeInterval: 6, repeats: false) { [weak self] _ in
+            guard let self = self else { return }
+            if case .connecting = self.walletState.value {
+                self.walletState.value = .error
+            }
+        }
     }
 
     public func info(completion: @escaping ApiCompletion<Info>) {
