@@ -256,3 +256,7 @@
 
 "scene.manage_wallets.title" = "Gestione Portafogli";
 "scene.manage_wallets.cell.remote" = "remoto";
+
+"scene.channel_backup.title" = "Channel Backup";
+"scene.channel_backup.cell_title" = "%@ channel.backup";
+"scene.channel_backup.not_found" = "file not found";
