@@ -20,7 +20,7 @@ final class PinnedURLSessionDelegate: NSObject {
 
     override private init() {
         hosts = [
-            PinnedHost(named: "bitcoinaverage.com", certificates: ["*.bitcoinaverage.com", "COMODO RSA Domain Validation Secure Server CA"]),
+            PinnedHost(named: "bitcoinaverage.com", certificates: ["*.bitcoinaverage.com", "Sectigo RSA Domain Validation Secure Server CA 2"]),
             PinnedHost(named: "blockchain.info", certificates: ["www.blockchain.com", "DigiCert SHA2 Extended Validation Server CA"]),
             PinnedHost(named: "blockcypher.com", certificates: ["*.blockcypher.com", "Sectigo RSA Domain Validation Secure Server CA"]),
             PinnedHost(named: "blockexplorer.com", certificates: ["blockexplorer.com", "CloudFlare Inc ECC CA-2"]),
