@@ -143,7 +143,7 @@
                                                             <rect key="frame" x="8" y="28" width="209" height="48"/>
                                                             <nil key="textColor"/>
                                                             <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                            <textInputTraits key="textInputTraits"/>
+                                                            <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" secureTextEntry="YES"/>
                                                             <connections>
                                                                 <action selector="textFieldEdidtingChanged:" destination="pTE-Xh-qrv" eventType="editingChanged" id="jIl-vQ-gpO"/>
                                                             </connections>
