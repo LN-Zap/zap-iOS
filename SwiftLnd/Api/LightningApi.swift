@@ -13,28 +13,42 @@ public final class LightningApi {
         case local
         case remote(RPCCredentials)
         case mock(ApiMockTemplate)
-    }
 
-    let connection: LightningConnection
-
-    public init(connection: Kind) {
-        switch connection {
-        case .local:
-            #if !REMOTEONLY
-            self.connection = StreamingLightningConnection()
-            #else
-            fatalError("local connection not available")
-            #endif
-        case .remote(let configuration):
-            self.connection = RPCLightningConnection(configuration: configuration)
-        case .mock(let template):
-            self.connection = template.instance
+        func createConnection() -> LightningConnection {
+            switch self {
+            case .local:
+                #if !REMOTEONLY
+                return StreamingLightningConnection()
+                #else
+                fatalError("local connection not available")
+                #endif
+            case .remote(let configuration):
+                return RPCLightningConnection(configuration: configuration)
+            case .mock(let template):
+                return template.instance
+            }
         }
     }
 
-    init(connection: LightningConnection) {
-        self.connection = connection
+    private var connection: LightningConnection
+    private let kind: Kind?
+
+    public init(connection kind: Kind) {
+        self.kind = kind
+        self.connection = kind.createConnection()
     }
+
+    internal init(connection: LightningConnection) {
+        self.connection = connection
+        self.kind = nil
+    }
+
+    public func resetConnection() {
+        guard let kind = kind else { return }
+        self.connection = kind.createConnection()
+    }
+
+    // MARK: - lnd api calls
 
     public func info(completion: @escaping ApiCompletion<Info>) {
         connection.getInfo(Lnrpc_GetInfoRequest(), completion: run(completion, map: Info.init))

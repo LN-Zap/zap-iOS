@@ -120,4 +120,8 @@ public final class LightningService: NSObject {
     public func stop() {
         infoService.stop()
     }
+
+    public func resetRpcConnection() {
+        api.resetConnection()
+    }
 }

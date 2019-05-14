@@ -56,6 +56,8 @@ final class UnlockWalletViewModel {
 
     private func checkInfo() {
         lightningService.infoService.info { [weak self] in
+            self?.lightningService.resetRpcConnection()
+
             if case .success = $0 {
                 Logger.info("wallet started")
                 self?.timer?.invalidate()
