@@ -83,9 +83,8 @@ final class ChannelListViewModel: NSObject {
         dataSource.replace(with: sortedViewModels, performDiff: true)
 
         totalLocal.value = open.reduce(0) { $0 + ($1.state == .active ? $1.localBalance : 0) }
+        totalRemote.value = open.reduce(0) { $0 + ($1.state == .active ? $1.remoteBalance : 0) }
         totalOffline.value = open.reduce(0) { $0 + ($1.state == .inactive ? $1.localBalance : 0) }
-        totalRemote.value = open.reduce(0) { $0 + $1.remoteBalance }
-
         totalPending.value = pending.reduce(0) { $0 + $1.localBalance }
     }
 
