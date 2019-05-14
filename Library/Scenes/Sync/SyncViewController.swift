@@ -21,8 +21,8 @@ final class SyncViewController: UIViewController {
     @IBOutlet private weak var syncLabel: UILabel!
     @IBOutlet private weak var descriptionLabel: UILabel!
     @IBOutlet private weak var dateLabel: UILabel!
-    @IBOutlet private weak var navigationBar: UINavigationBar!
-    @IBOutlet private weak var disconnectBarButton: UIBarButtonItem!
+    @IBOutlet private weak var disconnectBarButton: UIButton!
+    @IBOutlet private weak var disconnectBarButtonLight: UIButton!
 
     private var lightningService: LightningService?
     private weak var delegate: DisconnectWalletDelegate?
@@ -49,11 +49,11 @@ final class SyncViewController: UIViewController {
         syncLabel.textColor = .white
         descriptionLabel.textColor = .white
         dateLabel.textColor = .white
-        navigationBar.shadowImage = UIImage()
-        navigationBar.setBackgroundImage(UIImage(), for: .default)
 
         descriptionLabel.text = L10n.Scene.Sync.descriptionLabel
-        disconnectBarButton.title = L10n.Scene.Sync.disconnectBarButton
+        disconnectBarButton.setTitle(L10n.Scene.Sync.disconnectBarButton, for: .normal)
+        disconnectBarButtonLight.setTitle(L10n.Scene.Sync.disconnectBarButton, for: .normal)
+        disconnectBarButtonLight.setTitleColor(.white, for: .normal)
 
         setupBindings()
     }
