@@ -18,6 +18,7 @@
 
 // swiftlint:disable identifier_name line_length nesting type_body_length type_name
 internal enum Asset {
+  internal static let channelBackupFileIcon = ImageAsset(name: "channel_backup_file_icon")
   internal static let iconCopy = ImageAsset(name: "icon_copy")
   internal static let iconQrCode = ImageAsset(name: "icon_qr_code")
   internal static let loadingCheck = ImageAsset(name: "loading_check")

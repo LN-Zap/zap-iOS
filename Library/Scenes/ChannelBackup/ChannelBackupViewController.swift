@@ -8,8 +8,21 @@
 import Foundation
 import Logger
 
-final class ChannelBackupViewController: UITableViewController {
-    private let walletConfiguration: WalletConfiguration
+final class ChannelBackupViewController: UIViewController {
+    @IBOutlet private weak var fileNameLabel: UILabel!
+    @IBOutlet private weak var dateLabel: UILabel!
+    @IBOutlet private weak var tableView: UITableView!
+
+    let cellContent: [(String, BackupLogger.Type)] = [
+        ("iCloud Drive", ICloudDriveBackupService.self),
+        ("Local Backup", LocalDocumentBackupService.self)
+    ]
+
+    private var walletConfiguration: WalletConfiguration! // swiftlint:disable:this implicitly_unwrapped_optional
+
+    private var latestDate: Date? {
+        return cellContent.compactMap { $0.1.lastBackup }.max()
+    }
 
     private var channelBackupURL: URL? {
         guard let nodePubKey = walletConfiguration.nodePubKey else { return nil }
@@ -21,13 +34,10 @@ final class ChannelBackupViewController: UITableViewController {
         return try? Data(contentsOf: url)
     }
 
-    init(walletConfiguration: WalletConfiguration) {
-        self.walletConfiguration = walletConfiguration
-        super.init(style: .grouped)
-    }
-
-    required init?(coder aDecoder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
+    static func instantiate(walletConfiguration: WalletConfiguration) -> ChannelBackupViewController {
+        let viewController = StoryboardScene.ChannelBackup.channelBackupViewController.instantiate()
+        viewController.walletConfiguration = walletConfiguration
+        return viewController
     }
 
     override func viewDidLoad() {
@@ -35,35 +45,28 @@ final class ChannelBackupViewController: UITableViewController {
 
         title = L10n.Scene.ChannelBackup.title
 
+        if let latestDate = latestDate {
+            dateLabel.text = DateFormatter.localizedString(from: latestDate, dateStyle: .medium, timeStyle: .short)
+        } else {
+            dateLabel.text = L10n.Scene.ChannelBackup.notFound
+        }
+
+        view.backgroundColor = UIColor.Zap.background
+
+        Style.Label.body.apply(to: fileNameLabel)
+        Style.Label.subHeadline.apply(to: dateLabel)
+
+        tableView.dataSource = self
+        tableView.delegate = self
+
         tableView.rowHeight = UITableView.automaticDimension
         tableView.backgroundColor = UIColor.Zap.deepSeaBlue
         tableView.separatorColor = UIColor.Zap.gray
-        tableView.estimatedRowHeight = 300
-        tableView.registerCell(CertificateDetailCell.self)
+        tableView.rowHeight = 76
         tableView.allowsSelection = false
+        tableView.isScrollEnabled = false
 
         navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .action, target: self, action: #selector(shareChannelBackup))
-    }
-
-    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 1
-    }
-
-    override func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
-        return L10n.Scene.ChannelBackup.cellTitle(walletConfiguration.alias ?? "?")
-    }
-
-    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell: CertificateDetailCell = tableView.dequeueCellForIndexPath(indexPath)
-        cell.descriptionText = channelBackupFile?.hexadecimalString ?? L10n.Scene.ChannelBackup.notFound
-        cell.contentView.backgroundColor = UIColor.Zap.seaBlue
-        cell.numberOfLines = 10
-        return cell
-    }
-
-    override func tableView(_ tableView: UITableView, willDisplayHeaderView view: UIView, forSection section: Int) {
-        guard let view = view as? UITableViewHeaderFooterView else { return }
-        view.textLabel?.text = view.textLabel?.text?.capitalized
     }
 
     @objc private func shareChannelBackup() {
@@ -73,5 +76,48 @@ final class ChannelBackupViewController: UITableViewController {
 
         let activityViewController = UIActivityViewController(activityItems: items, applicationActivities: nil)
         present(activityViewController, animated: true, completion: nil)
+    }
+}
+
+extension ChannelBackupViewController: UITableViewDelegate {
+    func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+        return CGFloat.leastNormalMagnitude
+    }
+}
+
+extension ChannelBackupViewController: UITableViewDataSource {
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return cellContent.count
+    }
+
+    private func createCell() -> UITableViewCell {
+        let identifier = "ChannelBackupViewControllerCell"
+
+        if let cell = tableView.dequeueReusableCell(withIdentifier: identifier) {
+            return cell
+        } else {
+            return UITableViewCell(style: .default, reuseIdentifier: identifier)
+        }
+    }
+
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = createCell()
+
+        let (title, backupType) = cellContent[indexPath.row]
+
+        if let label = cell.textLabel {
+            Style.Label.body.apply(to: label)
+            label.text = title
+        }
+
+        if backupType.lastBackup != nil {
+            cell.accessoryView = UIImageView(image: Asset.iconCheckGreen.image)
+        } else {
+            cell.accessoryView = nil
+        }
+
+        cell.backgroundColor = UIColor.Zap.seaBlue
+
+        return cell
     }
 }

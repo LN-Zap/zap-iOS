@@ -17,6 +17,11 @@ internal enum StoryboardScene {
 
     internal static let backgoundViewController = SceneType<BackgoundViewController>(storyboard: Background.self, identifier: "BackgoundViewController")
   }
+  internal enum ChannelBackup: StoryboardType {
+    internal static let storyboardName = "ChannelBackup"
+
+    internal static let channelBackupViewController = SceneType<ChannelBackupViewController>(storyboard: ChannelBackup.self, identifier: "ChannelBackupViewController")
+  }
   internal enum ChannelList: StoryboardType {
     internal static let storyboardName = "ChannelList"
 

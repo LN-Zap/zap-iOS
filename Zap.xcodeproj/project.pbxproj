@@ -333,6 +333,8 @@
 		ADFA46982226947A007A4C49 /* LndConnectURLTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADFA46972226947A007A4C49 /* LndConnectURLTests.swift */; };
 		ADFAA01B228AED0D000AECA1 /* Sectigo RSA Domain Validation Secure Server CA 2.cer in Resources */ = {isa = PBXBuildFile; fileRef = ADFAA01A228AED0D000AECA1 /* Sectigo RSA Domain Validation Secure Server CA 2.cer */; };
 		ADFAA01D228C0F10000AECA1 /* FeeEstimate.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADFAA01C228C0F10000AECA1 /* FeeEstimate.swift */; };
+		ADFAA01F228C4649000AECA1 /* ChannelBackup.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = ADFAA01E228C4649000AECA1 /* ChannelBackup.storyboard */; };
+		ADFAA021228C51FE000AECA1 /* BackupLogger.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADFAA020228C51FE000AECA1 /* BackupLogger.swift */; };
 		ADFB36D32143B66300146FCC /* SwiftLnd.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = ADADAD632143B2E700A48E1F /* SwiftLnd.framework */; };
 		ADFB36D72143B73C00146FCC /* LndConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD71EA4A20E2321100256307 /* LndConstants.swift */; };
 		ADFB36D82143B73C00146FCC /* LocalLnd.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0A05A342014047B0007D1C9 /* LocalLnd.swift */; };
@@ -933,6 +935,8 @@
 		ADFA46972226947A007A4C49 /* LndConnectURLTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LndConnectURLTests.swift; sourceTree = "<group>"; };
 		ADFAA01A228AED0D000AECA1 /* Sectigo RSA Domain Validation Secure Server CA 2.cer */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Sectigo RSA Domain Validation Secure Server CA 2.cer"; sourceTree = "<group>"; };
 		ADFAA01C228C0F10000AECA1 /* FeeEstimate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeeEstimate.swift; sourceTree = "<group>"; };
+		ADFAA01E228C4649000AECA1 /* ChannelBackup.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = ChannelBackup.storyboard; sourceTree = "<group>"; };
+		ADFAA020228C51FE000AECA1 /* BackupLogger.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BackupLogger.swift; sourceTree = "<group>"; };
 		ADFBE0BE21F6268400A76E06 /* Sticker.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = Sticker.appex; sourceTree = BUILT_PRODUCTS_DIR; };
 		ADFBE0C021F6268500A76E06 /* Stickers.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Stickers.xcassets; sourceTree = "<group>"; };
 		ADFBE0C221F6268500A76E06 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -1807,6 +1811,7 @@
 		ADADA95A22859EE90036639F /* Backup */ = {
 			isa = PBXGroup;
 			children = (
+				ADFAA020228C51FE000AECA1 /* BackupLogger.swift */,
 				ADADA96922896EB50036639F /* BackupServiceGroup.swift */,
 				ADADA95522830DD40036639F /* ICloudDriveBackupService.swift */,
 				ADADA96722896D950036639F /* LocalDocumentBackupService.swift */,
@@ -1818,6 +1823,7 @@
 			isa = PBXGroup;
 			children = (
 				ADADA965228964E50036639F /* ChannelBackupViewController.swift */,
+				ADFAA01E228C4649000AECA1 /* ChannelBackup.storyboard */,
 			);
 			path = ChannelBackup;
 			sourceTree = "<group>";
@@ -2565,6 +2571,7 @@
 				AD391CA020D16FA8007EE22A /* Root.storyboard in Resources */,
 				AD7B1EF8224241DC007D4171 /* WalletList.storyboard in Resources */,
 				AD391CD520D16FE1007EE22A /* HistoryCell.xib in Resources */,
+				ADFAA01F228C4649000AECA1 /* ChannelBackup.storyboard in Resources */,
 				AD391C6120D16F7A007EE22A /* SelectWalletCreationMethodTableViewCell.xib in Resources */,
 				AD391C6320D16F89007EE22A /* LndLog.storyboard in Resources */,
 				AD7EDAE32108C4150058CCCA /* Wallet.storyboard in Resources */,
@@ -3229,6 +3236,7 @@
 				AD391CB420D16FA8007EE22A /* Section.swift in Sources */,
 				AD391D1B20D174B4007EE22A /* PinSetupCoordinator.swift in Sources */,
 				ADA75DF2210F389100003068 /* ChannelState+Localizable.swift in Sources */,
+				ADFAA021228C51FE000AECA1 /* BackupLogger.swift in Sources */,
 				AD9BB2E021836A54009DC878 /* DispatchQueue+Debounce.swift in Sources */,
 				AD391C6020D16F7A007EE22A /* SelectWalletCreationMethodTableViewCell.swift in Sources */,
 				AD391C9920D16FA8007EE22A /* QRCodeScannerStrategy.swift in Sources */,

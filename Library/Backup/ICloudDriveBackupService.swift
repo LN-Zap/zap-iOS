@@ -9,7 +9,7 @@ import Foundation
 import Lightning
 import Logger
 
-final class ICloudDriveBackupService: BackupService {
+final class ICloudDriveBackupService: BackupService, BackupLogger {
     private var containerUrl: URL? {
         return FileManager.default.url(forUbiquityContainerIdentifier: nil)?.appendingPathComponent("Documents")
     }
@@ -45,6 +45,7 @@ final class ICloudDriveBackupService: BackupService {
                 }
 
                 try data.write(to: url, options: [.atomic])
+                self?.didBackup()
                 Logger.info("Did backup file to iCloud at \(url.path)", customPrefix: "📀")
             } catch {
                 Logger.error(error.localizedDescription)
