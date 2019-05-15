@@ -31,18 +31,23 @@ public final class LightningApi {
     }
 
     private var connection: LightningConnection
-    private let kind: Kind?
+    private let kind: Kind? // to be able to reset the connection if needed
 
     public init(connection kind: Kind) {
         self.kind = kind
         self.connection = kind.createConnection()
     }
 
+    /// Should only be used by Tests to inject a custom MockLightningConnection.
+    ///
+    /// - Parameter connection: the MockLightningConnection
     internal init(connection: LightningConnection) {
         self.connection = connection
         self.kind = nil
     }
 
+    /// When the wallet is locked on first access `RPCLightningConnection` has
+    /// to be restarted to make the connection work.
     public func resetConnection() {
         guard let kind = kind else { return }
         self.connection = kind.createConnection()
@@ -100,8 +105,7 @@ public final class LightningApi {
         connection.subscribeTransactions(Lnrpc_GetTransactionsRequest(), completion: run(completion, map: Transaction.init))
     }
 
-    public func decodePaymentRequest(_ paymentRequest: String, completion: @escaping
-        ApiCompletion<PaymentRequest>) {
+    public func decodePaymentRequest(_ paymentRequest: String, completion: @escaping ApiCompletion<PaymentRequest>) {
         let request = Lnrpc_PayReqString(payReq: paymentRequest)
         connection.decodePayReq(request, completion: run(completion) { PaymentRequest(payReq: $0, raw: paymentRequest) })
     }
@@ -174,5 +178,10 @@ public final class LightningApi {
 
     public func subscribeChannelBackups(completion: @escaping ApiCompletion<ChannelBackup>) {
         connection.subscribeChannelBackups(Lnrpc_ChannelBackupSubscription(), completion: run(completion, map: ChannelBackup.init))
+    }
+
+    public func estimateFees(address: BitcoinAddress, amount: Satoshi, completion: @escaping ApiCompletion<FeeEstimate>) {
+        let request = Lnrpc_EstimateFeeRequest(address: address, amount: amount)
+        connection.estimateFee(request, completion: run(completion, map: FeeEstimate.init))
     }
 }

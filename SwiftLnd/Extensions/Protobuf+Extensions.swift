@@ -155,3 +155,10 @@ extension Lnrpc_ListInvoiceRequest {
         self.reversed = reversed
     }
 }
+
+extension Lnrpc_EstimateFeeRequest {
+    init(address: BitcoinAddress, amount: Satoshi) {
+        self.init()
+        self.addrToAmount = [address.string: amount.int64]
+    }
+}

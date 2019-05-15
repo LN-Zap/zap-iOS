@@ -332,6 +332,7 @@
 		ADF232D42289A08100CB5053 /* Migrations.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADF232D32289A08100CB5053 /* Migrations.swift */; };
 		ADFA46982226947A007A4C49 /* LndConnectURLTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADFA46972226947A007A4C49 /* LndConnectURLTests.swift */; };
 		ADFAA01B228AED0D000AECA1 /* Sectigo RSA Domain Validation Secure Server CA 2.cer in Resources */ = {isa = PBXBuildFile; fileRef = ADFAA01A228AED0D000AECA1 /* Sectigo RSA Domain Validation Secure Server CA 2.cer */; };
+		ADFAA01D228C0F10000AECA1 /* FeeEstimate.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADFAA01C228C0F10000AECA1 /* FeeEstimate.swift */; };
 		ADFB36D32143B66300146FCC /* SwiftLnd.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = ADADAD632143B2E700A48E1F /* SwiftLnd.framework */; };
 		ADFB36D72143B73C00146FCC /* LndConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD71EA4A20E2321100256307 /* LndConstants.swift */; };
 		ADFB36D82143B73C00146FCC /* LocalLnd.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0A05A342014047B0007D1C9 /* LocalLnd.swift */; };
@@ -931,6 +932,7 @@
 		ADF79375208F88DE0086B2CA /* RecoverWalletViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecoverWalletViewController.swift; sourceTree = "<group>"; };
 		ADFA46972226947A007A4C49 /* LndConnectURLTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LndConnectURLTests.swift; sourceTree = "<group>"; };
 		ADFAA01A228AED0D000AECA1 /* Sectigo RSA Domain Validation Secure Server CA 2.cer */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Sectigo RSA Domain Validation Secure Server CA 2.cer"; sourceTree = "<group>"; };
+		ADFAA01C228C0F10000AECA1 /* FeeEstimate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeeEstimate.swift; sourceTree = "<group>"; };
 		ADFBE0BE21F6268400A76E06 /* Sticker.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = Sticker.appex; sourceTree = BUILT_PRODUCTS_DIR; };
 		ADFBE0C021F6268500A76E06 /* Stickers.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Stickers.xcassets; sourceTree = "<group>"; };
 		ADFBE0C221F6268500A76E06 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -1316,6 +1318,7 @@
 				ADB4CBA3225493A300D186BC /* ChannelEventUpdate.swift */,
 				ADE19C3F20E7892000340E2E /* ChannelPoint.swift */,
 				A0A96B8520174BAC00788808 /* CloseStatusUpdate.swift */,
+				ADFAA01C228C0F10000AECA1 /* FeeEstimate.swift */,
 				AD93ED5520A09D59000E814E /* GraphTopologyUpdate.swift */,
 				A0376B6E201CC04400F1FBEF /* Info.swift */,
 				ADC29C0B20A9B0A0008B2DC2 /* Invoice.swift */,
@@ -3374,6 +3377,7 @@
 				ADADAD8F2143B3C900A48E1F /* OnChainRequestAddressType.swift in Sources */,
 				ADADAD922143B3C900A48E1F /* Peer.swift in Sources */,
 				AD7ED622220B4FE9007C5F2C /* FileManager.swift in Sources */,
+				ADFAA01D228C0F10000AECA1 /* FeeEstimate.swift in Sources */,
 				ADADAD9A2143B3C900A48E1F /* StreamCallback.swift in Sources */,
 				AD9F3ADF2271C2550044E5EB /* MacaroonId.pb.swift in Sources */,
 				ADADAD8A2143B3C900A48E1F /* ChannelPoint.swift in Sources */,

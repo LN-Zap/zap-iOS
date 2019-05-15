@@ -68,6 +68,17 @@ extension ChannelPoint: CustomDebugStringConvertible {
 	}
 }
 
+// MARK: FeeEstimate CustomDebugStringConvertible
+extension FeeEstimate: CustomDebugStringConvertible {
+	public var debugDescription: String {
+		return """
+		FeeEstimate:
+		\ttotal: \(total)
+		\tperByte: \(perByte)\n
+		"""
+	}
+}
+
 // MARK: GraphTopologyUpdate CustomDebugStringConvertible
 extension GraphTopologyUpdate: CustomDebugStringConvertible {
 	public var debugDescription: String {
