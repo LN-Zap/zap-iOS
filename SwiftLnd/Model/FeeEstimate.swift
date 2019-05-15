@@ -9,8 +9,8 @@ import Foundation
 import SwiftBTC
 
 public struct FeeEstimate {
-    let total: Satoshi
-    let perByte: Satoshi
+    public let total: Satoshi
+    public let perByte: Satoshi
 }
 
 extension FeeEstimate {

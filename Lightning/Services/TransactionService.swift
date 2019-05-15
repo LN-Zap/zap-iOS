@@ -35,12 +35,24 @@ public final class TransactionService {
         api.decodePaymentRequest(paymentRequest, completion: completion)
     }
 
-    public func upperBoundLightningFees(for paymentRequest: PaymentRequest, amount: Satoshi, completion: @escaping ApiCompletion<(amount: Satoshi, fee: Satoshi?)>) {
+    /// Fee methods can be called multiple times at once. So the completion
+    /// includes amount to match on the caller side that the returned result is
+    /// for the correct amount.
+    public typealias FeeApiCompletion = ((amount: Satoshi, fee: Satoshi?)) -> Void
+
+    public func upperBoundLightningFees(for paymentRequest: PaymentRequest, amount: Satoshi, completion: @escaping FeeApiCompletion) {
         api.routes(destination: paymentRequest.destination, amount: amount) { result in
             let totalFees = (try? result.get())?
                 .max(by: { $0.totalFees < $1.totalFees })?
                 .totalFees
-            completion(.success((amount: amount, fee: totalFees)))
+            completion((amount: amount, fee: totalFees))
+        }
+    }
+
+    public func onChainFees(address: BitcoinAddress, amount: Satoshi, completion: @escaping FeeApiCompletion) {
+        api.estimateFees(address: address, amount: amount) {
+            let fees = (try? $0.get())?.total
+            completion((amount: amount, fee: fees))
         }
     }
 
@@ -56,7 +68,7 @@ public final class TransactionService {
 
     public func sendCoins(bitcoinURI: BitcoinURI, amount: Satoshi, completion: @escaping ApiCompletion<Success>) {
         let destinationAddress = bitcoinURI.bitcoinAddress
-        api.sendCoins(address: destinationAddress, amount: amount) { //[historyService] in
+        api.sendCoins(address: destinationAddress, amount: amount) {
             completion($0.map { _ in Success() })
         }
     }
