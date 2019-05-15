@@ -69,13 +69,15 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
-                            <constraint firstItem="YZn-6Z-tgU" firstAttribute="bottom" secondItem="PCb-AJ-tb9" secondAttribute="bottom" id="8uD-tF-rhT"/>
+                            <constraint firstItem="YZn-6Z-tgU" firstAttribute="bottom" relation="greaterThanOrEqual" secondItem="PCb-AJ-tb9" secondAttribute="bottom" id="8uD-tF-rhT"/>
                             <constraint firstItem="8WO-6e-W3i" firstAttribute="leading" secondItem="xm5-hD-bCp" secondAttribute="leading" id="BIF-gU-tR2"/>
                             <constraint firstItem="PCb-AJ-tb9" firstAttribute="trailing" secondItem="YZn-6Z-tgU" secondAttribute="trailing" id="CXS-QP-LYo"/>
                             <constraint firstAttribute="trailing" secondItem="8WO-6e-W3i" secondAttribute="trailing" id="EdY-FV-Swt"/>
                             <constraint firstItem="8WO-6e-W3i" firstAttribute="top" secondItem="YZn-6Z-tgU" secondAttribute="top" id="Fqr-xY-wQP"/>
+                            <constraint firstItem="PCb-AJ-tb9" firstAttribute="bottom" secondItem="YZn-6Z-tgU" secondAttribute="bottom" priority="250" id="Nkr-36-Gbo"/>
                             <constraint firstItem="PCb-AJ-tb9" firstAttribute="leading" secondItem="YZn-6Z-tgU" secondAttribute="leading" id="Zih-FS-jnV"/>
                             <constraint firstItem="PCb-AJ-tb9" firstAttribute="top" secondItem="8WO-6e-W3i" secondAttribute="bottom" id="rGO-u3-vbJ"/>
+                            <constraint firstAttribute="bottom" relation="greaterThanOrEqual" secondItem="PCb-AJ-tb9" secondAttribute="bottom" constant="20" id="zca-0p-dxj"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="YZn-6Z-tgU"/>
                     </view>
@@ -87,7 +89,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="eC6-pz-rLZ" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="518.84057971014499" y="240.40178571428569"/>
+            <point key="canvasLocation" x="123" y="238"/>
         </scene>
     </scenes>
     <resources>

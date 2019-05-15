@@ -43,6 +43,8 @@ final class ChannelBackupViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        navigationItem.largeTitleDisplayMode = .never
+
         title = L10n.Scene.ChannelBackup.title
 
         if let latestDate = latestDate {

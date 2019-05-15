@@ -149,7 +149,8 @@ final class WalletCoordinator: NSObject, Coordinator {
             authenticationViewModel: authenticationViewModel,
             pushChannelList: pushChannelList,
             pushNodeURIViewController: pushNodeURIViewController,
-            pushLndLogViewController: pushLndLogViewController)
+            pushLndLogViewController: pushLndLogViewController,
+            pushChannelBackup: pushChannelBackup)
 
         let navigationController = ZapNavigationController(rootViewController: settingsViewController)
 
@@ -260,6 +261,12 @@ final class WalletCoordinator: NSObject, Coordinator {
     private func pushChannelList(on navigationController: UINavigationController) {
         let channelList = ChannelListViewController.instantiate(channelListViewModel: channelListViewModel, addChannelButtonTapped: presentAddChannel, presentChannelDetail: presentChannelDetail)
         navigationController.pushViewController(channelList, animated: true)
+    }
+
+    private func pushChannelBackup(on navigationController: UINavigationController) {
+        guard let configuration = walletConfigurationStore.selectedWallet else { return }
+        let viewController = ChannelBackupViewController.instantiate(walletConfiguration: configuration)
+        navigationController.pushViewController(viewController, animated: true)
     }
 
     private func presentChannelDetail(on presentingViewController: UIViewController, channelViewModel: ChannelViewModel) {
