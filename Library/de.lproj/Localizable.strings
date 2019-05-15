@@ -188,7 +188,7 @@
 "scene.transaction_detail.expiry_label.expired" = "Abgelaufen";
 "scene.transaction_detail.invoice_state_label" = "Status";
 "scene.transaction_detail.invoice_state_label.settled" = "bezahlt";
-"scene.transaction_detail.preimage_label" = "Preimage";
+"scene.transaction_detail.preimage_label" = "Urbild";
 "scene.transaction_detail.preimage_copy_message" = "Urbild kopiert.";
 "scene.transaction_detail.invoice_copy_message" = "Rechnung kopiert.";
 
