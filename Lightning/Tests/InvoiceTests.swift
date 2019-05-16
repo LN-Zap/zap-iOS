@@ -11,7 +11,7 @@ import SwiftBTC
 import XCTest
 
 final class MockBackupService: BackupService {
-    func save(data: Data, fileId: String) {}
+    func save(data: Data, nodePubKey: String, fileName: String) {}
 }
 
 extension RPCCredentials {
