@@ -48,6 +48,7 @@
 
 "scene.settings.title" = "Innstillinger";
 "scene.settings.section.warning" = "Advarsel";
+"scene.settings.section.lightning" = "Lightning";
 "scene.settings.section.wallet" = "Lommebok";
 "scene.settings.item.version_warning" = "Din LND er utdatert (%@). Zap iOS fungerer best med LND versjon %@ eller nyere.";
 "scene.settings.item.bitcoin_unit" = "Bitcoin-enhet";
@@ -58,6 +59,7 @@
 "scene.settings.item.on_chain_request_address.bech32" = "Bech32";
 "scene.settings.item.on_chain_request_address.p2sh" = "P2SH";
 "scene.settings.item.manage_channels" = "Administrer kanaler";
+"scene.settings.item.channel_backup" = "Channel Backup";
 "scene.settings.item.node_uri" = "Node URI";
 "scene.settings.item.remove_remote_node" = "Administrer lommebøker";
 
