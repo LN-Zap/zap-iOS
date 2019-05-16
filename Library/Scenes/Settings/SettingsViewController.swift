@@ -30,7 +30,7 @@ final class SettingsViewController: GroupedTableViewController {
 
         var lightningRows: [SettingsItem] = [
             PushViewControllerSettingsItem(title: L10n.Scene.Settings.Item.manageChannels, pushViewController: pushChannelList),
-            PushViewControllerSettingsItem(title: "Channel Backup", pushViewController: pushChannelBackup)
+            PushViewControllerSettingsItem(title: L10n.Scene.Settings.Item.channelBackup, pushViewController: pushChannelBackup)
         ]
 
         if let info = info, !info.uris.isEmpty {
@@ -53,7 +53,7 @@ final class SettingsViewController: GroupedTableViewController {
                 OnChainRequestAddressTypeSelectionSettingsItem(),
                 BlockExplorerSelectionSettingsItem()
             ]),
-            Section(title: "Lightning", rows: lightningRows),
+            Section(title: L10n.Scene.Settings.Section.lightning, rows: lightningRows),
             Section(title: L10n.Scene.Settings.Section.wallet, rows: walletRows),
             Section(title: nil, rows: [
                 // swiftlint:disable force_unwrapping

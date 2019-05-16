@@ -489,6 +489,8 @@ internal enum L10n {
         internal static let blockExplorer = L10n.tr("Localizable", "scene.settings.item.block_explorer")
         /// Change Pin
         internal static let changePin = L10n.tr("Localizable", "scene.settings.item.change_pin")
+        /// Channel Backup
+        internal static let channelBackup = L10n.tr("Localizable", "scene.settings.item.channel_backup")
         /// Currency
         internal static let currency = L10n.tr("Localizable", "scene.settings.item.currency")
         /// Need Help?
@@ -523,6 +525,8 @@ internal enum L10n {
         }
       }
       internal enum Section {
+        /// Lightning
+        internal static let lightning = L10n.tr("Localizable", "scene.settings.section.lightning")
         /// Wallet
         internal static let wallet = L10n.tr("Localizable", "scene.settings.section.wallet")
         /// Warning
