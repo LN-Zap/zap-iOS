@@ -17,7 +17,7 @@ extension Migration {
     fileprivate var didRun: Bool {
         set {
             guard let migrationKey = self.migrationKey else { return }
-            var migrationKeys: [String] = UserDefaults.Keys.migrations.get(defaultValue: [])
+            var migrationKeys = UserDefaults.Keys.migrations.get(defaultValue: [])
             if newValue {
                 if !migrationKeys.contains(migrationKey) {
                     migrationKeys.append(migrationKey)
@@ -30,7 +30,7 @@ extension Migration {
         }
         get {
             guard let migrationKey = self.migrationKey else { return false }
-            let migrationKeys: [String] = UserDefaults.Keys.migrations.get(defaultValue: [])
+            let migrationKeys = UserDefaults.Keys.migrations.get(defaultValue: [])
             return migrationKeys.contains(migrationKey)
         }
     }

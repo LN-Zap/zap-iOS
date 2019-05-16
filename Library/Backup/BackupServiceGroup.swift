@@ -15,7 +15,7 @@ final class BackupServiceGroup: BackupService {
         self.backupServices = backupServices
     }
 
-    func save(data: Data, fileId: String) {
-        backupServices.forEach { $0.save(data: data, fileId: fileId) }
+    func save(data: Data, nodePubKey: String, fileName: String) {
+        backupServices.forEach { $0.save(data: data, nodePubKey: nodePubKey, fileName: fileName) }
     }
 }

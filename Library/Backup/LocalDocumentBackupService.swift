@@ -10,9 +10,11 @@ import Lightning
 import Logger
 
 final class LocalDocumentBackupService: BackupService, BackupLogger {
-    func save(data: Data, fileId: String) {
+    func save(data: Data, nodePubKey: String, fileName: String) {
         guard let documentDirectory = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first else { return }
-        let url = documentDirectory.appendingPathComponent(fileId)
+        let url = documentDirectory
+            .appendingPathComponent(nodePubKey)
+            .appendingPathComponent(fileName)
 
         DispatchQueue.global().async { [weak self] in
             do {
@@ -22,7 +24,7 @@ final class LocalDocumentBackupService: BackupService, BackupLogger {
                 }
 
                 try data.write(to: url, options: [.atomic])
-                self?.didBackup()
+                self?.didBackup(nodePubKey: nodePubKey)
                 Logger.info("Did backup file to Documents at \(url.path)", customPrefix: "📀")
             } catch {
                 Logger.error(error.localizedDescription)

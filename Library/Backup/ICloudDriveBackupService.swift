@@ -34,9 +34,12 @@ final class ICloudDriveBackupService: BackupService, BackupLogger {
         }
     }
 
-    func save(data: Data, fileId: String) {
+    func save(data: Data, nodePubKey: String, fileName: String) {
         DispatchQueue.global().async { [weak self] in
-            guard let url = self?.containerUrl?.appendingPathComponent(fileId) else { return }
+            guard let url = self?.containerUrl?
+                .appendingPathComponent(nodePubKey)
+                .appendingPathComponent(fileName)
+                else { return }
 
             do {
                 let directory = url.deletingLastPathComponent().path
@@ -45,7 +48,7 @@ final class ICloudDriveBackupService: BackupService, BackupLogger {
                 }
 
                 try data.write(to: url, options: [.atomic])
-                self?.didBackup()
+                self?.didBackup(nodePubKey: nodePubKey)
                 Logger.info("Did backup file to iCloud at \(url.path)", customPrefix: "📀")
             } catch {
                 Logger.error(error.localizedDescription)

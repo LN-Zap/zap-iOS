@@ -6,27 +6,40 @@
 //
 
 import Foundation
+import Logger
 
 /// Writes a backup method key + date to user defaults.
 protocol BackupLogger: class {
-    static var lastBackup: Date? { get }
     static var key: String { get }
 
-    func didBackup()
+    static func lastBackup(nodePubKey: String) -> Date?
+
+    func didBackup(nodePubKey: String)
 }
 
 extension BackupLogger {
-    static var lastBackup: Date? {
-        return UserDefaults.Keys.backupDates.get(defaultValue: [:])[key]
+    static func lastBackup(nodePubKey: String) -> Date? {
+        let result = UserDefaults.Keys.backupDates.get(defaultValue: [:])[nodePubKey]?[key]
+        Logger.info("Last backup date for \(key): \(String(describing: result))", customPrefix: "📀")
+
+        return result
     }
 
     static var key: String {
         return String(describing: self).components(separatedBy: ".").last ?? "unknown"
     }
 
-    func didBackup() {
-        var backupDates = UserDefaults.Keys.backupDates.get(defaultValue: [:])
-        backupDates[Self.key] = Date()
-        UserDefaults.Keys.backupDates.set(backupDates)
+    func didBackup(nodePubKey: String) {
+        DispatchQueue.main.async {
+            var backupDates = UserDefaults.Keys.backupDates.get(defaultValue: [:])
+
+            if backupDates[nodePubKey] != nil {
+                backupDates[nodePubKey]?[Self.key] = Date()
+            } else {
+                backupDates[nodePubKey] = [Self.key: Date()]
+            }
+
+            UserDefaults.Keys.backupDates.set(backupDates)
+        }
     }
 }

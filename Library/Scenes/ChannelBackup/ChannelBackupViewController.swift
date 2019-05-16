@@ -21,7 +21,8 @@ final class ChannelBackupViewController: UIViewController {
     private var walletConfiguration: WalletConfiguration! // swiftlint:disable:this implicitly_unwrapped_optional
 
     private var latestDate: Date? {
-        return cellContent.compactMap { $0.1.lastBackup }.max()
+        guard let nodePubKey = walletConfiguration.nodePubKey else { return nil }
+        return cellContent.compactMap { $0.1.lastBackup(nodePubKey: nodePubKey) }.max()
     }
 
     private var channelBackupURL: URL? {
@@ -112,7 +113,9 @@ extension ChannelBackupViewController: UITableViewDataSource {
             label.text = title
         }
 
-        if backupType.lastBackup != nil {
+        if
+            let nodePubKey = walletConfiguration.nodePubKey,
+            backupType.lastBackup(nodePubKey: nodePubKey) != nil {
             cell.accessoryView = UIImageView(image: Asset.iconCheckGreen.image)
         } else {
             cell.accessoryView = nil
