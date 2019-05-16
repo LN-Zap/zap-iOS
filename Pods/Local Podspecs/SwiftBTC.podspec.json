@@ -23,7 +23,7 @@
   "source_files": "SwiftBTC/Classes/**/*",
   "dependencies": {
     "BigInt": [
-      "~> 3.1"
+      "~> 4"
     ]
   }
 }
