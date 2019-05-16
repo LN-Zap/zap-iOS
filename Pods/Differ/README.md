@@ -1,6 +1,6 @@
 # Differ
 
-[![Build Status](https://travis-ci.org/tonyarnold/Differ.svg?branch=master)](https://travis-ci.org/tonyarnold/Differ) [![codecov](https://codecov.io/gh/tonyarnold/Differ/branch/master/graph/badge.svg)](https://codecov.io/gh/tonyarnold/Differ)
+[![Build Status](https://travis-ci.com/tonyarnold/Differ.svg?branch=master)](https://travis-ci.com/tonyarnold/Differ) [![codecov](https://codecov.io/gh/tonyarnold/Differ/branch/master/graph/badge.svg)](https://codecov.io/gh/tonyarnold/Differ)
 
 Differ generates the differences between `Collection` instances (this includes Strings!).
 
@@ -174,7 +174,7 @@ All of the above being said, the algorithm used by Diff works best for collectio
 
 ## Requirements
 
-Differ requires Swift 4.1 / Xcode 9.3 or later to compile.
+Differ requires Swift 4.2 or 5.0 and Xcode 10.2 or later to compile.
 
 ## Installation
 

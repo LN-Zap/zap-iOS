@@ -124,7 +124,7 @@ public extension Collection {
     /// - Parameters:
     ///   - other: a collection to compare the calee to
     /// - Returns: a Diff between the calee and `other` collection
-    public func diff(
+    func diff(
         _ other: Self,
         isEqual: EqualityChecker<Self>
         ) -> Diff {
@@ -143,7 +143,7 @@ public extension Collection {
     /// - Parameters:
     ///   - to: other collection
     /// - Returns: all traces required to create an output diff
-    public func diffTraces(
+    func diffTraces(
         to: Self,
         isEqual: EqualityChecker<Self>
         ) -> [Trace] {
@@ -159,7 +159,7 @@ public extension Collection {
     }
 
     /// Returns the traces which mark the shortest diff path.
-    public func outputDiffPathTraces(
+    func outputDiffPathTraces(
         to: Self,
         isEqual: EqualityChecker<Self>
         ) -> [Trace] {
@@ -171,21 +171,17 @@ public extension Collection {
     }
 
     fileprivate func tracesForDeletions() -> [Trace] {
-        var traces = [Trace]()
-        for index in 0 ..< Int(count) {
-            let intIndex = Int(index)
-            traces.append(Trace(from: Point(x: Int(intIndex), y: 0), to: Point(x: Int(intIndex) + 1, y: 0), D: 0))
-        }
-        return traces
+        return (0 ..< count)
+            .map({
+                Trace(from: Point(x: $0, y: 0), to: Point(x: $0 + 1, y: 0), D: 0)
+            })
     }
 
     fileprivate func tracesForInsertions(to: Self) -> [Trace] {
-        var traces = [Trace]()
-        for index in 0 ..< Int(to.count) {
-            let intIndex = Int(index)
-            traces.append(Trace(from: Point(x: 0, y: Int(intIndex)), to: Point(x: 0, y: Int(intIndex) + 1), D: 0))
-        }
-        return traces
+        return (0 ..< to.count)
+                 .map({
+                   Trace(from: Point(x: 0, y: $0), to: Point(x: 0, y: $0 + 1), D: 0)
+               })
     }
 
     fileprivate func myersDiffTraces(
@@ -312,21 +308,21 @@ public extension Collection {
 public extension Collection where Element: Equatable {
 
     /// - SeeAlso: `diff(_:isEqual:)`
-    public func diff(
+    func diff(
         _ other: Self
         ) -> Diff {
         return diff(other, isEqual: { $0 == $1 })
     }
 
     /// - SeeAlso: `diffTraces(to:isEqual:)`
-    public func diffTraces(
+    func diffTraces(
         to: Self
         ) -> [Trace] {
         return diffTraces(to: to, isEqual: { $0 == $1 })
     }
 
     /// - SeeAlso: `outputDiffPathTraces(to:isEqual:)`
-    public func outputDiffPathTraces(
+    func outputDiffPathTraces(
         to: Self
         ) -> [Trace] {
         return outputDiffPathTraces(to: to, isEqual: { $0 == $1 })
@@ -351,7 +347,7 @@ extension DiffProtocol {
 }
 
 public extension Diff {
-    public init(traces: [Trace]) {
+    init(traces: [Trace]) {
         elements = traces.compactMap { Diff.Element(trace: $0) }
     }
 }

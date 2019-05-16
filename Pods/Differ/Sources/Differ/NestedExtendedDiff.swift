@@ -42,7 +42,7 @@ public extension Collection
     /// - Parameters:
     ///   - other: a collection to compare the calee to
     /// - Returns: a `NestedDiff` between the calee and `other` collection
-    public func nestedExtendedDiff(
+    func nestedExtendedDiff(
         to: Self,
         isEqualSection: EqualityChecker<Self>,
         isEqualElement: NestedElementEqualityChecker<Self>
@@ -133,7 +133,7 @@ public extension Collection
     Element.Element: Equatable {
 
     /// - SeeAlso: `nestedDiff(to:isEqualSection:isEqualElement:)`
-    public func nestedExtendedDiff(
+    func nestedExtendedDiff(
         to: Self,
         isEqualSection: EqualityChecker<Self>
     ) -> NestedExtendedDiff {
@@ -149,7 +149,7 @@ public extension Collection
     where Element: Collection, Element: Equatable {
 
     /// - SeeAlso: `nestedDiff(to:isEqualSection:isEqualElement:)`
-    public func nestedExtendedDiff(
+    func nestedExtendedDiff(
         to: Self,
         isEqualElement: NestedElementEqualityChecker<Self>
     ) -> NestedExtendedDiff {
@@ -166,7 +166,7 @@ public extension Collection
     Element.Element: Equatable {
 
     /// - SeeAlso: `nestedDiff(to:isEqualSection:isEqualElement:)`
-    public func nestedExtendedDiff(to: Self) -> NestedExtendedDiff {
+    func nestedExtendedDiff(to: Self) -> NestedExtendedDiff {
         return nestedExtendedDiff(
             to: to,
             isEqualSection: { $0 == $1 },

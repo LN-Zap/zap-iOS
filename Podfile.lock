@@ -1,8 +1,8 @@
 PODS:
   - BigInt (4.0.0)
-  - Bond (7.3.2):
+  - Bond (7.5.0):
     - Differ (~> 1.3)
-    - ReactiveKit (~> 3.9)
+    - ReactiveKit (~> 3.10)
   - BoringSSL (10.0.6):
     - BoringSSL/Implementation (= 10.0.6)
     - BoringSSL/Interface (= 10.0.6)
@@ -15,7 +15,7 @@ PODS:
   - BoringSSL/Implementation (10.0.6):
     - BoringSSL/Interface (= 10.0.6)
   - BoringSSL/Interface (10.0.6)
-  - Differ (1.3.0)
+  - Differ (1.4.1)
   - gRPC-Core (1.19.0):
     - gRPC-Core/Implementation (= 1.19.0)
     - gRPC-Core/Interface (= 1.19.0)
@@ -24,13 +24,13 @@ PODS:
     - gRPC-Core/Interface (= 1.19.0)
     - nanopb (~> 0.3)
   - gRPC-Core/Interface (1.19.0)
-  - KeychainAccess (3.1.2)
+  - KeychainAccess (3.2.0)
   - nanopb (0.3.901):
     - nanopb/decode (= 0.3.901)
     - nanopb/encode (= 0.3.901)
   - nanopb/decode (0.3.901)
   - nanopb/encode (0.3.901)
-  - ReactiveKit (3.9.7)
+  - ReactiveKit (3.12.0)
   - SimulatorStatusMagic (2.4.1)
   - SwiftBTC (0.0.8):
     - BigInt (~> 4)
@@ -68,14 +68,14 @@ EXTERNAL SOURCES:
 
 SPEC CHECKSUMS:
   BigInt: 2aad1a9942dc932ec8b84290d2c564a3d76f97ab
-  Bond: ffbd3a05927e89c838b5176ab1d8cf21954d40c2
+  Bond: 6abbc33a4cf88e65a0f8b1ba8276ac34584ad897
   BoringSSL: e10f92a27043805c01071fe815a5cd98ae8212e7
   BoringSSL-GRPC: db8764df3204ccea016e1c8dd15d9a9ad63ff318
-  Differ: 9fcee7602542d7c6484ce05a0faec1c11258ed63
+  Differ: ca4350872e32a1aeedf3d9e2d9e47127833bfa9c
   gRPC-Core: bd9472c8daa2e414b9f8038ba667bf56ce0e02b8
-  KeychainAccess: b3816fddcf28aa29d94b10ec305cd52be14c472b
+  KeychainAccess: 3b1bf8a77eb4c6ea1ce9404c292e48f948954c6b
   nanopb: 2901f78ea1b7b4015c860c2fdd1ea2fee1a18d48
-  ReactiveKit: 5f4c440715d671901c382ae6b42ed3337ce4699b
+  ReactiveKit: 7634cc10d9fb8791f9a87bf60c283fb420db3184
   SimulatorStatusMagic: 28d4a9d1a500ac7cea0b2b5a43c1c6ddb40ba56c
   SwiftBTC: 5e740f6e962fa5caf0aef0cccedf31461ba23d5f
   SwiftGRPC: 25c008ae77c849ab292c138bfe4dbf57a9ad866e

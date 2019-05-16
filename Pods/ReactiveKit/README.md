@@ -4,11 +4,13 @@
 [![Build Status](https://travis-ci.org/DeclarativeHub/ReactiveKit.svg?branch=master)](https://travis-ci.org/DeclarativeHub/ReactiveKit)
 [![Twitter](https://img.shields.io/badge/twitter-@srdanrasic-red.svg?style=flat)](https://twitter.com/srdanrasic)
 
-__ReactiveKit__ is a lightweight Swift framework for reactive and functional reactive programming. With just over 2000 lines of code it enables you to get into reactive world today.
+__ReactiveKit__ is a lightweight Swift framework for reactive and functional reactive programming that enables you to get into the reactive world today.
 
 The framework is compatible with all Apple platforms and Linux. If you are developing an iOS or macOS app, make sure to also check out [Bond](https://github.com/DeclarativeHub/Bond) framework that provides UIKit and AppKit bindings, reactive delegates and data sources.
 
 This document will introduce the framework by going through its implementation. By the end you should be equipped with a pretty good understanding of how is the framework implemented and what are the best ways to use it.
+
+_To get started quickly, clone the project and explore available tutorials in the playgrounds of the workspace!_
 
 ## Summary
 
@@ -166,7 +168,7 @@ Visually that would look like:
 While in the code, we would do:
 
 ```swift
-let counter = Signal<Int, NoError> { observer in
+let counter = Signal<Int, Never> { observer in
 
   // send first three positive integers
   observer(.next(1))
@@ -228,7 +230,7 @@ public extension ObserverProtocol {
 So with ReactiveKit we can implement previous example like this:
 
 ```swift
-let counter = Signal<Int, NoError> { observer in
+let counter = Signal<Int, Never> { observer in
 
   // send first three positive integers
   observer.next(1)
@@ -499,7 +501,7 @@ ReactiveKit provides following type:
 
 ```swift
 /// An error type that cannot be instantiated. Used to make signals non-failable.
-public enum NoError: Error {
+public enum Never: Error {
 }
 ```
 
@@ -508,19 +510,19 @@ An enum with no cases that conforms to `Swift.Error` protocol. Since it has no c
 For example, if we try
 
 ```swift
-let signal = Signal<Int, NoError> { observer in
+let signal = Signal<Int, Never> { observer in
   ...
   observer.failed(/* What do I send here? */)
   ...
 }
 ```
 
-we will hit the wall because we cannot create an instance of `NoError` so we cannot send `.failed` event. This is a very powerful and important feature because whenever you see a signal whose errors are specialized to `NoError` type you can safely assume that signal will not fail - because it cannot.
+we will hit the wall because we cannot create an instance of `Never` so we cannot send `.failed` event. This is a very powerful and important feature because whenever you see a signal whose errors are specialized to `Never` type you can safely assume that signal will not fail - because it cannot.
 
 Signals that do not fail are very common so ReactiveKit defines a typealias to make their usage simple and consistent.
 
 ```swift
-public typealias SafeSignal<Element> = Signal<Element, NoError>
+public typealias SafeSignal<Element> = Signal<Element, Never>
 ```
 
 You are recommend to use `SafeSignal` whenever you have a signal that cannot fail.
@@ -809,7 +811,7 @@ extension MyViewModel: BindingExecutionContextProvider {
 Now we can peek into the binding implementation.
 
 ```swift
-extension SignalProtocol where Error == NoError {
+extension SignalProtocol where Error == Never {
 
   @discardableResult
   public func bind<Target: Deallocatable>(to target: Target, setter: @escaping (Target, Element) -> Void) -> Disposable
@@ -919,7 +921,7 @@ Our new kind of signal, subject, is an observer itself that holds an array of it
 How do we use such subject?
 
 ```swift
-let name = Subject<String, NoError>()
+let name = Subject<String, Never>()
 
 name.observeNext { name in print("Hi \(name)!") }
 
@@ -940,7 +942,7 @@ Subjects are useful when we need to convert actions from imperative world into s
 ```swift
 class MyViewController: UIViewController {
 
-  fileprivate let _viewDidAppear = PublishSubject<Void, NoError>()
+  fileprivate let _viewDidAppear = PublishSubject<Void, Never>()
 
   override viewDidAppear(_ animated: Bool) {
     super.viewDidAppear(animated)
@@ -1052,7 +1054,7 @@ Trivial enough. Creating a `ConnectableSignal` with `ReplaySubject` ensures that
 
 We somehow need to convert connectable signal into a non-connectable one. In order to do that, we need to call connect at the right time and dispose at the right time. What are the right times? It is only reasonable - right time to connect is on the first observation and right time to dispose is when the last observation is disposed.
 
-In order to do this, we will keep a reference count. With each new observer, the count goes up, while on each disposal it goes down. We will connect when count goes from 0 to 1 and dispose when count goes from 1 to 0.  
+In order to do this, we will keep a reference count. With each new observer, the count goes up, while on each disposal it goes down. We will connect when count goes from 0 to 1 and dispose when count goes from 1 to 0.
 
 ```swift
 public extension ConnectableSignalProtocol {
@@ -1235,7 +1237,7 @@ extension UIViewController: LoadingStateListener {
 }
 ```
 
-Notice that `LoadingStateListener` gets `ObservedLoadingState` instead of `LoadingState`. The difference between the two is that the former has one additional state: `.reloading`. ReactiveKit will automatically convert subsequent `.loading` states into `.reloading` states so that you can potentially act differently in those two cases. 
+Notice that `LoadingStateListener` gets `ObservedLoadingState` instead of `LoadingState`. The difference between the two is that the former has one additional state: `.reloading`. ReactiveKit will automatically convert subsequent `.loading` states into `.reloading` states so that you can potentially act differently in those two cases.
 
 Now that we have a loading state listener, we can convert any loading signal into a regular safe signal by consuming its loading state by the listener:
 
@@ -1248,7 +1250,7 @@ fetchImage
     }
 ```
 
-Exciting! Operator `consumeLoadingState` takes the loading state listener and updates it each time a state is produced by the loading signal. It returns a safe signal of loading values, i.e. it unwraps the underlying value from the `.loaded` state. In our example that would be `SafeSignal<UIImage>` which we can then bind to our image view and update its content. 
+Exciting! Operator `consumeLoadingState` takes the loading state listener and updates it each time a state is produced by the loading signal. It returns a safe signal of loading values, i.e. it unwraps the underlying value from the `.loaded` state. In our example that would be `SafeSignal<UIImage>` which we can then bind to our image view and update its content.
 
 #### Transforming loading signals
 
@@ -1275,7 +1277,7 @@ class UserService {
     let user: LoadingProperty<User, ApplicationError>
 
     init(_ api: API) {
-        
+
         user = LoadingProperty {
             api.fetchUser()
         }
@@ -1342,18 +1344,16 @@ All you have to provide to the operator is the signals and a closure that maps t
 
 ## Requirements
 
-* iOS 8.0+ / macOS 10.9+ / tvOS 9.0+ / watchOS 2.0+
-* Xcode 9
+* iOS 8.0+ / macOS 10.11+ / tvOS 9.0+ / watchOS 2.0+
+* Xcode 10.2
 
 or
 
-* Linux + Swift 4.0 
+* Linux + Swift 5.0
 
 ## Installation
 
 Bond framework is optional, but recommended for Cocoa / Cocoa touch development.
-
-> Note: Since v3.7, ReactiveKit is using Swift 4 syntax that compiles under Xcode 9. If you are still using Xcode 8, please do not update to v3.7 and stay on the latest v3.6.x version.
 
 ### Carthage
 
@@ -1372,14 +1372,14 @@ pod 'Bond'
 ### Swift Package Manager
 
 ```
-// swift-tools-version:4.0
+// swift-tools-version:5.0
 
 import PackageDescription
 
 let package = Package(
   name: "MyApp",
   dependencies: [
-    .package(url: "https://github.com/DeclarativeHub/ReactiveKit.git", from: "3.9.0")
+    .package(url: "https://github.com/DeclarativeHub/ReactiveKit.git", from: "3.10.0")
   ],
   targets: [
     .target(name: "MyApp", dependencies: ["ReactiveKit"])
@@ -1389,10 +1389,11 @@ let package = Package(
 
 ## Communication
 
-* If you'd like to ask a general question, open an issue.
-* If you have found a bug, open an issue or do a pull request with the fix.
-* If you have a feature request, open an issue.
-* If you want to contribute, submit a pull request (include unit tests).
+* If you'd like to ask a general question, you can [open an issue](https://github.com/DeclarativeHub/ReactiveKit/issues) or go to [StackOverflow](https://stackoverflow.com/questions/tagged/reactivekit).
+* If you have found a bug, [open an issue](https://github.com/DeclarativeHub/ReactiveKit/issues) or create a [pull request](https://github.com/DeclarativeHub/ReactiveKit/pulls) with the fix.
+* If you have a feature request, [open an issue](https://github.com/DeclarativeHub/ReactiveKit/issues) .
+* If you want to contribute, submit a [pull request](https://github.com/DeclarativeHub/ReactiveKit/pulls) (include unit tests).
+
 
 ## Additional Documentation
 
@@ -1403,7 +1404,7 @@ let package = Package(
 
 The MIT License (MIT)
 
-Copyright (c) 2015-2018 Srdan Rasic (@srdanrasic)
+Copyright (c) 2015-2019 Srdan Rasic (@srdanrasic)
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal

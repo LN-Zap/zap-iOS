@@ -17,7 +17,7 @@ public func patch<T: Collection>(
 
 public extension Diff {
 
-    public typealias OrderedBefore = (_ fst: Diff.Element, _ snd: Diff.Element) -> Bool
+    typealias OrderedBefore = (_ fst: Diff.Element, _ snd: Diff.Element) -> Bool
 
     /// Generates arbitrarly sorted patch sequence based on the callee. It is a list of steps to be applied to obtain the `to` collection from the `from` one. The sorting function lets you sort the output e.g. you might want the output patch to have insertions first.
     ///
@@ -28,12 +28,12 @@ public extension Diff {
     ///   - to: The target collection (usually the target collecetion of the callee)
     ///   - sort: A sorting function
     /// - Returns: Arbitrarly sorted sequence of steps to obtain `to` collection from the `from` one.
-    public func patch<T: Collection>(
+    func patch<T: Collection>(
         from: T,
         to: T,
         sort: OrderedBefore
     ) -> [Patch<T.Element>] {
-        let shiftedPatch = patch(from: from, to: to)
+        let shiftedPatch = patch(to: to)
         return shiftedPatchElements(from: sortedPatchElements(
             from: shiftedPatch,
             sortBy: sort

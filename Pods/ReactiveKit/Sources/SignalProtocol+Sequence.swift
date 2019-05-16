@@ -1,7 +1,7 @@
 //
 //  The MIT License (MIT)
 //
-//  Copyright (c) 2016 Srdan Rasic (@srdanrasic)
+//  Copyright (c) 2016-2019 Srdan Rasic (@srdanrasic)
 //
 //  Permission is hereby granted, free of charge, to any person obtaining a copy
 //  of this software and associated documentation files (the "Software"), to deal
@@ -23,18 +23,35 @@
 //
 
 import Foundation
-import ReactiveKit
 
-extension ReactiveExtensions where Base: NotificationCenter {
+extension SignalProtocol {
 
-    /// Observe notifications using a signal.
-    public func notification(name: NSNotification.Name, object: AnyObject? = nil) -> Signal<Notification, Never> {
+    /// Map element into a collection, flattening the collection into next elements.
+    /// Shorthand for `map(transform).flattenElements()`.
+    public func flatMap<NewElement>(_ transform: @escaping (Element) -> [NewElement]) -> Signal<NewElement, Error> {
+        return map(transform).flattenElements()
+    }
+}
+
+extension SignalProtocol where Element: Sequence {
+
+    /// Map inner sequence.
+    public func mapElement<NewElement>(_ transform: @escaping (Element.Iterator.Element) -> NewElement) -> Signal<[NewElement], Error> {
+        return map { $0.map(transform) }
+    }
+
+    /// Unwrap elements from each emitted sequence into the elements of the signal.
+    public func flattenElements() -> Signal<Element.Iterator.Element, Error> {
         return Signal { observer in
-            let subscription = self.base.addObserver(forName: name, object: object, queue: nil, using: { notification in
-                observer.next(notification)
-            })
-            return BlockDisposable {
-                self.base.removeObserver(subscription)
+            return self.observe { event in
+                switch event {
+                case .next(let sequence):
+                    sequence.forEach(observer.next)
+                case .completed:
+                    observer.completed()
+                case .failed(let error):
+                    observer.failed(error)
+                }
             }
         }
     }

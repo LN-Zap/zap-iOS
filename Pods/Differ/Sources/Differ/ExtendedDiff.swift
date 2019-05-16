@@ -58,7 +58,7 @@ public extension Collection {
     ///   - other: a collection to compare the callee to
     ///   - isEqual: instance comparator closure
     /// - Returns: ExtendedDiff between the callee and `other` collection
-    public func extendedDiff(_ other: Self, isEqual: EqualityChecker<Self>) -> ExtendedDiff {
+    func extendedDiff(_ other: Self, isEqual: EqualityChecker<Self>) -> ExtendedDiff {
         return extendedDiff(from: diff(other, isEqual: isEqual), other: other, isEqual: isEqual)
     }
 
@@ -71,7 +71,7 @@ public extension Collection {
     ///   - other: a collection to compare the callee to
     ///   - isEqual: instance comparator closure
     /// - Returns: ExtendedDiff between the callee and `other` collection
-    public func extendedDiff(from diff: Diff, other: Self, isEqual: EqualityChecker<Self>) -> ExtendedDiff {
+    func extendedDiff(from diff: Diff, other: Self, isEqual: EqualityChecker<Self>) -> ExtendedDiff {
 
         var elements: [ExtendedDiff.Element] = []
         var moveOriginIndices = Set<Int>()
@@ -171,7 +171,7 @@ public extension Collection {
 public extension Collection where Element: Equatable {
 
     /// - SeeAlso: `extendedDiff(_:isEqual:)`
-    public func extendedDiff(_ other: Self) -> ExtendedDiff {
+    func extendedDiff(_ other: Self) -> ExtendedDiff {
         return extendedDiff(other, isEqual: { $0 == $1 })
     }
 }

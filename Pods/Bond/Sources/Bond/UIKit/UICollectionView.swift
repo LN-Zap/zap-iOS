@@ -27,7 +27,7 @@
 import UIKit
 import ReactiveKit
 
-public extension ReactiveExtensions where Base: UICollectionView {
+extension ReactiveExtensions where Base: UICollectionView {
 
     /// A `ProtocolProxy` for the collection view delegate.
     ///
@@ -50,7 +50,7 @@ public extension ReactiveExtensions where Base: UICollectionView {
     /// A signal that emits index paths of selected collection view cells.
     ///
     /// - Note: Uses collection view's `delegate` protocol proxy to observe calls made to `UICollectionViewDelegate.collectionView(_:didSelectItemAt:)` method.
-    var selectedItemIndexPath: SafeSignal<IndexPath> {
+    public var selectedItemIndexPath: SafeSignal<IndexPath> {
         return delegate.signal(for: #selector(UICollectionViewDelegate.collectionView(_:didSelectItemAt:))) { (subject: SafePublishSubject<IndexPath>, _: UICollectionView, indexPath: IndexPath) in
             subject.next(indexPath)
         }

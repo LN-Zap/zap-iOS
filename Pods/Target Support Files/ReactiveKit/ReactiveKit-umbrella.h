@@ -10,7 +10,6 @@
 #endif
 #endif
 
-#import "ReactiveKit.h"
 
 FOUNDATION_EXPORT double ReactiveKitVersionNumber;
 FOUNDATION_EXPORT const unsigned char ReactiveKitVersionString[];
