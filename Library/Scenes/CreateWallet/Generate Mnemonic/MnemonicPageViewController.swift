@@ -23,7 +23,7 @@ final class MnemonicPageViewController: UIPageViewController {
         view.backgroundColor = UIColor.Zap.background
 
         mnemonicViewModel?.pageWords
-            .ignoreNil()
+            .ignoreNils()
             .observeOn(DispatchQueue.main)
             .observeNext { [weak self] pageWords in
                 self?.updateViewControllers(pageWords: pageWords)

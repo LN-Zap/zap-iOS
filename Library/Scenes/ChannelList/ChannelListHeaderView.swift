@@ -83,8 +83,8 @@ final class ChannelListHeaderView: UIView {
     }
 
     private func setupCircleView(for channelListViewModel: ChannelListViewModel) {
-        let signals: [Signal<Satoshi, NoError>] = segments.map { channelListViewModel[keyPath: $0.source].toSignal() }
-        combineLatest(signals, combine: { _ in 0 })
+        let signals: [Signal<Satoshi, Never>] = segments.map { channelListViewModel[keyPath: $0.source].toSignal() }
+        Signal(combiningLatest: signals, combine: { _ in 0 })
             .observeNext { [weak self] _ in
                 guard let segments = self?.segments else { return }
                 self?.circleGraphView.segments = segments.map {

@@ -139,7 +139,7 @@ final class WalletConfigurationStore {
     func updateInfo(for configuration: WalletConfiguration, infoService: InfoService) {
         infoBag?.dispose()
         self.infoBag = infoService.info
-            .ignoreNil()
+            .ignoreNils()
             .observeNext { [weak self] info in
                 self?.update(info: info, for: configuration)
             }

@@ -18,7 +18,7 @@ public final class BalanceService {
     public let lightning = Observable<Satoshi>(0)
     public let pending = Observable<Satoshi>(0)
 
-    public let total: Signal<Satoshi, NoError>
+    public let total: Signal<Satoshi, Never>
 
     init(api: LightningApi) {
         self.api = api

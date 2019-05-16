@@ -18,7 +18,7 @@ final class WalletViewModel: NSObject {
         return lightningService.infoService.network
     }
 
-    var nodeAlias: Signal<String?, NoError> {
+    var nodeAlias: Signal<String?, Never> {
         return lightningService.infoService.info
             .map { $0?.alias }
     }

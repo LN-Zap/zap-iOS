@@ -62,7 +62,7 @@ final class WalletCoordinator: NSObject, Coordinator {
     public func listenForStateChanges() {
         lightningService.infoService.walletState
             .skip(first: 1)
-            .distinct()
+            .distinctUntilChanged()
             .observeOn(DispatchQueue.main)
             .observeNext { [weak self] state in
                 self?.updateFor(state: state)
