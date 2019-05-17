@@ -49,8 +49,8 @@ public final class TransactionService {
         }
     }
 
-    public func onChainFees(address: BitcoinAddress, amount: Satoshi, completion: @escaping FeeApiCompletion) {
-        api.estimateFees(address: address, amount: amount) {
+    public func onChainFees(address: BitcoinAddress, amount: Satoshi, confirmationTarget: Int, completion: @escaping FeeApiCompletion) {
+        api.estimateFees(address: address, amount: amount, confirmationTarget: confirmationTarget) {
             let fees = (try? $0.get())?.total
             completion((amount: amount, fee: fees))
         }
@@ -66,9 +66,9 @@ public final class TransactionService {
         }
     }
 
-    public func sendCoins(bitcoinURI: BitcoinURI, amount: Satoshi, completion: @escaping ApiCompletion<Success>) {
+    public func sendCoins(bitcoinURI: BitcoinURI, amount: Satoshi, confirmationTarget: Int, completion: @escaping ApiCompletion<Success>) {
         let destinationAddress = bitcoinURI.bitcoinAddress
-        api.sendCoins(address: destinationAddress, amount: amount) {
+        api.sendCoins(address: destinationAddress, amount: amount, confirmationTarget: confirmationTarget) {
             completion($0.map { _ in Success() })
         }
     }

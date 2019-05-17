@@ -74,11 +74,12 @@ extension Lnrpc_OpenChannelRequest {
 }
 
 extension Lnrpc_SendCoinsRequest {
-    init(address: BitcoinAddress, amount: Satoshi) {
+    init(address: BitcoinAddress, amount: Satoshi, confirmationTarget: Int) {
         self.init()
 
         self.addr = address.string
         self.amount = amount.int64
+        self.targetConf = Int32(confirmationTarget)
     }
 }
 
@@ -157,8 +158,9 @@ extension Lnrpc_ListInvoiceRequest {
 }
 
 extension Lnrpc_EstimateFeeRequest {
-    init(address: BitcoinAddress, amount: Satoshi) {
+    init(address: BitcoinAddress, amount: Satoshi, confirmationTarget: Int) {
         self.init()
         self.addrToAmount = [address.string: amount.int64]
+        self.targetConf = Int32(confirmationTarget)
     }
 }

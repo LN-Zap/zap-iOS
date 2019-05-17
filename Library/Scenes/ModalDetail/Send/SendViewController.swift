@@ -6,6 +6,7 @@
 //
 
 import Lightning
+import Logger
 import SwiftBTC
 import SwiftLnd
 import UIKit
@@ -111,11 +112,42 @@ final class SendViewController: ModalDetailViewController {
 
     private func addFeeSelection() {
         contentStackView.addArrangedElement(.separator)
-        let stackView = contentStackView.addArrangedElement(.horizontalStackView(compressionResistant: .first, content: [
-            .label(text: L10n.Scene.Send.maximumFee, style: Style.Label.footnote),
+
+        let feeLabelText: String
+        switch viewModel.method {
+        case .onChain:
+            feeLabelText = L10n.Scene.Send.OnChain.fee
+        case .lightning:
+            feeLabelText = L10n.Scene.Send.maximumFee
+        }
+
+        var content: [StackViewElement] = [
+            .label(text: feeLabelText, style: Style.Label.footnote),
             .customView(LoadingAmountView(loadable: viewModel.fee))
-        ]))
-        stackView.subviews[0].setContentHuggingPriority(.required, for: .horizontal)
+        ]
+
+        if case .onChain = viewModel.method {
+            let segmentedControl = UISegmentedControl(items: [
+                L10n.Scene.Send.OnChain.Fee.fast,
+                L10n.Scene.Send.OnChain.Fee.slow
+            ])
+            segmentedControl.tintColor = UIColor.Zap.gray
+            segmentedControl.selectedSegmentIndex = 0
+            segmentedControl.addTarget(self, action: #selector(feeSegmentChanged(segmentedControl:)), for: .valueChanged)
+            content.append(.customView(segmentedControl))
+        }
+
+        let horizontalStackView = contentStackView.addArrangedElement(.horizontalStackView(compressionResistant: .first, content: content))
+        horizontalStackView.subviews[0].setContentHuggingPriority(.required, for: .horizontal)
+    }
+
+    @objc private func feeSegmentChanged(segmentedControl: UISegmentedControl) {
+        Logger.info(segmentedControl.selectedSegmentIndex)
+        if segmentedControl.selectedSegmentIndex == 0 {
+            viewModel.confirmationTarget = 0
+        } else {
+            viewModel.confirmationTarget = 12 * 6
+        }
     }
 
     private func authenticate(completion: @escaping (Result<Success, AuthenticationError>) -> Void) {

@@ -90,8 +90,8 @@ public final class LightningApi {
         connection.subscribeChannelEvents(Lnrpc_ChannelEventSubscription(), completion: run(completion, map: ChannelEventUpdate.init))
     }
 
-    public func sendCoins(address: BitcoinAddress, amount: Satoshi, completion: @escaping ApiCompletion<String>) {
-        let request = Lnrpc_SendCoinsRequest(address: address, amount: amount)
+    public func sendCoins(address: BitcoinAddress, amount: Satoshi, confirmationTarget: Int, completion: @escaping ApiCompletion<String>) {
+        let request = Lnrpc_SendCoinsRequest(address: address, amount: amount, confirmationTarget: confirmationTarget)
         connection.sendCoins(request, completion: run(completion) { $0.txid })
     }
 
@@ -180,8 +180,8 @@ public final class LightningApi {
         connection.subscribeChannelBackups(Lnrpc_ChannelBackupSubscription(), completion: run(completion, map: ChannelBackup.init))
     }
 
-    public func estimateFees(address: BitcoinAddress, amount: Satoshi, completion: @escaping ApiCompletion<FeeEstimate>) {
-        let request = Lnrpc_EstimateFeeRequest(address: address, amount: amount)
+    public func estimateFees(address: BitcoinAddress, amount: Satoshi, confirmationTarget: Int, completion: @escaping ApiCompletion<FeeEstimate>) {
+        let request = Lnrpc_EstimateFeeRequest(address: address, amount: amount, confirmationTarget: confirmationTarget)
         connection.estimateFee(request, completion: run(completion, map: FeeEstimate.init))
     }
 }

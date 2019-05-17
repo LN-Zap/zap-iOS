@@ -461,8 +461,16 @@ internal enum L10n {
         internal static let title = L10n.tr("Localizable", "scene.send.lightning.title")
       }
       internal enum OnChain {
+        /// Fee:
+        internal static let fee = L10n.tr("Localizable", "scene.send.on_chain.fee")
         /// Send On-Chain
         internal static let title = L10n.tr("Localizable", "scene.send.on_chain.title")
+        internal enum Fee {
+          /// Fast
+          internal static let fast = L10n.tr("Localizable", "scene.send.on_chain.fee.fast")
+          /// Slow
+          internal static let slow = L10n.tr("Localizable", "scene.send.on_chain.fee.slow")
+        }
       }
       internal enum PasteButton {
         /// Paste Address

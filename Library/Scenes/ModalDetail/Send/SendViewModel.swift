@@ -62,6 +62,13 @@ final class SendViewModel: NSObject {
             updateIsUIEnabled()
         }
     }
+
+    var confirmationTarget: Int = 0 {
+        didSet {
+            updateFee()
+        }
+    }
+
     var isSending = false {
         didSet {
             updateIsUIEnabled()
@@ -169,7 +176,7 @@ final class SendViewModel: NSObject {
         case .lightning(let paymentRequest):
             lightningService.transactionService.upperBoundLightningFees(for: paymentRequest, amount: amount, completion: feeCompletion)
         case .onChain(let bitcoinURI):
-            lightningService.transactionService.onChainFees(address: bitcoinURI.bitcoinAddress, amount: amount, completion: feeCompletion)
+            lightningService.transactionService.onChainFees(address: bitcoinURI.bitcoinAddress, amount: amount, confirmationTarget: confirmationTarget, completion: feeCompletion)
         }
     }
 
@@ -189,7 +196,7 @@ final class SendViewModel: NSObject {
         case .lightning(let paymentRequest):
             lightningService.transactionService.sendPayment(paymentRequest, amount: amount, completion: internalComplection)
         case .onChain(let bitcoinURI):
-            lightningService.transactionService.sendCoins(bitcoinURI: bitcoinURI, amount: amount, completion: internalComplection)
+            lightningService.transactionService.sendCoins(bitcoinURI: bitcoinURI, amount: amount, confirmationTarget: confirmationTarget, completion: internalComplection)
         }
     }
 }
