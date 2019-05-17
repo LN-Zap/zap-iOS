@@ -120,6 +120,9 @@
 "scene.send.sending" = "Slanje...";
 "scene.send.lightning.title" = "Pošalji LN plaćanje";
 "scene.send.on_chain.title" = "Send On-Chain";
+"scene.send.on_chain.fee" = "Fee:";
+"scene.send.on_chain.fee.fast" = "Fast";
+"scene.send.on_chain.fee.slow" = "Slow";
 "scene.send.authentication_failed" = "Provjera autentičnosti nije uspjela";
 "scene.send.maximum_fee" = "Očekivani trošak:";
 "scene.send.subtitle.on_chain_balance" = "On-chain balance: %@";
