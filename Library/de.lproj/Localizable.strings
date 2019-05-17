@@ -59,7 +59,7 @@
 "scene.settings.item.on_chain_request_address.bech32" = "Bech32";
 "scene.settings.item.on_chain_request_address.p2sh" = "P2SH";
 "scene.settings.item.manage_channels" = "Kanäle verwalten";
-"scene.settings.item.channel_backup" = "Channel Backup";
+"scene.settings.item.channel_backup" = "Kanal Backup";
 "scene.settings.item.node_uri" = "Knoten-Adresse";
 "scene.settings.item.remove_remote_node" = "Verwalten von Wallets";
 
@@ -120,9 +120,9 @@
 "scene.send.sending" = "Wird gesendet...";
 "scene.send.lightning.title" = "Sende Lightning-Zahlung";
 "scene.send.on_chain.title" = "Sende on-Chain";
-"scene.send.on_chain.fee" = "Fee:";
-"scene.send.on_chain.fee.fast" = "Fast";
-"scene.send.on_chain.fee.slow" = "Slow";
+"scene.send.on_chain.fee" = "Gebühr:";
+"scene.send.on_chain.fee.fast" = "Schnell";
+"scene.send.on_chain.fee.slow" = "Langsam";
 "scene.send.authentication_failed" = "Authentifizierung fehlgeschlagen";
 "scene.send.maximum_fee" = "Voraussichtliche Gebühr:";
 "scene.send.subtitle.on_chain_balance" = "On chain Saldo: %@";
