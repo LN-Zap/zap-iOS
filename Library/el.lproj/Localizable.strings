@@ -120,6 +120,9 @@
 "scene.send.sending" = "Sending...";
 "scene.send.lightning.title" = "Αποστολή πληρωμής Lightning";
 "scene.send.on_chain.title" = "Send On-Chain";
+"scene.send.on_chain.fee" = "Fee:";
+"scene.send.on_chain.fee.fast" = "Fast";
+"scene.send.on_chain.fee.slow" = "Slow";
 "scene.send.authentication_failed" = "Authentication failed";
 "scene.send.maximum_fee" = "Expected Fee:";
 "scene.send.subtitle.on_chain_balance" = "On-chain balance: %@";
