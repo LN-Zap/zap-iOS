@@ -120,6 +120,9 @@
 "scene.send.sending" = "Отпарвка...";
 "scene.send.lightning.title" = "Отправить Lightning перевод";
 "scene.send.on_chain.title" = "Send On-Chain";
+"scene.send.on_chain.fee" = "Fee:";
+"scene.send.on_chain.fee.fast" = "Fast";
+"scene.send.on_chain.fee.slow" = "Slow";
 "scene.send.authentication_failed" = "Ошибка проверки подлинности";
 "scene.send.maximum_fee" = "Ожидаемая Комиссия:";
 "scene.send.subtitle.on_chain_balance" = "On-chain balance: %@";
