@@ -120,6 +120,9 @@
 "scene.send.sending" = "In Invio...";
 "scene.send.lightning.title" = "Invia Pagamento Lightning";
 "scene.send.on_chain.title" = "Invia On-chain";
+"scene.send.on_chain.fee" = "Fee:";
+"scene.send.on_chain.fee.fast" = "Fast";
+"scene.send.on_chain.fee.slow" = "Slow";
 "scene.send.authentication_failed" = "Autenticazione fallita";
 "scene.send.maximum_fee" = "Commissione prevista:";
 "scene.send.subtitle.on_chain_balance" = "Saldo on-chain: %@";
