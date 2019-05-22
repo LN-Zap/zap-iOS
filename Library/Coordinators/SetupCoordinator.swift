@@ -95,7 +95,7 @@ final class SetupCoordinator: Coordinator {
     }
 
     private func connectRemoteNode(_ rpcCredentials: RPCCredentials?) {
-        let viewController = connectRemoteNodeViewController()
+        let viewController = connectRemoteNodeViewController(rpcCredentials: rpcCredentials)
         navigationController?.pushViewController(viewController, animated: true)
     }
 
@@ -128,15 +128,15 @@ final class SetupCoordinator: Coordinator {
         return connectRemoteNodeViewController()
         #else
         if walletConfigurationStore.hasLocalWallet {
-            return connectRemoteNodeViewController()
+            return connectRemoteNodeViewController(rpcCredentials: nil)
         } else {
             return SelectWalletCreationMethodViewController.instantiate(createButtonTapped: createNewWallet, recoverButtonTapped: recoverExistingWallet, connectButtonTapped: connectRemoteNode)
         }
         #endif
     }
 
-    private func connectRemoteNodeViewController() -> ConnectRemoteNodeViewController {
-        let viewModel = ConnectRemoteNodeViewModel(rpcCredentials: nil)
+    private func connectRemoteNodeViewController(rpcCredentials: RPCCredentials?) -> ConnectRemoteNodeViewController {
+        let viewModel = ConnectRemoteNodeViewModel(rpcCredentials: rpcCredentials)
         connectRemoteNodeViewModel = viewModel
         return ConnectRemoteNodeViewController.instantiate(didSetupWallet: didSetupWallet, connectRemoteNodeViewModel: viewModel, presentQRCodeScannerButtonTapped: presentNodeCertificatesScanner)
     }
