@@ -28,6 +28,9 @@
 		AD10D04C21132A6000A0F0D3 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AD10D04B21132A6000A0F0D3 /* LaunchScreen.storyboard */; };
 		AD10D05721132EFB00A0F0D3 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = AD10D05921132EFB00A0F0D3 /* Localizable.strings */; };
 		AD10D05C21132F3500A0F0D3 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = AD10D05E21132F3500A0F0D3 /* InfoPlist.strings */; };
+		AD1831C2229676CB00120260 /* OnChainFeeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD1831C1229676CB00120260 /* OnChainFeeViewModel.swift */; };
+		AD1831C72296859D00120260 /* OnChainFeeView.xib in Resources */ = {isa = PBXBuildFile; fileRef = AD1831C62296859D00120260 /* OnChainFeeView.xib */; };
+		AD1831C9229685A500120260 /* OnChainFeeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD1831C8229685A500120260 /* OnChainFeeView.swift */; };
 		AD1D37892253C9ED00F32BE1 /* TransactionListUpdater.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD1D37882253C9ED00F32BE1 /* TransactionListUpdater.swift */; };
 		AD1D378B2253C9F900F32BE1 /* PaymentListUpdater.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD1D378A2253C9F900F32BE1 /* PaymentListUpdater.swift */; };
 		AD248624225B73980049532C /* WalletBalanceSegment.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD248623225B73970049532C /* WalletBalanceSegment.swift */; };
@@ -610,6 +613,9 @@
 		AD10D05D21132F3500A0F0D3 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		AD10D05F2113307E00A0F0D3 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		AD131B1520CFA0AD00E6FED3 /* UIAlertController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIAlertController.swift; sourceTree = "<group>"; };
+		AD1831C1229676CB00120260 /* OnChainFeeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnChainFeeViewModel.swift; sourceTree = "<group>"; };
+		AD1831C62296859D00120260 /* OnChainFeeView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = OnChainFeeView.xib; sourceTree = "<group>"; };
+		AD1831C8229685A500120260 /* OnChainFeeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnChainFeeView.swift; sourceTree = "<group>"; };
 		AD1D37882253C9ED00F32BE1 /* TransactionListUpdater.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransactionListUpdater.swift; sourceTree = "<group>"; };
 		AD1D378A2253C9F900F32BE1 /* PaymentListUpdater.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaymentListUpdater.swift; sourceTree = "<group>"; };
 		AD1EBA0020B2FD9D001FF67E /* Persistable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Persistable.swift; sourceTree = "<group>"; };
@@ -1158,6 +1164,7 @@
 		A010093E2014D4720001EF94 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				AD1831C32296855200120260 /* OnChainFeeView */,
 				ADBA120720935871001F7700 /* AmountInput */,
 				AD21768820C3DFDB007779DE /* BalanceView.swift */,
 				A0BD44DE206FED1400BF27A3 /* BondCell.swift */,
@@ -1440,6 +1447,15 @@
 			path = ModalDetail/Request;
 			sourceTree = "<group>";
 		};
+		AD1831C32296855200120260 /* OnChainFeeView */ = {
+			isa = PBXGroup;
+			children = (
+				AD1831C8229685A500120260 /* OnChainFeeView.swift */,
+				AD1831C62296859D00120260 /* OnChainFeeView.xib */,
+			);
+			path = OnChainFeeView;
+			sourceTree = "<group>";
+		};
 		AD1D37872253C9B000F32BE1 /* DataUpdater */ = {
 			isa = PBXGroup;
 			children = (
@@ -1476,10 +1492,11 @@
 			isa = PBXGroup;
 			children = (
 				AD9BB2DB21830B4F009DC878 /* LoadingAmountView.swift */,
+				ADCEAFD422579C2A004F605B /* LoadingAnimationView.swift */,
+				AD1831C1229676CB00120260 /* OnChainFeeViewModel.swift */,
 				AD99C9F220907AD10061C565 /* SendQRCodeScannerStrategy.swift */,
 				AD28843D21272B9A003C3D94 /* SendViewController.swift */,
 				AD28844E21287B56003C3D94 /* SendViewModel.swift */,
-				ADCEAFD422579C2A004F605B /* LoadingAnimationView.swift */,
 			);
 			name = Send;
 			path = ModalDetail/Send;
@@ -2566,6 +2583,7 @@
 				AD035BFD2174A030005EA785 /* ChannelTableViewCell.xib in Resources */,
 				AD667E552136B074007B9160 /* TimeLocked.storyboard in Resources */,
 				AD391C4C20D16F68007EE22A /* ChannelList.storyboard in Resources */,
+				AD1831C72296859D00120260 /* OnChainFeeView.xib in Resources */,
 				AD2B877F221C6F8400308C1B /* UnlockWallet.storyboard in Resources */,
 				AD391C5420D16F7A007EE22A /* ConnectRemoteNode.storyboard in Resources */,
 				AD391CA020D16FA8007EE22A /* Root.storyboard in Resources */,
@@ -3135,6 +3153,7 @@
 				ADEEB5362134669B00D2F992 /* ModalPinViewController.swift in Sources */,
 				AD391CDB20D16FE1007EE22A /* HistoryViewController.swift in Sources */,
 				AD667E572136E622007B9160 /* TimeLockStore.swift in Sources */,
+				AD1831C2229676CB00120260 /* OnChainFeeViewModel.swift in Sources */,
 				AD7ED61D22087812007C5F2C /* ManageWalletTableViewCell.swift in Sources */,
 				AD391C5320D16F7A007EE22A /* ConfirmMnemonicViewModel.swift in Sources */,
 				ADEDA3D12178938E0078FD91 /* NodeURIQRCodeViewModel.swift in Sources */,
@@ -3271,6 +3290,7 @@
 				AD391C2520D16EFA007EE22A /* BitcoinUnit+Localizable.swift in Sources */,
 				AD391C2720D16EFA007EE22A /* Network+Localizable.swift in Sources */,
 				AD391C9E20D16FA8007EE22A /* RequestViewModel.swift in Sources */,
+				AD1831C9229685A500120260 /* OnChainFeeView.swift in Sources */,
 				AD391C2B20D16EFA007EE22A /* SignalProtocol.swift in Sources */,
 				ADF232D42289A08100CB5053 /* Migrations.swift in Sources */,
 				ADDD13B92119CEB40035D2F9 /* UIStackView.swift in Sources */,

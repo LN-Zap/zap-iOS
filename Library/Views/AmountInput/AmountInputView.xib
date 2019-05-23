@@ -73,7 +73,7 @@
                                 <constraint firstItem="Qa7-ko-NW5" firstAttribute="top" secondItem="ak7-6C-Pex" secondAttribute="top" id="nxe-pH-D2c"/>
                                 <constraint firstItem="Qa7-ko-NW5" firstAttribute="leading" secondItem="ak7-6C-Pex" secondAttribute="leading" id="rG4-ZK-yjJ"/>
                                 <constraint firstAttribute="height" constant="50" id="uLI-1c-1NR"/>
-                                <constraint firstItem="E9a-U4-Xf6" firstAttribute="baseline" secondItem="ak7-6C-Pex" secondAttribute="firstBaseline" constant="15" symbolType="layoutAnchor" id="uOQ-hC-YiR"/>
+                                <constraint firstItem="E9a-U4-Xf6" firstAttribute="baseline" secondItem="ak7-6C-Pex" secondAttribute="firstBaseline" constant="17.5" symbolType="layoutAnchor" id="uOQ-hC-YiR"/>
                             </constraints>
                         </view>
                         <view clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="MuO-hq-S7R">

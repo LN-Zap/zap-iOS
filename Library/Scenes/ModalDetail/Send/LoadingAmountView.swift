@@ -20,6 +20,15 @@ final class LoadingAmountView: UIView {
     let activityIndicator: UIActivityIndicatorView
     var disposable: Disposable?
 
+    var textAlignment: NSTextAlignment {
+        get {
+            return amountLabel.textAlignment
+        }
+        set {
+            amountLabel.textAlignment = newValue
+        }
+    }
+
     init(loadable: Observable<Loadable<Satoshi?>>) {
         amountLabel = UILabel(frame: CGRect.zero)
         activityIndicator = UIActivityIndicatorView(style: .white)
@@ -34,7 +43,9 @@ final class LoadingAmountView: UIView {
         NSLayoutConstraint.activate([
             amountLabel.leadingAnchor.constraint(equalTo: leadingAnchor),
             amountLabel.centerYAnchor.constraint(equalTo: centerYAnchor),
+            amountLabel.trailingAnchor.constraint(equalTo: trailingAnchor),
             activityIndicator.leadingAnchor.constraint(equalTo: leadingAnchor),
+            activityIndicator.trailingAnchor.constraint(equalTo: trailingAnchor),
             activityIndicator.centerYAnchor.constraint(equalTo: centerYAnchor)
         ])
 

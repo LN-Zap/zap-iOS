@@ -466,10 +466,24 @@ internal enum L10n {
         /// Send On-Chain
         internal static let title = L10n.tr("Localizable", "scene.send.on_chain.title")
         internal enum Fee {
+          /// Estimated Delivery: %@
+          internal static func estimatedDelivery(_ p1: String) -> String {
+            return L10n.tr("Localizable", "scene.send.on_chain.fee.estimated_delivery", p1)
+          }
           /// Fast
           internal static let fast = L10n.tr("Localizable", "scene.send.on_chain.fee.fast")
+          /// Medium
+          internal static let medium = L10n.tr("Localizable", "scene.send.on_chain.fee.medium")
           /// Slow
           internal static let slow = L10n.tr("Localizable", "scene.send.on_chain.fee.slow")
+          internal enum Description {
+            /// Fast Transaction
+            internal static let fast = L10n.tr("Localizable", "scene.send.on_chain.fee.description.fast")
+            /// Medium Transaction
+            internal static let medium = L10n.tr("Localizable", "scene.send.on_chain.fee.description.medium")
+            /// Slow Transaction
+            internal static let slow = L10n.tr("Localizable", "scene.send.on_chain.fee.description.slow")
+          }
         }
       }
       internal enum PasteButton {
