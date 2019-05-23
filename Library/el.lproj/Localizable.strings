@@ -48,6 +48,7 @@
 
 "scene.settings.title" = "Ρυθμίσεις";
 "scene.settings.section.warning" = "Warning";
+"scene.settings.section.lightning" = "Lightning";
 "scene.settings.section.wallet" = "Πορτοφόλι";
 "scene.settings.item.version_warning" = "Your lnd is outdated (%@). Zap iOS works best with lnd version %@ or above.";
 "scene.settings.item.bitcoin_unit" = "Bitcoin μονάδα";
@@ -58,6 +59,7 @@
 "scene.settings.item.on_chain_request_address.bech32" = "Bech32";
 "scene.settings.item.on_chain_request_address.p2sh" = "P2SH";
 "scene.settings.item.manage_channels" = "Manage Channels";
+"scene.settings.item.channel_backup" = "Channel Backup";
 "scene.settings.item.node_uri" = "Node URI";
 "scene.settings.item.remove_remote_node" = "Manage Wallets";
 
@@ -118,6 +120,15 @@
 "scene.send.sending" = "Sending...";
 "scene.send.lightning.title" = "Αποστολή πληρωμής Lightning";
 "scene.send.on_chain.title" = "Send On-Chain";
+"scene.send.on_chain.fee" = "Fee:";
+"scene.send.on_chain.fee.fast" = "Fast";
+"scene.send.on_chain.fee.medium" = "Medium";
+"scene.send.on_chain.fee.slow" = "Slow";
+"scene.send.on_chain.fee.description.fast" = "Fast Transaction";
+"scene.send.on_chain.fee.description.medium" = "Medium Transaction";
+"scene.send.on_chain.fee.description.slow" = "Slow Transaction";
+
+"scene.send.on_chain.fee.estimated_delivery" = "Estimated Delivery: %@";
 "scene.send.authentication_failed" = "Authentication failed";
 "scene.send.maximum_fee" = "Expected Fee:";
 "scene.send.subtitle.on_chain_balance" = "On-chain balance: %@";
