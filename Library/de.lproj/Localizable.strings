@@ -48,6 +48,7 @@
 
 "scene.settings.title" = "Einstellungen";
 "scene.settings.section.warning" = "Warnung";
+"scene.settings.section.lightning" = "Lightning";
 "scene.settings.section.wallet" = "Wallet";
 "scene.settings.item.version_warning" = "Dein LND ist veraltet (%@). Zap iOS funktioniert am besten mit LND Version %@ oder höher.";
 "scene.settings.item.bitcoin_unit" = "Bitcoin Einheit";
@@ -58,6 +59,7 @@
 "scene.settings.item.on_chain_request_address.bech32" = "Bech32";
 "scene.settings.item.on_chain_request_address.p2sh" = "P2SH";
 "scene.settings.item.manage_channels" = "Kanäle verwalten";
+"scene.settings.item.channel_backup" = "Kanal Backup";
 "scene.settings.item.node_uri" = "Knoten-Adresse";
 "scene.settings.item.remove_remote_node" = "Verwalten von Wallets";
 
@@ -118,6 +120,15 @@
 "scene.send.sending" = "Wird gesendet...";
 "scene.send.lightning.title" = "Sende Lightning-Zahlung";
 "scene.send.on_chain.title" = "Sende on-Chain";
+"scene.send.on_chain.fee" = "Gebühr:";
+"scene.send.on_chain.fee.fast" = "Schnell";
+"scene.send.on_chain.fee.medium" = "Medium";
+"scene.send.on_chain.fee.slow" = "Langsam";
+"scene.send.on_chain.fee.description.fast" = "Fast Transaction";
+"scene.send.on_chain.fee.description.medium" = "Medium Transaction";
+"scene.send.on_chain.fee.description.slow" = "Slow Transaction";
+
+"scene.send.on_chain.fee.estimated_delivery" = "Estimated Delivery: %@";
 "scene.send.authentication_failed" = "Authentifizierung fehlgeschlagen";
 "scene.send.maximum_fee" = "Voraussichtliche Gebühr:";
 "scene.send.subtitle.on_chain_balance" = "On chain Saldo: %@";
@@ -188,8 +199,8 @@
 "scene.transaction_detail.expiry_label.expired" = "Abgelaufen";
 "scene.transaction_detail.invoice_state_label" = "Status";
 "scene.transaction_detail.invoice_state_label.settled" = "bezahlt";
-"scene.transaction_detail.preimage_label" = "Preimage";
-"scene.transaction_detail.preimage_copy_message" = "Preimage copied.";
+"scene.transaction_detail.preimage_label" = "Urbild";
+"scene.transaction_detail.preimage_copy_message" = "Urbild kopiert.";
 "scene.transaction_detail.invoice_copy_message" = "Rechnung kopiert.";
 
 "scene.channel_detail.remote_pub_key_label" = "Remote PubKey";
@@ -257,6 +268,6 @@
 "scene.manage_wallets.title" = "Verwalten von Wallets";
 "scene.manage_wallets.cell.remote" = "remote";
 
-"scene.channel_backup.title" = "Channel Backup";
+"scene.channel_backup.title" = "Kanal Backup";
 "scene.channel_backup.cell_title" = "%@ channel.backup";
-"scene.channel_backup.not_found" = "file not found";
+"scene.channel_backup.not_found" = "Datei nicht gefunden";
