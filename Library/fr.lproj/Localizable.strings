@@ -48,6 +48,7 @@
 
 "scene.settings.title" = "Paramètres";
 "scene.settings.section.warning" = "Mise en garde";
+"scene.settings.section.lightning" = "Lightning";
 "scene.settings.section.wallet" = "Portefeuille";
 "scene.settings.item.version_warning" = "Your lnd is outdated (%@). Zap iOS works best with lnd version %@ or above.";
 "scene.settings.item.bitcoin_unit" = "Unité Bitcoin";
@@ -58,6 +59,7 @@
 "scene.settings.item.on_chain_request_address.bech32" = "Bech32";
 "scene.settings.item.on_chain_request_address.p2sh" = "P2SH";
 "scene.settings.item.manage_channels" = "Gestion des channels";
+"scene.settings.item.channel_backup" = "Channel Backup";
 "scene.settings.item.node_uri" = "URI du noeud";
 "scene.settings.item.remove_remote_node" = "Gestion des Portefeuilles";
 
@@ -118,6 +120,15 @@
 "scene.send.sending" = "Envoi en cours...";
 "scene.send.lightning.title" = "Envoyer un Paiement Lightning";
 "scene.send.on_chain.title" = "Send On-Chain";
+"scene.send.on_chain.fee" = "Fee:";
+"scene.send.on_chain.fee.fast" = "Fast";
+"scene.send.on_chain.fee.medium" = "Medium";
+"scene.send.on_chain.fee.slow" = "Slow";
+"scene.send.on_chain.fee.description.fast" = "Fast Transaction";
+"scene.send.on_chain.fee.description.medium" = "Medium Transaction";
+"scene.send.on_chain.fee.description.slow" = "Slow Transaction";
+
+"scene.send.on_chain.fee.estimated_delivery" = "Estimated Delivery: %@";
 "scene.send.authentication_failed" = "Echec de l'authentification";
 "scene.send.maximum_fee" = "Frais Estimés:";
 "scene.send.subtitle.on_chain_balance" = "On-chain balance: %@";
