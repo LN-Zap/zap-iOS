@@ -48,8 +48,9 @@
 
 "scene.settings.title" = "设置";
 "scene.settings.section.warning" = "警告";
+"scene.settings.section.lightning" = "闪电网络";
 "scene.settings.section.wallet" = "钱包";
-"scene.settings.item.version_warning" = "你的LND版本太久(%@)。Zap iOS工作于LND版本 %@ 或以上。";
+"scene.settings.item.version_warning" = "你的LND版本太旧了(%@)。Zap iOS工作于LND版本 %@ 或以上。";
 "scene.settings.item.bitcoin_unit" = "比特币单位";
 "scene.settings.item.currency" = "货币";
 "scene.settings.item.currency.popular" = "热门货币";
@@ -58,6 +59,7 @@
 "scene.settings.item.on_chain_request_address.bech32" = "Bech32";
 "scene.settings.item.on_chain_request_address.p2sh" = "P2SH";
 "scene.settings.item.manage_channels" = "管理通道";
+"scene.settings.item.channel_backup" = "备份通道";
 "scene.settings.item.node_uri" = "节点 URI";
 "scene.settings.item.remove_remote_node" = "管理钱包";
 
@@ -118,6 +120,15 @@
 "scene.send.sending" = "发送中。。。";
 "scene.send.lightning.title" = "通过闪电网络支付";
 "scene.send.on_chain.title" = "链上交易";
+"scene.send.on_chain.fee" = "手续费：";
+"scene.send.on_chain.fee.fast" = "快";
+"scene.send.on_chain.fee.medium" = "Medium";
+"scene.send.on_chain.fee.slow" = "慢";
+"scene.send.on_chain.fee.description.fast" = "Fast Transaction";
+"scene.send.on_chain.fee.description.medium" = "Medium Transaction";
+"scene.send.on_chain.fee.description.slow" = "Slow Transaction";
+
+"scene.send.on_chain.fee.estimated_delivery" = "Estimated Delivery: %@";
 "scene.send.authentication_failed" = "身份验证失败";
 "scene.send.maximum_fee" = "预计费用:";
 "scene.send.subtitle.on_chain_balance" = "链上余额：%@";
@@ -173,7 +184,7 @@
 "scene.sync.disconnect_alert.destructive_action" = "断开节点链接";
 "scene.sync.disconnect_alert.cancel_action" = "取消";
 
-"scene.transaction_detail.title.lightning_invoice" = "发票明细";
+"scene.transaction_detail.title.lightning_invoice" = "账单明细";
 "scene.transaction_detail.title.payment_detail" = "付款明细";
 "scene.transaction_detail.title.transaction_detail" = "交易记录详细信息";
 "scene.transaction_detail.title.channel_event_detail" = "通道事件";
@@ -190,7 +201,7 @@
 "scene.transaction_detail.invoice_state_label.settled" = "已结算";
 "scene.transaction_detail.preimage_label" = "Preimage";
 "scene.transaction_detail.preimage_copy_message" = "Preimage copied.";
-"scene.transaction_detail.invoice_copy_message" = "Invoice copied.";
+"scene.transaction_detail.invoice_copy_message" = "已复制账单";
 
 "scene.channel_detail.remote_pub_key_label" = "远程公钥";
 "scene.channel_detail.local_balance_label" = "本地余额";
@@ -203,9 +214,9 @@
 "scene.filter.title" = "过滤";
 "scene.filter.section_header.transaction_types" = "交易类型";
 "scene.filter.displayOnChainTransactions" = "链上付款";
-"scene.filter.display_expired_invoices" = "已过期的单据";
+"scene.filter.display_expired_invoices" = "已过期的账单";
 "scene.filter.displayLightningPayments" = "闪电网络支付";
-"scene.filter.displayLightningInvoices" = "已创建的单据";
+"scene.filter.displayLightningInvoices" = "已创建的账单";
 "scene.filter.displayChannelEvents" = "通道事件";
 
 "scene.qrcode_scanner.top_label" = "扫描 QR 码";
@@ -257,6 +268,6 @@
 "scene.manage_wallets.title" = "管理钱包";
 "scene.manage_wallets.cell.remote" = "远端";
 
-"scene.channel_backup.title" = "Channel Backup";
-"scene.channel_backup.cell_title" = "%@ channel.backup";
-"scene.channel_backup.not_found" = "file not found";
+"scene.channel_backup.title" = "备份通道";
+"scene.channel_backup.cell_title" = "%@ 通道.备份";
+"scene.channel_backup.not_found" = "文件未找到";

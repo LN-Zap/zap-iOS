@@ -48,6 +48,7 @@
 
 "scene.settings.title" = "Instellingen";
 "scene.settings.section.warning" = "Waarschuwing";
+"scene.settings.section.lightning" = "Lightning";
 "scene.settings.section.wallet" = "Wallet";
 "scene.settings.item.version_warning" = "Je lnd is verouderd (%@). Zap iOS werkt het beste lnd versie %@ of nieuwer.";
 "scene.settings.item.bitcoin_unit" = "Bitcoin eenheid";
@@ -58,6 +59,7 @@
 "scene.settings.item.on_chain_request_address.bech32" = "Bech32";
 "scene.settings.item.on_chain_request_address.p2sh" = "P2SH";
 "scene.settings.item.manage_channels" = "Beheer Channels";
+"scene.settings.item.channel_backup" = "Channel Backup";
 "scene.settings.item.node_uri" = "Node URI";
 "scene.settings.item.remove_remote_node" = "Beheer Wallets";
 
@@ -118,6 +120,15 @@
 "scene.send.sending" = "Verzenden...";
 "scene.send.lightning.title" = "Verstuur Lightning betaling";
 "scene.send.on_chain.title" = "Verstuur On-Chain";
+"scene.send.on_chain.fee" = "Fee:";
+"scene.send.on_chain.fee.fast" = "Fast";
+"scene.send.on_chain.fee.medium" = "Medium";
+"scene.send.on_chain.fee.slow" = "Slow";
+"scene.send.on_chain.fee.description.fast" = "Fast Transaction";
+"scene.send.on_chain.fee.description.medium" = "Medium Transaction";
+"scene.send.on_chain.fee.description.slow" = "Slow Transaction";
+
+"scene.send.on_chain.fee.estimated_delivery" = "Estimated Delivery: %@";
 "scene.send.authentication_failed" = "Verificatie mislukt";
 "scene.send.maximum_fee" = "Verwachte kosten:";
 "scene.send.subtitle.on_chain_balance" = "On-chain saldo: %@";

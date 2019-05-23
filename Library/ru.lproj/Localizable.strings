@@ -48,6 +48,7 @@
 
 "scene.settings.title" = "Настройки";
 "scene.settings.section.warning" = "Warning";
+"scene.settings.section.lightning" = "Lightning";
 "scene.settings.section.wallet" = "Кошелек";
 "scene.settings.item.version_warning" = "Your lnd is outdated (%@). Zap iOS works best with lnd version %@ or above.";
 "scene.settings.item.bitcoin_unit" = "Биткоин часть";
@@ -58,6 +59,7 @@
 "scene.settings.item.on_chain_request_address.bech32" = "Bech32";
 "scene.settings.item.on_chain_request_address.p2sh" = "P2SH";
 "scene.settings.item.manage_channels" = "Управление Каналами";
+"scene.settings.item.channel_backup" = "Channel Backup";
 "scene.settings.item.node_uri" = "URI узла";
 "scene.settings.item.remove_remote_node" = "Управление Кошельками";
 
@@ -118,6 +120,15 @@
 "scene.send.sending" = "Отпарвка...";
 "scene.send.lightning.title" = "Отправить Lightning перевод";
 "scene.send.on_chain.title" = "Send On-Chain";
+"scene.send.on_chain.fee" = "Fee:";
+"scene.send.on_chain.fee.fast" = "Fast";
+"scene.send.on_chain.fee.medium" = "Medium";
+"scene.send.on_chain.fee.slow" = "Slow";
+"scene.send.on_chain.fee.description.fast" = "Fast Transaction";
+"scene.send.on_chain.fee.description.medium" = "Medium Transaction";
+"scene.send.on_chain.fee.description.slow" = "Slow Transaction";
+
+"scene.send.on_chain.fee.estimated_delivery" = "Estimated Delivery: %@";
 "scene.send.authentication_failed" = "Ошибка проверки подлинности";
 "scene.send.maximum_fee" = "Ожидаемая Комиссия:";
 "scene.send.subtitle.on_chain_balance" = "On-chain balance: %@";
