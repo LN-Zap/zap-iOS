@@ -125,7 +125,7 @@ final class SetupCoordinator: Coordinator {
 
     private func setupWalletViewController() -> UIViewController {
         #if REMOTEONLY
-        return connectRemoteNodeViewController()
+        return connectRemoteNodeViewController(rpcCredentials: nil)
         #else
         if walletConfigurationStore.hasLocalWallet {
             return connectRemoteNodeViewController(rpcCredentials: nil)
