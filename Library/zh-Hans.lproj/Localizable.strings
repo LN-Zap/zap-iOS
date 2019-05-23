@@ -50,7 +50,7 @@
 "scene.settings.section.warning" = "警告";
 "scene.settings.section.lightning" = "闪电网络";
 "scene.settings.section.wallet" = "钱包";
-"scene.settings.item.version_warning" = "你的LND版本太久(%@)。Zap iOS工作于LND版本 %@ 或以上。";
+"scene.settings.item.version_warning" = "你的LND版本太旧了(%@)。Zap iOS工作于LND版本 %@ 或以上。";
 "scene.settings.item.bitcoin_unit" = "比特币单位";
 "scene.settings.item.currency" = "货币";
 "scene.settings.item.currency.popular" = "热门货币";
