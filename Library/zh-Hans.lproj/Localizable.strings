@@ -72,10 +72,10 @@
 "scene.request.title" = "收款";
 "scene.request.lightning_button" = "闪电";
 "scene.request.or_separator_label" = "或";
-"scene.request.on_chain_button" = "链上";
+"scene.request.on_chain_button" = "主链";
 "scene.request.generate_request_button" = "生成请求";
 "scene.request.lightning_header_title" = "闪电网络支付请求";
-"scene.request.on_chain_header_title" = "链上支付请求";
+"scene.request.on_chain_header_title" = "主链支付请求";
 "scene.request.next_button_title" = "下一步";
 "scene.request.subtitle.lightning" = "可以接收： %@";
 
@@ -98,7 +98,7 @@
 "scene.open_channel.add_button" = "打开通道";
 "scene.open_channel.subtitle.minimum_size" = "最小通道大小：%@";
 "scene.open_channel.subtitle.maximum_size" = "最大通道大小：%@";
-"scene.open_channel.subtitle.balance" = "链上余额：%@";
+"scene.open_channel.subtitle.balance" = "主链余额：%@";
 "scene.open_channel.suggested_peers.title" = "建议的Peers";
 "scene.open_channel.paste_button.title" = "粘贴Peer地址";
 
@@ -119,19 +119,19 @@
 "scene.send.memo_headline" = "备注:";
 "scene.send.sending" = "发送中。。。";
 "scene.send.lightning.title" = "通过闪电网络支付";
-"scene.send.on_chain.title" = "链上交易";
+"scene.send.on_chain.title" = "发送主链交易";
 "scene.send.on_chain.fee" = "手续费：";
 "scene.send.on_chain.fee.fast" = "快";
-"scene.send.on_chain.fee.medium" = "Medium";
+"scene.send.on_chain.fee.medium" = "中";
 "scene.send.on_chain.fee.slow" = "慢";
-"scene.send.on_chain.fee.description.fast" = "Fast Transaction";
-"scene.send.on_chain.fee.description.medium" = "Medium Transaction";
-"scene.send.on_chain.fee.description.slow" = "Slow Transaction";
+"scene.send.on_chain.fee.description.fast" = "快";
+"scene.send.on_chain.fee.description.medium" = "中";
+"scene.send.on_chain.fee.description.slow" = "慢";
 
-"scene.send.on_chain.fee.estimated_delivery" = "Estimated Delivery: %@";
+"scene.send.on_chain.fee.estimated_delivery" = "估计传送: %@";
 "scene.send.authentication_failed" = "身份验证失败";
 "scene.send.maximum_fee" = "预计费用:";
-"scene.send.subtitle.on_chain_balance" = "链上余额：%@";
+"scene.send.subtitle.on_chain_balance" = "主链余额：%@";
 "scene.send.subtitle.lightning_can_send_balance" = "可以发送：%@";
 "scene.send.success_label" = "支付成功";
 "scene.send.paste_button.title" = "粘贴地址";
@@ -213,7 +213,7 @@
 
 "scene.filter.title" = "过滤";
 "scene.filter.section_header.transaction_types" = "交易类型";
-"scene.filter.displayOnChainTransactions" = "链上付款";
+"scene.filter.displayOnChainTransactions" = "主链支付";
 "scene.filter.display_expired_invoices" = "已过期的账单";
 "scene.filter.displayLightningPayments" = "闪电网络支付";
 "scene.filter.displayLightningInvoices" = "已创建的账单";
@@ -223,7 +223,7 @@
 
 "scene.wallet.title" = "钱包";
 "scene.wallet.total_balance" = "总计余额";
-"scene.wallet.detail.on_chain" = "链上:";
+"scene.wallet.detail.on_chain" = "主链:";
 "scene.wallet.detail.lightning" = "闪电:";
 "scene.wallet.detail.pending" = "等待:";
 
