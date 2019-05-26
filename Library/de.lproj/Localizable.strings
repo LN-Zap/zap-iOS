@@ -122,11 +122,11 @@
 "scene.send.on_chain.title" = "Sende on-Chain";
 "scene.send.on_chain.fee" = "Gebühr:";
 "scene.send.on_chain.fee.fast" = "Schnell";
-"scene.send.on_chain.fee.medium" = "Medium";
+"scene.send.on_chain.fee.medium" = "Mittel";
 "scene.send.on_chain.fee.slow" = "Langsam";
-"scene.send.on_chain.fee.description.fast" = "Fast Transaction";
-"scene.send.on_chain.fee.description.medium" = "Medium Transaction";
-"scene.send.on_chain.fee.description.slow" = "Slow Transaction";
+"scene.send.on_chain.fee.description.fast" = "Schnelle Transaktion";
+"scene.send.on_chain.fee.description.medium" = "Mittlere Transaktionsgeschwindigkeit";
+"scene.send.on_chain.fee.description.slow" = "Langsame Transaktion";
 
 "scene.send.on_chain.fee.estimated_delivery" = "Estimated Delivery: %@";
 "scene.send.authentication_failed" = "Authentifizierung fehlgeschlagen";
