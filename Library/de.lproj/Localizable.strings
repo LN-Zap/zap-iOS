@@ -128,7 +128,7 @@
 "scene.send.on_chain.fee.description.medium" = "Mittlere Transaktionsgeschwindigkeit";
 "scene.send.on_chain.fee.description.slow" = "Langsame Transaktion";
 
-"scene.send.on_chain.fee.estimated_delivery" = "Estimated Delivery: %@";
+"scene.send.on_chain.fee.estimated_delivery" = "Erwartete Übermittlung: %@";
 "scene.send.authentication_failed" = "Authentifizierung fehlgeschlagen";
 "scene.send.maximum_fee" = "Voraussichtliche Gebühr:";
 "scene.send.subtitle.on_chain_balance" = "On chain Saldo: %@";
