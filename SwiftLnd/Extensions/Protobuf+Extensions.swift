@@ -71,6 +71,11 @@ extension Lnrpc_OpenChannelRequest {
         localFundingAmount = amount.int64
         `private` = true
     }
+
+    init(pubKey: String, amount: Satoshi, targetConf: Int) {
+        self.init(pubKey: pubKey, amount: amount)
+        self.targetConf = Int32(targetConf)
+    }
 }
 
 extension Lnrpc_SendCoinsRequest {
