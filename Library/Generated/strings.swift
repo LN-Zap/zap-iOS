@@ -330,6 +330,12 @@ internal enum L10n {
       internal static let addButton = L10n.tr("Localizable", "scene.open_channel.add_button")
       /// Node:
       internal static let channelUriLabel = L10n.tr("Localizable", "scene.open_channel.channel_uri_label")
+      /// Estimated confimation time: %@
+      internal static func estimatedConfirmationTime(_ p1: String) -> String {
+        return L10n.tr("Localizable", "scene.open_channel.estimated-confirmation-time", p1)
+      }
+      /// Priority:
+      internal static let priority = L10n.tr("Localizable", "scene.open_channel.priority")
       /// Open Channel
       internal static let title = L10n.tr("Localizable", "scene.open_channel.title")
       internal enum PasteButton {
