@@ -10,6 +10,8 @@
 		1A7D437F09C2E9CB2A9B7823 /* Pods_SnapshotUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BCA0C98DE37497981C015AC5 /* Pods_SnapshotUITests.framework */; };
 		391FC6E65BB7824B7A174682 /* Pods_LibraryTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C9FDBEC0089BCC09D314B328 /* Pods_LibraryTests.framework */; };
 		3FCED3EA112663089C273764 /* *.bitcoinaverage.com.cer in Resources */ = {isa = PBXBuildFile; fileRef = 3FCED45A10ACE912173010E1 /* *.bitcoinaverage.com.cer */; };
+		3FCEDBC333E5A5EDDDADF308 /* ChannelFeePriorityView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3FCEDAA3AB01C13F1E239FB3 /* ChannelFeePriorityView.xib */; };
+		3FCEDBE9C84CF283ADCE022C /* ChannelFeePriorityView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FCED05B4746839E18C6051C /* ChannelFeePriorityView.swift */; };
 		40421D49C6A596EC2CB5C295 /* Pods_RPC_Widget.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2726BC721E26EB865EC5F682 /* Pods_RPC_Widget.framework */; };
 		429230B451D7CAF7718C5EBB /* Pods_RPC_SwiftLnd.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D1D7DC8244C0E3E65FCB72FA /* Pods_RPC_SwiftLnd.framework */; };
 		508C114BE3C2C3584AB55069 /* Pods_LightningTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 64689AAAE184A2256E9C9DF3 /* Pods_LightningTests.framework */; };
@@ -511,7 +513,9 @@
 		33E251D96B1C9CCCBC786874 /* Pods-RPC-Widget.debugremote.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RPC-Widget.debugremote.xcconfig"; path = "Pods/Target Support Files/Pods-RPC-Widget/Pods-RPC-Widget.debugremote.xcconfig"; sourceTree = "<group>"; };
 		368878AB4DD1935EDBB4639B /* Pods-SnapshotUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SnapshotUITests.release.xcconfig"; path = "Pods/Target Support Files/Pods-SnapshotUITests/Pods-SnapshotUITests.release.xcconfig"; sourceTree = "<group>"; };
 		39F0AC8A86ACCF0C7BBB6779 /* Pods-RPC-Widget.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RPC-Widget.release.xcconfig"; path = "Pods/Target Support Files/Pods-RPC-Widget/Pods-RPC-Widget.release.xcconfig"; sourceTree = "<group>"; };
+		3FCED05B4746839E18C6051C /* ChannelFeePriorityView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChannelFeePriorityView.swift; sourceTree = "<group>"; };
 		3FCED45A10ACE912173010E1 /* *.bitcoinaverage.com.cer */ = {isa = PBXFileReference; lastKnownFileType = file.cer; path = "*.bitcoinaverage.com.cer"; sourceTree = "<group>"; };
+		3FCEDAA3AB01C13F1E239FB3 /* ChannelFeePriorityView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ChannelFeePriorityView.xib; sourceTree = "<group>"; };
 		4629437540BC6CE36F3EE098 /* Pods_RPC_Library.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_RPC_Library.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		4A29C2D527BF19A41F251C3F /* Pods_Zap.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Zap.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		4AE4B3957AC31DDABB89AF3B /* Pods-RPC-SwiftLnd.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RPC-SwiftLnd.release.xcconfig"; path = "Pods/Target Support Files/Pods-RPC-SwiftLnd/Pods-RPC-SwiftLnd.release.xcconfig"; sourceTree = "<group>"; };
@@ -1114,6 +1118,15 @@
 			path = bitcoinaverage.com;
 			sourceTree = "<group>";
 		};
+		6A330F8522AD4E5D00749948 /* ChannelFeePriortyView */ = {
+			isa = PBXGroup;
+			children = (
+				3FCEDAA3AB01C13F1E239FB3 /* ChannelFeePriorityView.xib */,
+				3FCED05B4746839E18C6051C /* ChannelFeePriorityView.swift */,
+			);
+			path = ChannelFeePriortyView;
+			sourceTree = "<group>";
+		};
 		A01009322014BD960001EF94 /* Scenes */ = {
 			isa = PBXGroup;
 			children = (
@@ -1164,6 +1177,7 @@
 		A010093E2014D4720001EF94 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				6A330F8522AD4E5D00749948 /* ChannelFeePriortyView */,
 				AD1831C32296855200120260 /* OnChainFeeView */,
 				ADBA120720935871001F7700 /* AmountInput */,
 				AD21768820C3DFDB007779DE /* BalanceView.swift */,
@@ -2609,6 +2623,7 @@
 				ADA2DD07225CDD03007482D9 /* SuggestedPeerCell.xib in Resources */,
 				ADEEB53821346DEA00D2F992 /* ModalPin.storyboard in Resources */,
 				AD391CDA20D16FE1007EE22A /* History.storyboard in Resources */,
+				3FCEDBC333E5A5EDDDADF308 /* ChannelFeePriorityView.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -3294,6 +3309,7 @@
 				AD391C2B20D16EFA007EE22A /* SignalProtocol.swift in Sources */,
 				ADF232D42289A08100CB5053 /* Migrations.swift in Sources */,
 				ADDD13B92119CEB40035D2F9 /* UIStackView.swift in Sources */,
+				3FCEDBE9C84CF283ADCE022C /* ChannelFeePriorityView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

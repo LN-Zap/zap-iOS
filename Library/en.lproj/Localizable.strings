@@ -99,6 +99,8 @@
 "scene.open_channel.subtitle.minimum_size" = "Minimum channel size: %@";
 "scene.open_channel.subtitle.maximum_size" = "Maximum channel size: %@";
 "scene.open_channel.subtitle.balance" = "On-chain balance: %@";
+"scene.open_channel.priority" = "Priority:";
+"scene.open_channel.estimated-confirmation-time" = "Estimated confimation time: %@";
 "scene.open_channel.suggested_peers.title" = "Suggested Peers";
 "scene.open_channel.paste_button.title" = "Paste Peer Address";
 
