@@ -19,7 +19,7 @@ final class OnChainFeeView: UIView {
 
     @IBOutlet private weak var rightStackView: UIStackView!
     @IBOutlet private weak var titleLabel: UILabel!
-    @IBOutlet private weak var deatiledDescriptionLabel: UILabel!
+    @IBOutlet private weak var detailedDescriptionLabel: UILabel!
     @IBOutlet private weak var arrowImageView: UIImageView!
     @IBOutlet private weak var segmentedControl: UISegmentedControl!
     @IBOutlet private weak var timeIntervalLabel: UILabel!
@@ -53,7 +53,7 @@ final class OnChainFeeView: UIView {
         contentView.backgroundColor = UIColor.Zap.background
 
         Style.Label.headline.apply(to: titleLabel)
-        Style.Label.subHeadline.apply(to: deatiledDescriptionLabel, timeIntervalLabel)
+        Style.Label.subHeadline.apply(to: detailedDescriptionLabel, timeIntervalLabel)
 
         let loadingAmountView = LoadingAmountView(loadable: loadable)
         loadingAmountView.textAlignment = .right
@@ -111,6 +111,6 @@ final class OnChainFeeView: UIView {
     private func updateFeeLabels(for index: Int) {
         let tier = onChainFeeViewModel.tiers[index]
         timeIntervalLabel.text = L10n.Scene.Send.OnChain.Fee.estimatedDelivery(tier.formattedConfirmationTimeInterval)
-        deatiledDescriptionLabel.text = tier.description
+        detailedDescriptionLabel.text = tier.description
     }
 }
