@@ -19,6 +19,8 @@ final class OpenChannelViewModel: NSObject {
     let subtitle = Observable<String?>(nil)
     let isAmountValid = Observable(true)
 
+    var confirmationTarget: Int = 0
+
     var amount: Satoshi = 100000 {
         didSet {
             updateSubtitle()
@@ -56,6 +58,6 @@ final class OpenChannelViewModel: NSObject {
     }
 
     func openChannel(completion: @escaping ApiCompletion<ChannelPoint>) {
-        lightningService.channelService.open(lightningNodeURI: lightningNodeURI, amount: amount, completion: completion)
+        lightningService.channelService.open(lightningNodeURI: lightningNodeURI, amount: amount, confirmationTarget: confirmationTarget, completion: completion)
     }
 }

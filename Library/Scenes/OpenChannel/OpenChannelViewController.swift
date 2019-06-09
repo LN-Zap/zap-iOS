@@ -13,6 +13,7 @@ final class OpenChannelViewController: ModalDetailViewController {
 
     private weak var amountInputView: AmountInputView?
     private weak var openButton: CallbackButton?
+    private weak var channelFeePriorityView: ChannelFeePriorityView?
 
     var nodeAlias: String?
 
@@ -50,6 +51,13 @@ final class OpenChannelViewController: ModalDetailViewController {
         self.amountInputView = amountInputView
 
         contentStackView.addArrangedSubview(amountInputView)
+
+        contentStackView.addArrangedElement(.separator)
+
+        let channelFeeView = ChannelFeePriorityView()
+        channelFeeView.delegate = self
+        contentStackView.addArrangedElement(.customView(channelFeeView))
+        self.channelFeePriorityView = channelFeeView
 
         openButton = contentStackView.addArrangedElement(.customHeight(56, element: .button(title: L10n.Scene.OpenChannel.addButton, style: Style.Button.background, completion: { [weak self] button in
             self?.openChannel()
@@ -92,5 +100,19 @@ final class OpenChannelViewController: ModalDetailViewController {
 
     @objc private func updateAmount(_ sender: AmountInputView) {
         viewModel.amount = sender.satoshis
+    }
+}
+
+extension OpenChannelViewController: ChannelFeePriorityViewDelegate {
+    func confirmationTargetChanged(to confirmationTarget: Int) {
+        viewModel.confirmationTarget = confirmationTarget
+    }
+
+    func didChangeSize(expanded: Bool) {
+        if expanded {
+            channelFeePriorityView?.resignFirstResponder()
+        }
+
+        updateHeight()
     }
 }
