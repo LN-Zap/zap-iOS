@@ -44,7 +44,7 @@
 "view.amount_input.placeholder" = "Amount";
 
 "scene.history.title" = "History";
-"scene.history.empty_state_label" = "0 transactions 🙁";
+"scene.history.empty_state_label" = "0 transakcí 🙁";
 
 "scene.settings.title" = "Nastavení";
 "scene.settings.section.warning" = "Warning";
@@ -236,10 +236,10 @@
 "scene.history.cell.payment_sent" = "Platba odeslána";
 "scene.history.cell.payment_received" = "Platba přijata";
 "scene.history.cell.payment_failed" = "Platba se nezdařila (%@)";
-"scene.history.cell.invoice_created" = "Payment Request created";
-"scene.history.cell.channel_opened" = "Open Channel";
-"scene.history.cell.channel_closed" = "Close Channel";
-"scene.history.cell.force_close_channel" = "Force close Channel";
+"scene.history.cell.invoice_created" = "Požadavek platby vytvořen";
+"scene.history.cell.channel_opened" = "Otevřít kanál";
+"scene.history.cell.channel_closed" = "Uzavřít kanál";
+"scene.history.cell.force_close_channel" = "Vynutit uzavření kanálu";
 "scene.history.cell.remote_force_close_channel" = "Remote force close Channel";
 "scene.history.cell.breach_close_channel" = "Breach close Channel";
 "scene.history.cell.close_channel_funding_canceled" = "Close Channel (funding canceled)";
@@ -250,22 +250,22 @@
 "scene.history.cell.label.error" = "error";
 "scene.history.cell.action.try_again" = "Try Again";
 
-"scene.node_uri.title" = "Connect to Node";
+"scene.node_uri.title" = "Připojit k uzlu";
 "scene.node_uri.alias_label" = "Alias";
 "scene.node_uri.uri_label" = "URI";
 
-"scene.connect_node_uri.action_sheet.title" = "Connect";
-"scene.connect_node_uri.action_sheet.connect_button" = "Connect";
-"scene.connect_node_uri.action_sheet.message" = "Do you really want to connect to node at %@?";
+"scene.connect_node_uri.action_sheet.title" = "Připojit";
+"scene.connect_node_uri.action_sheet.connect_button" = "Připojit";
+"scene.connect_node_uri.action_sheet.message" = "Opravdu se chcete připojit k uzlu %@?";
 
-"scene.wallet_list.title" = "Wallets";
+"scene.wallet_list.title" = "Peněženky";
 
 "scene.unlock.title" = "Unlock Node";
 "scene.unlock.unlock_button" = "Unlock";
 "scene.unlock.password_placeholder" = "Password";
 "scene.unlock.title_label" = "Unlock %@";
 
-"scene.manage_wallets.title" = "Manage Wallets";
+"scene.manage_wallets.title" = "Spravovat peněženky";
 "scene.manage_wallets.cell.remote" = "remote";
 
 "scene.channel_backup.title" = "Channel Backup";
