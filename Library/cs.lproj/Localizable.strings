@@ -1,9 +1,9 @@
 "generic.memo.placeholder" = "What is this for?";
-"generic.qr_code.copy_button" = "Copy";
-"generic.qr_code.copy_success_message" = "Address has been copied to clipboard.";
-"generic.pasteboard.invalid_address" = "Invalid Address";
-"generic.qr_code.share_button" = "Share";
-"generic.cancel" = "Cancel";
+"generic.qr_code.copy_button" = "Zkopírovat";
+"generic.qr_code.copy_success_message" = "Adresa byla zkopírována do schránky.";
+"generic.pasteboard.invalid_address" = "Neplatná adresa";
+"generic.qr_code.share_button" = "Sdílet";
+"generic.cancel" = "Zrušit";
 
 "link.help" = "https://ln-zap.github.io/zap-tutorials/";
 "link.help.zapconnect" = "https://ln-zap.github.io/zap-tutorials/iOS-remote-node-setup";
@@ -69,33 +69,33 @@
 "scene.settings.item.privacy_policy" = "Privacy Policy";
 "scene.settings.item.lnd_log" = "Show lnd Log";
 
-"scene.request.title" = "Receive";
+"scene.request.title" = "Přijmout";
 "scene.request.lightning_button" = "Lightning";
 "scene.request.or_separator_label" = "or";
 "scene.request.on_chain_button" = "On-chain";
 "scene.request.generate_request_button" = "Generate Request";
 "scene.request.lightning_header_title" = "Lightning Payment Request";
 "scene.request.on_chain_header_title" = "On-Chain Payment Request";
-"scene.request.next_button_title" = "Next";
-"scene.request.subtitle.lightning" = "Can receive: %@";
+"scene.request.next_button_title" = "Další";
+"scene.request.subtitle.lightning" = "Možno přijmout: %@";
 
-"scene.channels.title" = "Channels";
-"scene.channels.header.total_can_send" = "Total can send:";
-"scene.channels.header.total_can_receive" = "Total can receive:";
-"scene.channels.header.total_pending" = "Total pending:";
-"scene.channels.header.offline" = "Total offline:";
-"scene.channels.close.title" = "Close Channel";
+"scene.channels.title" = "Kanály";
+"scene.channels.header.total_can_send" = "Celkem možno poslat:";
+"scene.channels.header.total_can_receive" = "Celkem možno přijmout:";
+"scene.channels.header.total_pending" = "Celkem neuzavřeno:";
+"scene.channels.header.offline" = "Celkem offline:";
+"scene.channels.close.title" = "Uzavřít kanál";
 "scene.channels.close.message" = "Opravdu chcete uzavřít kanál s uzlem %@?";
-"scene.channels.force_close.title" = "Force Close Channel";
+"scene.channels.force_close.title" = "Vynutit uzavření kanálu";
 "scene.channels.force_close.message" = "%@ is offline, are you sure you want to force close this channel? You’d have to wait about %@ for your funds?";
-"scene.channels.alert.close" = "Close Channel";
-"scene.channels.alert.force_close" = "Force Close Channel";
-"scene.channels.close_loading_view" = "Closing Channel";
-"scene.channels.close_success.toast" = "Channel is closing.";
+"scene.channels.alert.close" = "Uzavřít kanál";
+"scene.channels.alert.force_close" = "Vynutit uzavření kanálu";
+"scene.channels.close_loading_view" = "Uzavírání kanálu";
+"scene.channels.close_success.toast" = "Kanál je uzavírán.";
 
-"scene.open_channel.title" = "Open Channel";
-"scene.open_channel.channel_uri_label" = "Node:";
-"scene.open_channel.add_button" = "Open Channel";
+"scene.open_channel.title" = "Otevřít kanál";
+"scene.open_channel.channel_uri_label" = "Uzel:";
+"scene.open_channel.add_button" = "Otevřít kanál";
 "scene.open_channel.subtitle.minimum_size" = "Minimum channel size: %@";
 "scene.open_channel.subtitle.maximum_size" = "Maximum channel size: %@";
 "scene.open_channel.subtitle.balance" = "On-chain balance: %@";
@@ -106,7 +106,7 @@
 "scene.pin.biometric.reason" = "To access the secure data";
 
 "scene.setup_pin.done_button" = "Done";
-"scene.setup_pin.top_label.initial" = "Choose a pin.";
+"scene.setup_pin.top_label.initial" = "Zvolte pin.";
 "scene.setup_pin.top_label.non_matching" = "The pins didn't match. Please try again.";
 "scene.setup_pin.top_label.validate" = "Enter the pin again to validate.";
 
@@ -189,15 +189,15 @@
 "scene.transaction_detail.title.transaction_detail" = "Transaction Detail";
 "scene.transaction_detail.title.channel_event_detail" = "Channel Event";
 "scene.transaction_detail.title.failed_payment" = "Failed Payment";
-"scene.transaction_detail.memo_label" = "Memo";
-"scene.transaction_detail.amount_label" = "Amount";
-"scene.transaction_detail.fee_label" = "Fee";
-"scene.transaction_detail.date_label" = "Date";
-"scene.transaction_detail.transaction_id_label" = "Transaction ID";
-"scene.transaction_detail.address_label" = "Address";
+"scene.transaction_detail.memo_label" = "Poznámka";
+"scene.transaction_detail.amount_label" = "Částka";
+"scene.transaction_detail.fee_label" = "Poplatek";
+"scene.transaction_detail.date_label" = "Datum";
+"scene.transaction_detail.transaction_id_label" = "ID transakce";
+"scene.transaction_detail.address_label" = "Adresa";
 "scene.transaction_detail.expiry_label" = "Expiry";
 "scene.transaction_detail.expiry_label.expired" = "Expired";
-"scene.transaction_detail.invoice_state_label" = "State";
+"scene.transaction_detail.invoice_state_label" = "Stav";
 "scene.transaction_detail.invoice_state_label.settled" = "settled";
 "scene.transaction_detail.preimage_label" = "Preimage";
 "scene.transaction_detail.preimage_copy_message" = "Preimage copied.";
@@ -208,8 +208,8 @@
 "scene.channel_detail.remote_balance_label" = "Remote Balance";
 "scene.channel_detail.closing_time.label" = "Closing in";
 "scene.channel_detail.funding_transaction_label" = "Funding Transaction";
-"scene.channel_detail.close_button" = "Close Channel";
-"scene.channel_detail.force_close_button" = "Force Close Channel";
+"scene.channel_detail.close_button" = "Uzavřít kanál";
+"scene.channel_detail.force_close_button" = "Vynutit uzavření kanálu";
 
 "scene.filter.title" = "Filter";
 "scene.filter.section_header.transaction_types" = "Transaction Types";
@@ -222,7 +222,7 @@
 "scene.qrcode_scanner.top_label" = "Scan QR-Code";
 
 "scene.wallet.title" = "Wallet";
-"scene.wallet.total_balance" = "Total Balance";
+"scene.wallet.total_balance" = "Celkový zůstatek";
 "scene.wallet.detail.on_chain" = "On-chain:";
 "scene.wallet.detail.lightning" = "Lightning:";
 "scene.wallet.detail.pending" = "Pending:";
