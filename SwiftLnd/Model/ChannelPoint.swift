@@ -19,6 +19,6 @@ public struct ChannelPoint: Equatable {
     init(string: String) {
         let parts = string.components(separatedBy: ":")
         fundingTxid = parts[0]
-        outputIndex = Int(parts[1]) ?? 0
+        outputIndex = Int(parts.last ?? "") ?? 0
     }
 }

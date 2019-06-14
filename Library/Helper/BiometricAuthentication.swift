@@ -19,9 +19,13 @@ enum BiometricAuthentication {
 
     static var type: BiometricType {
         #if targetEnvironment(simulator)
-        return Environment.fakeBiometricAuthentication
-            ? .faceID
-            : .none
+        if #available(iOS 13, *) {
+            return .none
+        } else {
+            return Environment.fakeBiometricAuthentication
+                ? .faceID
+                : .none
+        }
         #else
         let context = LAContext()
 
