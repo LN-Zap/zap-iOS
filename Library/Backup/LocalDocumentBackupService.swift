@@ -9,7 +9,7 @@ import Foundation
 import Lightning
 import Logger
 
-final class LocalDocumentBackupService: BackupService, BackupLogger {
+final class LocalDocumentBackupService: BackupService {
     func save(data: Data, nodePubKey: String, fileName: String) {
         guard let documentDirectory = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first else { return }
         let url = documentDirectory

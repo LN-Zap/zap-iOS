@@ -6,18 +6,10 @@
 //
 
 import Foundation
+import Lightning
 import Logger
 
-/// Writes a backup method key + date to user defaults.
-protocol BackupLogger: class {
-    static var key: String { get }
-
-    static func lastBackup(nodePubKey: String) -> Date?
-
-    func didBackup(nodePubKey: String)
-}
-
-extension BackupLogger {
+extension BackupService {
     static func lastBackup(nodePubKey: String) -> Date? {
         let result = UserDefaults.Keys.backupDates.get(defaultValue: [:])[nodePubKey]?[key]
         Logger.info("Last backup date for \(key): \(String(describing: result))", customPrefix: "📀")

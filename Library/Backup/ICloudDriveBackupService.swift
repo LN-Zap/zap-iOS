@@ -9,7 +9,7 @@ import Foundation
 import Lightning
 import Logger
 
-final class ICloudDriveBackupService: BackupService, BackupLogger {
+final class ICloudDriveBackupService: BackupService {
     private var containerUrl: URL? {
         return FileManager.default.url(forUbiquityContainerIdentifier: nil)?.appendingPathComponent("Documents")
     }

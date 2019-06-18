@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import Lightning
 import Logger
 
 final class ChannelBackupViewController: UIViewController {
@@ -13,7 +14,7 @@ final class ChannelBackupViewController: UIViewController {
     @IBOutlet private weak var dateLabel: UILabel!
     @IBOutlet private weak var tableView: UITableView!
 
-    let cellContent: [(String, BackupLogger.Type)] = [
+    let cellContent: [(String, BackupService.Type)] = [
         ("iCloud Drive", ICloudDriveBackupService.self),
         ("Local Backup", LocalDocumentBackupService.self)
     ]
