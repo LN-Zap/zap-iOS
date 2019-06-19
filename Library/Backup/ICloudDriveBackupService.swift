@@ -8,6 +8,7 @@
 import Foundation
 import Lightning
 import Logger
+import SwiftLnd
 
 final class ICloudDriveBackupService: BackupService {
     private var containerUrl: URL? {
@@ -34,12 +35,15 @@ final class ICloudDriveBackupService: BackupService {
         }
     }
 
-    func save(data: Data, nodePubKey: String, fileName: String) {
+    func save(data: Data, nodePubKey: String, fileName: String, completion: @escaping (Result<Success, StaticChannelBackupError>) -> Void) {
         DispatchQueue.global().async { [weak self] in
             guard let url = self?.containerUrl?
                 .appendingPathComponent(nodePubKey)
                 .appendingPathComponent(fileName)
-                else { return }
+                else {
+                    completion(.failure(.iCloudDisabled))
+                    return
+                }
 
             do {
                 let directory = url.deletingLastPathComponent().path
@@ -48,10 +52,11 @@ final class ICloudDriveBackupService: BackupService {
                 }
 
                 try data.write(to: url, options: [.atomic])
-                self?.didBackup(nodePubKey: nodePubKey)
                 Logger.info("Did backup file to iCloud at \(url.path)", customPrefix: "📀")
+                completion(.success(Success()))
             } catch {
                 Logger.error(error.localizedDescription)
+                completion(.failure(.iCloudBackupFailed))
             }
         }
     }

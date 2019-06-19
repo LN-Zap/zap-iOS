@@ -14,16 +14,21 @@ final class ChannelBackupViewController: UIViewController {
     @IBOutlet private weak var dateLabel: UILabel!
     @IBOutlet private weak var tableView: UITableView!
 
-    let cellContent: [(String, BackupService.Type)] = [
+    static let cellContent: [(String, BackupService.Type)] = [
         ("iCloud Drive", ICloudDriveBackupService.self),
         ("Local Backup", LocalDocumentBackupService.self)
     ]
 
     private var walletConfiguration: WalletConfiguration! // swiftlint:disable:this implicitly_unwrapped_optional
 
+    private var backupServiceKeys: [String] = {
+        cellContent.map { $0.1.key }
+    }()
+
     private var latestDate: Date? {
         guard let nodePubKey = walletConfiguration.nodePubKey else { return nil }
-        return cellContent.compactMap { $0.1.lastBackup(nodePubKey: nodePubKey) }.max()
+
+        return StaticChannelBackupStateStore.lastBackup(nodePubKey: nodePubKey, backupServiceKeys: backupServiceKeys)
     }
 
     private var channelBackupURL: URL? {
@@ -91,7 +96,7 @@ extension ChannelBackupViewController: UITableViewDelegate {
 
 extension ChannelBackupViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return cellContent.count
+        return ChannelBackupViewController.cellContent.count
     }
 
     private func createCell() -> UITableViewCell {
@@ -107,7 +112,7 @@ extension ChannelBackupViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = createCell()
 
-        let (title, backupType) = cellContent[indexPath.row]
+        let (title, backupType) = ChannelBackupViewController.cellContent[indexPath.row]
 
         if let label = cell.textLabel {
             Style.Label.body.apply(to: label)
@@ -116,7 +121,7 @@ extension ChannelBackupViewController: UITableViewDataSource {
 
         if
             let nodePubKey = walletConfiguration.nodePubKey,
-            backupType.lastBackup(nodePubKey: nodePubKey) != nil {
+            StaticChannelBackupStateStore.didBackup(nodePubKey: nodePubKey, backupServiceKey: backupType.key) {
             cell.accessoryView = UIImageView(image: Asset.iconCheckGreen.image)
         } else {
             cell.accessoryView = nil

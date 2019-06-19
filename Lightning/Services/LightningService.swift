@@ -41,11 +41,11 @@ public final class LightningService: NSObject {
         }
     }
 
-    public convenience init?(connection: LightningConnection, walletId: WalletId, backupService: BackupService) {
+    public convenience init?(connection: LightningConnection, walletId: WalletId, backupService: StaticChannelBackupServiceType) {
         self.init(api: connection.api, walletId: walletId, connection: connection, backupService: backupService)
     }
 
-    init(api: LightningApi, walletId: WalletId, connection: LightningConnection, backupService: BackupService) {
+    init(api: LightningApi, walletId: WalletId, connection: LightningConnection, backupService: StaticChannelBackupServiceType) {
         self.api = api
         self.walletId = walletId
         self.connection = connection

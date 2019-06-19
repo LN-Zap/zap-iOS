@@ -13,8 +13,7 @@ extension UserDefaults {
         static let lastSeenHistoryDate = DefaultKey<Date>("lastSeenHistoryDate")
         static let walletDetailExpanded = DefaultKey<Bool>("homeScreenTileExpanded")
         static let migrations = DefaultKey<[String]>("migrations")
-        static let backupDates = DefaultKey<[String: [String: Date]]>("backupDates") // [nodePubKey: [backupKey: Date]]
-
+        static let backupDates = DefaultKey<[String: Data]>("backupDates")
     }
 }
 

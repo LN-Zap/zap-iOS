@@ -56,12 +56,7 @@ public final class ChannelService {
     }
 
     private func handleChannelBackup(_ result: Result<ChannelBackup, LndApiError>) {
-        switch result {
-        case .success(let backup):
-            staticChannelBackupper.data = backup.data
-        case .failure(let error):
-            Logger.error(error)
-        }
+        staticChannelBackupper.data = result.map { $0.data }
     }
 
     public func open(lightningNodeURI: LightningNodeURI, amount: Satoshi, completion: @escaping ApiCompletion<ChannelPoint>) {

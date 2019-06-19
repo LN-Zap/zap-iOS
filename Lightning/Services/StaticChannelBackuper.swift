@@ -7,15 +7,16 @@
 
 import Foundation
 import Logger
+import SwiftLnd
 
-public protocol BackupService {
-    func save(data: Data, nodePubKey: String, fileName: String)
+public protocol StaticChannelBackupServiceType {
+    func save(data: Result<Data, LndApiError>, nodePubKey: String, fileName: String)
 }
 
 public final class StaticChannelBackupper {
-    private let backupService: BackupService
+    private let backupService: StaticChannelBackupServiceType
 
-    var data: Data? {
+    var data: Result<Data, LndApiError>? {
         didSet {
             if data != oldValue {
                 tryToUploadBackup()
@@ -31,7 +32,7 @@ public final class StaticChannelBackupper {
         }
     }
 
-    init(backupService: BackupService) {
+    init(backupService: StaticChannelBackupServiceType) {
         self.backupService = backupService
     }
 

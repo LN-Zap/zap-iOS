@@ -90,12 +90,7 @@ public final class RootCoordinator: Coordinator {
         }
         #endif
 
-        let backupServiceGroup = BackupServiceGroup(backupServices: [
-            ICloudDriveBackupService(),
-            LocalDocumentBackupService()
-        ])
-
-        guard let lightningService = LightningService(connection: configuration.connection, walletId: configuration.walletId, backupService: backupServiceGroup) else { return }
+        guard let lightningService = LightningService(connection: configuration.connection, walletId: configuration.walletId, backupService: StaticChannelBackupService()) else { return }
 
         walletConfigurationStore.selectedWallet = configuration
 
