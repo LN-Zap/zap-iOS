@@ -15,6 +15,19 @@ enum StaticChannelBackupError: String, Error, Codable {
     case iCloudBackupFailed
     case localBackupFailed
     case lndError
+
+    var localizedDescription: String {
+        switch self {
+        case .iCloudDisabled:
+            return L10n.Scene.ChannelBackup.Error.iCloudDisabled
+        case .iCloudBackupFailed:
+            return L10n.Scene.ChannelBackup.Error.iCloudBackupFailed
+        case .localBackupFailed:
+            return L10n.Scene.ChannelBackup.Error.localBackupFailed
+        case .lndError:
+            return L10n.Scene.ChannelBackup.Error.lndError
+        }
+    }
 }
 
 protocol BackupService {

@@ -11,8 +11,11 @@ import Logger
 
 final class ChannelBackupViewController: UIViewController {
     @IBOutlet private weak var fileNameLabel: UILabel!
+    @IBOutlet private weak var fileIconImageView: UIImageView!
     @IBOutlet private weak var dateLabel: UILabel!
     @IBOutlet private weak var tableView: UITableView!
+    @IBOutlet private weak var errorBackgroundView: UIView!
+    @IBOutlet private weak var errorMessageLabel: UILabel!
 
     static let cellContent: [(String, BackupService.Type)] = [
         ("iCloud Drive", ICloudDriveBackupService.self),
@@ -56,13 +59,15 @@ final class ChannelBackupViewController: UIViewController {
 
         if let latestDate = latestDate {
             dateLabel.text = DateFormatter.localizedString(from: latestDate, dateStyle: .medium, timeStyle: .short)
+            fileIconImageView.image = Asset.channelBackupFile.image
         } else {
             dateLabel.text = L10n.Scene.ChannelBackup.notFound
+            fileIconImageView.image = Asset.channelBackupFileError.image
         }
 
         view.backgroundColor = UIColor.Zap.background
 
-        Style.Label.body.apply(to: fileNameLabel)
+        Style.Label.body.apply(to: fileNameLabel, errorMessageLabel)
         Style.Label.subHeadline.apply(to: dateLabel)
 
         tableView.dataSource = self
@@ -74,6 +79,28 @@ final class ChannelBackupViewController: UIViewController {
         tableView.rowHeight = 76
         tableView.allowsSelection = false
         tableView.isScrollEnabled = false
+
+        errorBackgroundView.backgroundColor = UIColor.Zap.superRed.withAlphaComponent(0.1)
+        errorBackgroundView.layer.borderWidth = 1
+        errorBackgroundView.layer.borderColor = UIColor.Zap.superRed.cgColor
+        errorBackgroundView.layer.cornerRadius = 5
+
+        errorMessageLabel.textColor = UIColor.Zap.superRed
+
+        if let nodePubKey = walletConfiguration.nodePubKey {
+            let errors = StaticChannelBackupStateStore.errorMessages(nodePubKey: nodePubKey, backupServiceKeys: backupServiceKeys)
+            if !errors.isEmpty {
+                let errorMessage = errors.reduce("") {
+                    $0 + "\($1.localizedDescription)\n"
+                }.trimmingCharacters(in: .whitespacesAndNewlines)
+                errorMessageLabel.text = errorMessage
+                errorBackgroundView.isHidden = false
+            } else {
+                errorBackgroundView.isHidden = true
+            }
+        } else {
+            errorBackgroundView.isHidden = true
+        }
 
         navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .action, target: self, action: #selector(shareChannelBackup))
     }
@@ -122,9 +149,9 @@ extension ChannelBackupViewController: UITableViewDataSource {
         if
             let nodePubKey = walletConfiguration.nodePubKey,
             StaticChannelBackupStateStore.didBackup(nodePubKey: nodePubKey, backupServiceKey: backupType.key) {
-            cell.accessoryView = UIImageView(image: Asset.iconCheckGreen.image)
+            cell.accessoryView = UIImageView(image: Asset.iconSuccessSmall.image)
         } else {
-            cell.accessoryView = nil
+            cell.accessoryView = UIImageView(image: Asset.iconErrorSmall.image)
         }
 
         cell.backgroundColor = UIColor.Zap.seaBlue

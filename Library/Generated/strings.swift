@@ -110,6 +110,16 @@ internal enum L10n {
       internal static let notFound = L10n.tr("Localizable", "scene.channel_backup.not_found")
       /// Channel Backup
       internal static let title = L10n.tr("Localizable", "scene.channel_backup.title")
+      internal enum Error {
+        /// scene.channel_backup.error.iCloudBackupFailed
+        internal static let iCloudBackupFailed = L10n.tr("Localizable", "scene.channel_backup.error.iCloudBackupFailed")
+        /// scene.channel_backup.error.iCloudDisabled
+        internal static let iCloudDisabled = L10n.tr("Localizable", "scene.channel_backup.error.iCloudDisabled")
+        /// scene.channel_backup.error.lndError
+        internal static let lndError = L10n.tr("Localizable", "scene.channel_backup.error.lndError")
+        /// scene.channel_backup.error.localBackupFailed
+        internal static let localBackupFailed = L10n.tr("Localizable", "scene.channel_backup.error.localBackupFailed")
+      }
     }
     internal enum ChannelDetail {
       /// Close Channel

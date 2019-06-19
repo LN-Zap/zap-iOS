@@ -30,7 +30,7 @@
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
-                                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="channel_backup_file_icon" translatesAutoresizingMaskIntoConstraints="NO" id="9L6-Uy-zy5">
+                                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="channel_backup_file" translatesAutoresizingMaskIntoConstraints="NO" id="9L6-Uy-zy5">
                                                 <rect key="frame" x="173" y="0.0" width="68" height="90"/>
                                             </imageView>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="channel.backup" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tRe-2W-amF">
@@ -51,12 +51,34 @@
                                             <constraint firstItem="9L2-Oc-qWW" firstAttribute="centerX" secondItem="TBg-pI-Dra" secondAttribute="centerX" id="nnk-A9-q2q"/>
                                         </constraints>
                                     </view>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="kL7-Gh-5fe">
+                                        <rect key="frame" x="10" y="605.5" width="394" height="50.5"/>
+                                        <subviews>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lf8-4b-rtH">
+                                                <rect key="frame" x="15" y="15" width="364" height="20.5"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                <nil key="textColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                        </subviews>
+                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <constraints>
+                                            <constraint firstAttribute="trailing" secondItem="lf8-4b-rtH" secondAttribute="trailing" constant="15" id="03x-i9-npy"/>
+                                            <constraint firstItem="lf8-4b-rtH" firstAttribute="leading" secondItem="kL7-Gh-5fe" secondAttribute="leading" constant="15" id="Azr-fb-y6H"/>
+                                            <constraint firstAttribute="bottom" secondItem="lf8-4b-rtH" secondAttribute="bottom" constant="15" id="KMp-dC-Wik"/>
+                                            <constraint firstItem="lf8-4b-rtH" firstAttribute="top" secondItem="kL7-Gh-5fe" secondAttribute="top" constant="15" id="g3H-z5-zFu"/>
+                                        </constraints>
+                                    </view>
                                 </subviews>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
                                     <constraint firstAttribute="trailing" secondItem="TBg-pI-Dra" secondAttribute="trailing" id="36p-Ox-3CP"/>
-                                    <constraint firstItem="TBg-pI-Dra" firstAttribute="centerY" secondItem="8WO-6e-W3i" secondAttribute="centerY" id="eF4-IT-Bog"/>
+                                    <constraint firstItem="kL7-Gh-5fe" firstAttribute="leading" secondItem="8WO-6e-W3i" secondAttribute="leading" constant="10" id="Qhk-qw-GPb"/>
+                                    <constraint firstAttribute="trailing" secondItem="kL7-Gh-5fe" secondAttribute="trailing" constant="10" id="bOw-jJ-asP"/>
+                                    <constraint firstItem="TBg-pI-Dra" firstAttribute="centerY" secondItem="8WO-6e-W3i" secondAttribute="centerY" priority="700" id="eF4-IT-Bog"/>
                                     <constraint firstItem="TBg-pI-Dra" firstAttribute="leading" secondItem="8WO-6e-W3i" secondAttribute="leading" id="nss-Dm-gAF"/>
+                                    <constraint firstAttribute="bottom" secondItem="kL7-Gh-5fe" secondAttribute="bottom" constant="10" id="q3T-YF-O2A"/>
+                                    <constraint firstItem="kL7-Gh-5fe" firstAttribute="top" relation="greaterThanOrEqual" secondItem="TBg-pI-Dra" secondAttribute="bottom" constant="15" id="vxg-Ea-xMd"/>
                                 </constraints>
                             </view>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="grouped" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="1" sectionFooterHeight="18" translatesAutoresizingMaskIntoConstraints="NO" id="PCb-AJ-tb9">
@@ -83,6 +105,9 @@
                     </view>
                     <connections>
                         <outlet property="dateLabel" destination="9L2-Oc-qWW" id="9B2-fx-PZB"/>
+                        <outlet property="errorBackgroundView" destination="kL7-Gh-5fe" id="ktX-v3-eGg"/>
+                        <outlet property="errorMessageLabel" destination="lf8-4b-rtH" id="5oo-Sq-gWL"/>
+                        <outlet property="fileIconImageView" destination="9L6-Uy-zy5" id="esE-K9-IQJ"/>
                         <outlet property="fileNameLabel" destination="tRe-2W-amF" id="7hW-Ma-Scc"/>
                         <outlet property="tableView" destination="PCb-AJ-tb9" id="GOz-qo-lz3"/>
                     </connections>
@@ -93,6 +118,6 @@
         </scene>
     </scenes>
     <resources>
-        <image name="channel_backup_file_icon" width="68" height="90"/>
+        <image name="channel_backup_file" width="68" height="90"/>
     </resources>
 </document>
