@@ -10,8 +10,8 @@ import SwiftBTC
 @testable import SwiftLnd
 import XCTest
 
-final class MockBackupService: BackupService {
-    func save(data: Data, nodePubKey: String, fileName: String) {}
+final class MockBackupService: StaticChannelBackupServiceType {
+    func save(data: Result<Data, LndApiError>, nodePubKey: String, fileName: String) {}
 }
 
 extension RPCCredentials {
