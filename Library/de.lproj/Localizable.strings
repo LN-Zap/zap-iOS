@@ -271,7 +271,7 @@
 "scene.channel_backup.title" = "Kanal Backup";
 "scene.channel_backup.cell_title" = "%@ channel.backup";
 "scene.channel_backup.not_found" = "Datei nicht gefunden";
-"scene.channel_backup.error.iCloudDisabled" = "iCloud seems to be disabled.";
-"scene.channel_backup.error.iCloudBackupFailed" = "iCloud backup failed.";
-"scene.channel_backup.error.localBackupFailed" = "Local file backup failed.";
-"scene.channel_backup.error.lndError" = "Could not get channel backup from lnd.";
+"scene.channel_backup.error.iCloudDisabled" = "iCloud scheint deaktiviert zu sein.";
+"scene.channel_backup.error.iCloudBackupFailed" = "iCloud Backup fehlerhaft.";
+"scene.channel_backup.error.localBackupFailed" = "Lokales File Backup fehlerhaft.";
+"scene.channel_backup.error.lndError" = "Kanal Backup konnte von lnd nicht empfangen werden.";
