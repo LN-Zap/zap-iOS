@@ -113,7 +113,6 @@ extension Lnrpc_QueryRoutesRequest {
 
         pubKey = destination
         amt = amount.int64
-        numRoutes = 10
     }
 }
 

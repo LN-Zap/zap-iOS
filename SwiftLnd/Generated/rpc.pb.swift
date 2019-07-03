@@ -207,7 +207,7 @@ struct Lnrpc_UnlockWalletRequest {
   ///*
   ///recovery_window is an optional argument specifying the address lookahead
   ///when restoring a wallet seed. The recovery window applies to each
-  ///invdividual branch of the BIP44 derivation paths. Supplying a recovery
+  ///individual branch of the BIP44 derivation paths. Supplying a recovery
   ///window of zero indicates that no addresses should be recovered, such after
   ///the first initialization of the wallet.
   var recoveryWindow: Int32 {
@@ -358,6 +358,9 @@ struct Lnrpc_Transaction {
 
   //// Addresses that received funds for this transaction
   var destAddresses: [String] = []
+
+  //// The raw transaction hex.
+  var rawTxHex: String = String()
 
   var unknownFields = SwiftProtobuf.UnknownStorage()
 
@@ -574,16 +577,6 @@ struct Lnrpc_SendToRouteRequest {
   var paymentHashString: String {
     get {return _storage._paymentHashString}
     set {_uniqueStorage()._paymentHashString = newValue}
-  }
-
-  ///*
-  ///Deprecated. The set of routes that should be used to attempt to complete the
-  ///payment. The possibility to pass in multiple routes is deprecated and 
-  ///instead the single route field below should be used in combination with the 
-  ///streaming variant of SendToRoute.
-  var routes: [Lnrpc_Route] {
-    get {return _storage._routes}
-    set {_uniqueStorage()._routes = newValue}
   }
 
   //// Route that should be used to attempt to complete the payment.
@@ -1118,7 +1111,7 @@ struct Lnrpc_Channel {
     set {_uniqueStorage()._initiator = newValue}
   }
 
-  //// A set of flags showing the current state of the cahnnel.
+  //// A set of flags showing the current state of the channel.
   var chanStatusFlags: String {
     get {return _storage._chanStatusFlags}
     set {_uniqueStorage()._chanStatusFlags = newValue}
@@ -1463,6 +1456,9 @@ struct Lnrpc_GetInfoResponse {
 
   //// A list of active chains the node is connected to
   var chains: [Lnrpc_Chain] = []
+
+  //// The color of the current node in hex code format
+  var color: String = String()
 
   var unknownFields = SwiftProtobuf.UnknownStorage()
 
@@ -1952,7 +1948,7 @@ struct Lnrpc_PendingChannelsResponse {
       set {_uniqueStorage()._limboBalance = newValue}
     }
 
-    //// The height at which funds can be sweeped into the wallet
+    //// The height at which funds can be swept into the wallet
     var maturityHeight: UInt32 {
       get {return _storage._maturityHeight}
       set {_uniqueStorage()._maturityHeight = newValue}
@@ -2191,14 +2187,6 @@ struct Lnrpc_QueryRoutesRequest {
     set {_uniqueStorage()._amt = newValue}
   }
 
-  ///*
-  ///Deprecated. The max number of routes to return. In the future, QueryRoutes
-  ///will only return a single route.
-  var numRoutes: Int32 {
-    get {return _storage._numRoutes}
-    set {_uniqueStorage()._numRoutes = newValue}
-  }
-
   //// An optional CLTV delta from the current height that should be used for the timelock of the final hop
   var finalCltvDelta: Int32 {
     get {return _storage._finalCltvDelta}
@@ -2334,7 +2322,7 @@ struct Lnrpc_Route {
   ///*
   ///The sum of the fees paid at each hop within the final route.  In the case
   ///of a one-hop payment, this value will be zero as we don't need to pay a fee
-  ///it ourself.
+  ///to ourselves.
   var totalFees: Int64 = 0
 
   ///*
@@ -2370,6 +2358,9 @@ struct Lnrpc_NodeInfoRequest {
   //// The 33-byte hex-encoded compressed public of the target node 
   var pubKey: String = String()
 
+  //// If true, will include all known channels associated with the node.
+  var includeChannels: Bool = false
+
   var unknownFields = SwiftProtobuf.UnknownStorage()
 
   init() {}
@@ -2394,14 +2385,22 @@ struct Lnrpc_NodeInfo {
   /// Clears the value of `node`. Subsequent reads from it will return its default value.
   mutating func clearNode() {_uniqueStorage()._node = nil}
 
+  //// The total number of channels for the node.
   var numChannels: UInt32 {
     get {return _storage._numChannels}
     set {_uniqueStorage()._numChannels = newValue}
   }
 
+  //// The sum of all channels capacity for the node, denominated in satoshis.
   var totalCapacity: Int64 {
     get {return _storage._totalCapacity}
     set {_uniqueStorage()._totalCapacity = newValue}
+  }
+
+  //// A list of all public channels for the node.
+  var channels: [Lnrpc_ChannelEdge] {
+    get {return _storage._channels}
+    set {_uniqueStorage()._channels = newValue}
   }
 
   var unknownFields = SwiftProtobuf.UnknownStorage()
@@ -2689,6 +2688,8 @@ struct Lnrpc_NodeUpdate {
   var globalFeatures: Data = SwiftProtobuf.Internal.emptyData
 
   var alias: String = String()
+
+  var color: String = String()
 
   var unknownFields = SwiftProtobuf.UnknownStorage()
 
@@ -3200,15 +3201,75 @@ struct Lnrpc_Payment {
   //// The value of the payment in milli-satoshis
   var valueMsat: Int64 = 0
 
+  //// The optional payment request being fulfilled.
+  var paymentRequest: String = String()
+
+  /// The status of the payment.
+  var status: Lnrpc_Payment.PaymentStatus = .unknown
+
   var unknownFields = SwiftProtobuf.UnknownStorage()
+
+  enum PaymentStatus: SwiftProtobuf.Enum {
+    typealias RawValue = Int
+    case unknown // = 0
+    case inFlight // = 1
+    case succeeded // = 2
+    case failed // = 3
+    case UNRECOGNIZED(Int)
+
+    init() {
+      self = .unknown
+    }
+
+    init?(rawValue: Int) {
+      switch rawValue {
+      case 0: self = .unknown
+      case 1: self = .inFlight
+      case 2: self = .succeeded
+      case 3: self = .failed
+      default: self = .UNRECOGNIZED(rawValue)
+      }
+    }
+
+    var rawValue: Int {
+      switch self {
+      case .unknown: return 0
+      case .inFlight: return 1
+      case .succeeded: return 2
+      case .failed: return 3
+      case .UNRECOGNIZED(let i): return i
+      }
+    }
+
+  }
 
   init() {}
 }
+
+#if swift(>=4.2)
+
+extension Lnrpc_Payment.PaymentStatus: CaseIterable {
+  // The compiler won't synthesize support with the UNRECOGNIZED case.
+  static var allCases: [Lnrpc_Payment.PaymentStatus] = [
+    .unknown,
+    .inFlight,
+    .succeeded,
+    .failed,
+  ]
+}
+
+#endif  // swift(>=4.2)
 
 struct Lnrpc_ListPaymentsRequest {
   // SwiftProtobuf.Message conformance is added in an extension below. See the
   // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
   // methods supported on all messages.
+
+  ///*
+  ///If true, then return payments that have not yet fully completed. This means
+  ///that pending payments, as well as failed payments will show up if this
+  ///field is set to True.
+  var includeIncomplete: Bool = false
 
   var unknownFields = SwiftProtobuf.UnknownStorage()
 
@@ -3556,7 +3617,7 @@ struct Lnrpc_ExportChannelBackupRequest {
   // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
   // methods supported on all messages.
 
-  //// The target chanenl point to obtain a back up for.
+  //// The target channel point to obtain a back up for.
   var chanPoint: Lnrpc_ChannelPoint {
     get {return _storage._chanPoint ?? Lnrpc_ChannelPoint()}
     set {_uniqueStorage()._chanPoint = newValue}
@@ -3591,7 +3652,7 @@ struct Lnrpc_ChannelBackup {
 
   ///*
   ///Is an encrypted single-chan backup. this can be passed to
-  ///RestoreChannelBackups, or the WalletUnlocker Innit and Unlock methods in
+  ///RestoreChannelBackups, or the WalletUnlocker Init and Unlock methods in
   ///order to trigger the recovery protocol.
   var chanBackup: Data {
     get {return _storage._chanBackup}
@@ -4220,6 +4281,7 @@ extension Lnrpc_Transaction: SwiftProtobuf.Message, SwiftProtobuf._MessageImplem
     6: .same(proto: "time_stamp"),
     7: .same(proto: "total_fees"),
     8: .same(proto: "dest_addresses"),
+    9: .same(proto: "raw_tx_hex"),
   ]
 
   mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
@@ -4233,6 +4295,7 @@ extension Lnrpc_Transaction: SwiftProtobuf.Message, SwiftProtobuf._MessageImplem
       case 6: try decoder.decodeSingularInt64Field(value: &self.timeStamp)
       case 7: try decoder.decodeSingularInt64Field(value: &self.totalFees)
       case 8: try decoder.decodeRepeatedStringField(value: &self.destAddresses)
+      case 9: try decoder.decodeSingularStringField(value: &self.rawTxHex)
       default: break
       }
     }
@@ -4263,6 +4326,9 @@ extension Lnrpc_Transaction: SwiftProtobuf.Message, SwiftProtobuf._MessageImplem
     if !self.destAddresses.isEmpty {
       try visitor.visitRepeatedStringField(value: self.destAddresses, fieldNumber: 8)
     }
+    if !self.rawTxHex.isEmpty {
+      try visitor.visitSingularStringField(value: self.rawTxHex, fieldNumber: 9)
+    }
     try unknownFields.traverse(visitor: &visitor)
   }
 
@@ -4275,6 +4341,7 @@ extension Lnrpc_Transaction: SwiftProtobuf.Message, SwiftProtobuf._MessageImplem
     if lhs.timeStamp != rhs.timeStamp {return false}
     if lhs.totalFees != rhs.totalFees {return false}
     if lhs.destAddresses != rhs.destAddresses {return false}
+    if lhs.rawTxHex != rhs.rawTxHex {return false}
     if lhs.unknownFields != rhs.unknownFields {return false}
     return true
   }
@@ -4594,14 +4661,12 @@ extension Lnrpc_SendToRouteRequest: SwiftProtobuf.Message, SwiftProtobuf._Messag
   static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
     1: .standard(proto: "payment_hash"),
     2: .standard(proto: "payment_hash_string"),
-    3: .same(proto: "routes"),
     4: .same(proto: "route"),
   ]
 
   fileprivate class _StorageClass {
     var _paymentHash: Data = SwiftProtobuf.Internal.emptyData
     var _paymentHashString: String = String()
-    var _routes: [Lnrpc_Route] = []
     var _route: Lnrpc_Route? = nil
 
     static let defaultInstance = _StorageClass()
@@ -4611,7 +4676,6 @@ extension Lnrpc_SendToRouteRequest: SwiftProtobuf.Message, SwiftProtobuf._Messag
     init(copying source: _StorageClass) {
       _paymentHash = source._paymentHash
       _paymentHashString = source._paymentHashString
-      _routes = source._routes
       _route = source._route
     }
   }
@@ -4630,7 +4694,6 @@ extension Lnrpc_SendToRouteRequest: SwiftProtobuf.Message, SwiftProtobuf._Messag
         switch fieldNumber {
         case 1: try decoder.decodeSingularBytesField(value: &_storage._paymentHash)
         case 2: try decoder.decodeSingularStringField(value: &_storage._paymentHashString)
-        case 3: try decoder.decodeRepeatedMessageField(value: &_storage._routes)
         case 4: try decoder.decodeSingularMessageField(value: &_storage._route)
         default: break
         }
@@ -4646,9 +4709,6 @@ extension Lnrpc_SendToRouteRequest: SwiftProtobuf.Message, SwiftProtobuf._Messag
       if !_storage._paymentHashString.isEmpty {
         try visitor.visitSingularStringField(value: _storage._paymentHashString, fieldNumber: 2)
       }
-      if !_storage._routes.isEmpty {
-        try visitor.visitRepeatedMessageField(value: _storage._routes, fieldNumber: 3)
-      }
       if let v = _storage._route {
         try visitor.visitSingularMessageField(value: v, fieldNumber: 4)
       }
@@ -4663,7 +4723,6 @@ extension Lnrpc_SendToRouteRequest: SwiftProtobuf.Message, SwiftProtobuf._Messag
         let rhs_storage = _args.1
         if _storage._paymentHash != rhs_storage._paymentHash {return false}
         if _storage._paymentHashString != rhs_storage._paymentHashString {return false}
-        if _storage._routes != rhs_storage._routes {return false}
         if _storage._route != rhs_storage._route {return false}
         return true
       }
@@ -6086,6 +6145,7 @@ extension Lnrpc_GetInfoResponse: SwiftProtobuf.Message, SwiftProtobuf._MessageIm
     14: .same(proto: "version"),
     15: .same(proto: "num_inactive_channels"),
     16: .same(proto: "chains"),
+    17: .same(proto: "color"),
   ]
 
   mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
@@ -6105,6 +6165,7 @@ extension Lnrpc_GetInfoResponse: SwiftProtobuf.Message, SwiftProtobuf._MessageIm
       case 14: try decoder.decodeSingularStringField(value: &self.version)
       case 15: try decoder.decodeSingularUInt32Field(value: &self.numInactiveChannels)
       case 16: try decoder.decodeRepeatedMessageField(value: &self.chains)
+      case 17: try decoder.decodeSingularStringField(value: &self.color)
       default: break
       }
     }
@@ -6153,6 +6214,9 @@ extension Lnrpc_GetInfoResponse: SwiftProtobuf.Message, SwiftProtobuf._MessageIm
     if !self.chains.isEmpty {
       try visitor.visitRepeatedMessageField(value: self.chains, fieldNumber: 16)
     }
+    if !self.color.isEmpty {
+      try visitor.visitSingularStringField(value: self.color, fieldNumber: 17)
+    }
     try unknownFields.traverse(visitor: &visitor)
   }
 
@@ -6171,6 +6235,7 @@ extension Lnrpc_GetInfoResponse: SwiftProtobuf.Message, SwiftProtobuf._MessageIm
     if lhs.version != rhs.version {return false}
     if lhs.numInactiveChannels != rhs.numInactiveChannels {return false}
     if lhs.chains != rhs.chains {return false}
+    if lhs.color != rhs.color {return false}
     if lhs.unknownFields != rhs.unknownFields {return false}
     return true
   }
@@ -7501,7 +7566,6 @@ extension Lnrpc_QueryRoutesRequest: SwiftProtobuf.Message, SwiftProtobuf._Messag
   static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
     1: .standard(proto: "pub_key"),
     2: .same(proto: "amt"),
-    3: .standard(proto: "num_routes"),
     4: .standard(proto: "final_cltv_delta"),
     5: .standard(proto: "fee_limit"),
     6: .standard(proto: "ignored_nodes"),
@@ -7512,7 +7576,6 @@ extension Lnrpc_QueryRoutesRequest: SwiftProtobuf.Message, SwiftProtobuf._Messag
   fileprivate class _StorageClass {
     var _pubKey: String = String()
     var _amt: Int64 = 0
-    var _numRoutes: Int32 = 0
     var _finalCltvDelta: Int32 = 0
     var _feeLimit: Lnrpc_FeeLimit? = nil
     var _ignoredNodes: [Data] = []
@@ -7526,7 +7589,6 @@ extension Lnrpc_QueryRoutesRequest: SwiftProtobuf.Message, SwiftProtobuf._Messag
     init(copying source: _StorageClass) {
       _pubKey = source._pubKey
       _amt = source._amt
-      _numRoutes = source._numRoutes
       _finalCltvDelta = source._finalCltvDelta
       _feeLimit = source._feeLimit
       _ignoredNodes = source._ignoredNodes
@@ -7549,7 +7611,6 @@ extension Lnrpc_QueryRoutesRequest: SwiftProtobuf.Message, SwiftProtobuf._Messag
         switch fieldNumber {
         case 1: try decoder.decodeSingularStringField(value: &_storage._pubKey)
         case 2: try decoder.decodeSingularInt64Field(value: &_storage._amt)
-        case 3: try decoder.decodeSingularInt32Field(value: &_storage._numRoutes)
         case 4: try decoder.decodeSingularInt32Field(value: &_storage._finalCltvDelta)
         case 5: try decoder.decodeSingularMessageField(value: &_storage._feeLimit)
         case 6: try decoder.decodeRepeatedBytesField(value: &_storage._ignoredNodes)
@@ -7568,9 +7629,6 @@ extension Lnrpc_QueryRoutesRequest: SwiftProtobuf.Message, SwiftProtobuf._Messag
       }
       if _storage._amt != 0 {
         try visitor.visitSingularInt64Field(value: _storage._amt, fieldNumber: 2)
-      }
-      if _storage._numRoutes != 0 {
-        try visitor.visitSingularInt32Field(value: _storage._numRoutes, fieldNumber: 3)
       }
       if _storage._finalCltvDelta != 0 {
         try visitor.visitSingularInt32Field(value: _storage._finalCltvDelta, fieldNumber: 4)
@@ -7598,7 +7656,6 @@ extension Lnrpc_QueryRoutesRequest: SwiftProtobuf.Message, SwiftProtobuf._Messag
         let rhs_storage = _args.1
         if _storage._pubKey != rhs_storage._pubKey {return false}
         if _storage._amt != rhs_storage._amt {return false}
-        if _storage._numRoutes != rhs_storage._numRoutes {return false}
         if _storage._finalCltvDelta != rhs_storage._finalCltvDelta {return false}
         if _storage._feeLimit != rhs_storage._feeLimit {return false}
         if _storage._ignoredNodes != rhs_storage._ignoredNodes {return false}
@@ -7811,12 +7868,14 @@ extension Lnrpc_NodeInfoRequest: SwiftProtobuf.Message, SwiftProtobuf._MessageIm
   static let protoMessageName: String = _protobuf_package + ".NodeInfoRequest"
   static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
     1: .standard(proto: "pub_key"),
+    2: .standard(proto: "include_channels"),
   ]
 
   mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
     while let fieldNumber = try decoder.nextFieldNumber() {
       switch fieldNumber {
       case 1: try decoder.decodeSingularStringField(value: &self.pubKey)
+      case 2: try decoder.decodeSingularBoolField(value: &self.includeChannels)
       default: break
       }
     }
@@ -7826,11 +7885,15 @@ extension Lnrpc_NodeInfoRequest: SwiftProtobuf.Message, SwiftProtobuf._MessageIm
     if !self.pubKey.isEmpty {
       try visitor.visitSingularStringField(value: self.pubKey, fieldNumber: 1)
     }
+    if self.includeChannels != false {
+      try visitor.visitSingularBoolField(value: self.includeChannels, fieldNumber: 2)
+    }
     try unknownFields.traverse(visitor: &visitor)
   }
 
   static func ==(lhs: Lnrpc_NodeInfoRequest, rhs: Lnrpc_NodeInfoRequest) -> Bool {
     if lhs.pubKey != rhs.pubKey {return false}
+    if lhs.includeChannels != rhs.includeChannels {return false}
     if lhs.unknownFields != rhs.unknownFields {return false}
     return true
   }
@@ -7842,12 +7905,14 @@ extension Lnrpc_NodeInfo: SwiftProtobuf.Message, SwiftProtobuf._MessageImplement
     1: .same(proto: "node"),
     2: .same(proto: "num_channels"),
     3: .same(proto: "total_capacity"),
+    4: .same(proto: "channels"),
   ]
 
   fileprivate class _StorageClass {
     var _node: Lnrpc_LightningNode? = nil
     var _numChannels: UInt32 = 0
     var _totalCapacity: Int64 = 0
+    var _channels: [Lnrpc_ChannelEdge] = []
 
     static let defaultInstance = _StorageClass()
 
@@ -7857,6 +7922,7 @@ extension Lnrpc_NodeInfo: SwiftProtobuf.Message, SwiftProtobuf._MessageImplement
       _node = source._node
       _numChannels = source._numChannels
       _totalCapacity = source._totalCapacity
+      _channels = source._channels
     }
   }
 
@@ -7875,6 +7941,7 @@ extension Lnrpc_NodeInfo: SwiftProtobuf.Message, SwiftProtobuf._MessageImplement
         case 1: try decoder.decodeSingularMessageField(value: &_storage._node)
         case 2: try decoder.decodeSingularUInt32Field(value: &_storage._numChannels)
         case 3: try decoder.decodeSingularInt64Field(value: &_storage._totalCapacity)
+        case 4: try decoder.decodeRepeatedMessageField(value: &_storage._channels)
         default: break
         }
       }
@@ -7892,6 +7959,9 @@ extension Lnrpc_NodeInfo: SwiftProtobuf.Message, SwiftProtobuf._MessageImplement
       if _storage._totalCapacity != 0 {
         try visitor.visitSingularInt64Field(value: _storage._totalCapacity, fieldNumber: 3)
       }
+      if !_storage._channels.isEmpty {
+        try visitor.visitRepeatedMessageField(value: _storage._channels, fieldNumber: 4)
+      }
     }
     try unknownFields.traverse(visitor: &visitor)
   }
@@ -7904,6 +7974,7 @@ extension Lnrpc_NodeInfo: SwiftProtobuf.Message, SwiftProtobuf._MessageImplement
         if _storage._node != rhs_storage._node {return false}
         if _storage._numChannels != rhs_storage._numChannels {return false}
         if _storage._totalCapacity != rhs_storage._totalCapacity {return false}
+        if _storage._channels != rhs_storage._channels {return false}
         return true
       }
       if !storagesAreEqual {return false}
@@ -8477,6 +8548,7 @@ extension Lnrpc_NodeUpdate: SwiftProtobuf.Message, SwiftProtobuf._MessageImpleme
     2: .standard(proto: "identity_key"),
     3: .standard(proto: "global_features"),
     4: .same(proto: "alias"),
+    5: .same(proto: "color"),
   ]
 
   mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
@@ -8486,6 +8558,7 @@ extension Lnrpc_NodeUpdate: SwiftProtobuf.Message, SwiftProtobuf._MessageImpleme
       case 2: try decoder.decodeSingularStringField(value: &self.identityKey)
       case 3: try decoder.decodeSingularBytesField(value: &self.globalFeatures)
       case 4: try decoder.decodeSingularStringField(value: &self.alias)
+      case 5: try decoder.decodeSingularStringField(value: &self.color)
       default: break
       }
     }
@@ -8504,6 +8577,9 @@ extension Lnrpc_NodeUpdate: SwiftProtobuf.Message, SwiftProtobuf._MessageImpleme
     if !self.alias.isEmpty {
       try visitor.visitSingularStringField(value: self.alias, fieldNumber: 4)
     }
+    if !self.color.isEmpty {
+      try visitor.visitSingularStringField(value: self.color, fieldNumber: 5)
+    }
     try unknownFields.traverse(visitor: &visitor)
   }
 
@@ -8512,6 +8588,7 @@ extension Lnrpc_NodeUpdate: SwiftProtobuf.Message, SwiftProtobuf._MessageImpleme
     if lhs.identityKey != rhs.identityKey {return false}
     if lhs.globalFeatures != rhs.globalFeatures {return false}
     if lhs.alias != rhs.alias {return false}
+    if lhs.color != rhs.color {return false}
     if lhs.unknownFields != rhs.unknownFields {return false}
     return true
   }
@@ -9225,6 +9302,8 @@ extension Lnrpc_Payment: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementa
     6: .same(proto: "payment_preimage"),
     7: .same(proto: "value_sat"),
     8: .same(proto: "value_msat"),
+    9: .same(proto: "payment_request"),
+    10: .same(proto: "status"),
   ]
 
   mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
@@ -9238,6 +9317,8 @@ extension Lnrpc_Payment: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementa
       case 6: try decoder.decodeSingularStringField(value: &self.paymentPreimage)
       case 7: try decoder.decodeSingularInt64Field(value: &self.valueSat)
       case 8: try decoder.decodeSingularInt64Field(value: &self.valueMsat)
+      case 9: try decoder.decodeSingularStringField(value: &self.paymentRequest)
+      case 10: try decoder.decodeSingularEnumField(value: &self.status)
       default: break
       }
     }
@@ -9268,6 +9349,12 @@ extension Lnrpc_Payment: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementa
     if self.valueMsat != 0 {
       try visitor.visitSingularInt64Field(value: self.valueMsat, fieldNumber: 8)
     }
+    if !self.paymentRequest.isEmpty {
+      try visitor.visitSingularStringField(value: self.paymentRequest, fieldNumber: 9)
+    }
+    if self.status != .unknown {
+      try visitor.visitSingularEnumField(value: self.status, fieldNumber: 10)
+    }
     try unknownFields.traverse(visitor: &visitor)
   }
 
@@ -9280,25 +9367,46 @@ extension Lnrpc_Payment: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementa
     if lhs.paymentPreimage != rhs.paymentPreimage {return false}
     if lhs.valueSat != rhs.valueSat {return false}
     if lhs.valueMsat != rhs.valueMsat {return false}
+    if lhs.paymentRequest != rhs.paymentRequest {return false}
+    if lhs.status != rhs.status {return false}
     if lhs.unknownFields != rhs.unknownFields {return false}
     return true
   }
 }
 
+extension Lnrpc_Payment.PaymentStatus: SwiftProtobuf._ProtoNameProviding {
+  static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
+    0: .same(proto: "UNKNOWN"),
+    1: .same(proto: "IN_FLIGHT"),
+    2: .same(proto: "SUCCEEDED"),
+    3: .same(proto: "FAILED"),
+  ]
+}
+
 extension Lnrpc_ListPaymentsRequest: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
   static let protoMessageName: String = _protobuf_package + ".ListPaymentsRequest"
-  static let _protobuf_nameMap = SwiftProtobuf._NameMap()
+  static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
+    1: .standard(proto: "include_incomplete"),
+  ]
 
   mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
-    while let _ = try decoder.nextFieldNumber() {
+    while let fieldNumber = try decoder.nextFieldNumber() {
+      switch fieldNumber {
+      case 1: try decoder.decodeSingularBoolField(value: &self.includeIncomplete)
+      default: break
+      }
     }
   }
 
   func traverse<V: SwiftProtobuf.Visitor>(visitor: inout V) throws {
+    if self.includeIncomplete != false {
+      try visitor.visitSingularBoolField(value: self.includeIncomplete, fieldNumber: 1)
+    }
     try unknownFields.traverse(visitor: &visitor)
   }
 
   static func ==(lhs: Lnrpc_ListPaymentsRequest, rhs: Lnrpc_ListPaymentsRequest) -> Bool {
+    if lhs.includeIncomplete != rhs.includeIncomplete {return false}
     if lhs.unknownFields != rhs.unknownFields {return false}
     return true
   }
