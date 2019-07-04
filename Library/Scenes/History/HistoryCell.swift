@@ -204,15 +204,14 @@ final class HistoryCell: BondTableViewCell {
             .customView(amountLabel(lightningPaymentEvent.amount))
         ]))
 
-        // can be reused once the paymentReqest is included in the Payment
-//        if let memo = lightningPaymentEvent.memo, !memo.isEmpty {
-//            stackView.addArrangedElement(.horizontalStackView(compressionResistant: .first, content: [
-//                .label(text: "memo:", style: Style.Label.body),
-//                .label(text: memo, style: Style.Label.body.with({
-//                    $0.lineBreakMode = .byTruncatingTail
-//                    $0.textColor = UIColor.Zap.gray
-//                }))
-//            ]))
-//        }
+        if let memo = lightningPaymentEvent.memo, !memo.isEmpty {
+            stackView.addArrangedElement(.horizontalStackView(compressionResistant: .first, content: [
+                .label(text: "memo:", style: Style.Label.body),
+                .label(text: memo, style: Style.Label.body.with({
+                    $0.lineBreakMode = .byTruncatingTail
+                    $0.textColor = UIColor.Zap.gray
+                }))
+            ]))
+        }
     }
 }

@@ -112,8 +112,8 @@ final class EventDetailViewModel {
         var result = [StackViewElement]()
 
         result.append(contentsOf: headline(L10n.Scene.TransactionDetail.Title.paymentDetail))
-//        result.append(contentsOf: label(title: L10n.Scene.TransactionDetail.memoLabel, content: event.memo))
         result.append(contentsOf: amountLabel(title: L10n.Scene.TransactionDetail.amountLabel, amount: event.amount))
+        result.append(contentsOf: label(title: L10n.Scene.TransactionDetail.memoLabel, content: event.memo))
         result.append(contentsOf: amountLabel(title: L10n.Scene.TransactionDetail.feeLabel, amount: event.fee))
         result.append(contentsOf: copyButton(title: L10n.Scene.TransactionDetail.preimageLabel, content: event.preimage))
         result.append(contentsOf: dateLabel(title: L10n.Scene.TransactionDetail.dateLabel, date: event.date))

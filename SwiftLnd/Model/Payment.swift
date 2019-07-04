@@ -10,6 +10,7 @@ import SwiftBTC
 
 public struct Payment: Equatable {
     public let id: String
+    public let memo: String?
     public let amount: Satoshi
     public let date: Date
     public let fees: Satoshi
@@ -21,6 +22,7 @@ public struct Payment: Equatable {
 extension Payment {
     init(payment: Lnrpc_Payment) {
         id = payment.paymentHash
+        memo = Bolt11.decode(string: payment.paymentRequest)?.description
         amount = Satoshi(-payment.valueSat)
         date = Date(timeIntervalSince1970: TimeInterval(payment.creationDate))
         fees = Satoshi(payment.fee)
@@ -31,6 +33,7 @@ extension Payment {
 
     init(paymentRequest: PaymentRequest, sendResponse: Lnrpc_SendResponse, amount: Satoshi? = nil) {
         id = paymentRequest.paymentHash
+        memo = paymentRequest.memo
         if let amount = amount {
             self.amount = -amount
         } else {

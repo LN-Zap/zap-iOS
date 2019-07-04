@@ -157,6 +157,7 @@ extension Payment: CustomDebugStringConvertible {
 		return """
 		Payment:
 		\tid: \(id)
+		\tmemo: \(String(describing: memo))
 		\tamount: \(amount)
 		\tdate: \(date)
 		\tfees: \(fees)
