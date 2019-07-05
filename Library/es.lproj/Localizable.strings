@@ -159,17 +159,10 @@
 "scene.recover_wallet.description_label" = "Introduzca su semilla:";
 "scene.recover_wallet.placeholder" = "abandonar capacidad capaz sobre encima ausente absorber abstracto absurdo abuso accidente cuenta acusar lograr ácido acústico adquirir tras acto acción actor actriz real";
 
-"scene.select_wallet_connection.title" = "Agregar cartera";
 "scene.select_wallet_connection.create.title" = "Crear";
-"scene.select_wallet_connection.create.message" = "nueva cartera";
 "scene.select_wallet_connection.recover.title" = "Recuperar";
-"scene.select_wallet_connection.recover.message" = "cartera existente";
 "scene.select_wallet_connection.connect.title" = "Conectar";
-"scene.select_wallet_connection.connect.message" = "nodo remoto";
-"scene.select_wallet_connection.disabled_alert.title" = "¡Lo siento!";
-"scene.select_wallet_connection.disabled_alert.message" = "Ejecutar su propio nodo de Lightning Network no está disponible en esta beta. En su lugar, tendrá que conectarse a un nodo remoto.";
-"scene.select_wallet_connection.disabled_alert.ok_button" = "Vale";
-"scene.select_wallet_connection.create.help" = "¿Necesita ayuda?";
+"scene.select_wallet_connection.message" = "Bitcoin for everyone";
 
 "scene.main.send_button" = "Enviar";
 "scene.main.receive_button" = "Recibir";
