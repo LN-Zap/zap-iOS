@@ -159,17 +159,10 @@
 "scene.recover_wallet.description_label" = "Gib deinen Seed ein:";
 "scene.recover_wallet.placeholder" = "abandon ability able about above absent absorb abstract absurd abuse access accident account accuse achieve acid acoustic acquire across act action actor actress actual";
 
-"scene.select_wallet_connection.title" = "Wallets hinzufügen";
 "scene.select_wallet_connection.create.title" = "Erstellen";
-"scene.select_wallet_connection.create.message" = "neues Wallet";
 "scene.select_wallet_connection.recover.title" = "Wiederherstellen";
-"scene.select_wallet_connection.recover.message" = "bestehendes Wallet";
 "scene.select_wallet_connection.connect.title" = "Verbinden";
-"scene.select_wallet_connection.connect.message" = "Remote-Knoten";
-"scene.select_wallet_connection.disabled_alert.title" = "Sorry!";
-"scene.select_wallet_connection.disabled_alert.message" = "LND ist in dieser mobilen Beta-Version deaktiviert. Verbinde dich stattdessen mit einem Remote-Knoten.";
-"scene.select_wallet_connection.disabled_alert.ok_button" = "Ok";
-"scene.select_wallet_connection.create.help" = "Brauchst du Hilfe?";
+"scene.select_wallet_connection.message" = "Bitcoin for everyone";
 
 "scene.main.send_button" = "Senden";
 "scene.main.receive_button" = "Empfangen";
