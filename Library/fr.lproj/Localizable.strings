@@ -159,17 +159,10 @@
 "scene.recover_wallet.description_label" = "Entrez votre clé:";
 "scene.recover_wallet.placeholder" = "abandon ability able about above absent absorb abstract absurd abuse access accident account accuse achieve acid acoustic acquire across act action actor actress actual";
 
-"scene.select_wallet_connection.title" = "Ajouter un Portefeuille";
 "scene.select_wallet_connection.create.title" = "Créer";
-"scene.select_wallet_connection.create.message" = "nouveau portefeuille";
 "scene.select_wallet_connection.recover.title" = "Récupérer";
-"scene.select_wallet_connection.recover.message" = "portefeuille existant";
 "scene.select_wallet_connection.connect.title" = "Se connecter";
-"scene.select_wallet_connection.connect.message" = "nœud distant";
-"scene.select_wallet_connection.disabled_alert.title" = "Désolé !";
-"scene.select_wallet_connection.disabled_alert.message" = "La fonctionnalité permettant de faire tourner lnd sur mobile est désactivée dans cette version beta. Connectez vous à un node distant à la place.";
-"scene.select_wallet_connection.disabled_alert.ok_button" = "Ok";
-"scene.select_wallet_connection.create.help" = "Besoin d'aide ?";
+"scene.select_wallet_connection.message" = "Bitcoin for everyone";
 
 "scene.main.send_button" = "Envoyer";
 "scene.main.receive_button" = "Recevoir";
