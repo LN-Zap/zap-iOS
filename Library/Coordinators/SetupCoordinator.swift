@@ -110,12 +110,6 @@ final class SetupCoordinator: Coordinator {
         navigationController?.present(viewController, animated: true, completion: nil)
     }
 
-    private func presentDisabledAlert() {
-        let alert = UIAlertController(title: L10n.Scene.SelectWalletConnection.DisabledAlert.title, message: L10n.Scene.SelectWalletConnection.DisabledAlert.message, preferredStyle: .alert)
-        alert.addAction(UIAlertAction(title: L10n.Scene.SelectWalletConnection.DisabledAlert.okButton, style: .cancel, handler: nil))
-        navigationController?.present(alert, animated: true, completion: nil)
-    }
-
     private func walletListViewController() -> ManageWalletsViewController {
         return ManageWalletsViewController.instantiate(addWalletButtonTapped: { [weak self] in
             guard let self = self else { return }

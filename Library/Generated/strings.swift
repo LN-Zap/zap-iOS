@@ -111,13 +111,13 @@ internal enum L10n {
       /// Channel Backup
       internal static let title = L10n.tr("Localizable", "scene.channel_backup.title")
       internal enum Error {
-        /// scene.channel_backup.error.iCloudBackupFailed
+        /// iCloud backup failed.
         internal static let iCloudBackupFailed = L10n.tr("Localizable", "scene.channel_backup.error.iCloudBackupFailed")
-        /// scene.channel_backup.error.iCloudDisabled
+        /// iCloud seems to be disabled.
         internal static let iCloudDisabled = L10n.tr("Localizable", "scene.channel_backup.error.iCloudDisabled")
-        /// scene.channel_backup.error.lndError
+        /// Could not get channel backup from lnd.
         internal static let lndError = L10n.tr("Localizable", "scene.channel_backup.error.lndError")
-        /// scene.channel_backup.error.localBackupFailed
+        /// Local file backup failed.
         internal static let localBackupFailed = L10n.tr("Localizable", "scene.channel_backup.error.localBackupFailed")
       }
     }
@@ -418,33 +418,17 @@ internal enum L10n {
       }
     }
     internal enum SelectWalletConnection {
-      /// Add Wallet
-      internal static let title = L10n.tr("Localizable", "scene.select_wallet_connection.title")
+      /// Bitcoin for everyone
+      internal static let message = L10n.tr("Localizable", "scene.select_wallet_connection.message")
       internal enum Connect {
-        /// remote node
-        internal static let message = L10n.tr("Localizable", "scene.select_wallet_connection.connect.message")
         /// Connect
         internal static let title = L10n.tr("Localizable", "scene.select_wallet_connection.connect.title")
       }
       internal enum Create {
-        /// Need Help?
-        internal static let help = L10n.tr("Localizable", "scene.select_wallet_connection.create.help")
-        /// new wallet
-        internal static let message = L10n.tr("Localizable", "scene.select_wallet_connection.create.message")
         /// Create
         internal static let title = L10n.tr("Localizable", "scene.select_wallet_connection.create.title")
       }
-      internal enum DisabledAlert {
-        /// Running Lnd on the phone is disabled in this beta. Connect to a remote node instead.
-        internal static let message = L10n.tr("Localizable", "scene.select_wallet_connection.disabled_alert.message")
-        /// Ok
-        internal static let okButton = L10n.tr("Localizable", "scene.select_wallet_connection.disabled_alert.ok_button")
-        /// Sorry!
-        internal static let title = L10n.tr("Localizable", "scene.select_wallet_connection.disabled_alert.title")
-      }
       internal enum Recover {
-        /// existing wallet
-        internal static let message = L10n.tr("Localizable", "scene.select_wallet_connection.recover.message")
         /// Recover
         internal static let title = L10n.tr("Localizable", "scene.select_wallet_connection.recover.title")
       }

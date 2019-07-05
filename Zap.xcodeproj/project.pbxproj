@@ -107,8 +107,6 @@
 		AD391C5D20D16F7A007EE22A /* MnemonicWordListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADBB36302084CA3B005662B4 /* MnemonicWordListViewController.swift */; };
 		AD391C5E20D16F7A007EE22A /* MnemonicWordTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADBB36322084EC4D005662B4 /* MnemonicWordTableViewCell.swift */; };
 		AD391C5F20D16F7A007EE22A /* RecoverWalletViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADF79375208F88DE0086B2CA /* RecoverWalletViewController.swift */; };
-		AD391C6020D16F7A007EE22A /* SelectWalletCreationMethodTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD3CF97520B4028400D78A54 /* SelectWalletCreationMethodTableViewCell.swift */; };
-		AD391C6120D16F7A007EE22A /* SelectWalletCreationMethodTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = AD3CF97620B4028400D78A54 /* SelectWalletCreationMethodTableViewCell.xib */; };
 		AD391C6220D16F7A007EE22A /* SelectWalletCreationMethodViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADCE01BC207B598C00CA72E8 /* SelectWalletCreationMethodViewController.swift */; };
 		AD391C6320D16F89007EE22A /* LndLog.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AD9E244020A3680C0014F9FA /* LndLog.storyboard */; };
 		AD391C6520D16F89007EE22A /* LndLogViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD9E243E20A368020014F9FA /* LndLogViewController.swift */; };
@@ -652,8 +650,6 @@
 		AD391D2120D1798A007EE22A /* Media.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Media.xcassets; sourceTree = "<group>"; };
 		AD391D4020D17FA9007EE22A /* Messages.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Messages.framework; path = System/Library/Frameworks/Messages.framework; sourceTree = SDKROOT; };
 		AD391D5820D2903C007EE22A /* Zap.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Zap.entitlements; sourceTree = "<group>"; };
-		AD3CF97520B4028400D78A54 /* SelectWalletCreationMethodTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectWalletCreationMethodTableViewCell.swift; sourceTree = "<group>"; };
-		AD3CF97620B4028400D78A54 /* SelectWalletCreationMethodTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SelectWalletCreationMethodTableViewCell.xib; sourceTree = "<group>"; };
 		AD3DDC02213EE4000008379C /* RootTabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RootTabBarController.swift; sourceTree = "<group>"; };
 		AD3FF6DF221D68890017E376 /* ServiceClientBase+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ServiceClientBase+Extension.swift"; sourceTree = "<group>"; };
 		AD3FF6E1221D750F0017E376 /* UnlockWalletViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UnlockWalletViewModel.swift; sourceTree = "<group>"; };
@@ -1553,8 +1549,6 @@
 		AD3CF97920B4028D00D78A54 /* Select Wallet Creation Method */ = {
 			isa = PBXGroup;
 			children = (
-				AD3CF97520B4028400D78A54 /* SelectWalletCreationMethodTableViewCell.swift */,
-				AD3CF97620B4028400D78A54 /* SelectWalletCreationMethodTableViewCell.xib */,
 				ADCE01BC207B598C00CA72E8 /* SelectWalletCreationMethodViewController.swift */,
 			);
 			path = "Select Wallet Creation Method";
@@ -2587,7 +2581,6 @@
 				AD7B1EF8224241DC007D4171 /* WalletList.storyboard in Resources */,
 				AD391CD520D16FE1007EE22A /* HistoryCell.xib in Resources */,
 				ADFAA01F228C4649000AECA1 /* ChannelBackup.storyboard in Resources */,
-				AD391C6120D16F7A007EE22A /* SelectWalletCreationMethodTableViewCell.xib in Resources */,
 				AD391C6320D16F89007EE22A /* LndLog.storyboard in Resources */,
 				AD7EDAE32108C4150058CCCA /* Wallet.storyboard in Resources */,
 				AD391C5020D16F7A007EE22A /* CreateWallet.storyboard in Resources */,
@@ -3247,7 +3240,6 @@
 				ADA75DF2210F389100003068 /* ChannelState+Localizable.swift in Sources */,
 				ADFAA021228C51FE000AECA1 /* BackupService.swift in Sources */,
 				AD9BB2E021836A54009DC878 /* DispatchQueue+Debounce.swift in Sources */,
-				AD391C6020D16F7A007EE22A /* SelectWalletCreationMethodTableViewCell.swift in Sources */,
 				AD391C9920D16FA8007EE22A /* QRCodeScannerStrategy.swift in Sources */,
 				AD391D0520D16FF5007EE22A /* BalanceView.swift in Sources */,
 				AD391D0B20D16FF5007EE22A /* LineView.swift in Sources */,
