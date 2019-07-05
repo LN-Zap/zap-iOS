@@ -159,17 +159,10 @@
 "scene.recover_wallet.description_label" = "Introduceţi seed-ul:";
 "scene.recover_wallet.placeholder" = "abandon ability able about above absent absorb abstract absurd abuse access accident account accuse achieve acid acoustic acquire across act action actor actress actual";
 
-"scene.select_wallet_connection.title" = "Add Wallet";
 "scene.select_wallet_connection.create.title" = "Creaza";
-"scene.select_wallet_connection.create.message" = "portofel nou";
 "scene.select_wallet_connection.recover.title" = "Recupereaza";
-"scene.select_wallet_connection.recover.message" = "portofel existent";
 "scene.select_wallet_connection.connect.title" = "Conectaţi-va";
-"scene.select_wallet_connection.connect.message" = "nod la distanţă";
-"scene.select_wallet_connection.disabled_alert.title" = "îmi pare rău!";
-"scene.select_wallet_connection.disabled_alert.message" = "Executarea Lnd pe telefon este dezactivata în această versiune beta. Puteti conecta la un nod la distanţă.";
-"scene.select_wallet_connection.disabled_alert.ok_button" = "Ok";
-"scene.select_wallet_connection.create.help" = "Ai nevoie de ajutor?";
+"scene.select_wallet_connection.message" = "Bitcoin for everyone";
 
 "scene.main.send_button" = "Trimite";
 "scene.main.receive_button" = "Primeste";
