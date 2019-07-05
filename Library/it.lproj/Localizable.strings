@@ -159,17 +159,10 @@
 "scene.recover_wallet.description_label" = "Immettere la Mnemonica (seed):";
 "scene.recover_wallet.placeholder" = "abandon ability able about above absent absorb abstract absurd abuse access accident account accuse achieve acid acoustic acquire across act action actor actress actual";
 
-"scene.select_wallet_connection.title" = "Aggiungi Portafoglio";
 "scene.select_wallet_connection.create.title" = "Crea";
-"scene.select_wallet_connection.create.message" = "nuovo portafoglio";
 "scene.select_wallet_connection.recover.title" = "Recupera";
-"scene.select_wallet_connection.recover.message" = "portafoglio esistente";
 "scene.select_wallet_connection.connect.title" = "Connetti";
-"scene.select_wallet_connection.connect.message" = "nodo remoto";
-"scene.select_wallet_connection.disabled_alert.title" = "Ci dispiace!";
-"scene.select_wallet_connection.disabled_alert.message" = "L'esecuzione locale di Lnd nel telefono è disabilitata in questa beta. Puoi invece connetterti ad un nodo remoto.";
-"scene.select_wallet_connection.disabled_alert.ok_button" = "Ok";
-"scene.select_wallet_connection.create.help" = "Hai bisogno di aiuto?";
+"scene.select_wallet_connection.message" = "Bitcoin for everyone";
 
 "scene.main.send_button" = "Invia";
 "scene.main.receive_button" = "Ricevi";
