@@ -159,17 +159,10 @@
 "scene.recover_wallet.description_label" = "Ange din seed:";
 "scene.recover_wallet.placeholder" = "abandon ability able about above absent absorb abstract absurd abuse access accident account accuse achieve acid acoustic acquire across act action actor actress actual";
 
-"scene.select_wallet_connection.title" = "Add Wallet";
 "scene.select_wallet_connection.create.title" = "Skapa";
-"scene.select_wallet_connection.create.message" = "ny plånbok";
 "scene.select_wallet_connection.recover.title" = "Återfå";
-"scene.select_wallet_connection.recover.message" = "befintliga plånbok";
 "scene.select_wallet_connection.connect.title" = "Anslut";
-"scene.select_wallet_connection.connect.message" = "fjärrnod";
-"scene.select_wallet_connection.disabled_alert.title" = "Tyvärr!";
-"scene.select_wallet_connection.disabled_alert.message" = "Användandet av Lnd på mobiltelefon är inaktiverat i denna betaversion. Anslut till en fjärrnod istället.";
-"scene.select_wallet_connection.disabled_alert.ok_button" = "Ok";
-"scene.select_wallet_connection.create.help" = "Behöver du hjälp?";
+"scene.select_wallet_connection.message" = "Bitcoin for everyone";
 
 "scene.main.send_button" = "Skicka";
 "scene.main.receive_button" = "Ta emot";
