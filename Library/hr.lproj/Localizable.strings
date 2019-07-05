@@ -159,17 +159,10 @@
 "scene.recover_wallet.description_label" = "Upišite svoj niz:";
 "scene.recover_wallet.placeholder" = "napustiti sposobnosti mogućnosti iznad odsutna apsorbirati apstraktni apsurd zlostavljanja pristup nesreći račun optužuju postići kiselina akustične nabaviti preko zakona akcijski glumac glumica stvarni";
 
-"scene.select_wallet_connection.title" = "Add Wallet";
 "scene.select_wallet_connection.create.title" = "Stvaranje";
-"scene.select_wallet_connection.create.message" = "novi novčanik";
 "scene.select_wallet_connection.recover.title" = "Obnova";
-"scene.select_wallet_connection.recover.message" = "postojeći novčanik";
 "scene.select_wallet_connection.connect.title" = "Povezivanje";
-"scene.select_wallet_connection.connect.message" = "udaljeni čvor";
-"scene.select_wallet_connection.disabled_alert.title" = "Žao mi je!";
-"scene.select_wallet_connection.disabled_alert.message" = "Izvođenje Lnd na mobitelu je onemogućeno u ovoj beti. Umjesto toga povežite sa na udaljeni čvor.";
-"scene.select_wallet_connection.disabled_alert.ok_button" = "U redu";
-"scene.select_wallet_connection.create.help" = "Trebate li pomoć?";
+"scene.select_wallet_connection.message" = "Bitcoin for everyone";
 
 "scene.main.send_button" = "Slanje";
 "scene.main.receive_button" = "Primanje";
