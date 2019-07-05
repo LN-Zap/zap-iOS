@@ -1,12 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14113" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="w5j-WH-aZe">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="w5j-WH-aZe">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
-        <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14490.49"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -29,14 +28,14 @@
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="352"/>
                                 <subviews>
                                     <stackView opaque="NO" contentMode="scaleToFill" placeholderIntrinsicWidth="210" placeholderIntrinsicHeight="14" distribution="equalSpacing" spacing="25" translatesAutoresizingMaskIntoConstraints="NO" id="l6a-vs-Gmm" customClass="PinView" customModule="Library" customModuleProvider="target">
-                                        <rect key="frame" x="82" y="194" width="210" height="14"/>
+                                        <rect key="frame" x="82.5" y="194" width="210" height="14"/>
                                         <color key="backgroundColor" white="0.75" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="14" id="VEn-31-X69"/>
                                         </constraints>
                                     </stackView>
-                                    <imageView userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="pin-logo" translatesAutoresizingMaskIntoConstraints="NO" id="lUe-bL-uQc">
-                                        <rect key="frame" x="168.5" y="211" width="38" height="36"/>
+                                    <imageView userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="logo" translatesAutoresizingMaskIntoConstraints="NO" id="lUe-bL-uQc">
+                                        <rect key="frame" x="165" y="207" width="45" height="44"/>
                                     </imageView>
                                 </subviews>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -83,7 +82,7 @@
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="281"/>
                                 <subviews>
                                     <stackView opaque="NO" contentMode="scaleToFill" placeholderIntrinsicWidth="14" placeholderIntrinsicHeight="14" distribution="fillEqually" spacing="25" translatesAutoresizingMaskIntoConstraints="NO" id="ey3-Yd-fVq" customClass="PinView" customModule="Library" customModuleProvider="target">
-                                        <rect key="frame" x="180" y="158.5" width="14" height="14"/>
+                                        <rect key="frame" x="180.5" y="158.5" width="14" height="14"/>
                                         <color key="backgroundColor" white="0.75" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="14" id="nYc-og-kq7"/>
@@ -151,6 +150,6 @@
         </scene>
     </scenes>
     <resources>
-        <image name="pin-logo" width="38" height="36"/>
+        <image name="logo" width="45" height="44"/>
     </resources>
 </document>

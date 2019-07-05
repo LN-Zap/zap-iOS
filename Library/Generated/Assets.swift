@@ -37,7 +37,6 @@ internal enum Asset {
   internal static let iconFaceId = ImageAsset(name: "icon_face_id")
   internal static let iconTouchId = ImageAsset(name: "icon_touch_id")
   internal static let pinBackSymbol = ImageAsset(name: "pin-back-symbol")
-  internal static let pinLogo = ImageAsset(name: "pin-logo")
   internal static let iconFlashlight = ImageAsset(name: "icon_flashlight")
   internal static let qrSuccess = ImageAsset(name: "qr-success")
   internal static let iconRequestLightningButton = ImageAsset(name: "icon_request_lightning_button")
