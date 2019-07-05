@@ -159,17 +159,10 @@
 "scene.recover_wallet.description_label" = "シードを入力して下さい。";
 "scene.recover_wallet.placeholder" = "abandon ability able about above absent absorb abstract absurd abuse access accident account accuse achieve acid acoustic acquire across act action actor actress actual";
 
-"scene.select_wallet_connection.title" = "Add Wallet";
 "scene.select_wallet_connection.create.title" = "作成します。";
-"scene.select_wallet_connection.create.message" = "新しいウォレット";
 "scene.select_wallet_connection.recover.title" = "回復";
-"scene.select_wallet_connection.recover.message" = "既存のウォレット";
 "scene.select_wallet_connection.connect.title" = "接続";
-"scene.select_wallet_connection.connect.message" = "リモート ノード";
-"scene.select_wallet_connection.disabled_alert.title" = "すみません！";
-"scene.select_wallet_connection.disabled_alert.message" = "端末で動いているLndはこのベータ版では無効です。代わりにリモートノードを接続して下さい。";
-"scene.select_wallet_connection.disabled_alert.ok_button" = "Ok";
-"scene.select_wallet_connection.create.help" = "ヘルプが必要ですか。";
+"scene.select_wallet_connection.message" = "Bitcoin for everyone";
 
 "scene.main.send_button" = "送る";
 "scene.main.receive_button" = "受け取る";
