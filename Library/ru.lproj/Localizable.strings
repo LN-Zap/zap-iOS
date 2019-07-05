@@ -159,17 +159,10 @@
 "scene.recover_wallet.description_label" = "Введите парольную фразу:";
 "scene.recover_wallet.placeholder" = "abandon ability able about above absent absorb abstract absurd abuse access accident account accuse achieve acid acoustic acquire across act action actor actress actual";
 
-"scene.select_wallet_connection.title" = "Добавть Кошелек";
 "scene.select_wallet_connection.create.title" = "Создать";
-"scene.select_wallet_connection.create.message" = "новый кошелек";
 "scene.select_wallet_connection.recover.title" = "Восстановить";
-"scene.select_wallet_connection.recover.message" = "существующий кошелек";
 "scene.select_wallet_connection.connect.title" = "Подключиться";
-"scene.select_wallet_connection.connect.message" = "удаленный узел";
-"scene.select_wallet_connection.disabled_alert.title" = "Извените!";
-"scene.select_wallet_connection.disabled_alert.message" = "Запуск Lnd на телефоне отключен в этой бета-версии. Подключиться к удаленному узлу.";
-"scene.select_wallet_connection.disabled_alert.ok_button" = "Подтвердить";
-"scene.select_wallet_connection.create.help" = "Нужна помощь?";
+"scene.select_wallet_connection.message" = "Bitcoin for everyone";
 
 "scene.main.send_button" = "Отправить";
 "scene.main.receive_button" = "Получить";
