@@ -162,7 +162,7 @@
 "scene.select_wallet_connection.create.title" = "Erstellen";
 "scene.select_wallet_connection.recover.title" = "Wiederherstellen";
 "scene.select_wallet_connection.connect.title" = "Verbinden";
-"scene.select_wallet_connection.message" = "Bitcoin for everyone";
+"scene.select_wallet_connection.message" = "Bitcoin für alle";
 
 "scene.main.send_button" = "Senden";
 "scene.main.receive_button" = "Empfangen";
