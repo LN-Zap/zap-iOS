@@ -159,17 +159,10 @@
 "scene.recover_wallet.description_label" = "Введіть свій seed:";
 "scene.recover_wallet.placeholder" = "abandon ability able about above absent absorb abstract absurd abuse access accident account accuse achieve acid acoustic acquire across act action actor actress actual";
 
-"scene.select_wallet_connection.title" = "Add Wallet";
 "scene.select_wallet_connection.create.title" = "Створити";
-"scene.select_wallet_connection.create.message" = "новий гаманець";
 "scene.select_wallet_connection.recover.title" = "Відновити";
-"scene.select_wallet_connection.recover.message" = "існуючий гаманець";
 "scene.select_wallet_connection.connect.title" = "Підключення";
-"scene.select_wallet_connection.connect.message" = "віддалений вузол";
-"scene.select_wallet_connection.disabled_alert.title" = "Вибачте!";
-"scene.select_wallet_connection.disabled_alert.message" = "Running Lnd on the phone is disabled in this beta. Connect to a remote node instead.";
-"scene.select_wallet_connection.disabled_alert.ok_button" = "Ok";
-"scene.select_wallet_connection.create.help" = "Потрібна допомога?";
+"scene.select_wallet_connection.message" = "Bitcoin for everyone";
 
 "scene.main.send_button" = "Надіслати";
 "scene.main.receive_button" = "Отримати";
