@@ -159,17 +159,10 @@
 "scene.recover_wallet.description_label" = "Εισάγετε το σπόρο σας:";
 "scene.recover_wallet.placeholder" = "abandon ability able about above absent absorb abstract absurd abuse access accident account accuse achieve acid acoustic acquire across act action actor actress actual";
 
-"scene.select_wallet_connection.title" = "Add Wallet";
 "scene.select_wallet_connection.create.title" = "Δημιουργία";
-"scene.select_wallet_connection.create.message" = "νέα πορτοφόλι";
 "scene.select_wallet_connection.recover.title" = "Ανάκτηση";
-"scene.select_wallet_connection.recover.message" = "υπάρχοντα πορτοφόλι";
 "scene.select_wallet_connection.connect.title" = "Συνδέω-συωδεομαι";
-"scene.select_wallet_connection.connect.message" = "απομακρυσμένο κόμβο";
-"scene.select_wallet_connection.disabled_alert.title" = "Συγνώμη!";
-"scene.select_wallet_connection.disabled_alert.message" = "Τρέξιμο Lnd στο τηλέφωνο είναι απενεργοποιημένη σε αυτό το beta. Αντί να συνδεθείτε με έναν απομακρυσμένο κόμβο.";
-"scene.select_wallet_connection.disabled_alert.ok_button" = "Ok";
-"scene.select_wallet_connection.create.help" = "Χρειάζεστε βοήθεια;";
+"scene.select_wallet_connection.message" = "Bitcoin for everyone";
 
 "scene.main.send_button" = "Στείλετε";
 "scene.main.receive_button" = "Λάβετε";
