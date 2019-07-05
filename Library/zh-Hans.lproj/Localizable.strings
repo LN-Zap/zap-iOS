@@ -159,17 +159,10 @@
 "scene.recover_wallet.description_label" = "输入您的助记词种子:";
 "scene.recover_wallet.placeholder" = "abandon ability able about above absent absorb abstract absurd abuse access accident account accuse achieve acid acoustic acquire across act action actor actress actual";
 
-"scene.select_wallet_connection.title" = "添加钱包";
 "scene.select_wallet_connection.create.title" = "创建";
-"scene.select_wallet_connection.create.message" = "创建钱包";
 "scene.select_wallet_connection.recover.title" = "恢复";
-"scene.select_wallet_connection.recover.message" = "现有钱包";
 "scene.select_wallet_connection.connect.title" = "连接";
-"scene.select_wallet_connection.connect.message" = "远程节点";
-"scene.select_wallet_connection.disabled_alert.title" = "对不起！";
-"scene.select_wallet_connection.disabled_alert.message" = "在这个 beta 版中, 在手机上禁用了 Lnd 。改为连接到远程节点。";
-"scene.select_wallet_connection.disabled_alert.ok_button" = "确认";
-"scene.select_wallet_connection.create.help" = "需要帮助吗？";
+"scene.select_wallet_connection.message" = "Bitcoin for everyone";
 
 "scene.main.send_button" = "付款";
 "scene.main.receive_button" = "收款";
