@@ -77,9 +77,7 @@ final class SetupCoordinator: Coordinator {
     }
 
     private func recoverExistingWallet() {
-        #if REMOTEONLY
-        presentDisabledAlert()
-        #else
+        #if !REMOTEONLY
         guard let delegate = delegate else { return }
 
         let configuration = createLocalWallet()
