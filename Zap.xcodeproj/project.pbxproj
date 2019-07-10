@@ -164,6 +164,11 @@
 		AD391D2020D178C2007EE22A /* Bundle.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD391D1F20D178C2007EE22A /* Bundle.swift */; };
 		AD391D2220D1798A007EE22A /* Media.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = AD391D2120D1798A007EE22A /* Media.xcassets */; };
 		AD3DDC03213EE4000008379C /* RootTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD3DDC02213EE4000008379C /* RootTabBarController.swift */; };
+		AD3DDF6922D38D4C0031BFC8 /* Onboarding.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AD3DDF6822D38D4C0031BFC8 /* Onboarding.storyboard */; };
+		AD3DDF6B22D38D590031BFC8 /* OnboardingContainerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD3DDF6A22D38D590031BFC8 /* OnboardingContainerViewController.swift */; };
+		AD3DDF6D22D3908B0031BFC8 /* OnboardingPageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD3DDF6C22D3908B0031BFC8 /* OnboardingPageViewController.swift */; };
+		AD3DDF6F22D390CA0031BFC8 /* OnboardingTextViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD3DDF6E22D390CA0031BFC8 /* OnboardingTextViewController.swift */; };
+		AD3DDF7122D39BC30031BFC8 /* Emoji.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD3DDF7022D39BC30031BFC8 /* Emoji.swift */; };
 		AD3FF6E0221D68890017E376 /* ServiceClientBase+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD3FF6DF221D68890017E376 /* ServiceClientBase+Extension.swift */; };
 		AD3FF6E2221D750F0017E376 /* UnlockWalletViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD3FF6E1221D750F0017E376 /* UnlockWalletViewModel.swift */; };
 		AD511B282253744800EDFC7C /* Version.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD511B272253744800EDFC7C /* Version.swift */; };
@@ -651,6 +656,11 @@
 		AD391D4020D17FA9007EE22A /* Messages.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Messages.framework; path = System/Library/Frameworks/Messages.framework; sourceTree = SDKROOT; };
 		AD391D5820D2903C007EE22A /* Zap.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Zap.entitlements; sourceTree = "<group>"; };
 		AD3DDC02213EE4000008379C /* RootTabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RootTabBarController.swift; sourceTree = "<group>"; };
+		AD3DDF6822D38D4C0031BFC8 /* Onboarding.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Onboarding.storyboard; sourceTree = "<group>"; };
+		AD3DDF6A22D38D590031BFC8 /* OnboardingContainerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingContainerViewController.swift; sourceTree = "<group>"; };
+		AD3DDF6C22D3908B0031BFC8 /* OnboardingPageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingPageViewController.swift; sourceTree = "<group>"; };
+		AD3DDF6E22D390CA0031BFC8 /* OnboardingTextViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingTextViewController.swift; sourceTree = "<group>"; };
+		AD3DDF7022D39BC30031BFC8 /* Emoji.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Emoji.swift; sourceTree = "<group>"; };
 		AD3FF6DF221D68890017E376 /* ServiceClientBase+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ServiceClientBase+Extension.swift"; sourceTree = "<group>"; };
 		AD3FF6E1221D750F0017E376 /* UnlockWalletViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UnlockWalletViewModel.swift; sourceTree = "<group>"; };
 		AD511B272253744800EDFC7C /* Version.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Version.swift; sourceTree = "<group>"; };
@@ -1554,6 +1564,18 @@
 			path = "Select Wallet Creation Method";
 			sourceTree = "<group>";
 		};
+		AD3DDF6722D38D3B0031BFC8 /* Onboarding */ = {
+			isa = PBXGroup;
+			children = (
+				AD3DDF6822D38D4C0031BFC8 /* Onboarding.storyboard */,
+				AD3DDF6A22D38D590031BFC8 /* OnboardingContainerViewController.swift */,
+				AD3DDF6C22D3908B0031BFC8 /* OnboardingPageViewController.swift */,
+				AD3DDF6E22D390CA0031BFC8 /* OnboardingTextViewController.swift */,
+				AD3DDF7022D39BC30031BFC8 /* Emoji.swift */,
+			);
+			path = Onboarding;
+			sourceTree = "<group>";
+		};
 		AD536BE720E62763002279BC /* Lightning */ = {
 			isa = PBXGroup;
 			children = (
@@ -1642,7 +1664,7 @@
 			path = Localizable;
 			sourceTree = "<group>";
 		};
-		AD79BB38208CD9970027AAC9 /* Generate Mnemonic */ = {
+		AD79BB38208CD9970027AAC9 /* Show Mnemonic */ = {
 			isa = PBXGroup;
 			children = (
 				ADBB362E2084CA16005662B4 /* MnemonicPageViewController.swift */,
@@ -1651,7 +1673,7 @@
 				ADBB36302084CA3B005662B4 /* MnemonicWordListViewController.swift */,
 				ADBB36322084EC4D005662B4 /* MnemonicWordTableViewCell.swift */,
 			);
-			path = "Generate Mnemonic";
+			path = "Show Mnemonic";
 			sourceTree = "<group>";
 		};
 		AD79E425219D90F3002589CA /* Extensions */ = {
@@ -1916,9 +1938,10 @@
 			children = (
 				ADCE01BA207B57ED00CA72E8 /* CreateWallet.storyboard */,
 				ADF79373208F87E60086B2CA /* Confirm Mnemonic */,
-				AD79BB38208CD9970027AAC9 /* Generate Mnemonic */,
+				AD3DDF6722D38D3B0031BFC8 /* Onboarding */,
 				ADF79374208F88CA0086B2CA /* Recover Wallet */,
 				AD3CF97920B4028D00D78A54 /* Select Wallet Creation Method */,
+				AD79BB38208CD9970027AAC9 /* Show Mnemonic */,
 			);
 			path = CreateWallet;
 			sourceTree = "<group>";
@@ -2593,6 +2616,7 @@
 				AD7B1F00224253E8007D4171 /* WalletListActionCell.xib in Resources */,
 				AD391D1120D16FF5007EE22A /* Toast.xib in Resources */,
 				AD391D0420D16FF5007EE22A /* AmountInputView.xib in Resources */,
+				AD3DDF6922D38D4C0031BFC8 /* Onboarding.storyboard in Resources */,
 				ADA58F9A22049047009A5494 /* ManageWallets.storyboard in Resources */,
 				AD7ED61E22087812007C5F2C /* ManageWalletTableViewCell.xib in Resources */,
 				AD391D2220D1798A007EE22A /* Media.xcassets in Resources */,
@@ -3125,6 +3149,7 @@
 				AD391C5820D16F7A007EE22A /* RemoteNodeCertificatesScannerViewController.swift in Sources */,
 				AD2884372126DDA2003C3D94 /* ModalDetailViewController.swift in Sources */,
 				AD391C5120D16F7A007EE22A /* ConfirmMnemonicCollectionViewCell.swift in Sources */,
+				AD3DDF6D22D3908B0031BFC8 /* OnboardingPageViewController.swift in Sources */,
 				AD391C3920D16F0B007EE22A /* BockExplorer.swift in Sources */,
 				ADA81E9E210DE14100B7C6F2 /* UIView.swift in Sources */,
 				ADDD13B62119CE740035D2F9 /* StackViewElement.swift in Sources */,
@@ -3184,6 +3209,7 @@
 				AD391D0620D16FF5007EE22A /* BondCell.swift in Sources */,
 				AD391C6D20D16F89007EE22A /* SetupPinViewController.swift in Sources */,
 				AD391D1920D174B4007EE22A /* WalletCoordinator.swift in Sources */,
+				AD3DDF6B22D38D590031BFC8 /* OnboardingContainerViewController.swift in Sources */,
 				AD27B0182100C59500F232A8 /* UpdateAddressViewController.swift in Sources */,
 				AD27B01A2100D5CC00F232A8 /* CertificateDetailViewController.swift in Sources */,
 				AD3553E7224E6CD400B99ABC /* CircleGraphView.swift in Sources */,
@@ -3263,6 +3289,7 @@
 				AD28844F21287B56003C3D94 /* SendViewModel.swift in Sources */,
 				AD391C4320D16F0B007EE22A /* Appearance.swift in Sources */,
 				AD967FF021062AB20048085B /* RPCConnectQRCodeError+Localizable.swift in Sources */,
+				AD3DDF7122D39BC30031BFC8 /* Emoji.swift in Sources */,
 				AD615CF7211CAB0900680790 /* PaddingLabel.swift in Sources */,
 				AD391C6E20D16F89007EE22A /* SetupPinViewModel.swift in Sources */,
 				ADA179C62152864E001401F3 /* Storage.swift in Sources */,
@@ -3279,6 +3306,7 @@
 				ADEEB5332134277400D2F992 /* KeyPadPinView.swift in Sources */,
 				AD391C2520D16EFA007EE22A /* BitcoinUnit+Localizable.swift in Sources */,
 				AD391C2720D16EFA007EE22A /* Network+Localizable.swift in Sources */,
+				AD3DDF6F22D390CA0031BFC8 /* OnboardingTextViewController.swift in Sources */,
 				AD391C9E20D16FA8007EE22A /* RequestViewModel.swift in Sources */,
 				AD1831C9229685A500120260 /* OnChainFeeView.swift in Sources */,
 				AD391C2B20D16EFA007EE22A /* SignalProtocol.swift in Sources */,

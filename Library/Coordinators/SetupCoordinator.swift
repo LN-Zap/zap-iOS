@@ -19,6 +19,7 @@ final class SetupCoordinator: Coordinator {
     private let walletConfigurationStore: WalletConfigurationStore
     private let rpcCredentials: RPCCredentials?
 
+    private weak var createWalletNavigationController: UINavigationController?
     private weak var navigationController: UINavigationController?
     private weak var delegate: SetupCoordinatorDelegate?
     private weak var connectRemoteNodeViewModel: ConnectRemoteNodeViewModel?
@@ -54,26 +55,45 @@ final class SetupCoordinator: Coordinator {
     }
     #endif
 
-    private func createNewWallet() {
-        #if REMOTEONLY
-        presentDisabledAlert()
-        #else
+    var configuration: WalletConfiguration?
 
-        let configuration = createLocalWallet()
+    private func createNewWallet() {
+        #if !REMOTEONLY
+        // start syncing process in background
+        if configuration == nil {
+            configuration = createLocalWallet()
+        }
+
+        let pages = [
+            OnboardingTextViewController.instantiate(title: "Your key, your coins.", message: "With Zap, you are in control of your money. To make sure your coins are always stored safely, zap will provide a recovery seed for you.", image: Emoji.image(emoji: "🤴")),
+            OnboardingTextViewController.instantiate(title: "Write down your recovery seed.", message: "Write down  the recovery seed on a piece of paper. You can recover your funds anytime if your phone goes missing.", image: Emoji.image(emoji: "✍️")),
+            OnboardingTextViewController.instantiate(title: "Make sure to keep it in a safe place.", message: "Make sure to keep your recovery seed private. Store it somewhere only you will find it.", image: Emoji.image(emoji: "🗝"), action: { [weak self] in
+                self?.presentMnemonic()
+            })
+        ]
+
+        let onboardingViewController = OnboardingContainerViewController.instantiate(pages: pages)
+        let viewController = UINavigationController(rootViewController: onboardingViewController)
+        createWalletNavigationController = viewController
+        self.navigationController?.present(viewController, animated: true, completion: nil)
+        #endif
+    }
+
+    private func presentMnemonic() {
+        guard let configuration = configuration else { return }
 
         let mnemonicViewModel = MnemonicViewModel(configuration: configuration)
         self.mnemonicViewModel = mnemonicViewModel
 
-        let viewController = MnemonicViewController.instantiate(mnemonicViewModel: mnemonicViewModel, presentConfirmMnemonic: confirmMnemonic)
-        navigationController?.pushViewController(viewController, animated: true)
-        #endif
+        let viewController = MnemonicViewController.instantiate(mnemonicViewModel: mnemonicViewModel, presentConfirmMnemonic: presentConfirmMnemonic)
+        createWalletNavigationController?.pushViewController(viewController, animated: true)
     }
 
-    private func confirmMnemonic() {
+    private func presentConfirmMnemonic() {
         guard let confirmMnemonicViewModel = mnemonicViewModel?.confirmMnemonicViewModel else { return }
 
         let viewController = ConfirmMnemonicViewController.instantiate(confirmMnemonicViewModel: confirmMnemonicViewModel, connectWallet: didSetupWallet)
-        navigationController?.pushViewController(viewController, animated: true)
+        createWalletNavigationController?.pushViewController(viewController, animated: true)
     }
 
     private func recoverExistingWallet() {
@@ -100,6 +120,7 @@ final class SetupCoordinator: Coordinator {
     private func didSetupWallet(configuration: WalletConfiguration) {
         walletConfigurationStore.addWallet(walletConfiguration: configuration)
         delegate?.connectWallet(configuration: configuration)
+        createWalletNavigationController?.dismiss(animated: true, completion: nil)
     }
 
     private func presentNodeCertificatesScanner() {

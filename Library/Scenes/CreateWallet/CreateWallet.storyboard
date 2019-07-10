@@ -48,7 +48,7 @@
                                 </subviews>
                             </stackView>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="topRight" horizontalHuggingPriority="251" verticalHuggingPriority="251" horizontalCompressionResistancePriority="500" verticalCompressionResistancePriority="500" image="lightning_bolt_background" translatesAutoresizingMaskIntoConstraints="NO" id="XEj-Oh-0Kf">
-                                <rect key="frame" x="105" y="0.0" width="270" height="436"/>
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                             </imageView>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="logo" translatesAutoresizingMaskIntoConstraints="NO" id="eXX-dN-Kdh">
                                 <rect key="frame" x="165" y="58" width="45" height="44"/>
@@ -86,13 +86,13 @@
                             <constraint firstItem="a72-sr-Qg5" firstAttribute="trailing" secondItem="TOB-Rd-ncJ" secondAttribute="trailing" constant="20" id="1sL-1Q-CTv"/>
                             <constraint firstItem="eXX-dN-Kdh" firstAttribute="centerX" secondItem="a72-sr-Qg5" secondAttribute="centerX" id="2Tg-uu-GnW"/>
                             <constraint firstItem="vJ8-sX-1UI" firstAttribute="top" secondItem="eXX-dN-Kdh" secondAttribute="bottom" id="5vp-l6-Q5v"/>
-                            <constraint firstItem="XEj-Oh-0Kf" firstAttribute="leading" secondItem="ajR-GT-VlI" secondAttribute="trailing" constant="-270" id="HqM-4X-uO3"/>
                             <constraint firstItem="XEj-Oh-0Kf" firstAttribute="top" secondItem="ajR-GT-VlI" secondAttribute="top" id="Jme-aB-Ctj"/>
-                            <constraint firstItem="TOB-Rd-ncJ" firstAttribute="top" secondItem="XEj-Oh-0Kf" secondAttribute="bottom" constant="75" id="KWl-XN-j1B"/>
                             <constraint firstItem="vJ8-sX-1UI" firstAttribute="leading" secondItem="a72-sr-Qg5" secondAttribute="leading" id="Wi7-vU-uTG"/>
                             <constraint firstItem="TOB-Rd-ncJ" firstAttribute="top" secondItem="vJ8-sX-1UI" secondAttribute="bottom" id="X2v-ZF-qpL"/>
                             <constraint firstItem="TOB-Rd-ncJ" firstAttribute="leading" secondItem="a72-sr-Qg5" secondAttribute="leading" constant="20" id="eoe-ac-joh"/>
+                            <constraint firstItem="XEj-Oh-0Kf" firstAttribute="bottom" secondItem="a72-sr-Qg5" secondAttribute="bottom" id="gzw-oR-mU9"/>
                             <constraint firstItem="a72-sr-Qg5" firstAttribute="bottom" secondItem="TOB-Rd-ncJ" secondAttribute="bottom" constant="20" id="jf4-U0-eot"/>
+                            <constraint firstItem="XEj-Oh-0Kf" firstAttribute="leading" secondItem="a72-sr-Qg5" secondAttribute="leading" id="mhh-lC-iHD"/>
                             <constraint firstItem="XEj-Oh-0Kf" firstAttribute="trailing" secondItem="a72-sr-Qg5" secondAttribute="trailing" id="sAE-ov-nyF"/>
                             <constraint firstItem="eXX-dN-Kdh" firstAttribute="top" secondItem="ajR-GT-VlI" secondAttribute="top" constant="58" id="tiY-EQ-mwj"/>
                             <constraint firstItem="vJ8-sX-1UI" firstAttribute="trailing" secondItem="a72-sr-Qg5" secondAttribute="trailing" id="yyU-dT-pYz"/>
@@ -121,7 +121,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="2hw-GH-ZzO">
-                                <rect key="frame" x="0.0" y="120" width="375" height="431"/>
+                                <rect key="frame" x="0.0" y="120" width="375" height="451"/>
                                 <connections>
                                     <segue destination="U1K-Gb-FhV" kind="embed" id="5Qa-yR-UJd"/>
                                 </connections>
@@ -133,9 +133,9 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="b1R-ha-hZK">
-                                <rect key="frame" x="20" y="571" width="335" height="76"/>
+                                <rect key="frame" x="20" y="591" width="335" height="56"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="76" id="7xm-jA-4Wo"/>
+                                    <constraint firstAttribute="height" constant="56" id="7xm-jA-4Wo"/>
                                 </constraints>
                                 <state key="normal" title="Button"/>
                                 <connections>
@@ -143,7 +143,7 @@
                                 </connections>
                             </button>
                             <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" style="white" translatesAutoresizingMaskIntoConstraints="NO" id="raL-Iy-fWQ">
-                                <rect key="frame" x="177.5" y="325.5" width="20" height="20"/>
+                                <rect key="frame" x="177.5" y="335.5" width="20" height="20"/>
                             </activityIndicatorView>
                         </subviews>
                         <color key="backgroundColor" white="0.55909358129999998" alpha="1" colorSpace="calibratedWhite"/>

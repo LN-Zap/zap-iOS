@@ -89,6 +89,13 @@ internal enum StoryboardScene {
 
     internal static let setupPinViewController = SceneType<SetupPinViewController>(storyboard: NumericKeyPad.self, identifier: "SetupPinViewController")
   }
+  internal enum Onboarding: StoryboardType {
+    internal static let storyboardName = "Onboarding"
+
+    internal static let onboardingContainerViewController = SceneType<OnboardingContainerViewController>(storyboard: Onboarding.self, identifier: "OnboardingContainerViewController")
+
+    internal static let onboardingTextViewController = SceneType<OnboardingTextViewController>(storyboard: Onboarding.self, identifier: "OnboardingTextViewController")
+  }
   internal enum QRCodeDetail: StoryboardType {
     internal static let storyboardName = "QRCodeDetail"
 
