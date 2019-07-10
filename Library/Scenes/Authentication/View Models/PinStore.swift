@@ -23,14 +23,7 @@ enum PinStore {
     private(set) static var didSetupPin: Bool {
         get {
             guard !Environment.skipPinFlow else { return true }
-            if let didSetupPin: Bool = didSetupPinKey.get() {
-                return didSetupPin
-            } else {
-                // migration from old keychain based check to user defaults.
-                let didSetupPin = hashedPin != nil
-                didSetupPinKey.set(didSetupPin)
-                return didSetupPin
-            }
+            return didSetupPinKey.get() ?? false
         }
         set {
             didSetupPinKey.set(newValue)
