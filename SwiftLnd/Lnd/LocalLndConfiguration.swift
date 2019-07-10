@@ -20,13 +20,15 @@ final class LocalLndConfiguration {
         configuration.set("Application Options", key: "nolisten", value: "1")
         configuration.set("Application Options", key: "alias", value: "Zap iOS")
         configuration.set("Application Options", key: "color", value: "#3399FF")
+        configuration.set("Application Options", key: "maxbackoff", value: "2s")
 
         configuration.set("Bitcoin", key: "bitcoin.active", value: "1")
         configuration.set("Bitcoin", key: "bitcoin.testnet", value: "1")
         configuration.set("Bitcoin", key: "bitcoin.node", value: "neutrino")
 
-        configuration.set("neutrino", key: "neutrino.connect", value: "testnet1-btcd.zaphq.io")
-        configuration.set("neutrino", key: "neutrino.connect", value: "testnet2-btcd.zaphq.io")
+        configuration.set("Neutrino", key: "neutrino.connect", value: "testnet1-btcd.zaphq.io")
+        configuration.set("Neutrino", key: "neutrino.connect", value: "testnet2-btcd.zaphq.io")
+        configuration.set("Neutrino", key: "neutrino.feeurl", value: "https://nodes.lightning.computer/fees/v1/btc-fee-estimates.json")
 
         configuration.set("autopilot", key: "autopilot.active", value: "0")
         return configuration

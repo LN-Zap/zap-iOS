@@ -29,7 +29,7 @@ public enum LocalLnd {
             signal(SIGPIPE, SIG_IGN) // Avoid crash on socket close.
 
             DispatchQueue.global(qos: .default).async {
-                LndmobileStart(lndUrl.path, EmptyStreamCallback())
+                LndmobileStart("--lnddir=\(lndUrl.path)", EmptyStreamCallback())
                 BackupDisabler.disableNeutrinoBackup(walletId: walletId, network: .testnet)
                 isRunning = true
             }
