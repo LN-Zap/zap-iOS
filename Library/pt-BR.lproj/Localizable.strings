@@ -110,8 +110,7 @@
 "scene.setup_pin.top_label.non_matching" = "Os pinos não correspondem. Por favor, tente novamente.";
 "scene.setup_pin.top_label.validate" = "Insira o pin de novo para validar.";
 
-"scene.confirm_mnemonic.title" = "Confirme o seed";
-"scene.confirm_mnemonic.description" = "Insira sua key.";
+"scene.confirm_mnemonic.title" = "Confirm Recovery Phrase";
 
 "scene.send.title" = "Enviar";
 "scene.send.send_button" = "Enviar";
@@ -150,13 +149,13 @@
 "scene.connect_remote_node.certificate_detail.macaroon_title" = "Macaroon";
 "scene.connect_remote_node.edit_url.title" = "Endereço";
 
-"scene.create_wallet.title" = "Criar carteira";
-"scene.create_wallet.description_label" = "Make sure to store the mnemonic at a safe location.";
+"scene.create_wallet.title" = "Recovery Phrase";
+"scene.create_wallet.description_label" = "Write down the recovery phrase and store it at a safe location.";
 "scene.create_wallet.next_button" = "Seguinte";
 
 "scene.recover_wallet.title" = "Recover Wallet";
 "scene.recover_wallet.done_button" = "Done";
-"scene.recover_wallet.description_label" = "Enter your seed:";
+"scene.recover_wallet.description_label" = "Enter your recovery phrase:";
 "scene.recover_wallet.placeholder" = "abandon ability able about above absent absorb abstract absurd abuse access accident account accuse achieve acid acoustic acquire across act action actor actress actual";
 
 "scene.select_wallet_connection.create.title" = "Create";
