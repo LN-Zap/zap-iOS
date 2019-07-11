@@ -110,8 +110,7 @@
 "scene.setup_pin.top_label.non_matching" = "Pinovi se razlikuju. Molimo pokušajte ponovo.";
 "scene.setup_pin.top_label.validate" = "Unesite pin ponovo za potvrdu.";
 
-"scene.confirm_mnemonic.title" = "Potvrdite niz";
-"scene.confirm_mnemonic.description" = "Unesite vaš ključ.";
+"scene.confirm_mnemonic.title" = "Confirm Recovery Phrase";
 
 "scene.send.title" = "Slanje";
 "scene.send.send_button" = "Slanje";
@@ -150,13 +149,13 @@
 "scene.connect_remote_node.certificate_detail.macaroon_title" = "Makaron";
 "scene.connect_remote_node.edit_url.title" = "Adresa";
 
-"scene.create_wallet.title" = "Stvaranje novčanika";
-"scene.create_wallet.description_label" = "Make sure to store the mnemonic at a safe location.";
+"scene.create_wallet.title" = "Recovery Phrase";
+"scene.create_wallet.description_label" = "Write down the recovery phrase and store it at a safe location.";
 "scene.create_wallet.next_button" = "Slijedeće";
 
 "scene.recover_wallet.title" = "Povratite novčanik";
 "scene.recover_wallet.done_button" = "Gotovo";
-"scene.recover_wallet.description_label" = "Upišite svoj niz:";
+"scene.recover_wallet.description_label" = "Enter your recovery phrase:";
 "scene.recover_wallet.placeholder" = "napustiti sposobnosti mogućnosti iznad odsutna apsorbirati apstraktni apsurd zlostavljanja pristup nesreći račun optužuju postići kiselina akustične nabaviti preko zakona akcijski glumac glumica stvarni";
 
 "scene.select_wallet_connection.create.title" = "Stvaranje";
