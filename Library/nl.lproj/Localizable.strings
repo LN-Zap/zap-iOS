@@ -110,8 +110,7 @@
 "scene.setup_pin.top_label.non_matching" = "De pincodes komen niet overeen. Probeer opnieuw.";
 "scene.setup_pin.top_label.validate" = "Voer de pin opnieuw in om te controleren.";
 
-"scene.confirm_mnemonic.title" = "Bevestig seed";
-"scene.confirm_mnemonic.description" = "Voer je mnemonic code in.";
+"scene.confirm_mnemonic.title" = "Confirm Recovery Phrase";
 
 "scene.send.title" = "Verzenden";
 "scene.send.send_button" = "Verzenden";
@@ -150,13 +149,13 @@
 "scene.connect_remote_node.certificate_detail.macaroon_title" = "Macaroon";
 "scene.connect_remote_node.edit_url.title" = "Adres";
 
-"scene.create_wallet.title" = "Nieuwe Wallet aanmaken";
-"scene.create_wallet.description_label" = "Bewaar je mnemonic code op een veilige locatie.";
+"scene.create_wallet.title" = "Recovery Phrase";
+"scene.create_wallet.description_label" = "Write down the recovery phrase and store it at a safe location.";
 "scene.create_wallet.next_button" = "Volgende";
 
 "scene.recover_wallet.title" = "Wallet herstellen";
 "scene.recover_wallet.done_button" = "Klaar";
-"scene.recover_wallet.description_label" = "Voer je mnemonic code in:";
+"scene.recover_wallet.description_label" = "Enter your recovery phrase:";
 "scene.recover_wallet.placeholder" = "abandon ability able about above absent absorb abstract absurd abuse access accident account accuse achieve acid acoustic acquire across act action actor actress actual";
 
 "scene.select_wallet_connection.create.title" = "Aanmaken";
