@@ -58,7 +58,7 @@ final class MnemonicViewModel {
     }
 }
 
-struct MnemonicWord {
+struct MnemonicWord: Equatable {
     let index: Int
     let word: String
 }

@@ -94,7 +94,6 @@
 		AD391C4E20D16F68007EE22A /* ChannelListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0F57DBD201E440F003AFA66 /* ChannelListViewModel.swift */; };
 		AD391C4F20D16F68007EE22A /* ChannelViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD77465620765E4D00EC596B /* ChannelViewModel.swift */; };
 		AD391C5020D16F7A007EE22A /* CreateWallet.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = ADCE01BA207B57ED00CA72E8 /* CreateWallet.storyboard */; };
-		AD391C5120D16F7A007EE22A /* ConfirmMnemonicCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADF79369208E5FEC0086B2CA /* ConfirmMnemonicCollectionViewCell.swift */; };
 		AD391C5220D16F7A007EE22A /* ConfirmMnemonicViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADCE01BE207B59BD00CA72E8 /* ConfirmMnemonicViewController.swift */; };
 		AD391C5320D16F7A007EE22A /* ConfirmMnemonicViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADCE01C2207B66A500CA72E8 /* ConfirmMnemonicViewModel.swift */; };
 		AD391C5420D16F7A007EE22A /* ConnectRemoteNode.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AD680A9E20B07AD90018986B /* ConnectRemoteNode.storyboard */; };
@@ -937,7 +936,6 @@
 		ADF79363208DCB630086B2CA /* PinView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PinView.swift; sourceTree = "<group>"; };
 		ADF79365208E000C0086B2CA /* SetupPinViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetupPinViewController.swift; sourceTree = "<group>"; };
 		ADF79367208E09D00086B2CA /* SetupPinViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetupPinViewModel.swift; sourceTree = "<group>"; };
-		ADF79369208E5FEC0086B2CA /* ConfirmMnemonicCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConfirmMnemonicCollectionViewCell.swift; sourceTree = "<group>"; };
 		ADF7936B208E66FA0086B2CA /* UICollectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UICollectionView.swift; sourceTree = "<group>"; };
 		ADF79375208F88DE0086B2CA /* RecoverWalletViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecoverWalletViewController.swift; sourceTree = "<group>"; };
 		ADFA46972226947A007A4C49 /* LndConnectURLTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LndConnectURLTests.swift; sourceTree = "<group>"; };
@@ -2107,7 +2105,6 @@
 		ADF79373208F87E60086B2CA /* Confirm Mnemonic */ = {
 			isa = PBXGroup;
 			children = (
-				ADF79369208E5FEC0086B2CA /* ConfirmMnemonicCollectionViewCell.swift */,
 				ADCE01BE207B59BD00CA72E8 /* ConfirmMnemonicViewController.swift */,
 				ADCE01C2207B66A500CA72E8 /* ConfirmMnemonicViewModel.swift */,
 			);
@@ -3145,7 +3142,6 @@
 				ADA3254621AD8F6200C5EAA2 /* StoryboardScenes.swift in Sources */,
 				AD391C5820D16F7A007EE22A /* RemoteNodeCertificatesScannerViewController.swift in Sources */,
 				AD2884372126DDA2003C3D94 /* ModalDetailViewController.swift in Sources */,
-				AD391C5120D16F7A007EE22A /* ConfirmMnemonicCollectionViewCell.swift in Sources */,
 				AD3DDF6D22D3908B0031BFC8 /* OnboardingPageViewController.swift in Sources */,
 				AD391C3920D16F0B007EE22A /* BockExplorer.swift in Sources */,
 				ADA81E9E210DE14100B7C6F2 /* UIView.swift in Sources */,

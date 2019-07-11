@@ -182,9 +182,7 @@ internal enum L10n {
       }
     }
     internal enum ConfirmMnemonic {
-      /// Enter your key.
-      internal static let description = L10n.tr("Localizable", "scene.confirm_mnemonic.description")
-      /// Confirm Seed
+      /// Confirm Recovery Phrase
       internal static let title = L10n.tr("Localizable", "scene.confirm_mnemonic.title")
     }
     internal enum ConnectNodeUri {
@@ -232,11 +230,11 @@ internal enum L10n {
       }
     }
     internal enum CreateWallet {
-      /// Make sure to store the mnemonic at a safe location.
+      /// Write down the recovery phrase and store it at a safe location.
       internal static let descriptionLabel = L10n.tr("Localizable", "scene.create_wallet.description_label")
       /// Next
       internal static let nextButton = L10n.tr("Localizable", "scene.create_wallet.next_button")
-      /// Create Wallet
+      /// Recovery Phrase
       internal static let title = L10n.tr("Localizable", "scene.create_wallet.title")
     }
     internal enum Filter {
@@ -384,7 +382,7 @@ internal enum L10n {
       internal static let topLabel = L10n.tr("Localizable", "scene.qrcode_scanner.top_label")
     }
     internal enum RecoverWallet {
-      /// Enter your seed:
+      /// Enter your recovery phrase:
       internal static let descriptionLabel = L10n.tr("Localizable", "scene.recover_wallet.description_label")
       /// Done
       internal static let doneButton = L10n.tr("Localizable", "scene.recover_wallet.done_button")

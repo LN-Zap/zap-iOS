@@ -12,9 +12,11 @@ import SwiftLnd
 
 private let requiredWordCount = 6
 
-struct ConfirmWordViewModel {
-    let word: String
-    let index: Int
+struct ConfirmWordViewModel: Equatable {
+    let secretWord: MnemonicWord
+
+    let context: [MnemonicWord]
+    let answers: [MnemonicWord]
 }
 
 final class ConfirmMnemonicViewModel {
@@ -37,9 +39,24 @@ final class ConfirmMnemonicViewModel {
                 randomIndices.append(randomNumber)
             }
         }
-        randomIndices.sort()
 
-        wordList = randomIndices.map { ConfirmWordViewModel(word: mnemonic[$0], index: $0) }
+        let mnemonicWords = mnemonic.enumerated().map { MnemonicWord(index: $0, word: $1) }
+
+        wordList = randomIndices.map {
+            let secretWord = mnemonicWords[$0]
+
+            var answers = Array(mnemonicWords.shuffled().prefix(4))
+            if !answers.contains(secretWord) {
+                answers.removeLast()
+                answers.append(secretWord)
+                answers.shuffle()
+            }
+
+            let contextStartIndex = min(max($0 - 1, 0), mnemonicWords.count - 3)
+            let context = Array(mnemonicWords[contextStartIndex...contextStartIndex + 2])
+
+            return ConfirmWordViewModel(secretWord: secretWord, context: context, answers: answers)
+        }
     }
 
     func createWallet(completion: @escaping ApiCompletion<Success>) {

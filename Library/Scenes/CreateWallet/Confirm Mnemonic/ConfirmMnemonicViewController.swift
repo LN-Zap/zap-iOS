@@ -7,13 +7,15 @@
 
 import Bond
 import Lightning
+import Logger
 import UIKit
 
 private let itemWitdh: CGFloat = 140
 
 final class ConfirmMnemonicViewController: UIViewController {
     @IBOutlet private weak var descriptionLabel: UILabel!
-    @IBOutlet private weak var collectionView: UICollectionView!
+    @IBOutlet private weak var seedStackView: UIStackView!
+    @IBOutlet private weak var buttonStackView: UIStackView!
 
     // swiftlint:disable implicitly_unwrapped_optional
     private var confirmViewModel: ConfirmMnemonicViewModel!
@@ -34,73 +36,46 @@ final class ConfirmMnemonicViewController: UIViewController {
 
         view.backgroundColor = UIColor.Zap.background
 
-        collectionView.dataSource = self
-        collectionView.isScrollEnabled = false
-
         Style.Label.custom(color: .white).apply(to: descriptionLabel)
 
-        descriptionLabel.text = L10n.Scene.ConfirmMnemonic.description
+        guard let viewModel = confirmViewModel.wordList.first else { return }
 
-        if let flowLayout = collectionView.collectionViewLayout as? UICollectionViewFlowLayout {
-            flowLayout.minimumInteritemSpacing = 0
-            flowLayout.minimumLineSpacing = 10
-            flowLayout.itemSize = CGSize(width: itemWitdh, height: collectionView.bounds.height)
-        }
+        descriptionLabel.text = "Select word number \(viewModel.secretWord.index + 1)"
 
-        collectionView.contentInset = UIEdgeInsets(top: 0, left: 20, bottom: 0, right: 20)
-    }
-
-    var currentCell = 0
-
-    private func selectNextCell() {
-        guard let confirmViewModel = confirmViewModel else { return }
-
-        if currentCell >= confirmViewModel.wordList.count - 1 {
-            confirmViewModel.createWallet { [weak self] in
-                switch $0 {
-                case .success:
-                    DispatchQueue.main.async {
-                        self?.connectWallet?(confirmViewModel.configuration)
-                    }
-                case .failure(let error):
-                    Toast.presentError(error.localizedDescription)
-                }
+        for context in viewModel.context {
+            let newContext: MnemonicWord
+            if context == viewModel.secretWord {
+                newContext = MnemonicWord(index: context.index, word: "")
+            } else {
+                newContext = context
             }
 
-            return
+            let view = MnemonicWordView(mnemonic: newContext)
+            view.heightAnchor.constraint(equalToConstant: 29).isActive = true
+            seedStackView.addArrangedSubview(view)
         }
 
-        currentCell += 1
-
-        let indexPath = IndexPath(item: currentCell, section: 0)
-        collectionView.scrollToItem(at: indexPath, at: .centeredHorizontally, animated: true)
-
-        for cell in collectionView.visibleCells {
-            guard let cell = cell as? ConfirmMnemonicCollectionViewCell else { continue }
-            cell.isActiveCell = false
-        }
-
-        if let cell = collectionView.cellForItem(at: indexPath) as? ConfirmMnemonicCollectionViewCell {
-            cell.isActiveCell = true
+        for (index, answer) in viewModel.answers.enumerated() {
+            if answer == viewModel.secretWord {
+                Logger.info(index)
+            }
+            let button = UIButton(type: .system)
+            button.setTitle(answer.word, for: .normal)
+            Style.Button.background.apply(to: button)
+            button.heightAnchor.constraint(equalToConstant: 56).isActive = true
+            button.tag = answer.index
+            button.addTarget(self, action: #selector(answerButtonTapped(sender:)), for: .touchUpInside)
+            buttonStackView.addArrangedSubview(button)
         }
     }
-}
 
-extension ConfirmMnemonicViewController: UICollectionViewDataSource {
-    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return confirmViewModel?.wordList.count ?? 0
-    }
+    @IBAction private func answerButtonTapped(sender: UIButton) {
+        guard let viewModel = confirmViewModel.wordList.first else { return }
 
-    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell: ConfirmMnemonicCollectionViewCell = collectionView.dequeueCellForIndexPath(indexPath)
-        cell.confirmWordViewModel = confirmViewModel?.wordList[indexPath.item]
-
-        cell.wordConfirmedCallback = selectNextCell
-
-        if indexPath.row == currentCell {
-            cell.isActiveCell = true
+        if sender.tag == viewModel.secretWord.index {
+            print("🎉")
+        } else {
+            navigationController?.popViewController(animated: true)
         }
-
-        return cell
     }
 }
