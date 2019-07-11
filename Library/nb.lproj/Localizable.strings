@@ -110,8 +110,7 @@
 "scene.setup_pin.top_label.non_matching" = "PIN-kodene stemmer ikke overens. Prøv igjen.";
 "scene.setup_pin.top_label.validate" = "Tast inn PIN-koden på nytt for å bekrefte den.";
 
-"scene.confirm_mnemonic.title" = "Bekreft huskeord";
-"scene.confirm_mnemonic.description" = "Oppgi huskeordene dine.";
+"scene.confirm_mnemonic.title" = "Confirm Recovery Phrase";
 
 "scene.send.title" = "Sending";
 "scene.send.send_button" = "Send";
@@ -150,13 +149,13 @@
 "scene.connect_remote_node.certificate_detail.macaroon_title" = "Makron";
 "scene.connect_remote_node.edit_url.title" = "Adresse";
 
-"scene.create_wallet.title" = "Opprett en lommebok";
-"scene.create_wallet.description_label" = "Forsikre deg om at du oppbevarer huskeordene på et trygt sted.";
+"scene.create_wallet.title" = "Recovery Phrase";
+"scene.create_wallet.description_label" = "Write down the recovery phrase and store it at a safe location.";
 "scene.create_wallet.next_button" = "Neste";
 
 "scene.recover_wallet.title" = "Gjenopprett lommebok";
 "scene.recover_wallet.done_button" = "Ferdig";
-"scene.recover_wallet.description_label" = "Oppgi huskeordene:";
+"scene.recover_wallet.description_label" = "Enter your recovery phrase:";
 "scene.recover_wallet.placeholder" = "abandon ability able about above absent absorb abstract absurd abuse access accident account accuse achieve acid acoustic acquire across act action actor actress actual";
 
 "scene.select_wallet_connection.create.title" = "Opprett";
