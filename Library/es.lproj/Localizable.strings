@@ -110,8 +110,7 @@
 "scene.setup_pin.top_label.non_matching" = "Los pines no coinciden. Por favor, inténtelo de nuevo.";
 "scene.setup_pin.top_label.validate" = "Introduzca el pin de nuevo para validar.";
 
-"scene.confirm_mnemonic.title" = "Confirme la semilla";
-"scene.confirm_mnemonic.description" = "Introduzca su clave.";
+"scene.confirm_mnemonic.title" = "Confirm Recovery Phrase";
 
 "scene.send.title" = "Enviar";
 "scene.send.send_button" = "Enviar";
@@ -150,13 +149,13 @@
 "scene.connect_remote_node.certificate_detail.macaroon_title" = "Galletas de almendra";
 "scene.connect_remote_node.edit_url.title" = "Dirección";
 
-"scene.create_wallet.title" = "Crear Cartera";
-"scene.create_wallet.description_label" = "Make sure to store the mnemonic at a safe location.";
+"scene.create_wallet.title" = "Recovery Phrase";
+"scene.create_wallet.description_label" = "Write down the recovery phrase and store it at a safe location.";
 "scene.create_wallet.next_button" = "Siguiente";
 
 "scene.recover_wallet.title" = "Recuperar cartera";
 "scene.recover_wallet.done_button" = "Hecho";
-"scene.recover_wallet.description_label" = "Introduzca su semilla:";
+"scene.recover_wallet.description_label" = "Enter your recovery phrase:";
 "scene.recover_wallet.placeholder" = "abandonar capacidad capaz sobre encima ausente absorber abstracto absurdo abuso accidente cuenta acusar lograr ácido acústico adquirir tras acto acción actor actriz real";
 
 "scene.select_wallet_connection.create.title" = "Crear";
