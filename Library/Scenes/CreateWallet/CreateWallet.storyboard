@@ -368,68 +368,21 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" allowsSelection="NO" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="wtL-iC-RCZ">
+                            <stackView opaque="NO" contentMode="scaleToFill" placeholderIntrinsicWidth="202" placeholderIntrinsicHeight="667" axis="vertical" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="eeg-x0-LKH">
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="MnemonicWordTableViewCell" id="Fjw-Ok-cRp" customClass="MnemonicWordTableViewCell" customModule="Library" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="28" width="375" height="44"/>
-                                        <autoresizingMask key="autoresizingMask"/>
-                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="Fjw-Ok-cRp" id="F4j-lz-ZHc">
-                                            <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
-                                            <autoresizingMask key="autoresizingMask"/>
-                                            <subviews>
-                                                <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="CjX-G8-i1r">
-                                                    <rect key="frame" x="35" y="0.0" width="340" height="44"/>
-                                                    <subviews>
-                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1Ns-kP-Fxt">
-                                                            <rect key="frame" x="0.0" y="0.0" width="45" height="44"/>
-                                                            <constraints>
-                                                                <constraint firstAttribute="width" constant="45" id="PIH-Dm-KiQ"/>
-                                                            </constraints>
-                                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                            <nil key="textColor"/>
-                                                            <nil key="highlightedColor"/>
-                                                        </label>
-                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2aq-mS-oIm">
-                                                            <rect key="frame" x="45" y="0.0" width="295" height="44"/>
-                                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                            <nil key="textColor"/>
-                                                            <nil key="highlightedColor"/>
-                                                        </label>
-                                                    </subviews>
-                                                </stackView>
-                                            </subviews>
-                                            <constraints>
-                                                <constraint firstAttribute="trailing" secondItem="CjX-G8-i1r" secondAttribute="trailing" id="2iv-pd-3t2"/>
-                                                <constraint firstItem="CjX-G8-i1r" firstAttribute="top" secondItem="F4j-lz-ZHc" secondAttribute="top" id="5F3-mx-IMk"/>
-                                                <constraint firstAttribute="bottom" secondItem="CjX-G8-i1r" secondAttribute="bottom" id="VlW-p1-cYO"/>
-                                                <constraint firstItem="CjX-G8-i1r" firstAttribute="leading" secondItem="F4j-lz-ZHc" secondAttribute="leading" constant="35" id="hi9-jY-57W"/>
-                                            </constraints>
-                                        </tableViewCellContentView>
-                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                        <connections>
-                                            <outlet property="indexLabel" destination="1Ns-kP-Fxt" id="U7f-2W-7rc"/>
-                                            <outlet property="wordLabel" destination="2aq-mS-oIm" id="PLD-h9-4rW"/>
-                                        </connections>
-                                    </tableViewCell>
-                                </prototypes>
-                                <connections>
-                                    <outlet property="dataSource" destination="NfN-oY-Khn" id="Lt0-2y-c1Y"/>
-                                </connections>
-                            </tableView>
+                            </stackView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
-                            <constraint firstItem="wtL-iC-RCZ" firstAttribute="trailing" secondItem="qMg-2w-nt5" secondAttribute="trailing" id="2Hl-8C-MBZ"/>
-                            <constraint firstItem="wtL-iC-RCZ" firstAttribute="bottom" secondItem="qMg-2w-nt5" secondAttribute="bottom" id="I1h-cH-4r2"/>
-                            <constraint firstItem="wtL-iC-RCZ" firstAttribute="top" secondItem="uZ8-S6-eho" secondAttribute="top" id="Qmh-Wu-gPk"/>
-                            <constraint firstItem="wtL-iC-RCZ" firstAttribute="leading" secondItem="qMg-2w-nt5" secondAttribute="leading" id="XEr-yu-tXh"/>
+                            <constraint firstItem="eeg-x0-LKH" firstAttribute="top" secondItem="uZ8-S6-eho" secondAttribute="top" id="aLb-tf-FW6"/>
+                            <constraint firstItem="qMg-2w-nt5" firstAttribute="trailing" secondItem="eeg-x0-LKH" secondAttribute="trailing" id="gU1-FF-qfT"/>
+                            <constraint firstItem="eeg-x0-LKH" firstAttribute="leading" secondItem="qMg-2w-nt5" secondAttribute="leading" id="kuI-O7-2YJ"/>
+                            <constraint firstItem="eeg-x0-LKH" firstAttribute="bottom" secondItem="qMg-2w-nt5" secondAttribute="bottom" id="o12-ne-Ay3"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="qMg-2w-nt5"/>
                     </view>
                     <connections>
-                        <outlet property="tableView" destination="wtL-iC-RCZ" id="NXK-OB-SSv"/>
+                        <outlet property="stackView" destination="eeg-x0-LKH" id="rTu-Ub-yYq"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="1Du-tA-pfP" userLabel="First Responder" sceneMemberID="firstResponder"/>

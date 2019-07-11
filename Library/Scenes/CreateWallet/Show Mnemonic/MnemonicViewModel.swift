@@ -37,7 +37,7 @@ final class MnemonicViewModel {
     }
 
     func updatePageWords(with mnemonic: [String]) {
-        let maxWordCount = 6
+        let maxWordCount = 12
         var subArrays = [[String]]()
         var array = mnemonic
 

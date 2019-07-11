@@ -105,7 +105,6 @@
 		AD391C5B20D16F7A007EE22A /* MnemonicViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0D3C970205FF0E10015C5D7 /* MnemonicViewController.swift */; };
 		AD391C5C20D16F7A007EE22A /* MnemonicViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADCE01C0207B5C0300CA72E8 /* MnemonicViewModel.swift */; };
 		AD391C5D20D16F7A007EE22A /* MnemonicWordListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADBB36302084CA3B005662B4 /* MnemonicWordListViewController.swift */; };
-		AD391C5E20D16F7A007EE22A /* MnemonicWordTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADBB36322084EC4D005662B4 /* MnemonicWordTableViewCell.swift */; };
 		AD391C5F20D16F7A007EE22A /* RecoverWalletViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADF79375208F88DE0086B2CA /* RecoverWalletViewController.swift */; };
 		AD391C6220D16F7A007EE22A /* SelectWalletCreationMethodViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADCE01BC207B598C00CA72E8 /* SelectWalletCreationMethodViewController.swift */; };
 		AD391C6320D16F89007EE22A /* LndLog.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AD9E244020A3680C0014F9FA /* LndLog.storyboard */; };
@@ -865,7 +864,6 @@
 		ADBB36282080B2AE005662B4 /* TestingTemplates.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestingTemplates.swift; sourceTree = "<group>"; };
 		ADBB362E2084CA16005662B4 /* MnemonicPageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MnemonicPageViewController.swift; sourceTree = "<group>"; };
 		ADBB36302084CA3B005662B4 /* MnemonicWordListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MnemonicWordListViewController.swift; sourceTree = "<group>"; };
-		ADBB36322084EC4D005662B4 /* MnemonicWordTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MnemonicWordTableViewCell.swift; sourceTree = "<group>"; };
 		ADBCC07420CC04A4002B6E59 /* TransactionService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransactionService.swift; sourceTree = "<group>"; };
 		ADC08D8A21DBBB16000E730E /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		ADC0D2EF2107953100B8C62F /* PinnedHost.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PinnedHost.swift; sourceTree = "<group>"; };
@@ -1671,7 +1669,6 @@
 				A0D3C970205FF0E10015C5D7 /* MnemonicViewController.swift */,
 				ADCE01C0207B5C0300CA72E8 /* MnemonicViewModel.swift */,
 				ADBB36302084CA3B005662B4 /* MnemonicWordListViewController.swift */,
-				ADBB36322084EC4D005662B4 /* MnemonicWordTableViewCell.swift */,
 			);
 			path = "Show Mnemonic";
 			sourceTree = "<group>";
@@ -3282,7 +3279,6 @@
 				AD391CA920D16FA8007EE22A /* BitcoinUnitSettingsItem.swift in Sources */,
 				AD391CAF20D16FA8007EE22A /* SettingsItem.swift in Sources */,
 				AD391C5620D16F7A007EE22A /* ConnectRemoteNodeViewModel.swift in Sources */,
-				AD391C5E20D16F7A007EE22A /* MnemonicWordTableViewCell.swift in Sources */,
 				AD248624225B73980049532C /* WalletBalanceSegment.swift in Sources */,
 				AD391D0C20D16FF5007EE22A /* PinView.swift in Sources */,
 				ADCD5B0D20D7E3F50037F156 /* ManageWalletsSettingsItem.swift in Sources */,

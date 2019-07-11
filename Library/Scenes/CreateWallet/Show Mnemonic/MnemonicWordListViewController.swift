@@ -8,8 +8,7 @@
 import UIKit
 
 final class MnemonicWordListViewController: UIViewController {
-
-    @IBOutlet private weak var tableView: UITableView!
+    @IBOutlet private weak var stackView: UIStackView!
 
     private var mnemonicWords: [MnemonicWord]?
 
@@ -21,25 +20,49 @@ final class MnemonicWordListViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        tableView.rowHeight = 58
-        tableView.backgroundColor = .clear
         view.backgroundColor = .clear
-    }
-}
 
-extension MnemonicWordListViewController: UITableViewDataSource {
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return mnemonicWords?.count ?? 0
-    }
+        guard let mnemonicWords = mnemonicWords else { return }
 
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell: MnemonicWordTableViewCell = tableView.dequeueCellForIndexPath(indexPath)
+        for mnemonic in mnemonicWords {
+            let backgroundView = UIView()
 
-        let word = mnemonicWords?[indexPath.row]
-        cell.index = word?.index
-        cell.word = word?.word
+            let indexLabel = UILabel(frame: CGRect.zero)
+            if mnemonic.index < 9 {
+                indexLabel.text = "0\(mnemonic.index + 1)"
+            } else {
+                indexLabel.text = "\(mnemonic.index + 1)"
+            }
 
-        return cell
+            let wordLabel = UILabel(frame: CGRect.zero)
+            wordLabel.text = "\(mnemonic.word)"
+            Style.Label.body.apply(to: wordLabel)
+            indexLabel.textColor = UIColor.Zap.gray
+            indexLabel.font = UIFont.monospacedDigitSystemFont(ofSize: 17, weight: .light)
+
+            indexLabel.setContentHuggingPriority(UILayoutPriority(rawValue: 999), for: .horizontal)
+
+            let horizontalStackView = UIStackView(arrangedSubviews: [
+                indexLabel,
+                wordLabel
+            ])
+            horizontalStackView.axis = .horizontal
+            horizontalStackView.spacing = 20
+
+            if mnemonic.index % 2 == 0 {
+                backgroundView.backgroundColor = UIColor.Zap.seaBlue
+            }
+
+            backgroundView.addAutolayoutSubview(horizontalStackView)
+
+            NSLayoutConstraint.activate([
+                horizontalStackView.topAnchor.constraint(equalTo: backgroundView.topAnchor),
+                horizontalStackView.bottomAnchor.constraint(equalTo: backgroundView.bottomAnchor),
+                horizontalStackView.leadingAnchor.constraint(equalTo: backgroundView.leadingAnchor, constant: 20),
+                horizontalStackView.trailingAnchor.constraint(equalTo: backgroundView.trailingAnchor, constant: 20)
+            ])
+
+            stackView.addArrangedSubview(backgroundView)
+        }
     }
 }
