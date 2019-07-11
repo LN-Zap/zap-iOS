@@ -110,8 +110,7 @@
 "scene.setup_pin.top_label.non_matching" = "Pin koderne er ikke de samme. Prøv venligst igen.";
 "scene.setup_pin.top_label.validate" = "Indtast Pin-koden igen for at validere.";
 
-"scene.confirm_mnemonic.title" = "Bekræft Seed";
-"scene.confirm_mnemonic.description" = "Indtast din nøgle.";
+"scene.confirm_mnemonic.title" = "Confirm Recovery Phrase";
 
 "scene.send.title" = "Send";
 "scene.send.send_button" = "Send";
@@ -150,13 +149,13 @@
 "scene.connect_remote_node.certificate_detail.macaroon_title" = "Makron";
 "scene.connect_remote_node.edit_url.title" = "Adresse";
 
-"scene.create_wallet.title" = "Opret tegnebog";
-"scene.create_wallet.description_label" = "Make sure to store the mnemonic at a safe location.";
+"scene.create_wallet.title" = "Recovery Phrase";
+"scene.create_wallet.description_label" = "Write down the recovery phrase and store it at a safe location.";
 "scene.create_wallet.next_button" = "Næste";
 
 "scene.recover_wallet.title" = "Genskab tegnebog";
 "scene.recover_wallet.done_button" = "Udført";
-"scene.recover_wallet.description_label" = "Indtast dit seed:";
+"scene.recover_wallet.description_label" = "Enter your recovery phrase:";
 "scene.recover_wallet.placeholder" = "efterlade evne i_stand om over fraværende absorbere abstrakt absurd misbrug opnå syre akustisk erhverve henover handling aktion skuespiller skuespillerinde faktisk";
 
 "scene.select_wallet_connection.create.title" = "Opret";
