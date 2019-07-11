@@ -110,8 +110,7 @@
 "scene.setup_pin.top_label.non_matching" = "Codul pin nu se potriveste. Vă rugăm să încercaţi din nou.";
 "scene.setup_pin.top_label.validate" = "Introduceţi codul pin din nou pentru a valida.";
 
-"scene.confirm_mnemonic.title" = "Confirma seed";
-"scene.confirm_mnemonic.description" = "Introduceţi cheia";
+"scene.confirm_mnemonic.title" = "Confirm Recovery Phrase";
 
 "scene.send.title" = "Trimite";
 "scene.send.send_button" = "Trimite";
@@ -150,13 +149,13 @@
 "scene.connect_remote_node.certificate_detail.macaroon_title" = "Macaroon";
 "scene.connect_remote_node.edit_url.title" = "Adresa";
 
-"scene.create_wallet.title" = "Creeaza un nou portofel";
-"scene.create_wallet.description_label" = "Make sure to store the mnemonic at a safe location.";
+"scene.create_wallet.title" = "Recovery Phrase";
+"scene.create_wallet.description_label" = "Write down the recovery phrase and store it at a safe location.";
 "scene.create_wallet.next_button" = "Următoarea";
 
 "scene.recover_wallet.title" = "Recupereaza portofel";
 "scene.recover_wallet.done_button" = "Gata";
-"scene.recover_wallet.description_label" = "Introduceţi seed-ul:";
+"scene.recover_wallet.description_label" = "Enter your recovery phrase:";
 "scene.recover_wallet.placeholder" = "abandon ability able about above absent absorb abstract absurd abuse access accident account accuse achieve acid acoustic acquire across act action actor actress actual";
 
 "scene.select_wallet_connection.create.title" = "Creaza";
