@@ -26,24 +26,27 @@ lane :change_version do |options|
   increment_version_number(version_number: version)
 end
 
-desc "Builds new Alpha Build and uploads it to Testflight."
-lane :alpha do
-  pre_alpha
-  upload_alpha(configuration: "DebugRemote")
-end
-
-desc "Builds new Alpha Build with local lnd enabled and uploads it to Testflight."
-lane :local_lnd_alpha do
-  pre_alpha
-  upload_alpha(configuration: "Debug")
-end
-
-private_lane :pre_alpha do
+private_lane :pre_upload do
+  ensure_bundle_exec
   sh("python3 check_localizable.py")
   ensure_git_status_clean
 end
 
-private_lane :upload_alpha do |options|
+def check_release_branch(prefix)
+  branch = git_branch
+  branch_parts = branch.split('-')
+  if branch_parts.count != 2 || branch_parts[0] != prefix
+    UI.user_error!("only release from a release branch (e.g. release/testflight-0.4.0)")
+  end 
+end
+
+desc "Builds new Alpha Build with local lnd enabled and uploads it to Testflight."
+lane :alpha do
+  pre_upload
+  check_release_branch('release/testflight')
+
+  update_app_icon(image: 'logo_alpha.png')
+
   increment_build_number(build_number:
     latest_testflight_build_number(
       initial_build_number: 0
@@ -59,7 +62,7 @@ private_lane :upload_alpha do |options|
   build_ios_app(
     workspace: "Zap.xcworkspace",
     scheme: "Zap",
-    configuration: options[:configuration],
+    configuration: "Debug",
     output_directory: "./builds/alpha",
     export_method: "app-store"
   )
@@ -82,6 +85,9 @@ end
 
 desc "Release"
 lane :release do
+  pre_upload
+  check_release_branch('release/appstore')
+
   version = get_version_number(
     xcodeproj: "Zap.xcodeproj",
     target: "Zap"
@@ -127,9 +133,14 @@ lane :release do
 end
 
 desc "Generate new app icon assets."
-lane :update_app_icon do
+lane :update_app_icon do |options|
+  if option_image = options[:image]
+    image = option_image
+  else
+    image = 'logo.png'
+  end
   appicon(
-    appicon_image_file: 'logo.png',
+    appicon_image_file: image,
     appicon_path: 'Zap/Assets.xcassets',
     appicon_devices: [:iphone, :ios_marketing]
   )
