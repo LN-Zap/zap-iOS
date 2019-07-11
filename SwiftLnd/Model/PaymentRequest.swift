@@ -29,8 +29,12 @@ public struct PaymentRequest: Equatable {
 }
 
 extension PaymentRequest {
-    init(payReq: Lnrpc_PayReq, raw: String) {
+    init?(payReq: Lnrpc_PayReq, raw: String) {
         self.amount = Satoshi(payReq.numSatoshis)
+
+        if amount <= 0 {
+            return nil
+        }
 
         if let data = payReq.description_p.data(using: .utf8, allowLossyConversion: false) {
             if let json = try? JSONDecoder().decode(PaymentDescription.self, from: data) {
