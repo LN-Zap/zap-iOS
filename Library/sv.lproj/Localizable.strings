@@ -110,8 +110,7 @@
 "scene.setup_pin.top_label.non_matching" = "PIN-koderna matchar ej. Vänligen försök igen.";
 "scene.setup_pin.top_label.validate" = "Repetera PIN-koden för att validera.";
 
-"scene.confirm_mnemonic.title" = "Bekräfta seeden";
-"scene.confirm_mnemonic.description" = "Ange din kod.";
+"scene.confirm_mnemonic.title" = "Confirm Recovery Phrase";
 
 "scene.send.title" = "Skicka";
 "scene.send.send_button" = "Skicka";
@@ -150,13 +149,13 @@
 "scene.connect_remote_node.certificate_detail.macaroon_title" = "Macaroon";
 "scene.connect_remote_node.edit_url.title" = "Adress";
 
-"scene.create_wallet.title" = "Skapa ny plånbok";
-"scene.create_wallet.description_label" = "Make sure to store the mnemonic at a safe location.";
+"scene.create_wallet.title" = "Recovery Phrase";
+"scene.create_wallet.description_label" = "Write down the recovery phrase and store it at a safe location.";
 "scene.create_wallet.next_button" = "Nästa";
 
 "scene.recover_wallet.title" = "Återställ plånbok";
 "scene.recover_wallet.done_button" = "Klar";
-"scene.recover_wallet.description_label" = "Ange din seed:";
+"scene.recover_wallet.description_label" = "Enter your recovery phrase:";
 "scene.recover_wallet.placeholder" = "abandon ability able about above absent absorb abstract absurd abuse access accident account accuse achieve acid acoustic acquire across act action actor actress actual";
 
 "scene.select_wallet_connection.create.title" = "Skapa";
