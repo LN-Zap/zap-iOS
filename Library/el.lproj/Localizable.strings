@@ -110,8 +110,7 @@
 "scene.setup_pin.top_label.non_matching" = "Ο κωδικός PIN δεν ταιριάζει. Προσπαθήστε ξανά παρακαλώ.";
 "scene.setup_pin.top_label.validate" = "Εισαγάγετε ξανά τον κωδικό PIN για επικύρωση.";
 
-"scene.confirm_mnemonic.title" = "Επιβεβαιώστε το σπόρο";
-"scene.confirm_mnemonic.description" = "Εισαγάγετε το κλειδί σας.";
+"scene.confirm_mnemonic.title" = "Confirm Recovery Phrase";
 
 "scene.send.title" = "Στείλετε";
 "scene.send.send_button" = "Στείλετε";
@@ -150,13 +149,13 @@
 "scene.connect_remote_node.certificate_detail.macaroon_title" = "Macaroon";
 "scene.connect_remote_node.edit_url.title" = "Διεύθυνση";
 
-"scene.create_wallet.title" = "Δημιουργήστε πορτοφόλι";
-"scene.create_wallet.description_label" = "Make sure to store the mnemonic at a safe location.";
+"scene.create_wallet.title" = "Recovery Phrase";
+"scene.create_wallet.description_label" = "Write down the recovery phrase and store it at a safe location.";
 "scene.create_wallet.next_button" = "Επόμενη";
 
 "scene.recover_wallet.title" = "Ανακτήστε το Πορτοφόλι";
 "scene.recover_wallet.done_button" = "Έγινε";
-"scene.recover_wallet.description_label" = "Εισάγετε το σπόρο σας:";
+"scene.recover_wallet.description_label" = "Enter your recovery phrase:";
 "scene.recover_wallet.placeholder" = "abandon ability able about above absent absorb abstract absurd abuse access accident account accuse achieve acid acoustic acquire across act action actor actress actual";
 
 "scene.select_wallet_connection.create.title" = "Δημιουργία";
