@@ -161,6 +161,7 @@ final class RequestViewController: ModalDetailViewController {
         currentState = .amountInput
 
         if requestMethod == .lightning {
+            nextButton?.isEnabled = false
             Settings.shared.primaryCurrency
                 .compactMap { [viewModel] in
                     $0.format(satoshis: viewModel.maxRemoteBalance)
@@ -202,6 +203,7 @@ final class RequestViewController: ModalDetailViewController {
 
     @objc private func amountChanged(sender: AmountInputView) {
         viewModel.amount = sender.satoshis
+        nextButton?.isEnabled = !(viewModel.requestMethod == .lightning && viewModel.amount <= 0)
     }
 
     @objc private func updateMemo(sender: UITextField) {
