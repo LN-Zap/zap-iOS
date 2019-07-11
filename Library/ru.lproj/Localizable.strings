@@ -110,8 +110,7 @@
 "scene.setup_pin.top_label.non_matching" = "Пин-коды не одинаковы. Пожалуйста, попробуйте еще раз.";
 "scene.setup_pin.top_label.validate" = "Введите пин-код еще раз что бы проверить.";
 
-"scene.confirm_mnemonic.title" = "Подтвердить Фразу";
-"scene.confirm_mnemonic.description" = "Введите свой Ключ.";
+"scene.confirm_mnemonic.title" = "Confirm Recovery Phrase";
 
 "scene.send.title" = "Отправить";
 "scene.send.send_button" = "Отправить";
@@ -150,13 +149,13 @@
 "scene.connect_remote_node.certificate_detail.macaroon_title" = "Macaroon";
 "scene.connect_remote_node.edit_url.title" = "Адрес";
 
-"scene.create_wallet.title" = "Создать Кошелёк";
-"scene.create_wallet.description_label" = "Make sure to store the mnemonic at a safe location.";
+"scene.create_wallet.title" = "Recovery Phrase";
+"scene.create_wallet.description_label" = "Write down the recovery phrase and store it at a safe location.";
 "scene.create_wallet.next_button" = "Следуюший";
 
 "scene.recover_wallet.title" = "Восстановление Кошелька";
 "scene.recover_wallet.done_button" = "Готово";
-"scene.recover_wallet.description_label" = "Введите парольную фразу:";
+"scene.recover_wallet.description_label" = "Enter your recovery phrase:";
 "scene.recover_wallet.placeholder" = "abandon ability able about above absent absorb abstract absurd abuse access accident account accuse achieve acid acoustic acquire across act action actor actress actual";
 
 "scene.select_wallet_connection.create.title" = "Создать";
