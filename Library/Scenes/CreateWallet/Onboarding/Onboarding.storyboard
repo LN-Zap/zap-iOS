@@ -23,10 +23,20 @@
                                 <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                             </imageView>
                             <pageControl opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" numberOfPages="3" translatesAutoresizingMaskIntoConstraints="NO" id="WBJ-v8-xyX">
-                                <rect key="frame" x="187.5" y="825" width="39" height="37"/>
+                                <rect key="frame" x="187.5" y="729" width="39" height="37"/>
                             </pageControl>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="HQ5-7s-v6B">
+                                <rect key="frame" x="20" y="786" width="374" height="56"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="56" id="XZT-No-bUq"/>
+                                </constraints>
+                                <state key="normal" title="Button"/>
+                                <connections>
+                                    <action selector="actionButtonTapped:" destination="BtC-Ha-QLs" eventType="touchUpInside" id="j89-oX-FIp"/>
+                                </connections>
+                            </button>
                             <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Zdl-G1-14c">
-                                <rect key="frame" x="0.0" y="0.0" width="414" height="825"/>
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="729"/>
                                 <connections>
                                     <segue destination="ohV-8f-sSg" kind="embed" id="meE-ww-53f"/>
                                 </connections>
@@ -39,15 +49,19 @@
                             <constraint firstItem="HQy-vO-oVM" firstAttribute="trailing" secondItem="BrB-lz-JOj" secondAttribute="trailing" id="593-Tx-PIg"/>
                             <constraint firstItem="HQy-vO-oVM" firstAttribute="leading" secondItem="BrB-lz-JOj" secondAttribute="leading" id="6Gp-80-IVY"/>
                             <constraint firstItem="Zdl-G1-14c" firstAttribute="top" secondItem="TJM-Es-baG" secondAttribute="top" id="81r-he-oEw"/>
+                            <constraint firstItem="BrB-lz-JOj" firstAttribute="trailing" secondItem="HQ5-7s-v6B" secondAttribute="trailing" constant="20" id="AgE-87-yu9"/>
                             <constraint firstItem="WBJ-v8-xyX" firstAttribute="top" secondItem="Zdl-G1-14c" secondAttribute="bottom" id="K2D-4s-fCz"/>
+                            <constraint firstItem="HQ5-7s-v6B" firstAttribute="top" secondItem="WBJ-v8-xyX" secondAttribute="bottom" constant="20" id="O32-aR-43j"/>
                             <constraint firstItem="Zdl-G1-14c" firstAttribute="leading" secondItem="BrB-lz-JOj" secondAttribute="leading" id="Roa-vq-GMY"/>
                             <constraint firstItem="WBJ-v8-xyX" firstAttribute="centerX" secondItem="BrB-lz-JOj" secondAttribute="centerX" id="S9P-Fv-GpT"/>
-                            <constraint firstItem="BrB-lz-JOj" firstAttribute="bottom" secondItem="WBJ-v8-xyX" secondAttribute="bottom" id="aId-nU-Dkg"/>
                             <constraint firstItem="HQy-vO-oVM" firstAttribute="top" secondItem="TJM-Es-baG" secondAttribute="top" id="cbI-g1-YyN"/>
+                            <constraint firstItem="BrB-lz-JOj" firstAttribute="bottom" secondItem="HQ5-7s-v6B" secondAttribute="bottom" constant="20" id="hgk-lU-6lq"/>
+                            <constraint firstItem="HQ5-7s-v6B" firstAttribute="leading" secondItem="BrB-lz-JOj" secondAttribute="leading" constant="20" id="rCx-eD-aPP"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="BrB-lz-JOj"/>
                     </view>
                     <connections>
+                        <outlet property="actionButton" destination="HQ5-7s-v6B" id="IEz-yh-wJQ"/>
                         <outlet property="pageControl" destination="WBJ-v8-xyX" id="GN0-3q-IKh"/>
                     </connections>
                 </viewController>
@@ -72,7 +86,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="15" translatesAutoresizingMaskIntoConstraints="NO" id="xAp-Uc-ai1">
-                                <rect key="frame" x="20" y="651.5" width="374" height="210.5"/>
+                                <rect key="frame" x="20" y="762.5" width="374" height="99.5"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="1lx-co-lhp">
                                         <rect key="frame" x="0.0" y="0.0" width="374" height="1"/>
@@ -105,35 +119,13 @@
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="N6v-5c-luc">
-                                        <rect key="frame" x="0.0" y="114.5" width="374" height="96"/>
-                                        <subviews>
-                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="HQ5-7s-v6B">
-                                                <rect key="frame" x="0.0" y="20" width="374" height="56"/>
-                                                <constraints>
-                                                    <constraint firstAttribute="height" constant="56" id="XZT-No-bUq"/>
-                                                </constraints>
-                                                <state key="normal" title="Button"/>
-                                                <connections>
-                                                    <action selector="actionButtonTapped:" destination="GC2-uN-Flp" eventType="touchUpInside" id="QSs-hX-pV6"/>
-                                                </connections>
-                                            </button>
-                                        </subviews>
-                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                        <constraints>
-                                            <constraint firstAttribute="bottom" secondItem="HQ5-7s-v6B" secondAttribute="bottom" constant="20" id="JA8-Hs-7ym"/>
-                                            <constraint firstItem="HQ5-7s-v6B" firstAttribute="top" secondItem="N6v-5c-luc" secondAttribute="top" constant="20" id="RdM-aC-XjC"/>
-                                            <constraint firstItem="HQ5-7s-v6B" firstAttribute="leading" secondItem="N6v-5c-luc" secondAttribute="leading" id="VXT-zG-cWC"/>
-                                            <constraint firstAttribute="trailing" secondItem="HQ5-7s-v6B" secondAttribute="trailing" id="WAU-iw-4q5"/>
-                                        </constraints>
-                                    </view>
                                 </subviews>
                             </stackView>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="jAZ-Rp-O5f">
-                                <rect key="frame" x="0.0" y="0.0" width="414" height="651.5"/>
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="762.5"/>
                                 <subviews>
                                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" placeholderIntrinsicWidth="240" placeholderIntrinsicHeight="240" translatesAutoresizingMaskIntoConstraints="NO" id="O70-Ls-zUX">
-                                        <rect key="frame" x="87" y="206" width="240" height="240"/>
+                                        <rect key="frame" x="87" y="261.5" width="240" height="240"/>
                                     </imageView>
                                 </subviews>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>

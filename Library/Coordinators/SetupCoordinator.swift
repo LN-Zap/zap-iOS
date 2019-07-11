@@ -65,14 +65,12 @@ final class SetupCoordinator: Coordinator {
         }
 
         let pages = [
-            OnboardingTextViewController.instantiate(title: "Your key, your coins.", message: "With Zap, you are in control of your money. To make sure your coins are always stored safely, zap will provide a recovery seed for you.", image: Emoji.image(emoji: "🤴")),
-            OnboardingTextViewController.instantiate(title: "Write down your recovery seed.", message: "Write down  the recovery seed on a piece of paper. You can recover your funds anytime if your phone goes missing.", image: Emoji.image(emoji: "✍️")),
-            OnboardingTextViewController.instantiate(title: "Make sure to keep it in a safe place.", message: "Make sure to keep your recovery seed private. Store it somewhere only you will find it.", image: Emoji.image(emoji: "🗝"), action: { [weak self] in
-                self?.presentMnemonic()
-            })
+            OnboardingTextViewController.instantiate(title: "Your key, your coins.", message: "With Zap, you are in control of your money. To make sure your coins are always stored safely, zap will provide a recovery seed for you.", image: Emoji.image(emoji: "🤴"), buttonTitle: "Continue"),
+            OnboardingTextViewController.instantiate(title: "Write down your recovery seed.", message: "Write down  the recovery seed on a piece of paper. You can recover your funds anytime if your phone goes missing.", image: Emoji.image(emoji: "✍️"), buttonTitle: "Continue"),
+            OnboardingTextViewController.instantiate(title: "Make sure to keep it in a safe place.", message: "Make sure to keep your recovery seed private. Store it somewhere only you will find it.", image: Emoji.image(emoji: "🗝"), buttonTitle: "Generate Seed")
         ]
 
-        let onboardingViewController = OnboardingContainerViewController.instantiate(pages: pages)
+        let onboardingViewController = OnboardingContainerViewController.instantiate(pages: pages, completion: presentMnemonic)
         let viewController = UINavigationController(rootViewController: onboardingViewController)
         createWalletNavigationController = viewController
         self.navigationController?.present(viewController, animated: true, completion: nil)

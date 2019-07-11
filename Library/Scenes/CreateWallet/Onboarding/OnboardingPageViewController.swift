@@ -11,6 +11,7 @@ import UIKit
 protocol OnboardingPageViewControllerDelegate: class {
     func tutorialPageViewController(_ pageViewController: OnboardingPageViewController, didUpdatePageCount count: Int)
     func tutorialPageViewController(_ pageViewController: OnboardingPageViewController, didUpdatePageIndex index: Int)
+    func tutorialPageViewController(_ pageViewController: OnboardingPageViewController, didUpdateButtonTitle buttonTitle: String)
 }
 
 final class OnboardingPageViewController: UIPageViewController {
@@ -31,17 +32,25 @@ final class OnboardingPageViewController: UIPageViewController {
             setViewControllers([firstViewController], direction: .forward, animated: true, completion: nil)
         }
 
-        containerDelegate?.tutorialPageViewController(self, didUpdatePageCount: pages.count)
+        updatePageIndex()
     }
 
-    func presentNext() {
+    func presentNext() -> Bool {
         guard
             let currentViewController = viewControllers?.first,
             let nextViewController = pageViewController(self, viewControllerAfter: currentViewController)
-            else { return }
+            else { return false }
         setViewControllers([nextViewController], direction: .forward, animated: true) { [weak self] _ in
             self?.updatePageIndex()
         }
+
+        if
+            let nextViewController = nextViewController as? OnboardingTextViewController,
+            let buttonTitle = nextViewController.buttonTitle {
+            containerDelegate?.tutorialPageViewController(self, didUpdateButtonTitle: buttonTitle)
+        }
+
+        return true
     }
 }
 
@@ -58,6 +67,12 @@ extension OnboardingPageViewController: UIPageViewControllerDelegate {
 
         containerDelegate?.tutorialPageViewController(self, didUpdatePageIndex: index)
         containerDelegate?.tutorialPageViewController(self, didUpdatePageCount: pages.count)
+
+        if
+            let currentViewController = currentViewController as? OnboardingTextViewController,
+            let buttonTitle = currentViewController.buttonTitle {
+            containerDelegate?.tutorialPageViewController(self, didUpdateButtonTitle: buttonTitle)
+        }
     }
 }
 
