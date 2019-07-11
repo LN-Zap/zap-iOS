@@ -110,8 +110,7 @@
 "scene.setup_pin.top_label.non_matching" = "Pin码不正确，请重试。";
 "scene.setup_pin.top_label.validate" = "再次输入 pin 码以进行验证。";
 
-"scene.confirm_mnemonic.title" = "确认种子";
-"scene.confirm_mnemonic.description" = "输入您的密钥。";
+"scene.confirm_mnemonic.title" = "Confirm Recovery Phrase";
 
 "scene.send.title" = "转账";
 "scene.send.send_button" = "转账";
@@ -150,13 +149,13 @@
 "scene.connect_remote_node.certificate_detail.macaroon_title" = "Macaroon";
 "scene.connect_remote_node.edit_url.title" = "地址";
 
-"scene.create_wallet.title" = "创建钱包";
-"scene.create_wallet.description_label" = "请确保将助记词存储在安全的地方。";
+"scene.create_wallet.title" = "Recovery Phrase";
+"scene.create_wallet.description_label" = "Write down the recovery phrase and store it at a safe location.";
 "scene.create_wallet.next_button" = "下一步";
 
 "scene.recover_wallet.title" = "恢复钱包";
 "scene.recover_wallet.done_button" = "完成";
-"scene.recover_wallet.description_label" = "输入您的助记词种子:";
+"scene.recover_wallet.description_label" = "Enter your recovery phrase:";
 "scene.recover_wallet.placeholder" = "abandon ability able about above absent absorb abstract absurd abuse access accident account accuse achieve acid acoustic acquire across act action actor actress actual";
 
 "scene.select_wallet_connection.create.title" = "创建";
