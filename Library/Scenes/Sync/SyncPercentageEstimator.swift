@@ -23,8 +23,9 @@ final class SyncPercentageEstimator {
         let blocksDone = blocksToSync - blocksRemaining
 
         // filters
-        let filtersToSync = Int(abs(initialHeaderDate.timeIntervalSinceNow / 10))
-        let filtersRemaining = Int(abs(lndHeaderDate.timeIntervalSinceNow / 10))
+        // TODO: hack to make filter sync work with latest buggy lnd HeaderDate
+        let filtersToSync = 0 // Int(abs(initialHeaderDate.timeIntervalSinceNow / 10))
+        let filtersRemaining = 0 // Int(abs(lndHeaderDate.timeIntervalSinceNow / 10))
         let filtersDone = filtersToSync - filtersRemaining
 
         // totals
