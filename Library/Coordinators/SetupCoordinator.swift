@@ -88,9 +88,9 @@ final class SetupCoordinator: Coordinator {
     }
 
     private func presentConfirmMnemonic() {
-        guard let confirmMnemonicViewModel = mnemonicViewModel?.confirmMnemonicViewModel else { return }
+        guard let viewModel = mnemonicViewModel?.confirmMnemonicViewModel else { return }
 
-        let viewController = ConfirmMnemonicViewController.instantiate(confirmMnemonicViewModel: confirmMnemonicViewModel, connectWallet: didSetupWallet)
+        let viewController = ConfirmMnemonicPageViewController.instantiate(confirmMnemonicViewModel: viewModel, connectWallet: didSetupWallet)
         createWalletNavigationController?.pushViewController(viewController, animated: true)
     }
 

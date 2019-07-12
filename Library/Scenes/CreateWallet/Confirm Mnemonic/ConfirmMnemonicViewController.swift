@@ -10,41 +10,41 @@ import Lightning
 import Logger
 import UIKit
 
-private let itemWitdh: CGFloat = 140
+protocol ConfirmMnemonicViewControllerDelegate: class {
+    func didSelectWrongWord()
+    func didSelectCorrectWord(on viewController: ConfirmMnemonicViewController)
+}
 
 final class ConfirmMnemonicViewController: UIViewController {
     @IBOutlet private weak var descriptionLabel: UILabel!
     @IBOutlet private weak var seedStackView: UIStackView!
     @IBOutlet private weak var buttonStackView: UIStackView!
 
+    weak var delegate: ConfirmMnemonicViewControllerDelegate?
+
     // swiftlint:disable implicitly_unwrapped_optional
-    private var confirmViewModel: ConfirmMnemonicViewModel!
-    private var connectWallet: ((WalletConfiguration) -> Void)!
+    private var confirmViewModel: ConfirmWordViewModel!
     // swiftlint:enable implicitly_unwrapped_optional
 
-    static func instantiate(confirmMnemonicViewModel: ConfirmMnemonicViewModel, connectWallet: @escaping (WalletConfiguration) -> Void) -> ConfirmMnemonicViewController {
-        let viewController = StoryboardScene.CreateWallet.confirmMnemonicViewController.instantiate()
-        viewController.confirmViewModel = confirmMnemonicViewModel
-        viewController.connectWallet = connectWallet
+    static func instantiate(confirmWordViewModel: ConfirmWordViewModel, delegate: ConfirmMnemonicViewControllerDelegate) -> ConfirmMnemonicViewController {
+        let viewController = StoryboardScene.ConfirmMnemonic.confirmMnemonicViewController.instantiate()
+        viewController.confirmViewModel = confirmWordViewModel
+        viewController.delegate = delegate
         return viewController
     }
 
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        title = L10n.Scene.ConfirmMnemonic.title
-
         view.backgroundColor = UIColor.Zap.background
 
         Style.Label.custom(color: .white).apply(to: descriptionLabel)
 
-        guard let viewModel = confirmViewModel.wordList.first else { return }
+        descriptionLabel.text = "Select word number \(confirmViewModel.secretWord.index + 1)"
 
-        descriptionLabel.text = "Select word number \(viewModel.secretWord.index + 1)"
-
-        for context in viewModel.context {
+        for context in confirmViewModel.context {
             let newContext: MnemonicWord
-            if context == viewModel.secretWord {
+            if context == confirmViewModel.secretWord {
                 newContext = MnemonicWord(index: context.index, word: "")
             } else {
                 newContext = context
@@ -55,8 +55,8 @@ final class ConfirmMnemonicViewController: UIViewController {
             seedStackView.addArrangedSubview(view)
         }
 
-        for (index, answer) in viewModel.answers.enumerated() {
-            if answer == viewModel.secretWord {
+        for (index, answer) in confirmViewModel.answers.enumerated() {
+            if answer == confirmViewModel.secretWord {
                 Logger.info(index)
             }
             let button = UIButton(type: .system)
@@ -70,12 +70,10 @@ final class ConfirmMnemonicViewController: UIViewController {
     }
 
     @IBAction private func answerButtonTapped(sender: UIButton) {
-        guard let viewModel = confirmViewModel.wordList.first else { return }
-
-        if sender.tag == viewModel.secretWord.index {
-            print("🎉")
+        if sender.tag == confirmViewModel.secretWord.index {
+            delegate?.didSelectCorrectWord(on: self)
         } else {
-            navigationController?.popViewController(animated: true)
+            delegate?.didSelectWrongWord()
         }
     }
 }

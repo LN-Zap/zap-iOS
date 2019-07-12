@@ -22,6 +22,8 @@
 		AD035BFC2174A030005EA785 /* ChannelTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD035BFA2174A030005EA785 /* ChannelTableViewCell.swift */; };
 		AD035BFD2174A030005EA785 /* ChannelTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = AD035BFB2174A030005EA785 /* ChannelTableViewCell.xib */; };
 		AD035BFF2174A996005EA785 /* ChannelDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD035BFE2174A996005EA785 /* ChannelDetailViewController.swift */; };
+		AD054EA422D8BB8400A9796E /* ConfirmMnemonic.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AD054EA322D8BB8400A9796E /* ConfirmMnemonic.storyboard */; };
+		AD054EA622D8BC2100A9796E /* ConfirmMnemonicPageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD054EA522D8BC2100A9796E /* ConfirmMnemonicPageViewController.swift */; };
 		AD055DA721B14A4300BE511D /* Permissions.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD055DA621B14A4300BE511D /* Permissions.swift */; };
 		AD055DAE21B5416D00BE511D /* ToastNotificationObserver.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD055DAD21B5416D00BE511D /* ToastNotificationObserver.swift */; };
 		AD0D0BC2212BE3C800E4F7F7 /* RequestViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD0D0BC1212BE3C800E4F7F7 /* RequestViewController.swift */; };
@@ -605,6 +607,8 @@
 		AD035BFA2174A030005EA785 /* ChannelTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChannelTableViewCell.swift; sourceTree = "<group>"; };
 		AD035BFB2174A030005EA785 /* ChannelTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ChannelTableViewCell.xib; sourceTree = "<group>"; };
 		AD035BFE2174A996005EA785 /* ChannelDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChannelDetailViewController.swift; sourceTree = "<group>"; };
+		AD054EA322D8BB8400A9796E /* ConfirmMnemonic.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = ConfirmMnemonic.storyboard; sourceTree = "<group>"; };
+		AD054EA522D8BC2100A9796E /* ConfirmMnemonicPageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConfirmMnemonicPageViewController.swift; sourceTree = "<group>"; };
 		AD055DA621B14A4300BE511D /* Permissions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Permissions.swift; sourceTree = "<group>"; };
 		AD055DAD21B5416D00BE511D /* ToastNotificationObserver.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToastNotificationObserver.swift; sourceTree = "<group>"; };
 		AD0D0BC1212BE3C800E4F7F7 /* RequestViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RequestViewController.swift; sourceTree = "<group>"; };
@@ -2105,6 +2109,8 @@
 		ADF79373208F87E60086B2CA /* Confirm Mnemonic */ = {
 			isa = PBXGroup;
 			children = (
+				AD054EA322D8BB8400A9796E /* ConfirmMnemonic.storyboard */,
+				AD054EA522D8BC2100A9796E /* ConfirmMnemonicPageViewController.swift */,
 				ADCE01BE207B59BD00CA72E8 /* ConfirmMnemonicViewController.swift */,
 				ADCE01C2207B66A500CA72E8 /* ConfirmMnemonicViewModel.swift */,
 			);
@@ -2597,6 +2603,7 @@
 				AD391CA020D16FA8007EE22A /* Root.storyboard in Resources */,
 				AD7B1EF8224241DC007D4171 /* WalletList.storyboard in Resources */,
 				AD391CD520D16FE1007EE22A /* HistoryCell.xib in Resources */,
+				AD054EA422D8BB8400A9796E /* ConfirmMnemonic.storyboard in Resources */,
 				ADFAA01F228C4649000AECA1 /* ChannelBackup.storyboard in Resources */,
 				AD391C6320D16F89007EE22A /* LndLog.storyboard in Resources */,
 				AD7EDAE32108C4150058CCCA /* Wallet.storyboard in Resources */,
@@ -3216,6 +3223,7 @@
 				AD391C6520D16F89007EE22A /* LndLogViewController.swift in Sources */,
 				ADA179BE21515095001401F3 /* SectionHeaderView.swift in Sources */,
 				AD391CAD20D16FA8007EE22A /* OnChainRequestAddressTypeSettingsItem.swift in Sources */,
+				AD054EA622D8BC2100A9796E /* ConfirmMnemonicPageViewController.swift in Sources */,
 				ADA58F9822049022009A5494 /* ManageWalletsViewController.swift in Sources */,
 				AD28CB7B211DE93300A31004 /* BlockExplorerSettingsItem.swift in Sources */,
 				AD391CB720D16FA8007EE22A /* SettingsViewController.swift in Sources */,

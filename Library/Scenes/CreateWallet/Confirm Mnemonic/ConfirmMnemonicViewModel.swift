@@ -10,7 +10,7 @@ import Foundation
 import Lightning
 import SwiftLnd
 
-private let requiredWordCount = 6
+private let requiredWordCount = 4
 
 struct ConfirmWordViewModel: Equatable {
     let secretWord: MnemonicWord
@@ -25,7 +25,7 @@ final class ConfirmMnemonicViewModel {
 
     let configuration: WalletConfiguration
 
-    let wordList: [ConfirmWordViewModel]
+    let wordViewModels: [ConfirmWordViewModel]
 
     init(walletService: WalletService, mnemonic: [String], configuration: WalletConfiguration) {
         self.walletService = walletService
@@ -42,7 +42,7 @@ final class ConfirmMnemonicViewModel {
 
         let mnemonicWords = mnemonic.enumerated().map { MnemonicWord(index: $0, word: $1) }
 
-        wordList = randomIndices.map {
+        wordViewModels = randomIndices.map {
             let secretWord = mnemonicWords[$0]
 
             var answers = Array(mnemonicWords.shuffled().prefix(4))

@@ -173,51 +173,6 @@
             </objects>
             <point key="canvasLocation" x="1709.5999999999999" y="115.59220389805098"/>
         </scene>
-        <!--Confirm Mnemonic View Controller-->
-        <scene sceneID="0SF-u2-7r0">
-            <objects>
-                <viewController storyboardIdentifier="ConfirmMnemonicViewController" id="tpG-El-WpN" customClass="ConfirmMnemonicViewController" customModule="Library" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="0gb-af-vDr">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6Hf-N5-CNA">
-                                <rect key="frame" x="20" y="40" width="335" height="20.5"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <stackView opaque="NO" contentMode="scaleToFill" placeholderIntrinsicWidth="375" placeholderIntrinsicHeight="173" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="5Os-Ar-T99">
-                                <rect key="frame" x="0.0" y="80.5" width="375" height="173"/>
-                            </stackView>
-                            <stackView opaque="NO" contentMode="scaleToFill" placeholderIntrinsicWidth="375" placeholderIntrinsicHeight="215" axis="vertical" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="hPl-Xr-dSk">
-                                <rect key="frame" x="20" y="452" width="335" height="215"/>
-                            </stackView>
-                        </subviews>
-                        <color key="backgroundColor" white="0.55909358129999998" alpha="1" colorSpace="calibratedWhite"/>
-                        <constraints>
-                            <constraint firstItem="6Hf-N5-CNA" firstAttribute="top" secondItem="sQu-V2-xwj" secondAttribute="top" constant="20" id="12L-WH-PB0"/>
-                            <constraint firstItem="6Hf-N5-CNA" firstAttribute="leading" secondItem="sQu-V2-xwj" secondAttribute="leading" constant="20" id="58f-D4-TIu"/>
-                            <constraint firstItem="5Os-Ar-T99" firstAttribute="trailing" secondItem="sQu-V2-xwj" secondAttribute="trailing" id="DbH-44-8rE"/>
-                            <constraint firstItem="hPl-Xr-dSk" firstAttribute="bottom" secondItem="sQu-V2-xwj" secondAttribute="bottom" id="FGf-ur-XIQ"/>
-                            <constraint firstItem="5Os-Ar-T99" firstAttribute="leading" secondItem="sQu-V2-xwj" secondAttribute="leading" id="VrO-8I-Rvc"/>
-                            <constraint firstItem="hPl-Xr-dSk" firstAttribute="leading" secondItem="sQu-V2-xwj" secondAttribute="leading" constant="20" id="XVP-Br-coa"/>
-                            <constraint firstItem="sQu-V2-xwj" firstAttribute="trailing" secondItem="6Hf-N5-CNA" secondAttribute="trailing" constant="20" id="gTl-Tu-ke4"/>
-                            <constraint firstItem="sQu-V2-xwj" firstAttribute="trailing" secondItem="hPl-Xr-dSk" secondAttribute="trailing" constant="20" id="gXi-As-u2o"/>
-                            <constraint firstItem="5Os-Ar-T99" firstAttribute="top" secondItem="6Hf-N5-CNA" secondAttribute="bottom" constant="20" id="iLc-ay-Oau"/>
-                        </constraints>
-                        <viewLayoutGuide key="safeArea" id="sQu-V2-xwj"/>
-                    </view>
-                    <connections>
-                        <outlet property="buttonStackView" destination="hPl-Xr-dSk" id="QN0-JA-TPK"/>
-                        <outlet property="descriptionLabel" destination="6Hf-N5-CNA" id="30t-Na-38N"/>
-                        <outlet property="seedStackView" destination="5Os-Ar-T99" id="3Ll-kD-4UR"/>
-                    </connections>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="a7b-n1-7YM" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="2664.8000000000002" y="115.59220389805098"/>
-        </scene>
         <!--Recover Wallet View Controller-->
         <scene sceneID="ys6-VJ-PKZ">
             <objects>
