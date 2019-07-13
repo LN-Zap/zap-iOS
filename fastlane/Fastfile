@@ -10,22 +10,6 @@ default_platform(:ios)
 
 app_identifier = ["com.jackmallers.zap", "com.jackmallers.zap.Sticker", "com.jackmallers.zap.Widget"]
 
-desc "Update build number."
-lane :build_number do
-  new_build_number = Time.now.strftime("%Y.%m.%d.%H.%M")
-  increment_build_number(build_number: new_build_number)
-end
-
-desc "Update app version."
-lane :change_version do |options|
-  if version = options[:version] 
-    increment_version_number(version_number: version)
-  else 
-    version = prompt(text: "Please enter the version number: ")
-  end
-  increment_version_number(version_number: version)
-end
-
 private_lane :pre_upload do
   ensure_bundle_exec
   sh("python3 check_localizable.py")
@@ -38,6 +22,7 @@ def check_release_branch(prefix)
   if branch_parts.count != 2 || branch_parts[0] != prefix
     UI.user_error!("only release from a release branch (e.g. release/testflight-0.4.0)")
   end 
+  increment_version_number(version_number: branch_parts[1])
 end
 
 desc "Builds new Alpha Build with local lnd enabled and uploads it to Testflight."
@@ -81,6 +66,7 @@ lane :alpha do
   )
 
   sh("git reset --hard")
+  sh("git clean -f")
 end
 
 desc "Release"
