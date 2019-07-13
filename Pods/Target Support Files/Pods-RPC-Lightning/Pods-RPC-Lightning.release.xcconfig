@@ -1,9 +1,10 @@
 FRAMEWORK_SEARCH_PATHS = $(inherited) "${PODS_CONFIGURATION_BUILD_DIR}/BigInt" "${PODS_CONFIGURATION_BUILD_DIR}/Bond" "${PODS_CONFIGURATION_BUILD_DIR}/Differ" "${PODS_CONFIGURATION_BUILD_DIR}/ReactiveKit" "${PODS_CONFIGURATION_BUILD_DIR}/SwiftBTC"
 GCC_PREPROCESSOR_DEFINITIONS = $(inherited) COCOAPODS=1
+HEADER_SEARCH_PATHS = $(inherited) "${PODS_CONFIGURATION_BUILD_DIR}/BigInt/BigInt.framework/Headers" "${PODS_CONFIGURATION_BUILD_DIR}/Bond/Bond.framework/Headers" "${PODS_CONFIGURATION_BUILD_DIR}/Differ/Differ.framework/Headers" "${PODS_CONFIGURATION_BUILD_DIR}/ReactiveKit/ReactiveKit.framework/Headers" "${PODS_CONFIGURATION_BUILD_DIR}/SwiftBTC/SwiftBTC.framework/Headers"
 LD_RUNPATH_SEARCH_PATHS = $(inherited) '@executable_path/Frameworks' '@loader_path/Frameworks' '@executable_path/../../Frameworks'
-OTHER_CFLAGS = $(inherited) -iquote "${PODS_CONFIGURATION_BUILD_DIR}/BigInt/BigInt.framework/Headers" -iquote "${PODS_CONFIGURATION_BUILD_DIR}/Bond/Bond.framework/Headers" -iquote "${PODS_CONFIGURATION_BUILD_DIR}/Differ/Differ.framework/Headers" -iquote "${PODS_CONFIGURATION_BUILD_DIR}/ReactiveKit/ReactiveKit.framework/Headers" -iquote "${PODS_CONFIGURATION_BUILD_DIR}/SwiftBTC/SwiftBTC.framework/Headers"
+OTHER_CFLAGS = $(inherited) -isystem "${PODS_CONFIGURATION_BUILD_DIR}/BigInt/BigInt.framework/Headers" -isystem "${PODS_CONFIGURATION_BUILD_DIR}/SwiftBTC/SwiftBTC.framework/Headers" -isystem "${PODS_CONFIGURATION_BUILD_DIR}/Bond/Bond.framework/Headers" -isystem "${PODS_CONFIGURATION_BUILD_DIR}/Differ/Differ.framework/Headers" -isystem "${PODS_CONFIGURATION_BUILD_DIR}/ReactiveKit/ReactiveKit.framework/Headers" -iframework "${PODS_CONFIGURATION_BUILD_DIR}/BigInt" -iframework "${PODS_CONFIGURATION_BUILD_DIR}/SwiftBTC" -iframework "${PODS_CONFIGURATION_BUILD_DIR}/Bond" -iframework "${PODS_CONFIGURATION_BUILD_DIR}/Differ" -iframework "${PODS_CONFIGURATION_BUILD_DIR}/ReactiveKit"
 OTHER_LDFLAGS = $(inherited) -framework "BigInt" -framework "Bond" -framework "Differ" -framework "ReactiveKit" -framework "SwiftBTC"
-OTHER_SWIFT_FLAGS = $(inherited) "-D" "COCOAPODS"
+OTHER_SWIFT_FLAGS = $(inherited) -D COCOAPODS
 PODS_BUILD_DIR = ${BUILD_DIR}
 PODS_CONFIGURATION_BUILD_DIR = ${PODS_BUILD_DIR}/$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)
 PODS_PODFILE_DIR_PATH = ${SRCROOT}/.

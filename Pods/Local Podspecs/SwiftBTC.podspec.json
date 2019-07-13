@@ -1,6 +1,6 @@
 {
   "name": "SwiftBTC",
-  "swift_version": "4.2",
+  "swift_versions": "4.2",
   "version": "0.0.8",
   "summary": "Bitcoin specific convenience functions and types.",
   "description": "Network, p2pkh, p2sh & bech32 bitcoin addresses, bip-0021 URI scheme for making Bitcoin payments, Satoshi number type, Currency type",
@@ -25,5 +25,6 @@
     "BigInt": [
       "~> 4"
     ]
-  }
+  },
+  "swift_version": "4.2"
 }
