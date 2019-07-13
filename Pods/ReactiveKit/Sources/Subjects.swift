@@ -28,6 +28,38 @@ import Foundation
 public protocol SubjectProtocol: SignalProtocol, ObserverProtocol {
 }
 
+extension SubjectProtocol {
+
+    /// Convenience method to send `.next` event.
+    public func send(_ element: Element) {
+        on(.next(element))
+    }
+
+    /// Convenience method to send `.failed` or `.completed` event.
+    public func send(completion: Subscribers.Completion<Error>) {
+        switch completion {
+        case .finished:
+            on(.completed)
+        case .failure(let error):
+            on(.failed(error))
+        }
+    }
+
+    /// Convenience method to send `.next` event followed by a `.completed` event.
+    public func send(lastElement element: Element) {
+        send(element)
+        send(completion: .finished)
+    }
+}
+
+extension SubjectProtocol where Element == Void {
+
+    /// Convenience method to send `.next` event.
+    public func send() {
+        send(())
+    }
+}
+
 /// A type that is both a signal and an observer.
 open class Subject<Element, Error: Swift.Error>: SubjectProtocol {
     
@@ -38,26 +70,26 @@ open class Subject<Element, Error: Swift.Error>: SubjectProtocol {
     
     public private(set) var isTerminated = false
     
-    public let observersLock = NSRecursiveLock(name: "reactive_kit.subject.observers_lock")
-    public let dispatchLock = NSRecursiveLock(name: "reactive_kit.subject.dispatch_lock")
+    public let lock = NSRecursiveLock(name: "reactive_kit.subject.lock")
     
     public let disposeBag = DisposeBag()
     
     public init() {}
     
     public func on(_ event: Event<Element, Error>) {
-        dispatchLock.lock(); defer { dispatchLock.unlock() }
+        lock.lock(); defer { lock.unlock() }
         guard !isTerminated else { return }
         isTerminated = event.isTerminal
-        send(event)
+        receive(event: event)
     }
-    
-    open func send(_ event: Event<Element, Error>) {
+
+    open func receive(event: Event<Element, Error>) {
+        lock.lock(); defer { lock.unlock() }
         forEachObserver { $0(event) }
     }
     
     open func observe(with observer: @escaping Observer<Element, Error>) -> Disposable {
-        observersLock.lock(); defer { observersLock.unlock() }
+        lock.lock(); defer { lock.unlock() }
         willAdd(observer: observer)
         return add(observer: observer)
     }
@@ -73,7 +105,7 @@ open class Subject<Element, Error: Swift.Error>: SubjectProtocol {
         
         return BlockDisposable { [weak self] in
             guard let me = self else { return }
-            me.observersLock.lock(); defer { me.observersLock.unlock() }
+            me.lock.lock(); defer { me.lock.unlock() }
             guard let index = me.observers.firstIndex(where: { $0.0 == token }) else { return }
             me.observers.remove(at: index)
         }
@@ -100,10 +132,7 @@ extension Subject: BindableProtocol {
 }
 
 /// A subject that propagates received events to the registered observes.
-public final class PublishSubject<Element, Error: Swift.Error>: Subject<Element, Error> {}
-
-/// A PublishSubject compile-time guaranteed never to emit an error.
-public typealias SafePublishSubject<Element> = PublishSubject<Element, Never>
+public final class PassthroughSubject<Element, Error: Swift.Error>: Subject<Element, Error> {}
 
 /// A subject that replies accumulated sequence of events to each observer.
 public final class ReplaySubject<Element, Error: Swift.Error>: Subject<Element, Error> {
@@ -119,10 +148,11 @@ public final class ReplaySubject<Element, Error: Swift.Error>: Subject<Element, 
         }
     }
     
-    public override func send(_ event: Event<Element, Error>) {
+    public override func receive(event: Event<Element, Error>) {
+        lock.lock(); defer { lock.unlock() }
         buffer.append(event)
         buffer = buffer.suffix(bufferSize)
-        super.send(event)
+        super.receive(event: event)
     }
     
     public override func willAdd(observer: @escaping Observer<Element, Error>) {
@@ -139,13 +169,14 @@ public final class ReplayOneSubject<Element, Error: Swift.Error>: Subject<Elemen
     private var lastEvent: Event<Element, Error>? = nil
     private var terminalEvent: Event<Element, Error>? = nil
     
-    public override func send(_ event: Event<Element, Error>) {
+    public override func receive(event: Event<Element, Error>) {
+        lock.lock(); defer { lock.unlock() }
         if event.isTerminal {
             terminalEvent = event
         } else {
             lastEvent = event
         }
-        super.send(event)
+        super.receive(event: event)
     }
     
     public override func willAdd(observer: @escaping Observer<Element, Error>) {
@@ -180,7 +211,8 @@ public final class ReplayLoadingValueSubject<Val, LoadingError: Swift.Error, Err
         self.bufferSize = bufferSize
     }
     
-    public override func send(_ event: Event<LoadingState<Val, LoadingError>, Error>) {
+    public override func receive(event: Event<LoadingState<Val, LoadingError>, Error>) {
+        lock.lock(); defer { lock.unlock() }
         switch event {
         case .next(let loadingState):
             switch loadingState {
@@ -199,7 +231,7 @@ public final class ReplayLoadingValueSubject<Val, LoadingError: Swift.Error, Err
         case .failed, .completed:
             terminalEvent = event
         }
-        super.send(event)
+        super.receive(event: event)
     }
     
     public override func willAdd(observer: @escaping Observer<LoadingState<Val, LoadingError>, Error>) {

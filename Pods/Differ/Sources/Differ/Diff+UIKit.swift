@@ -258,10 +258,11 @@ public extension UICollectionView {
         oldData: T,
         newData: T,
         indexPathTransform: @escaping (IndexPath) -> IndexPath = { $0 },
+        updateData: ((T) -> Void)? = nil,
         completion: ((Bool) -> Void)? = nil
     ) where T.Element: Equatable {
         let diff = oldData.extendedDiff(newData)
-        apply(diff, completion: completion, indexPathTransform: indexPathTransform)
+        apply(diff, data: newData, updateData: updateData, completion: completion, indexPathTransform: indexPathTransform)
     }
 
     /// Animates items which changed between oldData and newData.
@@ -277,18 +278,22 @@ public extension UICollectionView {
         newData: T,
         isEqual: EqualityChecker<T>,
         indexPathTransform: @escaping (IndexPath) -> IndexPath = { $0 },
+        updateData: ((T) -> Void)? = nil,
         completion: ((Bool) -> Swift.Void)? = nil
     ) {
         let diff = oldData.extendedDiff(newData, isEqual: isEqual)
-        apply(diff, completion: completion, indexPathTransform: indexPathTransform)
+        apply(diff, data: newData, updateData: updateData, completion: completion, indexPathTransform: indexPathTransform)
     }
 
-    func apply(
+    func apply<T>(
         _ diff: ExtendedDiff,
+        data: T,
+        updateData: ((T) -> Void)? = nil,
         completion: ((Bool) -> Swift.Void)? = nil,
         indexPathTransform: @escaping (IndexPath) -> IndexPath = { $0 }
     ) {
         performBatchUpdates({
+            updateData?(data)
             let update = BatchUpdate(diff: diff, indexPathTransform: indexPathTransform)
             self.deleteItems(at: update.deletions)
             self.insertItems(at: update.insertions)
@@ -309,6 +314,7 @@ public extension UICollectionView {
         newData: T,
         indexPathTransform: @escaping (IndexPath) -> IndexPath = { $0 },
         sectionTransform: @escaping (Int) -> Int = { $0 },
+        updateData: ((T) -> Void)? = nil,
         completion: ((Bool) -> Swift.Void)? = nil
     )
         where T.Element: Collection,
@@ -316,8 +322,10 @@ public extension UICollectionView {
         T.Element.Element: Equatable {
         self.apply(
             oldData.nestedExtendedDiff(to: newData),
+            data: newData,
             indexPathTransform: indexPathTransform,
             sectionTransform: sectionTransform,
+            updateData: updateData,
             completion: completion
         )
     }
@@ -337,6 +345,7 @@ public extension UICollectionView {
         isEqualElement: NestedElementEqualityChecker<T>,
         indexPathTransform: @escaping (IndexPath) -> IndexPath = { $0 },
         sectionTransform: @escaping (Int) -> Int = { $0 },
+        updateData: ((T) -> Void)? = nil,
         completion: ((Bool) -> Swift.Void)? = nil
     )
         where T.Element: Collection,
@@ -346,8 +355,10 @@ public extension UICollectionView {
                 to: newData,
                 isEqualElement: isEqualElement
             ),
+            data: newData,
             indexPathTransform: indexPathTransform,
             sectionTransform: sectionTransform,
+            updateData: updateData,
             completion: completion
         )
     }
@@ -367,6 +378,7 @@ public extension UICollectionView {
         isEqualSection: EqualityChecker<T>,
         indexPathTransform: @escaping (IndexPath) -> IndexPath = { $0 },
         sectionTransform: @escaping (Int) -> Int = { $0 },
+        updateData: ((T) -> Void)? = nil,
         completion: ((Bool) -> Swift.Void)? = nil
     )
         where T.Element: Collection,
@@ -376,8 +388,10 @@ public extension UICollectionView {
                 to: newData,
                 isEqualSection: isEqualSection
             ),
+            data: newData,
             indexPathTransform: indexPathTransform,
             sectionTransform: sectionTransform,
+            updateData: updateData,
             completion: completion
         )
     }
@@ -399,6 +413,7 @@ public extension UICollectionView {
         isEqualElement: NestedElementEqualityChecker<T>,
         indexPathTransform: @escaping (IndexPath) -> IndexPath = { $0 },
         sectionTransform: @escaping (Int) -> Int = { $0 },
+        updateData: ((T) -> Void)? = nil,
         completion: ((Bool) -> Swift.Void)? = nil
     )
         where T.Element: Collection {
@@ -408,19 +423,24 @@ public extension UICollectionView {
                 isEqualSection: isEqualSection,
                 isEqualElement: isEqualElement
             ),
+            data: newData,
             indexPathTransform: indexPathTransform,
             sectionTransform: sectionTransform,
+            updateData: updateData,
             completion: completion
         )
     }
 
-    func apply(
+    func apply<T: Collection>(
         _ diff: NestedExtendedDiff,
+        data: T,
         indexPathTransform: @escaping (IndexPath) -> IndexPath = { $0 },
         sectionTransform: @escaping (Int) -> Int = { $0 },
+        updateData: ((T) -> Void)? = nil,
         completion: ((Bool) -> Void)? = nil
     ) {
         performBatchUpdates({
+            updateData?(data)
             let update = NestedBatchUpdate(diff: diff, indexPathTransform: indexPathTransform, sectionTransform: sectionTransform)
             self.insertSections(update.sectionInsertions)
             self.deleteSections(update.sectionDeletions)

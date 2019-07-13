@@ -162,7 +162,6 @@ strip_invalid_archs() {
 
 if [[ "$CONFIGURATION" == "Debug" ]]; then
   install_framework "${BUILT_PRODUCTS_DIR}/BigInt/BigInt.framework"
-  install_framework "${BUILT_PRODUCTS_DIR}/BoringSSL/openssl.framework"
   install_framework "${BUILT_PRODUCTS_DIR}/BoringSSL-GRPC/openssl_grpc.framework"
   install_framework "${BUILT_PRODUCTS_DIR}/SwiftBTC/SwiftBTC.framework"
   install_framework "${BUILT_PRODUCTS_DIR}/SwiftGRPC/SwiftGRPC.framework"
@@ -176,7 +175,6 @@ if [[ "$CONFIGURATION" == "Debug" ]]; then
 fi
 if [[ "$CONFIGURATION" == "DebugRemote" ]]; then
   install_framework "${BUILT_PRODUCTS_DIR}/BigInt/BigInt.framework"
-  install_framework "${BUILT_PRODUCTS_DIR}/BoringSSL/openssl.framework"
   install_framework "${BUILT_PRODUCTS_DIR}/BoringSSL-GRPC/openssl_grpc.framework"
   install_framework "${BUILT_PRODUCTS_DIR}/SwiftBTC/SwiftBTC.framework"
   install_framework "${BUILT_PRODUCTS_DIR}/SwiftGRPC/SwiftGRPC.framework"
@@ -190,7 +188,6 @@ if [[ "$CONFIGURATION" == "DebugRemote" ]]; then
 fi
 if [[ "$CONFIGURATION" == "Release" ]]; then
   install_framework "${BUILT_PRODUCTS_DIR}/BigInt/BigInt.framework"
-  install_framework "${BUILT_PRODUCTS_DIR}/BoringSSL/openssl.framework"
   install_framework "${BUILT_PRODUCTS_DIR}/BoringSSL-GRPC/openssl_grpc.framework"
   install_framework "${BUILT_PRODUCTS_DIR}/SwiftBTC/SwiftBTC.framework"
   install_framework "${BUILT_PRODUCTS_DIR}/SwiftGRPC/SwiftGRPC.framework"
