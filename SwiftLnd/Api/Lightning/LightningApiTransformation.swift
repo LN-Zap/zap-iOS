@@ -98,7 +98,7 @@ enum LightningApiTransformation {
         }
     }
 
-    static func decodePaymentRequest(paymentRequest: String) -> (LNDPayReq) -> PaymentRequest {
+    static func decodePaymentRequest(paymentRequest: String) -> (LNDPayReq) -> PaymentRequest? {
         return { PaymentRequest(payReq: $0, raw: paymentRequest) }
     }
 
