@@ -27,6 +27,7 @@
 "channel.state.force_closing" = "强制关闭";
 "channel.state.waiting_close" = "等待关闭";
 
+"network_type.simnet" = "Simnet";
 "network_type.regtest" = "Regtest";
 "network_type.testnet" = "测试网络";
 "network_type.mainnet" = "主网";
