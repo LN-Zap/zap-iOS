@@ -27,6 +27,7 @@
 "channel.state.force_closing" = "Fermeture forcée";
 "channel.state.waiting_close" = "En attente de fermeture";
 
+"network_type.simnet" = "Simnet";
 "network_type.regtest" = "Test de régression";
 "network_type.testnet" = "Testnet";
 "network_type.mainnet" = "Mainnet";
