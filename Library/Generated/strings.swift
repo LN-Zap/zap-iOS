@@ -184,6 +184,10 @@ internal enum L10n {
       }
     }
     internal enum ConfirmMnemonic {
+      /// Select word number %d
+      internal static func headline(_ p1: Int) -> String {
+        return L10n.tr("Localizable", "scene.confirm_mnemonic.headline", p1)
+      }
       /// Confirm Recovery Phrase
       internal static let title = L10n.tr("Localizable", "scene.confirm_mnemonic.title")
     }
@@ -334,6 +338,32 @@ internal enum L10n {
       internal static let title = L10n.tr("Localizable", "scene.node_uri.title")
       /// URI
       internal static let uriLabel = L10n.tr("Localizable", "scene.node_uri.uri_label")
+    }
+    internal enum Onboarding {
+      internal enum Page1 {
+        /// Continue
+        internal static let buttonTitle = L10n.tr("Localizable", "scene.onboarding.page_1.button_title")
+        /// With Zap, you are in control of your money. To make sure your coins are always stored safely, zap will provide a recovery phrase for you.
+        internal static let message = L10n.tr("Localizable", "scene.onboarding.page_1.message")
+        /// Your key, your coins.
+        internal static let title = L10n.tr("Localizable", "scene.onboarding.page_1.title")
+      }
+      internal enum Page2 {
+        /// Continue
+        internal static let buttonTitle = L10n.tr("Localizable", "scene.onboarding.page_2.button_title")
+        /// Write down  the recovery phrase on a piece of paper. You can recover your funds anytime if your phone goes missing.
+        internal static let message = L10n.tr("Localizable", "scene.onboarding.page_2.message")
+        /// Write down your recovery phrase.
+        internal static let title = L10n.tr("Localizable", "scene.onboarding.page_2.title")
+      }
+      internal enum Page3 {
+        /// Generate Recovery Phrase
+        internal static let buttonTitle = L10n.tr("Localizable", "scene.onboarding.page_3.button_title")
+        /// Make sure to keep your recovery phrase private. Store it somewhere only you will find it.
+        internal static let message = L10n.tr("Localizable", "scene.onboarding.page_3.message")
+        /// Make sure to keep it in a safe place.
+        internal static let title = L10n.tr("Localizable", "scene.onboarding.page_3.title")
+      }
     }
     internal enum OpenChannel {
       /// Open Channel

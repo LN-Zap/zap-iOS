@@ -16,9 +16,8 @@ final class OnboardingContainerViewController: UIViewController {
 
     private weak var pageViewController: OnboardingPageViewController?
 
-    static func instantiate(pages: [UIViewController], completion: @escaping () -> Void) -> OnboardingContainerViewController {
+    static func instantiate(completion: @escaping () -> Void) -> OnboardingContainerViewController {
         let viewController = StoryboardScene.Onboarding.onboardingContainerViewController.instantiate()
-        viewController.pages = pages
         viewController.completion = completion
         return viewController
     }
@@ -27,6 +26,12 @@ final class OnboardingContainerViewController: UIViewController {
         super.viewDidLoad()
 
         view.backgroundColor = UIColor.Zap.background
+
+        pages = [
+            OnboardingTextViewController.instantiate(title: L10n.Scene.Onboarding.Page1.title, message: L10n.Scene.Onboarding.Page1.message, image: Emoji.image(emoji: "🤴"), buttonTitle: L10n.Scene.Onboarding.Page1.buttonTitle),
+            OnboardingTextViewController.instantiate(title: L10n.Scene.Onboarding.Page2.title, message: L10n.Scene.Onboarding.Page2.message, image: Emoji.image(emoji: "✍️"), buttonTitle: L10n.Scene.Onboarding.Page2.buttonTitle),
+            OnboardingTextViewController.instantiate(title: L10n.Scene.Onboarding.Page3.title, message: L10n.Scene.Onboarding.Page3.message, image: Emoji.image(emoji: "🗝"), buttonTitle: L10n.Scene.Onboarding.Page3.buttonTitle)
+        ]
 
         navigationItem.leftBarButtonItem = UIBarButtonItem(barButtonSystemItem: .cancel, target: self, action: #selector(cancel(_:)))
         navigationController?.navigationBar.backgroundColor = .clear

@@ -40,7 +40,7 @@ final class ConfirmMnemonicViewController: UIViewController {
 
         Style.Label.custom(color: .white).apply(to: descriptionLabel)
 
-        descriptionLabel.text = "Select word number \(confirmViewModel.secretWord.index + 1)"
+        descriptionLabel.text = L10n.Scene.ConfirmMnemonic.headline(confirmViewModel.secretWord.index + 1)
 
         for context in confirmViewModel.context {
             let newContext: MnemonicWord
