@@ -27,6 +27,7 @@
 "channel.state.force_closing" = "Tvangslukker";
 "channel.state.waiting_close" = "Vente luk";
 
+"network_type.simnet" = "Simnet";
 "network_type.regtest" = "Regtest";
 "network_type.testnet" = "Testnet";
 "network_type.mainnet" = "Mainnet";
