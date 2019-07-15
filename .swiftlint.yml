@@ -49,6 +49,7 @@ opt_in_rules:
 excluded:
   - Pods
   - SwiftLnd/Generated
+  - SwiftBTC/Example
   - Library/Generated
   - vendor
   - fastlane/SnapshotHelper.swift

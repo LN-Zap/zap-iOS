@@ -34,7 +34,7 @@ struct SuggestedPeers: Decodable {
                 else { return }
 
             switch network {
-            case .regtest:
+            case .regtest, .simnet:
                 completion([])
             case .testnet:
                 completion(suggestedPeers.bitcoin.testnet)

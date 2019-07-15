@@ -85,6 +85,8 @@ internal enum L10n {
     internal static let mainnet = L10n.tr("Localizable", "network_type.mainnet")
     /// Regtest
     internal static let regtest = L10n.tr("Localizable", "network_type.regtest")
+    /// Simnet
+    internal static let simnet = L10n.tr("Localizable", "network_type.simnet")
     /// Testnet
     internal static let testnet = L10n.tr("Localizable", "network_type.testnet")
   }
