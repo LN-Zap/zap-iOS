@@ -27,6 +27,7 @@
 "channel.state.force_closing" = "Принудительное Закрытие";
 "channel.state.waiting_close" = "Ожидание Закрытия";
 
+"network_type.simnet" = "Simnet";
 "network_type.regtest" = "Регрессивный тест";
 "network_type.testnet" = "Тестовая сеть";
 "network_type.mainnet" = "Главная сеть";
