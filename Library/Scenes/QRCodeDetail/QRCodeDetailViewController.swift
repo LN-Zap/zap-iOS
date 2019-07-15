@@ -16,10 +16,26 @@ final class QRCodeDetailViewController: UIViewController {
 
     private var viewModel: QRCodeDetailViewModel?
 
+    private var initialBrightnes: CGFloat?
+
     static func instantiate(with qrCodeDetailViewModel: QRCodeDetailViewModel) -> QRCodeDetailViewController {
         let viewController = StoryboardScene.QRCodeDetail.qrCodeDetailViewController.instantiate()
         viewController.viewModel = qrCodeDetailViewModel
         return viewController
+    }
+
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+
+        initialBrightnes = UIScreen.main.brightness
+        UIScreen.main.brightness = 1
+    }
+
+    override func viewDidDisappear(_ animated: Bool) {
+        super.viewDidDisappear(animated)
+
+        guard let initialBrightnes = initialBrightnes else { return }
+        UIScreen.main.brightness = initialBrightnes
     }
 
     override func viewDidLoad() {
