@@ -101,7 +101,6 @@ extension ConfirmMnemonicPageViewController: ConfirmMnemonicViewControllerDelega
         }
     }
 
-    // TODO: Move this shit to coordinator
     private func createNewWallet() {
         confirmViewModel.createWallet { [weak self] in
             guard let self = self else { return }
