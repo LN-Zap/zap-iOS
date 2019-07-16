@@ -59,24 +59,24 @@ public final class ChannelService {
         staticChannelBackupper.data = result.map { $0.data }
     }
 
-    public func open(lightningNodeURI: LightningNodeURI, amount: Satoshi, completion: @escaping ApiCompletion<ChannelPoint>) {
+    public func open(lightningNodeURI: LightningNodeURI, csvDelay: Int?, amount: Satoshi, completion: @escaping ApiCompletion<ChannelPoint>) {
         api.peers { [weak self, api] result in
             if (try? result.get())?.contains(where: { $0.pubKey == lightningNodeURI.pubKey }) == true {
-                self?.openConnectedChannel(pubKey: lightningNodeURI.pubKey, amount: amount, completion: completion)
+                self?.openConnectedChannel(pubKey: lightningNodeURI.pubKey, csvDelay: csvDelay, amount: amount, completion: completion)
             } else {
                 api.connect(pubKey: lightningNodeURI.pubKey, host: lightningNodeURI.host) { result in
                     if case .failure(let error) = result {
                         completion(.failure(LndApiError.localizedError(error.localizedDescription)))
                     } else {
-                        self?.openConnectedChannel(pubKey: lightningNodeURI.pubKey, amount: amount, completion: completion)
+                        self?.openConnectedChannel(pubKey: lightningNodeURI.pubKey, csvDelay: csvDelay, amount: amount, completion: completion)
                     }
                 }
             }
         }
     }
 
-    private func openConnectedChannel(pubKey: String, amount: Satoshi, completion: @escaping ApiCompletion<ChannelPoint>) {
-        api.openChannel(pubKey: pubKey, amount: amount) { [channelListUpdater] in
+    private func openConnectedChannel(pubKey: String, csvDelay: Int?, amount: Satoshi, completion: @escaping ApiCompletion<ChannelPoint>) {
+        api.openChannel(pubKey: pubKey, csvDelay: csvDelay, amount: amount) { [channelListUpdater] in
             channelListUpdater.update()
             completion($0)
         }

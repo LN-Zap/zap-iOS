@@ -61,7 +61,7 @@ extension Lnrpc_ConnectPeerRequest {
 }
 
 extension Lnrpc_OpenChannelRequest {
-    init(pubKey: String, amount: Satoshi) {
+    init(pubKey: String, csvDelay: Int?, amount: Satoshi) {
         self.init()
 
         if let pubKey = Data(hexadecimalString: pubKey) {
@@ -69,6 +69,9 @@ extension Lnrpc_OpenChannelRequest {
         }
         nodePubkeyString = pubKey
         localFundingAmount = amount.int64
+        if let csvDelay = csvDelay {
+            remoteCsvDelay = UInt32(csvDelay)
+        }
         `private` = true
     }
 }

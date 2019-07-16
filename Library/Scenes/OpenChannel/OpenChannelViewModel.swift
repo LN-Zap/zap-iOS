@@ -56,6 +56,7 @@ final class OpenChannelViewModel: NSObject {
     }
 
     func openChannel(completion: @escaping ApiCompletion<ChannelPoint>) {
-        lightningService.channelService.open(lightningNodeURI: lightningNodeURI, amount: amount, completion: completion)
+        let csvDelay = lightningService.connection == .local ? 2016 : nil // use 2 weeks csv delay for local nodes.
+        lightningService.channelService.open(lightningNodeURI: lightningNodeURI, csvDelay: csvDelay, amount: amount, completion: completion)
     }
 }

@@ -59,8 +59,8 @@ public final class LightningApi {
         connection.getInfo(Lnrpc_GetInfoRequest(), completion: run(completion, map: Info.init))
     }
 
-    public func openChannel(pubKey: String, amount: Satoshi, completion: @escaping ApiCompletion<ChannelPoint>) {
-        let request = Lnrpc_OpenChannelRequest(pubKey: pubKey, amount: amount)
+    public func openChannel(pubKey: String, csvDelay: Int?, amount: Satoshi, completion: @escaping ApiCompletion<ChannelPoint>) {
+        let request = Lnrpc_OpenChannelRequest(pubKey: pubKey, csvDelay: csvDelay, amount: amount)
         connection.openChannelSync(request, completion: run(completion, map: ChannelPoint.init))
     }
 
