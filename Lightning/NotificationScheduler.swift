@@ -31,7 +31,7 @@ public final class NotificationScheduler {
     func requestAuthorization() {
         let center = UNUserNotificationCenter.current()
         // Request permission to display alerts and play sounds.
-        center.requestAuthorization(options: [.alert, .sound]) { _, _ in
+        center.requestAuthorization(options: [.alert]) { _, _ in
             // Enable or disable features based on authorization.
         }
     }
