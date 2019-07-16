@@ -50,6 +50,8 @@ public final class LightningService: NSObject {
         self.walletId = walletId
         self.connection = connection
 
+        NotificationScheduler.shared.requestAuthorization()
+
         let staticChannelBackupper = StaticChannelBackupper(backupService: backupService)
 
         let invoiceListUpdater = InvoiceListUpdater(api: api)
@@ -76,6 +78,14 @@ public final class LightningService: NSObject {
 
         updateChannelsOnChange(of: invoiceListUpdater.items)
         updateChannelsOnChange(of: paymentListUpdater.items)
+
+        if connection == .local {
+            // schedule reminder notifications
+            combineLatest(channelListUpdater.open, channelListUpdater.pending, infoService.bestHeaderDate) { ($0.collection + $1.collection, $2) }
+                .debounce(interval: 2)
+                .observeNext { NotificationScheduler.shared.schedule(for: $0.0, bestHeaderDate: $0.1) }
+                .dispose(in: reactive.bag)
+        }
     }
 
     private func updateBalanceOnChange<T>(of items: MutableObservableArray<T>) {

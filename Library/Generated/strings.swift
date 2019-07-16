@@ -91,6 +91,25 @@ internal enum L10n {
     internal static let testnet = L10n.tr("Localizable", "network_type.testnet")
   }
 
+  internal enum Notification {
+    internal enum Sync {
+      /// Please sync
+      internal static let title = L10n.tr("Localizable", "notification.sync.title")
+      internal enum Day12 {
+        /// Please remember syncing your wallet to make sure you stay safe
+        internal static let body = L10n.tr("Localizable", "notification.sync.day_12.body")
+      }
+      internal enum Day13 {
+        /// You have one more day to sync your wallet before it's getting dangerous.
+        internal static let body = L10n.tr("Localizable", "notification.sync.day_13.body")
+      }
+      internal enum Day14 {
+        /// Please sync your wallet as soon as possible.
+        internal static let body = L10n.tr("Localizable", "notification.sync.day_14.body")
+      }
+    }
+  }
+
   internal enum RpcConnectQrcodeError {
     /// Could not read BTCPay configurations file.
     internal static let btcPayConfigurationBroken = L10n.tr("Localizable", "rpc_connect_qrcode_error.btc_pay_configuration_broken")
