@@ -226,6 +226,9 @@
 "scene.filter.displayChannelEvents" = "События Канала";
 
 "scene.qrcode_scanner.top_label" = "Сканиирование QR-Code";
+"scene.qrcode_scanner.error.unknown_format" = "Unknown address format.";
+"scene.qrcode_scanner.error.wrong_network" = "You tried opening an invoice for %@ but your node is connected to %@.";
+"scene.qrcode_scanner.error.zero_amount_invoice" = "For security reasons zap does not support invoices without a specified amount.";
 
 "scene.wallet.title" = "Кошелек";
 "scene.wallet.total_balance" = "Total Balance";
