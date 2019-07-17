@@ -27,6 +27,7 @@
 "channel.state.force_closing" = "Fermeture forcée";
 "channel.state.waiting_close" = "En attente de fermeture";
 
+"network_type.simnet" = "Simnet";
 "network_type.regtest" = "Test de régression";
 "network_type.testnet" = "Testnet";
 "network_type.mainnet" = "Mainnet";
@@ -110,8 +111,20 @@
 "scene.setup_pin.top_label.non_matching" = "Les PIN ne correspond pas. Veuillez essayer de nouveau.";
 "scene.setup_pin.top_label.validate" = "Entrez le code PIN à nouveau pour valider.";
 
-"scene.confirm_mnemonic.title" = "Confirmez votre clé";
-"scene.confirm_mnemonic.description" = "Entrez votre clé.";
+"scene.onboarding.page_1.title" = "Your key, your coins.";
+"scene.onboarding.page_1.message" = "With Zap, you are in control of your money. To make sure your coins are always stored safely, zap will provide a recovery phrase for you.";
+"scene.onboarding.page_1.button_title" = "Continue";
+
+"scene.onboarding.page_2.title" = "Write down your recovery phrase.";
+"scene.onboarding.page_2.message" = "Write down  the recovery phrase on a piece of paper. You can recover your funds anytime if your phone goes missing.";
+"scene.onboarding.page_2.button_title" = "Continue";
+
+"scene.onboarding.page_3.title" = "Make sure to keep it in a safe place.";
+"scene.onboarding.page_3.message" = "Make sure to keep your recovery phrase private. Store it somewhere only you will find it.";
+"scene.onboarding.page_3.button_title" = "Generate Recovery Phrase";
+
+"scene.confirm_mnemonic.title" = "Confirm Recovery Phrase";
+"scene.confirm_mnemonic.headline" = "Select word number %d";
 
 "scene.send.title" = "Envoyer";
 "scene.send.send_button" = "Envoyer";
@@ -150,26 +163,19 @@
 "scene.connect_remote_node.certificate_detail.macaroon_title" = "Macaron";
 "scene.connect_remote_node.edit_url.title" = "Adresse";
 
-"scene.create_wallet.title" = "Créer un portefeuille";
-"scene.create_wallet.description_label" = "Make sure to store the mnemonic at a safe location.";
+"scene.create_wallet.title" = "Recovery Phrase";
+"scene.create_wallet.description_label" = "Write down the recovery phrase and store it at a safe location.";
 "scene.create_wallet.next_button" = "Suivant";
 
 "scene.recover_wallet.title" = "Récupérer un portefeuille";
 "scene.recover_wallet.done_button" = "Terminé";
-"scene.recover_wallet.description_label" = "Entrez votre clé:";
+"scene.recover_wallet.description_label" = "Enter your recovery phrase:";
 "scene.recover_wallet.placeholder" = "abandon ability able about above absent absorb abstract absurd abuse access accident account accuse achieve acid acoustic acquire across act action actor actress actual";
 
-"scene.select_wallet_connection.title" = "Ajouter un Portefeuille";
 "scene.select_wallet_connection.create.title" = "Créer";
-"scene.select_wallet_connection.create.message" = "nouveau portefeuille";
 "scene.select_wallet_connection.recover.title" = "Récupérer";
-"scene.select_wallet_connection.recover.message" = "portefeuille existant";
 "scene.select_wallet_connection.connect.title" = "Se connecter";
-"scene.select_wallet_connection.connect.message" = "nœud distant";
-"scene.select_wallet_connection.disabled_alert.title" = "Désolé !";
-"scene.select_wallet_connection.disabled_alert.message" = "La fonctionnalité permettant de faire tourner lnd sur mobile est désactivée dans cette version beta. Connectez vous à un node distant à la place.";
-"scene.select_wallet_connection.disabled_alert.ok_button" = "Ok";
-"scene.select_wallet_connection.create.help" = "Besoin d'aide ?";
+"scene.select_wallet_connection.message" = "Bitcoin for everyone";
 
 "scene.main.send_button" = "Envoyer";
 "scene.main.receive_button" = "Recevoir";
@@ -220,6 +226,9 @@
 "scene.filter.displayChannelEvents" = "Evènements sur les Channels";
 
 "scene.qrcode_scanner.top_label" = "Scannez le Code QR";
+"scene.qrcode_scanner.error.unknown_format" = "Unknown address format.";
+"scene.qrcode_scanner.error.wrong_network" = "You tried opening an invoice for %@ but your node is connected to %@.";
+"scene.qrcode_scanner.error.zero_amount_invoice" = "For security reasons zap does not support invoices without a specified amount.";
 
 "scene.wallet.title" = "Portefeuille";
 "scene.wallet.total_balance" = "Total Balance";
@@ -271,3 +280,12 @@
 "scene.channel_backup.title" = "Channel Backup";
 "scene.channel_backup.cell_title" = "%@ channel.backup";
 "scene.channel_backup.not_found" = "file not found";
+"scene.channel_backup.error.iCloudDisabled" = "iCloud seems to be disabled.";
+"scene.channel_backup.error.iCloudBackupFailed" = "iCloud backup failed.";
+"scene.channel_backup.error.localBackupFailed" = "Local file backup failed.";
+"scene.channel_backup.error.lndError" = "Could not get channel backup from lnd.";
+
+"notification.sync.title" = "Please sync";
+"notification.sync.day_12.body" = "Please remember syncing your wallet to make sure you stay safe";
+"notification.sync.day_13.body" = "You have one more day to sync your wallet before it's getting dangerous.";
+"notification.sync.day_14.body" = "Please sync your wallet as soon as possible.";

@@ -27,6 +27,7 @@
 "channel.state.force_closing" = "Forzando cierre";
 "channel.state.waiting_close" = "Waiting Close";
 
+"network_type.simnet" = "Simnet";
 "network_type.regtest" = "Regtest";
 "network_type.testnet" = "Testnet";
 "network_type.mainnet" = "Mainnet";
@@ -110,8 +111,20 @@
 "scene.setup_pin.top_label.non_matching" = "Los pines no coinciden. Por favor, inténtelo de nuevo.";
 "scene.setup_pin.top_label.validate" = "Introduzca el pin de nuevo para validar.";
 
-"scene.confirm_mnemonic.title" = "Confirme la semilla";
-"scene.confirm_mnemonic.description" = "Introduzca su clave.";
+"scene.onboarding.page_1.title" = "Your key, your coins.";
+"scene.onboarding.page_1.message" = "With Zap, you are in control of your money. To make sure your coins are always stored safely, zap will provide a recovery phrase for you.";
+"scene.onboarding.page_1.button_title" = "Continue";
+
+"scene.onboarding.page_2.title" = "Write down your recovery phrase.";
+"scene.onboarding.page_2.message" = "Write down  the recovery phrase on a piece of paper. You can recover your funds anytime if your phone goes missing.";
+"scene.onboarding.page_2.button_title" = "Continue";
+
+"scene.onboarding.page_3.title" = "Make sure to keep it in a safe place.";
+"scene.onboarding.page_3.message" = "Make sure to keep your recovery phrase private. Store it somewhere only you will find it.";
+"scene.onboarding.page_3.button_title" = "Generate Recovery Phrase";
+
+"scene.confirm_mnemonic.title" = "Confirm Recovery Phrase";
+"scene.confirm_mnemonic.headline" = "Select word number %d";
 
 "scene.send.title" = "Enviar";
 "scene.send.send_button" = "Enviar";
@@ -150,26 +163,19 @@
 "scene.connect_remote_node.certificate_detail.macaroon_title" = "Galletas de almendra";
 "scene.connect_remote_node.edit_url.title" = "Dirección";
 
-"scene.create_wallet.title" = "Crear Cartera";
-"scene.create_wallet.description_label" = "Make sure to store the mnemonic at a safe location.";
+"scene.create_wallet.title" = "Recovery Phrase";
+"scene.create_wallet.description_label" = "Write down the recovery phrase and store it at a safe location.";
 "scene.create_wallet.next_button" = "Siguiente";
 
 "scene.recover_wallet.title" = "Recuperar cartera";
 "scene.recover_wallet.done_button" = "Hecho";
-"scene.recover_wallet.description_label" = "Introduzca su semilla:";
+"scene.recover_wallet.description_label" = "Enter your recovery phrase:";
 "scene.recover_wallet.placeholder" = "abandonar capacidad capaz sobre encima ausente absorber abstracto absurdo abuso accidente cuenta acusar lograr ácido acústico adquirir tras acto acción actor actriz real";
 
-"scene.select_wallet_connection.title" = "Agregar cartera";
 "scene.select_wallet_connection.create.title" = "Crear";
-"scene.select_wallet_connection.create.message" = "nueva cartera";
 "scene.select_wallet_connection.recover.title" = "Recuperar";
-"scene.select_wallet_connection.recover.message" = "cartera existente";
 "scene.select_wallet_connection.connect.title" = "Conectar";
-"scene.select_wallet_connection.connect.message" = "nodo remoto";
-"scene.select_wallet_connection.disabled_alert.title" = "¡Lo siento!";
-"scene.select_wallet_connection.disabled_alert.message" = "Ejecutar su propio nodo de Lightning Network no está disponible en esta beta. En su lugar, tendrá que conectarse a un nodo remoto.";
-"scene.select_wallet_connection.disabled_alert.ok_button" = "Vale";
-"scene.select_wallet_connection.create.help" = "¿Necesita ayuda?";
+"scene.select_wallet_connection.message" = "Bitcoin for everyone";
 
 "scene.main.send_button" = "Enviar";
 "scene.main.receive_button" = "Recibir";
@@ -220,6 +226,9 @@
 "scene.filter.displayChannelEvents" = "Eventos en el canal";
 
 "scene.qrcode_scanner.top_label" = "Escanear código QR";
+"scene.qrcode_scanner.error.unknown_format" = "Unknown address format.";
+"scene.qrcode_scanner.error.wrong_network" = "You tried opening an invoice for %@ but your node is connected to %@.";
+"scene.qrcode_scanner.error.zero_amount_invoice" = "For security reasons zap does not support invoices without a specified amount.";
 
 "scene.wallet.title" = "Cartera";
 "scene.wallet.total_balance" = "Balance Total";
@@ -271,3 +280,12 @@
 "scene.channel_backup.title" = "Channel Backup";
 "scene.channel_backup.cell_title" = "%@ channel.backup";
 "scene.channel_backup.not_found" = "file not found";
+"scene.channel_backup.error.iCloudDisabled" = "iCloud seems to be disabled.";
+"scene.channel_backup.error.iCloudBackupFailed" = "iCloud backup failed.";
+"scene.channel_backup.error.localBackupFailed" = "Local file backup failed.";
+"scene.channel_backup.error.lndError" = "Could not get channel backup from lnd.";
+
+"notification.sync.title" = "Please sync";
+"notification.sync.day_12.body" = "Please remember syncing your wallet to make sure you stay safe";
+"notification.sync.day_13.body" = "You have one more day to sync your wallet before it's getting dangerous.";
+"notification.sync.day_14.body" = "Please sync your wallet as soon as possible.";

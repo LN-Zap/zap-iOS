@@ -27,6 +27,7 @@
 "channel.state.force_closing" = "强制关闭";
 "channel.state.waiting_close" = "等待关闭";
 
+"network_type.simnet" = "Simnet";
 "network_type.regtest" = "Regtest";
 "network_type.testnet" = "测试网络";
 "network_type.mainnet" = "主网";
@@ -72,10 +73,10 @@
 "scene.request.title" = "收款";
 "scene.request.lightning_button" = "闪电";
 "scene.request.or_separator_label" = "或";
-"scene.request.on_chain_button" = "链上";
+"scene.request.on_chain_button" = "主链";
 "scene.request.generate_request_button" = "生成请求";
 "scene.request.lightning_header_title" = "闪电网络支付请求";
-"scene.request.on_chain_header_title" = "链上支付请求";
+"scene.request.on_chain_header_title" = "主链支付请求";
 "scene.request.next_button_title" = "下一步";
 "scene.request.subtitle.lightning" = "可以接收： %@";
 
@@ -98,7 +99,7 @@
 "scene.open_channel.add_button" = "打开通道";
 "scene.open_channel.subtitle.minimum_size" = "最小通道大小：%@";
 "scene.open_channel.subtitle.maximum_size" = "最大通道大小：%@";
-"scene.open_channel.subtitle.balance" = "链上余额：%@";
+"scene.open_channel.subtitle.balance" = "主链余额：%@";
 "scene.open_channel.suggested_peers.title" = "建议的Peers";
 "scene.open_channel.paste_button.title" = "粘贴Peer地址";
 
@@ -110,8 +111,20 @@
 "scene.setup_pin.top_label.non_matching" = "Pin码不正确，请重试。";
 "scene.setup_pin.top_label.validate" = "再次输入 pin 码以进行验证。";
 
-"scene.confirm_mnemonic.title" = "确认种子";
-"scene.confirm_mnemonic.description" = "输入您的密钥。";
+"scene.onboarding.page_1.title" = "Your key, your coins.";
+"scene.onboarding.page_1.message" = "With Zap, you are in control of your money. To make sure your coins are always stored safely, zap will provide a recovery phrase for you.";
+"scene.onboarding.page_1.button_title" = "Continue";
+
+"scene.onboarding.page_2.title" = "Write down your recovery phrase.";
+"scene.onboarding.page_2.message" = "Write down  the recovery phrase on a piece of paper. You can recover your funds anytime if your phone goes missing.";
+"scene.onboarding.page_2.button_title" = "Continue";
+
+"scene.onboarding.page_3.title" = "Make sure to keep it in a safe place.";
+"scene.onboarding.page_3.message" = "Make sure to keep your recovery phrase private. Store it somewhere only you will find it.";
+"scene.onboarding.page_3.button_title" = "Generate Recovery Phrase";
+
+"scene.confirm_mnemonic.title" = "Confirm Recovery Phrase";
+"scene.confirm_mnemonic.headline" = "Select word number %d";
 
 "scene.send.title" = "转账";
 "scene.send.send_button" = "转账";
@@ -119,19 +132,19 @@
 "scene.send.memo_headline" = "备注:";
 "scene.send.sending" = "发送中。。。";
 "scene.send.lightning.title" = "通过闪电网络支付";
-"scene.send.on_chain.title" = "链上交易";
+"scene.send.on_chain.title" = "发送主链交易";
 "scene.send.on_chain.fee" = "手续费：";
 "scene.send.on_chain.fee.fast" = "快";
-"scene.send.on_chain.fee.medium" = "Medium";
+"scene.send.on_chain.fee.medium" = "中";
 "scene.send.on_chain.fee.slow" = "慢";
-"scene.send.on_chain.fee.description.fast" = "Fast Transaction";
-"scene.send.on_chain.fee.description.medium" = "Medium Transaction";
-"scene.send.on_chain.fee.description.slow" = "Slow Transaction";
+"scene.send.on_chain.fee.description.fast" = "快";
+"scene.send.on_chain.fee.description.medium" = "中";
+"scene.send.on_chain.fee.description.slow" = "慢";
 
-"scene.send.on_chain.fee.estimated_delivery" = "Estimated Delivery: %@";
+"scene.send.on_chain.fee.estimated_delivery" = "估计传送: %@";
 "scene.send.authentication_failed" = "身份验证失败";
 "scene.send.maximum_fee" = "预计费用:";
-"scene.send.subtitle.on_chain_balance" = "链上余额：%@";
+"scene.send.subtitle.on_chain_balance" = "主链余额：%@";
 "scene.send.subtitle.lightning_can_send_balance" = "可以发送：%@";
 "scene.send.success_label" = "支付成功";
 "scene.send.paste_button.title" = "粘贴地址";
@@ -150,26 +163,19 @@
 "scene.connect_remote_node.certificate_detail.macaroon_title" = "Macaroon";
 "scene.connect_remote_node.edit_url.title" = "地址";
 
-"scene.create_wallet.title" = "创建钱包";
-"scene.create_wallet.description_label" = "请确保将助记词存储在安全的地方。";
+"scene.create_wallet.title" = "Recovery Phrase";
+"scene.create_wallet.description_label" = "Write down the recovery phrase and store it at a safe location.";
 "scene.create_wallet.next_button" = "下一步";
 
 "scene.recover_wallet.title" = "恢复钱包";
 "scene.recover_wallet.done_button" = "完成";
-"scene.recover_wallet.description_label" = "输入您的助记词种子:";
+"scene.recover_wallet.description_label" = "Enter your recovery phrase:";
 "scene.recover_wallet.placeholder" = "abandon ability able about above absent absorb abstract absurd abuse access accident account accuse achieve acid acoustic acquire across act action actor actress actual";
 
-"scene.select_wallet_connection.title" = "添加钱包";
 "scene.select_wallet_connection.create.title" = "创建";
-"scene.select_wallet_connection.create.message" = "创建钱包";
 "scene.select_wallet_connection.recover.title" = "恢复";
-"scene.select_wallet_connection.recover.message" = "现有钱包";
 "scene.select_wallet_connection.connect.title" = "连接";
-"scene.select_wallet_connection.connect.message" = "远程节点";
-"scene.select_wallet_connection.disabled_alert.title" = "对不起！";
-"scene.select_wallet_connection.disabled_alert.message" = "在这个 beta 版中, 在手机上禁用了 Lnd 。改为连接到远程节点。";
-"scene.select_wallet_connection.disabled_alert.ok_button" = "确认";
-"scene.select_wallet_connection.create.help" = "需要帮助吗？";
+"scene.select_wallet_connection.message" = "Bitcoin for everyone";
 
 "scene.main.send_button" = "付款";
 "scene.main.receive_button" = "收款";
@@ -213,17 +219,20 @@
 
 "scene.filter.title" = "过滤";
 "scene.filter.section_header.transaction_types" = "交易类型";
-"scene.filter.displayOnChainTransactions" = "链上付款";
+"scene.filter.displayOnChainTransactions" = "主链支付";
 "scene.filter.display_expired_invoices" = "已过期的账单";
 "scene.filter.displayLightningPayments" = "闪电网络支付";
 "scene.filter.displayLightningInvoices" = "已创建的账单";
 "scene.filter.displayChannelEvents" = "通道事件";
 
 "scene.qrcode_scanner.top_label" = "扫描 QR 码";
+"scene.qrcode_scanner.error.unknown_format" = "Unknown address format.";
+"scene.qrcode_scanner.error.wrong_network" = "You tried opening an invoice for %@ but your node is connected to %@.";
+"scene.qrcode_scanner.error.zero_amount_invoice" = "For security reasons zap does not support invoices without a specified amount.";
 
 "scene.wallet.title" = "钱包";
 "scene.wallet.total_balance" = "总计余额";
-"scene.wallet.detail.on_chain" = "链上:";
+"scene.wallet.detail.on_chain" = "主链:";
 "scene.wallet.detail.lightning" = "闪电:";
 "scene.wallet.detail.pending" = "等待:";
 
@@ -271,3 +280,12 @@
 "scene.channel_backup.title" = "备份通道";
 "scene.channel_backup.cell_title" = "%@ 通道.备份";
 "scene.channel_backup.not_found" = "文件未找到";
+"scene.channel_backup.error.iCloudDisabled" = "iCloud seems to be disabled.";
+"scene.channel_backup.error.iCloudBackupFailed" = "iCloud backup failed.";
+"scene.channel_backup.error.localBackupFailed" = "Local file backup failed.";
+"scene.channel_backup.error.lndError" = "Could not get channel backup from lnd.";
+
+"notification.sync.title" = "Please sync";
+"notification.sync.day_12.body" = "Please remember syncing your wallet to make sure you stay safe";
+"notification.sync.day_13.body" = "You have one more day to sync your wallet before it's getting dangerous.";
+"notification.sync.day_14.body" = "Please sync your wallet as soon as possible.";
