@@ -27,6 +27,7 @@
 "channel.state.force_closing" = "Tvungen lukking";
 "channel.state.waiting_close" = "Avventer lukking";
 
+"network_type.simnet" = "Simnet";
 "network_type.regtest" = "Regtest";
 "network_type.testnet" = "Testnet";
 "network_type.mainnet" = "Mainnet";
@@ -110,8 +111,20 @@
 "scene.setup_pin.top_label.non_matching" = "PIN-kodene stemmer ikke overens. Prøv igjen.";
 "scene.setup_pin.top_label.validate" = "Tast inn PIN-koden på nytt for å bekrefte den.";
 
-"scene.confirm_mnemonic.title" = "Bekreft huskeord";
-"scene.confirm_mnemonic.description" = "Oppgi huskeordene dine.";
+"scene.onboarding.page_1.title" = "Your key, your coins.";
+"scene.onboarding.page_1.message" = "With Zap, you are in control of your money. To make sure your coins are always stored safely, zap will provide a recovery phrase for you.";
+"scene.onboarding.page_1.button_title" = "Continue";
+
+"scene.onboarding.page_2.title" = "Write down your recovery phrase.";
+"scene.onboarding.page_2.message" = "Write down  the recovery phrase on a piece of paper. You can recover your funds anytime if your phone goes missing.";
+"scene.onboarding.page_2.button_title" = "Continue";
+
+"scene.onboarding.page_3.title" = "Make sure to keep it in a safe place.";
+"scene.onboarding.page_3.message" = "Make sure to keep your recovery phrase private. Store it somewhere only you will find it.";
+"scene.onboarding.page_3.button_title" = "Generate Recovery Phrase";
+
+"scene.confirm_mnemonic.title" = "Confirm Recovery Phrase";
+"scene.confirm_mnemonic.headline" = "Select word number %d";
 
 "scene.send.title" = "Sending";
 "scene.send.send_button" = "Send";
@@ -150,26 +163,19 @@
 "scene.connect_remote_node.certificate_detail.macaroon_title" = "Makron";
 "scene.connect_remote_node.edit_url.title" = "Adresse";
 
-"scene.create_wallet.title" = "Opprett en lommebok";
-"scene.create_wallet.description_label" = "Forsikre deg om at du oppbevarer huskeordene på et trygt sted.";
+"scene.create_wallet.title" = "Recovery Phrase";
+"scene.create_wallet.description_label" = "Write down the recovery phrase and store it at a safe location.";
 "scene.create_wallet.next_button" = "Neste";
 
 "scene.recover_wallet.title" = "Gjenopprett lommebok";
 "scene.recover_wallet.done_button" = "Ferdig";
-"scene.recover_wallet.description_label" = "Oppgi huskeordene:";
+"scene.recover_wallet.description_label" = "Enter your recovery phrase:";
 "scene.recover_wallet.placeholder" = "abandon ability able about above absent absorb abstract absurd abuse access accident account accuse achieve acid acoustic acquire across act action actor actress actual";
 
-"scene.select_wallet_connection.title" = "Legg til lommebok";
 "scene.select_wallet_connection.create.title" = "Opprett";
-"scene.select_wallet_connection.create.message" = "ny lommebok";
 "scene.select_wallet_connection.recover.title" = "Gjenoppretting";
-"scene.select_wallet_connection.recover.message" = "eksisterende lommebok";
 "scene.select_wallet_connection.connect.title" = "Koble til";
-"scene.select_wallet_connection.connect.message" = "ekstern node";
-"scene.select_wallet_connection.disabled_alert.title" = "Beklager!";
-"scene.select_wallet_connection.disabled_alert.message" = "Kjøring av LND på mobilen er deaktivert i denne betaen. Koble til en ekstern node i stedet.";
-"scene.select_wallet_connection.disabled_alert.ok_button" = "Ok";
-"scene.select_wallet_connection.create.help" = "Trenger du hjelp?";
+"scene.select_wallet_connection.message" = "Bitcoin for everyone";
 
 "scene.main.send_button" = "Send";
 "scene.main.receive_button" = "Motta";
@@ -220,6 +226,9 @@
 "scene.filter.displayChannelEvents" = "Kanalbegivenheter";
 
 "scene.qrcode_scanner.top_label" = "Skann QR-kode";
+"scene.qrcode_scanner.error.unknown_format" = "Unknown address format.";
+"scene.qrcode_scanner.error.wrong_network" = "You tried opening an invoice for %@ but your node is connected to %@.";
+"scene.qrcode_scanner.error.zero_amount_invoice" = "For security reasons zap does not support invoices without a specified amount.";
 
 "scene.wallet.title" = "Lommebok";
 "scene.wallet.total_balance" = "Total Saldo";
@@ -271,3 +280,12 @@
 "scene.channel_backup.title" = "Channel Backup";
 "scene.channel_backup.cell_title" = "%@ channel.backup";
 "scene.channel_backup.not_found" = "file not found";
+"scene.channel_backup.error.iCloudDisabled" = "iCloud seems to be disabled.";
+"scene.channel_backup.error.iCloudBackupFailed" = "iCloud backup failed.";
+"scene.channel_backup.error.localBackupFailed" = "Local file backup failed.";
+"scene.channel_backup.error.lndError" = "Could not get channel backup from lnd.";
+
+"notification.sync.title" = "Please sync";
+"notification.sync.day_12.body" = "Please remember syncing your wallet to make sure you stay safe";
+"notification.sync.day_13.body" = "You have one more day to sync your wallet before it's getting dangerous.";
+"notification.sync.day_14.body" = "Please sync your wallet as soon as possible.";
