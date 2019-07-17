@@ -6,6 +6,7 @@
 //
 
 import Lightning
+import SwiftBTC
 import SwiftLnd
 import UIKit
 
@@ -49,15 +50,16 @@ final class SetupCoordinator: Coordinator {
 
     #if !REMOTEONLY
     private func createLocalWallet() -> WalletConfiguration {
-        let configuration = WalletConfiguration.local(network: .testnet)
-        LocalLnd.start(walletId: configuration.walletId)
+        let network = BuildConfiguration.network
+        let configuration = WalletConfiguration.local(network: network)
+        LocalLnd.start(walletId: configuration.walletId, network: network)
         return configuration
     }
     #endif
 
     var configuration: WalletConfiguration?
 
-    private func createNewWallet() {
+    private func createNewLocalWallet() {
         #if !REMOTEONLY
         // start syncing process in background
         if configuration == nil {
@@ -135,7 +137,7 @@ final class SetupCoordinator: Coordinator {
         if walletConfigurationStore.hasLocalWallet {
             return connectRemoteNodeViewController(rpcCredentials: nil)
         } else {
-            return SelectWalletCreationMethodViewController.instantiate(createButtonTapped: createNewWallet, recoverButtonTapped: recoverExistingWallet, connectButtonTapped: connectRemoteNode)
+            return SelectWalletCreationMethodViewController.instantiate(createButtonTapped: createNewLocalWallet, recoverButtonTapped: recoverExistingWallet, connectButtonTapped: connectRemoteNode)
         }
         #endif
     }

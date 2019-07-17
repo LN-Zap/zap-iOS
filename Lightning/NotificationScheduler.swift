@@ -30,10 +30,7 @@ public final class NotificationScheduler {
 
     func requestAuthorization() {
         let center = UNUserNotificationCenter.current()
-        // Request permission to display alerts and play sounds.
-        center.requestAuthorization(options: [.alert]) { _, _ in
-            // Enable or disable features based on authorization.
-        }
+        center.requestAuthorization(options: [.alert]) { _, _ in }
     }
 
     func schedule(for channels: [Channel], bestHeaderDate: Date?) {

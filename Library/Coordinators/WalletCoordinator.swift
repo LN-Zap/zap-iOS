@@ -46,7 +46,7 @@ final class WalletCoordinator: NSObject, Coordinator {
 
     func start() {
         if lightningService.connection == .local {
-            lightningService.unlockLocalWallet(password: Password.get()) {
+            lightningService.startLocalWallet(network: BuildConfiguration.network, password: Password.get()) {
                 if case .failure(let error) = $0 {
                     DispatchQueue.main.async {
                         Toast.presentError(error.localizedDescription)

@@ -219,6 +219,7 @@
 		AD81C21B21B86A3100FA3FA9 /* SyncPercentageEstimatorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD81C21A21B86A3100FA3FA9 /* SyncPercentageEstimatorTests.swift */; };
 		AD86586322DDD93B002AE158 /* NotificationConfigurator.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD86586222DDD93B002AE158 /* NotificationConfigurator.swift */; };
 		AD931BD122DE23CC0048431C /* Password.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD86586422DE0E4D002AE158 /* Password.swift */; };
+		AD931BD422DF68F40048431C /* BuildConfiguration.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD931BD222DF66FE0048431C /* BuildConfiguration.swift */; };
 		AD967FD42100D8E80048085B /* CertificateDetailCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = AD967FD32100D8E80048085B /* CertificateDetailCell.xib */; };
 		AD967FE32105FD770048085B /* BTCPayQRCode.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD967FE22105FD770048085B /* BTCPayQRCode.swift */; };
 		AD967FE5210602C10048085B /* BTCPayConfiguration.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD967FE4210602C10048085B /* BTCPayConfiguration.swift */; };
@@ -728,6 +729,7 @@
 		AD86586222DDD93B002AE158 /* NotificationConfigurator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationConfigurator.swift; sourceTree = "<group>"; };
 		AD86586422DE0E4D002AE158 /* Password.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Password.swift; sourceTree = "<group>"; };
 		AD8B13F020C0582D0091F9DA /* RootCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RootCoordinator.swift; sourceTree = "<group>"; };
+		AD931BD222DF66FE0048431C /* BuildConfiguration.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BuildConfiguration.swift; sourceTree = "<group>"; };
 		AD93ED5520A09D59000E814E /* GraphTopologyUpdate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GraphTopologyUpdate.swift; sourceTree = "<group>"; };
 		AD967FD32100D8E80048085B /* CertificateDetailCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CertificateDetailCell.xib; sourceTree = "<group>"; };
 		AD967FE22105FD770048085B /* BTCPayQRCode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BTCPayQRCode.swift; sourceTree = "<group>"; };
@@ -1550,6 +1552,7 @@
 				AD391C1A20D16ED4007EE22A /* Library.h */,
 				AD5EA1DF213D826A00AB8031 /* README.md */,
 				AD391C1B20D16ED4007EE22A /* Info.plist */,
+				AD931BD222DF66FE0048431C /* BuildConfiguration.swift */,
 				ADA3254321AD8D7900C5EAA2 /* Colors.xcassets */,
 				AD391D2120D1798A007EE22A /* Media.xcassets */,
 				ADADA95A22859EE90036639F /* Backup */,
@@ -1594,13 +1597,13 @@
 				AD536BE920E62763002279BC /* Info.plist */,
 				AD3781CF2166522E0083CE77 /* Environment.swift */,
 				ADD9DCDC20B453D000AEFC5C /* LightningConnection.swift */,
+				AD293D4922DCA3C90069A8AB /* NotificationScheduler.swift */,
 				ADEF96BB21078C31006AE1EC /* Certificates */,
 				ADF093042147C6F000B48853 /* Events */,
 				AD28844221281F9E003C3D94 /* Invoice */,
 				AD967FE12105FD400048085B /* QrCodes */,
 				A07C1034203DE3D0006C7FE8 /* Services */,
 				AD536BF420E62764002279BC /* Tests */,
-				AD293D4922DCA3C90069A8AB /* NotificationScheduler.swift */,
 			);
 			path = Lightning;
 			sourceTree = "<group>";
@@ -3142,6 +3145,7 @@
 				AD391C5A20D16F7A007EE22A /* MnemonicPageViewController.swift in Sources */,
 				ADEB619C2214588A009D5707 /* WalletListViewController.swift in Sources */,
 				AD667E4921367A35007B9160 /* BackgroundCoordinator.swift in Sources */,
+				AD931BD422DF68F40048431C /* BuildConfiguration.swift in Sources */,
 				ADD3758C22B92E4400D589EC /* StaticChannelBackupStateStore.swift in Sources */,
 				ADA3A86B2225842200B058FB /* PBKDF2.swift in Sources */,
 				AD27B01C2100D7CF00F232A8 /* CertificateDetailCell.swift in Sources */,
