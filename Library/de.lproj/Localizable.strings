@@ -27,6 +27,7 @@
 "channel.state.force_closing" = "Erzwungenes Schließen";
 "channel.state.waiting_close" = "Warten auf Schließung";
 
+"network_type.simnet" = "Simnet";
 "network_type.regtest" = "Regtest";
 "network_type.testnet" = "Testnet";
 "network_type.mainnet" = "Mainnet";
@@ -110,8 +111,20 @@
 "scene.setup_pin.top_label.non_matching" = "Der PIN stimmt nicht überein. Bitte versuche es erneut.";
 "scene.setup_pin.top_label.validate" = "Gib den PIN erneut ein.";
 
-"scene.confirm_mnemonic.title" = "Seed bestätigen";
-"scene.confirm_mnemonic.description" = "Gib deinen Key ein.";
+"scene.onboarding.page_1.title" = "Dein Schlüssel, deine Bitcoins.";
+"scene.onboarding.page_1.message" = "With Zap, you are in control of your money. To make sure your coins are always stored safely, zap will provide a recovery phrase for you.";
+"scene.onboarding.page_1.button_title" = "Weiter";
+
+"scene.onboarding.page_2.title" = "Write down your recovery phrase.";
+"scene.onboarding.page_2.message" = "Write down  the recovery phrase on a piece of paper. You can recover your funds anytime if your phone goes missing.";
+"scene.onboarding.page_2.button_title" = "Weiter";
+
+"scene.onboarding.page_3.title" = "Stelle sicher ihn an einem sicheren Ort aufzubewahren.";
+"scene.onboarding.page_3.message" = "Make sure to keep your recovery phrase private. Store it somewhere only you will find it.";
+"scene.onboarding.page_3.button_title" = "Generate Recovery Phrase";
+
+"scene.confirm_mnemonic.title" = "Confirm Recovery Phrase";
+"scene.confirm_mnemonic.headline" = "Wähle Wort Nummer %d";
 
 "scene.send.title" = "Senden";
 "scene.send.send_button" = "Senden";
@@ -122,13 +135,13 @@
 "scene.send.on_chain.title" = "Sende on-Chain";
 "scene.send.on_chain.fee" = "Gebühr:";
 "scene.send.on_chain.fee.fast" = "Schnell";
-"scene.send.on_chain.fee.medium" = "Medium";
+"scene.send.on_chain.fee.medium" = "Mittel";
 "scene.send.on_chain.fee.slow" = "Langsam";
-"scene.send.on_chain.fee.description.fast" = "Fast Transaction";
-"scene.send.on_chain.fee.description.medium" = "Medium Transaction";
-"scene.send.on_chain.fee.description.slow" = "Slow Transaction";
+"scene.send.on_chain.fee.description.fast" = "Schnelle Transaktion";
+"scene.send.on_chain.fee.description.medium" = "Mittlere Transaktionsgeschwindigkeit";
+"scene.send.on_chain.fee.description.slow" = "Langsame Transaktion";
 
-"scene.send.on_chain.fee.estimated_delivery" = "Estimated Delivery: %@";
+"scene.send.on_chain.fee.estimated_delivery" = "Erwartete Übermittlung: %@";
 "scene.send.authentication_failed" = "Authentifizierung fehlgeschlagen";
 "scene.send.maximum_fee" = "Voraussichtliche Gebühr:";
 "scene.send.subtitle.on_chain_balance" = "On chain Saldo: %@";
@@ -150,26 +163,19 @@
 "scene.connect_remote_node.certificate_detail.macaroon_title" = "Macaroon";
 "scene.connect_remote_node.edit_url.title" = "Adresse";
 
-"scene.create_wallet.title" = "Neues Wallet erstellen";
-"scene.create_wallet.description_label" = "Bewahre deinen Mnemonic-Code an einem sicheren Ort auf.";
+"scene.create_wallet.title" = "Recovery Phrase";
+"scene.create_wallet.description_label" = "Write down the recovery phrase and store it at a safe location.";
 "scene.create_wallet.next_button" = "Weiter";
 
 "scene.recover_wallet.title" = "Wallet wiederherstellen";
 "scene.recover_wallet.done_button" = "Fertig";
-"scene.recover_wallet.description_label" = "Gib deinen Seed ein:";
+"scene.recover_wallet.description_label" = "Enter your recovery phrase:";
 "scene.recover_wallet.placeholder" = "abandon ability able about above absent absorb abstract absurd abuse access accident account accuse achieve acid acoustic acquire across act action actor actress actual";
 
-"scene.select_wallet_connection.title" = "Wallets hinzufügen";
 "scene.select_wallet_connection.create.title" = "Erstellen";
-"scene.select_wallet_connection.create.message" = "neues Wallet";
 "scene.select_wallet_connection.recover.title" = "Wiederherstellen";
-"scene.select_wallet_connection.recover.message" = "bestehendes Wallet";
 "scene.select_wallet_connection.connect.title" = "Verbinden";
-"scene.select_wallet_connection.connect.message" = "Remote-Knoten";
-"scene.select_wallet_connection.disabled_alert.title" = "Sorry!";
-"scene.select_wallet_connection.disabled_alert.message" = "LND ist in dieser mobilen Beta-Version deaktiviert. Verbinde dich stattdessen mit einem Remote-Knoten.";
-"scene.select_wallet_connection.disabled_alert.ok_button" = "Ok";
-"scene.select_wallet_connection.create.help" = "Brauchst du Hilfe?";
+"scene.select_wallet_connection.message" = "Bitcoin für alle";
 
 "scene.main.send_button" = "Senden";
 "scene.main.receive_button" = "Empfangen";
@@ -220,6 +226,9 @@
 "scene.filter.displayChannelEvents" = "Channel-Events";
 
 "scene.qrcode_scanner.top_label" = "QR-Code scannen";
+"scene.qrcode_scanner.error.unknown_format" = "Unknown address format.";
+"scene.qrcode_scanner.error.wrong_network" = "You tried opening an invoice for %@ but your node is connected to %@.";
+"scene.qrcode_scanner.error.zero_amount_invoice" = "For security reasons zap does not support invoices without a specified amount.";
 
 "scene.wallet.title" = "Wallet";
 "scene.wallet.total_balance" = "Totaler Kontostand";
@@ -271,3 +280,12 @@
 "scene.channel_backup.title" = "Kanal Backup";
 "scene.channel_backup.cell_title" = "%@ channel.backup";
 "scene.channel_backup.not_found" = "Datei nicht gefunden";
+"scene.channel_backup.error.iCloudDisabled" = "iCloud scheint deaktiviert zu sein.";
+"scene.channel_backup.error.iCloudBackupFailed" = "iCloud Backup fehlerhaft.";
+"scene.channel_backup.error.localBackupFailed" = "Lokales File Backup fehlerhaft.";
+"scene.channel_backup.error.lndError" = "Kanal Backup konnte von lnd nicht empfangen werden.";
+
+"notification.sync.title" = "Please sync";
+"notification.sync.day_12.body" = "Please remember syncing your wallet to make sure you stay safe";
+"notification.sync.day_13.body" = "You have one more day to sync your wallet before it's getting dangerous.";
+"notification.sync.day_14.body" = "Please sync your wallet as soon as possible.";
