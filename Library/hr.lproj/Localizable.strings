@@ -226,6 +226,9 @@
 "scene.filter.displayChannelEvents" = "Događaji za kanal";
 
 "scene.qrcode_scanner.top_label" = "Skeniranje QR-koda";
+"scene.qrcode_scanner.error.unknown_format" = "Unknown address format.";
+"scene.qrcode_scanner.error.wrong_network" = "You tried opening an invoice for %@ but your node is connected to %@.";
+"scene.qrcode_scanner.error.zero_amount_invoice" = "For security reasons zap does not support invoices without a specified amount.";
 
 "scene.wallet.title" = "Novčanik";
 "scene.wallet.total_balance" = "Total Balance";
