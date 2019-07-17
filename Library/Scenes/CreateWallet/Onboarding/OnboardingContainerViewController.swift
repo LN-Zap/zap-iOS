@@ -11,7 +11,12 @@ final class OnboardingContainerViewController: UIViewController {
     @IBOutlet private weak var pageControl: UIPageControl!
     @IBOutlet private weak var actionButton: UIButton!
 
-    private var pages = [UIViewController]()
+    private lazy var pages: [UIViewController] = { [
+        OnboardingTextViewController.instantiate(title: L10n.Scene.Onboarding.Page1.title, message: L10n.Scene.Onboarding.Page1.message, image: Emoji.image(emoji: "🤴"), buttonTitle: L10n.Scene.Onboarding.Page1.buttonTitle),
+        OnboardingTextViewController.instantiate(title: L10n.Scene.Onboarding.Page2.title, message: L10n.Scene.Onboarding.Page2.message, image: Emoji.image(emoji: "✍️"), buttonTitle: L10n.Scene.Onboarding.Page2.buttonTitle),
+        OnboardingTextViewController.instantiate(title: L10n.Scene.Onboarding.Page3.title, message: L10n.Scene.Onboarding.Page3.message, image: Emoji.image(emoji: "🗝"), buttonTitle: L10n.Scene.Onboarding.Page3.buttonTitle)
+    ] }()
+
     private var completion: (() -> Void)?
 
     private weak var pageViewController: OnboardingPageViewController?
@@ -26,12 +31,6 @@ final class OnboardingContainerViewController: UIViewController {
         super.viewDidLoad()
 
         view.backgroundColor = UIColor.Zap.background
-
-        pages = [
-            OnboardingTextViewController.instantiate(title: L10n.Scene.Onboarding.Page1.title, message: L10n.Scene.Onboarding.Page1.message, image: Emoji.image(emoji: "🤴"), buttonTitle: L10n.Scene.Onboarding.Page1.buttonTitle),
-            OnboardingTextViewController.instantiate(title: L10n.Scene.Onboarding.Page2.title, message: L10n.Scene.Onboarding.Page2.message, image: Emoji.image(emoji: "✍️"), buttonTitle: L10n.Scene.Onboarding.Page2.buttonTitle),
-            OnboardingTextViewController.instantiate(title: L10n.Scene.Onboarding.Page3.title, message: L10n.Scene.Onboarding.Page3.message, image: Emoji.image(emoji: "🗝"), buttonTitle: L10n.Scene.Onboarding.Page3.buttonTitle)
-        ]
 
         navigationItem.leftBarButtonItem = UIBarButtonItem(barButtonSystemItem: .cancel, target: self, action: #selector(cancel(_:)))
         navigationController?.navigationBar.backgroundColor = .clear
