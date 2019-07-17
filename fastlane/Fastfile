@@ -10,6 +10,48 @@ default_platform(:ios)
 
 app_identifier = ["com.jackmallers.zap", "com.jackmallers.zap.Sticker", "com.jackmallers.zap.Widget"]
 
+lane :mainnet do
+  pre_upload
+
+  ids = {
+    "Zap/Info.plist" => "com.jackmallers.zap.mainnet",
+    "Sticker/Info.plist" => "com.jackmallers.zap.mainnet.Sticker",
+    "Widget/Info.plist" => "com.jackmallers.zap.mainnet.Widget",
+  }
+  ids.each do |key, value|
+    update_app_identifier(
+      plist_path: key,
+      app_identifier: value
+    )
+  end
+
+  increment_build_number(build_number:
+    latest_testflight_build_number(
+      app_identifier: "com.jackmallers.zap.mainnet",
+      initial_build_number: 0
+    ) + 1
+  )
+
+  sync_code_signing(
+    username: ENV['ITUNESCONNECT_USER'],
+    app_identifier: ids.values,
+    type: "appstore"
+  )
+
+  build_ios_app(
+    workspace: "Zap.xcworkspace",
+    scheme: "Zap",
+    configuration: "Debug",
+    output_directory: "./builds/alpha",
+    export_method: "app-store"
+  )
+
+  upload_to_testflight(
+    username: ENV['ITUNESCONNECT_USER'],
+    skip_waiting_for_build_processing: true
+  )
+end
+
 private_lane :pre_upload do
   ensure_bundle_exec
   sh("python3 check_localizable.py")

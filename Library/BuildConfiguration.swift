@@ -9,5 +9,11 @@ import Foundation
 import SwiftBTC
 
 enum BuildConfiguration {
-    static var network = Network.testnet
+    static var network: Network {
+        if Bundle.main.bundleIdentifier == "com.jackmallers.zap.mainnet" {
+            return .mainnet
+        } else {
+            return .testnet
+        }
+    }
 }

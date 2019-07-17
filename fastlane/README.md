@@ -15,16 +15,11 @@ Install _fastlane_ using
 or alternatively using `brew cask install fastlane`
 
 # Available Actions
-### build_number
+### mainnet
 ```
-fastlane build_number
+fastlane mainnet
 ```
-Update build number.
-### change_version
-```
-fastlane change_version
-```
-Update app version.
+
 ### alpha
 ```
 fastlane alpha
