@@ -218,6 +218,7 @@
 		AD81C21921B865E100FA3FA9 /* SyncPercentageEstimator.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD81C21821B865E100FA3FA9 /* SyncPercentageEstimator.swift */; };
 		AD81C21B21B86A3100FA3FA9 /* SyncPercentageEstimatorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD81C21A21B86A3100FA3FA9 /* SyncPercentageEstimatorTests.swift */; };
 		AD86586322DDD93B002AE158 /* NotificationConfigurator.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD86586222DDD93B002AE158 /* NotificationConfigurator.swift */; };
+		AD931BD122DE23CC0048431C /* Password.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD86586422DE0E4D002AE158 /* Password.swift */; };
 		AD967FD42100D8E80048085B /* CertificateDetailCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = AD967FD32100D8E80048085B /* CertificateDetailCell.xib */; };
 		AD967FE32105FD770048085B /* BTCPayQRCode.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD967FE22105FD770048085B /* BTCPayQRCode.swift */; };
 		AD967FE5210602C10048085B /* BTCPayConfiguration.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD967FE4210602C10048085B /* BTCPayConfiguration.swift */; };
@@ -725,6 +726,7 @@
 		AD81C21821B865E100FA3FA9 /* SyncPercentageEstimator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SyncPercentageEstimator.swift; sourceTree = "<group>"; };
 		AD81C21A21B86A3100FA3FA9 /* SyncPercentageEstimatorTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SyncPercentageEstimatorTests.swift; sourceTree = "<group>"; };
 		AD86586222DDD93B002AE158 /* NotificationConfigurator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationConfigurator.swift; sourceTree = "<group>"; };
+		AD86586422DE0E4D002AE158 /* Password.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Password.swift; sourceTree = "<group>"; };
 		AD8B13F020C0582D0091F9DA /* RootCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RootCoordinator.swift; sourceTree = "<group>"; };
 		AD93ED5520A09D59000E814E /* GraphTopologyUpdate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GraphTopologyUpdate.swift; sourceTree = "<group>"; };
 		AD967FD32100D8E80048085B /* CertificateDetailCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CertificateDetailCell.xib; sourceTree = "<group>"; };
@@ -1162,12 +1164,13 @@
 				A0DDC077201B42EA00AEFF94 /* BockExplorer.swift */,
 				ADE4CF1E20B5B6FC007C987A /* Environment.swift */,
 				A0C2EAC3206F9539003AE56E /* ExchangeUpdaterJob.swift */,
+				AD86586222DDD93B002AE158 /* NotificationConfigurator.swift */,
+				AD86586422DE0E4D002AE158 /* Password.swift */,
 				ADA6D2BE20AB215D009398A5 /* Persistence */,
 				ADEDBC0920C31C5F00B71F17 /* Route.swift */,
 				A0919155203C2CB600FA525A /* Style.swift */,
 				AD055DAD21B5416D00BE511D /* ToastNotificationObserver.swift */,
 				AD667E5821384966007B9160 /* WindowLevel.swift */,
-				AD86586222DDD93B002AE158 /* NotificationConfigurator.swift */,
 			);
 			path = Helper;
 			sourceTree = "<group>";
@@ -3061,6 +3064,7 @@
 				ADAA2D2C2289A75600819EAC /* RootFolderMigration.swift in Sources */,
 				AD391C2E20D16EFA007EE22A /* UIApplication.swift in Sources */,
 				AD035BFF2174A996005EA785 /* ChannelDetailViewController.swift in Sources */,
+				AD931BD122DE23CC0048431C /* Password.swift in Sources */,
 				ADA2DD03225CDAED007482D9 /* ChannelQRCodeScannerViewController.swift in Sources */,
 				AD3DDC03213EE4000008379C /* RootTabBarController.swift in Sources */,
 				ADEEB5362134669B00D2F992 /* ModalPinViewController.swift in Sources */,

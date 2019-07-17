@@ -9,8 +9,6 @@ import Foundation
 import SwiftLnd
 
 public final class WalletService {
-    public static let password = "12345678" // TODO: save random pw in secure enclave
-
     public private(set) static var isLocalWalletUnlocked = false
     private let wallet: WalletApi
     public let connection: LightningConnection
@@ -45,8 +43,8 @@ public final class WalletService {
         }
     }
 
-    public func initWallet(mnemonic: [String], completion: @escaping ApiCompletion<Success>) {
-        wallet.initWallet(mnemonic: mnemonic, password: WalletService.password) {
+    public func initWallet(password: String, mnemonic: [String], completion: @escaping ApiCompletion<Success>) {
+        wallet.initWallet(mnemonic: mnemonic, password: password) {
             if case .success = $0 {
                 WalletService.didCreateWallet = true
                 WalletService.isLocalWalletUnlocked = true

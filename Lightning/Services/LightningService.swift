@@ -104,14 +104,14 @@ public final class LightningService: NSObject {
             .dispose(in: reactive.bag)
     }
 
-    public func start(completion: @escaping ApiCompletion<Success>) {
+    public func unlockLocalWallet(password: String, completion: @escaping ApiCompletion<Success>) {
         #if !REMOTEONLY
         if connection == .local {
             if !LocalLnd.isRunning {
                 LocalLnd.start(walletId: walletId)
             }
             if !WalletService.isLocalWalletUnlocked {
-                WalletService(connection: connection).unlockWallet(password: WalletService.password) {
+                WalletService(connection: connection).unlockWallet(password: password) {
                     if case .failure(let error) = $0, error != .walletAlreadyUnlocked {
                         Logger.error(error)
                         self.stop()
@@ -123,6 +123,9 @@ public final class LightningService: NSObject {
         }
         #endif
 
+    }
+
+    public func start() {
         infoService.start()
         listUpdater.forEach { $0.update() }
     }

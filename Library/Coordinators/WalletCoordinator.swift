@@ -45,11 +45,17 @@ final class WalletCoordinator: NSObject, Coordinator {
     }
 
     func start() {
-        lightningService.start {
-            if case .failure(let error) = $0 {
-                Toast.presentError(error.localizedDescription)
+        if lightningService.connection == .local {
+            lightningService.unlockLocalWallet(password: Password.get()) {
+                if case .failure(let error) = $0 {
+                    DispatchQueue.main.async {
+                        Toast.presentError(error.localizedDescription)
+                    }
+                }
             }
         }
+
+        lightningService.start()
         ExchangeUpdaterJob.start()
         updateFor(state: lightningService.infoService.walletState.value)
     }
