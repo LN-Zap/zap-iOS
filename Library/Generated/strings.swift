@@ -431,6 +431,16 @@ internal enum L10n {
     internal enum QrcodeScanner {
       /// Scan QR-Code
       internal static let topLabel = L10n.tr("Localizable", "scene.qrcode_scanner.top_label")
+      internal enum Error {
+        /// Unknown address format.
+        internal static let unknownFormat = L10n.tr("Localizable", "scene.qrcode_scanner.error.unknown_format")
+        /// You tried opening an invoice for %@ but your node is connected to %@.
+        internal static func wrongNetwork(_ p1: String, _ p2: String) -> String {
+          return L10n.tr("Localizable", "scene.qrcode_scanner.error.wrong_network", p1, p2)
+        }
+        /// For security reasons zap does not support invoices without a specified amount.
+        internal static let zeroAmountInvoice = L10n.tr("Localizable", "scene.qrcode_scanner.error.zero_amount_invoice")
+      }
     }
     internal enum RecoverWallet {
       /// Enter your recovery phrase:

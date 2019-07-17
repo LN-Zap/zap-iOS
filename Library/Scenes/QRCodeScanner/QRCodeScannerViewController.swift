@@ -88,7 +88,7 @@ class QRCodeScannerViewController: UIViewController {
                     self?.scannerView.stop()
                     UISelectionFeedbackGenerator().selectionChanged()
                 case .failure(let error):
-                    self?.presentError(message: error.localizedDescription)
+                    self?.presentError(message: error.message)
                     UINotificationFeedbackGenerator().notificationOccurred(.error)
                 }
             }

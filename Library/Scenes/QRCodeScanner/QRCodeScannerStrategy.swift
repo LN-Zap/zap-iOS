@@ -10,8 +10,8 @@ import Lightning
 import SwiftBTC
 import SwiftLnd
 
-enum QRCodeScannerStrategyError: Error {
-    case unknownFormat
+struct QRCodeScannerStrategyError: Error {
+    let message: String
 }
 
 protocol QRCodeScannerStrategy {

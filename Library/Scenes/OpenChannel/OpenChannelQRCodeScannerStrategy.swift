@@ -25,7 +25,7 @@ struct OpenChannelQRCodeScannerStrategy: QRCodeScannerStrategy {
             let openChannelViewModel = OpenChannelViewModel(lightningService: lightningService, lightningNodeURI: nodeURI)
             completion(.success(OpenChannelViewController(viewModel: openChannelViewModel)))
         } else {
-            completion(.failure(QRCodeScannerStrategyError.unknownFormat))
+            completion(.failure(.init(message: L10n.Scene.QrcodeScanner.Error.unknownFormat)))
         }
     }
 }

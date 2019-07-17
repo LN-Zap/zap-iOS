@@ -33,8 +33,15 @@ class SendQRCodeScannerStrategy: QRCodeScannerStrategy {
                     lightningService: self.lightningService
                 )
                 completion(.success(SendViewController(viewModel: viewModel, authenticationViewModel: self.authenticationViewModel)))
-            case .failure:
-                completion(.failure(QRCodeScannerStrategyError.unknownFormat))
+            case .failure(let error):
+                switch error {
+                case .unknownFormat:
+                    completion(.failure(.init(message: L10n.Scene.QrcodeScanner.Error.unknownFormat)))
+                case let .wrongNetworkError(linkNetwork, expectedNetwork):
+                    completion(.failure(.init(message: L10n.Scene.QrcodeScanner.Error.wrongNetwork(linkNetwork.localized, expectedNetwork.localized))))
+                case .apiError:
+                    completion(.failure(.init(message: L10n.Scene.QrcodeScanner.Error.zeroAmountInvoice)))
+                }
             }
         }
     }
