@@ -14,6 +14,16 @@ protocol RootCoordinatorDelegate: class {
     func embedInRootContainer(viewController: UIViewController)
 }
 
+protocol DisconnectWalletDelegate: class {
+    func disconnect()
+}
+
+protocol ReconnectWalletDelegate: class {
+    func reconnect(walletConfiguration: WalletConfiguration?)
+}
+
+typealias WalletDelegate = (DisconnectWalletDelegate & ReconnectWalletDelegate)
+
 public final class RootCoordinator: Coordinator, SetupCoordinatorDelegate {
     let rootViewController: RootViewController
     private let authenticationCoordinator: AuthenticationCoordinator
@@ -150,17 +160,19 @@ extension RootCoordinator: RootCoordinatorDelegate {
     }
 }
 
-extension RootCoordinator: DisconnectWalletDelegate {
+extension RootCoordinator: ReconnectWalletDelegate {
     func reconnect(walletConfiguration: WalletConfiguration?) {
-        if let walletCoordinator = currentCoordinator as? WalletCoordinator {
-            walletCoordinator.stop()
-            currentCoordinator = nil
-            walletConfigurationStore.selectedWallet = walletConfiguration
+        guard let walletCoordinator = currentCoordinator as? WalletCoordinator else { return }
 
-            update()
-        }
+        walletCoordinator.stop()
+        currentCoordinator = nil
+        walletConfigurationStore.selectedWallet = walletConfiguration
+
+        update()
     }
+}
 
+extension RootCoordinator: DisconnectWalletDelegate {
     func disconnect() {
         reconnect(walletConfiguration: nil)
     }

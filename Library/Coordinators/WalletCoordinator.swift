@@ -26,11 +26,11 @@ final class WalletCoordinator: NSObject, Coordinator {
     private let walletConfigurationStore: WalletConfigurationStore
 
     private weak var detailViewController: UINavigationController?
-    private weak var disconnectWalletDelegate: DisconnectWalletDelegate?
+    private weak var disconnectWalletDelegate: WalletDelegate?
 
     var route: Route?
 
-    init(rootViewController: RootViewController, lightningService: LightningService, disconnectWalletDelegate: DisconnectWalletDelegate, authenticationViewModel: AuthenticationViewModel, walletConfigurationStore: WalletConfigurationStore) {
+    init(rootViewController: RootViewController, lightningService: LightningService, disconnectWalletDelegate: WalletDelegate, authenticationViewModel: AuthenticationViewModel, walletConfigurationStore: WalletConfigurationStore) {
         self.rootViewController = rootViewController
         self.lightningService = lightningService
         self.disconnectWalletDelegate = disconnectWalletDelegate
@@ -94,10 +94,11 @@ final class WalletCoordinator: NSObject, Coordinator {
 
     private func presentUnlockWallet() {
         guard
-            let configuration = walletConfigurationStore.selectedWallet,
+            case .remote(let rpcConfiguration) = lightningService.connection, // we can only unlock remote nodes
             let disconnectWalletDelegate = disconnectWalletDelegate
             else { return }
-        let unlockWalletViewModel = UnlockWalletViewModel(lightningService: lightningService, configuration: configuration)
+
+        let unlockWalletViewModel = UnlockWalletViewModel(lightningService: lightningService, alias: rpcConfiguration.host.absoluteString)
         let viewController = UnlockWalletViewController.instantiate(unlockWalletViewModel: unlockWalletViewModel, disconnectWalletDelegate: disconnectWalletDelegate)
         let navigationController = ZapNavigationController(rootViewController: viewController)
         presentViewController(navigationController)
@@ -288,8 +289,7 @@ final class WalletCoordinator: NSObject, Coordinator {
     }
 
     private func pushLndLogViewController(on navigationController: UINavigationController) {
-        guard let configuration = walletConfigurationStore.selectedWallet else { return }
-        let viewController = LndLogViewController.instantiate(walletConfiguration: configuration)
+        let viewController = LndLogViewController.instantiate()
         navigationController.pushViewController(viewController, animated: true)
     }
 }

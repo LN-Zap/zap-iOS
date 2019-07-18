@@ -11,14 +11,14 @@ final class WalletListViewController: UIViewController {
     // swiftlint:disable implicitly_unwrapped_optional
     private var walletConfigurationStore: WalletConfigurationStore!
     // swiftlint:enable implicitly_unwrapped_optional
-    private weak var disconnectWalletDelegate: DisconnectWalletDelegate?
+    private weak var walletDelegate: WalletDelegate?
 
     @IBOutlet private weak var tableView: UITableView!
 
-    static func instantiate(walletConfigurationStore: WalletConfigurationStore, disconnectWalletDelegate: DisconnectWalletDelegate) -> WalletListViewController {
+    static func instantiate(walletConfigurationStore: WalletConfigurationStore, disconnectWalletDelegate: WalletDelegate) -> WalletListViewController {
         let viewController = StoryboardScene.WalletList.walletListViewController.instantiate()
         viewController.walletConfigurationStore = walletConfigurationStore
-        viewController.disconnectWalletDelegate = disconnectWalletDelegate
+        viewController.walletDelegate = disconnectWalletDelegate
         return viewController
     }
 
@@ -72,10 +72,10 @@ extension WalletListViewController: UITableViewDelegate {
             let configuration = walletConfigurationStore.configurations[indexPath.row]
             guard !walletConfigurationStore.isSelected(walletConfiguration: configuration) else { return }
 
-            disconnectWalletDelegate?.reconnect(walletConfiguration: configuration)
+            walletDelegate?.reconnect(walletConfiguration: configuration)
             dismiss(animated: true, completion: nil)
         } else {
-            disconnectWalletDelegate?.disconnect()
+            walletDelegate?.disconnect()
             dismiss(animated: true, completion: nil)
         }
     }
@@ -87,7 +87,7 @@ extension WalletListViewController: UITableViewDelegate {
         tableView.deleteRows(at: [indexPath], with: .automatic)
 
         if walletConfigurationStore.selectedWallet == nil {
-            disconnectWalletDelegate?.disconnect()
+            walletDelegate?.disconnect()
             dismiss(animated: true, completion: nil)
         }
     }

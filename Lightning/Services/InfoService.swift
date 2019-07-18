@@ -125,7 +125,14 @@ public final class InfoService {
             }
         }
 
-        let newInfo = try? result.get()
+        let newInfo: Info?
+        switch result {
+        case .success(let info):
+            newInfo = info
+        case .failure:
+            newInfo = nil
+        }
+
         let newIsSyncedToChain = newInfo?.isSyncedToChain
         if info.value?.isSyncedToChain != newIsSyncedToChain && newIsSyncedToChain == true {
             balanceService.update()

@@ -8,7 +8,7 @@
 import UIKit
 
 protocol ManageWalletTableViewCellDelegate: class {
-    func presentBackupViewController(for walletConfiguration: WalletConfiguration)
+    func presentBackupViewController(nodePubKey: String)
 }
 
 class ManageWalletTableViewCell: UITableViewCell {
@@ -47,6 +47,6 @@ class ManageWalletTableViewCell: UITableViewCell {
 
     @IBAction private func backupButtonTapped(_ sender: Any) {
         guard let walletConfiguration = walletConfiguration else { return }
-        delegate?.presentBackupViewController(for: walletConfiguration)
+        delegate?.presentBackupViewController(nodePubKey: walletConfiguration.nodePubKey)
     }
 }

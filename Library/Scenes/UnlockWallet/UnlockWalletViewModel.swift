@@ -13,18 +13,16 @@ import Logger
 final class UnlockWalletViewModel {
     private let lightningService: LightningService
     private let walletService: WalletService
-    private let configuration: WalletConfiguration
 
     private var timer: Timer?
 
     let isUnlocking = Observable(false)
     let nodeAlias: String
 
-    init(lightningService: LightningService, configuration: WalletConfiguration) {
+    init(lightningService: LightningService, alias: String) {
         self.lightningService = lightningService
-        self.walletService = WalletService(connection: configuration.connection)
-        self.configuration = configuration
-        self.nodeAlias = configuration.alias
+        self.walletService = WalletService(connection: lightningService.connection)
+        self.nodeAlias = alias
     }
 
     func unlock(password: String) {

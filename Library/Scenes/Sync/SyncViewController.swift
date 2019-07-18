@@ -10,11 +10,6 @@ import ReactiveKit
 import SwiftLnd
 import UIKit
 
-protocol DisconnectWalletDelegate: class {
-    func disconnect()
-    func reconnect(walletConfiguration: WalletConfiguration?)
-}
-
 final class SyncViewController: UIViewController {
     @IBOutlet private weak var gradientView: GradientView!
     @IBOutlet private weak var gradientViewHeightConstraint: NSLayoutConstraint!

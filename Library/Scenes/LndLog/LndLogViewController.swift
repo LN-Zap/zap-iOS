@@ -12,14 +12,10 @@ final class LndLogViewController: UIViewController {
     @IBOutlet private weak var textView: UITextView!
     private var timer: Timer?
 
-    // swiftlint:disable:next implicitly_unwrapped_optional
-    private var walletConfiguration: WalletConfiguration!
     private var fileObserver: FileObserver?
 
-    static func instantiate(walletConfiguration: WalletConfiguration) -> LndLogViewController {
-        let viewController = StoryboardScene.LndLog.lndLogViewController.instantiate()
-        viewController.walletConfiguration = walletConfiguration
-        return viewController
+    static func instantiate() -> LndLogViewController {
+        return StoryboardScene.LndLog.lndLogViewController.instantiate()
     }
 
     override func viewDidLoad() {
