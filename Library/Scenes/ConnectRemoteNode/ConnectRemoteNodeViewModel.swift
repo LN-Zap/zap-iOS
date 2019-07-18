@@ -22,7 +22,7 @@ final class ConnectRemoteNodeViewModel: NSObject {
         case help
     }
 
-    var remoteNodeConfiguration: RPCCredentials? {
+    var rpcCredentials: RPCCredentials? {
         didSet {
             updateTableView()
         }
@@ -41,14 +41,14 @@ final class ConnectRemoteNodeViewModel: NSObject {
 
         super.init()
 
-        self.remoteNodeConfiguration = rpcCredentials
+        self.rpcCredentials = rpcCredentials
         updateTableView()
     }
 
     private func updateTableView() {
         var sections = Array2D<String?, ConnectRemoteNodeViewModel.CellType>()
 
-        if let configuration = remoteNodeConfiguration {
+        if let configuration = rpcCredentials {
             sections.appendSection(certificateSection(for: configuration))
         } else {
             sections.appendSection(Array2D.Section(metadata: L10n.Scene.ConnectRemoteNode.yourNodeTitle, items: [.emptyState]))
@@ -82,7 +82,7 @@ final class ConnectRemoteNodeViewModel: NSObject {
             DispatchQueue.main.async {
                 switch result {
                 case .success(let configuration):
-                    self?.remoteNodeConfiguration = configuration
+                    self?.rpcCredentials = configuration
                     completion(.success(Success()))
                 case .failure(let error):
                     completion(.failure(error))
@@ -91,25 +91,23 @@ final class ConnectRemoteNodeViewModel: NSObject {
         }
     }
 
-    func connect(completion: @escaping (ApiCompletion<WalletConfiguration>)) {
-        guard let remoteNodeConfiguration = remoteNodeConfiguration else { return }
+    func connect(completion: @escaping (ApiCompletion<LightningConnection>)) {
+        guard let rpcCredentials = rpcCredentials else { return }
 
-        testServer = LightningApi(connection: .remote(remoteNodeConfiguration))
+        testServer = LightningApi(connection: .remote(rpcCredentials))
         testServer?.info { result in
-            completion(result.map {
-                WalletConfiguration(alias: $0.alias, network: $0.network, connection: .remote(remoteNodeConfiguration), nodePubKey: $0.pubKey)
-            })
+            completion(result.map { _ in .remote(rpcCredentials) })
         }
     }
 
     func updateUrl(_ url: URL) {
-        guard let remoteNodeConfiguration = remoteNodeConfiguration else { return }
+        guard let rpcCredentials = rpcCredentials else { return }
 
         let newConfiguration = RPCCredentials(
-            certificate: remoteNodeConfiguration.certificate,
-            macaroon: remoteNodeConfiguration.macaroon,
+            certificate: rpcCredentials.certificate,
+            macaroon: rpcCredentials.macaroon,
             host: url)
 
-        self.remoteNodeConfiguration = newConfiguration
+        self.rpcCredentials = newConfiguration
     }
 }

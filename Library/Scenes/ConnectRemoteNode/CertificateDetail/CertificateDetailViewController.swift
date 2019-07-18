@@ -17,7 +17,7 @@ final class CertificateDetailViewController: UITableViewController {
     }
 
     var hasCertificate: Bool {
-        return connectRemoteNodeViewModel?.remoteNodeConfiguration?.certificate != nil
+        return connectRemoteNodeViewModel?.rpcCredentials?.certificate != nil
     }
 
     override func viewDidLoad() {
@@ -51,9 +51,9 @@ final class CertificateDetailViewController: UITableViewController {
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell: CertificateDetailCell = tableView.dequeueCellForIndexPath(indexPath)
         if hasCertificate && indexPath.section == 0 {
-            cell.descriptionText = connectRemoteNodeViewModel?.remoteNodeConfiguration?.certificate
+            cell.descriptionText = connectRemoteNodeViewModel?.rpcCredentials?.certificate
         } else {
-            cell.descriptionText = connectRemoteNodeViewModel?.remoteNodeConfiguration?.macaroon.hexadecimalString
+            cell.descriptionText = connectRemoteNodeViewModel?.rpcCredentials?.macaroon.hexadecimalString
         }
         cell.contentView.backgroundColor = UIColor.Zap.seaBlue
         return cell

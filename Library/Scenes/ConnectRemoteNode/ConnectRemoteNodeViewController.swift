@@ -155,8 +155,8 @@ final class ConnectRemoteNodeViewController: UIViewController {
         connectRemoteNodeViewModel?.connect { [weak self] result in
             DispatchQueue.main.async {
                 switch result {
-                case .success(let configuration):
-                    self?.didSetupWallet?(configuration.connection)
+                case .success(let connection):
+                    self?.didSetupWallet?(connection)
                 case .failure(let error):
                     self?.displayError(error)
                 }
