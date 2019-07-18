@@ -42,7 +42,8 @@ extension Migration {
 
 public enum Migrations {
     static let migrations: [Migration] = [
-        RootFolderMigration()
+        RootFolderMigration(),
+        LndFolderMigration()
     ]
 
     public static func run() {

@@ -40,6 +40,7 @@
 		AD248628225B7E130049532C /* WalletBalance.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD248627225B7E130049532C /* WalletBalance.swift */; };
 		AD24862A225B7F210049532C /* ChannelBalance.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD248629225B7F210049532C /* ChannelBalance.swift */; };
 		AD27021F22E06E5000D4BF27 /* Keychain.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD27021E22E06E5000D4BF27 /* Keychain.swift */; };
+		AD27022122E0C06000D4BF27 /* LndFolderMigration.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD27022022E0C06000D4BF27 /* LndFolderMigration.swift */; };
 		AD27B0182100C59500F232A8 /* UpdateAddressViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD27B0172100C59500F232A8 /* UpdateAddressViewController.swift */; };
 		AD27B01A2100D5CC00F232A8 /* CertificateDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD27B0192100D5CC00F232A8 /* CertificateDetailViewController.swift */; };
 		AD27B01C2100D7CF00F232A8 /* CertificateDetailCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD27B01B2100D7CF00F232A8 /* CertificateDetailCell.swift */; };
@@ -634,6 +635,7 @@
 		AD248627225B7E130049532C /* WalletBalance.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WalletBalance.swift; sourceTree = "<group>"; };
 		AD248629225B7F210049532C /* ChannelBalance.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChannelBalance.swift; sourceTree = "<group>"; };
 		AD27021E22E06E5000D4BF27 /* Keychain.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Keychain.swift; sourceTree = "<group>"; };
+		AD27022022E0C06000D4BF27 /* LndFolderMigration.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LndFolderMigration.swift; sourceTree = "<group>"; };
 		AD27B01520FC8BBF00F232A8 /* Pem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Pem.swift; sourceTree = "<group>"; };
 		AD27B0172100C59500F232A8 /* UpdateAddressViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpdateAddressViewController.swift; sourceTree = "<group>"; };
 		AD27B0192100D5CC00F232A8 /* CertificateDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CertificateDetailViewController.swift; sourceTree = "<group>"; };
@@ -2120,6 +2122,7 @@
 			children = (
 				ADF232D32289A08100CB5053 /* Migrations.swift */,
 				ADAA2D2B2289A75600819EAC /* RootFolderMigration.swift */,
+				AD27022022E0C06000D4BF27 /* LndFolderMigration.swift */,
 			);
 			path = Migration;
 			sourceTree = "<group>";
@@ -3128,6 +3131,7 @@
 				ADCEAFD32255F2C2004F605B /* WarningSettingsItem.swift in Sources */,
 				AD391C3020D16EFA007EE22A /* UICollectionView.swift in Sources */,
 				AD293D4822DC84E70069A8AB /* MnemonicWordView.swift in Sources */,
+				AD27022122E0C06000D4BF27 /* LndFolderMigration.swift in Sources */,
 				ADADA95622830DD40036639F /* ICloudDriveBackupService.swift in Sources */,
 				ADADA966228964E50036639F /* ChannelBackupViewController.swift in Sources */,
 				AD391C6520D16F89007EE22A /* LndLogViewController.swift in Sources */,
