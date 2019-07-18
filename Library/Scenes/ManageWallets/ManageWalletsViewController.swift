@@ -79,7 +79,8 @@ extension ManageWalletsViewController: UITableViewDataSource {
 
 extension ManageWalletsViewController: ManageWalletTableViewCellDelegate {
     func presentBackupViewController(for walletConfiguration: WalletConfiguration) {
-        let viewController = ChannelBackupViewController.instantiate(walletConfiguration: walletConfiguration)
+        guard let nodePubKey = walletConfiguration.nodePubKey else { return }
+        let viewController = ChannelBackupViewController.instantiate(nodePubKey: nodePubKey)
         navigationController?.pushViewController(viewController, animated: true)
     }
 }

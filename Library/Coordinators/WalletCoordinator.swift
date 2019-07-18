@@ -270,8 +270,8 @@ final class WalletCoordinator: NSObject, Coordinator {
     }
 
     private func pushChannelBackup(on navigationController: UINavigationController) {
-        guard let configuration = walletConfigurationStore.selectedWallet else { return }
-        let viewController = ChannelBackupViewController.instantiate(walletConfiguration: configuration)
+        guard let nodePubKey = walletConfigurationStore.selectedWallet?.nodePubKey else { return }
+        let viewController = ChannelBackupViewController.instantiate(nodePubKey: nodePubKey)
         navigationController.pushViewController(viewController, animated: true)
     }
 

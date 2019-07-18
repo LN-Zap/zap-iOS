@@ -22,20 +22,17 @@ final class ChannelBackupViewController: UIViewController {
         ("Local Backup", LocalDocumentBackupService.self)
     ]
 
-    private var walletConfiguration: WalletConfiguration! // swiftlint:disable:this implicitly_unwrapped_optional
+    private var nodePubKey: String! // swiftlint:disable:this implicitly_unwrapped_optional
 
     private var backupServiceKeys: [String] = {
         cellContent.map { $0.1.key }
     }()
 
     private var latestDate: Date? {
-        guard let nodePubKey = walletConfiguration.nodePubKey else { return nil }
-
         return StaticChannelBackupStateStore.lastBackup(nodePubKey: nodePubKey, backupServiceKeys: backupServiceKeys)
     }
 
     private var channelBackupURL: URL? {
-        guard let nodePubKey = walletConfiguration.nodePubKey else { return nil }
         return FileManager.default.channelBackupDirectory(for: nodePubKey)?.appendingPathComponent("channel.backup")
     }
 
@@ -44,9 +41,9 @@ final class ChannelBackupViewController: UIViewController {
         return try? Data(contentsOf: url)
     }
 
-    static func instantiate(walletConfiguration: WalletConfiguration) -> ChannelBackupViewController {
+    static func instantiate(nodePubKey: String) -> ChannelBackupViewController {
         let viewController = StoryboardScene.ChannelBackup.channelBackupViewController.instantiate()
-        viewController.walletConfiguration = walletConfiguration
+        viewController.nodePubKey = nodePubKey
         return viewController
     }
 
@@ -87,17 +84,13 @@ final class ChannelBackupViewController: UIViewController {
 
         errorMessageLabel.textColor = UIColor.Zap.superRed
 
-        if let nodePubKey = walletConfiguration.nodePubKey {
-            let errors = StaticChannelBackupStateStore.errorMessages(nodePubKey: nodePubKey, backupServiceKeys: backupServiceKeys)
-            if !errors.isEmpty {
-                let errorMessage = errors.reduce("") {
-                    $0 + "\($1.localizedDescription)\n"
-                }.trimmingCharacters(in: .whitespacesAndNewlines)
-                errorMessageLabel.text = errorMessage
-                errorBackgroundView.isHidden = false
-            } else {
-                errorBackgroundView.isHidden = true
-            }
+        let errors = StaticChannelBackupStateStore.errorMessages(nodePubKey: nodePubKey, backupServiceKeys: backupServiceKeys)
+        if !errors.isEmpty {
+            let errorMessage = errors.reduce("") {
+                $0 + "\($1.localizedDescription)\n"
+            }.trimmingCharacters(in: .whitespacesAndNewlines)
+            errorMessageLabel.text = errorMessage
+            errorBackgroundView.isHidden = false
         } else {
             errorBackgroundView.isHidden = true
         }
@@ -146,9 +139,7 @@ extension ChannelBackupViewController: UITableViewDataSource {
             label.text = title
         }
 
-        if
-            let nodePubKey = walletConfiguration.nodePubKey,
-            StaticChannelBackupStateStore.didBackup(nodePubKey: nodePubKey, backupServiceKey: backupType.key) {
+        if StaticChannelBackupStateStore.didBackup(nodePubKey: nodePubKey, backupServiceKey: backupType.key) {
             cell.accessoryView = UIImageView(image: Asset.iconSuccessSmall.image)
         } else {
             cell.accessoryView = UIImageView(image: Asset.iconErrorSmall.image)
