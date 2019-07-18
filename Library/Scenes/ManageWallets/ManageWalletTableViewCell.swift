@@ -32,8 +32,8 @@ class ManageWalletTableViewCell: UITableViewCell {
     func configure(_ walletConfiguration: WalletConfiguration) {
         self.walletConfiguration = walletConfiguration
 
-        aliasLabel.text = walletConfiguration.alias ?? "?"
-        networkLabel.text = walletConfiguration.network?.localized ?? "?"
+        aliasLabel.text = walletConfiguration.alias
+        networkLabel.text = walletConfiguration.network.localized
 
         switch walletConfiguration.connection {
         case .local:

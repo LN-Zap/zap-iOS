@@ -97,7 +97,7 @@ final class ConnectRemoteNodeViewModel: NSObject {
         testServer = LightningApi(connection: .remote(remoteNodeConfiguration))
         testServer?.info { result in
             completion(result.map {
-                WalletConfiguration(alias: nil, network: nil, connection: .remote(remoteNodeConfiguration), nodePubKey: $0.pubKey)
+                WalletConfiguration(alias: $0.alias, network: $0.network, connection: .remote(remoteNodeConfiguration), nodePubKey: $0.pubKey)
             })
         }
     }

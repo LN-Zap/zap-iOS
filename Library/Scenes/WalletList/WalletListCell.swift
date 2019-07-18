@@ -35,7 +35,7 @@ class WalletListCell: UITableViewCell {
         didSet {
             guard let walletConfiguration = walletConfiguration else { return }
             titleLabel.text = walletConfiguration.alias
-            subtitleLabel.text = walletConfiguration.network?.localized
+            subtitleLabel.text = walletConfiguration.network.localized
 
             if case .remote(let credentials) = walletConfiguration.connection {
                 let host = credentials.host.absoluteString.prefix { $0 != ":" }

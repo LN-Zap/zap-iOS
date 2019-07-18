@@ -24,7 +24,7 @@ final class UnlockWalletViewModel {
         self.lightningService = lightningService
         self.walletService = WalletService(connection: configuration.connection)
         self.configuration = configuration
-        self.nodeAlias = configuration.alias ?? "your Node"
+        self.nodeAlias = configuration.alias
     }
 
     func unlock(password: String) {

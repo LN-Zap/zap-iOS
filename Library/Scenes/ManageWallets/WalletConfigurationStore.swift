@@ -14,15 +14,14 @@ import SwiftBTC
 import SwiftLnd
 
 struct WalletConfiguration: Equatable, Codable {
-    let alias: String?
-    let network: Network?
+    let alias: String
+    let network: Network
     let connection: LightningConnection
-    let nodePubKey: String?
+    let nodePubKey: String
 
     static func local(network: Network) -> WalletConfiguration {
-        let alias = "Zap iOS" // TODO: sync with config file
-
-        return WalletConfiguration(alias: alias, network: network, connection: .local, nodePubKey: nil)
+        // TODO: don't do this, only store once connected
+        return WalletConfiguration(alias: "Zap iOS", network: network, connection: .local, nodePubKey: "")
     }
 
     func updatingInfo(info: Info) -> WalletConfiguration {
@@ -66,7 +65,7 @@ final class WalletConfigurationStore {
             let url = URL(string: "127.0.0.1:10009")
             else { fatalError("Invalid mock data") }
         let rpcCredentials = RPCCredentials(certificate: "01", macaroon: macaroon, host: url)
-        let wallet = WalletConfiguration(alias: nil, network: .mainnet, connection: .remote(rpcCredentials), nodePubKey: "123")
+        let wallet = WalletConfiguration(alias: "mock alias", network: .mainnet, connection: .remote(rpcCredentials), nodePubKey: "123")
         return WalletConfigurationStore(configurations: [wallet], selectedWallet: wallet)
     }
 
@@ -164,6 +163,6 @@ final class WalletConfigurationStore {
     }
 
     private func sortConfigurations() {
-        configurations.sort(by: { $0.alias ?? "" < $1.alias ?? "" })
+        configurations.sort(by: { $0.alias < $1.alias })
     }
 }
