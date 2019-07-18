@@ -25,6 +25,8 @@ lane :mainnet do
     )
   end
 
+  update_app_icon(image: 'logo_white.png')
+
   increment_build_number(build_number:
     latest_testflight_build_number(
       app_identifier: "com.jackmallers.zap.mainnet",
@@ -47,9 +49,13 @@ lane :mainnet do
   )
 
   upload_to_testflight(
+    app_identifier: "com.jackmallers.zap.mainnet",
     username: ENV['ITUNESCONNECT_USER'],
     skip_waiting_for_build_processing: true
   )
+
+  sh("git reset --hard")
+  sh("git clean -f")
 end
 
 private_lane :pre_upload do
