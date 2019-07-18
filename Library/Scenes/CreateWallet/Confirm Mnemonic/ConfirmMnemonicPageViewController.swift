@@ -10,12 +10,12 @@ import Foundation
 final class ConfirmMnemonicPageViewController: UIPageViewController {
     // swiftlint:disable implicitly_unwrapped_optional
     private var confirmViewModel: ConfirmMnemonicViewModel!
-    private var connectWallet: ((WalletConfiguration) -> Void)!
+    private var connectWallet: (() -> Void)!
     // swiftlint:enable implicitly_unwrapped_optional
 
     var pages = [UIViewController]()
 
-    static func instantiate(confirmMnemonicViewModel: ConfirmMnemonicViewModel, connectWallet: @escaping (WalletConfiguration) -> Void) -> ConfirmMnemonicPageViewController {
+    static func instantiate(confirmMnemonicViewModel: ConfirmMnemonicViewModel, connectWallet: @escaping () -> Void) -> ConfirmMnemonicPageViewController {
         let viewController = StoryboardScene.ConfirmMnemonic.confirmMnemonicPageViewController.instantiate()
         viewController.confirmViewModel = confirmMnemonicViewModel
         viewController.connectWallet = connectWallet
@@ -118,7 +118,7 @@ extension ConfirmMnemonicPageViewController: ConfirmMnemonicViewControllerDelega
             switch $0 {
             case .success:
                 DispatchQueue.main.async {
-                    self.connectWallet?(self.confirmViewModel.configuration)
+                    self.connectWallet?()
                     self.dismiss(animated: true, completion: nil)
                 }
             case .failure(let error):

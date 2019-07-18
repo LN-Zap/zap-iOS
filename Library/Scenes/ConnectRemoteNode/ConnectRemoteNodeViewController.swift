@@ -94,12 +94,12 @@ final class ConnectRemoteNodeViewController: UIViewController {
     @IBOutlet private weak var tableView: UITableView!
 
     private var presentQRCodeScannerButtonTapped: (() -> Void)?
-    private var didSetupWallet: ((WalletConfiguration) -> Void)?
+    private var didSetupWallet: ((LightningConnection) -> Void)?
     private var connectRemoteNodeViewModel: ConnectRemoteNodeViewModel?
 
     private var isConnecting = false
 
-    static func instantiate(didSetupWallet: @escaping (WalletConfiguration) -> Void, connectRemoteNodeViewModel: ConnectRemoteNodeViewModel, presentQRCodeScannerButtonTapped: @escaping (() -> Void)) -> ConnectRemoteNodeViewController {
+    static func instantiate(didSetupWallet: @escaping (LightningConnection) -> Void, connectRemoteNodeViewModel: ConnectRemoteNodeViewModel, presentQRCodeScannerButtonTapped: @escaping (() -> Void)) -> ConnectRemoteNodeViewController {
         let viewController = StoryboardScene.ConnectRemoteNode.connectRemoteNodeViewController.instantiate()
         viewController.didSetupWallet = didSetupWallet
         viewController.connectRemoteNodeViewModel = connectRemoteNodeViewModel
@@ -156,7 +156,7 @@ final class ConnectRemoteNodeViewController: UIViewController {
             DispatchQueue.main.async {
                 switch result {
                 case .success(let configuration):
-                    self?.didSetupWallet?(configuration)
+                    self?.didSetupWallet?(configuration.connection)
                 case .failure(let error):
                     self?.displayError(error)
                 }

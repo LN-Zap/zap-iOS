@@ -5,6 +5,7 @@
 //  Copyright © 2018 Otto Suess. All rights reserved.
 //
 
+import Lightning
 import SwiftLnd
 import UIKit
 
@@ -19,7 +20,7 @@ final class SettingsViewController: GroupedTableViewController {
     private var info: Info?
 
     init(info: Info?,
-         configuration: WalletConfiguration,
+         connection: LightningConnection,
          disconnectWalletDelegate: DisconnectWalletDelegate,
          authenticationViewModel: AuthenticationViewModel,
          pushChannelList: @escaping (UINavigationController) -> Void,
@@ -42,7 +43,7 @@ final class SettingsViewController: GroupedTableViewController {
             ChangePinSettingsItem(authenticationViewModel: authenticationViewModel)
         ]
 
-        if configuration.connection == .local {
+        if connection == .local {
             walletRows.append(PushViewControllerSettingsItem(title: L10n.Scene.Settings.Item.lndLog, pushViewController: pushLndLogViewController))
         }
 

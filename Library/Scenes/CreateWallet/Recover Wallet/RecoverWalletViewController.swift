@@ -17,10 +17,10 @@ final class RecoverWalletViewController: UIViewController {
 
     // swiftlint:disable implicitly_unwrapped_optional
     private var recoverWalletViewModel: RecoverWalletViewModel!
-    private var connectWallet: ((WalletConfiguration) -> Void)!
+    private var connectWallet: ((LightningConnection) -> Void)!
     // swiftlint:enable implicitly_unwrapped_optional
 
-    static func instantiate(recoverWalletViewModel: RecoverWalletViewModel, connectWallet: @escaping (WalletConfiguration) -> Void) -> RecoverWalletViewController {
+    static func instantiate(recoverWalletViewModel: RecoverWalletViewModel, connectWallet: @escaping (LightningConnection) -> Void) -> RecoverWalletViewController {
         let viewController = StoryboardScene.CreateWallet.recoverWalletViewController.instantiate()
         viewController.recoverWalletViewModel = recoverWalletViewModel
         viewController.connectWallet = connectWallet
@@ -74,7 +74,7 @@ final class RecoverWalletViewController: UIViewController {
                 }
             } else {
                 DispatchQueue.main.async {
-                    guard let configuration = self?.recoverWalletViewModel.configuration else { return }
+                    guard let configuration = self?.recoverWalletViewModel.connection else { return }
                     self?.connectWallet?(configuration)
                 }
             }

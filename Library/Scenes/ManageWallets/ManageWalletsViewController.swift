@@ -14,10 +14,10 @@ final class ManageWalletsViewController: UIViewController {
     // swiftlint:disable implicitly_unwrapped_optional
     private var addWalletButtonTapped: (() -> Void)!
     private var walletConfigurationStore: WalletConfigurationStore!
-    private var connectWallet: ((WalletConfiguration) -> Void)!
+    private var connectWallet: ((LightningConnection) -> Void)!
     // swiftlint:enable implicitly_unwrapped_optional
 
-    static func instantiate(addWalletButtonTapped: @escaping () -> Void, walletConfigurationStore: WalletConfigurationStore, connectWallet: @escaping (WalletConfiguration) -> Void) -> ManageWalletsViewController {
+    static func instantiate(addWalletButtonTapped: @escaping () -> Void, walletConfigurationStore: WalletConfigurationStore, connectWallet: @escaping (LightningConnection) -> Void) -> ManageWalletsViewController {
         let viewController = StoryboardScene.ManageWallets.manageWalletsViewController.instantiate()
         viewController.addWalletButtonTapped = addWalletButtonTapped
         viewController.walletConfigurationStore = walletConfigurationStore
@@ -50,7 +50,7 @@ extension ManageWalletsViewController: UITableViewDelegate {
         tableView.deselectRow(at: indexPath, animated: true)
 
         let walletConfiguration = walletConfigurationStore.configurations[indexPath.row]
-        connectWallet(walletConfiguration)
+        connectWallet(walletConfiguration.connection)
     }
 }
 

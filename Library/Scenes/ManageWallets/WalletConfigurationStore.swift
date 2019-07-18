@@ -18,15 +18,6 @@ struct WalletConfiguration: Equatable, Codable {
     let network: Network
     let connection: LightningConnection
     let nodePubKey: String
-
-    static func local(network: Network) -> WalletConfiguration {
-        // TODO: don't do this, only store once connected
-        return WalletConfiguration(alias: "Zap iOS", network: network, connection: .local, nodePubKey: "")
-    }
-
-    func updatingInfo(info: Info) -> WalletConfiguration {
-        return WalletConfiguration(alias: info.alias, network: info.network, connection: connection, nodePubKey: info.pubKey)
-    }
 }
 
 final class WalletConfigurationStore {
@@ -46,7 +37,7 @@ final class WalletConfigurationStore {
         return configurations.isEmpty
     }
     private(set) var configurations: [WalletConfiguration]
-    var selectedWallet: WalletConfiguration? {
+    var selectedWallet: WalletConfiguration? { // make lighting connection
         didSet {
             save()
         }
@@ -113,44 +104,25 @@ final class WalletConfigurationStore {
         save()
     }
 
-    func addWallet(walletConfiguration: WalletConfiguration) {
-        guard !configurations.contains(where: {
-            guard $0.nodePubKey != walletConfiguration.nodePubKey else { return true }
-
-            // it's possible to have multiple wallets with configuration
-            // `.local`, but we don't want multiple `.remote` wallets with same
-            // `RPCCredentials`
-            switch ($0.connection, walletConfiguration.connection) {
-            case let (.remote(oldConnection), .remote(newConnection)):
-                return oldConnection == newConnection
-            default:
-                return false
-            }
-        }) else { return }
-        configurations.append(walletConfiguration)
-        sortConfigurations()
-        selectedWallet = walletConfiguration
-
-        save()
-    }
-
-    func updateInfo(for configuration: WalletConfiguration, infoService: InfoService) {
+    func updateConnection(_ connection: LightningConnection, infoService: InfoService) {
         infoBag?.dispose()
         self.infoBag = infoService.info
             .ignoreNils()
             .observeNext { [weak self] info in
-                self?.update(info: info, for: configuration)
+                self?.update(info: info, for: connection)
+                self?.infoBag?.dispose()
             }
     }
 
-    private func update(info: Info, for configuration: WalletConfiguration) {
-        guard let oldConfiguration = configurations.first(where: { $0.nodePubKey == configuration.nodePubKey }) else { return }
+    private func update(info: Info, for connection: LightningConnection) {
+        let configuration = WalletConfiguration(alias: info.alias, network: info.network, connection: connection, nodePubKey: info.pubKey)
 
-        configurations.removeAll { $0.nodePubKey == configuration.nodePubKey }
-
-        configurations.append(oldConfiguration.updatingInfo(info: info))
+        configurations.removeAll { $0.connection == connection }
+        configurations.append(configuration)
         sortConfigurations()
-        infoBag?.dispose()
+
+        selectedWallet = configuration
+
         save()
     }
 

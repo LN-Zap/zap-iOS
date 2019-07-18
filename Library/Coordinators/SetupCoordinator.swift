@@ -11,7 +11,7 @@ import SwiftLnd
 import UIKit
 
 protocol SetupCoordinatorDelegate: class {
-    func connectWallet(configuration: WalletConfiguration)
+    func presentWallet(connection: LightningConnection)
 }
 
 final class SetupCoordinator: Coordinator {
@@ -49,34 +49,28 @@ final class SetupCoordinator: Coordinator {
     }
 
     #if !REMOTEONLY
-    private func createLocalWallet() -> WalletConfiguration {
+    private func startLocalWallet() {
         let network = BuildConfiguration.network
-        let configuration = WalletConfiguration.local(network: network)
         LocalLnd.start(network: network)
-        return configuration
     }
     #endif
-
-    var configuration: WalletConfiguration?
 
     private func createNewLocalWallet() {
         #if !REMOTEONLY
         // start syncing process in background
-        if configuration == nil {
-            configuration = createLocalWallet()
-        }
+        startLocalWallet()
 
-        let onboardingViewController = OnboardingContainerViewController.instantiate(completion: presentMnemonic)
+        let onboardingViewController = OnboardingContainerViewController.instantiate { [weak self] in
+            self?.presentMnemonic(connection: .local)
+        }
         let viewController = UINavigationController(rootViewController: onboardingViewController)
         createWalletNavigationController = viewController
         self.navigationController?.present(viewController, animated: true, completion: nil)
         #endif
     }
 
-    private func presentMnemonic() {
-        guard let configuration = configuration else { return }
-
-        let mnemonicViewModel = MnemonicViewModel(configuration: configuration)
+    private func presentMnemonic(connection: LightningConnection) {
+        let mnemonicViewModel = MnemonicViewModel(connection: connection)
         self.mnemonicViewModel = mnemonicViewModel
 
         let viewController = MnemonicViewController.instantiate(mnemonicViewModel: mnemonicViewModel, presentConfirmMnemonic: presentConfirmMnemonic)
@@ -86,18 +80,18 @@ final class SetupCoordinator: Coordinator {
     private func presentConfirmMnemonic() {
         guard let viewModel = mnemonicViewModel?.confirmMnemonicViewModel else { return }
 
-        let viewController = ConfirmMnemonicPageViewController.instantiate(confirmMnemonicViewModel: viewModel, connectWallet: didSetupWallet)
+        let viewController = ConfirmMnemonicPageViewController.instantiate(confirmMnemonicViewModel: viewModel) { [weak self] in
+            self?.didSetupWallet(connection: .local)
+        }
         createWalletNavigationController?.pushViewController(viewController, animated: true)
     }
 
     private func recoverExistingWallet() {
         #if !REMOTEONLY
-        guard let delegate = delegate else { return }
+        startLocalWallet()
 
-        let configuration = createLocalWallet()
-
-        let viewModel = RecoverWalletViewModel(configuration: configuration)
-        let viewController = RecoverWalletViewController.instantiate(recoverWalletViewModel: viewModel, connectWallet: delegate.connectWallet)
+        let viewModel = RecoverWalletViewModel(connection: .local)
+        let viewController = RecoverWalletViewController.instantiate(recoverWalletViewModel: viewModel, connectWallet: connectWallet)
         navigationController?.pushViewController(viewController, animated: true)
         #endif
     }
@@ -111,9 +105,8 @@ final class SetupCoordinator: Coordinator {
         navigationController?.pushViewController(viewController, animated: true)
     }
 
-    private func didSetupWallet(configuration: WalletConfiguration) {
-        walletConfigurationStore.addWallet(walletConfiguration: configuration)
-        delegate?.connectWallet(configuration: configuration)
+    private func didSetupWallet(connection: LightningConnection) {
+        delegate?.presentWallet(connection: connection)
         createWalletNavigationController?.dismiss(animated: true, completion: nil)
     }
 
@@ -148,7 +141,7 @@ final class SetupCoordinator: Coordinator {
         return ConnectRemoteNodeViewController.instantiate(didSetupWallet: didSetupWallet, connectRemoteNodeViewModel: viewModel, presentQRCodeScannerButtonTapped: presentNodeCertificatesScanner)
     }
 
-    private func connectWallet(_ walletConfiguration: WalletConfiguration) {
-        delegate?.connectWallet(configuration: walletConfiguration)
+    private func connectWallet(_ connection: LightningConnection) {
+        delegate?.presentWallet(connection: connection)
     }
 }

@@ -14,7 +14,7 @@ protocol RootCoordinatorDelegate: class {
     func embedInRootContainer(viewController: UIViewController)
 }
 
-public final class RootCoordinator: Coordinator {
+public final class RootCoordinator: Coordinator, SetupCoordinatorDelegate {
     let rootViewController: RootViewController
     private let authenticationCoordinator: AuthenticationCoordinator
     private let backgroundCoordinator: BackgroundCoordinator
@@ -76,26 +76,16 @@ public final class RootCoordinator: Coordinator {
         if !PinStore.didSetupPin {
             presentPinSetup()
         } else if let selectedWallet = walletConfigurationStore.selectedWallet {
-            presentSelectedWallet(selectedWallet)
+            presentWallet(connection: selectedWallet.connection)
         } else {
             presentSetup(walletConfigurationStore: walletConfigurationStore, rpcCredentials: nil)
         }
     }
 
-    private func presentSelectedWallet(_ configuration: WalletConfiguration) {
-        #if REMOTEONLY
-        if configuration.connection == .local {
-            walletConfigurationStore.selectedWallet = nil
-            update()
-            return
-        }
-        #endif
+    func presentWallet(connection: LightningConnection) {
+        guard let lightningService = LightningService(connection: connection, backupService: StaticChannelBackupService()) else { return }
 
-        guard let lightningService = LightningService(connection: configuration.connection, backupService: StaticChannelBackupService()) else { return }
-
-        walletConfigurationStore.selectedWallet = configuration
-
-        walletConfigurationStore.updateInfo(for: configuration, infoService: lightningService.infoService)
+        walletConfigurationStore.updateConnection(connection, infoService: lightningService.infoService)
 
         let walletCoordinator = WalletCoordinator(rootViewController: rootViewController, lightningService: lightningService, disconnectWalletDelegate: self, authenticationViewModel: authenticationViewModel, walletConfigurationStore: walletConfigurationStore)
         self.currentCoordinator = walletCoordinator
@@ -157,12 +147,6 @@ extension RootCoordinator: PinSetupCoordinatorDelegate {
 extension RootCoordinator: RootCoordinatorDelegate {
     func embedInRootContainer(viewController: UIViewController) {
         rootViewController.setContainerContent(viewController)
-    }
-}
-
-extension RootCoordinator: SetupCoordinatorDelegate {
-    func connectWallet(configuration: WalletConfiguration) {
-        presentSelectedWallet(configuration)
     }
 }
 

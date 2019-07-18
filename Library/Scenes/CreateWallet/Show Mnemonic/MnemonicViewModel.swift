@@ -10,7 +10,6 @@ import Foundation
 import Lightning
 
 final class MnemonicViewModel {
-    private let configuration: WalletConfiguration
     private let walletService: WalletService
     private var mnemonic: [String]? {
         didSet {
@@ -23,12 +22,11 @@ final class MnemonicViewModel {
 
     var confirmMnemonicViewModel: ConfirmMnemonicViewModel? {
         guard let mnemonic = mnemonic else { return  nil }
-        return ConfirmMnemonicViewModel(walletService: walletService, mnemonic: mnemonic, configuration: configuration)
+        return ConfirmMnemonicViewModel(walletService: walletService, mnemonic: mnemonic)
     }
 
-    init(configuration: WalletConfiguration) {
-        self.configuration = configuration
-        walletService = WalletService(connection: configuration.connection)
+    init(connection: LightningConnection) {
+        walletService = WalletService(connection: connection)
 
         walletService.generateSeed { [weak self] result in
             guard let mnemonic = try? result.get() else { return }

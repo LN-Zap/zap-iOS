@@ -12,10 +12,10 @@ import SwiftBTC
 import SwiftLnd
 
 final class RecoverWalletViewModel {
-    let configuration: WalletConfiguration
+    let connection: LightningConnection
 
-    init(configuration: WalletConfiguration) {
-        self.configuration = configuration
+    init(connection: LightningConnection) {
+        self.connection = connection
     }
 
     let mnemonic = Observable([String]())
@@ -28,7 +28,7 @@ final class RecoverWalletViewModel {
     func recoverWallet(with text: String, completion: @escaping ApiCompletion<Success>) {
         let mnemonic = self.mnemonic(from: text.lowercased())
 
-        let walletService = WalletService(connection: configuration.connection)
+        let walletService = WalletService(connection: connection)
         walletService.initWallet(password: Password.create(), mnemonic: mnemonic, completion: completion)
     }
 
