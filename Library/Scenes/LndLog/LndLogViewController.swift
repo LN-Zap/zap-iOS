@@ -55,7 +55,7 @@ final class LndLogViewController: UIViewController {
     }
 
     private var url: URL? {
-        guard let folder = FileManager.default.walletDirectory(for: walletConfiguration.walletId) else { return nil }
+        guard let folder = FileManager.default.walletDirectory else { return nil }
         return folder.appendingPathComponent("logs/bitcoin/testnet/lnd.log")
     }
 

@@ -12,17 +12,13 @@ import Lndmobile
 import Logger
 import SwiftBTC
 
-// `WalletId` is used as a parameter for local lnd wallets. It is used as the
-// folder containing all lnd data, so we can run multiple wallets on the same
-// device.
-
 public enum LocalLnd {
     public private(set) static var isRunning = false
 
-    public static func start(walletId: WalletId, network: Network) {
+    public static func start(network: Network) {
         guard !isRunning else { return }
         DispatchQueue.once(token: "start_lnd") {
-            guard let lndUrl = FileManager.default.walletDirectory(for: walletId) else { return }
+            guard let lndUrl = FileManager.default.walletDirectory else { return }
 
             var configuration = LocalLndConfiguration()
             configuration.network = network
@@ -34,7 +30,7 @@ public enum LocalLnd {
 
             DispatchQueue.global(qos: .default).async {
                 LndmobileStart("--lnddir=\(lndUrl.path)", EmptyStreamCallback())
-                BackupDisabler.disableNeutrinoBackup(walletId: walletId, network: network)
+                BackupDisabler.disableNeutrinoBackup(network: network)
                 isRunning = true
             }
         }

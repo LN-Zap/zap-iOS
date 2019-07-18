@@ -98,8 +98,7 @@ final class WalletConfigurationStore {
 
     func removeWallet(at index: Int) {
         let configuration = configurations[index]
-        let walletId = configuration.walletId
-        guard let url = FileManager.default.walletDirectory(for: walletId) else { return }
+        guard let url = FileManager.default.walletDirectory else { return }
 
         do {
             try FileManager.default.removeItem(at: url)

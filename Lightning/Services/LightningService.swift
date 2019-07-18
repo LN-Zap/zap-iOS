@@ -111,7 +111,7 @@ public final class LightningService: NSObject {
             !WalletService.isLocalWalletUnlocked
             else { return }
 
-        LocalLnd.start(walletId: walletId, network: network)
+        LocalLnd.start(network: network)
         WalletService(connection: connection).unlockWallet(password: password) {
             if case .failure(let error) = $0, error != .walletAlreadyUnlocked {
                 Logger.error(error)

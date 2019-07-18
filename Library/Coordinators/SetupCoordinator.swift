@@ -52,7 +52,7 @@ final class SetupCoordinator: Coordinator {
     private func createLocalWallet() -> WalletConfiguration {
         let network = BuildConfiguration.network
         let configuration = WalletConfiguration.local(network: network)
-        LocalLnd.start(walletId: configuration.walletId, network: network)
+        LocalLnd.start(network: network)
         return configuration
     }
     #endif

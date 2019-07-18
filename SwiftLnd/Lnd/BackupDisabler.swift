@@ -16,8 +16,8 @@ enum BackupDisabler {
         "neutrino.db"
     ]
 
-    static func disableNeutrinoBackup(walletId: WalletId, network: Network) {
-        var walletDirectory = FileManager.default.walletDirectory(for: walletId)
+    static func disableNeutrinoBackup(network: Network) {
+        var walletDirectory = FileManager.default.walletDirectory
         walletDirectory?.appendPathComponent(dataPath(for: network), isDirectory: true)
 
         for file in neutrinoFiles {
