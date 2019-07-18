@@ -20,7 +20,6 @@ public final class LightningService: NSObject {
     public static var transactionNotificationName = "transactionNotificationName"
 
     private let api: LightningApi
-    private let walletId: WalletId
     public let connection: LightningConnection
 
     public let infoService: InfoService
@@ -41,13 +40,12 @@ public final class LightningService: NSObject {
         }
     }
 
-    public convenience init?(connection: LightningConnection, walletId: WalletId, backupService: StaticChannelBackupServiceType) {
-        self.init(api: connection.api, walletId: walletId, connection: connection, backupService: backupService)
+    public convenience init?(connection: LightningConnection, backupService: StaticChannelBackupServiceType) {
+        self.init(api: connection.api, connection: connection, backupService: backupService)
     }
 
-    init(api: LightningApi, walletId: WalletId, connection: LightningConnection, backupService: StaticChannelBackupServiceType) {
+    init(api: LightningApi, connection: LightningConnection, backupService: StaticChannelBackupServiceType) {
         self.api = api
-        self.walletId = walletId
         self.connection = connection
 
         NotificationScheduler.shared.requestAuthorization()

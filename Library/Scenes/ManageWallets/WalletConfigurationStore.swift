@@ -17,17 +17,16 @@ struct WalletConfiguration: Equatable, Codable {
     let alias: String?
     let network: Network?
     let connection: LightningConnection
-    let walletId: WalletId
     let nodePubKey: String?
 
     static func local(network: Network) -> WalletConfiguration {
         let alias = "Zap iOS" // TODO: sync with config file
 
-        return WalletConfiguration(alias: alias, network: network, connection: .local, walletId: "bitcoin-\(network.rawValue)", nodePubKey: nil)
+        return WalletConfiguration(alias: alias, network: network, connection: .local, nodePubKey: nil)
     }
 
     func updatingInfo(info: Info) -> WalletConfiguration {
-        return WalletConfiguration(alias: info.alias, network: info.network, connection: connection, walletId: walletId, nodePubKey: info.pubKey)
+        return WalletConfiguration(alias: info.alias, network: info.network, connection: connection, nodePubKey: info.pubKey)
     }
 }
 
@@ -60,13 +59,14 @@ final class WalletConfigurationStore {
         }
     }
 
+    // used for UI tests
     static var mock: WalletConfigurationStore {
         guard
             let macaroon = Macaroon(hexadecimalString: "01"),
             let url = URL(string: "127.0.0.1:10009")
             else { fatalError("Invalid mock data") }
         let rpcCredentials = RPCCredentials(certificate: "01", macaroon: macaroon, host: url)
-        let wallet = WalletConfiguration(alias: nil, network: .mainnet, connection: .remote(rpcCredentials), walletId: UUID().uuidString, nodePubKey: "123")
+        let wallet = WalletConfiguration(alias: nil, network: .mainnet, connection: .remote(rpcCredentials), nodePubKey: "123")
         return WalletConfigurationStore(configurations: [wallet], selectedWallet: wallet)
     }
 
@@ -93,7 +93,7 @@ final class WalletConfigurationStore {
     }
 
     func isSelected(walletConfiguration: WalletConfiguration) -> Bool {
-        return walletConfiguration.walletId == selectedWallet?.walletId
+        return walletConfiguration.nodePubKey == selectedWallet?.nodePubKey
     }
 
     func removeWallet(at index: Int) {
@@ -116,7 +116,7 @@ final class WalletConfigurationStore {
 
     func addWallet(walletConfiguration: WalletConfiguration) {
         guard !configurations.contains(where: {
-            guard $0.walletId != walletConfiguration.walletId else { return true }
+            guard $0.nodePubKey != walletConfiguration.nodePubKey else { return true }
 
             // it's possible to have multiple wallets with configuration
             // `.local`, but we don't want multiple `.remote` wallets with same
@@ -145,9 +145,9 @@ final class WalletConfigurationStore {
     }
 
     private func update(info: Info, for configuration: WalletConfiguration) {
-        guard let oldConfiguration = configurations.first(where: { $0.walletId == configuration.walletId }) else { return }
+        guard let oldConfiguration = configurations.first(where: { $0.nodePubKey == configuration.nodePubKey }) else { return }
 
-        configurations.removeAll { $0.walletId == configuration.walletId }
+        configurations.removeAll { $0.nodePubKey == configuration.nodePubKey }
 
         configurations.append(oldConfiguration.updatingInfo(info: info))
         sortConfigurations()

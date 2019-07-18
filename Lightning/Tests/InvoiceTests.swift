@@ -28,7 +28,7 @@ class InvoiceTests: XCTestCase {
         ))
 
         let testConnection = LightningConnection.remote(RPCCredentials.mock)
-        let mockService = LightningService(api: api, walletId: "1", connection: testConnection, backupService: MockBackupService())
+        let mockService = LightningService(api: api, connection: testConnection, backupService: MockBackupService())
 
         let expectation = self.expectation(description: "Decoding")
 

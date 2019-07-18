@@ -91,7 +91,7 @@ public final class RootCoordinator: Coordinator {
         }
         #endif
 
-        guard let lightningService = LightningService(connection: configuration.connection, walletId: configuration.walletId, backupService: StaticChannelBackupService()) else { return }
+        guard let lightningService = LightningService(connection: configuration.connection, backupService: StaticChannelBackupService()) else { return }
 
         walletConfigurationStore.selectedWallet = configuration
 

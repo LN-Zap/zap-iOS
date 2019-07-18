@@ -8,8 +8,6 @@
 import Foundation
 import Logger
 
-public typealias WalletId = String
-
 public extension FileManager {
     func channelBackupDirectory(for nodePubKey: String) -> URL? {
         guard let documentDirectory = urls(for: .documentDirectory, in: .userDomainMask).first else { return nil }
@@ -19,8 +17,7 @@ public extension FileManager {
 
     var walletDirectory: URL? {
         guard let applicationSupportDirectory = urls(for: .applicationSupportDirectory, in: .userDomainMask).first else { return nil }
-        let walletIdFolder = "lnd"
-        let url = applicationSupportDirectory.appendingPathComponent(walletIdFolder, isDirectory: true)
+        let url = applicationSupportDirectory.appendingPathComponent("lnd", isDirectory: true)
         return createAndReturn(url: url)
     }
 
