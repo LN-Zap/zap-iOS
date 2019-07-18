@@ -39,6 +39,7 @@
 		AD248626225B78300049532C /* WalletViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD248625225B78300049532C /* WalletViewModel.swift */; };
 		AD248628225B7E130049532C /* WalletBalance.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD248627225B7E130049532C /* WalletBalance.swift */; };
 		AD24862A225B7F210049532C /* ChannelBalance.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD248629225B7F210049532C /* ChannelBalance.swift */; };
+		AD27021F22E06E5000D4BF27 /* Keychain.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD27021E22E06E5000D4BF27 /* Keychain.swift */; };
 		AD27B0182100C59500F232A8 /* UpdateAddressViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD27B0172100C59500F232A8 /* UpdateAddressViewController.swift */; };
 		AD27B01A2100D5CC00F232A8 /* CertificateDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD27B0192100D5CC00F232A8 /* CertificateDetailViewController.swift */; };
 		AD27B01C2100D7CF00F232A8 /* CertificateDetailCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD27B01B2100D7CF00F232A8 /* CertificateDetailCell.swift */; };
@@ -632,6 +633,7 @@
 		AD248625225B78300049532C /* WalletViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WalletViewModel.swift; sourceTree = "<group>"; };
 		AD248627225B7E130049532C /* WalletBalance.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WalletBalance.swift; sourceTree = "<group>"; };
 		AD248629225B7F210049532C /* ChannelBalance.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChannelBalance.swift; sourceTree = "<group>"; };
+		AD27021E22E06E5000D4BF27 /* Keychain.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Keychain.swift; sourceTree = "<group>"; };
 		AD27B01520FC8BBF00F232A8 /* Pem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Pem.swift; sourceTree = "<group>"; };
 		AD27B0172100C59500F232A8 /* UpdateAddressViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpdateAddressViewController.swift; sourceTree = "<group>"; };
 		AD27B0192100D5CC00F232A8 /* CertificateDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CertificateDetailViewController.swift; sourceTree = "<group>"; };
@@ -1372,6 +1374,7 @@
 				AD391D1F20D178C2007EE22A /* Bundle.swift */,
 				ADADAD59214126BB00A48E1F /* Date.swift */,
 				AD9BB2DF21836A54009DC878 /* DispatchQueue+Debounce.swift */,
+				AD27021E22E06E5000D4BF27 /* Keychain.swift */,
 				AD77464C2076161300EC596B /* Localizable */,
 				A0BD44DB206FCAD900BF27A3 /* SignalProtocol.swift */,
 				A0A96B87201769F100788808 /* String.swift */,
@@ -3058,6 +3061,7 @@
 				ADA81E9E210DE14100B7C6F2 /* UIView.swift in Sources */,
 				ADDD13B62119CE740035D2F9 /* StackViewElement.swift in Sources */,
 				ADA58F9C22049470009A5494 /* WalletConfigurationStore.swift in Sources */,
+				AD27021F22E06E5000D4BF27 /* Keychain.swift in Sources */,
 				AD391C9A20D16FA8007EE22A /* QRCodeScannerView.swift in Sources */,
 				AD9BB2DC21830B4F009DC878 /* LoadingAmountView.swift in Sources */,
 				AD7EDAE72108D39D0058CCCA /* ZapNavigationController.swift in Sources */,

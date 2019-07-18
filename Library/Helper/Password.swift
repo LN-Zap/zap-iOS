@@ -9,7 +9,7 @@ import Foundation
 import KeychainAccess
 
 enum Password {
-    private static let keychain = Keychain(service: "com.jackmallers.zap.wallet_password").accessibility(.whenUnlocked)
+    private static let keychain = Keychain(serviceExtension: "wallet_password").accessibility(.whenUnlocked)
     private static let key = "password"
 
     static func create() -> String {

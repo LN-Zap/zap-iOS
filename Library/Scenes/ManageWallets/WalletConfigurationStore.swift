@@ -37,7 +37,7 @@ final class WalletConfigurationStore {
         let selectedWallet: WalletConfiguration?
     }
 
-    private static let keychain = Keychain(service: "com.jackmallers.zap.wallets").accessibility(.whenUnlocked)
+    private static let keychain = Keychain(serviceExtension: "wallets").accessibility(.whenUnlocked)
     private static let keychainWalletConfigurationKey = "WalletConfiguration"
 
     private var infoBag: Disposable?
