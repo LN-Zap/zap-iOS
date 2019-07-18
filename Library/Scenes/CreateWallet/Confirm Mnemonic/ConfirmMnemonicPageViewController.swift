@@ -42,6 +42,17 @@ final class ConfirmMnemonicPageViewController: UIPageViewController {
             }
         }
     }
+
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+
+        // remote user interaction on page control
+        for view in view.subviews {
+            if let subView = view as? UIPageControl {
+                subView.isUserInteractionEnabled = false
+            }
+        }
+    }
 }
 
 extension ConfirmMnemonicPageViewController: UIPageViewControllerDataSource {
