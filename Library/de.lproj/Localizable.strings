@@ -112,18 +112,18 @@
 "scene.setup_pin.top_label.validate" = "Gib den PIN erneut ein.";
 
 "scene.onboarding.page_1.title" = "Dein Schlüssel, deine Bitcoins.";
-"scene.onboarding.page_1.message" = "With Zap, you are in control of your money. To make sure your coins are always stored safely, zap will provide a recovery phrase for you.";
+"scene.onboarding.page_1.message" = "Mit Zap hast du die Kontrolle über dein Geld. Um sicherzustellen, dass deine Coins immer sicher aufbewahrt werden, stellt dir Zap eine Wiederherstellungsphrase zur Verfügung.";
 "scene.onboarding.page_1.button_title" = "Weiter";
 
-"scene.onboarding.page_2.title" = "Write down your recovery phrase.";
-"scene.onboarding.page_2.message" = "Write down  the recovery phrase on a piece of paper. You can recover your funds anytime if your phone goes missing.";
+"scene.onboarding.page_2.title" = "Notiere dir deinen Wiederherstellungsphrase.";
+"scene.onboarding.page_2.message" = "Notiere dir die Wiederherstellungsphrase auf einem Blatt Papier. Du kannst dein Geld jederzeit zurückerhalten, wenn dein Handy verloren geht.";
 "scene.onboarding.page_2.button_title" = "Weiter";
 
 "scene.onboarding.page_3.title" = "Stelle sicher ihn an einem sicheren Ort aufzubewahren.";
-"scene.onboarding.page_3.message" = "Make sure to keep your recovery phrase private. Store it somewhere only you will find it.";
-"scene.onboarding.page_3.button_title" = "Generate Recovery Phrase";
+"scene.onboarding.page_3.message" = "Achte darauf, dass du deine Wiederherstellungsphrase privat hältst. Lagere ihn an einem Ort den nur du kennst.";
+"scene.onboarding.page_3.button_title" = "Wiederherstellungsphrase generieren";
 
-"scene.confirm_mnemonic.title" = "Confirm Recovery Phrase";
+"scene.confirm_mnemonic.title" = "Wiederherstellungsphrase bestätigen";
 "scene.confirm_mnemonic.headline" = "Wähle Wort Nummer %d";
 
 "scene.send.title" = "Senden";
@@ -163,13 +163,13 @@
 "scene.connect_remote_node.certificate_detail.macaroon_title" = "Macaroon";
 "scene.connect_remote_node.edit_url.title" = "Adresse";
 
-"scene.create_wallet.title" = "Recovery Phrase";
-"scene.create_wallet.description_label" = "Write down the recovery phrase and store it at a safe location.";
+"scene.create_wallet.title" = "Wiederherstellungsphrase";
+"scene.create_wallet.description_label" = "Notiere dir die Wiederherstellungsphrase und bewahre sie an einem sicheren Ort auf.";
 "scene.create_wallet.next_button" = "Weiter";
 
 "scene.recover_wallet.title" = "Wallet wiederherstellen";
 "scene.recover_wallet.done_button" = "Fertig";
-"scene.recover_wallet.description_label" = "Enter your recovery phrase:";
+"scene.recover_wallet.description_label" = "Gib deine Wiederherstellungsphrase ein:";
 "scene.recover_wallet.placeholder" = "abandon ability able about above absent absorb abstract absurd abuse access accident account accuse achieve acid acoustic acquire across act action actor actress actual";
 
 "scene.select_wallet_connection.create.title" = "Erstellen";
@@ -226,9 +226,9 @@
 "scene.filter.displayChannelEvents" = "Channel-Events";
 
 "scene.qrcode_scanner.top_label" = "QR-Code scannen";
-"scene.qrcode_scanner.error.unknown_format" = "Unknown address format.";
-"scene.qrcode_scanner.error.wrong_network" = "You tried opening an invoice for %@ but your node is connected to %@.";
-"scene.qrcode_scanner.error.zero_amount_invoice" = "For security reasons zap does not support invoices without a specified amount.";
+"scene.qrcode_scanner.error.unknown_format" = "Unbekanntes Adressformat.";
+"scene.qrcode_scanner.error.wrong_network" = "Du hast versucht, eine Rechnung für %@ zu öffnen, aber dein Knoten ist mit %@ verbunden.";
+"scene.qrcode_scanner.error.zero_amount_invoice" = "Aus Sicherheitsgründen unterstützt Zap keine Rechnungen ohne einen bestimmten Betrag.";
 
 "scene.wallet.title" = "Wallet";
 "scene.wallet.total_balance" = "Totaler Kontostand";
@@ -285,7 +285,12 @@
 "scene.channel_backup.error.localBackupFailed" = "Lokales File Backup fehlerhaft.";
 "scene.channel_backup.error.lndError" = "Kanal Backup konnte von lnd nicht empfangen werden.";
 
-"notification.sync.title" = "Please sync";
-"notification.sync.day_12.body" = "Please remember syncing your wallet to make sure you stay safe";
-"notification.sync.day_13.body" = "You have one more day to sync your wallet before it's getting dangerous.";
-"notification.sync.day_14.body" = "Please sync your wallet as soon as possible.";
+"scene.push_notification.headline" = "Notifications?";
+"scene.push_notification.message" = "To keep your funds safe, zap needs to sync once in a while. Do you want to get a notification when it's time?";
+"scene.push_notification.confirm_button_title" = "Turn on notifications";
+"scene.push_notification.skip_button_title" = "Skip";
+
+"notification.sync.title" = "Bitte synchronisieren";
+"notification.sync.day_12.body" = "Stelle sicher dein Wallet zu synchronisieren um geschützt zu sein";
+"notification.sync.day_13.body" = "Du hast noch einen weiteren Tag Zeit, um deine Wallet zu synchronisieren, bevor es gefährlich wird.";
+"notification.sync.day_14.body" = "Synchronisiere deine Wallet so bald wie möglich.";
