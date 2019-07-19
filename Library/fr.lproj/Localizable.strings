@@ -285,6 +285,11 @@
 "scene.channel_backup.error.localBackupFailed" = "Local file backup failed.";
 "scene.channel_backup.error.lndError" = "Could not get channel backup from lnd.";
 
+"scene.push_notification.headline" = "Notifications?";
+"scene.push_notification.message" = "To keep your funds safe, zap needs to sync once in a while. Do you want to get a notification when it's time?";
+"scene.push_notification.confirm_button_title" = "Turn on notifications";
+"scene.push_notification.skip_button_title" = "Skip";
+
 "notification.sync.title" = "Please sync";
 "notification.sync.day_12.body" = "Please remember syncing your wallet to make sure you stay safe";
 "notification.sync.day_13.body" = "You have one more day to sync your wallet before it's getting dangerous.";
