@@ -26,9 +26,27 @@ final class NotificationScheduler: NSObject {
         self.configurations = configurations
     }
 
-    func requestAuthorization() {
+    static var needsAuthorization: Bool {
         let center = UNUserNotificationCenter.current()
-        center.requestAuthorization(options: [.alert]) { _, _ in }
+        var result = false
+        let group = DispatchGroup()
+        group.enter()
+
+        center.getNotificationSettings { settings in
+            result = settings.authorizationStatus != .authorized
+            group.leave()
+        }
+
+        group.wait()
+
+        return result
+    }
+
+    static func requestAuthorization(completion: @escaping (() -> Void)) {
+        let center = UNUserNotificationCenter.current()
+        center.requestAuthorization(options: [.alert]) { _, _ in
+            completion()
+        }
     }
 
     func listenToChannelUpdates(lightningService: LightningService) {

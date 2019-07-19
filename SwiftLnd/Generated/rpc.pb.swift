@@ -1117,6 +1117,19 @@ struct Lnrpc_Channel {
     set {_uniqueStorage()._chanStatusFlags = newValue}
   }
 
+  //// The minimum satoshis this node is required to reserve in its balance.
+  var localChanReserveSat: Int64 {
+    get {return _storage._localChanReserveSat}
+    set {_uniqueStorage()._localChanReserveSat = newValue}
+  }
+
+  ///*
+  ///The minimum satoshis the other node is required to reserve in its balance.
+  var remoteChanReserveSat: Int64 {
+    get {return _storage._remoteChanReserveSat}
+    set {_uniqueStorage()._remoteChanReserveSat = newValue}
+  }
+
   var unknownFields = SwiftProtobuf.UnknownStorage()
 
   init() {}
@@ -1805,6 +1818,14 @@ struct Lnrpc_PendingChannelsResponse {
     var localBalance: Int64 = 0
 
     var remoteBalance: Int64 = 0
+
+    //// The minimum satoshis this node is required to reserve in its balance.
+    var localChanReserveSat: Int64 = 0
+
+    ///*
+    ///The minimum satoshis the other node is required to reserve in its
+    ///balance.
+    var remoteChanReserveSat: Int64 = 0
 
     var unknownFields = SwiftProtobuf.UnknownStorage()
 
@@ -3189,7 +3210,7 @@ struct Lnrpc_Payment {
   //// The path this payment took
   var path: [String] = []
 
-  //// The fee paid for this payment in satoshis
+  //// Deprecated, use fee_sat or fee_msat.
   var fee: Int64 = 0
 
   //// The payment preimage
@@ -3206,6 +3227,12 @@ struct Lnrpc_Payment {
 
   /// The status of the payment.
   var status: Lnrpc_Payment.PaymentStatus = .unknown
+
+  ////  The fee paid for this payment in satoshis
+  var feeSat: Int64 = 0
+
+  ////  The fee paid for this payment in milli-satoshis
+  var feeMsat: Int64 = 0
 
   var unknownFields = SwiftProtobuf.UnknownStorage()
 
@@ -5535,6 +5562,8 @@ extension Lnrpc_Channel: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementa
     17: .same(proto: "private"),
     18: .same(proto: "initiator"),
     19: .same(proto: "chan_status_flags"),
+    20: .same(proto: "local_chan_reserve_sat"),
+    21: .same(proto: "remote_chan_reserve_sat"),
   ]
 
   fileprivate class _StorageClass {
@@ -5557,6 +5586,8 @@ extension Lnrpc_Channel: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementa
     var _private: Bool = false
     var _initiator: Bool = false
     var _chanStatusFlags: String = String()
+    var _localChanReserveSat: Int64 = 0
+    var _remoteChanReserveSat: Int64 = 0
 
     static let defaultInstance = _StorageClass()
 
@@ -5582,6 +5613,8 @@ extension Lnrpc_Channel: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementa
       _private = source._private
       _initiator = source._initiator
       _chanStatusFlags = source._chanStatusFlags
+      _localChanReserveSat = source._localChanReserveSat
+      _remoteChanReserveSat = source._remoteChanReserveSat
     }
   }
 
@@ -5616,6 +5649,8 @@ extension Lnrpc_Channel: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementa
         case 17: try decoder.decodeSingularBoolField(value: &_storage._private)
         case 18: try decoder.decodeSingularBoolField(value: &_storage._initiator)
         case 19: try decoder.decodeSingularStringField(value: &_storage._chanStatusFlags)
+        case 20: try decoder.decodeSingularInt64Field(value: &_storage._localChanReserveSat)
+        case 21: try decoder.decodeSingularInt64Field(value: &_storage._remoteChanReserveSat)
         default: break
         }
       }
@@ -5681,6 +5716,12 @@ extension Lnrpc_Channel: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementa
       if !_storage._chanStatusFlags.isEmpty {
         try visitor.visitSingularStringField(value: _storage._chanStatusFlags, fieldNumber: 19)
       }
+      if _storage._localChanReserveSat != 0 {
+        try visitor.visitSingularInt64Field(value: _storage._localChanReserveSat, fieldNumber: 20)
+      }
+      if _storage._remoteChanReserveSat != 0 {
+        try visitor.visitSingularInt64Field(value: _storage._remoteChanReserveSat, fieldNumber: 21)
+      }
     }
     try unknownFields.traverse(visitor: &visitor)
   }
@@ -5709,6 +5750,8 @@ extension Lnrpc_Channel: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementa
         if _storage._private != rhs_storage._private {return false}
         if _storage._initiator != rhs_storage._initiator {return false}
         if _storage._chanStatusFlags != rhs_storage._chanStatusFlags {return false}
+        if _storage._localChanReserveSat != rhs_storage._localChanReserveSat {return false}
+        if _storage._remoteChanReserveSat != rhs_storage._remoteChanReserveSat {return false}
         return true
       }
       if !storagesAreEqual {return false}
@@ -6923,6 +6966,8 @@ extension Lnrpc_PendingChannelsResponse.PendingChannel: SwiftProtobuf.Message, S
     3: .same(proto: "capacity"),
     4: .same(proto: "local_balance"),
     5: .same(proto: "remote_balance"),
+    6: .same(proto: "local_chan_reserve_sat"),
+    7: .same(proto: "remote_chan_reserve_sat"),
   ]
 
   mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
@@ -6933,6 +6978,8 @@ extension Lnrpc_PendingChannelsResponse.PendingChannel: SwiftProtobuf.Message, S
       case 3: try decoder.decodeSingularInt64Field(value: &self.capacity)
       case 4: try decoder.decodeSingularInt64Field(value: &self.localBalance)
       case 5: try decoder.decodeSingularInt64Field(value: &self.remoteBalance)
+      case 6: try decoder.decodeSingularInt64Field(value: &self.localChanReserveSat)
+      case 7: try decoder.decodeSingularInt64Field(value: &self.remoteChanReserveSat)
       default: break
       }
     }
@@ -6954,6 +7001,12 @@ extension Lnrpc_PendingChannelsResponse.PendingChannel: SwiftProtobuf.Message, S
     if self.remoteBalance != 0 {
       try visitor.visitSingularInt64Field(value: self.remoteBalance, fieldNumber: 5)
     }
+    if self.localChanReserveSat != 0 {
+      try visitor.visitSingularInt64Field(value: self.localChanReserveSat, fieldNumber: 6)
+    }
+    if self.remoteChanReserveSat != 0 {
+      try visitor.visitSingularInt64Field(value: self.remoteChanReserveSat, fieldNumber: 7)
+    }
     try unknownFields.traverse(visitor: &visitor)
   }
 
@@ -6963,6 +7016,8 @@ extension Lnrpc_PendingChannelsResponse.PendingChannel: SwiftProtobuf.Message, S
     if lhs.capacity != rhs.capacity {return false}
     if lhs.localBalance != rhs.localBalance {return false}
     if lhs.remoteBalance != rhs.remoteBalance {return false}
+    if lhs.localChanReserveSat != rhs.localChanReserveSat {return false}
+    if lhs.remoteChanReserveSat != rhs.remoteChanReserveSat {return false}
     if lhs.unknownFields != rhs.unknownFields {return false}
     return true
   }
@@ -9304,6 +9359,8 @@ extension Lnrpc_Payment: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementa
     8: .same(proto: "value_msat"),
     9: .same(proto: "payment_request"),
     10: .same(proto: "status"),
+    11: .same(proto: "fee_sat"),
+    12: .same(proto: "fee_msat"),
   ]
 
   mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
@@ -9319,6 +9376,8 @@ extension Lnrpc_Payment: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementa
       case 8: try decoder.decodeSingularInt64Field(value: &self.valueMsat)
       case 9: try decoder.decodeSingularStringField(value: &self.paymentRequest)
       case 10: try decoder.decodeSingularEnumField(value: &self.status)
+      case 11: try decoder.decodeSingularInt64Field(value: &self.feeSat)
+      case 12: try decoder.decodeSingularInt64Field(value: &self.feeMsat)
       default: break
       }
     }
@@ -9355,6 +9414,12 @@ extension Lnrpc_Payment: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementa
     if self.status != .unknown {
       try visitor.visitSingularEnumField(value: self.status, fieldNumber: 10)
     }
+    if self.feeSat != 0 {
+      try visitor.visitSingularInt64Field(value: self.feeSat, fieldNumber: 11)
+    }
+    if self.feeMsat != 0 {
+      try visitor.visitSingularInt64Field(value: self.feeMsat, fieldNumber: 12)
+    }
     try unknownFields.traverse(visitor: &visitor)
   }
 
@@ -9369,6 +9434,8 @@ extension Lnrpc_Payment: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementa
     if lhs.valueMsat != rhs.valueMsat {return false}
     if lhs.paymentRequest != rhs.paymentRequest {return false}
     if lhs.status != rhs.status {return false}
+    if lhs.feeSat != rhs.feeSat {return false}
+    if lhs.feeMsat != rhs.feeMsat {return false}
     if lhs.unknownFields != rhs.unknownFields {return false}
     return true
   }

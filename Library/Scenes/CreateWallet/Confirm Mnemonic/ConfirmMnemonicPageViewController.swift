@@ -10,15 +10,15 @@ import Foundation
 final class ConfirmMnemonicPageViewController: UIPageViewController {
     // swiftlint:disable implicitly_unwrapped_optional
     private var confirmViewModel: ConfirmMnemonicViewModel!
-    private var connectWallet: (() -> Void)!
+    private var completion: (() -> Void)!
     // swiftlint:enable implicitly_unwrapped_optional
 
     var pages = [UIViewController]()
 
-    static func instantiate(confirmMnemonicViewModel: ConfirmMnemonicViewModel, connectWallet: @escaping () -> Void) -> ConfirmMnemonicPageViewController {
+    static func instantiate(confirmMnemonicViewModel: ConfirmMnemonicViewModel, completion: @escaping () -> Void) -> ConfirmMnemonicPageViewController {
         let viewController = StoryboardScene.ConfirmMnemonic.confirmMnemonicPageViewController.instantiate()
         viewController.confirmViewModel = confirmMnemonicViewModel
-        viewController.connectWallet = connectWallet
+        viewController.completion = completion
         return viewController
     }
 
@@ -113,16 +113,15 @@ extension ConfirmMnemonicPageViewController: ConfirmMnemonicViewControllerDelega
     }
 
     private func createNewWallet() {
-        confirmViewModel.createWallet { [weak self] in
+        confirmViewModel.createWallet { [weak self] result in
             guard let self = self else { return }
-            switch $0 {
-            case .success:
-                DispatchQueue.main.async {
-                    self.connectWallet?()
-                    self.dismiss(animated: true, completion: nil)
+            DispatchQueue.main.async {
+                switch result {
+                case .success:
+                    self.completion?()
+                case .failure(let error):
+                    Toast.presentError(error.localizedDescription)
                 }
-            case .failure(let error):
-                Toast.presentError(error.localizedDescription)
             }
         }
     }

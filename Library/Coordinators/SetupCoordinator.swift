@@ -81,9 +81,20 @@ final class SetupCoordinator: Coordinator {
         guard let viewModel = mnemonicViewModel?.confirmMnemonicViewModel else { return }
 
         let viewController = ConfirmMnemonicPageViewController.instantiate(confirmMnemonicViewModel: viewModel) { [weak self] in
-            self?.didSetupWallet(connection: .local)
+            self?.presentPushNotificationSetup(connection: .local)
         }
         createWalletNavigationController?.pushViewController(viewController, animated: true)
+    }
+
+    private func presentPushNotificationSetup(connection: LightningConnection) {
+        if NotificationScheduler.needsAuthorization {
+            let viewController = PushNotificationViewController.instantiate { [weak self] in
+                self?.didSetupWallet(connection: connection)
+            }
+            createWalletNavigationController?.pushViewController(viewController, animated: true)
+        } else {
+            didSetupWallet(connection: connection)
+        }
     }
 
     private func recoverExistingWallet() {

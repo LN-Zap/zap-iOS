@@ -424,6 +424,16 @@ internal enum L10n {
         }
       }
     }
+    internal enum PushNotification {
+      /// Enable Push Notifications
+      internal static let confirmButtonTitle = L10n.tr("Localizable", "scene.push_notification.confirm_button_title")
+      /// Push Notifications
+      internal static let headline = L10n.tr("Localizable", "scene.push_notification.headline")
+      /// Zap can remind you about certain events.
+      internal static let message = L10n.tr("Localizable", "scene.push_notification.message")
+      /// Skip
+      internal static let skipButtonTitle = L10n.tr("Localizable", "scene.push_notification.skip_button_title")
+    }
     internal enum QrCodeDetail {
       /// Receive
       internal static let title = L10n.tr("Localizable", "scene.qr_code_detail.title")

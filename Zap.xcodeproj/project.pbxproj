@@ -42,6 +42,8 @@
 		AD27021F22E06E5000D4BF27 /* Keychain.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD27021E22E06E5000D4BF27 /* Keychain.swift */; };
 		AD27022122E0C06000D4BF27 /* LndFolderMigration.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD27022022E0C06000D4BF27 /* LndFolderMigration.swift */; };
 		AD27022222E1B35B00D4BF27 /* NotificationScheduler.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD293D4922DCA3C90069A8AB /* NotificationScheduler.swift */; };
+		AD27022422E1C61500D4BF27 /* PushNotificationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD27022322E1C61500D4BF27 /* PushNotificationViewController.swift */; };
+		AD27022722E1C78800D4BF27 /* PushNotification.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AD27022622E1C78800D4BF27 /* PushNotification.storyboard */; };
 		AD27B0182100C59500F232A8 /* UpdateAddressViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD27B0172100C59500F232A8 /* UpdateAddressViewController.swift */; };
 		AD27B01A2100D5CC00F232A8 /* CertificateDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD27B0192100D5CC00F232A8 /* CertificateDetailViewController.swift */; };
 		AD27B01C2100D7CF00F232A8 /* CertificateDetailCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD27B01B2100D7CF00F232A8 /* CertificateDetailCell.swift */; };
@@ -635,6 +637,8 @@
 		AD248629225B7F210049532C /* ChannelBalance.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChannelBalance.swift; sourceTree = "<group>"; };
 		AD27021E22E06E5000D4BF27 /* Keychain.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Keychain.swift; sourceTree = "<group>"; };
 		AD27022022E0C06000D4BF27 /* LndFolderMigration.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LndFolderMigration.swift; sourceTree = "<group>"; };
+		AD27022322E1C61500D4BF27 /* PushNotificationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PushNotificationViewController.swift; sourceTree = "<group>"; };
+		AD27022622E1C78800D4BF27 /* PushNotification.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = PushNotification.storyboard; sourceTree = "<group>"; };
 		AD27B01520FC8BBF00F232A8 /* Pem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Pem.swift; sourceTree = "<group>"; };
 		AD27B0172100C59500F232A8 /* UpdateAddressViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpdateAddressViewController.swift; sourceTree = "<group>"; };
 		AD27B0192100D5CC00F232A8 /* CertificateDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CertificateDetailViewController.swift; sourceTree = "<group>"; };
@@ -1486,6 +1490,15 @@
 			path = DataUpdater;
 			sourceTree = "<group>";
 		};
+		AD27022522E1C62100D4BF27 /* Push Notification */ = {
+			isa = PBXGroup;
+			children = (
+				AD27022622E1C78800D4BF27 /* PushNotification.storyboard */,
+				AD27022322E1C61500D4BF27 /* PushNotificationViewController.swift */,
+			);
+			path = "Push Notification";
+			sourceTree = "<group>";
+		};
 		AD2884332126B458003C3D94 /* Modal */ = {
 			isa = PBXGroup;
 			children = (
@@ -1954,6 +1967,7 @@
 			children = (
 				ADCE01BA207B57ED00CA72E8 /* CreateWallet.storyboard */,
 				ADF79373208F87E60086B2CA /* Confirm Mnemonic */,
+				AD27022522E1C62100D4BF27 /* Push Notification */,
 				AD3DDF6722D38D3B0031BFC8 /* Onboarding */,
 				ADF79374208F88CA0086B2CA /* Recover Wallet */,
 				AD3CF97920B4028D00D78A54 /* Select Wallet Creation Method */,
@@ -2633,6 +2647,7 @@
 				AD391D1120D16FF5007EE22A /* Toast.xib in Resources */,
 				AD391D0420D16FF5007EE22A /* AmountInputView.xib in Resources */,
 				AD3DDF6922D38D4C0031BFC8 /* Onboarding.storyboard in Resources */,
+				AD27022722E1C78800D4BF27 /* PushNotification.storyboard in Resources */,
 				ADA58F9A22049047009A5494 /* ManageWallets.storyboard in Resources */,
 				AD7ED61E22087812007C5F2C /* ManageWalletTableViewCell.xib in Resources */,
 				AD391D2220D1798A007EE22A /* Media.xcassets in Resources */,
@@ -3165,6 +3180,7 @@
 				AD391C5D20D16F7A007EE22A /* MnemonicWordListViewController.swift in Sources */,
 				AD391C3320D16EFA007EE22A /* UIImage.swift in Sources */,
 				ADCD5B0F20D7E40C0037F156 /* ChangePinSettingsItem.swift in Sources */,
+				AD27022422E1C61500D4BF27 /* PushNotificationViewController.swift in Sources */,
 				ADDD13BB2119CF110035D2F9 /* CallbackButton.swift in Sources */,
 				ADFE2E4C216CF4A800988243 /* PushViewControllerSettingsItem.swift in Sources */,
 				AD391C4D20D16F68007EE22A /* ChannelListViewController.swift in Sources */,

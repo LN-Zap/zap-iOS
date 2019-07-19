@@ -101,6 +101,11 @@ internal enum StoryboardScene {
 
     internal static let onboardingTextViewController = SceneType<OnboardingTextViewController>(storyboard: Onboarding.self, identifier: "OnboardingTextViewController")
   }
+  internal enum PushNotification: StoryboardType {
+    internal static let storyboardName = "PushNotification"
+
+    internal static let pushNotificationViewController = SceneType<PushNotificationViewController>(storyboard: PushNotification.self, identifier: "PushNotificationViewController")
+  }
   internal enum QRCodeDetail: StoryboardType {
     internal static let storyboardName = "QRCodeDetail"
 
