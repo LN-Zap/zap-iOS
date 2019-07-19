@@ -59,8 +59,8 @@ final class WalletViewController: UIViewController {
         walletViewController.requestButtonTapped = requestButtonTapped
         walletViewController.nodeAliasButtonTapped = nodeAliasButtonTapped
 
-        walletViewController.tabBarItem.title = L10n.Scene.Wallet.title
-        walletViewController.tabBarItem.image = Asset.tabbarWallet.image
+        walletViewController.tabBarItem.title = Tab.wallet.title
+        walletViewController.tabBarItem.image = Tab.wallet.image
 
         return walletViewController
     }

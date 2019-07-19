@@ -14,6 +14,28 @@ enum Tab {
     case wallet
     case history
     case settings
+
+    var title: String {
+        switch self {
+        case .wallet:
+            return L10n.Scene.Wallet.title
+        case .history:
+            return L10n.Scene.History.title
+        case .settings:
+            return L10n.Scene.Settings.title
+        }
+    }
+
+    var image: UIImage {
+        switch self {
+        case .wallet:
+            return Asset.tabbarWallet.image
+        case .history:
+            return Asset.tabbarHistory.image
+        case .settings:
+            return Asset.tabbarSettings.image
+        }
+    }
 }
 
 final class WalletCoordinator: NSObject, Coordinator {
@@ -168,8 +190,8 @@ final class WalletCoordinator: NSObject, Coordinator {
 
         let navigationController = ZapNavigationController(rootViewController: settingsViewController)
 
-        navigationController.tabBarItem.title = L10n.Scene.Settings.title
-        navigationController.tabBarItem.image = Asset.tabbarSettings.image
+        navigationController.tabBarItem.title = Tab.settings.title
+        navigationController.tabBarItem.image = Tab.settings.image
         navigationController.view.backgroundColor = UIColor.Zap.background
 
         return navigationController
@@ -178,8 +200,8 @@ final class WalletCoordinator: NSObject, Coordinator {
     func historyViewController() -> UINavigationController {
         let viewController = HistoryViewController.instantiate(historyViewModel: historyViewModel, presentFilter: presentFilter, presentDetail: presentDetail, presentSend: presentSend)
         let navigationController = ZapNavigationController(rootViewController: viewController)
-        navigationController.tabBarItem.title = L10n.Scene.History.title
-        navigationController.tabBarItem.image = Asset.tabbarHistory.image
+        navigationController.tabBarItem.title = Tab.history.title
+        navigationController.tabBarItem.image = Tab.history.image
 
         return navigationController
     }
