@@ -51,7 +51,6 @@ public final class RootCoordinator: Coordinator, SetupCoordinatorDelegate {
         window.rootViewController = self.rootViewController
         window.tintColor = UIColor.Zap.lightningOrange
         Appearance.setup()
-        NotificationConfigurator.configure()
     }
 
     public func start() {

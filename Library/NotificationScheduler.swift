@@ -5,35 +5,48 @@
 //  Copyright © 2019 Zap. All rights reserved.
 //
 
+import Bond
 import Foundation
+import Lightning
 import Logger
+import ReactiveKit
 import SwiftLnd
 import UserNotifications
 
-public final class NotificationScheduler {
-    public struct Configuration {
+final class NotificationScheduler: NSObject {
+    struct Configuration {
         let daysLeft: Int
         let title: String
         let body: String
-
-        public init(daysLeft: Int, title: String, body: String) {
-            self.daysLeft = daysLeft
-            self.title = title
-            self.body = body
-        }
     }
 
-    public var configurations = [Configuration]()
-    public static let shared = NotificationScheduler()
+    private let configurations: [Configuration]
 
-    private init() {}
+    init(configurations: [Configuration]) {
+        self.configurations = configurations
+    }
 
     func requestAuthorization() {
         let center = UNUserNotificationCenter.current()
         center.requestAuthorization(options: [.alert]) { _, _ in }
     }
 
-    func schedule(for channels: [Channel], bestHeaderDate: Date?) {
+    func listenToChannelUpdates(lightningService: LightningService) {
+        guard lightningService.connection == .local else { return }
+        combineLatest(lightningService.channelService.open,
+                      lightningService.channelService.pending,
+                      lightningService.infoService.bestHeaderDate) { ($0.collection + $1.collection, $2) }
+            .debounce(interval: 2)
+            .distinctUntilChanged({ tuple1, tuple2 -> Bool in
+                tuple1 == tuple2
+            })
+            .observeNext { [weak self] in
+                self?.schedule(for: $0.0, bestHeaderDate: $0.1)
+            }
+            .dispose(in: reactive.bag)
+    }
+
+    private func schedule(for channels: [Channel], bestHeaderDate: Date?) {
         guard let bestHeaderDate = bestHeaderDate else { return }
 
         let notificationCenter = UNUserNotificationCenter.current()

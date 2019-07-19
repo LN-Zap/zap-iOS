@@ -28,6 +28,8 @@ final class WalletCoordinator: NSObject, Coordinator {
     private weak var detailViewController: UINavigationController?
     private weak var disconnectWalletDelegate: WalletDelegate?
 
+    private var notificationScheduler: NotificationScheduler?
+
     var route: Route?
 
     init(rootViewController: RootViewController, lightningService: LightningService, disconnectWalletDelegate: WalletDelegate, authenticationViewModel: AuthenticationViewModel, walletConfigurationStore: WalletConfigurationStore) {
@@ -53,6 +55,14 @@ final class WalletCoordinator: NSObject, Coordinator {
                     }
                 }
             }
+
+            // Schedule sync reminder notifications
+            notificationScheduler = NotificationScheduler(configurations: [
+                NotificationScheduler.Configuration(daysLeft: 2, title: L10n.Notification.Sync.title, body: L10n.Notification.Sync.Day12.body),
+                NotificationScheduler.Configuration(daysLeft: 1, title: L10n.Notification.Sync.title, body: L10n.Notification.Sync.Day13.body),
+                NotificationScheduler.Configuration(daysLeft: 0, title: L10n.Notification.Sync.title, body: L10n.Notification.Sync.Day14.body)
+            ])
+            notificationScheduler?.listenToChannelUpdates(lightningService: lightningService)
         }
 
         lightningService.start()
