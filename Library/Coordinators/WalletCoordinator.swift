@@ -90,7 +90,7 @@ final class WalletCoordinator: NSObject, Coordinator {
 
         switch state {
         case .connecting:
-            presentLoading(message: .none)
+            presentLoading()
         case .syncing:
             presentSync()
         case .running:
@@ -120,8 +120,8 @@ final class WalletCoordinator: NSObject, Coordinator {
         presentViewController(viewController)
     }
 
-    private func presentLoading(message: LoadingViewController.Message) {
-        let viewController = LoadingViewController.instantiate(message: message)
+    private func presentLoading() {
+        let viewController = LoadingViewController.instantiate()
         presentViewController(viewController)
     }
 
