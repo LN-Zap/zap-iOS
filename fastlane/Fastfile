@@ -12,6 +12,7 @@ app_identifier = ["com.jackmallers.zap", "com.jackmallers.zap.Sticker", "com.jac
 
 lane :mainnet do
   pre_upload
+  check_release_branch('release/mainnet')
 
   ids = {
     "Zap/Info.plist" => "com.jackmallers.zap.mainnet",
@@ -53,6 +54,8 @@ lane :mainnet do
     username: ENV['ITUNESCONNECT_USER'],
     skip_waiting_for_build_processing: true
   )
+
+  add_git_tag
 
   sh("git reset --hard")
   sh("git clean -f")
