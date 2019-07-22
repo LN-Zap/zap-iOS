@@ -221,6 +221,7 @@
 		AD81C21721B80FCD00FA3FA9 /* SafariSettingsItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD81C21621B80FCD00FA3FA9 /* SafariSettingsItem.swift */; };
 		AD81C21921B865E100FA3FA9 /* SyncPercentageEstimator.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD81C21821B865E100FA3FA9 /* SyncPercentageEstimator.swift */; };
 		AD81C21B21B86A3100FA3FA9 /* SyncPercentageEstimatorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD81C21A21B86A3100FA3FA9 /* SyncPercentageEstimatorTests.swift */; };
+		AD8B656C22E5F73600E9DBD5 /* SkeletonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD8B656B22E5F73600E9DBD5 /* SkeletonView.swift */; };
 		AD931BD122DE23CC0048431C /* Password.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD86586422DE0E4D002AE158 /* Password.swift */; };
 		AD931BD422DF68F40048431C /* BuildConfiguration.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD931BD222DF66FE0048431C /* BuildConfiguration.swift */; };
 		AD967FD42100D8E80048085B /* CertificateDetailCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = AD967FD32100D8E80048085B /* CertificateDetailCell.xib */; };
@@ -735,6 +736,7 @@
 		AD81C21A21B86A3100FA3FA9 /* SyncPercentageEstimatorTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SyncPercentageEstimatorTests.swift; sourceTree = "<group>"; };
 		AD86586422DE0E4D002AE158 /* Password.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Password.swift; sourceTree = "<group>"; };
 		AD8B13F020C0582D0091F9DA /* RootCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RootCoordinator.swift; sourceTree = "<group>"; };
+		AD8B656B22E5F73600E9DBD5 /* SkeletonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SkeletonView.swift; sourceTree = "<group>"; };
 		AD931BD222DF66FE0048431C /* BuildConfiguration.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BuildConfiguration.swift; sourceTree = "<group>"; };
 		AD93ED5520A09D59000E814E /* GraphTopologyUpdate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GraphTopologyUpdate.swift; sourceTree = "<group>"; };
 		AD967FD32100D8E80048085B /* CertificateDetailCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CertificateDetailCell.xib; sourceTree = "<group>"; };
@@ -1185,7 +1187,6 @@
 		A010093E2014D4720001EF94 /* Views */ = {
 			isa = PBXGroup;
 			children = (
-				AD1831C32296855200120260 /* OnChainFeeView */,
 				ADBA120720935871001F7700 /* AmountInput */,
 				AD21768820C3DFDB007779DE /* BalanceView.swift */,
 				A0BD44DE206FED1400BF27A3 /* BondCell.swift */,
@@ -1197,8 +1198,10 @@
 				AD615CF4211C82E600680790 /* LoadingView.swift */,
 				AD2884332126B458003C3D94 /* Modal */,
 				AD2884362126DDA2003C3D94 /* ModalDetailViewController.swift */,
+				AD1831C32296855200120260 /* OnChainFeeView */,
 				AD615CF6211CAB0900680790 /* PaddingLabel.swift */,
 				ADF79363208DCB630086B2CA /* PinView.swift */,
+				AD8B656B22E5F73600E9DBD5 /* SkeletonView.swift */,
 				ADDD13B72119CE980035D2F9 /* Stack View */,
 				A0605F8A202C9D2F00EA903C /* Toast */,
 				AD7EDAE62108D39D0058CCCA /* ZapNavigationController.swift */,
@@ -3061,6 +3064,7 @@
 				AD81C21921B865E100FA3FA9 /* SyncPercentageEstimator.swift in Sources */,
 				AD7EDAE52108C41D0058CCCA /* WalletViewController.swift in Sources */,
 				AD391C5B20D16F7A007EE22A /* MnemonicViewController.swift in Sources */,
+				AD8B656C22E5F73600E9DBD5 /* SkeletonView.swift in Sources */,
 				AD391CA120D16FA8007EE22A /* RootViewController.swift in Sources */,
 				ADA2DCFF225CC817007482D9 /* SuggestedPeers.swift in Sources */,
 				AD391C2420D16EFA007EE22A /* Array.swift in Sources */,
