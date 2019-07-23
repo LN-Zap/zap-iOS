@@ -184,11 +184,6 @@
 "scene.qr_code_detail.title" = "Primanje";
 
 "scene.sync.description_label" = "Sinkronizacija na blokčein…";
-"scene.sync.disconnect_bar_button" = "Prekinuti vezu";
-"scene.sync.disconnect_alert.title" = "Prekinuti vezu";
-"scene.sync.disconnect_alert.message" = "Stvarno želite otkazati sinkronizaciju? Morat ćete se ponovno povezati na svoj čvor nakon toga.";
-"scene.sync.disconnect_alert.destructive_action" = "Prekinuti vezu sa čvorom";
-"scene.sync.disconnect_alert.cancel_action" = "Odustani";
 
 "scene.transaction_detail.title.lightning_invoice" = "Detalji fakture";
 "scene.transaction_detail.title.payment_detail" = "Detalji plaćanja";
