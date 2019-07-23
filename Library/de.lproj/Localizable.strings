@@ -184,11 +184,6 @@
 "scene.qr_code_detail.title" = "Empfangen";
 
 "scene.sync.description_label" = "Synchronisiere mit der Blockchain...";
-"scene.sync.disconnect_bar_button" = "Trennen";
-"scene.sync.disconnect_alert.title" = "Trennen";
-"scene.sync.disconnect_alert.message" = "Möchtest du wirklich die Synchronisierung abbrechen? Du musst dich mit deinem Knoten später wiederverbinden.";
-"scene.sync.disconnect_alert.destructive_action" = "Vom Knoten trennen";
-"scene.sync.disconnect_alert.cancel_action" = "Abbrechen";
 
 "scene.transaction_detail.title.lightning_invoice" = "Rechnungsdetail";
 "scene.transaction_detail.title.payment_detail" = "Zahlungsdetail";
