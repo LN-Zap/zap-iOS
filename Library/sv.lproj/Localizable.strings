@@ -184,11 +184,6 @@
 "scene.qr_code_detail.title" = "Receive";
 
 "scene.sync.description_label" = "Synkroniserar med blockkedjan…";
-"scene.sync.disconnect_bar_button" = "Koppla från";
-"scene.sync.disconnect_alert.title" = "Koppla från";
-"scene.sync.disconnect_alert.message" = "Vill du verkligen avbryta syncandet? Du måste återansluta till din nod efteråt.";
-"scene.sync.disconnect_alert.destructive_action" = "Koppla från nod";
-"scene.sync.disconnect_alert.cancel_action" = "Avbryt";
 
 "scene.transaction_detail.title.lightning_invoice" = "Fakturainfo";
 "scene.transaction_detail.title.payment_detail" = "Betalningsinfo";

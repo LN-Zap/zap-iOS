@@ -184,11 +184,6 @@
 "scene.qr_code_detail.title" = "Ontvangen";
 
 "scene.sync.description_label" = "Synchroniseren naar blockchain…";
-"scene.sync.disconnect_bar_button" = "Verbinding verbreken";
-"scene.sync.disconnect_alert.title" = "Verbinding verbreken";
-"scene.sync.disconnect_alert.message" = "Wilt u het synchroniseren annuleren? Je zal hierna opnieuw moeten verbinden met je lndnode.";
-"scene.sync.disconnect_alert.destructive_action" = "Ontkoppel node";
-"scene.sync.disconnect_alert.cancel_action" = "Afbreken";
 
 "scene.transaction_detail.title.lightning_invoice" = "Rekening detail";
 "scene.transaction_detail.title.payment_detail" = "Betaling detail";

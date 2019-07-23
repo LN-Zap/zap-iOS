@@ -184,11 +184,6 @@
 "scene.qr_code_detail.title" = "Получить";
 
 "scene.sync.description_label" = "Синхронизация с блокчейном…";
-"scene.sync.disconnect_bar_button" = "Отключить";
-"scene.sync.disconnect_alert.title" = "Отключить";
-"scene.sync.disconnect_alert.message" = "Вы действительно хотите отменить синхронизацию? После этого вам придется снова подключиться к узлу.";
-"scene.sync.disconnect_alert.destructive_action" = "Разъединить Узел";
-"scene.sync.disconnect_alert.cancel_action" = "Отменить";
 
 "scene.transaction_detail.title.lightning_invoice" = "Детали Счета";
 "scene.transaction_detail.title.payment_detail" = "Платежная Информация";

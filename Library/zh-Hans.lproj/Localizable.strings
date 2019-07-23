@@ -184,11 +184,6 @@
 "scene.qr_code_detail.title" = "接收";
 
 "scene.sync.description_label" = "从blockchain同步...";
-"scene.sync.disconnect_bar_button" = "断开";
-"scene.sync.disconnect_alert.title" = "断开";
-"scene.sync.disconnect_alert.message" = "确实要取消同步？您将需要重新连接到您的节点。";
-"scene.sync.disconnect_alert.destructive_action" = "断开节点链接";
-"scene.sync.disconnect_alert.cancel_action" = "取消";
 
 "scene.transaction_detail.title.lightning_invoice" = "账单明细";
 "scene.transaction_detail.title.payment_detail" = "付款明细";

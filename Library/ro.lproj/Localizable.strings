@@ -184,11 +184,6 @@
 "scene.qr_code_detail.title" = "Receive";
 
 "scene.sync.description_label" = "Ne sincronizam cu blockchainul";
-"scene.sync.disconnect_bar_button" = "Deconectaţi";
-"scene.sync.disconnect_alert.title" = "Deconectaţi";
-"scene.sync.disconnect_alert.message" = "Într-adevăr doriţi să revocaţi sincronizarea? Va trebui să se reconecteze la nodul dumneavoastră după aceea.";
-"scene.sync.disconnect_alert.destructive_action" = "Deconectaţi nod";
-"scene.sync.disconnect_alert.cancel_action" = "Revocare";
 
 "scene.transaction_detail.title.lightning_invoice" = "Detalii factură";
 "scene.transaction_detail.title.payment_detail" = "Detalii plată";
