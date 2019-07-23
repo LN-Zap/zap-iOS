@@ -113,9 +113,7 @@ final class WalletCoordinator: NSObject, Coordinator {
         switch state {
         case .connecting:
             presentLoading()
-        case .syncing:
-            presentSync()
-        case .running:
+        case .running, .syncing:
             presentMain()
         case .locked:
             presentUnlockWallet()
@@ -134,12 +132,6 @@ final class WalletCoordinator: NSObject, Coordinator {
         let viewController = UnlockWalletViewController.instantiate(unlockWalletViewModel: unlockWalletViewModel, disconnectWalletDelegate: disconnectWalletDelegate)
         let navigationController = ZapNavigationController(rootViewController: viewController)
         presentViewController(navigationController)
-    }
-
-    private func presentSync() {
-        guard let disconnectWalletDelegate = disconnectWalletDelegate else { return }
-        let viewController = SyncViewController.instantiate(with: lightningService, delegate: disconnectWalletDelegate)
-        presentViewController(viewController)
     }
 
     private func presentLoading() {

@@ -425,11 +425,11 @@ internal enum L10n {
       }
     }
     internal enum PushNotification {
-      /// Enable Push Notifications
+      /// Turn on notifications
       internal static let confirmButtonTitle = L10n.tr("Localizable", "scene.push_notification.confirm_button_title")
-      /// Push Notifications
+      /// Notifications?
       internal static let headline = L10n.tr("Localizable", "scene.push_notification.headline")
-      /// Zap can remind you about certain events.
+      /// To keep your funds safe, zap needs to sync once in a while. Do you want to get a notification when it's time?
       internal static let message = L10n.tr("Localizable", "scene.push_notification.message")
       /// Skip
       internal static let skipButtonTitle = L10n.tr("Localizable", "scene.push_notification.skip_button_title")
@@ -633,18 +633,6 @@ internal enum L10n {
     internal enum Sync {
       /// Syncing to blockchain…
       internal static let descriptionLabel = L10n.tr("Localizable", "scene.sync.description_label")
-      /// Disconnect
-      internal static let disconnectBarButton = L10n.tr("Localizable", "scene.sync.disconnect_bar_button")
-      internal enum DisconnectAlert {
-        /// Cancel
-        internal static let cancelAction = L10n.tr("Localizable", "scene.sync.disconnect_alert.cancel_action")
-        /// Disconnect Node
-        internal static let destructiveAction = L10n.tr("Localizable", "scene.sync.disconnect_alert.destructive_action")
-        /// Do you really want to cancel syncing? You will have to reconnect to your node afterwards.
-        internal static let message = L10n.tr("Localizable", "scene.sync.disconnect_alert.message")
-        /// Disconnect
-        internal static let title = L10n.tr("Localizable", "scene.sync.disconnect_alert.title")
-      }
     }
     internal enum TimeLock {
       /// Your wallet is locked for:

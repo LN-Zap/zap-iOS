@@ -118,13 +118,6 @@ internal enum StoryboardScene {
 
     internal static let initialScene = InitialSceneType<RootViewController>(storyboard: Root.self)
   }
-  internal enum Sync: StoryboardType {
-    internal static let storyboardName = "Sync"
-
-    internal static let initialScene = InitialSceneType<SyncViewController>(storyboard: Sync.self)
-
-    internal static let syncViewController = SceneType<SyncViewController>(storyboard: Sync.self, identifier: "SyncViewController")
-  }
   internal enum TimeLocked: StoryboardType {
     internal static let storyboardName = "TimeLocked"
 

@@ -40,7 +40,7 @@ struct LocalLndConfiguration {
         case .mainnet:
             return ["mainnet1-btcd.zaphq.io", "mainnet2-btcd.zaphq.io"]
         case .testnet:
-            return ["testnet1-btcd.zaphq.io", "testnet2-btcd.zaphq.io"]
+            return ["testnet1-btcd.zaphq.io", "testnet2-btcd.zaphq.io", "btcd-testnet.lightning.computer"]
         case .simnet, .regtest:
             return []
         }
