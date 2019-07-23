@@ -14,6 +14,8 @@ import SwiftBTC
 final class WalletViewModel: NSObject {
     private let lightningService: LightningService
 
+    var syncViewModel: SyncViewModel
+
     var network: Observable<Network?> {
         return lightningService.infoService.network
     }
@@ -30,6 +32,8 @@ final class WalletViewModel: NSObject {
 
     init(lightningService: LightningService) {
         self.lightningService = lightningService
+
+        syncViewModel = SyncViewModel(lightningService: lightningService)
 
         let balanceService = lightningService.balanceService
         balanceSegments = [

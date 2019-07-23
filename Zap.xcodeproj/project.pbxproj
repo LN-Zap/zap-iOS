@@ -144,8 +144,6 @@
 		AD391CB420D16FA8007EE22A /* Section.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0DDC06D2018C08800AEFF94 /* Section.swift */; };
 		AD391CB520D16FA8007EE22A /* Settings.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0A05A5620149A0D0007D1C9 /* Settings.swift */; };
 		AD391CB720D16FA8007EE22A /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0DDC0612018955C00AEFF94 /* SettingsViewController.swift */; };
-		AD391CB820D16FA8007EE22A /* Sync.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = ADCE01C5207B71FC00CA72E8 /* Sync.storyboard */; };
-		AD391CB920D16FA8007EE22A /* SyncViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADCE01C7207B720800CA72E8 /* SyncViewController.swift */; };
 		AD391CD420D16FE1007EE22A /* HistoryCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0731FDF2014A22B00C55E45 /* HistoryCell.swift */; };
 		AD391CD520D16FE1007EE22A /* HistoryCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = A0731FE02014A22B00C55E45 /* HistoryCell.xib */; };
 		AD391CDA20D16FE1007EE22A /* History.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A0DDC05B201883D800AEFF94 /* History.storyboard */; };
@@ -361,6 +359,7 @@
 		ADFC816F20DA80EF00D26913 /* RecoverWalletViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADFC816E20DA80EF00D26913 /* RecoverWalletViewModel.swift */; };
 		ADFCEADF2177687F00370242 /* EventDetailViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADFCEADE2177687F00370242 /* EventDetailViewModel.swift */; };
 		ADFCEAE221776E2100370242 /* EventDetailViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADFCEAE021776E1C00370242 /* EventDetailViewModelTests.swift */; };
+		ADFDE94422E6F46100B718A4 /* SyncViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADFDE94322E6F46100B718A4 /* SyncViewModel.swift */; };
 		ADFE2E4C216CF4A800988243 /* PushViewControllerSettingsItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADFE2E4B216CF4A800988243 /* PushViewControllerSettingsItem.swift */; };
 		ADFE538520D693FF00B3BA2A /* InputNumberFormatterTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0F9AEE2206E3E0300E93DCA /* InputNumberFormatterTests.swift */; };
 		ADFEFA6A20E627F100FE1557 /* BalanceService.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADA6D2C420AC1DDE009398A5 /* BalanceService.swift */; };
@@ -903,8 +902,6 @@
 		ADCE01BE207B59BD00CA72E8 /* ConfirmMnemonicViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConfirmMnemonicViewController.swift; sourceTree = "<group>"; };
 		ADCE01C0207B5C0300CA72E8 /* MnemonicViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MnemonicViewModel.swift; sourceTree = "<group>"; };
 		ADCE01C2207B66A500CA72E8 /* ConfirmMnemonicViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConfirmMnemonicViewModel.swift; sourceTree = "<group>"; };
-		ADCE01C5207B71FC00CA72E8 /* Sync.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Sync.storyboard; sourceTree = "<group>"; };
-		ADCE01C7207B720800CA72E8 /* SyncViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SyncViewController.swift; sourceTree = "<group>"; };
 		ADCE01CB207B967200CA72E8 /* Loading.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Loading.storyboard; sourceTree = "<group>"; };
 		ADCEAFD22255F2C2004F605B /* WarningSettingsItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WarningSettingsItem.swift; sourceTree = "<group>"; };
 		ADCEAFD422579C2A004F605B /* LoadingAnimationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingAnimationView.swift; sourceTree = "<group>"; };
@@ -970,6 +967,7 @@
 		ADFC816E20DA80EF00D26913 /* RecoverWalletViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecoverWalletViewModel.swift; sourceTree = "<group>"; };
 		ADFCEADE2177687F00370242 /* EventDetailViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventDetailViewModel.swift; sourceTree = "<group>"; };
 		ADFCEAE021776E1C00370242 /* EventDetailViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventDetailViewModelTests.swift; sourceTree = "<group>"; };
+		ADFDE94322E6F46100B718A4 /* SyncViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SyncViewModel.swift; sourceTree = "<group>"; };
 		ADFE2E4B216CF4A800988243 /* PushViewControllerSettingsItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PushViewControllerSettingsItem.swift; sourceTree = "<group>"; };
 		ADFE537B20D693F500B3BA2A /* LibraryTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = LibraryTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		ADFE537F20D693F500B3BA2A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -1157,7 +1155,6 @@
 				A0DDC0722018C72D00AEFF94 /* Root */,
 				AD288450212AE81B003C3D94 /* Send */,
 				A0DDC06320189CCC00AEFF94 /* Settings */,
-				ADCE01C4207B714E00CA72E8 /* Sync */,
 				AD667E4F2136B042007B9160 /* TimeLocked */,
 				AD2B877B221C6EF900308C1B /* UnlockWallet */,
 				AD7EDAE12108C4050058CCCA /* Wallet */,
@@ -1734,10 +1731,12 @@
 			isa = PBXGroup;
 			children = (
 				AD7EDAE22108C4150058CCCA /* Wallet.storyboard */,
+				AD5901CA2265E73F00DB9B00 /* ArrowHandleView.swift */,
+				AD81C21821B865E100FA3FA9 /* SyncPercentageEstimator.swift */,
+				ADFDE94322E6F46100B718A4 /* SyncViewModel.swift */,
 				AD248623225B73970049532C /* WalletBalanceSegment.swift */,
 				AD7EDAE42108C41D0058CCCA /* WalletViewController.swift */,
 				AD248625225B78300049532C /* WalletViewModel.swift */,
-				AD5901CA2265E73F00DB9B00 /* ArrowHandleView.swift */,
 			);
 			path = Wallet;
 			sourceTree = "<group>";
@@ -1977,16 +1976,6 @@
 				AD79BB38208CD9970027AAC9 /* Show Mnemonic */,
 			);
 			path = CreateWallet;
-			sourceTree = "<group>";
-		};
-		ADCE01C4207B714E00CA72E8 /* Sync */ = {
-			isa = PBXGroup;
-			children = (
-				ADCE01C5207B71FC00CA72E8 /* Sync.storyboard */,
-				AD81C21821B865E100FA3FA9 /* SyncPercentageEstimator.swift */,
-				ADCE01C7207B720800CA72E8 /* SyncViewController.swift */,
-			);
-			path = Sync;
 			sourceTree = "<group>";
 		};
 		ADCE01CA207B966200CA72E8 /* Loading */ = {
@@ -2622,7 +2611,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				AD10D05721132EFB00A0F0D3 /* Localizable.strings in Resources */,
-				AD391CB820D16FA8007EE22A /* Sync.storyboard in Resources */,
 				AD967FD42100D8E80048085B /* CertificateDetailCell.xib in Resources */,
 				ADA179C02151509E001401F3 /* SectionHeaderView.xib in Resources */,
 				AD391C6A20D16F89007EE22A /* NumericKeyPad.storyboard in Resources */,
@@ -3166,7 +3154,6 @@
 				AD3553E5224E32EA00B99ABC /* ChannelListHeaderView.swift in Sources */,
 				AD248626225B78300049532C /* WalletViewModel.swift in Sources */,
 				AD7FB3FA225E1BBF00C98A00 /* UIImageView.swift in Sources */,
-				AD391CB920D16FA8007EE22A /* SyncViewController.swift in Sources */,
 				AD391C5A20D16F7A007EE22A /* MnemonicPageViewController.swift in Sources */,
 				ADEB619C2214588A009D5707 /* WalletListViewController.swift in Sources */,
 				AD667E4921367A35007B9160 /* BackgroundCoordinator.swift in Sources */,
@@ -3204,6 +3191,7 @@
 				AD391D0520D16FF5007EE22A /* BalanceView.swift in Sources */,
 				AD391D0B20D16FF5007EE22A /* LineView.swift in Sources */,
 				AD391C3720D16EFA007EE22A /* UIViewController.swift in Sources */,
+				ADFDE94422E6F46100B718A4 /* SyncViewModel.swift in Sources */,
 				AD391C6220D16F7A007EE22A /* SelectWalletCreationMethodViewController.swift in Sources */,
 				6A9518DA222DCFCA0008FE4F /* Array2DElement.swift in Sources */,
 				AD391C4E20D16F68007EE22A /* ChannelListViewModel.swift in Sources */,

@@ -10,17 +10,17 @@ import Foundation
 final class PulsatingLayer: CALayer {
     override func layoutSublayers() {
         super.layoutSublayers()
-        
+
         updateAnimation()
     }
-    
+
     override var bounds: CGRect {
         didSet {
             guard oldValue != bounds else { return }
             updateAnimation()
         }
     }
-    
+
     static let animation: CABasicAnimation = {
         let animation = CABasicAnimation(keyPath: "backgroundColor")
         animation.fromValue = UIColor.Zap.seaBlue.cgColor
@@ -33,7 +33,7 @@ final class PulsatingLayer: CALayer {
         animation.isRemovedOnCompletion = false
         return animation
     }()
-    
+
     private func updateAnimation() {
         layoutIfNeeded()
         removeAllAnimations()
@@ -46,16 +46,16 @@ final class SkeletonView: UIView {
         super.init(frame: frame)
         setup()
     }
-    
+
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
         setup()
     }
-    
+
     private func setup() {
         layer.cornerRadius = 4
     }
-    
+
     override class var layerClass: AnyClass {
         return PulsatingLayer.self
     }

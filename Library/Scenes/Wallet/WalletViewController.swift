@@ -38,6 +38,13 @@ final class WalletViewController: UIViewController {
     @IBOutlet private weak var primaryBalanceLabel: UILabel!
     @IBOutlet private weak var secondaryBalanceLabel: UILabel!
 
+    // sync view
+    @IBOutlet private weak var syncBackgroundView: UIView!
+    @IBOutlet private weak var syncViewHeightConstraint: NSLayoutConstraint!
+    @IBOutlet private weak var syncTitleLabel: UILabel!
+    @IBOutlet private weak var syncProgressLabel: UILabel!
+    @IBOutlet private weak var syncProgressView: UIProgressView!
+
     // swiftlint:disable implicitly_unwrapped_optional
     private var walletViewModel: WalletViewModel!
     private var sendButtonTapped: (() -> Void)!
@@ -110,12 +117,41 @@ final class WalletViewController: UIViewController {
         setupBindings()
 
         setupDetailView()
-
+        setupSyncView()
     }
 
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
         updateDetailPosition()
+    }
+
+    private func setupSyncView() {
+        walletViewModel.syncViewModel.isSyncing
+            .map { $0 ? UILayoutPriority(rawValue: 1) : UILayoutPriority(rawValue: 999) }
+            .observeOn(DispatchQueue.main)
+            .observeNext { [weak self] in
+                self?.syncViewHeightConstraint.priority = $0
+                UIView.animate(withDuration: 0.25) {
+                    self?.view.layoutIfNeeded()
+                }
+            }
+            .dispose(in: reactive.bag)
+
+        walletViewModel.syncViewModel.percentSignal
+            .map { Float($0) }
+            .bind(to: syncProgressView.reactive.progress)
+            .dispose(in: reactive.bag)
+
+        walletViewModel.syncViewModel.percentSignal
+            .map { "\(Int($0 * 100))%" }
+            .bind(to: syncProgressLabel.reactive.text)
+            .dispose(in: reactive.bag)
+
+        syncTitleLabel.text = L10n.Scene.Sync.descriptionLabel
+
+        syncBackgroundView.backgroundColor = UIColor.Zap.seaBlue
+
+        Style.Label.body.apply(to: syncTitleLabel, syncProgressLabel)
     }
 
     private func setupPrimaryBalanceLabel() {
