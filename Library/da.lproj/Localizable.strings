@@ -184,11 +184,6 @@
 "scene.qr_code_detail.title" = "Modtag";
 
 "scene.sync.description_label" = "Synkronisering til blockkæde…";
-"scene.sync.disconnect_bar_button" = "Afbryd";
-"scene.sync.disconnect_alert.title" = "Afbryd";
-"scene.sync.disconnect_alert.message" = "Vil du annullere synkroniseringen? Du vil bliver nødt til at genoprette forbindelsen til din node bagefter.";
-"scene.sync.disconnect_alert.destructive_action" = "Afbryde Node";
-"scene.sync.disconnect_alert.cancel_action" = "Annuller";
 
 "scene.transaction_detail.title.lightning_invoice" = "Faktura detaljer";
 "scene.transaction_detail.title.payment_detail" = "Betalings detaljer";

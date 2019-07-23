@@ -184,11 +184,6 @@
 "scene.qr_code_detail.title" = "Λάβετε";
 
 "scene.sync.description_label" = "Συγχρονισμός με το blockchain";
-"scene.sync.disconnect_bar_button" = "Αποσύνδεση";
-"scene.sync.disconnect_alert.title" = "Αποσύνδεση";
-"scene.sync.disconnect_alert.message" = "Θέλετε πραγματικά να ακυρώσετε το συγχρονισμό; Θα πρέπει να επανασυνδεθείτε με τον κόμβο σας αργότερα.";
-"scene.sync.disconnect_alert.destructive_action" = "Αποσυνδέστε τον κόμβο";
-"scene.sync.disconnect_alert.cancel_action" = "Ματαίωση";
 
 "scene.transaction_detail.title.lightning_invoice" = "Λεπτομέρειες τιμολογίου";
 "scene.transaction_detail.title.payment_detail" = "Λεπτομέρειες πληρωμής";

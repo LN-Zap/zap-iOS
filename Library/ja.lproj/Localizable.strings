@@ -184,11 +184,6 @@
 "scene.qr_code_detail.title" = "Receive";
 
 "scene.sync.description_label" = "Blockchain に同期.";
-"scene.sync.disconnect_bar_button" = "切断";
-"scene.sync.disconnect_alert.title" = "切断";
-"scene.sync.disconnect_alert.message" = "本当に同期をキャンセルしますか？　後でノードに再接続する必要があるでしょう。";
-"scene.sync.disconnect_alert.destructive_action" = "ノードを切断します。";
-"scene.sync.disconnect_alert.cancel_action" = "キャンセル";
 
 "scene.transaction_detail.title.lightning_invoice" = "請求明細";
 "scene.transaction_detail.title.payment_detail" = "お支払い明細";
