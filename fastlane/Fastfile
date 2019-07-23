@@ -57,8 +57,7 @@ lane :mainnet do
 
   add_git_tag
 
-  sh("git reset --hard")
-  sh("git clean -f")
+  reset_git_repo(force: true, disregard_gitignore: false)
 end
 
 private_lane :pre_upload do
@@ -116,8 +115,7 @@ lane :alpha do
     default_payloads: []
   )
 
-  sh("git reset --hard")
-  sh("git clean -f")
+  reset_git_repo(force: true, disregard_gitignore: false)
 end
 
 desc "Release"
@@ -166,7 +164,7 @@ lane :release do
     default_payloads: []
   )
 
-  sh("git reset --hard")
+  reset_git_repo(force: true, disregard_gitignore: false)
 end
 
 desc "Generate new app icon assets."
