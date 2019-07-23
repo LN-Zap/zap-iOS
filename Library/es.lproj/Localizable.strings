@@ -184,11 +184,6 @@
 "scene.qr_code_detail.title" = "Recibir";
 
 "scene.sync.description_label" = "Sincronizando con la cadena…";
-"scene.sync.disconnect_bar_button" = "Desconectar";
-"scene.sync.disconnect_alert.title" = "Desconectar";
-"scene.sync.disconnect_alert.message" = "¿Realmente desea cancelar la sincronización? Luego tendrá que reconectarse a su nodo.";
-"scene.sync.disconnect_alert.destructive_action" = "Desconectar Nodo";
-"scene.sync.disconnect_alert.cancel_action" = "Cancelar";
 
 "scene.transaction_detail.title.lightning_invoice" = "Detalle de la factura";
 "scene.transaction_detail.title.payment_detail" = "Detalle de pago";
