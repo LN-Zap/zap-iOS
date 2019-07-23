@@ -95,7 +95,7 @@ extension WalletListViewController: UITableViewDelegate {
 
 extension WalletListViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
-        return indexPath.row < walletConfigurationStore.configurations.count
+        return indexPath.row < walletConfigurationStore.configurations.count && walletConfigurationStore.configurations[indexPath.row].connection != .local
     }
 
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {

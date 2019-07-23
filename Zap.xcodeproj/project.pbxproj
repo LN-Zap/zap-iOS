@@ -360,6 +360,7 @@
 		ADFCEADF2177687F00370242 /* EventDetailViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADFCEADE2177687F00370242 /* EventDetailViewModel.swift */; };
 		ADFCEAE221776E2100370242 /* EventDetailViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADFCEAE021776E1C00370242 /* EventDetailViewModelTests.swift */; };
 		ADFDE94422E6F46100B718A4 /* SyncViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADFDE94322E6F46100B718A4 /* SyncViewModel.swift */; };
+		ADFDE94622E7603F00B718A4 /* ManageWalletsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADFDE94522E7603F00B718A4 /* ManageWalletsViewModel.swift */; };
 		ADFE2E4C216CF4A800988243 /* PushViewControllerSettingsItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADFE2E4B216CF4A800988243 /* PushViewControllerSettingsItem.swift */; };
 		ADFE538520D693FF00B3BA2A /* InputNumberFormatterTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0F9AEE2206E3E0300E93DCA /* InputNumberFormatterTests.swift */; };
 		ADFEFA6A20E627F100FE1557 /* BalanceService.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADA6D2C420AC1DDE009398A5 /* BalanceService.swift */; };
@@ -968,6 +969,7 @@
 		ADFCEADE2177687F00370242 /* EventDetailViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventDetailViewModel.swift; sourceTree = "<group>"; };
 		ADFCEAE021776E1C00370242 /* EventDetailViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventDetailViewModelTests.swift; sourceTree = "<group>"; };
 		ADFDE94322E6F46100B718A4 /* SyncViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SyncViewModel.swift; sourceTree = "<group>"; };
+		ADFDE94522E7603F00B718A4 /* ManageWalletsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ManageWalletsViewModel.swift; sourceTree = "<group>"; };
 		ADFE2E4B216CF4A800988243 /* PushViewControllerSettingsItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PushViewControllerSettingsItem.swift; sourceTree = "<group>"; };
 		ADFE537B20D693F500B3BA2A /* LibraryTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = LibraryTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		ADFE537F20D693F500B3BA2A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -1842,9 +1844,10 @@
 			children = (
 				ADA58F9922049047009A5494 /* ManageWallets.storyboard */,
 				ADA58F9722049022009A5494 /* ManageWalletsViewController.swift */,
-				ADA58F9B22049470009A5494 /* WalletConfigurationStore.swift */,
 				AD7ED61B22087812007C5F2C /* ManageWalletTableViewCell.swift */,
+				ADA58F9B22049470009A5494 /* WalletConfigurationStore.swift */,
 				AD7ED61C22087812007C5F2C /* ManageWalletTableViewCell.xib */,
+				ADFDE94522E7603F00B718A4 /* ManageWalletsViewModel.swift */,
 			);
 			path = ManageWallets;
 			sourceTree = "<group>";
@@ -1969,8 +1972,8 @@
 			children = (
 				ADCE01BA207B57ED00CA72E8 /* CreateWallet.storyboard */,
 				ADF79373208F87E60086B2CA /* Confirm Mnemonic */,
-				AD27022522E1C62100D4BF27 /* Push Notification */,
 				AD3DDF6722D38D3B0031BFC8 /* Onboarding */,
+				AD27022522E1C62100D4BF27 /* Push Notification */,
 				ADF79374208F88CA0086B2CA /* Recover Wallet */,
 				AD3CF97920B4028D00D78A54 /* Select Wallet Creation Method */,
 				AD79BB38208CD9970027AAC9 /* Show Mnemonic */,
@@ -3199,6 +3202,7 @@
 				AD391C5C20D16F7A007EE22A /* MnemonicViewModel.swift in Sources */,
 				AD391C4720D16F68007EE22A /* ContainerViewController.swift in Sources */,
 				AD391CB320D16FA8007EE22A /* GroupedTableViewController.swift in Sources */,
+				ADFDE94622E7603F00B718A4 /* ManageWalletsViewModel.swift in Sources */,
 				AD81C21721B80FCD00FA3FA9 /* SafariSettingsItem.swift in Sources */,
 				AD667E522136B062007B9160 /* TimeLockedViewController.swift in Sources */,
 				AD391CA920D16FA8007EE22A /* BitcoinUnitSettingsItem.swift in Sources */,

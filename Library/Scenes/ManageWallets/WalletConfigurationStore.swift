@@ -49,6 +49,12 @@ final class WalletConfigurationStore {
         }
     }
 
+    var hasRemoteWallet: Bool {
+        return configurations.contains {
+            $0.connection != .local
+        }
+    }
+
     // used for UI tests
     static var mock: WalletConfigurationStore {
         guard
@@ -88,6 +94,10 @@ final class WalletConfigurationStore {
 
     func removeWallet(at index: Int) {
         let configuration = configurations[index]
+        removeConfiguration(configuration)
+    }
+
+    func removeConfiguration(_ configuration: WalletConfiguration) {
         guard let url = FileManager.default.walletDirectory else { return }
 
         do {
@@ -96,7 +106,7 @@ final class WalletConfigurationStore {
             Logger.error(error.localizedDescription)
         }
 
-        configurations.remove(at: index)
+        configurations.removeAll { $0 == configuration }
         if isSelected(walletConfiguration: configuration) {
             selectedWallet = nil
         }
