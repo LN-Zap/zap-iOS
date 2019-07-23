@@ -9,7 +9,7 @@ import Foundation
 import SwiftBTC
 
 struct SuggestedPeers: Decodable {
-    private static let url = URL(string: "http://zap.jackmallers.com/api/v1/suggested-peers")! // swiftlint:disable:this force_unwrapping
+    private static let url = URL(string: "https://resources.zaphq.io/api/v1/suggested-nodes")! // swiftlint:disable:this force_unwrapping
 
     struct Currency: Decodable {
         struct Peer: Decodable {
