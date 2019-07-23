@@ -184,11 +184,6 @@
 "scene.qr_code_detail.title" = "Mottak";
 
 "scene.sync.description_label" = "Synkroniserer med blokkjeden…";
-"scene.sync.disconnect_bar_button" = "Koble fra";
-"scene.sync.disconnect_alert.title" = "Frakobling";
-"scene.sync.disconnect_alert.message" = "Er du sikker på at du vil avbryte synkroniseringen? Da må du koble til noden din på nytt igjen etterpå.";
-"scene.sync.disconnect_alert.destructive_action" = "Koble fra node";
-"scene.sync.disconnect_alert.cancel_action" = "Avbryt";
 
 "scene.transaction_detail.title.lightning_invoice" = "Fakturadetaljer";
 "scene.transaction_detail.title.payment_detail" = "Betalingsdetaljer";
