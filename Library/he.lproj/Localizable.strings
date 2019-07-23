@@ -184,11 +184,6 @@
 "scene.qr_code_detail.title" = "Receive";
 
 "scene.sync.description_label" = "סינכרון ל blockchain...";
-"scene.sync.disconnect_bar_button" = "התנתק";
-"scene.sync.disconnect_alert.title" = "התנתק";
-"scene.sync.disconnect_alert.message" = "האם אתם בטוחים שברצונכם לבטל את הסינכרון? אתם תאלצו להתחבר מחדש לnode שלכם לאחר מכן.";
-"scene.sync.disconnect_alert.destructive_action" = "נתק את הnode";
-"scene.sync.disconnect_alert.cancel_action" = "בטל";
 
 "scene.transaction_detail.title.lightning_invoice" = "פירוט חשבונית";
 "scene.transaction_detail.title.payment_detail" = "פירוט התשלום";
