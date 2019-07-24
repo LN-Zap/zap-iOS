@@ -30,6 +30,5 @@ git apply $DIR/mainnet.patch
 
 make rpc
 make mobile-rpc
-# make tags="routerrpc" IOS_BUILD_DIR=$FRAMEWORKDIR ios
-make IOS_BUILD_DIR=$FRAMEWORKDIR ios
+make tags="experimental" IOS_BUILD_DIR=$FRAMEWORKDIR ios
 

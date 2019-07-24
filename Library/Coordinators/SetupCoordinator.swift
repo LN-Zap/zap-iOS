@@ -128,10 +128,11 @@ final class SetupCoordinator: Coordinator {
     }
 
     private func walletListViewController() -> ManageWalletsViewController {
+        let viewModel = ManageWalletsViewModel(walletConfigurationStore: walletConfigurationStore)
         return ManageWalletsViewController.instantiate(addWalletButtonTapped: { [weak self] in
             guard let self = self else { return }
             self.navigationController?.pushViewController(self.setupWalletViewController(), animated: true)
-        }, walletConfigurationStore: walletConfigurationStore, connectWallet: connectWallet)
+        }, manageWalletsViewModel: viewModel, connectWallet: connectWallet)
     }
 
     private func setupWalletViewController() -> UIViewController {

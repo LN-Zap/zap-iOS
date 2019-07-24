@@ -54,7 +54,8 @@ struct LocalLndConfiguration {
                 ("nolisten", "1"),
                 ("alias", alias),
                 ("color", "#3399FF"),
-                ("maxbackoff", "2s")
+                ("maxbackoff", "2s"),
+                ("routing.assumechanvalid", "true")
             ],
             .bitcoin: [
                 ("bitcoin.active", value: "1"),

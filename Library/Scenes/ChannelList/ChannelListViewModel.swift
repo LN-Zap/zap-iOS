@@ -91,4 +91,8 @@ final class ChannelListViewModel: NSObject {
     func close(_ channel: Channel, completion: @escaping ApiCompletion<CloseStatusUpdate>) {
         channelService.close(channel, completion: completion)
     }
+
+    func refresh() {
+        channelService.update()
+    }
 }

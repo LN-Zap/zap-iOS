@@ -7,6 +7,7 @@
 
 import Foundation
 import Logger
+import SwiftBTC
 
 public extension FileManager {
     func channelBackupDirectory(for nodePubKey: String) -> URL? {
@@ -19,6 +20,22 @@ public extension FileManager {
         guard let applicationSupportDirectory = urls(for: .applicationSupportDirectory, in: .userDomainMask).first else { return nil }
         let url = applicationSupportDirectory.appendingPathComponent("lnd", isDirectory: true)
         return createAndReturn(url: url)
+    }
+
+    private func walletDatabase(for network: Network) -> URL? {
+        return FileManager.default.walletDirectory?.appendingPathComponent("/data/chain/bitcoin/\(network.rawValue)/wallet.db")
+    }
+
+    var hasLocalWallet: Bool {
+        let fileManager = FileManager.default
+
+        if let mainnetURL = fileManager.walletDatabase(for: .mainnet), fileManager.fileExists(atPath: mainnetURL.path) {
+            return true
+        } else if let testnetURL = fileManager.walletDatabase(for: .testnet), fileManager.fileExists(atPath: testnetURL.path) {
+            return true
+        }
+
+        return false
     }
 
     private func createAndReturn(url: URL) -> URL? {
