@@ -209,6 +209,7 @@
 "scene.channel_detail.remote_balance_label" = "Remote Balance";
 "scene.channel_detail.closing_time.label" = "Closing in";
 "scene.channel_detail.funding_transaction_label" = "Funding Transaction";
+"scene.channel_detail.closing_transaction_label" = "Closing Transaction";
 "scene.channel_detail.close_button" = "Uzavřít kanál";
 "scene.channel_detail.force_close_button" = "Vynutit uzavření kanálu";
 

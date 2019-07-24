@@ -209,6 +209,7 @@
 "scene.channel_detail.remote_balance_label" = "Ekstern saldo";
 "scene.channel_detail.closing_time.label" = "Lukkes om";
 "scene.channel_detail.funding_transaction_label" = "Finansieringstransaksjon";
+"scene.channel_detail.closing_transaction_label" = "Closing Transaction";
 "scene.channel_detail.close_button" = "Lukk kanal";
 "scene.channel_detail.force_close_button" = "Tvangslukk kanal";
 

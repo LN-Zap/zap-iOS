@@ -209,6 +209,7 @@
 "scene.channel_detail.remote_balance_label" = "Удаленный Баланс";
 "scene.channel_detail.closing_time.label" = "Закрывается в";
 "scene.channel_detail.funding_transaction_label" = "Пополнить Транзакцию";
+"scene.channel_detail.closing_transaction_label" = "Closing Transaction";
 "scene.channel_detail.close_button" = "Закрыть Канал";
 "scene.channel_detail.force_close_button" = "Принудительное Закрытие Канала";
 

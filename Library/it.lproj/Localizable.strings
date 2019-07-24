@@ -209,6 +209,7 @@
 "scene.channel_detail.remote_balance_label" = "Saldo Remoto";
 "scene.channel_detail.closing_time.label" = "Chiusura in";
 "scene.channel_detail.funding_transaction_label" = "Transazione di finanziamento";
+"scene.channel_detail.closing_transaction_label" = "Closing Transaction";
 "scene.channel_detail.close_button" = "Chiudi Canale";
 "scene.channel_detail.force_close_button" = "Forza Chiusura Canale";
 

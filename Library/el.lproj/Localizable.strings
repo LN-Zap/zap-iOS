@@ -209,6 +209,7 @@
 "scene.channel_detail.remote_balance_label" = "Απόσταση απομακρυσμένης πρόσβασης";
 "scene.channel_detail.closing_time.label" = "Κλείνοντας";
 "scene.channel_detail.funding_transaction_label" = "Χρηματοδοτική συναλλαγή";
+"scene.channel_detail.closing_transaction_label" = "Closing Transaction";
 "scene.channel_detail.close_button" = "Κλείσιμο καναλιού";
 "scene.channel_detail.force_close_button" = "Κλείστε το κανάλι με δύναμη";
 
