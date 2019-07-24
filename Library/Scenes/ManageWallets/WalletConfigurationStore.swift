@@ -44,15 +44,11 @@ final class WalletConfigurationStore {
     }
 
     var hasLocalWallet: Bool {
-        return configurations.contains {
-            $0.connection == .local
-        }
+        return configurations.contains { $0.connection == .local }
     }
 
     var hasRemoteWallet: Bool {
-        return configurations.contains {
-            $0.connection != .local
-        }
+        return configurations.contains { $0.connection != .local }
     }
 
     // used for UI tests
@@ -83,9 +79,23 @@ final class WalletConfigurationStore {
     }
 
     private init(data: CodableData?) {
-        configurations = data?.configurations ?? []
+        var configurations = data?.configurations ?? []
+        var selectedWallet = data?.selectedWallet
+
+        // if there is a local wallet in the keychain, but not on disk, remove
+        // the local wallet from the loaded list.
+        if !FileManager.default.hasLocalWallet {
+            configurations.removeAll { $0.connection == .local }
+
+            if selectedWallet?.connection == .local {
+                selectedWallet = nil
+            }
+        }
+
+        self.configurations = configurations
         sortConfigurations()
-        selectedWallet = data?.selectedWallet
+
+        self.selectedWallet = selectedWallet
     }
 
     func isSelected(walletConfiguration: WalletConfiguration) -> Bool {
