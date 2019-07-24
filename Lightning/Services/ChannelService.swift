@@ -103,7 +103,7 @@ public final class ChannelService {
         }
     }
 
-    func update() {
+    public func update() {
         channelListUpdater.update()
     }
 }

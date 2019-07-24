@@ -20,6 +20,8 @@ final class ChannelListViewController: UIViewController {
     @IBOutlet private weak var tableView: UITableView!
     @IBOutlet private var headerView: ChannelListHeaderView!
 
+    private let refreshControl = UIRefreshControl()
+
     private var channelListViewModel: ChannelListViewModel! // swiftlint:disable:this implicitly_unwrapped_optional
     private var addChannelButtonTapped: (() -> Void)?
     private var presentChannelDetail: ((UIViewController, ChannelViewModel) -> Void)?
@@ -59,7 +61,17 @@ final class ChannelListViewController: UIViewController {
             return cell
         }
 
+        tableView.refreshControl = refreshControl
+        refreshControl.addTarget(self, action: #selector(refresh(sender:)), for: .valueChanged)
+
         headerView.setup(for: channelListViewModel)
+    }
+
+    @objc func refresh(sender: UIRefreshControl) {
+        channelListViewModel.refresh()
+        DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 0.5) {
+            sender.endRefreshing()
+        }
     }
 
     @objc private func presentAddChannel() {
