@@ -10,10 +10,7 @@ default_platform(:ios)
 
 app_identifier = ["com.jackmallers.zap", "com.jackmallers.zap.Sticker", "com.jackmallers.zap.Widget"]
 
-lane :mainnet do
-  pre_upload
-  check_release_branch('release/mainnet')
-
+lane :switch_mainnet do
   ids = {
     "Zap/Info.plist" => "com.jackmallers.zap.mainnet",
     "Sticker/Info.plist" => "com.jackmallers.zap.mainnet.Sticker",
@@ -27,6 +24,18 @@ lane :mainnet do
   end
 
   update_app_icon(image: 'logo_white.png')
+end
+
+lane :mainnet do
+  pre_upload
+  check_release_branch('release/mainnet')
+  switch_mainnet
+
+  mainnet_ids = [
+    "com.jackmallers.zap.mainnet",
+    "com.jackmallers.zap.mainnet.Sticker",
+    "com.jackmallers.zap.mainnet.Widget",
+  ]
 
   increment_build_number(build_number:
     latest_testflight_build_number(
@@ -37,7 +46,7 @@ lane :mainnet do
 
   sync_code_signing(
     username: ENV['ITUNESCONNECT_USER'],
-    app_identifier: ids.values,
+    app_identifier: mainnet_ids,
     type: "appstore"
   )
 
