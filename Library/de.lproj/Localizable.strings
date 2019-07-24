@@ -209,6 +209,7 @@
 "scene.channel_detail.remote_balance_label" = "Remote Kontostand";
 "scene.channel_detail.closing_time.label" = "Schließt in";
 "scene.channel_detail.funding_transaction_label" = "Finanzierungstransaktion";
+"scene.channel_detail.closing_transaction_label" = "Closing Transaction";
 "scene.channel_detail.close_button" = "Channel schließen";
 "scene.channel_detail.force_close_button" = "Erzwinge Channel-Schließung";
 

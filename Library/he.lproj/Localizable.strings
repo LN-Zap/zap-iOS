@@ -209,6 +209,7 @@
 "scene.channel_detail.remote_balance_label" = "יתרה מרוחקת";
 "scene.channel_detail.closing_time.label" = "סוגר";
 "scene.channel_detail.funding_transaction_label" = "פעולת מימון";
+"scene.channel_detail.closing_transaction_label" = "Closing Transaction";
 "scene.channel_detail.close_button" = "Close Channel";
 "scene.channel_detail.force_close_button" = "Force Close Channel";
 

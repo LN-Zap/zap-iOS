@@ -2250,6 +2250,14 @@ struct Lnrpc_QueryRoutesRequest {
     set {_uniqueStorage()._sourcePubKey = newValue}
   }
 
+  ///*
+  ///If set to true, edge probabilities from mission control will be used to get
+  ///the optimal route.
+  var useMissionControl: Bool {
+    get {return _storage._useMissionControl}
+    set {_uniqueStorage()._useMissionControl = newValue}
+  }
+
   var unknownFields = SwiftProtobuf.UnknownStorage()
 
   init() {}
@@ -2487,6 +2495,8 @@ struct Lnrpc_RoutingPolicy {
 
   var maxHtlcMsat: UInt64 = 0
 
+  var lastUpdate: UInt32 = 0
+
   var unknownFields = SwiftProtobuf.UnknownStorage()
 
   init() {}
@@ -2645,6 +2655,9 @@ struct Lnrpc_NetworkInfo {
   var maxChannelSize: Int64 = 0
 
   var medianChannelSizeSat: Int64 = 0
+
+  /// The number of edges marked as zombies.
+  var numZombieChans: UInt64 = 0
 
   var unknownFields = SwiftProtobuf.UnknownStorage()
 
@@ -7626,6 +7639,7 @@ extension Lnrpc_QueryRoutesRequest: SwiftProtobuf.Message, SwiftProtobuf._Messag
     6: .standard(proto: "ignored_nodes"),
     7: .standard(proto: "ignored_edges"),
     8: .standard(proto: "source_pub_key"),
+    9: .standard(proto: "use_mission_control"),
   ]
 
   fileprivate class _StorageClass {
@@ -7636,6 +7650,7 @@ extension Lnrpc_QueryRoutesRequest: SwiftProtobuf.Message, SwiftProtobuf._Messag
     var _ignoredNodes: [Data] = []
     var _ignoredEdges: [Lnrpc_EdgeLocator] = []
     var _sourcePubKey: String = String()
+    var _useMissionControl: Bool = false
 
     static let defaultInstance = _StorageClass()
 
@@ -7649,6 +7664,7 @@ extension Lnrpc_QueryRoutesRequest: SwiftProtobuf.Message, SwiftProtobuf._Messag
       _ignoredNodes = source._ignoredNodes
       _ignoredEdges = source._ignoredEdges
       _sourcePubKey = source._sourcePubKey
+      _useMissionControl = source._useMissionControl
     }
   }
 
@@ -7671,6 +7687,7 @@ extension Lnrpc_QueryRoutesRequest: SwiftProtobuf.Message, SwiftProtobuf._Messag
         case 6: try decoder.decodeRepeatedBytesField(value: &_storage._ignoredNodes)
         case 7: try decoder.decodeRepeatedMessageField(value: &_storage._ignoredEdges)
         case 8: try decoder.decodeSingularStringField(value: &_storage._sourcePubKey)
+        case 9: try decoder.decodeSingularBoolField(value: &_storage._useMissionControl)
         default: break
         }
       }
@@ -7700,6 +7717,9 @@ extension Lnrpc_QueryRoutesRequest: SwiftProtobuf.Message, SwiftProtobuf._Messag
       if !_storage._sourcePubKey.isEmpty {
         try visitor.visitSingularStringField(value: _storage._sourcePubKey, fieldNumber: 8)
       }
+      if _storage._useMissionControl != false {
+        try visitor.visitSingularBoolField(value: _storage._useMissionControl, fieldNumber: 9)
+      }
     }
     try unknownFields.traverse(visitor: &visitor)
   }
@@ -7716,6 +7736,7 @@ extension Lnrpc_QueryRoutesRequest: SwiftProtobuf.Message, SwiftProtobuf._Messag
         if _storage._ignoredNodes != rhs_storage._ignoredNodes {return false}
         if _storage._ignoredEdges != rhs_storage._ignoredEdges {return false}
         if _storage._sourcePubKey != rhs_storage._sourcePubKey {return false}
+        if _storage._useMissionControl != rhs_storage._useMissionControl {return false}
         return true
       }
       if !storagesAreEqual {return false}
@@ -8136,6 +8157,7 @@ extension Lnrpc_RoutingPolicy: SwiftProtobuf.Message, SwiftProtobuf._MessageImpl
     4: .same(proto: "fee_rate_milli_msat"),
     5: .same(proto: "disabled"),
     6: .same(proto: "max_htlc_msat"),
+    7: .same(proto: "last_update"),
   ]
 
   mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
@@ -8147,6 +8169,7 @@ extension Lnrpc_RoutingPolicy: SwiftProtobuf.Message, SwiftProtobuf._MessageImpl
       case 4: try decoder.decodeSingularInt64Field(value: &self.feeRateMilliMsat)
       case 5: try decoder.decodeSingularBoolField(value: &self.disabled)
       case 6: try decoder.decodeSingularUInt64Field(value: &self.maxHtlcMsat)
+      case 7: try decoder.decodeSingularUInt32Field(value: &self.lastUpdate)
       default: break
       }
     }
@@ -8171,6 +8194,9 @@ extension Lnrpc_RoutingPolicy: SwiftProtobuf.Message, SwiftProtobuf._MessageImpl
     if self.maxHtlcMsat != 0 {
       try visitor.visitSingularUInt64Field(value: self.maxHtlcMsat, fieldNumber: 6)
     }
+    if self.lastUpdate != 0 {
+      try visitor.visitSingularUInt32Field(value: self.lastUpdate, fieldNumber: 7)
+    }
     try unknownFields.traverse(visitor: &visitor)
   }
 
@@ -8181,6 +8207,7 @@ extension Lnrpc_RoutingPolicy: SwiftProtobuf.Message, SwiftProtobuf._MessageImpl
     if lhs.feeRateMilliMsat != rhs.feeRateMilliMsat {return false}
     if lhs.disabled != rhs.disabled {return false}
     if lhs.maxHtlcMsat != rhs.maxHtlcMsat {return false}
+    if lhs.lastUpdate != rhs.lastUpdate {return false}
     if lhs.unknownFields != rhs.unknownFields {return false}
     return true
   }
@@ -8428,6 +8455,7 @@ extension Lnrpc_NetworkInfo: SwiftProtobuf.Message, SwiftProtobuf._MessageImplem
     8: .same(proto: "min_channel_size"),
     9: .same(proto: "max_channel_size"),
     10: .same(proto: "median_channel_size_sat"),
+    11: .same(proto: "num_zombie_chans"),
   ]
 
   mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
@@ -8443,6 +8471,7 @@ extension Lnrpc_NetworkInfo: SwiftProtobuf.Message, SwiftProtobuf._MessageImplem
       case 8: try decoder.decodeSingularInt64Field(value: &self.minChannelSize)
       case 9: try decoder.decodeSingularInt64Field(value: &self.maxChannelSize)
       case 10: try decoder.decodeSingularInt64Field(value: &self.medianChannelSizeSat)
+      case 11: try decoder.decodeSingularUInt64Field(value: &self.numZombieChans)
       default: break
       }
     }
@@ -8479,6 +8508,9 @@ extension Lnrpc_NetworkInfo: SwiftProtobuf.Message, SwiftProtobuf._MessageImplem
     if self.medianChannelSizeSat != 0 {
       try visitor.visitSingularInt64Field(value: self.medianChannelSizeSat, fieldNumber: 10)
     }
+    if self.numZombieChans != 0 {
+      try visitor.visitSingularUInt64Field(value: self.numZombieChans, fieldNumber: 11)
+    }
     try unknownFields.traverse(visitor: &visitor)
   }
 
@@ -8493,6 +8525,7 @@ extension Lnrpc_NetworkInfo: SwiftProtobuf.Message, SwiftProtobuf._MessageImplem
     if lhs.minChannelSize != rhs.minChannelSize {return false}
     if lhs.maxChannelSize != rhs.maxChannelSize {return false}
     if lhs.medianChannelSizeSat != rhs.medianChannelSizeSat {return false}
+    if lhs.numZombieChans != rhs.numZombieChans {return false}
     if lhs.unknownFields != rhs.unknownFields {return false}
     return true
   }

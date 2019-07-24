@@ -16,6 +16,7 @@ extension Channel: CustomDebugStringConvertible {
 		\tcapacity: \(capacity)
 		\tupdateCount: \(String(describing: updateCount))
 		\tchannelPoint: \(channelPoint)
+		\tclosingTxid: \(String(describing: closingTxid))
 		\tcsvDelay: \(csvDelay)\n
 		"""
 	}

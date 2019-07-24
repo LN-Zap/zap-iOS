@@ -145,6 +145,8 @@ internal enum L10n {
     internal enum ChannelDetail {
       /// Close Channel
       internal static let closeButton = L10n.tr("Localizable", "scene.channel_detail.close_button")
+      /// Closing Transaction
+      internal static let closingTransactionLabel = L10n.tr("Localizable", "scene.channel_detail.closing_transaction_label")
       /// Force Close Channel
       internal static let forceCloseButton = L10n.tr("Localizable", "scene.channel_detail.force_close_button")
       /// Funding Transaction

@@ -209,6 +209,7 @@
 "scene.channel_detail.remote_balance_label" = "远程余额";
 "scene.channel_detail.closing_time.label" = "关闭中";
 "scene.channel_detail.funding_transaction_label" = "资金交易";
+"scene.channel_detail.closing_transaction_label" = "Closing Transaction";
 "scene.channel_detail.close_button" = "关闭通道";
 "scene.channel_detail.force_close_button" = "强制关闭通道";
 
