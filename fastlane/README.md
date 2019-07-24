@@ -15,6 +15,11 @@ Install _fastlane_ using
 or alternatively using `brew cask install fastlane`
 
 # Available Actions
+### switch_mainnet
+```
+fastlane switch_mainnet
+```
+
 ### mainnet
 ```
 fastlane mainnet
