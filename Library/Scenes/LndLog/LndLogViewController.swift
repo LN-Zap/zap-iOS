@@ -6,6 +6,7 @@
 //
 
 import Lightning
+import SwiftBTC
 import UIKit
 
 final class LndLogViewController: UIViewController {
@@ -14,8 +15,22 @@ final class LndLogViewController: UIViewController {
 
     private var fileObserver: FileObserver?
 
-    static func instantiate() -> LndLogViewController {
-        return StoryboardScene.LndLog.lndLogViewController.instantiate()
+    private var network: Network! // swiftlint:disable:this implicitly_unwrapped_optional
+
+    private var url: URL? {
+        guard let folder = FileManager.default.walletDirectory else { return nil }
+        return folder.appendingPathComponent("logs/bitcoin/\(network.rawValue)/lnd.log")
+    }
+
+    private var log: String? {
+        guard let url = url else { return nil }
+        return try? String(contentsOf: url)
+    }
+
+    static func instantiate(network: Network) -> LndLogViewController {
+        let viewController = StoryboardScene.LndLog.lndLogViewController.instantiate()
+        viewController.network = network
+        return viewController
     }
 
     override func viewDidLoad() {
@@ -48,16 +63,6 @@ final class LndLogViewController: UIViewController {
     private func scrollToBottom() {
         let bottom = NSRange(location: self.textView.text.count - 1, length: 1)
         self.textView.scrollRangeToVisible(bottom)
-    }
-
-    private var url: URL? {
-        guard let folder = FileManager.default.walletDirectory else { return nil }
-        return folder.appendingPathComponent("logs/bitcoin/testnet/lnd.log")
-    }
-
-    private var log: String? {
-        guard let url = url else { return nil }
-        return try? String(contentsOf: url)
     }
 
     @IBAction private func shareLog(_ sender: Any) {

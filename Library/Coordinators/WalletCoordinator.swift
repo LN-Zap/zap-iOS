@@ -313,7 +313,7 @@ final class WalletCoordinator: NSObject, Coordinator {
     }
 
     private func pushLndLogViewController(on navigationController: UINavigationController) {
-        let viewController = LndLogViewController.instantiate()
+        let viewController = LndLogViewController.instantiate(network: BuildConfiguration.network)
         navigationController.pushViewController(viewController, animated: true)
     }
 }
