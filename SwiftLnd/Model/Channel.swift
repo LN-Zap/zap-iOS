@@ -35,6 +35,7 @@ public struct Channel: Equatable {
     public let capacity: Satoshi
     public let updateCount: Int?
     public let channelPoint: ChannelPoint
+    public let closingTxid: String?
     public let csvDelay: Int
 }
 
@@ -49,6 +50,7 @@ extension Lnrpc_Channel {
             capacity: Satoshi(capacity),
             updateCount: Int(numUpdates),
             channelPoint: ChannelPoint(string: channelPoint),
+            closingTxid: nil,
             csvDelay: Int(csvDelay))
     }
 }
@@ -74,6 +76,7 @@ extension Lnrpc_PendingChannelsResponse.PendingOpenChannel {
             capacity: Satoshi(channel.capacity),
             updateCount: 0,
             channelPoint: ChannelPoint(string: channel.channelPoint),
+            closingTxid: nil,
             csvDelay: 0)
     }
 }
@@ -89,6 +92,7 @@ extension Lnrpc_PendingChannelsResponse.ClosedChannel {
             capacity: Satoshi(channel.capacity),
             updateCount: 0,
             channelPoint: ChannelPoint(string: channel.channelPoint),
+            closingTxid: closingTxid,
             csvDelay: 0)
     }
 }
@@ -104,6 +108,7 @@ extension Lnrpc_PendingChannelsResponse.ForceClosedChannel {
             capacity: Satoshi(channel.capacity),
             updateCount: 0,
             channelPoint: ChannelPoint(string: channel.channelPoint),
+            closingTxid: closingTxid,
             csvDelay: Int(blocksTilMaturity))
     }
 }
@@ -119,6 +124,7 @@ extension Lnrpc_PendingChannelsResponse.WaitingCloseChannel {
                 capacity: Satoshi(channel.capacity),
                 updateCount: 0,
                 channelPoint: ChannelPoint(string: channel.channelPoint),
+                closingTxid: nil,
                 csvDelay: 144)
     }
 }

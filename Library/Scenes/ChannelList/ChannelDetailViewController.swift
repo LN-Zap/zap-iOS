@@ -83,6 +83,19 @@ final class ChannelDetailViewController: ModalDetailViewController {
             }
         ]))
 
+        if let closingTxId = channelViewModel.channel.closingTxid {
+            contentStackView.addArrangedElement(.separator)
+            contentStackView.addArrangedElement(.horizontalStackView(compressionResistant: .first, content: [
+                .label(text: L10n.Scene.ChannelDetail.closingTransactionLabel + ":", style: labelStyle),
+                .button(title: closingTxId, style: Style.Button.custom(fontSize: 14)) { [weak self] _ in
+                    guard let self = self else { return }
+                    self.dismiss(animated: true, completion: {
+                        self.presentBlockExplorer(closingTxId, .transactionId)
+                    })
+                }
+            ]))
+        }
+
         if !channelViewModel.channel.state.isClosing {
             let closeTitle = channelViewModel.channel.state == .active ? L10n.Scene.ChannelDetail.closeButton : L10n.Scene.ChannelDetail.forceCloseButton
 
