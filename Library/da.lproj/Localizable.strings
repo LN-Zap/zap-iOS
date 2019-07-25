@@ -171,6 +171,7 @@
 "scene.recover_wallet.done_button" = "Udført";
 "scene.recover_wallet.description_label" = "Enter your recovery phrase:";
 "scene.recover_wallet.placeholder" = "efterlade evne i_stand om over fraværende absorbere abstrakt absurd misbrug opnå syre akustisk erhverve henover handling aktion skuespiller skuespillerinde faktisk";
+"scene.recover_wallet.select_channel_backup_button" = "Select Channel Backup";
 
 "scene.select_wallet_connection.create.title" = "Opret";
 "scene.select_wallet_connection.recover.title" = "Genskab";
