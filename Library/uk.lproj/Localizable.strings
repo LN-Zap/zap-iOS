@@ -111,15 +111,15 @@
 "scene.setup_pin.top_label.non_matching" = "The pins didn't match. Please try again.";
 "scene.setup_pin.top_label.validate" = "Enter the pin again to validate.";
 
-"scene.onboarding.page_1.title" = "Your key, your coins.";
+"scene.onboarding.page_1.title" = "Your **key**, your **coins**.";
 "scene.onboarding.page_1.message" = "With Zap, you are in control of your money. To make sure your coins are always stored safely, zap will provide a recovery phrase for you.";
 "scene.onboarding.page_1.button_title" = "Continue";
 
-"scene.onboarding.page_2.title" = "Write down your recovery phrase.";
+"scene.onboarding.page_2.title" = "Write down your **recovery phrase**.";
 "scene.onboarding.page_2.message" = "Write down  the recovery phrase on a piece of paper. You can recover your funds anytime if your phone goes missing.";
 "scene.onboarding.page_2.button_title" = "Continue";
 
-"scene.onboarding.page_3.title" = "Make sure to keep it in a safe place.";
+"scene.onboarding.page_3.title" = "Make sure to keep it in a **safe place**.";
 "scene.onboarding.page_3.message" = "Make sure to keep your recovery phrase private. Store it somewhere only you will find it.";
 "scene.onboarding.page_3.button_title" = "Generate Recovery Phrase";
 
@@ -176,7 +176,7 @@
 "scene.select_wallet_connection.create.title" = "Створити";
 "scene.select_wallet_connection.recover.title" = "Відновити";
 "scene.select_wallet_connection.connect.title" = "Підключення";
-"scene.select_wallet_connection.message" = "Bitcoin for everyone";
+"scene.select_wallet_connection.message" = "Bitcoin for **everyone**";
 
 "scene.main.send_button" = "Надіслати";
 "scene.main.receive_button" = "Отримати";
