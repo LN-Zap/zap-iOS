@@ -9,6 +9,10 @@ import Foundation
 
 public struct ChannelBackup {
     public let data: Data
+
+    public init(data: Data) {
+        self.data = data
+    }
 }
 
 extension ChannelBackup {

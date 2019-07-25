@@ -461,6 +461,8 @@ internal enum L10n {
       internal static let doneButton = L10n.tr("Localizable", "scene.recover_wallet.done_button")
       /// abandon ability able about above absent absorb abstract absurd abuse access accident account accuse achieve acid acoustic acquire across act action actor actress actual
       internal static let placeholder = L10n.tr("Localizable", "scene.recover_wallet.placeholder")
+      /// Select Channel Backup
+      internal static let selectChannelBackupButton = L10n.tr("Localizable", "scene.recover_wallet.select_channel_backup_button")
       /// Recover Wallet
       internal static let title = L10n.tr("Localizable", "scene.recover_wallet.title")
     }

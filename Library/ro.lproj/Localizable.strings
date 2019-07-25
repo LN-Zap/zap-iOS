@@ -111,15 +111,15 @@
 "scene.setup_pin.top_label.non_matching" = "Codul pin nu se potriveste. Vă rugăm să încercaţi din nou.";
 "scene.setup_pin.top_label.validate" = "Introduceţi codul pin din nou pentru a valida.";
 
-"scene.onboarding.page_1.title" = "Your key, your coins.";
+"scene.onboarding.page_1.title" = "Your **key**, your **coins**.";
 "scene.onboarding.page_1.message" = "With Zap, you are in control of your money. To make sure your coins are always stored safely, zap will provide a recovery phrase for you.";
 "scene.onboarding.page_1.button_title" = "Continue";
 
-"scene.onboarding.page_2.title" = "Write down your recovery phrase.";
+"scene.onboarding.page_2.title" = "Write down your **recovery phrase**.";
 "scene.onboarding.page_2.message" = "Write down  the recovery phrase on a piece of paper. You can recover your funds anytime if your phone goes missing.";
 "scene.onboarding.page_2.button_title" = "Continue";
 
-"scene.onboarding.page_3.title" = "Make sure to keep it in a safe place.";
+"scene.onboarding.page_3.title" = "Make sure to keep it in a **safe place**.";
 "scene.onboarding.page_3.message" = "Make sure to keep your recovery phrase private. Store it somewhere only you will find it.";
 "scene.onboarding.page_3.button_title" = "Generate Recovery Phrase";
 
@@ -171,11 +171,12 @@
 "scene.recover_wallet.done_button" = "Gata";
 "scene.recover_wallet.description_label" = "Enter your recovery phrase:";
 "scene.recover_wallet.placeholder" = "abandon ability able about above absent absorb abstract absurd abuse access accident account accuse achieve acid acoustic acquire across act action actor actress actual";
+"scene.recover_wallet.select_channel_backup_button" = "Select Channel Backup";
 
 "scene.select_wallet_connection.create.title" = "Creaza";
 "scene.select_wallet_connection.recover.title" = "Recupereaza";
 "scene.select_wallet_connection.connect.title" = "Conectaţi-va";
-"scene.select_wallet_connection.message" = "Bitcoin for everyone";
+"scene.select_wallet_connection.message" = "Bitcoin for **everyone**";
 
 "scene.main.send_button" = "Trimite";
 "scene.main.receive_button" = "Primeste";

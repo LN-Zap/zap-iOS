@@ -57,6 +57,6 @@ final class ConfirmMnemonicViewModel {
     }
 
     func createWallet(completion: @escaping ApiCompletion<Success>) {
-        walletService.initWallet(password: Password.create(), mnemonic: mnemonic, completion: completion)
+        walletService.initWallet(password: Password.create(), mnemonic: mnemonic, channelBackup: nil, completion: completion)
     }
 }

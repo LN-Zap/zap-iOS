@@ -43,8 +43,8 @@ public final class WalletService {
         }
     }
 
-    public func initWallet(password: String, mnemonic: [String], completion: @escaping ApiCompletion<Success>) {
-        wallet.initWallet(mnemonic: mnemonic, password: password) {
+    public func initWallet(password: String, mnemonic: [String], channelBackup: ChannelBackup?, completion: @escaping ApiCompletion<Success>) {
+        wallet.initWallet(mnemonic: mnemonic, password: password, channelBackup: channelBackup) {
             if case .success = $0 {
                 WalletService.didCreateWallet = true
                 WalletService.isLocalWalletUnlocked = true

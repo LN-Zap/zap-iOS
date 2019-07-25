@@ -132,11 +132,18 @@ extension Lnrpc_GenSeedRequest {
 }
 
 extension Lnrpc_InitWalletRequest {
-    init(password: String, mnemonic: [String]) {
+    init(password: String, mnemonic: [String], channelBackup: ChannelBackup?) {
         self.init()
 
         if let passwordData = password.data(using: .utf8) {
             self.walletPassword = passwordData
+        }
+        if let channelBackup = channelBackup {
+            var chanBackupSnapshot = Lnrpc_ChanBackupSnapshot()
+            chanBackupSnapshot.multiChanBackup = Lnrpc_MultiChanBackup()
+            chanBackupSnapshot.multiChanBackup.multiChanBackup = channelBackup.data
+
+            self.channelBackups = chanBackupSnapshot
         }
         self.cipherSeedMnemonic = mnemonic
     }

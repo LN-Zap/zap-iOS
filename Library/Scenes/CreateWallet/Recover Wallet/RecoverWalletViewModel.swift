@@ -14,6 +14,8 @@ import SwiftLnd
 final class RecoverWalletViewModel {
     let connection: LightningConnection
 
+    var staticChannelBackup: ChannelBackup?
+
     init(connection: LightningConnection) {
         self.connection = connection
     }
@@ -29,7 +31,7 @@ final class RecoverWalletViewModel {
         let mnemonic = self.mnemonic(from: text.lowercased())
 
         let walletService = WalletService(connection: connection)
-        walletService.initWallet(password: Password.create(), mnemonic: mnemonic, completion: completion)
+        walletService.initWallet(password: Password.create(), mnemonic: mnemonic, channelBackup: staticChannelBackup, completion: completion)
     }
 
     func attributedString(from text: String) -> NSAttributedString {

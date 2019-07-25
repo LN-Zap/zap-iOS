@@ -6,6 +6,7 @@
 //
 
 import Lightning
+import SwiftLnd
 import UIKit
 
 final class RecoverWalletViewController: UIViewController {
@@ -14,6 +15,7 @@ final class RecoverWalletViewController: UIViewController {
     @IBOutlet private weak var textView: UITextView!
     @IBOutlet private weak var doneButton: UIButton!
     @IBOutlet private weak var wordCountLabel: UILabel!
+    @IBOutlet private weak var selectBackupButton: UIButton!
 
     // swiftlint:disable implicitly_unwrapped_optional
     private var recoverWalletViewModel: RecoverWalletViewModel!
@@ -38,6 +40,8 @@ final class RecoverWalletViewController: UIViewController {
 
         doneButton.setTitle(L10n.Scene.RecoverWallet.doneButton, for: .normal)
         doneButton.setTitleColor(UIColor.Zap.invisibleGray, for: .disabled)
+
+        selectBackupButton.setTitle(L10n.Scene.RecoverWallet.selectChannelBackupButton, for: .normal)
 
         topLabel.text = L10n.Scene.RecoverWallet.descriptionLabel
         topLabel.textColor = .white
@@ -80,6 +84,12 @@ final class RecoverWalletViewController: UIViewController {
             }
         }
     }
+
+    @IBAction private func selectBackup(_ sender: Any) {
+        let viewController = UIDocumentPickerViewController(documentTypes: ["public.item"], in: .import)
+        viewController.delegate = self
+        present(viewController, animated: false)
+    }
 }
 
 extension RecoverWalletViewController: UITextViewDelegate {
@@ -93,5 +103,16 @@ extension RecoverWalletViewController: UITextViewDelegate {
         let isTextViewEmpty = textView.text == "" || textView.text == nil
         placeholderTextView.isHidden = !isTextViewEmpty
         updateColors()
+    }
+}
+
+extension RecoverWalletViewController: UIDocumentPickerDelegate {
+    func documentPicker(_ controller: UIDocumentPickerViewController, didPickDocumentsAt urls: [URL]) {
+        guard
+            let url = urls.first,
+            let fileData = try? Data(contentsOf: url) else { return }
+
+        recoverWalletViewModel.staticChannelBackup = ChannelBackup(data: fileData)
+        selectBackupButton.setTitle(url.lastPathComponent, for: .normal)
     }
 }

@@ -221,6 +221,13 @@
                                     </button>
                                 </subviews>
                             </stackView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7TO-DE-bc0">
+                                <rect key="frame" x="20" y="204" width="46" height="30"/>
+                                <state key="normal" title="Button"/>
+                                <connections>
+                                    <action selector="selectBackup:" destination="qsX-RZ-eEH" eventType="touchUpInside" id="SXK-7V-5hq"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="0.55909358129999998" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
@@ -234,7 +241,9 @@
                             <constraint firstItem="Zmq-HS-Ejy" firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="zpR-ha-Dwd" secondAttribute="trailing" constant="20" id="TAa-Vp-tOe"/>
                             <constraint firstItem="AUC-sA-DFo" firstAttribute="top" secondItem="8JC-0g-WEx" secondAttribute="top" id="Tsp-p4-MCI"/>
                             <constraint firstItem="mg5-LE-Ldi" firstAttribute="trailing" secondItem="8JC-0g-WEx" secondAttribute="trailing" id="UZE-85-551"/>
+                            <constraint firstItem="7TO-DE-bc0" firstAttribute="leading" secondItem="8JC-0g-WEx" secondAttribute="leading" id="aOD-ql-hu0"/>
                             <constraint firstItem="8JC-0g-WEx" firstAttribute="top" secondItem="zpR-ha-Dwd" secondAttribute="bottom" constant="5" id="pOp-N9-Thk"/>
+                            <constraint firstItem="7TO-DE-bc0" firstAttribute="centerY" secondItem="i4d-nm-Imb" secondAttribute="centerY" id="urb-64-ud5"/>
                             <constraint firstItem="AUC-sA-DFo" firstAttribute="leading" secondItem="8JC-0g-WEx" secondAttribute="leading" id="z72-ve-QIZ"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="Zmq-HS-Ejy"/>
@@ -242,6 +251,7 @@
                     <connections>
                         <outlet property="doneButton" destination="i4d-nm-Imb" id="lFW-Du-Bm0"/>
                         <outlet property="placeholderTextView" destination="AUC-sA-DFo" id="84t-GN-CM8"/>
+                        <outlet property="selectBackupButton" destination="7TO-DE-bc0" id="y23-m6-neS"/>
                         <outlet property="textView" destination="8JC-0g-WEx" id="4sr-L9-htC"/>
                         <outlet property="topLabel" destination="zpR-ha-Dwd" id="DT5-BY-W1K"/>
                         <outlet property="wordCountLabel" destination="UDv-1l-8h1" id="4Gw-E0-w6u"/>

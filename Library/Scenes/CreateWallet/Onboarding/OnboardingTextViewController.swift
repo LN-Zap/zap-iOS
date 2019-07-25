@@ -13,7 +13,7 @@ class OnboardingTextViewController: UIViewController {
     @IBOutlet private weak var separatorView: UIView!
     @IBOutlet private weak var imageView: UIImageView!
 
-    private var titleText: String?
+    private var titleText: String! // swiftlint:disable:this implicitly_unwrapped_optional
     private var messageText: String?
     private var image: UIImage?
     public private(set) var buttonTitle: String?
@@ -36,7 +36,7 @@ class OnboardingTextViewController: UIViewController {
 
         separatorView.backgroundColor = UIColor.Zap.lightningOrange
 
-        titleLabel.text = titleText
+        titleLabel.setMarkdown(titleText, fontSize: 40, weight: .light, boldWeight: .medium)
         messageLabel.text = messageText
         imageView.image = image
 
