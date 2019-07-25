@@ -171,6 +171,7 @@
 "scene.recover_wallet.done_button" = "Hecho";
 "scene.recover_wallet.description_label" = "Enter your recovery phrase:";
 "scene.recover_wallet.placeholder" = "abandonar capacidad capaz sobre encima ausente absorber abstracto absurdo abuso accidente cuenta acusar lograr ácido acústico adquirir tras acto acción actor actriz real";
+"scene.recover_wallet.select_channel_backup_button" = "Select Channel Backup";
 
 "scene.select_wallet_connection.create.title" = "Crear";
 "scene.select_wallet_connection.recover.title" = "Recuperar";
