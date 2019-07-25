@@ -33,8 +33,8 @@ public final class WalletApi {
         connection.genSeed(request, completion: run(completion) { $0.cipherSeedMnemonic })
     }
 
-    public func initWallet(mnemonic: [String], password: String, completion: @escaping ApiCompletion<Success>) {
-        let request = Lnrpc_InitWalletRequest(password: password, mnemonic: mnemonic)
+    public func initWallet(mnemonic: [String], password: String, channelBackup: ChannelBackup?, completion: @escaping ApiCompletion<Success>) {
+        let request = Lnrpc_InitWalletRequest(password: password, mnemonic: mnemonic, channelBackup: channelBackup)
         connection.initWallet(request, completion: run(completion) { _ in Success() })
     }
 
