@@ -51,7 +51,7 @@ final class SelectWalletCreationMethodViewController: UIViewController {
         recoverButton.setTitleColor(UIColor.Zap.invisibleGray, for: .normal)
         connectButton.setTitleColor(UIColor.Zap.invisibleGray, for: .normal)
 
-        titleLabel.text = L10n.Scene.SelectWalletConnection.message
+        titleLabel.setMarkdown(L10n.Scene.SelectWalletConnection.message, fontSize: 40, weight: .light, boldWeight: .medium)
 
         view.backgroundColor = UIColor.Zap.background
         separatorView.backgroundColor = UIColor.Zap.lightningOrange

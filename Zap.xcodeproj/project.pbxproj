@@ -22,6 +22,7 @@
 		AD035BFC2174A030005EA785 /* ChannelTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD035BFA2174A030005EA785 /* ChannelTableViewCell.swift */; };
 		AD035BFD2174A030005EA785 /* ChannelTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = AD035BFB2174A030005EA785 /* ChannelTableViewCell.xib */; };
 		AD035BFF2174A996005EA785 /* ChannelDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD035BFE2174A996005EA785 /* ChannelDetailViewController.swift */; };
+		AD037A2D22E9F0A300826AF7 /* UILabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD037A2C22E9F0A300826AF7 /* UILabel.swift */; };
 		AD054EA422D8BB8400A9796E /* ConfirmMnemonic.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AD054EA322D8BB8400A9796E /* ConfirmMnemonic.storyboard */; };
 		AD054EA622D8BC2100A9796E /* ConfirmMnemonicPageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD054EA522D8BC2100A9796E /* ConfirmMnemonicPageViewController.swift */; };
 		AD055DA721B14A4300BE511D /* Permissions.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD055DA621B14A4300BE511D /* Permissions.swift */; };
@@ -614,6 +615,7 @@
 		AD035BFA2174A030005EA785 /* ChannelTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChannelTableViewCell.swift; sourceTree = "<group>"; };
 		AD035BFB2174A030005EA785 /* ChannelTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ChannelTableViewCell.xib; sourceTree = "<group>"; };
 		AD035BFE2174A996005EA785 /* ChannelDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChannelDetailViewController.swift; sourceTree = "<group>"; };
+		AD037A2C22E9F0A300826AF7 /* UILabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UILabel.swift; sourceTree = "<group>"; };
 		AD054EA322D8BB8400A9796E /* ConfirmMnemonic.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = ConfirmMnemonic.storyboard; sourceTree = "<group>"; };
 		AD054EA522D8BC2100A9796E /* ConfirmMnemonicPageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConfirmMnemonicPageViewController.swift; sourceTree = "<group>"; };
 		AD055DA621B14A4300BE511D /* Permissions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Permissions.swift; sourceTree = "<group>"; };
@@ -1380,7 +1382,6 @@
 				ADADAD59214126BB00A48E1F /* Date.swift */,
 				AD9BB2DF21836A54009DC878 /* DispatchQueue+Debounce.swift */,
 				AD27021E22E06E5000D4BF27 /* Keychain.swift */,
-				AD77464C2076161300EC596B /* Localizable */,
 				A0BD44DB206FCAD900BF27A3 /* SignalProtocol.swift */,
 				A0A96B87201769F100788808 /* String.swift */,
 				AD131B1520CFA0AD00E6FED3 /* UIAlertController.swift */,
@@ -1390,10 +1391,12 @@
 				ADE4CF1C20B5B2BE007C987A /* UIFont.swift */,
 				A0A05A2F2013EFC00007D1C9 /* UIImage.swift */,
 				AD7FB3F9225E1BBF00C98A00 /* UIImageView.swift */,
+				AD037A2C22E9F0A300826AF7 /* UILabel.swift */,
 				A0A05A5D2014A0DE0007D1C9 /* UITableView.swift */,
 				ADA81E9D210DE14100B7C6F2 /* UIView.swift */,
 				ADBA120520930C94001F7700 /* UIViewController.swift */,
 				A0919142203B152100FA525A /* UserDefaults.swift */,
+				AD77464C2076161300EC596B /* Localizable */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -3124,6 +3127,7 @@
 				AD391C7020D16F89007EE22A /* OpenChannelViewModel.swift in Sources */,
 				AD391C4F20D16F68007EE22A /* ChannelViewModel.swift in Sources */,
 				ADA179C52152864E001401F3 /* Persistable.swift in Sources */,
+				AD037A2D22E9F0A300826AF7 /* UILabel.swift in Sources */,
 				AD391D0320D16FF5007EE22A /* AmountInputView.swift in Sources */,
 				AD391D0620D16FF5007EE22A /* BondCell.swift in Sources */,
 				AD391C6D20D16F89007EE22A /* SetupPinViewController.swift in Sources */,
