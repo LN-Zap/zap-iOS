@@ -111,15 +111,15 @@
 "scene.setup_pin.top_label.non_matching" = "Der PIN stimmt nicht überein. Bitte versuche es erneut.";
 "scene.setup_pin.top_label.validate" = "Gib den PIN erneut ein.";
 
-"scene.onboarding.page_1.title" = "Dein Schlüssel, deine Bitcoins.";
+"scene.onboarding.page_1.title" = "Your **key**, your **coins**.";
 "scene.onboarding.page_1.message" = "Mit Zap hast du die Kontrolle über dein Geld. Um sicherzustellen, dass deine Coins immer sicher aufbewahrt werden, stellt dir Zap eine Wiederherstellungsphrase zur Verfügung.";
 "scene.onboarding.page_1.button_title" = "Weiter";
 
-"scene.onboarding.page_2.title" = "Notiere dir deinen Wiederherstellungsphrase.";
+"scene.onboarding.page_2.title" = "Write down your **recovery phrase**.";
 "scene.onboarding.page_2.message" = "Notiere dir die Wiederherstellungsphrase auf einem Blatt Papier. Du kannst dein Geld jederzeit zurückerhalten, wenn dein Handy verloren geht.";
 "scene.onboarding.page_2.button_title" = "Weiter";
 
-"scene.onboarding.page_3.title" = "Stelle sicher ihn an einem sicheren Ort aufzubewahren.";
+"scene.onboarding.page_3.title" = "Make sure to keep it in a **safe place**.";
 "scene.onboarding.page_3.message" = "Achte darauf, dass du deine Wiederherstellungsphrase privat hältst. Lagere ihn an einem Ort den nur du kennst.";
 "scene.onboarding.page_3.button_title" = "Wiederherstellungsphrase generieren";
 
@@ -176,7 +176,7 @@
 "scene.select_wallet_connection.create.title" = "Erstellen";
 "scene.select_wallet_connection.recover.title" = "Wiederherstellen";
 "scene.select_wallet_connection.connect.title" = "Verbinden";
-"scene.select_wallet_connection.message" = "Bitcoin für alle";
+"scene.select_wallet_connection.message" = "Bitcoin for **everyone**";
 
 "scene.main.send_button" = "Senden";
 "scene.main.receive_button" = "Empfangen";
