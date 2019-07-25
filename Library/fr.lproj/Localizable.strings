@@ -171,6 +171,7 @@
 "scene.recover_wallet.done_button" = "Terminé";
 "scene.recover_wallet.description_label" = "Enter your recovery phrase:";
 "scene.recover_wallet.placeholder" = "abandon ability able about above absent absorb abstract absurd abuse access accident account accuse achieve acid acoustic acquire across act action actor actress actual";
+"scene.recover_wallet.select_channel_backup_button" = "Select Channel Backup";
 
 "scene.select_wallet_connection.create.title" = "Créer";
 "scene.select_wallet_connection.recover.title" = "Récupérer";

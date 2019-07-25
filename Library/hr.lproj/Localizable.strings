@@ -171,6 +171,7 @@
 "scene.recover_wallet.done_button" = "Gotovo";
 "scene.recover_wallet.description_label" = "Enter your recovery phrase:";
 "scene.recover_wallet.placeholder" = "napustiti sposobnosti mogućnosti iznad odsutna apsorbirati apstraktni apsurd zlostavljanja pristup nesreći račun optužuju postići kiselina akustične nabaviti preko zakona akcijski glumac glumica stvarni";
+"scene.recover_wallet.select_channel_backup_button" = "Select Channel Backup";
 
 "scene.select_wallet_connection.create.title" = "Stvaranje";
 "scene.select_wallet_connection.recover.title" = "Obnova";

@@ -171,6 +171,7 @@
 "scene.recover_wallet.done_button" = "הושלם";
 "scene.recover_wallet.description_label" = "Enter your recovery phrase:";
 "scene.recover_wallet.placeholder" = "לנטוש יכולת מסוגל אודות מעל נעדר לספוג מופשט(לא מוחשי) לא הגיוני(מגוחך) ניצול גישה תקלה(תאונה) חשבון האשים השיג חומצה אקוסטי(קולי) השיג(רכש) מעבר(לעבר) מעשה(פעולה) מעשה(פעולה) שחקן שחקנית ממשי(ראלי)";
+"scene.recover_wallet.select_channel_backup_button" = "Select Channel Backup";
 
 "scene.select_wallet_connection.create.title" = "צור";
 "scene.select_wallet_connection.recover.title" = "שיחזור";
