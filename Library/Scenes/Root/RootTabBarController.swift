@@ -30,6 +30,7 @@ class RootTabBarController: UITabBarController {
         tabBar.isTranslucent = false
         tabBar.shadowImage = UIImage()
         tabBar.backgroundImage = UIImage()
+        tabBar.unselectedItemTintColor = UIColor.Zap.gray
     }
 
     var tabs: [(Tab, UIViewController)]? {
