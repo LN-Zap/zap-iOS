@@ -120,6 +120,8 @@ final class WalletCoordinator: NSObject, Coordinator {
         case .error:
             disconnectWalletDelegate?.disconnect()
         }
+
+        UIApplication.shared.isIdleTimerDisabled = lightningService.connection == .local && state == .syncing
     }
 
     private func presentUnlockWallet() {
