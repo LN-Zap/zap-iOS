@@ -30,6 +30,8 @@ final class PushNotificationViewController: UIViewController {
 
         Style.Button.background.apply(to: confirmButton)
         Style.Label.body.apply(to: messageLabel)
+        messageLabel.textColor = UIColor.Zap.gray
+
         Style.Label.title.apply(to: headlineLabel)
         skipButton.setTitleColor(UIColor.Zap.gray, for: .normal)
 
