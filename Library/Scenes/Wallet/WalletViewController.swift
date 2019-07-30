@@ -144,6 +144,8 @@ final class WalletViewController: UIViewController {
             }
             .dispose(in: reactive.bag)
 
+        syncProgressView.trackTintColor = UIColor.Zap.deepSeaBlue
+
         walletViewModel.syncViewModel.percentSignal
             .map { Float($0) }
             .bind(to: syncProgressView.reactive.progress)
