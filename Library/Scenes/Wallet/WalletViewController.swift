@@ -126,16 +126,9 @@ final class WalletViewController: UIViewController {
     }
 
     private func setupSyncView() {
-        let syncSignal = walletViewModel.syncViewModel.isSyncing
+        walletViewModel.syncViewModel.isSyncing
             .map { $0 ? UILayoutPriority(rawValue: 1) : UILayoutPriority(rawValue: 999) }
             .observeOn(DispatchQueue.main)
-
-        syncSignal.first() // on first change don't use animations
-            .observeNext {  [weak self] in
-                self?.syncViewHeightConstraint.priority = $0
-            }
-            .dispose(in: reactive.bag)
-        syncSignal.skip(last: 1) // animate the following changes
             .observeNext { [weak self] in
                 self?.syncViewHeightConstraint.priority = $0
                 UIView.animate(withDuration: 0.25) {
