@@ -11,7 +11,7 @@ extension UILabel {
     func setMarkdown(_ markdownText: String, fontSize: CGFloat, weight: UIFont.Weight, boldWeight: UIFont.Weight) {
         font = UIFont.systemFont(ofSize: fontSize, weight: weight)
 
-        let boldFont = UIFont.systemFont(ofSize: 40, weight: boldWeight)
+        let boldFont = UIFont.systemFont(ofSize: fontSize, weight: boldWeight)
 
         let attributedString = NSMutableAttributedString(string: markdownText.replacingOccurrences(of: "**", with: ""))
 

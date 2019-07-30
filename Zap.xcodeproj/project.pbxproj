@@ -310,6 +310,7 @@
 		ADCD5B0F20D7E40C0037F156 /* ChangePinSettingsItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADCD5B0E20D7E40C0037F156 /* ChangePinSettingsItem.swift */; };
 		ADCEAFD32255F2C2004F605B /* WarningSettingsItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADCEAFD22255F2C2004F605B /* WarningSettingsItem.swift */; };
 		ADCEAFD522579C2A004F605B /* LoadingAnimationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADCEAFD422579C2A004F605B /* LoadingAnimationView.swift */; };
+		ADD0514E22F059F80017BDC1 /* UIScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADD0514D22F059F80017BDC1 /* UIScreen.swift */; };
 		ADD089F922773EE400480073 /* LightningApi.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADD089F822773EE400480073 /* LightningApi.swift */; };
 		ADD08A0322787B8300480073 /* rpc.zap.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADD08A0222787B8300480073 /* rpc.zap.swift */; };
 		ADD08A062278BBCE00480073 /* WalletApi.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADD08A052278BBCE00480073 /* WalletApi.swift */; };
@@ -908,6 +909,7 @@
 		ADCE01CB207B967200CA72E8 /* Loading.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Loading.storyboard; sourceTree = "<group>"; };
 		ADCEAFD22255F2C2004F605B /* WarningSettingsItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WarningSettingsItem.swift; sourceTree = "<group>"; };
 		ADCEAFD422579C2A004F605B /* LoadingAnimationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingAnimationView.swift; sourceTree = "<group>"; };
+		ADD0514D22F059F80017BDC1 /* UIScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIScreen.swift; sourceTree = "<group>"; };
 		ADD089F822773EE400480073 /* LightningApi.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LightningApi.swift; sourceTree = "<group>"; };
 		ADD08A0222787B8300480073 /* rpc.zap.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = rpc.zap.swift; sourceTree = "<group>"; };
 		ADD08A052278BBCE00480073 /* WalletApi.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WalletApi.swift; sourceTree = "<group>"; };
@@ -1392,6 +1394,7 @@
 				A0A05A2F2013EFC00007D1C9 /* UIImage.swift */,
 				AD7FB3F9225E1BBF00C98A00 /* UIImageView.swift */,
 				AD037A2C22E9F0A300826AF7 /* UILabel.swift */,
+				ADD0514D22F059F80017BDC1 /* UIScreen.swift */,
 				A0A05A5D2014A0DE0007D1C9 /* UITableView.swift */,
 				ADA81E9D210DE14100B7C6F2 /* UIView.swift */,
 				ADBA120520930C94001F7700 /* UIViewController.swift */,
@@ -3093,6 +3096,7 @@
 				AD1831C2229676CB00120260 /* OnChainFeeViewModel.swift in Sources */,
 				AD7ED61D22087812007C5F2C /* ManageWalletTableViewCell.swift in Sources */,
 				AD391C5320D16F7A007EE22A /* ConfirmMnemonicViewModel.swift in Sources */,
+				ADD0514E22F059F80017BDC1 /* UIScreen.swift in Sources */,
 				ADEDA3D12178938E0078FD91 /* NodeURIQRCodeViewModel.swift in Sources */,
 				AD055DAE21B5416D00BE511D /* ToastNotificationObserver.swift in Sources */,
 				AD391C6F20D16F89007EE22A /* OpenChannelViewController.swift in Sources */,
