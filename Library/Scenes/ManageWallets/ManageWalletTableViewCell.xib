@@ -68,6 +68,7 @@
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
             <connections>
                 <outlet property="aliasLabel" destination="N5e-PB-33M" id="OR7-vM-lYh"/>
+                <outlet property="backupButton" destination="d1b-nG-m9T" id="Glq-QF-ZIP"/>
                 <outlet property="hostLabel" destination="JiK-Ys-qV7" id="2rW-lY-qYU"/>
                 <outlet property="networkLabel" destination="ALb-nC-uVY" id="3aa-1N-iJd"/>
             </connections>

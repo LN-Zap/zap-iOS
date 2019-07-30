@@ -26,16 +26,16 @@ public extension FileManager {
         return FileManager.default.walletDirectory?.appendingPathComponent("/data/chain/bitcoin/\(network.rawValue)/wallet.db")
     }
 
-    var hasLocalWallet: Bool {
+    var hasLocalWallet: Network? {
         let fileManager = FileManager.default
 
         if let mainnetURL = fileManager.walletDatabase(for: .mainnet), fileManager.fileExists(atPath: mainnetURL.path) {
-            return true
+            return .mainnet
         } else if let testnetURL = fileManager.walletDatabase(for: .testnet), fileManager.fileExists(atPath: testnetURL.path) {
-            return true
+            return .testnet
         }
 
-        return false
+        return nil
     }
 
     private func createAndReturn(url: URL) -> URL? {

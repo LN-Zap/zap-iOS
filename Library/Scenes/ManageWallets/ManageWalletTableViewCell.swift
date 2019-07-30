@@ -15,6 +15,7 @@ class ManageWalletTableViewCell: UITableViewCell {
     @IBOutlet private weak var aliasLabel: UILabel!
     @IBOutlet private weak var networkLabel: UILabel!
     @IBOutlet private weak var hostLabel: UILabel!
+    @IBOutlet private weak var backupButton: UIButton!
 
     private var walletConfiguration: WalletConfiguration?
     weak var delegate: ManageWalletTableViewCellDelegate?
@@ -35,6 +36,8 @@ class ManageWalletTableViewCell: UITableViewCell {
         aliasLabel.text = walletConfiguration.alias
         networkLabel.text = walletConfiguration.network.localized
 
+        backupButton.isHidden = walletConfiguration.nodePubKey == nil
+
         switch walletConfiguration.connection {
         case .local:
             hostLabel.text = "local"
@@ -46,7 +49,7 @@ class ManageWalletTableViewCell: UITableViewCell {
     }
 
     @IBAction private func backupButtonTapped(_ sender: Any) {
-        guard let walletConfiguration = walletConfiguration else { return }
-        delegate?.presentBackupViewController(nodePubKey: walletConfiguration.nodePubKey)
+        guard let nodePubKey = walletConfiguration?.nodePubKey else { return }
+        delegate?.presentBackupViewController(nodePubKey: nodePubKey)
     }
 }
