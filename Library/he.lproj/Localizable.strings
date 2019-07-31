@@ -93,6 +93,9 @@
 "scene.channels.alert.force_close" = "Force Close Channel";
 "scene.channels.close_loading_view" = "Closing Channel";
 "scene.channels.close_success.toast" = "הערות נסגר.";
+"scene.channels.empty_state.title" = "Open Channel";
+"scene.channels.empty_state.message" = "You don't have any channels yet. Let's open a channel.";
+"scene.channels.empty_state.button_title" = "Open Channel";
 
 "scene.open_channel.title" = "פתח ערוץ";
 "scene.open_channel.channel_uri_label" = "Node:";
