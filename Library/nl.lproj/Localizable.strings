@@ -93,6 +93,9 @@
 "scene.channels.alert.force_close" = "Geforceerd kanaal sluiten";
 "scene.channels.close_loading_view" = "Channel aan het sluiten";
 "scene.channels.close_success.toast" = "Channel is aan het sluiten.";
+"scene.channels.empty_state.title" = "Open Channel";
+"scene.channels.empty_state.message" = "You don't have any channels yet. Let's open a channel.";
+"scene.channels.empty_state.button_title" = "Open Channel";
 
 "scene.open_channel.title" = "Open Channel";
 "scene.open_channel.channel_uri_label" = "Node:";
@@ -232,6 +235,9 @@
 "scene.wallet.detail.on_chain" = "On-chain:";
 "scene.wallet.detail.lightning" = "Lightning:";
 "scene.wallet.detail.pending" = "In behandeling:";
+"scene.wallet.empty_state.title" = "Fund your wallet";
+"scene.wallet.empty_state.message" = "Your wallet is empty. Get started by adding some funds.";
+"scene.wallet.empty_state.button_title" = "Fund Wallet";
 
 "scene.time_lock.headline" = "Verkeerde pincode";
 "scene.time_lock.description" = "Je wallet is geblokkeerd voor:";
