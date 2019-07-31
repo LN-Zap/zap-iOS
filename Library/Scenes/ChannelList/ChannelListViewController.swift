@@ -28,14 +28,16 @@ final class ChannelListViewController: UIViewController {
     private var addChannelButtonTapped: (() -> Void)!
     private var presentChannelDetail: ((UIViewController, ChannelViewModel) -> Void)!
     private var walletEmptyStateViewModel: WalletEmptyStateViewModel!
+    private var channelListEmptyStateViewModel: ChannelListEmptyStateViewModel!
     // swiftlint:enable implicitly_unwrapped_optional
 
-    static func instantiate(channelListViewModel: ChannelListViewModel, addChannelButtonTapped: @escaping () -> Void, presentChannelDetail: @escaping (UIViewController, ChannelViewModel) -> Void, walletEmptyStateViewModel: WalletEmptyStateViewModel) -> UIViewController {
+    static func instantiate(channelListViewModel: ChannelListViewModel, addChannelButtonTapped: @escaping () -> Void, presentChannelDetail: @escaping (UIViewController, ChannelViewModel) -> Void, walletEmptyStateViewModel: WalletEmptyStateViewModel, channelListEmptyStateViewModel: ChannelListEmptyStateViewModel) -> UIViewController {
         let viewController = StoryboardScene.ChannelList.channelViewController.instantiate()
         viewController.channelListViewModel = channelListViewModel
         viewController.addChannelButtonTapped = addChannelButtonTapped
         viewController.presentChannelDetail = presentChannelDetail
         viewController.walletEmptyStateViewModel = walletEmptyStateViewModel
+        viewController.channelListEmptyStateViewModel = channelListEmptyStateViewModel
 
         return viewController
     }
@@ -75,11 +77,18 @@ final class ChannelListViewController: UIViewController {
     }
 
     private func setupEmtpyState() {
-        let emptyStateView = EmptyStateView(viewModel: walletEmptyStateViewModel)
-        emptyStateView.add(to: view)
+        let walletEmptyStateView = EmptyStateView(viewModel: walletEmptyStateViewModel)
+        walletEmptyStateView.add(to: view)
 
         channelListViewModel.shouldHideEmptyWalletState
-            .bind(to: emptyStateView.reactive.isHidden)
+            .bind(to: walletEmptyStateView.reactive.isHidden)
+            .dispose(in: reactive.bag)
+
+        let channelEmptyStateView = EmptyStateView(viewModel: channelListEmptyStateViewModel)
+        channelEmptyStateView.add(to: view)
+
+        channelListViewModel.shouldHideChannelListEmptyState
+            .bind(to: channelEmptyStateView.reactive.isHidden)
             .dispose(in: reactive.bag)
     }
 

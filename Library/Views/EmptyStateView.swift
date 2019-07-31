@@ -22,9 +22,9 @@ protocol EmptyStateViewModel {
 }
 
 final class EmptyStateView: UIView {
-    var viewModel: WalletEmptyStateViewModel
+    var viewModel: EmptyStateViewModel
 
-    init(viewModel: WalletEmptyStateViewModel) {
+    init(viewModel: EmptyStateViewModel) {
         self.viewModel = viewModel
 
         super.init(frame: .zero)

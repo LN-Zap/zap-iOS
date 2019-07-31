@@ -305,6 +305,7 @@
 		ADC0D2FA2107A23400B8C62F /* *.blockcypher.com.cer in Resources */ = {isa = PBXBuildFile; fileRef = ADC0D2F62107A19A00B8C62F /* *.blockcypher.com.cer */; };
 		ADC0D3042107A3D700B8C62F /* blockexplorer.com.cer in Resources */ = {isa = PBXBuildFile; fileRef = ADC0D3022107A3D600B8C62F /* blockexplorer.com.cer */; };
 		ADC0D3052107A3D700B8C62F /* CloudFlare Inc ECC CA-2.cer in Resources */ = {isa = PBXBuildFile; fileRef = ADC0D3032107A3D700B8C62F /* CloudFlare Inc ECC CA-2.cer */; };
+		ADC2FC9B22F1D97900902D43 /* ChannelListEmptyStateViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADC2FC9A22F1D97900902D43 /* ChannelListEmptyStateViewModel.swift */; };
 		ADC48CA7214AD8B800949CD9 /* DateEstimatorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADC48CA6214AD8B800949CD9 /* DateEstimatorTests.swift */; };
 		ADC48CA92150FBA200949CD9 /* HistoryService.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADC48CA82150FBA200949CD9 /* HistoryService.swift */; };
 		ADCD5B0D20D7E3F50037F156 /* ManageWalletsSettingsItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADCD5B0C20D7E3F50037F156 /* ManageWalletsSettingsItem.swift */; };
@@ -899,6 +900,7 @@
 		ADC0D3022107A3D600B8C62F /* blockexplorer.com.cer */ = {isa = PBXFileReference; lastKnownFileType = file; path = blockexplorer.com.cer; sourceTree = "<group>"; };
 		ADC0D3032107A3D700B8C62F /* CloudFlare Inc ECC CA-2.cer */ = {isa = PBXFileReference; lastKnownFileType = file; path = "CloudFlare Inc ECC CA-2.cer"; sourceTree = "<group>"; };
 		ADC29C0B20A9B0A0008B2DC2 /* Invoice.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Invoice.swift; sourceTree = "<group>"; };
+		ADC2FC9A22F1D97900902D43 /* ChannelListEmptyStateViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChannelListEmptyStateViewModel.swift; sourceTree = "<group>"; };
 		ADC48CA6214AD8B800949CD9 /* DateEstimatorTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateEstimatorTests.swift; sourceTree = "<group>"; };
 		ADC48CA82150FBA200949CD9 /* HistoryService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistoryService.swift; sourceTree = "<group>"; };
 		ADCD060020E67FA5009D9650 /* Environment.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Environment.swift; sourceTree = "<group>"; };
@@ -1434,14 +1436,15 @@
 		A0DDC0702018C6D800AEFF94 /* ChannelList */ = {
 			isa = PBXGroup;
 			children = (
-				A010094F2015F99F0001EF94 /* ChannelList.storyboard */,
+				ADE0C40B2108F6CE004597C3 /* Cell */,
 				AD035BFE2174A996005EA785 /* ChannelDetailViewController.swift */,
+				A010094F2015F99F0001EF94 /* ChannelList.storyboard */,
+				ADC2FC9A22F1D97900902D43 /* ChannelListEmptyStateViewModel.swift */,
 				AD3553E4224E32EA00B99ABC /* ChannelListHeaderView.swift */,
 				A0731FE82014B27900C55E45 /* ChannelListViewController.swift */,
 				A0F57DBD201E440F003AFA66 /* ChannelListViewModel.swift */,
 				AD77465620765E4D00EC596B /* ChannelViewModel.swift */,
 				AD3553E6224E6CD400B99ABC /* CircleGraphView.swift */,
-				ADE0C40B2108F6CE004597C3 /* Cell */,
 			);
 			path = ChannelList;
 			sourceTree = "<group>";
@@ -3225,6 +3228,7 @@
 				AD391C5C20D16F7A007EE22A /* MnemonicViewModel.swift in Sources */,
 				AD391C4720D16F68007EE22A /* ContainerViewController.swift in Sources */,
 				AD391CB320D16FA8007EE22A /* GroupedTableViewController.swift in Sources */,
+				ADC2FC9B22F1D97900902D43 /* ChannelListEmptyStateViewModel.swift in Sources */,
 				ADFDE94622E7603F00B718A4 /* ManageWalletsViewModel.swift in Sources */,
 				AD81C21721B80FCD00FA3FA9 /* SafariSettingsItem.swift in Sources */,
 				AD667E522136B062007B9160 /* TimeLockedViewController.swift in Sources */,

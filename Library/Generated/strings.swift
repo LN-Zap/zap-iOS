@@ -185,6 +185,14 @@ internal enum L10n {
         /// Channel is closing.
         internal static let toast = L10n.tr("Localizable", "scene.channels.close_success.toast")
       }
+      internal enum EmptyState {
+        /// Open Channel
+        internal static let buttonTitle = L10n.tr("Localizable", "scene.channels.empty_state.button_title")
+        /// You don't have any channels yet. Let's open a channel.
+        internal static let message = L10n.tr("Localizable", "scene.channels.empty_state.message")
+        /// Open Channel
+        internal static let title = L10n.tr("Localizable", "scene.channels.empty_state.title")
+      }
       internal enum ForceClose {
         /// %@ is offline, are you sure you want to force close this channel? You’d have to wait about %@ for your funds?
         internal static func message(_ p1: String, _ p2: String) -> String {

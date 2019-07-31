@@ -48,6 +48,7 @@ final class ChannelListViewModel: NSObject {
     let totalOffline = Observable<Satoshi>(0)
 
     let shouldHideEmptyWalletState: Signal<Bool, Never>
+    let shouldHideChannelListEmptyState: Signal<Bool, Never>
 
     var channelService: ChannelService {
         return lightningService.channelService
@@ -60,6 +61,9 @@ final class ChannelListViewModel: NSObject {
 
         shouldHideEmptyWalletState = lightningService.balanceService.onChain
             .map { $0 > 0 }
+
+        shouldHideChannelListEmptyState = combineLatest(lightningService.balanceService.onChain, dataSource)
+            .map { $0 <= 0 || !$1.collection.isEmpty }
 
         super.init()
 
