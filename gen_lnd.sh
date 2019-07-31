@@ -21,7 +21,9 @@ protoc -I/usr/local/include -I.\
        --swift_out=$OUT \
        --zap_out=$OUT \
        --swiftgrpc_out=Sync=false,Server=false:$OUT \
-       $GOPATH/src/github.com/lightningnetwork/lnd/lnrpc/rpc.proto
+       $GOPATH/src/github.com/lightningnetwork/lnd/lnrpc/rpc.proto \
+       $GOPATH/src/github.com/lightningnetwork/lnd/lnrpc/chainrpc/chainnotifier.proto \
+       $GOPATH/src/github.com/lightningnetwork/lnd/lnrpc/routerrpc/router.proto
 
 DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" >/dev/null 2>&1 && pwd )"
 FRAMEWORKDIR=$DIR/Frameworks
@@ -30,5 +32,5 @@ git apply $DIR/mainnet.patch
 
 make rpc
 make mobile-rpc
-make tags="experimental" IOS_BUILD_DIR=$FRAMEWORKDIR ios
+make tags="chainrpc routerrpc experimental" prefix=1 IOS_BUILD_DIR=$FRAMEWORKDIR ios
 

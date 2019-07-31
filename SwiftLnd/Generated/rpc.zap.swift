@@ -19,7 +19,7 @@ protocol WalletUnlockerConnection {
 }
 
 #if !REMOTEONLY
-class StreamingWalletUnlockerConnection: WalletUnlockerConnection {
+final class StreamingWalletUnlockerConnection: WalletUnlockerConnection {
   func genSeed(_ request: Lnrpc_GenSeedRequest, completion: @escaping ApiCompletion<Lnrpc_GenSeedResponse>) {
     LndmobileGenSeed(try? request.serializedData(), LndCallback(completion))
   }
@@ -60,7 +60,7 @@ final class RPCWalletUnlockerConnection: WalletUnlockerConnection {
 
 }
 
-class MockWalletUnlockerConnection: WalletUnlockerConnection {
+final class MockWalletUnlockerConnection: WalletUnlockerConnection {
   private let genSeed: Lnrpc_GenSeedResponse?
   private let initWallet: Lnrpc_InitWalletResponse?
   private let unlockWallet: Lnrpc_UnlockWalletResponse?
@@ -146,7 +146,7 @@ protocol LightningConnection {
 }
 
 #if !REMOTEONLY
-class StreamingLightningConnection: LightningConnection {
+final class StreamingLightningConnection: LightningConnection {
   func walletBalance(_ request: Lnrpc_WalletBalanceRequest, completion: @escaping ApiCompletion<Lnrpc_WalletBalanceResponse>) {
     LndmobileWalletBalance(try? request.serializedData(), LndCallback(completion))
   }
@@ -592,7 +592,7 @@ final class RPCLightningConnection: LightningConnection {
 
 }
 
-class MockLightningConnection: LightningConnection {
+final class MockLightningConnection: LightningConnection {
   private let walletBalance: Lnrpc_WalletBalanceResponse?
   private let channelBalance: Lnrpc_ChannelBalanceResponse?
   private let getTransactions: Lnrpc_TransactionDetails?

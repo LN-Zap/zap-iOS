@@ -312,6 +312,12 @@
 		ADCD5B0F20D7E40C0037F156 /* ChangePinSettingsItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADCD5B0E20D7E40C0037F156 /* ChangePinSettingsItem.swift */; };
 		ADCEAFD32255F2C2004F605B /* WarningSettingsItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADCEAFD22255F2C2004F605B /* WarningSettingsItem.swift */; };
 		ADCEAFD522579C2A004F605B /* LoadingAnimationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADCEAFD422579C2A004F605B /* LoadingAnimationView.swift */; };
+		ADD0514322EF387D0017BDC1 /* chainnotifier.grpc.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADD0514022EF387D0017BDC1 /* chainnotifier.grpc.swift */; };
+		ADD0514422EF387D0017BDC1 /* chainnotifier.zap.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADD0514122EF387D0017BDC1 /* chainnotifier.zap.swift */; };
+		ADD0514522EF387D0017BDC1 /* chainnotifier.pb.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADD0514222EF387D0017BDC1 /* chainnotifier.pb.swift */; };
+		ADD0514A22EF38A90017BDC1 /* router.grpc.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADD0514722EF38A90017BDC1 /* router.grpc.swift */; };
+		ADD0514B22EF38A90017BDC1 /* router.zap.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADD0514822EF38A90017BDC1 /* router.zap.swift */; };
+		ADD0514C22EF38A90017BDC1 /* router.pb.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADD0514922EF38A90017BDC1 /* router.pb.swift */; };
 		ADD0514E22F059F80017BDC1 /* UIScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADD0514D22F059F80017BDC1 /* UIScreen.swift */; };
 		ADD0515022F0A6240017BDC1 /* WalletEmptyStateViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADD0514F22F0A6240017BDC1 /* WalletEmptyStateViewModel.swift */; };
 		ADD089F922773EE400480073 /* LightningApi.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADD089F822773EE400480073 /* LightningApi.swift */; };
@@ -914,6 +920,12 @@
 		ADCE01CB207B967200CA72E8 /* Loading.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Loading.storyboard; sourceTree = "<group>"; };
 		ADCEAFD22255F2C2004F605B /* WarningSettingsItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WarningSettingsItem.swift; sourceTree = "<group>"; };
 		ADCEAFD422579C2A004F605B /* LoadingAnimationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingAnimationView.swift; sourceTree = "<group>"; };
+		ADD0514022EF387D0017BDC1 /* chainnotifier.grpc.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = chainnotifier.grpc.swift; sourceTree = "<group>"; };
+		ADD0514122EF387D0017BDC1 /* chainnotifier.zap.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = chainnotifier.zap.swift; sourceTree = "<group>"; };
+		ADD0514222EF387D0017BDC1 /* chainnotifier.pb.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = chainnotifier.pb.swift; sourceTree = "<group>"; };
+		ADD0514722EF38A90017BDC1 /* router.grpc.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = router.grpc.swift; sourceTree = "<group>"; };
+		ADD0514822EF38A90017BDC1 /* router.zap.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = router.zap.swift; sourceTree = "<group>"; };
+		ADD0514922EF38A90017BDC1 /* router.pb.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = router.pb.swift; sourceTree = "<group>"; };
 		ADD0514D22F059F80017BDC1 /* UIScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIScreen.swift; sourceTree = "<group>"; };
 		ADD0514F22F0A6240017BDC1 /* WalletEmptyStateViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WalletEmptyStateViewModel.swift; sourceTree = "<group>"; };
 		ADD089F822773EE400480073 /* LightningApi.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LightningApi.swift; sourceTree = "<group>"; };
@@ -2013,6 +2025,26 @@
 			path = Loading;
 			sourceTree = "<group>";
 		};
+		ADD0513F22EF385B0017BDC1 /* chainrpc */ = {
+			isa = PBXGroup;
+			children = (
+				ADD0514022EF387D0017BDC1 /* chainnotifier.grpc.swift */,
+				ADD0514222EF387D0017BDC1 /* chainnotifier.pb.swift */,
+				ADD0514122EF387D0017BDC1 /* chainnotifier.zap.swift */,
+			);
+			path = chainrpc;
+			sourceTree = "<group>";
+		};
+		ADD0514622EF38810017BDC1 /* routerrpc */ = {
+			isa = PBXGroup;
+			children = (
+				ADD0514722EF38A90017BDC1 /* router.grpc.swift */,
+				ADD0514922EF38A90017BDC1 /* router.pb.swift */,
+				ADD0514822EF38A90017BDC1 /* router.zap.swift */,
+			);
+			path = routerrpc;
+			sourceTree = "<group>";
+		};
 		ADD08A042278BACC00480073 /* Mocks */ = {
 			isa = PBXGroup;
 			children = (
@@ -2082,6 +2114,8 @@
 				AD9F3AE02271DE2D0044E5EB /* rpc.grpc.swift */,
 				AD5AA2E62271B64500AEDDD7 /* rpc.pb.swift */,
 				ADD08A0222787B8300480073 /* rpc.zap.swift */,
+				ADD0513F22EF385B0017BDC1 /* chainrpc */,
+				ADD0514622EF38810017BDC1 /* routerrpc */,
 			);
 			path = Generated;
 			sourceTree = "<group>";
@@ -3338,20 +3372,26 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				ADD0514322EF387D0017BDC1 /* chainnotifier.grpc.swift in Sources */,
 				AD055DA721B14A4300BE511D /* Permissions.swift in Sources */,
 				ADD089F922773EE400480073 /* LightningApi.swift in Sources */,
 				AD79E422219D90E2002589CA /* Data+Extensions.swift in Sources */,
 				ADADAD982143B3C900A48E1F /* Protobuf+Extensions.swift in Sources */,
 				ADADAD882143B3C900A48E1F /* Channel.swift in Sources */,
+				ADD0514A22EF38A90017BDC1 /* router.grpc.swift in Sources */,
 				AD3FF6E0221D68890017E376 /* ServiceClientBase+Extension.swift in Sources */,
 				ADADAD932143B3C900A48E1F /* Success.swift in Sources */,
+				ADD0514522EF387D0017BDC1 /* chainnotifier.pb.swift in Sources */,
 				ADADAD8B2143B3C900A48E1F /* CloseStatusUpdate.swift in Sources */,
 				AD511B282253744800EDFC7C /* Version.swift in Sources */,
 				ADADAD8E2143B3C900A48E1F /* NodeInfo.swift in Sources */,
 				ADADAD972143B3C900A48E1F /* LndApiError.swift in Sources */,
+				ADD0514422EF387D0017BDC1 /* chainnotifier.zap.swift in Sources */,
 				ADFB36E72143BAC500146FCC /* Payment.swift in Sources */,
 				AD9BB2DA21819799009DC878 /* Route.swift in Sources */,
+				ADD0514B22EF38A90017BDC1 /* router.zap.swift in Sources */,
 				ADADAD892143B3C900A48E1F /* ChannelCloseSummary.swift in Sources */,
+				ADD0514C22EF38A90017BDC1 /* router.pb.swift in Sources */,
 				ADF1BB33219D7F260078BCC4 /* Macaroon.swift in Sources */,
 				ADA58F9122031E56009A5494 /* RpcCallback.swift in Sources */,
 				ADADAD942143B3C900A48E1F /* TestingTemplates.swift in Sources */,
