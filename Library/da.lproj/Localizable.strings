@@ -93,6 +93,9 @@
 "scene.channels.alert.force_close" = "Tvangsluk kanal";
 "scene.channels.close_loading_view" = "Lukker kanal";
 "scene.channels.close_success.toast" = "Kanalen lukkes.";
+"scene.channels.empty_state.title" = "Open Channel";
+"scene.channels.empty_state.message" = "You don't have any channels yet. Let's open a channel.";
+"scene.channels.empty_state.button_title" = "Open Channel";
 
 "scene.open_channel.title" = "Åben kanal";
 "scene.open_channel.channel_uri_label" = "Node:";
