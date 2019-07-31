@@ -93,6 +93,9 @@
 "scene.channels.alert.force_close" = "Vynutit uzavření kanálu";
 "scene.channels.close_loading_view" = "Uzavírání kanálu";
 "scene.channels.close_success.toast" = "Kanál je uzavírán.";
+"scene.channels.empty_state.title" = "Open Channel";
+"scene.channels.empty_state.message" = "You don't have any channels yet. Let's open a channel.";
+"scene.channels.empty_state.button_title" = "Open Channel";
 
 "scene.open_channel.title" = "Otevřít kanál";
 "scene.open_channel.channel_uri_label" = "Uzel:";
