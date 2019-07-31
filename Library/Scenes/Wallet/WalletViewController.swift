@@ -50,6 +50,7 @@ final class WalletViewController: UIViewController {
     private var sendButtonTapped: (() -> Void)!
     private var requestButtonTapped: (() -> Void)!
     private var nodeAliasButtonTapped: (() -> Void)!
+    private var fundButtonTapped: ((BitcoinURI) -> Void)!
     // swiftlint:enable implicitly_unwrapped_optional
 
     private let buttonCornerRadius: CGFloat = 20
@@ -58,13 +59,14 @@ final class WalletViewController: UIViewController {
         return -(detailView.bounds.height - 45) - 60
     }
 
-    static func instantiate(walletViewModel: WalletViewModel, sendButtonTapped: @escaping () -> Void, requestButtonTapped: @escaping () -> Void, nodeAliasButtonTapped: @escaping () -> Void) -> WalletViewController {
+    static func instantiate(walletViewModel: WalletViewModel, sendButtonTapped: @escaping () -> Void, requestButtonTapped: @escaping () -> Void, nodeAliasButtonTapped: @escaping () -> Void, fundButtonTapped: @escaping (BitcoinURI) -> Void) -> WalletViewController {
         let walletViewController = StoryboardScene.Wallet.walletViewController.instantiate()
         walletViewController.walletViewModel = walletViewModel
 
         walletViewController.sendButtonTapped = sendButtonTapped
         walletViewController.requestButtonTapped = requestButtonTapped
         walletViewController.nodeAliasButtonTapped = nodeAliasButtonTapped
+        walletViewController.fundButtonTapped = fundButtonTapped
 
         walletViewController.tabBarItem.title = Tab.wallet.title
         walletViewController.tabBarItem.image = Tab.wallet.image
@@ -118,11 +120,24 @@ final class WalletViewController: UIViewController {
 
         setupDetailView()
         setupSyncView()
+        setupEmtpyState()
     }
 
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
         updateDetailPosition()
+    }
+
+    private func setupEmtpyState() {
+        let emptyStateView = WalletEmptyStateView(viewModel: walletViewModel.emptyStateViewModel) { [weak self] in
+            self?.fundButtonTapped($0)
+        }
+        emptyStateView.add(to: view)
+
+        walletViewModel.totalBalance
+            .map { $0 > 0 }
+            .bind(to: emptyStateView.reactive.isHidden)
+            .dispose(in: reactive.bag)
     }
 
     private func setupSyncView() {
@@ -313,7 +328,7 @@ private extension Bitcoin {
     }
 }
 
-extension UIStackView {
+private extension UIStackView {
     func addSegment(_ segment: Segment, color: UIColor, title: String, amount: Observable<Satoshi>) {
         let circleView = CircleView(frame: .zero)
         circleView.backgroundColor = .clear

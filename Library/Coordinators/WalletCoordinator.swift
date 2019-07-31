@@ -8,6 +8,7 @@
 import Lightning
 import Logger
 import SafariServices
+import SwiftBTC
 import UIKit
 
 enum Tab {
@@ -166,7 +167,7 @@ final class WalletCoordinator: NSObject, Coordinator {
 
     func walletViewController() -> WalletViewController {
         let walletViewModel = WalletViewModel(lightningService: lightningService)
-        return WalletViewController.instantiate(walletViewModel: walletViewModel, sendButtonTapped: presentSend, requestButtonTapped: presentRequest, nodeAliasButtonTapped: presentWalletList)
+        return WalletViewController.instantiate(walletViewModel: walletViewModel, sendButtonTapped: presentSend, requestButtonTapped: presentRequest, nodeAliasButtonTapped: presentWalletList, fundButtonTapped: presentFundWallet)
     }
 
     func settingsViewController() -> ZapNavigationController {
@@ -214,6 +215,16 @@ final class WalletCoordinator: NSObject, Coordinator {
         } catch {
             Logger.error("Unexpected error: \(error).")
         }
+    }
+
+    /// Presented from the empty state of the wallet scene.
+    ///
+    /// - Parameter uri: The bitcoin uri the funds should be sent to.
+    func presentFundWallet(uri: BitcoinURI) {
+        let viewModel = RequestQRCodeViewModel(paymentURI: uri)
+        let viewController = QRCodeDetailViewController.instantiate(with: viewModel)
+        let navigationController = UINavigationController(rootViewController: viewController)
+        rootViewController.present(navigationController, animated: true)
     }
 
     func presentSend(invoice: String?) {

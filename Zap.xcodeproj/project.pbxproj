@@ -176,6 +176,7 @@
 		AD3DDF7122D39BC30031BFC8 /* Emoji.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD3DDF7022D39BC30031BFC8 /* Emoji.swift */; };
 		AD3FF6E0221D68890017E376 /* ServiceClientBase+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD3FF6DF221D68890017E376 /* ServiceClientBase+Extension.swift */; };
 		AD3FF6E2221D750F0017E376 /* UnlockWalletViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD3FF6E1221D750F0017E376 /* UnlockWalletViewModel.swift */; };
+		AD4B4BE122EAF0CE0029773A /* WalletEmptyStateView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD4B4BE022EAF0CE0029773A /* WalletEmptyStateView.swift */; };
 		AD511B282253744800EDFC7C /* Version.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD511B272253744800EDFC7C /* Version.swift */; };
 		AD511B2A2253748F00EDFC7C /* VersionTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD511B292253748F00EDFC7C /* VersionTests.swift */; };
 		AD511B2C2253C14800EDFC7C /* InvoiceListUpdater.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD511B2B2253C14800EDFC7C /* InvoiceListUpdater.swift */; };
@@ -311,6 +312,7 @@
 		ADCEAFD32255F2C2004F605B /* WarningSettingsItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADCEAFD22255F2C2004F605B /* WarningSettingsItem.swift */; };
 		ADCEAFD522579C2A004F605B /* LoadingAnimationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADCEAFD422579C2A004F605B /* LoadingAnimationView.swift */; };
 		ADD0514E22F059F80017BDC1 /* UIScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADD0514D22F059F80017BDC1 /* UIScreen.swift */; };
+		ADD0515022F0A6240017BDC1 /* WalletEmptyStateViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADD0514F22F0A6240017BDC1 /* WalletEmptyStateViewModel.swift */; };
 		ADD089F922773EE400480073 /* LightningApi.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADD089F822773EE400480073 /* LightningApi.swift */; };
 		ADD08A0322787B8300480073 /* rpc.zap.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADD08A0222787B8300480073 /* rpc.zap.swift */; };
 		ADD08A062278BBCE00480073 /* WalletApi.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADD08A052278BBCE00480073 /* WalletApi.swift */; };
@@ -681,6 +683,7 @@
 		AD3DDF7022D39BC30031BFC8 /* Emoji.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Emoji.swift; sourceTree = "<group>"; };
 		AD3FF6DF221D68890017E376 /* ServiceClientBase+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ServiceClientBase+Extension.swift"; sourceTree = "<group>"; };
 		AD3FF6E1221D750F0017E376 /* UnlockWalletViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UnlockWalletViewModel.swift; sourceTree = "<group>"; };
+		AD4B4BE022EAF0CE0029773A /* WalletEmptyStateView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WalletEmptyStateView.swift; sourceTree = "<group>"; };
 		AD511B272253744800EDFC7C /* Version.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Version.swift; sourceTree = "<group>"; };
 		AD511B292253748F00EDFC7C /* VersionTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VersionTests.swift; sourceTree = "<group>"; };
 		AD511B2B2253C14800EDFC7C /* InvoiceListUpdater.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InvoiceListUpdater.swift; sourceTree = "<group>"; };
@@ -910,6 +913,7 @@
 		ADCEAFD22255F2C2004F605B /* WarningSettingsItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WarningSettingsItem.swift; sourceTree = "<group>"; };
 		ADCEAFD422579C2A004F605B /* LoadingAnimationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingAnimationView.swift; sourceTree = "<group>"; };
 		ADD0514D22F059F80017BDC1 /* UIScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIScreen.swift; sourceTree = "<group>"; };
+		ADD0514F22F0A6240017BDC1 /* WalletEmptyStateViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WalletEmptyStateViewModel.swift; sourceTree = "<group>"; };
 		ADD089F822773EE400480073 /* LightningApi.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LightningApi.swift; sourceTree = "<group>"; };
 		ADD08A0222787B8300480073 /* rpc.zap.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = rpc.zap.swift; sourceTree = "<group>"; };
 		ADD08A052278BBCE00480073 /* WalletApi.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WalletApi.swift; sourceTree = "<group>"; };
@@ -1613,6 +1617,15 @@
 			path = Onboarding;
 			sourceTree = "<group>";
 		};
+		AD4B4BDD22EAF0A80029773A /* Empty State */ = {
+			isa = PBXGroup;
+			children = (
+				AD4B4BE022EAF0CE0029773A /* WalletEmptyStateView.swift */,
+				ADD0514F22F0A6240017BDC1 /* WalletEmptyStateViewModel.swift */,
+			);
+			path = "Empty State";
+			sourceTree = "<group>";
+		};
 		AD536BE720E62763002279BC /* Lightning */ = {
 			isa = PBXGroup;
 			children = (
@@ -1738,6 +1751,7 @@
 		AD7EDAE12108C4050058CCCA /* Wallet */ = {
 			isa = PBXGroup;
 			children = (
+				AD4B4BDD22EAF0A80029773A /* Empty State */,
 				AD7EDAE22108C4150058CCCA /* Wallet.storyboard */,
 				AD5901CA2265E73F00DB9B00 /* ArrowHandleView.swift */,
 				AD81C21821B865E100FA3FA9 /* SyncPercentageEstimator.swift */,
@@ -3093,6 +3107,7 @@
 				ADEEB5362134669B00D2F992 /* ModalPinViewController.swift in Sources */,
 				AD391CDB20D16FE1007EE22A /* HistoryViewController.swift in Sources */,
 				AD667E572136E622007B9160 /* TimeLockStore.swift in Sources */,
+				AD4B4BE122EAF0CE0029773A /* WalletEmptyStateView.swift in Sources */,
 				AD1831C2229676CB00120260 /* OnChainFeeViewModel.swift in Sources */,
 				AD7ED61D22087812007C5F2C /* ManageWalletTableViewCell.swift in Sources */,
 				AD391C5320D16F7A007EE22A /* ConfirmMnemonicViewModel.swift in Sources */,
@@ -3237,6 +3252,7 @@
 				AD2B877D221C6F7800308C1B /* UnlockWalletViewController.swift in Sources */,
 				AD035BFC2174A030005EA785 /* ChannelTableViewCell.swift in Sources */,
 				ADEEB5332134277400D2F992 /* KeyPadPinView.swift in Sources */,
+				ADD0515022F0A6240017BDC1 /* WalletEmptyStateViewModel.swift in Sources */,
 				AD391C2520D16EFA007EE22A /* BitcoinUnit+Localizable.swift in Sources */,
 				AD391C2720D16EFA007EE22A /* Network+Localizable.swift in Sources */,
 				AD3DDF6F22D390CA0031BFC8 /* OnboardingTextViewController.swift in Sources */,
