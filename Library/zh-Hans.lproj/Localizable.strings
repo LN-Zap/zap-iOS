@@ -232,6 +232,9 @@
 "scene.wallet.detail.on_chain" = "主链:";
 "scene.wallet.detail.lightning" = "闪电:";
 "scene.wallet.detail.pending" = "等待:";
+"scene.wallet.empty_state.title" = "Fund your wallet";
+"scene.wallet.empty_state.message" = "Your wallet is empty. Get started by adding some funds.";
+"scene.wallet.empty_state.button_title" = "Fund Wallet";
 
 "scene.time_lock.headline" = "密码错误";
 "scene.time_lock.description" = "你的钱包被锁住:";
