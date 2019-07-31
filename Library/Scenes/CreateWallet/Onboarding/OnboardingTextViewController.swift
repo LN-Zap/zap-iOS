@@ -36,7 +36,15 @@ class OnboardingTextViewController: UIViewController {
 
         separatorView.backgroundColor = UIColor.Zap.lightningOrange
 
-        titleLabel.setMarkdown(titleText, fontSize: 40, weight: .light, boldWeight: .medium)
+        let fontSize: CGFloat
+        switch UIScreen.main.sizeType {
+        case .small:
+            fontSize = 25
+        case .big:
+            fontSize = 40
+        }
+
+        titleLabel.setMarkdown(titleText, fontSize: fontSize, weight: .light, boldWeight: .medium)
         messageLabel.text = messageText
         imageView.image = image
 

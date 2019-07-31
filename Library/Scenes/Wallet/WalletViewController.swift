@@ -50,6 +50,7 @@ final class WalletViewController: UIViewController {
     private var sendButtonTapped: (() -> Void)!
     private var requestButtonTapped: (() -> Void)!
     private var nodeAliasButtonTapped: (() -> Void)!
+    private var emptyStateViewModel: WalletEmptyStateViewModel!
     // swiftlint:enable implicitly_unwrapped_optional
 
     private let buttonCornerRadius: CGFloat = 20
@@ -58,13 +59,14 @@ final class WalletViewController: UIViewController {
         return -(detailView.bounds.height - 45) - 60
     }
 
-    static func instantiate(walletViewModel: WalletViewModel, sendButtonTapped: @escaping () -> Void, requestButtonTapped: @escaping () -> Void, nodeAliasButtonTapped: @escaping () -> Void) -> WalletViewController {
+    static func instantiate(walletViewModel: WalletViewModel, sendButtonTapped: @escaping () -> Void, requestButtonTapped: @escaping () -> Void, nodeAliasButtonTapped: @escaping () -> Void, emptyStateViewModel: WalletEmptyStateViewModel) -> WalletViewController {
         let walletViewController = StoryboardScene.Wallet.walletViewController.instantiate()
         walletViewController.walletViewModel = walletViewModel
 
         walletViewController.sendButtonTapped = sendButtonTapped
         walletViewController.requestButtonTapped = requestButtonTapped
         walletViewController.nodeAliasButtonTapped = nodeAliasButtonTapped
+        walletViewController.emptyStateViewModel = emptyStateViewModel
 
         walletViewController.tabBarItem.title = Tab.wallet.title
         walletViewController.tabBarItem.image = Tab.wallet.image
@@ -118,6 +120,7 @@ final class WalletViewController: UIViewController {
 
         setupDetailView()
         setupSyncView()
+        setupEmtpyState()
     }
 
     override func viewDidLayoutSubviews() {
@@ -125,17 +128,20 @@ final class WalletViewController: UIViewController {
         updateDetailPosition()
     }
 
+    private func setupEmtpyState() {
+        let emptyStateView = EmptyStateView(viewModel: emptyStateViewModel)
+        emptyStateView.add(to: view)
+
+        walletViewModel.totalBalance
+            .map { $0 > 0 }
+            .bind(to: emptyStateView.reactive.isHidden)
+            .dispose(in: reactive.bag)
+    }
+
     private func setupSyncView() {
-        let syncSignal = walletViewModel.syncViewModel.isSyncing
+        walletViewModel.syncViewModel.isSyncing
             .map { $0 ? UILayoutPriority(rawValue: 1) : UILayoutPriority(rawValue: 999) }
             .observeOn(DispatchQueue.main)
-
-        syncSignal.first() // on first change don't use animations
-            .observeNext {  [weak self] in
-                self?.syncViewHeightConstraint.priority = $0
-            }
-            .dispose(in: reactive.bag)
-        syncSignal.skip(last: 1) // animate the following changes
             .observeNext { [weak self] in
                 self?.syncViewHeightConstraint.priority = $0
                 UIView.animate(withDuration: 0.25) {
@@ -143,6 +149,8 @@ final class WalletViewController: UIViewController {
                 }
             }
             .dispose(in: reactive.bag)
+
+        syncProgressView.trackTintColor = UIColor.Zap.deepSeaBlue
 
         walletViewModel.syncViewModel.percentSignal
             .map { Float($0) }
@@ -318,7 +326,7 @@ private extension Bitcoin {
     }
 }
 
-extension UIStackView {
+private extension UIStackView {
     func addSegment(_ segment: Segment, color: UIColor, title: String, amount: Observable<Satoshi>) {
         let circleView = CircleView(frame: .zero)
         circleView.backgroundColor = .clear

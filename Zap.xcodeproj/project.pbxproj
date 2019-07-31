@@ -176,6 +176,7 @@
 		AD3DDF7122D39BC30031BFC8 /* Emoji.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD3DDF7022D39BC30031BFC8 /* Emoji.swift */; };
 		AD3FF6E0221D68890017E376 /* ServiceClientBase+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD3FF6DF221D68890017E376 /* ServiceClientBase+Extension.swift */; };
 		AD3FF6E2221D750F0017E376 /* UnlockWalletViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD3FF6E1221D750F0017E376 /* UnlockWalletViewModel.swift */; };
+		AD4B4BE122EAF0CE0029773A /* EmptyStateView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD4B4BE022EAF0CE0029773A /* EmptyStateView.swift */; };
 		AD511B282253744800EDFC7C /* Version.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD511B272253744800EDFC7C /* Version.swift */; };
 		AD511B2A2253748F00EDFC7C /* VersionTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD511B292253748F00EDFC7C /* VersionTests.swift */; };
 		AD511B2C2253C14800EDFC7C /* InvoiceListUpdater.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD511B2B2253C14800EDFC7C /* InvoiceListUpdater.swift */; };
@@ -304,12 +305,15 @@
 		ADC0D2FA2107A23400B8C62F /* *.blockcypher.com.cer in Resources */ = {isa = PBXBuildFile; fileRef = ADC0D2F62107A19A00B8C62F /* *.blockcypher.com.cer */; };
 		ADC0D3042107A3D700B8C62F /* blockexplorer.com.cer in Resources */ = {isa = PBXBuildFile; fileRef = ADC0D3022107A3D600B8C62F /* blockexplorer.com.cer */; };
 		ADC0D3052107A3D700B8C62F /* CloudFlare Inc ECC CA-2.cer in Resources */ = {isa = PBXBuildFile; fileRef = ADC0D3032107A3D700B8C62F /* CloudFlare Inc ECC CA-2.cer */; };
+		ADC2FC9B22F1D97900902D43 /* ChannelListEmptyStateViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADC2FC9A22F1D97900902D43 /* ChannelListEmptyStateViewModel.swift */; };
 		ADC48CA7214AD8B800949CD9 /* DateEstimatorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADC48CA6214AD8B800949CD9 /* DateEstimatorTests.swift */; };
 		ADC48CA92150FBA200949CD9 /* HistoryService.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADC48CA82150FBA200949CD9 /* HistoryService.swift */; };
 		ADCD5B0D20D7E3F50037F156 /* ManageWalletsSettingsItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADCD5B0C20D7E3F50037F156 /* ManageWalletsSettingsItem.swift */; };
 		ADCD5B0F20D7E40C0037F156 /* ChangePinSettingsItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADCD5B0E20D7E40C0037F156 /* ChangePinSettingsItem.swift */; };
 		ADCEAFD32255F2C2004F605B /* WarningSettingsItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADCEAFD22255F2C2004F605B /* WarningSettingsItem.swift */; };
 		ADCEAFD522579C2A004F605B /* LoadingAnimationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADCEAFD422579C2A004F605B /* LoadingAnimationView.swift */; };
+		ADD0514E22F059F80017BDC1 /* UIScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADD0514D22F059F80017BDC1 /* UIScreen.swift */; };
+		ADD0515022F0A6240017BDC1 /* WalletEmptyStateViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADD0514F22F0A6240017BDC1 /* WalletEmptyStateViewModel.swift */; };
 		ADD089F922773EE400480073 /* LightningApi.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADD089F822773EE400480073 /* LightningApi.swift */; };
 		ADD08A0322787B8300480073 /* rpc.zap.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADD08A0222787B8300480073 /* rpc.zap.swift */; };
 		ADD08A062278BBCE00480073 /* WalletApi.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADD08A052278BBCE00480073 /* WalletApi.swift */; };
@@ -680,6 +684,7 @@
 		AD3DDF7022D39BC30031BFC8 /* Emoji.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Emoji.swift; sourceTree = "<group>"; };
 		AD3FF6DF221D68890017E376 /* ServiceClientBase+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ServiceClientBase+Extension.swift"; sourceTree = "<group>"; };
 		AD3FF6E1221D750F0017E376 /* UnlockWalletViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UnlockWalletViewModel.swift; sourceTree = "<group>"; };
+		AD4B4BE022EAF0CE0029773A /* EmptyStateView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmptyStateView.swift; sourceTree = "<group>"; };
 		AD511B272253744800EDFC7C /* Version.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Version.swift; sourceTree = "<group>"; };
 		AD511B292253748F00EDFC7C /* VersionTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VersionTests.swift; sourceTree = "<group>"; };
 		AD511B2B2253C14800EDFC7C /* InvoiceListUpdater.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InvoiceListUpdater.swift; sourceTree = "<group>"; };
@@ -895,6 +900,7 @@
 		ADC0D3022107A3D600B8C62F /* blockexplorer.com.cer */ = {isa = PBXFileReference; lastKnownFileType = file; path = blockexplorer.com.cer; sourceTree = "<group>"; };
 		ADC0D3032107A3D700B8C62F /* CloudFlare Inc ECC CA-2.cer */ = {isa = PBXFileReference; lastKnownFileType = file; path = "CloudFlare Inc ECC CA-2.cer"; sourceTree = "<group>"; };
 		ADC29C0B20A9B0A0008B2DC2 /* Invoice.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Invoice.swift; sourceTree = "<group>"; };
+		ADC2FC9A22F1D97900902D43 /* ChannelListEmptyStateViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChannelListEmptyStateViewModel.swift; sourceTree = "<group>"; };
 		ADC48CA6214AD8B800949CD9 /* DateEstimatorTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateEstimatorTests.swift; sourceTree = "<group>"; };
 		ADC48CA82150FBA200949CD9 /* HistoryService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistoryService.swift; sourceTree = "<group>"; };
 		ADCD060020E67FA5009D9650 /* Environment.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Environment.swift; sourceTree = "<group>"; };
@@ -908,6 +914,8 @@
 		ADCE01CB207B967200CA72E8 /* Loading.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Loading.storyboard; sourceTree = "<group>"; };
 		ADCEAFD22255F2C2004F605B /* WarningSettingsItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WarningSettingsItem.swift; sourceTree = "<group>"; };
 		ADCEAFD422579C2A004F605B /* LoadingAnimationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingAnimationView.swift; sourceTree = "<group>"; };
+		ADD0514D22F059F80017BDC1 /* UIScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIScreen.swift; sourceTree = "<group>"; };
+		ADD0514F22F0A6240017BDC1 /* WalletEmptyStateViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WalletEmptyStateViewModel.swift; sourceTree = "<group>"; };
 		ADD089F822773EE400480073 /* LightningApi.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LightningApi.swift; sourceTree = "<group>"; };
 		ADD08A0222787B8300480073 /* rpc.zap.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = rpc.zap.swift; sourceTree = "<group>"; };
 		ADD08A052278BBCE00480073 /* WalletApi.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WalletApi.swift; sourceTree = "<group>"; };
@@ -1193,6 +1201,7 @@
 				A0BD44DE206FED1400BF27A3 /* BondCell.swift */,
 				AD8049B5224E896B00DA99F4 /* CircleView.swift */,
 				A0731FE52014AC0800C55E45 /* ContainerViewController.swift */,
+				AD4B4BE022EAF0CE0029773A /* EmptyStateView.swift */,
 				A0F353CF20692570005B3639 /* GradientView.swift */,
 				ADBA12082093587B001F7700 /* KeyPad */,
 				A0605F8C202C9D8200EA903C /* LineView.swift */,
@@ -1392,6 +1401,7 @@
 				A0A05A2F2013EFC00007D1C9 /* UIImage.swift */,
 				AD7FB3F9225E1BBF00C98A00 /* UIImageView.swift */,
 				AD037A2C22E9F0A300826AF7 /* UILabel.swift */,
+				ADD0514D22F059F80017BDC1 /* UIScreen.swift */,
 				A0A05A5D2014A0DE0007D1C9 /* UITableView.swift */,
 				ADA81E9D210DE14100B7C6F2 /* UIView.swift */,
 				ADBA120520930C94001F7700 /* UIViewController.swift */,
@@ -1426,14 +1436,15 @@
 		A0DDC0702018C6D800AEFF94 /* ChannelList */ = {
 			isa = PBXGroup;
 			children = (
-				A010094F2015F99F0001EF94 /* ChannelList.storyboard */,
+				ADE0C40B2108F6CE004597C3 /* Cell */,
 				AD035BFE2174A996005EA785 /* ChannelDetailViewController.swift */,
+				A010094F2015F99F0001EF94 /* ChannelList.storyboard */,
+				ADC2FC9A22F1D97900902D43 /* ChannelListEmptyStateViewModel.swift */,
 				AD3553E4224E32EA00B99ABC /* ChannelListHeaderView.swift */,
 				A0731FE82014B27900C55E45 /* ChannelListViewController.swift */,
 				A0F57DBD201E440F003AFA66 /* ChannelListViewModel.swift */,
 				AD77465620765E4D00EC596B /* ChannelViewModel.swift */,
 				AD3553E6224E6CD400B99ABC /* CircleGraphView.swift */,
-				ADE0C40B2108F6CE004597C3 /* Cell */,
 			);
 			path = ChannelList;
 			sourceTree = "<group>";
@@ -1610,6 +1621,14 @@
 			path = Onboarding;
 			sourceTree = "<group>";
 		};
+		AD4B4BDD22EAF0A80029773A /* Empty State */ = {
+			isa = PBXGroup;
+			children = (
+				ADD0514F22F0A6240017BDC1 /* WalletEmptyStateViewModel.swift */,
+			);
+			path = "Empty State";
+			sourceTree = "<group>";
+		};
 		AD536BE720E62763002279BC /* Lightning */ = {
 			isa = PBXGroup;
 			children = (
@@ -1735,6 +1754,7 @@
 		AD7EDAE12108C4050058CCCA /* Wallet */ = {
 			isa = PBXGroup;
 			children = (
+				AD4B4BDD22EAF0A80029773A /* Empty State */,
 				AD7EDAE22108C4150058CCCA /* Wallet.storyboard */,
 				AD5901CA2265E73F00DB9B00 /* ArrowHandleView.swift */,
 				AD81C21821B865E100FA3FA9 /* SyncPercentageEstimator.swift */,
@@ -3090,9 +3110,11 @@
 				ADEEB5362134669B00D2F992 /* ModalPinViewController.swift in Sources */,
 				AD391CDB20D16FE1007EE22A /* HistoryViewController.swift in Sources */,
 				AD667E572136E622007B9160 /* TimeLockStore.swift in Sources */,
+				AD4B4BE122EAF0CE0029773A /* EmptyStateView.swift in Sources */,
 				AD1831C2229676CB00120260 /* OnChainFeeViewModel.swift in Sources */,
 				AD7ED61D22087812007C5F2C /* ManageWalletTableViewCell.swift in Sources */,
 				AD391C5320D16F7A007EE22A /* ConfirmMnemonicViewModel.swift in Sources */,
+				ADD0514E22F059F80017BDC1 /* UIScreen.swift in Sources */,
 				ADEDA3D12178938E0078FD91 /* NodeURIQRCodeViewModel.swift in Sources */,
 				AD055DAE21B5416D00BE511D /* ToastNotificationObserver.swift in Sources */,
 				AD391C6F20D16F89007EE22A /* OpenChannelViewController.swift in Sources */,
@@ -3206,6 +3228,7 @@
 				AD391C5C20D16F7A007EE22A /* MnemonicViewModel.swift in Sources */,
 				AD391C4720D16F68007EE22A /* ContainerViewController.swift in Sources */,
 				AD391CB320D16FA8007EE22A /* GroupedTableViewController.swift in Sources */,
+				ADC2FC9B22F1D97900902D43 /* ChannelListEmptyStateViewModel.swift in Sources */,
 				ADFDE94622E7603F00B718A4 /* ManageWalletsViewModel.swift in Sources */,
 				AD81C21721B80FCD00FA3FA9 /* SafariSettingsItem.swift in Sources */,
 				AD667E522136B062007B9160 /* TimeLockedViewController.swift in Sources */,
@@ -3233,6 +3256,7 @@
 				AD2B877D221C6F7800308C1B /* UnlockWalletViewController.swift in Sources */,
 				AD035BFC2174A030005EA785 /* ChannelTableViewCell.swift in Sources */,
 				ADEEB5332134277400D2F992 /* KeyPadPinView.swift in Sources */,
+				ADD0515022F0A6240017BDC1 /* WalletEmptyStateViewModel.swift in Sources */,
 				AD391C2520D16EFA007EE22A /* BitcoinUnit+Localizable.swift in Sources */,
 				AD391C2720D16EFA007EE22A /* Network+Localizable.swift in Sources */,
 				AD3DDF6F22D390CA0031BFC8 /* OnboardingTextViewController.swift in Sources */,

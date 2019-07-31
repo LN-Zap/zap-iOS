@@ -36,7 +36,7 @@ extension Channel.State: Comparable {
 }
 
 final class ChannelListViewModel: NSObject {
-    private let channelService: ChannelService
+    private let lightningService: LightningService
 
     let dataSource: MutableObservableArray<ChannelViewModel>
     let searchString = Observable<String?>(nil)
@@ -47,10 +47,23 @@ final class ChannelListViewModel: NSObject {
     let totalPending = Observable<Satoshi>(0)
     let totalOffline = Observable<Satoshi>(0)
 
-    init(channelService: ChannelService) {
-        self.channelService = channelService
+    let shouldHideEmptyWalletState: Signal<Bool, Never>
+    let shouldHideChannelListEmptyState: Signal<Bool, Never>
+
+    var channelService: ChannelService {
+        return lightningService.channelService
+    }
+
+    init(lightningService: LightningService) {
+        self.lightningService = lightningService
 
         dataSource = MutableObservableArray()
+
+        shouldHideEmptyWalletState = lightningService.balanceService.onChain
+            .map { $0 > 0 }
+
+        shouldHideChannelListEmptyState = combineLatest(lightningService.balanceService.onChain, dataSource)
+            .map { $0 <= 0 || !$1.collection.isEmpty }
 
         super.init()
 

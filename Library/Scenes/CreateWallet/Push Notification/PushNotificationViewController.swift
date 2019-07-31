@@ -30,8 +30,19 @@ final class PushNotificationViewController: UIViewController {
 
         Style.Button.background.apply(to: confirmButton)
         Style.Label.body.apply(to: messageLabel)
+        messageLabel.textColor = UIColor.Zap.gray
+
         Style.Label.title.apply(to: headlineLabel)
         skipButton.setTitleColor(UIColor.Zap.gray, for: .normal)
+
+        let fontSize: CGFloat
+        switch UIScreen.main.sizeType {
+        case .small:
+            fontSize = 25
+        case .big:
+            fontSize = 40
+        }
+        headlineLabel.font = headlineLabel.font.withSize(fontSize)
 
         headlineLabel.text = L10n.Scene.PushNotification.headline
         messageLabel.text = L10n.Scene.PushNotification.message

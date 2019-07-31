@@ -35,6 +35,7 @@ final class LoadingViewController: UIViewController {
             UITabBarItem(title: $0.title, image: $0.image, selectedImage: $0.image)
         }
         tabBar.isUserInteractionEnabled = false
+        tabBar.unselectedItemTintColor = UIColor.Zap.invisibleGray
 
         sendButtonBackground.backgroundColor = UIColor.Zap.seaBlue
         receiveButtonBackground.backgroundColor = UIColor.Zap.seaBlue
@@ -52,8 +53,8 @@ final class LoadingViewController: UIViewController {
             requestButton.layoutIfNeeded()
         }
 
-        sendButton.setTitleColor(UIColor.Zap.gray, for: .disabled)
-        requestButton.setTitleColor(UIColor.Zap.gray, for: .disabled)
+        sendButton.setTitleColor(UIColor.Zap.invisibleGray, for: .disabled)
+        requestButton.setTitleColor(UIColor.Zap.invisibleGray, for: .disabled)
 
         sendButton.isEnabled = false
         requestButton.isEnabled = false

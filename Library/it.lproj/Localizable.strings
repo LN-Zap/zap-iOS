@@ -93,6 +93,9 @@
 "scene.channels.alert.force_close" = "Forza Chiusura Canale";
 "scene.channels.close_loading_view" = "Chiusura Canale";
 "scene.channels.close_success.toast" = "Il canale è chiuso.";
+"scene.channels.empty_state.title" = "Open Channel";
+"scene.channels.empty_state.message" = "You don't have any channels yet. Let's open a channel.";
+"scene.channels.empty_state.button_title" = "Open Channel";
 
 "scene.open_channel.title" = "Apri Canale";
 "scene.open_channel.channel_uri_label" = "Nodo:";
@@ -232,6 +235,9 @@
 "scene.wallet.detail.on_chain" = "On-chain:";
 "scene.wallet.detail.lightning" = "Lightning:";
 "scene.wallet.detail.pending" = "In sospeso:";
+"scene.wallet.empty_state.title" = "Fund your wallet";
+"scene.wallet.empty_state.message" = "Your wallet is empty. Get started by adding some funds.";
+"scene.wallet.empty_state.button_title" = "Fund Wallet";
 
 "scene.time_lock.headline" = "Codice di accesso errato (PIN)";
 "scene.time_lock.description" = "Il portafoglio è bloccato per:";

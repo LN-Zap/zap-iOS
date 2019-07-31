@@ -93,6 +93,9 @@
 "scene.channels.alert.force_close" = "Force Close Channel";
 "scene.channels.close_loading_view" = "Closing Channel";
 "scene.channels.close_success.toast" = "O Canal está a encerrar.";
+"scene.channels.empty_state.title" = "Open Channel";
+"scene.channels.empty_state.message" = "You don't have any channels yet. Let's open a channel.";
+"scene.channels.empty_state.button_title" = "Open Channel";
 
 "scene.open_channel.title" = "Abrir Canal";
 "scene.open_channel.channel_uri_label" = "Node:";
@@ -232,6 +235,9 @@
 "scene.wallet.detail.on_chain" = "On-chain:";
 "scene.wallet.detail.lightning" = "Lightning:";
 "scene.wallet.detail.pending" = "Pending:";
+"scene.wallet.empty_state.title" = "Fund your wallet";
+"scene.wallet.empty_state.message" = "Your wallet is empty. Get started by adding some funds.";
+"scene.wallet.empty_state.button_title" = "Fund Wallet";
 
 "scene.time_lock.headline" = "Wrong Passcode";
 "scene.time_lock.description" = "Your wallet is locked for:";

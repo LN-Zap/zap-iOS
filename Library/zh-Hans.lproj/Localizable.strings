@@ -93,6 +93,9 @@
 "scene.channels.alert.force_close" = "强制关闭通道";
 "scene.channels.close_loading_view" = "关闭通道";
 "scene.channels.close_success.toast" = "通道正在关闭。";
+"scene.channels.empty_state.title" = "Open Channel";
+"scene.channels.empty_state.message" = "You don't have any channels yet. Let's open a channel.";
+"scene.channels.empty_state.button_title" = "Open Channel";
 
 "scene.open_channel.title" = "打开通道";
 "scene.open_channel.channel_uri_label" = "节点：";
@@ -232,6 +235,9 @@
 "scene.wallet.detail.on_chain" = "主链:";
 "scene.wallet.detail.lightning" = "闪电:";
 "scene.wallet.detail.pending" = "等待:";
+"scene.wallet.empty_state.title" = "Fund your wallet";
+"scene.wallet.empty_state.message" = "Your wallet is empty. Get started by adding some funds.";
+"scene.wallet.empty_state.button_title" = "Fund Wallet";
 
 "scene.time_lock.headline" = "密码错误";
 "scene.time_lock.description" = "你的钱包被锁住:";

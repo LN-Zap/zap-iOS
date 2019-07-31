@@ -8,6 +8,7 @@
 import Lightning
 import Logger
 import SafariServices
+import SwiftBTC
 import UIKit
 
 enum Tab {
@@ -61,7 +62,7 @@ final class WalletCoordinator: NSObject, Coordinator {
         self.authenticationViewModel = authenticationViewModel
         self.walletConfigurationStore = walletConfigurationStore
 
-        channelListViewModel = ChannelListViewModel(channelService: lightningService.channelService)
+        channelListViewModel = ChannelListViewModel(lightningService: lightningService)
         historyViewModel = HistoryViewModel(historyService: lightningService.historyService)
 
         super.init()
@@ -120,6 +121,8 @@ final class WalletCoordinator: NSObject, Coordinator {
         case .error:
             disconnectWalletDelegate?.disconnect()
         }
+
+        UIApplication.shared.isIdleTimerDisabled = lightningService.connection == .local && state == .syncing
     }
 
     private func presentUnlockWallet() {
@@ -164,7 +167,8 @@ final class WalletCoordinator: NSObject, Coordinator {
 
     func walletViewController() -> WalletViewController {
         let walletViewModel = WalletViewModel(lightningService: lightningService)
-        return WalletViewController.instantiate(walletViewModel: walletViewModel, sendButtonTapped: presentSend, requestButtonTapped: presentRequest, nodeAliasButtonTapped: presentWalletList)
+        let walletEmptyStateViewModel = WalletEmptyStateViewModel(lightningService: lightningService, fundButtonTapped: presentFundWallet)
+        return WalletViewController.instantiate(walletViewModel: walletViewModel, sendButtonTapped: presentSend, requestButtonTapped: presentRequest, nodeAliasButtonTapped: presentWalletList, emptyStateViewModel: walletEmptyStateViewModel)
     }
 
     func settingsViewController() -> ZapNavigationController {
@@ -212,6 +216,16 @@ final class WalletCoordinator: NSObject, Coordinator {
         } catch {
             Logger.error("Unexpected error: \(error).")
         }
+    }
+
+    /// Presented from the empty state of the wallet scene.
+    ///
+    /// - Parameter uri: The bitcoin uri the funds should be sent to.
+    func presentFundWallet(uri: BitcoinURI) {
+        let viewModel = RequestQRCodeViewModel(paymentURI: uri)
+        let viewController = QRCodeDetailViewController.instantiate(with: viewModel)
+        let navigationController = UINavigationController(rootViewController: viewController)
+        rootViewController.present(navigationController, animated: true)
     }
 
     func presentSend(invoice: String?) {
@@ -287,7 +301,9 @@ final class WalletCoordinator: NSObject, Coordinator {
     }
 
     private func pushChannelList(on navigationController: UINavigationController) {
-        let channelList = ChannelListViewController.instantiate(channelListViewModel: channelListViewModel, addChannelButtonTapped: presentAddChannel, presentChannelDetail: presentChannelDetail)
+        let walletEmptyStateViewModel = WalletEmptyStateViewModel(lightningService: lightningService, fundButtonTapped: presentFundWallet)
+        let channelListEmptyStateViewModel = ChannelListEmptyStateViewModel(openButtonTapped: presentAddChannel)
+        let channelList = ChannelListViewController.instantiate(channelListViewModel: channelListViewModel, addChannelButtonTapped: presentAddChannel, presentChannelDetail: presentChannelDetail, walletEmptyStateViewModel: walletEmptyStateViewModel, channelListEmptyStateViewModel: channelListEmptyStateViewModel)
         navigationController.pushViewController(channelList, animated: true)
     }
 
