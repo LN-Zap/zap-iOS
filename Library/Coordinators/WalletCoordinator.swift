@@ -62,7 +62,7 @@ final class WalletCoordinator: NSObject, Coordinator {
         self.authenticationViewModel = authenticationViewModel
         self.walletConfigurationStore = walletConfigurationStore
 
-        channelListViewModel = ChannelListViewModel(channelService: lightningService.channelService)
+        channelListViewModel = ChannelListViewModel(lightningService: lightningService)
         historyViewModel = HistoryViewModel(historyService: lightningService.historyService)
 
         super.init()
@@ -300,7 +300,7 @@ final class WalletCoordinator: NSObject, Coordinator {
     }
 
     private func pushChannelList(on navigationController: UINavigationController) {
-        let channelList = ChannelListViewController.instantiate(channelListViewModel: channelListViewModel, addChannelButtonTapped: presentAddChannel, presentChannelDetail: presentChannelDetail)
+        let channelList = ChannelListViewController.instantiate(channelListViewModel: channelListViewModel, addChannelButtonTapped: presentAddChannel, presentChannelDetail: presentChannelDetail, fundButtonTapped: presentFundWallet)
         navigationController.pushViewController(channelList, animated: true)
     }
 

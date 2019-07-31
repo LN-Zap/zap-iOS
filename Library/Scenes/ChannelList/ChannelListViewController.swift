@@ -7,6 +7,7 @@
 
 import Bond
 import Lightning
+import SwiftBTC
 import UIKit
 
 enum ChannelBalanceColor {
@@ -25,12 +26,14 @@ final class ChannelListViewController: UIViewController {
     private var channelListViewModel: ChannelListViewModel! // swiftlint:disable:this implicitly_unwrapped_optional
     private var addChannelButtonTapped: (() -> Void)?
     private var presentChannelDetail: ((UIViewController, ChannelViewModel) -> Void)?
+    private var fundButtonTapped: ((BitcoinURI) -> Void)?
 
-    static func instantiate(channelListViewModel: ChannelListViewModel, addChannelButtonTapped: @escaping () -> Void, presentChannelDetail: @escaping (UIViewController, ChannelViewModel) -> Void) -> UIViewController {
+    static func instantiate(channelListViewModel: ChannelListViewModel, addChannelButtonTapped: @escaping () -> Void, presentChannelDetail: @escaping (UIViewController, ChannelViewModel) -> Void, fundButtonTapped: @escaping (BitcoinURI) -> Void) -> UIViewController {
         let viewController = StoryboardScene.ChannelList.channelViewController.instantiate()
         viewController.channelListViewModel = channelListViewModel
         viewController.addChannelButtonTapped = addChannelButtonTapped
         viewController.presentChannelDetail = presentChannelDetail
+        viewController.fundButtonTapped = fundButtonTapped
 
         return viewController
     }
@@ -65,6 +68,19 @@ final class ChannelListViewController: UIViewController {
         refreshControl.addTarget(self, action: #selector(refresh(sender:)), for: .valueChanged)
 
         headerView.setup(for: channelListViewModel)
+
+        setupEmtpyState()
+    }
+
+    private func setupEmtpyState() {
+        let emptyStateView = WalletEmptyStateView(viewModel: channelListViewModel.emptyStateViewModel) { [weak self] in
+            self?.fundButtonTapped?($0)
+        }
+        emptyStateView.add(to: view)
+
+        channelListViewModel.shouldHideEmptyWalletState
+            .bind(to: emptyStateView.reactive.isHidden)
+            .dispose(in: reactive.bag)
     }
 
     @objc func refresh(sender: UIRefreshControl) {
