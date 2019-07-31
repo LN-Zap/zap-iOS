@@ -93,6 +93,9 @@
 "scene.channels.alert.force_close" = "Fermeture Forcée de Channel";
 "scene.channels.close_loading_view" = "Channel en cours de fermeture";
 "scene.channels.close_success.toast" = "Le canal se ferme.";
+"scene.channels.empty_state.title" = "Open Channel";
+"scene.channels.empty_state.message" = "You don't have any channels yet. Let's open a channel.";
+"scene.channels.empty_state.button_title" = "Open Channel";
 
 "scene.open_channel.title" = "Ouvrir un canal";
 "scene.open_channel.channel_uri_label" = "Node:";
