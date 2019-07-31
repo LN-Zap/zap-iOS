@@ -176,7 +176,7 @@
 		AD3DDF7122D39BC30031BFC8 /* Emoji.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD3DDF7022D39BC30031BFC8 /* Emoji.swift */; };
 		AD3FF6E0221D68890017E376 /* ServiceClientBase+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD3FF6DF221D68890017E376 /* ServiceClientBase+Extension.swift */; };
 		AD3FF6E2221D750F0017E376 /* UnlockWalletViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD3FF6E1221D750F0017E376 /* UnlockWalletViewModel.swift */; };
-		AD4B4BE122EAF0CE0029773A /* WalletEmptyStateView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD4B4BE022EAF0CE0029773A /* WalletEmptyStateView.swift */; };
+		AD4B4BE122EAF0CE0029773A /* EmptyStateView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD4B4BE022EAF0CE0029773A /* EmptyStateView.swift */; };
 		AD511B282253744800EDFC7C /* Version.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD511B272253744800EDFC7C /* Version.swift */; };
 		AD511B2A2253748F00EDFC7C /* VersionTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD511B292253748F00EDFC7C /* VersionTests.swift */; };
 		AD511B2C2253C14800EDFC7C /* InvoiceListUpdater.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD511B2B2253C14800EDFC7C /* InvoiceListUpdater.swift */; };
@@ -683,7 +683,7 @@
 		AD3DDF7022D39BC30031BFC8 /* Emoji.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Emoji.swift; sourceTree = "<group>"; };
 		AD3FF6DF221D68890017E376 /* ServiceClientBase+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ServiceClientBase+Extension.swift"; sourceTree = "<group>"; };
 		AD3FF6E1221D750F0017E376 /* UnlockWalletViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UnlockWalletViewModel.swift; sourceTree = "<group>"; };
-		AD4B4BE022EAF0CE0029773A /* WalletEmptyStateView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WalletEmptyStateView.swift; sourceTree = "<group>"; };
+		AD4B4BE022EAF0CE0029773A /* EmptyStateView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmptyStateView.swift; sourceTree = "<group>"; };
 		AD511B272253744800EDFC7C /* Version.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Version.swift; sourceTree = "<group>"; };
 		AD511B292253748F00EDFC7C /* VersionTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VersionTests.swift; sourceTree = "<group>"; };
 		AD511B2B2253C14800EDFC7C /* InvoiceListUpdater.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InvoiceListUpdater.swift; sourceTree = "<group>"; };
@@ -1199,6 +1199,7 @@
 				A0BD44DE206FED1400BF27A3 /* BondCell.swift */,
 				AD8049B5224E896B00DA99F4 /* CircleView.swift */,
 				A0731FE52014AC0800C55E45 /* ContainerViewController.swift */,
+				AD4B4BE022EAF0CE0029773A /* EmptyStateView.swift */,
 				A0F353CF20692570005B3639 /* GradientView.swift */,
 				ADBA12082093587B001F7700 /* KeyPad */,
 				A0605F8C202C9D8200EA903C /* LineView.swift */,
@@ -1620,7 +1621,6 @@
 		AD4B4BDD22EAF0A80029773A /* Empty State */ = {
 			isa = PBXGroup;
 			children = (
-				AD4B4BE022EAF0CE0029773A /* WalletEmptyStateView.swift */,
 				ADD0514F22F0A6240017BDC1 /* WalletEmptyStateViewModel.swift */,
 			);
 			path = "Empty State";
@@ -3107,7 +3107,7 @@
 				ADEEB5362134669B00D2F992 /* ModalPinViewController.swift in Sources */,
 				AD391CDB20D16FE1007EE22A /* HistoryViewController.swift in Sources */,
 				AD667E572136E622007B9160 /* TimeLockStore.swift in Sources */,
-				AD4B4BE122EAF0CE0029773A /* WalletEmptyStateView.swift in Sources */,
+				AD4B4BE122EAF0CE0029773A /* EmptyStateView.swift in Sources */,
 				AD1831C2229676CB00120260 /* OnChainFeeViewModel.swift in Sources */,
 				AD7ED61D22087812007C5F2C /* ManageWalletTableViewCell.swift in Sources */,
 				AD391C5320D16F7A007EE22A /* ConfirmMnemonicViewModel.swift in Sources */,

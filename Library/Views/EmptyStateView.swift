@@ -5,32 +5,34 @@
 //  Copyright © 2019 Zap. All rights reserved.
 //
 
+import Bond
 import Foundation
 import Lightning
 import SwiftBTC
 
-final class WalletEmptyStateView: UIView {
-    weak var actionButton: UIButton?
+protocol EmptyStateViewModel {
+    var title: String { get }
+    var message: String { get }
+    var buttonTitle: String { get }
+    var image: UIImage? { get }
 
-    var action: ((BitcoinURI) -> Void)?
-    var viewModel: WalletEmptyStateViewModel?
+    var buttonEnabled: Observable<Bool> { get }
 
-    init(viewModel: WalletEmptyStateViewModel, action: @escaping (BitcoinURI) -> Void) {
-        self.action = action
+    func actionButtonTapped()
+}
+
+final class EmptyStateView: UIView {
+    var viewModel: WalletEmptyStateViewModel
+
+    init(viewModel: WalletEmptyStateViewModel) {
         self.viewModel = viewModel
 
         super.init(frame: .zero)
         setup()
     }
 
-    override init(frame: CGRect) {
-        super.init(frame: frame)
-        setup()
-    }
-
     required init?(coder aDecoder: NSCoder) {
-        super.init(coder: aDecoder)
-        setup()
+        fatalError("init(coder:) has not been implemented")
     }
 
     private func setup() {
@@ -51,21 +53,20 @@ final class WalletEmptyStateView: UIView {
         let titleLabel = UILabel(frame: .zero)
         titleLabel.textColor = UIColor.Zap.white
         titleLabel.numberOfLines = 0
-        titleLabel.setMarkdown(L10n.Scene.Wallet.EmptyState.title, fontSize: fontSize, weight: .light, boldWeight: .medium)
+        titleLabel.setMarkdown(viewModel.title, fontSize: fontSize, weight: .light, boldWeight: .medium)
 
         let messageLabel = UILabel(frame: .zero)
         Style.Label.body.apply(to: messageLabel)
         messageLabel.textColor = UIColor.Zap.gray
         messageLabel.numberOfLines = 0
-        messageLabel.text = L10n.Scene.Wallet.EmptyState.message
+        messageLabel.text = viewModel.message
 
         let actionButton = UIButton(type: .system)
         Style.Button.background.apply(to: actionButton)
-        actionButton.setTitle(L10n.Scene.Wallet.EmptyState.buttonTitle, for: .normal)
+        actionButton.setTitle(viewModel.buttonTitle, for: .normal)
         actionButton.addTarget(self, action: #selector(buttonTapped), for: .touchUpInside)
-        self.actionButton = actionButton
 
-        let imageView = UIImageView(image: Emoji.image(emoji: "🚀"))
+        let imageView = UIImageView(image: viewModel.image)
         imageView.contentMode = .scaleAspectFit
 
         let stackView = UIStackView(arrangedSubviews: [imageView, titleLabel, messageLabel, actionButton])
@@ -83,16 +84,14 @@ final class WalletEmptyStateView: UIView {
             trailingAnchor.constraint(equalTo: stackView.trailingAnchor, constant: 20),
             bottomAnchor.constraint(equalTo: stackView.bottomAnchor, constant: 20)
         ])
+
+        viewModel.buttonEnabled
+            .bind(to: actionButton.reactive.isEnabled)
+            .dispose(in: reactive.bag)
     }
 
     @IBAction private func buttonTapped() {
-        actionButton?.isEnabled = false
-        viewModel?.getAddress { [weak self] bitcoinURI in
-            DispatchQueue.main.async {
-                self?.actionButton?.isEnabled = true
-                self?.action?(bitcoinURI)
-            }
-        }
+        viewModel.actionButtonTapped()
     }
 
     func add(to superview: UIView) {

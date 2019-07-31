@@ -50,7 +50,7 @@ final class WalletViewController: UIViewController {
     private var sendButtonTapped: (() -> Void)!
     private var requestButtonTapped: (() -> Void)!
     private var nodeAliasButtonTapped: (() -> Void)!
-    private var fundButtonTapped: ((BitcoinURI) -> Void)!
+    private var emptyStateViewModel: WalletEmptyStateViewModel!
     // swiftlint:enable implicitly_unwrapped_optional
 
     private let buttonCornerRadius: CGFloat = 20
@@ -59,14 +59,14 @@ final class WalletViewController: UIViewController {
         return -(detailView.bounds.height - 45) - 60
     }
 
-    static func instantiate(walletViewModel: WalletViewModel, sendButtonTapped: @escaping () -> Void, requestButtonTapped: @escaping () -> Void, nodeAliasButtonTapped: @escaping () -> Void, fundButtonTapped: @escaping (BitcoinURI) -> Void) -> WalletViewController {
+    static func instantiate(walletViewModel: WalletViewModel, sendButtonTapped: @escaping () -> Void, requestButtonTapped: @escaping () -> Void, nodeAliasButtonTapped: @escaping () -> Void, emptyStateViewModel: WalletEmptyStateViewModel) -> WalletViewController {
         let walletViewController = StoryboardScene.Wallet.walletViewController.instantiate()
         walletViewController.walletViewModel = walletViewModel
 
         walletViewController.sendButtonTapped = sendButtonTapped
         walletViewController.requestButtonTapped = requestButtonTapped
         walletViewController.nodeAliasButtonTapped = nodeAliasButtonTapped
-        walletViewController.fundButtonTapped = fundButtonTapped
+        walletViewController.emptyStateViewModel = emptyStateViewModel
 
         walletViewController.tabBarItem.title = Tab.wallet.title
         walletViewController.tabBarItem.image = Tab.wallet.image
@@ -129,9 +129,7 @@ final class WalletViewController: UIViewController {
     }
 
     private func setupEmtpyState() {
-        let emptyStateView = WalletEmptyStateView(viewModel: walletViewModel.emptyStateViewModel) { [weak self] in
-            self?.fundButtonTapped($0)
-        }
+        let emptyStateView = EmptyStateView(viewModel: emptyStateViewModel)
         emptyStateView.add(to: view)
 
         walletViewModel.totalBalance

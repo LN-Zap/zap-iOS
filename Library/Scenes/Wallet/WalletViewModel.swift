@@ -16,10 +16,6 @@ final class WalletViewModel: NSObject {
 
     var syncViewModel: SyncViewModel
 
-    var emptyStateViewModel: WalletEmptyStateViewModel {
-        return WalletEmptyStateViewModel(lightningService: lightningService)
-    }
-
     var network: Observable<Network?> {
         return lightningService.infoService.network
     }

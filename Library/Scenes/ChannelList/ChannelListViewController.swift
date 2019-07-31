@@ -23,17 +23,19 @@ final class ChannelListViewController: UIViewController {
 
     private let refreshControl = UIRefreshControl()
 
-    private var channelListViewModel: ChannelListViewModel! // swiftlint:disable:this implicitly_unwrapped_optional
-    private var addChannelButtonTapped: (() -> Void)?
-    private var presentChannelDetail: ((UIViewController, ChannelViewModel) -> Void)?
-    private var fundButtonTapped: ((BitcoinURI) -> Void)?
+    // swiftlint:disable implicitly_unwrapped_optional
+    private var channelListViewModel: ChannelListViewModel!
+    private var addChannelButtonTapped: (() -> Void)!
+    private var presentChannelDetail: ((UIViewController, ChannelViewModel) -> Void)!
+    private var walletEmptyStateViewModel: WalletEmptyStateViewModel!
+    // swiftlint:enable implicitly_unwrapped_optional
 
-    static func instantiate(channelListViewModel: ChannelListViewModel, addChannelButtonTapped: @escaping () -> Void, presentChannelDetail: @escaping (UIViewController, ChannelViewModel) -> Void, fundButtonTapped: @escaping (BitcoinURI) -> Void) -> UIViewController {
+    static func instantiate(channelListViewModel: ChannelListViewModel, addChannelButtonTapped: @escaping () -> Void, presentChannelDetail: @escaping (UIViewController, ChannelViewModel) -> Void, walletEmptyStateViewModel: WalletEmptyStateViewModel) -> UIViewController {
         let viewController = StoryboardScene.ChannelList.channelViewController.instantiate()
         viewController.channelListViewModel = channelListViewModel
         viewController.addChannelButtonTapped = addChannelButtonTapped
         viewController.presentChannelDetail = presentChannelDetail
-        viewController.fundButtonTapped = fundButtonTapped
+        viewController.walletEmptyStateViewModel = walletEmptyStateViewModel
 
         return viewController
     }
@@ -73,9 +75,7 @@ final class ChannelListViewController: UIViewController {
     }
 
     private func setupEmtpyState() {
-        let emptyStateView = WalletEmptyStateView(viewModel: channelListViewModel.emptyStateViewModel) { [weak self] in
-            self?.fundButtonTapped?($0)
-        }
+        let emptyStateView = EmptyStateView(viewModel: walletEmptyStateViewModel)
         emptyStateView.add(to: view)
 
         channelListViewModel.shouldHideEmptyWalletState

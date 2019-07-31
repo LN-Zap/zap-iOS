@@ -167,7 +167,8 @@ final class WalletCoordinator: NSObject, Coordinator {
 
     func walletViewController() -> WalletViewController {
         let walletViewModel = WalletViewModel(lightningService: lightningService)
-        return WalletViewController.instantiate(walletViewModel: walletViewModel, sendButtonTapped: presentSend, requestButtonTapped: presentRequest, nodeAliasButtonTapped: presentWalletList, fundButtonTapped: presentFundWallet)
+        let walletEmptyStateViewModel = WalletEmptyStateViewModel(lightningService: lightningService, fundButtonTapped: presentFundWallet)
+        return WalletViewController.instantiate(walletViewModel: walletViewModel, sendButtonTapped: presentSend, requestButtonTapped: presentRequest, nodeAliasButtonTapped: presentWalletList, emptyStateViewModel: walletEmptyStateViewModel)
     }
 
     func settingsViewController() -> ZapNavigationController {
@@ -300,7 +301,8 @@ final class WalletCoordinator: NSObject, Coordinator {
     }
 
     private func pushChannelList(on navigationController: UINavigationController) {
-        let channelList = ChannelListViewController.instantiate(channelListViewModel: channelListViewModel, addChannelButtonTapped: presentAddChannel, presentChannelDetail: presentChannelDetail, fundButtonTapped: presentFundWallet)
+        let walletEmptyStateViewModel = WalletEmptyStateViewModel(lightningService: lightningService, fundButtonTapped: presentFundWallet)
+        let channelList = ChannelListViewController.instantiate(channelListViewModel: channelListViewModel, addChannelButtonTapped: presentAddChannel, presentChannelDetail: presentChannelDetail, walletEmptyStateViewModel: walletEmptyStateViewModel)
         navigationController.pushViewController(channelList, animated: true)
     }
 

@@ -49,10 +49,6 @@ final class ChannelListViewModel: NSObject {
 
     let shouldHideEmptyWalletState: Signal<Bool, Never>
 
-    var emptyStateViewModel: WalletEmptyStateViewModel {
-        return WalletEmptyStateViewModel(lightningService: lightningService)
-    }
-
     var channelService: ChannelService {
         return lightningService.channelService
     }
