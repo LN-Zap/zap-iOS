@@ -53,8 +53,6 @@ final class ChannelListHeaderView: UIView {
         stackView.clear()
 
         for segment in segments {
-            guard segment.required || channelListViewModel[keyPath: segment.source].value > 0 else { continue }
-
             let circleView = CircleView(frame: .zero)
             circleView.backgroundColor = .clear
             circleView.color = segment.color
@@ -77,6 +75,11 @@ final class ChannelListHeaderView: UIView {
             NSLayoutConstraint.activate([
                 circleView.widthAnchor.constraint(equalToConstant: 6)
             ])
+
+            channelListViewModel[keyPath: segment.source]
+                .map { !(segment.required || $0 > 0) }
+                .bind(to: horizontalStackView.reactive.isHidden)
+                .dispose(in: reactive.bag)
 
             stackView.addArrangedSubview(horizontalStackView)
         }
