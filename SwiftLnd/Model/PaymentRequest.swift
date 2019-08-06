@@ -58,7 +58,18 @@ extension PaymentRequest {
             fallbackAddress = nil
         }
 
-        network = raw.hasPrefix("lnbc") ? .mainnet : .testnet
+        var selectedNetwork: Network?
+        for network in Network.allCases where raw.hasPrefix(Bolt11.Prefix.forNetwork(network).rawValue) {
+            selectedNetwork = network
+            break
+        }
+
+        if let selectedNetwork = selectedNetwork {
+            self.network = selectedNetwork
+        } else {
+            return nil
+        }
+
         self.raw = raw
     }
 }
