@@ -14,7 +14,9 @@ import SwiftLnd
 public final class BalanceService {
     private let api: LightningApi
 
-    public let onChain = Observable<Satoshi>(0)
+    public let confirmedOnChain = Observable<Satoshi>(0)
+    public let totalOnChain = Observable<Satoshi>(0)
+
     public let lightning = Observable<Satoshi>(0)
     public let pending = Observable<Satoshi>(0)
 
@@ -22,7 +24,7 @@ public final class BalanceService {
 
     init(api: LightningApi) {
         self.api = api
-        total = combineLatest(onChain, lightning) { $0 + $1 }
+        total = combineLatest(confirmedOnChain, lightning) { $0 + $1 }
     }
 
     func update() {
@@ -33,7 +35,8 @@ public final class BalanceService {
             group.enter()
             self?.api.walletBalance { result in
                 if case .success(let walletBalance) = result {
-                    self?.onChain.value = walletBalance.confirmedBalance
+                    self?.confirmedOnChain.value = walletBalance.confirmedBalance
+                    self?.totalOnChain.value = walletBalance.confirmedBalance + walletBalance.unconfirmedBalance
                     pending += walletBalance.unconfirmedBalance
                 }
                 group.leave()

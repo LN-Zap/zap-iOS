@@ -80,7 +80,7 @@ final class SendViewModel: NSObject {
         case .lightning:
             return min(LndConstants.maxLightningPaymentAllowed, lightningService.channelService.maxLocalBalance)
         case .onChain:
-            return lightningService.balanceService.onChain.value
+            return lightningService.balanceService.confirmedOnChain.value
         }
     }()
 

@@ -22,7 +22,7 @@ final class OpenChannelViewModel: NSObject {
     var amount: Satoshi = 100000 {
         didSet {
             updateSubtitle()
-            isAmountValid.value = validRange.contains(amount) && amount < lightningService.balanceService.onChain.value
+            isAmountValid.value = validRange.contains(amount) && amount < lightningService.balanceService.confirmedOnChain.value
         }
     }
 
@@ -50,7 +50,7 @@ final class OpenChannelViewModel: NSObject {
         } else if amount > LndConstants.maxChannelSize,
             let amount = currency.format(satoshis: LndConstants.maxChannelSize) {
             subtitle.value = L10n.Scene.OpenChannel.Subtitle.maximumSize(amount)
-        } else if let amount = currency.format(satoshis: lightningService.balanceService.onChain.value) {
+        } else if let amount = currency.format(satoshis: lightningService.balanceService.confirmedOnChain.value) {
             subtitle.value = L10n.Scene.OpenChannel.Subtitle.balance(amount)
         }
     }

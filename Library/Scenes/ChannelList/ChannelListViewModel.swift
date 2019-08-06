@@ -59,11 +59,12 @@ final class ChannelListViewModel: NSObject {
 
         dataSource = MutableObservableArray()
 
-        shouldHideEmptyWalletState = lightningService.balanceService.onChain
+        shouldHideEmptyWalletState = lightningService.balanceService.totalOnChain
             .map { $0 > 0 }
 
-        shouldHideChannelListEmptyState = combineLatest(lightningService.balanceService.onChain, dataSource)
+        shouldHideChannelListEmptyState = combineLatest(lightningService.balanceService.totalOnChain, dataSource)
             .map { $0 <= 0 || !$1.collection.isEmpty }
+            .distinctUntilChanged { $0 != $1 }
 
         super.init()
 
