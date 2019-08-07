@@ -21,8 +21,10 @@ class ChannelTableViewCell: BondTableViewCell {
     @IBOutlet private weak var stateLabel: UILabel!
 
     func update(channelViewModel: ChannelViewModel, maxBalance: Satoshi) {
-        nameLabel.text = channelViewModel.name.value
 
+        channelViewModel.name
+            .bind(to: nameLabel.reactive.text)
+            .dispose(in: reactive.bag)
         channelViewModel.channel.localBalance
             .bind(to: localAmountLabel.reactive.text, currency: Settings.shared.primaryCurrency)
             .dispose(in: onReuseBag)
