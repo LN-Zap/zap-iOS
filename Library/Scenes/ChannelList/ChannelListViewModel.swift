@@ -39,7 +39,6 @@ final class ChannelListViewModel: NSObject {
     private let lightningService: LightningService
 
     let dataSource: MutableObservableArray<ChannelViewModel>
-    let searchString = Observable<String?>(nil)
     var maxBalance: Satoshi = 1
 
     let totalLocal = Observable<Satoshi>(0)
@@ -68,19 +67,18 @@ final class ChannelListViewModel: NSObject {
 
         super.init()
 
-        combineLatest(channelService.open, channelService.pending, searchString)
+        combineLatest(channelService.open, channelService.pending)
             .observeOn(DispatchQueue.main)
             .observeNext { [weak self] in
-                let (open, pending, searchString) = $0
-                self?.updateChannels(open: open.collection, pending: pending.collection, searchString: searchString)
+                let (open, pending) = $0
+                self?.updateChannels(open: open.collection, pending: pending.collection)
             }
             .dispose(in: reactive.bag)
     }
 
-    private func updateChannels(open: [Channel], pending: [Channel], searchString: String?) {
+    private func updateChannels(open: [Channel], pending: [Channel]) {
         let viewModels = (open + pending)
             .map { ChannelViewModel(channel: $0, channelService: channelService) }
-            .filter { $0.matchesSearchString(searchString) }
 
         let sortedViewModels = viewModels.sorted {
             if $0.channel.state != $1.channel.state {
