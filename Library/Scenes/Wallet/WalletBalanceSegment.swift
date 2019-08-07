@@ -7,6 +7,7 @@
 
 import Bond
 import Foundation
+import ReactiveKit
 import SwiftBTC
 
 enum Segment: Localizable {
@@ -39,5 +40,5 @@ enum Segment: Localizable {
 
 struct WalletBalanceSegment {
     let segment: Segment
-    let amount: Observable<Satoshi>
+    let amount: Signal<Satoshi, Never>
 }

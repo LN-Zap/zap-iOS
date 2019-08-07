@@ -331,7 +331,7 @@ private extension Bitcoin {
 }
 
 private extension UIStackView {
-    func addSegment(_ segment: Segment, color: UIColor, title: String, amount: Observable<Satoshi>) {
+    func addSegment(_ segment: Segment, color: UIColor, title: String, amount: Signal<Satoshi, Never>) {
         let circleView = CircleView(frame: .zero)
         circleView.backgroundColor = .clear
         circleView.color = color

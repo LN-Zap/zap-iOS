@@ -198,6 +198,17 @@ extension Peer: CustomDebugStringConvertible {
 	}
 }
 
+// MARK: PendingChannels CustomDebugStringConvertible
+extension PendingChannels: CustomDebugStringConvertible {
+	public var debugDescription: String {
+		return """
+		PendingChannels:
+		\ttotalLimboBalance: \(totalLimboBalance)
+		\tchannels: \(channels)\n
+		"""
+	}
+}
+
 // MARK: Route CustomDebugStringConvertible
 extension Route: CustomDebugStringConvertible {
 	public var debugDescription: String {

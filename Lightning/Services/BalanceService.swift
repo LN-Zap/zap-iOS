@@ -14,46 +14,39 @@ import SwiftLnd
 public final class BalanceService {
     private let api: LightningApi
 
-    public let confirmedOnChain = Observable<Satoshi>(0)
-    public let totalOnChain = Observable<Satoshi>(0)
+    public let onChainConfirmed = Observable<Satoshi>(0)
+    public let onChainUnconfirmed = Observable<Satoshi>(0)
 
-    public let lightning = Observable<Satoshi>(0)
-    public let pending = Observable<Satoshi>(0)
+    public let lightningChannelBalance = Observable<Satoshi>(0)
+    public let lightningPendingOpenBalance = Observable<Satoshi>(0)
+    public let lightningLimbo = Observable<Satoshi>(0) // force closing channels
+
+    public let onChainTotal: Signal<Satoshi, Never>
 
     public let total: Signal<Satoshi, Never>
+    public let totalPending: Signal<Satoshi, Never>
 
     init(api: LightningApi) {
         self.api = api
-        total = combineLatest(confirmedOnChain, lightning) { $0 + $1 }
+
+        onChainTotal = combineLatest(onChainConfirmed, onChainUnconfirmed) { $0 + $1 }
+        totalPending = combineLatest(onChainUnconfirmed, lightningPendingOpenBalance, lightningLimbo) { $0 + $1 + $2 }
+        total = combineLatest(onChainConfirmed, lightningChannelBalance) { $0 + $1 }
     }
 
     func update() {
-        DispatchQueue(label: "updateBalance").async { [weak self] in
-            let group = DispatchGroup()
-            var pending: Satoshi = 0
-
-            group.enter()
-            self?.api.walletBalance { result in
-                if case .success(let walletBalance) = result {
-                    self?.confirmedOnChain.value = walletBalance.confirmedBalance
-                    self?.totalOnChain.value = walletBalance.confirmedBalance + walletBalance.unconfirmedBalance
-                    pending += walletBalance.unconfirmedBalance
-                }
-                group.leave()
+        api.walletBalance { [weak self] result in
+            if case .success(let walletBalance) = result {
+                self?.onChainConfirmed.value = walletBalance.confirmedBalance
+                self?.onChainUnconfirmed.value = walletBalance.unconfirmedBalance
             }
+        }
 
-            group.enter()
-            self?.api.channelBalance { result in
-                if case .success(let channelBalance) = result {
-                    self?.lightning.value = channelBalance.balance
-                    pending += channelBalance.pendingOpenBalance
-                }
-                group.leave()
+        api.channelBalance { [weak self] result in
+            if case .success(let channelBalance) = result {
+                self?.lightningChannelBalance.value = channelBalance.balance
+                self?.lightningPendingOpenBalance.value = channelBalance.pendingOpenBalance
             }
-
-            group.wait()
-
-            self?.pending.value = pending
         }
     }
 }

@@ -12,6 +12,7 @@ import SwiftLnd
 
 final class ChannelListUpdater: ListUpdater {
     private let api: LightningApi
+    private let balanceService: BalanceService
 
     let transactions = MutableObservableArray<Transaction>()
 
@@ -19,8 +20,9 @@ final class ChannelListUpdater: ListUpdater {
     let pending = MutableObservableArray<Channel>()
     let closed = MutableObservableArray<ChannelCloseSummary>()
 
-    init(api: LightningApi) {
+    init(api: LightningApi, balanceService: BalanceService) {
         self.api = api
+        self.balanceService = balanceService
 
         api.subscribeChannelEvents { [weak self] _ in
             self?.update()
@@ -34,9 +36,10 @@ final class ChannelListUpdater: ListUpdater {
             }
         }
 
-        api.pendingChannels { [pending] in
-            if case .success(let channels) = $0 {
-                pending.replace(with: channels)
+        api.pendingChannels { [pending, balanceService] in
+            if case .success(let pendingChannels) = $0 {
+                pending.replace(with: pendingChannels.channels)
+                balanceService.lightningLimbo.value = pendingChannels.totalLimboBalance
             }
         }
 
