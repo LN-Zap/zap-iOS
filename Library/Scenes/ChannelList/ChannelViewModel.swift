@@ -8,6 +8,7 @@
 import Bond
 import Foundation
 import Lightning
+import SwiftBTC
 import SwiftLnd
 
 final class ChannelViewModel {
@@ -15,6 +16,14 @@ final class ChannelViewModel {
 
     let state: Observable<Channel.State>
     let name: Observable<String>
+    let localBalance: Observable<Satoshi>
+    let remoteBalance: Observable<Satoshi>
+
+    let channelPoint: ChannelPoint
+    let remotePubKey: String
+    let csvDelay: Int
+
+    let closingTxid: Observable<String?>
 
     var csvDelayTimeString: String {
         let formatter = DateComponentsFormatter()
@@ -39,11 +48,23 @@ final class ChannelViewModel {
                 name.value = alias
             }
         }
+
+        remotePubKey = channel.remotePubKey
+        channelPoint = channel.channelPoint
+        csvDelay = channel.csvDelay
+
+        localBalance = Observable(channel.localBalance)
+        remoteBalance = Observable(channel.remoteBalance)
+        closingTxid = Observable(channel.closingTxid)
+    }
+
+    func update(channel: Channel) {
+        state.value = channel.state
     }
 }
 
 extension ChannelViewModel: Equatable {
     static func == (lhs: ChannelViewModel, rhs: ChannelViewModel) -> Bool {
-        return lhs.channel == rhs.channel
+        return lhs.channel.channelPoint == rhs.channel.channelPoint
     }
 }

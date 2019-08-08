@@ -25,37 +25,37 @@ class ChannelTableViewCell: BondTableViewCell {
         channelViewModel.name
             .bind(to: nameLabel.reactive.text)
             .dispose(in: reactive.bag)
-        channelViewModel.channel.localBalance
+        channelViewModel.localBalance
             .bind(to: localAmountLabel.reactive.text, currency: Settings.shared.primaryCurrency)
             .dispose(in: onReuseBag)
-        channelViewModel.channel.remoteBalance
+        channelViewModel.remoteBalance
             .bind(to: remoteAmountLabel.reactive.text, currency: Settings.shared.primaryCurrency)
             .dispose(in: onReuseBag)
 
-        if channelViewModel.channel.state == .active {
+        if channelViewModel.state.value == .active {
             stateLabel.text = nil
         } else {
-            stateLabel.text = channelViewModel.channel.state.localized
+            stateLabel.text = channelViewModel.state.value.localized
         }
 
         localAmountView.layer.cornerRadius = 3
         remoteAmountView.layer.cornerRadius = 3
 
         localAmountViewWitdthConstraint?.isActive = false
-        let localWidthMultiplier = multiplierFor(balance: channelViewModel.channel.localBalance, maxBalance: maxBalance)
+        let localWidthMultiplier = multiplierFor(balance: channelViewModel.localBalance.value, maxBalance: maxBalance)
         localAmountViewWitdthConstraint = localAmountView.widthAnchor.constraint(equalTo: localBalanceBackgroundView.widthAnchor, multiplier: localWidthMultiplier, constant: 0)
         localAmountViewWitdthConstraint?.isActive = true
 
         remoteAmountViewWidthConstraint?.isActive = false
-        let remoteWidthMultiplier = multiplierFor(balance: channelViewModel.channel.remoteBalance, maxBalance: maxBalance)
+        let remoteWidthMultiplier = multiplierFor(balance: channelViewModel.remoteBalance.value, maxBalance: maxBalance)
         remoteAmountViewWidthConstraint = remoteAmountView.widthAnchor.constraint(equalTo: remoteBalanceBackgroundView.widthAnchor, multiplier: remoteWidthMultiplier, constant: 0)
         remoteAmountViewWidthConstraint?.isActive = true
 
         remoteAmountView.gradient = UIColor.Zap.lightningBlueGradient
 
-        if channelViewModel.channel.state == .inactive {
+        if channelViewModel.state.value == .inactive {
             localAmountView.gradient = [ChannelBalanceColor.offline]
-        } else if channelViewModel.channel.state == .active {
+        } else if channelViewModel.state.value == .active {
             localAmountView.gradient = UIColor.Zap.lightningOrangeGradient
         } else {
             localAmountView.gradient = [ChannelBalanceColor.pending]

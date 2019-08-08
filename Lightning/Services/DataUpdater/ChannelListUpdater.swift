@@ -24,7 +24,8 @@ final class ChannelListUpdater: ListUpdater {
         self.api = api
         self.balanceService = balanceService
 
-        api.subscribeChannelEvents { [weak self] _ in
+        api.subscribeChannelEvents { [weak self] in
+            Logger.info("new channel event \($0)", customPrefix: "🏊‍♂️")
             self?.update()
         }
     }

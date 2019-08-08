@@ -81,15 +81,15 @@ final class ChannelListViewModel: NSObject {
             .map { ChannelViewModel(channel: $0, channelService: channelService) }
 
         let sortedViewModels = viewModels.sorted {
-            if $0.channel.state != $1.channel.state {
-                return $0.channel.state < $1.channel.state
+            if $0.state.value != $1.state.value {
+                return $0.state.value < $1.state.value
             } else {
-                return $0.channel.remotePubKey < $1.channel.remotePubKey
+                return $0.remotePubKey < $1.remotePubKey
             }
         }
 
         maxBalance = viewModels
-            .flatMap { [$0.channel.localBalance, $0.channel.remoteBalance] }
+            .flatMap { [$0.localBalance.value, $0.remoteBalance.value] }
             .max() ?? 0
 
         dataSource.replace(with: sortedViewModels, performDiff: true)
@@ -100,8 +100,8 @@ final class ChannelListViewModel: NSObject {
         totalPending.value = pending.reduce(0) { $0 + $1.localBalance }
     }
 
-    func close(_ channel: Channel, completion: @escaping ApiCompletion<CloseStatusUpdate>) {
-        channelService.close(channel, completion: completion)
+    func close(_ channelViewModel: ChannelViewModel, completion: @escaping ApiCompletion<CloseStatusUpdate>) {
+        channelService.close(channelViewModel.channel, completion: completion)
     }
 
     func refresh() {
