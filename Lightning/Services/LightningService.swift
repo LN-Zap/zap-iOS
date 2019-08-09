@@ -50,13 +50,14 @@ public final class LightningService: NSObject {
 
         let staticChannelBackupper = StaticChannelBackupper(backupService: backupService)
 
+        balanceService = BalanceService(api: api)
+
         let invoiceListUpdater = InvoiceListUpdater(api: api)
         let transactionListUpdater = TransactionListUpdater(api: api)
         let paymentListUpdater = PaymentListUpdater(api: api)
-        let channelListUpdater = ChannelListUpdater(api: api)
+        let channelListUpdater = ChannelListUpdater(api: api, balanceService: balanceService)
         listUpdater = [invoiceListUpdater, transactionListUpdater, paymentListUpdater, channelListUpdater]
 
-        balanceService = BalanceService(api: api)
         channelService = ChannelService(api: api, channelListUpdater: channelListUpdater, staticChannelBackupper: staticChannelBackupper)
         historyService = HistoryService(invoiceListUpdater: invoiceListUpdater, transactionListUpdater: transactionListUpdater, paymentListUpdater: paymentListUpdater, channelListUpdater: channelListUpdater)
         transactionService = TransactionService(api: api, balanceService: balanceService, paymentListUpdater: paymentListUpdater)
@@ -68,9 +69,8 @@ public final class LightningService: NSObject {
         updateBalanceOnChange(of: invoiceListUpdater.items)
         updateBalanceOnChange(of: transactionListUpdater.items)
         updateBalanceOnChange(of: paymentListUpdater.items)
-        updateBalanceOnChange(of: channelListUpdater.open)
+        updateBalanceOnChange(of: channelListUpdater.all)
         updateBalanceOnChange(of: channelListUpdater.closed)
-        updateBalanceOnChange(of: channelListUpdater.pending)
 
         updateChannelsOnChange(of: invoiceListUpdater.items)
         updateChannelsOnChange(of: paymentListUpdater.items)

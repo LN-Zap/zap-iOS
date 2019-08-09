@@ -8,11 +8,6 @@
 import Foundation
 import SwiftLnd
 
-public struct DateWrappedChannelEvent: Equatable, DateProvidingEvent {
-    public let date: Date
-    public let channelEvent: ChannelEvent
-}
-
 public final class DateEstimator {
     private let transactions: [(date: Date, blockHeight: Int)]
 
@@ -23,11 +18,6 @@ public final class DateEstimator {
                 return ($0.date, blockHeight)
             }
             .sorted(by: { $0.1 < $1.1 })
-    }
-
-    public func wrapChannelEvent(_ channelEvent: ChannelEvent) -> DateWrappedChannelEvent {
-        let date = estimatedDate(forBlockHeight: channelEvent.blockHeight) ?? Date(timeIntervalSince1970: 0)
-        return DateWrappedChannelEvent(date: date, channelEvent: channelEvent)
     }
 
     func estimatedDate(forBlockHeight blockHeight: Int) -> Date? {

@@ -17,7 +17,7 @@ public struct LightningNodeURI {
 
     public init?(string: String) {
         let parts = string
-            .split { [":", "@", " "].contains(String($0)) }
+            .split { ["@", " "].contains(String($0)) }
             .map { $0.trimmingCharacters(in: .whitespaces) }
 
         guard parts.count >= 2

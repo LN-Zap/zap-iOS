@@ -73,8 +73,8 @@ public final class LightningApi {
         connection.channelBalance(Lnrpc_ChannelBalanceRequest(), completion: run(completion, map: ChannelBalance.init))
     }
 
-    public func pendingChannels(completion: @escaping ApiCompletion<[Channel]>) {
-        connection.pendingChannels(Lnrpc_PendingChannelsRequest(), completion: run(completion) { $0.channels })
+    public func pendingChannels(completion: @escaping ApiCompletion<PendingChannels>) {
+        connection.pendingChannels(Lnrpc_PendingChannelsRequest(), completion: run(completion, map: PendingChannels.init) )
     }
 
     public func channels(completion: @escaping ApiCompletion<[Channel]>) {

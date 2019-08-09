@@ -55,16 +55,6 @@ extension Lnrpc_Channel {
     }
 }
 
-extension Lnrpc_PendingChannelsResponse {
-    var channels: [Channel] {
-        let pendingOpenChannels: [Channel] = self.pendingOpenChannels.compactMap { $0.channelModel }
-        let pendingClosingChannels: [Channel] = self.pendingClosingChannels.compactMap { $0.channelModel }
-        let pendingForceClosingChannels: [Channel] = self.pendingForceClosingChannels.compactMap { $0.channelModel }
-        let waitingCloseChannels: [Channel] = self.waitingCloseChannels.compactMap { $0.channelModel }
-        return pendingOpenChannels + pendingClosingChannels + pendingForceClosingChannels + waitingCloseChannels
-    }
-}
-
 extension Lnrpc_PendingChannelsResponse.PendingOpenChannel {
     var channelModel: Channel {
         return Channel(

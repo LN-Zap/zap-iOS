@@ -143,25 +143,25 @@
                                 </subviews>
                             </stackView>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="f3K-Ib-sOt" userLabel="Sync Container">
-                                <rect key="frame" x="0.0" y="0.0" width="375" height="102.5"/>
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="0.0"/>
                                 <subviews>
-                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="gnd-tl-l3D" userLabel="background container">
+                                    <view contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="gnd-tl-l3D" userLabel="background container">
                                         <rect key="frame" x="0.0" y="0.0" width="375" height="82.5"/>
                                         <subviews>
-                                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="Mzb-Uu-12t">
-                                                <rect key="frame" x="0.0" y="30" width="375" height="32.5"/>
+                                            <stackView opaque="NO" contentMode="scaleToFill" ambiguous="YES" axis="vertical" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="Mzb-Uu-12t">
+                                                <rect key="frame" x="0.0" y="30" width="375" height="30"/>
                                                 <subviews>
                                                     <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="uG0-O6-uof">
-                                                        <rect key="frame" x="0.0" y="0.0" width="375" height="20.5"/>
+                                                        <rect key="frame" x="0.0" y="0.0" width="375" height="20"/>
                                                         <subviews>
                                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="_Syncing:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="TgV-NW-4MM">
-                                                                <rect key="frame" x="20" y="0.0" width="291" height="20.5"/>
+                                                                <rect key="frame" x="20" y="20" width="291" height="0.0"/>
                                                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                                 <nil key="textColor"/>
                                                                 <nil key="highlightedColor"/>
                                                             </label>
                                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="255" verticalHuggingPriority="251" text="(10%)" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="IUK-cy-OWr">
-                                                                <rect key="frame" x="311" y="0.0" width="44" height="20.5"/>
+                                                                <rect key="frame" x="311" y="20" width="44" height="0.0"/>
                                                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                                 <nil key="textColor"/>
                                                                 <nil key="highlightedColor"/>
@@ -170,7 +170,7 @@
                                                         <directionalEdgeInsets key="directionalLayoutMargins" top="0.0" leading="20" bottom="0.0" trailing="20"/>
                                                     </stackView>
                                                     <progressView opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="750" progress="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="r2G-Fm-DOe">
-                                                        <rect key="frame" x="0.0" y="30.5" width="375" height="2"/>
+                                                        <rect key="frame" x="0.0" y="30" width="375" height="0.0"/>
                                                     </progressView>
                                                 </subviews>
                                             </stackView>
@@ -187,7 +187,7 @@
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
                                     <constraint firstItem="gnd-tl-l3D" firstAttribute="top" secondItem="f3K-Ib-sOt" secondAttribute="top" priority="750" id="3Fc-uY-Mui"/>
-                                    <constraint firstAttribute="height" priority="1" id="BAX-sA-dNf"/>
+                                    <constraint firstAttribute="height" priority="999" id="BAX-sA-dNf"/>
                                     <constraint firstItem="gnd-tl-l3D" firstAttribute="leading" secondItem="f3K-Ib-sOt" secondAttribute="leading" id="ENc-yk-XyY"/>
                                     <constraint firstAttribute="bottom" secondItem="gnd-tl-l3D" secondAttribute="bottom" constant="20" id="a0k-Ve-CGU"/>
                                     <constraint firstAttribute="trailing" secondItem="gnd-tl-l3D" secondAttribute="trailing" id="dc1-gg-unc"/>

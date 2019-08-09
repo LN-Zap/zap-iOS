@@ -193,6 +193,10 @@ final class WalletViewController: UIViewController {
                     self?.circleGraphView.segments = $0
                 },
             walletViewModel.network
+                .ignoreNils()
+                .map { $0.localized }
+                .bind(to: networkLabel.reactive.text ),
+            walletViewModel.network
                 .map({ $0 == .mainnet })
                 .bind(to: networkLabel.reactive.isHidden),
             walletViewModel.nodeAlias
@@ -327,7 +331,7 @@ private extension Bitcoin {
 }
 
 private extension UIStackView {
-    func addSegment(_ segment: Segment, color: UIColor, title: String, amount: Observable<Satoshi>) {
+    func addSegment(_ segment: Segment, color: UIColor, title: String, amount: Signal<Satoshi, Never>) {
         let circleView = CircleView(frame: .zero)
         circleView.backgroundColor = .clear
         circleView.color = color

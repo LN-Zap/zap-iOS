@@ -14,9 +14,7 @@ extension UIAlertController {
         let message: String
         let closeButtonTitle: String
 
-        let channel = channelViewModel.channel
-
-        if channel.state == .active {
+        if channelViewModel.state.value == .active {
             title = L10n.Scene.Channels.Close.title
             message = L10n.Scene.Channels.Close.message(channelViewModel.name.value)
             closeButtonTitle = L10n.Scene.Channels.Alert.close
@@ -31,7 +29,7 @@ extension UIAlertController {
             formatter.maximumUnitCount = 2
 
             let blockTime: TimeInterval = 10 * 60
-            let timeUntilClose = formatter.string(from: TimeInterval(channel.csvDelay) * blockTime) ?? ""
+            let timeUntilClose = formatter.string(from: TimeInterval(channelViewModel.csvDelay) * blockTime) ?? ""
 
             message = L10n.Scene.Channels.ForceClose.message(channelViewModel.name.value, timeUntilClose)
         }
