@@ -8,26 +8,35 @@
 import Bond
 import Foundation
 import Logger
+import ReactiveKit
 import SwiftLnd
 
-final class ChannelListUpdater: ListUpdater {
+final class ChannelListUpdater: NSObject, ListUpdater {
     private let api: LightningApi
     private let balanceService: BalanceService
 
-    let transactions = MutableObservableArray<Transaction>()
-
     let open = MutableObservableArray<Channel>()
     let pending = MutableObservableArray<Channel>()
+
+    let all = MutableObservableArray<Channel>()
+
     let closed = MutableObservableArray<ChannelCloseSummary>()
 
     init(api: LightningApi, balanceService: BalanceService) {
         self.api = api
         self.balanceService = balanceService
 
+        super.init()
+
         api.subscribeChannelEvents { [weak self] in
             Logger.info("new channel event \($0)", customPrefix: "🏊‍♂️")
             self?.update()
         }
+
+        combineLatest(open, pending) { $0.collection + $1.collection }
+            .distinctUntilChanged()
+            .observeNext { [weak self] in self?.all.replace(with: $0, performDiff: true) }
+            .dispose(in: reactive.bag)
     }
 
     func update() {

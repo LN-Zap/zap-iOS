@@ -69,9 +69,8 @@ public final class LightningService: NSObject {
         updateBalanceOnChange(of: invoiceListUpdater.items)
         updateBalanceOnChange(of: transactionListUpdater.items)
         updateBalanceOnChange(of: paymentListUpdater.items)
-        updateBalanceOnChange(of: channelListUpdater.open)
+        updateBalanceOnChange(of: channelListUpdater.all)
         updateBalanceOnChange(of: channelListUpdater.closed)
-        updateBalanceOnChange(of: channelListUpdater.pending)
 
         updateChannelsOnChange(of: invoiceListUpdater.items)
         updateChannelsOnChange(of: paymentListUpdater.items)

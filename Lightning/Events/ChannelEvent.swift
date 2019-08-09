@@ -40,7 +40,7 @@ public struct ChannelEvent: Equatable, DateProvidingEvent {
 
     public let txHash: String
     public let node: LightningNode
-    public let blockHeight: Int
+    public let blockHeight: Int?
     public let type: Kind
     public let fee: Satoshi?
     public let date: Date
@@ -48,17 +48,21 @@ public struct ChannelEvent: Equatable, DateProvidingEvent {
 
 extension ChannelEvent {
     init?(channel: Channel, dateEstimator: DateEstimator) {
-        guard
+        if
             let blockHeight = channel.blockHeight,
-            let date = dateEstimator.estimatedDate(forBlockHeight: blockHeight)
-            else { return nil }
+            let date = dateEstimator.estimatedDate(forBlockHeight: blockHeight) {
+            self.blockHeight = blockHeight
+            self.date = date
+        } else {
+            date = Date()
+            blockHeight = nil
+        }
 
         txHash = channel.channelPoint.fundingTxid
         node = LightningNode(pubKey: channel.remotePubKey, alias: nil, color: nil)
-        self.blockHeight = blockHeight
+
         type = .open
         fee = nil
-        self.date = date
     }
 
     init?(closing channelCloseSummary: ChannelCloseSummary, dateEstimator: DateEstimator) {

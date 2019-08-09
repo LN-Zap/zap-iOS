@@ -18,9 +18,14 @@ public final class HistoryService: NSObject {
     init(invoiceListUpdater: InvoiceListUpdater, transactionListUpdater: TransactionListUpdater, paymentListUpdater: PaymentListUpdater, channelListUpdater: ChannelListUpdater) {
         super.init()
 
-        combineLatest(invoiceListUpdater.items, transactionListUpdater.items, paymentListUpdater.items, channelListUpdater.open, channelListUpdater.closed)
+        combineLatest(
+            invoiceListUpdater.items,
+            transactionListUpdater.items,
+            paymentListUpdater.items,
+            channelListUpdater.all,
+            channelListUpdater.closed)
             .observeNext { [weak self] in
-                let (invoiceChangeset, transactionChangeset, paymentChangeset, openChannels, closedChannels) = $0
+                let (invoiceChangeset, transactionChangeset, paymentChangeset, channels, closedChannels) = $0
                 let dateEstimator = DateEstimator(transactions: transactionChangeset.collection)
 
                 let newInvoices = invoiceChangeset.collection
@@ -35,7 +40,7 @@ public final class HistoryService: NSObject {
                     .map { (payment: Payment) -> DateProvidingEvent in
                         LightningPaymentEvent(payment: payment)
                     }
-                let newOpenChannelEvents = openChannels.collection
+                let newOpenChannelEvents = channels.collection
                     .compactMap { (channel: Channel) -> DateProvidingEvent? in
                         ChannelEvent(channel: channel, dateEstimator: dateEstimator)
                     }
