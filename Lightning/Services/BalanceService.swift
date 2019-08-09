@@ -19,19 +19,17 @@ public final class BalanceService {
 
     public let lightningChannelBalance = Observable<Satoshi>(0)
     public let lightningPendingOpenBalance = Observable<Satoshi>(0)
-    public let lightningLimbo = Observable<Satoshi>(0) // force closing channels
 
-    public let onChainTotal: Signal<Satoshi, Never>
-
-    public let total: Signal<Satoshi, Never>
+    public let onChainTotal = Observable<Satoshi>(0)
     public let totalPending: Signal<Satoshi, Never>
+
+    // sum of funds stuck in force closing channels, set from `ChannelListUpdater`
+    public let lightningLimbo = Observable<Satoshi>(0)
 
     init(api: LightningApi) {
         self.api = api
 
-        onChainTotal = combineLatest(onChainConfirmed, onChainUnconfirmed) { $0 + $1 }
         totalPending = combineLatest(onChainUnconfirmed, lightningPendingOpenBalance, lightningLimbo) { $0 + $1 + $2 }
-        total = combineLatest(onChainConfirmed, lightningChannelBalance) { $0 + $1 }
     }
 
     func update() {
@@ -39,6 +37,7 @@ public final class BalanceService {
             if case .success(let walletBalance) = result {
                 self?.onChainConfirmed.value = walletBalance.confirmedBalance
                 self?.onChainUnconfirmed.value = walletBalance.unconfirmedBalance
+                self?.onChainTotal.value = walletBalance.confirmedBalance + walletBalance.unconfirmedBalance
             }
         }
 
