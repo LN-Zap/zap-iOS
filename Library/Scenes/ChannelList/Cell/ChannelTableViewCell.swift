@@ -54,11 +54,11 @@ class ChannelTableViewCell: BondTableViewCell {
         remoteAmountView.gradient = UIColor.Zap.lightningBlueGradient
 
         if channelViewModel.state.value == .inactive {
-            localAmountView.gradient = [ChannelBalanceColor.offline]
+            localAmountView.gradient = [ChannelBalanceColor.offline, ChannelBalanceColor.offline] // hack: add 2 colors to avoid hiding of the view on cell highlight
         } else if channelViewModel.state.value == .active {
             localAmountView.gradient = UIColor.Zap.lightningOrangeGradient
         } else {
-            localAmountView.gradient = [ChannelBalanceColor.pending]
+            localAmountView.gradient = [ChannelBalanceColor.pending, ChannelBalanceColor.pending] // hack: add 2 colors to avoid hiding of the view on cell highlight
         }
     }
 
