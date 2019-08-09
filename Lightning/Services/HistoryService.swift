@@ -32,7 +32,9 @@ public final class HistoryService: NSObject {
                     .map { (invoice: Invoice) -> DateProvidingEvent in
                         InvoiceEvent(invoice: invoice)
                     }
+                let channelFundingTxids = channels.collection.map { $0.channelPoint.fundingTxid }
                 let newTransactions = transactionChangeset.collection
+                    .filter { !channelFundingTxids.contains($0.id) }
                     .compactMap { (transaction: Transaction) -> DateProvidingEvent? in
                         TransactionEvent(transaction: transaction)
                     }
