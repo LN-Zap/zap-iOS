@@ -25,6 +25,8 @@ final class PushNotificationViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        navigationItem.hidesBackButton = true
+
         view.backgroundColor = UIColor.Zap.background
         separatorView.backgroundColor = UIColor.Zap.lightningOrange
 

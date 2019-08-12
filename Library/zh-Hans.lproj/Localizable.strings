@@ -247,20 +247,18 @@
 
 "scene.history.cell.payment_sent" = "已发送付款";
 "scene.history.cell.payment_received" = "已收到付款";
-"scene.history.cell.payment_failed" = "付款失败 (%@)";
 "scene.history.cell.invoice_created" = "付款请求已创建";
-"scene.history.cell.channel_opened" = "打开通道";
-"scene.history.cell.channel_closed" = "关闭通道";
-"scene.history.cell.force_close_channel" = "强制关闭通道";
-"scene.history.cell.remote_force_close_channel" = "远端强制关闭通道";
-"scene.history.cell.breach_close_channel" = "强制关闭通道";
-"scene.history.cell.close_channel_funding_canceled" = "关闭通道 (资金已取消)";
+"scene.history.cell.channel_opened" = "Opened Channel";
+"scene.history.cell.channel_closed" = "Closed Channel";
+"scene.history.cell.force_close_channel" = "Force closed Channel";
+"scene.history.cell.remote_force_close_channel" = "Remote forced close Channel";
+"scene.history.cell.breach_close_channel" = "Breach closed Channel";
+"scene.history.cell.close_channel_funding_canceled" = "Closed Channel (funding canceled)";
 "scene.history.cell.channel_abandoned" = "通道已废弃";
 "scene.history.cell.transaction_sent" = "已发送付款";
 "scene.history.cell.transaction_received" = "已收到付款";
 "scene.history.cell.label.new" = "新建";
 "scene.history.cell.label.error" = "错误";
-"scene.history.cell.action.try_again" = "再试一次";
 
 "scene.node_uri.title" = "连接到节点";
 "scene.node_uri.alias_label" = "别名";

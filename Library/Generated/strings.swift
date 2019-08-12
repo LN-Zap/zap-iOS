@@ -296,38 +296,30 @@ internal enum L10n {
       /// History
       internal static let title = L10n.tr("Localizable", "scene.history.title")
       internal enum Cell {
-        /// Breach close Channel
+        /// Breach closed Channel
         internal static let breachCloseChannel = L10n.tr("Localizable", "scene.history.cell.breach_close_channel")
         /// Channel abandoned
         internal static let channelAbandoned = L10n.tr("Localizable", "scene.history.cell.channel_abandoned")
-        /// Close Channel
+        /// Closed Channel
         internal static let channelClosed = L10n.tr("Localizable", "scene.history.cell.channel_closed")
-        /// Open Channel
+        /// Opened Channel
         internal static let channelOpened = L10n.tr("Localizable", "scene.history.cell.channel_opened")
-        /// Close Channel (funding canceled)
+        /// Closed Channel (funding canceled)
         internal static let closeChannelFundingCanceled = L10n.tr("Localizable", "scene.history.cell.close_channel_funding_canceled")
-        /// Force close Channel
+        /// Force closed Channel
         internal static let forceCloseChannel = L10n.tr("Localizable", "scene.history.cell.force_close_channel")
         /// Payment Request created
         internal static let invoiceCreated = L10n.tr("Localizable", "scene.history.cell.invoice_created")
-        /// Payment failed (%@)
-        internal static func paymentFailed(_ p1: String) -> String {
-          return L10n.tr("Localizable", "scene.history.cell.payment_failed", p1)
-        }
         /// Payment received
         internal static let paymentReceived = L10n.tr("Localizable", "scene.history.cell.payment_received")
         /// Payment sent
         internal static let paymentSent = L10n.tr("Localizable", "scene.history.cell.payment_sent")
-        /// Remote force close Channel
+        /// Remote forced close Channel
         internal static let remoteForceCloseChannel = L10n.tr("Localizable", "scene.history.cell.remote_force_close_channel")
         /// Payment received
         internal static let transactionReceived = L10n.tr("Localizable", "scene.history.cell.transaction_received")
         /// Payment sent
         internal static let transactionSent = L10n.tr("Localizable", "scene.history.cell.transaction_sent")
-        internal enum Action {
-          /// Try Again
-          internal static let tryAgain = L10n.tr("Localizable", "scene.history.cell.action.try_again")
-        }
         internal enum Label {
           /// error
           internal static let error = L10n.tr("Localizable", "scene.history.cell.label.error")

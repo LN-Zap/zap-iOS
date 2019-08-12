@@ -247,20 +247,18 @@
 
 "scene.history.cell.payment_sent" = "Paiement envoyé";
 "scene.history.cell.payment_received" = "Paiement reçu";
-"scene.history.cell.payment_failed" = "Le Paiement à échoué (%@)";
 "scene.history.cell.invoice_created" = "Demande de Paiement créé";
-"scene.history.cell.channel_opened" = "Canaux ouverts";
-"scene.history.cell.channel_closed" = "Canaux fermés";
-"scene.history.cell.force_close_channel" = "Fermer de force le canal";
-"scene.history.cell.remote_force_close_channel" = "Forcer la fermeture de Channel à distance";
-"scene.history.cell.breach_close_channel" = "Fermer de force le canal";
-"scene.history.cell.close_channel_funding_canceled" = "Fermeture de Channel (financement annulé)";
+"scene.history.cell.channel_opened" = "Opened Channel";
+"scene.history.cell.channel_closed" = "Closed Channel";
+"scene.history.cell.force_close_channel" = "Force closed Channel";
+"scene.history.cell.remote_force_close_channel" = "Remote forced close Channel";
+"scene.history.cell.breach_close_channel" = "Breach closed Channel";
+"scene.history.cell.close_channel_funding_canceled" = "Closed Channel (funding canceled)";
 "scene.history.cell.channel_abandoned" = "Canal abandonné";
 "scene.history.cell.transaction_sent" = "Paiement envoyé";
 "scene.history.cell.transaction_received" = "Paiement reçu";
 "scene.history.cell.label.new" = "nouveau";
 "scene.history.cell.label.error" = "erreur";
-"scene.history.cell.action.try_again" = "Réessayez";
 
 "scene.node_uri.title" = "Se connecter au Node";
 "scene.node_uri.alias_label" = "Alias";

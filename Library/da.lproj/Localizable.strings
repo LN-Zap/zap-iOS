@@ -247,20 +247,18 @@
 
 "scene.history.cell.payment_sent" = "Betaling sendt";
 "scene.history.cell.payment_received" = "Betaling modtaget";
-"scene.history.cell.payment_failed" = "Betaling fejlede (%@)";
 "scene.history.cell.invoice_created" = "Betaling anmodning skabt";
-"scene.history.cell.channel_opened" = "Åben Kanal";
-"scene.history.cell.channel_closed" = "Luk Kanal";
-"scene.history.cell.force_close_channel" = "Tvangsluk Kanal";
-"scene.history.cell.remote_force_close_channel" = "Fjern tvangsluk Kanal";
-"scene.history.cell.breach_close_channel" = "Bryd luk kanal";
-"scene.history.cell.close_channel_funding_canceled" = "Luk kanal (finansieringen annulleret)";
+"scene.history.cell.channel_opened" = "Opened Channel";
+"scene.history.cell.channel_closed" = "Closed Channel";
+"scene.history.cell.force_close_channel" = "Force closed Channel";
+"scene.history.cell.remote_force_close_channel" = "Remote forced close Channel";
+"scene.history.cell.breach_close_channel" = "Breach closed Channel";
+"scene.history.cell.close_channel_funding_canceled" = "Closed Channel (funding canceled)";
 "scene.history.cell.channel_abandoned" = "Kanal forladt";
 "scene.history.cell.transaction_sent" = "Betaling sendt";
 "scene.history.cell.transaction_received" = "Betaling modtaget";
 "scene.history.cell.label.new" = "ny";
 "scene.history.cell.label.error" = "fejl";
-"scene.history.cell.action.try_again" = "Prøv igen";
 
 "scene.node_uri.title" = "Opret forbindelse til Node";
 "scene.node_uri.alias_label" = "Alias";
