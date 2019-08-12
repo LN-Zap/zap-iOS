@@ -247,20 +247,18 @@
 
 "scene.history.cell.payment_sent" = "Platba odeslána";
 "scene.history.cell.payment_received" = "Platba přijata";
-"scene.history.cell.payment_failed" = "Platba se nezdařila (%@)";
 "scene.history.cell.invoice_created" = "Požadavek platby vytvořen";
-"scene.history.cell.channel_opened" = "Otevřít kanál";
-"scene.history.cell.channel_closed" = "Uzavřít kanál";
-"scene.history.cell.force_close_channel" = "Vynutit uzavření kanálu";
-"scene.history.cell.remote_force_close_channel" = "Remote force close Channel";
-"scene.history.cell.breach_close_channel" = "Breach close Channel";
-"scene.history.cell.close_channel_funding_canceled" = "Close Channel (funding canceled)";
+"scene.history.cell.channel_opened" = "Opened Channel";
+"scene.history.cell.channel_closed" = "Closed Channel";
+"scene.history.cell.force_close_channel" = "Force closed Channel";
+"scene.history.cell.remote_force_close_channel" = "Remote forced close Channel";
+"scene.history.cell.breach_close_channel" = "Breach closed Channel";
+"scene.history.cell.close_channel_funding_canceled" = "Closed Channel (funding canceled)";
 "scene.history.cell.channel_abandoned" = "Channel abandoned";
 "scene.history.cell.transaction_sent" = "Payment sent";
 "scene.history.cell.transaction_received" = "Payment received";
 "scene.history.cell.label.new" = "new";
 "scene.history.cell.label.error" = "error";
-"scene.history.cell.action.try_again" = "Try Again";
 
 "scene.node_uri.title" = "Připojit k uzlu";
 "scene.node_uri.alias_label" = "Alias";
