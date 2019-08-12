@@ -247,20 +247,18 @@
 
 "scene.history.cell.payment_sent" = "Zahlung gesendet";
 "scene.history.cell.payment_received" = "Zahlung empfangen";
-"scene.history.cell.payment_failed" = "Zahlung fehlgeschlagen (%@)";
 "scene.history.cell.invoice_created" = "Zahlungs-Anfrage erstellt";
-"scene.history.cell.channel_opened" = "Channel öffnen";
-"scene.history.cell.channel_closed" = "Channel schließen";
-"scene.history.cell.force_close_channel" = "Erzwinge Channel-Schließung";
-"scene.history.cell.remote_force_close_channel" = "Channel-Schließung erzwingen";
-"scene.history.cell.breach_close_channel" = "Unterbrechung, schließe Kanal";
-"scene.history.cell.close_channel_funding_canceled" = "Channel schließen (Finanzierung wird abgebrochen)";
+"scene.history.cell.channel_opened" = "Opened Channel";
+"scene.history.cell.channel_closed" = "Closed Channel";
+"scene.history.cell.force_close_channel" = "Force closed Channel";
+"scene.history.cell.remote_force_close_channel" = "Remote forced close Channel";
+"scene.history.cell.breach_close_channel" = "Breach closed Channel";
+"scene.history.cell.close_channel_funding_canceled" = "Closed Channel (funding canceled)";
 "scene.history.cell.channel_abandoned" = "Channel aufgegeben";
 "scene.history.cell.transaction_sent" = "Zahlung gesendet";
 "scene.history.cell.transaction_received" = "Zahlung empfangen";
 "scene.history.cell.label.new" = "neu";
 "scene.history.cell.label.error" = "Fehler";
-"scene.history.cell.action.try_again" = "Erneut versuchen";
 
 "scene.node_uri.title" = "Remote-Knoten verbinden";
 "scene.node_uri.alias_label" = "Alias";
