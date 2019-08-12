@@ -247,20 +247,18 @@
 
 "scene.history.cell.payment_sent" = "Betaling verzonden";
 "scene.history.cell.payment_received" = "Betaling ontvangen";
-"scene.history.cell.payment_failed" = "Betaling mislukt (%@)";
 "scene.history.cell.invoice_created" = "Betalingsverzoek aangemaakt";
-"scene.history.cell.channel_opened" = "Open Channel";
-"scene.history.cell.channel_closed" = "Gesloten Channel";
-"scene.history.cell.force_close_channel" = "Geforceerd gesloten Channel";
-"scene.history.cell.remote_force_close_channel" = "Remote geforceerd sluiten Channel";
-"scene.history.cell.breach_close_channel" = "Geschonden gesloten channel";
-"scene.history.cell.close_channel_funding_canceled" = "Sluit Channel (financiering afgebroken)";
+"scene.history.cell.channel_opened" = "Opened Channel";
+"scene.history.cell.channel_closed" = "Closed Channel";
+"scene.history.cell.force_close_channel" = "Force closed Channel";
+"scene.history.cell.remote_force_close_channel" = "Remote forced close Channel";
+"scene.history.cell.breach_close_channel" = "Breach closed Channel";
+"scene.history.cell.close_channel_funding_canceled" = "Closed Channel (funding canceled)";
 "scene.history.cell.channel_abandoned" = "Channel verlaten";
 "scene.history.cell.transaction_sent" = "Betaling verstuurd";
 "scene.history.cell.transaction_received" = "Betaling ontvangen";
 "scene.history.cell.label.new" = "nieuw";
 "scene.history.cell.label.error" = "fout";
-"scene.history.cell.action.try_again" = "Probeer opnieuw";
 
 "scene.node_uri.title" = "Verbinden met node";
 "scene.node_uri.alias_label" = "Alias";

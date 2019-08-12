@@ -247,20 +247,18 @@
 
 "scene.history.cell.payment_sent" = "Plaćanje poslano";
 "scene.history.cell.payment_received" = "Plaćanje primljeno";
-"scene.history.cell.payment_failed" = "Plaćanje nije uspjelo (%@)";
 "scene.history.cell.invoice_created" = "Zahtjev za plaćanje je stvoren";
-"scene.history.cell.channel_opened" = "Otvori kanal";
-"scene.history.cell.channel_closed" = "Zatvori kanal";
-"scene.history.cell.force_close_channel" = "Prisilno zatvori kanal";
-"scene.history.cell.remote_force_close_channel" = "Udaljeno prisilno zatvori kanal";
-"scene.history.cell.breach_close_channel" = "Zatvori povrijeđeni kanal";
-"scene.history.cell.close_channel_funding_canceled" = "Zatvori kanal (financiranje otkazano)";
+"scene.history.cell.channel_opened" = "Opened Channel";
+"scene.history.cell.channel_closed" = "Closed Channel";
+"scene.history.cell.force_close_channel" = "Force closed Channel";
+"scene.history.cell.remote_force_close_channel" = "Remote forced close Channel";
+"scene.history.cell.breach_close_channel" = "Breach closed Channel";
+"scene.history.cell.close_channel_funding_canceled" = "Closed Channel (funding canceled)";
 "scene.history.cell.channel_abandoned" = "Kanal je napušten";
 "scene.history.cell.transaction_sent" = "Plaćanje poslano";
 "scene.history.cell.transaction_received" = "Plaćanje primljeno";
 "scene.history.cell.label.new" = "novo";
 "scene.history.cell.label.error" = "pogreška";
-"scene.history.cell.action.try_again" = "Pokušaj ponovo";
 
 "scene.node_uri.title" = "Povezivanje na čvor";
 "scene.node_uri.alias_label" = "Nadimak";

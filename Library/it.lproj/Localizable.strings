@@ -247,20 +247,18 @@
 
 "scene.history.cell.payment_sent" = "Pagamento inviato";
 "scene.history.cell.payment_received" = "Pagamento ricevuto";
-"scene.history.cell.payment_failed" = "Pagamento non riuscito (%@)";
 "scene.history.cell.invoice_created" = "Richiesta di pagamento";
-"scene.history.cell.channel_opened" = "Canale aperto";
-"scene.history.cell.channel_closed" = "Canale chiuso";
-"scene.history.cell.force_close_channel" = "Canale chiuso forzatamente";
-"scene.history.cell.remote_force_close_channel" = "Canale chiuso forzatamente dalla controparte";
-"scene.history.cell.breach_close_channel" = "Canale chiuso per violazione";
-"scene.history.cell.close_channel_funding_canceled" = "Canale Chiuso (Finanziamento annullato)";
+"scene.history.cell.channel_opened" = "Opened Channel";
+"scene.history.cell.channel_closed" = "Closed Channel";
+"scene.history.cell.force_close_channel" = "Force closed Channel";
+"scene.history.cell.remote_force_close_channel" = "Remote forced close Channel";
+"scene.history.cell.breach_close_channel" = "Breach closed Channel";
+"scene.history.cell.close_channel_funding_canceled" = "Closed Channel (funding canceled)";
 "scene.history.cell.channel_abandoned" = "Canale abbandonato";
 "scene.history.cell.transaction_sent" = "Pagamento inviato";
 "scene.history.cell.transaction_received" = "Pagamento ricevuto";
 "scene.history.cell.label.new" = "nuovo";
 "scene.history.cell.label.error" = "errore";
-"scene.history.cell.action.try_again" = "Prova di nuovo";
 
 "scene.node_uri.title" = "Connetti al nodo";
 "scene.node_uri.alias_label" = "Alias";
