@@ -12,9 +12,9 @@ final class OnboardingContainerViewController: UIViewController {
     @IBOutlet private weak var actionButton: UIButton!
 
     private lazy var pages: [UIViewController] = { [
-        OnboardingTextViewController.instantiate(title: L10n.Scene.Onboarding.Page1.title, message: L10n.Scene.Onboarding.Page1.message, image: Emoji.image(emoji: "🤴"), buttonTitle: L10n.Scene.Onboarding.Page1.buttonTitle),
-        OnboardingTextViewController.instantiate(title: L10n.Scene.Onboarding.Page2.title, message: L10n.Scene.Onboarding.Page2.message, image: Emoji.image(emoji: "✍️"), buttonTitle: L10n.Scene.Onboarding.Page2.buttonTitle),
-        OnboardingTextViewController.instantiate(title: L10n.Scene.Onboarding.Page3.title, message: L10n.Scene.Onboarding.Page3.message, image: Emoji.image(emoji: "🗝"), buttonTitle: L10n.Scene.Onboarding.Page3.buttonTitle)
+        OnboardingTextViewController.instantiate(title: L10n.Scene.Onboarding.Page1.title, message: L10n.Scene.Onboarding.Page1.message, image: Asset.onboarding01.image, buttonTitle: L10n.Scene.Onboarding.Page1.buttonTitle),
+        OnboardingTextViewController.instantiate(title: L10n.Scene.Onboarding.Page2.title, message: L10n.Scene.Onboarding.Page2.message, image: Asset.onboarding02.image, buttonTitle: L10n.Scene.Onboarding.Page2.buttonTitle),
+        OnboardingTextViewController.instantiate(title: L10n.Scene.Onboarding.Page3.title, message: L10n.Scene.Onboarding.Page3.message, image: Asset.onboarding03.image, buttonTitle: L10n.Scene.Onboarding.Page3.buttonTitle)
     ] }()
 
     private var completion: (() -> Void)?
