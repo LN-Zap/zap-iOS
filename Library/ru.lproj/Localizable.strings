@@ -247,20 +247,18 @@
 
 "scene.history.cell.payment_sent" = "Перевод отправлен";
 "scene.history.cell.payment_received" = "Перевод получен";
-"scene.history.cell.payment_failed" = "Перевод не прошел (%@)";
 "scene.history.cell.invoice_created" = "Создан запрос на оплату";
-"scene.history.cell.channel_opened" = "Открыть Канал";
-"scene.history.cell.channel_closed" = "Закрыть Канал";
-"scene.history.cell.force_close_channel" = "Принудительное закрытие Канала";
-"scene.history.cell.remote_force_close_channel" = "Удаленное принудительноу закрытие Канала";
-"scene.history.cell.breach_close_channel" = "Принудительное Закрытие Канала";
-"scene.history.cell.close_channel_funding_canceled" = "Закрыть канал (пополнение отменено)";
+"scene.history.cell.channel_opened" = "Opened Channel";
+"scene.history.cell.channel_closed" = "Closed Channel";
+"scene.history.cell.force_close_channel" = "Force closed Channel";
+"scene.history.cell.remote_force_close_channel" = "Remote forced close Channel";
+"scene.history.cell.breach_close_channel" = "Breach closed Channel";
+"scene.history.cell.close_channel_funding_canceled" = "Closed Channel (funding canceled)";
 "scene.history.cell.channel_abandoned" = "Канал заброшен";
 "scene.history.cell.transaction_sent" = "Перевод отправлен";
 "scene.history.cell.transaction_received" = "Перевод получен";
 "scene.history.cell.label.new" = "создать";
 "scene.history.cell.label.error" = "ошибка";
-"scene.history.cell.action.try_again" = "Попробуйте Снова";
 
 "scene.node_uri.title" = "Подключениие к Узлу";
 "scene.node_uri.alias_label" = "Метка";
