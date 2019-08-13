@@ -11,11 +11,26 @@ final class OnboardingContainerViewController: UIViewController {
     @IBOutlet private weak var pageControl: UIPageControl!
     @IBOutlet private weak var actionButton: UIButton!
 
-    private lazy var pages: [UIViewController] = { [
-        OnboardingTextViewController.instantiate(title: L10n.Scene.Onboarding.Page1.title, message: L10n.Scene.Onboarding.Page1.message, image: Asset.onboarding01.image, buttonTitle: L10n.Scene.Onboarding.Page1.buttonTitle),
-        OnboardingTextViewController.instantiate(title: L10n.Scene.Onboarding.Page2.title, message: L10n.Scene.Onboarding.Page2.message, image: Asset.onboarding02.image, buttonTitle: L10n.Scene.Onboarding.Page2.buttonTitle),
-        OnboardingTextViewController.instantiate(title: L10n.Scene.Onboarding.Page3.title, message: L10n.Scene.Onboarding.Page3.message, image: Asset.onboarding03.image, buttonTitle: L10n.Scene.Onboarding.Page3.buttonTitle)
-    ] }()
+    private lazy var pages: [UIViewController] = {
+        [
+            OnboardingTextViewController.instantiate(title: L10n.Scene.Onboarding.Page1.title, message: L10n.Scene.Onboarding.Page1.message, imageLayer: [
+                Asset.onboarding01Layer01.image,
+                Asset.onboarding01Layer02.image,
+                Asset.onboarding01Layer03.image
+            ], buttonTitle: L10n.Scene.Onboarding.Page1.buttonTitle),
+            OnboardingTextViewController.instantiate(title: L10n.Scene.Onboarding.Page2.title, message: L10n.Scene.Onboarding.Page2.message, imageLayer: [
+                Asset.onboarding02Layer01.image,
+                Asset.onboarding02Layer02.image,
+                Asset.onboarding02Layer03.image,
+                Asset.onboarding02Layer04.image
+            ], buttonTitle: L10n.Scene.Onboarding.Page2.buttonTitle),
+            OnboardingTextViewController.instantiate(title: L10n.Scene.Onboarding.Page3.title, message: L10n.Scene.Onboarding.Page3.message, imageLayer: [
+                Asset.onboarding03Layer01.image,
+                Asset.onboarding03Layer02.image,
+                Asset.onboarding03Layer03.image
+            ], buttonTitle: L10n.Scene.Onboarding.Page3.buttonTitle)
+        ]
+    }()
 
     private var completion: (() -> Void)?
 

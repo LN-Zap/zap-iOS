@@ -11,19 +11,23 @@ class OnboardingTextViewController: UIViewController {
     @IBOutlet private weak var titleLabel: UILabel!
     @IBOutlet private weak var messageLabel: UILabel!
     @IBOutlet private weak var separatorView: UIView!
-    @IBOutlet private weak var imageView: UIImageView!
+    @IBOutlet private weak var imageContainer: UIView!
 
-    private var titleText: String! // swiftlint:disable:this implicitly_unwrapped_optional
-    private var messageText: String?
-    private var image: UIImage?
-    public private(set) var buttonTitle: String?
+    // swiftlint:disable implicitly_unwrapped_optional
+    private var titleText: String!
+    private var messageText: String!
+    private var imageLayer: [UIImage]!
+    public private(set) var buttonTitle: String!
+    // swiftlint:enable implicitly_unwrapped_optional
 
-    static func instantiate(title: String, message: String, image: UIImage?, buttonTitle: String) -> OnboardingTextViewController {
+    var imageViews: [UIImageView]?
+
+    static func instantiate(title: String, message: String, imageLayer: [UIImage], buttonTitle: String) -> OnboardingTextViewController {
         let viewController = StoryboardScene.Onboarding.onboardingTextViewController.instantiate()
 
         viewController.titleText = title
         viewController.messageText = message
-        viewController.image = image
+        viewController.imageLayer = imageLayer
         viewController.buttonTitle = buttonTitle
 
         return viewController
@@ -46,8 +50,38 @@ class OnboardingTextViewController: UIViewController {
 
         titleLabel.setMarkdown(titleText, fontSize: fontSize, weight: .light, boldWeight: .medium)
         messageLabel.text = messageText
-        imageView.image = image
+
+        let imageViews = imageLayer.map { (image: UIImage) -> UIImageView in
+            let imageView = UIImageView(image: image)
+            imageView.contentMode = .scaleAspectFit
+            return imageView
+        }
+        self.imageViews = imageViews
+
+        for imageView in imageViews {
+            imageContainer.addAutolayoutSubview(imageView)
+
+            imageView.constrainCenter(to: imageContainer)
+            NSLayoutConstraint.activate([
+                imageView.leadingAnchor.constraint(greaterThanOrEqualTo: imageContainer.leadingAnchor, constant: 20),
+                imageView.topAnchor.constraint(greaterThanOrEqualTo: imageContainer.topAnchor, constant: 20)
+            ])
+        }
 
         messageLabel.textColor = UIColor.Zap.gray
+    }
+
+    func updatePageOffset(offset: CGFloat) {
+        guard let imageViews = imageViews else { return }
+        for (index, imageView) in imageViews.enumerated() {
+            let normalizedIndex: CGFloat
+            if index == 3 { // this is a super lazy hack. the image with the onboarding is the only one with 4 layers, and the top layer should stick to the bottom layer 🤷🏻‍♂️
+                normalizedIndex = 0
+            } else {
+                normalizedIndex = CGFloat(index) / min(CGFloat(imageViews.count), 3)
+            }
+            imageView.transform = CGAffineTransform(translationX: normalizedIndex * offset * -200, y: 0)
+
+        }
     }
 }
