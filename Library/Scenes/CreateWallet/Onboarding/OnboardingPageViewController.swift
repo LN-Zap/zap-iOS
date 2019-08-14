@@ -15,6 +15,8 @@ protocol OnboardingPageViewControllerDelegate: class {
 }
 
 final class OnboardingPageViewController: UIPageViewController {
+    private var paralaxStartOffset: CGFloat?
+    private var paralaxStartViewController: OnboardingTextViewController?
 
     weak var containerDelegate: OnboardingPageViewControllerDelegate?
 
@@ -30,6 +32,13 @@ final class OnboardingPageViewController: UIPageViewController {
 
         if let firstViewController = pages.first {
             setViewControllers([firstViewController], direction: .forward, animated: true, completion: nil)
+        }
+
+        for view in self.view.subviews {
+            if let view = view as? UIScrollView {
+                view.delegate = self
+                break
+            }
         }
 
         updatePageIndex()
@@ -50,6 +59,10 @@ final class OnboardingPageViewController: UIPageViewController {
             containerDelegate?.tutorialPageViewController(self, didUpdateButtonTitle: buttonTitle)
         }
 
+        if let currentViewController = currentViewController as? OnboardingTextViewController {
+            paralaxStartViewController = currentViewController
+        }
+
         return true
     }
 }
@@ -57,6 +70,7 @@ final class OnboardingPageViewController: UIPageViewController {
 extension OnboardingPageViewController: UIPageViewControllerDelegate {
     func pageViewController(_ pageViewController: UIPageViewController, didFinishAnimating finished: Bool, previousViewControllers: [UIViewController], transitionCompleted completed: Bool) {
         updatePageIndex()
+        paralaxStartViewController = nil
     }
 
     private func updatePageIndex() {
@@ -104,5 +118,47 @@ extension OnboardingPageViewController: UIPageViewControllerDataSource {
         }
 
         return pages[nextIndex]
+    }
+}
+
+extension OnboardingPageViewController: UIScrollViewDelegate {
+    func scrollViewWillBeginDragging(_ scrollView: UIScrollView) {
+        paralaxStartOffset = scrollView.contentOffset.x
+        if let currentViewController = viewControllers?.first as? OnboardingTextViewController {
+            paralaxStartViewController = currentViewController
+        }
+    }
+
+    public func scrollViewDidScroll(_ scrollView: UIScrollView) {
+        guard let paralaxStartViewController = self.paralaxStartViewController else { return }
+
+        let startOffset: CGFloat
+        if let cachedOffset = self.paralaxStartOffset {
+            startOffset = cachedOffset
+        } else {
+            startOffset = scrollView.contentOffset.x
+            self.paralaxStartOffset = startOffset
+        }
+
+        let direction: Int
+        if startOffset < scrollView.contentOffset.x {
+            direction = 1
+        } else if startOffset > scrollView.contentOffset.x {
+            direction = -1
+        } else {
+            direction = 0
+        }
+
+        let positionFromStartOfCurrentPage = abs(startOffset - scrollView.contentOffset.x)
+        let percent = positionFromStartOfCurrentPage / self.view.frame.width
+
+        paralaxStartViewController.updatePageOffset(offset: percent * CGFloat(direction))
+
+        if let currentIndex = pages.firstIndex(of: paralaxStartViewController),
+            case let nextIndex = currentIndex + direction,
+            nextIndex >= 0 && nextIndex < pages.count,
+            let nextViewController = pages[nextIndex] as? OnboardingTextViewController {
+            nextViewController.updatePageOffset(offset: (1 - percent) * CGFloat(direction) * -1)
+        }
     }
 }

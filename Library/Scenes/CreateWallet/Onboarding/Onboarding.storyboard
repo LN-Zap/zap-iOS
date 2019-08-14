@@ -123,18 +123,7 @@
                             </stackView>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="jAZ-Rp-O5f">
                                 <rect key="frame" x="0.0" y="44" width="414" height="718.5"/>
-                                <subviews>
-                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="750" verticalHuggingPriority="750" placeholderIntrinsicWidth="240" placeholderIntrinsicHeight="240" translatesAutoresizingMaskIntoConstraints="NO" id="O70-Ls-zUX">
-                                        <rect key="frame" x="87" y="239.5" width="240" height="240"/>
-                                    </imageView>
-                                </subviews>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <constraints>
-                                    <constraint firstItem="O70-Ls-zUX" firstAttribute="centerX" secondItem="jAZ-Rp-O5f" secondAttribute="centerX" id="BMr-p7-Ta2"/>
-                                    <constraint firstItem="O70-Ls-zUX" firstAttribute="centerY" secondItem="jAZ-Rp-O5f" secondAttribute="centerY" id="Hi9-eQ-boB"/>
-                                    <constraint firstAttribute="bottom" relation="greaterThanOrEqual" secondItem="O70-Ls-zUX" secondAttribute="bottom" constant="20" id="Jky-3C-qCT"/>
-                                    <constraint firstItem="O70-Ls-zUX" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="jAZ-Rp-O5f" secondAttribute="leading" constant="20" id="jKc-EM-yU3"/>
-                                </constraints>
                             </view>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -151,7 +140,7 @@
                     </view>
                     <connections>
                         <outlet property="actionButton" destination="HQ5-7s-v6B" id="Q4a-SI-o55"/>
-                        <outlet property="imageView" destination="O70-Ls-zUX" id="aiq-h7-Nhn"/>
+                        <outlet property="imageContainer" destination="jAZ-Rp-O5f" id="fKW-CJ-ezx"/>
                         <outlet property="messageLabel" destination="J9W-fh-zc6" id="zDZ-9I-LaE"/>
                         <outlet property="separatorView" destination="kq3-uy-44g" id="GyX-Lk-yVf"/>
                         <outlet property="titleLabel" destination="G4E-cb-ute" id="dm5-0b-Tfw"/>
