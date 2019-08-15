@@ -26,7 +26,7 @@ lane :switch_mainnet do
   update_app_icon(image: 'logo_white.png')
 end
 
-lane :mainnet do
+lane :mainnet do |options|
   pre_upload
   check_release_branch('release/mainnet')
   switch_mainnet
@@ -37,12 +37,16 @@ lane :mainnet do
     "com.jackmallers.zap.mainnet.Widget",
   ]
 
-  increment_build_number(build_number:
-    latest_testflight_build_number(
+  if options[:build_number]
+    build_number = options[:build_number]
+  else
+    build_number = latest_testflight_build_number(
       app_identifier: "com.jackmallers.zap.mainnet",
       initial_build_number: 0
     ) + 1
-  )
+  end
+
+  increment_build_number(build_number: build_number)
 
   sync_code_signing(
     username: ENV['ITUNESCONNECT_USER'],
@@ -226,3 +230,4 @@ lane :upload_metadata do
     skip_screenshots: true
   )
 end
+
