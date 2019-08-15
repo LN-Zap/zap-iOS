@@ -50,7 +50,7 @@ final class EventDetailViewModel {
 
         result.append(contentsOf: headline(L10n.Scene.TransactionDetail.Title.lightningInvoice))
 
-        if !event.isExpired,
+        if !event.isExpired && event.state != .settled && event.state != .canceled,
             let qrCodeImage = UIImage.qrCode(from: event.paymentRequest) {
             let imageContainerView = UIView()
             let callbackButton = CallbackButton(title: nil, type: .custom) { _ in
