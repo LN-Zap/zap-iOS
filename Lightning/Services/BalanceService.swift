@@ -24,12 +24,12 @@ public final class BalanceService {
     public let totalPending: Signal<Satoshi, Never>
 
     // sum of funds stuck in force closing channels, set from `ChannelListUpdater`
-    public let lightningLimbo = Observable<Satoshi>(0)
+    public let forceCloseLimboBalance = Observable<Satoshi>(0)
 
     init(api: LightningApi) {
         self.api = api
 
-        totalPending = combineLatest(onChainUnconfirmed, lightningPendingOpenBalance, lightningLimbo) { $0 + $1 + $2 }
+        totalPending = combineLatest(onChainUnconfirmed, lightningPendingOpenBalance, forceCloseLimboBalance) { $0 + $1 + $2 }
     }
 
     func update() {

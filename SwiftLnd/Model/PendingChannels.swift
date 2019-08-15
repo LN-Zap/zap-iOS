@@ -9,13 +9,13 @@ import Foundation
 import SwiftBTC
 
 public struct PendingChannels {
-    public let totalLimboBalance: Satoshi
+    public let forceCloseLimboBalance: Satoshi
     public let channels: [Channel]
 }
 
 extension PendingChannels {
     init(pendingChannels: Lnrpc_PendingChannelsResponse) {
-        totalLimboBalance = Satoshi(pendingChannels.totalLimboBalance)
+        forceCloseLimboBalance = Satoshi(pendingChannels.pendingForceClosingChannels.reduce(0, { $0 + $1.limboBalance }))
 
         let pendingOpenChannels: [Channel] = pendingChannels.pendingOpenChannels.compactMap { $0.channelModel }
         let pendingClosingChannels: [Channel] = pendingChannels.pendingClosingChannels.compactMap { $0.channelModel }

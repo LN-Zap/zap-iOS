@@ -203,7 +203,7 @@ extension PendingChannels: CustomDebugStringConvertible {
 	public var debugDescription: String {
 		return """
 		PendingChannels:
-		\ttotalLimboBalance: \(totalLimboBalance)
+		\tforceCloseLimboBalance: \(forceCloseLimboBalance)
 		\tchannels: \(channels)\n
 		"""
 	}
