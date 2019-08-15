@@ -82,6 +82,7 @@ class QRCodeScannerViewController: UIViewController {
     func tryPresentingViewController(for address: String) {
         strategy.viewControllerForAddress(address: address) { [weak self] result in
             DispatchQueue.main.async {
+                self?.pasteButton.isEnabled = true
                 switch result {
                 case .success(let viewController):
                     self?.presentViewController(viewController)
@@ -102,6 +103,7 @@ class QRCodeScannerViewController: UIViewController {
     }
 
     @objc private func pasteButtonTapped(_ sender: Any) {
+        pasteButton.isEnabled = false
         if let string = UIPasteboard.general.string {
             tryPresentingViewController(for: string)
         } else {
