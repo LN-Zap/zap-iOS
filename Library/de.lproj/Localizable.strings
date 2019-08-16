@@ -93,9 +93,9 @@
 "scene.channels.alert.force_close" = "Channel-Schließung erzwingen";
 "scene.channels.close_loading_view" = "Kanal schließen";
 "scene.channels.close_success.toast" = "Channel wird geschlossen.";
-"scene.channels.empty_state.title" = "Open Channel";
-"scene.channels.empty_state.message" = "You don't have any channels yet. Let's open a channel.";
-"scene.channels.empty_state.button_title" = "Open Channel";
+"scene.channels.empty_state.title" = "Zahlungskanal öffnen";
+"scene.channels.empty_state.message" = "Du hast bisher noch keine Kanäle. Öffne jetzt einen Kanal.";
+"scene.channels.empty_state.button_title" = "Zahlungskanal öffnen";
 
 "scene.open_channel.title" = "Channel öffnen";
 "scene.open_channel.channel_uri_label" = "Knoten:";
@@ -235,8 +235,8 @@
 "scene.wallet.detail.on_chain" = "On-Chain:";
 "scene.wallet.detail.lightning" = "Lightning:";
 "scene.wallet.detail.pending" = "Ausstehend:";
-"scene.wallet.empty_state.title" = "Fund your wallet";
-"scene.wallet.empty_state.message" = "Your wallet is empty. Get started by adding some funds.";
+"scene.wallet.empty_state.title" = "Lade deine Wallet auf";
+"scene.wallet.empty_state.message" = "Deine Wallet ist leer. Jetzt starten und Geld hinzufügen.";
 "scene.wallet.empty_state.button_title" = "Fund Wallet";
 
 "scene.time_lock.headline" = "Falscher PIN";
@@ -248,12 +248,12 @@
 "scene.history.cell.payment_sent" = "Zahlung gesendet";
 "scene.history.cell.payment_received" = "Zahlung empfangen";
 "scene.history.cell.invoice_created" = "Zahlungs-Anfrage erstellt";
-"scene.history.cell.channel_opened" = "Opened Channel";
+"scene.history.cell.channel_opened" = "Zahlungskanal öffnen";
 "scene.history.cell.channel_closed" = "Closed Channel";
 "scene.history.cell.force_close_channel" = "Force closed Channel";
 "scene.history.cell.remote_force_close_channel" = "Remote forced close Channel";
 "scene.history.cell.breach_close_channel" = "Breach closed Channel";
-"scene.history.cell.close_channel_funding_canceled" = "Closed Channel (funding canceled)";
+"scene.history.cell.close_channel_funding_canceled" = "Geschlossene Zahlungskanäle (Finanzierung wurde abgebrochen)";
 "scene.history.cell.channel_abandoned" = "Channel aufgegeben";
 "scene.history.cell.transaction_sent" = "Zahlung gesendet";
 "scene.history.cell.transaction_received" = "Zahlung empfangen";
