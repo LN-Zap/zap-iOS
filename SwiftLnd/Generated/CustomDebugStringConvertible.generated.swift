@@ -171,13 +171,13 @@ extension OpenChannel: CustomDebugStringConvertible {
 	public var debugDescription: String {
 		return """
 		OpenChannel:
-		\tblockHeight: \(String(describing: blockHeight))
+		\tblockHeight: \(blockHeight)
 		\tstate: \(state)
 		\tlocalBalance: \(localBalance)
 		\tremoteBalance: \(remoteBalance)
 		\tremotePubKey: \(remotePubKey)
 		\tcapacity: \(capacity)
-		\tupdateCount: \(String(describing: updateCount))
+		\tupdateCount: \(updateCount)
 		\tchannelPoint: \(channelPoint)
 		\tcsvDelay: \(csvDelay)\n
 		"""

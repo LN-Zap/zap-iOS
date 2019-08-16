@@ -42,13 +42,13 @@ public protocol ClosingChannelType {
 // Open Channel
 
 public struct OpenChannel: Channel, Equatable {
-    public let blockHeight: Int?
+    public let blockHeight: Int
     public let state: ChannelState
     public let localBalance: Satoshi
     public let remoteBalance: Satoshi
     public let remotePubKey: String
     public let capacity: Satoshi
-    public let updateCount: Int?
+    public let updateCount: Int
     public let channelPoint: ChannelPoint
     public let csvDelay: Int
 }
