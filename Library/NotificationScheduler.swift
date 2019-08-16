@@ -51,9 +51,7 @@ final class NotificationScheduler: NSObject {
 
     func listenToChannelUpdates(lightningService: LightningService) {
         guard lightningService.connection == .local else { return }
-        combineLatest(lightningService.channelService.open,
-                      lightningService.channelService.pending,
-                      lightningService.infoService.bestHeaderDate) { ($0.collection + $1.collection, $2) }
+        combineLatest(lightningService.channelService.open, lightningService.infoService.bestHeaderDate) { ($0.collection, $1) }
             .debounce(interval: 2)
             .observeNext { [weak self] in
                 self?.schedule(for: $0.0, bestHeaderDate: $0.1)
@@ -61,7 +59,7 @@ final class NotificationScheduler: NSObject {
             .dispose(in: reactive.bag)
     }
 
-    private func schedule(for channels: [Channel], bestHeaderDate: Date?) {
+    private func schedule(for channels: [OpenChannel], bestHeaderDate: Date?) {
         guard let bestHeaderDate = bestHeaderDate else { return }
 
         let notificationCenter = UNUserNotificationCenter.current()

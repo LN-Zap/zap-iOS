@@ -50,6 +50,22 @@ extension ChannelPoint: CustomDebugStringConvertible {
 	}
 }
 
+// MARK: ClosingChannel CustomDebugStringConvertible
+extension ClosingChannel: CustomDebugStringConvertible {
+	public var debugDescription: String {
+		return """
+		ClosingChannel:
+		\tstate: \(state)
+		\tlocalBalance: \(localBalance)
+		\tremoteBalance: \(remoteBalance)
+		\tremotePubKey: \(remotePubKey)
+		\tcapacity: \(capacity)
+		\tchannelPoint: \(channelPoint)
+		\tclosingTxid: \(String(describing: closingTxid))\n
+		"""
+	}
+}
+
 // MARK: FeeEstimate CustomDebugStringConvertible
 extension FeeEstimate: CustomDebugStringConvertible {
 	public var debugDescription: String {
@@ -57,6 +73,23 @@ extension FeeEstimate: CustomDebugStringConvertible {
 		FeeEstimate:
 		\ttotal: \(total)
 		\tperByte: \(perByte)\n
+		"""
+	}
+}
+
+// MARK: ForceClosingChannel CustomDebugStringConvertible
+extension ForceClosingChannel: CustomDebugStringConvertible {
+	public var debugDescription: String {
+		return """
+		ForceClosingChannel:
+		\tstate: \(state)
+		\tlocalBalance: \(localBalance)
+		\tremoteBalance: \(remoteBalance)
+		\tremotePubKey: \(remotePubKey)
+		\tcapacity: \(capacity)
+		\tchannelPoint: \(channelPoint)
+		\tclosingTxid: \(String(describing: closingTxid))
+		\tblocksTilMaturity: \(blocksTilMaturity)\n
 		"""
 	}
 }
@@ -146,8 +179,22 @@ extension OpenChannel: CustomDebugStringConvertible {
 		\tcapacity: \(capacity)
 		\tupdateCount: \(String(describing: updateCount))
 		\tchannelPoint: \(channelPoint)
-		\tclosingTxid: \(String(describing: closingTxid))
 		\tcsvDelay: \(csvDelay)\n
+		"""
+	}
+}
+
+// MARK: OpeningChannel CustomDebugStringConvertible
+extension OpeningChannel: CustomDebugStringConvertible {
+	public var debugDescription: String {
+		return """
+		OpeningChannel:
+		\tstate: \(state)
+		\tlocalBalance: \(localBalance)
+		\tremoteBalance: \(remoteBalance)
+		\tremotePubKey: \(remotePubKey)
+		\tcapacity: \(capacity)
+		\tchannelPoint: \(channelPoint)\n
 		"""
 	}
 }
@@ -194,23 +241,6 @@ extension Peer: CustomDebugStringConvertible {
 		Peer:
 		\tpubKey: \(pubKey)
 		\thost: \(host)\n
-		"""
-	}
-}
-
-// MARK: PendingChannel CustomDebugStringConvertible
-extension PendingChannel: CustomDebugStringConvertible {
-	public var debugDescription: String {
-		return """
-		PendingChannel:
-		\tstate: \(state)
-		\tlocalBalance: \(localBalance)
-		\tremoteBalance: \(remoteBalance)
-		\tremotePubKey: \(remotePubKey)
-		\tcapacity: \(capacity)
-		\tchannelPoint: \(channelPoint)
-		\tclosingTxid: \(String(describing: closingTxid))
-		\tcsvDelay: \(csvDelay)\n
 		"""
 	}
 }
@@ -279,6 +309,21 @@ extension Version.Number: CustomDebugStringConvertible {
 		return """
 		Version.Number:
 		\tcomponents: \(components)\n
+		"""
+	}
+}
+
+// MARK: WaitingCloseChannel CustomDebugStringConvertible
+extension WaitingCloseChannel: CustomDebugStringConvertible {
+	public var debugDescription: String {
+		return """
+		WaitingCloseChannel:
+		\tstate: \(state)
+		\tlocalBalance: \(localBalance)
+		\tremoteBalance: \(remoteBalance)
+		\tremotePubKey: \(remotePubKey)
+		\tcapacity: \(capacity)
+		\tchannelPoint: \(channelPoint)\n
 		"""
 	}
 }

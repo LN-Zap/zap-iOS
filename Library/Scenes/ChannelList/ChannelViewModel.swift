@@ -21,20 +21,8 @@ final class ChannelViewModel {
 
     let channelPoint: ChannelPoint
     let remotePubKey: String
-    let csvDelay: Int
 
     let closingTxid: Observable<String?>
-
-    var csvDelayTimeString: String {
-        let formatter = DateComponentsFormatter()
-        formatter.allowedUnits =  [.year, .month, .day, .hour, .minute]
-        formatter.unitsStyle = .full
-        formatter.maximumUnitCount = 2
-
-        let blockTime: TimeInterval = 10 * 60
-
-        return formatter.string(from: TimeInterval(channel.csvDelay) * blockTime) ?? ""
-    }
 
     init(channel: Channel, channelService: ChannelService) {
         self.channel = channel
@@ -51,11 +39,17 @@ final class ChannelViewModel {
 
         remotePubKey = channel.remotePubKey
         channelPoint = channel.channelPoint
-        csvDelay = channel.csvDelay
 
         localBalance = Observable(channel.localBalance)
         remoteBalance = Observable(channel.remoteBalance)
-        closingTxid = Observable(channel.closingTxid)
+
+        if let channel = channel as? ClosingChannel {
+            closingTxid = Observable(channel.closingTxid)
+        } else if let channel = channel as? ForceClosingChannel {
+            closingTxid = Observable(channel.closingTxid)
+        } else {
+            closingTxid = Observable(nil)
+        }
     }
 
     func update(channel: Channel) {

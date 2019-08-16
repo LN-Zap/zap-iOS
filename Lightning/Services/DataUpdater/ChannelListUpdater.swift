@@ -15,8 +15,8 @@ final class ChannelListUpdater: NSObject, ListUpdater {
     private let api: LightningApi
     private let balanceService: BalanceService
 
-    let open = MutableObservableArray<Channel>()
-    let pending = MutableObservableArray<Channel>()
+    let open = MutableObservableArray<OpenChannel>()
+    let pending = MutableObservableArray<PendingChannel>()
 
     let all = MutableObservableArray<Channel>()
 
@@ -33,7 +33,7 @@ final class ChannelListUpdater: NSObject, ListUpdater {
             self?.update()
         }
 
-        combineLatest(open, pending) { $0.collection + $1.collection }
+        combineLatest(open, pending) { $0.collection as [Channel] + $1.collection as [Channel] }
 //            .distinctUntilChanged()
             .observeNext { [weak self] in self?.all.replace(with: $0) }
             .dispose(in: reactive.bag)
