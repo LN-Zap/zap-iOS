@@ -34,8 +34,8 @@ final class ChannelListUpdater: NSObject, ListUpdater {
         }
 
         combineLatest(open, pending) { $0.collection + $1.collection }
-            .distinctUntilChanged()
-            .observeNext { [weak self] in self?.all.replace(with: $0, performDiff: true) }
+//            .distinctUntilChanged()
+            .observeNext { [weak self] in self?.all.replace(with: $0) }
             .dispose(in: reactive.bag)
     }
 

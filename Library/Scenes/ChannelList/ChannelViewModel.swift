@@ -14,7 +14,7 @@ import SwiftLnd
 final class ChannelViewModel {
     let channel: Channel
 
-    let state: Observable<Channel.State>
+    let state: Observable<ChannelState>
     let name: Observable<String>
     let localBalance: Observable<Satoshi>
     let remoteBalance: Observable<Satoshi>

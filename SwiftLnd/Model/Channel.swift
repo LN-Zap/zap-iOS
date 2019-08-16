@@ -8,27 +8,40 @@
 import Foundation
 import SwiftBTC
 
-public struct Channel: Equatable {
-    public enum State {
-        case active
-        case inactive
-        case opening
-        case closing
-        case forceClosing
-        case waitingClose
+public enum ChannelState {
+    case active
+    case inactive
+    case opening
+    case closing
+    case forceClosing
+    case waitingClose
 
-        public var isClosing: Bool {
-            switch self {
-            case .closing, .forceClosing, .waitingClose:
-                return true
-            default:
-                return false
-            }
+    public var isClosing: Bool {
+        switch self {
+        case .closing, .forceClosing, .waitingClose:
+            return true
+        default:
+            return false
         }
     }
+}
 
+public protocol Channel {
+    var blockHeight: Int? { get }
+    var state: ChannelState { get }
+    var localBalance: Satoshi { get }
+    var remoteBalance: Satoshi { get }
+    var remotePubKey: String { get }
+    var capacity: Satoshi { get }
+    var updateCount: Int? { get }
+    var channelPoint: ChannelPoint { get }
+    var closingTxid: String? { get }
+    var csvDelay: Int { get }
+}
+
+public struct OpenChannel: Channel, Equatable {
     public let blockHeight: Int?
-    public let state: State
+    public let state: ChannelState
     public let localBalance: Satoshi
     public let remoteBalance: Satoshi
     public let remotePubKey: String
@@ -41,7 +54,7 @@ public struct Channel: Equatable {
 
 extension Lnrpc_Channel {
     var channelModel: Channel {
-        return Channel(
+        return OpenChannel(
             blockHeight: Int(chanID >> 40),
             state: active ? .active : .inactive,
             localBalance: Satoshi(localBalance),
@@ -55,25 +68,24 @@ extension Lnrpc_Channel {
     }
 }
 
-extension Lnrpc_PendingChannelsResponse.PendingOpenChannel {
-    var channelModel: Channel {
-        return Channel(
-            blockHeight: nil,
-            state: .opening,
-            localBalance: Satoshi(channel.localBalance),
-            remoteBalance: Satoshi(channel.remoteBalance),
-            remotePubKey: channel.remoteNodePub,
-            capacity: Satoshi(channel.capacity),
-            updateCount: 0,
-            channelPoint: ChannelPoint(string: channel.channelPoint),
-            closingTxid: nil,
-            csvDelay: 0)
-    }
+// Pending
+
+public struct PendingChannel: Channel, Equatable {
+    public let blockHeight: Int?
+    public let state: ChannelState
+    public let localBalance: Satoshi
+    public let remoteBalance: Satoshi
+    public let remotePubKey: String
+    public let capacity: Satoshi
+    public let updateCount: Int?
+    public let channelPoint: ChannelPoint
+    public let closingTxid: String?
+    public let csvDelay: Int
 }
 
 extension Lnrpc_PendingChannelsResponse.ClosedChannel {
     var channelModel: Channel {
-        return Channel(
+        return PendingChannel(
             blockHeight: nil,
             state: .closing,
             localBalance: Satoshi(channel.localBalance),
@@ -87,9 +99,25 @@ extension Lnrpc_PendingChannelsResponse.ClosedChannel {
     }
 }
 
+extension Lnrpc_PendingChannelsResponse.PendingOpenChannel {
+    var channelModel: Channel {
+        return PendingChannel(
+            blockHeight: nil,
+            state: .opening,
+            localBalance: Satoshi(channel.localBalance),
+            remoteBalance: Satoshi(channel.remoteBalance),
+            remotePubKey: channel.remoteNodePub,
+            capacity: Satoshi(channel.capacity),
+            updateCount: 0,
+            channelPoint: ChannelPoint(string: channel.channelPoint),
+            closingTxid: nil,
+            csvDelay: 0)
+    }
+}
+
 extension Lnrpc_PendingChannelsResponse.ForceClosedChannel {
     var channelModel: Channel {
-        return Channel(
+        return PendingChannel(
             blockHeight: nil,
             state: .forceClosing,
             localBalance: Satoshi(channel.localBalance),
@@ -105,7 +133,7 @@ extension Lnrpc_PendingChannelsResponse.ForceClosedChannel {
 
 extension Lnrpc_PendingChannelsResponse.WaitingCloseChannel {
     var channelModel: Channel {
-        return Channel(
+        return PendingChannel(
                 blockHeight: nil,
                 state: .waitingClose,
                 localBalance: Satoshi(channel.localBalance),

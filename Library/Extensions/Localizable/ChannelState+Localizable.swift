@@ -8,7 +8,7 @@
 import Foundation
 import SwiftLnd
 
-extension Channel.State: Localizable {
+extension ChannelState: Localizable {
     public var localized: String {
         switch self {
         case .active:

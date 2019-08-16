@@ -55,9 +55,6 @@ final class NotificationScheduler: NSObject {
                       lightningService.channelService.pending,
                       lightningService.infoService.bestHeaderDate) { ($0.collection + $1.collection, $2) }
             .debounce(interval: 2)
-            .distinctUntilChanged({ tuple1, tuple2 -> Bool in
-                tuple1 == tuple2
-            })
             .observeNext { [weak self] in
                 self?.schedule(for: $0.0, bestHeaderDate: $0.1)
             }

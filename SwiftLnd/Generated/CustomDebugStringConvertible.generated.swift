@@ -3,25 +3,6 @@
 
 // swiftlint:disable trailing_newline
 
-// MARK: Channel CustomDebugStringConvertible
-extension Channel: CustomDebugStringConvertible {
-	public var debugDescription: String {
-		return """
-		Channel:
-		\tblockHeight: \(String(describing: blockHeight))
-		\tstate: \(state)
-		\tlocalBalance: \(localBalance)
-		\tremoteBalance: \(remoteBalance)
-		\tremotePubKey: \(remotePubKey)
-		\tcapacity: \(capacity)
-		\tupdateCount: \(String(describing: updateCount))
-		\tchannelPoint: \(channelPoint)
-		\tclosingTxid: \(String(describing: closingTxid))
-		\tcsvDelay: \(csvDelay)\n
-		"""
-	}
-}
-
 // MARK: ChannelBackup CustomDebugStringConvertible
 extension ChannelBackup: CustomDebugStringConvertible {
 	public var debugDescription: String {
@@ -152,6 +133,25 @@ extension NodeInfo: CustomDebugStringConvertible {
 	}
 }
 
+// MARK: OpenChannel CustomDebugStringConvertible
+extension OpenChannel: CustomDebugStringConvertible {
+	public var debugDescription: String {
+		return """
+		OpenChannel:
+		\tblockHeight: \(String(describing: blockHeight))
+		\tstate: \(state)
+		\tlocalBalance: \(localBalance)
+		\tremoteBalance: \(remoteBalance)
+		\tremotePubKey: \(remotePubKey)
+		\tcapacity: \(capacity)
+		\tupdateCount: \(String(describing: updateCount))
+		\tchannelPoint: \(channelPoint)
+		\tclosingTxid: \(String(describing: closingTxid))
+		\tcsvDelay: \(csvDelay)\n
+		"""
+	}
+}
+
 // MARK: Payment CustomDebugStringConvertible
 extension Payment: CustomDebugStringConvertible {
 	public var debugDescription: String {
@@ -194,6 +194,25 @@ extension Peer: CustomDebugStringConvertible {
 		Peer:
 		\tpubKey: \(pubKey)
 		\thost: \(host)\n
+		"""
+	}
+}
+
+// MARK: PendingChannel CustomDebugStringConvertible
+extension PendingChannel: CustomDebugStringConvertible {
+	public var debugDescription: String {
+		return """
+		PendingChannel:
+		\tblockHeight: \(String(describing: blockHeight))
+		\tstate: \(state)
+		\tlocalBalance: \(localBalance)
+		\tremoteBalance: \(remoteBalance)
+		\tremotePubKey: \(remotePubKey)
+		\tcapacity: \(capacity)
+		\tupdateCount: \(String(describing: updateCount))
+		\tchannelPoint: \(channelPoint)
+		\tclosingTxid: \(String(describing: closingTxid))
+		\tcsvDelay: \(csvDelay)\n
 		"""
 	}
 }
