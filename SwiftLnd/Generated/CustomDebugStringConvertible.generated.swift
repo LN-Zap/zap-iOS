@@ -61,7 +61,7 @@ extension ClosingChannel: CustomDebugStringConvertible {
 		\tremotePubKey: \(remotePubKey)
 		\tcapacity: \(capacity)
 		\tchannelPoint: \(channelPoint)
-		\tclosingTxid: \(String(describing: closingTxid))\n
+		\tclosingTxid: \(closingTxid)\n
 		"""
 	}
 }
@@ -88,7 +88,7 @@ extension ForceClosingChannel: CustomDebugStringConvertible {
 		\tremotePubKey: \(remotePubKey)
 		\tcapacity: \(capacity)
 		\tchannelPoint: \(channelPoint)
-		\tclosingTxid: \(String(describing: closingTxid))
+		\tclosingTxid: \(closingTxid)
 		\tblocksTilMaturity: \(blocksTilMaturity)\n
 		"""
 	}

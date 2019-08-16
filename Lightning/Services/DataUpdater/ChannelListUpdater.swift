@@ -16,7 +16,7 @@ final class ChannelListUpdater: NSObject, ListUpdater {
     private let balanceService: BalanceService
 
     let open = MutableObservableArray<OpenChannel>()
-    let pending = MutableObservableArray<PendingChannel>()
+    let pending = MutableObservableArray<Channel>()
 
     let all = MutableObservableArray<Channel>()
 

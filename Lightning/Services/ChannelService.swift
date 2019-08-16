@@ -19,7 +19,7 @@ public final class ChannelService {
         return channelListUpdater.open
     }
 
-    public var pending: MutableObservableArray<PendingChannel> {
+    public var pending: MutableObservableArray<Channel> {
         return channelListUpdater.pending
     }
 
