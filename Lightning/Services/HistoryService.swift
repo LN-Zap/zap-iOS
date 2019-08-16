@@ -47,7 +47,8 @@ public final class HistoryService: NSObject {
                     }
                 let newOpenChannelEvents = channels.collection
                     .compactMap { (channel: Channel) -> DateProvidingEvent? in
-                        ChannelEvent(channel: channel, dateEstimator: dateEstimator)
+                        guard let channel = channel as? OpenChannel else { return nil }
+                        return ChannelEvent(channel: channel, dateEstimator: dateEstimator)
                     }
                 let newOpenChannelEvents2 = closedChannels.collection
                     .compactMap { (channelCloseSummary: ChannelCloseSummary) -> DateProvidingEvent? in

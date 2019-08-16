@@ -47,7 +47,7 @@ public struct ChannelEvent: Equatable, DateProvidingEvent {
 }
 
 extension ChannelEvent {
-    init?(channel: Channel, dateEstimator: DateEstimator) {
+    init?(channel: OpenChannel, dateEstimator: DateEstimator) {
         if
             let blockHeight = channel.blockHeight,
             let date = dateEstimator.estimatedDate(forBlockHeight: blockHeight) {

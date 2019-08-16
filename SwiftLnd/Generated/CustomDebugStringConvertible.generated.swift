@@ -203,7 +203,6 @@ extension PendingChannel: CustomDebugStringConvertible {
 	public var debugDescription: String {
 		return """
 		PendingChannel:
-		\tblockHeight: \(String(describing: blockHeight))
 		\tstate: \(state)
 		\tlocalBalance: \(localBalance)
 		\tremoteBalance: \(remoteBalance)

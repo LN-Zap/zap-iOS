@@ -27,7 +27,6 @@ public enum ChannelState {
 }
 
 public protocol Channel {
-    var blockHeight: Int? { get }
     var state: ChannelState { get }
     var localBalance: Satoshi { get }
     var remoteBalance: Satoshi { get }
@@ -53,7 +52,7 @@ public struct OpenChannel: Channel, Equatable {
 }
 
 extension Lnrpc_Channel {
-    var channelModel: Channel {
+    var channelModel: OpenChannel {
         return OpenChannel(
             blockHeight: Int(chanID >> 40),
             state: active ? .active : .inactive,
@@ -71,7 +70,6 @@ extension Lnrpc_Channel {
 // Pending
 
 public struct PendingChannel: Channel, Equatable {
-    public let blockHeight: Int?
     public let state: ChannelState
     public let localBalance: Satoshi
     public let remoteBalance: Satoshi
@@ -84,9 +82,8 @@ public struct PendingChannel: Channel, Equatable {
 }
 
 extension Lnrpc_PendingChannelsResponse.ClosedChannel {
-    var channelModel: Channel {
+    var channelModel: PendingChannel {
         return PendingChannel(
-            blockHeight: nil,
             state: .closing,
             localBalance: Satoshi(channel.localBalance),
             remoteBalance: Satoshi(channel.remoteBalance),
@@ -100,9 +97,8 @@ extension Lnrpc_PendingChannelsResponse.ClosedChannel {
 }
 
 extension Lnrpc_PendingChannelsResponse.PendingOpenChannel {
-    var channelModel: Channel {
+    var channelModel: PendingChannel {
         return PendingChannel(
-            blockHeight: nil,
             state: .opening,
             localBalance: Satoshi(channel.localBalance),
             remoteBalance: Satoshi(channel.remoteBalance),
@@ -116,9 +112,8 @@ extension Lnrpc_PendingChannelsResponse.PendingOpenChannel {
 }
 
 extension Lnrpc_PendingChannelsResponse.ForceClosedChannel {
-    var channelModel: Channel {
+    var channelModel: PendingChannel {
         return PendingChannel(
-            blockHeight: nil,
             state: .forceClosing,
             localBalance: Satoshi(channel.localBalance),
             remoteBalance: Satoshi(channel.remoteBalance),
@@ -132,9 +127,8 @@ extension Lnrpc_PendingChannelsResponse.ForceClosedChannel {
 }
 
 extension Lnrpc_PendingChannelsResponse.WaitingCloseChannel {
-    var channelModel: Channel {
+    var channelModel: PendingChannel {
         return PendingChannel(
-                blockHeight: nil,
                 state: .waitingClose,
                 localBalance: Satoshi(channel.localBalance),
                 remoteBalance: Satoshi(channel.remoteBalance),
