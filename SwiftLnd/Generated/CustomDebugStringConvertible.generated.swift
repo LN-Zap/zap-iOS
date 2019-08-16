@@ -208,7 +208,6 @@ extension PendingChannel: CustomDebugStringConvertible {
 		\tremoteBalance: \(remoteBalance)
 		\tremotePubKey: \(remotePubKey)
 		\tcapacity: \(capacity)
-		\tupdateCount: \(String(describing: updateCount))
 		\tchannelPoint: \(channelPoint)
 		\tclosingTxid: \(String(describing: closingTxid))
 		\tcsvDelay: \(csvDelay)\n

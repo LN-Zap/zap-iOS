@@ -32,7 +32,6 @@ public protocol Channel {
     var remoteBalance: Satoshi { get }
     var remotePubKey: String { get }
     var capacity: Satoshi { get }
-    var updateCount: Int? { get }
     var channelPoint: ChannelPoint { get }
     var closingTxid: String? { get }
     var csvDelay: Int { get }
@@ -75,7 +74,6 @@ public struct PendingChannel: Channel, Equatable {
     public let remoteBalance: Satoshi
     public let remotePubKey: String
     public let capacity: Satoshi
-    public let updateCount: Int?
     public let channelPoint: ChannelPoint
     public let closingTxid: String?
     public let csvDelay: Int
@@ -89,7 +87,6 @@ extension Lnrpc_PendingChannelsResponse.ClosedChannel {
             remoteBalance: Satoshi(channel.remoteBalance),
             remotePubKey: channel.remoteNodePub,
             capacity: Satoshi(channel.capacity),
-            updateCount: 0,
             channelPoint: ChannelPoint(string: channel.channelPoint),
             closingTxid: closingTxid,
             csvDelay: 0)
@@ -104,7 +101,6 @@ extension Lnrpc_PendingChannelsResponse.PendingOpenChannel {
             remoteBalance: Satoshi(channel.remoteBalance),
             remotePubKey: channel.remoteNodePub,
             capacity: Satoshi(channel.capacity),
-            updateCount: 0,
             channelPoint: ChannelPoint(string: channel.channelPoint),
             closingTxid: nil,
             csvDelay: 0)
@@ -119,7 +115,6 @@ extension Lnrpc_PendingChannelsResponse.ForceClosedChannel {
             remoteBalance: Satoshi(channel.remoteBalance),
             remotePubKey: channel.remoteNodePub,
             capacity: Satoshi(channel.capacity),
-            updateCount: 0,
             channelPoint: ChannelPoint(string: channel.channelPoint),
             closingTxid: closingTxid,
             csvDelay: Int(blocksTilMaturity))
@@ -134,7 +129,6 @@ extension Lnrpc_PendingChannelsResponse.WaitingCloseChannel {
                 remoteBalance: Satoshi(channel.remoteBalance),
                 remotePubKey: channel.remoteNodePub,
                 capacity: Satoshi(channel.capacity),
-                updateCount: 0,
                 channelPoint: ChannelPoint(string: channel.channelPoint),
                 closingTxid: nil,
                 csvDelay: 144)
