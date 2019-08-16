@@ -35,11 +35,13 @@ public protocol Channel {
     var channelPoint: ChannelPoint { get }
 }
 
+public protocol PendingChannel: Channel {}
+
 public protocol ClosingChannelType {
     var closingTxid: String { get }
 }
 
-// Open Channel
+// OpenChannel
 
 public struct OpenChannel: Channel, Equatable {
     public let blockHeight: Int
@@ -69,7 +71,7 @@ extension OpenChannel {
 
 // WaitingCloseChannel
 
-public struct WaitingCloseChannel: Channel, Equatable {
+public struct WaitingCloseChannel: PendingChannel, Equatable {
     public let state: ChannelState
     public let localBalance: Satoshi
     public let remoteBalance: Satoshi
@@ -91,7 +93,7 @@ extension WaitingCloseChannel {
 
 // ClosingChannel
 
-public struct ClosingChannel: Channel, ClosingChannelType, Equatable {
+public struct ClosingChannel: PendingChannel, ClosingChannelType, Equatable {
     public let state: ChannelState
     public let localBalance: Satoshi
     public let remoteBalance: Satoshi
@@ -115,7 +117,7 @@ extension ClosingChannel {
 
 // OpeningChannel
 
-public struct OpeningChannel: Channel, Equatable {
+public struct OpeningChannel: PendingChannel, Equatable {
     public let state: ChannelState
     public let localBalance: Satoshi
     public let remoteBalance: Satoshi
@@ -137,7 +139,7 @@ extension OpeningChannel {
 
 // ForceClosingChannel
 
-public struct ForceClosingChannel: Channel, ClosingChannelType, Equatable {
+public struct ForceClosingChannel: PendingChannel, ClosingChannelType, Equatable {
     public let state: ChannelState
     public let localBalance: Satoshi
     public let remoteBalance: Satoshi
