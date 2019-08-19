@@ -43,9 +43,7 @@ final class ChannelViewModel {
         localBalance = Observable(channel.localBalance)
         remoteBalance = Observable(channel.remoteBalance)
 
-        if let channel = channel as? ClosingChannel {
-            closingTxid = Observable(channel.closingTxid)
-        } else if let channel = channel as? ForceClosingChannel {
+        if let channel = channel as? ClosingChannelType {
             closingTxid = Observable(channel.closingTxid)
         } else {
             closingTxid = Observable(nil)
