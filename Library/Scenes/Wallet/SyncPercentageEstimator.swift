@@ -24,6 +24,7 @@ final class SyncPercentageEstimator {
 
         // filters
         // TODO: hack to make filter sync work with latest buggy lnd HeaderDate
+        // https://github.com/lightningnetwork/lnd/issues/3270
         let filtersToSync = 0 // Int(abs(initialHeaderDate.timeIntervalSinceNow / 10))
         let filtersRemaining = 0 // Int(abs(lndHeaderDate.timeIntervalSinceNow / 10))
         let filtersDone = filtersToSync - filtersRemaining

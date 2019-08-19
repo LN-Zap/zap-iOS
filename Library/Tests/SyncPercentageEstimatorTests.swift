@@ -25,6 +25,7 @@ final class SyncPercentageEstimatorTests: XCTestCase {
     }
 
     // TODO: disabled until lnd fixes lndHeaderDate bug
+    // https://github.com/lightningnetwork/lnd/issues/3270
 //    func testDate50Percent() {
 //        let syncPercentEstimator = SyncPercentageEstimator(initialLndBlockHeight: 100, initialHeaderDate: Date(timeIntervalSinceNow: -60 * 20))
 //        XCTAssertEqual(syncPercentEstimator.percentage(lndBlockHeight: 100, lndHeaderDate: Date(timeIntervalSinceNow: -60 * 10), maxBlockHeight: 100), 0.5)
