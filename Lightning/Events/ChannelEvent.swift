@@ -63,6 +63,21 @@ extension ChannelEvent {
         fee = nil
     }
 
+    init?(pendingChannel: PendingChannel, transaction: Transaction, dateEstimator: DateEstimator) {
+        blockHeight = 0 // TODO
+
+        if let date = dateEstimator.estimatedDate(forBlockHeight: blockHeight) {
+            self.date = date
+        } else {
+            date = Date()
+        }
+
+        txHash = pendingChannel.channelPoint.fundingTxid
+        node = LightningNode(pubKey: pendingChannel.remotePubKey, alias: nil, color: nil)
+        type = .open
+        fee = nil
+    }
+
     init?(closing channelCloseSummary: ChannelCloseSummary, dateEstimator: DateEstimator) {
         guard let date = dateEstimator.estimatedDate(forBlockHeight: channelCloseSummary.closeHeight) else { return nil }
 
