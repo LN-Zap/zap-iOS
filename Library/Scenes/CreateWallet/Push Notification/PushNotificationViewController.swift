@@ -44,9 +44,8 @@ final class PushNotificationViewController: UIViewController {
         case .big:
             fontSize = 40
         }
-        headlineLabel.font = headlineLabel.font.withSize(fontSize)
+        headlineLabel.setMarkdown(L10n.Scene.PushNotification.headline, fontSize: fontSize, weight: .light, boldWeight: .medium)
 
-        headlineLabel.text = L10n.Scene.PushNotification.headline
         messageLabel.text = L10n.Scene.PushNotification.message
         confirmButton.setTitle(L10n.Scene.PushNotification.confirmButtonTitle, for: .normal)
         skipButton.setTitle(L10n.Scene.PushNotification.skipButtonTitle, for: .normal)

@@ -24,7 +24,8 @@ final class InvoiceListUpdater: GenericListUpdater {
             if case .success(let invoice) = $0 {
                 Logger.info("new invoice: \(invoice)")
 
-                if self?.appendOrReplace(invoice) == true && invoice.state == .settled {
+                self?.appendOrReplace(invoice)
+                if invoice.state == .settled {
                     NotificationCenter.default.post(name: .receivedTransaction, object: nil, userInfo: [LightningService.transactionNotificationName: invoice])
                 }
             }

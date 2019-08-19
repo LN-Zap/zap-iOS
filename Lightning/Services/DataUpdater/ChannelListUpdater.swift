@@ -49,7 +49,7 @@ final class ChannelListUpdater: NSObject, ListUpdater {
         api.pendingChannels { [pending, balanceService] in
             if case .success(let pendingChannels) = $0 {
                 pending.replace(with: pendingChannels.channels)
-                balanceService.lightningLimbo.value = pendingChannels.totalLimboBalance
+                balanceService.forceCloseLimboBalance.value = pendingChannels.forceCloseLimboBalance
             }
         }
 
