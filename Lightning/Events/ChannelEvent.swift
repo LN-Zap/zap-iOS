@@ -40,7 +40,6 @@ public struct ChannelEvent: Equatable, DateProvidingEvent {
 
     public let txHash: String
     public let node: LightningNode
-    public let blockHeight: Int
     public let type: Kind
     public let fee: Satoshi?
     public let date: Date
@@ -48,9 +47,7 @@ public struct ChannelEvent: Equatable, DateProvidingEvent {
 
 extension ChannelEvent {
     init?(channel: OpenChannel, dateEstimator: DateEstimator) {
-        blockHeight = channel.blockHeight
-
-        if let date = dateEstimator.estimatedDate(forBlockHeight: blockHeight) {
+        if let date = dateEstimator.estimatedDate(forBlockHeight: channel.blockHeight) {
             self.date = date
         } else {
             date = Date()
@@ -63,14 +60,8 @@ extension ChannelEvent {
         fee = nil
     }
 
-    init?(pendingChannel: PendingChannel, transaction: Transaction, dateEstimator: DateEstimator) {
-        blockHeight = 0 // TODO
-
-        if let date = dateEstimator.estimatedDate(forBlockHeight: blockHeight) {
-            self.date = date
-        } else {
-            date = Date()
-        }
+    init?(pendingChannel: PendingChannel, transaction: Transaction) {
+        date = transaction.date
 
         txHash = pendingChannel.channelPoint.fundingTxid
         node = LightningNode(pubKey: pendingChannel.remotePubKey, alias: nil, color: nil)
@@ -83,7 +74,6 @@ extension ChannelEvent {
 
         txHash = channelCloseSummary.closingTxHash
         node = LightningNode(pubKey: channelCloseSummary.remotePubKey, alias: nil, color: nil)
-        blockHeight = channelCloseSummary.closeHeight
         type = ChannelEvent.Kind(closeType: channelCloseSummary.closeType)
         fee = nil
         self.date = date
@@ -94,7 +84,6 @@ extension ChannelEvent {
 
         txHash = channelCloseSummary.channelPoint.fundingTxid
         node = LightningNode(pubKey: channelCloseSummary.remotePubKey, alias: nil, color: nil)
-        blockHeight = channelCloseSummary.openHeight
         type = .open
         fee = nil
         self.date = date

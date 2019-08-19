@@ -36,6 +36,7 @@ public final class HistoryService: NSObject {
 
                 let channelTxids = openChannels.collection.map { $0.channelPoint.fundingTxid }
                     + closedChannels.collection.map { $0.channelPoint.fundingTxid }
+                    + pendingChannels.collection.map { $0.channelPoint.fundingTxid }
                     + closedChannels.collection.map { $0.closingTxHash }
                 let newTransactions = transactionChangeset.collection
                     .filter { !channelTxids.contains($0.id) }
@@ -51,11 +52,9 @@ public final class HistoryService: NSObject {
                         ChannelEvent(channel: channel, dateEstimator: dateEstimator)
                     }
                 let newPendingOpenChannelEvents = pendingChannels.collection
-                    .compactMap { (_: PendingChannel) -> DateProvidingEvent? in
-                        // TODO:
-                        return nil
-//                        guard let channel = channel as? OpenChannel else { return nil }
-//                        return ChannelEvent(channel: channel, dateEstimator: dateEstimator)
+                    .compactMap { (channel: PendingChannel) -> DateProvidingEvent? in
+                        guard let fundingTx = transactionChangeset.collection.first(where: { $0.id == channel.channelPoint.fundingTxid }) else { return nil }
+                        return ChannelEvent(pendingChannel: channel, transaction: fundingTx)
                     }
                 let newOpenChannelEvents2 = closedChannels.collection
                     .compactMap { (channelCloseSummary: ChannelCloseSummary) -> DateProvidingEvent? in
