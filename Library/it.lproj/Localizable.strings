@@ -93,9 +93,9 @@
 "scene.channels.alert.force_close" = "Forza Chiusura Canale";
 "scene.channels.close_loading_view" = "Chiusura Canale";
 "scene.channels.close_success.toast" = "Il canale è chiuso.";
-"scene.channels.empty_state.title" = "Open Channel";
-"scene.channels.empty_state.message" = "You don't have any channels yet. Let's open a channel.";
-"scene.channels.empty_state.button_title" = "Open Channel";
+"scene.channels.empty_state.title" = "Open a channel";
+"scene.channels.empty_state.message" = "You can't transact on the Lightning Network yet! Let's open a channel to start transacting on the Lightning Network.";
+"scene.channels.empty_state.button_title" = "Open a channel";
 
 "scene.open_channel.title" = "Apri Canale";
 "scene.open_channel.channel_uri_label" = "Nodo:";
@@ -114,16 +114,16 @@
 "scene.setup_pin.top_label.non_matching" = "I PIN non corrispondono. Si prega di riprovare.";
 "scene.setup_pin.top_label.validate" = "Immettere il PIN nuovamente per convalidare.";
 
-"scene.onboarding.page_1.title" = "Your **key**, your **coins**.";
-"scene.onboarding.page_1.message" = "With Zap, you are in control of your money. To make sure your coins are always stored safely, zap will provide a recovery phrase for you.";
+"scene.onboarding.page_1.title" = "Your **keys**, your **coins**.";
+"scene.onboarding.page_1.message" = "With Zap, you are in control of your funds. In order to secure your funds, we will provide you with a recovery phrase.";
 "scene.onboarding.page_1.button_title" = "Continue";
 
 "scene.onboarding.page_2.title" = "Write down your **recovery phrase**.";
-"scene.onboarding.page_2.message" = "Write down  the recovery phrase on a piece of paper. You can recover your funds anytime if your phone goes missing.";
+"scene.onboarding.page_2.message" = "Make sure you write down your recovery phrase. Your recovery phrase can be used to recover your funds in the event of an emergency.";
 "scene.onboarding.page_2.button_title" = "Continue";
 
-"scene.onboarding.page_3.title" = "Make sure to keep it in a **safe place**.";
-"scene.onboarding.page_3.message" = "Make sure to keep your recovery phrase private. Store it somewhere only you will find it.";
+"scene.onboarding.page_3.title" = "Keep your recovery phrase **safe**.";
+"scene.onboarding.page_3.message" = "Your recovery phrase has all the information needed to access your wallet. Store your phrase in a private and secure place and do not share your phrase with anyone.";
 "scene.onboarding.page_3.button_title" = "Generate Recovery Phrase";
 
 "scene.confirm_mnemonic.title" = "Confirm Recovery Phrase";
@@ -236,8 +236,8 @@
 "scene.wallet.detail.lightning" = "Lightning:";
 "scene.wallet.detail.pending" = "In sospeso:";
 "scene.wallet.empty_state.title" = "Fund your wallet";
-"scene.wallet.empty_state.message" = "Your wallet is empty. Get started by adding some funds.";
-"scene.wallet.empty_state.button_title" = "Fund Wallet";
+"scene.wallet.empty_state.message" = "Your wallet is empty! Get started by depositing some funds.";
+"scene.wallet.empty_state.button_title" = "Deposit funds";
 
 "scene.time_lock.headline" = "Codice di accesso errato (PIN)";
 "scene.time_lock.description" = "Il portafoglio è bloccato per:";
@@ -286,8 +286,8 @@
 "scene.channel_backup.error.localBackupFailed" = "Local file backup failed.";
 "scene.channel_backup.error.lndError" = "Could not get channel backup from lnd.";
 
-"scene.push_notification.headline" = "Notifications?";
-"scene.push_notification.message" = "To keep your funds safe, zap needs to sync once in a while. Do you want to get a notification when it's time?";
+"scene.push_notification.headline" = "Turn on **notifications** to stay in touch.";
+"scene.push_notification.message" = "We have your back. Zap will notify you when your wallet needs you.";
 "scene.push_notification.confirm_button_title" = "Turn on notifications";
 "scene.push_notification.skip_button_title" = "Skip";
 

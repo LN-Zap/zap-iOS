@@ -93,9 +93,9 @@
 "scene.channels.alert.force_close" = "Channel-Schließung erzwingen";
 "scene.channels.close_loading_view" = "Kanal schließen";
 "scene.channels.close_success.toast" = "Channel wird geschlossen.";
-"scene.channels.empty_state.title" = "Open Channel";
-"scene.channels.empty_state.message" = "You don't have any channels yet. Let's open a channel.";
-"scene.channels.empty_state.button_title" = "Open Channel";
+"scene.channels.empty_state.title" = "Open a channel";
+"scene.channels.empty_state.message" = "You can't transact on the Lightning Network yet! Let's open a channel to start transacting on the Lightning Network.";
+"scene.channels.empty_state.button_title" = "Open a channel";
 
 "scene.open_channel.title" = "Channel öffnen";
 "scene.open_channel.channel_uri_label" = "Knoten:";
@@ -114,16 +114,16 @@
 "scene.setup_pin.top_label.non_matching" = "Der PIN stimmt nicht überein. Bitte versuche es erneut.";
 "scene.setup_pin.top_label.validate" = "Gib den PIN erneut ein.";
 
-"scene.onboarding.page_1.title" = "Dein **Schlüssel**, deine **Bitcoins**.";
-"scene.onboarding.page_1.message" = "Mit Zap hast du die Kontrolle über dein Geld. Um sicherzustellen, dass deine Coins immer sicher aufbewahrt werden, stellt dir Zap eine Wiederherstellungsphrase zur Verfügung.";
+"scene.onboarding.page_1.title" = "Your **keys**, your **coins**.";
+"scene.onboarding.page_1.message" = "With Zap, you are in control of your funds. In order to secure your funds, we will provide you with a recovery phrase.";
 "scene.onboarding.page_1.button_title" = "Weiter";
 
 "scene.onboarding.page_2.title" = "Notiere dir deinen **Wiederherstellungsphrase**.";
-"scene.onboarding.page_2.message" = "Notiere dir die Wiederherstellungsphrase auf einem Blatt Papier. Du kannst dein Geld jederzeit zurückerhalten, wenn dein Handy verloren geht.";
+"scene.onboarding.page_2.message" = "Make sure you write down your recovery phrase. Your recovery phrase can be used to recover your funds in the event of an emergency.";
 "scene.onboarding.page_2.button_title" = "Weiter";
 
-"scene.onboarding.page_3.title" = "Stelle sicher ihn an einem **sicheren Ort** aufzubewahren.";
-"scene.onboarding.page_3.message" = "Achte darauf, dass du deine Wiederherstellungsphrase privat hältst. Lagere ihn an einem Ort den nur du kennst.";
+"scene.onboarding.page_3.title" = "Keep your recovery phrase **safe**.";
+"scene.onboarding.page_3.message" = "Your recovery phrase has all the information needed to access your wallet. Store your phrase in a private and secure place and do not share your phrase with anyone.";
 "scene.onboarding.page_3.button_title" = "Wiederherstellungsphrase generieren";
 
 "scene.confirm_mnemonic.title" = "Wiederherstellungsphrase bestätigen";
@@ -235,9 +235,9 @@
 "scene.wallet.detail.on_chain" = "On-Chain:";
 "scene.wallet.detail.lightning" = "Lightning:";
 "scene.wallet.detail.pending" = "Ausstehend:";
-"scene.wallet.empty_state.title" = "Fund your wallet";
-"scene.wallet.empty_state.message" = "Your wallet is empty. Get started by adding some funds.";
-"scene.wallet.empty_state.button_title" = "Fund Wallet";
+"scene.wallet.empty_state.title" = "Lade deine Wallet auf";
+"scene.wallet.empty_state.message" = "Your wallet is empty! Get started by depositing some funds.";
+"scene.wallet.empty_state.button_title" = "Deposit funds";
 
 "scene.time_lock.headline" = "Falscher PIN";
 "scene.time_lock.description" = "Ihre Geldbörse ist gesperrt für:";
@@ -248,12 +248,12 @@
 "scene.history.cell.payment_sent" = "Zahlung gesendet";
 "scene.history.cell.payment_received" = "Zahlung empfangen";
 "scene.history.cell.invoice_created" = "Zahlungs-Anfrage erstellt";
-"scene.history.cell.channel_opened" = "Opened Channel";
+"scene.history.cell.channel_opened" = "Zahlungskanal öffnen";
 "scene.history.cell.channel_closed" = "Closed Channel";
 "scene.history.cell.force_close_channel" = "Force closed Channel";
 "scene.history.cell.remote_force_close_channel" = "Remote forced close Channel";
 "scene.history.cell.breach_close_channel" = "Breach closed Channel";
-"scene.history.cell.close_channel_funding_canceled" = "Closed Channel (funding canceled)";
+"scene.history.cell.close_channel_funding_canceled" = "Geschlossene Zahlungskanäle (Finanzierung wurde abgebrochen)";
 "scene.history.cell.channel_abandoned" = "Channel aufgegeben";
 "scene.history.cell.transaction_sent" = "Zahlung gesendet";
 "scene.history.cell.transaction_received" = "Zahlung empfangen";
@@ -286,8 +286,8 @@
 "scene.channel_backup.error.localBackupFailed" = "Lokales File Backup fehlerhaft.";
 "scene.channel_backup.error.lndError" = "Kanal Backup konnte von lnd nicht empfangen werden.";
 
-"scene.push_notification.headline" = "Notifikationen?";
-"scene.push_notification.message" = "Um Ihre Gelder sicher zu halten, muss zap ab und zu synchronisieren. Möchten Sie eine Benachrichtigung erhalten, wenn es Zeit ist?";
+"scene.push_notification.headline" = "Turn on **notifications** to stay in touch.";
+"scene.push_notification.message" = "We have your back. Zap will notify you when your wallet needs you.";
 "scene.push_notification.confirm_button_title" = "Notifikationen einschalten";
 "scene.push_notification.skip_button_title" = "Überspringen";
 
