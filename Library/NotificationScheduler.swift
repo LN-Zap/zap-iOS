@@ -51,6 +51,9 @@ final class NotificationScheduler: NSObject {
 
     func listenToChannelUpdates(lightningService: LightningService) {
         guard lightningService.connection == .local else { return }
+        // TODO: listen to pending channels. when there is a pending channel
+        // schedule a notification at current date + 2016 blocks (2 weeks)
+        // (the current default csv_delay) also don't hardcode magic numbers.
         combineLatest(lightningService.channelService.open, lightningService.infoService.bestHeaderDate) { ($0.collection, $1) }
             .debounce(interval: 2)
             .observeNext { [weak self] in
