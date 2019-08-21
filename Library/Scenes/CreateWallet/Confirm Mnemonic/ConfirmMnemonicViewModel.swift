@@ -31,7 +31,7 @@ final class ConfirmMnemonicViewModel {
 
         var randomIndices = [Int]()
         while randomIndices.count < requiredWordCount {
-            let randomNumber = Int.random(in: 0..<mnemonic.count)
+            let randomNumber = Int.random(in: 1..<(mnemonic.count - 1))
             if !randomIndices.contains(randomNumber) {
                 randomIndices.append(randomNumber)
             }

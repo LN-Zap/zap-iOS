@@ -17,7 +17,7 @@ public enum ChannelEventUpdate {
     init?(channelEventUpdate: Lnrpc_ChannelEventUpdate) {
         switch channelEventUpdate.type {
         case .openChannel:
-            self = .open(channelEventUpdate.openChannel.channelModel)
+            self = .open(OpenChannel(openChannel: channelEventUpdate.openChannel))
         case .closedChannel:
             guard let summary = ChannelCloseSummary(channelCloseSummary: channelEventUpdate.closedChannel) else { return nil }
             self = .closed(summary)

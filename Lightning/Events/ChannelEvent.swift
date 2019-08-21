@@ -40,22 +40,17 @@ public struct ChannelEvent: Equatable, DateProvidingEvent {
 
     public let txHash: String
     public let node: LightningNode
-    public let blockHeight: Int?
     public let type: Kind
     public let fee: Satoshi?
     public let date: Date
 }
 
 extension ChannelEvent {
-    init?(channel: Channel, dateEstimator: DateEstimator) {
-        if
-            let blockHeight = channel.blockHeight,
-            let date = dateEstimator.estimatedDate(forBlockHeight: blockHeight) {
-            self.blockHeight = blockHeight
+    init?(channel: OpenChannel, dateEstimator: DateEstimator) {
+        if let date = dateEstimator.estimatedDate(forBlockHeight: channel.blockHeight) {
             self.date = date
         } else {
             date = Date()
-            blockHeight = nil
         }
 
         txHash = channel.channelPoint.fundingTxid
@@ -65,12 +60,20 @@ extension ChannelEvent {
         fee = nil
     }
 
+    init?(pendingChannel: PendingChannel, transaction: Transaction) {
+        date = transaction.date
+
+        txHash = pendingChannel.channelPoint.fundingTxid
+        node = LightningNode(pubKey: pendingChannel.remotePubKey, alias: nil, color: nil)
+        type = .open
+        fee = nil
+    }
+
     init?(closing channelCloseSummary: ChannelCloseSummary, dateEstimator: DateEstimator) {
         guard let date = dateEstimator.estimatedDate(forBlockHeight: channelCloseSummary.closeHeight) else { return nil }
 
         txHash = channelCloseSummary.closingTxHash
         node = LightningNode(pubKey: channelCloseSummary.remotePubKey, alias: nil, color: nil)
-        blockHeight = channelCloseSummary.closeHeight
         type = ChannelEvent.Kind(closeType: channelCloseSummary.closeType)
         fee = nil
         self.date = date
@@ -81,7 +84,6 @@ extension ChannelEvent {
 
         txHash = channelCloseSummary.channelPoint.fundingTxid
         node = LightningNode(pubKey: channelCloseSummary.remotePubKey, alias: nil, color: nil)
-        blockHeight = channelCloseSummary.openHeight
         type = .open
         fee = nil
         self.date = date

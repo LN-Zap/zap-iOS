@@ -25,7 +25,7 @@ final class MnemonicWordListViewController: UIViewController {
         guard let mnemonicWords = mnemonicWords else { return }
 
         for mnemonic in mnemonicWords {
-            stackView.addArrangedSubview(MnemonicWordView(mnemonic: mnemonic))
+            stackView.addArrangedSubview(MnemonicWordView(mnemonic: mnemonic, highlighted: mnemonic.index % 2 == 0))
         }
     }
 }

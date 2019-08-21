@@ -77,8 +77,8 @@ public final class LightningApi {
         connection.pendingChannels(Lnrpc_PendingChannelsRequest(), completion: run(completion, map: PendingChannels.init) )
     }
 
-    public func channels(completion: @escaping ApiCompletion<[Channel]>) {
-        connection.listChannels(Lnrpc_ListChannelsRequest(), completion: run(completion) { $0.channels.map { $0.channelModel } })
+    public func channels(completion: @escaping ApiCompletion<[OpenChannel]>) {
+        connection.listChannels(Lnrpc_ListChannelsRequest(), completion: run(completion) { $0.channels.map(OpenChannel.init) })
     }
 
     public func closedChannels(completion: @escaping ApiCompletion<[ChannelCloseSummary]>) {
