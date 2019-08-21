@@ -42,7 +42,7 @@ final class ConfirmMnemonicViewController: UIViewController {
 
         descriptionLabel.text = L10n.Scene.ConfirmMnemonic.headline(confirmViewModel.secretWord.index + 1)
 
-        for context in confirmViewModel.context {
+        for (index, context) in confirmViewModel.context.enumerated() {
             let newContext: MnemonicWord
             if context == confirmViewModel.secretWord {
                 newContext = MnemonicWord(index: context.index, word: "")
@@ -50,7 +50,7 @@ final class ConfirmMnemonicViewController: UIViewController {
                 newContext = context
             }
 
-            let view = MnemonicWordView(mnemonic: newContext)
+            let view = MnemonicWordView(mnemonic: newContext, highlighted: index % 2 == 1)
             view.heightAnchor.constraint(equalToConstant: 29).isActive = true
             seedStackView.addArrangedSubview(view)
         }

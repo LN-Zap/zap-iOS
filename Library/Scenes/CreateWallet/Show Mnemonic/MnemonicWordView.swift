@@ -8,7 +8,7 @@
 import Foundation
 
 final class MnemonicWordView: UIView {
-    init(mnemonic: MnemonicWord) {
+    init(mnemonic: MnemonicWord, highlighted: Bool) {
         super.init(frame: CGRect.zero)
 
         let indexLabel = UILabel(frame: CGRect.zero)
@@ -34,7 +34,7 @@ final class MnemonicWordView: UIView {
         horizontalStackView.axis = .horizontal
         horizontalStackView.spacing = 20
 
-        if mnemonic.index % 2 == 0 {
+        if highlighted {
             backgroundColor = UIColor.Zap.seaBlue
         }
 
