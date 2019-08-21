@@ -15,11 +15,8 @@ final class ChannelListUpdater: NSObject, ListUpdater {
     private let api: LightningApi
     private let balanceService: BalanceService
 
-    let open = MutableObservableArray<Channel>()
-    let pending = MutableObservableArray<Channel>()
-
-    let all = MutableObservableArray<Channel>()
-
+    let open = MutableObservableArray<OpenChannel>()
+    let pending = MutableObservableArray<PendingChannel>()
     let closed = MutableObservableArray<ChannelCloseSummary>()
 
     init(api: LightningApi, balanceService: BalanceService) {
@@ -32,11 +29,6 @@ final class ChannelListUpdater: NSObject, ListUpdater {
             Logger.info("new channel event \($0)", customPrefix: "🏊‍♂️")
             self?.update()
         }
-
-        combineLatest(open, pending) { $0.collection + $1.collection }
-            .distinctUntilChanged()
-            .observeNext { [weak self] in self?.all.replace(with: $0, performDiff: true) }
-            .dispose(in: reactive.bag)
     }
 
     func update() {

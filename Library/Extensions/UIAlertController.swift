@@ -6,19 +6,19 @@
 //
 
 import Lightning
+import SwiftLnd
 import UIKit
 
 extension UIAlertController {
-    static func closeChannelAlertController(channelViewModel: ChannelViewModel, closeAction: @escaping () -> Void) -> UIAlertController {
+    static func closeChannelAlertController(openChannel: OpenChannel, channelViewModel: ChannelViewModel, closeAction: @escaping () -> Void) -> UIAlertController {
         let title: String
         let message: String
         let closeButtonTitle: String
 
-        if channelViewModel.state.value == .active {
+        if openChannel.state == .active {
             title = L10n.Scene.Channels.Close.title
             message = L10n.Scene.Channels.Close.message(channelViewModel.name.value)
             closeButtonTitle = L10n.Scene.Channels.Alert.close
-
         } else {
             title = L10n.Scene.Channels.ForceClose.title
             closeButtonTitle = L10n.Scene.Channels.Alert.forceClose
@@ -29,7 +29,7 @@ extension UIAlertController {
             formatter.maximumUnitCount = 2
 
             let blockTime: TimeInterval = 10 * 60
-            let timeUntilClose = formatter.string(from: TimeInterval(channelViewModel.csvDelay) * blockTime) ?? ""
+            let timeUntilClose = formatter.string(from: TimeInterval(openChannel.csvDelay) * blockTime) ?? ""
 
             message = L10n.Scene.Channels.ForceClose.message(channelViewModel.name.value, timeUntilClose)
         }

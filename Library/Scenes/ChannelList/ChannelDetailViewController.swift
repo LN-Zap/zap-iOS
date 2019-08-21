@@ -8,6 +8,19 @@
 import Foundation
 import SwiftLnd
 
+extension ForceClosingChannel {
+    var blocksTilMaturityTimeString: String {
+        let formatter = DateComponentsFormatter()
+        formatter.allowedUnits =  [.year, .month, .day, .hour, .minute]
+        formatter.unitsStyle = .full
+        formatter.maximumUnitCount = 2
+
+        let blockTime: TimeInterval = 10 * 60
+
+        return formatter.string(from: TimeInterval(blocksTilMaturity) * blockTime) ?? ""
+    }
+}
+
 final class ChannelDetailViewController: ModalDetailViewController {
     let channelViewModel: ChannelViewModel
     let channelListViewModel: ChannelListViewModel
@@ -38,10 +51,10 @@ final class ChannelDetailViewController: ModalDetailViewController {
         let labelStyle = Style.Label.headline
         let textStyle = Style.Label.body
 
-        if channelViewModel.state.value == .closing || channelViewModel.state.value == .forceClosing {
+        if let channel = channelViewModel.channel as? ForceClosingChannel {
             contentStackView.addArrangedElement(.horizontalStackView(compressionResistant: .first, content: [
                 .label(text: L10n.Scene.ChannelDetail.ClosingTime.label + ":", style: labelStyle),
-                .label(text: channelViewModel.csvDelayTimeString, style: textStyle)
+                .label(text: channel.blocksTilMaturityTimeString, style: textStyle)
             ]))
             contentStackView.addArrangedElement(.separator)
         }
@@ -51,7 +64,7 @@ final class ChannelDetailViewController: ModalDetailViewController {
             .label(text: channelViewModel.remotePubKey, style: textStyle)
         ], spacing: 0))
 
-        if channelViewModel.state.value != Channel.State.waitingClose {
+        if channelViewModel.state.value != ChannelState.waitingClose {
             contentStackView.addArrangedElement(.separator)
             let balanceView = BalanceView()
             balanceView.set(localBalance: channelViewModel.localBalance.value, remoteBalance: channelViewModel.remoteBalance.value)
@@ -123,7 +136,8 @@ final class ChannelDetailViewController: ModalDetailViewController {
     }
 
     private func closeChannel() {
-        let alertController = UIAlertController.closeChannelAlertController(channelViewModel: channelViewModel) { [channelViewModel, weak self] in
+        guard let openChannel = channelViewModel.channel as? OpenChannel else { return }
+        let alertController = UIAlertController.closeChannelAlertController(openChannel: openChannel, channelViewModel: channelViewModel) { [channelViewModel, weak self] in
             let loadingView = self?.presentLoadingView(text: L10n.Scene.Channels.closeLoadingView)
             self?.channelListViewModel.close(channelViewModel) { result in
                 DispatchQueue.main.async {

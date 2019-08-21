@@ -12,7 +12,7 @@ import ReactiveKit
 import SwiftBTC
 import SwiftLnd
 
-extension Channel.State: Comparable {
+extension ChannelState: Comparable {
     var sortRank: Int {
         switch self {
         case .active:
@@ -30,7 +30,7 @@ extension Channel.State: Comparable {
         }
     }
 
-    public static func < (lhs: Channel.State, rhs: Channel.State) -> Bool {
+    public static func < (lhs: ChannelState, rhs: ChannelState) -> Bool {
         return lhs.sortRank < rhs.sortRank
     }
 }

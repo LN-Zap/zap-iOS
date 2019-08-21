@@ -15,11 +15,11 @@ public final class ChannelService {
     private let api: LightningApi
     private let channelListUpdater: ChannelListUpdater
 
-    public var open: MutableObservableArray<Channel> {
+    public var open: MutableObservableArray<OpenChannel> {
         return channelListUpdater.open
     }
 
-    public var pending: MutableObservableArray<Channel> {
+    public var pending: MutableObservableArray<PendingChannel> {
         return channelListUpdater.pending
     }
 
