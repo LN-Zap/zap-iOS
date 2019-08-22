@@ -7,9 +7,9 @@
 
 "link.help" = "https://ln-zap.github.io/zap-tutorials/";
 "link.help.zapconnect" = "https://ln-zap.github.io/zap-tutorials/iOS-remote-node-setup";
-"link.privacy" = "link.privacidad";
-"link.bug_report" = "link.informe_de_errores";
-"link.lnd_releases" = "https://github.com/lightningnetwork/lnd/releases";
+"link.privacy" = "http://zap.jackmallers.com/privacidad";
+"link.bug_report" = "https://github.com/LN-Zap/zap-iOS/informe_de_errores";
+"link.lnd_releases" = "https://github.com/lightningnetwork/lnd/versiones";
 
 "error.wrong_uri_format" = "Formate de link desconocido.";
 "error.wrong_uri_network" = "Has intentado establecer una conexión para %@ pero tu nodo esta conectado a %@.";
@@ -25,7 +25,7 @@
 "channel.state.opening" = "Abriendo";
 "channel.state.closing" = "Cerrando";
 "channel.state.force_closing" = "Forzando cierre";
-"channel.state.waiting_close" = "Waiting Close";
+"channel.state.waiting_close" = "Esperando Cierre";
 
 "network_type.simnet" = "Simnet";
 "network_type.regtest" = "Regtest";
@@ -37,8 +37,8 @@
 "unit.bitcoin.bit" = "Bits";
 "unit.bitcoin.satoshi" = "Satoshis";
 
-"toast.invoice" = "Did receive %@";
-"toast.invoice_memo" = "Did receive %@ \"%@\"";
+"toast.invoice" = "Recibiste %@";
+"toast.invoice_memo" = "Recibiste %@ \"%@\"";
 
 "transaction.no_destination_address" = "Sin dirección de destino";
 
@@ -48,10 +48,10 @@
 "scene.history.empty_state_label" = "0 transacciones 🙁";
 
 "scene.settings.title" = "Configuración";
-"scene.settings.section.warning" = "Warning";
+"scene.settings.section.warning" = "Advertencia";
 "scene.settings.section.lightning" = "Lightning";
 "scene.settings.section.wallet" = "Cartera";
-"scene.settings.item.version_warning" = "Your lnd is outdated (%@). Zap iOS works best with lnd version %@ or above.";
+"scene.settings.item.version_warning" = "Tu lnd es version vieja (%@). Zap iOS funciona mejor con lnd version %@ o más nueva.";
 "scene.settings.item.bitcoin_unit" = "Unidad de Bitcoin";
 "scene.settings.item.currency" = "Moneda";
 "scene.settings.item.currency.popular" = "Monedas populares";
@@ -60,15 +60,15 @@
 "scene.settings.item.on_chain_request_address.bech32" = "Bech32";
 "scene.settings.item.on_chain_request_address.p2sh" = "P2SH";
 "scene.settings.item.manage_channels" = "Gestionar canales";
-"scene.settings.item.channel_backup" = "Channel Backup";
+"scene.settings.item.channel_backup" = "Respaldo de Canal";
 "scene.settings.item.node_uri" = "Nodo de URI";
-"scene.settings.item.remove_remote_node" = "Manage Wallets";
+"scene.settings.item.remove_remote_node" = "Administrar Carteras";
 
 "scene.settings.item.change_pin" = "Cambiar Pin";
 "scene.settings.item.report_issue" = "Informar sobre un problema";
 "scene.settings.item.help" = "¿Necesita ayuda?";
-"scene.settings.item.privacy_policy" = "Privacy Policy";
-"scene.settings.item.lnd_log" = "Show lnd Log";
+"scene.settings.item.privacy_policy" = "Politica de Privacidad";
+"scene.settings.item.lnd_log" = "Enseñar Log de lnd";
 
 "scene.request.title" = "Recibir";
 "scene.request.lightning_button" = "Lightning";
@@ -76,7 +76,7 @@
 "scene.request.on_chain_button" = "En la cadena";
 "scene.request.generate_request_button" = "Generar solicitud";
 "scene.request.lightning_header_title" = "Solicitud de pago \"Lightning\"";
-"scene.request.on_chain_header_title" = "On-Chain Payment Request";
+"scene.request.on_chain_header_title" = "Solicitud de pago en la cadena";
 "scene.request.next_button_title" = "Siguiente";
 "scene.request.subtitle.lightning" = "Can receive: %@";
 
