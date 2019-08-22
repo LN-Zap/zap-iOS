@@ -48,6 +48,7 @@ final class ChannelListViewModel: NSObject {
 
     let shouldHideEmptyWalletState: Signal<Bool, Never>
     let shouldHideChannelListEmptyState: Signal<Bool, Never>
+    let shouldShowBadgeIcon: Signal<Bool, Never>
 
     var channelService: ChannelService {
         return lightningService.channelService
@@ -63,7 +64,11 @@ final class ChannelListViewModel: NSObject {
 
         shouldHideChannelListEmptyState = combineLatest(lightningService.balanceService.onChainTotal, dataSource)
             .map { $0 <= 0 || !$1.collection.isEmpty }
-            .distinctUntilChanged { $0 != $1 }
+            .distinctUntilChanged()
+
+        shouldShowBadgeIcon = combineLatest(lightningService.balanceService.onChainConfirmed, dataSource)
+                .map { $0 > 0 && $1.collection.isEmpty }
+                .distinctUntilChanged()
 
         super.init()
 

@@ -14,6 +14,7 @@ import UIKit
 enum Tab {
     case wallet
     case history
+    case channels
     case settings
 
     var title: String {
@@ -22,6 +23,8 @@ enum Tab {
             return L10n.Scene.Wallet.title
         case .history:
             return L10n.Scene.History.title
+        case .channels:
+            return L10n.Scene.Channels.title
         case .settings:
             return L10n.Scene.Settings.title
         }
@@ -33,6 +36,8 @@ enum Tab {
             return Asset.tabbarWallet.image
         case .history:
             return Asset.tabbarHistory.image
+        case .channels:
+            return Asset.tabbarChannels.image
         case .settings:
             return Asset.tabbarSettings.image
         }
@@ -63,6 +68,7 @@ final class WalletCoordinator: NSObject, Coordinator {
         self.walletConfigurationStore = walletConfigurationStore
 
         channelListViewModel = ChannelListViewModel(lightningService: lightningService)
+
         historyViewModel = HistoryViewModel(historyService: lightningService.historyService)
 
         super.init()
@@ -149,6 +155,7 @@ final class WalletCoordinator: NSObject, Coordinator {
         tabBarController.tabs = [
             (.wallet, walletViewController()),
             (.history, historyViewController()),
+            (.channels, channelNavigationController(badgeUpdaterDelegate: tabBarController)),
             (.settings, settingsViewController)
         ]
         presentViewController(tabBarController)
@@ -179,7 +186,6 @@ final class WalletCoordinator: NSObject, Coordinator {
             connection: lightningService.connection,
             disconnectWalletDelegate: disconnectWalletDelegate,
             authenticationViewModel: authenticationViewModel,
-            pushChannelList: pushChannelList,
             pushNodeURIViewController: pushNodeURIViewController,
             pushLndLogViewController: pushLndLogViewController,
             pushChannelBackup: pushChannelBackup)
@@ -300,11 +306,18 @@ final class WalletCoordinator: NSObject, Coordinator {
         rootViewController.present(detailViewController, animated: true)
     }
 
-    private func pushChannelList(on navigationController: UINavigationController) {
+    private func channelNavigationController(badgeUpdaterDelegate: BadgeUpdaterDelegate) -> UINavigationController {
         let walletEmptyStateViewModel = WalletEmptyStateViewModel(lightningService: lightningService, fundButtonTapped: presentFundWallet)
         let channelListEmptyStateViewModel = ChannelListEmptyStateViewModel(openButtonTapped: presentAddChannel)
-        let channelList = ChannelListViewController.instantiate(channelListViewModel: channelListViewModel, addChannelButtonTapped: presentAddChannel, presentChannelDetail: presentChannelDetail, walletEmptyStateViewModel: walletEmptyStateViewModel, channelListEmptyStateViewModel: channelListEmptyStateViewModel)
-        navigationController.pushViewController(channelList, animated: true)
+        let viewController = ChannelListViewController.instantiate(channelListViewModel: channelListViewModel, addChannelButtonTapped: presentAddChannel, presentChannelDetail: presentChannelDetail, walletEmptyStateViewModel: walletEmptyStateViewModel, channelListEmptyStateViewModel: channelListEmptyStateViewModel)
+
+        viewController.badgeUpdaterDelegate = badgeUpdaterDelegate
+
+        let navigationController = ZapNavigationController(rootViewController: viewController)
+        navigationController.tabBarItem.title = Tab.channels.title
+        navigationController.tabBarItem.image = Tab.channels.image
+        navigationController.view.backgroundColor = UIColor.Zap.background
+        return navigationController
     }
 
     private func pushChannelBackup(on navigationController: UINavigationController) {

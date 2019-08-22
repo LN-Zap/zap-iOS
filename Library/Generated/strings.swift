@@ -186,11 +186,11 @@ internal enum L10n {
         internal static let toast = L10n.tr("Localizable", "scene.channels.close_success.toast")
       }
       internal enum EmptyState {
-        /// Open Channel
+        /// Open a channel
         internal static let buttonTitle = L10n.tr("Localizable", "scene.channels.empty_state.button_title")
-        /// You don't have any channels yet. Let's open a channel.
+        /// You can't transact on the Lightning Network yet! Let's open a channel to start transacting on the Lightning Network.
         internal static let message = L10n.tr("Localizable", "scene.channels.empty_state.message")
-        /// Open Channel
+        /// Open a channel
         internal static let title = L10n.tr("Localizable", "scene.channels.empty_state.title")
       }
       internal enum ForceClose {
@@ -364,15 +364,15 @@ internal enum L10n {
       internal enum Page1 {
         /// Continue
         internal static let buttonTitle = L10n.tr("Localizable", "scene.onboarding.page_1.button_title")
-        /// With Zap, you are in control of your money. To make sure your coins are always stored safely, zap will provide a recovery phrase for you.
+        /// With Zap, you are in control of your funds. In order to secure your funds, we will provide you with a recovery phrase.
         internal static let message = L10n.tr("Localizable", "scene.onboarding.page_1.message")
-        /// Your **key**, your **coins**.
+        /// Your **keys**, your **coins**.
         internal static let title = L10n.tr("Localizable", "scene.onboarding.page_1.title")
       }
       internal enum Page2 {
         /// Continue
         internal static let buttonTitle = L10n.tr("Localizable", "scene.onboarding.page_2.button_title")
-        /// Write down  the recovery phrase on a piece of paper. You can recover your funds anytime if your phone goes missing.
+        /// Make sure you write down your recovery phrase. Your recovery phrase can be used to recover your funds in the event of an emergency.
         internal static let message = L10n.tr("Localizable", "scene.onboarding.page_2.message")
         /// Write down your **recovery phrase**.
         internal static let title = L10n.tr("Localizable", "scene.onboarding.page_2.title")
@@ -380,9 +380,9 @@ internal enum L10n {
       internal enum Page3 {
         /// Generate Recovery Phrase
         internal static let buttonTitle = L10n.tr("Localizable", "scene.onboarding.page_3.button_title")
-        /// Make sure to keep your recovery phrase private. Store it somewhere only you will find it.
+        /// Your recovery phrase has all the information needed to access your wallet. Store your phrase in a private and secure place and do not share your phrase with anyone.
         internal static let message = L10n.tr("Localizable", "scene.onboarding.page_3.message")
-        /// Make sure to keep it in a **safe place**.
+        /// Keep your recovery phrase **safe**.
         internal static let title = L10n.tr("Localizable", "scene.onboarding.page_3.title")
       }
     }
@@ -429,9 +429,9 @@ internal enum L10n {
     internal enum PushNotification {
       /// Turn on notifications
       internal static let confirmButtonTitle = L10n.tr("Localizable", "scene.push_notification.confirm_button_title")
-      /// Notifications?
+      /// Turn on **notifications** to stay in touch.
       internal static let headline = L10n.tr("Localizable", "scene.push_notification.headline")
-      /// To keep your funds safe, zap needs to sync once in a while. Do you want to get a notification when it's time?
+      /// We have your back. Zap will notify you when your wallet needs you.
       internal static let message = L10n.tr("Localizable", "scene.push_notification.message")
       /// Skip
       internal static let skipButtonTitle = L10n.tr("Localizable", "scene.push_notification.skip_button_title")
@@ -714,9 +714,9 @@ internal enum L10n {
         internal static let pending = L10n.tr("Localizable", "scene.wallet.detail.pending")
       }
       internal enum EmptyState {
-        /// Fund Wallet
+        /// Deposit funds
         internal static let buttonTitle = L10n.tr("Localizable", "scene.wallet.empty_state.button_title")
-        /// Your wallet is empty. Get started by adding some funds.
+        /// Your wallet is empty! Get started by depositing some funds.
         internal static let message = L10n.tr("Localizable", "scene.wallet.empty_state.message")
         /// Fund your wallet
         internal static let title = L10n.tr("Localizable", "scene.wallet.empty_state.title")
