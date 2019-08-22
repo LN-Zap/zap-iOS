@@ -78,13 +78,13 @@
 "scene.request.lightning_header_title" = "Solicitud de pago \"Lightning\"";
 "scene.request.on_chain_header_title" = "Solicitud de pago en la cadena";
 "scene.request.next_button_title" = "Siguiente";
-"scene.request.subtitle.lightning" = "Can receive: %@";
+"scene.request.subtitle.lightning" = "Puedes recibir: %@";
 
 "scene.channels.title" = "Canales";
-"scene.channels.header.total_can_send" = "Total can send:";
-"scene.channels.header.total_can_receive" = "Total can receive:";
-"scene.channels.header.total_pending" = "Total pending:";
-"scene.channels.header.offline" = "Total offline:";
+"scene.channels.header.total_can_send" = "Total que puedes mandar:";
+"scene.channels.header.total_can_receive" = "Total que puedes recibir:";
+"scene.channels.header.total_pending" = "Total pendiente:";
+"scene.channels.header.offline" = "Total no en-línea:";
 "scene.channels.close.title" = "Cerrar canal";
 "scene.channels.close.message" = "¿Realmente desea cerrar el canal con nodo %@?";
 "scene.channels.force_close.title" = "Forzar cierre de canal";
@@ -93,18 +93,18 @@
 "scene.channels.alert.force_close" = "Forzar cierre del canal";
 "scene.channels.close_loading_view" = "Cerrando canal";
 "scene.channels.close_success.toast" = "El canal está cerrándose.";
-"scene.channels.empty_state.title" = "Open a channel";
-"scene.channels.empty_state.message" = "You can't transact on the Lightning Network yet! Let's open a channel to start transacting on the Lightning Network.";
-"scene.channels.empty_state.button_title" = "Open a channel";
+"scene.channels.empty_state.title" = "Abrir un canal";
+"scene.channels.empty_state.message" = "Todavía no puedes hacer transacciones en el Lightning Network! Abre un canal para empezar hacer transacciones en el Lightning Network.";
+"scene.channels.empty_state.button_title" = "Abrir un canal";
 
 "scene.open_channel.title" = "Abrir Canal";
 "scene.open_channel.channel_uri_label" = "Nodo:";
 "scene.open_channel.add_button" = "Abrir Canal";
-"scene.open_channel.subtitle.minimum_size" = "Minimum channel size: %@";
-"scene.open_channel.subtitle.maximum_size" = "Maximum channel size: %@";
-"scene.open_channel.subtitle.balance" = "On-chain balance: %@";
-"scene.open_channel.suggested_peers.title" = "Suggested Peers";
-"scene.open_channel.paste_button.title" = "Paste Peer Address";
+"scene.open_channel.subtitle.minimum_size" = "Tamaño mínimo de canales: %@";
+"scene.open_channel.subtitle.maximum_size" = "Tamaño máximo de canales: %@";
+"scene.open_channel.subtitle.balance" = "Balance en-cadena: %@";
+"scene.open_channel.suggested_peers.title" = "Nodos sugeridos";
+"scene.open_channel.paste_button.title" = "Pega dirección de nodo";
 
 "scene.pin.biometric.fallback.title" = "Usa contraseña";
 "scene.pin.biometric.reason" = "Acceder datos seguros";
@@ -114,11 +114,11 @@
 "scene.setup_pin.top_label.non_matching" = "Los pines no coinciden. Por favor, inténtelo de nuevo.";
 "scene.setup_pin.top_label.validate" = "Introduzca el pin de nuevo para validar.";
 
-"scene.onboarding.page_1.title" = "Your **keys**, your **coins**.";
-"scene.onboarding.page_1.message" = "With Zap, you are in control of your funds. In order to secure your funds, we will provide you with a recovery phrase.";
-"scene.onboarding.page_1.button_title" = "Continue";
+"scene.onboarding.page_1.title" = "Tus **laves**, tus **bitcoins**.";
+"scene.onboarding.page_1.message" = "Con Zap, tú estás en control de tus fondos. Para proteger tus fondos, te proporcionamos una frase de respaldo.";
+"scene.onboarding.page_1.button_title" = "Continuar";
 
-"scene.onboarding.page_2.title" = "Write down your **recovery phrase**.";
+"scene.onboarding.page_2.title" = "Escribe tu **frase de respaldo**.";
 "scene.onboarding.page_2.message" = "Make sure you write down your recovery phrase. Your recovery phrase can be used to recover your funds in the event of an emergency.";
 "scene.onboarding.page_2.button_title" = "Continue";
 
