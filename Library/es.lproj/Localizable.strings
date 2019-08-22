@@ -59,9 +59,9 @@
 "scene.settings.item.on_chain_request_address.title" = "Tipo de Dirección de Bitcoin";
 "scene.settings.item.on_chain_request_address.bech32" = "Bech32";
 "scene.settings.item.on_chain_request_address.p2sh" = "P2SH";
-"scene.settings.item.manage_channels" = "Gestionar canales";
+"scene.settings.item.manage_channels" = "Administrar Canales";
 "scene.settings.item.channel_backup" = "Respaldo de Canal";
-"scene.settings.item.node_uri" = "Nodo de URI";
+"scene.settings.item.node_uri" = "URI de Nodo";
 "scene.settings.item.remove_remote_node" = "Administrar Carteras";
 
 "scene.settings.item.change_pin" = "Cambiar Pin";
@@ -284,10 +284,10 @@
 "scene.channel_backup.error.iCloudDisabled" = "iCloud parece estar desactivado.";
 "scene.channel_backup.error.iCloudBackupFailed" = "Respaldo en iCloud falló.";
 "scene.channel_backup.error.localBackupFailed" = "Respaldo de archivo local falló.";
-"scene.channel_backup.error.lndError" = "Could not get channel backup from lnd.";
+"scene.channel_backup.error.lndError" = "Error al tratar de conseguir el respaldo del canala de lnd.";
 
-"scene.push_notification.headline" = "Turn on **notifications** to stay in touch.";
-"scene.push_notification.message" = "We have your back. Zap will notify you when your wallet needs you.";
+"scene.push_notification.headline" = "Autoriza **notificaciones** para mantenernos en contacto.";
+"scene.push_notification.message" = "Estas en buenas manos. Zap te notificará cuando tu cartera necesita tu atención.";
 "scene.push_notification.confirm_button_title" = "Activar notificaciones";
 "scene.push_notification.skip_button_title" = "Saltar";
 
