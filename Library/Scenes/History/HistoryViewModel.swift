@@ -53,9 +53,9 @@ final class HistoryViewModel: NSObject {
             .dispose(in: reactive.bag)
     }
 
-    func isEventNew(at indexPath: IndexPath) -> Bool {
+    func isNew(event: HistoryEventType) -> Bool {
         guard let currentLastSeenDate = currentLastSeenDate else { return false }
-        return dataSource.collection.item(at: indexPath).date > currentLastSeenDate
+        return event.date > currentLastSeenDate
     }
 
     func historyWillAppear() {
