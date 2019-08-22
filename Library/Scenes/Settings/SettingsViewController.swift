@@ -23,14 +23,12 @@ final class SettingsViewController: GroupedTableViewController {
          connection: LightningConnection,
          disconnectWalletDelegate: DisconnectWalletDelegate,
          authenticationViewModel: AuthenticationViewModel,
-         pushChannelList: @escaping (UINavigationController) -> Void,
          pushNodeURIViewController: @escaping (UINavigationController) -> Void,
          pushLndLogViewController: @escaping (UINavigationController) -> Void,
          pushChannelBackup: @escaping (UINavigationController) -> Void) {
         self.info = info
 
         var lightningRows: [SettingsItem] = [
-            PushViewControllerSettingsItem(title: L10n.Scene.Settings.Item.manageChannels, pushViewController: pushChannelList),
             PushViewControllerSettingsItem(title: L10n.Scene.Settings.Item.channelBackup, pushViewController: pushChannelBackup)
         ]
 
