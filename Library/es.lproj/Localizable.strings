@@ -119,15 +119,15 @@
 "scene.onboarding.page_1.button_title" = "Continuar";
 
 "scene.onboarding.page_2.title" = "Escribe tu **frase de respaldo**.";
-"scene.onboarding.page_2.message" = "Make sure you write down your recovery phrase. Your recovery phrase can be used to recover your funds in the event of an emergency.";
-"scene.onboarding.page_2.button_title" = "Continue";
+"scene.onboarding.page_2.message" = "Asegúrate de escribir tu frase de respaldo. Tu frase de respaldo es necesaria para recuperar tus fondos en caso de una emergencia.";
+"scene.onboarding.page_2.button_title" = "Continuar";
 
-"scene.onboarding.page_3.title" = "Keep your recovery phrase **safe**.";
-"scene.onboarding.page_3.message" = "Your recovery phrase has all the information needed to access your wallet. Store your phrase in a private and secure place and do not share your phrase with anyone.";
-"scene.onboarding.page_3.button_title" = "Generate Recovery Phrase";
+"scene.onboarding.page_3.title" = "Mantén tu frase de respaldo en un lugar **seguro**.";
+"scene.onboarding.page_3.message" = "Tu frase de respaldo tiene toda la información requerida para recuperar tu cartera. Resguarda tu frase en un lugar privado y seguro y no la compartas con nadie.";
+"scene.onboarding.page_3.button_title" = "Genera Frase de Respaldo";
 
-"scene.confirm_mnemonic.title" = "Confirm Recovery Phrase";
-"scene.confirm_mnemonic.headline" = "Select word number %d";
+"scene.confirm_mnemonic.title" = "Confirma Frase de Respaldo";
+"scene.confirm_mnemonic.headline" = "Selecciona la palabra número %d";
 
 "scene.send.title" = "Enviar";
 "scene.send.send_button" = "Enviar";
@@ -135,14 +135,14 @@
 "scene.send.memo_headline" = "Memo:";
 "scene.send.sending" = "Enviando...";
 "scene.send.lightning.title" = "Enviar pago \"Lightning\"";
-"scene.send.on_chain.title" = "Send On-Chain";
-"scene.send.on_chain.fee" = "Fee:";
-"scene.send.on_chain.fee.fast" = "Fast";
-"scene.send.on_chain.fee.medium" = "Medium";
-"scene.send.on_chain.fee.slow" = "Slow";
-"scene.send.on_chain.fee.description.fast" = "Fast Transaction";
-"scene.send.on_chain.fee.description.medium" = "Medium Transaction";
-"scene.send.on_chain.fee.description.slow" = "Slow Transaction";
+"scene.send.on_chain.title" = "Enviar en cadena";
+"scene.send.on_chain.fee" = "Tarifa:";
+"scene.send.on_chain.fee.fast" = "Rápido";
+"scene.send.on_chain.fee.medium" = "Mediano";
+"scene.send.on_chain.fee.slow" = "Lento";
+"scene.send.on_chain.fee.description.fast" = "Transacción Rápida";
+"scene.send.on_chain.fee.description.medium" = "Transacción Mediana";
+"scene.send.on_chain.fee.description.slow" = "Transacción Lenta";
 
 "scene.send.on_chain.fee.estimated_delivery" = "Estimated Delivery: %@";
 "scene.send.authentication_failed" = "Error de autenticación";
@@ -288,10 +288,10 @@
 
 "scene.push_notification.headline" = "Turn on **notifications** to stay in touch.";
 "scene.push_notification.message" = "We have your back. Zap will notify you when your wallet needs you.";
-"scene.push_notification.confirm_button_title" = "Turn on notifications";
-"scene.push_notification.skip_button_title" = "Skip";
+"scene.push_notification.confirm_button_title" = "Activar notificaciones";
+"scene.push_notification.skip_button_title" = "Saltar";
 
-"notification.sync.title" = "Please sync";
-"notification.sync.day_12.body" = "Please remember syncing your wallet to make sure you stay safe";
-"notification.sync.day_13.body" = "You have one more day to sync your wallet before it's getting dangerous.";
-"notification.sync.day_14.body" = "Please sync your wallet as soon as possible.";
+"notification.sync.title" = "Favor de sincronizar";
+"notification.sync.day_12.body" = "Por favor recuerda sincronizar tu cartera para asegurar que estés seguro";
+"notification.sync.day_13.body" = "Tienes un día más para sincronizar tu cartera antes de que estés en peligro.";
+"notification.sync.day_14.body" = "Favor de sincronizar tu cartera lo antes posible.";
