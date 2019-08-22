@@ -7,8 +7,8 @@
 
 "link.help" = "https://ln-zap.github.io/zap-tutorials/";
 "link.help.zapconnect" = "https://ln-zap.github.io/zap-tutorials/iOS-remote-node-setup";
-"link.privacy" = "http://zap.jackmallers.com/privacy";
-"link.bug_report" = "https://github.com/LN-Zap/zap-iOS/issues";
+"link.privacy" = "link.privacidad";
+"link.bug_report" = "link.informe_de_errores";
 "link.lnd_releases" = "https://github.com/lightningnetwork/lnd/releases";
 
 "error.wrong_uri_format" = "Formate de link desconocido.";
