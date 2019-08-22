@@ -144,10 +144,10 @@
 "scene.send.on_chain.fee.description.medium" = "Transacción Mediana";
 "scene.send.on_chain.fee.description.slow" = "Transacción Lenta";
 
-"scene.send.on_chain.fee.estimated_delivery" = "Estimated Delivery: %@";
+"scene.send.on_chain.fee.estimated_delivery" = "Entrega Estimada: %@";
 "scene.send.authentication_failed" = "Error de autenticación";
 "scene.send.maximum_fee" = "Costo previsto:";
-"scene.send.subtitle.on_chain_balance" = "On-chain balance: %@";
+"scene.send.subtitle.on_chain_balance" = "Balance en-cadena: %@";
 "scene.send.subtitle.lightning_can_send_balance" = "Puedes mandar: %@";
 "scene.send.success_label" = "Pago Exitoso";
 "scene.send.paste_button.title" = "Pega Dirección";
@@ -202,42 +202,42 @@
 "scene.transaction_detail.address_label" = "Dirección";
 "scene.transaction_detail.expiry_label" = "Caducidad";
 "scene.transaction_detail.expiry_label.expired" = "Expirado";
-"scene.transaction_detail.invoice_state_label" = "State";
-"scene.transaction_detail.invoice_state_label.settled" = "settled";
-"scene.transaction_detail.preimage_label" = "Preimage";
-"scene.transaction_detail.preimage_copy_message" = "Preimage copied.";
-"scene.transaction_detail.invoice_copy_message" = "Invoice copied.";
+"scene.transaction_detail.invoice_state_label" = "Estado";
+"scene.transaction_detail.invoice_state_label.settled" = "resuelto";
+"scene.transaction_detail.preimage_label" = "Preimagen";
+"scene.transaction_detail.preimage_copy_message" = "Preimagen copiada.";
+"scene.transaction_detail.invoice_copy_message" = "Factura copiada.";
 
 "scene.channel_detail.remote_pub_key_label" = "Clave pública";
 "scene.channel_detail.local_balance_label" = "Balance local";
 "scene.channel_detail.remote_balance_label" = "Balance remoto";
 "scene.channel_detail.closing_time.label" = "Cerrando";
 "scene.channel_detail.funding_transaction_label" = "Financiando Transacción";
-"scene.channel_detail.closing_transaction_label" = "Closing Transaction";
+"scene.channel_detail.closing_transaction_label" = "Cerrando Transacción";
 "scene.channel_detail.close_button" = "Cerrar canal";
 "scene.channel_detail.force_close_button" = "Forzar cierre de canal";
 
 "scene.filter.title" = "Filtro";
 "scene.filter.section_header.transaction_types" = "Tipos de transacción";
 "scene.filter.displayOnChainTransactions" = "Pagos en cadena";
-"scene.filter.display_expired_invoices" = "Expired Invoices";
+"scene.filter.display_expired_invoices" = "Facturas Expiradas";
 "scene.filter.displayLightningPayments" = "Pagos \"Lightning\"";
 "scene.filter.displayLightningInvoices" = "Facturas creadas";
 "scene.filter.displayChannelEvents" = "Eventos en el canal";
 
 "scene.qrcode_scanner.top_label" = "Escanear código QR";
-"scene.qrcode_scanner.error.unknown_format" = "Unknown address format.";
-"scene.qrcode_scanner.error.wrong_network" = "You tried opening an invoice for %@ but your node is connected to %@.";
-"scene.qrcode_scanner.error.zero_amount_invoice" = "For security reasons zap does not support invoices without a specified amount.";
+"scene.qrcode_scanner.error.unknown_format" = "Formato de dirección desconocida.";
+"scene.qrcode_scanner.error.wrong_network" = "Has intentado establecer una conexión para %@ pero tu nodo esta conectado a %@.";
+"scene.qrcode_scanner.error.zero_amount_invoice" = "Por motivos de seguridad zap no soporta facturas sin monto específico.";
 
 "scene.wallet.title" = "Cartera";
 "scene.wallet.total_balance" = "Balance Total";
-"scene.wallet.detail.on_chain" = "On-chain:";
+"scene.wallet.detail.on_chain" = "En cadena:";
 "scene.wallet.detail.lightning" = "Lightning:";
-"scene.wallet.detail.pending" = "Pending:";
-"scene.wallet.empty_state.title" = "Fund your wallet";
-"scene.wallet.empty_state.message" = "Your wallet is empty! Get started by depositing some funds.";
-"scene.wallet.empty_state.button_title" = "Deposit funds";
+"scene.wallet.detail.pending" = "Pendiente:";
+"scene.wallet.empty_state.title" = "Agregue fondos a su cartera Zap";
+"scene.wallet.empty_state.message" = "Tu cartera esta vacía! Para empezar, hay que depositar fondos.";
+"scene.wallet.empty_state.button_title" = "Deposita fondos";
 
 "scene.time_lock.headline" = "Contraseña incorrecta";
 "scene.time_lock.description" = "Su cartera está bloqueada para:";
@@ -248,12 +248,12 @@
 "scene.history.cell.payment_sent" = "Pago enviado";
 "scene.history.cell.payment_received" = "Pago recibido";
 "scene.history.cell.invoice_created" = "Solicitud de pago creada";
-"scene.history.cell.channel_opened" = "Opened Channel";
-"scene.history.cell.channel_closed" = "Closed Channel";
-"scene.history.cell.force_close_channel" = "Force closed Channel";
-"scene.history.cell.remote_force_close_channel" = "Remote forced close Channel";
-"scene.history.cell.breach_close_channel" = "Breach closed Channel";
-"scene.history.cell.close_channel_funding_canceled" = "Closed Channel (funding canceled)";
+"scene.history.cell.channel_opened" = "Abriste un Canal";
+"scene.history.cell.channel_closed" = "Cerraste un Canal";
+"scene.history.cell.force_close_channel" = "Forzar cierre de canal";
+"scene.history.cell.remote_force_close_channel" = "Cerraste canal remotamente";
+"scene.history.cell.breach_close_channel" = "Forzar cierre de canal";
+"scene.history.cell.close_channel_funding_canceled" = "Canal Cerrado (depósito cancelado)";
 "scene.history.cell.channel_abandoned" = "Canal abandonado";
 "scene.history.cell.transaction_sent" = "Pago enviado";
 "scene.history.cell.transaction_received" = "Pago recibido";
@@ -270,20 +270,20 @@
 
 "scene.wallet_list.title" = "Carteras";
 
-"scene.unlock.title" = "Unlock Node";
-"scene.unlock.unlock_button" = "Unlock";
-"scene.unlock.password_placeholder" = "Password";
-"scene.unlock.title_label" = "Unlock %@";
+"scene.unlock.title" = "Desbloquear Nodo";
+"scene.unlock.unlock_button" = "Desbloquear";
+"scene.unlock.password_placeholder" = "Contraseña";
+"scene.unlock.title_label" = "Desbloquear %@";
 
-"scene.manage_wallets.title" = "Manage Wallets";
-"scene.manage_wallets.cell.remote" = "remote";
+"scene.manage_wallets.title" = "Administrar Carteras";
+"scene.manage_wallets.cell.remote" = "remoto";
 
-"scene.channel_backup.title" = "Channel Backup";
-"scene.channel_backup.cell_title" = "%@ channel.backup";
-"scene.channel_backup.not_found" = "file not found";
-"scene.channel_backup.error.iCloudDisabled" = "iCloud seems to be disabled.";
-"scene.channel_backup.error.iCloudBackupFailed" = "iCloud backup failed.";
-"scene.channel_backup.error.localBackupFailed" = "Local file backup failed.";
+"scene.channel_backup.title" = "Respaldo de Canal";
+"scene.channel_backup.cell_title" = "%@ canal.respaldo";
+"scene.channel_backup.not_found" = "archivo no encontrado";
+"scene.channel_backup.error.iCloudDisabled" = "iCloud parece estar desactivado.";
+"scene.channel_backup.error.iCloudBackupFailed" = "Respaldo en iCloud falló.";
+"scene.channel_backup.error.localBackupFailed" = "Respaldo de archivo local falló.";
 "scene.channel_backup.error.lndError" = "Could not get channel backup from lnd.";
 
 "scene.push_notification.headline" = "Turn on **notifications** to stay in touch.";
