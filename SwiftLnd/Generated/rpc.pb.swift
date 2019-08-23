@@ -519,6 +519,15 @@ struct Lnrpc_SendRequest {
     set {_uniqueStorage()._cltvLimit = newValue}
   }
 
+  ///* 
+  ///An optional field that can be used to pass an arbitrary set of TLV records
+  ///to a peer which understands the new records. This can be used to pass
+  ///application specific data during the payment attempt.
+  var destTlv: Dictionary<UInt64,Data> {
+    get {return _storage._destTlv}
+    set {_uniqueStorage()._destTlv = newValue}
+  }
+
   var unknownFields = SwiftProtobuf.UnknownStorage()
 
   init() {}
@@ -1473,6 +1482,9 @@ struct Lnrpc_GetInfoResponse {
   //// The color of the current node in hex code format
   var color: String = String()
 
+  /// Whether we consider ourselves synced with the public channel graph.
+  var syncedToGraph: Bool = false
+
   var unknownFields = SwiftProtobuf.UnknownStorage()
 
   init() {}
@@ -2236,7 +2248,7 @@ struct Lnrpc_QueryRoutesRequest {
   }
 
   ///*
-  ///A list of edges to ignore during path finding.
+  ///Deprecated. A list of edges to ignore during path finding.
   var ignoredEdges: [Lnrpc_EdgeLocator] {
     get {return _storage._ignoredEdges}
     set {_uniqueStorage()._ignoredEdges = newValue}
@@ -2258,11 +2270,44 @@ struct Lnrpc_QueryRoutesRequest {
     set {_uniqueStorage()._useMissionControl = newValue}
   }
 
+  ///*
+  ///A list of directed node pairs that will be ignored during path finding.
+  var ignoredPairs: [Lnrpc_NodePair] {
+    get {return _storage._ignoredPairs}
+    set {_uniqueStorage()._ignoredPairs = newValue}
+  }
+
+  ///* 
+  ///An optional field that can be used to pass an arbitrary set of TLV records
+  ///to a peer which understands the new records. This can be used to pass
+  ///application specific data during the payment attempt. If the destination
+  ///does not support the specified recrods, and error will be returned.
+  var destTlv: Dictionary<UInt64,Data> {
+    get {return _storage._destTlv}
+    set {_uniqueStorage()._destTlv = newValue}
+  }
+
   var unknownFields = SwiftProtobuf.UnknownStorage()
 
   init() {}
 
   fileprivate var _storage = _StorageClass.defaultInstance
+}
+
+struct Lnrpc_NodePair {
+  // SwiftProtobuf.Message conformance is added in an extension below. See the
+  // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
+  // methods supported on all messages.
+
+  //// The sending node of the pair.
+  var from: Data = SwiftProtobuf.Internal.emptyData
+
+  //// The receiving node of the pair.
+  var to: Data = SwiftProtobuf.Internal.emptyData
+
+  var unknownFields = SwiftProtobuf.UnknownStorage()
+
+  init() {}
 }
 
 struct Lnrpc_EdgeLocator {
@@ -2324,6 +2369,18 @@ struct Lnrpc_Hop {
   ///An optional public key of the hop. If the public key is given, the payment
   ///can be executed without relying on a copy of the channel graph.
   var pubKey: String = String()
+
+  ///* 
+  ///If set to true, then this hop will be encoded using the new variable length
+  ///TLV format. Note that if any custom tlv_records below are specified, then
+  ///this field MUST be set to true for them to be encoded properly.
+  var tlvPayload: Bool = false
+
+  ///*
+  ///An optional set of key-value TLV records. This is useful within the context
+  ///of the SendToRoute call as it allows callers to specify arbitrary K-V pairs
+  ///to drop off at each hop within the onion.
+  var tlvRecords: Dictionary<UInt64,Data> = [:]
 
   var unknownFields = SwiftProtobuf.UnknownStorage()
 
@@ -4491,6 +4548,7 @@ extension Lnrpc_SendRequest: SwiftProtobuf.Message, SwiftProtobuf._MessageImplem
     8: .standard(proto: "fee_limit"),
     9: .standard(proto: "outgoing_chan_id"),
     10: .standard(proto: "cltv_limit"),
+    11: .standard(proto: "dest_tlv"),
   ]
 
   fileprivate class _StorageClass {
@@ -4504,6 +4562,7 @@ extension Lnrpc_SendRequest: SwiftProtobuf.Message, SwiftProtobuf._MessageImplem
     var _feeLimit: Lnrpc_FeeLimit? = nil
     var _outgoingChanID: UInt64 = 0
     var _cltvLimit: UInt32 = 0
+    var _destTlv: Dictionary<UInt64,Data> = [:]
 
     static let defaultInstance = _StorageClass()
 
@@ -4520,6 +4579,7 @@ extension Lnrpc_SendRequest: SwiftProtobuf.Message, SwiftProtobuf._MessageImplem
       _feeLimit = source._feeLimit
       _outgoingChanID = source._outgoingChanID
       _cltvLimit = source._cltvLimit
+      _destTlv = source._destTlv
     }
   }
 
@@ -4545,6 +4605,7 @@ extension Lnrpc_SendRequest: SwiftProtobuf.Message, SwiftProtobuf._MessageImplem
         case 8: try decoder.decodeSingularMessageField(value: &_storage._feeLimit)
         case 9: try decoder.decodeSingularUInt64Field(value: &_storage._outgoingChanID)
         case 10: try decoder.decodeSingularUInt32Field(value: &_storage._cltvLimit)
+        case 11: try decoder.decodeMapField(fieldType: SwiftProtobuf._ProtobufMap<SwiftProtobuf.ProtobufUInt64,SwiftProtobuf.ProtobufBytes>.self, value: &_storage._destTlv)
         default: break
         }
       }
@@ -4583,6 +4644,9 @@ extension Lnrpc_SendRequest: SwiftProtobuf.Message, SwiftProtobuf._MessageImplem
       if _storage._cltvLimit != 0 {
         try visitor.visitSingularUInt32Field(value: _storage._cltvLimit, fieldNumber: 10)
       }
+      if !_storage._destTlv.isEmpty {
+        try visitor.visitMapField(fieldType: SwiftProtobuf._ProtobufMap<SwiftProtobuf.ProtobufUInt64,SwiftProtobuf.ProtobufBytes>.self, value: _storage._destTlv, fieldNumber: 11)
+      }
     }
     try unknownFields.traverse(visitor: &visitor)
   }
@@ -4602,6 +4666,7 @@ extension Lnrpc_SendRequest: SwiftProtobuf.Message, SwiftProtobuf._MessageImplem
         if _storage._feeLimit != rhs_storage._feeLimit {return false}
         if _storage._outgoingChanID != rhs_storage._outgoingChanID {return false}
         if _storage._cltvLimit != rhs_storage._cltvLimit {return false}
+        if _storage._destTlv != rhs_storage._destTlv {return false}
         return true
       }
       if !storagesAreEqual {return false}
@@ -6202,6 +6267,7 @@ extension Lnrpc_GetInfoResponse: SwiftProtobuf.Message, SwiftProtobuf._MessageIm
     15: .same(proto: "num_inactive_channels"),
     16: .same(proto: "chains"),
     17: .same(proto: "color"),
+    18: .same(proto: "synced_to_graph"),
   ]
 
   mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
@@ -6222,6 +6288,7 @@ extension Lnrpc_GetInfoResponse: SwiftProtobuf.Message, SwiftProtobuf._MessageIm
       case 15: try decoder.decodeSingularUInt32Field(value: &self.numInactiveChannels)
       case 16: try decoder.decodeRepeatedMessageField(value: &self.chains)
       case 17: try decoder.decodeSingularStringField(value: &self.color)
+      case 18: try decoder.decodeSingularBoolField(value: &self.syncedToGraph)
       default: break
       }
     }
@@ -6273,6 +6340,9 @@ extension Lnrpc_GetInfoResponse: SwiftProtobuf.Message, SwiftProtobuf._MessageIm
     if !self.color.isEmpty {
       try visitor.visitSingularStringField(value: self.color, fieldNumber: 17)
     }
+    if self.syncedToGraph != false {
+      try visitor.visitSingularBoolField(value: self.syncedToGraph, fieldNumber: 18)
+    }
     try unknownFields.traverse(visitor: &visitor)
   }
 
@@ -6292,6 +6362,7 @@ extension Lnrpc_GetInfoResponse: SwiftProtobuf.Message, SwiftProtobuf._MessageIm
     if lhs.numInactiveChannels != rhs.numInactiveChannels {return false}
     if lhs.chains != rhs.chains {return false}
     if lhs.color != rhs.color {return false}
+    if lhs.syncedToGraph != rhs.syncedToGraph {return false}
     if lhs.unknownFields != rhs.unknownFields {return false}
     return true
   }
@@ -7640,6 +7711,8 @@ extension Lnrpc_QueryRoutesRequest: SwiftProtobuf.Message, SwiftProtobuf._Messag
     7: .standard(proto: "ignored_edges"),
     8: .standard(proto: "source_pub_key"),
     9: .standard(proto: "use_mission_control"),
+    10: .standard(proto: "ignored_pairs"),
+    11: .standard(proto: "dest_tlv"),
   ]
 
   fileprivate class _StorageClass {
@@ -7651,6 +7724,8 @@ extension Lnrpc_QueryRoutesRequest: SwiftProtobuf.Message, SwiftProtobuf._Messag
     var _ignoredEdges: [Lnrpc_EdgeLocator] = []
     var _sourcePubKey: String = String()
     var _useMissionControl: Bool = false
+    var _ignoredPairs: [Lnrpc_NodePair] = []
+    var _destTlv: Dictionary<UInt64,Data> = [:]
 
     static let defaultInstance = _StorageClass()
 
@@ -7665,6 +7740,8 @@ extension Lnrpc_QueryRoutesRequest: SwiftProtobuf.Message, SwiftProtobuf._Messag
       _ignoredEdges = source._ignoredEdges
       _sourcePubKey = source._sourcePubKey
       _useMissionControl = source._useMissionControl
+      _ignoredPairs = source._ignoredPairs
+      _destTlv = source._destTlv
     }
   }
 
@@ -7688,6 +7765,8 @@ extension Lnrpc_QueryRoutesRequest: SwiftProtobuf.Message, SwiftProtobuf._Messag
         case 7: try decoder.decodeRepeatedMessageField(value: &_storage._ignoredEdges)
         case 8: try decoder.decodeSingularStringField(value: &_storage._sourcePubKey)
         case 9: try decoder.decodeSingularBoolField(value: &_storage._useMissionControl)
+        case 10: try decoder.decodeRepeatedMessageField(value: &_storage._ignoredPairs)
+        case 11: try decoder.decodeMapField(fieldType: SwiftProtobuf._ProtobufMap<SwiftProtobuf.ProtobufUInt64,SwiftProtobuf.ProtobufBytes>.self, value: &_storage._destTlv)
         default: break
         }
       }
@@ -7720,6 +7799,12 @@ extension Lnrpc_QueryRoutesRequest: SwiftProtobuf.Message, SwiftProtobuf._Messag
       if _storage._useMissionControl != false {
         try visitor.visitSingularBoolField(value: _storage._useMissionControl, fieldNumber: 9)
       }
+      if !_storage._ignoredPairs.isEmpty {
+        try visitor.visitRepeatedMessageField(value: _storage._ignoredPairs, fieldNumber: 10)
+      }
+      if !_storage._destTlv.isEmpty {
+        try visitor.visitMapField(fieldType: SwiftProtobuf._ProtobufMap<SwiftProtobuf.ProtobufUInt64,SwiftProtobuf.ProtobufBytes>.self, value: _storage._destTlv, fieldNumber: 11)
+      }
     }
     try unknownFields.traverse(visitor: &visitor)
   }
@@ -7737,10 +7822,47 @@ extension Lnrpc_QueryRoutesRequest: SwiftProtobuf.Message, SwiftProtobuf._Messag
         if _storage._ignoredEdges != rhs_storage._ignoredEdges {return false}
         if _storage._sourcePubKey != rhs_storage._sourcePubKey {return false}
         if _storage._useMissionControl != rhs_storage._useMissionControl {return false}
+        if _storage._ignoredPairs != rhs_storage._ignoredPairs {return false}
+        if _storage._destTlv != rhs_storage._destTlv {return false}
         return true
       }
       if !storagesAreEqual {return false}
     }
+    if lhs.unknownFields != rhs.unknownFields {return false}
+    return true
+  }
+}
+
+extension Lnrpc_NodePair: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+  static let protoMessageName: String = _protobuf_package + ".NodePair"
+  static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
+    1: .same(proto: "from"),
+    2: .same(proto: "to"),
+  ]
+
+  mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
+    while let fieldNumber = try decoder.nextFieldNumber() {
+      switch fieldNumber {
+      case 1: try decoder.decodeSingularBytesField(value: &self.from)
+      case 2: try decoder.decodeSingularBytesField(value: &self.to)
+      default: break
+      }
+    }
+  }
+
+  func traverse<V: SwiftProtobuf.Visitor>(visitor: inout V) throws {
+    if !self.from.isEmpty {
+      try visitor.visitSingularBytesField(value: self.from, fieldNumber: 1)
+    }
+    if !self.to.isEmpty {
+      try visitor.visitSingularBytesField(value: self.to, fieldNumber: 2)
+    }
+    try unknownFields.traverse(visitor: &visitor)
+  }
+
+  static func ==(lhs: Lnrpc_NodePair, rhs: Lnrpc_NodePair) -> Bool {
+    if lhs.from != rhs.from {return false}
+    if lhs.to != rhs.to {return false}
     if lhs.unknownFields != rhs.unknownFields {return false}
     return true
   }
@@ -7821,6 +7943,8 @@ extension Lnrpc_Hop: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementation
     6: .same(proto: "amt_to_forward_msat"),
     7: .same(proto: "fee_msat"),
     8: .same(proto: "pub_key"),
+    9: .same(proto: "tlv_payload"),
+    10: .same(proto: "tlv_records"),
   ]
 
   mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
@@ -7834,6 +7958,8 @@ extension Lnrpc_Hop: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementation
       case 6: try decoder.decodeSingularInt64Field(value: &self.amtToForwardMsat)
       case 7: try decoder.decodeSingularInt64Field(value: &self.feeMsat)
       case 8: try decoder.decodeSingularStringField(value: &self.pubKey)
+      case 9: try decoder.decodeSingularBoolField(value: &self.tlvPayload)
+      case 10: try decoder.decodeMapField(fieldType: SwiftProtobuf._ProtobufMap<SwiftProtobuf.ProtobufUInt64,SwiftProtobuf.ProtobufBytes>.self, value: &self.tlvRecords)
       default: break
       }
     }
@@ -7864,6 +7990,12 @@ extension Lnrpc_Hop: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementation
     if !self.pubKey.isEmpty {
       try visitor.visitSingularStringField(value: self.pubKey, fieldNumber: 8)
     }
+    if self.tlvPayload != false {
+      try visitor.visitSingularBoolField(value: self.tlvPayload, fieldNumber: 9)
+    }
+    if !self.tlvRecords.isEmpty {
+      try visitor.visitMapField(fieldType: SwiftProtobuf._ProtobufMap<SwiftProtobuf.ProtobufUInt64,SwiftProtobuf.ProtobufBytes>.self, value: self.tlvRecords, fieldNumber: 10)
+    }
     try unknownFields.traverse(visitor: &visitor)
   }
 
@@ -7876,6 +8008,8 @@ extension Lnrpc_Hop: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementation
     if lhs.amtToForwardMsat != rhs.amtToForwardMsat {return false}
     if lhs.feeMsat != rhs.feeMsat {return false}
     if lhs.pubKey != rhs.pubKey {return false}
+    if lhs.tlvPayload != rhs.tlvPayload {return false}
+    if lhs.tlvRecords != rhs.tlvRecords {return false}
     if lhs.unknownFields != rhs.unknownFields {return false}
     return true
   }
