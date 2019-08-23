@@ -19,7 +19,7 @@ final class OpenChannelViewModel: NSObject {
     let subtitle = Observable<String?>(nil)
     let isAmountValid = Observable(true)
 
-    var amount: Satoshi = 100000 {
+    var amount: Satoshi {
         didSet {
             updateSubtitle()
             isAmountValid.value = validRange.contains(amount) && amount < lightningService.balanceService.onChainConfirmed.value
@@ -31,6 +31,8 @@ final class OpenChannelViewModel: NSObject {
     init(lightningService: LightningService, lightningNodeURI: LightningNodeURI) {
         self.lightningService = lightningService
         self.lightningNodeURI = lightningNodeURI
+
+        amount = max(min(lightningService.balanceService.onChainConfirmed.value * 0.75, LndConstants.maxChannelSize), LndConstants.minChannelSize)
 
         super.init()
 
