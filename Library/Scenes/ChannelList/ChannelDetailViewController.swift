@@ -109,7 +109,7 @@ final class ChannelDetailViewController: ModalDetailViewController {
             ]))
         }
 
-        if !channelViewModel.state.value.isClosing {
+        if channelViewModel.state.value == .active || channelViewModel.state.value == .inactive {
             let closeTitle = channelViewModel.state.value == .active ? L10n.Scene.ChannelDetail.closeButton : L10n.Scene.ChannelDetail.forceCloseButton
 
             contentStackView.addArrangedElement(.separator)

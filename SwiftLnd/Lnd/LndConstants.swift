@@ -13,5 +13,5 @@ public enum LndConstants {
     public static let maxChannelSize: Satoshi = 16777215
     public static let maxLightningPaymentAllowed: Satoshi = 4294967
 
-    public static let currentVersionNumber = Version.Number(string: "0.5.2")! // swiftlint:disable:this force_unwrapping
+    public static let currentVersionNumber = Version.Number(string: "0.7.1")! // swiftlint:disable:this force_unwrapping
 }
