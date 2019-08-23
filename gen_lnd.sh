@@ -26,7 +26,9 @@ protoc -I/usr/local/include -I.\
 DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" >/dev/null 2>&1 && pwd )"
 FRAMEWORKDIR=$DIR/Frameworks
 cd $GOPATH/src/github.com/lightningnetwork/lnd
-git apply $DIR/mainnet.patch
+git apply $DIR/patches/mainnet.patch
+git apply $DIR/patches/user_agent_name.patch
+git apply $DIR/patches/user_agent_version.patch
 
 make rpc
 make mobile-rpc
