@@ -114,16 +114,16 @@
 "scene.setup_pin.top_label.non_matching" = "Los pines no coinciden. Por favor, inténtelo de nuevo.";
 "scene.setup_pin.top_label.validate" = "Introduzca el pin de nuevo para validar.";
 
-"scene.onboarding.page_1.title" = "Tus **laves**, tus **bitcoins**.";
-"scene.onboarding.page_1.message" = "Con Zap, tú estás en control de tus fondos. Para proteger tus fondos, te proporcionamos una frase de respaldo.";
+"scene.onboarding.page_1.title" = "Your **keys**, your **coins**";
+"scene.onboarding.page_1.message" = "With Zap, you are in control of your money. To make sure your coins are always stored safely, Zap will provide a recovery phrase for you.";
 "scene.onboarding.page_1.button_title" = "Continuar";
 
-"scene.onboarding.page_2.title" = "Escribe tu **frase de respaldo**.";
-"scene.onboarding.page_2.message" = "Asegúrate de escribir tu frase de respaldo. Tu frase de respaldo es necesaria para recuperar tus fondos en caso de una emergencia.";
+"scene.onboarding.page_2.title" = "Save your **recovery phrase**";
+"scene.onboarding.page_2.message" = "Write down your phrase. You can use your phrase to recover your funds anytime if you misplace your device.";
 "scene.onboarding.page_2.button_title" = "Continuar";
 
-"scene.onboarding.page_3.title" = "Mantén tu frase de respaldo en un lugar **seguro**.";
-"scene.onboarding.page_3.message" = "Tu frase de respaldo tiene toda la información requerida para recuperar tu cartera. Resguarda tu frase en un lugar privado y seguro y no la compartas con nadie.";
+"scene.onboarding.page_3.title" = "Keep it **safe**";
+"scene.onboarding.page_3.message" = "Make sure to keep your recovery phrase private. Store it somewhere only you will find it.";
 "scene.onboarding.page_3.button_title" = "Genera Frase de Respaldo";
 
 "scene.confirm_mnemonic.title" = "Confirma Frase de Respaldo";
@@ -286,8 +286,8 @@
 "scene.channel_backup.error.localBackupFailed" = "Respaldo de archivo local falló.";
 "scene.channel_backup.error.lndError" = "Error al tratar de conseguir el respaldo del canala de lnd.";
 
-"scene.push_notification.headline" = "Autoriza **notificaciones** para mantenernos en contacto.";
-"scene.push_notification.message" = "Estas en buenas manos. Zap te notificará cuando tu cartera necesita tu atención.";
+"scene.push_notification.headline" = "Stay **up to date**";
+"scene.push_notification.message" = "To keep your funds safe, Zap needs to sync once in a while. Do you want to be notified when your wallet needs to sync?";
 "scene.push_notification.confirm_button_title" = "Activar notificaciones";
 "scene.push_notification.skip_button_title" = "Saltar";
 
