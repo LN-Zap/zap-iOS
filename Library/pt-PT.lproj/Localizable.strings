@@ -114,16 +114,16 @@
 "scene.setup_pin.top_label.non_matching" = "Os pins não coincidem. Tente de novo.";
 "scene.setup_pin.top_label.validate" = "Insira o pin de novo para validar.";
 
-"scene.onboarding.page_1.title" = "Your **keys**, your **coins**.";
-"scene.onboarding.page_1.message" = "With Zap, you are in control of your funds. In order to secure your funds, we will provide you with a recovery phrase.";
+"scene.onboarding.page_1.title" = "Your **keys**, your **coins**";
+"scene.onboarding.page_1.message" = "With Zap, you are in control of your money. To make sure your coins are always stored safely, Zap will provide a recovery phrase for you.";
 "scene.onboarding.page_1.button_title" = "Continue";
 
-"scene.onboarding.page_2.title" = "Write down your **recovery phrase**.";
-"scene.onboarding.page_2.message" = "Make sure you write down your recovery phrase. Your recovery phrase can be used to recover your funds in the event of an emergency.";
+"scene.onboarding.page_2.title" = "Save your **recovery phrase**";
+"scene.onboarding.page_2.message" = "Write down your phrase. You can use your phrase to recover your funds anytime if you misplace your device.";
 "scene.onboarding.page_2.button_title" = "Continue";
 
-"scene.onboarding.page_3.title" = "Keep your recovery phrase **safe**.";
-"scene.onboarding.page_3.message" = "Your recovery phrase has all the information needed to access your wallet. Store your phrase in a private and secure place and do not share your phrase with anyone.";
+"scene.onboarding.page_3.title" = "Keep it **safe**";
+"scene.onboarding.page_3.message" = "Make sure to keep your recovery phrase private. Store it somewhere only you will find it.";
 "scene.onboarding.page_3.button_title" = "Generate Recovery Phrase";
 
 "scene.confirm_mnemonic.title" = "Confirm Recovery Phrase";
@@ -286,8 +286,8 @@
 "scene.channel_backup.error.localBackupFailed" = "Local file backup failed.";
 "scene.channel_backup.error.lndError" = "Could not get channel backup from lnd.";
 
-"scene.push_notification.headline" = "Turn on **notifications** to stay in touch.";
-"scene.push_notification.message" = "We have your back. Zap will notify you when your wallet needs you.";
+"scene.push_notification.headline" = "Stay **up to date**";
+"scene.push_notification.message" = "To keep your funds safe, Zap needs to sync once in a while. Do you want to be notified when your wallet needs to sync?";
 "scene.push_notification.confirm_button_title" = "Turn on notifications";
 "scene.push_notification.skip_button_title" = "Skip";
 
