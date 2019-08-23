@@ -13,6 +13,14 @@ struct LocalLndConfiguration {
     var network = Network.testnet
     var alias = "Zap iOS"
 
+    private var userAgentVersion: String? {
+        guard
+            let versionNumber = Bundle.main.object(forInfoDictionaryKey: "CFBundleShortVersionString") as? String,
+            let buildNumber = Bundle.main.object(forInfoDictionaryKey: "CFBundleVersion") as? String
+            else { return nil }
+        return "\(versionNumber)-\(buildNumber)"
+    }
+
     private typealias Configuration = [Section: [(String, String)]]
 
     private enum Section: String {
@@ -65,7 +73,8 @@ struct LocalLndConfiguration {
                 ("bitcoin.node", value: "neutrino")
             ],
             .neutrino: [
-                ("neutrino.feeurl", value: "https://nodes.lightning.computer/fees/v1/btc-fee-estimates.json")
+                ("neutrino.feeurl", value: "https://nodes.lightning.computer/fees/v1/btc-fee-estimates.json"),
+                ("neutrino.useragentname", "zap-ios")
             ],
             .autopilot: [
                 ("autopilot.active", value: "0")
@@ -74,6 +83,10 @@ struct LocalLndConfiguration {
 
         for node in neutrinoNodes {
             configuration[.neutrino]?.append(("neutrino.connect", value: node))
+        }
+
+        if let userAgentVersion = userAgentVersion {
+            configuration[.neutrino]?.append(("neutrino.useragentversion", value: userAgentVersion))
         }
 
         return configuration
