@@ -95,10 +95,10 @@
 "scene.channels.close_success.toast" = "Le canal se ferme.";
 "scene.channels.empty_state.title" = "Open a channel";
 "scene.channels.empty_state.message" = "You can't transact on the Lightning Network yet! Let's open a channel to start transacting on the Lightning Network.";
-"scene.channels.empty_state.button_title" = "Open a channel";
+"scene.channels.empty_state.button_title" = "Ouvrir un canal";
 
 "scene.open_channel.title" = "Ouvrir un canal";
-"scene.open_channel.channel_uri_label" = "Node:";
+"scene.open_channel.channel_uri_label" = "Nœud:";
 "scene.open_channel.add_button" = "Ouvrir un canal";
 "scene.open_channel.subtitle.minimum_size" = "Minimum channel size: %@";
 "scene.open_channel.subtitle.maximum_size" = "Maximum channel size: %@";
