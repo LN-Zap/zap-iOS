@@ -13,7 +13,7 @@
 
 ### [Download the mainnet alpha 🔥](https://testflight.apple.com/join/elC3EXAK)
 
-Zap is a free Lightning Network wallet focused on user experience and ease of use, with the overall goal of helping the cryptocurrency community scale Bitcoin and other cryptocurrencies.
+Zap is a free Lightning Network wallet focused on user experience and ease of use, with the overall goal of helping the cryptocurrency community scale Bitcoin.
 
 We have an active [slack][slack] channel where you can join the discussion on development, design and product.
 
