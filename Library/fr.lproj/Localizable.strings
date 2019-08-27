@@ -60,15 +60,15 @@
 "scene.settings.item.on_chain_request_address.bech32" = "Bech32";
 "scene.settings.item.on_chain_request_address.p2sh" = "P2SH";
 "scene.settings.item.manage_channels" = "Gestion des canaux";
-"scene.settings.item.channel_backup" = "Channel Backup";
-"scene.settings.item.node_uri" = "URI du noeud";
+"scene.settings.item.channel_backup" = "Sauvegarde des canaux";
+"scene.settings.item.node_uri" = "URI du nœud";
 "scene.settings.item.remove_remote_node" = "Gestion des Portefeuilles";
 
 "scene.settings.item.change_pin" = "Changer le Pin";
 "scene.settings.item.report_issue" = "Signaler un problème";
 "scene.settings.item.help" = "Besoin d'aide ?";
 "scene.settings.item.privacy_policy" = "Politique de confidentialité";
-"scene.settings.item.lnd_log" = "Voir le log lnd";
+"scene.settings.item.lnd_log" = "Voir l'historique lnd";
 
 "scene.request.title" = "Recevoir";
 "scene.request.lightning_button" = "Lightning";
@@ -76,9 +76,9 @@
 "scene.request.on_chain_button" = "On-chain";
 "scene.request.generate_request_button" = "Générer une demande";
 "scene.request.lightning_header_title" = "Demande de Paiement Lightning";
-"scene.request.on_chain_header_title" = "On-Chain Payment Request";
+"scene.request.on_chain_header_title" = "Demande de Paiement On-chain";
 "scene.request.next_button_title" = "Suivant";
-"scene.request.subtitle.lightning" = "Vous pouvez recevoir %@";
+"scene.request.subtitle.lightning" = "Vous pouvez recevoir : %@";
 
 "scene.channels.title" = "Canaux";
 "scene.channels.header.total_can_send" = "Vous pouvez envoyer :";
