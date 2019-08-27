@@ -1,4 +1,4 @@
-"generic.memo.placeholder" = "À quoi ça sert?";
+"generic.memo.placeholder" = "À quoi ça sert ?";
 "generic.qr_code.copy_button" = "Copier";
 "generic.qr_code.copy_success_message" = "L'adresse a été copiée dans le presse-papiers.";
 "generic.pasteboard.invalid_address" = "Adresse non valide";
@@ -81,10 +81,10 @@
 "scene.request.subtitle.lightning" = "Vous pouvez recevoir %@";
 
 "scene.channels.title" = "Canaux";
-"scene.channels.header.total_can_send" = "Total peut envoyer :";
-"scene.channels.header.total_can_receive" = "Total peut recevoir :";
-"scene.channels.header.total_pending" = "Total en attente :";
-"scene.channels.header.offline" = "Total offline:";
+"scene.channels.header.total_can_send" = "Vous pouvez envoyer :";
+"scene.channels.header.total_can_receive" = "Vous pouvez recevoir :";
+"scene.channels.header.total_pending" = "Fonds en attente :";
+"scene.channels.header.offline" = "Fonds hors-ligne :";
 "scene.channels.close.title" = "Fermer le canal";
 "scene.channels.close.message" = "Voulez-vous vraiment fermer le canal avec nœud %@ ?";
 "scene.channels.force_close.title" = "Fermer de force le canal";
@@ -100,11 +100,11 @@
 "scene.open_channel.title" = "Ouvrir un canal";
 "scene.open_channel.channel_uri_label" = "Nœud:";
 "scene.open_channel.add_button" = "Ouvrir un canal";
-"scene.open_channel.subtitle.minimum_size" = "Minimum channel size: %@";
-"scene.open_channel.subtitle.maximum_size" = "Maximum channel size: %@";
-"scene.open_channel.subtitle.balance" = "On-chain balance: %@";
-"scene.open_channel.suggested_peers.title" = "Suggested Peers";
-"scene.open_channel.paste_button.title" = "Paste Peer Address";
+"scene.open_channel.subtitle.minimum_size" = "Taille minimum du canal: %@";
+"scene.open_channel.subtitle.maximum_size" = "Taille maximum du canal: %@";
+"scene.open_channel.subtitle.balance" = "Fonds disponibles: %@";
+"scene.open_channel.suggested_peers.title" = "Pairs suggérés";
+"scene.open_channel.paste_button.title" = "Coller l'adresse d'un pair";
 
 "scene.pin.biometric.fallback.title" = "Utiliser un code d’accès";
 "scene.pin.biometric.reason" = "Pour accéder aux données sécurisées";
@@ -114,7 +114,7 @@
 "scene.setup_pin.top_label.non_matching" = "Les PIN ne correspond pas. Veuillez essayer de nouveau.";
 "scene.setup_pin.top_label.validate" = "Entrez le code PIN à nouveau pour valider.";
 
-"scene.onboarding.page_1.title" = "Your **keys**, your **coins**";
+"scene.onboarding.page_1.title" = "Vos **clés**, vos **fonds**";
 "scene.onboarding.page_1.message" = "With Zap, you are in control of your money. To make sure your coins are always stored safely, Zap will provide a recovery phrase for you.";
 "scene.onboarding.page_1.button_title" = "Continue";
 
@@ -231,7 +231,7 @@
 "scene.qrcode_scanner.error.zero_amount_invoice" = "For security reasons zap does not support invoices without a specified amount.";
 
 "scene.wallet.title" = "Portefeuille";
-"scene.wallet.total_balance" = "Total Balance";
+"scene.wallet.total_balance" = "Fonds totaux";
 "scene.wallet.detail.on_chain" = "On-chain:";
 "scene.wallet.detail.lightning" = "Lightning:";
 "scene.wallet.detail.pending" = "Pending:";
