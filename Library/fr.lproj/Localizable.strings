@@ -250,9 +250,9 @@
 "scene.history.cell.invoice_created" = "Demande de paiement créée";
 "scene.history.cell.channel_opened" = "Canal ouvert";
 "scene.history.cell.channel_closed" = "Canal fermé";
-"scene.history.cell.force_close_channel" = "Force closed Channel";
-"scene.history.cell.remote_force_close_channel" = "Remote forced close Channel";
-"scene.history.cell.breach_close_channel" = "Breach closed Channel";
+"scene.history.cell.force_close_channel" = "Canal fermé de force";
+"scene.history.cell.remote_force_close_channel" = "Canal fermé de force par le pair";
+"scene.history.cell.breach_close_channel" = "Canal fermé injustement";
 "scene.history.cell.close_channel_funding_canceled" = "Canal fermé (ouverture annulée)";
 "scene.history.cell.channel_abandoned" = "Canal abandonné";
 "scene.history.cell.transaction_sent" = "Paiement envoyé";
@@ -260,7 +260,7 @@
 "scene.history.cell.label.new" = "nouveau";
 "scene.history.cell.label.error" = "erreur";
 
-"scene.node_uri.title" = "Se connecter au Node";
+"scene.node_uri.title" = "Se connecter au nœud";
 "scene.node_uri.alias_label" = "Alias";
 "scene.node_uri.uri_label" = "URI";
 
