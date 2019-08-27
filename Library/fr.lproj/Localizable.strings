@@ -284,14 +284,14 @@
 "scene.channel_backup.error.iCloudDisabled" = "iCloud semble être désactivé.";
 "scene.channel_backup.error.iCloudBackupFailed" = "La sauvegarde iCloud a échoué.";
 "scene.channel_backup.error.localBackupFailed" = "La sauvegarde locale du fichier a échoué.";
-"scene.channel_backup.error.lndError" = "Could not get channel backup from lnd.";
+"scene.channel_backup.error.lndError" = "Impossible d'accéder à la sauvegarde des canaux de lnd.";
 
-"scene.push_notification.headline" = "Stay **up to date**";
-"scene.push_notification.message" = "To keep your funds safe, Zap needs to sync once in a while. Do you want to be notified when your wallet needs to sync?";
-"scene.push_notification.confirm_button_title" = "Turn on notifications";
-"scene.push_notification.skip_button_title" = "Skip";
+"scene.push_notification.headline" = "Restez **à jour**";
+"scene.push_notification.message" = "Pour gardez vos fonds en sécurité, Zap doit se synchroniser de temps en temps. Voulez-vous être notifié lorsque votre portefeuille doit se synchroniser ?";
+"scene.push_notification.confirm_button_title" = "Activer les notifications";
+"scene.push_notification.skip_button_title" = "Passer";
 
-"notification.sync.title" = "Please sync";
-"notification.sync.day_12.body" = "Please remember syncing your wallet to make sure you stay safe";
+"notification.sync.title" = "Pensez à synchroniser";
+"notification.sync.day_12.body" = "Synchronisez votre portefeuille afin de garantir sa sécurité.";
 "notification.sync.day_13.body" = "You have one more day to sync your wallet before it's getting dangerous.";
-"notification.sync.day_14.body" = "Please sync your wallet as soon as possible.";
+"notification.sync.day_14.body" = "Synchronisez votre portefeuille dès que possible.";
