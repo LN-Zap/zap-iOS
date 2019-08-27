@@ -62,7 +62,7 @@
 "scene.settings.item.manage_channels" = "Gestion des canaux";
 "scene.settings.item.channel_backup" = "Sauvegarde des canaux";
 "scene.settings.item.node_uri" = "URI du nœud";
-"scene.settings.item.remove_remote_node" = "Gestion des Portefeuilles";
+"scene.settings.item.remove_remote_node" = "Gérer les portefeuilles";
 
 "scene.settings.item.change_pin" = "Changer le code PIN";
 "scene.settings.item.report_issue" = "Signaler un problème";
@@ -239,11 +239,11 @@
 "scene.wallet.empty_state.message" = "Votre portefeuille est vide ! Pour commencer, ajoutez-y quelques fonds.";
 "scene.wallet.empty_state.button_title" = "Déposer des fonds";
 
-"scene.time_lock.headline" = "Mot de passe erroné";
+"scene.time_lock.headline" = "Code d'accès erroné";
 "scene.time_lock.description" = "Votre portefeuille est verrouillé pendant :";
 
-"scene.modal_pin.headline" = "Entrez le mot de passe";
-"scene.modal_pin.description" = "Veuillez entrer votre mot de passe pour continuer";
+"scene.modal_pin.headline" = "Entrez le code d’accès";
+"scene.modal_pin.description" = "Veuillez entrer votre code d'accès pour continuer";
 
 "scene.history.cell.payment_sent" = "Paiement envoyé";
 "scene.history.cell.payment_received" = "Paiement reçu";
@@ -270,20 +270,20 @@
 
 "scene.wallet_list.title" = "Portefeuilles";
 
-"scene.unlock.title" = "Déverrouillez le noeud";
+"scene.unlock.title" = "Déverrouillez votre nœud";
 "scene.unlock.unlock_button" = "Déverrouiller";
 "scene.unlock.password_placeholder" = "Mot de passe";
 "scene.unlock.title_label" = "Déverrouiller %@";
 
-"scene.manage_wallets.title" = "Manage Wallets";
-"scene.manage_wallets.cell.remote" = "remote";
+"scene.manage_wallets.title" = "Gérer les portefeuilles";
+"scene.manage_wallets.cell.remote" = "distant";
 
-"scene.channel_backup.title" = "Channel Backup";
+"scene.channel_backup.title" = "Sauvegarde des canaux";
 "scene.channel_backup.cell_title" = "%@ channel.backup";
-"scene.channel_backup.not_found" = "file not found";
-"scene.channel_backup.error.iCloudDisabled" = "iCloud seems to be disabled.";
-"scene.channel_backup.error.iCloudBackupFailed" = "iCloud backup failed.";
-"scene.channel_backup.error.localBackupFailed" = "Local file backup failed.";
+"scene.channel_backup.not_found" = "fichier introuvable";
+"scene.channel_backup.error.iCloudDisabled" = "iCloud semble être désactivé.";
+"scene.channel_backup.error.iCloudBackupFailed" = "La sauvegarde iCloud a échoué.";
+"scene.channel_backup.error.localBackupFailed" = "La sauvegarde locale du fichier a échoué.";
 "scene.channel_backup.error.lndError" = "Could not get channel backup from lnd.";
 
 "scene.push_notification.headline" = "Stay **up to date**";
