@@ -1,6 +1,6 @@
 "generic.memo.placeholder" = "À quoi ça sert ?";
 "generic.qr_code.copy_button" = "Copier";
-"generic.qr_code.copy_success_message" = "L'adresse a été copiée dans le presse-papiers.";
+"generic.qr_code.copy_success_message" = "L'adresse a été copiée.";
 "generic.pasteboard.invalid_address" = "Adresse non valide";
 "generic.qr_code.share_button" = "Partager";
 "generic.cancel" = "Annuler";
@@ -12,13 +12,13 @@
 "link.lnd_releases" = "https://github.com/lightningnetwork/lnd/releases";
 
 "error.wrong_uri_format" = "Format de lien inconnu.";
-"error.wrong_uri_network" = "Vous avez essayé d'ouvrir un lien pour %@ mais votre node est connecté à %@.";
+"error.wrong_uri_network" = "Vous avez essayé d'ouvrir un lien pour le %@, mais votre node est connecté au %@.";
 "error.block_explorer.unsupported_network" = "%@ ne prend pas en charge %@.";
 
-"rpc_connect_qrcode_error.btc_pay_expired" = "On dirait que le code à expiré.";
+"rpc_connect_qrcode_error.btc_pay_expired" = "Il semble que le code ait expiré.";
 "rpc_connect_qrcode_error.btc_pay_configuration_broken" = "Impossible de lire le fichier des configurations de BTCPay.";
 "rpc_connect_qrcode_error.cant_read_qrcode" = "Format de code invalide.";
-"rpc_connect_qrcode_error.code_updated" = "Connection mise à jour.";
+"rpc_connect_qrcode_error.code_updated" = "Connexion mise à jour.";
 
 "channel.state.active" = "En ligne";
 "channel.state.inactive" = "Déconnecté";
