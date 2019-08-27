@@ -226,9 +226,9 @@
 "scene.filter.displayChannelEvents" = "Événements de canaux";
 
 "scene.qrcode_scanner.top_label" = "Scannez le QR Code";
-"scene.qrcode_scanner.error.unknown_format" = "Unknown address format.";
-"scene.qrcode_scanner.error.wrong_network" = "You tried opening an invoice for %@ but your node is connected to %@.";
-"scene.qrcode_scanner.error.zero_amount_invoice" = "For security reasons zap does not support invoices without a specified amount.";
+"scene.qrcode_scanner.error.unknown_format" = "Format d'adresse inconnu.";
+"scene.qrcode_scanner.error.wrong_network" = "Vous avez essayé d'ouvrir un lien pour le %@, mais votre node est connecté au %@.";
+"scene.qrcode_scanner.error.zero_amount_invoice" = "Pour des raisons de sécurité, Zap ne supporte pas les factures sans montant.";
 
 "scene.wallet.title" = "Portefeuille";
 "scene.wallet.total_balance" = "Solde total";
