@@ -119,12 +119,12 @@
 "scene.onboarding.page_1.button_title" = "Continuer";
 
 "scene.onboarding.page_2.title" = "Sauvegardez votre **phrase**";
-"scene.onboarding.page_2.message" = "Write down your phrase. You can use your phrase to recover your funds anytime if you misplace your device.";
-"scene.onboarding.page_2.button_title" = "Continue";
+"scene.onboarding.page_2.message" = "Écrivez votre phrase de restauration quelque part. Vous pourrez l'utiliser pour récupérer vos fonds si vous perdez votre appareil.";
+"scene.onboarding.page_2.button_title" = "Continuer";
 
 "scene.onboarding.page_3.title" = "Gardez-la **précieusement**";
-"scene.onboarding.page_3.message" = "Make sure to keep your recovery phrase private. Store it somewhere only you will find it.";
-"scene.onboarding.page_3.button_title" = "Generate Recovery Phrase";
+"scene.onboarding.page_3.message" = "Prenez soin de votre phrase de restauration. Cachez-la dans un endroit sécurisé et privé.";
+"scene.onboarding.page_3.button_title" = "Générer la phrase";
 
 "scene.confirm_mnemonic.title" = "Confirm Recovery Phrase";
 "scene.confirm_mnemonic.headline" = "Select word number %d";
