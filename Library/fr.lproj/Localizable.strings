@@ -293,5 +293,5 @@
 
 "notification.sync.title" = "Pensez à synchroniser";
 "notification.sync.day_12.body" = "Synchronisez votre portefeuille afin de garantir sa sécurité.";
-"notification.sync.day_13.body" = "You have one more day to sync your wallet before it's getting dangerous.";
+"notification.sync.day_13.body" = "Synchronisez votre portefeuille avant que sa sécurité ne soit compromise.";
 "notification.sync.day_14.body" = "Synchronisez votre portefeuille dès que possible.";
