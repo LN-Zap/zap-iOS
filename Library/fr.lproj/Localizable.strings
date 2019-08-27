@@ -15,16 +15,16 @@
 "error.wrong_uri_network" = "Vous avez essayé d'ouvrir un lien pour le %@, mais votre node est connecté au %@.";
 "error.block_explorer.unsupported_network" = "%@ ne prend pas en charge %@.";
 
-"rpc_connect_qrcode_error.btc_pay_expired" = "Il semble que le code ait expiré.";
+"rpc_connect_qrcode_error.btc_pay_expired" = "Il semble que ce code ait expiré.";
 "rpc_connect_qrcode_error.btc_pay_configuration_broken" = "Impossible de lire le fichier des configurations de BTCPay.";
 "rpc_connect_qrcode_error.cant_read_qrcode" = "Format de code invalide.";
 "rpc_connect_qrcode_error.code_updated" = "Connexion mise à jour.";
 
 "channel.state.active" = "En ligne";
 "channel.state.inactive" = "Déconnecté";
-"channel.state.opening" = "Ouverture";
-"channel.state.closing" = "Fermeture";
-"channel.state.force_closing" = "Fermeture forcée";
+"channel.state.opening" = "En cours d'ouverture";
+"channel.state.closing" = "En cours de fermeture";
+"channel.state.force_closing" = "En cours de fermeture forcée";
 "channel.state.waiting_close" = "En attente de fermeture";
 
 "network_type.simnet" = "Simnet";
