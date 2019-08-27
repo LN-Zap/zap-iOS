@@ -93,8 +93,8 @@
 "scene.channels.alert.force_close" = "Fermeture Forcée de Channel";
 "scene.channels.close_loading_view" = "Channel en cours de fermeture";
 "scene.channels.close_success.toast" = "Le canal se ferme.";
-"scene.channels.empty_state.title" = "Open a channel";
-"scene.channels.empty_state.message" = "You can't transact on the Lightning Network yet! Let's open a channel to start transacting on the Lightning Network.";
+"scene.channels.empty_state.title" = "Ouvrir un canal";
+"scene.channels.empty_state.message" = "Vous devez d'abord ouvrir un canal pour pouvoir faire des transactions sur le Lightning Network.";
 "scene.channels.empty_state.button_title" = "Ouvrir un canal";
 
 "scene.open_channel.title" = "Ouvrir un canal";
