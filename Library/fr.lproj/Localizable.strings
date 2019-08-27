@@ -126,33 +126,33 @@
 "scene.onboarding.page_3.message" = "Prenez soin de votre phrase de restauration. Cachez-la dans un endroit sécurisé et privé.";
 "scene.onboarding.page_3.button_title" = "Générer la phrase";
 
-"scene.confirm_mnemonic.title" = "Confirm Recovery Phrase";
-"scene.confirm_mnemonic.headline" = "Select word number %d";
+"scene.confirm_mnemonic.title" = "Confirmer la phrase";
+"scene.confirm_mnemonic.headline" = "Sélectionnez le mot n°%d";
 
 "scene.send.title" = "Envoyer";
 "scene.send.send_button" = "Envoyer";
 "scene.send.address_headline" = "À :";
 "scene.send.memo_headline" = "Note :";
 "scene.send.sending" = "Envoi en cours...";
-"scene.send.lightning.title" = "Envoyer un Paiement Lightning";
-"scene.send.on_chain.title" = "Send On-Chain";
-"scene.send.on_chain.fee" = "Fee:";
-"scene.send.on_chain.fee.fast" = "Fast";
-"scene.send.on_chain.fee.medium" = "Medium";
-"scene.send.on_chain.fee.slow" = "Slow";
-"scene.send.on_chain.fee.description.fast" = "Fast Transaction";
-"scene.send.on_chain.fee.description.medium" = "Medium Transaction";
-"scene.send.on_chain.fee.description.slow" = "Slow Transaction";
+"scene.send.lightning.title" = "Envoyer un paiement Lightning";
+"scene.send.on_chain.title" = "Envoyer un paiement On-chain";
+"scene.send.on_chain.fee" = "Frais :";
+"scene.send.on_chain.fee.fast" = "Rapide";
+"scene.send.on_chain.fee.medium" = "Normal";
+"scene.send.on_chain.fee.slow" = "Lent";
+"scene.send.on_chain.fee.description.fast" = "Transaction rapide";
+"scene.send.on_chain.fee.description.medium" = "Transaction normale";
+"scene.send.on_chain.fee.description.slow" = "Transaction lente";
 
-"scene.send.on_chain.fee.estimated_delivery" = "Estimated Delivery: %@";
+"scene.send.on_chain.fee.estimated_delivery" = "Temps estimé : %@";
 "scene.send.authentication_failed" = "Echec de l'authentification";
-"scene.send.maximum_fee" = "Frais Estimés:";
-"scene.send.subtitle.on_chain_balance" = "On-chain balance: %@";
-"scene.send.subtitle.lightning_can_send_balance" = "Can send: %@";
-"scene.send.success_label" = "Payment Successful";
-"scene.send.paste_button.title" = "Paste Address";
+"scene.send.maximum_fee" = "Frais estimés :";
+"scene.send.subtitle.on_chain_balance" = "Fonds On-chain : %@";
+"scene.send.subtitle.lightning_can_send_balance" = "Vous pouvez envoyer : %@";
+"scene.send.success_label" = "Paiement effectué avec succès";
+"scene.send.paste_button.title" = "Coller une adresse";
 
-"scene.connect_remote_node.title" = "Connection d'un noeud distant";
+"scene.connect_remote_node.title" = "Connexion à un nœud distant";
 "scene.connect_remote_node.empty_state" = "Scannez le QRCode généré par lndconnect, BTCPay Server, ou collez le lien que vous obtenez en exécutant 'lndconnect -j' pour vous connecter à votre nœud.";
 "scene.connect_remote_node.url_label" = "Adresse";
 "scene.connect_remote_node.certificate_label" = "Informations d’identification";
