@@ -64,7 +64,7 @@
 "scene.settings.item.node_uri" = "URI du nœud";
 "scene.settings.item.remove_remote_node" = "Gestion des Portefeuilles";
 
-"scene.settings.item.change_pin" = "Changer le Pin";
+"scene.settings.item.change_pin" = "Changer le code PIN";
 "scene.settings.item.report_issue" = "Signaler un problème";
 "scene.settings.item.help" = "Besoin d'aide ?";
 "scene.settings.item.privacy_policy" = "Politique de confidentialité";
@@ -89,33 +89,33 @@
 "scene.channels.close.message" = "Voulez-vous vraiment fermer le canal avec nœud %@ ?";
 "scene.channels.force_close.title" = "Fermer de force le canal";
 "scene.channels.force_close.message" = "%@ est déconnecté, êtes-vous sûr de vouloir fermer ce canal ? Vous devrez attendre environ %@ pour récupérer vos fonds.";
-"scene.channels.alert.close" = "Fermeture de Channel";
-"scene.channels.alert.force_close" = "Fermeture Forcée de Channel";
-"scene.channels.close_loading_view" = "Channel en cours de fermeture";
+"scene.channels.alert.close" = "Fermer le canal";
+"scene.channels.alert.force_close" = "Fermer de force le canal";
+"scene.channels.close_loading_view" = "Canal en cours de fermeture";
 "scene.channels.close_success.toast" = "Le canal se ferme.";
-"scene.channels.empty_state.title" = "Ouvrir un canal";
-"scene.channels.empty_state.message" = "Vous devez d'abord ouvrir un canal pour pouvoir faire des transactions sur le Lightning Network.";
+"scene.channels.empty_state.title" = "Ouvrez un canal";
+"scene.channels.empty_state.message" = "Vous devez d'abord ouvrir un canal afin de pouvoir faire des transactions sur le réseau Lightning.";
 "scene.channels.empty_state.button_title" = "Ouvrir un canal";
 
 "scene.open_channel.title" = "Ouvrir un canal";
-"scene.open_channel.channel_uri_label" = "Nœud:";
+"scene.open_channel.channel_uri_label" = "Pair :";
 "scene.open_channel.add_button" = "Ouvrir un canal";
-"scene.open_channel.subtitle.minimum_size" = "Taille minimum du canal: %@";
-"scene.open_channel.subtitle.maximum_size" = "Taille maximum du canal: %@";
-"scene.open_channel.subtitle.balance" = "Fonds disponibles: %@";
+"scene.open_channel.subtitle.minimum_size" = "Taille minimum du canal : %@";
+"scene.open_channel.subtitle.maximum_size" = "Taille maximum du canal : %@";
+"scene.open_channel.subtitle.balance" = "Fonds disponibles : %@";
 "scene.open_channel.suggested_peers.title" = "Pairs suggérés";
 "scene.open_channel.paste_button.title" = "Coller l'adresse d'un pair";
 
 "scene.pin.biometric.fallback.title" = "Utiliser un code d’accès";
 "scene.pin.biometric.reason" = "Pour accéder aux données sécurisées";
 
-"scene.setup_pin.done_button" = "Terminé";
+"scene.setup_pin.done_button" = "Terminer";
 "scene.setup_pin.top_label.initial" = "Choisissez un code PIN.";
-"scene.setup_pin.top_label.non_matching" = "Les PIN ne correspond pas. Veuillez essayer de nouveau.";
+"scene.setup_pin.top_label.non_matching" = "Les codes PIN ne correspondent pas. Veuillez essayer à nouveau.";
 "scene.setup_pin.top_label.validate" = "Entrez le code PIN à nouveau pour valider.";
 
 "scene.onboarding.page_1.title" = "Vos **clés**, vos **fonds**";
-"scene.onboarding.page_1.message" = "With Zap, you are in control of your money. To make sure your coins are always stored safely, Zap will provide a recovery phrase for you.";
+"scene.onboarding.page_1.message" = "Avec Zap, vous contrôlez entièrement vos fonds. Pour vous assurer que ceux-ci sont toujours en sécurité, Zap va vous fournir une phrase de restauration.";
 "scene.onboarding.page_1.button_title" = "Continue";
 
 "scene.onboarding.page_2.title" = "Save your **recovery phrase**";
