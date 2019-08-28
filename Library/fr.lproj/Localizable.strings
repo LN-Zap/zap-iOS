@@ -189,9 +189,9 @@
 
 "scene.sync.description_label" = "Synchronisation à la blockchain…";
 
-"scene.transaction_detail.title.lightning_invoice" = "Détail de la facture";
-"scene.transaction_detail.title.payment_detail" = "Détail du paiement";
-"scene.transaction_detail.title.transaction_detail" = "Détail de la transaction";
+"scene.transaction_detail.title.lightning_invoice" = "Détails de la facture";
+"scene.transaction_detail.title.payment_detail" = "Détails du paiement";
+"scene.transaction_detail.title.transaction_detail" = "Détails de la transaction";
 "scene.transaction_detail.title.channel_event_detail" = "Événement de canal";
 "scene.transaction_detail.title.failed_payment" = "Paiement échoué";
 "scene.transaction_detail.memo_label" = "Note";
@@ -239,7 +239,7 @@
 "scene.wallet.empty_state.message" = "Votre portefeuille est vide ! Pour commencer, ajoutez-y quelques fonds.";
 "scene.wallet.empty_state.button_title" = "Déposer des fonds";
 
-"scene.time_lock.headline" = "Code d'accès erroné";
+"scene.time_lock.headline" = "Mauvais code d'accès";
 "scene.time_lock.description" = "Votre portefeuille est verrouillé pendant :";
 
 "scene.modal_pin.headline" = "Entrez le code d’accès";
