@@ -149,7 +149,7 @@
 "scene.send.maximum_fee" = "Frais estimés :";
 "scene.send.subtitle.on_chain_balance" = "Fonds On-chain : %@";
 "scene.send.subtitle.lightning_can_send_balance" = "Vous pouvez envoyer : %@";
-"scene.send.success_label" = "Paiement effectué avec succès";
+"scene.send.success_label" = "Paiement envoyé";
 "scene.send.paste_button.title" = "Coller une adresse";
 
 "scene.connect_remote_node.title" = "Connexion à un nœud distant";
@@ -208,7 +208,7 @@
 "scene.transaction_detail.preimage_copy_message" = "Pré-image copiée.";
 "scene.transaction_detail.invoice_copy_message" = "Facture copiée.";
 
-"scene.channel_detail.remote_pub_key_label" = "PubKey distante";
+"scene.channel_detail.remote_pub_key_label" = "Clé publique distante";
 "scene.channel_detail.local_balance_label" = "Solde local";
 "scene.channel_detail.remote_balance_label" = "Solde distant";
 "scene.channel_detail.closing_time.label" = "Fermeture dans";
