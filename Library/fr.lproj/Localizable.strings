@@ -47,12 +47,12 @@
 "scene.history.title" = "Historique";
 "scene.history.empty_state_label" = "Aucune transaction 🙁";
 
-"scene.settings.title" = "Paramètres";
+"scene.settings.title" = "Réglages";
 "scene.settings.section.warning" = "Mise en garde";
 "scene.settings.section.lightning" = "Lightning";
 "scene.settings.section.wallet" = "Portefeuille";
 "scene.settings.item.version_warning" = "Votre version de lnd (%@) n'est pas à jour. Zap iOS fonctionne mieux avec lnd %@ et plus.";
-"scene.settings.item.bitcoin_unit" = "Unité Bitcoin";
+"scene.settings.item.bitcoin_unit" = "Unité du Bitcoin";
 "scene.settings.item.currency" = "Devise";
 "scene.settings.item.currency.popular" = "Devises populaires";
 "scene.settings.item.block_explorer" = "Explorateur de blocs";
