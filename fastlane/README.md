@@ -25,9 +25,9 @@ fastlane switch_mainnet
 fastlane mainnet
 ```
 
-### alpha
+### testnet
 ```
-fastlane alpha
+fastlane testnet
 ```
 Builds new Alpha Build with local lnd enabled and uploads it to Testflight.
 ### release
