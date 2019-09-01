@@ -252,7 +252,7 @@
 "scene.history.cell.channel_closed" = "Canal fermé";
 "scene.history.cell.force_close_channel" = "Canal fermé de force";
 "scene.history.cell.remote_force_close_channel" = "Canal fermé de force par le pair";
-"scene.history.cell.breach_close_channel" = "Canal fermé injustement";
+"scene.history.cell.breach_close_channel" = "Canal fermé (infraction)";
 "scene.history.cell.close_channel_funding_canceled" = "Canal fermé (ouverture annulée)";
 "scene.history.cell.channel_abandoned" = "Canal abandonné";
 "scene.history.cell.transaction_sent" = "Paiement envoyé";
