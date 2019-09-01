@@ -227,7 +227,7 @@
 
 "scene.qrcode_scanner.top_label" = "Scannez le QR Code";
 "scene.qrcode_scanner.error.unknown_format" = "Format d'adresse inconnu.";
-"scene.qrcode_scanner.error.wrong_network" = "Vous avez essayé d'ouvrir un lien pour le %@, mais votre node est connecté au %@.";
+"scene.qrcode_scanner.error.wrong_network" = "Vous avez essayé de décoder une demande pour le %@, mais votre node est connecté au %@.";
 "scene.qrcode_scanner.error.zero_amount_invoice" = "Pour des raisons de sécurité, Zap ne prend pas en charge les demandes sans montant.";
 
 "scene.wallet.title" = "Portefeuille";
