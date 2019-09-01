@@ -102,7 +102,7 @@
 "scene.open_channel.add_button" = "Ouvrir un canal";
 "scene.open_channel.subtitle.minimum_size" = "Taille minimum du canal : %@";
 "scene.open_channel.subtitle.maximum_size" = "Taille maximum du canal : %@";
-"scene.open_channel.subtitle.balance" = "Solde disponible : %@";
+"scene.open_channel.subtitle.balance" = "Solde On-chain : %@";
 "scene.open_channel.suggested_peers.title" = "Pairs suggérés";
 "scene.open_channel.paste_button.title" = "Coller l'adresse d'un pair";
 
@@ -219,7 +219,7 @@
 
 "scene.filter.title" = "Filtrer";
 "scene.filter.section_header.transaction_types" = "Types de transaction";
-"scene.filter.displayOnChainTransactions" = "Paiements on-chain";
+"scene.filter.displayOnChainTransactions" = "Paiements On-chain";
 "scene.filter.display_expired_invoices" = "Demandes expirées";
 "scene.filter.displayLightningPayments" = "Paiements Lightning";
 "scene.filter.displayLightningInvoices" = "Demandes créées";
