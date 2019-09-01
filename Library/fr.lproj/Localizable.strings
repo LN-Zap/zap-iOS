@@ -23,7 +23,7 @@
 "channel.state.active" = "En ligne";
 "channel.state.inactive" = "Déconnecté";
 "channel.state.opening" = "En cours d'ouverture";
-"channel.state.closing" = "En cours de fermeture";
+"channel.state.closing" = "Fermeture";
 "channel.state.force_closing" = "En cours de fermeture forcée";
 "channel.state.waiting_close" = "En attente de fermeture";
 
