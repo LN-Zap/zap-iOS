@@ -261,7 +261,7 @@
 "scene.history.cell.label.error" = "erreur";
 
 "scene.node_uri.title" = "Se connecter au nœud";
-"scene.node_uri.alias_label" = "Alias";
+"scene.node_uri.alias_label" = "Pseudonyme";
 "scene.node_uri.uri_label" = "URI";
 
 "scene.connect_node_uri.action_sheet.title" = "Se connecter";
