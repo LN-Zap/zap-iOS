@@ -138,8 +138,8 @@
 "scene.send.on_chain.title" = "Envoyer un paiement On-chain";
 "scene.send.on_chain.fee" = "Frais :";
 "scene.send.on_chain.fee.fast" = "Rapide";
-"scene.send.on_chain.fee.medium" = "Normal";
-"scene.send.on_chain.fee.slow" = "Lent";
+"scene.send.on_chain.fee.medium" = "Normale";
+"scene.send.on_chain.fee.slow" = "Lente";
 "scene.send.on_chain.fee.description.fast" = "Transaction rapide";
 "scene.send.on_chain.fee.description.medium" = "Transaction normale";
 "scene.send.on_chain.fee.description.slow" = "Transaction lente";
