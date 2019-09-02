@@ -10,7 +10,9 @@ import SwiftBTC
 
 enum BuildConfiguration {
     static var network: Network {
-        if Bundle.main.bundleIdentifier == "com.jackmallers.zap.mainnet" {
+        if Environment.localSimnet {
+          return .simnet
+        } else if Bundle.main.bundleIdentifier == "com.jackmallers.zap.mainnet" {
             return .mainnet
         } else {
             return .testnet
