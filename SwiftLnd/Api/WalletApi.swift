@@ -28,8 +28,8 @@ public final class WalletApi {
         }
     }
 
-    public func generateSeed(passphrase: String?, completion: @escaping ApiCompletion<[String]>) {
-        let request = Lnrpc_GenSeedRequest(passphrase: passphrase)
+    public func generateSeed(completion: @escaping ApiCompletion<[String]>) {
+        let request = Lnrpc_GenSeedRequest()
         connection.genSeed(request, completion: run(completion) { $0.cipherSeedMnemonic })
     }
 

@@ -38,7 +38,7 @@ public final class WalletService {
     }
 
     public func generateSeed(completion: @escaping ApiCompletion<[String]>) {
-        wallet.generateSeed(passphrase: nil) {
+        wallet.generateSeed {
             completion($0)
         }
     }

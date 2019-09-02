@@ -121,16 +121,6 @@ extension Lnrpc_QueryRoutesRequest {
 
 // MARK: - Wallet
 
-extension Lnrpc_GenSeedRequest {
-    init(passphrase: String?) {
-        self.init()
-
-        if let passphrase = passphrase?.data(using: .utf8) {
-            self.aezeedPassphrase = passphrase
-        }
-    }
-}
-
 extension Lnrpc_InitWalletRequest {
     init(password: String, mnemonic: [String], channelBackup: ChannelBackup?) {
         self.init()
