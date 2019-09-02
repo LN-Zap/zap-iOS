@@ -133,6 +133,11 @@
             isEnabled = "YES">
          </EnvironmentVariable>
          <EnvironmentVariable
+            key = "LOCAL_SIMNET"
+            value = "1"
+            isEnabled = "NO">
+         </EnvironmentVariable>
+         <EnvironmentVariable
             key = "SKIP_PIN_FLOW"
             value = "1"
             isEnabled = "NO">

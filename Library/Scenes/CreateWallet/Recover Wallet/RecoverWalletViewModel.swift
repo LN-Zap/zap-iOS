@@ -31,7 +31,7 @@ final class RecoverWalletViewModel {
         let mnemonic = self.mnemonic(from: text.lowercased())
 
         let walletService = WalletService(connection: connection)
-        walletService.initWallet(password: Password.create(), mnemonic: mnemonic, channelBackup: staticChannelBackup, completion: completion)
+        walletService.initWallet(password: Password.create(), mnemonic: mnemonic, channelBackup: staticChannelBackup, recover: true, completion: completion)
     }
 
     func attributedString(from text: String) -> NSAttributedString {

@@ -31,7 +31,7 @@ final class LoadingViewController: UIViewController {
         tabBar.shadowImage = UIImage()
         tabBar.backgroundImage = UIImage()
 
-        tabBar.items = [Tab.wallet, Tab.history, Tab.settings].map {
+        tabBar.items = [Tab.wallet, Tab.history, Tab.channels, Tab.settings].map {
             UITabBarItem(title: $0.title, image: $0.image, selectedImage: $0.image)
         }
         tabBar.isUserInteractionEnabled = false

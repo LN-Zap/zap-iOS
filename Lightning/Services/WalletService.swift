@@ -38,13 +38,13 @@ public final class WalletService {
     }
 
     public func generateSeed(completion: @escaping ApiCompletion<[String]>) {
-        wallet.generateSeed(passphrase: nil) {
+        wallet.generateSeed {
             completion($0)
         }
     }
 
-    public func initWallet(password: String, mnemonic: [String], channelBackup: ChannelBackup?, completion: @escaping ApiCompletion<Success>) {
-        wallet.initWallet(mnemonic: mnemonic, password: password, channelBackup: channelBackup) {
+    public func initWallet(password: String, mnemonic: [String], channelBackup: ChannelBackup?, recover: Bool, completion: @escaping ApiCompletion<Success>) {
+        wallet.initWallet(mnemonic: mnemonic, password: password, channelBackup: channelBackup, recover: recover) {
             if case .success = $0 {
                 WalletService.didCreateWallet = true
                 WalletService.isLocalWalletUnlocked = true

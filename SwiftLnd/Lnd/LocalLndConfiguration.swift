@@ -50,7 +50,7 @@ struct LocalLndConfiguration {
         case .testnet:
             return ["testnet1-btcd.zaphq.io", "testnet2-btcd.zaphq.io", "btcd-testnet.lightning.computer"]
         case .simnet, .regtest:
-            return []
+            return ["localhost"]
         }
     }
 

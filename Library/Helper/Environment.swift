@@ -8,6 +8,10 @@
 import Foundation
 
 enum Environment {
+    static var localSimnet: Bool {
+        return ProcessInfo.processInfo.environment["LOCAL_SIMNET"] == "1"
+    }
+
     static var useUITestMockApi: Bool {
         return ProcessInfo.processInfo.environment["USE_UITEST_MOCK_API"] == "1"
     }

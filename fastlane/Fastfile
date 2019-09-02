@@ -23,7 +23,7 @@ lane :switch_mainnet do
     )
   end
 
-  update_app_icon(image: 'logo_white.png')
+  update_app_icon(image: 'logo_mainnet.png')
 end
 
 lane :mainnet do |options|
@@ -89,11 +89,11 @@ def check_release_branch(prefix)
 end
 
 desc "Builds new Alpha Build with local lnd enabled and uploads it to Testflight."
-lane :alpha do
+lane :testnet do
   pre_upload
   check_release_branch('release/testflight')
 
-  update_app_icon(image: 'logo_alpha.png')
+  update_app_icon(image: 'logo_testnet.png')
 
   increment_build_number(build_number:
     latest_testflight_build_number(

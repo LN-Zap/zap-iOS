@@ -29,10 +29,11 @@ public extension FileManager {
     var hasLocalWallet: Network? {
         let fileManager = FileManager.default
 
-        if let mainnetURL = fileManager.walletDatabase(for: .mainnet), fileManager.fileExists(atPath: mainnetURL.path) {
-            return .mainnet
-        } else if let testnetURL = fileManager.walletDatabase(for: .testnet), fileManager.fileExists(atPath: testnetURL.path) {
-            return .testnet
+        for network in Network.allCases {
+            if let url = fileManager.walletDatabase(for: network),
+                fileManager.fileExists(atPath: url.path) {
+                return network
+            }
         }
 
         return nil
