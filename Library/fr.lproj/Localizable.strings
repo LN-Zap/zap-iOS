@@ -118,7 +118,7 @@
 "scene.onboarding.page_1.message" = "Avec Zap, vous contrôlez entièrement vos fonds. Pour vous assurer que ceux-ci sont toujours en sécurité, Zap va vous fournir une phrase de restauration.";
 "scene.onboarding.page_1.button_title" = "Continuer";
 
-"scene.onboarding.page_2.title" = "Sauvegardez votre **phrase**";
+"scene.onboarding.page_2.title" = "Enregistrez votre **phrase**";
 "scene.onboarding.page_2.message" = "Écrivez votre phrase de restauration quelque part. Vous pourrez l'utiliser pour récupérer vos fonds si vous perdez votre appareil.";
 "scene.onboarding.page_2.button_title" = "Continuer";
 
