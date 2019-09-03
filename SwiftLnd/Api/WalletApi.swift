@@ -34,9 +34,12 @@ public final class WalletApi {
     }
 
     public func initWallet(mnemonic: [String], password: String, channelBackup: ChannelBackup?, recover: Bool, completion: @escaping ApiCompletion<Success>) {
-        // 2500 is the default value from lncli:
+        // 2500 is the default value for address lookahead from lncli. This
+        // might lead to a lot of false positive block downloads. so we use 100
+        // instead. It seems unlikely that a mobile app user generates more
+        // than 100 addresses without using them.
         // https://github.com/lightningnetwork/lnd/blob/master/docs/recovery.md#starting-on-chain-recovery
-        let recoverWindow = recover ? 2500 : 0
+        let recoverWindow = recover ? 100 : 0
         let request = Lnrpc_InitWalletRequest(password: password, mnemonic: mnemonic, channelBackup: channelBackup, recoverWindow: recoverWindow)
         connection.initWallet(request, completion: run(completion) { _ in Success() })
     }
