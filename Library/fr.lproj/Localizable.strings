@@ -208,7 +208,7 @@
 "scene.transaction_detail.preimage_copy_message" = "Pré-image copiée.";
 "scene.transaction_detail.invoice_copy_message" = "Demande copiée.";
 
-"scene.channel_detail.remote_pub_key_label" = "Clé publique distante";
+"scene.channel_detail.remote_pub_key_label" = "PubKey distante";
 "scene.channel_detail.local_balance_label" = "Solde local";
 "scene.channel_detail.remote_balance_label" = "Solde distant";
 "scene.channel_detail.closing_time.label" = "Fermeture dans";
