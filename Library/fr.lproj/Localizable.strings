@@ -118,12 +118,12 @@
 "scene.onboarding.page_1.message" = "Avec Zap, vous contrôlez entièrement vos fonds. Pour vous assurer que ceux-ci sont toujours en sécurité, Zap va vous fournir une phrase de restauration.";
 "scene.onboarding.page_1.button_title" = "Continuer";
 
-"scene.onboarding.page_2.title" = "Enregistrez votre **phrase**";
-"scene.onboarding.page_2.message" = "Écrivez votre phrase de restauration quelque part. Vous pourrez l'utiliser pour récupérer vos fonds si vous perdez votre appareil.";
+"scene.onboarding.page_2.title" = "Enregistrez votre **phrase secrète**";
+"scene.onboarding.page_2.message" = "Écrivez votre phrase secrète quelque part. Vous pourrez l'utiliser pour récupérer vos fonds si vous perdez votre appareil.";
 "scene.onboarding.page_2.button_title" = "Continuer";
 
 "scene.onboarding.page_3.title" = "Gardez-la **précieusement**";
-"scene.onboarding.page_3.message" = "Prenez soin de votre phrase de restauration. Cachez-la dans un endroit sécurisé et privé.";
+"scene.onboarding.page_3.message" = "Prenez soin de votre phrase secrète. Cachez-la dans un endroit sécurisé et privé.";
 "scene.onboarding.page_3.button_title" = "Générer la phrase";
 
 "scene.confirm_mnemonic.title" = "Confirmer la phrase";
@@ -166,13 +166,13 @@
 "scene.connect_remote_node.certificate_detail.macaroon_title" = "Macaroon";
 "scene.connect_remote_node.edit_url.title" = "Adresse IP";
 
-"scene.create_wallet.title" = "Phrase de restauration";
-"scene.create_wallet.description_label" = "Écrivez votre phrase de restauration et cachez-la dans un endroit sécurisé.";
+"scene.create_wallet.title" = "Phrase secrète";
+"scene.create_wallet.description_label" = "Écrivez votre phrase secrète et cachez-la en lieu sûr.";
 "scene.create_wallet.next_button" = "Continuer";
 
 "scene.recover_wallet.title" = "Restaurer un portefeuille";
 "scene.recover_wallet.done_button" = "Terminer";
-"scene.recover_wallet.description_label" = "Entrez votre phrase de restauration :";
+"scene.recover_wallet.description_label" = "Entrez votre phrase secrète :";
 "scene.recover_wallet.placeholder" = "abandon ability able about above absent absorb abstract absurd abuse access accident account accuse achieve acid acoustic acquire across act action actor actress actual";
 "scene.recover_wallet.select_channel_backup_button" = "Sélectionner une sauvegarde des canaux";
 
