@@ -43,7 +43,8 @@ final class WalletEmptyStateViewModel: EmptyStateViewModel {
             return
         }
 
-        lightningService.transactionService.newAddress(with: .witnessPubkeyHash) { [weak self] result in
+        let addressType = Settings.shared.onChainRequestAddressType.value
+        lightningService.transactionService.newAddress(with: addressType) { [weak self] result in
             switch result {
             case .success(let address):
                 guard let paymentURI = BitcoinURI(address: address, amount: nil, memo: nil, lightningFallback: nil) else { return }
