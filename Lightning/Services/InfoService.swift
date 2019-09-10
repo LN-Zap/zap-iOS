@@ -62,7 +62,7 @@ public final class InfoService {
         updateInfoTimer?.fire()
 
         timeoutTimer?.invalidate()
-        timeoutTimer = Timer.scheduledTimer(withTimeInterval: 6, repeats: false) { [weak self] _ in
+        timeoutTimer = Timer.scheduledTimer(withTimeInterval: 15, repeats: false) { [weak self] _ in
             guard let self = self else { return }
             if case .connecting = self.walletState.value {
                 self.walletState.value = .error
