@@ -5,6 +5,7 @@
 //  Copyright © 2018 Otto Suess. All rights reserved.
 //
 
+import Bond
 import Logger
 import UIKit
 
@@ -26,20 +27,30 @@ final class QRCodeDetailViewController: UIViewController {
 
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-
-        initialBrightnes = UIScreen.main.brightness
-        UIScreen.main.brightness = 1
+        increaseBrightness()
     }
 
     override func viewDidDisappear(_ animated: Bool) {
         super.viewDidDisappear(animated)
-
-        guard let initialBrightnes = initialBrightnes else { return }
-        UIScreen.main.brightness = initialBrightnes
+        resetBrightness()
     }
 
     override func viewDidLoad() {
         super.viewDidLoad()
+
+        NotificationCenter.default.reactive
+            .notification(name: UIApplication.willResignActiveNotification)
+            .observeNext { [weak self] _ in
+                self?.resetBrightness()
+            }
+            .dispose(in: reactive.bag)
+
+        NotificationCenter.default.reactive
+            .notification(name: UIApplication.didBecomeActiveNotification)
+            .observeNext { [weak self] _ in
+                self?.increaseBrightness()
+            }
+            .dispose(in: reactive.bag)
 
         guard let viewModel = viewModel else { fatalError("No ViewModel set.") }
 
@@ -64,6 +75,16 @@ final class QRCodeDetailViewController: UIViewController {
 
         shareButton.setTitle(L10n.Generic.QrCode.shareButton, for: .normal)
         copyButton.setTitle(L10n.Generic.QrCode.copyButton, for: .normal)
+    }
+
+    private func resetBrightness() {
+        guard let initialBrightnes = initialBrightnes else { return }
+        UIScreen.main.brightness = initialBrightnes
+    }
+
+    private func increaseBrightness() {
+        initialBrightnes = UIScreen.main.brightness
+        UIScreen.main.brightness = 1
     }
 
     @IBAction private func qrCodeTapped(_ sender: Any) {
