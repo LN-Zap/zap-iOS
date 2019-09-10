@@ -5,8 +5,8 @@
 "generic.qr_code.share_button" = "Del";
 "generic.cancel" = "Aflys";
 
-"link.help" = "https://ln-zap.github.io/zap-tutorials";
-"link.help.zapconnect" = "https://ln-zap.github.io/zap-tutorials/iOS-remote-node-setup";
+"link.help" = "https://docs.zaphq.io/";
+"link.help.zapconnect" = "https://docs.zaphq.io/docs-ios-remote-node-setup";
 "link.privacy" = "http://zap.jackmallers.com/privacy";
 "link.bug_report" = "https://github.com/LN-Zap/zap-iOS/issues";
 "link.lnd_releases" = "https://github.com/lightningnetwork/lnd/releases";

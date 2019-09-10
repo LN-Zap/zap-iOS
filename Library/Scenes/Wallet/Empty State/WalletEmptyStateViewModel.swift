@@ -9,6 +9,7 @@ import Bond
 import Foundation
 import Lightning
 import SwiftBTC
+import SwiftLnd
 
 final class WalletEmptyStateViewModel: EmptyStateViewModel {
     let title = L10n.Scene.Wallet.EmptyState.title
@@ -20,7 +21,7 @@ final class WalletEmptyStateViewModel: EmptyStateViewModel {
 
     private let lightningService: LightningService
     private let fundButtonTapped: (BitcoinURI) -> Void
-    private var paymentURI: BitcoinURI?
+    private var cachedPaymentURI = [OnChainRequestAddressType: BitcoinURI]()
 
     init(lightningService: LightningService, fundButtonTapped: @escaping (BitcoinURI) -> Void) {
         self.lightningService = lightningService
@@ -38,16 +39,17 @@ final class WalletEmptyStateViewModel: EmptyStateViewModel {
     }
 
     func getAddress(completion: @escaping (BitcoinURI) -> Void) {
-        if let paymentURI = paymentURI {
+        let selectedAddressType = Settings.shared.onChainRequestAddressType.value
+        if let paymentURI = cachedPaymentURI[selectedAddressType] {
             completion(paymentURI)
             return
         }
 
-        lightningService.transactionService.newAddress(with: .witnessPubkeyHash) { [weak self] result in
+        lightningService.transactionService.newAddress(with: selectedAddressType) { [weak self] result in
             switch result {
             case .success(let address):
                 guard let paymentURI = BitcoinURI(address: address, amount: nil, memo: nil, lightningFallback: nil) else { return }
-                self?.paymentURI = paymentURI
+                self?.cachedPaymentURI[selectedAddressType] = paymentURI
                 completion(paymentURI)
             case .failure:
                 break
