@@ -243,7 +243,7 @@
 "scene.time_lock.description" = "Il portafoglio è bloccato per:";
 
 "scene.modal_pin.headline" = "Digitare il PIN";
-"scene.modal_pin.description" = "Insere PIN per continuare";
+"scene.modal_pin.description" = "Per favore Inserisci il tuo PIN per continuare";
 
 "scene.history.cell.payment_sent" = "Pagamento inviato";
 "scene.history.cell.payment_received" = "Pagamento ricevuto";
@@ -273,7 +273,7 @@
 "scene.unlock.title" = "Sblocca Nodo";
 "scene.unlock.unlock_button" = "Sblocca";
 "scene.unlock.password_placeholder" = "Password";
-"scene.unlock.title_label" = "Sbloccare %@";
+"scene.unlock.title_label" = "Sblocca %@";
 
 "scene.manage_wallets.title" = "Gestione Portafogli";
 "scene.manage_wallets.cell.remote" = "remoto";
