@@ -60,7 +60,7 @@
 "scene.settings.item.on_chain_request_address.bech32" = "Bech32";
 "scene.settings.item.on_chain_request_address.p2sh" = "P2SH";
 "scene.settings.item.manage_channels" = "Beheer Channels";
-"scene.settings.item.channel_backup" = "Channel Backup";
+"scene.settings.item.channel_backup" = "Kanaal Backup";
 "scene.settings.item.node_uri" = "Node URI";
 "scene.settings.item.remove_remote_node" = "Beheer Wallets";
 
@@ -85,7 +85,7 @@
 "scene.channels.header.total_can_receive" = "Totaal kan ontvangen:";
 "scene.channels.header.total_pending" = "Total onafgedaan:";
 "scene.channels.header.offline" = "Totaal offline:";
-"scene.channels.close.title" = "Sluit Channel";
+"scene.channels.close.title" = "Sluit kanaal";
 "scene.channels.close.message" = "Weet je zeker om channel met node %@ te sluiten?";
 "scene.channels.force_close.title" = "Forceer Channel sluiting";
 "scene.channels.force_close.message" = "%@ is offline, weet je zeker dat je dit kanaal geforceerd wil sluiten? Je zult ongeveer %@ moeten wachten op je tegoed.";
@@ -93,9 +93,9 @@
 "scene.channels.alert.force_close" = "Geforceerd kanaal sluiten";
 "scene.channels.close_loading_view" = "Channel aan het sluiten";
 "scene.channels.close_success.toast" = "Channel is aan het sluiten.";
-"scene.channels.empty_state.title" = "Open a channel";
+"scene.channels.empty_state.title" = "Open een kanaal";
 "scene.channels.empty_state.message" = "You can't transact on the Lightning Network yet! Let's open a channel to start transacting on the Lightning Network.";
-"scene.channels.empty_state.button_title" = "Open a channel";
+"scene.channels.empty_state.button_title" = "Open een kanaal";
 
 "scene.open_channel.title" = "Open Channel";
 "scene.open_channel.channel_uri_label" = "Node:";
@@ -114,13 +114,13 @@
 "scene.setup_pin.top_label.non_matching" = "De pincodes komen niet overeen. Probeer opnieuw.";
 "scene.setup_pin.top_label.validate" = "Voer de pin opnieuw in om te controleren.";
 
-"scene.onboarding.page_1.title" = "Your **keys**, your **coins**";
+"scene.onboarding.page_1.title" = "Jouw **sleutels**, jouw **coins**";
 "scene.onboarding.page_1.message" = "With Zap, you are in control of your money. To make sure your coins are always stored safely, Zap will provide a recovery phrase for you.";
-"scene.onboarding.page_1.button_title" = "Continue";
+"scene.onboarding.page_1.button_title" = "Verder";
 
 "scene.onboarding.page_2.title" = "Save your **recovery phrase**";
 "scene.onboarding.page_2.message" = "Write down your phrase. You can use your phrase to recover your funds anytime if you misplace your device.";
-"scene.onboarding.page_2.button_title" = "Continue";
+"scene.onboarding.page_2.button_title" = "Verder";
 
 "scene.onboarding.page_3.title" = "Keep it **safe**";
 "scene.onboarding.page_3.message" = "Make sure to keep your recovery phrase private. Store it somewhere only you will find it.";
@@ -136,10 +136,10 @@
 "scene.send.sending" = "Verzenden...";
 "scene.send.lightning.title" = "Verstuur Lightning betaling";
 "scene.send.on_chain.title" = "Verstuur On-Chain";
-"scene.send.on_chain.fee" = "Fee:";
-"scene.send.on_chain.fee.fast" = "Fast";
+"scene.send.on_chain.fee" = "Vergoeding:";
+"scene.send.on_chain.fee.fast" = "Snel";
 "scene.send.on_chain.fee.medium" = "Medium";
-"scene.send.on_chain.fee.slow" = "Slow";
+"scene.send.on_chain.fee.slow" = "Langzaam";
 "scene.send.on_chain.fee.description.fast" = "Fast Transaction";
 "scene.send.on_chain.fee.description.medium" = "Medium Transaction";
 "scene.send.on_chain.fee.description.slow" = "Slow Transaction";
@@ -174,7 +174,7 @@
 "scene.recover_wallet.done_button" = "Klaar";
 "scene.recover_wallet.description_label" = "Enter your recovery phrase:";
 "scene.recover_wallet.placeholder" = "abandon ability able about above absent absorb abstract absurd abuse access accident account accuse achieve acid acoustic acquire across act action actor actress actual";
-"scene.recover_wallet.select_channel_backup_button" = "Select Channel Backup";
+"scene.recover_wallet.select_channel_backup_button" = "Kies kanaal backup";
 
 "scene.select_wallet_connection.create.title" = "Aanmaken";
 "scene.select_wallet_connection.recover.title" = "Herstellen";
@@ -226,8 +226,8 @@
 "scene.filter.displayChannelEvents" = "Channel Events";
 
 "scene.qrcode_scanner.top_label" = "Scan QR-code";
-"scene.qrcode_scanner.error.unknown_format" = "Unknown address format.";
-"scene.qrcode_scanner.error.wrong_network" = "You tried opening an invoice for %@ but your node is connected to %@.";
+"scene.qrcode_scanner.error.unknown_format" = "Ongeldig adres formaat.";
+"scene.qrcode_scanner.error.wrong_network" = "Je probeerde een link te open voor %@, maar je node is verbonden met %@.";
 "scene.qrcode_scanner.error.zero_amount_invoice" = "For security reasons zap does not support invoices without a specified amount.";
 
 "scene.wallet.title" = "Wallet";
@@ -235,7 +235,7 @@
 "scene.wallet.detail.on_chain" = "On-chain:";
 "scene.wallet.detail.lightning" = "Lightning:";
 "scene.wallet.detail.pending" = "In behandeling:";
-"scene.wallet.empty_state.title" = "Fund your wallet";
+"scene.wallet.empty_state.title" = "Stort naar je Zap portemonnee";
 "scene.wallet.empty_state.message" = "Your wallet is empty! Get started by depositing some funds.";
 "scene.wallet.empty_state.button_title" = "Deposit funds";
 
@@ -248,9 +248,9 @@
 "scene.history.cell.payment_sent" = "Betaling verzonden";
 "scene.history.cell.payment_received" = "Betaling ontvangen";
 "scene.history.cell.invoice_created" = "Betalingsverzoek aangemaakt";
-"scene.history.cell.channel_opened" = "Opened Channel";
-"scene.history.cell.channel_closed" = "Closed Channel";
-"scene.history.cell.force_close_channel" = "Force closed Channel";
+"scene.history.cell.channel_opened" = "Kanaal geopened";
+"scene.history.cell.channel_closed" = "Kanaal gesloten";
+"scene.history.cell.force_close_channel" = "Geforceerd gesloten kanaal";
 "scene.history.cell.remote_force_close_channel" = "Remote forced close Channel";
 "scene.history.cell.breach_close_channel" = "Breach closed Channel";
 "scene.history.cell.close_channel_funding_canceled" = "Closed Channel (funding canceled)";
@@ -280,16 +280,16 @@
 
 "scene.channel_backup.title" = "Channel Backup";
 "scene.channel_backup.cell_title" = "%@ channel.backup";
-"scene.channel_backup.not_found" = "file not found";
-"scene.channel_backup.error.iCloudDisabled" = "iCloud seems to be disabled.";
-"scene.channel_backup.error.iCloudBackupFailed" = "iCloud backup failed.";
+"scene.channel_backup.not_found" = "bestand niet gevonden";
+"scene.channel_backup.error.iCloudDisabled" = "iCloud lijkt uitgeschakeld.";
+"scene.channel_backup.error.iCloudBackupFailed" = "iCloud backup mislukt.";
 "scene.channel_backup.error.localBackupFailed" = "Local file backup failed.";
 "scene.channel_backup.error.lndError" = "Could not get channel backup from lnd.";
 
-"scene.push_notification.headline" = "Stay **up to date**";
+"scene.push_notification.headline" = "Blijf **up to date**";
 "scene.push_notification.message" = "To keep your funds safe, Zap needs to sync once in a while. Do you want to be notified when your wallet needs to sync?";
 "scene.push_notification.confirm_button_title" = "Turn on notifications";
-"scene.push_notification.skip_button_title" = "Skip";
+"scene.push_notification.skip_button_title" = "Sla over";
 
 "notification.sync.title" = "Please sync";
 "notification.sync.day_12.body" = "Please remember syncing your wallet to make sure you stay safe";
