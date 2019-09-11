@@ -93,7 +93,7 @@
 "scene.channels.alert.force_close" = "Vynutit uzavření kanálu";
 "scene.channels.close_loading_view" = "Uzavírání kanálu";
 "scene.channels.close_success.toast" = "Kanál je uzavírán.";
-"scene.channels.empty_state.title" = "Open a channel";
+"scene.channels.empty_state.title" = "Otevřít kanál";
 "scene.channels.empty_state.message" = "You can't transact on the Lightning Network yet! Let's open a channel to start transacting on the Lightning Network.";
 "scene.channels.empty_state.button_title" = "Open a channel";
 
@@ -158,15 +158,15 @@
 "scene.connect_remote_node.certificate_label" = "Credentials";
 "scene.connect_remote_node.connect_button" = "Connect";
 "scene.connect_remote_node.scan_button" = "Scan";
-"scene.connect_remote_node.paste_button" = "Paste";
-"scene.connect_remote_node.help_button" = "Need Help?";
-"scene.connect_remote_node.server_error" = "Could not connect to server.";
-"scene.connect_remote_node.your_node_title" = "Your Node";
-"scene.connect_remote_node.certificate_detail.certificate_title" = "Certificate";
+"scene.connect_remote_node.paste_button" = "Vložit";
+"scene.connect_remote_node.help_button" = "Potřebujete pomoc?";
+"scene.connect_remote_node.server_error" = "Připojení k serveru selhalo.";
+"scene.connect_remote_node.your_node_title" = "Tvůj Node";
+"scene.connect_remote_node.certificate_detail.certificate_title" = "Certfikát";
 "scene.connect_remote_node.certificate_detail.macaroon_title" = "Macaroon";
-"scene.connect_remote_node.edit_url.title" = "Address";
+"scene.connect_remote_node.edit_url.title" = "Adresa";
 
-"scene.create_wallet.title" = "Recovery Phrase";
+"scene.create_wallet.title" = "Obnovovací fráze";
 "scene.create_wallet.description_label" = "Write down the recovery phrase and store it at a safe location.";
 "scene.create_wallet.next_button" = "Next";
 
