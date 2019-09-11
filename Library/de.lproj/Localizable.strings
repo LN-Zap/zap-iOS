@@ -93,9 +93,9 @@
 "scene.channels.alert.force_close" = "Channel-Schließung erzwingen";
 "scene.channels.close_loading_view" = "Kanal schließen";
 "scene.channels.close_success.toast" = "Channel wird geschlossen.";
-"scene.channels.empty_state.title" = "Open a channel";
+"scene.channels.empty_state.title" = "Einen Channel öffnen";
 "scene.channels.empty_state.message" = "You can't transact on the Lightning Network yet! Let's open a channel to start transacting on the Lightning Network.";
-"scene.channels.empty_state.button_title" = "Open a channel";
+"scene.channels.empty_state.button_title" = "Einen Channel öffnen";
 
 "scene.open_channel.title" = "Channel öffnen";
 "scene.open_channel.channel_uri_label" = "Knoten:";
@@ -114,16 +114,16 @@
 "scene.setup_pin.top_label.non_matching" = "Der PIN stimmt nicht überein. Bitte versuche es erneut.";
 "scene.setup_pin.top_label.validate" = "Gib den PIN erneut ein.";
 
-"scene.onboarding.page_1.title" = "Your **keys**, your **coins**";
-"scene.onboarding.page_1.message" = "With Zap, you are in control of your money. To make sure your coins are always stored safely, Zap will provide a recovery phrase for you.";
+"scene.onboarding.page_1.title" = "Deine **Keys**, deine **Coins**";
+"scene.onboarding.page_1.message" = "Mit Zap hast du die Kontrolle über dein Geld. Um sicherzustellen, dass deine Coins immer sicher aufbewahrt werden, stellt dir Zap eine Wiederherstellungsphrase zur Verfügung.";
 "scene.onboarding.page_1.button_title" = "Weiter";
 
-"scene.onboarding.page_2.title" = "Save your **recovery phrase**";
+"scene.onboarding.page_2.title" = "Notiere dir deinen **Wiederherstellungsphrase**";
 "scene.onboarding.page_2.message" = "Write down your phrase. You can use your phrase to recover your funds anytime if you misplace your device.";
 "scene.onboarding.page_2.button_title" = "Weiter";
 
-"scene.onboarding.page_3.title" = "Keep it **safe**";
-"scene.onboarding.page_3.message" = "Make sure to keep your recovery phrase private. Store it somewhere only you will find it.";
+"scene.onboarding.page_3.title" = "Bewahre es sicher auf";
+"scene.onboarding.page_3.message" = "Achte darauf, dass du deine Wiederherstellungsphrase privat hältst. Lagere sie an einem Ort den nur du kennst.";
 "scene.onboarding.page_3.button_title" = "Wiederherstellungsphrase generieren";
 
 "scene.confirm_mnemonic.title" = "Wiederherstellungsphrase bestätigen";
