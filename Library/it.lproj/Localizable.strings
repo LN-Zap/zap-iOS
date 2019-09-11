@@ -203,7 +203,7 @@
 "scene.transaction_detail.expiry_label" = "Scadenza";
 "scene.transaction_detail.expiry_label.expired" = "Scaduto";
 "scene.transaction_detail.invoice_state_label" = "Stato";
-"scene.transaction_detail.invoice_state_label.settled" = "ricezione confermata";
+"scene.transaction_detail.invoice_state_label.settled" = "Ricezione confermata";
 "scene.transaction_detail.preimage_label" = "Preimage";
 "scene.transaction_detail.preimage_copy_message" = "Preimage copiato negli appunti.";
 "scene.transaction_detail.invoice_copy_message" = "Richiesta pagamento copiata negli appunti.";
