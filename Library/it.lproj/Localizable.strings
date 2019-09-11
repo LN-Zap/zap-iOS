@@ -124,10 +124,10 @@
 
 "scene.onboarding.page_3.title" = "Tienila al sicuro";
 "scene.onboarding.page_3.message" = "Fai in modo di mantenere la tua frase di recupero privata.\nConservala dove solo tu puoi trovarla.";
-"scene.onboarding.page_3.button_title" = "Generate Recovery Phrase";
+"scene.onboarding.page_3.button_title" = "Genera Frase di Recupero";
 
-"scene.confirm_mnemonic.title" = "Confirm Recovery Phrase";
-"scene.confirm_mnemonic.headline" = "Select word number %d";
+"scene.confirm_mnemonic.title" = "Conferma frase di recupero";
+"scene.confirm_mnemonic.headline" = "Seleziona la parola numero %d";
 
 "scene.send.title" = "Invia";
 "scene.send.send_button" = "Invia";
@@ -136,15 +136,15 @@
 "scene.send.sending" = "In Invio...";
 "scene.send.lightning.title" = "Invia Pagamento Lightning";
 "scene.send.on_chain.title" = "Invia On-chain";
-"scene.send.on_chain.fee" = "Fee:";
-"scene.send.on_chain.fee.fast" = "Fast";
-"scene.send.on_chain.fee.medium" = "Medium";
-"scene.send.on_chain.fee.slow" = "Slow";
-"scene.send.on_chain.fee.description.fast" = "Fast Transaction";
-"scene.send.on_chain.fee.description.medium" = "Medium Transaction";
-"scene.send.on_chain.fee.description.slow" = "Slow Transaction";
+"scene.send.on_chain.fee" = "Commissione:";
+"scene.send.on_chain.fee.fast" = "Veloce";
+"scene.send.on_chain.fee.medium" = "Media";
+"scene.send.on_chain.fee.slow" = "Lenta";
+"scene.send.on_chain.fee.description.fast" = "Transazione veloce";
+"scene.send.on_chain.fee.description.medium" = "Transazione media";
+"scene.send.on_chain.fee.description.slow" = "Transazione lenta";
 
-"scene.send.on_chain.fee.estimated_delivery" = "Estimated Delivery: %@";
+"scene.send.on_chain.fee.estimated_delivery" = "Consegna stimata %@";
 "scene.send.authentication_failed" = "Autenticazione fallita";
 "scene.send.maximum_fee" = "Commissione prevista:";
 "scene.send.subtitle.on_chain_balance" = "Saldo on-chain: %@";
@@ -166,15 +166,15 @@
 "scene.connect_remote_node.certificate_detail.macaroon_title" = "Macaroon";
 "scene.connect_remote_node.edit_url.title" = "Indirizzo";
 
-"scene.create_wallet.title" = "Recovery Phrase";
-"scene.create_wallet.description_label" = "Write down the recovery phrase and store it at a safe location.";
+"scene.create_wallet.title" = "Frase di recupero";
+"scene.create_wallet.description_label" = "Trascrivi la frase di recupero e conservala in un luogo sicuro.";
 "scene.create_wallet.next_button" = "Avanti";
 
 "scene.recover_wallet.title" = "Recupera Portafoglio";
 "scene.recover_wallet.done_button" = "Fatto";
-"scene.recover_wallet.description_label" = "Enter your recovery phrase:";
+"scene.recover_wallet.description_label" = "Inserisci la tua frase di recupero:";
 "scene.recover_wallet.placeholder" = "abandon ability able about above absent absorb abstract absurd abuse access accident account accuse achieve acid acoustic acquire across act action actor actress actual";
-"scene.recover_wallet.select_channel_backup_button" = "Select Channel Backup";
+"scene.recover_wallet.select_channel_backup_button" = "Seleziona canale di backup";
 
 "scene.select_wallet_connection.create.title" = "Crea";
 "scene.select_wallet_connection.recover.title" = "Recupera";
@@ -213,7 +213,7 @@
 "scene.channel_detail.remote_balance_label" = "Saldo Remoto";
 "scene.channel_detail.closing_time.label" = "Chiusura in";
 "scene.channel_detail.funding_transaction_label" = "Transazione di finanziamento";
-"scene.channel_detail.closing_transaction_label" = "Closing Transaction";
+"scene.channel_detail.closing_transaction_label" = "Chiudi transazione";
 "scene.channel_detail.close_button" = "Chiudi Canale";
 "scene.channel_detail.force_close_button" = "Forza Chiusura Canale";
 
@@ -226,7 +226,7 @@
 "scene.filter.displayChannelEvents" = "Eventi canale";
 
 "scene.qrcode_scanner.top_label" = "Scansiona il codice QR";
-"scene.qrcode_scanner.error.unknown_format" = "Unknown address format.";
+"scene.qrcode_scanner.error.unknown_format" = "Formato indirizzo sconosciuto.";
 "scene.qrcode_scanner.error.wrong_network" = "You tried opening an invoice for %@ but your node is connected to %@.";
 "scene.qrcode_scanner.error.zero_amount_invoice" = "For security reasons zap does not support invoices without a specified amount.";
 
