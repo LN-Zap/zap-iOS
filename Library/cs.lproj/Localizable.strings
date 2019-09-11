@@ -13,19 +13,19 @@
 
 "error.wrong_uri_format" = "Neznámý formát odkazu.";
 "error.wrong_uri_network" = "Pokusili jste se otevřít odkaz pro %@, ale Váš uzel je připojen k %@.";
-"error.block_explorer.unsupported_network" = "%@ does not support %@.";
+"error.block_explorer.unsupported_network" = "%@ nepodporuje %@.";
 
-"rpc_connect_qrcode_error.btc_pay_expired" = "Looks like the code is expired.";
+"rpc_connect_qrcode_error.btc_pay_expired" = "Vypadá to, že kód vypršel.";
 "rpc_connect_qrcode_error.btc_pay_configuration_broken" = "Nebylo možné načíst konfigurační soubor BTCPay.";
-"rpc_connect_qrcode_error.cant_read_qrcode" = "Invalid code format.";
-"rpc_connect_qrcode_error.code_updated" = "Connection updated.";
+"rpc_connect_qrcode_error.cant_read_qrcode" = "Neplatný formát kódu.";
+"rpc_connect_qrcode_error.code_updated" = "Připojení bylo aktualizováno.";
 
 "channel.state.active" = "Online";
 "channel.state.inactive" = "Offline";
 "channel.state.opening" = "Otevírání";
 "channel.state.closing" = "Zavírání";
 "channel.state.force_closing" = "Vynucené zavírání";
-"channel.state.waiting_close" = "Waiting Close";
+"channel.state.waiting_close" = "Čeká na zavření";
 
 "network_type.simnet" = "Simnet";
 "network_type.regtest" = "Regtest";
@@ -35,14 +35,14 @@
 "unit.bitcoin.btc" = "Bitcoin";
 "unit.bitcoin.mbtc" = "Milli Bitcoin";
 "unit.bitcoin.bit" = "Bits";
-"unit.bitcoin.satoshi" = "Satoshis";
+"unit.bitcoin.satoshi" = "Satoshi";
 
-"toast.invoice" = "Did receive %@";
-"toast.invoice_memo" = "Did receive %@ \"%@\"";
+"toast.invoice" = "Přijato%@";
+"toast.invoice_memo" = "Přijato %@ %@";
 
-"transaction.no_destination_address" = "No destination address";
+"transaction.no_destination_address" = "Cílová adresa nenalezena";
 
-"view.amount_input.placeholder" = "Amount";
+"view.amount_input.placeholder" = "Množství";
 
 "scene.history.title" = "History";
 "scene.history.empty_state_label" = "0 transakcí 🙁";
