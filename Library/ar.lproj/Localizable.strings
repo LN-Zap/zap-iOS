@@ -45,34 +45,34 @@
 "view.amount_input.placeholder" = "المبلغ";
 
 "scene.history.title" = "سجل";
-"scene.history.empty_state_label" = "0 transactions 🙁";
+"scene.history.empty_state_label" = "المعاملات 0🙁";
 
 "scene.settings.title" = "إعدادات";
-"scene.settings.section.warning" = "Warning";
+"scene.settings.section.warning" = "تحذير";
 "scene.settings.section.lightning" = "Lightning";
 "scene.settings.section.wallet" = "محفظة";
-"scene.settings.item.version_warning" = "Your lnd is outdated (%@). Zap iOS works best with lnd version %@ or above.";
+"scene.settings.item.version_warning" = "lnd الخاص بك قديم (%@). يعمل Zap iOS بشكل أفضل مع إصدار lnd %@ أو أعلى.";
 "scene.settings.item.bitcoin_unit" = "وحدة البت كوين";
 "scene.settings.item.currency" = "عملة";
-"scene.settings.item.currency.popular" = "Popular Currencies";
+"scene.settings.item.currency.popular" = "العملات شائعة";
 "scene.settings.item.block_explorer" = "مستكشف البلوك";
 "scene.settings.item.on_chain_request_address.title" = "نوع عنوان البت كوين";
 "scene.settings.item.on_chain_request_address.bech32" = "Bech32";
 "scene.settings.item.on_chain_request_address.p2sh" = "P2SH";
-"scene.settings.item.manage_channels" = "Manage Channels";
-"scene.settings.item.channel_backup" = "Channel Backup";
+"scene.settings.item.manage_channels" = "إدارة القنوات";
+"scene.settings.item.channel_backup" = "النسخة احتياطية للقناة";
 "scene.settings.item.node_uri" = "Node URI";
-"scene.settings.item.remove_remote_node" = "Manage Wallets";
+"scene.settings.item.remove_remote_node" = "إدارة المحافظ";
 
-"scene.settings.item.change_pin" = "Change Pin";
+"scene.settings.item.change_pin" = "تغيير الرمز السري";
 "scene.settings.item.report_issue" = "الإبلاغ عن مشكلة";
 "scene.settings.item.help" = "تحتاج مساعدة؟";
-"scene.settings.item.privacy_policy" = "Privacy Policy";
-"scene.settings.item.lnd_log" = "Show lnd Log";
+"scene.settings.item.privacy_policy" = "سياسة الخصوصية";
+"scene.settings.item.lnd_log" = "إظهار سجل lnd";
 
 "scene.request.title" = "تلقى";
 "scene.request.lightning_button" = "Lightning";
-"scene.request.or_separator_label" = "or";
+"scene.request.or_separator_label" = "أو";
 "scene.request.on_chain_button" = "On-chain";
 "scene.request.generate_request_button" = "إنشاء طلب";
 "scene.request.lightning_header_title" = "Lightning Payment Request";
