@@ -44,7 +44,7 @@
 
 "view.amount_input.placeholder" = "Importo";
 
-"scene.history.title" = "Movimenti";
+"scene.history.title" = "Cronologia Movimenti";
 "scene.history.empty_state_label" = "0 transazioni 🙁";
 
 "scene.settings.title" = "Impostazioni";
@@ -83,12 +83,12 @@
 "scene.channels.title" = "Canali";
 "scene.channels.header.total_can_send" = "∑ Capacità d'invio:";
 "scene.channels.header.total_can_receive" = "∑ Capacità ricezione:";
-"scene.channels.header.total_pending" = "∑ Capacità in sospeso";
+"scene.channels.header.total_pending" = "Totale in sospeso:";
 "scene.channels.header.offline" = "Totale offline:";
 "scene.channels.close.title" = "Chiudi Canale";
 "scene.channels.close.message" = "Vuoi davvero chiudere il canale con il nodo %@?";
 "scene.channels.force_close.title" = "Forza Chiusura Canale";
-"scene.channels.force_close.message" = "%@ non è in linea, sei sicuro di voler forzare la chiusura questo canale? Si dovrà attendere circa %@ per riavere i fondi";
+"scene.channels.force_close.message" = "%@ non è in linea, sei sicuro di voler forzare la chiusura di questo canale? dovrai attendere circa %@ per riavere i fondi?";
 "scene.channels.alert.close" = "Chiudi Canale";
 "scene.channels.alert.force_close" = "Forza Chiusura Canale";
 "scene.channels.close_loading_view" = "Chiusura Canale";
@@ -133,7 +133,7 @@
 "scene.send.send_button" = "Invia";
 "scene.send.address_headline" = "A:";
 "scene.send.memo_headline" = "Causale:";
-"scene.send.sending" = "In Invio...";
+"scene.send.sending" = "Invio...";
 "scene.send.lightning.title" = "Invia Pagamento Lightning";
 "scene.send.on_chain.title" = "Invia On-chain";
 "scene.send.on_chain.fee" = "Commissione:";
@@ -153,14 +153,14 @@
 "scene.send.paste_button.title" = "Incolla indirizzo";
 
 "scene.connect_remote_node.title" = "Connetti al Nodo Remoto";
-"scene.connect_remote_node.empty_state" = "Scansiona il QRCode generato da lndconnect, BTCPay Server, o incolla il link ottenuto dall'esecuzione di 'lndconnect -j' per connettere al nodo.";
+"scene.connect_remote_node.empty_state" = "Scansiona il QRCode generato da lndconnect, BTCPay Server, o incolla il link ottenuto dall'esecuzione di 'lndconnect -j' per connetterti al tuo nodo.";
 "scene.connect_remote_node.url_label" = "Indirizzo";
 "scene.connect_remote_node.certificate_label" = "Credenziali";
 "scene.connect_remote_node.connect_button" = "Connetti";
 "scene.connect_remote_node.scan_button" = "Scansione";
 "scene.connect_remote_node.paste_button" = "Incolla";
 "scene.connect_remote_node.help_button" = "Hai bisogno di aiuto?";
-"scene.connect_remote_node.server_error" = "Impossibile connette al server.";
+"scene.connect_remote_node.server_error" = "Impossibile connettersi al server.";
 "scene.connect_remote_node.your_node_title" = "Il tuo nodo";
 "scene.connect_remote_node.certificate_detail.certificate_title" = "Certificato";
 "scene.connect_remote_node.certificate_detail.macaroon_title" = "Macaroon";
