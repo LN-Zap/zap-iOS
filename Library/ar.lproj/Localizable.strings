@@ -1,7 +1,7 @@
-"generic.memo.placeholder" = "What is this for?";
-"generic.qr_code.copy_button" = "Copy";
-"generic.qr_code.copy_success_message" = "Address has been copied to clipboard.";
-"generic.pasteboard.invalid_address" = "Invalid Address";
+"generic.memo.placeholder" = "لما هذا؟";
+"generic.qr_code.copy_button" = "نسخ";
+"generic.qr_code.copy_success_message" = "تم نسخ العنوان إلى الحافظة.";
+"generic.pasteboard.invalid_address" = "عنوان خاطئ";
 "generic.qr_code.share_button" = "Share";
 "generic.cancel" = "Cancel";
 
