@@ -95,7 +95,7 @@
 "scene.channels.close_success.toast" = "Il canale è chiuso.";
 "scene.channels.empty_state.title" = "Open a channel";
 "scene.channels.empty_state.message" = "You can't transact on the Lightning Network yet! Let's open a channel to start transacting on the Lightning Network.";
-"scene.channels.empty_state.button_title" = "Open a channel";
+"scene.channels.empty_state.button_title" = "Apri un Canale";
 
 "scene.open_channel.title" = "Apri Canale";
 "scene.open_channel.channel_uri_label" = "Nodo:";
@@ -115,15 +115,15 @@
 "scene.setup_pin.top_label.validate" = "Immettere il PIN nuovamente per convalidare.";
 
 "scene.onboarding.page_1.title" = "Your **keys**, your **coins**";
-"scene.onboarding.page_1.message" = "With Zap, you are in control of your money. To make sure your coins are always stored safely, Zap will provide a recovery phrase for you.";
-"scene.onboarding.page_1.button_title" = "Continue";
+"scene.onboarding.page_1.message" = "Con Zap, hai il controllo dei tuoi soldi. Per fare in modo che i tuoi soldi siano sempre conservati al sicuro. Zap ti fornirà una frase di recupero.";
+"scene.onboarding.page_1.button_title" = "Continua";
 
-"scene.onboarding.page_2.title" = "Save your **recovery phrase**";
-"scene.onboarding.page_2.message" = "Write down your phrase. You can use your phrase to recover your funds anytime if you misplace your device.";
-"scene.onboarding.page_2.button_title" = "Continue";
+"scene.onboarding.page_2.title" = "Conserva la tua **frase di recupero**";
+"scene.onboarding.page_2.message" = "Trascrivi la tua frase di recupero. Potrai usare la tua frase per recuperare i tuoi fondi in caso di smarrimento del tuo device.";
+"scene.onboarding.page_2.button_title" = "Continua";
 
-"scene.onboarding.page_3.title" = "Keep it **safe**";
-"scene.onboarding.page_3.message" = "Make sure to keep your recovery phrase private. Store it somewhere only you will find it.";
+"scene.onboarding.page_3.title" = "Tienila al sicuro";
+"scene.onboarding.page_3.message" = "Fai in modo di mantenere la tua frase di recupero privata.\nConservala dove solo tu puoi trovarla.";
 "scene.onboarding.page_3.button_title" = "Generate Recovery Phrase";
 
 "scene.confirm_mnemonic.title" = "Confirm Recovery Phrase";
