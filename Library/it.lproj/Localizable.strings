@@ -235,9 +235,9 @@
 "scene.wallet.detail.on_chain" = "On-chain:";
 "scene.wallet.detail.lightning" = "Lightning:";
 "scene.wallet.detail.pending" = "In sospeso:";
-"scene.wallet.empty_state.title" = "Fund your wallet";
-"scene.wallet.empty_state.message" = "Your wallet is empty! Get started by depositing some funds.";
-"scene.wallet.empty_state.button_title" = "Deposit funds";
+"scene.wallet.empty_state.title" = "Trasferisci nel portafoglio";
+"scene.wallet.empty_state.message" = "Il tuo portafogli è vuoto! Inizia a depositare qualcosa.";
+"scene.wallet.empty_state.button_title" = "Deposita fondi";
 
 "scene.time_lock.headline" = "Codice di accesso errato (PIN)";
 "scene.time_lock.description" = "Il portafoglio è bloccato per:";
@@ -248,12 +248,12 @@
 "scene.history.cell.payment_sent" = "Pagamento inviato";
 "scene.history.cell.payment_received" = "Pagamento ricevuto";
 "scene.history.cell.invoice_created" = "Richiesta di pagamento";
-"scene.history.cell.channel_opened" = "Opened Channel";
-"scene.history.cell.channel_closed" = "Closed Channel";
-"scene.history.cell.force_close_channel" = "Force closed Channel";
-"scene.history.cell.remote_force_close_channel" = "Remote forced close Channel";
+"scene.history.cell.channel_opened" = "Canale aperto";
+"scene.history.cell.channel_closed" = "Canale chiuso";
+"scene.history.cell.force_close_channel" = "Forza chiusura canale";
+"scene.history.cell.remote_force_close_channel" = "Chiusura canale forzata da remoto";
 "scene.history.cell.breach_close_channel" = "Breach closed Channel";
-"scene.history.cell.close_channel_funding_canceled" = "Closed Channel (funding canceled)";
+"scene.history.cell.close_channel_funding_canceled" = "Canale chiuso (trasferimento cancellato)";
 "scene.history.cell.channel_abandoned" = "Canale abbandonato";
 "scene.history.cell.transaction_sent" = "Pagamento inviato";
 "scene.history.cell.transaction_received" = "Pagamento ricevuto";
@@ -278,11 +278,11 @@
 "scene.manage_wallets.title" = "Gestione Portafogli";
 "scene.manage_wallets.cell.remote" = "remoto";
 
-"scene.channel_backup.title" = "Channel Backup";
-"scene.channel_backup.cell_title" = "%@ channel.backup";
-"scene.channel_backup.not_found" = "file not found";
-"scene.channel_backup.error.iCloudDisabled" = "iCloud seems to be disabled.";
-"scene.channel_backup.error.iCloudBackupFailed" = "iCloud backup failed.";
+"scene.channel_backup.title" = "Backup canale";
+"scene.channel_backup.cell_title" = "%@ canale.backup";
+"scene.channel_backup.not_found" = "file non trovato";
+"scene.channel_backup.error.iCloudDisabled" = "iCloud sembra essere disabilitato.";
+"scene.channel_backup.error.iCloudBackupFailed" = "backup iCloud fallito.";
 "scene.channel_backup.error.localBackupFailed" = "Local file backup failed.";
 "scene.channel_backup.error.lndError" = "Could not get channel backup from lnd.";
 
