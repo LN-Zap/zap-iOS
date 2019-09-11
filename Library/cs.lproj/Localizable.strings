@@ -44,39 +44,39 @@
 
 "view.amount_input.placeholder" = "Množství";
 
-"scene.history.title" = "History";
+"scene.history.title" = "Historie";
 "scene.history.empty_state_label" = "0 transakcí 🙁";
 
 "scene.settings.title" = "Nastavení";
-"scene.settings.section.warning" = "Warning";
+"scene.settings.section.warning" = "Varování";
 "scene.settings.section.lightning" = "Lightning";
 "scene.settings.section.wallet" = "Peněženka";
-"scene.settings.item.version_warning" = "Your lnd is outdated (%@). Zap iOS works best with lnd version %@ or above.";
-"scene.settings.item.bitcoin_unit" = "Bitcoin Unit";
+"scene.settings.item.version_warning" = "Vaše verze lnd není aktuální (%@). Zap iOS funguje nejlépe s verzí lnd %@ a vyšší.";
+"scene.settings.item.bitcoin_unit" = "Jednotka bitcoinu";
 "scene.settings.item.currency" = "Měna";
-"scene.settings.item.currency.popular" = "Popular Currencies";
+"scene.settings.item.currency.popular" = "Oblíbené měny";
 "scene.settings.item.block_explorer" = "Block Explorer";
-"scene.settings.item.on_chain_request_address.title" = "Bitcoin Address Type";
+"scene.settings.item.on_chain_request_address.title" = "Typ Bitcoinové Adresy";
 "scene.settings.item.on_chain_request_address.bech32" = "Bech32";
 "scene.settings.item.on_chain_request_address.p2sh" = "P2SH";
-"scene.settings.item.manage_channels" = "Manage Channels";
-"scene.settings.item.channel_backup" = "Channel Backup";
+"scene.settings.item.manage_channels" = "Správa kanálů";
+"scene.settings.item.channel_backup" = "Záloha kanálů";
 "scene.settings.item.node_uri" = "Node URI";
-"scene.settings.item.remove_remote_node" = "Manage Wallets";
+"scene.settings.item.remove_remote_node" = "Správa peněženek";
 
-"scene.settings.item.change_pin" = "Change Pin";
-"scene.settings.item.report_issue" = "Report an Issue";
-"scene.settings.item.help" = "Need Help?";
-"scene.settings.item.privacy_policy" = "Privacy Policy";
-"scene.settings.item.lnd_log" = "Show lnd Log";
+"scene.settings.item.change_pin" = "Změnit PIN";
+"scene.settings.item.report_issue" = "Náhlasit problém";
+"scene.settings.item.help" = "Potřebujete pomoc?";
+"scene.settings.item.privacy_policy" = "Zásady soukromí";
+"scene.settings.item.lnd_log" = "Ukázat lnd Log";
 
 "scene.request.title" = "Přijmout";
 "scene.request.lightning_button" = "Lightning";
 "scene.request.or_separator_label" = "or";
 "scene.request.on_chain_button" = "On-chain";
-"scene.request.generate_request_button" = "Generate Request";
-"scene.request.lightning_header_title" = "Lightning Payment Request";
-"scene.request.on_chain_header_title" = "On-Chain Payment Request";
+"scene.request.generate_request_button" = "Přijmout";
+"scene.request.lightning_header_title" = "Přijmout Lightning Platbu";
+"scene.request.on_chain_header_title" = "Přijmout On-chain Platbu";
 "scene.request.next_button_title" = "Další";
 "scene.request.subtitle.lightning" = "Možno přijmout: %@";
 
@@ -88,7 +88,7 @@
 "scene.channels.close.title" = "Uzavřít kanál";
 "scene.channels.close.message" = "Opravdu chcete uzavřít kanál s uzlem %@?";
 "scene.channels.force_close.title" = "Vynutit uzavření kanálu";
-"scene.channels.force_close.message" = "%@ is offline, are you sure you want to force close this channel? You’d have to wait about %@ for your funds?";
+"scene.channels.force_close.message" = "%@ je offline, jste si jistý, že chcete vynutit zavření kanálu? Budete muset čekat přibližně %@ , než dostanete Vaše prostředky.";
 "scene.channels.alert.close" = "Uzavřít kanál";
 "scene.channels.alert.force_close" = "Vynutit uzavření kanálu";
 "scene.channels.close_loading_view" = "Uzavírání kanálu";
