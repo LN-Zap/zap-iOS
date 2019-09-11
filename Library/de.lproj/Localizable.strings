@@ -236,7 +236,7 @@
 "scene.wallet.detail.lightning" = "Lightning:";
 "scene.wallet.detail.pending" = "Ausstehend:";
 "scene.wallet.empty_state.title" = "Lade deine Wallet auf";
-"scene.wallet.empty_state.message" = "Your wallet is empty! Get started by depositing some funds.";
+"scene.wallet.empty_state.message" = "Deine Wallet ist leer! Starten jetzt und füge Geld hinzu.";
 "scene.wallet.empty_state.button_title" = "Deposit funds";
 
 "scene.time_lock.headline" = "Falscher PIN";
@@ -249,7 +249,7 @@
 "scene.history.cell.payment_received" = "Zahlung empfangen";
 "scene.history.cell.invoice_created" = "Zahlungs-Anfrage erstellt";
 "scene.history.cell.channel_opened" = "Zahlungskanal öffnen";
-"scene.history.cell.channel_closed" = "Closed Channel";
+"scene.history.cell.channel_closed" = "Geschlossener Channel";
 "scene.history.cell.force_close_channel" = "Force closed Channel";
 "scene.history.cell.remote_force_close_channel" = "Remote forced close Channel";
 "scene.history.cell.breach_close_channel" = "Breach closed Channel";
