@@ -2,8 +2,8 @@
 "generic.qr_code.copy_button" = "نسخ";
 "generic.qr_code.copy_success_message" = "تم نسخ العنوان إلى الحافظة.";
 "generic.pasteboard.invalid_address" = "عنوان خاطئ";
-"generic.qr_code.share_button" = "Share";
-"generic.cancel" = "Cancel";
+"generic.qr_code.share_button" = "شارك";
+"generic.cancel" = "إلغاء";
 
 "link.help" = "https://docs.zaphq.io/";
 "link.help.zapconnect" = "https://docs.zaphq.io/docs-ios-remote-node-setup";
@@ -17,15 +17,15 @@
 
 "rpc_connect_qrcode_error.btc_pay_expired" = "يبدو أن الرمز منتهي الصلاحية.";
 "rpc_connect_qrcode_error.btc_pay_configuration_broken" = "لا يمكن قراءة ملف تكوينات الـ BTCPay.";
-"rpc_connect_qrcode_error.cant_read_qrcode" = "Invalid code format.";
-"rpc_connect_qrcode_error.code_updated" = "Connection updated.";
+"rpc_connect_qrcode_error.cant_read_qrcode" = "هيئة الرمز غير صالحة.";
+"rpc_connect_qrcode_error.code_updated" = "تم تحديث الاتصال.";
 
 "channel.state.active" = "متصل";
 "channel.state.inactive" = "غير متصل";
 "channel.state.opening" = "افتتاح";
 "channel.state.closing" = "إغلاق";
 "channel.state.force_closing" = "إغلاق أجباري";
-"channel.state.waiting_close" = "Waiting Close";
+"channel.state.waiting_close" = "انتظار إغلاق";
 
 "network_type.simnet" = "Simnet";
 "network_type.regtest" = "Regtest";
@@ -37,14 +37,14 @@
 "unit.bitcoin.bit" = "Bits";
 "unit.bitcoin.satoshi" = "Satoshis";
 
-"toast.invoice" = "Did receive %@";
-"toast.invoice_memo" = "Did receive %@ \"%@\"";
+"toast.invoice" = "هل استلم %@";
+"toast.invoice_memo" = "هل استلم %@ \"%@\"";
 
-"transaction.no_destination_address" = "No destination address";
+"transaction.no_destination_address" = "لا يوجد عنوان استقبال";
 
 "view.amount_input.placeholder" = "المبلغ";
 
-"scene.history.title" = "History";
+"scene.history.title" = "سجل";
 "scene.history.empty_state_label" = "0 transactions 🙁";
 
 "scene.settings.title" = "إعدادات";
