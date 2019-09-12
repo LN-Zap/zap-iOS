@@ -47,11 +47,9 @@ public struct ChannelEvent: Equatable, DateProvidingEvent {
 
 extension ChannelEvent {
     init?(channel: OpenChannel, dateEstimator: DateEstimator) {
-        if let date = dateEstimator.estimatedDate(forBlockHeight: channel.blockHeight) {
-            self.date = date
-        } else {
-            date = Date()
-        }
+        guard let date = dateEstimator.estimatedDate(forBlockHeight: channel.blockHeight) else { return nil }
+
+        self.date = date
 
         txHash = channel.channelPoint.fundingTxid
         node = LightningNode(pubKey: channel.remotePubKey, alias: nil, color: nil)
