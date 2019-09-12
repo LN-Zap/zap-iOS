@@ -19,13 +19,9 @@ enum BiometricAuthentication {
 
     static var type: BiometricType {
         #if targetEnvironment(simulator)
-        if #available(iOS 13, *) {
-            return .none
-        } else {
-            return Environment.fakeBiometricAuthentication
-                ? .faceID
-                : .none
-        }
+        return Environment.fakeBiometricAuthentication
+            ? .faceID
+            : .none
         #else
         let context = LAContext()
 
@@ -48,7 +44,7 @@ enum BiometricAuthentication {
         #endif
     }
 
-    static func authenticate(completion: @escaping (Result<Success, AuthenticationError>) -> Void) {
+    static func authenticate(viewController: UIViewController, completion: @escaping (Result<Success, AuthenticationError>) -> Void) {
         #if targetEnvironment(simulator)
         guard Environment.fakeBiometricAuthentication else {
             completion(.failure(AuthenticationError.notAvailable))
@@ -59,12 +55,7 @@ enum BiometricAuthentication {
         alertController.addAction(UIAlertAction(title: "cancel", style: .cancel) { _ in completion(.failure(AuthenticationError.canceled)) })
         alertController.addAction(UIAlertAction(title: "authenticate", style: .default) { _ in completion(.success(Success())) })
 
-        let alertWindow = UIWindow(frame: UIScreen.main.bounds)
-        alertWindow.rootViewController = RootViewController()
-        alertWindow.windowLevel = WindowLevel.fakeBiometricAuthentication
-        alertWindow.makeKeyAndVisible()
-        alertWindow.tintColor = UIColor.Zap.lightningOrange
-        alertWindow.rootViewController?.present(alertController, animated: true, completion: nil)
+        viewController.present(alertController, animated: true, completion: nil)
         #else
         let localAuthenticationContext = LAContext()
         localAuthenticationContext.localizedFallbackTitle = L10n.Scene.Pin.Biometric.Fallback.title
