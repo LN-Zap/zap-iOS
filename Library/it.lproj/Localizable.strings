@@ -235,7 +235,7 @@
 "scene.wallet.detail.on_chain" = "On-chain:";
 "scene.wallet.detail.lightning" = "Lightning:";
 "scene.wallet.detail.pending" = "In sospeso:";
-"scene.wallet.empty_state.title" = "Trasferisci nel portafoglio";
+"scene.wallet.empty_state.title" = "Trasferisci nel portafogli";
 "scene.wallet.empty_state.message" = "Il tuo portafogli è vuoto! Inizia a depositare qualcosa.";
 "scene.wallet.empty_state.button_title" = "Deposita fondi";
 
