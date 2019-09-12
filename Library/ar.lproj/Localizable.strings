@@ -82,16 +82,16 @@
 
 "scene.channels.title" = "قنوات";
 "scene.channels.header.total_can_send" = "المجموع ما يمكن أرساله:";
-"scene.channels.header.total_can_receive" = "Total can receive:";
-"scene.channels.header.total_pending" = "Total pending:";
-"scene.channels.header.offline" = "Total offline:";
+"scene.channels.header.total_can_receive" = "المجموع ما يمكن استلامه:";
+"scene.channels.header.total_pending" = "المجموع قيد الانتظار:";
+"scene.channels.header.offline" = "المجموع غير المتصل:";
 "scene.channels.close.title" = "إغلاق القناة";
 "scene.channels.close.message" = "هل تريد حقاً إغلاق القناة مع العقدة %@؟";
-"scene.channels.force_close.title" = "Force Close Channel";
-"scene.channels.force_close.message" = "%@ is offline, are you sure you want to force close this channel? You’d have to wait about %@ for your funds?";
-"scene.channels.alert.close" = "Close Channel";
-"scene.channels.alert.force_close" = "Force Close Channel";
-"scene.channels.close_loading_view" = "Closing Channel";
+"scene.channels.force_close.title" = "أجبار القناة بالإغلاق";
+"scene.channels.force_close.message" = "%@ غير متصل, هل أنت متأكد من أجبار القناة على الإغلاق؟ عليك الأنتظار %@ كي تستلم الرصيد؟";
+"scene.channels.alert.close" = "إغلاق القناة";
+"scene.channels.alert.force_close" = "أجبار القناة بالإغلاق";
+"scene.channels.close_loading_view" = "إغلاق القناة";
 "scene.channels.close_success.toast" = "Channel is closing.";
 "scene.channels.empty_state.title" = "Open a channel";
 "scene.channels.empty_state.message" = "You can't transact on the Lightning Network yet! Let's open a channel to start transacting on the Lightning Network.";
