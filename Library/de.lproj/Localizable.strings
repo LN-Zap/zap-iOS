@@ -237,7 +237,7 @@
 "scene.wallet.detail.pending" = "Ausstehend:";
 "scene.wallet.empty_state.title" = "Lade deine Wallet auf";
 "scene.wallet.empty_state.message" = "Deine Wallet ist leer! Starten jetzt und füge Geld hinzu.";
-"scene.wallet.empty_state.button_title" = "Deposit funds";
+"scene.wallet.empty_state.button_title" = "Geld einzahlen";
 
 "scene.time_lock.headline" = "Falscher PIN";
 "scene.time_lock.description" = "Ihre Geldbörse ist gesperrt für:";
@@ -250,7 +250,7 @@
 "scene.history.cell.invoice_created" = "Zahlungs-Anfrage erstellt";
 "scene.history.cell.channel_opened" = "Zahlungskanal öffnen";
 "scene.history.cell.channel_closed" = "Geschlossener Channel";
-"scene.history.cell.force_close_channel" = "Force closed Channel";
+"scene.history.cell.force_close_channel" = "Erzwinge Channel-Schließung";
 "scene.history.cell.remote_force_close_channel" = "Remote forced close Channel";
 "scene.history.cell.breach_close_channel" = "Breach closed Channel";
 "scene.history.cell.close_channel_funding_canceled" = "Geschlossene Zahlungskanäle (Finanzierung wurde abgebrochen)";
@@ -286,8 +286,8 @@
 "scene.channel_backup.error.localBackupFailed" = "Lokales File Backup fehlerhaft.";
 "scene.channel_backup.error.lndError" = "Kanal Backup konnte von lnd nicht empfangen werden.";
 
-"scene.push_notification.headline" = "Stay **up to date**";
-"scene.push_notification.message" = "To keep your funds safe, Zap needs to sync once in a while. Do you want to be notified when your wallet needs to sync?";
+"scene.push_notification.headline" = "Bleibe auf dem Laufenden";
+"scene.push_notification.message" = "Um Ihre Gelder sicher zu halten, muss Zap ab und zu synchronisieren. Möchten Sie eine Benachrichtigung erhalten, wenn es Zeit ist?";
 "scene.push_notification.confirm_button_title" = "Notifikationen einschalten";
 "scene.push_notification.skip_button_title" = "Überspringen";
 
