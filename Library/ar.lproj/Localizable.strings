@@ -1,9 +1,9 @@
-"generic.memo.placeholder" = "What is this for?";
-"generic.qr_code.copy_button" = "Copy";
-"generic.qr_code.copy_success_message" = "Address has been copied to clipboard.";
-"generic.pasteboard.invalid_address" = "Invalid Address";
-"generic.qr_code.share_button" = "Share";
-"generic.cancel" = "Cancel";
+"generic.memo.placeholder" = "لما هذا؟";
+"generic.qr_code.copy_button" = "نسخ";
+"generic.qr_code.copy_success_message" = "تم نسخ العنوان إلى الحافظة.";
+"generic.pasteboard.invalid_address" = "عنوان خاطئ";
+"generic.qr_code.share_button" = "شارك";
+"generic.cancel" = "إلغاء";
 
 "link.help" = "https://docs.zaphq.io/";
 "link.help.zapconnect" = "https://docs.zaphq.io/docs-ios-remote-node-setup";
@@ -17,15 +17,15 @@
 
 "rpc_connect_qrcode_error.btc_pay_expired" = "يبدو أن الرمز منتهي الصلاحية.";
 "rpc_connect_qrcode_error.btc_pay_configuration_broken" = "لا يمكن قراءة ملف تكوينات الـ BTCPay.";
-"rpc_connect_qrcode_error.cant_read_qrcode" = "Invalid code format.";
-"rpc_connect_qrcode_error.code_updated" = "Connection updated.";
+"rpc_connect_qrcode_error.cant_read_qrcode" = "هيئة الرمز غير صالحة.";
+"rpc_connect_qrcode_error.code_updated" = "تم تحديث الاتصال.";
 
 "channel.state.active" = "متصل";
 "channel.state.inactive" = "غير متصل";
 "channel.state.opening" = "افتتاح";
 "channel.state.closing" = "إغلاق";
 "channel.state.force_closing" = "إغلاق أجباري";
-"channel.state.waiting_close" = "Waiting Close";
+"channel.state.waiting_close" = "انتظار إغلاق";
 
 "network_type.simnet" = "Simnet";
 "network_type.regtest" = "Regtest";
@@ -37,47 +37,47 @@
 "unit.bitcoin.bit" = "Bits";
 "unit.bitcoin.satoshi" = "Satoshis";
 
-"toast.invoice" = "Did receive %@";
-"toast.invoice_memo" = "Did receive %@ \"%@\"";
+"toast.invoice" = "هل استلم %@";
+"toast.invoice_memo" = "هل استلم %@ \"%@\"";
 
-"transaction.no_destination_address" = "No destination address";
+"transaction.no_destination_address" = "لا يوجد عنوان استقبال";
 
 "view.amount_input.placeholder" = "المبلغ";
 
-"scene.history.title" = "History";
-"scene.history.empty_state_label" = "0 transactions 🙁";
+"scene.history.title" = "سجل";
+"scene.history.empty_state_label" = "المعاملات 0🙁";
 
 "scene.settings.title" = "إعدادات";
-"scene.settings.section.warning" = "Warning";
+"scene.settings.section.warning" = "تحذير";
 "scene.settings.section.lightning" = "Lightning";
 "scene.settings.section.wallet" = "محفظة";
-"scene.settings.item.version_warning" = "Your lnd is outdated (%@). Zap iOS works best with lnd version %@ or above.";
+"scene.settings.item.version_warning" = "lnd الخاص بك قديم (%@). يعمل Zap iOS بشكل أفضل مع إصدار lnd %@ أو أعلى.";
 "scene.settings.item.bitcoin_unit" = "وحدة البت كوين";
 "scene.settings.item.currency" = "عملة";
-"scene.settings.item.currency.popular" = "Popular Currencies";
+"scene.settings.item.currency.popular" = "العملات شائعة";
 "scene.settings.item.block_explorer" = "مستكشف البلوك";
 "scene.settings.item.on_chain_request_address.title" = "نوع عنوان البت كوين";
 "scene.settings.item.on_chain_request_address.bech32" = "Bech32";
 "scene.settings.item.on_chain_request_address.p2sh" = "P2SH";
-"scene.settings.item.manage_channels" = "Manage Channels";
-"scene.settings.item.channel_backup" = "Channel Backup";
+"scene.settings.item.manage_channels" = "إدارة القنوات";
+"scene.settings.item.channel_backup" = "النسخة احتياطية للقناة";
 "scene.settings.item.node_uri" = "Node URI";
-"scene.settings.item.remove_remote_node" = "Manage Wallets";
+"scene.settings.item.remove_remote_node" = "إدارة المحافظ";
 
-"scene.settings.item.change_pin" = "Change Pin";
+"scene.settings.item.change_pin" = "تغيير الرمز السري";
 "scene.settings.item.report_issue" = "الإبلاغ عن مشكلة";
 "scene.settings.item.help" = "تحتاج مساعدة؟";
-"scene.settings.item.privacy_policy" = "Privacy Policy";
-"scene.settings.item.lnd_log" = "Show lnd Log";
+"scene.settings.item.privacy_policy" = "سياسة الخصوصية";
+"scene.settings.item.lnd_log" = "إظهار سجل lnd";
 
 "scene.request.title" = "تلقى";
 "scene.request.lightning_button" = "Lightning";
-"scene.request.or_separator_label" = "or";
+"scene.request.or_separator_label" = "أو";
 "scene.request.on_chain_button" = "On-chain";
 "scene.request.generate_request_button" = "إنشاء طلب";
-"scene.request.lightning_header_title" = "Lightning Payment Request";
-"scene.request.on_chain_header_title" = "On-Chain Payment Request";
-"scene.request.next_button_title" = "Next";
+"scene.request.lightning_header_title" = "طلب الدفع Lightning";
+"scene.request.on_chain_header_title" = "طلب الدفع On-Chain";
+"scene.request.next_button_title" = "التالى";
 "scene.request.subtitle.lightning" = "Can receive: %@";
 
 "scene.channels.title" = "قنوات";
