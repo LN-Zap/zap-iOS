@@ -34,7 +34,7 @@
 
 "unit.bitcoin.btc" = "Bitcoin";
 "unit.bitcoin.mbtc" = "Milli Bitcoin";
-"unit.bitcoin.bit" = "Bit";
+"unit.bitcoin.bit" = "Bits";
 "unit.bitcoin.satoshi" = "Satoshi";
 
 "toast.invoice" = "Ricevuto %@";
@@ -60,7 +60,7 @@
 "scene.settings.item.on_chain_request_address.bech32" = "Bech32";
 "scene.settings.item.on_chain_request_address.p2sh" = "P2SH";
 "scene.settings.item.manage_channels" = "Gestione canali";
-"scene.settings.item.channel_backup" = "Channel Backup";
+"scene.settings.item.channel_backup" = "Backup canale";
 "scene.settings.item.node_uri" = "URI del nodo";
 "scene.settings.item.remove_remote_node" = "Gestione Portafogli";
 
@@ -93,8 +93,8 @@
 "scene.channels.alert.force_close" = "Forza Chiusura Canale";
 "scene.channels.close_loading_view" = "Chiusura Canale";
 "scene.channels.close_success.toast" = "Il canale è chiuso.";
-"scene.channels.empty_state.title" = "Open a channel";
-"scene.channels.empty_state.message" = "You can't transact on the Lightning Network yet! Let's open a channel to start transacting on the Lightning Network.";
+"scene.channels.empty_state.title" = "Apri un canale";
+"scene.channels.empty_state.message" = "Non puoi ancora effettuare transazioni sul Network Lightning, apri un canale per iniziare ad effettuare transazione sul Lightning Network.";
 "scene.channels.empty_state.button_title" = "Apri un Canale";
 
 "scene.open_channel.title" = "Apri Canale";
@@ -114,7 +114,7 @@
 "scene.setup_pin.top_label.non_matching" = "I PIN non corrispondono. Si prega di riprovare.";
 "scene.setup_pin.top_label.validate" = "Immettere il PIN nuovamente per convalidare.";
 
-"scene.onboarding.page_1.title" = "Your **keys**, your **coins**";
+"scene.onboarding.page_1.title" = "Tue **chiavi**, tue **monete**";
 "scene.onboarding.page_1.message" = "Con Zap, hai il controllo dei tuoi soldi. Per fare in modo che i tuoi soldi siano sempre conservati al sicuro. Zap ti fornirà una frase di recupero.";
 "scene.onboarding.page_1.button_title" = "Continua";
 
@@ -179,7 +179,7 @@
 "scene.select_wallet_connection.create.title" = "Crea";
 "scene.select_wallet_connection.recover.title" = "Recupera";
 "scene.select_wallet_connection.connect.title" = "Connetti";
-"scene.select_wallet_connection.message" = "Bitcoin for **everyone**";
+"scene.select_wallet_connection.message" = "Bitcoin per **tutti**";
 
 "scene.main.send_button" = "Invia";
 "scene.main.receive_button" = "Ricevi";
@@ -227,8 +227,8 @@
 
 "scene.qrcode_scanner.top_label" = "Scansiona il codice QR";
 "scene.qrcode_scanner.error.unknown_format" = "Formato indirizzo sconosciuto.";
-"scene.qrcode_scanner.error.wrong_network" = "You tried opening an invoice for %@ but your node is connected to %@.";
-"scene.qrcode_scanner.error.zero_amount_invoice" = "For security reasons zap does not support invoices without a specified amount.";
+"scene.qrcode_scanner.error.wrong_network" = "Si è provato ad aprire una ricevuta per %@ ma il nodo è connesso a %@.";
+"scene.qrcode_scanner.error.zero_amount_invoice" = "Per ragioni di sicurezza Zap non supporta ricevute di pagamento senza un importo specifico.";
 
 "scene.wallet.title" = "Portafoglio";
 "scene.wallet.total_balance" = "Saldo Totale";
@@ -252,7 +252,7 @@
 "scene.history.cell.channel_closed" = "Canale chiuso";
 "scene.history.cell.force_close_channel" = "Forza chiusura canale";
 "scene.history.cell.remote_force_close_channel" = "Chiusura canale forzata da remoto";
-"scene.history.cell.breach_close_channel" = "Breach closed Channel";
+"scene.history.cell.breach_close_channel" = "Canale chiuso per violazione";
 "scene.history.cell.close_channel_funding_canceled" = "Canale chiuso (trasferimento cancellato)";
 "scene.history.cell.channel_abandoned" = "Canale abbandonato";
 "scene.history.cell.transaction_sent" = "Pagamento inviato";
@@ -283,15 +283,15 @@
 "scene.channel_backup.not_found" = "file non trovato";
 "scene.channel_backup.error.iCloudDisabled" = "iCloud sembra essere disabilitato.";
 "scene.channel_backup.error.iCloudBackupFailed" = "backup iCloud fallito.";
-"scene.channel_backup.error.localBackupFailed" = "Local file backup failed.";
-"scene.channel_backup.error.lndError" = "Could not get channel backup from lnd.";
+"scene.channel_backup.error.localBackupFailed" = "Backup file locale fallito.";
+"scene.channel_backup.error.lndError" = "Impossibile ottenere backup del canale dall’lnd.";
 
-"scene.push_notification.headline" = "Stay **up to date**";
-"scene.push_notification.message" = "To keep your funds safe, Zap needs to sync once in a while. Do you want to be notified when your wallet needs to sync?";
-"scene.push_notification.confirm_button_title" = "Turn on notifications";
-"scene.push_notification.skip_button_title" = "Skip";
+"scene.push_notification.headline" = "Rimani **aggiornato**";
+"scene.push_notification.message" = "Per tenere i tuoi fondi al sicuro. Zap ha bisogno di sincronizzarsi di tanto in tanto. Vuoi essere notificato quando il tuo portafogli ha bisogno di una sincronizzazione?";
+"scene.push_notification.confirm_button_title" = "Arriva notifiche";
+"scene.push_notification.skip_button_title" = "Salta";
 
-"notification.sync.title" = "Please sync";
-"notification.sync.day_12.body" = "Please remember syncing your wallet to make sure you stay safe";
-"notification.sync.day_13.body" = "You have one more day to sync your wallet before it's getting dangerous.";
-"notification.sync.day_14.body" = "Please sync your wallet as soon as possible.";
+"notification.sync.title" = "Sincronizza per favore";
+"notification.sync.day_12.body" = "Ricorda di sincronizzare il tuo portafogli per essere certi di essere al sicuro";
+"notification.sync.day_13.body" = "Hai ancora un giorno per sincronizzare il tuo portafogli prima che diventi pericoloso.";
+"notification.sync.day_14.body" = "Per favore sincronizza il tuo portafogli al più presto possibile.";
