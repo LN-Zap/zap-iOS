@@ -92,25 +92,25 @@
 "scene.channels.alert.close" = "إغلاق القناة";
 "scene.channels.alert.force_close" = "أجبار القناة بالإغلاق";
 "scene.channels.close_loading_view" = "إغلاق القناة";
-"scene.channels.close_success.toast" = "Channel is closing.";
-"scene.channels.empty_state.title" = "Open a channel";
-"scene.channels.empty_state.message" = "You can't transact on the Lightning Network yet! Let's open a channel to start transacting on the Lightning Network.";
-"scene.channels.empty_state.button_title" = "Open a channel";
+"scene.channels.close_success.toast" = "القناة تغلق.";
+"scene.channels.empty_state.title" = "فتح قناة";
+"scene.channels.empty_state.message" = "لا يمكنك التعامل على شبكة Lightning حتى الآن! دعنا نفتح قناة لبدء المعاملات على شبكة Lightning.";
+"scene.channels.empty_state.button_title" = "فتح القناة";
 
-"scene.open_channel.title" = "Open Channel";
+"scene.open_channel.title" = "فتح قناة";
 "scene.open_channel.channel_uri_label" = "Node:";
-"scene.open_channel.add_button" = "Open Channel";
-"scene.open_channel.subtitle.minimum_size" = "Minimum channel size: %@";
-"scene.open_channel.subtitle.maximum_size" = "Maximum channel size: %@";
-"scene.open_channel.subtitle.balance" = "On-chain balance: %@";
-"scene.open_channel.suggested_peers.title" = "Suggested Peers";
-"scene.open_channel.paste_button.title" = "Paste Peer Address";
+"scene.open_channel.add_button" = "فتح قناة";
+"scene.open_channel.subtitle.minimum_size" = "الحد الأدنى لحجم القناة: %@";
+"scene.open_channel.subtitle.maximum_size" = "الحد الأقصى لحجم القناة: %@";
+"scene.open_channel.subtitle.balance" = "الرصيد On-chain: %@";
+"scene.open_channel.suggested_peers.title" = "Peers مقترحة";
+"scene.open_channel.paste_button.title" = "لصق عنوان الـ Peer";
 
-"scene.pin.biometric.fallback.title" = "Use Passcode";
-"scene.pin.biometric.reason" = "To access the secure data";
+"scene.pin.biometric.fallback.title" = "استخدام رمز المرور";
+"scene.pin.biometric.reason" = "للوصول إلى البيانات الآمنة";
 
-"scene.setup_pin.done_button" = "Done";
-"scene.setup_pin.top_label.initial" = "Choose a pin.";
+"scene.setup_pin.done_button" = "تم";
+"scene.setup_pin.top_label.initial" = "اختر رمز سري.";
 "scene.setup_pin.top_label.non_matching" = "The pins didn't match. Please try again.";
 "scene.setup_pin.top_label.validate" = "Enter the pin again to validate.";
 
