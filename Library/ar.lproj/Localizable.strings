@@ -78,10 +78,10 @@
 "scene.request.lightning_header_title" = "طلب الدفع Lightning";
 "scene.request.on_chain_header_title" = "طلب الدفع On-Chain";
 "scene.request.next_button_title" = "التالى";
-"scene.request.subtitle.lightning" = "Can receive: %@";
+"scene.request.subtitle.lightning" = "يمكن استلام: %@";
 
 "scene.channels.title" = "قنوات";
-"scene.channels.header.total_can_send" = "Total can send:";
+"scene.channels.header.total_can_send" = "المجموع ما يمكن أرساله:";
 "scene.channels.header.total_can_receive" = "Total can receive:";
 "scene.channels.header.total_pending" = "Total pending:";
 "scene.channels.header.offline" = "Total offline:";
