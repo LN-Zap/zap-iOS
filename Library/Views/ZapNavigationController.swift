@@ -16,6 +16,8 @@ class ZapNavigationController: UINavigationController {
         navigationBar.barTintColor = UIColor.Zap.background
         navigationBar.isTranslucent = false
         navigationBar.shadowImage = UIImage()
+
+        view.backgroundColor = UIColor.Zap.deepSeaBlue
     }
 
     override var childForStatusBarStyle: UIViewController? {
