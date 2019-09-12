@@ -23,7 +23,7 @@ final class PinnedURLSessionDelegate: NSObject {
             PinnedHost(named: "bitcoinaverage.com", certificates: ["*.bitcoinaverage.com", "Sectigo RSA Domain Validation Secure Server CA 2"]),
             PinnedHost(named: "blockchain.info", certificates: ["www.blockchain.com", "DigiCert SHA2 Extended Validation Server CA"]),
             PinnedHost(named: "blockcypher.com", certificates: ["*.blockcypher.com", "Sectigo RSA Domain Validation Secure Server CA"]),
-            PinnedHost(named: "blockstream.info", certificates: ["blockstream.info", "Let's Encrypt Authority X3"])
+            PinnedHost(named: "blockstream.info", certificates: ["DST Root CA X3", "Let's Encrypt Authority X3"])
         ]
     }
 
@@ -47,14 +47,12 @@ final class PinnedURLSessionDelegate: NSObject {
         SecTrustSetPolicies(serverTrust, policy)
 
         for serverPublicKey in publicKeys(for: serverTrust) as [AnyObject] {
-            for pinnedPublicKey in pinnedHost.publicKeys {
-                if serverPublicKey.isEqual(pinnedPublicKey) {
-                    return true
-                } else {
-                    Logger.warn("expired key for host: \(host)")
-                }
+            for pinnedPublicKey in pinnedHost.publicKeys where serverPublicKey.isEqual(pinnedPublicKey) {
+                return true
             }
         }
+
+        Logger.warn("expired keys for host: \(host)")
 
         return false
     }
