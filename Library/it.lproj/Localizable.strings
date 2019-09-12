@@ -288,7 +288,7 @@
 
 "scene.push_notification.headline" = "Rimani **aggiornato**";
 "scene.push_notification.message" = "Per tenere i tuoi fondi al sicuro. Zap ha bisogno di sincronizzarsi di tanto in tanto. Vuoi essere notificato quando il tuo portafogli ha bisogno di una sincronizzazione?";
-"scene.push_notification.confirm_button_title" = "Arriva notifiche";
+"scene.push_notification.confirm_button_title" = "Attiva notifiche";
 "scene.push_notification.skip_button_title" = "Salta";
 
 "notification.sync.title" = "Sincronizza per favore";
