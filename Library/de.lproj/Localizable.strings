@@ -252,7 +252,7 @@
 "scene.history.cell.channel_closed" = "Geschlossener Channel";
 "scene.history.cell.force_close_channel" = "Erzwinge Channel-Schließung";
 "scene.history.cell.remote_force_close_channel" = "Vom Peer erzwungener geschlossener Kanal";
-"scene.history.cell.breach_close_channel" = "Breach closed Channel";
+"scene.history.cell.breach_close_channel" = "Durch Verstoß geschlossener Kanal";
 "scene.history.cell.close_channel_funding_canceled" = "Geschlossene Zahlungskanäle (Finanzierung wurde abgebrochen)";
 "scene.history.cell.channel_abandoned" = "Channel aufgegeben";
 "scene.history.cell.transaction_sent" = "Zahlung gesendet";
