@@ -237,21 +237,21 @@
 "scene.wallet.detail.pending" = "قيد الانتظار:";
 "scene.wallet.empty_state.title" = "تمويل محفظتك";
 "scene.wallet.empty_state.message" = "محفظتك فارغة! ابدأ بإيداع بعض الأموال.";
-"scene.wallet.empty_state.button_title" = "Deposit funds";
+"scene.wallet.empty_state.button_title" = "إيداع الأموال";
 
-"scene.time_lock.headline" = "Wrong Passcode";
-"scene.time_lock.description" = "Your wallet is locked for:";
+"scene.time_lock.headline" = "رمز مرور خاطئ";
+"scene.time_lock.description" = "محفظتك مقفلة من أجل:";
 
-"scene.modal_pin.headline" = "Enter Passcode";
-"scene.modal_pin.description" = "Please enter your passcode to continue";
+"scene.modal_pin.headline" = "أدخل رمز المرور";
+"scene.modal_pin.description" = "الرجاء إدخال رمز المرور للمتابعة";
 
-"scene.history.cell.payment_sent" = "Payment sent";
-"scene.history.cell.payment_received" = "Payment received";
-"scene.history.cell.invoice_created" = "Payment Request created";
-"scene.history.cell.channel_opened" = "Opened Channel";
-"scene.history.cell.channel_closed" = "Closed Channel";
-"scene.history.cell.force_close_channel" = "Force closed Channel";
-"scene.history.cell.remote_force_close_channel" = "Remote forced close Channel";
+"scene.history.cell.payment_sent" = "تم ارسال الدفعة";
+"scene.history.cell.payment_received" = "تم استلام الدفعة";
+"scene.history.cell.invoice_created" = "تم إنشاء طلب الدفع";
+"scene.history.cell.channel_opened" = "قناة مفتوحة";
+"scene.history.cell.channel_closed" = "قناة مغلقة";
+"scene.history.cell.force_close_channel" = "قناة مغلقة أجباري";
+"scene.history.cell.remote_force_close_channel" = "أجبار القناة على الأغلاق عن بعد";
 "scene.history.cell.breach_close_channel" = "Breach closed Channel";
 "scene.history.cell.close_channel_funding_canceled" = "Closed Channel (funding canceled)";
 "scene.history.cell.channel_abandoned" = "Channel abandoned";
