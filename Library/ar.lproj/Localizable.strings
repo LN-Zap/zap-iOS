@@ -192,13 +192,13 @@
 "scene.transaction_detail.title.lightning_invoice" = "تفاصيل الفاتورة";
 "scene.transaction_detail.title.payment_detail" = "تفاصيل الدفع";
 "scene.transaction_detail.title.transaction_detail" = "تفاصيل الصفقة";
-"scene.transaction_detail.title.channel_event_detail" = "Channel Event";
-"scene.transaction_detail.title.failed_payment" = "Failed Payment";
-"scene.transaction_detail.memo_label" = "Memo";
-"scene.transaction_detail.amount_label" = "Amount";
-"scene.transaction_detail.fee_label" = "Fee";
-"scene.transaction_detail.date_label" = "Date";
-"scene.transaction_detail.transaction_id_label" = "Transaction ID";
+"scene.transaction_detail.title.channel_event_detail" = "حالة القناة";
+"scene.transaction_detail.title.failed_payment" = "فشل الدفع";
+"scene.transaction_detail.memo_label" = "ملاحظة";
+"scene.transaction_detail.amount_label" = "المبلغ";
+"scene.transaction_detail.fee_label" = "الرسوم";
+"scene.transaction_detail.date_label" = "التاريخ";
+"scene.transaction_detail.transaction_id_label" = "ID المعاملة";
 "scene.transaction_detail.address_label" = "عنوان";
 "scene.transaction_detail.expiry_label" = "Expiry";
 "scene.transaction_detail.expiry_label.expired" = "Expired";
@@ -257,21 +257,21 @@
 "scene.history.cell.channel_abandoned" = "Channel abandoned";
 "scene.history.cell.transaction_sent" = "Payment sent";
 "scene.history.cell.transaction_received" = "Payment received";
-"scene.history.cell.label.new" = "new";
-"scene.history.cell.label.error" = "error";
+"scene.history.cell.label.new" = "جديد";
+"scene.history.cell.label.error" = "خطأ";
 
-"scene.node_uri.title" = "Connect to Node";
-"scene.node_uri.alias_label" = "Alias";
+"scene.node_uri.title" = "الاتصال بالـ Node";
+"scene.node_uri.alias_label" = "الاسم المستعار";
 "scene.node_uri.uri_label" = "URI";
 
-"scene.connect_node_uri.action_sheet.title" = "Connect";
-"scene.connect_node_uri.action_sheet.connect_button" = "Connect";
-"scene.connect_node_uri.action_sheet.message" = "Do you really want to connect to node at %@?";
+"scene.connect_node_uri.action_sheet.title" = "الاتصال";
+"scene.connect_node_uri.action_sheet.connect_button" = "الاتصال";
+"scene.connect_node_uri.action_sheet.message" = "هل تريد حقًا الاتصال بالـ Node على %@؟";
 
-"scene.wallet_list.title" = "Wallets";
+"scene.wallet_list.title" = "محافظ";
 
-"scene.unlock.title" = "Unlock Node";
-"scene.unlock.unlock_button" = "Unlock";
+"scene.unlock.title" = "فتح القفل الـ Node";
+"scene.unlock.unlock_button" = "الغاء القفل";
 "scene.unlock.password_placeholder" = "Password";
 "scene.unlock.title_label" = "Unlock %@";
 
