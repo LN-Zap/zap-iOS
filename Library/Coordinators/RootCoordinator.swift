@@ -85,15 +85,18 @@ public final class RootCoordinator: Coordinator, SetupCoordinatorDelegate {
         if !PinStore.didSetupPin {
             presentPinSetup()
         } else if let selectedWallet = walletConfigurationStore.selectedWallet {
-            presentWallet(connection: selectedWallet.connection)
+            do {
+                try presentWallet(connection: selectedWallet.connection)
+            } catch {
+                presentSetup(walletConfigurationStore: walletConfigurationStore, rpcCredentials: nil)
+            }
         } else {
             presentSetup(walletConfigurationStore: walletConfigurationStore, rpcCredentials: nil)
         }
     }
 
-    func presentWallet(connection: LightningConnection) {
-        guard let lightningService = LightningService(connection: connection, backupService: StaticChannelBackupService()) else { return }
-
+    func presentWallet(connection: LightningConnection) throws {
+        let lightningService = try LightningService(connection: connection, backupService: StaticChannelBackupService())
         walletConfigurationStore.updateConnection(connection, infoService: lightningService.infoService)
 
         let walletCoordinator = WalletCoordinator(rootViewController: rootViewController, lightningService: lightningService, disconnectWalletDelegate: self, authenticationViewModel: authenticationViewModel, walletConfigurationStore: walletConfigurationStore)
