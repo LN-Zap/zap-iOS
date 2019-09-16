@@ -272,26 +272,26 @@
 
 "scene.unlock.title" = "فتح القفل الـ Node";
 "scene.unlock.unlock_button" = "الغاء القفل";
-"scene.unlock.password_placeholder" = "Password";
-"scene.unlock.title_label" = "Unlock %@";
+"scene.unlock.password_placeholder" = "كلمه السر";
+"scene.unlock.title_label" = "الغاء قفل %@";
 
-"scene.manage_wallets.title" = "Manage Wallets";
-"scene.manage_wallets.cell.remote" = "remote";
+"scene.manage_wallets.title" = "إدارة المحافظ";
+"scene.manage_wallets.cell.remote" = "التحكم عن بعد";
 
-"scene.channel_backup.title" = "Channel Backup";
+"scene.channel_backup.title" = "النسخة احتياطية للقناة";
 "scene.channel_backup.cell_title" = "%@ channel.backup";
-"scene.channel_backup.not_found" = "file not found";
-"scene.channel_backup.error.iCloudDisabled" = "iCloud seems to be disabled.";
-"scene.channel_backup.error.iCloudBackupFailed" = "iCloud backup failed.";
-"scene.channel_backup.error.localBackupFailed" = "Local file backup failed.";
-"scene.channel_backup.error.lndError" = "Could not get channel backup from lnd.";
+"scene.channel_backup.not_found" = "لم يتم العثور على الملف";
+"scene.channel_backup.error.iCloudDisabled" = "يبدو أن iCloud معطلة.";
+"scene.channel_backup.error.iCloudBackupFailed" = "فشل النسخ الاحتياطي iCloud.";
+"scene.channel_backup.error.localBackupFailed" = "فشل النسخ الاحتياطي للملفات المحلية.";
+"scene.channel_backup.error.lndError" = "لا يمكن الحصول على النسخة الاحتياطية للقناة من lnd.";
 
-"scene.push_notification.headline" = "Stay **up to date**";
-"scene.push_notification.message" = "To keep your funds safe, Zap needs to sync once in a while. Do you want to be notified when your wallet needs to sync?";
-"scene.push_notification.confirm_button_title" = "Turn on notifications";
-"scene.push_notification.skip_button_title" = "Skip";
+"scene.push_notification.headline" = "ابق **على اطلاع**";
+"scene.push_notification.message" = "للحفاظ على أمان أموالك ، يحتاج Zap للمزامنة من حين إلى آخر. هل تريد أن يتم إشعارك عندما تحتاج محفظتك إلى المزامنة؟";
+"scene.push_notification.confirm_button_title" = "قم بتشغيل الإشعارات";
+"scene.push_notification.skip_button_title" = "تجاهل";
 
-"notification.sync.title" = "Please sync";
-"notification.sync.day_12.body" = "Please remember syncing your wallet to make sure you stay safe";
+"notification.sync.title" = "يرجى مزامنة";
+"notification.sync.day_12.body" = "يرجى تذكر من مزامنة محفظتك للتأكد من بقائك آمناً";
 "notification.sync.day_13.body" = "You have one more day to sync your wallet before it's getting dangerous.";
 "notification.sync.day_14.body" = "Please sync your wallet as soon as possible.";
