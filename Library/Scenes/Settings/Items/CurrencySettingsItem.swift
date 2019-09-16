@@ -16,15 +16,34 @@ final class CurrencySelectionSettingsItem: DetailDisclosureSettingsItem, Subtitl
     let title = L10n.Scene.Settings.Item.currency
 
     func didSelectItem(from fromViewController: UIViewController) {
-        let allCurrencies = ExchangeData.availableCurrencies?
+        let items = ExchangeData.availableCurrencies?
             .sorted { $0.localized < $1.localized }
             .map { CurrencySettingsItem(currency: $0) } ?? []
 
-        let items: [SettingsItem] = allCurrencies
+        var popularCurrencies: [CurrencySettingsItem] = []
+        var allCurrencies: [SettingsItem] = []
 
-        let section = Section(title: nil, rows: items)
+        let popularCodes = ["USD", "EUR", "GBP", "JPY", "CNY"]
+        for item in items {
+            if popularCodes.contains(item.currency.currencyCode) {
+                popularCurrencies.append(item)
+            } else {
+                allCurrencies.append(item)
+            }
+        }
 
-        let viewController = GroupedTableViewController(sections: [section])
+        popularCurrencies.sort {
+            (popularCodes.firstIndex(of: $0.currency.currencyCode) ?? 0) < popularCodes.firstIndex(of: $1.currency.currencyCode) ?? 0
+        }
+
+        let popularSection = Section<SettingsItem>(title: L10n.Scene.Settings.Item.Currency.popular, rows: popularCurrencies)
+        let section = Section(title: nil, rows: allCurrencies)
+
+        let viewController = GroupedTableViewController(sections: [
+            popularSection,
+            section
+        ])
+
         viewController.title = title
         viewController.navigationItem.largeTitleDisplayMode = .never
 
@@ -36,7 +55,7 @@ final class CurrencySettingsItem: NSObject, SelectableSettingsItem {
     var isSelectedOption = Observable(false)
 
     let title: String
-    private let currency: FiatCurrency
+    let currency: FiatCurrency
 
     init(currency: FiatCurrency) {
         self.currency = currency

@@ -6,17 +6,23 @@
 //
 
 import Lightning
+import Logger
 import SwiftBTC
 import SwiftLnd
 import UIKit
 
 final class SendViewController: ModalDetailViewController {
-    private weak var amountInputView: AmountInputView?
-
     private let viewModel: SendViewModel
     private let authenticationViewModel: AuthenticationViewModel
 
     private var didViewAppear = false
+
+    private weak var amountInputView: AmountInputView?
+    private weak var onChainFeeView: OnChainFeeView?
+
+    // loading views
+    private weak var loadingView: LoadingAnimationView?
+    private weak var loadingViewCenterYConstraint: NSLayoutConstraint?
 
     init(viewModel: SendViewModel, authenticationViewModel: AuthenticationViewModel) {
         self.viewModel = viewModel
@@ -68,6 +74,7 @@ final class SendViewController: ModalDetailViewController {
         setHeaderImage(viewModel.method.headerImage)
 
         viewModel.subtitleText
+            .observeOn(DispatchQueue.main)
             .observeNext { [weak self] in
                 self?.amountInputView?.subtitleText = $0
             }
@@ -75,6 +82,7 @@ final class SendViewController: ModalDetailViewController {
 
         viewModel.isSubtitleTextWarning
             .map { $0 ? UIColor.Zap.superRed : UIColor.Zap.gray }
+            .observeOn(DispatchQueue.main)
             .observeNext { [weak self] in
                 self?.amountInputView?.subtitleTextColor = $0
             }
@@ -90,14 +98,7 @@ final class SendViewController: ModalDetailViewController {
 
         contentStackView.addArrangedSubview(amountInputView)
 
-        if case .lightning = viewModel.method {
-            contentStackView.addArrangedElement(.separator)
-            let stackView = contentStackView.addArrangedElement(.horizontalStackView(compressionResistant: .first, content: [
-                .label(text: L10n.Scene.Send.maximumFee, style: Style.Label.footnote),
-                .customView(LoadingAmountView(loadable: viewModel.lightningFee))
-            ]))
-            stackView.subviews[0].setContentHuggingPriority(.required, for: .horizontal)
-        }
+        addFeeSelection()
 
         contentStackView.addArrangedElement(.separator)
 
@@ -114,11 +115,40 @@ final class SendViewController: ModalDetailViewController {
         self.amountInputView = amountInputView
     }
 
+    private func addFeeSelection() {
+        contentStackView.addArrangedElement(.separator)
+
+        switch viewModel.method {
+        case .onChain:
+            addOnChainFeeSelection()
+        case .lightning:
+            addLightningFeeSelection()
+        }
+    }
+
+    private func addOnChainFeeSelection() {
+        let onChainFeeView = OnChainFeeView(loadable: viewModel.fee)
+        onChainFeeView.delegate = self
+        contentStackView.addArrangedElement(.customView(onChainFeeView))
+        self.onChainFeeView = onChainFeeView
+    }
+
+    private func addLightningFeeSelection() {
+        let content: [StackViewElement] = [
+            .label(text: L10n.Scene.Send.maximumFee, style: Style.Label.footnote),
+            .customView(LoadingAmountView(loadable: viewModel.fee)),
+            .customView(UIView()) // add an empty view to keep the LoadingAmountView to the left
+        ]
+
+        let horizontalStackView = contentStackView.addArrangedElement(.horizontalStackView(compressionResistant: .first, content: content))
+        horizontalStackView.subviews[0].setContentHuggingPriority(.required, for: .horizontal)
+    }
+
     private func authenticate(completion: @escaping (Result<Success, AuthenticationError>) -> Void) {
         if BiometricAuthentication.type == .none {
             ModalPinViewController.authenticate(authenticationViewModel: authenticationViewModel) { completion($0) }
         } else {
-            BiometricAuthentication.authenticate { [authenticationViewModel] result in
+            BiometricAuthentication.authenticate(viewController: self) { [authenticationViewModel] result in
                 if case .failure(let error) = result,
                     error == AuthenticationError.useFallback {
                     ModalPinViewController.authenticate(authenticationViewModel: authenticationViewModel) { completion($0) }
@@ -139,9 +169,6 @@ final class SendViewController: ModalDetailViewController {
             }
         }
     }
-
-    private weak var loadingView: LoadingAnimationView?
-    private weak var loadingViewCenterYConstraint: NSLayoutConstraint?
 
     private func presentLoading() {
         UIView.animate(withDuration: 0.2, animations: { [weak self] in
@@ -266,12 +293,28 @@ extension SendViewController: AmountInputViewDelegate {
     func amountInputViewDidBeginEditing(_ amountInputView: AmountInputView) {
         guard didViewAppear else { return }
         amountInputView.setKeypad(hidden: false, animated: true)
+        onChainFeeView?.expanded = false
         updateHeight()
     }
 
     func amountInputViewDidEndEditing(_ amountInputView: AmountInputView) {
         guard didViewAppear else { return }
         amountInputView.setKeypad(hidden: true, animated: true)
+        updateHeight()
+    }
+}
+
+extension SendViewController: OnChainFeeViewDelegate {
+    func confirmationTargetChanged(to confirmationTarget: Int) {
+        viewModel.confirmationTarget = confirmationTarget
+    }
+
+    func didChangeSize(expanded: Bool) {
+        if expanded {
+            amountInputView?.setKeypad(hidden: true, animated: true)
+            amountInputView?.resignFirstResponder()
+        }
+
         updateHeight()
     }
 }

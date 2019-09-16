@@ -5,6 +5,7 @@
 //  Copyright © 2018 Otto Suess. All rights reserved.
 //
 
+import Lightning
 import SwiftLnd
 import UIKit
 
@@ -19,16 +20,16 @@ final class SettingsViewController: GroupedTableViewController {
     private var info: Info?
 
     init(info: Info?,
-         configuration: WalletConfiguration,
+         connection: LightningConnection,
          disconnectWalletDelegate: DisconnectWalletDelegate,
          authenticationViewModel: AuthenticationViewModel,
-         pushChannelList: @escaping (UINavigationController) -> Void,
          pushNodeURIViewController: @escaping (UINavigationController) -> Void,
-         pushLndLogViewController: @escaping (UINavigationController) -> Void) {
+         pushLndLogViewController: @escaping (UINavigationController) -> Void,
+         pushChannelBackup: @escaping (UINavigationController) -> Void) {
         self.info = info
 
         var lightningRows: [SettingsItem] = [
-            PushViewControllerSettingsItem(title: L10n.Scene.Settings.Item.manageChannels, pushViewController: pushChannelList)
+            PushViewControllerSettingsItem(title: L10n.Scene.Settings.Item.channelBackup, pushViewController: pushChannelBackup)
         ]
 
         if let info = info, !info.uris.isEmpty {
@@ -40,7 +41,7 @@ final class SettingsViewController: GroupedTableViewController {
             ChangePinSettingsItem(authenticationViewModel: authenticationViewModel)
         ]
 
-        if configuration.connection == .local {
+        if connection == .local {
             walletRows.append(PushViewControllerSettingsItem(title: L10n.Scene.Settings.Item.lndLog, pushViewController: pushLndLogViewController))
         }
 
@@ -51,7 +52,7 @@ final class SettingsViewController: GroupedTableViewController {
                 OnChainRequestAddressTypeSelectionSettingsItem(),
                 BlockExplorerSelectionSettingsItem()
             ]),
-            Section(title: "Lightning", rows: lightningRows),
+            Section(title: L10n.Scene.Settings.Section.lightning, rows: lightningRows),
             Section(title: L10n.Scene.Settings.Section.wallet, rows: walletRows),
             Section(title: nil, rows: [
                 // swiftlint:disable force_unwrapping

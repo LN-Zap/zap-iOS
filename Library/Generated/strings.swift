@@ -85,8 +85,29 @@ internal enum L10n {
     internal static let mainnet = L10n.tr("Localizable", "network_type.mainnet")
     /// Regtest
     internal static let regtest = L10n.tr("Localizable", "network_type.regtest")
+    /// Simnet
+    internal static let simnet = L10n.tr("Localizable", "network_type.simnet")
     /// Testnet
     internal static let testnet = L10n.tr("Localizable", "network_type.testnet")
+  }
+
+  internal enum Notification {
+    internal enum Sync {
+      /// Please sync
+      internal static let title = L10n.tr("Localizable", "notification.sync.title")
+      internal enum Day12 {
+        /// Please remember syncing your wallet to make sure you stay safe
+        internal static let body = L10n.tr("Localizable", "notification.sync.day_12.body")
+      }
+      internal enum Day13 {
+        /// You have one more day to sync your wallet before it's getting dangerous.
+        internal static let body = L10n.tr("Localizable", "notification.sync.day_13.body")
+      }
+      internal enum Day14 {
+        /// Please sync your wallet as soon as possible.
+        internal static let body = L10n.tr("Localizable", "notification.sync.day_14.body")
+      }
+    }
   }
 
   internal enum RpcConnectQrcodeError {
@@ -101,9 +122,31 @@ internal enum L10n {
   }
 
   internal enum Scene {
+    internal enum ChannelBackup {
+      /// %@ channel.backup
+      internal static func cellTitle(_ p1: String) -> String {
+        return L10n.tr("Localizable", "scene.channel_backup.cell_title", p1)
+      }
+      /// file not found
+      internal static let notFound = L10n.tr("Localizable", "scene.channel_backup.not_found")
+      /// Channel Backup
+      internal static let title = L10n.tr("Localizable", "scene.channel_backup.title")
+      internal enum Error {
+        /// iCloud backup failed.
+        internal static let iCloudBackupFailed = L10n.tr("Localizable", "scene.channel_backup.error.iCloudBackupFailed")
+        /// iCloud seems to be disabled.
+        internal static let iCloudDisabled = L10n.tr("Localizable", "scene.channel_backup.error.iCloudDisabled")
+        /// Could not get channel backup from lnd.
+        internal static let lndError = L10n.tr("Localizable", "scene.channel_backup.error.lndError")
+        /// Local file backup failed.
+        internal static let localBackupFailed = L10n.tr("Localizable", "scene.channel_backup.error.localBackupFailed")
+      }
+    }
     internal enum ChannelDetail {
       /// Close Channel
       internal static let closeButton = L10n.tr("Localizable", "scene.channel_detail.close_button")
+      /// Closing Transaction
+      internal static let closingTransactionLabel = L10n.tr("Localizable", "scene.channel_detail.closing_transaction_label")
       /// Force Close Channel
       internal static let forceCloseButton = L10n.tr("Localizable", "scene.channel_detail.force_close_button")
       /// Funding Transaction
@@ -142,6 +185,14 @@ internal enum L10n {
         /// Channel is closing.
         internal static let toast = L10n.tr("Localizable", "scene.channels.close_success.toast")
       }
+      internal enum EmptyState {
+        /// Open a channel
+        internal static let buttonTitle = L10n.tr("Localizable", "scene.channels.empty_state.button_title")
+        /// You can't transact on the Lightning Network yet! Let's open a channel to start transacting on the Lightning Network.
+        internal static let message = L10n.tr("Localizable", "scene.channels.empty_state.message")
+        /// Open a channel
+        internal static let title = L10n.tr("Localizable", "scene.channels.empty_state.title")
+      }
       internal enum ForceClose {
         /// %@ is offline, are you sure you want to force close this channel? You’d have to wait about %@ for your funds?
         internal static func message(_ p1: String, _ p2: String) -> String {
@@ -162,9 +213,11 @@ internal enum L10n {
       }
     }
     internal enum ConfirmMnemonic {
-      /// Enter your key.
-      internal static let description = L10n.tr("Localizable", "scene.confirm_mnemonic.description")
-      /// Confirm Seed
+      /// Select word number %d
+      internal static func headline(_ p1: Int) -> String {
+        return L10n.tr("Localizable", "scene.confirm_mnemonic.headline", p1)
+      }
+      /// Confirm Recovery Phrase
       internal static let title = L10n.tr("Localizable", "scene.confirm_mnemonic.title")
     }
     internal enum ConnectNodeUri {
@@ -212,11 +265,11 @@ internal enum L10n {
       }
     }
     internal enum CreateWallet {
-      /// Make sure to store the mnemonic at a safe location.
+      /// Write down the recovery phrase and store it at a safe location.
       internal static let descriptionLabel = L10n.tr("Localizable", "scene.create_wallet.description_label")
       /// Next
       internal static let nextButton = L10n.tr("Localizable", "scene.create_wallet.next_button")
-      /// Create Wallet
+      /// Recovery Phrase
       internal static let title = L10n.tr("Localizable", "scene.create_wallet.title")
     }
     internal enum Filter {
@@ -243,38 +296,30 @@ internal enum L10n {
       /// History
       internal static let title = L10n.tr("Localizable", "scene.history.title")
       internal enum Cell {
-        /// Breach close Channel
+        /// Breach closed Channel
         internal static let breachCloseChannel = L10n.tr("Localizable", "scene.history.cell.breach_close_channel")
         /// Channel abandoned
         internal static let channelAbandoned = L10n.tr("Localizable", "scene.history.cell.channel_abandoned")
-        /// Close Channel
+        /// Closed Channel
         internal static let channelClosed = L10n.tr("Localizable", "scene.history.cell.channel_closed")
-        /// Open Channel
+        /// Opened Channel
         internal static let channelOpened = L10n.tr("Localizable", "scene.history.cell.channel_opened")
-        /// Close Channel (funding canceled)
+        /// Closed Channel (funding canceled)
         internal static let closeChannelFundingCanceled = L10n.tr("Localizable", "scene.history.cell.close_channel_funding_canceled")
-        /// Force close Channel
+        /// Force closed Channel
         internal static let forceCloseChannel = L10n.tr("Localizable", "scene.history.cell.force_close_channel")
         /// Payment Request created
         internal static let invoiceCreated = L10n.tr("Localizable", "scene.history.cell.invoice_created")
-        /// Payment failed (%@)
-        internal static func paymentFailed(_ p1: String) -> String {
-          return L10n.tr("Localizable", "scene.history.cell.payment_failed", p1)
-        }
         /// Payment received
         internal static let paymentReceived = L10n.tr("Localizable", "scene.history.cell.payment_received")
         /// Payment sent
         internal static let paymentSent = L10n.tr("Localizable", "scene.history.cell.payment_sent")
-        /// Remote force close Channel
+        /// Remote forced close Channel
         internal static let remoteForceCloseChannel = L10n.tr("Localizable", "scene.history.cell.remote_force_close_channel")
         /// Payment received
         internal static let transactionReceived = L10n.tr("Localizable", "scene.history.cell.transaction_received")
         /// Payment sent
         internal static let transactionSent = L10n.tr("Localizable", "scene.history.cell.transaction_sent")
-        internal enum Action {
-          /// Try Again
-          internal static let tryAgain = L10n.tr("Localizable", "scene.history.cell.action.try_again")
-        }
         internal enum Label {
           /// error
           internal static let error = L10n.tr("Localizable", "scene.history.cell.label.error")
@@ -293,6 +338,14 @@ internal enum L10n {
       /// Send
       internal static let sendButton = L10n.tr("Localizable", "scene.main.send_button")
     }
+    internal enum ManageWallets {
+      /// Manage Wallets
+      internal static let title = L10n.tr("Localizable", "scene.manage_wallets.title")
+      internal enum Cell {
+        /// remote
+        internal static let remote = L10n.tr("Localizable", "scene.manage_wallets.cell.remote")
+      }
+    }
     internal enum ModalPin {
       /// Please enter your passcode to continue
       internal static let description = L10n.tr("Localizable", "scene.modal_pin.description")
@@ -306,6 +359,32 @@ internal enum L10n {
       internal static let title = L10n.tr("Localizable", "scene.node_uri.title")
       /// URI
       internal static let uriLabel = L10n.tr("Localizable", "scene.node_uri.uri_label")
+    }
+    internal enum Onboarding {
+      internal enum Page1 {
+        /// Continue
+        internal static let buttonTitle = L10n.tr("Localizable", "scene.onboarding.page_1.button_title")
+        /// With Zap, you are in control of your funds. In order to secure your funds, we will provide you with a recovery phrase.
+        internal static let message = L10n.tr("Localizable", "scene.onboarding.page_1.message")
+        /// Your **keys**, your **coins**.
+        internal static let title = L10n.tr("Localizable", "scene.onboarding.page_1.title")
+      }
+      internal enum Page2 {
+        /// Continue
+        internal static let buttonTitle = L10n.tr("Localizable", "scene.onboarding.page_2.button_title")
+        /// Make sure you write down your recovery phrase. Your recovery phrase can be used to recover your funds in the event of an emergency.
+        internal static let message = L10n.tr("Localizable", "scene.onboarding.page_2.message")
+        /// Write down your **recovery phrase**.
+        internal static let title = L10n.tr("Localizable", "scene.onboarding.page_2.title")
+      }
+      internal enum Page3 {
+        /// Generate Recovery Phrase
+        internal static let buttonTitle = L10n.tr("Localizable", "scene.onboarding.page_3.button_title")
+        /// Your recovery phrase has all the information needed to access your wallet. Store your phrase in a private and secure place and do not share your phrase with anyone.
+        internal static let message = L10n.tr("Localizable", "scene.onboarding.page_3.message")
+        /// Keep your recovery phrase **safe**.
+        internal static let title = L10n.tr("Localizable", "scene.onboarding.page_3.title")
+      }
     }
     internal enum OpenChannel {
       /// Open Channel
@@ -347,6 +426,16 @@ internal enum L10n {
         }
       }
     }
+    internal enum PushNotification {
+      /// Turn on notifications
+      internal static let confirmButtonTitle = L10n.tr("Localizable", "scene.push_notification.confirm_button_title")
+      /// Turn on **notifications** to stay in touch.
+      internal static let headline = L10n.tr("Localizable", "scene.push_notification.headline")
+      /// We have your back. Zap will notify you when your wallet needs you.
+      internal static let message = L10n.tr("Localizable", "scene.push_notification.message")
+      /// Skip
+      internal static let skipButtonTitle = L10n.tr("Localizable", "scene.push_notification.skip_button_title")
+    }
     internal enum QrCodeDetail {
       /// Receive
       internal static let title = L10n.tr("Localizable", "scene.qr_code_detail.title")
@@ -354,14 +443,26 @@ internal enum L10n {
     internal enum QrcodeScanner {
       /// Scan QR-Code
       internal static let topLabel = L10n.tr("Localizable", "scene.qrcode_scanner.top_label")
+      internal enum Error {
+        /// Unknown address format.
+        internal static let unknownFormat = L10n.tr("Localizable", "scene.qrcode_scanner.error.unknown_format")
+        /// You tried opening an invoice for %@ but your node is connected to %@.
+        internal static func wrongNetwork(_ p1: String, _ p2: String) -> String {
+          return L10n.tr("Localizable", "scene.qrcode_scanner.error.wrong_network", p1, p2)
+        }
+        /// For security reasons zap does not support invoices without a specified amount.
+        internal static let zeroAmountInvoice = L10n.tr("Localizable", "scene.qrcode_scanner.error.zero_amount_invoice")
+      }
     }
     internal enum RecoverWallet {
-      /// Enter your seed:
+      /// Enter your recovery phrase:
       internal static let descriptionLabel = L10n.tr("Localizable", "scene.recover_wallet.description_label")
       /// Done
       internal static let doneButton = L10n.tr("Localizable", "scene.recover_wallet.done_button")
       /// abandon ability able about above absent absorb abstract absurd abuse access accident account accuse achieve acid acoustic acquire across act action actor actress actual
       internal static let placeholder = L10n.tr("Localizable", "scene.recover_wallet.placeholder")
+      /// Select Channel Backup
+      internal static let selectChannelBackupButton = L10n.tr("Localizable", "scene.recover_wallet.select_channel_backup_button")
       /// Recover Wallet
       internal static let title = L10n.tr("Localizable", "scene.recover_wallet.title")
     }
@@ -390,33 +491,17 @@ internal enum L10n {
       }
     }
     internal enum SelectWalletConnection {
-      /// Add Wallet
-      internal static let title = L10n.tr("Localizable", "scene.select_wallet_connection.title")
+      /// Bitcoin for **everyone**
+      internal static let message = L10n.tr("Localizable", "scene.select_wallet_connection.message")
       internal enum Connect {
-        /// remote node
-        internal static let message = L10n.tr("Localizable", "scene.select_wallet_connection.connect.message")
         /// Connect
         internal static let title = L10n.tr("Localizable", "scene.select_wallet_connection.connect.title")
       }
       internal enum Create {
-        /// Need Help?
-        internal static let help = L10n.tr("Localizable", "scene.select_wallet_connection.create.help")
-        /// new wallet
-        internal static let message = L10n.tr("Localizable", "scene.select_wallet_connection.create.message")
         /// Create
         internal static let title = L10n.tr("Localizable", "scene.select_wallet_connection.create.title")
       }
-      internal enum DisabledAlert {
-        /// Running Lnd on the phone is disabled in this beta. Connect to a remote node instead.
-        internal static let message = L10n.tr("Localizable", "scene.select_wallet_connection.disabled_alert.message")
-        /// Ok
-        internal static let okButton = L10n.tr("Localizable", "scene.select_wallet_connection.disabled_alert.ok_button")
-        /// Sorry!
-        internal static let title = L10n.tr("Localizable", "scene.select_wallet_connection.disabled_alert.title")
-      }
       internal enum Recover {
-        /// existing wallet
-        internal static let message = L10n.tr("Localizable", "scene.select_wallet_connection.recover.message")
         /// Recover
         internal static let title = L10n.tr("Localizable", "scene.select_wallet_connection.recover.title")
       }
@@ -443,8 +528,30 @@ internal enum L10n {
         internal static let title = L10n.tr("Localizable", "scene.send.lightning.title")
       }
       internal enum OnChain {
+        /// Fee:
+        internal static let fee = L10n.tr("Localizable", "scene.send.on_chain.fee")
         /// Send On-Chain
         internal static let title = L10n.tr("Localizable", "scene.send.on_chain.title")
+        internal enum Fee {
+          /// Estimated Delivery: %@
+          internal static func estimatedDelivery(_ p1: String) -> String {
+            return L10n.tr("Localizable", "scene.send.on_chain.fee.estimated_delivery", p1)
+          }
+          /// Fast
+          internal static let fast = L10n.tr("Localizable", "scene.send.on_chain.fee.fast")
+          /// Medium
+          internal static let medium = L10n.tr("Localizable", "scene.send.on_chain.fee.medium")
+          /// Slow
+          internal static let slow = L10n.tr("Localizable", "scene.send.on_chain.fee.slow")
+          internal enum Description {
+            /// Fast Transaction
+            internal static let fast = L10n.tr("Localizable", "scene.send.on_chain.fee.description.fast")
+            /// Medium Transaction
+            internal static let medium = L10n.tr("Localizable", "scene.send.on_chain.fee.description.medium")
+            /// Slow Transaction
+            internal static let slow = L10n.tr("Localizable", "scene.send.on_chain.fee.description.slow")
+          }
+        }
       }
       internal enum PasteButton {
         /// Paste Address
@@ -471,6 +578,8 @@ internal enum L10n {
         internal static let blockExplorer = L10n.tr("Localizable", "scene.settings.item.block_explorer")
         /// Change Pin
         internal static let changePin = L10n.tr("Localizable", "scene.settings.item.change_pin")
+        /// Channel Backup
+        internal static let channelBackup = L10n.tr("Localizable", "scene.settings.item.channel_backup")
         /// Currency
         internal static let currency = L10n.tr("Localizable", "scene.settings.item.currency")
         /// Need Help?
@@ -491,6 +600,10 @@ internal enum L10n {
         internal static func versionWarning(_ p1: String, _ p2: String) -> String {
           return L10n.tr("Localizable", "scene.settings.item.version_warning", p1, p2)
         }
+        internal enum Currency {
+          /// Popular Currencies
+          internal static let popular = L10n.tr("Localizable", "scene.settings.item.currency.popular")
+        }
         internal enum OnChainRequestAddress {
           /// Bech32
           internal static let bech32 = L10n.tr("Localizable", "scene.settings.item.on_chain_request_address.bech32")
@@ -501,6 +614,8 @@ internal enum L10n {
         }
       }
       internal enum Section {
+        /// Lightning
+        internal static let lightning = L10n.tr("Localizable", "scene.settings.section.lightning")
         /// Wallet
         internal static let wallet = L10n.tr("Localizable", "scene.settings.section.wallet")
         /// Warning
@@ -522,18 +637,6 @@ internal enum L10n {
     internal enum Sync {
       /// Syncing to blockchain…
       internal static let descriptionLabel = L10n.tr("Localizable", "scene.sync.description_label")
-      /// Disconnect
-      internal static let disconnectBarButton = L10n.tr("Localizable", "scene.sync.disconnect_bar_button")
-      internal enum DisconnectAlert {
-        /// Cancel
-        internal static let cancelAction = L10n.tr("Localizable", "scene.sync.disconnect_alert.cancel_action")
-        /// Disconnect Node
-        internal static let destructiveAction = L10n.tr("Localizable", "scene.sync.disconnect_alert.destructive_action")
-        /// Do you really want to cancel syncing? You will have to reconnect to your node afterwards.
-        internal static let message = L10n.tr("Localizable", "scene.sync.disconnect_alert.message")
-        /// Disconnect
-        internal static let title = L10n.tr("Localizable", "scene.sync.disconnect_alert.title")
-      }
     }
     internal enum TimeLock {
       /// Your wallet is locked for:
@@ -552,10 +655,16 @@ internal enum L10n {
       internal static let expiryLabel = L10n.tr("Localizable", "scene.transaction_detail.expiry_label")
       /// Fee
       internal static let feeLabel = L10n.tr("Localizable", "scene.transaction_detail.fee_label")
+      /// Invoice copied.
+      internal static let invoiceCopyMessage = L10n.tr("Localizable", "scene.transaction_detail.invoice_copy_message")
       /// State
       internal static let invoiceStateLabel = L10n.tr("Localizable", "scene.transaction_detail.invoice_state_label")
       /// Memo
       internal static let memoLabel = L10n.tr("Localizable", "scene.transaction_detail.memo_label")
+      /// Preimage copied.
+      internal static let preimageCopyMessage = L10n.tr("Localizable", "scene.transaction_detail.preimage_copy_message")
+      /// Preimage
+      internal static let preimageLabel = L10n.tr("Localizable", "scene.transaction_detail.preimage_label")
       /// Transaction ID
       internal static let transactionIdLabel = L10n.tr("Localizable", "scene.transaction_detail.transaction_id_label")
       internal enum ExpiryLabel {
@@ -594,6 +703,8 @@ internal enum L10n {
     internal enum Wallet {
       /// Wallet
       internal static let title = L10n.tr("Localizable", "scene.wallet.title")
+      /// Total Balance
+      internal static let totalBalance = L10n.tr("Localizable", "scene.wallet.total_balance")
       internal enum Detail {
         /// Lightning:
         internal static let lightning = L10n.tr("Localizable", "scene.wallet.detail.lightning")
@@ -601,6 +712,14 @@ internal enum L10n {
         internal static let onChain = L10n.tr("Localizable", "scene.wallet.detail.on_chain")
         /// Pending:
         internal static let pending = L10n.tr("Localizable", "scene.wallet.detail.pending")
+      }
+      internal enum EmptyState {
+        /// Deposit funds
+        internal static let buttonTitle = L10n.tr("Localizable", "scene.wallet.empty_state.button_title")
+        /// Your wallet is empty! Get started by depositing some funds.
+        internal static let message = L10n.tr("Localizable", "scene.wallet.empty_state.message")
+        /// Fund your wallet
+        internal static let title = L10n.tr("Localizable", "scene.wallet.empty_state.title")
       }
     }
     internal enum WalletList {

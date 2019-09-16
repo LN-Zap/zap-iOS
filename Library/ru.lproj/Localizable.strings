@@ -5,8 +5,8 @@
 "generic.qr_code.share_button" = "Поделиться";
 "generic.cancel" = "Отменить";
 
-"link.help" = "https://ln-zap.github.io/zap-tutorials/";
-"link.help.zapconnect" = "https://ln-zap.github.io/zap-tutorials/iOS-remote-node-setup";
+"link.help" = "https://docs.zaphq.io/";
+"link.help.zapconnect" = "https://docs.zaphq.io/docs-ios-remote-node-setup";
 "link.privacy" = "http://zap.jackmallers.com/privacy";
 "link.bug_report" = "https://github.com/LN-Zap/zap-iOS/issues";
 "link.lnd_releases" = "https://github.com/lightningnetwork/lnd/releases";
@@ -27,6 +27,7 @@
 "channel.state.force_closing" = "Принудительное Закрытие";
 "channel.state.waiting_close" = "Ожидание Закрытия";
 
+"network_type.simnet" = "Simnet";
 "network_type.regtest" = "Регрессивный тест";
 "network_type.testnet" = "Тестовая сеть";
 "network_type.mainnet" = "Главная сеть";
@@ -48,15 +49,18 @@
 
 "scene.settings.title" = "Настройки";
 "scene.settings.section.warning" = "Warning";
+"scene.settings.section.lightning" = "Lightning";
 "scene.settings.section.wallet" = "Кошелек";
 "scene.settings.item.version_warning" = "Your lnd is outdated (%@). Zap iOS works best with lnd version %@ or above.";
 "scene.settings.item.bitcoin_unit" = "Биткоин часть";
 "scene.settings.item.currency" = "Валюта";
+"scene.settings.item.currency.popular" = "Popular Currencies";
 "scene.settings.item.block_explorer" = "Обзор Блоков";
 "scene.settings.item.on_chain_request_address.title" = "Тип Биткоин Адреса";
 "scene.settings.item.on_chain_request_address.bech32" = "Bech32";
 "scene.settings.item.on_chain_request_address.p2sh" = "P2SH";
 "scene.settings.item.manage_channels" = "Управление Каналами";
+"scene.settings.item.channel_backup" = "Channel Backup";
 "scene.settings.item.node_uri" = "URI узла";
 "scene.settings.item.remove_remote_node" = "Управление Кошельками";
 
@@ -89,6 +93,9 @@
 "scene.channels.alert.force_close" = "Принудительно Закрыть Канал";
 "scene.channels.close_loading_view" = "Закрыть Канал";
 "scene.channels.close_success.toast" = "Канал закрывается.";
+"scene.channels.empty_state.title" = "Open a channel";
+"scene.channels.empty_state.message" = "You can't transact on the Lightning Network yet! Let's open a channel to start transacting on the Lightning Network.";
+"scene.channels.empty_state.button_title" = "Open a channel";
 
 "scene.open_channel.title" = "Открыть Канал";
 "scene.open_channel.channel_uri_label" = "Node:";
@@ -107,8 +114,20 @@
 "scene.setup_pin.top_label.non_matching" = "Пин-коды не одинаковы. Пожалуйста, попробуйте еще раз.";
 "scene.setup_pin.top_label.validate" = "Введите пин-код еще раз что бы проверить.";
 
-"scene.confirm_mnemonic.title" = "Подтвердить Фразу";
-"scene.confirm_mnemonic.description" = "Введите свой Ключ.";
+"scene.onboarding.page_1.title" = "Your **keys**, your **coins**";
+"scene.onboarding.page_1.message" = "With Zap, you are in control of your money. To make sure your coins are always stored safely, Zap will provide a recovery phrase for you.";
+"scene.onboarding.page_1.button_title" = "Continue";
+
+"scene.onboarding.page_2.title" = "Save your **recovery phrase**";
+"scene.onboarding.page_2.message" = "Write down your phrase. You can use your phrase to recover your funds anytime if you misplace your device.";
+"scene.onboarding.page_2.button_title" = "Continue";
+
+"scene.onboarding.page_3.title" = "Keep it **safe**";
+"scene.onboarding.page_3.message" = "Make sure to keep your recovery phrase private. Store it somewhere only you will find it.";
+"scene.onboarding.page_3.button_title" = "Generate Recovery Phrase";
+
+"scene.confirm_mnemonic.title" = "Confirm Recovery Phrase";
+"scene.confirm_mnemonic.headline" = "Select word number %d";
 
 "scene.send.title" = "Отправить";
 "scene.send.send_button" = "Отправить";
@@ -117,6 +136,15 @@
 "scene.send.sending" = "Отпарвка...";
 "scene.send.lightning.title" = "Отправить Lightning перевод";
 "scene.send.on_chain.title" = "Send On-Chain";
+"scene.send.on_chain.fee" = "Fee:";
+"scene.send.on_chain.fee.fast" = "Fast";
+"scene.send.on_chain.fee.medium" = "Medium";
+"scene.send.on_chain.fee.slow" = "Slow";
+"scene.send.on_chain.fee.description.fast" = "Fast Transaction";
+"scene.send.on_chain.fee.description.medium" = "Medium Transaction";
+"scene.send.on_chain.fee.description.slow" = "Slow Transaction";
+
+"scene.send.on_chain.fee.estimated_delivery" = "Estimated Delivery: %@";
 "scene.send.authentication_failed" = "Ошибка проверки подлинности";
 "scene.send.maximum_fee" = "Ожидаемая Комиссия:";
 "scene.send.subtitle.on_chain_balance" = "On-chain balance: %@";
@@ -138,26 +166,20 @@
 "scene.connect_remote_node.certificate_detail.macaroon_title" = "Macaroon";
 "scene.connect_remote_node.edit_url.title" = "Адрес";
 
-"scene.create_wallet.title" = "Создать Кошелёк";
-"scene.create_wallet.description_label" = "Make sure to store the mnemonic at a safe location.";
+"scene.create_wallet.title" = "Recovery Phrase";
+"scene.create_wallet.description_label" = "Write down the recovery phrase and store it at a safe location.";
 "scene.create_wallet.next_button" = "Следуюший";
 
 "scene.recover_wallet.title" = "Восстановление Кошелька";
 "scene.recover_wallet.done_button" = "Готово";
-"scene.recover_wallet.description_label" = "Введите парольную фразу:";
+"scene.recover_wallet.description_label" = "Enter your recovery phrase:";
 "scene.recover_wallet.placeholder" = "abandon ability able about above absent absorb abstract absurd abuse access accident account accuse achieve acid acoustic acquire across act action actor actress actual";
+"scene.recover_wallet.select_channel_backup_button" = "Select Channel Backup";
 
-"scene.select_wallet_connection.title" = "Добавть Кошелек";
 "scene.select_wallet_connection.create.title" = "Создать";
-"scene.select_wallet_connection.create.message" = "новый кошелек";
 "scene.select_wallet_connection.recover.title" = "Восстановить";
-"scene.select_wallet_connection.recover.message" = "существующий кошелек";
 "scene.select_wallet_connection.connect.title" = "Подключиться";
-"scene.select_wallet_connection.connect.message" = "удаленный узел";
-"scene.select_wallet_connection.disabled_alert.title" = "Извените!";
-"scene.select_wallet_connection.disabled_alert.message" = "Запуск Lnd на телефоне отключен в этой бета-версии. Подключиться к удаленному узлу.";
-"scene.select_wallet_connection.disabled_alert.ok_button" = "Подтвердить";
-"scene.select_wallet_connection.create.help" = "Нужна помощь?";
+"scene.select_wallet_connection.message" = "Bitcoin for **everyone**";
 
 "scene.main.send_button" = "Отправить";
 "scene.main.receive_button" = "Получить";
@@ -166,11 +188,6 @@
 "scene.qr_code_detail.title" = "Получить";
 
 "scene.sync.description_label" = "Синхронизация с блокчейном…";
-"scene.sync.disconnect_bar_button" = "Отключить";
-"scene.sync.disconnect_alert.title" = "Отключить";
-"scene.sync.disconnect_alert.message" = "Вы действительно хотите отменить синхронизацию? После этого вам придется снова подключиться к узлу.";
-"scene.sync.disconnect_alert.destructive_action" = "Разъединить Узел";
-"scene.sync.disconnect_alert.cancel_action" = "Отменить";
 
 "scene.transaction_detail.title.lightning_invoice" = "Детали Счета";
 "scene.transaction_detail.title.payment_detail" = "Платежная Информация";
@@ -187,12 +204,16 @@
 "scene.transaction_detail.expiry_label.expired" = "Истeкший";
 "scene.transaction_detail.invoice_state_label" = "State";
 "scene.transaction_detail.invoice_state_label.settled" = "settled";
+"scene.transaction_detail.preimage_label" = "Preimage";
+"scene.transaction_detail.preimage_copy_message" = "Preimage copied.";
+"scene.transaction_detail.invoice_copy_message" = "Invoice copied.";
 
 "scene.channel_detail.remote_pub_key_label" = "Удаленный PubKey";
 "scene.channel_detail.local_balance_label" = "Локальный Баланс";
 "scene.channel_detail.remote_balance_label" = "Удаленный Баланс";
 "scene.channel_detail.closing_time.label" = "Закрывается в";
 "scene.channel_detail.funding_transaction_label" = "Пополнить Транзакцию";
+"scene.channel_detail.closing_transaction_label" = "Closing Transaction";
 "scene.channel_detail.close_button" = "Закрыть Канал";
 "scene.channel_detail.force_close_button" = "Принудительное Закрытие Канала";
 
@@ -205,11 +226,18 @@
 "scene.filter.displayChannelEvents" = "События Канала";
 
 "scene.qrcode_scanner.top_label" = "Сканиирование QR-Code";
+"scene.qrcode_scanner.error.unknown_format" = "Unknown address format.";
+"scene.qrcode_scanner.error.wrong_network" = "You tried opening an invoice for %@ but your node is connected to %@.";
+"scene.qrcode_scanner.error.zero_amount_invoice" = "For security reasons zap does not support invoices without a specified amount.";
 
 "scene.wallet.title" = "Кошелек";
+"scene.wallet.total_balance" = "Total Balance";
 "scene.wallet.detail.on_chain" = "On-chain:";
 "scene.wallet.detail.lightning" = "Lightning:";
 "scene.wallet.detail.pending" = "Pending:";
+"scene.wallet.empty_state.title" = "Fund your wallet";
+"scene.wallet.empty_state.message" = "Your wallet is empty! Get started by depositing some funds.";
+"scene.wallet.empty_state.button_title" = "Deposit funds";
 
 "scene.time_lock.headline" = "Не правильный Пароль";
 "scene.time_lock.description" = "Ваш кошелек заблокирован для:";
@@ -219,20 +247,18 @@
 
 "scene.history.cell.payment_sent" = "Перевод отправлен";
 "scene.history.cell.payment_received" = "Перевод получен";
-"scene.history.cell.payment_failed" = "Перевод не прошел (%@)";
 "scene.history.cell.invoice_created" = "Создан запрос на оплату";
-"scene.history.cell.channel_opened" = "Открыть Канал";
-"scene.history.cell.channel_closed" = "Закрыть Канал";
-"scene.history.cell.force_close_channel" = "Принудительное закрытие Канала";
-"scene.history.cell.remote_force_close_channel" = "Удаленное принудительноу закрытие Канала";
-"scene.history.cell.breach_close_channel" = "Принудительное Закрытие Канала";
-"scene.history.cell.close_channel_funding_canceled" = "Закрыть канал (пополнение отменено)";
+"scene.history.cell.channel_opened" = "Opened Channel";
+"scene.history.cell.channel_closed" = "Closed Channel";
+"scene.history.cell.force_close_channel" = "Force closed Channel";
+"scene.history.cell.remote_force_close_channel" = "Remote forced close Channel";
+"scene.history.cell.breach_close_channel" = "Breach closed Channel";
+"scene.history.cell.close_channel_funding_canceled" = "Closed Channel (funding canceled)";
 "scene.history.cell.channel_abandoned" = "Канал заброшен";
 "scene.history.cell.transaction_sent" = "Перевод отправлен";
 "scene.history.cell.transaction_received" = "Перевод получен";
 "scene.history.cell.label.new" = "создать";
 "scene.history.cell.label.error" = "ошибка";
-"scene.history.cell.action.try_again" = "Попробуйте Снова";
 
 "scene.node_uri.title" = "Подключениие к Узлу";
 "scene.node_uri.alias_label" = "Метка";
@@ -248,3 +274,24 @@
 "scene.unlock.unlock_button" = "Разблокировать";
 "scene.unlock.password_placeholder" = "Пароль";
 "scene.unlock.title_label" = "Разблокировать %@";
+
+"scene.manage_wallets.title" = "Manage Wallets";
+"scene.manage_wallets.cell.remote" = "remote";
+
+"scene.channel_backup.title" = "Channel Backup";
+"scene.channel_backup.cell_title" = "%@ channel.backup";
+"scene.channel_backup.not_found" = "file not found";
+"scene.channel_backup.error.iCloudDisabled" = "iCloud seems to be disabled.";
+"scene.channel_backup.error.iCloudBackupFailed" = "iCloud backup failed.";
+"scene.channel_backup.error.localBackupFailed" = "Local file backup failed.";
+"scene.channel_backup.error.lndError" = "Could not get channel backup from lnd.";
+
+"scene.push_notification.headline" = "Stay **up to date**";
+"scene.push_notification.message" = "To keep your funds safe, Zap needs to sync once in a while. Do you want to be notified when your wallet needs to sync?";
+"scene.push_notification.confirm_button_title" = "Turn on notifications";
+"scene.push_notification.skip_button_title" = "Skip";
+
+"notification.sync.title" = "Please sync";
+"notification.sync.day_12.body" = "Please remember syncing your wallet to make sure you stay safe";
+"notification.sync.day_13.body" = "You have one more day to sync your wallet before it's getting dangerous.";
+"notification.sync.day_14.body" = "Please sync your wallet as soon as possible.";

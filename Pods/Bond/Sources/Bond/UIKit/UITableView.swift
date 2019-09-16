@@ -27,7 +27,7 @@
 import UIKit
 import ReactiveKit
 
-public extension ReactiveExtensions where Base: UITableView {
+extension ReactiveExtensions where Base: UITableView {
 
     /// A `ProtocolProxy` for the table view delegate.
     ///
@@ -51,8 +51,8 @@ public extension ReactiveExtensions where Base: UITableView {
     ///
     /// - Note: Uses table view's `delegate` protocol proxy to observe calls made to `UITableViewDelegate.tableView(_:didSelectRowAt:)` method.
     public var selectedRowIndexPath: SafeSignal<IndexPath> {
-        return delegate.signal(for: #selector(UITableViewDelegate.tableView(_:didSelectRowAt:))) { (subject: SafePublishSubject<IndexPath>, _: UITableView, indexPath: IndexPath) in
-            subject.next(indexPath)
+        return delegate.signal(for: #selector(UITableViewDelegate.tableView(_:didSelectRowAt:))) { (subject: PassthroughSubject<IndexPath, Never>, _: UITableView, indexPath: IndexPath) in
+            subject.send(indexPath)
         }
     }
 }

@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14490.49"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--Confirm Mnemonic Page View Controller-->
+        <scene sceneID="PnF-Dn-FBz">
+            <objects>
+                <pageViewController storyboardIdentifier="ConfirmMnemonicPageViewController" autoresizesArchivedViewToFullSize="NO" transitionStyle="scroll" navigationOrientation="horizontal" spineLocation="none" id="VDc-VN-vHx" customClass="ConfirmMnemonicPageViewController" customModule="Library" customModuleProvider="target" sceneMemberID="viewController"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="5uA-ID-1A7" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1394" y="155"/>
+        </scene>
+        <!--Confirm Mnemonic View Controller-->
+        <scene sceneID="XPS-QY-qpo">
+            <objects>
+                <viewController storyboardIdentifier="ConfirmMnemonicViewController" id="fdW-MI-DEQ" customClass="ConfirmMnemonicViewController" customModule="Library" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="RCM-y0-azW">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="AeA-J8-UzG">
+                                <rect key="frame" x="20" y="64" width="374" height="20.5"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <stackView opaque="NO" contentMode="scaleToFill" placeholderIntrinsicWidth="375" placeholderIntrinsicHeight="173" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="Mvy-qW-5Fv">
+                                <rect key="frame" x="0.0" y="104.5" width="414" height="173"/>
+                            </stackView>
+                            <stackView opaque="NO" contentMode="scaleToFill" placeholderIntrinsicWidth="375" placeholderIntrinsicHeight="215" axis="vertical" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="ZT9-W4-NmH">
+                                <rect key="frame" x="20" y="681" width="374" height="215"/>
+                            </stackView>
+                        </subviews>
+                        <color key="backgroundColor" white="0.55909358129999998" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="Mvy-qW-5Fv" firstAttribute="leading" secondItem="gDv-d8-r7R" secondAttribute="leading" id="27j-eS-Nla"/>
+                            <constraint firstItem="AeA-J8-UzG" firstAttribute="top" secondItem="gDv-d8-r7R" secondAttribute="top" constant="20" id="5aL-m5-bFw"/>
+                            <constraint firstItem="ZT9-W4-NmH" firstAttribute="leading" secondItem="gDv-d8-r7R" secondAttribute="leading" constant="20" id="6AU-tO-wYm"/>
+                            <constraint firstItem="ZT9-W4-NmH" firstAttribute="bottom" secondItem="RCM-y0-azW" secondAttribute="bottom" id="CMm-jx-SyS"/>
+                            <constraint firstItem="Mvy-qW-5Fv" firstAttribute="trailing" secondItem="gDv-d8-r7R" secondAttribute="trailing" id="JaT-kY-K1c"/>
+                            <constraint firstItem="AeA-J8-UzG" firstAttribute="leading" secondItem="gDv-d8-r7R" secondAttribute="leading" constant="20" id="bgy-4F-8Q7"/>
+                            <constraint firstItem="gDv-d8-r7R" firstAttribute="trailing" secondItem="AeA-J8-UzG" secondAttribute="trailing" constant="20" id="eTZ-wK-efa"/>
+                            <constraint firstItem="gDv-d8-r7R" firstAttribute="trailing" secondItem="ZT9-W4-NmH" secondAttribute="trailing" constant="20" id="g0m-ky-Ct5"/>
+                            <constraint firstItem="Mvy-qW-5Fv" firstAttribute="top" secondItem="AeA-J8-UzG" secondAttribute="bottom" constant="20" id="wop-xW-4rT"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="gDv-d8-r7R"/>
+                    </view>
+                    <connections>
+                        <outlet property="buttonStackView" destination="ZT9-W4-NmH" id="0Cm-J4-2lw"/>
+                        <outlet property="descriptionLabel" destination="AeA-J8-UzG" id="RFa-1o-LVu"/>
+                        <outlet property="seedStackView" destination="Mvy-qW-5Fv" id="HfM-X7-Sjy"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="ScM-QS-ayo" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2870" y="115"/>
+        </scene>
+    </scenes>
+</document>

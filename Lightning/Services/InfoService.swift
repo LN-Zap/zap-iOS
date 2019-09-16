@@ -20,7 +20,7 @@ public final class InfoService {
         case error
     }
 
-    private let api: LightningApiProtocol
+    private let api: LightningApi
 
     public let balanceService: BalanceService
 
@@ -33,30 +33,44 @@ public final class InfoService {
 
     private var heightJobTimer: Timer?
     private var updateInfoTimer: Timer?
+    private var timeoutTimer: Timer?
+
+    private let staticChannelBackupper: StaticChannelBackupper
 
     private var syncDebounceCount = 0 // used so wallet does not switch sync state each time a block is mined
 
-    init(api: LightningApiProtocol, balanceService: BalanceService) {
+    init(api: LightningApi, balanceService: BalanceService, staticChannelBackupper: StaticChannelBackupper) {
         self.api = api
         self.balanceService = balanceService
+        self.staticChannelBackupper = staticChannelBackupper
 
         start()
     }
 
     public func start() {
+        heightJobTimer?.invalidate()
         heightJobTimer = Timer.scheduledTimer(withTimeInterval: 120, repeats: true) { [weak self] _ in
             guard let network = self?.network.value else { return }
             BlockchainHeight.get(for: network) { self?.blockChainHeight.value = $0 }
         }
         heightJobTimer?.fire()
 
+        updateInfoTimer?.invalidate()
         updateInfoTimer = Timer.scheduledTimer(withTimeInterval: 1, repeats: true) { [weak self] _ in
             self?.info { self?.updateInfo(result: $0) }
         }
         updateInfoTimer?.fire()
+
+        timeoutTimer?.invalidate()
+        timeoutTimer = Timer.scheduledTimer(withTimeInterval: 15, repeats: false) { [weak self] _ in
+            guard let self = self else { return }
+            if case .connecting = self.walletState.value {
+                self.walletState.value = .error
+            }
+        }
     }
 
-    public func info(completion: @escaping (Result<Info, LndApiError>) -> Void) {
+    public func info(completion: @escaping ApiCompletion<Info>) {
         api.info(completion: completion)
     }
 
@@ -97,6 +111,8 @@ public final class InfoService {
         }
 
         if case .success(let info) = result {
+            staticChannelBackupper.nodePubKey = info.pubKey
+
             if blockHeight.value != info.blockHeight {
                 blockHeight.value = info.blockHeight
             }
@@ -109,12 +125,20 @@ public final class InfoService {
             }
         }
 
-        let newIsSyncedToChain = (try? result.get())?.isSyncedToChain
+        let newInfo: Info?
+        switch result {
+        case .success(let info):
+            newInfo = info
+        case .failure:
+            newInfo = nil
+        }
+
+        let newIsSyncedToChain = newInfo?.isSyncedToChain
         if info.value?.isSyncedToChain != newIsSyncedToChain && newIsSyncedToChain == true {
             balanceService.update()
         }
 
-        self.info.value = try? result.get()
+        self.info.value = newInfo
     }
 
     public func stop() {

@@ -8,21 +8,25 @@
 import Bond
 import Foundation
 import Logger
+import ReactiveKit
 import SwiftLnd
 
-final class ChannelListUpdater: ListUpdater {
-    private let api: LightningApiProtocol
+final class ChannelListUpdater: NSObject, ListUpdater {
+    private let api: LightningApi
+    private let balanceService: BalanceService
 
-    let transactions = MutableObservableArray<Transaction>()
-
-    let open = MutableObservableArray<Channel>()
-    let pending = MutableObservableArray<Channel>()
+    let open = MutableObservableArray<OpenChannel>()
+    let pending = MutableObservableArray<PendingChannel>()
     let closed = MutableObservableArray<ChannelCloseSummary>()
 
-    init(api: LightningApiProtocol) {
+    init(api: LightningApi, balanceService: BalanceService) {
         self.api = api
+        self.balanceService = balanceService
 
-        api.subscribeChannelEvents { [weak self] _ in
+        super.init()
+
+        api.subscribeChannelEvents { [weak self] in
+            Logger.info("new channel event \($0)", customPrefix: "🏊‍♂️")
             self?.update()
         }
     }
@@ -34,9 +38,10 @@ final class ChannelListUpdater: ListUpdater {
             }
         }
 
-        api.pendingChannels { [pending] in
-            if case .success(let channels) = $0 {
-                pending.replace(with: channels)
+        api.pendingChannels { [pending, balanceService] in
+            if case .success(let pendingChannels) = $0 {
+                pending.replace(with: pendingChannels.channels)
+                balanceService.forceCloseLimboBalance.value = pendingChannels.forceCloseLimboBalance
             }
         }
 

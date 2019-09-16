@@ -19,10 +19,10 @@ final class OpenChannelViewModel: NSObject {
     let subtitle = Observable<String?>(nil)
     let isAmountValid = Observable(true)
 
-    var amount: Satoshi = 100000 {
+    var amount: Satoshi {
         didSet {
             updateSubtitle()
-            isAmountValid.value = validRange.contains(amount) && amount < lightningService.balanceService.onChain.value
+            isAmountValid.value = validRange.contains(amount) && amount < lightningService.balanceService.onChainConfirmed.value
         }
     }
 
@@ -31,6 +31,8 @@ final class OpenChannelViewModel: NSObject {
     init(lightningService: LightningService, lightningNodeURI: LightningNodeURI) {
         self.lightningService = lightningService
         self.lightningNodeURI = lightningNodeURI
+
+        amount = max(min(lightningService.balanceService.onChainConfirmed.value * 0.75, LndConstants.maxChannelSize), LndConstants.minChannelSize)
 
         super.init()
 
@@ -50,12 +52,13 @@ final class OpenChannelViewModel: NSObject {
         } else if amount > LndConstants.maxChannelSize,
             let amount = currency.format(satoshis: LndConstants.maxChannelSize) {
             subtitle.value = L10n.Scene.OpenChannel.Subtitle.maximumSize(amount)
-        } else if let amount = currency.format(satoshis: lightningService.balanceService.onChain.value) {
+        } else if let amount = currency.format(satoshis: lightningService.balanceService.onChainConfirmed.value) {
             subtitle.value = L10n.Scene.OpenChannel.Subtitle.balance(amount)
         }
     }
 
-    func openChannel(completion: @escaping (Result<ChannelPoint, LndApiError>) -> Void) {
-        lightningService.channelService.open(lightningNodeURI: lightningNodeURI, amount: amount, completion: completion)
+    func openChannel(completion: @escaping ApiCompletion<ChannelPoint>) {
+        let csvDelay = lightningService.connection == .local ? 2016 : nil // use 2 weeks csv delay for local nodes.
+        lightningService.channelService.open(lightningNodeURI: lightningNodeURI, csvDelay: csvDelay, amount: amount, completion: completion)
     }
 }

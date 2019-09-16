@@ -6,16 +6,17 @@
 //
 
 import Foundation
-import LndRpc
 
 public enum CloseStatusUpdate {
     case pending
     case channelClose
 
-    init(closeStatusUpdate: LNDCloseStatusUpdate) {
-        if closeStatusUpdate.closePending.txid != nil {
+    init?(closeStatusUpdate: Lnrpc_CloseStatusUpdate) {
+        guard let update = closeStatusUpdate.update else { return nil }
+        switch update {
+        case .closePending:
             self = .pending
-        } else {
+        case .chanClose:
             self = .channelClose
         }
     }

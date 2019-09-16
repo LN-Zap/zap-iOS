@@ -9,10 +9,11 @@ import Foundation
 
 extension UserDefaults {
     enum Keys {
-        static let mnemonic = DefaultKey<[String]>("mnemonic")
         static let didCreateWallet = DefaultKey<Bool>("didCreateWallet")
         static let lastSeenHistoryDate = DefaultKey<Date>("lastSeenHistoryDate")
         static let walletDetailExpanded = DefaultKey<Bool>("homeScreenTileExpanded")
+        static let migrations = DefaultKey<[String]>("migrations")
+        static let backupDates = DefaultKey<[String: Data]>("backupDates")
     }
 }
 
@@ -23,15 +24,15 @@ final class DefaultKey<T> {
         self.name = name
     }
 
-    func get<T>() -> T? {
+    func get() -> T? {
         return UserDefaults.standard.value(forKey: name) as? T
     }
 
-    func get<T>(defaultValue: T) -> T {
+    func get(defaultValue: T) -> T {
         return (UserDefaults.standard.value(forKey: name) as? T) ?? defaultValue
     }
 
-    func set<T>(_ value: T?) {
+    func set(_ value: T?) {
         if let value = value {
             UserDefaults.standard.setValue(value, forKey: name)
             UserDefaults.standard.synchronize()

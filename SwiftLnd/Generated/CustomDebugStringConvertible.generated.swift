@@ -3,20 +3,12 @@
 
 // swiftlint:disable trailing_newline
 
-// MARK: Channel CustomDebugStringConvertible
-extension Channel: CustomDebugStringConvertible {
+// MARK: ChannelBackup CustomDebugStringConvertible
+extension ChannelBackup: CustomDebugStringConvertible {
 	public var debugDescription: String {
 		return """
-		Channel:
-		\tblockHeight: \(String(describing: blockHeight))
-		\tstate: \(state)
-		\tlocalBalance: \(localBalance)
-		\tremoteBalance: \(remoteBalance)
-		\tremotePubKey: \(remotePubKey)
-		\tcapacity: \(capacity)
-		\tupdateCount: \(String(describing: updateCount))
-		\tchannelPoint: \(channelPoint)
-		\tcsvDelay: \(csvDelay)\n
+		ChannelBackup:
+		\tdata: \(data)\n
 		"""
 	}
 }
@@ -54,6 +46,50 @@ extension ChannelPoint: CustomDebugStringConvertible {
 		ChannelPoint:
 		\tfundingTxid: \(fundingTxid)
 		\toutputIndex: \(outputIndex)\n
+		"""
+	}
+}
+
+// MARK: ClosingChannel CustomDebugStringConvertible
+extension ClosingChannel: CustomDebugStringConvertible {
+	public var debugDescription: String {
+		return """
+		ClosingChannel:
+		\tstate: \(state)
+		\tlocalBalance: \(localBalance)
+		\tremoteBalance: \(remoteBalance)
+		\tremotePubKey: \(remotePubKey)
+		\tcapacity: \(capacity)
+		\tchannelPoint: \(channelPoint)
+		\tclosingTxid: \(closingTxid)\n
+		"""
+	}
+}
+
+// MARK: FeeEstimate CustomDebugStringConvertible
+extension FeeEstimate: CustomDebugStringConvertible {
+	public var debugDescription: String {
+		return """
+		FeeEstimate:
+		\ttotal: \(total)
+		\tperByte: \(perByte)\n
+		"""
+	}
+}
+
+// MARK: ForceClosingChannel CustomDebugStringConvertible
+extension ForceClosingChannel: CustomDebugStringConvertible {
+	public var debugDescription: String {
+		return """
+		ForceClosingChannel:
+		\tstate: \(state)
+		\tlocalBalance: \(localBalance)
+		\tremoteBalance: \(remoteBalance)
+		\tremotePubKey: \(remotePubKey)
+		\tcapacity: \(capacity)
+		\tchannelPoint: \(channelPoint)
+		\tclosingTxid: \(closingTxid)
+		\tblocksTilMaturity: \(blocksTilMaturity)\n
 		"""
 	}
 }
@@ -130,17 +166,52 @@ extension NodeInfo: CustomDebugStringConvertible {
 	}
 }
 
+// MARK: OpenChannel CustomDebugStringConvertible
+extension OpenChannel: CustomDebugStringConvertible {
+	public var debugDescription: String {
+		return """
+		OpenChannel:
+		\tblockHeight: \(blockHeight)
+		\tstate: \(state)
+		\tlocalBalance: \(localBalance)
+		\tremoteBalance: \(remoteBalance)
+		\tremotePubKey: \(remotePubKey)
+		\tcapacity: \(capacity)
+		\tupdateCount: \(updateCount)
+		\tchannelPoint: \(channelPoint)
+		\tcsvDelay: \(csvDelay)\n
+		"""
+	}
+}
+
+// MARK: OpeningChannel CustomDebugStringConvertible
+extension OpeningChannel: CustomDebugStringConvertible {
+	public var debugDescription: String {
+		return """
+		OpeningChannel:
+		\tstate: \(state)
+		\tlocalBalance: \(localBalance)
+		\tremoteBalance: \(remoteBalance)
+		\tremotePubKey: \(remotePubKey)
+		\tcapacity: \(capacity)
+		\tchannelPoint: \(channelPoint)\n
+		"""
+	}
+}
+
 // MARK: Payment CustomDebugStringConvertible
 extension Payment: CustomDebugStringConvertible {
 	public var debugDescription: String {
 		return """
 		Payment:
 		\tid: \(id)
+		\tmemo: \(String(describing: memo))
 		\tamount: \(amount)
 		\tdate: \(date)
 		\tfees: \(fees)
 		\tpaymentHash: \(paymentHash)
-		\tdestination: \(destination)\n
+		\tdestination: \(destination)
+		\tpreimage: \(preimage)\n
 		"""
 	}
 }
@@ -170,6 +241,17 @@ extension Peer: CustomDebugStringConvertible {
 		Peer:
 		\tpubKey: \(pubKey)
 		\thost: \(host)\n
+		"""
+	}
+}
+
+// MARK: PendingChannels CustomDebugStringConvertible
+extension PendingChannels: CustomDebugStringConvertible {
+	public var debugDescription: String {
+		return """
+		PendingChannels:
+		\tforceCloseLimboBalance: \(forceCloseLimboBalance)
+		\tchannels: \(channels)\n
 		"""
 	}
 }
@@ -227,6 +309,21 @@ extension Version.Number: CustomDebugStringConvertible {
 		return """
 		Version.Number:
 		\tcomponents: \(components)\n
+		"""
+	}
+}
+
+// MARK: WaitingCloseChannel CustomDebugStringConvertible
+extension WaitingCloseChannel: CustomDebugStringConvertible {
+	public var debugDescription: String {
+		return """
+		WaitingCloseChannel:
+		\tstate: \(state)
+		\tlocalBalance: \(localBalance)
+		\tremoteBalance: \(remoteBalance)
+		\tremotePubKey: \(remotePubKey)
+		\tcapacity: \(capacity)
+		\tchannelPoint: \(channelPoint)\n
 		"""
 	}
 }

@@ -18,16 +18,28 @@ public final class HistoryService: NSObject {
     init(invoiceListUpdater: InvoiceListUpdater, transactionListUpdater: TransactionListUpdater, paymentListUpdater: PaymentListUpdater, channelListUpdater: ChannelListUpdater) {
         super.init()
 
-        combineLatest(invoiceListUpdater.items, transactionListUpdater.items, paymentListUpdater.items, channelListUpdater.open, channelListUpdater.closed)
+        combineLatest(
+            invoiceListUpdater.items,
+            transactionListUpdater.items,
+            paymentListUpdater.items,
+            channelListUpdater.open,
+            channelListUpdater.pending,
+            channelListUpdater.closed)
             .observeNext { [weak self] in
-                let (invoiceChangeset, transactionChangeset, paymentChangeset, openChannels, closedChannels) = $0
+                let (invoiceChangeset, transactionChangeset, paymentChangeset, openChannels, pendingChannels, closedChannels) = $0
                 let dateEstimator = DateEstimator(transactions: transactionChangeset.collection)
 
                 let newInvoices = invoiceChangeset.collection
                     .map { (invoice: Invoice) -> DateProvidingEvent in
                         InvoiceEvent(invoice: invoice)
                     }
+
+                let channelTxids = openChannels.collection.map { $0.channelPoint.fundingTxid }
+                    + closedChannels.collection.map { $0.channelPoint.fundingTxid }
+                    + pendingChannels.collection.map { $0.channelPoint.fundingTxid }
+                    + closedChannels.collection.map { $0.closingTxHash }
                 let newTransactions = transactionChangeset.collection
+                    .filter { !channelTxids.contains($0.id) }
                     .compactMap { (transaction: Transaction) -> DateProvidingEvent? in
                         TransactionEvent(transaction: transaction)
                     }
@@ -36,8 +48,13 @@ public final class HistoryService: NSObject {
                         LightningPaymentEvent(payment: payment)
                     }
                 let newOpenChannelEvents = openChannels.collection
-                    .compactMap { (channel: Channel) -> DateProvidingEvent? in
+                    .compactMap { (channel: OpenChannel) -> DateProvidingEvent? in
                         ChannelEvent(channel: channel, dateEstimator: dateEstimator)
+                    }
+                let newPendingOpenChannelEvents = pendingChannels.collection
+                    .compactMap { (channel: PendingChannel) -> DateProvidingEvent? in
+                        guard let fundingTx = transactionChangeset.collection.first(where: { $0.id == channel.channelPoint.fundingTxid }) else { return nil }
+                        return ChannelEvent(pendingChannel: channel, transaction: fundingTx)
                     }
                 let newOpenChannelEvents2 = closedChannels.collection
                     .compactMap { (channelCloseSummary: ChannelCloseSummary) -> DateProvidingEvent? in
@@ -48,7 +65,7 @@ public final class HistoryService: NSObject {
                         ChannelEvent(closing: channelCloseSummary, dateEstimator: dateEstimator)
                     }
 
-                var result = newInvoices + newTransactions + newPayments + newOpenChannelEvents + newOpenChannelEvents2 + newCloseChannelEvents
+                var result = newInvoices + newTransactions + newPayments + newOpenChannelEvents + newPendingOpenChannelEvents + newOpenChannelEvents2 + newCloseChannelEvents
                 result.sort(by: { $0.date < $1.date })
 
                 self?.events.replace(with: result.map(HistoryEventType.create))

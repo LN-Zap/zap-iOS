@@ -1,35 +1,6 @@
 #if canImport(UIKit) && !os(watchOS)
 import UIKit
 
-extension BatchUpdate {
-    public init(
-        diff: ExtendedDiff,
-        indexPathTransform: (IndexPath) -> IndexPath = { $0 }
-    ) {
-        deletions = diff.compactMap { element -> IndexPath? in
-            switch element {
-            case let .delete(at):
-                return indexPathTransform([0, at])
-            default: return nil
-            }
-        }
-        insertions = diff.compactMap { element -> IndexPath? in
-            switch element {
-            case let .insert(at):
-                return indexPathTransform([0, at])
-            default: return nil
-            }
-        }
-        moves = diff.compactMap { element -> MoveStep? in
-            switch element {
-            case let .move(from, to):
-                return MoveStep(from: indexPathTransform([0, from]), to: indexPathTransform([0, to]))
-            default: return nil
-            }
-        }
-    }
-}
-
 #if swift(>=4.2)
 public typealias DiffRowAnimation = UITableView.RowAnimation
 #else
@@ -45,7 +16,7 @@ public extension UITableView {
     ///   - deletionAnimation:  Animation type for deletions
     ///   - insertionAnimation: Animation type for insertions
     ///   - indexPathTransform: Closure which transforms zero-based `IndexPath` to desired  `IndexPath`
-    public func animateRowChanges<T: Collection>(
+    func animateRowChanges<T: Collection>(
         oldData: T,
         newData: T,
         deletionAnimation: DiffRowAnimation = .automatic,
@@ -69,7 +40,7 @@ public extension UITableView {
     ///   - deletionAnimation:  Animation type for deletions
     ///   - insertionAnimation: Animation type for insertions
     ///   - indexPathTransform: Closure which transforms zero-based `IndexPath` to desired  `IndexPath`
-    public func animateRowChanges<T: Collection>(
+    func animateRowChanges<T: Collection>(
         oldData: T,
         newData: T,
         isEqual: EqualityChecker<T>,
@@ -85,7 +56,7 @@ public extension UITableView {
         )
     }
 
-    public func apply(
+    func apply(
         _ diff: ExtendedDiff,
         deletionAnimation: DiffRowAnimation = .automatic,
         insertionAnimation: DiffRowAnimation = .automatic,
@@ -111,7 +82,7 @@ public extension UITableView {
     ///   - sectionInsertionAnimation: Animation type for section insertions
     ///   - indexPathTransform:        Closure which transforms zero-based `IndexPath` to desired  `IndexPath`
     ///   - sectionTransform:          Closure which transforms zero-based section(`Int`) into desired section(`Int`)
-    public func animateRowAndSectionChanges<T: Collection>(
+    func animateRowAndSectionChanges<T: Collection>(
         oldData: T,
         newData: T,
         rowDeletionAnimation: DiffRowAnimation = .automatic,
@@ -147,7 +118,7 @@ public extension UITableView {
     ///   - sectionInsertionAnimation: Animation type for section insertions
     ///   - indexPathTransform:        Closure which transforms zero-based `IndexPath` to desired  `IndexPath`
     ///   - sectionTransform:          Closure which transforms zero-based section(`Int`) into desired section(`Int`)
-    public func animateRowAndSectionChanges<T: Collection>(
+    func animateRowAndSectionChanges<T: Collection>(
         oldData: T,
         newData: T,
         isEqualElement: NestedElementEqualityChecker<T>,
@@ -186,7 +157,7 @@ public extension UITableView {
     ///   - sectionInsertionAnimation: Animation type for section insertions
     ///   - indexPathTransform:        Closure which transforms zero-based `IndexPath` to desired  `IndexPath`
     ///   - sectionTransform:          Closure which transforms zero-based section(`Int`) into desired section(`Int`)
-    public func animateRowAndSectionChanges<T: Collection>(
+    func animateRowAndSectionChanges<T: Collection>(
         oldData: T,
         newData: T,
         isEqualSection: EqualityChecker<T>,
@@ -226,7 +197,7 @@ public extension UITableView {
     ///   - sectionInsertionAnimation: Animation type for section insertions
     ///   - indexPathTransform:        Closure which transforms zero-based `IndexPath` to desired  `IndexPath`
     ///   - sectionTransform:          Closure which transforms zero-based section(`Int`) into desired section(`Int`)
-    public func animateRowAndSectionChanges<T: Collection>(
+    func animateRowAndSectionChanges<T: Collection>(
         oldData: T,
         newData: T,
         isEqualSection: EqualityChecker<T>,
@@ -254,7 +225,7 @@ public extension UITableView {
         )
     }
 
-    public func apply(
+    func apply(
         _ diff: NestedExtendedDiff,
         rowDeletionAnimation: DiffRowAnimation = .automatic,
         rowInsertionAnimation: DiffRowAnimation = .automatic,
@@ -283,14 +254,15 @@ public extension UICollectionView {
     ///   - newData:            Data which reflects the current state of `UICollectionView`
     ///   - indexPathTransform: Closure which transforms zero-based `IndexPath` to desired  `IndexPath`
     ///   - completion:         Closure to be executed when the animation completes
-    public func animateItemChanges<T: Collection>(
+    func animateItemChanges<T: Collection>(
         oldData: T,
         newData: T,
         indexPathTransform: @escaping (IndexPath) -> IndexPath = { $0 },
+        updateData: ((T) -> Void)? = nil,
         completion: ((Bool) -> Void)? = nil
     ) where T.Element: Equatable {
         let diff = oldData.extendedDiff(newData)
-        apply(diff, completion: completion, indexPathTransform: indexPathTransform)
+        apply(diff, data: newData, updateData: updateData, completion: completion, indexPathTransform: indexPathTransform)
     }
 
     /// Animates items which changed between oldData and newData.
@@ -301,23 +273,27 @@ public extension UICollectionView {
     ///   - isEqual:            A function comparing two elements of `T`
     ///   - indexPathTransform: Closure which transforms zero-based `IndexPath` to desired  `IndexPath`
     ///   - completion:         Closure to be executed when the animation completes
-    public func animateItemChanges<T: Collection>(
+    func animateItemChanges<T: Collection>(
         oldData: T,
         newData: T,
         isEqual: EqualityChecker<T>,
         indexPathTransform: @escaping (IndexPath) -> IndexPath = { $0 },
+        updateData: ((T) -> Void)? = nil,
         completion: ((Bool) -> Swift.Void)? = nil
     ) {
         let diff = oldData.extendedDiff(newData, isEqual: isEqual)
-        apply(diff, completion: completion, indexPathTransform: indexPathTransform)
+        apply(diff, data: newData, updateData: updateData, completion: completion, indexPathTransform: indexPathTransform)
     }
 
-    public func apply(
+    func apply<T>(
         _ diff: ExtendedDiff,
+        data: T,
+        updateData: ((T) -> Void)? = nil,
         completion: ((Bool) -> Swift.Void)? = nil,
         indexPathTransform: @escaping (IndexPath) -> IndexPath = { $0 }
     ) {
         performBatchUpdates({
+            updateData?(data)
             let update = BatchUpdate(diff: diff, indexPathTransform: indexPathTransform)
             self.deleteItems(at: update.deletions)
             self.insertItems(at: update.insertions)
@@ -333,11 +309,12 @@ public extension UICollectionView {
     ///   - indexPathTransform: Closure which transforms zero-based `IndexPath` to desired  `IndexPath`
     ///   - sectionTransform:   Closure which transforms zero-based section(`Int`) into desired section(`Int`)
     ///   - completion:         Closure to be executed when the animation completes
-    public func animateItemAndSectionChanges<T: Collection>(
+    func animateItemAndSectionChanges<T: Collection>(
         oldData: T,
         newData: T,
         indexPathTransform: @escaping (IndexPath) -> IndexPath = { $0 },
         sectionTransform: @escaping (Int) -> Int = { $0 },
+        updateData: ((T) -> Void)? = nil,
         completion: ((Bool) -> Swift.Void)? = nil
     )
         where T.Element: Collection,
@@ -345,8 +322,10 @@ public extension UICollectionView {
         T.Element.Element: Equatable {
         self.apply(
             oldData.nestedExtendedDiff(to: newData),
+            data: newData,
             indexPathTransform: indexPathTransform,
             sectionTransform: sectionTransform,
+            updateData: updateData,
             completion: completion
         )
     }
@@ -360,12 +339,13 @@ public extension UICollectionView {
     ///   - indexPathTransform: Closure which transforms zero-based `IndexPath` to desired  `IndexPath`
     ///   - sectionTransform:   Closure which transforms zero-based section(`Int`) into desired section(`Int`)
     ///   - completion:         Closure to be executed when the animation completes
-    public func animateItemAndSectionChanges<T: Collection>(
+    func animateItemAndSectionChanges<T: Collection>(
         oldData: T,
         newData: T,
         isEqualElement: NestedElementEqualityChecker<T>,
         indexPathTransform: @escaping (IndexPath) -> IndexPath = { $0 },
         sectionTransform: @escaping (Int) -> Int = { $0 },
+        updateData: ((T) -> Void)? = nil,
         completion: ((Bool) -> Swift.Void)? = nil
     )
         where T.Element: Collection,
@@ -375,8 +355,10 @@ public extension UICollectionView {
                 to: newData,
                 isEqualElement: isEqualElement
             ),
+            data: newData,
             indexPathTransform: indexPathTransform,
             sectionTransform: sectionTransform,
+            updateData: updateData,
             completion: completion
         )
     }
@@ -390,12 +372,13 @@ public extension UICollectionView {
     ///   - indexPathTransform: Closure which transforms zero-based `IndexPath` to desired  `IndexPath`
     ///   - sectionTransform:   Closure which transforms zero-based section(`Int`) into desired section(`Int`)
     ///   - completion:         Closure to be executed when the animation completes
-    public func animateItemAndSectionChanges<T: Collection>(
+    func animateItemAndSectionChanges<T: Collection>(
         oldData: T,
         newData: T,
         isEqualSection: EqualityChecker<T>,
         indexPathTransform: @escaping (IndexPath) -> IndexPath = { $0 },
         sectionTransform: @escaping (Int) -> Int = { $0 },
+        updateData: ((T) -> Void)? = nil,
         completion: ((Bool) -> Swift.Void)? = nil
     )
         where T.Element: Collection,
@@ -405,8 +388,10 @@ public extension UICollectionView {
                 to: newData,
                 isEqualSection: isEqualSection
             ),
+            data: newData,
             indexPathTransform: indexPathTransform,
             sectionTransform: sectionTransform,
+            updateData: updateData,
             completion: completion
         )
     }
@@ -421,13 +406,14 @@ public extension UICollectionView {
     ///   - indexPathTransform: Closure which transforms zero-based `IndexPath` to desired  `IndexPath`
     ///   - sectionTransform:   Closure which transforms zero-based section(`Int`) into desired section(`Int`)
     ///   - completion:         Closure to be executed when the animation completes
-    public func animateItemAndSectionChanges<T: Collection>(
+    func animateItemAndSectionChanges<T: Collection>(
         oldData: T,
         newData: T,
         isEqualSection: EqualityChecker<T>,
         isEqualElement: NestedElementEqualityChecker<T>,
         indexPathTransform: @escaping (IndexPath) -> IndexPath = { $0 },
         sectionTransform: @escaping (Int) -> Int = { $0 },
+        updateData: ((T) -> Void)? = nil,
         completion: ((Bool) -> Swift.Void)? = nil
     )
         where T.Element: Collection {
@@ -437,19 +423,24 @@ public extension UICollectionView {
                 isEqualSection: isEqualSection,
                 isEqualElement: isEqualElement
             ),
+            data: newData,
             indexPathTransform: indexPathTransform,
             sectionTransform: sectionTransform,
+            updateData: updateData,
             completion: completion
         )
     }
 
-    public func apply(
+    func apply<T: Collection>(
         _ diff: NestedExtendedDiff,
+        data: T,
         indexPathTransform: @escaping (IndexPath) -> IndexPath = { $0 },
         sectionTransform: @escaping (Int) -> Int = { $0 },
+        updateData: ((T) -> Void)? = nil,
         completion: ((Bool) -> Void)? = nil
     ) {
         performBatchUpdates({
+            updateData?(data)
             let update = NestedBatchUpdate(diff: diff, indexPathTransform: indexPathTransform, sectionTransform: sectionTransform)
             self.insertSections(update.sectionInsertions)
             self.deleteSections(update.sectionDeletions)

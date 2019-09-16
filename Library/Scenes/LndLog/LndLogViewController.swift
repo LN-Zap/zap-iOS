@@ -6,18 +6,30 @@
 //
 
 import Lightning
+import SwiftBTC
 import UIKit
 
 final class LndLogViewController: UIViewController {
     @IBOutlet private weak var textView: UITextView!
     private var timer: Timer?
 
-    // swiftlint:disable:next implicitly_unwrapped_optional
-    private var walletConfiguration: WalletConfiguration!
+    private var fileObserver: FileObserver?
 
-    static func instantiate(walletConfiguration: WalletConfiguration) -> LndLogViewController {
+    private var network: Network! // swiftlint:disable:this implicitly_unwrapped_optional
+
+    private var url: URL? {
+        guard let folder = FileManager.default.walletDirectory else { return nil }
+        return folder.appendingPathComponent("logs/bitcoin/\(network.rawValue)/lnd.log")
+    }
+
+    private var log: String? {
+        guard let url = url else { return nil }
+        return try? String(contentsOf: url)
+    }
+
+    static func instantiate(network: Network) -> LndLogViewController {
         let viewController = StoryboardScene.LndLog.lndLogViewController.instantiate()
-        viewController.walletConfiguration = walletConfiguration
+        viewController.network = network
         return viewController
     }
 
@@ -26,28 +38,31 @@ final class LndLogViewController: UIViewController {
 
         navigationItem.largeTitleDisplayMode = .never
         textView.font = UIFont(name: "Courier", size: 10)
+        textView.isEditable = false
+        textView.autocorrectionType = .no
 
-        timer = Timer.scheduledTimer(withTimeInterval: 0.1, repeats: true) { [weak self] _ in
-            self?.updateTextView()
+        updateLog()
+
+        guard let path = url?.path else { return }
+        fileObserver = FileObserver(path: path) { [weak self] _ in
+            self?.updateLog()
         }
-
-        textView.textColor = .white
-        textView.backgroundColor = UIColor.Zap.background
     }
 
-    private var log: String? {
-        guard let folder = FileManager.default.walletDirectory(for: walletConfiguration.walletId) else { return nil }
-        let url = folder.appendingPathComponent("logs/bitcoin/testnet/lnd.log")
-        return try? String(contentsOf: url)
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        scrollToBottom()
     }
 
-    @objc private func updateTextView() {
-        if let suffix = log?.suffix(10000) {
-            textView.text = String(suffix)
-        }
+    private func updateLog() {
+        guard let log = self.log else { return }
+        self.textView.attributedText = LogFormatter.format(string: log)
+        scrollToBottom()
+    }
 
-        let bottom = textView.contentSize.height - textView.bounds.size.height
-        textView.setContentOffset(CGPoint(x: 0, y: bottom), animated: false)
+    private func scrollToBottom() {
+        let bottom = NSRange(location: self.textView.text.count - 1, length: 1)
+        self.textView.scrollRangeToVisible(bottom)
     }
 
     @IBAction private func shareLog(_ sender: Any) {

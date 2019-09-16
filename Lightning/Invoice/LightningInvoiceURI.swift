@@ -28,7 +28,7 @@ public struct LightningInvoiceURI: PaymentURI {
             string = String(string.dropFirst(prefix.count))
         }
 
-        guard let invoice = Bolt11().decode(string: string) else { return nil }
+        guard let invoice = Bolt11.decode(string: string) else { return nil }
 
         address = string
         amount = invoice.amount

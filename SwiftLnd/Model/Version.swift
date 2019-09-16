@@ -43,7 +43,7 @@ public struct Version {
                 .joined(separator: ".")
         }
 
-        init?(string: String) {
+        public init?(string: String) {
             guard let range = string.range(of: #"[\d\.]+"#, options: .regularExpression) else { return nil }
             components = string[range]
                 .split(separator: ".")

@@ -29,6 +29,7 @@ final class CircleGraphView: UIView {
     }
 
     override func draw(_ rect: CGRect) {
+        let segments = self.segments.filter { $0.amount > 0 }
         let fullCircle = 2 * CGFloat.pi
         let totalAmount = CGFloat(truncating: segments.reduce(0) { $0 + $1.amount } as NSDecimalNumber)
 
@@ -44,9 +45,9 @@ final class CircleGraphView: UIView {
         var previousAngle = startAngle
 
         if totalAmount == 0 {
-            context.setStrokeColor(emptyColor.cgColor)
-            context.addArc(center: centerPoint, radius: radius, startAngle: 0, endAngle: fullCircle, clockwise: false)
-            context.strokePath()
+            drawFullCircle(context: context, centerPoint: centerPoint, radius: radius, color: emptyColor)
+        } else if segments.count == 1 {
+            drawFullCircle(context: context, centerPoint: centerPoint, radius: radius, color: segments[0].color)
         } else {
             for (index, segment) in segments.enumerated() {
                 let currentAngle: CGFloat
@@ -63,5 +64,11 @@ final class CircleGraphView: UIView {
                 previousAngle = currentAngle
             }
         }
+    }
+
+    private func drawFullCircle(context: CGContext, centerPoint: CGPoint, radius: CGFloat, color: UIColor) {
+        context.setStrokeColor(color.cgColor)
+        context.addArc(center: centerPoint, radius: radius, startAngle: 0, endAngle: 2 * .pi, clockwise: false)
+        context.strokePath()
     }
 }

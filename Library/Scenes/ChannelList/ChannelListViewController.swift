@@ -7,6 +7,7 @@
 
 import Bond
 import Lightning
+import SwiftBTC
 import UIKit
 
 enum ChannelBalanceColor {
@@ -20,15 +21,29 @@ final class ChannelListViewController: UIViewController {
     @IBOutlet private weak var tableView: UITableView!
     @IBOutlet private var headerView: ChannelListHeaderView!
 
-    private var channelListViewModel: ChannelListViewModel! // swiftlint:disable:this implicitly_unwrapped_optional
-    private var addChannelButtonTapped: (() -> Void)?
-    private var presentChannelDetail: ((UIViewController, ChannelViewModel) -> Void)?
+    private let refreshControl = UIRefreshControl()
 
-    static func instantiate(channelListViewModel: ChannelListViewModel, addChannelButtonTapped: @escaping () -> Void, presentChannelDetail: @escaping (UIViewController, ChannelViewModel) -> Void) -> UIViewController {
+    // swiftlint:disable implicitly_unwrapped_optional
+    private var channelListViewModel: ChannelListViewModel!
+    private var addChannelButtonTapped: (() -> Void)!
+    private var presentChannelDetail: ((UIViewController, ChannelViewModel) -> Void)!
+    private var walletEmptyStateViewModel: WalletEmptyStateViewModel!
+    private var channelListEmptyStateViewModel: ChannelListEmptyStateViewModel!
+    // swiftlint:enable implicitly_unwrapped_optional
+
+    weak var badgeUpdaterDelegate: BadgeUpdaterDelegate? {
+        didSet {
+            setupBadgeUpdater()
+        }
+    }
+
+    static func instantiate(channelListViewModel: ChannelListViewModel, addChannelButtonTapped: @escaping () -> Void, presentChannelDetail: @escaping (UIViewController, ChannelViewModel) -> Void, walletEmptyStateViewModel: WalletEmptyStateViewModel, channelListEmptyStateViewModel: ChannelListEmptyStateViewModel) -> ChannelListViewController {
         let viewController = StoryboardScene.ChannelList.channelViewController.instantiate()
         viewController.channelListViewModel = channelListViewModel
         viewController.addChannelButtonTapped = addChannelButtonTapped
         viewController.presentChannelDetail = presentChannelDetail
+        viewController.walletEmptyStateViewModel = walletEmptyStateViewModel
+        viewController.channelListEmptyStateViewModel = channelListEmptyStateViewModel
 
         return viewController
     }
@@ -59,7 +74,44 @@ final class ChannelListViewController: UIViewController {
             return cell
         }
 
+        tableView.refreshControl = refreshControl
+        refreshControl.addTarget(self, action: #selector(refresh(sender:)), for: .valueChanged)
+
         headerView.setup(for: channelListViewModel)
+
+        setupEmtpyState()
+    }
+
+    private func setupBadgeUpdater() {
+        channelListViewModel.shouldShowBadgeIcon
+            .observeOn(DispatchQueue.main)
+            .observeNext { [weak self] in
+                self?.badgeUpdaterDelegate?.setBadge($0 ? " " : nil, for: .channels)
+            }
+            .dispose(in: reactive.bag)
+    }
+
+    private func setupEmtpyState() {
+        let walletEmptyStateView = EmptyStateView(viewModel: walletEmptyStateViewModel)
+        walletEmptyStateView.add(to: view)
+
+        channelListViewModel.shouldHideEmptyWalletState
+            .bind(to: walletEmptyStateView.reactive.isHidden)
+            .dispose(in: reactive.bag)
+
+        let channelEmptyStateView = EmptyStateView(viewModel: channelListEmptyStateViewModel)
+        channelEmptyStateView.add(to: view)
+
+        channelListViewModel.shouldHideChannelListEmptyState
+            .bind(to: channelEmptyStateView.reactive.isHidden)
+            .dispose(in: reactive.bag)
+    }
+
+    @objc func refresh(sender: UIRefreshControl) {
+        channelListViewModel.refresh()
+        DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 0.5) {
+            sender.endRefreshing()
+        }
     }
 
     @objc private func presentAddChannel() {

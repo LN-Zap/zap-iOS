@@ -13,14 +13,14 @@ final class ManageWalletsViewController: UIViewController {
 
     // swiftlint:disable implicitly_unwrapped_optional
     private var addWalletButtonTapped: (() -> Void)!
-    private var walletConfigurationStore: WalletConfigurationStore!
-    private var connectWallet: ((WalletConfiguration) -> Void)!
+    private var manageWalletsViewModel: ManageWalletsViewModel!
+    private var connectWallet: ((LightningConnection) -> Void)!
     // swiftlint:enable implicitly_unwrapped_optional
 
-    static func instantiate(addWalletButtonTapped: @escaping () -> Void, walletConfigurationStore: WalletConfigurationStore, connectWallet: @escaping (WalletConfiguration) -> Void) -> ManageWalletsViewController {
+    static func instantiate(addWalletButtonTapped: @escaping () -> Void, manageWalletsViewModel: ManageWalletsViewModel, connectWallet: @escaping (LightningConnection) -> Void) -> ManageWalletsViewController {
         let viewController = StoryboardScene.ManageWallets.manageWalletsViewController.instantiate()
         viewController.addWalletButtonTapped = addWalletButtonTapped
-        viewController.walletConfigurationStore = walletConfigurationStore
+        viewController.manageWalletsViewModel = manageWalletsViewModel
         viewController.connectWallet = connectWallet
         return viewController
     }
@@ -29,7 +29,7 @@ final class ManageWalletsViewController: UIViewController {
         super.viewDidLoad()
 
         navigationItem.largeTitleDisplayMode = .never
-        title = "Manage Wallets"
+        title = L10n.Scene.ManageWallets.title
         tableView.registerCell(ManageWalletTableViewCell.self)
         tableView.rowHeight = 76
         tableView.backgroundColor = UIColor.Zap.background
@@ -49,29 +49,64 @@ extension ManageWalletsViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
 
-        let walletConfiguration = walletConfigurationStore.configurations[indexPath.row]
-        connectWallet(walletConfiguration)
+        let walletConfiguration = manageWalletsViewModel.sections[indexPath.section][indexPath.row]
+        connectWallet(walletConfiguration.connection)
+    }
+
+    func tableView(_ tableView: UITableView, willDisplayHeaderView view: UIView, forSection section: Int) {
+        guard
+            let view = view as? UITableViewHeaderFooterView,
+            let label = view.textLabel
+            else { return }
+        label.text = view.textLabel?.text?.capitalized
+        Style.Label.body.apply(to: label)
+
+        let backgroundView = UIView()
+        backgroundView.backgroundColor = UIColor.Zap.seaBlue
+        view.backgroundView = backgroundView
     }
 }
 
 extension ManageWalletsViewController: UITableViewDataSource {
+    func numberOfSections(in tableView: UITableView) -> Int {
+        return manageWalletsViewModel.sections.count
+    }
+
+    func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
+        return manageWalletsViewModel.sections[section].title
+    }
+
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return walletConfigurationStore.configurations.count
+        return manageWalletsViewModel.sections[section].count
     }
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell: ManageWalletTableViewCell = tableView.dequeueCellForIndexPath(indexPath)
-        cell.configure(walletConfigurationStore.configurations[indexPath.row])
+        cell.configure(manageWalletsViewModel.sections[indexPath.section][indexPath.row])
+        cell.delegate = self
         return cell
     }
 
     func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
-        return true
+        return manageWalletsViewModel.sections[indexPath.section][indexPath.row].connection != .local
     }
 
     func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
         guard editingStyle == .delete else { return }
-        walletConfigurationStore.removeWallet(at: indexPath.row)
-        tableView.deleteRows(at: [indexPath], with: .fade)
+        let initialSectionCount = manageWalletsViewModel.sections.count
+        manageWalletsViewModel.removeItem(at: indexPath)
+
+        if initialSectionCount != manageWalletsViewModel.sections.count {
+            tableView.deleteSections(IndexSet(integer: indexPath.section), with: .fade)
+        } else {
+            tableView.deleteRows(at: [indexPath], with: .fade)
+        }
+    }
+}
+
+extension ManageWalletsViewController: ManageWalletTableViewCellDelegate {
+    func presentBackupViewController(nodePubKey: String) {
+        let viewController = ChannelBackupViewController.instantiate(nodePubKey: nodePubKey)
+        navigationController?.pushViewController(viewController, animated: true)
     }
 }

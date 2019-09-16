@@ -16,17 +16,21 @@ import SwiftLnd
 public struct LightningPaymentEvent: Equatable, DateProvidingEvent {
     public let paymentHash: String
     public let amount: Satoshi // amount + optional fees
+    public let memo: String?
     public let fee: Satoshi
     public let date: Date
     public let node: LightningNode
+    public let preimage: String
 }
 
 extension LightningPaymentEvent {
     init(payment: Payment) {
         paymentHash = payment.paymentHash
         amount = payment.amount
+        memo = payment.memo
         fee = payment.fees
         date = payment.date
         node = LightningNode(pubKey: payment.destination, alias: nil, color: nil)
+        preimage = payment.preimage
     }
 }

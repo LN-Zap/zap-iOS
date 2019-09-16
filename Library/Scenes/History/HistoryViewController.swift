@@ -41,6 +41,8 @@ final class HistoryViewController: UIViewController {
             let historyViewModel = historyViewModel
             else { return }
 
+        historyViewModel.searchString = nil // reset search string when closing and reopening the app
+
         title = L10n.Scene.History.title
         definesPresentationContext = true
         view.backgroundColor = UIColor.Zap.background
@@ -76,8 +78,9 @@ final class HistoryViewController: UIViewController {
         historyViewModel.dataSource
             .bind(to: tableView) { dataSource, indexPath, tableView in
                 let cell: HistoryCell = tableView.dequeueCellForIndexPath(indexPath)
+                let event = dataSource.item(at: indexPath)
 
-                switch dataSource.item(at: indexPath) {
+                switch event {
                 case .transactionEvent(let transactionEvent):
                     cell.setTransactionEvent(transactionEvent)
                 case .channelEvent(let channelEvent):
@@ -88,7 +91,7 @@ final class HistoryViewController: UIViewController {
                     cell.setLightningPaymentEvent(lightningPaymentEvent)
                 }
 
-                if historyViewModel.isEventNew(at: indexPath) {
+                if historyViewModel.isNew(event: event) {
                     cell.addNotificationLabel(type: .new)
                 }
 

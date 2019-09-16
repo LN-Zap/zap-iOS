@@ -9,10 +9,8 @@ import Foundation
 import SwiftLnd
 
 public final class WalletService {
-    public static let password = "12345678" // TODO: save random pw in secure enclave
-
-    private(set) var isUnlocked = false
-    private let wallet: WalletApiProtocol
+    public private(set) static var isLocalWalletUnlocked = false
+    private let wallet: WalletApi
     public let connection: LightningConnection
 
     public init(connection: LightningConnection) {
@@ -21,12 +19,12 @@ public final class WalletService {
         switch connection {
         case .local:
         #if !REMOTEONLY
-            self.wallet = WalletApiStream()
+            self.wallet = WalletApi(connection: .local)
         #else
             fatalError(".local not supported")
         #endif
         case .remote(let configuration):
-            self.wallet = WalletApiRpc(configuration: configuration)
+            self.wallet = WalletApi(connection: .remote(configuration))
         }
     }
 
@@ -39,22 +37,28 @@ public final class WalletService {
         }
     }
 
-    public func generateSeed(completion: @escaping (Result<[String], LndApiError>) -> Void) {
-        wallet.generateSeed(passphrase: nil) {
+    public func generateSeed(completion: @escaping ApiCompletion<[String]>) {
+        wallet.generateSeed {
             completion($0)
         }
     }
 
-    public func initWallet(mnemonic: [String], completion: @escaping (Result<Success, LndApiError>) -> Void) {
-        wallet.initWallet(mnemonic: mnemonic, password: WalletService.password) {
+    public func initWallet(password: String, mnemonic: [String], channelBackup: ChannelBackup?, recover: Bool, completion: @escaping ApiCompletion<Success>) {
+        wallet.initWallet(mnemonic: mnemonic, password: password, channelBackup: channelBackup, recover: recover) {
             if case .success = $0 {
                 WalletService.didCreateWallet = true
+                WalletService.isLocalWalletUnlocked = true
             }
             completion($0)
         }
     }
 
-    public func unlockWallet(password: String, completion: @escaping (Result<Success, LndApiError>) -> Void) {
-        wallet.unlockWallet(password: password, completion: completion)
+    public func unlockWallet(password: String, completion: @escaping ApiCompletion<Success>) {
+        wallet.unlockWallet(password: password) {
+            if case .success = $0 {
+                WalletService.isLocalWalletUnlocked = true
+            }
+            completion($0)
+        }
     }
 }

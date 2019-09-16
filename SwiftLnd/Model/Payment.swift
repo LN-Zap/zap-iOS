@@ -6,30 +6,34 @@
 //
 
 import Foundation
-import LndRpc
 import SwiftBTC
 
 public struct Payment: Equatable {
     public let id: String
+    public let memo: String?
     public let amount: Satoshi
     public let date: Date
     public let fees: Satoshi
     public let paymentHash: String
     public let destination: String
+    public let preimage: String
 }
 
 extension Payment {
-    init(payment: LNDPayment) {
+    init(payment: Lnrpc_Payment) {
         id = payment.paymentHash
+        memo = Bolt11.decode(string: payment.paymentRequest)?.description
         amount = Satoshi(-payment.valueSat)
         date = Date(timeIntervalSince1970: TimeInterval(payment.creationDate))
         fees = Satoshi(payment.fee)
         paymentHash = payment.paymentHash
-        destination = payment.pathArray.compactMap { $0 as? String }.last ?? ""
+        destination = payment.path.last ?? ""
+        preimage = payment.paymentPreimage
     }
 
-    init(paymentRequest: PaymentRequest, sendResponse: LNDSendResponse, amount: Satoshi? = nil) {
+    init(paymentRequest: PaymentRequest, sendResponse: Lnrpc_SendResponse, amount: Satoshi? = nil) {
         id = paymentRequest.paymentHash
+        memo = paymentRequest.memo
         if let amount = amount {
             self.amount = -amount
         } else {
@@ -39,5 +43,6 @@ extension Payment {
         fees = Satoshi(sendResponse.paymentRoute.totalFeesMsat / 1000)
         paymentHash = paymentRequest.paymentHash
         destination = paymentRequest.destination
+        preimage = sendResponse.paymentPreimage.hexadecimalString
     }
 }

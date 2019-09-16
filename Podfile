@@ -5,7 +5,6 @@ inhibit_all_warnings!
 install! 'cocoapods'
 
 target 'Zap' do
-    pod 'SwiftBTC', :path => './SwiftBTC'
 end
 
 target 'SnapshotUITests' do
@@ -13,10 +12,11 @@ target 'SnapshotUITests' do
 end
 
 abstract_target 'RPC' do
-    pod 'LndRpc', :path => '.'
     pod 'SwiftBTC', :path => './SwiftBTC'
 
     target 'SwiftLnd' do
+        pod 'SwiftGRPC'
+          
         target 'SwiftLndTests' do
             inherit! :search_paths
         end

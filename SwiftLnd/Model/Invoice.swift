@@ -6,26 +6,28 @@
 //
 
 import Foundation
-import LndRpc
+import Logger
 import SwiftBTC
 
 public struct Invoice: Equatable {
     public enum State: Int {
+        case accepted
         case settled
         case open
         case canceled
 
-        init?(state: LNDInvoice_InvoiceState) {
+        init?(state: Lnrpc_Invoice.InvoiceState) {
             switch state {
+            case .accepted:
+                self = .accepted
             case .open:
                 self = .open
             case .settled:
                 self = .settled
             case .canceled:
                 self = .canceled
-            case .gpbUnrecognizedEnumeratorValue:
-                return nil
-            @unknown default:
+            case .UNRECOGNIZED:
+                Logger.warn(".UNRECOGNIZED")
                 return nil
             }
         }
@@ -42,7 +44,7 @@ public struct Invoice: Equatable {
 }
 
 extension Invoice {
-    init(invoice: LNDInvoice) {
+    init(invoice: Lnrpc_Invoice) {
         id = invoice.rHash.hexadecimalString
         memo = invoice.memo
 
@@ -57,7 +59,7 @@ extension Invoice {
         case .settled:
             amount = Satoshi(invoice.amtPaidSat)
             settleDate = Date(timeIntervalSince1970: TimeInterval(invoice.settleDate))
-        case .open, .canceled:
+        case .open, .canceled, .accepted:
             amount = Satoshi(invoice.value)
             settleDate = nil
         }

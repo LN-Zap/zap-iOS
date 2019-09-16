@@ -22,13 +22,9 @@ public extension Diff {
     /// - Complexity: O(N)
     ///
     /// - Parameters:
-    ///   - from: The source collection (usually the source collecetion of the callee)
     ///   - to: The target collection (usually the target collecetion of the callee)
     /// - Returns: A sequence of steps to obtain `to` collection from the `from` one.
-    public func patch<T: Collection>(
-        from: T,
-        to: T
-    ) -> [Patch<T.Element>] {
+    func patch<T: Collection>(to: T) -> [Patch<T.Element>] {
         var shift = 0
         return map { element in
             switch element {
@@ -55,7 +51,7 @@ public func patch<T: Collection>(
     from: T,
     to: T
 ) -> [Patch<T.Element>] where T.Element: Equatable {
-    return from.diff(to).patch(from: from, to: to)
+    return from.diff(to).patch(to: to)
 }
 
 extension Patch: CustomDebugStringConvertible {

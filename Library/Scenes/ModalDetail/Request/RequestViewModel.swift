@@ -26,10 +26,6 @@ public final class RequestViewModel {
     public var amount: Satoshi = 0
 
     var maxRemoteBalance: Satoshi {
-//        var maxRemoteBalance: Satoshi = 0
-//        for channel in channelService.open.value where channel.remoteBalance > maxRemoteBalance {
-//            maxRemoteBalance = channel.remoteBalance
-//        }
         return channelService.maxRemoteBalance
     }
 
@@ -42,7 +38,7 @@ public final class RequestViewModel {
         channelService = lightningService.channelService
     }
 
-    func create(completion: @escaping (Result<QRCodeDetailViewModel, LndApiError>) -> Void) {
+    func create(completion: @escaping ApiCompletion<QRCodeDetailViewModel>) {
         switch requestMethod {
         case .lightning:
             createLightning(completion: completion)
@@ -51,7 +47,7 @@ public final class RequestViewModel {
         }
     }
 
-    private func createLightning(completion: @escaping (Result<QRCodeDetailViewModel, LndApiError>) -> Void) {
+    private func createLightning(completion: @escaping ApiCompletion<QRCodeDetailViewModel>) {
         transactionService.addInvoice(amount: amount, memo: trimmedMemo) { result in
             completion(result.flatMap {
                 guard let invoiceURI = LightningInvoiceURI(string: $0) else { return .failure(LndApiError.unknownError) }
@@ -60,7 +56,7 @@ public final class RequestViewModel {
         }
     }
 
-    private func createOnChain(completion: @escaping (Result<QRCodeDetailViewModel, LndApiError>) -> Void) {
+    private func createOnChain(completion: @escaping ApiCompletion<QRCodeDetailViewModel>) {
         if let address = cachedOnChainAddress,
             let viewModel = onChainRequestViewModel(for: address) {
             completion(.success(viewModel))

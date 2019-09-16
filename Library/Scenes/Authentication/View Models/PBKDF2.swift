@@ -28,8 +28,8 @@ enum PBKDF2 {
 
         Logger.info("hashing pin. rounds: \(rounds)", customPrefix: "🔐")
 
-        let derivationStatus = derivedKeyData.withUnsafeMutableBytes { (bytes: UnsafeMutablePointer<UInt8>) -> Int32 in
-            CCKeyDerivationPBKDF(CCPBKDFAlgorithm(kCCPBKDF2), password, passwordData.count, salt, salt.count, CCPBKDFAlgorithm(kCCPRFHmacAlgSHA256), UInt32(rounds), bytes, derivedKeyCount)
+        let derivationStatus = derivedKeyData.withUnsafeMutableBytes { bytes -> Int32 in
+            CCKeyDerivationPBKDF(CCPBKDFAlgorithm(kCCPBKDF2), password, passwordData.count, salt, salt.count, CCPBKDFAlgorithm(kCCPRFHmacAlgSHA256), UInt32(rounds), bytes.bindMemory(to: UInt8.self).baseAddress, derivedKeyCount)
         }
 
         if derivationStatus != 0 {

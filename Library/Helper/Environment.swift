@@ -8,16 +8,16 @@
 import Foundation
 
 enum Environment {
+    static var localSimnet: Bool {
+        return ProcessInfo.processInfo.environment["LOCAL_SIMNET"] == "1"
+    }
+
     static var useUITestMockApi: Bool {
         return ProcessInfo.processInfo.environment["USE_UITEST_MOCK_API"] == "1"
     }
 
     static var skipPinFlow: Bool {
         return ProcessInfo.processInfo.environment["SKIP_PIN_FLOW"] == "1"
-    }
-
-    static var allowFakeMnemonicConfirmation: Bool {
-        return ProcessInfo.processInfo.environment["FAKE_MNEMONIC_CONF"] == "1"
     }
 
     static var fakeBiometricAuthentication: Bool {

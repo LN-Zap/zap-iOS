@@ -6,121 +6,159 @@
 //
 
 import Foundation
-import LndRpc
 import SwiftBTC
 
-public struct Channel: Equatable {
-    public enum State {
-        case active
-        case inactive
-        case opening
-        case closing
-        case forceClosing
-        case waitingClose
+public enum ChannelState {
+    case active
+    case inactive
+    case opening
+    case closing
+    case forceClosing
+    case waitingClose
 
-        public var isClosing: Bool {
-            switch self {
-            case .closing, .forceClosing, .waitingClose:
-                return true
-            default:
-                return false
-            }
+    public var isClosing: Bool {
+        switch self {
+        case .closing, .forceClosing, .waitingClose:
+            return true
+        default:
+            return false
         }
     }
+}
 
-    public let blockHeight: Int?
-    public let state: State
+public protocol Channel {
+    var state: ChannelState { get }
+    var localBalance: Satoshi { get }
+    var remoteBalance: Satoshi { get }
+    var capacity: Satoshi { get }
+    var remotePubKey: String { get }
+    var channelPoint: ChannelPoint { get }
+}
+
+public protocol PendingChannel: Channel {}
+
+public protocol ClosingChannelType {
+    var closingTxid: String { get }
+}
+
+// OpenChannel
+
+public struct OpenChannel: Channel, Equatable {
+    public let blockHeight: Int
+    public let state: ChannelState
     public let localBalance: Satoshi
     public let remoteBalance: Satoshi
     public let remotePubKey: String
     public let capacity: Satoshi
-    public let updateCount: Int?
+    public let updateCount: Int
     public let channelPoint: ChannelPoint
     public let csvDelay: Int
 }
 
-extension LNDChannel {
-    var channelModel: Channel {
-        return Channel(
-            blockHeight: Int(chanId >> 40),
-            state: active ? .active : .inactive,
-            localBalance: Satoshi(localBalance),
-            remoteBalance: Satoshi(remoteBalance),
-            remotePubKey: remotePubkey,
-            capacity: Satoshi(capacity),
-            updateCount: Int(numUpdates),
-            channelPoint: ChannelPoint(string: channelPoint),
-            csvDelay: Int(csvDelay))
+extension OpenChannel {
+    init(openChannel: Lnrpc_Channel) {
+        blockHeight = Int(openChannel.chanID >> 40)
+        state = openChannel.active ? .active : .inactive
+        localBalance = Satoshi(openChannel.localBalance)
+        remoteBalance = Satoshi(openChannel.remoteBalance)
+        remotePubKey = openChannel.remotePubkey
+        capacity = Satoshi(openChannel.capacity)
+        updateCount = Int(openChannel.numUpdates)
+        channelPoint = ChannelPoint(string: openChannel.channelPoint)
+        csvDelay = Int(openChannel.csvDelay)
     }
 }
 
-extension LNDPendingChannelsResponse {
-    var channels: [Channel] {
-        // swiftlint:disable force_cast
-        let pendingOpenChannels: [Channel] = pendingOpenChannelsArray.compactMap { ($0 as! LNDPendingChannelsResponse_PendingOpenChannel).channelModel }
-        let pendingClosingChannels: [Channel] = pendingClosingChannelsArray.compactMap { ($0 as! LNDPendingChannelsResponse_ClosedChannel).channelModel }
-        let pendingForceClosingChannels: [Channel] = pendingForceClosingChannelsArray.compactMap { ($0 as! LNDPendingChannelsResponse_ForceClosedChannel).channelModel }
-        let waitingCloseChannels: [Channel] = waitingCloseChannelsArray.compactMap { ($0 as! LNDPendingChannelsResponse_WaitingCloseChannel).channelModel }
-        return pendingOpenChannels + pendingClosingChannels + pendingForceClosingChannels + waitingCloseChannels
+// WaitingCloseChannel
+
+public struct WaitingCloseChannel: PendingChannel, Equatable {
+    public let state: ChannelState
+    public let localBalance: Satoshi
+    public let remoteBalance: Satoshi
+    public let remotePubKey: String
+    public let capacity: Satoshi
+    public let channelPoint: ChannelPoint
+}
+
+extension WaitingCloseChannel {
+    init(waitingCloseChannel: Lnrpc_PendingChannelsResponse.WaitingCloseChannel) {
+        state = .waitingClose
+        localBalance = Satoshi(waitingCloseChannel.channel.localBalance)
+        remoteBalance = Satoshi(waitingCloseChannel.channel.remoteBalance)
+        remotePubKey = waitingCloseChannel.channel.remoteNodePub
+        capacity = Satoshi(waitingCloseChannel.channel.capacity)
+        channelPoint = ChannelPoint(string: waitingCloseChannel.channel.channelPoint)
     }
 }
 
-extension LNDPendingChannelsResponse_PendingOpenChannel {
-    var channelModel: Channel {
-        return Channel(
-            blockHeight: nil,
-            state: .opening,
-            localBalance: Satoshi(channel.localBalance),
-            remoteBalance: Satoshi(channel.remoteBalance),
-            remotePubKey: channel.remoteNodePub,
-            capacity: Satoshi(channel.capacity),
-            updateCount: 0,
-            channelPoint: ChannelPoint(string: channel.channelPoint),
-            csvDelay: 0)
+// ClosingChannel
+
+public struct ClosingChannel: PendingChannel, ClosingChannelType, Equatable {
+    public let state: ChannelState
+    public let localBalance: Satoshi
+    public let remoteBalance: Satoshi
+    public let remotePubKey: String
+    public let capacity: Satoshi
+    public let channelPoint: ChannelPoint
+    public let closingTxid: String
+}
+
+extension ClosingChannel {
+    init(closedChannel: Lnrpc_PendingChannelsResponse.ClosedChannel) {
+        state = .closing
+        localBalance = Satoshi(closedChannel.channel.localBalance)
+        remoteBalance = Satoshi(closedChannel.channel.remoteBalance)
+        remotePubKey = closedChannel.channel.remoteNodePub
+        capacity = Satoshi(closedChannel.channel.capacity)
+        channelPoint = ChannelPoint(string: closedChannel.channel.channelPoint)
+        closingTxid = closedChannel.closingTxid
     }
 }
 
-extension LNDPendingChannelsResponse_ClosedChannel {
-    var channelModel: Channel {
-        return Channel(
-            blockHeight: nil,
-            state: .closing,
-            localBalance: Satoshi(channel.localBalance),
-            remoteBalance: Satoshi(channel.remoteBalance),
-            remotePubKey: channel.remoteNodePub,
-            capacity: Satoshi(channel.capacity),
-            updateCount: 0,
-            channelPoint: ChannelPoint(string: channel.channelPoint),
-            csvDelay: 0)
+// OpeningChannel
+
+public struct OpeningChannel: PendingChannel, Equatable {
+    public let state: ChannelState
+    public let localBalance: Satoshi
+    public let remoteBalance: Satoshi
+    public let remotePubKey: String
+    public let capacity: Satoshi
+    public let channelPoint: ChannelPoint
+}
+
+extension OpeningChannel {
+    init(pendingOpenChannel: Lnrpc_PendingChannelsResponse.PendingOpenChannel) {
+        state = .opening
+        localBalance = Satoshi(pendingOpenChannel.channel.localBalance)
+        remoteBalance = Satoshi(pendingOpenChannel.channel.remoteBalance)
+        remotePubKey = pendingOpenChannel.channel.remoteNodePub
+        capacity = Satoshi(pendingOpenChannel.channel.capacity)
+        channelPoint = ChannelPoint(string: pendingOpenChannel.channel.channelPoint)
     }
 }
 
-extension LNDPendingChannelsResponse_ForceClosedChannel {
-    var channelModel: Channel {
-        return Channel(
-            blockHeight: nil,
-            state: .forceClosing,
-            localBalance: Satoshi(channel.localBalance),
-            remoteBalance: Satoshi(channel.remoteBalance),
-            remotePubKey: channel.remoteNodePub,
-            capacity: Satoshi(channel.capacity),
-            updateCount: 0,
-            channelPoint: ChannelPoint(string: channel.channelPoint),
-            csvDelay: Int(blocksTilMaturity))
-    }
+// ForceClosingChannel
+
+public struct ForceClosingChannel: PendingChannel, ClosingChannelType, Equatable {
+    public let state: ChannelState
+    public let localBalance: Satoshi
+    public let remoteBalance: Satoshi
+    public let remotePubKey: String
+    public let capacity: Satoshi
+    public let channelPoint: ChannelPoint
+    public let closingTxid: String
+    public let blocksTilMaturity: Int
 }
 
-extension LNDPendingChannelsResponse_WaitingCloseChannel {
-    var channelModel: Channel {
-        return Channel(
-                blockHeight: nil,
-                state: .waitingClose,
-                localBalance: Satoshi(channel.localBalance),
-                remoteBalance: Satoshi(channel.remoteBalance),
-                remotePubKey: channel.remoteNodePub,
-                capacity: Satoshi(channel.capacity),
-                updateCount: 0,
-                channelPoint: ChannelPoint(string: channel.channelPoint),
-                csvDelay: 144)
+extension ForceClosingChannel {
+    init(forceClosedChannel: Lnrpc_PendingChannelsResponse.ForceClosedChannel) {
+        state = .forceClosing
+        localBalance = Satoshi(forceClosedChannel.channel.localBalance)
+        remoteBalance = Satoshi(forceClosedChannel.channel.remoteBalance)
+        remotePubKey = forceClosedChannel.channel.remoteNodePub
+        capacity = Satoshi(forceClosedChannel.channel.capacity)
+        channelPoint = ChannelPoint(string: forceClosedChannel.channel.channelPoint)
+        closingTxid = forceClosedChannel.closingTxid
+        blocksTilMaturity = Int(forceClosedChannel.blocksTilMaturity)
     }
 }

@@ -10,18 +10,15 @@ import SwiftLnd
 import UIKit
 
 final class LoadingViewController: UIViewController {
-    enum Message {
-        case none
-    }
+    @IBOutlet private weak var tabBar: UITabBar!
+    @IBOutlet private weak var buttonContainerView: UIView!
+    @IBOutlet private weak var sendButtonBackground: UIView!
+    @IBOutlet private weak var receiveButtonBackground: UIView!
+    @IBOutlet private weak var sendButton: UIButton!
+    @IBOutlet private weak var requestButton: UIButton!
 
-    @IBOutlet private weak var infoLabel: UILabel!
-
-    private var message = Message.none
-
-    static func instantiate(message: LoadingViewController.Message) -> LoadingViewController {
-        let viewController = StoryboardScene.Loading.initialScene.instantiate()
-        viewController.message = message
-        return viewController
+    static func instantiate() -> LoadingViewController {
+        return StoryboardScene.Loading.initialScene.instantiate()
     }
 
     override func viewDidLoad() {
@@ -29,12 +26,37 @@ final class LoadingViewController: UIViewController {
 
         view.backgroundColor = UIColor.Zap.background
 
-        Style.Label.custom().apply(to: infoLabel)
-        infoLabel.textColor = .white
+        tabBar.barTintColor = UIColor.Zap.seaBlue
+        tabBar.isTranslucent = false
+        tabBar.shadowImage = UIImage()
+        tabBar.backgroundImage = UIImage()
 
-        switch message {
-        case .none:
-            infoLabel.text = nil
+        tabBar.items = [Tab.wallet, Tab.history, Tab.channels, Tab.settings].map {
+            UITabBarItem(title: $0.title, image: $0.image, selectedImage: $0.image)
         }
+        tabBar.isUserInteractionEnabled = false
+        tabBar.unselectedItemTintColor = UIColor.Zap.invisibleGray
+
+        sendButtonBackground.backgroundColor = UIColor.Zap.seaBlue
+        receiveButtonBackground.backgroundColor = UIColor.Zap.seaBlue
+
+        Style.Button.custom().apply(to: sendButton, requestButton)
+
+        buttonContainerView.layer.cornerRadius = 20
+        buttonContainerView.clipsToBounds = true
+        buttonContainerView.backgroundColor = UIColor.Zap.deepSeaBlue
+
+        UIView.performWithoutAnimation {
+            sendButton.setTitle(L10n.Scene.Main.sendButton, for: .normal)
+            sendButton.layoutIfNeeded()
+            requestButton.setTitle(L10n.Scene.Main.receiveButton, for: .normal)
+            requestButton.layoutIfNeeded()
+        }
+
+        sendButton.setTitleColor(UIColor.Zap.invisibleGray, for: .disabled)
+        requestButton.setTitleColor(UIColor.Zap.invisibleGray, for: .disabled)
+
+        sendButton.isEnabled = false
+        requestButton.isEnabled = false
     }
 }

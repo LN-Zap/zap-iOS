@@ -8,12 +8,40 @@
 import Lightning
 import Logger
 import SafariServices
+import SwiftBTC
 import UIKit
 
 enum Tab {
     case wallet
     case history
+    case channels
     case settings
+
+    var title: String {
+        switch self {
+        case .wallet:
+            return L10n.Scene.Wallet.title
+        case .history:
+            return L10n.Scene.History.title
+        case .channels:
+            return L10n.Scene.Channels.title
+        case .settings:
+            return L10n.Scene.Settings.title
+        }
+    }
+
+    var image: UIImage {
+        switch self {
+        case .wallet:
+            return Asset.tabbarWallet.image
+        case .history:
+            return Asset.tabbarHistory.image
+        case .channels:
+            return Asset.tabbarChannels.image
+        case .settings:
+            return Asset.tabbarSettings.image
+        }
+    }
 }
 
 final class WalletCoordinator: NSObject, Coordinator {
@@ -26,18 +54,21 @@ final class WalletCoordinator: NSObject, Coordinator {
     private let walletConfigurationStore: WalletConfigurationStore
 
     private weak var detailViewController: UINavigationController?
-    private weak var disconnectWalletDelegate: DisconnectWalletDelegate?
+    private weak var disconnectWalletDelegate: WalletDelegate?
+
+    private var notificationScheduler: NotificationScheduler?
 
     var route: Route?
 
-    init(rootViewController: RootViewController, lightningService: LightningService, disconnectWalletDelegate: DisconnectWalletDelegate, authenticationViewModel: AuthenticationViewModel, walletConfigurationStore: WalletConfigurationStore) {
+    init(rootViewController: RootViewController, lightningService: LightningService, disconnectWalletDelegate: WalletDelegate, authenticationViewModel: AuthenticationViewModel, walletConfigurationStore: WalletConfigurationStore) {
         self.rootViewController = rootViewController
         self.lightningService = lightningService
         self.disconnectWalletDelegate = disconnectWalletDelegate
         self.authenticationViewModel = authenticationViewModel
         self.walletConfigurationStore = walletConfigurationStore
 
-        channelListViewModel = ChannelListViewModel(channelService: lightningService.channelService)
+        channelListViewModel = ChannelListViewModel(lightningService: lightningService)
+
         historyViewModel = HistoryViewModel(historyService: lightningService.historyService)
 
         super.init()
@@ -45,6 +76,24 @@ final class WalletCoordinator: NSObject, Coordinator {
     }
 
     func start() {
+        if lightningService.connection == .local {
+            lightningService.startLocalWallet(network: BuildConfiguration.network, password: Password.get()) {
+                if case .failure(let error) = $0 {
+                    DispatchQueue.main.async {
+                        Toast.presentError(error.localizedDescription)
+                    }
+                }
+            }
+
+            // Schedule sync reminder notifications
+            notificationScheduler = NotificationScheduler(configurations: [
+                NotificationScheduler.Configuration(daysLeft: 2, title: L10n.Notification.Sync.title, body: L10n.Notification.Sync.Day12.body),
+                NotificationScheduler.Configuration(daysLeft: 1, title: L10n.Notification.Sync.title, body: L10n.Notification.Sync.Day13.body),
+                NotificationScheduler.Configuration(daysLeft: 0, title: L10n.Notification.Sync.title, body: L10n.Notification.Sync.Day14.body)
+            ])
+            notificationScheduler?.listenToChannelUpdates(lightningService: lightningService)
+        }
+
         lightningService.start()
         ExchangeUpdaterJob.start()
         updateFor(state: lightningService.infoService.walletState.value)
@@ -58,7 +107,7 @@ final class WalletCoordinator: NSObject, Coordinator {
     public func listenForStateChanges() {
         lightningService.infoService.walletState
             .skip(first: 1)
-            .distinct()
+            .distinctUntilChanged()
             .observeOn(DispatchQueue.main)
             .observeNext { [weak self] state in
                 self?.updateFor(state: state)
@@ -70,37 +119,32 @@ final class WalletCoordinator: NSObject, Coordinator {
 
         switch state {
         case .connecting:
-            presentLoading(message: .none)
-        case .syncing:
-            presentSync()
-        case .running:
+            presentLoading()
+        case .running, .syncing:
             presentMain()
         case .locked:
             presentUnlockWallet()
         case .error:
             disconnectWalletDelegate?.disconnect()
         }
+
+        UIApplication.shared.isIdleTimerDisabled = lightningService.connection == .local && state == .syncing
     }
 
     private func presentUnlockWallet() {
         guard
-            let configuration = walletConfigurationStore.selectedWallet,
+            case .remote(let rpcConfiguration) = lightningService.connection, // we can only unlock remote nodes
             let disconnectWalletDelegate = disconnectWalletDelegate
             else { return }
-        let unlockWalletViewModel = UnlockWalletViewModel(lightningService: lightningService, configuration: configuration)
+
+        let unlockWalletViewModel = UnlockWalletViewModel(lightningService: lightningService, alias: rpcConfiguration.host.absoluteString)
         let viewController = UnlockWalletViewController.instantiate(unlockWalletViewModel: unlockWalletViewModel, disconnectWalletDelegate: disconnectWalletDelegate)
         let navigationController = ZapNavigationController(rootViewController: viewController)
         presentViewController(navigationController)
     }
 
-    private func presentSync() {
-        guard let disconnectWalletDelegate = disconnectWalletDelegate else { return }
-        let viewController = SyncViewController.instantiate(with: lightningService, delegate: disconnectWalletDelegate)
-        presentViewController(viewController)
-    }
-
-    private func presentLoading(message: LoadingViewController.Message) {
-        let viewController = LoadingViewController.instantiate(message: message)
+    private func presentLoading() {
+        let viewController = LoadingViewController.instantiate()
         presentViewController(viewController)
     }
 
@@ -111,6 +155,7 @@ final class WalletCoordinator: NSObject, Coordinator {
         tabBarController.tabs = [
             (.wallet, walletViewController()),
             (.history, historyViewController()),
+            (.channels, channelNavigationController(badgeUpdaterDelegate: tabBarController)),
             (.settings, settingsViewController)
         ]
         presentViewController(tabBarController)
@@ -129,28 +174,26 @@ final class WalletCoordinator: NSObject, Coordinator {
 
     func walletViewController() -> WalletViewController {
         let walletViewModel = WalletViewModel(lightningService: lightningService)
-        return WalletViewController.instantiate(walletViewModel: walletViewModel, sendButtonTapped: presentSend, requestButtonTapped: presentRequest, nodeAliasButtonTapped: presentWalletList)
+        let walletEmptyStateViewModel = WalletEmptyStateViewModel(lightningService: lightningService, fundButtonTapped: presentFundWallet)
+        return WalletViewController.instantiate(walletViewModel: walletViewModel, sendButtonTapped: presentSend, requestButtonTapped: presentRequest, nodeAliasButtonTapped: presentWalletList, emptyStateViewModel: walletEmptyStateViewModel)
     }
 
     func settingsViewController() -> ZapNavigationController {
-        guard
-            let disconnectWalletDelegate = disconnectWalletDelegate,
-            let configuration = walletConfigurationStore.selectedWallet
-            else { fatalError("Didn't set disconnectWalletDelegate") }
+        guard let disconnectWalletDelegate = disconnectWalletDelegate else { fatalError("Didn't set disconnectWalletDelegate") }
 
         let settingsViewController = SettingsViewController(
             info: lightningService.infoService.info.value,
-            configuration: configuration,
+            connection: lightningService.connection,
             disconnectWalletDelegate: disconnectWalletDelegate,
             authenticationViewModel: authenticationViewModel,
-            pushChannelList: pushChannelList,
             pushNodeURIViewController: pushNodeURIViewController,
-            pushLndLogViewController: pushLndLogViewController)
+            pushLndLogViewController: pushLndLogViewController,
+            pushChannelBackup: pushChannelBackup)
 
         let navigationController = ZapNavigationController(rootViewController: settingsViewController)
 
-        navigationController.tabBarItem.title = L10n.Scene.Settings.title
-        navigationController.tabBarItem.image = Asset.tabbarSettings.image
+        navigationController.tabBarItem.title = Tab.settings.title
+        navigationController.tabBarItem.image = Tab.settings.image
         navigationController.view.backgroundColor = UIColor.Zap.background
 
         return navigationController
@@ -159,8 +202,8 @@ final class WalletCoordinator: NSObject, Coordinator {
     func historyViewController() -> UINavigationController {
         let viewController = HistoryViewController.instantiate(historyViewModel: historyViewModel, presentFilter: presentFilter, presentDetail: presentDetail, presentSend: presentSend)
         let navigationController = ZapNavigationController(rootViewController: viewController)
-        navigationController.tabBarItem.title = L10n.Scene.History.title
-        navigationController.tabBarItem.image = Asset.tabbarHistory.image
+        navigationController.tabBarItem.title = Tab.history.title
+        navigationController.tabBarItem.image = Tab.history.image
 
         return navigationController
     }
@@ -179,6 +222,16 @@ final class WalletCoordinator: NSObject, Coordinator {
         } catch {
             Logger.error("Unexpected error: \(error).")
         }
+    }
+
+    /// Presented from the empty state of the wallet scene.
+    ///
+    /// - Parameter uri: The bitcoin uri the funds should be sent to.
+    func presentFundWallet(uri: BitcoinURI) {
+        let viewModel = RequestQRCodeViewModel(paymentURI: uri)
+        let viewController = QRCodeDetailViewController.instantiate(with: viewModel)
+        let navigationController = UINavigationController(rootViewController: viewController)
+        rootViewController.present(navigationController, animated: true)
     }
 
     func presentSend(invoice: String?) {
@@ -253,9 +306,24 @@ final class WalletCoordinator: NSObject, Coordinator {
         rootViewController.present(detailViewController, animated: true)
     }
 
-    private func pushChannelList(on navigationController: UINavigationController) {
-        let channelList = ChannelListViewController.instantiate(channelListViewModel: channelListViewModel, addChannelButtonTapped: presentAddChannel, presentChannelDetail: presentChannelDetail)
-        navigationController.pushViewController(channelList, animated: true)
+    private func channelNavigationController(badgeUpdaterDelegate: BadgeUpdaterDelegate) -> UINavigationController {
+        let walletEmptyStateViewModel = WalletEmptyStateViewModel(lightningService: lightningService, fundButtonTapped: presentFundWallet)
+        let channelListEmptyStateViewModel = ChannelListEmptyStateViewModel(openButtonTapped: presentAddChannel)
+        let viewController = ChannelListViewController.instantiate(channelListViewModel: channelListViewModel, addChannelButtonTapped: presentAddChannel, presentChannelDetail: presentChannelDetail, walletEmptyStateViewModel: walletEmptyStateViewModel, channelListEmptyStateViewModel: channelListEmptyStateViewModel)
+
+        viewController.badgeUpdaterDelegate = badgeUpdaterDelegate
+
+        let navigationController = ZapNavigationController(rootViewController: viewController)
+        navigationController.tabBarItem.title = Tab.channels.title
+        navigationController.tabBarItem.image = Tab.channels.image
+        navigationController.view.backgroundColor = UIColor.Zap.background
+        return navigationController
+    }
+
+    private func pushChannelBackup(on navigationController: UINavigationController) {
+        guard let nodePubKey = walletConfigurationStore.selectedWallet?.nodePubKey else { return }
+        let viewController = ChannelBackupViewController.instantiate(nodePubKey: nodePubKey)
+        navigationController.pushViewController(viewController, animated: true)
     }
 
     private func presentChannelDetail(on presentingViewController: UIViewController, channelViewModel: ChannelViewModel) {
@@ -274,8 +342,7 @@ final class WalletCoordinator: NSObject, Coordinator {
     }
 
     private func pushLndLogViewController(on navigationController: UINavigationController) {
-        guard let configuration = walletConfigurationStore.selectedWallet else { return }
-        let viewController = LndLogViewController.instantiate(walletConfiguration: configuration)
+        let viewController = LndLogViewController.instantiate(network: BuildConfiguration.network)
         navigationController.pushViewController(viewController, animated: true)
     }
 }

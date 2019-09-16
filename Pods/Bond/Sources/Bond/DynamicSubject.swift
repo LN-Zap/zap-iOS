@@ -25,7 +25,7 @@
 import ReactiveKit
 import Foundation
 
-public typealias DynamicSubject<Element> = FailableDynamicSubject<Element, NoError>
+public typealias DynamicSubject<Element> = FailableDynamicSubject<Element, Never>
 
 /// Dynamic subject is both a signal and an observer (and a binding target).
 /// It emits events when the underlying signal emits an event. Elements emitted
@@ -39,7 +39,7 @@ public struct FailableDynamicSubject<Element, Error: Swift.Error>: SubjectProtoc
     private let context: ExecutionContext
     private let getter: (AnyObject) -> Result<Element, Error>
     private let setter: (AnyObject, Element) -> Void
-    private let subject = PublishSubject<Void, Error>()
+    private let subject = PassthroughSubject<Void, Error>()
     private let triggerEventOnSetting: Bool
 
     public init<Target: Deallocatable>(target: Target,
@@ -88,7 +88,7 @@ public struct FailableDynamicSubject<Element, Error: Swift.Error>: SubjectProtoc
         if case .next(let element) = event, let target = target {
             setter(target, element)
             if triggerEventOnSetting {
-                subject.next(())
+                subject.send(())
             }
         }
     }
@@ -107,10 +107,10 @@ public struct FailableDynamicSubject<Element, Error: Swift.Error>: SubjectProtoc
             } else {
                 return .success(nil)
             }
-        }.ignoreNil().take(until: (target as! Deallocatable).deallocated).observe(with: observer)
+        }.ignoreNils().take(until: (target as! Deallocatable).deallocated).observe(with: observer)
     }
 
-    public func bind(signal: Signal<Element, NoError>) -> Disposable {
+    public func bind(signal: Signal<Element, Never>) -> Disposable {
         if let target = target {
             let setter = self.setter
             let subject = self.subject
@@ -123,7 +123,7 @@ public struct FailableDynamicSubject<Element, Error: Swift.Error>: SubjectProtoc
                         guard let target = target else { return }
                         setter(target, element)
                         if triggerEventOnSetting {
-                            subject.next(())
+                            subject.send(())
                         }
                     default:
                         break
@@ -175,7 +175,7 @@ public struct FailableDynamicSubject<Element, Error: Swift.Error>: SubjectProtoc
 
 extension ReactiveExtensions where Base: Deallocatable {
 
-    public func dynamicSubject<Element>(signal: Signal<Void, NoError>,
+    public func dynamicSubject<Element>(signal: Signal<Void, Never>,
                                         context: ExecutionContext,
                                         triggerEventOnSetting: Bool = true,
                                         get: @escaping (Base) -> Element,
@@ -186,7 +186,7 @@ extension ReactiveExtensions where Base: Deallocatable {
 
 extension ReactiveExtensions where Base: Deallocatable, Base: BindingExecutionContextProvider {
 
-    public func dynamicSubject<Element>(signal: Signal<Void, NoError>,
+    public func dynamicSubject<Element>(signal: Signal<Void, Never>,
                                         triggerEventOnSetting: Bool = true,
                                         get: @escaping (Base) -> Element,
                                         set: @escaping (Base, Element) -> Void) -> DynamicSubject<Element> {

@@ -11,6 +11,8 @@ import SwiftBTC
 extension Network: Localizable {
     public var localized: String {
         switch self {
+        case .simnet:
+            return L10n.NetworkType.simnet
         case .regtest:
             return L10n.NetworkType.regtest
         case .testnet:

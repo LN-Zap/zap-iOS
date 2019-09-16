@@ -17,12 +17,24 @@ internal enum StoryboardScene {
 
     internal static let backgoundViewController = SceneType<BackgoundViewController>(storyboard: Background.self, identifier: "BackgoundViewController")
   }
+  internal enum ChannelBackup: StoryboardType {
+    internal static let storyboardName = "ChannelBackup"
+
+    internal static let channelBackupViewController = SceneType<ChannelBackupViewController>(storyboard: ChannelBackup.self, identifier: "ChannelBackupViewController")
+  }
   internal enum ChannelList: StoryboardType {
     internal static let storyboardName = "ChannelList"
 
     internal static let initialScene = InitialSceneType<ChannelListViewController>(storyboard: ChannelList.self)
 
     internal static let channelViewController = SceneType<ChannelListViewController>(storyboard: ChannelList.self, identifier: "ChannelViewController")
+  }
+  internal enum ConfirmMnemonic: StoryboardType {
+    internal static let storyboardName = "ConfirmMnemonic"
+
+    internal static let confirmMnemonicPageViewController = SceneType<ConfirmMnemonicPageViewController>(storyboard: ConfirmMnemonic.self, identifier: "ConfirmMnemonicPageViewController")
+
+    internal static let confirmMnemonicViewController = SceneType<ConfirmMnemonicViewController>(storyboard: ConfirmMnemonic.self, identifier: "ConfirmMnemonicViewController")
   }
   internal enum ConnectRemoteNode: StoryboardType {
     internal static let storyboardName = "ConnectRemoteNode"
@@ -39,8 +51,6 @@ internal enum StoryboardScene {
   }
   internal enum CreateWallet: StoryboardType {
     internal static let storyboardName = "CreateWallet"
-
-    internal static let confirmMnemonicViewController = SceneType<ConfirmMnemonicViewController>(storyboard: CreateWallet.self, identifier: "ConfirmMnemonicViewController")
 
     internal static let mnemonicViewController = SceneType<MnemonicViewController>(storyboard: CreateWallet.self, identifier: "MnemonicViewController")
 
@@ -84,6 +94,18 @@ internal enum StoryboardScene {
 
     internal static let setupPinViewController = SceneType<SetupPinViewController>(storyboard: NumericKeyPad.self, identifier: "SetupPinViewController")
   }
+  internal enum Onboarding: StoryboardType {
+    internal static let storyboardName = "Onboarding"
+
+    internal static let onboardingContainerViewController = SceneType<OnboardingContainerViewController>(storyboard: Onboarding.self, identifier: "OnboardingContainerViewController")
+
+    internal static let onboardingTextViewController = SceneType<OnboardingTextViewController>(storyboard: Onboarding.self, identifier: "OnboardingTextViewController")
+  }
+  internal enum PushNotification: StoryboardType {
+    internal static let storyboardName = "PushNotification"
+
+    internal static let pushNotificationViewController = SceneType<PushNotificationViewController>(storyboard: PushNotification.self, identifier: "PushNotificationViewController")
+  }
   internal enum QRCodeDetail: StoryboardType {
     internal static let storyboardName = "QRCodeDetail"
 
@@ -95,13 +117,6 @@ internal enum StoryboardScene {
     internal static let storyboardName = "Root"
 
     internal static let initialScene = InitialSceneType<RootViewController>(storyboard: Root.self)
-  }
-  internal enum Sync: StoryboardType {
-    internal static let storyboardName = "Sync"
-
-    internal static let initialScene = InitialSceneType<SyncViewController>(storyboard: Sync.self)
-
-    internal static let syncViewController = SceneType<SyncViewController>(storyboard: Sync.self, identifier: "SyncViewController")
   }
   internal enum TimeLocked: StoryboardType {
     internal static let storyboardName = "TimeLocked"

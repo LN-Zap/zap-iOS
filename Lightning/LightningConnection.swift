@@ -12,22 +12,22 @@ public enum LightningConnection: Equatable, Codable {
     case local
     case remote(RPCCredentials)
 
-    public var api: LightningApiProtocol {
+    public var api: LightningApi? {
         if Environment.useUITestMockApi {
-            return ApiMockTemplate.screenshots.instance
+            return LightningApi(connection: .mock(.screenshots))
         } else if Environment.useMockApi {
-            return ApiMockTemplate.selected.instance
+            return LightningApi(connection: .mock(.selected))
         }
 
         switch self {
         case .local:
         #if !REMOTEONLY
-            return LightningApiStream()
+            return LightningApi(connection: .local)
         #else
-            fatalError(".local not supported")
+            return nil
         #endif
         case .remote(let configuration):
-            return LightningApiRpc(configuration: configuration)
+            return LightningApi(connection: .remote(configuration))
         }
     }
 }

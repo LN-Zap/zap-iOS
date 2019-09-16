@@ -53,8 +53,6 @@ final class ChannelListHeaderView: UIView {
         stackView.clear()
 
         for segment in segments {
-            guard segment.required || channelListViewModel[keyPath: segment.source].value > 0 else { continue }
-
             let circleView = CircleView(frame: .zero)
             circleView.backgroundColor = .clear
             circleView.color = segment.color
@@ -78,13 +76,18 @@ final class ChannelListHeaderView: UIView {
                 circleView.widthAnchor.constraint(equalToConstant: 6)
             ])
 
+            channelListViewModel[keyPath: segment.source]
+                .map { !(segment.required || $0 > 0) }
+                .bind(to: horizontalStackView.reactive.isHidden)
+                .dispose(in: reactive.bag)
+
             stackView.addArrangedSubview(horizontalStackView)
         }
     }
 
     private func setupCircleView(for channelListViewModel: ChannelListViewModel) {
-        let signals: [Signal<Satoshi, NoError>] = segments.map { channelListViewModel[keyPath: $0.source].toSignal() }
-        combineLatest(signals, combine: { _ in 0 })
+        let signals: [Signal<Satoshi, Never>] = segments.map { channelListViewModel[keyPath: $0.source].toSignal() }
+        Signal(combiningLatest: signals, combine: { _ in 0 })
             .observeNext { [weak self] _ in
                 guard let segments = self?.segments else { return }
                 self?.circleGraphView.segments = segments.map {

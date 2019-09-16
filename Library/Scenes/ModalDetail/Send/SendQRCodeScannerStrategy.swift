@@ -22,16 +22,27 @@ class SendQRCodeScannerStrategy: QRCodeScannerStrategy {
         self.authenticationViewModel = authenticationViewModel
     }
 
-    func viewControllerForAddress(address: String, completion: @escaping (Result<UIViewController, InvoiceError>) -> Void) {
+    func viewControllerForAddress(address: String, completion: @escaping (Result<UIViewController, QRCodeScannerStrategyError>) -> Void) {
         BitcoinInvoiceFactory.create(from: address, lightningService: lightningService) { [weak self] result in
             guard let self = self else { return }
-            completion(result.map {
+
+            switch result {
+            case .success(let invoice):
                 let viewModel = SendViewModel(
-                    invoice: $0,
+                    invoice: invoice,
                     lightningService: self.lightningService
                 )
-                return SendViewController(viewModel: viewModel, authenticationViewModel: self.authenticationViewModel)
-            })
+                completion(.success(SendViewController(viewModel: viewModel, authenticationViewModel: self.authenticationViewModel)))
+            case .failure(let error):
+                switch error {
+                case .unknownFormat:
+                    completion(.failure(.init(message: L10n.Scene.QrcodeScanner.Error.unknownFormat)))
+                case let .wrongNetworkError(linkNetwork, expectedNetwork):
+                    completion(.failure(.init(message: L10n.Scene.QrcodeScanner.Error.wrongNetwork(linkNetwork.localized, expectedNetwork.localized))))
+                case .apiError:
+                    completion(.failure(.init(message: L10n.Scene.QrcodeScanner.Error.zeroAmountInvoice)))
+                }
+            }
         }
     }
 }

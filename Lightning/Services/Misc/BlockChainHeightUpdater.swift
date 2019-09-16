@@ -15,7 +15,6 @@ protocol HeightJsonProtocol: Decodable {
 }
 
 enum BlockchainHeight: CaseIterable {
-    case blockexplorer
     case blockcypher
     case blockstream
 
@@ -42,9 +41,6 @@ enum BlockchainHeight: CaseIterable {
     private func url(for network: Network) -> URL {
         // swiftlint:disable force_unwrapping
         switch self {
-        case .blockexplorer:
-            let prefix = network == .mainnet ? "" : "testnet."
-            return URL(string: "https://\(prefix)blockexplorer.com/api/status?q=getBlockCount")!
         case .blockcypher:
             let prefix = network == .mainnet ? "main" : "test3"
             return URL(string: "https://api.blockcypher.com/v1/btc/\(prefix)")!
@@ -57,10 +53,6 @@ enum BlockchainHeight: CaseIterable {
 
     private func getBlockHeight(network: Network, completion: @escaping (Int) -> Void) {
         switch self {
-        case .blockexplorer:
-            fetch(url: url(for: network), completion: completion) {
-                $0["blockcount"] as? Int
-            }
         case .blockcypher:
             fetch(url: url(for: network), completion: completion) {
                 $0["height"] as? Int

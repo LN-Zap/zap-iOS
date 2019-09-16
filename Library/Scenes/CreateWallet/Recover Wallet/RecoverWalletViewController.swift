@@ -6,6 +6,7 @@
 //
 
 import Lightning
+import SwiftLnd
 import UIKit
 
 final class RecoverWalletViewController: UIViewController {
@@ -13,13 +14,15 @@ final class RecoverWalletViewController: UIViewController {
     @IBOutlet private weak var placeholderTextView: UITextView!
     @IBOutlet private weak var textView: UITextView!
     @IBOutlet private weak var doneButton: UIButton!
+    @IBOutlet private weak var wordCountLabel: UILabel!
+    @IBOutlet private weak var selectBackupButton: UIButton!
 
     // swiftlint:disable implicitly_unwrapped_optional
     private var recoverWalletViewModel: RecoverWalletViewModel!
-    private var connectWallet: ((WalletConfiguration) -> Void)!
+    private var connectWallet: ((LightningConnection) -> Void)!
     // swiftlint:enable implicitly_unwrapped_optional
 
-    static func instantiate(recoverWalletViewModel: RecoverWalletViewModel, connectWallet: @escaping (WalletConfiguration) -> Void) -> RecoverWalletViewController {
+    static func instantiate(recoverWalletViewModel: RecoverWalletViewModel, connectWallet: @escaping (LightningConnection) -> Void) -> RecoverWalletViewController {
         let viewController = StoryboardScene.CreateWallet.recoverWalletViewController.instantiate()
         viewController.recoverWalletViewModel = recoverWalletViewModel
         viewController.connectWallet = connectWallet
@@ -30,12 +33,16 @@ final class RecoverWalletViewController: UIViewController {
         super.viewDidLoad()
 
         title = L10n.Scene.RecoverWallet.title
-
+        view.backgroundColor = UIColor.Zap.background
         Style.Label.custom().apply(to: topLabel)
         Style.textView.apply(to: placeholderTextView, textView)
         Style.Button.custom().apply(to: doneButton)
 
         doneButton.setTitle(L10n.Scene.RecoverWallet.doneButton, for: .normal)
+        doneButton.setTitleColor(UIColor.Zap.invisibleGray, for: .disabled)
+
+        selectBackupButton.setTitle(L10n.Scene.RecoverWallet.selectChannelBackupButton, for: .normal)
+
         topLabel.text = L10n.Scene.RecoverWallet.descriptionLabel
         topLabel.textColor = .white
         placeholderTextView.text = L10n.Scene.RecoverWallet.placeholder
@@ -47,6 +54,19 @@ final class RecoverWalletViewController: UIViewController {
         textView.textColor = .white
         textView.delegate = self
         textView.becomeFirstResponder()
+
+        Style.Label.footnote.apply(to: wordCountLabel)
+        wordCountLabel.font = UIFont.monospacedDigitSystemFont(ofSize: 13, weight: .regular)
+
+        recoverWalletViewModel.mnemonic
+            .map { "(\($0.count)/24)" }
+            .bind(to: wordCountLabel.reactive.text)
+            .dispose(in: reactive.bag)
+
+        recoverWalletViewModel.mnemonic
+            .map { $0.count == 24 }
+            .bind(to: doneButton.reactive.isEnabled)
+            .dispose(in: reactive.bag)
     }
 
     @IBAction private func recoverWallet(_ sender: Any) {
@@ -58,11 +78,17 @@ final class RecoverWalletViewController: UIViewController {
                 }
             } else {
                 DispatchQueue.main.async {
-                    guard let configuration = self?.recoverWalletViewModel.configuration else { return }
+                    guard let configuration = self?.recoverWalletViewModel.connection else { return }
                     self?.connectWallet?(configuration)
                 }
             }
         }
+    }
+
+    @IBAction private func selectBackup(_ sender: Any) {
+        let viewController = UIDocumentPickerViewController(documentTypes: ["public.item"], in: .import)
+        viewController.delegate = self
+        present(viewController, animated: false)
     }
 }
 
@@ -77,5 +103,16 @@ extension RecoverWalletViewController: UITextViewDelegate {
         let isTextViewEmpty = textView.text == "" || textView.text == nil
         placeholderTextView.isHidden = !isTextViewEmpty
         updateColors()
+    }
+}
+
+extension RecoverWalletViewController: UIDocumentPickerDelegate {
+    func documentPicker(_ controller: UIDocumentPickerViewController, didPickDocumentsAt urls: [URL]) {
+        guard
+            let url = urls.first,
+            let fileData = try? Data(contentsOf: url) else { return }
+
+        recoverWalletViewModel.staticChannelBackup = ChannelBackup(data: fileData)
+        selectBackupButton.setTitle(url.lastPathComponent, for: .normal)
     }
 }

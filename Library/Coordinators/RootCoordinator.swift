@@ -14,7 +14,17 @@ protocol RootCoordinatorDelegate: class {
     func embedInRootContainer(viewController: UIViewController)
 }
 
-public final class RootCoordinator: Coordinator {
+protocol DisconnectWalletDelegate: class {
+    func disconnect()
+}
+
+protocol ReconnectWalletDelegate: class {
+    func reconnect(walletConfiguration: WalletConfiguration?)
+}
+
+typealias WalletDelegate = (DisconnectWalletDelegate & ReconnectWalletDelegate)
+
+public final class RootCoordinator: Coordinator, SetupCoordinatorDelegate {
     let rootViewController: RootViewController
     private let authenticationCoordinator: AuthenticationCoordinator
     private let backgroundCoordinator: BackgroundCoordinator
@@ -75,26 +85,19 @@ public final class RootCoordinator: Coordinator {
         if !PinStore.didSetupPin {
             presentPinSetup()
         } else if let selectedWallet = walletConfigurationStore.selectedWallet {
-            presentSelectedWallet(selectedWallet)
+            do {
+                try presentWallet(connection: selectedWallet.connection)
+            } catch {
+                presentSetup(walletConfigurationStore: walletConfigurationStore, rpcCredentials: nil)
+            }
         } else {
             presentSetup(walletConfigurationStore: walletConfigurationStore, rpcCredentials: nil)
         }
     }
 
-    private func presentSelectedWallet(_ configuration: WalletConfiguration) {
-        #if REMOTEONLY
-        if configuration.connection == .local {
-            walletConfigurationStore.selectedWallet = nil
-            update()
-            return
-        }
-        #endif
-
-        guard let lightningService = LightningService(connection: configuration.connection, walletId: configuration.walletId) else { return }
-
-        walletConfigurationStore.selectedWallet = configuration
-
-        walletConfigurationStore.updateInfo(for: configuration, infoService: lightningService.infoService)
+    func presentWallet(connection: LightningConnection) throws {
+        let lightningService = try LightningService(connection: connection, backupService: StaticChannelBackupService())
+        walletConfigurationStore.updateConnection(connection, infoService: lightningService.infoService)
 
         let walletCoordinator = WalletCoordinator(rootViewController: rootViewController, lightningService: lightningService, disconnectWalletDelegate: self, authenticationViewModel: authenticationViewModel, walletConfigurationStore: walletConfigurationStore)
         self.currentCoordinator = walletCoordinator
@@ -159,23 +162,19 @@ extension RootCoordinator: RootCoordinatorDelegate {
     }
 }
 
-extension RootCoordinator: SetupCoordinatorDelegate {
-    func connectWallet(configuration: WalletConfiguration) {
-        presentSelectedWallet(configuration)
+extension RootCoordinator: ReconnectWalletDelegate {
+    func reconnect(walletConfiguration: WalletConfiguration?) {
+        guard let walletCoordinator = currentCoordinator as? WalletCoordinator else { return }
+
+        walletCoordinator.stop()
+        currentCoordinator = nil
+        walletConfigurationStore.selectedWallet = walletConfiguration
+
+        update()
     }
 }
 
 extension RootCoordinator: DisconnectWalletDelegate {
-    func reconnect(walletConfiguration: WalletConfiguration?) {
-        if let walletCoordinator = currentCoordinator as? WalletCoordinator {
-            walletCoordinator.stop()
-            currentCoordinator = nil
-            walletConfigurationStore.selectedWallet = walletConfiguration
-
-            update()
-        }
-    }
-
     func disconnect() {
         reconnect(walletConfiguration: nil)
     }

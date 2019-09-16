@@ -12,13 +12,15 @@ import ReactiveKit
 import SwiftBTC
 
 final class WalletViewModel: NSObject {
-    let lightningService: LightningService
+    private let lightningService: LightningService
+
+    var syncViewModel: SyncViewModel
 
     var network: Observable<Network?> {
         return lightningService.infoService.network
     }
 
-    var nodeAlias: Signal<String?, NoError> {
+    var nodeAlias: Signal<String?, Never> {
         return lightningService.infoService.info
             .map { $0?.alias }
     }
@@ -26,21 +28,27 @@ final class WalletViewModel: NSObject {
     let balanceSegments: [WalletBalanceSegment]
     let circleGraphSegments = Observable<[CircleGraphView.Segment]>([])
 
+    let totalBalance = Observable<Satoshi>(0)
+
     init(lightningService: LightningService) {
         self.lightningService = lightningService
 
+        syncViewModel = SyncViewModel(lightningService: lightningService)
+
         let balanceService = lightningService.balanceService
         balanceSegments = [
-            WalletBalanceSegment(segment: .onChain, amount: balanceService.onChain),
-            WalletBalanceSegment(segment: .lightning, amount: balanceService.lightning),
-            WalletBalanceSegment(segment: .pending, amount: balanceService.pending)
+            WalletBalanceSegment(segment: .onChain, amount: balanceService.onChainConfirmed.toSignal()),
+            WalletBalanceSegment(segment: .lightning, amount: balanceService.lightningChannelBalance.toSignal()),
+            WalletBalanceSegment(segment: .pending, amount: balanceService.totalPending)
         ]
 
         super.init()
 
-        combineLatest(balanceService.lightning, balanceService.onChain, balanceService.pending)
+        combineLatest(balanceService.lightningChannelBalance, balanceService.onChainConfirmed, balanceService.totalPending)
             .observeNext { [weak self] in
                 let (lightningBalance, onChainBalance, pendingBalance) = $0
+
+                self?.totalBalance.value = lightningBalance + onChainBalance + pendingBalance
 
                 self?.circleGraphSegments.value = [
                     CircleGraphView.Segment(amount: onChainBalance, color: Segment.onChain.color),

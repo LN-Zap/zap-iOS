@@ -18,7 +18,7 @@ protocol SettingsItem {
 protocol DetailDisclosureSettingsItem: SettingsItem {}
 
 protocol SubtitleSettingsItem: SettingsItem {
-    var subtitle: Signal<String?, NoError> { get }
+    var subtitle: Signal<String?, Never> { get }
 }
 
 protocol SelectableSettingsItem: SettingsItem {

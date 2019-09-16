@@ -6,6 +6,8 @@
 //
 
 import Foundation
+import Logger
+import SwiftGRPC
 
 public enum LndApiError: Error, LocalizedError, Equatable {
     case invalidInput
@@ -13,15 +15,23 @@ public enum LndApiError: Error, LocalizedError, Equatable {
     case lndNotRunning
     case localizedError(String)
     case unknownError
+    case walletAlreadyUnlocked
 
-    public init(error: NSError) {
-        switch error.code {
-        case 12:
+    public init(callResult: CallResult) {
+        switch callResult.statusCode {
+
+        case .unimplemented:
             self = .walletEncrypted
-        case 13:
+        case .internalError:
             self = .lndNotRunning
         default:
-            self = .localizedError(error.localizedDescription)
+            if
+                let statusMessage = callResult.statusMessage,
+                !statusMessage.isEmpty {
+                self = .localizedError(statusMessage)
+            } else {
+                self = .unknownError
+            }
         }
     }
 
@@ -33,7 +43,7 @@ public enum LndApiError: Error, LocalizedError, Equatable {
             return "Wallet is encrypted."
         case .lndNotRunning:
             return "Lnd does not seem to be running properly."
-        case .invalidInput, .unknownError:
+        case .invalidInput, .unknownError, .walletAlreadyUnlocked:
             return nil
         }
     }

@@ -25,13 +25,13 @@
 import Foundation
 import ReactiveKit
 
-public extension ReactiveExtensions where Base: NotificationCenter {
+extension ReactiveExtensions where Base: NotificationCenter {
 
     /// Observe notifications using a signal.
-    public func notification(name: NSNotification.Name, object: AnyObject? = nil) -> Signal<Notification, NoError> {
+    public func notification(name: NSNotification.Name, object: AnyObject? = nil) -> Signal<Notification, Never> {
         return Signal { observer in
             let subscription = self.base.addObserver(forName: name, object: object, queue: nil, using: { notification in
-                observer.next(notification)
+                observer.receive(notification)
             })
             return BlockDisposable {
                 self.base.removeObserver(subscription)

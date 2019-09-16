@@ -10,20 +10,67 @@ default_platform(:ios)
 
 app_identifier = ["com.jackmallers.zap", "com.jackmallers.zap.Sticker", "com.jackmallers.zap.Widget"]
 
-desc "Update build number."
-lane :build_number do
-  new_build_number = Time.now.strftime("%Y.%m.%d.%H.%M")
-  increment_build_number(build_number: new_build_number)
+lane :switch_mainnet do
+  ids = {
+    "Zap/Info.plist" => "com.jackmallers.zap.mainnet",
+    "Sticker/Info.plist" => "com.jackmallers.zap.mainnet.Sticker",
+    "Widget/Info.plist" => "com.jackmallers.zap.mainnet.Widget",
+  }
+  ids.each do |key, value|
+    update_app_identifier(
+      plist_path: key,
+      app_identifier: value
+    )
+  end
+
+  update_app_icon(image: 'logo_mainnet.png')
 end
 
-desc "Update app version."
-lane :change_version do |options|
-  if version = options[:version] 
-    increment_version_number(version_number: version)
-  else 
-    version = prompt(text: "Please enter the version number: ")
+lane :mainnet do |options|
+  pre_upload
+  check_release_branch('release/mainnet')
+  switch_mainnet
+
+  mainnet_ids = [
+    "com.jackmallers.zap.mainnet",
+    "com.jackmallers.zap.mainnet.Sticker",
+    "com.jackmallers.zap.mainnet.Widget",
+  ]
+
+  if options[:build_number]
+    build_number = options[:build_number]
+  else
+    build_number = latest_testflight_build_number(
+      app_identifier: "com.jackmallers.zap.mainnet",
+      initial_build_number: 0
+    ) + 1
   end
-  increment_version_number(version_number: version)
+
+  increment_build_number(build_number: build_number)
+
+  sync_code_signing(
+    username: ENV['ITUNESCONNECT_USER'],
+    app_identifier: mainnet_ids,
+    type: "appstore"
+  )
+
+  build_ios_app(
+    workspace: "Zap.xcworkspace",
+    scheme: "Zap",
+    configuration: "Debug",
+    output_directory: "./builds/alpha",
+    export_method: "app-store"
+  )
+
+  upload_to_testflight(
+    app_identifier: "com.jackmallers.zap.mainnet",
+    username: ENV['ITUNESCONNECT_USER'],
+    skip_waiting_for_build_processing: true
+  )
+
+  add_git_tag
+
+  reset_git_repo(force: true, disregard_gitignore: false)
 end
 
 private_lane :pre_upload do
@@ -38,14 +85,15 @@ def check_release_branch(prefix)
   if branch_parts.count != 2 || branch_parts[0] != prefix
     UI.user_error!("only release from a release branch (e.g. release/testflight-0.4.0)")
   end 
+  increment_version_number(version_number: branch_parts[1])
 end
 
 desc "Builds new Alpha Build with local lnd enabled and uploads it to Testflight."
-lane :alpha do
+lane :testnet do
   pre_upload
   check_release_branch('release/testflight')
 
-  update_app_icon(image: 'logo_alpha.png')
+  update_app_icon(image: 'logo_testnet.png')
 
   increment_build_number(build_number:
     latest_testflight_build_number(
@@ -80,7 +128,7 @@ lane :alpha do
     default_payloads: []
   )
 
-  sh("git reset --hard")
+  reset_git_repo(force: true, disregard_gitignore: false)
 end
 
 desc "Release"
@@ -129,7 +177,7 @@ lane :release do
     default_payloads: []
   )
 
-  sh("git reset --hard")
+  reset_git_repo(force: true, disregard_gitignore: false)
 end
 
 desc "Generate new app icon assets."
@@ -182,3 +230,4 @@ lane :upload_metadata do
     skip_screenshots: true
   )
 end
+

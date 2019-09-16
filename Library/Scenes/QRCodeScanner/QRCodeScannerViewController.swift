@@ -82,20 +82,21 @@ class QRCodeScannerViewController: UIViewController {
     func tryPresentingViewController(for address: String) {
         strategy.viewControllerForAddress(address: address) { [weak self] result in
             DispatchQueue.main.async {
+                self?.pasteButton.isEnabled = true
                 switch result {
                 case .success(let viewController):
                     self?.presentViewController(viewController)
                     self?.scannerView.stop()
                     UISelectionFeedbackGenerator().selectionChanged()
                 case .failure(let error):
-                    self?.presentError(message: error.localizedDescription)
+                    self?.presentError(message: error.message)
                     UINotificationFeedbackGenerator().notificationOccurred(.error)
                 }
             }
         }
     }
 
-    private func presentViewController(_ viewController: UIViewController) {
+    func presentViewController(_ viewController: UIViewController) {
         guard let modalDetailViewController = viewController as? ModalDetailViewController else { fatalError("presented view is not of type ModalDetailViewController") }
         modalDetailViewController.delegate = self
         present(modalDetailViewController, animated: true, completion: nil)
@@ -103,6 +104,7 @@ class QRCodeScannerViewController: UIViewController {
 
     @objc private func pasteButtonTapped(_ sender: Any) {
         if let string = UIPasteboard.general.string {
+            pasteButton.isEnabled = false
             tryPresentingViewController(for: string)
         } else {
             presentError(message: L10n.Generic.Pasteboard.invalidAddress)

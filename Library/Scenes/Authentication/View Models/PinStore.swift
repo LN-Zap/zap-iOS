@@ -17,7 +17,7 @@ enum PinStore {
 
     private static let salt = "kZF86kneOPAm09Wpl6XOLixuyctCM/lK"
 
-    private static let keychain = Keychain(service: "com.jackmallers.zap.password").accessibility(.whenUnlocked)
+    private static let keychain = Keychain(serviceExtension: "password").accessibility(.whenUnlocked)
     private static let didSetupPinKey = DefaultKey<Bool>("didSetupPin")
 
     private(set) static var didSetupPin: Bool {

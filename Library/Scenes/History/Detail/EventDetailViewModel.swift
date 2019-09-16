@@ -50,19 +50,23 @@ final class EventDetailViewModel {
 
         result.append(contentsOf: headline(L10n.Scene.TransactionDetail.Title.lightningInvoice))
 
-        if !event.isExpired,
+        if !event.isExpired && event.state != .settled && event.state != .canceled,
             let qrCodeImage = UIImage.qrCode(from: event.paymentRequest) {
             let imageContainerView = UIView()
-            let imageView = UIImageView(image: qrCodeImage)
+            let callbackButton = CallbackButton(title: nil, type: .custom) { _ in
+                Toast.presentSuccess(L10n.Scene.TransactionDetail.invoiceCopyMessage)
+                UIPasteboard.general.string = event.paymentRequest
+            }
+            callbackButton.button.setImage(qrCodeImage, for: .normal)
 
-            imageContainerView.addAutolayoutSubview(imageView)
+            imageContainerView.addAutolayoutSubview(callbackButton)
 
             NSLayoutConstraint.activate([
                 imageContainerView.heightAnchor.constraint(equalToConstant: 230),
-                imageView.topAnchor.constraint(equalTo: imageContainerView.topAnchor),
-                imageView.bottomAnchor.constraint(equalTo: imageContainerView.bottomAnchor),
-                imageView.widthAnchor.constraint(equalTo: imageContainerView.heightAnchor),
-                imageView.centerXAnchor.constraint(equalTo: imageContainerView.centerXAnchor)
+                callbackButton.topAnchor.constraint(equalTo: imageContainerView.topAnchor),
+                callbackButton.bottomAnchor.constraint(equalTo: imageContainerView.bottomAnchor),
+                callbackButton.widthAnchor.constraint(equalTo: imageContainerView.heightAnchor),
+                callbackButton.centerXAnchor.constraint(equalTo: imageContainerView.centerXAnchor)
             ])
 
             result.append(.customView(imageContainerView))
@@ -108,9 +112,10 @@ final class EventDetailViewModel {
         var result = [StackViewElement]()
 
         result.append(contentsOf: headline(L10n.Scene.TransactionDetail.Title.paymentDetail))
-//        result.append(contentsOf: label(title: L10n.Scene.TransactionDetail.memoLabel, content: event.memo))
         result.append(contentsOf: amountLabel(title: L10n.Scene.TransactionDetail.amountLabel, amount: event.amount))
+        result.append(contentsOf: label(title: L10n.Scene.TransactionDetail.memoLabel, content: event.memo))
         result.append(contentsOf: amountLabel(title: L10n.Scene.TransactionDetail.feeLabel, amount: event.fee))
+        result.append(contentsOf: copyButton(title: L10n.Scene.TransactionDetail.preimageLabel, content: event.preimage))
         result.append(contentsOf: dateLabel(title: L10n.Scene.TransactionDetail.dateLabel, date: event.date))
 
         return result
@@ -154,6 +159,13 @@ final class EventDetailViewModel {
         guard let code = code else { return [] }
         return label(title: title, element: .button(title: code, style: Style.Button.custom(), completion: { _ in
             delegate?.openBlockExplorer(code: code, type: type)
+        }))
+    }
+
+    private func copyButton(title: String, content: String) -> [StackViewElement] {
+        return label(title: title, element: .button(title: content, style: Style.Button.custom(), completion: { _ in
+            Toast.presentSuccess(L10n.Scene.TransactionDetail.preimageCopyMessage)
+            UIPasteboard.general.string = content
         }))
     }
 }

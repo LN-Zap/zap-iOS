@@ -8,6 +8,19 @@
 import Foundation
 import SwiftLnd
 
+extension ForceClosingChannel {
+    var blocksTilMaturityTimeString: String {
+        let formatter = DateComponentsFormatter()
+        formatter.allowedUnits =  [.year, .month, .day, .hour, .minute]
+        formatter.unitsStyle = .full
+        formatter.maximumUnitCount = 2
+
+        let blockTime: TimeInterval = 10 * 60
+
+        return formatter.string(from: TimeInterval(blocksTilMaturity) * blockTime) ?? ""
+    }
+}
+
 final class ChannelDetailViewController: ModalDetailViewController {
     let channelViewModel: ChannelViewModel
     let channelListViewModel: ChannelListViewModel
@@ -38,41 +51,41 @@ final class ChannelDetailViewController: ModalDetailViewController {
         let labelStyle = Style.Label.headline
         let textStyle = Style.Label.body
 
-        if channelViewModel.channel.state == .closing || channelViewModel.channel.state == .forceClosing {
+        if let channel = channelViewModel.channel as? ForceClosingChannel {
             contentStackView.addArrangedElement(.horizontalStackView(compressionResistant: .first, content: [
                 .label(text: L10n.Scene.ChannelDetail.ClosingTime.label + ":", style: labelStyle),
-                .label(text: channelViewModel.csvDelayTimeString, style: textStyle)
+                .label(text: channel.blocksTilMaturityTimeString, style: textStyle)
             ]))
             contentStackView.addArrangedElement(.separator)
         }
 
         contentStackView.addArrangedElement(.verticalStackView(content: [
             .label(text: L10n.Scene.ChannelDetail.remotePubKeyLabel + ":", style: labelStyle),
-            .label(text: channelViewModel.channel.remotePubKey, style: textStyle)
+            .label(text: channelViewModel.remotePubKey, style: textStyle)
         ], spacing: 0))
 
-        if channelViewModel.channel.state != Channel.State.waitingClose {
+        if channelViewModel.state.value != ChannelState.waitingClose {
             contentStackView.addArrangedElement(.separator)
             let balanceView = BalanceView()
-            balanceView.set(localBalance: channelViewModel.channel.localBalance, remoteBalance: channelViewModel.channel.remoteBalance)
+            balanceView.set(localBalance: channelViewModel.localBalance.value, remoteBalance: channelViewModel.remoteBalance.value)
 
             contentStackView.addArrangedElement(.verticalStackView(content: [
                 .customHeight(10, element: .customView(balanceView)),
                 .horizontalStackView(compressionResistant: .first, content: [
                     .customView(circleIndicatorView(gradient: UIColor.Zap.lightningOrangeGradient)),
                     .label(text: L10n.Scene.ChannelDetail.localBalanceLabel + ":", style: labelStyle),
-                    .amountLabel(amount: channelViewModel.channel.localBalance, style: textStyle)
+                    .amountLabel(amount: channelViewModel.localBalance.value, style: textStyle)
                 ]),
                 .horizontalStackView(compressionResistant: .first, content: [
-                    .customView(circleIndicatorView(gradient: [UIColor.Zap.white, UIColor.Zap.white])),
+                    .customView(circleIndicatorView(gradient: UIColor.Zap.lightningBlueGradient)),
                     .label(text: L10n.Scene.ChannelDetail.remoteBalanceLabel + ":", style: labelStyle),
-                    .amountLabel(amount: channelViewModel.channel.remoteBalance, style: textStyle)
+                    .amountLabel(amount: channelViewModel.remoteBalance.value, style: textStyle)
                 ])
             ], spacing: 5))
         }
 
         contentStackView.addArrangedElement(.separator)
-        let fundingTxId = channelViewModel.channel.channelPoint.fundingTxid
+        let fundingTxId = channelViewModel.channelPoint.fundingTxid
         contentStackView.addArrangedElement(.horizontalStackView(compressionResistant: .first, content: [
             .label(text: L10n.Scene.ChannelDetail.fundingTransactionLabel + ":", style: labelStyle),
             .button(title: fundingTxId, style: Style.Button.custom(fontSize: 14)) { [weak self] _ in
@@ -83,8 +96,21 @@ final class ChannelDetailViewController: ModalDetailViewController {
             }
         ]))
 
-        if !channelViewModel.channel.state.isClosing {
-            let closeTitle = channelViewModel.channel.state == .active ? L10n.Scene.ChannelDetail.closeButton : L10n.Scene.ChannelDetail.forceCloseButton
+        if let closingTxId = channelViewModel.closingTxid.value {
+            contentStackView.addArrangedElement(.separator)
+            contentStackView.addArrangedElement(.horizontalStackView(compressionResistant: .first, content: [
+                .label(text: L10n.Scene.ChannelDetail.closingTransactionLabel + ":", style: labelStyle),
+                .button(title: closingTxId, style: Style.Button.custom(fontSize: 14)) { [weak self] _ in
+                    guard let self = self else { return }
+                    self.dismiss(animated: true, completion: {
+                        self.presentBlockExplorer(closingTxId, .transactionId)
+                    })
+                }
+            ]))
+        }
+
+        if channelViewModel.state.value == .active || channelViewModel.state.value == .inactive {
+            let closeTitle = channelViewModel.state.value == .active ? L10n.Scene.ChannelDetail.closeButton : L10n.Scene.ChannelDetail.forceCloseButton
 
             contentStackView.addArrangedElement(.separator)
             contentStackView.addArrangedElement(.button(title: closeTitle, style: Style.Button.custom(fontSize: 20)) { [weak self] _ in self?.closeChannel() })
@@ -110,9 +136,10 @@ final class ChannelDetailViewController: ModalDetailViewController {
     }
 
     private func closeChannel() {
-        let alertController = UIAlertController.closeChannelAlertController(channelViewModel: channelViewModel) { [channelViewModel, weak self] in
+        guard let openChannel = channelViewModel.channel as? OpenChannel else { return }
+        let alertController = UIAlertController.closeChannelAlertController(openChannel: openChannel, channelViewModel: channelViewModel) { [channelViewModel, weak self] in
             let loadingView = self?.presentLoadingView(text: L10n.Scene.Channels.closeLoadingView)
-            self?.channelListViewModel.close(channelViewModel.channel) { result in
+            self?.channelListViewModel.close(channelViewModel) { result in
                 DispatchQueue.main.async {
                     self?.dismissAfterClose(result: result, loadingView: loadingView)
                 }

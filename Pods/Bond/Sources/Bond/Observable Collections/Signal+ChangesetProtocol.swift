@@ -25,7 +25,7 @@
 import Foundation
 import ReactiveKit
 
-public extension SignalProtocol where Element: ChangesetProtocol {
+extension SignalProtocol where Element: ChangesetProtocol {
 
     /// When working with a changeset that calculates patch lazily,
     /// you can use this method to calculate the patch in advance.
@@ -60,15 +60,15 @@ extension SignalProtocol where Element: Collection, Element.Index: Strideable {
                     let newCollection = element
                     if let collection = collection {
                         let diff = generateDiff(collection, newCollection)
-                        observer.next(OrderedCollectionChangeset(collection: newCollection, patch: [], diff: diff))
+                        observer.receive(OrderedCollectionChangeset(collection: newCollection, patch: [], diff: diff))
                     } else {
-                        observer.next(OrderedCollectionChangeset(collection: newCollection, patch: []))
+                        observer.receive(OrderedCollectionChangeset(collection: newCollection, patch: []))
                     }
                     collection = newCollection
                 case .failed(let error):
-                    observer.failed(error)
+                    observer.receive(completion: .failure(error))
                 case .completed:
-                    observer.completed()
+                    observer.receive(completion: .finished)
                 }
             }
         }
@@ -87,22 +87,22 @@ extension SignalProtocol where Element: TreeProtocol {
                     let newCollection = element
                     if let collection = collection {
                         let diff = generateDiff(collection, newCollection)
-                        observer.next(TreeChangeset(collection: newCollection, patch: [], diff: diff))
+                        observer.receive(TreeChangeset(collection: newCollection, patch: [], diff: diff))
                     } else {
-                        observer.next(TreeChangeset(collection: newCollection, patch: []))
+                        observer.receive(TreeChangeset(collection: newCollection, patch: []))
                     }
                     collection = newCollection
                 case .failed(let error):
-                    observer.failed(error)
+                    observer.receive(completion: .failure(error))
                 case .completed:
-                    observer.completed()
+                    observer.receive(completion: .finished)
                 }
             }
         }
     }
 }
 
-public extension SignalProtocol where Element: OrderedCollectionChangesetProtocol, Element.Collection.Index: Hashable {
+extension SignalProtocol where Element: OrderedCollectionChangesetProtocol, Element.Collection.Index: Hashable {
 
     /// - complexity: Each event sorts the collection O(nlogn).
     public func sortedCollection(by areInIncreasingOrder: @escaping (Element.Collection.Element, Element.Collection.Element) -> Bool) -> Signal<OrderedCollectionChangeset<[Element.Collection.Element]>, Error> {
@@ -133,7 +133,7 @@ public extension SignalProtocol where Element: OrderedCollectionChangesetProtoco
     }
 }
 
-public extension SignalProtocol where Element: OrderedCollectionChangesetProtocol, Element.Collection.Index: Hashable, Element.Collection.Element: Comparable {
+extension SignalProtocol where Element: OrderedCollectionChangesetProtocol, Element.Collection.Index: Hashable, Element.Collection.Element: Comparable {
 
     /// - complexity: Each event sorts collection O(nlogn).
     public func sortedCollection() -> Signal<OrderedCollectionChangeset<[Element.Collection.Element]>, Error> {
@@ -141,7 +141,7 @@ public extension SignalProtocol where Element: OrderedCollectionChangesetProtoco
     }
 }
 
-public extension SignalProtocol where Element: UnorderedCollectionChangesetProtocol, Element.Collection.Index: Hashable {
+extension SignalProtocol where Element: UnorderedCollectionChangesetProtocol, Element.Collection.Index: Hashable {
 
     /// - complexity: Each event sorts the collection O(nlogn).
     public func sortedCollection(by areInIncreasingOrder: @escaping (Element.Collection.Element, Element.Collection.Element) -> Bool) -> Signal<OrderedCollectionChangeset<[Element.Collection.Element]>, Error> {
@@ -172,7 +172,7 @@ public extension SignalProtocol where Element: UnorderedCollectionChangesetProto
     }
 }
 
-public extension SignalProtocol where Element: UnorderedCollectionChangesetProtocol, Element.Collection.Index: Hashable, Element.Collection.Element: Comparable {
+extension SignalProtocol where Element: UnorderedCollectionChangesetProtocol, Element.Collection.Index: Hashable, Element.Collection.Element: Comparable {
 
     /// - complexity: Each event sorts collection O(nlogn).
     public func sortedCollection() -> Signal<OrderedCollectionChangeset<[Element.Collection.Element]>, Error> {
@@ -180,7 +180,7 @@ public extension SignalProtocol where Element: UnorderedCollectionChangesetProto
     }
 }
 
-public extension SignalProtocol where Element: OrderedCollectionChangesetProtocol, Element.Collection.Index == Int {
+extension SignalProtocol where Element: OrderedCollectionChangesetProtocol, Element.Collection.Index == Int {
 
     /// - complexity: Each event transforms collection O(n). Use `lazyMapCollection` if you need on-demand mapping.
     public func mapCollection<U>(_ transform: @escaping (Element.Collection.Element) -> U) -> Signal<OrderedCollectionChangeset<[U]>, Error> {

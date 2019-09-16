@@ -9,6 +9,7 @@ import UIKit
 
 protocol BadgeUpdaterDelegate: class {
     func setBadge(_ value: Int, for tab: Tab)
+    func setBadge(_ value: String?, for tab: Tab)
 }
 
 class RootTabBarController: UITabBarController {
@@ -30,6 +31,7 @@ class RootTabBarController: UITabBarController {
         tabBar.isTranslucent = false
         tabBar.shadowImage = UIImage()
         tabBar.backgroundImage = UIImage()
+        tabBar.unselectedItemTintColor = UIColor.Zap.gray
     }
 
     var tabs: [(Tab, UIViewController)]? {
@@ -57,6 +59,13 @@ extension RootTabBarController: BadgeUpdaterDelegate {
         guard let index = tabs?.firstIndex(where: { $0.0 == tab }) else { return }
         DispatchQueue.main.async {
             self.tabBar.items?[index].badgeValue = value <= 0 ? nil : String(value)
+        }
+    }
+
+    func setBadge(_ value: String?, for tab: Tab) {
+        guard let index = tabs?.firstIndex(where: { $0.0 == tab }) else { return }
+        DispatchQueue.main.async {
+            self.tabBar.items?[index].badgeValue = value
         }
     }
 }

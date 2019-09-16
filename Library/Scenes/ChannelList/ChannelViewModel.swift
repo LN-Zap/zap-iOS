@@ -8,24 +8,21 @@
 import Bond
 import Foundation
 import Lightning
+import SwiftBTC
 import SwiftLnd
 
 final class ChannelViewModel {
     let channel: Channel
 
-    let state: Observable<Channel.State>
+    let state: Observable<ChannelState>
     let name: Observable<String>
+    let localBalance: Observable<Satoshi>
+    let remoteBalance: Observable<Satoshi>
 
-    var csvDelayTimeString: String {
-        let formatter = DateComponentsFormatter()
-        formatter.allowedUnits =  [.year, .month, .day, .hour, .minute]
-        formatter.unitsStyle = .full
-        formatter.maximumUnitCount = 2
+    let channelPoint: ChannelPoint
+    let remotePubKey: String
 
-        let blockTime: TimeInterval = 10 * 60
-
-        return formatter.string(from: TimeInterval(channel.csvDelay) * blockTime) ?? ""
-    }
+    let closingTxid: Observable<String?>
 
     init(channel: Channel, channelService: ChannelService) {
         self.channel = channel
@@ -39,21 +36,27 @@ final class ChannelViewModel {
                 name.value = alias
             }
         }
+
+        remotePubKey = channel.remotePubKey
+        channelPoint = channel.channelPoint
+
+        localBalance = Observable(channel.localBalance)
+        remoteBalance = Observable(channel.remoteBalance)
+
+        if let channel = channel as? ClosingChannelType {
+            closingTxid = Observable(channel.closingTxid)
+        } else {
+            closingTxid = Observable(nil)
+        }
     }
 
-    func matchesSearchString(_ string: String?) -> Bool {
-        guard
-            let string = string?.trimmingCharacters(in: .whitespacesAndNewlines).localizedLowercase,
-            !string.isEmpty
-            else { return true }
-
-        return name.value.localizedLowercase.contains(string)
-            || channel.remotePubKey.lowercased().contains(string)
+    func update(channel: Channel) {
+        state.value = channel.state
     }
 }
 
 extension ChannelViewModel: Equatable {
     static func == (lhs: ChannelViewModel, rhs: ChannelViewModel) -> Bool {
-        return lhs.channel == rhs.channel
+        return lhs.channel.channelPoint == rhs.channel.channelPoint
     }
 }

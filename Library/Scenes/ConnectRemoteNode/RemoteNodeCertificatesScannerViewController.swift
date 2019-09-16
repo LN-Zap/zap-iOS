@@ -45,7 +45,7 @@ final class RemoteNodeCertificatesScannerViewController: UIViewController {
                 switch result {
                 case .success(let configuration):
                     self?.scannerView.stop()
-                    self?.connectRemoteNodeViewModel?.remoteNodeConfiguration = configuration
+                    self?.connectRemoteNodeViewModel?.rpcCredentials = configuration
                     self?.dismiss(animated: true, completion: nil)
                 case .failure(let error):
                     Toast.presentError(error.localizedDescription)

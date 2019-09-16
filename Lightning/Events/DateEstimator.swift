@@ -8,11 +8,6 @@
 import Foundation
 import SwiftLnd
 
-public struct DateWrappedChannelEvent: Equatable, DateProvidingEvent {
-    public let date: Date
-    public let channelEvent: ChannelEvent
-}
-
 public final class DateEstimator {
     private let transactions: [(date: Date, blockHeight: Int)]
 
@@ -25,20 +20,17 @@ public final class DateEstimator {
             .sorted(by: { $0.1 < $1.1 })
     }
 
-    public func wrapChannelEvent(_ channelEvent: ChannelEvent) -> DateWrappedChannelEvent {
-        let date = estimatedDate(forBlockHeight: channelEvent.blockHeight) ?? Date(timeIntervalSince1970: 0)
-        return DateWrappedChannelEvent(date: date, channelEvent: channelEvent)
-    }
-
     func estimatedDate(forBlockHeight blockHeight: Int) -> Date? {
+        guard !transactions.isEmpty else { return nil }
+
         let index = transactions.binarySearch { blockHeight >= $0.blockHeight }
 
         if index == 0 {
-            return nil
+            return dateFor(reference: transactions[0], blockHeight: blockHeight)
         } else if transactions[index - 1].blockHeight == blockHeight {
             return transactions[index - 1].date
         } else if index == transactions.count {
-            return nil
+            return dateFor(reference: transactions[transactions.count - 1], blockHeight: blockHeight)
         } else {
             let lower = transactions[index - 1]
             let upper = transactions[index]
@@ -46,6 +38,12 @@ public final class DateEstimator {
             let newTimeDelta = timeDelta * Double(blockHeight - lower.blockHeight) / Double(upper.blockHeight - lower.blockHeight)
             return lower.date.addingTimeInterval(newTimeDelta)
         }
+    }
+
+    private func dateFor(reference: (date: Date, blockHeight: Int), blockHeight: Int) -> Date {
+        let blockOffset = reference.blockHeight - blockHeight
+        return reference.date - TimeInterval(10 * 60 * blockOffset)
+
     }
 }
 

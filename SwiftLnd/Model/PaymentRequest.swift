@@ -6,7 +6,6 @@
 //
 
 import Foundation
-import LndRpc
 import SwiftBTC
 
 public struct PaymentRequest: Equatable {
@@ -30,7 +29,7 @@ public struct PaymentRequest: Equatable {
 }
 
 extension PaymentRequest {
-    init?(payReq: LNDPayReq, raw: String) {
+    init?(payReq: Lnrpc_PayReq, raw: String) {
         self.amount = Satoshi(payReq.numSatoshis)
 
         if amount <= 0 {
@@ -59,7 +58,18 @@ extension PaymentRequest {
             fallbackAddress = nil
         }
 
-        network = raw.hasPrefix("lnbc") ? .mainnet : .testnet
+        var selectedNetwork: Network?
+        for network in Network.allCases where raw.hasPrefix(Bolt11.Prefix.forNetwork(network).rawValue) {
+            selectedNetwork = network
+            break
+        }
+
+        if let selectedNetwork = selectedNetwork {
+            self.network = selectedNetwork
+        } else {
+            return nil
+        }
+
         self.raw = raw
     }
 }

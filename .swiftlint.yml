@@ -2,6 +2,14 @@ disabled_rules:
   - line_length
   - nesting
 opt_in_rules:
+  - toggle_bool
+  - static_operator
+  - redundant_objc_attribute
+  - legacy_hashing
+  - unused_control_flow_label
+  - duplicate_imports
+  - unused_setter_value
+  - nsobject_prefer_isequal
   - trailing_whitespace
   - no_fallthrough_only
   - closure_end_indentation
@@ -40,7 +48,8 @@ opt_in_rules:
   - conditional_returns_on_newline
 excluded:
   - Pods
-  - SwiftLnd/Api/Generated
+  - SwiftLnd/Generated
+  - SwiftBTC/Example
   - Library/Generated
   - vendor
   - fastlane/SnapshotHelper.swift

@@ -36,7 +36,7 @@ extension UIBarButtonItem {
     @objc fileprivate class BondTarget: NSObject
     {
         weak var barButtonItem: UIBarButtonItem?
-        let subject = PublishSubject<Void, NoError>()
+        let subject = PassthroughSubject<Void, Never>()
 
         init(barButtonItem: UIBarButtonItem) {
             self.barButtonItem = barButtonItem
@@ -47,18 +47,18 @@ extension UIBarButtonItem {
         }
 
         @objc func eventHandler() {
-            subject.next(())
+            subject.send(())
         }
 
         deinit {
             barButtonItem?.target = nil
             barButtonItem?.action = nil
-            subject.completed()
+            subject.send(completion: .finished)
         }
     }
 }
 
-public extension ReactiveExtensions where Base: UIBarButtonItem {
+extension ReactiveExtensions where Base: UIBarButtonItem {
 
     public var tap: SafeSignal<Void> {
         if let target = objc_getAssociatedObject(base, &UIBarButtonItem.AssociatedKeys.BarButtonItemHelperKey) as AnyObject? {

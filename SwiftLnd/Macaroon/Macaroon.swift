@@ -6,7 +6,6 @@
 //
 
 import Foundation
-import LndRpc
 import Logger
 
 public struct Macaroon: Equatable, Codable {
@@ -70,22 +69,18 @@ public struct Macaroon: Equatable, Codable {
         guard
             section.count == 1 && section[0].type == .identifier, // valid macaroon header
             let id = section[0].data,
-            let decoded = try? MacaroonId(data: id.dropFirst())
+            let decoded = try? MacaroonId(serializedData: id.dropFirst())
             else { return Permissions(permissions: [:]) }
 
         var permissions = [Permissions.Domain: Permissions.AccessMode]()
 
-        for operation in decoded.opsArray {
-            guard let operation = operation as? Op else { continue }
+        for operation in decoded.ops {
             guard let domain = Permissions.Domain(rawValue: operation.entity) else {
                 Logger.warn("⚠️ unknown macaroon id entity: \(operation)")
                 continue
             }
 
-            let accessMode = Permissions.AccessMode(operation.actionsArray.compactMap {
-                guard let action = $0 as? String else { return nil }
-                return Permissions.AccessMode.fromString(action)
-            })
+            let accessMode = Permissions.AccessMode(operation.actions.compactMap(Permissions.AccessMode.fromString))
             permissions[domain] = accessMode
         }
 

@@ -8,24 +8,21 @@
 import Bond
 import Foundation
 import Lightning
-import LndRpc
 import Logger
 
 final class UnlockWalletViewModel {
     private let lightningService: LightningService
     private let walletService: WalletService
-    private let configuration: WalletConfiguration
 
     private var timer: Timer?
 
     let isUnlocking = Observable(false)
     let nodeAlias: String
 
-    init(lightningService: LightningService, configuration: WalletConfiguration) {
+    init(lightningService: LightningService, alias: String) {
         self.lightningService = lightningService
-        self.walletService = WalletService(connection: configuration.connection)
-        self.configuration = configuration
-        self.nodeAlias = configuration.alias ?? "your Node"
+        self.walletService = WalletService(connection: lightningService.connection)
+        self.nodeAlias = alias
     }
 
     func unlock(password: String) {
@@ -36,13 +33,15 @@ final class UnlockWalletViewModel {
         lightningService.infoService.stop()
 
         walletService.unlockWallet(password: password) { [weak self] result in
-            switch result {
-            case .success:
-                Toast.presentSuccess("Wallet Unlocked")
-                self?.waitWalletReady()
-            case .failure(let error):
-                Toast.presentError(error.localizedDescription)
-                self?.isUnlocking.value = false
+            DispatchQueue.main.async {
+                switch result {
+                case .success:
+                    Toast.presentSuccess("Wallet Unlocked")
+                    self?.waitWalletReady()
+                case .failure(let error):
+                    Toast.presentError(error.localizedDescription)
+                    self?.isUnlocking.value = false
+                }
             }
         }
     }

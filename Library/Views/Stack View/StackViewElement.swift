@@ -13,10 +13,11 @@ indirect enum StackViewElement {
     case verticalStackView(content: [StackViewElement], spacing: CGFloat)
     case label(text: String, style: UIViewStyle<UILabel>)
     case horizontalStackView(compressionResistant: HorizontalPriority, content: [StackViewElement])
-    case button(title: String, style: UIViewStyle<UIButton>, completion: (UIButton) -> Void)
+    case button(title: String?, style: UIViewStyle<UIButton>, completion: (UIButton) -> Void)
     case separator
     case customView(UIView)
     case customHeight(CGFloat, element: StackViewElement)
+    case rightAlligned(element: StackViewElement)
 
     enum HorizontalPriority {
         case first
@@ -69,7 +70,7 @@ indirect enum StackViewElement {
         case let .button(title, style, completion):
             let button = CallbackButton(title: title, onTap: completion)
             style.apply(to: button.button)
-
+            button.button.titleLabel?.textAlignment = .right
             result = button
 
         case .separator:
@@ -87,6 +88,15 @@ indirect enum StackViewElement {
             result = element.view()
             result.heightAnchor.constraint(equalToConstant: height).isActive = true
             result.translatesAutoresizingMaskIntoConstraints = false
+
+        case .rightAlligned(let element):
+            let view = UIView()
+            let stackView = UIStackView(arrangedSubviews: [
+                view,
+                element.view()
+            ])
+            stackView.axis = .horizontal
+            result = stackView
         }
 
         return result

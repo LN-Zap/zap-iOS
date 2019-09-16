@@ -10,7 +10,7 @@ import Foundation
 import ReactiveKit
 import SwiftBTC
 
-extension SignalProtocol where Element == Satoshi?, Error == NoError {
+extension SignalProtocol where Element == Satoshi?, Error == Never {
     // Bind Satoshi? signal with Currency to any bindable String?.
     func bind<B: BindableProtocol>(to bindable: B, currency: Observable<Currency>) -> Disposable where B.Element == String? {
         return ReactiveKit
@@ -25,7 +25,7 @@ extension SignalProtocol where Element == Satoshi?, Error == NoError {
     }
 }
 
-extension SignalProtocol where Element == Satoshi, Error == NoError {
+extension SignalProtocol where Element == Satoshi, Error == Never {
     // Bind Satoshi signal with Currency to any bindable String?.
     func bind<B: BindableProtocol>(to bindable: B, currency: Observable<Currency>) -> Disposable where B.Element == String? {
         return ReactiveKit

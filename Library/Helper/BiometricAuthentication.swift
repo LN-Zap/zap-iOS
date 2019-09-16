@@ -44,23 +44,18 @@ enum BiometricAuthentication {
         #endif
     }
 
-    static func authenticate(completion: @escaping (Result<Success, AuthenticationError>) -> Void) {
+    static func authenticate(viewController: UIViewController, completion: @escaping (Result<Success, AuthenticationError>) -> Void) {
         #if targetEnvironment(simulator)
         guard Environment.fakeBiometricAuthentication else {
             completion(.failure(AuthenticationError.notAvailable))
             return
         }
         // display a fake local authentication view when run on simulator.
-        let alertController = UIAlertController(title: "Authenticate", message: "Fake Biometric Authenticatyion", preferredStyle: .alert)
+        let alertController = UIAlertController(title: "Authenticate", message: "Fake Biometric Authentication", preferredStyle: .alert)
         alertController.addAction(UIAlertAction(title: "cancel", style: .cancel) { _ in completion(.failure(AuthenticationError.canceled)) })
         alertController.addAction(UIAlertAction(title: "authenticate", style: .default) { _ in completion(.success(Success())) })
 
-        let alertWindow = UIWindow(frame: UIScreen.main.bounds)
-        alertWindow.rootViewController = RootViewController()
-        alertWindow.windowLevel = WindowLevel.fakeBiometricAuthentication
-        alertWindow.makeKeyAndVisible()
-        alertWindow.tintColor = UIColor.Zap.lightningOrange
-        alertWindow.rootViewController?.present(alertController, animated: true, completion: nil)
+        viewController.present(alertController, animated: true, completion: nil)
         #else
         let localAuthenticationContext = LAContext()
         localAuthenticationContext.localizedFallbackTitle = L10n.Scene.Pin.Biometric.Fallback.title

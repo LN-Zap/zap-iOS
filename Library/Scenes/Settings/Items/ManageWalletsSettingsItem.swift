@@ -11,7 +11,7 @@ import Lightning
 import ReactiveKit
 
 final class ManageWalletsSettingsItem: SettingsItem, SubtitleSettingsItem {
-    let subtitle: Signal<String?, NoError>
+    let subtitle: Signal<String?, Never>
 
     let title = L10n.Scene.Settings.Item.removeRemoteNode
 

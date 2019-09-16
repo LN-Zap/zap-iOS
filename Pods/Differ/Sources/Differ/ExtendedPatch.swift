@@ -129,7 +129,7 @@ extension ExtendedDiff {
     }
 
     func generateSortedPatchElements<T: Collection>(from: T, to: T) -> [SortedPatchElement<T.Element>] {
-        let patch = source.patch(from: from, to: to)
+        let patch = source.patch(to: to)
         return patch.indices.map {
             SortedPatchElement(
                 value: patch[$0],

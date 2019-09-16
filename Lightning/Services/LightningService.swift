@@ -12,6 +12,10 @@ import ReactiveKit
 import SwiftBTC
 import SwiftLnd
 
+enum LightningServiceError: Error {
+    case unsupportedConfigurationError
+}
+
 public extension Notification.Name {
     static let receivedTransaction = Notification.Name(rawValue: "receivedTransaction")
 }
@@ -19,8 +23,7 @@ public extension Notification.Name {
 public final class LightningService: NSObject {
     public static var transactionNotificationName = "transactionNotificationName"
 
-    private let api: LightningApiProtocol
-    private let walletId: WalletId
+    private let api: LightningApi
     public let connection: LightningConnection
 
     public let infoService: InfoService
@@ -35,54 +38,95 @@ public final class LightningService: NSObject {
         switch connection {
         case .local:
             return Permissions.all
+
         case .remote(let connection):
             return connection.macaroon.permissions
         }
     }
 
-    public convenience init?(connection: LightningConnection, walletId: WalletId) {
-        self.init(api: connection.api, walletId: walletId, connection: connection)
+    public convenience init(connection: LightningConnection, backupService: StaticChannelBackupServiceType) throws {
+        guard let api = connection.api else { throw LightningServiceError.unsupportedConfigurationError }
+        self.init(api: api, connection: connection, backupService: backupService)
     }
 
-    init(api: LightningApiProtocol, walletId: WalletId, connection: LightningConnection) {
+    init(api: LightningApi, connection: LightningConnection, backupService: StaticChannelBackupServiceType) {
         self.api = api
-        self.walletId = walletId
         self.connection = connection
+
+        let staticChannelBackupper = StaticChannelBackupper(backupService: backupService)
+
+        balanceService = BalanceService(api: api)
 
         let invoiceListUpdater = InvoiceListUpdater(api: api)
         let transactionListUpdater = TransactionListUpdater(api: api)
         let paymentListUpdater = PaymentListUpdater(api: api)
-        let channelListUpdater = ChannelListUpdater(api: api)
+        let channelListUpdater = ChannelListUpdater(api: api, balanceService: balanceService)
         listUpdater = [invoiceListUpdater, transactionListUpdater, paymentListUpdater, channelListUpdater]
 
-        balanceService = BalanceService(api: api)
-        channelService = ChannelService(api: api, channelListUpdater: channelListUpdater)
+        channelService = ChannelService(api: api, channelListUpdater: channelListUpdater, staticChannelBackupper: staticChannelBackupper)
         historyService = HistoryService(invoiceListUpdater: invoiceListUpdater, transactionListUpdater: transactionListUpdater, paymentListUpdater: paymentListUpdater, channelListUpdater: channelListUpdater)
         transactionService = TransactionService(api: api, balanceService: balanceService, paymentListUpdater: paymentListUpdater)
 
-        infoService = InfoService(api: api, balanceService: balanceService)
+        infoService = InfoService(api: api, balanceService: balanceService, staticChannelBackupper: staticChannelBackupper)
+
+        super.init()
+
+        updateBalanceOnChange(of: invoiceListUpdater.items)
+        updateBalanceOnChange(of: transactionListUpdater.items)
+        updateBalanceOnChange(of: paymentListUpdater.items)
+        updateBalanceOnChange(of: channelListUpdater.pending)
+        updateBalanceOnChange(of: channelListUpdater.open)
+        updateBalanceOnChange(of: channelListUpdater.closed)
+
+        updateChannelsOnChange(of: invoiceListUpdater.items)
+        updateChannelsOnChange(of: paymentListUpdater.items)
+    }
+
+    private func updateBalanceOnChange<T>(of items: MutableObservableArray<T>) {
+        items
+            .observeNext { [weak self] _ in
+                self?.balanceService.update()
+            }
+            .dispose(in: reactive.bag)
+    }
+
+    private func updateChannelsOnChange<T>(of items: MutableObservableArray<T>) {
+        items
+            .observeNext { [weak self] _ in
+                self?.channelService.update()
+            }
+            .dispose(in: reactive.bag)
+    }
+
+    public func startLocalWallet(network: Network, password: String, completion: @escaping ApiCompletion<Success>) {
+        #if !REMOTEONLY
+        guard
+            connection == .local,
+            !WalletService.isLocalWalletUnlocked
+            else { return }
+
+        LocalLnd.start(network: network)
+        WalletService(connection: connection).unlockWallet(password: password) {
+            if case .failure(let error) = $0, error != .walletAlreadyUnlocked {
+                Logger.error(error)
+                self.stop()
+                self.infoService.walletState.value = .error
+            }
+            completion($0)
+        }
+        #endif
     }
 
     public func start() {
-        #if !REMOTEONLY
-        if connection == .local {
-            LocalLnd.start(walletId: walletId)
-            WalletService(connection: connection).unlockWallet(password: WalletService.password) { _ in }
-        }
-        #endif
-
+        infoService.start()
         listUpdater.forEach { $0.update() }
     }
 
     public func stop() {
-        #if !REMOTEONLY
-        LocalLnd.stop()
-        #endif
         infoService.stop()
     }
 
     public func resetRpcConnection() {
-        guard let api = api as? RpcApi else { return }
         api.resetConnection()
     }
 }

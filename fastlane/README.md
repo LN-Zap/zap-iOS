@@ -15,19 +15,19 @@ Install _fastlane_ using
 or alternatively using `brew cask install fastlane`
 
 # Available Actions
-### build_number
+### switch_mainnet
 ```
-fastlane build_number
+fastlane switch_mainnet
 ```
-Update build number.
-### change_version
+
+### mainnet
 ```
-fastlane change_version
+fastlane mainnet
 ```
-Update app version.
-### alpha
+
+### testnet
 ```
-fastlane alpha
+fastlane testnet
 ```
 Builds new Alpha Build with local lnd enabled and uploads it to Testflight.
 ### release

@@ -51,7 +51,7 @@ public final class Settings: NSObject, Persistable {
         secondaryCurrency = Observable(fiatCurrency.value)
 
         blockExplorer = Observable(data?.blockExplorer ?? .blockstream)
-        onChainRequestAddressType = Observable(data?.onChainRequestAddressType ?? .nestedPubkeyHash)
+        onChainRequestAddressType = Observable(data?.onChainRequestAddressType ?? .witnessPubkeyHash)
 
         super.init()
 

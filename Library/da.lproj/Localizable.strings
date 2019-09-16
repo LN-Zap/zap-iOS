@@ -5,8 +5,8 @@
 "generic.qr_code.share_button" = "Del";
 "generic.cancel" = "Aflys";
 
-"link.help" = "https://ln-zap.github.io/zap-tutorials";
-"link.help.zapconnect" = "https://ln-zap.github.io/zap-tutorials/iOS-remote-node-setup";
+"link.help" = "https://docs.zaphq.io/";
+"link.help.zapconnect" = "https://docs.zaphq.io/docs-ios-remote-node-setup";
 "link.privacy" = "http://zap.jackmallers.com/privacy";
 "link.bug_report" = "https://github.com/LN-Zap/zap-iOS/issues";
 "link.lnd_releases" = "https://github.com/lightningnetwork/lnd/releases";
@@ -27,6 +27,7 @@
 "channel.state.force_closing" = "Tvangslukker";
 "channel.state.waiting_close" = "Vente luk";
 
+"network_type.simnet" = "Simnet";
 "network_type.regtest" = "Regtest";
 "network_type.testnet" = "Testnet";
 "network_type.mainnet" = "Mainnet";
@@ -48,15 +49,18 @@
 
 "scene.settings.title" = "Indstillinger";
 "scene.settings.section.warning" = "Warning";
+"scene.settings.section.lightning" = "Lightning";
 "scene.settings.section.wallet" = "Tegnebog";
 "scene.settings.item.version_warning" = "Your lnd is outdated (%@). Zap iOS works best with lnd version %@ or above.";
 "scene.settings.item.bitcoin_unit" = "Bitcoin enhed";
 "scene.settings.item.currency" = "Valuta";
+"scene.settings.item.currency.popular" = "Popular Currencies";
 "scene.settings.item.block_explorer" = "Blok Explorer";
 "scene.settings.item.on_chain_request_address.title" = "Bitcoin adresse Type";
 "scene.settings.item.on_chain_request_address.bech32" = "Bech32";
 "scene.settings.item.on_chain_request_address.p2sh" = "P2SH";
 "scene.settings.item.manage_channels" = "Administrer kanaler";
+"scene.settings.item.channel_backup" = "Channel Backup";
 "scene.settings.item.node_uri" = "Node URI";
 "scene.settings.item.remove_remote_node" = "Administrer Wallets";
 
@@ -89,6 +93,9 @@
 "scene.channels.alert.force_close" = "Tvangsluk kanal";
 "scene.channels.close_loading_view" = "Lukker kanal";
 "scene.channels.close_success.toast" = "Kanalen lukkes.";
+"scene.channels.empty_state.title" = "Open a channel";
+"scene.channels.empty_state.message" = "You can't transact on the Lightning Network yet! Let's open a channel to start transacting on the Lightning Network.";
+"scene.channels.empty_state.button_title" = "Open a channel";
 
 "scene.open_channel.title" = "Åben kanal";
 "scene.open_channel.channel_uri_label" = "Node:";
@@ -107,8 +114,20 @@
 "scene.setup_pin.top_label.non_matching" = "Pin koderne er ikke de samme. Prøv venligst igen.";
 "scene.setup_pin.top_label.validate" = "Indtast Pin-koden igen for at validere.";
 
-"scene.confirm_mnemonic.title" = "Bekræft Seed";
-"scene.confirm_mnemonic.description" = "Indtast din nøgle.";
+"scene.onboarding.page_1.title" = "Your **keys**, your **coins**";
+"scene.onboarding.page_1.message" = "With Zap, you are in control of your money. To make sure your coins are always stored safely, Zap will provide a recovery phrase for you.";
+"scene.onboarding.page_1.button_title" = "Continue";
+
+"scene.onboarding.page_2.title" = "Save your **recovery phrase**";
+"scene.onboarding.page_2.message" = "Write down your phrase. You can use your phrase to recover your funds anytime if you misplace your device.";
+"scene.onboarding.page_2.button_title" = "Continue";
+
+"scene.onboarding.page_3.title" = "Keep it **safe**";
+"scene.onboarding.page_3.message" = "Make sure to keep your recovery phrase private. Store it somewhere only you will find it.";
+"scene.onboarding.page_3.button_title" = "Generate Recovery Phrase";
+
+"scene.confirm_mnemonic.title" = "Confirm Recovery Phrase";
+"scene.confirm_mnemonic.headline" = "Select word number %d";
 
 "scene.send.title" = "Send";
 "scene.send.send_button" = "Send";
@@ -117,6 +136,15 @@
 "scene.send.sending" = "Sender...";
 "scene.send.lightning.title" = "Send Lightning betaling";
 "scene.send.on_chain.title" = "Send On-Chain";
+"scene.send.on_chain.fee" = "Fee:";
+"scene.send.on_chain.fee.fast" = "Fast";
+"scene.send.on_chain.fee.medium" = "Medium";
+"scene.send.on_chain.fee.slow" = "Slow";
+"scene.send.on_chain.fee.description.fast" = "Fast Transaction";
+"scene.send.on_chain.fee.description.medium" = "Medium Transaction";
+"scene.send.on_chain.fee.description.slow" = "Slow Transaction";
+
+"scene.send.on_chain.fee.estimated_delivery" = "Estimated Delivery: %@";
 "scene.send.authentication_failed" = "Godkendelse mislykkedes";
 "scene.send.maximum_fee" = "Forventet gebyr:";
 "scene.send.subtitle.on_chain_balance" = "On-chain balance: %@";
@@ -138,26 +166,20 @@
 "scene.connect_remote_node.certificate_detail.macaroon_title" = "Makron";
 "scene.connect_remote_node.edit_url.title" = "Adresse";
 
-"scene.create_wallet.title" = "Opret tegnebog";
-"scene.create_wallet.description_label" = "Make sure to store the mnemonic at a safe location.";
+"scene.create_wallet.title" = "Recovery Phrase";
+"scene.create_wallet.description_label" = "Write down the recovery phrase and store it at a safe location.";
 "scene.create_wallet.next_button" = "Næste";
 
 "scene.recover_wallet.title" = "Genskab tegnebog";
 "scene.recover_wallet.done_button" = "Udført";
-"scene.recover_wallet.description_label" = "Indtast dit seed:";
+"scene.recover_wallet.description_label" = "Enter your recovery phrase:";
 "scene.recover_wallet.placeholder" = "efterlade evne i_stand om over fraværende absorbere abstrakt absurd misbrug opnå syre akustisk erhverve henover handling aktion skuespiller skuespillerinde faktisk";
+"scene.recover_wallet.select_channel_backup_button" = "Select Channel Backup";
 
-"scene.select_wallet_connection.title" = "Tilføj Wallet";
 "scene.select_wallet_connection.create.title" = "Opret";
-"scene.select_wallet_connection.create.message" = "ny tegnebog";
 "scene.select_wallet_connection.recover.title" = "Genskab";
-"scene.select_wallet_connection.recover.message" = "eksisterende tegnebog";
 "scene.select_wallet_connection.connect.title" = "Tilslut";
-"scene.select_wallet_connection.connect.message" = "remote node";
-"scene.select_wallet_connection.disabled_alert.title" = "Beklager!";
-"scene.select_wallet_connection.disabled_alert.message" = "Lnd på telefonen er deaktiveret i denne betaversion. Oprette forbindelse til en ekstern node i stedet.";
-"scene.select_wallet_connection.disabled_alert.ok_button" = "Ok";
-"scene.select_wallet_connection.create.help" = "Brug for hjælp?";
+"scene.select_wallet_connection.message" = "Bitcoin for **everyone**";
 
 "scene.main.send_button" = "Send";
 "scene.main.receive_button" = "Modtag";
@@ -166,11 +188,6 @@
 "scene.qr_code_detail.title" = "Modtag";
 
 "scene.sync.description_label" = "Synkronisering til blockkæde…";
-"scene.sync.disconnect_bar_button" = "Afbryd";
-"scene.sync.disconnect_alert.title" = "Afbryd";
-"scene.sync.disconnect_alert.message" = "Vil du annullere synkroniseringen? Du vil bliver nødt til at genoprette forbindelsen til din node bagefter.";
-"scene.sync.disconnect_alert.destructive_action" = "Afbryde Node";
-"scene.sync.disconnect_alert.cancel_action" = "Annuller";
 
 "scene.transaction_detail.title.lightning_invoice" = "Faktura detaljer";
 "scene.transaction_detail.title.payment_detail" = "Betalings detaljer";
@@ -187,12 +204,16 @@
 "scene.transaction_detail.expiry_label.expired" = "Udløbet";
 "scene.transaction_detail.invoice_state_label" = "State";
 "scene.transaction_detail.invoice_state_label.settled" = "settled";
+"scene.transaction_detail.preimage_label" = "Preimage";
+"scene.transaction_detail.preimage_copy_message" = "Preimage copied.";
+"scene.transaction_detail.invoice_copy_message" = "Invoice copied.";
 
 "scene.channel_detail.remote_pub_key_label" = "Remote PubKey";
 "scene.channel_detail.local_balance_label" = "Lokal Balance";
 "scene.channel_detail.remote_balance_label" = "Remore Balance";
 "scene.channel_detail.closing_time.label" = "Lukning i";
 "scene.channel_detail.funding_transaction_label" = "Finansier transaktion";
+"scene.channel_detail.closing_transaction_label" = "Closing Transaction";
 "scene.channel_detail.close_button" = "Luk kanal";
 "scene.channel_detail.force_close_button" = "Tvangsluk kanal";
 
@@ -205,11 +226,18 @@
 "scene.filter.displayChannelEvents" = "Kanal begivenheder";
 
 "scene.qrcode_scanner.top_label" = "Skan QR-kode";
+"scene.qrcode_scanner.error.unknown_format" = "Unknown address format.";
+"scene.qrcode_scanner.error.wrong_network" = "You tried opening an invoice for %@ but your node is connected to %@.";
+"scene.qrcode_scanner.error.zero_amount_invoice" = "For security reasons zap does not support invoices without a specified amount.";
 
 "scene.wallet.title" = "Wallet";
+"scene.wallet.total_balance" = "Total Balance";
 "scene.wallet.detail.on_chain" = "On-chain:";
 "scene.wallet.detail.lightning" = "Lightning:";
 "scene.wallet.detail.pending" = "Pending:";
+"scene.wallet.empty_state.title" = "Fund your wallet";
+"scene.wallet.empty_state.message" = "Your wallet is empty! Get started by depositing some funds.";
+"scene.wallet.empty_state.button_title" = "Deposit funds";
 
 "scene.time_lock.headline" = "Forkert Passcode";
 "scene.time_lock.description" = "Din wallet er låst i:";
@@ -219,20 +247,18 @@
 
 "scene.history.cell.payment_sent" = "Betaling sendt";
 "scene.history.cell.payment_received" = "Betaling modtaget";
-"scene.history.cell.payment_failed" = "Betaling fejlede (%@)";
 "scene.history.cell.invoice_created" = "Betaling anmodning skabt";
-"scene.history.cell.channel_opened" = "Åben Kanal";
-"scene.history.cell.channel_closed" = "Luk Kanal";
-"scene.history.cell.force_close_channel" = "Tvangsluk Kanal";
-"scene.history.cell.remote_force_close_channel" = "Fjern tvangsluk Kanal";
-"scene.history.cell.breach_close_channel" = "Bryd luk kanal";
-"scene.history.cell.close_channel_funding_canceled" = "Luk kanal (finansieringen annulleret)";
+"scene.history.cell.channel_opened" = "Opened Channel";
+"scene.history.cell.channel_closed" = "Closed Channel";
+"scene.history.cell.force_close_channel" = "Force closed Channel";
+"scene.history.cell.remote_force_close_channel" = "Remote forced close Channel";
+"scene.history.cell.breach_close_channel" = "Breach closed Channel";
+"scene.history.cell.close_channel_funding_canceled" = "Closed Channel (funding canceled)";
 "scene.history.cell.channel_abandoned" = "Kanal forladt";
 "scene.history.cell.transaction_sent" = "Betaling sendt";
 "scene.history.cell.transaction_received" = "Betaling modtaget";
 "scene.history.cell.label.new" = "ny";
 "scene.history.cell.label.error" = "fejl";
-"scene.history.cell.action.try_again" = "Prøv igen";
 
 "scene.node_uri.title" = "Opret forbindelse til Node";
 "scene.node_uri.alias_label" = "Alias";
@@ -248,3 +274,24 @@
 "scene.unlock.unlock_button" = "Lås op";
 "scene.unlock.password_placeholder" = "Password";
 "scene.unlock.title_label" = "Oplås %@";
+
+"scene.manage_wallets.title" = "Manage Wallets";
+"scene.manage_wallets.cell.remote" = "remote";
+
+"scene.channel_backup.title" = "Channel Backup";
+"scene.channel_backup.cell_title" = "%@ channel.backup";
+"scene.channel_backup.not_found" = "file not found";
+"scene.channel_backup.error.iCloudDisabled" = "iCloud seems to be disabled.";
+"scene.channel_backup.error.iCloudBackupFailed" = "iCloud backup failed.";
+"scene.channel_backup.error.localBackupFailed" = "Local file backup failed.";
+"scene.channel_backup.error.lndError" = "Could not get channel backup from lnd.";
+
+"scene.push_notification.headline" = "Stay **up to date**";
+"scene.push_notification.message" = "To keep your funds safe, Zap needs to sync once in a while. Do you want to be notified when your wallet needs to sync?";
+"scene.push_notification.confirm_button_title" = "Turn on notifications";
+"scene.push_notification.skip_button_title" = "Skip";
+
+"notification.sync.title" = "Please sync";
+"notification.sync.day_12.body" = "Please remember syncing your wallet to make sure you stay safe";
+"notification.sync.day_13.body" = "You have one more day to sync your wallet before it's getting dangerous.";
+"notification.sync.day_14.body" = "Please sync your wallet as soon as possible.";

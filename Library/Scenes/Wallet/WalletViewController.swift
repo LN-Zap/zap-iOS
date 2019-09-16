@@ -33,15 +33,24 @@ final class WalletViewController: UIViewController {
     @IBOutlet private weak var requestButton: UIButton!
 
     // balance view
+    @IBOutlet private weak var totalBalanceLabel: UILabel!
     @IBOutlet private weak var swapIconImageView: UIImageView!
     @IBOutlet private weak var primaryBalanceLabel: UILabel!
     @IBOutlet private weak var secondaryBalanceLabel: UILabel!
+
+    // sync view
+    @IBOutlet private weak var syncBackgroundView: UIView!
+    @IBOutlet private weak var syncViewHeightConstraint: NSLayoutConstraint!
+    @IBOutlet private weak var syncTitleLabel: UILabel!
+    @IBOutlet private weak var syncProgressLabel: UILabel!
+    @IBOutlet private weak var syncProgressView: UIProgressView!
 
     // swiftlint:disable implicitly_unwrapped_optional
     private var walletViewModel: WalletViewModel!
     private var sendButtonTapped: (() -> Void)!
     private var requestButtonTapped: (() -> Void)!
     private var nodeAliasButtonTapped: (() -> Void)!
+    private var emptyStateViewModel: WalletEmptyStateViewModel!
     // swiftlint:enable implicitly_unwrapped_optional
 
     private let buttonCornerRadius: CGFloat = 20
@@ -50,16 +59,17 @@ final class WalletViewController: UIViewController {
         return -(detailView.bounds.height - 45) - 60
     }
 
-    static func instantiate(walletViewModel: WalletViewModel, sendButtonTapped: @escaping () -> Void, requestButtonTapped: @escaping () -> Void, nodeAliasButtonTapped: @escaping () -> Void) -> WalletViewController {
+    static func instantiate(walletViewModel: WalletViewModel, sendButtonTapped: @escaping () -> Void, requestButtonTapped: @escaping () -> Void, nodeAliasButtonTapped: @escaping () -> Void, emptyStateViewModel: WalletEmptyStateViewModel) -> WalletViewController {
         let walletViewController = StoryboardScene.Wallet.walletViewController.instantiate()
         walletViewController.walletViewModel = walletViewModel
 
         walletViewController.sendButtonTapped = sendButtonTapped
         walletViewController.requestButtonTapped = requestButtonTapped
         walletViewController.nodeAliasButtonTapped = nodeAliasButtonTapped
+        walletViewController.emptyStateViewModel = emptyStateViewModel
 
-        walletViewController.tabBarItem.title = L10n.Scene.Wallet.title
-        walletViewController.tabBarItem.image = Asset.tabbarWallet.image
+        walletViewController.tabBarItem.title = Tab.wallet.title
+        walletViewController.tabBarItem.image = Tab.wallet.image
 
         return walletViewController
     }
@@ -80,7 +90,8 @@ final class WalletViewController: UIViewController {
             requestButton.layoutIfNeeded()
         }
 
-        Style.Label.body.apply(to: secondaryBalanceLabel)
+        Style.Label.body.apply(to: secondaryBalanceLabel, totalBalanceLabel)
+        totalBalanceLabel.text = L10n.Scene.Wallet.totalBalance
         secondaryBalanceLabel.textColor = UIColor.Zap.gray
         secondaryBalanceLabel.textAlignment = .center
         Style.Label.boldTitle.apply(to: primaryBalanceLabel)
@@ -108,7 +119,8 @@ final class WalletViewController: UIViewController {
         setupBindings()
 
         setupDetailView()
-
+        setupSyncView()
+        setupEmtpyState()
     }
 
     override func viewDidLayoutSubviews() {
@@ -116,11 +128,50 @@ final class WalletViewController: UIViewController {
         updateDetailPosition()
     }
 
-    private func setupPrimaryBalanceLabel() {
-        let lightningService = walletViewModel.lightningService
+    private func setupEmtpyState() {
+        let emptyStateView = EmptyStateView(viewModel: emptyStateViewModel)
+        emptyStateView.add(to: view)
 
+        walletViewModel.totalBalance
+            .map { $0 > 0 }
+            .bind(to: emptyStateView.reactive.isHidden)
+            .dispose(in: reactive.bag)
+    }
+
+    private func setupSyncView() {
+        walletViewModel.syncViewModel.isSyncing
+            .map { $0 ? UILayoutPriority(rawValue: 1) : UILayoutPriority(rawValue: 999) }
+            .observeOn(DispatchQueue.main)
+            .observeNext { [weak self] in
+                self?.syncViewHeightConstraint.priority = $0
+                UIView.animate(withDuration: 0.25) {
+                    self?.view.layoutIfNeeded()
+                }
+            }
+            .dispose(in: reactive.bag)
+
+        syncProgressView.trackTintColor = UIColor.Zap.deepSeaBlue
+
+        walletViewModel.syncViewModel.percentSignal
+            .map { Float($0) }
+            .bind(to: syncProgressView.reactive.progress)
+            .dispose(in: reactive.bag)
+
+        walletViewModel.syncViewModel.percentSignal
+            .map { "\(Int($0 * 100))%" }
+            .bind(to: syncProgressLabel.reactive.text)
+            .dispose(in: reactive.bag)
+
+        syncTitleLabel.text = L10n.Scene.Sync.descriptionLabel
+
+        syncBackgroundView.backgroundColor = UIColor.Zap.seaBlue
+
+        Style.Label.body.apply(to: syncTitleLabel, syncProgressLabel)
+    }
+
+    private func setupPrimaryBalanceLabel() {
         ReactiveKit
-            .combineLatest(lightningService.balanceService.total, Settings.shared.primaryCurrency) { satoshis, currency -> NSAttributedString? in
+            .combineLatest(walletViewModel.totalBalance, Settings.shared.primaryCurrency) { satoshis, currency -> NSAttributedString? in
                 if let bitcoin = currency as? Bitcoin {
                     return bitcoin.attributedFormat(satoshis: satoshis)
                 } else {
@@ -134,13 +185,17 @@ final class WalletViewController: UIViewController {
 
     private func setupBindings() {
         [
-            walletViewModel.lightningService.balanceService.total
+            walletViewModel.totalBalance
                 .bind(to: secondaryBalanceLabel.reactive.text, currency: Settings.shared.secondaryCurrency),
             walletViewModel.circleGraphSegments
                 .observeOn(DispatchQueue.main)
                 .observeNext { [weak self] in
                     self?.circleGraphView.segments = $0
                 },
+            walletViewModel.network
+                .ignoreNils()
+                .map { $0.localized }
+                .bind(to: networkLabel.reactive.text ),
             walletViewModel.network
                 .map({ $0 == .mainnet })
                 .bind(to: networkLabel.reactive.isHidden),
@@ -194,6 +249,14 @@ final class WalletViewController: UIViewController {
         }
     }
 
+    @IBAction private func toggleDetailState() {
+        if detailView.transform == .identity {
+            animateDetail(expanded: true)
+        } else if detailView.transform.ty == detailMaxOffset {
+            animateDetail(expanded: false)
+        }
+    }
+
     @IBAction private func didPan(_ sender: UIPanGestureRecognizer) {
         let translation = sender.translation(in: view)
         let maxOffset = detailMaxOffset
@@ -221,31 +284,38 @@ final class WalletViewController: UIViewController {
             let velocity = sender.velocity(in: view).y
             let triggerVelocity: CGFloat = 600
 
-            let transform: CGAffineTransform
-            let detailHandleViewProgress: CGFloat
             if (yTranslation < maxOffset / 2 || velocity < -triggerVelocity) && velocity < triggerVelocity {
-                // bounce to max offset
-                transform = CGAffineTransform(translationX: 0, y: maxOffset)
-                detailHandleViewProgress = 1
-
-                UserDefaults.Keys.walletDetailExpanded.set(true)
+                animateDetail(expanded: true)
             } else {
-                // bounce back
-                transform = .identity
-                detailHandleViewProgress = 0
-
-                UserDefaults.Keys.walletDetailExpanded.set(false)
+                animateDetail(expanded: false)
             }
-            UIImpactFeedbackGenerator(style: .light).impactOccurred()
-
-            UIView.animate(withDuration: 0.3, delay: 0, usingSpringWithDamping: 0.6, initialSpringVelocity: 0.25, options: [], animations: { [detailView, detailHandleView] in
-                detailView?.transform = transform
-                detailHandleView?.progress = detailHandleViewProgress
-            }, completion: nil)
-
         @unknown default:
             break
         }
+    }
+
+    private func animateDetail(expanded: Bool) {
+        let transform: CGAffineTransform
+        let detailHandleViewProgress: CGFloat
+
+        if expanded {
+            transform = CGAffineTransform(translationX: 0, y: detailMaxOffset)
+            detailHandleViewProgress = 1
+
+            UserDefaults.Keys.walletDetailExpanded.set(true)
+        } else {
+            // bounce back
+            transform = .identity
+            detailHandleViewProgress = 0
+
+            UserDefaults.Keys.walletDetailExpanded.set(false)
+        }
+        UIImpactFeedbackGenerator(style: .light).impactOccurred()
+
+        UIView.animate(withDuration: 0.3, delay: 0, usingSpringWithDamping: 0.6, initialSpringVelocity: 0.25, options: [], animations: { [detailView, detailHandleView] in
+            detailView?.transform = transform
+            detailHandleView?.progress = detailHandleViewProgress
+        }, completion: nil)
     }
 }
 
@@ -260,8 +330,8 @@ private extension Bitcoin {
     }
 }
 
-extension UIStackView {
-    func addSegment(_ segment: Segment, color: UIColor, title: String, amount: Observable<Satoshi>) {
+private extension UIStackView {
+    func addSegment(_ segment: Segment, color: UIColor, title: String, amount: Signal<Satoshi, Never>) {
         let circleView = CircleView(frame: .zero)
         circleView.backgroundColor = .clear
         circleView.color = color
@@ -291,9 +361,10 @@ extension UIStackView {
             amount
                 .map { $0 <= 0 }
                 .observeOn(DispatchQueue.main)
-                .bind(to: horizontalStackView.reactive.isHidden)
+                .observeNext {
+                    horizontalStackView.isHidden = $0
+                }
                 .dispose(in: reactive.bag)
         }
-
     }
 }

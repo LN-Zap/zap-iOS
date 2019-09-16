@@ -19,7 +19,6 @@ public struct ChannelEvent: Equatable, DateProvidingEvent {
         case breachClose
         case fundingCanceled
         case abandoned
-        case unknown
 
         init(closeType: CloseType) {
             switch closeType {
@@ -33,8 +32,6 @@ public struct ChannelEvent: Equatable, DateProvidingEvent {
                 self = .breachClose
             case .fundingCanceled:
                 self = .fundingCanceled
-            case .unknown:
-                self = .unknown
             case .abandoned:
                 self = .abandoned
             }
@@ -43,25 +40,31 @@ public struct ChannelEvent: Equatable, DateProvidingEvent {
 
     public let txHash: String
     public let node: LightningNode
-    public let blockHeight: Int
     public let type: Kind
     public let fee: Satoshi?
     public let date: Date
 }
 
 extension ChannelEvent {
-    init?(channel: Channel, dateEstimator: DateEstimator) {
-        guard
-            let blockHeight = channel.blockHeight,
-            let date = dateEstimator.estimatedDate(forBlockHeight: blockHeight)
-            else { return nil }
+    init?(channel: OpenChannel, dateEstimator: DateEstimator) {
+        guard let date = dateEstimator.estimatedDate(forBlockHeight: channel.blockHeight) else { return nil }
+
+        self.date = date
 
         txHash = channel.channelPoint.fundingTxid
         node = LightningNode(pubKey: channel.remotePubKey, alias: nil, color: nil)
-        self.blockHeight = blockHeight
+
         type = .open
         fee = nil
-        self.date = date
+    }
+
+    init?(pendingChannel: PendingChannel, transaction: Transaction) {
+        date = transaction.date
+
+        txHash = pendingChannel.channelPoint.fundingTxid
+        node = LightningNode(pubKey: pendingChannel.remotePubKey, alias: nil, color: nil)
+        type = .open
+        fee = nil
     }
 
     init?(closing channelCloseSummary: ChannelCloseSummary, dateEstimator: DateEstimator) {
@@ -69,7 +72,6 @@ extension ChannelEvent {
 
         txHash = channelCloseSummary.closingTxHash
         node = LightningNode(pubKey: channelCloseSummary.remotePubKey, alias: nil, color: nil)
-        blockHeight = channelCloseSummary.closeHeight
         type = ChannelEvent.Kind(closeType: channelCloseSummary.closeType)
         fee = nil
         self.date = date
@@ -80,7 +82,6 @@ extension ChannelEvent {
 
         txHash = channelCloseSummary.channelPoint.fundingTxid
         node = LightningNode(pubKey: channelCloseSummary.remotePubKey, alias: nil, color: nil)
-        blockHeight = channelCloseSummary.openHeight
         type = .open
         fee = nil
         self.date = date

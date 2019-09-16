@@ -132,10 +132,14 @@ private extension UIView {
 
 enum Toast {
     static func presentError(_ message: String) {
-        UIApplication.shared.windows.first?.presentErrorToast(message)
+        DispatchQueue.main.async {
+            UIApplication.shared.windows.first?.presentErrorToast(message)
+        }
     }
 
     static func presentSuccess(_ message: String) {
-        UIApplication.shared.windows.first?.presentSuccessToast(message)
+        DispatchQueue.main.async {
+            UIApplication.shared.windows.first?.presentSuccessToast(message)
+        }
     }
 }

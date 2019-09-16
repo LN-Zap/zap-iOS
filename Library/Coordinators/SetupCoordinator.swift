@@ -6,11 +6,13 @@
 //
 
 import Lightning
+import Logger
+import SwiftBTC
 import SwiftLnd
 import UIKit
 
 protocol SetupCoordinatorDelegate: class {
-    func connectWallet(configuration: WalletConfiguration)
+    func presentWallet(connection: LightningConnection) throws
 }
 
 final class SetupCoordinator: Coordinator {
@@ -19,6 +21,7 @@ final class SetupCoordinator: Coordinator {
     private let walletConfigurationStore: WalletConfigurationStore
     private let rpcCredentials: RPCCredentials?
 
+    private weak var createWalletNavigationController: UINavigationController?
     private weak var navigationController: UINavigationController?
     private weak var delegate: SetupCoordinatorDelegate?
     private weak var connectRemoteNodeViewModel: ConnectRemoteNodeViewModel?
@@ -47,49 +50,60 @@ final class SetupCoordinator: Coordinator {
     }
 
     #if !REMOTEONLY
-    private func startNewLnd() -> WalletConfiguration {
-        let configuration = WalletConfiguration(alias: nil, network: nil, connection: .local, walletId: UUID().uuidString)
-
-        if !LocalLnd.isRunning {
-            LocalLnd.start(walletId: configuration.walletId)
-        }
-
-        return configuration
+    private func startLocalWallet() {
+        let network = BuildConfiguration.network
+        LocalLnd.start(network: network)
     }
     #endif
 
-    private func createNewWallet() {
-        #if REMOTEONLY
-        presentDisabledAlert()
-        #else
+    private func createNewLocalWallet() {
+        #if !REMOTEONLY
+        // start syncing process in background
+        startLocalWallet()
 
-        let configuration = startNewLnd()
-
-        let mnemonicViewModel = MnemonicViewModel(configuration: configuration)
-        self.mnemonicViewModel = mnemonicViewModel
-
-        let viewController = MnemonicViewController.instantiate(mnemonicViewModel: mnemonicViewModel, presentConfirmMnemonic: confirmMnemonic)
-        navigationController?.pushViewController(viewController, animated: true)
+        let onboardingViewController = OnboardingContainerViewController.instantiate { [weak self] in
+            self?.presentMnemonic(connection: .local)
+        }
+        let viewController = UINavigationController(rootViewController: onboardingViewController)
+        createWalletNavigationController = viewController
+        self.navigationController?.present(viewController, animated: true, completion: nil)
         #endif
     }
 
-    private func confirmMnemonic() {
-        guard let confirmMnemonicViewModel = mnemonicViewModel?.confirmMnemonicViewModel else { return }
+    private func presentMnemonic(connection: LightningConnection) {
+        let mnemonicViewModel = MnemonicViewModel(connection: connection)
+        self.mnemonicViewModel = mnemonicViewModel
 
-        let viewController = ConfirmMnemonicViewController.instantiate(confirmMnemonicViewModel: confirmMnemonicViewModel, connectWallet: didSetupWallet)
-        navigationController?.pushViewController(viewController, animated: true)
+        let viewController = MnemonicViewController.instantiate(mnemonicViewModel: mnemonicViewModel, presentConfirmMnemonic: presentConfirmMnemonic)
+        createWalletNavigationController?.pushViewController(viewController, animated: true)
+    }
+
+    private func presentConfirmMnemonic() {
+        guard let viewModel = mnemonicViewModel?.confirmMnemonicViewModel else { return }
+
+        let viewController = ConfirmMnemonicPageViewController.instantiate(confirmMnemonicViewModel: viewModel) { [weak self] in
+            self?.presentPushNotificationSetup(connection: .local)
+        }
+        createWalletNavigationController?.pushViewController(viewController, animated: true)
+    }
+
+    private func presentPushNotificationSetup(connection: LightningConnection) {
+        if NotificationScheduler.needsAuthorization {
+            let viewController = PushNotificationViewController.instantiate { [weak self] in
+                self?.didSetupWallet(connection: connection)
+            }
+            createWalletNavigationController?.pushViewController(viewController, animated: true)
+        } else {
+            didSetupWallet(connection: connection)
+        }
     }
 
     private func recoverExistingWallet() {
-        #if REMOTEONLY
-        presentDisabledAlert()
-        #else
-        guard let delegate = delegate else { return }
+        #if !REMOTEONLY
+        startLocalWallet()
 
-        let configuration = startNewLnd()
-
-        let viewModel = RecoverWalletViewModel(configuration: configuration)
-        let viewController = RecoverWalletViewController.instantiate(recoverWalletViewModel: viewModel, connectWallet: delegate.connectWallet)
+        let viewModel = RecoverWalletViewModel(connection: .local)
+        let viewController = RecoverWalletViewController.instantiate(recoverWalletViewModel: viewModel, connectWallet: connectWallet)
         navigationController?.pushViewController(viewController, animated: true)
         #endif
     }
@@ -99,15 +113,17 @@ final class SetupCoordinator: Coordinator {
     }
 
     private func connectRemoteNode(_ rpcCredentials: RPCCredentials?) {
-        let viewModel = ConnectRemoteNodeViewModel(rpcCredentials: rpcCredentials)
-        connectRemoteNodeViewModel = viewModel
-        let viewController = ConnectRemoteNodeViewController.instantiate(didSetupWallet: didSetupWallet, connectRemoteNodeViewModel: viewModel, presentQRCodeScannerButtonTapped: presentNodeCertificatesScanner)
+        let viewController = connectRemoteNodeViewController(rpcCredentials: rpcCredentials)
         navigationController?.pushViewController(viewController, animated: true)
     }
 
-    private func didSetupWallet(configuration: WalletConfiguration) {
-        walletConfigurationStore.addWallet(walletConfiguration: configuration)
-        delegate?.connectWallet(configuration: configuration)
+    private func didSetupWallet(connection: LightningConnection) {
+        do {
+            try delegate?.presentWallet(connection: connection)
+            createWalletNavigationController?.dismiss(animated: true, completion: nil)
+        } catch {
+            Logger.error(error)
+        }
     }
 
     private func presentNodeCertificatesScanner() {
@@ -116,30 +132,37 @@ final class SetupCoordinator: Coordinator {
         navigationController?.present(viewController, animated: true, completion: nil)
     }
 
-    private func presentDisabledAlert() {
-        let alert = UIAlertController(title: L10n.Scene.SelectWalletConnection.DisabledAlert.title, message: L10n.Scene.SelectWalletConnection.DisabledAlert.message, preferredStyle: .alert)
-        alert.addAction(UIAlertAction(title: L10n.Scene.SelectWalletConnection.DisabledAlert.okButton, style: .cancel, handler: nil))
-        navigationController?.present(alert, animated: true, completion: nil)
-    }
-
     private func walletListViewController() -> ManageWalletsViewController {
+        let viewModel = ManageWalletsViewModel(walletConfigurationStore: walletConfigurationStore)
         return ManageWalletsViewController.instantiate(addWalletButtonTapped: { [weak self] in
             guard let self = self else { return }
             self.navigationController?.pushViewController(self.setupWalletViewController(), animated: true)
-        }, walletConfigurationStore: walletConfigurationStore, connectWallet: connectWallet)
+        }, manageWalletsViewModel: viewModel, connectWallet: connectWallet)
     }
 
     private func setupWalletViewController() -> UIViewController {
         #if REMOTEONLY
-        let viewModel = ConnectRemoteNodeViewModel(rpcCredentials: nil)
-        connectRemoteNodeViewModel = viewModel
-        return ConnectRemoteNodeViewController.instantiate(didSetupWallet: didSetupWallet, connectRemoteNodeViewModel: viewModel, presentQRCodeScannerButtonTapped: presentNodeCertificatesScanner)
+        return connectRemoteNodeViewController(rpcCredentials: nil)
         #else
-        return SelectWalletCreationMethodViewController.instantiate(createButtonTapped: createNewWallet, recoverButtonTapped: recoverExistingWallet, connectButtonTapped: connectRemoteNode)
+        if walletConfigurationStore.hasLocalWallet {
+            return connectRemoteNodeViewController(rpcCredentials: nil)
+        } else {
+            return SelectWalletCreationMethodViewController.instantiate(createButtonTapped: createNewLocalWallet, recoverButtonTapped: recoverExistingWallet, connectButtonTapped: connectRemoteNode)
+        }
         #endif
     }
 
-    private func connectWallet(_ walletConfiguration: WalletConfiguration) {
-        delegate?.connectWallet(configuration: walletConfiguration)
+    private func connectRemoteNodeViewController(rpcCredentials: RPCCredentials?) -> ConnectRemoteNodeViewController {
+        let viewModel = ConnectRemoteNodeViewModel(rpcCredentials: rpcCredentials)
+        connectRemoteNodeViewModel = viewModel
+        return ConnectRemoteNodeViewController.instantiate(didSetupWallet: didSetupWallet, connectRemoteNodeViewModel: viewModel, presentQRCodeScannerButtonTapped: presentNodeCertificatesScanner)
+    }
+
+    private func connectWallet(_ connection: LightningConnection) {
+        do {
+            try delegate?.presentWallet(connection: connection)
+        } catch {
+            Logger.error(error)
+        }
     }
 }

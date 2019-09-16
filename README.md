@@ -7,13 +7,13 @@
 
 <p align='center'>
   <a href='https://zap.jackmallers.com'>
-    <img src='https://raw.githubusercontent.com/LN-Zap/zap-iOS/master/docs/screenshot.png' height='450' alt='screenshot' />
+    <img src='https://raw.githubusercontent.com/LN-Zap/zap-iOS/master/docs/screenshot.jpg' height='450' alt='screenshot' />
   </a>
 </p>
 
-### [Download the alpha 🔥](https://testflight.apple.com/join/P32C380R)
+### [Download the mainnet alpha 🔥](https://testflight.apple.com/join/elC3EXAK)
 
-Zap is a free Lightning Network wallet focused on user experience and ease of use, with the overall goal of helping the cryptocurrency community scale Bitcoin and other cryptocurrencies.
+Zap is a free Lightning Network wallet focused on user experience and ease of use, with the overall goal of helping the cryptocurrency community scale Bitcoin.
 
 We have an active [slack][slack] channel where you can join the discussion on development, design and product.
 

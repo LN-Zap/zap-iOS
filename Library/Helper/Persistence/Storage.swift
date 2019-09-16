@@ -34,6 +34,6 @@ public enum Storage {
     }
 
     private static func url(for filename: String) -> URL? {
-        return FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first?.appendingPathComponent("\(filename).plist")
+        return FileManager.default.urls(for: .applicationSupportDirectory, in: .userDomainMask).first?.appendingPathComponent("\(filename).plist")
     }
 }

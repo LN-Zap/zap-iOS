@@ -7,51 +7,104 @@
 
 import Foundation
 import Logger
+import SwiftBTC
 
-final class LocalLndConfiguration {
-    var sections = [String: [(String, String)]]()
+struct LocalLndConfiguration {
+    var network = Network.testnet
+    var alias = "Zap iOS"
 
-    private init() {}
+    private var userAgentVersion: String? {
+        guard
+            let versionNumber = Bundle.main.object(forInfoDictionaryKey: "CFBundleShortVersionString") as? String,
+            let buildNumber = Bundle.main.object(forInfoDictionaryKey: "CFBundleVersion") as? String
+            else { return nil }
+        return "\(versionNumber)-\(buildNumber)"
+    }
 
-    static let standard: LocalLndConfiguration = {
-        let configuration = LocalLndConfiguration()
-        configuration.set("Application Options", key: "debuglevel", value: "ATPL=debug,BRAR=debug,BTCN=info,CHDB=debug,CMGR=debug,CNCT=debug,CRTR=warn,DISC=debug,FNDG=debug,HSWC=debug,LNWL=debug,LTND=debug,NTFN=debug,PEER=info,RPCS=debug,SPHX=debug,SRVR=debug,UTXN=debug")
-        configuration.set("Application Options", key: "maxpendingchannels", value: "10")
-        configuration.set("Application Options", key: "nobootstrap", value: "1")
-        configuration.set("Application Options", key: "nolisten", value: "1")
-        configuration.set("Application Options", key: "alias", value: "Zap iOS")
-        configuration.set("Application Options", key: "color", value: "#3399FF")
+    private typealias Configuration = [Section: [(String, String)]]
 
-        configuration.set("Bitcoin", key: "bitcoin.active", value: "1")
-        configuration.set("Bitcoin", key: "bitcoin.testnet", value: "1")
-        configuration.set("Bitcoin", key: "bitcoin.node", value: "neutrino")
+    private enum Section: String {
+        case applicationOptions = "Application Options"
+        case bitcoin = "Bitcoin"
+        case neutrino = "Neutrino"
+        case autopilot = "autopilot"
+    }
 
-        configuration.set("neutrino", key: "neutrino.connect", value: "testnet1-btcd.zaphq.io")
-        configuration.set("neutrino", key: "neutrino.connect", value: "testnet2-btcd.zaphq.io")
-
-        configuration.set("autopilot", key: "autopilot.active", value: "0")
-        return configuration
-    }()
-
-    private func set(_ section: String, key: String, value: String) {
-        if sections[section] == nil {
-            sections[section] = [(key, value)]
-        } else {
-            sections[section]?.append((key, value))
+    private var networkString: String {
+        switch network {
+        case .regtest:
+            return "bitcoin.regtest"
+        case .testnet:
+            return "bitcoin.testnet"
+        case .mainnet:
+            return "bitcoin.mainnet"
+        case .simnet:
+            return "bitcoin.simnet"
         }
     }
 
-    private var string: String {
-        return sections.reduce("") {
+    private var neutrinoNodes: [String] {
+        switch network {
+        case .mainnet:
+            return ["mainnet1-btcd.zaphq.io", "mainnet2-btcd.zaphq.io"]
+        case .testnet:
+            return ["testnet1-btcd.zaphq.io", "testnet2-btcd.zaphq.io", "btcd-testnet.lightning.computer"]
+        case .simnet, .regtest:
+            return ["localhost"]
+        }
+    }
+
+    private var configuration: Configuration {
+        var configuration: Configuration = [
+            .applicationOptions: [
+                ("debuglevel", "ATPL=debug,BRAR=debug,BTCN=info,CHDB=debug,CMGR=debug,CNCT=debug,CRTR=warn,DISC=debug,FNDG=debug,HSWC=debug,LNWL=debug,LTND=debug,NTFN=debug,PEER=info,RPCS=debug,SPHX=debug,SRVR=debug,UTXN=debug"),
+                ("no-macaroons", "1"),
+                ("nolisten", "1"),
+                ("alias", alias),
+                ("color", "#3399FF"),
+                ("maxbackoff", "2s"),
+                ("routing.assumechanvalid", "true"),
+                ("ignore-historical-gossip-filters", "1"),
+                ("restlisten", "0")
+            ],
+            .bitcoin: [
+                ("bitcoin.active", value: "1"),
+                (networkString, value: "1"),
+                ("bitcoin.node", value: "neutrino")
+            ],
+            .neutrino: [
+                ("neutrino.feeurl", value: "https://nodes.lightning.computer/fees/v1/btc-fee-estimates.json"),
+                ("neutrino.useragentname", "zap-ios")
+            ],
+            .autopilot: [
+                ("autopilot.active", value: "0")
+            ]
+        ]
+
+        for node in neutrinoNodes {
+            configuration[.neutrino]?.append(("neutrino.connect", value: node))
+        }
+
+        if let userAgentVersion = userAgentVersion {
+            configuration[.neutrino]?.append(("neutrino.useragentversion", value: userAgentVersion))
+        }
+
+        return configuration
+    }
+
+    private func string(from configuration: Configuration) -> String {
+        return configuration.reduce("") {
             let lines = $1.1.reduce("") { $0 + "\($1.0)=\($1.1)\n" }
-            return $0 + "[\($1.0)]\n\(lines)\n"
+            return $0 + "[\($1.0.rawValue)]\n\(lines)\n"
         }
     }
 
     func save(at path: URL) {
         let configurationDestination = path.appendingPathComponent("lnd.conf")
         do {
-            try string.write(to: configurationDestination, atomically: false, encoding: .utf8)
+            let configString = string(from: configuration)
+            Logger.info(configString)
+            try configString.write(to: configurationDestination, atomically: false, encoding: .utf8)
         } catch {
             Logger.error(error)
         }

@@ -13,18 +13,19 @@ import SwiftLnd
 final class InvoiceListUpdater: GenericListUpdater {
     typealias Item = Invoice
 
-    private let api: LightningApiProtocol
+    private let api: LightningApi
 
     let items = MutableObservableArray<Invoice>()
 
-    init(api: LightningApiProtocol) {
+    init(api: LightningApi) {
         self.api = api
 
         api.subscribeInvoices { [weak self] in
             if case .success(let invoice) = $0 {
                 Logger.info("new invoice: \(invoice)")
 
-                if self?.appendOrReplace(invoice) == true && invoice.state == .settled {
+                self?.appendOrReplace(invoice)
+                if invoice.state == .settled {
                     NotificationCenter.default.post(name: .receivedTransaction, object: nil, userInfo: [LightningService.transactionNotificationName: invoice])
                 }
             }

@@ -8,19 +8,18 @@
 import Bond
 import Foundation
 import Logger
-import ReactiveKit
 import SwiftBTC
 import SwiftLnd
 
 public final class ChannelService {
-    private let api: LightningApiProtocol
+    private let api: LightningApi
     private let channelListUpdater: ChannelListUpdater
 
-    public var open: MutableObservableArray<Channel> {
+    public var open: MutableObservableArray<OpenChannel> {
         return channelListUpdater.open
     }
 
-    public var pending: MutableObservableArray<Channel> {
+    public var pending: MutableObservableArray<PendingChannel> {
         return channelListUpdater.pending
     }
 
@@ -40,35 +39,50 @@ public final class ChannelService {
         return maxRemoteBalance
     }
 
-    init(api: LightningApiProtocol, channelListUpdater: ChannelListUpdater) {
+    let staticChannelBackupper: StaticChannelBackupper
+
+    init(api: LightningApi, channelListUpdater: ChannelListUpdater, staticChannelBackupper: StaticChannelBackupper) {
         self.api = api
         self.channelListUpdater = channelListUpdater
+        self.staticChannelBackupper = staticChannelBackupper
+
+        api.exportAllChannelsBackup { [weak self] in
+            self?.handleChannelBackup($0)
+        }
+
+        api.subscribeChannelBackups { [weak self] in
+            self?.handleChannelBackup($0)
+        }
     }
 
-    public func open(lightningNodeURI: LightningNodeURI, amount: Satoshi, completion: @escaping (Swift.Result<ChannelPoint, LndApiError>) -> Void) {
+    private func handleChannelBackup(_ result: Result<ChannelBackup, LndApiError>) {
+        staticChannelBackupper.data = result.map { $0.data }
+    }
+
+    public func open(lightningNodeURI: LightningNodeURI, csvDelay: Int?, amount: Satoshi, completion: @escaping ApiCompletion<ChannelPoint>) {
         api.peers { [weak self, api] result in
             if (try? result.get())?.contains(where: { $0.pubKey == lightningNodeURI.pubKey }) == true {
-                self?.openConnectedChannel(pubKey: lightningNodeURI.pubKey, amount: amount, completion: completion)
+                self?.openConnectedChannel(pubKey: lightningNodeURI.pubKey, csvDelay: csvDelay, amount: amount, completion: completion)
             } else {
                 api.connect(pubKey: lightningNodeURI.pubKey, host: lightningNodeURI.host) { result in
                     if case .failure(let error) = result {
                         completion(.failure(LndApiError.localizedError(error.localizedDescription)))
                     } else {
-                        self?.openConnectedChannel(pubKey: lightningNodeURI.pubKey, amount: amount, completion: completion)
+                        self?.openConnectedChannel(pubKey: lightningNodeURI.pubKey, csvDelay: csvDelay, amount: amount, completion: completion)
                     }
                 }
             }
         }
     }
 
-    private func openConnectedChannel(pubKey: String, amount: Satoshi, completion: @escaping (Swift.Result<ChannelPoint, LndApiError>) -> Void) {
-        api.openChannel(pubKey: pubKey, amount: amount) { [channelListUpdater] in
+    private func openConnectedChannel(pubKey: String, csvDelay: Int?, amount: Satoshi, completion: @escaping ApiCompletion<ChannelPoint>) {
+        api.openChannel(pubKey: pubKey, csvDelay: csvDelay, amount: amount) { [channelListUpdater] in
             channelListUpdater.update()
             completion($0)
         }
     }
 
-    public func close(_ channel: Channel, completion: @escaping (Swift.Result<CloseStatusUpdate, LndApiError>) -> Void) {
+    public func close(_ channel: Channel, completion: @escaping ApiCompletion<CloseStatusUpdate>) {
         let force = channel.state != .active
         api.closeChannel(channelPoint: channel.channelPoint, force: force) { [channelListUpdater] in
             channelListUpdater.update()
@@ -82,9 +96,14 @@ public final class ChannelService {
             case .success(let nodeInfo):
                 let connectedNode = nodeInfo.node
                 completion(connectedNode)
+
             case .failure:
                 completion(nil)
             }
         }
+    }
+
+    public func update() {
+        channelListUpdater.update()
     }
 }

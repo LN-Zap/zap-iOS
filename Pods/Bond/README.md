@@ -48,7 +48,7 @@ textField.reactive.text
 
 Whenever a change occurs in the text field, new value will be transformed by the closure and propagated to the label.
 
-Notice how we have used `reactive.text` property of the fext field. It is an observable representation of the `text` property provided by Bond framework. There are many other extensions like that one for various UIKit components. They are all placed within the `.reactive` proxy.
+Notice how we have used `reactive.text` property of the text field. It is an observable representation of the `text` property provided by Bond framework. There are many other extensions like that one for various UIKit components. They are all placed within the `.reactive` proxy.
 
 For example, to observe button events do:
 
@@ -74,7 +74,7 @@ You can use any ReactiveKit operators to transform or combine signals. Following
 combineLatest(emailField.reactive.text, passField.reactive.text) { email, pass in
     return email.length > 0 && pass.length > 0
   }
-  .bind(to: button.reactive.enabled)
+  .bind(to: button.reactive.isEnabled)
 ```
 
 Whenever user types something into any of these text fields, expression will be evaluated and button state updated.
@@ -202,14 +202,43 @@ If you have an extensions that makes your favourite framework work with Bond and
 ### Carthage
 
 1. Add the following to your *Cartfile*:
-  <br> `github "DeclarativeHub/Bond"`
+ 
+    ```
+    github "DeclarativeHub/Bond"
+    ```
+ 
 2. Run `carthage update`
 3. Add the framework as described in [Carthage Readme](https://github.com/Carthage/Carthage#adding-frameworks-to-an-application)
+
+### Accio
+
+1. Add the following to your Package.swift:
+
+    ```swift
+    .package(url: "https://github.com/DeclarativeHub/Bond.git", .upToNextMajor(from: "7.4.1")),
+    ```
+
+2. Next, add `Bond` to your App targets dependencies like so:
+
+    ```swift
+    .target(
+        name: "App",
+        dependencies: [
+            "Bond",
+        ]
+    ),
+    ```
+
+3. Then run `accio update`.
 
 ### CocoaPods
 
 1. Add the following to your *Podfile*:
-  <br> `pod 'Bond'`
+  
+    ```
+    pod 'Bond'
+    ```
+  
 2. Run `pod install`.
 
 ## License

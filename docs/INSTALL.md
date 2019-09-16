@@ -57,7 +57,13 @@ For automating the development and release process.
 
 ### Build Configurations
 
-The app supports both connecting to remote *lnd* instances as well as running *lnd* on the
-device. By default running *lnd* on the device is disabled. If you want to turn it on you have to
-switch the Build Configuration from *debugRemote* to *debug*, build the
-*Lndmobile.framework* framework and place it into the *Frameworks* folder.
+We currently support two ways of connecting to `lnd`:
+
+1. Running `lnd` on your local device.
+2. Connecting to a remote `lnd` instance.
+
+On-device `lnd` is the default, and in order to support this, you'll need to build the
+`Lndmobile.framework` framework and place it into the `Frameworks` folder.
+
+If you'd prefer connecting to a remote `lnd` instance without building `Lndmobile.framework`,
+you can edit the `Zap` run scheme and switch the Build Configuration from `debug` to `debugRemote`.
