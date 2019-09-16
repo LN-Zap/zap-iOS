@@ -60,7 +60,10 @@ extension ManageWalletsViewController: UITableViewDelegate {
             else { return }
         label.text = view.textLabel?.text?.capitalized
         Style.Label.body.apply(to: label)
-        view.backgroundView?.backgroundColor = UIColor.Zap.seaBlue
+
+        let backgroundView = UIView()
+        backgroundView.backgroundColor = UIColor.Zap.seaBlue
+        view.backgroundView = backgroundView
     }
 }
 
