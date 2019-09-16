@@ -160,38 +160,38 @@
 "scene.connect_remote_node.scan_button" = "مسح";
 "scene.connect_remote_node.paste_button" = "لصق";
 "scene.connect_remote_node.help_button" = "تحتاج مساعدة؟";
-"scene.connect_remote_node.server_error" = "Could not connect to server.";
-"scene.connect_remote_node.your_node_title" = "Your Node";
-"scene.connect_remote_node.certificate_detail.certificate_title" = "Certificate";
+"scene.connect_remote_node.server_error" = "لا يمكن الاتصال بالخادم.";
+"scene.connect_remote_node.your_node_title" = "الـ Node الخاصة بك";
+"scene.connect_remote_node.certificate_detail.certificate_title" = "شهادة";
 "scene.connect_remote_node.certificate_detail.macaroon_title" = "Macaroon";
-"scene.connect_remote_node.edit_url.title" = "Address";
+"scene.connect_remote_node.edit_url.title" = "عنوان";
 
-"scene.create_wallet.title" = "Recovery Phrase";
-"scene.create_wallet.description_label" = "Write down the recovery phrase and store it at a safe location.";
-"scene.create_wallet.next_button" = "Next";
+"scene.create_wallet.title" = "عبارة الاسترداد";
+"scene.create_wallet.description_label" = "اكتب عبارة الاسترداد وقم بتخزينها في مكان آمن.";
+"scene.create_wallet.next_button" = "التالى";
 
-"scene.recover_wallet.title" = "Recover Wallet";
-"scene.recover_wallet.done_button" = "Done";
-"scene.recover_wallet.description_label" = "Enter your recovery phrase:";
+"scene.recover_wallet.title" = "استعادة المحفظة";
+"scene.recover_wallet.done_button" = "تم";
+"scene.recover_wallet.description_label" = "أدخل عبارة الاسترداد الخاصة بك:";
 "scene.recover_wallet.placeholder" = "abandon ability able about above absent absorb abstract absurd abuse access accident account accuse achieve acid acoustic acquire across act action actor actress actual";
-"scene.recover_wallet.select_channel_backup_button" = "Select Channel Backup";
+"scene.recover_wallet.select_channel_backup_button" = "حدد النسخة الاحتياط للقناة";
 
-"scene.select_wallet_connection.create.title" = "Create";
-"scene.select_wallet_connection.recover.title" = "Recover";
-"scene.select_wallet_connection.connect.title" = "Connect";
-"scene.select_wallet_connection.message" = "Bitcoin for **everyone**";
+"scene.select_wallet_connection.create.title" = "أنشأ";
+"scene.select_wallet_connection.recover.title" = "استعادة";
+"scene.select_wallet_connection.connect.title" = "الاتصال";
+"scene.select_wallet_connection.message" = "Bitcoin للـ **جميع**";
 
-"scene.main.send_button" = "Send";
-"scene.main.receive_button" = "Receive";
-"scene.main.exchange_rate_label" = "%@ per BTC";
+"scene.main.send_button" = "إرسال";
+"scene.main.receive_button" = "استقبل";
+"scene.main.exchange_rate_label" = "%@ لكل BTC";
 
-"scene.qr_code_detail.title" = "Receive";
+"scene.qr_code_detail.title" = "استقبل";
 
-"scene.sync.description_label" = "Syncing to blockchain…";
+"scene.sync.description_label" = "المزامنة مع blockchain…";
 
-"scene.transaction_detail.title.lightning_invoice" = "Invoice Detail";
-"scene.transaction_detail.title.payment_detail" = "Payment Detail";
-"scene.transaction_detail.title.transaction_detail" = "Transaction Detail";
+"scene.transaction_detail.title.lightning_invoice" = "تفاصيل الفاتورة";
+"scene.transaction_detail.title.payment_detail" = "تفاصيل الدفع";
+"scene.transaction_detail.title.transaction_detail" = "تفاصيل الصفقة";
 "scene.transaction_detail.title.channel_event_detail" = "Channel Event";
 "scene.transaction_detail.title.failed_payment" = "Failed Payment";
 "scene.transaction_detail.memo_label" = "Memo";
