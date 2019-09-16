@@ -202,7 +202,7 @@
 "scene.transaction_detail.address_label" = "عنوان";
 "scene.transaction_detail.expiry_label" = "مدة الصلاحية";
 "scene.transaction_detail.expiry_label.expired" = "منتهية الصلاحية";
-"scene.transaction_detail.invoice_state_label" = "State";
+"scene.transaction_detail.invoice_state_label" = "حالة";
 "scene.transaction_detail.invoice_state_label.settled" = "مسدد";
 "scene.transaction_detail.preimage_label" = "Preimage";
 "scene.transaction_detail.preimage_copy_message" = "نسخ Preimage.";
@@ -252,11 +252,11 @@
 "scene.history.cell.channel_closed" = "قناة مغلقة";
 "scene.history.cell.force_close_channel" = "قناة مغلقة أجباري";
 "scene.history.cell.remote_force_close_channel" = "أجبار القناة على الأغلاق عن بعد";
-"scene.history.cell.breach_close_channel" = "Breach closed Channel";
-"scene.history.cell.close_channel_funding_canceled" = "Closed Channel (funding canceled)";
-"scene.history.cell.channel_abandoned" = "Channel abandoned";
-"scene.history.cell.transaction_sent" = "Payment sent";
-"scene.history.cell.transaction_received" = "Payment received";
+"scene.history.cell.breach_close_channel" = "خرق قناة مغلقة";
+"scene.history.cell.close_channel_funding_canceled" = "قناة مغلقة (تم إلغاء التمويل)";
+"scene.history.cell.channel_abandoned" = "قناة مهجورة";
+"scene.history.cell.transaction_sent" = "تم ارسال الدفعة";
+"scene.history.cell.transaction_received" = "تم استلام الدفعة";
 "scene.history.cell.label.new" = "جديد";
 "scene.history.cell.label.error" = "خطأ";
 
