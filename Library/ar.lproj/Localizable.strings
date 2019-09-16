@@ -218,25 +218,25 @@
 "scene.channel_detail.force_close_button" = "أجبار القناة بالإغلاق";
 
 "scene.filter.title" = "Filter";
-"scene.filter.section_header.transaction_types" = "Transaction Types";
-"scene.filter.displayOnChainTransactions" = "On-chain Payments";
-"scene.filter.display_expired_invoices" = "Expired Invoices";
-"scene.filter.displayLightningPayments" = "Lightning Payments";
-"scene.filter.displayLightningInvoices" = "Created Invoices";
-"scene.filter.displayChannelEvents" = "Channel Events";
+"scene.filter.section_header.transaction_types" = "أنواع المعاملات";
+"scene.filter.displayOnChainTransactions" = "المدفوعات On-chain";
+"scene.filter.display_expired_invoices" = "فواتير منتهية الصلاحية";
+"scene.filter.displayLightningPayments" = "المدفوعات Lightning";
+"scene.filter.displayLightningInvoices" = "إنشاء الفواتير";
+"scene.filter.displayChannelEvents" = "حالات القناة";
 
-"scene.qrcode_scanner.top_label" = "Scan QR-Code";
-"scene.qrcode_scanner.error.unknown_format" = "Unknown address format.";
-"scene.qrcode_scanner.error.wrong_network" = "You tried opening an invoice for %@ but your node is connected to %@.";
-"scene.qrcode_scanner.error.zero_amount_invoice" = "For security reasons zap does not support invoices without a specified amount.";
+"scene.qrcode_scanner.top_label" = "مسح QR-Code";
+"scene.qrcode_scanner.error.unknown_format" = "هيئة العنوان غير معروفة.";
+"scene.qrcode_scanner.error.wrong_network" = "لقد حاولت فتح فاتورة لـ %@ ولكن node الخاصة بك متصلة بـ %@.";
+"scene.qrcode_scanner.error.zero_amount_invoice" = "لأسباب أمنية ، لا يدعم zap الفواتير بدون مبلغ محدد.";
 
-"scene.wallet.title" = "Wallet";
-"scene.wallet.total_balance" = "Total Balance";
+"scene.wallet.title" = "محفظة";
+"scene.wallet.total_balance" = "الرصيد الكلي";
 "scene.wallet.detail.on_chain" = "On-chain:";
 "scene.wallet.detail.lightning" = "Lightning:";
-"scene.wallet.detail.pending" = "Pending:";
-"scene.wallet.empty_state.title" = "Fund your wallet";
-"scene.wallet.empty_state.message" = "Your wallet is empty! Get started by depositing some funds.";
+"scene.wallet.detail.pending" = "قيد الانتظار:";
+"scene.wallet.empty_state.title" = "تمويل محفظتك";
+"scene.wallet.empty_state.message" = "محفظتك فارغة! ابدأ بإيداع بعض الأموال.";
 "scene.wallet.empty_state.button_title" = "Deposit funds";
 
 "scene.time_lock.headline" = "Wrong Passcode";
