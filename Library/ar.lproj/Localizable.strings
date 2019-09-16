@@ -140,15 +140,15 @@
 "scene.send.on_chain.fee.fast" = "بسرعة";
 "scene.send.on_chain.fee.medium" = "متوسط";
 "scene.send.on_chain.fee.slow" = "بطيء";
-"scene.send.on_chain.fee.description.fast" = "Fast Transaction";
-"scene.send.on_chain.fee.description.medium" = "Medium Transaction";
-"scene.send.on_chain.fee.description.slow" = "Slow Transaction";
+"scene.send.on_chain.fee.description.fast" = "حوالة سريعة";
+"scene.send.on_chain.fee.description.medium" = "حوالة عادية";
+"scene.send.on_chain.fee.description.slow" = "حوالة بطيئة";
 
-"scene.send.on_chain.fee.estimated_delivery" = "Estimated Delivery: %@";
-"scene.send.authentication_failed" = "Authentication failed";
-"scene.send.maximum_fee" = "Expected Fee:";
-"scene.send.subtitle.on_chain_balance" = "On-chain balance: %@";
-"scene.send.subtitle.lightning_can_send_balance" = "Can send: %@";
+"scene.send.on_chain.fee.estimated_delivery" = "التسليم المقدر:%@";
+"scene.send.authentication_failed" = "المصادقة فشلت";
+"scene.send.maximum_fee" = "الرسوم المتوقعة:";
+"scene.send.subtitle.on_chain_balance" = "الرصيد On-chain: %@";
+"scene.send.subtitle.lightning_can_send_balance" = "يمكن أن ترسل: %@";
 "scene.send.success_label" = "Payment Successful";
 "scene.send.paste_button.title" = "Paste Address";
 
