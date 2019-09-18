@@ -28,7 +28,7 @@ final class ChannelBackupViewController: UIViewController {
     }()
 
     private var latestDate: Date? {
-        return StaticChannelBackupStateStore.lastBackup(nodePubKey: nodePubKey, backupServiceKeys: backupServiceKeys)
+        return StaticChannelBackupStateStore.lastBackup(nodePubKey: nodePubKey, backupServiceKey: ICloudDriveBackupService.key)
     }
 
     private var channelBackupURL: URL? {
