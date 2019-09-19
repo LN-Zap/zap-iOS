@@ -86,9 +86,31 @@ final class RecoverWalletViewController: UIViewController {
     }
 
     @IBAction private func selectBackup(_ sender: Any) {
+        #if targetEnvironment(simulator)
+        // UIDocumentPickerViewController is broken on simulator
+        let alertController = UIAlertController(title: "Debug", message: "Paste base64 file data.", preferredStyle: .alert)
+        alertController.addTextField { textField in
+            textField.placeholder = "base64"
+        }
+        let confirmAction = UIAlertAction(title: "Ok", style: .default) { [weak self] _ in
+            guard let textField = alertController.textFields?.first else { return }
+
+            if let text = textField.text, let data = Data(base64Encoded: text) {
+                self?.recoverWalletViewModel.staticChannelBackup = ChannelBackup(data: data)
+                self?.selectBackupButton.setTitle("✅", for: .normal)
+            } else {
+                self?.selectBackupButton.setTitle("⚠️", for: .normal)
+            }
+        }
+        alertController.addAction(confirmAction)
+        let cancelAction = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
+        alertController.addAction(cancelAction)
+        present(alertController, animated: true)
+        #else
         let viewController = UIDocumentPickerViewController(documentTypes: ["public.item"], in: .import)
         viewController.delegate = self
         present(viewController, animated: false)
+        #endif
     }
 }
 
