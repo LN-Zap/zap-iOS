@@ -8,5 +8,5 @@
 
 "applicationShortcutItem.send" = "Sending";
 "applicationShortcutItem.request" = "Mottak";
-"NSCameraUsageDescription" = "Zap krever tilgang til kameraet på mobilen din.";
+"NSCameraUsageDescription" = "Turn on camera access to scan QR codes.";
 "NSFaceIDUsageDescription" = "Zap krever tilgang til Face ID.";

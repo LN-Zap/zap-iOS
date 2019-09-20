@@ -8,5 +8,5 @@
 
 "applicationShortcutItem.send" = "Надіслати";
 "applicationShortcutItem.request" = "Отримати";
-"NSCameraUsageDescription" = "Zap вимагає доступу до вашої камери.";
+"NSCameraUsageDescription" = "Turn on camera access to scan QR codes.";
 "NSFaceIDUsageDescription" = "Zap вимагає доступ до Face ID.";

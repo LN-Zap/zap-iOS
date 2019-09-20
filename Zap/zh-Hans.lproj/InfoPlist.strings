@@ -8,5 +8,5 @@
 
 "applicationShortcutItem.send" = "转账";
 "applicationShortcutItem.request" = "收款";
-"NSCameraUsageDescription" = "Zap 需要访问你手机的摄像头";
+"NSCameraUsageDescription" = "Turn on camera access to scan QR codes.";
 "NSFaceIDUsageDescription" = "Zap需要访问人脸 ID。";

@@ -94,7 +94,7 @@
 "scene.channels.close_loading_view" = "Kanal schließen";
 "scene.channels.close_success.toast" = "Channel wird geschlossen.";
 "scene.channels.empty_state.title" = "Einen Channel öffnen";
-"scene.channels.empty_state.message" = "You can't transact on the Lightning Network yet! Let's open a channel to start transacting on the Lightning Network.";
+"scene.channels.empty_state.message" = "Du kannst noch keine Transaktionen im Lightning Network tätigen! Öffne einen Kanal, um mit der Transaktion im Lightning-Netzwerk zu beginnen.";
 "scene.channels.empty_state.button_title" = "Einen Channel öffnen";
 
 "scene.open_channel.title" = "Channel öffnen";
@@ -119,7 +119,7 @@
 "scene.onboarding.page_1.button_title" = "Weiter";
 
 "scene.onboarding.page_2.title" = "Notiere dir deinen **Wiederherstellungsphrase**";
-"scene.onboarding.page_2.message" = "Write down your phrase. You can use your phrase to recover your funds anytime if you misplace your device.";
+"scene.onboarding.page_2.message" = "Schreibe deine seed-phrase auf. Wenn du dein Gerät verlegt hast, kannst du jederzeit deine seed-phrase verwenden um dein Guthaben wiederherzustellen.";
 "scene.onboarding.page_2.button_title" = "Weiter";
 
 "scene.onboarding.page_3.title" = "Bewahre es sicher auf";
@@ -213,7 +213,7 @@
 "scene.channel_detail.remote_balance_label" = "Remote Kontostand";
 "scene.channel_detail.closing_time.label" = "Schließt in";
 "scene.channel_detail.funding_transaction_label" = "Finanzierungstransaktion";
-"scene.channel_detail.closing_transaction_label" = "Closing Transaction";
+"scene.channel_detail.closing_transaction_label" = "Transaktion wird abgeschlossen";
 "scene.channel_detail.close_button" = "Channel schließen";
 "scene.channel_detail.force_close_button" = "Erzwinge Channel-Schließung";
 
@@ -251,8 +251,8 @@
 "scene.history.cell.channel_opened" = "Zahlungskanal öffnen";
 "scene.history.cell.channel_closed" = "Geschlossener Channel";
 "scene.history.cell.force_close_channel" = "Erzwinge Channel-Schließung";
-"scene.history.cell.remote_force_close_channel" = "Remote forced close Channel";
-"scene.history.cell.breach_close_channel" = "Breach closed Channel";
+"scene.history.cell.remote_force_close_channel" = "Vom Peer erzwungener geschlossener Kanal";
+"scene.history.cell.breach_close_channel" = "Durch Verstoß geschlossener Kanal";
 "scene.history.cell.close_channel_funding_canceled" = "Geschlossene Zahlungskanäle (Finanzierung wurde abgebrochen)";
 "scene.history.cell.channel_abandoned" = "Channel aufgegeben";
 "scene.history.cell.transaction_sent" = "Zahlung gesendet";

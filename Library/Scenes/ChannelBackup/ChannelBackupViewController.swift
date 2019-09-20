@@ -18,8 +18,7 @@ final class ChannelBackupViewController: UIViewController {
     @IBOutlet private weak var errorMessageLabel: UILabel!
 
     static let cellContent: [(String, BackupService.Type)] = [
-        ("iCloud Drive", ICloudDriveBackupService.self),
-        ("Local Backup", LocalDocumentBackupService.self)
+        ("iCloud Drive", ICloudDriveBackupService.self)
     ]
 
     private var nodePubKey: String! // swiftlint:disable:this implicitly_unwrapped_optional
@@ -29,7 +28,7 @@ final class ChannelBackupViewController: UIViewController {
     }()
 
     private var latestDate: Date? {
-        return StaticChannelBackupStateStore.lastBackup(nodePubKey: nodePubKey, backupServiceKeys: backupServiceKeys)
+        return StaticChannelBackupStateStore.lastBackup(nodePubKey: nodePubKey, backupServiceKey: ICloudDriveBackupService.key)
     }
 
     private var channelBackupURL: URL? {

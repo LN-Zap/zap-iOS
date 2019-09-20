@@ -8,5 +8,5 @@
 
 "applicationShortcutItem.send" = "Στείλετε";
 "applicationShortcutItem.request" = "Λάβετε";
-"NSCameraUsageDescription" = "Το Zap απαιτεί πρόσβαση στην κάμερα του τηλεφώνου σας.";
+"NSCameraUsageDescription" = "Turn on camera access to scan QR codes.";
 "NSFaceIDUsageDescription" = "Το Zap απαιτεί πρόσβαση στο αναγνωριστικό προσώπου (Face ID).";
