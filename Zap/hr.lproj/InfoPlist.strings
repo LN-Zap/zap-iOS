@@ -8,5 +8,5 @@
 
 "applicationShortcutItem.send" = "Slanje";
 "applicationShortcutItem.request" = "Primanje";
-"NSCameraUsageDescription" = "Zap zahtijeva pristup kameri vašeg telefona.";
+"NSCameraUsageDescription" = "Turn on camera access to scan QR codes.";
 "NSFaceIDUsageDescription" = "Zap zahtijeva pristup na Face ID.";
