@@ -8,5 +8,5 @@
 
 "applicationShortcutItem.send" = "Odeslat";
 "applicationShortcutItem.request" = "Přijmout";
-"NSCameraUsageDescription" = "Zap vyžaduje přístup k fotoaparátu Vašeho telefonu.";
+"NSCameraUsageDescription" = "Turn on camera access to scan QR codes.";
 "NSFaceIDUsageDescription" = "Zap vyžaduje přístup k Face ID.";

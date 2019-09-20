@@ -8,5 +8,5 @@
 
 "applicationShortcutItem.send" = "إرسال";
 "applicationShortcutItem.request" = "استقبل";
-"NSCameraUsageDescription" = "يتطلب Zap الوصول إلى كاميرا هاتفك.";
+"NSCameraUsageDescription" = "Turn on camera access to scan QR codes.";
 "NSFaceIDUsageDescription" = "يتطلب Zap الوصول إلى Face ID.";
