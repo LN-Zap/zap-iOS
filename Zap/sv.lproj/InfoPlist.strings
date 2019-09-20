@@ -8,5 +8,5 @@
 
 "applicationShortcutItem.send" = "Skicka";
 "applicationShortcutItem.request" = "Ta emot";
-"NSCameraUsageDescription" = "Zap kräver åtkomst till telefonens kamera.";
+"NSCameraUsageDescription" = "Turn on camera access to scan QR codes.";
 "NSFaceIDUsageDescription" = "Zap kräver tillgång till ansikte-ID.";
