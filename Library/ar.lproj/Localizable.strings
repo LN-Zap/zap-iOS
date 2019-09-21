@@ -70,7 +70,7 @@
 "scene.settings.item.privacy_policy" = "سياسة الخصوصية";
 "scene.settings.item.lnd_log" = "إظهار سجل lnd";
 
-"scene.request.title" = "تلقى";
+"scene.request.title" = "استقبال";
 "scene.request.lightning_button" = "Lightning";
 "scene.request.or_separator_label" = "أو";
 "scene.request.on_chain_button" = "On-chain";
@@ -136,15 +136,15 @@
 "scene.send.sending" = "إرسال...";
 "scene.send.lightning.title" = "إرسال دفعة Lightning";
 "scene.send.on_chain.title" = "إرسال On-Chain";
-"scene.send.on_chain.fee" = "عُمولة:";
-"scene.send.on_chain.fee.fast" = "بسرعة";
+"scene.send.on_chain.fee" = "رسوم:";
+"scene.send.on_chain.fee.fast" = "سريع";
 "scene.send.on_chain.fee.medium" = "متوسط";
 "scene.send.on_chain.fee.slow" = "بطيء";
 "scene.send.on_chain.fee.description.fast" = "حوالة سريعة";
 "scene.send.on_chain.fee.description.medium" = "حوالة عادية";
 "scene.send.on_chain.fee.description.slow" = "حوالة بطيئة";
 
-"scene.send.on_chain.fee.estimated_delivery" = "التسليم المقدر:%@";
+"scene.send.on_chain.fee.estimated_delivery" = "المقدر تسليمه:%@";
 "scene.send.authentication_failed" = "المصادقة فشلت";
 "scene.send.maximum_fee" = "الرسوم المتوقعة:";
 "scene.send.subtitle.on_chain_balance" = "الرصيد On-chain: %@";
@@ -182,10 +182,10 @@
 "scene.select_wallet_connection.message" = "Bitcoin للـ **جميع**";
 
 "scene.main.send_button" = "إرسال";
-"scene.main.receive_button" = "استقبل";
+"scene.main.receive_button" = "استقبال";
 "scene.main.exchange_rate_label" = "%@ لكل BTC";
 
-"scene.qr_code_detail.title" = "استقبل";
+"scene.qr_code_detail.title" = "استقبال";
 
 "scene.sync.description_label" = "المزامنة مع blockchain…";
 
@@ -196,7 +196,7 @@
 "scene.transaction_detail.title.failed_payment" = "فشل الدفع";
 "scene.transaction_detail.memo_label" = "ملاحظة";
 "scene.transaction_detail.amount_label" = "المبلغ";
-"scene.transaction_detail.fee_label" = "الرسوم";
+"scene.transaction_detail.fee_label" = "رسوم";
 "scene.transaction_detail.date_label" = "التاريخ";
 "scene.transaction_detail.transaction_id_label" = "ID المعاملة";
 "scene.transaction_detail.address_label" = "عنوان";
