@@ -277,6 +277,9 @@
 
 "scene.manage_wallets.title" = "Gérer les portefeuilles";
 "scene.manage_wallets.cell.remote" = "distant";
+"scene.manage_wallets.cell.local" = "local";
+"scene.manage_wallets.section_title.local" = "Local Wallet";
+"scene.manage_wallets.section_title.remote" = "Remote Wallets";
 
 "scene.channel_backup.title" = "Sauvegarde des canaux";
 "scene.channel_backup.cell_title" = "%@ channel.backup";
