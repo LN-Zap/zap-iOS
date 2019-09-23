@@ -31,10 +31,10 @@ final class ManageWalletsViewModel {
 
         var sections = [Section<WalletConfiguration>]()
         if !localWallets.isEmpty {
-            sections.append(Section(title: "Local Wallet", rows: localWallets))
+            sections.append(Section(title: L10n.Scene.ManageWallets.SectionTitle.local, rows: localWallets))
         }
         if !remoteWallets.isEmpty {
-            sections.append(Section(title: "Remote Wallets", rows: remoteWallets))
+            sections.append(Section(title: L10n.Scene.ManageWallets.SectionTitle.remote, rows: remoteWallets))
         }
 
         self.sections = sections
