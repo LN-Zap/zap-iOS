@@ -52,11 +52,11 @@
 "scene.settings.section.lightning" = "Lightning";
 "scene.settings.section.wallet" = "Portefeuille";
 "scene.settings.item.version_warning" = "Votre version de lnd (%@) n'est pas à jour. Zap iOS fonctionne mieux avec lnd %@ et plus.";
-"scene.settings.item.bitcoin_unit" = "Unité du Bitcoin";
+"scene.settings.item.bitcoin_unit" = "Unité";
 "scene.settings.item.currency" = "Devise";
 "scene.settings.item.currency.popular" = "Devises populaires";
 "scene.settings.item.block_explorer" = "Explorateur de blocs";
-"scene.settings.item.on_chain_request_address.title" = "Type d’adresse Bitcoin";
+"scene.settings.item.on_chain_request_address.title" = "Type d’adresse";
 "scene.settings.item.on_chain_request_address.bech32" = "Bech32";
 "scene.settings.item.on_chain_request_address.p2sh" = "P2SH";
 "scene.settings.item.manage_channels" = "Gérer les canaux";
