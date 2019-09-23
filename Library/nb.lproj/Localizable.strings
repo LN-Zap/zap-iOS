@@ -247,7 +247,7 @@
 
 "scene.history.cell.payment_sent" = "Betaling sendt";
 "scene.history.cell.payment_received" = "Innbetaling mottatt";
-"scene.history.cell.invoice_created" = "Betalingsanmodning opprettet";
+"scene.history.cell.invoice_created" = "Betalingsforespørsel opprettet";
 "scene.history.cell.channel_opened" = "Opened Channel";
 "scene.history.cell.channel_closed" = "Closed Channel";
 "scene.history.cell.force_close_channel" = "Force closed Channel";
