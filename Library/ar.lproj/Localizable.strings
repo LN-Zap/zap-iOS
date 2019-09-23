@@ -279,7 +279,7 @@
 "scene.manage_wallets.cell.remote" = "التحكم عن بعد";
 "scene.manage_wallets.cell.local" = "محلي";
 "scene.manage_wallets.section_title.local" = "المحفظة المحلية";
-"scene.manage_wallets.section_title.remote" = "Remote Wallets";
+"scene.manage_wallets.section_title.remote" = "المحافظ البعيدة";
 
 "scene.channel_backup.title" = "النسخة احتياطية للقناة";
 "scene.channel_backup.cell_title" = "%@ channel.backup";
