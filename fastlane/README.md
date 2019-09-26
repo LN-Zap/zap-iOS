@@ -65,6 +65,11 @@ fastlane upload_metadata
 fastlane clean
 ```
 
+### travis
+```
+fastlane travis
+```
+
 
 ----
 
