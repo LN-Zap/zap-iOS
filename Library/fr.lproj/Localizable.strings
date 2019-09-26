@@ -52,11 +52,11 @@
 "scene.settings.section.lightning" = "Lightning";
 "scene.settings.section.wallet" = "Portefeuille";
 "scene.settings.item.version_warning" = "Votre version de lnd (%@) n'est pas à jour. Zap iOS fonctionne mieux avec lnd %@ et plus.";
-"scene.settings.item.bitcoin_unit" = "Unité du Bitcoin";
+"scene.settings.item.bitcoin_unit" = "Unité";
 "scene.settings.item.currency" = "Devise";
 "scene.settings.item.currency.popular" = "Devises populaires";
 "scene.settings.item.block_explorer" = "Explorateur de blocs";
-"scene.settings.item.on_chain_request_address.title" = "Type d’adresse Bitcoin";
+"scene.settings.item.on_chain_request_address.title" = "Type d’adresse";
 "scene.settings.item.on_chain_request_address.bech32" = "Bech32";
 "scene.settings.item.on_chain_request_address.p2sh" = "P2SH";
 "scene.settings.item.manage_channels" = "Gérer les canaux";
@@ -277,6 +277,9 @@
 
 "scene.manage_wallets.title" = "Gérer les portefeuilles";
 "scene.manage_wallets.cell.remote" = "distant";
+"scene.manage_wallets.cell.local" = "local";
+"scene.manage_wallets.section_title.local" = "Portefeuille";
+"scene.manage_wallets.section_title.remote" = "Portefeuilles distants";
 
 "scene.channel_backup.title" = "Sauvegarde des canaux";
 "scene.channel_backup.cell_title" = "%@ channel.backup";
