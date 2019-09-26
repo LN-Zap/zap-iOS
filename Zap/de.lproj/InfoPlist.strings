@@ -8,5 +8,5 @@
 
 "applicationShortcutItem.send" = "Senden";
 "applicationShortcutItem.request" = "Empfangen";
-"NSCameraUsageDescription" = "Zap benötigt Zugriff auf deine Handy-Kamera.";
+"NSCameraUsageDescription" = "Kamera Zugriff gewähren um QR-Codes zu scannen.";
 "NSFaceIDUsageDescription" = "Zap benötigt Zugriff auf Face ID.";

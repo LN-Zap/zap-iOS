@@ -12,7 +12,7 @@ public enum LightningConnection: Equatable, Codable {
     case local
     case remote(RPCCredentials)
 
-    public var api: LightningApi {
+    public var api: LightningApi? {
         if Environment.useUITestMockApi {
             return LightningApi(connection: .mock(.screenshots))
         } else if Environment.useMockApi {
@@ -24,7 +24,7 @@ public enum LightningConnection: Equatable, Codable {
         #if !REMOTEONLY
             return LightningApi(connection: .local)
         #else
-            fatalError(".local not supported")
+            return nil
         #endif
         case .remote(let configuration):
             return LightningApi(connection: .remote(configuration))

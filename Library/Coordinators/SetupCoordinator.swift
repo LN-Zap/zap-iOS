@@ -6,12 +6,13 @@
 //
 
 import Lightning
+import Logger
 import SwiftBTC
 import SwiftLnd
 import UIKit
 
 protocol SetupCoordinatorDelegate: class {
-    func presentWallet(connection: LightningConnection)
+    func presentWallet(connection: LightningConnection) throws
 }
 
 final class SetupCoordinator: Coordinator {
@@ -117,8 +118,12 @@ final class SetupCoordinator: Coordinator {
     }
 
     private func didSetupWallet(connection: LightningConnection) {
-        delegate?.presentWallet(connection: connection)
-        createWalletNavigationController?.dismiss(animated: true, completion: nil)
+        do {
+            try delegate?.presentWallet(connection: connection)
+            createWalletNavigationController?.dismiss(animated: true, completion: nil)
+        } catch {
+            Logger.error(error)
+        }
     }
 
     private func presentNodeCertificatesScanner() {
@@ -154,6 +159,10 @@ final class SetupCoordinator: Coordinator {
     }
 
     private func connectWallet(_ connection: LightningConnection) {
-        delegate?.presentWallet(connection: connection)
+        do {
+            try delegate?.presentWallet(connection: connection)
+        } catch {
+            Logger.error(error)
+        }
     }
 }

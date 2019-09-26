@@ -40,7 +40,7 @@ class ManageWalletTableViewCell: UITableViewCell {
 
         switch walletConfiguration.connection {
         case .local:
-            hostLabel.text = "local"
+            hostLabel.text = L10n.Scene.ManageWallets.Cell.local
         case .remote(let credentials):
             let host = credentials.host.absoluteString.prefix { $0 != ":" }
             hostLabel.isHidden = false

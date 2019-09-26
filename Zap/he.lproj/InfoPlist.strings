@@ -8,5 +8,5 @@
 
 "applicationShortcutItem.send" = "שלח";
 "applicationShortcutItem.request" = "קבל";
-"NSCameraUsageDescription" = "Zap מבקש גישה למצלמת הטלפון שלך.";
+"NSCameraUsageDescription" = "Turn on camera access to scan QR codes.";
 "NSFaceIDUsageDescription" = "Zap מבקש גישה לזיהוי הפנים.";

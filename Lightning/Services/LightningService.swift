@@ -12,6 +12,10 @@ import ReactiveKit
 import SwiftBTC
 import SwiftLnd
 
+enum LightningServiceError: Error {
+    case unsupportedConfigurationError
+}
+
 public extension Notification.Name {
     static let receivedTransaction = Notification.Name(rawValue: "receivedTransaction")
 }
@@ -40,8 +44,9 @@ public final class LightningService: NSObject {
         }
     }
 
-    public convenience init?(connection: LightningConnection, backupService: StaticChannelBackupServiceType) {
-        self.init(api: connection.api, connection: connection, backupService: backupService)
+    public convenience init(connection: LightningConnection, backupService: StaticChannelBackupServiceType) throws {
+        guard let api = connection.api else { throw LightningServiceError.unsupportedConfigurationError }
+        self.init(api: api, connection: connection, backupService: backupService)
     }
 
     init(api: LightningApi, connection: LightningConnection, backupService: StaticChannelBackupServiceType) {

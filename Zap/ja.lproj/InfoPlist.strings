@@ -8,5 +8,5 @@
 
 "applicationShortcutItem.send" = "送る";
 "applicationShortcutItem.request" = "受け取る";
-"NSCameraUsageDescription" = "Zapが端末のカメラへのアクセスを求めています。";
+"NSCameraUsageDescription" = "Turn on camera access to scan QR codes.";
 "NSFaceIDUsageDescription" = "Zapが顔IDへのアクセスを求めています。";

@@ -8,5 +8,5 @@
 
 "applicationShortcutItem.send" = "Send";
 "applicationShortcutItem.request" = "Modtag";
-"NSCameraUsageDescription" = "Zap kræver adgang til din telefons kamera.";
+"NSCameraUsageDescription" = "Turn on camera access to scan QR codes.";
 "NSFaceIDUsageDescription" = "ZAP kræver adgang til Face ID.";

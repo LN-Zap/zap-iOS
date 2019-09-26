@@ -52,11 +52,11 @@
 "scene.settings.section.lightning" = "Lightning";
 "scene.settings.section.wallet" = "Portefeuille";
 "scene.settings.item.version_warning" = "Votre version de lnd (%@) n'est pas à jour. Zap iOS fonctionne mieux avec lnd %@ et plus.";
-"scene.settings.item.bitcoin_unit" = "Unité du Bitcoin";
+"scene.settings.item.bitcoin_unit" = "Unité";
 "scene.settings.item.currency" = "Devise";
 "scene.settings.item.currency.popular" = "Devises populaires";
 "scene.settings.item.block_explorer" = "Explorateur de blocs";
-"scene.settings.item.on_chain_request_address.title" = "Type d’adresse Bitcoin";
+"scene.settings.item.on_chain_request_address.title" = "Type d’adresse";
 "scene.settings.item.on_chain_request_address.bech32" = "Bech32";
 "scene.settings.item.on_chain_request_address.p2sh" = "P2SH";
 "scene.settings.item.manage_channels" = "Gérer les canaux";
@@ -86,7 +86,7 @@
 "scene.channels.header.total_pending" = "Fonds en attente :";
 "scene.channels.header.offline" = "Fonds hors-ligne :";
 "scene.channels.close.title" = "Fermer le canal";
-"scene.channels.close.message" = "Voulez-vous vraiment fermer le canal avec nœud %@ ?";
+"scene.channels.close.message" = "Voulez-vous vraiment fermer le canal avec le nœud %@ ?";
 "scene.channels.force_close.title" = "Fermer de force le canal";
 "scene.channels.force_close.message" = "%@ est déconnecté, êtes-vous sûr de vouloir fermer ce canal ? Vous devrez attendre environ %@ pour récupérer vos fonds.";
 "scene.channels.alert.close" = "Fermer le canal";
@@ -266,7 +266,7 @@
 
 "scene.connect_node_uri.action_sheet.title" = "Se connecter";
 "scene.connect_node_uri.action_sheet.connect_button" = "Se connecter";
-"scene.connect_node_uri.action_sheet.message" = "Voulez-vous vraiment vous connecter au noeud %@ ?";
+"scene.connect_node_uri.action_sheet.message" = "Voulez-vous vraiment vous connecter au nœud %@ ?";
 
 "scene.wallet_list.title" = "Portefeuilles";
 
@@ -277,6 +277,9 @@
 
 "scene.manage_wallets.title" = "Gérer les portefeuilles";
 "scene.manage_wallets.cell.remote" = "distant";
+"scene.manage_wallets.cell.local" = "local";
+"scene.manage_wallets.section_title.local" = "Portefeuille";
+"scene.manage_wallets.section_title.remote" = "Portefeuilles distants";
 
 "scene.channel_backup.title" = "Sauvegarde des canaux";
 "scene.channel_backup.cell_title" = "%@ channel.backup";

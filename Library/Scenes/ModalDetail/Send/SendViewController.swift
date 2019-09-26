@@ -148,7 +148,7 @@ final class SendViewController: ModalDetailViewController {
         if BiometricAuthentication.type == .none {
             ModalPinViewController.authenticate(authenticationViewModel: authenticationViewModel) { completion($0) }
         } else {
-            BiometricAuthentication.authenticate { [authenticationViewModel] result in
+            BiometricAuthentication.authenticate(viewController: self) { [authenticationViewModel] result in
                 if case .failure(let error) = result,
                     error == AuthenticationError.useFallback {
                     ModalPinViewController.authenticate(authenticationViewModel: authenticationViewModel) { completion($0) }

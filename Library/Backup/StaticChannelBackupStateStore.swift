@@ -9,8 +9,7 @@ import Foundation
 
 struct StaticChannelBackupResult: Codable {
     let errors: [StaticChannelBackupError]
-    let successfulServiceKeys: [String]
-    let timestamp: Date?
+    let successfulServiceKeys: [String: Date]
 }
 
 enum StaticChannelBackupStateStore {
@@ -20,11 +19,11 @@ enum StaticChannelBackupStateStore {
     }
 
     static func didBackup(nodePubKey: String, backupServiceKey: String) -> Bool {
-        return result(for: nodePubKey)?.successfulServiceKeys.contains(backupServiceKey) ?? false
+        return result(for: nodePubKey)?.successfulServiceKeys.keys.contains(backupServiceKey) ?? false
     }
 
-    static func lastBackup(nodePubKey: String, backupServiceKeys: [String]) -> Date? {
-        return result(for: nodePubKey)?.timestamp
+    static func lastBackup(nodePubKey: String, backupServiceKey: String) -> Date? {
+        return result(for: nodePubKey)?.successfulServiceKeys[backupServiceKey]
     }
 
     static func errorMessages(nodePubKey: String, backupServiceKeys: [String]) -> [StaticChannelBackupError] {

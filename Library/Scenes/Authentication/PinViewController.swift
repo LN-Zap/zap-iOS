@@ -71,7 +71,7 @@ extension PinViewController: KeyPadPinViewDelegate {
     func startBiometricAuthentication() {
         guard BiometricAuthentication.type != .none else { return }
 
-        BiometricAuthentication.authenticate { [weak self] result in
+        BiometricAuthentication.authenticate(viewController: self) { [weak self] result in
             switch result {
             case .success:
                 self?.authenticationViewModel?.didAuthenticate()
