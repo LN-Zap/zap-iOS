@@ -283,6 +283,37 @@ fileprivate final class Lnrpc_LightningOpenChannelCallBase: ClientCallServerStre
   override class var method: String { return "/lnrpc.Lightning/OpenChannel" }
 }
 
+internal protocol Lnrpc_LightningChannelAcceptorCall: ClientCallBidirectionalStreaming {
+  /// Do not call this directly, call `receive()` in the protocol extension below instead.
+  func _receive(timeout: DispatchTime) throws -> Lnrpc_ChannelAcceptRequest?
+  /// Call this to wait for a result. Nonblocking.
+  func receive(completion: @escaping (ResultOrRPCError<Lnrpc_ChannelAcceptRequest?>) -> Void) throws
+
+  /// Send a message to the stream. Nonblocking.
+  func send(_ message: Lnrpc_ChannelAcceptResponse, completion: @escaping (Error?) -> Void) throws
+  /// Do not call this directly, call `send()` in the protocol extension below instead.
+  func _send(_ message: Lnrpc_ChannelAcceptResponse, timeout: DispatchTime) throws
+
+  /// Call this to close the sending connection. Blocking.
+  func closeSend() throws
+  /// Call this to close the sending connection. Nonblocking.
+  func closeSend(completion: (() -> Void)?) throws
+}
+
+internal extension Lnrpc_LightningChannelAcceptorCall {
+  /// Call this to wait for a result. Blocking.
+  func receive(timeout: DispatchTime = .distantFuture) throws -> Lnrpc_ChannelAcceptRequest? { return try self._receive(timeout: timeout) }
+}
+
+internal extension Lnrpc_LightningChannelAcceptorCall {
+  /// Send a message to the stream and wait for the send operation to finish. Blocking.
+  func send(_ message: Lnrpc_ChannelAcceptResponse, timeout: DispatchTime = .distantFuture) throws { try self._send(message, timeout: timeout) }
+}
+
+fileprivate final class Lnrpc_LightningChannelAcceptorCallBase: ClientCallBidirectionalStreamingBase<Lnrpc_ChannelAcceptResponse, Lnrpc_ChannelAcceptRequest>, Lnrpc_LightningChannelAcceptorCall {
+  override class var method: String { return "/lnrpc.Lightning/ChannelAcceptor" }
+}
+
 internal protocol Lnrpc_LightningCloseChannelCall: ClientCallServerStreaming {
   /// Do not call this directly, call `receive()` in the protocol extension below instead.
   func _receive(timeout: DispatchTime) throws -> Lnrpc_CloseStatusUpdate?
@@ -637,6 +668,11 @@ internal protocol Lnrpc_LightningService: ServiceClient {
   /// Use methods on the returned object to get streamed responses.
   func openChannel(_ request: Lnrpc_OpenChannelRequest, metadata customMetadata: Metadata, completion: ((CallResult) -> Void)?) throws -> Lnrpc_LightningOpenChannelCall
 
+  /// Asynchronous. Bidirectional-streaming.
+  /// Use methods on the returned object to stream messages,
+  /// to wait for replies, and to close the connection.
+  func channelAcceptor(metadata customMetadata: Metadata, completion: ((CallResult) -> Void)?) throws -> Lnrpc_LightningChannelAcceptorCall
+
   /// Asynchronous. Server-streaming.
   /// Send the initial message.
   /// Use methods on the returned object to get streamed responses.
@@ -883,6 +919,11 @@ internal extension Lnrpc_LightningService {
   /// Asynchronous. Server-streaming.
   func openChannel(_ request: Lnrpc_OpenChannelRequest, completion: ((CallResult) -> Void)?) throws -> Lnrpc_LightningOpenChannelCall {
     return try self.openChannel(request, metadata: self.metadata, completion: completion)
+  }
+
+  /// Asynchronous. Bidirectional-streaming.
+  func channelAcceptor(completion: ((CallResult) -> Void)?) throws -> Lnrpc_LightningChannelAcceptorCall {
+    return try self.channelAcceptor(metadata: self.metadata, completion: completion)
   }
 
   /// Asynchronous. Server-streaming.
@@ -1204,6 +1245,14 @@ internal final class Lnrpc_LightningServiceClient: ServiceClientBase, Lnrpc_Ligh
   internal func openChannel(_ request: Lnrpc_OpenChannelRequest, metadata customMetadata: Metadata, completion: ((CallResult) -> Void)?) throws -> Lnrpc_LightningOpenChannelCall {
     return try Lnrpc_LightningOpenChannelCallBase(channel)
       .start(request: request, metadata: customMetadata, completion: completion)
+  }
+
+  /// Asynchronous. Bidirectional-streaming.
+  /// Use methods on the returned object to stream messages,
+  /// to wait for replies, and to close the connection.
+  internal func channelAcceptor(metadata customMetadata: Metadata, completion: ((CallResult) -> Void)?) throws -> Lnrpc_LightningChannelAcceptorCall {
+    return try Lnrpc_LightningChannelAcceptorCallBase(channel)
+      .start(metadata: customMetadata, completion: completion)
   }
 
   /// Asynchronous. Server-streaming.
