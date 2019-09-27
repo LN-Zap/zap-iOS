@@ -231,3 +231,7 @@ lane :upload_metadata do
   )
 end
 
+lane :clean do
+  reset_git_repo(force: true, disregard_gitignore: false)
+end
+
