@@ -1,11 +1,6 @@
 # Installation
 
-The app uses git submodules. So in order to clone it and also clone the submodules you need
-to run something like:
-
-```
-git clone --recurse-submodules https://github.com/LN-Zap/zap-iOS.git
-```
+run `./setup.sh` to download the required frameworks.
 
 ### Preliminaries
 
