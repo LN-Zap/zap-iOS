@@ -42,11 +42,6 @@ Generates three files in the Library framework:
 * StoryboardScenes.swift
 * Strings.swift
 
-#### Sourcery
-
-Meta-programming (https://github.com/krzysztofzablocki/Sourcery)
-Generates the *CustomDebugStringConvertible.generated.swift* file in the SwiftLnd framework. 
-
 #### Cocoapods
 
 For managing dependencies.
