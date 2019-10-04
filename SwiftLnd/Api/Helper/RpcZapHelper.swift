@@ -42,7 +42,8 @@ final class LndCallback<T: SwiftProtobuf.Message>: NSObject, LndmobileCallbackPr
             let result = try? T(serializedData: data) {
             completion(.success(result))
         } else {
-            onError(LndApiError.unknownError)
+            let result = T()
+            completion(.success(result))
         }
     }
 }
