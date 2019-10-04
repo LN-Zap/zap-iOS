@@ -110,7 +110,7 @@
 "scene.pin.biometric.reason" = "Um auf die Sicherheitsdaten zu zugreifen";
 
 "scene.setup_pin.done_button" = "Fertig";
-"scene.setup_pin.top_label.initial" = "Wählen Sie eine PIN.";
+"scene.setup_pin.top_label.initial" = "Wähle eine PIN.";
 "scene.setup_pin.top_label.non_matching" = "Der PIN stimmt nicht überein. Bitte versuche es erneut.";
 "scene.setup_pin.top_label.validate" = "Gib den PIN erneut ein.";
 
@@ -153,7 +153,7 @@
 "scene.send.paste_button.title" = "Adresse einfügen";
 
 "scene.connect_remote_node.title" = "Remote-Knoten verbinden";
-"scene.connect_remote_node.empty_state" = "Scannen Sie den QR-Code, welcher von lndconnect, BTCPay Server generiert wurde, oder fügen Sie den Link ein vom laufenden 'lndconnect -j', um eine Verbindung zu Ihrem Knoten aufzubauen.";
+"scene.connect_remote_node.empty_state" = "Scanne den QR-Code, welcher von lndconnect, BTCPay Server generiert wurde, oder füge den Link ein vom laufenden 'lndconnect -j', um eine Verbindung zu deinem Knoten aufzubauen.";
 "scene.connect_remote_node.url_label" = "Adresse";
 "scene.connect_remote_node.certificate_label" = "Anmeldeinformationen";
 "scene.connect_remote_node.connect_button" = "Verbinden";
@@ -240,10 +240,10 @@
 "scene.wallet.empty_state.button_title" = "Geld einzahlen";
 
 "scene.time_lock.headline" = "Falscher PIN";
-"scene.time_lock.description" = "Ihre Geldbörse ist gesperrt für:";
+"scene.time_lock.description" = "Deine Geldbörse ist gesperrt für:";
 
 "scene.modal_pin.headline" = "PIN eingeben";
-"scene.modal_pin.description" = "Bitte geben Sie Ihren PIN ein, um fortzufahren";
+"scene.modal_pin.description" = "Bitte gebe deine PIN ein, um fortzufahren";
 
 "scene.history.cell.payment_sent" = "Zahlung gesendet";
 "scene.history.cell.payment_received" = "Zahlung empfangen";
@@ -277,9 +277,9 @@
 
 "scene.manage_wallets.title" = "Verwalten von Wallets";
 "scene.manage_wallets.cell.remote" = "remote";
-"scene.manage_wallets.cell.local" = "local";
-"scene.manage_wallets.section_title.local" = "Local Wallet";
-"scene.manage_wallets.section_title.remote" = "Remote Wallets";
+"scene.manage_wallets.cell.local" = "lokas";
+"scene.manage_wallets.section_title.local" = "Lokale Wallet";
+"scene.manage_wallets.section_title.remote" = "Remote-Wallets";
 
 "scene.channel_backup.title" = "Kanal Backup";
 "scene.channel_backup.cell_title" = "%@ channel.backup";
@@ -290,7 +290,7 @@
 "scene.channel_backup.error.lndError" = "Kanal Backup konnte von lnd nicht empfangen werden.";
 
 "scene.push_notification.headline" = "Bleibe auf dem Laufenden";
-"scene.push_notification.message" = "Um Ihre Gelder sicher zu halten, muss Zap ab und zu synchronisieren. Möchten Sie eine Benachrichtigung erhalten, wenn es Zeit ist?";
+"scene.push_notification.message" = "Um deine Gelder sicher zu halten, muss Zap ab und zu synchronisieren. Möchtest du eine Benachrichtigung erhalten, wenn es Zeit ist?";
 "scene.push_notification.confirm_button_title" = "Notifikationen einschalten";
 "scene.push_notification.skip_button_title" = "Überspringen";
 
