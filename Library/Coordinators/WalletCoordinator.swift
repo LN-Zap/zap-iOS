@@ -44,6 +44,7 @@ enum Tab {
     }
 }
 
+// TODO: remove all the TabBar references
 final class WalletCoordinator: NSObject, Coordinator {
     let rootViewController: RootViewController
 
@@ -148,20 +149,11 @@ final class WalletCoordinator: NSObject, Coordinator {
         presentViewController(viewController)
     }
 
+    private var pageViewController = UIPageViewController(transitionStyle: .scroll, navigationOrientation: .horizontal, options: nil)
+
     private func presentMain() {
-        let tabBarController = RootTabBarController(presentWalletList: presentWalletList)
-        let settingsViewController = self.settingsViewController()
-
-        tabBarController.tabs = [
-            (.wallet, walletViewController()),
-            (.history, historyViewController()),
-            (.channels, channelNavigationController(badgeUpdaterDelegate: tabBarController)),
-            (.settings, settingsViewController)
-        ]
-        presentViewController(tabBarController)
-
-        historyViewModel.setupTabBarBadge(delegate: tabBarController)
-        (settingsViewController.viewControllers.first as? SettingsViewController)?.updateBadgeIfNeeded(badgeUpdaterDelegate: tabBarController)
+        pageViewController.setViewControllers([walletViewController()], direction: .forward, animated: false, completion: nil)
+        presentViewController(pageViewController)
 
         if let route = self.route {
             handle(route)
@@ -175,7 +167,19 @@ final class WalletCoordinator: NSObject, Coordinator {
     func walletViewController() -> WalletViewController {
         let walletViewModel = WalletViewModel(lightningService: lightningService)
         let walletEmptyStateViewModel = WalletEmptyStateViewModel(lightningService: lightningService, fundButtonTapped: presentFundWallet)
-        return WalletViewController.instantiate(walletViewModel: walletViewModel, sendButtonTapped: presentSend, requestButtonTapped: presentRequest, nodeAliasButtonTapped: presentWalletList, emptyStateViewModel: walletEmptyStateViewModel)
+        return WalletViewController.instantiate(walletViewModel: walletViewModel, sendButtonTapped: presentSend, requestButtonTapped: presentRequest, nodeAliasButtonTapped: presentWalletList, historyButtonTapped: presentHistory, settingsButtonTapped: presentSettings, emptyStateViewModel: walletEmptyStateViewModel)
+    }
+
+    private func presentHistory() {
+        pageViewController.setViewControllers([historyViewController()], direction: .forward, animated: true, completion: nil)
+    }
+
+    private func presentSettings() {
+        pageViewController.setViewControllers([settingsViewController()], direction: .reverse, animated: true, completion: nil)
+    }
+
+    private func presentWallet(direction: UIPageViewController.NavigationDirection) {
+        pageViewController.setViewControllers([walletViewController()], direction: direction, animated: true, completion: nil)
     }
 
     func settingsViewController() -> ZapNavigationController {
@@ -188,7 +192,8 @@ final class WalletCoordinator: NSObject, Coordinator {
             authenticationViewModel: authenticationViewModel,
             pushNodeURIViewController: pushNodeURIViewController,
             pushLndLogViewController: pushLndLogViewController,
-            pushChannelBackup: pushChannelBackup)
+            pushChannelBackup: pushChannelBackup,
+            presentWallet: presentWallet)
 
         let navigationController = ZapNavigationController(rootViewController: settingsViewController)
 
@@ -200,7 +205,7 @@ final class WalletCoordinator: NSObject, Coordinator {
     }
 
     func historyViewController() -> UINavigationController {
-        let viewController = HistoryViewController.instantiate(historyViewModel: historyViewModel, presentFilter: presentFilter, presentDetail: presentDetail, presentSend: presentSend)
+        let viewController = HistoryViewController.instantiate(historyViewModel: historyViewModel, presentFilter: presentFilter, presentDetail: presentDetail, presentSend: presentSend, presentWallet: presentWallet)
         let navigationController = ZapNavigationController(rootViewController: viewController)
         navigationController.tabBarItem.title = Tab.history.title
         navigationController.tabBarItem.image = Tab.history.image

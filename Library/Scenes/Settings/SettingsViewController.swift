@@ -19,14 +19,18 @@ private extension Info {
 final class SettingsViewController: GroupedTableViewController {
     private var info: Info?
 
+    private var walletButtonTapped: ((UIPageViewController.NavigationDirection) -> Void)!
+
     init(info: Info?,
          connection: LightningConnection,
          disconnectWalletDelegate: DisconnectWalletDelegate,
          authenticationViewModel: AuthenticationViewModel,
          pushNodeURIViewController: @escaping (UINavigationController) -> Void,
          pushLndLogViewController: @escaping (UINavigationController) -> Void,
-         pushChannelBackup: @escaping (UINavigationController) -> Void) {
+         pushChannelBackup: @escaping (UINavigationController) -> Void,
+         presentWallet: @escaping (UIPageViewController.NavigationDirection) -> Void) {
         self.info = info
+        self.walletButtonTapped = presentWallet
 
         var lightningRows: [SettingsItem] = [
             PushViewControllerSettingsItem(title: L10n.Scene.Settings.Item.channelBackup, pushViewController: pushChannelBackup),
@@ -86,6 +90,14 @@ final class SettingsViewController: GroupedTableViewController {
         super.viewDidLoad()
 
         title = L10n.Scene.Settings.title
+
+        if #available(iOS 13.0, *) {
+            navigationItem.rightBarButtonItem = UIBarButtonItem(image: UIImage(systemName: "arrow.right"), style: .plain, target: self, action: #selector(presentWallet))
+        }
+    }
+
+    @objc private func presentWallet() {
+        walletButtonTapped(.forward)
     }
 
     override func tableView(_ tableView: UITableView, titleForFooterInSection section: Int) -> String? {

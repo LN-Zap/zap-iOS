@@ -21,7 +21,6 @@ final class WalletViewController: UIViewController {
     @IBOutlet private weak var segmentBackground: UIView!
 
     // header
-    @IBOutlet private weak var networkLabel: PaddingLabel!
     @IBOutlet private weak var nodeAliasButton: UIButton!
 
     // send / receive buttons
@@ -50,6 +49,8 @@ final class WalletViewController: UIViewController {
     private var sendButtonTapped: (() -> Void)!
     private var requestButtonTapped: (() -> Void)!
     private var nodeAliasButtonTapped: (() -> Void)!
+    private var historyButtonTapped: (() -> Void)!
+    private var settingsButtonTapped: (() -> Void)!
     private var emptyStateViewModel: WalletEmptyStateViewModel!
     // swiftlint:enable implicitly_unwrapped_optional
 
@@ -59,7 +60,8 @@ final class WalletViewController: UIViewController {
         return -(detailView.bounds.height - 45) - 60
     }
 
-    static func instantiate(walletViewModel: WalletViewModel, sendButtonTapped: @escaping () -> Void, requestButtonTapped: @escaping () -> Void, nodeAliasButtonTapped: @escaping () -> Void, emptyStateViewModel: WalletEmptyStateViewModel) -> WalletViewController {
+    // swiftlint:disable:next function_parameter_count
+    static func instantiate(walletViewModel: WalletViewModel, sendButtonTapped: @escaping () -> Void, requestButtonTapped: @escaping () -> Void, nodeAliasButtonTapped: @escaping () -> Void, historyButtonTapped: @escaping () -> Void, settingsButtonTapped: @escaping () -> Void, emptyStateViewModel: WalletEmptyStateViewModel) -> WalletViewController {
         let walletViewController = StoryboardScene.Wallet.walletViewController.instantiate()
         walletViewController.walletViewModel = walletViewModel
 
@@ -67,6 +69,8 @@ final class WalletViewController: UIViewController {
         walletViewController.requestButtonTapped = requestButtonTapped
         walletViewController.nodeAliasButtonTapped = nodeAliasButtonTapped
         walletViewController.emptyStateViewModel = emptyStateViewModel
+        walletViewController.historyButtonTapped = historyButtonTapped
+        walletViewController.settingsButtonTapped = settingsButtonTapped
 
         walletViewController.tabBarItem.title = Tab.wallet.title
         walletViewController.tabBarItem.image = Tab.wallet.image
@@ -103,9 +107,6 @@ final class WalletViewController: UIViewController {
         buttonContainerView.clipsToBounds = true
         buttonContainerView.backgroundColor = UIColor.Zap.deepSeaBlue
 
-        networkLabel.backgroundColor = UIColor.Zap.invisibleGray
-        networkLabel.text = Network.testnet.localized
-
         sendButtonBackground.backgroundColor = UIColor.Zap.seaBlue
         receiveButtonBackground.backgroundColor = UIColor.Zap.seaBlue
 
@@ -114,7 +115,6 @@ final class WalletViewController: UIViewController {
         nodeAliasButton.setTitleColor(UIColor.Zap.gray, for: .normal)
         nodeAliasButton.titleLabel?.font = UIFont.Zap.regular
 
-        setupPaddingLabel(networkLabel)
         setupPrimaryBalanceLabel()
         setupBindings()
 
@@ -192,23 +192,9 @@ final class WalletViewController: UIViewController {
                 .observeNext { [weak self] in
                     self?.circleGraphView.segments = $0
                 },
-            walletViewModel.network
-                .ignoreNils()
-                .map { $0.localized }
-                .bind(to: networkLabel.reactive.text ),
-            walletViewModel.network
-                .map({ $0 == .mainnet })
-                .bind(to: networkLabel.reactive.isHidden),
             walletViewModel.nodeAlias
                 .bind(to: nodeAliasButton.reactive.title)
         ].dispose(in: reactive.bag)
-    }
-
-    private func setupPaddingLabel(_ paddingLabel: PaddingLabel) {
-        paddingLabel.edgeInsets = UIEdgeInsets(top: 5, left: 10, bottom: 5, right: 10)
-        Style.Label.body.apply(to: paddingLabel)
-        paddingLabel.layer.cornerRadius = 10
-        paddingLabel.clipsToBounds = true
     }
 
     @IBAction private func presentSend(_ sender: Any) {
@@ -217,6 +203,14 @@ final class WalletViewController: UIViewController {
 
     @IBAction private func presentRequest(_ sender: Any) {
         requestButtonTapped()
+    }
+
+    @IBAction private func presentHistory(_ sender: Any) {
+        historyButtonTapped()
+    }
+
+    @IBAction private func presentSettings(_ sender: Any) {
+        settingsButtonTapped()
     }
 
     @IBAction private func swapCurrencyButtonTapped(_ sender: Any) {

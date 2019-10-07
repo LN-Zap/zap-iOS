@@ -13,22 +13,26 @@ final class HistoryViewController: UIViewController {
     @IBOutlet private weak var tableView: UITableView?
     @IBOutlet private weak var emptyStateLabel: UILabel!
 
+    // swiftlint:disable implicitly_unwrapped_optional
     private var historyViewModel: HistoryViewModel?
     private var presentFilter: (() -> Void)?
     private var presentDetail: ((HistoryEventType) -> Void)?
     private var presentSend: ((String?) -> Void)?
+    private var walletButtonTapped: ((UIPageViewController.NavigationDirection) -> Void)!
+    // swiftlint:enable implicitly_unwrapped_optional
 
     deinit {
         tableView?.isEditing = false // fixes Bond bug. Binding is not released in editing mode.
     }
 
-    static func instantiate(historyViewModel: HistoryViewModel, presentFilter: @escaping () -> Void, presentDetail: @escaping (HistoryEventType) -> Void, presentSend: @escaping (String?) -> Void) -> HistoryViewController {
+    static func instantiate(historyViewModel: HistoryViewModel, presentFilter: @escaping () -> Void, presentDetail: @escaping (HistoryEventType) -> Void, presentSend: @escaping (String?) -> Void, presentWallet: @escaping (UIPageViewController.NavigationDirection) -> Void) -> HistoryViewController {
         let viewController = StoryboardScene.History.historyViewController.instantiate()
 
         viewController.historyViewModel = historyViewModel
         viewController.presentFilter = presentFilter
         viewController.presentDetail = presentDetail
         viewController.presentSend = presentSend
+        viewController.walletButtonTapped = presentWallet
 
         return viewController
     }
@@ -66,6 +70,10 @@ final class HistoryViewController: UIViewController {
             .map { !$0.collection.children.isEmpty }
             .bind(to: emptyStateLabel.reactive.isHidden)
             .dispose(in: reactive.bag)
+
+        if #available(iOS 13.0, *) {
+            navigationItem.leftBarButtonItem = UIBarButtonItem(image: UIImage(systemName: "arrow.left"), style: .plain, target: self, action: #selector(presentWallet))
+        }
     }
 
     override func viewWillAppear(_ animated: Bool) {
@@ -102,6 +110,10 @@ final class HistoryViewController: UIViewController {
 
     @IBAction private func presentFilter(_ sender: Any) {
         presentFilter?()
+    }
+
+    @objc private func presentWallet() {
+        walletButtonTapped(.reverse)
     }
 }
 
