@@ -35,7 +35,7 @@
                                                         <constraints>
                                                             <constraint firstAttribute="width" secondItem="T70-Nf-jhp" secondAttribute="height" id="Npy-Da-5Lt"/>
                                                         </constraints>
-                                                        <state key="normal" image="tabbar_settings"/>
+                                                        <state key="normal" image="hexagon" catalog="system"/>
                                                         <connections>
                                                             <action selector="presentSettings:" destination="KOM-Jt-Qkh" eventType="touchUpInside" id="9aP-gi-WYv"/>
                                                         </connections>
@@ -73,7 +73,7 @@
                                                             <constraint firstItem="40H-QF-ElD" firstAttribute="centerX" secondItem="06I-eg-dh3" secondAttribute="centerX" id="inT-AY-FFD"/>
                                                         </constraints>
                                                     </view>
-                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="cdY-8B-tZc">
+                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="cdY-8B-tZc">
                                                         <rect key="frame" x="295" y="0.0" width="60" height="60"/>
                                                         <constraints>
                                                             <constraint firstAttribute="width" secondItem="cdY-8B-tZc" secondAttribute="height" id="F7Z-SO-apx"/>
@@ -98,7 +98,7 @@
                                         <rect key="frame" x="0.0" y="188" width="375" height="379"/>
                                         <subviews>
                                             <stackView opaque="NO" contentMode="scaleToFill" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="ETB-V0-5he">
-                                                <rect key="frame" x="133.5" y="86.5" width="131.5" height="61.5"/>
+                                                <rect key="frame" x="133.5" y="86.5" width="144.5" height="61.5"/>
                                                 <subviews>
                                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="zto-m2-yBD">
                                                         <rect key="frame" x="0.0" y="0.0" width="108.5" height="61.5"/>
@@ -124,12 +124,12 @@
                                                         </subviews>
                                                     </stackView>
                                                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="260" verticalHuggingPriority="251" horizontalCompressionResistancePriority="1000" image="icon_swap" translatesAutoresizingMaskIntoConstraints="NO" id="3Mb-Jl-C6P">
-                                                        <rect key="frame" x="118.5" y="0.0" width="13" height="61.5"/>
+                                                        <rect key="frame" x="118.5" y="0.0" width="26" height="61.5"/>
                                                     </imageView>
                                                 </subviews>
                                             </stackView>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="MBN-7j-D0P">
-                                                <rect key="frame" x="133.5" y="86.5" width="131.5" height="61.5"/>
+                                                <rect key="frame" x="133.5" y="86.5" width="144.5" height="61.5"/>
                                                 <fontDescription key="fontDescription" name=".AppleSystemUIFont" family=".AppleSystemUIFont" pointSize="15"/>
                                                 <connections>
                                                     <action selector="swapCurrencyButtonTapped:" destination="KOM-Jt-Qkh" eventType="touchUpInside" id="aF3-6J-Rn1"/>
@@ -384,9 +384,9 @@
         </scene>
     </scenes>
     <resources>
+        <image name="hexagon" catalog="system" width="64" height="62"/>
         <image name="icon_swap" width="13" height="13"/>
         <image name="tabbar_history" width="18" height="26"/>
-        <image name="tabbar_settings" width="27" height="26"/>
         <namedColor name="seaBlue">
             <color red="0.19200000166893005" green="0.20000000298023224" blue="0.25099998712539673" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>

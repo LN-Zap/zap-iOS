@@ -169,41 +169,44 @@ final class WalletCoordinator: NSObject, Coordinator {
     func walletViewController() -> WalletViewController {
         let walletViewModel = WalletViewModel(lightningService: lightningService)
         let walletEmptyStateViewModel = WalletEmptyStateViewModel(lightningService: lightningService, fundButtonTapped: presentFundWallet)
-        return WalletViewController.instantiate(walletViewModel: walletViewModel, sendButtonTapped: presentSend, requestButtonTapped: presentRequest, nodeAliasButtonTapped: presentWalletList, historyButtonTapped: presentHistory, settingsButtonTapped: presentSettings, emptyStateViewModel: walletEmptyStateViewModel)
+        return WalletViewController.instantiate(walletViewModel: walletViewModel, sendButtonTapped: presentSend, requestButtonTapped: presentRequest, nodeAliasButtonTapped: presentWalletList, historyButtonTapped: presentHistory, nodeButtonTapped: presentNode, emptyStateViewModel: walletEmptyStateViewModel)
     }
 
     private func presentHistory() {
         pageViewController.setViewControllers([historyViewController()], direction: .forward, animated: true, completion: nil)
     }
 
-    private func presentSettings() {
-        pageViewController.setViewControllers([settingsViewController()], direction: .reverse, animated: true, completion: nil)
+    private func presentNode() {
+        let navigationController = ZapNavigationController()
+
+        let nodeViewController = NodeViewController.instantiate(presentChannels: pushChannelList(on: navigationController), presentSettings: pushSettings(on: navigationController), presentWallet: presentWallet)
+        navigationController.viewControllers = [nodeViewController]
+
+        pageViewController.setViewControllers([navigationController], direction: .reverse, animated: true, completion: nil)
+    }
+
+    private func pushSettings(on navigationController: UINavigationController) -> (() -> Void) {
+        return { [weak self] in
+            guard let viewController = self?.settingsViewController() else { return }
+            navigationController.pushViewController(viewController, animated: true)
+        }
     }
 
     private func presentWallet(direction: UIPageViewController.NavigationDirection) {
         pageViewController.setViewControllers([walletViewController()], direction: direction, animated: true, completion: nil)
     }
 
-    func settingsViewController() -> ZapNavigationController {
+    func settingsViewController() -> SettingsViewController {
         guard let disconnectWalletDelegate = disconnectWalletDelegate else { fatalError("Didn't set disconnectWalletDelegate") }
 
-        let settingsViewController = SettingsViewController(
+        return SettingsViewController(
             info: lightningService.infoService.info.value,
             connection: lightningService.connection,
             disconnectWalletDelegate: disconnectWalletDelegate,
             authenticationViewModel: authenticationViewModel,
             pushNodeURIViewController: pushNodeURIViewController,
             pushLndLogViewController: pushLndLogViewController,
-            pushChannelBackup: pushChannelBackup,
-            presentWallet: presentWallet)
-
-        let navigationController = ZapNavigationController(rootViewController: settingsViewController)
-
-        navigationController.tabBarItem.title = Tab.settings.title
-        navigationController.tabBarItem.image = Tab.settings.image
-        navigationController.view.backgroundColor = UIColor.Zap.background
-
-        return navigationController
+            pushChannelBackup: pushChannelBackup)
     }
 
     func historyViewController() -> UINavigationController {
@@ -313,18 +316,18 @@ final class WalletCoordinator: NSObject, Coordinator {
         rootViewController.present(detailViewController, animated: true)
     }
 
-    private func channelNavigationController(badgeUpdaterDelegate: BadgeUpdaterDelegate) -> UINavigationController {
-        let walletEmptyStateViewModel = WalletEmptyStateViewModel(lightningService: lightningService, fundButtonTapped: presentFundWallet)
-        let channelListEmptyStateViewModel = ChannelListEmptyStateViewModel(openButtonTapped: presentAddChannel)
-        let viewController = ChannelListViewController.instantiate(channelListViewModel: channelListViewModel, addChannelButtonTapped: presentAddChannel, presentChannelDetail: presentChannelDetail, walletEmptyStateViewModel: walletEmptyStateViewModel, channelListEmptyStateViewModel: channelListEmptyStateViewModel)
+    private func pushChannelList(on navigationController: UINavigationController) -> (() -> Void) {
+        return { [weak self] in
+            guard let self = self else { return }
+            let walletEmptyStateViewModel = WalletEmptyStateViewModel(lightningService: self.lightningService, fundButtonTapped: self.presentFundWallet)
+            let channelListEmptyStateViewModel = ChannelListEmptyStateViewModel(openButtonTapped: self.presentAddChannel)
+            let viewController = ChannelListViewController.instantiate(channelListViewModel: self.channelListViewModel, addChannelButtonTapped: self.presentAddChannel, presentChannelDetail: self.presentChannelDetail, walletEmptyStateViewModel: walletEmptyStateViewModel, channelListEmptyStateViewModel: channelListEmptyStateViewModel)
 
-        viewController.badgeUpdaterDelegate = badgeUpdaterDelegate
+//          TODO: remove all this badgeUpdater stuff
+//          viewController.badgeUpdaterDelegate = badgeUpdaterDelegate
 
-        let navigationController = ZapNavigationController(rootViewController: viewController)
-        navigationController.tabBarItem.title = Tab.channels.title
-        navigationController.tabBarItem.image = Tab.channels.image
-        navigationController.view.backgroundColor = UIColor.Zap.background
-        return navigationController
+            navigationController.pushViewController(viewController, animated: true)
+        }
     }
 
     private func pushChannelBackup(on navigationController: UINavigationController) {

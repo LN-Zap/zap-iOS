@@ -55,7 +55,7 @@ final class WalletViewController: UIViewController {
     }
 
     // swiftlint:disable:next function_parameter_count
-    static func instantiate(walletViewModel: WalletViewModel, sendButtonTapped: @escaping () -> Void, requestButtonTapped: @escaping () -> Void, nodeAliasButtonTapped: @escaping () -> Void, historyButtonTapped: @escaping () -> Void, settingsButtonTapped: @escaping () -> Void, emptyStateViewModel: WalletEmptyStateViewModel) -> WalletViewController {
+    static func instantiate(walletViewModel: WalletViewModel, sendButtonTapped: @escaping () -> Void, requestButtonTapped: @escaping () -> Void, nodeAliasButtonTapped: @escaping () -> Void, historyButtonTapped: @escaping () -> Void, nodeButtonTapped: @escaping () -> Void, emptyStateViewModel: WalletEmptyStateViewModel) -> WalletViewController {
         let walletViewController = StoryboardScene.Wallet.walletViewController.instantiate()
         walletViewController.walletViewModel = walletViewModel
 
@@ -64,7 +64,7 @@ final class WalletViewController: UIViewController {
         walletViewController.nodeAliasButtonTapped = nodeAliasButtonTapped
         walletViewController.emptyStateViewModel = emptyStateViewModel
         walletViewController.historyButtonTapped = historyButtonTapped
-        walletViewController.settingsButtonTapped = settingsButtonTapped
+        walletViewController.settingsButtonTapped = nodeButtonTapped
 
         walletViewController.tabBarItem.title = Tab.wallet.title
         walletViewController.tabBarItem.image = Tab.wallet.image

@@ -68,6 +68,8 @@
 		AD2B877D221C6F7800308C1B /* UnlockWalletViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD2B877C221C6F7800308C1B /* UnlockWalletViewController.swift */; };
 		AD2B877F221C6F8400308C1B /* UnlockWallet.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AD2B877E221C6F8400308C1B /* UnlockWallet.storyboard */; };
 		AD2D912C21567D4C001015B6 /* EventDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD2D912B21567D4C001015B6 /* EventDetailViewController.swift */; };
+		AD2F6D40234B368A003D0D49 /* NodeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD2F6D3F234B368A003D0D49 /* NodeViewController.swift */; };
+		AD2F6D42234B36B0003D0D49 /* Node.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AD2F6D41234B36B0003D0D49 /* Node.storyboard */; };
 		AD3553E5224E32EA00B99ABC /* ChannelListHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD3553E4224E32EA00B99ABC /* ChannelListHeaderView.swift */; };
 		AD3553E7224E6CD400B99ABC /* CircleGraphView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD3553E6224E6CD400B99ABC /* CircleGraphView.swift */; };
 		AD3781C421661A070083CE77 /* Pem.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD27B01520FC8BBF00F232A8 /* Pem.swift */; };
@@ -673,6 +675,8 @@
 		AD2B877E221C6F8400308C1B /* UnlockWallet.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = UnlockWallet.storyboard; sourceTree = "<group>"; };
 		AD2D912821554D61001015B6 /* Lndmobile.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Lndmobile.framework; path = Frameworks/Lndmobile.framework; sourceTree = SOURCE_ROOT; };
 		AD2D912B21567D4C001015B6 /* EventDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventDetailViewController.swift; sourceTree = "<group>"; };
+		AD2F6D3F234B368A003D0D49 /* NodeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NodeViewController.swift; sourceTree = "<group>"; };
+		AD2F6D41234B36B0003D0D49 /* Node.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Node.storyboard; sourceTree = "<group>"; };
 		AD3553E4224E32EA00B99ABC /* ChannelListHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChannelListHeaderView.swift; sourceTree = "<group>"; };
 		AD3553E6224E6CD400B99ABC /* CircleGraphView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CircleGraphView.swift; sourceTree = "<group>"; };
 		AD3781CF2166522E0083CE77 /* Environment.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Environment.swift; sourceTree = "<group>"; };
@@ -1170,6 +1174,7 @@
 				ADCE01CA207B966200CA72E8 /* Loading */,
 				ADA58F9622049007009A5494 /* ManageWallets */,
 				ADEEB5342134668B00D2F992 /* ModalPin */,
+				AD2F6D3E234B3676003D0D49 /* Node */,
 				A02C9FBB202EE995009821B1 /* OpenChannel */,
 				A070D963202A3CFC000A8274 /* QRCodeDetail */,
 				AD99C9EB209072530061C565 /* QRCodeScanner */,
@@ -1578,6 +1583,15 @@
 				ADFCEADE2177687F00370242 /* EventDetailViewModel.swift */,
 			);
 			path = Detail;
+			sourceTree = "<group>";
+		};
+		AD2F6D3E234B3676003D0D49 /* Node */ = {
+			isa = PBXGroup;
+			children = (
+				AD2F6D3F234B368A003D0D49 /* NodeViewController.swift */,
+				AD2F6D41234B36B0003D0D49 /* Node.storyboard */,
+			);
+			path = Node;
 			sourceTree = "<group>";
 		};
 		AD3781C3216617CB0083CE77 /* Misc */ = {
@@ -2660,6 +2674,7 @@
 				AD10D05721132EFB00A0F0D3 /* Localizable.strings in Resources */,
 				AD967FD42100D8E80048085B /* CertificateDetailCell.xib in Resources */,
 				ADA179C02151509E001401F3 /* SectionHeaderView.xib in Resources */,
+				AD2F6D42234B36B0003D0D49 /* Node.storyboard in Resources */,
 				AD391C6A20D16F89007EE22A /* NumericKeyPad.storyboard in Resources */,
 				AD035BFD2174A030005EA785 /* ChannelTableViewCell.xib in Resources */,
 				AD667E552136B074007B9160 /* TimeLocked.storyboard in Resources */,
@@ -3211,6 +3226,7 @@
 				ADFDE94422E6F46100B718A4 /* SyncViewModel.swift in Sources */,
 				AD391C6220D16F7A007EE22A /* SelectWalletCreationMethodViewController.swift in Sources */,
 				6A9518DA222DCFCA0008FE4F /* Array2DElement.swift in Sources */,
+				AD2F6D40234B368A003D0D49 /* NodeViewController.swift in Sources */,
 				AD391C4E20D16F68007EE22A /* ChannelListViewModel.swift in Sources */,
 				AD391C2620D16EFA007EE22A /* Localizable.swift in Sources */,
 				AD391C5C20D16F7A007EE22A /* MnemonicViewModel.swift in Sources */,
