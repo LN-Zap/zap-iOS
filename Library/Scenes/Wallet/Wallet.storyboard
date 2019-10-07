@@ -319,7 +319,7 @@
                                 </subviews>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
-                                    <constraint firstAttribute="bottom" secondItem="PUy-5s-LcI" secondAttribute="bottom" constant="20" id="03B-bs-XFs"/>
+                                    <constraint firstAttribute="bottom" secondItem="PUy-5s-LcI" secondAttribute="bottom" priority="750" constant="20" id="03B-bs-XFs"/>
                                     <constraint firstItem="L2S-LJ-1ZB" firstAttribute="leading" secondItem="PmM-35-WPh" secondAttribute="leading" id="6Fg-6e-jNg"/>
                                     <constraint firstAttribute="bottom" secondItem="L2S-LJ-1ZB" secondAttribute="bottom" id="GBa-Ij-EmC"/>
                                     <constraint firstItem="L2S-LJ-1ZB" firstAttribute="top" secondItem="PUy-5s-LcI" secondAttribute="centerY" id="Orj-hJ-JKG"/>
@@ -342,7 +342,8 @@
                             <constraint firstItem="APz-7e-8dA" firstAttribute="height" secondItem="PmM-35-WPh" secondAttribute="height" id="bpd-vq-bDv"/>
                             <constraint firstItem="EBs-OP-1wt" firstAttribute="top" secondItem="PUy-5s-LcI" secondAttribute="top" id="fYC-eP-NLY"/>
                             <constraint firstAttribute="bottom" secondItem="wGj-mN-gis" secondAttribute="bottom" id="gYI-Qe-ExY"/>
-                            <constraint firstItem="Nqe-wQ-xfx" firstAttribute="bottom" secondItem="PmM-35-WPh" secondAttribute="bottom" id="kFT-7n-OFK"/>
+                            <constraint firstItem="Nqe-wQ-xfx" firstAttribute="bottom" relation="greaterThanOrEqual" secondItem="PUy-5s-LcI" secondAttribute="bottom" id="hOb-lA-XPe"/>
+                            <constraint firstAttribute="bottom" secondItem="PmM-35-WPh" secondAttribute="bottom" id="kFT-7n-OFK"/>
                             <constraint firstItem="PmM-35-WPh" firstAttribute="leading" secondItem="Nqe-wQ-xfx" secondAttribute="leading" id="rJ3-hg-ltj"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="Nqe-wQ-xfx"/>
