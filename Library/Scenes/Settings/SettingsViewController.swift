@@ -50,17 +50,21 @@ final class SettingsViewController: GroupedTableViewController {
                 BitcoinUnitSelectionSettingsItem(),
                 OnChainRequestAddressTypeSelectionSettingsItem(),
                 BlockExplorerSelectionSettingsItem()
-            ]),
-            Section(title: L10n.Scene.Settings.Section.lightning, rows: lightningRows),
+            ])
+        ]
+        if !lightningRows.isEmpty {
+            sections.append(Section(title: L10n.Scene.Settings.Section.lightning, rows: lightningRows))
+        }
+        sections.append(contentsOf: [
             Section(title: L10n.Scene.Settings.Section.wallet, rows: walletRows),
-            Section(title: nil, rows: [
+            Section<SettingsItem>(title: nil, rows: [
                 // swiftlint:disable force_unwrapping
                 SafariSettingsItem(title: L10n.Scene.Settings.Item.help, url: URL(string: L10n.Link.help)!),
                 SafariSettingsItem(title: L10n.Scene.Settings.Item.reportIssue, url: URL(string: L10n.Link.bugReport)!),
                 SafariSettingsItem(title: L10n.Scene.Settings.Item.privacyPolicy, url: URL(string: L10n.Link.privacy)!)
                 // swiftlint:enable force_unwrapping
             ])
-        ]
+        ])
 
         // display outdated lnd version warning
         if info?.isLndVersionOutdated == true, let currentVersion = info?.version {
