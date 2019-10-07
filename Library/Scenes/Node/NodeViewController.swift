@@ -26,6 +26,8 @@ final class NodeViewController: UIViewController {
         return viewController
     }
 
+    private var content = [[(configure: (UITableViewCell) -> Void, action: () -> Void)]]()
+
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -41,6 +43,19 @@ final class NodeViewController: UIViewController {
         tableView.register(UITableViewCell.self, forCellReuseIdentifier: "nodeCell")
 
         navigationItem.rightBarButtonItem = UIBarButtonItem(image: Asset.arrowRight.image, style: .plain, target: self, action: #selector(presentWallet))
+
+        content = [
+            [
+                (configure: {
+                    $0.textLabel?.text = "Channels"
+                    $0.accessoryType = .disclosureIndicator
+                }, action: channelListButtonTapped),
+                (configure: {
+                    $0.textLabel?.text = "Settings"
+                    $0.accessoryType = .disclosureIndicator
+                }, action: settingsButtonTapped)
+            ]
+        ]
     }
 
     @objc private func presentWallet() {
@@ -49,24 +64,20 @@ final class NodeViewController: UIViewController {
 }
 
 extension NodeViewController: UITableViewDataSource {
+    func numberOfSections(in tableView: UITableView) -> Int {
+        content.count
+    }
+
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 2
+        return content[section].count
     }
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "nodeCell", for: indexPath)
         cell.backgroundColor = UIColor.Zap.seaBlue
-        cell.accessoryType = .disclosureIndicator
 
-        switch indexPath.row {
-        case 0:
-            cell.textLabel?.text = "Channels"
-        case 1:
-            cell.textLabel?.text = "Settings"
-        default:
-            fatalError("missing table index implementation")
-        }
-
+        let (configure, _) = content[indexPath.section][indexPath.row]
+        configure(cell)
         return cell
     }
 }
@@ -75,13 +86,7 @@ extension NodeViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
 
-        switch indexPath.row {
-        case 0:
-            channelListButtonTapped()
-        case 1:
-            settingsButtonTapped()
-        default:
-            fatalError("missing table index implementation")
-        }
+        let (_, action) = content[indexPath.section][indexPath.row]
+        action()
     }
 }
