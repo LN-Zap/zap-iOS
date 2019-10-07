@@ -71,9 +71,7 @@ final class HistoryViewController: UIViewController {
             .bind(to: emptyStateLabel.reactive.isHidden)
             .dispose(in: reactive.bag)
 
-        if #available(iOS 13.0, *) {
-            navigationItem.leftBarButtonItem = UIBarButtonItem(image: UIImage(systemName: "arrow.left"), style: .plain, target: self, action: #selector(presentWallet))
-        }
+        navigationItem.leftBarButtonItem = UIBarButtonItem(image: Asset.arrowLeft.image, style: .plain, target: self, action: #selector(presentWallet))
     }
 
     override func viewWillAppear(_ animated: Bool) {

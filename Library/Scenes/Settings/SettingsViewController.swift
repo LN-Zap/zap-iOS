@@ -91,9 +91,7 @@ final class SettingsViewController: GroupedTableViewController {
 
         title = L10n.Scene.Settings.title
 
-        if #available(iOS 13.0, *) {
-            navigationItem.rightBarButtonItem = UIBarButtonItem(image: UIImage(systemName: "arrow.right"), style: .plain, target: self, action: #selector(presentWallet))
-        }
+        navigationItem.rightBarButtonItem = UIBarButtonItem(image: Asset.arrowRight.image, style: .plain, target: self, action: #selector(presentWallet))
     }
 
     @objc private func presentWallet() {

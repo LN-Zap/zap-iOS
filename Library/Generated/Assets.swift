@@ -18,6 +18,8 @@
 
 // swiftlint:disable identifier_name line_length nesting type_body_length type_name
 internal enum Asset {
+  internal static let arrowLeft = ImageAsset(name: "arrow.left")
+  internal static let arrowRight = ImageAsset(name: "arrow.right")
   internal static let channelBackupFile = ImageAsset(name: "channel_backup_file")
   internal static let channelBackupFileError = ImageAsset(name: "channel_backup_file_error")
   internal static let iconErrorSmall = ImageAsset(name: "icon_error_small")
