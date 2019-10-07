@@ -66,9 +66,6 @@ final class WalletViewController: UIViewController {
         walletViewController.historyButtonTapped = historyButtonTapped
         walletViewController.settingsButtonTapped = nodeButtonTapped
 
-        walletViewController.tabBarItem.title = Tab.wallet.title
-        walletViewController.tabBarItem.image = Tab.wallet.image
-
         return walletViewController
     }
 

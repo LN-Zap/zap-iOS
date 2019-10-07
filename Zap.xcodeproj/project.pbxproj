@@ -173,7 +173,6 @@
 		AD391D1E20D174B4007EE22A /* SetupCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADEDBB8B20C2D6A700B71F17 /* SetupCoordinator.swift */; };
 		AD391D2020D178C2007EE22A /* Bundle.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD391D1F20D178C2007EE22A /* Bundle.swift */; };
 		AD391D2220D1798A007EE22A /* Media.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = AD391D2120D1798A007EE22A /* Media.xcassets */; };
-		AD3DDC03213EE4000008379C /* RootTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD3DDC02213EE4000008379C /* RootTabBarController.swift */; };
 		AD3DDF6922D38D4C0031BFC8 /* Onboarding.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AD3DDF6822D38D4C0031BFC8 /* Onboarding.storyboard */; };
 		AD3DDF6B22D38D590031BFC8 /* OnboardingContainerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD3DDF6A22D38D590031BFC8 /* OnboardingContainerViewController.swift */; };
 		AD3DDF6D22D3908B0031BFC8 /* OnboardingPageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD3DDF6C22D3908B0031BFC8 /* OnboardingPageViewController.swift */; };
@@ -688,7 +687,6 @@
 		AD391D2120D1798A007EE22A /* Media.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Media.xcassets; sourceTree = "<group>"; };
 		AD391D4020D17FA9007EE22A /* Messages.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Messages.framework; path = System/Library/Frameworks/Messages.framework; sourceTree = SDKROOT; };
 		AD391D5820D2903C007EE22A /* Zap.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Zap.entitlements; sourceTree = "<group>"; };
-		AD3DDC02213EE4000008379C /* RootTabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RootTabBarController.swift; sourceTree = "<group>"; };
 		AD3DDF6822D38D4C0031BFC8 /* Onboarding.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Onboarding.storyboard; sourceTree = "<group>"; };
 		AD3DDF6A22D38D590031BFC8 /* OnboardingContainerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingContainerViewController.swift; sourceTree = "<group>"; };
 		AD3DDF6C22D3908B0031BFC8 /* OnboardingPageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingPageViewController.swift; sourceTree = "<group>"; };
@@ -1471,7 +1469,6 @@
 			isa = PBXGroup;
 			children = (
 				AD391C4520D16F53007EE22A /* Root.storyboard */,
-				AD3DDC02213EE4000008379C /* RootTabBarController.swift */,
 				A0A05A4C20147B740007D1C9 /* RootViewController.swift */,
 			);
 			path = Root;
@@ -3107,7 +3104,6 @@
 				AD035BFF2174A996005EA785 /* ChannelDetailViewController.swift in Sources */,
 				AD931BD122DE23CC0048431C /* Password.swift in Sources */,
 				ADA2DD03225CDAED007482D9 /* ChannelQRCodeScannerViewController.swift in Sources */,
-				AD3DDC03213EE4000008379C /* RootTabBarController.swift in Sources */,
 				ADEEB5362134669B00D2F992 /* ModalPinViewController.swift in Sources */,
 				AD391CDB20D16FE1007EE22A /* HistoryViewController.swift in Sources */,
 				AD667E572136E622007B9160 /* TimeLockStore.swift in Sources */,

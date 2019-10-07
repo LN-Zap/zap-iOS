@@ -31,12 +31,6 @@ final class ChannelListViewController: UIViewController {
     private var channelListEmptyStateViewModel: ChannelListEmptyStateViewModel!
     // swiftlint:enable implicitly_unwrapped_optional
 
-    weak var badgeUpdaterDelegate: BadgeUpdaterDelegate? {
-        didSet {
-            setupBadgeUpdater()
-        }
-    }
-
     static func instantiate(channelListViewModel: ChannelListViewModel, addChannelButtonTapped: @escaping () -> Void, presentChannelDetail: @escaping (UIViewController, ChannelViewModel) -> Void, walletEmptyStateViewModel: WalletEmptyStateViewModel, channelListEmptyStateViewModel: ChannelListEmptyStateViewModel) -> ChannelListViewController {
         let viewController = StoryboardScene.ChannelList.channelViewController.instantiate()
         viewController.channelListViewModel = channelListViewModel
@@ -80,15 +74,6 @@ final class ChannelListViewController: UIViewController {
         headerView.setup(for: channelListViewModel)
 
         setupEmtpyState()
-    }
-
-    private func setupBadgeUpdater() {
-        channelListViewModel.shouldShowBadgeIcon
-            .observeOn(DispatchQueue.main)
-            .observeNext { [weak self] in
-                self?.badgeUpdaterDelegate?.setBadge($0 ? " " : nil, for: .channels)
-            }
-            .dispose(in: reactive.bag)
     }
 
     private func setupEmtpyState() {

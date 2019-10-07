@@ -11,40 +11,6 @@ import SafariServices
 import SwiftBTC
 import UIKit
 
-enum Tab {
-    case wallet
-    case history
-    case channels
-    case settings
-
-    var title: String {
-        switch self {
-        case .wallet:
-            return L10n.Scene.Wallet.title
-        case .history:
-            return L10n.Scene.History.title
-        case .channels:
-            return L10n.Scene.Channels.title
-        case .settings:
-            return L10n.Scene.Settings.title
-        }
-    }
-
-    var image: UIImage {
-        switch self {
-        case .wallet:
-            return Asset.tabbarWallet.image
-        case .history:
-            return Asset.tabbarHistory.image
-        case .channels:
-            return Asset.tabbarChannels.image
-        case .settings:
-            return Asset.tabbarSettings.image
-        }
-    }
-}
-
-// TODO: remove all the TabBar references
 final class WalletCoordinator: NSObject, Coordinator {
     let rootViewController: RootViewController
 
@@ -212,8 +178,6 @@ final class WalletCoordinator: NSObject, Coordinator {
     func historyViewController() -> UINavigationController {
         let viewController = HistoryViewController.instantiate(historyViewModel: historyViewModel, presentFilter: presentFilter, presentDetail: presentDetail, presentSend: presentSend, presentWallet: presentWallet)
         let navigationController = ZapNavigationController(rootViewController: viewController)
-        navigationController.tabBarItem.title = Tab.history.title
-        navigationController.tabBarItem.image = Tab.history.image
 
         return navigationController
     }

@@ -74,10 +74,6 @@ final class SettingsViewController: GroupedTableViewController {
         super.init(sections: sections)
     }
 
-    func updateBadgeIfNeeded(badgeUpdaterDelegate: BadgeUpdaterDelegate) {
-        badgeUpdaterDelegate.setBadge(info?.isLndVersionOutdated == true ? 1 : 0, for: .settings)
-    }
-
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
