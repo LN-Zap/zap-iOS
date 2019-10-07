@@ -24,12 +24,11 @@ final class SettingsViewController: GroupedTableViewController {
          disconnectWalletDelegate: DisconnectWalletDelegate,
          authenticationViewModel: AuthenticationViewModel,
          pushNodeURIViewController: @escaping (UINavigationController) -> Void,
-         pushLndLogViewController: @escaping (UINavigationController) -> Void,
-         pushChannelBackup: @escaping (UINavigationController) -> Void) {
+         pushLndLogViewController: @escaping (UINavigationController) -> Void
+    ) {
         self.info = info
 
         var lightningRows: [SettingsItem] = [
-            PushViewControllerSettingsItem(title: L10n.Scene.Settings.Item.channelBackup, pushViewController: pushChannelBackup),
             LightningRequestExpirySelectionSettingsItem()
         ]
 
@@ -81,6 +80,7 @@ final class SettingsViewController: GroupedTableViewController {
         super.viewDidLoad()
 
         title = L10n.Scene.Settings.title
+        navigationItem.largeTitleDisplayMode = .never
     }
 
     override func tableView(_ tableView: UITableView, titleForFooterInSection section: Int) -> String? {

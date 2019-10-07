@@ -142,7 +142,8 @@ final class WalletCoordinator: NSObject, Coordinator {
             nodeAliasButtonTapped: presentWalletList,
             historyButtonTapped: presentHistory,
             nodeButtonTapped: presentNode,
-            emptyStateViewModel: walletEmptyStateViewModel)
+            emptyStateViewModel: walletEmptyStateViewModel
+        )
     }
 
     private func presentHistory() {
@@ -160,7 +161,9 @@ final class WalletCoordinator: NSObject, Coordinator {
             presentChannels: pushChannelList(on: navigationController),
             presentSettings: pushSettings(on: navigationController),
             presentWallet: presentWallet,
-            disconnectWallet: disconnectWallet)
+            disconnectWallet: disconnectWallet,
+            presentChannelBackup: presentChannelBackup(on: navigationController)
+        )
         navigationController.viewControllers = [nodeViewController]
 
         pageViewController.setViewControllers([navigationController], direction: .reverse, animated: true, completion: nil)
@@ -186,8 +189,8 @@ final class WalletCoordinator: NSObject, Coordinator {
             disconnectWalletDelegate: disconnectWalletDelegate,
             authenticationViewModel: authenticationViewModel,
             pushNodeURIViewController: pushNodeURIViewController,
-            pushLndLogViewController: pushLndLogViewController,
-            pushChannelBackup: pushChannelBackup)
+            pushLndLogViewController: pushLndLogViewController
+        )
     }
 
     func historyViewController() -> UINavigationController {
@@ -314,10 +317,12 @@ final class WalletCoordinator: NSObject, Coordinator {
         }
     }
 
-    private func pushChannelBackup(on navigationController: UINavigationController) {
-        guard let nodePubKey = walletConfigurationStore.selectedWallet?.nodePubKey else { return }
-        let viewController = ChannelBackupViewController.instantiate(nodePubKey: nodePubKey)
-        navigationController.pushViewController(viewController, animated: true)
+    private func presentChannelBackup(on navigationController: UINavigationController) -> (() -> Void) {
+        return { [weak self] in
+            guard let nodePubKey = self?.walletConfigurationStore.selectedWallet?.nodePubKey else { return }
+            let viewController = ChannelBackupViewController.instantiate(nodePubKey: nodePubKey)
+            navigationController.pushViewController(viewController, animated: true)
+        }
     }
 
     private func presentChannelDetail(on presentingViewController: UIViewController, channelViewModel: ChannelViewModel) {

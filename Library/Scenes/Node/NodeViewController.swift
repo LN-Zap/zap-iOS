@@ -15,13 +15,15 @@ final class NodeViewController: UIViewController {
     private var settingsButtonTapped: (() -> Void)!
     private var walletButtonTapped: ((UIPageViewController.NavigationDirection) -> Void)!
     private var disconnectButtonTapped: (() -> Void)!
+    private var channelBackupButtonTapped: (() -> Void)!
     // swiftlint:enable implicitly_unwrapped_optional
 
     static func instantiate(
         presentChannels: @escaping (() -> Void),
         presentSettings: @escaping () -> Void,
         presentWallet: @escaping (UIPageViewController.NavigationDirection) -> Void,
-        disconnectWallet: @escaping () -> Void
+        disconnectWallet: @escaping () -> Void,
+        presentChannelBackup: @escaping () -> Void
     ) -> NodeViewController {
         let viewController = StoryboardScene.Node.nodeViewController.instantiate()
 
@@ -29,6 +31,7 @@ final class NodeViewController: UIViewController {
         viewController.settingsButtonTapped = presentSettings
         viewController.walletButtonTapped = presentWallet
         viewController.disconnectButtonTapped = disconnectWallet
+        viewController.channelBackupButtonTapped = presentChannelBackup
 
         return viewController
     }
@@ -57,6 +60,12 @@ final class NodeViewController: UIViewController {
                     $0.textLabel?.text = "Channels"
                     $0.accessoryType = .disclosureIndicator
                 }, action: channelListButtonTapped),
+                (configure: {
+                    $0.textLabel?.text = L10n.Scene.Settings.Item.channelBackup
+                    $0.accessoryType = .disclosureIndicator
+                }, action: channelBackupButtonTapped)
+            ],
+            [
                 (configure: {
                     $0.textLabel?.text = "Settings"
                     $0.accessoryType = .disclosureIndicator
