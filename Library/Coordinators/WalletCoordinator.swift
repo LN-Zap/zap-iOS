@@ -59,6 +59,8 @@ final class WalletCoordinator: NSObject, Coordinator {
 
     private var notificationScheduler: NotificationScheduler?
 
+    private var pageViewController = UIPageViewController(transitionStyle: .scroll, navigationOrientation: .horizontal, options: nil)
+
     var route: Route?
 
     init(rootViewController: RootViewController, lightningService: LightningService, disconnectWalletDelegate: WalletDelegate, authenticationViewModel: AuthenticationViewModel, walletConfigurationStore: WalletConfigurationStore) {
@@ -149,11 +151,11 @@ final class WalletCoordinator: NSObject, Coordinator {
         presentViewController(viewController)
     }
 
-    private var pageViewController = UIPageViewController(transitionStyle: .scroll, navigationOrientation: .horizontal, options: nil)
-
     private func presentMain() {
-        pageViewController.setViewControllers([walletViewController()], direction: .forward, animated: false, completion: nil)
+        guard rootViewController.currentViewController != pageViewController else { return }
+
         presentViewController(pageViewController)
+        pageViewController.setViewControllers([walletViewController()], direction: .forward, animated: false, completion: nil)
 
         if let route = self.route {
             handle(route)

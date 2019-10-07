@@ -22,6 +22,7 @@ final class WalletViewController: UIViewController {
 
     // header
     @IBOutlet private weak var nodeAliasButton: UIButton!
+    @IBOutlet private weak var syncView: SyncView!
 
     // send / receive buttons
     @IBOutlet private weak var bottomCurtain: UIView!
@@ -36,13 +37,6 @@ final class WalletViewController: UIViewController {
     @IBOutlet private weak var swapIconImageView: UIImageView!
     @IBOutlet private weak var primaryBalanceLabel: UILabel!
     @IBOutlet private weak var secondaryBalanceLabel: UILabel!
-
-    // sync view
-    @IBOutlet private weak var syncBackgroundView: UIView!
-    @IBOutlet private weak var syncViewHeightConstraint: NSLayoutConstraint!
-    @IBOutlet private weak var syncTitleLabel: UILabel!
-    @IBOutlet private weak var syncProgressLabel: UILabel!
-    @IBOutlet private weak var syncProgressView: UIProgressView!
 
     // swiftlint:disable implicitly_unwrapped_optional
     private var walletViewModel: WalletViewModel!
@@ -119,8 +113,9 @@ final class WalletViewController: UIViewController {
         setupBindings()
 
         setupDetailView()
-        setupSyncView()
         setupEmtpyState()
+
+        syncView.syncViewModel = walletViewModel.syncViewModel
     }
 
     override func viewDidLayoutSubviews() {
@@ -136,37 +131,6 @@ final class WalletViewController: UIViewController {
             .map { $0 > 0 }
             .bind(to: emptyStateView.reactive.isHidden)
             .dispose(in: reactive.bag)
-    }
-
-    private func setupSyncView() {
-        walletViewModel.syncViewModel.isSyncing
-            .map { $0 ? UILayoutPriority(rawValue: 1) : UILayoutPriority(rawValue: 999) }
-            .observeOn(DispatchQueue.main)
-            .observeNext { [weak self] in
-                self?.syncViewHeightConstraint.priority = $0
-                UIView.animate(withDuration: 0.25) {
-                    self?.view.layoutIfNeeded()
-                }
-            }
-            .dispose(in: reactive.bag)
-
-        syncProgressView.trackTintColor = UIColor.Zap.deepSeaBlue
-
-        walletViewModel.syncViewModel.percentSignal
-            .map { Float($0) }
-            .bind(to: syncProgressView.reactive.progress)
-            .dispose(in: reactive.bag)
-
-        walletViewModel.syncViewModel.percentSignal
-            .map { "\(Int($0 * 100))%" }
-            .bind(to: syncProgressLabel.reactive.text)
-            .dispose(in: reactive.bag)
-
-        syncTitleLabel.text = L10n.Scene.Sync.descriptionLabel
-
-        syncBackgroundView.backgroundColor = UIColor.Zap.seaBlue
-
-        Style.Label.body.apply(to: syncTitleLabel, syncProgressLabel)
     }
 
     private func setupPrimaryBalanceLabel() {

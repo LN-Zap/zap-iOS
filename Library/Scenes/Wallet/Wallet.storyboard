@@ -20,8 +20,12 @@
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="wGj-mN-gis">
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                                 <subviews>
+                                    <view clipsSubviews="YES" contentMode="scaleToFill" placeholderIntrinsicWidth="infinite" placeholderIntrinsicHeight="128" translatesAutoresizingMaskIntoConstraints="NO" id="Iwe-qX-5JJ" customClass="SyncView" customModule="Library" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="0.0" width="375" height="128"/>
+                                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                    </view>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="VfT-Do-bRp">
-                                        <rect key="frame" x="0.0" y="0.0" width="375" height="60"/>
+                                        <rect key="frame" x="0.0" y="128" width="375" height="60"/>
                                         <subviews>
                                             <stackView opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="260" verticalCompressionResistancePriority="742" translatesAutoresizingMaskIntoConstraints="NO" id="Tgv-5l-myg">
                                                 <rect key="frame" x="10" y="0.0" width="355" height="60"/>
@@ -84,17 +88,17 @@
                                         </subviews>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <constraints>
-                                            <constraint firstItem="Tgv-5l-myg" firstAttribute="top" secondItem="VfT-Do-bRp" secondAttribute="top" id="81M-2F-1Bs"/>
+                                            <constraint firstItem="Tgv-5l-myg" firstAttribute="top" secondItem="VfT-Do-bRp" secondAttribute="top" priority="500" id="81M-2F-1Bs"/>
                                             <constraint firstAttribute="bottom" secondItem="Tgv-5l-myg" secondAttribute="bottom" id="d5X-Ad-2LV"/>
                                             <constraint firstItem="Tgv-5l-myg" firstAttribute="leading" secondItem="VfT-Do-bRp" secondAttribute="leading" constant="10" id="snY-0v-HKa"/>
                                             <constraint firstAttribute="trailing" secondItem="Tgv-5l-myg" secondAttribute="trailing" constant="10" id="t6z-It-cuL"/>
                                         </constraints>
                                     </view>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="N9R-Wb-2RE" userLabel="balance container">
-                                        <rect key="frame" x="0.0" y="60" width="375" height="507"/>
+                                        <rect key="frame" x="0.0" y="188" width="375" height="379"/>
                                         <subviews>
                                             <stackView opaque="NO" contentMode="scaleToFill" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="ETB-V0-5he">
-                                                <rect key="frame" x="133.5" y="126" width="131.5" height="61.5"/>
+                                                <rect key="frame" x="133.5" y="86.5" width="131.5" height="61.5"/>
                                                 <subviews>
                                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="zto-m2-yBD">
                                                         <rect key="frame" x="0.0" y="0.0" width="108.5" height="61.5"/>
@@ -125,7 +129,7 @@
                                                 </subviews>
                                             </stackView>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="MBN-7j-D0P">
-                                                <rect key="frame" x="133.5" y="126" width="131.5" height="61.5"/>
+                                                <rect key="frame" x="133.5" y="86.5" width="131.5" height="61.5"/>
                                                 <fontDescription key="fontDescription" name=".AppleSystemUIFont" family=".AppleSystemUIFont" pointSize="15"/>
                                                 <connections>
                                                     <action selector="swapCurrencyButtonTapped:" destination="KOM-Jt-Qkh" eventType="touchUpInside" id="aF3-6J-Rn1"/>
@@ -149,57 +153,6 @@
                                     </view>
                                 </subviews>
                             </stackView>
-                            <view clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="f3K-Ib-sOt" userLabel="Sync Container">
-                                <rect key="frame" x="0.0" y="0.0" width="375" height="0.0"/>
-                                <subviews>
-                                    <view contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="gnd-tl-l3D" userLabel="background container">
-                                        <rect key="frame" x="0.0" y="0.0" width="375" height="82.5"/>
-                                        <subviews>
-                                            <stackView opaque="NO" contentMode="scaleToFill" ambiguous="YES" axis="vertical" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="Mzb-Uu-12t">
-                                                <rect key="frame" x="0.0" y="30" width="375" height="10"/>
-                                                <subviews>
-                                                    <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="uG0-O6-uof">
-                                                        <rect key="frame" x="0.0" y="0.0" width="375" height="0.0"/>
-                                                        <subviews>
-                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="_Syncing:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="TgV-NW-4MM">
-                                                                <rect key="frame" x="20" y="0.0" width="291" height="0.0"/>
-                                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                                <nil key="textColor"/>
-                                                                <nil key="highlightedColor"/>
-                                                            </label>
-                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="255" verticalHuggingPriority="251" text="(10%)" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="IUK-cy-OWr">
-                                                                <rect key="frame" x="311" y="0.0" width="44" height="0.0"/>
-                                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                                <nil key="textColor"/>
-                                                                <nil key="highlightedColor"/>
-                                                            </label>
-                                                        </subviews>
-                                                        <directionalEdgeInsets key="directionalLayoutMargins" top="0.0" leading="20" bottom="0.0" trailing="20"/>
-                                                    </stackView>
-                                                    <progressView opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="750" progress="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="r2G-Fm-DOe">
-                                                        <rect key="frame" x="0.0" y="10" width="375" height="0.0"/>
-                                                    </progressView>
-                                                </subviews>
-                                            </stackView>
-                                        </subviews>
-                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                        <constraints>
-                                            <constraint firstItem="Mzb-Uu-12t" firstAttribute="leading" secondItem="gnd-tl-l3D" secondAttribute="leading" id="3Pi-j1-tWh"/>
-                                            <constraint firstAttribute="trailing" secondItem="Mzb-Uu-12t" secondAttribute="trailing" id="FFU-hA-G1a"/>
-                                            <constraint firstAttribute="bottom" secondItem="Mzb-Uu-12t" secondAttribute="bottom" constant="20" id="Prz-hS-3To"/>
-                                            <constraint firstItem="Mzb-Uu-12t" firstAttribute="top" relation="greaterThanOrEqual" secondItem="gnd-tl-l3D" secondAttribute="top" priority="750" constant="10" id="obJ-sM-Gmq"/>
-                                        </constraints>
-                                    </view>
-                                </subviews>
-                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <constraints>
-                                    <constraint firstItem="gnd-tl-l3D" firstAttribute="top" secondItem="f3K-Ib-sOt" secondAttribute="top" priority="750" id="3Fc-uY-Mui"/>
-                                    <constraint firstAttribute="height" priority="999" id="BAX-sA-dNf"/>
-                                    <constraint firstItem="gnd-tl-l3D" firstAttribute="leading" secondItem="f3K-Ib-sOt" secondAttribute="leading" id="ENc-yk-XyY"/>
-                                    <constraint firstAttribute="bottom" secondItem="gnd-tl-l3D" secondAttribute="bottom" constant="20" id="a0k-Ve-CGU"/>
-                                    <constraint firstAttribute="trailing" secondItem="gnd-tl-l3D" secondAttribute="trailing" id="dc1-gg-unc"/>
-                                </constraints>
-                            </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="uId-iH-hCo">
                                 <rect key="frame" x="20" y="517" width="335" height="250"/>
                                 <subviews>
@@ -380,15 +333,12 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstAttribute="trailing" secondItem="wGj-mN-gis" secondAttribute="trailing" id="5uC-Dd-nbH"/>
+                            <constraint firstItem="wGj-mN-gis" firstAttribute="top" secondItem="YSf-Dd-ahO" secondAttribute="top" id="6e9-rh-LKG"/>
                             <constraint firstItem="uId-iH-hCo" firstAttribute="trailing" secondItem="PUy-5s-LcI" secondAttribute="trailing" id="9N7-Mv-d2o"/>
                             <constraint firstItem="uId-iH-hCo" firstAttribute="leading" secondItem="PUy-5s-LcI" secondAttribute="leading" id="FkJ-ec-mK9"/>
-                            <constraint firstItem="f3K-Ib-sOt" firstAttribute="top" secondItem="YSf-Dd-ahO" secondAttribute="top" id="GKB-0Z-qA4"/>
                             <constraint firstItem="PmM-35-WPh" firstAttribute="trailing" secondItem="Nqe-wQ-xfx" secondAttribute="trailing" id="LwT-Og-vzc"/>
-                            <constraint firstItem="Mzb-Uu-12t" firstAttribute="top" secondItem="Nqe-wQ-xfx" secondAttribute="top" priority="751" constant="10" id="MDO-T2-wWB"/>
-                            <constraint firstItem="wGj-mN-gis" firstAttribute="top" secondItem="Nqe-wQ-xfx" secondAttribute="top" id="SS5-xt-TWx"/>
-                            <constraint firstItem="Nqe-wQ-xfx" firstAttribute="trailing" secondItem="f3K-Ib-sOt" secondAttribute="trailing" id="Wk7-i2-btl"/>
-                            <constraint firstItem="f3K-Ib-sOt" firstAttribute="leading" secondItem="Nqe-wQ-xfx" secondAttribute="leading" id="X60-6m-lHg"/>
-                            <constraint firstItem="wGj-mN-gis" firstAttribute="leading" secondItem="Nqe-wQ-xfx" secondAttribute="leading" id="aax-eU-Zln"/>
+                            <constraint firstItem="Tgv-5l-myg" firstAttribute="top" relation="greaterThanOrEqual" secondItem="Nqe-wQ-xfx" secondAttribute="top" id="WCt-GF-RYn"/>
+                            <constraint firstItem="wGj-mN-gis" firstAttribute="leading" secondItem="YSf-Dd-ahO" secondAttribute="leading" id="aax-eU-Zln"/>
                             <constraint firstItem="APz-7e-8dA" firstAttribute="height" secondItem="PmM-35-WPh" secondAttribute="height" id="bpd-vq-bDv"/>
                             <constraint firstItem="EBs-OP-1wt" firstAttribute="top" secondItem="PUy-5s-LcI" secondAttribute="top" id="fYC-eP-NLY"/>
                             <constraint firstAttribute="bottom" secondItem="wGj-mN-gis" secondAttribute="bottom" id="gYI-Qe-ExY"/>
@@ -413,11 +363,7 @@
                         <outlet property="sendButton" destination="GgB-G7-lfE" id="2v8-32-YCu"/>
                         <outlet property="sendButtonBackground" destination="EBp-3s-E1M" id="nrY-9P-zYq"/>
                         <outlet property="swapIconImageView" destination="3Mb-Jl-C6P" id="cNN-YP-fMR"/>
-                        <outlet property="syncBackgroundView" destination="gnd-tl-l3D" id="4m9-pq-0fF"/>
-                        <outlet property="syncProgressLabel" destination="IUK-cy-OWr" id="WbJ-nJ-fRf"/>
-                        <outlet property="syncProgressView" destination="r2G-Fm-DOe" id="fZr-v3-4V5"/>
-                        <outlet property="syncTitleLabel" destination="TgV-NW-4MM" id="WZu-qa-hcQ"/>
-                        <outlet property="syncViewHeightConstraint" destination="BAX-sA-dNf" id="e4i-w2-Npy"/>
+                        <outlet property="syncView" destination="Iwe-qX-5JJ" id="ITF-fN-9tB"/>
                         <outlet property="totalBalanceLabel" destination="IIW-Yv-qLS" id="5uk-He-Jur"/>
                     </connections>
                 </viewController>
@@ -433,7 +379,7 @@
                     </connections>
                 </panGestureRecognizer>
             </objects>
-            <point key="canvasLocation" x="-303.19999999999999" y="236.13193403298354"/>
+            <point key="canvasLocation" x="-729" y="275"/>
         </scene>
     </scenes>
     <resources>
