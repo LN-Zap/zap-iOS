@@ -135,17 +135,32 @@ final class WalletCoordinator: NSObject, Coordinator {
     func walletViewController() -> WalletViewController {
         let walletViewModel = WalletViewModel(lightningService: lightningService)
         let walletEmptyStateViewModel = WalletEmptyStateViewModel(lightningService: lightningService, fundButtonTapped: presentFundWallet)
-        return WalletViewController.instantiate(walletViewModel: walletViewModel, sendButtonTapped: presentSend, requestButtonTapped: presentRequest, nodeAliasButtonTapped: presentWalletList, historyButtonTapped: presentHistory, nodeButtonTapped: presentNode, emptyStateViewModel: walletEmptyStateViewModel)
+        return WalletViewController.instantiate(
+            walletViewModel: walletViewModel,
+            sendButtonTapped: presentSend,
+            requestButtonTapped: presentRequest,
+            nodeAliasButtonTapped: presentWalletList,
+            historyButtonTapped: presentHistory,
+            nodeButtonTapped: presentNode,
+            emptyStateViewModel: walletEmptyStateViewModel)
     }
 
     private func presentHistory() {
         pageViewController.setViewControllers([historyViewController()], direction: .forward, animated: true, completion: nil)
     }
 
+    private func disconnectWallet() {
+        disconnectWalletDelegate?.disconnect()
+    }
+
     private func presentNode() {
         let navigationController = ZapNavigationController()
 
-        let nodeViewController = NodeViewController.instantiate(presentChannels: pushChannelList(on: navigationController), presentSettings: pushSettings(on: navigationController), presentWallet: presentWallet)
+        let nodeViewController = NodeViewController.instantiate(
+            presentChannels: pushChannelList(on: navigationController),
+            presentSettings: pushSettings(on: navigationController),
+            presentWallet: presentWallet,
+            disconnectWallet: disconnectWallet)
         navigationController.viewControllers = [nodeViewController]
 
         pageViewController.setViewControllers([navigationController], direction: .reverse, animated: true, completion: nil)
@@ -285,7 +300,12 @@ final class WalletCoordinator: NSObject, Coordinator {
             guard let self = self else { return }
             let walletEmptyStateViewModel = WalletEmptyStateViewModel(lightningService: self.lightningService, fundButtonTapped: self.presentFundWallet)
             let channelListEmptyStateViewModel = ChannelListEmptyStateViewModel(openButtonTapped: self.presentAddChannel)
-            let viewController = ChannelListViewController.instantiate(channelListViewModel: self.channelListViewModel, addChannelButtonTapped: self.presentAddChannel, presentChannelDetail: self.presentChannelDetail, walletEmptyStateViewModel: walletEmptyStateViewModel, channelListEmptyStateViewModel: channelListEmptyStateViewModel)
+            let viewController = ChannelListViewController.instantiate(
+                channelListViewModel: self.channelListViewModel,
+                addChannelButtonTapped: self.presentAddChannel,
+                presentChannelDetail: self.presentChannelDetail,
+                walletEmptyStateViewModel: walletEmptyStateViewModel,
+                channelListEmptyStateViewModel: channelListEmptyStateViewModel)
 
 //          TODO: remove all this badgeUpdater stuff
 //          viewController.badgeUpdaterDelegate = badgeUpdaterDelegate

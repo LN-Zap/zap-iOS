@@ -14,14 +14,21 @@ final class NodeViewController: UIViewController {
     private var channelListButtonTapped: (() -> Void)!
     private var settingsButtonTapped: (() -> Void)!
     private var walletButtonTapped: ((UIPageViewController.NavigationDirection) -> Void)!
+    private var disconnectButtonTapped: (() -> Void)!
     // swiftlint:enable implicitly_unwrapped_optional
 
-    static func instantiate(presentChannels: @escaping (() -> Void), presentSettings: @escaping () -> Void, presentWallet: @escaping (UIPageViewController.NavigationDirection) -> Void) -> NodeViewController {
+    static func instantiate(
+        presentChannels: @escaping (() -> Void),
+        presentSettings: @escaping () -> Void,
+        presentWallet: @escaping (UIPageViewController.NavigationDirection) -> Void,
+        disconnectWallet: @escaping () -> Void
+    ) -> NodeViewController {
         let viewController = StoryboardScene.Node.nodeViewController.instantiate()
 
         viewController.channelListButtonTapped = presentChannels
         viewController.settingsButtonTapped = presentSettings
         viewController.walletButtonTapped = presentWallet
+        viewController.disconnectButtonTapped = disconnectWallet
 
         return viewController
     }
@@ -54,6 +61,11 @@ final class NodeViewController: UIViewController {
                     $0.textLabel?.text = "Settings"
                     $0.accessoryType = .disclosureIndicator
                 }, action: settingsButtonTapped)
+            ],
+            [
+                (configure: {
+                    $0.textLabel?.text = L10n.Scene.Settings.Item.removeRemoteNode
+                }, action: disconnectButtonTapped)
             ]
         ]
     }

@@ -38,7 +38,6 @@ final class SettingsViewController: GroupedTableViewController {
         }
 
         var walletRows: [SettingsItem] = [
-            ManageWalletsSettingsItem(disconnectWalletDelegate: disconnectWalletDelegate),
             ChangePinSettingsItem(authenticationViewModel: authenticationViewModel)
         ]
 
