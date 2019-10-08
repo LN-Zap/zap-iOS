@@ -229,6 +229,9 @@
 "scene.qrcode_scanner.error.unknown_format" = "Unknown address format.";
 "scene.qrcode_scanner.error.wrong_network" = "You tried opening an invoice for %@ but your node is connected to %@.";
 "scene.qrcode_scanner.error.zero_amount_invoice" = "For security reasons zap does not support invoices without a specified amount.";
+"scene.qrcode_scanner.camera_access_denied_alert.ok" = "Settings";
+"scene.qrcode_scanner.camera_access_denied_alert.title" = "Camera access denied";
+"scene.qrcode_scanner.camera_access_denied_alert.message" = "Turn on camera access in the settings to scan the QR code.";
 
 "scene.wallet.title" = "钱包";
 "scene.wallet.total_balance" = "总计余额";
