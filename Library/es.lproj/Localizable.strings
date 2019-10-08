@@ -229,6 +229,9 @@
 "scene.qrcode_scanner.error.unknown_format" = "Formato de dirección desconocida.";
 "scene.qrcode_scanner.error.wrong_network" = "Has intentado establecer una conexión para %@ pero tu nodo esta conectado a %@.";
 "scene.qrcode_scanner.error.zero_amount_invoice" = "Por motivos de seguridad zap no soporta facturas sin monto específico.";
+"scene.qrcode_scanner.camera_access_denied_alert.ok" = "Settings";
+"scene.qrcode_scanner.camera_access_denied_alert.title" = "Camera access denied";
+"scene.qrcode_scanner.camera_access_denied_alert.message" = "Turn on camera access in the settings to scan the QR code.";
 
 "scene.wallet.title" = "Cartera";
 "scene.wallet.total_balance" = "Balance Total";
