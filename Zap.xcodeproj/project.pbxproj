@@ -39,6 +39,7 @@
 		AD196F17234C90C500A8CD25 /* Tor.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AD196F15234C90C400A8CD25 /* Tor.framework */; platformFilter = ios; };
 		AD196F18234C90D300A8CD25 /* Tor.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AD196F15234C90C400A8CD25 /* Tor.framework */; };
 		AD196F19234C90D300A8CD25 /* Tor.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = AD196F15234C90C400A8CD25 /* Tor.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		AD196F1E234CA05F00A8CD25 /* OnionConnecter.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD196F1D234CA05F00A8CD25 /* OnionConnecter.swift */; };
 		AD1D37892253C9ED00F32BE1 /* TransactionListUpdater.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD1D37882253C9ED00F32BE1 /* TransactionListUpdater.swift */; };
 		AD1D378B2253C9F900F32BE1 /* PaymentListUpdater.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD1D378A2253C9F900F32BE1 /* PaymentListUpdater.swift */; };
 		AD248624225B73980049532C /* WalletBalanceSegment.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD248623225B73970049532C /* WalletBalanceSegment.swift */; };
@@ -643,6 +644,7 @@
 		AD196F10234C8F0700A8CD25 /* LndRest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LndRest.swift; sourceTree = "<group>"; };
 		AD196F13234C8FB200A8CD25 /* OnionManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnionManager.swift; sourceTree = "<group>"; };
 		AD196F15234C90C400A8CD25 /* Tor.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Tor.framework; path = Carthage/Build/iOS/Tor.framework; sourceTree = SOURCE_ROOT; };
+		AD196F1D234CA05F00A8CD25 /* OnionConnecter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnionConnecter.swift; sourceTree = "<group>"; };
 		AD1D37882253C9ED00F32BE1 /* TransactionListUpdater.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransactionListUpdater.swift; sourceTree = "<group>"; };
 		AD1D378A2253C9F900F32BE1 /* PaymentListUpdater.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaymentListUpdater.swift; sourceTree = "<group>"; };
 		AD1EBA0020B2FD9D001FF67E /* Persistable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Persistable.swift; sourceTree = "<group>"; };
@@ -1514,6 +1516,7 @@
 			children = (
 				AD196F10234C8F0700A8CD25 /* LndRest.swift */,
 				AD196F13234C8FB200A8CD25 /* OnionManager.swift */,
+				AD196F1D234CA05F00A8CD25 /* OnionConnecter.swift */,
 			);
 			path = Tor;
 			sourceTree = "<group>";
@@ -3370,6 +3373,7 @@
 				ADADAD912143B3C900A48E1F /* PaymentRequest.swift in Sources */,
 				ADADAD9B2143B3C900A48E1F /* ApiMockTemplate.swift in Sources */,
 				ADD08A062278BBCE00480073 /* WalletApi.swift in Sources */,
+				AD196F1E234CA05F00A8CD25 /* OnionConnecter.swift in Sources */,
 				ADFB36D92143B73C00146FCC /* LocalLndConfiguration.swift in Sources */,
 				ADFB36E92143BB2200146FCC /* Transaction.swift in Sources */,
 				ADADAD8F2143B3C900A48E1F /* OnChainRequestAddressType.swift in Sources */,

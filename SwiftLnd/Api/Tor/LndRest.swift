@@ -19,34 +19,20 @@ final class LNDRest: NSObject, URLSessionDelegate {
     private let macaroon: String
     private let host: String
     private let cert: String?
+    private let urlSessionConfiguration: URLSessionConfiguration
 
-    private var torTest: OnionManager?
-    static var torSession: URLSession?
+    private lazy var session: URLSession = {
+        URLSession(configuration: urlSessionConfiguration, delegate: self, delegateQueue: nil)
+    }()
 
-    init(credentials: RPCCredentials) {
+    init(credentials: RPCCredentials, urlSessionConfiguration: URLSessionConfiguration) {
         macaroon = credentials.macaroon.hexadecimalString
         host = credentials.host.absoluteString
         cert = credentials.certificate
+        self.urlSessionConfiguration = urlSessionConfiguration
 
         super.init()
-        setupTor()
     }
-
-    func setupTor() {
-        if LNDRest.torSession == nil {
-            torTest = OnionManager.shared
-            torTest?.startTor(delegate: self)
-        }
-    }
-
-    lazy var session: URLSession = {
-        if let torSession = LNDRest.torSession {
-            return torSession
-        } else {
-            let configuration = URLSessionConfiguration.default
-            return URLSession(configuration: configuration, delegate: self, delegateQueue: nil)
-        }
-    }()
 
     func run<T: Message>(method: RestMethod, path: String, data: String?, completion: @escaping (Result<T, LndApiError>) -> Void) {
         guard let url = URL(string: "https://\(host)\(path)") else { return }
@@ -111,19 +97,5 @@ final class LNDRest: NSObject, URLSessionDelegate {
             completionHandler(.useCredential, credential)
         }
          */
-    }
-}
-
-extension LNDRest: OnionManagerDelegate {
-    func torConnProgress(_ progress: Int) {
-        Logger.info("\(progress)")
-    }
-
-    func torConnFinished(configuration: URLSessionConfiguration) {
-        LNDRest.torSession = URLSession(configuration: configuration, delegate: self, delegateQueue: nil)
-    }
-
-    func torConnError() {
-        Logger.error("torConnError")
     }
 }

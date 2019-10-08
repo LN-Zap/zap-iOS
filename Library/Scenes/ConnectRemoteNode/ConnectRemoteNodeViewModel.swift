@@ -94,7 +94,24 @@ final class ConnectRemoteNodeViewModel: NSObject {
     func connect(completion: @escaping (ApiCompletion<LightningConnection>)) {
         guard let rpcCredentials = rpcCredentials else { return }
 
-        testServer = LightningApi(connection: .remote(rpcCredentials))
+        if rpcCredentials.host.isOnion && OnionManager.shared.state != .connected {
+            OnionConnecter().start(progress: { _ in }, completion: { [weak self] result in
+                switch result {
+                case .success(let urlSessionConfiguration):
+                    self?.connectWithBootstrappedTor(testConnection: .tor(rpcCredentials, urlSessionConfiguration), completion: completion)
+                case .failure:
+                    completion(.failure(.unknownError))
+                }
+            })
+        } else {
+            connectWithBootstrappedTor(testConnection: .grpc(rpcCredentials), completion: completion)
+        }
+    }
+
+    private func connectWithBootstrappedTor(testConnection: LightningApi.Kind, completion: @escaping (ApiCompletion<LightningConnection>)) {
+        guard let rpcCredentials = rpcCredentials else { return }
+
+        testServer = LightningApi(connection: testConnection)
         testServer?.info { result in
             completion(result.map { _ in .remote(rpcCredentials) })
         }

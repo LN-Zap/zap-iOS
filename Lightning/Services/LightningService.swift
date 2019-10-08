@@ -49,7 +49,7 @@ public final class LightningService: NSObject {
         self.init(api: api, connection: connection, backupService: backupService)
     }
 
-    init(api: LightningApi, connection: LightningConnection, backupService: StaticChannelBackupServiceType) {
+    public init(api: LightningApi, connection: LightningConnection, backupService: StaticChannelBackupServiceType) {
         self.api = api
         self.connection = connection
 

@@ -96,12 +96,37 @@ public final class RootCoordinator: Coordinator, SetupCoordinatorDelegate {
     }
 
     func presentWallet(connection: LightningConnection) throws {
-        let lightningService = try LightningService(connection: connection, backupService: StaticChannelBackupService())
+        if case .remote(let credentials) = connection, credentials.host.isOnion {
+            OnionConnecter().start(progress: { _ in }, completion: { [weak self] result in
+                switch result {
+                case .success(let urlSessionConfiguration):
+                    let api = LightningApi(connection: .tor(credentials, urlSessionConfiguration))
+                    let lightningService = LightningService(
+                        api: api,
+                        connection: connection,
+                        backupService: StaticChannelBackupService()
+                    )
+
+                    DispatchQueue.main.async {
+                        self?.presentWallet(lightningService: lightningService, connection: connection)
+                    }
+                case .failure(let error):
+                    fatalError("not implemented (yet)")
+                }
+            })
+        } else {
+            let lightningService = try LightningService(connection: connection, backupService: StaticChannelBackupService())
+            presentWallet(lightningService: lightningService, connection: connection)
+        }
+    }
+
+    private func presentWallet(lightningService: LightningService, connection: LightningConnection) {
         walletConfigurationStore.updateConnection(connection, infoService: lightningService.infoService)
 
         let walletCoordinator = WalletCoordinator(rootViewController: rootViewController, lightningService: lightningService, disconnectWalletDelegate: self, authenticationViewModel: authenticationViewModel, walletConfigurationStore: walletConfigurationStore)
         self.currentCoordinator = walletCoordinator
         walletCoordinator.start()
+
     }
 
     private func presentSetup(walletConfigurationStore: WalletConfigurationStore, rpcCredentials: RPCCredentials?) {

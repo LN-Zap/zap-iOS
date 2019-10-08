@@ -27,16 +27,16 @@ protocol OnionManagerDelegate {
     func torConnError()
 }
 
-class OnionManager: NSObject {
+public class OnionManager: NSObject {
 
-    enum TorState: Int {
+    public enum TorState: Int {
         case none
         case started
         case connected
         case stopped
     }
 
-    static let shared = OnionManager()
+    public static let shared = OnionManager()
 
     // Show Tor log in iOS' app log.
     private static let TOR_LOGGING = false
