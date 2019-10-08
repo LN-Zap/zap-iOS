@@ -229,6 +229,9 @@
 "scene.qrcode_scanner.error.unknown_format" = "Unbekanntes Adressformat.";
 "scene.qrcode_scanner.error.wrong_network" = "Du hast versucht, eine Rechnung für %@ zu öffnen, aber dein Knoten ist mit %@ verbunden.";
 "scene.qrcode_scanner.error.zero_amount_invoice" = "Aus Sicherheitsgründen unterstützt Zap keine Rechnungen ohne einen bestimmten Betrag.";
+"scene.qrcode_scanner.camera_access_denied_alert.ok" = "Settings";
+"scene.qrcode_scanner.camera_access_denied_alert.title" = "Camera access denied";
+"scene.qrcode_scanner.camera_access_denied_alert.message" = "Turn on camera access in the settings to scan the QR code.";
 
 "scene.wallet.title" = "Wallet";
 "scene.wallet.total_balance" = "Totaler Kontostand";
