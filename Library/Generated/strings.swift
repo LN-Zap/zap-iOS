@@ -451,6 +451,14 @@ internal enum L10n {
     internal enum QrcodeScanner {
       /// Scan QR-Code
       internal static let topLabel = L10n.tr("Localizable", "scene.qrcode_scanner.top_label")
+      internal enum CameraAccessDeniedAlert {
+        /// Turn on camera access in the settings to scan the QR code.
+        internal static let message = L10n.tr("Localizable", "scene.qrcode_scanner.camera_access_denied_alert.message")
+        /// Settings
+        internal static let ok = L10n.tr("Localizable", "scene.qrcode_scanner.camera_access_denied_alert.ok")
+        /// Camera access denied
+        internal static let title = L10n.tr("Localizable", "scene.qrcode_scanner.camera_access_denied_alert.title")
+      }
       internal enum Error {
         /// Unknown address format.
         internal static let unknownFormat = L10n.tr("Localizable", "scene.qrcode_scanner.error.unknown_format")
