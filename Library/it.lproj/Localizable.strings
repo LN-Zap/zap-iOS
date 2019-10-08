@@ -229,6 +229,9 @@
 "scene.qrcode_scanner.error.unknown_format" = "Formato indirizzo sconosciuto.";
 "scene.qrcode_scanner.error.wrong_network" = "Si è provato ad aprire una ricevuta per %@ ma il nodo è connesso a %@.";
 "scene.qrcode_scanner.error.zero_amount_invoice" = "Per ragioni di sicurezza Zap non supporta ricevute di pagamento senza un importo specifico.";
+"scene.qrcode_scanner.camera_access_denied_alert.ok" = "Settings";
+"scene.qrcode_scanner.camera_access_denied_alert.title" = "Camera access denied";
+"scene.qrcode_scanner.camera_access_denied_alert.message" = "Turn on camera access in the settings to scan the QR code.";
 
 "scene.wallet.title" = "Portafoglio";
 "scene.wallet.total_balance" = "Saldo Totale";
