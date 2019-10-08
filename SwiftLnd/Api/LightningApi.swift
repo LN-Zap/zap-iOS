@@ -23,7 +23,12 @@ public final class LightningApi {
                 fatalError("local connection not available")
                 #endif
             case .remote(let configuration):
-                return RPCLightningConnection(configuration: configuration)
+                if configuration.host.isOnion {
+                    let restClient = LNDRest(credentials: configuration)
+                    return RestLightningConnection(lndRest: restClient)
+                } else {
+                    return RPCLightningConnection(configuration: configuration)
+                }
             case .mock(let template):
                 return template.instance
             }
