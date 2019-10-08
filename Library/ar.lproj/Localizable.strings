@@ -229,9 +229,9 @@
 "scene.qrcode_scanner.error.unknown_format" = "هيئة العنوان غير معروفة.";
 "scene.qrcode_scanner.error.wrong_network" = "لقد حاولت فتح فاتورة لـ %@ ولكن node الخاصة بك متصلة بـ %@.";
 "scene.qrcode_scanner.error.zero_amount_invoice" = "لأسباب أمنية ، لا يدعم zap الفواتير بدون مبلغ محدد.";
-"scene.qrcode_scanner.camera_access_denied_alert.ok" = "Settings";
-"scene.qrcode_scanner.camera_access_denied_alert.title" = "Camera access denied";
-"scene.qrcode_scanner.camera_access_denied_alert.message" = "Turn on camera access in the settings to scan the QR code.";
+"scene.qrcode_scanner.camera_access_denied_alert.ok" = "إعدادات";
+"scene.qrcode_scanner.camera_access_denied_alert.title" = "تم رفض الوصول إلى الكاميرا";
+"scene.qrcode_scanner.camera_access_denied_alert.message" = "قم بسماح الوصول للكاميرا في الإعدادات لمسح رمز QR.";
 
 "scene.wallet.title" = "محفظة";
 "scene.wallet.total_balance" = "الرصيد الكلي";
