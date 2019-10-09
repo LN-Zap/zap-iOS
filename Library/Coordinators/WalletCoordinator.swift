@@ -181,12 +181,9 @@ final class WalletCoordinator: NSObject, Coordinator {
     }
 
     func settingsViewController() -> SettingsViewController {
-        guard let disconnectWalletDelegate = disconnectWalletDelegate else { fatalError("Didn't set disconnectWalletDelegate") }
-
         return SettingsViewController(
             info: lightningService.infoService.info.value,
             connection: lightningService.connection,
-            disconnectWalletDelegate: disconnectWalletDelegate,
             authenticationViewModel: authenticationViewModel,
             pushNodeURIViewController: pushNodeURIViewController,
             pushLndLogViewController: pushLndLogViewController

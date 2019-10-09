@@ -21,7 +21,6 @@ final class SettingsViewController: GroupedTableViewController {
 
     init(info: Info?,
          connection: LightningConnection,
-         disconnectWalletDelegate: DisconnectWalletDelegate,
          authenticationViewModel: AuthenticationViewModel,
          pushNodeURIViewController: @escaping (UINavigationController) -> Void,
          pushLndLogViewController: @escaping (UINavigationController) -> Void
