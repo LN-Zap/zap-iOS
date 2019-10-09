@@ -130,8 +130,8 @@ public final class LightningApi {
         }
     }
 
-    public func addInvoice(amount: Satoshi?, memo: String?, completion: @escaping ApiCompletion<String>) {
-        let request = Lnrpc_Invoice(amount: amount, memo: memo)
+    public func addInvoice(amount: Satoshi?, memo: String?, expiry: ExpiryTime?, completion: @escaping ApiCompletion<String>) {
+        let request = Lnrpc_Invoice(amount: amount, memo: memo, expiry: expiry)
         connection.addInvoice(request, completion: run(completion) { $0.paymentRequest })
     }
 
