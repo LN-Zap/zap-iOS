@@ -18,7 +18,7 @@ extension Lnrpc_Invoice {
             self.memo = memo
         }
         if let expiry = expiry {
-            self.expiry = expiry.rawValue
+            self.expiry = Int64(expiry.rawValue)
         }
         `private` = true
     }
