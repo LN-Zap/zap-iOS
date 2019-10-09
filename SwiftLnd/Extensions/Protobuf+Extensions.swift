@@ -9,13 +9,16 @@ import Foundation
 import SwiftBTC
 
 extension Lnrpc_Invoice {
-    init(amount: Satoshi?, memo: String?) {
+    init(amount: Satoshi?, memo: String?, expiry: ExpiryTime?) {
         self.init()
+        if let amount = amount {
+            value = amount.int64
+        }
         if let memo = memo {
             self.memo = memo
         }
-        if let amount = amount {
-            value = amount.int64
+        if let expiry = expiry {
+            self.expiry = expiry.rawValue
         }
         `private` = true
     }

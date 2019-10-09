@@ -29,7 +29,8 @@ final class SettingsViewController: GroupedTableViewController {
         self.info = info
 
         var lightningRows: [SettingsItem] = [
-            PushViewControllerSettingsItem(title: L10n.Scene.Settings.Item.channelBackup, pushViewController: pushChannelBackup)
+            PushViewControllerSettingsItem(title: L10n.Scene.Settings.Item.channelBackup, pushViewController: pushChannelBackup),
+            LightningRequestExpirySelectionSettingsItem()
         ]
 
         if let info = info, !info.uris.isEmpty {

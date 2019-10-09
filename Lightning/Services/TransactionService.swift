@@ -21,8 +21,8 @@ public final class TransactionService {
         self.paymentListUpdater = paymentListUpdater
     }
 
-    public func addInvoice(amount: Satoshi, memo: String?, completion: @escaping ApiCompletion<String>) {
-        api.addInvoice(amount: amount, memo: memo, completion: completion)
+    public func addInvoice(amount: Satoshi, memo: String?, expiry: ExpiryTime?, completion: @escaping ApiCompletion<String>) {
+        api.addInvoice(amount: amount, memo: memo, expiry: expiry, completion: completion)
     }
 
     public func newAddress(with type: OnChainRequestAddressType, completion: @escaping ApiCompletion<BitcoinAddress>) {
