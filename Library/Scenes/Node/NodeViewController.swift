@@ -96,6 +96,7 @@ extension NodeViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "nodeCell", for: indexPath)
         cell.backgroundColor = UIColor.Zap.seaBlue
+        cell.textLabel?.textColor = UIColor.Zap.white
 
         let (configure, _) = content[indexPath.section][indexPath.row]
         configure(cell)
