@@ -2276,7 +2276,6 @@
 			buildConfigurationList = A0A05A1C2013CF960007D1C9 /* Build configuration list for PBXNativeTarget "Zap" */;
 			buildPhases = (
 				7389306E3A7040DB65CFCFE2 /* [CP] Check Pods Manifest.lock */,
-				ADE688392222B92F004761B9 /* SwiftLint autocorrect */,
 				A0A05A312013F7880007D1C9 /* SwiftLint */,
 				A0A059FB2013CF960007D1C9 /* Sources */,
 				A0A059FC2013CF960007D1C9 /* Frameworks */,
@@ -2896,24 +2895,6 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "if [ -z \"$CI\" ]; then\n    if which swiftlint >/dev/null; then\n        swiftlint\n    else\n        echo \"warning: SwiftLint not installed, download from https://github.com/realm/SwiftLint\"\n    fi\nfi\n";
-		};
-		ADE688392222B92F004761B9 /* SwiftLint autocorrect */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-			);
-			inputPaths = (
-			);
-			name = "SwiftLint autocorrect";
-			outputFileListPaths = (
-			);
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "# Type a script or drag a script file from your workspace to insert its path.\n\nif [ -z \"$CI\" ]; then\n    if which swiftlint >/dev/null; then\n        swiftlint autocorrect\n    else\n        echo \"warning: SwiftLint not installed, download from https://github.com/realm/SwiftLint\"\n    fi\nfi\n";
 		};
 		C14F1765D6C12D63AA15CAE3 /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
