@@ -44,6 +44,16 @@
 
 "view.amount_input.placeholder" = "Betrag";
 
+"expiry_time.one_minute" = "1 Minute";
+"expiry_time.ten_minutes" = "10 Minutes";
+"expiry_time.thirty_minutes" = "30 Minutes";
+"expiry_time.one_hour" = "1 Hour";
+"expiry_time.six_hours" = "6 Hours";
+"expiry_time.one_day" = "1 Day";
+"expiry_time.one_week" = "1 Week";
+"expiry_time.thirty_days" = "30 Days";
+"expiry_time.one_year" = "1 Year";
+
 "scene.history.title" = "Verlauf";
 "scene.history.empty_state_label" = "0 Transaktionen 🙁";
 
@@ -53,6 +63,7 @@
 "scene.settings.section.wallet" = "Wallet";
 "scene.settings.item.version_warning" = "Dein LND ist veraltet (%@). Zap iOS funktioniert am besten mit LND Version %@ oder höher.";
 "scene.settings.item.bitcoin_unit" = "Bitcoin Einheit";
+"scene.settings.item.lightning_request_expiry" = "Lightning Request Expiry";
 "scene.settings.item.currency" = "Währung";
 "scene.settings.item.currency.popular" = "Beliebte Währungen";
 "scene.settings.item.block_explorer" = "Block Explorer";
