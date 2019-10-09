@@ -44,6 +44,16 @@
 
 "view.amount_input.placeholder" = "المبلغ";
 
+"expiry_time.one_minute" = "1 Minute";
+"expiry_time.ten_minutes" = "10 Minutes";
+"expiry_time.thirty_minutes" = "30 Minutes";
+"expiry_time.one_hour" = "1 Hour";
+"expiry_time.six_hours" = "6 Hours";
+"expiry_time.one_day" = "1 Day";
+"expiry_time.one_week" = "1 Week";
+"expiry_time.thirty_days" = "30 Days";
+"expiry_time.one_year" = "1 Year";
+
 "scene.history.title" = "سجل";
 "scene.history.empty_state_label" = "المعاملات 0🙁";
 
@@ -53,6 +63,7 @@
 "scene.settings.section.wallet" = "محفظة";
 "scene.settings.item.version_warning" = "lnd الخاص بك قديم (%@). يعمل Zap iOS بشكل أفضل مع إصدار lnd %@ أو أعلى.";
 "scene.settings.item.bitcoin_unit" = "وحدة البت كوين";
+"scene.settings.item.lightning_request_expiry" = "Lightning Request Expiry";
 "scene.settings.item.currency" = "عملة";
 "scene.settings.item.currency.popular" = "العملات شائعة";
 "scene.settings.item.block_explorer" = "مستكشف البلوك";
