@@ -207,6 +207,7 @@
 		AD667E572136E622007B9160 /* TimeLockStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD667E562136E622007B9160 /* TimeLockStore.swift */; };
 		AD667E5921384966007B9160 /* WindowLevel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD667E5821384966007B9160 /* WindowLevel.swift */; };
 		AD7123CE2225A51800AA8E7B /* PinStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD7123CD2225A51800AA8E7B /* PinStore.swift */; };
+		AD7968232350B1DA0021B710 /* NodeHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD7968222350B1DA0021B710 /* NodeHeaderView.swift */; };
 		AD79E422219D90E2002589CA /* Data+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD79E421219D90E2002589CA /* Data+Extensions.swift */; };
 		AD79E424219D90EF002589CA /* String+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD79E423219D90EF002589CA /* String+Extensions.swift */; };
 		AD7B1EF8224241DC007D4171 /* WalletList.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AD7B1EF7224241DC007D4171 /* WalletList.storyboard */; };
@@ -731,6 +732,7 @@
 		AD77464D2076162300EC596B /* Network+Localizable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Network+Localizable.swift"; sourceTree = "<group>"; };
 		AD77465620765E4D00EC596B /* ChannelViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChannelViewModel.swift; sourceTree = "<group>"; };
 		AD7746582076609400EC596B /* NodeInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NodeInfo.swift; sourceTree = "<group>"; };
+		AD7968222350B1DA0021B710 /* NodeHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NodeHeaderView.swift; sourceTree = "<group>"; };
 		AD79E421219D90E2002589CA /* Data+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Data+Extensions.swift"; sourceTree = "<group>"; };
 		AD79E423219D90EF002589CA /* String+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Extensions.swift"; sourceTree = "<group>"; };
 		AD7B1EF7224241DC007D4171 /* WalletList.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = WalletList.storyboard; sourceTree = "<group>"; };
@@ -1584,6 +1586,7 @@
 			children = (
 				AD2F6D3F234B368A003D0D49 /* NodeViewController.swift */,
 				AD2F6D41234B36B0003D0D49 /* Node.storyboard */,
+				AD7968222350B1DA0021B710 /* NodeHeaderView.swift */,
 			);
 			path = Node;
 			sourceTree = "<group>";
@@ -3161,6 +3164,7 @@
 				AD293D4822DC84E70069A8AB /* MnemonicWordView.swift in Sources */,
 				AD27022222E1B35B00D4BF27 /* NotificationScheduler.swift in Sources */,
 				AD27022122E0C06000D4BF27 /* LndFolderMigration.swift in Sources */,
+				AD7968232350B1DA0021B710 /* NodeHeaderView.swift in Sources */,
 				ADADA95622830DD40036639F /* ICloudDriveBackupService.swift in Sources */,
 				ADADA966228964E50036639F /* ChannelBackupViewController.swift in Sources */,
 				AD391C6520D16F89007EE22A /* LndLogViewController.swift in Sources */,

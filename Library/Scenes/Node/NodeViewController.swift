@@ -9,7 +9,12 @@ import Foundation
 
 final class NodeViewController: UIViewController {
     @IBOutlet private weak var tableView: UITableView!
-
+    @IBOutlet private var nodeHeaderView: NodeHeaderView! {
+        didSet {
+            nodeHeaderView.delegate = self
+        }
+    }
+    
     // swiftlint:disable implicitly_unwrapped_optional
     private var channelListButtonTapped: (() -> Void)!
     private var settingsButtonTapped: (() -> Void)!
@@ -43,6 +48,8 @@ final class NodeViewController: UIViewController {
 
         title = "My Node"
 
+        navigationController?.navigationBar.prefersLargeTitles = false
+        
         tableView.dataSource = self
         tableView.delegate = self
 
@@ -52,6 +59,8 @@ final class NodeViewController: UIViewController {
 
         tableView.register(UITableViewCell.self, forCellReuseIdentifier: "nodeCell")
 
+        tableView.tableHeaderView = nodeHeaderView
+        
         navigationItem.rightBarButtonItem = UIBarButtonItem(image: Asset.arrowRight.image, style: .plain, target: self, action: #selector(presentWallet))
 
         content = [
@@ -70,11 +79,6 @@ final class NodeViewController: UIViewController {
                     $0.textLabel?.text = "Settings"
                     $0.accessoryType = .disclosureIndicator
                 }, action: settingsButtonTapped)
-            ],
-            [
-                (configure: {
-                    $0.textLabel?.text = L10n.Scene.Settings.Item.removeRemoteNode
-                }, action: disconnectButtonTapped)
             ]
         ]
     }
@@ -110,5 +114,11 @@ extension NodeViewController: UITableViewDelegate {
 
         let (_, action) = content[indexPath.section][indexPath.row]
         action()
+    }
+}
+
+extension NodeViewController: NodeHeaderViewDelegate {
+    func manageNodesButtonTapped() {
+        self.disconnectButtonTapped()
     }
 }
