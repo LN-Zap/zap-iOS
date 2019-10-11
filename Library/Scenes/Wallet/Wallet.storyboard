@@ -30,12 +30,12 @@
                                             <stackView opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="260" verticalCompressionResistancePriority="742" translatesAutoresizingMaskIntoConstraints="NO" id="Tgv-5l-myg">
                                                 <rect key="frame" x="10" y="0.0" width="355" height="60"/>
                                                 <subviews>
-                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="T70-Nf-jhp">
+                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="T70-Nf-jhp">
                                                         <rect key="frame" x="0.0" y="0.0" width="60" height="60"/>
                                                         <constraints>
                                                             <constraint firstAttribute="width" secondItem="T70-Nf-jhp" secondAttribute="height" id="Npy-Da-5Lt"/>
                                                         </constraints>
-                                                        <state key="normal" image="hexagon" catalog="system"/>
+                                                        <state key="normal" image="node_view"/>
                                                         <connections>
                                                             <action selector="presentSettings:" destination="KOM-Jt-Qkh" eventType="touchUpInside" id="9aP-gi-WYv"/>
                                                         </connections>
@@ -78,7 +78,7 @@
                                                         <constraints>
                                                             <constraint firstAttribute="width" secondItem="cdY-8B-tZc" secondAttribute="height" id="F7Z-SO-apx"/>
                                                         </constraints>
-                                                        <state key="normal" image="tabbar_history"/>
+                                                        <state key="normal" image="history"/>
                                                         <connections>
                                                             <action selector="presentHistory:" destination="KOM-Jt-Qkh" eventType="touchUpInside" id="E5S-26-Xyc"/>
                                                         </connections>
@@ -384,9 +384,9 @@
         </scene>
     </scenes>
     <resources>
-        <image name="hexagon" catalog="system" width="64" height="62"/>
+        <image name="history" width="24" height="24"/>
         <image name="icon_swap" width="13" height="13"/>
-        <image name="tabbar_history" width="18" height="26"/>
+        <image name="node_view" width="24" height="12"/>
         <namedColor name="seaBlue">
             <color red="0.19200000166893005" green="0.20000000298023224" blue="0.25099998712539673" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>

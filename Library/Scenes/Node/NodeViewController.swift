@@ -68,16 +68,19 @@ final class NodeViewController: UIViewController {
                 (configure: {
                     $0.textLabel?.text = "Channels"
                     $0.accessoryType = .disclosureIndicator
+                    $0.imageView?.image = Asset.nodeChannels.image
                 }, action: channelListButtonTapped),
                 (configure: {
                     $0.textLabel?.text = L10n.Scene.Settings.Item.channelBackup
                     $0.accessoryType = .disclosureIndicator
+                    $0.imageView?.image = Asset.nodeBackup.image
                 }, action: channelBackupButtonTapped)
             ],
             [
                 (configure: {
                     $0.textLabel?.text = "Settings"
                     $0.accessoryType = .disclosureIndicator
+                    $0.imageView?.image = Asset.nodeSettings.image
                 }, action: settingsButtonTapped)
             ]
         ]
@@ -101,7 +104,6 @@ extension NodeViewController: UITableViewDataSource {
         let cell = tableView.dequeueReusableCell(withIdentifier: "nodeCell", for: indexPath)
         cell.backgroundColor = UIColor.Zap.seaBlue
         cell.textLabel?.textColor = UIColor.Zap.white
-
         let (configure, _) = content[indexPath.section][indexPath.row]
         configure(cell)
         return cell
