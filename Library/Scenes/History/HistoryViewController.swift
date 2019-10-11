@@ -72,6 +72,7 @@ final class HistoryViewController: UIViewController {
             .dispose(in: reactive.bag)
 
         navigationItem.leftBarButtonItem = UIBarButtonItem(image: Asset.arrowLeft.image, style: .plain, target: self, action: #selector(presentWallet))
+        navigationController?.navigationBar.prefersLargeTitles = false
     }
 
     override func viewWillAppear(_ animated: Bool) {
