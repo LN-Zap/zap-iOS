@@ -72,7 +72,6 @@
 "scene.settings.item.on_chain_request_address.p2sh" = "P2SH";
 "scene.settings.item.manage_channels" = "Manage Channels";
 "scene.settings.item.channel_backup" = "Channel Backup";
-"scene.settings.item.node_uri" = "Node URI";
 "scene.settings.item.remove_remote_node" = "Manage Wallets";
 
 "scene.settings.item.change_pin" = "Change Pin";

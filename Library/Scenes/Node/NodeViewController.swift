@@ -23,15 +23,18 @@ final class NodeViewController: UIViewController {
     private var manageNodes: (() -> Void)!
     private var channelBackupButtonTapped: (() -> Void)!
     private var lightningService: LightningService!
+    private var presentURIViewController: ((UINavigationController) -> Void)!
     // swiftlint:enable implicitly_unwrapped_optional
 
+    // swiftlint:disable:next function_parameter_count
     static func instantiate(
         lightningService: LightningService,
-        presentChannels: @escaping (() -> Void),
+        presentChannels: @escaping () -> Void,
         presentSettings: @escaping () -> Void,
         presentWallet: @escaping (UIPageViewController.NavigationDirection) -> Void,
         manageNodes: @escaping () -> Void,
-        presentChannelBackup: @escaping () -> Void
+        presentChannelBackup: @escaping () -> Void,
+        presentURIViewController: @escaping (UINavigationController) -> Void
     ) -> NodeViewController {
         let viewController = StoryboardScene.Node.nodeViewController.instantiate()
 
@@ -41,7 +44,8 @@ final class NodeViewController: UIViewController {
         viewController.walletButtonTapped = presentWallet
         viewController.manageNodes = manageNodes
         viewController.channelBackupButtonTapped = presentChannelBackup
-
+        viewController.presentURIViewController = presentURIViewController
+        
         return viewController
     }
 
@@ -90,10 +94,19 @@ final class NodeViewController: UIViewController {
                 }, action: settingsButtonTapped)
             ]
         ]
+        
+        if lightningService.infoService.info.value?.uris.isEmpty == false {
+            navigationItem.leftBarButtonItem = UIBarButtonItem(image: Asset.nodeQrCode.image, style: .plain, target: self, action: #selector(presentWalletURI))
+        }
     }
 
     @objc private func presentWallet() {
         walletButtonTapped(.forward)
+    }
+    
+    @objc private func presentWalletURI() {
+        guard let navigationController = navigationController else { return }
+        presentURIViewController(navigationController)
     }
 }
 

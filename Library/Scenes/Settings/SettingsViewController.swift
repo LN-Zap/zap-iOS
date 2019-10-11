@@ -22,18 +22,9 @@ final class SettingsViewController: GroupedTableViewController {
     init(info: Info?,
          connection: LightningConnection,
          authenticationViewModel: AuthenticationViewModel,
-         pushNodeURIViewController: @escaping (UINavigationController) -> Void,
          pushLndLogViewController: @escaping (UINavigationController) -> Void
     ) {
         self.info = info
-
-        var lightningRows: [SettingsItem] = [
-            LightningRequestExpirySelectionSettingsItem()
-        ]
-
-        if let info = info, !info.uris.isEmpty {
-            lightningRows.append(PushViewControllerSettingsItem(title: L10n.Scene.Settings.Item.nodeUri, pushViewController: pushNodeURIViewController))
-        }
 
         var walletRows: [SettingsItem] = [
             ChangePinSettingsItem(authenticationViewModel: authenticationViewModel)
@@ -48,12 +39,10 @@ final class SettingsViewController: GroupedTableViewController {
                 CurrencySelectionSettingsItem(),
                 BitcoinUnitSelectionSettingsItem(),
                 OnChainRequestAddressTypeSelectionSettingsItem(),
-                BlockExplorerSelectionSettingsItem()
+                BlockExplorerSelectionSettingsItem(),
+                LightningRequestExpirySelectionSettingsItem()
             ])
         ]
-        if !lightningRows.isEmpty {
-            sections.append(Section(title: L10n.Scene.Settings.Section.lightning, rows: lightningRows))
-        }
         sections.append(contentsOf: [
             Section(title: L10n.Scene.Settings.Section.wallet, rows: walletRows),
             Section<SettingsItem>(title: nil, rows: [

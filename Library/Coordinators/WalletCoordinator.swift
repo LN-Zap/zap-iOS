@@ -162,7 +162,8 @@ final class WalletCoordinator: NSObject, Coordinator {
             presentSettings: pushSettings(on: navigationController),
             presentWallet: presentWallet,
             manageNodes: presentWalletList,
-            presentChannelBackup: presentChannelBackup(on: navigationController)
+            presentChannelBackup: presentChannelBackup(on: navigationController),
+            presentURIViewController: pushNodeURIViewController
         )
         navigationController.viewControllers = [nodeViewController]
 
@@ -185,7 +186,6 @@ final class WalletCoordinator: NSObject, Coordinator {
             info: lightningService.infoService.info.value,
             connection: lightningService.connection,
             authenticationViewModel: authenticationViewModel,
-            pushNodeURIViewController: pushNodeURIViewController,
             pushLndLogViewController: pushLndLogViewController
         )
     }
