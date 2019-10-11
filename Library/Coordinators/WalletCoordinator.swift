@@ -157,6 +157,7 @@ final class WalletCoordinator: NSObject, Coordinator {
         let navigationController = ZapNavigationController()
 
         let nodeViewController = NodeViewController.instantiate(
+            lightningService: lightningService,
             presentChannels: pushChannelList(on: navigationController),
             presentSettings: pushSettings(on: navigationController),
             presentWallet: presentWallet,

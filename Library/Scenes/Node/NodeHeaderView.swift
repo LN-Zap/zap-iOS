@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import Lightning
 
 protocol NodeHeaderViewDelegate: class {
     func manageNodesButtonTapped()
@@ -29,14 +30,25 @@ final class NodeHeaderView: UIView {
         networkLabel.layer.cornerRadius = 13
         networkLabel.clipsToBounds = true
         networkLabel.layer.masksToBounds = true
-        networkLabel.text = "Testnet"
+        networkLabel.text = nil
         
         // node alias label
-        nodeAliasLabel.text = "OttoTron3000"
+        nodeAliasLabel.text = nil
         Style.Label.title.apply(to: nodeAliasLabel)
     }
     
     @IBAction private func displayManageNodes(_ sender: Any) {
         delegate?.manageNodesButtonTapped()
+    }
+    
+    func update(infoService: InfoService) {
+        infoService.network
+            .map { $0?.localized }
+            .bind(to: networkLabel.reactive.text)
+            .dispose(in: reactive.bag)
+        infoService.info
+            .map { $0?.alias }
+            .bind(to: nodeAliasLabel.reactive.text)
+            .dispose(in: reactive.bag)
     }
 }

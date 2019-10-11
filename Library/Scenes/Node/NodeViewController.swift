@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import Lightning
 
 final class NodeViewController: UIViewController {
     @IBOutlet private weak var tableView: UITableView!
@@ -21,9 +22,11 @@ final class NodeViewController: UIViewController {
     private var walletButtonTapped: ((UIPageViewController.NavigationDirection) -> Void)!
     private var disconnectButtonTapped: (() -> Void)!
     private var channelBackupButtonTapped: (() -> Void)!
+    private var lightningService: LightningService!
     // swiftlint:enable implicitly_unwrapped_optional
 
     static func instantiate(
+        lightningService: LightningService,
         presentChannels: @escaping (() -> Void),
         presentSettings: @escaping () -> Void,
         presentWallet: @escaping (UIPageViewController.NavigationDirection) -> Void,
@@ -32,6 +35,7 @@ final class NodeViewController: UIViewController {
     ) -> NodeViewController {
         let viewController = StoryboardScene.Node.nodeViewController.instantiate()
 
+        viewController.lightningService = lightningService
         viewController.channelListButtonTapped = presentChannels
         viewController.settingsButtonTapped = presentSettings
         viewController.walletButtonTapped = presentWallet
@@ -63,6 +67,8 @@ final class NodeViewController: UIViewController {
         
         navigationItem.rightBarButtonItem = UIBarButtonItem(image: Asset.arrowRight.image, style: .plain, target: self, action: #selector(presentWallet))
 
+        nodeHeaderView.update(infoService: lightningService.infoService)
+        
         content = [
             [
                 (configure: {
