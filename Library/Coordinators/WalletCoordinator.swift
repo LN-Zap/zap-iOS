@@ -161,7 +161,7 @@ final class WalletCoordinator: NSObject, Coordinator {
             presentChannels: pushChannelList(on: navigationController),
             presentSettings: pushSettings(on: navigationController),
             presentWallet: presentWallet,
-            disconnectWallet: disconnectWallet,
+            manageNodes: presentWalletList,
             presentChannelBackup: presentChannelBackup(on: navigationController)
         )
         navigationController.viewControllers = [nodeViewController]
@@ -250,10 +250,7 @@ final class WalletCoordinator: NSObject, Coordinator {
     }
 
     private func presentWalletList() {
-        guard
-            walletConfigurationStore.configurations.count >= 2,
-            let disconnectWalletDelegate = disconnectWalletDelegate
-            else { return }
+        guard let disconnectWalletDelegate = disconnectWalletDelegate else { return }
 
         UISelectionFeedbackGenerator().selectionChanged()
         let viewController = WalletListViewController.instantiate(walletConfigurationStore: walletConfigurationStore, disconnectWalletDelegate: disconnectWalletDelegate)

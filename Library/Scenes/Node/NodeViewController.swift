@@ -20,7 +20,7 @@ final class NodeViewController: UIViewController {
     private var channelListButtonTapped: (() -> Void)!
     private var settingsButtonTapped: (() -> Void)!
     private var walletButtonTapped: ((UIPageViewController.NavigationDirection) -> Void)!
-    private var disconnectButtonTapped: (() -> Void)!
+    private var manageNodes: (() -> Void)!
     private var channelBackupButtonTapped: (() -> Void)!
     private var lightningService: LightningService!
     // swiftlint:enable implicitly_unwrapped_optional
@@ -30,7 +30,7 @@ final class NodeViewController: UIViewController {
         presentChannels: @escaping (() -> Void),
         presentSettings: @escaping () -> Void,
         presentWallet: @escaping (UIPageViewController.NavigationDirection) -> Void,
-        disconnectWallet: @escaping () -> Void,
+        manageNodes: @escaping () -> Void,
         presentChannelBackup: @escaping () -> Void
     ) -> NodeViewController {
         let viewController = StoryboardScene.Node.nodeViewController.instantiate()
@@ -39,7 +39,7 @@ final class NodeViewController: UIViewController {
         viewController.channelListButtonTapped = presentChannels
         viewController.settingsButtonTapped = presentSettings
         viewController.walletButtonTapped = presentWallet
-        viewController.disconnectButtonTapped = disconnectWallet
+        viewController.manageNodes = manageNodes
         viewController.channelBackupButtonTapped = presentChannelBackup
 
         return viewController
@@ -127,6 +127,6 @@ extension NodeViewController: UITableViewDelegate {
 
 extension NodeViewController: NodeHeaderViewDelegate {
     func manageNodesButtonTapped() {
-        self.disconnectButtonTapped()
+        self.manageNodes()
     }
 }
