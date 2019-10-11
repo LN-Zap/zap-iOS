@@ -42,36 +42,7 @@
                                                     </button>
                                                     <view contentMode="scaleToFill" horizontalHuggingPriority="245" verticalHuggingPriority="265" translatesAutoresizingMaskIntoConstraints="NO" id="06I-eg-dh3">
                                                         <rect key="frame" x="60" y="0.0" width="235" height="60"/>
-                                                        <subviews>
-                                                            <stackView opaque="NO" contentMode="scaleToFill" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="40H-QF-ElD">
-                                                                <rect key="frame" x="89" y="0.0" width="57" height="60"/>
-                                                                <subviews>
-                                                                    <button opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="666" verticalHuggingPriority="888" horizontalCompressionResistancePriority="500" verticalCompressionResistancePriority="747" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="OvW-dI-y78">
-                                                                        <rect key="frame" x="0.0" y="0.0" width="46" height="60"/>
-                                                                        <constraints>
-                                                                            <constraint firstAttribute="height" constant="60" id="Hfd-wg-vsb"/>
-                                                                        </constraints>
-                                                                        <state key="normal" title="Button"/>
-                                                                        <connections>
-                                                                            <action selector="presentNodeList:" destination="KOM-Jt-Qkh" eventType="touchUpInside" id="szK-Yh-VWs"/>
-                                                                        </connections>
-                                                                    </button>
-                                                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="N3U-gp-GRe" customClass="CircleView" customModule="Library" customModuleProvider="target">
-                                                                        <rect key="frame" x="51" y="0.0" width="6" height="60"/>
-                                                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                                        <constraints>
-                                                                            <constraint firstAttribute="width" constant="6" id="vOj-po-3lp"/>
-                                                                        </constraints>
-                                                                    </view>
-                                                                </subviews>
-                                                            </stackView>
-                                                        </subviews>
                                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                        <constraints>
-                                                            <constraint firstAttribute="bottom" secondItem="40H-QF-ElD" secondAttribute="bottom" id="Xmr-QB-C7V"/>
-                                                            <constraint firstItem="40H-QF-ElD" firstAttribute="top" secondItem="06I-eg-dh3" secondAttribute="top" id="ZTC-IP-KqE"/>
-                                                            <constraint firstItem="40H-QF-ElD" firstAttribute="centerX" secondItem="06I-eg-dh3" secondAttribute="centerX" id="inT-AY-FFD"/>
-                                                        </constraints>
                                                     </view>
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="cdY-8B-tZc">
                                                         <rect key="frame" x="295" y="0.0" width="60" height="60"/>
@@ -84,6 +55,9 @@
                                                         </connections>
                                                     </button>
                                                 </subviews>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="60" id="jQI-Oa-IGP"/>
+                                                </constraints>
                                             </stackView>
                                         </subviews>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -354,7 +328,6 @@
                         <outlet property="circleGraphView" destination="YGK-bL-qJT" id="Gd0-cM-SQi"/>
                         <outlet property="detailHandleView" destination="PUI-ce-SkF" id="5Kf-tZ-TKK"/>
                         <outlet property="detailView" destination="uId-iH-hCo" id="3FR-cM-PaI"/>
-                        <outlet property="nodeAliasButton" destination="OvW-dI-y78" id="1CX-M8-kaG"/>
                         <outlet property="primaryBalanceLabel" destination="IUt-w1-jg5" id="uYO-EZ-V1u"/>
                         <outlet property="receiveButtonBackground" destination="ybB-Mk-ugZ" id="rT9-vL-iYM"/>
                         <outlet property="requestButton" destination="C3P-tR-t4P" id="MYK-pQ-yxP"/>

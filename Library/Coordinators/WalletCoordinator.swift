@@ -139,7 +139,6 @@ final class WalletCoordinator: NSObject, Coordinator {
             walletViewModel: walletViewModel,
             sendButtonTapped: presentSend,
             requestButtonTapped: presentRequest,
-            nodeAliasButtonTapped: presentWalletList,
             historyButtonTapped: presentHistory,
             nodeButtonTapped: presentNode,
             emptyStateViewModel: walletEmptyStateViewModel

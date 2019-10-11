@@ -21,7 +21,6 @@ final class WalletViewController: UIViewController {
     @IBOutlet private weak var segmentBackground: UIView!
 
     // header
-    @IBOutlet private weak var nodeAliasButton: UIButton!
     @IBOutlet private weak var syncView: SyncView!
 
     // send / receive buttons
@@ -42,7 +41,6 @@ final class WalletViewController: UIViewController {
     private var walletViewModel: WalletViewModel!
     private var sendButtonTapped: (() -> Void)!
     private var requestButtonTapped: (() -> Void)!
-    private var nodeAliasButtonTapped: (() -> Void)!
     private var historyButtonTapped: (() -> Void)!
     private var settingsButtonTapped: (() -> Void)!
     private var emptyStateViewModel: WalletEmptyStateViewModel!
@@ -55,13 +53,19 @@ final class WalletViewController: UIViewController {
     }
 
     // swiftlint:disable:next function_parameter_count
-    static func instantiate(walletViewModel: WalletViewModel, sendButtonTapped: @escaping () -> Void, requestButtonTapped: @escaping () -> Void, nodeAliasButtonTapped: @escaping () -> Void, historyButtonTapped: @escaping () -> Void, nodeButtonTapped: @escaping () -> Void, emptyStateViewModel: WalletEmptyStateViewModel) -> WalletViewController {
+    static func instantiate(
+        walletViewModel: WalletViewModel,
+        sendButtonTapped: @escaping () -> Void,
+        requestButtonTapped: @escaping () -> Void,
+        historyButtonTapped: @escaping () -> Void,
+        nodeButtonTapped: @escaping () -> Void,
+        emptyStateViewModel: WalletEmptyStateViewModel
+    ) -> WalletViewController {
         let walletViewController = StoryboardScene.Wallet.walletViewController.instantiate()
         walletViewController.walletViewModel = walletViewModel
 
         walletViewController.sendButtonTapped = sendButtonTapped
         walletViewController.requestButtonTapped = requestButtonTapped
-        walletViewController.nodeAliasButtonTapped = nodeAliasButtonTapped
         walletViewController.emptyStateViewModel = emptyStateViewModel
         walletViewController.historyButtonTapped = historyButtonTapped
         walletViewController.settingsButtonTapped = nodeButtonTapped
@@ -102,9 +106,6 @@ final class WalletViewController: UIViewController {
         receiveButtonBackground.backgroundColor = UIColor.Zap.seaBlue
 
         swapIconImageView.tintColor = UIColor.Zap.lightningOrange
-
-        nodeAliasButton.setTitleColor(UIColor.Zap.gray, for: .normal)
-        nodeAliasButton.titleLabel?.font = UIFont.Zap.regular
 
         setupPrimaryBalanceLabel()
         setupBindings()
@@ -152,9 +153,7 @@ final class WalletViewController: UIViewController {
                 .observeOn(DispatchQueue.main)
                 .observeNext { [weak self] in
                     self?.circleGraphView.segments = $0
-                },
-            walletViewModel.nodeAlias
-                .bind(to: nodeAliasButton.reactive.title)
+                }
         ].dispose(in: reactive.bag)
     }
 
@@ -176,10 +175,6 @@ final class WalletViewController: UIViewController {
 
     @IBAction private func swapCurrencyButtonTapped(_ sender: Any) {
         Settings.shared.swapCurrencies()
-    }
-
-    @IBAction private func presentNodeList(_ sender: Any) {
-        nodeAliasButtonTapped()
     }
 
     private func setupDetailView() {
