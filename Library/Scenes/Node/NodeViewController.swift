@@ -50,7 +50,7 @@ final class NodeViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        title = "My Node"
+        title = L10n.Scene.MyNode.title
 
         navigationController?.navigationBar.prefersLargeTitles = false
         
@@ -72,7 +72,7 @@ final class NodeViewController: UIViewController {
         content = [
             [
                 (configure: {
-                    $0.textLabel?.text = "Channels"
+                    $0.textLabel?.text = L10n.Scene.Channels.title
                     $0.accessoryType = .disclosureIndicator
                     $0.imageView?.image = Asset.nodeChannels.image
                 }, action: channelListButtonTapped),
@@ -84,7 +84,7 @@ final class NodeViewController: UIViewController {
             ],
             [
                 (configure: {
-                    $0.textLabel?.text = "Settings"
+                    $0.textLabel?.text = L10n.Scene.Settings.title
                     $0.accessoryType = .disclosureIndicator
                     $0.imageView?.image = Asset.nodeSettings.image
                 }, action: settingsButtonTapped)

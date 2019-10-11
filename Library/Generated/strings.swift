@@ -381,6 +381,10 @@ internal enum L10n {
       /// Enter Passcode
       internal static let headline = L10n.tr("Localizable", "scene.modal_pin.headline")
     }
+    internal enum MyNode {
+      /// My Node
+      internal static let title = L10n.tr("Localizable", "scene.my_node.title")
+    }
     internal enum NodeUri {
       /// Alias
       internal static let aliasLabel = L10n.tr("Localizable", "scene.node_uri.alias_label")
