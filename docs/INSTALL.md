@@ -8,9 +8,9 @@ Xcode 10.1 or above is required to run the app.
 
 1) Run `./setup.sh` to download the required frameworks.
 
-2) Run `bundle install` to install dependencies located in the `Gemfile`.
+2) Run `bundle exec pod install` to install dependencies located in the `Podfile`. This command guarantees that the version of CocoaPods specified in the `Gemfile.lock` is used to `pod install` the dependencies listed in the `Podfile.lock`.
 
-3) Run `bundle exec pod install` to install dependencies located in the `Podfile`. This command guarantees that the version of CocoaPods specified in the `Gemfile.lock` is used to `pod install` the dependencies listed in the `Podfile.lock`.
+3) That's it! Make sure to open `Zap.xcworkspace` rather than `Zap.xcodeproj` so you're using the Xcode file with the integrated Pods.
 
 ---
 
@@ -31,6 +31,8 @@ For managing dependencies (https://cocoapods.org). Zap iOS uses CocoaPods in ord
 If you would to update a pod to a newer version, make the appropriate changes in the `Podfile` and then run the following command:
 
 `pod update [PODNAME]`
+
+**Note:** If you have any issues with CocoaPods, first run `bundle install` to install dependencies located in the `Gemfile`.
 
 #### SwiftLint
 
