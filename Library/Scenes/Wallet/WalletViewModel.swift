@@ -45,12 +45,7 @@ final class WalletViewModel: NSObject {
         super.init()
         
         combineLatest(balanceService.lightningChannelBalance, balanceService.onChainConfirmed, balanceService.totalPending)
-            .distinctUntilChanged({ (firstBalanceTuple, secondBalanceTuple) -> Bool in
-                if (firstBalanceTuple.0.isEqual(to: secondBalanceTuple.0) && firstBalanceTuple.1.isEqual(to: secondBalanceTuple.1) && firstBalanceTuple.2.isEqual(to: secondBalanceTuple.2)) {
-                    return false // Values are same
-                }
-                return true // Values are distinct
-            })
+            .distinctUntilChanged { $0 != $1 }
             .observeNext { [weak self] in
                 let (lightningBalance, onChainBalance, pendingBalance) = $0
 
