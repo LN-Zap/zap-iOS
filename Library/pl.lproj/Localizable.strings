@@ -1,9 +1,9 @@
 "generic.memo.placeholder" = "Do czego to służy?";
 "generic.qr_code.copy_button" = "Kopiuj";
 "generic.qr_code.copy_success_message" = "Address has been copied to clipboard.";
-"generic.pasteboard.invalid_address" = "Invalid Address";
+"generic.pasteboard.invalid_address" = "Nieprawidłowy adres";
 "generic.qr_code.share_button" = "Udostępnij";
-"generic.cancel" = "Cancel";
+"generic.cancel" = "Kasować";
 
 "link.help" = "https://docs.zaphq.io/";
 "link.help.zapconnect" = "https://docs.zaphq.io/docs-ios-remote-node-setup";
@@ -18,7 +18,7 @@
 "rpc_connect_qrcode_error.btc_pay_expired" = "Wygląda na to, że czas ważności kodu dobiegł końca.";
 "rpc_connect_qrcode_error.btc_pay_configuration_broken" = "Nie udało się odczytać pliku konfiguracyjnego BTCPay.";
 "rpc_connect_qrcode_error.cant_read_qrcode" = "Invalid code format.";
-"rpc_connect_qrcode_error.code_updated" = "Connection updated.";
+"rpc_connect_qrcode_error.code_updated" = "Odnowione połączenie.";
 
 "channel.state.active" = "Online";
 "channel.state.inactive" = "Offline";
