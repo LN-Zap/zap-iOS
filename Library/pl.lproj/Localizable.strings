@@ -44,28 +44,28 @@
 
 "view.amount_input.placeholder" = "Kwota";
 
-"expiry_time.one_minute" = "1 Minute";
-"expiry_time.ten_minutes" = "10 Minutes";
-"expiry_time.thirty_minutes" = "30 Minutes";
-"expiry_time.one_hour" = "1 Hour";
-"expiry_time.six_hours" = "6 Hours";
-"expiry_time.one_day" = "1 Day";
-"expiry_time.one_week" = "1 Week";
-"expiry_time.thirty_days" = "30 Days";
-"expiry_time.one_year" = "1 Year";
+"expiry_time.one_minute" = "1 Minuta";
+"expiry_time.ten_minutes" = "10 Minut";
+"expiry_time.thirty_minutes" = "30 Minut";
+"expiry_time.one_hour" = "1 Godzina";
+"expiry_time.six_hours" = "6 Godzin";
+"expiry_time.one_day" = "1 Dzień";
+"expiry_time.one_week" = "1 Tydzień";
+"expiry_time.thirty_days" = "30 Dni";
+"expiry_time.one_year" = "1 Rok";
 
-"scene.history.title" = "History";
+"scene.history.title" = "Historia";
 "scene.history.empty_state_label" = "0 transactions 🙁";
 
 "scene.settings.title" = "Ustawienia";
-"scene.settings.section.warning" = "Warning";
+"scene.settings.section.warning" = "Ostrzeżenie";
 "scene.settings.section.lightning" = "Lightning";
 "scene.settings.section.wallet" = "Portfel";
 "scene.settings.item.version_warning" = "Your lnd is outdated (%@). Zap iOS works best with lnd version %@ or above.";
 "scene.settings.item.bitcoin_unit" = "Bitcoin Unit";
 "scene.settings.item.lightning_request_expiry" = "Lightning Request Expiry";
 "scene.settings.item.currency" = "Waluta";
-"scene.settings.item.currency.popular" = "Popular Currencies";
+"scene.settings.item.currency.popular" = "Popularne Waluty";
 "scene.settings.item.block_explorer" = "Block Explorer";
 "scene.settings.item.on_chain_request_address.title" = "Rodzaj adresu";
 "scene.settings.item.on_chain_request_address.bech32" = "Bech32";
@@ -73,7 +73,7 @@
 "scene.settings.item.manage_channels" = "Manage Channels";
 "scene.settings.item.channel_backup" = "Channel Backup";
 "scene.settings.item.node_uri" = "Node URI";
-"scene.settings.item.remove_remote_node" = "Manage Wallets";
+"scene.settings.item.remove_remote_node" = "Zarządzaj Kieszenia";
 
 "scene.settings.item.change_pin" = "Change Pin";
 "scene.settings.item.report_issue" = "Zgłoś problem";
