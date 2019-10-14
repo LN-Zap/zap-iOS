@@ -40,6 +40,7 @@ internal enum Asset {
   internal static let nodeChannels = ImageAsset(name: "node_channels")
   internal static let nodeQrCode = ImageAsset(name: "node_qr_code")
   internal static let nodeSettings = ImageAsset(name: "node_settings")
+  internal static let nodeSupport = ImageAsset(name: "node_support")
   internal static let onboarding01Layer01 = ImageAsset(name: "onboarding_01_layer_01")
   internal static let onboarding01Layer02 = ImageAsset(name: "onboarding_01_layer_02")
   internal static let onboarding01Layer03 = ImageAsset(name: "onboarding_01_layer_03")

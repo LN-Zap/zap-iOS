@@ -384,6 +384,30 @@ internal enum L10n {
     internal enum MyNode {
       /// My Node
       internal static let title = L10n.tr("Localizable", "scene.my_node.title")
+      internal enum ChannelBackup {
+        /// Setup emergency options
+        internal static let subtitle = L10n.tr("Localizable", "scene.my_node.channel_backup.subtitle")
+        /// Channel Backup
+        internal static let title = L10n.tr("Localizable", "scene.my_node.channel_backup.title")
+      }
+      internal enum Channels {
+        /// Manage your capacity
+        internal static let subtitle = L10n.tr("Localizable", "scene.my_node.channels.subtitle")
+        /// Channels
+        internal static let title = L10n.tr("Localizable", "scene.my_node.channels.title")
+      }
+      internal enum Settings {
+        /// Preferences & stuff
+        internal static let subtitle = L10n.tr("Localizable", "scene.my_node.settings.subtitle")
+        /// Settings
+        internal static let title = L10n.tr("Localizable", "scene.my_node.settings.title")
+      }
+      internal enum Support {
+        /// Get support and send feedback
+        internal static let subtitle = L10n.tr("Localizable", "scene.my_node.support.subtitle")
+        /// Support
+        internal static let title = L10n.tr("Localizable", "scene.my_node.support.title")
+      }
     }
     internal enum NodeUri {
       /// Alias

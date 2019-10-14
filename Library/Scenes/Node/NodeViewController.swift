@@ -8,6 +8,16 @@
 import Foundation
 import Lightning
 
+class SubtitleTableViewCell: UITableViewCell {
+    override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
+        super.init(style: .subtitle, reuseIdentifier: reuseIdentifier)
+    }
+
+    required init?(coder aDecoder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+}
+
 final class NodeViewController: UIViewController {
     @IBOutlet private weak var tableView: UITableView!
     @IBOutlet private var nodeHeaderView: NodeHeaderView! {
@@ -65,7 +75,7 @@ final class NodeViewController: UIViewController {
         tableView.separatorColor = UIColor.Zap.gray
         tableView.rowHeight = 76
 
-        tableView.register(UITableViewCell.self, forCellReuseIdentifier: "nodeCell")
+        tableView.register(SubtitleTableViewCell.self, forCellReuseIdentifier: "nodeCell")
 
         tableView.tableHeaderView = nodeHeaderView
         
@@ -76,22 +86,27 @@ final class NodeViewController: UIViewController {
         content = [
             [
                 (configure: {
-                    $0.textLabel?.text = L10n.Scene.Channels.title
-                    $0.accessoryType = .disclosureIndicator
+                    $0.textLabel?.text = L10n.Scene.MyNode.Channels.title
+                    $0.detailTextLabel?.text = L10n.Scene.MyNode.Channels.subtitle
                     $0.imageView?.image = Asset.nodeChannels.image
                 }, action: channelListButtonTapped),
                 (configure: {
-                    $0.textLabel?.text = L10n.Scene.Settings.Item.channelBackup
-                    $0.accessoryType = .disclosureIndicator
+                    $0.textLabel?.text = L10n.Scene.MyNode.ChannelBackup.title
+                    $0.detailTextLabel?.text = L10n.Scene.MyNode.ChannelBackup.subtitle
                     $0.imageView?.image = Asset.nodeBackup.image
-                }, action: channelBackupButtonTapped)
+                }, action: channelBackupButtonTapped),
+                (configure: {
+                    $0.textLabel?.text = L10n.Scene.MyNode.Settings.title
+                    $0.detailTextLabel?.text = L10n.Scene.MyNode.Settings.subtitle
+                    $0.imageView?.image = Asset.nodeSettings.image
+                }, action: settingsButtonTapped)
             ],
             [
                 (configure: {
-                    $0.textLabel?.text = L10n.Scene.Settings.title
-                    $0.accessoryType = .disclosureIndicator
-                    $0.imageView?.image = Asset.nodeSettings.image
-                }, action: settingsButtonTapped)
+                    $0.textLabel?.text = L10n.Scene.MyNode.Support.title
+                    $0.detailTextLabel?.text = L10n.Scene.MyNode.Support.subtitle
+                    $0.imageView?.image = Asset.nodeSupport.image
+                }, action: { })
             ]
         ]
         
@@ -123,6 +138,9 @@ extension NodeViewController: UITableViewDataSource {
         let cell = tableView.dequeueReusableCell(withIdentifier: "nodeCell", for: indexPath)
         cell.backgroundColor = UIColor.Zap.seaBlue
         cell.textLabel?.textColor = UIColor.Zap.white
+        cell.detailTextLabel?.textColor = UIColor.Zap.gray
+        cell.detailTextLabel?.font = UIFont.systemFont(ofSize: 15, weight: .light)
+        cell.accessoryType = .disclosureIndicator
         let (configure, _) = content[indexPath.section][indexPath.row]
         configure(cell)
         return cell
