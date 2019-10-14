@@ -37,8 +37,8 @@
 "unit.bitcoin.bit" = "Bits";
 "unit.bitcoin.satoshi" = "Satoshis";
 
-"toast.invoice" = "Did receive %@";
-"toast.invoice_memo" = "Did receive %@ \"%@\"";
+"toast.invoice" = "Otrzymałem %@";
+"toast.invoice_memo" = "Otrzymałem %@ \"%@\"";
 
 "transaction.no_destination_address" = "Brak adresy docelowego";
 
@@ -148,12 +148,12 @@
 "scene.send.lightning.title" = "Wyślij płatność LN";
 "scene.send.on_chain.title" = "Send On-Chain";
 "scene.send.on_chain.fee" = "Fee:";
-"scene.send.on_chain.fee.fast" = "Fast";
-"scene.send.on_chain.fee.medium" = "Medium";
-"scene.send.on_chain.fee.slow" = "Slow";
-"scene.send.on_chain.fee.description.fast" = "Fast Transaction";
-"scene.send.on_chain.fee.description.medium" = "Medium Transaction";
-"scene.send.on_chain.fee.description.slow" = "Slow Transaction";
+"scene.send.on_chain.fee.fast" = "Szybko";
+"scene.send.on_chain.fee.medium" = "Średnio";
+"scene.send.on_chain.fee.slow" = "Wolno";
+"scene.send.on_chain.fee.description.fast" = "Szybka Transakcja";
+"scene.send.on_chain.fee.description.medium" = "Średnia Transakcja";
+"scene.send.on_chain.fee.description.slow" = "Wolna Transakcja";
 
 "scene.send.on_chain.fee.estimated_delivery" = "Estimated Delivery: %@";
 "scene.send.authentication_failed" = "Authentication failed";
