@@ -106,13 +106,28 @@ final class NodeViewController: UIViewController {
                     $0.textLabel?.text = L10n.Scene.MyNode.Support.title
                     $0.detailTextLabel?.text = L10n.Scene.MyNode.Support.subtitle
                     $0.imageView?.image = Asset.nodeSupport.image
-                }, action: { })
+                }, action: { [weak self] in self?.pushSupportViewController() })
             ]
         ]
         
         if lightningService.infoService.info.value?.uris.isEmpty == false {
             navigationItem.leftBarButtonItem = UIBarButtonItem(image: Asset.nodeQrCode.image, style: .plain, target: self, action: #selector(presentWalletURI))
         }
+    }
+    
+    private func pushSupportViewController() {
+        let section = Section<SettingsItem>(title: nil, rows: [
+            // swiftlint:disable force_unwrapping
+            SafariSettingsItem(title: L10n.Scene.Settings.Item.help, url: URL(string: L10n.Link.help)!),
+            SafariSettingsItem(title: L10n.Scene.Settings.Item.reportIssue, url: URL(string: L10n.Link.bugReport)!),
+            SafariSettingsItem(title: L10n.Scene.Settings.Item.privacyPolicy, url: URL(string: L10n.Link.privacy)!)
+            // swiftlint:enable force_unwrapping
+        ])
+        
+        let viewController = GroupedTableViewController(sections: [section])
+        viewController.title = L10n.Scene.MyNode.Support.title
+        viewController.navigationItem.largeTitleDisplayMode = .never
+        navigationController?.pushViewController(viewController, animated: true)
     }
 
     @objc private func presentWallet() {

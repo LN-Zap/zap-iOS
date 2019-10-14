@@ -44,14 +44,7 @@ final class SettingsViewController: GroupedTableViewController {
             ])
         ]
         sections.append(contentsOf: [
-            Section(title: L10n.Scene.Settings.Section.wallet, rows: walletRows),
-            Section<SettingsItem>(title: nil, rows: [
-                // swiftlint:disable force_unwrapping
-                SafariSettingsItem(title: L10n.Scene.Settings.Item.help, url: URL(string: L10n.Link.help)!),
-                SafariSettingsItem(title: L10n.Scene.Settings.Item.reportIssue, url: URL(string: L10n.Link.bugReport)!),
-                SafariSettingsItem(title: L10n.Scene.Settings.Item.privacyPolicy, url: URL(string: L10n.Link.privacy)!)
-                // swiftlint:enable force_unwrapping
-            ])
+            Section(title: L10n.Scene.Settings.Section.wallet, rows: walletRows)
         ])
 
         // display outdated lnd version warning
