@@ -32,10 +32,10 @@ final class WalletViewModel: NSObject {
 
     init(lightningService: LightningService) {
         self.lightningService = lightningService
-
-        syncViewModel = SyncViewModel(lightningService: lightningService)
-
+        self.syncViewModel = SyncViewModel(lightningService: lightningService)
+        
         let balanceService = lightningService.balanceService
+        
         balanceSegments = [
             WalletBalanceSegment(segment: .onChain, amount: balanceService.onChainConfirmed.toSignal()),
             WalletBalanceSegment(segment: .lightning, amount: balanceService.lightningChannelBalance.toSignal()),
@@ -43,8 +43,9 @@ final class WalletViewModel: NSObject {
         ]
 
         super.init()
-
+        
         combineLatest(balanceService.lightningChannelBalance, balanceService.onChainConfirmed, balanceService.totalPending)
+            .distinctUntilChanged { $0 != $1 }
             .observeNext { [weak self] in
                 let (lightningBalance, onChainBalance, pendingBalance) = $0
 
