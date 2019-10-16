@@ -32,7 +32,7 @@ public final class LightningService: NSObject {
     public let transactionService: TransactionService
     public let historyService: HistoryService
 
-    let listUpdater: [ListUpdater]
+    let listUpdaters: [ListUpdater]
 
     public var permissions: Permissions {
         switch connection {
@@ -54,22 +54,23 @@ public final class LightningService: NSObject {
         self.connection = connection
 
         let staticChannelBackupper = StaticChannelBackupper(backupService: backupService)
-
+        
         balanceService = BalanceService(api: api)
-
-        let invoiceListUpdater = InvoiceListUpdater(api: api)
-        let transactionListUpdater = TransactionListUpdater(api: api)
-        let paymentListUpdater = PaymentListUpdater(api: api)
+        
         let channelListUpdater = ChannelListUpdater(api: api, balanceService: balanceService)
-        listUpdater = [invoiceListUpdater, transactionListUpdater, paymentListUpdater, channelListUpdater]
+        let invoiceListUpdater = InvoiceListUpdater(api: api)
+        let paymentListUpdater = PaymentListUpdater(api: api)
+        let transactionListUpdater = TransactionListUpdater(api: api)
+        listUpdaters = [invoiceListUpdater, transactionListUpdater, paymentListUpdater, channelListUpdater]
 
         channelService = ChannelService(api: api, channelListUpdater: channelListUpdater, staticChannelBackupper: staticChannelBackupper)
         historyService = HistoryService(invoiceListUpdater: invoiceListUpdater, transactionListUpdater: transactionListUpdater, paymentListUpdater: paymentListUpdater, channelListUpdater: channelListUpdater)
+        infoService = InfoService(api: api, balanceService: balanceService, staticChannelBackupper: staticChannelBackupper)
         transactionService = TransactionService(api: api, balanceService: balanceService, paymentListUpdater: paymentListUpdater)
 
-        infoService = InfoService(api: api, balanceService: balanceService, staticChannelBackupper: staticChannelBackupper)
-
         super.init()
+        
+        listenForInvoiceSettled(invoiceSettledSignal: invoiceListUpdater.invoiceSettledSignal)
 
         updateBalanceOnChange(of: invoiceListUpdater.items)
         updateBalanceOnChange(of: transactionListUpdater.items)
@@ -80,6 +81,18 @@ public final class LightningService: NSObject {
 
         updateChannelsOnChange(of: invoiceListUpdater.items)
         updateChannelsOnChange(of: paymentListUpdater.items)
+    }
+    
+    private func listenForInvoiceSettled(invoiceSettledSignal: Signal<Void, Never>) {
+        invoiceSettledSignal.observeNext { [weak self] in
+            /*
+             It looks like there is a race condition in LND where even though the invoice reports back as settled,
+             the calls to get the channel balances happen too quickly and the new amounts are not reported.
+             */
+            DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 1) { () -> Void in
+                self?.balanceService.update()
+            }
+        }.dispose(in: reactive.bag)
     }
 
     private func updateBalanceOnChange<T>(of items: MutableObservableArray<T>) {
@@ -119,7 +132,7 @@ public final class LightningService: NSObject {
 
     public func start() {
         infoService.start()
-        listUpdater.forEach { $0.update() }
+        listUpdaters.forEach { $0.update() }
     }
 
     public func stop() {

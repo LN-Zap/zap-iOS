@@ -12,11 +12,13 @@ import Lndmobile
 import Logger
 
 final class EmptyStreamCallback: NSObject, LndmobileCallbackProtocol {
-    func onError(_ error: Error) {
+    func onError(_ error: Error?) {
+        guard let error = error else { return }
         Logger.error("EmptyCallback Error: \(error.localizedDescription)")
     }
 
-    func onResponse(_ data: Data) {
+    func onResponse(_ data: Data?) {
+        guard let data = data else { return }
         Logger.info("EmptyCallback: \(data), '\(String(data: data, encoding: .utf8) ?? "-")'", customPrefix: "🍕")
     }
 }

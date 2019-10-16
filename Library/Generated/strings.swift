@@ -451,6 +451,14 @@ internal enum L10n {
     internal enum QrcodeScanner {
       /// Scan QR-Code
       internal static let topLabel = L10n.tr("Localizable", "scene.qrcode_scanner.top_label")
+      internal enum CameraAccessDeniedAlert {
+        /// Turn on camera access in the settings to scan the QR code.
+        internal static let message = L10n.tr("Localizable", "scene.qrcode_scanner.camera_access_denied_alert.message")
+        /// Settings
+        internal static let ok = L10n.tr("Localizable", "scene.qrcode_scanner.camera_access_denied_alert.ok")
+        /// Camera access denied
+        internal static let title = L10n.tr("Localizable", "scene.qrcode_scanner.camera_access_denied_alert.title")
+      }
       internal enum Error {
         /// Unknown address format.
         internal static let unknownFormat = L10n.tr("Localizable", "scene.qrcode_scanner.error.unknown_format")
@@ -592,6 +600,8 @@ internal enum L10n {
         internal static let currency = L10n.tr("Localizable", "scene.settings.item.currency")
         /// Need Help?
         internal static let help = L10n.tr("Localizable", "scene.settings.item.help")
+        /// Lightning Request Expiry
+        internal static let lightningRequestExpiry = L10n.tr("Localizable", "scene.settings.item.lightning_request_expiry")
         /// Show lnd Log
         internal static let lndLog = L10n.tr("Localizable", "scene.settings.item.lnd_log")
         /// Manage Channels
@@ -771,6 +781,28 @@ internal enum L10n {
       internal static let placeholder = L10n.tr("Localizable", "view.amount_input.placeholder")
     }
   }
+  
+  internal enum ExpiryTime {
+    /// 1 Minute
+    internal static let oneMinute = L10n.tr("Localizable", "expiry_time.one_minute")
+    /// 10 Minutes
+    internal static let tenMinutes = L10n.tr("Localizable", "expiry_time.ten_minutes")
+    /// 30 Minutes
+    internal static let thirtyMinutes = L10n.tr("Localizable", "expiry_time.thirty_minutes")
+    /// 1 Hour
+    internal static let oneHour = L10n.tr("Localizable", "expiry_time.one_hour")
+    /// 6 Hours
+    internal static let sixHours = L10n.tr("Localizable", "expiry_time.six_hours")
+    /// 1 Day
+    internal static let oneDay = L10n.tr("Localizable", "expiry_time.one_day")
+    /// 1 Week
+    internal static let oneWeek = L10n.tr("Localizable", "expiry_time.one_week")
+    /// 30 days
+    internal static let thirtyDays = L10n.tr("Localizable", "expiry_time.thirty_days")
+    /// 1 Year
+    internal static let oneYear = L10n.tr("Localizable", "expiry_time.one_year")
+  }
+    
 }
 // swiftlint:enable explicit_type_interface function_parameter_count identifier_name line_length
 // swiftlint:enable nesting type_body_length type_name

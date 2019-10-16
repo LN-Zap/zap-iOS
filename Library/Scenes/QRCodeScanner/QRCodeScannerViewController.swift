@@ -48,6 +48,12 @@ class QRCodeScannerViewController: UIViewController {
         setupPasteButton()
     }
 
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(true)
+        
+        scannerView.presentWarningIfAccessDenied(on: self)
+    }
+
     private func setupScannerView() {
         let scannerView = QRCodeScannerView(frame: .zero)
         view.addAutolayoutSubview(scannerView)

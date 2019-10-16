@@ -1,6 +1,0 @@
-sources:
-  - SwiftLnd/Model/
-templates:
-  - Sourcery
-output:
-  SwiftLnd/Generated

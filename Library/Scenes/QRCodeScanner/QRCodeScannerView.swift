@@ -169,6 +169,19 @@ final class QRCodeScannerView: UIView {
             Logger.error(error.localizedDescription)
         }
     }
+
+    func presentWarningIfAccessDenied(on viewController: UIViewController) {
+        if AVCaptureDevice.authorizationStatus(for: .video) == .denied {
+            let alertController = UIAlertController(title: L10n.Scene.QrcodeScanner.CameraAccessDeniedAlert.title, message: L10n.Scene.QrcodeScanner.CameraAccessDeniedAlert.message, preferredStyle: .alert)
+            alertController.addAction(UIAlertAction(title: L10n.Generic.cancel, style: .cancel, handler: nil))
+            alertController.addAction(UIAlertAction(title: L10n.Scene.QrcodeScanner.CameraAccessDeniedAlert.ok, style: .default) { _ in
+                guard let url = URL(string: UIApplication.openSettingsURLString) else { return }
+                UIApplication.shared.open(url)
+            })
+            viewController.present(alertController, animated: true)
+        }
+
+    }
 }
 
 extension QRCodeScannerView: AVCaptureMetadataOutputObjectsDelegate {

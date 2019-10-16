@@ -179,6 +179,7 @@ final class WalletViewController: UIViewController {
                     return NSAttributedString(string: string)
                 }
             }
+            .distinctUntilChanged()
             .bind(to: primaryBalanceLabel.reactive.attributedText)
             .dispose(in: reactive.bag)
     }
@@ -186,6 +187,7 @@ final class WalletViewController: UIViewController {
     private func setupBindings() {
         [
             walletViewModel.totalBalance
+                .distinctUntilChanged()
                 .bind(to: secondaryBalanceLabel.reactive.text, currency: Settings.shared.secondaryCurrency),
             walletViewModel.circleGraphSegments
                 .observeOn(DispatchQueue.main)

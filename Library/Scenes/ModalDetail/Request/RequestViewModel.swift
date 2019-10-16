@@ -48,7 +48,8 @@ public final class RequestViewModel {
     }
 
     private func createLightning(completion: @escaping ApiCompletion<QRCodeDetailViewModel>) {
-        transactionService.addInvoice(amount: amount, memo: trimmedMemo) { result in
+        let expiry = Settings.shared.lightningRequestExpiry.value
+        transactionService.addInvoice(amount: amount, memo: trimmedMemo, expiry: expiry) { result in
             completion(result.flatMap {
                 guard let invoiceURI = LightningInvoiceURI(string: $0) else { return .failure(LndApiError.unknownError) }
                 return .success(RequestQRCodeViewModel(paymentURI: invoiceURI))
