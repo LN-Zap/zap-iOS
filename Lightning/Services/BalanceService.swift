@@ -11,7 +11,7 @@ import ReactiveKit
 import SwiftBTC
 import SwiftLnd
 
-public final class BalanceService {
+public final class BalanceService: NSObject {
     private let api: LightningApi
 
     public let onChainConfirmed = Observable<Satoshi>(0)
@@ -22,14 +22,25 @@ public final class BalanceService {
 
     public let onChainTotal = Observable<Satoshi>(0)
     public let totalPending: Signal<Satoshi, Never>
+    
+    public let totalBalance = Observable<Satoshi>(0)
 
     // sum of funds stuck in force closing channels, set from `ChannelListUpdater`
     public let forceCloseLimboBalance = Observable<Satoshi>(0)
 
     init(api: LightningApi) {
         self.api = api
-
-        totalPending = combineLatest(onChainUnconfirmed, lightningPendingOpenBalance, forceCloseLimboBalance) { $0 + $1 + $2 }
+        self.totalPending = combineLatest(onChainUnconfirmed, lightningPendingOpenBalance, forceCloseLimboBalance) { $0 + $1 + $2 }
+        
+        super.init()
+        
+        combineLatest(lightningChannelBalance, onChainConfirmed, totalPending)
+            .distinctUntilChanged { $0 != $1 }
+            .observeNext { [weak self] in
+                let (lightningBalance, onChainBalance, pendingBalance) = $0
+                
+                self?.totalBalance.value = lightningBalance + onChainBalance + pendingBalance
+        }.dispose(in: reactive.bag)
     }
 
     func update() {
