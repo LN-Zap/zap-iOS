@@ -40,7 +40,7 @@ public final class BalanceService: NSObject {
                 let (lightningBalance, onChainBalance, pendingBalance) = $0
                 
                 self?.totalBalance.value = lightningBalance + onChainBalance + pendingBalance
-        }.dispose(in: reactive.bag)
+            }.dispose(in: reactive.bag)
     }
 
     func update() {
