@@ -556,8 +556,9 @@ struct Lnrpc_SendRequest {
   }
 
   ///* 
-  ///An optional maximum total time lock for the route. If zero, there is no
-  ///maximum enforced.
+  ///An optional maximum total time lock for the route. This should not exceed
+  ///lnd's `--max-cltv-expiry` setting. If zero, then the value of
+  ///`--max-cltv-expiry` is enforced.
   var cltvLimit: UInt32 {
     get {return _storage._cltvLimit}
     set {_uniqueStorage()._cltvLimit = newValue}
@@ -2396,6 +2397,15 @@ struct Lnrpc_QueryRoutesRequest {
   var ignoredPairs: [Lnrpc_NodePair] {
     get {return _storage._ignoredPairs}
     set {_uniqueStorage()._ignoredPairs = newValue}
+  }
+
+  ///* 
+  ///An optional maximum total time lock for the route. If the source is empty or
+  ///ourselves, this should not exceed lnd's `--max-cltv-expiry` setting. If
+  ///zero, then the value of `--max-cltv-expiry` is used as the limit.
+  var cltvLimit: UInt32 {
+    get {return _storage._cltvLimit}
+    set {_uniqueStorage()._cltvLimit = newValue}
   }
 
   var unknownFields = SwiftProtobuf.UnknownStorage()
@@ -8023,6 +8033,7 @@ extension Lnrpc_QueryRoutesRequest: SwiftProtobuf.Message, SwiftProtobuf._Messag
     8: .standard(proto: "source_pub_key"),
     9: .standard(proto: "use_mission_control"),
     10: .standard(proto: "ignored_pairs"),
+    11: .standard(proto: "cltv_limit"),
   ]
 
   fileprivate class _StorageClass {
@@ -8035,6 +8046,7 @@ extension Lnrpc_QueryRoutesRequest: SwiftProtobuf.Message, SwiftProtobuf._Messag
     var _sourcePubKey: String = String()
     var _useMissionControl: Bool = false
     var _ignoredPairs: [Lnrpc_NodePair] = []
+    var _cltvLimit: UInt32 = 0
 
     static let defaultInstance = _StorageClass()
 
@@ -8050,6 +8062,7 @@ extension Lnrpc_QueryRoutesRequest: SwiftProtobuf.Message, SwiftProtobuf._Messag
       _sourcePubKey = source._sourcePubKey
       _useMissionControl = source._useMissionControl
       _ignoredPairs = source._ignoredPairs
+      _cltvLimit = source._cltvLimit
     }
   }
 
@@ -8074,6 +8087,7 @@ extension Lnrpc_QueryRoutesRequest: SwiftProtobuf.Message, SwiftProtobuf._Messag
         case 8: try decoder.decodeSingularStringField(value: &_storage._sourcePubKey)
         case 9: try decoder.decodeSingularBoolField(value: &_storage._useMissionControl)
         case 10: try decoder.decodeRepeatedMessageField(value: &_storage._ignoredPairs)
+        case 11: try decoder.decodeSingularUInt32Field(value: &_storage._cltvLimit)
         default: break
         }
       }
@@ -8109,6 +8123,9 @@ extension Lnrpc_QueryRoutesRequest: SwiftProtobuf.Message, SwiftProtobuf._Messag
       if !_storage._ignoredPairs.isEmpty {
         try visitor.visitRepeatedMessageField(value: _storage._ignoredPairs, fieldNumber: 10)
       }
+      if _storage._cltvLimit != 0 {
+        try visitor.visitSingularUInt32Field(value: _storage._cltvLimit, fieldNumber: 11)
+      }
     }
     try unknownFields.traverse(visitor: &visitor)
   }
@@ -8127,6 +8144,7 @@ extension Lnrpc_QueryRoutesRequest: SwiftProtobuf.Message, SwiftProtobuf._Messag
         if _storage._sourcePubKey != rhs_storage._sourcePubKey {return false}
         if _storage._useMissionControl != rhs_storage._useMissionControl {return false}
         if _storage._ignoredPairs != rhs_storage._ignoredPairs {return false}
+        if _storage._cltvLimit != rhs_storage._cltvLimit {return false}
         return true
       }
       if !storagesAreEqual {return false}

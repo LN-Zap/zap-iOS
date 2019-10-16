@@ -6,7 +6,7 @@ set -v
 git submodule update --init --recursive
 
 # download Lndmobile.framework
-VERSION=v0.8.0-beta-rc2
+VERSION=v0.8.0-beta
 
 curl -L https://github.com/LN-Zap/Lndmobile.framework/releases/download/$VERSION/Lndmobile.framework.zip --output Lndmobile.framework.zip
 unzip Lndmobile.framework.zip -d Frameworks/
