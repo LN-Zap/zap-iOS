@@ -132,8 +132,7 @@ final class WalletViewController: UIViewController {
         let emptyStateView = EmptyStateView(viewModel: emptyStateViewModel)
         emptyStateView.add(to: view)
 
-        walletViewModel.totalBalance
-            .map { $0 > 0 }
+        walletViewModel.shouldHideEmptyWalletState
             .bind(to: emptyStateView.reactive.isHidden)
             .dispose(in: reactive.bag)
     }
@@ -171,7 +170,7 @@ final class WalletViewController: UIViewController {
 
     private func setupPrimaryBalanceLabel() {
         ReactiveKit
-            .combineLatest(walletViewModel.totalBalance, Settings.shared.primaryCurrency) { satoshis, currency -> NSAttributedString? in
+            .combineLatest(walletViewModel.lightningService.balanceService.totalBalance, Settings.shared.primaryCurrency) { satoshis, currency -> NSAttributedString? in
                 if let bitcoin = currency as? Bitcoin {
                     return bitcoin.attributedFormat(satoshis: satoshis)
                 } else {
@@ -186,7 +185,7 @@ final class WalletViewController: UIViewController {
 
     private func setupBindings() {
         [
-            walletViewModel.totalBalance
+            walletViewModel.lightningService.balanceService.totalBalance
                 .distinctUntilChanged()
                 .bind(to: secondaryBalanceLabel.reactive.text, currency: Settings.shared.secondaryCurrency),
             walletViewModel.circleGraphSegments
