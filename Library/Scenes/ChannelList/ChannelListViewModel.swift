@@ -56,22 +56,22 @@ final class ChannelListViewModel: NSObject {
 
     init(lightningService: LightningService) {
         self.lightningService = lightningService
+        self.dataSource = MutableObservableArray()
 
-        dataSource = MutableObservableArray()
-
-        shouldHideEmptyWalletState = lightningService.balanceService.onChainTotal
+        self.shouldHideEmptyWalletState = lightningService.balanceService.totalBalance
             .map { $0 > 0 }
+            .distinctUntilChanged()
 
-        shouldHideChannelListEmptyState = combineLatest(lightningService.balanceService.onChainTotal, dataSource)
+        self.shouldHideChannelListEmptyState = combineLatest(lightningService.balanceService.onChainTotal, dataSource)
             .map { $0 <= 0 || !$1.collection.isEmpty }
             .distinctUntilChanged()
 
-        shouldShowBadgeIcon = combineLatest(lightningService.balanceService.onChainConfirmed, dataSource)
-                .map { $0 > 0 && $1.collection.isEmpty }
-                .distinctUntilChanged()
+        self.shouldShowBadgeIcon = combineLatest(lightningService.balanceService.onChainConfirmed, dataSource)
+            .map { $0 > 0 && $1.collection.isEmpty }
+            .distinctUntilChanged()
 
         super.init()
-
+        
         combineLatest(channelService.open, channelService.pending)
             .observeOn(DispatchQueue.main)
             .observeNext { [weak self] in
