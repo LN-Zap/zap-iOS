@@ -44,15 +44,15 @@
 
 "view.amount_input.placeholder" = "Montant";
 
-"expiry_time.one_minute" = "1 Minute";
-"expiry_time.ten_minutes" = "10 Minutes";
-"expiry_time.thirty_minutes" = "30 Minutes";
-"expiry_time.one_hour" = "1 Hour";
-"expiry_time.six_hours" = "6 Hours";
-"expiry_time.one_day" = "1 Day";
-"expiry_time.one_week" = "1 Week";
-"expiry_time.thirty_days" = "30 Days";
-"expiry_time.one_year" = "1 Year";
+"expiry_time.one_minute" = "1 minute";
+"expiry_time.ten_minutes" = "10 minutes";
+"expiry_time.thirty_minutes" = "30 minutes";
+"expiry_time.one_hour" = "1 heure";
+"expiry_time.six_hours" = "6 heures";
+"expiry_time.one_day" = "1 jour";
+"expiry_time.one_week" = "1 semaine";
+"expiry_time.thirty_days" = "30 jours";
+"expiry_time.one_year" = "1 an";
 
 "scene.history.title" = "Historique";
 "scene.history.empty_state_label" = "Aucune transaction 🙁";
@@ -63,7 +63,7 @@
 "scene.settings.section.wallet" = "Portefeuille";
 "scene.settings.item.version_warning" = "Votre version de lnd (%@) n'est pas à jour. Zap iOS fonctionne mieux avec lnd %@ et plus.";
 "scene.settings.item.bitcoin_unit" = "Unité";
-"scene.settings.item.lightning_request_expiry" = "Lightning Request Expiry";
+"scene.settings.item.lightning_request_expiry" = "Expiration des demandes";
 "scene.settings.item.currency" = "Devise";
 "scene.settings.item.currency.popular" = "Devises populaires";
 "scene.settings.item.block_explorer" = "Explorateur de blocs";
@@ -240,9 +240,9 @@
 "scene.qrcode_scanner.error.unknown_format" = "Format d'adresse inconnu.";
 "scene.qrcode_scanner.error.wrong_network" = "Vous avez essayé de décoder une demande pour le %@, mais votre node est connecté au %@.";
 "scene.qrcode_scanner.error.zero_amount_invoice" = "Pour des raisons de sécurité, Zap ne prend pas en charge les demandes sans montant.";
-"scene.qrcode_scanner.camera_access_denied_alert.ok" = "Settings";
-"scene.qrcode_scanner.camera_access_denied_alert.title" = "Camera access denied";
-"scene.qrcode_scanner.camera_access_denied_alert.message" = "Turn on camera access in the settings to scan the QR code.";
+"scene.qrcode_scanner.camera_access_denied_alert.ok" = "Réglages";
+"scene.qrcode_scanner.camera_access_denied_alert.title" = "Accès à l'appareil photo refusé";
+"scene.qrcode_scanner.camera_access_denied_alert.message" = "Autorisez l'accès à l'appareil photo dans vos réglages pour scanner le QR Code.";
 
 "scene.wallet.title" = "Portefeuille";
 "scene.wallet.total_balance" = "Solde total";
