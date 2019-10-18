@@ -8,25 +8,17 @@
 import Bond
 import Foundation
 import Logger
-import ReactiveKit
 import SwiftLnd
 
 final class InvoiceListUpdater: GenericListUpdater {
     typealias Item = Invoice
 
     private let api: LightningApi
-    private let invoiceSettledObserver: AnyObserver<Void, Never>
     
-    let invoiceSettledSignal: Signal<Void, Never>
     let items = MutableObservableArray<Invoice>()
     
     init(api: LightningApi) {
         self.api = api
-        
-        let (signal, observer) = Signal<Void, Never>.withObserver()
-        
-        self.invoiceSettledSignal = signal
-        self.invoiceSettledObserver = observer
         
         api.subscribeInvoices { [weak self] in
             if case .success(let invoice) = $0 {
@@ -34,7 +26,6 @@ final class InvoiceListUpdater: GenericListUpdater {
 
                 self?.appendOrReplace(invoice)
                 if invoice.state == .settled {
-                    self?.invoiceSettledObserver.receive()
                     NotificationCenter.default.post(name: .receivedTransaction, object: nil, userInfo: [LightningService.transactionNotificationName: invoice])
                 }
             }
