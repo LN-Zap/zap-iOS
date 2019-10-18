@@ -140,6 +140,7 @@ final class WalletViewController: UIViewController {
     private func setupSyncView() {
         walletViewModel.syncViewModel.isSyncing
             .map { $0 ? UILayoutPriority(rawValue: 1) : UILayoutPriority(rawValue: 999) }
+            .debounce(interval: 2)
             .observeOn(DispatchQueue.main)
             .observeNext { [weak self] in
                 self?.syncViewHeightConstraint.priority = $0
