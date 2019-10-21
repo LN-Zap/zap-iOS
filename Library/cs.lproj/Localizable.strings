@@ -44,15 +44,15 @@
 
 "view.amount_input.placeholder" = "Množství";
 
-"expiry_time.one_minute" = "1 Minute";
-"expiry_time.ten_minutes" = "10 Minutes";
-"expiry_time.thirty_minutes" = "30 Minutes";
-"expiry_time.one_hour" = "1 Hour";
-"expiry_time.six_hours" = "6 Hours";
-"expiry_time.one_day" = "1 Day";
-"expiry_time.one_week" = "1 Week";
-"expiry_time.thirty_days" = "30 Days";
-"expiry_time.one_year" = "1 Year";
+"expiry_time.one_minute" = "1 Minuta";
+"expiry_time.ten_minutes" = "10 Minut";
+"expiry_time.thirty_minutes" = "30 Minut";
+"expiry_time.one_hour" = "1 Hodina";
+"expiry_time.six_hours" = "6 Hodin";
+"expiry_time.one_day" = "1 Den";
+"expiry_time.one_week" = "1 Týden";
+"expiry_time.thirty_days" = "30 Dní";
+"expiry_time.one_year" = "1 Rok";
 
 "scene.history.title" = "Historie";
 "scene.history.empty_state_label" = "0 transakcí 🙁";
@@ -63,7 +63,7 @@
 "scene.settings.section.wallet" = "Peněženka";
 "scene.settings.item.version_warning" = "Vaše verze lnd není aktuální (%@). Zap iOS funguje nejlépe s verzí lnd %@ a vyšší.";
 "scene.settings.item.bitcoin_unit" = "Jednotka bitcoinu";
-"scene.settings.item.lightning_request_expiry" = "Lightning Request Expiry";
+"scene.settings.item.lightning_request_expiry" = "Lightning požadavek expiroval";
 "scene.settings.item.currency" = "Měna";
 "scene.settings.item.currency.popular" = "Oblíbené měny";
 "scene.settings.item.block_explorer" = "Block Explorer";
@@ -105,13 +105,13 @@
 "scene.channels.close_loading_view" = "Uzavírání kanálu";
 "scene.channels.close_success.toast" = "Kanál je uzavírán.";
 "scene.channels.empty_state.title" = "Otevřít kanál";
-"scene.channels.empty_state.message" = "You can't transact on the Lightning Network yet! Let's open a channel to start transacting on the Lightning Network.";
-"scene.channels.empty_state.button_title" = "Open a channel";
+"scene.channels.empty_state.message" = "Dosud nemůžete posílat přes Lightning Network! Otevřeme kanál a začneme posílat přes Lightning Network.";
+"scene.channels.empty_state.button_title" = "Otevřít kanál";
 
 "scene.open_channel.title" = "Otevřít kanál";
 "scene.open_channel.channel_uri_label" = "Uzel:";
 "scene.open_channel.add_button" = "Otevřít kanál";
-"scene.open_channel.subtitle.minimum_size" = "Minimum channel size: %@";
+"scene.open_channel.subtitle.minimum_size" = "Minimální velikost kanálu: %@";
 "scene.open_channel.subtitle.maximum_size" = "Maximum channel size: %@";
 "scene.open_channel.subtitle.balance" = "On-chain balance: %@";
 "scene.open_channel.suggested_peers.title" = "Suggested Peers";
