@@ -44,15 +44,15 @@
 
 "view.amount_input.placeholder" = "Množství";
 
-"expiry_time.one_minute" = "1 Minute";
-"expiry_time.ten_minutes" = "10 Minutes";
-"expiry_time.thirty_minutes" = "30 Minutes";
-"expiry_time.one_hour" = "1 Hour";
-"expiry_time.six_hours" = "6 Hours";
-"expiry_time.one_day" = "1 Day";
-"expiry_time.one_week" = "1 Week";
-"expiry_time.thirty_days" = "30 Days";
-"expiry_time.one_year" = "1 Year";
+"expiry_time.one_minute" = "1 Minuta";
+"expiry_time.ten_minutes" = "10 Minut";
+"expiry_time.thirty_minutes" = "30 Minut";
+"expiry_time.one_hour" = "1 Hodina";
+"expiry_time.six_hours" = "6 Hodin";
+"expiry_time.one_day" = "1 Den";
+"expiry_time.one_week" = "1 Týden";
+"expiry_time.thirty_days" = "30 Dní";
+"expiry_time.one_year" = "1 Rok";
 
 "scene.history.title" = "Historie";
 "scene.history.empty_state_label" = "0 transakcí 🙁";
@@ -63,7 +63,7 @@
 "scene.settings.section.wallet" = "Peněženka";
 "scene.settings.item.version_warning" = "Vaše verze lnd není aktuální (%@). Zap iOS funguje nejlépe s verzí lnd %@ a vyšší.";
 "scene.settings.item.bitcoin_unit" = "Jednotka bitcoinu";
-"scene.settings.item.lightning_request_expiry" = "Lightning Request Expiry";
+"scene.settings.item.lightning_request_expiry" = "Lightning požadavek expiroval";
 "scene.settings.item.currency" = "Měna";
 "scene.settings.item.currency.popular" = "Oblíbené měny";
 "scene.settings.item.block_explorer" = "Block Explorer";
@@ -105,59 +105,59 @@
 "scene.channels.close_loading_view" = "Uzavírání kanálu";
 "scene.channels.close_success.toast" = "Kanál je uzavírán.";
 "scene.channels.empty_state.title" = "Otevřít kanál";
-"scene.channels.empty_state.message" = "You can't transact on the Lightning Network yet! Let's open a channel to start transacting on the Lightning Network.";
-"scene.channels.empty_state.button_title" = "Open a channel";
+"scene.channels.empty_state.message" = "Dosud nemůžete posílat přes Lightning Network! Otevřeme kanál a začneme posílat přes Lightning Network.";
+"scene.channels.empty_state.button_title" = "Otevřít kanál";
 
 "scene.open_channel.title" = "Otevřít kanál";
 "scene.open_channel.channel_uri_label" = "Uzel:";
 "scene.open_channel.add_button" = "Otevřít kanál";
-"scene.open_channel.subtitle.minimum_size" = "Minimum channel size: %@";
-"scene.open_channel.subtitle.maximum_size" = "Maximum channel size: %@";
-"scene.open_channel.subtitle.balance" = "On-chain balance: %@";
-"scene.open_channel.suggested_peers.title" = "Suggested Peers";
-"scene.open_channel.paste_button.title" = "Paste Peer Address";
+"scene.open_channel.subtitle.minimum_size" = "Minimální velikost kanálu: %@";
+"scene.open_channel.subtitle.maximum_size" = "Maximální velikost kanálu: %@";
+"scene.open_channel.subtitle.balance" = "On-chain zůstatek: %@";
+"scene.open_channel.suggested_peers.title" = "Navrhovaní Peery";
+"scene.open_channel.paste_button.title" = "Vložit adresu Peeru";
 
-"scene.pin.biometric.fallback.title" = "Use Passcode";
-"scene.pin.biometric.reason" = "To access the secure data";
+"scene.pin.biometric.fallback.title" = "Použijte Passcode";
+"scene.pin.biometric.reason" = "Přístup k zabezpečeným datům";
 
-"scene.setup_pin.done_button" = "Done";
+"scene.setup_pin.done_button" = "Hotovo";
 "scene.setup_pin.top_label.initial" = "Zvolte pin.";
-"scene.setup_pin.top_label.non_matching" = "The pins didn't match. Please try again.";
-"scene.setup_pin.top_label.validate" = "Enter the pin again to validate.";
+"scene.setup_pin.top_label.non_matching" = "PINy se neshodují. Prosím zkuste to znovu.";
+"scene.setup_pin.top_label.validate" = "Zadejte PIN znovu pro ověření.";
 
-"scene.onboarding.page_1.title" = "Your **keys**, your **coins**";
-"scene.onboarding.page_1.message" = "With Zap, you are in control of your money. To make sure your coins are always stored safely, Zap will provide a recovery phrase for you.";
-"scene.onboarding.page_1.button_title" = "Continue";
+"scene.onboarding.page_1.title" = "Vaše **klíče**, vaše **mince**";
+"scene.onboarding.page_1.message" = "Se Zap máte kontrolu nad svými penězi. Aby bylo zajištěno, že jsou vaše mince vždy bezpečně uloženy, Zap vám poskytne obnovovací frázi.";
+"scene.onboarding.page_1.button_title" = "Pokračovat";
 
-"scene.onboarding.page_2.title" = "Save your **recovery phrase**";
-"scene.onboarding.page_2.message" = "Write down your phrase. You can use your phrase to recover your funds anytime if you misplace your device.";
-"scene.onboarding.page_2.button_title" = "Continue";
+"scene.onboarding.page_2.title" = "Uložte si svou **obnovovací frázi**";
+"scene.onboarding.page_2.message" = "Napište si svou frázi na papír. Pomocí fráze můžete kdykoli obnovit své prostředky, pokud své zařízení ztratíte.";
+"scene.onboarding.page_2.button_title" = "Pokračovat";
 
-"scene.onboarding.page_3.title" = "Keep it **safe**";
-"scene.onboarding.page_3.message" = "Make sure to keep your recovery phrase private. Store it somewhere only you will find it.";
-"scene.onboarding.page_3.button_title" = "Generate Recovery Phrase";
+"scene.onboarding.page_3.title" = "Udržujte ji **v bezpečí**";
+"scene.onboarding.page_3.message" = "Ujistěte se, že vaše fráze pro obnovení je v bezpečí. Uložte si ji někde, kde ji najdete jen vy.";
+"scene.onboarding.page_3.button_title" = "Vygenerovat frázi pro obnovení";
 
-"scene.confirm_mnemonic.title" = "Confirm Recovery Phrase";
-"scene.confirm_mnemonic.headline" = "Select word number %d";
+"scene.confirm_mnemonic.title" = "Potvrďte obnovovací frázi";
+"scene.confirm_mnemonic.headline" = "Vyberte počet slov %d";
 
-"scene.send.title" = "Send";
-"scene.send.send_button" = "Send";
-"scene.send.address_headline" = "To:";
-"scene.send.memo_headline" = "Memo:";
-"scene.send.sending" = "Sending...";
-"scene.send.lightning.title" = "Send Lightning Payment";
-"scene.send.on_chain.title" = "Send On-Chain";
-"scene.send.on_chain.fee" = "Fee:";
-"scene.send.on_chain.fee.fast" = "Fast";
-"scene.send.on_chain.fee.medium" = "Medium";
-"scene.send.on_chain.fee.slow" = "Slow";
-"scene.send.on_chain.fee.description.fast" = "Fast Transaction";
-"scene.send.on_chain.fee.description.medium" = "Medium Transaction";
-"scene.send.on_chain.fee.description.slow" = "Slow Transaction";
+"scene.send.title" = "Odeslat";
+"scene.send.send_button" = "Odeslat";
+"scene.send.address_headline" = "Komu:";
+"scene.send.memo_headline" = "Poznámka:";
+"scene.send.sending" = "Odesílání...";
+"scene.send.lightning.title" = "Odeslat Lightning platbu";
+"scene.send.on_chain.title" = "Odeslat On-Chain platbu";
+"scene.send.on_chain.fee" = "Poplatek:";
+"scene.send.on_chain.fee.fast" = "Rychle";
+"scene.send.on_chain.fee.medium" = "Normálně";
+"scene.send.on_chain.fee.slow" = "Pomalu";
+"scene.send.on_chain.fee.description.fast" = "Rychlá transakce";
+"scene.send.on_chain.fee.description.medium" = "Normální transakce";
+"scene.send.on_chain.fee.description.slow" = "Pomalá transakce";
 
-"scene.send.on_chain.fee.estimated_delivery" = "Estimated Delivery: %@";
-"scene.send.authentication_failed" = "Authentication failed";
-"scene.send.maximum_fee" = "Expected Fee:";
+"scene.send.on_chain.fee.estimated_delivery" = "Odhadované doručení: %@";
+"scene.send.authentication_failed" = "Ověření se nezdařilo";
+"scene.send.maximum_fee" = "Očekávaný poplatek:";
 "scene.send.subtitle.on_chain_balance" = "On-chain balance: %@";
 "scene.send.subtitle.lightning_can_send_balance" = "Can send: %@";
 "scene.send.success_label" = "Payment Successful";
@@ -236,8 +236,8 @@
 "scene.filter.displayLightningInvoices" = "Created Invoices";
 "scene.filter.displayChannelEvents" = "Channel Events";
 
-"scene.qrcode_scanner.top_label" = "Scan QR-Code";
-"scene.qrcode_scanner.error.unknown_format" = "Unknown address format.";
+"scene.qrcode_scanner.top_label" = "Skenovat QR-kód";
+"scene.qrcode_scanner.error.unknown_format" = "Neznámý formát adresy.";
 "scene.qrcode_scanner.error.wrong_network" = "You tried opening an invoice for %@ but your node is connected to %@.";
 "scene.qrcode_scanner.error.zero_amount_invoice" = "For security reasons zap does not support invoices without a specified amount.";
 "scene.qrcode_scanner.camera_access_denied_alert.ok" = "Settings";
