@@ -55,7 +55,7 @@
                                                     <subviews>
                                                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Qlc-bd-Hle" customClass="CircleView" customModule="Library" customModuleProvider="target">
                                                             <rect key="frame" x="0.0" y="60.5" width="7" height="7"/>
-                                                            <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                             <constraints>
                                                                 <constraint firstAttribute="width" constant="7" id="2L2-jU-wDA"/>
                                                                 <constraint firstAttribute="height" constant="7" id="8si-hR-zKK"/>
@@ -70,13 +70,13 @@
                                                     </constraints>
                                                 </view>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="150" verticalHuggingPriority="700" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3OD-2c-YFr">
-                                                    <rect key="frame" x="17" y="0.0" width="322" height="128"/>
+                                                    <rect key="frame" x="17" y="0.0" width="332" height="128"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="icon_arrow_down_small" translatesAutoresizingMaskIntoConstraints="NO" id="eDk-Sd-x6U">
-                                                    <rect key="frame" x="349" y="0.0" width="20" height="128"/>
+                                                    <rect key="frame" x="359" y="0.0" width="10" height="128"/>
                                                     <color key="tintColor" name="white"/>
                                                 </imageView>
                                             </subviews>

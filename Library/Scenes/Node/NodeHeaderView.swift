@@ -31,6 +31,7 @@ final class NodeHeaderView: UIView {
         networkLabel.clipsToBounds = true
         networkLabel.layer.masksToBounds = true
         networkLabel.text = nil
+        networkLabel.textColor = UIColor.Zap.white
         
         // node alias label
         nodeAliasLabel.text = nil
