@@ -70,8 +70,6 @@ public final class LightningService: NSObject {
 
         super.init()
         
-        listenForInvoiceSettled(invoiceSettledSignal: invoiceListUpdater.invoiceSettledSignal)
-
         updateBalanceOnChange(of: invoiceListUpdater.items)
         updateBalanceOnChange(of: transactionListUpdater.items)
         updateBalanceOnChange(of: paymentListUpdater.items)
@@ -82,23 +80,17 @@ public final class LightningService: NSObject {
         updateChannelsOnChange(of: invoiceListUpdater.items)
         updateChannelsOnChange(of: paymentListUpdater.items)
     }
-    
-    private func listenForInvoiceSettled(invoiceSettledSignal: Signal<Void, Never>) {
-        invoiceSettledSignal.observeNext { [weak self] in
-            /*
-             It looks like there is a race condition in LND where even though the invoice reports back as settled,
-             the calls to get the channel balances happen too quickly and the new amounts are not reported.
-             */
-            DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 1) { () -> Void in
-                self?.balanceService.update()
-            }
-        }.dispose(in: reactive.bag)
-    }
 
     private func updateBalanceOnChange<T>(of items: MutableObservableArray<T>) {
         items
             .observeNext { [weak self] _ in
-                self?.balanceService.update()
+                /*
+                 It looks like there is a race condition in LND where even though the transactions/invoices report back as
+                 being completed, the calls to get the balances happen too quickly and the new amounts are not reported.
+                 */
+                DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 1) { () -> Void in
+                    self?.balanceService.update()
+                }
             }
             .dispose(in: reactive.bag)
     }
