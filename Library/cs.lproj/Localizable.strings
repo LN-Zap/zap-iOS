@@ -145,19 +145,19 @@
 "scene.send.address_headline" = "Komu:";
 "scene.send.memo_headline" = "Poznámka:";
 "scene.send.sending" = "Odesílání...";
-"scene.send.lightning.title" = "Send Lightning Payment";
-"scene.send.on_chain.title" = "Send On-Chain";
-"scene.send.on_chain.fee" = "Fee:";
-"scene.send.on_chain.fee.fast" = "Fast";
-"scene.send.on_chain.fee.medium" = "Medium";
-"scene.send.on_chain.fee.slow" = "Slow";
-"scene.send.on_chain.fee.description.fast" = "Fast Transaction";
-"scene.send.on_chain.fee.description.medium" = "Medium Transaction";
-"scene.send.on_chain.fee.description.slow" = "Slow Transaction";
+"scene.send.lightning.title" = "Odeslat Lightning platbu";
+"scene.send.on_chain.title" = "Odeslat On-Chain platbu";
+"scene.send.on_chain.fee" = "Poplatek:";
+"scene.send.on_chain.fee.fast" = "Rychle";
+"scene.send.on_chain.fee.medium" = "Normálně";
+"scene.send.on_chain.fee.slow" = "Pomalu";
+"scene.send.on_chain.fee.description.fast" = "Rychlá transakce";
+"scene.send.on_chain.fee.description.medium" = "Normální transakce";
+"scene.send.on_chain.fee.description.slow" = "Pomalá transakce";
 
-"scene.send.on_chain.fee.estimated_delivery" = "Estimated Delivery: %@";
-"scene.send.authentication_failed" = "Authentication failed";
-"scene.send.maximum_fee" = "Expected Fee:";
+"scene.send.on_chain.fee.estimated_delivery" = "Odhadované doručení: %@";
+"scene.send.authentication_failed" = "Ověření se nezdařilo";
+"scene.send.maximum_fee" = "Očekávaný poplatek:";
 "scene.send.subtitle.on_chain_balance" = "On-chain balance: %@";
 "scene.send.subtitle.lightning_can_send_balance" = "Can send: %@";
 "scene.send.success_label" = "Payment Successful";
@@ -236,8 +236,8 @@
 "scene.filter.displayLightningInvoices" = "Created Invoices";
 "scene.filter.displayChannelEvents" = "Channel Events";
 
-"scene.qrcode_scanner.top_label" = "Scan QR-Code";
-"scene.qrcode_scanner.error.unknown_format" = "Unknown address format.";
+"scene.qrcode_scanner.top_label" = "Skenovat QR-kód";
+"scene.qrcode_scanner.error.unknown_format" = "Neznámý formát adresy.";
 "scene.qrcode_scanner.error.wrong_network" = "You tried opening an invoice for %@ but your node is connected to %@.";
 "scene.qrcode_scanner.error.zero_amount_invoice" = "For security reasons zap does not support invoices without a specified amount.";
 "scene.qrcode_scanner.camera_access_denied_alert.ok" = "Settings";
