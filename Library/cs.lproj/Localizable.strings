@@ -123,28 +123,28 @@
 "scene.setup_pin.done_button" = "Hotovo";
 "scene.setup_pin.top_label.initial" = "Zvolte pin.";
 "scene.setup_pin.top_label.non_matching" = "PINy se neshodují. Prosím zkuste to znovu.";
-"scene.setup_pin.top_label.validate" = "Enter the pin again to validate.";
+"scene.setup_pin.top_label.validate" = "Zadejte PIN znovu pro ověření.";
 
-"scene.onboarding.page_1.title" = "Your **keys**, your **coins**";
-"scene.onboarding.page_1.message" = "With Zap, you are in control of your money. To make sure your coins are always stored safely, Zap will provide a recovery phrase for you.";
-"scene.onboarding.page_1.button_title" = "Continue";
+"scene.onboarding.page_1.title" = "Vaše **klíče**, vaše **mince**";
+"scene.onboarding.page_1.message" = "Se Zap máte kontrolu nad svými penězi. Aby bylo zajištěno, že jsou vaše mince vždy bezpečně uloženy, Zap vám poskytne obnovovací frázi.";
+"scene.onboarding.page_1.button_title" = "Pokračovat";
 
-"scene.onboarding.page_2.title" = "Save your **recovery phrase**";
-"scene.onboarding.page_2.message" = "Write down your phrase. You can use your phrase to recover your funds anytime if you misplace your device.";
-"scene.onboarding.page_2.button_title" = "Continue";
+"scene.onboarding.page_2.title" = "Uložte si svou **obnovovací frázi**";
+"scene.onboarding.page_2.message" = "Napište si svou frázi na papír. Pomocí fráze můžete kdykoli obnovit své prostředky, pokud své zařízení ztratíte.";
+"scene.onboarding.page_2.button_title" = "Pokračovat";
 
-"scene.onboarding.page_3.title" = "Keep it **safe**";
-"scene.onboarding.page_3.message" = "Make sure to keep your recovery phrase private. Store it somewhere only you will find it.";
-"scene.onboarding.page_3.button_title" = "Generate Recovery Phrase";
+"scene.onboarding.page_3.title" = "Udržujte ji **v bezpečí**";
+"scene.onboarding.page_3.message" = "Ujistěte se, že vaše fráze pro obnovení je v bezpečí. Uložte si ji někde, kde ji najdete jen vy.";
+"scene.onboarding.page_3.button_title" = "Vygenerovat frázi pro obnovení";
 
-"scene.confirm_mnemonic.title" = "Confirm Recovery Phrase";
-"scene.confirm_mnemonic.headline" = "Select word number %d";
+"scene.confirm_mnemonic.title" = "Potvrďte obnovovací frázi";
+"scene.confirm_mnemonic.headline" = "Vyberte počet slov %d";
 
-"scene.send.title" = "Send";
-"scene.send.send_button" = "Send";
-"scene.send.address_headline" = "To:";
-"scene.send.memo_headline" = "Memo:";
-"scene.send.sending" = "Sending...";
+"scene.send.title" = "Odeslat";
+"scene.send.send_button" = "Odeslat";
+"scene.send.address_headline" = "Komu:";
+"scene.send.memo_headline" = "Poznámka:";
+"scene.send.sending" = "Odesílání...";
 "scene.send.lightning.title" = "Send Lightning Payment";
 "scene.send.on_chain.title" = "Send On-Chain";
 "scene.send.on_chain.fee" = "Fee:";
