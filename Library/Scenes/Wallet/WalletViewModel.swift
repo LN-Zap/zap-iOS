@@ -12,7 +12,10 @@ import ReactiveKit
 import SwiftBTC
 
 final class WalletViewModel: NSObject {
-    private let lightningService: LightningService
+    let lightningService: LightningService
+    let shouldHideEmptyWalletState: Signal<Bool, Never>
+    let balanceSegments: [WalletBalanceSegment]
+    let circleGraphSegments = Observable<[CircleGraphView.Segment]>([])
 
     var syncViewModel: SyncViewModel
 
@@ -25,22 +28,21 @@ final class WalletViewModel: NSObject {
             .map { $0?.alias }
     }
 
-    let balanceSegments: [WalletBalanceSegment]
-    let circleGraphSegments = Observable<[CircleGraphView.Segment]>([])
-
-    let totalBalance = Observable<Satoshi>(0)
-
     init(lightningService: LightningService) {
         self.lightningService = lightningService
         self.syncViewModel = SyncViewModel(lightningService: lightningService)
         
         let balanceService = lightningService.balanceService
         
-        balanceSegments = [
+        self.balanceSegments = [
             WalletBalanceSegment(segment: .onChain, amount: balanceService.onChainConfirmed.toSignal()),
             WalletBalanceSegment(segment: .lightning, amount: balanceService.lightningChannelBalance.toSignal()),
             WalletBalanceSegment(segment: .pending, amount: balanceService.totalPending)
         ]
+        
+        self.shouldHideEmptyWalletState = lightningService.balanceService.totalBalance
+            .map { $0 > 0 }
+            .distinctUntilChanged()
 
         super.init()
         
@@ -48,8 +50,6 @@ final class WalletViewModel: NSObject {
             .distinctUntilChanged { $0 != $1 }
             .observeNext { [weak self] in
                 let (lightningBalance, onChainBalance, pendingBalance) = $0
-
-                self?.totalBalance.value = lightningBalance + onChainBalance + pendingBalance
 
                 self?.circleGraphSegments.value = [
                     CircleGraphView.Segment(amount: onChainBalance, color: Segment.onChain.color),

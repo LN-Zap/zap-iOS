@@ -37,8 +37,6 @@ public final class InfoService {
 
     private let staticChannelBackupper: StaticChannelBackupper
 
-    private var syncDebounceCount = 0 // used so wallet does not switch sync state each time a block is mined
-
     init(api: LightningApi, balanceService: BalanceService, staticChannelBackupper: StaticChannelBackupper) {
         self.api = api
         self.balanceService = balanceService
@@ -96,18 +94,7 @@ public final class InfoService {
         let newState = stateFor(result)
 
         if walletState.value != newState {
-            // only switch from .running to .syncing after several info updates with .syncing state
-            if walletState.value == .running && newState == .syncing && syncDebounceCount < 10 {
-                syncDebounceCount += 1
-                Logger.info("debounce sync: \(syncDebounceCount)", customPrefix: "🧯")
-            } else {
-                syncDebounceCount = 0
-                walletState.value = newState
-            }
-        }
-        if walletState.value == .running {
-            // if the state does not switch to syncing because of debouncing syncDebounceCount needs to be reset anyway
-            syncDebounceCount = 0
+            walletState.value = newState
         }
 
         if case .success(let info) = result {
