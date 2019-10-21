@@ -112,10 +112,10 @@
 "scene.open_channel.channel_uri_label" = "Uzel:";
 "scene.open_channel.add_button" = "Otevřít kanál";
 "scene.open_channel.subtitle.minimum_size" = "Minimální velikost kanálu: %@";
-"scene.open_channel.subtitle.maximum_size" = "Maximum channel size: %@";
-"scene.open_channel.subtitle.balance" = "On-chain balance: %@";
-"scene.open_channel.suggested_peers.title" = "Suggested Peers";
-"scene.open_channel.paste_button.title" = "Paste Peer Address";
+"scene.open_channel.subtitle.maximum_size" = "Maximální velikost kanálu: %@";
+"scene.open_channel.subtitle.balance" = "On-chain zůstatek: %@";
+"scene.open_channel.suggested_peers.title" = "Navrhovaní Peery";
+"scene.open_channel.paste_button.title" = "Vložit adresu Peeru";
 
 "scene.pin.biometric.fallback.title" = "Use Passcode";
 "scene.pin.biometric.reason" = "To access the secure data";
