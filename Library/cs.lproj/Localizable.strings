@@ -295,20 +295,20 @@
 "scene.manage_wallets.section_title.local" = "Lokální peněženka";
 "scene.manage_wallets.section_title.remote" = "Vzdálená peněženka";
 
-"scene.channel_backup.title" = "Channel Backup";
-"scene.channel_backup.cell_title" = "%@ channel.backup";
-"scene.channel_backup.not_found" = "file not found";
-"scene.channel_backup.error.iCloudDisabled" = "iCloud seems to be disabled.";
-"scene.channel_backup.error.iCloudBackupFailed" = "iCloud backup failed.";
-"scene.channel_backup.error.localBackupFailed" = "Local file backup failed.";
-"scene.channel_backup.error.lndError" = "Could not get channel backup from lnd.";
+"scene.channel_backup.title" = "Záloha kanálu";
+"scene.channel_backup.cell_title" = "%@ kanal.zaloha";
+"scene.channel_backup.not_found" = "soubor nenalezen";
+"scene.channel_backup.error.iCloudDisabled" = "Zdá se, že iCloud je zakázaný.";
+"scene.channel_backup.error.iCloudBackupFailed" = "Zálohování na iCloud se nezdařilo.";
+"scene.channel_backup.error.localBackupFailed" = "Lokální zálohování souborů se nezdařilo.";
+"scene.channel_backup.error.lndError" = "Zálohování kanálu se nepodařilo získat od lnd.";
 
-"scene.push_notification.headline" = "Stay **up to date**";
-"scene.push_notification.message" = "To keep your funds safe, Zap needs to sync once in a while. Do you want to be notified when your wallet needs to sync?";
-"scene.push_notification.confirm_button_title" = "Turn on notifications";
-"scene.push_notification.skip_button_title" = "Skip";
+"scene.push_notification.headline" = "Zůstaňte **aktualní**";
+"scene.push_notification.message" = "Aby byly vaše peníze v bezpečí, musí se Zap jednou za čas synchronizovat. Chcete být upozorněni na synchronizaci vaší peněženky?";
+"scene.push_notification.confirm_button_title" = "Zapnout oznámení";
+"scene.push_notification.skip_button_title" = "Přeskočit";
 
-"notification.sync.title" = "Please sync";
-"notification.sync.day_12.body" = "Please remember syncing your wallet to make sure you stay safe";
+"notification.sync.title" = "Prosím synchronizovat";
+"notification.sync.day_12.body" = "Nezapomeňte synchronizovat peněženku, abyste se ujistili, že zůstanete v bezpečí";
 "notification.sync.day_13.body" = "Máte ještě jeden den na synchronizaci vaší peněženky, než se stane nebezpečnou.";
 "notification.sync.day_14.body" = "Synchronizujte prosím peněženku co nejdříve.";
