@@ -144,9 +144,9 @@ public final class LightningApi {
         connection.subscribeInvoices(Lnrpc_InvoiceSubscription(), completion: run(completion, map: Invoice.init))
     }
 
-    public func routes(destination: String, amount: Satoshi, completion: @escaping ApiCompletion<[Route]>) {
+    public func route(destination: String, amount: Satoshi, completion: @escaping ApiCompletion<Route>) {
         let request = Lnrpc_QueryRoutesRequest(destination: destination, amount: amount)
-        connection.queryRoutes(request, completion: run(completion) { $0.routes.map(Route.init) })
+        connection.queryRoutes(request, completion: run(completion) { $0.routes.first.map(Route.init) })
     }
 
     public func connect(pubKey: String, host: String, completion: @escaping ApiCompletion<Success>) {

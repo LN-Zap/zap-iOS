@@ -40,11 +40,9 @@ public final class TransactionService {
     /// for the correct amount.
     public typealias FeeApiCompletion = ((amount: Satoshi, fee: Satoshi?)) -> Void
 
-    public func upperBoundLightningFees(for paymentRequest: PaymentRequest, amount: Satoshi, completion: @escaping FeeApiCompletion) {
-        api.routes(destination: paymentRequest.destination, amount: amount) { result in
-            let totalFees = (try? result.get())?
-                .max(by: { $0.totalFees < $1.totalFees })?
-                .totalFees
+    public func lightningFees(for paymentRequest: PaymentRequest, amount: Satoshi, completion: @escaping FeeApiCompletion) {
+        api.route(destination: paymentRequest.destination, amount: amount) { result in
+            let totalFees = (try? result.get())?.totalFees
             completion((amount: amount, fee: totalFees))
         }
     }

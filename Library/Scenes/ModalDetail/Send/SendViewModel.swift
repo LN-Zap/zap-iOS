@@ -174,7 +174,7 @@ final class SendViewModel: NSObject {
 
         switch method {
         case .lightning(let paymentRequest):
-            lightningService.transactionService.upperBoundLightningFees(for: paymentRequest, amount: amount, completion: feeCompletion)
+            lightningService.transactionService.lightningFees(for: paymentRequest, amount: amount, completion: feeCompletion)
         case .onChain(let bitcoinURI):
             lightningService.transactionService.onChainFees(address: bitcoinURI.bitcoinAddress, amount: amount, confirmationTarget: confirmationTarget, completion: feeCompletion)
         }
