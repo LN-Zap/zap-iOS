@@ -122,7 +122,7 @@
 
 "scene.setup_pin.done_button" = "Terminer";
 "scene.setup_pin.top_label.initial" = "Choisissez un code PIN.";
-"scene.setup_pin.top_label.non_matching" = "Les codes PIN ne correspondent pas. Veuillez essayer à nouveau.";
+"scene.setup_pin.top_label.non_matching" = "Les codes PIN ne correspondent pas. Veuillez réessayer.";
 "scene.setup_pin.top_label.validate" = "Entrez le code PIN à nouveau pour valider.";
 
 "scene.onboarding.page_1.title" = "Vos **clés**, vos **fonds**";
@@ -253,7 +253,7 @@
 "scene.wallet.empty_state.message" = "Votre portefeuille est vide ! Pour démarrer, déposez quelques fonds.";
 "scene.wallet.empty_state.button_title" = "Déposer des fonds";
 
-"scene.time_lock.headline" = "Mauvais code d'accès";
+"scene.time_lock.headline" = "Mauvais code PIN";
 "scene.time_lock.description" = "Votre portefeuille est verrouillé pendant :";
 
 "scene.modal_pin.headline" = "Entrez le code d’accès";
