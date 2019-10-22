@@ -117,7 +117,7 @@
 "scene.open_channel.suggested_peers.title" = "Pairs suggérés";
 "scene.open_channel.paste_button.title" = "Coller l'adresse d'un pair";
 
-"scene.pin.biometric.fallback.title" = "Utiliser un code d’accès";
+"scene.pin.biometric.fallback.title" = "Utiliser le code PIN";
 "scene.pin.biometric.reason" = "Pour accéder aux données sécurisées";
 
 "scene.setup_pin.done_button" = "Terminer";
