@@ -76,7 +76,7 @@ enum Lnrpc_InvoiceHTLCState: SwiftProtobuf.Enum {
   typealias RawValue = Int
   case accepted // = 0
   case settled // = 1
-  case cancelled // = 2
+  case canceled // = 2
   case UNRECOGNIZED(Int)
 
   init() {
@@ -87,7 +87,7 @@ enum Lnrpc_InvoiceHTLCState: SwiftProtobuf.Enum {
     switch rawValue {
     case 0: self = .accepted
     case 1: self = .settled
-    case 2: self = .cancelled
+    case 2: self = .canceled
     default: self = .UNRECOGNIZED(rawValue)
     }
   }
@@ -96,7 +96,7 @@ enum Lnrpc_InvoiceHTLCState: SwiftProtobuf.Enum {
     switch self {
     case .accepted: return 0
     case .settled: return 1
-    case .cancelled: return 2
+    case .canceled: return 2
     case .UNRECOGNIZED(let i): return i
     }
   }
@@ -110,7 +110,7 @@ extension Lnrpc_InvoiceHTLCState: CaseIterable {
   static var allCases: [Lnrpc_InvoiceHTLCState] = [
     .accepted,
     .settled,
-    .cancelled,
+    .canceled,
   ]
 }
 
@@ -556,8 +556,9 @@ struct Lnrpc_SendRequest {
   }
 
   ///* 
-  ///An optional maximum total time lock for the route. If zero, there is no
-  ///maximum enforced.
+  ///An optional maximum total time lock for the route. This should not exceed
+  ///lnd's `--max-cltv-expiry` setting. If zero, then the value of
+  ///`--max-cltv-expiry` is enforced.
   var cltvLimit: UInt32 {
     get {return _storage._cltvLimit}
     set {_uniqueStorage()._cltvLimit = newValue}
@@ -2399,13 +2400,12 @@ struct Lnrpc_QueryRoutesRequest {
   }
 
   ///* 
-  ///An optional field that can be used to pass an arbitrary set of TLV records
-  ///to a peer which understands the new records. This can be used to pass
-  ///application specific data during the payment attempt. If the destination
-  ///does not support the specified recrods, and error will be returned.
-  var destTlv: Dictionary<UInt64,Data> {
-    get {return _storage._destTlv}
-    set {_uniqueStorage()._destTlv = newValue}
+  ///An optional maximum total time lock for the route. If the source is empty or
+  ///ourselves, this should not exceed lnd's `--max-cltv-expiry` setting. If
+  ///zero, then the value of `--max-cltv-expiry` is used as the limit.
+  var cltvLimit: UInt32 {
+    get {return _storage._cltvLimit}
+    set {_uniqueStorage()._cltvLimit = newValue}
   }
 
   var unknownFields = SwiftProtobuf.UnknownStorage()
@@ -2501,15 +2501,8 @@ struct Lnrpc_Hop {
 
   ///* 
   ///If set to true, then this hop will be encoded using the new variable length
-  ///TLV format. Note that if any custom tlv_records below are specified, then
-  ///this field MUST be set to true for them to be encoded properly.
+  ///TLV format.
   var tlvPayload: Bool = false
-
-  ///*
-  ///An optional set of key-value TLV records. This is useful within the context
-  ///of the SendToRoute call as it allows callers to specify arbitrary K-V pairs
-  ///to drop off at each hop within the onion.
-  var tlvRecords: Dictionary<UInt64,Data> = [:]
 
   var unknownFields = SwiftProtobuf.UnknownStorage()
 
@@ -3301,7 +3294,7 @@ struct Lnrpc_InvoiceHTLC {
   //// Time at which this htlc was accepted.
   var acceptTime: Int64 = 0
 
-  //// Time at which this htlc was settled or cancelled.
+  //// Time at which this htlc was settled or canceled.
   var resolveTime: Int64 = 0
 
   //// Block height at which this htlc expires.
@@ -4114,7 +4107,7 @@ extension Lnrpc_InvoiceHTLCState: SwiftProtobuf._ProtoNameProviding {
   static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
     0: .same(proto: "ACCEPTED"),
     1: .same(proto: "SETTLED"),
-    2: .same(proto: "CANCELLED"),
+    2: .same(proto: "CANCELED"),
   ]
 }
 
@@ -8040,7 +8033,7 @@ extension Lnrpc_QueryRoutesRequest: SwiftProtobuf.Message, SwiftProtobuf._Messag
     8: .standard(proto: "source_pub_key"),
     9: .standard(proto: "use_mission_control"),
     10: .standard(proto: "ignored_pairs"),
-    11: .standard(proto: "dest_tlv"),
+    11: .standard(proto: "cltv_limit"),
   ]
 
   fileprivate class _StorageClass {
@@ -8053,7 +8046,7 @@ extension Lnrpc_QueryRoutesRequest: SwiftProtobuf.Message, SwiftProtobuf._Messag
     var _sourcePubKey: String = String()
     var _useMissionControl: Bool = false
     var _ignoredPairs: [Lnrpc_NodePair] = []
-    var _destTlv: Dictionary<UInt64,Data> = [:]
+    var _cltvLimit: UInt32 = 0
 
     static let defaultInstance = _StorageClass()
 
@@ -8069,7 +8062,7 @@ extension Lnrpc_QueryRoutesRequest: SwiftProtobuf.Message, SwiftProtobuf._Messag
       _sourcePubKey = source._sourcePubKey
       _useMissionControl = source._useMissionControl
       _ignoredPairs = source._ignoredPairs
-      _destTlv = source._destTlv
+      _cltvLimit = source._cltvLimit
     }
   }
 
@@ -8094,7 +8087,7 @@ extension Lnrpc_QueryRoutesRequest: SwiftProtobuf.Message, SwiftProtobuf._Messag
         case 8: try decoder.decodeSingularStringField(value: &_storage._sourcePubKey)
         case 9: try decoder.decodeSingularBoolField(value: &_storage._useMissionControl)
         case 10: try decoder.decodeRepeatedMessageField(value: &_storage._ignoredPairs)
-        case 11: try decoder.decodeMapField(fieldType: SwiftProtobuf._ProtobufMap<SwiftProtobuf.ProtobufUInt64,SwiftProtobuf.ProtobufBytes>.self, value: &_storage._destTlv)
+        case 11: try decoder.decodeSingularUInt32Field(value: &_storage._cltvLimit)
         default: break
         }
       }
@@ -8130,8 +8123,8 @@ extension Lnrpc_QueryRoutesRequest: SwiftProtobuf.Message, SwiftProtobuf._Messag
       if !_storage._ignoredPairs.isEmpty {
         try visitor.visitRepeatedMessageField(value: _storage._ignoredPairs, fieldNumber: 10)
       }
-      if !_storage._destTlv.isEmpty {
-        try visitor.visitMapField(fieldType: SwiftProtobuf._ProtobufMap<SwiftProtobuf.ProtobufUInt64,SwiftProtobuf.ProtobufBytes>.self, value: _storage._destTlv, fieldNumber: 11)
+      if _storage._cltvLimit != 0 {
+        try visitor.visitSingularUInt32Field(value: _storage._cltvLimit, fieldNumber: 11)
       }
     }
     try unknownFields.traverse(visitor: &visitor)
@@ -8151,7 +8144,7 @@ extension Lnrpc_QueryRoutesRequest: SwiftProtobuf.Message, SwiftProtobuf._Messag
         if _storage._sourcePubKey != rhs_storage._sourcePubKey {return false}
         if _storage._useMissionControl != rhs_storage._useMissionControl {return false}
         if _storage._ignoredPairs != rhs_storage._ignoredPairs {return false}
-        if _storage._destTlv != rhs_storage._destTlv {return false}
+        if _storage._cltvLimit != rhs_storage._cltvLimit {return false}
         return true
       }
       if !storagesAreEqual {return false}
@@ -8278,7 +8271,6 @@ extension Lnrpc_Hop: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementation
     7: .same(proto: "fee_msat"),
     8: .same(proto: "pub_key"),
     9: .same(proto: "tlv_payload"),
-    10: .same(proto: "tlv_records"),
   ]
 
   mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
@@ -8293,7 +8285,6 @@ extension Lnrpc_Hop: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementation
       case 7: try decoder.decodeSingularInt64Field(value: &self.feeMsat)
       case 8: try decoder.decodeSingularStringField(value: &self.pubKey)
       case 9: try decoder.decodeSingularBoolField(value: &self.tlvPayload)
-      case 10: try decoder.decodeMapField(fieldType: SwiftProtobuf._ProtobufMap<SwiftProtobuf.ProtobufUInt64,SwiftProtobuf.ProtobufBytes>.self, value: &self.tlvRecords)
       default: break
       }
     }
@@ -8327,9 +8318,6 @@ extension Lnrpc_Hop: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementation
     if self.tlvPayload != false {
       try visitor.visitSingularBoolField(value: self.tlvPayload, fieldNumber: 9)
     }
-    if !self.tlvRecords.isEmpty {
-      try visitor.visitMapField(fieldType: SwiftProtobuf._ProtobufMap<SwiftProtobuf.ProtobufUInt64,SwiftProtobuf.ProtobufBytes>.self, value: self.tlvRecords, fieldNumber: 10)
-    }
     try unknownFields.traverse(visitor: &visitor)
   }
 
@@ -8343,7 +8331,6 @@ extension Lnrpc_Hop: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementation
     if lhs.feeMsat != rhs.feeMsat {return false}
     if lhs.pubKey != rhs.pubKey {return false}
     if lhs.tlvPayload != rhs.tlvPayload {return false}
-    if lhs.tlvRecords != rhs.tlvRecords {return false}
     if lhs.unknownFields != rhs.unknownFields {return false}
     return true
   }

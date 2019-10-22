@@ -24,6 +24,7 @@ final class WalletCoordinator: NSObject, Coordinator {
     private weak var disconnectWalletDelegate: WalletDelegate?
 
     private var notificationScheduler: NotificationScheduler?
+    private var currentState: InfoService.WalletState
 
     private var pageViewController = UIPageViewController(transitionStyle: .scroll, navigationOrientation: .horizontal, options: nil)
 
@@ -36,9 +37,9 @@ final class WalletCoordinator: NSObject, Coordinator {
         self.authenticationViewModel = authenticationViewModel
         self.walletConfigurationStore = walletConfigurationStore
 
-        channelListViewModel = ChannelListViewModel(lightningService: lightningService)
-
-        historyViewModel = HistoryViewModel(historyService: lightningService.historyService)
+        self.channelListViewModel = ChannelListViewModel(lightningService: lightningService)
+        self.historyViewModel = HistoryViewModel(historyService: lightningService.historyService)
+        self.currentState = lightningService.infoService.walletState.value
 
         super.init()
         listenForStateChanges()
@@ -90,12 +91,16 @@ final class WalletCoordinator: NSObject, Coordinator {
         case .connecting:
             presentLoading()
         case .running, .syncing:
-            presentMain()
+            if currentState != .syncing && currentState != .running {
+                presentMain()
+            }
         case .locked:
             presentUnlockWallet()
         case .error:
             disconnectWalletDelegate?.disconnect()
         }
+        
+        self.currentState = state
 
         UIApplication.shared.isIdleTimerDisabled = lightningService.connection == .local && state == .syncing
     }
