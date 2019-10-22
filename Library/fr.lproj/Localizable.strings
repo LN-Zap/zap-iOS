@@ -256,8 +256,8 @@
 "scene.time_lock.headline" = "Mauvais code PIN";
 "scene.time_lock.description" = "Votre portefeuille est verrouillé pendant :";
 
-"scene.modal_pin.headline" = "Entrez le code d’accès";
-"scene.modal_pin.description" = "Veuillez entrer votre code d'accès pour continuer";
+"scene.modal_pin.headline" = "Entrez votre code PIN";
+"scene.modal_pin.description" = "Veuillez entrer votre code PIN actuel";
 
 "scene.history.cell.payment_sent" = "Paiement envoyé";
 "scene.history.cell.payment_received" = "Paiement reçu";
