@@ -257,7 +257,7 @@
 "scene.time_lock.description" = "Vaše peněženka je uzamčena pro:";
 
 "scene.modal_pin.headline" = "Zadejte Passcode";
-"scene.modal_pin.description" = "Please enter your passcode to continue";
+"scene.modal_pin.description" = "Chcete-li pokračovat, zadejte svůj Passcode";
 
 "scene.history.cell.payment_sent" = "Platba odeslána";
 "scene.history.cell.payment_received" = "Platba přijata";
