@@ -262,17 +262,17 @@
 "scene.history.cell.payment_sent" = "Platba odeslána";
 "scene.history.cell.payment_received" = "Platba přijata";
 "scene.history.cell.invoice_created" = "Požadavek platby vytvořen";
-"scene.history.cell.channel_opened" = "Opened Channel";
-"scene.history.cell.channel_closed" = "Closed Channel";
-"scene.history.cell.force_close_channel" = "Force closed Channel";
-"scene.history.cell.remote_force_close_channel" = "Remote forced close Channel";
-"scene.history.cell.breach_close_channel" = "Breach closed Channel";
-"scene.history.cell.close_channel_funding_canceled" = "Closed Channel (funding canceled)";
-"scene.history.cell.channel_abandoned" = "Channel abandoned";
-"scene.history.cell.transaction_sent" = "Payment sent";
-"scene.history.cell.transaction_received" = "Payment received";
-"scene.history.cell.label.new" = "new";
-"scene.history.cell.label.error" = "error";
+"scene.history.cell.channel_opened" = "Otevřený kanál";
+"scene.history.cell.channel_closed" = "Uzavřený kanál";
+"scene.history.cell.force_close_channel" = "Vynuceně uzavřený kanál";
+"scene.history.cell.remote_force_close_channel" = "Vzdátelný vynuceně uzavřený kanál";
+"scene.history.cell.breach_close_channel" = "Porušeně uzavřený kanál";
+"scene.history.cell.close_channel_funding_canceled" = "Uzavřený kanál (financování zrušeno)";
+"scene.history.cell.channel_abandoned" = "Kanál byl opuštěn";
+"scene.history.cell.transaction_sent" = "Platba poslána";
+"scene.history.cell.transaction_received" = "Platba přijata";
+"scene.history.cell.label.new" = "nový";
+"scene.history.cell.label.error" = "chyba";
 
 "scene.node_uri.title" = "Připojit k uzlu";
 "scene.node_uri.alias_label" = "Alias";
@@ -284,16 +284,16 @@
 
 "scene.wallet_list.title" = "Peněženky";
 
-"scene.unlock.title" = "Unlock Node";
-"scene.unlock.unlock_button" = "Unlock";
-"scene.unlock.password_placeholder" = "Password";
-"scene.unlock.title_label" = "Unlock %@";
+"scene.unlock.title" = "Odemknout uzel";
+"scene.unlock.unlock_button" = "Odemknout";
+"scene.unlock.password_placeholder" = "Heslo";
+"scene.unlock.title_label" = "Odemknout %@";
 
 "scene.manage_wallets.title" = "Spravovat peněženky";
-"scene.manage_wallets.cell.remote" = "remote";
-"scene.manage_wallets.cell.local" = "local";
-"scene.manage_wallets.section_title.local" = "Local Wallet";
-"scene.manage_wallets.section_title.remote" = "Remote Wallets";
+"scene.manage_wallets.cell.remote" = "vzdálený";
+"scene.manage_wallets.cell.local" = "lokální";
+"scene.manage_wallets.section_title.local" = "Lokální peněženka";
+"scene.manage_wallets.section_title.remote" = "Vzdálená peněženka";
 
 "scene.channel_backup.title" = "Channel Backup";
 "scene.channel_backup.cell_title" = "%@ channel.backup";
