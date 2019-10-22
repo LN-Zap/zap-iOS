@@ -44,6 +44,16 @@
 
 "view.amount_input.placeholder" = "المبلغ";
 
+"expiry_time.one_minute" = "1 دقيقة";
+"expiry_time.ten_minutes" = "10 دقائق";
+"expiry_time.thirty_minutes" = "30 دقيقة";
+"expiry_time.one_hour" = "1 ساعة";
+"expiry_time.six_hours" = "6 ساعات";
+"expiry_time.one_day" = "يوم 1";
+"expiry_time.one_week" = "أسبوع 1";
+"expiry_time.thirty_days" = "30 يوم";
+"expiry_time.one_year" = "1 سنة";
+
 "scene.history.title" = "سجل";
 "scene.history.empty_state_label" = "المعاملات 0🙁";
 
@@ -53,6 +63,7 @@
 "scene.settings.section.wallet" = "محفظة";
 "scene.settings.item.version_warning" = "lnd الخاص بك قديم (%@). يعمل Zap iOS بشكل أفضل مع إصدار lnd %@ أو أعلى.";
 "scene.settings.item.bitcoin_unit" = "وحدة البت كوين";
+"scene.settings.item.lightning_request_expiry" = "انتهاء صلاحية طلب Lightning";
 "scene.settings.item.currency" = "عملة";
 "scene.settings.item.currency.popular" = "العملات شائعة";
 "scene.settings.item.block_explorer" = "مستكشف البلوك";
@@ -70,7 +81,7 @@
 "scene.settings.item.privacy_policy" = "سياسة الخصوصية";
 "scene.settings.item.lnd_log" = "إظهار سجل lnd";
 
-"scene.request.title" = "تلقى";
+"scene.request.title" = "استقبال";
 "scene.request.lightning_button" = "Lightning";
 "scene.request.or_separator_label" = "أو";
 "scene.request.on_chain_button" = "On-chain";
@@ -136,15 +147,15 @@
 "scene.send.sending" = "إرسال...";
 "scene.send.lightning.title" = "إرسال دفعة Lightning";
 "scene.send.on_chain.title" = "إرسال On-Chain";
-"scene.send.on_chain.fee" = "عُمولة:";
-"scene.send.on_chain.fee.fast" = "بسرعة";
+"scene.send.on_chain.fee" = "رسوم:";
+"scene.send.on_chain.fee.fast" = "سريع";
 "scene.send.on_chain.fee.medium" = "متوسط";
 "scene.send.on_chain.fee.slow" = "بطيء";
 "scene.send.on_chain.fee.description.fast" = "حوالة سريعة";
 "scene.send.on_chain.fee.description.medium" = "حوالة عادية";
 "scene.send.on_chain.fee.description.slow" = "حوالة بطيئة";
 
-"scene.send.on_chain.fee.estimated_delivery" = "التسليم المقدر:%@";
+"scene.send.on_chain.fee.estimated_delivery" = "المقدر تسليمه:%@";
 "scene.send.authentication_failed" = "المصادقة فشلت";
 "scene.send.maximum_fee" = "الرسوم المتوقعة:";
 "scene.send.subtitle.on_chain_balance" = "الرصيد On-chain: %@";
@@ -182,10 +193,10 @@
 "scene.select_wallet_connection.message" = "Bitcoin للـ **جميع**";
 
 "scene.main.send_button" = "إرسال";
-"scene.main.receive_button" = "استقبل";
+"scene.main.receive_button" = "استقبال";
 "scene.main.exchange_rate_label" = "%@ لكل BTC";
 
-"scene.qr_code_detail.title" = "استقبل";
+"scene.qr_code_detail.title" = "استقبال";
 
 "scene.sync.description_label" = "المزامنة مع blockchain…";
 
@@ -196,7 +207,7 @@
 "scene.transaction_detail.title.failed_payment" = "فشل الدفع";
 "scene.transaction_detail.memo_label" = "ملاحظة";
 "scene.transaction_detail.amount_label" = "المبلغ";
-"scene.transaction_detail.fee_label" = "الرسوم";
+"scene.transaction_detail.fee_label" = "رسوم";
 "scene.transaction_detail.date_label" = "التاريخ";
 "scene.transaction_detail.transaction_id_label" = "ID المعاملة";
 "scene.transaction_detail.address_label" = "عنوان";
@@ -229,6 +240,9 @@
 "scene.qrcode_scanner.error.unknown_format" = "هيئة العنوان غير معروفة.";
 "scene.qrcode_scanner.error.wrong_network" = "لقد حاولت فتح فاتورة لـ %@ ولكن node الخاصة بك متصلة بـ %@.";
 "scene.qrcode_scanner.error.zero_amount_invoice" = "لأسباب أمنية ، لا يدعم zap الفواتير بدون مبلغ محدد.";
+"scene.qrcode_scanner.camera_access_denied_alert.ok" = "إعدادات";
+"scene.qrcode_scanner.camera_access_denied_alert.title" = "تم رفض الوصول إلى الكاميرا";
+"scene.qrcode_scanner.camera_access_denied_alert.message" = "قم بسماح الوصول للكاميرا في الإعدادات لمسح رمز QR.";
 
 "scene.wallet.title" = "محفظة";
 "scene.wallet.total_balance" = "الرصيد الكلي";
@@ -277,6 +291,9 @@
 
 "scene.manage_wallets.title" = "إدارة المحافظ";
 "scene.manage_wallets.cell.remote" = "التحكم عن بعد";
+"scene.manage_wallets.cell.local" = "محلي";
+"scene.manage_wallets.section_title.local" = "المحفظة المحلية";
+"scene.manage_wallets.section_title.remote" = "المحافظ البعيدة";
 
 "scene.channel_backup.title" = "النسخة احتياطية للقناة";
 "scene.channel_backup.cell_title" = "%@ channel.backup";

@@ -44,6 +44,16 @@
 
 "view.amount_input.placeholder" = "Montant";
 
+"expiry_time.one_minute" = "1 minute";
+"expiry_time.ten_minutes" = "10 minutes";
+"expiry_time.thirty_minutes" = "30 minutes";
+"expiry_time.one_hour" = "1 heure";
+"expiry_time.six_hours" = "6 heures";
+"expiry_time.one_day" = "1 jour";
+"expiry_time.one_week" = "1 semaine";
+"expiry_time.thirty_days" = "30 jours";
+"expiry_time.one_year" = "1 an";
+
 "scene.history.title" = "Historique";
 "scene.history.empty_state_label" = "Aucune transaction 🙁";
 
@@ -52,11 +62,12 @@
 "scene.settings.section.lightning" = "Lightning";
 "scene.settings.section.wallet" = "Portefeuille";
 "scene.settings.item.version_warning" = "Votre version de lnd (%@) n'est pas à jour. Zap iOS fonctionne mieux avec lnd %@ et plus.";
-"scene.settings.item.bitcoin_unit" = "Unité du Bitcoin";
+"scene.settings.item.bitcoin_unit" = "Unité";
+"scene.settings.item.lightning_request_expiry" = "Expiration des demandes";
 "scene.settings.item.currency" = "Devise";
 "scene.settings.item.currency.popular" = "Devises populaires";
 "scene.settings.item.block_explorer" = "Explorateur de blocs";
-"scene.settings.item.on_chain_request_address.title" = "Type d’adresse Bitcoin";
+"scene.settings.item.on_chain_request_address.title" = "Type d’adresse";
 "scene.settings.item.on_chain_request_address.bech32" = "Bech32";
 "scene.settings.item.on_chain_request_address.p2sh" = "P2SH";
 "scene.settings.item.manage_channels" = "Gérer les canaux";
@@ -229,6 +240,9 @@
 "scene.qrcode_scanner.error.unknown_format" = "Format d'adresse inconnu.";
 "scene.qrcode_scanner.error.wrong_network" = "Vous avez essayé de décoder une demande pour le %@, mais votre node est connecté au %@.";
 "scene.qrcode_scanner.error.zero_amount_invoice" = "Pour des raisons de sécurité, Zap ne prend pas en charge les demandes sans montant.";
+"scene.qrcode_scanner.camera_access_denied_alert.ok" = "Réglages";
+"scene.qrcode_scanner.camera_access_denied_alert.title" = "Accès à l'appareil photo refusé";
+"scene.qrcode_scanner.camera_access_denied_alert.message" = "Autorisez l'accès à l'appareil photo dans vos réglages pour scanner le QR Code.";
 
 "scene.wallet.title" = "Portefeuille";
 "scene.wallet.total_balance" = "Solde total";
@@ -277,6 +291,9 @@
 
 "scene.manage_wallets.title" = "Gérer les portefeuilles";
 "scene.manage_wallets.cell.remote" = "distant";
+"scene.manage_wallets.cell.local" = "local";
+"scene.manage_wallets.section_title.local" = "Portefeuille";
+"scene.manage_wallets.section_title.remote" = "Portefeuilles distants";
 
 "scene.channel_backup.title" = "Sauvegarde des canaux";
 "scene.channel_backup.cell_title" = "%@ channel.backup";

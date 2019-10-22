@@ -6,6 +6,7 @@
 #     https://docs.fastlane.tools/actions
 #
 
+opt_out_usage
 default_platform(:ios)
 
 app_identifier = ["com.jackmallers.zap", "com.jackmallers.zap.Sticker", "com.jackmallers.zap.Widget"]
@@ -229,5 +230,9 @@ lane :upload_metadata do
     skip_binary_upload: true,
     skip_screenshots: true
   )
+end
+
+lane :clean do
+  reset_git_repo(force: true, disregard_gitignore: false)
 end
 

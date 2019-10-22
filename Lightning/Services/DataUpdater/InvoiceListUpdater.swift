@@ -14,12 +14,12 @@ final class InvoiceListUpdater: GenericListUpdater {
     typealias Item = Invoice
 
     private let api: LightningApi
-
+    
     let items = MutableObservableArray<Invoice>()
-
+    
     init(api: LightningApi) {
         self.api = api
-
+        
         api.subscribeInvoices { [weak self] in
             if case .success(let invoice) = $0 {
                 Logger.info("new invoice: \(invoice)")

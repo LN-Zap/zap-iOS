@@ -1,9 +1,9 @@
 "generic.memo.placeholder" = "Do czego to służy?";
 "generic.qr_code.copy_button" = "Kopiuj";
 "generic.qr_code.copy_success_message" = "Address has been copied to clipboard.";
-"generic.pasteboard.invalid_address" = "Invalid Address";
+"generic.pasteboard.invalid_address" = "Nieprawidłowy adres";
 "generic.qr_code.share_button" = "Udostępnij";
-"generic.cancel" = "Cancel";
+"generic.cancel" = "Kasować";
 
 "link.help" = "https://docs.zaphq.io/";
 "link.help.zapconnect" = "https://docs.zaphq.io/docs-ios-remote-node-setup";
@@ -18,7 +18,7 @@
 "rpc_connect_qrcode_error.btc_pay_expired" = "Wygląda na to, że czas ważności kodu dobiegł końca.";
 "rpc_connect_qrcode_error.btc_pay_configuration_broken" = "Nie udało się odczytać pliku konfiguracyjnego BTCPay.";
 "rpc_connect_qrcode_error.cant_read_qrcode" = "Invalid code format.";
-"rpc_connect_qrcode_error.code_updated" = "Connection updated.";
+"rpc_connect_qrcode_error.code_updated" = "Odnowione połączenie.";
 
 "channel.state.active" = "Online";
 "channel.state.inactive" = "Offline";
@@ -37,24 +37,35 @@
 "unit.bitcoin.bit" = "Bits";
 "unit.bitcoin.satoshi" = "Satoshis";
 
-"toast.invoice" = "Did receive %@";
-"toast.invoice_memo" = "Did receive %@ \"%@\"";
+"toast.invoice" = "Otrzymałem %@";
+"toast.invoice_memo" = "Otrzymałem %@ \"%@\"";
 
 "transaction.no_destination_address" = "Brak adresy docelowego";
 
 "view.amount_input.placeholder" = "Kwota";
 
-"scene.history.title" = "History";
+"expiry_time.one_minute" = "1 Minuta";
+"expiry_time.ten_minutes" = "10 Minut";
+"expiry_time.thirty_minutes" = "30 Minut";
+"expiry_time.one_hour" = "1 Godzina";
+"expiry_time.six_hours" = "6 Godzin";
+"expiry_time.one_day" = "1 Dzień";
+"expiry_time.one_week" = "1 Tydzień";
+"expiry_time.thirty_days" = "30 Dni";
+"expiry_time.one_year" = "1 Rok";
+
+"scene.history.title" = "Historia";
 "scene.history.empty_state_label" = "0 transactions 🙁";
 
 "scene.settings.title" = "Ustawienia";
-"scene.settings.section.warning" = "Warning";
+"scene.settings.section.warning" = "Ostrzeżenie";
 "scene.settings.section.lightning" = "Lightning";
 "scene.settings.section.wallet" = "Portfel";
 "scene.settings.item.version_warning" = "Your lnd is outdated (%@). Zap iOS works best with lnd version %@ or above.";
 "scene.settings.item.bitcoin_unit" = "Bitcoin Unit";
+"scene.settings.item.lightning_request_expiry" = "Lightning Request Expiry";
 "scene.settings.item.currency" = "Waluta";
-"scene.settings.item.currency.popular" = "Popular Currencies";
+"scene.settings.item.currency.popular" = "Popularne Waluty";
 "scene.settings.item.block_explorer" = "Block Explorer";
 "scene.settings.item.on_chain_request_address.title" = "Rodzaj adresu";
 "scene.settings.item.on_chain_request_address.bech32" = "Bech32";
@@ -62,7 +73,7 @@
 "scene.settings.item.manage_channels" = "Manage Channels";
 "scene.settings.item.channel_backup" = "Channel Backup";
 "scene.settings.item.node_uri" = "Node URI";
-"scene.settings.item.remove_remote_node" = "Manage Wallets";
+"scene.settings.item.remove_remote_node" = "Zarządzaj Kieszenia";
 
 "scene.settings.item.change_pin" = "Change Pin";
 "scene.settings.item.report_issue" = "Zgłoś problem";
@@ -137,12 +148,12 @@
 "scene.send.lightning.title" = "Wyślij płatność LN";
 "scene.send.on_chain.title" = "Send On-Chain";
 "scene.send.on_chain.fee" = "Fee:";
-"scene.send.on_chain.fee.fast" = "Fast";
-"scene.send.on_chain.fee.medium" = "Medium";
-"scene.send.on_chain.fee.slow" = "Slow";
-"scene.send.on_chain.fee.description.fast" = "Fast Transaction";
-"scene.send.on_chain.fee.description.medium" = "Medium Transaction";
-"scene.send.on_chain.fee.description.slow" = "Slow Transaction";
+"scene.send.on_chain.fee.fast" = "Szybko";
+"scene.send.on_chain.fee.medium" = "Średnio";
+"scene.send.on_chain.fee.slow" = "Wolno";
+"scene.send.on_chain.fee.description.fast" = "Szybka Transakcja";
+"scene.send.on_chain.fee.description.medium" = "Średnia Transakcja";
+"scene.send.on_chain.fee.description.slow" = "Wolna Transakcja";
 
 "scene.send.on_chain.fee.estimated_delivery" = "Estimated Delivery: %@";
 "scene.send.authentication_failed" = "Authentication failed";
@@ -229,6 +240,9 @@
 "scene.qrcode_scanner.error.unknown_format" = "Unknown address format.";
 "scene.qrcode_scanner.error.wrong_network" = "You tried opening an invoice for %@ but your node is connected to %@.";
 "scene.qrcode_scanner.error.zero_amount_invoice" = "For security reasons zap does not support invoices without a specified amount.";
+"scene.qrcode_scanner.camera_access_denied_alert.ok" = "Settings";
+"scene.qrcode_scanner.camera_access_denied_alert.title" = "Camera access denied";
+"scene.qrcode_scanner.camera_access_denied_alert.message" = "Turn on camera access in the settings to scan the QR code.";
 
 "scene.wallet.title" = "Portfel";
 "scene.wallet.total_balance" = "Total Balance";
@@ -277,6 +291,9 @@
 
 "scene.manage_wallets.title" = "Manage Wallets";
 "scene.manage_wallets.cell.remote" = "remote";
+"scene.manage_wallets.cell.local" = "local";
+"scene.manage_wallets.section_title.local" = "Local Wallet";
+"scene.manage_wallets.section_title.remote" = "Remote Wallets";
 
 "scene.channel_backup.title" = "Channel Backup";
 "scene.channel_backup.cell_title" = "%@ channel.backup";

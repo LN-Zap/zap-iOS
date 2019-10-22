@@ -12,6 +12,9 @@
 		37DC0DB072FDF3A74598EA06 /* Pods_RPC_Library.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 71E4E79032A371505A0E58C1 /* Pods_RPC_Library.framework */; };
 		3FCED3EA112663089C273764 /* *.bitcoinaverage.com.cer in Resources */ = {isa = PBXBuildFile; fileRef = 3FCED45A10ACE912173010E1 /* *.bitcoinaverage.com.cer */; };
 		4295D217D276D875A94F4622 /* Pods_RPC_SwiftLnd.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0B55A0B343498CAAB75872BD /* Pods_RPC_SwiftLnd.framework */; };
+		5C18BB6F234C015100BCF9D9 /* ExpiryTime.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C18BB6E234C015100BCF9D9 /* ExpiryTime.swift */; };
+		5C18BB71234C09EB00BCF9D9 /* LightningRequestExpirySettingsItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C18BB70234C09EB00BCF9D9 /* LightningRequestExpirySettingsItem.swift */; };
+		5C18BB77234C0BF400BCF9D9 /* ExpiryTime+Localizable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C18BB76234C0BF400BCF9D9 /* ExpiryTime+Localizable.swift */; };
 		5E7CF0840E8C74EB58F80DB5 /* Pods_SnapshotUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C6AEA9B7EDFEBE4BBEB56DAD /* Pods_SnapshotUITests.framework */; };
 		6A9518DA222DCFCA0008FE4F /* Array2DElement.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A9518D9222DCFCA0008FE4F /* Array2DElement.swift */; };
 		7BE67678020C235E19A3D64E /* Pods_SwiftLndTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 71876EABB08A5425C9DA33C7 /* Pods_SwiftLndTests.framework */; };
@@ -336,7 +339,6 @@
 		ADEB61AF2216CD7D009D5707 /* Logger.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = ADEB61A82216CD7D009D5707 /* Logger.framework */; };
 		ADEB61B02216CD7D009D5707 /* Logger.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = ADEB61A82216CD7D009D5707 /* Logger.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		ADEB61B52216CD86009D5707 /* Logger.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADEB61A02216C3BC009D5707 /* Logger.swift */; };
-		ADEB61BA2217088E009D5707 /* CustomDebugStringConvertible.generated.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADEB61B92217088E009D5707 /* CustomDebugStringConvertible.generated.swift */; };
 		ADEDA3CE217892A10078FD91 /* RequestQRCodeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADEDA3CD217892A10078FD91 /* RequestQRCodeViewModel.swift */; };
 		ADEDA3D12178938E0078FD91 /* NodeURIQRCodeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADEDA3D02178938E0078FD91 /* NodeURIQRCodeViewModel.swift */; };
 		ADEEB5332134277400D2F992 /* KeyPadPinView.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADEEB5322134277400D2F992 /* KeyPadPinView.swift */; };
@@ -536,6 +538,9 @@
 		4D052C7425BFF1AED850782A /* Pods-LibraryTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-LibraryTests.debug.xcconfig"; path = "Target Support Files/Pods-LibraryTests/Pods-LibraryTests.debug.xcconfig"; sourceTree = "<group>"; };
 		4E372F564A61EB8E70FA424B /* Pods-SnapshotUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SnapshotUITests.release.xcconfig"; path = "Target Support Files/Pods-SnapshotUITests/Pods-SnapshotUITests.release.xcconfig"; sourceTree = "<group>"; };
 		5284CC239994D6B844AD6ACE /* Pods-Zap.debugremote.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Zap.debugremote.xcconfig"; path = "Target Support Files/Pods-Zap/Pods-Zap.debugremote.xcconfig"; sourceTree = "<group>"; };
+		5C18BB6E234C015100BCF9D9 /* ExpiryTime.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExpiryTime.swift; sourceTree = "<group>"; };
+		5C18BB70234C09EB00BCF9D9 /* LightningRequestExpirySettingsItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LightningRequestExpirySettingsItem.swift; sourceTree = "<group>"; };
+		5C18BB76234C0BF400BCF9D9 /* ExpiryTime+Localizable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ExpiryTime+Localizable.swift"; sourceTree = "<group>"; };
 		5E8DFC750E5DE2109A4B90CB /* Pods-RPC-Lightning.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RPC-Lightning.debug.xcconfig"; path = "Target Support Files/Pods-RPC-Lightning/Pods-RPC-Lightning.debug.xcconfig"; sourceTree = "<group>"; };
 		5F7C5272C0C2909B7C7987FF /* Pods-SnapshotUITests.debugremote.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SnapshotUITests.debugremote.xcconfig"; path = "Target Support Files/Pods-SnapshotUITests/Pods-SnapshotUITests.debugremote.xcconfig"; sourceTree = "<group>"; };
 		6A9518D9222DCFCA0008FE4F /* Array2DElement.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Array2DElement.swift; sourceTree = "<group>"; };
@@ -945,7 +950,6 @@
 		ADEB61AA2216CD7D009D5707 /* Logger.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Logger.h; sourceTree = "<group>"; };
 		ADEB61AB2216CD7D009D5707 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		ADEB61B82217082A009D5707 /* Sourcery */ = {isa = PBXFileReference; lastKnownFileType = folder; path = Sourcery; sourceTree = "<group>"; };
-		ADEB61B92217088E009D5707 /* CustomDebugStringConvertible.generated.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomDebugStringConvertible.generated.swift; sourceTree = "<group>"; };
 		ADECC36820F257AF00D00546 /* Payment.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Payment.swift; sourceTree = "<group>"; };
 		ADECC36A20F257BE00D00546 /* Transaction.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Transaction.swift; sourceTree = "<group>"; };
 		ADEDA3CD217892A10078FD91 /* RequestQRCodeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RequestQRCodeViewModel.swift; sourceTree = "<group>"; };
@@ -1263,6 +1267,7 @@
 				AD28CB7A211DE93300A31004 /* BlockExplorerSettingsItem.swift */,
 				ADCD5B0E20D7E40C0037F156 /* ChangePinSettingsItem.swift */,
 				A091914A203B297D00FA525A /* CurrencySettingsItem.swift */,
+				5C18BB70234C09EB00BCF9D9 /* LightningRequestExpirySettingsItem.swift */,
 				ADCD5B0C20D7E3F50037F156 /* ManageWalletsSettingsItem.swift */,
 				AD6FFCA520AB0A3700B57330 /* OnChainRequestAddressTypeSettingsItem.swift */,
 				ADFE2E4B216CF4A800988243 /* PushViewControllerSettingsItem.swift */,
@@ -1365,6 +1370,7 @@
 				ADB4CBA3225493A300D186BC /* ChannelEventUpdate.swift */,
 				ADE19C3F20E7892000340E2E /* ChannelPoint.swift */,
 				A0A96B8520174BAC00788808 /* CloseStatusUpdate.swift */,
+				5C18BB6E234C015100BCF9D9 /* ExpiryTime.swift */,
 				ADFAA01C228C0F10000AECA1 /* FeeEstimate.swift */,
 				AD93ED5520A09D59000E814E /* GraphTopologyUpdate.swift */,
 				A0376B6E201CC04400F1FBEF /* Info.swift */,
@@ -1713,6 +1719,7 @@
 				A0A05A252013DC1D0007D1C9 /* BitcoinUnit+Localizable.swift */,
 				ADA75DF1210F389100003068 /* ChannelState+Localizable.swift */,
 				ADBB361F207FA5D6005662B4 /* Date+Localizable.swift */,
+				5C18BB76234C0BF400BCF9D9 /* ExpiryTime+Localizable.swift */,
 				A0C2EABD206F8B5B003AE56E /* Localizable.swift */,
 				AD77464D2076162300EC596B /* Network+Localizable.swift */,
 				AD967FEF21062AB20048085B /* RPCConnectQRCodeError+Localizable.swift */,
@@ -2080,7 +2087,6 @@
 		ADEB61B62217078B009D5707 /* Generated */ = {
 			isa = PBXGroup;
 			children = (
-				ADEB61B92217088E009D5707 /* CustomDebugStringConvertible.generated.swift */,
 				AD9F3ADE2271C2550044E5EB /* MacaroonId.pb.swift */,
 				AD9F3AE02271DE2D0044E5EB /* rpc.grpc.swift */,
 				AD5AA2E62271B64500AEDDD7 /* rpc.pb.swift */,
@@ -2270,8 +2276,6 @@
 			buildConfigurationList = A0A05A1C2013CF960007D1C9 /* Build configuration list for PBXNativeTarget "Zap" */;
 			buildPhases = (
 				7389306E3A7040DB65CFCFE2 /* [CP] Check Pods Manifest.lock */,
-				ADE688392222B92F004761B9 /* SwiftLint autocorrect */,
-				ADEB61BB22170C2F009D5707 /* Sourcery */,
 				A0A05A312013F7880007D1C9 /* SwiftLint */,
 				A0A059FB2013CF960007D1C9 /* Sources */,
 				A0A059FC2013CF960007D1C9 /* Frameworks */,
@@ -2892,42 +2896,6 @@
 			shellPath = /bin/sh;
 			shellScript = "if [ -z \"$CI\" ]; then\n    if which swiftlint >/dev/null; then\n        swiftlint\n    else\n        echo \"warning: SwiftLint not installed, download from https://github.com/realm/SwiftLint\"\n    fi\nfi\n";
 		};
-		ADE688392222B92F004761B9 /* SwiftLint autocorrect */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-			);
-			inputPaths = (
-			);
-			name = "SwiftLint autocorrect";
-			outputFileListPaths = (
-			);
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "# Type a script or drag a script file from your workspace to insert its path.\n\nif [ -z \"$CI\" ]; then\n    if which swiftlint >/dev/null; then\n        swiftlint autocorrect\n    else\n        echo \"warning: SwiftLint not installed, download from https://github.com/realm/SwiftLint\"\n    fi\nfi\n";
-		};
-		ADEB61BB22170C2F009D5707 /* Sourcery */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-			);
-			inputPaths = (
-			);
-			name = Sourcery;
-			outputFileListPaths = (
-			);
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "if [ -z \"$CI\" ]; then\n    if which sourcery >/dev/null; then\n        sourcery\n    else\n        echo \"warning: sourcery not installed, download from https://github.com/krzysztofzablocki/Sourcery\"\n    fi\nfi\n";
-		};
 		C14F1765D6C12D63AA15CAE3 /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -3204,6 +3172,7 @@
 				AD391C3320D16EFA007EE22A /* UIImage.swift in Sources */,
 				ADCD5B0F20D7E40C0037F156 /* ChangePinSettingsItem.swift in Sources */,
 				AD27022422E1C61500D4BF27 /* PushNotificationViewController.swift in Sources */,
+				5C18BB71234C09EB00BCF9D9 /* LightningRequestExpirySettingsItem.swift in Sources */,
 				ADDD13BB2119CF110035D2F9 /* CallbackButton.swift in Sources */,
 				ADFE2E4C216CF4A800988243 /* PushViewControllerSettingsItem.swift in Sources */,
 				AD391C4D20D16F68007EE22A /* ChannelListViewController.swift in Sources */,
@@ -3265,6 +3234,7 @@
 				AD3DDF6F22D390CA0031BFC8 /* OnboardingTextViewController.swift in Sources */,
 				AD391C9E20D16FA8007EE22A /* RequestViewModel.swift in Sources */,
 				AD1831C9229685A500120260 /* OnChainFeeView.swift in Sources */,
+				5C18BB77234C0BF400BCF9D9 /* ExpiryTime+Localizable.swift in Sources */,
 				AD391C2B20D16EFA007EE22A /* SignalProtocol.swift in Sources */,
 				ADF232D42289A08100CB5053 /* Migrations.swift in Sources */,
 				ADDD13B92119CEB40035D2F9 /* UIStackView.swift in Sources */,
@@ -3368,6 +3338,7 @@
 				ADFB36D92143B73C00146FCC /* LocalLndConfiguration.swift in Sources */,
 				ADFB36E92143BB2200146FCC /* Transaction.swift in Sources */,
 				ADADAD8F2143B3C900A48E1F /* OnChainRequestAddressType.swift in Sources */,
+				5C18BB6F234C015100BCF9D9 /* ExpiryTime.swift in Sources */,
 				ADADAD922143B3C900A48E1F /* Peer.swift in Sources */,
 				AD7ED622220B4FE9007C5F2C /* FileManager.swift in Sources */,
 				ADFAA01D228C0F10000AECA1 /* FeeEstimate.swift in Sources */,
@@ -3386,7 +3357,6 @@
 				AD5AA2E72271B64500AEDDD7 /* rpc.pb.swift in Sources */,
 				ADADA95822844B910036639F /* ChannelBackup.swift in Sources */,
 				ADB4CBA4225493A300D186BC /* ChannelEventUpdate.swift in Sources */,
-				ADEB61BA2217088E009D5707 /* CustomDebugStringConvertible.generated.swift in Sources */,
 				ADFB36E62143BA6F00146FCC /* Invoice.swift in Sources */,
 				ADD08A0322787B8300480073 /* rpc.zap.swift in Sources */,
 			);

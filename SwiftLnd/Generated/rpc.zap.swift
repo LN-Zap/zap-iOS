@@ -114,6 +114,7 @@ protocol LightningConnection {
   func closedChannels(_ request: Lnrpc_ClosedChannelsRequest, completion: @escaping ApiCompletion<Lnrpc_ClosedChannelsResponse>)
   func openChannelSync(_ request: Lnrpc_OpenChannelRequest, completion: @escaping ApiCompletion<Lnrpc_ChannelPoint>)
   func openChannel(_ request: Lnrpc_OpenChannelRequest, completion: @escaping ApiCompletion<Lnrpc_OpenStatusUpdate>)
+  // skipped: channelAcceptor
   func closeChannel(_ request: Lnrpc_CloseChannelRequest, completion: @escaping ApiCompletion<Lnrpc_CloseStatusUpdate>)
   func abandonChannel(_ request: Lnrpc_AbandonChannelRequest, completion: @escaping ApiCompletion<Lnrpc_AbandonChannelResponse>)
   // skipped: sendPayment
@@ -210,6 +211,7 @@ final class StreamingLightningConnection: LightningConnection {
   func openChannel(_ request: Lnrpc_OpenChannelRequest, completion: @escaping ApiCompletion<Lnrpc_OpenStatusUpdate>) {
     LndmobileOpenChannel(try? request.serializedData(), LndCallback(completion))
   }
+  // skipped: channelAcceptor
   func closeChannel(_ request: Lnrpc_CloseChannelRequest, completion: @escaping ApiCompletion<Lnrpc_CloseStatusUpdate>) {
     LndmobileCloseChannel(try? request.serializedData(), LndCallback(completion))
   }
@@ -426,6 +428,8 @@ final class RPCLightningConnection: LightningConnection {
       }
   }
 
+  // skipped: channelAcceptor
+
   func closeChannel(_ request: Lnrpc_CloseChannelRequest, completion: @escaping ApiCompletion<Lnrpc_CloseStatusUpdate>) {
     do {
         let call = try service.closeChannel(request) { Logger.error($0) }
@@ -614,6 +618,7 @@ final class MockLightningConnection: LightningConnection {
   private let closedChannels: Lnrpc_ClosedChannelsResponse?
   private let openChannelSync: Lnrpc_ChannelPoint?
   private let openChannel: Lnrpc_OpenStatusUpdate?
+  // skipped: channelAcceptor
   private let closeChannel: Lnrpc_CloseStatusUpdate?
   private let abandonChannel: Lnrpc_AbandonChannelResponse?
   // skipped: sendPayment
@@ -666,6 +671,7 @@ final class MockLightningConnection: LightningConnection {
     closedChannels: Lnrpc_ClosedChannelsResponse? = nil,
     openChannelSync: Lnrpc_ChannelPoint? = nil,
     openChannel: Lnrpc_OpenStatusUpdate? = nil,
+    // skipped: channelAcceptor
     closeChannel: Lnrpc_CloseStatusUpdate? = nil,
     abandonChannel: Lnrpc_AbandonChannelResponse? = nil,
     // skipped: sendPayment
@@ -717,6 +723,7 @@ final class MockLightningConnection: LightningConnection {
     self.closedChannels = closedChannels
     self.openChannelSync = openChannelSync
     self.openChannel = openChannel
+    // skipped: channelAcceptor
     self.closeChannel = closeChannel
     self.abandonChannel = abandonChannel
     // skipped: sendPayment
@@ -810,6 +817,7 @@ final class MockLightningConnection: LightningConnection {
   func openChannel(_ request: Lnrpc_OpenChannelRequest, completion: @escaping ApiCompletion<Lnrpc_OpenStatusUpdate>) {
     completion(Result(value: openChannel, error: LndApiError.unknownError))
   }
+  // skipped: channelAcceptor
   func closeChannel(_ request: Lnrpc_CloseChannelRequest, completion: @escaping ApiCompletion<Lnrpc_CloseStatusUpdate>) {
     completion(Result(value: closeChannel, error: LndApiError.unknownError))
   }

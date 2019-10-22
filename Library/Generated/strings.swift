@@ -68,14 +68,14 @@ internal enum L10n {
   internal enum Link {
     /// https://github.com/LN-Zap/zap-iOS/issues
     internal static let bugReport = L10n.tr("Localizable", "link.bug_report")
-    /// https://ln-zap.github.io/zap-tutorials/
+    /// https://docs.zaphq.io/
     internal static let help = L10n.tr("Localizable", "link.help")
     /// https://github.com/lightningnetwork/lnd/releases
     internal static let lndReleases = L10n.tr("Localizable", "link.lnd_releases")
     /// http://zap.jackmallers.com/privacy
     internal static let privacy = L10n.tr("Localizable", "link.privacy")
     internal enum Help {
-      /// https://ln-zap.github.io/zap-tutorials/iOS-remote-node-setup
+      /// https://docs.zaphq.io/docs-ios-remote-node-setup
       internal static let zapconnect = L10n.tr("Localizable", "link.help.zapconnect")
     }
   }
@@ -342,8 +342,16 @@ internal enum L10n {
       /// Manage Wallets
       internal static let title = L10n.tr("Localizable", "scene.manage_wallets.title")
       internal enum Cell {
+        /// local
+        internal static let local = L10n.tr("Localizable", "scene.manage_wallets.cell.local")
         /// remote
         internal static let remote = L10n.tr("Localizable", "scene.manage_wallets.cell.remote")
+      }
+      internal enum SectionTitle {
+        /// Local Wallet
+        internal static let local = L10n.tr("Localizable", "scene.manage_wallets.section_title.local")
+        /// Remote Wallets
+        internal static let remote = L10n.tr("Localizable", "scene.manage_wallets.section_title.remote")
       }
     }
     internal enum ModalPin {
@@ -364,25 +372,25 @@ internal enum L10n {
       internal enum Page1 {
         /// Continue
         internal static let buttonTitle = L10n.tr("Localizable", "scene.onboarding.page_1.button_title")
-        /// With Zap, you are in control of your funds. In order to secure your funds, we will provide you with a recovery phrase.
+        /// With Zap, you are in control of your money. To make sure your coins are always stored safely, Zap will provide a recovery phrase for you.
         internal static let message = L10n.tr("Localizable", "scene.onboarding.page_1.message")
-        /// Your **keys**, your **coins**.
+        /// Your **keys**, your **coins**
         internal static let title = L10n.tr("Localizable", "scene.onboarding.page_1.title")
       }
       internal enum Page2 {
         /// Continue
         internal static let buttonTitle = L10n.tr("Localizable", "scene.onboarding.page_2.button_title")
-        /// Make sure you write down your recovery phrase. Your recovery phrase can be used to recover your funds in the event of an emergency.
+        /// Write down your phrase. You can use your phrase to recover your funds anytime if you misplace your device.
         internal static let message = L10n.tr("Localizable", "scene.onboarding.page_2.message")
-        /// Write down your **recovery phrase**.
+        /// Save your **recovery phrase**
         internal static let title = L10n.tr("Localizable", "scene.onboarding.page_2.title")
       }
       internal enum Page3 {
         /// Generate Recovery Phrase
         internal static let buttonTitle = L10n.tr("Localizable", "scene.onboarding.page_3.button_title")
-        /// Your recovery phrase has all the information needed to access your wallet. Store your phrase in a private and secure place and do not share your phrase with anyone.
+        /// Make sure to keep your recovery phrase private. Store it somewhere only you will find it.
         internal static let message = L10n.tr("Localizable", "scene.onboarding.page_3.message")
-        /// Keep your recovery phrase **safe**.
+        /// Keep it **safe**
         internal static let title = L10n.tr("Localizable", "scene.onboarding.page_3.title")
       }
     }
@@ -429,9 +437,9 @@ internal enum L10n {
     internal enum PushNotification {
       /// Turn on notifications
       internal static let confirmButtonTitle = L10n.tr("Localizable", "scene.push_notification.confirm_button_title")
-      /// Turn on **notifications** to stay in touch.
+      /// Stay **up to date**
       internal static let headline = L10n.tr("Localizable", "scene.push_notification.headline")
-      /// We have your back. Zap will notify you when your wallet needs you.
+      /// To keep your funds safe, Zap needs to sync once in a while. Do you want to be notified when your wallet needs to sync?
       internal static let message = L10n.tr("Localizable", "scene.push_notification.message")
       /// Skip
       internal static let skipButtonTitle = L10n.tr("Localizable", "scene.push_notification.skip_button_title")
@@ -443,6 +451,14 @@ internal enum L10n {
     internal enum QrcodeScanner {
       /// Scan QR-Code
       internal static let topLabel = L10n.tr("Localizable", "scene.qrcode_scanner.top_label")
+      internal enum CameraAccessDeniedAlert {
+        /// Turn on camera access in the settings to scan the QR code.
+        internal static let message = L10n.tr("Localizable", "scene.qrcode_scanner.camera_access_denied_alert.message")
+        /// Settings
+        internal static let ok = L10n.tr("Localizable", "scene.qrcode_scanner.camera_access_denied_alert.ok")
+        /// Camera access denied
+        internal static let title = L10n.tr("Localizable", "scene.qrcode_scanner.camera_access_denied_alert.title")
+      }
       internal enum Error {
         /// Unknown address format.
         internal static let unknownFormat = L10n.tr("Localizable", "scene.qrcode_scanner.error.unknown_format")
@@ -584,6 +600,8 @@ internal enum L10n {
         internal static let currency = L10n.tr("Localizable", "scene.settings.item.currency")
         /// Need Help?
         internal static let help = L10n.tr("Localizable", "scene.settings.item.help")
+        /// Lightning Request Expiry
+        internal static let lightningRequestExpiry = L10n.tr("Localizable", "scene.settings.item.lightning_request_expiry")
         /// Show lnd Log
         internal static let lndLog = L10n.tr("Localizable", "scene.settings.item.lnd_log")
         /// Manage Channels
@@ -763,6 +781,28 @@ internal enum L10n {
       internal static let placeholder = L10n.tr("Localizable", "view.amount_input.placeholder")
     }
   }
+  
+  internal enum ExpiryTime {
+    /// 1 Minute
+    internal static let oneMinute = L10n.tr("Localizable", "expiry_time.one_minute")
+    /// 10 Minutes
+    internal static let tenMinutes = L10n.tr("Localizable", "expiry_time.ten_minutes")
+    /// 30 Minutes
+    internal static let thirtyMinutes = L10n.tr("Localizable", "expiry_time.thirty_minutes")
+    /// 1 Hour
+    internal static let oneHour = L10n.tr("Localizable", "expiry_time.one_hour")
+    /// 6 Hours
+    internal static let sixHours = L10n.tr("Localizable", "expiry_time.six_hours")
+    /// 1 Day
+    internal static let oneDay = L10n.tr("Localizable", "expiry_time.one_day")
+    /// 1 Week
+    internal static let oneWeek = L10n.tr("Localizable", "expiry_time.one_week")
+    /// 30 days
+    internal static let thirtyDays = L10n.tr("Localizable", "expiry_time.thirty_days")
+    /// 1 Year
+    internal static let oneYear = L10n.tr("Localizable", "expiry_time.one_year")
+  }
+    
 }
 // swiftlint:enable explicit_type_interface function_parameter_count identifier_name line_length
 // swiftlint:enable nesting type_body_length type_name

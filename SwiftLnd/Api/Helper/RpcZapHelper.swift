@@ -22,22 +22,28 @@ final class LndCallback<T: SwiftProtobuf.Message>: NSObject, LndmobileCallbackPr
         self.completion = completion
     }
 
-    func onError(_ error: Error) {
-        Logger.error(error)
-        let result: LndApiError
-        if error.localizedDescription == "Closed" {
-            result = .walletAlreadyUnlocked
+    func onError(_ error: Error?) {
+        if let error = error {
+            Logger.error(error)
+            let result: LndApiError
+            if error.localizedDescription == "Closed" {
+                result = .walletAlreadyUnlocked
+            } else {
+                result = LndApiError.localizedError(error.localizedDescription)
+            }
+            completion(.failure(result))
         } else {
-            result = LndApiError.localizedError(error.localizedDescription)
+            completion(.failure(.unknownError))
         }
-        completion(.failure(result))
     }
 
-    func onResponse(_ data: Data) {
-        if let result = try? T(serializedData: data) {
+    func onResponse(_ data: Data?) {
+        if let data = data,
+            let result = try? T(serializedData: data) {
             completion(.success(result))
         } else {
-            onError(LndApiError.unknownError)
+            let result = T()
+            completion(.success(result))
         }
     }
 }

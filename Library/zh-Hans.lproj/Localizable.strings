@@ -44,6 +44,16 @@
 
 "view.amount_input.placeholder" = "数量";
 
+"expiry_time.one_minute" = "1 Minute";
+"expiry_time.ten_minutes" = "10 Minutes";
+"expiry_time.thirty_minutes" = "30 Minutes";
+"expiry_time.one_hour" = "1 Hour";
+"expiry_time.six_hours" = "6 Hours";
+"expiry_time.one_day" = "1 Day";
+"expiry_time.one_week" = "1 Week";
+"expiry_time.thirty_days" = "30 Days";
+"expiry_time.one_year" = "1 Year";
+
 "scene.history.title" = "历史";
 "scene.history.empty_state_label" = "0个交易🙁";
 
@@ -53,6 +63,7 @@
 "scene.settings.section.wallet" = "钱包";
 "scene.settings.item.version_warning" = "你的LND版本太旧了(%@)。Zap iOS工作于LND版本 %@ 或以上。";
 "scene.settings.item.bitcoin_unit" = "比特币单位";
+"scene.settings.item.lightning_request_expiry" = "Lightning Request Expiry";
 "scene.settings.item.currency" = "货币";
 "scene.settings.item.currency.popular" = "热门货币";
 "scene.settings.item.block_explorer" = "区块浏览器";
@@ -229,6 +240,9 @@
 "scene.qrcode_scanner.error.unknown_format" = "Unknown address format.";
 "scene.qrcode_scanner.error.wrong_network" = "You tried opening an invoice for %@ but your node is connected to %@.";
 "scene.qrcode_scanner.error.zero_amount_invoice" = "For security reasons zap does not support invoices without a specified amount.";
+"scene.qrcode_scanner.camera_access_denied_alert.ok" = "Settings";
+"scene.qrcode_scanner.camera_access_denied_alert.title" = "Camera access denied";
+"scene.qrcode_scanner.camera_access_denied_alert.message" = "Turn on camera access in the settings to scan the QR code.";
 
 "scene.wallet.title" = "钱包";
 "scene.wallet.total_balance" = "总计余额";
@@ -277,6 +291,9 @@
 
 "scene.manage_wallets.title" = "管理钱包";
 "scene.manage_wallets.cell.remote" = "远端";
+"scene.manage_wallets.cell.local" = "local";
+"scene.manage_wallets.section_title.local" = "Local Wallet";
+"scene.manage_wallets.section_title.remote" = "Remote Wallets";
 
 "scene.channel_backup.title" = "备份通道";
 "scene.channel_backup.cell_title" = "%@ 通道.备份";
