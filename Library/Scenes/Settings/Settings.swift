@@ -27,6 +27,7 @@ public final class Settings: NSObject, Persistable {
         var cryptoCurrency: Bitcoin?
         var blockExplorer: BlockExplorer?
         var onChainRequestAddressType: OnChainRequestAddressType?
+        var lightningRequestExpiry: ExpiryTime?
     }
 
     public let primaryCurrency: Observable<Currency>
@@ -36,6 +37,7 @@ public final class Settings: NSObject, Persistable {
     let cryptoCurrency: Observable<Bitcoin>
     let blockExplorer: Observable<BlockExplorer>
     let onChainRequestAddressType: Observable<OnChainRequestAddressType>
+    let lightningRequestExpiry: Observable<ExpiryTime>
 
     public static let shared = Settings()
 
@@ -52,7 +54,8 @@ public final class Settings: NSObject, Persistable {
 
         blockExplorer = Observable(data?.blockExplorer ?? .blockstream)
         onChainRequestAddressType = Observable(data?.onChainRequestAddressType ?? .witnessPubkeyHash)
-
+        lightningRequestExpiry = Observable(data?.lightningRequestExpiry ?? .oneHour)
+        
         super.init()
 
         if data?.isFiatCurrencyPrimary == true {
@@ -87,6 +90,11 @@ public final class Settings: NSObject, Persistable {
             .skip(first: 1)
             .observeNext { [weak self] in
                 self?.data.onChainRequestAddressType = $0
+            },
+         lightningRequestExpiry
+            .skip(first: 1)
+            .observeNext { [weak self] in
+                self?.data.lightningRequestExpiry = $0
             }
         ].dispose(in: reactive.bag)
     }

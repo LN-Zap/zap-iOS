@@ -1,4 +1,5 @@
 disabled_rules:
+  - trailing_whitespace
   - line_length
   - nesting
 opt_in_rules:
@@ -10,7 +11,6 @@ opt_in_rules:
   - duplicate_imports
   - unused_setter_value
   - nsobject_prefer_isequal
-  - trailing_whitespace
   - no_fallthrough_only
   - closure_end_indentation
   - closure_spacing

@@ -44,6 +44,16 @@
 
 "view.amount_input.placeholder" = "Importo";
 
+"expiry_time.one_minute" = "1 Minute";
+"expiry_time.ten_minutes" = "10 Minutes";
+"expiry_time.thirty_minutes" = "30 Minutes";
+"expiry_time.one_hour" = "1 Hour";
+"expiry_time.six_hours" = "6 Hours";
+"expiry_time.one_day" = "1 Day";
+"expiry_time.one_week" = "1 Week";
+"expiry_time.thirty_days" = "30 Days";
+"expiry_time.one_year" = "1 Year";
+
 "scene.history.title" = "Cronologia Movimenti";
 "scene.history.empty_state_label" = "0 transazioni 🙁";
 
@@ -53,6 +63,7 @@
 "scene.settings.section.wallet" = "Portafoglio";
 "scene.settings.item.version_warning" = "La tua verione di Lnd è obsoleta (%@). Zap iOS è compatibile con Lnd versione %@ o superiore";
 "scene.settings.item.bitcoin_unit" = "Unità di Bitcoin";
+"scene.settings.item.lightning_request_expiry" = "Lightning Request Expiry";
 "scene.settings.item.currency" = "Valuta";
 "scene.settings.item.currency.popular" = "Principali valute";
 "scene.settings.item.block_explorer" = "Block Explorer";
@@ -229,6 +240,9 @@
 "scene.qrcode_scanner.error.unknown_format" = "Formato indirizzo sconosciuto.";
 "scene.qrcode_scanner.error.wrong_network" = "Si è provato ad aprire una ricevuta per %@ ma il nodo è connesso a %@.";
 "scene.qrcode_scanner.error.zero_amount_invoice" = "Per ragioni di sicurezza Zap non supporta ricevute di pagamento senza un importo specifico.";
+"scene.qrcode_scanner.camera_access_denied_alert.ok" = "Settings";
+"scene.qrcode_scanner.camera_access_denied_alert.title" = "Camera access denied";
+"scene.qrcode_scanner.camera_access_denied_alert.message" = "Turn on camera access in the settings to scan the QR code.";
 
 "scene.wallet.title" = "Portafoglio";
 "scene.wallet.total_balance" = "Saldo Totale";

@@ -35,6 +35,12 @@ final class RemoteNodeCertificatesScannerViewController: UIViewController {
         navigationBar.setBackgroundImage(UIImage(), for: .default)
     }
 
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        
+        scannerView.presentWarningIfAccessDenied(on: self)
+    }
+
     @IBAction private func cancel(_ sender: Any) {
         dismiss(animated: true, completion: nil)
     }

@@ -21,8 +21,8 @@ public final class TransactionService {
         self.paymentListUpdater = paymentListUpdater
     }
 
-    public func addInvoice(amount: Satoshi, memo: String?, completion: @escaping ApiCompletion<String>) {
-        api.addInvoice(amount: amount, memo: memo, completion: completion)
+    public func addInvoice(amount: Satoshi, memo: String?, expiry: ExpiryTime?, completion: @escaping ApiCompletion<String>) {
+        api.addInvoice(amount: amount, memo: memo, expiry: expiry, completion: completion)
     }
 
     public func newAddress(with type: OnChainRequestAddressType, completion: @escaping ApiCompletion<BitcoinAddress>) {
@@ -40,11 +40,9 @@ public final class TransactionService {
     /// for the correct amount.
     public typealias FeeApiCompletion = ((amount: Satoshi, fee: Satoshi?)) -> Void
 
-    public func upperBoundLightningFees(for paymentRequest: PaymentRequest, amount: Satoshi, completion: @escaping FeeApiCompletion) {
-        api.routes(destination: paymentRequest.destination, amount: amount) { result in
-            let totalFees = (try? result.get())?
-                .max(by: { $0.totalFees < $1.totalFees })?
-                .totalFees
+    public func lightningFees(for paymentRequest: PaymentRequest, amount: Satoshi, completion: @escaping FeeApiCompletion) {
+        api.route(destination: paymentRequest.destination, amount: amount) { result in
+            let totalFees = (try? result.get())?.totalFees
             completion((amount: amount, fee: totalFees))
         }
     }

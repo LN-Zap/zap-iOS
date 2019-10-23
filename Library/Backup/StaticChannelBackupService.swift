@@ -21,20 +21,23 @@ final class StaticChannelBackupService: StaticChannelBackupServiceType {
         case .success(let data):
             var errors = [StaticChannelBackupError]()
             var successfulServices = [String: Date]()
-
+            
             let dispatchGroup = DispatchGroup()
-
+            
             for backupService in backupServices {
                 dispatchGroup.enter()
-                backupService.save(data: data, nodePubKey: nodePubKey, fileName: fileName) {
-                    switch $0 {
-                    case .success:
-                        let serviceKey = type(of: backupService).key
-                        successfulServices[serviceKey] = Date()
-                    case .failure(let error):
-                        errors.append(error)
+                backupService.save(data: data, nodePubKey: nodePubKey, fileName: fileName) { result in
+                    // dictionaries are not thread safe. https://forums.developer.apple.com/thread/116028
+                    DispatchQueue.main.async {
+                        switch result {
+                        case .success:
+                            let serviceKey = type(of: backupService).key
+                            successfulServices[serviceKey] = Date()
+                        case .failure(let error):
+                            errors.append(error)
+                        }
+                        dispatchGroup.leave()
                     }
-                    dispatchGroup.leave()
                 }
             }
 
