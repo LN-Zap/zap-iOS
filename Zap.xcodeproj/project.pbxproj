@@ -274,7 +274,6 @@
 		ADA865BE20ECB88500B1B74B /* FilterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADA865BD20ECB88500B1B74B /* FilterViewController.swift */; };
 		ADA865C020ECC89E00B1B74B /* FilterTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADA865BF20ECC89E00B1B74B /* FilterTableViewCell.swift */; };
 		ADAA2D2C2289A75600819EAC /* RootFolderMigration.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADAA2D2B2289A75600819EAC /* RootFolderMigration.swift */; };
-		ADAA4045230E728B005E2215 /* rpc.rest.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADAA4044230E728B005E2215 /* rpc.rest.swift */; };
 		ADADA9522281C16E0036639F /* RpcZapHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADADA9512281C16E0036639F /* RpcZapHelper.swift */; };
 		ADADA9542282D32A0036639F /* BackupDisabler.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADADA9532282D32A0036639F /* BackupDisabler.swift */; };
 		ADADA95622830DD40036639F /* ICloudDriveBackupService.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADADA95522830DD40036639F /* ICloudDriveBackupService.swift */; };
@@ -819,7 +818,6 @@
 		ADA865BF20ECC89E00B1B74B /* FilterTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilterTableViewCell.swift; sourceTree = "<group>"; };
 		ADA865C120ED041F00B1B74B /* Storage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Storage.swift; sourceTree = "<group>"; };
 		ADAA2D2B2289A75600819EAC /* RootFolderMigration.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RootFolderMigration.swift; sourceTree = "<group>"; };
-		ADAA4044230E728B005E2215 /* rpc.rest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = rpc.rest.swift; sourceTree = "<group>"; };
 		ADAB0B5B2124860900914974 /* de */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = de; path = de.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		ADAB0B5C2124860900914974 /* de */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = de; path = de.lproj/Localizable.strings; sourceTree = "<group>"; };
 		ADAB0B5D2124860F00914974 /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/InfoPlist.strings"; sourceTree = "<group>"; };
@@ -2118,7 +2116,6 @@
 				AD9F3AE02271DE2D0044E5EB /* rpc.grpc.swift */,
 				AD5AA2E62271B64500AEDDD7 /* rpc.pb.swift */,
 				ADD08A0222787B8300480073 /* rpc.zap.swift */,
-				ADAA4044230E728B005E2215 /* rpc.rest.swift */,
 			);
 			path = Generated;
 			sourceTree = "<group>";
@@ -3347,7 +3344,6 @@
 				ADADAD982143B3C900A48E1F /* Protobuf+Extensions.swift in Sources */,
 				ADADAD882143B3C900A48E1F /* Channel.swift in Sources */,
 				AD3FF6E0221D68890017E376 /* ServiceClientBase+Extension.swift in Sources */,
-				ADAA4045230E728B005E2215 /* rpc.rest.swift in Sources */,
 				ADADAD932143B3C900A48E1F /* Success.swift in Sources */,
 				ADADAD8B2143B3C900A48E1F /* CloseStatusUpdate.swift in Sources */,
 				AD511B282253744800EDFC7C /* Version.swift in Sources */,
