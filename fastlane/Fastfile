@@ -198,6 +198,13 @@ end
 
 desc "Run all tests."
 lane :tests do
+  if is_ci?
+    carthage(
+      command: "bootstrap",
+      platform: "iOS",
+    )
+  end
+
   swiftlint()
   
   run_tests(
