@@ -97,7 +97,7 @@ public final class RootCoordinator: Coordinator, SetupCoordinatorDelegate {
 
     func presentWallet(connection: LightningConnection) throws {
         if case .remote(let credentials) = connection, credentials.host.isOnion {
-            OnionConnecter().start(progress: { _ in }, completion: { [weak self] result in
+            OnionConnecter().start(progress: nil, completion: { [weak self] result in
                 switch result {
                 case .success(let urlSessionConfiguration):
                     let api = LightningApi(connection: .tor(credentials, urlSessionConfiguration))
@@ -111,6 +111,7 @@ public final class RootCoordinator: Coordinator, SetupCoordinatorDelegate {
                         self?.presentWallet(lightningService: lightningService, connection: connection)
                     }
                 case .failure(let error):
+                    // TODO
                     fatalError("not implemented (yet)")
                 }
             })

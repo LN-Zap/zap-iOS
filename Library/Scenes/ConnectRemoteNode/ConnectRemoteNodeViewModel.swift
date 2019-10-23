@@ -95,7 +95,7 @@ final class ConnectRemoteNodeViewModel: NSObject {
         guard let rpcCredentials = rpcCredentials else { return }
 
         if rpcCredentials.host.isOnion && OnionManager.shared.state != .connected {
-            OnionConnecter().start(progress: { _ in }, completion: { [weak self] result in
+            OnionConnecter().start(progress: nil, completion: { [weak self] result in
                 switch result {
                 case .success(let urlSessionConfiguration):
                     self?.connectWithBootstrappedTor(testConnection: .tor(rpcCredentials, urlSessionConfiguration), completion: completion)

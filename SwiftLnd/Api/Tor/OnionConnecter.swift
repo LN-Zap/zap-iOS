@@ -18,7 +18,7 @@ public final class OnionConnecter {
 
     public init() {}
 
-    public func start(progress: @escaping (Int) -> Void, completion: @escaping (Result<URLSessionConfiguration, OnionError>) -> Void) {
+    public func start(progress: ((Int) -> Void)?, completion: @escaping (Result<URLSessionConfiguration, OnionError>) -> Void) {
         self.progress = progress
         self.completion = completion
         OnionManager.shared.startTor(delegate: self)
