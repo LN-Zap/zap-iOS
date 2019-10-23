@@ -357,6 +357,7 @@
 		ADF1BB3021997A820078BCC4 /* LndConnectURL.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADF1BB2F21997A820078BCC4 /* LndConnectURL.swift */; };
 		ADF1BB33219D7F260078BCC4 /* Macaroon.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADF1BB32219D7F260078BCC4 /* Macaroon.swift */; };
 		ADF232D42289A08100CB5053 /* Migrations.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADF232D32289A08100CB5053 /* Migrations.swift */; };
+		ADF4C3D2236095CF00C0E5B2 /* Lndmobile.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = ADF4C3D1236095CF00C0E5B2 /* Lndmobile.framework */; };
 		ADFA46982226947A007A4C49 /* LndConnectURLTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADFA46972226947A007A4C49 /* LndConnectURLTests.swift */; };
 		ADFAA01B228AED0D000AECA1 /* Sectigo RSA Domain Validation Secure Server CA 2.cer in Resources */ = {isa = PBXBuildFile; fileRef = ADFAA01A228AED0D000AECA1 /* Sectigo RSA Domain Validation Secure Server CA 2.cer */; };
 		ADFAA01D228C0F10000AECA1 /* FeeEstimate.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADFAA01C228C0F10000AECA1 /* FeeEstimate.swift */; };
@@ -680,7 +681,6 @@
 		AD2B8777221C413500308C1B /* Coordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Coordinator.swift; sourceTree = "<group>"; };
 		AD2B877C221C6F7800308C1B /* UnlockWalletViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UnlockWalletViewController.swift; sourceTree = "<group>"; };
 		AD2B877E221C6F8400308C1B /* UnlockWallet.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = UnlockWallet.storyboard; sourceTree = "<group>"; };
-		AD2D912821554D61001015B6 /* Lndmobile.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Lndmobile.framework; path = Frameworks/Lndmobile.framework; sourceTree = SOURCE_ROOT; };
 		AD2D912B21567D4C001015B6 /* EventDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventDetailViewController.swift; sourceTree = "<group>"; };
 		AD3553E4224E32EA00B99ABC /* ChannelListHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChannelListHeaderView.swift; sourceTree = "<group>"; };
 		AD3553E6224E6CD400B99ABC /* CircleGraphView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CircleGraphView.swift; sourceTree = "<group>"; };
@@ -980,6 +980,7 @@
 		ADF1BB31219D603A0078BCC4 /* docs */ = {isa = PBXFileReference; lastKnownFileType = folder; path = docs; sourceTree = "<group>"; };
 		ADF1BB32219D7F260078BCC4 /* Macaroon.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Macaroon.swift; sourceTree = "<group>"; };
 		ADF232D32289A08100CB5053 /* Migrations.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Migrations.swift; sourceTree = "<group>"; };
+		ADF4C3D1236095CF00C0E5B2 /* Lndmobile.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Lndmobile.framework; path = Carthage/Build/iOS/Lndmobile.framework; sourceTree = SOURCE_ROOT; };
 		ADF79363208DCB630086B2CA /* PinView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PinView.swift; sourceTree = "<group>"; };
 		ADF79365208E000C0086B2CA /* SetupPinViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetupPinViewController.swift; sourceTree = "<group>"; };
 		ADF79367208E09D00086B2CA /* SetupPinViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetupPinViewModel.swift; sourceTree = "<group>"; };
@@ -1081,6 +1082,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				AD196F17234C90C500A8CD25 /* Tor.framework in Frameworks */,
+				ADF4C3D2236095CF00C0E5B2 /* Lndmobile.framework in Frameworks */,
 				4295D217D276D875A94F4622 /* Pods_RPC_SwiftLnd.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1952,8 +1954,8 @@
 		ADADAD642143B2E700A48E1F /* SwiftLnd */ = {
 			isa = PBXGroup;
 			children = (
+				ADF4C3D1236095CF00C0E5B2 /* Lndmobile.framework */,
 				AD196F15234C90C400A8CD25 /* Tor.framework */,
-				AD2D912821554D61001015B6 /* Lndmobile.framework */,
 				ADADAD652143B2E700A48E1F /* SwiftLnd.h */,
 				ADC08D8A21DBBB16000E730E /* README.md */,
 				ADADAD662143B2E700A48E1F /* Info.plist */,
@@ -3637,6 +3639,7 @@
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_BITCODE = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				ENABLE_TESTABILITY = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu11;
@@ -3716,6 +3719,7 @@
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_BITCODE = NO;
 				ENABLE_NS_ASSERTIONS = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu11;
@@ -3758,10 +3762,8 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = CS73H95RB8;
-				ENABLE_BITCODE = NO;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
-					"$(PROJECT_DIR)/Frameworks",
 					"$(PROJECT_DIR)/Carthage/Build/iOS",
 				);
 				GCC_PREPROCESSOR_DEFINITIONS = (
@@ -3773,10 +3775,6 @@
 				);
 				INFOPLIST_FILE = Zap/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 11.2;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.jackmallers.zap;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
@@ -3798,10 +3796,8 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = CS73H95RB8;
-				ENABLE_BITCODE = NO;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
-					"$(PROJECT_DIR)/Frameworks",
 					"$(PROJECT_DIR)/Carthage/Build/iOS",
 				);
 				GCC_PREPROCESSOR_DEFINITIONS = (
@@ -3813,10 +3809,6 @@
 				);
 				INFOPLIST_FILE = Zap/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 11.2;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.jackmallers.zap;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
@@ -3929,11 +3921,7 @@
 					"@executable_path/Frameworks",
 					"@loader_path/Frameworks",
 				);
-				OTHER_LDFLAGS = (
-					"$(inherited)",
-					"-weak_framework",
-					"\"Lndmobile\"",
-				);
+				OTHER_LDFLAGS = "$(inherited)";
 				PRODUCT_BUNDLE_IDENTIFIER = com.jackmallers.ZapLightning;
 				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
 				SKIP_INSTALL = YES;
@@ -4143,6 +4131,7 @@
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_BITCODE = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				ENABLE_TESTABILITY = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu11;
@@ -4191,10 +4180,8 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = CS73H95RB8;
-				ENABLE_BITCODE = NO;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
-					"$(PROJECT_DIR)/Frameworks",
 					"$(PROJECT_DIR)/Carthage/Build/iOS",
 				);
 				GCC_PREPROCESSOR_DEFINITIONS = (
@@ -4206,10 +4193,6 @@
 				);
 				INFOPLIST_FILE = Zap/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 11.2;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.jackmallers.zap;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
@@ -4370,11 +4353,7 @@
 					"@executable_path/Frameworks",
 					"@loader_path/Frameworks",
 				);
-				OTHER_LDFLAGS = (
-					"$(inherited)",
-					"-weak_framework",
-					"\"Lndmobile\"",
-				);
+				OTHER_LDFLAGS = "$(inherited)";
 				PRODUCT_BUNDLE_IDENTIFIER = com.jackmallers.SwiftLnd;
 				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
 				SKIP_INSTALL = YES;
