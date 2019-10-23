@@ -167,11 +167,13 @@ final class WalletViewController: UIViewController {
         requestButtonTapped()
     }
 
-    @IBAction private func presentHistory(_ sender: Any) {
+    @IBAction private func presentHistory(_ sender: UIButton) {
+        sender.isEnabled = false
         historyButtonTapped()
     }
 
-    @IBAction private func presentSettings(_ sender: Any) {
+    @IBAction private func presentSettings(_ sender: UIButton) {
+        sender.isEnabled = false
         settingsButtonTapped()
     }
 
