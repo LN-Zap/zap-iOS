@@ -20,3 +20,7 @@ find Frameworks/Lndmobile.framework -type f \( ! -iname ".*" \) -print0 | sort -
 curl -L https://github.com/LN-Zap/Lndmobile.framework/releases/download/$VERSION/swift-generated.zip --output swift-generated.zip
 unzip -o swift-generated.zip -d SwiftLnd/Generated
 rm swift-generated.zip
+
+# build carthage dependencies
+carthage update --platform iOS
+
