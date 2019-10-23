@@ -64,14 +64,6 @@ final class LNDRest: NSObject, URLSessionDelegate {
     }
 
     func urlSession(_ session: URLSession, didReceive challenge: URLAuthenticationChallenge, completionHandler: @escaping (URLSession.AuthChallengeDisposition, URLCredential?) -> Void) {
-
-        // don't check tls certificate
-        if challenge.protectionSpace.authenticationMethod == NSURLAuthenticationMethodServerTrust {
-            let credential = URLCredential(trust: challenge.protectionSpace.serverTrust!)
-            completionHandler(URLSession.AuthChallengeDisposition.useCredential, credential)
-        }
-
-        /*
         guard let trust = challenge.protectionSpace.serverTrust else { return }
         let credential = URLCredential(trust: trust)
 
@@ -96,6 +88,5 @@ final class LNDRest: NSObject, URLSessionDelegate {
         } else {
             completionHandler(.useCredential, credential)
         }
-         */
     }
 }
