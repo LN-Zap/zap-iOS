@@ -126,7 +126,6 @@ public final class RootCoordinator: Coordinator, SetupCoordinatorDelegate {
         let walletCoordinator = WalletCoordinator(rootViewController: rootViewController, lightningService: lightningService, disconnectWalletDelegate: self, authenticationViewModel: authenticationViewModel, walletConfigurationStore: walletConfigurationStore)
         self.currentCoordinator = walletCoordinator
         walletCoordinator.start()
-
     }
 
     private func presentSetup(walletConfigurationStore: WalletConfigurationStore, rpcCredentials: RPCCredentials?) {
