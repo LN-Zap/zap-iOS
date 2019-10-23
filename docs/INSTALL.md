@@ -5,7 +5,8 @@
 Xcode 11.1 or above is required to run the app.
 
 #### First Step
-Run `./setup.sh` to download the required frameworks.
+1. Run `git submodule update --init --recursive` to download git submodules.
+2. Run `carthage bootstrap --platform iOS` to download the required frameworks.
 
 #### Helpful Tools and Next Steps
 
