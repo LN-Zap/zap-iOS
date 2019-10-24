@@ -32,6 +32,13 @@ extension OnionConnecter: OnionManagerDelegate {
     }
 
     func torConnFinished(configuration: URLSessionConfiguration) {
+        // TODO: this is a fix for Tor 400.5.2. Can be removed once there is a
+        // new release on github.
+        configuration.connectionProxyDictionary = [
+            kCFProxyTypeKey: kCFProxyTypeSOCKS,
+            kCFStreamPropertySOCKSProxyHost: "localhost",
+            kCFStreamPropertySOCKSProxyPort: 39050
+        ]
         completion?(.success(configuration))
     }
 
