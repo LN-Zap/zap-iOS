@@ -16,7 +16,8 @@ public enum LndApiError: Error, LocalizedError, Equatable {
     case localizedError(String)
     case unknownError
     case walletAlreadyUnlocked
-
+    case transactionDust
+    
     public init(callResult: CallResult) {
         switch callResult.statusCode {
 
@@ -43,6 +44,8 @@ public enum LndApiError: Error, LocalizedError, Equatable {
             return "Wallet is encrypted."
         case .lndNotRunning:
             return "Lnd does not seem to be running properly."
+        case .transactionDust:
+            return "Transaction amount too small."
         case .invalidInput, .unknownError, .walletAlreadyUnlocked:
             return nil
         }

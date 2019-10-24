@@ -52,8 +52,8 @@ final class SendViewModel: NSObject {
 
     let method: SendMethod
 
-    let subtitleText = Observable<String?>(nil)
-    let isSubtitleTextWarning = Observable(false)
+    let subtitleText = Observable<String?>(L10n.Scene.Send.sendAmountTooSmall)
+    let isSubtitleTextWarning = Observable(true)
 
     var amount: Satoshi? {
         didSet {
@@ -66,6 +66,12 @@ final class SendViewModel: NSObject {
     var confirmationTarget: Int = 0 {
         didSet {
             updateFee()
+        }
+    }
+    
+    var isTransactionDust = true {
+        didSet {
+            updateIsUIEnabled()
         }
     }
 
@@ -118,7 +124,6 @@ final class SendViewModel: NSObject {
 
         updateFee()
         updateIsUIEnabled()
-        updateSubtitle()
     }
 
     private func updateSubtitle() {
@@ -139,9 +144,9 @@ final class SendViewModel: NSObject {
     }
 
     private func updateIsUIEnabled() {
-        isSendButtonEnabled.value = isAmountValid && !isSending
+        isSendButtonEnabled.value = isAmountValid && !isSending && !isTransactionDust
         isInputViewEnabled.value = !isSending
-        isSubtitleTextWarning.value = amount ?? 0 > maxPaymentAmount
+        isSubtitleTextWarning.value = amount ?? 0 > maxPaymentAmount || isTransactionDust
     }
 
     private var isAmountValid: Bool {
@@ -170,12 +175,19 @@ final class SendViewModel: NSObject {
                     result.amount == self.amount
                     else { return }
                 
+                self.isTransactionDust = false
                 self.fee.value = .element(result.fee)
+                self.updateSubtitle()
                 self.updateIsUIEnabled()
             case .failure(let lndApiError):
                 guard
                     let self = self
                     else { return }
+                
+                if lndApiError == LndApiError.transactionDust {
+                    self.isTransactionDust = true
+                    self.subtitleText.value = L10n.Scene.Send.sendAmountTooSmall
+                }
                 
                 self.fee.value = .error(lndApiError)
                 self.updateIsUIEnabled()

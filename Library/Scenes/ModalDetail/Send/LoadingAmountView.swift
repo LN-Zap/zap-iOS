@@ -85,11 +85,11 @@ final class LoadingAmountView: UIView {
         case .error(let lndApiError):
             activityIndicator.isHidden = true
             amountLabel.isHidden = false
-            let dustErrorString = "rpc error: code = Unknown desc = transaction output is dust"
             
-            if lndApiError.localizedDescription == dustErrorString {
-                amountLabel.text = L10n.Scene.Send.sendAmountTooSmall
-            } else {
+            switch lndApiError {
+            case .transactionDust:
+                amountLabel.text = L10n.Scene.Send.sendAmountTooSmallForEstimate
+            default:
                 amountLabel.text = "-"
             }
         }
