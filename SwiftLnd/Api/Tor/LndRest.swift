@@ -47,14 +47,14 @@ final class LNDRest: NSObject, URLSessionDelegate {
 
         let task = session.dataTask(with: request) { data, _, error in
             if let error = error {
-                Logger.error(error.localizedDescription)
+                Logger.error("\(error.localizedDescription) - \(url)")
                 completion(.failure(.localizedError(error.localizedDescription)))
             } else {
                 if let data = data {
                     if let result = try? T(jsonUTF8Data: data) {
                         completion(.success(result))
                     } else if let string = String(data: data, encoding: .utf8) {
-                        Logger.error(string)
+                        Logger.error("\(string) - \(url)")
                         completion(.failure(.localizedError(string)))
                     }
                 }
