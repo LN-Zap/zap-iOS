@@ -48,7 +48,7 @@ final class SendViewModel: NSObject {
         }
     }
 
-    let fee = Observable<Loadable<Satoshi?>>(.loading)
+    let fee = Observable<Loadable<Satoshi?, LndApiError>>(.loading)
 
     let method: SendMethod
 
@@ -162,14 +162,24 @@ final class SendViewModel: NSObject {
     private func fetchFee() {
         guard let amount = amount else { return }
 
-        let feeCompletion = { [weak self] (result: (amount: Satoshi, fee: Satoshi?)) -> Void in
-            guard
-                let self = self,
-                result.amount == self.amount
-                else { return }
-
-            self.fee.value = .element(result.fee)
-            self.updateIsUIEnabled()
+        let feeCompletion = { [weak self] (result: Result<(amount: Satoshi, fee: Satoshi?), LndApiError>) -> Void in
+            switch result {
+            case .success(let result):
+                guard
+                    let self = self,
+                    result.amount == self.amount
+                    else { return }
+                
+                self.fee.value = .element(result.fee)
+                self.updateIsUIEnabled()
+            case .failure(let lndApiError):
+                guard
+                    let self = self
+                    else { return }
+                
+                self.fee.value = .error(lndApiError)
+                self.updateIsUIEnabled()
+            }
         }
 
         switch method {

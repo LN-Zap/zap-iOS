@@ -9,10 +9,12 @@ import Bond
 import Foundation
 import ReactiveKit
 import SwiftBTC
+import SwiftLnd
 
-enum Loadable<E> {
+enum Loadable<T, E> {
     case loading
-    case element(E)
+    case element(T)
+    case error(E)
 }
 
 final class LoadingAmountView: UIView {
@@ -29,7 +31,7 @@ final class LoadingAmountView: UIView {
         }
     }
 
-    init(loadable: Observable<Loadable<Satoshi?>>) {
+    init(loadable: Observable<Loadable<Satoshi?, LndApiError>>) {
         amountLabel = UILabel(frame: CGRect.zero)
         activityIndicator = UIActivityIndicatorView(style: .white)
 
@@ -63,7 +65,7 @@ final class LoadingAmountView: UIView {
         fatalError("init(coder:) has not been implemented")
     }
 
-    private func updateLoadable(_ loadable: Loadable<Satoshi?>) {
+    private func updateLoadable(_ loadable: Loadable<Satoshi?, LndApiError>) {
         switch loadable {
         case .loading:
             activityIndicator.isHidden = false
@@ -80,8 +82,16 @@ final class LoadingAmountView: UIView {
             } else {
                 amountLabel.text = "-"
             }
-
+        case .error(let lndApiError):
+            activityIndicator.isHidden = true
+            amountLabel.isHidden = false
+            let dustErrorString = "rpc error: code = Unknown desc = transaction output is dust"
+            
+            if lndApiError.localizedDescription == dustErrorString {
+                amountLabel.text = L10n.Scene.Send.sendAmountTooSmall
+            } else {
+                amountLabel.text = "-"
+            }
         }
-
     }
 }
