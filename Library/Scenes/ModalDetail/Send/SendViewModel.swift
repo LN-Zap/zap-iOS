@@ -53,13 +53,14 @@ final class SendViewModel: NSObject {
     let method: SendMethod
 
     let subtitleText = Observable<String?>(L10n.Scene.Send.sendAmountTooSmall)
-    let isSubtitleTextWarning = Observable(true)
+    let isSubtitleTextWarning = Observable(false)
 
     var amount: Satoshi? {
         didSet {
             guard oldValue != amount else { return }
             updateFee()
             updateIsUIEnabled()
+            updateSubtitle()
         }
     }
 
@@ -69,9 +70,10 @@ final class SendViewModel: NSObject {
         }
     }
     
-    var isTransactionDust = true {
+    var isTransactionDust = false {
         didSet {
             updateIsUIEnabled()
+            updateSubtitle()
         }
     }
 
@@ -124,29 +126,34 @@ final class SendViewModel: NSObject {
 
         updateFee()
         updateIsUIEnabled()
+        updateSubtitle()
     }
 
     private func updateSubtitle() {
-        Settings.shared.primaryCurrency
-            .compactMap { [method, maxPaymentAmount] in
-                guard let amount = $0.format(satoshis: maxPaymentAmount) else { return nil }
-                switch method {
-                case .lightning:
-                    return L10n.Scene.Send.Subtitle.lightningCanSendBalance(amount)
-                case .onChain:
-                    return L10n.Scene.Send.Subtitle.onChainBalance(amount)
+        if isTransactionDust && amount ?? 0 > 0 {
+            self.subtitleText.value = L10n.Scene.Send.sendAmountTooSmall
+        } else {
+            Settings.shared.primaryCurrency
+                .compactMap { [method, maxPaymentAmount] in
+                    guard let amount = $0.format(satoshis: maxPaymentAmount) else { return nil }
+                    switch method {
+                    case .lightning:
+                        return L10n.Scene.Send.Subtitle.lightningCanSendBalance(amount)
+                    case .onChain:
+                        return L10n.Scene.Send.Subtitle.onChainBalance(amount)
+                    }
                 }
-            }
-            .observeNext { [subtitleText] in
-                subtitleText.value = $0
-            }
-            .dispose(in: reactive.bag)
+                .observeNext { [subtitleText] in
+                    subtitleText.value = $0
+                }
+                .dispose(in: reactive.bag)
+        }
     }
 
     private func updateIsUIEnabled() {
         isSendButtonEnabled.value = isAmountValid && !isSending && !isTransactionDust
         isInputViewEnabled.value = !isSending
-        isSubtitleTextWarning.value = amount ?? 0 > maxPaymentAmount || isTransactionDust
+        isSubtitleTextWarning.value = amount ?? 0 > maxPaymentAmount || (isTransactionDust && amount ?? 0 > 0)
     }
 
     private var isAmountValid: Bool {
@@ -177,8 +184,6 @@ final class SendViewModel: NSObject {
                 
                 self.isTransactionDust = false
                 self.fee.value = .element(result.fee)
-                self.updateSubtitle()
-                self.updateIsUIEnabled()
             case .failure(let lndApiError):
                 guard
                     let self = self
@@ -186,7 +191,6 @@ final class SendViewModel: NSObject {
                 
                 if lndApiError == LndApiError.transactionDust {
                     self.isTransactionDust = true
-                    self.subtitleText.value = L10n.Scene.Send.sendAmountTooSmall
                 }
                 
                 self.fee.value = .error(lndApiError)
