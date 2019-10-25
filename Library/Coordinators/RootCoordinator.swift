@@ -97,7 +97,10 @@ public final class RootCoordinator: Coordinator, SetupCoordinatorDelegate {
 
     func presentWallet(connection: LightningConnection) throws {
         if case .remote(let credentials) = connection, credentials.host.isOnion {
-            OnionConnecter().start(progress: nil, completion: { [weak self] result in
+            
+            let updateProgress = presentTorConnect()
+            
+            OnionConnecter().start(progress: updateProgress, completion: { [weak self] result in
                 switch result {
                 case .success(let urlSessionConfiguration):
                     let api = LightningApi(connection: .tor(credentials, urlSessionConfiguration))
@@ -119,6 +122,12 @@ public final class RootCoordinator: Coordinator, SetupCoordinatorDelegate {
             let lightningService = try LightningService(connection: connection, backupService: StaticChannelBackupService())
             presentWallet(lightningService: lightningService, connection: connection)
         }
+    }
+    
+    private func presentTorConnect() -> ((Int) -> Void) {
+        let viewController = TorConnectViewController.instantiate()        
+        rootViewController.setContainerContent(viewController)
+        return viewController.update
     }
 
     private func presentWallet(lightningService: LightningService, connection: LightningConnection) {
