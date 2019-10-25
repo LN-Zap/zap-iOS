@@ -187,27 +187,20 @@ final class SendViewModel: NSObject {
         guard let amount = amount else { return }
 
         let feeCompletion = { [weak self] (result: Result<(amount: Satoshi, fee: Satoshi?), LndApiError>) -> Void in
+            guard
+                let self = self
+                else { return }
             switch result {
             case .success(let result):
                 guard
-                    let self = self,
                     result.amount == self.amount
                     else { return }
                 
                 self.isTransactionDust = false
                 self.fee.value = .element(result.fee)
             case .failure(let lndApiError):
-                guard
-                    let self = self
-                    else { return }
-                
-                if lndApiError == LndApiError.transactionDust {
-                    self.isTransactionDust = true
-                } else {
-                    self.isTransactionDust = false
-                }
-                
-                self.fee.value = .error(lndApiError)
+                self.isTransactionDust = lndApiError == .transactionDust
+                self.fee.value = amount > 0 ? .error(lndApiError) : .element(nil)
                 self.updateIsUIEnabled()
             }
         }

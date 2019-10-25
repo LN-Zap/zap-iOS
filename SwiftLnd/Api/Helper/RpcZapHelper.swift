@@ -29,9 +29,9 @@ final class LndCallback<T: SwiftProtobuf.Message>: NSObject, LndmobileCallbackPr
             if error.localizedDescription == "Closed" {
                 result = .walletAlreadyUnlocked
             } else if error.localizedDescription == "rpc error: code = Unknown desc = transaction output is dust" {
-                result = LndApiError.transactionDust
+                result = .transactionDust
             } else {
-                result = LndApiError.localizedError(error.localizedDescription)
+                result = .localizedError(error.localizedDescription)
             }
             completion(.failure(result))
         } else {
