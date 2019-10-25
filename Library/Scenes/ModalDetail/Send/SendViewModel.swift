@@ -59,8 +59,8 @@ final class SendViewModel: NSObject {
         didSet {
             guard oldValue != amount else { return }
             updateFee()
-            updateIsUIEnabled()
             updateSubtitle()
+            updateIsUIEnabled()
         }
     }
 
@@ -126,27 +126,40 @@ final class SendViewModel: NSObject {
 
         updateFee()
         updateIsUIEnabled()
-        updateSubtitle()
+        setupPrimaryCurrencyListener()
     }
 
+    private func setupPrimaryCurrencyListener() {
+        Settings.shared.primaryCurrency
+            .compactMap { [method, maxPaymentAmount] in
+                guard let amount = $0.format(satoshis: maxPaymentAmount) else { return nil }
+                switch method {
+                case .lightning:
+                    return L10n.Scene.Send.Subtitle.lightningCanSendBalance(amount)
+                case .onChain:
+                    return L10n.Scene.Send.Subtitle.onChainBalance(amount)
+                }
+            }
+            .observeNext { [subtitleText] in
+                subtitleText.value = $0
+            }
+            .dispose(in: reactive.bag)
+    }
+    
     private func updateSubtitle() {
         if isTransactionDust && amount ?? 0 > 0 {
             self.subtitleText.value = L10n.Scene.Send.sendAmountTooSmall
         } else {
-            Settings.shared.primaryCurrency
-                .compactMap { [method, maxPaymentAmount] in
-                    guard let amount = $0.format(satoshis: maxPaymentAmount) else { return nil }
-                    switch method {
-                    case .lightning:
-                        return L10n.Scene.Send.Subtitle.lightningCanSendBalance(amount)
-                    case .onChain:
-                        return L10n.Scene.Send.Subtitle.onChainBalance(amount)
-                    }
-                }
-                .observeNext { [subtitleText] in
-                    subtitleText.value = $0
-                }
-                .dispose(in: reactive.bag)
+            guard let amount = Settings.shared.primaryCurrency.value.format(satoshis: maxPaymentAmount) else {
+                return
+            }
+            
+            switch method {
+            case .lightning:
+                self.subtitleText.value = L10n.Scene.Send.Subtitle.lightningCanSendBalance(amount)
+            case .onChain:
+                self.subtitleText.value = L10n.Scene.Send.Subtitle.onChainBalance(amount)
+            }
         }
     }
 
@@ -164,7 +177,6 @@ final class SendViewModel: NSObject {
     private func updateFee() {
         if isAmountValid {
             fee.value = .loading
-            updateIsUIEnabled()
             debounceFetchFee()
         } else {
             fee.value = .element(nil)
@@ -191,6 +203,8 @@ final class SendViewModel: NSObject {
                 
                 if lndApiError == LndApiError.transactionDust {
                     self.isTransactionDust = true
+                } else {
+                    self.isTransactionDust = false
                 }
                 
                 self.fee.value = .error(lndApiError)
