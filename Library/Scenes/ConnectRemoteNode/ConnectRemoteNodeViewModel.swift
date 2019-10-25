@@ -68,7 +68,7 @@ final class ConnectRemoteNodeViewModel: NSObject {
 
         if let certificateDescription = qrCode.certificate?
             .replacingOccurrences(of: "-----BEGIN CERTIFICATE-----", with: "")
-            .trimmingCharacters(in: .whitespacesAndNewlines) {
+            .trimAllWhitespacesAndNewlines() {
             items.insert(.certificate(certificateDescription), at: 0)
         } else {
             items.insert(.certificate(qrCode.macaroon.hexadecimalString), at: 0)

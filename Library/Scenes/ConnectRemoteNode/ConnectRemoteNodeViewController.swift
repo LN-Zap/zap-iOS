@@ -181,7 +181,7 @@ final class ConnectRemoteNodeViewController: UIViewController {
     }
 
     private func paste() {
-        if let pasteboardContent = UIPasteboard.general.string?.removeAllWhitespacesAndNewlines() {
+        if let pasteboardContent = UIPasteboard.general.string {
             connectRemoteNodeViewModel?.pasteCertificates(pasteboardContent) { result in
                 switch result {
                 case .success:

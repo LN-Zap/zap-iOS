@@ -87,7 +87,7 @@ final class ChannelBackupViewController: UIViewController {
         if !errors.isEmpty {
             let errorMessage = errors.reduce("") {
                 $0 + "\($1.localizedDescription)\n"
-            }.trimmingCharacters(in: .whitespacesAndNewlines)
+            }.trimAllWhitespacesAndNewlines()
             errorMessageLabel.text = errorMessage
             errorBackgroundView.isHidden = false
         } else {

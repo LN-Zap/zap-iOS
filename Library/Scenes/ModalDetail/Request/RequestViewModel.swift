@@ -30,7 +30,7 @@ public final class RequestViewModel {
     }
 
     public var trimmedMemo: String? {
-        return memo?.trimmingCharacters(in: .whitespacesAndNewlines)
+        return memo?.trimAllWhitespacesAndNewlines()
     }
 
     init(lightningService: LightningService) {

@@ -109,7 +109,7 @@ class QRCodeScannerViewController: UIViewController {
     }
 
     @objc private func pasteButtonTapped(_ sender: Any) {
-        if let pasteboardContent = UIPasteboard.general.string?.removeAllWhitespacesAndNewlines() {
+        if let pasteboardContent = UIPasteboard.general.string?.trimAllWhitespacesAndNewlines() {
             pasteButton.isEnabled = false
             tryPresentingViewController(for: pasteboardContent)
         } else {

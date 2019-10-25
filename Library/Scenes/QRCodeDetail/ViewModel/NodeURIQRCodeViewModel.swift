@@ -25,7 +25,7 @@ final class NodeURIQRCodeViewModel: QRCodeDetailViewModel {
         let tableLabelSpacing: CGFloat = 0
         var detailConfiguration = [StackViewElement]()
 
-        if !info.alias.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty {
+        if !info.alias.trimAllWhitespacesAndNewlines().isEmpty {
             detailConfiguration.append(contentsOf: [
                 .verticalStackView(content: [
                     .label(text: L10n.Scene.NodeUri.aliasLabel + ":", style: tableFontStyle),
