@@ -14,4 +14,8 @@ extension String {
         }
         return false
     }
+    
+    func removeAllWhitespacesAndNewlines() -> Self {
+        return self.filter({ !$0.isNewline && !$0.isWhitespace })
+    }
 }
