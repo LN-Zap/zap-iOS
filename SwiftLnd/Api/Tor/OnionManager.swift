@@ -273,16 +273,6 @@ public class OnionManager: NSObject {
         self.state = .stopped
     }
 
-    private func bridgeLinesToArgs(_ bridgeLines: [String]) -> [String] {
-        var bridges: [String] = []
-        for (_, element) in bridgeLines.enumerated() {
-            bridges.append("--bridge")
-            bridges.append(element)
-        }
-
-        return bridges
-    }
-
     /**
      Cancel the connection retry
      */
