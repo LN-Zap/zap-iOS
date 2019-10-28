@@ -85,19 +85,17 @@ public final class RootCoordinator: Coordinator, SetupCoordinatorDelegate {
         if !PinStore.didSetupPin {
             presentPinSetup()
         } else if let selectedWallet = walletConfigurationStore.selectedWallet {
-            do {
-                try presentWallet(connection: selectedWallet.connection)
-            } catch {
-                presentSetup(walletConfigurationStore: walletConfigurationStore, rpcCredentials: nil)
+            presentWallet(connection: selectedWallet.connection) { [weak self, walletConfigurationStore] result in
+                guard case .failure = result else { return }
+                self?.presentSetup(walletConfigurationStore: walletConfigurationStore, rpcCredentials: nil)
             }
         } else {
             presentSetup(walletConfigurationStore: walletConfigurationStore, rpcCredentials: nil)
         }
     }
 
-    func presentWallet(connection: LightningConnection) throws {
+    func presentWallet(connection: LightningConnection, completion: @escaping (Result<Success, Error>) -> Void) {
         if case .remote(let credentials) = connection, credentials.host.isOnion {
-            
             let updateProgress = presentTorConnect()
             
             OnionConnecter().start(progress: updateProgress, completion: { [weak self] result in
@@ -112,15 +110,20 @@ public final class RootCoordinator: Coordinator, SetupCoordinatorDelegate {
 
                     DispatchQueue.main.async {
                         self?.presentWallet(lightningService: lightningService, connection: connection)
+                        completion(.success(Success()))
                     }
                 case .failure(let error):
-                    // TODO
-                    fatalError("not implemented (yet)")
+                    completion(.failure(error))
                 }
             })
         } else {
-            let lightningService = try LightningService(connection: connection, backupService: StaticChannelBackupService())
-            presentWallet(lightningService: lightningService, connection: connection)
+            do {
+                let lightningService = try LightningService(connection: connection, backupService: StaticChannelBackupService())
+                presentWallet(lightningService: lightningService, connection: connection)
+                completion(.success(Success()))
+            } catch {
+                completion(.failure(error))
+            }
         }
     }
     
