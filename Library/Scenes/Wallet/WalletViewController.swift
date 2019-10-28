@@ -22,7 +22,8 @@ final class WalletViewController: UIViewController {
 
     // header
     @IBOutlet private weak var syncView: SyncView!
-
+    @IBOutlet private weak var notificationView: NotificationView!
+    
     // send / receive buttons
     @IBOutlet private weak var bottomCurtain: UIView!
     @IBOutlet private weak var buttonContainerView: UIView!
@@ -43,6 +44,7 @@ final class WalletViewController: UIViewController {
     private var requestButtonTapped: (() -> Void)!
     private var historyButtonTapped: (() -> Void)!
     private var nodeButtonTapped: (() -> Void)!
+    private var channelButtonTapped: (() -> Void)!
     private var emptyStateViewModel: WalletEmptyStateViewModel!
     // swiftlint:enable implicitly_unwrapped_optional
 
@@ -59,6 +61,7 @@ final class WalletViewController: UIViewController {
         requestButtonTapped: @escaping () -> Void,
         historyButtonTapped: @escaping () -> Void,
         nodeButtonTapped: @escaping () -> Void,
+        channelButtonTapped: @escaping () -> Void,
         emptyStateViewModel: WalletEmptyStateViewModel
     ) -> WalletViewController {
         let walletViewController = StoryboardScene.Wallet.walletViewController.instantiate()
@@ -69,6 +72,7 @@ final class WalletViewController: UIViewController {
         walletViewController.emptyStateViewModel = emptyStateViewModel
         walletViewController.historyButtonTapped = historyButtonTapped
         walletViewController.nodeButtonTapped = nodeButtonTapped
+        walletViewController.channelButtonTapped = channelButtonTapped
 
         return walletViewController
     }
@@ -115,11 +119,29 @@ final class WalletViewController: UIViewController {
 
         syncView.syncViewModel = walletViewModel.syncViewModel
         syncView.isHidden = true
+        
+        setupChannelNotification()
     }
 
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
         updateDetailPosition()
+    }
+    
+    private func setupChannelNotification() {
+        notificationView.notificationViewModel = NotificationViewModel(title: L10n.Scene.Channels.EmptyState.title, message: L10n.Scene.Channels.EmptyState.message) { [weak self] in
+            self?.walletViewModel.didDismissChannelEmptyState.value = true
+            self?.channelButtonTapped()
+        }
+        
+        walletViewModel.shouldHideChannelEmptyState
+            .observeNext { [weak self] isHidden in
+                UIView.animate(withDuration: 0.3) {
+                    self?.notificationView.isHidden = isHidden
+                    self?.notificationView.alpha = isHidden  ? 0 : 1
+                }
+            }
+        .dispose(in: reactive.bag)
     }
 
     private func setupEmtpyState() {

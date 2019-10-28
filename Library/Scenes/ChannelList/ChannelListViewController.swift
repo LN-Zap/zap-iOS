@@ -74,6 +74,14 @@ final class ChannelListViewController: UIViewController {
         headerView.setup(for: channelListViewModel)
 
         setupEmtpyState()
+        
+        if presentingViewController != nil { // if modal, add done button
+            navigationItem.leftBarButtonItem = UIBarButtonItem(barButtonSystemItem: .done, target: self, action: #selector(doneButtonTapped))
+        }
+    }
+    
+    @objc private func doneButtonTapped() {
+        dismiss(animated: true, completion: nil)
     }
 
     private func setupEmtpyState() {

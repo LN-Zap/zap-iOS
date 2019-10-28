@@ -355,6 +355,9 @@
 		ADF1BB33219D7F260078BCC4 /* Macaroon.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADF1BB32219D7F260078BCC4 /* Macaroon.swift */; };
 		ADF232D42289A08100CB5053 /* Migrations.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADF232D32289A08100CB5053 /* Migrations.swift */; };
 		ADF4C3DB2363466500C0E5B2 /* WalletPageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADF4C3DA2363466500C0E5B2 /* WalletPageViewController.swift */; };
+		ADF4C3DE2367045F00C0E5B2 /* NotificationView.xib in Resources */ = {isa = PBXBuildFile; fileRef = ADF4C3DD2367045F00C0E5B2 /* NotificationView.xib */; };
+		ADF4C3E02367046B00C0E5B2 /* NotificationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADF4C3DF2367046B00C0E5B2 /* NotificationView.swift */; };
+		ADF4C3E22367054C00C0E5B2 /* NotificationViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADF4C3E12367054C00C0E5B2 /* NotificationViewModel.swift */; };
 		ADFA46982226947A007A4C49 /* LndConnectURLTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADFA46972226947A007A4C49 /* LndConnectURLTests.swift */; };
 		ADFAA01B228AED0D000AECA1 /* Sectigo RSA Domain Validation Secure Server CA 2.cer in Resources */ = {isa = PBXBuildFile; fileRef = ADFAA01A228AED0D000AECA1 /* Sectigo RSA Domain Validation Secure Server CA 2.cer */; };
 		ADFAA01D228C0F10000AECA1 /* FeeEstimate.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADFAA01C228C0F10000AECA1 /* FeeEstimate.swift */; };
@@ -977,6 +980,9 @@
 		ADF1BB32219D7F260078BCC4 /* Macaroon.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Macaroon.swift; sourceTree = "<group>"; };
 		ADF232D32289A08100CB5053 /* Migrations.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Migrations.swift; sourceTree = "<group>"; };
 		ADF4C3DA2363466500C0E5B2 /* WalletPageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WalletPageViewController.swift; sourceTree = "<group>"; };
+		ADF4C3DD2367045F00C0E5B2 /* NotificationView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = NotificationView.xib; sourceTree = "<group>"; };
+		ADF4C3DF2367046B00C0E5B2 /* NotificationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationView.swift; sourceTree = "<group>"; };
+		ADF4C3E12367054C00C0E5B2 /* NotificationViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationViewModel.swift; sourceTree = "<group>"; };
 		ADF79363208DCB630086B2CA /* PinView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PinView.swift; sourceTree = "<group>"; };
 		ADF79365208E000C0086B2CA /* SetupPinViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetupPinViewController.swift; sourceTree = "<group>"; };
 		ADF79367208E09D00086B2CA /* SetupPinViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetupPinViewModel.swift; sourceTree = "<group>"; };
@@ -1799,6 +1805,7 @@
 				AD7EDAE42108C41D0058CCCA /* WalletViewController.swift */,
 				AD248625225B78300049532C /* WalletViewModel.swift */,
 				AD4B4BDD22EAF0A80029773A /* Empty State */,
+				ADF4C3DC2367044100C0E5B2 /* NotificationView */,
 				AD4F765A232BCF0D00F78184 /* SyncView */,
 			);
 			path = Wallet;
@@ -2191,6 +2198,16 @@
 				AD27022022E0C06000D4BF27 /* LndFolderMigration.swift */,
 			);
 			path = Migration;
+			sourceTree = "<group>";
+		};
+		ADF4C3DC2367044100C0E5B2 /* NotificationView */ = {
+			isa = PBXGroup;
+			children = (
+				ADF4C3DF2367046B00C0E5B2 /* NotificationView.swift */,
+				ADF4C3E12367054C00C0E5B2 /* NotificationViewModel.swift */,
+				ADF4C3DD2367045F00C0E5B2 /* NotificationView.xib */,
+			);
+			path = NotificationView;
 			sourceTree = "<group>";
 		};
 		ADF79373208F87E60086B2CA /* Confirm Mnemonic */ = {
@@ -2684,6 +2701,7 @@
 				AD391C5420D16F7A007EE22A /* ConnectRemoteNode.storyboard in Resources */,
 				AD391CA020D16FA8007EE22A /* Root.storyboard in Resources */,
 				AD7B1EF8224241DC007D4171 /* WalletList.storyboard in Resources */,
+				ADF4C3DE2367045F00C0E5B2 /* NotificationView.xib in Resources */,
 				AD391CD520D16FE1007EE22A /* HistoryCell.xib in Resources */,
 				AD054EA422D8BB8400A9796E /* ConfirmMnemonic.storyboard in Resources */,
 				AD4F765C232BCF1E00F78184 /* SyncView.xib in Resources */,
@@ -3097,6 +3115,7 @@
 				ADA58F9C22049470009A5494 /* WalletConfigurationStore.swift in Sources */,
 				AD27021F22E06E5000D4BF27 /* Keychain.swift in Sources */,
 				AD391C9A20D16FA8007EE22A /* QRCodeScannerView.swift in Sources */,
+				ADF4C3E22367054C00C0E5B2 /* NotificationViewModel.swift in Sources */,
 				AD9BB2DC21830B4F009DC878 /* LoadingAmountView.swift in Sources */,
 				AD7EDAE72108D39D0058CCCA /* ZapNavigationController.swift in Sources */,
 				AD391C4820D16F68007EE22A /* ModalNavigationController.swift in Sources */,
@@ -3217,6 +3236,7 @@
 				AD667E5921384966007B9160 /* WindowLevel.swift in Sources */,
 				AD391CB420D16FA8007EE22A /* Section.swift in Sources */,
 				AD391D1B20D174B4007EE22A /* PinSetupCoordinator.swift in Sources */,
+				ADF4C3E02367046B00C0E5B2 /* NotificationView.swift in Sources */,
 				ADA75DF2210F389100003068 /* ChannelState+Localizable.swift in Sources */,
 				ADFAA021228C51FE000AECA1 /* BackupService.swift in Sources */,
 				AD9BB2E021836A54009DC878 /* DispatchQueue+Debounce.swift in Sources */,

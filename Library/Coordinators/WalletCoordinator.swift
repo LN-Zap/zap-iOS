@@ -148,6 +148,7 @@ final class WalletCoordinator: NSObject, Coordinator {
             requestButtonTapped: presentRequest,
             historyButtonTapped: presentHistory,
             nodeButtonTapped: presentNode,
+            channelButtonTapped: presentChannelList,
             emptyStateViewModel: walletEmptyStateViewModel
         )
     }
@@ -309,23 +310,27 @@ final class WalletCoordinator: NSObject, Coordinator {
         rootViewController.present(detailViewController, animated: true)
     }
 
+    private func channelList() -> ChannelListViewController {
+        let walletEmptyStateViewModel = WalletEmptyStateViewModel(lightningService: lightningService, fundButtonTapped: presentFundWallet)
+        let channelListEmptyStateViewModel = ChannelListEmptyStateViewModel(openButtonTapped: presentAddChannel)
+        return ChannelListViewController.instantiate(
+            channelListViewModel: channelListViewModel,
+            addChannelButtonTapped: presentAddChannel,
+            presentChannelDetail: presentChannelDetail,
+            walletEmptyStateViewModel: walletEmptyStateViewModel,
+            channelListEmptyStateViewModel: channelListEmptyStateViewModel)
+    }
+    
     private func pushChannelList(on navigationController: UINavigationController) -> (() -> Void) {
         return { [weak self] in
             guard let self = self else { return }
-            let walletEmptyStateViewModel = WalletEmptyStateViewModel(lightningService: self.lightningService, fundButtonTapped: self.presentFundWallet)
-            let channelListEmptyStateViewModel = ChannelListEmptyStateViewModel(openButtonTapped: self.presentAddChannel)
-            let viewController = ChannelListViewController.instantiate(
-                channelListViewModel: self.channelListViewModel,
-                addChannelButtonTapped: self.presentAddChannel,
-                presentChannelDetail: self.presentChannelDetail,
-                walletEmptyStateViewModel: walletEmptyStateViewModel,
-                channelListEmptyStateViewModel: channelListEmptyStateViewModel)
-
-//          TODO: remove all this badgeUpdater stuff
-//          viewController.badgeUpdaterDelegate = badgeUpdaterDelegate
-
-            navigationController.pushViewController(viewController, animated: true)
+            navigationController.pushViewController(self.channelList(), animated: true)
         }
+    }
+    
+    private func presentChannelList() {
+        let navigationController = ZapNavigationController(rootViewController: channelList())
+        rootViewController.present(navigationController, animated: true)
     }
 
     private func presentChannelBackup(on navigationController: UINavigationController) -> (() -> Void) {
