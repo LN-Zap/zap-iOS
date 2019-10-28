@@ -18,14 +18,20 @@ final class HistoryViewController: UIViewController {
     private var presentFilter: (() -> Void)?
     private var presentDetail: ((HistoryEventType) -> Void)?
     private var presentSend: ((String?) -> Void)?
-    private var walletButtonTapped: ((UIPageViewController.NavigationDirection) -> Void)!
+    private var walletButtonTapped: (() -> Void)!
     // swiftlint:enable implicitly_unwrapped_optional
 
     deinit {
         tableView?.isEditing = false // fixes Bond bug. Binding is not released in editing mode.
     }
 
-    static func instantiate(historyViewModel: HistoryViewModel, presentFilter: @escaping () -> Void, presentDetail: @escaping (HistoryEventType) -> Void, presentSend: @escaping (String?) -> Void, presentWallet: @escaping (UIPageViewController.NavigationDirection) -> Void) -> HistoryViewController {
+    static func instantiate(
+        historyViewModel: HistoryViewModel,
+        presentFilter: @escaping () -> Void,
+        presentDetail: @escaping (HistoryEventType) -> Void,
+        presentSend: @escaping (String?) -> Void,
+        presentWallet: @escaping () -> Void
+    ) -> HistoryViewController {
         let viewController = StoryboardScene.History.historyViewController.instantiate()
 
         viewController.historyViewModel = historyViewModel
@@ -112,7 +118,7 @@ final class HistoryViewController: UIViewController {
     }
 
     @objc private func presentWallet() {
-        walletButtonTapped(.reverse)
+        walletButtonTapped()
     }
 }
 

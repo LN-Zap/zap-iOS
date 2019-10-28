@@ -354,6 +354,7 @@
 		ADF1BB3021997A820078BCC4 /* LndConnectURL.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADF1BB2F21997A820078BCC4 /* LndConnectURL.swift */; };
 		ADF1BB33219D7F260078BCC4 /* Macaroon.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADF1BB32219D7F260078BCC4 /* Macaroon.swift */; };
 		ADF232D42289A08100CB5053 /* Migrations.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADF232D32289A08100CB5053 /* Migrations.swift */; };
+		ADF4C3DB2363466500C0E5B2 /* WalletPageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADF4C3DA2363466500C0E5B2 /* WalletPageViewController.swift */; };
 		ADFA46982226947A007A4C49 /* LndConnectURLTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADFA46972226947A007A4C49 /* LndConnectURLTests.swift */; };
 		ADFAA01B228AED0D000AECA1 /* Sectigo RSA Domain Validation Secure Server CA 2.cer in Resources */ = {isa = PBXBuildFile; fileRef = ADFAA01A228AED0D000AECA1 /* Sectigo RSA Domain Validation Secure Server CA 2.cer */; };
 		ADFAA01D228C0F10000AECA1 /* FeeEstimate.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADFAA01C228C0F10000AECA1 /* FeeEstimate.swift */; };
@@ -975,6 +976,7 @@
 		ADF1BB31219D603A0078BCC4 /* docs */ = {isa = PBXFileReference; lastKnownFileType = folder; path = docs; sourceTree = "<group>"; };
 		ADF1BB32219D7F260078BCC4 /* Macaroon.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Macaroon.swift; sourceTree = "<group>"; };
 		ADF232D32289A08100CB5053 /* Migrations.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Migrations.swift; sourceTree = "<group>"; };
+		ADF4C3DA2363466500C0E5B2 /* WalletPageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WalletPageViewController.swift; sourceTree = "<group>"; };
 		ADF79363208DCB630086B2CA /* PinView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PinView.swift; sourceTree = "<group>"; };
 		ADF79365208E000C0086B2CA /* SetupPinViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetupPinViewController.swift; sourceTree = "<group>"; };
 		ADF79367208E09D00086B2CA /* SetupPinViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetupPinViewModel.swift; sourceTree = "<group>"; };
@@ -1793,6 +1795,7 @@
 				AD81C21821B865E100FA3FA9 /* SyncPercentageEstimator.swift */,
 				ADFDE94322E6F46100B718A4 /* SyncViewModel.swift */,
 				AD248623225B73970049532C /* WalletBalanceSegment.swift */,
+				ADF4C3DA2363466500C0E5B2 /* WalletPageViewController.swift */,
 				AD7EDAE42108C41D0058CCCA /* WalletViewController.swift */,
 				AD248625225B78300049532C /* WalletViewModel.swift */,
 				AD4B4BDD22EAF0A80029773A /* Empty State */,
@@ -3121,6 +3124,7 @@
 				AD391CB520D16FA8007EE22A /* Settings.swift in Sources */,
 				AD2884352126B51C003C3D94 /* ModalViewController.swift in Sources */,
 				AD391CAB20D16FA8007EE22A /* CurrencySettingsItem.swift in Sources */,
+				ADF4C3DB2363466500C0E5B2 /* WalletPageViewController.swift in Sources */,
 				AD391C4420D16F0B007EE22A /* Style.swift in Sources */,
 				ADA2DD06225CDD03007482D9 /* SuggestedPeerCell.swift in Sources */,
 				AD391C2C20D16EFA007EE22A /* String.swift in Sources */,

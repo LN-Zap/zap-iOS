@@ -42,7 +42,7 @@ final class WalletViewController: UIViewController {
     private var sendButtonTapped: (() -> Void)!
     private var requestButtonTapped: (() -> Void)!
     private var historyButtonTapped: (() -> Void)!
-    private var settingsButtonTapped: (() -> Void)!
+    private var nodeButtonTapped: (() -> Void)!
     private var emptyStateViewModel: WalletEmptyStateViewModel!
     // swiftlint:enable implicitly_unwrapped_optional
 
@@ -68,7 +68,7 @@ final class WalletViewController: UIViewController {
         walletViewController.requestButtonTapped = requestButtonTapped
         walletViewController.emptyStateViewModel = emptyStateViewModel
         walletViewController.historyButtonTapped = historyButtonTapped
-        walletViewController.settingsButtonTapped = nodeButtonTapped
+        walletViewController.nodeButtonTapped = nodeButtonTapped
 
         return walletViewController
     }
@@ -168,13 +168,11 @@ final class WalletViewController: UIViewController {
     }
 
     @IBAction private func presentHistory(_ sender: UIButton) {
-        sender.isEnabled = false
         historyButtonTapped()
     }
 
     @IBAction private func presentSettings(_ sender: UIButton) {
-        sender.isEnabled = false
-        settingsButtonTapped()
+        nodeButtonTapped()
     }
 
     @IBAction private func swapCurrencyButtonTapped(_ sender: Any) {

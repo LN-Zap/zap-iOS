@@ -29,7 +29,7 @@ final class NodeViewController: UIViewController {
     // swiftlint:disable implicitly_unwrapped_optional
     private var channelListButtonTapped: (() -> Void)!
     private var settingsButtonTapped: (() -> Void)!
-    private var walletButtonTapped: ((UIPageViewController.NavigationDirection) -> Void)!
+    private var walletButtonTapped: (() -> Void)!
     private var manageNodes: (() -> Void)!
     private var channelBackupButtonTapped: (() -> Void)!
     private var lightningService: LightningService!
@@ -41,7 +41,7 @@ final class NodeViewController: UIViewController {
         lightningService: LightningService,
         presentChannels: @escaping () -> Void,
         presentSettings: @escaping () -> Void,
-        presentWallet: @escaping (UIPageViewController.NavigationDirection) -> Void,
+        presentWallet: @escaping () -> Void,
         manageNodes: @escaping () -> Void,
         presentChannelBackup: @escaping () -> Void,
         presentURIViewController: @escaping (UINavigationController) -> Void
@@ -131,7 +131,7 @@ final class NodeViewController: UIViewController {
     }
 
     @objc private func presentWallet() {
-        walletButtonTapped(.forward)
+        walletButtonTapped()
     }
     
     @objc private func presentWalletURI() {

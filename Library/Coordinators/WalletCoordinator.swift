@@ -26,8 +26,8 @@ final class WalletCoordinator: NSObject, Coordinator {
     private var notificationScheduler: NotificationScheduler?
     private var currentState: InfoService.WalletState
 
-    private var pageViewController = UIPageViewController(transitionStyle: .scroll, navigationOrientation: .horizontal, options: nil)
-
+    private var pageViewController: WalletPageViewController?
+    
     var route: Route?
 
     init(rootViewController: RootViewController, lightningService: LightningService, disconnectWalletDelegate: WalletDelegate, authenticationViewModel: AuthenticationViewModel, walletConfigurationStore: WalletConfigurationStore) {
@@ -125,8 +125,10 @@ final class WalletCoordinator: NSObject, Coordinator {
     private func presentMain() {
         guard rootViewController.currentViewController != pageViewController else { return }
 
+        let pageViewController = WalletPageViewController.instantiate(walletViewController: walletViewController(), nodeViewController: nodeViewController, historyViewController: historyViewController)
         presentViewController(pageViewController)
-        pageViewController.setViewControllers([walletViewController()], direction: .forward, animated: false, completion: nil)
+        
+        self.pageViewController = pageViewController
 
         if let route = self.route {
             handle(route)
@@ -150,15 +152,23 @@ final class WalletCoordinator: NSObject, Coordinator {
         )
     }
 
-    private func presentHistory() {
-        pageViewController.setViewControllers([historyViewController()], direction: .forward, animated: true, completion: nil)
-    }
-
     private func disconnectWallet() {
         disconnectWalletDelegate?.disconnect()
     }
+    
+    private func presentHistory() {
+        pageViewController?.presentHistory()
+    }
 
     private func presentNode() {
+        pageViewController?.presentNode()
+    }
+
+    private func presentWallet() {
+        pageViewController?.presentWallet()
+    }
+    
+    private func nodeViewController() -> ZapNavigationController {
         let navigationController = ZapNavigationController()
 
         let nodeViewController = NodeViewController.instantiate(
@@ -170,9 +180,9 @@ final class WalletCoordinator: NSObject, Coordinator {
             presentChannelBackup: presentChannelBackup(on: navigationController),
             presentURIViewController: pushNodeURIViewController
         )
+        
         navigationController.viewControllers = [nodeViewController]
-
-        pageViewController.setViewControllers([navigationController], direction: .reverse, animated: true, completion: nil)
+        return navigationController
     }
 
     private func pushSettings(on navigationController: UINavigationController) -> (() -> Void) {
@@ -180,10 +190,6 @@ final class WalletCoordinator: NSObject, Coordinator {
             guard let viewController = self?.settingsViewController() else { return }
             navigationController.pushViewController(viewController, animated: true)
         }
-    }
-
-    private func presentWallet(direction: UIPageViewController.NavigationDirection) {
-        pageViewController.setViewControllers([walletViewController()], direction: direction, animated: true, completion: nil)
     }
 
     func settingsViewController() -> SettingsViewController {
@@ -196,7 +202,13 @@ final class WalletCoordinator: NSObject, Coordinator {
     }
 
     func historyViewController() -> UINavigationController {
-        let viewController = HistoryViewController.instantiate(historyViewModel: historyViewModel, presentFilter: presentFilter, presentDetail: presentDetail, presentSend: presentSend, presentWallet: presentWallet)
+        let viewController = HistoryViewController.instantiate(
+            historyViewModel: historyViewModel,
+            presentFilter: presentFilter,
+            presentDetail: presentDetail,
+            presentSend: presentSend,
+            presentWallet: presentWallet
+        )
         let navigationController = ZapNavigationController(rootViewController: viewController)
 
         return navigationController
