@@ -364,6 +364,8 @@
 		ADF4C3DE2367045F00C0E5B2 /* NotificationView.xib in Resources */ = {isa = PBXBuildFile; fileRef = ADF4C3DD2367045F00C0E5B2 /* NotificationView.xib */; };
 		ADF4C3E02367046B00C0E5B2 /* NotificationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADF4C3DF2367046B00C0E5B2 /* NotificationView.swift */; };
 		ADF4C3E22367054C00C0E5B2 /* NotificationViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADF4C3E12367054C00C0E5B2 /* NotificationViewModel.swift */; };
+		ADF4C3E62367591200C0E5B2 /* LNURL.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADF4C3E52367591200C0E5B2 /* LNURL.swift */; };
+		ADF4C3E923682E8700C0E5B2 /* LNURLTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADF4C3E723682E8100C0E5B2 /* LNURLTests.swift */; };
 		ADFA46982226947A007A4C49 /* LndConnectURLTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADFA46972226947A007A4C49 /* LndConnectURLTests.swift */; };
 		ADFAA01B228AED0D000AECA1 /* Sectigo RSA Domain Validation Secure Server CA 2.cer in Resources */ = {isa = PBXBuildFile; fileRef = ADFAA01A228AED0D000AECA1 /* Sectigo RSA Domain Validation Secure Server CA 2.cer */; };
 		ADFAA01D228C0F10000AECA1 /* FeeEstimate.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADFAA01C228C0F10000AECA1 /* FeeEstimate.swift */; };
@@ -991,6 +993,8 @@
 		ADF4C3DD2367045F00C0E5B2 /* NotificationView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = NotificationView.xib; sourceTree = "<group>"; };
 		ADF4C3DF2367046B00C0E5B2 /* NotificationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationView.swift; sourceTree = "<group>"; };
 		ADF4C3E12367054C00C0E5B2 /* NotificationViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationViewModel.swift; sourceTree = "<group>"; };
+		ADF4C3E52367591200C0E5B2 /* LNURL.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LNURL.swift; sourceTree = "<group>"; };
+		ADF4C3E723682E8100C0E5B2 /* LNURLTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LNURLTests.swift; sourceTree = "<group>"; };
 		ADF79363208DCB630086B2CA /* PinView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PinView.swift; sourceTree = "<group>"; };
 		ADF79365208E000C0086B2CA /* SetupPinViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetupPinViewController.swift; sourceTree = "<group>"; };
 		ADF79367208E09D00086B2CA /* SetupPinViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetupPinViewModel.swift; sourceTree = "<group>"; };
@@ -1703,6 +1707,7 @@
 				ADEF96BB21078C31006AE1EC /* Certificates */,
 				ADF093042147C6F000B48853 /* Events */,
 				AD28844221281F9E003C3D94 /* Invoice */,
+				ADF4C3E4236758FD00C0E5B2 /* LNURL */,
 				AD967FE12105FD400048085B /* QrCodes */,
 				A07C1034203DE3D0006C7FE8 /* Services */,
 				AD536BF420E62764002279BC /* Tests */,
@@ -1721,6 +1726,7 @@
 				A0733CD920471F0A0005643A /* LightningInvoiceURITests.swift */,
 				AD28844821282139003C3D94 /* LightningNodeURITests.swift */,
 				ADFA46972226947A007A4C49 /* LndConnectURLTests.swift */,
+				ADF4C3E723682E8100C0E5B2 /* LNURLTests.swift */,
 			);
 			path = Tests;
 			sourceTree = "<group>";
@@ -2231,6 +2237,14 @@
 				ADF4C3DD2367045F00C0E5B2 /* NotificationView.xib */,
 			);
 			path = NotificationView;
+			sourceTree = "<group>";
+		};
+		ADF4C3E4236758FD00C0E5B2 /* LNURL */ = {
+			isa = PBXGroup;
+			children = (
+				ADF4C3E52367591200C0E5B2 /* LNURL.swift */,
+			);
+			path = LNURL;
 			sourceTree = "<group>";
 		};
 		ADF79373208F87E60086B2CA /* Confirm Mnemonic */ = {
@@ -3334,6 +3348,7 @@
 				ADF093112148FDC600B48853 /* LightningPaymentEvent.swift in Sources */,
 				ADF093132148FEB900B48853 /* ChannelEvent.swift in Sources */,
 				ADB4CBA22254905100D186BC /* ChannelListUpdater.swift in Sources */,
+				ADF4C3E62367591200C0E5B2 /* LNURL.swift in Sources */,
 				AD28844321281FAC003C3D94 /* LightningInvoiceURI.swift in Sources */,
 				ADE64E0F22297311004C0BC8 /* ExchangeRates.swift in Sources */,
 				ADFEFA6A20E627F100FE1557 /* BalanceService.swift in Sources */,
@@ -3362,6 +3377,7 @@
 				AD511B2A2253748F00EDFC7C /* VersionTests.swift in Sources */,
 				AD2884472128209B003C3D94 /* LightningInvoiceURITests.swift in Sources */,
 				AD967FE7210603D50048085B /* BTCPayConfigurationTests.swift in Sources */,
+				ADF4C3E923682E8700C0E5B2 /* LNURLTests.swift in Sources */,
 				ADFA46982226947A007A4C49 /* LndConnectURLTests.swift in Sources */,
 				AD28844D21284DAC003C3D94 /* InvoiceTests.swift in Sources */,
 				ADC48CA7214AD8B800949CD9 /* DateEstimatorTests.swift in Sources */,
