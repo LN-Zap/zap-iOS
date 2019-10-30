@@ -14,8 +14,4 @@ extension String {
         }
         return false
     }
-    
-    func trimAllWhitespacesAndNewlines() -> String {
-        return self.trimmingCharacters(in: .whitespacesAndNewlines)
-    }
 }

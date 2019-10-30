@@ -32,7 +32,7 @@ final class RequestQRCodeViewModel: QRCodeDetailViewModel {
             ])
         }
 
-        if let memo = paymentURI.memo, !memo.trimAllWhitespacesAndNewlines().isEmpty {
+        if let memo = paymentURI.memo, !memo.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty {
             detailConfiguration.append(contentsOf: [
                 .verticalStackView(content: [
                     .label(text: L10n.Scene.TransactionDetail.memoLabel + ":", style: tableFontStyle),

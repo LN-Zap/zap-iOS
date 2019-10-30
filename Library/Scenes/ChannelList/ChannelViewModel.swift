@@ -32,7 +32,7 @@ final class ChannelViewModel {
 
         channelService.node(for: channel.remotePubKey) { [name] in
             if let alias = $0?.alias,
-                !alias.trimAllWhitespacesAndNewlines().isEmpty {
+                !alias.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty {
                 name.value = alias
             }
         }
