@@ -2,7 +2,7 @@
 
 ### Preliminaries
 
-Xcode 10.1 or above is required to run the app.
+Xcode 11.1 or above is required to run the app.
 
 #### First Step
 Run `./setup.sh` to download the required frameworks.

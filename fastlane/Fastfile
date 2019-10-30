@@ -76,6 +76,7 @@ end
 
 private_lane :pre_upload do
   ensure_bundle_exec
+  sh("(cd .. ; shasum -c .lndmobile.sha1)")
   sh("python3 check_localizable.py")
   ensure_git_status_clean
 end
