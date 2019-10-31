@@ -82,16 +82,11 @@ final class LoadingAmountView: UIView {
             } else {
                 amountLabel.text = "-"
             }
-        case .error(let lndApiError):
+        case .error:
             activityIndicator.isHidden = true
             amountLabel.isHidden = false
             
-            switch lndApiError {
-            case .transactionDust:
-                amountLabel.text = L10n.Scene.Send.sendAmountTooSmallForEstimate
-            default:
-                amountLabel.text = "-"
-            }
+            amountLabel.text = "-"
         }
     }
 }
