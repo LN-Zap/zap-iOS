@@ -48,7 +48,7 @@ final class SendViewModel: NSObject {
         }
     }
 
-    let fee = Observable<Loadable<Satoshi?, LndApiError>>(.loading)
+    let fee = Observable<Loadable<Result<Satoshi, LndApiError>>>(.loading)
 
     let method: SendMethod
 
@@ -179,7 +179,7 @@ final class SendViewModel: NSObject {
             fee.value = .loading
             debounceFetchFee()
         } else {
-            fee.value = .element(nil)
+            fee.value = .element(.failure(.invalidFee))
         }
     }
 
@@ -197,10 +197,14 @@ final class SendViewModel: NSObject {
                     else { return }
                 
                 self.isTransactionDust = false
-                self.fee.value = .element(result.fee)
+                if let fee = result.fee {
+                    self.fee.value = .element(.success(fee))
+                } else {
+                    self.fee.value = .element(.failure(.invalidFee))
+                }
             case .failure(let lndApiError):
                 self.isTransactionDust = lndApiError == .transactionDust
-                self.fee.value = amount > 0 ? .error(lndApiError) : .element(nil)
+                self.fee.value = amount > 0 ? .element(.failure(lndApiError)) : .element(.failure(.invalidFee))
                 self.updateIsUIEnabled()
             }
         }
