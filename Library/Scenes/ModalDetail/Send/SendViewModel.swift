@@ -52,7 +52,7 @@ final class SendViewModel: NSObject {
 
     let method: SendMethod
 
-    let subtitleText = Observable<String?>(L10n.Scene.Send.sendAmountTooSmall)
+    let subtitleText = Observable<String?>(nil)
     let isSubtitleTextWarning = Observable(false)
 
     var amount: Satoshi? {
