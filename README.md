@@ -65,11 +65,17 @@ Open source isn't just writing code. Zap could use your help with any of the fol
 - Helping to manage issue priorities
 - Fixing bugs/new features
 
+### Issues
+
 If any of that sounds cool to you, feel free to dive in! [Open an issue][issues] or submit a pull request.
 
-If you would like to help contribute to the project, please see the [Contributing Guide](docs/CONTRIBUTING.md)
+### Contribution Guide
 
-And if you want to build the app yourself take a look at the [Installation Guide](docs/INSTALL.md)
+If you would like to help contribute to the project, please see the [Contributing Guide](docs/CONTRIBUTING.md).
+
+### Installation
+
+And if you want to build the app yourself take a look at the [Installation Guide](docs/INSTALL.md).
 
 ## Maintainers
 
