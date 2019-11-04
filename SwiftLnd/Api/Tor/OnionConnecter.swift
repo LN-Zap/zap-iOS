@@ -39,6 +39,11 @@ extension OnionConnecter: OnionManagerDelegate {
             kCFStreamPropertySOCKSProxyHost: "localhost",
             kCFStreamPropertySOCKSProxyPort: 39050
         ]
+        if #available(iOSApplicationExtension 13.0, *) {
+            configuration.tlsMaximumSupportedProtocolVersion = .TLSv12
+        } else {
+            configuration.tlsMinimumSupportedProtocol = .tlsProtocol12
+        }
         completion?(.success(configuration))
     }
 
