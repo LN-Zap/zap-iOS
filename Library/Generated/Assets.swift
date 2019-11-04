@@ -59,6 +59,7 @@ internal enum Asset {
   internal static let tabbarHistory = ImageAsset(name: "tabbar_history")
   internal static let tabbarSettings = ImageAsset(name: "tabbar_settings")
   internal static let tabbarWallet = ImageAsset(name: "tabbar_wallet")
+  internal static let torLogo = ImageAsset(name: "tor_logo")
   internal static let iconSliders = ImageAsset(name: "icon-sliders")
   internal static let iconCheckGreen = ImageAsset(name: "iconCheckGreen")
 }
