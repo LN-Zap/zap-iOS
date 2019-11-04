@@ -209,7 +209,7 @@ lane :tests do
   
   run_tests(
     workspace: "Zap.xcworkspace",
-    configuration: "DebugRemote",
+    configuration: "Debug",
     devices: ["iPhone 8"],
     scheme: "Zap",
     slack_only_on_failure: true,
