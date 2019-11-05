@@ -72,7 +72,6 @@
 "scene.settings.item.on_chain_request_address.p2sh" = "P2SH";
 "scene.settings.item.manage_channels" = "Gérer les canaux";
 "scene.settings.item.channel_backup" = "Sauvegarde des canaux";
-"scene.settings.item.node_uri" = "URI du nœud";
 "scene.settings.item.remove_remote_node" = "Gérer les portefeuilles";
 
 "scene.settings.item.change_pin" = "Changer le code PIN";
@@ -117,12 +116,12 @@
 "scene.open_channel.suggested_peers.title" = "Pairs suggérés";
 "scene.open_channel.paste_button.title" = "Coller l'adresse d'un pair";
 
-"scene.pin.biometric.fallback.title" = "Utiliser un code d’accès";
+"scene.pin.biometric.fallback.title" = "Utiliser le code PIN";
 "scene.pin.biometric.reason" = "Pour accéder aux données sécurisées";
 
 "scene.setup_pin.done_button" = "Terminer";
 "scene.setup_pin.top_label.initial" = "Choisissez un code PIN.";
-"scene.setup_pin.top_label.non_matching" = "Les codes PIN ne correspondent pas. Veuillez essayer à nouveau.";
+"scene.setup_pin.top_label.non_matching" = "Les codes PIN ne correspondent pas. Veuillez réessayer.";
 "scene.setup_pin.top_label.validate" = "Entrez le code PIN à nouveau pour valider.";
 
 "scene.onboarding.page_1.title" = "Vos **clés**, vos **fonds**";
@@ -252,12 +251,14 @@
 "scene.wallet.empty_state.title" = "Approvisionnez votre portefeuille";
 "scene.wallet.empty_state.message" = "Votre portefeuille est vide ! Pour démarrer, déposez quelques fonds.";
 "scene.wallet.empty_state.button_title" = "Déposer des fonds";
+"scene.wallet.open_channel.message" = "You can’t transact on the the Lightning Network yet. Open a channel to start.";
+"scene.wallet.open_channel.action" = "Open a channel";
 
-"scene.time_lock.headline" = "Mauvais code d'accès";
+"scene.time_lock.headline" = "Mauvais code PIN";
 "scene.time_lock.description" = "Votre portefeuille est verrouillé pendant :";
 
-"scene.modal_pin.headline" = "Entrez le code d’accès";
-"scene.modal_pin.description" = "Veuillez entrer votre code d'accès pour continuer";
+"scene.modal_pin.headline" = "Entrez votre code PIN";
+"scene.modal_pin.description" = "Veuillez entrer votre code PIN actuel";
 
 "scene.history.cell.payment_sent" = "Paiement envoyé";
 "scene.history.cell.payment_received" = "Paiement reçu";
@@ -307,6 +308,16 @@
 "scene.push_notification.message" = "Pour gardez vos fonds en sécurité, Zap doit se synchroniser de temps en temps. Voulez-vous être notifié lorsque votre portefeuille doit se synchroniser ?";
 "scene.push_notification.confirm_button_title" = "Activer les notifications";
 "scene.push_notification.skip_button_title" = "Passer";
+
+"scene.my_node.title" = "My Node";
+"scene.my_node.channels.title" = "Channels";
+"scene.my_node.channels.subtitle" = "Manage your capacity";
+"scene.my_node.channel_backup.title" = "Channel Backup";
+"scene.my_node.channel_backup.subtitle" = "Setup emergency options";
+"scene.my_node.settings.title" = "Settings";
+"scene.my_node.settings.subtitle" = "Preferences & stuff";
+"scene.my_node.support.title" = "Support";
+"scene.my_node.support.subtitle" = "Get support and send feedback";
 
 "notification.sync.title" = "Pensez à synchroniser";
 "notification.sync.day_12.body" = "Synchronisez votre portefeuille afin de garantir sa sécurité.";
