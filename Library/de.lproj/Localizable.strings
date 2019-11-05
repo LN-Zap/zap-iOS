@@ -72,7 +72,6 @@
 "scene.settings.item.on_chain_request_address.p2sh" = "P2SH";
 "scene.settings.item.manage_channels" = "Kanäle verwalten";
 "scene.settings.item.channel_backup" = "Kanal Backup";
-"scene.settings.item.node_uri" = "Knoten-Adresse";
 "scene.settings.item.remove_remote_node" = "Verwalten von Wallets";
 
 "scene.settings.item.change_pin" = "Pin ändern";
@@ -252,6 +251,8 @@
 "scene.wallet.empty_state.title" = "Lade deine Wallet auf";
 "scene.wallet.empty_state.message" = "Deine Wallet ist leer! Starten jetzt und füge Geld hinzu.";
 "scene.wallet.empty_state.button_title" = "Geld einzahlen";
+"scene.wallet.open_channel.message" = "You can’t transact on the the Lightning Network yet. Open a channel to start.";
+"scene.wallet.open_channel.action" = "Open a channel";
 
 "scene.time_lock.headline" = "Falscher PIN";
 "scene.time_lock.description" = "Deine Geldbörse ist gesperrt für:";
@@ -307,6 +308,16 @@
 "scene.push_notification.message" = "Um deine Gelder sicher zu halten, muss Zap ab und zu synchronisieren. Möchtest du eine Benachrichtigung erhalten, wenn es Zeit ist?";
 "scene.push_notification.confirm_button_title" = "Notifikationen einschalten";
 "scene.push_notification.skip_button_title" = "Überspringen";
+
+"scene.my_node.title" = "My Node";
+"scene.my_node.channels.title" = "Channels";
+"scene.my_node.channels.subtitle" = "Manage your capacity";
+"scene.my_node.channel_backup.title" = "Channel Backup";
+"scene.my_node.channel_backup.subtitle" = "Setup emergency options";
+"scene.my_node.settings.title" = "Settings";
+"scene.my_node.settings.subtitle" = "Preferences & stuff";
+"scene.my_node.support.title" = "Support";
+"scene.my_node.support.subtitle" = "Get support and send feedback";
 
 "notification.sync.title" = "Bitte synchronisieren";
 "notification.sync.day_12.body" = "Stelle sicher dein Wallet zu synchronisieren um geschützt zu sein";
