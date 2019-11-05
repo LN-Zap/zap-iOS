@@ -72,7 +72,6 @@
 "scene.settings.item.on_chain_request_address.p2sh" = "P2SH";
 "scene.settings.item.manage_channels" = "Управление Каналами";
 "scene.settings.item.channel_backup" = "Channel Backup";
-"scene.settings.item.node_uri" = "URI узла";
 "scene.settings.item.remove_remote_node" = "Управление Кошельками";
 
 "scene.settings.item.change_pin" = "Изменить Pin-Код";
@@ -252,6 +251,8 @@
 "scene.wallet.empty_state.title" = "Fund your wallet";
 "scene.wallet.empty_state.message" = "Your wallet is empty! Get started by depositing some funds.";
 "scene.wallet.empty_state.button_title" = "Deposit funds";
+"scene.wallet.open_channel.message" = "You can’t transact on the the Lightning Network yet. Open a channel to start.";
+"scene.wallet.open_channel.action" = "Open a channel";
 
 "scene.time_lock.headline" = "Не правильный Пароль";
 "scene.time_lock.description" = "Ваш кошелек заблокирован для:";
@@ -307,6 +308,16 @@
 "scene.push_notification.message" = "To keep your funds safe, Zap needs to sync once in a while. Do you want to be notified when your wallet needs to sync?";
 "scene.push_notification.confirm_button_title" = "Turn on notifications";
 "scene.push_notification.skip_button_title" = "Skip";
+
+"scene.my_node.title" = "My Node";
+"scene.my_node.channels.title" = "Channels";
+"scene.my_node.channels.subtitle" = "Manage your capacity";
+"scene.my_node.channel_backup.title" = "Channel Backup";
+"scene.my_node.channel_backup.subtitle" = "Setup emergency options";
+"scene.my_node.settings.title" = "Settings";
+"scene.my_node.settings.subtitle" = "Preferences & stuff";
+"scene.my_node.support.title" = "Support";
+"scene.my_node.support.subtitle" = "Get support and send feedback";
 
 "notification.sync.title" = "Please sync";
 "notification.sync.day_12.body" = "Please remember syncing your wallet to make sure you stay safe";
