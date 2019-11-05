@@ -13,6 +13,8 @@ final class HistoryViewController: UIViewController {
     @IBOutlet private weak var tableView: UITableView?
     @IBOutlet private weak var emptyStateLabel: UILabel!
 
+    private let refreshControl = UIRefreshControl()
+    
     // swiftlint:disable implicitly_unwrapped_optional
     private var historyViewModel: HistoryViewModel?
     private var presentFilter: (() -> Void)?
@@ -79,6 +81,10 @@ final class HistoryViewController: UIViewController {
 
         navigationItem.leftBarButtonItem = UIBarButtonItem(image: Asset.arrowLeft.image, style: .plain, target: self, action: #selector(presentWallet))
         navigationController?.navigationBar.prefersLargeTitles = false
+        
+        tableView.refreshControl = refreshControl
+        refreshControl.addTarget(self, action: #selector(refresh(sender:)), for: .valueChanged)
+        navigationItem.hidesSearchBarWhenScrolling = false
     }
 
     override func viewWillAppear(_ animated: Bool) {
@@ -119,6 +125,13 @@ final class HistoryViewController: UIViewController {
 
     @objc private func presentWallet() {
         walletButtonTapped()
+    }
+
+    @objc func refresh(sender: UIRefreshControl) {
+        historyViewModel?.refresh()
+        DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 1) {
+            sender.endRefreshing()
+        }
     }
 }
 

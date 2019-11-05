@@ -97,6 +97,10 @@ final class HistoryViewModel: NSObject {
             return Array2D<String, HistoryEventType>.Section(metadata: dateString, items: sortedItems)
         }
     }
+    
+    func refresh() {
+        historyService.refresh()
+    }
 }
 
 extension HistoryEventType {

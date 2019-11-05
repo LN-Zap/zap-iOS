@@ -15,7 +15,17 @@ import SwiftLnd
 public final class HistoryService: NSObject {
     public var events = MutableObservableArray<HistoryEventType>()
 
+    private let invoiceListUpdater: InvoiceListUpdater
+    private let transactionListUpdater: TransactionListUpdater
+    private let paymentListUpdater: PaymentListUpdater
+    private let channelListUpdater: ChannelListUpdater
+    
     init(invoiceListUpdater: InvoiceListUpdater, transactionListUpdater: TransactionListUpdater, paymentListUpdater: PaymentListUpdater, channelListUpdater: ChannelListUpdater) {
+        self.invoiceListUpdater = invoiceListUpdater
+        self.transactionListUpdater = transactionListUpdater
+        self.paymentListUpdater = paymentListUpdater
+        self.channelListUpdater = channelListUpdater
+        
         super.init()
 
         combineLatest(
@@ -71,5 +81,12 @@ public final class HistoryService: NSObject {
                 self?.events.replace(with: result.map(HistoryEventType.create))
             }
             .dispose(in: reactive.bag)
+    }
+    
+    public func refresh() {
+        invoiceListUpdater.update()
+        transactionListUpdater.update()
+        paymentListUpdater.update()
+        channelListUpdater.update()
     }
 }
