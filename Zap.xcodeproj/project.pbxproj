@@ -360,11 +360,11 @@
 		ADF1BB3021997A820078BCC4 /* LndConnectURL.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADF1BB2F21997A820078BCC4 /* LndConnectURL.swift */; };
 		ADF1BB33219D7F260078BCC4 /* Macaroon.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADF1BB32219D7F260078BCC4 /* Macaroon.swift */; };
 		ADF232D42289A08100CB5053 /* Migrations.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADF232D32289A08100CB5053 /* Migrations.swift */; };
+		ADF4C3D2236095CF00C0E5B2 /* Lndmobile.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = ADF4C3D1236095CF00C0E5B2 /* Lndmobile.framework */; };
 		ADF4C3DB2363466500C0E5B2 /* WalletPageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADF4C3DA2363466500C0E5B2 /* WalletPageViewController.swift */; };
 		ADF4C3DE2367045F00C0E5B2 /* NotificationView.xib in Resources */ = {isa = PBXBuildFile; fileRef = ADF4C3DD2367045F00C0E5B2 /* NotificationView.xib */; };
 		ADF4C3E02367046B00C0E5B2 /* NotificationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADF4C3DF2367046B00C0E5B2 /* NotificationView.swift */; };
 		ADF4C3E22367054C00C0E5B2 /* NotificationViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADF4C3E12367054C00C0E5B2 /* NotificationViewModel.swift */; };
-		ADF4C3D2236095CF00C0E5B2 /* Lndmobile.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = ADF4C3D1236095CF00C0E5B2 /* Lndmobile.framework */; };
 		ADFA46982226947A007A4C49 /* LndConnectURLTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADFA46972226947A007A4C49 /* LndConnectURLTests.swift */; };
 		ADFAA01B228AED0D000AECA1 /* Sectigo RSA Domain Validation Secure Server CA 2.cer in Resources */ = {isa = PBXBuildFile; fileRef = ADFAA01A228AED0D000AECA1 /* Sectigo RSA Domain Validation Secure Server CA 2.cer */; };
 		ADFAA01D228C0F10000AECA1 /* FeeEstimate.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADFAA01C228C0F10000AECA1 /* FeeEstimate.swift */; };
@@ -883,8 +883,6 @@
 		ADAB0B8E212487AA00914974 /* ro */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ro; path = ro.lproj/Localizable.strings; sourceTree = "<group>"; };
 		ADAB0B8F212487B000914974 /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ru; path = ru.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		ADAB0B90212487B000914974 /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ru; path = ru.lproj/Localizable.strings; sourceTree = "<group>"; };
-		ADAB0B91212487BA00914974 /* sr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = sr; path = sr.lproj/InfoPlist.strings; sourceTree = "<group>"; };
-		ADAB0B92212487BA00914974 /* sr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = sr; path = sr.lproj/Localizable.strings; sourceTree = "<group>"; };
 		ADAB0B93212487C400914974 /* tr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = tr; path = tr.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		ADAB0B94212487C400914974 /* tr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = tr; path = tr.lproj/Localizable.strings; sourceTree = "<group>"; };
 		ADAB0B95212487CB00914974 /* uk */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = uk; path = uk.lproj/InfoPlist.strings; sourceTree = "<group>"; };
@@ -990,11 +988,11 @@
 		ADF1BB31219D603A0078BCC4 /* docs */ = {isa = PBXFileReference; lastKnownFileType = folder; path = docs; sourceTree = "<group>"; };
 		ADF1BB32219D7F260078BCC4 /* Macaroon.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Macaroon.swift; sourceTree = "<group>"; };
 		ADF232D32289A08100CB5053 /* Migrations.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Migrations.swift; sourceTree = "<group>"; };
+		ADF4C3D1236095CF00C0E5B2 /* Lndmobile.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Lndmobile.framework; path = Carthage/Build/iOS/Lndmobile.framework; sourceTree = SOURCE_ROOT; };
 		ADF4C3DA2363466500C0E5B2 /* WalletPageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WalletPageViewController.swift; sourceTree = "<group>"; };
 		ADF4C3DD2367045F00C0E5B2 /* NotificationView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = NotificationView.xib; sourceTree = "<group>"; };
 		ADF4C3DF2367046B00C0E5B2 /* NotificationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationView.swift; sourceTree = "<group>"; };
 		ADF4C3E12367054C00C0E5B2 /* NotificationViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationViewModel.swift; sourceTree = "<group>"; };
-		ADF4C3D1236095CF00C0E5B2 /* Lndmobile.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Lndmobile.framework; path = Carthage/Build/iOS/Lndmobile.framework; sourceTree = SOURCE_ROOT; };
 		ADF79363208DCB630086B2CA /* PinView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PinView.swift; sourceTree = "<group>"; };
 		ADF79365208E000C0086B2CA /* SetupPinViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetupPinViewController.swift; sourceTree = "<group>"; };
 		ADF79367208E09D00086B2CA /* SetupPinViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetupPinViewModel.swift; sourceTree = "<group>"; };
@@ -3568,7 +3566,6 @@
 				ADAB0B8C2124879D00914974 /* pt-BR */,
 				ADAB0B8E212487AA00914974 /* ro */,
 				ADAB0B90212487B000914974 /* ru */,
-				ADAB0B92212487BA00914974 /* sr */,
 				ADAB0B94212487C400914974 /* tr */,
 				ADAB0B96212487CB00914974 /* uk */,
 				ADAB0B98212487D000914974 /* vi */,
@@ -3607,7 +3604,6 @@
 				ADAB0B8B2124879D00914974 /* pt-BR */,
 				ADAB0B8D212487AA00914974 /* ro */,
 				ADAB0B8F212487B000914974 /* ru */,
-				ADAB0B91212487BA00914974 /* sr */,
 				ADAB0B93212487C400914974 /* tr */,
 				ADAB0B95212487CB00914974 /* uk */,
 				ADAB0B97212487D000914974 /* vi */,
