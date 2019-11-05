@@ -8,5 +8,5 @@
 
 "applicationShortcutItem.send" = "Odeslat";
 "applicationShortcutItem.request" = "Přijmout";
-"NSCameraUsageDescription" = "Turn on camera access to scan QR codes.";
+"NSCameraUsageDescription" = "Chcete-li skenovat QR-kódy, zapněte přístup z kamery.";
 "NSFaceIDUsageDescription" = "Zap vyžaduje přístup k Face ID.";
