@@ -22,12 +22,12 @@ public enum LightningConnection: Equatable, Codable {
         switch self {
         case .local:
         #if !REMOTEONLY
-            return LightningApi(connection: .local)
+            return LightningApi(connection: .stream)
         #else
             return nil
         #endif
         case .remote(let configuration):
-            return LightningApi(connection: .remote(configuration))
+            return LightningApi(connection: .grpc(configuration))
         }
     }
 }

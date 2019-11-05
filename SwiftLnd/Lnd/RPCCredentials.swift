@@ -7,6 +7,12 @@
 
 import Foundation
 
+public extension URL {
+    var isOnion: Bool {
+        return absoluteString.split(separator: ":").first?.hasSuffix(".onion") ?? false
+    }
+}
+
 public struct RPCCredentials: Codable, Equatable {
     public let certificate: String?
     public let macaroon: Macaroon

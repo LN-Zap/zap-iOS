@@ -8,7 +8,7 @@ target 'Zap' do
 end
 
 target 'SnapshotUITests' do
-    pod 'SimulatorStatusMagic', :configurations => ['Debug', 'DebugRemote']
+    pod 'SimulatorStatusMagic', :configurations => ['Debug']
 end
 
 abstract_target 'RPC' do
@@ -16,7 +16,8 @@ abstract_target 'RPC' do
 
     target 'SwiftLnd' do
         pod 'SwiftGRPC'
-          
+        pod 'ReachabilitySwift'
+        
         target 'SwiftLndTests' do
             inherit! :search_paths
         end
