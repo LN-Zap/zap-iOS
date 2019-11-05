@@ -137,13 +137,14 @@ final class WalletViewController: UIViewController {
         }
         
         walletViewModel.shouldHideChannelEmptyState
+            .observeOn(DispatchQueue.main)
             .observeNext { [weak self] isHidden in
                 UIView.animate(withDuration: 0.3) {
                     self?.notificationView.isHidden = isHidden
                     self?.notificationView.alpha = isHidden  ? 0 : 1
                 }
             }
-        .dispose(in: reactive.bag)
+            .dispose(in: reactive.bag)
     }
 
     private func setupEmtpyState() {
