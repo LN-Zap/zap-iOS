@@ -683,10 +683,6 @@ internal enum L10n {
       /// Wrong Passcode
       internal static let headline = L10n.tr("Localizable", "scene.time_lock.headline")
     }
-    internal enum Tor {
-      /// Bootstrapping Tor
-      internal static let headline = L10n.tr("Localizable", "scene.tor.headline")
-    }
     internal enum TransactionDetail {
       /// Address
       internal static let addressLabel = L10n.tr("Localizable", "scene.transaction_detail.address_label")

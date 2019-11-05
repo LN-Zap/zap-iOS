@@ -123,11 +123,6 @@ internal enum StoryboardScene {
 
     internal static let timeLockedViewController = SceneType<TimeLockedViewController>(storyboard: TimeLocked.self, identifier: "TimeLockedViewController")
   }
-  internal enum TorConnect: StoryboardType {
-    internal static let storyboardName = "TorConnect"
-
-    internal static let torConnectViewController = SceneType<TorConnectViewController>(storyboard: TorConnect.self, identifier: "TorConnectViewController")
-  }
   internal enum UnlockWallet: StoryboardType {
     internal static let storyboardName = "UnlockWallet"
 

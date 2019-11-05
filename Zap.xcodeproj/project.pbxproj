@@ -358,8 +358,6 @@
 		ADF1BB33219D7F260078BCC4 /* Macaroon.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADF1BB32219D7F260078BCC4 /* Macaroon.swift */; };
 		ADF232D42289A08100CB5053 /* Migrations.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADF232D32289A08100CB5053 /* Migrations.swift */; };
 		ADF4C3D2236095CF00C0E5B2 /* Lndmobile.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = ADF4C3D1236095CF00C0E5B2 /* Lndmobile.framework */; };
-		ADF4C3D72361B83F00C0E5B2 /* TorConnectViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADF4C3D62361B83F00C0E5B2 /* TorConnectViewController.swift */; };
-		ADF4C3D92361B94400C0E5B2 /* TorConnect.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = ADF4C3D82361B94400C0E5B2 /* TorConnect.storyboard */; };
 		ADFA46982226947A007A4C49 /* LndConnectURLTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADFA46972226947A007A4C49 /* LndConnectURLTests.swift */; };
 		ADFAA01B228AED0D000AECA1 /* Sectigo RSA Domain Validation Secure Server CA 2.cer in Resources */ = {isa = PBXBuildFile; fileRef = ADFAA01A228AED0D000AECA1 /* Sectigo RSA Domain Validation Secure Server CA 2.cer */; };
 		ADFAA01D228C0F10000AECA1 /* FeeEstimate.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADFAA01C228C0F10000AECA1 /* FeeEstimate.swift */; };
@@ -983,8 +981,6 @@
 		ADF1BB32219D7F260078BCC4 /* Macaroon.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Macaroon.swift; sourceTree = "<group>"; };
 		ADF232D32289A08100CB5053 /* Migrations.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Migrations.swift; sourceTree = "<group>"; };
 		ADF4C3D1236095CF00C0E5B2 /* Lndmobile.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Lndmobile.framework; path = Carthage/Build/iOS/Lndmobile.framework; sourceTree = SOURCE_ROOT; };
-		ADF4C3D62361B83F00C0E5B2 /* TorConnectViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TorConnectViewController.swift; sourceTree = "<group>"; };
-		ADF4C3D82361B94400C0E5B2 /* TorConnect.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = TorConnect.storyboard; sourceTree = "<group>"; };
 		ADF79363208DCB630086B2CA /* PinView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PinView.swift; sourceTree = "<group>"; };
 		ADF79365208E000C0086B2CA /* SetupPinViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetupPinViewController.swift; sourceTree = "<group>"; };
 		ADF79367208E09D00086B2CA /* SetupPinViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetupPinViewModel.swift; sourceTree = "<group>"; };
@@ -1174,7 +1170,6 @@
 		A01009322014BD960001EF94 /* Scenes */ = {
 			isa = PBXGroup;
 			children = (
-				ADF4C3D52361B83100C0E5B2 /* TorConnect */,
 				AD9BB2D7217F6F23009DC878 /* Authentication */,
 				AD667E4E21367E41007B9160 /* Background */,
 				ADADA962228964B50036639F /* ChannelBackup */,
@@ -2197,15 +2192,6 @@
 			path = Migration;
 			sourceTree = "<group>";
 		};
-		ADF4C3D52361B83100C0E5B2 /* TorConnect */ = {
-			isa = PBXGroup;
-			children = (
-				ADF4C3D62361B83F00C0E5B2 /* TorConnectViewController.swift */,
-				ADF4C3D82361B94400C0E5B2 /* TorConnect.storyboard */,
-			);
-			path = TorConnect;
-			sourceTree = "<group>";
-		};
 		ADF79373208F87E60086B2CA /* Confirm Mnemonic */ = {
 			isa = PBXGroup;
 			children = (
@@ -2707,7 +2693,6 @@
 				AD7B1EFC22424753007D4171 /* WalletListCell.xib in Resources */,
 				AD391C6620D16F89007EE22A /* Loading.storyboard in Resources */,
 				AD391C7320D16F89007EE22A /* QRCodeDetail.storyboard in Resources */,
-				ADF4C3D92361B94400C0E5B2 /* TorConnect.storyboard in Resources */,
 				AD391D0A20D16FF5007EE22A /* KeyPadView.xib in Resources */,
 				AD7B1F00224253E8007D4171 /* WalletListActionCell.xib in Resources */,
 				AD391D1120D16FF5007EE22A /* Toast.xib in Resources */,
@@ -3066,7 +3051,6 @@
 			files = (
 				ADADA96822896D950036639F /* LocalDocumentBackupService.swift in Sources */,
 				AD2D912C21567D4C001015B6 /* EventDetailViewController.swift in Sources */,
-				ADF4C3D72361B83F00C0E5B2 /* TorConnectViewController.swift in Sources */,
 				AD81C21921B865E100FA3FA9 /* SyncPercentageEstimator.swift in Sources */,
 				AD7EDAE52108C41D0058CCCA /* WalletViewController.swift in Sources */,
 				AD391C5B20D16F7A007EE22A /* MnemonicViewController.swift in Sources */,

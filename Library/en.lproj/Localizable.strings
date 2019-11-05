@@ -308,8 +308,6 @@
 "scene.push_notification.confirm_button_title" = "Turn on notifications";
 "scene.push_notification.skip_button_title" = "Skip";
 
-"scene.tor.headline" = "Bootstrapping Tor";
-
 "notification.sync.title" = "Please sync";
 "notification.sync.day_12.body" = "Please remember syncing your wallet to make sure you stay safe";
 "notification.sync.day_13.body" = "You have one more day to sync your wallet before it's getting dangerous.";
