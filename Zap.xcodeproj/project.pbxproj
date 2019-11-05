@@ -41,7 +41,6 @@
 		AD196F14234C8FB200A8CD25 /* OnionManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD196F13234C8FB200A8CD25 /* OnionManager.swift */; };
 		AD196F17234C90C500A8CD25 /* Tor.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AD196F15234C90C400A8CD25 /* Tor.framework */; platformFilter = ios; };
 		AD196F18234C90D300A8CD25 /* Tor.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AD196F15234C90C400A8CD25 /* Tor.framework */; };
-		AD196F19234C90D300A8CD25 /* Tor.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = AD196F15234C90C400A8CD25 /* Tor.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		AD196F1E234CA05F00A8CD25 /* OnionConnecter.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD196F1D234CA05F00A8CD25 /* OnionConnecter.swift */; };
 		AD1D37892253C9ED00F32BE1 /* TransactionListUpdater.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD1D37882253C9ED00F32BE1 /* TransactionListUpdater.swift */; };
 		AD1D378B2253C9F900F32BE1 /* PaymentListUpdater.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD1D378A2253C9F900F32BE1 /* PaymentListUpdater.swift */; };
@@ -515,7 +514,6 @@
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
-				AD196F19234C90D300A8CD25 /* Tor.framework in Embed Frameworks */,
 				ADEB61B02216CD7D009D5707 /* Logger.framework in Embed Frameworks */,
 				ADADAD792143B2E700A48E1F /* SwiftLnd.framework in Embed Frameworks */,
 				AD536BFC20E62764002279BC /* Lightning.framework in Embed Frameworks */,
