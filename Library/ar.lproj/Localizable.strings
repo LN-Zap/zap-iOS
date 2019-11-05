@@ -72,7 +72,6 @@
 "scene.settings.item.on_chain_request_address.p2sh" = "P2SH";
 "scene.settings.item.manage_channels" = "إدارة القنوات";
 "scene.settings.item.channel_backup" = "النسخة احتياطية للقناة";
-"scene.settings.item.node_uri" = "Node URI";
 "scene.settings.item.remove_remote_node" = "إدارة المحافظ";
 
 "scene.settings.item.change_pin" = "تغيير الرمز السري";
@@ -252,6 +251,8 @@
 "scene.wallet.empty_state.title" = "تمويل محفظتك";
 "scene.wallet.empty_state.message" = "محفظتك فارغة! ابدأ بإيداع بعض الأموال.";
 "scene.wallet.empty_state.button_title" = "إيداع الأموال";
+"scene.wallet.open_channel.message" = "You can’t transact on the the Lightning Network yet. Open a channel to start.";
+"scene.wallet.open_channel.action" = "Open a channel";
 
 "scene.time_lock.headline" = "رمز مرور خاطئ";
 "scene.time_lock.description" = "محفظتك مقفلة من أجل:";
@@ -307,6 +308,16 @@
 "scene.push_notification.message" = "للحفاظ على أمان أموالك ، يحتاج Zap للمزامنة من حين إلى آخر. هل تريد أن يتم إشعارك عندما تحتاج محفظتك إلى المزامنة؟";
 "scene.push_notification.confirm_button_title" = "قم بتشغيل الإشعارات";
 "scene.push_notification.skip_button_title" = "تجاهل";
+
+"scene.my_node.title" = "My Node";
+"scene.my_node.channels.title" = "Channels";
+"scene.my_node.channels.subtitle" = "Manage your capacity";
+"scene.my_node.channel_backup.title" = "Channel Backup";
+"scene.my_node.channel_backup.subtitle" = "Setup emergency options";
+"scene.my_node.settings.title" = "Settings";
+"scene.my_node.settings.subtitle" = "Preferences & stuff";
+"scene.my_node.support.title" = "Support";
+"scene.my_node.support.subtitle" = "Get support and send feedback";
 
 "notification.sync.title" = "يرجى مزامنة";
 "notification.sync.day_12.body" = "يرجى تذكر من مزامنة محفظتك للتأكد من بقائك آمناً";
