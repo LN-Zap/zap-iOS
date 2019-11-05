@@ -21,9 +21,9 @@ final class WalletViewController: UIViewController {
     @IBOutlet private weak var segmentBackground: UIView!
 
     // header
-    @IBOutlet private weak var networkLabel: PaddingLabel!
-    @IBOutlet private weak var nodeAliasButton: UIButton!
-
+    @IBOutlet private weak var syncView: SyncView!
+    @IBOutlet private weak var notificationView: NotificationView!
+    
     // send / receive buttons
     @IBOutlet private weak var bottomCurtain: UIView!
     @IBOutlet private weak var buttonContainerView: UIView!
@@ -38,18 +38,13 @@ final class WalletViewController: UIViewController {
     @IBOutlet private weak var primaryBalanceLabel: UILabel!
     @IBOutlet private weak var secondaryBalanceLabel: UILabel!
 
-    // sync view
-    @IBOutlet private weak var syncBackgroundView: UIView!
-    @IBOutlet private weak var syncViewHeightConstraint: NSLayoutConstraint!
-    @IBOutlet private weak var syncTitleLabel: UILabel!
-    @IBOutlet private weak var syncProgressLabel: UILabel!
-    @IBOutlet private weak var syncProgressView: UIProgressView!
-
     // swiftlint:disable implicitly_unwrapped_optional
     private var walletViewModel: WalletViewModel!
     private var sendButtonTapped: (() -> Void)!
     private var requestButtonTapped: (() -> Void)!
-    private var nodeAliasButtonTapped: (() -> Void)!
+    private var historyButtonTapped: (() -> Void)!
+    private var nodeButtonTapped: (() -> Void)!
+    private var channelButtonTapped: (() -> Void)!
     private var emptyStateViewModel: WalletEmptyStateViewModel!
     // swiftlint:enable implicitly_unwrapped_optional
 
@@ -59,17 +54,25 @@ final class WalletViewController: UIViewController {
         return -(detailView.bounds.height - 45) - 60
     }
 
-    static func instantiate(walletViewModel: WalletViewModel, sendButtonTapped: @escaping () -> Void, requestButtonTapped: @escaping () -> Void, nodeAliasButtonTapped: @escaping () -> Void, emptyStateViewModel: WalletEmptyStateViewModel) -> WalletViewController {
+    // swiftlint:disable:next function_parameter_count
+    static func instantiate(
+        walletViewModel: WalletViewModel,
+        sendButtonTapped: @escaping () -> Void,
+        requestButtonTapped: @escaping () -> Void,
+        historyButtonTapped: @escaping () -> Void,
+        nodeButtonTapped: @escaping () -> Void,
+        channelButtonTapped: @escaping () -> Void,
+        emptyStateViewModel: WalletEmptyStateViewModel
+    ) -> WalletViewController {
         let walletViewController = StoryboardScene.Wallet.walletViewController.instantiate()
         walletViewController.walletViewModel = walletViewModel
 
         walletViewController.sendButtonTapped = sendButtonTapped
         walletViewController.requestButtonTapped = requestButtonTapped
-        walletViewController.nodeAliasButtonTapped = nodeAliasButtonTapped
         walletViewController.emptyStateViewModel = emptyStateViewModel
-
-        walletViewController.tabBarItem.title = Tab.wallet.title
-        walletViewController.tabBarItem.image = Tab.wallet.image
+        walletViewController.historyButtonTapped = historyButtonTapped
+        walletViewController.nodeButtonTapped = nodeButtonTapped
+        walletViewController.channelButtonTapped = channelButtonTapped
 
         return walletViewController
     }
@@ -103,29 +106,45 @@ final class WalletViewController: UIViewController {
         buttonContainerView.clipsToBounds = true
         buttonContainerView.backgroundColor = UIColor.Zap.deepSeaBlue
 
-        networkLabel.backgroundColor = UIColor.Zap.invisibleGray
-        networkLabel.text = Network.testnet.localized
-
         sendButtonBackground.backgroundColor = UIColor.Zap.seaBlue
         receiveButtonBackground.backgroundColor = UIColor.Zap.seaBlue
 
         swapIconImageView.tintColor = UIColor.Zap.lightningOrange
 
-        nodeAliasButton.setTitleColor(UIColor.Zap.gray, for: .normal)
-        nodeAliasButton.titleLabel?.font = UIFont.Zap.regular
-
-        setupPaddingLabel(networkLabel)
         setupPrimaryBalanceLabel()
         setupBindings()
 
         setupDetailView()
-        setupSyncView()
         setupEmtpyState()
+
+        syncView.syncViewModel = walletViewModel.syncViewModel
+        syncView.isHidden = true
+        
+        setupChannelNotification()
     }
 
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
         updateDetailPosition()
+    }
+    
+    private func setupChannelNotification() {
+        notificationView.isHidden = true
+                
+        notificationView.notificationViewModel = NotificationViewModel(message: L10n.Scene.Wallet.OpenChannel.message, actionTitle: L10n.Scene.Wallet.OpenChannel.action) { [weak self] in
+            self?.walletViewModel.didDismissChannelEmptyState.value = true
+            self?.channelButtonTapped()
+        }
+        
+        walletViewModel.shouldHideChannelEmptyState
+            .observeOn(DispatchQueue.main)
+            .observeNext { [weak self] isHidden in
+                UIView.animate(withDuration: 0.3) {
+                    self?.notificationView.isHidden = isHidden
+                    self?.notificationView.alpha = isHidden  ? 0 : 1
+                }
+            }
+            .dispose(in: reactive.bag)
     }
 
     private func setupEmtpyState() {
@@ -135,38 +154,6 @@ final class WalletViewController: UIViewController {
         walletViewModel.shouldHideEmptyWalletState
             .bind(to: emptyStateView.reactive.isHidden)
             .dispose(in: reactive.bag)
-    }
-
-    private func setupSyncView() {
-        walletViewModel.syncViewModel.isSyncing
-            .map { $0 ? UILayoutPriority(rawValue: 1) : UILayoutPriority(rawValue: 999) }
-            .debounce(interval: 2)
-            .observeOn(DispatchQueue.main)
-            .observeNext { [weak self] in
-                self?.syncViewHeightConstraint.priority = $0
-                UIView.animate(withDuration: 0.25) {
-                    self?.view.layoutIfNeeded()
-                }
-            }
-            .dispose(in: reactive.bag)
-
-        syncProgressView.trackTintColor = UIColor.Zap.deepSeaBlue
-
-        walletViewModel.syncViewModel.percentSignal
-            .map { Float($0) }
-            .bind(to: syncProgressView.reactive.progress)
-            .dispose(in: reactive.bag)
-
-        walletViewModel.syncViewModel.percentSignal
-            .map { "\(Int($0 * 100))%" }
-            .bind(to: syncProgressLabel.reactive.text)
-            .dispose(in: reactive.bag)
-
-        syncTitleLabel.text = L10n.Scene.Sync.descriptionLabel
-
-        syncBackgroundView.backgroundColor = UIColor.Zap.seaBlue
-
-        Style.Label.body.apply(to: syncTitleLabel, syncProgressLabel)
     }
 
     private func setupPrimaryBalanceLabel() {
@@ -193,24 +180,8 @@ final class WalletViewController: UIViewController {
                 .observeOn(DispatchQueue.main)
                 .observeNext { [weak self] in
                     self?.circleGraphView.segments = $0
-                },
-            walletViewModel.network
-                .ignoreNils()
-                .map { $0.localized }
-                .bind(to: networkLabel.reactive.text ),
-            walletViewModel.network
-                .map({ $0 == .mainnet })
-                .bind(to: networkLabel.reactive.isHidden),
-            walletViewModel.nodeAlias
-                .bind(to: nodeAliasButton.reactive.title)
+                }
         ].dispose(in: reactive.bag)
-    }
-
-    private func setupPaddingLabel(_ paddingLabel: PaddingLabel) {
-        paddingLabel.edgeInsets = UIEdgeInsets(top: 5, left: 10, bottom: 5, right: 10)
-        Style.Label.body.apply(to: paddingLabel)
-        paddingLabel.layer.cornerRadius = 10
-        paddingLabel.clipsToBounds = true
     }
 
     @IBAction private func presentSend(_ sender: Any) {
@@ -221,12 +192,16 @@ final class WalletViewController: UIViewController {
         requestButtonTapped()
     }
 
-    @IBAction private func swapCurrencyButtonTapped(_ sender: Any) {
-        Settings.shared.swapCurrencies()
+    @IBAction private func presentHistory(_ sender: UIButton) {
+        historyButtonTapped()
     }
 
-    @IBAction private func presentNodeList(_ sender: Any) {
-        nodeAliasButtonTapped()
+    @IBAction private func presentSettings(_ sender: UIButton) {
+        nodeButtonTapped()
+    }
+
+    @IBAction private func swapCurrencyButtonTapped(_ sender: Any) {
+        Settings.shared.swapCurrencies()
     }
 
     private func setupDetailView() {

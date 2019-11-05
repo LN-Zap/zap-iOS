@@ -381,6 +381,34 @@ internal enum L10n {
       /// Enter Passcode
       internal static let headline = L10n.tr("Localizable", "scene.modal_pin.headline")
     }
+    internal enum MyNode {
+      /// My Node
+      internal static let title = L10n.tr("Localizable", "scene.my_node.title")
+      internal enum ChannelBackup {
+        /// Setup emergency options
+        internal static let subtitle = L10n.tr("Localizable", "scene.my_node.channel_backup.subtitle")
+        /// Channel Backup
+        internal static let title = L10n.tr("Localizable", "scene.my_node.channel_backup.title")
+      }
+      internal enum Channels {
+        /// Manage your capacity
+        internal static let subtitle = L10n.tr("Localizable", "scene.my_node.channels.subtitle")
+        /// Channels
+        internal static let title = L10n.tr("Localizable", "scene.my_node.channels.title")
+      }
+      internal enum Settings {
+        /// Preferences & stuff
+        internal static let subtitle = L10n.tr("Localizable", "scene.my_node.settings.subtitle")
+        /// Settings
+        internal static let title = L10n.tr("Localizable", "scene.my_node.settings.title")
+      }
+      internal enum Support {
+        /// Get support and send feedback
+        internal static let subtitle = L10n.tr("Localizable", "scene.my_node.support.subtitle")
+        /// Support
+        internal static let title = L10n.tr("Localizable", "scene.my_node.support.title")
+      }
+    }
     internal enum NodeUri {
       /// Alias
       internal static let aliasLabel = L10n.tr("Localizable", "scene.node_uri.alias_label")
@@ -627,8 +655,6 @@ internal enum L10n {
         internal static let lndLog = L10n.tr("Localizable", "scene.settings.item.lnd_log")
         /// Manage Channels
         internal static let manageChannels = L10n.tr("Localizable", "scene.settings.item.manage_channels")
-        /// Node URI
-        internal static let nodeUri = L10n.tr("Localizable", "scene.settings.item.node_uri")
         /// Privacy Policy
         internal static let privacyPolicy = L10n.tr("Localizable", "scene.settings.item.privacy_policy")
         /// Manage Wallets
@@ -759,6 +785,12 @@ internal enum L10n {
         internal static let message = L10n.tr("Localizable", "scene.wallet.empty_state.message")
         /// Fund your wallet
         internal static let title = L10n.tr("Localizable", "scene.wallet.empty_state.title")
+      }
+      internal enum OpenChannel {
+        /// Open a channel
+        internal static let action = L10n.tr("Localizable", "scene.wallet.open_channel.action")
+        /// You can’t transact on the the Lightning Network yet. Open a channel to start.
+        internal static let message = L10n.tr("Localizable", "scene.wallet.open_channel.message")
       }
     }
     internal enum WalletList {
