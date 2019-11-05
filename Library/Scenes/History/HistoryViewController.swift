@@ -13,6 +13,8 @@ final class HistoryViewController: UIViewController {
     @IBOutlet private weak var tableView: UITableView?
     @IBOutlet private weak var emptyStateLabel: UILabel!
 
+    private let refreshControl = UIRefreshControl()
+    
     private var historyViewModel: HistoryViewModel?
     private var presentFilter: (() -> Void)?
     private var presentDetail: ((HistoryEventType) -> Void)?
@@ -66,6 +68,12 @@ final class HistoryViewController: UIViewController {
             .map { !$0.collection.children.isEmpty }
             .bind(to: emptyStateLabel.reactive.isHidden)
             .dispose(in: reactive.bag)
+
+        navigationController?.navigationBar.prefersLargeTitles = false
+        
+        tableView.refreshControl = refreshControl
+        refreshControl.addTarget(self, action: #selector(refresh(sender:)), for: .valueChanged)
+        navigationItem.hidesSearchBarWhenScrolling = false
     }
 
     override func viewWillAppear(_ animated: Bool) {
@@ -102,6 +110,13 @@ final class HistoryViewController: UIViewController {
 
     @IBAction private func presentFilter(_ sender: Any) {
         presentFilter?()
+    }
+
+    @objc func refresh(sender: UIRefreshControl) {
+        historyViewModel?.refresh()
+        DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 1) {
+            sender.endRefreshing()
+        }
     }
 }
 
