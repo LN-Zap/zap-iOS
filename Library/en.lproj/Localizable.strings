@@ -251,6 +251,8 @@
 "scene.wallet.empty_state.title" = "Fund your wallet";
 "scene.wallet.empty_state.message" = "Your wallet is empty! Get started by depositing some funds.";
 "scene.wallet.empty_state.button_title" = "Deposit funds";
+"scene.wallet.open_channel.message" = "You can’t transact on the the Lightning Network yet. Open a channel to start.";
+"scene.wallet.open_channel.action" = "Open a channel";
 
 "scene.time_lock.headline" = "Wrong Passcode";
 "scene.time_lock.description" = "Your wallet is locked for:";

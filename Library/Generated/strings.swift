@@ -786,6 +786,12 @@ internal enum L10n {
         /// Fund your wallet
         internal static let title = L10n.tr("Localizable", "scene.wallet.empty_state.title")
       }
+      internal enum OpenChannel {
+        /// Open a channel
+        internal static let action = L10n.tr("Localizable", "scene.wallet.open_channel.action")
+        /// You can’t transact on the the Lightning Network yet. Open a channel to start.
+        internal static let message = L10n.tr("Localizable", "scene.wallet.open_channel.message")
+      }
     }
     internal enum WalletList {
       /// Wallets

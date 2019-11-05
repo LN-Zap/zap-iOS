@@ -8,13 +8,13 @@
 import Foundation
 
 final class NotificationViewModel {
-    let title: String
     let message: String
+    let actionTitle: String
     let action: () -> Void
     
-    internal init(title: String, message: String, action: @escaping () -> Void) {
-        self.title = title
+    internal init(message: String, actionTitle: String, action: @escaping () -> Void) {
         self.message = message
+        self.actionTitle = actionTitle
         self.action = action
     }
 }

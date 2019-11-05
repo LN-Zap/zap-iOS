@@ -9,8 +9,8 @@ import Foundation
 
 final class NotificationView: UIView {
     @IBOutlet private weak var backgroundView: UIView!
-    @IBOutlet private weak var headlineLabel: UILabel!
-    @IBOutlet private weak var bodyLabel: UILabel!
+    @IBOutlet private weak var messageLabel: UILabel!
+    @IBOutlet private weak var actionButton: UIButton!
     
     var notificationViewModel: NotificationViewModel? {
         didSet {
@@ -34,8 +34,7 @@ final class NotificationView: UIView {
         backgroundView.layer.cornerRadius = 20
         backgroundView.backgroundColor = UIColor.Zap.seaBlue
         
-        Style.Label.headline.apply(to: headlineLabel)
-        Style.Label.body.apply(to: bodyLabel)
+        Style.Label.body.apply(to: messageLabel)
     }
     
     private func setup() {
@@ -55,8 +54,8 @@ final class NotificationView: UIView {
     }
     
     private func updateNotification() {
-        headlineLabel.text = notificationViewModel?.title
-        bodyLabel.text = notificationViewModel?.message
+        messageLabel.text = notificationViewModel?.message
+        actionButton.setTitle(notificationViewModel?.actionTitle, for: .normal)
     }
     
     @IBAction private func notificationTapped(_ sender: Any) {

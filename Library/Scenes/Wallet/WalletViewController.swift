@@ -130,8 +130,8 @@ final class WalletViewController: UIViewController {
     
     private func setupChannelNotification() {
         notificationView.isHidden = true
-        
-        notificationView.notificationViewModel = NotificationViewModel(title: L10n.Scene.Channels.EmptyState.title, message: L10n.Scene.Channels.EmptyState.message) { [weak self] in
+                
+        notificationView.notificationViewModel = NotificationViewModel(message: L10n.Scene.Wallet.OpenChannel.message, actionTitle: L10n.Scene.Wallet.OpenChannel.action) { [weak self] in
             self?.walletViewModel.didDismissChannelEmptyState.value = true
             self?.channelButtonTapped()
         }
