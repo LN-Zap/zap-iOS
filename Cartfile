@@ -1,0 +1,2 @@
+binary "https://raw.githubusercontent.com/ottosuess/dependencies/master/Lndmobile.json" == 0.8.0
+binary "https://icepa.github.io/Tor.framework/Tor.json" == 400.5.2

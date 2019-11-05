@@ -10,20 +10,24 @@ import SwiftBTC
 
 public final class LightningApi {
     public enum Kind {
-        case local
-        case remote(RPCCredentials)
+        case stream
+        case grpc(RPCCredentials)
+        case tor(RPCCredentials, URLSessionConfiguration)
         case mock(ApiMockTemplate)
 
         func createConnection() -> LightningConnection {
             switch self {
-            case .local:
+            case .stream:
                 #if !REMOTEONLY
                 return StreamingLightningConnection()
                 #else
                 fatalError("local connection not available")
                 #endif
-            case .remote(let configuration):
+            case .grpc(let configuration):
                 return RPCLightningConnection(configuration: configuration)
+            case let .tor(configuration, urlSessionConfiguration):
+                let restClient = LNDRest(credentials: configuration, urlSessionConfiguration: urlSessionConfiguration)
+                return RestLightningConnection(lndRest: restClient)
             case .mock(let template):
                 return template.instance
             }
