@@ -48,4 +48,11 @@ post_install do | installer |
     # Copy Acknowledgements to Settings.bundle
     require 'fileutils'
     FileUtils.cp_r('Pods/Target Support Files/Pods-Zap/Pods-Zap-acknowledgements.plist', 'Zap/Settings.bundle/Acknowledgements.plist', :remove_destination => true)
+
+    # don't include pod dsyms
+    installer.pods_project.targets.each do |target|
+        target.build_configurations.each do |config|
+            config.build_settings['DEBUG_INFORMATION_FORMAT'] = 'dwarf'
+        end
+    end
 end
