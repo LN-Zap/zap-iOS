@@ -23,15 +23,19 @@ final class StreamingWalletUnlockerConnection: WalletUnlockerConnection {
   func genSeed(_ request: Lnrpc_GenSeedRequest, completion: @escaping ApiCompletion<Lnrpc_GenSeedResponse>) {
     LndmobileGenSeed(try? request.serializedData(), LndCallback(completion))
   }
+
   func initWallet(_ request: Lnrpc_InitWalletRequest, completion: @escaping ApiCompletion<Lnrpc_InitWalletResponse>) {
     LndmobileInitWallet(try? request.serializedData(), LndCallback(completion))
   }
+
   func unlockWallet(_ request: Lnrpc_UnlockWalletRequest, completion: @escaping ApiCompletion<Lnrpc_UnlockWalletResponse>) {
     LndmobileUnlockWallet(try? request.serializedData(), LndCallback(completion))
   }
+
   func changePassword(_ request: Lnrpc_ChangePasswordRequest, completion: @escaping ApiCompletion<Lnrpc_ChangePasswordResponse>) {
     LndmobileChangePassword(try? request.serializedData(), LndCallback(completion))
   }
+
 }
 #endif
 
@@ -60,6 +64,34 @@ final class RPCWalletUnlockerConnection: WalletUnlockerConnection {
 
 }
 
+final class RestWalletUnlockerConnection: WalletUnlockerConnection {
+  private let lndRest: LNDRest
+
+  init(lndRest: LNDRest) {
+    self.lndRest = lndRest
+  }
+
+  func genSeed(_ request: Lnrpc_GenSeedRequest, completion: @escaping ApiCompletion<Lnrpc_GenSeedResponse>) {
+    lndRest.run(method: .get, path: "/v1/genseed", data: nil, completion: completion)
+  }
+
+  func initWallet(_ request: Lnrpc_InitWalletRequest, completion: @escaping ApiCompletion<Lnrpc_InitWalletResponse>) {
+    guard let json = try? request.jsonString() else { return }
+    lndRest.run(method: .post, path: "/v1/initwallet", data: json, completion: completion)
+  }
+
+  func unlockWallet(_ request: Lnrpc_UnlockWalletRequest, completion: @escaping ApiCompletion<Lnrpc_UnlockWalletResponse>) {
+    guard let json = try? request.jsonString() else { return }
+    lndRest.run(method: .post, path: "/v1/unlockwallet", data: json, completion: completion)
+  }
+
+  func changePassword(_ request: Lnrpc_ChangePasswordRequest, completion: @escaping ApiCompletion<Lnrpc_ChangePasswordResponse>) {
+    guard let json = try? request.jsonString() else { return }
+    lndRest.run(method: .post, path: "/v1/changepassword", data: json, completion: completion)
+  }
+
+}
+
 final class MockWalletUnlockerConnection: WalletUnlockerConnection {
   private let genSeed: Lnrpc_GenSeedResponse?
   private let initWallet: Lnrpc_InitWalletResponse?
@@ -80,15 +112,19 @@ final class MockWalletUnlockerConnection: WalletUnlockerConnection {
   func genSeed(_ request: Lnrpc_GenSeedRequest, completion: @escaping ApiCompletion<Lnrpc_GenSeedResponse>) {
     completion(Result(value: genSeed, error: LndApiError.unknownError))
   }
+
   func initWallet(_ request: Lnrpc_InitWalletRequest, completion: @escaping ApiCompletion<Lnrpc_InitWalletResponse>) {
     completion(Result(value: initWallet, error: LndApiError.unknownError))
   }
+
   func unlockWallet(_ request: Lnrpc_UnlockWalletRequest, completion: @escaping ApiCompletion<Lnrpc_UnlockWalletResponse>) {
     completion(Result(value: unlockWallet, error: LndApiError.unknownError))
   }
+
   func changePassword(_ request: Lnrpc_ChangePasswordRequest, completion: @escaping ApiCompletion<Lnrpc_ChangePasswordResponse>) {
     completion(Result(value: changePassword, error: LndApiError.unknownError))
   }
+
 }
 
 // MARK: - Lightning
@@ -151,150 +187,198 @@ final class StreamingLightningConnection: LightningConnection {
   func walletBalance(_ request: Lnrpc_WalletBalanceRequest, completion: @escaping ApiCompletion<Lnrpc_WalletBalanceResponse>) {
     LndmobileWalletBalance(try? request.serializedData(), LndCallback(completion))
   }
+
   func channelBalance(_ request: Lnrpc_ChannelBalanceRequest, completion: @escaping ApiCompletion<Lnrpc_ChannelBalanceResponse>) {
     LndmobileChannelBalance(try? request.serializedData(), LndCallback(completion))
   }
+
   func getTransactions(_ request: Lnrpc_GetTransactionsRequest, completion: @escaping ApiCompletion<Lnrpc_TransactionDetails>) {
     LndmobileGetTransactions(try? request.serializedData(), LndCallback(completion))
   }
+
   func estimateFee(_ request: Lnrpc_EstimateFeeRequest, completion: @escaping ApiCompletion<Lnrpc_EstimateFeeResponse>) {
     LndmobileEstimateFee(try? request.serializedData(), LndCallback(completion))
   }
+
   func sendCoins(_ request: Lnrpc_SendCoinsRequest, completion: @escaping ApiCompletion<Lnrpc_SendCoinsResponse>) {
     LndmobileSendCoins(try? request.serializedData(), LndCallback(completion))
   }
+
   func listUnspent(_ request: Lnrpc_ListUnspentRequest, completion: @escaping ApiCompletion<Lnrpc_ListUnspentResponse>) {
     LndmobileListUnspent(try? request.serializedData(), LndCallback(completion))
   }
+
   func subscribeTransactions(_ request: Lnrpc_GetTransactionsRequest, completion: @escaping ApiCompletion<Lnrpc_Transaction>) {
     LndmobileSubscribeTransactions(try? request.serializedData(), LndCallback(completion))
   }
+
   func sendMany(_ request: Lnrpc_SendManyRequest, completion: @escaping ApiCompletion<Lnrpc_SendManyResponse>) {
     LndmobileSendMany(try? request.serializedData(), LndCallback(completion))
   }
+
   func newAddress(_ request: Lnrpc_NewAddressRequest, completion: @escaping ApiCompletion<Lnrpc_NewAddressResponse>) {
     LndmobileNewAddress(try? request.serializedData(), LndCallback(completion))
   }
+
   func signMessage(_ request: Lnrpc_SignMessageRequest, completion: @escaping ApiCompletion<Lnrpc_SignMessageResponse>) {
     LndmobileSignMessage(try? request.serializedData(), LndCallback(completion))
   }
+
   func verifyMessage(_ request: Lnrpc_VerifyMessageRequest, completion: @escaping ApiCompletion<Lnrpc_VerifyMessageResponse>) {
     LndmobileVerifyMessage(try? request.serializedData(), LndCallback(completion))
   }
+
   func connectPeer(_ request: Lnrpc_ConnectPeerRequest, completion: @escaping ApiCompletion<Lnrpc_ConnectPeerResponse>) {
     LndmobileConnectPeer(try? request.serializedData(), LndCallback(completion))
   }
+
   func disconnectPeer(_ request: Lnrpc_DisconnectPeerRequest, completion: @escaping ApiCompletion<Lnrpc_DisconnectPeerResponse>) {
     LndmobileDisconnectPeer(try? request.serializedData(), LndCallback(completion))
   }
+
   func listPeers(_ request: Lnrpc_ListPeersRequest, completion: @escaping ApiCompletion<Lnrpc_ListPeersResponse>) {
     LndmobileListPeers(try? request.serializedData(), LndCallback(completion))
   }
+
   func getInfo(_ request: Lnrpc_GetInfoRequest, completion: @escaping ApiCompletion<Lnrpc_GetInfoResponse>) {
     LndmobileGetInfo(try? request.serializedData(), LndCallback(completion))
   }
+
   func pendingChannels(_ request: Lnrpc_PendingChannelsRequest, completion: @escaping ApiCompletion<Lnrpc_PendingChannelsResponse>) {
     LndmobilePendingChannels(try? request.serializedData(), LndCallback(completion))
   }
+
   func listChannels(_ request: Lnrpc_ListChannelsRequest, completion: @escaping ApiCompletion<Lnrpc_ListChannelsResponse>) {
     LndmobileListChannels(try? request.serializedData(), LndCallback(completion))
   }
+
   func subscribeChannelEvents(_ request: Lnrpc_ChannelEventSubscription, completion: @escaping ApiCompletion<Lnrpc_ChannelEventUpdate>) {
     LndmobileSubscribeChannelEvents(try? request.serializedData(), LndCallback(completion))
   }
+
   func closedChannels(_ request: Lnrpc_ClosedChannelsRequest, completion: @escaping ApiCompletion<Lnrpc_ClosedChannelsResponse>) {
     LndmobileClosedChannels(try? request.serializedData(), LndCallback(completion))
   }
+
   func openChannelSync(_ request: Lnrpc_OpenChannelRequest, completion: @escaping ApiCompletion<Lnrpc_ChannelPoint>) {
     LndmobileOpenChannelSync(try? request.serializedData(), LndCallback(completion))
   }
+
   func openChannel(_ request: Lnrpc_OpenChannelRequest, completion: @escaping ApiCompletion<Lnrpc_OpenStatusUpdate>) {
     LndmobileOpenChannel(try? request.serializedData(), LndCallback(completion))
   }
+
   // skipped: channelAcceptor
   func closeChannel(_ request: Lnrpc_CloseChannelRequest, completion: @escaping ApiCompletion<Lnrpc_CloseStatusUpdate>) {
     LndmobileCloseChannel(try? request.serializedData(), LndCallback(completion))
   }
+
   func abandonChannel(_ request: Lnrpc_AbandonChannelRequest, completion: @escaping ApiCompletion<Lnrpc_AbandonChannelResponse>) {
     LndmobileAbandonChannel(try? request.serializedData(), LndCallback(completion))
   }
+
   // skipped: sendPayment
   func sendPaymentSync(_ request: Lnrpc_SendRequest, completion: @escaping ApiCompletion<Lnrpc_SendResponse>) {
     LndmobileSendPaymentSync(try? request.serializedData(), LndCallback(completion))
   }
+
   // skipped: sendToRoute
   func sendToRouteSync(_ request: Lnrpc_SendToRouteRequest, completion: @escaping ApiCompletion<Lnrpc_SendResponse>) {
     LndmobileSendToRouteSync(try? request.serializedData(), LndCallback(completion))
   }
+
   func addInvoice(_ request: Lnrpc_Invoice, completion: @escaping ApiCompletion<Lnrpc_AddInvoiceResponse>) {
     LndmobileAddInvoice(try? request.serializedData(), LndCallback(completion))
   }
+
   func listInvoices(_ request: Lnrpc_ListInvoiceRequest, completion: @escaping ApiCompletion<Lnrpc_ListInvoiceResponse>) {
     LndmobileListInvoices(try? request.serializedData(), LndCallback(completion))
   }
+
   func lookupInvoice(_ request: Lnrpc_PaymentHash, completion: @escaping ApiCompletion<Lnrpc_Invoice>) {
     LndmobileLookupInvoice(try? request.serializedData(), LndCallback(completion))
   }
+
   func subscribeInvoices(_ request: Lnrpc_InvoiceSubscription, completion: @escaping ApiCompletion<Lnrpc_Invoice>) {
     LndmobileSubscribeInvoices(try? request.serializedData(), LndCallback(completion))
   }
+
   func decodePayReq(_ request: Lnrpc_PayReqString, completion: @escaping ApiCompletion<Lnrpc_PayReq>) {
     LndmobileDecodePayReq(try? request.serializedData(), LndCallback(completion))
   }
+
   func listPayments(_ request: Lnrpc_ListPaymentsRequest, completion: @escaping ApiCompletion<Lnrpc_ListPaymentsResponse>) {
     LndmobileListPayments(try? request.serializedData(), LndCallback(completion))
   }
+
   func deleteAllPayments(_ request: Lnrpc_DeleteAllPaymentsRequest, completion: @escaping ApiCompletion<Lnrpc_DeleteAllPaymentsResponse>) {
     LndmobileDeleteAllPayments(try? request.serializedData(), LndCallback(completion))
   }
+
   func describeGraph(_ request: Lnrpc_ChannelGraphRequest, completion: @escaping ApiCompletion<Lnrpc_ChannelGraph>) {
     LndmobileDescribeGraph(try? request.serializedData(), LndCallback(completion))
   }
+
   func getChanInfo(_ request: Lnrpc_ChanInfoRequest, completion: @escaping ApiCompletion<Lnrpc_ChannelEdge>) {
     LndmobileGetChanInfo(try? request.serializedData(), LndCallback(completion))
   }
+
   func getNodeInfo(_ request: Lnrpc_NodeInfoRequest, completion: @escaping ApiCompletion<Lnrpc_NodeInfo>) {
     LndmobileGetNodeInfo(try? request.serializedData(), LndCallback(completion))
   }
+
   func queryRoutes(_ request: Lnrpc_QueryRoutesRequest, completion: @escaping ApiCompletion<Lnrpc_QueryRoutesResponse>) {
     LndmobileQueryRoutes(try? request.serializedData(), LndCallback(completion))
   }
+
   func getNetworkInfo(_ request: Lnrpc_NetworkInfoRequest, completion: @escaping ApiCompletion<Lnrpc_NetworkInfo>) {
     LndmobileGetNetworkInfo(try? request.serializedData(), LndCallback(completion))
   }
+
   func stopDaemon(_ request: Lnrpc_StopRequest, completion: @escaping ApiCompletion<Lnrpc_StopResponse>) {
     LndmobileStopDaemon(try? request.serializedData(), LndCallback(completion))
   }
+
   func subscribeChannelGraph(_ request: Lnrpc_GraphTopologySubscription, completion: @escaping ApiCompletion<Lnrpc_GraphTopologyUpdate>) {
     LndmobileSubscribeChannelGraph(try? request.serializedData(), LndCallback(completion))
   }
+
   func debugLevel(_ request: Lnrpc_DebugLevelRequest, completion: @escaping ApiCompletion<Lnrpc_DebugLevelResponse>) {
     LndmobileDebugLevel(try? request.serializedData(), LndCallback(completion))
   }
+
   func feeReport(_ request: Lnrpc_FeeReportRequest, completion: @escaping ApiCompletion<Lnrpc_FeeReportResponse>) {
     LndmobileFeeReport(try? request.serializedData(), LndCallback(completion))
   }
+
   func updateChannelPolicy(_ request: Lnrpc_PolicyUpdateRequest, completion: @escaping ApiCompletion<Lnrpc_PolicyUpdateResponse>) {
     LndmobileUpdateChannelPolicy(try? request.serializedData(), LndCallback(completion))
   }
+
   func forwardingHistory(_ request: Lnrpc_ForwardingHistoryRequest, completion: @escaping ApiCompletion<Lnrpc_ForwardingHistoryResponse>) {
     LndmobileForwardingHistory(try? request.serializedData(), LndCallback(completion))
   }
+
   func exportChannelBackup(_ request: Lnrpc_ExportChannelBackupRequest, completion: @escaping ApiCompletion<Lnrpc_ChannelBackup>) {
     LndmobileExportChannelBackup(try? request.serializedData(), LndCallback(completion))
   }
+
   func exportAllChannelBackups(_ request: Lnrpc_ChanBackupExportRequest, completion: @escaping ApiCompletion<Lnrpc_ChanBackupSnapshot>) {
     LndmobileExportAllChannelBackups(try? request.serializedData(), LndCallback(completion))
   }
+
   func verifyChanBackup(_ request: Lnrpc_ChanBackupSnapshot, completion: @escaping ApiCompletion<Lnrpc_VerifyChanBackupResponse>) {
     LndmobileVerifyChanBackup(try? request.serializedData(), LndCallback(completion))
   }
+
   func restoreChannelBackups(_ request: Lnrpc_RestoreChanBackupRequest, completion: @escaping ApiCompletion<Lnrpc_RestoreBackupResponse>) {
     LndmobileRestoreChannelBackups(try? request.serializedData(), LndCallback(completion))
   }
+
   func subscribeChannelBackups(_ request: Lnrpc_ChannelBackupSubscription, completion: @escaping ApiCompletion<Lnrpc_ChanBackupSnapshot>) {
     LndmobileSubscribeChannelBackups(try? request.serializedData(), LndCallback(completion))
   }
+
 }
 #endif
 
@@ -337,6 +421,7 @@ final class RPCLightningConnection: LightningConnection {
         Logger.error(error)
     }
   }
+
   private func receiveSubscribeTransactionsUpdate(call: Lnrpc_LightningSubscribeTransactionsCall, completion: @escaping ApiCompletion<Lnrpc_Transaction>) throws {
       try call.receive { [weak self] in
           do {
@@ -394,6 +479,7 @@ final class RPCLightningConnection: LightningConnection {
         Logger.error(error)
     }
   }
+
   private func receiveSubscribeChannelEventsUpdate(call: Lnrpc_LightningSubscribeChannelEventsCall, completion: @escaping ApiCompletion<Lnrpc_ChannelEventUpdate>) throws {
       try call.receive { [weak self] in
           do {
@@ -419,6 +505,7 @@ final class RPCLightningConnection: LightningConnection {
         Logger.error(error)
     }
   }
+
   private func receiveOpenChannelUpdate(call: Lnrpc_LightningOpenChannelCall, completion: @escaping ApiCompletion<Lnrpc_OpenStatusUpdate>) throws {
       try call.receive { [weak self] in
           do {
@@ -438,6 +525,7 @@ final class RPCLightningConnection: LightningConnection {
         Logger.error(error)
     }
   }
+
   private func receiveCloseChannelUpdate(call: Lnrpc_LightningCloseChannelCall, completion: @escaping ApiCompletion<Lnrpc_CloseStatusUpdate>) throws {
       try call.receive { [weak self] in
           do {
@@ -483,6 +571,7 @@ final class RPCLightningConnection: LightningConnection {
         Logger.error(error)
     }
   }
+
   private func receiveSubscribeInvoicesUpdate(call: Lnrpc_LightningSubscribeInvoicesCall, completion: @escaping ApiCompletion<Lnrpc_Invoice>) throws {
       try call.receive { [weak self] in
           do {
@@ -536,6 +625,7 @@ final class RPCLightningConnection: LightningConnection {
         Logger.error(error)
     }
   }
+
   private func receiveSubscribeChannelGraphUpdate(call: Lnrpc_LightningSubscribeChannelGraphCall, completion: @escaping ApiCompletion<Lnrpc_GraphTopologyUpdate>) throws {
       try call.receive { [weak self] in
           do {
@@ -585,6 +675,7 @@ final class RPCLightningConnection: LightningConnection {
         Logger.error(error)
     }
   }
+
   private func receiveSubscribeChannelBackupsUpdate(call: Lnrpc_LightningSubscribeChannelBackupsCall, completion: @escaping ApiCompletion<Lnrpc_ChanBackupSnapshot>) throws {
       try call.receive { [weak self] in
           do {
@@ -592,6 +683,231 @@ final class RPCLightningConnection: LightningConnection {
               try self?.receiveSubscribeChannelBackupsUpdate(call: call, completion: completion)
           } catch {}
       }
+  }
+
+}
+
+final class RestLightningConnection: LightningConnection {
+  private let lndRest: LNDRest
+
+  init(lndRest: LNDRest) {
+    self.lndRest = lndRest
+  }
+
+  func walletBalance(_ request: Lnrpc_WalletBalanceRequest, completion: @escaping ApiCompletion<Lnrpc_WalletBalanceResponse>) {
+    lndRest.run(method: .get, path: "/v1/balance/blockchain", data: nil, completion: completion)
+  }
+
+  func channelBalance(_ request: Lnrpc_ChannelBalanceRequest, completion: @escaping ApiCompletion<Lnrpc_ChannelBalanceResponse>) {
+    lndRest.run(method: .get, path: "/v1/balance/channels", data: nil, completion: completion)
+  }
+
+  func getTransactions(_ request: Lnrpc_GetTransactionsRequest, completion: @escaping ApiCompletion<Lnrpc_TransactionDetails>) {
+    lndRest.run(method: .get, path: "/v1/transactions", data: nil, completion: completion)
+  }
+
+  func estimateFee(_ request: Lnrpc_EstimateFeeRequest, completion: @escaping ApiCompletion<Lnrpc_EstimateFeeResponse>) {
+    lndRest.run(method: .get, path: "/v1/transactions/fee", data: nil, completion: completion)
+  }
+
+  func sendCoins(_ request: Lnrpc_SendCoinsRequest, completion: @escaping ApiCompletion<Lnrpc_SendCoinsResponse>) {
+    guard let json = try? request.jsonString() else { return }
+    lndRest.run(method: .post, path: "/v1/transactions", data: json, completion: completion)
+  }
+
+  func listUnspent(_ request: Lnrpc_ListUnspentRequest, completion: @escaping ApiCompletion<Lnrpc_ListUnspentResponse>) {
+    lndRest.run(method: .get, path: "/v1/utxos", data: nil, completion: completion)
+  }
+
+  func subscribeTransactions(_ request: Lnrpc_GetTransactionsRequest, completion: @escaping ApiCompletion<Lnrpc_Transaction>) {
+    Logger.error("SubscribeTransactions not implemented", customPrefix: "📺")
+  }
+
+  func sendMany(_ request: Lnrpc_SendManyRequest, completion: @escaping ApiCompletion<Lnrpc_SendManyResponse>) {
+    Logger.error("SendMany not implemented", customPrefix: "📺")
+  }
+
+  func newAddress(_ request: Lnrpc_NewAddressRequest, completion: @escaping ApiCompletion<Lnrpc_NewAddressResponse>) {
+    lndRest.run(method: .get, path: "/v1/newaddress", data: nil, completion: completion)
+  }
+
+  func signMessage(_ request: Lnrpc_SignMessageRequest, completion: @escaping ApiCompletion<Lnrpc_SignMessageResponse>) {
+    guard let json = try? request.jsonString() else { return }
+    lndRest.run(method: .post, path: "/v1/signmessage", data: json, completion: completion)
+  }
+
+  func verifyMessage(_ request: Lnrpc_VerifyMessageRequest, completion: @escaping ApiCompletion<Lnrpc_VerifyMessageResponse>) {
+    guard let json = try? request.jsonString() else { return }
+    lndRest.run(method: .post, path: "/v1/verifymessage", data: json, completion: completion)
+  }
+
+  func connectPeer(_ request: Lnrpc_ConnectPeerRequest, completion: @escaping ApiCompletion<Lnrpc_ConnectPeerResponse>) {
+    guard let json = try? request.jsonString() else { return }
+    lndRest.run(method: .post, path: "/v1/peers", data: json, completion: completion)
+  }
+
+  func disconnectPeer(_ request: Lnrpc_DisconnectPeerRequest, completion: @escaping ApiCompletion<Lnrpc_DisconnectPeerResponse>) {
+    lndRest.run(method: .delete, path: "/v1/peers/\(request.pubKey)", data: nil, completion: completion)
+  }
+
+  func listPeers(_ request: Lnrpc_ListPeersRequest, completion: @escaping ApiCompletion<Lnrpc_ListPeersResponse>) {
+    lndRest.run(method: .get, path: "/v1/peers", data: nil, completion: completion)
+  }
+
+  func getInfo(_ request: Lnrpc_GetInfoRequest, completion: @escaping ApiCompletion<Lnrpc_GetInfoResponse>) {
+    lndRest.run(method: .get, path: "/v1/getinfo", data: nil, completion: completion)
+  }
+
+  func pendingChannels(_ request: Lnrpc_PendingChannelsRequest, completion: @escaping ApiCompletion<Lnrpc_PendingChannelsResponse>) {
+    lndRest.run(method: .get, path: "/v1/channels/pending", data: nil, completion: completion)
+  }
+
+  func listChannels(_ request: Lnrpc_ListChannelsRequest, completion: @escaping ApiCompletion<Lnrpc_ListChannelsResponse>) {
+    lndRest.run(method: .get, path: "/v1/channels", data: nil, completion: completion)
+  }
+
+  func subscribeChannelEvents(_ request: Lnrpc_ChannelEventSubscription, completion: @escaping ApiCompletion<Lnrpc_ChannelEventUpdate>) {
+    Logger.error("SubscribeChannelEvents not implemented", customPrefix: "📺")
+  }
+
+  func closedChannels(_ request: Lnrpc_ClosedChannelsRequest, completion: @escaping ApiCompletion<Lnrpc_ClosedChannelsResponse>) {
+    lndRest.run(method: .get, path: "/v1/channels/closed", data: nil, completion: completion)
+  }
+
+  func openChannelSync(_ request: Lnrpc_OpenChannelRequest, completion: @escaping ApiCompletion<Lnrpc_ChannelPoint>) {
+    guard let json = try? request.jsonString() else { return }
+    lndRest.run(method: .post, path: "/v1/channels", data: json, completion: completion)
+  }
+
+  func openChannel(_ request: Lnrpc_OpenChannelRequest, completion: @escaping ApiCompletion<Lnrpc_OpenStatusUpdate>) {
+    Logger.error("OpenChannel not implemented", customPrefix: "📺")
+  }
+
+  func channelAcceptor(_ request: Lnrpc_ChannelAcceptResponse, completion: @escaping ApiCompletion<Lnrpc_ChannelAcceptRequest>) {
+    Logger.error("ChannelAcceptor not implemented", customPrefix: "📺")
+  }
+
+  func closeChannel(_ request: Lnrpc_CloseChannelRequest, completion: @escaping ApiCompletion<Lnrpc_CloseStatusUpdate>) {
+    lndRest.run(method: .delete, path: "/v1/channels/\(request.channelPoint.fundingTxidStr)/\(request.channelPoint.outputIndex)", data: nil, completion: completion)
+  }
+
+  func abandonChannel(_ request: Lnrpc_AbandonChannelRequest, completion: @escaping ApiCompletion<Lnrpc_AbandonChannelResponse>) {
+    lndRest.run(method: .delete, path: "/v1/channels/abandon/\(request.channelPoint.fundingTxidStr)/\(request.channelPoint.outputIndex)", data: nil, completion: completion)
+  }
+
+  func sendPayment(_ request: Lnrpc_SendRequest, completion: @escaping ApiCompletion<Lnrpc_SendResponse>) {
+    Logger.error("SendPayment not implemented", customPrefix: "📺")
+  }
+
+  func sendPaymentSync(_ request: Lnrpc_SendRequest, completion: @escaping ApiCompletion<Lnrpc_SendResponse>) {
+    guard let json = try? request.jsonString() else { return }
+    lndRest.run(method: .post, path: "/v1/channels/transactions", data: json, completion: completion)
+  }
+
+  func sendToRoute(_ request: Lnrpc_SendToRouteRequest, completion: @escaping ApiCompletion<Lnrpc_SendResponse>) {
+    Logger.error("SendToRoute not implemented", customPrefix: "📺")
+  }
+
+  func sendToRouteSync(_ request: Lnrpc_SendToRouteRequest, completion: @escaping ApiCompletion<Lnrpc_SendResponse>) {
+    guard let json = try? request.jsonString() else { return }
+    lndRest.run(method: .post, path: "/v1/channels/transactions/route", data: json, completion: completion)
+  }
+
+  func addInvoice(_ request: Lnrpc_Invoice, completion: @escaping ApiCompletion<Lnrpc_AddInvoiceResponse>) {
+    guard let json = try? request.jsonString() else { return }
+    lndRest.run(method: .post, path: "/v1/invoices", data: json, completion: completion)
+  }
+
+  func listInvoices(_ request: Lnrpc_ListInvoiceRequest, completion: @escaping ApiCompletion<Lnrpc_ListInvoiceResponse>) {
+    lndRest.run(method: .get, path: "/v1/invoices", data: nil, completion: completion)
+  }
+
+  func lookupInvoice(_ request: Lnrpc_PaymentHash, completion: @escaping ApiCompletion<Lnrpc_Invoice>) {
+    lndRest.run(method: .get, path: "/v1/invoice/\(request.rHashStr)", data: nil, completion: completion)
+  }
+
+  func subscribeInvoices(_ request: Lnrpc_InvoiceSubscription, completion: @escaping ApiCompletion<Lnrpc_Invoice>) {
+    lndRest.run(method: .get, path: "/v1/invoices/subscribe", data: nil, completion: completion)
+  }
+
+  func decodePayReq(_ request: Lnrpc_PayReqString, completion: @escaping ApiCompletion<Lnrpc_PayReq>) {
+    lndRest.run(method: .get, path: "/v1/payreq/\(request.payReq)", data: nil, completion: completion)
+  }
+
+  func listPayments(_ request: Lnrpc_ListPaymentsRequest, completion: @escaping ApiCompletion<Lnrpc_ListPaymentsResponse>) {
+    lndRest.run(method: .get, path: "/v1/payments", data: nil, completion: completion)
+  }
+
+  func deleteAllPayments(_ request: Lnrpc_DeleteAllPaymentsRequest, completion: @escaping ApiCompletion<Lnrpc_DeleteAllPaymentsResponse>) {
+    lndRest.run(method: .delete, path: "/v1/payments", data: nil, completion: completion)
+  }
+
+  func describeGraph(_ request: Lnrpc_ChannelGraphRequest, completion: @escaping ApiCompletion<Lnrpc_ChannelGraph>) {
+    lndRest.run(method: .get, path: "/v1/graph", data: nil, completion: completion)
+  }
+
+  func getChanInfo(_ request: Lnrpc_ChanInfoRequest, completion: @escaping ApiCompletion<Lnrpc_ChannelEdge>) {
+    lndRest.run(method: .get, path: "/v1/graph/edge/\(request.chanID)", data: nil, completion: completion)
+  }
+
+  func getNodeInfo(_ request: Lnrpc_NodeInfoRequest, completion: @escaping ApiCompletion<Lnrpc_NodeInfo>) {
+    lndRest.run(method: .get, path: "/v1/graph/node/\(request.pubKey)", data: nil, completion: completion)
+  }
+
+  func queryRoutes(_ request: Lnrpc_QueryRoutesRequest, completion: @escaping ApiCompletion<Lnrpc_QueryRoutesResponse>) {
+    lndRest.run(method: .get, path: "/v1/graph/routes/\(request.pubKey)/\(request.amt)", data: nil, completion: completion)
+  }
+
+  func getNetworkInfo(_ request: Lnrpc_NetworkInfoRequest, completion: @escaping ApiCompletion<Lnrpc_NetworkInfo>) {
+    lndRest.run(method: .get, path: "/v1/graph/info", data: nil, completion: completion)
+  }
+
+  func stopDaemon(_ request: Lnrpc_StopRequest, completion: @escaping ApiCompletion<Lnrpc_StopResponse>) {
+    Logger.error("StopDaemon not implemented", customPrefix: "📺")
+  }
+
+  func subscribeChannelGraph(_ request: Lnrpc_GraphTopologySubscription, completion: @escaping ApiCompletion<Lnrpc_GraphTopologyUpdate>) {
+    Logger.error("SubscribeChannelGraph not implemented", customPrefix: "📺")
+  }
+
+  func debugLevel(_ request: Lnrpc_DebugLevelRequest, completion: @escaping ApiCompletion<Lnrpc_DebugLevelResponse>) {
+    Logger.error("DebugLevel not implemented", customPrefix: "📺")
+  }
+
+  func feeReport(_ request: Lnrpc_FeeReportRequest, completion: @escaping ApiCompletion<Lnrpc_FeeReportResponse>) {
+    lndRest.run(method: .get, path: "/v1/fees", data: nil, completion: completion)
+  }
+
+  func updateChannelPolicy(_ request: Lnrpc_PolicyUpdateRequest, completion: @escaping ApiCompletion<Lnrpc_PolicyUpdateResponse>) {
+    guard let json = try? request.jsonString() else { return }
+    lndRest.run(method: .post, path: "/v1/chanpolicy", data: json, completion: completion)
+  }
+
+  func forwardingHistory(_ request: Lnrpc_ForwardingHistoryRequest, completion: @escaping ApiCompletion<Lnrpc_ForwardingHistoryResponse>) {
+    guard let json = try? request.jsonString() else { return }
+    lndRest.run(method: .post, path: "/v1/switch", data: json, completion: completion)
+  }
+
+  func exportChannelBackup(_ request: Lnrpc_ExportChannelBackupRequest, completion: @escaping ApiCompletion<Lnrpc_ChannelBackup>) {
+    lndRest.run(method: .get, path: "/v1/channels/backup/\(request.chanPoint.fundingTxidStr)/\(request.chanPoint.outputIndex)", data: nil, completion: completion)
+  }
+
+  func exportAllChannelBackups(_ request: Lnrpc_ChanBackupExportRequest, completion: @escaping ApiCompletion<Lnrpc_ChanBackupSnapshot>) {
+    lndRest.run(method: .get, path: "/v1/channels/backup", data: nil, completion: completion)
+  }
+
+  func verifyChanBackup(_ request: Lnrpc_ChanBackupSnapshot, completion: @escaping ApiCompletion<Lnrpc_VerifyChanBackupResponse>) {
+    guard let json = try? request.jsonString() else { return }
+    lndRest.run(method: .post, path: "/v1/channels/backup/verify", data: json, completion: completion)
+  }
+
+  func restoreChannelBackups(_ request: Lnrpc_RestoreChanBackupRequest, completion: @escaping ApiCompletion<Lnrpc_RestoreBackupResponse>) {
+    guard let json = try? request.jsonString() else { return }
+    lndRest.run(method: .post, path: "/v1/channels/backup/restore", data: json, completion: completion)
+  }
+
+  func subscribeChannelBackups(_ request: Lnrpc_ChannelBackupSubscription, completion: @escaping ApiCompletion<Lnrpc_ChanBackupSnapshot>) {
+    Logger.error("SubscribeChannelBackups not implemented", customPrefix: "📺")
   }
 
 }
@@ -757,148 +1073,196 @@ final class MockLightningConnection: LightningConnection {
   func walletBalance(_ request: Lnrpc_WalletBalanceRequest, completion: @escaping ApiCompletion<Lnrpc_WalletBalanceResponse>) {
     completion(Result(value: walletBalance, error: LndApiError.unknownError))
   }
+
   func channelBalance(_ request: Lnrpc_ChannelBalanceRequest, completion: @escaping ApiCompletion<Lnrpc_ChannelBalanceResponse>) {
     completion(Result(value: channelBalance, error: LndApiError.unknownError))
   }
+
   func getTransactions(_ request: Lnrpc_GetTransactionsRequest, completion: @escaping ApiCompletion<Lnrpc_TransactionDetails>) {
     completion(Result(value: getTransactions, error: LndApiError.unknownError))
   }
+
   func estimateFee(_ request: Lnrpc_EstimateFeeRequest, completion: @escaping ApiCompletion<Lnrpc_EstimateFeeResponse>) {
     completion(Result(value: estimateFee, error: LndApiError.unknownError))
   }
+
   func sendCoins(_ request: Lnrpc_SendCoinsRequest, completion: @escaping ApiCompletion<Lnrpc_SendCoinsResponse>) {
     completion(Result(value: sendCoins, error: LndApiError.unknownError))
   }
+
   func listUnspent(_ request: Lnrpc_ListUnspentRequest, completion: @escaping ApiCompletion<Lnrpc_ListUnspentResponse>) {
     completion(Result(value: listUnspent, error: LndApiError.unknownError))
   }
+
   func subscribeTransactions(_ request: Lnrpc_GetTransactionsRequest, completion: @escaping ApiCompletion<Lnrpc_Transaction>) {
     completion(Result(value: subscribeTransactions, error: LndApiError.unknownError))
   }
+
   func sendMany(_ request: Lnrpc_SendManyRequest, completion: @escaping ApiCompletion<Lnrpc_SendManyResponse>) {
     completion(Result(value: sendMany, error: LndApiError.unknownError))
   }
+
   func newAddress(_ request: Lnrpc_NewAddressRequest, completion: @escaping ApiCompletion<Lnrpc_NewAddressResponse>) {
     completion(Result(value: newAddress, error: LndApiError.unknownError))
   }
+
   func signMessage(_ request: Lnrpc_SignMessageRequest, completion: @escaping ApiCompletion<Lnrpc_SignMessageResponse>) {
     completion(Result(value: signMessage, error: LndApiError.unknownError))
   }
+
   func verifyMessage(_ request: Lnrpc_VerifyMessageRequest, completion: @escaping ApiCompletion<Lnrpc_VerifyMessageResponse>) {
     completion(Result(value: verifyMessage, error: LndApiError.unknownError))
   }
+
   func connectPeer(_ request: Lnrpc_ConnectPeerRequest, completion: @escaping ApiCompletion<Lnrpc_ConnectPeerResponse>) {
     completion(Result(value: connectPeer, error: LndApiError.unknownError))
   }
+
   func disconnectPeer(_ request: Lnrpc_DisconnectPeerRequest, completion: @escaping ApiCompletion<Lnrpc_DisconnectPeerResponse>) {
     completion(Result(value: disconnectPeer, error: LndApiError.unknownError))
   }
+
   func listPeers(_ request: Lnrpc_ListPeersRequest, completion: @escaping ApiCompletion<Lnrpc_ListPeersResponse>) {
     completion(Result(value: listPeers, error: LndApiError.unknownError))
   }
+
   func getInfo(_ request: Lnrpc_GetInfoRequest, completion: @escaping ApiCompletion<Lnrpc_GetInfoResponse>) {
     completion(Result(value: getInfo, error: LndApiError.unknownError))
   }
+
   func pendingChannels(_ request: Lnrpc_PendingChannelsRequest, completion: @escaping ApiCompletion<Lnrpc_PendingChannelsResponse>) {
     completion(Result(value: pendingChannels, error: LndApiError.unknownError))
   }
+
   func listChannels(_ request: Lnrpc_ListChannelsRequest, completion: @escaping ApiCompletion<Lnrpc_ListChannelsResponse>) {
     completion(Result(value: listChannels, error: LndApiError.unknownError))
   }
+
   func subscribeChannelEvents(_ request: Lnrpc_ChannelEventSubscription, completion: @escaping ApiCompletion<Lnrpc_ChannelEventUpdate>) {
     completion(Result(value: subscribeChannelEvents, error: LndApiError.unknownError))
   }
+
   func closedChannels(_ request: Lnrpc_ClosedChannelsRequest, completion: @escaping ApiCompletion<Lnrpc_ClosedChannelsResponse>) {
     completion(Result(value: closedChannels, error: LndApiError.unknownError))
   }
+
   func openChannelSync(_ request: Lnrpc_OpenChannelRequest, completion: @escaping ApiCompletion<Lnrpc_ChannelPoint>) {
     completion(Result(value: openChannelSync, error: LndApiError.unknownError))
   }
+
   func openChannel(_ request: Lnrpc_OpenChannelRequest, completion: @escaping ApiCompletion<Lnrpc_OpenStatusUpdate>) {
     completion(Result(value: openChannel, error: LndApiError.unknownError))
   }
+
   // skipped: channelAcceptor
   func closeChannel(_ request: Lnrpc_CloseChannelRequest, completion: @escaping ApiCompletion<Lnrpc_CloseStatusUpdate>) {
     completion(Result(value: closeChannel, error: LndApiError.unknownError))
   }
+
   func abandonChannel(_ request: Lnrpc_AbandonChannelRequest, completion: @escaping ApiCompletion<Lnrpc_AbandonChannelResponse>) {
     completion(Result(value: abandonChannel, error: LndApiError.unknownError))
   }
+
   // skipped: sendPayment
   func sendPaymentSync(_ request: Lnrpc_SendRequest, completion: @escaping ApiCompletion<Lnrpc_SendResponse>) {
     completion(Result(value: sendPaymentSync, error: LndApiError.unknownError))
   }
+
   // skipped: sendToRoute
   func sendToRouteSync(_ request: Lnrpc_SendToRouteRequest, completion: @escaping ApiCompletion<Lnrpc_SendResponse>) {
     completion(Result(value: sendToRouteSync, error: LndApiError.unknownError))
   }
+
   func addInvoice(_ request: Lnrpc_Invoice, completion: @escaping ApiCompletion<Lnrpc_AddInvoiceResponse>) {
     completion(Result(value: addInvoice, error: LndApiError.unknownError))
   }
+
   func listInvoices(_ request: Lnrpc_ListInvoiceRequest, completion: @escaping ApiCompletion<Lnrpc_ListInvoiceResponse>) {
     completion(Result(value: listInvoices, error: LndApiError.unknownError))
   }
+
   func lookupInvoice(_ request: Lnrpc_PaymentHash, completion: @escaping ApiCompletion<Lnrpc_Invoice>) {
     completion(Result(value: lookupInvoice, error: LndApiError.unknownError))
   }
+
   func subscribeInvoices(_ request: Lnrpc_InvoiceSubscription, completion: @escaping ApiCompletion<Lnrpc_Invoice>) {
     completion(Result(value: subscribeInvoices, error: LndApiError.unknownError))
   }
+
   func decodePayReq(_ request: Lnrpc_PayReqString, completion: @escaping ApiCompletion<Lnrpc_PayReq>) {
     completion(Result(value: decodePayReq, error: LndApiError.unknownError))
   }
+
   func listPayments(_ request: Lnrpc_ListPaymentsRequest, completion: @escaping ApiCompletion<Lnrpc_ListPaymentsResponse>) {
     completion(Result(value: listPayments, error: LndApiError.unknownError))
   }
+
   func deleteAllPayments(_ request: Lnrpc_DeleteAllPaymentsRequest, completion: @escaping ApiCompletion<Lnrpc_DeleteAllPaymentsResponse>) {
     completion(Result(value: deleteAllPayments, error: LndApiError.unknownError))
   }
+
   func describeGraph(_ request: Lnrpc_ChannelGraphRequest, completion: @escaping ApiCompletion<Lnrpc_ChannelGraph>) {
     completion(Result(value: describeGraph, error: LndApiError.unknownError))
   }
+
   func getChanInfo(_ request: Lnrpc_ChanInfoRequest, completion: @escaping ApiCompletion<Lnrpc_ChannelEdge>) {
     completion(Result(value: getChanInfo, error: LndApiError.unknownError))
   }
+
   func getNodeInfo(_ request: Lnrpc_NodeInfoRequest, completion: @escaping ApiCompletion<Lnrpc_NodeInfo>) {
     completion(Result(value: getNodeInfo, error: LndApiError.unknownError))
   }
+
   func queryRoutes(_ request: Lnrpc_QueryRoutesRequest, completion: @escaping ApiCompletion<Lnrpc_QueryRoutesResponse>) {
     completion(Result(value: queryRoutes, error: LndApiError.unknownError))
   }
+
   func getNetworkInfo(_ request: Lnrpc_NetworkInfoRequest, completion: @escaping ApiCompletion<Lnrpc_NetworkInfo>) {
     completion(Result(value: getNetworkInfo, error: LndApiError.unknownError))
   }
+
   func stopDaemon(_ request: Lnrpc_StopRequest, completion: @escaping ApiCompletion<Lnrpc_StopResponse>) {
     completion(Result(value: stopDaemon, error: LndApiError.unknownError))
   }
+
   func subscribeChannelGraph(_ request: Lnrpc_GraphTopologySubscription, completion: @escaping ApiCompletion<Lnrpc_GraphTopologyUpdate>) {
     completion(Result(value: subscribeChannelGraph, error: LndApiError.unknownError))
   }
+
   func debugLevel(_ request: Lnrpc_DebugLevelRequest, completion: @escaping ApiCompletion<Lnrpc_DebugLevelResponse>) {
     completion(Result(value: debugLevel, error: LndApiError.unknownError))
   }
+
   func feeReport(_ request: Lnrpc_FeeReportRequest, completion: @escaping ApiCompletion<Lnrpc_FeeReportResponse>) {
     completion(Result(value: feeReport, error: LndApiError.unknownError))
   }
+
   func updateChannelPolicy(_ request: Lnrpc_PolicyUpdateRequest, completion: @escaping ApiCompletion<Lnrpc_PolicyUpdateResponse>) {
     completion(Result(value: updateChannelPolicy, error: LndApiError.unknownError))
   }
+
   func forwardingHistory(_ request: Lnrpc_ForwardingHistoryRequest, completion: @escaping ApiCompletion<Lnrpc_ForwardingHistoryResponse>) {
     completion(Result(value: forwardingHistory, error: LndApiError.unknownError))
   }
+
   func exportChannelBackup(_ request: Lnrpc_ExportChannelBackupRequest, completion: @escaping ApiCompletion<Lnrpc_ChannelBackup>) {
     completion(Result(value: exportChannelBackup, error: LndApiError.unknownError))
   }
+
   func exportAllChannelBackups(_ request: Lnrpc_ChanBackupExportRequest, completion: @escaping ApiCompletion<Lnrpc_ChanBackupSnapshot>) {
     completion(Result(value: exportAllChannelBackups, error: LndApiError.unknownError))
   }
+
   func verifyChanBackup(_ request: Lnrpc_ChanBackupSnapshot, completion: @escaping ApiCompletion<Lnrpc_VerifyChanBackupResponse>) {
     completion(Result(value: verifyChanBackup, error: LndApiError.unknownError))
   }
+
   func restoreChannelBackups(_ request: Lnrpc_RestoreChanBackupRequest, completion: @escaping ApiCompletion<Lnrpc_RestoreBackupResponse>) {
     completion(Result(value: restoreChannelBackups, error: LndApiError.unknownError))
   }
+
   func subscribeChannelBackups(_ request: Lnrpc_ChannelBackupSubscription, completion: @escaping ApiCompletion<Lnrpc_ChanBackupSnapshot>) {
     completion(Result(value: subscribeChannelBackups, error: LndApiError.unknownError))
   }
+
 }

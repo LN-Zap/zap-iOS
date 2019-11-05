@@ -12,7 +12,7 @@ import SwiftLnd
 import UIKit
 
 protocol SetupCoordinatorDelegate: class {
-    func presentWallet(connection: LightningConnection) throws
+    func presentWallet(connection: LightningConnection, completion: @escaping (Result<Success, Error>) -> Void)
 }
 
 final class SetupCoordinator: Coordinator {
@@ -118,11 +118,13 @@ final class SetupCoordinator: Coordinator {
     }
 
     private func didSetupWallet(connection: LightningConnection) {
-        do {
-            try delegate?.presentWallet(connection: connection)
-            createWalletNavigationController?.dismiss(animated: true, completion: nil)
-        } catch {
-            Logger.error(error)
+        delegate?.presentWallet(connection: connection) { [weak self] result in
+            switch result {
+            case .success:
+                self?.createWalletNavigationController?.dismiss(animated: true, completion: nil)
+            case .failure(let error):
+                Logger.error(error)
+            }
         }
     }
 
@@ -159,9 +161,8 @@ final class SetupCoordinator: Coordinator {
     }
 
     private func connectWallet(_ connection: LightningConnection) {
-        do {
-            try delegate?.presentWallet(connection: connection)
-        } catch {
+        delegate?.presentWallet(connection: connection) { result in
+            guard case .failure(let error) = result else { return }
             Logger.error(error)
         }
     }

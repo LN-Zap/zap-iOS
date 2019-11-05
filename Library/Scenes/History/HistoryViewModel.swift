@@ -14,8 +14,6 @@ import SwiftLnd
 final class HistoryViewModel: NSObject {
     private let historyService: HistoryService
 
-    weak var delegate: BadgeUpdaterDelegate?
-
     let dataSource: MutableObservableArray2D<String, HistoryEventType>
 
     var searchString: String? {
@@ -59,7 +57,6 @@ final class HistoryViewModel: NSObject {
     }
 
     func historyWillAppear() {
-        delegate?.setBadge(0, for: .history)
         currentLastSeenDate = lastSeenDate
         lastSeenDate = Date()
     }
@@ -69,32 +66,6 @@ final class HistoryViewModel: NSObject {
         let filteredEvents = filterEvents(events, searchString: searchString, filterSettings: filterSettings)
         let sectionedCellTypes = bondSections(transactionViewModels: filteredEvents)
         dataSource.replace(with: Array2D<String, HistoryEventType>(sections: sectionedCellTypes), performDiff: true, areEqual: Array2D.areEqual)
-        updateTabBarBadge()
-    }
-
-    func setupTabBarBadge(delegate: BadgeUpdaterDelegate) {
-        self.delegate = delegate
-        updateTabBarBadge()
-    }
-
-    private func updateTabBarBadge() {
-        guard let delegate = delegate else { return }
-
-        var unseenEventCount = 0
-        sectionLoop: for dayNode in dataSource.collection.children {
-            for historyEventNode in dayNode.children {
-                guard let item = historyEventNode.item else {
-                    continue
-                }
-                if item.date > lastSeenDate {
-                    unseenEventCount += 1
-                } else {
-                    break sectionLoop
-                }
-            }
-        }
-
-        delegate.setBadge(unseenEventCount, for: .history)
     }
 
     private func filterEvents(_ events: [HistoryEventType], searchString: String?, filterSettings: FilterSettings) -> [HistoryEventType] {
@@ -125,6 +96,10 @@ final class HistoryViewModel: NSObject {
 
             return Array2D<String, HistoryEventType>.Section(metadata: dateString, items: sortedItems)
         }
+    }
+    
+    func refresh() {
+        historyService.refresh()
     }
 }
 

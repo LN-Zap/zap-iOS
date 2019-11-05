@@ -10,20 +10,24 @@ import SwiftBTC
 
 public final class LightningApi {
     public enum Kind {
-        case local
-        case remote(RPCCredentials)
+        case stream
+        case grpc(RPCCredentials)
+        case tor(RPCCredentials, URLSessionConfiguration)
         case mock(ApiMockTemplate)
 
         func createConnection() -> LightningConnection {
             switch self {
-            case .local:
+            case .stream:
                 #if !REMOTEONLY
                 return StreamingLightningConnection()
                 #else
                 fatalError("local connection not available")
                 #endif
-            case .remote(let configuration):
+            case .grpc(let configuration):
                 return RPCLightningConnection(configuration: configuration)
+            case let .tor(configuration, urlSessionConfiguration):
+                let restClient = LNDRest(credentials: configuration, urlSessionConfiguration: urlSessionConfiguration)
+                return RestLightningConnection(lndRest: restClient)
             case .mock(let template):
                 return template.instance
             }
@@ -144,9 +148,9 @@ public final class LightningApi {
         connection.subscribeInvoices(Lnrpc_InvoiceSubscription(), completion: run(completion, map: Invoice.init))
     }
 
-    public func routes(destination: String, amount: Satoshi, completion: @escaping ApiCompletion<[Route]>) {
+    public func route(destination: String, amount: Satoshi, completion: @escaping ApiCompletion<Route>) {
         let request = Lnrpc_QueryRoutesRequest(destination: destination, amount: amount)
-        connection.queryRoutes(request, completion: run(completion) { $0.routes.map(Route.init) })
+        connection.queryRoutes(request, completion: run(completion) { $0.routes.first.map(Route.init) })
     }
 
     public func connect(pubKey: String, host: String, completion: @escaping ApiCompletion<Success>) {

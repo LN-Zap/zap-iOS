@@ -62,7 +62,7 @@ playground.xcworkspace
 
 .build/
 
-Carthage/Build
+Carthage/
 
 ## Fastlane
 fastlane/screenshots/*/*.png
