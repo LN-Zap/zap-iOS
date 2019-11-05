@@ -44,6 +44,27 @@ internal enum L10n {
     }
   }
 
+  internal enum ExpiryTime {
+    /// 1 Day
+    internal static let oneDay = L10n.tr("Localizable", "expiry_time.one_day")
+    /// 1 Hour
+    internal static let oneHour = L10n.tr("Localizable", "expiry_time.one_hour")
+    /// 1 Minute
+    internal static let oneMinute = L10n.tr("Localizable", "expiry_time.one_minute")
+    /// 1 Week
+    internal static let oneWeek = L10n.tr("Localizable", "expiry_time.one_week")
+    /// 1 Year
+    internal static let oneYear = L10n.tr("Localizable", "expiry_time.one_year")
+    /// 6 Hours
+    internal static let sixHours = L10n.tr("Localizable", "expiry_time.six_hours")
+    /// 10 Minutes
+    internal static let tenMinutes = L10n.tr("Localizable", "expiry_time.ten_minutes")
+    /// 30 Days
+    internal static let thirtyDays = L10n.tr("Localizable", "expiry_time.thirty_days")
+    /// 30 Minutes
+    internal static let thirtyMinutes = L10n.tr("Localizable", "expiry_time.thirty_minutes")
+  }
+
   internal enum Generic {
     /// Cancel
     internal static let cancel = L10n.tr("Localizable", "generic.cancel")
@@ -360,6 +381,34 @@ internal enum L10n {
       /// Enter Passcode
       internal static let headline = L10n.tr("Localizable", "scene.modal_pin.headline")
     }
+    internal enum MyNode {
+      /// My Node
+      internal static let title = L10n.tr("Localizable", "scene.my_node.title")
+      internal enum ChannelBackup {
+        /// Setup emergency options
+        internal static let subtitle = L10n.tr("Localizable", "scene.my_node.channel_backup.subtitle")
+        /// Channel Backup
+        internal static let title = L10n.tr("Localizable", "scene.my_node.channel_backup.title")
+      }
+      internal enum Channels {
+        /// Manage your capacity
+        internal static let subtitle = L10n.tr("Localizable", "scene.my_node.channels.subtitle")
+        /// Channels
+        internal static let title = L10n.tr("Localizable", "scene.my_node.channels.title")
+      }
+      internal enum Settings {
+        /// Preferences & stuff
+        internal static let subtitle = L10n.tr("Localizable", "scene.my_node.settings.subtitle")
+        /// Settings
+        internal static let title = L10n.tr("Localizable", "scene.my_node.settings.title")
+      }
+      internal enum Support {
+        /// Get support and send feedback
+        internal static let subtitle = L10n.tr("Localizable", "scene.my_node.support.subtitle")
+        /// Support
+        internal static let title = L10n.tr("Localizable", "scene.my_node.support.title")
+      }
+    }
     internal enum NodeUri {
       /// Alias
       internal static let aliasLabel = L10n.tr("Localizable", "scene.node_uri.alias_label")
@@ -606,8 +655,6 @@ internal enum L10n {
         internal static let lndLog = L10n.tr("Localizable", "scene.settings.item.lnd_log")
         /// Manage Channels
         internal static let manageChannels = L10n.tr("Localizable", "scene.settings.item.manage_channels")
-        /// Node URI
-        internal static let nodeUri = L10n.tr("Localizable", "scene.settings.item.node_uri")
         /// Privacy Policy
         internal static let privacyPolicy = L10n.tr("Localizable", "scene.settings.item.privacy_policy")
         /// Manage Wallets
@@ -739,6 +786,12 @@ internal enum L10n {
         /// Fund your wallet
         internal static let title = L10n.tr("Localizable", "scene.wallet.empty_state.title")
       }
+      internal enum OpenChannel {
+        /// Open a channel
+        internal static let action = L10n.tr("Localizable", "scene.wallet.open_channel.action")
+        /// You can’t transact on the the Lightning Network yet. Open a channel to start.
+        internal static let message = L10n.tr("Localizable", "scene.wallet.open_channel.message")
+      }
     }
     internal enum WalletList {
       /// Wallets
@@ -781,28 +834,6 @@ internal enum L10n {
       internal static let placeholder = L10n.tr("Localizable", "view.amount_input.placeholder")
     }
   }
-  
-  internal enum ExpiryTime {
-    /// 1 Minute
-    internal static let oneMinute = L10n.tr("Localizable", "expiry_time.one_minute")
-    /// 10 Minutes
-    internal static let tenMinutes = L10n.tr("Localizable", "expiry_time.ten_minutes")
-    /// 30 Minutes
-    internal static let thirtyMinutes = L10n.tr("Localizable", "expiry_time.thirty_minutes")
-    /// 1 Hour
-    internal static let oneHour = L10n.tr("Localizable", "expiry_time.one_hour")
-    /// 6 Hours
-    internal static let sixHours = L10n.tr("Localizable", "expiry_time.six_hours")
-    /// 1 Day
-    internal static let oneDay = L10n.tr("Localizable", "expiry_time.one_day")
-    /// 1 Week
-    internal static let oneWeek = L10n.tr("Localizable", "expiry_time.one_week")
-    /// 30 days
-    internal static let thirtyDays = L10n.tr("Localizable", "expiry_time.thirty_days")
-    /// 1 Year
-    internal static let oneYear = L10n.tr("Localizable", "expiry_time.one_year")
-  }
-    
 }
 // swiftlint:enable explicit_type_interface function_parameter_count identifier_name line_length
 // swiftlint:enable nesting type_body_length type_name

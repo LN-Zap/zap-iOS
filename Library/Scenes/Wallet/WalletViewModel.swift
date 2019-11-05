@@ -27,7 +27,10 @@ final class WalletViewModel: NSObject {
         return lightningService.infoService.info
             .map { $0?.alias }
     }
-
+    
+    var shouldHideChannelEmptyState: Signal<Bool, Never>
+    var didDismissChannelEmptyState = Observable(false)
+    
     init(lightningService: LightningService) {
         self.lightningService = lightningService
         self.syncViewModel = SyncViewModel(lightningService: lightningService)
@@ -44,6 +47,14 @@ final class WalletViewModel: NSObject {
             .map { $0 > 0 }
             .distinctUntilChanged()
 
+        self.shouldHideChannelEmptyState = combineLatest(
+            lightningService.balanceService.onChainConfirmed,
+            lightningService.channelService.all,
+            didDismissChannelEmptyState
+        )
+            .map { !($0 > 0 && $1.collection.isEmpty) || $2 }
+            .distinctUntilChanged()
+        
         super.init()
         
         combineLatest(balanceService.lightningChannelBalance, balanceService.onChainConfirmed, balanceService.totalPending)

@@ -21,24 +21,12 @@ final class SettingsViewController: GroupedTableViewController {
 
     init(info: Info?,
          connection: LightningConnection,
-         disconnectWalletDelegate: DisconnectWalletDelegate,
          authenticationViewModel: AuthenticationViewModel,
-         pushNodeURIViewController: @escaping (UINavigationController) -> Void,
-         pushLndLogViewController: @escaping (UINavigationController) -> Void,
-         pushChannelBackup: @escaping (UINavigationController) -> Void) {
+         pushLndLogViewController: @escaping (UINavigationController) -> Void
+    ) {
         self.info = info
 
-        var lightningRows: [SettingsItem] = [
-            PushViewControllerSettingsItem(title: L10n.Scene.Settings.Item.channelBackup, pushViewController: pushChannelBackup),
-            LightningRequestExpirySelectionSettingsItem()
-        ]
-
-        if let info = info, !info.uris.isEmpty {
-            lightningRows.append(PushViewControllerSettingsItem(title: L10n.Scene.Settings.Item.nodeUri, pushViewController: pushNodeURIViewController))
-        }
-
         var walletRows: [SettingsItem] = [
-            ManageWalletsSettingsItem(disconnectWalletDelegate: disconnectWalletDelegate),
             ChangePinSettingsItem(authenticationViewModel: authenticationViewModel)
         ]
 
@@ -51,18 +39,13 @@ final class SettingsViewController: GroupedTableViewController {
                 CurrencySelectionSettingsItem(),
                 BitcoinUnitSelectionSettingsItem(),
                 OnChainRequestAddressTypeSelectionSettingsItem(),
-                BlockExplorerSelectionSettingsItem()
-            ]),
-            Section(title: L10n.Scene.Settings.Section.lightning, rows: lightningRows),
-            Section(title: L10n.Scene.Settings.Section.wallet, rows: walletRows),
-            Section(title: nil, rows: [
-                // swiftlint:disable force_unwrapping
-                SafariSettingsItem(title: L10n.Scene.Settings.Item.help, url: URL(string: L10n.Link.help)!),
-                SafariSettingsItem(title: L10n.Scene.Settings.Item.reportIssue, url: URL(string: L10n.Link.bugReport)!),
-                SafariSettingsItem(title: L10n.Scene.Settings.Item.privacyPolicy, url: URL(string: L10n.Link.privacy)!)
-                // swiftlint:enable force_unwrapping
+                BlockExplorerSelectionSettingsItem(),
+                LightningRequestExpirySelectionSettingsItem()
             ])
         ]
+        sections.append(contentsOf: [
+            Section(title: L10n.Scene.Settings.Section.wallet, rows: walletRows)
+        ])
 
         // display outdated lnd version warning
         if info?.isLndVersionOutdated == true, let currentVersion = info?.version {
@@ -74,10 +57,6 @@ final class SettingsViewController: GroupedTableViewController {
         super.init(sections: sections)
     }
 
-    func updateBadgeIfNeeded(badgeUpdaterDelegate: BadgeUpdaterDelegate) {
-        badgeUpdaterDelegate.setBadge(info?.isLndVersionOutdated == true ? 1 : 0, for: .settings)
-    }
-
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
@@ -86,6 +65,7 @@ final class SettingsViewController: GroupedTableViewController {
         super.viewDidLoad()
 
         title = L10n.Scene.Settings.title
+        navigationItem.largeTitleDisplayMode = .never
     }
 
     override func tableView(_ tableView: UITableView, titleForFooterInSection section: Int) -> String? {

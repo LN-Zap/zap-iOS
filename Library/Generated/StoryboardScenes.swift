@@ -87,6 +87,11 @@ internal enum StoryboardScene {
 
     internal static let modalPinViewController = SceneType<ModalPinViewController>(storyboard: ModalPin.self, identifier: "ModalPinViewController")
   }
+  internal enum Node: StoryboardType {
+    internal static let storyboardName = "Node"
+
+    internal static let nodeViewController = SceneType<NodeViewController>(storyboard: Node.self, identifier: "NodeViewController")
+  }
   internal enum NumericKeyPad: StoryboardType {
     internal static let storyboardName = "NumericKeyPad"
 
