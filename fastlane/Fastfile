@@ -179,11 +179,6 @@ lane :release do
   pre_upload
   update_version
 
-  version = get_version_number(
-    xcodeproj: "Zap.xcodeproj",
-    target: "Zap"
-  )
-
   sync_code_signing(
     readonly: is_ci,
     username: ENV['MATCH_USER'],
