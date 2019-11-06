@@ -20,21 +20,6 @@ or alternatively using `brew cask install fastlane`
 fastlane switch_mainnet
 ```
 
-### mainnet
-```
-fastlane mainnet
-```
-
-### testnet
-```
-fastlane testnet
-```
-Builds new Alpha Build with local lnd enabled and uploads it to Testflight.
-### release
-```
-fastlane release
-```
-Release
 ### update_app_icon
 ```
 fastlane update_app_icon
@@ -65,6 +50,21 @@ fastlane upload_metadata
 fastlane clean
 ```
 
+### mainnet
+```
+fastlane mainnet
+```
+
+### testnet
+```
+fastlane testnet
+```
+Builds new Alpha Build with local lnd enabled and uploads it to Testflight.
+### release
+```
+fastlane release
+```
+Release
 
 ----
 

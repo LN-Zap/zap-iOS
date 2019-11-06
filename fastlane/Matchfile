@@ -1,4 +1,4 @@
-git_url("git@github.com:LN-Zap/iOS-certificates.git")
+git_url("https://github.com/LN-Zap/iOS-certificates.git")
 
 type("development") # The default type, can be: appstore, adhoc, enterprise or development
 

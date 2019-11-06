@@ -27,159 +27,33 @@ lane :switch_mainnet do
   update_app_icon(image: 'logo_mainnet.png')
 end
 
-lane :mainnet do |options|
-  pre_upload
-  check_release_branch('release/mainnet')
-  switch_mainnet
-
-  mainnet_ids = [
-    "com.jackmallers.zap.mainnet",
-    "com.jackmallers.zap.mainnet.Sticker",
-    "com.jackmallers.zap.mainnet.Widget",
-  ]
-
-  if options[:build_number]
-    build_number = options[:build_number]
-  else
-    build_number = latest_testflight_build_number(
-      app_identifier: "com.jackmallers.zap.mainnet",
-      initial_build_number: 0
-    ) + 1
-  end
-
-  increment_build_number(build_number: build_number)
-
-  sync_code_signing(
-    username: ENV['ITUNESCONNECT_USER'],
-    app_identifier: mainnet_ids,
-    type: "appstore"
-  )
-
-  build_ios_app(
-    workspace: "Zap.xcworkspace",
-    scheme: "Zap",
-    configuration: "Debug",
-    output_directory: "./builds/alpha",
-    export_method: "app-store"
-  )
-
-  upload_to_testflight(
-    app_identifier: "com.jackmallers.zap.mainnet",
-    username: ENV['ITUNESCONNECT_USER'],
-    skip_waiting_for_build_processing: true
-  )
-
-  add_git_tag
-
-  reset_git_repo(force: true, disregard_gitignore: false)
-end
-
 private_lane :pre_upload do
   ensure_bundle_exec
   sh("(cd .. ; shasum -c .lndmobile.sha1)")
   sh("python3 check_localizable.py")
-  ensure_git_status_clean
+  if not is_ci?
+    ensure_git_status_clean
+  else
+    setup_travis
+  end
 end
 
-def check_release_branch(prefix)
-  branch = git_branch
-  branch_parts = branch.split('-')
-  if branch_parts.count != 2 || branch_parts[0] != prefix
-    UI.user_error!("only release from a release branch (e.g. release/testflight-0.4.0)")
-  end 
-  increment_version_number(version_number: branch_parts[1])
-end
+def update_version
+  tag = ENV['TRAVIS_TAG']
 
-desc "Builds new Alpha Build with local lnd enabled and uploads it to Testflight."
-lane :testnet do
-  pre_upload
-  check_release_branch('release/testflight')
+  if !tag.start_with?("v")
+    UI.user_error!("Tag does not have prefix 'v'")
+  end
 
-  update_app_icon(image: 'logo_testnet.png')
+  tag[0] = ''
 
-  increment_build_number(build_number:
-    latest_testflight_build_number(
-      initial_build_number: 0
-    ) + 1
-  )
+  tag_parts = tag.split('-')
+  if tag_parts.count != 2
+    UI.user_error!("Not a valid release tag. (Should have format 'v0.5.0-12')")
+  end
 
-  sync_code_signing(
-    username: ENV['ITUNESCONNECT_USER'],
-    app_identifier: app_identifier,
-    type: "appstore"
-  )
-
-  build_ios_app(
-    workspace: "Zap.xcworkspace",
-    scheme: "Zap",
-    configuration: "Debug",
-    output_directory: "./builds/alpha",
-    export_method: "app-store"
-  )
-
-  upload_to_testflight(
-    username: ENV['ITUNESCONNECT_USER'],
-    skip_waiting_for_build_processing: true
-  )
-
-  add_git_tag
-
-  slack(
-    message: "Just uploaded a new iOS alpha to Testflight",
-    use_webhook_configured_username_and_icon: true,
-    default_payloads: []
-  )
-
-  reset_git_repo(force: true, disregard_gitignore: false)
-end
-
-desc "Release"
-lane :release do
-  pre_upload
-  check_release_branch('release/appstore')
-
-  version = get_version_number(
-    xcodeproj: "Zap.xcodeproj",
-    target: "Zap"
-  )
-
-  increment_build_number(build_number:
-    app_store_build_number(
-      live: false,
-      initial_build_number: 0,
-      version: version
-    ) + 1
-  )
-
-  sync_code_signing(
-    username: ENV['ITUNESCONNECT_USER'],
-    app_identifier: app_identifier,
-    type: "appstore"
-  )
-
-  build_ios_app(
-    workspace: "Zap.xcworkspace",
-    scheme: "Zap",
-    configuration: "Release",
-    output_directory: "./builds/appstore",
-    export_method: "app-store"
-  )
-
-  upload_to_app_store(
-    username: ENV['ITUNESCONNECT_USER'],
-    skip_metadata: true,
-    skip_screenshots: true
-  )
-
-  add_git_tag
-
-  slack(
-    message: "Just uploaded a new iOS verstion to the app store",
-    use_webhook_configured_username_and_icon: true,
-    default_payloads: []
-  )
-
-  reset_git_repo(force: true, disregard_gitignore: false)
+  increment_version_number(version_number: tag_parts[0])
+  increment_build_number(build_number: tag_parts[1])
 end
 
 desc "Generate new app icon assets."
@@ -198,13 +72,6 @@ end
 
 desc "Run all tests."
 lane :tests do
-  if is_ci?
-    carthage(
-      command: "bootstrap",
-      platform: "iOS",
-    )
-  end
-
   swiftlint()
   
   run_tests(
@@ -244,3 +111,93 @@ lane :clean do
   reset_git_repo(force: true, disregard_gitignore: false)
 end
 
+lane :mainnet do
+  pre_upload
+  update_version
+  switch_mainnet
+
+  mainnet_ids = [
+    "com.jackmallers.zap.mainnet",
+    "com.jackmallers.zap.mainnet.Sticker",
+    "com.jackmallers.zap.mainnet.Widget",
+  ]
+
+  sync_code_signing(
+    readonly: is_ci,
+    app_identifier: mainnet_ids,
+    type: "appstore"
+  )
+
+  build_ios_app(
+    workspace: "Zap.xcworkspace",
+    scheme: "Zap",
+    configuration: "Debug",
+    output_directory: "./builds/alpha",
+    export_method: "app-store"
+  )
+
+  upload_to_testflight(
+    app_identifier: "com.jackmallers.zap.mainnet",
+    username: ENV['ITUNESCONNECT_USER'],
+    skip_waiting_for_build_processing: true
+  )
+
+  clean
+end
+
+desc "Builds new Alpha Build with local lnd enabled and uploads it to Testflight."
+lane :testnet do
+  pre_upload
+  update_version
+
+  update_app_icon(image: 'logo_testnet.png')
+
+  sync_code_signing(
+    readonly: is_ci,
+    app_identifier: app_identifier,
+    type: "appstore"
+  )
+
+  build_ios_app(
+    workspace: "Zap.xcworkspace",
+    scheme: "Zap",
+    configuration: "Debug",
+    output_directory: "./builds/alpha",
+    export_method: "app-store"
+  )
+
+  upload_to_testflight(
+    username: ENV['ITUNESCONNECT_USER'],
+    skip_waiting_for_build_processing: true
+  )
+
+  clean
+end
+
+desc "Release"
+lane :release do
+  pre_upload
+  update_version
+
+  sync_code_signing(
+    readonly: is_ci,
+    app_identifier: app_identifier,
+    type: "appstore"
+  )
+
+  build_ios_app(
+    workspace: "Zap.xcworkspace",
+    scheme: "Zap",
+    configuration: "Release",
+    output_directory: "./builds/appstore",
+    export_method: "app-store"
+  )
+
+  upload_to_app_store(
+    username: ENV['ITUNESCONNECT_USER'],
+    skip_metadata: true,
+    skip_screenshots: true
+  )
+
+  clean
+end
