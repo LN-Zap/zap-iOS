@@ -124,7 +124,6 @@ lane :mainnet do
 
   sync_code_signing(
     readonly: is_ci,
-    username: ENV['MATCH_USER'],
     app_identifier: mainnet_ids,
     type: "appstore"
   )
@@ -155,7 +154,6 @@ lane :testnet do
 
   sync_code_signing(
     readonly: is_ci,
-    username: ENV['MATCH_USER'],
     app_identifier: app_identifier,
     type: "appstore"
   )
@@ -183,7 +181,6 @@ lane :release do
 
   sync_code_signing(
     readonly: is_ci,
-    username: ENV['MATCH_USER'],
     app_identifier: app_identifier,
     type: "appstore"
   )
