@@ -23,20 +23,20 @@ install:
 stages:
   - test
   - name: deploy
-    #if: 'branch = master AND tag IS present'
+    if: 'branch = master AND tag IS present'
 jobs:
   include:
-#    - stage: test        
-#      script: bundle exec fastlane tests
-#      after_success:
-#        - bash <(curl -s https://codecov.io/bash) -J 'Library' -J 'Lightning'
+    - stage: test        
+      script: bundle exec fastlane tests
+      after_success:
+        - bash <(curl -s https://codecov.io/bash) -J 'Library' -J 'Lightning'
     - stage: deploy
       script: bundle exec fastlane testnet
       name: "Deploy Testnet"
-#    - script: bundle exec fastlane mainnet
-#      name: "Deploy Mainnet"
-#    - script: bundle exec fastlane release
-#      name: "Deploy Appstore"
+    - script: bundle exec fastlane mainnet
+      name: "Deploy Mainnet"
+    - script: bundle exec fastlane release
+      name: "Deploy Appstore"
 env:
   global:
   # MATCH_GIT_BASIC_AUTHORIZATION

@@ -39,7 +39,7 @@ private_lane :pre_upload do
 end
 
 def update_version
-  tag = "v0.5.0-100"
+  tag = ENV['TRAVIS_TAG']
 
   if !tag.start_with?("v")
     UI.user_error!("Tag does not have prefix 'v'")
