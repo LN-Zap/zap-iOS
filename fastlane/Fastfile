@@ -126,7 +126,8 @@ lane :mainnet do
     readonly: is_ci,
     username: ENV['MATCH_USER'],
     app_identifier: mainnet_ids,
-    type: "appstore"
+    type: "appstore",
+    git_basic_authorization: ENV['MATCH_GIT_BASIC_AUTHORIZATION']
   )
 
   build_ios_app(
@@ -157,7 +158,8 @@ lane :testnet do
     readonly: is_ci,
     username: ENV['MATCH_USER'],
     app_identifier: app_identifier,
-    type: "appstore"
+    type: "appstore",
+    git_basic_authorization: ENV['MATCH_GIT_BASIC_AUTHORIZATION']
   )
 
   build_ios_app(
@@ -185,7 +187,8 @@ lane :release do
     readonly: is_ci,
     username: ENV['MATCH_USER'],
     app_identifier: app_identifier,
-    type: "appstore"
+    type: "appstore",
+    git_basic_authorization: ENV['MATCH_GIT_BASIC_AUTHORIZATION']
   )
 
   build_ios_app(
