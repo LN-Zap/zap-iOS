@@ -17,6 +17,8 @@ notifications:
   email:
     on_success: never
     on_failure: change
+install:
+  - carthage bootstrap --platform iOS
 stages:
   - test
   - name: deploy
