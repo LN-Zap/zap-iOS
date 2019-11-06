@@ -38,7 +38,7 @@ private_lane :pre_upload do
   end
 end
 
-def update_version
+def update_version(suffix)
   tag = ENV['TRAVIS_TAG']
 
   if !tag.start_with?("v")
@@ -53,7 +53,7 @@ def update_version
   end
 
   increment_version_number(version_number: tag_parts[0])
-  increment_build_number(build_number: tag_parts[1])
+  increment_build_number(build_number: tag_parts[1] + suffix)
 end
 
 desc "Generate new app icon assets."
@@ -113,7 +113,7 @@ end
 
 lane :mainnet do
   pre_upload
-  update_version
+  update_version("3")
   switch_mainnet
 
   mainnet_ids = [
@@ -148,7 +148,7 @@ end
 desc "Builds new Alpha Build with local lnd enabled and uploads it to Testflight."
 lane :testnet do
   pre_upload
-  update_version
+  update_version("2")
 
   update_app_icon(image: 'logo_testnet.png')
 
@@ -177,7 +177,7 @@ end
 desc "Release"
 lane :release do
   pre_upload
-  update_version
+  update_version("1")
 
   sync_code_signing(
     readonly: is_ci,
