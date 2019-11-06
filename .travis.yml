@@ -33,7 +33,7 @@ jobs:
     - stage: deploy
       script: bundle exec fastlane testnet
       name: "Deploy Testnet"
-    - script: bundle exec fastlane mainnet
-      name: "Deploy Mainnet"
-    - script: bundle exec fastlane release
-      name: "Deploy Appstore"
+#    - script: bundle exec fastlane mainnet
+#      name: "Deploy Mainnet"
+#    - script: bundle exec fastlane release
+#      name: "Deploy Appstore"
