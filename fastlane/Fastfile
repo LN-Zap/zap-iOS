@@ -33,6 +33,8 @@ private_lane :pre_upload do
   sh("python3 check_localizable.py")
   if not is_ci?
     ensure_git_status_clean
+  else
+    setup_travis
   end
 end
 
