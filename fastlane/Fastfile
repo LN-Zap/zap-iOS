@@ -133,8 +133,7 @@ lane :mainnet do
     scheme: "Zap",
     configuration: "Debug",
     output_directory: "./builds/alpha",
-    export_method: "app-store",
-    export_xcargs: "-allowProvisioningUpdates"
+    export_method: "app-store"
   )
 
   upload_to_testflight(
@@ -164,8 +163,7 @@ lane :testnet do
     scheme: "Zap",
     configuration: "Debug",
     output_directory: "./builds/alpha",
-    export_method: "app-store",
-    export_xcargs: "-allowProvisioningUpdates"
+    export_method: "app-store"
   )
 
   upload_to_testflight(
@@ -192,8 +190,7 @@ lane :release do
     scheme: "Zap",
     configuration: "Release",
     output_directory: "./builds/appstore",
-    export_method: "app-store",
-    export_xcargs: "-allowProvisioningUpdates"
+    export_method: "app-store"
   )
 
   upload_to_app_store(
