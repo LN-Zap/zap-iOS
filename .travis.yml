@@ -26,10 +26,10 @@ stages:
     #if: 'branch = master AND tag IS present'
 jobs:
   include:
-    - stage: test        
-      script: bundle exec fastlane tests
-      after_success:
-        - bash <(curl -s https://codecov.io/bash) -J 'Library' -J 'Lightning'
+#    - stage: test        
+#      script: bundle exec fastlane tests
+#      after_success:
+#        - bash <(curl -s https://codecov.io/bash) -J 'Library' -J 'Lightning'
     - stage: deploy
       script: bundle exec fastlane testnet
       name: "Deploy Testnet"
