@@ -18,15 +18,16 @@ notifications:
     on_success: never
     on_failure: change
 install:
+  - bundle install
   - carthage bootstrap --platform iOS
 stages:
   - test
   - name: deploy
-    if: 'branch = master AND tag IS present'
+    #if: 'branch = master AND tag IS present'
 jobs:
   include:
     - stage: test        
-      script: bundle exec fastlane travis
+      script: bundle exec fastlane tests
       after_success:
         - bash <(curl -s https://codecov.io/bash) -J 'Library' -J 'Lightning'
     - stage: deploy
