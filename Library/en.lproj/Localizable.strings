@@ -313,9 +313,9 @@
 "scene.my_node.channels.title" = "Channels";
 "scene.my_node.channels.subtitle" = "Manage your capacity";
 "scene.my_node.channel_backup.title" = "Channel Backup";
-"scene.my_node.channel_backup.subtitle" = "Setup emergency options";
+"scene.my_node.channel_backup.subtitle" = "Set up emergency options";
 "scene.my_node.settings.title" = "Settings";
-"scene.my_node.settings.subtitle" = "Define your preferences";
+"scene.my_node.settings.subtitle" = "Edit your preferences";
 "scene.my_node.support.title" = "Support";
 "scene.my_node.support.subtitle" = "Get support and send feedback";
 
