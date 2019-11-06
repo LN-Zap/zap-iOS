@@ -70,13 +70,13 @@
                                                     </constraints>
                                                 </view>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="150" verticalHuggingPriority="700" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3OD-2c-YFr">
-                                                    <rect key="frame" x="17" y="0.0" width="332" height="128"/>
+                                                    <rect key="frame" x="17" y="0.0" width="322" height="128"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="icon_arrow_down_small" translatesAutoresizingMaskIntoConstraints="NO" id="eDk-Sd-x6U">
-                                                    <rect key="frame" x="359" y="0.0" width="10" height="128"/>
+                                                    <rect key="frame" x="349" y="0.0" width="20" height="128"/>
                                                     <color key="tintColor" name="white"/>
                                                 </imageView>
                                             </subviews>
@@ -84,21 +84,33 @@
                                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="plb-Hf-kIf">
                                             <rect key="frame" x="0.0" y="142" width="369" height="27"/>
                                             <subviews>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="500" verticalHuggingPriority="900" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="URz-an-8ue" customClass="PaddingLabel" customModule="Library" customModuleProvider="target">
-                                                    <rect key="frame" x="163.5" y="0.0" width="42" height="27"/>
+                                                <stackView opaque="NO" contentMode="scaleToFill" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="Z8w-58-iOW">
+                                                    <rect key="frame" x="137.5" y="0.0" width="94" height="27"/>
+                                                    <subviews>
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="500" verticalHuggingPriority="900" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="URz-an-8ue" customClass="PaddingLabel" customModule="Library" customModuleProvider="target">
+                                                            <rect key="frame" x="0.0" y="0.0" width="42" height="27"/>
+                                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                            <nil key="textColor"/>
+                                                            <nil key="highlightedColor"/>
+                                                        </label>
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="eGe-VD-mXB" customClass="PaddingLabel" customModule="Library" customModuleProvider="target">
+                                                            <rect key="frame" x="52" y="0.0" width="42" height="27"/>
+                                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                            <nil key="textColor"/>
+                                                            <nil key="highlightedColor"/>
+                                                        </label>
+                                                    </subviews>
                                                     <constraints>
-                                                        <constraint firstAttribute="height" constant="27" id="txE-8V-uji"/>
+                                                        <constraint firstAttribute="height" constant="27" id="P2x-Oi-0dg"/>
+                                                        <constraint firstItem="eGe-VD-mXB" firstAttribute="width" secondItem="URz-an-8ue" secondAttribute="width" id="Wpt-y2-ayB"/>
                                                     </constraints>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                    <nil key="textColor"/>
-                                                    <nil key="highlightedColor"/>
-                                                </label>
+                                                </stackView>
                                             </subviews>
                                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                             <constraints>
-                                                <constraint firstAttribute="bottom" secondItem="URz-an-8ue" secondAttribute="bottom" id="GaH-T7-Ef5"/>
-                                                <constraint firstItem="URz-an-8ue" firstAttribute="centerX" secondItem="plb-Hf-kIf" secondAttribute="centerX" id="fku-wS-Zs2"/>
-                                                <constraint firstItem="URz-an-8ue" firstAttribute="top" secondItem="plb-Hf-kIf" secondAttribute="top" id="vEj-Ok-JHn"/>
+                                                <constraint firstItem="Z8w-58-iOW" firstAttribute="top" secondItem="plb-Hf-kIf" secondAttribute="top" id="LjF-tI-Y7r"/>
+                                                <constraint firstItem="Z8w-58-iOW" firstAttribute="centerX" secondItem="plb-Hf-kIf" secondAttribute="centerX" id="uwh-PO-AcY"/>
+                                                <constraint firstAttribute="bottom" secondItem="Z8w-58-iOW" secondAttribute="bottom" id="y2n-cG-ZjU"/>
                                             </constraints>
                                         </view>
                                     </subviews>
@@ -135,6 +147,7 @@
                         <outlet property="backgroundView" destination="xhY-WG-Qci" id="Zkm-KZ-ka8"/>
                         <outlet property="networkLabel" destination="URz-an-8ue" id="3sh-U4-t6k"/>
                         <outlet property="nodeAliasLabel" destination="3OD-2c-YFr" id="e6G-xa-P3p"/>
+                        <outlet property="torLabel" destination="eGe-VD-mXB" id="Pn6-Nb-MED"/>
                     </connections>
                 </view>
             </objects>

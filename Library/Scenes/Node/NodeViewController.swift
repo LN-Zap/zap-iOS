@@ -81,7 +81,7 @@ final class NodeViewController: UIViewController {
         
         navigationItem.rightBarButtonItem = UIBarButtonItem(image: Asset.arrowRight.image, style: .plain, target: self, action: #selector(presentWallet))
 
-        nodeHeaderView.update(infoService: lightningService.infoService)
+        nodeHeaderView.update(lightningService: lightningService)
         
         content = [
             [
