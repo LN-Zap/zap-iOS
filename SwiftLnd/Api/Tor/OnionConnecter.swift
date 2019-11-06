@@ -13,15 +13,21 @@ public final class OnionConnecter {
         case connectionError
     }
 
+    private static var urlSessionConfiguration: URLSessionConfiguration?
+    
     private var progress: ((Int) -> Void)?
     private var completion: ((Result<URLSessionConfiguration, OnionError>) -> Void)?
 
     public init() {}
 
     public func start(progress: ((Int) -> Void)?, completion: @escaping (Result<URLSessionConfiguration, OnionError>) -> Void) {
-        self.progress = progress
-        self.completion = completion
-        OnionManager.shared.startTor(delegate: self)
+        if let urlSessionConfiguration = OnionConnecter.urlSessionConfiguration {
+            completion(.success(urlSessionConfiguration))
+        } else {
+            self.progress = progress
+            self.completion = completion
+            OnionManager.shared.startTor(delegate: self)
+        }
     }
 }
 
@@ -44,6 +50,9 @@ extension OnionConnecter: OnionManagerDelegate {
         } else {
             configuration.tlsMinimumSupportedProtocol = .tlsProtocol12
         }
+        
+        OnionConnecter.urlSessionConfiguration = configuration
+        
         completion?(.success(configuration))
     }
 

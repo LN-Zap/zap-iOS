@@ -94,7 +94,7 @@ final class ConnectRemoteNodeViewModel: NSObject {
     func connect(completion: @escaping (ApiCompletion<LightningConnection>)) {
         guard let rpcCredentials = rpcCredentials else { return }
 
-        if rpcCredentials.host.isOnion && OnionManager.shared.state != .connected {
+        if rpcCredentials.host.isOnion {
             OnionConnecter().start(progress: nil, completion: { [weak self] result in
                 switch result {
                 case .success(let urlSessionConfiguration):
