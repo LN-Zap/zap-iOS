@@ -35,5 +35,5 @@ jobs:
       name: "Deploy Testnet"
     - script: bundle exec fastlane mainnet
       name: "Deploy Mainnet"
-    - script: bundle exec fastlane appstore
+    - script: bundle exec fastlane release
       name: "Deploy Appstore"
