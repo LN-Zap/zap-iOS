@@ -37,3 +37,7 @@ jobs:
 #      name: "Deploy Mainnet"
 #    - script: bundle exec fastlane release
 #      name: "Deploy Appstore"
+env:
+global:
+  # MATCH_GIT_BASIC_AUTHORIZATION
+  secure: mBiY02QOHBO6+zaJ7fsxgO2KKwqJqc6CsqcAEbfZpzcv2DugnTgcBp9+R4vSASfJGTOjSojUdtzudeVF2cg+ZnMr/Dk+zOQ5EqyjjilYCci3qEkUjwr/6gblwW2uugmoGTkvdwvwTymBTpEfuHfuzsYgbybEWOIvJ8/ySHQYyUMPUMfSHwfD//l9SRCuHZeyQPoEK16USZInZtVniEdQ40ROWcyzmtb77L5BIDQZ6pBODl8rtIjS8hl/SR+i3sXsW8CES8GXvjKqsiO4p4cujShkCFY2HOPaAL32umeXPUnRPhFsqeDi9dsqi7KR8GqQ8vTBJkymaf4U3+ew+1iuOWZqOFqBR56+74xl2OBQSKUei/Ek31b65xsFAJ9pVJ1XgHxgNZ70kJZWlRR4auX1BxtuzxnFtlG4s9s2lkT3eizCldTTrwDFLTQ8U18p3X55CyfzsCCDu+NBaDW+yDm6l+Bnu5X9k5rMV8U2gHvBbsQ4z7g0ZMyTJuK7Ej8HNDYIb2Etzvztew9p+lbYUQLON8EVuFZmcTy32LhyxObuJzdEWFAx+JwwBYipMy1XQnd0xRZPRoag7L+HptEOiroB6NCIjFnalvTjnFE0dUulLOkXVyYca9fsL35enherFMKlTMKa3od5e1DiJXaZdFlVrt+v9CpZTyLFdcL4YYWBhHo=
