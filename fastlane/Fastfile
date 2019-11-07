@@ -53,7 +53,7 @@ def update_version(suffix)
   end
 
   increment_version_number(version_number: tag_parts[0])
-  increment_build_number(build_number: tag_parts[1] + suffix)
+  increment_build_number(build_number: tag_parts[1] + "." + suffix)
 end
 
 desc "Generate new app icon assets."
@@ -125,7 +125,23 @@ lane :mainnet do
   sync_code_signing(
     readonly: is_ci,
     app_identifier: mainnet_ids,
-    type: "appstore"
+    type: "appstore",
+    output_path: "match"
+  )
+
+  update_project_provisioning(
+    profile: "match/AppStore_com.jackmallers.zap.mainnet.mobileprovision",
+    target_filter:"Zap"
+  )
+
+  update_project_provisioning(
+    profile: "match/AppStore_com.jackmallers.zap.mainnet.Sticker.mobileprovision",
+    target_filter:"Sticker"
+  )
+
+  update_project_provisioning(
+    profile: "match/AppStore_com.jackmallers.zap.mainnet.Widget.mobileprovision",
+    target_filter:"Widget"
   )
 
   build_ios_app(

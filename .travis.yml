@@ -26,17 +26,17 @@ stages:
     if: tag ~= ^v.*
 jobs:
   include:
-    - stage: test        
+    - stage: test
       script: bundle exec fastlane tests
       after_success:
         - bash <(curl -s https://codecov.io/bash) -J 'Library' -J 'Lightning'
     - stage: deploy
       script: bundle exec fastlane testnet
-      name: "Deploy Testnet"
+      name: "Deploy Testflight Testnet"
     - script: bundle exec fastlane mainnet
-      name: "Deploy Mainnet"
+      name: "Deploy Testflight Mainnet"
     - script: bundle exec fastlane release
-      name: "Deploy Appstore"
+      name: "Deploy Appstore Testnet"
 env:
   global:
   # MATCH_GIT_BASIC_AUTHORIZATION
