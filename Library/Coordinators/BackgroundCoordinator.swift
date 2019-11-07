@@ -37,7 +37,7 @@ final class BackgroundCoordinator: Coordinator {
         backgroundWindow.windowLevel = WindowLevel.backgroundWindow
         backgroundWindow.tintColor = UIColor.Zap.lightningOrange
 
-        let viewController = StoryboardScene.Background.backgoundViewController.instantiate()
+        let viewController = BackgoundViewController.instantiate()
         viewController.modalTransitionStyle = .crossDissolve
 
         backgroundWindow.makeKeyAndVisible()
