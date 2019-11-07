@@ -40,6 +40,7 @@ final class LndLogViewController: UIViewController {
         textView.font = UIFont(name: "Courier", size: 10)
         textView.isEditable = false
         textView.autocorrectionType = .no
+        textView.backgroundColor = .white
 
         updateLog()
 
