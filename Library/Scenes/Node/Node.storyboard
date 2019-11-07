@@ -69,14 +69,14 @@
                                                         <constraint firstAttribute="trailing" secondItem="Qlc-bd-Hle" secondAttribute="trailing" id="Y6u-Hc-5GG"/>
                                                     </constraints>
                                                 </view>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="150" verticalHuggingPriority="700" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3OD-2c-YFr">
-                                                    <rect key="frame" x="17" y="0.0" width="322" height="128"/>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="150" verticalHuggingPriority="700" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="3OD-2c-YFr">
+                                                    <rect key="frame" x="17" y="0.0" width="332" height="128"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="icon_arrow_down_small" translatesAutoresizingMaskIntoConstraints="NO" id="eDk-Sd-x6U">
-                                                    <rect key="frame" x="349" y="0.0" width="20" height="128"/>
+                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" horizontalCompressionResistancePriority="1000" image="icon_arrow_down_small" translatesAutoresizingMaskIntoConstraints="NO" id="eDk-Sd-x6U">
+                                                    <rect key="frame" x="359" y="0.0" width="10" height="128"/>
                                                     <color key="tintColor" name="white"/>
                                                 </imageView>
                                             </subviews>
