@@ -257,6 +257,7 @@ final class WalletCoordinator: NSObject, Coordinator {
             }
         } else {
             let viewController = UINavigationController(rootViewController: QRCodeScannerViewController(strategy: strategy))
+            viewController.modalPresentationStyle = .fullScreen
             rootViewController.present(viewController, animated: true)
         }
     }
