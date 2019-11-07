@@ -57,7 +57,9 @@ final class NodeHeaderView: UIView {
     
     func update(lightningService: LightningService) {
         if case .remote(let credentials) = lightningService.connection,
-            !credentials.host.isOnion {
+            credentials.host.isOnion {
+            // don't remove label if it has an .onion url
+        } else {
             torLabel.removeFromSuperview()
         }
         
