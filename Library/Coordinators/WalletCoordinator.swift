@@ -21,6 +21,7 @@ final class WalletCoordinator: NSObject, Coordinator { // swiftlint:disable:this
     private let walletConfigurationStore: WalletConfigurationStore
 
     private weak var detailViewController: UINavigationController?
+    private weak var channelListViewController: UIViewController?
     private weak var disconnectWalletDelegate: WalletDelegate?
 
     private var notificationScheduler: NotificationScheduler?
@@ -276,12 +277,12 @@ final class WalletCoordinator: NSObject, Coordinator { // swiftlint:disable:this
         let navigationController = ModalNavigationController(rootViewController: viewController, height: viewController.preferredHeight)
         rootViewController.present(navigationController, animated: true)
     }
-
+    
     private func presentAddChannel() {
         let strategy = OpenChannelQRCodeScannerStrategy(lightningService: lightningService)
         let viewController = UINavigationController(rootViewController: ChannelQRCodeScannerViewController(strategy: strategy, network: lightningService.infoService.network.value))
         viewController.modalPresentationStyle = .fullScreen
-        rootViewController.present(viewController, animated: true)
+        channelListViewController?.present(viewController, animated: true)
     }
 
     private func presentSafariViewController(for url: URL) {
@@ -315,12 +316,15 @@ final class WalletCoordinator: NSObject, Coordinator { // swiftlint:disable:this
     private func channelList() -> ChannelListViewController {
         let walletEmptyStateViewModel = WalletEmptyStateViewModel(lightningService: lightningService, fundButtonTapped: presentFundWallet)
         let channelListEmptyStateViewModel = ChannelListEmptyStateViewModel(openButtonTapped: presentAddChannel)
-        return ChannelListViewController.instantiate(
+        let viewController = ChannelListViewController.instantiate(
             channelListViewModel: channelListViewModel,
             addChannelButtonTapped: presentAddChannel,
             presentChannelDetail: presentChannelDetail,
             walletEmptyStateViewModel: walletEmptyStateViewModel,
             channelListEmptyStateViewModel: channelListEmptyStateViewModel)
+        
+        channelListViewController = viewController
+        return viewController
     }
     
     private func pushChannelList(on navigationController: UINavigationController) -> (() -> Void) {
