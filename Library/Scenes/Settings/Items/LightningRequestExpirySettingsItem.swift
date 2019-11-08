@@ -9,7 +9,7 @@ import Bond
 import Foundation
 import SwiftLnd
 
-final class LightningRequestExpirySelectionSettingsItem: DetailDisclosureSettingsItem, SubtitleSettingsItem {
+final class LightningRequestExpirySelectionSettingsItem: DetailDisclosureSettingsItem, SubtitleSettingsItem { // swiftlint:disable:this type_name
     let subtitle = Settings.shared.lightningRequestExpiry.map { Optional($0.localized) }
 
     let title = L10n.Scene.Settings.Item.lightningRequestExpiry

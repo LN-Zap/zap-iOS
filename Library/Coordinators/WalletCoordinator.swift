@@ -11,7 +11,7 @@ import SafariServices
 import SwiftBTC
 import UIKit
 
-final class WalletCoordinator: NSObject, Coordinator {
+final class WalletCoordinator: NSObject, Coordinator { // swiftlint:disable:this type_body_length
     let rootViewController: RootViewController
 
     private let lightningService: LightningService

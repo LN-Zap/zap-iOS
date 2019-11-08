@@ -20,7 +20,7 @@ public final class HistoryService: NSObject {
     private let paymentListUpdater: PaymentListUpdater
     private let channelListUpdater: ChannelListUpdater
     
-    init(invoiceListUpdater: InvoiceListUpdater, transactionListUpdater: TransactionListUpdater, paymentListUpdater: PaymentListUpdater, channelListUpdater: ChannelListUpdater) {
+    init(invoiceListUpdater: InvoiceListUpdater, transactionListUpdater: TransactionListUpdater, paymentListUpdater: PaymentListUpdater, channelListUpdater: ChannelListUpdater) { // swiftlint:disable:this function_body_length
         self.invoiceListUpdater = invoiceListUpdater
         self.transactionListUpdater = transactionListUpdater
         self.paymentListUpdater = paymentListUpdater

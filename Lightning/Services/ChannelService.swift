@@ -51,13 +51,13 @@ public final class ChannelService: NSObject {
 
         super.init()
         
-        combineLatest(channelListUpdater.open, channelListUpdater.pending) { (open, pending) -> [Channel] in
-                open.collection + pending.collection
-            }
-            .observeNext { [weak self] in
-                self?.all.replace(with: $0)
-            }
-            .dispose(in: reactive.bag)
+        combineLatest(channelListUpdater.open, channelListUpdater.pending) { open, pending -> [Channel] in
+            open.collection + pending.collection
+        }
+        .observeNext { [weak self] in
+            self?.all.replace(with: $0)
+        }
+        .dispose(in: reactive.bag)
         
         api.exportAllChannelsBackup { [weak self] in
             self?.handleChannelBackup($0)

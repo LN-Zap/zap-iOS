@@ -45,7 +45,7 @@ final class ChannelDetailViewController: ModalDetailViewController {
         setupStackView(channelViewModel)
     }
 
-    func setupStackView(_ channelViewModel: ChannelViewModel) {
+    func setupStackView(_ channelViewModel: ChannelViewModel) { // swiftlint:disable:this function_body_length
         addHeadline(channelViewModel.name.value)
 
         let labelStyle = Style.Label.headline
