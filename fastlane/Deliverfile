@@ -26,5 +26,7 @@ languages([
   'sv',
   'tr',
   'uk',
-  'vi'
+  'vi',
+  'zh-Hans',
+  'zh-Hant'
 ])
