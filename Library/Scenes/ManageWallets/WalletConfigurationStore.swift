@@ -112,14 +112,6 @@ final class WalletConfigurationStore {
     }
 
     func removeConfiguration(_ configuration: WalletConfiguration) {
-        guard let url = FileManager.default.walletDirectory else { return }
-
-        do {
-            try FileManager.default.removeItem(at: url)
-        } catch {
-            Logger.error(error.localizedDescription)
-        }
-
         configurations.removeAll { $0 == configuration }
         if isSelected(walletConfiguration: configuration) {
             selectedWallet = nil
