@@ -48,7 +48,7 @@ final class SendViewModel: NSObject {
         }
     }
 
-    let fee = Observable<Loadable<Result<Satoshi, LndApiError>>>(.loading)
+    let fee = Observable<Loadable<Result<Satoshi, LoadingError>>>(.loading)
 
     let method: SendMethod
 
@@ -204,7 +204,7 @@ final class SendViewModel: NSObject {
                 }
             case .failure(let lndApiError):
                 self.isTransactionDust = lndApiError == .transactionDust
-                self.fee.value = amount > 0 ? .element(.failure(lndApiError)) : .element(.failure(.invalidFee))
+                self.fee.value = amount > 0 ? .element(.failure(LoadingError(error: lndApiError))) : .element(.failure(.invalidFee))
                 self.updateIsUIEnabled()
             }
         }

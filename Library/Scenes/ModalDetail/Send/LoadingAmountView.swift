@@ -16,6 +16,21 @@ enum Loadable<E> {
     case element(E)
 }
 
+enum LoadingError: Error, Equatable {
+    case invalidFee
+    case lndApiError(LndApiError)
+    case unknownError
+    
+    public init(error: Error) {
+        switch error {
+        case is LndApiError:
+            self = .lndApiError(error as! LndApiError) // swiftlint:disable:this force_cast
+        default:
+            self = .unknownError
+        }
+    }
+}
+
 final class LoadingAmountView: UIView {
     let amountLabel: UILabel
     let activityIndicator: UIActivityIndicatorView
@@ -30,7 +45,7 @@ final class LoadingAmountView: UIView {
         }
     }
 
-    init(loadable: Observable<Loadable<Result<Satoshi, LndApiError>>>) {
+    init(loadable: Observable<Loadable<Result<Satoshi, LoadingError>>>) {
         amountLabel = UILabel(frame: CGRect.zero)
         activityIndicator = UIActivityIndicatorView(style: .white)
 
@@ -64,7 +79,7 @@ final class LoadingAmountView: UIView {
         fatalError("init(coder:) has not been implemented")
     }
 
-    private func updateLoadable(_ loadable: Loadable<Result<Satoshi, LndApiError>>) {
+    private func updateLoadable(_ loadable: Loadable<Result<Satoshi, LoadingError>>) {
         switch loadable {
         case .loading:
             activityIndicator.isHidden = false
