@@ -54,8 +54,8 @@ public final class TransactionService {
         }
     }
 
-    public func sendPayment(_ paymentRequest: PaymentRequest, amount: Satoshi, completion: @escaping ApiCompletion<Success>) {
-        api.sendPayment(paymentRequest, amount: amount) { [balanceService, paymentListUpdater] in
+    public func sendPayment(_ paymentRequest: PaymentRequest, amount: Satoshi, feeLimitPercent: Int?, completion: @escaping ApiCompletion<Success>) {
+        api.sendPayment(paymentRequest, amount: amount, feeLimitPercent: feeLimitPercent) { [balanceService, paymentListUpdater] in
             if case .success(let payment) = $0 {
                 balanceService.update()
                 paymentListUpdater.add(payment: payment)

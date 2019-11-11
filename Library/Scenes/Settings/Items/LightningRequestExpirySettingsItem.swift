@@ -34,12 +34,12 @@ final class LightningRequestExpirySettingsItem: NSObject, SelectableSettingsItem
 
     init(expiryTime: ExpiryTime) {
         self.expiryTime = expiryTime
-        title = "\(expiryTime.localized)"
+        title = expiryTime.localized
         super.init()
 
         Settings.shared.lightningRequestExpiry
-            .observeNext { [isSelectedOption] currenteExpiryTime in
-                isSelectedOption.value = currenteExpiryTime == expiryTime
+            .observeNext { [isSelectedOption] currentExpiryTime in
+                isSelectedOption.value = currentExpiryTime == expiryTime
             }
             .dispose(in: reactive.bag)
     }

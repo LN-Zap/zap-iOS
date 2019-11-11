@@ -118,8 +118,8 @@ public final class LightningApi {
         connection.listPayments(Lnrpc_ListPaymentsRequest(), completion: run(completion) { $0.payments.map(Payment.init) })
     }
 
-    public func sendPayment(_ paymentRequest: PaymentRequest, amount: Satoshi?, completion: @escaping ApiCompletion<Payment>) {
-        let request = Lnrpc_SendRequest(paymentRequest: paymentRequest.raw, amount: amount)
+    public func sendPayment(_ paymentRequest: PaymentRequest, amount: Satoshi?, feeLimitPercent: Int?, completion: @escaping ApiCompletion<Payment>) {
+        let request = Lnrpc_SendRequest(paymentRequest: paymentRequest.raw, amount: amount, feeLimitPercent: feeLimitPercent)
         connection.sendPaymentSync(request) { result in
             switch result {
             case .success(let value):

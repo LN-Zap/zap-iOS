@@ -90,13 +90,24 @@ extension Lnrpc_SendCoinsRequest {
 }
 
 extension Lnrpc_SendRequest {
-    init(paymentRequest: String, amount: Satoshi?) {
+    init(paymentRequest: String, amount: Satoshi?, feeLimitPercent: Int?) {
         self.init()
 
         self.paymentRequest = paymentRequest
         if let amount = amount {
             self.amt = amount.int64
         }
+        if let feeLimitPercent = feeLimitPercent {
+            self.feeLimit = Lnrpc_FeeLimit(percent: feeLimitPercent)
+        }
+    }
+}
+
+extension Lnrpc_FeeLimit {
+    init(percent: Int) {
+        self.init()
+
+        self.percent = Int64(percent)
     }
 }
 

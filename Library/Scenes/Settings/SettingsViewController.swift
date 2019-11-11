@@ -40,7 +40,8 @@ final class SettingsViewController: GroupedTableViewController {
                 BitcoinUnitSelectionSettingsItem(),
                 OnChainRequestAddressTypeSelectionSettingsItem(),
                 BlockExplorerSelectionSettingsItem(),
-                LightningRequestExpirySelectionSettingsItem()
+                LightningRequestExpirySelectionSettingsItem(),
+                LightningPaymentFeeLimitSelectionSettingsItem()
             ])
         ]
         sections.append(contentsOf: [
