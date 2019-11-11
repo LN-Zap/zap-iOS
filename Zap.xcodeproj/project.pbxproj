@@ -17,7 +17,7 @@
 		5C18BB71234C09EB00BCF9D9 /* LightningRequestExpirySettingsItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C18BB70234C09EB00BCF9D9 /* LightningRequestExpirySettingsItem.swift */; };
 		5C18BB77234C0BF400BCF9D9 /* ExpiryTime+Localizable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C18BB76234C0BF400BCF9D9 /* ExpiryTime+Localizable.swift */; };
 		5CA13678236555A3003D4B98 /* PaymentFeeLimitPercentage+Localizable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CA13677236555A3003D4B98 /* PaymentFeeLimitPercentage+Localizable.swift */; };
-		5CD423AD2364FB160031194F /* PaymentFeeLimitPercentage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CD423AC2364FB160031194F /* PaymentFeeLimitPercentage.swift */; };
+		5CC505812379FF5E00FB1C19 /* PaymentFeeLimitPercentage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CD423AC2364FB160031194F /* PaymentFeeLimitPercentage.swift */; };
 		5E7CF0840E8C74EB58F80DB5 /* Pods_SnapshotUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C6AEA9B7EDFEBE4BBEB56DAD /* Pods_SnapshotUITests.framework */; };
 		6A9518DA222DCFCA0008FE4F /* Array2DElement.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A9518D9222DCFCA0008FE4F /* Array2DElement.swift */; };
 		7BE67678020C235E19A3D64E /* Pods_SwiftLndTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 71876EABB08A5425C9DA33C7 /* Pods_SwiftLndTests.framework */; };
@@ -1183,6 +1183,14 @@
 			path = Pods;
 			sourceTree = "<group>";
 		};
+		5CC505802379FF2800FB1C19 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				5CD423AC2364FB160031194F /* PaymentFeeLimitPercentage.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
 		A01009322014BD960001EF94 /* Scenes */ = {
 			isa = PBXGroup;
 			children = (
@@ -1419,7 +1427,6 @@
 				ADECC36A20F257BE00D00546 /* Transaction.swift */,
 				AD511B272253744800EDFC7C /* Version.swift */,
 				AD248627225B7E130049532C /* WalletBalance.swift */,
-				5CD423AC2364FB160031194F /* PaymentFeeLimitPercentage.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -1468,6 +1475,7 @@
 			isa = PBXGroup;
 			children = (
 				A06660F8202E070D00EE32FA /* Items */,
+				5CC505802379FF2800FB1C19 /* Model */,
 				A0919144203B1CF400FA525A /* GroupedTableViewController.swift */,
 				A0DDC06D2018C08800AEFF94 /* Section.swift */,
 				A0A05A5620149A0D0007D1C9 /* Settings.swift */,
@@ -1784,8 +1792,8 @@
 				5C18BB76234C0BF400BCF9D9 /* ExpiryTime+Localizable.swift */,
 				A0C2EABD206F8B5B003AE56E /* Localizable.swift */,
 				AD77464D2076162300EC596B /* Network+Localizable.swift */,
-				AD967FEF21062AB20048085B /* RPCConnectQRCodeError+Localizable.swift */,
 				5CA13677236555A3003D4B98 /* PaymentFeeLimitPercentage+Localizable.swift */,
+				AD967FEF21062AB20048085B /* RPCConnectQRCodeError+Localizable.swift */,
 			);
 			path = Localizable;
 			sourceTree = "<group>";
@@ -3139,6 +3147,7 @@
 				AD391C3920D16F0B007EE22A /* BockExplorer.swift in Sources */,
 				ADA81E9E210DE14100B7C6F2 /* UIView.swift in Sources */,
 				ADDD13B62119CE740035D2F9 /* StackViewElement.swift in Sources */,
+				5CC505812379FF5E00FB1C19 /* PaymentFeeLimitPercentage.swift in Sources */,
 				ADA58F9C22049470009A5494 /* WalletConfigurationStore.swift in Sources */,
 				AD27021F22E06E5000D4BF27 /* Keychain.swift in Sources */,
 				AD391C9A20D16FA8007EE22A /* QRCodeScannerView.swift in Sources */,
@@ -3436,7 +3445,6 @@
 				AD79E424219D90EF002589CA /* String+Extensions.swift in Sources */,
 				ADADAD8D2143B3C900A48E1F /* Info.swift in Sources */,
 				ADFB36D72143B73C00146FCC /* LndConstants.swift in Sources */,
-				5CD423AD2364FB160031194F /* PaymentFeeLimitPercentage.swift in Sources */,
 				ADADAD8C2143B3C900A48E1F /* GraphTopologyUpdate.swift in Sources */,
 				AD24862A225B7F210049532C /* ChannelBalance.swift in Sources */,
 				AD5AA2E72271B64500AEDDD7 /* rpc.pb.swift in Sources */,

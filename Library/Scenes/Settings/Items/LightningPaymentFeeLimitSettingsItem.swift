@@ -7,7 +7,6 @@
 
 import Bond
 import Foundation
-import SwiftLnd
 
 final class LightningPaymentFeeLimitSelectionSettingsItem: DetailDisclosureSettingsItem, SubtitleSettingsItem {
     let subtitle = Settings.shared.lightningPaymentFeeLimit.map { Optional($0.localized) }

@@ -6,7 +6,6 @@
 //
 
 import Foundation
-import SwiftLnd
 
 extension PaymentFeeLimitPercentage: Localizable {
     public var localized: String {

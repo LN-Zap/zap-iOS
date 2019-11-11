@@ -308,9 +308,9 @@ final class SendViewController: ModalDetailViewController {
         authenticate { [weak self] result in
             switch result {
             case .success:
+                self?.presentLoading()
                 let sendStartTime = Date()
                 
-                self?.presentLoading()
                 self?.viewModel.send(feeLimitPercent: feeLimitPercent) { result in
                     let minimumLoadingTime: TimeInterval = 1
                     let sendingTime = Date().timeIntervalSince(sendStartTime)
@@ -319,11 +319,9 @@ final class SendViewController: ModalDetailViewController {
                     DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + delay) {
                         switch result {
                         case .success:
-
                             self?.presentSuccess()
                         case .failure(let error):
                             UINotificationFeedbackGenerator().notificationOccurred(.error)
-
                             Toast.presentError(error.localizedDescription)
                             self?.amountInputView?.isEnabled = true
                             self?.recoverFromLoadingState()
