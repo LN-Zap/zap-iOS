@@ -311,7 +311,7 @@ final class SendViewController: ModalDetailViewController {
                 let sendStartTime = Date()
                 
                 self?.presentLoading()
-                self?.viewModel.send(feeLimitPercent: feeLimitPercent) { [weak self] result in
+                self?.viewModel.send(feeLimitPercent: feeLimitPercent) { result in
                     let minimumLoadingTime: TimeInterval = 1
                     let sendingTime = Date().timeIntervalSince(sendStartTime)
                     let delay = max(0, minimumLoadingTime - sendingTime)
