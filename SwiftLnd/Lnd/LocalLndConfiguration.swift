@@ -60,6 +60,7 @@ struct LocalLndConfiguration {
                 ("debuglevel", "ATPL=debug,BRAR=debug,BTCN=info,CHDB=debug,CMGR=debug,CNCT=debug,CRTR=warn,DISC=debug,FNDG=debug,HSWC=debug,LNWL=debug,LTND=debug,NTFN=debug,PEER=info,RPCS=debug,SPHX=debug,SRVR=debug,UTXN=debug"),
                 ("no-macaroons", "1"),
                 ("nolisten", "1"),
+                ("norest", "1"),
                 ("alias", alias),
                 ("color", "#3399FF"),
                 ("maxbackoff", "2s"),
