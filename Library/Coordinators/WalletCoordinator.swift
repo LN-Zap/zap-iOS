@@ -243,8 +243,11 @@ final class WalletCoordinator: NSObject, Coordinator { // swiftlint:disable:this
     }
 
     func presentSend(invoice: String?) {
-        let strategy = SendQRCodeScannerStrategy(lightningService: lightningService, authenticationViewModel: authenticationViewModel)
-
+        let strategy = CombinedQRCodeScannetStrategy(strategies: [
+            SendQRCodeScannerStrategy(lightningService: lightningService, authenticationViewModel: authenticationViewModel),
+            LNURLWithdrawQRCodeScannetStrategy(lightningService: lightningService)
+        ])
+        
         if let invoice = invoice {
             DispatchQueue(label: "presentSend").async {
                 let group = DispatchGroup()

@@ -67,6 +67,11 @@ internal enum StoryboardScene {
 
     internal static let historyViewController = SceneType<HistoryViewController>(storyboard: History.self, identifier: "HistoryViewController")
   }
+  internal enum LNURLWithdraw: StoryboardType {
+    internal static let storyboardName = "LNURLWithdraw"
+
+    internal static let lnurlWithdrawViewController = SceneType<LNURLWithdrawViewController>(storyboard: LNURLWithdraw.self, identifier: "LNURLWithdrawViewController")
+  }
   internal enum LndLog: StoryboardType {
     internal static let storyboardName = "LndLog"
 

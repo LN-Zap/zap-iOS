@@ -7,42 +7,42 @@
 
 import Foundation
 import SwiftBTC
+import SwiftLnd
 
-typealias MilliSatoshi = Decimal
-
-struct WithdrawRequest: Decodable {
-    /// a second-level url which would accept a withdrawal Lightning invoice as query parameter
-    let callback: String // swiftlint:disable:this callback_naming
-    /// an ephemeral secret which would allow user to withdraw funds
-    let k1: String // swiftlint:disable:this identifier_name
-    /// max withdrawable amount for a given user on a given service
-    let maxWithdrawable: MilliSatoshi
-    /// A default withdrawal invoice description
-    let defaultDescription: String
-    /// An optional field, defaults to 1 MilliSatoshi if not present, can not be less than 1 or more than `maxWithdrawable`
-    let minWithdrawable: MilliSatoshi
-}
-
-struct LNURLStatus: Decodable {
-    enum Status: String, Codable {
-        case ok = "OK" // swiftlint:disable:this identifier_name
-        case error = "ERROR"
+private extension String {
+    var isValidURL: Bool {
+        if
+            let detector = try? NSDataDetector(types: NSTextCheckingResult.CheckingType.link.rawValue),
+            let match = detector.firstMatch(in: self, options: [], range: NSRange(location: 0, length: self.utf16.count)) {
+            // it is a link, if the match covers the whole string
+            return match.range.length == self.utf16.count
+        } else {
+            return false
+        }
     }
-    
-    let status: Status
-    let reason: String?
 }
 
-enum LNURL {
-    case withdraw(WithdrawRequest)
+public enum LNURL {
+    case withdraw(LNURLWithdrawRequest)
     
-    enum LNURLError: Error {
+    public enum LNURLError: Error {
         case invalidBech32
         case urlError(Error)
         case jsonError
+        case statusError(String)
+        case unknownError
+        case unsupported
+        
+        init?(status: LNURLStatus) {
+            guard
+                status.status == .error,
+                let reason = status.reason
+                else { return nil }
+            self = .statusError(reason)
+        }
     }
         
-    static func parse(string: String, completion: @escaping (Result<LNURL, LNURLError>) -> Void) {
+    public static func parse(string: String, completion: @escaping (Result<LNURL, LNURLError>) -> Void) {
         switch decodeBech32(string: string) {
         case .success(let data):
             loadJSON(data: data, completion: completion)
@@ -51,30 +51,25 @@ enum LNURL {
         }
     }
     
-    static func loadJSON(data: Data, completion: @escaping (Result<LNURL, LNURLError>) -> Void) {
-        if let lnurl = LNURL.parseJSON(data: data) {
-            completion(.success(lnurl))
-        } else if let dataString = String(data: data, encoding: .utf8),
+    private static func loadJSON(data: Data, completion: @escaping (Result<LNURL, LNURLError>) -> Void) {
+        if let dataString = String(data: data, encoding: .utf8),
+            dataString.isValidURL,
             let url = URL(string: dataString) {
             
             fetch(url: url) { result in
                 switch result {
                 case .success(let data):
-                    if let lnurl = parseJSON(data: data) {
-                        completion(.success(lnurl))
-                    } else {
-                        completion(.failure(.jsonError))
-                    }
+                    completion(parseJSON(data: data))
                 case .failure(let error):
                     completion(.failure(error))
                 }
             }
         } else {
-            completion(.failure(.invalidBech32))
+            completion(parseJSON(data: data))
         }
     }
     
-    internal static func decodeBech32(string: String) -> Result<Data, LNURLError> {
+    private static func decodeBech32(string: String) -> Result<Data, LNURLError> {
         if let (hrp, data) = Bech32.decode(string, limit: false),
             hrp == "lnurl",
             let convertedData = data.convertBits(fromBits: 5, toBits: 8, pad: false) {
@@ -95,18 +90,55 @@ enum LNURL {
         task.resume()
     }
     
-    private static func parseJSON(data: Data) -> LNURL? {
-        guard
+    private static func parseJSON(data: Data) -> Result<LNURL, LNURLError> {
+        if
             let jsonData = try? JSONSerialization.jsonObject(with: data, options: []) as? [String: Any],
-            let tag = jsonData["tag"] as? String
-            else { return nil }
+            let tag = jsonData["tag"] as? String {
+            switch tag {
+            case "withdrawRequest":
+                guard let withdrawRequest = try? JSONDecoder().decode(LNURLWithdrawRequest.self, from: data) else { return .failure(.unknownError) }
+                return .success(.withdraw(withdrawRequest))
+            default:
+                return .failure(.unsupported)
+            }
+        } else if
+            let status = try? JSONDecoder().decode(LNURLStatus.self, from: data),
+            let error = LNURLError(status: status) {
+            return .failure(error)
+        }
         
-        switch tag {
-        case "withdrawRequest":
-            guard let withdrawRequest = try? JSONDecoder().decode(WithdrawRequest.self, from: data) else { return nil }
-            return .withdraw(withdrawRequest)
-        default:
-            return nil
+        return .failure(.unknownError)
+    }
+}
+
+// MARK: - Withdraw
+extension LNURL {
+    public static func withdraw(lightningService: LightningService, request: LNURLWithdrawRequest, amount: Satoshi, completion: @escaping (Result<Success, LNURLError>) -> Void) {
+        lightningService.transactionService.addInvoice(amount: amount, memo: request.defaultDescription, expiry: .oneHour) { result in
+            switch result {
+            case .success(let invoice):
+                // Once accepted user software issues an HTTPS GET request using <callback>?k1=<k1>&pr=<lightning invoice, ...>.
+                let urlString = "\(request.callback)?k1=\(request.k1)&pr=\(invoice)"
+                if let url = URL(string: urlString) {
+                    LNURL.fetch(url: url) {
+                        completion($0.flatMap {
+                            if let status = try? JSONDecoder().decode(LNURLStatus.self, from: $0) {
+                                if let error = LNURLError(status: status) {
+                                    return .failure(error)
+                                } else {
+                                    return .success(Success())
+                                }
+                            } else {
+                                return .failure(.jsonError)
+                            }
+                        })
+                    }
+                } else {
+                    completion(.failure(.unknownError))
+                }
+            case .failure:
+                completion(.failure(.unknownError))
+            }
         }
     }
 }

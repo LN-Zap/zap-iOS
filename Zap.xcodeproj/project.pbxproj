@@ -311,6 +311,13 @@
 		ADB4CBA4225493A300D186BC /* ChannelEventUpdate.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADB4CBA3225493A300D186BC /* ChannelEventUpdate.swift */; };
 		ADB4CBA62254AEEC00D186BC /* ListUpdater.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADB4CBA52254AEEC00D186BC /* ListUpdater.swift */; };
 		ADB4CBA82254BE3400D186BC /* DateEstimator.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADB4CBA72254BE3400D186BC /* DateEstimator.swift */; };
+		ADBC29BE2375CE7C0097D0F6 /* CombinedQRCodeScannetStrategy.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADBC29BD2375CE7C0097D0F6 /* CombinedQRCodeScannetStrategy.swift */; };
+		ADBC29C12375D4C70097D0F6 /* LNURLWithdrawViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADBC29C02375D4C70097D0F6 /* LNURLWithdrawViewController.swift */; };
+		ADBC29C32375D4E30097D0F6 /* LNURLWithdraw.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = ADBC29C22375D4E30097D0F6 /* LNURLWithdraw.storyboard */; };
+		ADBC29C52375D5170097D0F6 /* LNURLWithdrawQRCodeScannetStrategy.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADBC29C42375D5170097D0F6 /* LNURLWithdrawQRCodeScannetStrategy.swift */; };
+		ADBC29C72375DAB70097D0F6 /* LNURLWithdrawViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADBC29C62375DAB70097D0F6 /* LNURLWithdrawViewModel.swift */; };
+		ADBC29CC23795ADB0097D0F6 /* LNURLStatus.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADBC29CB23795ADB0097D0F6 /* LNURLStatus.swift */; };
+		ADBC29CE23795AF30097D0F6 /* LNURLWithdrawRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADBC29CD23795AF30097D0F6 /* LNURLWithdrawRequest.swift */; };
 		ADC08D8B21DBBB16000E730E /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = ADC08D8A21DBBB16000E730E /* README.md */; };
 		ADC0D2F02107953100B8C62F /* PinnedHost.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADC0D2EF2107953100B8C62F /* PinnedHost.swift */; };
 		ADC0D2F321079FF700B8C62F /* www.blockchain.com.cer in Resources */ = {isa = PBXBuildFile; fileRef = ADC0D2F221079FF600B8C62F /* www.blockchain.com.cer */; };
@@ -918,6 +925,13 @@
 		ADBB36282080B2AE005662B4 /* TestingTemplates.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestingTemplates.swift; sourceTree = "<group>"; };
 		ADBB362E2084CA16005662B4 /* MnemonicPageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MnemonicPageViewController.swift; sourceTree = "<group>"; };
 		ADBB36302084CA3B005662B4 /* MnemonicWordListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MnemonicWordListViewController.swift; sourceTree = "<group>"; };
+		ADBC29BD2375CE7C0097D0F6 /* CombinedQRCodeScannetStrategy.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CombinedQRCodeScannetStrategy.swift; sourceTree = "<group>"; };
+		ADBC29C02375D4C70097D0F6 /* LNURLWithdrawViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LNURLWithdrawViewController.swift; sourceTree = "<group>"; };
+		ADBC29C22375D4E30097D0F6 /* LNURLWithdraw.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = LNURLWithdraw.storyboard; sourceTree = "<group>"; };
+		ADBC29C42375D5170097D0F6 /* LNURLWithdrawQRCodeScannetStrategy.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LNURLWithdrawQRCodeScannetStrategy.swift; sourceTree = "<group>"; };
+		ADBC29C62375DAB70097D0F6 /* LNURLWithdrawViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LNURLWithdrawViewModel.swift; sourceTree = "<group>"; };
+		ADBC29CB23795ADB0097D0F6 /* LNURLStatus.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LNURLStatus.swift; sourceTree = "<group>"; };
+		ADBC29CD23795AF30097D0F6 /* LNURLWithdrawRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LNURLWithdrawRequest.swift; sourceTree = "<group>"; };
 		ADBCC07420CC04A4002B6E59 /* TransactionService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransactionService.swift; sourceTree = "<group>"; };
 		ADC08D8A21DBBB16000E730E /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		ADC0D2EF2107953100B8C62F /* PinnedHost.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PinnedHost.swift; sourceTree = "<group>"; };
@@ -1192,6 +1206,7 @@
 				ADCE01B9207B57DA00CA72E8 /* CreateWallet */,
 				A0DDC0732018C74F00AEFF94 /* History */,
 				AD9E243C20A367E00014F9FA /* LndLog */,
+				ADBC29BF2375D4AE0097D0F6 /* Lnurl */,
 				ADCE01CA207B966200CA72E8 /* Loading */,
 				ADA58F9622049007009A5494 /* ManageWallets */,
 				ADEEB5342134668B00D2F992 /* ModalPin */,
@@ -1869,6 +1884,7 @@
 				A06660F4202D97A300EE32FA /* QRCodeScannerView.swift */,
 				A024B85220161560002B8897 /* QRCodeScannerViewController.swift */,
 				ADA6BBBE211B3AEC00A1FF19 /* ScanRectView.swift */,
+				ADBC29BD2375CE7C0097D0F6 /* CombinedQRCodeScannetStrategy.swift */,
 			);
 			path = QRCodeScanner;
 			sourceTree = "<group>";
@@ -2035,6 +2051,17 @@
 				ADBA12012090CD11001F7700 /* KeyPadView.xib */,
 			);
 			path = KeyPad;
+			sourceTree = "<group>";
+		};
+		ADBC29BF2375D4AE0097D0F6 /* Lnurl */ = {
+			isa = PBXGroup;
+			children = (
+				ADBC29C22375D4E30097D0F6 /* LNURLWithdraw.storyboard */,
+				ADBC29C42375D5170097D0F6 /* LNURLWithdrawQRCodeScannetStrategy.swift */,
+				ADBC29C02375D4C70097D0F6 /* LNURLWithdrawViewController.swift */,
+				ADBC29C62375DAB70097D0F6 /* LNURLWithdrawViewModel.swift */,
+			);
+			path = Lnurl;
 			sourceTree = "<group>";
 		};
 		ADC0D2F82107A19F00B8C62F /* blockcypher.com */ = {
@@ -2243,6 +2270,8 @@
 			isa = PBXGroup;
 			children = (
 				ADF4C3E52367591200C0E5B2 /* LNURL.swift */,
+				ADBC29CB23795ADB0097D0F6 /* LNURLStatus.swift */,
+				ADBC29CD23795AF30097D0F6 /* LNURLWithdrawRequest.swift */,
 			);
 			path = LNURL;
 			sourceTree = "<group>";
@@ -2753,6 +2782,7 @@
 				AD7B1F00224253E8007D4171 /* WalletListActionCell.xib in Resources */,
 				AD391D1120D16FF5007EE22A /* Toast.xib in Resources */,
 				AD391D0420D16FF5007EE22A /* AmountInputView.xib in Resources */,
+				ADBC29C32375D4E30097D0F6 /* LNURLWithdraw.storyboard in Resources */,
 				AD3DDF6922D38D4C0031BFC8 /* Onboarding.storyboard in Resources */,
 				AD27022722E1C78800D4BF27 /* PushNotification.storyboard in Resources */,
 				ADA58F9A22049047009A5494 /* ManageWallets.storyboard in Resources */,
@@ -3130,6 +3160,7 @@
 				AD7EDAE52108C41D0058CCCA /* WalletViewController.swift in Sources */,
 				AD391C5B20D16F7A007EE22A /* MnemonicViewController.swift in Sources */,
 				AD8B656C22E5F73600E9DBD5 /* SkeletonView.swift in Sources */,
+				ADBC29C12375D4C70097D0F6 /* LNURLWithdrawViewController.swift in Sources */,
 				AD391CA120D16FA8007EE22A /* RootViewController.swift in Sources */,
 				ADA2DCFF225CC817007482D9 /* SuggestedPeers.swift in Sources */,
 				AD391C2420D16EFA007EE22A /* Array.swift in Sources */,
@@ -3163,6 +3194,7 @@
 				AD667E572136E622007B9160 /* TimeLockStore.swift in Sources */,
 				AD4B4BE122EAF0CE0029773A /* EmptyStateView.swift in Sources */,
 				AD1831C2229676CB00120260 /* OnChainFeeViewModel.swift in Sources */,
+				ADBC29C72375DAB70097D0F6 /* LNURLWithdrawViewModel.swift in Sources */,
 				AD7ED61D22087812007C5F2C /* ManageWalletTableViewCell.swift in Sources */,
 				AD4F7659232BCF0800F78184 /* SyncView.swift in Sources */,
 				AD391C5320D16F7A007EE22A /* ConfirmMnemonicViewModel.swift in Sources */,
@@ -3214,6 +3246,7 @@
 				ADFC816F20DA80EF00D26913 /* RecoverWalletViewModel.swift in Sources */,
 				AD391C5220D16F7A007EE22A /* ConfirmMnemonicViewController.swift in Sources */,
 				AD391C3D20D16F0B007EE22A /* BiometricAuthentication.swift in Sources */,
+				ADBC29BE2375CE7C0097D0F6 /* CombinedQRCodeScannetStrategy.swift in Sources */,
 				ADCEAFD32255F2C2004F605B /* WarningSettingsItem.swift in Sources */,
 				AD391C3020D16EFA007EE22A /* UICollectionView.swift in Sources */,
 				AD293D4822DC84E70069A8AB /* MnemonicWordView.swift in Sources */,
@@ -3286,6 +3319,7 @@
 				AD391C4720D16F68007EE22A /* ContainerViewController.swift in Sources */,
 				AD391CB320D16FA8007EE22A /* GroupedTableViewController.swift in Sources */,
 				ADC2FC9B22F1D97900902D43 /* ChannelListEmptyStateViewModel.swift in Sources */,
+				ADBC29C52375D5170097D0F6 /* LNURLWithdrawQRCodeScannetStrategy.swift in Sources */,
 				ADFDE94622E7603F00B718A4 /* ManageWalletsViewModel.swift in Sources */,
 				AD81C21721B80FCD00FA3FA9 /* SafariSettingsItem.swift in Sources */,
 				AD667E522136B062007B9160 /* TimeLockedViewController.swift in Sources */,
@@ -3329,6 +3363,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				ADBC29CC23795ADB0097D0F6 /* LNURLStatus.swift in Sources */,
 				AD3781C421661A070083CE77 /* Pem.swift in Sources */,
 				AD967FF8210731110048085B /* PinnedURLSessionDelegate.swift in Sources */,
 				AD1D378B2253C9F900F32BE1 /* PaymentListUpdater.swift in Sources */,
@@ -3339,6 +3374,7 @@
 				ADFEFA6E20E627F100FE1557 /* TransactionService.swift in Sources */,
 				AD511B2C2253C14800EDFC7C /* InvoiceListUpdater.swift in Sources */,
 				ADFEFA7920E62B1800FE1557 /* BlockChainHeightUpdater.swift in Sources */,
+				ADBC29CE23795AF30097D0F6 /* LNURLWithdrawRequest.swift in Sources */,
 				AD967FE32105FD770048085B /* BTCPayQRCode.swift in Sources */,
 				ADF0930F2148FA7300B48853 /* InvoiceEvent.swift in Sources */,
 				ADF1BB3021997A820078BCC4 /* LndConnectURL.swift in Sources */,
