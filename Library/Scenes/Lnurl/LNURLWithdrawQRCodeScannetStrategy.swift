@@ -21,23 +21,25 @@ final class LNURLWithdrawQRCodeScannetStrategy: QRCodeScannerStrategy {
     
     func viewControllerForAddress(address: String, completion: @escaping (Result<UIViewController, QRCodeScannerStrategyError>) -> Void) {
         LNURL.parse(string: address) { [lightningService] result in
-            switch result {
-            case .success(let lnurl):
-                switch lnurl {
-                case .withdraw(let request):
-                    let viewModel = LNURLWithdrawViewModel(request: request, lightningService: lightningService)
-                    let viewController = LNURLWithdrawViewController.instantiate(viewModel: viewModel)
-                    completion(.success(ZapNavigationController(rootViewController: viewController)))
-                }
-            case .failure(let error):
-                Logger.error(error)
-                switch error {
-                case .statusError(let message):
-                    completion(.failure(QRCodeScannerStrategyError(message: message)))
-                case .urlError(let error):
-                    completion(.failure(QRCodeScannerStrategyError(message: error.localizedDescription)))
-                case .invalidBech32, .jsonError, .unknownError, .unsupported:
-                    completion(.failure(QRCodeScannerStrategyError(message: L10n.Scene.QrcodeScanner.Error.unknownFormat)))
+            DispatchQueue.main.async {
+                switch result {
+                case .success(let lnurl):
+                    switch lnurl {
+                    case .withdraw(let request):
+                        let viewModel = LNURLWithdrawViewModel(request: request, lightningService: lightningService)
+                        let viewController = LNURLWithdrawViewController.instantiate(viewModel: viewModel)
+                        completion(.success(ZapNavigationController(rootViewController: viewController)))
+                    }
+                case .failure(let error):
+                    Logger.error(error)
+                    switch error {
+                    case .statusError(let message):
+                        completion(.failure(QRCodeScannerStrategyError(message: message)))
+                    case .urlError(let error):
+                        completion(.failure(QRCodeScannerStrategyError(message: error.localizedDescription)))
+                    case .invalidBech32, .jsonError, .unknownError, .unsupported:
+                        completion(.failure(QRCodeScannerStrategyError(message: L10n.Scene.QrcodeScanner.Error.unknownFormat)))
+                    }
                 }
             }
         }

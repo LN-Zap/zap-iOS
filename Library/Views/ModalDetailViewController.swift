@@ -12,11 +12,31 @@ protocol ModalDetailViewControllerDelegate: class {
     func childWillDisappear()
 }
 
-class ModalDetailViewController: ModalViewController {
+protocol ParentDismissable {}
+
+extension ParentDismissable where Self: UIViewController {
+    func dismissParent() {
+        // if presented from QR Code VC, also dismiss the QRCode VC
+        if let presentingViewController = presentingViewController,
+            presentingViewController.presentingViewController != nil {
+            // fixes the dismiss animation of two modals at once
+            if let snapshotView = view.superview?.snapshotView(afterScreenUpdates: false) {
+                snapshotView.frame.origin.y = presentingViewController.view.frame.height - snapshotView.frame.height
+                presentingViewController.view.addSubview(snapshotView)
+            }
+
+            presentingViewController.presentingViewController?.dismiss(animated: true, completion: nil)
+        } else {
+            dismiss(animated: true, completion: nil)
+        }
+    }
+}
+
+class ModalDetailViewController: ModalViewController, ParentDismissable {
     private let closeButton: UIButton = {
         let closeButton = UIButton(type: .custom)
         closeButton.setImage(Asset.iconClose.image, for: .normal)
-        closeButton.addTarget(self, action: #selector(dismissParent), for: .touchUpInside)
+        closeButton.addTarget(self, action: #selector(close), for: .touchUpInside)
         return closeButton
     }()
 
@@ -91,25 +111,13 @@ class ModalDetailViewController: ModalViewController {
         delegate?.childWillDisappear()
     }
 
-    @objc func dismissParent() {
-        // if presented from QR Code VC, also dismiss the QRCode VC
-        if let presentingViewController = presentingViewController,
-            presentingViewController.presentingViewController != nil {
-            // fixes the dismiss animation of two modals at once
-            if let snapshotView = view.superview?.snapshotView(afterScreenUpdates: false) {
-                snapshotView.frame.origin.y = presentingViewController.view.frame.height - snapshotView.frame.height
-                presentingViewController.view.addSubview(snapshotView)
-            }
-
-            presentingViewController.presentingViewController?.dismiss(animated: true, completion: nil)
-        } else {
-            dismiss(animated: true, completion: nil)
-        }
-    }
-
     func addHeadline(_ headline: String) {
         contentStackView.addArrangedElement(.label(text: headline, style: Style.Label.headline.with({ $0.textAlignment = .center })))
         contentStackView.addArrangedElement(.separator)
+    }
+    
+    @objc func close() {
+        self.dismissParent()
     }
 }
 

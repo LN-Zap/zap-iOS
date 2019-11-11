@@ -44,14 +44,31 @@
                                     <action selector="amountChanged:" destination="tvt-fc-S7d" eventType="valueChanged" id="ZTV-2Z-SGB"/>
                                 </connections>
                             </slider>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Qvv-vI-kmb">
+                                <rect key="frame" x="0.0" y="352.5" width="414" height="383.5"/>
+                                <subviews>
+                                    <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" style="medium" translatesAutoresizingMaskIntoConstraints="NO" id="WjJ-K1-pzq">
+                                        <rect key="frame" x="197" y="182" width="20" height="20"/>
+                                    </activityIndicatorView>
+                                </subviews>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                <constraints>
+                                    <constraint firstItem="WjJ-K1-pzq" firstAttribute="centerX" secondItem="Qvv-vI-kmb" secondAttribute="centerX" id="FZ4-Qb-SFT"/>
+                                    <constraint firstItem="WjJ-K1-pzq" firstAttribute="centerY" secondItem="Qvv-vI-kmb" secondAttribute="centerY" id="TRT-wC-1Kk"/>
+                                </constraints>
+                            </view>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
                             <constraint firstItem="6Gp-lf-eHE" firstAttribute="leading" secondItem="Z0G-aF-h7C" secondAttribute="leading" constant="20" id="13T-vv-yUK"/>
+                            <constraint firstItem="Qvv-vI-kmb" firstAttribute="leading" secondItem="Z0G-aF-h7C" secondAttribute="leading" id="1p0-OG-TIo"/>
                             <constraint firstItem="xN1-tG-G7x" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="Z0G-aF-h7C" secondAttribute="leading" constant="20" id="2Wt-u4-WLJ"/>
                             <constraint firstItem="Z0G-aF-h7C" firstAttribute="trailing" secondItem="70Q-o3-WFz" secondAttribute="trailing" constant="20" id="6Fz-5v-qB3"/>
                             <constraint firstItem="Z0G-aF-h7C" firstAttribute="trailing" secondItem="HNl-ja-xmH" secondAttribute="trailing" constant="20" id="7MY-gk-BvJ"/>
+                            <constraint firstItem="HNl-ja-xmH" firstAttribute="top" secondItem="Qvv-vI-kmb" secondAttribute="bottom" id="8y8-Ap-Pzj"/>
                             <constraint firstItem="6Gp-lf-eHE" firstAttribute="top" secondItem="xN1-tG-G7x" secondAttribute="bottom" constant="20" id="IPw-cj-Net"/>
+                            <constraint firstItem="Qvv-vI-kmb" firstAttribute="top" secondItem="6Gp-lf-eHE" secondAttribute="bottom" id="JeW-Km-gg4"/>
+                            <constraint firstItem="Z0G-aF-h7C" firstAttribute="trailing" secondItem="Qvv-vI-kmb" secondAttribute="trailing" id="MZ9-ZU-dRb"/>
                             <constraint firstItem="70Q-o3-WFz" firstAttribute="bottom" secondItem="Z0G-aF-h7C" secondAttribute="bottom" id="QQ2-IE-Cbr"/>
                             <constraint firstItem="Z0G-aF-h7C" firstAttribute="trailing" secondItem="6Gp-lf-eHE" secondAttribute="trailing" constant="20" id="RWl-il-LaB"/>
                             <constraint firstItem="HNl-ja-xmH" firstAttribute="leading" secondItem="Z0G-aF-h7C" secondAttribute="leading" constant="20" id="aDd-Og-bFj"/>
@@ -63,6 +80,7 @@
                         <viewLayoutGuide key="safeArea" id="Z0G-aF-h7C"/>
                     </view>
                     <connections>
+                        <outlet property="acticityIndicator" destination="WjJ-K1-pzq" id="QlT-nh-uOE"/>
                         <outlet property="amountLabel" destination="xN1-tG-G7x" id="sm7-FE-acc"/>
                         <outlet property="descriptionLabel" destination="6Gp-lf-eHE" id="dLw-Tm-Y9C"/>
                         <outlet property="slider" destination="HNl-ja-xmH" id="J70-oR-mRo"/>

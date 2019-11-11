@@ -8,11 +8,12 @@
 import Foundation
 import SwiftBTC
 
-final class LNURLWithdrawViewController: UIViewController {
+final class LNURLWithdrawViewController: UIViewController, ParentDismissable {
     @IBOutlet private weak var amountLabel: UILabel!
     @IBOutlet private weak var descriptionLabel: UILabel!
     @IBOutlet private weak var withdrawButton: UIButton!
     @IBOutlet private weak var slider: UISlider!
+    @IBOutlet private weak var acticityIndicator: UIActivityIndicatorView!
     
     // swiftlint:disable implicitly_unwrapped_optional
     private var viewModel: LNURLWithdrawViewModel!
@@ -45,6 +46,8 @@ final class LNURLWithdrawViewController: UIViewController {
         amountLabel.textColor = .white
         amountLabel.adjustsFontSizeToFitWidth = true
         
+        acticityIndicator.hidesWhenStopped = true
+        
         let descriptionString = NSMutableAttributedString(string: L10n.Scene.Lnurl.Withdraw.description + ": ", attributes: [NSAttributedString.Key.foregroundColor: UIColor.Zap.gray])
         descriptionString.append(NSAttributedString(string: viewModel.description.quoted))
         descriptionLabel.attributedText = descriptionString
@@ -68,14 +71,16 @@ final class LNURLWithdrawViewController: UIViewController {
     
     @IBAction private func withdraw(_ sender: Any) {
         withdrawButton.isEnabled = false
+        acticityIndicator.startAnimating()
         
         viewModel.withdraw { [weak self] error in
             DispatchQueue.main.async {
                 if let error = error {
                     self?.withdrawButton.isEnabled = true
+                    self?.acticityIndicator.stopAnimating()
                     Toast.presentError(error.localizedDescription)
                 } else {
-                    self?.dismiss(animated: true)
+                    self?.dismissParent()
                 }
             }
         }
