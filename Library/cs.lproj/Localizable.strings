@@ -241,7 +241,7 @@
 "scene.qrcode_scanner.error.zero_amount_invoice" = "Z bezpečnostních důvodů Zap nepodporuje faktury bez zadané částky.";
 "scene.qrcode_scanner.camera_access_denied_alert.ok" = "Nastavení";
 "scene.qrcode_scanner.camera_access_denied_alert.title" = "Přístup k fotoaparátu byl odepřen";
-"scene.qrcode_scanner.camera_access_denied_alert.message" = "Turn on camera access in the settings to scan the QR Code.";
+"scene.qrcode_scanner.camera_access_denied_alert.message" = "Chcete-li skenovat QR kód, povolte v nastavení přístup k fotoaparátu.";
 
 "scene.wallet.title" = "Peněženka";
 "scene.wallet.total_balance" = "Celkový zůstatek";
@@ -251,14 +251,14 @@
 "scene.wallet.empty_state.title" = "Dobijte vaši peněženku";
 "scene.wallet.empty_state.message" = "Vaše peněženka je prázdná! Začněte vložením prostředků.";
 "scene.wallet.empty_state.button_title" = "Vložit prostředky";
-"scene.wallet.open_channel.message" = "You can’t transact on the the Lightning Network yet. Open a channel to start.";
-"scene.wallet.open_channel.action" = "Open a channel";
+"scene.wallet.open_channel.message" = "S Lightning Network zatím nemůžete obchodovat. Začněte otevřením kanálu.";
+"scene.wallet.open_channel.action" = "Otevřít kanál";
 
-"scene.time_lock.headline" = "Wrong PIN";
+"scene.time_lock.headline" = "Špatný PIN";
 "scene.time_lock.description" = "Vaše peněženka je uzamčena pro:";
 
-"scene.modal_pin.headline" = "Enter PIN";
-"scene.modal_pin.description" = "Please enter your PIN to continue";
+"scene.modal_pin.headline" = "Zadejte PIN";
+"scene.modal_pin.description" = "Chcete-li pokračovat, zadejte svůj PIN";
 
 "scene.history.cell.payment_sent" = "Platba odeslána";
 "scene.history.cell.payment_received" = "Platba přijata";
@@ -309,15 +309,15 @@
 "scene.push_notification.confirm_button_title" = "Zapnout oznámení";
 "scene.push_notification.skip_button_title" = "Přeskočit";
 
-"scene.my_node.title" = "My Node";
-"scene.my_node.channels.title" = "Channels";
-"scene.my_node.channels.subtitle" = "Manage your capacity";
-"scene.my_node.channel_backup.title" = "Channel Backup";
-"scene.my_node.channel_backup.subtitle" = "Set up emergency options";
-"scene.my_node.settings.title" = "Settings";
-"scene.my_node.settings.subtitle" = "Edit your preferences";
-"scene.my_node.support.title" = "Support";
-"scene.my_node.support.subtitle" = "Get support and send feedback";
+"scene.my_node.title" = "Můj uzel";
+"scene.my_node.channels.title" = "Kanály";
+"scene.my_node.channels.subtitle" = "Spravujte svou kapacitu";
+"scene.my_node.channel_backup.title" = "Zálohování kanálu";
+"scene.my_node.channel_backup.subtitle" = "Nastavte nouzové možnosti";
+"scene.my_node.settings.title" = "Nastavení";
+"scene.my_node.settings.subtitle" = "Upravte své preference";
+"scene.my_node.support.title" = "Podpora";
+"scene.my_node.support.subtitle" = "Získejte podporu a odešlete zpětnou vazbu";
 
 "notification.sync.title" = "Prosím synchronizovat";
 "notification.sync.day_12.body" = "Nezapomeňte synchronizovat peněženku, abyste se ujistili, že zůstanete v bezpečí";
