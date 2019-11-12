@@ -59,13 +59,13 @@ public enum LNURL {
             fetch(url: url) { result in
                 switch result {
                 case .success(let data):
-                    completion(parseJSON(data: data))
+                    completion(parseJSON(data: data, domain: url))
                 case .failure(let error):
                     completion(.failure(error))
                 }
             }
         } else {
-            completion(parseJSON(data: data))
+            completion(parseJSON(data: data, domain: nil))
         }
     }
     
@@ -90,14 +90,14 @@ public enum LNURL {
         task.resume()
     }
     
-    private static func parseJSON(data: Data) -> Result<LNURL, LNURLError> {
+    private static func parseJSON(data: Data, domain: URL?) -> Result<LNURL, LNURLError> {
         if
             let jsonData = try? JSONSerialization.jsonObject(with: data, options: []) as? [String: Any],
             let tag = jsonData["tag"] as? String {
             switch tag {
             case "withdrawRequest":
-                guard let withdrawRequest = try? JSONDecoder().decode(LNURLWithdrawRequest.self, from: data) else { return .failure(.unknownError) }
-                return .success(.withdraw(withdrawRequest))
+                guard let withdrawRequestJSON = try? JSONDecoder().decode(LNURLWithdrawRequestJSON.self, from: data) else { return .failure(.unknownError) }
+                return .success(.withdraw(LNURLWithdrawRequest(lnurlWithdrawRequestJSON: withdrawRequestJSON, domain: domain)))
             default:
                 return .failure(.unsupported)
             }
@@ -114,11 +114,11 @@ public enum LNURL {
 // MARK: - Withdraw
 extension LNURL {
     public static func withdraw(lightningService: LightningService, request: LNURLWithdrawRequest, amount: Satoshi, completion: @escaping (Result<Success, LNURLError>) -> Void) {
-        lightningService.transactionService.addInvoice(amount: amount, memo: request.defaultDescription, expiry: .oneHour) { result in
+        lightningService.transactionService.addInvoice(amount: amount, memo: request.description, expiry: .oneHour) { result in
             switch result {
             case .success(let invoice):
                 // Once accepted user software issues an HTTPS GET request using <callback>?k1=<k1>&pr=<lightning invoice, ...>.
-                let urlString = "\(request.callback)?k1=\(request.k1)&pr=\(invoice)"
+                let urlString = "\(request.callbackURL)?k1=\(request.ephemeralSecret)&pr=\(invoice)"
                 if let url = URL(string: urlString) {
                     LNURL.fetch(url: url) {
                         completion($0.flatMap {

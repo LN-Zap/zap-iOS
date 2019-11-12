@@ -13,7 +13,11 @@ final class LNURLWithdrawViewController: UIViewController, ParentDismissable {
     @IBOutlet private weak var descriptionLabel: UILabel!
     @IBOutlet private weak var withdrawButton: UIButton!
     @IBOutlet private weak var slider: UISlider!
+    @IBOutlet private weak var sliderContainer: UIStackView!
+    @IBOutlet private weak var sliderMinusLabel: UILabel!
+    @IBOutlet private weak var sliderPlusLabel: UILabel!
     @IBOutlet private weak var acticityIndicator: UIActivityIndicatorView!
+    @IBOutlet private weak var domainLabel: UILabel!
     
     // swiftlint:disable implicitly_unwrapped_optional
     private var viewModel: LNURLWithdrawViewModel!
@@ -48,12 +52,17 @@ final class LNURLWithdrawViewController: UIViewController, ParentDismissable {
         
         acticityIndicator.hidesWhenStopped = true
         
-        let descriptionString = NSMutableAttributedString(string: L10n.Scene.Lnurl.Withdraw.description + ": ", attributes: [NSAttributedString.Key.foregroundColor: UIColor.Zap.gray])
-        descriptionString.append(NSAttributedString(string: viewModel.description.quoted))
-        descriptionLabel.attributedText = descriptionString
+        sliderPlusLabel.textColor = UIColor.Zap.gray
+        sliderMinusLabel.textColor = UIColor.Zap.gray
+        
+        descriptionLabel.text = viewModel.description
+        descriptionLabel.textColor = UIColor.Zap.gray
+        
+        domainLabel.text = viewModel.domain
+        domainLabel.textColor = UIColor.Zap.invisibleGray
         
         if viewModel.minWithdrawable == viewModel.maxWithdrawable {
-            slider.isHidden = true
+            sliderContainer.isHidden = true
         } else {
             slider.maximumValue = Float(truncating: viewModel.maxWithdrawable as NSNumber)
             slider.minimumValue = Float(truncating: viewModel.minWithdrawable as NSNumber)

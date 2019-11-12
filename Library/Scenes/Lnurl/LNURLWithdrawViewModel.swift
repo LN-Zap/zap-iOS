@@ -10,15 +10,6 @@ import Foundation
 import Lightning
 import SwiftBTC
 
-public extension Satoshi {
-    var floored: Satoshi {
-        var value = self
-        var result: Decimal = 0
-        NSDecimalRound(&result, &value, 0, .down)
-        return result
-    }
-}
-
 final class LNURLWithdrawViewModel {
     let request: LNURLWithdrawRequest
     let lightningService: LightningService
@@ -29,22 +20,20 @@ final class LNURLWithdrawViewModel {
     let minWithdrawable: Satoshi
     
     var description: String {
-        return request.defaultDescription
+        return request.description
+    }
+    
+    var domain: String? {
+        return request.domain?.host
     }
     
     init(request: LNURLWithdrawRequest, lightningService: LightningService) {
         self.request = request
         self.lightningService = lightningService
         
-        let maxWithdrawable = (request.maxWithdrawable / 1000).floored
-        self.maxWithdrawable = maxWithdrawable
-        selectedAmount = Observable(maxWithdrawable)
-        
-        if let minWithdrawable = request.minWithdrawable {
-            self.minWithdrawable = (minWithdrawable / 1000).floored
-        } else {
-            self.minWithdrawable = 1
-        }
+        minWithdrawable = request.minWithdrawable
+        maxWithdrawable = request.maxWithdrawable
+        selectedAmount = Observable(request.maxWithdrawable)
     }
     
     func withdraw(completion: @escaping (LNURL.LNURLError?) -> Void) {

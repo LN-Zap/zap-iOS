@@ -6,10 +6,11 @@
 //
 
 import Foundation
+import SwiftBTC
 
-public typealias MilliSatoshi = Decimal
+typealias MilliSatoshi = Decimal
 
-public struct LNURLWithdrawRequest: Decodable {
+struct LNURLWithdrawRequestJSON: Decodable {
     /// a second-level url which would accept a withdrawal Lightning invoice as query parameter
     let callback: String // swiftlint:disable:this callback_naming
     /// an ephemeral secret which would allow user to withdraw funds
@@ -20,4 +21,39 @@ public struct LNURLWithdrawRequest: Decodable {
     public let defaultDescription: String
     /// An optional field, defaults to 1 MilliSatoshi if not present, can not be less than 1 or more than `maxWithdrawable`
     public let minWithdrawable: MilliSatoshi?
+}
+
+public extension Satoshi {
+    var floored: Satoshi {
+        var value = self
+        var result: Decimal = 0
+        NSDecimalRound(&result, &value, 0, .down)
+        return result
+    }
+}
+
+public struct LNURLWithdrawRequest {
+    let callbackURL: String
+    let ephemeralSecret: String
+    public let description: String
+    public let maxWithdrawable: Satoshi
+    public let minWithdrawable: Satoshi
+    
+    public let domain: URL?
+    
+    init(lnurlWithdrawRequestJSON request: LNURLWithdrawRequestJSON, domain: URL?) {
+        callbackURL = request.callback
+        ephemeralSecret = request.k1
+        description = request.defaultDescription
+        
+        maxWithdrawable = (request.maxWithdrawable / 1000).floored
+        
+        if let minWithdrawable = request.minWithdrawable {
+            self.minWithdrawable = (minWithdrawable / 1000).floored
+        } else {
+            minWithdrawable = 1
+        }
+        
+        self.domain = domain
+    }
 }
