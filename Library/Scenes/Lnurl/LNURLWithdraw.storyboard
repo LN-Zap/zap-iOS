@@ -51,7 +51,7 @@
                                         <rect key="frame" x="197" y="182" width="20" height="20"/>
                                     </activityIndicatorView>
                                 </subviews>
-                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
                                     <constraint firstItem="WjJ-K1-pzq" firstAttribute="centerX" secondItem="Qvv-vI-kmb" secondAttribute="centerX" id="FZ4-Qb-SFT"/>
                                     <constraint firstItem="WjJ-K1-pzq" firstAttribute="centerY" secondItem="Qvv-vI-kmb" secondAttribute="centerY" id="TRT-wC-1Kk"/>
