@@ -14,7 +14,7 @@ extension UIImage {
         let stringData = string.data(using: .isoLatin1)
         let filter = CIFilter(name: "CIQRCodeGenerator")
         filter?.setValue(stringData, forKey: "inputMessage")
-        filter?.setValue("H", forKey: "inputCorrectionLevel")
+        filter?.setValue("L", forKey: "inputCorrectionLevel")
 
         let scale = CGAffineTransform(scaleX: 10, y: 10)
         if let image = filter?.outputImage?.transformed(by: scale) {
