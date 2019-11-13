@@ -88,7 +88,7 @@ public final class LightningService: NSObject {
                  It looks like there is a race condition in LND where even though the transactions/invoices report back as
                  being completed, the calls to get the balances happen too quickly and the new amounts are not reported.
                  */
-                DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 1) { () -> Void in
+                DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 1) {
                     self?.balanceService.update()
                 }
             }
