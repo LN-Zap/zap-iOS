@@ -144,6 +144,19 @@ final class RequestViewController: ModalDetailViewController {
         }
         contentStackView.addArrangedElement(.customView(lightningStackView))
         
+        addOrSeparator()
+
+        let onChainImage = Asset.iconRequestOnChainButton.image
+        let onChainButtonStyle = Style.Button.background.with({
+            $0.setImage(onChainImage, for: .normal)
+            $0.imageEdgeInsets = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 10)
+        })
+        onChainButton = contentStackView.addArrangedElement(.customHeight(56, element: .button(title: L10n.Scene.Request.onChainButton, style: onChainButtonStyle, completion: { [weak self] _ in
+            self?.presentAmountInput(requestMethod: .onChain)
+        }))) as? CallbackButton
+    }
+    
+    private func addOrSeparator() {
         let horizontalStackView = UIStackView()
         horizontalStackView.spacing = 15
         horizontalStackView.axis = .horizontal
@@ -158,15 +171,6 @@ final class RequestViewController: ModalDetailViewController {
         contentStackView.addArrangedElement(.customView(horizontalStackView))
         leftSeparator.widthAnchor.constraint(equalTo: rightSeparator.widthAnchor, multiplier: 1, constant: 0).isActive = true
         self.orSeparator = horizontalStackView
-
-        let onChainImage = Asset.iconRequestOnChainButton.image
-        let onChainButtonStyle = Style.Button.background.with({
-            $0.setImage(onChainImage, for: .normal)
-            $0.imageEdgeInsets = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 10)
-        })
-        onChainButton = contentStackView.addArrangedElement(.customHeight(56, element: .button(title: L10n.Scene.Request.onChainButton, style: onChainButtonStyle, completion: { [weak self] _ in
-            self?.presentAmountInput(requestMethod: .onChain)
-        }))) as? CallbackButton
     }
 
     private func updateHeaderImage(for requestMethod: Layer) {

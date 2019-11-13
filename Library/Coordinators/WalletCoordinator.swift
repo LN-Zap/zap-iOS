@@ -11,7 +11,8 @@ import SafariServices
 import SwiftBTC
 import UIKit
 
-final class WalletCoordinator: NSObject, Coordinator { // swiftlint:disable:this type_body_length
+// swiftlint:disable type_body_length file_length
+final class WalletCoordinator: NSObject, Coordinator {
     let rootViewController: RootViewController
 
     private let lightningService: LightningService
