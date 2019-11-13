@@ -319,6 +319,13 @@
 "scene.my_node.support.title" = "Support";
 "scene.my_node.support.subtitle" = "Get support and send feedback";
 
+"scene.lnurl_qrcode_scanner.withdraw.title" = "Withdraw";
+"scene.lnurl_qrcode_scanner.withdraw.button_title" = "Paste LNURL";
+
+"scene.lnurl.withdraw.title" = "Withdraw";
+"scene.lnurl.withdraw.description" = "Description";
+"scene.lnurl.withdraw.button_title" = "Withdraw";
+
 "notification.sync.title" = "Sincronizza per favore";
 "notification.sync.day_12.body" = "Ricorda di sincronizzare il tuo portafogli per essere certi di essere al sicuro";
 "notification.sync.day_13.body" = "Hai ancora un giorno per sincronizzare il tuo portafogli prima che diventi pericoloso.";
