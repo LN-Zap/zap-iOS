@@ -319,6 +319,9 @@
 "scene.my_node.support.title" = "Support";
 "scene.my_node.support.subtitle" = "Get support and send feedback";
 
+"scene.lnurl_qrcode_scanner.withdraw.title" = "Withdraw";
+"scene.lnurl_qrcode_scanner.withdraw.button_title" = "Paste LNURL";
+
 "scene.lnurl.withdraw.title" = "Withdraw";
 "scene.lnurl.withdraw.description" = "Description";
 "scene.lnurl.withdraw.button_title" = "Withdraw";

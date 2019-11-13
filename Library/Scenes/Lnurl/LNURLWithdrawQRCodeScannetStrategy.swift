@@ -10,8 +10,8 @@ import Lightning
 import Logger
 
 final class LNURLWithdrawQRCodeScannetStrategy: QRCodeScannerStrategy {
-    let title = "Withdraw"
-    let pasteButtonTitle = "Paste LNURL Withdraw"
+    let title = L10n.Scene.LnurlQrcodeScanner.Withdraw.title
+    let pasteButtonTitle = L10n.Scene.LnurlQrcodeScanner.Withdraw.buttonTitle
     
     let lightningService: LightningService
     
