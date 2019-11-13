@@ -53,7 +53,7 @@ final class LNDRest: NSObject, URLSessionDelegate {
         let task = session.dataTask(with: request) { data, _, error in
             if let error = error {
                 Logger.error("\(error.localizedDescription) - \(url)")
-                completion(.failure(.localizedError(error.localizedDescription)))
+                completion(.failure(.restNetworkError))
             } else {
                 if let data = data, !data.isEmpty {
                     if let result = try? T(jsonUTF8Data: data) {

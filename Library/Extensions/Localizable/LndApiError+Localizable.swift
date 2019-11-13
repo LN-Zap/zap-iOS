@@ -21,7 +21,7 @@ extension LndApiError: LocalizedError {
             return "Transaction output is dust."
         case .noOutputs:
             return "No outputs."
-        case
+        case .restNetworkError,
              .unableToFindNode,
              .unknownError,
              .apiTransformationError:

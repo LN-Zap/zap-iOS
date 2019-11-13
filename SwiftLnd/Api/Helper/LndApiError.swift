@@ -14,6 +14,7 @@ public enum LndApiError: Error, Equatable {
     case localizedError(String)
     case unknownError
     case apiTransformationError
+    case restNetworkError
     
     case unableToFindNode
     case transactionOutputIsDust
