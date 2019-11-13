@@ -50,13 +50,17 @@ final class LNDRest: NSObject, URLSessionDelegate {
                 Logger.error("\(error.localizedDescription) - \(url)")
                 completion(.failure(.localizedError(error.localizedDescription)))
             } else {
-                if let data = data {
+                if let data = data, !data.isEmpty {
                     if let result = try? T(jsonUTF8Data: data) {
                         completion(.success(result))
                     } else if let string = String(data: data, encoding: .utf8) {
                         Logger.error("\(string) - \(url)")
                         completion(.failure(.localizedError(string)))
+                    } else {
+                        completion(.failure(.unknownError))
                     }
+                } else {
+                    completion(.failure(.unknownError))
                 }
             }
         }
