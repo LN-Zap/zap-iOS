@@ -103,9 +103,11 @@ class QRCodeScannerViewController: UIViewController {
     }
 
     func presentViewController(_ viewController: UIViewController) {
-        guard let modalDetailViewController = viewController as? ModalDetailViewController else { fatalError("presented view is not of type ModalDetailViewController") }
-        modalDetailViewController.delegate = self
-        present(modalDetailViewController, animated: true, completion: nil)
+        if let modalDetailViewController = viewController as? ModalDetailViewController {
+            modalDetailViewController.delegate = self
+        }
+        
+        present(viewController, animated: true)
     }
 
     @objc private func pasteButtonTapped(_ sender: Any) {

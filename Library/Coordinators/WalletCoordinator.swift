@@ -11,7 +11,8 @@ import SafariServices
 import SwiftBTC
 import UIKit
 
-final class WalletCoordinator: NSObject, Coordinator { // swiftlint:disable:this type_body_length
+// swiftlint:disable type_body_length file_length
+final class WalletCoordinator: NSObject, Coordinator {
     let rootViewController: RootViewController
 
     private let lightningService: LightningService
@@ -243,8 +244,11 @@ final class WalletCoordinator: NSObject, Coordinator { // swiftlint:disable:this
     }
 
     func presentSend(invoice: String?) {
-        let strategy = SendQRCodeScannerStrategy(lightningService: lightningService, authenticationViewModel: authenticationViewModel)
-
+        let strategy = CombinedQRCodeScannetStrategy(strategies: [
+            SendQRCodeScannerStrategy(lightningService: lightningService, authenticationViewModel: authenticationViewModel),
+            LNURLWithdrawQRCodeScannetStrategy(lightningService: lightningService)
+        ])
+        
         if let invoice = invoice {
             DispatchQueue(label: "presentSend").async {
                 let group = DispatchGroup()
@@ -263,9 +267,16 @@ final class WalletCoordinator: NSObject, Coordinator { // swiftlint:disable:this
         }
     }
 
+    func presentLNURLWithdrawQRCodeScanner() {
+        let strategy = LNURLWithdrawQRCodeScannetStrategy(lightningService: lightningService)
+        let viewController = UINavigationController(rootViewController: QRCodeScannerViewController(strategy: strategy))
+        viewController.modalPresentationStyle = .fullScreen
+        rootViewController.present(viewController, animated: true)
+    }
+    
     func presentRequest() {
         let viewModel = RequestViewModel(lightningService: lightningService)
-        let viewController = RequestViewController(viewModel: viewModel)
+        let viewController = RequestViewController(viewModel: viewModel, presentQrCode: presentLNURLWithdrawQRCodeScanner)
         rootViewController.present(viewController, animated: true)
     }
 

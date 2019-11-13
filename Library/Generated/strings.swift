@@ -349,6 +349,24 @@ internal enum L10n {
         }
       }
     }
+    internal enum Lnurl {
+      internal enum Withdraw {
+        /// Withdraw
+        internal static let buttonTitle = L10n.tr("Localizable", "scene.lnurl.withdraw.button_title")
+        /// Description
+        internal static let description = L10n.tr("Localizable", "scene.lnurl.withdraw.description")
+        /// Withdraw
+        internal static let title = L10n.tr("Localizable", "scene.lnurl.withdraw.title")
+      }
+    }
+    internal enum LnurlQrcodeScanner {
+      internal enum Withdraw {
+        /// Paste LNURL
+        internal static let buttonTitle = L10n.tr("Localizable", "scene.lnurl_qrcode_scanner.withdraw.button_title")
+        /// Withdraw
+        internal static let title = L10n.tr("Localizable", "scene.lnurl_qrcode_scanner.withdraw.title")
+      }
+    }
     internal enum Main {
       /// %@ per BTC
       internal static func exchangeRateLabel(_ p1: String) -> String {
