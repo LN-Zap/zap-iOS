@@ -6,15 +6,14 @@
 //
 
 import Foundation
-#if !REMOTEONLY
 import Lndmobile
-#endif
 import Logger
 import SwiftGRPC
 import SwiftProtobuf
 
 // MARK: - Helper Methods
-#if !REMOTEONLY
+
+/// Used to communicate with lnd running on the Phone.
 final class LndCallback<T: SwiftProtobuf.Message>: NSObject, LndmobileCallbackProtocol, LndmobileRecvStreamProtocol {
     private let completion: ApiCompletion<T>
 
@@ -25,13 +24,7 @@ final class LndCallback<T: SwiftProtobuf.Message>: NSObject, LndmobileCallbackPr
     func onError(_ error: Error?) {
         if let error = error {
             Logger.error(error)
-            let result: LndApiError
-            if error.localizedDescription == "Closed" {
-                result = .walletAlreadyUnlocked
-            } else {
-                result = LndApiError.localizedError(error.localizedDescription)
-            }
-            completion(.failure(result))
+            completion(.failure(LndApiError(error: error)))
         } else {
             completion(.failure(.unknownError))
         }
@@ -47,8 +40,8 @@ final class LndCallback<T: SwiftProtobuf.Message>: NSObject, LndmobileCallbackPr
         }
     }
 }
-#endif
 
+/// Used for streaming remote grpc connection
 func handleStreamResult<T>(_ result: ResultOrRPCError<T?>, completion: @escaping ApiCompletion<T>) throws {
     switch result {
     case .result(let value):
@@ -59,6 +52,7 @@ func handleStreamResult<T>(_ result: ResultOrRPCError<T?>, completion: @escaping
     }
 }
 
+/// Used for regular remote grpc connection
 func createHandler<T>(_ completion: @escaping ApiCompletion<T>) -> (T?, CallResult) -> Void {
     return { (response: T?, callResult: CallResult) in
         if let response = response {
@@ -71,6 +65,7 @@ func createHandler<T>(_ completion: @escaping ApiCompletion<T>) -> (T?, CallResu
     }
 }
 
+/// Used for the mock connection
 extension Result {
     init(value: Success?, error: Failure) {
         if let value = value {

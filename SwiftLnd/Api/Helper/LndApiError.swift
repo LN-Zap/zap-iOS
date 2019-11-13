@@ -6,7 +6,6 @@
 //
 
 import Foundation
-import Logger
 import SwiftGRPC
 
 public enum LndApiError: Error, Equatable {
@@ -17,7 +16,15 @@ public enum LndApiError: Error, Equatable {
     case unknownError
     case walletAlreadyUnlocked
 
-    public init(callResult: CallResult) {
+    init(error: Error) {
+        if error.localizedDescription == "Closed" {
+            self = .walletAlreadyUnlocked
+        } else {
+            self = LndApiError.localizedError(error.localizedDescription)
+        }
+    }
+    
+    init(callResult: CallResult) {
         switch callResult.statusCode {
 
         case .unimplemented:

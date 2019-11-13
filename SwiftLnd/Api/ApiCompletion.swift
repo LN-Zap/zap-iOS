@@ -11,17 +11,16 @@ import SwiftGRPC
 
 public typealias ApiCompletion<T> = (Result<T, LndApiError>) -> Void
 
+/// Used in LightningApi & WalletApi.
+/// Maps an `ApiCompletion<U>` to an `ApiCompletion<T>` with the `map` function
+/// to transform lnd's raw response structs to more swifty version.
 func run<T, U>(_ completion: @escaping ApiCompletion<U>, map: @escaping (T) -> U?) -> ApiCompletion<T> {
     return { input in
-        switch input {
-        case .success(let value):
-            if let mapped = map(value) {
-                completion(.success(mapped))
-            } else {
-                completion(.failure(LndApiError.unknownError))
+        completion(input.flatMap {
+            if let mapped = map($0) {
+                return .success(mapped)
             }
-        case .failure(let error):
-            completion(.failure(error))
-        }
+            return .failure(LndApiError.unknownError)
+        })
     }
 }

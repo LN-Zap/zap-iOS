@@ -267,7 +267,7 @@
 		ADA3254421AD8D7900C5EAA2 /* Colors.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = ADA3254321AD8D7900C5EAA2 /* Colors.xcassets */; };
 		ADA3254621AD8F6200C5EAA2 /* StoryboardScenes.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADA3254521AD8F6200C5EAA2 /* StoryboardScenes.swift */; };
 		ADA3A86B2225842200B058FB /* PBKDF2.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADA3A86A2225842200B058FB /* PBKDF2.swift */; };
-		ADA58F9122031E56009A5494 /* RpcCallback.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADA58F9022031E56009A5494 /* RpcCallback.swift */; };
+		ADA58F9122031E56009A5494 /* ApiCompletion.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADA58F9022031E56009A5494 /* ApiCompletion.swift */; };
 		ADA58F9822049022009A5494 /* ManageWalletsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADA58F9722049022009A5494 /* ManageWalletsViewController.swift */; };
 		ADA58F9A22049047009A5494 /* ManageWallets.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = ADA58F9922049047009A5494 /* ManageWallets.storyboard */; };
 		ADA58F9C22049470009A5494 /* WalletConfigurationStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADA58F9B22049470009A5494 /* WalletConfigurationStore.swift */; };
@@ -306,7 +306,7 @@
 		ADADAD942143B3C900A48E1F /* TestingTemplates.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADBB36282080B2AE005662B4 /* TestingTemplates.swift */; };
 		ADADAD972143B3C900A48E1F /* LndApiError.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0D3C97C20616AB80015C5D7 /* LndApiError.swift */; };
 		ADADAD982143B3C900A48E1F /* Protobuf+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADBA4424209B067400D18B71 /* Protobuf+Extensions.swift */; };
-		ADADAD9A2143B3C900A48E1F /* StreamCallback.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADBA4422209B00D300D18B71 /* StreamCallback.swift */; };
+		ADADAD9A2143B3C900A48E1F /* EmptyStreamCallback.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADBA4422209B00D300D18B71 /* EmptyStreamCallback.swift */; };
 		ADADAD9B2143B3C900A48E1F /* ApiMockTemplate.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADBB36232080A457005662B4 /* ApiMockTemplate.swift */; };
 		ADB4CBA22254905100D186BC /* ChannelListUpdater.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADB4CBA12254905100D186BC /* ChannelListUpdater.swift */; };
 		ADB4CBA4225493A300D186BC /* ChannelEventUpdate.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADB4CBA3225493A300D186BC /* ChannelEventUpdate.swift */; };
@@ -823,7 +823,7 @@
 		ADA3254321AD8D7900C5EAA2 /* Colors.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Colors.xcassets; sourceTree = "<group>"; };
 		ADA3254521AD8F6200C5EAA2 /* StoryboardScenes.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StoryboardScenes.swift; sourceTree = "<group>"; };
 		ADA3A86A2225842200B058FB /* PBKDF2.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PBKDF2.swift; sourceTree = "<group>"; };
-		ADA58F9022031E56009A5494 /* RpcCallback.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RpcCallback.swift; sourceTree = "<group>"; };
+		ADA58F9022031E56009A5494 /* ApiCompletion.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApiCompletion.swift; sourceTree = "<group>"; };
 		ADA58F9722049022009A5494 /* ManageWalletsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ManageWalletsViewController.swift; sourceTree = "<group>"; };
 		ADA58F9922049047009A5494 /* ManageWallets.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = ManageWallets.storyboard; sourceTree = "<group>"; };
 		ADA58F9B22049470009A5494 /* WalletConfigurationStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WalletConfigurationStore.swift; sourceTree = "<group>"; };
@@ -919,7 +919,7 @@
 		ADBA12012090CD11001F7700 /* KeyPadView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = KeyPadView.xib; sourceTree = "<group>"; };
 		ADBA12032090CD22001F7700 /* KeyPadView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyPadView.swift; sourceTree = "<group>"; };
 		ADBA120520930C94001F7700 /* UIViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIViewController.swift; sourceTree = "<group>"; };
-		ADBA4422209B00D300D18B71 /* StreamCallback.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StreamCallback.swift; sourceTree = "<group>"; };
+		ADBA4422209B00D300D18B71 /* EmptyStreamCallback.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmptyStreamCallback.swift; sourceTree = "<group>"; };
 		ADBA4424209B067400D18B71 /* Protobuf+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Protobuf+Extensions.swift"; sourceTree = "<group>"; };
 		ADBB361F207FA5D6005662B4 /* Date+Localizable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Date+Localizable.swift"; sourceTree = "<group>"; };
 		ADBB36232080A457005662B4 /* ApiMockTemplate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApiMockTemplate.swift; sourceTree = "<group>"; };
@@ -1469,6 +1469,7 @@
 		A0D3C97B20616A9A0015C5D7 /* Api */ = {
 			isa = PBXGroup;
 			children = (
+				ADA58F9022031E56009A5494 /* ApiCompletion.swift */,
 				ADD089F822773EE400480073 /* LightningApi.swift */,
 				ADD08A052278BBCE00480073 /* WalletApi.swift */,
 				AD71EA4C20E2335B00256307 /* Helper */,
@@ -1783,9 +1784,8 @@
 			isa = PBXGroup;
 			children = (
 				A0D3C97C20616AB80015C5D7 /* LndApiError.swift */,
-				ADA58F9022031E56009A5494 /* RpcCallback.swift */,
 				ADADA9512281C16E0036639F /* RpcZapHelper.swift */,
-				ADBA4422209B00D300D18B71 /* StreamCallback.swift */,
+				ADBA4422209B00D300D18B71 /* EmptyStreamCallback.swift */,
 			);
 			path = Helper;
 			sourceTree = "<group>";
@@ -3454,7 +3454,7 @@
 				AD9BB2DA21819799009DC878 /* Route.swift in Sources */,
 				ADADAD892143B3C900A48E1F /* ChannelCloseSummary.swift in Sources */,
 				ADF1BB33219D7F260078BCC4 /* Macaroon.swift in Sources */,
-				ADA58F9122031E56009A5494 /* RpcCallback.swift in Sources */,
+				ADA58F9122031E56009A5494 /* ApiCompletion.swift in Sources */,
 				ADADAD942143B3C900A48E1F /* TestingTemplates.swift in Sources */,
 				ADFB36D82143B73C00146FCC /* LocalLnd.swift in Sources */,
 				AD248628225B7E130049532C /* WalletBalance.swift in Sources */,
@@ -3470,7 +3470,7 @@
 				ADADAD922143B3C900A48E1F /* Peer.swift in Sources */,
 				AD7ED622220B4FE9007C5F2C /* FileManager.swift in Sources */,
 				ADFAA01D228C0F10000AECA1 /* FeeEstimate.swift in Sources */,
-				ADADAD9A2143B3C900A48E1F /* StreamCallback.swift in Sources */,
+				ADADAD9A2143B3C900A48E1F /* EmptyStreamCallback.swift in Sources */,
 				AD9F3ADF2271C2550044E5EB /* MacaroonId.pb.swift in Sources */,
 				ADADAD8A2143B3C900A48E1F /* ChannelPoint.swift in Sources */,
 				ADADA9542282D32A0036639F /* BackupDisabler.swift in Sources */,
