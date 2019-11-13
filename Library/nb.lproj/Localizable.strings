@@ -319,6 +319,13 @@
 "scene.my_node.support.title" = "Support";
 "scene.my_node.support.subtitle" = "Get support and send feedback";
 
+"scene.lnurl_qrcode_scanner.withdraw.title" = "Withdraw";
+"scene.lnurl_qrcode_scanner.withdraw.button_title" = "Paste LNURL";
+
+"scene.lnurl.withdraw.title" = "Withdraw";
+"scene.lnurl.withdraw.description" = "Description";
+"scene.lnurl.withdraw.button_title" = "Withdraw";
+
 "notification.sync.title" = "Please sync";
 "notification.sync.day_12.body" = "Please remember syncing your wallet to make sure you stay safe";
 "notification.sync.day_13.body" = "You have one more day to sync your wallet before it's getting dangerous.";
