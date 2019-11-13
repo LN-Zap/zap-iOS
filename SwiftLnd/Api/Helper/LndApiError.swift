@@ -15,6 +15,7 @@ public enum LndApiError: Error, Equatable {
     case unknownError
     case walletAlreadyUnlocked
 
+    // map local streaming connetion to error
     init(error: Error) {
         if error.localizedDescription == "Closed" {
             self = .walletAlreadyUnlocked
@@ -23,6 +24,7 @@ public enum LndApiError: Error, Equatable {
         }
     }
     
+    // map remote grpc connection to error
     init(callResult: CallResult) {
         switch callResult.statusCode {
 
