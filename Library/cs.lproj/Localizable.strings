@@ -319,6 +319,13 @@
 "scene.my_node.support.title" = "Podpora";
 "scene.my_node.support.subtitle" = "Získejte podporu a odešlete zpětnou vazbu";
 
+"scene.lnurl_qrcode_scanner.withdraw.title" = "Withdraw";
+"scene.lnurl_qrcode_scanner.withdraw.button_title" = "Paste LNURL";
+
+"scene.lnurl.withdraw.title" = "Withdraw";
+"scene.lnurl.withdraw.description" = "Description";
+"scene.lnurl.withdraw.button_title" = "Withdraw";
+
 "notification.sync.title" = "Prosím synchronizovat";
 "notification.sync.day_12.body" = "Nezapomeňte synchronizovat peněženku, abyste se ujistili, že zůstanete v bezpečí";
 "notification.sync.day_13.body" = "Máte ještě jeden den na synchronizaci vaší peněženky, než se stane nebezpečnou.";
