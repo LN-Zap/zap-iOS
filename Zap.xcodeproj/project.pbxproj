@@ -178,6 +178,7 @@
 		AD391D1E20D174B4007EE22A /* SetupCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADEDBB8B20C2D6A700B71F17 /* SetupCoordinator.swift */; };
 		AD391D2020D178C2007EE22A /* Bundle.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD391D1F20D178C2007EE22A /* Bundle.swift */; };
 		AD391D2220D1798A007EE22A /* Media.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = AD391D2120D1798A007EE22A /* Media.xcassets */; };
+		AD3A7BD0237C1EC00025632D /* LndApiError+Localizable.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD3A7BCF237C1EC00025632D /* LndApiError+Localizable.swift */; };
 		AD3DDF6922D38D4C0031BFC8 /* Onboarding.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AD3DDF6822D38D4C0031BFC8 /* Onboarding.storyboard */; };
 		AD3DDF6B22D38D590031BFC8 /* OnboardingContainerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD3DDF6A22D38D590031BFC8 /* OnboardingContainerViewController.swift */; };
 		AD3DDF6D22D3908B0031BFC8 /* OnboardingPageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD3DDF6C22D3908B0031BFC8 /* OnboardingPageViewController.swift */; };
@@ -709,6 +710,7 @@
 		AD391D2120D1798A007EE22A /* Media.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Media.xcassets; sourceTree = "<group>"; };
 		AD391D4020D17FA9007EE22A /* Messages.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Messages.framework; path = System/Library/Frameworks/Messages.framework; sourceTree = SDKROOT; };
 		AD391D5820D2903C007EE22A /* Zap.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Zap.entitlements; sourceTree = "<group>"; };
+		AD3A7BCF237C1EC00025632D /* LndApiError+Localizable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "LndApiError+Localizable.swift"; sourceTree = "<group>"; };
 		AD3DDF6822D38D4C0031BFC8 /* Onboarding.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Onboarding.storyboard; sourceTree = "<group>"; };
 		AD3DDF6A22D38D590031BFC8 /* OnboardingContainerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingContainerViewController.swift; sourceTree = "<group>"; };
 		AD3DDF6C22D3908B0031BFC8 /* OnboardingPageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingPageViewController.swift; sourceTree = "<group>"; };
@@ -1798,6 +1800,7 @@
 				A0C2EABD206F8B5B003AE56E /* Localizable.swift */,
 				AD77464D2076162300EC596B /* Network+Localizable.swift */,
 				AD967FEF21062AB20048085B /* RPCConnectQRCodeError+Localizable.swift */,
+				AD3A7BCF237C1EC00025632D /* LndApiError+Localizable.swift */,
 			);
 			path = Localizable;
 			sourceTree = "<group>";
@@ -3345,6 +3348,7 @@
 				ADA865BC20ECB87B00B1B74B /* FilterSettings.swift in Sources */,
 				AD2B877D221C6F7800308C1B /* UnlockWalletViewController.swift in Sources */,
 				AD035BFC2174A030005EA785 /* ChannelTableViewCell.swift in Sources */,
+				AD3A7BD0237C1EC00025632D /* LndApiError+Localizable.swift in Sources */,
 				ADEEB5332134277400D2F992 /* KeyPadPinView.swift in Sources */,
 				ADD0515022F0A6240017BDC1 /* WalletEmptyStateViewModel.swift in Sources */,
 				AD391C2520D16EFA007EE22A /* BitcoinUnit+Localizable.swift in Sources */,

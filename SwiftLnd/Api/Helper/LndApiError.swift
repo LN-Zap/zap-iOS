@@ -9,7 +9,7 @@ import Foundation
 import Logger
 import SwiftGRPC
 
-public enum LndApiError: Error, LocalizedError, Equatable {
+public enum LndApiError: Error, Equatable {
     case invalidInput
     case walletEncrypted
     case lndNotRunning
@@ -32,19 +32,6 @@ public enum LndApiError: Error, LocalizedError, Equatable {
             } else {
                 self = .unknownError
             }
-        }
-    }
-
-    public var errorDescription: String? {
-        switch self {
-        case .localizedError(let description):
-            return description
-        case .walletEncrypted:
-            return "Wallet is encrypted."
-        case .lndNotRunning:
-            return "Lnd does not seem to be running properly."
-        case .invalidInput, .unknownError, .walletAlreadyUnlocked:
-            return nil
         }
     }
 }
