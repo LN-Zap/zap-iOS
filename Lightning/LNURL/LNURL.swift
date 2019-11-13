@@ -69,7 +69,8 @@ public enum LNURL {
         }
     }
     
-    private static func decodeBech32(string: String) -> Result<Data, LNURLError> {
+    // internal to make tests work
+    internal static func decodeBech32(string: String) -> Result<Data, LNURLError> {
         if let (hrp, data) = Bech32.decode(string, limit: false),
             hrp == "lnurl",
             let convertedData = data.convertBits(fromBits: 5, toBits: 8, pad: false) {
