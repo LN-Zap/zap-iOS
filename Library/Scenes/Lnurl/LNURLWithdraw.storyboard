@@ -76,7 +76,7 @@
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Qvv-vI-kmb">
                                 <rect key="frame" x="0.0" y="431" width="414" height="375"/>
                                 <subviews>
-                                    <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" style="medium" translatesAutoresizingMaskIntoConstraints="NO" id="WjJ-K1-pzq">
+                                    <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" style="white" translatesAutoresizingMaskIntoConstraints="NO" id="WjJ-K1-pzq">
                                         <rect key="frame" x="197" y="177.5" width="20" height="20"/>
                                     </activityIndicatorView>
                                 </subviews>
