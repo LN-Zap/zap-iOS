@@ -266,9 +266,16 @@ final class WalletCoordinator: NSObject, Coordinator { // swiftlint:disable:this
         }
     }
 
+    func presentLNURLWithdrawQRCodeScanner() {
+        let strategy = LNURLWithdrawQRCodeScannetStrategy(lightningService: lightningService)
+        let viewController = UINavigationController(rootViewController: QRCodeScannerViewController(strategy: strategy))
+        viewController.modalPresentationStyle = .fullScreen
+        rootViewController.present(viewController, animated: true)
+    }
+    
     func presentRequest() {
         let viewModel = RequestViewModel(lightningService: lightningService)
-        let viewController = RequestViewController(viewModel: viewModel)
+        let viewController = RequestViewController(viewModel: viewModel, presentQrCode: presentLNURLWithdrawQRCodeScanner)
         rootViewController.present(viewController, animated: true)
     }
 
