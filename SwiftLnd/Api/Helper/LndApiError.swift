@@ -9,7 +9,6 @@ import Foundation
 import SwiftGRPC
 
 public enum LndApiError: Error, Equatable {
-    case invalidInput
     case walletEncrypted
     case lndNotRunning
     case localizedError(String)
