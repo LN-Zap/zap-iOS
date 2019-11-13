@@ -14,13 +14,20 @@ public typealias ApiCompletion<T> = (Result<T, LndApiError>) -> Void
 /// Used in LightningApi & WalletApi.
 /// Maps an `ApiCompletion<U>` to an `ApiCompletion<T>` with the `map` function
 /// to transform lnd's raw response structs to more swifty version.
-func map<T, U>(_ completion: @escaping ApiCompletion<U>, to: @escaping (T) -> U?) -> ApiCompletion<T> { // swiftlint:disable:this identifier_name
+func map<T, U>(_ completion: @escaping ApiCompletion<U>, to transform: @escaping (T) -> U?) -> ApiCompletion<T> {
     return { input in
-        completion(input.flatMap {
-            if let mapped = to($0) {
-                return .success(mapped)
+        switch input {
+        case .success(let value):
+            if let transformed = transform(value) {
+                completion(.success(transformed))
+            } else {
+                let error = LndApiError.apiTransformationError
+                Logger.error(error)
+                completion(.failure(error))
             }
-            return .failure(LndApiError.unknownError)
-        })
+        case .failure(let error):
+            Logger.error(error)
+            completion(.failure(error))
+        }
     }
 }

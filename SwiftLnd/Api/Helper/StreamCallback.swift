@@ -21,7 +21,6 @@ final class LndCallback<T: SwiftProtobuf.Message>: NSObject, LndmobileCallbackPr
 
     func onError(_ error: Error?) {
         if let error = error {
-            Logger.error(error)
             completion(.failure(LndApiError(error: error)))
         } else {
             completion(.failure(.unknownError))
