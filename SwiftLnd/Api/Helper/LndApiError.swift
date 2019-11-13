@@ -13,8 +13,6 @@ public enum LndApiError: Error, Equatable {
     case lndNotRunning
     case localizedError(String)
     case unknownError
-    case walletAlreadyUnlocked
-
     case unableToFindNode
     case transactionOutputIsDust
     case noOutputs

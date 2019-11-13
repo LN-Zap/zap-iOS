@@ -17,8 +17,15 @@ extension LndApiError: LocalizedError {
             return "Wallet is encrypted."
         case .lndNotRunning:
             return "Lnd does not seem to be running properly."
-        case .unknownError, .walletAlreadyUnlocked:
-            return nil
+        case .transactionOutputIsDust:
+            return "Transaction output is dust."
+        case .noOutputs:
+            return "No outputs."
+        case
+             .unableToFindNode,
+             .unknownError,
+             .apiTransformationError:
+            return "Unknown Error."
         }
     }
 }
