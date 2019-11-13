@@ -15,13 +15,14 @@ public enum LndApiError: Error, Equatable {
     case unknownError
     case walletAlreadyUnlocked
 
+    case unableToFindNode
+    case transactionOutputIsDust
+    case noOutputs
+    
     // map local streaming connetion to error
     init(error: Error) {
-        if error.localizedDescription == "Closed" {
-            self = .walletAlreadyUnlocked
-        } else {
-            self = LndApiError.localizedError(error.localizedDescription)
-        }
+        let message = error.localizedDescription.deletingPrefix("rpc error: code = Unknown desc = ")
+        self = .init(statusMessage: message)
     }
     
     // map remote grpc connection to error
@@ -33,13 +34,24 @@ public enum LndApiError: Error, Equatable {
         case .internalError:
             self = .lndNotRunning
         default:
-            if
-                let statusMessage = callResult.statusMessage,
-                !statusMessage.isEmpty {
-                self = .localizedError(statusMessage)
+            if let statusMessage = callResult.statusMessage, !statusMessage.isEmpty {
+                self = .init(statusMessage: statusMessage)
             } else {
                 self = .unknownError
             }
+        }
+    }
+    
+    init(statusMessage: String) {
+        switch statusMessage {
+        case "unable to find node":
+            self = .unableToFindNode
+        case "transaction output is dust":
+            self = .transactionOutputIsDust
+        case "no outputs":
+            self = .noOutputs
+        default:
+            self = .localizedError(statusMessage)
         }
     }
 }
