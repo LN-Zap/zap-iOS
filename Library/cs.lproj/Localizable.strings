@@ -156,6 +156,7 @@
 "scene.send.address_headline" = "Komu:";
 "scene.send.memo_headline" = "Poznámka:";
 "scene.send.sending" = "Odesílání...";
+"scene.send.send_amount_too_small" = "Send amount is too small.";
 "scene.send.lightning.title" = "Odeslat Lightning platbu";
 "scene.send.on_chain.title" = "Odeslat On-Chain platbu";
 "scene.send.on_chain.fee" = "Poplatek:";
