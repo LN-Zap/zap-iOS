@@ -30,7 +30,7 @@ public final class WalletApi {
 
     public func generateSeed(completion: @escaping ApiCompletion<[String]>) {
         let request = Lnrpc_GenSeedRequest()
-        connection.genSeed(request, completion: run(completion) { $0.cipherSeedMnemonic })
+        connection.genSeed(request, completion: map(completion) { $0.cipherSeedMnemonic })
     }
 
     public func initWallet(mnemonic: [String], password: String, channelBackup: ChannelBackup?, recover: Bool, completion: @escaping ApiCompletion<Success>) {
@@ -41,11 +41,11 @@ public final class WalletApi {
         // https://github.com/lightningnetwork/lnd/blob/master/docs/recovery.md#starting-on-chain-recovery
         let recoverWindow = recover ? 100 : 0
         let request = Lnrpc_InitWalletRequest(password: password, mnemonic: mnemonic, channelBackup: channelBackup, recoverWindow: recoverWindow)
-        connection.initWallet(request, completion: run(completion) { _ in Success() })
+        connection.initWallet(request, completion: map(completion) { _ in Success() })
     }
 
     public func unlockWallet(password: String, completion: @escaping ApiCompletion<Success>) {
         let request = Lnrpc_UnlockWalletRequest(password: password)
-        connection.unlockWallet(request, completion: run(completion) { _ in Success() })
+        connection.unlockWallet(request, completion: map(completion) { _ in Success() })
     }
 }

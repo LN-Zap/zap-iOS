@@ -22,4 +22,9 @@ extension String {
     func hexEndianSwap() -> String {
         return hexBytes().reversed().joined()
     }
+    
+    func deletingPrefix(_ prefix: String) -> String {
+        guard self.hasPrefix(prefix) else { return self }
+        return String(self.dropFirst(prefix.count))
+    }
 }

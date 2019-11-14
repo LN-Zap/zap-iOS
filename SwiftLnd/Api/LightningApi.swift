@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import Logger
 import SwiftBTC
 
 public final class LightningApi {
@@ -60,62 +61,62 @@ public final class LightningApi {
     // MARK: - lnd api calls
 
     public func info(completion: @escaping ApiCompletion<Info>) {
-        connection.getInfo(Lnrpc_GetInfoRequest(), completion: run(completion, map: Info.init))
+        connection.getInfo(Lnrpc_GetInfoRequest(), completion: map(completion, to: Info.init))
     }
 
     public func openChannel(pubKey: String, csvDelay: Int?, amount: Satoshi, completion: @escaping ApiCompletion<ChannelPoint>) {
         let request = Lnrpc_OpenChannelRequest(pubKey: pubKey, csvDelay: csvDelay, amount: amount)
-        connection.openChannelSync(request, completion: run(completion, map: ChannelPoint.init))
+        connection.openChannelSync(request, completion: map(completion, to: ChannelPoint.init))
     }
 
     public func closeChannel(channelPoint: ChannelPoint, force: Bool, completion: @escaping ApiCompletion<CloseStatusUpdate>) {
         let request = Lnrpc_CloseChannelRequest(channelPoint: channelPoint, force: force)
-        connection.closeChannel(request, completion: run(completion, map: CloseStatusUpdate.init))
+        connection.closeChannel(request, completion: map(completion, to: CloseStatusUpdate.init))
     }
 
     public func channelBalance(completion: @escaping ApiCompletion<ChannelBalance>) {
-        connection.channelBalance(Lnrpc_ChannelBalanceRequest(), completion: run(completion, map: ChannelBalance.init))
+        connection.channelBalance(Lnrpc_ChannelBalanceRequest(), completion: map(completion, to: ChannelBalance.init))
     }
 
     public func pendingChannels(completion: @escaping ApiCompletion<PendingChannels>) {
-        connection.pendingChannels(Lnrpc_PendingChannelsRequest(), completion: run(completion, map: PendingChannels.init) )
+        connection.pendingChannels(Lnrpc_PendingChannelsRequest(), completion: map(completion, to: PendingChannels.init) )
     }
 
     public func channels(completion: @escaping ApiCompletion<[OpenChannel]>) {
-        connection.listChannels(Lnrpc_ListChannelsRequest(), completion: run(completion) { $0.channels.map(OpenChannel.init) })
+        connection.listChannels(Lnrpc_ListChannelsRequest(), completion: map(completion) { $0.channels.map(OpenChannel.init) })
     }
 
     public func closedChannels(completion: @escaping ApiCompletion<[ChannelCloseSummary]>) {
-        connection.closedChannels(Lnrpc_ClosedChannelsRequest(), completion: run(completion) { $0.channels.compactMap(ChannelCloseSummary.init)
+        connection.closedChannels(Lnrpc_ClosedChannelsRequest(), completion: map(completion) { $0.channels.compactMap(ChannelCloseSummary.init)
         })
     }
 
     public func subscribeChannelEvents(completion: @escaping ApiCompletion<ChannelEventUpdate>) {
-        connection.subscribeChannelEvents(Lnrpc_ChannelEventSubscription(), completion: run(completion, map: ChannelEventUpdate.init))
+        connection.subscribeChannelEvents(Lnrpc_ChannelEventSubscription(), completion: map(completion, to: ChannelEventUpdate.init))
     }
 
     public func sendCoins(address: BitcoinAddress, amount: Satoshi, confirmationTarget: Int, completion: @escaping ApiCompletion<String>) {
         let request = Lnrpc_SendCoinsRequest(address: address, amount: amount, confirmationTarget: confirmationTarget)
-        connection.sendCoins(request, completion: run(completion) { $0.txid })
+        connection.sendCoins(request, completion: map(completion) { $0.txid })
     }
 
     public func transactions(completion: @escaping ApiCompletion<[Transaction]>) {
-        connection.getTransactions(Lnrpc_GetTransactionsRequest(), completion: run(completion) {
+        connection.getTransactions(Lnrpc_GetTransactionsRequest(), completion: map(completion) {
             $0.transactions.map(Transaction.init)
         })
     }
 
     public func subscribeTransactions(completion: @escaping ApiCompletion<Transaction>) {
-        connection.subscribeTransactions(Lnrpc_GetTransactionsRequest(), completion: run(completion, map: Transaction.init))
+        connection.subscribeTransactions(Lnrpc_GetTransactionsRequest(), completion: map(completion, to: Transaction.init))
     }
 
     public func decodePaymentRequest(_ paymentRequest: String, completion: @escaping ApiCompletion<PaymentRequest>) {
         let request = Lnrpc_PayReqString(payReq: paymentRequest)
-        connection.decodePayReq(request, completion: run(completion) { PaymentRequest(payReq: $0, raw: paymentRequest) })
+        connection.decodePayReq(request, completion: map(completion) { PaymentRequest(payReq: $0, raw: paymentRequest) })
     }
 
     public func payments(completion: @escaping ApiCompletion<[Payment]>) {
-        connection.listPayments(Lnrpc_ListPaymentsRequest(), completion: run(completion) { $0.payments.map(Payment.init) })
+        connection.listPayments(Lnrpc_ListPaymentsRequest(), completion: map(completion) { $0.payments.map(Payment.init) })
     }
 
     public func sendPayment(_ paymentRequest: PaymentRequest, amount: Satoshi?, completion: @escaping ApiCompletion<Payment>) {
@@ -124,7 +125,9 @@ public final class LightningApi {
             switch result {
             case .success(let value):
                 if !value.paymentError.isEmpty {
-                    completion(.failure(LndApiError.localizedError(value.paymentError)))
+                    let error = LndApiError(statusMessage: value.paymentError)
+                    Logger.error(error)
+                    completion(.failure(error))
                 } else {
                     completion(.success(Payment(paymentRequest: paymentRequest, sendResponse: value, amount: amount)))
                 }
@@ -136,56 +139,56 @@ public final class LightningApi {
 
     public func addInvoice(amount: Satoshi?, memo: String?, expiry: ExpiryTime?, completion: @escaping ApiCompletion<String>) {
         let request = Lnrpc_Invoice(amount: amount, memo: memo, expiry: expiry)
-        connection.addInvoice(request, completion: run(completion) { $0.paymentRequest })
+        connection.addInvoice(request, completion: map(completion) { $0.paymentRequest })
     }
 
     public func invoices(completion: @escaping ApiCompletion<[Invoice]>) {
         let request = Lnrpc_ListInvoiceRequest(reversed: true)
-        connection.listInvoices(request, completion: run(completion) { $0.invoices.map(Invoice.init) })
+        connection.listInvoices(request, completion: map(completion) { $0.invoices.map(Invoice.init) })
     }
 
     public func subscribeInvoices(completion: @escaping ApiCompletion<Invoice>) {
-        connection.subscribeInvoices(Lnrpc_InvoiceSubscription(), completion: run(completion, map: Invoice.init))
+        connection.subscribeInvoices(Lnrpc_InvoiceSubscription(), completion: map(completion, to: Invoice.init))
     }
 
     public func route(destination: String, amount: Satoshi, completion: @escaping ApiCompletion<Route>) {
         let request = Lnrpc_QueryRoutesRequest(destination: destination, amount: amount)
-        connection.queryRoutes(request, completion: run(completion) { $0.routes.first.map(Route.init) })
+        connection.queryRoutes(request, completion: map(completion) { $0.routes.first.map(Route.init) })
     }
 
     public func connect(pubKey: String, host: String, completion: @escaping ApiCompletion<Success>) {
         let request = Lnrpc_ConnectPeerRequest(pubKey: pubKey, host: host)
-        connection.connectPeer(request, completion: run(completion) { _ in Success() })
+        connection.connectPeer(request, completion: map(completion) { _ in Success() })
     }
 
     public func nodeInfo(pubKey: String, completion: @escaping ApiCompletion<NodeInfo>) {
         let request = Lnrpc_NodeInfoRequest(pubKey: pubKey)
-        connection.getNodeInfo(request, completion: run(completion, map: NodeInfo.init))
+        connection.getNodeInfo(request, completion: map(completion, to: NodeInfo.init))
     }
 
     public func peers(completion: @escaping ApiCompletion<[Peer]>) {
-        connection.listPeers(Lnrpc_ListPeersRequest(), completion: run(completion) { $0.peers.map(Peer.init) })
+        connection.listPeers(Lnrpc_ListPeersRequest(), completion: map(completion) { $0.peers.map(Peer.init) })
     }
 
     public func newAddress(type: OnChainRequestAddressType, completion: @escaping ApiCompletion<BitcoinAddress>) {
         let request = Lnrpc_NewAddressRequest(type: type)
-        connection.newAddress(request, completion: run(completion) { BitcoinAddress(string: $0.address) })
+        connection.newAddress(request, completion: map(completion) { BitcoinAddress(string: $0.address) })
     }
 
     public func walletBalance(completion: @escaping ApiCompletion<WalletBalance>) {
-        connection.walletBalance(Lnrpc_WalletBalanceRequest(), completion: run(completion, map: WalletBalance.init))
+        connection.walletBalance(Lnrpc_WalletBalanceRequest(), completion: map(completion, to: WalletBalance.init))
     }
 
     public func exportAllChannelsBackup(completion: @escaping ApiCompletion<ChannelBackup>) {
-        connection.exportAllChannelBackups(Lnrpc_ChanBackupExportRequest(), completion: run(completion, map: ChannelBackup.init))
+        connection.exportAllChannelBackups(Lnrpc_ChanBackupExportRequest(), completion: map(completion, to: ChannelBackup.init))
     }
 
     public func subscribeChannelBackups(completion: @escaping ApiCompletion<ChannelBackup>) {
-        connection.subscribeChannelBackups(Lnrpc_ChannelBackupSubscription(), completion: run(completion, map: ChannelBackup.init))
+        connection.subscribeChannelBackups(Lnrpc_ChannelBackupSubscription(), completion: map(completion, to: ChannelBackup.init))
     }
 
     public func estimateFees(address: BitcoinAddress, amount: Satoshi, confirmationTarget: Int, completion: @escaping ApiCompletion<FeeEstimate>) {
         let request = Lnrpc_EstimateFeeRequest(address: address, amount: amount, confirmationTarget: confirmationTarget)
-        connection.estimateFee(request, completion: run(completion, map: FeeEstimate.init))
+        connection.estimateFee(request, completion: map(completion, to: FeeEstimate.init))
     }
 }
