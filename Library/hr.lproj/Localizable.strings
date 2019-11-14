@@ -156,6 +156,7 @@
 "scene.send.address_headline" = "Za:";
 "scene.send.memo_headline" = "Bilješka:";
 "scene.send.sending" = "Slanje...";
+"scene.send.send_amount_too_small" = "Send amount is too small.";
 "scene.send.lightning.title" = "Pošalji LN plaćanje";
 "scene.send.on_chain.title" = "Send On-Chain";
 "scene.send.on_chain.fee" = "Fee:";
