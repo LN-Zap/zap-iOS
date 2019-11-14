@@ -124,7 +124,7 @@ public final class LightningApi {
             switch result {
             case .success(let value):
                 if !value.paymentError.isEmpty {
-                    completion(.failure(LndApiError.localizedError(value.paymentError)))
+                    completion(.failure(LndApiError(statusMessage: value.paymentError)))
                 } else {
                     completion(.success(Payment(paymentRequest: paymentRequest, sendResponse: value, amount: amount)))
                 }

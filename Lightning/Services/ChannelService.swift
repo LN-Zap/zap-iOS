@@ -79,7 +79,7 @@ public final class ChannelService: NSObject {
             } else {
                 api.connect(pubKey: lightningNodeURI.pubKey, host: lightningNodeURI.host) { result in
                     if case .failure(let error) = result {
-                        completion(.failure(LndApiError.localizedError(error.localizedDescription)))
+                        completion(.failure(error))
                     } else {
                         self?.openConnectedChannel(pubKey: lightningNodeURI.pubKey, csvDelay: csvDelay, amount: amount, completion: completion)
                     }

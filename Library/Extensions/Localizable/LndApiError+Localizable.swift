@@ -11,7 +11,7 @@ import SwiftLnd
 extension LndApiError: LocalizedError {
     public var errorDescription: String? {
         switch self {
-        case .localizedError(let description):
+        case .unlocalized(let description):
             return description
         case .walletEncrypted:
             return L10n.LndError.walletEncrypted

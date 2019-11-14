@@ -9,13 +9,13 @@ import Foundation
 import SwiftGRPC
 
 public enum LndApiError: Error, Equatable {
+    case unlocalized(String)
+    
     case walletEncrypted
     case lndNotRunning
-    case localizedError(String)
     case unknownError
     case apiTransformationError
     case restNetworkError
-    
     case unableToFindNode
     case transactionOutputIsDust
     case noOutputs
@@ -55,7 +55,7 @@ public enum LndApiError: Error, Equatable {
         case "insufficient funds available to construct transaction":
             self = .insufficientFundsAvailable
         default:
-            self = .localizedError(statusMessage)
+            self = .unlocalized(statusMessage)
         }
     }
 }
