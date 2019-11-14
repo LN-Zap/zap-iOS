@@ -33,6 +33,8 @@ extension LndApiError: LocalizedError {
             return L10n.LndError.insufficientFundsAvailable
         case .invoiceAlreadyPaid:
             return L10n.LndError.invoiceAlreadyPaid
+        case .noPathToDestination:
+            return L10n.LndError.noPathToDestination
         }
     }
 }

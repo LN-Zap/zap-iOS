@@ -22,6 +22,7 @@ public enum LndApiError: Error, Equatable {
     case noOutputs
     case insufficientFundsAvailable
     case invoiceAlreadyPaid
+    case noPathToDestination
     
     // map local streaming connetion to LndApiError
     init(error: Error) {
@@ -58,6 +59,8 @@ public enum LndApiError: Error, Equatable {
             self = .insufficientFundsAvailable
         case "invoice is already paid":
             self = .invoiceAlreadyPaid
+        case "unable to find a path to destination":
+            self = .noPathToDestination
         default:
             self = .unlocalized(statusMessage)
         }
