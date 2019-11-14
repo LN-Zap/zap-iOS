@@ -29,6 +29,8 @@ extension LndApiError: LocalizedError {
             return L10n.LndError.unknownError
         case .apiTransformationError:
             return L10n.LndError.apiTransformationError
+        case .insufficientFundsAvailable:
+            return L10n.LndError.insufficientFundsAvailable
         }
     }
 }

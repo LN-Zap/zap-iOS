@@ -19,6 +19,7 @@ public enum LndApiError: Error, Equatable {
     case unableToFindNode
     case transactionOutputIsDust
     case noOutputs
+    case insufficientFundsAvailable
     
     // map local streaming connetion to error
     init(error: Error) {
@@ -51,6 +52,8 @@ public enum LndApiError: Error, Equatable {
             self = .transactionOutputIsDust
         case "no outputs":
             self = .noOutputs
+        case "insufficient funds available to construct transaction":
+            self = .insufficientFundsAvailable
         default:
             self = .localizedError(statusMessage)
         }

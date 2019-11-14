@@ -21,6 +21,7 @@
 "lnd_error.noOutputs" = "No outputs.";
 "lnd_error.restNetworkError" = "Check your internet connection.";
 "lnd_error.unableToFindNode" = "Unable to find node.";
+"lnd_error.insufficientFundsAvailable" = "Insufficient funds available to construct transaction.";
 "lnd_error.unknownError" = "Unknown Error 1";
 "lnd_error.apiTransformationError" = "Unknown Error 2";
 
