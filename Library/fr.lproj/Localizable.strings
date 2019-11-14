@@ -15,6 +15,18 @@
 "error.wrong_uri_network" = "Vous avez essayé d'ouvrir un lien pour le %@, mais votre node est connecté au %@.";
 "error.block_explorer.unsupported_network" = "%@ ne prend pas en charge %@.";
 
+"lnd_error.wallet_encrypted" = "Wallet is encrypted";
+"lnd_error.lnd_not_running" = "Lnd does not seem to be running properly.";
+"lnd_error.transaction_output_is_dust" = "Transaction output is dust.";
+"lnd_error.no_outputs" = "No outputs.";
+"lnd_error.rest_network_error" = "Check your internet connection.";
+"lnd_error.unable_to_find_node" = "Unable to find node.";
+"lnd_error.insufficient_funds_available" = "Insufficient funds available to construct transaction.";
+"lnd_error.unknown_error" = "Unknown Error 1";
+"lnd_error.api_transformation_error" = "Unknown Error 2";
+"lnd_error.invoice_already_paid" = "Invoice is already paid.";
+"lnd_error.no_path_to_destination" = "Unable to find a path to destination.";
+
 "rpc_connect_qrcode_error.btc_pay_expired" = "Il semble que ce code ait expiré.";
 "rpc_connect_qrcode_error.btc_pay_configuration_broken" = "Impossible de lire le fichier des configurations de BTCPay.";
 "rpc_connect_qrcode_error.cant_read_qrcode" = "Format de code invalide.";
@@ -144,6 +156,7 @@
 "scene.send.address_headline" = "À :";
 "scene.send.memo_headline" = "Note :";
 "scene.send.sending" = "Envoi en cours...";
+"scene.send.send_amount_too_small" = "Send amount is too small.";
 "scene.send.lightning.title" = "Envoyer un paiement Lightning";
 "scene.send.on_chain.title" = "Envoyer un paiement On-chain";
 "scene.send.on_chain.fee" = "Frais :";
