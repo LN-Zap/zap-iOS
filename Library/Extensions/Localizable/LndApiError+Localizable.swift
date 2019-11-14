@@ -27,7 +27,7 @@ extension LndApiError: LocalizedError {
             return L10n.LndError.unableToFindNode
         case .unknownError:
             return L10n.LndError.unknownError
-        case .apiTransformationError:
+        case .apiMappingFailed:
             return L10n.LndError.apiTransformationError
         case .insufficientFundsAvailable:
             return L10n.LndError.insufficientFundsAvailable

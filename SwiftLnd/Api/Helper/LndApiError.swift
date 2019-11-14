@@ -10,11 +10,11 @@ import SwiftGRPC
 
 public enum LndApiError: Error, Equatable {
     case unlocalized(String)
+    case unknownError
     
     case walletEncrypted
     case lndNotRunning
-    case unknownError
-    case apiTransformationError
+    case apiMappingFailed
     case restNetworkError
     case unableToFindNode
     case transactionOutputIsDust

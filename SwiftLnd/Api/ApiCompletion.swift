@@ -21,7 +21,7 @@ func map<T, U>(_ completion: @escaping ApiCompletion<U>, to transform: @escaping
             if let transformed = transform(value) {
                 completion(.success(transformed))
             } else {
-                let error = LndApiError.apiTransformationError
+                let error = LndApiError.apiMappingFailed
                 Logger.error(error)
                 completion(.failure(error))
             }
