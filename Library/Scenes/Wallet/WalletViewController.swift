@@ -13,12 +13,8 @@ import SwiftBTC
 import SwiftLnd
 
 final class WalletViewController: UIViewController {
-    // detail
-    @IBOutlet private weak var detailView: UIView!
-    @IBOutlet private weak var detailHandleView: ArrowHandleView!
-    @IBOutlet private weak var segmentStackView: UIStackView!
-    @IBOutlet private weak var circleGraphView: CircleGraphView!
-    @IBOutlet private weak var segmentBackground: UIView!
+    // balance detail
+    @IBOutlet private weak var balanceDetailView: BalanceDetailView!
 
     // header
     @IBOutlet private weak var syncView: SyncView!
@@ -47,13 +43,7 @@ final class WalletViewController: UIViewController {
     private var channelButtonTapped: (() -> Void)!
     private var emptyStateViewModel: WalletEmptyStateViewModel!
     // swiftlint:enable implicitly_unwrapped_optional
-
-    private let buttonCornerRadius: CGFloat = 20
-    private var dragStartPosition: CGFloat = 0
-    private var detailMaxOffset: CGFloat {
-        return -(detailView.bounds.height - 45) - 60
-    }
-
+    
     // swiftlint:disable:next function_parameter_count
     static func instantiate(
         walletViewModel: WalletViewModel,
@@ -102,7 +92,7 @@ final class WalletViewController: UIViewController {
 
         bottomCurtain.backgroundColor = UIColor.Zap.deepSeaBlue
 
-        buttonContainerView.layer.cornerRadius = buttonCornerRadius
+        buttonContainerView.layer.cornerRadius = Constants.buttonCornerRadius
         buttonContainerView.clipsToBounds = true
         buttonContainerView.backgroundColor = UIColor.Zap.deepSeaBlue
 
@@ -114,7 +104,7 @@ final class WalletViewController: UIViewController {
         setupPrimaryBalanceLabel()
         setupBindings()
 
-        setupDetailView()
+        balanceDetailView.setup(viewModel: walletViewModel.balanceDetailViewModel)
         setupEmtpyState()
 
         syncView.syncViewModel = walletViewModel.syncViewModel
@@ -125,7 +115,7 @@ final class WalletViewController: UIViewController {
 
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
-        updateDetailPosition()
+        balanceDetailView.updatePosition()
     }
     
     private func setupChannelNotification() {
@@ -172,16 +162,10 @@ final class WalletViewController: UIViewController {
     }
 
     private func setupBindings() {
-        [
-            walletViewModel.lightningService.balanceService.totalBalance
-                .distinctUntilChanged()
-                .bind(to: secondaryBalanceLabel.reactive.text, currency: Settings.shared.secondaryCurrency),
-            walletViewModel.circleGraphSegments
-                .observeOn(DispatchQueue.main)
-                .observeNext { [weak self] in
-                    self?.circleGraphView.segments = $0
-                }
-        ].dispose(in: reactive.bag)
+        walletViewModel.lightningService.balanceService.totalBalance
+            .distinctUntilChanged()
+            .bind(to: secondaryBalanceLabel.reactive.text, currency: Settings.shared.secondaryCurrency)
+            .dispose(in: reactive.bag)
     }
 
     @IBAction private func presentSend(_ sender: Any) {
@@ -203,97 +187,6 @@ final class WalletViewController: UIViewController {
     @IBAction private func swapCurrencyButtonTapped(_ sender: Any) {
         Settings.shared.swapCurrencies()
     }
-
-    private func setupDetailView() {
-        segmentStackView.clear()
-        for segment in walletViewModel.balanceSegments {
-            segmentStackView.addSegment(segment.segment, color: segment.segment.color, title: segment.segment.localized, amount: segment.amount)
-        }
-
-        segmentBackground.layer.cornerRadius = buttonCornerRadius
-
-        circleGraphView.arcWidth = 6
-        circleGraphView.emptyColor = UIColor.Zap.deepSeaBlue
-    }
-
-    private func updateDetailPosition() {
-        if UserDefaults.Keys.walletDetailExpanded.get(defaultValue: false) {
-            detailView.transform = CGAffineTransform(translationX: 0, y: detailMaxOffset)
-            detailHandleView.progress = 1
-        } else {
-            detailView.transform = .identity
-            detailHandleView.progress = 0
-        }
-    }
-
-    @IBAction private func toggleDetailState() {
-        if detailView.transform == .identity {
-            animateDetail(expanded: true)
-        } else if detailView.transform.ty == detailMaxOffset {
-            animateDetail(expanded: false)
-        }
-    }
-
-    @IBAction private func didPan(_ sender: UIPanGestureRecognizer) {
-        let translation = sender.translation(in: view)
-        let maxOffset = detailMaxOffset
-
-        let yTranslation: CGFloat
-        let newOffset = dragStartPosition + translation.y
-
-        if newOffset < maxOffset {
-            let additionalOffset = (newOffset - detailMaxOffset)
-            yTranslation = maxOffset - pow(abs(additionalOffset), 0.85)
-        } else {
-            yTranslation = min(0, newOffset)
-        }
-
-        switch sender.state {
-        case .possible:
-            break
-        case .began:
-            dragStartPosition = detailView.transform.ty
-        case .changed:
-            detailView.transform = CGAffineTransform(translationX: 0, y: yTranslation)
-            detailHandleView.progress = max(yTranslation, maxOffset) / maxOffset
-
-        case .ended, .cancelled, .failed:
-            let velocity = sender.velocity(in: view).y
-            let triggerVelocity: CGFloat = 600
-
-            if (yTranslation < maxOffset / 2 || velocity < -triggerVelocity) && velocity < triggerVelocity {
-                animateDetail(expanded: true)
-            } else {
-                animateDetail(expanded: false)
-            }
-        @unknown default:
-            break
-        }
-    }
-
-    private func animateDetail(expanded: Bool) {
-        let transform: CGAffineTransform
-        let detailHandleViewProgress: CGFloat
-
-        if expanded {
-            transform = CGAffineTransform(translationX: 0, y: detailMaxOffset)
-            detailHandleViewProgress = 1
-
-            UserDefaults.Keys.walletDetailExpanded.set(true)
-        } else {
-            // bounce back
-            transform = .identity
-            detailHandleViewProgress = 0
-
-            UserDefaults.Keys.walletDetailExpanded.set(false)
-        }
-        UIImpactFeedbackGenerator(style: .light).impactOccurred()
-
-        UIView.animate(withDuration: 0.3, delay: 0, usingSpringWithDamping: 0.6, initialSpringVelocity: 0.25, options: [], animations: { [detailView, detailHandleView] in
-            detailView?.transform = transform
-            detailHandleView?.progress = detailHandleViewProgress
-        }, completion: nil)
-    }
 }
 
 private extension Bitcoin {
@@ -304,44 +197,5 @@ private extension Bitcoin {
         let attributedString = NSMutableAttributedString(string: amountString)
         attributedString.append(NSAttributedString(string: " " + symbol, attributes: [.font: UIFont.Zap.light]))
         return attributedString
-    }
-}
-
-private extension UIStackView {
-    func addSegment(_ segment: Segment, color: UIColor, title: String, amount: Signal<Satoshi, Never>) {
-        let circleView = CircleView(frame: .zero)
-        circleView.backgroundColor = .clear
-        circleView.color = color
-
-        let titleLabel = UILabel(frame: .zero)
-        Style.Label.subHeadline.with({ $0.font = $0.font.withSize(17) }).apply(to: titleLabel)
-        titleLabel.text = title
-
-        let amountLabel = UILabel(frame: .zero)
-        Style.Label.headline.apply(to: amountLabel)
-        amountLabel.textAlignment = .right
-        amount
-            .bind(to: amountLabel.reactive.text, currency: Settings.shared.primaryCurrency)
-            .dispose(in: reactive.bag)
-
-        let horizontalStackView = UIStackView(arrangedSubviews: [circleView, titleLabel, amountLabel])
-        horizontalStackView.axis = .horizontal
-        horizontalStackView.spacing = 10
-
-        NSLayoutConstraint.activate([
-            circleView.widthAnchor.constraint(equalToConstant: 8)
-        ])
-
-        addArrangedSubview(horizontalStackView)
-
-        if segment == .pending {
-            amount
-                .map { $0 <= 0 }
-                .observeOn(DispatchQueue.main)
-                .observeNext {
-                    horizontalStackView.isHidden = $0
-                }
-                .dispose(in: reactive.bag)
-        }
     }
 }

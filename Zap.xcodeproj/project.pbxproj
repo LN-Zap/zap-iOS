@@ -186,6 +186,10 @@
 		AD3DDF7122D39BC30031BFC8 /* Emoji.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD3DDF7022D39BC30031BFC8 /* Emoji.swift */; };
 		AD3FF6E0221D68890017E376 /* ServiceClientBase+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD3FF6DF221D68890017E376 /* ServiceClientBase+Extension.swift */; };
 		AD3FF6E2221D750F0017E376 /* UnlockWalletViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD3FF6E1221D750F0017E376 /* UnlockWalletViewModel.swift */; };
+		AD44E2A6237D740400DA97F9 /* BalanceDetailView.xib in Resources */ = {isa = PBXBuildFile; fileRef = AD44E2A5237D740400DA97F9 /* BalanceDetailView.xib */; };
+		AD44E2A8237D740E00DA97F9 /* BalanceDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD44E2A7237D740E00DA97F9 /* BalanceDetailView.swift */; };
+		AD44E2AA237D74F900DA97F9 /* BalanceDetailViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD44E2A9237D74F900DA97F9 /* BalanceDetailViewModel.swift */; };
+		AD44E2AC237D75E200DA97F9 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD44E2AB237D75E200DA97F9 /* Constants.swift */; };
 		AD4B4BE122EAF0CE0029773A /* EmptyStateView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD4B4BE022EAF0CE0029773A /* EmptyStateView.swift */; };
 		AD4F7657232A520B00F78184 /* DST Root CA X3.cer in Resources */ = {isa = PBXBuildFile; fileRef = AD4F7656232A51A900F78184 /* DST Root CA X3.cer */; };
 		AD4F7659232BCF0800F78184 /* SyncView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD4F7658232BCF0800F78184 /* SyncView.swift */; };
@@ -719,6 +723,10 @@
 		AD3DDF7022D39BC30031BFC8 /* Emoji.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Emoji.swift; sourceTree = "<group>"; };
 		AD3FF6DF221D68890017E376 /* ServiceClientBase+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ServiceClientBase+Extension.swift"; sourceTree = "<group>"; };
 		AD3FF6E1221D750F0017E376 /* UnlockWalletViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UnlockWalletViewModel.swift; sourceTree = "<group>"; };
+		AD44E2A5237D740400DA97F9 /* BalanceDetailView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = BalanceDetailView.xib; sourceTree = "<group>"; };
+		AD44E2A7237D740E00DA97F9 /* BalanceDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BalanceDetailView.swift; sourceTree = "<group>"; };
+		AD44E2A9237D74F900DA97F9 /* BalanceDetailViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BalanceDetailViewModel.swift; sourceTree = "<group>"; };
+		AD44E2AB237D75E200DA97F9 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		AD4B4BE022EAF0CE0029773A /* EmptyStateView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmptyStateView.swift; sourceTree = "<group>"; };
 		AD4F7656232A51A900F78184 /* DST Root CA X3.cer */ = {isa = PBXFileReference; lastKnownFileType = file; path = "DST Root CA X3.cer"; sourceTree = "<group>"; };
 		AD4F7658232BCF0800F78184 /* SyncView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SyncView.swift; sourceTree = "<group>"; };
@@ -1662,8 +1670,9 @@
 				AD391C1A20D16ED4007EE22A /* Library.h */,
 				AD5EA1DF213D826A00AB8031 /* README.md */,
 				AD391C1B20D16ED4007EE22A /* Info.plist */,
-				AD293D4922DCA3C90069A8AB /* NotificationScheduler.swift */,
 				AD931BD222DF66FE0048431C /* BuildConfiguration.swift */,
+				AD44E2AB237D75E200DA97F9 /* Constants.swift */,
+				AD293D4922DCA3C90069A8AB /* NotificationScheduler.swift */,
 				ADA3254321AD8D7900C5EAA2 /* Colors.xcassets */,
 				AD391D2120D1798A007EE22A /* Media.xcassets */,
 				ADADA95A22859EE90036639F /* Backup */,
@@ -1698,6 +1707,18 @@
 				AD3DDF7022D39BC30031BFC8 /* Emoji.swift */,
 			);
 			path = Onboarding;
+			sourceTree = "<group>";
+		};
+		AD44E2A4237D73DB00DA97F9 /* BalanceDetailView */ = {
+			isa = PBXGroup;
+			children = (
+				AD5901CA2265E73F00DB9B00 /* ArrowHandleView.swift */,
+				AD44E2A7237D740E00DA97F9 /* BalanceDetailView.swift */,
+				AD44E2A9237D74F900DA97F9 /* BalanceDetailViewModel.swift */,
+				AD248623225B73970049532C /* WalletBalanceSegment.swift */,
+				AD44E2A5237D740400DA97F9 /* BalanceDetailView.xib */,
+			);
+			path = BalanceDetailView;
 			sourceTree = "<group>";
 		};
 		AD4B4BDD22EAF0A80029773A /* Empty State */ = {
@@ -1846,13 +1867,12 @@
 			isa = PBXGroup;
 			children = (
 				AD7EDAE22108C4150058CCCA /* Wallet.storyboard */,
-				AD5901CA2265E73F00DB9B00 /* ArrowHandleView.swift */,
 				AD81C21821B865E100FA3FA9 /* SyncPercentageEstimator.swift */,
 				ADFDE94322E6F46100B718A4 /* SyncViewModel.swift */,
-				AD248623225B73970049532C /* WalletBalanceSegment.swift */,
 				ADF4C3DA2363466500C0E5B2 /* WalletPageViewController.swift */,
 				AD7EDAE42108C41D0058CCCA /* WalletViewController.swift */,
 				AD248625225B78300049532C /* WalletViewModel.swift */,
+				AD44E2A4237D73DB00DA97F9 /* BalanceDetailView */,
 				AD4B4BDD22EAF0A80029773A /* Empty State */,
 				ADF4C3DC2367044100C0E5B2 /* NotificationView */,
 				AD4F765A232BCF0D00F78184 /* SyncView */,
@@ -2768,6 +2788,7 @@
 				AD391C4C20D16F68007EE22A /* ChannelList.storyboard in Resources */,
 				AD1831C72296859D00120260 /* OnChainFeeView.xib in Resources */,
 				AD2B877F221C6F8400308C1B /* UnlockWallet.storyboard in Resources */,
+				AD44E2A6237D740400DA97F9 /* BalanceDetailView.xib in Resources */,
 				AD391C5420D16F7A007EE22A /* ConnectRemoteNode.storyboard in Resources */,
 				AD391CA020D16FA8007EE22A /* Root.storyboard in Resources */,
 				AD7B1EF8224241DC007D4171 /* WalletList.storyboard in Resources */,
@@ -3214,6 +3235,7 @@
 				AD2884352126B51C003C3D94 /* ModalViewController.swift in Sources */,
 				AD391CAB20D16FA8007EE22A /* CurrencySettingsItem.swift in Sources */,
 				ADF4C3DB2363466500C0E5B2 /* WalletPageViewController.swift in Sources */,
+				AD44E2AA237D74F900DA97F9 /* BalanceDetailViewModel.swift in Sources */,
 				AD391C4420D16F0B007EE22A /* Style.swift in Sources */,
 				ADA2DD06225CDD03007482D9 /* SuggestedPeerCell.swift in Sources */,
 				AD391C2C20D16EFA007EE22A /* String.swift in Sources */,
@@ -3306,6 +3328,7 @@
 				ADFCEADF2177687F00370242 /* EventDetailViewModel.swift in Sources */,
 				AD667E5921384966007B9160 /* WindowLevel.swift in Sources */,
 				AD391CB420D16FA8007EE22A /* Section.swift in Sources */,
+				AD44E2A8237D740E00DA97F9 /* BalanceDetailView.swift in Sources */,
 				AD391D1B20D174B4007EE22A /* PinSetupCoordinator.swift in Sources */,
 				ADF4C3E02367046B00C0E5B2 /* NotificationView.swift in Sources */,
 				ADA75DF2210F389100003068 /* ChannelState+Localizable.swift in Sources */,
@@ -3359,6 +3382,7 @@
 				AD3DDF6F22D390CA0031BFC8 /* OnboardingTextViewController.swift in Sources */,
 				AD391C9E20D16FA8007EE22A /* RequestViewModel.swift in Sources */,
 				AD1831C9229685A500120260 /* OnChainFeeView.swift in Sources */,
+				AD44E2AC237D75E200DA97F9 /* Constants.swift in Sources */,
 				5C18BB77234C0BF400BCF9D9 /* ExpiryTime+Localizable.swift in Sources */,
 				AD391C2B20D16EFA007EE22A /* SignalProtocol.swift in Sources */,
 				ADF232D42289A08100CB5053 /* Migrations.swift in Sources */,
