@@ -48,7 +48,7 @@ final class SendViewModel: NSObject {
         }
     }
 
-    let fee = Observable<Loadable<Satoshi?>>(.loading)
+    let fee = Observable<Loadable<Result<Satoshi, LoadingError>>>(.loading)
 
     let method: SendMethod
 
@@ -59,6 +59,7 @@ final class SendViewModel: NSObject {
         didSet {
             guard oldValue != amount else { return }
             updateFee()
+            updateSubtitle()
             updateIsUIEnabled()
         }
     }
@@ -66,6 +67,13 @@ final class SendViewModel: NSObject {
     var confirmationTarget: Int = 0 {
         didSet {
             updateFee()
+        }
+    }
+    
+    var isTransactionDust = false {
+        didSet {
+            updateIsUIEnabled()
+            updateSubtitle()
         }
     }
 
@@ -118,10 +126,10 @@ final class SendViewModel: NSObject {
 
         updateFee()
         updateIsUIEnabled()
-        updateSubtitle()
+        setupPrimaryCurrencyListener()
     }
 
-    private func updateSubtitle() {
+    private func setupPrimaryCurrencyListener() {
         Settings.shared.primaryCurrency
             .compactMap { [method, maxPaymentAmount] in
                 guard let amount = $0.format(satoshis: maxPaymentAmount) else { return nil }
@@ -137,11 +145,28 @@ final class SendViewModel: NSObject {
             }
             .dispose(in: reactive.bag)
     }
+    
+    private func updateSubtitle() {
+        if isTransactionDust && amount ?? 0 > 0 {
+            self.subtitleText.value = L10n.Scene.Send.sendAmountTooSmall
+        } else {
+            guard let amount = Settings.shared.primaryCurrency.value.format(satoshis: maxPaymentAmount) else {
+                return
+            }
+            
+            switch method {
+            case .lightning:
+                self.subtitleText.value = L10n.Scene.Send.Subtitle.lightningCanSendBalance(amount)
+            case .onChain:
+                self.subtitleText.value = L10n.Scene.Send.Subtitle.onChainBalance(amount)
+            }
+        }
+    }
 
     private func updateIsUIEnabled() {
-        isSendButtonEnabled.value = isAmountValid && !isSending
+        isSendButtonEnabled.value = isAmountValid && !isSending && !isTransactionDust
         isInputViewEnabled.value = !isSending
-        isSubtitleTextWarning.value = amount ?? 0 > maxPaymentAmount
+        isSubtitleTextWarning.value = amount ?? 0 > maxPaymentAmount || (isTransactionDust && amount ?? 0 > 0)
     }
 
     private var isAmountValid: Bool {
@@ -152,24 +177,36 @@ final class SendViewModel: NSObject {
     private func updateFee() {
         if isAmountValid {
             fee.value = .loading
-            updateIsUIEnabled()
             debounceFetchFee()
         } else {
-            fee.value = .element(nil)
+            fee.value = .element(.failure(.invalidAmount))
         }
     }
 
     private func fetchFee() {
         guard let amount = amount else { return }
 
-        let feeCompletion = { [weak self] (result: (amount: Satoshi, fee: Satoshi?)) -> Void in
+        let feeCompletion = { [weak self] (result: Result<(amount: Satoshi, fee: Satoshi?), LndApiError>) -> Void in
             guard
-                let self = self,
-                result.amount == self.amount
+                let self = self
                 else { return }
-
-            self.fee.value = .element(result.fee)
-            self.updateIsUIEnabled()
+            switch result {
+            case .success(let result):
+                guard
+                    result.amount == self.amount
+                    else { return }
+                
+                self.isTransactionDust = false
+                if let fee = result.fee {
+                    self.fee.value = .element(.success(fee))
+                } else {
+                    self.fee.value = .element(.failure(.invalidAmount))
+                }
+            case .failure(let lndApiError):
+                self.isTransactionDust = lndApiError == .transactionOutputIsDust
+                self.fee.value = amount > 0 ? .element(Result.failure(.lndApiError(lndApiError))) : .element(.failure(.invalidAmount))
+                self.updateIsUIEnabled()
+            }
         }
 
         switch method {

@@ -623,6 +623,8 @@ internal enum L10n {
       internal static let maximumFee = L10n.tr("Localizable", "scene.send.maximum_fee")
       /// Memo:
       internal static let memoHeadline = L10n.tr("Localizable", "scene.send.memo_headline")
+      /// Send amount is too small.
+      internal static let sendAmountTooSmall = L10n.tr("Localizable", "scene.send.send_amount_too_small")
       /// Send
       internal static let sendButton = L10n.tr("Localizable", "scene.send.send_button")
       /// Sending...
