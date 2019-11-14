@@ -221,6 +221,7 @@ final class RequestViewController: ModalDetailViewController {
     }
 
     private func presentPaymentRequest() {
+        nextButton?.isEnabled = false
         viewModel.create { [weak self] result in
             DispatchQueue.main.async {
                 switch result {
@@ -231,6 +232,7 @@ final class RequestViewController: ModalDetailViewController {
                     }
                 case .failure(let error):
                     Toast.presentError(error.localizedDescription)
+                    self?.nextButton?.isEnabled = true
                 }
             }
         }
