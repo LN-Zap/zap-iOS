@@ -28,7 +28,6 @@ func createHandler<T>(_ completion: @escaping ApiCompletion<T>) -> (T?, CallResu
             completion(.success(response))
         } else {
             let error = LndApiError(callResult: callResult)
-            Logger.error(error)
             completion(.failure(error))
         }
     }
