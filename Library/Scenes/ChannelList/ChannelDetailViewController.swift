@@ -66,7 +66,7 @@ final class ChannelDetailViewController: ModalDetailViewController {
 
         if channelViewModel.state.value != ChannelState.waitingClose {
             contentStackView.addArrangedElement(.separator)
-            let balanceView = BalanceView()
+            let balanceView = ChannelBalanceView()
             balanceView.set(localBalance: channelViewModel.localBalance.value, remoteBalance: channelViewModel.remoteBalance.value)
 
             contentStackView.addArrangedElement(.verticalStackView(content: [

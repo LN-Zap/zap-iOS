@@ -8,7 +8,7 @@
 import SwiftBTC
 import UIKit
 
-final class BalanceView: UIView {
+final class ChannelBalanceView: UIView {
 
     private weak var localBalanceView: UIView?
 

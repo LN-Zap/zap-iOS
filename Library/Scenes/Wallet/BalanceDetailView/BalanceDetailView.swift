@@ -20,7 +20,7 @@ final class BalanceDetailView: UIView {
         return -(bounds.height - 45) - 60
     }
     
-    public dynamic var progress: CGFloat = 0 {
+    private dynamic var progress: CGFloat = 0 {
         didSet {
             detailHandleView.progress = progress
         }

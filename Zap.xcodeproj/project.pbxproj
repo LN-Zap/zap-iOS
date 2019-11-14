@@ -162,7 +162,7 @@
 		AD391CDC20D16FE1007EE22A /* HistoryViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0F57DC1201E700C003AFA66 /* HistoryViewModel.swift */; };
 		AD391D0320D16FF5007EE22A /* AmountInputView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD99C9F62090C2560061C565 /* AmountInputView.swift */; };
 		AD391D0420D16FF5007EE22A /* AmountInputView.xib in Resources */ = {isa = PBXBuildFile; fileRef = AD99C9F82090C2600061C565 /* AmountInputView.xib */; };
-		AD391D0520D16FF5007EE22A /* BalanceView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD21768820C3DFDB007779DE /* BalanceView.swift */; };
+		AD391D0520D16FF5007EE22A /* ChannelBalanceView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD21768820C3DFDB007779DE /* ChannelBalanceView.swift */; };
 		AD391D0620D16FF5007EE22A /* BondCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0BD44DE206FED1400BF27A3 /* BondCell.swift */; };
 		AD391D0820D16FF5007EE22A /* GradientView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0F353CF20692570005B3639 /* GradientView.swift */; };
 		AD391D0920D16FF5007EE22A /* KeyPadView.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADBA12032090CD22001F7700 /* KeyPadView.swift */; };
@@ -206,6 +206,8 @@
 		AD5AA2E32270C9F000AEDDD7 /* LogFormatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD5AA2E22270C9EF00AEDDD7 /* LogFormatter.swift */; };
 		AD5AA2E52270CC9F00AEDDD7 /* FileObserver.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD5AA2E42270CC9F00AEDDD7 /* FileObserver.swift */; };
 		AD5AA2E72271B64500AEDDD7 /* rpc.pb.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD5AA2E62271B64500AEDDD7 /* rpc.pb.swift */; };
+		AD60D0D6237DBAF4007D6420 /* BalanceView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD60D0D5237DBAF4007D6420 /* BalanceView.swift */; };
+		AD60D0D8237DBB0A007D6420 /* BalanceView.xib in Resources */ = {isa = PBXBuildFile; fileRef = AD60D0D7237DBB0A007D6420 /* BalanceView.xib */; };
 		AD615CF5211C82E600680790 /* LoadingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD615CF4211C82E600680790 /* LoadingView.swift */; };
 		AD615CF7211CAB0900680790 /* PaddingLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD615CF6211CAB0900680790 /* PaddingLabel.swift */; };
 		AD667E4721359D79007B9160 /* AuthenticationCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD667E4621359D79007B9160 /* AuthenticationCoordinator.swift */; };
@@ -674,7 +676,7 @@
 		AD1D37882253C9ED00F32BE1 /* TransactionListUpdater.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransactionListUpdater.swift; sourceTree = "<group>"; };
 		AD1D378A2253C9F900F32BE1 /* PaymentListUpdater.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaymentListUpdater.swift; sourceTree = "<group>"; };
 		AD1EBA0020B2FD9D001FF67E /* Persistable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Persistable.swift; sourceTree = "<group>"; };
-		AD21768820C3DFDB007779DE /* BalanceView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BalanceView.swift; sourceTree = "<group>"; };
+		AD21768820C3DFDB007779DE /* ChannelBalanceView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChannelBalanceView.swift; sourceTree = "<group>"; };
 		AD21768A20C3F29C007779DE /* ConnectRemoteNodeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConnectRemoteNodeViewModel.swift; sourceTree = "<group>"; };
 		AD248623225B73970049532C /* WalletBalanceSegment.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WalletBalanceSegment.swift; sourceTree = "<group>"; };
 		AD248625225B78300049532C /* WalletViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WalletViewModel.swift; sourceTree = "<group>"; };
@@ -746,6 +748,8 @@
 		AD5AA2E62271B64500AEDDD7 /* rpc.pb.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = rpc.pb.swift; sourceTree = "<group>"; };
 		AD5EA1DF213D826A00AB8031 /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		AD5EA1E1213D827B00AB8031 /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
+		AD60D0D5237DBAF4007D6420 /* BalanceView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BalanceView.swift; sourceTree = "<group>"; };
+		AD60D0D7237DBB0A007D6420 /* BalanceView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = BalanceView.xib; sourceTree = "<group>"; };
 		AD615CF4211C82E600680790 /* LoadingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingView.swift; sourceTree = "<group>"; };
 		AD615CF6211CAB0900680790 /* PaddingLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaddingLabel.swift; sourceTree = "<group>"; };
 		AD667E4621359D79007B9160 /* AuthenticationCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthenticationCoordinator.swift; sourceTree = "<group>"; };
@@ -1260,7 +1264,7 @@
 			isa = PBXGroup;
 			children = (
 				ADBA120720935871001F7700 /* AmountInput */,
-				AD21768820C3DFDB007779DE /* BalanceView.swift */,
+				AD21768820C3DFDB007779DE /* ChannelBalanceView.swift */,
 				A0BD44DE206FED1400BF27A3 /* BondCell.swift */,
 				AD8049B5224E896B00DA99F4 /* CircleView.swift */,
 				A0731FE52014AC0800C55E45 /* ContainerViewController.swift */,
@@ -1773,6 +1777,15 @@
 			path = Tests;
 			sourceTree = "<group>";
 		};
+		AD60D0D4237DBAB1007D6420 /* BalanceView */ = {
+			isa = PBXGroup;
+			children = (
+				AD60D0D5237DBAF4007D6420 /* BalanceView.swift */,
+				AD60D0D7237DBB0A007D6420 /* BalanceView.xib */,
+			);
+			path = BalanceView;
+			sourceTree = "<group>";
+		};
 		AD667E4E21367E41007B9160 /* Background */ = {
 			isa = PBXGroup;
 			children = (
@@ -1873,6 +1886,7 @@
 				AD7EDAE42108C41D0058CCCA /* WalletViewController.swift */,
 				AD248625225B78300049532C /* WalletViewModel.swift */,
 				AD44E2A4237D73DB00DA97F9 /* BalanceDetailView */,
+				AD60D0D4237DBAB1007D6420 /* BalanceView */,
 				AD4B4BDD22EAF0A80029773A /* Empty State */,
 				ADF4C3DC2367044100C0E5B2 /* NotificationView */,
 				AD4F765A232BCF0D00F78184 /* SyncView */,
@@ -2807,6 +2821,7 @@
 				AD391C7320D16F89007EE22A /* QRCodeDetail.storyboard in Resources */,
 				AD391D0A20D16FF5007EE22A /* KeyPadView.xib in Resources */,
 				AD7B1F00224253E8007D4171 /* WalletListActionCell.xib in Resources */,
+				AD60D0D8237DBB0A007D6420 /* BalanceView.xib in Resources */,
 				AD391D1120D16FF5007EE22A /* Toast.xib in Resources */,
 				AD391D0420D16FF5007EE22A /* AmountInputView.xib in Resources */,
 				ADBC29C32375D4E30097D0F6 /* LNURLWithdraw.storyboard in Resources */,
@@ -3187,6 +3202,7 @@
 				AD7EDAE52108C41D0058CCCA /* WalletViewController.swift in Sources */,
 				AD391C5B20D16F7A007EE22A /* MnemonicViewController.swift in Sources */,
 				AD8B656C22E5F73600E9DBD5 /* SkeletonView.swift in Sources */,
+				AD60D0D6237DBAF4007D6420 /* BalanceView.swift in Sources */,
 				ADBC29C12375D4C70097D0F6 /* LNURLWithdrawViewController.swift in Sources */,
 				AD391CA120D16FA8007EE22A /* RootViewController.swift in Sources */,
 				ADA2DCFF225CC817007482D9 /* SuggestedPeers.swift in Sources */,
@@ -3335,7 +3351,7 @@
 				ADFAA021228C51FE000AECA1 /* BackupService.swift in Sources */,
 				AD9BB2E021836A54009DC878 /* DispatchQueue+Debounce.swift in Sources */,
 				AD391C9920D16FA8007EE22A /* QRCodeScannerStrategy.swift in Sources */,
-				AD391D0520D16FF5007EE22A /* BalanceView.swift in Sources */,
+				AD391D0520D16FF5007EE22A /* ChannelBalanceView.swift in Sources */,
 				AD391D0B20D16FF5007EE22A /* LineView.swift in Sources */,
 				AD391C3720D16EFA007EE22A /* UIViewController.swift in Sources */,
 				ADFDE94422E6F46100B718A4 /* SyncViewModel.swift in Sources */,

@@ -13,12 +13,10 @@ import SwiftBTC
 import SwiftLnd
 
 final class WalletViewController: UIViewController {
-    // balance detail
-    @IBOutlet private weak var balanceDetailView: BalanceDetailView!
-
-    // header
     @IBOutlet private weak var syncView: SyncView!
     @IBOutlet private weak var notificationView: NotificationView!
+    @IBOutlet private weak var balanceView: BalanceView!
+    @IBOutlet private weak var balanceDetailView: BalanceDetailView!
     
     // send / receive buttons
     @IBOutlet private weak var bottomCurtain: UIView!
@@ -27,12 +25,6 @@ final class WalletViewController: UIViewController {
     @IBOutlet private weak var receiveButtonBackground: UIView!
     @IBOutlet private weak var sendButton: UIButton!
     @IBOutlet private weak var requestButton: UIButton!
-
-    // balance view
-    @IBOutlet private weak var totalBalanceLabel: UILabel!
-    @IBOutlet private weak var swapIconImageView: UIImageView!
-    @IBOutlet private weak var primaryBalanceLabel: UILabel!
-    @IBOutlet private weak var secondaryBalanceLabel: UILabel!
 
     // swiftlint:disable implicitly_unwrapped_optional
     private var walletViewModel: WalletViewModel!
@@ -83,13 +75,6 @@ final class WalletViewController: UIViewController {
             requestButton.layoutIfNeeded()
         }
 
-        Style.Label.body.apply(to: secondaryBalanceLabel, totalBalanceLabel)
-        totalBalanceLabel.text = L10n.Scene.Wallet.totalBalance
-        secondaryBalanceLabel.textColor = UIColor.Zap.gray
-        secondaryBalanceLabel.textAlignment = .center
-        Style.Label.boldTitle.apply(to: primaryBalanceLabel)
-        primaryBalanceLabel.textAlignment = .center
-
         bottomCurtain.backgroundColor = UIColor.Zap.deepSeaBlue
 
         buttonContainerView.layer.cornerRadius = Constants.buttonCornerRadius
@@ -99,12 +84,8 @@ final class WalletViewController: UIViewController {
         sendButtonBackground.backgroundColor = UIColor.Zap.seaBlue
         receiveButtonBackground.backgroundColor = UIColor.Zap.seaBlue
 
-        swapIconImageView.tintColor = UIColor.Zap.lightningOrange
-
-        setupPrimaryBalanceLabel()
-        setupBindings()
-
         balanceDetailView.setup(viewModel: walletViewModel.balanceDetailViewModel)
+        balanceView.setup(totalBalance: walletViewModel.lightningService.balanceService.totalBalance)
         setupEmtpyState()
 
         syncView.syncViewModel = walletViewModel.syncViewModel
@@ -146,28 +127,6 @@ final class WalletViewController: UIViewController {
             .dispose(in: reactive.bag)
     }
 
-    private func setupPrimaryBalanceLabel() {
-        ReactiveKit
-            .combineLatest(walletViewModel.lightningService.balanceService.totalBalance, Settings.shared.primaryCurrency) { satoshis, currency -> NSAttributedString? in
-                if let bitcoin = currency as? Bitcoin {
-                    return bitcoin.attributedFormat(satoshis: satoshis)
-                } else {
-                    guard let string = currency.format(satoshis: satoshis) else { return nil }
-                    return NSAttributedString(string: string)
-                }
-            }
-            .distinctUntilChanged()
-            .bind(to: primaryBalanceLabel.reactive.attributedText)
-            .dispose(in: reactive.bag)
-    }
-
-    private func setupBindings() {
-        walletViewModel.lightningService.balanceService.totalBalance
-            .distinctUntilChanged()
-            .bind(to: secondaryBalanceLabel.reactive.text, currency: Settings.shared.secondaryCurrency)
-            .dispose(in: reactive.bag)
-    }
-
     @IBAction private func presentSend(_ sender: Any) {
         sendButtonTapped()
     }
@@ -182,20 +141,5 @@ final class WalletViewController: UIViewController {
 
     @IBAction private func presentSettings(_ sender: UIButton) {
         nodeButtonTapped()
-    }
-
-    @IBAction private func swapCurrencyButtonTapped(_ sender: Any) {
-        Settings.shared.swapCurrencies()
-    }
-}
-
-private extension Bitcoin {
-    func attributedFormat(satoshis: Satoshi) -> NSAttributedString? {
-        let formatter = SatoshiFormatter(unit: self)
-        formatter.includeCurrencySymbol = false
-        let amountString = formatter.string(from: satoshis) ?? "0"
-        let attributedString = NSMutableAttributedString(string: amountString)
-        attributedString.append(NSAttributedString(string: " " + symbol, attributes: [.font: UIFont.Zap.light]))
-        return attributedString
     }
 }

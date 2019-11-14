@@ -18,15 +18,6 @@ final class WalletViewModel: NSObject {
     let syncViewModel: SyncViewModel
     let balanceDetailViewModel: BalanceDetailViewModel
     
-    var network: Observable<Network?> {
-        return lightningService.infoService.network
-    }
-
-    var nodeAlias: Signal<String?, Never> {
-        return lightningService.infoService.info
-            .map { $0?.alias }
-    }
-    
     var shouldHideChannelEmptyState: Signal<Bool, Never>
     var didDismissChannelEmptyState = Observable(false)
     
