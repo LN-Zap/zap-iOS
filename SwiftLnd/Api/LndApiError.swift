@@ -21,13 +21,13 @@ public enum LndApiError: Error, Equatable {
     case noOutputs
     case insufficientFundsAvailable
     
-    // map local streaming connetion to error
+    // map local streaming connetion to LndApiError
     init(error: Error) {
         let message = error.localizedDescription.deletingPrefix("rpc error: code = Unknown desc = ")
         self = .init(statusMessage: message)
     }
     
-    // map remote grpc connection to error
+    // map remote grpc connection to LndApiError
     init(callResult: CallResult) {
         switch callResult.statusCode {
 
