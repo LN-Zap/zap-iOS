@@ -156,6 +156,7 @@
 "scene.send.address_headline" = "إلى:";
 "scene.send.memo_headline" = "ملاحظة:";
 "scene.send.sending" = "إرسال...";
+"scene.send.send_amount_too_small" = "Send amount is too small.";
 "scene.send.lightning.title" = "إرسال دفعة Lightning";
 "scene.send.on_chain.title" = "إرسال On-Chain";
 "scene.send.on_chain.fee" = "رسوم:";
