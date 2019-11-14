@@ -156,6 +156,7 @@
 "scene.send.address_headline" = "目标:";
 "scene.send.memo_headline" = "备注:";
 "scene.send.sending" = "发送中。。。";
+"scene.send.send_amount_too_small" = "Send amount is too small.";
 "scene.send.lightning.title" = "通过闪电网络支付";
 "scene.send.on_chain.title" = "发送主链交易";
 "scene.send.on_chain.fee" = "手续费：";
