@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import Logger
 import SwiftBTC
 
 public final class LightningApi {
@@ -124,7 +125,9 @@ public final class LightningApi {
             switch result {
             case .success(let value):
                 if !value.paymentError.isEmpty {
-                    completion(.failure(LndApiError(statusMessage: value.paymentError)))
+                    let error = LndApiError(statusMessage: value.paymentError)
+                    Logger.error(error)
+                    completion(.failure(error))
                 } else {
                     completion(.success(Payment(paymentRequest: paymentRequest, sendResponse: value, amount: amount)))
                 }
