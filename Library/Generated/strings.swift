@@ -101,6 +101,25 @@ internal enum L10n {
     }
   }
 
+  internal enum LndError {
+    /// Unknown Error 2
+    internal static let apiTransformationError = L10n.tr("Localizable", "lnd_error.apiTransformationError")
+    /// Lnd does not seem to be running properly.
+    internal static let lndNotRunning = L10n.tr("Localizable", "lnd_error.lndNotRunning")
+    /// No outputs.
+    internal static let noOutputs = L10n.tr("Localizable", "lnd_error.noOutputs")
+    /// Check your internet connection.
+    internal static let restNetworkError = L10n.tr("Localizable", "lnd_error.restNetworkError")
+    /// Transaction output is dust.
+    internal static let transactionOutputIsDust = L10n.tr("Localizable", "lnd_error.transactionOutputIsDust")
+    /// Unable to find node.
+    internal static let unableToFindNode = L10n.tr("Localizable", "lnd_error.unableToFindNode")
+    /// Unknown Error 1
+    internal static let unknownError = L10n.tr("Localizable", "lnd_error.unknownError")
+    /// Wallet is encrypted
+    internal static let walletEncrypted = L10n.tr("Localizable", "lnd_error.walletEncrypted")
+  }
+
   internal enum NetworkType {
     /// Mainnet
     internal static let mainnet = L10n.tr("Localizable", "network_type.mainnet")

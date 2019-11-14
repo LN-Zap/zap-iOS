@@ -14,18 +14,21 @@ extension LndApiError: LocalizedError {
         case .localizedError(let description):
             return description
         case .walletEncrypted:
-            return "Wallet is encrypted."
+            return L10n.LndError.walletEncrypted
         case .lndNotRunning:
-            return "Lnd does not seem to be running properly."
+            return L10n.LndError.lndNotRunning
         case .transactionOutputIsDust:
-            return "Transaction output is dust."
+            return L10n.LndError.transactionOutputIsDust
         case .noOutputs:
-            return "No outputs."
-        case .restNetworkError,
-             .unableToFindNode,
-             .unknownError,
-             .apiTransformationError:
-            return "Unknown Error."
+            return L10n.LndError.noOutputs
+        case .restNetworkError:
+            return L10n.LndError.restNetworkError
+        case .unableToFindNode:
+            return L10n.LndError.unableToFindNode
+        case .unknownError:
+            return L10n.LndError.unknownError
+        case .apiTransformationError:
+            return L10n.LndError.apiTransformationError
         }
     }
 }
