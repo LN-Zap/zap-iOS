@@ -156,6 +156,7 @@
 "scene.send.address_headline" = "To:";
 "scene.send.memo_headline" = "Memo:";
 "scene.send.sending" = "Sending...";
+"scene.send.send_amount_too_small" = "Send amount is too small.";
 "scene.send.lightning.title" = "Send Lightning Payment";
 "scene.send.on_chain.title" = "Send On-Chain";
 "scene.send.on_chain.fee" = "Fee:";
