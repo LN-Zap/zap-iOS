@@ -24,6 +24,7 @@
 "lnd_error.insufficientFundsAvailable" = "Insufficient funds available to construct transaction.";
 "lnd_error.unknownError" = "Unknown Error 1";
 "lnd_error.apiTransformationError" = "Unknown Error 2";
+"lnd_error.invoiceAlreadyPaid" = "Invoice is already paid.";
 
 "rpc_connect_qrcode_error.btc_pay_expired" = "Looks like the code is expired.";
 "rpc_connect_qrcode_error.btc_pay_configuration_broken" = "Could not read BTCPay configurations file.";

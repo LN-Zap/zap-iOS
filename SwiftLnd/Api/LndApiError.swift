@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import Logger
 import SwiftGRPC
 
 public enum LndApiError: Error, Equatable {
@@ -20,6 +21,7 @@ public enum LndApiError: Error, Equatable {
     case transactionOutputIsDust
     case noOutputs
     case insufficientFundsAvailable
+    case invoiceAlreadyPaid
     
     // map local streaming connetion to LndApiError
     init(error: Error) {
@@ -54,6 +56,8 @@ public enum LndApiError: Error, Equatable {
             self = .noOutputs
         case "insufficient funds available to construct transaction":
             self = .insufficientFundsAvailable
+        case "invoice is already paid":
+            self = .invoiceAlreadyPaid
         default:
             self = .unlocalized(statusMessage)
         }

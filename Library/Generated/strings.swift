@@ -106,6 +106,8 @@ internal enum L10n {
     internal static let apiTransformationError = L10n.tr("Localizable", "lnd_error.apiTransformationError")
     /// Insufficient funds available to construct transaction.
     internal static let insufficientFundsAvailable = L10n.tr("Localizable", "lnd_error.insufficientFundsAvailable")
+    /// Invoice is already paid.
+    internal static let invoiceAlreadyPaid = L10n.tr("Localizable", "lnd_error.invoiceAlreadyPaid")
     /// Lnd does not seem to be running properly.
     internal static let lndNotRunning = L10n.tr("Localizable", "lnd_error.lndNotRunning")
     /// No outputs.

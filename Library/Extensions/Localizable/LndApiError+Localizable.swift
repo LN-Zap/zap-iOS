@@ -31,6 +31,8 @@ extension LndApiError: LocalizedError {
             return L10n.LndError.apiTransformationError
         case .insufficientFundsAvailable:
             return L10n.LndError.insufficientFundsAvailable
+        case .invoiceAlreadyPaid:
+            return L10n.LndError.invoiceAlreadyPaid
         }
     }
 }
