@@ -12,7 +12,6 @@ import SwiftBTC
 
 final class BalanceView: UIView {
     @IBOutlet private weak var totalBalanceLabel: UILabel!
-    @IBOutlet private weak var swapIconImageView: UIImageView!
     @IBOutlet private weak var primaryBalanceLabel: UILabel!
     @IBOutlet private weak var secondaryBalanceLabel: UILabel!
 
@@ -33,23 +32,16 @@ final class BalanceView: UIView {
         totalBalanceLabel.text = L10n.Scene.Wallet.totalBalance
         secondaryBalanceLabel.textColor = UIColor.Zap.gray
         secondaryBalanceLabel.textAlignment = .center
-        Style.Label.boldTitle.apply(to: primaryBalanceLabel)
+        Style.Label.largeAmount.apply(to: primaryBalanceLabel)
         primaryBalanceLabel.textAlignment = .center
-        
-        swapIconImageView.tintColor = UIColor.Zap.lightningOrange
     }
     
     func setup(totalBalance: Observable<Satoshi>) {
-        combineLatest(totalBalance, Settings.shared.primaryCurrency) { satoshis, currency -> NSAttributedString? in
-            if let bitcoin = currency as? Bitcoin {
-                return bitcoin.attributedFormat(satoshis: satoshis)
-            } else {
-                guard let string = currency.format(satoshis: satoshis) else { return nil }
-                return NSAttributedString(string: string)
-            }
+        combineLatest(totalBalance, Settings.shared.primaryCurrency) { satoshis, currency -> String? in
+            currency.format(satoshis: satoshis, includeSymbol: false)
         }
         .distinctUntilChanged()
-        .bind(to: primaryBalanceLabel.reactive.attributedText)
+        .bind(to: primaryBalanceLabel.reactive.text)
         .dispose(in: reactive.bag)
         
         totalBalance
@@ -80,12 +72,9 @@ final class BalanceView: UIView {
 }
 
 private extension Bitcoin {
-    func attributedFormat(satoshis: Satoshi) -> NSAttributedString? {
+    func format(satoshis: Satoshi) -> String? {
         let formatter = SatoshiFormatter(unit: self)
         formatter.includeCurrencySymbol = false
-        let amountString = formatter.string(from: satoshis) ?? "0"
-        let attributedString = NSMutableAttributedString(string: amountString)
-        attributedString.append(NSAttributedString(string: " " + symbol, attributes: [.font: UIFont.Zap.light]))
-        return attributedString
+        return formatter.string(from: satoshis) ?? "0"
     }
 }

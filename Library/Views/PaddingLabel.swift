@@ -7,7 +7,7 @@
 
 import Foundation
 
-final class PaddingLabel: UILabel {
+class PaddingLabel: UILabel {
     var edgeInsets = UIEdgeInsets.zero
 
     override func drawText(in rect: CGRect) {

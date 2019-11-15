@@ -208,6 +208,7 @@
 		AD5AA2E72271B64500AEDDD7 /* rpc.pb.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD5AA2E62271B64500AEDDD7 /* rpc.pb.swift */; };
 		AD60D0D6237DBAF4007D6420 /* BalanceView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD60D0D5237DBAF4007D6420 /* BalanceView.swift */; };
 		AD60D0D8237DBB0A007D6420 /* BalanceView.xib in Resources */ = {isa = PBXBuildFile; fileRef = AD60D0D7237DBB0A007D6420 /* BalanceView.xib */; };
+		AD60D0DC237DC8EA007D6420 /* CurrencySwitchLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD60D0DB237DC8EA007D6420 /* CurrencySwitchLabel.swift */; };
 		AD615CF5211C82E600680790 /* LoadingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD615CF4211C82E600680790 /* LoadingView.swift */; };
 		AD615CF7211CAB0900680790 /* PaddingLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD615CF6211CAB0900680790 /* PaddingLabel.swift */; };
 		AD667E4721359D79007B9160 /* AuthenticationCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD667E4621359D79007B9160 /* AuthenticationCoordinator.swift */; };
@@ -750,6 +751,7 @@
 		AD5EA1E1213D827B00AB8031 /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		AD60D0D5237DBAF4007D6420 /* BalanceView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BalanceView.swift; sourceTree = "<group>"; };
 		AD60D0D7237DBB0A007D6420 /* BalanceView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = BalanceView.xib; sourceTree = "<group>"; };
+		AD60D0DB237DC8EA007D6420 /* CurrencySwitchLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrencySwitchLabel.swift; sourceTree = "<group>"; };
 		AD615CF4211C82E600680790 /* LoadingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingView.swift; sourceTree = "<group>"; };
 		AD615CF6211CAB0900680790 /* PaddingLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaddingLabel.swift; sourceTree = "<group>"; };
 		AD667E4621359D79007B9160 /* AuthenticationCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthenticationCoordinator.swift; sourceTree = "<group>"; };
@@ -1264,10 +1266,11 @@
 			isa = PBXGroup;
 			children = (
 				ADBA120720935871001F7700 /* AmountInput */,
-				AD21768820C3DFDB007779DE /* ChannelBalanceView.swift */,
 				A0BD44DE206FED1400BF27A3 /* BondCell.swift */,
+				AD21768820C3DFDB007779DE /* ChannelBalanceView.swift */,
 				AD8049B5224E896B00DA99F4 /* CircleView.swift */,
 				A0731FE52014AC0800C55E45 /* ContainerViewController.swift */,
+				AD60D0DB237DC8EA007D6420 /* CurrencySwitchLabel.swift */,
 				AD4B4BE022EAF0CE0029773A /* EmptyStateView.swift */,
 				A0F353CF20692570005B3639 /* GradientView.swift */,
 				ADBA12082093587B001F7700 /* KeyPad */,
@@ -3290,6 +3293,7 @@
 				ADFC816F20DA80EF00D26913 /* RecoverWalletViewModel.swift in Sources */,
 				AD391C5220D16F7A007EE22A /* ConfirmMnemonicViewController.swift in Sources */,
 				AD391C3D20D16F0B007EE22A /* BiometricAuthentication.swift in Sources */,
+				AD60D0DC237DC8EA007D6420 /* CurrencySwitchLabel.swift in Sources */,
 				ADBC29BE2375CE7C0097D0F6 /* CombinedQRCodeScannetStrategy.swift in Sources */,
 				ADCEAFD32255F2C2004F605B /* WarningSettingsItem.swift in Sources */,
 				AD391C3020D16EFA007EE22A /* UICollectionView.swift in Sources */,
