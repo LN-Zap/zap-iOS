@@ -9,7 +9,7 @@ import Foundation
 import SwiftBTC
 
 final class LNURLWithdrawViewController: UIViewController, ParentDismissable {
-    @IBOutlet private weak var amountLabel: UILabel!
+    @IBOutlet private weak var largeAmountView: LargeAmountView!
     @IBOutlet private weak var descriptionLabel: UILabel!
     @IBOutlet private weak var withdrawButton: UIButton!
     @IBOutlet private weak var slider: UISlider!
@@ -42,13 +42,7 @@ final class LNURLWithdrawViewController: UIViewController, ParentDismissable {
         withdrawButton.setTitle(L10n.Scene.Lnurl.Withdraw.buttonTitle, for: .normal)
         Style.Button.background.apply(to: withdrawButton)
         
-        viewModel.selectedAmount
-            .bind(to: amountLabel.reactive.text, currency: Settings.shared.primaryCurrency)
-            .dispose(in: reactive.bag)
-        
-        amountLabel.font = UIFont.monospacedDigitSystemFont(ofSize: 80, weight: .regular)
-        amountLabel.textColor = .white
-        amountLabel.adjustsFontSizeToFitWidth = true
+        largeAmountView.value = viewModel.selectedAmount
         
         acticityIndicator.hidesWhenStopped = true
         
