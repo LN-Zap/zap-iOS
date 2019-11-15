@@ -25,12 +25,6 @@ final class WalletListViewController: UIViewController {
     private let rowHeight: CGFloat = 76
     private let manageWalletRowHeight: CGFloat = 44
 
-    var preferredHeight: CGFloat {
-        let navigationBarHeight: CGFloat = 44
-        let bottomSpacing: CGFloat = 32
-        return CGFloat(walletConfigurationStore.configurations.count) * rowHeight + navigationBarHeight + bottomSpacing + manageWalletRowHeight
-    }
-
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -51,7 +45,6 @@ final class WalletListViewController: UIViewController {
         navigationController?.navigationBar.backgroundColor = UIColor.Zap.seaBlue
         navigationController?.navigationBar.shadowImage = UIImage()
         navigationController?.navigationBar.setBackgroundImage(UIImage(), for: .default)
-
     }
 
     override func setEditing(_ editing: Bool, animated: Bool) {
