@@ -116,12 +116,7 @@ final class SendViewController: ModalDetailViewController {
         }.dispose(in: reactive.bag)
         
         viewModel.sendStatus.observeFailed { [weak self] error in
-            switch error {
-            case .feeGreaterThanPayment(let feeInfo):
-                self?.showFeeLimitAlert(feePercentage: feeInfo.feePercentage, userFeeLimitPercent: feeInfo.userFeeLimitPercentage, sendFeeLimitPercent: feeInfo.sendFeeLimitPercentage)
-            case .feePercentageGreaterThanUserLimit(let feeInfo):
-                self?.showFeeLimitAlert(feePercentage: feeInfo.feePercentage, userFeeLimitPercent: feeInfo.userFeeLimitPercentage, sendFeeLimitPercent: feeInfo.sendFeeLimitPercentage)
-            }
+            self?.showFeeLimitAlert(sendError: error)
         }.dispose(in: reactive.bag)
     }
 
@@ -199,26 +194,38 @@ final class SendViewController: ModalDetailViewController {
         viewModel.determineSendStatus()
     }
     
-    private func showFeeLimitAlert(feePercentage: Decimal, userFeeLimitPercent: Int, sendFeeLimitPercent: Int?) {
+    private func showFeeLimitAlert(sendError: SendViewModel.SendError) {
         let message: String
         switch viewModel.method {
-        case .onChain:
-            message = """
-            \(L10n.Scene.Send.feeExceedsUserLimit(feePercentage.formattedAsPercentage, userFeeLimitPercent.formattedAsPercentage))
-            
-            \(L10n.Scene.Send.OnChain.paymentConfirmation)
-            """
         case .lightning:
-            message = """
-            \(L10n.Scene.Send.feeExceedsUserLimit(feePercentage.formattedAsPercentage, userFeeLimitPercent.formattedAsPercentage))
+            let sendFeeLimitPercentage: Int?
             
-            \(L10n.Scene.Send.Lightning.paymentConfirmation)
-            """
+            switch sendError {
+            case .feeGreaterThanPayment(let feeInfo):
+                message = """
+                \(L10n.Scene.Send.feeExceedsPayment(feeInfo.feePercentage.formattedAsPercentage, feeInfo.userFeeLimitPercentage.formattedAsPercentage))
+                
+                \(L10n.Scene.Send.Lightning.paymentConfirmation)
+                """
+                
+                sendFeeLimitPercentage = feeInfo.sendFeeLimitPercentage
+            case .feePercentageGreaterThanUserLimit(let feeInfo):
+                message = """
+                \(L10n.Scene.Send.feeExceedsUserLimit(feeInfo.feePercentage.formattedAsPercentage, feeInfo.userFeeLimitPercentage.formattedAsPercentage))
+                
+                \(L10n.Scene.Send.Lightning.paymentConfirmation)
+                """
+                
+                sendFeeLimitPercentage = feeInfo.sendFeeLimitPercentage
+            }
+            
+            let controller = UIAlertController.feeLimitAlertController(message: message) { [weak self] in
+                self?.triggerSend(feeLimitPercent: sendFeeLimitPercentage)
+            }
+            self.present(controller, animated: true)
+        default:
+            return
         }
-        let controller = UIAlertController.feeLimitAlertController(message: message) { [weak self] in
-            self?.triggerSend(feeLimitPercent: sendFeeLimitPercent)
-        }
-        self.present(controller, animated: true)
     }
 
     private func presentLoading() {

@@ -164,6 +164,15 @@ final class SendViewModel: NSObject {
     }
     
     func determineSendStatus() {
+        switch method {
+        case .lightning:
+            self.determineLightningSendStatus()
+        default:
+            self.sendStatus.receive(nil)
+        }
+    }
+    
+    private func determineLightningSendStatus() {
         guard let amount = amount, let feePercent = feePercent else { return }
         
         let actualFee: Satoshi

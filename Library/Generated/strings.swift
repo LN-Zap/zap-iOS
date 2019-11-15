@@ -649,10 +649,6 @@ internal enum L10n {
       internal enum FeeAlert {
         /// Fee Limit Alert
         internal static let title = L10n.tr("Localizable", "scene.send.fee_alert.title")
-        internal enum CancelButton {
-          /// No
-          internal static let title = L10n.tr("Localizable", "scene.send.fee_alert.cancel_button.title")
-        }
         internal enum ConfirmButton {
           /// Yes
           internal static let title = L10n.tr("Localizable", "scene.send.fee_alert.confirm_button.title")
@@ -669,8 +665,6 @@ internal enum L10n {
         internal static let fee = L10n.tr("Localizable", "scene.send.on_chain.fee")
         /// Send On-Chain
         internal static let title = L10n.tr("Localizable", "scene.send.on_chain.title")
-        /// Do you really want to send this payment?
-        internal static let paymentConfirmation = L10n.tr("Localizable", "scene.send.on_chain.payment_confirmation")
         internal enum Fee {
           /// Estimated Delivery: %@
           internal static func estimatedDelivery(_ p1: String) -> String {

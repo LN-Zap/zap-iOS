@@ -51,7 +51,7 @@ extension UIAlertController {
         let confirmButtonTitle: String = L10n.Scene.Send.FeeAlert.ConfirmButton.title
 
         let alertController = UIAlertController(title: title, message: message, preferredStyle: .alert)
-        let cancelAlertAction = UIAlertAction(title: L10n.Scene.Send.FeeAlert.CancelButton.title, style: .cancel, handler: nil)
+        let cancelAlertAction = UIAlertAction(title: L10n.Generic.cancel, style: .cancel, handler: nil)
 
         let confirmAlertAction = UIAlertAction(title: confirmButtonTitle, style: .default) { _ in
             sendAction()
