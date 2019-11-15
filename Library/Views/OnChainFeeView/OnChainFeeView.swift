@@ -8,6 +8,7 @@
 import Bond
 import Foundation
 import SwiftBTC
+import SwiftLnd
 
 protocol OnChainFeeViewDelegate: class {
     func confirmationTargetChanged(to confirmationTarget: Int)
@@ -35,7 +36,7 @@ final class OnChainFeeView: UIView {
 
     weak var delegate: OnChainFeeViewDelegate?
 
-    init(loadable: Observable<Loadable<Satoshi?>>) {
+    init(loadable: Observable<Loadable<Result<Satoshi, LoadingError>>>) {
         super.init(frame: .zero)
         setup(loadable: loadable)
     }
@@ -44,7 +45,7 @@ final class OnChainFeeView: UIView {
         fatalError("init(coder:) has not been implemented")
     }
 
-    private func setup(loadable: Observable<Loadable<Satoshi?>>) {
+    private func setup(loadable: Observable<Loadable<Result<Satoshi, LoadingError>>>) {
         Bundle.library.loadNibNamed("OnChainFeeView", owner: self, options: nil)
         addSubview(contentView)
         contentView.frame = self.bounds

@@ -9,10 +9,16 @@ import Bond
 import Foundation
 import ReactiveKit
 import SwiftBTC
+import SwiftLnd
 
 enum Loadable<E> {
     case loading
     case element(E)
+}
+
+enum LoadingError: Error {
+    case invalidAmount
+    case lndApiError(LndApiError)
 }
 
 final class LoadingAmountView: UIView {
@@ -29,7 +35,7 @@ final class LoadingAmountView: UIView {
         }
     }
 
-    init(loadable: Observable<Loadable<Satoshi?>>) {
+    init(loadable: Observable<Loadable<Result<Satoshi, LoadingError>>>) {
         amountLabel = UILabel(frame: CGRect.zero)
         activityIndicator = UIActivityIndicatorView(style: .white)
 
@@ -63,25 +69,24 @@ final class LoadingAmountView: UIView {
         fatalError("init(coder:) has not been implemented")
     }
 
-    private func updateLoadable(_ loadable: Loadable<Satoshi?>) {
+    private func updateLoadable(_ loadable: Loadable<Result<Satoshi, LoadingError>>) {
         switch loadable {
         case .loading:
             activityIndicator.isHidden = false
             amountLabel.isHidden = true
-        case .element(let amount):
+        case .element(let result):
             disposable?.dispose()
             amountLabel.isHidden = false
             activityIndicator.isHidden = true
-
-            if let amount = amount {
+            
+            switch result {
+            case .success(let amount):
                 disposable = amount
                     .bind(to: amountLabel, currency: Settings.shared.primaryCurrency)
                 disposable?.dispose(in: reactive.bag)
-            } else {
+            case .failure:
                 amountLabel.text = "-"
             }
-
         }
-
     }
 }

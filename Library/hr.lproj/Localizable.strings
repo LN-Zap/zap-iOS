@@ -15,6 +15,18 @@
 "error.wrong_uri_network" = "Pokušali ste otvoriti poveznicu za %@ ali vaš je čvor povezan sa %@.";
 "error.block_explorer.unsupported_network" = "%@ ne podržava %@.";
 
+"lnd_error.wallet_encrypted" = "Wallet is encrypted";
+"lnd_error.lnd_not_running" = "Lnd does not seem to be running properly.";
+"lnd_error.transaction_output_is_dust" = "Transaction output is dust.";
+"lnd_error.no_outputs" = "No outputs.";
+"lnd_error.rest_network_error" = "Check your internet connection.";
+"lnd_error.unable_to_find_node" = "Unable to find node.";
+"lnd_error.insufficient_funds_available" = "Insufficient funds available to construct transaction.";
+"lnd_error.unknown_error" = "Unknown Error 1";
+"lnd_error.api_transformation_error" = "Unknown Error 2";
+"lnd_error.invoice_already_paid" = "Invoice is already paid.";
+"lnd_error.no_path_to_destination" = "Unable to find a path to destination.";
+
 "rpc_connect_qrcode_error.btc_pay_expired" = "Čini se da je kôd istekao.";
 "rpc_connect_qrcode_error.btc_pay_configuration_broken" = "Ne mogu pročitati BTCPay konfiguracijsku datoteku.";
 "rpc_connect_qrcode_error.cant_read_qrcode" = "Neispravan format koda.";
@@ -144,6 +156,7 @@
 "scene.send.address_headline" = "Za:";
 "scene.send.memo_headline" = "Bilješka:";
 "scene.send.sending" = "Slanje...";
+"scene.send.send_amount_too_small" = "Send amount is too small.";
 "scene.send.lightning.title" = "Pošalji LN plaćanje";
 "scene.send.on_chain.title" = "Send On-Chain";
 "scene.send.on_chain.fee" = "Fee:";
@@ -318,6 +331,13 @@
 "scene.my_node.settings.subtitle" = "Edit your preferences";
 "scene.my_node.support.title" = "Support";
 "scene.my_node.support.subtitle" = "Get support and send feedback";
+
+"scene.lnurl_qrcode_scanner.withdraw.title" = "Withdraw";
+"scene.lnurl_qrcode_scanner.withdraw.button_title" = "Paste LNURL";
+
+"scene.lnurl.withdraw.title" = "Withdraw";
+"scene.lnurl.withdraw.description" = "Description";
+"scene.lnurl.withdraw.button_title" = "Withdraw";
 
 "notification.sync.title" = "Please sync";
 "notification.sync.day_12.body" = "Please remember syncing your wallet to make sure you stay safe";

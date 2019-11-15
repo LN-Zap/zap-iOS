@@ -88,7 +88,7 @@ public final class LightningService: NSObject {
                  It looks like there is a race condition in LND where even though the transactions/invoices report back as
                  being completed, the calls to get the balances happen too quickly and the new amounts are not reported.
                  */
-                DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 1) { () -> Void in
+                DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 1) {
                     self?.balanceService.update()
                 }
             }
@@ -104,22 +104,13 @@ public final class LightningService: NSObject {
     }
 
     public func startLocalWallet(network: Network, password: String, completion: @escaping ApiCompletion<Success>) {
-        #if !REMOTEONLY
         guard
             connection == .local,
             !WalletService.isLocalWalletUnlocked
             else { return }
 
         LocalLnd.start(network: network)
-        WalletService(connection: connection).unlockWallet(password: password) {
-            if case .failure(let error) = $0, error != .walletAlreadyUnlocked {
-                Logger.error(error)
-                self.stop()
-                self.infoService.walletState.value = .error
-            }
-            completion($0)
-        }
-        #endif
+        WalletService(connection: connection).unlockWallet(password: password, completion: completion)
     }
 
     public func start() {

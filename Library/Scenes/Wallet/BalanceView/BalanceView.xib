@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="15400" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15404"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="BalanceView" customModule="Library" customModuleProvider="target">
+            <connections>
+                <outlet property="primaryBalanceLabel" destination="rXu-f3-LsZ" id="COR-Ek-6Fw"/>
+                <outlet property="secondaryBalanceLabel" destination="g3o-jH-G1h" id="o3F-NW-ypB"/>
+                <outlet property="swapIconImageView" destination="Q1k-bc-5hS" id="6fd-77-sJM"/>
+                <outlet property="totalBalanceLabel" destination="P5E-fr-IFk" id="4Pl-mw-C2Y"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="iN0-l3-epB">
+            <rect key="frame" x="0.0" y="0.0" width="423" height="254"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <stackView opaque="NO" contentMode="scaleToFill" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="LMV-Dp-83Y">
+                    <rect key="frame" x="0.0" y="44" width="423" height="176"/>
+                    <subviews>
+                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="rod-4p-XmL">
+                            <rect key="frame" x="0.0" y="0.0" width="13" height="176"/>
+                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        </view>
+                        <stackView opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="999" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="saP-Qu-cwl">
+                            <rect key="frame" x="23" y="0.0" width="377" height="176"/>
+                            <subviews>
+                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" text="_Total Balance" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="P5E-fr-IFk">
+                                    <rect key="frame" x="0.0" y="0.0" width="377" height="135"/>
+                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                    <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    <nil key="highlightedColor"/>
+                                </label>
+                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.10000000149011612" translatesAutoresizingMaskIntoConstraints="NO" id="rXu-f3-LsZ">
+                                    <rect key="frame" x="0.0" y="135" width="377" height="20.5"/>
+                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                    <nil key="textColor"/>
+                                    <nil key="highlightedColor"/>
+                                </label>
+                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="g3o-jH-G1h">
+                                    <rect key="frame" x="0.0" y="155.5" width="377" height="20.5"/>
+                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                    <nil key="textColor"/>
+                                    <nil key="highlightedColor"/>
+                                </label>
+                            </subviews>
+                        </stackView>
+                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="999" verticalHuggingPriority="251" horizontalCompressionResistancePriority="1000" image="icon_swap" translatesAutoresizingMaskIntoConstraints="NO" id="Q1k-bc-5hS">
+                            <rect key="frame" x="410" y="0.0" width="13" height="176"/>
+                        </imageView>
+                    </subviews>
+                    <constraints>
+                        <constraint firstItem="Q1k-bc-5hS" firstAttribute="width" secondItem="rod-4p-XmL" secondAttribute="width" id="LGL-69-1cU"/>
+                    </constraints>
+                </stackView>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="AMg-TB-98y">
+                    <rect key="frame" x="0.0" y="44" width="423" height="176"/>
+                    <connections>
+                        <action selector="swapCurrencyButtonTapped:" destination="-1" eventType="touchUpInside" id="7si-aH-kVc"/>
+                    </connections>
+                </button>
+            </subviews>
+            <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <constraints>
+                <constraint firstItem="AMg-TB-98y" firstAttribute="top" secondItem="vUN-kp-3ea" secondAttribute="top" id="6qZ-k0-rhH"/>
+                <constraint firstItem="LMV-Dp-83Y" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" id="AMd-0B-sJP"/>
+                <constraint firstItem="LMV-Dp-83Y" firstAttribute="top" secondItem="vUN-kp-3ea" secondAttribute="top" id="Fh1-uK-AUc"/>
+                <constraint firstItem="vUN-kp-3ea" firstAttribute="bottom" secondItem="LMV-Dp-83Y" secondAttribute="bottom" id="TIJ-xM-CJ1"/>
+                <constraint firstItem="vUN-kp-3ea" firstAttribute="bottom" secondItem="AMg-TB-98y" secondAttribute="bottom" id="Y6W-Mm-s9S"/>
+                <constraint firstItem="AMg-TB-98y" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" id="jAO-ON-wJN"/>
+                <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="AMg-TB-98y" secondAttribute="trailing" id="kHr-Ea-42E"/>
+                <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="LMV-Dp-83Y" secondAttribute="trailing" id="sQN-qX-CHO"/>
+            </constraints>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <viewLayoutGuide key="safeArea" id="vUN-kp-3ea"/>
+            <point key="canvasLocation" x="-111" y="148"/>
+        </view>
+    </objects>
+    <resources>
+        <image name="icon_swap" width="13" height="13"/>
+    </resources>
+</document>

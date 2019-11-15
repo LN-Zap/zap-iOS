@@ -37,7 +37,7 @@ final class EmptyStateView: UIView {
 
     private func setup() {
         backgroundColor = UIColor.Zap.deepSeaBlue
-        layer.cornerRadius = 20
+        layer.cornerRadius = Constants.buttonCornerRadius
         layer.shadowColor = UIColor.black.cgColor
         layer.shadowOpacity = 0.5
         layer.shadowRadius = 24

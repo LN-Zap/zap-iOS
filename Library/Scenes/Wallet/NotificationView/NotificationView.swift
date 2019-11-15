@@ -31,7 +31,7 @@ final class NotificationView: UIView {
     override func awakeFromNib() {
         super.awakeFromNib()
         
-        backgroundView.layer.cornerRadius = 20
+        backgroundView.layer.cornerRadius = Constants.buttonCornerRadius
         backgroundView.backgroundColor = UIColor.Zap.seaBlue
         
         Style.Label.body.apply(to: messageLabel)

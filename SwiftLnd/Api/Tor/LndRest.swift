@@ -9,6 +9,11 @@ import Foundation
 import Logger
 import SwiftProtobuf
 
+struct RestError: Codable {
+    let error: String
+    let code: Int
+}
+
 enum RestMethod: String {
     case get = "GET"
     case post = "POST"
@@ -48,15 +53,18 @@ final class LNDRest: NSObject, URLSessionDelegate {
         let task = session.dataTask(with: request) { data, _, error in
             if let error = error {
                 Logger.error("\(error.localizedDescription) - \(url)")
-                completion(.failure(.localizedError(error.localizedDescription)))
+                completion(.failure(.restNetworkError))
             } else {
-                if let data = data {
+                if let data = data, !data.isEmpty {
                     if let result = try? T(jsonUTF8Data: data) {
                         completion(.success(result))
-                    } else if let string = String(data: data, encoding: .utf8) {
-                        Logger.error("\(string) - \(url)")
-                        completion(.failure(.localizedError(string)))
+                    } else if let error = try? JSONDecoder().decode(RestError.self, from: data) {
+                        completion(.failure(LndApiError(statusMessage: error.error)))
+                    } else {
+                        completion(.failure(.unknownError))
                     }
+                } else {
+                    completion(.failure(.unknownError))
                 }
             }
         }

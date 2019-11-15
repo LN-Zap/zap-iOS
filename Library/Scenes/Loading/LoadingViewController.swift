@@ -30,7 +30,7 @@ final class LoadingViewController: UIViewController {
 
         Style.Button.custom().apply(to: sendButton, requestButton)
 
-        buttonContainerView.layer.cornerRadius = 20
+        buttonContainerView.layer.cornerRadius = Constants.buttonCornerRadius
         buttonContainerView.clipsToBounds = true
         buttonContainerView.backgroundColor = UIColor.Zap.deepSeaBlue
 

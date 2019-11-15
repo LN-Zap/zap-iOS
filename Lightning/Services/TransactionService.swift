@@ -38,19 +38,23 @@ public final class TransactionService {
     /// Fee methods can be called multiple times at once. So the completion
     /// includes amount to match on the caller side that the returned result is
     /// for the correct amount.
-    public typealias FeeApiCompletion = ((amount: Satoshi, fee: Satoshi?)) -> Void
+    public typealias FeeApiCompletion = (Result<(amount: Satoshi, fee: Satoshi?), LndApiError>) -> Void
 
     public func lightningFees(for paymentRequest: PaymentRequest, amount: Satoshi, completion: @escaping FeeApiCompletion) {
         api.route(destination: paymentRequest.destination, amount: amount) { result in
             let totalFees = (try? result.get())?.totalFees
-            completion((amount: amount, fee: totalFees))
+            completion(.success((amount: amount, fee: totalFees)))
         }
     }
 
     public func onChainFees(address: BitcoinAddress, amount: Satoshi, confirmationTarget: Int, completion: @escaping FeeApiCompletion) {
-        api.estimateFees(address: address, amount: amount, confirmationTarget: confirmationTarget) {
-            let fees = (try? $0.get())?.total
-            completion((amount: amount, fee: fees))
+        api.estimateFees(address: address, amount: amount, confirmationTarget: confirmationTarget) { result in
+            switch result {
+            case .success(let feeEstimate):
+                completion(.success((amount: amount, fee: feeEstimate.total)))
+            case .failure(let lndApiError):
+                completion(.failure(lndApiError))
+            }
         }
     }
 

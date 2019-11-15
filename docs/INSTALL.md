@@ -58,16 +58,3 @@ pod update [PODNAME]
 ##### Fastlane
 
 For automating the development and release process (https://fastlane.tools)
-
-### Build Configurations
-
-We currently support two ways of connecting to `lnd`:
-
-1. Running `lnd` on your local device.
-2. Connecting to a remote `lnd` instance.
-
-On-device `lnd` is the default, and in order to support this, you'll need to build the
-`Lndmobile.framework` framework and place it into the `Frameworks` folder.
-
-If you'd prefer connecting to a remote `lnd` instance without building `Lndmobile.framework`,
-you can edit the `Zap` run scheme and switch the Build Configuration from `debug` to `debugRemote`.

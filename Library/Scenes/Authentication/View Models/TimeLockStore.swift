@@ -8,21 +8,21 @@
 import Foundation
 import Lightning
 
-private enum Constants {
-    #if targetEnvironment(simulator)
-    static let firstLockDuration: TimeInterval = 2
-    #else
-    static let firstLockDuration: TimeInterval = 60
-    #endif
-    static let numberOfTriesAllowed = 3
-}
-
 /**
  Responsible for keeping track of invalid pin entries by the user and the
  resulting state of the wallet.
  Uses exponential backoff to lock wallet.
  */
 class TimeLockStore: Persistable {
+    private enum Constants {
+        #if targetEnvironment(simulator)
+        static let firstLockDuration: TimeInterval = 2
+        #else
+        static let firstLockDuration: TimeInterval = 60
+        #endif
+        static let numberOfTriesAllowed = 3
+    }
+    
     struct StoredData: Codable {
         fileprivate var currentLockDuration: TimeInterval
         fileprivate var wrongPinCounter: Int

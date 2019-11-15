@@ -61,7 +61,7 @@ final class SendViewModel: NSObject {
     }
 
     let paymentFeeThreshold: Satoshi = 100
-    let fee = Observable<Loadable<Satoshi?>>(.loading)
+    let fee = Observable<Loadable<Result<Satoshi, LoadingError>>>(.loading)
     let method: SendMethod
     let subtitleText = Observable<String?>(nil)
     let isSubtitleTextWarning = Observable(false)
@@ -73,6 +73,7 @@ final class SendViewModel: NSObject {
         didSet {
             guard oldValue != amount else { return }
             updateFee()
+            updateSubtitle()
             updateIsUIEnabled()
         }
     }
@@ -80,6 +81,13 @@ final class SendViewModel: NSObject {
     var confirmationTarget: Int = 0 {
         didSet {
             updateFee()
+        }
+    }
+    
+    var isTransactionDust = false {
+        didSet {
+            updateIsUIEnabled()
+            updateSubtitle()
         }
     }
 
@@ -132,7 +140,7 @@ final class SendViewModel: NSObject {
 
         updateFee()
         updateIsUIEnabled()
-        updateSubtitle()
+        setupPrimaryCurrencyListener()
     }
 
     func send(feeLimitPercent: Int?, completion: @escaping ApiCompletion<Success>) {
@@ -162,8 +170,12 @@ final class SendViewModel: NSObject {
         
         switch fee.value {
         case .element(let fee):
-            guard let fee = fee else { return }
-            actualFee = fee
+            switch fee {
+            case .success(let fee):
+                actualFee = fee
+            default:
+                return
+            }
         default:
             return
         }
@@ -187,7 +199,7 @@ final class SendViewModel: NSObject {
         }
     }
 
-    private func updateSubtitle() {
+    private func setupPrimaryCurrencyListener() {
         Settings.shared.primaryCurrency
             .compactMap { [method, maxPaymentAmount] in
                 guard let amount = $0.format(satoshis: maxPaymentAmount) else { return nil }
@@ -203,11 +215,28 @@ final class SendViewModel: NSObject {
             }
             .dispose(in: reactive.bag)
     }
+    
+    private func updateSubtitle() {
+        if isTransactionDust && amount ?? 0 > 0 {
+            self.subtitleText.value = L10n.Scene.Send.sendAmountTooSmall
+        } else {
+            guard let amount = Settings.shared.primaryCurrency.value.format(satoshis: maxPaymentAmount) else {
+                return
+            }
+            
+            switch method {
+            case .lightning:
+                self.subtitleText.value = L10n.Scene.Send.Subtitle.lightningCanSendBalance(amount)
+            case .onChain:
+                self.subtitleText.value = L10n.Scene.Send.Subtitle.onChainBalance(amount)
+            }
+        }
+    }
 
     private func updateIsUIEnabled() {
-        isSendButtonEnabled.value = isAmountValid && !isSending
+        isSendButtonEnabled.value = isAmountValid && !isSending && !isTransactionDust
         isInputViewEnabled.value = !isSending
-        isSubtitleTextWarning.value = amount ?? 0 > maxPaymentAmount
+        isSubtitleTextWarning.value = amount ?? 0 > maxPaymentAmount || (isTransactionDust && amount ?? 0 > 0)
     }
 
     private var isAmountValid: Bool {
@@ -219,10 +248,9 @@ final class SendViewModel: NSObject {
         if isAmountValid {
             fee.value = .loading
             feePercent = nil
-            updateIsUIEnabled()
             debounceFetchFee()
         } else {
-            fee.value = .element(nil)
+            fee.value = .element(.failure(.invalidAmount))
             feePercent = nil
         }
     }
@@ -230,15 +258,30 @@ final class SendViewModel: NSObject {
     private func fetchFee() {
         guard let amount = amount else { return }
 
-        let feeCompletion = { [weak self] (result: (amount: Satoshi, fee: Satoshi?)) -> Void in
+        let feeCompletion = { [weak self] (result: Result<(amount: Satoshi, fee: Satoshi?), LndApiError>) -> Void in
             guard
-                let self = self,
-                result.amount == self.amount
+                let self = self
                 else { return }
-
-            self.fee.value = .element(result.fee)
-            self.calculateFeePercent(fee: result.fee ?? result.amount, amount: result.amount)
-            self.updateIsUIEnabled()
+            switch result {
+            case .success(let result):
+                guard
+                    result.amount == self.amount
+                    else { return }
+                
+                self.isTransactionDust = false
+                if let fee = result.fee {
+                    self.fee.value = .element(.success(fee))
+                    self.calculateFeePercent(fee: fee, amount: result.amount)
+                } else {
+                    self.fee.value = .element(.failure(.invalidAmount))
+                    self.feePercent = nil
+                }
+            case .failure(let lndApiError):
+                self.isTransactionDust = lndApiError == .transactionOutputIsDust
+                self.fee.value = amount > 0 ? .element(Result.failure(.lndApiError(lndApiError))) : .element(.failure(.invalidAmount))
+                self.feePercent = nil
+                self.updateIsUIEnabled()
+            }
         }
 
         switch method {
