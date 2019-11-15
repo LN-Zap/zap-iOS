@@ -28,8 +28,8 @@ final class WalletViewModel: NSObject {
         let balanceService = lightningService.balanceService
         self.balanceDetailViewModel = BalanceDetailViewModel(balanceService: balanceService)
         
-        self.shouldHideEmptyWalletState = lightningService.balanceService.totalBalance
-            .map { $0 > 0 }
+        self.shouldHideEmptyWalletState = combineLatest(balanceService.totalBalance, balanceService.didLoadBalances)
+            .map { $0 > 0 || !$1 }
             .distinctUntilChanged()
 
         self.shouldHideChannelEmptyState = combineLatest(

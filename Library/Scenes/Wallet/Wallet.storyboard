@@ -78,9 +78,15 @@
                                                 <rect key="frame" x="142" y="47.5" width="130" height="60"/>
                                                 <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                             </view>
+                                            <view contentMode="scaleToFill" placeholderIntrinsicWidth="240" placeholderIntrinsicHeight="128" translatesAutoresizingMaskIntoConstraints="NO" id="ATz-HS-DzG" customClass="BalanceSkeletonView" customModule="Library" customModuleProvider="target">
+                                                <rect key="frame" x="87" y="13.5" width="240" height="128"/>
+                                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                            </view>
                                         </subviews>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <constraints>
+                                            <constraint firstItem="ATz-HS-DzG" firstAttribute="centerY" secondItem="N9R-Wb-2RE" secondAttribute="centerY" multiplier="0.618" id="DuP-Wp-T3z"/>
+                                            <constraint firstItem="ATz-HS-DzG" firstAttribute="centerX" secondItem="N9R-Wb-2RE" secondAttribute="centerXWithinMargins" id="eYG-F4-oxh"/>
                                             <constraint firstItem="fYn-rf-ANF" firstAttribute="centerY" secondItem="N9R-Wb-2RE" secondAttribute="centerY" multiplier="0.618" id="hH1-dX-Drt"/>
                                             <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="fYn-rf-ANF" secondAttribute="trailing" constant="20" id="wNl-Wz-tqU"/>
                                             <constraint firstItem="fYn-rf-ANF" firstAttribute="centerX" secondItem="N9R-Wb-2RE" secondAttribute="centerX" id="zdK-hh-uxr"/>
@@ -195,6 +201,7 @@
                     </view>
                     <connections>
                         <outlet property="balanceDetailView" destination="uId-iH-hCo" id="3FR-cM-PaI"/>
+                        <outlet property="balanceSkeletonView" destination="ATz-HS-DzG" id="eaf-Fi-nAB"/>
                         <outlet property="balanceView" destination="fYn-rf-ANF" id="PsX-EB-EJm"/>
                         <outlet property="bottomCurtain" destination="L2S-LJ-1ZB" id="dbF-VQ-b8l"/>
                         <outlet property="buttonContainerView" destination="PUy-5s-LcI" id="fuZ-Rm-BL1"/>

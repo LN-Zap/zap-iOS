@@ -20,72 +20,24 @@
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="567"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="za0-Ju-Qf6">
-                                        <rect key="frame" x="0.0" y="0.0" width="375" height="33"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="375" height="60"/>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <constraints>
-                                            <constraint firstAttribute="height" constant="33" id="whz-qL-3Ob"/>
+                                            <constraint firstAttribute="height" constant="60" id="whz-qL-3Ob"/>
                                         </constraints>
                                     </view>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="zx6-Kh-b2o" userLabel="balance container">
-                                        <rect key="frame" x="0.0" y="36" width="375" height="531"/>
+                                        <rect key="frame" x="0.0" y="63" width="375" height="504"/>
                                         <subviews>
-                                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="450-7G-qn9">
-                                                <rect key="frame" x="67.5" y="120" width="240" height="88"/>
-                                                <subviews>
-                                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="8Nm-MH-Hub">
-                                                        <rect key="frame" x="0.0" y="0.0" width="240" height="20"/>
-                                                        <subviews>
-                                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="uhV-9f-hHa" customClass="SkeletonView" customModule="Library" customModuleProvider="target">
-                                                                <rect key="frame" x="55" y="0.0" width="130" height="20"/>
-                                                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                            </view>
-                                                        </subviews>
-                                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                        <constraints>
-                                                            <constraint firstAttribute="bottom" secondItem="uhV-9f-hHa" secondAttribute="bottom" id="6xE-WP-FPB"/>
-                                                            <constraint firstItem="uhV-9f-hHa" firstAttribute="centerX" secondItem="8Nm-MH-Hub" secondAttribute="centerX" id="A02-S5-hn5"/>
-                                                            <constraint firstAttribute="height" constant="20" id="PQu-b0-hDo"/>
-                                                            <constraint firstAttribute="width" constant="240" id="Rxb-O8-GNB"/>
-                                                            <constraint firstItem="uhV-9f-hHa" firstAttribute="top" secondItem="8Nm-MH-Hub" secondAttribute="top" id="c7H-wJ-87k"/>
-                                                        </constraints>
-                                                    </view>
-                                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="jaq-XS-ioG" customClass="SkeletonView" customModule="Library" customModuleProvider="target">
-                                                        <rect key="frame" x="0.0" y="25" width="240" height="38"/>
-                                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                        <constraints>
-                                                            <constraint firstAttribute="width" constant="240" id="pF9-Sg-MZK"/>
-                                                            <constraint firstAttribute="height" constant="38" id="xpe-pv-baf"/>
-                                                        </constraints>
-                                                    </view>
-                                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ZKE-DT-Fh6">
-                                                        <rect key="frame" x="0.0" y="68" width="240" height="20"/>
-                                                        <subviews>
-                                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="8Bi-Wn-ju4" customClass="SkeletonView" customModule="Library" customModuleProvider="target">
-                                                                <rect key="frame" x="55" y="0.0" width="130" height="20"/>
-                                                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                                <constraints>
-                                                                    <constraint firstAttribute="width" constant="130" id="bCe-L7-heR"/>
-                                                                </constraints>
-                                                            </view>
-                                                        </subviews>
-                                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                        <constraints>
-                                                            <constraint firstAttribute="height" constant="20" id="0Oe-oM-xF3"/>
-                                                            <constraint firstAttribute="bottom" secondItem="8Bi-Wn-ju4" secondAttribute="bottom" id="7AV-fL-9lz"/>
-                                                            <constraint firstItem="8Bi-Wn-ju4" firstAttribute="centerX" secondItem="ZKE-DT-Fh6" secondAttribute="centerX" id="Boq-Wq-Y4H"/>
-                                                            <constraint firstItem="8Bi-Wn-ju4" firstAttribute="top" secondItem="ZKE-DT-Fh6" secondAttribute="top" id="ioe-LM-byz"/>
-                                                        </constraints>
-                                                    </view>
-                                                </subviews>
-                                                <constraints>
-                                                    <constraint firstItem="uhV-9f-hHa" firstAttribute="width" secondItem="8Bi-Wn-ju4" secondAttribute="width" id="VpK-gO-mhk"/>
-                                                </constraints>
-                                            </stackView>
+                                            <view contentMode="scaleToFill" placeholderIntrinsicWidth="240" placeholderIntrinsicHeight="128" translatesAutoresizingMaskIntoConstraints="NO" id="rSc-74-4mt" customClass="BalanceSkeletonView" customModule="Library" customModuleProvider="target">
+                                                <rect key="frame" x="67.5" y="91.5" width="240" height="128"/>
+                                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                            </view>
                                         </subviews>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <constraints>
-                                            <constraint firstItem="450-7G-qn9" firstAttribute="centerY" secondItem="zx6-Kh-b2o" secondAttribute="centerY" multiplier="0.618" id="7nT-es-3zP"/>
-                                            <constraint firstItem="450-7G-qn9" firstAttribute="centerX" secondItem="zx6-Kh-b2o" secondAttribute="centerX" id="bxY-Q1-8jL"/>
+                                            <constraint firstItem="rSc-74-4mt" firstAttribute="centerX" secondItem="zx6-Kh-b2o" secondAttribute="centerX" id="FZN-v4-Nbv"/>
+                                            <constraint firstItem="rSc-74-4mt" firstAttribute="centerY" secondItem="zx6-Kh-b2o" secondAttribute="centerY" multiplier="0.618" id="n2G-CJ-6Ug"/>
                                         </constraints>
                                     </view>
                                 </subviews>

@@ -285,7 +285,7 @@ final class WalletCoordinator: NSObject, Coordinator {
 
         UISelectionFeedbackGenerator().selectionChanged()
         let viewController = WalletListViewController.instantiate(walletConfigurationStore: walletConfigurationStore, disconnectWalletDelegate: disconnectWalletDelegate)
-        let navigationController = ModalNavigationController(rootViewController: viewController, height: viewController.preferredHeight)
+        let navigationController = UINavigationController(rootViewController: viewController)
         rootViewController.present(navigationController, animated: true)
     }
     
@@ -310,7 +310,7 @@ final class WalletCoordinator: NSObject, Coordinator {
 
     private func presentFilter() {
         let filterViewController = FilterViewController.instantiate(historyViewModel: historyViewModel)
-        let navigationController = ModalNavigationController(rootViewController: filterViewController, height: 480)
+        let navigationController = UINavigationController(rootViewController: filterViewController)
 
         navigationController.navigationBar.backgroundColor = UIColor.Zap.seaBlueGradient
         navigationController.navigationBar.shadowImage = UIImage()

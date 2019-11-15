@@ -24,7 +24,7 @@ final class PulsatingLayer: CALayer {
     static let animation: CABasicAnimation = {
         let animation = CABasicAnimation(keyPath: "backgroundColor")
         animation.fromValue = UIColor.Zap.seaBlue.cgColor
-        animation.toValue = UIColor.Zap.invisibleGray.cgColor
+        animation.toValue = UIColor.Zap.seaBlueSkeleton.cgColor
         animation.repeatCount = .infinity
         animation.autoreverses = true
         animation.duration = 0.85
