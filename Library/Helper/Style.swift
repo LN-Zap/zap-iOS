@@ -58,7 +58,7 @@ public enum Style {
         }
         
         static let largeAmount = UIViewStyle<UILabel> {
-            $0.font = UIFontMetrics(forTextStyle: .title1).scaledFont(for: UIFont.monospacedDigitSystemFont(ofSize: 80, weight: .regular))
+            $0.font = UIFontMetrics(forTextStyle: .title1).scaledFont(for: UIFont.systemFont(ofSize: 80, weight: .regular))
             $0.textColor = UIColor.Zap.white
             $0.adjustsFontForContentSizeCategory = true
         }
