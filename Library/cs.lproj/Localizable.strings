@@ -156,7 +156,7 @@
 "scene.send.address_headline" = "Komu:";
 "scene.send.memo_headline" = "Poznámka:";
 "scene.send.sending" = "Odesílání...";
-"scene.send.send_amount_too_small" = "Send amount is too small.";
+"scene.send.send_amount_too_small" = "Částka pro odeslání je příliš malá.";
 "scene.send.lightning.title" = "Odeslat Lightning platbu";
 "scene.send.on_chain.title" = "Odeslat On-Chain platbu";
 "scene.send.on_chain.fee" = "Poplatek:";
@@ -332,12 +332,12 @@
 "scene.my_node.support.title" = "Podpora";
 "scene.my_node.support.subtitle" = "Získejte podporu a odešlete zpětnou vazbu";
 
-"scene.lnurl_qrcode_scanner.withdraw.title" = "Withdraw";
-"scene.lnurl_qrcode_scanner.withdraw.button_title" = "Paste LNURL";
+"scene.lnurl_qrcode_scanner.withdraw.title" = "Vybrat";
+"scene.lnurl_qrcode_scanner.withdraw.button_title" = "Vložit LNURL";
 
-"scene.lnurl.withdraw.title" = "Withdraw";
-"scene.lnurl.withdraw.description" = "Description";
-"scene.lnurl.withdraw.button_title" = "Withdraw";
+"scene.lnurl.withdraw.title" = "Vybrat";
+"scene.lnurl.withdraw.description" = "Popis";
+"scene.lnurl.withdraw.button_title" = "Vybrat";
 
 "notification.sync.title" = "Prosím synchronizovat";
 "notification.sync.day_12.body" = "Nezapomeňte synchronizovat peněženku, abyste se ujistili, že zůstanete v bezpečí";
