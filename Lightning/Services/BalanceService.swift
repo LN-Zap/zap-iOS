@@ -28,9 +28,15 @@ public final class BalanceService: NSObject {
     // sum of funds stuck in force closing channels, set from `ChannelListUpdater`
     public let forceCloseLimboBalance = Observable<Satoshi>(0)
 
+    private let didLoadWalletBalance = Observable<Bool>(false)
+    private let didLoadChannelBalance = Observable<Bool>(false)
+    public let didLoadBalances: Signal<Bool, Never>
+    
     init(api: LightningApi) {
         self.api = api
-        self.totalPending = combineLatest(onChainUnconfirmed, lightningPendingOpenBalance, forceCloseLimboBalance) { $0 + $1 + $2 }
+        
+        totalPending = combineLatest(onChainUnconfirmed, lightningPendingOpenBalance, forceCloseLimboBalance) { $0 + $1 + $2 }
+        didLoadBalances = combineLatest(didLoadWalletBalance, didLoadChannelBalance) { $0 && $1 }
         
         super.init()
         
@@ -49,6 +55,8 @@ public final class BalanceService: NSObject {
                 self?.onChainConfirmed.value = walletBalance.confirmedBalance
                 self?.onChainUnconfirmed.value = walletBalance.unconfirmedBalance
                 self?.onChainTotal.value = walletBalance.confirmedBalance + walletBalance.unconfirmedBalance
+                
+                self?.didLoadWalletBalance.value = true
             }
         }
 
@@ -56,6 +64,8 @@ public final class BalanceService: NSObject {
             if case .success(let channelBalance) = result {
                 self?.lightningChannelBalance.value = channelBalance.balance
                 self?.lightningPendingOpenBalance.value = channelBalance.pendingOpenBalance
+                
+                self?.didLoadChannelBalance.value = true
             }
         }
     }

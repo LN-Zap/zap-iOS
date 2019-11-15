@@ -84,6 +84,22 @@ final class WalletViewController: UIViewController {
         sendButtonBackground.backgroundColor = UIColor.Zap.seaBlue
         receiveButtonBackground.backgroundColor = UIColor.Zap.seaBlue
 
+        sendButton.setTitleColor(UIColor.Zap.invisibleGray, for: .disabled)
+        requestButton.setTitleColor(UIColor.Zap.invisibleGray, for: .disabled)
+        
+        walletViewModel.lightningService.balanceService.didLoadBalances
+            .map { !$0 }
+            .bind(to: balanceView.reactive.isHidden)
+            .dispose(in: reactive.bag)
+        walletViewModel.lightningService.balanceService.didLoadBalances
+            .map { $0 }
+            .bind(to: sendButton.reactive.isEnabled)
+            .dispose(in: reactive.bag)
+        walletViewModel.lightningService.balanceService.didLoadBalances
+            .map { $0 }
+            .bind(to: requestButton.reactive.isEnabled)
+            .dispose(in: reactive.bag)
+        
         balanceDetailView.setup(viewModel: walletViewModel.balanceDetailViewModel)
         balanceView.setup(totalBalance: walletViewModel.lightningService.balanceService.totalBalance)
         setupEmtpyState()
@@ -112,7 +128,7 @@ final class WalletViewController: UIViewController {
             .observeNext { [weak self] isHidden in
                 UIView.animate(withDuration: 0.3) {
                     self?.notificationView.isHidden = isHidden
-                    self?.notificationView.alpha = isHidden  ? 0 : 1
+                    self?.notificationView.alpha = isHidden ? 0 : 1
                 }
             }
             .dispose(in: reactive.bag)
@@ -120,6 +136,7 @@ final class WalletViewController: UIViewController {
 
     private func setupEmtpyState() {
         let emptyStateView = EmptyStateView(viewModel: emptyStateViewModel)
+        emptyStateView.isHidden = true
         emptyStateView.add(to: view)
 
         walletViewModel.shouldHideEmptyWalletState
