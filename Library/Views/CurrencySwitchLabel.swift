@@ -11,24 +11,24 @@ import Foundation
 final class CurrencySwitchLabel: PaddingLabel {
     private let minSize: CGFloat = 24
     
+    init() {
+        super.init(frame: .zero)
+        setup()
+    }
+    
     override init(frame: CGRect) {
         super.init(frame: frame)
-        edgeInsets = UIEdgeInsets(top: 0, left: 5, bottom: 0, right: 5)
+        setup()
     }
     
     required init?(coder: NSCoder) {
         super.init(coder: coder)
+        setup()
+    }
+    
+    private func setup() {
         edgeInsets = UIEdgeInsets(top: 0, left: 5, bottom: 0, right: 5)
-    }
     
-    override func prepareForInterfaceBuilder() {
-        super.prepareForInterfaceBuilder()
-        invalidateIntrinsicContentSize()
-    }
-    
-    override func awakeFromNib() {
-        super.awakeFromNib()
-        
         backgroundColor = UIColor.Zap.seaBlue
         
         textColor = UIColor.Zap.lightningOrange

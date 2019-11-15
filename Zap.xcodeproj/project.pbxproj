@@ -265,6 +265,7 @@
 		ADA179C421527AEA001401F3 /* HistoryEventType.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADA179C321527AEA001401F3 /* HistoryEventType.swift */; };
 		ADA179C52152864E001401F3 /* Persistable.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD1EBA0020B2FD9D001FF67E /* Persistable.swift */; };
 		ADA179C62152864E001401F3 /* Storage.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADA865C120ED041F00B1B74B /* Storage.swift */; };
+		ADA25CAF237EBD9800FC9CA1 /* LargeAmountView.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADA25CAE237EBD9800FC9CA1 /* LargeAmountView.swift */; };
 		ADA2DCFF225CC817007482D9 /* SuggestedPeers.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADA2DCFE225CC817007482D9 /* SuggestedPeers.swift */; };
 		ADA2DD03225CDAED007482D9 /* ChannelQRCodeScannerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADA2DD02225CDAED007482D9 /* ChannelQRCodeScannerViewController.swift */; };
 		ADA2DD06225CDD03007482D9 /* SuggestedPeerCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADA2DD04225CDD03007482D9 /* SuggestedPeerCell.swift */; };
@@ -829,6 +830,7 @@
 		ADA179BF2151509E001401F3 /* SectionHeaderView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SectionHeaderView.xib; sourceTree = "<group>"; };
 		ADA179C121526036001401F3 /* DateProvidingEvent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateProvidingEvent.swift; sourceTree = "<group>"; };
 		ADA179C321527AEA001401F3 /* HistoryEventType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistoryEventType.swift; sourceTree = "<group>"; };
+		ADA25CAE237EBD9800FC9CA1 /* LargeAmountView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LargeAmountView.swift; sourceTree = "<group>"; };
 		ADA2DCFE225CC817007482D9 /* SuggestedPeers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SuggestedPeers.swift; sourceTree = "<group>"; };
 		ADA2DD02225CDAED007482D9 /* ChannelQRCodeScannerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChannelQRCodeScannerViewController.swift; sourceTree = "<group>"; };
 		ADA2DD04225CDD03007482D9 /* SuggestedPeerCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SuggestedPeerCell.swift; sourceTree = "<group>"; };
@@ -1274,6 +1276,7 @@
 				AD4B4BE022EAF0CE0029773A /* EmptyStateView.swift */,
 				A0F353CF20692570005B3639 /* GradientView.swift */,
 				ADBA12082093587B001F7700 /* KeyPad */,
+				ADA25CAE237EBD9800FC9CA1 /* LargeAmountView.swift */,
 				A0605F8C202C9D8200EA903C /* LineView.swift */,
 				AD615CF4211C82E600680790 /* LoadingView.swift */,
 				AD2884332126B458003C3D94 /* Modal */,
@@ -3404,6 +3407,7 @@
 				AD1831C9229685A500120260 /* OnChainFeeView.swift in Sources */,
 				AD44E2AC237D75E200DA97F9 /* Constants.swift in Sources */,
 				5C18BB77234C0BF400BCF9D9 /* ExpiryTime+Localizable.swift in Sources */,
+				ADA25CAF237EBD9800FC9CA1 /* LargeAmountView.swift in Sources */,
 				AD391C2B20D16EFA007EE22A /* SignalProtocol.swift in Sources */,
 				ADF232D42289A08100CB5053 /* Migrations.swift in Sources */,
 				ADDD13B92119CEB40035D2F9 /* UIStackView.swift in Sources */,
