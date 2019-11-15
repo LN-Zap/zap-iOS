@@ -19,22 +19,9 @@
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="2" translatesAutoresizingMaskIntoConstraints="NO" id="r2a-Zc-hZb">
                                 <rect key="frame" x="20" y="293.5" width="374" height="137.5"/>
                                 <subviews>
-                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="2hh-eX-pIh">
+                                    <view contentMode="scaleToFill" placeholderIntrinsicWidth="82" placeholderIntrinsicHeight="60.5" translatesAutoresizingMaskIntoConstraints="NO" id="2hh-eX-pIh" customClass="LargeAmountView" customModule="Library" customModuleProvider="target">
                                         <rect key="frame" x="146" y="0.0" width="82" height="60.5"/>
-                                        <subviews>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="300" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xN1-tG-G7x">
-                                                <rect key="frame" x="20" y="0.0" width="42" height="60.5"/>
-                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                <nil key="textColor"/>
-                                                <nil key="highlightedColor"/>
-                                            </label>
-                                        </subviews>
                                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
-                                        <constraints>
-                                            <constraint firstItem="xN1-tG-G7x" firstAttribute="centerX" secondItem="2hh-eX-pIh" secondAttribute="centerX" id="5Mi-ze-adO"/>
-                                            <constraint firstItem="xN1-tG-G7x" firstAttribute="top" secondItem="2hh-eX-pIh" secondAttribute="top" id="POo-d4-sZb"/>
-                                            <constraint firstAttribute="bottom" secondItem="xN1-tG-G7x" secondAttribute="bottom" id="y0J-BV-mx9"/>
-                                        </constraints>
                                     </view>
                                     <stackView opaque="NO" contentMode="scaleToFill" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="8Pm-91-unJ">
                                         <rect key="frame" x="0.0" y="62.5" width="374" height="30"/>
@@ -114,9 +101,9 @@
                     </view>
                     <connections>
                         <outlet property="acticityIndicator" destination="WjJ-K1-pzq" id="QlT-nh-uOE"/>
-                        <outlet property="amountLabel" destination="xN1-tG-G7x" id="sm7-FE-acc"/>
                         <outlet property="descriptionLabel" destination="6Gp-lf-eHE" id="dLw-Tm-Y9C"/>
                         <outlet property="domainLabel" destination="jKq-3T-aex" id="JSm-uT-dEA"/>
+                        <outlet property="largeAmountView" destination="2hh-eX-pIh" id="mxz-sE-r30"/>
                         <outlet property="slider" destination="HNl-ja-xmH" id="J70-oR-mRo"/>
                         <outlet property="sliderContainer" destination="8Pm-91-unJ" id="GTf-Jb-uIs"/>
                         <outlet property="sliderMinusLabel" destination="ZlK-hg-8X5" id="90v-4L-nGL"/>
