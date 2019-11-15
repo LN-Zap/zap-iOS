@@ -67,7 +67,7 @@ final class SendViewModel: NSObject {
     let isSubtitleTextWarning = Observable(false)
     let sendStatus = Subject<Int?, SendError>()
     
-    private var feePercent: Decimal?
+    var feePercent: Decimal?
 
     var amount: Satoshi? {
         didSet {
