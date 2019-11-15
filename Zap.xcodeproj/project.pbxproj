@@ -179,6 +179,7 @@
 		AD391D2020D178C2007EE22A /* Bundle.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD391D1F20D178C2007EE22A /* Bundle.swift */; };
 		AD391D2220D1798A007EE22A /* Media.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = AD391D2120D1798A007EE22A /* Media.xcassets */; };
 		AD3A7BD0237C1EC00025632D /* LndApiError+Localizable.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD3A7BCF237C1EC00025632D /* LndApiError+Localizable.swift */; };
+		AD3B6B38237EE5A400D45FB5 /* BalanceSkeletonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD3B6B37237EE5A400D45FB5 /* BalanceSkeletonView.swift */; };
 		AD3DDF6922D38D4C0031BFC8 /* Onboarding.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AD3DDF6822D38D4C0031BFC8 /* Onboarding.storyboard */; };
 		AD3DDF6B22D38D590031BFC8 /* OnboardingContainerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD3DDF6A22D38D590031BFC8 /* OnboardingContainerViewController.swift */; };
 		AD3DDF6D22D3908B0031BFC8 /* OnboardingPageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD3DDF6C22D3908B0031BFC8 /* OnboardingPageViewController.swift */; };
@@ -720,6 +721,7 @@
 		AD391D4020D17FA9007EE22A /* Messages.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Messages.framework; path = System/Library/Frameworks/Messages.framework; sourceTree = SDKROOT; };
 		AD391D5820D2903C007EE22A /* Zap.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Zap.entitlements; sourceTree = "<group>"; };
 		AD3A7BCF237C1EC00025632D /* LndApiError+Localizable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "LndApiError+Localizable.swift"; sourceTree = "<group>"; };
+		AD3B6B37237EE5A400D45FB5 /* BalanceSkeletonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BalanceSkeletonView.swift; sourceTree = "<group>"; };
 		AD3DDF6822D38D4C0031BFC8 /* Onboarding.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Onboarding.storyboard; sourceTree = "<group>"; };
 		AD3DDF6A22D38D590031BFC8 /* OnboardingContainerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingContainerViewController.swift; sourceTree = "<group>"; };
 		AD3DDF6C22D3908B0031BFC8 /* OnboardingPageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingPageViewController.swift; sourceTree = "<group>"; };
@@ -2155,6 +2157,7 @@
 			isa = PBXGroup;
 			children = (
 				ADCE01CB207B967200CA72E8 /* Loading.storyboard */,
+				AD3B6B37237EE5A400D45FB5 /* BalanceSkeletonView.swift */,
 				ADBB36252080AD70005662B4 /* LoadingViewController.swift */,
 			);
 			path = Loading;
@@ -3308,6 +3311,7 @@
 				ADADA966228964E50036639F /* ChannelBackupViewController.swift in Sources */,
 				AD391C6520D16F89007EE22A /* LndLogViewController.swift in Sources */,
 				ADA179BE21515095001401F3 /* SectionHeaderView.swift in Sources */,
+				AD3B6B38237EE5A400D45FB5 /* BalanceSkeletonView.swift in Sources */,
 				AD391CAD20D16FA8007EE22A /* OnChainRequestAddressTypeSettingsItem.swift in Sources */,
 				AD054EA622D8BC2100A9796E /* ConfirmMnemonicPageViewController.swift in Sources */,
 				ADA58F9822049022009A5494 /* ManageWalletsViewController.swift in Sources */,

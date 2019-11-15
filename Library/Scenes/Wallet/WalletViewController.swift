@@ -16,6 +16,7 @@ final class WalletViewController: UIViewController {
     @IBOutlet private weak var syncView: SyncView!
     @IBOutlet private weak var notificationView: NotificationView!
     @IBOutlet private weak var balanceView: BalanceView!
+    @IBOutlet private weak var balanceSkeletonView: BalanceSkeletonView!
     @IBOutlet private weak var balanceDetailView: BalanceDetailView!
     
     // send / receive buttons
@@ -87,6 +88,10 @@ final class WalletViewController: UIViewController {
         sendButton.setTitleColor(UIColor.Zap.invisibleGray, for: .disabled)
         requestButton.setTitleColor(UIColor.Zap.invisibleGray, for: .disabled)
         
+        walletViewModel.lightningService.balanceService.didLoadBalances
+            .map { $0 }
+            .bind(to: balanceSkeletonView.reactive.isHidden)
+            .dispose(in: reactive.bag)
         walletViewModel.lightningService.balanceService.didLoadBalances
             .map { !$0 }
             .bind(to: balanceView.reactive.isHidden)
