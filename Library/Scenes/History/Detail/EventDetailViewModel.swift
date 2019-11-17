@@ -7,20 +7,24 @@
 
 import Foundation
 import Lightning
+import ReactiveKit
 import SwiftBTC
 
-protocol EventDetailViewModelDelegate: class {
-    func openBlockExplorer(code: String, type: BlockExplorer.CodeType)
+struct BlockExplorerItem {
+    let code: String
+    let type: BlockExplorer.CodeType
 }
 
 final class EventDetailViewModel {
     private let event: HistoryEventType
+    
+    let blockExplorerButtonTapped = Subject<BlockExplorerItem, NoError>()
 
     init(event: HistoryEventType) {
         self.event = event
     }
 
-    func detailConfiguration(delegate: EventDetailViewModelDelegate) -> [StackViewElement] {
+    func detailConfiguration() -> [StackViewElement] {
         var result = [StackViewElement]()
 
         switch event {
@@ -29,13 +33,13 @@ final class EventDetailViewModel {
             result.append(contentsOf: amountLabel(title: L10n.Scene.TransactionDetail.amountLabel, amount: event.amount))
             result.append(contentsOf: amountLabel(title: L10n.Scene.TransactionDetail.feeLabel, amount: event.fee, skipZero: true))
             result.append(contentsOf: dateLabel(title: L10n.Scene.TransactionDetail.dateLabel, date: event.date))
-            result.append(contentsOf: blockExplorerButton(title: L10n.Scene.TransactionDetail.transactionIdLabel, code: event.txHash, type: .transactionId, delegate: delegate))
-            result.append(contentsOf: blockExplorerButton(title: L10n.Scene.TransactionDetail.addressLabel, code: event.destinationAddresses.first?.string, type: .address, delegate: delegate))
+            result.append(contentsOf: blockExplorerButton(title: L10n.Scene.TransactionDetail.transactionIdLabel, code: event.txHash, type: .transactionId))
+            result.append(contentsOf: blockExplorerButton(title: L10n.Scene.TransactionDetail.addressLabel, code: event.destinationAddresses.first?.string, type: .address))
         case .channelEvent(let event):
             result.append(contentsOf: headline(L10n.Scene.TransactionDetail.Title.channelEventDetail))
             result.append(contentsOf: amountLabel(title: L10n.Scene.TransactionDetail.feeLabel, amount: event.fee, skipZero: true))
             result.append(contentsOf: dateLabel(title: L10n.Scene.TransactionDetail.dateLabel, date: event.date))
-            result.append(contentsOf: blockExplorerButton(title: L10n.Scene.TransactionDetail.transactionIdLabel, code: event.txHash, type: .transactionId, delegate: delegate))
+            result.append(contentsOf: blockExplorerButton(title: L10n.Scene.TransactionDetail.transactionIdLabel, code: event.txHash, type: .transactionId))
         case .createInvoiceEvent(let event):
             return createInvoiceEvent(event: event)
         case .lightningPaymentEvent(let event):
@@ -155,10 +159,11 @@ final class EventDetailViewModel {
         return label(title: title, content: dateString)
     }
 
-    private func blockExplorerButton(title: String, code: String?, type: BlockExplorer.CodeType, delegate: EventDetailViewModelDelegate?) -> [StackViewElement] {
+    private func blockExplorerButton(title: String, code: String?, type: BlockExplorer.CodeType) -> [StackViewElement] {
         guard let code = code else { return [] }
-        return label(title: title, element: .button(title: code, style: Style.Button.custom(), completion: { _ in
-            delegate?.openBlockExplorer(code: code, type: type)
+        return label(title: title, element: .button(title: code, style: Style.Button.custom(), completion: { [weak self] _ in
+            guard let self = self else { return }
+            self.blockExplorerButtonTapped.send(BlockExplorerItem(code: code, type: type))
         }))
     }
 

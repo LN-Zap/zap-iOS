@@ -4,6 +4,7 @@
 "generic.pasteboard.invalid_address" = "Invalid Address";
 "generic.qr_code.share_button" = "Share";
 "generic.cancel" = "Cancel";
+"generic.continue" = "Continue";
 
 "link.help" = "https://docs.zaphq.io/";
 "link.help.zapconnect" = "https://docs.zaphq.io/docs-ios-remote-node-setup";
@@ -308,6 +309,9 @@
 "scene.manage_wallets.cell.local" = "local";
 "scene.manage_wallets.section_title.local" = "Local Wallet";
 "scene.manage_wallets.section_title.remote" = "Remote Wallets";
+
+"scene.block_explorer.title" = "Warning: Privacy Leak";
+"scene.block_explorer.message" = "Looking up your own addresses on a block explorer leaks your privacy to the site operator.";
 
 "scene.channel_backup.title" = "Channel Backup";
 "scene.channel_backup.cell_title" = "%@ channel.backup";

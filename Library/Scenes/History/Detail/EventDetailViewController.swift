@@ -15,9 +15,16 @@ final class EventDetailViewController: ModalDetailViewController {
 
     init(event: HistoryEventType, presentBlockExplorer: @escaping (String, BlockExplorer.CodeType) -> Void) {
         viewModel = EventDetailViewModel(event: event)
-
         self.presentBlockExplorer = presentBlockExplorer
+        
         super.init(nibName: nil, bundle: nil)
+        
+        viewModel.blockExplorerButtonTapped.observeNext { [weak self] blockExplorerItem in
+            guard let self = self else { return }
+            self.dismiss(animated: true) {
+                self.presentBlockExplorer(blockExplorerItem.code, blockExplorerItem.type)
+            }
+        }.dispose(in: reactive.bag)
     }
 
     required init?(coder aDecoder: NSCoder) {
@@ -31,15 +38,7 @@ final class EventDetailViewController: ModalDetailViewController {
     }
 
     private func setupEvent() {
-        let configuration = viewModel.detailConfiguration(delegate: self)
+        let configuration = viewModel.detailConfiguration()
         contentStackView.set(elements: configuration)
-    }
-}
-
-extension EventDetailViewController: EventDetailViewModelDelegate {
-    func openBlockExplorer(code: String, type: BlockExplorer.CodeType) {
-        dismiss(animated: true) {
-            self.presentBlockExplorer(code, type)
-        }
     }
 }
