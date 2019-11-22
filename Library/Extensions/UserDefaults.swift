@@ -10,6 +10,7 @@ import Foundation
 extension UserDefaults {
     enum Keys {
         static let didCreateWallet = DefaultKey<Bool>("didCreateWallet")
+        static let didSelectContinueToBlockExplorer = DefaultKey<Bool>("didSelectContinueToBlockExplorer")
         static let lastSeenHistoryDate = DefaultKey<Date>("lastSeenHistoryDate")
         static let walletDetailExpanded = DefaultKey<Bool>("homeScreenTileExpanded")
         static let migrations = DefaultKey<[String]>("migrations")

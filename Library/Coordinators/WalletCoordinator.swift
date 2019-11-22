@@ -225,7 +225,7 @@ final class WalletCoordinator: NSObject, Coordinator {
         guard let network = lightningService.infoService.network.value else { return }
         do {
             guard let url = try Settings.shared.blockExplorer.value.url(network: network, code: code, type: type) else { return }
-            presentBlockExplorerWarning(for: url)
+            UserDefaults.Keys.didSelectContinueToBlockExplorer.get(defaultValue: false) ? presentSafariViewController(for: url) : presentBlockExplorerWarning(for: url)
         } catch BlockExplorerError.unsupportedNetwork {
             Toast.presentError(L10n.Error.BlockExplorer.unsupportedNetwork(Settings.shared.blockExplorer.value.localized, network.localized))
         } catch {

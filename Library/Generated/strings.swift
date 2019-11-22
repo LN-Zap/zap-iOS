@@ -171,6 +171,8 @@ internal enum L10n {
 
   internal enum Scene {
     internal enum BlockExplorer {
+      /// Always Continue
+      internal static let alwaysContinue = L10n.tr("Localizable", "scene.block_explorer.always_continue")
       /// Warning: Privacy Leak
       internal static let title = L10n.tr("Localizable", "scene.block_explorer.title")
       /// Looking up your own addresses on a block explorer leaks your privacy to the site operator.

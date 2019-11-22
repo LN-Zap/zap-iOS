@@ -310,8 +310,9 @@
 "scene.manage_wallets.section_title.local" = "Local Wallet";
 "scene.manage_wallets.section_title.remote" = "Remote Wallets";
 
+"scene.block_explorer.always_continue" = "Always Continue";
 "scene.block_explorer.title" = "Warning: Privacy Leak";
-"scene.block_explorer.message" = "Looking up your own addresses on a block explorer leaks your privacy to the site operator.";
+"scene.block_explorer.message" = "Looking up your own addresses on a block explorer leaks your privacy to the site operator.\n\nWould you like to view the block explorer?";
 
 "scene.channel_backup.title" = "Channel Backup";
 "scene.channel_backup.cell_title" = "%@ channel.backup";

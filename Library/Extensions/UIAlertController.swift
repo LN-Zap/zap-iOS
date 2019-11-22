@@ -55,8 +55,13 @@ extension UIAlertController {
         let continueAlertAction = UIAlertAction(title: L10n.Generic.continueString, style: .default) { _ in
             continueAction()
         }
+        let alwaysContinueAlertAction = UIAlertAction(title: L10n.Scene.BlockExplorer.alwaysContinue, style: .default) { _ in
+            UserDefaults.Keys.didSelectContinueToBlockExplorer.set(true)
+            continueAction()
+        }
         alertController.addAction(cancelAlertAction)
         alertController.addAction(continueAlertAction)
+        alertController.addAction(alwaysContinueAlertAction)
 
         return alertController
     }
