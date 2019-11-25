@@ -10,10 +10,10 @@ import Foundation
 extension PaymentFeeLimitPercentage: Localizable {
     public var localized: String {
         switch self {
-        case .zero:
+        case .none:
             return L10n.PaymentFeeLimitPercentage.none
         default:
-            return "\(self.rawValue)%"
+            return self.rawValue.formattedAsPercentage
         }
     }
 }

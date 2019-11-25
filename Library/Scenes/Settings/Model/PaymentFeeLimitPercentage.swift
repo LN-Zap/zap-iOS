@@ -8,7 +8,7 @@
 import Foundation
 
 public enum PaymentFeeLimitPercentage: Int, Codable, CaseIterable {
-    case zero = 0
+    case none = 0
     case one = 1
     case three = 3
     case five = 5

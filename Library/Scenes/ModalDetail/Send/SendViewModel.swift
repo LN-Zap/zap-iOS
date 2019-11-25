@@ -197,7 +197,7 @@ final class SendViewModel: NSObject {
             }
         } else if actualFee >= amount {
             self.sendStatus.receive(event: .failed(.feeGreaterThanPayment(FeeInfo(feePercentage: feePercent, userFeeLimitPercentage: Settings.shared.lightningPaymentFeeLimit.value.rawValue, sendFeeLimitPercentage: nil))))
-        } else if Settings.shared.lightningPaymentFeeLimit.value == .zero {
+        } else if Settings.shared.lightningPaymentFeeLimit.value == .none {
             self.sendStatus.receive(nil)
         } else {
             if feePercent > Decimal(Settings.shared.lightningPaymentFeeLimit.value.rawValue) {
