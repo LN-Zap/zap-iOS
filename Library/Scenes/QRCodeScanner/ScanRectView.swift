@@ -74,7 +74,7 @@ final class ScanRectView: UIView {
             }
 
             path.lineWidth = lineWidth
-            UIColor.orange.set()
+            UIColor.Zap.lightningOrange.set()
 
             path.stroke()
         }
