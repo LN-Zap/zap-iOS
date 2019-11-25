@@ -325,7 +325,7 @@ final class SendViewModelTests: XCTestCase {
         
         let sendViewModel = SendViewModel(invoice: bitcoinInvoice, lightningService: mockService)
 
-        Settings.shared.lightningPaymentFeeLimit.value = .zero
+        Settings.shared.lightningPaymentFeeLimit.value = .none
         sendViewModel.fee.value = .element(.success(feeAmount))
         sendViewModel.feePercent = feePercentage
         
