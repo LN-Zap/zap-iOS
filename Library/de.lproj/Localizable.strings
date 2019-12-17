@@ -17,15 +17,15 @@
 
 "lnd_error.wallet_encrypted" = "Wallet ist verschlüsselt";
 "lnd_error.lnd_not_running" = "Lnd läuft nicht einwandfrei.";
-"lnd_error.transaction_output_is_dust" = "Transaction output is dust.";
-"lnd_error.no_outputs" = "No outputs.";
+"lnd_error.transaction_output_is_dust" = "Die Transaktionsausgabe ist Staub.";
+"lnd_error.no_outputs" = "Keine Ausgabe.";
 "lnd_error.rest_network_error" = "Überprüfe deine Internetverbindung.";
 "lnd_error.unable_to_find_node" = "Knoten nicht gefunden.";
-"lnd_error.insufficient_funds_available" = "Insufficient funds available to construct transaction.";
+"lnd_error.insufficient_funds_available" = "Nicht genügend Mittel zur Verfügung, um eine Transaktion zu tätigen.";
 "lnd_error.unknown_error" = "Unbekannter Fehler 1";
 "lnd_error.api_transformation_error" = "Unbekannter Fehler 2";
 "lnd_error.invoice_already_paid" = "Rechnung wurde bereits bezahlt.";
-"lnd_error.no_path_to_destination" = "Unable to find a path to destination.";
+"lnd_error.no_path_to_destination" = "Es konnte kein Pfad zum Ziel gefunden werden.";
 
 "rpc_connect_qrcode_error.btc_pay_expired" = "Sieht so aus als wäre der QR-Code abgelaufen.";
 "rpc_connect_qrcode_error.btc_pay_configuration_broken" = "BTCPay Konfigurationsdatei konnte nicht gelesen werden.";
