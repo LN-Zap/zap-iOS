@@ -133,13 +133,13 @@ final class WalletCoordinator: NSObject, Coordinator {
             case .remote(let rpcConfiguration) = lightningService.connection, // we can only unlock remote nodes
             let disconnectWalletDelegate = disconnectWalletDelegate
             else { return }
-        
+
         let unlockWalletViewModel = UnlockWalletViewModel(lightningService: lightningService, alias: rpcConfiguration.host.absoluteString)
         let viewController = UnlockWalletViewController.instantiate(unlockWalletViewModel: unlockWalletViewModel, disconnectWalletDelegate: disconnectWalletDelegate)
         let navigationController = ZapNavigationController(rootViewController: viewController)
         presentViewController(navigationController)
     }
-    
+
     private func presentLoading() {
         let viewController = LoadingViewController.instantiate()
         presentViewController(viewController)
