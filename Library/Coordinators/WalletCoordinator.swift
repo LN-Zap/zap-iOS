@@ -115,9 +115,12 @@ final class WalletCoordinator: NSObject, Coordinator {
         guard let string = pasteboard.string else { return }
         guard LightningInvoiceURI.validate(string: string) else { return }
 
-        let alertController = UIAlertController(title: "Lightning Invoice found in clipboard", message: "Would you like to send payment for the invoice?", preferredStyle: .actionSheet)
+        let alertController = UIAlertController(title: L10n.Generic.Pasteboard.LightniningInvoiceFoundAlert.title,
+                                                message: L10n.Generic.Pasteboard.LightniningInvoiceFoundAlert.message,
+                                                preferredStyle: .actionSheet)
         let cancelAlertAction = UIAlertAction(title: L10n.Generic.cancel, style: .cancel, handler: nil)
-        let sendPaymentAction = UIAlertAction(title: L10n.Scene.Send.sendButton, style: .default) { _ in
+        let sendPaymentAction = UIAlertAction(title: L10n.Generic.Pasteboard.LightniningInvoiceFoundAlert.send,
+                                              style: .default) { _ in
             self.presentSend(invoice: string)
         }
         alertController.addAction(cancelAlertAction)
