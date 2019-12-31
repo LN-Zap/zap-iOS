@@ -95,14 +95,6 @@ final class WalletCoordinator: NSObject, Coordinator {
         case .running, .syncing:
             if currentState != .syncing && currentState != .running {
                 presentMain()
-            } else {
-              let pasteboard = UIPasteboard.general
-              if let string = pasteboard.string {
-                if let lightningInvoice = LightningInvoiceURI(string: string) {
-                  Logger.verbose(lightningInvoice.uriString)
-                  presentSend(invoice: string)
-                }
-              }
             }
         case .locked:
             presentUnlockWallet()
@@ -111,8 +103,26 @@ final class WalletCoordinator: NSObject, Coordinator {
         }
         
         self.currentState = state
+        if self.currentState == .syncing || self.currentState == .running {
+          detectPasteboardForLightningInvoice()
+        }
 
         UIApplication.shared.isIdleTimerDisabled = lightningService.connection == .local && state == .syncing
+    }
+  
+    private func detectPasteboardForLightningInvoice() {
+        let pasteboard = UIPasteboard.general
+        guard let string = pasteboard.string else { return }
+        guard LightningInvoiceURI.validate(string: string) else { return }
+
+        let alertController = UIAlertController(title: "Lightning Invoice found in clipboard", message: "Would you like to send payment for the invoice?", preferredStyle: .actionSheet)
+        let cancelAlertAction = UIAlertAction(title: L10n.Generic.cancel, style: .cancel, handler: nil)
+        let sendPaymentAction = UIAlertAction(title: L10n.Scene.Send.sendButton, style: .default) { _ in
+            self.presentSend(invoice: string)
+        }
+        alertController.addAction(cancelAlertAction)
+        alertController.addAction(sendPaymentAction)
+        (detailViewController ?? rootViewController).present(alertController, animated: true)
     }
 
     private func presentUnlockWallet() {
@@ -120,13 +130,13 @@ final class WalletCoordinator: NSObject, Coordinator {
             case .remote(let rpcConfiguration) = lightningService.connection, // we can only unlock remote nodes
             let disconnectWalletDelegate = disconnectWalletDelegate
             else { return }
-
+        
         let unlockWalletViewModel = UnlockWalletViewModel(lightningService: lightningService, alias: rpcConfiguration.host.absoluteString)
         let viewController = UnlockWalletViewController.instantiate(unlockWalletViewModel: unlockWalletViewModel, disconnectWalletDelegate: disconnectWalletDelegate)
         let navigationController = ZapNavigationController(rootViewController: viewController)
         presentViewController(navigationController)
     }
-
+    
     private func presentLoading() {
         let viewController = LoadingViewController.instantiate()
         presentViewController(viewController)
