@@ -37,7 +37,7 @@ final class WalletConfigurationStore {
         return configurations.isEmpty
     }
     private(set) var configurations: [WalletConfiguration]
-    var selectedWallet: WalletConfiguration? { // make lighting connection
+    var selectedWallet: WalletConfiguration? { // make lightning connection
         didSet {
             save()
         }
