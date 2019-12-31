@@ -95,6 +95,14 @@ final class WalletCoordinator: NSObject, Coordinator {
         case .running, .syncing:
             if currentState != .syncing && currentState != .running {
                 presentMain()
+            } else {
+              let pasteboard = UIPasteboard.general
+              if let string = pasteboard.string {
+                if let lightningInvoice = LightningInvoiceURI(string: string) {
+                  Logger.verbose(lightningInvoice.uriString)
+                  presentSend(invoice: string)
+                }
+              }
             }
         case .locked:
             presentUnlockWallet()
