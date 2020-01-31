@@ -264,7 +264,7 @@
 "scene.wallet.empty_state.title" = "Approvisionnez votre portefeuille";
 "scene.wallet.empty_state.message" = "Votre portefeuille est vide ! Pour démarrer, déposez quelques fonds.";
 "scene.wallet.empty_state.button_title" = "Déposer des fonds";
-"scene.wallet.open_channel.message" = "You can’t transact on the the Lightning Network yet. Open a channel to start.";
+"scene.wallet.open_channel.message" = "Ouvrez un canal avant de pouvoir transférer via le Lightning Network.";
 "scene.wallet.open_channel.action" = "Ouvrir un canal";
 
 "scene.time_lock.headline" = "Mauvais code PIN";
