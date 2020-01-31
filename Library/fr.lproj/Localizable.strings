@@ -16,11 +16,11 @@
 "error.block_explorer.unsupported_network" = "%@ ne prend pas en charge %@.";
 
 "lnd_error.wallet_encrypted" = "Porte-monnaie crypté";
-"lnd_error.lnd_not_running" = "Lnd does not seem to be running properly.";
-"lnd_error.transaction_output_is_dust" = "Transaction output is dust.";
-"lnd_error.no_outputs" = "No outputs.";
+"lnd_error.lnd_not_running" = "Lnd ne semble pas fonctionner correctement.";
+"lnd_error.transaction_output_is_dust" = "La sortie de cette transaction est une poussière.";
+"lnd_error.no_outputs" = "Aucunes sorties.";
 "lnd_error.rest_network_error" = "Veuillez vérifier votre connection internet.";
-"lnd_error.unable_to_find_node" = "Unable to find node.";
+"lnd_error.unable_to_find_node" = "Incapable de trouver le nœud.";
 "lnd_error.insufficient_funds_available" = "Pas assez de fonds disponibles pour générer la transaction.";
 "lnd_error.unknown_error" = "Erreur Inconnue 1";
 "lnd_error.api_transformation_error" = "Erreur Inconnue 2";
@@ -265,7 +265,7 @@
 "scene.wallet.empty_state.message" = "Votre portefeuille est vide ! Pour démarrer, déposez quelques fonds.";
 "scene.wallet.empty_state.button_title" = "Déposer des fonds";
 "scene.wallet.open_channel.message" = "You can’t transact on the the Lightning Network yet. Open a channel to start.";
-"scene.wallet.open_channel.action" = "Open a channel";
+"scene.wallet.open_channel.action" = "Ouvrir un canal";
 
 "scene.time_lock.headline" = "Mauvais code PIN";
 "scene.time_lock.description" = "Votre portefeuille est verrouillé pendant :";
@@ -322,22 +322,22 @@
 "scene.push_notification.confirm_button_title" = "Activer les notifications";
 "scene.push_notification.skip_button_title" = "Passer";
 
-"scene.my_node.title" = "My Node";
-"scene.my_node.channels.title" = "Channels";
-"scene.my_node.channels.subtitle" = "Manage your capacity";
-"scene.my_node.channel_backup.title" = "Channel Backup";
-"scene.my_node.channel_backup.subtitle" = "Set up emergency options";
-"scene.my_node.settings.title" = "Settings";
-"scene.my_node.settings.subtitle" = "Edit your preferences";
-"scene.my_node.support.title" = "Support";
-"scene.my_node.support.subtitle" = "Get support and send feedback";
+"scene.my_node.title" = "Mon Nœud";
+"scene.my_node.channels.title" = "Canaux";
+"scene.my_node.channels.subtitle" = "Gérer votre capacité";
+"scene.my_node.channel_backup.title" = "Sauvegarde des canaux";
+"scene.my_node.channel_backup.subtitle" = "Régler options d'urgence";
+"scene.my_node.settings.title" = "Paramètres";
+"scene.my_node.settings.subtitle" = "Gérer vos préférences";
+"scene.my_node.support.title" = "Soutien";
+"scene.my_node.support.subtitle" = "Obtenez du soutien et envoyez votre avis";
 
-"scene.lnurl_qrcode_scanner.withdraw.title" = "Withdraw";
-"scene.lnurl_qrcode_scanner.withdraw.button_title" = "Paste LNURL";
+"scene.lnurl_qrcode_scanner.withdraw.title" = "Retirer";
+"scene.lnurl_qrcode_scanner.withdraw.button_title" = "Coller LNURL";
 
-"scene.lnurl.withdraw.title" = "Withdraw";
+"scene.lnurl.withdraw.title" = "Retirer";
 "scene.lnurl.withdraw.description" = "Description";
-"scene.lnurl.withdraw.button_title" = "Withdraw";
+"scene.lnurl.withdraw.button_title" = "Retirer";
 
 "notification.sync.title" = "Pensez à synchroniser";
 "notification.sync.day_12.body" = "Synchronisez votre portefeuille afin de garantir sa sécurité.";
