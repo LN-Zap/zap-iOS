@@ -63,7 +63,7 @@ enum BlockchainHeight: CaseIterable {
     }
 
     private func fetch(url: URL, completion: @escaping (Int) -> Void) {
-        let task = URLSession.pinned.dataTask(with: url) { data, _, error in
+        let task = URLSession.shared.dataTask(with: url) { data, _, error in
             if let error = error {
                 Logger.error(error)
             } else if let data = data,
@@ -76,7 +76,7 @@ enum BlockchainHeight: CaseIterable {
     }
 
     private func fetch(url: URL, completion: @escaping (Int) -> Void, map: @escaping ([String: Any]) -> Int?) {
-        let task = URLSession.pinned.dataTask(with: url) { data, _, error in
+        let task = URLSession.shared.dataTask(with: url) { data, _, error in
             if let error = error {
                 Logger.error(error)
             } else if let data = data,

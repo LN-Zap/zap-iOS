@@ -57,7 +57,7 @@ public final class ExchangeRateLoader {
     func fetchCurrencyData(url: String, parse: @escaping (String, Any) -> FiatCurrency?, completion: @escaping (Result<[FiatCurrency], ExchangeRateLoaderError>) -> Void) {
         guard let url = URL(string: url) else { fatalError("Invalid ticker url.") }
 
-        let task = URLSession.pinned.dataTask(with: url) { data, _, error in
+        let task = URLSession.shared.dataTask(with: url) { data, _, error in
             if let error = error {
                 Logger.error(error.localizedDescription)
                 completion(.failure(.loadingError))

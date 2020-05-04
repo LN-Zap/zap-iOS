@@ -10,7 +10,6 @@
 		178016FE5AE2A76A5AB12DBF /* Pods_RPC_Lightning.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3046DCD630B0D83A7630BA80 /* Pods_RPC_Lightning.framework */; };
 		1D0478619AAC5C1645215BB4 /* Pods_LibraryTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 72A8F39CA5D73CBA85937838 /* Pods_LibraryTests.framework */; };
 		37DC0DB072FDF3A74598EA06 /* Pods_RPC_Library.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 71E4E79032A371505A0E58C1 /* Pods_RPC_Library.framework */; };
-		3FCED3EA112663089C273764 /* *.bitcoinaverage.com.cer in Resources */ = {isa = PBXBuildFile; fileRef = 3FCED45A10ACE912173010E1 /* *.bitcoinaverage.com.cer */; };
 		4295D217D276D875A94F4622 /* Pods_RPC_SwiftLnd.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0B55A0B343498CAAB75872BD /* Pods_RPC_SwiftLnd.framework */; };
 		5C18BB6F234C015100BCF9D9 /* ExpiryTime.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C18BB6E234C015100BCF9D9 /* ExpiryTime.swift */; };
 		5C18BB71234C09EB00BCF9D9 /* LightningRequestExpirySettingsItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C18BB70234C09EB00BCF9D9 /* LightningRequestExpirySettingsItem.swift */; };
@@ -191,7 +190,6 @@
 		AD44E2AA237D74F900DA97F9 /* BalanceDetailViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD44E2A9237D74F900DA97F9 /* BalanceDetailViewModel.swift */; };
 		AD44E2AC237D75E200DA97F9 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD44E2AB237D75E200DA97F9 /* Constants.swift */; };
 		AD4B4BE122EAF0CE0029773A /* EmptyStateView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD4B4BE022EAF0CE0029773A /* EmptyStateView.swift */; };
-		AD4F7657232A520B00F78184 /* DST Root CA X3.cer in Resources */ = {isa = PBXBuildFile; fileRef = AD4F7656232A51A900F78184 /* DST Root CA X3.cer */; };
 		AD4F7659232BCF0800F78184 /* SyncView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD4F7658232BCF0800F78184 /* SyncView.swift */; };
 		AD4F765C232BCF1E00F78184 /* SyncView.xib in Resources */ = {isa = PBXBuildFile; fileRef = AD4F765B232BCF1E00F78184 /* SyncView.xib */; };
 		AD511B282253744800EDFC7C /* Version.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD511B272253744800EDFC7C /* Version.swift */; };
@@ -253,7 +251,6 @@
 		AD967FE9210610D90048085B /* RPCConnectQRCode.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD967FE8210610D90048085B /* RPCConnectQRCode.swift */; };
 		AD967FEA2106122E0048085B /* ZapconnectQRCode.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADD6D80620B15603008BE461 /* ZapconnectQRCode.swift */; };
 		AD967FF021062AB20048085B /* RPCConnectQRCodeError+Localizable.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD967FEF21062AB20048085B /* RPCConnectQRCodeError+Localizable.swift */; };
-		AD967FF8210731110048085B /* PinnedURLSessionDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD967FF7210731110048085B /* PinnedURLSessionDelegate.swift */; };
 		AD9BB2DA21819799009DC878 /* Route.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD9BB2D921819799009DC878 /* Route.swift */; };
 		AD9BB2DC21830B4F009DC878 /* LoadingAmountView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD9BB2DB21830B4F009DC878 /* LoadingAmountView.swift */; };
 		AD9BB2E021836A54009DC878 /* DispatchQueue+Debounce.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD9BB2DF21836A54009DC878 /* DispatchQueue+Debounce.swift */; };
@@ -329,12 +326,6 @@
 		ADBC29CC23795ADB0097D0F6 /* LNURLStatus.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADBC29CB23795ADB0097D0F6 /* LNURLStatus.swift */; };
 		ADBC29CE23795AF30097D0F6 /* LNURLWithdrawRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADBC29CD23795AF30097D0F6 /* LNURLWithdrawRequest.swift */; };
 		ADC08D8B21DBBB16000E730E /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = ADC08D8A21DBBB16000E730E /* README.md */; };
-		ADC0D2F02107953100B8C62F /* PinnedHost.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADC0D2EF2107953100B8C62F /* PinnedHost.swift */; };
-		ADC0D2F321079FF700B8C62F /* www.blockchain.com.cer in Resources */ = {isa = PBXBuildFile; fileRef = ADC0D2F221079FF600B8C62F /* www.blockchain.com.cer */; };
-		ADC0D2F52107A13900B8C62F /* DigiCert SHA2 Extended Validation Server CA.cer in Resources */ = {isa = PBXBuildFile; fileRef = ADC0D2F42107A13800B8C62F /* DigiCert SHA2 Extended Validation Server CA.cer */; };
-		ADC0D2FA2107A23400B8C62F /* *.blockcypher.com.cer in Resources */ = {isa = PBXBuildFile; fileRef = ADC0D2F62107A19A00B8C62F /* *.blockcypher.com.cer */; };
-		ADC0D3042107A3D700B8C62F /* blockexplorer.com.cer in Resources */ = {isa = PBXBuildFile; fileRef = ADC0D3022107A3D600B8C62F /* blockexplorer.com.cer */; };
-		ADC0D3052107A3D700B8C62F /* CloudFlare Inc ECC CA-2.cer in Resources */ = {isa = PBXBuildFile; fileRef = ADC0D3032107A3D700B8C62F /* CloudFlare Inc ECC CA-2.cer */; };
 		ADC2FC9B22F1D97900902D43 /* ChannelListEmptyStateViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADC2FC9A22F1D97900902D43 /* ChannelListEmptyStateViewModel.swift */; };
 		ADC48CA7214AD8B800949CD9 /* DateEstimatorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADC48CA6214AD8B800949CD9 /* DateEstimatorTests.swift */; };
 		ADC48CA92150FBA200949CD9 /* HistoryService.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADC48CA82150FBA200949CD9 /* HistoryService.swift */; };
@@ -351,7 +342,6 @@
 		ADDD13B62119CE740035D2F9 /* StackViewElement.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADDD13B52119CE740035D2F9 /* StackViewElement.swift */; };
 		ADDD13B92119CEB40035D2F9 /* UIStackView.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADDD13B82119CEB40035D2F9 /* UIStackView.swift */; };
 		ADDD13BB2119CF110035D2F9 /* CallbackButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADDD13BA2119CF110035D2F9 /* CallbackButton.swift */; };
-		ADE11D8F22315779000D67C1 /* Sectigo RSA Domain Validation Secure Server CA.cer in Resources */ = {isa = PBXBuildFile; fileRef = ADE11D8E22315779000D67C1 /* Sectigo RSA Domain Validation Secure Server CA.cer */; };
 		ADE64DFB22293FF9004C0BC8 /* NotificationCenter.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = ADE64DFA22293FF9004C0BC8 /* NotificationCenter.framework */; };
 		ADE64DFE22293FF9004C0BC8 /* TodayViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADE64DFD22293FF9004C0BC8 /* TodayViewController.swift */; };
 		ADE64E0122293FF9004C0BC8 /* MainInterface.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = ADE64DFF22293FF9004C0BC8 /* MainInterface.storyboard */; };
@@ -384,7 +374,6 @@
 		ADF4C3E62367591200C0E5B2 /* LNURL.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADF4C3E52367591200C0E5B2 /* LNURL.swift */; };
 		ADF4C3E923682E8700C0E5B2 /* LNURLTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADF4C3E723682E8100C0E5B2 /* LNURLTests.swift */; };
 		ADFA46982226947A007A4C49 /* LndConnectURLTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADFA46972226947A007A4C49 /* LndConnectURLTests.swift */; };
-		ADFAA01B228AED0D000AECA1 /* Sectigo RSA Domain Validation Secure Server CA 2.cer in Resources */ = {isa = PBXBuildFile; fileRef = ADFAA01A228AED0D000AECA1 /* Sectigo RSA Domain Validation Secure Server CA 2.cer */; };
 		ADFAA01D228C0F10000AECA1 /* FeeEstimate.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADFAA01C228C0F10000AECA1 /* FeeEstimate.swift */; };
 		ADFAA01F228C4649000AECA1 /* ChannelBackup.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = ADFAA01E228C4649000AECA1 /* ChannelBackup.storyboard */; };
 		ADFAA021228C51FE000AECA1 /* BackupService.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADFAA020228C51FE000AECA1 /* BackupService.swift */; };
@@ -412,7 +401,6 @@
 		ADFEFA6F20E627F100FE1557 /* WalletService.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0D3C9792060070D0015C5D7 /* WalletService.swift */; };
 		ADFEFA7120E628AC00FE1557 /* Lightning.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AD536BE620E62763002279BC /* Lightning.framework */; };
 		ADFEFA7920E62B1800FE1557 /* BlockChainHeightUpdater.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0D3C97F20629B9D0015C5D7 /* BlockChainHeightUpdater.swift */; };
-		AEAF270921EAD05B004E022F /* Let's Encrypt Authority X3.cer in Resources */ = {isa = PBXBuildFile; fileRef = AEAF270721EAD05B004E022F /* Let's Encrypt Authority X3.cer */; };
 		B7136A44ACFDB94442D05503 /* Pods_Zap.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3B5CE8ECCAF4EA900FB2EDE1 /* Pods_Zap.framework */; };
 		CF11A5026DB63D2F0617B3CD /* Pods_LightningTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B7944BECD4B9EE6982B31E9A /* Pods_LightningTests.framework */; };
 		D191A2ABA2BF895DAD01E919 /* Pods_RPC_Widget.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3C3A10DFB274187D3242E528 /* Pods_RPC_Widget.framework */; };
@@ -565,7 +553,6 @@
 		3446C42DBB11764FE85E8964 /* Pods-RPC-Library.debugremote.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RPC-Library.debugremote.xcconfig"; path = "Target Support Files/Pods-RPC-Library/Pods-RPC-Library.debugremote.xcconfig"; sourceTree = "<group>"; };
 		3B5CE8ECCAF4EA900FB2EDE1 /* Pods_Zap.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Zap.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		3C3A10DFB274187D3242E528 /* Pods_RPC_Widget.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_RPC_Widget.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		3FCED45A10ACE912173010E1 /* *.bitcoinaverage.com.cer */ = {isa = PBXFileReference; lastKnownFileType = file.cer; path = "*.bitcoinaverage.com.cer"; sourceTree = "<group>"; };
 		45929A7F21441766F14C6845 /* Pods-RPC-SwiftLnd.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RPC-SwiftLnd.debug.xcconfig"; path = "Target Support Files/Pods-RPC-SwiftLnd/Pods-RPC-SwiftLnd.debug.xcconfig"; sourceTree = "<group>"; };
 		4D052C7425BFF1AED850782A /* Pods-LibraryTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-LibraryTests.debug.xcconfig"; path = "Target Support Files/Pods-LibraryTests/Pods-LibraryTests.debug.xcconfig"; sourceTree = "<group>"; };
 		4E372F564A61EB8E70FA424B /* Pods-SnapshotUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SnapshotUITests.release.xcconfig"; path = "Target Support Files/Pods-SnapshotUITests/Pods-SnapshotUITests.release.xcconfig"; sourceTree = "<group>"; };
@@ -732,7 +719,6 @@
 		AD44E2A9237D74F900DA97F9 /* BalanceDetailViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BalanceDetailViewModel.swift; sourceTree = "<group>"; };
 		AD44E2AB237D75E200DA97F9 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		AD4B4BE022EAF0CE0029773A /* EmptyStateView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmptyStateView.swift; sourceTree = "<group>"; };
-		AD4F7656232A51A900F78184 /* DST Root CA X3.cer */ = {isa = PBXFileReference; lastKnownFileType = file; path = "DST Root CA X3.cer"; sourceTree = "<group>"; };
 		AD4F7658232BCF0800F78184 /* SyncView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SyncView.swift; sourceTree = "<group>"; };
 		AD4F765B232BCF1E00F78184 /* SyncView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SyncView.xib; sourceTree = "<group>"; };
 		AD511B272253744800EDFC7C /* Version.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Version.swift; sourceTree = "<group>"; };
@@ -808,7 +794,6 @@
 		AD967FE8210610D90048085B /* RPCConnectQRCode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RPCConnectQRCode.swift; sourceTree = "<group>"; };
 		AD967FEF21062AB20048085B /* RPCConnectQRCodeError+Localizable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "RPCConnectQRCodeError+Localizable.swift"; sourceTree = "<group>"; };
 		AD967FF521072D2C0048085B /* Success.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Success.swift; sourceTree = "<group>"; };
-		AD967FF7210731110048085B /* PinnedURLSessionDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PinnedURLSessionDelegate.swift; sourceTree = "<group>"; };
 		AD97A90B20EFC127008344EA /* LightningInvoiceURI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LightningInvoiceURI.swift; sourceTree = "<group>"; };
 		AD97A90E20EFC1E6008344EA /* LightningNodeURI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LightningNodeURI.swift; sourceTree = "<group>"; };
 		AD97A91C20F0FA92008344EA /* ChannelCloseSummary.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChannelCloseSummary.swift; sourceTree = "<group>"; };
@@ -954,12 +939,6 @@
 		ADBC29CD23795AF30097D0F6 /* LNURLWithdrawRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LNURLWithdrawRequest.swift; sourceTree = "<group>"; };
 		ADBCC07420CC04A4002B6E59 /* TransactionService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransactionService.swift; sourceTree = "<group>"; };
 		ADC08D8A21DBBB16000E730E /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
-		ADC0D2EF2107953100B8C62F /* PinnedHost.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PinnedHost.swift; sourceTree = "<group>"; };
-		ADC0D2F221079FF600B8C62F /* www.blockchain.com.cer */ = {isa = PBXFileReference; lastKnownFileType = file; path = www.blockchain.com.cer; sourceTree = "<group>"; };
-		ADC0D2F42107A13800B8C62F /* DigiCert SHA2 Extended Validation Server CA.cer */ = {isa = PBXFileReference; lastKnownFileType = file; path = "DigiCert SHA2 Extended Validation Server CA.cer"; sourceTree = "<group>"; };
-		ADC0D2F62107A19A00B8C62F /* *.blockcypher.com.cer */ = {isa = PBXFileReference; lastKnownFileType = file; path = "*.blockcypher.com.cer"; sourceTree = "<group>"; };
-		ADC0D3022107A3D600B8C62F /* blockexplorer.com.cer */ = {isa = PBXFileReference; lastKnownFileType = file; path = blockexplorer.com.cer; sourceTree = "<group>"; };
-		ADC0D3032107A3D700B8C62F /* CloudFlare Inc ECC CA-2.cer */ = {isa = PBXFileReference; lastKnownFileType = file; path = "CloudFlare Inc ECC CA-2.cer"; sourceTree = "<group>"; };
 		ADC29C0B20A9B0A0008B2DC2 /* Invoice.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Invoice.swift; sourceTree = "<group>"; };
 		ADC2FC9A22F1D97900902D43 /* ChannelListEmptyStateViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChannelListEmptyStateViewModel.swift; sourceTree = "<group>"; };
 		ADC48CA6214AD8B800949CD9 /* DateEstimatorTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateEstimatorTests.swift; sourceTree = "<group>"; };
@@ -987,7 +966,6 @@
 		ADDD13B52119CE740035D2F9 /* StackViewElement.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StackViewElement.swift; sourceTree = "<group>"; };
 		ADDD13B82119CEB40035D2F9 /* UIStackView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIStackView.swift; sourceTree = "<group>"; };
 		ADDD13BA2119CF110035D2F9 /* CallbackButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CallbackButton.swift; sourceTree = "<group>"; };
-		ADE11D8E22315779000D67C1 /* Sectigo RSA Domain Validation Secure Server CA.cer */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Sectigo RSA Domain Validation Secure Server CA.cer"; sourceTree = "<group>"; };
 		ADE19C3F20E7892000340E2E /* ChannelPoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChannelPoint.swift; sourceTree = "<group>"; };
 		ADE4CF1C20B5B2BE007C987A /* UIFont.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIFont.swift; sourceTree = "<group>"; };
 		ADE4CF1E20B5B6FC007C987A /* Environment.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Environment.swift; sourceTree = "<group>"; };
@@ -1034,7 +1012,6 @@
 		ADF7936B208E66FA0086B2CA /* UICollectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UICollectionView.swift; sourceTree = "<group>"; };
 		ADF79375208F88DE0086B2CA /* RecoverWalletViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecoverWalletViewController.swift; sourceTree = "<group>"; };
 		ADFA46972226947A007A4C49 /* LndConnectURLTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LndConnectURLTests.swift; sourceTree = "<group>"; };
-		ADFAA01A228AED0D000AECA1 /* Sectigo RSA Domain Validation Secure Server CA 2.cer */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Sectigo RSA Domain Validation Secure Server CA 2.cer"; sourceTree = "<group>"; };
 		ADFAA01C228C0F10000AECA1 /* FeeEstimate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeeEstimate.swift; sourceTree = "<group>"; };
 		ADFAA01E228C4649000AECA1 /* ChannelBackup.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = ChannelBackup.storyboard; sourceTree = "<group>"; };
 		ADFAA020228C51FE000AECA1 /* BackupService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BackupService.swift; sourceTree = "<group>"; };
@@ -1050,7 +1027,6 @@
 		ADFE537B20D693F500B3BA2A /* LibraryTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = LibraryTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		ADFE537F20D693F500B3BA2A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		ADFEFA7320E6294000FE1557 /* OnChainRequestAddressType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnChainRequestAddressType.swift; sourceTree = "<group>"; };
-		AEAF270721EAD05B004E022F /* Let's Encrypt Authority X3.cer */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Let's Encrypt Authority X3.cer"; sourceTree = "<group>"; };
 		B7944BECD4B9EE6982B31E9A /* Pods_LightningTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_LightningTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		BFEA939DE8A6736499979EAF /* Pods-RPC-Lightning.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RPC-Lightning.release.xcconfig"; path = "Target Support Files/Pods-RPC-Lightning/Pods-RPC-Lightning.release.xcconfig"; sourceTree = "<group>"; };
 		C3CC119794C04517509253C2 /* Pods-RPC-Widget.debugremote.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RPC-Widget.debugremote.xcconfig"; path = "Target Support Files/Pods-RPC-Widget/Pods-RPC-Widget.debugremote.xcconfig"; sourceTree = "<group>"; };
@@ -1171,15 +1147,6 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		3FCED287DE05B6C9EC5F50E4 /* bitcoinaverage.com */ = {
-			isa = PBXGroup;
-			children = (
-				ADFAA01A228AED0D000AECA1 /* Sectigo RSA Domain Validation Secure Server CA 2.cer */,
-				3FCED45A10ACE912173010E1 /* *.bitcoinaverage.com.cer */,
-			);
-			path = bitcoinaverage.com;
-			sourceTree = "<group>";
-		};
 		551A4BF5034411A1DE673EBF /* Pods */ = {
 			isa = PBXGroup;
 			children = (
@@ -1753,7 +1720,6 @@
 				AD536BE920E62763002279BC /* Info.plist */,
 				AD3781CF2166522E0083CE77 /* Environment.swift */,
 				ADD9DCDC20B453D000AEFC5C /* LightningConnection.swift */,
-				ADEF96BB21078C31006AE1EC /* Certificates */,
 				ADF093042147C6F000B48853 /* Events */,
 				AD28844221281F9E003C3D94 /* Invoice */,
 				ADF4C3E4236758FD00C0E5B2 /* LNURL */,
@@ -2107,33 +2073,6 @@
 			path = Lnurl;
 			sourceTree = "<group>";
 		};
-		ADC0D2F82107A19F00B8C62F /* blockcypher.com */ = {
-			isa = PBXGroup;
-			children = (
-				ADC0D2F62107A19A00B8C62F /* *.blockcypher.com.cer */,
-				ADE11D8E22315779000D67C1 /* Sectigo RSA Domain Validation Secure Server CA.cer */,
-			);
-			path = blockcypher.com;
-			sourceTree = "<group>";
-		};
-		ADC0D2F92107A1AE00B8C62F /* blockchain.info */ = {
-			isa = PBXGroup;
-			children = (
-				ADC0D2F42107A13800B8C62F /* DigiCert SHA2 Extended Validation Server CA.cer */,
-				ADC0D2F221079FF600B8C62F /* www.blockchain.com.cer */,
-			);
-			path = blockchain.info;
-			sourceTree = "<group>";
-		};
-		ADC0D3012107A3C500B8C62F /* blockexplorer.com */ = {
-			isa = PBXGroup;
-			children = (
-				ADC0D3022107A3D600B8C62F /* blockexplorer.com.cer */,
-				ADC0D3032107A3D700B8C62F /* CloudFlare Inc ECC CA-2.cer */,
-			);
-			path = blockexplorer.com;
-			sourceTree = "<group>";
-		};
 		ADCE01B9207B57DA00CA72E8 /* CreateWallet */ = {
 			isa = PBXGroup;
 			children = (
@@ -2263,20 +2202,6 @@
 			path = ModalPin;
 			sourceTree = "<group>";
 		};
-		ADEF96BB21078C31006AE1EC /* Certificates */ = {
-			isa = PBXGroup;
-			children = (
-				ADC0D2EF2107953100B8C62F /* PinnedHost.swift */,
-				AD967FF7210731110048085B /* PinnedURLSessionDelegate.swift */,
-				3FCED287DE05B6C9EC5F50E4 /* bitcoinaverage.com */,
-				ADC0D2F92107A1AE00B8C62F /* blockchain.info */,
-				ADC0D2F82107A19F00B8C62F /* blockcypher.com */,
-				ADC0D3012107A3C500B8C62F /* blockexplorer.com */,
-				AEAF270621EAD028004E022F /* blockstream.info */,
-			);
-			path = Certificates;
-			sourceTree = "<group>";
-		};
 		ADF093042147C6F000B48853 /* Events */ = {
 			isa = PBXGroup;
 			children = (
@@ -2358,15 +2283,6 @@
 				AD81C21A21B86A3100FA3FA9 /* SyncPercentageEstimatorTests.swift */,
 			);
 			path = Tests;
-			sourceTree = "<group>";
-		};
-		AEAF270621EAD028004E022F /* blockstream.info */ = {
-			isa = PBXGroup;
-			children = (
-				AD4F7656232A51A900F78184 /* DST Root CA X3.cer */,
-				AEAF270721EAD05B004E022F /* Let's Encrypt Authority X3.cer */,
-			);
-			path = blockstream.info;
 			sourceTree = "<group>";
 		};
 		CEF2960C33901153F2C1FFF4 /* Frameworks */ = {
@@ -2844,16 +2760,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				ADC0D2F321079FF700B8C62F /* www.blockchain.com.cer in Resources */,
-				ADFAA01B228AED0D000AECA1 /* Sectigo RSA Domain Validation Secure Server CA 2.cer in Resources */,
-				AD4F7657232A520B00F78184 /* DST Root CA X3.cer in Resources */,
-				AEAF270921EAD05B004E022F /* Let's Encrypt Authority X3.cer in Resources */,
-				ADE11D8F22315779000D67C1 /* Sectigo RSA Domain Validation Secure Server CA.cer in Resources */,
-				ADC0D3042107A3D700B8C62F /* blockexplorer.com.cer in Resources */,
-				ADC0D3052107A3D700B8C62F /* CloudFlare Inc ECC CA-2.cer in Resources */,
-				ADC0D2FA2107A23400B8C62F /* *.blockcypher.com.cer in Resources */,
-				ADC0D2F52107A13900B8C62F /* DigiCert SHA2 Extended Validation Server CA.cer in Resources */,
-				3FCED3EA112663089C273764 /* *.bitcoinaverage.com.cer in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -3418,7 +3324,6 @@
 			files = (
 				ADBC29CC23795ADB0097D0F6 /* LNURLStatus.swift in Sources */,
 				AD3781C421661A070083CE77 /* Pem.swift in Sources */,
-				AD967FF8210731110048085B /* PinnedURLSessionDelegate.swift in Sources */,
 				AD1D378B2253C9F900F32BE1 /* PaymentListUpdater.swift in Sources */,
 				ADC48CA92150FBA200949CD9 /* HistoryService.swift in Sources */,
 				ADB4CBA62254AEEC00D186BC /* ListUpdater.swift in Sources */,
@@ -3451,7 +3356,6 @@
 				ADA179C221526036001401F3 /* DateProvidingEvent.swift in Sources */,
 				ADFEFA6B20E627F100FE1557 /* ChannelService.swift in Sources */,
 				AD3781CA21664E9E0083CE77 /* LightningConnection.swift in Sources */,
-				ADC0D2F02107953100B8C62F /* PinnedHost.swift in Sources */,
 				AD967FE9210610D90048085B /* RPCConnectQRCode.swift in Sources */,
 				ADFEFA6D20E627F100FE1557 /* LightningService.swift in Sources */,
 			);
