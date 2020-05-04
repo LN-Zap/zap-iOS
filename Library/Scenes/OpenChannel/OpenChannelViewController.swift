@@ -63,7 +63,7 @@ final class OpenChannelViewController: ModalDetailViewController {
             .dispose(in: reactive.bag)
 
         viewModel.subtitle
-            .observeOn(DispatchQueue.main)
+            .receive(on: DispatchQueue.main)
             .observeNext { amountInputView.subtitleText = $0 }
             .dispose(in: reactive.bag)
     }

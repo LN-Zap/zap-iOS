@@ -24,7 +24,7 @@ final class MnemonicPageViewController: UIPageViewController {
 
         mnemonicViewModel?.pageWords
             .ignoreNils()
-            .observeOn(DispatchQueue.main)
+            .receive(on: DispatchQueue.main)
             .observeNext { [weak self] pageWords in
                 self?.updateViewControllers(pageWords: pageWords)
             }

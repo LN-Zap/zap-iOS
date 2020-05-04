@@ -30,7 +30,7 @@ final class WalletViewModel: NSObject {
         
         self.shouldHideEmptyWalletState = combineLatest(balanceService.totalBalance, balanceService.didLoadBalances)
             .map { $0 > 0 || !$1 }
-            .distinctUntilChanged()
+            .removeDuplicates()
 
         self.shouldHideChannelEmptyState = combineLatest(
             lightningService.balanceService.onChainConfirmed,
@@ -38,7 +38,7 @@ final class WalletViewModel: NSObject {
             didDismissChannelEmptyState
         )
             .map { !($0 > 0 && $1.collection.isEmpty) || $2 }
-            .distinctUntilChanged()
+            .removeDuplicates()
         
         super.init()
     }

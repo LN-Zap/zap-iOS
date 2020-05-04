@@ -24,7 +24,7 @@ final class BalanceDetailViewModel: NSObject {
         super.init()
         
         combineLatest(balanceService.lightningChannelBalance, balanceService.onChainConfirmed, balanceService.totalPending)
-            .distinctUntilChanged { $0 != $1 }
+            .removeDuplicates { $0 != $1 }
             .observeNext { [weak self] in
                 let (lightningBalance, onChainBalance, pendingBalance) = $0
                 

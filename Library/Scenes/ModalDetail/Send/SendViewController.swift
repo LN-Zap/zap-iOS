@@ -60,12 +60,12 @@ final class SendViewController: ModalDetailViewController {
         }))) as? CallbackButton
 
         viewModel.isSendButtonEnabled
-            .observeOn(DispatchQueue.main)
+            .receive(on: DispatchQueue.main)
             .observeNext { sendButton?.isEnabled = $0 }
             .dispose(in: reactive.bag)
 
         viewModel.isInputViewEnabled
-            .observeOn(DispatchQueue.main)
+            .receive(on: DispatchQueue.main)
             .observeNext { [weak self] in
                 self?.amountInputView?.isEnabled = $0
             }
@@ -74,7 +74,7 @@ final class SendViewController: ModalDetailViewController {
         setHeaderImage(viewModel.method.headerImage)
 
         viewModel.subtitleText
-            .observeOn(DispatchQueue.main)
+            .receive(on: DispatchQueue.main)
             .observeNext { [weak self] in
                 self?.amountInputView?.subtitleText = $0
             }
@@ -82,7 +82,7 @@ final class SendViewController: ModalDetailViewController {
 
         viewModel.isSubtitleTextWarning
             .map { $0 ? UIColor.Zap.superRed : UIColor.Zap.gray }
-            .observeOn(DispatchQueue.main)
+            .receive(on: DispatchQueue.main)
             .observeNext { [weak self] in
                 self?.amountInputView?.subtitleTextColor = $0
             }

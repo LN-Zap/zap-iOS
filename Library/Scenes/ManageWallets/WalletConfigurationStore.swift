@@ -85,7 +85,7 @@ final class WalletConfigurationStore {
         // if there is a local wallet in the keychain, but not on disk, remove
         // the local wallet from the loaded list.
         if let localNetwork = FileManager.default.hasLocalWallet {
-            if !configurations.contains { $0.connection == .local } {
+            if !configurations.contains(where: { $0.connection == .local }) {
                 configurations.append(WalletConfiguration(alias: "Zap iOS", network: localNetwork, connection: .local, nodePubKey: nil))
             }
         } else {

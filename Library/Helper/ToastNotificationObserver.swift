@@ -16,7 +16,7 @@ final class ToastNotificationObserver: NSObject {
     func start() {
         NotificationCenter.default.reactive
             .notification(name: .receivedTransaction)
-            .observeOn(DispatchQueue.main)
+            .receive(on: DispatchQueue.main)
             .observeNext { notification in
                 guard
                     let transaction = notification.userInfo?[LightningService.transactionNotificationName]

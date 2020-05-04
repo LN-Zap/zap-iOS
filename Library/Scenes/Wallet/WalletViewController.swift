@@ -129,7 +129,7 @@ final class WalletViewController: UIViewController {
         }
         
         walletViewModel.shouldHideChannelEmptyState
-            .observeOn(DispatchQueue.main)
+            .receive(on: DispatchQueue.main)
             .observeNext { [weak self] isHidden in
                 UIView.animate(withDuration: 0.3) {
                     self?.notificationView.isHidden = isHidden

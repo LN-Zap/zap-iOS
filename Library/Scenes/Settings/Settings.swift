@@ -72,27 +72,27 @@ public final class Settings: NSObject, Persistable {
 
     private func setupSavingOnChange() {
         [fiatCurrency
-            .skip(first: 1)
+            .dropFirst(1)
             .observeNext { [weak self] in
                 self?.data.fiatCurrency = $0
             },
          cryptoCurrency
-            .skip(first: 1)
+            .dropFirst(1)
             .observeNext { [weak self] in
                 self?.data.cryptoCurrency = $0
             },
          blockExplorer
-            .skip(first: 1)
+            .dropFirst(1)
             .observeNext { [weak self] in
                 self?.data.blockExplorer = $0
             },
          onChainRequestAddressType
-            .skip(first: 1)
+            .dropFirst(1)
             .observeNext { [weak self] in
                 self?.data.onChainRequestAddressType = $0
             },
          lightningRequestExpiry
-            .skip(first: 1)
+            .dropFirst(1)
             .observeNext { [weak self] in
                 self?.data.lightningRequestExpiry = $0
             }

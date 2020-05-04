@@ -68,7 +68,7 @@ final class BalanceDetailView: UIView {
         }
         
         viewModel.circleGraphSegments
-            .observeOn(DispatchQueue.main)
+            .receive(on: DispatchQueue.main)
             .observeNext { [circleGraphView] in
                 circleGraphView?.segments = $0
             }
@@ -185,7 +185,7 @@ private extension UIStackView {
         if segment == .pending {
             amount
                 .map { $0 <= 0 }
-                .observeOn(DispatchQueue.main)
+                .receive(on: DispatchQueue.main)
                 .observeNext {
                     horizontalStackView.isHidden = $0
                 }

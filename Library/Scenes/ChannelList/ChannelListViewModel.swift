@@ -59,16 +59,16 @@ final class ChannelListViewModel: NSObject {
 
         self.shouldHideEmptyWalletState = lightningService.balanceService.totalBalance
             .map { $0 > 0 }
-            .distinctUntilChanged()
+            .removeDuplicates()
 
         self.shouldHideChannelListEmptyState = combineLatest(lightningService.balanceService.onChainTotal, dataSource)
             .map { $0 <= 0 || !$1.collection.isEmpty }
-            .distinctUntilChanged()
+            .removeDuplicates()
 
         super.init()
         
         combineLatest(channelService.open, channelService.pending)
-            .observeOn(DispatchQueue.main)
+            .receive(on: DispatchQueue.main)
             .observeNext { [weak self] in
                 let (open, pending) = $0
                 self?.updateChannels(open: open.collection, pending: pending.collection)

@@ -78,9 +78,9 @@ final class WalletCoordinator: NSObject, Coordinator {
 
     public func listenForStateChanges() {
         lightningService.infoService.walletState
-            .skip(first: 1)
-            .distinctUntilChanged()
-            .observeOn(DispatchQueue.main)
+            .dropFirst(1)
+            .removeDuplicates()
+            .receive(on: DispatchQueue.main)
             .observeNext { [weak self] state in
                 self?.updateFor(state: state)
             }.dispose(in: reactive.bag)

@@ -48,8 +48,8 @@ final class SyncView: UIView {
         guard let syncViewModel = syncViewModel else { return }
 
         syncViewModel.isSyncing
-            .debounce(interval: 2)
-            .observeOn(DispatchQueue.main)
+            .debounce(for: 2)
+            .receive(on: DispatchQueue.main)
             .observeNext { [weak self] isSyncing in
                 UIView.animate(withDuration: 0.25) {
                     self?.isHidden = !isSyncing

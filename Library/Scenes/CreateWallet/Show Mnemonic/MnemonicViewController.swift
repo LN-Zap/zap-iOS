@@ -41,7 +41,7 @@ final class MnemonicViewController: UIViewController {
 
         mnemonicViewModel?.pageWords
             .map { $0 != nil }
-            .observeOn(DispatchQueue.main)
+            .receive(on: DispatchQueue.main)
             .bind(to: activityIndicator.reactive.isHidden)
             .dispose(in: reactive.bag)
     }

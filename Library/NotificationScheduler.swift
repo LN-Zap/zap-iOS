@@ -55,7 +55,7 @@ final class NotificationScheduler: NSObject {
         // schedule a notification at current date + 2016 blocks (2 weeks)
         // (the current default csv_delay) also don't hardcode magic numbers.
         combineLatest(lightningService.channelService.open, lightningService.infoService.bestHeaderDate) { ($0.collection, $1) }
-            .debounce(interval: 2)
+            .debounce(for: 2)
             .observeNext { [weak self] in
                 self?.schedule(for: $0.0, bestHeaderDate: $0.1)
             }

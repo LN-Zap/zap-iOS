@@ -58,7 +58,7 @@ final class LoadingAmountView: UIView {
         updateLoadable(loadable.value)
 
         loadable
-            .observeOn(DispatchQueue.main)
+            .receive(on: DispatchQueue.main)
             .observeNext { [weak self] loadable in
                 self?.updateLoadable(loadable)
             }

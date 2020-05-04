@@ -38,7 +38,7 @@ final class BalanceView: UIView {
         largeAmountView.value = totalBalance
         
         totalBalance
-            .distinctUntilChanged()
+            .removeDuplicates()
             .bind(to: secondaryBalanceLabel.reactive.text, currency: Settings.shared.secondaryCurrency)
             .dispose(in: reactive.bag)
     }

@@ -20,7 +20,7 @@ final class LargeAmountView: UIView {
             combineLatest(value, Settings.shared.primaryCurrency) { satoshis, currency -> String? in
                 currency.format(satoshis: satoshis, includeSymbol: false)
             }
-            .distinctUntilChanged()
+            .removeDuplicates()
             .bind(to: label.reactive.text)
             .dispose(in: reactive.bag)
         }
