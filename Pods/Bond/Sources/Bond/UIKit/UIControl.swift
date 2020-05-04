@@ -39,10 +39,10 @@ extension ReactiveExtensions where Base: UIControl {
             let target = BNDControlTarget(control: base, events: events) {
                 observer.receive(())
             }
-            return BlockDisposable {
+            return MainBlockDisposable {
                 target.unregister()
             }
-        }.take(until: base.deallocated)
+        }.prefix(untilOutputFrom: base.deallocated)
     }
 
     public var isEnabled: Bond<Bool> {

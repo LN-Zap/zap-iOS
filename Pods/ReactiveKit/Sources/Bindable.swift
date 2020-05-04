@@ -62,9 +62,9 @@ extension BindableProtocol where Self: SignalProtocol, Self.Error == Never {
     /// - Returns: A disposable that can cancel the binding.
     @discardableResult
     public func bidirectionalBind<B: BindableProtocol & SignalProtocol>(to target: B) -> Disposable where B.Element == Element, B.Error == Error {
-        let context: ExecutionContext = .nonRecursive()
-        let d1 = observeIn(context).bind(to: target)
-        let d2 = target.observeIn(context).bind(to: self)
+        let scheduler = ExecutionContext.nonRecursive()
+        let d1 = receive(on: scheduler).bind(to: target)
+        let d2 = target.receive(on: scheduler).bind(to: self)
         return CompositeDisposable([d1, d2])
     }
 }
@@ -104,7 +104,7 @@ extension SignalProtocol where Error == Never {
     /// - Returns: A disposable that can cancel the binding.
     @discardableResult
     public func bind<Target: Deallocatable>(to target: Target, context: ExecutionContext, setter: @escaping (Target, Element) -> Void) -> Disposable {
-        return take(until: target.deallocated).observeNext { [weak target] element in
+        return prefix(untilOutputFrom: target.deallocated).observeNext { [weak target] element in
             context.execute {
                 if let target = target {
                     setter(target, element)
@@ -188,7 +188,7 @@ extension SignalProtocol where Error == Never, Element == Void {
     /// - Returns: A disposable that can cancel the binding.
     @discardableResult
     public func bind<Target: Deallocatable>(to target: Target, context: ExecutionContext, setter: @escaping (Target) -> Void) -> Disposable {
-        return take(until: target.deallocated).observeNext { [weak target] _ in
+        return prefix(untilOutputFrom: target.deallocated).observeNext { [weak target] _ in
             context.execute {
                 if let target = target {
                     setter(target)

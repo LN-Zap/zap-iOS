@@ -1,7 +1,7 @@
 <img src="Assets/logo.png" alt="ReactiveKit" width="479" height="80">
 
-[![Platform](https://img.shields.io/cocoapods/p/ReactiveKit.svg?style=flat)](http://cocoadocs.org/docsets/ReactiveKit/)
-[![Build Status](https://travis-ci.org/DeclarativeHub/ReactiveKit.svg?branch=master)](https://travis-ci.org/DeclarativeHub/ReactiveKit)
+[![Platform](https://img.shields.io/badge/platform-iOS%20%7C%20macOS%20%7C%20tvOS%20%7C%20watchOS%20%7C%20Linux-green.svg)](http://cocoadocs.org/docsets/ReactiveKit/)
+[![Build Status](https://github.com/DeclarativeHub/ReactiveKit/workflows/Build%20&%20Test/badge.svg)](https://github.com/DeclarativeHub/ReactiveKit/actions?query=workflow%3A%22Build+%26+Test%22)
 [![Twitter](https://img.shields.io/badge/twitter-@srdanrasic-red.svg?style=flat)](https://twitter.com/srdanrasic)
 
 __ReactiveKit__ is a lightweight Swift framework for reactive and functional reactive programming that enables you to get into the reactive world today.
@@ -44,6 +44,7 @@ _To get started quickly, clone the project and explore available tutorials in th
 * [Other common patterns](#other-common-patterns)
   * [Performing an action on .next event](#performing-an-action-on-next-event)
   * [Combining multiple signals](#combining-multiple-signals)
+* [Debugging](#debugging)
 * [Requirements](#requirements)
 * [Installation](#installation)
   * [Carthage](#carthage)
@@ -94,17 +95,20 @@ In order to represent errors in our sequences, we will introduce yet another kin
 Let us see how the event is defined in ReactiveKit.
 
 ```swift
-/// An event of a sequence.
-public enum Event<Element, Error: Swift.Error> {
+extension Signal {
 
-  /// An event that carries next element.
-  case next(Element)
+    /// An event of a sequence.
+    public enum Event {
 
-  /// An event that represents failure. Carries an error.
-  case failed(Error)
+        /// An event that carries next element.
+        case next(Element)
 
-  /// An event that marks the completion of a sequence.
-  case completed
+        /// An event that represents failure. Carries an error.
+        case failed(Error)
+
+        /// An event that marks the completion of a sequence.
+        case completed
+    }
 }
 ```
 
@@ -133,7 +137,7 @@ A signal represents the sequence of events. The most important thing you can do 
 
 ```swift
 /// Represents a type that receives events.
-public typealias Observer<Element, Error: Swift.Error> = (Event<Element, Error>) -> Void
+public typealias Observer<Element, Error: Swift.Error> = (Signal<Element, Error>.Event) -> Void
 ```
 
 ## Signals
@@ -197,7 +201,7 @@ public protocol ObserverProtocol {
     associatedtype Error: Swift.Error
 
     /// Send the event to the observer.
-    func on(_ event: Event<Element, Error>)
+    func on(_ event: Signal<Element, Error>.Event)
 }
 ```
 
@@ -899,7 +903,7 @@ open class Subject<Element, Error: Swift.Error>: SignalProtocol, ObserverProtoco
 
   private var observers: [Observer<Element, Error>] = []
 
-  open func on(_ event: Event<Element, Error>) {
+  open func on(_ event: Signal<Element, Error>.Event) {
     observers.forEach { $0(event) }
   }
 
@@ -972,10 +976,10 @@ As you could have inferred from the implementation, observing a subject gives us
 ```swift
 public final class ReplaySubject<Element, Error: Swift.Error>: Subject<Element, Error> {
 
-  private var buffer: [Event<Element, Error>] = []
+  private var buffer: [Signal<Element, Error>.Event] = []
 
-  public override func on(_ event: Event<Element, Error>) {
-    events.append(event)
+  public override func on(_ event: Signal<Element, Error>.Event) {
+    buffer.append(event)
     super.on(event)
   }
 
@@ -1336,6 +1340,44 @@ All you have to provide to the operator is the signals and a closure that maps t
 
 > Reactive extensions are provided by Bond framework.
 
+## Debugging
+
+### Timelane
+
+ReactiveKit has a built-in support for [Timelane](http://timelane.tools) Xcode Instrument. Just download the instrument and start using the `lane` operator to send the signal data to the Timelane Instrument.
+
+```swift
+mySignal
+  .filter { ... }
+  .lane("My Signal")
+  .map { ... }
+  .sink {
+    ... 
+  }
+```
+
+It's a one-liner!
+
+Note that `lane` is available only on macOS 10.14, iOS 12, tvOS 12, watchOS 5 or higher. If you are compiling for older system versions, you can use `laneIfAvailable` operator for convenience, but keep in mind that event logging will then silently fail when testing on older system versions.
+
+### Debug operator
+
+You can print signal events to the console be applying a `debug` operator.
+
+```swift
+mySignal
+  .filter { ... }
+  .debug("My Signal")
+  .map { ... }
+  .sink {
+    ... 
+  }
+```
+
+### Breakpoint
+
+ReactiveKit also provides a `breakpoint` operator. It is implemented based on Combine's [breakpoint operator](https://developer.apple.com/documentation/combine/publishers/merge/3208928-breakpoint). 
+
 ## Requirements
 
 * iOS 8.0+ / macOS 10.11+ / tvOS 9.0+ / watchOS 2.0+
@@ -1394,7 +1436,7 @@ let package = Package(
 
 The MIT License (MIT)
 
-Copyright (c) 2015-2019 Srdan Rasic (@srdanrasic)
+Copyright (c) 2015-2020 Srdan Rasic (@srdanrasic)
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal

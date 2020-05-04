@@ -83,22 +83,46 @@ However, if we decided to sort it so that deletions and higher indices are proce
 
 ### Table and Collection Views
 
-```swift
-// The following will automatically animate deletions, insertions, and moves:
 
+The following will automatically animate deletions, insertions, and moves:
+
+```swift
 tableView.animateRowChanges(oldData: old, newData: new)
 
-collectionView.animateItemChanges(oldData: old, newData: new)
+collectionView.animateItemChanges(oldData: old, newData: new, updateData: { self.dataSource = new })
+```
 
-// It can work with sections, too!
-
+It can work with sections, too!
+```swift
 tableView.animateRowAndSectionChanges(oldData: old, newData: new)
 
-collectionView.animateItemAndSectionChanges(oldData: old, newData: new)
+collectionView.animateItemAndSectionChanges(oldData: old, newData: new, updateData: { self.dataSource = new })
+```
 
+You can also calculate `diff` separately and use it later:
+```swift
+// Generate the difference first
+let diff = dataSource.diff(newDataSource)
+
+// This will apply changes to dataSource.
+let dataSourceUpdate = { self.dataSource = newDataSource }
+
+// ...
+
+tableView.apply(diff)
+
+collectionView.apply(diff, updateData: dataSourceUpdate)
 ```
 
 Please see the [included examples](/Examples/) for a working sample.
+
+#### Note about `updateData`
+
+Since version `2.0.0` there is now an `updateData` closure which notifies you when it's an appropriate time to update  `dataSource` of your `UICollectionView`. This addition refers to UICollectionView's [performbatchUpdates](https://developer.apple.com/documentation/uikit/uicollectionview/1618045-performbatchupdates):
+
+> If the collection view's layout is not up to date before you call this method, a reload may occur. To avoid problems, you should update your data model inside the updates block or ensure the layout is updated before you call `performBatchUpdates(_:completion:)`.
+
+Thus, it is **recommended** to update your `dataSource` inside `updateData` closure to avoid potential crashes during animations.
 
 ### Using Patch and Diff
 
@@ -174,7 +198,7 @@ All of the above being said, the algorithm used by Diff works best for collectio
 
 ## Requirements
 
-Differ requires Swift 4.2 or 5.0 and Xcode 10.2 or later to compile.
+Differ requires Swift 4.2+ or Xcode 10.2+ or later to compile.
 
 ## Installation
 
