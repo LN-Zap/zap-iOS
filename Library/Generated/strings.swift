@@ -682,8 +682,6 @@ internal enum L10n {
       /// Settings
       internal static let title = L10n.tr("Localizable", "scene.settings.title")
       internal enum Item {
-        /// Authenticate spendings
-        internal static let paymentsPINProtection = L10n.tr("Localizable", "scene.settings.item.payments_pin_protection")
         /// Bitcoin Unit
         internal static let bitcoinUnit = L10n.tr("Localizable", "scene.settings.item.bitcoin_unit")
         /// Block Explorer
@@ -702,6 +700,8 @@ internal enum L10n {
         internal static let lndLog = L10n.tr("Localizable", "scene.settings.item.lnd_log")
         /// Manage Channels
         internal static let manageChannels = L10n.tr("Localizable", "scene.settings.item.manage_channels")
+        /// Payments PIN protection
+        internal static let paymentsPinProtection = L10n.tr("Localizable", "scene.settings.item.payments_pin_protection")
         /// Privacy Policy
         internal static let privacyPolicy = L10n.tr("Localizable", "scene.settings.item.privacy_policy")
         /// Manage Wallets
