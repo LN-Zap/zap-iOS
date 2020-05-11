@@ -682,6 +682,8 @@ internal enum L10n {
       /// Settings
       internal static let title = L10n.tr("Localizable", "scene.settings.title")
       internal enum Item {
+        /// Authenticate spendings
+        internal static let paymentsPINProtection = L10n.tr("Localizable", "scene.settings.item.payments_pin_protection")
         /// Bitcoin Unit
         internal static let bitcoinUnit = L10n.tr("Localizable", "scene.settings.item.bitcoin_unit")
         /// Block Explorer

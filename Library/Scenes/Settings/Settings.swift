@@ -28,6 +28,7 @@ public final class Settings: NSObject, Persistable {
         var blockExplorer: BlockExplorer?
         var onChainRequestAddressType: OnChainRequestAddressType?
         var lightningRequestExpiry: ExpiryTime?
+        var paymentsPINProtection: Bool?
     }
 
     public let primaryCurrency: Observable<Currency>
@@ -38,6 +39,7 @@ public final class Settings: NSObject, Persistable {
     let blockExplorer: Observable<BlockExplorer>
     let onChainRequestAddressType: Observable<OnChainRequestAddressType>
     let lightningRequestExpiry: Observable<ExpiryTime>
+    let paymentsPINProtection: Observable<Bool>
 
     public static let shared = Settings()
 
@@ -55,6 +57,7 @@ public final class Settings: NSObject, Persistable {
         blockExplorer = Observable(data?.blockExplorer ?? .blockstream)
         onChainRequestAddressType = Observable(data?.onChainRequestAddressType ?? .witnessPubkeyHash)
         lightningRequestExpiry = Observable(data?.lightningRequestExpiry ?? .oneHour)
+        paymentsPINProtection = Observable(data?.paymentsPINProtection ?? true)
         
         super.init()
 
@@ -95,6 +98,11 @@ public final class Settings: NSObject, Persistable {
             .dropFirst(1)
             .observeNext { [weak self] in
                 self?.data.lightningRequestExpiry = $0
+            },
+         paymentsPINProtection
+            .dropFirst(1)
+            .observeNext { [weak self] in
+                self?.data.paymentsPINProtection = $0
             }
         ].dispose(in: reactive.bag)
     }
