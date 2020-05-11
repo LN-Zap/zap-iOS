@@ -11,7 +11,7 @@ import UIKit
 final class PaymentsPINProtectionSettingsItem: NSObject, ToggleSettingsItem {
     var isToggled = Observable(Settings.shared.paymentsPINProtection.value)
     
-    let title = L10n.Scene.Settings.Item.paymentsPINProtection
+    let title = L10n.Scene.Settings.Item.paymentsPinProtection
     
     override init() {
         super.init()
