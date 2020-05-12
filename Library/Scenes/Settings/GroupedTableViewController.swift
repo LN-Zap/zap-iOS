@@ -52,6 +52,7 @@ class GroupedTableViewController: UITableViewController {
             cell = UITableViewCell(style: .default, reuseIdentifier: "ToggleSettingsCell")
             
             let toggle = UISwitch()
+            toggle.onTintColor = UIColor.Zap.lightningOrange
             toggle.isOn = item.isToggled.value
             toggle.reactive.isOn.bidirectionalBind(to: item.isToggled)
             
