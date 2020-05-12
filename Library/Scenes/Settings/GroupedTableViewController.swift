@@ -53,7 +53,7 @@ class GroupedTableViewController: UITableViewController {
             
             let toggle = UISwitch()
             toggle.isOn = item.isToggled.value
-            toggle.reactive.isOn.bind(to: item.isToggled)
+            toggle.reactive.isOn.bidirectionalBind(to: item.isToggled)
             
             cell.accessoryView = toggle
         } else {

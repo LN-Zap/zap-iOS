@@ -13,10 +13,25 @@ final class PaymentsAuthenticationSettingsItem: NSObject, ToggleSettingsItem {
     
     let title = L10n.Scene.Settings.Item.paymentsAuthentication
     
-    override init() {
+    init(authenticationViewModel: AuthenticationViewModel) {
         super.init()
         
-        isToggled.bind(to: Settings.shared.paymentsAuthentication).dispose(in: reactive.bag)
+        isToggled.observeNext { [weak self] isOn in
+            if !isOn && Settings.shared.paymentsAuthentication.value {
+                ModalPinViewController.authenticate(authenticationViewModel: authenticationViewModel) { [weak self] result in
+                    switch result {
+                    case .success:
+                        Settings.shared.paymentsAuthentication.value = isOn
+
+                    case .failure:
+                        self?.isToggled.send(!isOn)
+                    }
+                }
+            } else {
+                Settings.shared.paymentsAuthentication.value = isOn
+            }
+        }
+        .dispose(in: reactive.bag)
     }
     
     func didSelectItem(from fromViewController: UIViewController) {
