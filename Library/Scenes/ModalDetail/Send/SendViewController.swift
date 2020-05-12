@@ -160,7 +160,7 @@ final class SendViewController: ModalDetailViewController {
     }
 
     private func sendButtonTapped() {
-        if !Settings.shared.paymentsPINProtection.value {
+        if !Settings.shared.paymentsAuthentication.value {
             return self.send()
         }
 

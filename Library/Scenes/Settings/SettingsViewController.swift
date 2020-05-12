@@ -41,7 +41,7 @@ final class SettingsViewController: GroupedTableViewController {
                 OnChainRequestAddressTypeSelectionSettingsItem(),
                 BlockExplorerSelectionSettingsItem(),
                 LightningRequestExpirySelectionSettingsItem(),
-                PaymentsPINProtectionSettingsItem()
+                PaymentsAuthenticationSettingsItem()
             ])
         ]
         sections.append(contentsOf: [

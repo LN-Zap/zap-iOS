@@ -91,7 +91,7 @@
 "scene.settings.item.help" = "Need Help?";
 "scene.settings.item.privacy_policy" = "Privacy Policy";
 "scene.settings.item.lnd_log" = "Show lnd Log";
-"scene.settings.item.payments_pin_protection" = "Payments PIN protection";
+"scene.settings.item.paymentsAuthentication" = "Authenticate payments";
 
 "scene.request.title" = "Receive";
 "scene.request.lightning_button" = "Lightning";
