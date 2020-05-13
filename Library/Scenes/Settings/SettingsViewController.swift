@@ -24,6 +24,7 @@ final class SettingsViewController: GroupedTableViewController {
          authenticationViewModel: AuthenticationViewModel,
          pushLndLogViewController: @escaping (UINavigationController) -> Void
     ) {
+//        super.init(sections: [Section<SettingsItem>]())
         self.info = info
 
         var walletRows: [SettingsItem] = [
@@ -34,6 +35,10 @@ final class SettingsViewController: GroupedTableViewController {
             walletRows.append(PushViewControllerSettingsItem(title: L10n.Scene.Settings.Item.lndLog, pushViewController: pushLndLogViewController))
         }
 
+        let paymentsAuthenticationSetting = PaymentsAuthenticationSettingsItem(
+            authenticationViewModel: authenticationViewModel
+        )
+
         var sections: [Section<SettingsItem>] = [
             Section(title: L10n.Scene.Settings.title, rows: [
                 CurrencySelectionSettingsItem(),
@@ -41,7 +46,7 @@ final class SettingsViewController: GroupedTableViewController {
                 OnChainRequestAddressTypeSelectionSettingsItem(),
                 BlockExplorerSelectionSettingsItem(),
                 LightningRequestExpirySelectionSettingsItem(),
-                PaymentsAuthenticationSettingsItem(authenticationViewModel: authenticationViewModel)
+                paymentsAuthenticationSetting
             ])
         ]
         sections.append(contentsOf: [
@@ -56,6 +61,8 @@ final class SettingsViewController: GroupedTableViewController {
             ]), at: 0)
         }
         super.init(sections: sections)
+
+        paymentsAuthenticationSetting.fakeAuthViewController = self
     }
 
     required init?(coder aDecoder: NSCoder) {
