@@ -24,10 +24,14 @@ final class SettingsViewController: GroupedTableViewController {
          authenticationViewModel: AuthenticationViewModel,
          pushLndLogViewController: @escaping (UINavigationController) -> Void
     ) {
-//        super.init(sections: [Section<SettingsItem>]())
         self.info = info
 
+        let paymentsAuthenticationSetting = PaymentsAuthenticationSettingsItem(
+            authenticationViewModel: authenticationViewModel
+        )
+
         var walletRows: [SettingsItem] = [
+            paymentsAuthenticationSetting,
             ChangePinSettingsItem(authenticationViewModel: authenticationViewModel)
         ]
 
@@ -35,18 +39,13 @@ final class SettingsViewController: GroupedTableViewController {
             walletRows.append(PushViewControllerSettingsItem(title: L10n.Scene.Settings.Item.lndLog, pushViewController: pushLndLogViewController))
         }
 
-        let paymentsAuthenticationSetting = PaymentsAuthenticationSettingsItem(
-            authenticationViewModel: authenticationViewModel
-        )
-
         var sections: [Section<SettingsItem>] = [
             Section(title: L10n.Scene.Settings.title, rows: [
                 CurrencySelectionSettingsItem(),
                 BitcoinUnitSelectionSettingsItem(),
                 OnChainRequestAddressTypeSelectionSettingsItem(),
                 BlockExplorerSelectionSettingsItem(),
-                LightningRequestExpirySelectionSettingsItem(),
-                paymentsAuthenticationSetting
+                LightningRequestExpirySelectionSettingsItem()
             ])
         ]
         sections.append(contentsOf: [
