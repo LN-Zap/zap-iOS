@@ -1,9 +1,9 @@
-"generic.memo.placeholder" = "What is this for?";
-"generic.qr_code.copy_button" = "Copy";
-"generic.qr_code.copy_success_message" = "Address has been copied to clipboard.";
-"generic.pasteboard.invalid_address" = "Invalid Address";
-"generic.qr_code.share_button" = "Share";
-"generic.cancel" = "Cancel";
+"generic.memo.placeholder" = "Для чого це?";
+"generic.qr_code.copy_button" = "Скопіювати";
+"generic.qr_code.copy_success_message" = "Адреса скопійована у буфер обміну.";
+"generic.pasteboard.invalid_address" = "Неправильна адреса";
+"generic.qr_code.share_button" = "Поділитись";
+"generic.cancel" = "Скасувати";
 
 "link.help" = "https://docs.zaphq.io/";
 "link.help.zapconnect" = "https://docs.zaphq.io/docs-ios-remote-node-setup";
@@ -12,12 +12,12 @@
 "link.lnd_releases" = "https://github.com/lightningnetwork/lnd/releases";
 
 "error.wrong_uri_format" = "Невідомий формат посилання.";
-"error.wrong_uri_network" = "You tried opening a link for %@ but your node is connected to %@.";
-"error.block_explorer.unsupported_network" = "%@ does not support %@.";
+"error.wrong_uri_network" = "Ви намагались відкрити посилання для %@, але ваш вузел пов'язано з %@.";
+"error.block_explorer.unsupported_network" = "%@ не підтримується%@.";
 
-"lnd_error.wallet_encrypted" = "Wallet is encrypted";
-"lnd_error.lnd_not_running" = "Lnd does not seem to be running properly.";
-"lnd_error.transaction_output_is_dust" = "Transaction output is dust.";
+"lnd_error.wallet_encrypted" = "Гаменець зашифровано";
+"lnd_error.lnd_not_running" = "Здається, що Lnd працює неналежним чином.";
+"lnd_error.transaction_output_is_dust" = "Вихід з цієї транзакції - це пил.";
 "lnd_error.no_outputs" = "No outputs.";
 "lnd_error.rest_network_error" = "Check your internet connection.";
 "lnd_error.unable_to_find_node" = "Unable to find node.";
@@ -40,40 +40,40 @@
 "channel.state.waiting_close" = "Waiting Close";
 
 "network_type.simnet" = "Simnet";
-"network_type.regtest" = "Regtest";
-"network_type.testnet" = "Testnet";
-"network_type.mainnet" = "Mainnet";
+"network_type.regtest" = "Регресивний тест";
+"network_type.testnet" = "Тестова мережа";
+"network_type.mainnet" = "Головна мережа";
 
 "unit.bitcoin.btc" = "Bitcoin";
 "unit.bitcoin.mbtc" = "Milli Bitcoin";
 "unit.bitcoin.bit" = "Bits";
 "unit.bitcoin.satoshi" = "Satoshis";
 
-"toast.invoice" = "Did receive %@";
-"toast.invoice_memo" = "Did receive %@ \"%@\"";
+"toast.invoice" = "Отримав %@";
+"toast.invoice_memo" = "Отримав %@ \"%@\"";
 
 "transaction.no_destination_address" = "No destination address";
 
 "view.amount_input.placeholder" = "Сума";
 
-"expiry_time.one_minute" = "1 Minute";
-"expiry_time.ten_minutes" = "10 Minutes";
-"expiry_time.thirty_minutes" = "30 Minutes";
-"expiry_time.one_hour" = "1 Hour";
-"expiry_time.six_hours" = "6 Hours";
-"expiry_time.one_day" = "1 Day";
-"expiry_time.one_week" = "1 Week";
-"expiry_time.thirty_days" = "30 Days";
-"expiry_time.one_year" = "1 Year";
+"expiry_time.one_minute" = "1 хвилина";
+"expiry_time.ten_minutes" = "10 хвилин";
+"expiry_time.thirty_minutes" = "30 хвилин";
+"expiry_time.one_hour" = "1 година";
+"expiry_time.six_hours" = "6 годин";
+"expiry_time.one_day" = "1 день";
+"expiry_time.one_week" = "1 тиждень";
+"expiry_time.thirty_days" = "30 днів";
+"expiry_time.one_year" = "1 рік";
 
-"scene.history.title" = "Activity";
-"scene.history.empty_state_label" = "0 transactions 🙁";
+"scene.history.title" = "Активність";
+"scene.history.empty_state_label" = "0 операцій 🙁";
 
 "scene.settings.title" = "Налаштування";
-"scene.settings.section.warning" = "Warning";
+"scene.settings.section.warning" = "Застереження";
 "scene.settings.section.lightning" = "Lightning";
 "scene.settings.section.wallet" = "Гаманець";
-"scene.settings.item.version_warning" = "Your lnd is outdated (%@). Zap iOS works best with lnd version %@ or above.";
+"scene.settings.item.version_warning" = "Ваш lnd застарів (%@). Zap iOS працює краще з версією lnd %@ чи вище.";
 "scene.settings.item.bitcoin_unit" = "Біткоїнова одиниця";
 "scene.settings.item.lightning_request_expiry" = "Lightning Request Expiry";
 "scene.settings.item.currency" = "Валюта";
