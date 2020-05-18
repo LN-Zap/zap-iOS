@@ -18,8 +18,8 @@
 "lnd_error.wallet_encrypted" = "Гаменець зашифровано";
 "lnd_error.lnd_not_running" = "Здається, що Lnd працює неналежним чином.";
 "lnd_error.transaction_output_is_dust" = "Вихід з цієї транзакції - це пил.";
-"lnd_error.no_outputs" = "No outputs.";
-"lnd_error.rest_network_error" = "Check your internet connection.";
+"lnd_error.no_outputs" = "Виходів немає.";
+"lnd_error.rest_network_error" = "Перевірте ваше підключення до Інтернету.";
 "lnd_error.unable_to_find_node" = "Unable to find node.";
 "lnd_error.insufficient_funds_available" = "Insufficient funds available to construct transaction.";
 "lnd_error.unknown_error" = "Unknown Error 1";
@@ -37,7 +37,7 @@
 "channel.state.opening" = "Відкриття";
 "channel.state.closing" = "Закриття";
 "channel.state.force_closing" = "Примусове закриття";
-"channel.state.waiting_close" = "Waiting Close";
+"channel.state.waiting_close" = "Чекає на закриття";
 
 "network_type.simnet" = "Simnet";
 "network_type.regtest" = "Регресивний тест";
@@ -52,7 +52,7 @@
 "toast.invoice" = "Отримав %@";
 "toast.invoice_memo" = "Отримав %@ \"%@\"";
 
-"transaction.no_destination_address" = "No destination address";
+"transaction.no_destination_address" = "Немає адреси призначення";
 
 "view.amount_input.placeholder" = "Сума";
 
@@ -82,29 +82,29 @@
 "scene.settings.item.on_chain_request_address.title" = "Тип адреси";
 "scene.settings.item.on_chain_request_address.bech32" = "Bech32";
 "scene.settings.item.on_chain_request_address.p2sh" = "P2SH";
-"scene.settings.item.manage_channels" = "Manage Channels";
+"scene.settings.item.manage_channels" = "Керувати каналами";
 "scene.settings.item.channel_backup" = "Channel Backup";
 "scene.settings.item.remove_remote_node" = "Manage Wallets";
 
-"scene.settings.item.change_pin" = "Change PIN";
+"scene.settings.item.change_pin" = "Змінити пінкод";
 "scene.settings.item.report_issue" = "Повідомте про проблему";
 "scene.settings.item.help" = "Потрібна допомога?";
 "scene.settings.item.privacy_policy" = "Privacy Policy";
-"scene.settings.item.lnd_log" = "Show lnd Log";
+"scene.settings.item.lnd_log" = "Показати журнал lnd";
 
 "scene.request.title" = "Отримати";
 "scene.request.lightning_button" = "Блискавичні";
-"scene.request.or_separator_label" = "or";
+"scene.request.or_separator_label" = "або";
 "scene.request.on_chain_button" = "On-chain";
-"scene.request.generate_request_button" = "Generate Request";
+"scene.request.generate_request_button" = "Створити запит";
 "scene.request.lightning_header_title" = "Lightning Payment Request";
 "scene.request.on_chain_header_title" = "On-Chain Payment Request";
-"scene.request.next_button_title" = "Next";
-"scene.request.subtitle.lightning" = "Can receive: %@";
+"scene.request.next_button_title" = "Далі";
+"scene.request.subtitle.lightning" = "Можна отримати: %@";
 
 "scene.channels.title" = "Канали";
-"scene.channels.header.total_can_send" = "Total can send:";
-"scene.channels.header.total_can_receive" = "Total can receive:";
+"scene.channels.header.total_can_send" = "Загалом можна надіслати:";
+"scene.channels.header.total_can_receive" = "Всього можна отримати:";
 "scene.channels.header.total_pending" = "Total pending:";
 "scene.channels.header.offline" = "Total offline:";
 "scene.channels.close.title" = "Канал закритий";
@@ -112,7 +112,7 @@
 "scene.channels.force_close.title" = "Примусове закриття каналу";
 "scene.channels.force_close.message" = "%@ is offline, are you sure you want to force close this channel? You’d have to wait about %@ for your funds?";
 "scene.channels.alert.close" = "Close Channel";
-"scene.channels.alert.force_close" = "Force Close Channel";
+"scene.channels.alert.force_close" = "Примусове закриття каналу";
 "scene.channels.close_loading_view" = "Closing Channel";
 "scene.channels.close_success.toast" = "Channel is closing.";
 "scene.channels.empty_state.title" = "Open a channel";
@@ -342,4 +342,4 @@
 "notification.sync.title" = "Please sync";
 "notification.sync.day_12.body" = "Please remember syncing your wallet to make sure you stay safe";
 "notification.sync.day_13.body" = "You have one more day to sync your wallet before it's getting dangerous.";
-"notification.sync.day_14.body" = "Please sync your wallet as soon as possible.";
+"notification.sync.day_14.body" = "Буд ласка, якомога швидше синхорнізуйте ваш гаманець.";
