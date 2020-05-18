@@ -129,22 +129,22 @@
 "scene.open_channel.paste_button.title" = "Вставити адресу вузла кешування";
 
 "scene.pin.biometric.fallback.title" = "Використати пінкод";
-"scene.pin.biometric.reason" = "To access the secure data";
+"scene.pin.biometric.reason" = "Доступ до захищених даних";
 
 "scene.setup_pin.done_button" = "Готово";
-"scene.setup_pin.top_label.initial" = "Choose a PIN.";
+"scene.setup_pin.top_label.initial" = "Виберіть пінкод.";
 "scene.setup_pin.top_label.non_matching" = "The PINs didn't match. Please try again.";
-"scene.setup_pin.top_label.validate" = "Enter the PIN again to validate.";
+"scene.setup_pin.top_label.validate" = "Введіть PIN-код ще раз, щоб підтвердити.";
 
-"scene.onboarding.page_1.title" = "Your **keys**, your **coins**";
+"scene.onboarding.page_1.title" = "Ваші **ключі**, ваші **монети**";
 "scene.onboarding.page_1.message" = "With Zap, you are in control of your money. To make sure your coins are always stored safely, Zap will provide a recovery phrase for you.";
-"scene.onboarding.page_1.button_title" = "Continue";
+"scene.onboarding.page_1.button_title" = "Продовжити";
 
 "scene.onboarding.page_2.title" = "Save your **recovery phrase**";
 "scene.onboarding.page_2.message" = "Write down your phrase. You can use your phrase to recover your funds anytime if you misplace your device.";
-"scene.onboarding.page_2.button_title" = "Continue";
+"scene.onboarding.page_2.button_title" = "Продовжити";
 
-"scene.onboarding.page_3.title" = "Keep it **safe**";
+"scene.onboarding.page_3.title" = "**Безпечно** зберігайте";
 "scene.onboarding.page_3.message" = "Make sure to keep your recovery phrase private. Store it somewhere only you will find it.";
 "scene.onboarding.page_3.button_title" = "Generate Recovery Phrase";
 
@@ -202,43 +202,43 @@
 "scene.select_wallet_connection.create.title" = "Створити";
 "scene.select_wallet_connection.recover.title" = "Відновити";
 "scene.select_wallet_connection.connect.title" = "Підключення";
-"scene.select_wallet_connection.message" = "Bitcoin for **everyone**";
+"scene.select_wallet_connection.message" = "Bitcoin для **кожного**";
 
 "scene.main.send_button" = "Надіслати";
 "scene.main.receive_button" = "Отримати";
 "scene.main.exchange_rate_label" = "%@ за BTC";
 
-"scene.qr_code_detail.title" = "Receive";
+"scene.qr_code_detail.title" = "Отримати";
 
 "scene.sync.description_label" = "Синхронізація з блокчейном…";
 
 "scene.transaction_detail.title.lightning_invoice" = "Деталі фактури";
-"scene.transaction_detail.title.payment_detail" = "Payment Detail";
-"scene.transaction_detail.title.transaction_detail" = "Transaction Detail";
-"scene.transaction_detail.title.channel_event_detail" = "Channel Event";
-"scene.transaction_detail.title.failed_payment" = "Failed Payment";
-"scene.transaction_detail.memo_label" = "Memo";
-"scene.transaction_detail.amount_label" = "Amount";
-"scene.transaction_detail.fee_label" = "Fee";
-"scene.transaction_detail.date_label" = "Date";
-"scene.transaction_detail.transaction_id_label" = "Transaction ID";
-"scene.transaction_detail.address_label" = "Address";
-"scene.transaction_detail.expiry_label" = "Expiry";
-"scene.transaction_detail.expiry_label.expired" = "Expired";
-"scene.transaction_detail.invoice_state_label" = "State";
+"scene.transaction_detail.title.payment_detail" = "Деталі платежу";
+"scene.transaction_detail.title.transaction_detail" = "Деталі транзакції";
+"scene.transaction_detail.title.channel_event_detail" = "Подія каналу";
+"scene.transaction_detail.title.failed_payment" = "Невдалий платіж";
+"scene.transaction_detail.memo_label" = "Пам'ятка";
+"scene.transaction_detail.amount_label" = "Сума";
+"scene.transaction_detail.fee_label" = "Комісія";
+"scene.transaction_detail.date_label" = "Дата";
+"scene.transaction_detail.transaction_id_label" = "Ідентифікатор транзакції";
+"scene.transaction_detail.address_label" = "Адреса";
+"scene.transaction_detail.expiry_label" = "Термін дії";
+"scene.transaction_detail.expiry_label.expired" = "Термін дії закінчився";
+"scene.transaction_detail.invoice_state_label" = "Стан";
 "scene.transaction_detail.invoice_state_label.settled" = "settled";
-"scene.transaction_detail.preimage_label" = "Preimage";
-"scene.transaction_detail.preimage_copy_message" = "Preimage copied.";
-"scene.transaction_detail.invoice_copy_message" = "Invoice copied.";
+"scene.transaction_detail.preimage_label" = "Першовзір";
+"scene.transaction_detail.preimage_copy_message" = "Першовзір скопійовано.";
+"scene.transaction_detail.invoice_copy_message" = "Рахунок скопійовано.";
 
-"scene.channel_detail.remote_pub_key_label" = "Remote PubKey";
-"scene.channel_detail.local_balance_label" = "Local Balance";
-"scene.channel_detail.remote_balance_label" = "Remote Balance";
-"scene.channel_detail.closing_time.label" = "Closing in";
-"scene.channel_detail.funding_transaction_label" = "Funding Transaction";
-"scene.channel_detail.closing_transaction_label" = "Closing Transaction";
-"scene.channel_detail.close_button" = "Close Channel";
-"scene.channel_detail.force_close_button" = "Force Close Channel";
+"scene.channel_detail.remote_pub_key_label" = "Віддалений відкритий ключ";
+"scene.channel_detail.local_balance_label" = "Поточний баланс";
+"scene.channel_detail.remote_balance_label" = "Віддалений баланс";
+"scene.channel_detail.closing_time.label" = "Закриття через";
+"scene.channel_detail.funding_transaction_label" = "Фінансова транзакція";
+"scene.channel_detail.closing_transaction_label" = "Закриття транзакції";
+"scene.channel_detail.close_button" = "Закрити канал";
+"scene.channel_detail.force_close_button" = "Примусове закриття каналу";
 
 "scene.filter.title" = "Filter";
 "scene.filter.section_header.transaction_types" = "Transaction Types";
@@ -252,18 +252,18 @@
 "scene.qrcode_scanner.error.unknown_format" = "Unknown address format.";
 "scene.qrcode_scanner.error.wrong_network" = "You tried opening an invoice for %@ but your node is connected to %@.";
 "scene.qrcode_scanner.error.zero_amount_invoice" = "For security reasons, Zap does not support invoices without a specified amount.";
-"scene.qrcode_scanner.camera_access_denied_alert.ok" = "Settings";
-"scene.qrcode_scanner.camera_access_denied_alert.title" = "Camera access denied";
-"scene.qrcode_scanner.camera_access_denied_alert.message" = "Turn on camera access in the settings to scan the QR Code.";
+"scene.qrcode_scanner.camera_access_denied_alert.ok" = "Налаштування";
+"scene.qrcode_scanner.camera_access_denied_alert.title" = "Доступ до камери відхилено";
+"scene.qrcode_scanner.camera_access_denied_alert.message" = "Увімкніть доступ до камери в налаштуваннях, щоб сканувати QR-код.";
 
-"scene.wallet.title" = "Wallet";
-"scene.wallet.total_balance" = "Total Balance";
+"scene.wallet.title" = "Гаманець";
+"scene.wallet.total_balance" = "Загальний баланс";
 "scene.wallet.detail.on_chain" = "On-chain:";
 "scene.wallet.detail.lightning" = "Lightning:";
-"scene.wallet.detail.pending" = "Pending:";
-"scene.wallet.empty_state.title" = "Fund your wallet";
-"scene.wallet.empty_state.message" = "Your wallet is empty! Get started by depositing some funds.";
-"scene.wallet.empty_state.button_title" = "Deposit funds";
+"scene.wallet.detail.pending" = "Очікування:";
+"scene.wallet.empty_state.title" = "Поповнити ваш гаманець";
+"scene.wallet.empty_state.message" = "Ваш гаманець порожній! Почніть з внесення коштів.";
+"scene.wallet.empty_state.button_title" = "Депозитні кошти";
 "scene.wallet.open_channel.message" = "You can’t transact on the the Lightning Network yet. Open a channel to start.";
 "scene.wallet.open_channel.action" = "Open a channel";
 
