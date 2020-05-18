@@ -153,19 +153,19 @@
 
 "scene.send.title" = "Надіслати";
 "scene.send.send_button" = "Надіслати";
-"scene.send.address_headline" = "To:";
-"scene.send.memo_headline" = "Memo:";
-"scene.send.sending" = "Sending...";
-"scene.send.send_amount_too_small" = "Send amount is too small.";
-"scene.send.lightning.title" = "Send Lightning Payment";
-"scene.send.on_chain.title" = "Send On-Chain";
-"scene.send.on_chain.fee" = "Fee:";
-"scene.send.on_chain.fee.fast" = "Fast";
-"scene.send.on_chain.fee.medium" = "Medium";
-"scene.send.on_chain.fee.slow" = "Slow";
-"scene.send.on_chain.fee.description.fast" = "Fast Transaction";
-"scene.send.on_chain.fee.description.medium" = "Medium Transaction";
-"scene.send.on_chain.fee.description.slow" = "Slow Transaction";
+"scene.send.address_headline" = "Отримувач:";
+"scene.send.memo_headline" = "Нотатка:";
+"scene.send.sending" = "Надсилання...";
+"scene.send.send_amount_too_small" = "Сума відправки занадто мала.";
+"scene.send.lightning.title" = "Надіслати Lightning платіж";
+"scene.send.on_chain.title" = "Надіслати On-Chain";
+"scene.send.on_chain.fee" = "Комісія:";
+"scene.send.on_chain.fee.fast" = "Швидко";
+"scene.send.on_chain.fee.medium" = "Помірно";
+"scene.send.on_chain.fee.slow" = "Повільно";
+"scene.send.on_chain.fee.description.fast" = "Швидка транзакція";
+"scene.send.on_chain.fee.description.medium" = "Помірна транзакція";
+"scene.send.on_chain.fee.description.slow" = "Повільна транзакція";
 
 "scene.send.on_chain.fee.estimated_delivery" = "Estimated Delivery: %@";
 "scene.send.authentication_failed" = "Authentication failed";
@@ -182,7 +182,7 @@
 "scene.connect_remote_node.connect_button" = "Підключення";
 "scene.connect_remote_node.scan_button" = "Просканувати";
 "scene.connect_remote_node.paste_button" = "Вставити";
-"scene.connect_remote_node.help_button" = "Need Help?";
+"scene.connect_remote_node.help_button" = "Потрібна допомога?";
 "scene.connect_remote_node.server_error" = "Could not connect to server.";
 "scene.connect_remote_node.your_node_title" = "Ваш вузол";
 "scene.connect_remote_node.certificate_detail.certificate_title" = "Сертифікат";
@@ -240,15 +240,15 @@
 "scene.channel_detail.close_button" = "Закрити канал";
 "scene.channel_detail.force_close_button" = "Примусове закриття каналу";
 
-"scene.filter.title" = "Filter";
+"scene.filter.title" = "Фільтр";
 "scene.filter.section_header.transaction_types" = "Transaction Types";
-"scene.filter.displayOnChainTransactions" = "On-chain Payments";
+"scene.filter.displayOnChainTransactions" = "On-Chain платежі";
 "scene.filter.display_expired_invoices" = "Expired Invoices";
 "scene.filter.displayLightningPayments" = "Блискавичні платежі";
 "scene.filter.displayLightningInvoices" = "Created Invoices";
 "scene.filter.displayChannelEvents" = "Channel Events";
 
-"scene.qrcode_scanner.top_label" = "Scan QR Code";
+"scene.qrcode_scanner.top_label" = "Сканувати QR код";
 "scene.qrcode_scanner.error.unknown_format" = "Unknown address format.";
 "scene.qrcode_scanner.error.wrong_network" = "You tried opening an invoice for %@ but your node is connected to %@.";
 "scene.qrcode_scanner.error.zero_amount_invoice" = "For security reasons, Zap does not support invoices without a specified amount.";
@@ -283,30 +283,30 @@
 "scene.history.cell.breach_close_channel" = "Breach closed Channel";
 "scene.history.cell.close_channel_funding_canceled" = "Closed Channel (funding canceled)";
 "scene.history.cell.channel_abandoned" = "Channel abandoned";
-"scene.history.cell.transaction_sent" = "Payment sent";
+"scene.history.cell.transaction_sent" = "Плату надіслано";
 "scene.history.cell.transaction_received" = "Payment received";
-"scene.history.cell.label.new" = "new";
-"scene.history.cell.label.error" = "error";
+"scene.history.cell.label.new" = "створити";
+"scene.history.cell.label.error" = "помилка";
 
-"scene.node_uri.title" = "Connect to Node";
-"scene.node_uri.alias_label" = "Alias";
+"scene.node_uri.title" = "Підключитися до вузла";
+"scene.node_uri.alias_label" = "Псевдонім";
 "scene.node_uri.uri_label" = "URI";
 
-"scene.connect_node_uri.action_sheet.title" = "Connect";
-"scene.connect_node_uri.action_sheet.connect_button" = "Connect";
-"scene.connect_node_uri.action_sheet.message" = "Do you really want to connect to node at %@?";
+"scene.connect_node_uri.action_sheet.title" = "Підключитись";
+"scene.connect_node_uri.action_sheet.connect_button" = "Підключитись";
+"scene.connect_node_uri.action_sheet.message" = "Ви дійсно хочете підключитись до вузла на %@?";
 
-"scene.wallet_list.title" = "Wallets";
+"scene.wallet_list.title" = "Гаманці";
 
-"scene.unlock.title" = "Unlock Node";
-"scene.unlock.unlock_button" = "Unlock";
-"scene.unlock.password_placeholder" = "Password";
-"scene.unlock.title_label" = "Unlock %@";
+"scene.unlock.title" = "Розблокувати вузел";
+"scene.unlock.unlock_button" = "Розблокувати";
+"scene.unlock.password_placeholder" = "Пароль";
+"scene.unlock.title_label" = "Розблокувати %@";
 
-"scene.manage_wallets.title" = "Manage Wallets";
-"scene.manage_wallets.cell.remote" = "remote";
-"scene.manage_wallets.cell.local" = "local";
-"scene.manage_wallets.section_title.local" = "Local Wallet";
+"scene.manage_wallets.title" = "Керувати гаманцями";
+"scene.manage_wallets.cell.remote" = "віддалений";
+"scene.manage_wallets.cell.local" = "локальний";
+"scene.manage_wallets.section_title.local" = "Локальний гаманець";
 "scene.manage_wallets.section_title.remote" = "Remote Wallets";
 
 "scene.channel_backup.title" = "Channel Backup";
@@ -320,10 +320,10 @@
 "scene.push_notification.headline" = "Stay **up to date**";
 "scene.push_notification.message" = "To keep your funds safe, Zap needs to sync once in a while. Do you want to be notified when your wallet needs to sync?";
 "scene.push_notification.confirm_button_title" = "Turn on notifications";
-"scene.push_notification.skip_button_title" = "Skip";
+"scene.push_notification.skip_button_title" = "Пропустити";
 
-"scene.my_node.title" = "My Node";
-"scene.my_node.channels.title" = "Channels";
+"scene.my_node.title" = "Мій вузел";
+"scene.my_node.channels.title" = "Канали";
 "scene.my_node.channels.subtitle" = "Manage your capacity";
 "scene.my_node.channel_backup.title" = "Channel Backup";
 "scene.my_node.channel_backup.subtitle" = "Set up emergency options";
@@ -339,7 +339,7 @@
 "scene.lnurl.withdraw.description" = "Description";
 "scene.lnurl.withdraw.button_title" = "Вивести";
 
-"notification.sync.title" = "Please sync";
+"notification.sync.title" = "Будь ласка, синхронізуйте";
 "notification.sync.day_12.body" = "Please remember syncing your wallet to make sure you stay safe";
 "notification.sync.day_13.body" = "You have one more day to sync your wallet before it's getting dangerous.";
 "notification.sync.day_14.body" = "Буд ласка, якомога швидше синхорнізуйте ваш гаманець.";
