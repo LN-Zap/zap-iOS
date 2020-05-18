@@ -20,17 +20,17 @@
 "lnd_error.transaction_output_is_dust" = "Вихід з цієї транзакції - це пил.";
 "lnd_error.no_outputs" = "Виходів немає.";
 "lnd_error.rest_network_error" = "Перевірте ваше підключення до Інтернету.";
-"lnd_error.unable_to_find_node" = "Unable to find node.";
-"lnd_error.insufficient_funds_available" = "Insufficient funds available to construct transaction.";
-"lnd_error.unknown_error" = "Unknown Error 1";
-"lnd_error.api_transformation_error" = "Unknown Error 2";
-"lnd_error.invoice_already_paid" = "Invoice is already paid.";
-"lnd_error.no_path_to_destination" = "Unable to find a path to destination.";
+"lnd_error.unable_to_find_node" = "Неможливо знайти вузол.";
+"lnd_error.insufficient_funds_available" = "Недостатньо коштів для проведення транзакції.";
+"lnd_error.unknown_error" = "Невідома помилка 1";
+"lnd_error.api_transformation_error" = "Невідома помилка 2";
+"lnd_error.invoice_already_paid" = "Рахунок вже сплачено";
+"lnd_error.no_path_to_destination" = "Не вдалося знайти шлях до місця призначення.";
 
 "rpc_connect_qrcode_error.btc_pay_expired" = "Схоже, термін дії QR-коду закінчився.";
 "rpc_connect_qrcode_error.btc_pay_configuration_broken" = "Не вдалося прочитати файл конфігурації BTCPay.";
-"rpc_connect_qrcode_error.cant_read_qrcode" = "Invalid code format.";
-"rpc_connect_qrcode_error.code_updated" = "Connection updated.";
+"rpc_connect_qrcode_error.cant_read_qrcode" = "Неправильний формат коду.";
+"rpc_connect_qrcode_error.code_updated" = "З’єднання оновлено.";
 
 "channel.state.active" = "В мережі";
 "channel.state.inactive" = "Не в мережі";
@@ -75,21 +75,21 @@
 "scene.settings.section.wallet" = "Гаманець";
 "scene.settings.item.version_warning" = "Ваш lnd застарів (%@). Zap iOS працює краще з версією lnd %@ чи вище.";
 "scene.settings.item.bitcoin_unit" = "Біткоїнова одиниця";
-"scene.settings.item.lightning_request_expiry" = "Lightning Request Expiry";
+"scene.settings.item.lightning_request_expiry" = "Термін дії Lightning запиту";
 "scene.settings.item.currency" = "Валюта";
-"scene.settings.item.currency.popular" = "Popular Currencies";
+"scene.settings.item.currency.popular" = "Популярні валюти";
 "scene.settings.item.block_explorer" = "Заблокувати браузер";
 "scene.settings.item.on_chain_request_address.title" = "Тип адреси";
 "scene.settings.item.on_chain_request_address.bech32" = "Bech32";
 "scene.settings.item.on_chain_request_address.p2sh" = "P2SH";
 "scene.settings.item.manage_channels" = "Керувати каналами";
-"scene.settings.item.channel_backup" = "Channel Backup";
-"scene.settings.item.remove_remote_node" = "Manage Wallets";
+"scene.settings.item.channel_backup" = "Резервне копіювання каналу";
+"scene.settings.item.remove_remote_node" = "Керувати гаманцями";
 
 "scene.settings.item.change_pin" = "Змінити пінкод";
 "scene.settings.item.report_issue" = "Повідомте про проблему";
 "scene.settings.item.help" = "Потрібна допомога?";
-"scene.settings.item.privacy_policy" = "Privacy Policy";
+"scene.settings.item.privacy_policy" = "Політика конфіденційності";
 "scene.settings.item.lnd_log" = "Показати журнал lnd";
 
 "scene.request.title" = "Отримати";
@@ -97,38 +97,38 @@
 "scene.request.or_separator_label" = "або";
 "scene.request.on_chain_button" = "On-chain";
 "scene.request.generate_request_button" = "Створити запит";
-"scene.request.lightning_header_title" = "Lightning Payment Request";
-"scene.request.on_chain_header_title" = "On-Chain Payment Request";
+"scene.request.lightning_header_title" = "Lightning запит на платіж";
+"scene.request.on_chain_header_title" = "On-Chain хапит на платіж";
 "scene.request.next_button_title" = "Далі";
 "scene.request.subtitle.lightning" = "Можна отримати: %@";
 
 "scene.channels.title" = "Канали";
 "scene.channels.header.total_can_send" = "Загалом можна надіслати:";
 "scene.channels.header.total_can_receive" = "Всього можна отримати:";
-"scene.channels.header.total_pending" = "Total pending:";
-"scene.channels.header.offline" = "Total offline:";
+"scene.channels.header.total_pending" = "Усього в очікуванні:";
+"scene.channels.header.offline" = "Всього в режимі офлайн:";
 "scene.channels.close.title" = "Канал закритий";
-"scene.channels.close.message" = "Do you really want to close the channel with node %@?";
+"scene.channels.close.message" = "Ви дійсно хочете закрити канал, використовуючи вузел %@?";
 "scene.channels.force_close.title" = "Примусове закриття каналу";
-"scene.channels.force_close.message" = "%@ is offline, are you sure you want to force close this channel? You’d have to wait about %@ for your funds?";
-"scene.channels.alert.close" = "Close Channel";
+"scene.channels.force_close.message" = "%@ офлайн, ви впевнені, що хочете примусово закрити цей канал? Вам потрібно зачекати %@ на свої кошти?";
+"scene.channels.alert.close" = "Закрити канал";
 "scene.channels.alert.force_close" = "Примусове закриття каналу";
-"scene.channels.close_loading_view" = "Closing Channel";
-"scene.channels.close_success.toast" = "Channel is closing.";
-"scene.channels.empty_state.title" = "Open a channel";
-"scene.channels.empty_state.message" = "You can't transact on the Lightning Network yet! Let's open a channel to start transacting on the Lightning Network.";
-"scene.channels.empty_state.button_title" = "Open a channel";
+"scene.channels.close_loading_view" = "Закриття каналу";
+"scene.channels.close_success.toast" = "Закриття каналу.";
+"scene.channels.empty_state.title" = "Відкриття канал";
+"scene.channels.empty_state.message" = "Ви  ще не можете провеститранзакцію на  Lightning Network! Давайте відкриємо канал, щоб розпочати транзакцію на Lightning Network.";
+"scene.channels.empty_state.button_title" = "Відкрити канал";
 
 "scene.open_channel.title" = "Відкрити канал";
-"scene.open_channel.channel_uri_label" = "Node:";
-"scene.open_channel.add_button" = "Open Channel";
-"scene.open_channel.subtitle.minimum_size" = "Minimum channel size: %@";
-"scene.open_channel.subtitle.maximum_size" = "Maximum channel size: %@";
-"scene.open_channel.subtitle.balance" = "On-chain balance: %@";
-"scene.open_channel.suggested_peers.title" = "Suggested Peers";
-"scene.open_channel.paste_button.title" = "Paste Peer Address";
+"scene.open_channel.channel_uri_label" = "Вузел:";
+"scene.open_channel.add_button" = "Відкрити канал";
+"scene.open_channel.subtitle.minimum_size" = "Мінімальний розмір каналу: %@";
+"scene.open_channel.subtitle.maximum_size" = "Максимальний розмір каналу: %@";
+"scene.open_channel.subtitle.balance" = "On-chain баланс: %@";
+"scene.open_channel.suggested_peers.title" = "Рекомендовані вузли кешування";
+"scene.open_channel.paste_button.title" = "Вставити адресу вузла кешування";
 
-"scene.pin.biometric.fallback.title" = "Use PIN";
+"scene.pin.biometric.fallback.title" = "Використати пінкод";
 "scene.pin.biometric.reason" = "To access the secure data";
 
 "scene.setup_pin.done_button" = "Готово";
