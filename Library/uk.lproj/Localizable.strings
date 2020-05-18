@@ -327,17 +327,17 @@
 "scene.my_node.channels.subtitle" = "Manage your capacity";
 "scene.my_node.channel_backup.title" = "Channel Backup";
 "scene.my_node.channel_backup.subtitle" = "Set up emergency options";
-"scene.my_node.settings.title" = "Settings";
-"scene.my_node.settings.subtitle" = "Edit your preferences";
-"scene.my_node.support.title" = "Support";
+"scene.my_node.settings.title" = "Налаштування";
+"scene.my_node.settings.subtitle" = "Редагувати ваші вподобання";
+"scene.my_node.support.title" = "Підтримка";
 "scene.my_node.support.subtitle" = "Get support and send feedback";
 
-"scene.lnurl_qrcode_scanner.withdraw.title" = "Withdraw";
+"scene.lnurl_qrcode_scanner.withdraw.title" = "Вивести";
 "scene.lnurl_qrcode_scanner.withdraw.button_title" = "Paste LNURL";
 
 "scene.lnurl.withdraw.title" = "Withdraw";
 "scene.lnurl.withdraw.description" = "Description";
-"scene.lnurl.withdraw.button_title" = "Withdraw";
+"scene.lnurl.withdraw.button_title" = "Вивести";
 
 "notification.sync.title" = "Please sync";
 "notification.sync.day_12.body" = "Please remember syncing your wallet to make sure you stay safe";
