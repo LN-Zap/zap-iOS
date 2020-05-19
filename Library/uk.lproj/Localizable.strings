@@ -314,11 +314,11 @@
 "scene.channel_backup.not_found" = "файл не знайдено";
 "scene.channel_backup.error.iCloudDisabled" = "iCloud, здається, вимкнено.";
 "scene.channel_backup.error.iCloudBackupFailed" = "Не вдалося створити резервну копію iCloud.";
-"scene.channel_backup.error.localBackupFailed" = "Local file backup failed.";
-"scene.channel_backup.error.lndError" = "Could not get channel backup from lnd.";
+"scene.channel_backup.error.localBackupFailed" = "Не вдалося створити резервну копію локального файлу.";
+"scene.channel_backup.error.lndError" = "Не вдалось отримати резервну копію каналу від lnd.";
 
-"scene.push_notification.headline" = "Stay **up to date**";
-"scene.push_notification.message" = "To keep your funds safe, Zap needs to sync once in a while. Do you want to be notified when your wallet needs to sync?";
+"scene.push_notification.headline" = "Будьте **вкурсі**";
+"scene.push_notification.message" = "Щоб зберегти ваші кошти, Zap потрібно синхронізувати раз у раз. Ви хочете отримувати сповіщення, коли ваш гаманець повинен синхронізуватися?";
 "scene.push_notification.confirm_button_title" = "Увімкнути сповіщення";
 "scene.push_notification.skip_button_title" = "Пропустити";
 
@@ -326,11 +326,11 @@
 "scene.my_node.channels.title" = "Канали";
 "scene.my_node.channels.subtitle" = "Керуйте своїми можливостями";
 "scene.my_node.channel_backup.title" = "Резервне копіювання каналу";
-"scene.my_node.channel_backup.subtitle" = "Set up emergency options";
+"scene.my_node.channel_backup.subtitle" = "Налаштуйте параметри надзвичайних ситуацій";
 "scene.my_node.settings.title" = "Налаштування";
 "scene.my_node.settings.subtitle" = "Редагувати ваші вподобання";
 "scene.my_node.support.title" = "Підтримка";
-"scene.my_node.support.subtitle" = "Get support and send feedback";
+"scene.my_node.support.subtitle" = "Отримайте підтримку та надішліть відгуки";
 
 "scene.lnurl_qrcode_scanner.withdraw.title" = "Вивести";
 "scene.lnurl_qrcode_scanner.withdraw.button_title" = "Вставити LNURL";
@@ -340,6 +340,6 @@
 "scene.lnurl.withdraw.button_title" = "Вивести";
 
 "notification.sync.title" = "Будь ласка, синхронізуйте";
-"notification.sync.day_12.body" = "Please remember syncing your wallet to make sure you stay safe";
-"notification.sync.day_13.body" = "You have one more day to sync your wallet before it's getting dangerous.";
+"notification.sync.day_12.body" = "Не забудьте синхронізувати свій гаманець, щоб гарантувати ви у безпеці";
+"notification.sync.day_13.body" = "У вас є ще один день для синхронізації гаманця, перш ніж це стане небезпечним.";
 "notification.sync.day_14.body" = "Буд ласка, якомога швидше синхорнізуйте ваш гаманець.";
