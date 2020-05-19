@@ -133,22 +133,22 @@
 
 "scene.setup_pin.done_button" = "Готово";
 "scene.setup_pin.top_label.initial" = "Виберіть пінкод.";
-"scene.setup_pin.top_label.non_matching" = "The PINs didn't match. Please try again.";
+"scene.setup_pin.top_label.non_matching" = "PIN-коди не збігалися. Будь ласка спробуйте ще раз.";
 "scene.setup_pin.top_label.validate" = "Введіть PIN-код ще раз, щоб підтвердити.";
 
 "scene.onboarding.page_1.title" = "Ваші **ключі**, ваші **монети**";
-"scene.onboarding.page_1.message" = "With Zap, you are in control of your money. To make sure your coins are always stored safely, Zap will provide a recovery phrase for you.";
+"scene.onboarding.page_1.message" = "З Zap ви контролюєте свої гроші. Щоб переконатися, що ваші монети завжди зберігаються в безпеці, Zap надасть вам фразу відновлення.";
 "scene.onboarding.page_1.button_title" = "Продовжити";
 
-"scene.onboarding.page_2.title" = "Save your **recovery phrase**";
-"scene.onboarding.page_2.message" = "Write down your phrase. You can use your phrase to recover your funds anytime if you misplace your device.";
+"scene.onboarding.page_2.title" = "Збережіть ** фразу відновлення **";
+"scene.onboarding.page_2.message" = "Запишіть свою фразу. Ви можете використовувати фразу, щоб повернути кошти в будь-який час, якщо ви перестанете користуватися пристроєм.";
 "scene.onboarding.page_2.button_title" = "Продовжити";
 
 "scene.onboarding.page_3.title" = "**Безпечно** зберігайте";
-"scene.onboarding.page_3.message" = "Make sure to keep your recovery phrase private. Store it somewhere only you will find it.";
-"scene.onboarding.page_3.button_title" = "Generate Recovery Phrase";
+"scene.onboarding.page_3.message" = "Перконайтесь, що ви безпечно зберігаєте вашу фразу-відновлення Зберігайте її десь тільки ви знайдете.";
+"scene.onboarding.page_3.button_title" = "Згенерувати фразу-відновлення";
 
-"scene.confirm_mnemonic.title" = "Confirm Recovery Phrase";
+"scene.confirm_mnemonic.title" = "Підтвердьте фразу відновлення";
 "scene.confirm_mnemonic.headline" = "Select word number %d";
 
 "scene.send.title" = "Надіслати";
