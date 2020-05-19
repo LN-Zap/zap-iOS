@@ -250,8 +250,8 @@
 
 "scene.qrcode_scanner.top_label" = "Сканувати QR код";
 "scene.qrcode_scanner.error.unknown_format" = "Невідомий формат адреси.";
-"scene.qrcode_scanner.error.wrong_network" = "You tried opening an invoice for %@ but your node is connected to %@.";
-"scene.qrcode_scanner.error.zero_amount_invoice" = "For security reasons, Zap does not support invoices without a specified amount.";
+"scene.qrcode_scanner.error.wrong_network" = "Ви намагались відкрити рахунок для %@, але ваш вузел пов'язано з %@.";
+"scene.qrcode_scanner.error.zero_amount_invoice" = "З міркувань безпеки Zap не підтримує рахунки-фактури без визначеної суми.";
 "scene.qrcode_scanner.camera_access_denied_alert.ok" = "Налаштування";
 "scene.qrcode_scanner.camera_access_denied_alert.title" = "Доступ до камери відхилено";
 "scene.qrcode_scanner.camera_access_denied_alert.message" = "Увімкніть доступ до камери в налаштуваннях, щоб сканувати QR-код.";
@@ -264,11 +264,11 @@
 "scene.wallet.empty_state.title" = "Поповнити ваш гаманець";
 "scene.wallet.empty_state.message" = "Ваш гаманець порожній! Почніть з внесення коштів.";
 "scene.wallet.empty_state.button_title" = "Депозитні кошти";
-"scene.wallet.open_channel.message" = "You can’t transact on the the Lightning Network yet. Open a channel to start.";
+"scene.wallet.open_channel.message" = "Ви ще не можете здійснювати трансакцію в мережі Lightning. Відкрийте канал для початку.";
 "scene.wallet.open_channel.action" = "Відкрити канал";
 
 "scene.time_lock.headline" = "Невірний пінкод";
-"scene.time_lock.description" = "Your wallet is locked for:";
+"scene.time_lock.description" = "Ваш гаманець заблокований для:";
 
 "scene.modal_pin.headline" = "Введіть пінкод";
 "scene.modal_pin.description" = "Please enter your PIN to continue";
@@ -278,13 +278,13 @@
 "scene.history.cell.invoice_created" = "Створено запит ро оплату";
 "scene.history.cell.channel_opened" = "Канал відкритий";
 "scene.history.cell.channel_closed" = "Канал відкритий";
-"scene.history.cell.force_close_channel" = "Force closed Channel";
-"scene.history.cell.remote_force_close_channel" = "Remote forced close Channel";
-"scene.history.cell.breach_close_channel" = "Breach closed Channel";
-"scene.history.cell.close_channel_funding_canceled" = "Closed Channel (funding canceled)";
-"scene.history.cell.channel_abandoned" = "Channel abandoned";
+"scene.history.cell.force_close_channel" = "Канал примусово закрито";
+"scene.history.cell.remote_force_close_channel" = "Віддалене примусове закриття каналу";
+"scene.history.cell.breach_close_channel" = "Порушення закритого каналу";
+"scene.history.cell.close_channel_funding_canceled" = "Закритий канал (фінансування скасовано)";
+"scene.history.cell.channel_abandoned" = "Канал покинутий";
 "scene.history.cell.transaction_sent" = "Плату надіслано";
-"scene.history.cell.transaction_received" = "Payment received";
+"scene.history.cell.transaction_received" = "Платіж отримано";
 "scene.history.cell.label.new" = "створити";
 "scene.history.cell.label.error" = "помилка";
 
@@ -307,13 +307,13 @@
 "scene.manage_wallets.cell.remote" = "віддалений";
 "scene.manage_wallets.cell.local" = "локальний";
 "scene.manage_wallets.section_title.local" = "Локальний гаманець";
-"scene.manage_wallets.section_title.remote" = "Remote Wallets";
+"scene.manage_wallets.section_title.remote" = "Віддалені гаманці";
 
-"scene.channel_backup.title" = "Channel Backup";
+"scene.channel_backup.title" = "Резервне копіювання каналу";
 "scene.channel_backup.cell_title" = "%@ channel.backup";
-"scene.channel_backup.not_found" = "file not found";
-"scene.channel_backup.error.iCloudDisabled" = "iCloud seems to be disabled.";
-"scene.channel_backup.error.iCloudBackupFailed" = "iCloud backup failed.";
+"scene.channel_backup.not_found" = "файл не знайдено";
+"scene.channel_backup.error.iCloudDisabled" = "iCloud, здається, вимкнено.";
+"scene.channel_backup.error.iCloudBackupFailed" = "Не вдалося створити резервну копію iCloud.";
 "scene.channel_backup.error.localBackupFailed" = "Local file backup failed.";
 "scene.channel_backup.error.lndError" = "Could not get channel backup from lnd.";
 
