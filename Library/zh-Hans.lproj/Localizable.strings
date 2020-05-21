@@ -15,15 +15,15 @@
 "error.wrong_uri_network" = "尝试链接到 %@, 但目前您的节点已连接到 %@。";
 "error.block_explorer.unsupported_network" = "%@ 不支持 %@。";
 
-"lnd_error.wallet_encrypted" = "Wallet is encrypted";
+"lnd_error.wallet_encrypted" = "钱包已加密";
 "lnd_error.lnd_not_running" = "Lnd does not seem to be running properly.";
 "lnd_error.transaction_output_is_dust" = "Transaction output is dust.";
 "lnd_error.no_outputs" = "No outputs.";
 "lnd_error.rest_network_error" = "Check your internet connection.";
 "lnd_error.unable_to_find_node" = "Unable to find node.";
 "lnd_error.insufficient_funds_available" = "Insufficient funds available to construct transaction.";
-"lnd_error.unknown_error" = "Unknown Error 1";
-"lnd_error.api_transformation_error" = "Unknown Error 2";
+"lnd_error.unknown_error" = "未知错误 1";
+"lnd_error.api_transformation_error" = "未知错误 2";
 "lnd_error.invoice_already_paid" = "Invoice is already paid.";
 "lnd_error.no_path_to_destination" = "Unable to find a path to destination.";
 
@@ -62,9 +62,9 @@
 "expiry_time.one_hour" = "1 Hour";
 "expiry_time.six_hours" = "6 Hours";
 "expiry_time.one_day" = "1 Day";
-"expiry_time.one_week" = "1 Week";
-"expiry_time.thirty_days" = "30 Days";
-"expiry_time.one_year" = "1 Year";
+"expiry_time.one_week" = "1 周";
+"expiry_time.thirty_days" = "30 天";
+"expiry_time.one_year" = "1 年";
 
 "scene.history.title" = "Activity";
 "scene.history.empty_state_label" = "0个交易🙁";
@@ -86,7 +86,7 @@
 "scene.settings.item.channel_backup" = "备份通道";
 "scene.settings.item.remove_remote_node" = "管理钱包";
 
-"scene.settings.item.change_pin" = "Change PIN";
+"scene.settings.item.change_pin" = "更改 PIN";
 "scene.settings.item.report_issue" = "报告问题";
 "scene.settings.item.help" = "需要帮助吗？";
 "scene.settings.item.privacy_policy" = "隐私政策";
