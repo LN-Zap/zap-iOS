@@ -104,6 +104,7 @@ public final class LightningService: NSObject {
     }
 
     public func startLocalWallet(network: Network, password: String, completion: @escaping ApiCompletion<Success>) {
+        #if !REMOTEONLY
         guard
             connection == .local,
             !WalletService.isLocalWalletUnlocked
@@ -111,6 +112,7 @@ public final class LightningService: NSObject {
 
         LocalLnd.start(network: network)
         WalletService(connection: connection).unlockWallet(password: password, completion: completion)
+        #endif
     }
 
     public func start() {
