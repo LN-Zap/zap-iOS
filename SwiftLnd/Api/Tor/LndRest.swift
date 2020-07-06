@@ -56,7 +56,9 @@ final class LNDRest: NSObject, URLSessionDelegate {
                 completion(.failure(.restNetworkError))
             } else {
                 if let data = data, !data.isEmpty {
-                    if let result = try? T(jsonUTF8Data: data) {
+                    var decodingOptions = JSONDecodingOptions()
+                    decodingOptions.ignoreUnknownFields = true
+                    if let result = try? T(jsonUTF8Data: data, options: decodingOptions) {
                         completion(.success(result))
                     } else if let error = try? JSONDecoder().decode(RestError.self, from: data) {
                         completion(.failure(LndApiError(statusMessage: error.error)))
