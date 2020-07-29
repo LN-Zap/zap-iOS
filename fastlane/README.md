@@ -12,7 +12,7 @@ Install _fastlane_ using
 ```
 [sudo] gem install fastlane -NV
 ```
-or alternatively using `brew cask install fastlane`
+or alternatively using `brew install fastlane`
 
 # Available Actions
 ### switch_mainnet
@@ -43,6 +43,11 @@ fastlane upload_screenshots
 ### upload_metadata
 ```
 fastlane upload_metadata
+```
+
+### update_match
+```
+fastlane update_match
 ```
 
 ### clean

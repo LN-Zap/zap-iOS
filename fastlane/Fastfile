@@ -107,6 +107,26 @@ lane :upload_metadata do
   )
 end
 
+lane :update_match do
+  sync_code_signing(
+    readonly: is_ci,
+    app_identifier: app_identifier,
+    type: "appstore"
+  )
+
+  mainnet_ids = [
+    "com.jackmallers.zap.mainnet",
+    "com.jackmallers.zap.mainnet.Sticker",
+    "com.jackmallers.zap.mainnet.Widget",
+  ]
+
+  sync_code_signing(
+    readonly: is_ci,
+    app_identifier: mainnet_ids,
+    type: "appstore"
+  )
+end
+
 lane :clean do
   reset_git_repo(force: true, disregard_gitignore: false)
 end
