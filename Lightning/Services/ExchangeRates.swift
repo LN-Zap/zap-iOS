@@ -20,38 +20,17 @@ public final class ExchangeRateLoader {
 
     public func load(completion: @escaping (Result<[FiatCurrency], ExchangeRateLoaderError>) -> Void) {
         DispatchQueue.global(qos: .background).async {
-            let apiCallGroup = DispatchGroup()
-            var blockchaininfo: [FiatCurrency] = []
-            var bitcoinaverage: [FiatCurrency] = []
-
-            apiCallGroup.enter()
             self.fetchCurrencyData(
-                    url: "https://apiv2.bitcoinaverage.com/indices/global/ticker/short?crypto=BTC",
-                    parse: ExchangeRateLoader.parseBitcoinAverageData,
-                    completion: {
-                        if let bitcoinaverageResponse = try? $0.get() {
-                            bitcoinaverage = bitcoinaverageResponse
-                        }
-                        apiCallGroup.leave()
-                    })
-
-            apiCallGroup.enter()
-            self.fetchCurrencyData(
-                    url: "https://blockchain.info/ticker",
-                    parse: ExchangeRateLoader.parseBlockchainInfoData,
-                    completion: {
-                        if let blockchaininfoResponse = try? $0.get() {
-                            blockchaininfo = blockchaininfoResponse
-                        }
-                        apiCallGroup.leave()
-                    })
-
-            apiCallGroup.notify(queue: DispatchQueue.main, work: DispatchWorkItem {
-                var result: [String: FiatCurrency] = [:]
-                blockchaininfo.forEach { result[$0.currencyCode] = $0 }
-                bitcoinaverage.forEach { result[$0.currencyCode] = $0 }
-                completion(.success(Array(result.values)))
-            })
+                url: "https://blockchain.info/ticker",
+                parse: ExchangeRateLoader.parseBlockchainInfoData,
+                completion: {
+                    if let blockchaininfoResponse = try? $0.get() {
+                        var result: [String: FiatCurrency] = [:]
+                        blockchaininfoResponse.forEach { result[$0.currencyCode] = $0 }
+                        completion(.success(Array(result.values)))
+                    }
+                }
+            )
         }}
 
     func fetchCurrencyData(url: String, parse: @escaping (String, Any) -> FiatCurrency?, completion: @escaping (Result<[FiatCurrency], ExchangeRateLoaderError>) -> Void) {
@@ -70,19 +49,6 @@ public final class ExchangeRateLoader {
             }
         }
         task.resume()
-    }
-
-    private static func parseBitcoinAverageData(for ticker: String, data: Any) -> FiatCurrency? {
-        let index = ticker.index(ticker.startIndex, offsetBy: 3)
-        let currencyCode = String(ticker[index...])
-        guard
-                let localized = Locale.autoupdatingCurrent.localizedString(forCurrencyCode: currencyCode),
-                let data = data as? [String: Any],
-                let valueNumber = data["last"] as? NSNumber
-                else { return nil }
-        let exchangeRate = valueNumber.decimalValue
-
-        return FiatCurrency(currencyCode: currencyCode, symbol: ExchangeRateLoader.currencySymbols[currencyCode] ?? currencyCode, localized: localized, exchangeRate: exchangeRate)
     }
 
     private static func parseBlockchainInfoData(for currencyCode: String, data: Any) -> FiatCurrency? {
