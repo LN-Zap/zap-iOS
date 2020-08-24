@@ -109,63 +109,63 @@
 "scene.channels.header.offline" = "Totaal offline:";
 "scene.channels.close.title" = "Sluit channel";
 "scene.channels.close.message" = "Wil je echt het kanaal sluiten met node %@?";
-"scene.channels.force_close.title" = "Forceer Channel sluiting";
+"scene.channels.force_close.title" = "Forceer channel sluiting";
 "scene.channels.force_close.message" = "%@ is offline, weet je zeker dat je dit kanaal geforceerd wil sluiten? Je zult ongeveer %@ moeten wachten op je tegoed.";
-"scene.channels.alert.close" = "Sluit Channel";
-"scene.channels.alert.force_close" = "Geforceerd kanaal sluiten";
-"scene.channels.close_loading_view" = "Channel aan het sluiten";
+"scene.channels.alert.close" = "Sluit channel";
+"scene.channels.alert.force_close" = "Sluit channel geforceerd";
+"scene.channels.close_loading_view" = "Channel sluiten";
 "scene.channels.close_success.toast" = "Channel is aan het sluiten.";
-"scene.channels.empty_state.title" = "Open een kanaal";
-"scene.channels.empty_state.message" = "You can't transact on the Lightning Network yet! Let's open a channel to start transacting on the Lightning Network.";
-"scene.channels.empty_state.button_title" = "Open een kanaal";
+"scene.channels.empty_state.title" = "Open een channel";
+"scene.channels.empty_state.message" = "Je kan nog geen transacties uitvoeren op het Lightning Network! Laten we om te beginnen een channel openen op het Lightning Network.";
+"scene.channels.empty_state.button_title" = "Open een channel";
 
-"scene.open_channel.title" = "Open Channel";
+"scene.open_channel.title" = "Open channel";
 "scene.open_channel.channel_uri_label" = "Node:";
-"scene.open_channel.add_button" = "Open Channel";
-"scene.open_channel.subtitle.minimum_size" = "Minimum channel grootte: %@";
-"scene.open_channel.subtitle.maximum_size" = "Maximum channel grootte: %@";
+"scene.open_channel.add_button" = "Open channel";
+"scene.open_channel.subtitle.minimum_size" = "Minimale channel-grootte: %@";
+"scene.open_channel.subtitle.maximum_size" = "Maximale channel-grootte: %@";
 "scene.open_channel.subtitle.balance" = "On-chain saldo: %@";
-"scene.open_channel.suggested_peers.title" = "Aanbevolen Peers";
-"scene.open_channel.paste_button.title" = "Plak Peer adres";
+"scene.open_channel.suggested_peers.title" = "Voorgestelde peers";
+"scene.open_channel.paste_button.title" = "Plak peer-adres";
 
-"scene.pin.biometric.fallback.title" = "Use PIN";
+"scene.pin.biometric.fallback.title" = "Gebruik pincode";
 "scene.pin.biometric.reason" = "Voor toegang tot de beveiligde data";
 
 "scene.setup_pin.done_button" = "Klaar";
 "scene.setup_pin.top_label.initial" = "Kies een pincode.";
-"scene.setup_pin.top_label.non_matching" = "The PINs didn't match. Please try again.";
+"scene.setup_pin.top_label.non_matching" = "De pincodes kwamen niet overeen. Probeer het opnieuw.";
 "scene.setup_pin.top_label.validate" = "Voer pincode nogmaals in.";
 
-"scene.onboarding.page_1.title" = "Jouw **sleutels**, jouw **coins**";
-"scene.onboarding.page_1.message" = "With Zap, you are in control of your money. To make sure your coins are always stored safely, Zap will provide a recovery phrase for you.";
-"scene.onboarding.page_1.button_title" = "Verder";
+"scene.onboarding.page_1.title" = "Jouw **keys**, jouw **coins**";
+"scene.onboarding.page_1.message" = "Met Zap heb je de controle over jouw geld. Om ervoor te zorgen dat je coins altijd veilig zijn opgeslagen, zal Zap een recovery prhase voor je aanmaken.";
+"scene.onboarding.page_1.button_title" = "Volgende";
 
-"scene.onboarding.page_2.title" = "Save your **recovery phrase**";
-"scene.onboarding.page_2.message" = "Write down your phrase. You can use your phrase to recover your funds anytime if you misplace your device.";
-"scene.onboarding.page_2.button_title" = "Verder";
+"scene.onboarding.page_2.title" = "Bewaar je **recovery phrase**";
+"scene.onboarding.page_2.message" = "Schrijf je phrase op. Je kan jouw phrase gebruiken om je geld op ieder moment terug te krijgen als je kwijtraakt.";
+"scene.onboarding.page_2.button_title" = "Volgende";
 
-"scene.onboarding.page_3.title" = "Keep it **safe**";
-"scene.onboarding.page_3.message" = "Make sure to keep your recovery phrase private. Store it somewhere only you will find it.";
-"scene.onboarding.page_3.button_title" = "Generate Recovery Phrase";
+"scene.onboarding.page_3.title" = "Hou het **veilig**";
+"scene.onboarding.page_3.message" = "Zorg ervoor dat je jouw recovery phrase privé houdt. Bewaar het ergens waar alleen jij hem kan vinden.";
+"scene.onboarding.page_3.button_title" = "Genereer recovery phrase";
 
-"scene.confirm_mnemonic.title" = "Confirm Recovery Phrase";
-"scene.confirm_mnemonic.headline" = "Select word number %d";
+"scene.confirm_mnemonic.title" = "Bevestig recovery phrase";
+"scene.confirm_mnemonic.headline" = "Selecteer woord %d";
 
-"scene.send.title" = "Verzenden";
-"scene.send.send_button" = "Verzenden";
+"scene.send.title" = "Verstuur";
+"scene.send.send_button" = "Verstuur";
 "scene.send.address_headline" = "Aan:";
 "scene.send.memo_headline" = "Memo:";
-"scene.send.sending" = "Verzenden...";
-"scene.send.send_amount_too_small" = "Send amount is too small.";
-"scene.send.lightning.title" = "Verstuur Lightning betaling";
-"scene.send.on_chain.title" = "Verstuur On-Chain";
-"scene.send.on_chain.fee" = "Vergoeding:";
+"scene.send.sending" = "Versturen...";
+"scene.send.send_amount_too_small" = "Verstuurbedrag is te laag.";
+"scene.send.lightning.title" = "Verstuur Lightning-betaling";
+"scene.send.on_chain.title" = "Verstuur on-chain";
+"scene.send.on_chain.fee" = "Transactiekosten:";
 "scene.send.on_chain.fee.fast" = "Snel";
-"scene.send.on_chain.fee.medium" = "Medium";
+"scene.send.on_chain.fee.medium" = "Normaal";
 "scene.send.on_chain.fee.slow" = "Langzaam";
 "scene.send.on_chain.fee.description.fast" = "Fast Transaction";
-"scene.send.on_chain.fee.description.medium" = "Medium Transaction";
-"scene.send.on_chain.fee.description.slow" = "Slow Transaction";
+"scene.send.on_chain.fee.description.medium" = "Normale transactie";
+"scene.send.on_chain.fee.description.slow" = "Langzame transactie";
 
 "scene.send.on_chain.fee.estimated_delivery" = "Estimated Delivery: %@";
 "scene.send.authentication_failed" = "Verificatie mislukt";
