@@ -56,59 +56,59 @@
 
 "view.amount_input.placeholder" = "Bedrag";
 
-"expiry_time.one_minute" = "1 Minute";
-"expiry_time.ten_minutes" = "10 Minutes";
-"expiry_time.thirty_minutes" = "30 Minutes";
-"expiry_time.one_hour" = "1 Hour";
-"expiry_time.six_hours" = "6 Hours";
-"expiry_time.one_day" = "1 Day";
-"expiry_time.one_week" = "1 Week";
-"expiry_time.thirty_days" = "30 Days";
-"expiry_time.one_year" = "1 Year";
+"expiry_time.one_minute" = "1 minuut";
+"expiry_time.ten_minutes" = "10 minuten";
+"expiry_time.thirty_minutes" = "30 minuten";
+"expiry_time.one_hour" = "1 uur";
+"expiry_time.six_hours" = "6 uur";
+"expiry_time.one_day" = "1 dag";
+"expiry_time.one_week" = "1 week";
+"expiry_time.thirty_days" = "30 dagen";
+"expiry_time.one_year" = "1 jaar";
 
-"scene.history.title" = "Activity";
+"scene.history.title" = "Activiteit";
 "scene.history.empty_state_label" = "0 transacties 🙁";
 
 "scene.settings.title" = "Instellingen";
 "scene.settings.section.warning" = "Waarschuwing";
 "scene.settings.section.lightning" = "Lightning";
 "scene.settings.section.wallet" = "Wallet";
-"scene.settings.item.version_warning" = "Je lnd is verouderd (%@). Zap iOS werkt het beste lnd versie %@ of nieuwer.";
-"scene.settings.item.bitcoin_unit" = "Bitcoin eenheid";
-"scene.settings.item.lightning_request_expiry" = "Lightning Request Expiry";
+"scene.settings.item.version_warning" = "Je lnd is verouderd (%@). Zap voor iOS werkt het beste lnd-versie %@ of nieuwer.";
+"scene.settings.item.bitcoin_unit" = "Bitcoin-eenheid";
+"scene.settings.item.lightning_request_expiry" = "Lightningverzoek vervaldatum";
 "scene.settings.item.currency" = "Valuta";
-"scene.settings.item.currency.popular" = "Populaire munten";
-"scene.settings.item.block_explorer" = "Block Explorer";
-"scene.settings.item.on_chain_request_address.title" = "Bitcoin adres type";
+"scene.settings.item.currency.popular" = "Populaire valuta";
+"scene.settings.item.block_explorer" = "Block-explorer";
+"scene.settings.item.on_chain_request_address.title" = "Bitcoin-adrestype";
 "scene.settings.item.on_chain_request_address.bech32" = "Bech32";
 "scene.settings.item.on_chain_request_address.p2sh" = "P2SH";
-"scene.settings.item.manage_channels" = "Beheer Channels";
-"scene.settings.item.channel_backup" = "Kanaal Backup";
+"scene.settings.item.manage_channels" = "Beheer channels";
+"scene.settings.item.channel_backup" = "Channel back-up";
 "scene.settings.item.remove_remote_node" = "Beheer wallets";
 
-"scene.settings.item.change_pin" = "Change PIN";
-"scene.settings.item.report_issue" = "Een probleem melden";
+"scene.settings.item.change_pin" = "Wijzig pincode";
+"scene.settings.item.report_issue" = "Meld een probleem";
 "scene.settings.item.help" = "Hulp nodig?";
 "scene.settings.item.privacy_policy" = "Privacybeleid";
 "scene.settings.item.lnd_log" = "Toon Lnd log";
 
-"scene.request.title" = "Ontvangen";
+"scene.request.title" = "Ontvang";
 "scene.request.lightning_button" = "Lightning";
 "scene.request.or_separator_label" = "of";
 "scene.request.on_chain_button" = "On-chain";
 "scene.request.generate_request_button" = "Geneer verzoek";
-"scene.request.lightning_header_title" = "Lightning betaalverzoek";
-"scene.request.on_chain_header_title" = "On-Chain betaalverzoek";
+"scene.request.lightning_header_title" = "Lightning-betaalverzoek";
+"scene.request.on_chain_header_title" = "On-chain-betaalverzoek";
 "scene.request.next_button_title" = "Volgende";
 "scene.request.subtitle.lightning" = "Kan ontvangen: %@";
 
 "scene.channels.title" = "Channels";
-"scene.channels.header.total_can_send" = "Totaal kan versturen:";
+"scene.channels.header.total_can_send" = "Totaal kan sturen:";
 "scene.channels.header.total_can_receive" = "Totaal kan ontvangen:";
-"scene.channels.header.total_pending" = "Total onafgedaan:";
+"scene.channels.header.total_pending" = "Totaal in behandeling:";
 "scene.channels.header.offline" = "Totaal offline:";
-"scene.channels.close.title" = "Sluit kanaal";
-"scene.channels.close.message" = "Weet je zeker om channel met node %@ te sluiten?";
+"scene.channels.close.title" = "Sluit channel";
+"scene.channels.close.message" = "Wil je echt het kanaal sluiten met node %@?";
 "scene.channels.force_close.title" = "Forceer Channel sluiting";
 "scene.channels.force_close.message" = "%@ is offline, weet je zeker dat je dit kanaal geforceerd wil sluiten? Je zult ongeveer %@ moeten wachten op je tegoed.";
 "scene.channels.alert.close" = "Sluit Channel";
