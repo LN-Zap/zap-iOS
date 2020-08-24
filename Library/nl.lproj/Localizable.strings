@@ -163,11 +163,11 @@
 "scene.send.on_chain.fee.fast" = "Snel";
 "scene.send.on_chain.fee.medium" = "Normaal";
 "scene.send.on_chain.fee.slow" = "Langzaam";
-"scene.send.on_chain.fee.description.fast" = "Fast Transaction";
+"scene.send.on_chain.fee.description.fast" = "Snelle transactie";
 "scene.send.on_chain.fee.description.medium" = "Normale transactie";
 "scene.send.on_chain.fee.description.slow" = "Langzame transactie";
 
-"scene.send.on_chain.fee.estimated_delivery" = "Estimated Delivery: %@";
+"scene.send.on_chain.fee.estimated_delivery" = "Verwachte Levering: %@";
 "scene.send.authentication_failed" = "Verificatie mislukt";
 "scene.send.maximum_fee" = "Verwachte kosten:";
 "scene.send.subtitle.on_chain_balance" = "On-chain saldo: %@";
@@ -175,55 +175,55 @@
 "scene.send.success_label" = "Betaling succesvol";
 "scene.send.paste_button.title" = "Plak adres";
 
-"scene.connect_remote_node.title" = "Verbind Remote-node";
+"scene.connect_remote_node.title" = "Verbind remote-node";
 "scene.connect_remote_node.empty_state" = "Scan de QR-code die is gegenereerd door lndconnect, BTCPay Server, of plak de link die je krijgt door 'lndconnect -j' te draaien om verbinding te maken met je node.";
 "scene.connect_remote_node.url_label" = "Adres";
 "scene.connect_remote_node.certificate_label" = "Identiteit";
-"scene.connect_remote_node.connect_button" = "Verbinding maken";
+"scene.connect_remote_node.connect_button" = "Verbind";
 "scene.connect_remote_node.scan_button" = "Scan";
 "scene.connect_remote_node.paste_button" = "Plak";
 "scene.connect_remote_node.help_button" = "Hulp nodig?";
-"scene.connect_remote_node.server_error" = "Kan geen verbinding maken met de server.";
+"scene.connect_remote_node.server_error" = "Kon geen verbinding maken met de server.";
 "scene.connect_remote_node.your_node_title" = "Jouw node";
 "scene.connect_remote_node.certificate_detail.certificate_title" = "Certificaat";
-"scene.connect_remote_node.certificate_detail.macaroon_title" = "Macaroon";
+"scene.connect_remote_node.certificate_detail.macaroon_title" = "Macaron";
 "scene.connect_remote_node.edit_url.title" = "Adres";
 
-"scene.create_wallet.title" = "Recovery Phrase";
-"scene.create_wallet.description_label" = "Write down the recovery phrase and store it at a safe location.";
+"scene.create_wallet.title" = "Recovery phrase";
+"scene.create_wallet.description_label" = "Schrijf de recovery phrase op en bewaar deze op een veilige locatie.";
 "scene.create_wallet.next_button" = "Volgende";
 
 "scene.recover_wallet.title" = "Herstel wallet";
 "scene.recover_wallet.done_button" = "Klaar";
-"scene.recover_wallet.description_label" = "Enter your recovery phrase:";
+"scene.recover_wallet.description_label" = "Voer je recovery phrase in:";
 "scene.recover_wallet.placeholder" = "abandon ability able about above absent absorb abstract absurd abuse access accident account accuse achieve acid acoustic acquire across act action actor actress actual";
 "scene.recover_wallet.select_channel_backup_button" = "Selecteer back-upchannel";
 
 "scene.select_wallet_connection.create.title" = "Maak aan";
 "scene.select_wallet_connection.recover.title" = "Herstel";
 "scene.select_wallet_connection.connect.title" = "Verbind";
-"scene.select_wallet_connection.message" = "Bitcoin for **everyone**";
+"scene.select_wallet_connection.message" = "Bitcoin voor **iedereen**";
 
-"scene.main.send_button" = "Verzenden";
-"scene.main.receive_button" = "Ontvangen";
+"scene.main.send_button" = "Verstuur";
+"scene.main.receive_button" = "Ontvang";
 "scene.main.exchange_rate_label" = "%@ per BTC";
 
-"scene.qr_code_detail.title" = "Ontvangen";
+"scene.qr_code_detail.title" = "Ontvang";
 
-"scene.sync.description_label" = "Synchroniseren naar blockchain…";
+"scene.sync.description_label" = "Synchroniseer naar blockchain…";
 
-"scene.transaction_detail.title.lightning_invoice" = "Rekening detail";
-"scene.transaction_detail.title.payment_detail" = "Betaling detail";
-"scene.transaction_detail.title.transaction_detail" = "Transactie detail";
-"scene.transaction_detail.title.channel_event_detail" = "Channel event";
+"scene.transaction_detail.title.lightning_invoice" = "Factuurgegevens";
+"scene.transaction_detail.title.payment_detail" = "Betalingsgegevens";
+"scene.transaction_detail.title.transaction_detail" = "Transactiegegevens";
+"scene.transaction_detail.title.channel_event_detail" = "Channelgebeurtenis";
 "scene.transaction_detail.title.failed_payment" = "Mislukte betaling";
 "scene.transaction_detail.memo_label" = "Memo";
 "scene.transaction_detail.amount_label" = "Bedrag";
 "scene.transaction_detail.fee_label" = "Vergoeding";
 "scene.transaction_detail.date_label" = "Datum";
-"scene.transaction_detail.transaction_id_label" = "Transactie id";
+"scene.transaction_detail.transaction_id_label" = "Transactie ID";
 "scene.transaction_detail.address_label" = "Adres";
-"scene.transaction_detail.expiry_label" = "Vervaltijd";
+"scene.transaction_detail.expiry_label" = "Vervaldatum";
 "scene.transaction_detail.expiry_label.expired" = "Verlopen";
 "scene.transaction_detail.invoice_state_label" = "Staat";
 "scene.transaction_detail.invoice_state_label.settled" = "verrekkend";
