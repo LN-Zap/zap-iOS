@@ -1,9 +1,9 @@
-"generic.memo.placeholder" = "Waar is dit voor?";
+"generic.memo.placeholder" = "Waarvoor is dit?";
 "generic.qr_code.copy_button" = "Kopieer";
-"generic.qr_code.copy_success_message" = "Adres is gekopieerd naar klembord.";
+"generic.qr_code.copy_success_message" = "Adres is naar klembord gekopieerd.";
 "generic.pasteboard.invalid_address" = "Ongeldig adres";
 "generic.qr_code.share_button" = "Deel";
-"generic.cancel" = "Afbreken";
+"generic.cancel" = "Annuleer";
 
 "link.help" = "https://docs.zaphq.io/";
 "link.help.zapconnect" = "https://docs.zaphq.io/docs-ios-remote-node-setup";
@@ -15,10 +15,10 @@
 "error.wrong_uri_network" = "Je probeerde een link te open voor %@, maar je node is verbonden met %@.";
 "error.block_explorer.unsupported_network" = "%@ ondersteunt geen %@.";
 
-"lnd_error.wallet_encrypted" = "Wallet is encrypted";
+"lnd_error.wallet_encrypted" = "Wallet is versleuteld";
 "lnd_error.lnd_not_running" = "Lnd does not seem to be running properly.";
 "lnd_error.transaction_output_is_dust" = "Transaction output is dust.";
-"lnd_error.no_outputs" = "No outputs.";
+"lnd_error.no_outputs" = "Geen outputs.";
 "lnd_error.rest_network_error" = "Check your internet connection.";
 "lnd_error.unable_to_find_node" = "Unable to find node.";
 "lnd_error.insufficient_funds_available" = "Insufficient funds available to construct transaction.";
@@ -84,7 +84,7 @@
 "scene.settings.item.on_chain_request_address.p2sh" = "P2SH";
 "scene.settings.item.manage_channels" = "Beheer Channels";
 "scene.settings.item.channel_backup" = "Kanaal Backup";
-"scene.settings.item.remove_remote_node" = "Beheer Wallets";
+"scene.settings.item.remove_remote_node" = "Beheer wallets";
 
 "scene.settings.item.change_pin" = "Change PIN";
 "scene.settings.item.report_issue" = "Een probleem melden";
@@ -193,15 +193,15 @@
 "scene.create_wallet.description_label" = "Write down the recovery phrase and store it at a safe location.";
 "scene.create_wallet.next_button" = "Volgende";
 
-"scene.recover_wallet.title" = "Wallet herstellen";
+"scene.recover_wallet.title" = "Herstel wallet";
 "scene.recover_wallet.done_button" = "Klaar";
 "scene.recover_wallet.description_label" = "Enter your recovery phrase:";
 "scene.recover_wallet.placeholder" = "abandon ability able about above absent absorb abstract absurd abuse access accident account accuse achieve acid acoustic acquire across act action actor actress actual";
-"scene.recover_wallet.select_channel_backup_button" = "Kies kanaal backup";
+"scene.recover_wallet.select_channel_backup_button" = "Selecteer back-upchannel";
 
-"scene.select_wallet_connection.create.title" = "Aanmaken";
-"scene.select_wallet_connection.recover.title" = "Herstellen";
-"scene.select_wallet_connection.connect.title" = "Verbinden";
+"scene.select_wallet_connection.create.title" = "Maak aan";
+"scene.select_wallet_connection.recover.title" = "Herstel";
+"scene.select_wallet_connection.connect.title" = "Verbind";
 "scene.select_wallet_connection.message" = "Bitcoin for **everyone**";
 
 "scene.main.send_button" = "Verzenden";
@@ -249,11 +249,11 @@
 "scene.filter.displayChannelEvents" = "Channel Events";
 
 "scene.qrcode_scanner.top_label" = "Scan QR-code";
-"scene.qrcode_scanner.error.unknown_format" = "Ongeldig adres formaat.";
-"scene.qrcode_scanner.error.wrong_network" = "Je probeerde een link te open voor %@, maar je node is verbonden met %@.";
-"scene.qrcode_scanner.error.zero_amount_invoice" = "For security reasons, Zap does not support invoices without a specified amount.";
+"scene.qrcode_scanner.error.unknown_format" = "Onbekend adresformaat.";
+"scene.qrcode_scanner.error.wrong_network" = "Je hebt geprobeerd een invoice te openen voor %@, maar je node is verbonden met %@.";
+"scene.qrcode_scanner.error.zero_amount_invoice" = "Om veiligheidsredenen ondersteunt Zap geen invoices zonder een bepaald bedrag.";
 "scene.qrcode_scanner.camera_access_denied_alert.ok" = "Instellingen";
-"scene.qrcode_scanner.camera_access_denied_alert.title" = "Camera access denied";
+"scene.qrcode_scanner.camera_access_denied_alert.title" = "Cameratoegang geweigerd";
 "scene.qrcode_scanner.camera_access_denied_alert.message" = "Schakel cameratoegang in om de QR-code te scannen.";
 
 "scene.wallet.title" = "Wallet";
@@ -261,14 +261,14 @@
 "scene.wallet.detail.on_chain" = "On-chain:";
 "scene.wallet.detail.lightning" = "Lightning:";
 "scene.wallet.detail.pending" = "In behandeling:";
-"scene.wallet.empty_state.title" = "Stort naar je Zap portemonnee";
+"scene.wallet.empty_state.title" = "Stort tegoed in je wallet";
 "scene.wallet.empty_state.message" = "Your wallet is empty! Get started by depositing some funds.";
 "scene.wallet.empty_state.button_title" = "Deposit funds";
 "scene.wallet.open_channel.message" = "You can’t transact on the the Lightning Network yet. Open a channel to start.";
 "scene.wallet.open_channel.action" = "Open a channel";
 
 "scene.time_lock.headline" = "Wrong PIN";
-"scene.time_lock.description" = "Je wallet is geblokkeerd voor:";
+"scene.time_lock.description" = "Je wallet is vergrendeld voor:";
 
 "scene.modal_pin.headline" = "Enter PIN";
 "scene.modal_pin.description" = "Please enter your PIN to continue";
@@ -303,7 +303,7 @@
 "scene.unlock.password_placeholder" = "Wachtwoord";
 "scene.unlock.title_label" = "Ontgrendel %@";
 
-"scene.manage_wallets.title" = "Beheer Wallets";
+"scene.manage_wallets.title" = "Beheer wallets";
 "scene.manage_wallets.cell.remote" = "remote";
 "scene.manage_wallets.cell.local" = "local";
 "scene.manage_wallets.section_title.local" = "Local Wallet";
