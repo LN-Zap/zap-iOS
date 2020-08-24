@@ -7,36 +7,36 @@
 
 "link.help" = "https://docs.zaphq.io/";
 "link.help.zapconnect" = "https://docs.zaphq.io/docs-ios-remote-node-setup";
-"link.privacy" = "http://zap.jackmallers.com/privacy";
+"link.privacy" = "https://zaphq.io/privacy/";
 "link.bug_report" = "https://github.com/LN-Zap/zap-iOS/issues";
 "link.lnd_releases" = "https://github.com/lightningnetwork/lnd/releases";
 
-"error.wrong_uri_format" = "Onbekend link formaat.";
+"error.wrong_uri_format" = "Onbekend linkformaat.";
 "error.wrong_uri_network" = "Je probeerde een link te open voor %@, maar je node is verbonden met %@.";
 "error.block_explorer.unsupported_network" = "%@ ondersteunt geen %@.";
 
 "lnd_error.wallet_encrypted" = "Wallet is versleuteld";
-"lnd_error.lnd_not_running" = "Lnd does not seem to be running properly.";
-"lnd_error.transaction_output_is_dust" = "Transaction output is dust.";
+"lnd_error.lnd_not_running" = "Lnd lijkt niet goed te werken.";
+"lnd_error.transaction_output_is_dust" = "Transactie-output is dust.";
 "lnd_error.no_outputs" = "Geen outputs.";
-"lnd_error.rest_network_error" = "Check your internet connection.";
-"lnd_error.unable_to_find_node" = "Unable to find node.";
-"lnd_error.insufficient_funds_available" = "Insufficient funds available to construct transaction.";
-"lnd_error.unknown_error" = "Unknown Error 1";
-"lnd_error.api_transformation_error" = "Unknown Error 2";
-"lnd_error.invoice_already_paid" = "Invoice is already paid.";
-"lnd_error.no_path_to_destination" = "Unable to find a path to destination.";
+"lnd_error.rest_network_error" = "Controleer je internetverbinding.";
+"lnd_error.unable_to_find_node" = "Kan node niet vinden.";
+"lnd_error.insufficient_funds_available" = "Onvoldoende tegoed beschikbaar om een transactie op te zetten.";
+"lnd_error.unknown_error" = "Onbekende error 1";
+"lnd_error.api_transformation_error" = "Onbekende error 2";
+"lnd_error.invoice_already_paid" = "Invoice is al betaald.";
+"lnd_error.no_path_to_destination" = "Kan geen path naar destination vinden.";
 
 "rpc_connect_qrcode_error.btc_pay_expired" = "Het lijkt erop dat de code is verlopen.";
-"rpc_connect_qrcode_error.btc_pay_configuration_broken" = "BTCPay configuratiebestand kon niet worden gelezen.";
-"rpc_connect_qrcode_error.cant_read_qrcode" = "Onleesbare code.";
-"rpc_connect_qrcode_error.code_updated" = "Verbinding geüpdate.";
+"rpc_connect_qrcode_error.btc_pay_configuration_broken" = "Kon het configuratiebestand van BTCPay niet lezen.";
+"rpc_connect_qrcode_error.cant_read_qrcode" = "Ongeldig codeformaat.";
+"rpc_connect_qrcode_error.code_updated" = "Verbinding geüpdatet.";
 
 "channel.state.active" = "Online";
-"channel.state.inactive" = "Off line";
-"channel.state.opening" = "Openen";
-"channel.state.closing" = "Sluiten";
-"channel.state.force_closing" = "Geforceerd sluiten";
+"channel.state.inactive" = "Offline";
+"channel.state.opening" = "Open";
+"channel.state.closing" = "Sluit";
+"channel.state.force_closing" = "Forceer sluiting";
 "channel.state.waiting_close" = "Wachten op sluiten";
 
 "network_type.simnet" = "Simnet";
@@ -45,7 +45,7 @@
 "network_type.mainnet" = "Mainnet";
 
 "unit.bitcoin.btc" = "Bitcoin";
-"unit.bitcoin.mbtc" = "Milli Bitcoin";
+"unit.bitcoin.mbtc" = "Milli bitcoin";
 "unit.bitcoin.bit" = "Bits";
 "unit.bitcoin.satoshi" = "Satoshis";
 
