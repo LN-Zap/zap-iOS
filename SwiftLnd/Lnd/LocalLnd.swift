@@ -28,10 +28,16 @@ public enum LocalLnd {
 
             signal(SIGPIPE, SIG_IGN) // Avoid crash on socket close.
 
-            DispatchQueue.global(qos: .default).async {
-                LndmobileStart("--lnddir=\(lndUrl.path)", EmptyStreamCallback())
-                BackupDisabler.disableNeutrinoBackup(network: network)
-                isRunning = true
+            NetworkConnection.startConnectivityCheck { isConnected in
+                if isConnected {
+                    DispatchQueue.global(qos: .default).async {
+                        LndmobileStart("--lnddir=\(lndUrl.path)", EmptyStreamCallback())
+                        BackupDisabler.disableNeutrinoBackup(network: network)
+                        isRunning = true
+                    }
+                } else {
+                    // TODO: Display new error vc
+                }
             }
         }
     }
