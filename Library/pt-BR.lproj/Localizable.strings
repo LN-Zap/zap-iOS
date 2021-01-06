@@ -278,25 +278,25 @@
 "scene.history.cell.invoice_created" = "Solicitação de Pagamento criada";
 "scene.history.cell.channel_opened" = "Canal Aberto";
 "scene.history.cell.channel_closed" = "Canal Fechado";
-"scene.history.cell.force_close_channel" = "Force closed Channel";
-"scene.history.cell.remote_force_close_channel" = "Remote forced close Channel";
-"scene.history.cell.breach_close_channel" = "Breach closed Channel";
-"scene.history.cell.close_channel_funding_canceled" = "Closed Channel (funding canceled)";
-"scene.history.cell.channel_abandoned" = "Channel abandoned";
-"scene.history.cell.transaction_sent" = "Payment sent";
-"scene.history.cell.transaction_received" = "Payment received";
-"scene.history.cell.label.new" = "new";
-"scene.history.cell.label.error" = "error";
+"scene.history.cell.force_close_channel" = "Canal Fechado forçosamente";
+"scene.history.cell.remote_force_close_channel" = "Canal fechado forçosamente remotamente";
+"scene.history.cell.breach_close_channel" = "Canal fechado por violação";
+"scene.history.cell.close_channel_funding_canceled" = "Canal Fechado (depósito cancelado)";
+"scene.history.cell.channel_abandoned" = "Canal abandonado";
+"scene.history.cell.transaction_sent" = "Pagamento enviado";
+"scene.history.cell.transaction_received" = "Pagamento recebido";
+"scene.history.cell.label.new" = "novo";
+"scene.history.cell.label.error" = "erro";
 
-"scene.node_uri.title" = "Connect to Node";
-"scene.node_uri.alias_label" = "Alias";
+"scene.node_uri.title" = "Conecte-se ao nó";
+"scene.node_uri.alias_label" = "Identificador";
 "scene.node_uri.uri_label" = "URI";
 
-"scene.connect_node_uri.action_sheet.title" = "Connect";
-"scene.connect_node_uri.action_sheet.connect_button" = "Connect";
-"scene.connect_node_uri.action_sheet.message" = "Do you really want to connect to node at %@?";
+"scene.connect_node_uri.action_sheet.title" = "Conectar";
+"scene.connect_node_uri.action_sheet.connect_button" = "Conectar";
+"scene.connect_node_uri.action_sheet.message" = "Você quer mesmo conectar ao nó em %@?";
 
-"scene.wallet_list.title" = "Wallets";
+"scene.wallet_list.title" = "Carteiras";
 
 "scene.unlock.title" = "Desbloquear nó";
 "scene.unlock.unlock_button" = "Desbloquear";
