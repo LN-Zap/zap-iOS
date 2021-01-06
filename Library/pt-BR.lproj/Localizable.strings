@@ -1,9 +1,9 @@
-"generic.memo.placeholder" = "What is this for?";
-"generic.qr_code.copy_button" = "Copy";
-"generic.qr_code.copy_success_message" = "Address has been copied to clipboard.";
-"generic.pasteboard.invalid_address" = "Invalid Address";
-"generic.qr_code.share_button" = "Share";
-"generic.cancel" = "Cancel";
+"generic.memo.placeholder" = "Para quê isso serve?";
+"generic.qr_code.copy_button" = "Copiar";
+"generic.qr_code.copy_success_message" = "Endereço copiado para a área de transferência.";
+"generic.pasteboard.invalid_address" = "Endereço inválido";
+"generic.qr_code.share_button" = "Compartilhar";
+"generic.cancel" = "Cancelar";
 
 "link.help" = "https://docs.zaphq.io/";
 "link.help.zapconnect" = "https://docs.zaphq.io/docs-ios-remote-node-setup";
@@ -15,29 +15,29 @@
 "error.wrong_uri_network" = "Você tentou abrir um link para %@, mas seu node está conectado a %@.";
 "error.block_explorer.unsupported_network" = "%@ não suporta %@.";
 
-"lnd_error.wallet_encrypted" = "Wallet is encrypted";
-"lnd_error.lnd_not_running" = "Lnd does not seem to be running properly.";
-"lnd_error.transaction_output_is_dust" = "Transaction output is dust.";
-"lnd_error.no_outputs" = "No outputs.";
-"lnd_error.rest_network_error" = "Check your internet connection.";
-"lnd_error.unable_to_find_node" = "Unable to find node.";
-"lnd_error.insufficient_funds_available" = "Insufficient funds available to construct transaction.";
-"lnd_error.unknown_error" = "Unknown Error 1";
-"lnd_error.api_transformation_error" = "Unknown Error 2";
-"lnd_error.invoice_already_paid" = "Invoice is already paid.";
-"lnd_error.no_path_to_destination" = "Unable to find a path to destination.";
+"lnd_error.wallet_encrypted" = "Carteira é criptografada";
+"lnd_error.lnd_not_running" = "Parece que o LND não está rodando como deveria.";
+"lnd_error.transaction_output_is_dust" = "Saída da transação é poeira.";
+"lnd_error.no_outputs" = "Sem saídas.";
+"lnd_error.rest_network_error" = "Verifique sua conexão com a internet.";
+"lnd_error.unable_to_find_node" = "Não foi possível achar um nó.";
+"lnd_error.insufficient_funds_available" = "Fundos disponíveis insuficientes para construir a transação.";
+"lnd_error.unknown_error" = "Erro desconhecido 1";
+"lnd_error.api_transformation_error" = "Erro desconhecido 2";
+"lnd_error.invoice_already_paid" = "Fatura já paga.";
+"lnd_error.no_path_to_destination" = "Não foi possível encontrar um caminho para o destino.";
 
 "rpc_connect_qrcode_error.btc_pay_expired" = "O código parece ter expirado.";
 "rpc_connect_qrcode_error.btc_pay_configuration_broken" = "Não foi possível ler o arquivo de configurações do BTCPay.";
-"rpc_connect_qrcode_error.cant_read_qrcode" = "Invalid code format.";
-"rpc_connect_qrcode_error.code_updated" = "Connection updated.";
+"rpc_connect_qrcode_error.cant_read_qrcode" = "Formato de código inválido.";
+"rpc_connect_qrcode_error.code_updated" = "Conexão atualizada.";
 
 "channel.state.active" = "Online";
 "channel.state.inactive" = "Offline";
 "channel.state.opening" = "Abrindo";
 "channel.state.closing" = "Fechando";
 "channel.state.force_closing" = "Forçando fechamento";
-"channel.state.waiting_close" = "Waiting Close";
+"channel.state.waiting_close" = "Aguardando fechamento";
 
 "network_type.simnet" = "Simnet";
 "network_type.regtest" = "Regtest";
@@ -49,29 +49,29 @@
 "unit.bitcoin.bit" = "Bits";
 "unit.bitcoin.satoshi" = "Satoshis";
 
-"toast.invoice" = "Did receive %@";
-"toast.invoice_memo" = "Did receive %@ \"%@\"";
+"toast.invoice" = "Recebeu %@";
+"toast.invoice_memo" = "Recebeu %@ \"%@\"";
 
-"transaction.no_destination_address" = "No destination address";
+"transaction.no_destination_address" = "Sem endereço de destino";
 
 "view.amount_input.placeholder" = "Quantidade";
 
-"expiry_time.one_minute" = "1 Minute";
-"expiry_time.ten_minutes" = "10 Minutes";
-"expiry_time.thirty_minutes" = "30 Minutes";
-"expiry_time.one_hour" = "1 Hour";
-"expiry_time.six_hours" = "6 Hours";
-"expiry_time.one_day" = "1 Day";
-"expiry_time.one_week" = "1 Week";
-"expiry_time.thirty_days" = "30 Days";
-"expiry_time.one_year" = "1 Year";
+"expiry_time.one_minute" = "1 Minuto";
+"expiry_time.ten_minutes" = "10 Minutos";
+"expiry_time.thirty_minutes" = "30 Minutos";
+"expiry_time.one_hour" = "1 Hora";
+"expiry_time.six_hours" = "6 Horas";
+"expiry_time.one_day" = "1 Dia";
+"expiry_time.one_week" = "1 Semana";
+"expiry_time.thirty_days" = "30 Dias";
+"expiry_time.one_year" = "1 Ano";
 
-"scene.history.title" = "Activity";
-"scene.history.empty_state_label" = "0 transactions 🙁";
+"scene.history.title" = "Atividade";
+"scene.history.empty_state_label" = "0 transações 🙁";
 
 "scene.settings.title" = "Configurações";
-"scene.settings.section.warning" = "Warning";
-"scene.settings.section.lightning" = "Lightning";
+"scene.settings.section.warning" = "Avisos";
+"scene.settings.section.lightning" = "Rede Lightning";
 "scene.settings.section.wallet" = "Carteira";
 "scene.settings.item.version_warning" = "Your lnd is outdated (%@). Zap iOS works best with lnd version %@ or above.";
 "scene.settings.item.bitcoin_unit" = "Unidade de Bitcoin";
