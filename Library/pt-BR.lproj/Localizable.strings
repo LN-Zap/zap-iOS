@@ -7,7 +7,7 @@
 
 "link.help" = "https://docs.zaphq.io/";
 "link.help.zapconnect" = "https://docs.zaphq.io/docs-ios-remote-node-setup";
-"link.privacy" = "http://zap.jackmallers.com/privacy";
+"link.privacy" = "https://zaphq.io/privacy/";
 "link.bug_report" = "https://github.com/LN-Zap/zap-iOS/issues";
 "link.lnd_releases" = "https://github.com/lightningnetwork/lnd/releases";
 
@@ -84,22 +84,22 @@
 "scene.settings.item.on_chain_request_address.p2sh" = "P2SH";
 "scene.settings.item.manage_channels" = "Gerenciar Canais";
 "scene.settings.item.channel_backup" = "Backup de Canais";
-"scene.settings.item.remove_remote_node" = "Manage Wallets";
+"scene.settings.item.remove_remote_node" = "Gerenciar carteiras";
 
-"scene.settings.item.change_pin" = "Change PIN";
+"scene.settings.item.change_pin" = "Mudar PIN";
 "scene.settings.item.report_issue" = "Reportar um problema";
 "scene.settings.item.help" = "Precisa de Ajuda?";
-"scene.settings.item.privacy_policy" = "Privacy Policy";
-"scene.settings.item.lnd_log" = "Show lnd Log";
+"scene.settings.item.privacy_policy" = "Política de Privacidade";
+"scene.settings.item.lnd_log" = "Montrar Log LND";
 
 "scene.request.title" = "Receber";
 "scene.request.lightning_button" = "Lightning";
-"scene.request.or_separator_label" = "or";
+"scene.request.or_separator_label" = "ou";
 "scene.request.on_chain_button" = "On-chain";
 "scene.request.generate_request_button" = "Gerar solicitação";
-"scene.request.lightning_header_title" = "Lightning Payment Request";
-"scene.request.on_chain_header_title" = "On-Chain Payment Request";
-"scene.request.next_button_title" = "Next";
+"scene.request.lightning_header_title" = "Solicitar Pagamento Lightning";
+"scene.request.on_chain_header_title" = "Solicitar Pagamento On-Chain";
+"scene.request.next_button_title" = "Próximo";
 "scene.request.subtitle.lightning" = "Can receive: %@";
 
 "scene.channels.title" = "Canais";
@@ -210,26 +210,26 @@
 
 "scene.qr_code_detail.title" = "Receber";
 
-"scene.sync.description_label" = "Syncing to blockchain…";
+"scene.sync.description_label" = "Sincronizando com a blockchain…";
 
-"scene.transaction_detail.title.lightning_invoice" = "Invoice Detail";
-"scene.transaction_detail.title.payment_detail" = "Payment Detail";
-"scene.transaction_detail.title.transaction_detail" = "Transaction Detail";
-"scene.transaction_detail.title.channel_event_detail" = "Channel Event";
-"scene.transaction_detail.title.failed_payment" = "Failed Payment";
+"scene.transaction_detail.title.lightning_invoice" = "Detalhes da Fatura";
+"scene.transaction_detail.title.payment_detail" = "Detalhes do Pagamento";
+"scene.transaction_detail.title.transaction_detail" = "Detalhes da Transação";
+"scene.transaction_detail.title.channel_event_detail" = "Evento do Canal";
+"scene.transaction_detail.title.failed_payment" = "Falha no Pagamento";
 "scene.transaction_detail.memo_label" = "Memo";
 "scene.transaction_detail.amount_label" = "Quantidade";
 "scene.transaction_detail.fee_label" = "Taxa";
 "scene.transaction_detail.date_label" = "Data";
 "scene.transaction_detail.transaction_id_label" = "ID da transação";
 "scene.transaction_detail.address_label" = "Endereço";
-"scene.transaction_detail.expiry_label" = "Expiry";
-"scene.transaction_detail.expiry_label.expired" = "Expired";
-"scene.transaction_detail.invoice_state_label" = "State";
-"scene.transaction_detail.invoice_state_label.settled" = "settled";
-"scene.transaction_detail.preimage_label" = "Preimage";
-"scene.transaction_detail.preimage_copy_message" = "Preimage copied.";
-"scene.transaction_detail.invoice_copy_message" = "Invoice copied.";
+"scene.transaction_detail.expiry_label" = "Validade";
+"scene.transaction_detail.expiry_label.expired" = "Vencido";
+"scene.transaction_detail.invoice_state_label" = "Estado";
+"scene.transaction_detail.invoice_state_label.settled" = "fechado";
+"scene.transaction_detail.preimage_label" = "Pré-imagem";
+"scene.transaction_detail.preimage_copy_message" = "Pré-imagem copiada.";
+"scene.transaction_detail.invoice_copy_message" = "Fatura copiada.";
 
 "scene.channel_detail.remote_pub_key_label" = "PubKey remoto";
 "scene.channel_detail.local_balance_label" = "Saldo Local";
@@ -298,48 +298,48 @@
 
 "scene.wallet_list.title" = "Wallets";
 
-"scene.unlock.title" = "Unlock Node";
-"scene.unlock.unlock_button" = "Unlock";
-"scene.unlock.password_placeholder" = "Password";
-"scene.unlock.title_label" = "Unlock %@";
+"scene.unlock.title" = "Desbloquear nó";
+"scene.unlock.unlock_button" = "Desbloquear";
+"scene.unlock.password_placeholder" = "Senha";
+"scene.unlock.title_label" = "Desbloquear %@";
 
-"scene.manage_wallets.title" = "Manage Wallets";
-"scene.manage_wallets.cell.remote" = "remote";
+"scene.manage_wallets.title" = "Gerenciar carteiras";
+"scene.manage_wallets.cell.remote" = "remoto";
 "scene.manage_wallets.cell.local" = "local";
-"scene.manage_wallets.section_title.local" = "Local Wallet";
-"scene.manage_wallets.section_title.remote" = "Remote Wallets";
+"scene.manage_wallets.section_title.local" = "Carteira Local";
+"scene.manage_wallets.section_title.remote" = "Carteiras Remotas";
 
-"scene.channel_backup.title" = "Channel Backup";
+"scene.channel_backup.title" = "Backup de Canais";
 "scene.channel_backup.cell_title" = "%@ channel.backup";
-"scene.channel_backup.not_found" = "file not found";
-"scene.channel_backup.error.iCloudDisabled" = "iCloud seems to be disabled.";
-"scene.channel_backup.error.iCloudBackupFailed" = "iCloud backup failed.";
-"scene.channel_backup.error.localBackupFailed" = "Local file backup failed.";
-"scene.channel_backup.error.lndError" = "Could not get channel backup from lnd.";
+"scene.channel_backup.not_found" = "arquivo não encontrado";
+"scene.channel_backup.error.iCloudDisabled" = "iCloud parece estar desabilitado.";
+"scene.channel_backup.error.iCloudBackupFailed" = "Falha no Backup do iCloud.";
+"scene.channel_backup.error.localBackupFailed" = "Falha no backup do arquivo local.";
+"scene.channel_backup.error.lndError" = "Não foi possível obter o backup do canal do LND.";
 
-"scene.push_notification.headline" = "Stay **up to date**";
-"scene.push_notification.message" = "To keep your funds safe, Zap needs to sync once in a while. Do you want to be notified when your wallet needs to sync?";
-"scene.push_notification.confirm_button_title" = "Turn on notifications";
-"scene.push_notification.skip_button_title" = "Skip";
+"scene.push_notification.headline" = "Se mantenha **atualizado**";
+"scene.push_notification.message" = "Para manter seus fundos seguros, Zap precisa sincronizar de vez em quando. Você quer receber notificações quando sua carteira precisar sincronizar?";
+"scene.push_notification.confirm_button_title" = "Ligar notificações";
+"scene.push_notification.skip_button_title" = "Pular";
 
-"scene.my_node.title" = "My Node";
-"scene.my_node.channels.title" = "Channels";
-"scene.my_node.channels.subtitle" = "Manage your capacity";
-"scene.my_node.channel_backup.title" = "Channel Backup";
-"scene.my_node.channel_backup.subtitle" = "Set up emergency options";
-"scene.my_node.settings.title" = "Settings";
-"scene.my_node.settings.subtitle" = "Edit your preferences";
-"scene.my_node.support.title" = "Support";
-"scene.my_node.support.subtitle" = "Get support and send feedback";
+"scene.my_node.title" = "Meu nó";
+"scene.my_node.channels.title" = "Canais";
+"scene.my_node.channels.subtitle" = "Gerenciar sua capacidade";
+"scene.my_node.channel_backup.title" = "Backup de Canais";
+"scene.my_node.channel_backup.subtitle" = "Configurar opções de emergência";
+"scene.my_node.settings.title" = "Configurações";
+"scene.my_node.settings.subtitle" = "Editar suas preferências";
+"scene.my_node.support.title" = "Suporte";
+"scene.my_node.support.subtitle" = "Consiga suporte e envie feedbacks";
 
-"scene.lnurl_qrcode_scanner.withdraw.title" = "Withdraw";
-"scene.lnurl_qrcode_scanner.withdraw.button_title" = "Paste LNURL";
+"scene.lnurl_qrcode_scanner.withdraw.title" = "Saque";
+"scene.lnurl_qrcode_scanner.withdraw.button_title" = "Colar LNURL";
 
-"scene.lnurl.withdraw.title" = "Withdraw";
-"scene.lnurl.withdraw.description" = "Description";
-"scene.lnurl.withdraw.button_title" = "Withdraw";
+"scene.lnurl.withdraw.title" = "Saque";
+"scene.lnurl.withdraw.description" = "Descrição";
+"scene.lnurl.withdraw.button_title" = "Saque";
 
-"notification.sync.title" = "Please sync";
-"notification.sync.day_12.body" = "Please remember syncing your wallet to make sure you stay safe";
-"notification.sync.day_13.body" = "You have one more day to sync your wallet before it's getting dangerous.";
-"notification.sync.day_14.body" = "Please sync your wallet as soon as possible.";
+"notification.sync.title" = "Por favor sincronize";
+"notification.sync.day_12.body" = "Por favor, lembre de sincronizar sua carteira para ter certeza de continuar seguro";
+"notification.sync.day_13.body" = "Você tem mais um dia para sincronizar sua carteira antes de ficar perigoso.";
+"notification.sync.day_14.body" = "Por favor, sincronize sua carteira o quanto antes.";
