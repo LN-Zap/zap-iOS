@@ -17,7 +17,7 @@
 
 "lnd_error.wallet_encrypted" = "La billetera está encriptada";
 "lnd_error.lnd_not_running" = "Parece que \"lnd\" no ésta funcionando correctamente.";
-"lnd_error.transaction_output_is_dust" = "Transaction output is dust.";
+"lnd_error.transaction_output_is_dust" = "La salida de la transacción es polvo.";
 "lnd_error.no_outputs" = "No hay salidas.";
 "lnd_error.rest_network_error" = "Chequea tu conexión a internet.";
 "lnd_error.unable_to_find_node" = "No se puede encontrar el nodo.";
@@ -330,10 +330,10 @@
 "scene.my_node.settings.title" = "Configuración";
 "scene.my_node.settings.subtitle" = "Edita tus preferencias";
 "scene.my_node.support.title" = "Soporte";
-"scene.my_node.support.subtitle" = "Get support and send feedback";
+"scene.my_node.support.subtitle" = "Consigue ayuda y reporta problemas";
 
 "scene.lnurl_qrcode_scanner.withdraw.title" = "Retirar";
-"scene.lnurl_qrcode_scanner.withdraw.button_title" = "Paste LNURL";
+"scene.lnurl_qrcode_scanner.withdraw.button_title" = "Pegar LNURL";
 
 "scene.lnurl.withdraw.title" = "Retirar";
 "scene.lnurl.withdraw.description" = "Descripción";
