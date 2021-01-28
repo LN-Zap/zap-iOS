@@ -325,19 +325,19 @@
 "scene.my_node.title" = "My Node";
 "scene.my_node.channels.title" = "Channels";
 "scene.my_node.channels.subtitle" = "Manage your capacity";
-"scene.my_node.channel_backup.title" = "Channel Backup";
+"scene.my_node.channel_backup.title" = "Respaldo de canal";
 "scene.my_node.channel_backup.subtitle" = "Set up emergency options";
-"scene.my_node.settings.title" = "Settings";
-"scene.my_node.settings.subtitle" = "Edit your preferences";
-"scene.my_node.support.title" = "Support";
+"scene.my_node.settings.title" = "Configuración";
+"scene.my_node.settings.subtitle" = "Edita tus preferencias";
+"scene.my_node.support.title" = "Soporte";
 "scene.my_node.support.subtitle" = "Get support and send feedback";
 
-"scene.lnurl_qrcode_scanner.withdraw.title" = "Withdraw";
+"scene.lnurl_qrcode_scanner.withdraw.title" = "Retirar";
 "scene.lnurl_qrcode_scanner.withdraw.button_title" = "Paste LNURL";
 
-"scene.lnurl.withdraw.title" = "Withdraw";
-"scene.lnurl.withdraw.description" = "Description";
-"scene.lnurl.withdraw.button_title" = "Withdraw";
+"scene.lnurl.withdraw.title" = "Retirar";
+"scene.lnurl.withdraw.description" = "Descripción";
+"scene.lnurl.withdraw.button_title" = "Retirar";
 
 "notification.sync.title" = "Favor de sincronizar";
 "notification.sync.day_12.body" = "Por favor recuerda sincronizar tu cartera para asegurar que estés seguro";
