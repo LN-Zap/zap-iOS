@@ -15,17 +15,17 @@
 "error.wrong_uri_network" = "Has intentado establecer una conexión para %@ pero tu nodo esta conectado a %@.";
 "error.block_explorer.unsupported_network" = "%@ no es compatible con %@.";
 
-"lnd_error.wallet_encrypted" = "Wallet is encrypted";
+"lnd_error.wallet_encrypted" = "La billetera está encriptada";
 "lnd_error.lnd_not_running" = "Parece que \"lnd\" no ésta funcionando correctamente.";
 "lnd_error.transaction_output_is_dust" = "Transaction output is dust.";
-"lnd_error.no_outputs" = "No outputs.";
+"lnd_error.no_outputs" = "No hay salidas.";
 "lnd_error.rest_network_error" = "Chequea tu conexión a internet.";
 "lnd_error.unable_to_find_node" = "No se puede encontrar el nodo.";
-"lnd_error.insufficient_funds_available" = "Insufficient funds available to construct transaction.";
+"lnd_error.insufficient_funds_available" = "Fondos insuficientes disponibles para construir transacción.";
 "lnd_error.unknown_error" = "Error desconocido 1";
 "lnd_error.api_transformation_error" = "Error desconocido 2";
-"lnd_error.invoice_already_paid" = "Invoice is already paid.";
-"lnd_error.no_path_to_destination" = "Unable to find a path to destination.";
+"lnd_error.invoice_already_paid" = "La factura ya fue paga.";
+"lnd_error.no_path_to_destination" = "No es posible encontrar un camino al destino.";
 
 "rpc_connect_qrcode_error.btc_pay_expired" = "Parece que el código ha caducado.";
 "rpc_connect_qrcode_error.btc_pay_configuration_broken" = "No se pudo leer el archivo de configuraciones de BTCPay.";
@@ -264,14 +264,14 @@
 "scene.wallet.empty_state.title" = "Agregue fondos a su cartera Zap";
 "scene.wallet.empty_state.message" = "Tu cartera esta vacía! Para empezar, hay que depositar fondos.";
 "scene.wallet.empty_state.button_title" = "Deposita fondos";
-"scene.wallet.open_channel.message" = "You can’t transact on the the Lightning Network yet. Open a channel to start.";
-"scene.wallet.open_channel.action" = "Open a channel";
+"scene.wallet.open_channel.message" = "No puedes usar la red Lightning aún. Abre un canal para empezar.";
+"scene.wallet.open_channel.action" = "Abrir un canal";
 
-"scene.time_lock.headline" = "Wrong PIN";
+"scene.time_lock.headline" = "PIN incorrecto";
 "scene.time_lock.description" = "Su cartera está bloqueada para:";
 
-"scene.modal_pin.headline" = "Enter PIN";
-"scene.modal_pin.description" = "Please enter your PIN to continue";
+"scene.modal_pin.headline" = "Ingresa tu PIN";
+"scene.modal_pin.description" = "Por favor, ingresa tu PIN para continuar";
 
 "scene.history.cell.payment_sent" = "Pago enviado";
 "scene.history.cell.payment_received" = "Pago recibido";
@@ -306,8 +306,8 @@
 "scene.manage_wallets.title" = "Administrar Carteras";
 "scene.manage_wallets.cell.remote" = "remoto";
 "scene.manage_wallets.cell.local" = "local";
-"scene.manage_wallets.section_title.local" = "Local Wallet";
-"scene.manage_wallets.section_title.remote" = "Remote Wallets";
+"scene.manage_wallets.section_title.local" = "Billetera local";
+"scene.manage_wallets.section_title.remote" = "Billeteras remotas";
 
 "scene.channel_backup.title" = "Respaldo de Canal";
 "scene.channel_backup.cell_title" = "%@ canal.respaldo";
