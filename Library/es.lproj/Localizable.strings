@@ -75,7 +75,7 @@
 "scene.settings.section.wallet" = "Cartera";
 "scene.settings.item.version_warning" = "Tu lnd es version vieja (%@). Zap iOS funciona mejor con lnd version %@ o más nueva.";
 "scene.settings.item.bitcoin_unit" = "Unidad de Bitcoin";
-"scene.settings.item.lightning_request_expiry" = "Lightning Request Expiry";
+"scene.settings.item.lightning_request_expiry" = "Tiempo de vencimiento de facturas";
 "scene.settings.item.currency" = "Moneda";
 "scene.settings.item.currency.popular" = "Monedas populares";
 "scene.settings.item.block_explorer" = "Explorador de bloques";
