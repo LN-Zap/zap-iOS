@@ -8,5 +8,5 @@
 
 "applicationShortcutItem.send" = "Enviar";
 "applicationShortcutItem.request" = "Recibir";
-"NSCameraUsageDescription" = "Turn on camera access to scan QR codes.";
+"NSCameraUsageDescription" = "Habilita el acceso a la cámara en la configuración del teléfono para poder escanear el código QR.";
 "NSFaceIDUsageDescription" = "Zap requiere acceso a Face ID.";
