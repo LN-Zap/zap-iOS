@@ -136,15 +136,15 @@
 "scene.setup_pin.top_label.non_matching" = "Los PINs no coinciden. Por favor, intenta nuevamente.";
 "scene.setup_pin.top_label.validate" = "Ingresa el PIN nuevamente para validar.";
 
-"scene.onboarding.page_1.title" = "Tus **llaves**, tus **bitcoins**";
-"scene.onboarding.page_1.message" = "With Zap, you are in control of your money. To make sure your coins are always stored safely, Zap will provide a recovery phrase for you.";
+"scene.onboarding.page_1.title" = "Tus **llaves**, tu **dinero**";
+"scene.onboarding.page_1.message" = "Con Zap, tú estás en control de tu dinero. Para asegurar que tu dinero esté siempre seguro, Zap te va a proveer una frase de recuperación.";
 "scene.onboarding.page_1.button_title" = "Continuar";
 
-"scene.onboarding.page_2.title" = "Save your **recovery phrase**";
-"scene.onboarding.page_2.message" = "Write down your phrase. You can use your phrase to recover your funds anytime if you misplace your device.";
+"scene.onboarding.page_2.title" = "Guarda tu **frase de recuperación**";
+"scene.onboarding.page_2.message" = "Escribe tu frase en algo. Puedes usar tu frase de recuperación para recuperar tu dinero en cualquier momento en caso de que pierdas tu teléfono.";
 "scene.onboarding.page_2.button_title" = "Continuar";
 
-"scene.onboarding.page_3.title" = "Keep it **safe**";
+"scene.onboarding.page_3.title" = "Mantenla **segura**";
 "scene.onboarding.page_3.message" = "Make sure to keep your recovery phrase private. Store it somewhere only you will find it.";
 "scene.onboarding.page_3.button_title" = "Genera Frase de Respaldo";
 
