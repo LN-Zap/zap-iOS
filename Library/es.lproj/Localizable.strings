@@ -16,14 +16,14 @@
 "error.block_explorer.unsupported_network" = "%@ no es compatible con %@.";
 
 "lnd_error.wallet_encrypted" = "Wallet is encrypted";
-"lnd_error.lnd_not_running" = "Lnd does not seem to be running properly.";
+"lnd_error.lnd_not_running" = "Parece que \"lnd\" no ésta funcionando correctamente.";
 "lnd_error.transaction_output_is_dust" = "Transaction output is dust.";
 "lnd_error.no_outputs" = "No outputs.";
-"lnd_error.rest_network_error" = "Check your internet connection.";
-"lnd_error.unable_to_find_node" = "Unable to find node.";
+"lnd_error.rest_network_error" = "Chequea tu conexión a internet.";
+"lnd_error.unable_to_find_node" = "No se puede encontrar el nodo.";
 "lnd_error.insufficient_funds_available" = "Insufficient funds available to construct transaction.";
-"lnd_error.unknown_error" = "Unknown Error 1";
-"lnd_error.api_transformation_error" = "Unknown Error 2";
+"lnd_error.unknown_error" = "Error desconocido 1";
+"lnd_error.api_transformation_error" = "Error desconocido 2";
 "lnd_error.invoice_already_paid" = "Invoice is already paid.";
 "lnd_error.no_path_to_destination" = "Unable to find a path to destination.";
 
@@ -56,17 +56,17 @@
 
 "view.amount_input.placeholder" = "Cantidad";
 
-"expiry_time.one_minute" = "1 Minute";
-"expiry_time.ten_minutes" = "10 Minutes";
-"expiry_time.thirty_minutes" = "30 Minutes";
-"expiry_time.one_hour" = "1 Hour";
-"expiry_time.six_hours" = "6 Hours";
-"expiry_time.one_day" = "1 Day";
-"expiry_time.one_week" = "1 Week";
-"expiry_time.thirty_days" = "30 Days";
-"expiry_time.one_year" = "1 Year";
+"expiry_time.one_minute" = "1 Minuto";
+"expiry_time.ten_minutes" = "10 Minutos";
+"expiry_time.thirty_minutes" = "30 Minutos";
+"expiry_time.one_hour" = "1 Hora";
+"expiry_time.six_hours" = "6 Horas";
+"expiry_time.one_day" = "1 Día";
+"expiry_time.one_week" = "1 Semana";
+"expiry_time.thirty_days" = "30 Días";
+"expiry_time.one_year" = "1 Año";
 
-"scene.history.title" = "Activity";
+"scene.history.title" = "Actividad";
 "scene.history.empty_state_label" = "0 transacciones 🙁";
 
 "scene.settings.title" = "Configuración";
@@ -86,7 +86,7 @@
 "scene.settings.item.channel_backup" = "Respaldo de Canal";
 "scene.settings.item.remove_remote_node" = "Administrar Carteras";
 
-"scene.settings.item.change_pin" = "Change PIN";
+"scene.settings.item.change_pin" = "Cambiar PIN";
 "scene.settings.item.report_issue" = "Informar sobre un problema";
 "scene.settings.item.help" = "¿Necesita ayuda?";
 "scene.settings.item.privacy_policy" = "Politica de Privacidad";
@@ -128,15 +128,15 @@
 "scene.open_channel.suggested_peers.title" = "Nodos sugeridos";
 "scene.open_channel.paste_button.title" = "Pega dirección de nodo";
 
-"scene.pin.biometric.fallback.title" = "Use PIN";
+"scene.pin.biometric.fallback.title" = "Usar PIN";
 "scene.pin.biometric.reason" = "Acceder datos seguros";
 
 "scene.setup_pin.done_button" = "Hecho";
-"scene.setup_pin.top_label.initial" = "Choose a PIN.";
-"scene.setup_pin.top_label.non_matching" = "The PINs didn't match. Please try again.";
-"scene.setup_pin.top_label.validate" = "Enter the PIN again to validate.";
+"scene.setup_pin.top_label.initial" = "Elige un PIN.";
+"scene.setup_pin.top_label.non_matching" = "Los PINs no coinciden. Por favor, intenta nuevamente.";
+"scene.setup_pin.top_label.validate" = "Ingresa el PIN nuevamente para validar.";
 
-"scene.onboarding.page_1.title" = "Your **keys**, your **coins**";
+"scene.onboarding.page_1.title" = "Tus **llaves**, tus **bitcoins**";
 "scene.onboarding.page_1.message" = "With Zap, you are in control of your money. To make sure your coins are always stored safely, Zap will provide a recovery phrase for you.";
 "scene.onboarding.page_1.button_title" = "Continuar";
 
