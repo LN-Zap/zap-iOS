@@ -317,16 +317,16 @@
 "scene.channel_backup.error.localBackupFailed" = "Respaldo de archivo local falló.";
 "scene.channel_backup.error.lndError" = "Error al tratar de conseguir el respaldo del canala de lnd.";
 
-"scene.push_notification.headline" = "Stay **up to date**";
-"scene.push_notification.message" = "To keep your funds safe, Zap needs to sync once in a while. Do you want to be notified when your wallet needs to sync?";
+"scene.push_notification.headline" = "Mantente *al día*";
+"scene.push_notification.message" = "Para mantener tus fondos seguros, Zap necesita sincronizar tu billetera una vez cada tanto. ¿Quieres ser notificado cuando tu billetera necesite ser sincronizada?";
 "scene.push_notification.confirm_button_title" = "Activar notificaciones";
 "scene.push_notification.skip_button_title" = "Saltar";
 
-"scene.my_node.title" = "My Node";
-"scene.my_node.channels.title" = "Channels";
-"scene.my_node.channels.subtitle" = "Manage your capacity";
+"scene.my_node.title" = "Mi Nodo";
+"scene.my_node.channels.title" = "Canales";
+"scene.my_node.channels.subtitle" = "Maneja tu capacidad";
 "scene.my_node.channel_backup.title" = "Respaldo de canal";
-"scene.my_node.channel_backup.subtitle" = "Set up emergency options";
+"scene.my_node.channel_backup.subtitle" = "Configura las opciones de emergencia";
 "scene.my_node.settings.title" = "Configuración";
 "scene.my_node.settings.subtitle" = "Edita tus preferencias";
 "scene.my_node.support.title" = "Soporte";
