@@ -1,3 +1,7 @@
+# UNMAINTAINED
+
+Zap iOS is not actively maintained at the moment. If you're looking for a simple way to make lightning transactions take a look at [Strike](https://beta.strike.me/).
+
 [![Build Status](https://travis-ci.com/LN-Zap/zap-iOS.svg?branch=master)](https://travis-ci.com/LN-Zap/zap-iOS)
 [![GitHub license](https://img.shields.io/github/license/LN-Zap/zap-iOS.svg)](LICENSE)
 [![Crowdin](https://d322cqt584bo4o.cloudfront.net/zap-ios/localized.svg)](https://crowdin.com/project/zap-ios)
@@ -10,8 +14,6 @@
     <img src='https://raw.githubusercontent.com/LN-Zap/zap-iOS/master/docs/screenshot.jpg' height='450' alt='screenshot' />
   </a>
 </p>
-
-### [Download the mainnet alpha 🔥](https://testflight.apple.com/join/elC3EXAK)
 
 Zap is a free Lightning Network wallet focused on user experience and ease of use, with the overall goal of helping the cryptocurrency community scale Bitcoin.
 
@@ -70,10 +72,6 @@ If any of that sounds cool to you, feel free to dive in! [Open an issue][issues]
 If you would like to help contribute to the project, please see the [Contributing Guide](docs/CONTRIBUTING.md)
 
 And if you want to build the app yourself take a look at the [Installation Guide](docs/INSTALL.md)
-
-## Maintainers
-
-- [Otto Suess (@ottosuess)](https://github.com/ottosuess)
 
 ## License
 
