@@ -93,7 +93,7 @@ end
 
 lane :upload_screenshots do
   upload_to_app_store(
-    username: ENV['ITUNESCONNECT_USER'],
+    api_key_path: "fastlane/apikey.json",
     skip_binary_upload: true,
     skip_metadata: true
   )
@@ -101,7 +101,7 @@ end
 
 lane :upload_metadata do
   upload_to_app_store(
-    username: ENV['ITUNESCONNECT_USER'],
+    api_key_path: "fastlane/apikey.json",
     skip_binary_upload: true,
     skip_screenshots: true
   )
@@ -174,7 +174,7 @@ lane :mainnet do
 
   upload_to_testflight(
     app_identifier: "com.jackmallers.zap.mainnet",
-    username: ENV['ITUNESCONNECT_USER'],
+    api_key_path: "fastlane/apikey.json",
     skip_waiting_for_build_processing: true
   )
 
@@ -203,7 +203,7 @@ lane :testnet do
   )
 
   upload_to_testflight(
-    username: ENV['ITUNESCONNECT_USER'],
+    api_key_path: "fastlane/apikey.json",
     skip_waiting_for_build_processing: true
   )
 
@@ -230,7 +230,7 @@ lane :release do
   )
 
   upload_to_app_store(
-    username: ENV['ITUNESCONNECT_USER'],
+    api_key_path: "fastlane/apikey.json",
     skip_metadata: true,
     skip_screenshots: true
   )
