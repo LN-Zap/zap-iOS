@@ -26,7 +26,12 @@ final class SettingsViewController: GroupedTableViewController {
     ) {
         self.info = info
 
+        let paymentsAuthenticationSetting = PaymentsAuthenticationSettingsItem(
+            authenticationViewModel: authenticationViewModel
+        )
+
         var walletRows: [SettingsItem] = [
+            paymentsAuthenticationSetting,
             ChangePinSettingsItem(authenticationViewModel: authenticationViewModel)
         ]
 
@@ -55,6 +60,8 @@ final class SettingsViewController: GroupedTableViewController {
             ]), at: 0)
         }
         super.init(sections: sections)
+
+        paymentsAuthenticationSetting.fakeAuthViewController = self
     }
 
     required init?(coder aDecoder: NSCoder) {

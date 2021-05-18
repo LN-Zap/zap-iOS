@@ -24,3 +24,7 @@ protocol SubtitleSettingsItem: SettingsItem {
 protocol SelectableSettingsItem: SettingsItem {
     var isSelectedOption: Observable<Bool> { get }
 }
+
+protocol ToggleSettingsItem: SettingsItem {
+    var isToggled: Observable<Bool> { get }
+}

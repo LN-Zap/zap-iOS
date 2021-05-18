@@ -48,6 +48,15 @@ class GroupedTableViewController: UITableViewController {
                     .bind(to: detailLabel.reactive.text)
                     .dispose(in: reactive.bag)
             }
+        } else if let item = item as? ToggleSettingsItem {
+            cell = UITableViewCell(style: .default, reuseIdentifier: "ToggleSettingsCell")
+            
+            let toggle = UISwitch()
+            toggle.onTintColor = UIColor.Zap.lightningOrange
+            toggle.isOn = item.isToggled.value
+            toggle.reactive.isOn.bidirectionalBind(to: item.isToggled)
+            
+            cell.accessoryView = toggle
         } else {
             cell = UITableViewCell(style: .default, reuseIdentifier: "DefaultSettingsCell")
         }

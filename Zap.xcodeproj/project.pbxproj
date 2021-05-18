@@ -402,6 +402,7 @@
 		ADFEFA7120E628AC00FE1557 /* Lightning.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AD536BE620E62763002279BC /* Lightning.framework */; };
 		ADFEFA7920E62B1800FE1557 /* BlockChainHeightUpdater.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0D3C97F20629B9D0015C5D7 /* BlockChainHeightUpdater.swift */; };
 		B7136A44ACFDB94442D05503 /* Pods_Zap.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3B5CE8ECCAF4EA900FB2EDE1 /* Pods_Zap.framework */; };
+		B8C7C0FA246930DF00B4556A /* PaymentsAuthenticationSettingsItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8C7C0F9246930DF00B4556A /* PaymentsAuthenticationSettingsItem.swift */; };
 		CF11A5026DB63D2F0617B3CD /* Pods_LightningTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B7944BECD4B9EE6982B31E9A /* Pods_LightningTests.framework */; };
 		D191A2ABA2BF895DAD01E919 /* Pods_RPC_Widget.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3C3A10DFB274187D3242E528 /* Pods_RPC_Widget.framework */; };
 /* End PBXBuildFile section */
@@ -1028,6 +1029,7 @@
 		ADFE537F20D693F500B3BA2A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		ADFEFA7320E6294000FE1557 /* OnChainRequestAddressType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnChainRequestAddressType.swift; sourceTree = "<group>"; };
 		B7944BECD4B9EE6982B31E9A /* Pods_LightningTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_LightningTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		B8C7C0F9246930DF00B4556A /* PaymentsAuthenticationSettingsItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaymentsAuthenticationSettingsItem.swift; sourceTree = "<group>"; };
 		BFEA939DE8A6736499979EAF /* Pods-RPC-Lightning.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RPC-Lightning.release.xcconfig"; path = "Target Support Files/Pods-RPC-Lightning/Pods-RPC-Lightning.release.xcconfig"; sourceTree = "<group>"; };
 		C3CC119794C04517509253C2 /* Pods-RPC-Widget.debugremote.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RPC-Widget.debugremote.xcconfig"; path = "Target Support Files/Pods-RPC-Widget/Pods-RPC-Widget.debugremote.xcconfig"; sourceTree = "<group>"; };
 		C480EBE1AF18EF4DEB4BA918 /* Pods-Zap.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Zap.debug.xcconfig"; path = "Target Support Files/Pods-Zap/Pods-Zap.debug.xcconfig"; sourceTree = "<group>"; };
@@ -1302,6 +1304,7 @@
 				A091914A203B297D00FA525A /* CurrencySettingsItem.swift */,
 				5C18BB70234C09EB00BCF9D9 /* LightningRequestExpirySettingsItem.swift */,
 				AD6FFCA520AB0A3700B57330 /* OnChainRequestAddressTypeSettingsItem.swift */,
+				B8C7C0F9246930DF00B4556A /* PaymentsAuthenticationSettingsItem.swift */,
 				ADFE2E4B216CF4A800988243 /* PushViewControllerSettingsItem.swift */,
 				AD81C21621B80FCD00FA3FA9 /* SafariSettingsItem.swift */,
 				A0DDC06B2018C07100AEFF94 /* SettingsItem.swift */,
@@ -3289,6 +3292,7 @@
 				AD967FF021062AB20048085B /* RPCConnectQRCodeError+Localizable.swift in Sources */,
 				AD3DDF7122D39BC30031BFC8 /* Emoji.swift in Sources */,
 				AD615CF7211CAB0900680790 /* PaddingLabel.swift in Sources */,
+				B8C7C0FA246930DF00B4556A /* PaymentsAuthenticationSettingsItem.swift in Sources */,
 				AD391C6E20D16F89007EE22A /* SetupPinViewModel.swift in Sources */,
 				ADA179C62152864E001401F3 /* Storage.swift in Sources */,
 				ADA865BE20ECB88500B1B74B /* FilterViewController.swift in Sources */,
