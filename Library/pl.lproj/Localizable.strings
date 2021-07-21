@@ -50,9 +50,9 @@
 "unit.bitcoin.satoshi" = "Satoshis";
 
 "toast.invoice" = "Otrzymałem %@";
-"toast.invoice_memo" = "Otrzymałem %@ \"%@\"";
+"toast.invoice_memo" = "Otrzymano %@ \"%@\"";
 
-"transaction.no_destination_address" = "Brak adresy docelowego";
+"transaction.no_destination_address" = "Brak adresu docelowego";
 
 "view.amount_input.placeholder" = "Kwota";
 
@@ -157,7 +157,7 @@
 "scene.send.memo_headline" = "Notatka:";
 "scene.send.sending" = "Sending...";
 "scene.send.send_amount_too_small" = "Send amount is too small.";
-"scene.send.lightning.title" = "Wyślij płatność LN";
+"scene.send.lightning.title" = "Wyślij płatność Lightning";
 "scene.send.on_chain.title" = "Send On-Chain";
 "scene.send.on_chain.fee" = "Fee:";
 "scene.send.on_chain.fee.fast" = "Szybko";
