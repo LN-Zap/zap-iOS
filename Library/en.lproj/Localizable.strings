@@ -2,6 +2,9 @@
 "generic.qr_code.copy_button" = "Copy";
 "generic.qr_code.copy_success_message" = "Address has been copied to clipboard.";
 "generic.pasteboard.invalid_address" = "Invalid Address";
+"generic.pasteboard.lightnining_invoice_found_alert.send" = "Send";
+"generic.pasteboard.lightnining_invoice_found_alert.title" = "Lightning Invoice found on clipboard";
+"generic.pasteboard.lightnining_invoice_found_alert.message" = "Would you like to send a payment for the invoice?";
 "generic.qr_code.share_button" = "Share";
 "generic.cancel" = "Cancel";
 

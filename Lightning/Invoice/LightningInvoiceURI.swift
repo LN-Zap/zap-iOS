@@ -15,20 +15,14 @@ public struct LightningInvoiceURI: PaymentURI {
     public let address: String
     public let network: Network
     public var isCaseSensitive = false
+    private static let lightningPrefix = "lightning:"
 
     public var uriString: String {
         return "lightning:\(address)"
     }
 
     public init?(string: String) {
-        var string = string.lowercased()
-
-        let prefix = "lightning:"
-        if string.starts(with: prefix) {
-            string = String(string.dropFirst(prefix.count))
-        }
-
-        guard let invoice = Bolt11.decode(string: string) else { return nil }
+        guard let invoice = LightningInvoiceURI.decode(string: string) else { return nil }
 
         address = string
         amount = invoice.amount
@@ -38,5 +32,19 @@ public struct LightningInvoiceURI: PaymentURI {
 
     public init?(invoice: Invoice) {
         self.init(string: invoice.paymentRequest)
+    }
+
+    public static func validate(string: String) -> Bool {
+        return decode(string: string) != nil
+    }
+
+    private static func decode(string: String) -> Bolt11.Invoice? {
+        var string = string.lowercased()
+
+        if string.starts(with: lightningPrefix) {
+            string = String(string.dropFirst(lightningPrefix.count))
+        }
+
+        return Bolt11.decode(string: string)
     }
 }

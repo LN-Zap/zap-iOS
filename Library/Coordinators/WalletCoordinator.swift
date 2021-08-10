@@ -103,8 +103,29 @@ final class WalletCoordinator: NSObject, Coordinator {
         }
         
         self.currentState = state
+        if self.currentState == .syncing || self.currentState == .running {
+          detectPasteboardForLightningInvoice()
+        }
 
         UIApplication.shared.isIdleTimerDisabled = lightningService.connection == .local && state == .syncing
+    }
+  
+    private func detectPasteboardForLightningInvoice() {
+        let pasteboard = UIPasteboard.general
+        guard let string = pasteboard.string else { return }
+        guard LightningInvoiceURI.validate(string: string) else { return }
+
+        let alertController = UIAlertController(title: L10n.Generic.Pasteboard.LightniningInvoiceFoundAlert.title,
+                                                message: L10n.Generic.Pasteboard.LightniningInvoiceFoundAlert.message,
+                                                preferredStyle: .actionSheet)
+        let cancelAlertAction = UIAlertAction(title: L10n.Generic.cancel, style: .cancel, handler: nil)
+        let sendPaymentAction = UIAlertAction(title: L10n.Generic.Pasteboard.LightniningInvoiceFoundAlert.send,
+                                              style: .default) { _ in
+            self.presentSend(invoice: string)
+        }
+        alertController.addAction(cancelAlertAction)
+        alertController.addAction(sendPaymentAction)
+        (detailViewController ?? rootViewController).present(alertController, animated: true)
     }
 
     private func presentUnlockWallet() {

@@ -75,6 +75,14 @@ internal enum L10n {
     internal enum Pasteboard {
       /// Invalid Address
       internal static let invalidAddress = L10n.tr("Localizable", "generic.pasteboard.invalid_address")
+      internal enum LightniningInvoiceFoundAlert {
+        /// Would you like to send a payment for the invoice?
+        internal static let message = L10n.tr("Localizable", "generic.pasteboard.lightnining_invoice_found_alert.message")
+        /// Send
+        internal static let send = L10n.tr("Localizable", "generic.pasteboard.lightnining_invoice_found_alert.send")
+        /// Lightning Invoice found on clipboard
+        internal static let title = L10n.tr("Localizable", "generic.pasteboard.lightnining_invoice_found_alert.title")
+      }
     }
     internal enum QrCode {
       /// Copy
