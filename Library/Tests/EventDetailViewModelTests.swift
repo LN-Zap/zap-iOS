@@ -13,10 +13,6 @@ import XCTest
 // swiftlint:disable force_unwrapping
 final class EventDetailViewModelTests: XCTestCase {
 
-    private final class MockDelegate: EventDetailViewModelDelegate {
-        func openBlockExplorer(code: String, type: BlockExplorer.CodeType) {}
-    }
-
     func testTransactionEventZeroFees() {
         let transaction = Transaction(
             id: "100",
@@ -30,7 +26,7 @@ final class EventDetailViewModelTests: XCTestCase {
         let event = TransactionEvent(transaction: transaction)!
         let eventType = HistoryEventType.transactionEvent(event)
         let viewModel = EventDetailViewModel(event: eventType)
-        let configuration = viewModel.detailConfiguration(delegate: MockDelegate())
+        let configuration = viewModel.detailConfiguration()
 
         XCTAssertEqual(configuration.count, 5)
     }
@@ -48,7 +44,7 @@ final class EventDetailViewModelTests: XCTestCase {
         let event = TransactionEvent(transaction: transaction)!
         let eventType = HistoryEventType.transactionEvent(event)
         let viewModel = EventDetailViewModel(event: eventType)
-        let configuration = viewModel.detailConfiguration(delegate: MockDelegate())
+        let configuration = viewModel.detailConfiguration()
 
         XCTAssertEqual(configuration.count, 6)
         if

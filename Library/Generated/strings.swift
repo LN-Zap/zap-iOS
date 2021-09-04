@@ -68,6 +68,8 @@ internal enum L10n {
   internal enum Generic {
     /// Cancel
     internal static let cancel = L10n.tr("Localizable", "generic.cancel")
+    /// Continue
+    internal static let continueString = L10n.tr("Localizable", "generic.continue")
     internal enum Memo {
       /// What is this for?
       internal static let placeholder = L10n.tr("Localizable", "generic.memo.placeholder")
@@ -168,6 +170,14 @@ internal enum L10n {
   }
 
   internal enum Scene {
+    internal enum BlockExplorer {
+      /// Always Continue
+      internal static let alwaysContinue = L10n.tr("Localizable", "scene.block_explorer.always_continue")
+      /// Warning: Privacy Leak
+      internal static let title = L10n.tr("Localizable", "scene.block_explorer.title")
+      /// Looking up your own addresses on a block explorer leaks your privacy to the site operator.
+      internal static let message = L10n.tr("Localizable", "scene.block_explorer.message")
+    }
     internal enum ChannelBackup {
       /// %@ channel.backup
       internal static func cellTitle(_ p1: String) -> String {

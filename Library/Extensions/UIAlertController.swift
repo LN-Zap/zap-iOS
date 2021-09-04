@@ -45,4 +45,24 @@ extension UIAlertController {
 
         return alertController
     }
+    
+    static func blockExplorerWarningAlertController(continueAction: @escaping () -> Void) -> UIAlertController {
+        let title = L10n.Scene.BlockExplorer.title
+        let message = L10n.Scene.BlockExplorer.message
+        let alertController = UIAlertController(title: title, message: message, preferredStyle: .alert)
+        let cancelAlertAction = UIAlertAction(title: L10n.Generic.cancel, style: .cancel, handler: nil)
+
+        let continueAlertAction = UIAlertAction(title: L10n.Generic.continueString, style: .default) { _ in
+            continueAction()
+        }
+        let alwaysContinueAlertAction = UIAlertAction(title: L10n.Scene.BlockExplorer.alwaysContinue, style: .default) { _ in
+            UserDefaults.Keys.didSelectContinueToBlockExplorer.set(true)
+            continueAction()
+        }
+        alertController.addAction(cancelAlertAction)
+        alertController.addAction(continueAlertAction)
+        alertController.addAction(alwaysContinueAlertAction)
+
+        return alertController
+    }
 }

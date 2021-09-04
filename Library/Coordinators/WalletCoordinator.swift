@@ -225,7 +225,7 @@ final class WalletCoordinator: NSObject, Coordinator {
         guard let network = lightningService.infoService.network.value else { return }
         do {
             guard let url = try Settings.shared.blockExplorer.value.url(network: network, code: code, type: type) else { return }
-            presentSafariViewController(for: url)
+            UserDefaults.Keys.didSelectContinueToBlockExplorer.get(defaultValue: false) ? presentSafariViewController(for: url) : presentBlockExplorerWarning(for: url)
         } catch BlockExplorerError.unsupportedNetwork {
             Toast.presentError(L10n.Error.BlockExplorer.unsupportedNetwork(Settings.shared.blockExplorer.value.localized, network.localized))
         } catch {
@@ -301,6 +301,14 @@ final class WalletCoordinator: NSObject, Coordinator {
         safariViewController.preferredBarTintColor = UIColor.Zap.deepSeaBlue
         safariViewController.preferredControlTintColor = UIColor.Zap.lightningOrange
         (detailViewController ?? rootViewController).present(safariViewController, animated: true)
+    }
+    
+    private func presentBlockExplorerWarning(for url: URL) {
+        let alertController = UIAlertController.blockExplorerWarningAlertController { [weak self] in
+            guard let self = self else { return }
+            self.presentSafariViewController(for: url)
+        }
+        (detailViewController ?? rootViewController).present(alertController, animated: true)
     }
 
     private func dismissDetailViewController() {
