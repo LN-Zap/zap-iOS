@@ -11,9 +11,13 @@
 		1D0478619AAC5C1645215BB4 /* Pods_LibraryTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 72A8F39CA5D73CBA85937838 /* Pods_LibraryTests.framework */; };
 		37DC0DB072FDF3A74598EA06 /* Pods_RPC_Library.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 71E4E79032A371505A0E58C1 /* Pods_RPC_Library.framework */; };
 		4295D217D276D875A94F4622 /* Pods_RPC_SwiftLnd.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0B55A0B343498CAAB75872BD /* Pods_RPC_SwiftLnd.framework */; };
+		5C10EAD92352DE5900FB80DA /* LightningPaymentFeeLimitSettingsItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C10EAD82352DE5900FB80DA /* LightningPaymentFeeLimitSettingsItem.swift */; };
 		5C18BB6F234C015100BCF9D9 /* ExpiryTime.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C18BB6E234C015100BCF9D9 /* ExpiryTime.swift */; };
 		5C18BB71234C09EB00BCF9D9 /* LightningRequestExpirySettingsItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C18BB70234C09EB00BCF9D9 /* LightningRequestExpirySettingsItem.swift */; };
 		5C18BB77234C0BF400BCF9D9 /* ExpiryTime+Localizable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C18BB76234C0BF400BCF9D9 /* ExpiryTime+Localizable.swift */; };
+		5CA13678236555A3003D4B98 /* PaymentFeeLimitPercentage+Localizable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CA13677236555A3003D4B98 /* PaymentFeeLimitPercentage+Localizable.swift */; };
+		5CC505812379FF5E00FB1C19 /* PaymentFeeLimitPercentage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CD423AC2364FB160031194F /* PaymentFeeLimitPercentage.swift */; };
+		5CF94808237A27D40086DD5B /* SendViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CF94807237A27D40086DD5B /* SendViewModelTests.swift */; };
 		5E7CF0840E8C74EB58F80DB5 /* Pods_SnapshotUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C6AEA9B7EDFEBE4BBEB56DAD /* Pods_SnapshotUITests.framework */; };
 		6A9518DA222DCFCA0008FE4F /* Array2DElement.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A9518D9222DCFCA0008FE4F /* Array2DElement.swift */; };
 		7BE67678020C235E19A3D64E /* Pods_SwiftLndTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 71876EABB08A5425C9DA33C7 /* Pods_SwiftLndTests.framework */; };
@@ -557,9 +561,13 @@
 		4D052C7425BFF1AED850782A /* Pods-LibraryTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-LibraryTests.debug.xcconfig"; path = "Target Support Files/Pods-LibraryTests/Pods-LibraryTests.debug.xcconfig"; sourceTree = "<group>"; };
 		4E372F564A61EB8E70FA424B /* Pods-SnapshotUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SnapshotUITests.release.xcconfig"; path = "Target Support Files/Pods-SnapshotUITests/Pods-SnapshotUITests.release.xcconfig"; sourceTree = "<group>"; };
 		5284CC239994D6B844AD6ACE /* Pods-Zap.debugremote.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Zap.debugremote.xcconfig"; path = "Target Support Files/Pods-Zap/Pods-Zap.debugremote.xcconfig"; sourceTree = "<group>"; };
+		5C10EAD82352DE5900FB80DA /* LightningPaymentFeeLimitSettingsItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LightningPaymentFeeLimitSettingsItem.swift; sourceTree = "<group>"; };
 		5C18BB6E234C015100BCF9D9 /* ExpiryTime.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExpiryTime.swift; sourceTree = "<group>"; };
 		5C18BB70234C09EB00BCF9D9 /* LightningRequestExpirySettingsItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LightningRequestExpirySettingsItem.swift; sourceTree = "<group>"; };
 		5C18BB76234C0BF400BCF9D9 /* ExpiryTime+Localizable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ExpiryTime+Localizable.swift"; sourceTree = "<group>"; };
+		5CA13677236555A3003D4B98 /* PaymentFeeLimitPercentage+Localizable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "PaymentFeeLimitPercentage+Localizable.swift"; sourceTree = "<group>"; };
+		5CD423AC2364FB160031194F /* PaymentFeeLimitPercentage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaymentFeeLimitPercentage.swift; sourceTree = "<group>"; };
+		5CF94807237A27D40086DD5B /* SendViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SendViewModelTests.swift; sourceTree = "<group>"; };
 		5E8DFC750E5DE2109A4B90CB /* Pods-RPC-Lightning.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RPC-Lightning.debug.xcconfig"; path = "Target Support Files/Pods-RPC-Lightning/Pods-RPC-Lightning.debug.xcconfig"; sourceTree = "<group>"; };
 		5F7C5272C0C2909B7C7987FF /* Pods-SnapshotUITests.debugremote.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SnapshotUITests.debugremote.xcconfig"; path = "Target Support Files/Pods-SnapshotUITests/Pods-SnapshotUITests.debugremote.xcconfig"; sourceTree = "<group>"; };
 		6A9518D9222DCFCA0008FE4F /* Array2DElement.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Array2DElement.swift; sourceTree = "<group>"; };
@@ -1181,6 +1189,14 @@
 			path = Pods;
 			sourceTree = "<group>";
 		};
+		5CC505802379FF2800FB1C19 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				5CD423AC2364FB160031194F /* PaymentFeeLimitPercentage.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
 		A01009322014BD960001EF94 /* Scenes */ = {
 			isa = PBXGroup;
 			children = (
@@ -1300,6 +1316,7 @@
 				AD28CB7A211DE93300A31004 /* BlockExplorerSettingsItem.swift */,
 				ADCD5B0E20D7E40C0037F156 /* ChangePinSettingsItem.swift */,
 				A091914A203B297D00FA525A /* CurrencySettingsItem.swift */,
+				5C10EAD82352DE5900FB80DA /* LightningPaymentFeeLimitSettingsItem.swift */,
 				5C18BB70234C09EB00BCF9D9 /* LightningRequestExpirySettingsItem.swift */,
 				AD6FFCA520AB0A3700B57330 /* OnChainRequestAddressTypeSettingsItem.swift */,
 				ADFE2E4B216CF4A800988243 /* PushViewControllerSettingsItem.swift */,
@@ -1468,6 +1485,7 @@
 			isa = PBXGroup;
 			children = (
 				A06660F8202E070D00EE32FA /* Items */,
+				5CC505802379FF2800FB1C19 /* Model */,
 				A0919144203B1CF400FA525A /* GroupedTableViewController.swift */,
 				A0DDC06D2018C08800AEFF94 /* Section.swift */,
 				A0A05A5620149A0D0007D1C9 /* Settings.swift */,
@@ -1805,6 +1823,7 @@
 				5C18BB76234C0BF400BCF9D9 /* ExpiryTime+Localizable.swift */,
 				A0C2EABD206F8B5B003AE56E /* Localizable.swift */,
 				AD77464D2076162300EC596B /* Network+Localizable.swift */,
+				5CA13677236555A3003D4B98 /* PaymentFeeLimitPercentage+Localizable.swift */,
 				AD967FEF21062AB20048085B /* RPCConnectQRCodeError+Localizable.swift */,
 				AD3A7BCF237C1EC00025632D /* LndApiError+Localizable.swift */,
 			);
@@ -2280,6 +2299,7 @@
 				ADFE537F20D693F500B3BA2A /* Info.plist */,
 				ADFCEAE021776E1C00370242 /* EventDetailViewModelTests.swift */,
 				A0F9AEE2206E3E0300E93DCA /* InputNumberFormatterTests.swift */,
+				5CF94807237A27D40086DD5B /* SendViewModelTests.swift */,
 				AD81C21A21B86A3100FA3FA9 /* SyncPercentageEstimatorTests.swift */,
 			);
 			path = Tests;
@@ -3128,6 +3148,7 @@
 				AD391C3920D16F0B007EE22A /* BockExplorer.swift in Sources */,
 				ADA81E9E210DE14100B7C6F2 /* UIView.swift in Sources */,
 				ADDD13B62119CE740035D2F9 /* StackViewElement.swift in Sources */,
+				5CC505812379FF5E00FB1C19 /* PaymentFeeLimitPercentage.swift in Sources */,
 				ADA58F9C22049470009A5494 /* WalletConfigurationStore.swift in Sources */,
 				AD27021F22E06E5000D4BF27 /* Keychain.swift in Sources */,
 				AD391C9A20D16FA8007EE22A /* QRCodeScannerView.swift in Sources */,
@@ -3142,6 +3163,7 @@
 				AD931BD122DE23CC0048431C /* Password.swift in Sources */,
 				ADA2DD03225CDAED007482D9 /* ChannelQRCodeScannerViewController.swift in Sources */,
 				ADEEB5362134669B00D2F992 /* ModalPinViewController.swift in Sources */,
+				5C10EAD92352DE5900FB80DA /* LightningPaymentFeeLimitSettingsItem.swift in Sources */,
 				AD391CDB20D16FE1007EE22A /* HistoryViewController.swift in Sources */,
 				AD667E572136E622007B9160 /* TimeLockStore.swift in Sources */,
 				AD4B4BE122EAF0CE0029773A /* EmptyStateView.swift in Sources */,
@@ -3295,6 +3317,7 @@
 				ADCEAFD522579C2A004F605B /* LoadingAnimationView.swift in Sources */,
 				AD391C5F20D16F7A007EE22A /* RecoverWalletViewController.swift in Sources */,
 				AD391C6B20D16F89007EE22A /* InputNumberFormatter.swift in Sources */,
+				5CA13678236555A3003D4B98 /* PaymentFeeLimitPercentage+Localizable.swift in Sources */,
 				AD391C4920D16F68007EE22A /* ModalPresentationController.swift in Sources */,
 				AD391CA820D16FA8007EE22A /* SendQRCodeScannerStrategy.swift in Sources */,
 				AD391C5520D16F7A007EE22A /* ConnectRemoteNodeViewController.swift in Sources */,
@@ -3473,6 +3496,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5CF94808237A27D40086DD5B /* SendViewModelTests.swift in Sources */,
 				ADFE538520D693FF00B3BA2A /* InputNumberFormatterTests.swift in Sources */,
 				ADFCEAE221776E2100370242 /* EventDetailViewModelTests.swift in Sources */,
 				AD81C21B21B86A3100FA3FA9 /* SyncPercentageEstimatorTests.swift in Sources */,

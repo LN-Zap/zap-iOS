@@ -8,6 +8,7 @@
 import Bond
 import Foundation
 import Lightning
+import ReactiveKit
 import SwiftBTC
 import SwiftLnd
 
@@ -47,13 +48,26 @@ final class SendViewModel: NSObject {
             }
         }
     }
+    
+    struct FeeInfo {
+        var feePercentage: Decimal
+        var userFeeLimitPercentage: Int
+        var sendFeeLimitPercentage: Int?
+    }
+    
+    enum SendError: Error {
+        case feeGreaterThanPayment(FeeInfo)
+        case feePercentageGreaterThanUserLimit(FeeInfo)
+    }
 
+    let paymentFeeThreshold: Satoshi = 100
     let fee = Observable<Loadable<Result<Satoshi, LoadingError>>>(.loading)
-
     let method: SendMethod
-
     let subtitleText = Observable<String?>(nil)
     let isSubtitleTextWarning = Observable(false)
+    let sendStatus = Subject<Int?, SendError>()
+    
+    var feePercent: Decimal?
 
     var amount: Satoshi? {
         didSet {
@@ -129,6 +143,71 @@ final class SendViewModel: NSObject {
         setupPrimaryCurrencyListener()
     }
 
+    func send(feeLimitPercent: Int?, completion: @escaping ApiCompletion<Success>) {
+        guard let amount = amount else { return }
+
+        isSending = true
+
+        let internalComplection: ApiCompletion<Success> = { [weak self] in
+            if case .failure = $0 {
+                self?.isSending = false
+            }
+            completion($0)
+        }
+        
+        switch method {
+        case .lightning(let paymentRequest):
+            lightningService.transactionService.sendPayment(paymentRequest, amount: amount, feeLimitPercent: feeLimitPercent, completion: internalComplection)
+        case .onChain(let bitcoinURI):
+            lightningService.transactionService.sendCoins(bitcoinURI: bitcoinURI, amount: amount, confirmationTarget: confirmationTarget, completion: internalComplection)
+        }
+    }
+    
+    func determineSendStatus() {
+        switch method {
+        case .lightning:
+            self.determineLightningSendStatus()
+        default:
+            self.sendStatus.receive(nil)
+        }
+    }
+    
+    private func determineLightningSendStatus() {
+        guard let amount = amount, let feePercent = feePercent else { return }
+        
+        let actualFee: Satoshi
+        
+        switch fee.value {
+        case .element(let fee):
+            switch fee {
+            case .success(let fee):
+                actualFee = fee
+            default:
+                return
+            }
+        default:
+            return
+        }
+        
+        if amount <= paymentFeeThreshold {
+            if actualFee >= amount {
+                self.sendStatus.receive(event: .failed(.feeGreaterThanPayment(FeeInfo(feePercentage: feePercent, userFeeLimitPercentage: Settings.shared.lightningPaymentFeeLimit.value.rawValue, sendFeeLimitPercentage: nil))))
+            } else {
+                self.sendStatus.receive(100)
+            }
+        } else if actualFee >= amount {
+            self.sendStatus.receive(event: .failed(.feeGreaterThanPayment(FeeInfo(feePercentage: feePercent, userFeeLimitPercentage: Settings.shared.lightningPaymentFeeLimit.value.rawValue, sendFeeLimitPercentage: nil))))
+        } else if Settings.shared.lightningPaymentFeeLimit.value == .none {
+            self.sendStatus.receive(nil)
+        } else {
+            if feePercent > Decimal(Settings.shared.lightningPaymentFeeLimit.value.rawValue) {
+                self.sendStatus.receive(event: .failed(.feePercentageGreaterThanUserLimit(FeeInfo(feePercentage: feePercent, userFeeLimitPercentage: Settings.shared.lightningPaymentFeeLimit.value.rawValue, sendFeeLimitPercentage: 100))))
+            } else {
+                self.sendStatus.receive(Settings.shared.lightningPaymentFeeLimit.value.rawValue)
+            }
+        }
+    }
+
     private func setupPrimaryCurrencyListener() {
         Settings.shared.primaryCurrency
             .compactMap { [method, maxPaymentAmount] in
@@ -177,9 +256,11 @@ final class SendViewModel: NSObject {
     private func updateFee() {
         if isAmountValid {
             fee.value = .loading
+            feePercent = nil
             debounceFetchFee()
         } else {
             fee.value = .element(.failure(.invalidAmount))
+            feePercent = nil
         }
     }
 
@@ -199,12 +280,15 @@ final class SendViewModel: NSObject {
                 self.isTransactionDust = false
                 if let fee = result.fee {
                     self.fee.value = .element(.success(fee))
+                    self.calculateFeePercent(fee: fee, amount: result.amount)
                 } else {
                     self.fee.value = .element(.failure(.invalidAmount))
+                    self.feePercent = nil
                 }
             case .failure(let lndApiError):
                 self.isTransactionDust = lndApiError == .transactionOutputIsDust
                 self.fee.value = amount > 0 ? .element(Result.failure(.lndApiError(lndApiError))) : .element(.failure(.invalidAmount))
+                self.feePercent = nil
                 self.updateIsUIEnabled()
             }
         }
@@ -216,24 +300,8 @@ final class SendViewModel: NSObject {
             lightningService.transactionService.onChainFees(address: bitcoinURI.bitcoinAddress, amount: amount, confirmationTarget: confirmationTarget, completion: feeCompletion)
         }
     }
-
-    func send(completion: @escaping ApiCompletion<Success>) {
-        guard let amount = amount else { return }
-
-        isSending = true
-
-        let internalComplection: ApiCompletion<Success> = { [weak self] in
-            if case .failure = $0 {
-                self?.isSending = false
-            }
-            completion($0)
-        }
-
-        switch method {
-        case .lightning(let paymentRequest):
-            lightningService.transactionService.sendPayment(paymentRequest, amount: amount, completion: internalComplection)
-        case .onChain(let bitcoinURI):
-            lightningService.transactionService.sendCoins(bitcoinURI: bitcoinURI, amount: amount, confirmationTarget: confirmationTarget, completion: internalComplection)
-        }
+    
+    private func calculateFeePercent(fee: Satoshi, amount: Satoshi) {
+        feePercent = ( fee / amount ) * 100
     }
 }

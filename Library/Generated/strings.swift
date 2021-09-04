@@ -155,6 +155,11 @@ internal enum L10n {
       }
     }
   }
+    
+  internal enum PaymentFeeLimitPercentage {
+    /// None
+    internal static let none = L10n.tr("Localizable", "payment_fee_limit_percentage.none")
+  }
 
   internal enum RpcConnectQrcodeError {
     /// Could not read BTCPay configurations file.
@@ -633,9 +638,27 @@ internal enum L10n {
       internal static let successLabel = L10n.tr("Localizable", "scene.send.success_label")
       /// Send
       internal static let title = L10n.tr("Localizable", "scene.send.title")
+      /// The fee for this payment (%@) exceeds the limit specified in the settings (%@).
+      internal static func feeExceedsUserLimit(_ p1: String, _ p2: String) -> String {
+        return L10n.tr("Localizable", "scene.send.fee_exceeds_user_limit", p1, p2)
+      }
+      /// The fee for this payment (%@ sats) will be higher than the payment amount (%@ sats).
+      internal static func feeExceedsPayment(_ p1: String, _ p2: String) -> String {
+        return L10n.tr("Localizable", "scene.send.fee_exceeds_payment_amount", p1, p2)
+      }
+      internal enum FeeAlert {
+        /// Fee Limit Alert
+        internal static let title = L10n.tr("Localizable", "scene.send.fee_alert.title")
+        internal enum ConfirmButton {
+          /// Yes
+          internal static let title = L10n.tr("Localizable", "scene.send.fee_alert.confirm_button.title")
+        }
+      }
       internal enum Lightning {
         /// Send Lightning Payment
         internal static let title = L10n.tr("Localizable", "scene.send.lightning.title")
+        /// Do you really want to pay this invoice?
+        internal static let paymentConfirmation = L10n.tr("Localizable", "scene.send.lightning.payment_confirmation")
       }
       internal enum OnChain {
         /// Fee:
@@ -694,6 +717,8 @@ internal enum L10n {
         internal static let currency = L10n.tr("Localizable", "scene.settings.item.currency")
         /// Need Help?
         internal static let help = L10n.tr("Localizable", "scene.settings.item.help")
+        /// Lightning Payment Fee Limit
+        internal static let lightningPaymentFeeLimit = L10n.tr("Localizable", "scene.settings.item.lightning_payment_fee_limit")
         /// Lightning Request Expiry
         internal static let lightningRequestExpiry = L10n.tr("Localizable", "scene.settings.item.lightning_request_expiry")
         /// Show lnd Log

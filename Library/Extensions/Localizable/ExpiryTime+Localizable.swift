@@ -12,23 +12,23 @@ extension ExpiryTime: Localizable {
     public var localized: String {
         switch self {
         case .oneMinute:
-          return L10n.ExpiryTime.oneMinute
+            return L10n.ExpiryTime.oneMinute
         case .tenMinutes:
-          return L10n.ExpiryTime.tenMinutes
+            return L10n.ExpiryTime.tenMinutes
         case .thirtyMinutes:
-          return L10n.ExpiryTime.thirtyMinutes
+            return L10n.ExpiryTime.thirtyMinutes
         case .oneHour:
-          return L10n.ExpiryTime.oneHour
+            return L10n.ExpiryTime.oneHour
         case .sixHours:
-          return L10n.ExpiryTime.sixHours
+            return L10n.ExpiryTime.sixHours
         case .oneDay:
-          return L10n.ExpiryTime.oneDay
+            return L10n.ExpiryTime.oneDay
         case .oneWeek:
-          return L10n.ExpiryTime.oneWeek
+            return L10n.ExpiryTime.oneWeek
         case .thirtyDays:
-          return L10n.ExpiryTime.thirtyDays
+            return L10n.ExpiryTime.thirtyDays
         case .oneYear:
-          return L10n.ExpiryTime.oneYear
-      }
+            return L10n.ExpiryTime.oneYear
+        }
     }
 }

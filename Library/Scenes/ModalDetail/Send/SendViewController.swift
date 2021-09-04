@@ -11,6 +11,29 @@ import SwiftBTC
 import SwiftLnd
 import UIKit
 
+extension Formatter {
+    static let asPercentage: NumberFormatter = {
+        let formatter = NumberFormatter()
+        formatter.numberStyle = .percent
+        formatter.minimumSignificantDigits = 1
+        formatter.maximumSignificantDigits = 3
+        formatter.multiplier = 1
+        return formatter
+    }()
+}
+
+extension Int {
+    var formattedAsPercentage: String {
+        return Formatter.asPercentage.string(for: self) ?? ""
+    }
+}
+
+extension Decimal {
+    var formattedAsPercentage: String {
+        return Formatter.asPercentage.string(for: self) ?? ""
+    }
+}
+
 final class SendViewController: ModalDetailViewController {
     private let viewModel: SendViewModel
     private let authenticationViewModel: AuthenticationViewModel
@@ -87,6 +110,14 @@ final class SendViewController: ModalDetailViewController {
                 self?.amountInputView?.subtitleTextColor = $0
             }
             .dispose(in: reactive.bag)
+        
+        viewModel.sendStatus.observeNext { [weak self] feeLimitPercent in
+            self?.triggerSend(feeLimitPercent: feeLimitPercent)
+        }.dispose(in: reactive.bag)
+        
+        viewModel.sendStatus.observeFailed { [weak self] error in
+            self?.showFeeLimitAlert(sendError: error)
+        }.dispose(in: reactive.bag)
     }
 
     private func addAmountInputView() {
@@ -160,13 +191,40 @@ final class SendViewController: ModalDetailViewController {
     }
 
     private func sendButtonTapped() {
-        authenticate { [weak self] result in
-            switch result {
-            case .success:
-                self?.send()
-            case .failure:
-                Toast.presentError(L10n.Scene.Send.authenticationFailed)
+        viewModel.determineSendStatus()
+    }
+    
+    private func showFeeLimitAlert(sendError: SendViewModel.SendError) {
+        let message: String
+        switch viewModel.method {
+        case .lightning:
+            let sendFeeLimitPercentage: Int?
+            
+            switch sendError {
+            case .feeGreaterThanPayment(let feeInfo):
+                message = """
+                \(L10n.Scene.Send.feeExceedsPayment(feeInfo.feePercentage.formattedAsPercentage, feeInfo.userFeeLimitPercentage.formattedAsPercentage))
+                
+                \(L10n.Scene.Send.Lightning.paymentConfirmation)
+                """
+                
+                sendFeeLimitPercentage = feeInfo.sendFeeLimitPercentage
+            case .feePercentageGreaterThanUserLimit(let feeInfo):
+                message = """
+                \(L10n.Scene.Send.feeExceedsUserLimit(feeInfo.feePercentage.formattedAsPercentage, feeInfo.userFeeLimitPercentage.formattedAsPercentage))
+                
+                \(L10n.Scene.Send.Lightning.paymentConfirmation)
+                """
+                
+                sendFeeLimitPercentage = feeInfo.sendFeeLimitPercentage
             }
+            
+            let controller = UIAlertController.feeLimitAlertController(message: message) { [weak self] in
+                self?.triggerSend(feeLimitPercent: sendFeeLimitPercentage)
+            }
+            self.present(controller, animated: true)
+        default:
+            return
         }
     }
 
@@ -252,29 +310,33 @@ final class SendViewController: ModalDetailViewController {
             self?.dismissParent()
         }
     }
+    
+    private func triggerSend(feeLimitPercent: Int?) {
+        authenticate { [weak self] result in
+            switch result {
+            case .success:
+                self?.presentLoading()
+                let sendStartTime = Date()
+                
+                self?.viewModel.send(feeLimitPercent: feeLimitPercent) { result in
+                    let minimumLoadingTime: TimeInterval = 1
+                    let sendingTime = Date().timeIntervalSince(sendStartTime)
+                    let delay = max(0, minimumLoadingTime - sendingTime)
 
-    private func send() {
-        let sendStartTime = Date()
-
-        presentLoading()
-
-        viewModel.send { [weak self] result in
-            let minimumLoadingTime: TimeInterval = 1
-            let sendingTime = Date().timeIntervalSince(sendStartTime)
-            let delay = max(0, minimumLoadingTime - sendingTime)
-
-            DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + delay) {
-                switch result {
-                case .success:
-
-                    self?.presentSuccess()
-                case .failure(let error):
-                    UINotificationFeedbackGenerator().notificationOccurred(.error)
-
-                    Toast.presentError(error.localizedDescription)
-                    self?.amountInputView?.isEnabled = true
-                    self?.recoverFromLoadingState()
+                    DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + delay) {
+                        switch result {
+                        case .success:
+                            self?.presentSuccess()
+                        case .failure(let error):
+                            UINotificationFeedbackGenerator().notificationOccurred(.error)
+                            Toast.presentError(error.localizedDescription)
+                            self?.amountInputView?.isEnabled = true
+                            self?.recoverFromLoadingState()
+                        }
+                    }
                 }
+            case .failure:
+                Toast.presentError(L10n.Scene.Send.authenticationFailed)
             }
         }
     }

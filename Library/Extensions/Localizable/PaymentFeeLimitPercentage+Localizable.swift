@@ -1,0 +1,19 @@
+//
+//  Library
+//
+//  Created by Christopher Pinski on 10/26/19.
+//  Copyright © 2019 Zap. All rights reserved.
+//
+
+import Foundation
+
+extension PaymentFeeLimitPercentage: Localizable {
+    public var localized: String {
+        switch self {
+        case .none:
+            return L10n.PaymentFeeLimitPercentage.none
+        default:
+            return self.rawValue.formattedAsPercentage
+        }
+    }
+}

@@ -14,6 +14,7 @@ import SwiftLnd
 public final class Settings: NSObject, Persistable {
     // Persistable
     public typealias Value = SettingsData
+    
     public var data: SettingsData = SettingsData() {
         didSet {
             savePersistable()
@@ -28,6 +29,7 @@ public final class Settings: NSObject, Persistable {
         var blockExplorer: BlockExplorer?
         var onChainRequestAddressType: OnChainRequestAddressType?
         var lightningRequestExpiry: ExpiryTime?
+        var lightningPaymentFeeLimit: PaymentFeeLimitPercentage?
     }
 
     public let primaryCurrency: Observable<Currency>
@@ -38,6 +40,7 @@ public final class Settings: NSObject, Persistable {
     let blockExplorer: Observable<BlockExplorer>
     let onChainRequestAddressType: Observable<OnChainRequestAddressType>
     let lightningRequestExpiry: Observable<ExpiryTime>
+    let lightningPaymentFeeLimit: Observable<PaymentFeeLimitPercentage>
 
     public static let shared = Settings()
 
@@ -55,6 +58,7 @@ public final class Settings: NSObject, Persistable {
         blockExplorer = Observable(data?.blockExplorer ?? .blockstream)
         onChainRequestAddressType = Observable(data?.onChainRequestAddressType ?? .witnessPubkeyHash)
         lightningRequestExpiry = Observable(data?.lightningRequestExpiry ?? .oneHour)
+        lightningPaymentFeeLimit = Observable(data?.lightningPaymentFeeLimit ?? .one)
         
         super.init()
 
@@ -95,6 +99,11 @@ public final class Settings: NSObject, Persistable {
             .dropFirst(1)
             .observeNext { [weak self] in
                 self?.data.lightningRequestExpiry = $0
+            },
+         lightningPaymentFeeLimit
+            .skip(first: 1)
+            .observeNext { [weak self] in
+                self?.data.lightningPaymentFeeLimit = $0
             }
         ].dispose(in: reactive.bag)
     }

@@ -45,4 +45,20 @@ extension UIAlertController {
 
         return alertController
     }
+    
+    static func feeLimitAlertController(message: String, sendAction: @escaping () -> Void) -> UIAlertController {
+        let title: String = L10n.Scene.Send.FeeAlert.title
+        let confirmButtonTitle: String = L10n.Scene.Send.FeeAlert.ConfirmButton.title
+
+        let alertController = UIAlertController(title: title, message: message, preferredStyle: .alert)
+        let cancelAlertAction = UIAlertAction(title: L10n.Generic.cancel, style: .cancel, handler: nil)
+
+        let confirmAlertAction = UIAlertAction(title: confirmButtonTitle, style: .default) { _ in
+            sendAction()
+        }
+        alertController.addAction(cancelAlertAction)
+        alertController.addAction(confirmAlertAction)
+
+        return alertController
+    }
 }
