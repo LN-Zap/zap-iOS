@@ -16,7 +16,7 @@
 "error.block_explorer.unsupported_network" = "%@ لا يدعم %@.";
 
 "lnd_error.wallet_encrypted" = "Wallet is encrypted";
-"lnd_error.lnd_not_running" = "Lnd does not seem to be running properly.";
+"lnd_error.lnd_not_running" = "Just want to confirm that with yourself.";
 "lnd_error.transaction_output_is_dust" = "Transaction output is dust.";
 "lnd_error.no_outputs" = "No outputs.";
 "lnd_error.rest_network_error" = "Check your internet connection.";
