@@ -16,7 +16,7 @@
 "error.block_explorer.unsupported_network" = "%@ ne prend pas en charge %@.";
 
 "lnd_error.wallet_encrypted" = "Porte-monnaie crypté";
-"lnd_error.lnd_not_running" = "Lnd ne semble pas fonctionner correctement.";
+"lnd_error.lnd_not_running" = "LND ne semble pas fonctionner correctement.";
 "lnd_error.transaction_output_is_dust" = "La sortie de cette transaction est une poussière.";
 "lnd_error.no_outputs" = "Aucunes sorties.";
 "lnd_error.rest_network_error" = "Veuillez vérifier votre connection internet.";
@@ -97,8 +97,8 @@
 "scene.request.or_separator_label" = "ou";
 "scene.request.on_chain_button" = "On-chain";
 "scene.request.generate_request_button" = "Générer une demande";
-"scene.request.lightning_header_title" = "Demande de Paiement Lightning";
-"scene.request.on_chain_header_title" = "Demande de Paiement On-chain";
+"scene.request.lightning_header_title" = "Demande de paiement Lightning";
+"scene.request.on_chain_header_title" = "Demande de paiement On-chain";
 "scene.request.next_button_title" = "Suivant";
 "scene.request.subtitle.lightning" = "Vous pouvez recevoir : %@";
 
